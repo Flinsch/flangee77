@@ -3,12 +3,20 @@
 
 #include "framework.h"
 
+#include <ProgLabs/Application.h>
+
+
+
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
-    ::MessageBox( NULL, TEXT("Hello, World!"), TEXT(""), MB_OK);
+    std::unique_ptr<pl7::Application> app = std::make_unique<pl7::Application>( __argc, __targv );
+    app->run();
 
-    return 0;
+    const int exit_code = app->get_exit_code();
+    app.reset();
+
+    return exit_code;
 }
