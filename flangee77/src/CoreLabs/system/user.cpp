@@ -7,6 +7,8 @@
 #define SECURITY_WIN32
 #include <security.h>
 
+#pragma comment( lib, "Secur32.lib" )
+
 
 
 namespace cl7 {
@@ -32,7 +34,7 @@ namespace system {
         unsigned long name_length = MAX_NAME_LENGTH;
         if ( !::GetUserNameEx( extended_name_format, name, &name_length ) )
         {
-            //LOG_ERROR( cl7::errors::system_result( ::GetLastError(), TEXT("::GetUserNameEx") ) );
+            LOG_ERROR( cl7::errors::system_result( ::GetLastError(), TEXT("::GetUserNameEx") ) );
         }
 
         cl7::string user_name( name );
