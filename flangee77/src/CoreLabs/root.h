@@ -2,6 +2,9 @@
 #ifndef CL7_ROOT_H
 #define CL7_ROOT_H
 
+#include <sdkddkver.h>
+#define WIN32_LEAN_AND_MEAN
+
 #include <assert.h>
 
 #include <memory>

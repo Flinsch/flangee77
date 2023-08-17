@@ -1,7 +1,6 @@
 #include "Window.h"
 
-#include <XiaoLabs/errors.h>
-
+#include <CoreLabs/errors.h>
 #include <CoreLabs/logging.h>
 
 
@@ -46,7 +45,7 @@ namespace xl7 {
 
         // Update the client area of the window.
         if ( !::UpdateWindow( _handle ) )
-            LOG_ERROR( xl7::errors::windows_result( ::GetLastError(), TEXT("::UpdateWindow") ) );
+            LOG_ERROR( cl7::errors::system_result( ::GetLastError(), TEXT("::UpdateWindow") ) );
 
         return visible_before;
     }
@@ -161,13 +160,6 @@ namespace xl7 {
         _icon_handle = NULL;
         _small_icon_handle = NULL;
 
-        if ( !_icon_handle )
-        {
-            cl7::char_type module_file_name[ MAX_PATH ];
-            ::GetModuleFileName( NULL, module_file_name, MAX_PATH );
-            _icon_handle = ::ExtractIcon( ::GetModuleHandle( NULL ), module_file_name, 0 );
-        }
-
         // Fill the data structure.
         WNDCLASSEX wnd_class;
         wnd_class.cbSize = sizeof(wnd_class);
@@ -186,7 +178,7 @@ namespace xl7 {
         // Register the window class.
         if ( !RegisterClassEx( &wnd_class ) )
         {
-            LOG_ERROR( xl7::errors::windows_result( ::GetLastError(), TEXT("::RegisterClassEx") ) );
+            LOG_ERROR( cl7::errors::system_result( ::GetLastError(), TEXT("::RegisterClassEx") ) );
             return false;
         }
 
@@ -257,7 +249,7 @@ namespace xl7 {
 
         if ( !_handle )
         {
-            LOG_ERROR( xl7::errors::windows_result( ::GetLastError(), TEXT("::CreateWindowEx") ) );
+            LOG_ERROR( cl7::errors::system_result( ::GetLastError(), TEXT("::CreateWindowEx") ) );
             return false;
         }
 
@@ -276,7 +268,7 @@ namespace xl7 {
         // the window callback for WM_CLOSE.
         if ( !::CloseWindow( _handle ) )
         {
-            LOG_WARNING( xl7::errors::windows_result( ::GetLastError(), TEXT("::CloseWindow") ) );
+            LOG_WARNING( cl7::errors::system_result( ::GetLastError(), TEXT("::CloseWindow") ) );
             return false;
         }
 
@@ -290,7 +282,7 @@ namespace xl7 {
     {
         if ( !::UnregisterClass( TEXT("flangee77_window_class"), ::GetModuleHandle( NULL ) ) )
         {
-            LOG_WARNING( xl7::errors::windows_result( ::GetLastError(), TEXT("::UnregisterClass") ) );
+            LOG_WARNING( cl7::errors::system_result( ::GetLastError(), TEXT("::UnregisterClass") ) );
             return false;
         }
 
