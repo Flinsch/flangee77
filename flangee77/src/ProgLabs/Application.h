@@ -51,6 +51,16 @@ private:
      */
     int _exit_code;
 
+    /**
+     * The flag indicating whether to quit the application.
+     */
+    bool _quit_flag;
+
+    /**
+     * The flag indicating whether to restart the application.
+     */
+    bool _restart_flag;
+
 
 
     // #############################################################################
@@ -75,10 +85,31 @@ public:
 public:
     /**
      * Runs the application instance.
-     * Initializes the framework components, starts the main message loop, and shuts
-     * down the framework components.
+     * Initializes the framework components, runs through the main message loop, and
+     * shuts down the framework components.
      */
     bool run();
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+private:
+    /**
+     * Initializes the application instance including the framework components.
+     */
+    bool _init();
+
+    /**
+     * Shuts down the application instance including the framework components.
+     */
+    bool _shutdown();
+
+    /**
+     * Enters/runs the main message loop of the application instance.
+     */
+    bool _run_loop();
 
 }; // class Application
 

@@ -4,6 +4,8 @@
 
 #include <assert.h>
 
+#include <memory>
+
 
 
 // "This object file does not define any previously undefined public symbols,
