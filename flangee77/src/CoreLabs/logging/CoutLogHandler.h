@@ -26,7 +26,7 @@ public:
     /**
      * Destructor.
      */
-    virtual ~CoutLogHandler(void) = default;
+    virtual ~CoutLogHandler(void) override = default;
 
 private:
     /** Copy constructor. */

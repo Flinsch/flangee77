@@ -22,7 +22,7 @@ namespace pl7 {
         , _option_values()
     {
         bool next_is_value = false;
-        std::vector<cl7::string>* values = NULL;
+        std::vector<cl7::string>* values = nullptr;
 
         for ( int i = 0; i < argc; ++i )
         {
@@ -34,7 +34,7 @@ namespace pl7 {
                 assert( values );
                 values->push_back( argument );
                 next_is_value = false;
-                values = NULL;
+                values = nullptr;
                 continue;
             }
 

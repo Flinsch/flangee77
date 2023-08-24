@@ -47,16 +47,16 @@ namespace logging {
         switch ( log_entry.type )
         {
         case cl7::logging::LogType::Info:
-            _write_line( TEXT("[INFO] ") + log_entry.message );
+            _write_line( TEXT("[INFO] ") + cl7::string{log_entry.message} );
             break;
         case cl7::logging::LogType::Success:
-            _write_line( TEXT("[SUCCESS] ") + log_entry.message );
+            _write_line( TEXT("[SUCCESS] ") + cl7::string{log_entry.message} );
             break;
         case cl7::logging::LogType::Warning:
-            _write_line( TEXT("[WARNING] ") + log_entry.message );
+            _write_line( TEXT("[WARNING] ") + cl7::string{log_entry.message} );
             break;
         case cl7::logging::LogType::Error:
-            _write_line( TEXT("[ERROR] ") + log_entry.message );
+            _write_line( TEXT("[ERROR] ") + cl7::string{log_entry.message} );
             break;
         default:
             _write_line( log_entry.message );
@@ -72,7 +72,7 @@ namespace logging {
     /**
      * Writes the specified text line to the log file.
      */
-    void FileLogHandler::_write_line(const cl7::string& line, bool truncate)
+    void FileLogHandler::_write_line(cl7::string_view line, bool truncate)
     {
         auto mode = cl7::ofstream::out;
         if ( truncate )

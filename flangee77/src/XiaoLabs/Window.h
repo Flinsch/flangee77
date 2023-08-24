@@ -13,14 +13,15 @@ namespace xl7 {
 
 
 
-class Window
+class Window final
     : public Component<Window>
 {
+    friend class cl7::creational::Singleton<Window>;
 
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
-public:
+private:
     /**
      * Default constructor.
      */
@@ -29,7 +30,7 @@ public:
     /**
      * Destructor.
      */
-    ~Window(void) = default;
+    virtual ~Window(void) override = default;
 
 private:
     /** Copy constructor. */

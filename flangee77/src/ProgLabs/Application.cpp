@@ -1,6 +1,7 @@
 #include "Application.h"
 
 #include <XiaoLabs/Window.h>
+#include <XiaoLabs/video.h>
 
 #include <CoreLabs/creational/Singleton.h>
 #include <CoreLabs/logging/FileLogHandler.h>
@@ -85,14 +86,18 @@ namespace pl7 {
         xl7::Config config;
 
         // Create/replace log handler.
-        cl7::logging::StandardLogger::obj()->clear_log_handlers().add_log_handler( std::make_shared<cl7::logging::FileLogHandler>() );
+        cl7::logging::StandardLogger::instance().clear_log_handlers().add_log_handler( std::make_shared<cl7::logging::FileLogHandler>() );
 
         // Create the DirextX main window.
-        if ( !xl7::Window::obj().init( config ) )
+        if ( !xl7::Window::instance().init( config ) )
+            return false;
+
+        // Initialize Direct3D.
+        if ( !xl7::video::MainObject::instance().init( config ) )
             return false;
 
         // Show the DirectX main window.
-        xl7::Window::obj().show_window();
+        xl7::Window::instance().show_window();
 
         return true;
     }
@@ -103,10 +108,10 @@ namespace pl7 {
     bool Application::_shutdown()
     {
         // Close the DirectX main window.
-        xl7::Window::obj().close();
+        xl7::Window::instance().close();
 
         // Destroy all singleton objects
-        // (including all DirectX components).
+        // (including shutting down all DirectX components).
         cl7::creational::SingletonManager::destroy_all();
 
         return true;
@@ -119,7 +124,7 @@ namespace pl7 {
     {
         while ( true )
         {
-            const std::pair<bool, int> quit_flag_and_exit_code = xl7::Window::obj().process_window_messages();
+            const std::pair<bool, int> quit_flag_and_exit_code = xl7::Window::instance().process_window_messages();
 
             if ( quit_flag_and_exit_code.first )
             {

@@ -15,11 +15,12 @@ namespace logging {
 class StandardLogger final
     : public creational::Singleton<StandardLogger>
 {
+    friend creational::Singleton<StandardLogger>;
 
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
-public:
+private:
     /**
      * Default constructor.
      */
@@ -53,6 +54,11 @@ private:
     // Dereferenciation
     // #############################################################################
 public:
+    /**
+     * Returns the actual logger.
+     */
+    static Logger& instance() { return creational::Singleton<StandardLogger>::instance()._logger; }
+
     /**
      * Returns the actual logger.
      */

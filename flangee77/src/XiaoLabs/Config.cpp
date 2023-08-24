@@ -18,9 +18,9 @@ namespace xl7 {
         generic.quit_key = VK_F10;
         generic.use_hardware_cursor = false;
 
-        d3d.display_mode.fullscreen = false;
-        d3d.display_mode.width = 0;
-        d3d.display_mode.height = 0;
+        video.display_mode.fullscreen = false;
+        video.display_mode.width = 0;
+        video.display_mode.height = 0;
     }
 
 

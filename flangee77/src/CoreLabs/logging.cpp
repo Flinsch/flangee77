@@ -33,7 +33,7 @@ namespace logging {
      */
     void std_log(const LogEntry& log_entry)
     {
-        StandardLogger::obj()->log( log_entry );
+        StandardLogger::instance().log( log_entry );
     }
 
     /**

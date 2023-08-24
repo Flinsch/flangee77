@@ -195,8 +195,8 @@ namespace xl7 {
         const int screen_height = ::GetSystemMetrics( SM_CYSCREEN );
 
         // ...and the desired window size.
-        int width = static_cast<int>( get_config().d3d.display_mode.width );
-        int height = static_cast<int>( get_config().d3d.display_mode.height );
+        int width = static_cast<int>( get_config().video.display_mode.width );
+        int height = static_cast<int>( get_config().video.display_mode.height );
         if ( width <= 0 || height <= 0 )
         {
             // If no legal size has been specified,
@@ -212,7 +212,7 @@ namespace xl7 {
         // depending on the display mode.
         DWORD style;
         int x, y;
-        if ( get_config().d3d.display_mode.fullscreen )
+        if ( get_config().video.display_mode.fullscreen )
         {
             // Fullscreen mode
             style = WS_POPUP | WS_MAXIMIZE;
@@ -255,6 +255,10 @@ namespace xl7 {
 
         _width = static_cast<unsigned>( width );
         _height = static_cast<unsigned>( height );
+
+        // Hide the hardware cursor?
+        if ( !get_config().generic.use_hardware_cursor )
+            ::ShowCursor( FALSE );
 
         return true;
     }
@@ -309,7 +313,7 @@ namespace xl7 {
 
         case WM_ACTIVATE:
         {
-            Window::obj()._active = LOWORD( wparam ) != WA_INACTIVE;
+            Window::instance()._active = LOWORD( wparam ) != WA_INACTIVE;
             break;
         }
 
@@ -328,7 +332,7 @@ namespace xl7 {
         case WM_KEYDOWN:
         case WM_SYSKEYDOWN:
         {
-            if ( Window::obj()._active && wparam == Window::obj().get_config().generic.quit_key )
+            if ( Window::instance()._active && wparam == Window::instance().get_config().generic.quit_key )
                 ::PostQuitMessage( 0 );
             break;
         }

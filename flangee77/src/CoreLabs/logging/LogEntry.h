@@ -36,7 +36,7 @@ struct LogEntry
 
 
     /** The log message itself.  */
-    cl7::string message;
+    cl7::string_view message;
     /** The log type (error, warning, etc.). */
     LogType type;
 

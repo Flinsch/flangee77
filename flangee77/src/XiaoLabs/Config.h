@@ -42,9 +42,9 @@ struct Config
 
 
     /**
-     * The presets for the Direct3D component.
+     * The presets for the video component.
      */
-    struct D3D
+    struct Video
     {
         struct
         {
@@ -55,7 +55,7 @@ struct Config
             /** The screen height, in pixels (0: use default/desktop height). */
             unsigned            height;
         }                   display_mode;
-    } d3d;
+    } video;
 
 
 

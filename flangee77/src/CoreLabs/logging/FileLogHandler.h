@@ -26,7 +26,7 @@ public:
     /**
      * Destructor.
      */
-    virtual ~FileLogHandler(void) = default;
+    virtual ~FileLogHandler(void) override = default;
 
 private:
     /** Copy constructor. */
@@ -55,7 +55,7 @@ private:
      * Writes the specified text line to the log file. If specified, the file is
      * initially truncated.
      */
-    void _write_line(const cl7::string& line, bool truncate = false);
+    void _write_line(cl7::string_view line, bool truncate = false);
 
 }; // class AbstractLogHandler
 

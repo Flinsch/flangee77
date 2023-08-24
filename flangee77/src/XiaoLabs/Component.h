@@ -11,9 +11,9 @@ namespace xl7 {
 
 
 
-template <class TSelf>
+template <class TSingleton>
 class Component
-    : public cl7::creational::Singleton<TSelf>
+    : public cl7::creational::Singleton<TSingleton>
 {
 
     // #############################################################################
@@ -32,7 +32,7 @@ protected:
     /**
      * Destructor.
      */
-    virtual ~Component()
+    virtual ~Component() override
     {
         assert( !_initialized );
     }

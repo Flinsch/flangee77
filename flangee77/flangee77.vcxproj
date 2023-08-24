@@ -167,6 +167,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\video.h" />
+    <ClInclude Include="src\XiaoLabs\video\MainObject.h" />
     <ClInclude Include="src\CoreLabs\creational\Singleton.h" />
     <ClInclude Include="src\CoreLabs\errors.h" />
     <ClInclude Include="src\CoreLabs\fstream.h" />
@@ -191,6 +193,7 @@
     <ClInclude Include="src\XiaoLabs\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\video\MainObject.cpp" />
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp" />
     <ClCompile Include="src\CoreLabs\errors.cpp" />
     <ClCompile Include="src\CoreLabs\logging.cpp" />

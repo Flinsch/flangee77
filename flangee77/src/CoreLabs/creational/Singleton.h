@@ -19,6 +19,7 @@ class SingletonManager;
 
 class SingletonBase
 {
+    friend SingletonManager;
 
     // #############################################################################
     // Construction / Destruction
@@ -69,15 +70,11 @@ private:
      */
     virtual void _before_destroy() {}
 
-
-
-    friend SingletonManager;
-
 }; // class SingletonBase
 
 
 
-class SingletonManager
+class SingletonManager final
     : public SingletonBase
 {
 
@@ -108,10 +105,21 @@ public:
 
 
 
-template <class TSelf>
+template <class TSingleton>
 class Singleton
     : public SingletonBase
 {
+
+    // #############################################################################
+    // Default Factory Function
+    // #############################################################################
+private:
+    static TSingleton* factory_func()
+    {
+        return new TSingleton();
+    }
+
+
 
     // #############################################################################
     // Construction / Destruction
@@ -135,7 +143,7 @@ private:
     // Singleton Object
     // #############################################################################
 private:
-    static std::unique_ptr<TSelf> _obj;
+    static TSingleton* _instance;
 
 
 
@@ -143,34 +151,37 @@ private:
     // Singleton Management
     // #############################################################################
 private:
-    static TSelf& _create()
+    static TSingleton& _create()
     {
-        if ( !_obj )
+        if ( !_instance )
         {
-            _obj.reset( new TSelf() );
-            _register( _obj.get() );
+            static_assert( std::derived_from<TSingleton, Singleton<TSingleton>> );
+            _instance = TSingleton::factory_func();
+            _register( _instance );
         }
-        return *_obj;
+        return *_instance;
     }
 
 public:
     /**
      * Destroys the actual singleton object instance.
+     * The instance is recreated the next time it is accessed.
      */
     static void destroy()
     {
-        if ( !_obj )
+        if ( !_instance )
             return;
-        _before_destroy( _obj.get() );
-        _unregister( _obj.get() );
-        _obj.reset();
+        _before_destroy( _instance );
+        _unregister( _instance );
+        delete _instance;
+        _instance = nullptr;
     }
 
 private:
-    void _invoke_destroy() final { assert( _obj ); destroy(); }
+    void _invoke_destroy() final { assert( _instance ); destroy(); }
 
 protected:
-    void _reregister()  { assert( _obj ); _reregister( _obj.get() ); }
+    void _reregister()  { assert( _instance ); _reregister( _instance ); }
 
 
 
@@ -180,20 +191,21 @@ protected:
 public:
     /**
      * Returns the actual singleton object instance.
+     * If it does not exist yet, it will be created.
      */
-    static TSelf& obj()
+    static TSingleton& instance()
     {
-        if ( !_obj )
+        if ( !_instance )
             return _create();
-        return *_obj;
+        return *_instance;
     }
 
 }; // class Singleton
 
 
 
-    template <class TSelf>
-    std::unique_ptr<TSelf> Singleton<TSelf>::_obj;
+    template <class TSingleton>
+    TSingleton* Singleton<TSingleton>::_instance = nullptr;
 
 
 
