@@ -126,7 +126,7 @@ namespace xl7 {
             return false;
         }
 
-        LOG_SUCCESS( TEXT("The flangee77 main window has been successfully initialized.") );
+        LOG_SUCCESS( TEXT("The flangee77 main window was successfully initialized.") );
         return true;
     }
 
