@@ -3,6 +3,11 @@
 #define XL7_VIDEO_IMPL_D3D9_MAINOBJECTIMPL_H
 #include "../../MainObject.h"
 
+#include <d3d9.h>
+
+#include <wrl.h>
+namespace wrl = Microsoft::WRL;
+
 
 
 namespace xl7 {
@@ -45,6 +50,10 @@ private:
     // Attributes
     // #############################################################################
 private:
+    /**
+     * The Direct3D 9 main interface.
+     */
+    wrl::ComPtr<IDirect3D9> _d3d_interface;
 
 
 
@@ -82,6 +91,15 @@ private:
     // Helpers
     // #############################################################################
 private:
+    /**
+     * Creates the Direct3D 9 main interface.
+     */
+    bool _create_main_interface();
+
+    /**
+     * Releases the Direct3D 9 main interface.
+     */
+    bool _release_main_interface();
 
 }; // class MainObjectImpl
 

@@ -51,12 +51,12 @@ namespace video {
     {
         if ( _init_without_logging_final_result() )
         {
-            LOG_SUCCESS( TEXT("The " XL7_VIDEO_IMPL_NAME " main object was successfully initialized.") );
+            LOG_SUCCESS( TEXT("The video component based on " XL7_VIDEO_IMPL_NAME " was successfully initialized.") );
             return true;
         }
         else
         {
-            LOG_ERROR( TEXT("The " XL7_VIDEO_IMPL_NAME " main object could not be initialized..") );
+            LOG_ERROR( TEXT("The video component based on " XL7_VIDEO_IMPL_NAME " could not be initialized..") );
             return false;
         }
     }
@@ -68,12 +68,12 @@ namespace video {
     {
         if ( _shutdown_without_logging_final_result() )
         {
-            LOG_SUCCESS( TEXT("The " XL7_VIDEO_IMPL_NAME " main object was shut down successfully.") );
+            LOG_SUCCESS( TEXT("The video component based on " XL7_VIDEO_IMPL_NAME " was shut down successfully.") );
             return true;
         }
         else
         {
-            LOG_WARNING( TEXT("The " XL7_VIDEO_IMPL_NAME " main object could not be shut down correctly.") );
+            LOG_WARNING( TEXT("The video component based on " XL7_VIDEO_IMPL_NAME " could not be shut down correctly.") );
             return false;
         }
     }

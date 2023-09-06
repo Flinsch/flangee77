@@ -3,6 +3,12 @@
 #define XL7_VIDEO_IMPL_D3D11_MAINOBJECTIMPL_H
 #include "../../MainObject.h"
 
+#include <dxgi.h>
+#include <d3d11.h>
+
+#include <wrl.h>
+namespace wrl = Microsoft::WRL;
+
 
 
 namespace xl7 {
@@ -45,6 +51,10 @@ private:
     // Attributes
     // #############################################################################
 private:
+    /**
+     * The DXGI factory interface.
+     */
+    wrl::ComPtr<IDXGIFactory> _dxgi_factory;
 
 
 
@@ -82,6 +92,15 @@ private:
     // Helpers
     // #############################################################################
 private:
+    /**
+     * Creates the DXGI factory interface.
+     */
+    bool _create_dxgi_factory();
+
+    /**
+     * Releases the DXGI factory interface.
+     */
+    bool _release_dxgi_factory();
 
 }; // class MainObjectImpl
 

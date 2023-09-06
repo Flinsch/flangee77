@@ -2,6 +2,9 @@
 #ifndef CL7_ROOT_H
 #define CL7_ROOT_H
 
+#ifndef _WIN32_WINNT
+#define _WIN32_WINNT _WIN32_WINNT_WIN7
+#endif // !_WIN32_WINNT
 #include <sdkddkver.h>
 #define WIN32_LEAN_AND_MEAN
 
