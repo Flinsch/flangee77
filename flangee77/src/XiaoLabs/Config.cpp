@@ -7,7 +7,7 @@ namespace xl7 {
 
 
     /** Default constructor. */
-    Config::Config(void)
+    Config::Config()
     {
         generic.window.title = TEXT("flangee77");
         generic.window.icon_handle = NULL;

@@ -19,7 +19,7 @@ namespace logging {
     /**
      * Default constructor.
      */
-    FileLogHandler::FileLogHandler(void)
+    FileLogHandler::FileLogHandler()
     {
         const std::time_t t = std::chrono::system_clock::to_time_t( std::chrono::system_clock::now() );
         std::tm tm;

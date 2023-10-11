@@ -1,4 +1,4 @@
-#include "MainObjectImpl.h"
+#include "GraphicsSystemImpl.h"
 
 #include <CoreLabs/errors.h>
 #include <CoreLabs/logging.h>
@@ -8,34 +8,21 @@
 
 
 namespace xl7 {
-namespace video {
+namespace graphics {
 namespace impl {
 namespace direct3d11 {
 
 
 
     // #############################################################################
-    // Construction / Destruction
+    // GraphicsSystem Implementations
     // #############################################################################
 
     /**
-     * Default constructor.
+     * Performs preliminary initialization steps so that the rendering device can be
+     * created afterwards.
      */
-    MainObjectImpl::MainObjectImpl(void)
-        : _dxgi_factory()
-    {
-    }
-
-
-
-    // #############################################################################
-    // MainObject Implementations
-    // #############################################################################
-
-    /**
-     * Initializes the component.
-     */
-    bool MainObjectImpl::_init_without_logging_final_result()
+    bool GraphicsSystemImpl::_init_before_rendering_device()
     {
         if ( !_create_dxgi_factory() )
             return false;
@@ -44,13 +31,23 @@ namespace direct3d11 {
     }
 
     /**
-     * De-initializes the component.
+     * Handles any remaining cleanup actions after the rendering device has been
+     * destroyed.
      */
-    bool MainObjectImpl::_shutdown_without_logging_final_result()
+    bool GraphicsSystemImpl::_shutdown_after_rendering_device()
     {
         _release_dxgi_factory();
 
         return true;
+    }
+
+    /**
+     * Creates the rendering device (and all of its manager objects), but without
+     * fully initializing it so that it can be initialized afterwards.
+     */
+    RenderingDevice* GraphicsSystemImpl::_rendering_device_factory()
+    {
+        return nullptr;
     }
 
 
@@ -62,7 +59,7 @@ namespace direct3d11 {
     /**
      * Creates the DXGI factory interface.
      */
-    bool MainObjectImpl::_create_dxgi_factory()
+    bool GraphicsSystemImpl::_create_dxgi_factory()
     {
         if ( _dxgi_factory )
         {
@@ -114,7 +111,7 @@ namespace direct3d11 {
     /**
      * Releases the DXGI factory interface.
      */
-    bool MainObjectImpl::_release_dxgi_factory()
+    bool GraphicsSystemImpl::_release_dxgi_factory()
     {
         _dxgi_factory.Reset();
 
@@ -126,5 +123,5 @@ namespace direct3d11 {
 
 } // namespace direct3d11
 } // namespace impl
-} // namespace video
+} // namespace graphics
 } // namespace xl7

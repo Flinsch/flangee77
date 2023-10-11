@@ -25,11 +25,11 @@ public:
     /**
      * Destructor.
      */
-    virtual ~Application(void);
+    virtual ~Application();
 
 private:
     /** Default constructor. */
-    Application(void) = delete;
+    Application() = delete;
     /** Copy constructor. */
     Application(const Application&) = delete;
     /** Copy assignment operator. */

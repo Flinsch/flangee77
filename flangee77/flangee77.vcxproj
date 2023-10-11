@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -167,10 +167,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\XiaoLabs\video\impl\direct3d11\MainObjectImpl.h" />
-    <ClInclude Include="src\XiaoLabs\video\impl\direct3d9\MainObjectImpl.h" />
-    <ClInclude Include="src\XiaoLabs\video.h" />
-    <ClInclude Include="src\XiaoLabs\video\MainObject.h" />
+    <ClInclude Include="src\XiaoLabs\graphics.h" />
+    <ClInclude Include="src\XiaoLabs\ResourceManager.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\RenderingDevice.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\GraphicsSystemImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\GraphicsSystemImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\GraphicsSystem.h" />
     <ClInclude Include="src\CoreLabs\creational\Singleton.h" />
     <ClInclude Include="src\CoreLabs\errors.h" />
     <ClInclude Include="src\CoreLabs\fstream.h" />
@@ -192,12 +194,14 @@
     <ClInclude Include="src\XiaoLabs\Component.h" />
     <ClInclude Include="src\XiaoLabs\Config.h" />
     <ClInclude Include="src\XiaoLabs\errors.h" />
-    <ClInclude Include="src\XiaoLabs\Window.h" />
+    <ClInclude Include="src\XiaoLabs\MainWindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\XiaoLabs\video\impl\direct3d11\MainObjectImpl.cpp" />
-    <ClCompile Include="src\XiaoLabs\video\impl\direct3d9\MainObjectImpl.cpp" />
-    <ClCompile Include="src\XiaoLabs\video\MainObject.cpp" />
+    <ClCompile Include="src\XiaoLabs\ResourceManager.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\RenderingDevice.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\GraphicsSystemImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\GraphicsSystemImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\GraphicsSystem.cpp" />
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp" />
     <ClCompile Include="src\CoreLabs\errors.cpp" />
     <ClCompile Include="src\CoreLabs\logging.cpp" />
@@ -214,7 +218,7 @@
     <ClCompile Include="src\XiaoLabs\Component.cpp" />
     <ClCompile Include="src\XiaoLabs\Config.cpp" />
     <ClCompile Include="src\XiaoLabs\errors.cpp" />
-    <ClCompile Include="src\XiaoLabs\Window.cpp" />
+    <ClCompile Include="src\XiaoLabs\MainWindow.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

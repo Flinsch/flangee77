@@ -1,7 +1,7 @@
 #include "Application.h"
 
-#include <XiaoLabs/Window.h>
-#include <XiaoLabs/video.h>
+#include <XiaoLabs/MainWindow.h>
+#include <XiaoLabs/graphics.h>
 
 #include <CoreLabs/creational/Singleton.h>
 #include <CoreLabs/logging/FileLogHandler.h>
@@ -30,7 +30,7 @@ namespace pl7 {
     /**
      * Destructor.
      */
-    Application::~Application(void)
+    Application::~Application()
     {
     }
 
@@ -60,7 +60,6 @@ namespace pl7 {
 
             if ( _restart_flag )
                 continue;
-            assert( _quit_flag );
             break;
         } // while ( ok )
 
@@ -88,16 +87,16 @@ namespace pl7 {
         // Create/replace log handler.
         cl7::logging::StandardLogger::instance().clear_log_handlers().add_log_handler( std::make_shared<cl7::logging::FileLogHandler>() );
 
-        // Create the DirextX main window.
-        if ( !xl7::Window::instance().init( config ) )
+        // Create the main window.
+        if ( !xl7::MainWindow::instance().init( config ) )
             return false;
 
-        // Initialize Direct3D.
-        if ( !xl7::video::MainObject::instance().init( config ) )
+        // Initialize the graphics system.
+        if ( !xl7::graphics_system().init( config ) )
             return false;
 
-        // Show the DirectX main window.
-        xl7::Window::instance().show_window();
+        // Show the main window.
+        xl7::MainWindow::instance().show_window();
 
         return true;
     }
@@ -107,11 +106,11 @@ namespace pl7 {
      */
     bool Application::_shutdown()
     {
-        // Close the DirectX main window.
-        xl7::Window::instance().close();
+        // Close the main window.
+        xl7::MainWindow::instance().close();
 
         // Destroy all singleton objects
-        // (including shutting down all DirectX components).
+        // (also shutting down all "X" components).
         cl7::creational::SingletonManager::destroy_all();
 
         return true;
@@ -124,7 +123,7 @@ namespace pl7 {
     {
         while ( true )
         {
-            const std::pair<bool, int> quit_flag_and_exit_code = xl7::Window::instance().process_window_messages();
+            const std::pair<bool, int> quit_flag_and_exit_code = xl7::MainWindow::instance().process_window_messages();
 
             if ( quit_flag_and_exit_code.first )
             {

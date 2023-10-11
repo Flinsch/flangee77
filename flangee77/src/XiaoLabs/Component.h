@@ -16,6 +16,16 @@ class Component
     : public cl7::creational::Singleton<TSingleton>
 {
 
+public:
+    enum class State
+    {
+        NotInitialized,
+        FullyInitialized,
+        PartiallyInitialized,
+    }; // enum class State
+
+
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
@@ -25,7 +35,7 @@ protected:
      */
     Component()
         : _config()
-        , _initialized( false )
+        , _state( State::NotInitialized )
     {
     }
 
@@ -34,7 +44,7 @@ protected:
      */
     virtual ~Component() override
     {
-        assert( !_initialized );
+        assert( _state == State::NotInitialized );
     }
 
 private:
@@ -50,14 +60,14 @@ private:
     // #############################################################################
 private:
     /**
-     * The DirectX pre-config structure.
+     * The "X" pre-config structure.
      */
     Config _config;
 
     /**
-     * The flag indicating whether the component has been fully initialized.
+     * The state indicating whether the component has been initialized.
      */
-    bool _initialized;
+    State _state;
 
 
 
@@ -66,14 +76,19 @@ private:
     // #############################################################################
 public:
     /**
-     * Returns the DirectX pre-config structure.
+     * Returns the "X" pre-config structure.
      */
     const Config& get_config() const { return _config; }
 
     /**
+     * Returns the state indicating whether the component has been initialized.
+     */
+    State get_state() const { return _state; }
+
+    /**
      * Returns the flag indicating whether the component has been fully initialized.
      */
-    bool is_initialized() const { return _initialized; }
+    bool is_operational() const { return _state == State::FullyInitialized; }
 
 
 
@@ -88,17 +103,19 @@ public:
     {
         _config = config;
 
-        if ( _initialized )
+        if ( _state != State::NotInitialized )
         {
             if ( !shutdown() )
                 return false;
         }
 
-        assert( !_initialized );
+        assert( _state == State::NotInitialized );
 
-        _initialized = _init();
+        _state = State::PartiallyInitialized;
+        if ( _init() )
+            _state = State::FullyInitialized;
 
-        return _initialized;
+        return is_operational();
     }
 
     /**
@@ -108,7 +125,7 @@ public:
     {
         const bool b = _shutdown();
 
-        _initialized = false;
+        _state = State::NotInitialized;
 
         return b;
     }
@@ -126,7 +143,7 @@ private:
      */
     virtual void _before_destroy() final
     {
-        if ( _initialized )
+        if ( _state != State::NotInitialized )
             shutdown();
     }
 

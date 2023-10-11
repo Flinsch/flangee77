@@ -21,12 +21,12 @@ public:
     /**
      * Default constructor.
      */
-    FileLogHandler(void);
+    FileLogHandler();
 
     /**
      * Destructor.
      */
-    virtual ~FileLogHandler(void) override = default;
+    virtual ~FileLogHandler() override = default;
 
 private:
     /** Copy constructor. */

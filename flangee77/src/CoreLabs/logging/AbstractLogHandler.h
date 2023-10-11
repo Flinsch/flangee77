@@ -23,12 +23,12 @@ public:
     /**
      * Default constructor.
      */
-    AbstractLogHandler(void) = default;
+    AbstractLogHandler() = default;
 
     /**
      * Destructor.
      */
-    virtual ~AbstractLogHandler(void) = default;
+    virtual ~AbstractLogHandler() = default;
 
 private:
     /** Copy constructor. */

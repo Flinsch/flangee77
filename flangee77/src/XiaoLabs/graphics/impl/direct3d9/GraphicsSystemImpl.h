@@ -1,26 +1,26 @@
 #pragma once
-#ifndef XL7_VIDEO_IMPL_D3D9_MAINOBJECTIMPL_H
-#define XL7_VIDEO_IMPL_D3D9_MAINOBJECTIMPL_H
-#include "../../MainObject.h"
+#ifndef XL7_GRAPHICS_IMPL_D3D9_GRAPHICSSYSTEMIMPL_H
+#define XL7_GRAPHICS_IMPL_D3D9_GRAPHICSSYSTEMIMPL_H
+#include "../../GraphicsSystem.h"
 
 #include <d3d9.h>
 
-#include <wrl.h>
+#include <wrl/client.h>
 namespace wrl = Microsoft::WRL;
 
 
 
 namespace xl7 {
-namespace video {
+namespace graphics {
 namespace impl {
 namespace direct3d9 {
 
 
 
-class MainObjectImpl final
-    : public MainObject
+class GraphicsSystemImpl final
+    : public GraphicsSystem
 {
-    friend MainObject* MainObject::factory_func();
+    friend GraphicsSystem* GraphicsSystem::factory_func();
 
 
 
@@ -31,18 +31,18 @@ protected:
     /**
      * Default constructor.
      */
-    MainObjectImpl(void);
+    GraphicsSystemImpl() = default;
 
     /**
      * Destructor.
      */
-    virtual ~MainObjectImpl(void) override = default;
+    virtual ~GraphicsSystemImpl() override = default;
 
 private:
     /** Copy constructor. */
-    MainObjectImpl(const MainObjectImpl&) = delete;
+    GraphicsSystemImpl(const GraphicsSystemImpl&) = delete;
     /** Copy assignment operator. */
-    MainObjectImpl& operator = (const MainObjectImpl&) = delete;
+    GraphicsSystemImpl& operator = (const GraphicsSystemImpl&) = delete;
 
 
 
@@ -72,18 +72,26 @@ public:
 
 
     // #############################################################################
-    // MainObject Implementations
+    // GraphicsSystem Implementations
     // #############################################################################
 private:
     /**
-     * Initializes the component.
+     * Performs preliminary initialization steps so that the rendering device can be
+     * created afterwards.
      */
-    virtual bool _init_without_logging_final_result() override;
+    virtual bool _init_before_rendering_device() override;
 
     /**
-     * De-initializes the component.
+     * Handles any remaining cleanup actions after the rendering device has been
+     * destroyed.
      */
-    virtual bool _shutdown_without_logging_final_result() override;
+    virtual bool _shutdown_after_rendering_device() override;
+
+    /**
+     * Creates the rendering device (and all of its manager objects), but without
+     * fully initializing it so that it can be initialized afterwards.
+     */
+    virtual RenderingDevice* _rendering_device_factory() override;
 
 
 
@@ -101,13 +109,13 @@ private:
      */
     bool _release_main_interface();
 
-}; // class MainObjectImpl
+}; // class GraphicsSystemImpl
 
 
 
 } // namespace direct3d9
 } // namespace impl
-} // namespace video
+} // namespace graphics
 } // namespace xl7
 
-#endif // XL7_VIDEO_IMPL_D3D9_MAINOBJECTIMPL_H
+#endif // XL7_GRAPHICS_IMPL_D3D9_GRAPHICSSYSTEMIMPL_H

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef XL7_WINDOW_H
-#define XL7_WINDOW_H
+#ifndef XL7_MAINWINDOW_H
+#define XL7_MAINWINDOW_H
 #include "./Component.h"
 
 #include <CoreLabs/string.h>
@@ -13,10 +13,12 @@ namespace xl7 {
 
 
 
-class Window final
-    : public Component<Window>
+class MainWindow final
+    : public Component<MainWindow>
 {
-    friend class cl7::creational::Singleton<Window>;
+    friend class cl7::creational::Singleton<MainWindow>;
+
+
 
     // #############################################################################
     // Construction / Destruction
@@ -25,18 +27,18 @@ private:
     /**
      * Default constructor.
      */
-    Window(void);
+    MainWindow();
 
     /**
      * Destructor.
      */
-    virtual ~Window(void) override = default;
+    virtual ~MainWindow() override = default;
 
 private:
     /** Copy constructor. */
-    Window(const Window&) = delete;
+    MainWindow(const MainWindow&) = delete;
     /** Copy assignment operator. */
-    Window& operator = (const Window&) = delete;
+    MainWindow& operator = (const MainWindow&) = delete;
 
 
 
@@ -207,10 +209,10 @@ private:
         WPARAM wparam,
         LPARAM lparam);
 
-}; // class Window
+}; // class MainWindow
 
 
 
 } // namespace xl7
 
-#endif // XL7_WINDOW_H
+#endif // XL7_MAINWINDOW_H

@@ -1,4 +1,4 @@
-#include "Window.h"
+#include "MainWindow.h"
 
 #include <CoreLabs/errors.h>
 #include <CoreLabs/logging.h>
@@ -16,7 +16,7 @@ namespace xl7 {
     /**
      * Default constructor.
      */
-    Window::Window(void)
+    MainWindow::MainWindow()
         : _handle( NULL )
         , _width( 0 )
         , _height( 0 )
@@ -37,7 +37,7 @@ namespace xl7 {
      * Shows the window (makes the window visible).
      * The function returns true, if the window was visible before.
      */
-    bool Window::show_window()
+    bool MainWindow::show_window()
     {
         // Show the window and remember
         // previous visibility state.
@@ -54,7 +54,7 @@ namespace xl7 {
      * Hides the window (makes the window unvisible).
      * The function returns true, if the window was visible before.
      */
-    bool Window::hide_window()
+    bool MainWindow::hide_window()
     {
         // Hide the window and remember
         // previous visibility state.
@@ -66,7 +66,7 @@ namespace xl7 {
     /**
      * Closes the window (and destroys it).
      */
-    bool Window::close()
+    bool MainWindow::close()
     {
         // Send WM_CLOSE to the window. The window will
         // be destroyed from the window callback.
@@ -80,7 +80,7 @@ namespace xl7 {
      * Returns a flag indicating a request to terminate the application (WM_QUIT
      * message) and, if so, the exit code (0 otherwise).
      */
-    std::pair<bool, int> Window::process_window_messages()
+    std::pair<bool, int> MainWindow::process_window_messages()
     {
         std::pair<bool, int> quit_flag_and_exit_code{ false, 0 };
 
@@ -112,7 +112,7 @@ namespace xl7 {
     /**
      * Initializes the component.
      */
-    bool Window::_init()
+    bool MainWindow::_init()
     {
         if ( !_register_window_class() )
         {
@@ -126,21 +126,21 @@ namespace xl7 {
             return false;
         }
 
-        LOG_SUCCESS( TEXT("The flangee77 main window was successfully initialized.") );
+        LOG_SUCCESS( TEXT("The flangee77 main window has been successfully initialized.") );
         return true;
     }
 
     /**
      * De-initializes the component.
      */
-    bool Window::_shutdown()
+    bool MainWindow::_shutdown()
     {
         if ( ::IsWindow( _handle ) )
             _destroy_window();
 
         _unregister_window_class();
 
-        LOG_SUCCESS( TEXT("The flangee77 main window has been closed.") );
+        LOG_SUCCESS( TEXT("The flangee77 main window has been closed and destroyed.") );
         return true;
     }
 
@@ -153,7 +153,7 @@ namespace xl7 {
     /**
      * Registers the window class.
      */
-    bool Window::_register_window_class()
+    bool MainWindow::_register_window_class()
     {
         // Determine the handles
         // of the desired icons.
@@ -188,7 +188,7 @@ namespace xl7 {
     /**
      * Creates the window.
      */
-    bool Window::_create_window()
+    bool MainWindow::_create_window()
     {
         // Fetch the desktop resolution...
         const int screen_width = ::GetSystemMetrics( SM_CXSCREEN );
@@ -266,7 +266,7 @@ namespace xl7 {
     /**
      * Destroys the window.
      */
-    bool Window::_destroy_window()
+    bool MainWindow::_destroy_window()
     {
         // The window will be destroyed in
         // the window callback for WM_CLOSE.
@@ -282,7 +282,7 @@ namespace xl7 {
     /**
      * Unregisters the window class.
      */
-    bool Window::_unregister_window_class()
+    bool MainWindow::_unregister_window_class()
     {
         if ( !::UnregisterClass( TEXT("flangee77_window_class"), ::GetModuleHandle( NULL ) ) )
         {
@@ -302,7 +302,7 @@ namespace xl7 {
     /**
      * The callback function processing incoming window messages.
      */
-    LRESULT CALLBACK Window::wnd_proc(
+    LRESULT CALLBACK MainWindow::wnd_proc(
         HWND hwnd,
         UINT msg,
         WPARAM wparam,
@@ -313,7 +313,7 @@ namespace xl7 {
 
         case WM_ACTIVATE:
         {
-            Window::instance()._active = LOWORD( wparam ) != WA_INACTIVE;
+            MainWindow::instance()._active = LOWORD( wparam ) != WA_INACTIVE;
             break;
         }
 
@@ -332,7 +332,7 @@ namespace xl7 {
         case WM_KEYDOWN:
         case WM_SYSKEYDOWN:
         {
-            if ( Window::instance()._active && wparam == Window::instance().get_config().generic.quit_key )
+            if ( MainWindow::instance()._active && wparam == MainWindow::instance().get_config().generic.quit_key )
                 ::PostQuitMessage( 0 );
             break;
         }

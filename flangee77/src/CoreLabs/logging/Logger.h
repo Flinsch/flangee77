@@ -47,12 +47,12 @@ public:
     /**
      * Default constructor.
      */
-    Logger(void) = default;
+    Logger() = default;
 
     /**
      * Destructor.
      */
-    ~Logger(void) = default;
+    ~Logger() = default;
 
 private:
     /** Copy constructor. */

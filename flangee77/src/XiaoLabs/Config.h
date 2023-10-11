@@ -42,7 +42,7 @@ struct Config
 
 
     /**
-     * The presets for the video component.
+     * The presets for the graphics component.
      */
     struct Video
     {
@@ -60,7 +60,7 @@ struct Config
 
 
     /** Default constructor. */
-    Config(void);
+    Config();
 
 }; // struct Config
 

@@ -1,4 +1,4 @@
-#include "MainObjectImpl.h"
+#include "GraphicsSystemImpl.h"
 
 #include <CoreLabs/errors.h>
 #include <CoreLabs/logging.h>
@@ -8,34 +8,21 @@
 
 
 namespace xl7 {
-namespace video {
+namespace graphics {
 namespace impl {
 namespace direct3d9 {
 
 
 
     // #############################################################################
-    // Construction / Destruction
+    // GraphicsSystem Implementations
     // #############################################################################
 
     /**
-     * Default constructor.
+     * Performs preliminary initialization steps so that the rendering device can be
+     * created afterwards.
      */
-    MainObjectImpl::MainObjectImpl(void)
-        : _d3d_interface()
-    {
-    }
-
-
-
-    // #############################################################################
-    // MainObject Implementations
-    // #############################################################################
-
-    /**
-     * Initializes the component.
-     */
-    bool MainObjectImpl::_init_without_logging_final_result()
+    bool GraphicsSystemImpl::_init_before_rendering_device()
     {
         if ( !_create_main_interface() )
             return false;
@@ -44,13 +31,23 @@ namespace direct3d9 {
     }
 
     /**
-     * De-initializes the component.
+     * Handles any remaining cleanup actions after the rendering device has been
+     * destroyed.
      */
-    bool MainObjectImpl::_shutdown_without_logging_final_result()
+    bool GraphicsSystemImpl::_shutdown_after_rendering_device()
     {
         _release_main_interface();
 
         return true;
+    }
+
+    /**
+     * Creates the rendering device (and all of its manager objects), but without
+     * fully initializing it so that it can be initialized afterwards.
+     */
+    RenderingDevice* GraphicsSystemImpl::_rendering_device_factory()
+    {
+        return nullptr;
     }
 
 
@@ -62,7 +59,7 @@ namespace direct3d9 {
     /**
      * Creates the Direct3D 9 main interface.
      */
-    bool MainObjectImpl::_create_main_interface()
+    bool GraphicsSystemImpl::_create_main_interface()
     {
         if ( _d3d_interface )
         {
@@ -70,7 +67,7 @@ namespace direct3d9 {
             return true;
         }
 
-        _d3d_interface = ::Direct3DCreate9( D3D_SDK_VERSION );
+        _d3d_interface.Attach( ::Direct3DCreate9( D3D_SDK_VERSION ) );
 
         if ( !_d3d_interface )
         {
@@ -85,7 +82,7 @@ namespace direct3d9 {
     /**
      * Releases the Direct3D 9 main interface.
      */
-    bool MainObjectImpl::_release_main_interface()
+    bool GraphicsSystemImpl::_release_main_interface()
     {
         _d3d_interface.Reset();
 
@@ -97,5 +94,5 @@ namespace direct3d9 {
 
 } // namespace direct3d9
 } // namespace impl
-} // namespace video
+} // namespace graphics
 } // namespace xl7

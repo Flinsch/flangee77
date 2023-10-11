@@ -21,12 +21,12 @@ public:
     /**
      * Default constructor.
      */
-    CoutLogHandler(void) = default;
+    CoutLogHandler() = default;
 
     /**
      * Destructor.
      */
-    virtual ~CoutLogHandler(void) override = default;
+    virtual ~CoutLogHandler() override = default;
 
 private:
     /** Copy constructor. */

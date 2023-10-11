@@ -16,7 +16,7 @@ namespace logging {
     /**
      * Default constructor.
      */
-    StandardLogger::StandardLogger(void)
+    StandardLogger::StandardLogger()
         : _logger()
     {
         _logger.add_log_handler( std::make_shared<CoutLogHandler>() );

@@ -17,6 +17,8 @@ class StandardLogger final
 {
     friend creational::Singleton<StandardLogger>;
 
+
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
@@ -24,12 +26,12 @@ private:
     /**
      * Default constructor.
      */
-    StandardLogger(void);
+    StandardLogger();
 
     /**
      * Destructor.
      */
-    ~StandardLogger(void) = default;
+    ~StandardLogger() = default;
 
 private:
     /** Copy constructor. */

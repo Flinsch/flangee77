@@ -31,11 +31,11 @@ public:
     /**
      * Destructor.
      */
-    ~ArgumentBag(void) = default;
+    ~ArgumentBag() = default;
 
 private:
     /** Default constructor. */
-    ArgumentBag(void) = delete;
+    ArgumentBag() = delete;
 
 
 

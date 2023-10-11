@@ -78,19 +78,25 @@
     <ClInclude Include="src\XiaoLabs\errors.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\Window.h">
+    <ClInclude Include="src\XiaoLabs\MainWindow.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\video\MainObject.h">
+    <ClInclude Include="src\XiaoLabs\graphics\GraphicsSystem.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\video.h">
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\GraphicsSystemImpl.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\video\impl\direct3d9\MainObjectImpl.h">
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\GraphicsSystemImpl.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\video\impl\direct3d11\MainObjectImpl.h">
+    <ClInclude Include="src\XiaoLabs\graphics\RenderingDevice.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\ResourceManager.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -143,16 +149,22 @@
     <ClCompile Include="src\XiaoLabs\errors.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\XiaoLabs\Window.cpp">
+    <ClCompile Include="src\XiaoLabs\MainWindow.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\XiaoLabs\video\MainObject.cpp">
+    <ClCompile Include="src\XiaoLabs\graphics\GraphicsSystem.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\XiaoLabs\video\impl\direct3d9\MainObjectImpl.cpp">
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\GraphicsSystemImpl.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\XiaoLabs\video\impl\direct3d11\MainObjectImpl.cpp">
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\GraphicsSystemImpl.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\RenderingDevice.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\ResourceManager.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
