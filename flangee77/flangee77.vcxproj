@@ -209,7 +209,6 @@
     <ClCompile Include="src\CoreLabs\logging\CoutLogHandler.cpp" />
     <ClCompile Include="src\CoreLabs\logging\FileLogHandler.cpp" />
     <ClCompile Include="src\CoreLabs\logging\Logger.cpp" />
-    <ClCompile Include="src\CoreLabs\string.cpp" />
     <ClCompile Include="src\CoreLabs\strings.cpp" />
     <ClCompile Include="src\CoreLabs\system\datetime.cpp" />
     <ClCompile Include="src\CoreLabs\system\user.cpp" />
