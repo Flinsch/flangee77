@@ -18,24 +18,6 @@ class Logger final
 {
 
 public:
-    enum class Type
-    {
-        Log,
-        Info,
-        Success,
-        Warning,
-        Error,
-        Caption,
-        Section,
-        Item,
-        ItemPass,
-        ItemFail,
-        Code,
-        Meta,
-        Other
-    }; // enum class Type
-
-public:
     typedef std::shared_ptr<AbstractLogHandler> LogHandlerPtr;
 
 
