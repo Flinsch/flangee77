@@ -99,6 +99,9 @@
     <ClInclude Include="src\XiaoLabs\graphics.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\CoreLabs\logging\StandardLogger.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -162,6 +165,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\ResourceManager.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CoreLabs\logging\StandardLogger.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

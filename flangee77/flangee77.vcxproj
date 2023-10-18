@@ -195,6 +195,7 @@
     <ClInclude Include="src\XiaoLabs\Config.h" />
     <ClInclude Include="src\XiaoLabs\errors.h" />
     <ClInclude Include="src\XiaoLabs\MainWindow.h" />
+    <ClInclude Include="src\CoreLabs\logging\StandardLogger.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\XiaoLabs\ResourceManager.cpp" />
@@ -218,6 +219,7 @@
     <ClCompile Include="src\XiaoLabs\Config.cpp" />
     <ClCompile Include="src\XiaoLabs\errors.cpp" />
     <ClCompile Include="src\XiaoLabs\MainWindow.cpp" />
+    <ClCompile Include="src\CoreLabs\logging\StandardLogger.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
