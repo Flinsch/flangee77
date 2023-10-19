@@ -102,6 +102,9 @@
     <ClInclude Include="src\CoreLabs\logging\StandardLogger.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\CoreLabs\bytearray.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -168,6 +171,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\CoreLabs\logging\StandardLogger.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CoreLabs\bytearray.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
