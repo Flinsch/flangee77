@@ -5,16 +5,16 @@
 
 
 // Make sure a wchar is either 2 bytes (UTF-16) or 4 bytes (UTF-32).
-static_assert(sizeof(cl7::wchar_type) == 2 || sizeof(cl7::wchar_type) == 4);
+static_assert( sizeof(cl7::wchar_type) == 2 || sizeof(cl7::wchar_type) == 4 );
 
 // Additionally, make sure that the limits are defined properly so that we can
 // use them for case distinctions at compile time (where we cannot use sizeof).
-static_assert(WCHAR_MAX == UINT16_MAX || WCHAR_MAX == UINT32_MAX);
+static_assert( WCHAR_MAX == UINT16_MAX || WCHAR_MAX == UINT32_MAX );
 
 // Verify byte order mark (BOM).
 // This check is actually a "tautology" and should pass on all systems. But
 // it's good for our psyche to simply leave it here; it doesn't do any harm.
-static_assert(cl7::u16char_type(L'\ufeff') == 0xfeff);
+static_assert( cl7::u32char_type(U'\ufeff') == 0xfeff );
 
 
 
@@ -28,13 +28,13 @@ namespace strings {
 
 
 
-    void _try_log_warning(bool log_warning, const cl7::string& message)
+    void _try_log_warning(bool log_warning, const cl7::string_view& message)
     {
         if ( log_warning )
             LOG_WARNING( message );
     }
 
-    bool _try_log_warning_always_return_false(bool log_warning, const cl7::string& message)
+    bool _try_log_warning_always_return_false(bool log_warning, const cl7::string_view& message)
     {
         _try_log_warning( log_warning, message );
         return false;
@@ -207,7 +207,7 @@ namespace strings {
                 u8s[ i++ ] = u8char_type(0x80 | ((u32c >> 6) & 0x3f));
                 u8s[ i++ ] = u8char_type(0x80 | (u32c & 0x3f));
             }
-        }
+        } // for ...
         assert( i == size );
 
         return u8s;
@@ -268,7 +268,7 @@ namespace strings {
                 u16s[ i++ ] = u16char_type(0xd800 | ((u32c >> 10) & 0x3ff));
                 u16s[ i++ ] = u16char_type(0xdc00 | (u32c & 0x3ff));
             }
-        }
+        } // for ...
         assert( i == size );
 
         return u16s;
@@ -290,7 +290,9 @@ namespace strings {
         u32string u32s( as.size(), u32char_type(0) );
 
         for ( size_t i = 0; i < as.size(); ++i )
-            u32s[ i ] = as[ i ];
+        {
+            u32s[ i ] = as[ i ]; // No check required because everything from 0 to 255 is valid anyway.
+        }
 
         return u32s;
     }
@@ -456,7 +458,7 @@ namespace strings {
         {
             if ( continuation )
             {
-                if ( u8c >= 0x80 && u8c <= 0xbf ) // continuation byte of a sequence
+                if ( u8c >= 0x80 && u8c <= 0xbf ) // (expected) continuation byte of a sequence
                 {
                     // Everything's fine: merge byte into character "buffer".
                     u32c = (u32c << 6) | (u8c & 0x3f);
@@ -473,9 +475,13 @@ namespace strings {
                         u32s[ i++ ] = _replacement_unicode;
                 }
             }
-            else
+            else // => no sequence continuation (yet)
             {
-                if ( u8c >= 0xc0 && u8c <= 0xdf ) // start of 2-byte sequence
+                if ( u8c <= 0x7f ) // "regular" character (ASCII compatible)
+                {
+                    u32s[ i++ ] = static_cast<u32char_type>( u8c );
+                }
+                else if ( u8c >= 0xc0 && u8c <= 0xdf ) // start of 2-byte sequence
                 {
                     if ( u8c < 0xc2 ) // invalid 2-byte sequence that represents code range from 0 to 127
                         is_valid = is_char_valid = _try_log_warning_always_return_false( log_warning, TEXT("Start of invalid 2-byte UTF-8 sequence representing code range from 0 to 127.") );
@@ -516,17 +522,13 @@ namespace strings {
                     is_valid = _try_log_warning_always_return_false( log_warning, TEXT("Unexpected UTF-8 continuation byte: ") + to_0xhex(u8c) );
                     u32s[ i++ ] = _replacement_unicode;
                 }
-                else if ( u8c > 0x7f ) // invalid code unit (probably 0xfe or 0xff, because we should have already covered all others)
+                else // invalid code unit (probably 0xfe or 0xff, because we should have already covered all others)
                 {
                     is_valid = _try_log_warning_always_return_false( log_warning, TEXT("Invalid UTF-8 code unit: ") + to_0xhex(u8c) );
                     u32s[ i++ ] = _replacement_unicode;
                 }
-                else // "regular" character (ASCII compatible)
-                {
-                    u32s[ i++ ] = static_cast<u32char_type>( u8c );
-                }
-            }
-        }
+            } // no sequence continuation (yet)
+        } // for ...
         if ( continuation )
         {
             is_valid = _try_log_warning_always_return_false( log_warning, TEXT("Incomplete UTF-8 sequence: ") + to_string(continuation) + TEXT(" byte(s) missing") );
@@ -549,49 +551,52 @@ namespace strings {
         size_t i = 0;
         for ( u16char_type u16c : u16s )
         {
-            if ( u16c >= 0xd800 && u16c <= 0xdbff ) // leading/high surrogate
+            if ( surrogate )
             {
-                if ( surrogate )
-                {
-                    is_valid = _try_log_warning_always_return_false( log_warning, TEXT("Unpaired leading/high UTF-16 surrogates: ") + to_0xhex(prev) + TEXT(" ") + to_0xhex(u16c) );
-                    u32s[ i++ ] = _replacement_unicode;
-                }
-                else
-                {
-                    // Everything's fine: remember the leading/high surrogate.
-                    // This is the only case where we don't pass a character (yet).
-                    prev = u16c;
-                }
-                // Don't just set the flag to true to avoid messing up the skipping.
-                // The structure is messed up anyway, so we can't rely on the current
-                // code unit being a valid leading/high surrogate either.
-                surrogate = !surrogate;
-            }
-            else if ( u16c >= 0xdc00 && u16c <= 0xdfff ) // trailing/low surrogate
-            {
-                if ( surrogate )
+                if ( u16c >= 0xdc00 && u16c <= 0xdfff ) // (expected) trailing/low surrogate
                 {
                     // Everything's fine: put the two surrogates back together.
                     u32s[ i++ ] = ((prev & 0x3ff) << 10) | (u16c & 0x3ff);
                 }
-                else
+                else if ( u16c >= 0xd800 && u16c <= 0xdbff ) // (another) leading/high surrogate
+                {
+                    is_valid = _try_log_warning_always_return_false( log_warning, TEXT("Unpaired leading/high UTF-16 surrogates: ") + to_0xhex(prev) + TEXT(" ") + to_0xhex(u16c) );
+                    u32s[ i++ ] = _replacement_unicode;
+                }
+                else // "regular" character (but invalid here)
+                {
+                    is_valid = _try_log_warning_always_return_false( log_warning, TEXT("Unpaired leading/high UTF-16 surrogate: ") + to_0xhex(prev) );
+                    // Consistently, we might also have to fall back to the replacement
+                    // character here, but then we would "waste" the valid character we
+                    // hold in our hands. So we just pass it in any case.
+                    u32s[ i++ ] = static_cast<u32char_type>( u16c );
+                }
+                // Also in the case of a leading/high surrogate set the flag to
+                // false as not to distort the skipping. In such case the structure
+                // is messed up anyway, so we can't rely on the current code unit
+                // being a valid leading/high surrogate either.
+                surrogate = false;
+            }
+            else // => no surrogate (yet)
+            {
+                if ( u16c <= 0xd7ff || u16c >= 0xe000 ) // "regular" character
+                {
+                    u32s[ i++ ] = static_cast<u32char_type>( u16c );
+                }
+                else if ( u16c >= 0xd800 && u16c <= 0xdbff ) // leading/high surrogate
+                {
+                    // Everything's fine: remember the leading/high surrogate.
+                    // This is the only case where we don't pass a character (yet).
+                    prev = u16c;
+                    surrogate = true;
+                }
+                else //if ( u16c >= 0xdc00 && u16c <= 0xdfff ) // (unexpected) trailing/low surrogate
                 {
                     is_valid = _try_log_warning_always_return_false( log_warning, TEXT("Unpaired trailing/low UTF-16 surrogate: ") + to_0xhex(u16c) );
                     u32s[ i++ ] = _replacement_unicode;
                 }
-                surrogate = false;
-            }
-            else // "regular" character
-            {
-                if ( surrogate )
-                    is_valid = _try_log_warning_always_return_false( log_warning, TEXT("Unpaired leading/high UTF-16 surrogate: ") + to_0xhex(prev) );
-                // Consistently, we might also have to fall back to the replacement
-                // character here, but then we would "waste" the valid character we
-                // hold in our hands. So we just pass it in any case.
-                u32s[ i++ ] = static_cast<u32char_type>( u16c );
-                surrogate = false;
-            }
-        }
+            } // no surrogate (yet)
+        } // for ...
         if ( surrogate )
         {
             is_valid = _try_log_warning_always_return_false( log_warning, TEXT("Unpaired leading/high UTF-16 surrogate: ") + to_0xhex(prev) );
@@ -657,7 +662,9 @@ namespace strings {
             // We don't need to check unpaired surrogates because they would be
             // represented as a single replacement character. In terms of code
             // points, this case would be identical to the regular case of a single
-            // valid character between 0x0000 and 0xd7ff or 0xe000 and 0xffff.
+            // valid character between 0x0000 and 0xd7ff or 0xe000 and 0xffff
+            // (specifically between 0xe000 and 0xffff because the replacement
+            // character is 0xfffd, whatever).
         }
 
         return len;

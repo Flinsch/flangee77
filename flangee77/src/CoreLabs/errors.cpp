@@ -1,5 +1,7 @@
 #include "errors.h"
 
+#include <CoreLabs/sstream.h>
+
 #include <windows.h>
 
 
@@ -9,9 +11,11 @@ namespace errors {
 
 
 
-    cl7::string with_context(const cl7::string& message, const cl7::string& context)
+    cl7::string with_context(const cl7::string_view& message, const cl7::string_view& context)
     {
-        return message + TEXT(" - ") + context;
+        cl7::osstream oss;
+        oss << message << TEXT(" - ") << cl7::string( context );
+        return oss.str();
     }
 
     cl7::string system_result(unsigned long error_code)
@@ -30,10 +34,12 @@ namespace errors {
             buffer_size,
             NULL );
 
-        return cl7::to_string( error_code ) + TEXT(" - ") + buffer;
+        cl7::osstream oss;
+        oss << error_code << TEXT(" - ") << buffer;
+        return oss.str();
     }
 
-    cl7::string system_result(unsigned long error_code, const cl7::string& context)
+    cl7::string system_result(unsigned long error_code, const cl7::string_view& context)
     {
         return with_context( system_result( error_code ), context );
     }

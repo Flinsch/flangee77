@@ -74,7 +74,8 @@
  * software. If you look at the different ways strings are used within a project,
  * you will see that in most cases different types don't even touch each other. But
  * where there are points of contact, use should of course be as uniform as possible
- * and conversions should be minimized.
+ * and conversions should be minimized. "Most" important thing is that you always
+ * know which encoding a given string (or file, etc.) has.
  */
 
 

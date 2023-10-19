@@ -89,7 +89,7 @@ namespace pl7 {
     /**
      * Checks whether the specified option was passed to the application.
      */
-    bool ArgumentBag::has_option(const cl7::string& option_name) const
+    bool ArgumentBag::has_option(const cl7::string_view& option_name) const
     {
         auto it = _option_values.find( option_name );
         return it != _option_values.end();
@@ -99,7 +99,7 @@ namespace pl7 {
      * Returns the option value found for the specified option, or an empty string
      * if not found.
      */
-    const cl7::string& ArgumentBag::get_value(const cl7::string& option_name) const
+    const cl7::string& ArgumentBag::get_value(const cl7::string_view& option_name) const
     {
         auto it = _option_values.find( option_name );
         if ( it == _option_values.end() )
@@ -116,7 +116,7 @@ namespace pl7 {
      * Returns a list of option values found for the specified option, or an empty
      * list if not found.
      */
-    const std::vector<cl7::string>& ArgumentBag::get_values(const cl7::string& option_name) const
+    const std::vector<cl7::string>& ArgumentBag::get_values(const cl7::string_view& option_name) const
     {
         auto it = _option_values.find( option_name );
         if ( it == _option_values.end() )

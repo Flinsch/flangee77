@@ -13,23 +13,23 @@ namespace cl7 {
 
 
 #ifdef UNICODE
-typedef std::wstringstream sstream;
-typedef std::wistringstream isstream;
-typedef std::wostringstream osstream;
+    typedef std::wstringstream sstream;
+    typedef std::wistringstream isstream;
+    typedef std::wostringstream osstream;
 #else // => !UNICODE
-typedef std::stringstream sstream;
-typedef std::istringstream isstream;
-typedef std::ostringstream osstream;
+    typedef std::stringstream sstream;
+    typedef std::istringstream isstream;
+    typedef std::ostringstream osstream;
 #endif // #else => !UNICODE
 
-typedef std::stringstream csstream;
-typedef std::wstringstream wsstream;
+    typedef std::stringstream asstream;
+    typedef std::wstringstream wsstream;
 
-typedef std::istringstream cisstream;
-typedef std::wistringstream wisstream;
+    typedef std::istringstream aisstream;
+    typedef std::wistringstream wisstream;
 
-typedef std::ostringstream cosstream;
-typedef std::wostringstream wosstream;
+    typedef std::ostringstream aosstream;
+    typedef std::wostringstream wosstream;
 
 
 
