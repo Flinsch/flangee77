@@ -15,6 +15,16 @@ namespace cl7 {
 class bytearray
 {
 
+public:
+    typedef std::vector<std::byte> container_type;
+
+    typedef container_type::iterator iterator;
+    typedef container_type::const_iterator const_iterator;
+    typedef container_type::reverse_iterator reverse_iterator;
+    typedef container_type::const_reverse_iterator const_reverse_iterator;
+
+
+
     // #############################################################################
     // Construction
     // #############################################################################
@@ -51,7 +61,7 @@ private:
     /**
      * The actual data stored in this byte array.
      */
-    std::vector<std::byte> _data;
+    container_type _data;
 
 
 
@@ -126,21 +136,43 @@ public:
     constexpr void reserve(size_t size) { _data.reserve( size ); }
 
     /**
-     * Reverses the order of the bytes in this byte array.
+     * Releases any memory not required to store this byte array's data.
      */
-    constexpr void reverse() noexcept;
+    constexpr void shrink_to_fit() { _data.shrink_to_fit(); }
 
     /**
-     * Returns the byte at the specified index position as a modifiable reference.
-     * The index position must be valid (i.e., 0 <= i < size()).
+     * Returns the first byte of this byte array. The byte array must not be empty.
      */
-    constexpr std::byte& at(size_t i) { return _data.at( i ); }
+    constexpr std::byte front() const { return _data.front(); }
+
+    /**
+     * Returns the first byte of this byte array as a modifiable reference. The byte
+     * array must not be empty.
+     */
+    constexpr std::byte& front() { return _data.front(); }
+
+    /**
+     * Returns the last byte of this byte array. The byte array must not be empty.
+     */
+    constexpr std::byte back() const { return _data.back(); }
+
+    /**
+     * Returns the last byte of this byte array as a modifiable reference. The byte
+     * array must not be empty.
+     */
+    constexpr std::byte& back() { return _data.back(); }
 
     /**
      * Returns the byte at the specified index position. The index position must be
      * valid (i.e., 0 <= i < size()).
      */
     constexpr std::byte at(size_t i) const { return _data.at( i ); }
+
+    /**
+     * Returns the byte at the specified index position as a modifiable reference.
+     * The index position must be valid (i.e., 0 <= i < size()).
+     */
+    constexpr std::byte& at(size_t i) { return _data.at( i ); }
 
     /**
      * Returns a byte array containing the specified number of bytes from this byte
@@ -239,20 +271,17 @@ public:
     /**
      * Removes the specified byte from this byte array.
      */
-    template <typename Titerator>
-    constexpr auto remove(Titerator pos) noexcept
-    {
-        return _data.erase( pos );
-    }
+    constexpr iterator remove(const_iterator pos) noexcept;
 
     /**
      * Removes the specified range of bytes from this byte array.
      */
-    template <typename Titerator>
-    constexpr auto remove(Titerator begin, Titerator end) noexcept
-    {
-        return _data.erase( begin, end );
-    }
+    constexpr iterator remove(const_iterator begin, const_iterator end) noexcept;
+
+    /**
+     * Reverses the order of the bytes in this byte array.
+     */
+    constexpr void reverse() noexcept;
 
 
 

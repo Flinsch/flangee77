@@ -46,14 +46,6 @@ namespace cl7 {
     // #############################################################################
 
     /**
-     * Reverses the order of the bytes in this byte array.
-     */
-    constexpr void bytearray::reverse() noexcept
-    {
-        std::reverse( _data.begin(), _data.end() );
-    }
-
-    /**
      * Returns a byte array containing the specified number of bytes from this byte
      * array, starting at the specified index position. If the specified range
      * exceeds the size of this byte array, the resulting byte array will be cropped
@@ -267,6 +259,30 @@ namespace cl7 {
         }
 
         return *this;
+    }
+
+    /**
+     * Removes the specified byte from this byte array.
+     */
+    constexpr bytearray::iterator bytearray::remove(const_iterator pos) noexcept
+    {
+        return _data.erase( pos );
+    }
+
+    /**
+     * Removes the specified range of bytes from this byte array.
+     */
+    constexpr bytearray::iterator bytearray::remove(const_iterator begin, const_iterator end) noexcept
+    {
+        return _data.erase( begin, end );
+    }
+
+    /**
+     * Reverses the order of the bytes in this byte array.
+     */
+    constexpr void bytearray::reverse() noexcept
+    {
+        std::reverse( _data.begin(), _data.end() );
     }
 
 
