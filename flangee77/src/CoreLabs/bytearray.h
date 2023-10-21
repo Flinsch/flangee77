@@ -186,7 +186,7 @@ public:
      * Sets every byte in this byte array to the specified value. The byte array is
      * resized beforehand (if the specified size differs).
      */
-    constexpr bytearray& fill(std::byte value, size_t size);
+    constexpr void fill(std::byte value, size_t size);
 
     /**
      * Sets the bytes from the specified begin position up to (but not including)
@@ -194,87 +194,89 @@ public:
      * byte array, the byte array is resized beforehand. The specified range must be
      * valid (i.e., begin <= end).
      */
-    constexpr bytearray& fill(std::byte value, size_t begin, size_t end);
+    constexpr void fill(std::byte value, size_t begin, size_t end);
 
     /**
      * Sets the bytes of this byte array to the values of the specified data buffer.
      * The byte array is resized beforehand (if the specified size differs).
      */
-    constexpr bytearray& fill(const std::byte* data, size_t size);
+    constexpr void fill(const std::byte* data, size_t size);
 
     /**
      * Appends the specified byte array to this byte array.
      */
-    constexpr bytearray& append(const bytearray& ba);
+    constexpr void append(const bytearray& ba);
 
     /**
      * Appends the specified number of bytes to this byte array.
      */
-    constexpr bytearray& append(std::byte value, size_t count);
+    constexpr void append(std::byte value, size_t count);
 
     /**
      * Appends the specified number of bytes to this byte array.
      */
-    constexpr bytearray& append(const std::byte* data, size_t size);
+    constexpr void append(const std::byte* data, size_t size);
 
     /**
      * Appends the specified byte to this byte array.
      */
-    constexpr bytearray& append(std::byte value);
+    constexpr void append(std::byte value);
 
     /**
      * Prepends the specified byte array to this byte array.
      */
-    constexpr bytearray& prepend(const bytearray& ba);
+    constexpr void prepend(const bytearray& ba);
 
     /**
      * Prepends the specified number of bytes to this byte array.
      */
-    constexpr bytearray& prepend(std::byte value, size_t count);
+    constexpr void prepend(std::byte value, size_t count);
 
     /**
      * Prepends the specified number of bytes to this byte array.
      */
-    constexpr bytearray& prepend(const std::byte* data, size_t size);
+    constexpr void prepend(const std::byte* data, size_t size);
 
     /**
      * Prepends the specified byte to this byte array.
      */
-    constexpr bytearray& prepend(std::byte value);
+    constexpr void prepend(std::byte value);
 
     /**
      * Inserts another byte array at the specified index position.
      */
-    constexpr bytearray& insert(size_t i, const bytearray& ba);
+    constexpr void insert(size_t i, const bytearray& ba);
 
     /**
      * Inserts a number of bytes at the specified index position.
      */
-    constexpr bytearray& insert(size_t i, std::byte value, size_t count);
+    constexpr void insert(size_t i, std::byte value, size_t count);
 
     /**
      * Inserts a number of bytes at the specified index position.
      */
-    constexpr bytearray& insert(size_t i, const std::byte* data, size_t size);
+    constexpr void insert(size_t i, const std::byte* data, size_t size);
 
     /**
      * Inserts one byte at the specified index position.
      */
-    constexpr bytearray& insert(size_t i, std::byte value);
+    constexpr void insert(size_t i, std::byte value);
 
     /**
      * Removes the specified number of bytes from this byte array, starting at the
      * specified index position.
      */
-    constexpr bytearray& remove(size_t i, size_t count = 1) noexcept;
+    constexpr void remove(size_t i, size_t count = 1) noexcept;
 
     /**
-     * Removes the specified byte from this byte array.
+     * Removes the specified byte from this byte array and returns an iterator
+     * following the removed byte.
      */
     constexpr iterator remove(const_iterator pos) noexcept;
 
     /**
-     * Removes the specified range of bytes from this byte array.
+     * Removes the specified range of bytes from this byte array and returns an
+     * iterator following the last removed byte.
      */
     constexpr iterator remove(const_iterator begin, const_iterator end) noexcept;
 
