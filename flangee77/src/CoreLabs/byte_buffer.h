@@ -1,6 +1,6 @@
 #pragma once
-#ifndef CL7_BYTEARRAY_H
-#define CL7_BYTEARRAY_H
+#ifndef CL7_BYTEBUFFER_H
+#define CL7_BYTEBUFFER_H
 
 #include <CoreLabs/root.h>
 
@@ -12,7 +12,7 @@ namespace cl7 {
 
 
 
-class bytearray
+class byte_buffer
 {
 
 public:
@@ -32,25 +32,25 @@ public:
     /**
      * Default constructor.
      */
-    bytearray() noexcept = default;
+    byte_buffer() noexcept = default;
 
     /**
      * Explicit constructor.
-     * Constructs a byte array containing the specified number of bytes.
+     * Constructs a byte buffer containing the specified number of bytes.
      */
-    bytearray(const std::byte* data, size_t size);
+    byte_buffer(const std::byte* data, size_t size);
 
     /**
      * Explicit constructor.
-     * Constructs a byte array of specified size with every byte set to the
+     * Constructs a byte buffer of specified size with every byte set to the
      * specified value.
      */
-    bytearray(size_t size, std::byte value);
+    byte_buffer(size_t size, std::byte value);
 
     /**
      * Swap operation.
      */
-    void swap(bytearray& rhs) noexcept;
+    void swap(byte_buffer& rhs) noexcept;
 
 
 
@@ -59,7 +59,7 @@ public:
     // #############################################################################
 private:
     /**
-     * The actual data stored in this byte array.
+     * The actual data stored in this byte buffer.
      */
     container_type _data;
 
@@ -70,27 +70,27 @@ private:
     // #############################################################################
 public:
     /**
-     * Returns a pointer to the data stored in this byte array.
+     * Returns a pointer to the data stored in this byte buffer.
      */
     constexpr std::byte* data() noexcept { return _data.data(); }
 
     /**
-     * Returns a pointer to the data stored in this byte array.
+     * Returns a pointer to the data stored in this byte buffer.
      */
     constexpr const std::byte* data() const noexcept { return _data.data(); }
 
     /**
-     * Returns true if this byte array has size 0; otherwise returns false.
+     * Returns true if this byte buffer has size 0; otherwise returns false.
      */
     constexpr bool empty() const noexcept { return _data.empty(); }
 
     /**
-     * Returns the number of bytes in this byte array.
+     * Returns the number of bytes in this byte buffer.
      */
     constexpr size_t size() const noexcept { return _data.size(); }
 
     /**
-     * Returns the maximum number of bytes that this byte array can theoretically
+     * Returns the maximum number of bytes that this byte buffer can theoretically
      * hold due to known system or library implementation limitations. The container
      * is by no means guaranteed to be able to reach that size: it can still fail to
      * allocate storage at any point before that size is reached.
@@ -98,7 +98,7 @@ public:
     constexpr size_t max_size() const noexcept { return _data.max_size(); }
 
     /**
-     * Returns the maximum number of bytes that can be stored in the byte array
+     * Returns the maximum number of bytes that can be stored in the byte buffer
      * without forcing a reallocation.
      */
     constexpr size_t capacity() const noexcept { return _data.capacity(); }
@@ -110,21 +110,21 @@ public:
     // #############################################################################
 public:
     /**
-     * Clears the contents of this byte array.
+     * Clears the contents of this byte buffer.
      */
     constexpr void clear() noexcept { _data.clear(); }
 
     /**
-     * Sets the size of this byte array to the specified value. If the new size is
-     * greater than the current size, the byte array is extended with new extra
+     * Sets the size of this byte buffer to the specified value. If the new size is
+     * greater than the current size, the byte buffer is extended with new extra
      * uninitialized bytes added to the end. If the new size is less than the
      * current size, bytes are removed from the end.
      */
     constexpr void resize(size_t size) { _data.resize( size ); }
 
     /**
-     * Sets the size of this byte array to the specified value. If the new size is
-     * greater than the current size, the byte array is extended with new extra
+     * Sets the size of this byte buffer to the specified value. If the new size is
+     * greater than the current size, the byte buffer is extended with new extra
      * bytes added to the end, initialized to the specified value. If the new size
      * is less than the current size, bytes are removed from the end.
      */
@@ -136,29 +136,29 @@ public:
     constexpr void reserve(size_t size) { _data.reserve( size ); }
 
     /**
-     * Releases any memory not required to store this byte array's data.
+     * Releases any memory not required to store this byte buffer's data.
      */
     constexpr void shrink_to_fit() { _data.shrink_to_fit(); }
 
     /**
-     * Returns the first byte of this byte array. The byte array must not be empty.
+     * Returns the first byte of this byte buffer. The byte buffer must not be empty.
      */
     constexpr std::byte front() const { return _data.front(); }
 
     /**
-     * Returns the first byte of this byte array as a modifiable reference. The byte
-     * array must not be empty.
+     * Returns the first byte of this byte buffer as a modifiable reference. The
+     * byte buffer must not be empty.
      */
     constexpr std::byte& front() { return _data.front(); }
 
     /**
-     * Returns the last byte of this byte array. The byte array must not be empty.
+     * Returns the last byte of this byte buffer. The byte buffer must not be empty.
      */
     constexpr std::byte back() const { return _data.back(); }
 
     /**
-     * Returns the last byte of this byte array as a modifiable reference. The byte
-     * array must not be empty.
+     * Returns the last byte of this byte buffer as a modifiable reference. The byte
+     * buffer must not be empty.
      */
     constexpr std::byte& back() { return _data.back(); }
 
@@ -175,77 +175,77 @@ public:
     constexpr std::byte& at(size_t i) { return _data.at( i ); }
 
     /**
-     * Returns a byte array containing the specified number of bytes from this byte
-     * array, starting at the specified index position. If the specified range
-     * exceeds the size of this byte array, the resulting byte array will be cropped
-     * accordingly.
+     * Returns a byte buffer containing the specified number of bytes from this byte
+     * buffer, starting at the specified index position. If the specified range
+     * exceeds the size of this byte buffer, the resulting byte buffer will be
+     * cropped accordingly.
      */
-    bytearray mid(size_t i, size_t size) const;
+    byte_buffer mid(size_t i, size_t size) const;
 
     /**
-     * Sets every byte in this byte array to the specified value. The byte array is
-     * resized beforehand (if the specified size differs).
+     * Sets every byte in this byte buffer to the specified value. The byte buffer
+     * is resized beforehand (if the specified size differs).
      */
     constexpr void fill(std::byte value, size_t size);
 
     /**
      * Sets the bytes from the specified begin position up to (but not including)
      * the specified end position. If the specified range exceeds the end of this
-     * byte array, the byte array is resized beforehand. The specified range must be
-     * valid (i.e., begin <= end).
+     * byte buffer, the byte buffer is resized beforehand. The specified range must
+     * be valid (i.e., begin <= end).
      */
     constexpr void fill(std::byte value, size_t begin, size_t end);
 
     /**
-     * Sets the bytes of this byte array to the values of the specified data buffer.
-     * The byte array is resized beforehand (if the specified size differs).
+     * Sets the bytes of this byte buffer to the values of the specified data buffer.
+     * The byte buffer is resized beforehand (if the specified size differs).
      */
     constexpr void fill(const std::byte* data, size_t size);
 
     /**
-     * Appends the specified byte array to this byte array.
+     * Appends the specified byte buffer to this byte buffer.
      */
-    constexpr void append(const bytearray& ba);
+    constexpr void append(const byte_buffer& byb);
 
     /**
-     * Appends the specified number of bytes to this byte array.
+     * Appends the specified number of bytes to this byte buffer.
      */
     constexpr void append(std::byte value, size_t count);
 
     /**
-     * Appends the specified number of bytes to this byte array.
+     * Appends the specified number of bytes to this byte buffer.
      */
     constexpr void append(const std::byte* data, size_t size);
 
     /**
-     * Appends the specified byte to this byte array.
+     * Appends the specified byte to this byte buffer.
      */
     constexpr void append(std::byte value);
 
     /**
-     * Prepends the specified byte array to this byte array.
+     * Prepends the specified byte buffer to this byte buffer.
      */
-    constexpr void prepend(const bytearray& ba);
+    constexpr void prepend(const byte_buffer& byb);
 
     /**
-     * Prepends the specified number of bytes to this byte array.
+     * Prepends the specified number of bytes to this byte buffer.
      */
     constexpr void prepend(std::byte value, size_t count);
 
     /**
-     * Prepends the specified number of bytes to this byte array.
+     * Prepends the specified number of bytes to this byte buffer.
      */
     constexpr void prepend(const std::byte* data, size_t size);
 
     /**
-     * Prepends the specified byte to this byte array.
+     * Prepends the specified byte to this byte buffer.
      */
     constexpr void prepend(std::byte value);
 
     /**
-     * Inserts another byte array at the specified index position.
+     * Inserts another byte buffer at the specified index position.
      */
-    constexpr void insert(size_t i, const bytearray& ba);
+    constexpr void insert(size_t i, const byte_buffer& byb);
 
     /**
      * Inserts a number of bytes at the specified index position.
@@ -263,25 +263,25 @@ public:
     constexpr void insert(size_t i, std::byte value);
 
     /**
-     * Removes the specified number of bytes from this byte array, starting at the
+     * Removes the specified number of bytes from this byte buffer, starting at the
      * specified index position.
      */
     constexpr void remove(size_t i, size_t count = 1) noexcept;
 
     /**
-     * Removes the specified byte from this byte array and returns an iterator
+     * Removes the specified byte from this byte buffer and returns an iterator
      * following the removed byte.
      */
     constexpr iterator remove(const_iterator pos) noexcept;
 
     /**
-     * Removes the specified range of bytes from this byte array and returns an
+     * Removes the specified range of bytes from this byte buffer and returns an
      * iterator following the last removed byte.
      */
     constexpr iterator remove(const_iterator begin, const_iterator end) noexcept;
 
     /**
-     * Reverses the order of the bytes in this byte array.
+     * Reverses the order of the bytes in this byte buffer.
      */
     constexpr void reverse() noexcept;
 
@@ -299,7 +299,7 @@ public:
 
     /**
      * Returns the byte at the specified index position as a modifiable reference.
-     * If an assignment is made beyond the end of the byte array, the array is
+     * If an assignment is made beyond the end of the byte buffer, the buffer is
      * extended beforehand.
      */
     constexpr std::byte& operator [] (size_t i);
@@ -311,10 +311,10 @@ public:
     // #############################################################################
 public:
     /**
-     * Compares the contents of this byte array and the specified byte array
+     * Compares the contents of this byte buffer and the specified byte buffer
      * lexicographically.
      */
-    constexpr auto operator <=> (const bytearray& rhs) const { return _data <=> rhs._data; }
+    constexpr auto operator <=> (const byte_buffer& rhs) const { return _data <=> rhs._data; }
 
 
 
@@ -337,10 +337,10 @@ public:
     constexpr auto crbegin() const noexcept { return rbegin(); }
     constexpr auto crend() const noexcept { return rend(); }
 
-}; // class bytearray
+}; // class byte_buffer
 
 
 
 } // namespace cl7
 
-#endif // CL7_BYTEARRAY_H
+#endif // CL7_BYTEBUFFER_H

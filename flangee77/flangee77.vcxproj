@@ -167,7 +167,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\CoreLabs\bytearray.h" />
+    <ClInclude Include="src\CoreLabs\byte_buffer.h" />
     <ClInclude Include="src\XiaoLabs\graphics.h" />
     <ClInclude Include="src\XiaoLabs\ResourceManager.h" />
     <ClInclude Include="src\XiaoLabs\graphics\RenderingDevice.h" />
@@ -199,7 +199,7 @@
     <ClInclude Include="src\CoreLabs\logging\StandardLogger.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\CoreLabs\bytearray.cpp" />
+    <ClCompile Include="src\CoreLabs\byte_buffer.cpp" />
     <ClCompile Include="src\XiaoLabs\ResourceManager.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\RenderingDevice.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\GraphicsSystemImpl.cpp" />
