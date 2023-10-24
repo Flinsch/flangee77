@@ -432,6 +432,244 @@ namespace strings {
 #endif
     }
 
+    astring to_ascii(const byte_span& bys)
+    {
+        return to_ascii( to_latin1( bys ) );
+    }
+
+    astring to_latin1(const byte_span& bys)
+    {
+        return astring( reinterpret_cast<const achar_type*>(bys.data()), bys.size() );
+    }
+
+    u8string to_utf8_unchecked(const byte_span& bys)
+    {
+        const auto* data = reinterpret_cast<const u8char_type*>(bys.data());
+        size_t size = bys.size();
+
+        if ( size >= 3 )
+        {
+            bool has_bom = data[0] == 0xef && data[1] == 0xbb && data[2] == 0xbf;
+            if ( has_bom )
+            {
+                data += 3;
+                size -= 3;
+            }
+        }
+
+        return u8string( data, size );
+    }
+
+    u16string to_utf16_unchecked(const byte_span& bys)
+    {
+        const auto* data = reinterpret_cast<const u16char_type*>(bys.data());
+        size_t size = bys.size() / 2;
+
+        bool byteswap = false;
+        if ( size >= 1 )
+        {
+            bool has_bom = false;
+            if ( data[0] == 0xfeff )
+            {
+                has_bom = true;
+                byteswap = false;
+            }
+            else if ( data[0] == 0xfffe )
+            {
+                has_bom = true;
+                byteswap = true;
+            }
+            if ( has_bom )
+            {
+                data += 1;
+                size -= 1;
+            }
+        }
+
+        if ( !byteswap )
+            return u16string( data, size );
+
+        u16string u16s( size, u16char_type(0) );
+
+        for ( size_t i = 0; i < size; ++i )
+        {
+            //u16s[ i ] = std::byteswap( data[ i ] );
+            u16s[ i ] = ((data[i] & 0x00ff) << 8) | ((data[i] & 0xff00) >> 8);
+        } // for ...
+
+        return u16s;
+    }
+
+    u32string to_utf32_unchecked(const byte_span& bys)
+    {
+        const auto* data = reinterpret_cast<const u32char_type*>(bys.data());
+        size_t size = bys.size() / 4;
+
+        bool byteswap = false;
+        if ( size >= 1 )
+        {
+            bool has_bom = false;
+            if ( data[0] == 0x0000'feff )
+            {
+                has_bom = true;
+                byteswap = false;
+            }
+            else if ( data[0] == 0xfffe'0000 )
+            {
+                has_bom = true;
+                byteswap = true;
+            }
+            if ( has_bom )
+            {
+                data += 1;
+                size -= 1;
+            }
+        }
+
+        if ( !byteswap )
+            return u32string( data, size );
+
+        u32string u32s( size, u32char_type(0) );
+
+        for ( size_t i = 0; i < size; ++i )
+        {
+            //u32s[ i ] = std::byteswap( data[ i ] );
+            u32s[ i ] = ((data[i] & 0x0000'00ff) << 24) | ((data[i] & 0x0000'ff00) >> 8) | ((data[i] & 0x00ff'0000) >> 8) | ((data[i] & 0xff00'0000) >> 24);
+        } // for ...
+
+        return u32s;
+    }
+
+    wstring to_utfx_unchecked(const byte_span& bys)
+    {
+#if WCHAR_MAX == UINT16_MAX
+        auto uxs = to_utf16_unchecked( bys );
+#elif WCHAR_MAX == UINT32_MAX
+        auto uxs = to_utf32_unchecked( bys );
+#else
+        static_assert( false );
+#endif
+        return wstring( wstring_view( reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size() ) );
+    }
+
+    string from_bytes(const byte_span& bys)
+    {
+#ifdef UNICODE
+        return to_utfx_unchecked( bys );
+#else
+        return to_latin1( bys );
+#endif
+    }
+
+    byte_vector to_bytes(const astring_view& as)
+    {
+        const auto* const data = reinterpret_cast<const std::byte*>(as.data());
+        const size_t size = as.size();
+
+        return byte_vector( data, data + size );
+    }
+
+    byte_vector to_bytes(const u8string_view& u8s, bool add_bom)
+    {
+        const auto* const data = reinterpret_cast<const std::byte*>(u8s.data());
+        const size_t size = u8s.size();
+
+        if ( !add_bom )
+            return byte_vector( data, data + size );
+
+        byte_vector bys( size + 3 );
+        bys[ 0 ] = std::byte(0xef);
+        bys[ 1 ] = std::byte(0xbb);
+        bys[ 2 ] = std::byte(0xbf);
+        for ( size_t i = 0; i < size; ++i )
+        {
+            bys[ i+3 ] = data[ i ];
+        } // for ...
+
+        return bys;
+    }
+
+    byte_vector to_bytes(const u16string_view& u16s, bool add_bom, std::endian endian)
+    {
+        const auto* const data = reinterpret_cast<const std::byte*>(u16s.data());
+        const size_t size = u16s.size() * 2;
+
+        if ( !add_bom )
+            return byte_vector( data, data + size );
+
+        const bool byteswap = endian != std::endian::native;
+
+        byte_vector bys( size + 2 );
+        if ( byteswap )
+        {
+            *reinterpret_cast<u16char_type*>( &bys[ 0 ] ) = 0xfffe;
+            for ( size_t i = 0; i < size; i += 2 )
+            {
+                bys[ i+2+0 ] = data[ i+1 ];
+                bys[ i+2+1 ] = data[ i+0 ];
+            } // for ...
+        }
+        else
+        {
+            *reinterpret_cast<u16char_type*>( &bys[ 0 ] ) = 0xfeff;
+            for ( size_t i = 0; i < size; i += 2 )
+            {
+                bys[ i+2+0 ] = data[ i+0 ];
+                bys[ i+2+1 ] = data[ i+1 ];
+            } // for ...
+        }
+
+        return bys;
+    }
+
+    byte_vector to_bytes(const u32string_view& u32s, bool add_bom, std::endian endian)
+    {
+        const auto* const data = reinterpret_cast<const std::byte*>(u32s.data());
+        const size_t size = u32s.size() * 4;
+
+        if ( !add_bom )
+            return byte_vector( data, data + size );
+
+        const bool byteswap = endian != std::endian::native;
+
+        byte_vector bys( size + 4 );
+        if ( byteswap )
+        {
+            *reinterpret_cast<u32char_type*>( &bys[ 0 ] ) = 0xfffe'0000;
+            for ( size_t i = 0; i < size; i += 4 )
+            {
+                bys[ i+4+0 ] = data[ i+3 ];
+                bys[ i+4+1 ] = data[ i+2 ];
+                bys[ i+4+2 ] = data[ i+1 ];
+                bys[ i+4+3 ] = data[ i+0 ];
+            } // for ...
+        }
+        else
+        {
+            *reinterpret_cast<u32char_type*>( &bys[ 0 ] ) = 0x0000'feff;
+            for ( size_t i = 0; i < size; i += 4 )
+            {
+                bys[ i+4+0 ] = data[ i+0 ];
+                bys[ i+4+1 ] = data[ i+1 ];
+                bys[ i+4+2 ] = data[ i+2 ];
+                bys[ i+4+3 ] = data[ i+3 ];
+            } // for ...
+        }
+
+        return bys;
+    }
+
+    byte_vector to_bytes(const wstring_view& ws, bool add_bom, std::endian endian)
+    {
+#if WCHAR_MAX == UINT16_MAX
+        return to_bytes( u16string_view( reinterpret_cast<const u16char_type*>(ws.data()), ws.size() ) );
+#elif WCHAR_MAX == UINT32_MAX
+        return to_bytes( u32string_view( reinterpret_cast<const u32char_type*>(ws.data()), ws.size() ) );
+#else
+        static_assert( false );
+#endif
+    }
+
     bool check_ascii(const astring_view& as, bool log_warning)
     {
         for ( achar_type ac : as )
