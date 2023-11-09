@@ -76,6 +76,19 @@ namespace strings {
         return u32c;
     }
 
+    template <class uxstring, typename uxchar_type>
+    uxstring _to_utfx(const astring_view& as)
+    {
+        uxstring uxs( as.size(), uxchar_type(0) );
+
+        for ( size_t i = 0; i < as.size(); ++i )
+        {
+            uxs[ i ] = as[ i ]; // No check required because everything from 0 to 255 is valid anyway.
+        }
+
+        return uxs;
+    }
+
 
 
     astring to_ascii(const astring_view& as)
@@ -148,7 +161,7 @@ namespace strings {
 
     u8string to_utf8(const astring_view& as)
     {
-        return to_utf8( from_latin1( as ) );
+        return _to_utfx<u8string, u8char_type>( as );
     }
 
     u8string to_utf8(const u8string_view& u8s)
@@ -226,7 +239,7 @@ namespace strings {
 
     u16string to_utf16(const astring_view& as)
     {
-        return to_utf16( from_latin1( as ) );
+        return _to_utfx<u16string, u16char_type>( as );
     }
 
     u16string to_utf16(const u8string_view& u8s)
@@ -287,14 +300,7 @@ namespace strings {
 
     u32string to_utf32(const astring_view& as)
     {
-        u32string u32s( as.size(), u32char_type(0) );
-
-        for ( size_t i = 0; i < as.size(); ++i )
-        {
-            u32s[ i ] = as[ i ]; // No check required because everything from 0 to 255 is valid anyway.
-        }
-
-        return u32s;
+        return _to_utfx<u32string, u32char_type>( as );
     }
 
     u32string to_utf32(const u8string_view& u8s)

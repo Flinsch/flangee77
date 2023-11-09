@@ -199,17 +199,17 @@ namespace strings {
 
 
 
-    template <class Tstring>
-    Tstring lpadded(Tstring s)
+    template <class Tstring, typename Tchar>
+    Tstring lpadded(Tstring s, size_t min_length, Tchar c)
     {
-        lpad( s );
+        lpad( s, min_length, c );
         return s;
     }
 
-    template <class Tstring>
-    Tstring rpadded(Tstring s)
+    template <class Tstring, typename Tchar>
+    Tstring rpadded(Tstring s, size_t min_length, Tchar c)
     {
-        rpad( s );
+        rpad( s, min_length, c );
         return s;
     }
 
