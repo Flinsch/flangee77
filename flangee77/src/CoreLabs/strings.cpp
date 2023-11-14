@@ -161,7 +161,7 @@ namespace strings {
 
     u8string to_utf8(const astring_view& as)
     {
-        return _to_utfx<u8string, u8char_type>( as );
+        return to_utf8( to_utf32( as ) ); // _to_utfx cannot be used here because characters above 0x7f must be encoded.
     }
 
     u8string to_utf8(const u8string_view& u8s)
@@ -171,7 +171,7 @@ namespace strings {
 
     u8string to_utf8(const u16string_view& u16s)
     {
-        return to_utf8( from_utf16( u16s ) );
+        return to_utf8( to_utf32( u16s ) );
     }
 
     u8string to_utf8(const u32string_view& u32s)
@@ -244,7 +244,7 @@ namespace strings {
 
     u16string to_utf16(const u8string_view& u8s)
     {
-        return to_utf16( from_utf8( u8s ) );
+        return to_utf16( to_utf32( u8s ) );
     }
 
     u16string to_utf16(const u16string_view& u16s)
