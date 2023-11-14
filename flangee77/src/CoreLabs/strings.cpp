@@ -680,8 +680,11 @@ namespace strings {
     {
         for ( achar_type ac : as )
         {
-            if ( ac > 0x7f )
-                return _try_log_warning_always_return_false( log_warning, TEXT("Invalid ASCII character: ") + to_0xhex(ac) + TEXT(" (") + to_string(uint8_t(ac)) + TEXT(")") );
+            // Explicitly cast to unsigned, otherwise the
+            // following check would always be false anyway.
+            const auto u8c = static_cast<uint8_t>( ac );
+            if ( u8c > 0x7f )
+                return _try_log_warning_always_return_false( log_warning, TEXT("Invalid ASCII character: ") + to_0xhex(u8c) + TEXT(" (") + to_string(u8c) + TEXT(")") );
         }
 
         return true;
