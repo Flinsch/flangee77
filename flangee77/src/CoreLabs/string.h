@@ -100,14 +100,6 @@ namespace cl7 {
     typedef std::string_view string_view;
 #endif // #else => !UNICODE
 
-#ifdef UNICODE
-    template <typename T>
-    string to_string(const T& val) { return std::to_wstring( val ); }
-#else // => !UNICODE
-    template <typename T>
-    string to_string(const T& val) { return std::to_string( val ); }
-#endif // #else => !UNICODE
-
 #ifdef  UNICODE                     
 #define __TEXT(quote) L##quote      
 #define __RTEXT(quote) LR##quote    
@@ -138,10 +130,25 @@ namespace cl7 {
     typedef std::u32string_view u32string_view;
     typedef std::wstring_view   wstring_view;
 
+
+
     template <typename T>
-    astring to_astring(const T& val) { return std::to_string( val ); }
+    astring to_astring(T val) { return std::to_string( val ); }
     template <typename T>
-    wstring to_wstring(const T& val) { return std::to_wstring( val ); }
+    wstring to_wstring(T val) { return std::to_wstring( val ); }
+
+    template <> inline
+    astring to_astring(bool val) { return cl7::astring(val ? "true" : "false"); }
+    template <> inline
+    wstring to_wstring(bool val) { return cl7::wstring(val ? L"true" : L"false"); }
+
+#ifdef UNICODE
+    template <typename T>
+    string to_string(T val) { return to_wstring( val ); }
+#else // => !UNICODE
+    template <typename T>
+    string to_string(T val) { return to_astring( val ); }
+#endif // #else => !UNICODE
 
 
 
