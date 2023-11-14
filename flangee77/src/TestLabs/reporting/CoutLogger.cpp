@@ -133,6 +133,9 @@ namespace reporting {
         if ( result.origin_type == Result::OriginType::TestCase )
             return;
 
+        if ( result.is_success() )
+            return;
+
         _buffer_result( result );
     }
 
@@ -242,6 +245,9 @@ namespace reporting {
 #else
         auto& cout = std::cout;
 #endif
+
+        assert( result.origin_type > Result::OriginType::TestCase );
+        assert( result.is_failure() );
 
         if ( _logged_meta != _current_meta )
         {

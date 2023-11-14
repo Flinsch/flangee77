@@ -216,6 +216,7 @@
     <ClInclude Include="src\TestLabs\SubcaseContext.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\TestLabs\internals.cpp" />
     <ClCompile Include="src\TestLabs\reporting\Reporter.cpp" />
     <ClCompile Include="src\TestLabs\Signature.cpp" />
     <ClCompile Include="src\TestLabs\reporting\CoutLogger.cpp" />
