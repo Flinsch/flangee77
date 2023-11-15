@@ -174,7 +174,10 @@ namespace reporting {
         assert( _current_index <= _total_count );
         assert( _carriage_position <= LINE_WIDTH );
         if ( _carriage_position >= LINE_WIDTH || _current_index >= _total_count )
-            std::cout << std::setw(3 + 1 + LINE_WIDTH - _carriage_position) << (_current_index * 100 / _total_count) << " %";
+        {
+            const auto total_count = std::to_string( _total_count );
+            std::cout << std::setw(total_count.size() + 1 + LINE_WIDTH - _carriage_position) << _current_index << " / " << total_count << " (" << std::setw(3) << (_current_index * 100 / _total_count) << " %)";
+        }
 
         std::cout << std::flush;
         _continue = false;
@@ -261,6 +264,12 @@ namespace reporting {
         {
             _log_generic_meta( result.meta );
             cout << '\n';
+        }
+
+        if ( result.data_string )
+        {
+            cout << "Subcase data:\n";
+            cout << "  " << ColorCode::Code << *result.data_string << ColorCode::Default << '\n';
         }
 
         switch ( result.origin_type )

@@ -20,7 +20,7 @@ public:
     /**
      * Explicit constructor.
      */
-    SubcaseBranchSwitch(Context& ctx, const cl7::string_view& name, const cl7::char_type* file_path, unsigned line_number, unsigned iteration_number = 0);
+    SubcaseBranchSwitch(Context& ctx, const cl7::string_view& name, const cl7::char_type* file_path, unsigned line_number, signed iteration_number = -1);
 
     /**
      * Destructor.

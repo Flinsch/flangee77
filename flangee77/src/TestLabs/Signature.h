@@ -21,12 +21,12 @@ struct Signature
     const cl7::char_type* file_path;
     /** The line number where the test incident occurred. */
     unsigned line_number;
-    /** The iteration number/index (or flat 0 if not applicable). */
-    unsigned iteration_number;
+    /** The iteration number/index (or -1 if not applicable). */
+    signed iteration_number;
 
 
 
-    Signature(const cl7::char_type* file_path, unsigned line_number, unsigned iteration_number)
+    Signature(const cl7::char_type* file_path, unsigned line_number, signed iteration_number = -1)
         : file_path( file_path )
         , line_number( line_number )
         , iteration_number( iteration_number )

@@ -134,23 +134,23 @@ namespace tl7 {
         }
         catch (const exceptions::assertion_exception& e)
         {
-            reporter.post_result( ResultBuilder().make_assertion_result( e.original_expression, e.evaluated_expression, e.meta.file_path, e.meta.line_number, Result::Outcome::Failure ) );
+            reporter.post_result( ResultBuilder().make_assertion_result( ctx, e.original_expression, e.evaluated_expression, e.meta.file_path, e.meta.line_number, Result::Outcome::Failure ) );
         }
         catch (const std::exception& e)
         {
-            reporter.post_result( ResultBuilder().make_exception_result( cl7::strings::from_latin1( e.what() ) ) );
+            reporter.post_result( ResultBuilder().make_exception_result( ctx, cl7::strings::from_latin1( e.what() ) ) );
         }
         catch (const std::string& message)
         {
-            reporter.post_result( ResultBuilder().make_exception_result( cl7::strings::from_latin1( message ) ) );
+            reporter.post_result( ResultBuilder().make_exception_result( ctx, cl7::strings::from_latin1( message ) ) );
         }
         catch (const char* message)
         {
-            reporter.post_result( ResultBuilder().make_exception_result( cl7::strings::from_latin1( message ) ) );
+            reporter.post_result( ResultBuilder().make_exception_result( ctx, cl7::strings::from_latin1( message ) ) );
         }
         catch (...)
         {
-            reporter.post_result( ResultBuilder().make_exception_result( TEXT("Unknown exception") ) );
+            reporter.post_result( ResultBuilder().make_exception_result( ctx, TEXT("Unknown exception") ) );
         }
 
         return false;

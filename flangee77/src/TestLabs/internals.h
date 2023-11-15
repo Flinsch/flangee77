@@ -25,18 +25,26 @@
 #define _TL7_DEFINE_AND_SWITCH_SUBCASE_ITERATION_BRANCH(subcase, name, iteration_number) \
     if ( const tl7::SubcaseBranchSwitch& subcase = tl7::SubcaseBranchSwitch( ctx, name + cl7::string(TEXT(" [")) + tl7::internals::to_string(iteration_number) + cl7::string(TEXT("]")), TEXT(__FILE__), __LINE__, iteration_number ) )
 
-#define _TL7_DEFINE_AND_SWITCH_SUBCASE_BATCH_ITERATION_BRANCH(subcase, name, iteration_number, iterable_data_container, data, tmp) \
-    unsigned iteration_number = 0; \
+#define _TL7_DEFINE_AND_SWITCH_SUBCASE_BATCH_ITERATION_BRANCH(subcase, name, iteration_number, iterable_data_container, data, tmp, stringifiable) \
+    signed iteration_number = 0; \
     for ( auto tmp = std::begin(iterable_data_container); tmp != std::end(iterable_data_container); ++tmp, ++iteration_number ) \
-        if ( const tl7::SubcaseBranchSwitch& subcase = tl7::SubcaseBranchSwitch( ctx, name + cl7::string(TEXT(" [")) + tl7::internals::to_string(iteration_number) + cl7::string(TEXT("]")), TEXT(__FILE__), __LINE__, (data = *tmp, iteration_number) ) )
+        if ( const tl7::SubcaseBranchSwitch& subcase = tl7::SubcaseBranchSwitch( ctx, name + cl7::string(TEXT(" [")) + tl7::internals::to_string(iteration_number) + cl7::string(TEXT("]")), TEXT(__FILE__), __LINE__, (data = *tmp, _TL7_TRY_SET_SUBCASE_DATA( stringifiable ), iteration_number) ) )
+
+
+
+#define _TL7_TRY_SET_SUBCASE_DATA(stringifiable) \
+    (std::is_null_pointer_v<decltype(stringifiable)> ? ctx.subcases.reset_data_string() : _TL7_SET_SUBCASE_DATA( stringifiable ))
+
+#define _TL7_SET_SUBCASE_DATA(stringifiable) \
+    ctx.subcases.set_data_string( std::make_shared<cl7::string>( tl7::internals::to_string( stringifiable ) ) )
 
 
 
 #define _TL7_TRY_POST_RESULT_1(expression, make_result, macro_base) \
-    ctx.try_post_result( tl7::ResultBuilder().make_result( TEXT(macro_base "( " #expression " )"), TEXT(macro_base "( ") + tl7::internals::to_string(!!(expression)) + TEXT(" )"), TEXT(__FILE__), __LINE__, tl7::Result::make_outcome( expression ) ) )
+    ctx.try_post_result( tl7::ResultBuilder().make_result( ctx, TEXT(macro_base "( " #expression " )"), TEXT(macro_base "( ") + tl7::internals::to_string(!!(expression)) + TEXT(" )"), TEXT(__FILE__), __LINE__, tl7::Result::make_outcome( expression ) ) )
 
 #define _TL7_TRY_POST_RESULT_2(expr1, expr2, make_result, macro_base, op) \
-    ctx.try_post_result( tl7::ResultBuilder().make_result( TEXT(macro_base "( " #expr1 " " #op " " #expr2 " )"), TEXT(macro_base "( ") + tl7::internals::to_string(expr1) + TEXT(" " #op " ") + tl7::internals::to_string(expr2) + TEXT(" )"), TEXT(__FILE__), __LINE__, tl7::Result::make_outcome( expr1 op expr2 ) ) )
+    ctx.try_post_result( tl7::ResultBuilder().make_result( ctx, TEXT(macro_base "( " #expr1 " " #op " " #expr2 " )"), TEXT(macro_base "( ") + tl7::internals::to_string(expr1) + TEXT(" " #op " ") + tl7::internals::to_string(expr2) + TEXT(" )"), TEXT(__FILE__), __LINE__, tl7::Result::make_outcome( expr1 op expr2 ) ) )
 
 
 
@@ -56,11 +64,16 @@ namespace internals {
     cl7::string to_string(T val) { return cl7::to_string( val ); }
 
     cl7::string to_string(const std::string& val);
-    cl7::string to_string(const std::string_view& val);
-#ifdef UNICODE
     cl7::string to_string(const std::wstring& val);
+    cl7::string to_string(const std::u8string& val);
+    cl7::string to_string(const std::u16string& val);
+    cl7::string to_string(const std::u32string& val);
+
+    cl7::string to_string(const std::string_view& val);
     cl7::string to_string(const std::wstring_view& val);
-#endif
+    cl7::string to_string(const std::u8string_view& val);
+    cl7::string to_string(const std::u16string_view& val);
+    cl7::string to_string(const std::u32string_view& val);
 
 
 

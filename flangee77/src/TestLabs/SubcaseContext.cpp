@@ -12,6 +12,8 @@ namespace tl7 {
 
     void SubcaseContext::start_run()
     {
+        _data_string.reset();
+
         _leaf_reached = false;
         _current_depth = 0;
         _current_stack.clear();
@@ -60,6 +62,8 @@ namespace tl7 {
         if ( _current_stack[ _current_depth - 1 ] != Signature( meta ) )
             return false;
 
+        _data_string.reset();
+
         if ( !_leaf_reached )
         {
             // No leaf node reached yet?
@@ -77,6 +81,15 @@ namespace tl7 {
 
         --_current_depth;
         return true;
+    }
+
+    signed SubcaseContext::get_current_iteration_number() const
+    {
+        assert( _current_depth <= _current_stack.size() );
+        if ( _current_depth == 0 )
+            return -1;
+
+        return _current_stack[ _current_depth - 1 ].iteration_number;
     }
 
 

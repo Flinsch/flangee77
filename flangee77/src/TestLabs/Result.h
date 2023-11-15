@@ -46,17 +46,12 @@ public:
     /**
      * Explicit constructor.
      */
-    Result(OriginType origin_type, Outcome outcome, const cl7::string_view& stringification, const cl7::char_type* file_path, unsigned line_number);
+    Result(OriginType origin_type, Outcome outcome, const cl7::string_view& stringification, const cl7::char_type* file_path, unsigned line_number, signed iteration_number = -1);
 
     /**
      * Explicit constructor.
      */
-    Result(OriginType origin_type, Outcome outcome, const cl7::string_view& original_expression, const cl7::string_view& evaluated_expression, const cl7::char_type* file_path, unsigned line_number);
-
-    /**
-     * Explicit constructor.
-     */
-    Result(OriginType origin_type, Outcome outcome, const cl7::string_view& original_expression, const cl7::string_view& evaluated_expression, const cl7::string_view& stringification, const cl7::char_type* file_path, unsigned line_number);
+    Result(OriginType origin_type, Outcome outcome, const cl7::string_view& original_expression, const cl7::string_view& evaluated_expression, const std::shared_ptr<cl7::string>& data_string, const cl7::char_type* file_path, unsigned line_number, signed iteration_number = -1);
 
 
 
@@ -83,6 +78,12 @@ public:
      * The evaluated expression (or empty if not applicable).
      */
     cl7::string evaluated_expression;
+
+    /**
+     * The "stringification" of the underlying input data, of a subcase iteration
+     * for example (or NULL if not applicable).
+     */
+    std::shared_ptr<cl7::string> data_string;
 
     /**
      * The meta description of what the result is about and where it has been

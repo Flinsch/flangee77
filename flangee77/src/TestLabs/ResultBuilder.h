@@ -3,6 +3,7 @@
 #define TL7_RESULTBUILDER_H
 
 #include "./Result.h"
+#include "./Context.h"
 
 
 
@@ -18,10 +19,10 @@ class ResultBuilder
     // #############################################################################
 public:
     Result make_test_case_result(const Meta& meta, Result::Outcome outcome);
-    Result make_check_result(const cl7::string_view& original_expression, const cl7::string_view& evaluated_expression, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome);
-    Result make_presumption_result(const cl7::string_view& original_expression, const cl7::string_view& evaluated_expression, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome);
-    Result make_assertion_result(const cl7::string_view& original_expression, const cl7::string_view& evaluated_expression, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome);
-    Result make_exception_result(const cl7::string_view& message, const cl7::char_type* file_path = nullptr, unsigned line_number = 0);
+    Result make_check_result(const Context& ctx, const cl7::string_view& original_expression, const cl7::string_view& evaluated_expression, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome);
+    Result make_presumption_result(const Context& ctx, const cl7::string_view& original_expression, const cl7::string_view& evaluated_expression, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome);
+    Result make_assertion_result(const Context& ctx, const cl7::string_view& original_expression, const cl7::string_view& evaluated_expression, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome);
+    Result make_exception_result(const Context& ctx, const cl7::string_view& message, const cl7::char_type* file_path = nullptr, unsigned line_number = 0);
 
 }; // class ResultBuilder
 

@@ -13,7 +13,7 @@ namespace tl7 {
     /**
      * Explicit constructor.
      */
-    SubcaseBranchSwitch::SubcaseBranchSwitch(Context& ctx, const cl7::string_view& name, const cl7::char_type* file_path, unsigned line_number, unsigned iteration_number)
+    SubcaseBranchSwitch::SubcaseBranchSwitch(Context& ctx, const cl7::string_view& name, const cl7::char_type* file_path, unsigned line_number, signed iteration_number)
         : _ctx( ctx )
         , _has_been_entered( false )
         , meta{ cl7::string(name), file_path, line_number, iteration_number }
