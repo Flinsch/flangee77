@@ -83,7 +83,7 @@ namespace strings {
 
         for ( size_t i = 0; i < as.size(); ++i )
         {
-            uxs[ i ] = as[ i ]; // No check required because everything from 0 to 255 is valid anyway.
+            uxs[ i ] = as[ i ] & 0xff; // No check required because everything from 0 to 255 is valid anyway.
         }
 
         return uxs;
