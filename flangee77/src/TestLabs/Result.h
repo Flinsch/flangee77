@@ -43,16 +43,6 @@ public:
      */
     Result();
 
-    /**
-     * Explicit constructor.
-     */
-    Result(OriginType origin_type, Outcome outcome, const cl7::string_view& stringification, const cl7::char_type* file_path, unsigned line_number, signed iteration_number = -1);
-
-    /**
-     * Explicit constructor.
-     */
-    Result(OriginType origin_type, Outcome outcome, const cl7::string_view& original_expression, const cl7::string_view& evaluated_expression, const std::shared_ptr<cl7::string>& data_string, const cl7::char_type* file_path, unsigned line_number, signed iteration_number = -1);
-
 
 
     // #############################################################################
@@ -86,10 +76,15 @@ public:
     std::shared_ptr<cl7::string> data_string;
 
     /**
+     * The meta description of the respective test case/subcase branch.
+     */
+    Meta context_meta;
+
+    /**
      * The meta description of what the result is about and where it has been
      * generated.
      */
-    Meta meta;
+    Meta result_meta;
 
 
 

@@ -26,7 +26,7 @@ private:
 private:
     bool _leaf_reached = false;
     size_t _current_depth = 0;
-    std::vector<Signature> _current_stack;
+    std::vector<Meta> _current_stack;
     std::vector<Signature> _next_stack;
     std::unordered_set<Signature, Signature::hash, Signature::equal_to> _completed_nodes;
 
@@ -51,6 +51,8 @@ public:
     bool has_next() const { return !_next_stack.empty(); }
     size_t get_current_depth() const { return _current_depth; }
     signed get_current_iteration_number() const;
+    const Meta* get_current_meta() const;
+    const Meta* get_meta_at(size_t depth) const; // depth is 1-based
 
 }; // class SubcaseContext
 

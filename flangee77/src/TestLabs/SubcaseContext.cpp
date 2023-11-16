@@ -85,11 +85,22 @@ namespace tl7 {
 
     signed SubcaseContext::get_current_iteration_number() const
     {
-        assert( _current_depth <= _current_stack.size() );
-        if ( _current_depth == 0 )
-            return -1;
+        const Meta* meta = get_current_meta();
+        return meta ? meta->iteration_number : -1;
+    }
 
-        return _current_stack[ _current_depth - 1 ].iteration_number;
+    const Meta* SubcaseContext::get_current_meta() const
+    {
+        return get_meta_at( _current_depth );
+    }
+
+    const Meta* SubcaseContext::get_meta_at(size_t depth) const
+    {
+        assert( depth <= _current_stack.size() );
+        if ( depth == 0 || depth > _current_stack.size() )
+            return nullptr;
+
+        return &_current_stack[ depth - 1 ];
     }
 
 

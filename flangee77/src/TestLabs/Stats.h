@@ -30,7 +30,9 @@ struct Stats
     };
 
     /** The test cases executed. */
-    Group tests;
+    Group cases;
+    /** The subcase branches traversed. */
+    Group subcases;
     /** The checks performed. */
     Group checks;
     /** The assertions made. */
@@ -48,6 +50,8 @@ struct Stats
 
     void reset();
     void update(const Result& result);
+
+    unsigned interim_fail_count() const;
 
 }; // struct Stats
 

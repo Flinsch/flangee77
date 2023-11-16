@@ -25,7 +25,7 @@ struct Meta
 
 
 
-    Meta(const cl7::string_view& stringification, const cl7::char_type* file_path, unsigned line_number, signed iteration_number)
+    Meta(const cl7::string_view& stringification, const cl7::char_type* file_path, unsigned line_number, signed iteration_number = -1)
         : Signature{ file_path, line_number, iteration_number }
         , stringification( stringification )
     {}

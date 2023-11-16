@@ -52,7 +52,7 @@ namespace tl7 {
 
         // "Failed assertion"? Throw exception instead.
         if ( result.origin_type == Result::OriginType::Assertion && result.is_failure() )
-            throw exceptions::assertion_exception( result.original_expression, result.evaluated_expression, result.meta.stringification, result.meta.file_path, result.meta. line_number );
+            throw exceptions::assertion_exception( result.original_expression, result.evaluated_expression, result.result_meta.stringification, result.result_meta.file_path, result.result_meta.line_number );
 
         // Forward all other cases.
         reporter->post_result( result );

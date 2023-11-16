@@ -109,7 +109,7 @@ private:
     /**
      * 
      */
-    void _log_generic_meta(const Meta& meta);
+    void _log_signature(const Signature& signature);
 
 }; // class CoutLogger
 

@@ -46,7 +46,8 @@ namespace tl7 {
 
     Stats& Stats::operator += (const Stats& rhs)
     {
-        tests += rhs.tests;
+        cases += rhs.cases;
+        subcases += rhs.subcases;
         checks += rhs.checks;
         assertions += rhs.assertions;
 
@@ -67,7 +68,8 @@ namespace tl7 {
         switch ( result.origin_type )
         {
         case Result::OriginType::TestCase:
-            tests.update( result.is_success() );
+            // Don't update cases, but subcases instead.
+            subcases.update( result.is_success() );
             break;
         case Result::OriginType::Check:
             checks.update( result.is_success() );
@@ -83,6 +85,11 @@ namespace tl7 {
             if ( result.is_failure() ) ++warning_count;
             break;
         }
+    }
+
+    unsigned Stats::interim_fail_count() const
+    {
+        return checks.fail_count + assertions.fail_count + exception_count;
     }
 
 

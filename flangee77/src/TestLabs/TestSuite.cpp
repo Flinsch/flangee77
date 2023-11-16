@@ -98,16 +98,18 @@ namespace tl7 {
      */
     void TestSuite::_run_test_case(TestCase& test_case)
     {
-        Context ctx( &reporter, &test_case.meta );
+        Meta root_meta = test_case.meta;
+        Context ctx( &reporter, &root_meta );
 
-        reporter.post_start_case( test_case.meta );
+        reporter.post_start_case( root_meta );
 
         do
         {
             ctx.subcases.start_run();
 
+            const unsigned fail_count = ctx.stats.interim_fail_count();
             const bool b = _run_test_case_branch( test_case, ctx );
-            reporter.post_result( ResultBuilder().make_test_case_result( test_case.meta, Result::make_outcome(b) ) );
+            reporter.post_result( ResultBuilder().make_test_case_result( ctx, Result::make_outcome( fail_count == ctx.stats.interim_fail_count() ) ) );
             if ( !b )
                 break;
 
@@ -115,7 +117,7 @@ namespace tl7 {
         }
         while ( ctx.subcases.has_next() );
 
-        ctx.stats.tests.update( ctx.stats.checks.fail_count == 0 && ctx.stats.assertions.fail_count == 0 && ctx.stats.exception_count == 0 );
+        ctx.stats.cases.update( ctx.stats.subcases.fail_count == 0 );
         stats += ctx.stats;
 
         reporter.post_end_case( ctx.stats );

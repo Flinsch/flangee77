@@ -115,6 +115,8 @@ namespace reporting {
         _current_meta = _logged_meta = nullptr;
         _carriage_position = 0;
         _continue = false;
+
+        std::cout << "Testing" << std::endl;
     }
 
     /**
@@ -260,16 +262,23 @@ namespace reporting {
             _continue = true;
         }
 
-        if ( result.meta.file_path )
+        if ( result.context_meta != *_current_meta )
         {
-            _log_generic_meta( result.meta );
-            cout << '\n';
+            cout << "Subcase: " << ColorCode::Info << result.context_meta.stringification << ColorCode::Default << '\n';
         }
-
+        if ( result.context_meta.iteration_number >= 0 )
+        {
+            cout << "Iteration: " << ColorCode::Info << (result.context_meta.iteration_number + 1) << ColorCode::Default << '\n';
+        }
         if ( result.data_string )
         {
-            cout << "Subcase data:\n";
-            cout << "  " << ColorCode::Code << *result.data_string << ColorCode::Default << '\n';
+            cout << "Data: " << ColorCode::Code << *result.data_string << ColorCode::Default << '\n';
+        }
+
+        if ( result.result_meta.file_path )
+        {
+            _log_signature( result.result_meta );
+            cout << '\n';
         }
 
         switch ( result.origin_type )
@@ -298,7 +307,7 @@ namespace reporting {
             cout << "  " << ColorCode::Code << result.evaluated_expression << ColorCode::Default << '\n';
             break;
         case Result::OriginType::Exception:
-            cout << result.meta.stringification << '\n';
+            cout << result.result_meta.stringification << '\n';
             break;
         }
 
@@ -334,7 +343,9 @@ namespace reporting {
             cout << '\n';
         };
 
-        write_group( TEXT("Test cases:"), stats.tests );
+        write_group( TEXT("Test cases:"), stats.cases );
+        if ( stats.subcases.total_count != stats.cases.total_count )
+            write_group( TEXT("Subcases:"), stats.subcases );
         write_group( TEXT("Checks:"), stats.checks );
         if ( stats.assertions.total_count > 0 )
             write_group( TEXT("Assertions:"), stats.assertions );
@@ -384,7 +395,7 @@ namespace reporting {
     /**
      * 
      */
-    void CoutLogger::_log_generic_meta(const Meta& meta)
+    void CoutLogger::_log_signature(const Signature& signature)
     {
 #ifdef UNICODE
         auto& cout = std::wcout;
@@ -392,11 +403,11 @@ namespace reporting {
         auto& cout = std::cout;
 #endif
 
-        const cl7::string_view file_path = _file_path( meta.file_path );
+        const cl7::string_view file_path = _file_path( signature.file_path );
         const cl7::string_view directory_path = _directory_path( file_path );
         const cl7::string_view filename = _filename( file_path );
 
-        cout << ColorCode::DarkGray << directory_path << ColorCode::White << filename << ColorCode::Default << '(' << meta.line_number << ')';
+        cout << ColorCode::DarkGray << directory_path << ColorCode::White << filename << ColorCode::Default << '(' << signature.line_number << ')';
     }
 
 
