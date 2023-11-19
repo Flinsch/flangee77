@@ -214,6 +214,7 @@
     <ClInclude Include="src\TestLabs\Context.h" />
     <ClInclude Include="src\TestLabs\SubcaseBranchSwitch.h" />
     <ClInclude Include="src\TestLabs\SubcaseContext.h" />
+    <ClInclude Include="src\CoreLabs\Version.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\TestLabs\internals.cpp" />
@@ -250,6 +251,7 @@
     <ClCompile Include="src\TestLabs\Context.cpp" />
     <ClCompile Include="src\TestLabs\SubcaseBranchSwitch.cpp" />
     <ClCompile Include="src\TestLabs\SubcaseContext.cpp" />
+    <ClCompile Include="src\CoreLabs\Version.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
