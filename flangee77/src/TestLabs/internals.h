@@ -12,7 +12,7 @@
     static void func(tl7::Context& ctx)
 
 #define _TL7_REGISTER_GLOBAL_FUNC(func, name) \
-    _TL7_CONSUME_REGISTRATION( PPCAT(_tl7_foo_, __LINE__), tl7::TestSuite::instance().register_test_case( func, name, TEXT(__FILE__), __LINE__ ) )
+    _TL7_CONSUME_REGISTRATION( PPCAT(_tl7_foo_, __COUNTER__), tl7::TestSuite::instance().register_test_case( func, name, TEXT(__FILE__), __LINE__ ) )
 
 #define _TL7_CONSUME_REGISTRATION(foo, reg) \
     static const int foo = tl7::internals::consume( &foo, reg );

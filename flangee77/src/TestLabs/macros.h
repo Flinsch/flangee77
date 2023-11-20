@@ -7,19 +7,19 @@
 
 
 #define TESTLABS_CASE(name) \
-    _TL7_DEFINE_AND_REGISTER_GLOBAL_FUNC( PPCAT(_tl7_anon_, __LINE__), name )
+    _TL7_DEFINE_AND_REGISTER_GLOBAL_FUNC( PPCAT(_tl7_anon_, __COUNTER__), name )
 
 #define TESTLABS_SUBCASE(name) \
-    _TL7_DEFINE_AND_SWITCH_SUBCASE_BRANCH( PPCAT(_tl7_subcase_, __LINE__), name )
+    _TL7_DEFINE_AND_SWITCH_SUBCASE_BRANCH( PPCAT(_tl7_subcase_, __COUNTER__), name )
 
 #define TESTLABS_SUBCASE_ITERATION(name, iteration_number) \
-    _TL7_DEFINE_AND_SWITCH_SUBCASE_ITERATION_BRANCH( PPCAT(_tl7_subcase_iteration_, __LINE__), name, iteration_number )
+    _TL7_DEFINE_AND_SWITCH_SUBCASE_ITERATION_BRANCH( PPCAT(_tl7_subcase_iteration_, __COUNTER__), name, iteration_number )
 
 #define TESTLABS_SUBCASE_BATCH(name, iterable_data_container, data) \
-    _TL7_DEFINE_AND_SWITCH_SUBCASE_BATCH_ITERATION_BRANCH( PPCAT(_tl7_subcase_iteration_, __LINE__), name, PPCAT(_tl7_subcase_iteration_number_, __LINE__), iterable_data_container, data, PPCAT(_tl7_tmp, __LINE__), nullptr )
+    _TL7_DEFINE_AND_SWITCH_SUBCASE_BATCH_ITERATION_BRANCH( PPCAT(_tl7_subcase_iteration_, __COUNTER__), name, PPCAT(_tl7_subcase_iteration_number_, __COUNTER__), iterable_data_container, data, PPCAT(_tl7_tmp, __COUNTER__), nullptr )
 
 #define TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING(name, iterable_data_container, data, stringifiable) \
-    _TL7_DEFINE_AND_SWITCH_SUBCASE_BATCH_ITERATION_BRANCH( PPCAT(_tl7_subcase_iteration_, __LINE__), name, PPCAT(_tl7_subcase_iteration_number_, __LINE__), iterable_data_container, data, PPCAT(_tl7_tmp, __LINE__), stringifiable )
+    _TL7_DEFINE_AND_SWITCH_SUBCASE_BATCH_ITERATION_BRANCH( PPCAT(_tl7_subcase_iteration_, __COUNTER__), name, PPCAT(_tl7_subcase_iteration_number_, __COUNTER__), iterable_data_container, data, PPCAT(_tl7_tmp, __COUNTER__), stringifiable )
 
 
 
