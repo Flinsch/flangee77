@@ -133,21 +133,21 @@ namespace cl7 {
 
 
     template <typename T>
-    astring to_astring(T val) { return std::to_string( val ); }
+    astring to_astring(const T& val) { return std::to_string( val ); }
     template <typename T>
-    wstring to_wstring(T val) { return std::to_wstring( val ); }
+    wstring to_wstring(const T& val) { return std::to_wstring( val ); }
 
     template <> inline
-    astring to_astring(bool val) { return cl7::astring(val ? "true" : "false"); }
+    astring to_astring(const bool& val) { return cl7::astring(val ? "true" : "false"); }
     template <> inline
-    wstring to_wstring(bool val) { return cl7::wstring(val ? L"true" : L"false"); }
+    wstring to_wstring(const bool& val) { return cl7::wstring(val ? L"true" : L"false"); }
 
 #ifdef UNICODE
     template <typename T>
-    string to_string(T val) { return to_wstring( val ); }
+    string to_string(const T& val) { return to_wstring( val ); }
 #else // => !UNICODE
     template <typename T>
-    string to_string(T val) { return to_astring( val ); }
+    string to_string(const T& val) { return to_astring( val ); }
 #endif // #else => !UNICODE
 
 

@@ -61,7 +61,7 @@ namespace internals {
 
 
     template <typename T>
-    cl7::string to_string(T val) { return cl7::to_string( val ); }
+    cl7::string to_string(const T& val) { return cl7::to_string( val ); }
 
     cl7::string to_string(const std::string& val);
     cl7::string to_string(const std::wstring& val);
