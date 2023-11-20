@@ -46,11 +46,8 @@ namespace cl7 {
             else if ( pre_release_identifier == TEXT("rc"))
                 version.pre_release_type = PreReleaseType::ReleaseCandidate;
 
-            if ( version.pre_release_type != PreReleaseType::None && iss.peek() == TEXT('.') )
-            {
-                iss.ignore( 1 ); // Skip dot
+            if ( version.pre_release_type != PreReleaseType::None ) // Dot already skipped by std::getline
                 iss >> version.pre_release_number;
-            }
         }
         else if ( peek == TEXT('a') || peek == TEXT('b') || peek == TEXT('r') )
         {
