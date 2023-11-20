@@ -23,9 +23,11 @@ namespace cl7 {
 
         cl7::isstream iss( string );
         iss >> version.major;
-        iss.ignore( 1 ); // Skip the dot separator
-        iss >> version.minor;
-
+        if ( iss.peek() == TEXT('.') )
+        {
+            iss.ignore( 1 ); // Skip dot
+            iss >> version.minor;
+        }
         if ( iss.peek() == TEXT('.') )
         {
             iss.ignore( 1 ); // Skip dot
