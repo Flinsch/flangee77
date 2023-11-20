@@ -3,6 +3,7 @@
 #include <CoreLabs/logging.h>
 
 #include "./CoreLabs/strings.h"
+#include "./CoreLabs/Version.h"
 
 
 

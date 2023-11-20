@@ -68,11 +68,6 @@ public:
 
 
 
-    template <> inline
-    cl7::string to_string(const Version& version) { return version.to_string(); }
-
-
-
 } // namespace cl7
 
 #endif // CL7_VERSION_H

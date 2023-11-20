@@ -188,6 +188,7 @@ mkdir "$(LocalDebuggerWorkingDirectory)"
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CoreLabs\strings.h" />
+    <ClInclude Include="src\CoreLabs\Version.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
