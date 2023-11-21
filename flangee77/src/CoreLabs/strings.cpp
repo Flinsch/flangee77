@@ -278,8 +278,9 @@ namespace strings {
             }
             else
             {
-                u16s[ i++ ] = u16char_type(0xd800 | ((u32c >> 10) & 0x3ff));
-                u16s[ i++ ] = u16char_type(0xdc00 | (u32c & 0x3ff));
+                u32char_type u32c_ = u32c - 0x10000;
+                u16s[ i++ ] = u16char_type(0xd800 | ((u32c_ >> 10) & 0x3ff));
+                u16s[ i++ ] = u16char_type(0xdc00 | (u32c_ & 0x3ff));
             }
         } // for ...
         assert( i == size );
@@ -803,7 +804,7 @@ namespace strings {
                 if ( u16c >= 0xdc00 && u16c <= 0xdfff ) // (expected) trailing/low surrogate
                 {
                     // Everything's fine: put the two surrogates back together.
-                    u32s[ i++ ] = ((prev & 0x3ff) << 10) | (u16c & 0x3ff);
+                    u32s[ i++ ] = ((static_cast<u32char_type>( prev & 0x3ff ) << 10) | (u16c & 0x3ff)) + 0x10000;
                 }
                 else if ( u16c >= 0xd800 && u16c <= 0xdbff ) // (another) leading/high surrogate
                 {
