@@ -279,7 +279,8 @@ namespace strings {
             else
             {
                 u32char_type u32c_ = u32c - 0x10000;
-                u16s[ i++ ] = u16char_type(0xd800 | ((u32c_ >> 10) & 0x3ff));
+                assert( (u32c_ >> 10) <= 0x3ff );
+                u16s[ i++ ] = u16char_type(0xd800 | (u32c_ >> 10));
                 u16s[ i++ ] = u16char_type(0xdc00 | (u32c_ & 0x3ff));
             }
         } // for ...
