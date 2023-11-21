@@ -165,23 +165,23 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  between UTF-16 and UTF-32") )
     {
         std::vector<unsigned short> u16d;
         cl7::u32string_view u32s;
-        cl7::string comment;
+        cl7::astring comment;
     } entry;
 
     const std::vector<Entry> container {
-        { { 0x70, 0x75, 0x72, 0x65, 0x20, 0x41, 0x53, 0x43, 0x49, 0x49 }, U"pure ASCII", TEXT("pure ASCII") },
-        { { 0xd7ff }, U"\ud7ff", TEXT("0xdf77") },
-        { { 0xe000 }, U"\ue000", TEXT("0xe000") },
-        { { 0xffff }, U"\uffff", TEXT("0xffff") },
-        { { 0xd800, 0xdc00 }, U"\U00010000", TEXT("0xd800 0xdc00 <=> 0x10000") },
-        { { 0xd800, 0xdc01 }, U"\U00010001", TEXT("0xd800 0xdc01 <=> 0x10001") },
-        { { 0xd800, 0xdfff }, U"\U000103ff", TEXT("0xd800 0xdfff <=> 0x103ff") },
-        { { 0xd801, 0xdc00 }, U"\U00010400", TEXT("0xd801 0xdc00 <=> 0x10400") },
-        { { 0xd801, 0xdc01 }, U"\U00010401", TEXT("0xd801 0xdc01 <=> 0x10401") },
-        { { 0xd801, 0xdfff }, U"\U000107ff", TEXT("0xd801 0xdfff <=> 0x107ff") },
-        { { 0xdbff, 0xdc00 }, U"\U0010fc00", TEXT("0xdbff 0xdc00 <=> 0x10fc00") },
-        { { 0xdbff, 0xdc01 }, U"\U0010fc01", TEXT("0xdbff 0xdc01 <=> 0x10fc01") },
-        { { 0xdbff, 0xdfff }, U"\U0010ffff", TEXT("0xdbff 0xdfff <=> 0x10ffff") },
+        { { 0x70, 0x75, 0x72, 0x65, 0x20, 0x41, 0x53, 0x43, 0x49, 0x49 }, U"pure ASCII", "pure ASCII" },
+        { { 0xd7ff }, U"\ud7ff", "0xdf77" },
+        { { 0xe000 }, U"\ue000", "0xe000" },
+        { { 0xffff }, U"\uffff", "0xffff" },
+        { { 0xd800, 0xdc00 }, U"\U00010000", "0xd800 0xdc00 <=> 0x10000" },
+        { { 0xd800, 0xdc01 }, U"\U00010001", "0xd800 0xdc01 <=> 0x10001" },
+        { { 0xd800, 0xdfff }, U"\U000103ff", "0xd800 0xdfff <=> 0x103ff" },
+        { { 0xd801, 0xdc00 }, U"\U00010400", "0xd801 0xdc00 <=> 0x10400" },
+        { { 0xd801, 0xdc01 }, U"\U00010401", "0xd801 0xdc01 <=> 0x10401" },
+        { { 0xd801, 0xdfff }, U"\U000107ff", "0xd801 0xdfff <=> 0x107ff" },
+        { { 0xdbff, 0xdc00 }, U"\U0010fc00", "0xdbff 0xdc00 <=> 0x10fc00" },
+        { { 0xdbff, 0xdc01 }, U"\U0010fc01", "0xdbff 0xdc01 <=> 0x10fc01" },
+        { { 0xdbff, 0xdfff }, U"\U0010ffff", "0xdbff 0xdfff <=> 0x10ffff" },
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("between UTF-16 and UTF-32"), container, entry, entry.comment )
@@ -198,6 +198,78 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  between UTF-16 and UTF-32") )
 
         TESTLABS_CHECK_EQ( actual_u16s, expected_u16s );
         TESTLABS_CHECK_EQ( actual_u32s, expected_u32s );
+    }
+}
+
+
+
+// Functions to be tested explicitly:
+// 
+// astring to_latin1(const u32string_view& u32s)
+// u8string to_utf8(const u32string_view& u32s)
+// u16string to_utf16(const u32string_view& u32s)
+// 
+// astring to_latin1(const byte_span& bys)
+// u8string to_utf8_unchecked(const byte_span& bys)
+// u16string to_utf16_unchecked(const byte_span& bys)
+// u32string to_utf32_unchecked(const byte_span& bys)
+// 
+// byte_vector to_bytes(const astring_view& as)
+// byte_vector to_bytes(const u8string_view& u8s, bool add_bom)
+// byte_vector to_bytes(const u16string_view& u16s, bool add_bom, std::endian endian)
+// byte_vector to_bytes(const u32string_view& u32s, bool add_bom, std::endian endian)
+// 
+// bool check_ascii(const astring_view& as, bool log_warning)
+// bool parse_utf8(const u8string_view& u8s, u32string& u32s, bool log_warning)
+// bool parse_utf16(const u16string_view& u16s, u32string& u32s, bool log_warning)
+// bool check_utf32(const u32string_view& u32s, bool log_warning)
+// 
+// size_t utf8_length(const u8string_view& u8s)
+// size_t utf16_length(const u16string_view& u16s)
+
+
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(const u32string_view&)") )
+{
+    for ( cl7::u32char_type u32c = 0; u32c <= 0xff; ++u32c )
+    {
+        const cl7::achar_type ac = static_cast<cl7::achar_type>( u32c );
+        const cl7::astring as( 1, ac );
+        const cl7::u32string u32s( 1, u32c );
+        TESTLABS_CHECK_EQ( cl7::strings::to_latin1( u32s ), as );
+    }
+    for ( cl7::u32char_type u32c = 0x0100; ; u32c *= 2 )
+    {
+        const cl7::achar_type ac = 0x1a;
+        const cl7::astring as( 1, ac );
+        const cl7::u32string u32s( 1, u32c );
+        TESTLABS_CHECK_EQ( cl7::strings::to_latin1( u32s ), as );
+
+        if ( u32c > 0x10ffff )
+            break;
+    }
+}
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8(const u32string_view&)") )
+{
+    struct Entry
+    {
+        std::vector<unsigned long> u32d;
+        std::vector<unsigned char> u8d;
+        cl7::astring comment;
+    } entry;
+
+    const std::vector<Entry> container {
+        { { 0 }, { 0 }, "" },
+        { { 0x53, 0x74, 0x65, 0x66, 0x61, 0x6e, 0x20, 0x46, 0x6c, 0x65, 0x69, 0x73, 0x63, 0x68, 0x65, 0x72, 0 }, { 0x53, 0x74, 0x65, 0x66, 0x61, 0x6e, 0x20, 0x46, 0x6c, 0x65, 0x69, 0x73, 0x63, 0x68, 0x65, 0x72, 0 }, "Stefan Fleischer" },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.comment )
+    {
+        const cl7::u32string_view u32s{ reinterpret_cast<const cl7::u32char_type*>( &entry.u32d[0] ) };
+        const cl7::u8string_view u8s{ reinterpret_cast<const cl7::u8char_type*>( &entry.u8d[0] ) };
+
+        TESTLABS_CHECK_EQ( cl7::strings::to_utf8( u32s ), u8s );
     }
 }
 
