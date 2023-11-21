@@ -44,6 +44,8 @@ TESTLABS_CASE( TEXT("CoreLabs:  Version:  to_string/parse") )
         { cl7::Version{ 0, 9, 1, cl7::Version::PreReleaseType::ReleaseCandidate, 2 }, TEXT("0.9.1-rc.2"), TEXT("0.9.1rc2") },
         { cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::None, 0, TEXT("build") }, TEXT("1.0+build"), TEXT("1.0 build") },
         { cl7::Version{ 1, 2, 3, cl7::Version::PreReleaseType::ReleaseCandidate, 4, TEXT("build") }, TEXT("1.2.3-rc.4+build"), TEXT("1.2.3rc4 build") },
+        { cl7::Version{ 1, 22 }, TEXT("1.22"), TEXT("1.22") },
+        { cl7::Version{ 1, 22, 3 }, TEXT("1.22.3"), TEXT("1.22.3") },
     };
 
     for ( size_t i = 0; i < container.size(); ++i )
@@ -94,6 +96,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Version:  comparisons") )
         { cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::Alpha } },
         { cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::Alpha, 1 } },
         { cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::Alpha, 2 } },
+        { cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::Alpha, 11 } },
         { cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::Beta, 0 } },
         { cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::Beta, 1 } },
         { cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::ReleaseCandidate, 0 } },
@@ -104,6 +107,10 @@ TESTLABS_CASE( TEXT("CoreLabs:  Version:  comparisons") )
         { cl7::Version{ 1, 0, 1 } },
         { cl7::Version{ 1, 1 } },
         { cl7::Version{ 2, 0 } },
+        { cl7::Version{ 2, 1 } },
+        { cl7::Version{ 2, 2 } },
+        { cl7::Version{ 2, 11 } },
+        { cl7::Version{ 11, 0 } },
     };
 
     for ( size_t i = 1; i < container.size(); ++i )
