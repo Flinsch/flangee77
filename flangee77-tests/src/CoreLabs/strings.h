@@ -170,18 +170,18 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  between UTF-16 and UTF-32") )
 
     const std::vector<Entry> container {
         { { 0x70, 0x75, 0x72, 0x65, 0x20, 0x41, 0x53, 0x43, 0x49, 0x49 }, U"pure ASCII", "pure ASCII" },
-        { { 0xd7ff }, U"\ud7ff", "0xdf77" },
-        { { 0xe000 }, U"\ue000", "0xe000" },
-        { { 0xffff }, U"\uffff", "0xffff" },
-        { { 0xd800, 0xdc00 }, U"\U00010000", "0xd800 0xdc00 <=> 0x10000" },
-        { { 0xd800, 0xdc01 }, U"\U00010001", "0xd800 0xdc01 <=> 0x10001" },
-        { { 0xd800, 0xdfff }, U"\U000103ff", "0xd800 0xdfff <=> 0x103ff" },
-        { { 0xd801, 0xdc00 }, U"\U00010400", "0xd801 0xdc00 <=> 0x10400" },
-        { { 0xd801, 0xdc01 }, U"\U00010401", "0xd801 0xdc01 <=> 0x10401" },
-        { { 0xd801, 0xdfff }, U"\U000107ff", "0xd801 0xdfff <=> 0x107ff" },
-        { { 0xdbff, 0xdc00 }, U"\U0010fc00", "0xdbff 0xdc00 <=> 0x10fc00" },
-        { { 0xdbff, 0xdc01 }, U"\U0010fc01", "0xdbff 0xdc01 <=> 0x10fc01" },
-        { { 0xdbff, 0xdfff }, U"\U0010ffff", "0xdbff 0xdfff <=> 0x10ffff" },
+        { { 0xd7ff }, U"\ud7ff", "u+df77" },
+        { { 0xe000 }, U"\ue000", "u+e000" },
+        { { 0xffff }, U"\uffff", "u+ffff" },
+        { { 0xd800, 0xdc00 }, U"\U00010000", "u+d800 u+dc00  <=>  u+00010000" },
+        { { 0xd800, 0xdc01 }, U"\U00010001", "u+d800 u+dc01  <=>  u+00010001" },
+        { { 0xd800, 0xdfff }, U"\U000103ff", "u+d800 u+dfff  <=>  u+000103ff" },
+        { { 0xd801, 0xdc00 }, U"\U00010400", "u+d801 u+dc00  <=>  u+00010400" },
+        { { 0xd801, 0xdc01 }, U"\U00010401", "u+d801 u+dc01  <=>  u+00010401" },
+        { { 0xd801, 0xdfff }, U"\U000107ff", "u+d801 u+dfff  <=>  u+000107ff" },
+        { { 0xdbff, 0xdc00 }, U"\U0010fc00", "u+dbff u+dc00  <=>  u+0010fc00" },
+        { { 0xdbff, 0xdc01 }, U"\U0010fc01", "u+dbff u+dc01  <=>  u+0010fc01" },
+        { { 0xdbff, 0xdfff }, U"\U0010ffff", "u+dbff u+dfff  <=>  u+0010ffff" },
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("between UTF-16 and UTF-32"), container, entry, entry.comment )
@@ -238,6 +238,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(const u32string_view&)") )
         const cl7::u32string u32s( 1, u32c );
         TESTLABS_CHECK_EQ( cl7::strings::to_latin1( u32s ), as );
     }
+
     for ( cl7::u32char_type u32c = 0x0100; ; u32c *= 2 )
     {
         const cl7::achar_type ac = 0x1a;
@@ -245,7 +246,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(const u32string_view&)") )
         const cl7::u32string u32s( 1, u32c );
         TESTLABS_CHECK_EQ( cl7::strings::to_latin1( u32s ), as );
 
-        if ( u32c > 0x10ffff )
+        if ( u32c > 0x10ffff ) // Deliberately include also an invalid code point (above 0x10ffff).
             break;
     }
 }
@@ -262,14 +263,79 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8(const u32string_view&)") )
     const std::vector<Entry> container {
         { { 0 }, { 0 }, "" },
         { { 0x53, 0x74, 0x65, 0x66, 0x61, 0x6e, 0x20, 0x46, 0x6c, 0x65, 0x69, 0x73, 0x63, 0x68, 0x65, 0x72, 0 }, { 0x53, 0x74, 0x65, 0x66, 0x61, 0x6e, 0x20, 0x46, 0x6c, 0x65, 0x69, 0x73, 0x63, 0x68, 0x65, 0x72, 0 }, "Stefan Fleischer" },
+        { { 0x47, 0xe4, 0x6e, 0x73, 0x65, 0x66, 0xfc, 0xdf, 0x63, 0x68, 0x65, 0x6e, 0 }, { 0x47, 0xc3,0xa4, 0x6e, 0x73, 0x65, 0x66, 0xc3,0xbc, 0xc3,0x9f, 0x63, 0x68, 0x65, 0x6e, 0 }, "Gänsefüßchen" },
+        { { 0x20, 0 }, { 0x20, 0 }, "u+0020  =>  \\x20" },
+        { { 0x7f, 0 }, { 0x7f, 0 }, "u+007f  =>  \\x7f" },
+        { { 0x80, 0 }, { 0xc2,0x80, 0 }, "u+0080  =>  \\xc2\\x80" },
+        { { 0xff, 0 }, { 0xc3,0xbf, 0 }, "u+00ff  =>  \\xc3\\xbf" },
+        { { 0x07ff, 0 }, { 0xdf,0xbf, 0 }, "u+07ff  =>  \\xdf\\xbf" },
+        { { 0x0800, 0 }, { 0xe0,0xa0,0x80, 0 }, "u+0800  =>  \\xe0\\xa0\\x80" },
+        { { 0xd7ff, 0 }, { 0xed,0x9f,0xbf, 0 }, "u+d7ff  =>  \\xed\\x9f\\xbf" },
+        { { 0xd800, 0 }, { 0xed,0xa0,0x80, 0 }, "u+d800  =>  \\xed\\xa0\\x80  (invalid code point, but codeable)" },
+        { { 0xdbff, 0 }, { 0xed,0xaf,0xbf, 0 }, "u+dbff  =>  \\xed\\xaf\\xbf  (invalid code point, but codeable)" },
+        { { 0xdc00, 0 }, { 0xed,0xb0,0x80, 0 }, "u+dc00  =>  \\xed\\xb0\\x80  (invalid code point, but codeable)" },
+        { { 0xdfff, 0 }, { 0xed,0xbf,0xbf, 0 }, "u+dfff  =>  \\xed\\xbf\\xbf  (invalid code point, but codeable)" },
+        { { 0xe000, 0 }, { 0xee,0x80,0x80, 0 }, "u+e000  =>  \\xee\\x80\\x80" },
+        { { 0xffff, 0 }, { 0xef,0xbf,0xbf, 0 }, "u+ffff  =>  \\xef\\xbf\\xbf" },
+        { { 0x0001'0000, 0 }, { 0xf0,0x90,0x80,0x80, 0 }, "u+00010000  =>  \\xf0\\x90\\x80\\x80" },
+        { { 0x0010'ffff, 0 }, { 0xf4,0x8f,0xbf,0xbf, 0 }, "u+0010ffff  =>  \\xf4\\x8f\\xbf\\xbf" },
+        { { 0x0011'0000, 0 }, { 0xef,0xbf,0xbd, 0 }, "u+00110000  =>  \\xef\\xbf\\xbd  (invalid code point)" },
+        { { 0x20, 0x7f, 0x80, 0xff, 0x07ff, 0x0800, 0xd7ff, 0xd800, 0xdbff, 0xdc00, 0xdfff, 0xe000, 0xffff, 0x0001'0000, 0x0010'ffff, 0x0011'0000, 0 }, { 0x20, 0x7f, 0xc2,0x80, 0xc3,0xbf, 0xdf,0xbf, 0xe0,0xa0,0x80, 0xed,0x9f,0xbf, 0xed,0xa0,0x80, 0xed,0xaf,0xbf, 0xed,0xb0,0x80, 0xed,0xbf,0xbf, 0xee,0x80,0x80, 0xef,0xbf,0xbf, 0xf0,0x90,0x80,0x80, 0xf4,0x8f,0xbf,0xbf, 0xef,0xbf,0xbd, 0 }, "..." },
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.comment )
     {
+        TESTLABS_ASSERT( entry.u32d.size() >= 1 && entry.u32d.back() == 0 );
+        TESTLABS_ASSERT( entry.u8d.size() >= 1 && entry.u8d.back() == 0 );
+
         const cl7::u32string_view u32s{ reinterpret_cast<const cl7::u32char_type*>( &entry.u32d[0] ) };
         const cl7::u8string_view u8s{ reinterpret_cast<const cl7::u8char_type*>( &entry.u8d[0] ) };
 
         TESTLABS_CHECK_EQ( cl7::strings::to_utf8( u32s ), u8s );
+    }
+}
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16(const u32string_view&)") )
+{
+    struct Entry
+    {
+        std::vector<unsigned long> u32d;
+        std::vector<unsigned short> u16d;
+        cl7::astring comment;
+    } entry;
+
+    const std::vector<Entry> container {
+        { { 0 }, { 0 }, "" },
+        { { 0x53, 0x74, 0x65, 0x66, 0x61, 0x6e, 0x20, 0x46, 0x6c, 0x65, 0x69, 0x73, 0x63, 0x68, 0x65, 0x72, 0 }, { 0x53, 0x74, 0x65, 0x66, 0x61, 0x6e, 0x20, 0x46, 0x6c, 0x65, 0x69, 0x73, 0x63, 0x68, 0x65, 0x72, 0 }, "Stefan Fleischer" },
+        { { 0x47, 0xe4, 0x6e, 0x73, 0x65, 0x66, 0xfc, 0xdf, 0x63, 0x68, 0x65, 0x6e, 0 }, { 0x47, 0xe4, 0x6e, 0x73, 0x65, 0x66, 0xfc, 0xdf, 0x63, 0x68, 0x65, 0x6e, 0 }, "Gänsefüßchen" },
+        { { 0x20, 0 }, { 0x20, 0 }, "u+0020  =>  u+0020" },
+        { { 0x7f, 0 }, { 0x7f, 0 }, "u+007f  =>  u+007f" },
+        { { 0x80, 0 }, { 0x80, 0 }, "u+0080  =>  u+0080" },
+        { { 0xff, 0 }, { 0xff, 0 }, "u+00ff  =>  u+00ff" },
+        { { 0x07ff, 0 }, { 0x07ff, 0 }, "u+07ff  =>  u+07ff" },
+        { { 0x0800, 0 }, { 0x0800, 0 }, "u+0800  =>  u+0800" },
+        { { 0xd7ff, 0 }, { 0xd7ff, 0 }, "u+d7ff  =>  u+d7ff" },
+        { { 0xd800, 0 }, { 0xd800, 0 }, "u+d800  =>  u+d800  (invalid code point, but codeable)" },
+        { { 0xdbff, 0 }, { 0xdbff, 0 }, "u+dbff  =>  u+dbff  (invalid code point, but codeable)" },
+        { { 0xdc00, 0 }, { 0xdc00, 0 }, "u+dc00  =>  u+dc00  (invalid code point, but codeable)" },
+        { { 0xdfff, 0 }, { 0xdfff, 0 }, "u+dfff  =>  u+dfff  (invalid code point, but codeable)" },
+        { { 0xe000, 0 }, { 0xe000, 0 }, "u+e000  =>  u+e000" },
+        { { 0xffff, 0 }, { 0xffff, 0 }, "u+ffff  =>  u+ffff" },
+        { { 0x0001'0000, 0 }, { 0xd800,0xdc00, 0 }, "u+00010000  =>  u+d800 u+dc00" },
+        { { 0x0010'ffff, 0 }, { 0xdbff,0xdfff, 0 }, "u+0010ffff  =>  u+dbff u+dfff" },
+        { { 0x0011'0000, 0 }, { 0xfffd, 0 }, "u+00110000  =>  u+fffd  (invalid code point)" },
+        { { 0x20, 0x7f, 0x80, 0xff, 0x07ff, 0x0800, 0xd7ff, 0xd800, 0xdbff, 0xdc00, 0xdfff, 0xe000, 0xffff, 0x0001'0000, 0x0010'ffff, 0x0011'0000, 0 }, { 0x20, 0x7f, 0x80, 0xff, 0x07ff, 0x0800, 0xd7ff, 0xd800, 0xdbff, 0xdc00, 0xdfff, 0xe000, 0xffff, 0xd800,0xdc00, 0xdbff,0xdfff, 0xfffd, 0 }, "..." },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.comment )
+    {
+        TESTLABS_ASSERT( entry.u32d.size() >= 1 && entry.u32d.back() == 0 );
+        TESTLABS_ASSERT( entry.u16d.size() >= 1 && entry.u16d.back() == 0 );
+
+        const cl7::u32string_view u32s{ reinterpret_cast<const cl7::u32char_type*>( &entry.u32d[0] ) };
+        const cl7::u16string_view u16s{ reinterpret_cast<const cl7::u16char_type*>( &entry.u16d[0] ) };
+
+        TESTLABS_CHECK_EQ( cl7::strings::to_utf16( u32s ), u16s );
     }
 }
 
