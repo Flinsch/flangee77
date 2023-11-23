@@ -192,7 +192,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  between UTF-16 and UTF-32") )
     {
         std::vector<unsigned short> u16d;
         cl7::u32string_view u32s;
-        cl7::astring comment;
+        cl7::astring_view comment;
     } entry;
 
     const std::vector<Entry> container {
@@ -284,7 +284,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8(const u32string_view&)") )
     {
         std::vector<unsigned long> u32d;
         std::vector<unsigned char> u8d;
-        cl7::astring comment;
+        cl7::astring_view comment;
     } entry;
 
     const std::vector<Entry> container {
@@ -328,7 +328,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16(const u32string_view&)") )
     {
         std::vector<unsigned long> u32d;
         std::vector<unsigned short> u16d;
-        cl7::astring comment;
+        cl7::astring_view comment;
     } entry;
 
     const std::vector<Entry> container {
@@ -740,10 +740,121 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::parse_utf16(const u16string_view&, u32s
     }
 }
 
-// bool check_utf32(const u32string_view& u32s, bool log_warning)
+TESTLABS_CASE( TEXT("CoreLabs:  strings::check_utf32(const u32string_view&)") )
+{
+    struct Entry
+    {
+        std::vector<unsigned long> input_data;
+        bool expected;
+        cl7::astring_view comment;
+    } entry;
 
-// size_t utf8_length(const u8string_view& u8s)
-// size_t utf16_length(const u16string_view& u16s)
+    const std::vector<Entry> container {
+        { { 0x70, 0x75, 0x72, 0x65, 0x20, 0x41, 0x53, 0x43, 0x49, 0x49, 0 }, true, "pure ASCII" },
+        { { 0x70, 0x75, 0x72, 0x65, 0xdbff,0xdc00, 0x41, 0x53, 0x43, 0x49, 0x49, 0 }, false, "pure\\udbff\\udc00ASCII" },
+        { { 0x20, 0 }, true, " " },
+        { { 0x7f, 0 }, true, "\\x7f" },
+        { { 0x80, 0 }, true, "\\u0080" },
+        { { 0xff, 0 }, true, "\\u00ff" },
+        { { 0x07ff, 0 }, true, "\\u07ff" },
+        { { 0x0800, 0 }, true, "\\u0800" },
+        { { 0xd7ff, 0 }, true, "\\ud7ff" },
+        { { 0xd800, 0 }, false, "\\ud800" }, // unpaired surrogate
+        { { 0xdbff, 0 }, false, "\\udbff" }, // unpaired surrogate
+        { { 0xdc00, 0 }, false, "\\udc00" }, // unpaired surrogate
+        { { 0xdfff, 0 }, false, "\\udfff" }, // unpaired surrogate
+        { { 0xe000, 0 }, true, "\\ue000" },
+        { { 0xffff, 0 }, true, "\\uffff" },
+        { { 0x10000, 0 }, true, "\\U00010000" },
+        { { 0x10ffff, 0 }, true, "\\U0010ffff" },
+        { { 0x110000, 0 }, false, "\\U00110000" }, // invalid code point
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    {
+        TESTLABS_ASSERT( entry.input_data.size() >= 1 && entry.input_data.back() == 0 );
+
+        cl7::u32string_view input( reinterpret_cast<const cl7::u32char_type*>( &entry.input_data[0] ) );
+        TESTLABS_CHECK_EQ( cl7::strings::check_utf32( input ), entry.expected );
+    }
+}
+
+
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings::utf8_length(const u8string_view&)") )
+{
+    struct Entry
+    {
+        cl7::astring_view input_data;
+        size_t expected;
+        cl7::astring_view comment;
+    } entry;
+
+    const std::vector<Entry> container {
+        { "pure ASCII", 10, "pure ASCII" }, /* 1 byte per character */
+        { "\xc2\x80", 1, "\xc2\x80" }, /* "first" 2-byte sequence */
+        { "\xdf\xbf", 1, "\xdf\xbf" }, /* "last" 2-byte sequence */
+        { "\xe0\xa0\x80", 1, "\xe0\xa0\x80" }, /* "first" 3-byte sequence */
+        { "\xef\xbf\xbf", 1, "\xef\xbf\xbf" }, /* "last" 3-byte sequence */
+        { "\xf0\x90\x80\x80", 1, "\xf0\x90\x80\x80" }, /* "first" 4-byte sequence */
+        { "\xf4\x8f\xbf\xbf", 1, "\xf4\x8f\xbf\xbf" }, /* "last" 4-byte sequence */
+        { "\x80", 1, "\x80" }, /* invalid continuation byte */
+        { "\xc0\xc0...", 4, "\xc0\xc0..." }, /* invalid 2-byte sequence */
+        { "\xc1\x80...", 4, "\xc1\x80..." }, /* invalid 2-byte sequence */
+        { "\xe0\xe0...", 3, "\xe0\xe0..." }, /* invalid 3-byte sequence */
+        { "\xf0\xf0...", 2, "\xf0\xf0..." }, /* invalid 4-byte sequence */
+        { "\xf5\xf5...", 2, "\xf5\xf5..." }, /* invalid 4-byte sequence */
+        { "\xf8\xf8...", 1, "\xf8\xf8..." }, /* invalid 5-byte sequence */
+        { "\xfc\xfc...", 1, "\xfc\xfc..." }, /* invalid 6-byte sequence */
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.comment )
+    {
+        cl7::u8string_view input( reinterpret_cast<const cl7::u8char_type*>( entry.input_data.data() ) );
+        TESTLABS_CHECK_EQ( cl7::strings::utf8_length( input ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings::utf16_length(const u16string_view&)") )
+{
+    struct Entry
+    {
+        std::vector<unsigned short> input_data;
+        size_t expected;
+        cl7::astring_view comment;
+    } entry;
+
+    const std::vector<Entry> container {
+        { { 0x70, 0x75, 0x72, 0x65, 0x20, 0x41, 0x53, 0x43, 0x49, 0x49, 0 }, 10, "pure ASCII" },
+        { { 0x20, 0 }, 1, "\\u0020" },
+        { { 0x7f, 0 }, 1, "\\u007f" },
+        { { 0x80, 0 }, 1, "\\u0080" },
+        { { 0xff, 0 }, 1, "\\u00ff" },
+        { { 0x07ff, 0 }, 1, "\\u07ff" },
+        { { 0x0800, 0 }, 1, "\\u0800" },
+        { { 0xd7ff, 0 }, 1, "\\ud7ff" },
+        { { 0xd800, 0 }, 1, "\\ud800" }, // unpaired surrogate
+        { { 0xdbff, 0 }, 1, "\\udbff" }, // unpaired surrogate
+        { { 0xdc00, 0 }, 1, "\\udc00" }, // unpaired surrogate
+        { { 0xdfff, 0 }, 1, "\\udfff" }, // unpaired surrogate
+        { { 0xe000, 0 }, 1, "\\ue000" },
+        { { 0xffff, 0 }, 1, "\\uffff" },
+        { { 0xd800,0xdc00, 0 }, 1, "\\ud800\\udc00" },
+        { { 0xdbff,0xdfff, 0 }, 1, "\\udbff\\udfff" },
+        { { 0xdc00,0xd800, 0 }, 2, "\\udc00\\ud800" }, // messed-up surrogates
+        { { 0xdfff,0xdbff, 0 }, 2, "\\udfff\\udbff" }, // messed-up surrogates
+        { { 0xd800,0xd800,0xdc00, 0 }, 2, "\\ud800\\ud800\\udc00" }, // messed-up surrogates
+        { { 0xd800,0xd800,0xd800,0xdc00, 0 }, 2, "\\ud800\\ud800\\ud800\\udc00" }, // messed-up surrogates
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.comment )
+    {
+        TESTLABS_ASSERT( entry.input_data.size() >= 1 && entry.input_data.back() == 0 );
+
+        cl7::u16string_view input( reinterpret_cast<const cl7::u16char_type*>( &entry.input_data[0] ) );
+        TESTLABS_CHECK_EQ( cl7::strings::utf16_length( input ), entry.expected );
+    }
+}
 
 
 
