@@ -602,28 +602,31 @@ namespace strings {
         const auto* const data = reinterpret_cast<const std::byte*>(u16s.data());
         const size_t size = u16s.size() * 2;
 
-        if ( !add_bom )
-            return byte_vector( data, data + size );
-
         const bool byteswap = endian != std::endian::native;
 
-        byte_vector bys( size + 2 );
+        if ( !add_bom && !byteswap )
+            return byte_vector( data, data + size );
+
+        const size_t ofs = add_bom ? 2 : 0;
+        byte_vector bys( size + ofs );
         if ( byteswap )
         {
-            *reinterpret_cast<u16char_type*>( &bys[ 0 ] ) = 0xfffe;
+            if ( add_bom )
+                *reinterpret_cast<u16char_type*>( &bys[ 0 ] ) = 0xfffe;
             for ( size_t i = 0; i < size; i += 2 )
             {
-                bys[ i+2+0 ] = data[ i+1 ];
-                bys[ i+2+1 ] = data[ i+0 ];
+                bys[ ofs+i+0 ] = data[ i+1 ];
+                bys[ ofs+i+1 ] = data[ i+0 ];
             } // for ...
         }
         else
         {
-            *reinterpret_cast<u16char_type*>( &bys[ 0 ] ) = 0xfeff;
+            if ( add_bom )
+                *reinterpret_cast<u16char_type*>( &bys[ 0 ] ) = 0xfeff;
             for ( size_t i = 0; i < size; i += 2 )
             {
-                bys[ i+2+0 ] = data[ i+0 ];
-                bys[ i+2+1 ] = data[ i+1 ];
+                bys[ ofs+i+0 ] = data[ i+0 ];
+                bys[ ofs+i+1 ] = data[ i+1 ];
             } // for ...
         }
 
@@ -635,32 +638,35 @@ namespace strings {
         const auto* const data = reinterpret_cast<const std::byte*>(u32s.data());
         const size_t size = u32s.size() * 4;
 
-        if ( !add_bom )
-            return byte_vector( data, data + size );
-
         const bool byteswap = endian != std::endian::native;
 
-        byte_vector bys( size + 4 );
+        if ( !add_bom && !byteswap )
+            return byte_vector( data, data + size );
+
+        const size_t ofs = add_bom ? 4 : 0;
+        byte_vector bys( size + ofs );
         if ( byteswap )
         {
-            *reinterpret_cast<u32char_type*>( &bys[ 0 ] ) = 0xfffe'0000;
+            if ( add_bom )
+                *reinterpret_cast<u32char_type*>( &bys[ 0 ] ) = 0xfffe'0000;
             for ( size_t i = 0; i < size; i += 4 )
             {
-                bys[ i+4+0 ] = data[ i+3 ];
-                bys[ i+4+1 ] = data[ i+2 ];
-                bys[ i+4+2 ] = data[ i+1 ];
-                bys[ i+4+3 ] = data[ i+0 ];
+                bys[ ofs+i+0 ] = data[ i+3 ];
+                bys[ ofs+i+1 ] = data[ i+2 ];
+                bys[ ofs+i+2 ] = data[ i+1 ];
+                bys[ ofs+i+3 ] = data[ i+0 ];
             } // for ...
         }
         else
         {
-            *reinterpret_cast<u32char_type*>( &bys[ 0 ] ) = 0x0000'feff;
+            if ( add_bom )
+                *reinterpret_cast<u32char_type*>( &bys[ 0 ] ) = 0x0000'feff;
             for ( size_t i = 0; i < size; i += 4 )
             {
-                bys[ i+4+0 ] = data[ i+0 ];
-                bys[ i+4+1 ] = data[ i+1 ];
-                bys[ i+4+2 ] = data[ i+2 ];
-                bys[ i+4+3 ] = data[ i+3 ];
+                bys[ ofs+i+0 ] = data[ i+0 ];
+                bys[ ofs+i+1 ] = data[ i+1 ];
+                bys[ ofs+i+2 ] = data[ i+2 ];
+                bys[ ofs+i+3 ] = data[ i+3 ];
             } // for ...
         }
 
