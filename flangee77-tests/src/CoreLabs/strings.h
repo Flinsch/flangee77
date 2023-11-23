@@ -24,7 +24,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  to ASCII/Latin-1 from " from) ) \
         { prefix"pure ASCII", "pure ASCII", true }, \
         { prefix"ß", "ß", false }, /* valid Latin-1 character, but invalid ASCII character */ \
         { prefix"\u0100", "\x1a", true }, /* invalid Latin-1 character, but valid replacement character (even ASCII) */ \
-        { prefix"aou aöü \ud7ff\ue000 123", "aou aöü \x1a\x1a 123", false }, /* just some valid and invalid code points */ \
+        { prefix"aou äöü \ud7ff\ue000 123", "aou äöü \x1a\x1a 123", false }, /* just some valid and invalid code points */ \
         { prefix"\u0080", "\x80", false }, /* lowest non-ASCII character */ \
         { prefix"\u00ff", "\xff", false }, /* highest Latin-1 character */ \
     }; \
@@ -55,6 +55,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  to UTF-8 from ASCII/Latin-1") )
     const std::vector<Entry> container {
         { "pure ASCII", u8"pure ASCII", 10 }, // 1 byte per character
         { "\xdf", u8"ß", 2 }, // 2-byte sequence
+        { "aou äöü \x1a\x1a 123", u8"aou äöü \x1a\x1a 123", 17 }, /* just some "random" characters */ \
         { "\x80", u8"\u0080", 2 }, /* lowest non-ASCII character */ \
         { "\xff", u8"\u00ff", 2 }, /* highest Latin-1 character */ \
     };
@@ -336,6 +337,145 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16(const u32string_view&)") )
         const cl7::u16string_view u16s{ reinterpret_cast<const cl7::u16char_type*>( &entry.u16d[0] ) };
 
         TESTLABS_CHECK_EQ( cl7::strings::to_utf16( u32s ), u16s );
+    }
+}
+
+
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(const byte_span&)") )
+{
+    struct Entry
+    {
+        cl7::byte_vector bytes;
+        cl7::astring_view expected;
+        bool check_ascii;
+    } entry;
+
+    const std::vector<Entry> container {
+        { cl7::make_bytes( 0x70, 0x75, 0x72, 0x65, 0x20, 0x41, 0x53, 0x43, 0x49, 0x49 ), "pure ASCII", true },
+        { cl7::make_bytes( 0xdf ), "ß", false }, /* valid Latin-1 character, but invalid ASCII character */
+        { cl7::make_bytes( 0x61,0x6f,0x75, 0x20, 0xe4,0xf6,0xfc, 0x20, 0x1a,0x1a, 0x20, 0x31,0x32,0x33 ), "aou äöü \x1a\x1a 123", false }, /* just some "random" characters */
+        { cl7::make_bytes( 0x80 ), "\x80", false }, /* lowest non-ASCII character */
+        { cl7::make_bytes( 0xff ), "\xff", false }, /* highest Latin-1 character */
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    {
+        TESTLABS_CHECK_EQ( cl7::strings::to_latin1( entry.bytes ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8_unchecked(const byte_span&)") )
+{
+    struct Entry
+    {
+        cl7::byte_vector bytes;
+        cl7::u8string_view expected;
+        size_t byte_count;
+    } entry;
+
+    const std::vector<Entry> container {
+        { cl7::make_bytes( 0x70, 0x75, 0x72, 0x65, 0x20, 0x41, 0x53, 0x43, 0x49, 0x49 ), u8"pure ASCII", 10 },
+        { cl7::make_bytes( 0xc3,0x9f ), u8"ß", 2 }, /* valid Latin-1 character, but invalid ASCII character */
+        { cl7::make_bytes( 0x61,0x6f,0x75, 0x20, 0xc3,0xa4,0xc3,0xb6,0xc3,0xbc, 0x20, 0x1a,0x1a, 0x20, 0x31,0x32,0x33 ), u8"aou äöü \x1a\x1a 123", 17 }, /* just some "random" characters */
+        { cl7::make_bytes( 0xc2,0x80 ), u8"\u0080", 2 }, /* lowest non-ASCII character */
+        { cl7::make_bytes( 0xc3,0xbf ), u8"\u00ff", 2 }, /* highest Latin-1 character */
+        { cl7::make_bytes( 0x80,0xff,0xc2,0xc3 ), (const cl7::u8char_type*)"\x80\xff\xc2\xc3", 4 }, /* Invalid character sequence (should stay the same) */
+        { cl7::make_bytes( 0xef,0xbb,0xbf ), u8"", 0 }, /* BOM only */
+        { cl7::make_bytes( 0xef,0xbb,0xbf, 0x20 ), u8" ", 1 }, /* BOM with "something" */
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    {
+        auto actual = cl7::strings::to_utf8_unchecked( entry.bytes );
+        TESTLABS_CHECK_EQ( actual, entry.expected );
+        TESTLABS_CHECK_EQ( actual.size(), entry.byte_count );
+    }
+}
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16_unchecked(const byte_span&)") )
+{
+    struct Entry
+    {
+        cl7::byte_vector bytes;
+        cl7::u16string_view expected;
+        size_t unit_count;
+    } entry;
+
+#pragma warning( push ) // Oh dear, what's next?
+#pragma warning( disable: 6276 ) // I hate myself! But we "need" this in order to cast between semantically different string types (with different character sizes).
+    const std::vector<Entry> container {
+#if ('AB') == 0x4142 // => little endian
+        { cl7::make_bytes( 0x70,0x00, 0x75,0x00, 0x72,0x00, 0x65,0x00, 0x20,0x00, 0x41,0x00, 0x53,0x00, 0x43,0x00, 0x49,0x00, 0x49,0x00 ), u"pure ASCII", 10 },
+        { cl7::make_bytes( 0xdf,0x00 ), u"ß", 1 }, /* valid Latin-1 character, but invalid ASCII character */
+        { cl7::make_bytes( 0x61,0x00,0x6f,0x00,0x75,0x00, 0x20,0x00, 0xe4,0x00,0xf6,0x00,0xfc,0x00, 0x20,0x00, 0x1a,0x00,0x1a,0x00, 0x20,0x00, 0x31,0x00,0x32,0x00,0x33,0x00 ), u"aou äöü \x1a\x1a 123", 14 }, /* just some "random" characters */
+        { cl7::make_bytes( 0x80,0x00 ), u"\u0080", 1 }, /* lowest non-ASCII character */
+        { cl7::make_bytes( 0xff,0x00 ), u"\u00ff", 1 }, /* highest Latin-1 character */
+        { cl7::make_bytes( 0x00,0xd8, 0xff,0xdb, 0x00,0xdc, 0xff,0xdf ), (const cl7::u16char_type*)"\x00\xd8\xff\xdb\x00\xdc\xff\xdf", 4 }, /* Invalid character sequence (should stay the same) */
+#endif
+#if ('AB') == 0x4241 // => big endian
+        { cl7::make_bytes( 0x00,0x70, 0x00,0x75, 0x00,0x72, 0x00,0x65, 0x00,0x20, 0x00,0x41, 0x00,0x53, 0x00,0x43, 0x00,0x49, 0x00,0x49 ), u"pure ASCII", 10 },
+        { cl7::make_bytes( 0x00,0xdf ), u"ß", 1 }, /* valid Latin-1 character, but invalid ASCII character */
+        { cl7::make_bytes( 0x00,0x61,0x00,0x6f,0x00,0x75, 0x00,0x20, 0x00,0xe4,0x00,0xf6,0x00,0xfc, 0x00,0x20, 0x00,0x1a,0x00,0x1a, 0x00,0x20, 0x00,0x31,0x00,0x32,0x00,0x33 ), u"aou äöü \x1a\x1a 123", 14 }, /* just some "random" characters */
+        { cl7::make_bytes( 0x00,0x80 ), u"\u0080", 1 }, /* lowest non-ASCII character */
+        { cl7::make_bytes( 0x00,0xff ), u"\u00ff", 1 }, /* highest Latin-1 character */
+        { cl7::make_bytes( 0xd8,0x00, 0xdb,0xff, 0xdc,0x00, 0xdf,0xff ), (const cl7::u16char_type*)"\xd8\x00\xdb\xff\xdc\x00\xdf\xff", 4 }, /* Invalid character sequence (should stay the same) */
+#endif
+        { cl7::make_bytes( 0xff,0xfe ), u"", 0 }, /* BOM only (little endian) */
+        { cl7::make_bytes( 0xfe,0xff ), u"", 0 }, /* BOM only (big endian) */
+        { cl7::make_bytes( 0xff,0xfe, 0x20,0x00 ), u" ", 1 }, /* BOM (little endian) with "something" */
+        { cl7::make_bytes( 0xfe,0xff, 0x00,0x20 ), u" ", 1 }, /* BOM (big endian) with "something" */
+    };
+#pragma warning( pop ) // Finally!
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    {
+        auto actual = cl7::strings::to_utf16_unchecked( entry.bytes );
+        TESTLABS_CHECK_EQ( actual, entry.expected );
+        TESTLABS_CHECK_EQ( actual.size(), entry.unit_count );
+    }
+}
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf32_unchecked(const byte_span&)") )
+{
+    struct Entry
+    {
+        cl7::byte_vector bytes;
+        cl7::u32string_view expected;
+        size_t unit_count;
+    } entry;
+
+#pragma warning( push ) // Oh dear, what's next?
+#pragma warning( disable: 6276 ) // I hate myself! But we "need" this in order to cast between semantically different string types (with different character sizes).
+    const std::vector<Entry> container {
+#if ('AB') == 0x4142 // => little endian
+        { cl7::make_bytes( 0x70,0x00,0x00,0x00, 0x75,0x00,0x00,0x00, 0x72,0x00,0x00,0x00, 0x65,0x00,0x00,0x00, 0x20,0x00,0x00,0x00, 0x41,0x00,0x00,0x00, 0x53,0x00,0x00,0x00, 0x43,0x00,0x00,0x00, 0x49,0x00,0x00,0x00, 0x49,0x00,0x00,0x00 ), U"pure ASCII", 10 },
+        { cl7::make_bytes( 0xdf,0x00,0x00,0x00 ), U"ß", 1 }, /* valid Latin-1 character, but invalid ASCII character */
+        { cl7::make_bytes( 0x61,0x00,0x00,0x00,0x6f,0x00,0x00,0x00,0x75,0x00,0x00,0x00, 0x20,0x00,0x00,0x00, 0xe4,0x00,0x00,0x00,0xf6,0x00,0x00,0x00,0xfc,0x00,0x00,0x00, 0x20,0x00,0x00,0x00, 0x1a,0x00,0x00,0x00,0x1a,0x00,0x00,0x00, 0x20,0x00,0x00,0x00, 0x31,0x00,0x00,0x00,0x32,0x00,0x00,0x00,0x33,0x00,0x00,0x00 ), U"aou äöü \x1a\x1a 123", 14 }, /* just some "random" characters */
+        { cl7::make_bytes( 0x80,0x00,0x00,0x00 ), U"\U00000080", 1 }, /* lowest non-ASCII character */
+        { cl7::make_bytes( 0xff,0x00,0x00,0x00 ), U"\U000000ff", 1 }, /* highest Latin-1 character */
+        { cl7::make_bytes( 0x00,0xd8,0x00,0x00, 0xff,0xdb,0x00,0x00, 0x00,0xdc,0x00,0x00, 0xff,0xdf,0x00,0x00 ), (const cl7::u32char_type*)"\x00\xd8\x00\x00\xff\xdb\x00\x00\x00\xdc\x00\x00\xff\xdf\x00\x00", 4 }, /* Invalid character sequence (should stay the same) */
+#endif
+#if ('AB') == 0x4241 // => big endian
+        { cl7::make_bytes( 0x00,0x00,0x00,0x70, 0x00,0x00,0x00,0x75, 0x00,0x00,0x00,0x72, 0x00,0x00,0x00,0x65, 0x00,0x00,0x00,0x20, 0x00,0x00,0x00,0x41, 0x00,0x00,0x00,0x53, 0x00,0x00,0x00,0x43, 0x00,0x00,0x00,0x49, 0x00,0x00,0x00,0x49 ), U"pure ASCII", 10 },
+        { cl7::make_bytes( 0x00,0x00,0x00,0xdf ), U"ß", 1 }, /* valid Latin-1 character, but invalid ASCII character */
+        { cl7::make_bytes( 0x00,0x00,0x00,0x61,0x00,0x00,0x00,0x6f,0x00,0x00,0x00,0x75, 0x00,0x00,0x00,0x20, 0x00,0x00,0x00,0xe4,0x00,0x00,0x00,0xf6,0x00,0x00,0x00,0xfc, 0x00,0x00,0x00,0x20, 0x00,0x00,0x00,0x1a,0x00,0x00,0x00,0x1a, 0x00,0x00,0x00,0x20, 0x00,0x00,0x00,0x31,0x00,0x00,0x00,0x32,0x00,0x00,0x00,0x33 ), U"aou äöü \x1a\x1a 123", 14 }, /* just some "random" characters */
+        { cl7::make_bytes( 0x00,0x00,0x00,0x80 ), U"\U00000080", 1 }, /* lowest non-ASCII character */
+        { cl7::make_bytes( 0x00,0x00,0x00,0xff ), U"\U000000ff", 1 }, /* highest Latin-1 character */
+        { cl7::make_bytes( 0x00,0x00,0xd8,0x00, 0x00,0x00,0xdb,0xff, 0x00,0x00,0xdc,0x00, 0x00,0x00,0xdf,0xff ), (const cl7::u32char_type*)"\x00\x00\xd8\x00\x00\x00\xdb\xff\x00\x00\xdc\x00\x00\x00\xdf\xff", 4 }, /* Invalid character sequence (should stay the same) */
+#endif
+        { cl7::make_bytes( 0xff,0xfe,0x00,0x00 ), U"", 0 }, /* BOM only (little endian) */
+        { cl7::make_bytes( 0x00,0x00,0xfe,0xff ), U"", 0 }, /* BOM only (big endian) */
+        { cl7::make_bytes( 0xff,0xfe,0x00,0x00, 0x20,0x00,0x00,0x00 ), U" ", 1 }, /* BOM (little endian) with "something" */
+        { cl7::make_bytes( 0x00,0x00,0xfe,0xff, 0x00,0x00,0x00,0x20 ), U" ", 1 }, /* BOM (big endian) with "something" */
+    };
+#pragma warning( pop ) // Finally!
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    {
+        auto actual = cl7::strings::to_utf32_unchecked( entry.bytes );
+        TESTLABS_CHECK_EQ( actual, entry.expected );
+        TESTLABS_CHECK_EQ( actual.size(), entry.unit_count );
     }
 }
 
