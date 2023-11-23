@@ -10,6 +10,29 @@
 
 
 
+namespace cl7 {
+    template <> inline
+    cl7::string to_string(const byte_vector& bytes)
+    {
+        cl7::string s( bytes.size() * 4 + 2, TEXT(' ') );
+        s[ 0 ] = TEXT('{');
+        for ( size_t i = 0; i < bytes.size(); ++i )
+        {
+            const cl7::char_type byte = static_cast<cl7::char_type>( bytes[ i ] ) & 0xff;
+            const cl7::char_type lo = byte & 0xf;
+            const cl7::char_type hi = (byte >> 4) & 0xf;
+            s[ i * 4 + 1 ] = TEXT('\\');
+            s[ i * 4 + 2 ] = TEXT('x');
+            s[ i * 4 + 3 ] = hi < 10 ? TEXT('0') + hi : TEXT('a') + hi - 10;
+            s[ i * 4 + 4 ] = lo < 10 ? TEXT('0') + lo : TEXT('a') + lo - 10;
+        }
+        s[ bytes.size() * 4 + 1 ] = TEXT('}');
+        return s;
+    }
+}
+
+
+
 #define CoreLabs_strings_to_ASCII_Latin1_from_UTFx(from, type, prefix) \
 TESTLABS_CASE( TEXT("CoreLabs:  strings:  to ASCII/Latin-1 from " from) ) \
 { \
@@ -346,7 +369,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(const byte_span&)") )
 {
     struct Entry
     {
-        cl7::byte_vector bytes;
+        cl7::byte_vector input;
         cl7::astring_view expected;
         bool check_ascii;
     } entry;
@@ -361,7 +384,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(const byte_span&)") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
     {
-        TESTLABS_CHECK_EQ( cl7::strings::to_latin1( entry.bytes ), entry.expected );
+        TESTLABS_CHECK_EQ( cl7::strings::to_latin1( entry.input ), entry.expected );
     }
 }
 
@@ -369,7 +392,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8_unchecked(const byte_span&)") )
 {
     struct Entry
     {
-        cl7::byte_vector bytes;
+        cl7::byte_vector input;
         cl7::u8string_view expected;
         size_t byte_count;
     } entry;
@@ -387,7 +410,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8_unchecked(const byte_span&)") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
     {
-        auto actual = cl7::strings::to_utf8_unchecked( entry.bytes );
+        auto actual = cl7::strings::to_utf8_unchecked( entry.input );
         TESTLABS_CHECK_EQ( actual, entry.expected );
         TESTLABS_CHECK_EQ( actual.size(), entry.byte_count );
     }
@@ -397,7 +420,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16_unchecked(const byte_span&)") 
 {
     struct Entry
     {
-        cl7::byte_vector bytes;
+        cl7::byte_vector input;
         cl7::u16string_view expected;
         size_t unit_count;
     } entry;
@@ -430,7 +453,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16_unchecked(const byte_span&)") 
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
     {
-        auto actual = cl7::strings::to_utf16_unchecked( entry.bytes );
+        auto actual = cl7::strings::to_utf16_unchecked( entry.input );
         TESTLABS_CHECK_EQ( actual, entry.expected );
         TESTLABS_CHECK_EQ( actual.size(), entry.unit_count );
     }
@@ -440,7 +463,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf32_unchecked(const byte_span&)") 
 {
     struct Entry
     {
-        cl7::byte_vector bytes;
+        cl7::byte_vector input;
         cl7::u32string_view expected;
         size_t unit_count;
     } entry;
@@ -473,9 +496,132 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf32_unchecked(const byte_span&)") 
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
     {
-        auto actual = cl7::strings::to_utf32_unchecked( entry.bytes );
+        auto actual = cl7::strings::to_utf32_unchecked( entry.input );
         TESTLABS_CHECK_EQ( actual, entry.expected );
         TESTLABS_CHECK_EQ( actual.size(), entry.unit_count );
+    }
+}
+
+
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(const astring_view&)") )
+{
+    struct Entry
+    {
+        cl7::astring_view input;
+        cl7::byte_vector expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { "pure ASCII", cl7::make_bytes( 0x70, 0x75, 0x72, 0x65, 0x20, 0x41, 0x53, 0x43, 0x49, 0x49 ) },
+        { "ß", cl7::make_bytes( 0xdf ) }, /* valid Latin-1 character, but invalid ASCII character */
+        { "aou äöü \x1a\x1a 123", cl7::make_bytes( 0x61,0x6f,0x75, 0x20, 0xe4,0xf6,0xfc, 0x20, 0x1a,0x1a, 0x20, 0x31,0x32,0x33 ), }, /* just some "random" characters */
+        { "\x80", cl7::make_bytes( 0x80 ) }, /* lowest non-ASCII character */
+        { "\xff", cl7::make_bytes( 0xff ) }, /* highest Latin-1 character */
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    {
+        auto actual = cl7::strings::to_bytes( entry.input );
+        TESTLABS_CHECK_EQ( actual, entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(const u8string_view&, bool)") )
+{
+    struct Entry
+    {
+        cl7::u8string_view input;
+        bool add_bom;
+        cl7::byte_vector expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"pure ASCII", false, cl7::make_bytes( 0x70, 0x75, 0x72, 0x65, 0x20, 0x41, 0x53, 0x43, 0x49, 0x49 ) },
+        { u8"ß", false, cl7::make_bytes( 0xc3,0x9f ) }, /* valid Latin-1 character, but invalid ASCII character */
+        { u8"aou äöü \x1a\x1a 123", false, cl7::make_bytes( 0x61,0x6f,0x75, 0x20, 0xc3,0xa4,0xc3,0xb6,0xc3,0xbc, 0x20, 0x1a,0x1a, 0x20, 0x31,0x32,0x33 ) }, /* just some "random" characters */
+        { u8"\u0080", false, cl7::make_bytes( 0xc2,0x80 ) }, /* lowest non-ASCII character */
+        { u8"\u00ff", false, cl7::make_bytes( 0xc3,0xbf ) }, /* highest Latin-1 character */
+        { u8"", true, cl7::make_bytes( 0xef,0xbb,0xbf ) }, /* BOM only */
+        { u8" ", true, cl7::make_bytes( 0xef,0xbb,0xbf, 0x20 ) }, /* BOM with "something" */
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    {
+        auto actual = cl7::strings::to_bytes( entry.input, entry.add_bom );
+        TESTLABS_CHECK_EQ( actual, entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(const u16string_view&, bool, std::endian)") )
+{
+    struct Entry
+    {
+        cl7::u16string_view input;
+        bool add_bom;
+        std::endian endian;
+        cl7::byte_vector expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u"pure ASCII", false, std::endian::little, cl7::make_bytes( 0x70,0x00, 0x75,0x00, 0x72,0x00, 0x65,0x00, 0x20,0x00, 0x41,0x00, 0x53,0x00, 0x43,0x00, 0x49,0x00, 0x49,0x00 ) },
+        { u"ß", false, std::endian::little, cl7::make_bytes( 0xdf,0x00 ) }, /* valid Latin-1 character, but invalid ASCII character */
+        { u"aou äöü \x1a\x1a 123", false, std::endian::little, cl7::make_bytes( 0x61,0x00,0x6f,0x00,0x75,0x00, 0x20,0x00, 0xe4,0x00,0xf6,0x00,0xfc,0x00, 0x20,0x00, 0x1a,0x00,0x1a,0x00, 0x20,0x00, 0x31,0x00,0x32,0x00,0x33,0x00 ) }, /* just some "random" characters */
+        { u"\u0080", false, std::endian::little, cl7::make_bytes( 0x80,0x00 ) }, /* lowest non-ASCII character */
+        { u"\u00ff", false, std::endian::little, cl7::make_bytes( 0xff,0x00 ) }, /* highest Latin-1 character */
+
+        { u"pure ASCII", false, std::endian::big, cl7::make_bytes( 0x00,0x70, 0x00,0x75, 0x00,0x72, 0x00,0x65, 0x00,0x20, 0x00,0x41, 0x00,0x53, 0x00,0x43, 0x00,0x49, 0x00,0x49 ) },
+        { u"ß", false, std::endian::big, cl7::make_bytes( 0x00,0xdf ) }, /* valid Latin-1 character, but invalid ASCII character */
+        { u"aou äöü \x1a\x1a 123", false, std::endian::big, cl7::make_bytes( 0x00,0x61,0x00,0x6f,0x00,0x75, 0x00,0x20, 0x00,0xe4,0x00,0xf6,0x00,0xfc, 0x00,0x20, 0x00,0x1a,0x00,0x1a, 0x00,0x20, 0x00,0x31,0x00,0x32,0x00,0x33 ) }, /* just some "random" characters */
+        { u"\u0080", false, std::endian::big, cl7::make_bytes( 0x00,0x80 ) }, /* lowest non-ASCII character */
+        { u"\u00ff", false, std::endian::big, cl7::make_bytes( 0x00,0xff ) }, /* highest Latin-1 character */
+
+        { u"", true, std::endian::little, cl7::make_bytes( 0xff,0xfe ) }, /* BOM only (little endian) */
+        { u"", true, std::endian::big, cl7::make_bytes( 0xfe,0xff ) }, /* BOM only (big endian) */
+        { u" ", true, std::endian::little, cl7::make_bytes( 0xff,0xfe, 0x20,0x00 ) }, /* BOM (little endian) with "something" */
+        { u" ", true, std::endian::big, cl7::make_bytes( 0xfe,0xff, 0x00,0x20 ) }, /* BOM (big endian) with "something" */
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    {
+        auto actual = cl7::strings::to_bytes( entry.input, entry.add_bom, entry.endian );
+        TESTLABS_CHECK_EQ( actual, entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(const u32string_view&, bool, std::endian)") )
+{
+    struct Entry
+    {
+        cl7::u32string_view input;
+        bool add_bom;
+        std::endian endian;
+        cl7::byte_vector expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { U"pure ASCII", false, std::endian::little, cl7::make_bytes( 0x70,0x00,0x00,0x00, 0x75,0x00,0x00,0x00, 0x72,0x00,0x00,0x00, 0x65,0x00,0x00,0x00, 0x20,0x00,0x00,0x00, 0x41,0x00,0x00,0x00, 0x53,0x00,0x00,0x00, 0x43,0x00,0x00,0x00, 0x49,0x00,0x00,0x00, 0x49,0x00,0x00,0x00 ) },
+        { U"ß", false, std::endian::little, cl7::make_bytes( 0xdf,0x00,0x00,0x00 ) }, /* valid Latin-1 character, but invalid ASCII character */
+        { U"aou äöü \x1a\x1a 123", false, std::endian::little, cl7::make_bytes( 0x61,0x00,0x00,0x00,0x6f,0x00,0x00,0x00,0x75,0x00,0x00,0x00, 0x20,0x00,0x00,0x00, 0xe4,0x00,0x00,0x00,0xf6,0x00,0x00,0x00,0xfc,0x00,0x00,0x00, 0x20,0x00,0x00,0x00, 0x1a,0x00,0x00,0x00,0x1a,0x00,0x00,0x00, 0x20,0x00,0x00,0x00, 0x31,0x00,0x00,0x00,0x32,0x00,0x00,0x00,0x33,0x00,0x00,0x00 ) }, /* just some "random" characters */
+        { U"\U00000080", false, std::endian::little, cl7::make_bytes( 0x80,0x00,0x00,0x00 ) }, /* lowest non-ASCII character */
+        { U"\U000000ff", false, std::endian::little, cl7::make_bytes( 0xff,0x00,0x00,0x00 ) }, /* highest Latin-1 character */
+
+        { U"pure ASCII", false, std::endian::big, cl7::make_bytes( 0x00,0x00,0x00,0x70, 0x00,0x00,0x00,0x75, 0x00,0x00,0x00,0x72, 0x00,0x00,0x00,0x65, 0x00,0x00,0x00,0x20, 0x00,0x00,0x00,0x41, 0x00,0x00,0x00,0x53, 0x00,0x00,0x00,0x43, 0x00,0x00,0x00,0x49, 0x00,0x00,0x00,0x49 ) },
+        { U"ß", false, std::endian::big, cl7::make_bytes( 0x00,0x00,0x00,0xdf ) }, /* valid Latin-1 character, but invalid ASCII character */
+        { U"aou äöü \x1a\x1a 123", false, std::endian::big, cl7::make_bytes( 0x00,0x00,0x00,0x61,0x00,0x00,0x00,0x6f,0x00,0x00,0x00,0x75, 0x00,0x00,0x00,0x20, 0x00,0x00,0x00,0xe4,0x00,0x00,0x00,0xf6,0x00,0x00,0x00,0xfc, 0x00,0x00,0x00,0x20, 0x00,0x00,0x00,0x1a,0x00,0x00,0x00,0x1a, 0x00,0x00,0x00,0x20, 0x00,0x00,0x00,0x31,0x00,0x00,0x00,0x32,0x00,0x00,0x00,0x33 ) }, /* just some "random" characters */
+        { U"\U00000080", false, std::endian::big, cl7::make_bytes( 0x00,0x00,0x00,0x80 ) }, /* lowest non-ASCII character */
+        { U"\U000000ff", false, std::endian::big, cl7::make_bytes( 0x00,0x00,0x00,0xff ) }, /* highest Latin-1 character */
+
+        { U"", true, std::endian::little, cl7::make_bytes( 0xff,0xfe,0x00,0x00 ) }, /* BOM only (little endian) */
+        { U"", true, std::endian::big, cl7::make_bytes( 0x00,0x00,0xfe,0xff ) }, /* BOM only (big endian) */
+        { U" ", true, std::endian::little, cl7::make_bytes( 0xff,0xfe,0x00,0x00, 0x20,0x00,0x00,0x00 ) }, /* BOM (little endian) with "something" */
+        { U" ", true, std::endian::big, cl7::make_bytes( 0x00,0x00,0xfe,0xff, 0x00,0x00,0x00,0x20 ) }, /* BOM (big endian) with "something" */
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    {
+        auto actual = cl7::strings::to_bytes( entry.input, entry.add_bom, entry.endian );
+        TESTLABS_CHECK_EQ( actual, entry.expected );
     }
 }
 
