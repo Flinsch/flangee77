@@ -1,5 +1,7 @@
 #include "GraphicsSystemImpl.h"
 
+#include "./RenderingDeviceImpl.h"
+
 #include <CoreLabs/errors.h>
 #include <CoreLabs/logging.h>
 
@@ -47,7 +49,7 @@ namespace direct3d9 {
      */
     RenderingDevice* GraphicsSystemImpl::_rendering_device_factory()
     {
-        return nullptr;
+        return new RenderingDeviceImpl();
     }
 
 
