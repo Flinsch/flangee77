@@ -11,8 +11,8 @@ namespace errors {
 
 
 
-    /*cl7::string directx_result(long error_code);
-    cl7::string directx_result(long error_code, const cl7::string_view& context);*/
+    cl7::string directx_result(long error_code);
+    cl7::string directx_result(long error_code, const cl7::string_view& context);
 
 
 

@@ -61,6 +61,10 @@ private:
     // Properties
     // #############################################################################
 public:
+    /**
+     * Returns the Direct3D 9 main interface.
+     */
+    IDirect3D9* get_raw_d3d_interface() const { return _d3d_interface.Get(); }
 
 
 

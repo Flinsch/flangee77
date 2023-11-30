@@ -20,6 +20,17 @@ class MainWindow final
 
 
 
+public:
+    enum class DisplayMode
+    {
+        Unknown,
+        Fullscreen,
+        Borderless,
+        Windowed,
+    }; // enum class DisplayMode
+
+
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
@@ -50,6 +61,11 @@ private:
      * The handle of the window.
      */
     HWND _handle;
+
+    /**
+     * The display mode (fullscreen, borderless, or windowed).
+     */
+    DisplayMode _display_mode;
 
     /**
      * The window width, in pixels.
@@ -91,6 +107,11 @@ public:
      * Returns the handle of the window.
      */
     const HWND get_handle() const { return _handle; }
+
+    /**
+     * Returns the display mode.
+     */
+    DisplayMode get_display_mode() const { return _display_mode; }
 
     /**
      * Returns the window width, in pixels.
@@ -210,6 +231,10 @@ private:
         LPARAM lparam);
 
 }; // class MainWindow
+
+
+
+    inline MainWindow& main_window() { return MainWindow::instance(); }
 
 
 

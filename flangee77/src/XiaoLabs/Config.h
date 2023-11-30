@@ -54,6 +54,8 @@ struct Config
             unsigned            width;
             /** The screen height, in pixels (0: use default/desktop height). */
             unsigned            height;
+            /** The refresh rate, in Hz (0: adapter default). */
+            unsigned            refresh_rate;
         }                   display_mode;
     } video;
 

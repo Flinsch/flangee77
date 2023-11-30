@@ -21,6 +21,7 @@ namespace xl7 {
         video.display_mode.fullscreen = false;
         video.display_mode.width = 0;
         video.display_mode.height = 0;
+        video.display_mode.refresh_rate = 0;
     }
 
 

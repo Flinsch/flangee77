@@ -52,7 +52,7 @@ private:
     /**
      * Initializes the component.
      */
-    virtual bool _init_impl() override;
+    virtual bool _init_impl(MemoryInfo& memory_info) override;
 
     /**
      * De-initializes the component.

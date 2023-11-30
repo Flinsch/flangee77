@@ -35,7 +35,8 @@ namespace errors {
             NULL );
 
         cl7::osstream oss;
-        oss << error_code << TEXT(" - ") << buffer;
+        oss << std::hex << TEXT("0x") << error_code;
+        oss << TEXT(" - ") << buffer;
         return oss.str();
     }
 

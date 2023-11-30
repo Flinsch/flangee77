@@ -18,6 +18,7 @@ namespace xl7 {
      */
     MainWindow::MainWindow()
         : _handle( NULL )
+        , _display_mode( DisplayMode::Unknown )
         , _width( 0 )
         , _height( 0 )
         , _title( TEXT("flangee77") )
@@ -210,23 +211,27 @@ namespace xl7 {
 
         // Define the window style and position,
         // depending on the display mode.
+        DisplayMode display_mode = DisplayMode::Unknown;
         DWORD style;
         int x, y;
         if ( get_config().video.display_mode.fullscreen )
         {
             // Fullscreen mode
+            display_mode = DisplayMode::Fullscreen;
             style = WS_POPUP | WS_MAXIMIZE;
             x = y = 0;
         }
         else if ( width == screen_width && height == screen_height )
         {
             // Borderless mode
+            display_mode = DisplayMode::Borderless;
             style = WS_POPUP | WS_MAXIMIZE;
             x = y = 0;
         }
         else
         {
             // Windowed mode
+            display_mode = DisplayMode::Windowed;
             style = WS_OVERLAPPEDWINDOW;
             x = (screen_width - width) / 2;
             y = (screen_height - height) / 2;
@@ -253,6 +258,7 @@ namespace xl7 {
             return false;
         }
 
+        _display_mode = display_mode;
         _width = static_cast<unsigned>( width );
         _height = static_cast<unsigned>( height );
 

@@ -11,8 +11,8 @@ namespace xl7 {
 
 
 
-    graphics::GraphicsSystem& graphics_system() { return graphics::GraphicsSystem::instance(); }
-    graphics::RenderingDevice* rendering_device() { return graphics_system().get_rendering_device(); }
+    inline graphics::GraphicsSystem& graphics_system() { return graphics::GraphicsSystem::instance(); }
+    inline graphics::RenderingDevice* rendering_device() { return graphics_system().get_rendering_device(); }
 
 
 

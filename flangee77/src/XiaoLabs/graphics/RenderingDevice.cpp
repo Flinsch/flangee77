@@ -15,7 +15,8 @@ namespace graphics {
      * Explicit constructor.
      */
     RenderingDevice::RenderingDevice(std::unique_ptr<ResourceManager> resource_manager)
-        : _resource_manager( std::move(resource_manager) )
+        : _memory_info()
+        , _resource_manager( std::move(resource_manager) )
     {
     }
 
@@ -30,7 +31,9 @@ namespace graphics {
      */
     bool RenderingDevice::_init()
     {
-        return _init_impl();
+        ::memset( &_memory_info, 0, sizeof(_memory_info) );
+
+        return _init_impl( _memory_info );
     }
 
     /**

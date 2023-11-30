@@ -30,7 +30,7 @@ namespace direct3d11 {
     /**
      * Initializes the component.
      */
-    bool RenderingDeviceImpl::_init_impl()
+    bool RenderingDeviceImpl::_init_impl(MemoryInfo& memory_info)
     {
         return true;
     }
