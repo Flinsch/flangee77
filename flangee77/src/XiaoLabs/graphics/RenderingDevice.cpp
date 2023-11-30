@@ -21,5 +21,27 @@ namespace graphics {
 
 
 
+    // #############################################################################
+    // Lifetime Management
+    // #############################################################################
+
+    /**
+     * Initializes the rendering device.
+     */
+    bool RenderingDevice::_init()
+    {
+        return _init_impl();
+    }
+
+    /**
+     * De-initializes the rendering device.
+     */
+    bool RenderingDevice::_shutdown()
+    {
+        return _shutdown_impl();
+    }
+
+
+
 } // namespace graphics
 } // namespace xl7

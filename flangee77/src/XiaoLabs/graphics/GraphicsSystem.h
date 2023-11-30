@@ -126,19 +126,19 @@ private:
      * Performs preliminary initialization steps so that the rendering device can be
      * created afterwards.
      */
-    virtual bool _init_before_rendering_device() = 0;
+    virtual bool _init_before_rendering_device_impl() = 0;
 
     /**
      * Handles any remaining cleanup actions after the rendering device has been
      * destroyed.
      */
-    virtual bool _shutdown_after_rendering_device() = 0;
+    virtual bool _shutdown_after_rendering_device_impl() = 0;
 
     /**
      * Creates the rendering device (and all of its manager objects), but without
      * fully initializing it so that it can be initialized afterwards.
      */
-    virtual RenderingDevice* _rendering_device_factory() = 0;
+    virtual RenderingDevice* _rendering_device_factory_impl() = 0;
 
 }; // class GraphicsSystem
 

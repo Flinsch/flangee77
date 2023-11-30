@@ -76,14 +76,30 @@ private:
     // #############################################################################
 private:
     /**
-     * Initializes the component.
+     * Initializes the rendering device.
      */
-    virtual bool _init() = 0;
+    bool _init();
 
     /**
-     * De-initializes the component.
+     * De-initializes the rendering device.
      */
-    virtual bool _shutdown() = 0;
+    bool _shutdown();
+
+
+
+    // #############################################################################
+    // Prototypes
+    // #############################################################################
+private:
+    /**
+     * Initializes the rendering device.
+     */
+    virtual bool _init_impl() = 0;
+
+    /**
+     * De-initializes the rendering device.
+     */
+    virtual bool _shutdown_impl() = 0;
 
 }; // class RenderingDevice
 

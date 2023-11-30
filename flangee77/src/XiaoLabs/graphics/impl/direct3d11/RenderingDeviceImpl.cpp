@@ -24,13 +24,13 @@ namespace direct3d11 {
 
 
     // #############################################################################
-    // Lifetime Management
+    // RenderingDevice Implementations
     // #############################################################################
 
     /**
      * Initializes the component.
      */
-    bool RenderingDeviceImpl::_init()
+    bool RenderingDeviceImpl::_init_impl()
     {
         return true;
     }
@@ -38,7 +38,7 @@ namespace direct3d11 {
     /**
      * De-initializes the component.
      */
-    bool RenderingDeviceImpl::_shutdown()
+    bool RenderingDeviceImpl::_shutdown_impl()
     {
         return true;
     }

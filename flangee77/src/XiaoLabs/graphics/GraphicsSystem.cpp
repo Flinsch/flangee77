@@ -63,7 +63,7 @@ namespace graphics {
      */
     bool GraphicsSystem::_init()
     {
-        const bool result = _init_before_rendering_device() && _create_rendering_device();
+        const bool result = _init_before_rendering_device_impl() && _create_rendering_device();
 
         if ( result )
             LOG_SUCCESS( TEXT("The graphics component based on " XL7_GRAPHICS_IMPL_NAME " has been successfully initialized.") );
@@ -79,7 +79,7 @@ namespace graphics {
     bool GraphicsSystem::_shutdown()
     {
         bool result = _destroy_rendering_device();
-        if ( !_shutdown_after_rendering_device() )
+        if ( !_shutdown_after_rendering_device_impl() )
             result = false;
 
         if ( result )
@@ -101,7 +101,7 @@ namespace graphics {
      */
     bool GraphicsSystem::_create_rendering_device()
     {
-        _rendering_device.reset( _rendering_device_factory() );
+        _rendering_device.reset( _rendering_device_factory_impl() );
         if ( !_rendering_device )
         {
             LOG_ERROR( TEXT("The rendering device could not be created.") );
@@ -113,6 +113,8 @@ namespace graphics {
             LOG_ERROR( TEXT("The rendering device could not be initialized.") );
             return false;
         }
+
+        LOG( TEXT("The rendering device has been created and initialized.") );
 
         return true;
     }

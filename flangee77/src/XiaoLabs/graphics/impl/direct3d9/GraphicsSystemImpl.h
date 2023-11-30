@@ -79,19 +79,19 @@ private:
      * Performs preliminary initialization steps so that the rendering device can be
      * created afterwards.
      */
-    virtual bool _init_before_rendering_device() override;
+    virtual bool _init_before_rendering_device_impl() override;
 
     /**
      * Handles any remaining cleanup actions after the rendering device has been
      * destroyed.
      */
-    virtual bool _shutdown_after_rendering_device() override;
+    virtual bool _shutdown_after_rendering_device_impl() override;
 
     /**
      * Creates the rendering device (and all of its manager objects), but without
      * fully initializing it so that it can be initialized afterwards.
      */
-    virtual RenderingDevice* _rendering_device_factory() override;
+    virtual RenderingDevice* _rendering_device_factory_impl() override;
 
 
 

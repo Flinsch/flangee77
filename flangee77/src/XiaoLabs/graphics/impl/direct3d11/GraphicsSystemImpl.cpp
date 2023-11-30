@@ -24,7 +24,7 @@ namespace direct3d11 {
      * Performs preliminary initialization steps so that the rendering device can be
      * created afterwards.
      */
-    bool GraphicsSystemImpl::_init_before_rendering_device()
+    bool GraphicsSystemImpl::_init_before_rendering_device_impl()
     {
         if ( !_create_dxgi_factory() )
             return false;
@@ -36,7 +36,7 @@ namespace direct3d11 {
      * Handles any remaining cleanup actions after the rendering device has been
      * destroyed.
      */
-    bool GraphicsSystemImpl::_shutdown_after_rendering_device()
+    bool GraphicsSystemImpl::_shutdown_after_rendering_device_impl()
     {
         _release_dxgi_factory();
 
@@ -47,7 +47,7 @@ namespace direct3d11 {
      * Creates the rendering device (and all of its manager objects), but without
      * fully initializing it so that it can be initialized afterwards.
      */
-    RenderingDevice* GraphicsSystemImpl::_rendering_device_factory()
+    RenderingDevice* GraphicsSystemImpl::_rendering_device_factory_impl()
     {
         return new RenderingDeviceImpl();
     }

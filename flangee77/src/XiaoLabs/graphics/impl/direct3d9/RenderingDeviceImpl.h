@@ -46,18 +46,18 @@ private:
 
 
     // #############################################################################
-    // Lifetime Management
+    // RenderingDevice Implementations
     // #############################################################################
 private:
     /**
      * Initializes the component.
      */
-    virtual bool _init() override;
+    virtual bool _init_impl() override;
 
     /**
      * De-initializes the component.
      */
-    virtual bool _shutdown() override;
+    virtual bool _shutdown_impl() override;
 
 }; // class RenderingDeviceImpl
 
