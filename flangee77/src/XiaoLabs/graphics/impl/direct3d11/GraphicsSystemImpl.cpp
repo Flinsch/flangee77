@@ -1,11 +1,12 @@
 #include "GraphicsSystemImpl.h"
 
 #include "./RenderingDeviceImpl.h"
+#include "./errors.h"
 
-#include <CoreLabs/errors.h>
 #include <CoreLabs/logging.h>
 
 #pragma comment( lib, "dxgi.lib" )
+#pragma comment( lib, "d3d11.lib" )
 
 
 
@@ -72,7 +73,7 @@ namespace direct3d11 {
         HRESULT hr = ::CreateDXGIFactory( __uuidof(::IDXGIFactory), (void**)_dxgi_factory.ReleaseAndGetAddressOf() );
         if ( FAILED(hr) )
         {
-            LOG_ERROR( cl7::errors::system_result( ::GetLastError(), TEXT("::CreateDXGIFactory") ) );
+            LOG_ERROR( errors::dxgi_result( ::GetLastError(), TEXT("::CreateDXGIFactory") ) );
             return false;
         }
 

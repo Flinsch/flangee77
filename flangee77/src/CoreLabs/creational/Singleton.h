@@ -13,13 +13,9 @@ namespace creational {
 
 
 
-class SingletonManager;
-
-
-
 class SingletonBase
 {
-    friend SingletonManager;
+    friend class SingletonManager;
 
 
 

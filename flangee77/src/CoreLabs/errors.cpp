@@ -1,5 +1,6 @@
 #include "errors.h"
 
+#include <CoreLabs/strings.h>
 #include <CoreLabs/sstream.h>
 
 #include <windows.h>
@@ -14,7 +15,7 @@ namespace errors {
     cl7::string with_context(const cl7::string_view& message, const cl7::string_view& context)
     {
         cl7::osstream oss;
-        oss << message << TEXT(" - ") << cl7::string( context );
+        oss << message << TEXT(" ") << cl7::string( context );
         return oss.str();
     }
 
@@ -25,18 +26,22 @@ namespace errors {
         constexpr unsigned buffer_size = 65536 / sizeof(cl7::char_type);
         static cl7::char_type buffer[ buffer_size ];
 
-        ::FormatMessage(
+        unsigned length = ::FormatMessage(
             FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
             NULL,
             error_code,
-            MAKELANGID( LANG_NEUTRAL, SUBLANG_NEUTRAL ),
+            0,
             buffer,
             buffer_size,
             NULL );
 
         cl7::osstream oss;
         oss << std::hex << TEXT("0x") << error_code;
-        oss << TEXT(" - ") << buffer;
+        oss << TEXT(" ");
+        if ( length )
+            oss << cl7::strings::trimmed( cl7::string( buffer ) );
+        else
+            oss << TEXT("An unknown error occurred.");
         return oss.str();
     }
 

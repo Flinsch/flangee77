@@ -15,7 +15,7 @@ namespace logging {
 class StandardLogger final
     : public creational::Singleton<StandardLogger>
 {
-    friend creational::Singleton<StandardLogger>;
+    friend class creational::Singleton<StandardLogger>;
 
 
 

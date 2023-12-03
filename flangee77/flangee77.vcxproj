@@ -167,6 +167,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\CoreLabs\memory.h" />
     <ClInclude Include="src\CoreLabs\util.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingDeviceImpl.h" />
     <ClInclude Include="src\TestLabs\reporting\Reporter.h" />
@@ -182,6 +183,7 @@
     <ClInclude Include="src\TestLabs\macros.h" />
     <ClInclude Include="src\TestLabs\Meta.h" />
     <ClInclude Include="src\XiaoLabs\graphics.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\errors.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\RenderingDeviceImpl.h" />
     <ClInclude Include="src\XiaoLabs\ResourceManager.h" />
     <ClInclude Include="src\XiaoLabs\graphics\RenderingDevice.h" />
@@ -208,7 +210,7 @@
     <ClInclude Include="src\ProgLabs\ArgumentBag.h" />
     <ClInclude Include="src\XiaoLabs\Component.h" />
     <ClInclude Include="src\XiaoLabs\Config.h" />
-    <ClInclude Include="src\XiaoLabs\errors.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\errors.h" />
     <ClInclude Include="src\XiaoLabs\MainWindow.h" />
     <ClInclude Include="src\CoreLabs\logging\StandardLogger.h" />
     <ClInclude Include="src\TestLabs\TestCase.h" />
@@ -220,6 +222,7 @@
     <ClInclude Include="src\CoreLabs\Version.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\CoreLabs\memory.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingDeviceImpl.cpp" />
     <ClCompile Include="src\TestLabs\internals.cpp" />
     <ClCompile Include="src\TestLabs\reporting\Reporter.cpp" />
@@ -227,6 +230,7 @@
     <ClCompile Include="src\TestLabs\reporting\CoutLogger.cpp" />
     <ClCompile Include="src\TestLabs\ResultBuilder.cpp" />
     <ClCompile Include="src\TestLabs\Result.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\errors.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\RenderingDeviceImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\ResourceManager.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\RenderingDevice.cpp" />
@@ -247,7 +251,7 @@
     <ClCompile Include="src\ProgLabs\ArgumentBag.cpp" />
     <ClCompile Include="src\XiaoLabs\Component.cpp" />
     <ClCompile Include="src\XiaoLabs\Config.cpp" />
-    <ClCompile Include="src\XiaoLabs\errors.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\errors.cpp" />
     <ClCompile Include="src\XiaoLabs\MainWindow.cpp" />
     <ClCompile Include="src\CoreLabs\logging\StandardLogger.cpp" />
     <ClCompile Include="src\TestLabs\TestCase.cpp" />

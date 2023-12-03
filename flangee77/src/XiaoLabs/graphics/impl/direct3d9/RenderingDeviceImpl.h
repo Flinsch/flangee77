@@ -17,14 +17,10 @@ namespace direct3d9 {
 
 
 
-class GraphicsSystemImpl;
-
-
-
 class RenderingDeviceImpl final
     : public RenderingDevice
 {
-    friend GraphicsSystemImpl;
+    friend class GraphicsSystemImpl;
 
 
 
@@ -57,7 +53,7 @@ private:
     /**
      * The Direct3D 9 device interface.
      */
-    wrl::ComPtr<IDirect3DDevice9> _d3d_device_interface;
+    wrl::ComPtr<IDirect3DDevice9> _d3d_device;
 
     /**
      * The structure containing information identifying the adapter.
@@ -83,7 +79,7 @@ public:
     /**
      * Returns the Direct3D 9 device interface.
      */
-    IDirect3DDevice9* get_raw_d3d_device_interface() const { return _d3d_device_interface.Get(); }
+    IDirect3DDevice9* get_raw_d3d_device() const { return _d3d_device.Get(); }
 
 
 
@@ -92,9 +88,10 @@ public:
     // #############################################################################
 private:
     /**
-     * Initializes the component.
+     * Initializes the rendering device and determines the capabilities (as far as
+     * they can be determined).
      */
-    virtual bool _init_impl(MemoryInfo& memory_info) override;
+    virtual bool _init_impl(Capabilities& capabilities) override;
 
     /**
      * De-initializes the component.
@@ -110,7 +107,7 @@ private:
     /**
      * Tries to determine the available video memory composition.
      */
-    bool _determine_video_memory(MemoryInfo& memory_info);
+    bool _determine_video_memory(Capabilities::Memory& memory_capabilities);
 
 }; // class RenderingDeviceImpl
 

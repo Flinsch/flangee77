@@ -3,6 +3,11 @@
 #define XL7_GRAPHICS_IMPL_D3D11_RENDERINGDEVICEIMPL_H
 #include "../../RenderingDevice.h"
 
+#include <d3d11.h>
+
+#include <wrl/client.h>
+namespace wrl = Microsoft::WRL;
+
 
 
 namespace xl7 {
@@ -12,14 +17,10 @@ namespace direct3d11 {
 
 
 
-class GraphicsSystemImpl;
-
-
-
 class RenderingDeviceImpl final
     : public RenderingDevice
 {
-    friend GraphicsSystemImpl;
+    friend class GraphicsSystemImpl;
 
 
 
@@ -46,13 +47,46 @@ private:
 
 
     // #############################################################################
+    // Attributes
+    // #############################################################################
+private:
+    /**
+    * The Direct3D 11 device interface.
+    */
+    wrl::ComPtr<ID3D11Device> _d3d_device;
+
+    /**
+     * The (immediate) device context interface.
+     */
+    wrl::ComPtr<ID3D11DeviceContext> _d3d_immediate_context;
+
+    /**
+     * The set of features targeted by the Direct3D 11 device.
+     */
+    D3D_FEATURE_LEVEL _d3d_feature_level;
+
+
+
+    // #############################################################################
+    // Properties
+    // #############################################################################
+public:
+    /**
+    * Returns the Direct3D 11 device interface.
+    */
+    ID3D11Device* get_raw_d3d_device() const { return _d3d_device.Get(); }
+
+
+
+    // #############################################################################
     // RenderingDevice Implementations
     // #############################################################################
 private:
     /**
-     * Initializes the component.
+     * Initializes the rendering device and determines the capabilities (as far as
+     * they can be determined).
      */
-    virtual bool _init_impl(MemoryInfo& memory_info) override;
+    virtual bool _init_impl(Capabilities& capabilities) override;
 
     /**
      * De-initializes the component.

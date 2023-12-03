@@ -2,7 +2,6 @@
 
 #include "./RenderingDeviceImpl.h"
 
-#include <CoreLabs/errors.h>
 #include <CoreLabs/logging.h>
 
 #pragma comment( lib, "d3d9.lib" )
@@ -63,15 +62,15 @@ namespace direct3d9 {
      */
     bool GraphicsSystemImpl::_create_main_interface()
     {
-        if ( _d3d_interface )
+        if ( _d3d_main )
         {
             LOG_WARNING( TEXT("The Direct3D 9 main interface has already been created.") );
             return true;
         }
 
-        _d3d_interface.Attach( ::Direct3DCreate9( D3D_SDK_VERSION ) );
+        _d3d_main.Attach( ::Direct3DCreate9( D3D_SDK_VERSION ) );
 
-        if ( !_d3d_interface )
+        if ( !_d3d_main )
         {
             LOG_ERROR( TEXT("The Direct3D 9 main interface could not be created.") );
             return false;
@@ -86,7 +85,7 @@ namespace direct3d9 {
      */
     bool GraphicsSystemImpl::_release_main_interface()
     {
-        _d3d_interface.Reset();
+        _d3d_main.Reset();
 
         LOG( TEXT("The Direct3D 9 main interface has been released.") );
         return true;

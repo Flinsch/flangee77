@@ -53,7 +53,7 @@ private:
     /**
      * The Direct3D 9 main interface.
      */
-    wrl::ComPtr<IDirect3D9> _d3d_interface;
+    wrl::ComPtr<IDirect3D9> _d3d_main;
 
 
 
@@ -64,7 +64,7 @@ public:
     /**
      * Returns the Direct3D 9 main interface.
      */
-    IDirect3D9* get_raw_d3d_interface() const { return _d3d_interface.Get(); }
+    IDirect3D9* get_raw_d3d_main() const { return _d3d_main.Get(); }
 
 
 

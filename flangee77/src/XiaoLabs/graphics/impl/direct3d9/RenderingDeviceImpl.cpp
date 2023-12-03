@@ -1,11 +1,11 @@
 #include "RenderingDeviceImpl.h"
 
 #include "./GraphicsSystemImpl.h"
+#include "./errors.h"
 
 #include <XiaoLabs/MainWindow.h>
 #include <XiaoLabs/graphics.h>
 
-#include <XiaoLabs/errors.h>
 #include <CoreLabs/logging.h>
 #include <CoreLabs/strings.h>
 #include <CoreLabs/util.h>
@@ -30,7 +30,7 @@ namespace direct3d9 {
      */
     RenderingDeviceImpl::RenderingDeviceImpl()
         : RenderingDevice( nullptr )
-        , _d3d_device_interface( nullptr )
+        , _d3d_device( nullptr )
         , _d3d_adapter_identifier()
         , _d3d_present_parameters()
         , _d3d_device_caps()
@@ -47,11 +47,12 @@ namespace direct3d9 {
     // #############################################################################
 
     /**
-     * Initializes the component.
+     * Initializes the rendering device and determines the capabilities (as far as
+     * they can be determined).
      */
-    bool RenderingDeviceImpl::_init_impl(MemoryInfo& memory_info)
+    bool RenderingDeviceImpl::_init_impl(Capabilities& capabilities)
     {
-        auto const d3d_interface = dynamic_cast<GraphicsSystemImpl*>( &GraphicsSystem::instance() )->get_raw_d3d_interface();
+        auto const d3d_main = dynamic_cast<GraphicsSystemImpl*>( &GraphicsSystem::instance() )->get_raw_d3d_main();
 
         // Cache the main window's display mode.
         const MainWindow::DisplayMode window_display_mode = MainWindow::instance().get_display_mode();
@@ -83,40 +84,44 @@ namespace direct3d9 {
         _d3d_present_parameters.FullScreen_RefreshRateInHz  = fullscreen ? GraphicsSystem::instance().get_config().video.display_mode.refresh_rate : D3DPRESENT_RATE_DEFAULT;
         _d3d_present_parameters.PresentationInterval        = fullscreen ? D3DPRESENT_INTERVAL_IMMEDIATE : D3DPRESENT_INTERVAL_IMMEDIATE;
 
-        // (Try to) create the Direct3D 9 device interface
-        // with the respective behavior parameter.
-        HRESULT hresult = d3d_interface->CreateDevice(
+        // (Try to) create the hardware-based
+        // Direct3D 9 device interface.
+        HRESULT hresult = d3d_main->CreateDevice(
             D3DADAPTER_DEFAULT,
             D3DDEVTYPE_HAL,
             MainWindow::instance().get_handle(),
             D3DCREATE_HARDWARE_VERTEXPROCESSING,
             &_d3d_present_parameters,
-            _d3d_device_interface.ReleaseAndGetAddressOf() );
+            _d3d_device.ReleaseAndGetAddressOf() );
 
         if ( hresult != D3D_OK )
         {
-            LOG_ERROR( xl7::errors::directx_result( hresult, TEXT("IDirect3D9::CreateDevice") ) );
+            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3D9::CreateDevice") ) );
             LOG_ERROR( TEXT("The Direct3D 9 device interface could not be created.") );
             return false;
         }
 
         // Ask for the structure with information
         // to identify the adapter.
-        if ( (hresult = d3d_interface->GetAdapterIdentifier(
+        if ( (hresult = d3d_main->GetAdapterIdentifier(
             D3DADAPTER_DEFAULT,
             0,
             &_d3d_adapter_identifier )) != D3D_OK )
         {
-            LOG_WARNING( xl7::errors::directx_result( hresult, TEXT("IDirect3D9::GetAdapterIdentifier") ) );
+            LOG_WARNING( errors::d3d9_result( hresult, TEXT("IDirect3D9::GetAdapterIdentifier") ) );
         }
 
         // Capture the device capabilities.
-        if ( (hresult = _d3d_device_interface->GetDeviceCaps( &_d3d_device_caps )) != D3D_OK )
-            LOG_WARNING( xl7::errors::directx_result( hresult, TEXT("IDirect3DDevice9::GetDeviceCaps") ) );
+        if ( (hresult = _d3d_device->GetDeviceCaps( &_d3d_device_caps )) != D3D_OK )
+            LOG_WARNING( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::GetDeviceCaps") ) );
+
+        // Adopt the supported shader versions.
+        capabilities.shaders.vertex_shader_version = { D3DSHADER_VERSION_MAJOR( _d3d_device_caps.VertexShaderVersion ), D3DSHADER_VERSION_MINOR( _d3d_device_caps.VertexShaderVersion ) };
+        capabilities.shaders.pixel_shader_version = { D3DSHADER_VERSION_MAJOR( _d3d_device_caps.PixelShaderVersion ), D3DSHADER_VERSION_MINOR( _d3d_device_caps.PixelShaderVersion ) };
 
         // (Try to) determine the available
         // video memory composition.
-        _determine_video_memory( memory_info );
+        _determine_video_memory( capabilities.memory );
 
         return true;
     }
@@ -127,7 +132,7 @@ namespace direct3d9 {
     bool RenderingDeviceImpl::_shutdown_impl()
     {
         // Release the Direct3D 9 device interface.
-        _d3d_device_interface.Reset();
+        _d3d_device.Reset();
 
         return true;
     }
@@ -141,9 +146,9 @@ namespace direct3d9 {
     /**
      * Tries to determine the available video memory composition.
      */
-    bool RenderingDeviceImpl::_determine_video_memory(MemoryInfo& memory_info)
+    bool RenderingDeviceImpl::_determine_video_memory(Capabilities::Memory& memory_capabilities)
     {
-        ::memset( &memory_info, 0, sizeof(memory_info) );
+        ::memset( &memory_capabilities, 0, sizeof(memory_capabilities) );
 
         const HMODULE hDXGI = ::LoadLibrary( TEXT("dxgi.dll") );
         if ( !hDXGI )
@@ -194,12 +199,12 @@ namespace direct3d9 {
                 continue;
             }
 
-            if ( memory_info.dedicated_video_memory && cl7::string_view( adapter_desc.Description ) != adapter_name )
+            if ( memory_capabilities.dedicated_video_memory && cl7::string_view( adapter_desc.Description ) != adapter_name )
                 continue;
 
-            memory_info.dedicated_video_memory = adapter_desc.DedicatedVideoMemory;
-            memory_info.dedicated_system_memory = adapter_desc.DedicatedSystemMemory;
-            memory_info.shared_system_memory = adapter_desc.SharedSystemMemory;
+            memory_capabilities.dedicated_video_memory = adapter_desc.DedicatedVideoMemory;
+            memory_capabilities.dedicated_system_memory = adapter_desc.DedicatedSystemMemory;
+            memory_capabilities.shared_system_memory = adapter_desc.SharedSystemMemory;
         } // for each adapter
 
         factory->Release();

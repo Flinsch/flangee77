@@ -4,6 +4,8 @@
 
 #include "../ResourceManager.h"
 
+#include <CoreLabs/Version.h>
+
 
 
 namespace xl7 {
@@ -11,29 +13,34 @@ namespace graphics {
 
 
 
-class GraphicsSystem;
-
-
-
 class RenderingDevice
 {
-    friend GraphicsSystem;
+    friend class GraphicsSystem;
 
 
 
 public:
-    /**
-     * The available video memory composition (as far as it can be determined).
-     */
-    struct MemoryInfo
+    struct Capabilities
     {
-        /** The number of bytes of dedicated video memory that are not shared with the CPU. */
-        size_t dedicated_video_memory = 0;
-        /** The number of bytes of dedicated system memory that are not shared with the CPU. This memory is allocated from available system memory at boot time. */
-        size_t dedicated_system_memory = 0;
-        /** The number of bytes of shared system memory. This is the maximum value of system memory that may be consumed by the adapter during operation. Any incidental memory consumed by the driver as it manages and uses video memory is additional. */
-        size_t shared_system_memory = 0;
-    }; // struct MemoryInfo
+        struct Memory
+        {
+            /** The number of bytes of dedicated video memory that are not shared with the CPU. */
+            size_t dedicated_video_memory = 0;
+            /** The number of bytes of dedicated system memory that are not shared with the CPU. This memory is allocated from available system memory at boot time. */
+            size_t dedicated_system_memory = 0;
+            /** The number of bytes of shared system memory. This is the maximum value of system memory that may be consumed by the adapter during operation. Any incidental memory consumed by the driver as it manages and uses video memory is additional. */
+            size_t shared_system_memory = 0;
+        } memory;
+
+        struct
+        {
+            /** The maximum supported vertex shader version. */
+            cl7::Version vertex_shader_version;
+            /** The maximum supported pixel shader version. */
+            cl7::Version pixel_shader_version;
+        } shaders;
+
+    }; // struct Capabilities
 
 
 
@@ -66,9 +73,9 @@ private:
     // #############################################################################
 private:
     /**
-     * The available video memory composition (as far as it can be determined).
+     * The capabilities of the rendering device (as far as they can be determined).
      */
-    MemoryInfo _memory_info;
+    Capabilities _capabilities;
 
 private:
     /**
@@ -84,10 +91,10 @@ private:
     // #############################################################################
 public:
     /**
-     * Returns the available video memory composition (as far as it can be
+     * Returns the capabilities of the rendering device (as far as they can be
      * determined).
      */
-    const MemoryInfo& get_memory_info() const { return _memory_info; }
+    const Capabilities& get_capabilities() const { return _capabilities; }
 
 
 
@@ -119,9 +126,10 @@ private:
     // #############################################################################
 private:
     /**
-     * Initializes the rendering device.
+     * Initializes the rendering device and determines the capabilities (as far as
+     * they can be determined).
      */
-    virtual bool _init_impl(MemoryInfo& memory_info) = 0;
+    virtual bool _init_impl(Capabilities& capabilities) = 0;
 
     /**
      * De-initializes the rendering device.

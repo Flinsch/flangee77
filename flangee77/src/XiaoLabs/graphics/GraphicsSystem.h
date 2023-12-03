@@ -17,8 +17,7 @@
 #endif // !XL7_GRAPHICS_IMPL_DEFAULT
 
 #ifndef XL7_GRAPHICS_IMPL
-//#define XL7_GRAPHICS_IMPL               XL7_GRAPHICS_IMPL_DEFAULT
-#define XL7_GRAPHICS_IMPL               XL7_GRAPHICS_IMPL_DIRECT3D9
+#define XL7_GRAPHICS_IMPL               XL7_GRAPHICS_IMPL_DEFAULT
 #endif // !XL7_GRAPHICS_IMPL
 
 
@@ -31,7 +30,7 @@ namespace graphics {
 class GraphicsSystem
     : public Component<GraphicsSystem>
 {
-    friend cl7::creational::Singleton<GraphicsSystem>;
+    friend class cl7::creational::Singleton<GraphicsSystem>;
 
 
 

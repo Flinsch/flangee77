@@ -75,7 +75,7 @@
     <ClInclude Include="src\XiaoLabs\Config.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\errors.h">
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\errors.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\XiaoLabs\MainWindow.h">
@@ -168,6 +168,12 @@
     <ClInclude Include="src\CoreLabs\util.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\CoreLabs\memory.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\errors.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -212,7 +218,7 @@
     <ClCompile Include="src\XiaoLabs\Config.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\XiaoLabs\errors.cpp">
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\errors.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\MainWindow.cpp">
@@ -279,6 +285,12 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\RenderingDeviceImpl.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CoreLabs\memory.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\errors.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
