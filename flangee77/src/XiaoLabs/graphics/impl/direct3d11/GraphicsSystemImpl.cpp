@@ -70,10 +70,10 @@ namespace direct3d11 {
             return true;
         }
 
-        HRESULT hr = ::CreateDXGIFactory( __uuidof(::IDXGIFactory), (void**)_dxgi_factory.ReleaseAndGetAddressOf() );
-        if ( FAILED(hr) )
+        HRESULT hresult = ::CreateDXGIFactory( __uuidof(IDXGIFactory), &_dxgi_factory );
+        if ( FAILED(hresult) )
         {
-            LOG_ERROR( errors::dxgi_result( ::GetLastError(), TEXT("::CreateDXGIFactory") ) );
+            LOG_ERROR( errors::dxgi_result( hresult, TEXT("::CreateDXGIFactory") ) );
             return false;
         }
 
@@ -82,7 +82,7 @@ namespace direct3d11 {
         size_t best_dedicated_video_memory = 0;
 
         wrl::ComPtr<IDXGIAdapter> dxgi_adapter;
-        for ( unsigned i = 0; _dxgi_factory->EnumAdapters( i, dxgi_adapter.ReleaseAndGetAddressOf() ) != DXGI_ERROR_NOT_FOUND; ++i )
+        for ( unsigned i = 0; _dxgi_factory->EnumAdapters( i, &dxgi_adapter ) != DXGI_ERROR_NOT_FOUND; ++i )
         {
             DXGI_ADAPTER_DESC dxgi_adapter_desc;
             memset( &dxgi_adapter_desc, 0, sizeof(DXGI_ADAPTER_DESC) );

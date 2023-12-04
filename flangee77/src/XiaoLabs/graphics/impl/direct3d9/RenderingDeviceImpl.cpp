@@ -92,7 +92,7 @@ namespace direct3d9 {
             MainWindow::instance().get_handle(),
             D3DCREATE_HARDWARE_VERTEXPROCESSING,
             &_d3d_present_parameters,
-            _d3d_device.ReleaseAndGetAddressOf() );
+            &_d3d_device );
 
         if ( hresult != D3D_OK )
         {
@@ -103,16 +103,16 @@ namespace direct3d9 {
 
         // Ask for the structure with information
         // to identify the adapter.
-        if ( (hresult = d3d_main->GetAdapterIdentifier(
+        hresult = d3d_main->GetAdapterIdentifier(
             D3DADAPTER_DEFAULT,
             0,
-            &_d3d_adapter_identifier )) != D3D_OK )
-        {
+            &_d3d_adapter_identifier );
+        if ( FAILED(hresult) )
             LOG_WARNING( errors::d3d9_result( hresult, TEXT("IDirect3D9::GetAdapterIdentifier") ) );
-        }
 
         // Capture the device capabilities.
-        if ( (hresult = _d3d_device->GetDeviceCaps( &_d3d_device_caps )) != D3D_OK )
+        hresult = _d3d_device->GetDeviceCaps( &_d3d_device_caps );
+        if ( FAILED(hresult) )
             LOG_WARNING( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::GetDeviceCaps") ) );
 
         // Adopt the supported shader versions.

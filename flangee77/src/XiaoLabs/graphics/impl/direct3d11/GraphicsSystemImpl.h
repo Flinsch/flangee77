@@ -62,6 +62,10 @@ private:
     // Properties
     // #############################################################################
 public:
+    /**
+    * Returns the DXGI factory interface.
+    */
+    IDXGIFactory* get_raw_dxgi_factory() const { return _dxgi_factory.Get(); }
 
 
 

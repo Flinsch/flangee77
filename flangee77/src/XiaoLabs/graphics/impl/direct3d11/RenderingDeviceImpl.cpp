@@ -7,6 +7,7 @@
 #include <XiaoLabs/graphics.h>
 
 #include <CoreLabs/logging.h>
+#include <CoreLabs/util.h>
 
 
 
@@ -70,9 +71,9 @@ namespace direct3d11 {
             feature_levels,
             sizeof( feature_levels ) / sizeof( D3D_FEATURE_LEVEL ),
             D3D11_SDK_VERSION,
-            _d3d_device.ReleaseAndGetAddressOf(),
+            &_d3d_device,
             &_d3d_feature_level,
-            _d3d_immediate_context.ReleaseAndGetAddressOf() );
+            &_d3d_immediate_context );
 
         if ( FAILED(hresult) )
         {
@@ -83,9 +84,7 @@ namespace direct3d11 {
 
         // Check whether Direct3D 11 is even supported!
         if ( _d3d_feature_level < D3D_FEATURE_LEVEL_11_0 )
-        {
             LOG_WARNING( TEXT("Direct3D 11 is not supported.") );
-        }
 
         // Determine the supported shader versions
         // based on a hard-coded feature level mapping.
@@ -127,6 +126,7 @@ namespace direct3d11 {
             assert( false );
         }
 
+        // Query the DXGI device interface.
         wrl::ComPtr<IDXGIDevice> dxgi_device;
         hresult = _d3d_device.As( &dxgi_device );
         if ( FAILED(hresult) )
@@ -136,8 +136,9 @@ namespace direct3d11 {
             return false;
         }
 
+        // Get the DXGI adapter interface.
         wrl::ComPtr<IDXGIAdapter> dxgi_adapter;
-        hresult = dxgi_device->GetAdapter( dxgi_adapter.ReleaseAndGetAddressOf() );
+        hresult = dxgi_device->GetAdapter( &dxgi_adapter );
         if ( FAILED(hresult) )
         {
             LOG_ERROR( errors::dxgi_result( hresult, TEXT("IDXGIDevice::GetAdapter") ) );
@@ -145,19 +146,65 @@ namespace direct3d11 {
             return false;
         }
 
-        DXGI_ADAPTER_DESC adapter_desc;
-        memset( &adapter_desc, 0, sizeof(DXGI_ADAPTER_DESC) );
-        hresult = dxgi_adapter->GetDesc( &adapter_desc );
+        // Get the DXGI factory interface.
+        wrl::ComPtr<IDXGIFactory> dxgi_factory;
+        hresult = dxgi_adapter->GetParent( __uuidof(IDXGIFactory), &dxgi_factory );
         if ( FAILED(hresult) )
         {
-            LOG_WARNING( errors::dxgi_result( hresult, TEXT("IDXGIAdapter::GetDesc") ) );
+            LOG_ERROR( errors::dxgi_result( hresult, TEXT("IDXGIAdapter::GetParent") ) );
+            LOG_ERROR( TEXT("The DXGI factory interface could not be requested.") );
+            return false;
         }
+
+        // Cache the main window's display mode.
+        const MainWindow::DisplayMode window_display_mode = MainWindow::instance().get_display_mode();
+        const bool fullscreen = window_display_mode == MainWindow::DisplayMode::Fullscreen;
+
+        // "Calculate" the back buffer size.
+        const unsigned back_buffer_width = cl7::util::coalesce( GraphicsSystem::instance().get_config().video.display_mode.width, MainWindow::instance().get_width() );
+        const unsigned back_buffer_height = cl7::util::coalesce( GraphicsSystem::instance().get_config().video.display_mode.height, MainWindow::instance().get_height() );
+
+        // Fill the swap chain description structure.
+        DXGI_SWAP_CHAIN_DESC dxgi_swap_chain_desc;
+        ::memset( &dxgi_swap_chain_desc, 0, sizeof(dxgi_swap_chain_desc) );
+        dxgi_swap_chain_desc.BufferDesc.Width = back_buffer_width;
+        dxgi_swap_chain_desc.BufferDesc.Height = back_buffer_height;
+        dxgi_swap_chain_desc.BufferDesc.RefreshRate.Numerator = fullscreen ? GraphicsSystem::instance().get_config().video.display_mode.refresh_rate : 0;
+        dxgi_swap_chain_desc.BufferDesc.RefreshRate.Denominator = 1;
+        dxgi_swap_chain_desc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+        dxgi_swap_chain_desc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
+        dxgi_swap_chain_desc.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
+        dxgi_swap_chain_desc.SampleDesc.Quality = 0;
+        dxgi_swap_chain_desc.SampleDesc.Count = 1;
+        dxgi_swap_chain_desc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+        dxgi_swap_chain_desc.BufferCount = 1;
+        dxgi_swap_chain_desc.OutputWindow = MainWindow::instance().get_handle();
+        dxgi_swap_chain_desc.Windowed = !fullscreen;
+        dxgi_swap_chain_desc.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
+        dxgi_swap_chain_desc.Flags = fullscreen ? DXGI_SWAP_CHAIN_FLAG_FULLSCREEN_VIDEO : 0;
+
+        // Create the swap chain.
+        wrl::ComPtr<IDXGISwapChain> dxgi_swap_chain;
+        hresult = dxgi_factory->CreateSwapChain( _d3d_device.Get(), &dxgi_swap_chain_desc, &dxgi_swap_chain );
+        if ( FAILED(hresult) )
+        {
+            LOG_ERROR( errors::dxgi_result( hresult, TEXT("IDXGIFactory::CreateSwapChain") ) );
+            LOG_ERROR( TEXT("The DXGI swap chain could not be created.") );
+            return false;
+        }
+
+        // Ask for the adapter description.
+        DXGI_ADAPTER_DESC dxgi_adapter_desc;
+        memset( &dxgi_adapter_desc, 0, sizeof(DXGI_ADAPTER_DESC) );
+        hresult = dxgi_adapter->GetDesc( &dxgi_adapter_desc );
+        if ( FAILED(hresult) )
+            LOG_WARNING( errors::dxgi_result( hresult, TEXT("IDXGIAdapter::GetDesc") ) );
 
         // Adopt the available
         // video memory composition.
-        capabilities.memory.dedicated_video_memory = adapter_desc.DedicatedVideoMemory;
-        capabilities.memory.dedicated_system_memory = adapter_desc.DedicatedSystemMemory;
-        capabilities.memory.shared_system_memory = adapter_desc.SharedSystemMemory;
+        capabilities.memory.dedicated_video_memory = dxgi_adapter_desc.DedicatedVideoMemory;
+        capabilities.memory.dedicated_system_memory = dxgi_adapter_desc.DedicatedSystemMemory;
+        capabilities.memory.shared_system_memory = dxgi_adapter_desc.SharedSystemMemory;
 
         return true;
     }
