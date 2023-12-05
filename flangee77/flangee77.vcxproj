@@ -167,6 +167,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\Resource.h" />
     <ClInclude Include="src\CoreLabs\memory.h" />
     <ClInclude Include="src\CoreLabs\util.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingDeviceImpl.h" />
@@ -222,6 +223,7 @@
     <ClInclude Include="src\CoreLabs\Version.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\Resource.cpp" />
     <ClCompile Include="src\CoreLabs\memory.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingDeviceImpl.cpp" />
     <ClCompile Include="src\TestLabs\internals.cpp" />
