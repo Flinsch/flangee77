@@ -3,11 +3,7 @@
 #define XL7_GRAPHICS_IMPL_D3D11_GRAPHICSSYSTEMIMPL_H
 #include "../../GraphicsSystem.h"
 
-#include <dxgi.h>
-#include <d3d11.h>
-
-#include <wrl/client.h>
-namespace wrl = Microsoft::WRL;
+#include "./prerequisites.h"
 
 
 
@@ -54,7 +50,7 @@ private:
     /**
      * The DXGI factory interface.
      */
-    wrl::ComPtr<IDXGIFactory> _dxgi_factory;
+    wrl::ComPtr<IDXGIFactory1> _dxgi_factory;
 
 
 

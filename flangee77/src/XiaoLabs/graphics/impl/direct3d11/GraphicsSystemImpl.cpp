@@ -5,9 +5,6 @@
 
 #include <CoreLabs/logging.h>
 
-#pragma comment( lib, "dxgi.lib" )
-#pragma comment( lib, "d3d11.lib" )
-
 
 
 namespace xl7 {
@@ -70,10 +67,10 @@ namespace direct3d11 {
             return true;
         }
 
-        HRESULT hresult = ::CreateDXGIFactory( __uuidof(IDXGIFactory), &_dxgi_factory );
+        HRESULT hresult = ::CreateDXGIFactory1( __uuidof(IDXGIFactory1), &_dxgi_factory );
         if ( FAILED(hresult) )
         {
-            LOG_ERROR( errors::dxgi_result( hresult, TEXT("::CreateDXGIFactory") ) );
+            LOG_ERROR( errors::dxgi_result( hresult, TEXT("::CreateDXGIFactory1") ) );
             return false;
         }
 

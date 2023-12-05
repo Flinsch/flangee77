@@ -3,10 +3,7 @@
 #define XL7_GRAPHICS_IMPL_D3D9_GRAPHICSSYSTEMIMPL_H
 #include "../../GraphicsSystem.h"
 
-#include <d3d9.h>
-
-#include <wrl/client.h>
-namespace wrl = Microsoft::WRL;
+#include "./prerequisites.h"
 
 
 

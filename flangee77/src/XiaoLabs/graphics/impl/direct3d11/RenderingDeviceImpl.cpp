@@ -27,8 +27,6 @@ namespace direct3d11 {
      */
     RenderingDeviceImpl::RenderingDeviceImpl()
         : RenderingDevice( nullptr )
-        , _d3d_device( nullptr )
-        , _d3d_immediate_context( nullptr )
         , _d3d_feature_level( D3D_FEATURE_LEVEL_1_0_CORE )
     {
     }
@@ -53,11 +51,11 @@ namespace direct3d11 {
         D3D_FEATURE_LEVEL feature_levels[] = {
             D3D_FEATURE_LEVEL_11_1,
             D3D_FEATURE_LEVEL_11_0,
-            D3D_FEATURE_LEVEL_10_1,
+            /*D3D_FEATURE_LEVEL_10_1,
             D3D_FEATURE_LEVEL_10_0,
             D3D_FEATURE_LEVEL_9_3,
             D3D_FEATURE_LEVEL_9_2,
-            D3D_FEATURE_LEVEL_9_1,
+            D3D_FEATURE_LEVEL_9_1,*/
         };
 
         // (Try to) create the hardware-based
@@ -85,6 +83,10 @@ namespace direct3d11 {
         // Check whether Direct3D 11 is even supported!
         if ( _d3d_feature_level < D3D_FEATURE_LEVEL_11_0 )
             LOG_WARNING( TEXT("Direct3D 11 is not supported.") );
+
+        // Try to access extended interface versions.
+        _d3d_device.As( &_d3d_device1 );
+        _d3d_immediate_context.As( &_d3d_immediate_context1 );
 
         // Determine the supported shader versions
         // based on a hard-coded feature level mapping.
@@ -181,11 +183,10 @@ namespace direct3d11 {
         dxgi_swap_chain_desc.OutputWindow = MainWindow::instance().get_handle();
         dxgi_swap_chain_desc.Windowed = !fullscreen;
         dxgi_swap_chain_desc.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
-        dxgi_swap_chain_desc.Flags = fullscreen ? DXGI_SWAP_CHAIN_FLAG_FULLSCREEN_VIDEO : 0;
+        dxgi_swap_chain_desc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
 
         // Create the swap chain.
-        wrl::ComPtr<IDXGISwapChain> dxgi_swap_chain;
-        hresult = dxgi_factory->CreateSwapChain( _d3d_device.Get(), &dxgi_swap_chain_desc, &dxgi_swap_chain );
+        hresult = dxgi_factory->CreateSwapChain( _d3d_device.Get(), &dxgi_swap_chain_desc, &_dxgi_swap_chain );
         if ( FAILED(hresult) )
         {
             LOG_ERROR( errors::dxgi_result( hresult, TEXT("IDXGIFactory::CreateSwapChain") ) );

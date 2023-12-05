@@ -167,6 +167,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\prerequisites.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\prerequisites.h" />
     <ClInclude Include="src\XiaoLabs\Resource.h" />
     <ClInclude Include="src\CoreLabs\memory.h" />
     <ClInclude Include="src\CoreLabs\util.h" />

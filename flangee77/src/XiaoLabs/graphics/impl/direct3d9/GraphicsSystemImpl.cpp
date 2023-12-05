@@ -4,8 +4,6 @@
 
 #include <CoreLabs/logging.h>
 
-#pragma comment( lib, "d3d9.lib" )
-
 
 
 namespace xl7 {
