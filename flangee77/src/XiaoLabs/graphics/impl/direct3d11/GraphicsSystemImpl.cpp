@@ -67,7 +67,7 @@ namespace direct3d11 {
             return true;
         }
 
-        HRESULT hresult = ::CreateDXGIFactory1( __uuidof(IDXGIFactory1), &_dxgi_factory );
+        HRESULT hresult = ::CreateDXGIFactory1( __uuidof(IDXGIFactoryN), &_dxgi_factory );
         if ( FAILED(hresult) )
         {
             LOG_ERROR( errors::dxgi_result( hresult, TEXT("::CreateDXGIFactory1") ) );

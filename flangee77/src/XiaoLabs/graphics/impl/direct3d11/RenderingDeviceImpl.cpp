@@ -61,6 +61,8 @@ namespace direct3d11 {
         // (Try to) create the hardware-based
         // Direct3D 11 device interface and the
         // (immediate) device context interface.
+        wrl::ComPtr<ID3D11Device> d3d_device;
+        wrl::ComPtr<ID3D11DeviceContext> d3d_immediate_context;
         HRESULT hresult = ::D3D11CreateDevice(
             nullptr,
             D3D_DRIVER_TYPE_HARDWARE,
@@ -69,9 +71,9 @@ namespace direct3d11 {
             feature_levels,
             sizeof( feature_levels ) / sizeof( D3D_FEATURE_LEVEL ),
             D3D11_SDK_VERSION,
-            &_d3d_device,
+            &d3d_device,
             &_d3d_feature_level,
-            &_d3d_immediate_context );
+            &d3d_immediate_context );
 
         if ( FAILED(hresult) )
         {
@@ -85,8 +87,8 @@ namespace direct3d11 {
             LOG_WARNING( TEXT("Direct3D 11 is not supported.") );
 
         // Try to access extended interface versions.
-        _d3d_device.As( &_d3d_device1 );
-        _d3d_immediate_context.As( &_d3d_immediate_context1 );
+        d3d_device.As( &_d3d_device );
+        d3d_immediate_context.As( &_d3d_immediate_context );
 
         // Determine the supported shader versions
         // based on a hard-coded feature level mapping.
@@ -129,7 +131,7 @@ namespace direct3d11 {
         }
 
         // Query the DXGI device interface.
-        wrl::ComPtr<IDXGIDevice> dxgi_device;
+        wrl::ComPtr<IDXGIDeviceN> dxgi_device;
         hresult = _d3d_device.As( &dxgi_device );
         if ( FAILED(hresult) )
         {
@@ -139,7 +141,7 @@ namespace direct3d11 {
         }
 
         // Get the DXGI adapter interface.
-        wrl::ComPtr<IDXGIAdapter> dxgi_adapter;
+        wrl::ComPtr<IDXGIAdapterN> dxgi_adapter;
         hresult = dxgi_device->GetAdapter( &dxgi_adapter );
         if ( FAILED(hresult) )
         {
@@ -149,8 +151,8 @@ namespace direct3d11 {
         }
 
         // Get the DXGI factory interface.
-        wrl::ComPtr<IDXGIFactory> dxgi_factory;
-        hresult = dxgi_adapter->GetParent( __uuidof(IDXGIFactory), &dxgi_factory );
+        wrl::ComPtr<IDXGIFactoryN> dxgi_factory;
+        hresult = dxgi_adapter->GetParent( __uuidof(IDXGIFactoryN), &dxgi_factory );
         if ( FAILED(hresult) )
         {
             LOG_ERROR( errors::dxgi_result( hresult, TEXT("IDXGIAdapter::GetParent") ) );
@@ -167,7 +169,7 @@ namespace direct3d11 {
         const unsigned back_buffer_height = cl7::util::coalesce( GraphicsSystem::instance().get_config().video.display_mode.height, MainWindow::instance().get_height() );
 
         // Fill the swap chain description structure.
-        DXGI_SWAP_CHAIN_DESC dxgi_swap_chain_desc;
+        DXGI_SWAP_CHAIN_DESCn dxgi_swap_chain_desc;
         ::memset( &dxgi_swap_chain_desc, 0, sizeof(dxgi_swap_chain_desc) );
         dxgi_swap_chain_desc.BufferDesc.Width = back_buffer_width;
         dxgi_swap_chain_desc.BufferDesc.Height = back_buffer_height;

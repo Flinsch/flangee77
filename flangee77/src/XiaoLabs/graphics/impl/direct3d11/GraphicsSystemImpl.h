@@ -50,7 +50,7 @@ private:
     /**
      * The DXGI factory interface.
      */
-    wrl::ComPtr<IDXGIFactory1> _dxgi_factory;
+    wrl::ComPtr<IDXGIFactoryN> _dxgi_factory;
 
 
 
@@ -61,7 +61,7 @@ public:
     /**
     * Returns the DXGI factory interface.
     */
-    IDXGIFactory* get_raw_dxgi_factory() const { return _dxgi_factory.Get(); }
+    IDXGIFactoryN* get_raw_dxgi_factory() const { return _dxgi_factory.Get(); }
 
 
 

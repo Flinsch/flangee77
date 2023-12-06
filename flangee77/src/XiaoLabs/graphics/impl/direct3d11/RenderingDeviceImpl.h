@@ -47,20 +47,20 @@ private:
     // Attributes
     // #############################################################################
 private:
-    /** The Direct3D 11 device interface. */
-    wrl::ComPtr<ID3D11Device> _d3d_device;
-    /** The Direct3D 11 device interface (1st extension). */
-    wrl::ComPtr<ID3D11Device1> _d3d_device1;
+    /**
+     * The Direct3D 11 device interface.
+     */
+    wrl::ComPtr<ID3D11DeviceN> _d3d_device;
 
-    /** The (immediate) device context interface. */
-    wrl::ComPtr<ID3D11DeviceContext> _d3d_immediate_context;
-    /** The (immediate) device context interface (1st extension). */
-    wrl::ComPtr<ID3D11DeviceContext1> _d3d_immediate_context1;
+    /**
+     * The (immediate) device context interface.
+     */
+    wrl::ComPtr<ID3D11DeviceContextN> _d3d_immediate_context;
 
-    /** The DXGI swap chain interface. */
-    wrl::ComPtr<IDXGISwapChain> _dxgi_swap_chain;
-    /** The DXGI swap chain interface (1st extension). */
-    //wrl::ComPtr<IDXGISwapChain1> _dxgi_swap_chain1;
+    /**
+     * The DXGI swap chain interface.
+     */
+    wrl::ComPtr<IDXGISwapChainN> _dxgi_swap_chain;
 
     /**
      * The set of features targeted by the Direct3D 11 device.
@@ -73,10 +73,10 @@ private:
     // Properties
     // #############################################################################
 public:
-    /** Returns the Direct3D 11 device interface. */
-    ID3D11Device* get_raw_d3d_device() const { return _d3d_device.Get(); }
-    /** Returns the Direct3D 11 device interface (1st extension). */
-    ID3D11Device1* get_raw_d3d_device1() const { return _d3d_device1.Get(); }
+    /**
+     * Returns the Direct3D 11 device interface.
+     */
+    ID3D11DeviceN* get_raw_d3d_device() const { return _d3d_device.Get(); }
 
 
 
