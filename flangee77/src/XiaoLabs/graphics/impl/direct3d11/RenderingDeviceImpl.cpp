@@ -226,6 +226,70 @@ namespace direct3d11 {
         return true;
     }
 
+    /**
+     * Checks whether the device is lost. If so, true is returned.
+     */
+    bool RenderingDeviceImpl::_check_device_lost_impl()
+    {
+        
+
+        return false;
+    }
+
+    /**
+     * Tries to reset/reinitialize the device after it has been lost. If the device
+     * has been restored to an operational state, true is returned.
+     */
+    bool RenderingDeviceImpl::_handle_device_lost_impl()
+    {
+        
+
+        return true;
+    }
+
+
+    /**
+     * Begins a scene.
+     */
+    bool RenderingDeviceImpl::_begin_scene_impl()
+    {
+        // Nothing to do here?
+
+        return true;
+    }
+
+    /**
+     * Ends a scene that was begun by calling begin_scene.
+     */
+    bool RenderingDeviceImpl::_end_scene_impl()
+    {
+        // Nothing to do here?
+
+        return true;
+    }
+
+    /**
+     * Presents the contents of the next buffer in the device's swap chain.
+     */
+    bool RenderingDeviceImpl::_present_impl()
+    {
+        HRESULT hresult = _dxgi_swap_chain->Present( 1, 0 );
+
+        if ( hresult == DXGI_ERROR_DEVICE_REMOVED || hresult == DXGI_ERROR_DEVICE_RESET )
+        {
+            _notify_device_lost();
+            return false;
+        }
+
+        if ( FAILED(hresult) )
+        {
+            LOG_ERROR( errors::dxgi_result( hresult, TEXT("IDXGISwapChain::Present") ) );
+            return false;
+        }
+
+        return true;
+    }
+
 
 
 } // namespace direct3d11

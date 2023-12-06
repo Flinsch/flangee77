@@ -95,6 +95,34 @@ private:
      */
     virtual bool _shutdown_impl() override;
 
+private:
+    /**
+     * Checks whether the device is lost. If so, true is returned.
+     */
+    virtual bool _check_device_lost_impl() override;
+
+    /**
+     * Tries to reset/reinitialize the device after it has been lost. If the device
+     * has been restored to an operational state, true is returned.
+     */
+    virtual bool _handle_device_lost_impl() override;
+
+private:
+    /**
+     * Begins a scene.
+     */
+    virtual bool _begin_scene_impl() override;
+
+    /**
+     * Ends a scene that was begun by calling begin_scene.
+     */
+    virtual bool _end_scene_impl() override;
+
+    /**
+     * Presents the contents of the next buffer in the device's swap chain.
+     */
+    virtual bool _present_impl() override;
+
 
 
     // #############################################################################

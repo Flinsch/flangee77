@@ -88,7 +88,7 @@ namespace pl7 {
         cl7::logging::StandardLogger::instance().clear_log_handlers().add_log_handler( std::make_shared<cl7::logging::FileLogHandler>() );
 
         // Create the main window.
-        if ( !xl7::MainWindow::instance().init( config ) )
+        if ( !xl7::main_window().init( config ) )
             return false;
 
         // Initialize the graphics system.
@@ -96,7 +96,7 @@ namespace pl7 {
             return false;
 
         // Show the main window.
-        xl7::MainWindow::instance().show_window();
+        xl7::main_window().show_window();
 
         return true;
     }
@@ -107,7 +107,7 @@ namespace pl7 {
     bool Application::_shutdown()
     {
         // Close the main window.
-        xl7::MainWindow::instance().close();
+        xl7::main_window().close();
 
         // Destroy all singleton objects
         // (also shutting down all "X" components).
@@ -135,9 +135,92 @@ namespace pl7 {
                 break;
 
             
+
+            // Pause the application logic while the
+            // rendering device is lost and not reset.
+            if ( xl7::rendering_device()->check_device_lost() )
+            {
+                if ( !xl7::rendering_device()->handle_device_lost() )
+                    continue;
+            }
+
+            
+
+            // Perform application loop iteration.
+            _loop();
+
+            
         } // while ( true )
 
         return true;
+    }
+
+    /**
+     * Does a full application loop iteration.
+     * Therefore, it clears the render targets; prepares rendering; begins the
+     * scene; performs the actual rendering; ends the scene; presents the rendered
+     * scene by flipping the swap chain; and performs the application logic.
+     * (See _before_render, _render, _after_render, _present, and _move.)
+     */
+    void Application::_loop()
+    {
+        // We (first) render the complete scene (without "flipping" the swap chain),
+        // (second) perform CPU calculations, and (third) present the scene (now by
+        // "flipping" the swap chain). Having CPU calculations between rendering and
+        // presentation, we try to make the most of the time the graphics card still
+        // has to finish processing.
+        _before_render();
+        _render();
+        _after_render();
+        _move();
+        _present();
+    }
+
+    /**
+     * Begins the scene and prepares rendering.
+     */
+    void Application::_before_render()
+    {
+        
+
+        //xl7::rendering_device()->clear_buffers();
+        xl7::rendering_device()->begin_scene();
+
+        
+    }
+
+    /**
+     * Performs the actual rendering.
+     */
+    void Application::_render()
+    {
+        
+    }
+
+    /**
+     * Performs follow-up stuff and ends the scene.
+     */
+    void Application::_after_render()
+    {
+        
+
+        xl7::rendering_device()->end_scene();
+    }
+
+    /**
+     * Presents the rendered scene by "flipping" the swap chain.
+     */
+    void Application::_present()
+    {
+        xl7::rendering_device()->present();
+    }
+
+    /**
+     * Performs the application logic.
+     */
+    void Application::_move()
+    {
+        
     }
 
 

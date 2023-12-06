@@ -111,6 +111,41 @@ private:
      */
     bool _run_loop();
 
+private:
+    /**
+     * Does a full application loop iteration.
+     * Therefore, it clears the render targets; prepares rendering; begins the
+     * scene; performs the actual rendering; ends the scene; presents the rendered
+     * scene by flipping the swap chain; and performs the application logic.
+     * (See _before_render, _render, _after_render, _present, and _move.)
+     */
+    void _loop();
+
+    /**
+     * Begins the scene and prepares rendering.
+     */
+    void _before_render();
+
+    /**
+     * Performs the actual rendering.
+     */
+    void _render();
+
+    /**
+     * Performs follow-up stuff and ends the scene.
+     */
+    void _after_render();
+
+    /**
+     * Presents the rendered scene by "flipping" the swap chain.
+     */
+    void _present();
+
+    /**
+     * Performs the application logic.
+     */
+    void _move();
+
 }; // class Application
 
 

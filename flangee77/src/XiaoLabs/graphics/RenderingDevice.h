@@ -84,6 +84,18 @@ private:
      */
     std::unique_ptr<ResourceManager> _resource_manager;
 
+private:
+    /**
+     * The flag indicating whether the device was lost.
+     */
+    bool _device_lost;
+
+    /**
+     * The flag indicating whether the function begin_scene has been called without
+     * a following call to end_scene.
+     */
+    bool _the_scene_is_on;
+
 
 
     // #############################################################################
@@ -101,7 +113,51 @@ public:
     // #############################################################################
     // Methods
     // #############################################################################
-private:
+public:
+    /**
+     * Checks whether the device is lost. If so, true is returned, and the
+     * application should pause and periodically call handle_device_lost.
+     * Reasons for a lost device could be:
+     * * A full-screen application loses focus.
+     * * The graphics driver is upgraded.
+     * * The system changes from a power-saving adapter to a performance adapter.
+     * * The graphics device stops responding and is reset.
+     * * A graphics adapter is physically attached or removed.
+     * * The swap chain has been resized.
+     * * The app has been moved to a monitor attached to a difference adapter.
+     * * The device has entered a non-operational state, for whatever reason.
+     */
+    bool check_device_lost();
+
+    /**
+     * If the device is lost (see check_device_lost), the application should pause
+     * and periodically call handle_device_lost to attempt to reset/reinitialize the
+     * device and restore/reacquire/recreate the device-dependent resources. If the
+     * device has been restored to an operational state, true is returned.
+     */
+    bool handle_device_lost();
+
+protected:
+    /**
+     * Notifies about a "device lost" state.
+     */
+    void _notify_device_lost();
+
+public:
+    /**
+     * Begins a scene.
+     */
+    bool begin_scene();
+
+    /**
+     * Ends a scene that was begun by calling begin_scene.
+     */
+    bool end_scene();
+
+    /**
+     * Presents the contents of the next buffer in the device's swap chain.
+     */
+    bool present();
 
 
 
@@ -135,6 +191,34 @@ private:
      * De-initializes the rendering device.
      */
     virtual bool _shutdown_impl() = 0;
+
+private:
+    /**
+     * Checks whether the device is lost. If so, true is returned.
+     */
+    virtual bool _check_device_lost_impl() = 0;
+
+    /**
+     * Tries to reset/reinitialize the device after it has been lost. If the device
+     * has been restored to an operational state, true is returned.
+     */
+    virtual bool _handle_device_lost_impl() = 0;
+
+private:
+    /**
+     * Begins a scene.
+     */
+    virtual bool _begin_scene_impl() = 0;
+
+    /**
+     * Ends a scene that was begun by calling begin_scene.
+     */
+    virtual bool _end_scene_impl() = 0;
+
+    /**
+     * Presents the contents of the next buffer in the device's swap chain.
+     */
+    virtual bool _present_impl() = 0;
 
 }; // class RenderingDevice
 
