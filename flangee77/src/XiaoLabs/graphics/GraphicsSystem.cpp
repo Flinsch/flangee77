@@ -48,7 +48,7 @@ namespace graphics {
      * Default constructor.
      */
     GraphicsSystem::GraphicsSystem()
-        : _rendering_device( nullptr, [](RenderingDevice* rendering_device) { delete rendering_device; } )
+        : _rendering_device( nullptr, RenderingDevice::Attorney::destroy )
     {
     }
 
@@ -108,7 +108,7 @@ namespace graphics {
             return false;
         }
 
-        if ( !_rendering_device->_init() )
+        if ( !RenderingDevice::Attorney::init( _rendering_device.get() ) )
         {
             LOG_ERROR( TEXT("The rendering device could not be initialized.") );
             return false;
@@ -130,7 +130,7 @@ namespace graphics {
             return false;
         }
 
-        if ( !_rendering_device->_shutdown() )
+        if ( !RenderingDevice::Attorney::shutdown( _rendering_device.get() ) )
             LOG_WARNING( TEXT("The rendering device could not be shut down correctly.") );
         _rendering_device.reset();
         LOG( TEXT("The rendering device has been destroyed.") );

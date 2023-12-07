@@ -2,7 +2,10 @@
 #ifndef XL7_GRAPHICS_RENDERINGDEVICE_H
 #define XL7_GRAPHICS_RENDERINGDEVICE_H
 
-#include "../ResourceManager.h"
+#include "./SurfaceManager.h"
+#include "./TextureManager.h"
+#include "./MeshManager.h"
+#include "./ShaderManager.h"
 
 #include <CoreLabs/Version.h>
 
@@ -15,7 +18,15 @@ namespace graphics {
 
 class RenderingDevice
 {
-    friend class GraphicsSystem;
+
+public:
+    class Attorney
+    {
+        static void destroy(RenderingDevice* rendering_device) { delete rendering_device; }
+        static bool init(RenderingDevice* rendering_device) { return rendering_device->_init(); }
+        static bool shutdown(RenderingDevice* rendering_device) { return rendering_device->_shutdown(); }
+        friend class GraphicsSystem;
+    };
 
 
 
@@ -44,6 +55,17 @@ public:
 
 
 
+protected:
+    template <class TResourceManager>
+    using ResourceManagerPtr = std::unique_ptr<TResourceManager, std::function<void(TResourceManager*)>>;
+
+    typedef ResourceManagerPtr<SurfaceManager> SurfaceManagerPtr;
+    typedef ResourceManagerPtr<TextureManager> TextureManagerPtr;
+    typedef ResourceManagerPtr<MeshManager> MeshManagerPtr;
+    typedef ResourceManagerPtr<ShaderManager> ShaderManagerPtr;
+
+
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
@@ -51,7 +73,11 @@ protected:
     /**
      * Explicit constructor.
      */
-    RenderingDevice(std::unique_ptr<ResourceManager> resource_manager);
+    RenderingDevice(
+        SurfaceManagerPtr surface_manager,
+        TextureManagerPtr texture_manager,
+        MeshManagerPtr mesh_manager,
+        ShaderManagerPtr shader_manager);
 
     /**
      * Destructor.
@@ -79,10 +105,24 @@ private:
 
 private:
     /**
-     * Placeholder for an example resource manager until the first actual resource
-     * manager is implemented.
+     * The surface manager.
      */
-    std::unique_ptr<ResourceManager> _resource_manager;
+    SurfaceManagerPtr _surface_manager;
+
+    /**
+     * The texture manager.
+     */
+    TextureManagerPtr _texture_manager;
+
+    /**
+     * The mesh manager.
+     */
+    MeshManagerPtr _mesh_manager;
+
+    /**
+     * The shader manager.
+     */
+    ShaderManagerPtr _shader_manager;
 
 private:
     /**

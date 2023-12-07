@@ -28,7 +28,6 @@ protected:
     // Construction / Destruction
     // #############################################################################
 protected:
-public:
     /**
      * Default constructor.
      */

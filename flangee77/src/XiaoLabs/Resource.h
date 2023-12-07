@@ -20,7 +20,7 @@ class Resource
 public:
     class Attorney
     {
-        static void destroy(Resource* resource);
+        static void destroy(Resource* resource) { delete resource; }
         friend class ResourceManager;
     };
 

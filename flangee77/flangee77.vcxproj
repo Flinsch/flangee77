@@ -167,8 +167,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\MeshManagerImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\ShaderManagerImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\SurfaceManagerImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\TextureManagerImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\MeshManagerImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\ShaderManagerImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\MeshManager.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\ShaderManager.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\prerequisites.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\prerequisites.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\SurfaceManager.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\TextureManager.h" />
     <ClInclude Include="src\XiaoLabs\Resource.h" />
     <ClInclude Include="src\CoreLabs\memory.h" />
     <ClInclude Include="src\CoreLabs\util.h" />
@@ -223,8 +233,20 @@
     <ClInclude Include="src\TestLabs\SubcaseBranchSwitch.h" />
     <ClInclude Include="src\TestLabs\SubcaseContext.h" />
     <ClInclude Include="src\CoreLabs\Version.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\SurfaceManagerImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\TextureManagerImpl.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\MeshManagerImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\ShaderManagerImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\SurfaceManagerImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\TextureManagerImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\MeshManagerImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\ShaderManagerImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\MeshManager.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\ShaderManager.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\SurfaceManager.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\TextureManager.cpp" />
     <ClCompile Include="src\XiaoLabs\Resource.cpp" />
     <ClCompile Include="src\CoreLabs\memory.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingDeviceImpl.cpp" />
@@ -265,6 +287,8 @@
     <ClCompile Include="src\TestLabs\SubcaseBranchSwitch.cpp" />
     <ClCompile Include="src\TestLabs\SubcaseContext.cpp" />
     <ClCompile Include="src\CoreLabs\Version.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\SurfaceManagerImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\TextureManagerImpl.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

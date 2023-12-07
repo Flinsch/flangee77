@@ -6,13 +6,6 @@ namespace xl7 {
 
 
 
-    void Resource::Attorney::destroy(Resource* resource)
-    {
-        delete resource;
-    }
-
-
-
     // #############################################################################
     // Construction / Destruction
     // #############################################################################

@@ -2,6 +2,8 @@
 
 #include <CoreLabs/sstream.h>
 
+#include <vector>
+
 
 
 namespace cl7 {
@@ -40,7 +42,7 @@ namespace memory {
         const cl7::char_type* units[] = {
             TEXT("B"), TEXT("KB"), TEXT("MB"), TEXT("GB"), TEXT("TB"), TEXT("PB"), TEXT("EB"), TEXT("ZB"), TEXT("YB"),
         };
-        const unsigned unit_count = sizeof( units ) / sizeof( cl7::char_type* );
+        const unsigned unit_count = sizeof(units) / sizeof(cl7::char_type*);
 
         unsigned long long x = bytes;
         unsigned c = 0;

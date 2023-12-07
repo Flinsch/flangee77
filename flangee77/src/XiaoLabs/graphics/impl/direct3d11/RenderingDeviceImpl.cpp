@@ -1,6 +1,10 @@
 #include "RenderingDeviceImpl.h"
 
 #include "./GraphicsSystemImpl.h"
+#include "./SurfaceManagerImpl.h"
+#include "./TextureManagerImpl.h"
+#include "./MeshManagerImpl.h"
+#include "./ShaderManagerImpl.h"
 #include "./errors.h"
 
 #include <XiaoLabs/MainWindow.h>
@@ -26,7 +30,11 @@ namespace direct3d11 {
      * Default constructor.
      */
     RenderingDeviceImpl::RenderingDeviceImpl()
-        : RenderingDevice( nullptr )
+        : RenderingDevice(
+            { SurfaceManagerImpl::Attorney::create(), SurfaceManagerImpl::Attorney::destroy },
+            { TextureManagerImpl::Attorney::create(), TextureManagerImpl::Attorney::destroy },
+            { MeshManagerImpl::Attorney::create(), MeshManagerImpl::Attorney::destroy },
+            { ShaderManagerImpl::Attorney::create(), ShaderManagerImpl::Attorney::destroy } )
         , _d3d_feature_level( D3D_FEATURE_LEVEL_1_0_CORE )
     {
     }
@@ -51,11 +59,11 @@ namespace direct3d11 {
         D3D_FEATURE_LEVEL feature_levels[] = {
             D3D_FEATURE_LEVEL_11_1,
             D3D_FEATURE_LEVEL_11_0,
-            /*D3D_FEATURE_LEVEL_10_1,
+            D3D_FEATURE_LEVEL_10_1,
             D3D_FEATURE_LEVEL_10_0,
             D3D_FEATURE_LEVEL_9_3,
             D3D_FEATURE_LEVEL_9_2,
-            D3D_FEATURE_LEVEL_9_1,*/
+            D3D_FEATURE_LEVEL_9_1,
         };
 
         // (Try to) create the hardware-based
@@ -69,7 +77,7 @@ namespace direct3d11 {
             nullptr,
             flags,
             feature_levels,
-            sizeof( feature_levels ) / sizeof( D3D_FEATURE_LEVEL ),
+            sizeof(feature_levels) / sizeof(D3D_FEATURE_LEVEL),
             D3D11_SDK_VERSION,
             &d3d_device,
             &_d3d_feature_level,

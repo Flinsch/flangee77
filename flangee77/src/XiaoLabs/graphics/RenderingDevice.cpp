@@ -17,9 +17,16 @@ namespace graphics {
     /**
      * Explicit constructor.
      */
-    RenderingDevice::RenderingDevice(std::unique_ptr<ResourceManager> resource_manager)
+    RenderingDevice::RenderingDevice(
+        SurfaceManagerPtr surface_manager,
+        TextureManagerPtr texture_manager,
+        MeshManagerPtr mesh_manager,
+        ShaderManagerPtr shader_manager)
         : _capabilities()
-        , _resource_manager( std::move(resource_manager) )
+        , _surface_manager( std::move(surface_manager) )
+        , _texture_manager( std::move(texture_manager) )
+        , _mesh_manager( std::move(mesh_manager) )
+        , _shader_manager( std::move(shader_manager) )
         , _device_lost( false )
         , _the_scene_is_on( false )
     {
