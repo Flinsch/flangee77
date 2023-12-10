@@ -167,6 +167,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\DepthStencilFormat.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\MeshManagerImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\ShaderManagerImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\SurfaceManagerImpl.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\MeshManagerImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\ShaderManagerImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\MeshManager.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\PixelFormat.h" />
     <ClInclude Include="src\XiaoLabs\graphics\ShaderManager.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\prerequisites.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\prerequisites.h" />
