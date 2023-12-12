@@ -92,7 +92,7 @@ namespace pl7 {
             return false;
 
         // Initialize the graphics system.
-        if ( !xl7::graphics_system().init( config ) )
+        if ( !xl7::graphics::graphics_system().init( config ) )
             return false;
 
         // Show the main window.
@@ -138,9 +138,9 @@ namespace pl7 {
 
             // Pause the application logic while the
             // rendering device is lost and not reset.
-            if ( xl7::rendering_device()->check_device_lost() )
+            if ( xl7::graphics::rendering_device()->check_device_lost() )
             {
-                if ( !xl7::rendering_device()->handle_device_lost() )
+                if ( !xl7::graphics::rendering_device()->handle_device_lost() )
                     continue;
             }
 
@@ -183,8 +183,8 @@ namespace pl7 {
     {
         
 
-        //xl7::rendering_device()->clear_buffers();
-        xl7::rendering_device()->begin_scene();
+        //xl7::graphics::rendering_device()->clear_buffers();
+        xl7::graphics::rendering_device()->begin_scene();
 
         
     }
@@ -204,7 +204,7 @@ namespace pl7 {
     {
         
 
-        xl7::rendering_device()->end_scene();
+        xl7::graphics::rendering_device()->end_scene();
     }
 
     /**
@@ -212,7 +212,7 @@ namespace pl7 {
      */
     void Application::_present()
     {
-        xl7::rendering_device()->present();
+        xl7::graphics::rendering_device()->present();
     }
 
     /**

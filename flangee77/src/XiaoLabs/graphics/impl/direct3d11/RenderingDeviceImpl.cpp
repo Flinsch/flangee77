@@ -1,10 +1,10 @@
 #include "RenderingDeviceImpl.h"
 
 #include "./GraphicsSystemImpl.h"
-#include "./SurfaceManagerImpl.h"
-#include "./TextureManagerImpl.h"
-#include "./MeshManagerImpl.h"
-#include "./ShaderManagerImpl.h"
+#include "./surfaces/SurfaceManagerImpl.h"
+#include "./textures/TextureManagerImpl.h"
+#include "./meshes/MeshManagerImpl.h"
+#include "./shaders/ShaderManagerImpl.h"
 #include "./errors.h"
 
 #include <XiaoLabs/MainWindow.h>
@@ -31,10 +31,10 @@ namespace direct3d11 {
      */
     RenderingDeviceImpl::RenderingDeviceImpl()
         : RenderingDevice(
-            { SurfaceManagerImpl::Attorney::create(), SurfaceManagerImpl::Attorney::destroy },
-            { TextureManagerImpl::Attorney::create(), TextureManagerImpl::Attorney::destroy },
-            { MeshManagerImpl::Attorney::create(), MeshManagerImpl::Attorney::destroy },
-            { ShaderManagerImpl::Attorney::create(), ShaderManagerImpl::Attorney::destroy } )
+            { surfaces::SurfaceManagerImpl::Attorney::create(), surfaces::SurfaceManagerImpl::Attorney::destroy },
+            { textures::TextureManagerImpl::Attorney::create(), textures::TextureManagerImpl::Attorney::destroy },
+            { meshes::MeshManagerImpl::Attorney::create(), meshes::MeshManagerImpl::Attorney::destroy },
+            { shaders::ShaderManagerImpl::Attorney::create(), shaders::ShaderManagerImpl::Attorney::destroy } )
         , _d3d_feature_level( D3D_FEATURE_LEVEL_1_0_CORE )
     {
     }

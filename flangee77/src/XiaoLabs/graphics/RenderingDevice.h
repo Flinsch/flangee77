@@ -2,10 +2,10 @@
 #ifndef XL7_GRAPHICS_RENDERINGDEVICE_H
 #define XL7_GRAPHICS_RENDERINGDEVICE_H
 
-#include "./SurfaceManager.h"
-#include "./TextureManager.h"
-#include "./MeshManager.h"
-#include "./ShaderManager.h"
+#include "./surfaces/SurfaceManager.h"
+#include "./textures/TextureManager.h"
+#include "./meshes/MeshManager.h"
+#include "./shaders/ShaderManager.h"
 
 #include <CoreLabs/Version.h>
 
@@ -59,10 +59,10 @@ protected:
     template <class TResourceManager>
     using ResourceManagerPtr = std::unique_ptr<TResourceManager, std::function<void(TResourceManager*)>>;
 
-    typedef ResourceManagerPtr<SurfaceManager> SurfaceManagerPtr;
-    typedef ResourceManagerPtr<TextureManager> TextureManagerPtr;
-    typedef ResourceManagerPtr<MeshManager> MeshManagerPtr;
-    typedef ResourceManagerPtr<ShaderManager> ShaderManagerPtr;
+    typedef ResourceManagerPtr<surfaces::SurfaceManager> SurfaceManagerPtr;
+    typedef ResourceManagerPtr<textures::TextureManager> TextureManagerPtr;
+    typedef ResourceManagerPtr<meshes::MeshManager> MeshManagerPtr;
+    typedef ResourceManagerPtr<shaders::ShaderManager> ShaderManagerPtr;
 
 
 
@@ -147,6 +147,27 @@ public:
      * determined).
      */
     const Capabilities& get_capabilities() const { return _capabilities; }
+
+public:
+    /**
+     * Returns the surface manager.
+     */
+    surfaces::SurfaceManager* get_surface_manager() const { return _surface_manager.get(); }
+
+    /**
+     * Returns the texture manager.
+     */
+    textures::TextureManager* get_texture_manager() const { return _texture_manager.get(); }
+
+    /**
+     * Returns the mesh manager.
+     */
+    meshes::MeshManager* get_mesh_manager() const { return _mesh_manager.get(); }
+
+    /**
+     *  Returns the shader manager.
+     */
+    shaders::ShaderManager* get_shader_manager() const { return _shader_manager.get(); }
 
 
 
