@@ -59,13 +59,7 @@ private:
      * A lookup table that maps a given resource (by its pointer hash) to its
      * corresponding index within the "linear list".
      */
-    std::unordered_map<const Resource*, size_t> _resource_pointer_lookup;
-
-    /**
-     * A lookup table that maps a given resource (by its identifier hash) to its
-     * corresponding index within the "linear list".
-     */
-    std::unordered_map<cl7::string_view, size_t> _resource_identifier_lookup;
+    std::unordered_map<const Resource*, size_t> _resource_lookup;
 
 
 
@@ -88,8 +82,7 @@ public:
     /**
      * Checks whether a resource with the given identifier is contained in this
      * resource manager.
-     * Time complexity: constant on average, worst case linear in the number of
-     * contained resources.
+     * Time complexity: linear in the number of contained resources.
      */
     bool contains_resource(const cl7::string_view& identifier) const;
 
@@ -100,8 +93,7 @@ public:
 
     /**
      * Returns the resource of the given identifier.
-     * Time complexity: constant on average, worst case linear in the number of
-     * contained resources.
+     * Time complexity: linear in the number of contained resources.
      */
     Resource* find_resource(const cl7::string_view& identifier) const;
 
