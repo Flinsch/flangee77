@@ -167,6 +167,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\meshes\IndexBuffer.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\ResourceFactoryImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\ResourceFactoryImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\PixelShaderImpl.h" />
@@ -243,8 +244,11 @@
     <ClInclude Include="src\CoreLabs\Version.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\VertexShader.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\VertexShaderImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\meshes\VertexBuffer.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\meshes\VertexLayout.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\meshes\IndexBuffer.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\ResourceFactoryImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\ResourceFactoryImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\PixelShaderImpl.cpp" />
@@ -298,6 +302,8 @@
     <ClCompile Include="src\CoreLabs\Version.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\shaders\VertexShader.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\VertexShaderImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\meshes\VertexBuffer.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\meshes\VertexLayout.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
