@@ -3,20 +3,28 @@
 #define XL7_GRAPHICS_TEXTURES_TEXTUREMANAGER_H
 #include "../../ResourceManager.h"
 
+#include "./ITextureFactory.h"
+
 
 
 namespace xl7 {
 namespace graphics {
+    class RenderingDevice;
 namespace textures {
 
 
 
-class TextureManager
+class TextureManager final
     : public ResourceManager
 {
 
-protected:
-    static void _destroy(TextureManager* texture_manager) { delete texture_manager; }
+public:
+    class Attorney
+    {
+        static TextureManager* create(ITextureFactory* factory) { return new TextureManager( factory ); }
+        static void destroy(TextureManager* manager) { delete manager; }
+        friend class RenderingDevice;
+    };
 
 
 
@@ -25,9 +33,9 @@ protected:
     // #############################################################################
 protected:
     /**
-     * Default constructor.
+     * Explicit constructor.
      */
-    TextureManager();
+    TextureManager(ITextureFactory* factory);
 
     /**
      * Destructor.
@@ -35,6 +43,8 @@ protected:
     virtual ~TextureManager();
 
 private:
+    /** Default constructor. */
+    TextureManager() = delete;
     /** Copy constructor. */
     TextureManager(const TextureManager&) = delete;
     /** Copy assignment operator. */
@@ -46,6 +56,10 @@ private:
     // Attributes
     // #############################################################################
 private:
+    /**
+     * The texture factory.
+     */
+    ITextureFactory* const _factory;
 
 
 

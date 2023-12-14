@@ -3,10 +3,13 @@
 #define XL7_GRAPHICS_SHADERS_SHADERMANAGER_H
 #include "../../ResourceManager.h"
 
+#include "./IShaderFactory.h"
+
 
 
 namespace xl7 {
 namespace graphics {
+    class RenderingDevice;
 namespace shaders {
 
 
@@ -15,8 +18,13 @@ class ShaderManager
     : public ResourceManager
 {
 
-protected:
-    static void _destroy(ShaderManager* shader_manager) { delete shader_manager; }
+public:
+    class Attorney
+    {
+        static ShaderManager* create(IShaderFactory* factory) { return new ShaderManager( factory ); }
+        static void destroy(ShaderManager* manager) { delete manager; }
+        friend class RenderingDevice;
+    };
 
 
 
@@ -25,9 +33,9 @@ protected:
     // #############################################################################
 protected:
     /**
-     * Default constructor.
+     * Explicit constructor.
      */
-    ShaderManager();
+    ShaderManager(IShaderFactory* factory);
 
     /**
      * Destructor.
@@ -35,6 +43,8 @@ protected:
     virtual ~ShaderManager();
 
 private:
+    /** Default constructor. */
+    ShaderManager() = delete;
     /** Copy constructor. */
     ShaderManager(const ShaderManager&) = delete;
     /** Copy assignment operator. */
@@ -46,6 +56,10 @@ private:
     // Attributes
     // #############################################################################
 private:
+    /**
+     * The shader factory.
+     */
+    IShaderFactory* const _factory;
 
 
 

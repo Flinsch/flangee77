@@ -17,16 +17,13 @@ namespace graphics {
     /**
      * Explicit constructor.
      */
-    RenderingDevice::RenderingDevice(
-        SurfaceManagerPtr surface_manager,
-        TextureManagerPtr texture_manager,
-        MeshManagerPtr mesh_manager,
-        ShaderManagerPtr shader_manager)
+    RenderingDevice::RenderingDevice(std::unique_ptr<IResourceFactory> resource_factory)
         : _capabilities()
-        , _surface_manager( std::move(surface_manager) )
-        , _texture_manager( std::move(texture_manager) )
-        , _mesh_manager( std::move(mesh_manager) )
-        , _shader_manager( std::move(shader_manager) )
+        , _resource_factory( std::move(resource_factory) )
+        , _surface_manager( { surfaces::SurfaceManager::Attorney::create( _resource_factory.get() ), surfaces::SurfaceManager::Attorney::destroy } )
+        , _texture_manager( { textures::TextureManager::Attorney::create( _resource_factory.get() ), textures::TextureManager::Attorney::destroy } )
+        , _mesh_manager( { meshes::MeshManager::Attorney::create( _resource_factory.get() ), meshes::MeshManager::Attorney::destroy } )
+        , _shader_manager( { shaders::ShaderManager::Attorney::create( _resource_factory.get() ), shaders::ShaderManager::Attorney::destroy } )
         , _device_lost( false )
         , _the_scene_is_on( false )
     {

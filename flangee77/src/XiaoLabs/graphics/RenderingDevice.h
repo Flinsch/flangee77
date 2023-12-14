@@ -2,6 +2,8 @@
 #ifndef XL7_GRAPHICS_RENDERINGDEVICE_H
 #define XL7_GRAPHICS_RENDERINGDEVICE_H
 
+#include "./IResourceFactory.h"
+
 #include "./surfaces/SurfaceManager.h"
 #include "./textures/TextureManager.h"
 #include "./meshes/MeshManager.h"
@@ -73,11 +75,7 @@ protected:
     /**
      * Explicit constructor.
      */
-    RenderingDevice(
-        SurfaceManagerPtr surface_manager,
-        TextureManagerPtr texture_manager,
-        MeshManagerPtr mesh_manager,
-        ShaderManagerPtr shader_manager);
+    RenderingDevice(std::unique_ptr<IResourceFactory> resource_factory);
 
     /**
      * Destructor.
@@ -104,6 +102,11 @@ private:
     Capabilities _capabilities;
 
 private:
+    /**
+     * The central resource factory for the resource managers.
+     */
+    std::unique_ptr<IResourceFactory> _resource_factory;
+
     /**
      * The surface manager.
      */

@@ -13,10 +13,11 @@ namespace meshes {
     // #############################################################################
 
     /**
-     * Default constructor.
+     * Explicit constructor.
      */
-    MeshManager::MeshManager()
+    MeshManager::MeshManager(IMeshFactory* factory)
         : ResourceManager()
+        , _factory( factory )
     {
     }
 

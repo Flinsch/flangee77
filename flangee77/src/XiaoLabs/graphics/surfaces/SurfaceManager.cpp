@@ -13,10 +13,11 @@ namespace surfaces {
     // #############################################################################
 
     /**
-     * Default constructor.
+     * Explicit constructor.
      */
-    SurfaceManager::SurfaceManager()
+    SurfaceManager::SurfaceManager(ISurfaceFactory* factory)
         : ResourceManager()
+        , _factory( factory )
     {
     }
 

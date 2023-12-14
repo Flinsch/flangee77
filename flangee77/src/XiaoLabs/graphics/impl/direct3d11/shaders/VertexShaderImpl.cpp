@@ -1,7 +1,5 @@
 #include "VertexShaderImpl.h"
 
-#include "./ShaderManagerImpl.h"
-
 
 
 namespace xl7 {
@@ -19,7 +17,7 @@ namespace shaders {
     /**
      * Explicit constructor.
      */
-    VertexShaderImpl::VertexShaderImpl(ShaderManagerImpl* manager)
+    VertexShaderImpl::VertexShaderImpl(xl7::graphics::shaders::ShaderManager* manager)
         : VertexShader( manager )
     {
     }
@@ -27,7 +25,7 @@ namespace shaders {
     /**
      * Explicit constructor.
      */
-    VertexShaderImpl::VertexShaderImpl(ShaderManagerImpl* manager, const cl7::string& identifier)
+    VertexShaderImpl::VertexShaderImpl(xl7::graphics::shaders::ShaderManager* manager, const cl7::string& identifier)
         : VertexShader( manager, identifier )
     {
     }

@@ -13,10 +13,11 @@ namespace textures {
     // #############################################################################
 
     /**
-     * Default constructor.
+     * Explicit constructor.
      */
-    TextureManager::TextureManager()
+    TextureManager::TextureManager(ITextureFactory* factory)
         : ResourceManager()
+        , _factory( factory )
     {
     }
 

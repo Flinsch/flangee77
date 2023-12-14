@@ -12,10 +12,11 @@ namespace shaders {
     // #############################################################################
 
     /**
-     * Default constructor.
+     * Explicit constructor.
      */
-    ShaderManager::ShaderManager()
+    ShaderManager::ShaderManager(IShaderFactory* factory)
         : ResourceManager()
+        , _factory( factory )
     {
     }
 

@@ -3,10 +3,13 @@
 #define XL7_GRAPHICS_MESHES_MESHMANAGER_H
 #include "../../ResourceManager.h"
 
+#include "./IMeshFactory.h"
+
 
 
 namespace xl7 {
 namespace graphics {
+    class RenderingDevice;
 namespace meshes {
 
 
@@ -15,8 +18,13 @@ class MeshManager
     : public ResourceManager
 {
 
-protected:
-    static void _destroy(MeshManager* mesh_manager) { delete mesh_manager; }
+public:
+    class Attorney
+    {
+        static MeshManager* create(IMeshFactory* factory) { return new MeshManager( factory ); }
+        static void destroy(MeshManager* manager) { delete manager; }
+        friend class RenderingDevice;
+    };
 
 
 
@@ -25,9 +33,9 @@ protected:
     // #############################################################################
 protected:
     /**
-     * Default constructor.
+     * Explicit constructor.
      */
-    MeshManager();
+    MeshManager(IMeshFactory* factory);
 
     /**
      * Destructor.
@@ -35,6 +43,8 @@ protected:
     virtual ~MeshManager();
 
 private:
+    /** Default constructor. */
+    MeshManager() = delete;
     /** Copy constructor. */
     MeshManager(const MeshManager&) = delete;
     /** Copy assignment operator. */
@@ -46,6 +56,10 @@ private:
     // Attributes
     // #############################################################################
 private:
+    /**
+     * The mesh factory.
+     */
+    IMeshFactory* const _factory;
 
 
 

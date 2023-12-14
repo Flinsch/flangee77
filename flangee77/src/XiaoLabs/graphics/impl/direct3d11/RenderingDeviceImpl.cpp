@@ -1,10 +1,7 @@
 #include "RenderingDeviceImpl.h"
 
 #include "./GraphicsSystemImpl.h"
-#include "./surfaces/SurfaceManagerImpl.h"
-#include "./textures/TextureManagerImpl.h"
-#include "./meshes/MeshManagerImpl.h"
-#include "./shaders/ShaderManagerImpl.h"
+#include "./ResourceFactoryImpl.h"
 #include "./errors.h"
 
 #include <XiaoLabs/MainWindow.h>
@@ -30,11 +27,7 @@ namespace direct3d11 {
      * Default constructor.
      */
     RenderingDeviceImpl::RenderingDeviceImpl()
-        : RenderingDevice(
-            { surfaces::SurfaceManagerImpl::Attorney::create(), surfaces::SurfaceManagerImpl::Attorney::destroy },
-            { textures::TextureManagerImpl::Attorney::create(), textures::TextureManagerImpl::Attorney::destroy },
-            { meshes::MeshManagerImpl::Attorney::create(), meshes::MeshManagerImpl::Attorney::destroy },
-            { shaders::ShaderManagerImpl::Attorney::create(), shaders::ShaderManagerImpl::Attorney::destroy } )
+        : RenderingDevice( std::unique_ptr<IResourceFactory>( ResourceFactoryImpl::Attorney::create() ) )
         , _d3d_feature_level( D3D_FEATURE_LEVEL_1_0_CORE )
     {
     }

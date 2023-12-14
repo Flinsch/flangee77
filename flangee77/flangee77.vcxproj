@@ -167,24 +167,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\ResourceFactoryImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\ResourceFactoryImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\PixelShaderImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\VertexShaderImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\PixelShaderImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\IResourceFactory.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\meshes\IMeshFactory.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\IShaderFactory.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\PixelShader.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\Shader.h" />
     <ClInclude Include="src\XiaoLabs\graphics\DepthStencilFormat.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\meshes\MeshManagerImpl.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\ShaderManagerImpl.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\surfaces\SurfaceManagerImpl.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\textures\TextureManagerImpl.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\MeshManagerImpl.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\ShaderManagerImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\MeshManager.h" />
     <ClInclude Include="src\XiaoLabs\graphics\PixelFormat.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ShaderManager.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\prerequisites.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\prerequisites.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\surfaces\ISurfaceFactory.h" />
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\SurfaceManager.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\textures\ITextureFactory.h" />
     <ClInclude Include="src\XiaoLabs\graphics\textures\TextureManager.h" />
     <ClInclude Include="src\XiaoLabs\Resource.h" />
     <ClInclude Include="src\CoreLabs\memory.h" />
@@ -240,23 +241,17 @@
     <ClInclude Include="src\TestLabs\SubcaseBranchSwitch.h" />
     <ClInclude Include="src\TestLabs\SubcaseContext.h" />
     <ClInclude Include="src\CoreLabs\Version.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\surfaces\SurfaceManagerImpl.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\textures\TextureManagerImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\VertexShader.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\VertexShaderImpl.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\ResourceFactoryImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\ResourceFactoryImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\PixelShaderImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\VertexShaderImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\PixelShaderImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\shaders\PixelShader.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\shaders\Shader.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\meshes\MeshManagerImpl.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\ShaderManagerImpl.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\surfaces\SurfaceManagerImpl.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\textures\TextureManagerImpl.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\MeshManagerImpl.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\ShaderManagerImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\meshes\MeshManager.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\shaders\ShaderManager.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\SurfaceManager.cpp" />
@@ -301,8 +296,6 @@
     <ClCompile Include="src\TestLabs\SubcaseBranchSwitch.cpp" />
     <ClCompile Include="src\TestLabs\SubcaseContext.cpp" />
     <ClCompile Include="src\CoreLabs\Version.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\surfaces\SurfaceManagerImpl.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\textures\TextureManagerImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\shaders\VertexShader.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\VertexShaderImpl.cpp" />
   </ItemGroup>

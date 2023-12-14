@@ -13,10 +13,6 @@ namespace shaders {
 
 
 
-class ShaderManagerImpl;
-
-
-
 class VertexShaderImpl final
     : public xl7::graphics::shaders::VertexShader
 {
@@ -24,8 +20,8 @@ class VertexShaderImpl final
 public:
     class Attorney
     {
-        static VertexShaderImpl* create(ShaderManagerImpl* manager) { return new VertexShaderImpl( manager ); }
-        friend class ShaderManagerImpl;
+        static VertexShaderImpl* create(xl7::graphics::shaders::ShaderManager* manager) { return new VertexShaderImpl( manager ); }
+        friend class ResourceFactoryImpl;
     };
 
 
@@ -37,12 +33,12 @@ protected:
     /**
      * Explicit constructor.
      */
-    explicit VertexShaderImpl(ShaderManagerImpl* manager);
+    explicit VertexShaderImpl(xl7::graphics::shaders::ShaderManager* manager);
 
     /**
      * Explicit constructor.
      */
-    VertexShaderImpl(ShaderManagerImpl* manager, const cl7::string& identifier);
+    VertexShaderImpl(xl7::graphics::shaders::ShaderManager* manager, const cl7::string& identifier);
 
     /**
      * Destructor.

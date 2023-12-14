@@ -1,7 +1,5 @@
 #include "PixelShaderImpl.h"
 
-#include "./ShaderManagerImpl.h"
-
 
 
 namespace xl7 {
@@ -19,7 +17,7 @@ namespace shaders {
     /**
      * Explicit constructor.
      */
-    PixelShaderImpl::PixelShaderImpl(ShaderManagerImpl* manager)
+    PixelShaderImpl::PixelShaderImpl(xl7::graphics::shaders::ShaderManager* manager)
         : PixelShader( manager )
     {
     }
@@ -27,7 +25,7 @@ namespace shaders {
     /**
      * Explicit constructor.
      */
-    PixelShaderImpl::PixelShaderImpl(ShaderManagerImpl* manager, const cl7::string& identifier)
+    PixelShaderImpl::PixelShaderImpl(xl7::graphics::shaders::ShaderManager* manager, const cl7::string& identifier)
         : PixelShader( manager, identifier )
     {
     }

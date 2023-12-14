@@ -3,10 +3,13 @@
 #define XL7_GRAPHICS_SURFACES_SURFACEMANAGER_H
 #include "../../ResourceManager.h"
 
+#include "./ISurfaceFactory.h"
+
 
 
 namespace xl7 {
 namespace graphics {
+    class RenderingDevice;
 namespace surfaces {
 
 
@@ -15,8 +18,13 @@ class SurfaceManager
     : public ResourceManager
 {
 
-protected:
-    static void _destroy(SurfaceManager* surface_manager) { delete surface_manager; }
+public:
+    class Attorney
+    {
+        static SurfaceManager* create(ISurfaceFactory* factory) { return new SurfaceManager( factory ); }
+        static void destroy(SurfaceManager* manager) { delete manager; }
+        friend class RenderingDevice;
+    };
 
 
 
@@ -25,9 +33,9 @@ protected:
     // #############################################################################
 protected:
     /**
-     * Default constructor.
+     * Explicit constructor.
      */
-    SurfaceManager();
+    SurfaceManager(ISurfaceFactory* factory);
 
     /**
      * Destructor.
@@ -35,6 +43,8 @@ protected:
     virtual ~SurfaceManager();
 
 private:
+    /** Default constructor. */
+    SurfaceManager() = delete;
     /** Copy constructor. */
     SurfaceManager(const SurfaceManager&) = delete;
     /** Copy assignment operator. */
@@ -46,6 +56,10 @@ private:
     // Attributes
     // #############################################################################
 private:
+    /**
+     * The surface factory.
+     */
+    ISurfaceFactory* const _factory;
 
 
 

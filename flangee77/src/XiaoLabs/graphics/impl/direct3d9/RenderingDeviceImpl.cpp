@@ -1,10 +1,7 @@
 #include "RenderingDeviceImpl.h"
 
 #include "./GraphicsSystemImpl.h"
-#include "./surfaces/SurfaceManagerImpl.h"
-#include "./textures/TextureManagerImpl.h"
-#include "./meshes/MeshManagerImpl.h"
-#include "./shaders/ShaderManagerImpl.h"
+#include "./ResourceFactoryImpl.h"
 #include "./errors.h"
 
 #include <XiaoLabs/MainWindow.h>
@@ -35,11 +32,7 @@ namespace direct3d9 {
      * Default constructor.
      */
     RenderingDeviceImpl::RenderingDeviceImpl()
-        : RenderingDevice(
-            { surfaces::SurfaceManagerImpl::Attorney::create(), surfaces::SurfaceManagerImpl::Attorney::destroy },
-            { textures::TextureManagerImpl::Attorney::create(), textures::TextureManagerImpl::Attorney::destroy },
-            { meshes::MeshManagerImpl::Attorney::create(), meshes::MeshManagerImpl::Attorney::destroy },
-            { shaders::ShaderManagerImpl::Attorney::create(), shaders::ShaderManagerImpl::Attorney::destroy } )
+        : RenderingDevice( std::unique_ptr<IResourceFactory>( ResourceFactoryImpl::Attorney::create() ) )
         , _d3d_device( nullptr )
         , _d3d_adapter_identifier()
         , _d3d_present_parameters()

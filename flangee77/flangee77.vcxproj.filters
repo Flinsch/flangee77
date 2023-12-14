@@ -195,30 +195,6 @@
     <ClInclude Include="src\XiaoLabs\graphics\meshes\MeshManager.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\surfaces\SurfaceManagerImpl.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\textures\TextureManagerImpl.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\MeshManagerImpl.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\ShaderManagerImpl.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\meshes\MeshManagerImpl.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\ShaderManagerImpl.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\surfaces\SurfaceManagerImpl.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\textures\TextureManagerImpl.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="src\XiaoLabs\graphics\PixelFormat.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -244,6 +220,27 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\VertexShaderImpl.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\IResourceFactory.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\ResourceFactoryImpl.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\meshes\IMeshFactory.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\IShaderFactory.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\surfaces\ISurfaceFactory.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\textures\ITextureFactory.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\ResourceFactoryImpl.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -380,30 +377,6 @@
     <ClCompile Include="src\XiaoLabs\graphics\meshes\MeshManager.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\surfaces\SurfaceManagerImpl.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\textures\TextureManagerImpl.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\MeshManagerImpl.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\ShaderManagerImpl.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\meshes\MeshManagerImpl.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\ShaderManagerImpl.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\surfaces\SurfaceManagerImpl.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\textures\TextureManagerImpl.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\shaders\Shader.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -423,6 +396,12 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\VertexShaderImpl.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\ResourceFactoryImpl.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\ResourceFactoryImpl.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

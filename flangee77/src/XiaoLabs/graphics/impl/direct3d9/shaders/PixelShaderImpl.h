@@ -13,10 +13,6 @@ namespace shaders {
 
 
 
-class ShaderManagerImpl;
-
-
-
 class PixelShaderImpl final
     : public xl7::graphics::shaders::PixelShader
 {
@@ -24,8 +20,8 @@ class PixelShaderImpl final
 public:
     class Attorney
     {
-        static PixelShaderImpl* create(ShaderManagerImpl* manager) { return new PixelShaderImpl( manager ); }
-        friend class ShaderManagerImpl;
+        static PixelShaderImpl* create(xl7::graphics::shaders::ShaderManager* manager) { return new PixelShaderImpl( manager ); }
+        friend class ResourceFactoryImpl;
     };
 
 
@@ -37,12 +33,12 @@ protected:
     /**
      * Explicit constructor.
      */
-    explicit PixelShaderImpl(ShaderManagerImpl* manager);
+    explicit PixelShaderImpl(xl7::graphics::shaders::ShaderManager* manager);
 
     /**
      * Explicit constructor.
      */
-    PixelShaderImpl(ShaderManagerImpl* manager, const cl7::string& identifier);
+    PixelShaderImpl(xl7::graphics::shaders::ShaderManager* manager, const cl7::string& identifier);
 
     /**
      * Destructor.
