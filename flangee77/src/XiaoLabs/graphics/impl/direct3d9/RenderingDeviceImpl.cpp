@@ -1,6 +1,7 @@
 #include "RenderingDeviceImpl.h"
 
 #include "./GraphicsSystemImpl.h"
+#include "./RenderingContextImpl.h"
 #include "./ResourceFactoryImpl.h"
 #include "./errors.h"
 
@@ -141,6 +142,16 @@ namespace direct3d9 {
     }
 
     /**
+     * Creates a new rendering context with the specified index (0: primary context).
+     * Returns NULL if the rendering context could not be created.
+     */
+    RenderingContext* RenderingDeviceImpl::_create_rendering_context_impl(unsigned index)
+    {
+        assert( index == 0 );
+        return new RenderingContextImpl( index, _d3d_device );
+    }
+
+    /**
      * Checks whether the device is lost. If so, true is returned.
      */
     bool RenderingDeviceImpl::_check_device_lost_impl()
@@ -157,37 +168,6 @@ namespace direct3d9 {
     bool RenderingDeviceImpl::_handle_device_lost_impl()
     {
         
-
-        return true;
-    }
-
-
-    /**
-     * Begins a scene.
-     */
-    bool RenderingDeviceImpl::_begin_scene_impl()
-    {
-        HRESULT hresult = _d3d_device->BeginScene();
-        if ( FAILED(hresult) )
-        {
-            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::BeginScene") ) );
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Ends a scene that was begun by calling begin_scene.
-     */
-    bool RenderingDeviceImpl::_end_scene_impl()
-    {
-        HRESULT hresult = _d3d_device->EndScene();
-        if ( FAILED(hresult) )
-        {
-            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::EndScene") ) );
-            return false;
-        }
 
         return true;
     }

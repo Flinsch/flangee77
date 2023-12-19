@@ -167,6 +167,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingContextImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\RenderingContextImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\RenderingContext.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\IndexBuffer.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\ResourceFactoryImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\ResourceFactoryImpl.h" />
@@ -248,6 +251,9 @@
     <ClInclude Include="src\XiaoLabs\graphics\meshes\VertexLayout.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingContextImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\RenderingContextImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\RenderingContext.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\meshes\IndexBuffer.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\ResourceFactoryImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\ResourceFactoryImpl.cpp" />

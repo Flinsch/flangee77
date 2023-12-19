@@ -2,6 +2,8 @@
 #ifndef XL7_GRAPHICS_RENDERINGDEVICE_H
 #define XL7_GRAPHICS_RENDERINGDEVICE_H
 
+#include "./RenderingContext.h"
+
 #include "./IResourceFactory.h"
 
 #include "./surfaces/SurfaceManager.h"
@@ -10,6 +12,8 @@
 #include "./shaders/ShaderManager.h"
 
 #include <CoreLabs/Version.h>
+
+#include <vector>
 
 
 
@@ -103,6 +107,12 @@ private:
 
 private:
     /**
+     * The rendering contexts.
+     */
+    std::vector<std::unique_ptr<RenderingContext, std::function<void(RenderingContext*)>>> _rendering_contexts;
+
+private:
+    /**
      * The central resource factory for the resource managers.
      */
     std::unique_ptr<IResourceFactory> _resource_factory;
@@ -133,12 +143,6 @@ private:
      */
     bool _device_lost;
 
-    /**
-     * The flag indicating whether the function begin_scene has been called without
-     * a following call to end_scene.
-     */
-    bool _the_scene_is_on;
-
 
 
     // #############################################################################
@@ -150,6 +154,17 @@ public:
      * determined).
      */
     const Capabilities& get_capabilities() const { return _capabilities; }
+
+public:
+    /**
+     * Returns the primary rendering context.
+     */
+    RenderingContext* get_primary_context() const { return _rendering_contexts[ 0 ].get(); }
+
+    /**
+     * Returns the specified rendering context (0: primary context).
+     */
+    RenderingContext* get_rendering_context(unsigned index = 0);
 
 public:
     /**
@@ -209,16 +224,6 @@ protected:
 
 public:
     /**
-     * Begins a scene.
-     */
-    bool begin_scene();
-
-    /**
-     * Ends a scene that was begun by calling begin_scene.
-     */
-    bool end_scene();
-
-    /**
      * Presents the contents of the next buffer in the device's swap chain.
      */
     bool present();
@@ -258,6 +263,13 @@ private:
 
 private:
     /**
+     * Creates a new rendering context with the specified index (0: primary context).
+     * Returns NULL if the rendering context could not be created.
+     */
+    virtual RenderingContext* _create_rendering_context_impl(unsigned index) = 0;
+
+private:
+    /**
      * Checks whether the device is lost. If so, true is returned.
      */
     virtual bool _check_device_lost_impl() = 0;
@@ -269,16 +281,6 @@ private:
     virtual bool _handle_device_lost_impl() = 0;
 
 private:
-    /**
-     * Begins a scene.
-     */
-    virtual bool _begin_scene_impl() = 0;
-
-    /**
-     * Ends a scene that was begun by calling begin_scene.
-     */
-    virtual bool _end_scene_impl() = 0;
-
     /**
      * Presents the contents of the next buffer in the device's swap chain.
      */

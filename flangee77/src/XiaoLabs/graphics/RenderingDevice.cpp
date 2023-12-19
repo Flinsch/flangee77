@@ -25,8 +25,42 @@ namespace graphics {
         , _mesh_manager( { meshes::MeshManager::Attorney::create( _resource_factory.get() ), meshes::MeshManager::Attorney::destroy } )
         , _shader_manager( { shaders::ShaderManager::Attorney::create( _resource_factory.get() ), shaders::ShaderManager::Attorney::destroy } )
         , _device_lost( false )
-        , _the_scene_is_on( false )
     {
+    }
+
+
+
+    // #############################################################################
+    // Properties
+    // #############################################################################
+
+    /**
+     * Returns the specified rendering context.
+     */
+    RenderingContext* RenderingDevice::get_rendering_context(unsigned index)
+    {
+        size_t i = static_cast<size_t>( index );
+        if ( i < _rendering_contexts.size() )
+            return _rendering_contexts[ i ].get();
+
+        if ( i > _rendering_contexts.size() )
+            LOG_WARNING( TEXT("The creation of a new rendering context was triggered whose index is out of sequence.") );
+        while ( _rendering_contexts.size() < i )
+            _rendering_contexts.push_back( nullptr );
+
+        _rendering_contexts.emplace_back( _create_rendering_context_impl( index ), RenderingContext::Attorney::destroy );
+
+        RenderingContext* rendering_context = _rendering_contexts[ i ].get();
+        if ( rendering_context == nullptr )
+        {
+            if ( index == 0 )
+                LOG_ERROR( TEXT("The primary rendering context could not be created.") );
+            else
+                LOG_WARNING( TEXT("An additional rendering context could not be created.") );
+            return nullptr;
+        }
+
+        return rendering_context;
     }
 
 
@@ -88,47 +122,15 @@ namespace graphics {
     }
 
     /**
-     * Begins a scene.
-     */
-    bool RenderingDevice::begin_scene()
-    {
-        if ( _the_scene_is_on )
-        {
-            LOG_WARNING( TEXT("The scene is already on.") );
-            return false;
-        }
-
-        if ( !_begin_scene_impl() )
-            return false;
-
-        _the_scene_is_on = true;
-        return true;
-    }
-
-    /**
-     * Ends a scene that was begun by calling begin_scene.
-     */
-    bool RenderingDevice::end_scene()
-    {
-        if ( !_the_scene_is_on )
-        {
-            LOG_WARNING( TEXT("The scene is not on.") );
-            return false;
-        }
-
-        if ( !_end_scene_impl() )
-            return false;
-
-        _the_scene_is_on = false;
-        return true;
-    }
-
-    /**
      * Presents the contents of the next buffer in the device's swap chain.
      */
     bool RenderingDevice::present()
     {
-        if ( _the_scene_is_on )
+        bool the_scene_is_on = false;
+        for ( const auto& rendering_context : _rendering_contexts )
+            the_scene_is_on |= rendering_context->is_scene_on();
+
+        if ( the_scene_is_on )
         {
             LOG_WARNING( TEXT("The scene is still on.") );
             return false;
@@ -159,6 +161,10 @@ namespace graphics {
 
         _capabilities = capabilities;
 
+        // Ensure (primary) rendering context.
+        if ( get_rendering_context() == nullptr )
+            return false;
+
         // Print out the supported shader versions.
         LOG_TYPE( TEXT("Shader model versions:"), cl7::logging::LogType::Caption );
         LOG_TYPE( TEXT("Vertex shader\t") + _capabilities.shaders.vertex_shader_version.to_string( true ), cl7::logging::LogType::Item );
@@ -173,8 +179,6 @@ namespace graphics {
         // Allriggedy, we got a new device
         // that surely is not lost.
         _device_lost = false;
-        // And the scene is not on.
-        _the_scene_is_on = false;
 
         return true;
     }
@@ -184,6 +188,8 @@ namespace graphics {
      */
     bool RenderingDevice::_shutdown()
     {
+        _rendering_contexts.clear();
+
         _capabilities = Capabilities();
 
         return _shutdown_impl();

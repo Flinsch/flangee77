@@ -1,6 +1,7 @@
 #include "RenderingDeviceImpl.h"
 
 #include "./GraphicsSystemImpl.h"
+#include "./RenderingContextImpl.h"
 #include "./ResourceFactoryImpl.h"
 #include "./errors.h"
 
@@ -228,6 +229,26 @@ namespace direct3d11 {
     }
 
     /**
+     * Creates a new rendering context with the specified index (0: primary context).
+     * Returns NULL if the rendering context could not be created.
+     */
+    RenderingContext* RenderingDeviceImpl::_create_rendering_context_impl(unsigned index)
+    {
+        if ( index == 0 )
+            return new RenderingContextImpl( index, _d3d_immediate_context );
+
+        wrl::ComPtr<ID3D11DeviceContextN> d3d_deferred_context;
+        HRESULT hresult = _d3d_device->CreateDeferredContext1( 0 , &d3d_deferred_context );
+        if ( FAILED(hresult) )
+        {
+            LOG_ERROR( errors::d3d11_result( hresult, TEXT("ID3D11Device::CreateDeferredContext") ) );
+            return nullptr;
+        }
+
+        return new RenderingContextImpl( index, d3d_deferred_context );
+    }
+
+    /**
      * Checks whether the device is lost. If so, true is returned.
      */
     bool RenderingDeviceImpl::_check_device_lost_impl()
@@ -244,27 +265,6 @@ namespace direct3d11 {
     bool RenderingDeviceImpl::_handle_device_lost_impl()
     {
         
-
-        return true;
-    }
-
-
-    /**
-     * Begins a scene.
-     */
-    bool RenderingDeviceImpl::_begin_scene_impl()
-    {
-        // Nothing to do here?
-
-        return true;
-    }
-
-    /**
-     * Ends a scene that was begun by calling begin_scene.
-     */
-    bool RenderingDeviceImpl::_end_scene_impl()
-    {
-        // Nothing to do here?
 
         return true;
     }

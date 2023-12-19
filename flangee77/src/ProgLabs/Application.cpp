@@ -184,7 +184,7 @@ namespace pl7 {
         
 
         //xl7::graphics::rendering_device()->clear_buffers();
-        xl7::graphics::rendering_device()->begin_scene();
+        xl7::graphics::primary_context()->begin_scene();
 
         
     }
@@ -204,7 +204,7 @@ namespace pl7 {
     {
         
 
-        xl7::graphics::rendering_device()->end_scene();
+        xl7::graphics::primary_context()->end_scene();
     }
 
     /**

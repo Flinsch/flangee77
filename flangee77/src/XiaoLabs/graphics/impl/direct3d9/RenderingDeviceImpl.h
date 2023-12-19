@@ -97,6 +97,13 @@ private:
 
 private:
     /**
+     * Creates a new rendering context with the specified index (0: primary context).
+     * Returns NULL if the rendering context could not be created.
+     */
+    virtual RenderingContext* _create_rendering_context_impl(unsigned index) override;
+
+private:
+    /**
      * Checks whether the device is lost. If so, true is returned.
      */
     virtual bool _check_device_lost_impl() override;
@@ -108,16 +115,6 @@ private:
     virtual bool _handle_device_lost_impl() override;
 
 private:
-    /**
-     * Begins a scene.
-     */
-    virtual bool _begin_scene_impl() override;
-
-    /**
-     * Ends a scene that was begun by calling begin_scene.
-     */
-    virtual bool _end_scene_impl() override;
-
     /**
      * Presents the contents of the next buffer in the device's swap chain.
      */
