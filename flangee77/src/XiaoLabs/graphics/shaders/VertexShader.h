@@ -27,11 +27,6 @@ protected:
     /**
      * Explicit constructor.
      */
-    explicit VertexShader(ShaderManager* manager);
-
-    /**
-     * Explicit constructor.
-     */
     VertexShader(ShaderManager* manager, const cl7::string& identifier);
 
     /**

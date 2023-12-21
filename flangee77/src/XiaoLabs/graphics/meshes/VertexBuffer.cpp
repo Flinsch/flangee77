@@ -17,16 +17,9 @@ namespace meshes {
     /**
      * Explicit constructor.
      */
-    VertexBuffer::VertexBuffer(MeshManager* manager)
-        : Resource( manager )
-    {
-    }
-
-    /**
-     * Explicit constructor.
-     */
-    VertexBuffer::VertexBuffer(MeshManager* manager, const cl7::string& identifier)
+    VertexBuffer::VertexBuffer(MeshManager* manager, const cl7::string& identifier, const Desc& desc)
         : Resource( manager, identifier )
+        , desc( desc )
     {
     }
 

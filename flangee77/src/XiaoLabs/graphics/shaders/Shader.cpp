@@ -17,14 +17,6 @@ namespace shaders {
     /**
      * Explicit constructor.
      */
-    Shader::Shader(ShaderManager* manager)
-        : Resource( manager )
-    {
-    }
-
-    /**
-     * Explicit constructor.
-     */
     Shader::Shader(ShaderManager* manager, const cl7::string& identifier)
         : Resource( manager, identifier )
     {

@@ -12,14 +12,14 @@ namespace direct3d9 {
 
 
 
-    xl7::graphics::shaders::VertexShader* ResourceFactoryImpl::create_vertex_shader(xl7::graphics::shaders::ShaderManager* manager)
+    xl7::graphics::shaders::VertexShader* ResourceFactoryImpl::create_vertex_shader(xl7::graphics::shaders::ShaderManager* manager, const cl7::string& identifier)
     {
-        return shaders::VertexShaderImpl::Attorney::create( manager );
+        return shaders::VertexShaderImpl::Attorney::create( manager, identifier );
     }
 
-    xl7::graphics::shaders::PixelShader* ResourceFactoryImpl::create_pixel_shader(xl7::graphics::shaders::ShaderManager* manager)
+    xl7::graphics::shaders::PixelShader* ResourceFactoryImpl::create_pixel_shader(xl7::graphics::shaders::ShaderManager* manager, const cl7::string& identifier)
     {
-        return shaders::PixelShaderImpl::Attorney::create( manager );
+        return shaders::PixelShaderImpl::Attorney::create( manager, identifier );
     }
 
 

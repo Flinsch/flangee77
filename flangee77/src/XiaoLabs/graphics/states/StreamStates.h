@@ -19,8 +19,8 @@ class StreamStates
 {
 
 public:
-    /** The maximum number of concurrent vertex streams (ignoring hardware capabilities). */
-    static constexpr unsigned MAX_VERTEX_STREAMS = 16;
+    /** The maximum number of concurrent vertex streams (ignoring hardware/driver capabilities). */
+    static constexpr unsigned MAX_VERTEX_STREAMS = 8;
 
 
 

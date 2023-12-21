@@ -115,6 +115,8 @@ namespace xl7 {
         //if ( resource_ptr->is_acquired() )
             resource_ptr->release();
 
+        Resource::Attorney::unmanage( resource );
+
         _resource_lookup.erase( it );
         _resources.erase( _resources.begin() + it->second );
     }
@@ -130,6 +132,8 @@ namespace xl7 {
             assert( resource_ptr );
             //if ( resource_ptr->is_acquired() )
                 resource_ptr->release();
+
+            Resource::Attorney::unmanage( resource_ptr.get() );
         }
 
         _resource_lookup.clear();
@@ -205,6 +209,8 @@ namespace xl7 {
             return;
 
         assert( it->second < _resources.size() );
+
+        Resource::Attorney::unmanage( resource );
 
         _resource_lookup.erase( it );
         _resources.erase( _resources.begin() + it->second );

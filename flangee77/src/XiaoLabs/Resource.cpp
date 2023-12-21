@@ -1,5 +1,7 @@
 #include "Resource.h"
 
+#include <CoreLabs/logging.h>
+
 
 
 namespace xl7 {
@@ -13,23 +15,14 @@ namespace xl7 {
     /**
      * Explicit constructor.
      */
-    Resource::Resource(ResourceManager* manager)
-        : _manager( manager )
-        , _identifier()
-        , _acquired( false )
-        , _resigned( false )
-    {
-    }
-
-    /**
-     * Explicit constructor.
-     */
     Resource::Resource(ResourceManager* manager, const cl7::string& identifier)
         : _manager( manager )
         , _identifier( identifier )
+        , _managed( true )
         , _acquired( false )
         , _resigned( false )
     {
+        assert( manager );
     }
 
     /**
@@ -37,6 +30,7 @@ namespace xl7 {
      */
     Resource::~Resource()
     {
+        assert( !_managed );
         assert( !_acquired );
     }
 
@@ -51,6 +45,9 @@ namespace xl7 {
      */
     bool Resource::request()
     {
+        if ( !_check_managed() )
+            return false;
+
         assert( !_resigned );
         if ( _acquired )
             return true;
@@ -70,6 +67,9 @@ namespace xl7 {
      */
     bool Resource::release()
     {
+        if ( !_check_managed() )
+            return false;
+
         bool b = _release_impl();
 
         _acquired = false;
@@ -84,6 +84,9 @@ namespace xl7 {
      */
     bool Resource::resign()
     {
+        if ( !_check_managed() )
+            return false;
+
         assert( _acquired );
         assert( !_resigned );
 
@@ -100,6 +103,9 @@ namespace xl7 {
      */
     bool Resource::restore()
     {
+        if ( !_check_managed() )
+            return false;
+
         assert( _acquired );
         assert( _resigned );
 
@@ -108,6 +114,37 @@ namespace xl7 {
 
         _resigned = false;
         return true;
+    }
+
+
+
+    // #############################################################################
+    // Management Functions
+    // #############################################################################
+
+    /**
+     * Checks whether the resource is still managed by its owning manager and fires
+     * an error message if not.
+     */
+    bool Resource::_check_managed() const
+    {
+        if ( _managed )
+            return true;
+
+        LOG_ERROR( TEXT("The resource \"") + _identifier + TEXT("\" is not managed anymore.") );
+        return false;
+    }
+
+    /**
+     * Informs the resource that it will no longer be managed by its owning manager.
+     */
+    void Resource::_unmanage()
+    {
+        if ( !_check_managed() )
+            return;
+
+        if ( _acquired )
+            release();
     }
 
 

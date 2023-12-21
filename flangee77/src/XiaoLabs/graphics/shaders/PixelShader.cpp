@@ -17,14 +17,6 @@ namespace shaders {
     /**
      * Explicit constructor.
      */
-    PixelShader::PixelShader(ShaderManager* manager)
-        : Shader( manager )
-    {
-    }
-
-    /**
-     * Explicit constructor.
-     */
     PixelShader::PixelShader(ShaderManager* manager, const cl7::string& identifier)
         : Shader( manager, identifier )
     {

@@ -31,11 +31,6 @@ protected:
     /**
      * Explicit constructor.
      */
-    explicit Shader(ShaderManager* manager);
-
-    /**
-     * Explicit constructor.
-     */
     Shader(ShaderManager* manager, const cl7::string& identifier);
 
     /**

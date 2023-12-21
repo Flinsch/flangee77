@@ -76,6 +76,8 @@ struct VertexLayout
 
     std::vector<Element> elements;
 
+
+
     /** Calculates the total size of the vertex layout, in bytes. */
     unsigned calculate_size() const;
 

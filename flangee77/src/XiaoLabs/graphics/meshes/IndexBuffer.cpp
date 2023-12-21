@@ -17,16 +17,9 @@ namespace meshes {
     /**
      * Explicit constructor.
      */
-    IndexBuffer::IndexBuffer(MeshManager* manager)
-        : Resource( manager )
-    {
-    }
-
-    /**
-     * Explicit constructor.
-     */
-    IndexBuffer::IndexBuffer(MeshManager* manager, const cl7::string& identifier)
+    IndexBuffer::IndexBuffer(MeshManager* manager, const cl7::string& identifier, const Desc& desc)
         : Resource( manager, identifier )
+        , desc( desc )
     {
     }
 

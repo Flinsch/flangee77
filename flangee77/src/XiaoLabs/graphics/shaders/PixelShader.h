@@ -27,11 +27,6 @@ protected:
     /**
      * Explicit constructor.
      */
-    explicit PixelShader(ShaderManager* manager);
-
-    /**
-     * Explicit constructor.
-     */
     PixelShader(ShaderManager* manager, const cl7::string& identifier);
 
     /**

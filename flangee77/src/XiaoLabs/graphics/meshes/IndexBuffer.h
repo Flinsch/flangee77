@@ -3,6 +3,9 @@
 #define XL7_GRAPHICS_MESHES_INDEXBUFFER_H
 #include "../../Resource.h"
 
+#include "./IndexType.h"
+#include "./Topology.h"
+
 
 
 namespace xl7 {
@@ -24,6 +27,19 @@ class IndexBuffer
     : public Resource
 {
 
+public:
+    struct Desc
+    {
+        /** The type/format (16 or 32 bits) of the index buffer. */
+        IndexType index_type;
+        /** The number of indices within the index buffer. */
+        unsigned index_count;
+        /** The topology of the primitives that the index buffer represents. */
+        Topology topology;
+    };
+
+
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
@@ -31,12 +47,7 @@ protected:
     /**
      * Explicit constructor.
      */
-    explicit IndexBuffer(MeshManager* manager);
-
-    /**
-     * Explicit constructor.
-     */
-    IndexBuffer(MeshManager* manager, const cl7::string& identifier);
+    IndexBuffer(MeshManager* manager, const cl7::string& identifier, const Desc& desc);
 
     /**
      * Destructor.
@@ -50,6 +61,17 @@ private:
     IndexBuffer(const IndexBuffer&) = delete;
     /** Copy assignment operator. */
     IndexBuffer& operator = (const IndexBuffer&) = delete;
+
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+public:
+    /** The description of the index buffer. */
+    const Desc desc;
+
+private:
 
 }; // class IndexBuffer
 

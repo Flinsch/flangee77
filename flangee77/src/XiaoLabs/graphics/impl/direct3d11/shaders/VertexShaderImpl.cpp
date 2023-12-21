@@ -17,14 +17,6 @@ namespace shaders {
     /**
      * Explicit constructor.
      */
-    VertexShaderImpl::VertexShaderImpl(xl7::graphics::shaders::ShaderManager* manager)
-        : VertexShader( manager )
-    {
-    }
-
-    /**
-     * Explicit constructor.
-     */
     VertexShaderImpl::VertexShaderImpl(xl7::graphics::shaders::ShaderManager* manager, const cl7::string& identifier)
         : VertexShader( manager, identifier )
     {

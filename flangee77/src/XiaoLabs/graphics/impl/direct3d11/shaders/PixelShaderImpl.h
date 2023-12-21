@@ -20,7 +20,7 @@ class PixelShaderImpl final
 public:
     class Attorney
     {
-        static PixelShaderImpl* create(xl7::graphics::shaders::ShaderManager* manager) { return new PixelShaderImpl( manager ); }
+        static PixelShaderImpl* create(xl7::graphics::shaders::ShaderManager* manager, const cl7::string& identifier) { return new PixelShaderImpl( manager, identifier ); }
         friend class ResourceFactoryImpl;
     };
 
@@ -30,11 +30,6 @@ public:
     // Construction / Destruction
     // #############################################################################
 protected:
-    /**
-     * Explicit constructor.
-     */
-    explicit PixelShaderImpl(xl7::graphics::shaders::ShaderManager* manager);
-
     /**
      * Explicit constructor.
      */

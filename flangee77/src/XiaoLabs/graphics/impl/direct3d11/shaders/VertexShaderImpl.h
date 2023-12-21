@@ -20,7 +20,7 @@ class VertexShaderImpl final
 public:
     class Attorney
     {
-        static VertexShaderImpl* create(xl7::graphics::shaders::ShaderManager* manager) { return new VertexShaderImpl( manager ); }
+        static VertexShaderImpl* create(xl7::graphics::shaders::ShaderManager* manager, const cl7::string& identifier) { return new VertexShaderImpl( manager, identifier ); }
         friend class ResourceFactoryImpl;
     };
 
@@ -30,11 +30,6 @@ public:
     // Construction / Destruction
     // #############################################################################
 protected:
-    /**
-     * Explicit constructor.
-     */
-    explicit VertexShaderImpl(xl7::graphics::shaders::ShaderManager* manager);
-
     /**
      * Explicit constructor.
      */

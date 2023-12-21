@@ -167,6 +167,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\meshes\IndexType.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\meshes\Topology.h" />
     <ClInclude Include="src\XiaoLabs\graphics\states\AbstractStates.h" />
     <ClInclude Include="src\XiaoLabs\graphics\states\RenderStates.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingContextImpl.h" />

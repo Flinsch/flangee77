@@ -25,6 +25,7 @@ class Resource
 public:
     class Attorney
     {
+        static void unmanage(Resource* resource) { resource->_unmanage(); }
         static void destroy(Resource* resource) { delete resource; }
         friend class ResourceManager;
     };
@@ -35,11 +36,6 @@ public:
     // Construction / Destruction
     // #############################################################################
 protected:
-    /**
-     * Explicit constructor.
-     */
-    explicit Resource(ResourceManager* manager);
-
     /**
      * Explicit constructor.
      */
@@ -76,6 +72,12 @@ private:
 
 private:
     /**
+     * The flag specifying whether this resource is (still) managed by its owning
+     * manager.
+     */
+    bool _managed;
+
+    /**
      * The flag specifying whether this resource has been acquired.
      */
     bool _acquired;
@@ -100,6 +102,12 @@ public:
      * Returns the identifier of this resource (if specified, empty otherwise).
      */
     const cl7::string& get_identifier() const { return _identifier; }
+
+    /**
+     * Returns the flag specifying whether this resource is (still) managed by its
+     * owning manager.
+     */
+    bool is_managed() const { return _managed; }
 
     /**
      * Returns the flag specifying whether this resource has been acquired.
@@ -168,6 +176,23 @@ private:
      * to a usable state.
      */
     virtual bool _restore_impl() = 0;
+
+
+
+    // #############################################################################
+    // Management Functions
+    // #############################################################################
+private:
+    /**
+     * Checks whether the resource is still managed by its owning manager and fires
+     * an error message if not.
+     */
+    bool _check_managed() const;
+
+    /**
+     * Informs the resource that it will no longer be managed by its owning manager.
+     */
+    void _unmanage();
 
 }; // class Resource
 
