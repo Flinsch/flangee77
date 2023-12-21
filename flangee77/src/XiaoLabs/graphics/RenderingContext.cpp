@@ -19,6 +19,8 @@ namespace graphics {
      */
     RenderingContext::RenderingContext(unsigned index)
         : _index( index )
+        , stream_states()
+        , render_states()
         , _the_scene_is_on( false )
     {
     }

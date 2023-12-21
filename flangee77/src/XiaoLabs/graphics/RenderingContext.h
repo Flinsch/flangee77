@@ -2,7 +2,8 @@
 #ifndef XL7_GRAPHICS_RENDERINGCONTEXT_H
 #define XL7_GRAPHICS_RENDERINGCONTEXT_H
 
-#include <CoreLabs/root.h>
+#include "./states/StreamStates.h"
+#include "./states/RenderStates.h"
 
 
 
@@ -55,6 +56,17 @@ private:
      * The 0-based index of the context (0: primary context).
      */
     const unsigned _index;
+
+public:
+    /**
+     * The stream states for the pipeline stage of the input assembler.
+     */
+    states::StreamStates stream_states;
+
+    /**
+     * The render states for the pipeline stage of the rasterizer.
+     */
+    states::RenderStates render_states;
 
 private:
     /**

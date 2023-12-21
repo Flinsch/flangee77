@@ -167,6 +167,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\states\AbstractStates.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\states\RenderStates.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingContextImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\RenderingContextImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\RenderingContext.h" />
@@ -249,8 +251,12 @@
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\VertexShaderImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\VertexBuffer.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\VertexLayout.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\states\SurfaceStates.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\states\StreamStates.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\states\AbstractStates.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\states\RenderStates.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingContextImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\RenderingContextImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\RenderingContext.cpp" />
@@ -310,6 +316,8 @@
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\VertexShaderImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\meshes\VertexBuffer.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\meshes\VertexLayout.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\states\SurfaceStates.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\states\StreamStates.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
