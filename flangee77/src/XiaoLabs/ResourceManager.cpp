@@ -54,7 +54,7 @@ namespace xl7 {
         if ( it == _resource_lookup.end() )
             return false;
 
-        return get_resource( it->second ) != nullptr;
+        return !get_resource( it->second ).expired();
     }
 
     /**
@@ -64,36 +64,36 @@ namespace xl7 {
      */
     bool ResourceManager::contains_resource(const cl7::string_view& identifier) const
     {
-        return find_resource( identifier ) != nullptr;
+        return !find_resource( identifier ).expired();
     }
 
     /**
      * Returns the resource identified by the given index.
      */
-    Resource* ResourceManager::get_resource(size_t index) const
+    ResourcePtr ResourceManager::get_resource(size_t index) const
     {
         assert( index < _resources.size() );
         if ( index >= _resources.size() )
-            return nullptr;
+            return ResourcePtr();
 
         assert( _resources[ index ] );
-        return _resources[ index ].get();
+        return _resources[ index ];
     }
 
     /**
      * Returns the resource of the given identifier.
      * Time complexity: linear in the number of contained resources.
      */
-    Resource* ResourceManager::find_resource(const cl7::string_view& identifier) const
+    ResourcePtr ResourceManager::find_resource(const cl7::string_view& identifier) const
     {
         for ( auto& resource_ptr : _resources )
         {
             assert( resource_ptr );
             if ( resource_ptr->get_identifier() == identifier )
-                return resource_ptr.get();
+                return resource_ptr;
         }
 
-        return nullptr;
+        return ResourcePtr();
     }
 
     /**
@@ -172,7 +172,7 @@ namespace xl7 {
      * Adds the given resource to this resource manager.
      * This operation does not request/acquire the resource.
      */
-    void ResourceManager::_add_resource(ResourcePtr resource_ptr)
+    void ResourceManager::_add_resource(InternalResourcePtr resource_ptr)
     {
         assert( resource_ptr );
         assert( _resource_lookup.find( resource_ptr.get() ) == _resource_lookup.end() );

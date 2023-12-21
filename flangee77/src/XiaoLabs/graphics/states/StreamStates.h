@@ -28,8 +28,8 @@ public:
     // Attributes
     // #############################################################################
 private:
-    StateArray<meshes::VertexBuffer*, MAX_VERTEX_STREAMS> _vertex_buffers;
-    SingleState<meshes::IndexBuffer*> _index_buffer;
+    StateArray<meshes::VertexBufferPtr, MAX_VERTEX_STREAMS> _vertex_buffers;
+    SingleState<meshes::IndexBufferPtr> _index_buffer;
 
 
 
@@ -37,16 +37,16 @@ private:
     // Properties
     // #############################################################################
 public:
-    meshes::VertexBuffer* get_vertex_buffer() const { return get_vertex_buffer( 0 ); }
-    meshes::VertexBuffer* get_vertex_buffer(unsigned index) const;
+    meshes::VertexBufferPtr get_vertex_buffer() const { return get_vertex_buffer( 0 ); }
+    meshes::VertexBufferPtr get_vertex_buffer(unsigned index) const;
 
-    meshes::IndexBuffer* get_index_buffer() const { return _index_buffer.get_value(); }
+    meshes::IndexBufferPtr get_index_buffer() const { return _index_buffer.get_value(); }
 
 public:
-    void set_vertex_buffer(meshes::VertexBuffer* vertex_buffer) { set_vertex_buffer( 0, vertex_buffer ); }
-    void set_vertex_buffer(unsigned index, meshes::VertexBuffer* vertex_buffer);
+    void set_vertex_buffer(meshes::VertexBufferPtr vertex_buffer) { set_vertex_buffer( 0, vertex_buffer ); }
+    void set_vertex_buffer(unsigned index, meshes::VertexBufferPtr vertex_buffer);
 
-    void set_index_buffer(meshes::IndexBuffer* index_buffer) { _index_buffer.set_value( index_buffer ); }
+    void set_index_buffer(meshes::IndexBufferPtr index_buffer) { _index_buffer.set_value( index_buffer ); }
 
 }; // class StreamStates
 

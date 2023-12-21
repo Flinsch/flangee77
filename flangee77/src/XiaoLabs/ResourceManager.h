@@ -20,7 +20,7 @@ class ResourceManager
 {
 
 protected:
-    typedef std::unique_ptr<Resource, std::function<void(Resource*)>> ResourcePtr;
+    typedef std::shared_ptr<Resource> InternalResourcePtr;
 
 
 
@@ -53,7 +53,7 @@ private:
     /**
      * A "linear list" of the managed resources.
      */
-    std::vector<ResourcePtr> _resources;
+    std::vector<InternalResourcePtr> _resources;
 
     /**
      * A lookup table that maps a given resource (by its pointer hash) to its
@@ -89,13 +89,13 @@ public:
     /**
      * Returns the resource identified by the given index.
      */
-    Resource* get_resource(size_t index) const;
+    ResourcePtr get_resource(size_t index) const;
 
     /**
      * Returns the resource of the given identifier.
      * Time complexity: linear in the number of contained resources.
      */
-    Resource* find_resource(const cl7::string_view& identifier) const;
+    ResourcePtr find_resource(const cl7::string_view& identifier) const;
 
     /**
      * Releases the given resource
@@ -129,7 +129,7 @@ protected:
      * Adds the given resource to this resource manager.
      * This operation does not request/acquire the resource.
      */
-    void _add_resource(ResourcePtr resource_ptr);
+    void _add_resource(InternalResourcePtr resource_ptr);
 
     /**
      * Adds the given resource to this resource manager.

@@ -11,6 +11,11 @@ namespace meshes {
 
 
 
+class IndexBuffer;
+typedef std::weak_ptr<IndexBuffer> IndexBufferPtr;
+
+
+
 class MeshManager;
 
 

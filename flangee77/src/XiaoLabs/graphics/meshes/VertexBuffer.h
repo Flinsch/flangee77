@@ -11,6 +11,11 @@ namespace meshes {
 
 
 
+class VertexBuffer;
+typedef std::weak_ptr<VertexBuffer> VertexBufferPtr;
+
+
+
 class MeshManager;
 
 

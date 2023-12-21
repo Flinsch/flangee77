@@ -12,15 +12,15 @@ namespace states {
     // Properties
     // #############################################################################
 
-    meshes::VertexBuffer* StreamStates::get_vertex_buffer(unsigned index) const
+    meshes::VertexBufferPtr StreamStates::get_vertex_buffer(unsigned index) const
     {
         if ( index >= MAX_VERTEX_STREAMS )
-            return nullptr;
+            return meshes::VertexBufferPtr();
 
         return _vertex_buffers.get_value( static_cast<size_t>( index ) );
     }
 
-    void StreamStates::set_vertex_buffer(unsigned index, meshes::VertexBuffer* vertex_buffer)
+    void StreamStates::set_vertex_buffer(unsigned index, meshes::VertexBufferPtr vertex_buffer)
     {
         if ( index >= MAX_VERTEX_STREAMS )
             return;

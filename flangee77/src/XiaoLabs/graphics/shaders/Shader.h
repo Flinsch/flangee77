@@ -11,6 +11,11 @@ namespace shaders {
 
 
 
+class Shader;
+typedef std::weak_ptr<Shader> ShaderPtr;
+
+
+
 class ShaderManager;
 
 
