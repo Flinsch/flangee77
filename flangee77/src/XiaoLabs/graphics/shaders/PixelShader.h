@@ -12,7 +12,7 @@ namespace shaders {
 
 
 class PixelShader;
-typedef std::weak_ptr<PixelShader> PixelShaderPtr;
+typedef std::shared_ptr<PixelShader> PixelShaderPtr;
 
 
 

@@ -54,7 +54,7 @@ namespace xl7 {
         if ( it == _resource_lookup.end() )
             return false;
 
-        return !get_resource( it->second ).expired();
+        return get_resource( it->second ).get() != nullptr;
     }
 
     /**
@@ -64,7 +64,7 @@ namespace xl7 {
      */
     bool ResourceManager::contains_resource(const cl7::string_view& identifier) const
     {
-        return !find_resource( identifier ).expired();
+        return find_resource( identifier ).get() != nullptr;
     }
 
     /**
@@ -172,7 +172,7 @@ namespace xl7 {
      * Adds the given resource to this resource manager.
      * This operation does not request/acquire the resource.
      */
-    void ResourceManager::_add_resource(InternalResourcePtr resource_ptr)
+    void ResourceManager::_add_resource(ResourcePtr resource_ptr)
     {
         assert( resource_ptr );
         assert( _resource_lookup.find( resource_ptr.get() ) == _resource_lookup.end() );

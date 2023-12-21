@@ -19,11 +19,6 @@ namespace xl7 {
 class ResourceManager
 {
 
-protected:
-    typedef std::shared_ptr<Resource> InternalResourcePtr;
-
-
-
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
@@ -53,7 +48,7 @@ private:
     /**
      * A "linear list" of the managed resources.
      */
-    std::vector<InternalResourcePtr> _resources;
+    std::vector<ResourcePtr> _resources;
 
     /**
      * A lookup table that maps a given resource (by its pointer hash) to its
@@ -129,7 +124,7 @@ protected:
      * Adds the given resource to this resource manager.
      * This operation does not request/acquire the resource.
      */
-    void _add_resource(InternalResourcePtr resource_ptr);
+    void _add_resource(ResourcePtr resource_ptr);
 
     /**
      * Adds the given resource to this resource manager.

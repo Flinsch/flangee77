@@ -12,7 +12,7 @@ namespace shaders {
 
 
 class VertexShader;
-typedef std::weak_ptr<VertexShader> VertexShaderPtr;
+typedef std::shared_ptr<VertexShader> VertexShaderPtr;
 
 
 

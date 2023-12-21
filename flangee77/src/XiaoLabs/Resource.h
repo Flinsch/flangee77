@@ -11,7 +11,7 @@ namespace xl7 {
 
 
 class Resource;
-typedef std::weak_ptr<Resource> ResourcePtr;
+typedef std::shared_ptr<Resource> ResourcePtr;
 
 
 

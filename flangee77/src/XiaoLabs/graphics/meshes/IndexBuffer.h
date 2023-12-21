@@ -12,7 +12,7 @@ namespace meshes {
 
 
 class IndexBuffer;
-typedef std::weak_ptr<IndexBuffer> IndexBufferPtr;
+typedef std::shared_ptr<IndexBuffer> IndexBufferPtr;
 
 
 

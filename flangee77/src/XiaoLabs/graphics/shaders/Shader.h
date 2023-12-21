@@ -12,7 +12,7 @@ namespace shaders {
 
 
 class Shader;
-typedef std::weak_ptr<Shader> ShaderPtr;
+typedef std::shared_ptr<Shader> ShaderPtr;
 
 
 

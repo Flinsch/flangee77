@@ -12,7 +12,7 @@ namespace meshes {
 
 
 class VertexBuffer;
-typedef std::weak_ptr<VertexBuffer> VertexBufferPtr;
+typedef std::shared_ptr<VertexBuffer> VertexBufferPtr;
 
 
 
