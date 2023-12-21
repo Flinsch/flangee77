@@ -20,6 +20,7 @@ namespace meshes {
     VertexBuffer::VertexBuffer(MeshManager* manager, const cl7::string& identifier, const Desc& desc)
         : Resource( manager, identifier )
         , desc( desc )
+        , size( desc.vertex_stride * desc.vertex_count )
     {
     }
 

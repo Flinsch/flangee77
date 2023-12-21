@@ -71,6 +71,16 @@ public:
     /** The description of the index buffer. */
     const Desc desc;
 
+    /**
+     * The size of each index, in bytes.
+     */
+    const unsigned stride;
+
+    /**
+     * The size of this index buffer, in bytes.
+     */
+    const unsigned size;
+
 private:
 
 }; // class IndexBuffer

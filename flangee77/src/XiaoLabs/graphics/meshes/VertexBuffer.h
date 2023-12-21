@@ -30,7 +30,10 @@ class VertexBuffer
 public:
     struct Desc
     {
+        /** The layout specification of the vertices. */
         VertexLayout vertex_layout;
+        /** The size of each vertex, in bytes. */
+        unsigned vertex_stride;
         /** The number of vertices within the vertex buffer. */
         unsigned vertex_count;
         /** The topology of the primitives that the vertex buffer represents. */
@@ -70,6 +73,11 @@ private:
 public:
     /** The description of the vertex buffer. */
     const Desc desc;
+
+    /**
+     * The size of this vertex buffer, in bytes.
+     */
+    const unsigned size;
 
 private:
 
