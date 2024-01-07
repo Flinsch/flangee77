@@ -104,16 +104,6 @@ public:
      */
     void release_resources();
 
-    /**
-     * Temporarily releases/resigns the contained resources.
-     */
-    void resign_resources();
-
-    /**
-     * Reaquires/restores the contained resources.
-     */
-    void restore_resources();
-
 
 
     // #############################################################################

@@ -20,6 +20,20 @@
 
 
 
+// Stupid and unnecessary, I know.
+// And yet: let me calm my paranoia!
+static_assert( sizeof(signed) == 4 );
+static_assert( sizeof(unsigned) == 4 );
+static_assert( sizeof(int) == 4 );
+static_assert( sizeof(char) == 1 );
+static_assert( sizeof(short) == 2 );
+static_assert( sizeof(long) == 4 );
+static_assert( sizeof(long long) == 8 );
+static_assert( sizeof(float) == 4 );
+static_assert( sizeof(double) == 8 );
+
+
+
 // For the following preprocessor definitions, see
 // https://stackoverflow.com/a/5256500/480304
 // Thank you for this, Jim Balter!

@@ -17,8 +17,8 @@ namespace shaders {
     /**
      * Explicit constructor.
      */
-    VertexShaderImpl::VertexShaderImpl(xl7::graphics::shaders::ShaderManager* manager, const cl7::string& identifier)
-        : VertexShader( manager, identifier )
+    VertexShaderImpl::VertexShaderImpl(const CreateParams<Desc>& params)
+        : VertexShader( params )
     {
     }
 
@@ -31,32 +31,30 @@ namespace shaders {
     /**
      * Requests/acquires the resource, bringing it into a usable state.
      */
-    bool VertexShaderImpl::_request_impl()
+    bool VertexShaderImpl::_acquire_impl()
     {
         return false;
     }
 
     /**
-     * Releases the resource.
+     * Releases/"unacquires" the resource.
      */
     bool VertexShaderImpl::_release_impl()
     {
         return false;
     }
 
-    /**
-     * Temporarily resigns some stuff to free up some (hardware) memory etc.
-     */
-    bool VertexShaderImpl::_resign_impl()
-    {
-        return false;
-    }
+
+
+    // #############################################################################
+    // Shader Implementations
+    // #############################################################################
 
     /**
-     * Restores the resource after it has been (temporarily) resigned, returning it
-     * to a usable state.
-     */
-    bool VertexShaderImpl::_restore_impl()
+    * Recompiles the shader code. This tends to result in the resource having to be
+    * completely recreated in the background.
+    */
+    bool VertexShaderImpl::_recompile_impl()
     {
         return false;
     }

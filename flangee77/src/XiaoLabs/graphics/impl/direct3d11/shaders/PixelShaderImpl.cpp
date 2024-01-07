@@ -17,8 +17,8 @@ namespace shaders {
     /**
      * Explicit constructor.
      */
-    PixelShaderImpl::PixelShaderImpl(xl7::graphics::shaders::ShaderManager* manager, const cl7::string& identifier)
-        : PixelShader( manager, identifier )
+    PixelShaderImpl::PixelShaderImpl(const CreateParams<Desc>& params)
+        : PixelShader( params )
     {
     }
 
@@ -31,32 +31,30 @@ namespace shaders {
     /**
      * Requests/acquires the resource, bringing it into a usable state.
      */
-    bool PixelShaderImpl::_request_impl()
+    bool PixelShaderImpl::_acquire_impl()
     {
         return false;
     }
 
     /**
-     * Releases the resource.
+     * Releases/"unacquires" the resource.
      */
     bool PixelShaderImpl::_release_impl()
     {
         return false;
     }
 
-    /**
-     * Temporarily resigns some stuff to free up some (hardware) memory etc.
-     */
-    bool PixelShaderImpl::_resign_impl()
-    {
-        return false;
-    }
+
+
+    // #############################################################################
+    // Shader Implementations
+    // #############################################################################
 
     /**
-     * Restores the resource after it has been (temporarily) resigned, returning it
-     * to a usable state.
-     */
-    bool PixelShaderImpl::_restore_impl()
+    * Recompiles the shader code. This tends to result in the resource having to be
+    * completely recreated in the background.
+    */
+    bool PixelShaderImpl::_recompile_impl()
     {
         return false;
     }

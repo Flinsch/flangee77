@@ -20,7 +20,7 @@ class PixelShaderImpl final
 public:
     class Attorney
     {
-        static PixelShaderImpl* create(xl7::graphics::shaders::ShaderManager* manager, const cl7::string& identifier) { return new PixelShaderImpl( manager, identifier ); }
+        static PixelShaderImpl* create(const CreateParams<Desc>& params) { return new PixelShaderImpl( params ); }
         friend class ResourceFactoryImpl;
     };
 
@@ -33,7 +33,7 @@ protected:
     /**
      * Explicit constructor.
      */
-    PixelShaderImpl(xl7::graphics::shaders::ShaderManager* manager, const cl7::string& identifier);
+    PixelShaderImpl(const CreateParams<Desc>& params);
 
     /**
      * Destructor.
@@ -57,23 +57,24 @@ private:
     /**
      * Requests/acquires the resource, bringing it into a usable state.
      */
-    virtual bool _request_impl() override;
+    virtual bool _acquire_impl() override;
 
     /**
-     * Releases the resource.
+     * Releases/"unacquires" the resource.
      */
     virtual bool _release_impl() override;
 
-    /**
-     * Temporarily resigns some stuff to free up some (hardware) memory etc.
-     */
-    virtual bool _resign_impl() override;
 
+
+    // #############################################################################
+    // Shader Implementations
+    // #############################################################################
+private:
     /**
-     * Restores the resource after it has been (temporarily) resigned, returning it
-     * to a usable state.
-     */
-    virtual bool _restore_impl() override;
+    * Recompiles the shader code. This tends to result in the resource having to be
+    * completely recreated in the background.
+    */
+    virtual bool _recompile_impl() override;
 
 }; // class PixelShaderImpl
 

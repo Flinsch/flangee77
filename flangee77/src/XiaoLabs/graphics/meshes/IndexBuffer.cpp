@@ -18,11 +18,11 @@ namespace meshes {
     /**
      * Explicit constructor.
      */
-    IndexBuffer::IndexBuffer(MeshManager* manager, const cl7::string& identifier, const Desc& desc)
-        : Resource( manager, identifier )
-        , desc( desc )
-        , stride( MeshUtil::calculate_index_stride( desc.index_type ) )
-        , size( stride * desc.index_count )
+    IndexBuffer::IndexBuffer(const CreateParams<Desc>& params)
+        : Resource( params )
+        , _desc( params.desc )
+        , _stride( MeshUtil::calculate_index_stride( _desc.index_type ) )
+        , _size( _stride * _desc.index_count )
     {
     }
 

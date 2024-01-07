@@ -47,7 +47,7 @@ protected:
     /**
      * Explicit constructor.
      */
-    IndexBuffer(MeshManager* manager, const cl7::string& identifier, const Desc& desc);
+    IndexBuffer(const CreateParams<Desc>& params);
 
     /**
      * Destructor.
@@ -67,21 +67,46 @@ private:
     // #############################################################################
     // Attributes
     // #############################################################################
-public:
-    /** The description of the index buffer. */
-    const Desc desc;
+protected:
+    /**
+     * The descriptor of the index buffer.
+     */
+    const Desc _desc;
 
     /**
      * The size of each index, in bytes.
      */
-    const unsigned stride;
+    const unsigned _stride;
 
     /**
      * The size of this index buffer, in bytes.
      */
-    const unsigned size;
+    const unsigned _size;
 
 private:
+
+
+
+    // #############################################################################
+    // Properties
+    // #############################################################################
+public:
+    /**
+     * Returns the descriptor of the index buffer.
+     */
+    const Desc& get_desc() const { return _desc; }
+
+    /**
+     * Returns the size of each index, in bytes.
+     */
+    unsigned get_stride() const { return _stride; }
+
+    /**
+     * Returns the size of this index buffer, in bytes.
+     */
+    unsigned get_size() const { return _size; }
+
+public:
 
 }; // class IndexBuffer
 

@@ -16,7 +16,7 @@ namespace meshes {
 
 
 
-    static D3DFORMAT _d3d_format(xl7::graphics::meshes::IndexType index_type)
+    static D3DFORMAT _d3d_format_from(xl7::graphics::meshes::IndexType index_type)
     {
         switch ( index_type )
         {
@@ -40,9 +40,9 @@ namespace meshes {
     /**
      * Explicit constructor.
      */
-    IndexBufferImpl::IndexBufferImpl(xl7::graphics::meshes::MeshManager* manager, const cl7::string& identifier, const Desc& desc)
-        : IndexBuffer( manager, identifier, desc )
-        , d3d_format( _d3d_format( desc.index_type ) )
+    IndexBufferImpl::IndexBufferImpl(const CreateParams<Desc>& params)
+        : IndexBuffer( params )
+        , _d3d_format( _d3d_format_from( _desc.index_type ) )
         , _d3d_device( dynamic_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device() )
         , _d3d_index_buffer()
     {
@@ -57,63 +57,15 @@ namespace meshes {
     /**
      * Requests/acquires the resource, bringing it into a usable state.
      */
-    bool IndexBufferImpl::_request_impl()
-    {
-        return _create_index_buffer();
-    }
-
-    /**
-     * Releases the resource.
-     */
-    bool IndexBufferImpl::_release_impl()
-    {
-        _d3d_index_buffer.Reset();
-
-        return true;
-    }
-
-    /**
-     * Temporarily resigns some stuff to free up some (hardware) memory etc.
-     */
-    bool IndexBufferImpl::_resign_impl()
-    {
-        _d3d_index_buffer.Reset();
-
-        return true;
-    }
-
-    /**
-     * Restores the resource after it has been (temporarily) resigned, returning it
-     * to a usable state.
-     */
-    bool IndexBufferImpl::_restore_impl()
-    {
-        if ( !_create_index_buffer() )
-            return false;
-
-        // 
-
-        return true;
-    }
-
-
-
-    // #############################################################################
-    // Helpers
-    // #############################################################################
-
-    /**
-     * Creates the Direct3D 9 index buffer interface.
-     */
-    bool IndexBufferImpl::_create_index_buffer()
+    bool IndexBufferImpl::_acquire_impl()
     {
         assert( _d3d_device );
         assert( !_d3d_index_buffer );
 
         HRESULT hresult = _d3d_device->CreateIndexBuffer(
-            this->size,
+            _size,
             D3DUSAGE_WRITEONLY,
-            this->d3d_format,
+            _d3d_format,
             D3DPOOL_MANAGED,
             &_d3d_index_buffer,
             NULL );
@@ -123,6 +75,16 @@ namespace meshes {
             LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::CreateIndexBuffer") ) );
             return false;
         }
+
+        return true;
+    }
+
+    /**
+     * Releases/"unacquires" the resource.
+     */
+    bool IndexBufferImpl::_release_impl()
+    {
+        _d3d_index_buffer.Reset();
 
         return true;
     }

@@ -17,10 +17,11 @@ namespace meshes {
     /**
      * Explicit constructor.
      */
-    VertexBuffer::VertexBuffer(MeshManager* manager, const cl7::string& identifier, const Desc& desc)
-        : Resource( manager, identifier )
-        , desc( desc )
-        , size( desc.vertex_stride * desc.vertex_count )
+    VertexBuffer::VertexBuffer(const CreateParams<Desc>& params)
+        : Resource( params )
+        , _desc( params.desc )
+        , _stride( _desc.vertex_stride )
+        , _size( _stride * _desc.vertex_count )
     {
     }
 

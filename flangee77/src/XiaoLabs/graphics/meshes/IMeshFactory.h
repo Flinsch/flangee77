@@ -2,7 +2,8 @@
 #ifndef XL7_GRAPHICS_MESHES_IMESHFACTORY_H
 #define XL7_GRAPHICS_MESHES_IMESHFACTORY_H
 
-
+#include "./VertexBuffer.h"
+#include "./IndexBuffer.h"
 
 
 
@@ -21,7 +22,8 @@ class IMeshFactory
 public:
     virtual ~IMeshFactory() = default;
 
-    
+    virtual xl7::graphics::meshes::VertexBuffer* create_vertex_buffer(const Resource::CreateParams<xl7::graphics::meshes::VertexBuffer::Desc>& params) = 0;
+    virtual xl7::graphics::meshes::IndexBuffer* create_index_buffer(const Resource::CreateParams<xl7::graphics::meshes::IndexBuffer::Desc>& params) = 0;
 
 }; // class IMeshFactory
 

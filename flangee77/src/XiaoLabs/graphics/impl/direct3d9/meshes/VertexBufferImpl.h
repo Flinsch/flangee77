@@ -22,7 +22,7 @@ class VertexBufferImpl final
 public:
     class Attorney
     {
-        static VertexBufferImpl* create(xl7::graphics::meshes::MeshManager* manager, const cl7::string& identifier, const Desc& desc) { return new VertexBufferImpl( manager, identifier, desc ); }
+        static VertexBufferImpl* create(const CreateParams<Desc>& params) { return new VertexBufferImpl( params ); }
         friend class ResourceFactoryImpl;
     };
 
@@ -35,7 +35,7 @@ protected:
     /**
      * Explicit constructor.
      */
-    VertexBufferImpl(xl7::graphics::meshes::MeshManager* manager, const cl7::string& identifier, const Desc& desc);
+    VertexBufferImpl(const CreateParams<Desc>& params);
 
     /**
      * Destructor.
@@ -55,8 +55,8 @@ private:
     // #############################################################################
     // Attributes
     // #############################################################################
-public:
-    const DWORD d3d_fvf;
+private:
+    const DWORD _d3d_fvf;
 
 private:
     /**
@@ -78,34 +78,12 @@ private:
     /**
      * Requests/acquires the resource, bringing it into a usable state.
      */
-    virtual bool _request_impl() override;
+    virtual bool _acquire_impl() override;
 
     /**
-     * Releases the resource.
+     * Releases/"unacquires" the resource.
      */
     virtual bool _release_impl() override;
-
-    /**
-     * Temporarily resigns some stuff to free up some (hardware) memory etc.
-     */
-    virtual bool _resign_impl() override;
-
-    /**
-     * Restores the resource after it has been (temporarily) resigned, returning it
-     * to a usable state.
-     */
-    virtual bool _restore_impl() override;
-
-
-
-    // #############################################################################
-    // Helpers
-    // #############################################################################
-private:
-    /**
-     * Creates the Direct3D 9 vertex buffer interface.
-     */
-    bool _create_vertex_buffer();
 
 }; // class VertexBufferImpl
 

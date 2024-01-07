@@ -109,6 +109,14 @@ rmdir /S /Q "$(LocalDebuggerWorkingDirectory)"
 mkdir "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>rmdir /S /Q "$(LocalDebuggerWorkingDirectory)\assets"
+
+mkdir "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -133,6 +141,14 @@ rmdir /S /Q "$(LocalDebuggerWorkingDirectory)"
 mkdir "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>rmdir /S /Q "$(LocalDebuggerWorkingDirectory)\assets"
+
+mkdir "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -153,6 +169,14 @@ rmdir /S /Q "$(LocalDebuggerWorkingDirectory)"
 mkdir "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>rmdir /S /Q "$(LocalDebuggerWorkingDirectory)\assets"
+
+mkdir "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -177,6 +201,14 @@ rmdir /S /Q "$(LocalDebuggerWorkingDirectory)"
 mkdir "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>rmdir /S /Q "$(LocalDebuggerWorkingDirectory)\assets"
+
+mkdir "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\flangee77-tests.cpp" />
@@ -189,6 +221,7 @@ mkdir "$(LocalDebuggerWorkingDirectory)"
   <ItemGroup>
     <ClInclude Include="src\CoreLabs\strings.h" />
     <ClInclude Include="src\CoreLabs\Version.h" />
+    <ClInclude Include="src\XiaoLabs\graphics.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

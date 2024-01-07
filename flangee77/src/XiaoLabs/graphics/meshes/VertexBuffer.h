@@ -38,7 +38,6 @@ public:
         unsigned vertex_count;
         /** The topology of the primitives that the vertex buffer represents. */
         Topology topology;
-
     };
 
 
@@ -50,7 +49,7 @@ protected:
     /**
      * Explicit constructor.
      */
-    VertexBuffer(MeshManager* manager, const cl7::string& identifier, const Desc& desc);
+    VertexBuffer(const CreateParams<Desc>& params);
 
     /**
      * Destructor.
@@ -70,16 +69,46 @@ private:
     // #############################################################################
     // Attributes
     // #############################################################################
-public:
-    /** The description of the vertex buffer. */
-    const Desc desc;
+protected:
+    /**
+     * The descriptor of the vertex buffer.
+     */
+    const Desc _desc;
+
+    /**
+     * The size of each vertex, in bytes.
+     */
+    const unsigned _stride;
 
     /**
      * The size of this vertex buffer, in bytes.
      */
-    const unsigned size;
+    const unsigned _size;
 
 private:
+
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+public:
+    /**
+     * Returns the descriptor of the vertex buffer.
+     */
+    const Desc& get_desc() const { return _desc; }
+
+    /**
+     * Returns the size of each vertex, in bytes.
+     */
+    unsigned get_stride() const { return _stride; }
+
+    /**
+     * Returns the size of this vertex buffer, in bytes.
+     */
+    unsigned get_size() const { return _size; }
+
+public:
 
 }; // class VertexBuffer
 

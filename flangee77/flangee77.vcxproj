@@ -167,6 +167,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\CoreLabs\filesystem.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\shared\shaders\D3DShaderCompiler.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\shared\errors.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\ParameterTable.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\ShaderCode.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\meshes\IndexBufferImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\meshes\VertexBufferImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\MeshUtil.h" />
@@ -262,6 +267,10 @@
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\VertexBufferImpl.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\CoreLabs\filesystem.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\shared\shaders\D3DShaderCompiler.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\shared\errors.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\shaders\ShaderCode.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\meshes\IndexBufferImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\meshes\VertexBufferImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\meshes\MeshUtil.cpp" />

@@ -140,32 +140,6 @@ namespace xl7 {
         _resources.clear();
     }
 
-    /**
-     * Temporarily releases/resigns the contained resources.
-     */
-    void ResourceManager::resign_resources()
-    {
-        for ( auto& resource_ptr : _resources )
-        {
-            assert( resource_ptr );
-            if ( resource_ptr->is_acquired() && !resource_ptr->is_resigned() )
-                resource_ptr->resign();
-        }
-    }
-
-    /**
-     * Reaquires/restores the contained resources.
-     */
-    void ResourceManager::restore_resources()
-    {
-        for ( auto& resource_ptr : _resources )
-        {
-            assert( resource_ptr );
-            if ( resource_ptr->is_acquired() && resource_ptr->is_resigned() )
-                resource_ptr->restore();
-        }
-    }
-
 
 
     // #############################################################################

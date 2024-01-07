@@ -27,7 +27,7 @@ protected:
     /**
      * Explicit constructor.
      */
-    PixelShader(ShaderManager* manager, const cl7::string& identifier);
+    PixelShader(const CreateParams<Desc>& params);
 
     /**
      * Destructor.

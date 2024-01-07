@@ -1,6 +1,4 @@
-#include "VertexShader.h"
-
-#include "./ShaderManager.h"
+#include "ShaderCode.h"
 
 
 
@@ -17,8 +15,9 @@ namespace shaders {
     /**
      * Explicit constructor.
      */
-    VertexShader::VertexShader(const CreateParams<Desc>& params)
-        : Shader( Type::VertexShader, params )
+    ShaderCode::ShaderCode(Language language, const cl7::byte_span& code_data)
+        : _language( language )
+        , _code_data( code_data.begin(), code_data.end() )
     {
     }
 

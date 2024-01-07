@@ -2,6 +2,8 @@
 #ifndef XL7_RESOURCE_H
 #define XL7_RESOURCE_H
 
+#include <CoreLabs/byte_span.h>
+#include <CoreLabs/byte_vector.h>
 #include <CoreLabs/string.h>
 
 
@@ -30,6 +32,20 @@ public:
         friend class ResourceManager;
     };
 
+public:
+    template <class TDesc>
+    struct CreateParams
+    {
+        /** The owning manager of the resource to create (the manager that creates the resource). */
+        ResourceManager* manager;
+        /** The identifier of the resource to create (may be empty). */
+        cl7::string_view identifier;
+        /** The optional initial data for the resource to create. */
+        cl7::byte_span data;
+        /** The descriptor of the resource to create. */
+        TDesc desc;
+    };
+
 
 
     // #############################################################################
@@ -39,7 +55,21 @@ protected:
     /**
      * Explicit constructor.
      */
-    Resource(ResourceManager* manager, const cl7::string& identifier);
+    Resource(ResourceManager* manager, const cl7::string_view& identifier);
+
+    /**
+     * Explicit constructor.
+     */
+    Resource(ResourceManager* manager, const cl7::string_view& identifier, const cl7::byte_span& data);
+
+    /**
+     * Explicit constructor.
+     */
+    template <class TDesc>
+    Resource(const CreateParams<TDesc>& params)
+        : Resource( params.manager, params.identifier, params.data )
+    {
+    }
 
     /**
      * Destructor.
@@ -82,10 +112,11 @@ private:
      */
     bool _acquired;
 
+protected:
     /**
-     * The flag specifying whether this resource has been (temporarily) resigned.
+     * The (optional) local copy of the resource data.
      */
-    bool _resigned;
+    cl7::byte_vector _data;
 
 
 
@@ -115,10 +146,15 @@ public:
     bool is_acquired() const { return _acquired; }
 
     /**
-     * Returns the flag specifying whether this resource has been (temporarily)
-     * resigned.
+     * Indicates whether the resource is ready for use, i.e. it continues to be
+     * managed by its owning manager and has been successfully acquired.
      */
-    bool is_resigned() const { return _resigned; }
+    bool is_operational() const { return _acquired && _managed; }
+
+    /**
+     * Returns the (optional) local copy of the resource data.
+     */
+    const cl7::byte_vector& get_data() const { return _data; }
 
 
 
@@ -129,26 +165,12 @@ public:
     /**
      * Requests/acquires the resource, bringing it into a usable state.
      */
-    bool request();
+    bool acquire();
 
     /**
-     * Releases the resource.
+     * Releases/"unacquires" the resource.
      */
     bool release();
-
-    /**
-     * Temporarily resigns some stuff to free up some (hardware) memory etc.
-     * This can be used to free up capacity for other resources that are urgently
-     * needed right now, but it is known that this resource will be reused later, so
-     * it should not be fully released yet.
-     */
-    bool resign();
-
-    /**
-     * Restores/reacquires the resource after it has been (temporarily) resigned,
-     * returning it to a usable state.
-     */
-    bool restore();
 
 
 
@@ -159,36 +181,26 @@ private:
     /**
      * Requests/acquires the resource, bringing it into a usable state.
      */
-    virtual bool _request_impl() = 0;
+    virtual bool _acquire_impl() = 0;
 
     /**
-     * Releases the resource.
+     * Releases/"unacquires" the resource.
      */
     virtual bool _release_impl() = 0;
-
-    /**
-     * Temporarily resigns some stuff to free up some (hardware) memory etc.
-     */
-    virtual bool _resign_impl() = 0;
-
-    /**
-     * Restores the resource after it has been (temporarily) resigned, returning it
-     * to a usable state.
-     */
-    virtual bool _restore_impl() = 0;
 
 
 
     // #############################################################################
     // Management Functions
     // #############################################################################
-private:
+protected:
     /**
-     * Checks whether the resource is still managed by its owning manager and fires
-     * an error message if not.
-     */
+    * Checks whether the resource is still managed by its owning manager and fires
+    * an error message if not.
+    */
     bool _check_managed() const;
 
+private:
     /**
      * Informs the resource that it will no longer be managed by its owning manager.
      */
