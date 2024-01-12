@@ -8,6 +8,16 @@ namespace xl7 {
 
 
 
+    bool Resource::DefaultSource::fill_data(cl7::byte_vector& data) const
+    {
+        data.resize( _data.size() );
+        assert( data.size() == _data.size() );
+        std::copy( _data.begin(), _data.end(), data.begin() );
+        return true;
+    }
+
+
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
@@ -23,14 +33,16 @@ namespace xl7 {
     /**
      * Explicit constructor.
      */
-    Resource::Resource(ResourceManager* manager, const cl7::string_view& identifier, const cl7::byte_span& data)
+    Resource::Resource(ResourceManager* manager, const cl7::string_view& identifier, const DataSource& data_source)
         : _manager( manager )
         , _identifier( identifier )
         , _managed( true )
         , _acquired( false )
-        , _data( data.begin(), data.end() )
+        , _data()
     {
         assert( _manager );
+
+        data_source.fill_data( _data );
     }
 
     /**

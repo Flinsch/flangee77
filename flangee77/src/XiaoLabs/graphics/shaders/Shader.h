@@ -4,6 +4,8 @@
 #include "../../Resource.h"
 
 #include "./ShaderCode.h"
+#include "./MacroDefinitions.h"
+#include "./ParameterTable.h"
 
 
 
@@ -81,6 +83,10 @@ protected:
     const Desc _desc;
 
 private:
+    /**
+     * The table of constant/sampler parameters.
+     */
+    ParameterTable _parameter_table;
 
 
 
@@ -109,6 +115,12 @@ public:
      */
     bool is_recompilable() const { return _desc.language == ShaderCode::Language::HighLevel; }
 
+public:
+    /**
+     * Returns the table of constant/sampler parameters.
+     */
+    const ParameterTable& get_parameter_table() const { return _parameter_table; }
+
 
 
     // #############################################################################
@@ -119,7 +131,7 @@ public:
      * Recompiles the shader code. This tends to result in the resource having to be
      * completely recreated in the background.
      */
-    bool recompile();
+    bool recompile(const MacroDefinitions& macro_definitions);
 
 
 
@@ -131,7 +143,7 @@ private:
     * Recompiles the shader code. This tends to result in the resource having to be
     * completely recreated in the background.
     */
-    virtual bool _recompile_impl() = 0;
+    virtual bool _recompile_impl(const MacroDefinitions& macro_definitions, ParameterTable& parameter_table_out) = 0;
 
 }; // class Shader
 

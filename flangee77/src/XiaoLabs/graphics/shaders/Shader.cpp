@@ -36,18 +36,19 @@ namespace shaders {
     * Recompiles the shader code. This tends to result in the resource having to be
     * completely recreated in the background.
     */
-    bool Shader::recompile()
+    bool Shader::recompile(const MacroDefinitions& macro_definitions)
     {
         if ( !_check_managed() )
             return false;
 
         if ( !is_recompilable() )
         {
-            LOG_ERROR( TEXT("The shader \"") + get_identifier() + TEXT("\" is not managed anymore.") );
+            assert( is_precompiled() );
+            LOG_ERROR( TEXT("The (precompiled) shader \"") + get_identifier() + TEXT("\" is not recompilable.") );
             return false;
         }
 
-        return _recompile_impl();
+        return _recompile_impl( macro_definitions, _parameter_table );
     }
 
 

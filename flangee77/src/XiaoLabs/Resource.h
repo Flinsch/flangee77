@@ -40,10 +40,23 @@ public:
         ResourceManager* manager;
         /** The identifier of the resource to create (may be empty). */
         cl7::string_view identifier;
-        /** The optional initial data for the resource to create. */
-        cl7::byte_span data;
         /** The descriptor of the resource to create. */
         TDesc desc;
+    };
+
+    struct DataSource
+    {
+        virtual size_t get_data_size() const { return 0; };
+        virtual bool fill_data(cl7::byte_vector& data) const { return true; }
+    };
+
+    struct DefaultSource
+        : public DataSource
+    {
+        DefaultSource(const cl7::byte_span& data) : _data( data ) {}
+        virtual size_t get_data_size() const override { return _data.size(); }
+        virtual bool fill_data(cl7::byte_vector& data) const override;
+        const cl7::byte_span _data;
     };
 
 
@@ -60,14 +73,23 @@ protected:
     /**
      * Explicit constructor.
      */
-    Resource(ResourceManager* manager, const cl7::string_view& identifier, const cl7::byte_span& data);
+    Resource(ResourceManager* manager, const cl7::string_view& identifier, const DataSource& data_source);
 
     /**
      * Explicit constructor.
      */
     template <class TDesc>
     Resource(const CreateParams<TDesc>& params)
-        : Resource( params.manager, params.identifier, params.data )
+        : Resource( params.manager, params.identifier )
+    {
+    }
+
+    /**
+     * Explicit constructor.
+     */
+    template <class TDesc>
+    Resource(const CreateParams<TDesc>& params, const DataSource& data_source)
+        : Resource( params.manager, params.identifier, data_source )
     {
     }
 

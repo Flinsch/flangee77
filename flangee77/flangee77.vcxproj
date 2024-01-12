@@ -170,6 +170,7 @@
     <ClInclude Include="src\CoreLabs\filesystem.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\shared\shaders\D3DShaderCompiler.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\shared\errors.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\MacroDefinitions.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ParameterTable.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ShaderCode.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\meshes\IndexBufferImpl.h" />
