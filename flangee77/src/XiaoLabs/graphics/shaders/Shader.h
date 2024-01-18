@@ -42,6 +42,16 @@ public:
         ShaderCode::Language language;
     };
 
+    struct CodeProvider
+        : public DefaultDataProvider
+    {
+        const ShaderCode& shader_code;
+        const MacroDefinitions& macro_definitions;
+
+        CodeProvider(const ShaderCode& shader_code) : CodeProvider( shader_code, {} ) {}
+        CodeProvider(const ShaderCode& shader_code, const MacroDefinitions& macro_definitions) : DefaultDataProvider( shader_code.get_code_data() ), shader_code( shader_code ), macro_definitions( macro_definitions ) {}
+    };
+
 
 
     // #############################################################################
@@ -136,13 +146,35 @@ public:
 
 
     // #############################################################################
+    // Resource Implementations
+    // #############################################################################
+private:
+    /**
+     * Requests/acquires the resource, bringing it into a usable state.
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been filled based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    virtual bool _acquire_impl(const DataProvider& data_provider) override;
+
+
+
+    // #############################################################################
     // Prototypes
     // #############################################################################
 private:
     /**
-    * Recompiles the shader code. This tends to result in the resource having to be
-    * completely recreated in the background.
-    */
+     * Requests/acquires the resource, bringing it into a usable state.
+     * The actual code of the given code provider can possibly be ignored because the
+     * local data buffer has already been filled based on it. It is still included as
+     * it contains additional implementation-specific information.
+     */
+    virtual bool _acquire_impl(const CodeProvider& code_provider, ParameterTable& parameter_table_out) = 0;
+
+    /**
+     * Recompiles the shader code. This tends to result in the resource having to be
+     * completely recreated in the background.
+     */
     virtual bool _recompile_impl(const MacroDefinitions& macro_definitions, ParameterTable& parameter_table_out) = 0;
 
 }; // class Shader

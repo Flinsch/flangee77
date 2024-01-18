@@ -33,9 +33,9 @@ namespace shaders {
     // #############################################################################
 
     /**
-    * Recompiles the shader code. This tends to result in the resource having to be
-    * completely recreated in the background.
-    */
+     * Recompiles the shader code. This tends to result in the resource having to be
+     * completely recreated in the background.
+     */
     bool Shader::recompile(const MacroDefinitions& macro_definitions)
     {
         if ( !_check_managed() )
@@ -49,6 +49,24 @@ namespace shaders {
         }
 
         return _recompile_impl( macro_definitions, _parameter_table );
+    }
+
+
+
+    // #############################################################################
+    // Resource Implementations
+    // #############################################################################
+
+    /**
+     * Requests/acquires the resource, bringing it into a usable state.
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been filled based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    bool Shader::_acquire_impl(const DataProvider& data_provider)
+    {
+        assert( typeid(data_provider) == typeid(const CodeProvider&) );
+        return _acquire_impl( static_cast<const CodeProvider&>( data_provider ), _parameter_table );
     }
 
 

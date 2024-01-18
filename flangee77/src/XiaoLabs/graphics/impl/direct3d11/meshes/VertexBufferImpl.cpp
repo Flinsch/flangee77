@@ -38,8 +38,11 @@ namespace meshes {
 
     /**
      * Requests/acquires the resource, bringing it into a usable state.
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been filled based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
      */
-    bool VertexBufferImpl::_acquire_impl()
+    bool VertexBufferImpl::_acquire_impl(const DataProvider& data_provider)
     {
         assert( _d3d_device );
         assert( !_d3d_vertex_buffer );

@@ -55,11 +55,6 @@ private:
     // #############################################################################
 private:
     /**
-     * Requests/acquires the resource, bringing it into a usable state.
-     */
-    virtual bool _acquire_impl() override;
-
-    /**
      * Releases/"unacquires" the resource.
      */
     virtual bool _release_impl() override;
@@ -71,9 +66,17 @@ private:
     // #############################################################################
 private:
     /**
-    * Recompiles the shader code. This tends to result in the resource having to be
-    * completely recreated in the background.
-    */
+     * Requests/acquires the resource, bringing it into a usable state.
+     * The actual code of the given code provider can possibly be ignored because the
+     * local data buffer has already been filled based on it. It is still included as
+     * it contains additional implementation-specific information.
+     */
+    virtual bool _acquire_impl(const CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
+
+    /**
+     * Recompiles the shader code. This tends to result in the resource having to be
+     * completely recreated in the background.
+     */
     virtual bool _recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
 
 }; // class VertexShaderImpl

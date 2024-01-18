@@ -74,8 +74,11 @@ private:
 private:
     /**
      * Requests/acquires the resource, bringing it into a usable state.
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been filled based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_impl() override;
+    virtual bool _acquire_impl(const DataProvider& data_provider) override;
 
     /**
      * Releases/"unacquires" the resource.

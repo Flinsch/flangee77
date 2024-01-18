@@ -8,11 +8,11 @@ namespace xl7 {
 
 
 
-    bool Resource::DefaultSource::fill_data(cl7::byte_vector& data) const
+    bool Resource::DefaultDataProvider::fill_data(cl7::byte_vector& data) const
     {
-        data.resize( _data.size() );
-        assert( data.size() == _data.size() );
-        std::copy( _data.begin(), _data.end(), data.begin() );
+        data.resize( this->data.size() );
+        assert( data.size() == this->data.size() );
+        std::copy( this->data.begin(), this->data.end(), data.begin() );
         return true;
     }
 
@@ -26,14 +26,6 @@ namespace xl7 {
      * Explicit constructor.
      */
     Resource::Resource(ResourceManager* manager, const cl7::string_view& identifier)
-        : Resource( manager, identifier, {} )
-    {
-    }
-
-    /**
-     * Explicit constructor.
-     */
-    Resource::Resource(ResourceManager* manager, const cl7::string_view& identifier, const DataSource& data_source)
         : _manager( manager )
         , _identifier( identifier )
         , _managed( true )
@@ -41,8 +33,6 @@ namespace xl7 {
         , _data()
     {
         assert( _manager );
-
-        data_source.fill_data( _data );
     }
 
     /**
@@ -63,15 +53,28 @@ namespace xl7 {
     /**
      * Requests/acquires the resource, bringing it into a usable state.
      */
-    bool Resource::acquire()
+    bool Resource::acquire(const DataProvider& data_provider)
     {
         if ( !_check_managed() )
             return false;
 
         if ( _acquired )
-            return true;
+        {
+            LOG_WARNING( TEXT("The resource \"") + _identifier + TEXT("\" has already been acquired.") );
+            return false;
+        }
 
-        if ( !_acquire_impl() )
+        if ( data_provider.get_data_size() == 0 )
+        {
+            _data.clear();
+        }
+        else if ( !data_provider.fill_data( _data ) )
+        {
+            LOG_ERROR( TEXT("The given data provider was not able to fill the local data buffer of the resource \"") + _identifier + TEXT("\".") );
+            return false;
+        }
+
+        if ( !_acquire_impl( data_provider ) )
         {
             release();
             return false;

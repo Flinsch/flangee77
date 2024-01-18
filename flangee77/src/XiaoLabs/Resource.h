@@ -44,19 +44,21 @@ public:
         TDesc desc;
     };
 
-    struct DataSource
+    struct DataProvider
     {
         virtual size_t get_data_size() const { return 0; };
         virtual bool fill_data(cl7::byte_vector& data) const { return true; }
     };
 
-    struct DefaultSource
-        : public DataSource
+    struct DefaultDataProvider
+        : public DataProvider
     {
-        DefaultSource(const cl7::byte_span& data) : _data( data ) {}
-        virtual size_t get_data_size() const override { return _data.size(); }
+        const cl7::byte_span data;
+
+        DefaultDataProvider(const cl7::byte_span& data) : data( data ) {}
+
+        virtual size_t get_data_size() const override { return data.size(); }
         virtual bool fill_data(cl7::byte_vector& data) const override;
-        const cl7::byte_span _data;
     };
 
 
@@ -73,23 +75,9 @@ protected:
     /**
      * Explicit constructor.
      */
-    Resource(ResourceManager* manager, const cl7::string_view& identifier, const DataSource& data_source);
-
-    /**
-     * Explicit constructor.
-     */
     template <class TDesc>
     Resource(const CreateParams<TDesc>& params)
         : Resource( params.manager, params.identifier )
-    {
-    }
-
-    /**
-     * Explicit constructor.
-     */
-    template <class TDesc>
-    Resource(const CreateParams<TDesc>& params, const DataSource& data_source)
-        : Resource( params.manager, params.identifier, data_source )
     {
     }
 
@@ -187,7 +175,7 @@ public:
     /**
      * Requests/acquires the resource, bringing it into a usable state.
      */
-    bool acquire();
+    bool acquire(const DataProvider& data_provider);
 
     /**
      * Releases/"unacquires" the resource.
@@ -202,8 +190,11 @@ public:
 private:
     /**
      * Requests/acquires the resource, bringing it into a usable state.
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been filled based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_impl() = 0;
+    virtual bool _acquire_impl(const DataProvider& data_provider) = 0;
 
     /**
      * Releases/"unacquires" the resource.

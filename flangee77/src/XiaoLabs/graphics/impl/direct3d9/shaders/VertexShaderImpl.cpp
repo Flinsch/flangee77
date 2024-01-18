@@ -29,14 +29,6 @@ namespace shaders {
     // #############################################################################
 
     /**
-     * Requests/acquires the resource, bringing it into a usable state.
-     */
-    bool VertexShaderImpl::_acquire_impl()
-    {
-        return false;
-    }
-
-    /**
      * Releases/"unacquires" the resource.
      */
     bool VertexShaderImpl::_release_impl()
@@ -51,9 +43,20 @@ namespace shaders {
     // #############################################################################
 
     /**
-    * Recompiles the shader code. This tends to result in the resource having to be
-    * completely recreated in the background.
-    */
+     * Requests/acquires the resource, bringing it into a usable state.
+     * The actual code of the given code provider can possibly be ignored because the
+     * local data buffer has already been filled based on it. It is still included as
+     * it contains additional implementation-specific information.
+     */
+    bool VertexShaderImpl::_acquire_impl(const CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out)
+    {
+        return false;
+    }
+
+    /**
+     * Recompiles the shader code. This tends to result in the resource having to be
+     * completely recreated in the background.
+     */
     bool VertexShaderImpl::_recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ParameterTable& parameter_table_out)
     {
         return false;
