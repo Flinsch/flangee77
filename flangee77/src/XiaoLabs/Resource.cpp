@@ -76,6 +76,7 @@ namespace xl7 {
 
         if ( !_acquire_impl( data_provider ) )
         {
+            LOG_ERROR( TEXT("The resource \"") + _identifier + TEXT("\" could not be acquired.") );
             release();
             return false;
         }
@@ -93,6 +94,10 @@ namespace xl7 {
             return false;
 
         bool b = _release_impl();
+        if ( !b )
+        {
+            LOG_WARNING( TEXT("The resource \"") + _identifier + TEXT("\" could not be released without problems.") );
+        }
 
         _acquired = false;
         return b;

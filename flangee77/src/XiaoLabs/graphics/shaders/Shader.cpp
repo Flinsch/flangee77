@@ -33,8 +33,8 @@ namespace shaders {
     // #############################################################################
 
     /**
-     * Recompiles the shader code. This tends to result in the resource having to be
-     * completely recreated in the background.
+     * (Re)compiles the shader code. This tends to result in the resource having to
+     * be completely recreated in the background.
      */
     bool Shader::recompile(const MacroDefinitions& macro_definitions)
     {
@@ -48,7 +48,13 @@ namespace shaders {
             return false;
         }
 
-        return _recompile_impl( macro_definitions, _parameter_table );
+        if ( !_compile_impl( macro_definitions, _parameter_table ) )
+        {
+            LOG_ERROR( TEXT("The shader \"") + get_identifier() + TEXT("\" could not be recompiled.") );
+            return false;
+        }
+
+        return true;
     }
 
 

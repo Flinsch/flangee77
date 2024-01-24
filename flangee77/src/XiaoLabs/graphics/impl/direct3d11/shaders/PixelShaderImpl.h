@@ -74,10 +74,10 @@ private:
     virtual bool _acquire_impl(const CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
 
     /**
-     * Recompiles the shader code. This tends to result in the resource having to be
-     * completely recreated in the background.
+     * (Re)compiles the shader code. This tends to result in the resource having to
+     * be completely recreated in the background.
      */
-    virtual bool _recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
+    virtual bool _compile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
 
 }; // class PixelShaderImpl
 

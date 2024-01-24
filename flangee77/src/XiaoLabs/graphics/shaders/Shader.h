@@ -7,6 +7,8 @@
 #include "./MacroDefinitions.h"
 #include "./ParameterTable.h"
 
+#include <CoreLabs/string.h>
+
 
 
 namespace xl7 {
@@ -40,6 +42,8 @@ public:
     {
         /** The language of the (source) code on which the shader is based. */
         ShaderCode::Language language;
+        /** The name of the shader entry point (can be empty, especially for precompiled shaders). */
+        cl7::astring entry_point;
     };
 
     struct CodeProvider
@@ -138,8 +142,8 @@ public:
     // #############################################################################
 public:
     /**
-     * Recompiles the shader code. This tends to result in the resource having to be
-     * completely recreated in the background.
+     * (Re)compiles the shader code. This tends to result in the resource having to
+     * be completely recreated in the background.
      */
     bool recompile(const MacroDefinitions& macro_definitions);
 
@@ -172,10 +176,10 @@ private:
     virtual bool _acquire_impl(const CodeProvider& code_provider, ParameterTable& parameter_table_out) = 0;
 
     /**
-     * Recompiles the shader code. This tends to result in the resource having to be
-     * completely recreated in the background.
+     * (Re)compiles the shader code. This tends to result in the resource having to
+     * be completely recreated in the background.
      */
-    virtual bool _recompile_impl(const MacroDefinitions& macro_definitions, ParameterTable& parameter_table_out) = 0;
+    virtual bool _compile_impl(const MacroDefinitions& macro_definitions, ParameterTable& parameter_table_out) = 0;
 
 }; // class Shader
 

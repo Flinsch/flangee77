@@ -35,11 +35,11 @@ public:
     xl7::graphics::shaders::ShaderCode compile_hlsl_code(const cl7::string& file_path, const xl7::graphics::shaders::MacroDefinitions& macro_definitions, const cl7::astring& entry_point, const cl7::astring& target);
 
     /**
-     * Compiles the given HLSL code into bytecode for a given target. The file path
-     * is used to resolve any #include directives. If an error occurs, an object
-     * with an "unknown" language and empty data is returned.
+     * Compiles the given HLSL code into bytecode for a given target. The include
+     * path is used to resolve any #include directives. If an error occurs, an
+     * object with an "unknown" language and empty data is returned.
      */
-    xl7::graphics::shaders::ShaderCode compile_hlsl_code(const xl7::graphics::shaders::ShaderCode& hlsl_code, const cl7::string& file_path, const xl7::graphics::shaders::MacroDefinitions& macro_definitions, const cl7::astring& entry_point, const cl7::astring& target);
+    xl7::graphics::shaders::ShaderCode compile_hlsl_code(const xl7::graphics::shaders::ShaderCode& hlsl_code, const cl7::string& include_path, const xl7::graphics::shaders::MacroDefinitions& macro_definitions, const cl7::astring& entry_point, const cl7::astring& target);
 
     /**
      * Builds a parameter table based on the specified bytecode.

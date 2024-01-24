@@ -54,10 +54,10 @@ namespace shaders {
     }
 
     /**
-     * Recompiles the shader code. This tends to result in the resource having to be
-     * completely recreated in the background.
+     * (Re)compiles the shader code. This tends to result in the resource having to
+     * be completely recreated in the background.
      */
-    bool PixelShaderImpl::_recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ParameterTable& parameter_table_out)
+    bool PixelShaderImpl::_compile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ParameterTable& parameter_table_out)
     {
         return false;
     }

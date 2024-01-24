@@ -7,6 +7,8 @@
 #include <CoreLabs/sstream.h>
 #include <CoreLabs/strings.h>
 
+#include <filesystem>
+
 #include <algorithm>
 #include <vector>
 #include <unordered_map>
@@ -31,8 +33,8 @@ namespace shaders {
     struct Include final
         : public ID3DInclude
     {
-        Include(const cl7::string& file_path)
-            : _root_directory( Include::directory( file_path ) )
+        Include(const cl7::string& path)
+            : _root_directory( Include::directory( path ) )
             , _parent_entries()
         {
         }
@@ -45,20 +47,27 @@ namespace shaders {
         };
         std::unordered_map<const void*, ParentEntry> _parent_entries;
 
-        static cl7::string directory(const cl7::string& file_path)
+        static cl7::string directory(const cl7::string& path)
         {
-            const size_t pos = file_path.find_last_of( TEXT("/\\") );
+            if ( std::filesystem::is_directory( path ) )
+                return path;
+            const size_t pos = path.find_last_of( TEXT("/\\") );
             if ( pos != cl7::string::npos )
-                return file_path.substr( 0, pos + 1 );
+                return path.substr( 0, pos + 1 );
             return {};
         }
 
-        static cl7::string filename(const cl7::string& file_path)
+        static cl7::string filename(const cl7::string& path)
         {
-            const size_t pos = file_path.find_last_of( TEXT("/\\") );
+            if ( !std::filesystem::is_regular_file( path ) )
+            {
+                LOG_ERROR( path + TEXT(" does not refer to a regular file.") );
+                return {};
+            }
+            const size_t pos = path.find_last_of( TEXT("/\\") );
             if ( pos != cl7::string::npos )
-                return file_path.substr( pos + 1 );
-            return file_path;
+                return path.substr( pos + 1 );
+            return path;
         }
 
         static cl7::astring read_source_code(const cl7::string& file_path)
@@ -131,15 +140,15 @@ namespace shaders {
     {
         cl7::astring source_code = Include::read_source_code( file_path );
 
-        return compile_hlsl_code( { xl7::graphics::shaders::ShaderCode::Language::HighLevel, cl7::byte_span( reinterpret_cast<std::byte*>( source_code.data() ), source_code.size() ) }, file_path, macro_definitions, entry_point, target );
+        return compile_hlsl_code( { xl7::graphics::shaders::ShaderCode::Language::HighLevel, cl7::byte_span( reinterpret_cast<std::byte*>( source_code.data() ), source_code.size() ) }, Include::directory( file_path ), macro_definitions, entry_point, target );
     }
 
     /**
-     * Compiles the given HLSL code into bytecode for a given target. The file path
-     * is used to resolve any #include directives. If an error occurs, an object
-     * with an "unknown" language and empty data is returned.
+     * Compiles the given HLSL code into bytecode for a given target. The include
+     * path is used to resolve any #include directives. If an error occurs, an
+     * object with an "unknown" language and empty data is returned.
      */
-    xl7::graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const xl7::graphics::shaders::ShaderCode& hlsl_code, const cl7::string& file_path, const xl7::graphics::shaders::MacroDefinitions& macro_definitions, const cl7::astring& entry_point, const cl7::astring& target)
+    xl7::graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const xl7::graphics::shaders::ShaderCode& hlsl_code, const cl7::string& include_path, const xl7::graphics::shaders::MacroDefinitions& macro_definitions, const cl7::astring& entry_point, const cl7::astring& target)
     {
         if ( hlsl_code.get_language() != xl7::graphics::shaders::ShaderCode::Language::HighLevel )
         {
@@ -165,7 +174,7 @@ namespace shaders {
             return {};
         }
 
-        Include include( file_path );
+        Include include( include_path );
 
         std::vector<D3D_SHADER_MACRO> macros;
         macros.reserve( macro_definitions.size() + 1 );
