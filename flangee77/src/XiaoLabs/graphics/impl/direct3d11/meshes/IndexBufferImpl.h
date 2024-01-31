@@ -82,6 +82,8 @@ private:
 
     /**
      * Releases/"unacquires" the resource.
+     * The resource may be in an incompletely acquired state when this function is
+     * called. Any cleanup work that is necessary should still be carried out.
      */
     virtual bool _release_impl() override;
 

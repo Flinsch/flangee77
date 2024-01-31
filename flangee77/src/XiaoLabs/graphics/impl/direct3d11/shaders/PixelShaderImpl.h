@@ -3,6 +3,8 @@
 #define XL7_GRAPHICS_IMPL_D3D11_SHADERS_PIXELSHADERIMPL_H
 #include "../../../shaders/PixelShader.h"
 
+#include "../prerequisites.h"
+
 
 
 namespace xl7 {
@@ -51,11 +53,29 @@ private:
 
 
     // #############################################################################
+    // Attributes
+    // #############################################################################
+private:
+    /**
+     * The Direct3D 11 device interface.
+     */
+    wrl::ComPtr<ID3D11DeviceN> _d3d_device;
+
+    /**
+     * The Direct3D 11 pixel shader interface.
+     */
+    wrl::ComPtr<ID3D11PixelShader> _d3d_pixel_shader;
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 private:
     /**
      * Releases/"unacquires" the resource.
+     * The resource may be in an incompletely acquired state when this function is
+     * called. Any cleanup work that is necessary should still be carried out.
      */
     virtual bool _release_impl() override;
 
@@ -66,18 +86,26 @@ private:
     // #############################################################################
 private:
     /**
-     * Requests/acquires the resource, bringing it into a usable state.
+     * Requests/acquires a precompiled shader resource.
      * The actual code of the given code provider can possibly be ignored because the
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_impl(const CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
+    virtual bool _acquire_precompiled_impl(const CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
 
     /**
-     * (Re)compiles the shader code. This tends to result in the resource having to
-     * be completely recreated in the background.
+     * Requests/acquires a recompilable shader resource.
+     * The actual code of the given code provider can possibly be ignored because the
+     * local data buffer has already been filled based on it. It is still included as
+     * it contains additional implementation-specific information.
      */
-    virtual bool _compile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
+    virtual bool _acquire_recompilable_impl(const CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
+
+    /**
+     * Recompiles the shader code. This tends to result in the resource having to be
+     * completely recreated in the background.
+     */
+    virtual bool _recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
 
 }; // class PixelShaderImpl
 

@@ -142,8 +142,8 @@ public:
     // #############################################################################
 public:
     /**
-     * (Re)compiles the shader code. This tends to result in the resource having to
-     * be completely recreated in the background.
+     * Recompiles the shader code. This tends to result in the resource having to be
+     * completely recreated in the background.
      */
     bool recompile(const MacroDefinitions& macro_definitions);
 
@@ -168,18 +168,26 @@ private:
     // #############################################################################
 private:
     /**
-     * Requests/acquires the resource, bringing it into a usable state.
+     * Requests/acquires a precompiled shader resource.
      * The actual code of the given code provider can possibly be ignored because the
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_impl(const CodeProvider& code_provider, ParameterTable& parameter_table_out) = 0;
+    virtual bool _acquire_precompiled_impl(const CodeProvider& code_provider, ParameterTable& parameter_table_out) = 0;
 
     /**
-     * (Re)compiles the shader code. This tends to result in the resource having to
-     * be completely recreated in the background.
+     * Requests/acquires a recompilable shader resource.
+     * The actual code of the given code provider can possibly be ignored because the
+     * local data buffer has already been filled based on it. It is still included as
+     * it contains additional implementation-specific information.
      */
-    virtual bool _compile_impl(const MacroDefinitions& macro_definitions, ParameterTable& parameter_table_out) = 0;
+    virtual bool _acquire_recompilable_impl(const CodeProvider& code_provider, ParameterTable& parameter_table_out) = 0;
+
+    /**
+     * Recompiles the shader code. This tends to result in the resource having to be
+     * completely recreated in the background.
+     */
+    virtual bool _recompile_impl(const MacroDefinitions& macro_definitions, ParameterTable& parameter_table_out) = 0;
 
 }; // class Shader
 

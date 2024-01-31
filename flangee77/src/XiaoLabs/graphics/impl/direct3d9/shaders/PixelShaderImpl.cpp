@@ -40,6 +40,8 @@ namespace shaders {
 
     /**
      * Releases/"unacquires" the resource.
+     * The resource may be in an incompletely acquired state when this function is
+     * called. Any cleanup work that is necessary should still be carried out.
      */
     bool PixelShaderImpl::_release_impl()
     {
@@ -55,27 +57,18 @@ namespace shaders {
     // #############################################################################
 
     /**
-     * Requests/acquires the resource, bringing it into a usable state.
+     * Requests/acquires a precompiled shader resource.
      * The actual code of the given code provider can possibly be ignored because the
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    bool PixelShaderImpl::_acquire_impl(const CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out)
+    bool PixelShaderImpl::_acquire_precompiled_impl(const CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out)
     {
-        assert( _d3d_device );
-        assert( !_d3d_pixel_shader );
-
-        const xl7::graphics::shaders::ShaderCode& shader_code = code_provider.shader_code;
-        if ( shader_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::Unknown )
-            return false;
-
-        if ( shader_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel )
-            return _compile_impl( code_provider.macro_definitions, parameter_table_out );
-
-        assert( shader_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::Bytecode );
+        const xl7::graphics::shaders::ShaderCode& bytecode = code_provider.shader_code;
+        assert( bytecode.get_language() == xl7::graphics::shaders::ShaderCode::Language::Bytecode );
 
         HRESULT hresult = _d3d_device->CreatePixelShader(
-            reinterpret_cast<const DWORD*>( shader_code.get_code_data().data() ),
+            reinterpret_cast<const DWORD*>( bytecode.get_code_data().data() ),
             &_d3d_pixel_shader );
 
         if ( FAILED(hresult) )
@@ -88,28 +81,42 @@ namespace shaders {
     }
 
     /**
-     * (Re)compiles the shader code. This tends to result in the resource having to
-     * be completely recreated in the background.
+     * Requests/acquires a recompilable shader resource.
+     * The actual code of the given code provider can possibly be ignored because the
+     * local data buffer has already been filled based on it. It is still included as
+     * it contains additional implementation-specific information.
      */
-    bool PixelShaderImpl::_compile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ParameterTable& parameter_table_out)
+    bool PixelShaderImpl::_acquire_recompilable_impl(const CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out)
     {
         const cl7::Version& version = GraphicsSystem::instance().get_rendering_device()->get_capabilities().shaders.pixel_shader_version;
         const cl7::astring target = "ps_" + cl7::to_astring(version.major) + "_" + cl7::to_astring(version.minor);
         const cl7::astring entry_point = _desc.entry_point.empty() ? "mainPixel" : _desc.entry_point;
 
-        assert( is_recompilable() );
-        const xl7::graphics::shaders::ShaderCode shader_code = shared::shaders::D3DShaderCompiler().compile_hlsl_code( xl7::graphics::shaders::ShaderCode( _desc.language, _data ), TEXT(""), macro_definitions, entry_point, target );
-        if ( shader_code.get_code_data().empty() )
+        const xl7::graphics::shaders::ShaderCode& hlsl_code = code_provider.shader_code;
+        assert( hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel );
+
+        const xl7::graphics::shaders::ShaderCode bytecode = shared::shaders::D3DShaderCompiler().compile_hlsl_code( hlsl_code, TEXT(""), code_provider.macro_definitions, entry_point, target );
+        if ( bytecode.get_code_data().empty() )
         {
             LOG_ERROR( TEXT("The pixel shader \"") + get_identifier() + TEXT("\" could not be compiled.") );
             return false;
         }
 
-        _d3d_pixel_shader.Reset();
+        return _acquire_precompiled_impl( CodeProvider( bytecode, code_provider.macro_definitions ), parameter_table_out );
+    }
 
-        CodeProvider code_provider( shader_code, macro_definitions );
+    /**
+     * Recompiles the shader code. This tends to result in the resource having to be
+     * completely recreated in the background.
+     */
+    bool PixelShaderImpl::_recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ParameterTable& parameter_table_out)
+    {
+        xl7::graphics::shaders::ShaderCode hlsl_code( _desc.language, _data );
+        assert( hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel );
 
-        return _acquire_impl( code_provider, parameter_table_out );
+        CodeProvider code_provider( hlsl_code, macro_definitions );
+
+        return _acquire_recompilable_impl( code_provider, parameter_table_out );
     }
 
 

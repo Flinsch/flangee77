@@ -25,9 +25,30 @@ class Resource
 {
 
 public:
+    struct DataProvider
+    {
+        virtual size_t get_offset() const { return 0; }
+        virtual size_t get_size() const { return 0; }
+        virtual bool fill(cl7::byte_vector& data) const { return true; }
+    };
+
+    struct DefaultDataProvider
+        : public DataProvider
+    {
+        const cl7::byte_span data;
+        const size_t offset;
+
+        DefaultDataProvider(const cl7::byte_span& data, size_t offset = 0) : data( data ), offset( offset ) {}
+
+        virtual size_t get_size() const override { return data.size(); }
+        virtual bool fill(cl7::byte_vector& data) const override;
+    };
+
+public:
     class Attorney
     {
-        static void unmanage(Resource* resource) { resource->_unmanage(); }
+        static bool acquire(Resource* resource, const Resource::DataProvider& data_provider) { return resource->_acquire( data_provider ); }
+        static void release(Resource* resource) { resource->_release(); }
         static void destroy(Resource* resource) { delete resource; }
         friend class ResourceManager;
     };
@@ -42,23 +63,6 @@ public:
         cl7::string_view identifier;
         /** The descriptor of the resource to create. */
         TDesc desc;
-    };
-
-    struct DataProvider
-    {
-        virtual size_t get_data_size() const { return 0; };
-        virtual bool fill_data(cl7::byte_vector& data) const { return true; }
-    };
-
-    struct DefaultDataProvider
-        : public DataProvider
-    {
-        const cl7::byte_span data;
-
-        DefaultDataProvider(const cl7::byte_span& data) : data( data ) {}
-
-        virtual size_t get_data_size() const override { return data.size(); }
-        virtual bool fill_data(cl7::byte_vector& data) const override;
     };
 
 
@@ -112,15 +116,10 @@ private:
 
 private:
     /**
-     * The flag specifying whether this resource is (still) managed by its owning
-     * manager.
+     * The flag that indicates whether this resource is ready for use (i.e., it is
+     * managed by its owning manager and has been successfully acquired).
      */
-    bool _managed;
-
-    /**
-     * The flag specifying whether this resource has been acquired.
-     */
-    bool _acquired;
+    bool _is_usable;
 
 protected:
     /**
@@ -145,21 +144,10 @@ public:
     const cl7::string& get_identifier() const { return _identifier; }
 
     /**
-     * Returns the flag specifying whether this resource is (still) managed by its
-     * owning manager.
+     * Indicates whether this resource is ready for use (i.e., it is managed by its
+     * owning manager and has been successfully acquired).
      */
-    bool is_managed() const { return _managed; }
-
-    /**
-     * Returns the flag specifying whether this resource has been acquired.
-     */
-    bool is_acquired() const { return _acquired; }
-
-    /**
-     * Indicates whether the resource is ready for use, i.e. it continues to be
-     * managed by its owning manager and has been successfully acquired.
-     */
-    bool is_operational() const { return _acquired && _managed; }
+    bool is_usable() const { return _is_usable; }
 
     /**
      * Returns the (optional) local copy of the resource data.
@@ -172,15 +160,31 @@ public:
     // Methods
     // #############################################################################
 public:
+
+
+
+    // #############################################################################
+    // Management Functions
+    // #############################################################################
+protected:
     /**
-     * Requests/acquires the resource, bringing it into a usable state.
+     * Checks whether this resource is ready for use (i.e., it is managed by its
+     * owning manager and has been successfully acquired) and fires an error message
+     * if not.
      */
-    bool acquire(const DataProvider& data_provider);
+    bool _check_is_usable() const;
+
+private:
+    /**
+     * Requests/acquires the resource, bringing it into a usable state (or not).
+     */
+    bool _acquire(const DataProvider& data_provider);
 
     /**
-     * Releases/"unacquires" the resource.
+     * Releases/"unacquires" the resource, thereby rendering it unusable, indicating
+     * that it is no longer managed by its owning manager.
      */
-    bool release();
+    void _release();
 
 
 
@@ -198,26 +202,10 @@ private:
 
     /**
      * Releases/"unacquires" the resource.
+     * The resource may be in an incompletely acquired state when this function is
+     * called. Any cleanup work that is necessary should still be carried out.
      */
     virtual bool _release_impl() = 0;
-
-
-
-    // #############################################################################
-    // Management Functions
-    // #############################################################################
-protected:
-    /**
-    * Checks whether the resource is still managed by its owning manager and fires
-    * an error message if not.
-    */
-    bool _check_managed() const;
-
-private:
-    /**
-     * Informs the resource that it will no longer be managed by its owning manager.
-     */
-    void _unmanage();
 
 }; // class Resource
 

@@ -8,11 +8,14 @@ namespace xl7 {
 
 
 
-    bool Resource::DefaultDataProvider::fill_data(cl7::byte_vector& data) const
+    bool Resource::DefaultDataProvider::fill(cl7::byte_vector& data) const
     {
-        data.resize( this->data.size() );
-        assert( data.size() == this->data.size() );
-        std::copy( this->data.begin(), this->data.end(), data.begin() );
+        const size_t offset = get_offset();
+        const size_t size = get_size();
+        const size_t min_size = offset + size;
+        if ( data.size() < min_size )
+            data.resize( min_size );
+        std::copy( this->data.begin(), this->data.end(), data.begin() + offset );
         return true;
     }
 
@@ -28,8 +31,7 @@ namespace xl7 {
     Resource::Resource(ResourceManager* manager, const cl7::string_view& identifier)
         : _manager( manager )
         , _identifier( identifier )
-        , _managed( true )
-        , _acquired( false )
+        , _is_usable( false )
         , _data()
     {
         assert( _manager );
@@ -40,8 +42,7 @@ namespace xl7 {
      */
     Resource::~Resource()
     {
-        assert( !_managed );
-        assert( !_acquired );
+        assert( !_is_usable );
     }
 
 
@@ -50,25 +51,43 @@ namespace xl7 {
     // Methods
     // #############################################################################
 
-    /**
-     * Requests/acquires the resource, bringing it into a usable state.
-     */
-    bool Resource::acquire(const DataProvider& data_provider)
-    {
-        if ( !_check_managed() )
-            return false;
 
-        if ( _acquired )
+
+    // #############################################################################
+    // Management Functions
+    // #############################################################################
+
+    /**
+     * Checks whether this resource is ready for use (i.e., it is managed by its
+     * owning manager and has been successfully acquired) and fires an error message
+     * if not.
+     */
+    bool Resource::_check_is_usable() const
+    {
+        if ( _is_usable )
+            return true;
+
+        LOG_ERROR( TEXT("The resource \"") + _identifier + TEXT("\" is not usable anymore.") );
+        return false;
+    }
+
+    /**
+     * Requests/acquires the resource, bringing it into a usable state (or not).
+     */
+    bool Resource::_acquire(const DataProvider& data_provider)
+    {
+        assert( !_is_usable );
+        if ( _is_usable )
         {
-            LOG_WARNING( TEXT("The resource \"") + _identifier + TEXT("\" has already been acquired.") );
+            LOG_WARNING( TEXT("The resource \"") + _identifier + TEXT("\" appears to have already been acquired.") );
             return false;
         }
 
-        if ( data_provider.get_data_size() == 0 )
+        if ( data_provider.get_size() == 0 )
         {
             _data.clear();
         }
-        else if ( !data_provider.fill_data( _data ) )
+        else if ( !data_provider.fill( _data ) )
         {
             LOG_ERROR( TEXT("The given data provider was not able to fill the local data buffer of the resource \"") + _identifier + TEXT("\".") );
             return false;
@@ -77,61 +96,26 @@ namespace xl7 {
         if ( !_acquire_impl( data_provider ) )
         {
             LOG_ERROR( TEXT("The resource \"") + _identifier + TEXT("\" could not be acquired.") );
-            release();
+            _release();
             return false;
         }
 
-        _acquired = true;
+        _is_usable = true;
         return true;
     }
 
     /**
-     * Releases/"unacquires" the resource.
+     * Releases/"unacquires" the resource, thereby rendering it unusable, indicating
+     * that it is no longer managed by its owning manager.
      */
-    bool Resource::release()
+    void Resource::_release()
     {
-        if ( !_check_managed() )
-            return false;
-
-        bool b = _release_impl();
-        if ( !b )
+        if ( !_release_impl() )
         {
             LOG_WARNING( TEXT("The resource \"") + _identifier + TEXT("\" could not be released without problems.") );
         }
 
-        _acquired = false;
-        return b;
-    }
-
-
-
-    // #############################################################################
-    // Management Functions
-    // #############################################################################
-
-    /**
-     * Checks whether the resource is still managed by its owning manager and fires
-     * an error message if not.
-     */
-    bool Resource::_check_managed() const
-    {
-        if ( _managed )
-            return true;
-
-        LOG_ERROR( TEXT("The resource \"") + _identifier + TEXT("\" is not managed anymore.") );
-        return false;
-    }
-
-    /**
-     * Informs the resource that it will no longer be managed by its owning manager.
-     */
-    void Resource::_unmanage()
-    {
-        if ( !_check_managed() )
-            return;
-
-        if ( _acquired )
-            release();
+        _is_usable = false;
     }
 
 

@@ -19,6 +19,11 @@ namespace xl7 {
 class ResourceManager
 {
 
+protected:
+    static void _destroy_resource(Resource* resource);
+
+
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
@@ -51,10 +56,10 @@ private:
     std::vector<ResourcePtr> _resources;
 
     /**
-     * A lookup table that maps a given resource (by its pointer hash) to its
-     * corresponding index within the "linear list".
+     * A lookup table that maps a given resource identifier to the corresponding
+     * resource.
      */
-    std::unordered_map<const Resource*, size_t> _resource_lookup;
+    std::unordered_map<cl7::string_view, ResourcePtr> _resource_lookup;
 
 
 
@@ -77,7 +82,8 @@ public:
     /**
      * Checks whether a resource with the given identifier is contained in this
      * resource manager.
-     * Time complexity: linear in the number of contained resources.
+     * Time complexity: constant on average, worst case linear in the number of
+     * contained resources.
      */
     bool contains_resource(const cl7::string_view& identifier) const;
 
@@ -93,40 +99,47 @@ public:
     ResourcePtr find_resource(const cl7::string_view& identifier) const;
 
     /**
-     * Releases the given resource
-     * (deletes it and removes it from the internal list).
+     * Releases the given resource (and removes it from this resource manager).
+     * Time complexity: linear in the number of contained resources.
      */
     void release_resource(Resource* resource);
 
     /**
-     * Releases the contained resources
-     * (deletes them and removes them from the internal list).
+     * Releases all managed resources (and removes them from this resource manager).
      */
     void release_resources();
 
 
 
     // #############################################################################
-    // Protected Methods
+    // Management Functions
     // #############################################################################
 protected:
     /**
-     * Adds the given resource to this resource manager.
-     * This operation does not request/acquire the resource.
+     * Adds (and returns) the given resource to this resource manager, but only if
+     * it can be acquired in this process. Returns NULL otherwise.
+     */
+    template <class TResourcePtr>
+    TResourcePtr _try_acquire_and_add_resource(TResourcePtr resource_ptr, const Resource::DataProvider& data_provider)
+    {
+        assert( resource_ptr );
+        if ( !resource_ptr )
+            return {};
+
+        assert( !resource_ptr->is_usable() );
+        if ( !Resource::Attorney::acquire( resource_ptr.get(), data_provider ) )
+            return {};
+
+        _add_resource( resource_ptr );
+        return resource_ptr;
+    }
+
+private:
+    /**
+     * Adds the given resource to this resource manager. This operation does not
+     * request/acquire the resource. This must have happened successfully before.
      */
     void _add_resource(ResourcePtr resource_ptr);
-
-    /**
-     * Adds the given resource to this resource manager.
-     * This operation does not request/acquire the resource.
-     */
-    void _add_resource(Resource* resource);
-
-    /**
-     * Removes the given resource from this resource manager.
-     * This operation does not release the resource.
-     */
-    void _remove_resource(Resource* resource);
 
 }; // class ResourceManager
 

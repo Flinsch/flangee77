@@ -6,6 +6,13 @@ namespace xl7 {
 
 
 
+    void ResourceManager::_destroy_resource(Resource* resource)
+    {
+        Resource::Attorney::destroy( resource );
+    }
+
+
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
@@ -50,11 +57,15 @@ namespace xl7 {
      */
     bool ResourceManager::contains_resource(const Resource* resource) const
     {
-        auto it = _resource_lookup.find( resource );
+        if ( !resource )
+            return false;
+
+        auto it = _resource_lookup.find( resource->get_identifier() );
         if ( it == _resource_lookup.end() )
             return false;
 
-        return get_resource( it->second ).get() != nullptr;
+        assert( it->second.get() == resource );
+        return true;
     }
 
     /**
@@ -74,7 +85,7 @@ namespace xl7 {
     {
         assert( index < _resources.size() );
         if ( index >= _resources.size() )
-            return ResourcePtr();
+            return {};
 
         assert( _resources[ index ] );
         return _resources[ index ];
@@ -86,54 +97,44 @@ namespace xl7 {
      */
     ResourcePtr ResourceManager::find_resource(const cl7::string_view& identifier) const
     {
-        for ( auto& resource_ptr : _resources )
-        {
-            assert( resource_ptr );
-            if ( resource_ptr->get_identifier() == identifier )
-                return resource_ptr;
-        }
+        auto it = _resource_lookup.find( identifier );
+        if ( it == _resource_lookup.end() )
+            return {};
 
-        return ResourcePtr();
+        assert( it->second.get()->get_identifier() == identifier );
+        return it->second;
     }
 
     /**
-     * Releases the given resource
-     * (deletes it and removes it from the internal list).
+     * Releases the given resource (and removes it from this resource manager).
+     * Time complexity: linear in the number of contained resources.
      */
     void ResourceManager::release_resource(Resource* resource)
     {
-        auto it = _resource_lookup.find( resource );
+        if ( !resource )
+            return;
+
+        auto it = _resource_lookup.find( resource->get_identifier() );
         if ( it == _resource_lookup.end() )
             return;
 
-        assert( it->second < _resources.size() );
-        assert( _resources[ it->second ] );
+        assert( it->second.get() == resource );
 
-        auto& resource_ptr = _resources[ it->second ];
-        assert( resource_ptr );
+        Resource::Attorney::release( resource );
 
-        //if ( resource_ptr->is_acquired() )
-            resource_ptr->release();
-
-        Resource::Attorney::unmanage( resource );
-
+        _resources.erase( std::find( _resources.begin(), _resources.end(), it->second ) );
         _resource_lookup.erase( it );
-        _resources.erase( _resources.begin() + it->second );
+        assert( _resources.size() == _resource_lookup.size() );
     }
 
     /**
-     * Releases the contained resources
-     * (deletes them and removes them from the internal list).
+     * Releases all managed resources (and removes them from this resource manager).
      */
     void ResourceManager::release_resources()
     {
         for ( auto& resource_ptr : _resources )
         {
-            assert( resource_ptr );
-            //if ( resource_ptr->is_acquired() )
-                resource_ptr->release();
-
-            Resource::Attorney::unmanage( resource_ptr.get() );
+            Resource::Attorney::release( resource_ptr.get() );
         }
 
         _resource_lookup.clear();
@@ -143,51 +144,22 @@ namespace xl7 {
 
 
     // #############################################################################
-    // Protected Methods
+    // Management Functions
     // #############################################################################
 
     /**
-     * Adds the given resource to this resource manager.
-     * This operation does not request/acquire the resource.
+     * Adds the given resource to this resource manager. This operation does not
+     * request/acquire the resource. This must have happened successfully before.
      */
     void ResourceManager::_add_resource(ResourcePtr resource_ptr)
     {
         assert( resource_ptr );
-        assert( _resource_lookup.find( resource_ptr.get() ) == _resource_lookup.end() );
+        assert( resource_ptr->is_usable() );
+        assert( _resource_lookup.find( resource_ptr->get_identifier() ) == _resource_lookup.end() );
 
-        _resource_lookup.insert( std::pair( resource_ptr.get(), _resources.size() ) );
-        _resources.emplace_back( std::move(resource_ptr) );
-    }
-
-    /**
-     * Adds the given resource to this resource manager.
-     * This operation does not request/acquire the resource.
-     */
-    void ResourceManager::_add_resource(Resource* resource)
-    {
-        assert( resource );
-        assert( _resource_lookup.find( resource ) == _resource_lookup.end() );
-
-        _resource_lookup.insert( std::pair( resource, _resources.size() ) );
-        _resources.emplace_back( resource, Resource::Attorney::destroy );
-    }
-
-    /**
-     * Removes the given resource from this resource manager.
-     * This operation does not release the resource.
-     */
-    void ResourceManager::_remove_resource(Resource* resource)
-    {
-        auto it = _resource_lookup.find( resource );
-        if ( it == _resource_lookup.end() )
-            return;
-
-        assert( it->second < _resources.size() );
-
-        Resource::Attorney::unmanage( resource );
-
-        _resource_lookup.erase( it );
-        _resources.erase( _resources.begin() + it->second );
+        _resource_lookup.insert( { resource_ptr->get_identifier(), resource_ptr } );
+        _resources.emplace_back( resource_ptr );
+        assert( _resources.size() == _resource_lookup.size() );
     }
 
 

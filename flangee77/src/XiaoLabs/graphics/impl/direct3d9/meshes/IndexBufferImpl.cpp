@@ -63,7 +63,8 @@ namespace meshes {
     bool IndexBufferImpl::_acquire_impl(const DataProvider& data_provider)
     {
         assert( _d3d_device );
-        assert( !_d3d_index_buffer );
+
+        assert( _data.size() == static_cast<size_t>( _size ) );
 
         HRESULT hresult = _d3d_device->CreateIndexBuffer(
             _size,
@@ -79,11 +80,31 @@ namespace meshes {
             return false;
         }
 
+        void* dst;
+        hresult = _d3d_index_buffer->Lock(
+            0,
+            _size,
+            &dst,
+            D3DLOCK_DISCARD );
+
+        if ( FAILED(hresult) )
+        {
+            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DIndexBuffer9::Lock") ) );
+            return false;
+        }
+
+        ::memcpy( dst, _data.data(), _data.size() );
+
+        hresult = _d3d_index_buffer->Unlock();
+        assert( SUCCEEDED(hresult) );
+
         return true;
     }
 
     /**
      * Releases/"unacquires" the resource.
+     * The resource may be in an incompletely acquired state when this function is
+     * called. Any cleanup work that is necessary should still be carried out.
      */
     bool IndexBufferImpl::_release_impl()
     {

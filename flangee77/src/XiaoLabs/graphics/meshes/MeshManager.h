@@ -67,13 +67,15 @@ private:
     // Methods
     // #############################################################################
 public:
+    /**
+     * Creates and acquires the specified vertex shader.
+     */
+    VertexBufferPtr create_vertex_buffer(const cl7::string_view& identifier, const VertexBuffer::Desc& desc, const VertexBuffer::DataProvider& data_provider);
 
-
-
-    // #############################################################################
-    // Prototypes
-    // #############################################################################
-private:
+    /**
+     * Creates and acquires the specified index buffer.
+     */
+    IndexBufferPtr create_index_buffer(const cl7::string_view& identifier, const IndexBuffer::Desc& desc, const IndexBuffer::DataProvider& data_provider);
 
 }; // class MeshManager
 

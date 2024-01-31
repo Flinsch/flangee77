@@ -67,13 +67,19 @@ private:
     // Methods
     // #############################################################################
 public:
+    /**
+     * Creates and acquires the specified vertex shader.
+     * The name of the shader entry point can be empty, especially for precompiled
+     * shaders; a standard name is then used for (re)compilable shaders.
+     */
+    VertexShaderPtr create_vertex_shader(const cl7::string_view& identifier, const Shader::CodeProvider& code_provider, const cl7::astring_view& entry_point = "");
 
-
-
-    // #############################################################################
-    // Prototypes
-    // #############################################################################
-private:
+    /**
+     * Creates and acquires the specified pixel shader.
+     * The name of the shader entry point can be empty, especially for precompiled
+     * shaders; a standard name is then used for (re)compilable shaders.
+     */
+    PixelShaderPtr create_pixel_shader(const cl7::string_view& identifier, const Shader::CodeProvider& code_provider, const cl7::astring_view& entry_point = "");
 
 }; // class ShaderManager
 

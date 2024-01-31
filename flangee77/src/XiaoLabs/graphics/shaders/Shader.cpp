@@ -38,7 +38,7 @@ namespace shaders {
      */
     bool Shader::recompile(const MacroDefinitions& macro_definitions)
     {
-        if ( !_check_managed() )
+        if ( !_check_is_usable() )
             return false;
 
         if ( !is_recompilable() )
@@ -48,7 +48,7 @@ namespace shaders {
             return false;
         }
 
-        if ( !_compile_impl( macro_definitions, _parameter_table ) )
+        if ( !_recompile_impl( macro_definitions, _parameter_table ) )
         {
             LOG_ERROR( TEXT("The shader \"") + get_identifier() + TEXT("\" could not be recompiled.") );
             return false;
@@ -72,7 +72,27 @@ namespace shaders {
     bool Shader::_acquire_impl(const DataProvider& data_provider)
     {
         assert( typeid(data_provider) == typeid(const CodeProvider&) );
-        return _acquire_impl( static_cast<const CodeProvider&>( data_provider ), _parameter_table );
+        auto code_provider = static_cast<const CodeProvider&>( data_provider );
+
+        if ( code_provider.shader_code.get_language() == ShaderCode::Language::Unknown )
+        {
+            LOG_ERROR( TEXT("The language of the given code for shader \"") + get_identifier() + TEXT("\" is unknown.") );
+            return false;
+        }
+
+        if ( code_provider.shader_code.get_code_data().empty() )
+        {
+            LOG_ERROR( TEXT("The given code for shader \"") + get_identifier() + TEXT("\" is empty.") );
+            return false;
+        }
+
+        if ( is_precompiled() )
+            return _acquire_precompiled_impl( code_provider, _parameter_table );
+        if ( is_recompilable() )
+            return _acquire_recompilable_impl( code_provider, _parameter_table );
+
+        assert( false );
+        return false;
     }
 
 

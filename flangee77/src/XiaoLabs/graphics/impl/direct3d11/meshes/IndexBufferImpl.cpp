@@ -45,7 +45,8 @@ namespace meshes {
     bool IndexBufferImpl::_acquire_impl(const DataProvider& data_provider)
     {
         assert( _d3d_device );
-        assert( !_d3d_index_buffer );
+
+        assert( _data.size() == static_cast<size_t>( _size ) );
 
         D3D11_BUFFER_DESC buffer_desc;
         buffer_desc.ByteWidth = _size;
@@ -55,9 +56,14 @@ namespace meshes {
         buffer_desc.MiscFlags = 0;
         buffer_desc.StructureByteStride = _stride;
 
+        D3D11_SUBRESOURCE_DATA subresource_data;
+        subresource_data.pSysMem = _data.data();
+        subresource_data.SysMemPitch = 0;
+        subresource_data.SysMemSlicePitch = 0;
+
         HRESULT hresult = _d3d_device->CreateBuffer(
             &buffer_desc,
-            nullptr,
+            &subresource_data,
             &_d3d_index_buffer );
 
         if ( FAILED(hresult) )
@@ -71,6 +77,8 @@ namespace meshes {
 
     /**
      * Releases/"unacquires" the resource.
+     * The resource may be in an incompletely acquired state when this function is
+     * called. Any cleanup work that is necessary should still be carried out.
      */
     bool IndexBufferImpl::_release_impl()
     {
