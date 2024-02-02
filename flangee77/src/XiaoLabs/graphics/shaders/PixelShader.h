@@ -42,6 +42,17 @@ private:
     /** Copy assignment operator. */
     PixelShader& operator = (const PixelShader&) = delete;
 
+
+
+    // #############################################################################
+    // Resource Implementations
+    // #############################################################################
+public:
+    /**
+     * Returns the specific type of the resource, as a "human-friendly" string.
+     */
+    virtual cl7::string_view get_type_string() const override { return TEXT("pixel shader"); }
+
 }; // class PixelShader
 
 

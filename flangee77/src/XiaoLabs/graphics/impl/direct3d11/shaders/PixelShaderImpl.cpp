@@ -100,7 +100,7 @@ namespace shaders {
         const xl7::graphics::shaders::ShaderCode bytecode = shared::shaders::D3DShaderCompiler().compile_hlsl_code( hlsl_code, TEXT(""), code_provider.macro_definitions, entry_point, target );
         if ( bytecode.get_code_data().empty() )
         {
-            LOG_ERROR( TEXT("The pixel shader \"") + get_identifier() + TEXT("\" could not be compiled.") );
+            LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be compiled.") );
             return false;
         }
 

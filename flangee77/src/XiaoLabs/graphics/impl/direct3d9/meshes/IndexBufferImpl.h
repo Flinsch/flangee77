@@ -90,6 +90,20 @@ private:
      */
     virtual bool _release_impl() override;
 
+
+
+    // #############################################################################
+    // Index Buffer Implementations
+    // #############################################################################
+private:
+    /**
+     * Updates the contents of this index buffer (unless it is immutable).
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been updated based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    virtual bool _update_impl(const DataProvider& data_provider, bool discard, bool no_overwrite) override;
+
 }; // class IndexBufferImpl
 
 

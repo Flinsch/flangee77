@@ -42,6 +42,17 @@ private:
     /** Copy assignment operator. */
     VertexShader& operator = (const VertexShader&) = delete;
 
+
+
+    // #############################################################################
+    // Resource Implementations
+    // #############################################################################
+public:
+    /**
+     * Returns the specific type of the resource, as a "human-friendly" string.
+     */
+    virtual cl7::string_view get_type_string() const override { return TEXT("vertex shader"); }
+
 }; // class VertexShader
 
 

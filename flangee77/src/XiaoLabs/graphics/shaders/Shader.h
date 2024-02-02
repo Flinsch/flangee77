@@ -154,12 +154,25 @@ public:
     // #############################################################################
 private:
     /**
+     * Checks whether the given data provider complies with the specific properties
+     * of the resource to (re)populate it, taking into account the current state of
+     * the resource if necessary.
+     */
+    virtual bool _check_impl(const DataProvider& data_provider) override;
+
+    /**
      * Requests/acquires the resource, bringing it into a usable state.
      * The given data provider can possibly be ignored because the local data buffer
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
     virtual bool _acquire_impl(const DataProvider& data_provider) override;
+
+public:
+    /**
+     * Returns the specific type of the resource, as a "human-friendly" string.
+     */
+    virtual cl7::string_view get_type_string() const override { return TEXT("shader"); }
 
 
 

@@ -23,6 +23,23 @@ namespace meshes {
         return D3DFMT_UNKNOWN;
     }
 
+    static DWORD _d3d_usage_from(ResourceUsage resource_usage)
+    {
+        switch ( resource_usage )
+        {
+        case ResourceUsage::Default:
+            return D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC;
+        case ResourceUsage::Immutable:
+            return D3DUSAGE_WRITEONLY;
+        case ResourceUsage::Dynamic:
+            return D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC;
+        default:
+            assert( false );
+        }
+
+        return 0;
+    }
+
 
 
     // #############################################################################
@@ -56,11 +73,11 @@ namespace meshes {
     {
         assert( _d3d_device );
 
-        assert( _data.size() == static_cast<size_t>( _size ) );
+        assert( _data.empty() || _data.size() == static_cast<size_t>( _size ) );
 
         HRESULT hresult = _d3d_device->CreateVertexBuffer(
             _size,
-            D3DUSAGE_WRITEONLY,
+            _d3d_usage_from( _desc.usage ),
             _d3d_fvf,
             D3DPOOL_MANAGED,
             &_d3d_vertex_buffer,
@@ -72,25 +89,10 @@ namespace meshes {
             return false;
         }
 
-        void* dst;
-        hresult = _d3d_vertex_buffer->Lock(
-            0,
-            _size,
-            &dst,
-            D3DLOCK_DISCARD );
+        if ( _data.empty() )
+            return true;
 
-        if ( FAILED(hresult) )
-        {
-            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DVertexBuffer9::Lock") ) );
-            return false;
-        }
-
-        ::memcpy( dst, _data.data(), _data.size() );
-
-        hresult = _d3d_vertex_buffer->Unlock();
-        assert( SUCCEEDED(hresult) );
-
-        return true;
+        return _update_impl( data_provider, true, true );
     }
 
     /**
@@ -101,6 +103,47 @@ namespace meshes {
     bool VertexBufferImpl::_release_impl()
     {
         _d3d_vertex_buffer.Reset();
+
+        return true;
+    }
+
+
+
+    // #############################################################################
+    // Index Buffer Implementations
+    // #############################################################################
+
+    /**
+     * Updates the contents of this vertex buffer (unless it is immutable).
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been updated based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    bool VertexBufferImpl::_update_impl(const DataProvider& data_provider, bool discard, bool no_overwrite)
+    {
+        DWORD flags = 0;
+        if ( discard )
+            flags |= D3DLOCK_DISCARD;
+        else if ( no_overwrite )
+            flags |= D3DLOCK_NOOVERWRITE;
+
+        void* dst;
+        HRESULT hresult = _d3d_vertex_buffer->Lock(
+            static_cast<unsigned>( data_provider.get_offset() ),
+            static_cast<unsigned>( data_provider.get_size() ),
+            &dst,
+            flags );
+
+        if ( FAILED(hresult) )
+        {
+            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DVertexBuffer9::Lock") ) );
+            return false;
+        }
+
+        ::memcpy( dst, _data.data() + data_provider.get_offset(), data_provider.get_size() );
+
+        hresult = _d3d_vertex_buffer->Unlock();
+        assert( SUCCEEDED(hresult) );
 
         return true;
     }

@@ -54,22 +54,8 @@ namespace xl7 {
 
 
     // #############################################################################
-    // Management Functions
+    // Lifetime Management
     // #############################################################################
-
-    /**
-     * Checks whether this resource is ready for use (i.e., it is managed by its
-     * owning manager and has been successfully acquired) and fires an error message
-     * if not.
-     */
-    bool Resource::_check_is_usable() const
-    {
-        if ( _is_usable )
-            return true;
-
-        LOG_ERROR( TEXT("The resource \"") + _identifier + TEXT("\" is not usable anymore.") );
-        return false;
-    }
 
     /**
      * Requests/acquires the resource, bringing it into a usable state (or not).
@@ -79,23 +65,18 @@ namespace xl7 {
         assert( !_is_usable );
         if ( _is_usable )
         {
-            LOG_WARNING( TEXT("The resource \"") + _identifier + TEXT("\" appears to have already been acquired.") );
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" appears to have already been acquired.") );
             return false;
         }
 
-        if ( data_provider.get_size() == 0 )
+        if ( !_try_fill_data( data_provider ) )
         {
-            _data.clear();
-        }
-        else if ( !data_provider.fill( _data ) )
-        {
-            LOG_ERROR( TEXT("The given data provider was not able to fill the local data buffer of the resource \"") + _identifier + TEXT("\".") );
             return false;
         }
 
         if ( !_acquire_impl( data_provider ) )
         {
-            LOG_ERROR( TEXT("The resource \"") + _identifier + TEXT("\" could not be acquired.") );
+            LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be acquired.") );
             _release();
             return false;
         }
@@ -112,10 +93,94 @@ namespace xl7 {
     {
         if ( !_release_impl() )
         {
-            LOG_WARNING( TEXT("The resource \"") + _identifier + TEXT("\" could not be released without problems.") );
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be released without problems.") );
         }
 
         _is_usable = false;
+    }
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Checks whether this resource is ready for use (i.e., it is managed by its
+     * owning manager and has been successfully acquired) and fires an error message
+     * if not.
+     */
+    bool Resource::_check_is_usable() const
+    {
+        if ( _is_usable )
+            return true;
+
+        LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" is not usable anymore.") );
+        return false;
+    }
+
+    /**
+     * Checks whether the given data provider complies with the specific properties
+     * of the resource and, if so, (re)populates the local data buffer.
+     */
+    bool Resource::_try_fill_data(const DataProvider& data_provider)
+    {
+        if ( !_check_impl( data_provider ) )
+        {
+            return false;
+        }
+
+        if ( data_provider.get_offset() == 0 && data_provider.get_size() == 0 )
+        {
+            _data.clear();
+        }
+        else if ( !data_provider.fill( _data ) )
+        {
+            LOG_ERROR( TEXT("The given data provider was not able to populate the local data buffer of the ") + get_typed_identifier_string() + TEXT(".") );
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Checks whether the given data provider complies with the specified total data
+     * size and fires an error message if not.
+     */
+    bool Resource::_check_against_size(const DataProvider& data_provider, size_t size) const
+    {
+        if ( data_provider.get_offset() + data_provider.get_size() > size )
+        {
+            LOG_ERROR( TEXT("The data offset and size provided for ") + get_typed_identifier_string() + TEXT(" would exceed the total size of the ") + cl7::string(get_type_string()) + TEXT(".") );
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Checks whether the given data provider complies with the specified data
+     * element/chunk size and fires an error message if not.
+     */
+    bool Resource::_check_against_stride(const DataProvider& data_provider, size_t stride) const
+    {
+        assert( stride != 0 );
+
+        bool is_valid = true;
+
+        if ( data_provider.get_offset() % stride != 0 )
+        {
+            LOG_ERROR( TEXT("The data offset provided for ") + get_typed_identifier_string() + TEXT(" does not match the element size of the ") + cl7::string(get_type_string()) + TEXT(".") );
+            is_valid = false;
+        }
+
+        if ( data_provider.get_size() % stride != 0 )
+        {
+            LOG_ERROR( TEXT("The data size provided for ") + get_typed_identifier_string() + TEXT(" does not match the element size of the ") + cl7::string(get_type_string()) + TEXT(".") );
+            is_valid = false;
+        }
+
+        return is_valid;
     }
 
 

@@ -57,6 +57,17 @@ private:
 
 
     // #############################################################################
+    // Properties
+    // #############################################################################
+public:
+    /**
+     * Returns the Direct3D 11 device context interface.
+     */
+    ID3D11DeviceContextN* get_raw_d3d_device_context() const { return _d3d_device_context.Get(); }
+
+
+
+    // #############################################################################
     // RenderingContext Implementations
     // #############################################################################
 private:

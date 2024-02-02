@@ -2,6 +2,8 @@
 #ifndef XL7_RESOURCE_H
 #define XL7_RESOURCE_H
 
+#include "./ResourceUsage.h"
+
 #include <CoreLabs/byte_span.h>
 #include <CoreLabs/byte_vector.h>
 #include <CoreLabs/string.h>
@@ -160,20 +162,16 @@ public:
     // Methods
     // #############################################################################
 public:
-
-
-
-    // #############################################################################
-    // Management Functions
-    // #############################################################################
-protected:
     /**
-     * Checks whether this resource is ready for use (i.e., it is managed by its
-     * owning manager and has been successfully acquired) and fires an error message
-     * if not.
+     * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    bool _check_is_usable() const;
+    cl7::string get_typed_identifier_string() const { return cl7::string(get_type_string()) + TEXT(" \"") + get_identifier() + TEXT("\""); }
 
+
+
+    // #############################################################################
+    // Lifetime Management
+    // #############################################################################
 private:
     /**
      * Requests/acquires the resource, bringing it into a usable state (or not).
@@ -189,9 +187,49 @@ private:
 
 
     // #############################################################################
+    // Helpers
+    // #############################################################################
+protected:
+    /**
+     * Checks whether this resource is ready for use (i.e., it is managed by its
+     * owning manager and has been successfully acquired) and fires an error message
+     * if not.
+     */
+    bool _check_is_usable() const;
+
+protected:
+    /**
+     * Checks whether the given data provider complies with the specific properties
+     * of the resource and, if so, (re)populates the local data buffer.
+     */
+    bool _try_fill_data(const DataProvider& data_provider);
+
+protected:
+    /**
+     * Checks whether the given data provider complies with the specified total data
+     * size and fires an error message if not.
+     */
+    bool _check_against_size(const DataProvider& data_provider, size_t size) const;
+
+    /**
+     * Checks whether the given data provider complies with the specified data
+     * element/chunk size and fires an error message if not.
+     */
+    bool _check_against_stride(const DataProvider& data_provider, size_t stride) const;
+
+
+
+    // #############################################################################
     // Prototypes
     // #############################################################################
 private:
+    /**
+     * Checks whether the given data provider complies with the specific properties
+     * of the resource to (re)populate it, taking into account the current state of
+     * the resource if necessary.
+     */
+    virtual bool _check_impl(const DataProvider& data_provider) = 0;
+
     /**
      * Requests/acquires the resource, bringing it into a usable state.
      * The given data provider can possibly be ignored because the local data buffer
@@ -206,6 +244,12 @@ private:
      * called. Any cleanup work that is necessary should still be carried out.
      */
     virtual bool _release_impl() = 0;
+
+public:
+    /**
+     * Returns the specific type of the resource, as a "human-friendly" string.
+     */
+    virtual cl7::string_view get_type_string() const { return TEXT("resource"); }
 
 }; // class Resource
 

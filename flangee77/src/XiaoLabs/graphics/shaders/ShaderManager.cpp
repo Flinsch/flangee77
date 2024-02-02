@@ -44,6 +44,7 @@ namespace shaders {
         Resource::CreateParams<Shader::Desc> params{ this, identifier, desc };
 
         VertexShaderPtr vertex_shader( _factory->create_vertex_shader( params ), _destroy_resource );
+
         return _try_acquire_and_add_resource( vertex_shader, code_provider );
     }
 
@@ -58,6 +59,7 @@ namespace shaders {
         Resource::CreateParams<Shader::Desc> params{ this, identifier, desc };
 
         PixelShaderPtr pixel_shader( _factory->create_pixel_shader( params ), _destroy_resource );
+
         return _try_acquire_and_add_resource( pixel_shader, code_provider );
     }
 

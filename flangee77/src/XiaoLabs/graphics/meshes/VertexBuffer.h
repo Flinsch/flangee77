@@ -38,6 +38,8 @@ public:
         unsigned vertex_count;
         /** The topology of the primitives that the vertex buffer represents. */
         Topology topology;
+        /** Identifies how the buffer is expected to be updated (frequency of update is a key factor). */
+        ResourceUsage usage;
     };
 
 
@@ -90,7 +92,7 @@ private:
 
 
     // #############################################################################
-    // Attributes
+    // Properties
     // #############################################################################
 public:
     /**
@@ -109,6 +111,50 @@ public:
     unsigned get_size() const { return _size; }
 
 public:
+
+
+
+    // #############################################################################
+    // Methods
+    // #############################################################################
+public:
+    /**
+     * Updates the contents of this vertex buffer (unless it is immutable).
+     */
+    bool update(const DataProvider& data_provider);
+
+
+
+    // #############################################################################
+    // Resource Implementations
+    // #############################################################################
+private:
+    /**
+     * Checks whether the given data provider complies with the specific properties
+     * of the resource to (re)populate it, taking into account the current state of
+     * the resource if necessary.
+     */
+    virtual bool _check_impl(const DataProvider& data_provider) override;
+
+public:
+    /**
+     * Returns the specific type of the resource, as a "human-friendly" string.
+     */
+    virtual cl7::string_view get_type_string() const override { return TEXT("vertex buffer"); }
+
+
+
+    // #############################################################################
+    // Prototypes
+    // #############################################################################
+private:
+    /**
+     * Updates the contents of this vertex buffer (unless it is immutable).
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been updated based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    virtual bool _update_impl(const DataProvider& data_provider, bool discard, bool no_overwrite) = 0;
 
 }; // class VertexBuffer
 
