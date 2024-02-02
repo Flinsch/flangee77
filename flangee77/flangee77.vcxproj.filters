@@ -315,6 +315,9 @@
     <ClInclude Include="src\XiaoLabs\ResourceUsage.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\meshes\MeshBuffer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -531,6 +534,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\CoreLabs\filesystem.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\meshes\MeshBuffer.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

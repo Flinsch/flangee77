@@ -74,7 +74,7 @@ namespace meshes {
         buffer_desc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
         buffer_desc.CPUAccessFlags = _desc.usage == ResourceUsage::Immutable ? 0 : D3D11_CPU_ACCESS_WRITE;
         buffer_desc.MiscFlags = 0;
-        buffer_desc.StructureByteStride = _desc.vertex_stride;
+        buffer_desc.StructureByteStride = _desc.stride;
 
         D3D11_SUBRESOURCE_DATA subresource_data;
         subresource_data.pSysMem = _data.data();

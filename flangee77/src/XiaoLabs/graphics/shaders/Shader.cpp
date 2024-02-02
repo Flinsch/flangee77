@@ -1,7 +1,5 @@
 #include "Shader.h"
 
-#include "./ShaderManager.h"
-
 #include <CoreLabs/logging.h>
 
 

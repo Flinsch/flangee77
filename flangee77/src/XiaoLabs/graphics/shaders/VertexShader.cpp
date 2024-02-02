@@ -1,7 +1,5 @@
 #include "VertexShader.h"
 
-#include "./ShaderManager.h"
-
 
 
 namespace xl7 {

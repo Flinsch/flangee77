@@ -167,6 +167,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\meshes\MeshBuffer.h" />
     <ClInclude Include="src\CoreLabs\filesystem.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\shared\shaders\D3DShaderCompiler.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\shared\errors.h" />
@@ -269,6 +270,7 @@
     <ClInclude Include="src\XiaoLabs\ResourceUsage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\meshes\MeshBuffer.cpp" />
     <ClCompile Include="src\CoreLabs\filesystem.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\shared\shaders\D3DShaderCompiler.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\shared\errors.cpp" />

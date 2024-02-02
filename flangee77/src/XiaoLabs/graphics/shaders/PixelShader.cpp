@@ -1,7 +1,5 @@
 #include "PixelShader.h"
 
-#include "./ShaderManager.h"
-
 
 
 namespace xl7 {
