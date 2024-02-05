@@ -58,17 +58,12 @@ namespace pl7 {
             ok = ok && _run_loop();
             ok = _shutdown() && ok;
 
-            if ( _restart_flag )
+            if ( ok && _restart_flag )
                 continue;
             break;
         } // while ( ok )
 
-        if ( !ok )
-        {
-            return false;
-        }
-
-        return true;
+        return ok;
     }
 
 
@@ -82,10 +77,14 @@ namespace pl7 {
      */
     bool Application::_init()
     {
-        xl7::Config config;
-
         // Create/replace log handler.
         cl7::logging::StandardLogger::instance().clear_log_handlers().add_log_handler( std::make_shared<cl7::logging::FileLogHandler>() );
+
+        xl7::Config config;
+
+        // Perform "custom" pre-initialization.
+        if ( !_pre_init_impl( config ) )
+            return false;
 
         // Create the main window.
         if ( !xl7::main_window().init( config ) )
@@ -98,6 +97,10 @@ namespace pl7 {
         // Show the main window.
         xl7::main_window().show_window();
 
+        // Perform "custom" post-initialization.
+        if ( !_post_init_impl() )
+            return false;
+
         return true;
     }
 
@@ -106,6 +109,9 @@ namespace pl7 {
      */
     bool Application::_shutdown()
     {
+        // Perform "custom" shutdown.
+        bool ok = _shutdown_impl();
+
         // Close the main window.
         xl7::main_window().close();
 
@@ -113,7 +119,7 @@ namespace pl7 {
         // (also shutting down all "X" components).
         cl7::creational::SingletonManager::destroy_all();
 
-        return true;
+        return ok;
     }
 
     /**
@@ -181,12 +187,12 @@ namespace pl7 {
      */
     void Application::_before_render()
     {
-        
+        // Update resources etc.?
 
         //xl7::graphics::rendering_device()->clear_buffers();
         xl7::graphics::primary_context()->begin_scene();
 
-        
+        _before_render_impl();
     }
 
     /**
@@ -194,7 +200,9 @@ namespace pl7 {
      */
     void Application::_render()
     {
-        
+        _render_impl();
+
+        // Draw FPS etc.?
     }
 
     /**
@@ -202,7 +210,7 @@ namespace pl7 {
      */
     void Application::_after_render()
     {
-        
+        _after_render_impl();
 
         xl7::graphics::primary_context()->end_scene();
     }
@@ -220,7 +228,9 @@ namespace pl7 {
      */
     void Application::_move()
     {
-        
+        // Update input devices etc.?
+
+        _move_impl();
     }
 
 

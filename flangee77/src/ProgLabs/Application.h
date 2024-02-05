@@ -2,6 +2,8 @@
 #ifndef PL7_APPLICATION_H
 #define PL7_APPLICATION_H
 
+#include <XiaoLabs/Config.h>
+
 #include "./ArgumentBag.h"
 
 
@@ -145,6 +147,55 @@ private:
      * Performs the application logic.
      */
     void _move();
+
+
+
+    // #############################################################################
+    // Prototypes
+    // #############################################################################
+private:
+    /**
+     * Initializes the actual application instance before initializing the framework
+     * components. The passed configuration object might be manipulated to influence
+     * the following initialization process accordingly. In the event of an error,
+     * false is returned and the application exits without continuing initialization
+     * let alone entering the main loop.
+     */
+    virtual bool _pre_init_impl(xl7::Config& config) { return true; }
+
+    /**
+     * Initializes the actual application instance after the framework components
+     * have (successfully) been initialized. In the event of an error, false is
+     * returned and the application exits without even entering the main loop.
+     */
+    virtual bool _post_init_impl() { return true; }
+
+    /**
+     * Shuts down the application instance before the framework components are also
+     * shut down. If false is returned, the application will then be terminated in
+     * any case, even if it should actually be restarted.
+     */
+    virtual bool _shutdown_impl() { return true; }
+
+    /**
+     * Prepares rendering after the scene has started.
+     */
+    virtual void _before_render_impl() {}
+
+    /**
+     * Performs the actual rendering.
+     */
+    virtual void _render_impl() {}
+
+    /**
+     * Performs follow-up stuff before ending the scene.
+     */
+    virtual void _after_render_impl() {}
+
+    /**
+     * Performs the application logic.
+     */
+    virtual void _move_impl() {}
 
 }; // class Application
 
