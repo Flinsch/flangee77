@@ -440,17 +440,17 @@ namespace strings {
 #endif
     }
 
-    astring to_ascii(const byte_span& bys)
+    astring to_ascii(const byte_view& bys)
     {
         return to_ascii( to_latin1( bys ) );
     }
 
-    astring to_latin1(const byte_span& bys)
+    astring to_latin1(const byte_view& bys)
     {
         return astring( reinterpret_cast<const achar_type*>(bys.data()), bys.size() );
     }
 
-    u8string to_utf8_unchecked(const byte_span& bys)
+    u8string to_utf8_unchecked(const byte_view& bys)
     {
         const auto* data = reinterpret_cast<const u8char_type*>(bys.data());
         size_t size = bys.size();
@@ -468,7 +468,7 @@ namespace strings {
         return u8string( data, size );
     }
 
-    u16string to_utf16_unchecked(const byte_span& bys)
+    u16string to_utf16_unchecked(const byte_view& bys)
     {
         const auto* data = reinterpret_cast<const u16char_type*>(bys.data());
         size_t size = bys.size() / 2;
@@ -508,7 +508,7 @@ namespace strings {
         return u16s;
     }
 
-    u32string to_utf32_unchecked(const byte_span& bys)
+    u32string to_utf32_unchecked(const byte_view& bys)
     {
         const auto* data = reinterpret_cast<const u32char_type*>(bys.data());
         size_t size = bys.size() / 4;
@@ -548,7 +548,7 @@ namespace strings {
         return u32s;
     }
 
-    wstring to_utfx_unchecked(const byte_span& bys)
+    wstring to_utfx_unchecked(const byte_view& bys)
     {
 #if WCHAR_MAX == UINT16_MAX
         auto uxs = to_utf16_unchecked( bys );
@@ -560,7 +560,7 @@ namespace strings {
         return wstring( wstring_view( reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size() ) );
     }
 
-    string from_bytes(const byte_span& bys)
+    string from_bytes(const byte_view& bys)
     {
 #ifdef UNICODE
         return to_utfx_unchecked( bys );

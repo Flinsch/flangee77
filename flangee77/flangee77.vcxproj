@@ -167,6 +167,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\CoreLabs\byte_view.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\MeshBuffer.h" />
     <ClInclude Include="src\CoreLabs\filesystem.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\shared\shaders\D3DShaderCompiler.h" />

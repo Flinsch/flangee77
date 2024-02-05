@@ -140,7 +140,7 @@ namespace shaders {
     {
         cl7::astring source_code = Include::read_source_code( file_path );
 
-        return compile_hlsl_code( { xl7::graphics::shaders::ShaderCode::Language::HighLevel, cl7::byte_span( reinterpret_cast<std::byte*>( source_code.data() ), source_code.size() ) }, Include::directory( file_path ), macro_definitions, entry_point, target );
+        return compile_hlsl_code( { xl7::graphics::shaders::ShaderCode::Language::HighLevel, cl7::byte_view( reinterpret_cast<std::byte*>( source_code.data() ), source_code.size() ) }, Include::directory( file_path ), macro_definitions, entry_point, target );
     }
 
     /**
@@ -224,7 +224,7 @@ namespace shaders {
             return {};
         }
 
-        return { xl7::graphics::shaders::ShaderCode::Language::Bytecode, cl7::byte_span( static_cast<std::byte*>( bytecode_blob->GetBufferPointer() ), bytecode_blob->GetBufferSize() ) };
+        return { xl7::graphics::shaders::ShaderCode::Language::Bytecode, cl7::byte_view( static_cast<std::byte*>( bytecode_blob->GetBufferPointer() ), bytecode_blob->GetBufferSize() ) };
     }
 
     /**

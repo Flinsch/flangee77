@@ -4,7 +4,7 @@
 
 #include <CoreLabs/string.h>
 #include <CoreLabs/byte_vector.h>
-#include <CoreLabs/byte_span.h>
+#include <CoreLabs/byte_view.h>
 
 #include <bit>
 
@@ -74,14 +74,14 @@ namespace strings {
     string from_utf32(const u32string_view& u32s);
     string from_utfx(const wstring_view& ws);
 
-    astring to_ascii(const byte_span& bys);
-    astring to_latin1(const byte_span& bys);
-    u8string to_utf8_unchecked(const byte_span& bys);
-    u16string to_utf16_unchecked(const byte_span& bys);
-    u32string to_utf32_unchecked(const byte_span& bys);
-    wstring to_utfx_unchecked(const byte_span& bys);
+    astring to_ascii(const byte_view& bys);
+    astring to_latin1(const byte_view& bys);
+    u8string to_utf8_unchecked(const byte_view& bys);
+    u16string to_utf16_unchecked(const byte_view& bys);
+    u32string to_utf32_unchecked(const byte_view& bys);
+    wstring to_utfx_unchecked(const byte_view& bys);
 
-    string from_bytes(const byte_span& bys);
+    string from_bytes(const byte_view& bys);
 
     byte_vector to_bytes(const astring_view& as);
     byte_vector to_bytes(const u8string_view& u8s, bool add_bom = false);

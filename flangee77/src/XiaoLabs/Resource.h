@@ -4,7 +4,7 @@
 
 #include "./ResourceUsage.h"
 
-#include <CoreLabs/byte_span.h>
+#include <CoreLabs/byte_view.h>
 #include <CoreLabs/byte_vector.h>
 #include <CoreLabs/string.h>
 
@@ -37,10 +37,10 @@ public:
     struct DefaultDataProvider
         : public DataProvider
     {
-        const cl7::byte_span data;
+        const cl7::byte_view data;
         const size_t offset;
 
-        DefaultDataProvider(const cl7::byte_span& data, size_t offset = 0) : data( data ), offset( offset ) {}
+        DefaultDataProvider(const cl7::byte_view& data, size_t offset = 0) : data( data ), offset( offset ) {}
 
         virtual size_t get_size() const override { return data.size(); }
         virtual bool fill(cl7::byte_vector& data) const override;

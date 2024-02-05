@@ -2,7 +2,7 @@
 #ifndef XL7_GRAPHICS_SHADERS_SHADERCODE_H
 #define XL7_GRAPHICS_SHADERS_SHADERCODE_H
 
-#include <CoreLabs/byte_span.h>
+#include <CoreLabs/byte_view.h>
 #include <CoreLabs/byte_vector.h>
 
 
@@ -39,7 +39,7 @@ public:
     /**
      * Explicit constructor.
      */
-    ShaderCode(Language language, const cl7::byte_span& code_data);
+    ShaderCode(Language language, const cl7::byte_view& code_data);
 
 
 

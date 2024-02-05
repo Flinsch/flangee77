@@ -236,10 +236,10 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  between UTF-16 and UTF-32") )
 // u8string to_utf8(const u32string_view& u32s)
 // u16string to_utf16(const u32string_view& u32s)
 // 
-// astring to_latin1(const byte_span& bys)
-// u8string to_utf8_unchecked(const byte_span& bys)
-// u16string to_utf16_unchecked(const byte_span& bys)
-// u32string to_utf32_unchecked(const byte_span& bys)
+// astring to_latin1(const byte_view& bys)
+// u8string to_utf8_unchecked(const byte_view& bys)
+// u16string to_utf16_unchecked(const byte_view& bys)
+// u32string to_utf32_unchecked(const byte_view& bys)
 // 
 // byte_vector to_bytes(const astring_view& as)
 // byte_vector to_bytes(const u8string_view& u8s, bool add_bom)
@@ -368,7 +368,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16(const u32string_view&)") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(const byte_span&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(const byte_view&)") )
 {
     struct Entry
     {
@@ -392,7 +392,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(const byte_span&)") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8_unchecked(const byte_span&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8_unchecked(const byte_view&)") )
 {
     struct Entry
     {
@@ -421,7 +421,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8_unchecked(const byte_span&)") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16_unchecked(const byte_span&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16_unchecked(const byte_view&)") )
 {
     struct Entry
     {
@@ -466,7 +466,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16_unchecked(const byte_span&)") 
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf32_unchecked(const byte_span&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf32_unchecked(const byte_view&)") )
 {
     struct Entry
     {
