@@ -20,30 +20,42 @@ private:
     {
         FILL_MODE,
         CULL_MODE,
-        FRONT_FACE_WINDING_ORDER,
+        WINDING_ORDER,
 
         _TYPE_COUNT,
     };
 
 public:
+    /** Determines the fill mode to use when rendering. */
     enum class FillMode
     {
+        /** Do not draw anything at all. */
         None,
+        /** Draw the vertices as points. */
         Point,
+        /** Draw lines connecting the vertices. */
         Wireframe,
+        /** Fill the triangles formed by the vertices. */
         Solid,
     };
 
+    /** Indicates which triangles should be discarded (culled). */
     enum class CullMode
     {
+        /** Always draw all triangles. */
         None,
+        /** Do not draw triangles that are front-facing. */
         Front,
+        /** Do not draw triangles that are back-facing. */
         Back,
     };
 
-    enum class FrontFaceWindingOrder
+    /** Determines the orientation of the triangles. */
+    enum class WindingOrder
     {
+        /** Consider a triangle front-facing if its vertices are clockwise on the render target (consider back-facing if they are counter-clockwise). */
         Clockwise,
+        /** Consider a triangle front-facing if its vertices are counter-clockwise on the render target (consider back-facing if they are clockwise). */
         CounterClockwise,
     };
 
@@ -63,12 +75,12 @@ private:
 public:
     FillMode get_fill_mode() const { return _states.get_value( FILL_MODE, FillMode::Solid ); }
     CullMode get_cull_mode() const { return _states.get_value( CULL_MODE, CullMode::Back ); }
-    FrontFaceWindingOrder get_front_face_winding_order() const { return _states.get_value( FRONT_FACE_WINDING_ORDER, FrontFaceWindingOrder::Clockwise ); }
+    WindingOrder get_winding_order() const { return _states.get_value( WINDING_ORDER, WindingOrder::Clockwise ); }
 
 public:
     void set_fill_mode(FillMode fill_mode) { _states.set_value( FILL_MODE, fill_mode ); }
     void set_cull_mode(CullMode cull_mode) { _states.set_value( CULL_MODE, cull_mode ); }
-    void set_front_face_winding_order(FrontFaceWindingOrder front_face_winding_order) { _states.set_value( FRONT_FACE_WINDING_ORDER, front_face_winding_order ); }
+    void set_winding_order(WindingOrder winding_order) { _states.set_value( WINDING_ORDER, winding_order ); }
 
 }; // class RenderStates
 
