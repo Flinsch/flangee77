@@ -93,7 +93,7 @@
     <ClInclude Include="src\XiaoLabs\graphics\RenderingDevice.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\ResourceManager.h">
+    <ClInclude Include="src\XiaoLabs\resources\ResourceManager.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\XiaoLabs\graphics.h">
@@ -174,7 +174,7 @@
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\errors.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\Resource.h">
+    <ClInclude Include="src\XiaoLabs\resources\Resource.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\prerequisites.h">
@@ -312,13 +312,34 @@
     <ClInclude Include="src\XiaoLabs\graphics\shaders\MacroDefinitions.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\ResourceUsage.h">
+    <ClInclude Include="src\XiaoLabs\resources\ResourceUsage.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\XiaoLabs\graphics\meshes\MeshBuffer.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\CoreLabs\byte_view.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\input.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\audio.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\resources\DataProvider.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\resources\DefaultDataProvider.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\meshes\VertexDataProvider.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\meshes\IndexDataProvider.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\CodeProvider.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -383,7 +404,7 @@
     <ClCompile Include="src\XiaoLabs\graphics\RenderingDevice.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\XiaoLabs\ResourceManager.cpp">
+    <ClCompile Include="src\XiaoLabs\resources\ResourceManager.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\CoreLabs\logging\StandardLogger.cpp">
@@ -440,7 +461,7 @@
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\errors.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\XiaoLabs\Resource.cpp">
+    <ClCompile Include="src\XiaoLabs\resources\Resource.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\shaders\ShaderManager.cpp">
@@ -540,6 +561,15 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\meshes\MeshBuffer.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\resources\DataProvider.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\resources\DefaultDataProvider.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\shaders\CodeProvider.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

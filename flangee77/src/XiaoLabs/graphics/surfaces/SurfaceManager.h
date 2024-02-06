@@ -1,7 +1,7 @@
 #pragma once
 #ifndef XL7_GRAPHICS_SURFACES_SURFACEMANAGER_H
 #define XL7_GRAPHICS_SURFACES_SURFACEMANAGER_H
-#include "../../ResourceManager.h"
+#include "../../resources/ResourceManager.h"
 
 #include "./ISurfaceFactory.h"
 
@@ -15,7 +15,7 @@ namespace surfaces {
 
 
 class SurfaceManager
-    : public ResourceManager
+    : public resources::ResourceManager
 {
 
 public:

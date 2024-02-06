@@ -1,23 +1,13 @@
 #include "Resource.h"
 
+#include "./ResourceManager.h"
+
 #include <CoreLabs/logging.h>
 
 
 
 namespace xl7 {
-
-
-
-    bool Resource::DefaultDataProvider::fill(cl7::byte_vector& data) const
-    {
-        const size_t offset = get_offset();
-        const size_t size = get_size();
-        const size_t min_size = offset + size;
-        if ( data.size() < min_size )
-            data.resize( min_size );
-        std::copy( this->data.begin(), this->data.end(), data.begin() + offset );
-        return true;
-    }
+namespace resources {
 
 
 
@@ -50,6 +40,24 @@ namespace xl7 {
     // #############################################################################
     // Methods
     // #############################################################################
+
+    /**
+     * Releases/"unacquires" the resource and removes it from its owning manager,
+     * thereby rendering it unusable.
+     * Time complexity: linear in the number of contained resources of the owning
+     * manager.
+     */
+    void Resource::release()
+    {
+        if ( !_is_usable )
+        {
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" appears to have already been released.") );
+            return;
+        }
+
+        assert( _manager );
+        _manager->release_resource( this );
+    }
 
 
 
@@ -130,15 +138,7 @@ namespace xl7 {
             return false;
         }
 
-        if ( data_provider.get_offset() == 0 && data_provider.get_size() == 0 )
-        {
-            _data.clear();
-        }
-        else if ( !data_provider.fill( _data ) )
-        {
-            LOG_ERROR( TEXT("The given data provider was not able to populate the local data buffer of the ") + get_typed_identifier_string() + TEXT(".") );
-            return false;
-        }
+        data_provider.fill( _data );
 
         return true;
     }
@@ -185,4 +185,5 @@ namespace xl7 {
 
 
 
+} // namespace resources
 } // namespace xl7

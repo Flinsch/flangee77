@@ -23,15 +23,15 @@ namespace meshes {
         return D3DFMT_UNKNOWN;
     }
 
-    static DWORD _d3d_usage_from(ResourceUsage resource_usage)
+    static DWORD _d3d_usage_from(resources::ResourceUsage resource_usage)
     {
         switch ( resource_usage )
         {
-        case ResourceUsage::Default:
+        case resources::ResourceUsage::Default:
             return D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC;
-        case ResourceUsage::Immutable:
+        case resources::ResourceUsage::Immutable:
             return D3DUSAGE_WRITEONLY;
-        case ResourceUsage::Dynamic:
+        case resources::ResourceUsage::Dynamic:
             return D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC;
         default:
             assert( false );
@@ -69,7 +69,7 @@ namespace meshes {
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool VertexBufferImpl::_acquire_impl(const DataProvider& data_provider)
+    bool VertexBufferImpl::_acquire_impl(const resources::DataProvider& data_provider)
     {
         assert( _d3d_device );
 
@@ -119,7 +119,7 @@ namespace meshes {
      * has already been updated based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool VertexBufferImpl::_update_impl(const DataProvider& data_provider, bool discard, bool no_overwrite)
+    bool VertexBufferImpl::_update_impl(const resources::DataProvider& data_provider, bool discard, bool no_overwrite)
     {
         DWORD flags = 0;
         if ( discard )

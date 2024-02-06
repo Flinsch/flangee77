@@ -182,7 +182,7 @@ namespace shaders {
             macros.push_back( { p.first.c_str(), p.second.c_str() } );
         macros.push_back( { nullptr, nullptr } );
 
-        unsigned flags = 0;
+        unsigned flags = D3DCOMPILE_ENABLE_BACKWARDS_COMPATIBILITY;
 #ifdef _DEBUG
         flags |= D3DCOMPILE_DEBUG;
 #else

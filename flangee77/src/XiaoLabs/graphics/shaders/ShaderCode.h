@@ -4,6 +4,7 @@
 
 #include <CoreLabs/byte_view.h>
 #include <CoreLabs/byte_vector.h>
+#include <CoreLabs/string.h>
 
 
 
@@ -40,6 +41,11 @@ public:
      * Explicit constructor.
      */
     ShaderCode(Language language, const cl7::byte_view& code_data);
+
+    /**
+     * Explicit constructor.
+     */
+    ShaderCode(const cl7::astring_view& high_level_code);
 
 
 

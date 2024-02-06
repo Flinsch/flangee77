@@ -1,12 +1,13 @@
 #pragma once
-#ifndef XL7_RESOURCEUSAGE_H
-#define XL7_RESOURCEUSAGE_H
+#ifndef XL7_RESOURCES_RESOURCEUSAGE_H
+#define XL7_RESOURCES_RESOURCEUSAGE_H
 
 
 
 
 
 namespace xl7 {
+namespace resources {
 
 
 
@@ -29,6 +30,7 @@ enum class ResourceUsage
 
 
 
+} // namespace resources
 } // namespace xl7
 
-#endif // XL7_RESOURCEUSAGE_H
+#endif // XL7_RESOURCES_RESOURCEUSAGE_H

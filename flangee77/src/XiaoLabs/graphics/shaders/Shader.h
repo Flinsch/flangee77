@@ -1,9 +1,10 @@
 #pragma once
 #ifndef XL7_GRAPHICS_SHADERS_SHADER_H
 #define XL7_GRAPHICS_SHADERS_SHADER_H
-#include "../../Resource.h"
+#include "../../resources/Resource.h"
 
 #include "./ShaderCode.h"
+#include "./CodeProvider.h"
 #include "./MacroDefinitions.h"
 #include "./ParameterTable.h"
 
@@ -27,7 +28,7 @@ class ShaderManager;
 
 
 class Shader
-    : public Resource
+    : public resources::Resource
 {
 
 public:
@@ -44,16 +45,6 @@ public:
         ShaderCode::Language language;
         /** The name of the shader entry point (can be empty, especially for precompiled shaders). */
         cl7::astring entry_point;
-    };
-
-    struct CodeProvider
-        : public DefaultDataProvider
-    {
-        const ShaderCode& shader_code;
-        const MacroDefinitions& macro_definitions;
-
-        CodeProvider(const ShaderCode& shader_code) : CodeProvider( shader_code, {} ) {}
-        CodeProvider(const ShaderCode& shader_code, const MacroDefinitions& macro_definitions) : DefaultDataProvider( shader_code.get_code_data() ), shader_code( shader_code ), macro_definitions( macro_definitions ) {}
     };
 
 
@@ -158,7 +149,7 @@ private:
      * of the resource to (re)populate it, taking into account the current state of
      * the resource if necessary.
      */
-    virtual bool _check_impl(const DataProvider& data_provider) override;
+    virtual bool _check_impl(const resources::DataProvider& data_provider) override;
 
     /**
      * Requests/acquires the resource, bringing it into a usable state.
@@ -166,7 +157,7 @@ private:
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_impl(const DataProvider& data_provider) override;
+    virtual bool _acquire_impl(const resources::DataProvider& data_provider) override;
 
 public:
     /**

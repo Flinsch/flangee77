@@ -4,6 +4,7 @@
 #include "./MeshBuffer.h"
 
 #include "./IndexType.h"
+#include "./IndexDataProvider.h"
 
 
 

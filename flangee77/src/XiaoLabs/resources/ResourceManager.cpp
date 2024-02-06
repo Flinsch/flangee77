@@ -3,6 +3,7 @@
 
 
 namespace xl7 {
+namespace resources {
 
 
 
@@ -164,4 +165,5 @@ namespace xl7 {
 
 
 
+} // namespace resources
 } // namespace xl7

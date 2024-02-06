@@ -1,8 +1,9 @@
 #pragma once
-#ifndef XL7_RESOURCE_H
-#define XL7_RESOURCE_H
+#ifndef XL7_RESOURCES_RESOURCE_H
+#define XL7_RESOURCES_RESOURCE_H
 
 #include "./ResourceUsage.h"
+#include "./DataProvider.h"
 
 #include <CoreLabs/byte_view.h>
 #include <CoreLabs/byte_vector.h>
@@ -11,6 +12,7 @@
 
 
 namespace xl7 {
+namespace resources {
 
 
 
@@ -27,29 +29,9 @@ class Resource
 {
 
 public:
-    struct DataProvider
-    {
-        virtual size_t get_offset() const { return 0; }
-        virtual size_t get_size() const { return 0; }
-        virtual bool fill(cl7::byte_vector& data) const { return true; }
-    };
-
-    struct DefaultDataProvider
-        : public DataProvider
-    {
-        const cl7::byte_view data;
-        const size_t offset;
-
-        DefaultDataProvider(const cl7::byte_view& data, size_t offset = 0) : data( data ), offset( offset ) {}
-
-        virtual size_t get_size() const override { return data.size(); }
-        virtual bool fill(cl7::byte_vector& data) const override;
-    };
-
-public:
     class Attorney
     {
-        static bool acquire(Resource* resource, const Resource::DataProvider& data_provider) { return resource->_acquire( data_provider ); }
+        static bool acquire(Resource* resource, const DataProvider& data_provider) { return resource->_acquire( data_provider ); }
         static void release(Resource* resource) { resource->_release(); }
         static void destroy(Resource* resource) { delete resource; }
         friend class ResourceManager;
@@ -167,6 +149,14 @@ public:
      */
     cl7::string get_typed_identifier_string() const { return cl7::string(get_type_string()) + TEXT(" \"") + get_identifier() + TEXT("\""); }
 
+    /**
+     * Releases/"unacquires" the resource and removes it from its owning manager,
+     * thereby rendering it unusable.
+     * Time complexity: linear in the number of contained resources of the owning
+     * manager.
+     */
+    void release();
+
 
 
     // #############################################################################
@@ -255,6 +245,7 @@ public:
 
 
 
+} // namespace resources
 } // namespace xl7
 
-#endif // XL7_RESOURCE_H
+#endif // XL7_RESOURCES_RESOURCE_H

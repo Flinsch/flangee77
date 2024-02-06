@@ -1,7 +1,7 @@
 #pragma once
 #ifndef XL7_GRAPHICS_MESHES_MESHBUFFER_H
 #define XL7_GRAPHICS_MESHES_MESHBUFFER_H
-#include "../../Resource.h"
+#include "../../resources/Resource.h"
 
 #include "./Topology.h"
 
@@ -23,14 +23,14 @@ class MeshManager;
 
 
 class MeshBuffer
-    : public Resource
+    : public resources::Resource
 {
 
 public:
     struct Desc
     {
         /** Identifies how the buffer is expected to be updated (frequency of update is a key factor). */
-        ResourceUsage usage;
+        resources::ResourceUsage usage;
         /** The topology of the primitives that the buffer represents. */
         Topology topology;
         /** The number of elements within the buffer. */
@@ -124,7 +124,7 @@ public:
     /**
      * Updates the contents of this buffer (unless it is immutable).
      */
-    bool update(const DataProvider& data_provider);
+    bool update(const resources::DataProvider& data_provider);
 
 
 
@@ -137,7 +137,7 @@ private:
      * of the resource to (re)populate it, taking into account the current state of
      * the resource if necessary.
      */
-    virtual bool _check_impl(const DataProvider& data_provider) override;
+    virtual bool _check_impl(const resources::DataProvider& data_provider) override;
 
 
 
@@ -151,7 +151,7 @@ private:
      * has already been updated based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    virtual bool _update_impl(const DataProvider& data_provider, bool discard, bool no_overwrite) = 0;
+    virtual bool _update_impl(const resources::DataProvider& data_provider, bool discard, bool no_overwrite) = 0;
 
 }; // class MeshBuffer
 

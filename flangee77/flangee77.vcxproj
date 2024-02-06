@@ -167,7 +167,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\CodeProvider.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\meshes\IndexDataProvider.h" />
+    <ClInclude Include="src\XiaoLabs\resources\DefaultDataProvider.h" />
+    <ClInclude Include="src\XiaoLabs\resources\DataProvider.h" />
     <ClInclude Include="src\CoreLabs\byte_view.h" />
+    <ClInclude Include="src\XiaoLabs\audio.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\MeshBuffer.h" />
     <ClInclude Include="src\CoreLabs\filesystem.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\shared\shaders\D3DShaderCompiler.h" />
@@ -207,7 +212,8 @@
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\SurfaceManager.h" />
     <ClInclude Include="src\XiaoLabs\graphics\textures\ITextureFactory.h" />
     <ClInclude Include="src\XiaoLabs\graphics\textures\TextureManager.h" />
-    <ClInclude Include="src\XiaoLabs\Resource.h" />
+    <ClInclude Include="src\XiaoLabs\input.h" />
+    <ClInclude Include="src\XiaoLabs\resources\Resource.h" />
     <ClInclude Include="src\CoreLabs\memory.h" />
     <ClInclude Include="src\CoreLabs\util.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingDeviceImpl.h" />
@@ -226,7 +232,7 @@
     <ClInclude Include="src\XiaoLabs\graphics.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\errors.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\RenderingDeviceImpl.h" />
-    <ClInclude Include="src\XiaoLabs\ResourceManager.h" />
+    <ClInclude Include="src\XiaoLabs\resources\ResourceManager.h" />
     <ClInclude Include="src\XiaoLabs\graphics\RenderingDevice.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\GraphicsSystemImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\GraphicsSystemImpl.h" />
@@ -268,9 +274,13 @@
     <ClInclude Include="src\XiaoLabs\graphics\states\SurfaceStates.h" />
     <ClInclude Include="src\XiaoLabs\graphics\states\StreamStates.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\VertexBufferImpl.h" />
-    <ClInclude Include="src\XiaoLabs\ResourceUsage.h" />
+    <ClInclude Include="src\XiaoLabs\resources\ResourceUsage.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\meshes\VertexDataProvider.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\shaders\CodeProvider.cpp" />
+    <ClCompile Include="src\XiaoLabs\resources\DefaultDataProvider.cpp" />
+    <ClCompile Include="src\XiaoLabs\resources\DataProvider.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\meshes\MeshBuffer.cpp" />
     <ClCompile Include="src\CoreLabs\filesystem.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\shared\shaders\D3DShaderCompiler.cpp" />
@@ -297,7 +307,7 @@
     <ClCompile Include="src\XiaoLabs\graphics\shaders\ShaderManager.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\SurfaceManager.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\textures\TextureManager.cpp" />
-    <ClCompile Include="src\XiaoLabs\Resource.cpp" />
+    <ClCompile Include="src\XiaoLabs\resources\Resource.cpp" />
     <ClCompile Include="src\CoreLabs\memory.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingDeviceImpl.cpp" />
     <ClCompile Include="src\TestLabs\internals.cpp" />
@@ -308,7 +318,7 @@
     <ClCompile Include="src\TestLabs\Result.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\errors.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\RenderingDeviceImpl.cpp" />
-    <ClCompile Include="src\XiaoLabs\ResourceManager.cpp" />
+    <ClCompile Include="src\XiaoLabs\resources\ResourceManager.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\RenderingDevice.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\GraphicsSystemImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\GraphicsSystemImpl.cpp" />

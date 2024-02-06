@@ -1,7 +1,7 @@
 #pragma once
 #ifndef XL7_GRAPHICS_TEXTURES_TEXTUREMANAGER_H
 #define XL7_GRAPHICS_TEXTURES_TEXTUREMANAGER_H
-#include "../../ResourceManager.h"
+#include "../../resources/ResourceManager.h"
 
 #include "./ITextureFactory.h"
 
@@ -15,7 +15,7 @@ namespace textures {
 
 
 class TextureManager final
-    : public ResourceManager
+    : public resources::ResourceManager
 {
 
 public:

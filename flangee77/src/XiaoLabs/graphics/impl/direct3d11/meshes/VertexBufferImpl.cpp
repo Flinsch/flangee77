@@ -17,15 +17,15 @@ namespace meshes {
 
 
 
-    static D3D11_USAGE _d3d_usage_from(ResourceUsage resource_usage)
+    static D3D11_USAGE _d3d_usage_from(resources::ResourceUsage resource_usage)
     {
         switch ( resource_usage )
         {
-        case ResourceUsage::Default:
+        case resources::ResourceUsage::Default:
             return D3D11_USAGE_DEFAULT;
-        case ResourceUsage::Immutable:
+        case resources::ResourceUsage::Immutable:
             return D3D11_USAGE_IMMUTABLE;
-        case ResourceUsage::Dynamic:
+        case resources::ResourceUsage::Dynamic:
             return D3D11_USAGE_DYNAMIC;
         default:
             assert( false );
@@ -62,7 +62,7 @@ namespace meshes {
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool VertexBufferImpl::_acquire_impl(const DataProvider& data_provider)
+    bool VertexBufferImpl::_acquire_impl(const resources::DataProvider& data_provider)
     {
         assert( _d3d_device );
 
@@ -72,7 +72,7 @@ namespace meshes {
         buffer_desc.ByteWidth = _size;
         buffer_desc.Usage = _d3d_usage_from( _desc.usage );
         buffer_desc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-        buffer_desc.CPUAccessFlags = _desc.usage == ResourceUsage::Immutable ? 0 : D3D11_CPU_ACCESS_WRITE;
+        buffer_desc.CPUAccessFlags = _desc.usage == resources::ResourceUsage::Immutable ? 0 : D3D11_CPU_ACCESS_WRITE;
         buffer_desc.MiscFlags = 0;
         buffer_desc.StructureByteStride = _desc.stride;
 
@@ -119,13 +119,13 @@ namespace meshes {
      * has already been updated based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool VertexBufferImpl::_update_impl(const DataProvider& data_provider, bool discard, bool no_overwrite)
+    bool VertexBufferImpl::_update_impl(const resources::DataProvider& data_provider, bool discard, bool no_overwrite)
     {
         auto d3d_device_context = dynamic_cast<RenderingContextImpl*>( GraphicsSystem::instance().get_rendering_device()->get_primary_context() )->get_raw_d3d_device_context();
 
         bool entire = data_provider.get_offset() == 0 && data_provider.get_size() == static_cast<size_t>( _size );
 
-        if ( _desc.usage == ResourceUsage::Dynamic )
+        if ( _desc.usage == resources::ResourceUsage::Dynamic )
         {
             D3D11_MAP map_type;
             if ( discard )

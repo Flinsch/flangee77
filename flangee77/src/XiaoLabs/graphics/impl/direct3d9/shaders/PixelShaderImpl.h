@@ -91,7 +91,7 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_precompiled_impl(const CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
+    virtual bool _acquire_precompiled_impl(const xl7::graphics::shaders::CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
 
     /**
      * Requests/acquires a recompilable shader resource.
@@ -99,7 +99,7 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_recompilable_impl(const CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
+    virtual bool _acquire_recompilable_impl(const xl7::graphics::shaders::CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
 
     /**
      * Recompiles the shader code. This tends to result in the resource having to be

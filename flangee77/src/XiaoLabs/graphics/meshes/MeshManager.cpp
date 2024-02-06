@@ -33,15 +33,15 @@ namespace meshes {
 
 
     // #############################################################################
-    // Methods
+    // Helpers
     // #############################################################################
 
     /**
      * Creates and acquires the specified vertex shader.
      */
-    VertexBufferPtr MeshManager::create_vertex_buffer(const cl7::string_view& identifier, const VertexBuffer::Desc& desc, const VertexBuffer::DataProvider& data_provider)
+    VertexBufferPtr MeshManager::_create_vertex_buffer(const cl7::string_view& identifier, const VertexBuffer::Desc& desc, const resources::DataProvider& data_provider)
     {
-        Resource::CreateParams<VertexBuffer::Desc> params{ this, identifier, desc };
+        resources::Resource::CreateParams<VertexBuffer::Desc> params{ this, identifier, desc };
 
         VertexBufferPtr vertex_buffer( _factory->create_vertex_buffer( params ), _destroy_resource );
 
@@ -51,9 +51,9 @@ namespace meshes {
     /**
      * Creates and acquires the specified index buffer.
      */
-    IndexBufferPtr MeshManager::create_index_buffer(const cl7::string_view& identifier, const IndexBuffer::Desc& desc, const IndexBuffer::DataProvider& data_provider)
+    IndexBufferPtr MeshManager::_create_index_buffer(const cl7::string_view& identifier, const IndexBuffer::Desc& desc, const resources::DataProvider& data_provider)
     {
-        Resource::CreateParams<IndexBuffer::Desc> params{ this, identifier, desc };
+        resources::Resource::CreateParams<IndexBuffer::Desc> params{ this, identifier, desc };
 
         IndexBufferPtr index_buffer( _factory->create_index_buffer( params ), _destroy_resource );
 

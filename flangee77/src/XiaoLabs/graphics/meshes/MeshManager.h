@@ -1,7 +1,7 @@
 #pragma once
 #ifndef XL7_GRAPHICS_MESHES_MESHMANAGER_H
 #define XL7_GRAPHICS_MESHES_MESHMANAGER_H
-#include "../../ResourceManager.h"
+#include "../../resources/ResourceManager.h"
 
 #include "./IMeshFactory.h"
 
@@ -15,7 +15,7 @@ namespace meshes {
 
 
 class MeshManager
-    : public ResourceManager
+    : public resources::ResourceManager
 {
 
 public:
@@ -70,12 +70,36 @@ public:
     /**
      * Creates and acquires the specified vertex shader.
      */
-    VertexBufferPtr create_vertex_buffer(const cl7::string_view& identifier, const VertexBuffer::Desc& desc, const VertexBuffer::DataProvider& data_provider);
+    template <class TVertex>
+    VertexBufferPtr create_vertex_buffer(const cl7::string_view& identifier, const VertexBuffer::Desc& desc, const VertexDataProvider<TVertex>& data_provider)
+    {
+        return _create_vertex_buffer( identifier, desc, data_provider );
+    }
 
     /**
      * Creates and acquires the specified index buffer.
      */
-    IndexBufferPtr create_index_buffer(const cl7::string_view& identifier, const IndexBuffer::Desc& desc, const IndexBuffer::DataProvider& data_provider);
+    template <class TIndex>
+    IndexBufferPtr create_index_buffer(const cl7::string_view& identifier, const IndexBuffer::Desc& desc, const IndexDataProvider<TIndex>& data_provider)
+    {
+        return _create_index_buffer( identifier, desc, data_provider );
+    }
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+private:
+    /**
+     * Creates and acquires the specified vertex shader.
+     */
+    VertexBufferPtr _create_vertex_buffer(const cl7::string_view& identifier, const VertexBuffer::Desc& desc, const resources::DataProvider& data_provider);
+
+    /**
+     * Creates and acquires the specified index buffer.
+     */
+    IndexBufferPtr _create_index_buffer(const cl7::string_view& identifier, const IndexBuffer::Desc& desc, const resources::DataProvider& data_provider);
 
 }; // class MeshManager
 

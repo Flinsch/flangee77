@@ -62,9 +62,9 @@ namespace shaders {
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    bool VertexShaderImpl::_acquire_precompiled_impl(const CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out)
+    bool VertexShaderImpl::_acquire_precompiled_impl(const xl7::graphics::shaders::CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out)
     {
-        const xl7::graphics::shaders::ShaderCode& bytecode = code_provider.shader_code;
+        const xl7::graphics::shaders::ShaderCode& bytecode = code_provider.get_shader_code();
         assert( bytecode.get_language() == xl7::graphics::shaders::ShaderCode::Language::Bytecode );
 
         HRESULT hresult = _d3d_device->CreateVertexShader(
@@ -86,23 +86,23 @@ namespace shaders {
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    bool VertexShaderImpl::_acquire_recompilable_impl(const CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out)
+    bool VertexShaderImpl::_acquire_recompilable_impl(const xl7::graphics::shaders::CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out)
     {
         const cl7::Version& version = GraphicsSystem::instance().get_rendering_device()->get_capabilities().shaders.vertex_shader_version;
         const cl7::astring target = "vs_" + cl7::to_astring(version.major) + "_" + cl7::to_astring(version.minor);
         const cl7::astring entry_point = _desc.entry_point.empty() ? "mainVertex" : _desc.entry_point;
 
-        const xl7::graphics::shaders::ShaderCode& hlsl_code = code_provider.shader_code;
+        const xl7::graphics::shaders::ShaderCode& hlsl_code = code_provider.get_shader_code();
         assert( hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel );
 
-        const xl7::graphics::shaders::ShaderCode bytecode = shared::shaders::D3DShaderCompiler().compile_hlsl_code( hlsl_code, TEXT(""), code_provider.macro_definitions, entry_point, target );
+        const xl7::graphics::shaders::ShaderCode bytecode = shared::shaders::D3DShaderCompiler().compile_hlsl_code( hlsl_code, TEXT(""), code_provider.get_macro_definitions(), entry_point, target );
         if ( bytecode.get_code_data().empty() )
         {
             LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be compiled.") );
             return false;
         }
 
-        return _acquire_precompiled_impl( CodeProvider( bytecode, code_provider.macro_definitions ), parameter_table_out );
+        return _acquire_precompiled_impl( xl7::graphics::shaders::CodeProvider( &bytecode, &code_provider.get_macro_definitions() ), parameter_table_out );
     }
 
     /**
@@ -114,9 +114,7 @@ namespace shaders {
         xl7::graphics::shaders::ShaderCode hlsl_code( _desc.language, _data );
         assert( hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel );
 
-        CodeProvider code_provider( hlsl_code, macro_definitions );
-
-        return _acquire_recompilable_impl( code_provider, parameter_table_out );
+        return _acquire_recompilable_impl( xl7::graphics::shaders::CodeProvider( &hlsl_code, &macro_definitions ), parameter_table_out );
     }
 
 

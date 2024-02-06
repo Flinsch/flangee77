@@ -78,7 +78,7 @@ private:
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_impl(const DataProvider& data_provider) override;
+    virtual bool _acquire_impl(const resources::DataProvider& data_provider) override;
 
     /**
      * Releases/"unacquires" the resource.
@@ -99,7 +99,7 @@ private:
      * has already been updated based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    virtual bool _update_impl(const DataProvider& data_provider, bool discard, bool no_overwrite) override;
+    virtual bool _update_impl(const resources::DataProvider& data_provider, bool discard, bool no_overwrite) override;
 
 }; // class IndexBufferImpl
 

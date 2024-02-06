@@ -66,30 +66,30 @@ namespace shaders {
      * of the resource to (re)populate it, taking into account the current state of
      * the resource if necessary.
      */
-    bool Shader::_check_impl(const DataProvider& data_provider)
+    bool Shader::_check_impl(const resources::DataProvider& data_provider)
     {
         assert( typeid(data_provider) == typeid(const CodeProvider&) );
         auto code_provider = static_cast<const CodeProvider&>( data_provider );
 
-        if ( code_provider.shader_code.get_language() == ShaderCode::Language::Unknown )
+        if ( code_provider.get_language() == ShaderCode::Language::Unknown )
         {
             LOG_ERROR( TEXT("The language of the provided code for ") + get_typed_identifier_string() + TEXT(" is unknown.") );
             return false;
         }
 
-        if ( is_precompiled() && code_provider.shader_code.get_language() != ShaderCode::Language::Bytecode )
+        if ( is_precompiled() && code_provider.get_language() != ShaderCode::Language::Bytecode )
         {
             LOG_ERROR( TEXT("The provided code for the precompiled ") + get_typed_identifier_string() + TEXT(" has to be in bytecode.") );
             return false;
         }
 
-        if ( is_recompilable() && code_provider.shader_code.get_language() != ShaderCode::Language::HighLevel )
+        if ( is_recompilable() && code_provider.get_language() != ShaderCode::Language::HighLevel )
         {
             LOG_ERROR( TEXT("The provided code for the recompilable ") + get_typed_identifier_string() + TEXT(" has to be in high-level language.") );
             return false;
         }
 
-        if ( code_provider.shader_code.get_code_data().empty() )
+        if ( code_provider.get_code_data().empty() )
         {
             LOG_ERROR( TEXT("The provided code for ") + get_typed_identifier_string() + TEXT(" is empty.") );
             return false;
@@ -104,7 +104,7 @@ namespace shaders {
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool Shader::_acquire_impl(const DataProvider& data_provider)
+    bool Shader::_acquire_impl(const resources::DataProvider& data_provider)
     {
         assert( typeid(data_provider) == typeid(const CodeProvider&) );
         auto code_provider = static_cast<const CodeProvider&>( data_provider );

@@ -17,9 +17,9 @@ namespace meshes {
     /**
      * Updates the contents of this buffer (unless it is immutable).
      */
-    bool MeshBuffer::update(const DataProvider& data_provider)
+    bool MeshBuffer::update(const resources::DataProvider& data_provider)
     {
-        if ( _desc.usage == ResourceUsage::Immutable )
+        if ( _desc.usage == resources::ResourceUsage::Immutable )
         {
             LOG_ERROR( TEXT("The immutable ") + get_typed_identifier_string() + TEXT(" cannot be updated.") );
             return false;
@@ -45,7 +45,7 @@ namespace meshes {
      * of the resource to (re)populate it, taking into account the current state of
      * the resource if necessary.
      */
-    bool MeshBuffer::_check_impl(const DataProvider& data_provider)
+    bool MeshBuffer::_check_impl(const resources::DataProvider& data_provider)
     {
         if ( !_check_against_size( data_provider, _size ) )
             return false;

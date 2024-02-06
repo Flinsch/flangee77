@@ -38,10 +38,10 @@ namespace shaders {
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    VertexShaderPtr ShaderManager::create_vertex_shader(const cl7::string_view& identifier, const Shader::CodeProvider& code_provider, const cl7::astring_view& entry_point)
+    VertexShaderPtr ShaderManager::create_vertex_shader(const cl7::string_view& identifier, const CodeProvider& code_provider, const cl7::astring_view& entry_point)
     {
-        Shader::Desc desc{ code_provider.shader_code.get_language(), cl7::astring(entry_point) };
-        Resource::CreateParams<Shader::Desc> params{ this, identifier, desc };
+        Shader::Desc desc{ code_provider.get_language(), cl7::astring(entry_point) };
+        resources::Resource::CreateParams<Shader::Desc> params{ this, identifier, desc };
 
         VertexShaderPtr vertex_shader( _factory->create_vertex_shader( params ), _destroy_resource );
 
@@ -53,10 +53,10 @@ namespace shaders {
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    PixelShaderPtr ShaderManager::create_pixel_shader(const cl7::string_view& identifier, const Shader::CodeProvider& code_provider, const cl7::astring_view& entry_point)
+    PixelShaderPtr ShaderManager::create_pixel_shader(const cl7::string_view& identifier, const CodeProvider& code_provider, const cl7::astring_view& entry_point)
     {
-        Shader::Desc desc{ code_provider.shader_code.get_language(), cl7::astring(entry_point) };
-        Resource::CreateParams<Shader::Desc> params{ this, identifier, desc };
+        Shader::Desc desc{ code_provider.get_language(), cl7::astring(entry_point) };
+        resources::Resource::CreateParams<Shader::Desc> params{ this, identifier, desc };
 
         PixelShaderPtr pixel_shader( _factory->create_pixel_shader( params ), _destroy_resource );
 

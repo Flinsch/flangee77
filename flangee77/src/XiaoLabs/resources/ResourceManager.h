@@ -1,6 +1,6 @@
 #pragma once
-#ifndef XL7_RESOURCEMANAGER_H
-#define XL7_RESOURCEMANAGER_H
+#ifndef XL7_RESOURCES_RESOURCEMANAGER_H
+#define XL7_RESOURCES_RESOURCEMANAGER_H
 
 #include "./Resource.h"
 
@@ -13,6 +13,7 @@
 
 
 namespace xl7 {
+namespace resources {
 
 
 
@@ -105,6 +106,18 @@ public:
     void release_resource(Resource* resource);
 
     /**
+     * Releases the specified resource (and removes it from this resource manager).
+     * Also resets the given resource pointer object.
+     * Time complexity: linear in the number of contained resources.
+     */
+    template <class TResourcePtr>
+    void release_resource(TResourcePtr& resource_ptr)
+    {
+        release_resource( resource_ptr.get() );
+        resource_ptr.reset();
+    }
+
+    /**
      * Releases all managed resources (and removes them from this resource manager).
      */
     void release_resources();
@@ -120,7 +133,7 @@ protected:
      * it can be acquired in this process. Returns NULL otherwise.
      */
     template <class TResourcePtr>
-    TResourcePtr _try_acquire_and_add_resource(TResourcePtr resource_ptr, const Resource::DataProvider& data_provider)
+    TResourcePtr _try_acquire_and_add_resource(TResourcePtr resource_ptr, const DataProvider& data_provider)
     {
         assert( resource_ptr );
         if ( !resource_ptr )
@@ -145,6 +158,7 @@ private:
 
 
 
+} // namespace resources
 } // namespace xl7
 
-#endif // XL7_RESOURCEMANAGER_H
+#endif // XL7_RESOURCES_RESOURCEMANAGER_H

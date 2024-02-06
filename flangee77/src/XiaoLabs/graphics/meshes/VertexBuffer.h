@@ -4,6 +4,7 @@
 #include "./MeshBuffer.h"
 
 #include "./VertexLayout.h"
+#include "./VertexDataProvider.h"
 
 
 

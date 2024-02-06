@@ -1,7 +1,7 @@
 #pragma once
 #ifndef XL7_GRAPHICS_SHADERS_SHADERMANAGER_H
 #define XL7_GRAPHICS_SHADERS_SHADERMANAGER_H
-#include "../../ResourceManager.h"
+#include "../../resources/ResourceManager.h"
 
 #include "./IShaderFactory.h"
 
@@ -15,7 +15,7 @@ namespace shaders {
 
 
 class ShaderManager
-    : public ResourceManager
+    : public resources::ResourceManager
 {
 
 public:
@@ -72,14 +72,14 @@ public:
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    VertexShaderPtr create_vertex_shader(const cl7::string_view& identifier, const Shader::CodeProvider& code_provider, const cl7::astring_view& entry_point = "");
+    VertexShaderPtr create_vertex_shader(const cl7::string_view& identifier, const CodeProvider& code_provider, const cl7::astring_view& entry_point = "");
 
     /**
      * Creates and acquires the specified pixel shader.
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    PixelShaderPtr create_pixel_shader(const cl7::string_view& identifier, const Shader::CodeProvider& code_provider, const cl7::astring_view& entry_point = "");
+    PixelShaderPtr create_pixel_shader(const cl7::string_view& identifier, const CodeProvider& code_provider, const cl7::astring_view& entry_point = "");
 
 }; // class ShaderManager
 

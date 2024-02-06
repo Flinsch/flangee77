@@ -18,7 +18,7 @@ namespace meshes {
      * Explicit constructor.
      */
     VertexBuffer::VertexBuffer(const CreateParams<Desc>& params)
-        : MeshBuffer( params, _desc.stride )
+        : MeshBuffer( params, params.desc.stride )
         , _desc( params.desc )
     {
         assert( _stride > 0 && _stride >= _desc.vertex_layout.calculate_size() );
