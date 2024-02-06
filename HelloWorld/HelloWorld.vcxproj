@@ -109,8 +109,12 @@ mkdir "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>rmdir /S /Q "$(LocalDebuggerWorkingDirectory)\assets"
+
+mkdir "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -137,8 +141,12 @@ mkdir "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>rmdir /S /Q "$(LocalDebuggerWorkingDirectory)\assets"
+
+mkdir "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -161,8 +169,12 @@ mkdir "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>rmdir /S /Q "$(LocalDebuggerWorkingDirectory)\assets"
+
+mkdir "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -189,16 +201,22 @@ mkdir "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>rmdir /S /Q "$(LocalDebuggerWorkingDirectory)\assets"
+
+mkdir "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\MyApp.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="src\framework.h" />
     <ClInclude Include="src\targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\MyApp.cpp" />
     <ClCompile Include="src\HelloWorld.cpp" />
   </ItemGroup>
   <ItemGroup>

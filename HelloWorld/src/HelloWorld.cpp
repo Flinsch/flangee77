@@ -1,7 +1,11 @@
 
 #include "framework.h"
 
-#include <ProgLabs/Application.h>
+#include "MyApp.h"
+
+
+
+using namespace helloworld;
 
 
 
@@ -30,7 +34,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     //_CrtSetBreakAlloc( <request_number> );
 #endif // _DEBUG
 
-    std::unique_ptr<pl7::Application> app = std::make_unique<pl7::Application>( __argc, __targv );
+    auto app = std::make_unique<MyApp>( __argc, __targv );
     app->run();
 
     const int exit_code = app->get_exit_code();
