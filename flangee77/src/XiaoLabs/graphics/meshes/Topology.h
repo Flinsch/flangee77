@@ -14,6 +14,7 @@ namespace meshes {
 
 enum class Topology
 {
+    Unknown,
     PointList,
     LineList,
     LineStrip,

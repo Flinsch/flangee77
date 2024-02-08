@@ -35,6 +35,64 @@ namespace meshes {
         return 0;
     }
 
+    /**
+     * Calculates the corresponding number of vertices/indices for the specified
+     * topology and number of primitives.
+     */
+    unsigned MeshUtil::calculate_vertex_index_count(Topology topology, unsigned primitive_count)
+    {
+        switch ( topology )
+        {
+        case Topology::Unknown:
+            return 0;
+        case Topology::PointList:
+            return primitive_count;
+        case Topology::LineList:
+            return primitive_count * 2;
+        case Topology::LineStrip:
+            return primitive_count + 1;
+        case Topology::TriangleList:
+            return primitive_count * 3;
+        case Topology::TriangleStrip:
+            return primitive_count + 2;
+        default:
+            assert( false );
+        }
+
+        return 0;
+    }
+
+    /**
+     * Calculates the corresponding number of primitives for the specified topology
+     * and number of vertices/indices.
+     */
+    unsigned MeshUtil::calculate_primitive_count(Topology topology, unsigned vertex_index_count)
+    {
+        switch ( topology )
+        {
+        case Topology::Unknown:
+            return 0;
+        case Topology::PointList:
+            return vertex_index_count;
+        case Topology::LineList:
+            return vertex_index_count / 2;
+        case Topology::LineStrip:
+            if ( vertex_index_count < 2 )
+                return 0;
+            return vertex_index_count - 1;
+        case Topology::TriangleList:
+            return vertex_index_count / 3;
+        case Topology::TriangleStrip:
+            if ( vertex_index_count < 3 )
+                return 0;
+            return vertex_index_count - 2;
+        default:
+            assert( false );
+        }
+
+        return 0;
+    }
+
 
 
 } // namespace meshes

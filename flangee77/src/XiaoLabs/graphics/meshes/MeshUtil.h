@@ -28,6 +28,18 @@ struct MeshUtil
      */
     static unsigned calculate_index_stride(IndexType index_type);
 
+    /**
+     * Calculates the corresponding number of vertices/indices for the specified
+     * topology and number of primitives.
+     */
+    static unsigned calculate_vertex_index_count(Topology topology, unsigned primitive_count);
+
+    /**
+     * Calculates the corresponding number of primitives for the specified topology
+     * and number of vertices/indices.
+     */
+    static unsigned calculate_primitive_count(Topology topology, unsigned vertex_index_count);
+
 }; // struct MeshUtil
 
 

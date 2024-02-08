@@ -235,7 +235,7 @@ namespace direct3d11 {
     RenderingContext* RenderingDeviceImpl::_create_rendering_context_impl(unsigned index)
     {
         if ( index == 0 )
-            return new RenderingContextImpl( index, _d3d_immediate_context );
+            return new RenderingContextImpl( this, index, _d3d_immediate_context );
 
         wrl::ComPtr<ID3D11DeviceContextN> d3d_deferred_context;
         HRESULT hresult = _d3d_device->CreateDeferredContext1( 0 , &d3d_deferred_context );
@@ -245,7 +245,7 @@ namespace direct3d11 {
             return nullptr;
         }
 
-        return new RenderingContextImpl( index, d3d_deferred_context );
+        return new RenderingContextImpl( this, index, d3d_deferred_context );
     }
 
     /**

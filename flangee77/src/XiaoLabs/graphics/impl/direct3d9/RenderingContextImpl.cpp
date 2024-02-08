@@ -15,6 +15,19 @@ namespace direct3d9 {
 
 
 
+    static D3DPRIMITIVETYPE _d3d_primitive_type_from(meshes::Topology topology)
+    {
+        static_assert( static_cast<unsigned>( meshes::Topology::PointList ) == static_cast<unsigned>( D3DPT_POINTLIST ) );
+        static_assert( static_cast<unsigned>( meshes::Topology::LineList ) == static_cast<unsigned>( D3DPT_LINELIST ) );
+        static_assert( static_cast<unsigned>( meshes::Topology::LineStrip ) == static_cast<unsigned>( D3DPT_LINESTRIP ) );
+        static_assert( static_cast<unsigned>( meshes::Topology::TriangleList ) == static_cast<unsigned>( D3DPT_TRIANGLELIST ) );
+        static_assert( static_cast<unsigned>( meshes::Topology::TriangleStrip ) == static_cast<unsigned>( D3DPT_TRIANGLESTRIP ) );
+
+        return static_cast<D3DPRIMITIVETYPE>( topology );
+    }
+
+
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
@@ -22,8 +35,8 @@ namespace direct3d9 {
     /**
      * Explicit constructor.
      */
-    RenderingContextImpl::RenderingContextImpl(unsigned index, wrl::ComPtr<IDirect3DDevice9> d3d_device)
-        : RenderingContext( index )
+    RenderingContextImpl::RenderingContextImpl(RenderingDevice* rendering_device, unsigned index, wrl::ComPtr<IDirect3DDevice9> d3d_device)
+        : RenderingContext( rendering_device, index )
         , _d3d_device( d3d_device )
     {
         assert( index == 0 );
@@ -62,6 +75,67 @@ namespace direct3d9 {
             LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::EndScene") ) );
             return false;
         }
+
+        return true;
+    }
+
+    /**
+     * Draws non-indexed, non-instanced primitives.
+     */
+    bool RenderingContextImpl::_draw_impl(const DrawStates& draw_states, unsigned primitive_count, unsigned start_vertex)
+    {
+        if ( !_flush_states( draw_states ) )
+            return false;
+
+        D3DPRIMITIVETYPE d3d_primitive_type = _d3d_primitive_type_from( draw_states.topology );
+
+        HRESULT hresult = _d3d_device->DrawPrimitive( d3d_primitive_type, start_vertex, primitive_count );
+        if ( FAILED(hresult) )
+        {
+            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::DrawPrimitive") ) );
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Draws indexed, non-instanced primitives.
+     */
+    bool RenderingContextImpl::_draw_indexed_impl(const DrawStates& draw_states, unsigned primitive_count, unsigned start_index, signed base_vertex)
+    {
+        if ( !_flush_states( draw_states ) )
+            return false;
+
+        D3DPRIMITIVETYPE d3d_primitive_type = _d3d_primitive_type_from( draw_states.topology );
+
+        // Should we optimize for these two values?
+        unsigned min_vertex_index = 0;
+        assert( draw_states.vertex_buffers[0] );
+        unsigned vertex_count = draw_states.vertex_buffers[0]->get_desc().count;
+
+        HRESULT hresult = _d3d_device->DrawIndexedPrimitive( d3d_primitive_type, base_vertex, min_vertex_index, vertex_count, start_index, primitive_count );
+        if ( FAILED(hresult) )
+        {
+            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::DrawPrimitive") ) );
+            return false;
+        }
+
+        return true;
+    }
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Transfers the current states to the device if necessary.
+     */
+    bool RenderingContextImpl::_flush_states(const DrawStates& draw_states)
+    {
+        
 
         return true;
     }

@@ -3,11 +3,7 @@
 #define HELLOWORLD_MYAPP_H
 #include <ProgLabs/Application.h>
 
-#include <XiaoLabs/graphics/meshes/VertexBuffer.h>
-#include <XiaoLabs/graphics/meshes/IndexBuffer.h>
-
-#include <XiaoLabs/graphics/shaders/VertexShader.h>
-#include <XiaoLabs/graphics/shaders/PixelShader.h>
+#include <XiaoLabs/resources/ResourceID.h>
 
 
 
@@ -47,11 +43,11 @@ private:
     // Attributes
     // #############################################################################
 private:
-    xl7::graphics::meshes::VertexBufferPtr _vertex_buffer;
-    xl7::graphics::meshes::IndexBufferPtr _index_buffer;
+    xl7::resources::ResourceID _vertex_buffer_id;
+    xl7::resources::ResourceID _index_buffer_id;
 
-    xl7::graphics::shaders::VertexShaderPtr _vertex_shader;
-    xl7::graphics::shaders::PixelShaderPtr _pixel_shader;
+    xl7::resources::ResourceID _vertex_shader_id;
+    xl7::resources::ResourceID _pixel_shader_id;
 
 
 

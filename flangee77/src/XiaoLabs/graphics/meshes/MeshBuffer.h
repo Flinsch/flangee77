@@ -4,17 +4,13 @@
 #include "../../resources/Resource.h"
 
 #include "./Topology.h"
+#include "./MeshUtil.h"
 
 
 
 namespace xl7 {
 namespace graphics {
 namespace meshes {
-
-
-
-class MeshBuffer;
-typedef std::shared_ptr<MeshBuffer> MeshBufferPtr;
 
 
 
@@ -51,6 +47,7 @@ protected:
     MeshBuffer(const CreateParams<TDesc>& params, unsigned stride)
         : Resource( params )
         , _desc( params.desc )
+        , _primitive_count( MeshUtil::calculate_primitive_count( params.desc.topology, params.desc.count ) )
         , _stride( stride )
         , _size( _stride * _desc.count )
     {
@@ -81,6 +78,11 @@ protected:
     const Desc _desc;
 
     /**
+     * The number of primitives represented by this buffer.
+     */
+    const unsigned _primitive_count;
+
+    /**
      * The size of each buffer element, in bytes.
      */
     const unsigned _stride;
@@ -102,6 +104,11 @@ public:
      * Returns the descriptor of the buffer.
      */
     const Desc& get_desc() const { return _desc; }
+
+    /**
+     * Returns the number of primitives represented by this buffer.
+     */
+    unsigned get_primitive_count() const { return _primitive_count; }
 
     /**
      * Returns the size of each buffer element, in bytes.

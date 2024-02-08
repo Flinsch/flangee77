@@ -2,6 +2,7 @@
 #ifndef XL7_RESOURCES_RESOURCE_H
 #define XL7_RESOURCES_RESOURCE_H
 
+#include "./ResourceID.h"
 #include "./ResourceUsage.h"
 #include "./DataProvider.h"
 
@@ -13,11 +14,6 @@
 
 namespace xl7 {
 namespace resources {
-
-
-
-class Resource;
-typedef std::shared_ptr<Resource> ResourcePtr;
 
 
 
@@ -43,7 +39,9 @@ public:
     {
         /** The owning manager of the resource to create (the manager that creates the resource). */
         ResourceManager* manager;
-        /** The identifier of the resource to create (may be empty). */
+        /** The (new) ID of the resource to create. */
+        ResourceID id;
+        /** The textual identifier of the resource to create (may be empty). */
         cl7::string_view identifier;
         /** The descriptor of the resource to create. */
         TDesc desc;
@@ -58,14 +56,14 @@ protected:
     /**
      * Explicit constructor.
      */
-    Resource(ResourceManager* manager, const cl7::string_view& identifier);
+    Resource(ResourceManager* manager, ResourceID id, const cl7::string_view& identifier);
 
     /**
      * Explicit constructor.
      */
     template <class TDesc>
     Resource(const CreateParams<TDesc>& params)
-        : Resource( params.manager, params.identifier )
+        : Resource( params.manager, params.id, params.identifier )
     {
     }
 
@@ -94,7 +92,12 @@ private:
     ResourceManager* const _manager;
 
     /**
-     * The identifier of this resource (if specified, empty otherwise).
+     * The ID of this resource.
+     */
+    const ResourceID _id;
+
+    /**
+     * The textual identifier of this resource (if specified, empty otherwise).
      */
     const cl7::string _identifier;
 
@@ -121,6 +124,11 @@ public:
      * Returns the resource manager responsible for this resource.
      */
     ResourceManager* get_manager() const { return _manager; }
+
+    /**
+     * Returns the ID of this resource.
+     */
+    ResourceID get_id() const { return _id; }
 
     /**
      * Returns the identifier of this resource (if specified, empty otherwise).

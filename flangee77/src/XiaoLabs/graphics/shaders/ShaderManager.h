@@ -72,14 +72,14 @@ public:
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    VertexShaderPtr create_vertex_shader(const cl7::string_view& identifier, const CodeProvider& code_provider, const cl7::astring_view& entry_point = "");
+    resources::ResourceID create_vertex_shader(const cl7::string_view& identifier, const CodeProvider& code_provider, const cl7::astring_view& entry_point = "");
 
     /**
      * Creates and acquires the specified pixel shader.
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    PixelShaderPtr create_pixel_shader(const cl7::string_view& identifier, const CodeProvider& code_provider, const cl7::astring_view& entry_point = "");
+    resources::ResourceID create_pixel_shader(const cl7::string_view& identifier, const CodeProvider& code_provider, const cl7::astring_view& entry_point = "");
 
 }; // class ShaderManager
 

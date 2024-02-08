@@ -38,14 +38,14 @@ namespace shaders {
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    VertexShaderPtr ShaderManager::create_vertex_shader(const cl7::string_view& identifier, const CodeProvider& code_provider, const cl7::astring_view& entry_point)
+    resources::ResourceID ShaderManager::create_vertex_shader(const cl7::string_view& identifier, const CodeProvider& code_provider, const cl7::astring_view& entry_point)
     {
         Shader::Desc desc{ code_provider.get_language(), cl7::astring(entry_point) };
-        resources::Resource::CreateParams<Shader::Desc> params{ this, identifier, desc };
+        resources::Resource::CreateParams<Shader::Desc> params{ this, _next_id(), identifier, desc };
 
-        VertexShaderPtr vertex_shader( _factory->create_vertex_shader( params ), _destroy_resource );
+        ResourcePtr vertex_shader( _factory->create_vertex_shader( params ), _destroy_resource );
 
-        return _try_acquire_and_add_resource( vertex_shader, code_provider );
+        return _try_acquire_and_add_resource( std::move(vertex_shader), code_provider );
     }
 
     /**
@@ -53,14 +53,14 @@ namespace shaders {
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    PixelShaderPtr ShaderManager::create_pixel_shader(const cl7::string_view& identifier, const CodeProvider& code_provider, const cl7::astring_view& entry_point)
+    resources::ResourceID ShaderManager::create_pixel_shader(const cl7::string_view& identifier, const CodeProvider& code_provider, const cl7::astring_view& entry_point)
     {
         Shader::Desc desc{ code_provider.get_language(), cl7::astring(entry_point) };
-        resources::Resource::CreateParams<Shader::Desc> params{ this, identifier, desc };
+        resources::Resource::CreateParams<Shader::Desc> params{ this, _next_id(), identifier, desc };
 
-        PixelShaderPtr pixel_shader( _factory->create_pixel_shader( params ), _destroy_resource );
+        ResourcePtr pixel_shader( _factory->create_pixel_shader( params ), _destroy_resource );
 
-        return _try_acquire_and_add_resource( pixel_shader, code_provider );
+        return _try_acquire_and_add_resource( std::move(pixel_shader), code_provider );
     }
 
 

@@ -18,8 +18,9 @@ namespace resources {
     /**
      * Explicit constructor.
      */
-    Resource::Resource(ResourceManager* manager, const cl7::string_view& identifier)
+    Resource::Resource(ResourceManager* manager, ResourceID id, const cl7::string_view& identifier)
         : _manager( manager )
+        , _id( id )
         , _identifier( identifier )
         , _is_usable( false )
         , _data()

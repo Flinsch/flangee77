@@ -28,8 +28,9 @@ public:
     // Attributes
     // #############################################################################
 private:
-    StateArray<meshes::VertexBufferPtr, MAX_VERTEX_STREAMS> _vertex_buffers;
-    SingleState<meshes::IndexBufferPtr> _index_buffer;
+    StateArray<resources::ResourceID, MAX_VERTEX_STREAMS> _vertex_buffer_ids;
+    SingleState<resources::ResourceID> _index_buffer_id;
+    SingleState<meshes::Topology> _topology;
 
 
 
@@ -37,16 +38,21 @@ private:
     // Properties
     // #############################################################################
 public:
-    meshes::VertexBufferPtr get_vertex_buffer() const { return get_vertex_buffer( 0 ); }
-    meshes::VertexBufferPtr get_vertex_buffer(unsigned index) const;
+    resources::ResourceID get_vertex_buffer_id() const { return get_vertex_buffer_id( 0 ); }
+    resources::ResourceID get_vertex_buffer_id(unsigned index) const;
 
-    meshes::IndexBufferPtr get_index_buffer() const { return _index_buffer.get_value(); }
+    resources::ResourceID get_index_buffer_id() const { return _index_buffer_id.get_value(); }
+
+    meshes::Topology get_topology(meshes::Topology default_topology = meshes::Topology::Unknown) const { return _topology.get_value( default_topology ); }
 
 public:
-    void set_vertex_buffer(meshes::VertexBufferPtr vertex_buffer) { set_vertex_buffer( 0, vertex_buffer ); }
-    void set_vertex_buffer(unsigned index, meshes::VertexBufferPtr vertex_buffer);
+    void set_vertex_buffer_id(resources::ResourceID vertex_buffer_id) { set_vertex_buffer_id( 0, vertex_buffer_id ); }
+    void set_vertex_buffer_id(unsigned index, resources::ResourceID vertex_buffer_id);
 
-    void set_index_buffer(meshes::IndexBufferPtr index_buffer) { _index_buffer.set_value( index_buffer ); }
+    void set_index_buffer_id(resources::ResourceID index_buffer_id) { _index_buffer_id.set_value( index_buffer_id ); }
+
+    void set_topology(meshes::Topology topology) { _topology.set_value( topology ); }
+    void reset_topology() { _topology.reset_value(); }
 
 }; // class StreamStates
 

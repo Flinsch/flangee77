@@ -28,7 +28,7 @@ protected:
     /**
      * Explicit constructor.
      */
-    RenderingContextImpl(unsigned index, wrl::ComPtr<ID3D11DeviceContextN> d3d_device_context);
+    RenderingContextImpl(RenderingDevice* rendering_device, unsigned index, wrl::ComPtr<ID3D11DeviceContextN> d3d_device_context);
 
     /**
      * Destructor.
@@ -53,6 +53,9 @@ private:
      * The Direct3D 11 device context interface.
      */
     wrl::ComPtr<ID3D11DeviceContextN> _d3d_device_context;
+
+private:
+    D3D11_PRIMITIVE_TOPOLOGY _d3d_primitive_topology;
 
 
 
@@ -80,6 +83,27 @@ private:
      * Ends a scene that was begun by calling begin_scene.
      */
     virtual bool _end_scene_impl() override;
+
+    /**
+     * Draws non-indexed, non-instanced primitives.
+     */
+    virtual bool _draw_impl(const DrawStates& draw_states, unsigned primitive_count, unsigned start_vertex) override;
+
+    /**
+     * Draws indexed, non-instanced primitives.
+     */
+    virtual bool _draw_indexed_impl(const DrawStates& draw_states, unsigned primitive_count, unsigned start_index, signed base_vertex) override;
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+private:
+    /**
+     * Transfers the current states to the device if necessary.
+     */
+    bool _flush_states(const DrawStates& draw_states);
 
 }; // class RenderingContextImpl
 

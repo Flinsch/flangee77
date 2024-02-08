@@ -148,7 +148,11 @@ namespace direct3d9 {
     RenderingContext* RenderingDeviceImpl::_create_rendering_context_impl(unsigned index)
     {
         assert( index == 0 );
-        return new RenderingContextImpl( index, _d3d_device );
+        if ( index == 0 )
+            return new RenderingContextImpl( this, index, _d3d_device );
+
+        LOG_ERROR( TEXT("Direct3D 9 does not support multiple rendering contexts.") );
+        return nullptr;
     }
 
     /**

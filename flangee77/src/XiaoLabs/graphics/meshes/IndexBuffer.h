@@ -14,11 +14,6 @@ namespace meshes {
 
 
 
-class IndexBuffer;
-typedef std::shared_ptr<IndexBuffer> IndexBufferPtr;
-
-
-
 class MeshManager;
 
 

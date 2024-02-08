@@ -11,11 +11,6 @@ namespace shaders {
 
 
 
-class VertexShader;
-typedef std::shared_ptr<VertexShader> VertexShaderPtr;
-
-
-
 class VertexShader
     : public Shader
 {

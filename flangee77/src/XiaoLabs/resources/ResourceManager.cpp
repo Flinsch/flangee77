@@ -24,6 +24,7 @@ namespace resources {
     ResourceManager::ResourceManager()
         : _resources()
         , _resource_lookup()
+        , _free_indices()
     {
     }
 
@@ -32,8 +33,7 @@ namespace resources {
      */
     ResourceManager::~ResourceManager()
     {
-        assert( _resources.size() == 0 );
-        assert( _resource_lookup.size() == 0 );
+        assert( get_resource_count() == 0 );
     }
 
 
@@ -47,26 +47,30 @@ namespace resources {
      */
     size_t ResourceManager::get_resource_count() const
     {
-        assert( _resources.size() == _resource_lookup.size() );
-        return _resources.size();
+        assert( _resources.size() - _free_indices.size() == _resource_lookup.size() );
+        return _resource_lookup.size();
     }
 
     /**
      * Checks whether a given resource is contained in this resource manager.
-     * Time complexity: constant on average, worst case linear in the number of
-     * contained resources.
+     * Time complexity: constant.
      */
     bool ResourceManager::contains_resource(const Resource* resource) const
     {
         if ( !resource )
             return false;
 
-        auto it = _resource_lookup.find( resource->get_identifier() );
-        if ( it == _resource_lookup.end() )
-            return false;
+        return contains_resource( resource->get_id() );
+    }
 
-        assert( it->second.get() == resource );
-        return true;
+    /**
+     * Checks whether a resource with the given resource ID is contained in this
+     * resource manager.
+     * Time complexity: constant.
+     */
+    bool ResourceManager::contains_resource(ResourceID id) const
+    {
+        return find_resource( id ) != nullptr;
     }
 
     /**
@@ -76,56 +80,138 @@ namespace resources {
      */
     bool ResourceManager::contains_resource(const cl7::string_view& identifier) const
     {
-        return find_resource( identifier ).get() != nullptr;
+        return find_resource( identifier ) != nullptr;
     }
 
     /**
      * Returns the resource identified by the given index.
+     * Time complexity: constant on average, worst case linear in the number of
+     * contained resources.
      */
-    ResourcePtr ResourceManager::get_resource(size_t index) const
+    Resource* ResourceManager::get_resource(size_t index) const
     {
-        assert( index < _resources.size() );
-        if ( index >= _resources.size() )
-            return {};
+        assert( index < get_resource_count() );
+        if ( index >= get_resource_count() )
+            return nullptr;
 
-        assert( _resources[ index ] );
-        return _resources[ index ];
+        if ( _free_indices.empty() )
+            return _resources[ index ].ptr.get();
+
+        for ( const auto& entry : _resources )
+        {
+            if ( !entry.ptr )
+                continue;
+            if ( index == 0 )
+                return entry.ptr.get();
+            --index;
+        }
+
+        return nullptr;
+    }
+
+    /**
+     * Returns the resource of the given ID.
+     * Time complexity: constant.
+     */
+    Resource* ResourceManager::find_resource(ResourceID id) const
+    {
+        size_t index = id.index();
+        if ( index >= _resources.size() )
+            return nullptr;
+
+        auto &entry = _resources[ index ];
+        if ( entry.id != id )
+            return nullptr;
+
+        Resource* resource = entry.ptr.get();
+        if ( !resource )
+            return nullptr;
+
+        assert( resource->get_id() == id );
+        return resource;
     }
 
     /**
      * Returns the resource of the given identifier.
-     * Time complexity: linear in the number of contained resources.
+     * Time complexity: constant on average, worst case linear in the number of
+     * contained resources.
      */
-    ResourcePtr ResourceManager::find_resource(const cl7::string_view& identifier) const
+    Resource* ResourceManager::find_resource(const cl7::string_view& identifier) const
     {
         auto it = _resource_lookup.find( identifier );
         if ( it == _resource_lookup.end() )
-            return {};
+            return nullptr;
 
-        assert( it->second.get()->get_identifier() == identifier );
-        return it->second;
+        return find_resource( it->second );
     }
 
     /**
-     * Releases the given resource (and removes it from this resource manager).
-     * Time complexity: linear in the number of contained resources.
+     * Releases the specified resource (and removes it from this resource manager).
+     * Time complexity: constant.
      */
-    void ResourceManager::release_resource(Resource* resource)
+    bool ResourceManager::release_resource(Resource* resource)
     {
         if ( !resource )
-            return;
+            return false;
+
+        return release_resource( resource->get_id() );
+    }
+
+    /**
+     * Releases the specified resource (and removes it from this resource manager).
+     * Time complexity: constant.
+     */
+    bool ResourceManager::release_resource(ResourceID id)
+    {
+        size_t index = id.index();
+        if ( index >= _resources.size() )
+            return false;
+
+        auto &entry = _resources[ index ];
+        if ( entry.id != id )
+            return false;
+
+        auto& resource_ptr = entry.ptr;
+        Resource* resource = resource_ptr.get();
+        if ( !resource )
+            return false;
+
+        assert( resource->get_id() == id );
 
         auto it = _resource_lookup.find( resource->get_identifier() );
-        if ( it == _resource_lookup.end() )
-            return;
+        assert( it != _resource_lookup.end() );
 
-        assert( it->second.get() == resource );
+        _resource_lookup.erase( it );
+        _free_indices.push_back( index );
 
         Resource::Attorney::release( resource );
+        resource_ptr.reset();
 
-        _resources.erase( std::find( _resources.begin(), _resources.end(), it->second ) );
-        _resource_lookup.erase( it );
-        assert( _resources.size() == _resource_lookup.size() );
+        return true;
+    }
+
+    /**
+     * Releases the specified resource (and removes it from this resource manager)
+     * and invalidates the given ID.
+     * Time complexity: constant.
+     */
+    bool ResourceManager::release_resource_and_invalidate(ResourceID& id)
+    {
+        if ( !release_resource( id ) )
+            return false;
+
+        id.invalidate();
+        return true;
+    }
+
+    /**
+     * Releases the specified resource (and removes it from this resource manager).
+     * Time complexity: constant on average, worst case linear in the number of
+     * contained resources.
+     */
+    bool ResourceManager::release_resource(const cl7::string_view& identifier)
+    {
+        return release_resource( find_resource( identifier ) );
     }
 
     /**
@@ -133,11 +219,12 @@ namespace resources {
      */
     void ResourceManager::release_resources()
     {
-        for ( auto& resource_ptr : _resources )
+        for ( auto& entry : _resources )
         {
-            Resource::Attorney::release( resource_ptr.get() );
+            Resource::Attorney::release( entry.ptr.get() );
         }
 
+        _free_indices.clear();
         _resource_lookup.clear();
         _resources.clear();
     }
@@ -149,18 +236,73 @@ namespace resources {
     // #############################################################################
 
     /**
+     * Generates and returns the next resource ID to use when adding a new resource.
+     */
+    ResourceID ResourceManager::_next_id()
+    {
+        if ( _free_indices.empty() )
+            return ResourceID( _resources.size(), 0 );
+
+        size_t index = _free_indices.back();
+        assert( index < _resources.size() );
+        return ResourceID( index, _resources[ index ].id.version() + 1 );
+    }
+
+    /**
+     * Adds the given resource to this resource manager (and returns the ID of the
+     * resource), but only if it can be acquired in this process. Returns an invalid
+     * ID otherwise.
+     */
+    ResourceID ResourceManager::_try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider)
+    {
+        assert( resource_ptr );
+        if ( !resource_ptr )
+            return ResourceID();
+
+        assert( !resource_ptr->is_usable() );
+        if ( !Resource::Attorney::acquire( resource_ptr.get(), data_provider ) )
+            return ResourceID();
+
+        return _add_resource( std::move(resource_ptr) );
+    }
+
+    /**
      * Adds the given resource to this resource manager. This operation does not
      * request/acquire the resource. This must have happened successfully before.
+     * Returns the ID of the resource.
      */
-    void ResourceManager::_add_resource(ResourcePtr resource_ptr)
+    ResourceID ResourceManager::_add_resource(ResourcePtr resource_ptr)
     {
         assert( resource_ptr );
         assert( resource_ptr->is_usable() );
         assert( _resource_lookup.find( resource_ptr->get_identifier() ) == _resource_lookup.end() );
 
-        _resource_lookup.insert( { resource_ptr->get_identifier(), resource_ptr } );
-        _resources.emplace_back( resource_ptr );
-        assert( _resources.size() == _resource_lookup.size() );
+        ResourceID id = resource_ptr->get_id();
+        size_t index = id.index();
+        assert( index <= _resources.size() );
+
+        _resource_lookup.insert( { resource_ptr->get_identifier(), id } );
+
+        if ( index == _resources.size() )
+        {
+            _resources.emplace_back( id, std::move(resource_ptr) );
+        }
+        else
+        {
+            assert( _resources[ index ].id.index() == index );
+            assert( _resources[ index ].id.version() + 1 == id.version() );
+            assert( !_resources[ index ].ptr );
+
+            assert( _free_indices.size() > 0 );
+            assert( _free_indices.back() == index );
+
+            _resources[ index ].id = id;
+            _resources[ index ].ptr.swap( resource_ptr );
+            _free_indices.pop_back();
+        }
+
+        assert( get_resource_count() > 0 );
+        return id;
     }
 
 

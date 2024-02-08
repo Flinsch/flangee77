@@ -167,6 +167,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\resources\ResourceID.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\states\ShaderStates.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\CodeProvider.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\IndexDataProvider.h" />
     <ClInclude Include="src\XiaoLabs\resources\DefaultDataProvider.h" />
@@ -278,6 +280,8 @@
     <ClInclude Include="src\XiaoLabs\graphics\meshes\VertexDataProvider.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\resources\ResourceID.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\states\ShaderStates.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\shaders\CodeProvider.cpp" />
     <ClCompile Include="src\XiaoLabs\resources\DefaultDataProvider.cpp" />
     <ClCompile Include="src\XiaoLabs\resources\DataProvider.cpp" />

@@ -94,8 +94,8 @@ namespace helloworld {
         xl7::graphics::meshes::VertexDataProvider<Vertex> vertex_data_provider{ vertices };
         xl7::graphics::meshes::IndexDataProvider<unsigned short> index_data_provider{ indices };
 
-        _vertex_buffer = xl7::graphics::mesh_manager()->create_vertex_buffer( TEXT("My Vertex Buffer"), vertex_buffer_desc, vertex_data_provider );
-        _index_buffer = xl7::graphics::mesh_manager()->create_index_buffer( TEXT("My Index Buffer"), index_buffer_desc, index_data_provider );
+        _vertex_buffer_id = xl7::graphics::mesh_manager()->create_vertex_buffer( TEXT("My Vertex Buffer"), vertex_buffer_desc, vertex_data_provider );
+        _index_buffer_id = xl7::graphics::mesh_manager()->create_index_buffer( TEXT("My Index Buffer"), index_buffer_desc, index_data_provider );
 
 
 
@@ -109,8 +109,8 @@ namespace helloworld {
         xl7::graphics::shaders::MacroDefinitions macro_definitions;
         xl7::graphics::shaders::CodeProvider code_provider{ &shader_code, &macro_definitions };
 
-        _vertex_shader = xl7::graphics::shader_manager()->create_vertex_shader( TEXT("My Vertex Shader"), code_provider );
-        _pixel_shader = xl7::graphics::shader_manager()->create_pixel_shader( TEXT("My Pixel Shader"), code_provider );
+        _vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader( TEXT("My Vertex Shader"), code_provider );
+        _pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader( TEXT("My Pixel Shader"), code_provider );
 
         return true;
     }
@@ -122,11 +122,11 @@ namespace helloworld {
      */
     bool MyApp::_shutdown_impl()
     {
-        xl7::graphics::mesh_manager()->release_resource( _vertex_buffer );
-        xl7::graphics::mesh_manager()->release_resource( _index_buffer );
+        xl7::graphics::mesh_manager()->release_resource_and_invalidate( _vertex_buffer_id );
+        xl7::graphics::mesh_manager()->release_resource_and_invalidate( _index_buffer_id );
 
-        xl7::graphics::shader_manager()->release_resource( _vertex_shader );
-        xl7::graphics::shader_manager()->release_resource( _pixel_shader );
+        xl7::graphics::shader_manager()->release_resource_and_invalidate( _vertex_shader_id );
+        xl7::graphics::shader_manager()->release_resource_and_invalidate( _pixel_shader_id );
 
         return true;
     }

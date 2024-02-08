@@ -12,20 +12,20 @@ namespace states {
     // Properties
     // #############################################################################
 
-    meshes::VertexBufferPtr StreamStates::get_vertex_buffer(unsigned index) const
+    resources::ResourceID StreamStates::get_vertex_buffer_id(unsigned index) const
     {
         if ( index >= MAX_VERTEX_STREAMS )
-            return meshes::VertexBufferPtr();
+            return resources::ResourceID();
 
-        return _vertex_buffers.get_value( static_cast<size_t>( index ) );
+        return _vertex_buffer_ids.get_value( static_cast<size_t>( index ) );
     }
 
-    void StreamStates::set_vertex_buffer(unsigned index, meshes::VertexBufferPtr vertex_buffer)
+    void StreamStates::set_vertex_buffer_id(unsigned index, resources::ResourceID vertex_buffer_id)
     {
         if ( index >= MAX_VERTEX_STREAMS )
             return;
 
-        _vertex_buffers.set_value( static_cast<size_t>( index ), vertex_buffer );
+        _vertex_buffer_ids.set_value( static_cast<size_t>( index ), vertex_buffer_id );
     }
 
 

@@ -23,6 +23,9 @@ class ResourceManager
 protected:
     static void _destroy_resource(Resource* resource);
 
+protected:
+    typedef std::unique_ptr<Resource, decltype(&_destroy_resource)> ResourcePtr;
+
 
 
     // #############################################################################
@@ -54,13 +57,23 @@ private:
     /**
      * A "linear list" of the managed resources.
      */
-    std::vector<ResourcePtr> _resources;
+    struct ResourceEntry
+    {
+        ResourceID id;
+        ResourcePtr ptr;
+    };
+    std::vector<ResourceEntry> _resources;
 
     /**
      * A lookup table that maps a given resource identifier to the corresponding
-     * resource.
+     * resource ID.
      */
-    std::unordered_map<cl7::string_view, ResourcePtr> _resource_lookup;
+    std::unordered_map<cl7::string_view, ResourceID> _resource_lookup;
+
+    /**
+     * A "list" of indices that mark free entries in the "linear list".
+     */
+    std::vector<size_t> _free_indices;
 
 
 
@@ -75,10 +88,16 @@ public:
 
     /**
      * Checks whether a given resource is contained in this resource manager.
-     * Time complexity: constant on average, worst case linear in the number of
-     * contained resources.
+     * Time complexity: constant.
      */
     bool contains_resource(const Resource* resource) const;
+
+    /**
+     * Checks whether a resource with the given resource ID is contained in this
+     * resource manager.
+     * Time complexity: constant.
+     */
+    bool contains_resource(ResourceID id) const;
 
     /**
      * Checks whether a resource with the given identifier is contained in this
@@ -90,32 +109,81 @@ public:
 
     /**
      * Returns the resource identified by the given index.
+     * Time complexity: constant on average, worst case linear in the number of
+     * contained resources.
      */
-    ResourcePtr get_resource(size_t index) const;
+    Resource* get_resource(size_t index) const;
+
+    /**
+     * Returns the resource of the given ID.
+     * Time complexity: constant.
+     */
+    Resource* find_resource(ResourceID id) const;
 
     /**
      * Returns the resource of the given identifier.
-     * Time complexity: linear in the number of contained resources.
+     * Time complexity: constant on average, worst case linear in the number of
+     * contained resources.
      */
-    ResourcePtr find_resource(const cl7::string_view& identifier) const;
+    Resource* find_resource(const cl7::string_view& identifier) const;
 
     /**
-     * Releases the given resource (and removes it from this resource manager).
-     * Time complexity: linear in the number of contained resources.
+     * Returns the resource identified by the given index.
+     * Time complexity: constant on average, worst case linear in the number of
+     * contained resources.
      */
-    void release_resource(Resource* resource);
+    template <class TResource>
+    TResource* get_resource(size_t index) const
+    {
+        return dynamic_cast<TResource*>( get_resource( index ) );
+    }
+
+    /**
+     * Returns the resource of the given ID.
+     * Time complexity: constant.
+     */
+    template <class TResource>
+    TResource* find_resource(ResourceID id) const
+    {
+        return dynamic_cast<TResource*>( find_resource( id ) );
+    }
+
+    /**
+     * Returns the resource of the given identifier.
+     * Time complexity: constant on average, worst case linear in the number of
+     * contained resources.
+     */
+    template <class TResource>
+    TResource* find_resource(const cl7::string_view& identifier) const
+    {
+        return dynamic_cast<TResource*>( find_resource( identifier ) );
+    }
 
     /**
      * Releases the specified resource (and removes it from this resource manager).
-     * Also resets the given resource pointer object.
-     * Time complexity: linear in the number of contained resources.
+     * Time complexity: constant.
      */
-    template <class TResourcePtr>
-    void release_resource(TResourcePtr& resource_ptr)
-    {
-        release_resource( resource_ptr.get() );
-        resource_ptr.reset();
-    }
+    bool release_resource(Resource* resource);
+
+    /**
+     * Releases the specified resource (and removes it from this resource manager).
+     * Time complexity: constant.
+     */
+    bool release_resource(ResourceID id);
+
+    /**
+     * Releases the specified resource (and removes it from this resource manager)
+     * and invalidates the given ID.
+     * Time complexity: constant.
+     */
+    bool release_resource_and_invalidate(ResourceID& id);
+
+    /**
+     * Releases the specified resource (and removes it from this resource manager).
+     * Time complexity: constant on average, worst case linear in the number of
+     * contained resources.
+     */
+    bool release_resource(const cl7::string_view& identifier);
 
     /**
      * Releases all managed resources (and removes them from this resource manager).
@@ -129,30 +197,24 @@ public:
     // #############################################################################
 protected:
     /**
-     * Adds (and returns) the given resource to this resource manager, but only if
-     * it can be acquired in this process. Returns NULL otherwise.
+     * Generates and returns the next resource ID to use when adding a new resource.
      */
-    template <class TResourcePtr>
-    TResourcePtr _try_acquire_and_add_resource(TResourcePtr resource_ptr, const DataProvider& data_provider)
-    {
-        assert( resource_ptr );
-        if ( !resource_ptr )
-            return {};
+    ResourceID _next_id();
 
-        assert( !resource_ptr->is_usable() );
-        if ( !Resource::Attorney::acquire( resource_ptr.get(), data_provider ) )
-            return {};
-
-        _add_resource( resource_ptr );
-        return resource_ptr;
-    }
+    /**
+     * Adds the given resource to this resource manager (and returns the ID of the
+     * resource), but only if it can be acquired in this process. Returns an invalid
+     * ID otherwise.
+     */
+    ResourceID _try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider);
 
 private:
     /**
      * Adds the given resource to this resource manager. This operation does not
      * request/acquire the resource. This must have happened successfully before.
+     * Returns the ID of the resource.
      */
-    void _add_resource(ResourcePtr resource_ptr);
+    ResourceID _add_resource(ResourcePtr resource_ptr);
 
 }; // class ResourceManager
 

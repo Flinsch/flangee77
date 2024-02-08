@@ -18,11 +18,6 @@ namespace shaders {
 
 
 
-class Shader;
-typedef std::shared_ptr<Shader> ShaderPtr;
-
-
-
 class ShaderManager;
 
 

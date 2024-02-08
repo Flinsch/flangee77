@@ -71,7 +71,7 @@ public:
      * Creates and acquires the specified vertex shader.
      */
     template <class TVertex>
-    VertexBufferPtr create_vertex_buffer(const cl7::string_view& identifier, const VertexBuffer::Desc& desc, const VertexDataProvider<TVertex>& data_provider)
+    resources::ResourceID create_vertex_buffer(const cl7::string_view& identifier, const VertexBuffer::Desc& desc, const VertexDataProvider<TVertex>& data_provider)
     {
         return _create_vertex_buffer( identifier, desc, data_provider );
     }
@@ -80,7 +80,7 @@ public:
      * Creates and acquires the specified index buffer.
      */
     template <class TIndex>
-    IndexBufferPtr create_index_buffer(const cl7::string_view& identifier, const IndexBuffer::Desc& desc, const IndexDataProvider<TIndex>& data_provider)
+    resources::ResourceID create_index_buffer(const cl7::string_view& identifier, const IndexBuffer::Desc& desc, const IndexDataProvider<TIndex>& data_provider)
     {
         return _create_index_buffer( identifier, desc, data_provider );
     }
@@ -94,12 +94,12 @@ private:
     /**
      * Creates and acquires the specified vertex shader.
      */
-    VertexBufferPtr _create_vertex_buffer(const cl7::string_view& identifier, const VertexBuffer::Desc& desc, const resources::DataProvider& data_provider);
+    resources::ResourceID _create_vertex_buffer(const cl7::string_view& identifier, const VertexBuffer::Desc& desc, const resources::DataProvider& data_provider);
 
     /**
      * Creates and acquires the specified index buffer.
      */
-    IndexBufferPtr _create_index_buffer(const cl7::string_view& identifier, const IndexBuffer::Desc& desc, const resources::DataProvider& data_provider);
+    resources::ResourceID _create_index_buffer(const cl7::string_view& identifier, const IndexBuffer::Desc& desc, const resources::DataProvider& data_provider);
 
 }; // class MeshManager
 

@@ -14,11 +14,6 @@ namespace meshes {
 
 
 
-class VertexBuffer;
-typedef std::shared_ptr<VertexBuffer> VertexBufferPtr;
-
-
-
 class MeshManager;
 
 

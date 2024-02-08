@@ -11,11 +11,6 @@ namespace shaders {
 
 
 
-class PixelShader;
-typedef std::shared_ptr<PixelShader> PixelShaderPtr;
-
-
-
 class PixelShader
     : public Shader
 {
