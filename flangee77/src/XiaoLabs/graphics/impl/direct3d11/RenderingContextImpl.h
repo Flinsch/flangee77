@@ -28,7 +28,7 @@ protected:
     /**
      * Explicit constructor.
      */
-    RenderingContextImpl(RenderingDevice* rendering_device, unsigned index, wrl::ComPtr<ID3D11DeviceContextN> d3d_device_context);
+    RenderingContextImpl(RenderingDevice* rendering_device, unsigned index, wrl::ComPtr<ID3D11DeviceContextN> d3d_device_context, wrl::ComPtr<ID3D11RenderTargetView> d3d_render_target_view, wrl::ComPtr<ID3D11DepthStencilView> d3d_depth_stencil_view);
 
     /**
      * Destructor.
@@ -53,6 +53,16 @@ private:
      * The Direct3D 11 device context interface.
      */
     wrl::ComPtr<ID3D11DeviceContextN> _d3d_device_context;
+
+    /**
+     * The (standard) Direct3D 9 render target view interface.
+     */
+    wrl::ComPtr<ID3D11RenderTargetView> _d3d_render_target_view;
+
+    /**
+     * The (standard) Direct3D 9 depth/stencil view interface.
+     */
+    wrl::ComPtr<ID3D11DepthStencilView> _d3d_depth_stencil_view;
 
 private:
     D3D11_PRIMITIVE_TOPOLOGY _d3d_primitive_topology;

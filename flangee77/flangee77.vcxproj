@@ -167,6 +167,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\surfaces\DepthStencilSurface.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\surfaces\RenderTargetSurface.h" />
     <ClInclude Include="src\XiaoLabs\resources\ResourceID.h" />
     <ClInclude Include="src\XiaoLabs\graphics\states\ShaderStates.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\CodeProvider.h" />
@@ -278,8 +280,11 @@
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\VertexBufferImpl.h" />
     <ClInclude Include="src\XiaoLabs\resources\ResourceUsage.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\VertexDataProvider.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\surfaces\Surface.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\surfaces\DepthStencilSurface.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\surfaces\RenderTargetSurface.cpp" />
     <ClCompile Include="src\XiaoLabs\resources\ResourceID.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\states\ShaderStates.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\shaders\CodeProvider.cpp" />
@@ -358,6 +363,7 @@
     <ClCompile Include="src\XiaoLabs\graphics\states\SurfaceStates.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\states\StreamStates.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\VertexBufferImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\surfaces\Surface.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

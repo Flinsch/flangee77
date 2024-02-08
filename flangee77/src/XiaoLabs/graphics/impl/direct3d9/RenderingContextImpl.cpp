@@ -35,9 +35,11 @@ namespace direct3d9 {
     /**
      * Explicit constructor.
      */
-    RenderingContextImpl::RenderingContextImpl(RenderingDevice* rendering_device, unsigned index, wrl::ComPtr<IDirect3DDevice9> d3d_device)
+    RenderingContextImpl::RenderingContextImpl(RenderingDevice* rendering_device, unsigned index, wrl::ComPtr<IDirect3DDevice9> d3d_device, wrl::ComPtr<IDirect3DSurface9> d3d_render_target_surface, wrl::ComPtr<IDirect3DSurface9> d3d_depth_stencil_surface)
         : RenderingContext( rendering_device, index )
         , _d3d_device( d3d_device )
+        , _d3d_render_target_surface( d3d_render_target_surface )
+        , _d3d_depth_stencil_surface( d3d_depth_stencil_surface )
     {
         assert( index == 0 );
         assert( d3d_device );

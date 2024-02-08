@@ -28,7 +28,7 @@ protected:
     /**
      * Explicit constructor.
      */
-    RenderingContextImpl(RenderingDevice* rendering_device, unsigned index, wrl::ComPtr<IDirect3DDevice9> d3d_device);
+    RenderingContextImpl(RenderingDevice* rendering_device, unsigned index, wrl::ComPtr<IDirect3DDevice9> d3d_device, wrl::ComPtr<IDirect3DSurface9> d3d_render_target_surface, wrl::ComPtr<IDirect3DSurface9> d3d_depth_stencil_surface);
 
     /**
      * Destructor.
@@ -53,6 +53,16 @@ private:
      * The Direct3D 9 device interface.
      */
     wrl::ComPtr<IDirect3DDevice9> _d3d_device;
+
+    /**
+     * The (standard) Direct3D 9 render target surface interface.
+     */
+    wrl::ComPtr<IDirect3DSurface9> _d3d_render_target_surface;
+
+    /**
+     * The (standard) Direct3D 9 depth/stencil surface interface.
+     */
+    wrl::ComPtr<IDirect3DSurface9> _d3d_depth_stencil_surface;
 
 
 

@@ -8,8 +8,6 @@
 #include "./MacroDefinitions.h"
 #include "./ParameterTable.h"
 
-#include <CoreLabs/string.h>
-
 
 
 namespace xl7 {

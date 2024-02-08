@@ -58,6 +58,16 @@ private:
     wrl::ComPtr<ID3D11DeviceContextN> _d3d_immediate_context;
 
     /**
+     * The (standard) Direct3D 9 render target view interface.
+     */
+    wrl::ComPtr<ID3D11RenderTargetView> _d3d_render_target_view;
+
+    /**
+     * The (standard) Direct3D 9 depth/stencil view interface.
+     */
+    wrl::ComPtr<ID3D11DepthStencilView> _d3d_depth_stencil_view;
+
+    /**
      * The DXGI swap chain interface.
      */
     wrl::ComPtr<IDXGISwapChainN> _dxgi_swap_chain;

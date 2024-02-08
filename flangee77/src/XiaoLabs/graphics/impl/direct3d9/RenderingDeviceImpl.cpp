@@ -127,6 +127,41 @@ namespace direct3d9 {
         // video memory composition.
         _determine_video_memory( capabilities.memory );
 
+        // Grab the (standard) render target surface interface ...
+        hresult = _d3d_device->GetRenderTarget( 0, &_d3d_render_target_surface );
+        if ( hresult != D3D_OK )
+        {
+            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3D9::GetRenderTarget") ) );
+            LOG_ERROR( TEXT("The Direct3D 9 surface interface of the (standard) color render target could not be queried.") );
+            return false;
+        }
+
+        // ... and the (standard) depth/stencil surface interface.
+        hresult = _d3d_device->GetDepthStencilSurface( &_d3d_depth_stencil_surface );
+        if ( hresult != D3D_OK )
+        {
+            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3D9::GetDepthStencilSurface") ) );
+            LOG_ERROR( TEXT("The Direct3D 9 surface interface of the (standard) depth/stencil buffer could not be queried.") );
+            return false;
+        }
+
+        // To be on the safe side, set the (standard) viewport.
+        D3DVIEWPORT9 d3d_viewport;
+        ::memset( &d3d_viewport, 0, sizeof(d3d_viewport) );
+        d3d_viewport.X = 0;
+        d3d_viewport.Y = 0;
+        d3d_viewport.Width = back_buffer_width;
+        d3d_viewport.Height = back_buffer_height;
+        d3d_viewport.MinZ = 0.0f;
+        d3d_viewport.MaxZ = 1.0f;
+        _d3d_device->SetViewport( &d3d_viewport );
+        if ( hresult != D3D_OK )
+        {
+            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3D9::SetViewport") ) );
+            LOG_ERROR( TEXT("The Direct3D 9 (standard) viewport could not be set.") );
+            return false;
+        }
+
         return true;
     }
 
@@ -135,6 +170,10 @@ namespace direct3d9 {
      */
     bool RenderingDeviceImpl::_shutdown_impl()
     {
+        // Release the (standard) render target surface interfaces.
+        _d3d_render_target_surface.Reset();
+        _d3d_depth_stencil_surface.Reset();
+
         // Release the Direct3D 9 device interface.
         _d3d_device.Reset();
 
@@ -149,7 +188,7 @@ namespace direct3d9 {
     {
         assert( index == 0 );
         if ( index == 0 )
-            return new RenderingContextImpl( this, index, _d3d_device );
+            return new RenderingContextImpl( this, index, _d3d_device, _d3d_render_target_surface, _d3d_depth_stencil_surface );
 
         LOG_ERROR( TEXT("Direct3D 9 does not support multiple rendering contexts.") );
         return nullptr;

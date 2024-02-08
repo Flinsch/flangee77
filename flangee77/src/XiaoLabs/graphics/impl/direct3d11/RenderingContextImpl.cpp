@@ -35,10 +35,12 @@ namespace direct3d11 {
     /**
      * Explicit constructor.
      */
-    RenderingContextImpl::RenderingContextImpl(RenderingDevice* rendering_device, unsigned index, wrl::ComPtr<ID3D11DeviceContextN> d3d_device_context)
+    RenderingContextImpl::RenderingContextImpl(RenderingDevice* rendering_device, unsigned index, wrl::ComPtr<ID3D11DeviceContextN> d3d_device_context, wrl::ComPtr<ID3D11RenderTargetView> d3d_render_target_view, wrl::ComPtr<ID3D11DepthStencilView> d3d_depth_stencil_view)
         : RenderingContext( rendering_device, index )
         , _d3d_device_context( d3d_device_context )
         , _d3d_primitive_topology( D3D11_PRIMITIVE_TOPOLOGY_UNDEFINED )
+        , _d3d_render_target_view( d3d_render_target_view )
+        , _d3d_depth_stencil_view( d3d_depth_stencil_view )
     {
         assert( d3d_device_context );
     }

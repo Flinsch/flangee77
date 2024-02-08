@@ -211,6 +211,81 @@ namespace direct3d11 {
         capabilities.memory.dedicated_system_memory = dxgi_adapter_desc.DedicatedSystemMemory;
         capabilities.memory.shared_system_memory = dxgi_adapter_desc.SharedSystemMemory;
 
+        // Query the (primary) back buffer in order to ...
+        wrl::ComPtr<ID3D11Texture2D> d3d_back_buffer;
+        hresult = _dxgi_swap_chain->GetBuffer( 0, __uuidof(ID3D11Texture2D), &d3d_back_buffer );
+        if ( FAILED(hresult) )
+        {
+            LOG_ERROR( errors::dxgi_result( hresult, TEXT("IDXGISwapChain::GetBuffer") ) );
+            LOG_ERROR( TEXT("The DXGI swap chain's primary back buffer could not be accessed.") );
+            return false;
+        }
+
+        // ... create the (standard) render target view, ...
+        hresult = _d3d_device->CreateRenderTargetView( d3d_back_buffer.Get(), nullptr, &_d3d_render_target_view );
+        if ( FAILED(hresult) )
+        {
+            LOG_ERROR( errors::dxgi_result( hresult, TEXT("ID3D11Device::CreateRenderTargetView") ) );
+            LOG_ERROR( TEXT("The Direct3D 11 view interface for the (standard) color render target could not be created.") );
+            return false;
+        }
+
+        // ... fill the (standard) depth/stencil buffer description structure ...
+        D3D11_TEXTURE2D_DESC d3d_z_buffer_desc;
+        ::memset( &d3d_z_buffer_desc, 0, sizeof(d3d_z_buffer_desc) );
+        d3d_z_buffer_desc.Width = back_buffer_width;
+        d3d_z_buffer_desc.Height = back_buffer_height;
+        d3d_z_buffer_desc.MipLevels = 1;
+        d3d_z_buffer_desc.ArraySize = 1;
+        d3d_z_buffer_desc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+        d3d_z_buffer_desc.SampleDesc = dxgi_swap_chain_desc.SampleDesc;
+        d3d_z_buffer_desc.Usage = D3D11_USAGE_DEFAULT;
+        d3d_z_buffer_desc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+        d3d_z_buffer_desc.CPUAccessFlags = 0;
+        d3d_z_buffer_desc.MiscFlags = 0;
+
+        // ... create the (standard) depth/stencil buffer, ...
+        wrl::ComPtr<ID3D11Texture2D> d3d_z_buffer;
+        hresult = _d3d_device->CreateTexture2D( &d3d_z_buffer_desc, nullptr, &d3d_z_buffer );
+        if ( FAILED(hresult) )
+        {
+            LOG_ERROR( errors::dxgi_result( hresult, TEXT("ID3D11Device::CreateTexture2D") ) );
+            LOG_ERROR( TEXT("The Direct3D 11 (standard) depth/stencil buffer could not be created.") );
+            return false;
+        }
+
+        // ... fill the (standard) depth/stencil buffer description structure, ...
+        D3D11_DEPTH_STENCIL_VIEW_DESC d3d_depth_stencil_view_desc;
+        ::memset( &d3d_depth_stencil_view_desc, 0, sizeof(d3d_depth_stencil_view_desc) );
+        d3d_depth_stencil_view_desc.Format = d3d_z_buffer_desc.Format;
+        d3d_depth_stencil_view_desc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+        d3d_depth_stencil_view_desc.Flags = 0;
+        d3d_depth_stencil_view_desc.Texture2D.MipSlice = 0;
+
+        // ... and create the (standard) depth/stencil view.
+        hresult = _d3d_device->CreateDepthStencilView( d3d_z_buffer.Get(), &d3d_depth_stencil_view_desc, &_d3d_depth_stencil_view );
+        if ( FAILED(hresult) )
+        {
+            LOG_ERROR( errors::dxgi_result( hresult, TEXT("ID3D11Device::CreateDepthStencilView") ) );
+            LOG_ERROR( TEXT("The Direct3D 11 view interface for the (standard) depth/stencil buffer could not be created.") );
+            return false;
+        }
+
+        // Set the (standard) render targets ...
+        auto d3d_render_target_view = _d3d_render_target_view.Get();
+        _d3d_immediate_context->OMSetRenderTargets( 1, &d3d_render_target_view, _d3d_depth_stencil_view.Get() );
+
+        // ... and the (standard) viewport.
+        D3D11_VIEWPORT d3d_viewport;
+        ::memset( &d3d_viewport, 0, sizeof(d3d_viewport) );
+        d3d_viewport.TopLeftX = 0.0f;
+        d3d_viewport.TopLeftY = 0.0f;
+        d3d_viewport.Width = static_cast<float>( back_buffer_width );
+        d3d_viewport.Height = static_cast<float>( back_buffer_height );
+        d3d_viewport.MinDepth = 0.0f;
+        d3d_viewport.MaxDepth = 1.0f;
+        _d3d_immediate_context->RSSetViewports( 1, &d3d_viewport );
+
         return true;
     }
 
@@ -219,6 +294,10 @@ namespace direct3d11 {
      */
     bool RenderingDeviceImpl::_shutdown_impl()
     {
+        // Release the (standard) render target view interfaces.
+        _d3d_render_target_view.Reset();
+        _d3d_depth_stencil_view.Reset();
+
         // Release the (immediate) device context interface.
         _d3d_immediate_context.Reset();
 
@@ -235,7 +314,7 @@ namespace direct3d11 {
     RenderingContext* RenderingDeviceImpl::_create_rendering_context_impl(unsigned index)
     {
         if ( index == 0 )
-            return new RenderingContextImpl( this, index, _d3d_immediate_context );
+            return new RenderingContextImpl( this, index, _d3d_immediate_context, _d3d_render_target_view, _d3d_depth_stencil_view );
 
         wrl::ComPtr<ID3D11DeviceContextN> d3d_deferred_context;
         HRESULT hresult = _d3d_device->CreateDeferredContext1( 0 , &d3d_deferred_context );
@@ -245,7 +324,7 @@ namespace direct3d11 {
             return nullptr;
         }
 
-        return new RenderingContextImpl( this, index, d3d_deferred_context );
+        return new RenderingContextImpl( this, index, d3d_deferred_context, _d3d_render_target_view, _d3d_depth_stencil_view );
     }
 
     /**
