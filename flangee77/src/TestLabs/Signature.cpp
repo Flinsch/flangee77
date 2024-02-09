@@ -16,12 +16,12 @@ namespace tl7 {
 
     size_t Signature::hash::operator () (const Signature& sig) const
     {
-        const size_t hi = static_cast<size_t>( sig.line_number );
-        const size_t lo = static_cast<size_t>( sig.iteration_number );
         constexpr auto s = sizeof(size_t) / 2 * 8;
         constexpr size_t m = (size_t(1) << s) - 1;
+        const size_t hi = static_cast<size_t>( sig.line_number );
+        const size_t lo = static_cast<size_t>( sig.iteration_number < 0 ? m : sig.iteration_number );
         assert( hi < m );
-        assert( lo < m );
+        assert( lo <= m );
         return (hi << s) | lo;
     }
 
