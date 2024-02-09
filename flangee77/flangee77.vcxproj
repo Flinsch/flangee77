@@ -167,6 +167,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\MathLabs\utilities.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\Color.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\ChannelOrder.h" />
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\DepthStencilSurface.h" />
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\RenderTargetSurface.h" />
     <ClInclude Include="src\XiaoLabs\resources\ResourceID.h" />
@@ -283,6 +286,8 @@
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\Surface.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\MathLabs\utilities.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\Color.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\DepthStencilSurface.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\RenderTargetSurface.cpp" />
     <ClCompile Include="src\XiaoLabs\resources\ResourceID.cpp" />

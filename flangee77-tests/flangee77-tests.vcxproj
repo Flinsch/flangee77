@@ -221,6 +221,7 @@ xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
   <ItemGroup>
     <ClInclude Include="src\CoreLabs\strings.h" />
     <ClInclude Include="src\CoreLabs\Version.h" />
+    <ClInclude Include="src\MathLabs\utilities.h" />
     <ClInclude Include="src\XiaoLabs\graphics.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

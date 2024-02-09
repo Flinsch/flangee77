@@ -215,8 +215,8 @@ namespace strings {
 
 
 
-    template <class Tstring, typename Tchar>
-    Tstring to_hex(unsigned long long val, Tchar ca = Tchar('A'), unsigned pad_zeros = 0)
+    template <class Tstring, typename Tchar, typename Tval>
+    Tstring to_hex(Tval val, Tchar ca = Tchar('A'), unsigned pad_zeros = 0)
     {
         static constexpr auto c0 = Tchar('0');
         if ( val == 0 )
@@ -235,8 +235,8 @@ namespace strings {
         return s;
     }
 
-    template <class Tstring, typename Tchar>
-    Tstring to_0xhex(unsigned long long val, Tchar ca = Tchar('A'), unsigned pad_zeros = 0)
+    template <class Tstring, typename Tchar, typename Tval>
+    Tstring to_0xhex(Tval val, Tchar ca = Tchar('A'), unsigned pad_zeros = 0)
     {
         static constexpr auto c0 = Tchar('0');
         static constexpr auto cx = Tchar('x');

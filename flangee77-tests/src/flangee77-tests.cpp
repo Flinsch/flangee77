@@ -5,6 +5,8 @@
 #include "./CoreLabs/strings.h"
 #include "./CoreLabs/Version.h"
 
+#include "./MathLabs/utilities.h"
+
 #include "./XiaoLabs/graphics.h"
 
 

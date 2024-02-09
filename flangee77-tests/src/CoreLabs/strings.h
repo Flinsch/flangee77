@@ -858,4 +858,176 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::utf16_length(const u16string_view&)") )
 
 
 
+TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming left") )
+{
+    struct Entry
+    {
+        cl7::string input;
+        cl7::string expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { TEXT(""), TEXT("") },
+        { TEXT(" "), TEXT("") },
+        { TEXT("  "), TEXT("") },
+        { TEXT("  x"), TEXT("x") },
+        { TEXT("x  "), TEXT("x  ") },
+        { TEXT("  x  "), TEXT("x  ") },
+        { TEXT("\n\tx\n\t"), TEXT("x\n\t") },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    {
+        const auto& input = entry.input;
+        const auto& expected = entry.expected;
+
+        auto actual = entry.input;
+        cl7::strings::ltrim( actual );
+
+        TESTLABS_CHECK_EQ( actual, expected );
+        TESTLABS_CHECK_EQ( cl7::strings::ltrimmed( input ), expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming right") )
+{
+    struct Entry
+    {
+        cl7::string input;
+        cl7::string expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { TEXT(""), TEXT("") },
+        { TEXT(" "), TEXT("") },
+        { TEXT("  "), TEXT("") },
+        { TEXT("  x"), TEXT("  x") },
+        { TEXT("x  "), TEXT("x") },
+        { TEXT("  x  "), TEXT("  x") },
+        { TEXT("\n\tx\n\t"), TEXT("\n\tx") },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    {
+        const auto& input = entry.input;
+        const auto& expected = entry.expected;
+
+        auto actual = entry.input;
+        cl7::strings::rtrim( actual );
+
+        TESTLABS_CHECK_EQ( actual, expected );
+        TESTLABS_CHECK_EQ( cl7::strings::rtrimmed( input ), expected );
+    }
+}
+
+
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings:  padding left") )
+{
+    struct Entry
+    {
+        cl7::string input;
+        size_t len;
+        cl7::char_type chr;
+        cl7::string expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { TEXT(""), 0, TEXT(' '), TEXT("") },
+        { TEXT(""), 1, TEXT(' '), TEXT(" ") },
+        { TEXT(""), 2, TEXT(' '), TEXT("  ") },
+        { TEXT("xx"), 2, TEXT(' '), TEXT("xx") },
+        { TEXT("xx"), 3, TEXT(' '), TEXT(" xx") },
+        { TEXT("xx"), 4, TEXT(' '), TEXT("  xx") },
+        { TEXT("x"), 2, TEXT('x'), TEXT("xx") },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    {
+        const auto& input = entry.input;
+        const auto len = entry.len;
+        const auto chr = entry.chr;
+        const auto& expected = entry.expected;
+
+        auto actual = entry.input;
+        cl7::strings::lpad( actual, len, chr );
+
+        TESTLABS_CHECK_EQ( actual, expected );
+        TESTLABS_CHECK_EQ( cl7::strings::lpadded( input, len, chr ), expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings:  padding right") )
+{
+    struct Entry
+    {
+        cl7::string input;
+        size_t len;
+        cl7::char_type chr;
+        cl7::string expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { TEXT(""), 0, TEXT(' '), TEXT("") },
+        { TEXT(""), 1, TEXT(' '), TEXT(" ") },
+        { TEXT(""), 2, TEXT(' '), TEXT("  ") },
+        { TEXT("xx"), 2, TEXT(' '), TEXT("xx") },
+        { TEXT("xx"), 3, TEXT(' '), TEXT("xx ") },
+        { TEXT("xx"), 4, TEXT(' '), TEXT("xx  ") },
+        { TEXT("x"), 2, TEXT('x'), TEXT("xx") },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    {
+        const auto& input = entry.input;
+        const auto len = entry.len;
+        const auto chr = entry.chr;
+        const auto& expected = entry.expected;
+
+        auto actual = entry.input;
+        cl7::strings::rpad( actual, len, chr );
+
+        TESTLABS_CHECK_EQ( actual, expected );
+        TESTLABS_CHECK_EQ( cl7::strings::rpadded( input, len, chr ), expected );
+    }
+}
+
+
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings:  to hex") )
+{
+    struct Entry
+    {
+        unsigned val;
+        cl7::char_type chA;
+        unsigned pad;
+        cl7::string expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0x00000000, TEXT('a'), 0, TEXT("") },
+        { 0x00000000, TEXT('a'), 2, TEXT("00") },
+        { 0x00000000, TEXT('a'), 8, TEXT("00000000") },
+        { 0x0000bf00, TEXT('a'), 0, TEXT("bf00") },
+        { 0x0000bf00, TEXT('a'), 8, TEXT("0000bf00") },
+        { 0x12345678, TEXT('a'), 0, TEXT("12345678") },
+        { 0xffffffff, TEXT('a'), 0, TEXT("ffffffff") },
+        { 0xffffffff, TEXT('A'), 0, TEXT("FFFFFFFF") },
+        { 0xffffffff, TEXT('A'), 9, TEXT("0FFFFFFFF") },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    {
+        const auto val = entry.val;
+        const auto chA = entry.chA;
+        const auto pad = entry.pad;
+        const auto& expected = entry.expected;
+
+        TESTLABS_CHECK_EQ( cl7::strings::to_hex( val, chA, pad ), expected );
+        TESTLABS_CHECK_EQ( cl7::strings::to_0xhex( val, chA, pad ), TEXT("0x") + expected );
+    }
+}
+
+
+
 #endif // F77_TESTS_CL7_STRINGS_H

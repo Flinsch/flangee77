@@ -929,12 +929,12 @@ namespace strings {
 
     string to_hex(unsigned long long val, char_type ca, unsigned pad_zeros)
     {
-        return to_hex<string, char_type>( val, ca, pad_zeros );
+        return to_hex<string>( val, ca, pad_zeros );
     }
 
     string to_0xhex(unsigned long long val, char_type ca, unsigned pad_zeros)
     {
-        return to_0xhex<string, char_type>( val, ca, pad_zeros );
+        return to_0xhex<string>( val, ca, pad_zeros );
     }
 
 

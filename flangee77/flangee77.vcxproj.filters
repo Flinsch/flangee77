@@ -357,6 +357,15 @@
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\RenderTargetSurface.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\ChannelOrder.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\Color.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MathLabs\utilities.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -600,6 +609,12 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\RenderTargetSurface.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\Color.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MathLabs\utilities.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
