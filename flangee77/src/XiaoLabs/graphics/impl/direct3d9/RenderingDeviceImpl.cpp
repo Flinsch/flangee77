@@ -132,7 +132,7 @@ namespace direct3d9 {
         if ( hresult != D3D_OK )
         {
             LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3D9::GetRenderTarget") ) );
-            LOG_ERROR( TEXT("The Direct3D 9 surface interface of the (standard) color render target could not be queried.") );
+            LOG_ERROR( TEXT("The Direct3D 9 (standard) render target surface interface could not be queried.") );
             return false;
         }
 
@@ -141,7 +141,7 @@ namespace direct3d9 {
         if ( hresult != D3D_OK )
         {
             LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3D9::GetDepthStencilSurface") ) );
-            LOG_ERROR( TEXT("The Direct3D 9 surface interface of the (standard) depth/stencil buffer could not be queried.") );
+            LOG_ERROR( TEXT("The Direct3D 9 (standard) depth/stencil surface interface could not be queried.") );
             return false;
         }
 

@@ -55,12 +55,12 @@ private:
     wrl::ComPtr<IDirect3DDevice9> _d3d_device;
 
     /**
-     * The (standard) Direct3D 9 render target surface interface.
+     * The Direct3D 9 (standard) render target surface interface.
      */
     wrl::ComPtr<IDirect3DSurface9> _d3d_render_target_surface;
 
     /**
-     * The (standard) Direct3D 9 depth/stencil surface interface.
+     * The Direct3D 9 (standard) depth/stencil surface interface.
      */
     wrl::ComPtr<IDirect3DSurface9> _d3d_depth_stencil_surface;
 

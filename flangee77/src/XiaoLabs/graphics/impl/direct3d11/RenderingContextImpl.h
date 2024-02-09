@@ -55,12 +55,12 @@ private:
     wrl::ComPtr<ID3D11DeviceContextN> _d3d_device_context;
 
     /**
-     * The (standard) Direct3D 9 render target view interface.
+     * The Direct3D 11 (standard) render target view interface.
      */
     wrl::ComPtr<ID3D11RenderTargetView> _d3d_render_target_view;
 
     /**
-     * The (standard) Direct3D 9 depth/stencil view interface.
+     * The Direct3D 11 (standard) depth/stencil view interface.
      */
     wrl::ComPtr<ID3D11DepthStencilView> _d3d_depth_stencil_view;
 

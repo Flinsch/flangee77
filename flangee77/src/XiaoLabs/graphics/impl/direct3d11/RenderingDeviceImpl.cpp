@@ -221,12 +221,12 @@ namespace direct3d11 {
             return false;
         }
 
-        // ... create the (standard) render target view, ...
+        // ... create the (standard) render target view interface, ...
         hresult = _d3d_device->CreateRenderTargetView( d3d_back_buffer.Get(), nullptr, &_d3d_render_target_view );
         if ( FAILED(hresult) )
         {
             LOG_ERROR( errors::dxgi_result( hresult, TEXT("ID3D11Device::CreateRenderTargetView") ) );
-            LOG_ERROR( TEXT("The Direct3D 11 view interface for the (standard) color render target could not be created.") );
+            LOG_ERROR( TEXT("The Direct3D 11 (standard) render target view interface could not be created.") );
             return false;
         }
 
@@ -254,20 +254,12 @@ namespace direct3d11 {
             return false;
         }
 
-        // ... fill the (standard) depth/stencil buffer description structure, ...
-        D3D11_DEPTH_STENCIL_VIEW_DESC d3d_depth_stencil_view_desc;
-        ::memset( &d3d_depth_stencil_view_desc, 0, sizeof(d3d_depth_stencil_view_desc) );
-        d3d_depth_stencil_view_desc.Format = d3d_z_buffer_desc.Format;
-        d3d_depth_stencil_view_desc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
-        d3d_depth_stencil_view_desc.Flags = 0;
-        d3d_depth_stencil_view_desc.Texture2D.MipSlice = 0;
-
-        // ... and create the (standard) depth/stencil view.
-        hresult = _d3d_device->CreateDepthStencilView( d3d_z_buffer.Get(), &d3d_depth_stencil_view_desc, &_d3d_depth_stencil_view );
+        // ... and create the (standard) depth/stencil view interface.
+        hresult = _d3d_device->CreateDepthStencilView( d3d_z_buffer.Get(), nullptr, &_d3d_depth_stencil_view );
         if ( FAILED(hresult) )
         {
             LOG_ERROR( errors::dxgi_result( hresult, TEXT("ID3D11Device::CreateDepthStencilView") ) );
-            LOG_ERROR( TEXT("The Direct3D 11 view interface for the (standard) depth/stencil buffer could not be created.") );
+            LOG_ERROR( TEXT("The Direct3D 11 (standard) depth/stencil view interface could not be created.") );
             return false;
         }
 
