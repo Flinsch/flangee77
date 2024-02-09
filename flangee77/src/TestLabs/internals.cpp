@@ -11,8 +11,10 @@ namespace internals {
 
 
 
+    cl7::string to_string(const std::nullptr_t&) { return {}; }
+
     template <class Tstring>
-    cl7::string _to_string(const Tstring& val)
+    static cl7::string _to_string(const Tstring& val)
     {
         cl7::osstream oss;
         oss << std::hex << std::setfill(TEXT('0'));
