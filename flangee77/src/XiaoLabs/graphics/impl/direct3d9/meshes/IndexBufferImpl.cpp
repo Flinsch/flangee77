@@ -60,7 +60,7 @@ namespace meshes {
     IndexBufferImpl::IndexBufferImpl(const CreateParams<Desc>& params)
         : IndexBuffer( params )
         , _d3d_format( _d3d_format_from( _desc.index_type ) )
-        , _d3d_device( dynamic_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device() )
+        , _d3d_device( static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device() )
         , _d3d_index_buffer()
     {
     }

@@ -27,7 +27,7 @@ namespace shaders {
      */
     VertexShaderImpl::VertexShaderImpl(const CreateParams<Desc>& params)
         : VertexShader( params )
-        , _d3d_device( dynamic_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device() )
+        , _d3d_device( static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device() )
         , _d3d_vertex_shader()
     {
     }

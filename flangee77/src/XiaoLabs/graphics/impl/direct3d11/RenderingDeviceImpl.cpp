@@ -132,6 +132,9 @@ namespace direct3d11 {
             assert( false );
         }
 
+        // Adopt other capabilities.
+        capabilities.max_simultaneous_render_target_count = D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT;
+
         // Query the DXGI device interface.
         wrl::ComPtr<IDXGIDeviceN> dxgi_device;
         hresult = _d3d_device.As( &dxgi_device );

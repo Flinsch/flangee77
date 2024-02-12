@@ -5,6 +5,10 @@
 #include "./states/StreamStates.h"
 #include "./states/ShaderStates.h"
 #include "./states/RenderStates.h"
+#include "./states/TargetStates.h"
+
+#include "./ClearFlags.h"
+#include "./Color.h"
 
 
 
@@ -28,7 +32,15 @@ public:
     };
 
 protected:
-    struct DrawStates
+    struct ResolvedTargetStates
+    {
+        unsigned target_count;
+        const surfaces::ColorRenderTarget* color_render_targets[ states::TargetStates::MAX_RENDER_TARGETS ];
+        const surfaces::DepthStencilTarget* depth_stencil_target;
+    };
+
+    struct ResolvedDrawStates
+        : public ResolvedTargetStates
     {
         unsigned stream_count;
         const meshes::VertexBuffer* vertex_buffers[ states::StreamStates::MAX_VERTEX_STREAMS ];
@@ -102,6 +114,11 @@ public:
      */
     states::RenderStates render_states;
 
+    /**
+     * The target states for the pipeline stage of the output merger.
+     */
+    states::TargetStates target_states;
+
 private:
     /**
      * The flag indicating whether the function begin_scene has been called without
@@ -114,6 +131,22 @@ private:
     // #############################################################################
     // Properties
     // #############################################################################
+public:
+    /**
+     * Returns the owning rendering device.
+     */
+    RenderingDevice* get_rendering_device() const { return _rendering_device; }
+
+    /**
+     * Returns the 0-based index of the context (0: primary context).
+     */
+    unsigned get_index() const { return _index; }
+
+    /**
+     * Indicates whether this is the primary rendering context.
+     */
+    bool is_primary() const { return _index == 0; }
+
 public:
     /**
      * Returns the flag indicating whether the function begin_scene has been called
@@ -136,6 +169,11 @@ public:
      * Ends a scene that was begun by calling begin_scene.
      */
     bool end_scene();
+
+    /**
+     * Clears the currently bound render target(s).
+     */
+    bool clear(ClearFlags clear_flags, const Color& color, float depth, unsigned stencil);
 
     /**
      * Draws non-indexed, non-instanced primitives.
@@ -184,14 +222,19 @@ private:
     virtual bool _end_scene_impl() = 0;
 
     /**
+     * Clears the currently bound render target(s).
+     */
+    virtual bool _clear_impl(const ResolvedTargetStates& resolved_target_states, ClearFlags clear_flags, const Color& color, float depth, unsigned stencil) = 0;
+
+    /**
      * Draws non-indexed, non-instanced primitives.
      */
-    virtual bool _draw_impl(const DrawStates& draw_states, unsigned primitive_count, unsigned start_vertex) = 0;
+    virtual bool _draw_impl(const ResolvedDrawStates& resolved_draw_states, unsigned primitive_count, unsigned start_vertex) = 0;
 
     /**
      * Draws indexed, non-instanced primitives.
      */
-    virtual bool _draw_indexed_impl(const DrawStates& draw_states, unsigned primitive_count, unsigned start_index, signed base_vertex) = 0;
+    virtual bool _draw_indexed_impl(const ResolvedDrawStates& resolved_draw_states, unsigned primitive_count, unsigned start_index, signed base_vertex) = 0;
 
 
 
@@ -200,14 +243,19 @@ private:
     // #############################################################################
 private:
     /**
-     * Gathers drawing states (including resolving resource IDs into usable objects).
+     * Gathers render targets (including resolving resource IDs into usable objects).
      */
-    void _gather_draw_states(DrawStates& draw_states, bool indexed, bool instanced);
+    void _resolve_target_states(ResolvedTargetStates& resolved_target_states);
+
+    /**
+    * Gathers drawing states (including resolving resource IDs into usable objects).
+    */
+    void _resolve_draw_states(ResolvedDrawStates& resolved_draw_states, bool indexed, bool instanced);
 
     /**
      * Validates the specified drawing states.
      */
-    bool _validate_draw_states(const DrawStates& draw_states, bool indexed, bool instanced);
+    bool _validate_resolved_draw_states(const ResolvedDrawStates& resolved_draw_states, bool indexed, bool instanced);
 
 }; // class RenderingContext
 

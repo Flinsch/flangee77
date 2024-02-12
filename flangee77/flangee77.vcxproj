@@ -168,10 +168,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\MathLabs\utilities.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\ClearFlags.h" />
     <ClInclude Include="src\XiaoLabs\graphics\Color.h" />
     <ClInclude Include="src\XiaoLabs\graphics\ChannelOrder.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\surfaces\DepthStencilSurface.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\surfaces\RenderTargetSurface.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\surfaces\DepthStencilTarget.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\surfaces\ColorRenderTarget.h" />
     <ClInclude Include="src\XiaoLabs\resources\ResourceID.h" />
     <ClInclude Include="src\XiaoLabs\graphics\states\ShaderStates.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\CodeProvider.h" />
@@ -278,7 +279,7 @@
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\VertexShaderImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\VertexBuffer.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\VertexLayout.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\states\SurfaceStates.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\states\TargetStates.h" />
     <ClInclude Include="src\XiaoLabs\graphics\states\StreamStates.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\VertexBufferImpl.h" />
     <ClInclude Include="src\XiaoLabs\resources\ResourceUsage.h" />
@@ -288,8 +289,8 @@
   <ItemGroup>
     <ClCompile Include="src\MathLabs\utilities.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\Color.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\surfaces\DepthStencilSurface.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\surfaces\RenderTargetSurface.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\surfaces\DepthStencilTarget.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\surfaces\ColorRenderTarget.cpp" />
     <ClCompile Include="src\XiaoLabs\resources\ResourceID.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\states\ShaderStates.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\shaders\CodeProvider.cpp" />
@@ -365,7 +366,7 @@
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\VertexShaderImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\meshes\VertexBuffer.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\meshes\VertexLayout.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\states\SurfaceStates.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\states\TargetStates.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\states\StreamStates.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\VertexBufferImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\Surface.cpp" />

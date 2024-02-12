@@ -159,6 +159,9 @@ public:
     constexpr uint32_t to_abgr32() const { return to_uint32( ChannelOrder::ABGR ); }
     constexpr uint32_t to_bgra32() const { return to_uint32( ChannelOrder::BGRA ); }
 
+    const float* get_rgba_ptr() const { return &r; }
+    float* get_rgba_ptr() { return &r; }
+
 
 
     // #############################################################################

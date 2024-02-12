@@ -23,8 +23,8 @@ public:
     enum class Type
     {
         TextureSurface,
-        RenderTargetSurface,
-        DepthStencilSurface,
+        ColorRenderTarget,
+        DepthStencilTarget,
     };
 
 public:

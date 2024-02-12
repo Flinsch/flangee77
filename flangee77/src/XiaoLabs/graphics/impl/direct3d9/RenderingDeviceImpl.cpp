@@ -56,7 +56,7 @@ namespace direct3d9 {
      */
     bool RenderingDeviceImpl::_init_impl(Capabilities& capabilities)
     {
-        auto const d3d_main = dynamic_cast<GraphicsSystemImpl*>( &GraphicsSystem::instance() )->get_raw_d3d_main();
+        auto const d3d_main = static_cast<GraphicsSystemImpl*>( &GraphicsSystem::instance() )->get_raw_d3d_main();
 
         // Cache the main window's display mode.
         const MainWindow::DisplayMode window_display_mode = MainWindow::instance().get_display_mode();
@@ -122,6 +122,9 @@ namespace direct3d9 {
         // Adopt the supported shader versions.
         capabilities.shaders.vertex_shader_version = { D3DSHADER_VERSION_MAJOR( _d3d_device_caps.VertexShaderVersion ), D3DSHADER_VERSION_MINOR( _d3d_device_caps.VertexShaderVersion ) };
         capabilities.shaders.pixel_shader_version = { D3DSHADER_VERSION_MAJOR( _d3d_device_caps.PixelShaderVersion ), D3DSHADER_VERSION_MINOR( _d3d_device_caps.PixelShaderVersion ) };
+
+        // Adopt other capabilities.
+        capabilities.max_simultaneous_render_target_count = _d3d_device_caps.NumSimultaneousRTs;
 
         // (Try to) determine the available
         // video memory composition.

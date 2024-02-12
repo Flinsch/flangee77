@@ -161,6 +161,12 @@ namespace graphics {
 
         _capabilities = capabilities;
 
+        if ( _capabilities.max_simultaneous_render_target_count > states::TargetStates::MAX_RENDER_TARGETS )
+        {
+            LOG_INFO( TEXT("Your rendering device seems capable of handling ") + cl7::to_string(_capabilities.max_simultaneous_render_target_count) + TEXT(" (color) render targets simultaneously, but this framework doesn't support more than ") + cl7::to_string(states::TargetStates::MAX_RENDER_TARGETS) + TEXT(" anyway.") );
+            _capabilities.max_simultaneous_render_target_count = states::TargetStates::MAX_RENDER_TARGETS;
+        }
+
         // Ensure (primary) rendering context.
         if ( get_rendering_context() == nullptr )
             return false;

@@ -135,7 +135,9 @@ public:
     template <class TResource>
     TResource* get_resource(size_t index) const
     {
-        return dynamic_cast<TResource*>( get_resource( index ) );
+        Resource* resource = get_resource( index );
+        assert( static_cast<TResource*>( resource ) == dynamic_cast<TResource*>( resource ) );
+        return static_cast<TResource*>( resource );
     }
 
     /**
@@ -145,7 +147,9 @@ public:
     template <class TResource>
     TResource* find_resource(ResourceID id) const
     {
-        return dynamic_cast<TResource*>( find_resource( id ) );
+        Resource* resource = find_resource( id );
+        assert( static_cast<TResource*>( resource ) == dynamic_cast<TResource*>( resource ) );
+        return static_cast<TResource*>( resource );
     }
 
     /**
@@ -156,7 +160,9 @@ public:
     template <class TResource>
     TResource* find_resource(const cl7::string_view& identifier) const
     {
-        return dynamic_cast<TResource*>( find_resource( identifier ) );
+        Resource* resource = find_resource( identifier );
+        assert( static_cast<TResource*>( resource ) == dynamic_cast<TResource*>( resource ) );
+        return static_cast<TResource*>( resource );
     }
 
     /**

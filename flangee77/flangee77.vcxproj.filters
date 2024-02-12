@@ -267,7 +267,7 @@
     <ClInclude Include="src\XiaoLabs\graphics\states\RenderStates.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\states\SurfaceStates.h">
+    <ClInclude Include="src\XiaoLabs\graphics\states\TargetStates.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\XiaoLabs\graphics\states\StreamStates.h">
@@ -351,10 +351,10 @@
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\Surface.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\surfaces\DepthStencilSurface.h">
+    <ClInclude Include="src\XiaoLabs\graphics\surfaces\DepthStencilTarget.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\surfaces\RenderTargetSurface.h">
+    <ClInclude Include="src\XiaoLabs\graphics\surfaces\ColorRenderTarget.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\XiaoLabs\graphics\ChannelOrder.h">
@@ -364,6 +364,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\MathLabs\utilities.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\ClearFlags.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -551,7 +554,7 @@
     <ClCompile Include="src\XiaoLabs\graphics\states\RenderStates.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\states\SurfaceStates.cpp">
+    <ClCompile Include="src\XiaoLabs\graphics\states\TargetStates.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\states\StreamStates.cpp">
@@ -605,10 +608,10 @@
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\Surface.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\surfaces\DepthStencilSurface.cpp">
+    <ClCompile Include="src\XiaoLabs\graphics\surfaces\DepthStencilTarget.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\surfaces\RenderTargetSurface.cpp">
+    <ClCompile Include="src\XiaoLabs\graphics\surfaces\ColorRenderTarget.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\Color.cpp">

@@ -14,10 +14,23 @@ namespace direct3d9 {
 
 
 
+class RenderingDeviceImpl;
+
+
+
 class RenderingContextImpl final
     : public RenderingContext
 {
     friend class RenderingDeviceImpl;
+
+private:
+    struct HardwareStates
+    {
+        std::array<IDirect3DSurface9*, states::TargetStates::MAX_RENDER_TARGETS> render_targets;
+        IDirect3DSurface9* depth_stencil_surface;
+
+        HardwareStates();
+    } hardware_states;
 
 
 
@@ -28,7 +41,7 @@ protected:
     /**
      * Explicit constructor.
      */
-    RenderingContextImpl(RenderingDevice* rendering_device, unsigned index, wrl::ComPtr<IDirect3DDevice9> d3d_device, wrl::ComPtr<IDirect3DSurface9> d3d_render_target_surface, wrl::ComPtr<IDirect3DSurface9> d3d_depth_stencil_surface);
+    RenderingContextImpl(RenderingDeviceImpl* rendering_device, unsigned index, wrl::ComPtr<IDirect3DDevice9> d3d_device, wrl::ComPtr<IDirect3DSurface9> d3d_render_target_surface, wrl::ComPtr<IDirect3DSurface9> d3d_depth_stencil_surface);
 
     /**
      * Destructor.
@@ -92,14 +105,19 @@ private:
     virtual bool _end_scene_impl() override;
 
     /**
+     * Clears the currently bound render target(s).
+     */
+    virtual bool _clear_impl(const ResolvedTargetStates& resolved_target_states, ClearFlags clear_flags, const Color& color, float depth, unsigned stencil) override;
+
+    /**
      * Draws non-indexed, non-instanced primitives.
      */
-    virtual bool _draw_impl(const DrawStates& draw_states, unsigned primitive_count, unsigned start_vertex) override;
+    virtual bool _draw_impl(const ResolvedDrawStates& resolved_draw_states, unsigned primitive_count, unsigned start_vertex) override;
 
     /**
      * Draws indexed, non-instanced primitives.
      */
-    virtual bool _draw_indexed_impl(const DrawStates& draw_states, unsigned primitive_count, unsigned start_index, signed base_vertex) override;
+    virtual bool _draw_indexed_impl(const ResolvedDrawStates& resolved_draw_states, unsigned primitive_count, unsigned start_index, signed base_vertex) override;
 
 
 
@@ -110,7 +128,12 @@ private:
     /**
      * Transfers the current states to the device if necessary.
      */
-    bool _flush_states(const DrawStates& draw_states);
+    bool _flush_target_states(const ResolvedTargetStates& resolved_draw_states);
+
+    /**
+     * Transfers the current states to the device if necessary.
+     */
+    bool _flush_draw_states(const ResolvedDrawStates& resolved_draw_states);
 
 }; // class RenderingContextImpl
 

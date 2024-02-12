@@ -49,6 +49,9 @@ public:
             size_t shared_system_memory = 0;
         } memory;
 
+        /** The maximum number of simultaneous (color) render targets. */
+        unsigned max_simultaneous_render_target_count;
+
         struct
         {
             /** The maximum supported vertex shader version. */

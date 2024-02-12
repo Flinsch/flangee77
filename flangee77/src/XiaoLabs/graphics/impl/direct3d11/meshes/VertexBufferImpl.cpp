@@ -45,7 +45,7 @@ namespace meshes {
      */
     VertexBufferImpl::VertexBufferImpl(const CreateParams<Desc>& params)
         : VertexBuffer( params )
-        , _d3d_device( dynamic_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device() )
+        , _d3d_device( static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device() )
         , _d3d_vertex_buffer()
     {
     }
@@ -121,7 +121,7 @@ namespace meshes {
      */
     bool VertexBufferImpl::_update_impl(const resources::DataProvider& data_provider, bool discard, bool no_overwrite)
     {
-        auto d3d_device_context = dynamic_cast<RenderingContextImpl*>( GraphicsSystem::instance().get_rendering_device()->get_primary_context() )->get_raw_d3d_device_context();
+        auto d3d_device_context = static_cast<RenderingContextImpl*>( GraphicsSystem::instance().get_rendering_device()->get_primary_context() )->get_raw_d3d_device_context();
 
         bool entire = data_provider.get_offset() == 0 && data_provider.get_size() == static_cast<size_t>( _size );
 

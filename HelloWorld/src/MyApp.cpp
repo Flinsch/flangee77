@@ -136,6 +136,7 @@ namespace helloworld {
      */
     void MyApp::_render_impl()
     {
+        xl7::graphics::primary_context()->clear( xl7::graphics::ClearFlags::All, { 1.0f, 0.333f, 0.75f }, 1.0f, 0x0 );
     }
 
     /**
