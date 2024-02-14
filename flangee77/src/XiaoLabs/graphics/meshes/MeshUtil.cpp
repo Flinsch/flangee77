@@ -43,7 +43,7 @@ namespace meshes {
     {
         switch ( topology )
         {
-        case Topology::Unknown:
+        case Topology::Undefined:
             return 0;
         case Topology::PointList:
             return primitive_count;
@@ -70,7 +70,7 @@ namespace meshes {
     {
         switch ( topology )
         {
-        case Topology::Unknown:
+        case Topology::Undefined:
             return 0;
         case Topology::PointList:
             return vertex_index_count;
