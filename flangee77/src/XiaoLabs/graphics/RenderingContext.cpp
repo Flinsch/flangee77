@@ -242,7 +242,7 @@ namespace graphics {
             }
         }
 
-        if ( resolved_draw_states.topology == meshes::Topology::Unknown )
+        if ( resolved_draw_states.topology == meshes::Topology::Undefined )
         {
             LOG_ERROR( TEXT("No/unknown topology is provided.") );
             return false;
