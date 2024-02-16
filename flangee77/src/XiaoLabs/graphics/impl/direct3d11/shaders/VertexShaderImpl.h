@@ -69,6 +69,17 @@ private:
 
 
     // #############################################################################
+    // Properties
+    // #############################################################################
+public:
+    /**
+     * Returns the Direct3D 11 vertex shader interface.
+     */
+    ID3D11VertexShader* get_raw_d3d_vertex_shader() const { return _d3d_vertex_shader.Get(); }
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 private:
@@ -99,13 +110,13 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_recompilable_impl(const xl7::graphics::shaders::CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
+    virtual bool _acquire_recompilable_impl(const xl7::graphics::shaders::CodeProvider& code_provider, xl7::graphics::shaders::ShaderCode& bytecode_out, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
 
     /**
      * Recompiles the shader code. This tends to result in the resource having to be
      * completely recreated in the background.
      */
-    virtual bool _recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
+    virtual bool _recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ShaderCode& bytecode_out, xl7::graphics::shaders::ParameterTable& parameter_table_out) override;
 
 }; // class VertexShaderImpl
 

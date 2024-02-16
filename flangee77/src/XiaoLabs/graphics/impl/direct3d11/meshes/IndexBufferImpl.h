@@ -56,6 +56,9 @@ private:
     // Attributes
     // #############################################################################
 private:
+    const DXGI_FORMAT _dxgi_format;
+
+private:
     /**
      * The Direct3D 11 device interface.
      */
@@ -65,6 +68,20 @@ private:
      * The Direct3D 11 index buffer interface.
      */
     wrl::ComPtr<ID3D11Buffer> _d3d_index_buffer;
+
+
+
+    // #############################################################################
+    // Properties
+    // #############################################################################
+public:
+    DXGI_FORMAT get_dxgi_format() const { return _dxgi_format; }
+
+public:
+    /**
+     * Returns the Direct3D 11 index buffer interface.
+     */
+    ID3D11Buffer* get_raw_d3d_index_buffer() const { return _d3d_index_buffer.Get(); }
 
 
 

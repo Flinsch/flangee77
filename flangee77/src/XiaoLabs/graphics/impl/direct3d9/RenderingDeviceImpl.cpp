@@ -10,7 +10,7 @@
 
 #include <CoreLabs/logging.h>
 #include <CoreLabs/strings.h>
-#include <CoreLabs/util.h>
+#include <CoreLabs/utilities.h>
 
 #include <dxgi.h>
 
@@ -63,8 +63,8 @@ namespace direct3d9 {
         const bool fullscreen = window_display_mode == MainWindow::DisplayMode::Fullscreen;
 
         // "Calculate" the back buffer size.
-        const unsigned back_buffer_width = cl7::util::coalesce( GraphicsSystem::instance().get_config().video.display_mode.width, MainWindow::instance().get_width() );
-        const unsigned back_buffer_height = cl7::util::coalesce( GraphicsSystem::instance().get_config().video.display_mode.height, MainWindow::instance().get_height() );
+        const unsigned back_buffer_width = cl7::utilities::coalesce( GraphicsSystem::instance().get_config().video.display_mode.width, MainWindow::instance().get_width() );
+        const unsigned back_buffer_height = cl7::utilities::coalesce( GraphicsSystem::instance().get_config().video.display_mode.height, MainWindow::instance().get_height() );
 
         // Set the format of the back buffer
         // and the depth-stencil surface.
@@ -125,6 +125,7 @@ namespace direct3d9 {
 
         // Adopt other capabilities.
         capabilities.max_simultaneous_render_target_count = _d3d_device_caps.NumSimultaneousRTs;
+        capabilities.max_concurrent_vertex_stream_count = _d3d_device_caps.MaxStreams;
 
         // (Try to) determine the available
         // video memory composition.

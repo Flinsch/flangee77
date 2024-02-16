@@ -33,7 +33,7 @@ public:
     resources::ResourceID get_shader_id() const { return _shader_id.get_value(); }
 
 public:
-    void set_shader(resources::ResourceID shader_id) { _shader_id.set_value( shader_id ); }
+    void set_shader_id(resources::ResourceID shader_id) { _shader_id.set_value( shader_id ); }
 
 }; // class ShaderStates
 

@@ -82,6 +82,11 @@ protected:
 
 private:
     /**
+     * The compiled bytecode.
+     */
+    ShaderCode _bytecode;
+
+    /**
      * The table of constant/sampler parameters.
      */
     ParameterTable _parameter_table;
@@ -114,6 +119,11 @@ public:
     bool is_recompilable() const { return _desc.language == ShaderCode::Language::HighLevel; }
 
 public:
+    /**
+     * Returns the compiled bytecode.
+     */
+    const ShaderCode& get_bytecode() const { return _bytecode; }
+
     /**
      * Returns the table of constant/sampler parameters.
      */
@@ -178,13 +188,13 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_recompilable_impl(const CodeProvider& code_provider, ParameterTable& parameter_table_out) = 0;
+    virtual bool _acquire_recompilable_impl(const CodeProvider& code_provider, ShaderCode& bytecode_out, ParameterTable& parameter_table_out) = 0;
 
     /**
      * Recompiles the shader code. This tends to result in the resource having to be
      * completely recreated in the background.
      */
-    virtual bool _recompile_impl(const MacroDefinitions& macro_definitions, ParameterTable& parameter_table_out) = 0;
+    virtual bool _recompile_impl(const MacroDefinitions& macro_definitions, ShaderCode& bytecode_out, ParameterTable& parameter_table_out) = 0;
 
 }; // class Shader
 

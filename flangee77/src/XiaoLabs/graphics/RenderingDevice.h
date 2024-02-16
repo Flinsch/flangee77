@@ -51,6 +51,8 @@ public:
 
         /** The maximum number of simultaneous (color) render targets. */
         unsigned max_simultaneous_render_target_count;
+        /** The maximum number of concurrent vertex data streams. */
+        unsigned max_concurrent_vertex_stream_count;
 
         struct
         {

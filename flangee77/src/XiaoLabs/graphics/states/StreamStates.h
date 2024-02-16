@@ -28,7 +28,6 @@ public:
     // Attributes
     // #############################################################################
 private:
-    StateArray<unsigned, MAX_VERTEX_STREAMS> _instance_data_step_rate;
     StateArray<resources::ResourceID, MAX_VERTEX_STREAMS> _vertex_buffer_ids;
     SingleState<resources::ResourceID> _index_buffer_id;
     SingleState<meshes::Topology> _topology;
@@ -39,8 +38,6 @@ private:
     // Properties
     // #############################################################################
 public:
-    unsigned get_instance_data_step_rate(unsigned index) const;
-
     resources::ResourceID get_vertex_buffer_id() const { return get_vertex_buffer_id( 0 ); }
     resources::ResourceID get_vertex_buffer_id(unsigned index) const;
 
@@ -49,8 +46,6 @@ public:
     meshes::Topology get_topology(meshes::Topology default_topology = meshes::Topology::Undefined) const { return _topology.get_value( default_topology ); }
 
 public:
-    void set_instance_data_step_rate(unsigned index, unsigned instance_data_step_rate);
-
     void set_vertex_buffer_id(resources::ResourceID vertex_buffer_id) { set_vertex_buffer_id( 0, vertex_buffer_id ); }
     void set_vertex_buffer_id(unsigned index, resources::ResourceID vertex_buffer_id);
 

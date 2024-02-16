@@ -26,10 +26,18 @@ class RenderingContextImpl final
 private:
     struct HardwareStates
     {
-        std::array<ID3D11RenderTargetView*, states::TargetStates::MAX_RENDER_TARGETS> render_target_views;
+        ID3D11RenderTargetView* render_target_views[ states::TargetStates::MAX_RENDER_TARGETS ];
         ID3D11DepthStencilView* depth_stencil_view;
 
+        ID3D11Buffer* vertex_buffers[ states::StreamStates::MAX_VERTEX_STREAMS ];
+        ID3D11Buffer* index_buffer;
+
         D3D11_PRIMITIVE_TOPOLOGY primitive_topology;
+
+        ID3D11InputLayout* input_layout;
+
+        ID3D11VertexShader* vertex_shader;
+        ID3D11PixelShader* pixel_shader;
 
         HardwareStates();
     } hardware_states;

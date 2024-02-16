@@ -17,6 +17,21 @@ namespace meshes {
 
 
 
+    static DXGI_FORMAT _dxgi_format_from(xl7::graphics::meshes::IndexType index_type)
+    {
+        switch ( index_type )
+        {
+        case xl7::graphics::meshes::IndexType::UINT16:
+            return DXGI_FORMAT_R16_UINT;
+        case xl7::graphics::meshes::IndexType::UINT32:
+            return DXGI_FORMAT_R32_UINT;
+        default:
+            assert( false );
+        }
+
+        return DXGI_FORMAT_UNKNOWN;
+    }
+
     static D3D11_USAGE _d3d_usage_from(resources::ResourceUsage resource_usage)
     {
         switch ( resource_usage )
@@ -45,6 +60,7 @@ namespace meshes {
      */
     IndexBufferImpl::IndexBufferImpl(const CreateParams<Desc>& params)
         : IndexBuffer( params )
+        , _dxgi_format( _dxgi_format_from( _desc.index_type ) )
         , _d3d_device( static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device() )
         , _d3d_index_buffer()
     {

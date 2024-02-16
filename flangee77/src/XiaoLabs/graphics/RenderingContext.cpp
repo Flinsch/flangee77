@@ -170,10 +170,9 @@ namespace graphics {
         for ( unsigned target_index = 0; target_index < states::StreamStates::MAX_VERTEX_STREAMS; ++target_index )
         {
             auto* color_render_target = _rendering_device->get_surface_manager()->find_resource<surfaces::ColorRenderTarget>( target_states.get_color_render_target_id( target_index ) );
-            if ( !color_render_target )
-                break;
             resolved_target_states.color_render_targets[ target_index ] = color_render_target;
-            ++resolved_target_states.target_count;
+            if ( color_render_target )
+                resolved_target_states.target_count = target_index + 1;
         }
 
         resolved_target_states.depth_stencil_target = _rendering_device->get_surface_manager()->find_resource<surfaces::DepthStencilTarget>( target_states.get_depth_stencil_target_id() );
@@ -186,25 +185,28 @@ namespace graphics {
     {
         _resolve_target_states( resolved_draw_states );
 
+        meshes::Topology default_topology = meshes::Topology::Undefined;
+
         resolved_draw_states.stream_count = 0;
         for ( unsigned stream_index = 0; stream_index < states::StreamStates::MAX_VERTEX_STREAMS; ++stream_index )
         {
             auto* vertex_buffer = _rendering_device->get_mesh_manager()->find_resource<meshes::VertexBuffer>( stream_states.get_vertex_buffer_id( stream_index ) );
-            if ( !vertex_buffer )
-                break;
             resolved_draw_states.vertex_buffers[ stream_index ] = vertex_buffer;
-            ++resolved_draw_states.stream_count;
+            if ( vertex_buffer )
+                resolved_draw_states.stream_count = stream_index + 1;
+            if ( vertex_buffer && stream_index == 0 )
+                default_topology = vertex_buffer->get_desc().topology;
         }
 
         if ( indexed )
         {
             resolved_draw_states.index_buffer = _rendering_device->get_mesh_manager()->find_resource<meshes::IndexBuffer>( stream_states.get_index_buffer_id() );
-            resolved_draw_states.topology = stream_states.get_topology( resolved_draw_states.index_buffer->get_desc().topology );
+            resolved_draw_states.topology = stream_states.get_topology( resolved_draw_states.index_buffer ? resolved_draw_states.index_buffer->get_desc().topology : default_topology );
         }
         else // => !indexed
         {
             resolved_draw_states.index_buffer = nullptr;
-            resolved_draw_states.topology = stream_states.get_topology( resolved_draw_states.vertex_buffers[0]->get_desc().topology );
+            resolved_draw_states.topology = stream_states.get_topology( default_topology );
         } // indexed?
 
         resolved_draw_states.vertex_shader = _rendering_device->get_shader_manager()->find_resource<shaders::VertexShader>( vertex_shader_states.get_shader_id() );

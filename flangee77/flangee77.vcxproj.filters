@@ -165,7 +165,7 @@
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\RenderingDeviceImpl.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\CoreLabs\util.h">
+    <ClInclude Include="src\CoreLabs\utilities.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\CoreLabs\memory.h">
@@ -367,6 +367,12 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\XiaoLabs\graphics\ClearFlags.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\shared\meshes\ComposedVertexLayout.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\shared\meshes\VertexBufferBinding.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -618,6 +624,12 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\MathLabs\utilities.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\shared\meshes\ComposedVertexLayout.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\shared\meshes\VertexBufferBinding.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

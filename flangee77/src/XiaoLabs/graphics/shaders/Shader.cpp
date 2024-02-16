@@ -46,7 +46,7 @@ namespace shaders {
             return false;
         }
 
-        if ( !_recompile_impl( macro_definitions, _parameter_table ) )
+        if ( !_recompile_impl( macro_definitions, _bytecode, _parameter_table ) )
         {
             LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be recompiled.") );
             return false;
@@ -110,9 +110,16 @@ namespace shaders {
         auto code_provider = static_cast<const CodeProvider&>( data_provider );
 
         if ( is_precompiled() )
+        {
+            assert( code_provider.get_shader_code().get_language() == ShaderCode::Language::Bytecode );
+            _bytecode = code_provider.get_shader_code();
+
             return _acquire_precompiled_impl( code_provider, _parameter_table );
+        }
         if ( is_recompilable() )
-            return _acquire_recompilable_impl( code_provider, _parameter_table );
+        {
+            return _acquire_recompilable_impl( code_provider, _bytecode, _parameter_table );
+        }
 
         assert( false );
         return false;

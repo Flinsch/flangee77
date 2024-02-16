@@ -5,6 +5,11 @@
 
 #include "./prerequisites.h"
 
+#include "../shared/meshes/VertexBufferBinding.h"
+#include "../shared/meshes/ComposedVertexLayout.h"
+
+#include <unordered_map>
+
 
 
 namespace xl7 {
@@ -77,6 +82,10 @@ private:
      */
     D3D_FEATURE_LEVEL _d3d_feature_level;
 
+private:
+    std::unordered_map<shared::meshes::VertexBufferBinding, wrl::ComPtr<ID3D11InputLayout>> _d3d_input_layouts_by_binding;
+    std::unordered_map<shared::meshes::ComposedVertexLayout, wrl::ComPtr<ID3D11InputLayout>> _d3d_input_layouts_by_layout;
+
 
 
     // #############################################################################
@@ -129,6 +138,27 @@ private:
      * Presents the contents of the next buffer in the device's swap chain.
      */
     virtual bool _present_impl() override;
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+private:
+
+public:
+    /**
+     * Tries to find a suitable Direct3D 11 input layout based on the currently set
+     * vertex buffer(s).
+     */
+    ID3D11InputLayout* _find_d3d_input_layout(const shared::meshes::VertexBufferBinding& vertex_buffer_binding);
+
+    /**
+     * Tries to find a suitable Direct3D 11 input layout, and otherwise creates a
+     * new one, both based on the vertex layout(s) of the currently set vertex
+     * buffer(s).
+     */
+    ID3D11InputLayout* _find_or_create_d3d_input_layout(const shared::meshes::VertexBufferBinding& vertex_buffer_binding, const void* shader_bytecode_with_input_signature, size_t bytecode_length);
 
 }; // class RenderingDeviceImpl
 

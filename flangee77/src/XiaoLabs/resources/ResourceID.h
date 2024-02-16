@@ -89,6 +89,11 @@ public:
     bool is_valid() const;
 
     /**
+     * Returns the technical unsigned-integer representation of the resource ID.
+     */
+    id_t value() const { return _id; }
+
+    /**
      * Returns the index part of the resource ID.
      */
     size_t index() const;

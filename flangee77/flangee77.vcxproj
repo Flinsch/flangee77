@@ -223,7 +223,7 @@
     <ClInclude Include="src\XiaoLabs\input.h" />
     <ClInclude Include="src\XiaoLabs\resources\Resource.h" />
     <ClInclude Include="src\CoreLabs\memory.h" />
-    <ClInclude Include="src\CoreLabs\util.h" />
+    <ClInclude Include="src\CoreLabs\utilities.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingDeviceImpl.h" />
     <ClInclude Include="src\TestLabs\reporting\Reporter.h" />
     <ClInclude Include="src\TestLabs\Signature.h" />
@@ -285,6 +285,8 @@
     <ClInclude Include="src\XiaoLabs\resources\ResourceUsage.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\VertexDataProvider.h" />
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\Surface.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\shared\meshes\VertexBufferBinding.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\shared\meshes\ComposedVertexLayout.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\MathLabs\utilities.cpp" />
@@ -370,6 +372,8 @@
     <ClCompile Include="src\XiaoLabs\graphics\states\StreamStates.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\VertexBufferImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\Surface.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\shared\meshes\VertexBufferBinding.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\shared\meshes\ComposedVertexLayout.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

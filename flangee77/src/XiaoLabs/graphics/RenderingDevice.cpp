@@ -161,11 +161,16 @@ namespace graphics {
 
         _capabilities = capabilities;
 
-        if ( _capabilities.max_simultaneous_render_target_count > states::TargetStates::MAX_RENDER_TARGETS )
-        {
-            LOG_INFO( TEXT("Your rendering device seems capable of handling ") + cl7::to_string(_capabilities.max_simultaneous_render_target_count) + TEXT(" (color) render targets simultaneously, but this framework doesn't support more than ") + cl7::to_string(states::TargetStates::MAX_RENDER_TARGETS) + TEXT(" anyway.") );
-            _capabilities.max_simultaneous_render_target_count = states::TargetStates::MAX_RENDER_TARGETS;
-        }
+        auto _check_adjust_max_cap = [](unsigned& cap_value, unsigned max_value, cl7::string_view cap_name) {
+            if ( cap_value > max_value )
+            {
+                LOG_INFO( TEXT("Your rendering device seems capable of handling ") + cl7::to_string(cap_value) + TEXT(" ") + cl7::string(cap_name) + TEXT(", but this framework doesn't support more than ") + cl7::to_string(max_value) + TEXT(" anyway.") );
+                cap_value = max_value;
+            }
+        };
+
+        _check_adjust_max_cap( _capabilities.max_simultaneous_render_target_count, states::TargetStates::MAX_RENDER_TARGETS, TEXT("(color) render targets simultaneously") );
+        _check_adjust_max_cap( _capabilities.max_concurrent_vertex_stream_count, states::StreamStates::MAX_VERTEX_STREAMS, TEXT("vertex data streams concurrently") );
 
         // Ensure (primary) rendering context.
         if ( get_rendering_context() == nullptr )

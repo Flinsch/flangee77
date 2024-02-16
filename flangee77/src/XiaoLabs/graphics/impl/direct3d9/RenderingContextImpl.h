@@ -5,6 +5,11 @@
 
 #include "./prerequisites.h"
 
+#include "../shared/meshes/VertexBufferBinding.h"
+#include "../shared/meshes/ComposedVertexLayout.h"
+
+#include <unordered_map>
+
 
 
 namespace xl7 {
@@ -26,11 +31,19 @@ class RenderingContextImpl final
 private:
     struct HardwareStates
     {
-        std::array<IDirect3DSurface9*, states::TargetStates::MAX_RENDER_TARGETS> render_targets;
+        IDirect3DSurface9* render_targets[ states::TargetStates::MAX_RENDER_TARGETS ];
         IDirect3DSurface9* depth_stencil_surface;
 
+        IDirect3DVertexBuffer9* vertex_buffers[ states::StreamStates::MAX_VERTEX_STREAMS ];
+        IDirect3DIndexBuffer9* index_buffer;
+
+        IDirect3DVertexDeclaration9* vertex_declaration;
+
+        IDirect3DVertexShader9* vertex_shader;
+        IDirect3DPixelShader9* pixel_shader;
+
         HardwareStates();
-    } hardware_states;
+    };
 
 
 
@@ -76,6 +89,12 @@ private:
      * The Direct3D 9 (standard) depth/stencil surface interface.
      */
     wrl::ComPtr<IDirect3DSurface9> _d3d_depth_stencil_surface;
+
+private:
+    HardwareStates hardware_states;
+
+    std::unordered_map<shared::meshes::VertexBufferBinding, wrl::ComPtr<IDirect3DVertexDeclaration9>> _d3d_vertex_declarations_by_binding;
+    std::unordered_map<shared::meshes::ComposedVertexLayout, wrl::ComPtr<IDirect3DVertexDeclaration9>> _d3d_vertex_declarations_by_layout;
 
 
 
@@ -134,6 +153,20 @@ private:
      * Transfers the current states to the device if necessary.
      */
     bool _flush_draw_states(const ResolvedDrawStates& resolved_draw_states);
+
+private:
+    /**
+     * Tries to find a suitable Direct3D 9 vertex declaration based on the currently
+     * set vertex buffer(s).
+     */
+    IDirect3DVertexDeclaration9* _find_d3d_vertex_declaration(const shared::meshes::VertexBufferBinding& vertex_buffer_binding);
+
+    /**
+     * Tries to find a suitable Direct3D 9 vertex declaration, and otherwise creates
+     * a new one, both based on the vertex layout(s) of the currently set vertex
+     * buffer(s).
+     */
+    IDirect3DVertexDeclaration9* _find_or_create_d3d_vertex_declaration(const shared::meshes::VertexBufferBinding& vertex_buffer_binding);
 
 }; // class RenderingContextImpl
 

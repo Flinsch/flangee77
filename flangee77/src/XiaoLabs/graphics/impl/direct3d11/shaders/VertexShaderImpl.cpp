@@ -88,7 +88,7 @@ namespace shaders {
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    bool VertexShaderImpl::_acquire_recompilable_impl(const xl7::graphics::shaders::CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out)
+    bool VertexShaderImpl::_acquire_recompilable_impl(const xl7::graphics::shaders::CodeProvider& code_provider, xl7::graphics::shaders::ShaderCode& bytecode_out, xl7::graphics::shaders::ParameterTable& parameter_table_out)
     {
         const cl7::Version& version = GraphicsSystem::instance().get_rendering_device()->get_capabilities().shaders.vertex_shader_version;
         const cl7::astring target = "vs_" + cl7::to_astring(version.major) + "_" + cl7::to_astring(version.minor);
@@ -97,26 +97,26 @@ namespace shaders {
         const xl7::graphics::shaders::ShaderCode& hlsl_code = code_provider.get_shader_code();
         assert( hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel );
 
-        const xl7::graphics::shaders::ShaderCode bytecode = shared::shaders::D3DShaderCompiler().compile_hlsl_code( hlsl_code, TEXT(""), code_provider.get_macro_definitions(), entry_point, target );
-        if ( bytecode.get_code_data().empty() )
+        bytecode_out = shared::shaders::D3DShaderCompiler().compile_hlsl_code( hlsl_code, TEXT(""), code_provider.get_macro_definitions(), entry_point, target );
+        if ( bytecode_out.get_code_data().empty() )
         {
             LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be compiled.") );
             return false;
         }
 
-        return _acquire_precompiled_impl( xl7::graphics::shaders::CodeProvider( &bytecode, &code_provider.get_macro_definitions() ), parameter_table_out );
+        return _acquire_precompiled_impl( xl7::graphics::shaders::CodeProvider( &bytecode_out, &code_provider.get_macro_definitions() ), parameter_table_out );
     }
 
     /**
      * Recompiles the shader code. This tends to result in the resource having to be
      * completely recreated in the background.
      */
-    bool VertexShaderImpl::_recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ParameterTable& parameter_table_out)
+    bool VertexShaderImpl::_recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ShaderCode& bytecode_out, xl7::graphics::shaders::ParameterTable& parameter_table_out)
     {
         xl7::graphics::shaders::ShaderCode hlsl_code( _desc.language, _data );
         assert( hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel );
 
-        return _acquire_recompilable_impl( xl7::graphics::shaders::CodeProvider( &hlsl_code, &macro_definitions ), parameter_table_out );
+        return _acquire_recompilable_impl( xl7::graphics::shaders::CodeProvider( &hlsl_code, &macro_definitions ), bytecode_out, parameter_table_out );
     }
 
 

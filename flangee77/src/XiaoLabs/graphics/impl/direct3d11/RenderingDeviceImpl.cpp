@@ -9,7 +9,7 @@
 #include <XiaoLabs/graphics.h>
 
 #include <CoreLabs/logging.h>
-#include <CoreLabs/util.h>
+#include <CoreLabs/utilities.h>
 
 
 
@@ -17,6 +17,46 @@ namespace xl7 {
 namespace graphics {
 namespace impl {
 namespace direct3d11 {
+
+
+
+    static LPCSTR _d3d_semantic_name_from(xl7::graphics::meshes::VertexLayout::Semantic semantic)
+    {
+        switch ( semantic )
+        {
+        case xl7::graphics::meshes::VertexLayout::Semantic::POSITION:       return "POSITION";
+        case xl7::graphics::meshes::VertexLayout::Semantic::POSITIONT:      return "POSITIONT";
+        case xl7::graphics::meshes::VertexLayout::Semantic::NORMAL:         return "NORMAL";
+        case xl7::graphics::meshes::VertexLayout::Semantic::TANGENT:        return "TANGENT";
+        case xl7::graphics::meshes::VertexLayout::Semantic::BINORMAL:       return "BINORMAL";
+        case xl7::graphics::meshes::VertexLayout::Semantic::COLOR:          return "COLOR";
+        case xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD:       return "TEXCOORD";
+        case xl7::graphics::meshes::VertexLayout::Semantic::BLENDINDICES:   return "BLENDINDICES";
+        case xl7::graphics::meshes::VertexLayout::Semantic::BLENDWEIGHT:    return "BLENDWEIGHT";
+        case xl7::graphics::meshes::VertexLayout::Semantic::PSIZE:          return "PSIZE";
+        default:
+            assert( false );
+        }
+
+        return "";
+    }
+
+    static DXGI_FORMAT _dxgi_format_from(xl7::graphics::meshes::VertexLayout::DataType data_type)
+    {
+        switch ( data_type )
+        {
+        case xl7::graphics::meshes::VertexLayout::DataType::FLOAT1:     return DXGI_FORMAT_R32_FLOAT;
+        case xl7::graphics::meshes::VertexLayout::DataType::FLOAT2:     return DXGI_FORMAT_R32G32_FLOAT;
+        case xl7::graphics::meshes::VertexLayout::DataType::FLOAT3:     return DXGI_FORMAT_R32G32B32_FLOAT;
+        case xl7::graphics::meshes::VertexLayout::DataType::FLOAT4:     return DXGI_FORMAT_R32G32B32A32_FLOAT;
+        case xl7::graphics::meshes::VertexLayout::DataType::COLOR:      return DXGI_FORMAT_R8G8B8A8_UINT;
+        case xl7::graphics::meshes::VertexLayout::DataType::UBYTE4:     return DXGI_FORMAT_R8G8B8A8_UINT;
+        default:
+            assert( false );
+        }
+
+        return DXGI_FORMAT_UNKNOWN;
+    }
 
 
 
@@ -134,6 +174,7 @@ namespace direct3d11 {
 
         // Adopt other capabilities.
         capabilities.max_simultaneous_render_target_count = D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT;
+        capabilities.max_concurrent_vertex_stream_count = D3D11_IA_VERTEX_INPUT_RESOURCE_SLOT_COUNT;
 
         // Query the DXGI device interface.
         wrl::ComPtr<IDXGIDeviceN> dxgi_device;
@@ -170,8 +211,8 @@ namespace direct3d11 {
         const bool fullscreen = window_display_mode == MainWindow::DisplayMode::Fullscreen;
 
         // "Calculate" the back buffer size.
-        const unsigned back_buffer_width = cl7::util::coalesce( GraphicsSystem::instance().get_config().video.display_mode.width, MainWindow::instance().get_width() );
-        const unsigned back_buffer_height = cl7::util::coalesce( GraphicsSystem::instance().get_config().video.display_mode.height, MainWindow::instance().get_height() );
+        const unsigned back_buffer_width = cl7::utilities::coalesce( GraphicsSystem::instance().get_config().video.display_mode.width, MainWindow::instance().get_width() );
+        const unsigned back_buffer_height = cl7::utilities::coalesce( GraphicsSystem::instance().get_config().video.display_mode.height, MainWindow::instance().get_height() );
 
         // Fill the swap chain description structure.
         DXGI_SWAP_CHAIN_DESCn dxgi_swap_chain_desc;
@@ -363,6 +404,79 @@ namespace direct3d11 {
         }
 
         return true;
+    }
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Tries to find a suitable Direct3D 11 input layout based on the currently set
+     * vertex buffer(s).
+     */
+    ID3D11InputLayout* RenderingDeviceImpl::_find_d3d_input_layout(const shared::meshes::VertexBufferBinding& vertex_buffer_binding)
+    {
+        auto it = _d3d_input_layouts_by_binding.find( vertex_buffer_binding );
+        if ( it != _d3d_input_layouts_by_binding.end() )
+            return it->second.Get();
+
+        return nullptr;
+    }
+
+    /**
+     * Tries to find a suitable Direct3D 11 input layout, and otherwise creates a
+     * new one, both based on the vertex layout(s) of the currently set vertex
+     * buffer(s).
+     */
+    ID3D11InputLayout* RenderingDeviceImpl::_find_or_create_d3d_input_layout(const shared::meshes::VertexBufferBinding& vertex_buffer_binding, const void* shader_bytecode_with_input_signature, size_t bytecode_length)
+    {
+        shared::meshes::ComposedVertexLayout composed_vertex_layout{ vertex_buffer_binding };
+
+        auto it = _d3d_input_layouts_by_layout.find( composed_vertex_layout );
+        if ( it != _d3d_input_layouts_by_layout.end() )
+            return it->second.Get();
+
+        std::vector<D3D11_INPUT_ELEMENT_DESC> d3d_input_element_descs;
+        for ( unsigned stream_index = 0; stream_index < states::StreamStates::MAX_VERTEX_STREAMS; ++stream_index )
+        {
+            if ( !vertex_buffer_binding.vertex_buffer_ids[ stream_index ].is_valid() )
+                continue;
+
+            unsigned offset = 0;
+
+            for ( const xl7::graphics::meshes::VertexLayout::Element& element : composed_vertex_layout.vertex_layouts[ stream_index ].elements )
+            {
+                D3D11_INPUT_ELEMENT_DESC d3d_input_element_desc;
+                d3d_input_element_desc.SemanticName = _d3d_semantic_name_from( element.semantic );
+                d3d_input_element_desc.SemanticIndex = element.semantic_index;
+                d3d_input_element_desc.Format = _dxgi_format_from( element.data_type );
+                d3d_input_element_desc.InputSlot = stream_index;
+                d3d_input_element_desc.AlignedByteOffset = offset;
+                d3d_input_element_desc.InputSlotClass = composed_vertex_layout.instance_data_step_rates[ stream_index ] > 0 ? D3D11_INPUT_PER_INSTANCE_DATA : D3D11_INPUT_PER_VERTEX_DATA;
+                d3d_input_element_desc.InstanceDataStepRate = composed_vertex_layout.instance_data_step_rates[ stream_index ];
+
+                d3d_input_element_descs.push_back( d3d_input_element_desc );
+
+                offset += static_cast<WORD>( element.get_size() );
+            } // for each vertex element
+        } // for each vertex stream
+
+        auto num_elements = static_cast<unsigned>( d3d_input_element_descs.size() );
+
+        wrl::ComPtr<ID3D11InputLayout> d3d_input_layout;
+        HRESULT hresult = _d3d_device->CreateInputLayout( &d3d_input_element_descs[0], num_elements, shader_bytecode_with_input_signature, bytecode_length, &d3d_input_layout );
+        if ( FAILED(hresult) )
+        {
+            LOG_ERROR( errors::d3d11_result( hresult, TEXT("ID3D11Device::CreateInputLayout") ) );
+            return nullptr;
+        }
+
+        _d3d_input_layouts_by_layout.emplace( std::make_pair( std::move(composed_vertex_layout), d3d_input_layout ) );
+        _d3d_input_layouts_by_binding.insert( std::make_pair( vertex_buffer_binding, d3d_input_layout ) );
+
+        return d3d_input_layout.Get();
     }
 
 

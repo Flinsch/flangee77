@@ -136,7 +136,17 @@ namespace helloworld {
      */
     void MyApp::_render_impl()
     {
-        xl7::graphics::primary_context()->clear( xl7::graphics::ClearFlags::All, { 1.0f, 0.333f, 0.75f }, 1.0f, 0x0 );
+        auto* rendering_context = xl7::graphics::primary_context();
+
+        rendering_context->clear( xl7::graphics::ClearFlags::All, { 1.0f, 0.333f, 0.75f }, 1.0f, 0x0 );
+
+        rendering_context->stream_states.set_vertex_buffer_id( _vertex_buffer_id );
+        rendering_context->stream_states.set_index_buffer_id( _index_buffer_id );
+
+        rendering_context->vertex_shader_states.set_shader_id( _vertex_shader_id );
+        rendering_context->pixel_shader_states.set_shader_id( _pixel_shader_id );
+
+        rendering_context->draw_indexed();
     }
 
     /**
