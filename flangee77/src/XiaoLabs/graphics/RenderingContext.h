@@ -50,7 +50,7 @@ protected:
         const shaders::VertexShader* vertex_shader;
         const shaders::PixelShader* pixel_shader;
 
-        const states::ShaderStates* render_states;
+        const states::RenderStates* render_states;
     };
 
 
