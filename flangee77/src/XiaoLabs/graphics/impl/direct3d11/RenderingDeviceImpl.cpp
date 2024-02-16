@@ -49,7 +49,7 @@ namespace direct3d11 {
         case xl7::graphics::meshes::VertexLayout::DataType::FLOAT2:     return DXGI_FORMAT_R32G32_FLOAT;
         case xl7::graphics::meshes::VertexLayout::DataType::FLOAT3:     return DXGI_FORMAT_R32G32B32_FLOAT;
         case xl7::graphics::meshes::VertexLayout::DataType::FLOAT4:     return DXGI_FORMAT_R32G32B32A32_FLOAT;
-        case xl7::graphics::meshes::VertexLayout::DataType::COLOR:      return DXGI_FORMAT_R8G8B8A8_UINT;
+        case xl7::graphics::meshes::VertexLayout::DataType::COLOR:      return DXGI_FORMAT_B8G8R8A8_UNORM; // Corresponds to D3DCOLOR of Direct3D 9.
         case xl7::graphics::meshes::VertexLayout::DataType::UBYTE4:     return DXGI_FORMAT_R8G8B8A8_UINT;
         default:
             assert( false );
