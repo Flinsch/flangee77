@@ -84,10 +84,10 @@ namespace helloworld {
         };
 
         constexpr Vertex vertices[] {
-            { -1.0f, -1.0f,  0.0f, 0xffff0000 },
-            { -1.0f, +1.0f,  0.0f, 0xff00ff00 },
-            { +1.0f, -1.0f,  0.0f, 0xff0000ff },
-            { +1.0f, +1.0f,  0.0f, 0xffffff00 },
+            { -0.5f, -0.5f,  0.0f, 0xffff0000 },
+            { -0.5f, +0.5f,  0.0f, 0xff00ff00 },
+            { +0.5f, -0.5f,  0.0f, 0xff0000ff },
+            { +0.5f, +0.5f,  0.0f, 0xffffff00 },
         };
         constexpr unsigned short indices[] { 0, 1, 2, 3 };
 
