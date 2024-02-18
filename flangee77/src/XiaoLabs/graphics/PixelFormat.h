@@ -55,6 +55,8 @@ enum class PixelFormat
 
     R8G8B8X8_UNORM,
 
+    R11G11B10_FLOAT,
+
     // R16G16B16 explicitly not
 
     R32G32B32_UINT,
@@ -71,7 +73,6 @@ enum class PixelFormat
 
     R10G10B10A2_UNORM,
     R10G10B10A2_UINT,
-    R11G11B10_FLOAT,
 
     R16G16B16A16_UNORM,
     R16G16B16A16_SNORM,
@@ -82,8 +83,6 @@ enum class PixelFormat
     R32G32B32A32_UINT,
     R32G32B32A32_SINT,
     R32G32B32A32_FLOAT,
-
-    R8G8_B8G8_UNORM,
 
     A8_UNORM,
 };

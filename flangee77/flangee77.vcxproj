@@ -167,6 +167,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\images\ImageHandler.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\PixelBitKit.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\images\Image.h" />
     <ClInclude Include="src\MathLabs\utilities.h" />
     <ClInclude Include="src\XiaoLabs\graphics\ClearFlags.h" />
     <ClInclude Include="src\XiaoLabs\graphics\Color.h" />
@@ -289,6 +292,9 @@
     <ClInclude Include="src\XiaoLabs\graphics\impl\shared\meshes\ComposedVertexLayout.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\images\ImageHandler.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\PixelBitKit.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\images\Image.cpp" />
     <ClCompile Include="src\MathLabs\utilities.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\Color.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\DepthStencilTarget.cpp" />
