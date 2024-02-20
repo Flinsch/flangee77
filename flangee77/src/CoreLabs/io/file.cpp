@@ -57,7 +57,7 @@ namespace io {
         if ( (open_mode & open_mode::truncate) == open_mode::truncate )
             om |= std::ios::trunc;
 
-        _fstream.open( _path, om );
+        _fstream.open( path, om );
         if ( !is_good() )
         {
             close();
@@ -65,7 +65,7 @@ namespace io {
         }
 
         _path = cl7::string(path);
-        _open_mode = _open_mode;
+        _open_mode = open_mode;
 
         _position = _tell_position();
         _seek_position( 0, seek_mode::end );
