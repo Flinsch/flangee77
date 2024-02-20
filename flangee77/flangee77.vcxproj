@@ -167,6 +167,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\CoreLabs\io.h" />
     <ClInclude Include="src\CoreLabs\io\file.h" />
     <ClInclude Include="src\CoreLabs\io\ifile.h" />
     <ClInclude Include="src\CoreLabs\io\irom.h" />
@@ -295,6 +296,7 @@
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\Surface.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\shared\meshes\VertexBufferBinding.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\shared\meshes\ComposedVertexLayout.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\images\TargaHandler.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\io\file.cpp" />
@@ -386,6 +388,7 @@
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\Surface.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\shared\meshes\VertexBufferBinding.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\shared\meshes\ComposedVertexLayout.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\images\TargaHandler.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

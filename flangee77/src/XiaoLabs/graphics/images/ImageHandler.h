@@ -4,6 +4,7 @@
 
 #include "./Image.h"
 
+#include <CoreLabs/io/irom.h>
 #include <CoreLabs/string.h>
 
 
@@ -24,7 +25,7 @@ public:
     /**
      * Destructor.
      */
-    virtual ~ImageHandler(void) = default;
+    virtual ~ImageHandler() = default;
 
 
 
@@ -37,6 +38,11 @@ public:
      */
     bool load_from_file(cl7::string_view file_path, Image& image);
 
+    /**
+     * Loads an image from any rom.
+     */
+    bool load_from(cl7::io::irom& rom, cl7::string_view rom_name, Image& image);
+
 
 
     // #############################################################################
@@ -44,20 +50,18 @@ public:
     // #############################################################################
 private:
     /**
-     * Loads an image from a file.
+     * Loads an image from any rom.
      */
-    virtual bool _load_from_file(cl7::string_view file_path, Image& image) = 0;
+    virtual bool _load_from(cl7::io::irom& rom, cl7::string_view rom_name, Image& image) = 0;
 
 
 
     // #############################################################################
     // Helpers
     // #############################################################################
-private:
-    /**
-     * Performs a final check to validate the result.
-     */
-    bool _validate(const Image& image);
+protected:
+    bool _log_bad_format_error(cl7::string_view rom_name);
+    bool _log_bad_header_error(cl7::string_view rom_name);
 
 }; // class ImageHandler
 

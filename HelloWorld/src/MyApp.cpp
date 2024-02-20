@@ -1,6 +1,7 @@
 #include "MyApp.h"
 
 #include <XiaoLabs/graphics.h>
+    #include <XiaoLabs/graphics/images/TargaHandler.h>
 
 #include <CoreLabs/filesystem.h>
 
@@ -111,6 +112,14 @@ namespace helloworld {
 
         _vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader( TEXT("My Vertex Shader"), code_provider );
         _pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader( TEXT("My Pixel Shader"), code_provider );
+
+
+
+        xl7::graphics::images::Image image;
+        xl7::graphics::images::TargaHandler targa_handler;
+        targa_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy-compressed.tga"), image );
+
+        //_texture_id = 
 
         return true;
     }

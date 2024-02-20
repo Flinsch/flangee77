@@ -1,6 +1,7 @@
 #include "ImageHandler.h"
 
-#include "../PixelBitKit.h"
+#include <CoreLabs/io/file.h>
+#include <CoreLabs/logging.h>
 
 
 
@@ -19,10 +20,34 @@ namespace images {
      */
     bool ImageHandler::load_from_file(cl7::string_view file_path, Image& image)
     {
-        if ( !_load_from_file( file_path, image ) )
+        cl7::io::file file( file_path, cl7::io::open_mode::read );
+        if ( !file.is_readable() )
+        {
+            LOG_ERROR( TEXT("The image file \"") + cl7::string(file_path) + TEXT("\" is not readable. Does it exist?") );
             return false;
+        }
 
-        return _validate( image );
+        return load_from( file, file_path, image );
+    }
+
+    /**
+     * Loads an image from any rom.
+     */
+    bool ImageHandler::load_from(cl7::io::irom& rom, cl7::string_view rom_name, Image& image)
+    {
+        if ( !rom.is_good() )
+        {
+            LOG_ERROR( TEXT("The image source \"") + cl7::string(rom_name) + TEXT("\" can not be processed.") );
+            return false;
+        }
+
+        if ( !_load_from( rom, rom_name, image ) )
+        {
+            LOG_ERROR( TEXT("The image could not be loaded from \"") + cl7::string(rom_name) + TEXT("\".") );
+            return false;
+        }
+
+        return true;
     }
 
 
@@ -31,20 +56,16 @@ namespace images {
     // Helpers
     // #############################################################################
 
-    /**
-     * Performs a final check to validate the result.
-     */
-    bool ImageHandler::_validate(const Image& image)
+    bool ImageHandler::_log_bad_format_error(cl7::string_view rom_name)
     {
-        PixelBitKit pbk{ image.get_pixel_format(), image.get_channel_order() };
+        LOG_ERROR( TEXT("The format of image \"") + cl7::string(rom_name) + TEXT("\" is invalid.") );
+        return false;
+    }
 
-        if ( static_cast<size_t>( image.get_width() ) * static_cast<size_t>( image.get_height() ) * static_cast<size_t>( pbk.stride ) != image.get_data().size() )
-        {
-            // Should we log an error message or something?
-            return false;
-        }
-
-        return true;
+    bool ImageHandler::_log_bad_header_error(cl7::string_view rom_name)
+    {
+        LOG_ERROR( TEXT("Bad header of image \"") + cl7::string(rom_name) + TEXT("\" is damaged.") );
+        return false;
     }
 
 
