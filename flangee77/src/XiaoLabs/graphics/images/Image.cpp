@@ -11,7 +11,7 @@ namespace images {
 
 
     /** Returns the size of one pixel, in bytes. */
-    unsigned Image::Desc::get_pixel_stride() const
+    unsigned Image::Desc::determine_pixel_stride() const
     {
         PixelBitKit pbk{ pixel_format, channel_order };
 
@@ -24,7 +24,7 @@ namespace images {
         return
             static_cast<size_t>( width ) *
             static_cast<size_t>( height ) *
-            static_cast<size_t>( get_pixel_stride() );
+            static_cast<size_t>( determine_pixel_stride() );
     }
 
 

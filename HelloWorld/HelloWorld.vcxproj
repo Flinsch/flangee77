@@ -114,6 +114,9 @@ mkdir "$(LocalDebuggerWorkingDirectory)"
 mkdir "$(LocalDebuggerWorkingDirectory)\assets"
 
 xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(TargetDir)"
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -146,6 +149,9 @@ mkdir "$(LocalDebuggerWorkingDirectory)"
 mkdir "$(LocalDebuggerWorkingDirectory)\assets"
 
 xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(TargetDir)"
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -174,6 +180,9 @@ mkdir "$(LocalDebuggerWorkingDirectory)"
 mkdir "$(LocalDebuggerWorkingDirectory)\assets"
 
 xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(TargetDir)"
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -206,6 +215,9 @@ mkdir "$(LocalDebuggerWorkingDirectory)"
 mkdir "$(LocalDebuggerWorkingDirectory)\assets"
 
 xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(TargetDir)"
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

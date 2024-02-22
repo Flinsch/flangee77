@@ -36,7 +36,7 @@ public:
         unsigned height;
 
         /** Returns the size of one pixel, in bytes. */
-        unsigned get_pixel_stride() const;
+        unsigned determine_pixel_stride() const;
         /** Calculates the total size of the image data, in bytes. */
         size_t calculate_data_size() const;
     };

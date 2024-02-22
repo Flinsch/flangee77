@@ -1,6 +1,9 @@
-#include "TargaHandler.h"
+#include "TargaImageHandler.h"
 
 #include <CoreLabs/logging.h>
+#include <CoreLabs/utilities.h>
+
+#include <bit>
 
 
 
@@ -17,7 +20,7 @@ namespace images {
     /**
      * Loads an image from any rom.
      */
-    bool TargaHandler::_load_from(cl7::io::irom& rom, cl7::string_view rom_name, Image& image)
+    bool TargaImageHandler::_load_from(cl7::io::irom& rom, cl7::string_view rom_name, Image& image)
     {
         Header header;
         if ( rom.read( { (std::byte*)&header, sizeof(Header) } ) != sizeof(Header) )
@@ -39,8 +42,8 @@ namespace images {
         if ( header.pixel_depth == 32 )
             desc.pixel_format = PixelFormat::R8G8B8A8_UNORM;
         desc.channel_order = ChannelOrder::RGBA;
-        desc.width = static_cast<unsigned>( header.width );
-        desc.height = static_cast<unsigned>( header.height );
+        desc.width = static_cast<unsigned>( cl7::utilities::swap_bytes_unless_endian( header.width, std::endian::little ) );
+        desc.height = static_cast<unsigned>( cl7::utilities::swap_bytes_unless_endian( header.height, std::endian::little ) );
 
         cl7::byte_vector data( desc.calculate_data_size() );
 
@@ -53,7 +56,7 @@ namespace images {
 
         // Flip vertically.
         const size_t line_count = static_cast<size_t>( desc.height );
-        const size_t bytes_per_line = static_cast<size_t>( desc.width ) * static_cast<size_t>( desc.get_pixel_stride() );
+        const size_t bytes_per_line = static_cast<size_t>( desc.width ) * static_cast<size_t>( desc.determine_pixel_stride() );
         cl7::byte_vector line( bytes_per_line );
         for ( size_t i = 0; i < line_count / 2; ++i )
         {
@@ -77,7 +80,7 @@ namespace images {
     /**
      * Loads an uncompressed TGA.
      */
-    bool TargaHandler::_load_uncompressed(cl7::io::irom& rom, cl7::string_view rom_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
+    bool TargaImageHandler::_load_uncompressed(cl7::io::irom& rom, cl7::string_view rom_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
     {
         assert( data.size() == desc.calculate_data_size() );
 
@@ -90,11 +93,11 @@ namespace images {
     /**
      * Loads a compressed TGA.
      */
-    bool TargaHandler::_load_compressed(cl7::io::irom& rom, cl7::string_view rom_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
+    bool TargaImageHandler::_load_compressed(cl7::io::irom& rom, cl7::string_view rom_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
     {
         assert( data.size() == desc.calculate_data_size() );
 
-        const size_t bytes_per_pixel = static_cast<size_t>( desc.get_pixel_stride() );
+        const size_t bytes_per_pixel = static_cast<size_t>( desc.determine_pixel_stride() );
         const size_t total_pixel_count = static_cast<size_t>( desc.width ) * static_cast<size_t>( desc.height );
 
         assert( total_pixel_count * bytes_per_pixel == data.size() );
@@ -135,6 +138,9 @@ namespace images {
                 pixel_index += pixel_count;
             }
         } // for each chunk of pixels
+
+        if ( pixel_index != total_pixel_count )
+            return _log_bad_format_error( rom_name );
 
         return true;
     }

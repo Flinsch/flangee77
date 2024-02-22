@@ -1,7 +1,8 @@
 #include "MyApp.h"
 
 #include <XiaoLabs/graphics.h>
-    #include <XiaoLabs/graphics/images/TargaHandler.h>
+    #include <XiaoLabs/graphics/images/TargaImageHandler.h>
+    #include <XiaoLabs/graphics/images/PngImageHandler.h>
 
 #include <CoreLabs/filesystem.h>
 
@@ -116,8 +117,12 @@ namespace helloworld {
 
 
         xl7::graphics::images::Image image;
-        xl7::graphics::images::TargaHandler targa_handler;
-        targa_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy-compressed.tga"), image );
+        xl7::graphics::images::TargaImageHandler targa_image_handler;
+        xl7::graphics::images::PngImageHandler png_image_handler;
+        targa_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy.tga"), image );
+        targa_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy-compressed.tga"), image );
+        png_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy.png"), image );
+        png_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy-indexed.png"), image );
 
         //_texture_id = 
 

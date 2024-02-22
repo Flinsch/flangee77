@@ -1,6 +1,7 @@
 #include "strings.h"
 
 #include <CoreLabs/logging.h>
+#include <CoreLabs/utilities.h>
 
 
 
@@ -502,6 +503,7 @@ namespace strings {
         for ( size_t i = 0; i < size; ++i )
         {
             //u16s[ i ] = std::byteswap( data[ i ] );
+            //u16s[ i ] = cl7::utilities::swap_bytes( data[ i ] );
             u16s[ i ] = ((data[i] & 0x00ff) << 8) | ((data[i] & 0xff00) >> 8);
         } // for ...
 
@@ -542,7 +544,8 @@ namespace strings {
         for ( size_t i = 0; i < size; ++i )
         {
             //u32s[ i ] = std::byteswap( data[ i ] );
-            u32s[ i ] = ((data[i] & 0x0000'00ff) << 24) | ((data[i] & 0x0000'ff00) >> 8) | ((data[i] & 0x00ff'0000) >> 8) | ((data[i] & 0xff00'0000) >> 24);
+            //u32s[ i ] = cl7::utilities::swap_bytes( data[ i ] );
+            u32s[ i ] = ((data[i] & 0x0000'00ff) << 24) | ((data[i] & 0x0000'ff00) << 8) | ((data[i] & 0x00ff'0000) >> 8) | ((data[i] & 0xff00'0000) >> 24);
         } // for ...
 
         return u32s;

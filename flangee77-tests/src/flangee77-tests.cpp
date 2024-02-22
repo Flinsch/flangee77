@@ -2,8 +2,11 @@
 #include <TestLabs/TestSuite.h>
 #include <CoreLabs/logging.h>
 
+#include "./CoreLabs/utilities.h"
 #include "./CoreLabs/strings.h"
 #include "./CoreLabs/Version.h"
+
+#include "./DataLabs/compression.h"
 
 #include "./MathLabs/utilities.h"
 

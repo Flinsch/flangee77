@@ -115,6 +115,9 @@ mkdir "$(LocalDebuggerWorkingDirectory)"
 mkdir "$(LocalDebuggerWorkingDirectory)\assets"
 
 xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(TargetDir)"
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -147,6 +150,9 @@ mkdir "$(LocalDebuggerWorkingDirectory)"
 mkdir "$(LocalDebuggerWorkingDirectory)\assets"
 
 xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(TargetDir)"
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -175,6 +181,9 @@ mkdir "$(LocalDebuggerWorkingDirectory)"
 mkdir "$(LocalDebuggerWorkingDirectory)\assets"
 
 xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(TargetDir)"
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -207,6 +216,9 @@ mkdir "$(LocalDebuggerWorkingDirectory)"
 mkdir "$(LocalDebuggerWorkingDirectory)\assets"
 
 xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
+
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(TargetDir)"
+xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(LocalDebuggerWorkingDirectory)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -220,7 +232,9 @@ xcopy /Y /E "$(ProjectDir)assets" "$(LocalDebuggerWorkingDirectory)\assets"
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CoreLabs\strings.h" />
+    <ClInclude Include="src\CoreLabs\utilities.h" />
     <ClInclude Include="src\CoreLabs\Version.h" />
+    <ClInclude Include="src\DataLabs\compression.h" />
     <ClInclude Include="src\MathLabs\utilities.h" />
     <ClInclude Include="src\XiaoLabs\graphics.h" />
   </ItemGroup>

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef XL7_GRAPHICS_IMAGES_TARGAHANDLER_H
-#define XL7_GRAPHICS_IMAGES_TARGAHANDLER_H
+#ifndef XL7_GRAPHICS_IMAGES_TARGAIMAGEHANDLER_H
+#define XL7_GRAPHICS_IMAGES_TARGAIMAGEHANDLER_H
 #include "./ImageHandler.h"
 
 
@@ -11,7 +11,7 @@ namespace images {
 
 
 
-class TargaHandler
+class TargaImageHandler
     : public ImageHandler
 {
 
@@ -19,18 +19,18 @@ private:
 #pragma pack( push, 1 )
     struct Header
     {
-        uint8_t id_length;
-        uint8_t color_map_type;
-        uint8_t image_type;
-        uint16_t map_start;
-        uint16_t map_length;
-        uint8_t map_depth;
-        uint16_t x_offset;
-        uint16_t y_offset;
-        uint16_t width;
-        uint16_t height;
-        uint8_t pixel_depth;
-        uint8_t image_descriptor;
+        uint8_t     id_length;
+        uint8_t     color_map_type;
+        uint8_t     image_type;
+        uint16_t    map_start;
+        uint16_t    map_length;
+        uint8_t     map_depth;
+        uint16_t    x_offset;
+        uint16_t    y_offset;
+        uint16_t    width;
+        uint16_t    height;
+        uint8_t     pixel_depth;
+        uint8_t     image_descriptor;
     }; // struct Header
 #pragma pack( pop )
     static_assert( sizeof(Header) == 18 );
@@ -44,7 +44,7 @@ public:
     /**
      * Destructor.
      */
-    virtual ~TargaHandler() = default;
+    virtual ~TargaImageHandler() = default;
 
 
 
@@ -73,7 +73,7 @@ private:
      */
     bool _load_compressed(cl7::io::irom& rom, cl7::string_view rom_name, const Header& header, const Image::Desc& desc, cl7::byte_span data);
 
-}; // class TargaHandler
+}; // class TargaImageHandler
 
 
 
@@ -81,4 +81,4 @@ private:
 } // namespace graphics
 } // namespace xl7
 
-#endif // XL7_GRAPHICS_IMAGES_TARGAHANDLER_H
+#endif // XL7_GRAPHICS_IMAGES_TARGAIMAGEHANDLER_H

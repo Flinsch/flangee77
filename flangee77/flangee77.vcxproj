@@ -106,6 +106,14 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>rmdir /S /Q "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty"
+
+mkdir "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty"
+
+xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty\"
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -127,6 +135,14 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>rmdir /S /Q "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty"
+
+mkdir "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty"
+
+xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty\"
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -144,6 +160,14 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>rmdir /S /Q "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty"
+
+mkdir "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty"
+
+xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty\"
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -165,8 +189,19 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>rmdir /S /Q "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty"
+
+mkdir "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty"
+
+xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty\"
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\DataLabs\compression.h" />
+    <ClInclude Include="src\DataLabs\compression\Deflate.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\images\PngImageHandler.h" />
     <ClInclude Include="src\CoreLabs\io.h" />
     <ClInclude Include="src\CoreLabs\io\file.h" />
     <ClInclude Include="src\CoreLabs\io\ifile.h" />
@@ -296,9 +331,11 @@
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\Surface.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\shared\meshes\VertexBufferBinding.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\shared\meshes\ComposedVertexLayout.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\images\TargaHandler.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\images\TargaImageHandler.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\DataLabs\compression\Deflate.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\images\PngImageHandler.cpp" />
     <ClCompile Include="src\CoreLabs\io\file.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\images\ImageHandler.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\PixelBitKit.cpp" />
@@ -388,7 +425,7 @@
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\Surface.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\shared\meshes\VertexBufferBinding.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\shared\meshes\ComposedVertexLayout.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\images\TargaHandler.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\images\TargaImageHandler.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

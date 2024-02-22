@@ -402,7 +402,16 @@
     <ClInclude Include="src\CoreLabs\io.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\images\TargaHandler.h">
+    <ClInclude Include="src\XiaoLabs\graphics\images\TargaImageHandler.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\images\PngImageHandler.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataLabs\compression\Deflate.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataLabs\compression.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -674,7 +683,13 @@
     <ClCompile Include="src\CoreLabs\io\file.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\images\TargaHandler.cpp">
+    <ClCompile Include="src\XiaoLabs\graphics\images\TargaImageHandler.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\images\PngImageHandler.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataLabs\compression\Deflate.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
