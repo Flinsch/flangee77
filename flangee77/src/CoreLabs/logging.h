@@ -23,7 +23,7 @@ namespace logging {
     /**
      * Logs the specified entry to the standard logger.
      */
-    void std_log(const cl7::string_view& message, LogType type, const cl7::char_type* file_path = nullptr, unsigned line_number = 0, const cl7::char_type* function_name = nullptr);
+    void std_log(cl7::string_view message, LogType type, const cl7::char_type* file_path = nullptr, unsigned line_number = 0, const cl7::char_type* function_name = nullptr);
 
 
 

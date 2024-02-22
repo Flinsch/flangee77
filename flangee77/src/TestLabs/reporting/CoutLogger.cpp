@@ -78,7 +78,7 @@ namespace reporting {
         return cl7::string_view( file_path + sep + 1 );
     }
 
-    cl7::string_view _directory_path(const cl7::string_view& file_path)
+    cl7::string_view _directory_path(cl7::string_view file_path)
     {
         for ( size_t i = file_path.size(); i-- > 0; )
             if ( file_path[i] == TEXT('/') || file_path[i] == TEXT('\\') )
@@ -86,7 +86,7 @@ namespace reporting {
         return file_path;
     }
 
-    cl7::string_view _filename(const cl7::string_view& file_path)
+    cl7::string_view _filename(cl7::string_view file_path)
     {
         for ( size_t i = file_path.size(); i-- > 0; )
             if ( file_path[i] == TEXT('/') || file_path[i] == TEXT('\\') )
@@ -328,7 +328,7 @@ namespace reporting {
         if ( _defer_result_output || !_continue )
             cout << "\n\n";
 
-        auto write_group = [&cout](const cl7::string_view& label, const Stats::Group& group) {
+        auto write_group = [&cout](cl7::string_view label, const Stats::Group& group) {
             cout << cl7::strings::rpadded( cl7::string(label), 11, TEXT(' ') ) << ColorCode::Default;
             cout << cl7::strings::lpadded( cl7::to_string(group.total_count), 11, TEXT(' ') ) << " total" << ColorCode::Default;
             cout << ColorCode::Success << cl7::strings::lpadded( cl7::to_string(group.pass_count), 11, TEXT(' ') ) << " passed" << ColorCode::Default;
@@ -337,7 +337,7 @@ namespace reporting {
             cout << '\n';
         };
 
-        auto write_single = [&cout](const cl7::string_view& label, unsigned count, ColorCode color_code, const cl7::string_view& suffix) {
+        auto write_single = [&cout](cl7::string_view label, unsigned count, ColorCode color_code, cl7::string_view suffix) {
             cout << cl7::strings::rpadded( cl7::string(label), 11, TEXT(' ') ) << ColorCode::Default;
             cout << color_code << cl7::strings::lpadded( cl7::to_string(count), 11, TEXT(' ') ) << suffix << ColorCode::Default;
             cout << '\n';

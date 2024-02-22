@@ -29,13 +29,13 @@ namespace strings {
 
 
 
-    void _try_log_warning(bool log_warning, const cl7::string_view& message)
+    void _try_log_warning(bool log_warning, cl7::string_view message)
     {
         if ( log_warning )
             LOG_WARNING( message );
     }
 
-    bool _try_log_warning_always_return_false(bool log_warning, const cl7::string_view& message)
+    bool _try_log_warning_always_return_false(bool log_warning, cl7::string_view message)
     {
         _try_log_warning( log_warning, message );
         return false;
@@ -78,7 +78,7 @@ namespace strings {
     }
 
     template <class uxstring, typename uxchar_type>
-    uxstring _to_utfx(const astring_view& as)
+    uxstring _to_utfx(astring_view as)
     {
         uxstring uxs( as.size(), uxchar_type(0) );
 
@@ -92,52 +92,52 @@ namespace strings {
 
 
 
-    astring to_ascii(const astring_view& as)
+    astring to_ascii(astring_view as)
     {
         check_ascii( as, true );
         return astring(as);
     }
 
-    astring to_ascii(const u8string_view& u8s)
+    astring to_ascii(u8string_view u8s)
     {
         return to_ascii( to_latin1( u8s ) );
     }
 
-    astring to_ascii(const u16string_view& u16s)
+    astring to_ascii(u16string_view u16s)
     {
         return to_ascii( to_latin1( u16s ) );
     }
 
-    astring to_ascii(const u32string_view& u32s)
+    astring to_ascii(u32string_view u32s)
     {
         return to_ascii( to_latin1( u32s ) );
     }
 
-    astring to_ascii(const wstring_view& ws)
+    astring to_ascii(wstring_view ws)
     {
         return to_ascii( to_latin1( ws ) );
     }
 
-    astring to_latin1(const astring_view& as)
+    astring to_latin1(astring_view as)
     {
         return astring(as);
     }
 
-    astring to_latin1(const u8string_view& u8s)
+    astring to_latin1(u8string_view u8s)
     {
         u32string u32s;
         parse_utf8( u8s, u32s, true );
         return to_latin1( u32s );
     }
 
-    astring to_latin1(const u16string_view& u16s)
+    astring to_latin1(u16string_view u16s)
     {
         u32string u32s;
         parse_utf16( u16s, u32s, true );
         return to_latin1( u32s );
     }
 
-    astring to_latin1(const u32string_view& u32s)
+    astring to_latin1(u32string_view u32s)
     {
         astring as( u32s.size(), achar_type(0) );
 
@@ -149,7 +149,7 @@ namespace strings {
         return as;
     }
 
-    astring to_latin1(const wstring_view& ws)
+    astring to_latin1(wstring_view ws)
     {
 #if WCHAR_MAX == UINT16_MAX
         return to_latin1( u16string_view( reinterpret_cast<const u16char_type*>(ws.data()), ws.size() ) );
@@ -160,22 +160,22 @@ namespace strings {
 #endif
     }
 
-    u8string to_utf8(const astring_view& as)
+    u8string to_utf8(astring_view as)
     {
         return to_utf8( to_utf32( as ) ); // _to_utfx cannot be used here because characters above 0x7f must be encoded.
     }
 
-    u8string to_utf8(const u8string_view& u8s)
+    u8string to_utf8(u8string_view u8s)
     {
         return u8string(u8s);
     }
 
-    u8string to_utf8(const u16string_view& u16s)
+    u8string to_utf8(u16string_view u16s)
     {
         return to_utf8( to_utf32( u16s ) );
     }
 
-    u8string to_utf8(const u32string_view& u32s)
+    u8string to_utf8(u32string_view u32s)
     {
         size_t size = 0;
         for ( u32char_type u32c : u32s )
@@ -227,7 +227,7 @@ namespace strings {
         return u8s;
     }
 
-    u8string to_utf8(const wstring_view& ws)
+    u8string to_utf8(wstring_view ws)
     {
 #if WCHAR_MAX == UINT16_MAX
         return to_utf8( u16string_view( reinterpret_cast<const u16char_type*>(ws.data()), ws.size() ) );
@@ -238,22 +238,22 @@ namespace strings {
 #endif
     }
 
-    u16string to_utf16(const astring_view& as)
+    u16string to_utf16(astring_view as)
     {
         return _to_utfx<u16string, u16char_type>( as );
     }
 
-    u16string to_utf16(const u8string_view& u8s)
+    u16string to_utf16(u8string_view u8s)
     {
         return to_utf16( to_utf32( u8s ) );
     }
 
-    u16string to_utf16(const u16string_view& u16s)
+    u16string to_utf16(u16string_view u16s)
     {
         return u16string(u16s);
     }
 
-    u16string to_utf16(const u32string_view& u32s)
+    u16string to_utf16(u32string_view u32s)
     {
         size_t size = 0;
         for ( u32char_type u32c : u32s )
@@ -290,7 +290,7 @@ namespace strings {
         return u16s;
     }
 
-    u16string to_utf16(const wstring_view& ws)
+    u16string to_utf16(wstring_view ws)
     {
 #if WCHAR_MAX == UINT16_MAX
         return to_utf16( u16string_view( reinterpret_cast<const u16char_type*>(ws.data()), ws.size() ) );
@@ -301,31 +301,31 @@ namespace strings {
 #endif
     }
 
-    u32string to_utf32(const astring_view& as)
+    u32string to_utf32(astring_view as)
     {
         return _to_utfx<u32string, u32char_type>( as );
     }
 
-    u32string to_utf32(const u8string_view& u8s)
+    u32string to_utf32(u8string_view u8s)
     {
         u32string u32s;
         parse_utf8( u8s, u32s, true );
         return u32s;
     }
 
-    u32string to_utf32(const u16string_view& u16s)
+    u32string to_utf32(u16string_view u16s)
     {
         u32string u32s;
         parse_utf16( u16s, u32s, true );
         return u32s;
     }
 
-    u32string to_utf32(const u32string_view& u32s)
+    u32string to_utf32(u32string_view u32s)
     {
         return u32string(u32s);
     }
 
-    u32string to_utf32(const wstring_view& ws)
+    u32string to_utf32(wstring_view ws)
     {
 #if WCHAR_MAX == UINT16_MAX
         return to_utf32( u16string_view( reinterpret_cast<const u16char_type*>(ws.data()), ws.size() ) );
@@ -336,7 +336,7 @@ namespace strings {
 #endif
     }
 
-    wstring to_utfx(const astring_view& as)
+    wstring to_utfx(astring_view as)
     {
 #if WCHAR_MAX == UINT16_MAX
         auto uxs = to_utf16( as );
@@ -348,7 +348,7 @@ namespace strings {
         return wstring( wstring_view( reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size() ) );
     }
 
-    wstring to_utfx(const u8string_view& u8s)
+    wstring to_utfx(u8string_view u8s)
     {
 #if WCHAR_MAX == UINT16_MAX
         auto uxs = to_utf16( u8s );
@@ -360,7 +360,7 @@ namespace strings {
         return wstring( wstring_view( reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size() ) );
     }
 
-    wstring to_utfx(const u16string_view& u16s)
+    wstring to_utfx(u16string_view u16s)
     {
 #if WCHAR_MAX == UINT16_MAX
         auto uxs = u16s;
@@ -372,7 +372,7 @@ namespace strings {
         return wstring( wstring_view( reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size() ) );
     }
 
-    wstring to_utfx(const u32string_view& u32s)
+    wstring to_utfx(u32string_view u32s)
     {
 #if WCHAR_MAX == UINT16_MAX
         auto uxs = to_utf16( u32s );
@@ -384,17 +384,17 @@ namespace strings {
         return wstring( wstring_view( reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size() ) );
     }
 
-    wstring to_utfx(const wstring_view& ws)
+    wstring to_utfx(wstring_view ws)
     {
         return wstring(ws);
     }
 
-    string from_ascii(const astring_view& as)
+    string from_ascii(astring_view as)
     {
         return from_latin1( as );
     }
 
-    string from_latin1(const astring_view& as)
+    string from_latin1(astring_view as)
     {
 #ifdef UNICODE
         return to_utfx( as );
@@ -403,7 +403,7 @@ namespace strings {
 #endif
     }
 
-    string from_utf8(const u8string_view& u8s)
+    string from_utf8(u8string_view u8s)
     {
 #ifdef UNICODE
         return to_utfx( u8s );
@@ -412,7 +412,7 @@ namespace strings {
 #endif
     }
 
-    string from_utf16(const u16string_view& u16s)
+    string from_utf16(u16string_view u16s)
     {
 #ifdef UNICODE
         return to_utfx( u16s );
@@ -421,7 +421,7 @@ namespace strings {
 #endif
     }
 
-    string from_utf32(const u32string_view& u32s)
+    string from_utf32(u32string_view u32s)
     {
 #ifdef UNICODE
         return to_utfx( u32s );
@@ -430,7 +430,7 @@ namespace strings {
 #endif
     }
 
-    string from_utfx(const wstring_view& ws)
+    string from_utfx(wstring_view ws)
     {
 #if WCHAR_MAX == UINT16_MAX
         return from_utf16( u16string_view( reinterpret_cast<const u16char_type*>(ws.data()), ws.size() ) );
@@ -441,17 +441,17 @@ namespace strings {
 #endif
     }
 
-    astring to_ascii(const byte_view& bys)
+    astring to_ascii(byte_view bys)
     {
         return to_ascii( to_latin1( bys ) );
     }
 
-    astring to_latin1(const byte_view& bys)
+    astring to_latin1(byte_view bys)
     {
         return astring( reinterpret_cast<const achar_type*>(bys.data()), bys.size() );
     }
 
-    u8string to_utf8_unchecked(const byte_view& bys)
+    u8string to_utf8_unchecked(byte_view bys)
     {
         const auto* data = reinterpret_cast<const u8char_type*>(bys.data());
         size_t size = bys.size();
@@ -469,7 +469,7 @@ namespace strings {
         return u8string( data, size );
     }
 
-    u16string to_utf16_unchecked(const byte_view& bys)
+    u16string to_utf16_unchecked(byte_view bys)
     {
         const auto* data = reinterpret_cast<const u16char_type*>(bys.data());
         size_t size = bys.size() / 2;
@@ -510,7 +510,7 @@ namespace strings {
         return u16s;
     }
 
-    u32string to_utf32_unchecked(const byte_view& bys)
+    u32string to_utf32_unchecked(byte_view bys)
     {
         const auto* data = reinterpret_cast<const u32char_type*>(bys.data());
         size_t size = bys.size() / 4;
@@ -551,7 +551,7 @@ namespace strings {
         return u32s;
     }
 
-    wstring to_utfx_unchecked(const byte_view& bys)
+    wstring to_utfx_unchecked(byte_view bys)
     {
 #if WCHAR_MAX == UINT16_MAX
         auto uxs = to_utf16_unchecked( bys );
@@ -563,7 +563,7 @@ namespace strings {
         return wstring( wstring_view( reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size() ) );
     }
 
-    string from_bytes(const byte_view& bys)
+    string from_bytes(byte_view bys)
     {
 #ifdef UNICODE
         return to_utfx_unchecked( bys );
@@ -572,7 +572,7 @@ namespace strings {
 #endif
     }
 
-    byte_vector to_bytes(const astring_view& as)
+    byte_vector to_bytes(astring_view as)
     {
         const auto* const data = reinterpret_cast<const std::byte*>(as.data());
         const size_t size = as.size();
@@ -580,7 +580,7 @@ namespace strings {
         return byte_vector( data, data + size );
     }
 
-    byte_vector to_bytes(const u8string_view& u8s, bool add_bom)
+    byte_vector to_bytes(u8string_view u8s, bool add_bom)
     {
         const auto* const data = reinterpret_cast<const std::byte*>(u8s.data());
         const size_t size = u8s.size();
@@ -600,7 +600,7 @@ namespace strings {
         return bys;
     }
 
-    byte_vector to_bytes(const u16string_view& u16s, bool add_bom, std::endian endian)
+    byte_vector to_bytes(u16string_view u16s, bool add_bom, std::endian endian)
     {
         const auto* const data = reinterpret_cast<const std::byte*>(u16s.data());
         const size_t size = u16s.size() * 2;
@@ -636,7 +636,7 @@ namespace strings {
         return bys;
     }
 
-    byte_vector to_bytes(const u32string_view& u32s, bool add_bom, std::endian endian)
+    byte_vector to_bytes(u32string_view u32s, bool add_bom, std::endian endian)
     {
         const auto* const data = reinterpret_cast<const std::byte*>(u32s.data());
         const size_t size = u32s.size() * 4;
@@ -676,7 +676,7 @@ namespace strings {
         return bys;
     }
 
-    byte_vector to_bytes(const wstring_view& ws, bool add_bom, std::endian endian)
+    byte_vector to_bytes(wstring_view ws, bool add_bom, std::endian endian)
     {
 #if WCHAR_MAX == UINT16_MAX
         return to_bytes( u16string_view( reinterpret_cast<const u16char_type*>(ws.data()), ws.size() ) );
@@ -687,7 +687,7 @@ namespace strings {
 #endif
     }
 
-    bool check_ascii(const astring_view& as, bool log_warning)
+    bool check_ascii(astring_view as, bool log_warning)
     {
         for ( achar_type ac : as )
         {
@@ -701,7 +701,7 @@ namespace strings {
         return true;
     }
 
-    bool parse_utf8(const u8string_view& u8s, u32string& u32s, bool log_warning)
+    bool parse_utf8(u8string_view u8s, u32string& u32s, bool log_warning)
     {
         u32s.resize( utf8_length( u8s ), u32char_type(0) );
 
@@ -797,7 +797,7 @@ namespace strings {
         return is_valid;
     }
 
-    bool parse_utf16(const u16string_view& u16s, u32string& u32s, bool log_warning)
+    bool parse_utf16(u16string_view u16s, u32string& u32s, bool log_warning)
     {
         u32s.resize( utf16_length( u16s ), u32char_type(0) );
 
@@ -865,7 +865,7 @@ namespace strings {
         return is_valid;
     }
 
-    bool check_utf32(const u32string_view& u32s, bool log_warning)
+    bool check_utf32(u32string_view u32s, bool log_warning)
     {
         for ( u32char_type u32c : u32s )
         {
@@ -877,7 +877,7 @@ namespace strings {
     }
 
     /** Calculates the length of the specified UTF-8 string in terms of Unicode code points. */
-    size_t utf8_length(const u8string_view& u8s)
+    size_t utf8_length(u8string_view u8s)
     {
         const size_t size = u8s.size();
         size_t len = 0;
@@ -906,7 +906,7 @@ namespace strings {
     }
 
     /** Calculates the length of the specified UTF-16 string in terms of Unicode code points. */
-    size_t utf16_length(const u16string_view& u16s)
+    size_t utf16_length(u16string_view u16s)
     {
         const size_t size = u16s.size();
         size_t len = 0;

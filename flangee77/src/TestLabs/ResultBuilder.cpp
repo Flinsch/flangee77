@@ -25,22 +25,22 @@ namespace tl7 {
         return result;
     }
 
-    Result ResultBuilder::make_check_result(const Context& ctx, const cl7::string_view& original_expression, const cl7::string_view& evaluated_expression, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome)
+    Result ResultBuilder::make_check_result(const Context& ctx, cl7::string_view original_expression, cl7::string_view evaluated_expression, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome)
     {
         return _make_result( Result::OriginType::Check, ctx, original_expression, evaluated_expression, file_path, line_number, outcome );
     }
 
-    Result ResultBuilder::make_presumption_result(const Context& ctx, const cl7::string_view& original_expression, const cl7::string_view& evaluated_expression, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome)
+    Result ResultBuilder::make_presumption_result(const Context& ctx, cl7::string_view original_expression, cl7::string_view evaluated_expression, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome)
     {
         return _make_result( Result::OriginType::Presumption, ctx, original_expression, evaluated_expression, file_path, line_number, outcome );
     }
 
-    Result ResultBuilder::make_assertion_result(const Context& ctx, const cl7::string_view& original_expression, const cl7::string_view& evaluated_expression, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome)
+    Result ResultBuilder::make_assertion_result(const Context& ctx, cl7::string_view original_expression, cl7::string_view evaluated_expression, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome)
     {
         return _make_result( Result::OriginType::Assertion, ctx, original_expression, evaluated_expression, file_path, line_number, outcome );
     }
 
-    Result ResultBuilder::make_exception_result(const Context& ctx, const cl7::string_view& message, const cl7::char_type* file_path, unsigned line_number)
+    Result ResultBuilder::make_exception_result(const Context& ctx, cl7::string_view message, const cl7::char_type* file_path, unsigned line_number)
     {
         return _make_result( Result::OriginType::Exception, ctx, message, file_path, line_number, Result::Outcome::Failure );
     }
@@ -72,14 +72,14 @@ namespace tl7 {
         return result;
     }
 
-    Result ResultBuilder::_make_result(Result::OriginType origin_type, const Context& ctx, const cl7::string_view& stringification, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome)
+    Result ResultBuilder::_make_result(Result::OriginType origin_type, const Context& ctx, cl7::string_view stringification, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome)
     {
         Result result = _make_result( origin_type, ctx, file_path, line_number, outcome );
         result.result_meta.stringification = stringification;
         return result;
     }
 
-    Result ResultBuilder::_make_result(Result::OriginType origin_type, const Context& ctx, const cl7::string_view& original_expression, const cl7::string_view& evaluated_expression, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome)
+    Result ResultBuilder::_make_result(Result::OriginType origin_type, const Context& ctx, cl7::string_view original_expression, cl7::string_view evaluated_expression, const cl7::char_type* file_path, unsigned line_number, Result::Outcome outcome)
     {
         Result result = _make_result( origin_type, ctx, file_path, line_number, outcome );
         result.original_expression = original_expression;

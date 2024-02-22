@@ -31,73 +31,73 @@ namespace strings {
 
 
 
-    astring to_ascii(const astring_view& as);
-    astring to_ascii(const u8string_view& u8s);
-    astring to_ascii(const u16string_view& u16s);
-    astring to_ascii(const u32string_view& u32s);
-    astring to_ascii(const wstring_view& ws);
+    astring to_ascii(astring_view as);
+    astring to_ascii(u8string_view u8s);
+    astring to_ascii(u16string_view u16s);
+    astring to_ascii(u32string_view u32s);
+    astring to_ascii(wstring_view ws);
 
-    astring to_latin1(const astring_view& as);
-    astring to_latin1(const u8string_view& u8s);
-    astring to_latin1(const u16string_view& u16s);
-    astring to_latin1(const u32string_view& u32s);
-    astring to_latin1(const wstring_view& ws);
+    astring to_latin1(astring_view as);
+    astring to_latin1(u8string_view u8s);
+    astring to_latin1(u16string_view u16s);
+    astring to_latin1(u32string_view u32s);
+    astring to_latin1(wstring_view ws);
 
-    u8string to_utf8(const astring_view& as);
-    u8string to_utf8(const u8string_view& u8s);
-    u8string to_utf8(const u16string_view& u16s);
-    u8string to_utf8(const u32string_view& u32s);
-    u8string to_utf8(const wstring_view& ws);
+    u8string to_utf8(astring_view as);
+    u8string to_utf8(u8string_view u8s);
+    u8string to_utf8(u16string_view u16s);
+    u8string to_utf8(u32string_view u32s);
+    u8string to_utf8(wstring_view ws);
 
-    u16string to_utf16(const astring_view& as);
-    u16string to_utf16(const u8string_view& u8s);
-    u16string to_utf16(const u16string_view& u16s);
-    u16string to_utf16(const u32string_view& u32s);
-    u16string to_utf16(const wstring_view& ws);
+    u16string to_utf16(astring_view as);
+    u16string to_utf16(u8string_view u8s);
+    u16string to_utf16(u16string_view u16s);
+    u16string to_utf16(u32string_view u32s);
+    u16string to_utf16(wstring_view ws);
 
-    u32string to_utf32(const astring_view& as);
-    u32string to_utf32(const u8string_view& u8s);
-    u32string to_utf32(const u16string_view& u16s);
-    u32string to_utf32(const u32string_view& u32s);
-    u32string to_utf32(const wstring_view& ws);
+    u32string to_utf32(astring_view as);
+    u32string to_utf32(u8string_view u8s);
+    u32string to_utf32(u16string_view u16s);
+    u32string to_utf32(u32string_view u32s);
+    u32string to_utf32(wstring_view ws);
 
-    wstring to_utfx(const astring_view& as);
-    wstring to_utfx(const u8string_view& u8s);
-    wstring to_utfx(const u16string_view& u16s);
-    wstring to_utfx(const u32string_view& u32s);
-    wstring to_utfx(const wstring_view& ws);
+    wstring to_utfx(astring_view as);
+    wstring to_utfx(u8string_view u8s);
+    wstring to_utfx(u16string_view u16s);
+    wstring to_utfx(u32string_view u32s);
+    wstring to_utfx(wstring_view ws);
 
-    string from_ascii(const astring_view& as);
-    string from_latin1(const astring_view& as);
-    string from_utf8(const u8string_view& u8s);
-    string from_utf16(const u16string_view& u16s);
-    string from_utf32(const u32string_view& u32s);
-    string from_utfx(const wstring_view& ws);
+    string from_ascii(astring_view as);
+    string from_latin1(astring_view as);
+    string from_utf8(u8string_view u8s);
+    string from_utf16(u16string_view u16s);
+    string from_utf32(u32string_view u32s);
+    string from_utfx(wstring_view ws);
 
-    astring to_ascii(const byte_view& bys);
-    astring to_latin1(const byte_view& bys);
-    u8string to_utf8_unchecked(const byte_view& bys);
-    u16string to_utf16_unchecked(const byte_view& bys);
-    u32string to_utf32_unchecked(const byte_view& bys);
-    wstring to_utfx_unchecked(const byte_view& bys);
+    astring to_ascii(byte_view bys);
+    astring to_latin1(byte_view bys);
+    u8string to_utf8_unchecked(byte_view bys);
+    u16string to_utf16_unchecked(byte_view bys);
+    u32string to_utf32_unchecked(byte_view bys);
+    wstring to_utfx_unchecked(byte_view bys);
 
-    string from_bytes(const byte_view& bys);
+    string from_bytes(byte_view bys);
 
-    byte_vector to_bytes(const astring_view& as);
-    byte_vector to_bytes(const u8string_view& u8s, bool add_bom = false);
-    byte_vector to_bytes(const u16string_view& u16s, bool add_bom = false, std::endian endian = std::endian::native);
-    byte_vector to_bytes(const u32string_view& u32s, bool add_bom = false, std::endian endian = std::endian::native);
-    byte_vector to_bytes(const wstring_view& ws, bool add_bom = false, std::endian endian = std::endian::native);
+    byte_vector to_bytes(astring_view as);
+    byte_vector to_bytes(u8string_view u8s, bool add_bom = false);
+    byte_vector to_bytes(u16string_view u16s, bool add_bom = false, std::endian endian = std::endian::native);
+    byte_vector to_bytes(u32string_view u32s, bool add_bom = false, std::endian endian = std::endian::native);
+    byte_vector to_bytes(wstring_view ws, bool add_bom = false, std::endian endian = std::endian::native);
 
-    bool check_ascii(const astring_view& as, bool log_warning = false);
-    bool parse_utf8(const u8string_view& u8s, u32string& u32s, bool log_warning = false);
-    bool parse_utf16(const u16string_view& u16s, u32string& u32s, bool log_warning = false);
-    bool check_utf32(const u32string_view& u32s, bool log_warning = false);
+    bool check_ascii(astring_view as, bool log_warning = false);
+    bool parse_utf8(u8string_view u8s, u32string& u32s, bool log_warning = false);
+    bool parse_utf16(u16string_view u16s, u32string& u32s, bool log_warning = false);
+    bool check_utf32(u32string_view u32s, bool log_warning = false);
 
     /** Calculates the length of the specified UTF-8 string in terms of Unicode code points. */
-    size_t utf8_length(const u8string_view& u8s);
+    size_t utf8_length(u8string_view u8s);
     /** Calculates the length of the specified UTF-16 string in terms of Unicode code points. */
-    size_t utf16_length(const u16string_view& u16s);
+    size_t utf16_length(u16string_view u16s);
 
 
 

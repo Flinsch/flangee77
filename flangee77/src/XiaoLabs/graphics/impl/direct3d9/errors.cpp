@@ -143,7 +143,7 @@ namespace errors {
         return oss.str();
     }
 
-    cl7::string d3d9_result(long error_code, const cl7::string_view& context)
+    cl7::string d3d9_result(long error_code, cl7::string_view context)
     {
         return cl7::errors::with_context( d3d9_result( error_code ), context );
     }

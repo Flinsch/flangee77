@@ -78,7 +78,7 @@ namespace resources {
      * resource manager.
      * Time complexity: linear in the number of contained resources.
      */
-    bool ResourceManager::contains_resource(const cl7::string_view& identifier) const
+    bool ResourceManager::contains_resource(cl7::string_view identifier) const
     {
         return find_resource( identifier ) != nullptr;
     }
@@ -136,7 +136,7 @@ namespace resources {
      * Time complexity: constant on average, worst case linear in the number of
      * contained resources.
      */
-    Resource* ResourceManager::find_resource(const cl7::string_view& identifier) const
+    Resource* ResourceManager::find_resource(cl7::string_view identifier) const
     {
         auto it = _resource_lookup.find( identifier );
         if ( it == _resource_lookup.end() )
@@ -209,7 +209,7 @@ namespace resources {
      * Time complexity: constant on average, worst case linear in the number of
      * contained resources.
      */
-    bool ResourceManager::release_resource(const cl7::string_view& identifier)
+    bool ResourceManager::release_resource(cl7::string_view identifier)
     {
         return release_resource( find_resource( identifier ) );
     }

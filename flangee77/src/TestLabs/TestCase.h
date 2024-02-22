@@ -34,7 +34,7 @@ public:
     /**
      * Explicit constructor.
      */
-    TestCase(FuncType func, const cl7::string_view& name, const cl7::char_type* file_path, unsigned line_number);
+    TestCase(FuncType func, cl7::string_view name, const cl7::char_type* file_path, unsigned line_number);
 
     /**
      * Destructor.

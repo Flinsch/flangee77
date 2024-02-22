@@ -40,12 +40,12 @@ public:
     /**
      * Explicit constructor.
      */
-    ShaderCode(Language language, const cl7::byte_view& code_data);
+    ShaderCode(Language language, cl7::byte_view code_data);
 
     /**
      * Explicit constructor.
      */
-    ShaderCode(const cl7::astring_view& high_level_code);
+    ShaderCode(cl7::astring_view high_level_code);
 
 
 

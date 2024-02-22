@@ -232,31 +232,31 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  between UTF-16 and UTF-32") )
 
 // Functions to be tested explicitly:
 // 
-// astring to_latin1(const u32string_view& u32s)
-// u8string to_utf8(const u32string_view& u32s)
-// u16string to_utf16(const u32string_view& u32s)
+// astring to_latin1(u32string_view u32s)
+// u8string to_utf8(u32string_view u32s)
+// u16string to_utf16(u32string_view u32s)
 // 
-// astring to_latin1(const byte_view& bys)
-// u8string to_utf8_unchecked(const byte_view& bys)
-// u16string to_utf16_unchecked(const byte_view& bys)
-// u32string to_utf32_unchecked(const byte_view& bys)
+// astring to_latin1(byte_view bys)
+// u8string to_utf8_unchecked(byte_view bys)
+// u16string to_utf16_unchecked(byte_view bys)
+// u32string to_utf32_unchecked(byte_view bys)
 // 
-// byte_vector to_bytes(const astring_view& as)
-// byte_vector to_bytes(const u8string_view& u8s, bool add_bom)
-// byte_vector to_bytes(const u16string_view& u16s, bool add_bom, std::endian endian)
-// byte_vector to_bytes(const u32string_view& u32s, bool add_bom, std::endian endian)
+// byte_vector to_bytes(astring_view as)
+// byte_vector to_bytes(u8string_view u8s, bool add_bom)
+// byte_vector to_bytes(u16string_view u16s, bool add_bom, std::endian endian)
+// byte_vector to_bytes(u32string_view u32s, bool add_bom, std::endian endian)
 // 
-// bool check_ascii(const astring_view& as, bool log_warning)
-// bool parse_utf8(const u8string_view& u8s, u32string& u32s, bool log_warning)
-// bool parse_utf16(const u16string_view& u16s, u32string& u32s, bool log_warning)
-// bool check_utf32(const u32string_view& u32s, bool log_warning)
+// bool check_ascii(astring_view as, bool log_warning)
+// bool parse_utf8(u8string_view u8s, u32string& u32s, bool log_warning)
+// bool parse_utf16(u16string_view u16s, u32string& u32s, bool log_warning)
+// bool check_utf32(u32string_view u32s, bool log_warning)
 // 
-// size_t utf8_length(const u8string_view& u8s)
-// size_t utf16_length(const u16string_view& u16s)
+// size_t utf8_length(u8string_view u8s)
+// size_t utf16_length(u16string_view u16s)
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(const u32string_view&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(u32string_view)") )
 {
     for ( cl7::u32char_type u32c = 0; u32c <= 0xff; ++u32c )
     {
@@ -278,7 +278,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(const u32string_view&)") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8(const u32string_view&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8(u32string_view)") )
 {
     struct Entry
     {
@@ -322,7 +322,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8(const u32string_view&)") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16(const u32string_view&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16(u32string_view)") )
 {
     struct Entry
     {
@@ -368,7 +368,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16(const u32string_view&)") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(const byte_view&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(byte_view)") )
 {
     struct Entry
     {
@@ -392,7 +392,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(const byte_view&)") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8_unchecked(const byte_view&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8_unchecked(byte_view)") )
 {
     struct Entry
     {
@@ -421,7 +421,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8_unchecked(const byte_view&)") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16_unchecked(const byte_view&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16_unchecked(byte_view)") )
 {
     struct Entry
     {
@@ -466,7 +466,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16_unchecked(const byte_view&)") 
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf32_unchecked(const byte_view&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf32_unchecked(byte_view)") )
 {
     struct Entry
     {
@@ -513,7 +513,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf32_unchecked(const byte_view&)") 
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(const astring_view&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(astring_view)") )
 {
     struct Entry
     {
@@ -536,7 +536,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(const astring_view&)") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(const u8string_view&, bool)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(u8string_view, bool)") )
 {
     struct Entry
     {
@@ -562,7 +562,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(const u8string_view&, bool)") 
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(const u16string_view&, bool, std::endian)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(u16string_view, bool, std::endian)") )
 {
     struct Entry
     {
@@ -599,7 +599,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(const u16string_view&, bool, s
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(const u32string_view&, bool, std::endian)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(u32string_view, bool, std::endian)") )
 {
     struct Entry
     {
@@ -638,7 +638,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(const u32string_view&, bool, s
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::check_ascii(const astring_view&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::check_ascii(astring_view)") )
 {
     struct Entry
     {
@@ -661,7 +661,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::check_ascii(const astring_view&)") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::parse_utf8(const u8string_view&, u32string&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::parse_utf8(u8string_view, u32string&)") )
 {
     struct Entry
     {
@@ -697,7 +697,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::parse_utf8(const u8string_view&, u32str
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::parse_utf16(const u16string_view&, u32string&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::parse_utf16(u16string_view, u32string&)") )
 {
     struct Entry
     {
@@ -740,7 +740,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::parse_utf16(const u16string_view&, u32s
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::check_utf32(const u32string_view&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::check_utf32(u32string_view)") )
 {
     struct Entry
     {
@@ -781,7 +781,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::check_utf32(const u32string_view&)") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::utf8_length(const u8string_view&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::utf8_length(u8string_view)") )
 {
     struct Entry
     {
@@ -815,7 +815,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::utf8_length(const u8string_view&)") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::utf16_length(const u16string_view&)") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings::utf16_length(u16string_view)") )
 {
     struct Entry
     {

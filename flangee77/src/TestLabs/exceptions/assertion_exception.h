@@ -16,7 +16,7 @@ class assertion_exception
 {
 
 public:
-    assertion_exception(const cl7::string_view& original_expression, const cl7::string_view& evaluated_expression, const cl7::string_view& stringification, const cl7::char_type* file_path, unsigned line_number)
+    assertion_exception(cl7::string_view original_expression, cl7::string_view evaluated_expression, cl7::string_view stringification, const cl7::char_type* file_path, unsigned line_number)
         : original_expression( original_expression )
         , evaluated_expression( evaluated_expression )
         , meta{ cl7::string(stringification), file_path, line_number, 0 }

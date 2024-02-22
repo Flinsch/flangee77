@@ -56,7 +56,7 @@ protected:
     /**
      * Explicit constructor.
      */
-    Resource(ResourceManager* manager, ResourceID id, const cl7::string_view& identifier);
+    Resource(ResourceManager* manager, ResourceID id, cl7::string_view identifier);
 
     /**
      * Explicit constructor.

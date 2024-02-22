@@ -15,10 +15,10 @@ namespace errors {
 
 
     cl7::string dxgi_result(long error_code);
-    cl7::string dxgi_result(long error_code, const cl7::string_view& context);
+    cl7::string dxgi_result(long error_code, cl7::string_view context);
 
     cl7::string d3d11_result(long error_code);
-    cl7::string d3d11_result(long error_code, const cl7::string_view& context);
+    cl7::string d3d11_result(long error_code, cl7::string_view context);
 
 
 

@@ -77,11 +77,11 @@ namespace internals {
     cl7::string to_string(const std::u16string& val);
     cl7::string to_string(const std::u32string& val);
 
-    cl7::string to_string(const std::string_view& val);
-    cl7::string to_string(const std::wstring_view& val);
-    cl7::string to_string(const std::u8string_view& val);
-    cl7::string to_string(const std::u16string_view& val);
-    cl7::string to_string(const std::u32string_view& val);
+    cl7::string to_string(std::string_view val);
+    cl7::string to_string(std::wstring_view val);
+    cl7::string to_string(std::u8string_view val);
+    cl7::string to_string(std::u16string_view val);
+    cl7::string to_string(std::u32string_view val);
 
 
 
