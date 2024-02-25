@@ -4,9 +4,9 @@
 #include <XiaoLabs/graphics.h>
 
 #include <CoreLabs/creational/Singleton.h>
+#include <CoreLabs/system/MemoryStatus.h>
 #include <CoreLabs/logging/FileLogHandler.h>
 #include <CoreLabs/logging.h>
-#include <CoreLabs/errors.h>
 #include <CoreLabs/memory.h>
 
 
@@ -90,37 +90,11 @@ namespace pl7 {
 
         // Print out the system memory status.
         LOG_TYPE( TEXT("System memory status:"), cl7::logging::LogType::Caption );
-#ifdef _WIN32
-        MEMORYSTATUSEX memory_status_ex;
-        ::memset( &memory_status_ex, 0, sizeof(memory_status_ex) );
-        memory_status_ex.dwLength = sizeof(memory_status_ex);
-        if ( !::GlobalMemoryStatusEx( &memory_status_ex ) )
-            LOG_WARNING( cl7::errors::system_result( ::GetLastError(), TEXT("::GlobalMemoryStatusEx") ) );
-
-        LOG_TYPE( TEXT("Total physical memory\t") + cl7::memory::stringify_byte_amount( memory_status_ex.ullTotalPhys ), cl7::logging::LogType::Item );
-        LOG_TYPE( TEXT("Available physical memory\t") + cl7::memory::stringify_byte_amount( memory_status_ex.ullAvailPhys ), cl7::logging::LogType::Item );
-        LOG_TYPE( TEXT("Total page file\t") + cl7::memory::stringify_byte_amount( memory_status_ex.ullTotalPageFile ), cl7::logging::LogType::Item );
-        LOG_TYPE( TEXT("Available page file\t") + cl7::memory::stringify_byte_amount( memory_status_ex.ullAvailPageFile ), cl7::logging::LogType::Item );
-        LOG_TYPE( TEXT("Total virtual memory\t") + cl7::memory::stringify_byte_amount( memory_status_ex.ullTotalVirtual ), cl7::logging::LogType::Item );
-        LOG_TYPE( TEXT("Available virtual memory\t") + cl7::memory::stringify_byte_amount( memory_status_ex.ullAvailVirtual ), cl7::logging::LogType::Item );
-#else // => Unix-like systems (such as Linux)
-        struct sysinfo sys_info;
-        ::memset( &sys_info, 0, sizeof(sys_info) );
-        if ( ::sysinfo( &sys_info ) != 0 )
-            LOG_WARNING( cl7::errors::system_result( errno, TEXT("::sysinfo") ) );
-
-        struct rlimit r_limit;
-        ::memset( &r_limit, 0, sizeof(r_limit) );
-        if ( ::getrlimit( RLIMIT_AS, &r_limit ) != 0 )
-            LOG_WARNING( cl7::errors::system_result( errno, TEXT("::getrlimit") ) );
-
-        LOG_TYPE( TEXT("Total physical memory\t") + cl7::memory::stringify_byte_amount( sys_info.totalram * sys_info.mem_unit ), cl7::logging::LogType::Item );
-        LOG_TYPE( TEXT("Available physical memory\t") + cl7::memory::stringify_byte_amount( sys_info.freeram * sys_info.mem_unit ), cl7::logging::LogType::Item );
-        LOG_TYPE( TEXT("Total swap space\t") + cl7::memory::stringify_byte_amount( sys_info.totalswap * sys_info.mem_unit ), cl7::logging::LogType::Item );
-        LOG_TYPE( TEXT("Available swap space\t") + cl7::memory::stringify_byte_amount( sys_info.freeswap * sys_info.mem_unit ), cl7::logging::LogType::Item );
-
-        LOG_TYPE( TEXT("Virtual memory limit\t") + cl7::memory::stringify_byte_amount( r_limit.rlim_cur ), cl7::logging::LogType::Item );
-#endif
+        cl7::system::MemoryStatus memory_status;
+        if ( !memory_status.capture() )
+            LOG_WARNING( TEXT("Unable to retrieve system memory status.") );
+        LOG_TYPE( TEXT("Total physical memory\t") + cl7::memory::stringify_byte_amount( memory_status.total_physical_memory ), cl7::logging::LogType::Item );
+        LOG_TYPE( TEXT("Available physical memory\t") + cl7::memory::stringify_byte_amount( memory_status.available_physical_memory ), cl7::logging::LogType::Item );
 
         // Create the main window.
         if ( !xl7::main_window().init( config ) )

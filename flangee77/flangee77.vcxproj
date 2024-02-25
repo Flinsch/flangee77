@@ -199,6 +199,8 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\CoreLabs\system\CPUID.h" />
+    <ClInclude Include="src\CoreLabs\system\MemoryStatus.h" />
     <ClInclude Include="src\DataLabs\compression.h" />
     <ClInclude Include="src\DataLabs\compression\Deflate.h" />
     <ClInclude Include="src\XiaoLabs\graphics\images\PngImageHandler.h" />
@@ -334,6 +336,8 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\images\TargaImageHandler.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\CoreLabs\system\CPUID.cpp" />
+    <ClCompile Include="src\CoreLabs\system\MemoryStatus.cpp" />
     <ClCompile Include="src\DataLabs\compression\Deflate.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\images\PngImageHandler.cpp" />
     <ClCompile Include="src\CoreLabs\io\file.cpp" />
