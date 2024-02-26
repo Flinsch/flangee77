@@ -4,8 +4,10 @@
 #include <XiaoLabs/graphics.h>
 
 #include <CoreLabs/creational/Singleton.h>
+#include <CoreLabs/system/MemoryStatus.h>
 #include <CoreLabs/logging/FileLogHandler.h>
 #include <CoreLabs/logging.h>
+#include <CoreLabs/memory.h>
 
 
 
@@ -85,6 +87,14 @@ namespace pl7 {
         // Perform "custom" pre-initialization.
         if ( !_pre_init_impl( config ) )
             return false;
+
+        // Print out the system memory status.
+        LOG_TYPE( TEXT("System memory status:"), cl7::logging::LogType::Caption );
+        cl7::system::MemoryStatus memory_status;
+        if ( !memory_status.capture() )
+            LOG_WARNING( TEXT("Unable to retrieve system memory status.") );
+        LOG_TYPE( TEXT("Total physical memory\t") + cl7::memory::stringify_byte_amount( memory_status.total_physical_memory ), cl7::logging::LogType::Item );
+        LOG_TYPE( TEXT("Available physical memory\t") + cl7::memory::stringify_byte_amount( memory_status.available_physical_memory ), cl7::logging::LogType::Item );
 
         // Create the main window.
         if ( !xl7::main_window().init( config ) )
