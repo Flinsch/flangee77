@@ -45,6 +45,8 @@ struct PixelBitKit
 
     /** The number of channels in a pixel. */
     unsigned channel_count;
+    /** The size of one pixel, in bytes. */
+    unsigned stride;
 
     /** */
     union
@@ -56,11 +58,8 @@ struct PixelBitKit
         Channel channels[4];
     };
 
-    /** */
+    /** The data type of each channel. */
     DataType data_type;
-
-    /** The size of one pixel, in bytes. */
-    unsigned stride;
 
     ///** The number of bytes from the beginning of one line of pixels to the beginning of the next. */
     //unsigned pitch;
@@ -68,6 +67,17 @@ struct PixelBitKit
 
 
     PixelBitKit(PixelFormat pixel_format, ChannelOrder channel_order);
+
+
+
+    /** Returns the channel count of the specified pixel format. */
+    static unsigned determine_channel_count(PixelFormat pixel_format);
+
+    /** Returns the number of bytes of one pixel of the specified format. */
+    static unsigned determine_stride(PixelFormat pixel_format);
+
+    /** Returns the data type of the specified pixel format. */
+    static DataType determine_data_type(PixelFormat pixel_format);
 
 }; // struct PixelBitKit
 

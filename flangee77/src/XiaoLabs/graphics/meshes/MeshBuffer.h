@@ -23,10 +23,18 @@ class MeshBuffer
 {
 
 public:
+    enum class Type
+    {
+        VertexBuffer,
+        IndexBuffer,
+    };
+
+public:
     struct Desc
     {
         /** Identifies how the buffer is expected to be updated (frequency of update is a key factor). */
         resources::ResourceUsage usage;
+
         /** The topology of the primitives that the buffer represents. */
         Topology topology;
         /** The number of elements within the buffer. */
@@ -44,8 +52,9 @@ protected:
      */
     template <class TDesc>
         requires( std::derived_from<TDesc, Desc> )
-    MeshBuffer(const CreateParams<TDesc>& params, unsigned stride)
+    MeshBuffer(Type type, const CreateParams<TDesc>& params, unsigned stride)
         : Resource( params )
+        , _type( type )
         , _desc( params.desc )
         , _primitive_count( MeshUtil::calculate_primitive_count( params.desc.topology, params.desc.count ) )
         , _stride( stride )
@@ -72,6 +81,11 @@ private:
     // Attributes
     // #############################################################################
 protected:
+    /**
+     * The type of the buffer.
+     */
+    const Type _type;
+
     /**
      * The descriptor of the buffer.
      */
@@ -100,6 +114,11 @@ private:
     // Properties
     // #############################################################################
 public:
+    /**
+     * Returns the type of the buffer.
+     */
+    Type get_type() const { return _type; }
+
     /**
      * Returns the descriptor of the buffer.
      */

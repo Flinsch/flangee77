@@ -13,9 +13,7 @@ namespace images {
     /** Returns the size of one pixel, in bytes. */
     unsigned Image::Desc::determine_pixel_stride() const
     {
-        PixelBitKit pbk{ pixel_format, channel_order };
-
-        return pbk.stride;
+        return PixelBitKit::determine_stride( pixel_format );
     }
 
     /** Calculates the total size of the image data, in bytes. */

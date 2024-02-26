@@ -1,12 +1,10 @@
-#include "VertexBuffer.h"
-
-#include <CoreLabs/logging.h>
+#include "Cubemap.h"
 
 
 
 namespace xl7 {
 namespace graphics {
-namespace meshes {
+namespace textures {
 
 
 
@@ -17,15 +15,14 @@ namespace meshes {
     /**
      * Explicit constructor.
      */
-    VertexBuffer::VertexBuffer(const CreateParams<Desc>& params)
-        : MeshBuffer( Type::VertexBuffer, params, params.desc.stride )
+    Cubemap::Cubemap(const CreateParams<Desc>& params)
+        : Texture( Type::Cubemap, { params.manager, params.id, params.identifier, params.desc } )
         , _desc( params.desc )
     {
-        assert( _stride > 0 && _stride >= _desc.vertex_layout.calculate_size() );
     }
 
 
 
-} // namespace meshes
+} // namespace textures
 } // namespace graphics
 } // namespace xl7

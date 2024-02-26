@@ -199,6 +199,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\textures\Cubemap.h" />
     <ClInclude Include="src\DataLabs\compression.h" />
     <ClInclude Include="src\DataLabs\compression\Deflate.h" />
     <ClInclude Include="src\XiaoLabs\graphics\images\PngImageHandler.h" />
@@ -332,8 +333,13 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\impl\shared\meshes\VertexBufferBinding.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\shared\meshes\ComposedVertexLayout.h" />
     <ClInclude Include="src\XiaoLabs\graphics\images\TargaImageHandler.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\textures\Texture.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\textures\Texture2D.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\textures\Texture2DArray.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\textures\Texture3D.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\textures\Cubemap.cpp" />
     <ClCompile Include="src\DataLabs\compression\Deflate.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\images\PngImageHandler.cpp" />
     <ClCompile Include="src\CoreLabs\io\file.cpp" />
@@ -426,6 +432,10 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClCompile Include="src\XiaoLabs\graphics\impl\shared\meshes\VertexBufferBinding.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\shared\meshes\ComposedVertexLayout.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\images\TargaImageHandler.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\textures\Texture.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\textures\Texture2D.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\textures\Texture2DArray.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\textures\Texture3D.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

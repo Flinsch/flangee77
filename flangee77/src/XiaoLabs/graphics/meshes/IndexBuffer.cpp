@@ -20,7 +20,7 @@ namespace meshes {
      * Explicit constructor.
      */
     IndexBuffer::IndexBuffer(const CreateParams<Desc>& params)
-        : MeshBuffer( params, MeshUtil::calculate_index_stride( params.desc.index_type ) )
+        : MeshBuffer( Type::IndexBuffer, params, MeshUtil::calculate_index_stride( params.desc.index_type ) )
         , _desc( params.desc )
     {
         assert( _stride == 2 || _stride == 4 );

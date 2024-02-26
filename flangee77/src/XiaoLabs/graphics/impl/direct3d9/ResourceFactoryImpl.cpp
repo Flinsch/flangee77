@@ -15,6 +15,28 @@ namespace direct3d9 {
 
 
 
+    xl7::graphics::textures::Texture2D* ResourceFactoryImpl::create_texture_2d(const resources::Resource::CreateParams<xl7::graphics::textures::Texture2D::Desc>& params)
+    {
+        return nullptr;
+    }
+
+    xl7::graphics::textures::Texture3D* ResourceFactoryImpl::create_texture_3d(const resources::Resource::CreateParams<xl7::graphics::textures::Texture3D::Desc>& params)
+    {
+        return nullptr;
+    }
+
+    xl7::graphics::textures::Texture2DArray* ResourceFactoryImpl::create_texture_2d_array(const resources::Resource::CreateParams<xl7::graphics::textures::Texture2DArray::Desc>& params)
+    {
+        return nullptr;
+    }
+
+    xl7::graphics::textures::Cubemap* ResourceFactoryImpl::create_cubemap(const resources::Resource::CreateParams<xl7::graphics::textures::Cubemap::Desc>& params)
+    {
+        return nullptr;
+    }
+
+
+
     xl7::graphics::meshes::VertexBuffer* ResourceFactoryImpl::create_vertex_buffer(const resources::Resource::CreateParams<xl7::graphics::meshes::VertexBuffer::Desc>& params)
     {
         return meshes::VertexBufferImpl::Attorney::create( params );

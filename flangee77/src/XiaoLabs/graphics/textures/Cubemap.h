@@ -1,29 +1,25 @@
 #pragma once
-#ifndef XL7_GRAPHICS_MESHES_INDEXBUFFER_H
-#define XL7_GRAPHICS_MESHES_INDEXBUFFER_H
-#include "./MeshBuffer.h"
-
-#include "./IndexType.h"
-#include "./IndexDataProvider.h"
+#ifndef XL7_GRAPHICS_TEXTURES_CUBEMAP_H
+#define XL7_GRAPHICS_TEXTURES_CUBEMAP_H
+#include "./Texture.h"
 
 
 
 namespace xl7 {
 namespace graphics {
-namespace meshes {
+namespace textures {
 
 
 
-class IndexBuffer
-    : public MeshBuffer
+class Cubemap
+    : public Texture
 {
 
 public:
     struct Desc
-        : public MeshBuffer::Desc
+        : public Texture::Desc
     {
-        /** The type/format (16 or 32 bits) of the index buffer. */
-        IndexType index_type;
+        
     };
 
 
@@ -35,20 +31,20 @@ protected:
     /**
      * Explicit constructor.
      */
-    IndexBuffer(const CreateParams<Desc>& params);
+    Cubemap(const CreateParams<Desc>& params);
 
     /**
      * Destructor.
      */
-    virtual ~IndexBuffer() = default;
+    virtual ~Cubemap() = default;
 
 private:
     /** Default constructor. */
-    IndexBuffer() = delete;
+    Cubemap() = delete;
     /** Copy constructor. */
-    IndexBuffer(const IndexBuffer&) = delete;
+    Cubemap(const Cubemap&) = delete;
     /** Copy assignment operator. */
-    IndexBuffer& operator = (const IndexBuffer&) = delete;
+    Cubemap& operator = (const Cubemap&) = delete;
 
 
 
@@ -57,7 +53,7 @@ private:
     // #############################################################################
 protected:
     /**
-     * The descriptor of the index buffer.
+     * The descriptor of the cubemap.
      */
     const Desc _desc;
 
@@ -70,7 +66,7 @@ private:
     // #############################################################################
 public:
     /**
-     * Returns the descriptor of the index buffer.
+     * Returns the descriptor of the cubemap.
      */
     const Desc& get_desc() const { return _desc; }
 
@@ -85,14 +81,14 @@ public:
     /**
      * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    virtual cl7::string_view get_type_string() const override { return TEXT("index buffer"); }
+    virtual cl7::string_view get_type_string() const override { return TEXT("cubemap"); }
 
-}; // class IndexBuffer
+}; // class Cubemap
 
 
 
-} // namespace meshes
+} // namespace textures
 } // namespace graphics
 } // namespace xl7
 
-#endif // XL7_GRAPHICS_MESHES_INDEXBUFFER_H
+#endif // XL7_GRAPHICS_TEXTURES_CUBEMAP_H

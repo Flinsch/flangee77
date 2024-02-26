@@ -1,29 +1,26 @@
 #pragma once
-#ifndef XL7_GRAPHICS_MESHES_INDEXBUFFER_H
-#define XL7_GRAPHICS_MESHES_INDEXBUFFER_H
-#include "./MeshBuffer.h"
-
-#include "./IndexType.h"
-#include "./IndexDataProvider.h"
+#ifndef XL7_GRAPHICS_TEXTURES_TEXTURE3D_H
+#define XL7_GRAPHICS_TEXTURES_TEXTURE3D_H
+#include "./Texture.h"
 
 
 
 namespace xl7 {
 namespace graphics {
-namespace meshes {
+namespace textures {
 
 
 
-class IndexBuffer
-    : public MeshBuffer
+class Texture3D
+    : public Texture
 {
 
 public:
     struct Desc
-        : public MeshBuffer::Desc
+        : public Texture::Desc
     {
-        /** The type/format (16 or 32 bits) of the index buffer. */
-        IndexType index_type;
+        /** The depth of the texture. */
+        unsigned depth;
     };
 
 
@@ -35,20 +32,20 @@ protected:
     /**
      * Explicit constructor.
      */
-    IndexBuffer(const CreateParams<Desc>& params);
+    Texture3D(const CreateParams<Desc>& params);
 
     /**
      * Destructor.
      */
-    virtual ~IndexBuffer() = default;
+    virtual ~Texture3D() = default;
 
 private:
     /** Default constructor. */
-    IndexBuffer() = delete;
+    Texture3D() = delete;
     /** Copy constructor. */
-    IndexBuffer(const IndexBuffer&) = delete;
+    Texture3D(const Texture3D&) = delete;
     /** Copy assignment operator. */
-    IndexBuffer& operator = (const IndexBuffer&) = delete;
+    Texture3D& operator = (const Texture3D&) = delete;
 
 
 
@@ -57,7 +54,7 @@ private:
     // #############################################################################
 protected:
     /**
-     * The descriptor of the index buffer.
+     * The descriptor of the 3D texture.
      */
     const Desc _desc;
 
@@ -70,7 +67,7 @@ private:
     // #############################################################################
 public:
     /**
-     * Returns the descriptor of the index buffer.
+     * Returns the descriptor of the 3D texture.
      */
     const Desc& get_desc() const { return _desc; }
 
@@ -85,14 +82,14 @@ public:
     /**
      * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    virtual cl7::string_view get_type_string() const override { return TEXT("index buffer"); }
+    virtual cl7::string_view get_type_string() const override { return TEXT("3D texture"); }
 
-}; // class IndexBuffer
+}; // class Texture3D
 
 
 
-} // namespace meshes
+} // namespace textures
 } // namespace graphics
 } // namespace xl7
 
-#endif // XL7_GRAPHICS_MESHES_INDEXBUFFER_H
+#endif // XL7_GRAPHICS_TEXTURES_TEXTURE3D_H
