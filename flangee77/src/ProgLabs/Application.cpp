@@ -4,9 +4,11 @@
 #include <XiaoLabs/graphics.h>
 
 #include <CoreLabs/creational/Singleton.h>
+#include <CoreLabs/system/CPUID.h>
 #include <CoreLabs/system/MemoryStatus.h>
 #include <CoreLabs/logging/FileLogHandler.h>
 #include <CoreLabs/logging.h>
+#include <CoreLabs/strings.h>
 #include <CoreLabs/memory.h>
 
 
@@ -87,6 +89,20 @@ namespace pl7 {
         // Perform "custom" pre-initialization.
         if ( !_pre_init_impl( config ) )
             return false;
+
+        // Print out CPU identification/information.
+        LOG_TYPE( TEXT("CPU identification/information:"), cl7::logging::LogType::Caption );
+        cl7::system::CPUID cpuid;
+        if ( !cpuid.capture() )
+            LOG_WARNING( TEXT("Unable to retrieve CPU identification/information.") );
+        LOG_TYPE( TEXT("Vendor name\t") + cl7::strings::from_ascii( cpuid.vendor_name ), cl7::logging::LogType::Item );
+        LOG_TYPE( TEXT("Processor name\t") + cl7::strings::from_ascii( cpuid.processor_name ), cl7::logging::LogType::Item );
+        if ( cpuid.bitness && cpuid.bitness != sizeof(size_t) * 8 )
+            LOG_TYPE( TEXT("Bitness\t") + cl7::to_string( cpuid.bitness ) + TEXT("-bit") + TEXT(" (system: ") + cl7::to_string( sizeof(size_t) * 8 ) + TEXT("-bit") + TEXT(")"), cl7::logging::LogType::Item );
+        else
+            LOG_TYPE( TEXT("Bitness\t") + (cpuid.bitness ? cl7::to_string( cpuid.bitness ) + TEXT("-bit") : cl7::string( TEXT("unknown") )), cl7::logging::LogType::Item );
+        LOG_TYPE( TEXT("Frequency\t") + (cpuid.frequency ? cl7::to_string( cpuid.frequency ) + TEXT(" MHz") : cl7::string( TEXT("unknown") )), cl7::logging::LogType::Item );
+        LOG_TYPE( TEXT("Concurrency\t") + (cpuid.hardware_concurrency ? cl7::to_string( cpuid.hardware_concurrency ) + TEXT(" thread contexts") : cl7::string( TEXT("unknown") )), cl7::logging::LogType::Item );
 
         // Print out the system memory status.
         LOG_TYPE( TEXT("System memory status:"), cl7::logging::LogType::Caption );

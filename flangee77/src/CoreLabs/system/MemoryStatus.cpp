@@ -25,9 +25,9 @@ namespace system {
 
 
     /**
-    * Retrieves information about the system's current usage of both physical and
-    * virtual memory.
-    */
+     * Retrieves information about the system's current usage of both physical and
+     * virtual memory.
+     */
     bool MemoryStatus::capture()
     {
         *this = {}; // Reinitialize via default constructor.
