@@ -26,6 +26,8 @@ namespace direct3d9 {
         if ( !_create_main_interface() )
             return false;
 
+        LOG_TYPE( TEXT("Sorry for using \u201cold\u201d technology."), cl7::logging::LogType::Comment );
+
         return true;
     }
 
