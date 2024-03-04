@@ -2,6 +2,7 @@
 
 #include "../GraphicsSystemImpl.h"
 #include "../RenderingDeviceImpl.h"
+#include "../mappings.h"
 #include "../errors.h"
 
 #include <CoreLabs/logging.h>
@@ -31,23 +32,6 @@ namespace meshes {
         return D3DFMT_UNKNOWN;
     }
 
-    static DWORD _d3d_usage_from(resources::ResourceUsage resource_usage)
-    {
-        switch ( resource_usage )
-        {
-        case resources::ResourceUsage::Default:
-            return D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC;
-        case resources::ResourceUsage::Immutable:
-            return D3DUSAGE_WRITEONLY;
-        case resources::ResourceUsage::Dynamic:
-            return D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC;
-        default:
-            assert( false );
-        }
-
-        return 0;
-    }
-
 
 
     // #############################################################################
@@ -60,8 +44,6 @@ namespace meshes {
     IndexBufferImpl::IndexBufferImpl(const CreateParams<Desc>& params)
         : IndexBuffer( params )
         , _d3d_format( _d3d_format_from( _desc.index_type ) )
-        , _d3d_device( static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device() )
-        , _d3d_index_buffer()
     {
     }
 
@@ -79,15 +61,16 @@ namespace meshes {
      */
     bool IndexBufferImpl::_acquire_impl(const resources::DataProvider& data_provider)
     {
-        assert( _d3d_device );
+        auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
+        assert( d3d_device );
 
         assert( _data.empty() || _data.size() == static_cast<size_t>( _size ) );
 
-        HRESULT hresult = _d3d_device->CreateIndexBuffer(
+        HRESULT hresult = d3d_device->CreateIndexBuffer(
             _size,
-            _d3d_usage_from( _desc.usage ),
+            mappings::_d3d_usage_from( _desc.usage ),
             _d3d_format,
-            D3DPOOL_MANAGED,
+            mappings::_d3d_pool_from( _desc.usage ),
             &_d3d_index_buffer,
             NULL );
 
@@ -118,7 +101,7 @@ namespace meshes {
 
 
     // #############################################################################
-    // Index Buffer Implementations
+    // IndexBuffer Implementations
     // #############################################################################
 
     /**

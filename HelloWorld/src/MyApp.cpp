@@ -124,7 +124,16 @@ namespace helloworld {
         png_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy.png"), image );
         png_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy-indexed.png"), image );
 
-        //_texture_id = 
+        xl7::graphics::textures::Texture2D::Desc texture_desc {
+            xl7::resources::ResourceUsage::Default,
+            xl7::graphics::PixelFormat::R8G8B8A8_UNORM,
+            xl7::graphics::ChannelOrder::RGBA,
+            0,  // mip_levels
+            16, // width
+            16, // height
+        };
+
+        _texture_id = xl7::graphics::texture_manager()->create_texture_2d( TEXT("My Texture"), texture_desc, {} );
 
         return true;
     }
@@ -136,6 +145,8 @@ namespace helloworld {
      */
     bool MyApp::_shutdown_impl()
     {
+        xl7::graphics::texture_manager()->release_resource_and_invalidate( _texture_id );
+
         xl7::graphics::mesh_manager()->release_resource_and_invalidate( _vertex_buffer_id );
         xl7::graphics::mesh_manager()->release_resource_and_invalidate( _index_buffer_id );
 

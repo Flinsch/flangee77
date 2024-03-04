@@ -164,7 +164,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  PixelBitKit") )
 {
     // This is just so that we notice when a value is inserted or removed
     // and then we should also adjust the tests accordingly.
-    TESTLABS_CHECK_EQ( static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ), 52 );
+    TESTLABS_CHECK_EQ( static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ), 53 );
 
 
     TESTLABS_SUBCASE( TEXT("data type") )
@@ -173,6 +173,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  PixelBitKit") )
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R4G4B4X4_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R5G5B5X1_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R5G6B5_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
@@ -262,6 +263,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  PixelBitKit") )
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
 
 
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R4G4B4X4_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R5G5B5X1_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R5G6B5_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
 
@@ -344,6 +346,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  PixelBitKit") )
             { xl7::graphics::PixelFormat::R32G32_SINT,  8, { 32, 0, 0x00000000ffffffff }, { 32, 32, 0xffffffff00000000 }, {}, {} },
             { xl7::graphics::PixelFormat::R32G32_FLOAT, 8, { 32, 0, 0x00000000ffffffff }, { 32, 32, 0xffffffff00000000 }, {}, {} },
 
+            { xl7::graphics::PixelFormat::R4G4B4X4_UNORM,   2, { 4, 0, 0x000f }, { 4, 4, 0x00f0 }, { 4,  8, 0x0f00 }, {} },
             { xl7::graphics::PixelFormat::R5G5B5X1_UNORM,   2, { 5, 0, 0x001f }, { 5, 5, 0x03e0 }, { 5, 10, 0x7c00 }, {} },
             { xl7::graphics::PixelFormat::R5G6B5_UNORM,     2, { 5, 0, 0x001f }, { 6, 5, 0x07e0 }, { 5, 11, 0xf800 }, {} },
 

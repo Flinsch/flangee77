@@ -60,11 +60,6 @@ private:
 
 private:
     /**
-     * The Direct3D 9 device interface.
-     */
-    wrl::ComPtr<IDirect3DDevice9> _d3d_device;
-
-    /**
      * The Direct3D 9 index buffer interface.
      */
     wrl::ComPtr<IDirect3DIndexBuffer9> _d3d_index_buffer;
@@ -104,7 +99,7 @@ private:
 
 
     // #############################################################################
-    // Index Buffer Implementations
+    // IndexBuffer Implementations
     // #############################################################################
 private:
     /**

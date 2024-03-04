@@ -82,6 +82,11 @@ namespace graphics {
             depths = { 32, 32, 0, 0 };
             break;
 
+        case PixelFormat::R4G4B4X4_UNORM:
+            assert( channel_count == 3 );
+            assert( stride == 2 );
+            depths = { 4, 4, 4, 0 };
+            break;
         case PixelFormat::R5G5B5X1_UNORM:
             assert( channel_count == 3 );
             assert( stride == 2 );
@@ -267,6 +272,9 @@ namespace graphics {
             channel_count = 2;
             break;
 
+        case PixelFormat::R4G4B4X4_UNORM:
+            channel_count = 3;
+            break;
         case PixelFormat::R5G5B5X1_UNORM:
             channel_count = 3;
             break;
@@ -393,6 +401,9 @@ namespace graphics {
             stride = 8;
             break;
 
+        case PixelFormat::R4G4B4X4_UNORM:
+            stride = 2;
+            break;
         case PixelFormat::R5G5B5X1_UNORM:
             stride = 2;
             break;
@@ -481,6 +492,7 @@ namespace graphics {
             case PixelFormat::R16_UNORM:
             case PixelFormat::R8G8_UNORM:
             case PixelFormat::R16G16_UNORM:
+            case PixelFormat::R4G4B4X4_UNORM:
             case PixelFormat::R5G5B5X1_UNORM:
             case PixelFormat::R5G6B5_UNORM:
             case PixelFormat::R8G8B8_UNORM:

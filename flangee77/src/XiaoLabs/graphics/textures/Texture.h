@@ -6,6 +6,8 @@
 #include "../PixelFormat.h"
 #include "../ChannelOrder.h"
 
+#include "./ImageDataProvider.h"
+
 
 
 namespace xl7 {
@@ -34,10 +36,16 @@ public:
 public:
     struct Desc
     {
+        /** Identifies how the texture is expected to be updated (frequency of update is a key factor). */
+        resources::ResourceUsage usage;
+
         /** The pixel format. */
         PixelFormat pixel_format;
         /** The preferred channel order. (The actual channel order may vary depending on hardware capabilities.) */
         ChannelOrder preferred_channel_order;
+
+        /** The maximum number of mipmap levels in the texture. (Use 1 for a multisampled texture; or 0 to generate a full set of subtextures, down to 1 by 1). */
+        unsigned mip_levels;
 
         /** The width of the texture, in pixels. */
         unsigned width;
@@ -54,7 +62,7 @@ protected:
     /**
      * Explicit constructor.
      */
-    Texture(Type type, const CreateParams<Desc>& params);
+    Texture(Type type, const CreateParams<Desc>& params, unsigned image_count);
 
     /**
      * Destructor.
@@ -86,6 +94,12 @@ protected:
     const Desc _desc;
 
     /**
+     * The channel order that is most likely to be accepted by the device with the
+     * texture's pixel format.
+     */
+    const ChannelOrder _recommended_channel_order;
+
+    /**
      * The size of each pixel, in bytes.
      */
     const unsigned _stride;
@@ -102,10 +116,15 @@ protected:
      */
     const unsigned _image_pitch;
 
+    /**
+     * The total data size of this texture, in bytes.
+     */
+    const unsigned _data_size;
+
 private:
     /**
-     * The actual channel order. This may differ from the preferred channel order,
-     * depending on hardware capabilities.
+     * The actual channel order. This may differ from the preferred and/or
+     * recommended channel order, depending on hardware capabilities.
      */
     ChannelOrder _channel_order;
 
@@ -126,6 +145,12 @@ public:
     const Desc& get_desc() const { return _desc; }
 
     /**
+     * Returns the channel order that is most likely to be accepted by the device
+     * with the texture's pixel format.
+     */
+    ChannelOrder get_recommended_channel_order() const { return _recommended_channel_order; }
+
+    /**
      * Returns the size of each pixel, in bytes.
      */
     unsigned get_stride() const { return _stride; }
@@ -142,10 +167,15 @@ public:
      */
     unsigned get_image_pitch() const { return _image_pitch; }
 
+    /**
+     * Returns the total data size of this texture, in bytes.
+     */
+    unsigned get_data_size() const { return _data_size; };
+
 public:
     /**
-     * Returns the actual channel order. This may differ from the preferred channel
-     * order, depending on hardware capabilities.
+     * Returns the actual channel order. This may differ from the preferred and/or
+     * recommended channel order, depending on hardware capabilities.
      */
     ChannelOrder get_channel_order() const { return _channel_order; }
 
@@ -188,7 +218,7 @@ private:
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_impl(const resources::DataProvider& code_provider, ChannelOrder& channel_order_out) = 0;
+    virtual bool _acquire_impl(const resources::DataProvider& data_provider, ChannelOrder& channel_order_out) = 0;
 
 }; // class Texture
 

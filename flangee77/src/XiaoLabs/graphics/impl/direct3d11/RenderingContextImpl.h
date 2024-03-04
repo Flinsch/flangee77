@@ -77,6 +77,7 @@ private:
      */
     wrl::ComPtr<ID3D11DeviceContextN> _d3d_device_context;
 
+private:
     /**
      * The Direct3D 11 (standard) render target view interface.
      */

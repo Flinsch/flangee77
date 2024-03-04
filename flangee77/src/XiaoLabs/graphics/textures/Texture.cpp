@@ -1,5 +1,7 @@
 #include "Texture.h"
 
+#include "../GraphicsSystem.h"
+#include "../RenderingDevice.h"
 #include "../PixelBitKit.h"
 
 
@@ -17,13 +19,15 @@ namespace textures {
     /**
      * Explicit constructor.
      */
-    Texture::Texture(Type type, const CreateParams<Desc>& params)
+    Texture::Texture(Type type, const CreateParams<Desc>& params, unsigned image_count)
         : Resource( params )
         , _type( type )
         , _desc( params.desc )
+        , _recommended_channel_order( GraphicsSystem::instance().get_rendering_device()->recommend_channel_order( type, params.desc.pixel_format, params.desc.preferred_channel_order ).first )
         , _stride( PixelBitKit::determine_stride( params.desc.pixel_format ) )
         , _line_pitch( _stride * params.desc.width )
         , _image_pitch( _line_pitch * params.desc.height )
+        , _data_size( _image_pitch * image_count )
         , _channel_order( params.desc.preferred_channel_order )
     {
     }
@@ -41,6 +45,15 @@ namespace textures {
      */
     bool Texture::_check_impl(const resources::DataProvider& data_provider)
     {
+        if ( !_check_against_size( data_provider, _data_size ) )
+            return false;
+        if ( !_check_against_stride( data_provider, _stride ) )
+            return false;
+        if ( !_check_against_stride( data_provider, _line_pitch ) )
+            return false;
+        if ( !_check_against_stride( data_provider, _image_pitch ) )
+            return false;
+
         return true;
     }
 

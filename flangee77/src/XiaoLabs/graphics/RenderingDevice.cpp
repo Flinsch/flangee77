@@ -142,6 +142,50 @@ namespace graphics {
         return true;
     }
 
+    /**
+     * Checks whether the device (generally) supports the specified combination of
+     * pixel format and channel order for the specified texture type.
+     */
+    bool RenderingDevice::check_texture_format(textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder channel_order)
+    {
+        if ( pixel_format == PixelFormat::UNKNOWN )
+            return false;
+
+        return _check_texture_format_impl( texture_type, pixel_format, channel_order );
+    }
+
+    /**
+     * Returns the channel order that is most likely to be accepted by the device
+     * for the specified texture type of a specific pixel format. However, there is
+     * no guarantee that the implied combination will actually be accepted (e.g., if
+     * the pixel format is not supported at all). The secondary return value may
+     * provide information about this.
+     */
+    std::pair<ChannelOrder, bool> RenderingDevice::recommend_channel_order(textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder preferred_channel_order)
+    {
+        if ( pixel_format == PixelFormat::UNKNOWN )
+            return { preferred_channel_order, false };
+
+        constexpr ChannelOrder channel_order_check_sequences[4][4] = {
+            { ChannelOrder::RGBA, ChannelOrder::ABGR, ChannelOrder::BGRA, ChannelOrder::ARGB }, // RGBA
+            { ChannelOrder::ARGB, ChannelOrder::BGRA, ChannelOrder::ABGR, ChannelOrder::RGBA }, // ARGB
+            { ChannelOrder::ABGR, ChannelOrder::RGBA, ChannelOrder::ARGB, ChannelOrder::BGRA }, // ABGR
+            { ChannelOrder::BGRA, ChannelOrder::ARGB, ChannelOrder::RGBA, ChannelOrder::ABGR }, // BGRA
+        };
+
+        const ChannelOrder* channel_order_check_sequence = channel_order_check_sequences[ static_cast<unsigned>( preferred_channel_order ) ];
+        assert( channel_order_check_sequence[ 0 ] == preferred_channel_order );
+
+        for ( unsigned i = 0; i < 4; ++i )
+        {
+            ChannelOrder channel_order = channel_order_check_sequence[ i ];
+            if ( _check_texture_format_impl( texture_type, pixel_format, channel_order ) )
+                return { channel_order, true };
+        }
+
+        return { preferred_channel_order, false };
+    }
+
 
 
     // #############################################################################
@@ -183,9 +227,9 @@ namespace graphics {
 
         // Print out the available video memory.
         LOG_TYPE( TEXT("Usable video memory:"), cl7::logging::LogType::Caption );
-        LOG_TYPE( TEXT("Dedicated video memory\t") + cl7::memory::stringify_byte_amount( _capabilities.memory.dedicated_video_memory ), cl7::logging::LogType::Item );
-        LOG_TYPE( TEXT("Dedicated system memory\t") + cl7::memory::stringify_byte_amount( _capabilities.memory.dedicated_system_memory ), cl7::logging::LogType::Item );
-        LOG_TYPE( TEXT("Shared system memory\t") + cl7::memory::stringify_byte_amount( _capabilities.memory.shared_system_memory ), cl7::logging::LogType::Item );
+        LOG_TYPE( TEXT("Dedicated video memory\t") + cl7::memory::stringify_byte_amount_si( _capabilities.memory.dedicated_video_memory ), cl7::logging::LogType::Item );
+        LOG_TYPE( TEXT("Dedicated system memory\t") + cl7::memory::stringify_byte_amount_si( _capabilities.memory.dedicated_system_memory ), cl7::logging::LogType::Item );
+        LOG_TYPE( TEXT("Shared system memory\t") + cl7::memory::stringify_byte_amount_si( _capabilities.memory.shared_system_memory ), cl7::logging::LogType::Item );
 
         // Allriggedy, we got a new device
         // that surely is not lost.

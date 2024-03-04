@@ -27,8 +27,6 @@ namespace shaders {
      */
     VertexShaderImpl::VertexShaderImpl(const CreateParams<Desc>& params)
         : VertexShader( params )
-        , _d3d_device( static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device() )
-        , _d3d_vertex_shader()
     {
     }
 
@@ -64,10 +62,13 @@ namespace shaders {
      */
     bool VertexShaderImpl::_acquire_precompiled_impl(const xl7::graphics::shaders::CodeProvider& code_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out)
     {
+        auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
+        assert( d3d_device );
+
         const xl7::graphics::shaders::ShaderCode& bytecode = code_provider.get_shader_code();
         assert( bytecode.get_language() == xl7::graphics::shaders::ShaderCode::Language::Bytecode );
 
-        HRESULT hresult = _d3d_device->CreateVertexShader(
+        HRESULT hresult = d3d_device->CreateVertexShader(
             bytecode.get_code_data().data(),
             bytecode.get_code_data().size(),
             nullptr,

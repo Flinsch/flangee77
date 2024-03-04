@@ -2,6 +2,7 @@
 
 #include "../GraphicsSystemImpl.h"
 #include "../RenderingDeviceImpl.h"
+#include "../mappings.h"
 #include "../errors.h"
 
 #include <CoreLabs/logging.h>
@@ -23,23 +24,6 @@ namespace meshes {
         return D3DFMT_UNKNOWN;
     }
 
-    static DWORD _d3d_usage_from(resources::ResourceUsage resource_usage)
-    {
-        switch ( resource_usage )
-        {
-        case resources::ResourceUsage::Default:
-            return D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC;
-        case resources::ResourceUsage::Immutable:
-            return D3DUSAGE_WRITEONLY;
-        case resources::ResourceUsage::Dynamic:
-            return D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC;
-        default:
-            assert( false );
-        }
-
-        return 0;
-    }
-
 
 
     // #############################################################################
@@ -52,8 +36,6 @@ namespace meshes {
     VertexBufferImpl::VertexBufferImpl(const CreateParams<Desc>& params)
         : VertexBuffer( params )
         , _d3d_fvf( _d3d_fvf_from( _desc.vertex_layout ) )
-        , _d3d_device( static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device() )
-        , _d3d_vertex_buffer()
     {
     }
 
@@ -71,15 +53,16 @@ namespace meshes {
      */
     bool VertexBufferImpl::_acquire_impl(const resources::DataProvider& data_provider)
     {
-        assert( _d3d_device );
+        auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
+        assert( d3d_device );
 
         assert( _data.empty() || _data.size() == static_cast<size_t>( _size ) );
 
-        HRESULT hresult = _d3d_device->CreateVertexBuffer(
+        HRESULT hresult = d3d_device->CreateVertexBuffer(
             _size,
-            _d3d_usage_from( _desc.usage ),
+            mappings::_d3d_usage_from( _desc.usage ),
             _d3d_fvf,
-            D3DPOOL_MANAGED,
+            mappings::_d3d_pool_from( _desc.usage ),
             &_d3d_vertex_buffer,
             NULL );
 
@@ -110,7 +93,7 @@ namespace meshes {
 
 
     // #############################################################################
-    // Index Buffer Implementations
+    // VertexBuffer Implementations
     // #############################################################################
 
     /**

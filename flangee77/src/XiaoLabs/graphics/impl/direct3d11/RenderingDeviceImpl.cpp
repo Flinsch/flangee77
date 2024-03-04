@@ -3,6 +3,7 @@
 #include "./GraphicsSystemImpl.h"
 #include "./RenderingContextImpl.h"
 #include "./ResourceFactoryImpl.h"
+#include "./mappings.h"
 #include "./errors.h"
 
 #include <XiaoLabs/MainWindow.h>
@@ -49,7 +50,7 @@ namespace direct3d11 {
         case xl7::graphics::meshes::VertexLayout::DataType::FLOAT2:     return DXGI_FORMAT_R32G32_FLOAT;
         case xl7::graphics::meshes::VertexLayout::DataType::FLOAT3:     return DXGI_FORMAT_R32G32B32_FLOAT;
         case xl7::graphics::meshes::VertexLayout::DataType::FLOAT4:     return DXGI_FORMAT_R32G32B32A32_FLOAT;
-        case xl7::graphics::meshes::VertexLayout::DataType::COLOR:      return DXGI_FORMAT_B8G8R8A8_UNORM; // Corresponds to D3DCOLOR of Direct3D 9.
+        case xl7::graphics::meshes::VertexLayout::DataType::COLOR:      return DXGI_FORMAT_B8G8R8A8_UNORM; // Corresponds to D3DCOLOR/D3DFMT_A8R8G8B8 of Direct3D 9.
         case xl7::graphics::meshes::VertexLayout::DataType::UBYTE4:     return DXGI_FORMAT_R8G8B8A8_UINT;
         default:
             assert( false );
@@ -224,8 +225,8 @@ namespace direct3d11 {
         dxgi_swap_chain_desc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
         dxgi_swap_chain_desc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
         dxgi_swap_chain_desc.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
-        dxgi_swap_chain_desc.SampleDesc.Quality = 0;
         dxgi_swap_chain_desc.SampleDesc.Count = 1;
+        dxgi_swap_chain_desc.SampleDesc.Quality = 0;
         dxgi_swap_chain_desc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
         dxgi_swap_chain_desc.BufferCount = 1;
         dxgi_swap_chain_desc.OutputWindow = MainWindow::instance().get_handle();
@@ -269,7 +270,7 @@ namespace direct3d11 {
         hresult = _d3d_device->CreateRenderTargetView( d3d_back_buffer.Get(), nullptr, &_d3d_render_target_view );
         if ( FAILED(hresult) )
         {
-            LOG_ERROR( errors::dxgi_result( hresult, TEXT("ID3D11Device::CreateRenderTargetView") ) );
+            LOG_ERROR( errors::d3d11_result( hresult, TEXT("ID3D11Device::CreateRenderTargetView") ) );
             LOG_ERROR( TEXT("The Direct3D 11 (standard) render target view interface could not be created.") );
             return false;
         }
@@ -293,7 +294,7 @@ namespace direct3d11 {
         hresult = _d3d_device->CreateTexture2D( &d3d_z_buffer_desc, nullptr, &d3d_z_buffer );
         if ( FAILED(hresult) )
         {
-            LOG_ERROR( errors::dxgi_result( hresult, TEXT("ID3D11Device::CreateTexture2D") ) );
+            LOG_ERROR( errors::d3d11_result( hresult, TEXT("ID3D11Device::CreateTexture2D") ) );
             LOG_ERROR( TEXT("The Direct3D 11 (standard) depth/stencil buffer could not be created.") );
             return false;
         }
@@ -302,7 +303,7 @@ namespace direct3d11 {
         hresult = _d3d_device->CreateDepthStencilView( d3d_z_buffer.Get(), nullptr, &_d3d_depth_stencil_view );
         if ( FAILED(hresult) )
         {
-            LOG_ERROR( errors::dxgi_result( hresult, TEXT("ID3D11Device::CreateDepthStencilView") ) );
+            LOG_ERROR( errors::d3d11_result( hresult, TEXT("ID3D11Device::CreateDepthStencilView") ) );
             LOG_ERROR( TEXT("The Direct3D 11 (standard) depth/stencil view interface could not be created.") );
             return false;
         }
@@ -330,6 +331,10 @@ namespace direct3d11 {
      */
     bool RenderingDeviceImpl::_shutdown_impl()
     {
+        // Release the input layout interfaces.
+        _d3d_input_layouts_by_binding.clear();
+        _d3d_input_layouts_by_layout.clear();
+
         // Release the (standard) render target view interfaces.
         _d3d_render_target_view.Reset();
         _d3d_depth_stencil_view.Reset();
@@ -404,6 +409,36 @@ namespace direct3d11 {
         }
 
         return true;
+    }
+
+    /**
+     * Checks whether the device (generally) supports the specified combination of
+     * pixel format and channel order for the specified texture type.
+     */
+    bool RenderingDeviceImpl::_check_texture_format_impl(textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder channel_order)
+    {
+        unsigned d3d_format_support = 0;
+        HRESULT hresult = _d3d_device->CheckFormatSupport(
+            mappings::_dxgi_format_from( pixel_format, channel_order ),
+            &d3d_format_support );
+
+        if ( FAILED(hresult) )
+        {
+            LOG_ERROR( errors::d3d11_result( hresult, TEXT("ID3D11Device::CheckFormatSupport") ) );
+            return false;
+        }
+
+        switch ( texture_type )
+        {
+        case textures::Texture::Type::Texture2D:        d3d_format_support &= D3D11_FORMAT_SUPPORT_TEXTURE2D;   break;
+        case textures::Texture::Type::Texture3D:        d3d_format_support &= D3D11_FORMAT_SUPPORT_TEXTURE3D;   break;
+        case textures::Texture::Type::Texture2DArray:   d3d_format_support &= D3D11_FORMAT_SUPPORT_TEXTURE2D;   break;
+        case textures::Texture::Type::Cubemap:          d3d_format_support &= D3D11_FORMAT_SUPPORT_TEXTURECUBE; break;
+        default:
+            assert( false );
+        }
+
+        return d3d_format_support != 0;
     }
 
 

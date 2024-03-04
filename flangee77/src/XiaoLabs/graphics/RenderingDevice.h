@@ -233,6 +233,22 @@ public:
      */
     bool present();
 
+public:
+    /**
+     * Checks whether the device (generally) supports the specified combination of
+     * pixel format and channel order for the specified texture type.
+     */
+    bool check_texture_format(textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder channel_order);
+
+    /**
+     * Returns the channel order that is most likely to be accepted by the device
+     * for the specified texture type of a specific pixel format. However, there is
+     * no guarantee that the implied combination will actually be accepted (e.g., if
+     * the pixel format is not supported at all). The secondary return value may
+     * provide information about this.
+     */
+    std::pair<ChannelOrder, bool> recommend_channel_order(textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder preferred_channel_order);
+
 
 
     // #############################################################################
@@ -290,6 +306,13 @@ private:
      * Presents the contents of the next buffer in the device's swap chain.
      */
     virtual bool _present_impl() = 0;
+
+private:
+    /**
+     * Checks whether the device (generally) supports the specified combination of
+     * pixel format and channel order for the specified texture type.
+     */
+    virtual bool _check_texture_format_impl(textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder channel_order) = 0;
 
 }; // class RenderingDevice
 

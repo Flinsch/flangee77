@@ -1,5 +1,7 @@
 #include "ResourceFactoryImpl.h"
 
+#include "./textures/Texture2DImpl.h"
+
 #include "./meshes/VertexBufferImpl.h"
 #include "./meshes/IndexBufferImpl.h"
 
@@ -17,7 +19,7 @@ namespace direct3d11 {
 
     xl7::graphics::textures::Texture2D* ResourceFactoryImpl::create_texture_2d(const resources::Resource::CreateParams<xl7::graphics::textures::Texture2D::Desc>& params)
     {
-        return nullptr;
+        return textures::Texture2DImpl::Attorney::create( params );
     }
 
     xl7::graphics::textures::Texture3D* ResourceFactoryImpl::create_texture_3d(const resources::Resource::CreateParams<xl7::graphics::textures::Texture3D::Desc>& params)

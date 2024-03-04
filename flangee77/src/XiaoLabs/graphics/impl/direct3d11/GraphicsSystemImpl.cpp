@@ -83,10 +83,10 @@ namespace direct3d11 {
         {
             DXGI_ADAPTER_DESC dxgi_adapter_desc;
             memset( &dxgi_adapter_desc, 0, sizeof(DXGI_ADAPTER_DESC) );
-            hr = dxgi_adapter->GetDesc( &dxgi_adapter_desc );
-            if ( FAILED(hr) )
+            hresult = dxgi_adapter->GetDesc( &dxgi_adapter_desc );
+            if ( FAILED(hresult) )
             {
-                LOG_WARNING( cl7::errors::system_result( hr, TEXT("IDXGIAdapter::GetDesc") ) );
+                LOG_WARNING( cl7::errors::system_result( hresult, TEXT("IDXGIAdapter::GetDesc") ) );
                 continue;
             }
 
