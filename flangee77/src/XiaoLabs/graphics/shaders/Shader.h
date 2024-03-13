@@ -152,7 +152,7 @@ private:
      * of the resource to (re)populate it, taking into account the current state of
      * the resource if necessary.
      */
-    virtual bool _check_impl(const resources::DataProvider& data_provider) override;
+    virtual bool _check_data_impl(const resources::DataProvider& data_provider) override;
 
     /**
      * Requests/acquires the resource, bringing it into a usable state.

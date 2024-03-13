@@ -226,7 +226,12 @@ private:
      * of the resource to (re)populate it, taking into account the current state of
      * the resource if necessary.
      */
-    virtual bool _check_impl(const DataProvider& data_provider) = 0;
+    virtual bool _check_data_impl(const DataProvider& data_provider) = 0;
+
+    /**
+     * (Re)populates the local data buffer based on the given data provider.
+     */
+    virtual bool _fill_data_impl(const DataProvider& data_provider);
 
     /**
      * Requests/acquires the resource, bringing it into a usable state.

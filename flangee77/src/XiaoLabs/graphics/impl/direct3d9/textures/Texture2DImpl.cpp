@@ -26,7 +26,7 @@ namespace textures {
      */
     Texture2DImpl::Texture2DImpl(const CreateParams<Desc>& params)
         : Texture2D( params )
-        , _d3d_format( mappings::_d3d_format_from( params.desc.pixel_format, _recommended_channel_order ) )
+        , _d3d_format( mappings::_d3d_format_from( params.desc.pixel_format, _channel_order ) )
     {
     }
 
@@ -60,7 +60,7 @@ namespace textures {
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool Texture2DImpl::_acquire_impl(const resources::DataProvider& data_provider, ChannelOrder& channel_order_out)
+    bool Texture2DImpl::_acquire_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider)
     {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
@@ -85,7 +85,7 @@ namespace textures {
 
         auto pair = mappings::_map_d3d_format( _d3d_format, _desc.preferred_channel_order );
         assert( pair.first == _desc.pixel_format );
-        channel_order_out = pair.second;
+        assert( pair.second == _channel_order );
 
         if ( _data.empty() )
             return true;

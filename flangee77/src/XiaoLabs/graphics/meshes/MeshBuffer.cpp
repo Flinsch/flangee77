@@ -45,7 +45,7 @@ namespace meshes {
      * of the resource to (re)populate it, taking into account the current state of
      * the resource if necessary.
      */
-    bool MeshBuffer::_check_impl(const resources::DataProvider& data_provider)
+    bool MeshBuffer::_check_data_impl(const resources::DataProvider& data_provider)
     {
         if ( !_check_against_size( data_provider, _size ) )
             return false;

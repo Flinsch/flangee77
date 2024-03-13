@@ -94,10 +94,10 @@ protected:
     const Desc _desc;
 
     /**
-     * The channel order that is most likely to be accepted by the device with the
-     * texture's pixel format.
+     * The actual channel order. This may differ from the preferred channel order,
+     * depending on hardware capabilities.
      */
-    const ChannelOrder _recommended_channel_order;
+    const ChannelOrder _channel_order;
 
     /**
      * The size of each pixel, in bytes.
@@ -122,11 +122,6 @@ protected:
     const unsigned _data_size;
 
 private:
-    /**
-     * The actual channel order. This may differ from the preferred and/or
-     * recommended channel order, depending on hardware capabilities.
-     */
-    ChannelOrder _channel_order;
 
 
 
@@ -145,10 +140,10 @@ public:
     const Desc& get_desc() const { return _desc; }
 
     /**
-     * Returns the channel order that is most likely to be accepted by the device
-     * with the texture's pixel format.
+     * Returns the actual channel order. This may differ from the preferred channel
+     * order, depending on hardware capabilities.
      */
-    ChannelOrder get_recommended_channel_order() const { return _recommended_channel_order; }
+    ChannelOrder get_channel_order() const { return _channel_order; }
 
     /**
      * Returns the size of each pixel, in bytes.
@@ -170,14 +165,9 @@ public:
     /**
      * Returns the total data size of this texture, in bytes.
      */
-    unsigned get_data_size() const { return _data_size; };
+    unsigned get_data_size() const { return _data_size; }
 
 public:
-    /**
-     * Returns the actual channel order. This may differ from the preferred and/or
-     * recommended channel order, depending on hardware capabilities.
-     */
-    ChannelOrder get_channel_order() const { return _channel_order; }
 
 
 
@@ -190,7 +180,12 @@ private:
      * of the resource to (re)populate it, taking into account the current state of
      * the resource if necessary.
      */
-    virtual bool _check_impl(const resources::DataProvider& data_provider) override;
+    virtual bool _check_data_impl(const resources::DataProvider& data_provider) override;
+
+    /**
+     * (Re)populates the local data buffer based on the given data provider.
+     */
+    virtual bool _fill_data_impl(const resources::DataProvider& data_provider) override;
 
     /**
      * Requests/acquires the resource, bringing it into a usable state.
@@ -218,7 +213,7 @@ private:
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_impl(const resources::DataProvider& data_provider, ChannelOrder& channel_order_out) = 0;
+    virtual bool _acquire_impl(const ImageDataProvider& image_data_provider) = 0;
 
 }; // class Texture
 

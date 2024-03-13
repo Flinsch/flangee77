@@ -100,7 +100,7 @@ private:
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_impl(const resources::DataProvider& data_provider, ChannelOrder& channel_order_out) override;
+    virtual bool _acquire_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider) override;
 
 }; // class Texture2DImpl
 

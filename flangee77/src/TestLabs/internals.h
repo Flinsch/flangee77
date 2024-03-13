@@ -52,6 +52,9 @@
 #define _TL7_TRY_POST_RESULT_EQ_DBL(expr1, expr2, make_result, macro_base, op) \
     ctx.try_post_result( tl7::ResultBuilder().make_result( ctx, TEXT(macro_base "( " #expr1 " " #op " " #expr2 " )"), TEXT(macro_base "( ") + tl7::internals::to_string(expr1) + TEXT(" " #op " ") + tl7::internals::to_string(expr2) + TEXT(" )"), TEXT(__FILE__), __LINE__, tl7::Result::make_outcome( ::abs((expr1) - (expr2)) < DBL_EPSILON ) ) )
 
+#define _TL7_TRY_POST_RESULT_EQ_STR(expr1, expr2, make_result, macro_base, op) \
+    ctx.try_post_result( tl7::ResultBuilder().make_result( ctx, TEXT(macro_base "( " #expr1 " " #op " " #expr2 " )"), TEXT(macro_base "( ") + tl7::internals::to_string(expr1) + TEXT(" " #op " ") + tl7::internals::to_string(expr2) + TEXT(" )"), TEXT(__FILE__), __LINE__, tl7::Result::make_outcome( cl7::to_string(expr1) op cl7::to_string(expr2) ) ) )
+
 
 
 namespace tl7 {

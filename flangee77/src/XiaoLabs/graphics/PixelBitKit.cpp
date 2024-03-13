@@ -200,6 +200,7 @@ namespace graphics {
             assert( false );
         } // switch channel order
 
+        unsigned index = 0;
         unsigned offset = 0;
         for ( unsigned i : rgba )
         {
@@ -208,10 +209,20 @@ namespace graphics {
 
             Channel& channel = channels[ i ];
 
+            channel.index = index;
             channel.depth = depths[ i ];
             channel.offset = offset;
             channel.mask = stride > 8 ? 0Ui64 : (((1Ui64 << channel.depth) - 1Ui64) << channel.offset);
+            channel.mask0 = (1Ui64 << channel.depth) - 1Ui64;
 
+            if ( index == 0 )
+                // The first channel specifies the supposedly uniform bit depth.
+                uniform_depth = channel.depth;
+            else if ( channel.depth != uniform_depth )
+                // If a channel deviates, there is no uniform bit depth.
+                uniform_depth = 0;
+
+            ++index;
             offset += channel.depth;
         } // for each channel
     }

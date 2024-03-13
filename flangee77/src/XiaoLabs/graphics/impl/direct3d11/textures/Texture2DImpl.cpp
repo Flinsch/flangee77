@@ -26,7 +26,7 @@ namespace textures {
      */
     Texture2DImpl::Texture2DImpl(const CreateParams<Desc>& params)
         : Texture2D( params )
-        , _dxgi_format( mappings::_dxgi_format_from( params.desc.pixel_format, _recommended_channel_order ) )
+        , _dxgi_format( mappings::_dxgi_format_from( params.desc.pixel_format, _channel_order ) )
     {
     }
 
@@ -61,7 +61,7 @@ namespace textures {
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool Texture2DImpl::_acquire_impl(const resources::DataProvider& data_provider, ChannelOrder& channel_order_out)
+    bool Texture2DImpl::_acquire_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider)
     {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
@@ -88,14 +88,23 @@ namespace textures {
         texture_desc.CPUAccessFlags = _desc.usage == resources::ResourceUsage::Dynamic ? D3D11_CPU_ACCESS_WRITE : 0;
         texture_desc.MiscFlags = 0;
 
-        D3D11_SUBRESOURCE_DATA subresource_data;
+        /*D3D11_SUBRESOURCE_DATA subresource_data;
         subresource_data.pSysMem = _data.data();
         subresource_data.SysMemPitch = _line_pitch;
-        subresource_data.SysMemSlicePitch = 0;
+        subresource_data.SysMemSlicePitch = 0;*/
+        constexpr unsigned MAX_LEVELS = 16; // Just some value big enough. We could also specifically calculate the exact value, but not today.
+        D3D11_SUBRESOURCE_DATA subresource_data[ MAX_LEVELS ];
+        for ( unsigned i = 0, wdth = _desc.width, hght = _desc.height; wdth || hght; wdth >>= 1, hght >>= 1, ++i )
+        {
+            assert( i < MAX_LEVELS );
+            subresource_data[ i ].pSysMem = _data.data(); // For now we simply set the same source buffer for all levels.
+            subresource_data[ i ].SysMemPitch = (wdth ? wdth : 1) * _stride;
+            subresource_data[ i ].SysMemSlicePitch = 0;
+        }
 
         HRESULT hresult = d3d_device->CreateTexture2D(
             &texture_desc,
-            _data.empty() ? nullptr : &subresource_data,
+            _data.empty() ? nullptr : subresource_data,
             &_d3d_texture );
 
         if ( FAILED(hresult) )
@@ -117,7 +126,7 @@ namespace textures {
 
         auto pair = mappings::_map_dxgi_format( _dxgi_format, _desc.preferred_channel_order );
         assert( pair.first == _desc.pixel_format );
-        channel_order_out = pair.second;
+        assert( pair.second == _channel_order );
 
         return true;
     }

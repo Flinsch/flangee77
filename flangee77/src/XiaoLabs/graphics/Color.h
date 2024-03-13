@@ -15,6 +15,17 @@ class Color
 {
 
 public:
+    static const Color ZERO;
+    static const Color BLACK;
+    static const Color WHITE;
+    static const Color RED;
+    static const Color GREEN;
+    static const Color BLUE;
+    static const Color YELLOW;
+    static const Color MAGENTA;
+    static const Color CYAN;
+
+public:
         static_assert( static_cast<unsigned>( ChannelOrder::RGBA ) == 0 );
         static_assert( static_cast<unsigned>( ChannelOrder::ARGB ) == 1 );
         static_assert( static_cast<unsigned>( ChannelOrder::ABGR ) == 2 );

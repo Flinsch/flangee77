@@ -128,12 +128,14 @@ namespace helloworld {
             xl7::resources::ResourceUsage::Default,
             xl7::graphics::PixelFormat::R8G8B8A8_UNORM,
             xl7::graphics::ChannelOrder::RGBA,
-            0,  // mip_levels
-            16, // width
-            16, // height
+            0, // mip_levels
+            image.get_width(),
+            image.get_height(),
         };
 
-        _texture_id = xl7::graphics::texture_manager()->create_texture_2d( TEXT("My Texture"), texture_desc, {} );
+        xl7::graphics::textures::ImageDataProvider image_data_provider{ &image };
+
+        _texture_id = xl7::graphics::texture_manager()->create_texture_2d( TEXT("My Texture"), texture_desc, image_data_provider );
 
         return true;
     }

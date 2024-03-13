@@ -37,6 +37,7 @@
 #define TESTLABS_CHECK_GE(expr1, expr2)      _TL7_TRY_POST_RESULT_2( expr1, expr2, make_check_result, "CHECK", >= )
 #define TESTLABS_CHECK_EQ_FLT(expr1, expr2)  _TL7_TRY_POST_RESULT_EQ_FLT( expr1, expr2, make_check_result, "CHECK", == )
 #define TESTLABS_CHECK_EQ_DBL(expr1, expr2)  _TL7_TRY_POST_RESULT_EQ_DBL( expr1, expr2, make_check_result, "CHECK", == )
+#define TESTLABS_CHECK_EQ_STR(expr1, expr2)  _TL7_TRY_POST_RESULT_EQ_STR( expr1, expr2, make_check_result, "CHECK", == )
 
 #define TESTLABS_PRESUME(expression)           _TL7_TRY_POST_RESULT_1( expression, make_presumption_result, "PRESUME" )
 #define TESTLABS_PRESUME_EQ(expr1, expr2)      _TL7_TRY_POST_RESULT_2( expr1, expr2, make_presumption_result, "PRESUME", == )
@@ -47,6 +48,7 @@
 #define TESTLABS_PRESUME_GE(expr1, expr2)      _TL7_TRY_POST_RESULT_2( expr1, expr2, make_presumption_result, "PRESUME", >= )
 #define TESTLABS_PRESUME_EQ_FLT(expr1, expr2)  _TL7_TRY_POST_RESULT_EQ_FLT( expr1, expr2, make_presumption_result, "PRESUME", == )
 #define TESTLABS_PRESUME_EQ_DBL(expr1, expr2)  _TL7_TRY_POST_RESULT_EQ_DBL( expr1, expr2, make_presumption_result, "PRESUME", == )
+#define TESTLABS_PRESUME_EQ_STR(expr1, expr2)  _TL7_TRY_POST_RESULT_EQ_STR( expr1, expr2, make_presumption_result, "PRESUME", == )
 
 #define TESTLABS_ASSERT(expression)           _TL7_TRY_POST_RESULT_1( expression, make_assertion_result, "ASSERT" )
 #define TESTLABS_ASSERT_EQ(expr1, expr2)      _TL7_TRY_POST_RESULT_2( expr1, expr2, make_assertion_result, "ASSERT", == )
@@ -57,6 +59,7 @@
 #define TESTLABS_ASSERT_GE(expr1, expr2)      _TL7_TRY_POST_RESULT_2( expr1, expr2, make_assertion_result, "ASSERT", >= )
 #define TESTLABS_ASSERT_EQ_FLT(expr1, expr2)  _TL7_TRY_POST_RESULT_EQ_FLT( expr1, expr2, make_assertion_result, "ASSERT", == )
 #define TESTLABS_ASSERT_EQ_DBL(expr1, expr2)  _TL7_TRY_POST_RESULT_EQ_DBL( expr1, expr2, make_assertion_result, "ASSERT", == )
+#define TESTLABS_ASSERT_EQ_STR(expr1, expr2)  _TL7_TRY_POST_RESULT_EQ_STR( expr1, expr2, make_assertion_result, "ASSERT", == )
 
 
 

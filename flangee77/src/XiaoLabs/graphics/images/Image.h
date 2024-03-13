@@ -55,12 +55,28 @@ public:
     /**
      * Explicit constructor.
      */
+    explicit Image(const Desc& desc);
+
+    /**
+     * Explicit constructor.
+     */
     Image(const Desc& desc, cl7::byte_view data);
 
     /**
      * Explicit constructor.
      */
     Image(const Desc& desc, cl7::byte_vector&& data);
+
+    /**
+     * Swap operation.
+     */
+    void swap(Image& rhs);
+
+    /**
+     * Swap operation. The image's data is effectively "exported" and then remains
+     * undefined.
+     */
+    void swap(cl7::byte_vector& data);
 
 
 
@@ -121,12 +137,17 @@ public:
     // #############################################################################
 public:
     /**
-     * (Re)initializes the image.
+     * (Re)initializes an "empty" image.
+     */
+    bool init(const Desc& desc);
+
+    /**
+     * (Re)initializes the image based on the given data.
      */
     bool init(const Desc& desc, cl7::byte_view data);
 
     /**
-     * (Re)initializes the image.
+     * (Re)initializes the image based on the given data.
      */
     bool init(const Desc& desc, cl7::byte_vector&& data);
 

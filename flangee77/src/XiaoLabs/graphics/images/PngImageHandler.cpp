@@ -132,7 +132,7 @@ namespace images {
             if ( rom.read( { (std::byte*)&chunk_info, sizeof(ChunkInfo) } ) != sizeof(ChunkInfo) )
                 return _log_bad_format_error( rom_name );
 
-            chunk_info.length = cl7::bits::swap_bytes_unless_endian( chunk_info.length, std::endian::big );
+            chunk_info.length = cl7::bits::swap_bytes_unless_endian<std::endian::big>( chunk_info.length );
 
             if ( ::strncmp( chunk_info.type, "IHDR", 4 ) == 0 )
             {
@@ -182,8 +182,8 @@ namespace images {
         if ( rom.read( { (std::byte*)&header, sizeof(Header) } ) != sizeof(Header) )
             return _log_bad_format_error( rom_name );
 
-        header.width = cl7::bits::swap_bytes_unless_endian( header.width, std::endian::big );
-        header.height = cl7::bits::swap_bytes_unless_endian( header.height, std::endian::big );
+        header.width = cl7::bits::swap_bytes_unless_endian<std::endian::big>( header.width );
+        header.height = cl7::bits::swap_bytes_unless_endian<std::endian::big>( header.height );
 
         if ( header.width == 0 || header.height == 0 )
             return _log_bad_header_error( rom_name );
