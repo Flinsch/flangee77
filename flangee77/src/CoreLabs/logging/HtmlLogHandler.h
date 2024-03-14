@@ -1,6 +1,6 @@
 #pragma once
-#ifndef CL7_LOGGING_COUTLOGHANDLER_H
-#define CL7_LOGGING_COUTLOGHANDLER_H
+#ifndef CL7_LOGGING_HTMLLOGHANDLER_H
+#define CL7_LOGGING_HTMLLOGHANDLER_H
 #include "./AbstractLogHandler.h"
 
 
@@ -10,7 +10,7 @@ namespace logging {
 
 
 
-class CoutLogHandler
+class HtmlLogHandler
     : public AbstractLogHandler
 {
 
@@ -21,18 +21,18 @@ public:
     /**
      * Default constructor.
      */
-    CoutLogHandler() = default;
+    HtmlLogHandler();
 
     /**
      * Destructor.
      */
-    virtual ~CoutLogHandler() override = default;
+    virtual ~HtmlLogHandler() override = default;
 
 private:
     /** Copy constructor. */
-    CoutLogHandler(const CoutLogHandler&) = delete;
+    HtmlLogHandler(const HtmlLogHandler&) = delete;
     /** Copy assignment operator. */
-    CoutLogHandler& operator = (const CoutLogHandler&) = delete;
+    HtmlLogHandler& operator = (const HtmlLogHandler&) = delete;
 
 
 
@@ -45,11 +45,11 @@ private:
      */
     virtual void _write(const LogEntry& log_entry) override;
 
-}; // class CoutLogHandler
+}; // class HtmlLogHandler
 
 
 
 } // namespace logging
 } // namespace cl7
 
-#endif // CL7_LOGGING_COUTLOGHANDLER_H
+#endif // CL7_LOGGING_HTMLLOGHANDLER_H

@@ -57,7 +57,7 @@ private:
      */
     void _write_line(cl7::string_view line, bool truncate = false);
 
-}; // class AbstractLogHandler
+}; // class FileLogHandler
 
 
 

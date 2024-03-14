@@ -459,6 +459,9 @@
     <ClInclude Include="src\XiaoLabs\graphics\images\ImageConverter.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\CoreLabs\logging\HtmlLogHandler.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -780,6 +783,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\CoreLabs\bits.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CoreLabs\logging\HtmlLogHandler.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
