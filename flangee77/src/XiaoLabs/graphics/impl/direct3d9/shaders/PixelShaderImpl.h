@@ -57,11 +57,6 @@ private:
     // #############################################################################
 private:
     /**
-     * The Direct3D 9 device interface.
-     */
-    wrl::ComPtr<IDirect3DDevice9> _d3d_device;
-
-    /**
      * The Direct3D 9 pixel shader interface.
      */
     wrl::ComPtr<IDirect3DPixelShader9> _d3d_pixel_shader;

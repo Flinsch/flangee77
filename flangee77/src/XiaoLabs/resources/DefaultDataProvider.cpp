@@ -12,6 +12,15 @@ namespace resources {
     // #############################################################################
 
     /**
+     * Default constructor.
+     */
+    DefaultDataProvider::DefaultDataProvider()
+        : _data()
+        , _offset( 0 )
+    {
+    }
+
+    /**
      * Explicit constructor.
      */
     DefaultDataProvider::DefaultDataProvider(cl7::byte_view data, size_t offset)

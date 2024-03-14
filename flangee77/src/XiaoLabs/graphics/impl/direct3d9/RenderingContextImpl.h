@@ -80,6 +80,7 @@ private:
      */
     wrl::ComPtr<IDirect3DDevice9> _d3d_device;
 
+private:
     /**
      * The Direct3D 9 (standard) render target surface interface.
      */

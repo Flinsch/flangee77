@@ -3,6 +3,7 @@
 #include "./GraphicsSystemImpl.h"
 #include "./RenderingContextImpl.h"
 #include "./ResourceFactoryImpl.h"
+#include "./mappings.h"
 #include "./errors.h"
 
 #include <XiaoLabs/MainWindow.h>
@@ -34,10 +35,6 @@ namespace direct3d9 {
      */
     RenderingDeviceImpl::RenderingDeviceImpl()
         : RenderingDevice( std::unique_ptr<IResourceFactory>( ResourceFactoryImpl::Attorney::create() ) )
-        , _d3d_device( nullptr )
-        , _d3d_adapter_identifier()
-        , _d3d_present_parameters()
-        , _d3d_device_caps()
     {
         ::memset( &_d3d_adapter_identifier, 0, sizeof(_d3d_adapter_identifier) );
         ::memset( &_d3d_present_parameters, 0, sizeof(_d3d_present_parameters) );
@@ -241,6 +238,47 @@ namespace direct3d9 {
         return true;
     }
 
+    /**
+     * Checks whether the device (generally) supports the specified combination of
+     * pixel format and channel order for the specified texture type.
+     */
+    bool RenderingDeviceImpl::_check_texture_format_impl(textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder channel_order)
+    {
+        D3DFORMAT d3d_adapter_format = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_d3d_present_parameters().BackBufferFormat;
+        D3DFORMAT d3d_texture_format = mappings::_d3d_format_from( pixel_format, channel_order );
+
+        D3DRESOURCETYPE d3d_rtype;
+        switch ( texture_type )
+        {
+        case textures::Texture::Type::Texture2D:        d3d_rtype = D3DRTYPE_TEXTURE;       break;
+        case textures::Texture::Type::Texture3D:        d3d_rtype = D3DRTYPE_VOLUMETEXTURE; break;
+        case textures::Texture::Type::Cubemap:          d3d_rtype = D3DRTYPE_CUBETEXTURE;   break;
+        default:
+            assert( texture_type == textures::Texture::Type::Texture2DArray );
+            LOG_ERROR( TEXT("Direct3D 9 does not support 2D texture arrays.") );
+            return false;
+        }
+
+        HRESULT hresult = static_cast<GraphicsSystemImpl&>( GraphicsSystem::instance() ).get_raw_d3d_main()->CheckDeviceFormat(
+            D3DADAPTER_DEFAULT,
+            D3DDEVTYPE_HAL,
+            d3d_adapter_format,
+            0,
+            d3d_rtype,
+            d3d_texture_format );
+
+        if ( hresult == D3DERR_NOTAVAILABLE )
+            return false;
+
+        if ( FAILED(hresult) )
+        {
+            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3D9::CheckDeviceFormat") ) );
+            return false;
+        }
+
+        return true;
+    }
+
 
 
     // #############################################################################
@@ -271,10 +309,10 @@ namespace direct3d9 {
         }
 
         IDXGIFactory* factory = nullptr;
-        HRESULT hr = CreateDXGIFactoryProc( __uuidof( IDXGIFactory ), (void**)&factory );
-        if ( FAILED(hr) )
+        HRESULT hresult = CreateDXGIFactoryProc( __uuidof( IDXGIFactory ), (void**)&factory );
+        if ( FAILED(hresult) )
         {
-            LOG_WARNING( cl7::errors::system_result( hr, TEXT("::CreateDXGIFactory1") ) );
+            LOG_WARNING( cl7::errors::system_result( hresult, TEXT("::CreateDXGIFactory1") ) );
             ::FreeLibrary( hDXGI );
             return false;
         }
@@ -287,19 +325,19 @@ namespace direct3d9 {
         for ( unsigned i = 0; ; ++i )
         {
             IDXGIAdapter* adapter = nullptr;
-            hr = factory->EnumAdapters( i, &adapter );
-            if ( FAILED(hr) )
+            hresult = factory->EnumAdapters( i, &adapter );
+            if ( FAILED(hresult) )
                 break;
 
             assert( adapter );
 
             DXGI_ADAPTER_DESC adapter_desc;
             memset( &adapter_desc, 0, sizeof(DXGI_ADAPTER_DESC) );
-            hr = adapter->GetDesc( &adapter_desc );
+            hresult = adapter->GetDesc( &adapter_desc );
             adapter->Release();
-            if ( FAILED(hr) )
+            if ( FAILED(hresult) )
             {
-                LOG_WARNING( cl7::errors::system_result( hr, TEXT("IDXGIAdapter::GetDesc") ) );
+                LOG_WARNING( cl7::errors::system_result( hresult, TEXT("IDXGIAdapter::GetDesc") ) );
                 continue;
             }
 

@@ -3,6 +3,7 @@
 #include "../GraphicsSystemImpl.h"
 #include "../RenderingDeviceImpl.h"
 #include "../RenderingContextImpl.h"
+#include "../mappings.h"
 #include "../errors.h"
 
 #include <CoreLabs/logging.h>
@@ -32,23 +33,6 @@ namespace meshes {
         return DXGI_FORMAT_UNKNOWN;
     }
 
-    static D3D11_USAGE _d3d_usage_from(resources::ResourceUsage resource_usage)
-    {
-        switch ( resource_usage )
-        {
-        case resources::ResourceUsage::Default:
-            return D3D11_USAGE_DEFAULT;
-        case resources::ResourceUsage::Immutable:
-            return D3D11_USAGE_IMMUTABLE;
-        case resources::ResourceUsage::Dynamic:
-            return D3D11_USAGE_DYNAMIC;
-        default:
-            assert( false );
-        }
-
-        return D3D11_USAGE_DEFAULT;
-    }
-
 
 
     // #############################################################################
@@ -61,8 +45,6 @@ namespace meshes {
     IndexBufferImpl::IndexBufferImpl(const CreateParams<Desc>& params)
         : IndexBuffer( params )
         , _dxgi_format( _dxgi_format_from( _desc.index_type ) )
-        , _d3d_device( static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device() )
-        , _d3d_index_buffer()
     {
     }
 
@@ -80,15 +62,16 @@ namespace meshes {
      */
     bool IndexBufferImpl::_acquire_impl(const resources::DataProvider& data_provider)
     {
-        assert( _d3d_device );
+        auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
+        assert( d3d_device );
 
         assert( _data.empty() || _data.size() == static_cast<size_t>( _size ) );
 
         D3D11_BUFFER_DESC buffer_desc;
         buffer_desc.ByteWidth = _size;
-        buffer_desc.Usage = _d3d_usage_from( _desc.usage );
+        buffer_desc.Usage = mappings::_d3d_usage_from( _desc.usage );
         buffer_desc.BindFlags = D3D11_BIND_INDEX_BUFFER;
-        buffer_desc.CPUAccessFlags = _desc.usage == resources::ResourceUsage::Immutable ? 0 : D3D11_CPU_ACCESS_WRITE;
+        buffer_desc.CPUAccessFlags = _desc.usage == resources::ResourceUsage::Dynamic ? D3D11_CPU_ACCESS_WRITE : 0;
         buffer_desc.MiscFlags = 0;
         buffer_desc.StructureByteStride = _stride;
 
@@ -97,7 +80,7 @@ namespace meshes {
         subresource_data.SysMemPitch = 0;
         subresource_data.SysMemSlicePitch = 0;
 
-        HRESULT hresult = _d3d_device->CreateBuffer(
+        HRESULT hresult = d3d_device->CreateBuffer(
             &buffer_desc,
             _data.empty() ? nullptr : &subresource_data,
             &_d3d_index_buffer );
@@ -126,7 +109,7 @@ namespace meshes {
 
 
     // #############################################################################
-    // Index Buffer Implementations
+    // IndexBuffer Implementations
     // #############################################################################
 
     /**

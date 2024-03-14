@@ -16,7 +16,7 @@ namespace textures {
      * Explicit constructor.
      */
     Texture3D::Texture3D(const CreateParams<Desc>& params)
-        : Texture( Type::Texture3D, { params.manager, params.id, params.identifier, params.desc } )
+        : Texture( Type::Texture3D, { params.manager, params.id, params.identifier, params.desc }, params.desc.depth )
         , _desc( params.desc )
     {
     }

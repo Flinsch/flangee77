@@ -1,9 +1,7 @@
 #include "TargaImageHandler.h"
 
 #include <CoreLabs/logging.h>
-#include <CoreLabs/utilities.h>
-
-#include <bit>
+#include <CoreLabs/bits.h>
 
 
 
@@ -42,8 +40,8 @@ namespace images {
         if ( header.pixel_depth == 32 )
             desc.pixel_format = PixelFormat::R8G8B8A8_UNORM;
         desc.channel_order = ChannelOrder::RGBA;
-        desc.width = static_cast<unsigned>( cl7::utilities::swap_bytes_unless_endian( header.width, std::endian::little ) );
-        desc.height = static_cast<unsigned>( cl7::utilities::swap_bytes_unless_endian( header.height, std::endian::little ) );
+        desc.width = static_cast<unsigned>( cl7::bits::swap_bytes_unless_endian<std::endian::little>( header.width ) );
+        desc.height = static_cast<unsigned>( cl7::bits::swap_bytes_unless_endian<std::endian::little>( header.height ) );
 
         cl7::byte_vector data( desc.calculate_data_size() );
 

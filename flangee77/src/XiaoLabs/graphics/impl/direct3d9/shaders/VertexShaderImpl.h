@@ -57,11 +57,6 @@ private:
     // #############################################################################
 private:
     /**
-     * The Direct3D 9 device interface.
-     */
-    wrl::ComPtr<IDirect3DDevice9> _d3d_device;
-
-    /**
      * The Direct3D 9 vertex shader interface.
      */
     wrl::ComPtr<IDirect3DVertexShader9> _d3d_vertex_shader;

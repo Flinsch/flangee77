@@ -58,6 +58,17 @@ private:
     wrl::ComPtr<ID3D11DeviceN> _d3d_device;
 
     /**
+     * The set of features targeted by the Direct3D 11 device.
+     */
+    D3D_FEATURE_LEVEL _d3d_feature_level;
+
+private:
+    /**
+     * The DXGI swap chain interface.
+     */
+    wrl::ComPtr<IDXGISwapChainN> _dxgi_swap_chain;
+
+    /**
      * The Direct3D 11 (immediate) device context interface.
      */
     wrl::ComPtr<ID3D11DeviceContextN> _d3d_immediate_context;
@@ -71,16 +82,6 @@ private:
      * The Direct3D 11 (standard) depth/stencil view interface.
      */
     wrl::ComPtr<ID3D11DepthStencilView> _d3d_depth_stencil_view;
-
-    /**
-     * The DXGI swap chain interface.
-     */
-    wrl::ComPtr<IDXGISwapChainN> _dxgi_swap_chain;
-
-    /**
-     * The set of features targeted by the Direct3D 11 device.
-     */
-    D3D_FEATURE_LEVEL _d3d_feature_level;
 
 private:
     std::unordered_map<shared::meshes::VertexBufferBinding, wrl::ComPtr<ID3D11InputLayout>> _d3d_input_layouts_by_binding;
@@ -96,6 +97,11 @@ public:
      * Returns the Direct3D 11 device interface.
      */
     ID3D11DeviceN* get_raw_d3d_device() const { return _d3d_device.Get(); }
+
+    /**
+     * Returns the set of features targeted by the Direct3D 11 device.
+     */
+    const D3D_FEATURE_LEVEL& get_d3d_feature_level() const { return _d3d_feature_level; }
 
 
 
@@ -138,6 +144,13 @@ private:
      * Presents the contents of the next buffer in the device's swap chain.
      */
     virtual bool _present_impl() override;
+
+private:
+    /**
+     * Checks whether the device (generally) supports the specified combination of
+     * pixel format and channel order for the specified texture type.
+     */
+    virtual bool _check_texture_format_impl(xl7::graphics::textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder channel_order) override;
 
 
 

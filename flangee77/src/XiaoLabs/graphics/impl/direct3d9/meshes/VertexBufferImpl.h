@@ -60,11 +60,6 @@ private:
 
 private:
     /**
-     * The Direct3D 9 device interface.
-     */
-    wrl::ComPtr<IDirect3DDevice9> _d3d_device;
-
-    /**
      * The Direct3D 9 vertex buffer interface.
      */
     wrl::ComPtr<IDirect3DVertexBuffer9> _d3d_vertex_buffer;
@@ -104,7 +99,7 @@ private:
 
 
     // #############################################################################
-    // Vertex Buffer Implementations
+    // VertexBuffer Implementations
     // #############################################################################
 private:
     /**

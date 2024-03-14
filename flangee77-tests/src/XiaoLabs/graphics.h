@@ -15,7 +15,12 @@
 
 bool operator == (const xl7::graphics::PixelBitKit::Channel& lhs, const xl7::graphics::PixelBitKit::Channel& rhs)
 {
-    return lhs.depth == rhs.depth && lhs.offset == rhs.offset && lhs.mask == rhs.mask;
+    return
+        lhs.index == rhs.index &&
+        lhs.depth == rhs.depth &&
+        lhs.offset == rhs.offset &&
+        lhs.mask == rhs.mask &&
+        lhs.mask0 == rhs.mask0;
 }
 
 
@@ -57,7 +62,7 @@ namespace cl7 {
     }
 
     template <> inline
-    cl7::string to_string(const xl7::graphics::PixelBitKit::Channel& channel) { return TEXT("{") + cl7::to_string(channel.depth) + TEXT(", ") + cl7::to_string(channel.offset) + TEXT(", ") + (channel.mask ? cl7::strings::to_0xhex(channel.mask, TEXT('a')) : TEXT("0")) + TEXT("}"); }
+    cl7::string to_string(const xl7::graphics::PixelBitKit::Channel& channel) { return TEXT("{") + cl7::to_string(channel.index) + TEXT(", ") + cl7::to_string(channel.depth) + TEXT(", ") + cl7::to_string(channel.offset) + TEXT(", ") + (channel.mask ? cl7::strings::to_0xhex(channel.mask, TEXT('a')) : TEXT("0")) + TEXT(", ") + (channel.mask0 ? cl7::strings::to_0xhex(channel.mask0, TEXT('a')) : TEXT("0")) + TEXT("}"); }
 }
 
 
@@ -164,7 +169,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  PixelBitKit") )
 {
     // This is just so that we notice when a value is inserted or removed
     // and then we should also adjust the tests accordingly.
-    TESTLABS_CHECK_EQ( static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ), 52 );
+    TESTLABS_CHECK_EQ( static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ), 53 );
 
 
     TESTLABS_SUBCASE( TEXT("data type") )
@@ -173,6 +178,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  PixelBitKit") )
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R4G4B4X4_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R5G5B5X1_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R5G6B5_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
@@ -262,6 +268,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  PixelBitKit") )
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
 
 
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R4G4B4X4_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R5G5B5X1_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R5G6B5_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
 
@@ -314,72 +321,75 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  PixelBitKit") )
         };
 
         const std::vector<Entry> container {
-            { xl7::graphics::PixelFormat::R8_UNORM, 1, { 8, 0, 0xff }, {}, {}, {} },
-            { xl7::graphics::PixelFormat::R8_SNORM, 1, { 8, 0, 0xff }, {}, {}, {} },
-            { xl7::graphics::PixelFormat::R8_UINT,  1, { 8, 0, 0xff }, {}, {}, {} },
-            { xl7::graphics::PixelFormat::R8_SINT,  1, { 8, 0, 0xff }, {}, {}, {} },
+            { xl7::graphics::PixelFormat::R8_UNORM, 1, { 0, 8, 0, 0xff, 0xff }, {}, {}, {} },
+            { xl7::graphics::PixelFormat::R8_SNORM, 1, { 0, 8, 0, 0xff, 0xff }, {}, {}, {} },
+            { xl7::graphics::PixelFormat::R8_UINT,  1, { 0, 8, 0, 0xff, 0xff }, {}, {}, {} },
+            { xl7::graphics::PixelFormat::R8_SINT,  1, { 0, 8, 0, 0xff, 0xff }, {}, {}, {} },
 
-            { xl7::graphics::PixelFormat::R16_UNORM,    2, { 16, 0, 0xffff }, {}, {}, {} },
-            { xl7::graphics::PixelFormat::R16_SNORM,    2, { 16, 0, 0xffff }, {}, {}, {} },
-            { xl7::graphics::PixelFormat::R16_UINT,     2, { 16, 0, 0xffff }, {}, {}, {} },
-            { xl7::graphics::PixelFormat::R16_SINT,     2, { 16, 0, 0xffff }, {}, {}, {} },
-            { xl7::graphics::PixelFormat::R16_FLOAT,    2, { 16, 0, 0xffff }, {}, {}, {} },
+            { xl7::graphics::PixelFormat::R16_UNORM,    2, { 0, 16, 0, 0xffff, 0xffff }, {}, {}, {} },
+            { xl7::graphics::PixelFormat::R16_SNORM,    2, { 0, 16, 0, 0xffff, 0xffff }, {}, {}, {} },
+            { xl7::graphics::PixelFormat::R16_UINT,     2, { 0, 16, 0, 0xffff, 0xffff }, {}, {}, {} },
+            { xl7::graphics::PixelFormat::R16_SINT,     2, { 0, 16, 0, 0xffff, 0xffff }, {}, {}, {} },
+            { xl7::graphics::PixelFormat::R16_FLOAT,    2, { 0, 16, 0, 0xffff, 0xffff }, {}, {}, {} },
 
-            { xl7::graphics::PixelFormat::R32_UINT,     4, { 32, 0, 0xffffffff }, {}, {}, {} },
-            { xl7::graphics::PixelFormat::R32_SINT,     4, { 32, 0, 0xffffffff }, {}, {}, {} },
-            { xl7::graphics::PixelFormat::R32_FLOAT,    4, { 32, 0, 0xffffffff }, {}, {}, {} },
+            { xl7::graphics::PixelFormat::R32_UINT,     4, { 0, 32, 0, 0xffffffff, 0xffffffff }, {}, {}, {} },
+            { xl7::graphics::PixelFormat::R32_SINT,     4, { 0, 32, 0, 0xffffffff, 0xffffffff }, {}, {}, {} },
+            { xl7::graphics::PixelFormat::R32_FLOAT,    4, { 0, 32, 0, 0xffffffff, 0xffffffff }, {}, {}, {} },
 
-            { xl7::graphics::PixelFormat::R8G8_UNORM,   2, { 8, 0, 0x00ff }, { 8, 8, 0xff00 }, {}, {} },
-            { xl7::graphics::PixelFormat::R8G8_SNORM,   2, { 8, 0, 0x00ff }, { 8, 8, 0xff00 }, {}, {} },
-            { xl7::graphics::PixelFormat::R8G8_UINT,    2, { 8, 0, 0x00ff }, { 8, 8, 0xff00 }, {}, {} },
-            { xl7::graphics::PixelFormat::R8G8_SINT,    2, { 8, 0, 0x00ff }, { 8, 8, 0xff00 }, {}, {} },
+            { xl7::graphics::PixelFormat::R8G8_UNORM,   2, { 0, 8, 0, 0x00ff, 0x00ff }, { 1, 8, 8, 0xff00, 0x00ff }, {}, {} },
+            { xl7::graphics::PixelFormat::R8G8_SNORM,   2, { 0, 8, 0, 0x00ff, 0x00ff }, { 1, 8, 8, 0xff00, 0x00ff }, {}, {} },
+            { xl7::graphics::PixelFormat::R8G8_UINT,    2, { 0, 8, 0, 0x00ff, 0x00ff }, { 1, 8, 8, 0xff00, 0x00ff }, {}, {} },
+            { xl7::graphics::PixelFormat::R8G8_SINT,    2, { 0, 8, 0, 0x00ff, 0x00ff }, { 1, 8, 8, 0xff00, 0x00ff }, {}, {} },
 
-            { xl7::graphics::PixelFormat::R16G16_UNORM, 4, { 16, 0, 0x0000ffff }, { 16, 16, 0xffff0000 }, {}, {} },
-            { xl7::graphics::PixelFormat::R16G16_SNORM, 4, { 16, 0, 0x0000ffff }, { 16, 16, 0xffff0000 }, {}, {} },
-            { xl7::graphics::PixelFormat::R16G16_UINT,  4, { 16, 0, 0x0000ffff }, { 16, 16, 0xffff0000 }, {}, {} },
-            { xl7::graphics::PixelFormat::R16G16_SINT,  4, { 16, 0, 0x0000ffff }, { 16, 16, 0xffff0000 }, {}, {} },
-            { xl7::graphics::PixelFormat::R16G16_FLOAT, 4, { 16, 0, 0x0000ffff }, { 16, 16, 0xffff0000 }, {}, {} },
+            { xl7::graphics::PixelFormat::R16G16_UNORM, 4, { 0, 16, 0, 0x0000ffff, 0x0000ffff }, { 1, 16, 16, 0xffff0000, 0x0000ffff }, {}, {} },
+            { xl7::graphics::PixelFormat::R16G16_SNORM, 4, { 0, 16, 0, 0x0000ffff, 0x0000ffff }, { 1, 16, 16, 0xffff0000, 0x0000ffff }, {}, {} },
+            { xl7::graphics::PixelFormat::R16G16_UINT,  4, { 0, 16, 0, 0x0000ffff, 0x0000ffff }, { 1, 16, 16, 0xffff0000, 0x0000ffff }, {}, {} },
+            { xl7::graphics::PixelFormat::R16G16_SINT,  4, { 0, 16, 0, 0x0000ffff, 0x0000ffff }, { 1, 16, 16, 0xffff0000, 0x0000ffff }, {}, {} },
+            { xl7::graphics::PixelFormat::R16G16_FLOAT, 4, { 0, 16, 0, 0x0000ffff, 0x0000ffff }, { 1, 16, 16, 0xffff0000, 0x0000ffff }, {}, {} },
 
-            { xl7::graphics::PixelFormat::R32G32_UINT,  8, { 32, 0, 0x00000000ffffffff }, { 32, 32, 0xffffffff00000000 }, {}, {} },
-            { xl7::graphics::PixelFormat::R32G32_SINT,  8, { 32, 0, 0x00000000ffffffff }, { 32, 32, 0xffffffff00000000 }, {}, {} },
-            { xl7::graphics::PixelFormat::R32G32_FLOAT, 8, { 32, 0, 0x00000000ffffffff }, { 32, 32, 0xffffffff00000000 }, {}, {} },
+            { xl7::graphics::PixelFormat::R32G32_UINT,  8, { 0, 32, 0, 0x00000000ffffffff, 0x00000000ffffffff }, { 1, 32, 32, 0xffffffff00000000, 0x00000000ffffffff }, {}, {} },
+            { xl7::graphics::PixelFormat::R32G32_SINT,  8, { 0, 32, 0, 0x00000000ffffffff, 0x00000000ffffffff }, { 1, 32, 32, 0xffffffff00000000, 0x00000000ffffffff }, {}, {} },
+            { xl7::graphics::PixelFormat::R32G32_FLOAT, 8, { 0, 32, 0, 0x00000000ffffffff, 0x00000000ffffffff }, { 1, 32, 32, 0xffffffff00000000, 0x00000000ffffffff }, {}, {} },
 
-            { xl7::graphics::PixelFormat::R5G5B5X1_UNORM,   2, { 5, 0, 0x001f }, { 5, 5, 0x03e0 }, { 5, 10, 0x7c00 }, {} },
-            { xl7::graphics::PixelFormat::R5G6B5_UNORM,     2, { 5, 0, 0x001f }, { 6, 5, 0x07e0 }, { 5, 11, 0xf800 }, {} },
+            { xl7::graphics::PixelFormat::R4G4B4X4_UNORM,   2, { 0, 4, 0, 0x000f, 0x000f }, { 1, 4, 4, 0x00f0, 0x000f }, { 2, 4,  8, 0x0f00, 0x000f }, {} },
+            { xl7::graphics::PixelFormat::R5G5B5X1_UNORM,   2, { 0, 5, 0, 0x001f, 0x001f }, { 1, 5, 5, 0x03e0, 0x001f }, { 2, 5, 10, 0x7c00, 0x001f }, {} },
+            { xl7::graphics::PixelFormat::R5G6B5_UNORM,     2, { 0, 5, 0, 0x001f, 0x001f }, { 1, 6, 5, 0x07e0, 0x003f }, { 2, 5, 11, 0xf800, 0x001f }, {} },
 
-            { xl7::graphics::PixelFormat::R8G8B8_UNORM, 3, { 8, 0, 0x0000ff }, { 8, 8, 0x00ff00 }, { 8, 16, 0xff0000 }, {} },
-            { xl7::graphics::PixelFormat::R8G8B8_SNORM, 3, { 8, 0, 0x0000ff }, { 8, 8, 0x00ff00 }, { 8, 16, 0xff0000 }, {} },
-            { xl7::graphics::PixelFormat::R8G8B8_UINT,  3, { 8, 0, 0x0000ff }, { 8, 8, 0x00ff00 }, { 8, 16, 0xff0000 }, {} },
-            { xl7::graphics::PixelFormat::R8G8B8_SINT,  3, { 8, 0, 0x0000ff }, { 8, 8, 0x00ff00 }, { 8, 16, 0xff0000 }, {} },
+            { xl7::graphics::PixelFormat::R8G8B8_UNORM, 3, { 0, 8, 0, 0x0000ff, 0x0000ff }, { 1, 8, 8, 0x00ff00, 0x0000ff }, { 2, 8, 16, 0xff0000, 0x0000ff }, {} },
+            { xl7::graphics::PixelFormat::R8G8B8_SNORM, 3, { 0, 8, 0, 0x0000ff, 0x0000ff }, { 1, 8, 8, 0x00ff00, 0x0000ff }, { 2, 8, 16, 0xff0000, 0x0000ff }, {} },
+            { xl7::graphics::PixelFormat::R8G8B8_UINT,  3, { 0, 8, 0, 0x0000ff, 0x0000ff }, { 1, 8, 8, 0x00ff00, 0x0000ff }, { 2, 8, 16, 0xff0000, 0x0000ff }, {} },
+            { xl7::graphics::PixelFormat::R8G8B8_SINT,  3, { 0, 8, 0, 0x0000ff, 0x0000ff }, { 1, 8, 8, 0x00ff00, 0x0000ff }, { 2, 8, 16, 0xff0000, 0x0000ff }, {} },
 
-            { xl7::graphics::PixelFormat::R8G8B8X8_UNORM,   4, { 8, 0, 0x0000ff }, { 8, 8, 0x00ff00 }, { 8, 16, 0xff0000 }, {} },
+            { xl7::graphics::PixelFormat::R8G8B8X8_UNORM,   4, { 0, 8, 0, 0x0000ff, 0x0000ff }, { 1, 8, 8, 0x00ff00, 0x0000ff }, { 2, 8, 16, 0xff0000, 0x0000ff }, {} },
 
-            { xl7::graphics::PixelFormat::R11G11B10_FLOAT,  4, { 11, 0, 0x000007ff }, { 11, 11, 0x003ff800 }, { 10, 22, 0xffc00000 }, {} },
+            { xl7::graphics::PixelFormat::R11G11B10_FLOAT,  4, { 0, 11, 0, 0x000007ff, 0x000007ff }, { 1, 11, 11, 0x003ff800, 0x000007ff }, { 2, 10, 22, 0xffc00000, 0x000003ff }, {} },
 
-            { xl7::graphics::PixelFormat::R32G32B32_UINT,   12, { 32, 0, 0 }, { 32, 32, 0 }, { 32, 64, 0 }, {} },
-            { xl7::graphics::PixelFormat::R32G32B32_SINT,   12, { 32, 0, 0 }, { 32, 32, 0 }, { 32, 64, 0 }, {} },
-            { xl7::graphics::PixelFormat::R32G32B32_FLOAT,  12, { 32, 0, 0 }, { 32, 32, 0 }, { 32, 64, 0 }, {} },
+            { xl7::graphics::PixelFormat::R32G32B32_UINT,   12, { 0, 32, 0, 0, 0xffffffff }, { 1, 32, 32, 0, 0xffffffff }, { 2, 32, 64, 0, 0xffffffff }, {} },
+            { xl7::graphics::PixelFormat::R32G32B32_SINT,   12, { 0, 32, 0, 0, 0xffffffff }, { 1, 32, 32, 0, 0xffffffff }, { 2, 32, 64, 0, 0xffffffff }, {} },
+            { xl7::graphics::PixelFormat::R32G32B32_FLOAT,  12, { 0, 32, 0, 0, 0xffffffff }, { 1, 32, 32, 0, 0xffffffff }, { 2, 32, 64, 0, 0xffffffff }, {} },
 
-            { xl7::graphics::PixelFormat::R4G4B4A4_UNORM,   2, { 4, 0, 0x000f }, { 4, 4, 0x00f0 }, { 4, 8, 0x0f00 }, { 4, 12, 0xf000 } },
-            { xl7::graphics::PixelFormat::R5G5B5A1_UNORM,   2, { 5, 0, 0x001f }, { 5, 5, 0x03e0 }, { 5, 10, 0x7c00 }, { 1, 15, 0x8000 } },
+            { xl7::graphics::PixelFormat::R4G4B4A4_UNORM,   2, { 0, 4, 0, 0x000f, 0x000f }, { 1, 4, 4, 0x00f0, 0x000f }, { 2, 4,  8, 0x0f00, 0x000f }, { 3, 4, 12, 0xf000, 0x000f } },
+            { xl7::graphics::PixelFormat::R5G5B5A1_UNORM,   2, { 0, 5, 0, 0x001f, 0x001f }, { 1, 5, 5, 0x03e0, 0x001f }, { 2, 5, 10, 0x7c00, 0x001f }, { 3, 1, 15, 0x8000, 0x0001 } },
 
-            { xl7::graphics::PixelFormat::R8G8B8A8_UNORM,   4, { 8, 0, 0x000000ff }, { 8, 8, 0x0000ff00 }, { 8, 16, 0x00ff0000 }, { 8, 24, 0xff000000 } },
-            { xl7::graphics::PixelFormat::R8G8B8A8_SNORM,   4, { 8, 0, 0x000000ff }, { 8, 8, 0x0000ff00 }, { 8, 16, 0x00ff0000 }, { 8, 24, 0xff000000 } },
-            { xl7::graphics::PixelFormat::R8G8B8A8_UINT,    4, { 8, 0, 0x000000ff }, { 8, 8, 0x0000ff00 }, { 8, 16, 0x00ff0000 }, { 8, 24, 0xff000000 } },
-            { xl7::graphics::PixelFormat::R8G8B8A8_SINT,    4, { 8, 0, 0x000000ff }, { 8, 8, 0x0000ff00 }, { 8, 16, 0x00ff0000 }, { 8, 24, 0xff000000 } },
+            { xl7::graphics::PixelFormat::R8G8B8A8_UNORM,   4, { 0, 8, 0, 0x000000ff, 0x000000ff }, { 1, 8, 8, 0x0000ff00, 0x000000ff }, { 2, 8, 16, 0x00ff0000, 0x000000ff }, { 3, 8, 24, 0xff000000, 0x000000ff } },
+            { xl7::graphics::PixelFormat::R8G8B8A8_SNORM,   4, { 0, 8, 0, 0x000000ff, 0x000000ff }, { 1, 8, 8, 0x0000ff00, 0x000000ff }, { 2, 8, 16, 0x00ff0000, 0x000000ff }, { 3, 8, 24, 0xff000000, 0x000000ff } },
+            { xl7::graphics::PixelFormat::R8G8B8A8_UINT,    4, { 0, 8, 0, 0x000000ff, 0x000000ff }, { 1, 8, 8, 0x0000ff00, 0x000000ff }, { 2, 8, 16, 0x00ff0000, 0x000000ff }, { 3, 8, 24, 0xff000000, 0x000000ff } },
+            { xl7::graphics::PixelFormat::R8G8B8A8_SINT,    4, { 0, 8, 0, 0x000000ff, 0x000000ff }, { 1, 8, 8, 0x0000ff00, 0x000000ff }, { 2, 8, 16, 0x00ff0000, 0x000000ff }, { 3, 8, 24, 0xff000000, 0x000000ff } },
 
-            { xl7::graphics::PixelFormat::R10G10B10A2_UNORM,    4, { 10, 0, 0x000003ff }, { 10, 10, 0x000ffc00 }, { 10, 20, 0x3ff00000 }, { 2, 30, 0xc0000000 } },
-            { xl7::graphics::PixelFormat::R10G10B10A2_UINT,     4, { 10, 0, 0x000003ff }, { 10, 10, 0x000ffc00 }, { 10, 20, 0x3ff00000 }, { 2, 30, 0xc0000000 } },
+            { xl7::graphics::PixelFormat::R10G10B10A2_UNORM,    4, { 0, 10, 0, 0x000003ff, 0x000003ff }, { 1, 10, 10, 0x000ffc00, 0x000003ff }, { 2, 10, 20, 0x3ff00000, 0x000003ff }, { 3, 2, 30, 0xc0000000, 0x00000003 } },
+            { xl7::graphics::PixelFormat::R10G10B10A2_UINT,     4, { 0, 10, 0, 0x000003ff, 0x000003ff }, { 1, 10, 10, 0x000ffc00, 0x000003ff }, { 2, 10, 20, 0x3ff00000, 0x000003ff }, { 3, 2, 30, 0xc0000000, 0x00000003 } },
 
-            { xl7::graphics::PixelFormat::R16G16B16A16_UNORM,   8, { 16, 0, 0x000000000000ffff }, { 16, 16, 0x00000000ffff0000 }, { 16, 32, 0x0000ffff00000000 }, { 16, 48, 0xffff000000000000 } },
-            { xl7::graphics::PixelFormat::R16G16B16A16_SNORM,   8, { 16, 0, 0x000000000000ffff }, { 16, 16, 0x00000000ffff0000 }, { 16, 32, 0x0000ffff00000000 }, { 16, 48, 0xffff000000000000 } },
-            { xl7::graphics::PixelFormat::R16G16B16A16_UINT,    8, { 16, 0, 0x000000000000ffff }, { 16, 16, 0x00000000ffff0000 }, { 16, 32, 0x0000ffff00000000 }, { 16, 48, 0xffff000000000000 } },
-            { xl7::graphics::PixelFormat::R16G16B16A16_SINT,    8, { 16, 0, 0x000000000000ffff }, { 16, 16, 0x00000000ffff0000 }, { 16, 32, 0x0000ffff00000000 }, { 16, 48, 0xffff000000000000 } },
-            { xl7::graphics::PixelFormat::R16G16B16A16_FLOAT,   8, { 16, 0, 0x000000000000ffff }, { 16, 16, 0x00000000ffff0000 }, { 16, 32, 0x0000ffff00000000 }, { 16, 48, 0xffff000000000000 } },
+            { xl7::graphics::PixelFormat::R16G16B16A16_UNORM,   8, { 0, 16, 0, 0x000000000000ffff, 0x000000000000ffff }, { 1, 16, 16, 0x00000000ffff0000, 0x000000000000ffff }, { 2, 16, 32, 0x0000ffff00000000, 0x000000000000ffff }, { 3, 16, 48, 0xffff000000000000, 0x000000000000ffff } },
+            { xl7::graphics::PixelFormat::R16G16B16A16_SNORM,   8, { 0, 16, 0, 0x000000000000ffff, 0x000000000000ffff }, { 1, 16, 16, 0x00000000ffff0000, 0x000000000000ffff }, { 2, 16, 32, 0x0000ffff00000000, 0x000000000000ffff }, { 3, 16, 48, 0xffff000000000000, 0x000000000000ffff } },
+            { xl7::graphics::PixelFormat::R16G16B16A16_UINT,    8, { 0, 16, 0, 0x000000000000ffff, 0x000000000000ffff }, { 1, 16, 16, 0x00000000ffff0000, 0x000000000000ffff }, { 2, 16, 32, 0x0000ffff00000000, 0x000000000000ffff }, { 3, 16, 48, 0xffff000000000000, 0x000000000000ffff } },
+            { xl7::graphics::PixelFormat::R16G16B16A16_SINT,    8, { 0, 16, 0, 0x000000000000ffff, 0x000000000000ffff }, { 1, 16, 16, 0x00000000ffff0000, 0x000000000000ffff }, { 2, 16, 32, 0x0000ffff00000000, 0x000000000000ffff }, { 3, 16, 48, 0xffff000000000000, 0x000000000000ffff } },
+            { xl7::graphics::PixelFormat::R16G16B16A16_FLOAT,   8, { 0, 16, 0, 0x000000000000ffff, 0x000000000000ffff }, { 1, 16, 16, 0x00000000ffff0000, 0x000000000000ffff }, { 2, 16, 32, 0x0000ffff00000000, 0x000000000000ffff }, { 3, 16, 48, 0xffff000000000000, 0x000000000000ffff } },
 
-            { xl7::graphics::PixelFormat::R32G32B32A32_UINT,    16, { 32, 0, 0 }, { 32, 32, 0 }, { 32, 64, 0 }, { 32, 96, 0 } },
-            { xl7::graphics::PixelFormat::R32G32B32A32_SINT,    16, { 32, 0, 0 }, { 32, 32, 0 }, { 32, 64, 0 }, { 32, 96, 0 } },
-            { xl7::graphics::PixelFormat::R32G32B32A32_FLOAT,   16, { 32, 0, 0 }, { 32, 32, 0 }, { 32, 64, 0 }, { 32, 96, 0 } },
+            { xl7::graphics::PixelFormat::R32G32B32A32_UINT,    16, { 0, 32, 0, 0, 0xffffffff }, { 1, 32, 32, 0, 0xffffffff }, { 2, 32, 64, 0, 0xffffffff }, { 3, 32, 96, 0, 0xffffffff } },
+            { xl7::graphics::PixelFormat::R32G32B32A32_SINT,    16, { 0, 32, 0, 0, 0xffffffff }, { 1, 32, 32, 0, 0xffffffff }, { 2, 32, 64, 0, 0xffffffff }, { 3, 32, 96, 0, 0xffffffff } },
+            { xl7::graphics::PixelFormat::R32G32B32A32_FLOAT,   16, { 0, 32, 0, 0, 0xffffffff }, { 1, 32, 32, 0, 0xffffffff }, { 2, 32, 64, 0, 0xffffffff }, { 3, 32, 96, 0, 0xffffffff } },
+
+            { xl7::graphics::PixelFormat::A8_UNORM, 1, {}, {}, {}, { 0, 8, 0, 0xff, 0xff } },
         };
 
         for ( size_t i = 0; i < container.size(); ++i )

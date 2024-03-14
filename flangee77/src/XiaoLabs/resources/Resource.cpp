@@ -134,14 +134,12 @@ namespace resources {
      */
     bool Resource::_try_fill_data(const DataProvider& data_provider)
     {
-        if ( !_check_impl( data_provider ) )
+        if ( !_check_data_impl( data_provider ) )
         {
             return false;
         }
 
-        data_provider.fill( _data );
-
-        return true;
+        return _fill_data_impl( data_provider );
     }
 
     /**
@@ -182,6 +180,22 @@ namespace resources {
         }
 
         return is_valid;
+    }
+
+
+
+    // #############################################################################
+    // Prototypes
+    // #############################################################################
+
+    /**
+     * (Re)populates the local data buffer based on the given data provider.
+     */
+    bool Resource::_fill_data_impl(const DataProvider& data_provider)
+    {
+        data_provider.fill( _data );
+
+        return true;
     }
 
 

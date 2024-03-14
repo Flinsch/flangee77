@@ -43,6 +43,15 @@ namespace images {
     /**
      * Explicit constructor.
      */
+    Image::Image(const Desc& desc)
+        : Image()
+    {
+        init( desc );
+    }
+
+    /**
+     * Explicit constructor.
+     */
     Image::Image(const Desc& desc, cl7::byte_view data)
         : Image()
     {
@@ -58,6 +67,26 @@ namespace images {
         init( desc, std::move(data) );
     }
 
+    /**
+     * Swap operation.
+     */
+    void Image::swap(Image& rhs)
+    {
+        std::swap( _desc, rhs._desc );
+        _data.swap( rhs._data );
+    }
+
+    /**
+     * Swap operation. The image's data is effectively "exported" and then remains
+     * undefined.
+     */
+    void Image::swap(cl7::byte_vector& data)
+    {
+        _data.swap( data );
+        if ( !_data.empty() )
+            _data.resize( _desc.calculate_data_size() );
+    }
+
 
 
     // #############################################################################
@@ -65,7 +94,19 @@ namespace images {
     // #############################################################################
 
     /**
-     * (Re)initializes the image.
+     * (Re)initializes an "empty" image.
+     */
+    bool Image::init(const Desc& desc)
+    {
+        _desc = desc;
+
+        _data.clear();
+
+        return true;
+    }
+
+    /**
+     * (Re)initializes the image based on the given data.
      */
     bool Image::init(const Desc& desc, cl7::byte_view data)
     {
@@ -81,7 +122,7 @@ namespace images {
     }
 
     /**
-     * (Re)initializes the image.
+     * (Re)initializes the image based on the given data.
      */
     bool Image::init(const Desc& desc, cl7::byte_vector&& data)
     {
@@ -107,6 +148,10 @@ namespace images {
      */
     bool Image::_validate(const Desc& desc, cl7::byte_view data)
     {
+        // No data means an empty image: everything is fine.
+        if ( data.empty() )
+            return true;
+
         if ( desc.calculate_data_size() != data.size() )
         {
             // Should we log an error message or something?

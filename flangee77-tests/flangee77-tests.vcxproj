@@ -232,7 +232,7 @@ xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(LocalD
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CoreLabs\strings.h" />
-    <ClInclude Include="src\CoreLabs\utilities.h" />
+    <ClInclude Include="src\CoreLabs\bits.h" />
     <ClInclude Include="src\CoreLabs\Version.h" />
     <ClInclude Include="src\DataLabs\compression.h" />
     <ClInclude Include="src\MathLabs\utilities.h" />

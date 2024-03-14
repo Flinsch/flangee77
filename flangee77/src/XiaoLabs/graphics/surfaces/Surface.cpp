@@ -35,7 +35,7 @@ namespace surfaces {
      * of the resource to (re)populate it, taking into account the current state of
      * the resource if necessary.
      */
-    bool Surface::_check_impl(const resources::DataProvider& data_provider)
+    bool Surface::_check_data_impl(const resources::DataProvider& data_provider)
     {
         if ( data_provider.get_offset() > 0 || data_provider.get_size() > 0 )
         {

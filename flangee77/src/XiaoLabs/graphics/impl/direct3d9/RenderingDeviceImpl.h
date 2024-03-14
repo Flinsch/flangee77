@@ -53,16 +53,6 @@ private:
     wrl::ComPtr<IDirect3DDevice9> _d3d_device;
 
     /**
-     * The Direct3D 9 (standard) render target surface interface.
-     */
-    wrl::ComPtr<IDirect3DSurface9> _d3d_render_target_surface;
-
-    /**
-     * The Direct3D 9 (standard) depth/stencil surface interface.
-     */
-    wrl::ComPtr<IDirect3DSurface9> _d3d_depth_stencil_surface;
-
-    /**
      * The structure containing information identifying the adapter.
      */
     D3DADAPTER_IDENTIFIER9 _d3d_adapter_identifier;
@@ -77,6 +67,17 @@ private:
      */
     D3DCAPS9 _d3d_device_caps;
 
+private:
+    /**
+     * The Direct3D 9 (standard) render target surface interface.
+     */
+    wrl::ComPtr<IDirect3DSurface9> _d3d_render_target_surface;
+
+    /**
+     * The Direct3D 9 (standard) depth/stencil surface interface.
+     */
+    wrl::ComPtr<IDirect3DSurface9> _d3d_depth_stencil_surface;
+
 
 
     // #############################################################################
@@ -87,6 +88,21 @@ public:
      * Returns the Direct3D 9 device interface.
      */
     IDirect3DDevice9* get_raw_d3d_device() const { return _d3d_device.Get(); }
+
+    /**
+     * Returns the structure containing information identifying the adapter.
+     */
+    const D3DADAPTER_IDENTIFIER9& get_d3d_adapter_identifier() const { return _d3d_adapter_identifier; }
+
+    /**
+     * Returns the Direct3D 9 presentation parameters.
+     */
+    const D3DPRESENT_PARAMETERS& get_d3d_present_parameters() const { return _d3d_present_parameters; }
+
+    /**
+     * Returns the capabilities of the underlying hardware.
+     */
+    const D3DCAPS9& get_d3d_device_caps() const { return _d3d_device_caps; }
 
 
 
@@ -129,6 +145,13 @@ private:
      * Presents the contents of the next buffer in the device's swap chain.
      */
     virtual bool _present_impl() override;
+
+private:
+    /**
+     * Checks whether the device (generally) supports the specified combination of
+     * pixel format and channel order for the specified texture type.
+     */
+    virtual bool _check_texture_format_impl(xl7::graphics::textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder channel_order) override;
 
 
 

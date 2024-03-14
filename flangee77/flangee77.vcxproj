@@ -199,8 +199,16 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\CoreLabs\logging\HtmlLogHandler.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\images\ImageConverter.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\textures\Texture2DImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\textures\ImageDataProvider.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\images\ImageStack.h" />
+    <ClInclude Include="src\CoreLabs\bits.h" />
     <ClInclude Include="src\CoreLabs\system\CPUID.h" />
     <ClInclude Include="src\CoreLabs\system\MemoryStatus.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\mappings.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\mappings.h" />
     <ClInclude Include="src\XiaoLabs\graphics\textures\Cubemap.h" />
     <ClInclude Include="src\DataLabs\compression.h" />
     <ClInclude Include="src\DataLabs\compression\Deflate.h" />
@@ -339,10 +347,19 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\textures\Texture2D.h" />
     <ClInclude Include="src\XiaoLabs\graphics\textures\Texture2DArray.h" />
     <ClInclude Include="src\XiaoLabs\graphics\textures\Texture3D.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\textures\Texture2DImpl.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\CoreLabs\logging\HtmlLogHandler.cpp" />
+    <ClCompile Include="src\CoreLabs\bits.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\images\ImageConverter.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\textures\Texture2DImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\textures\ImageDataProvider.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\images\ImageStack.cpp" />
     <ClCompile Include="src\CoreLabs\system\CPUID.cpp" />
     <ClCompile Include="src\CoreLabs\system\MemoryStatus.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\mappings.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\mappings.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\textures\Cubemap.cpp" />
     <ClCompile Include="src\DataLabs\compression\Deflate.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\images\PngImageHandler.cpp" />
@@ -440,6 +457,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClCompile Include="src\XiaoLabs\graphics\textures\Texture2D.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\textures\Texture2DArray.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\textures\Texture3D.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\textures\Texture2DImpl.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

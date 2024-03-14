@@ -66,7 +66,7 @@ namespace shaders {
      * of the resource to (re)populate it, taking into account the current state of
      * the resource if necessary.
      */
-    bool Shader::_check_impl(const resources::DataProvider& data_provider)
+    bool Shader::_check_data_impl(const resources::DataProvider& data_provider)
     {
         assert( typeid(data_provider) == typeid(const CodeProvider&) );
         auto code_provider = static_cast<const CodeProvider&>( data_provider );

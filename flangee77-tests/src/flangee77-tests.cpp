@@ -2,7 +2,7 @@
 #include <TestLabs/TestSuite.h>
 #include <CoreLabs/logging.h>
 
-#include "./CoreLabs/utilities.h"
+#include "./CoreLabs/bits.h"
 #include "./CoreLabs/strings.h"
 #include "./CoreLabs/Version.h"
 

@@ -45,6 +45,7 @@ enum class PixelFormat
     R32G32_SINT,
     R32G32_FLOAT,
 
+    R4G4B4X4_UNORM,
     R5G5B5X1_UNORM,
     R5G6B5_UNORM,
 

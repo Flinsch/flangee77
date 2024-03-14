@@ -21,6 +21,11 @@ class DefaultDataProvider
     // #############################################################################
 public:
     /**
+     * Default constructor.
+     */
+    DefaultDataProvider();
+
+    /**
      * Explicit constructor.
      */
     DefaultDataProvider(cl7::byte_view data, size_t offset = 0);

@@ -5,6 +5,10 @@
 #include "./PixelFormat.h"
 #include "./ChannelOrder.h"
 
+#include <CoreLabs/byte_vector.h>
+#include <CoreLabs/byte_view.h>
+#include <CoreLabs/byte_span.h>
+
 
 
 namespace xl7 {
@@ -28,12 +32,16 @@ struct PixelBitKit
 
     struct Channel
     {
-        /** The bit depth of the channel (the size of the channel, in bits). */
+        /** The 0-based index of the channel within a pixel. */
+        unsigned index;
+        /** The bit depth of the channel (the size of the channel, in bits). This is also the main indicator of whether the channel is involved at all. */
         unsigned depth;
         /** The offset/shift of the channel, in bits. */
         unsigned offset;
         /** The mask of the channel within a pixel (bit-depth 1s shifted by offset bits). */
-        unsigned long long mask;
+        uint64_t mask;
+        /** The "standalone" mask of the channel (bit-depth 1s shifted by 0 bits). */
+        uint64_t mask0;
     };
 
 
@@ -61,8 +69,8 @@ struct PixelBitKit
     /** The data type of each channel. */
     DataType data_type;
 
-    ///** The number of bytes from the beginning of one line of pixels to the beginning of the next. */
-    //unsigned pitch;
+    /** The uniform bit depth of each channel (the size of each channel in bits), or zero if not all channels have the same bit depth. */
+    unsigned uniform_depth;
 
 
 

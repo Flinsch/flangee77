@@ -109,8 +109,8 @@ namespace pl7 {
         cl7::system::MemoryStatus memory_status;
         if ( !memory_status.capture() )
             LOG_WARNING( TEXT("Unable to retrieve system memory status.") );
-        LOG_TYPE( TEXT("Total physical memory\t") + cl7::memory::stringify_byte_amount( memory_status.total_physical_memory ), cl7::logging::LogType::Item );
-        LOG_TYPE( TEXT("Available physical memory\t") + cl7::memory::stringify_byte_amount( memory_status.available_physical_memory ), cl7::logging::LogType::Item );
+        LOG_TYPE( TEXT("Total physical memory\t") + cl7::memory::stringify_byte_amount_si( memory_status.total_physical_memory ), cl7::logging::LogType::Item );
+        LOG_TYPE( TEXT("Available physical memory\t") + cl7::memory::stringify_byte_amount_si( memory_status.available_physical_memory ), cl7::logging::LogType::Item );
 
         // 
         if ( sizeof(size_t) == 4 )

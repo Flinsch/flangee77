@@ -57,11 +57,6 @@ private:
     // #############################################################################
 private:
     /**
-     * The Direct3D 11 device interface.
-     */
-    wrl::ComPtr<ID3D11DeviceN> _d3d_device;
-
-    /**
      * The Direct3D 11 vertex shader interface.
      */
     wrl::ComPtr<ID3D11VertexShader> _d3d_vertex_shader;

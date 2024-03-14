@@ -45,7 +45,7 @@ private:
      */
     virtual void _write(const LogEntry& log_entry) override;
 
-}; // class AbstractLogHandler
+}; // class CoutLogHandler
 
 
 
