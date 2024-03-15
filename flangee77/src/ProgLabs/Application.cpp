@@ -98,7 +98,7 @@ namespace pl7 {
         LOG_TYPE( TEXT("Vendor name\t") + cl7::strings::from_ascii( cpuid.vendor_name ), cl7::logging::LogType::Item );
         LOG_TYPE( TEXT("Processor name\t") + cl7::strings::from_ascii( cpuid.processor_name ), cl7::logging::LogType::Item );
         if ( cpuid.bitness && cpuid.bitness != sizeof(size_t) * 8 )
-            LOG_TYPE( TEXT("Bitness\t") + cl7::to_string( cpuid.bitness ) + TEXT("-bit") + TEXT(" (system: ") + cl7::to_string( sizeof(size_t) * 8 ) + TEXT("-bit") + TEXT(")"), cl7::logging::LogType::Item );
+            LOG_TYPE( TEXT("Bitness\t") + cl7::to_string( cpuid.bitness ) + TEXT("-bit") + TEXT(" (application: ") + cl7::to_string( sizeof(size_t) * 8 ) + TEXT("-bit") + TEXT(")"), cl7::logging::LogType::Item );
         else
             LOG_TYPE( TEXT("Bitness\t") + (cpuid.bitness ? cl7::to_string( cpuid.bitness ) + TEXT("-bit") : cl7::string( TEXT("unknown") )), cl7::logging::LogType::Item );
         LOG_TYPE( TEXT("Frequency\t") + (cpuid.frequency ? cl7::to_string( cpuid.frequency ) + TEXT(" MHz") : cl7::string( TEXT("unknown") )), cl7::logging::LogType::Item );
@@ -111,6 +111,10 @@ namespace pl7 {
             LOG_WARNING( TEXT("Unable to retrieve system memory status.") );
         LOG_TYPE( TEXT("Total physical memory\t") + cl7::memory::stringify_byte_amount_si( memory_status.total_physical_memory ), cl7::logging::LogType::Item );
         LOG_TYPE( TEXT("Available physical memory\t") + cl7::memory::stringify_byte_amount_si( memory_status.available_physical_memory ), cl7::logging::LogType::Item );
+
+        // 
+        if ( sizeof(size_t) == 4 )
+            LOG_TYPE( TEXT("Apologies for sticking to 32-bit and thus limiting usable memory. But this software doesn't need more either. \U0001f618"), cl7::logging::LogType::Comment );
 
         // Create the main window.
         if ( !xl7::main_window().init( config ) )

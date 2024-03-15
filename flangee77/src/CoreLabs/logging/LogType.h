@@ -25,6 +25,7 @@ enum class LogType
     ItemFail,
     Code,
     Meta,
+    Comment,
     Other
 }; // enum class LogType
 

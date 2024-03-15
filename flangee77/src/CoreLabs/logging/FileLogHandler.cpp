@@ -2,6 +2,7 @@
 
 #include <CoreLabs/fstream.h>
 #include <CoreLabs/sstream.h>
+#include <CoreLabs/strings.h>
 
 #include <chrono>
 
@@ -27,7 +28,7 @@ namespace logging {
         const auto ldt = std::put_time( &tm, TEXT("%F %T %z") );
 
         cl7::osstream ss;
-        ss << TEXT("flangee77 - ");
+        ss << TEXT("flangee77 \u2014 ");
         ss << ldt;
 
         _write_line( ss.str(), true );
@@ -74,18 +75,23 @@ namespace logging {
      */
     void FileLogHandler::_write_line(cl7::string_view line, bool truncate)
     {
-        auto mode = cl7::ofstream::out;
+        auto mode = cl7::aofstream::binary | cl7::aofstream::out;
         if ( truncate )
-            mode |= cl7::ofstream::trunc;
+            mode |= cl7::aofstream::trunc;
         else
-            mode |= cl7::ofstream::app;
+            mode |= cl7::aofstream::app;
 
-        cl7::ofstream file( TEXT("log.txt"), mode );
+        cl7::aofstream file( TEXT("log.txt"), mode );
 
         if ( !file.is_open() )
             return;
 
-        file << line << std::endl;
+        auto data = cl7::strings::to_utf8( line );
+        data.push_back( u8'\n' );
+
+        //if ( truncate )
+        //    file.write( reinterpret_cast<const char*>( cl7::strings::to_bytes( u8"", true ).data() ), 3 );
+        file.write( reinterpret_cast<const char*>( data.data() ), data.size() );
     }
 
 
