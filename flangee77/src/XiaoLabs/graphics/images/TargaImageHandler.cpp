@@ -42,6 +42,7 @@ namespace images {
         desc.channel_order = ChannelOrder::RGBA;
         desc.width = static_cast<unsigned>( cl7::bits::swap_bytes_unless_endian<std::endian::little>( header.width ) );
         desc.height = static_cast<unsigned>( cl7::bits::swap_bytes_unless_endian<std::endian::little>( header.height ) );
+        desc.depth = 1;
 
         cl7::byte_vector data( desc.calculate_data_size() );
 
@@ -96,7 +97,7 @@ namespace images {
         assert( data.size() == desc.calculate_data_size() );
 
         const size_t bytes_per_pixel = static_cast<size_t>( desc.determine_pixel_stride() );
-        const size_t total_pixel_count = static_cast<size_t>( desc.width ) * static_cast<size_t>( desc.height );
+        const size_t total_pixel_count = desc.calculate_pixel_count();
 
         assert( total_pixel_count * bytes_per_pixel == data.size() );
 

@@ -19,7 +19,7 @@ public:
     struct Desc
         : public Texture::Desc
     {
-        /** The depth of the texture (the number of 2D image slices). */
+        /** The depth of the texture, in pixels (or the number of 2D image slices). */
         unsigned depth;
     };
 

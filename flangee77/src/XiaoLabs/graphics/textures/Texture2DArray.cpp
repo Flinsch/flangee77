@@ -16,7 +16,7 @@ namespace textures {
      * Explicit constructor.
      */
     Texture2DArray::Texture2DArray(const CreateParams<Desc>& params)
-        : Texture( Type::Texture2DArray, { params.manager, params.id, params.identifier, params.desc }, params.desc.count )
+        : Texture( Type::Texture2DArray, { params.manager, params.id, params.identifier, params.desc }, 1, params.desc.count )
         , _desc( params.desc )
     {
     }

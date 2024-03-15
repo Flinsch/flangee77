@@ -8,6 +8,8 @@
 
 #include <TestLabs/TestSuite.h>
 
+#include "../shared.h"
+
 
 
 TESTLABS_CASE( TEXT("CoreLabs:  bits:  swap_bytes") )

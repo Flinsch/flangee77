@@ -16,7 +16,7 @@ namespace textures {
      * Explicit constructor.
      */
     Cubemap::Cubemap(const CreateParams<Desc>& params)
-        : Texture( Type::Cubemap, { params.manager, params.id, params.identifier, params.desc }, 6 )
+        : Texture( Type::Cubemap, { params.manager, params.id, params.identifier, params.desc }, 1, 6 )
         , _desc( params.desc )
     {
     }

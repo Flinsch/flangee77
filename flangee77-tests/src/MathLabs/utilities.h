@@ -6,6 +6,8 @@
 
 #include <TestLabs/TestSuite.h>
 
+#include "../shared.h"
+
 
 
 TESTLABS_CASE( TEXT("MathLabs:  utilities:  min2") )

@@ -23,15 +23,16 @@ namespace textures {
     /**
      * Explicit constructor.
      */
-    Texture::Texture(Type type, const CreateParams<Desc>& params, unsigned image_count)
+    Texture::Texture(Type type, const CreateParams<Desc>& params, unsigned depth, unsigned image_count)
         : Resource( params )
         , _type( type )
         , _desc( params.desc )
         , _channel_order( GraphicsSystem::instance().get_rendering_device()->recommend_channel_order( type, params.desc.pixel_format, params.desc.preferred_channel_order ).first )
+        , _depth( depth )
         , _stride( PixelBitKit::determine_stride( params.desc.pixel_format ) )
         , _line_pitch( _stride * params.desc.width )
-        , _image_pitch( _line_pitch * params.desc.height )
-        , _data_size( _image_pitch * image_count )
+        , _slice_pitch( _line_pitch * params.desc.height )
+        , _data_size( _slice_pitch * depth * image_count )
     {
     }
 
@@ -59,6 +60,11 @@ namespace textures {
         if ( image_data_provider.image_desc.height != _desc.height )
         {
             LOG_ERROR( TEXT("The image height provided for ") + get_typed_identifier_string() + TEXT(" does not match the height of the ") + cl7::string(get_type_string()) + TEXT(".") );
+            return false;
+        }
+        if ( image_data_provider.image_desc.depth != _depth )
+        {
+            LOG_ERROR( TEXT("The image depth provided for ") + get_typed_identifier_string() + TEXT(" does not match the depth of the ") + cl7::string(get_type_string()) + TEXT(".") );
             return false;
         }
 
@@ -90,8 +96,7 @@ namespace textures {
         {
             // Perform image format conversion.
             images::Image source_image( image_data_provider.image_desc, std::move(image_data) );
-            images::Image target_image( { _desc.pixel_format, _channel_order, _desc.width, _desc.height } );
-            images::ImageConverter().convert_image( source_image, target_image );
+            images::Image target_image = images::ImageConverter().convert_image( source_image, _desc.pixel_format, _channel_order );
             target_image.swap( _data );
         }
 

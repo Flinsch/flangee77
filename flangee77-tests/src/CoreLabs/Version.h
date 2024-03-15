@@ -6,6 +6,8 @@
 
 #include <TestLabs/TestSuite.h>
 
+#include "../shared.h"
+
 #include <vector>
 
 

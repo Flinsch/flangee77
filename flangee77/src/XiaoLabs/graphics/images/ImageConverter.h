@@ -26,11 +26,10 @@ class ImageConverter
 public:
     /**
      * Copies pixel data from one image to another, possibly converting the data to
-     * the pixel format and/or channel order of the target image. Width and height
-     * are taken from the source image and changed accordingly in the target image
-     * if necessary.
+     * the specified pixel format and/or channel order. The image size does not
+     * change.
      */
-    static void convert_image(const Image& source_image, Image& target_image);
+    static Image convert_image(const Image& source_image, PixelFormat pixel_format, ChannelOrder channel_order);
 
     /**
      * Transforms the given color into the specified pixel format and channel order.

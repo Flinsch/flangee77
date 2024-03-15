@@ -2,7 +2,7 @@
 #ifndef XL7_GRAPHICS_CHANNELORDER_H
 #define XL7_GRAPHICS_CHANNELORDER_H
 
-#include <CoreLabs/root.h>
+#include <CoreLabs/string.h>
 
 
 
@@ -23,5 +23,13 @@ enum class ChannelOrder
 
 } // namespace graphics
 } // namespace xl7
+
+
+
+namespace cl7 {
+    cl7::string to_string(xl7::graphics::ChannelOrder channel_order);
+}
+
+
 
 #endif // XL7_GRAPHICS_CHANNELORDER_H

@@ -85,6 +85,11 @@ public:
     unsigned get_image_height() const { return _desc.height; }
 
     /**
+     * Returns the respective depth of the images, in pixels (if 3D images, otherwise trivially 1).
+     */
+    unsigned get_image_depth() const { return _desc.depth; }
+
+    /**
      * Returns the number of contained images.
      */
     unsigned get_image_count() const;

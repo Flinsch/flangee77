@@ -30,13 +30,18 @@ public:
         PixelFormat pixel_format;
         /** The channel order. */
         ChannelOrder channel_order;
+
         /** The width of the image, in pixels. */
         unsigned width;
         /** The height of the image, in pixels. */
         unsigned height;
+        /** The depth of the image, in pixels (if 3D image, otherwise trivially 1). */
+        unsigned depth;
 
         /** Returns the size of one pixel, in bytes. */
         unsigned determine_pixel_stride() const;
+        /** Calculates the number of pixels of the image. */
+        size_t calculate_pixel_count() const;
         /** Calculates the total size of the image data, in bytes. */
         size_t calculate_data_size() const;
     };
@@ -124,6 +129,11 @@ public:
      * Returns the height of the image, in pixels.
      */
     unsigned get_height() const { return _desc.height; }
+
+    /**
+     * Returns the depth of the image, in pixels (if 3D image, otherwise trivially 1).
+     */
+    unsigned get_depth() const { return _desc.depth; }
 
     /**
      * Returns the image data.

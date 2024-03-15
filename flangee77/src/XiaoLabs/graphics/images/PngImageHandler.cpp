@@ -60,12 +60,13 @@ namespace images {
         desc.channel_order = ChannelOrder::RGBA;
         desc.width = bit_info.width;
         desc.height = bit_info.height;
+        desc.depth = 1;
 
         data.resize( desc.calculate_data_size() );
 
         unsigned src_bytes_per_pixel = bit_info.max_bytes_per_pixel;
         unsigned dst_bytes_per_pixel = desc.determine_pixel_stride();
-        size_t N = static_cast<size_t>( desc.width ) * static_cast<size_t>( desc.height );
+        size_t N = desc.calculate_pixel_count();
 
         // If Indexed-color ...
         if ( bit_info.color_type & CT_PALETTE_USED )

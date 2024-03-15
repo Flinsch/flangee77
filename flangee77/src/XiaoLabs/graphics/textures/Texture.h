@@ -62,7 +62,7 @@ protected:
     /**
      * Explicit constructor.
      */
-    Texture(Type type, const CreateParams<Desc>& params, unsigned image_count);
+    Texture(Type type, const CreateParams<Desc>& params, unsigned depth, unsigned image_count);
 
     /**
      * Destructor.
@@ -100,6 +100,11 @@ protected:
     const ChannelOrder _channel_order;
 
     /**
+     * The depth of the texture, in pixels (if 3D texture, otherwise trivially 1).
+     */
+    const unsigned _depth;
+
+    /**
      * The size of each pixel, in bytes.
      */
     const unsigned _stride;
@@ -111,10 +116,10 @@ protected:
     const unsigned _line_pitch;
 
     /**
-     * The size of a 2D image (the offset between the start of one 2D image and the
-     * start of the next 2D image if applicable), in bytes.
+     * The size of a 2D image slice (the offset between the start of one 2D image
+     * slice and the start of the next 2D image slice if applicable), in bytes.
      */
-    const unsigned _image_pitch;
+    const unsigned _slice_pitch;
 
     /**
      * The total data size of this texture, in bytes.
@@ -157,10 +162,10 @@ public:
     unsigned get_line_pitch() const { return _line_pitch; }
 
     /**
-     * Returns the size of a 2D image (the offset between the start of one 2D image
-     * and the start of the next 2D image if applicable), in bytes.
+     * Returns the size of a 2D image slice (the offset between the start of one 2D
+     * image slice and the start of the next 2D image slice if applicable), in bytes.
      */
-    unsigned get_image_pitch() const { return _image_pitch; }
+    unsigned get_slice_pitch() const { return _slice_pitch; }
 
     /**
      * Returns the total data size of this texture, in bytes.

@@ -2,7 +2,7 @@
 #ifndef XL7_GRAPHICS_PIXELFORMAT_H
 #define XL7_GRAPHICS_PIXELFORMAT_H
 
-#include <CoreLabs/root.h>
+#include <CoreLabs/string.h>
 
 
 
@@ -92,5 +92,13 @@ enum class PixelFormat
 
 } // namespace graphics
 } // namespace xl7
+
+
+
+namespace cl7 {
+    cl7::string to_string(xl7::graphics::PixelFormat pixel_format);
+}
+
+
 
 #endif // XL7_GRAPHICS_PIXELFORMAT_H

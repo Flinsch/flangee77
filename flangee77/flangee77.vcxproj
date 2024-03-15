@@ -350,10 +350,12 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\textures\Texture2DImpl.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\ChannelOrder.cpp" />
     <ClCompile Include="src\CoreLabs\logging\HtmlLogHandler.cpp" />
     <ClCompile Include="src\CoreLabs\bits.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\images\ImageConverter.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\textures\Texture2DImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\PixelFormat.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\textures\ImageDataProvider.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\images\ImageStack.cpp" />
     <ClCompile Include="src\CoreLabs\system\CPUID.cpp" />

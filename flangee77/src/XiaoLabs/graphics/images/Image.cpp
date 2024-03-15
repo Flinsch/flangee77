@@ -16,13 +16,21 @@ namespace images {
         return PixelBitKit::determine_stride( pixel_format );
     }
 
-    /** Calculates the total size of the image data, in bytes. */
-    size_t Image::Desc::calculate_data_size() const
+    /** Calculates the number of pixels of the image. */
+    size_t Image::Desc::calculate_pixel_count() const
     {
         return
             static_cast<size_t>( width ) *
             static_cast<size_t>( height ) *
-            static_cast<size_t>( determine_pixel_stride() );
+            static_cast<size_t>( depth );
+    }
+
+    /** Calculates the total size of the image data, in bytes. */
+    size_t Image::Desc::calculate_data_size() const
+    {
+        return
+            calculate_pixel_count() *
+            determine_pixel_stride();
     }
 
 
@@ -35,7 +43,7 @@ namespace images {
      * Default constructor.
      */
     Image::Image()
-        : _desc( { PixelFormat::UNKNOWN, ChannelOrder::RGBA, 0, 0 } )
+        : _desc( { PixelFormat::UNKNOWN, ChannelOrder::RGBA, 0, 0, 0 } )
         , _data()
     {
     }

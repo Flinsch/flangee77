@@ -90,7 +90,7 @@ namespace images {
     bool ImageStack::add_image(const Image& image)
     {
         const Image::Desc& desc = image.get_desc();
-        if ( desc.width != _desc.width || desc.height != _desc.height )
+        if ( desc.width != _desc.width || desc.height != _desc.height || desc.depth != _desc.depth )
         {
             // Should we log an error message or something?
             return false;
