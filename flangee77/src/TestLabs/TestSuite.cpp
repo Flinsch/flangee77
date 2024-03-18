@@ -21,7 +21,8 @@ namespace tl7 {
      * Default constructor.
      */
     TestSuite::TestSuite()
-        : _registered_test_cases()
+        : settings()
+        , _registered_test_cases()
         , _cout_logger()
         , reporter()
         , stats()
@@ -79,6 +80,12 @@ namespace tl7 {
         for ( const TestCasePtr& p : *test_cases )
         {
             _run_test_case( *p );
+
+            if ( settings.max_check_fail_count > 0 && stats.checks.fail_count > settings.max_check_fail_count )
+            {
+                // Report something?
+                break;
+            }
         }
 
         const auto msecs1 = cl7::system::datetime::current_msecs_since_epoch();
@@ -111,6 +118,10 @@ namespace tl7 {
             const bool b = _run_test_case_branch( test_case, ctx );
             reporter.post_result( ResultBuilder().make_test_case_result( ctx, Result::make_outcome( fail_count == ctx.stats.interim_fail_count() ) ) );
             if ( !b )
+                break;
+
+            const unsigned total_check_fail_count = stats.checks.fail_count + ctx.stats.checks.fail_count;
+            if ( settings.max_check_fail_count > 0 && total_check_fail_count > settings.max_check_fail_count )
                 break;
 
             assert( ctx.subcases.get_current_depth() == 0 );
