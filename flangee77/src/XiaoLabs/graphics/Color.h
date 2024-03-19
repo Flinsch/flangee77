@@ -64,7 +64,7 @@ private:
     // #############################################################################
 public:
     /**
-     * Default constructor.
+     * Default constructor. Initializes all to 0.
      */
     constexpr Color()
         : r( 0.0f )
