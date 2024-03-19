@@ -206,10 +206,10 @@ namespace images {
             switch ( pbk.pixel_format )
             {
             case PixelFormat::R16_FLOAT:
-                color.r = cl7::bits::half_to_float( ((int16_t*)ptr)[0] );
+                color.r = color.g = color.b = cl7::bits::half_to_float( ((int16_t*)ptr)[0] );
                 break;
             case PixelFormat::R32_FLOAT:
-                color.r = ((float*)ptr)[0];
+                color.r = color.g = color.b = ((float*)ptr)[0];
                 break;
             case PixelFormat::R16G16_FLOAT:
                 color.r = cl7::bits::half_to_float( ((int16_t*)ptr)[pbk.r.index] );
@@ -287,10 +287,25 @@ namespace images {
             assert( pbk.stride <= 4 );
             uint32_t value;
             ::memcpy( &value, ptr, static_cast<size_t>( pbk.stride ) );
-            color.r = cl7::bits::fixed_to_norm( (value & pbk.r.mask) >> pbk.r.offset, pbk.r.depth );
-            color.g = cl7::bits::fixed_to_norm( (value & pbk.g.mask) >> pbk.g.offset, pbk.g.depth );
-            color.b = cl7::bits::fixed_to_norm( (value & pbk.b.mask) >> pbk.b.offset, pbk.b.depth );
-            color.a = cl7::bits::fixed_to_norm( (value & pbk.a.mask) >> pbk.a.offset, pbk.a.depth );
+            if ( pbk.channel_count == 1 )
+            {
+                if ( pbk.a.depth > 0 )
+                {
+                    color.a = cl7::bits::fixed_to_norm( (value & pbk.a.mask) >> pbk.a.offset, pbk.a.depth );
+                }
+                else
+                {
+                    assert( pbk.r.depth > 0 );
+                    color.r = color.g = color.b = cl7::bits::fixed_to_norm( (value & pbk.r.mask) >> pbk.r.offset, pbk.r.depth );
+                }
+            }
+            else
+            {
+                if ( pbk.r.depth > 0 ) color.r = cl7::bits::fixed_to_norm( (value & pbk.r.mask) >> pbk.r.offset, pbk.r.depth );
+                if ( pbk.g.depth > 0 ) color.g = cl7::bits::fixed_to_norm( (value & pbk.g.mask) >> pbk.g.offset, pbk.g.depth );
+                if ( pbk.b.depth > 0 ) color.b = cl7::bits::fixed_to_norm( (value & pbk.b.mask) >> pbk.b.offset, pbk.b.depth );
+                if ( pbk.a.depth > 0 ) color.a = cl7::bits::fixed_to_norm( (value & pbk.a.mask) >> pbk.a.offset, pbk.a.depth );
+            }
         }
 
         return color;

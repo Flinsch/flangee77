@@ -420,7 +420,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
         xl7::graphics::PixelFormat pixel_format;
         xl7::graphics::ChannelOrder channel_order;
         cl7::byte_vector packed_data;
-    };
+    } entry, entry1, entry2;
 
     const std::vector<Entry> container {
         { xl7::graphics::PixelFormat::R8_UNORM, xl7::graphics::ChannelOrder::RGBA, cl7::make_bytes( 0x33 ) },
@@ -550,11 +550,13 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
     const xl7::graphics::Color entry_color( 0.2f, 0.4f, 0.6f, 0.8f );
 
     const xl7::graphics::Color image_colors[4] = {
-        { 1.0f, 0.25f, 0.125f, 0.5f },
-        { 0.125f, 1.0f, 0.25f, 0.5f },
-        { 0.25f, 0.125f, 1.0f, 0.5f },
-        { 0.75f, 0.75f, 0.125f, 0.5f },
+        { 0.9f, 0.3f, 0.1f, 0.5f },
+        { 0.1f, 0.9f, 0.3f, 0.5f },
+        { 0.3f, 0.1f, 0.9f, 0.5f },
+        { 0.75f, 0.75f, 0.25f, 0.5f },
     };
+
+    constexpr cl7::char_type rgbakeys[4] = { TEXT('R'), TEXT('G'), TEXT('B'), TEXT('A') };
 
     auto _precision = [](unsigned depth) -> unsigned {
         if ( depth <= 2 )
@@ -569,12 +571,8 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
             return 4;
     };
 
-    for ( size_t i = 0; i < container.size(); ++i )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("pack_color/unpack_color"), container, entry, cl7::to_string( entry.pixel_format ) + TEXT(" ") + cl7::to_string( entry.channel_order ) )
     {
-        const Entry& entry = container[ i ];
-
-        TESTLABS_SUBCASE_DATA_STRING( cl7::to_string( entry.pixel_format ) + TEXT(" ") + cl7::to_string( entry.channel_order ) );
-
         xl7::graphics::PixelBitKit pbk{ entry.pixel_format, entry.channel_order };
         size_t stride = static_cast<size_t>( pbk.stride );
 
@@ -596,10 +594,8 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
         }
     }
 
-    for ( size_t i = 0; i < container.size(); ++i )
+    TESTLABS_SUBCASE_BATCH( TEXT("pack_color/unpack_color"), container, entry1 )
     {
-        const Entry& entry1 = container[ i ];
-
         xl7::graphics::PixelBitKit pbk1{ entry1.pixel_format, entry1.channel_order };
         size_t stride1 = static_cast<size_t>( pbk1.stride );
 
@@ -611,10 +607,8 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
 
         xl7::graphics::images::Image source_image{ { entry1.pixel_format, entry1.channel_order, 2, 2, 1 }, source_data };
 
-        for ( size_t j = 0; j < container.size(); ++j )
+        TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("convert_image"), container, entry2, cl7::to_string( entry1.pixel_format ) + TEXT(" ") + cl7::to_string( entry1.channel_order ) + TEXT(" -> ") + cl7::to_string( entry2.pixel_format ) + TEXT(" ") + cl7::to_string( entry2.channel_order ) )
         {
-            const Entry& entry2 = container[ j ];
-
             xl7::graphics::PixelBitKit pbk2{ entry2.pixel_format, entry2.channel_order };
             size_t stride2 = static_cast<size_t>( pbk2.stride );
 
@@ -632,24 +626,79 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
             {
                 unsigned depth1 = pbk1.channels[ rgba ].depth;
                 unsigned depth2 = pbk2.channels[ rgba ].depth;
-                if ( !((depth1 && depth2) || ((depth1 || depth2) && pbk1.channel_count == 1 && pbk2.channel_count == 1)) )
-                    continue;
-
-                constexpr cl7::char_type rgbakeys[4] = { TEXT('R'), TEXT('G'), TEXT('B'), TEXT('A') };
 
                 TESTLABS_SUBCASE_DATA_STRING( cl7::to_string( entry1.pixel_format ) + TEXT(" ") + cl7::to_string( entry1.channel_order ) + TEXT(" -> ") + cl7::to_string( entry2.pixel_format ) + TEXT(" ") + cl7::to_string( entry2.channel_order ) + TEXT("  (") + rgbakeys[rgba] + TEXT(")") );
 
-                assert( depth1 || rgba == 0 || rgba == 3 );
-                assert( depth2 || rgba == 0 || rgba == 3 );
-                unsigned rgba1 = depth1 ? rgba : 3 - rgba;
-                unsigned rgba2 = depth2 ? rgba : 3 - rgba;
+                constexpr signed rgba_map[5][5][4] = {
+                    {
+                        { -1, -1, -1,  3 }, // A    -> A
+                        {  3,  3,  3, -1 }, // A    -> R
+                        {  3,  3, -1, -1 }, // A    -> RG
+                        {  3,  3,  3, -1 }, // A    -> RGB
+                        { -1, -1, -1,  3 }, // A    -> RGBA
+                    },
+                    {
+                        { -1, -1, -1,  0 }, // R    -> A
+                        {  0,  0,  0, -1 }, // R    -> R
+                        {  0,  0, -1, -1 }, // R    -> RG
+                        {  0,  0,  0, -1 }, // R    -> RGB
+                        {  0,  0,  0, -1 }, // R    -> RGBA
+                    },
+                    {
+                        { -1, -1, -1,  0 }, // RG   -> A
+                        {  0,  0,  0, -1 }, // RG   -> R
+                        {  0,  1, -1, -1 }, // RG   -> RG
+                        {  0,  1, -1, -1 }, // RG   -> RGB
+                        {  0,  1, -1, -1 }, // RG   -> RGBA
+                    },
+                    {
+                        { -1, -1, -1,  0 }, // RGB  -> A
+                        {  0,  0,  0, -1 }, // RGB  -> R
+                        {  0,  1, -1, -1 }, // RGB  -> RG
+                        {  0,  1,  2, -1 }, // RGB  -> RGB
+                        {  0,  1,  2, -1 }, // RGB  -> RGBA
+                    },
+                    {
+                        { -1, -1, -1,  3 }, // RGBA -> A
+                        {  0,  0,  0, -1 }, // RGBA -> R
+                        {  0,  1, -1, -1 }, // RGBA -> RG
+                        {  0,  1,  2, -1 }, // RGBA -> RGB
+                        {  0,  1,  2,  3 }, // RGBA -> RGBA
+                    },
+                };
 
-                unsigned prec = ml7::utilities::min2( _precision( depth1 ), _precision( depth2 ) );
+                auto _from_to = [](const xl7::graphics::PixelBitKit& pbk) -> unsigned {
+                    if ( pbk.channel_count == 1 && pbk.a.depth )
+                        return 0;
+                    return pbk.channel_count;
+                };
 
-                TESTLABS_CHECK_EQ( ml7::utilities::round( colors[0][rgba2], prec ), ml7::utilities::round( image_colors[0][rgba1], prec ) );
-                TESTLABS_CHECK_EQ( ml7::utilities::round( colors[1][rgba2], prec ), ml7::utilities::round( image_colors[1][rgba1], prec ) );
-                TESTLABS_CHECK_EQ( ml7::utilities::round( colors[2][rgba2], prec ), ml7::utilities::round( image_colors[2][rgba1], prec ) );
-                TESTLABS_CHECK_EQ( ml7::utilities::round( colors[3][rgba2], prec ), ml7::utilities::round( image_colors[3][rgba1], prec ) );
+                signed mapped_rgba = rgba_map[ _from_to(pbk1) ][ _from_to(pbk2) ][ rgba ];
+                if ( mapped_rgba < 0 )
+                {
+                    TESTLABS_CHECK_EQ( colors[0][rgba], xl7::graphics::Color::BLACK[rgba] );
+                    TESTLABS_CHECK_EQ( colors[1][rgba], xl7::graphics::Color::BLACK[rgba] );
+                    TESTLABS_CHECK_EQ( colors[2][rgba], xl7::graphics::Color::BLACK[rgba] );
+                    TESTLABS_CHECK_EQ( colors[3][rgba], xl7::graphics::Color::BLACK[rgba] );
+                }
+                else
+                {
+                    unsigned rgba_ = static_cast<unsigned>( mapped_rgba );
+                    assert( rgba_ < 4 );
+
+                    if ( rgba_ != rgba )
+                        TESTLABS_SUBCASE_DATA_STRING( cl7::to_string( entry1.pixel_format ) + TEXT(" ") + cl7::to_string( entry1.channel_order ) + TEXT(" -> ") + cl7::to_string( entry2.pixel_format ) + TEXT(" ") + cl7::to_string( entry2.channel_order ) + TEXT("  (") + rgbakeys[rgba_] + TEXT(" -> ") + rgbakeys[rgba] + TEXT(")") );
+
+                    depth1 = pbk1.channels[ rgba_ ].depth;
+                    assert( depth1 );
+
+                    unsigned prec = ml7::utilities::min2( _precision( depth1 ), _precision( depth2 ) );
+
+                    TESTLABS_CHECK_EQ( ml7::utilities::round( colors[0][rgba], prec ), ml7::utilities::round( image_colors[0][rgba_], prec ) );
+                    TESTLABS_CHECK_EQ( ml7::utilities::round( colors[1][rgba], prec ), ml7::utilities::round( image_colors[1][rgba_], prec ) );
+                    TESTLABS_CHECK_EQ( ml7::utilities::round( colors[2][rgba], prec ), ml7::utilities::round( image_colors[2][rgba_], prec ) );
+                    TESTLABS_CHECK_EQ( ml7::utilities::round( colors[3][rgba], prec ), ml7::utilities::round( image_colors[3][rgba_], prec ) );
+                }
             }
         }
     }

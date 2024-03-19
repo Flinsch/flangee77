@@ -34,6 +34,15 @@ namespace tl7 {
 class TestSuite
 {
 
+public:
+    struct Settings
+    {
+        /** The maximum tolerated number of failed checks (0: no limit). If it is exceeded between two (sub)cases, test execution will not continue. */
+        unsigned max_check_fail_count = 0;
+    };
+
+
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
@@ -71,6 +80,12 @@ public:
     // #############################################################################
     // Attributes
     // #############################################################################
+public:
+    /**
+     * The settings.
+     */
+    Settings settings;
+
 private:
     /**
      * The registered test cases.
