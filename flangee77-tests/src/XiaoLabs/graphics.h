@@ -5,6 +5,7 @@
 #include <XiaoLabs/graphics/Color.h>
 #include <XiaoLabs/graphics/PixelBitKit.h>
 #include <XiaoLabs/graphics/images/ImageConverter.h>
+#include <XiaoLabs/graphics/images/ImageResizer.h>
 #include <XiaoLabs/graphics/impl/shared/shaders/D3DShaderCompiler.h>
 
 #include <CoreLabs/filesystem.h>
@@ -172,7 +173,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  PixelBitKit") )
 {
     // This is just so that we notice when a value is inserted or removed
     // and then we should also adjust the tests accordingly.
-    TESTLABS_CHECK_EQ( static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ), 53 );
+    TESTLABS_ASSERT_EQ( static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ), 53 );
 
 
     TESTLABS_SUBCASE( TEXT("data type") )
@@ -413,14 +414,19 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  PixelBitKit") )
 
 
 
-TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
+TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageProcessor") )
 {
+    // This is just so that we notice when a value is inserted or removed
+    // and then we should also adjust the tests accordingly.
+    TESTLABS_ASSERT_EQ( static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ), 53 );
+
+
     struct Entry
     {
         xl7::graphics::PixelFormat pixel_format;
         xl7::graphics::ChannelOrder channel_order;
         cl7::byte_vector packed_data;
-    } entry, entry1, entry2;
+    } entry;
 
     const std::vector<Entry> container {
         { xl7::graphics::PixelFormat::R8_UNORM, xl7::graphics::ChannelOrder::RGBA, cl7::make_bytes( 0x33 ) },
@@ -549,12 +555,74 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
 
     const xl7::graphics::Color entry_color( 0.2f, 0.4f, 0.6f, 0.8f );
 
+
+    auto _precision = [](unsigned depth) -> unsigned {
+        if ( depth <= 2 )
+            return 0;
+        if ( depth <= 6 )
+            return 1;
+        if ( depth <= 10 )
+            return 2;
+        if ( depth <= 16 )
+            return 3;
+        // => depth > 16
+            return 4;
+    };
+
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("pack_color/unpack_color"), container, entry, cl7::to_string( entry.pixel_format ) + TEXT(" ") + cl7::to_string( entry.channel_order ) )
+    {
+        xl7::graphics::PixelBitKit pbk{ entry.pixel_format, entry.channel_order };
+        size_t stride = static_cast<size_t>( pbk.stride );
+
+        cl7::byte_vector packed_data{ stride };
+        xl7::graphics::images::ImageProcessor::pack_color( entry_color, entry.pixel_format, entry.channel_order, packed_data );
+        xl7::graphics::Color color = xl7::graphics::images::ImageProcessor::unpack_color( entry.packed_data, entry.pixel_format, entry.channel_order );
+
+        TESTLABS_CHECK_EQ( packed_data, entry.packed_data );
+
+        for ( unsigned rgba = 0; rgba < 4; ++rgba )
+        {
+            unsigned depth = pbk.channels[ rgba ].depth;
+            if ( !depth )
+                continue;
+
+            unsigned prec = _precision( depth );
+
+            TESTLABS_CHECK_EQ( ml7::utilities::round( color[rgba], prec ), ml7::utilities::round( entry_color[rgba], prec ) );
+        }
+    }
+}
+
+TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
+{
+    // This is just so that we notice when a value is inserted or removed
+    // and then we should also adjust the tests accordingly.
+    TESTLABS_ASSERT_EQ( static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ), 53 );
+
+
+    struct Entry
+    {
+        xl7::graphics::PixelFormat pixel_format;
+        xl7::graphics::ChannelOrder channel_order;
+    } entry1, entry2;
+
+    std::vector<Entry> container;
+    for ( unsigned pixel_format = 1; pixel_format <= static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ); ++pixel_format )
+    {
+        if ( xl7::graphics::PixelFormat( pixel_format ) == xl7::graphics::PixelFormat::R11G11B10_FLOAT )
+            continue;
+        for ( unsigned channel_order = 0; channel_order < 4; ++channel_order )
+            container.push_back( { xl7::graphics::PixelFormat( pixel_format ), xl7::graphics::ChannelOrder( channel_order ) } );
+    }
+
     const xl7::graphics::Color image_colors[4] = {
         { 0.9f, 0.3f, 0.1f, 0.5f },
         { 0.1f, 0.9f, 0.3f, 0.5f },
         { 0.3f, 0.1f, 0.9f, 0.5f },
         { 0.75f, 0.75f, 0.25f, 0.5f },
     };
+
 
     constexpr cl7::char_type rgbakeys[4] = { TEXT('R'), TEXT('G'), TEXT('B'), TEXT('A') };
 
@@ -571,30 +639,8 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
             return 4;
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("pack_color/unpack_color"), container, entry, cl7::to_string( entry.pixel_format ) + TEXT(" ") + cl7::to_string( entry.channel_order ) )
-    {
-        xl7::graphics::PixelBitKit pbk{ entry.pixel_format, entry.channel_order };
-        size_t stride = static_cast<size_t>( pbk.stride );
 
-        cl7::byte_vector packed_data{ stride };
-        xl7::graphics::images::ImageConverter::pack_color( entry_color, entry.pixel_format, entry.channel_order, packed_data );
-        xl7::graphics::Color color = xl7::graphics::images::ImageConverter::unpack_color( entry.packed_data, entry.pixel_format, entry.channel_order );
-
-        TESTLABS_CHECK_EQ( packed_data, entry.packed_data );
-
-        for ( unsigned rgba = 0; rgba < 4; ++rgba )
-        {
-            unsigned depth = pbk.channels[ rgba ].depth;
-            if ( !depth )
-                continue;
-
-            unsigned prec = _precision( depth );
-
-            TESTLABS_CHECK_EQ( ml7::utilities::round( color[rgba], prec ), ml7::utilities::round( entry_color[rgba], prec ) );
-        }
-    }
-
-    TESTLABS_SUBCASE_BATCH( TEXT("pack_color/unpack_color"), container, entry1 )
+    TESTLABS_SUBCASE_BATCH( TEXT("convert_image"), container, entry1 )
     {
         xl7::graphics::PixelBitKit pbk1{ entry1.pixel_format, entry1.channel_order };
         size_t stride1 = static_cast<size_t>( pbk1.stride );
@@ -607,12 +653,24 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
 
         xl7::graphics::images::Image source_image{ { entry1.pixel_format, entry1.channel_order, 2, 2, 1 }, source_data };
 
+        TESTLABS_ASSERT_EQ( source_image.get_data().size(), 4 * stride1 );
+
         TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("convert_image"), container, entry2, cl7::to_string( entry1.pixel_format ) + TEXT(" ") + cl7::to_string( entry1.channel_order ) + TEXT(" -> ") + cl7::to_string( entry2.pixel_format ) + TEXT(" ") + cl7::to_string( entry2.channel_order ) )
         {
             xl7::graphics::PixelBitKit pbk2{ entry2.pixel_format, entry2.channel_order };
             size_t stride2 = static_cast<size_t>( pbk2.stride );
 
             xl7::graphics::images::Image target_image = xl7::graphics::images::ImageConverter::convert_image( source_image, entry2.pixel_format, entry2.channel_order );
+
+            TESTLABS_CHECK( target_image.get_pixel_format() == entry2.pixel_format );
+            TESTLABS_CHECK( target_image.get_channel_order() == entry2.channel_order );
+            TESTLABS_CHECK_EQ( target_image.get_width(), 2 );
+            TESTLABS_CHECK_EQ( target_image.get_height(), 2 );
+            TESTLABS_CHECK_EQ( target_image.get_depth(), 1 );
+
+            TESTLABS_CHECK_EQ( target_image.get_data().size(), target_image.get_desc().calculate_data_size() );
+
+            TESTLABS_ASSERT_EQ( target_image.get_data().size(), 4 * stride2 );
 
             const cl7::byte_vector& target_data = target_image.get_data();
             xl7::graphics::Color colors[4] = {
@@ -700,6 +758,93 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
                     TESTLABS_CHECK_EQ( ml7::utilities::round( colors[3][rgba], prec ), ml7::utilities::round( image_colors[3][rgba_], prec ) );
                 }
             }
+        }
+    }
+}
+
+TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageResizer") )
+{
+    struct Entry
+    {
+        xl7::graphics::PixelFormat pixel_format;
+
+        unsigned source_width, source_height, source_depth;
+        unsigned target_width, target_height, target_depth;
+
+        xl7::graphics::images::ImageResizer::ResamplingMethod resampling_method;
+
+        cl7::byte_vector source_data;
+        cl7::byte_vector target_data;
+    } entry;
+
+    const std::vector<Entry> container = {
+        { xl7::graphics::PixelFormat::R8_UNORM,  1, 1, 1,  1, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 0x7f ),  cl7::make_bytes( 0x7f ) },
+
+
+        { xl7::graphics::PixelFormat::R8_UNORM,  3, 3, 3,  1, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 1,2,3, 4,5,6, 7,8,9,  10,11,12, 13,14,15, 16,17,18,  19,20,21, 22,23,24, 25,26,27 ),  cl7::make_bytes( 14 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  3, 3, 3,  3, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 1,2,3, 4,5,6, 7,8,9,  10,11,12, 13,14,15, 16,17,18,  19,20,21, 22,23,24, 25,26,27 ),  cl7::make_bytes( 13,14,15 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  3, 3, 3,  1, 3, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 1,2,3, 4,5,6, 7,8,9,  10,11,12, 13,14,15, 16,17,18,  19,20,21, 22,23,24, 25,26,27 ),  cl7::make_bytes( 11,14,17 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  3, 3, 3,  1, 1, 3,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 1,2,3, 4,5,6, 7,8,9,  10,11,12, 13,14,15, 16,17,18,  19,20,21, 22,23,24, 25,26,27 ),  cl7::make_bytes( 5,14,23 ) },
+
+        { xl7::graphics::PixelFormat::R8_UNORM,  1, 1, 1,  3, 3, 3,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 14 ),        cl7::make_bytes( 14,14,14, 14,14,14, 14,14,14,  14,14,14, 14,14,14, 14,14,14,  14,14,14, 14,14,14, 14,14,14 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  3, 1, 1,  3, 3, 3,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 13,14,15 ),  cl7::make_bytes( 13,14,15, 13,14,15, 13,14,15,  13,14,15, 13,14,15, 13,14,15,  13,14,15, 13,14,15, 13,14,15 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  1, 3, 1,  3, 3, 3,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 11,14,17 ),  cl7::make_bytes( 11,11,11, 14,14,14, 17,17,17,  11,11,11, 14,14,14, 17,17,17,  11,11,11, 14,14,14, 17,17,17 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  1, 1, 3,  3, 3, 3,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 5,14,23 ),   cl7::make_bytes( 5,5,5, 5,5,5, 5,5,5,  14,14,14, 14,14,14, 14,14,14,  23,23,23, 23,23,23, 23,23,23 ) },
+
+
+        { xl7::graphics::PixelFormat::R8_UNORM,  4, 1, 1,  2, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 1,2,3,4 ),  cl7::make_bytes( 2,4 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  2, 2, 1,  1, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 1,2, 3,4 ),  cl7::make_bytes( 3 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  2, 2, 2,  1, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 1,2, 3,4,  5,6, 7,8 ),  cl7::make_bytes( 5 ) },
+
+
+        { xl7::graphics::PixelFormat::R32_FLOAT,  1, 1, 1,  2, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x80,0x3f ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  2, 1, 1,  1, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x80,0x3f ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  2, 1, 1,  3, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40 ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0xc0,0x3f, 0x00,0x00,0x00,0x40 ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  3, 1, 1,  2, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x40,0x40 ),  cl7::make_bytes( 0xab,0xaa,0xaa,0x3f, 0xab,0xaa,0x2a,0x40 ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  2, 1, 1,  4, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40 ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x00,0x40 ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  4, 1, 1,  2, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x40,0x40, 0x00,0x00,0x80,0x40 ),  cl7::make_bytes( 0x00,0x00,0xc0,0x3f, 0x00,0x00,0x60,0x40 ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  2, 1, 1,  5, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40 ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x80,0x3f, 0x00,0x00,0xc0,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x00,0x40 ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  5, 1, 1,  2, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x40,0x40, 0x00,0x00,0x80,0x40, 0x00,0x00,0xa0,0x40 ),  cl7::make_bytes( 0x66,0x66,0xe6,0x3f, 0x66,0x66,0x86,0x40 ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  2, 2, 1,  3, 3, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40,  0x00,0x00,0x40,0x40, 0x00,0x00,0x80,0x40 ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0xc0,0x3f, 0x00,0x00,0x00,0x40,  0x00,0x00,0x00,0x40, 0x00,0x00,0x20,0x40, 0x00,0x00,0x40,0x40,  0x00,0x00,0x40,0x40, 0x00,0x00,0x60,0x40, 0x00,0x00,0x80,0x40 ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  3, 3, 1,  2, 2, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x40,0x40,  0x00,0x00,0x80,0x40, 0x00,0x00,0xa0,0x40, 0x00,0x00,0xc0,0x40,  0x00,0x00,0xe0,0x40, 0x00,0x00,0x00,0x41, 0x00,0x00,0x10,0x41 ),  cl7::make_bytes( 0x55,0x55,0x15,0x40, 0xab,0xaa,0x6a,0x40,  0xab,0xaa,0xca,0x40, 0x55,0x55,0xf5,0x40 ) },
+    };
+
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("resize_image"), container, entry, cl7::to_string( entry.pixel_format ) + TEXT(" ") + cl7::to_string(entry.source_width) + TEXT("x") + cl7::to_string(entry.source_height) + TEXT("x") + cl7::to_string(entry.source_depth) + TEXT(" -> ") + cl7::to_string(entry.target_width) + TEXT("x") + cl7::to_string(entry.target_height) + TEXT("x") + cl7::to_string(entry.target_depth) )
+    {
+        xl7::graphics::PixelBitKit pbk{ entry.pixel_format, xl7::graphics::ChannelOrder::RGBA };
+        size_t stride = static_cast<size_t>( pbk.stride );
+
+        xl7::graphics::images::Image source_image{ { entry.pixel_format, xl7::graphics::ChannelOrder::RGBA, entry.source_width, entry.source_height, entry.source_depth }, entry.source_data };
+
+        TESTLABS_CHECK_EQ( source_image.get_data().size(), source_image.get_desc().calculate_data_size() );
+
+        TESTLABS_ASSERT_EQ( source_image.get_data().size(), entry.source_data.size() );
+
+        xl7::graphics::images::Image target_image = xl7::graphics::images::ImageResizer::resize_image( source_image, entry.target_width, entry.target_height, entry.target_depth, entry.resampling_method );
+
+        TESTLABS_CHECK( target_image.get_pixel_format() == entry.pixel_format );
+        TESTLABS_CHECK( target_image.get_channel_order() == xl7::graphics::ChannelOrder::RGBA );
+        TESTLABS_CHECK_EQ( target_image.get_width(), entry.target_width );
+        TESTLABS_CHECK_EQ( target_image.get_height(), entry.target_height );
+        TESTLABS_CHECK_EQ( target_image.get_depth(), entry.target_depth );
+
+        TESTLABS_CHECK_EQ( target_image.get_data().size(), target_image.get_desc().calculate_data_size() );
+
+        TESTLABS_ASSERT_EQ( target_image.get_data().size(), entry.target_data.size() );
+
+        if ( pbk.data_type == xl7::graphics::PixelBitKit::DataType::FLOAT )
+        {
+            for ( size_t i = 0; i < target_image.get_data().size(); i += pbk.stride )
+            {
+                assert( i % sizeof(float) == 0 );
+                size_t j = i / sizeof(float);
+                TESTLABS_CHECK_EQ( ml7::utilities::round( ((const float*)target_image.get_data().data())[ j ], 4 ), ml7::utilities::round( ((const float*)entry.target_data.data())[ j ], 4 ) );
+            }
+        }
+        else
+        {
+            TESTLABS_CHECK_EQ( target_image.get_data(), entry.target_data );
         }
     }
 }
