@@ -40,7 +40,7 @@ namespace images {
     // #############################################################################
 
     /**
-     * Default constructor.
+     * Default constructor. Initializes an "empty" image.
      */
     Image::Image()
         : _desc( { PixelFormat::UNKNOWN, ChannelOrder::RGBA, 0, 0, 0 } )
@@ -50,7 +50,7 @@ namespace images {
     }
 
     /**
-     * Explicit constructor.
+     * Explicit constructor. Initializes an "empty" image.
      */
     Image::Image(const Desc& desc)
         : Image()
@@ -59,9 +59,9 @@ namespace images {
     }
 
     /**
-     * Explicit constructor. If view_only is true, no data will be copied; the data
-     * view of the image then points to the specified data view, which accordingly
-     * should outlive the image's lifetime.
+     * Explicit constructor. If view_only is set to true, no data will be duplicated;
+     * instead, the image's data view will point to the specified data view, which
+     * accordingly should persist beyond the lifetime of the image.
      */
     Image::Image(const Desc& desc, cl7::byte_view data, bool view_only)
         : Image()
@@ -79,6 +79,26 @@ namespace images {
     }
 
     /**
+     * Copy constructor. Creates a buffer and duplicates the data regardless of
+     * whether the other image is "view only".
+     */
+    Image::Image(const Image& rhs)
+        : Image()
+    {
+        *this = rhs;
+    }
+
+    /**
+     * Copy assignment operator. Creates a buffer and duplicates the data regardless
+     * of whether the other image is "view only".
+     */
+    Image& Image::operator = (const Image& rhs)
+    {
+        init( rhs._desc, rhs._data_view, false );
+        return *this;
+    }
+
+    /**
      * Swap operation.
      */
     void Image::swap(Image& rhs)
@@ -89,14 +109,14 @@ namespace images {
     }
 
     /**
-     * Swap operation. The image's data is effectively "exported" and then remains
-     * undefined.
+     * Special swap operation. The image's data is essentially "exported" and then
+     * remains undefined.
      */
     void Image::swap(cl7::byte_vector& data)
     {
         // If our buffer is empty ("view only"),
         // fill it now with the "viewed" data.
-        if ( _data_buffer.empty() )
+        if ( _data_buffer.empty() && _data_view.size() )
             _data_buffer = { _data_view.data(), _data_view.data() + _data_view.size() };
 
         // "Export" the data.
@@ -131,9 +151,10 @@ namespace images {
     }
 
     /**
-     * (Re)initializes the image based on the given data. If view_only is true, no
-     * data will be copied; the data view of the image then points to the specified
-     * data view, which accordingly should outlive the image's lifetime.
+     * (Re)initializes the image based on the given data. If view_only is set to
+     * true, no data will be duplicated; instead, the image's data view will point
+     * to the specified data view, which accordingly should persist beyond the
+     * lifetime of the image.
      */
     bool Image::init(const Desc& desc, cl7::byte_view data, bool view_only)
     {
@@ -152,10 +173,11 @@ namespace images {
         else
         {
             // Allocate buffer,
-            // copy data,
+            // copy data (unless empty),
             // and "view" our new buffer.
             _data_buffer.resize( data.size() );
-            ::memcpy( &_data_buffer[0], &data[0], data.size() );
+            if ( data.size() )
+                ::memcpy( &_data_buffer[0], &data[0], data.size() );
             _data_view = _data_buffer;
         }
 

@@ -53,19 +53,19 @@ public:
     // #############################################################################
 public:
     /**
-     * Default constructor.
+     * Default constructor. Initializes an "empty" image.
      */
     Image();
 
     /**
-     * Explicit constructor.
+     * Explicit constructor. Initializes an "empty" image.
      */
     explicit Image(const Desc& desc);
 
     /**
-     * Explicit constructor. If view_only is true, no data will be copied; the data
-     * view of the image then points to the specified data view, which accordingly
-     * should outlive the image's lifetime.
+     * Explicit constructor. If view_only is set to true, no data will be duplicated;
+     * instead, the image's data view will point to the specified data view, which
+     * accordingly should persist beyond the lifetime of the image.
      */
     Image(const Desc& desc, cl7::byte_view data, bool view_only = false);
 
@@ -75,13 +75,25 @@ public:
     Image(const Desc& desc, cl7::byte_vector&& data);
 
     /**
+     * Copy constructor. Creates a buffer and duplicates the data regardless of
+     * whether the other image is "view only".
+     */
+    Image(const Image& rhs);
+
+    /**
+     * Copy assignment operator. Creates a buffer and duplicates the data regardless
+     * of whether the other image is "view only".
+     */
+    Image& operator = (const Image& rhs);
+
+    /**
      * Swap operation.
      */
     void swap(Image& rhs);
 
     /**
-     * Swap operation. The image's data is effectively "exported" and then remains
-     * undefined.
+     * Special swap operation. The image's data is essentially "exported" and then
+     * remains undefined.
      */
     void swap(cl7::byte_vector& data);
 
@@ -159,9 +171,10 @@ public:
     bool init(const Desc& desc);
 
     /**
-     * (Re)initializes the image based on the given data. If view_only is true, no
-     * data will be copied; the data view of the image then points to the specified
-     * data view, which accordingly should outlive the image's lifetime.
+     * (Re)initializes the image based on the given data. If view_only is set to
+     * true, no data will be duplicated; instead, the image's data view will point
+     * to the specified data view, which accordingly should persist beyond the
+     * lifetime of the image.
      */
     bool init(const Desc& desc, cl7::byte_view data, bool view_only = false);
 
