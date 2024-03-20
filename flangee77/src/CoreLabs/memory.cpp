@@ -18,7 +18,7 @@ namespace memory {
     /**
      * 
      */
-    cl7::string stringify_byte_amount_si(const unsigned long long bytes, const cl7::string_view& zero_string)
+    cl7::string stringify_byte_amount_si(const unsigned long long bytes, cl7::string_view zero_string)
     {
         if ( !bytes )
             return cl7::string(zero_string);
@@ -46,7 +46,7 @@ namespace memory {
     /**
      * 
      */
-    cl7::string stringify_byte_amount_binary(const unsigned long long bytes, const cl7::string_view& zero_string)
+    cl7::string stringify_byte_amount_binary(const unsigned long long bytes, cl7::string_view zero_string)
     {
         if ( !bytes )
             return cl7::string(zero_string);

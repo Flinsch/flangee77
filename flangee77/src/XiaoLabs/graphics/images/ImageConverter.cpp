@@ -70,7 +70,7 @@ namespace images {
             return Image( target_desc, source_image.get_data() );
         }
 
-        const cl7::byte_vector& source_data = source_image.get_data();
+        cl7::byte_view source_data = source_image.get_data();
         cl7::byte_vector target_data;
 
         const size_t source_stride = static_cast<size_t>( source_pbk.stride );

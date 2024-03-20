@@ -44,7 +44,8 @@ namespace images {
      */
     Image::Image()
         : _desc( { PixelFormat::UNKNOWN, ChannelOrder::RGBA, 0, 0, 0 } )
-        , _data()
+        , _data_view()
+        , _data_buffer()
     {
     }
 
@@ -58,12 +59,14 @@ namespace images {
     }
 
     /**
-     * Explicit constructor.
+     * Explicit constructor. If view_only is true, no data will be copied; the data
+     * view of the image then points to the specified data view, which accordingly
+     * should outlive the image's lifetime.
      */
-    Image::Image(const Desc& desc, cl7::byte_view data)
+    Image::Image(const Desc& desc, cl7::byte_view data, bool view_only)
         : Image()
     {
-        init( desc, data );
+        init( desc, data, view_only );
     }
 
     /**
@@ -81,7 +84,8 @@ namespace images {
     void Image::swap(Image& rhs)
     {
         std::swap( _desc, rhs._desc );
-        _data.swap( rhs._data );
+        std::swap( _data_view, rhs._data_view );
+        _data_buffer.swap( rhs._data_buffer );
     }
 
     /**
@@ -90,9 +94,21 @@ namespace images {
      */
     void Image::swap(cl7::byte_vector& data)
     {
-        _data.swap( data );
-        if ( !_data.empty() )
-            _data.resize( _desc.calculate_data_size() );
+        // If our buffer is empty ("view only"),
+        // fill it now with the "viewed" data.
+        if ( _data_buffer.empty() )
+            _data_buffer = { _data_view.data(), _data_view.data() + _data_view.size() };
+
+        // "Export" the data.
+        _data_buffer.swap( data );
+
+        // Our "new" buffer should either be
+        // empty or of the appropriate size.
+        if ( !_data_buffer.empty() )
+            _data_buffer.resize( _desc.calculate_data_size() );
+
+        // "View" our "new" buffer.
+        _data_view = _data_buffer;
     }
 
 
@@ -108,23 +124,40 @@ namespace images {
     {
         _desc = desc;
 
-        _data.clear();
+        _data_view = {};
+        _data_buffer.clear();
 
         return true;
     }
 
     /**
-     * (Re)initializes the image based on the given data.
+     * (Re)initializes the image based on the given data. If view_only is true, no
+     * data will be copied; the data view of the image then points to the specified
+     * data view, which accordingly should outlive the image's lifetime.
      */
-    bool Image::init(const Desc& desc, cl7::byte_view data)
+    bool Image::init(const Desc& desc, cl7::byte_view data, bool view_only)
     {
         if ( !_validate( desc, data ) )
             return false;
 
         _desc = desc;
 
-        _data.resize( data.size() );
-        ::memcpy( &_data[0], &data[0], data.size() );
+        if ( view_only )
+        {
+            // Just adopt the specified data view.
+            // No own buffer required.
+            _data_view = data;
+            _data_buffer.clear();
+        }
+        else
+        {
+            // Allocate buffer,
+            // copy data,
+            // and "view" our new buffer.
+            _data_buffer.resize( data.size() );
+            ::memcpy( &_data_buffer[0], &data[0], data.size() );
+            _data_view = _data_buffer;
+        }
 
         return true;
     }
@@ -139,7 +172,10 @@ namespace images {
 
         _desc = desc;
 
-        _data.swap( data );
+        // Swap data buffers and
+        // "view" our new buffer.
+        _data_buffer.swap( data );
+        _data_view = _data_buffer;
 
         return true;
     }

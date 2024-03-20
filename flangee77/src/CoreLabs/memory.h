@@ -18,12 +18,12 @@ namespace memory {
     /**
      * 
      */
-    cl7::string stringify_byte_amount_si(const unsigned long long bytes, const cl7::string_view& zero_string = TEXT("0 MB"));
+    cl7::string stringify_byte_amount_si(const unsigned long long bytes, cl7::string_view zero_string = TEXT("0 MB"));
 
     /**
      * 
      */
-    cl7::string stringify_byte_amount_binary(const unsigned long long bytes, const cl7::string_view& zero_string = TEXT("0 MiB"));
+    cl7::string stringify_byte_amount_binary(const unsigned long long bytes, cl7::string_view zero_string = TEXT("0 MiB"));
 
     /**
      * 

@@ -651,7 +651,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
         xl7::graphics::images::ImageConverter::pack_color( image_colors[2], entry1.pixel_format, entry1.channel_order, { source_data.data() + stride1 * 2, stride1 } );
         xl7::graphics::images::ImageConverter::pack_color( image_colors[3], entry1.pixel_format, entry1.channel_order, { source_data.data() + stride1 * 3, stride1 } );
 
-        xl7::graphics::images::Image source_image{ { entry1.pixel_format, entry1.channel_order, 2, 2, 1 }, source_data };
+        xl7::graphics::images::Image source_image{ { entry1.pixel_format, entry1.channel_order, 2, 2, 1 }, source_data, true };
 
         TESTLABS_ASSERT_EQ( source_image.get_data().size(), 4 * stride1 );
 
@@ -672,7 +672,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
 
             TESTLABS_ASSERT_EQ( target_image.get_data().size(), 4 * stride2 );
 
-            const cl7::byte_vector& target_data = target_image.get_data();
+            const auto& target_data = target_image.get_data();
             xl7::graphics::Color colors[4] = {
                 xl7::graphics::images::ImageConverter::unpack_color( { target_data.data() + stride2 * 0, stride2 }, entry2.pixel_format, entry2.channel_order ),
                 xl7::graphics::images::ImageConverter::unpack_color( { target_data.data() + stride2 * 1, stride2 }, entry2.pixel_format, entry2.channel_order ),
@@ -815,7 +815,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageResizer") )
         xl7::graphics::PixelBitKit pbk{ entry.pixel_format, xl7::graphics::ChannelOrder::RGBA };
         size_t stride = static_cast<size_t>( pbk.stride );
 
-        xl7::graphics::images::Image source_image{ { entry.pixel_format, xl7::graphics::ChannelOrder::RGBA, entry.source_width, entry.source_height, entry.source_depth }, entry.source_data };
+        xl7::graphics::images::Image source_image{ { entry.pixel_format, xl7::graphics::ChannelOrder::RGBA, entry.source_width, entry.source_height, entry.source_depth }, entry.source_data, true };
 
         TESTLABS_CHECK_EQ( source_image.get_data().size(), source_image.get_desc().calculate_data_size() );
 
@@ -844,7 +844,9 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageResizer") )
         }
         else
         {
-            TESTLABS_CHECK_EQ( target_image.get_data(), entry.target_data );
+            cl7::byte_vector target_image_data{ target_image.get_data().data(), target_image.get_data().data() + target_image.get_data().size() };
+
+            TESTLABS_CHECK_EQ( target_image_data, entry.target_data );
         }
     }
 }

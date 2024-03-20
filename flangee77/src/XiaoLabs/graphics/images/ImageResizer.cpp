@@ -23,7 +23,7 @@ namespace images {
         const size_t target_height = static_cast<size_t>( height );
         const size_t target_depth = static_cast<size_t>( depth );
 
-        const cl7::byte_vector& source_data = source_image.get_data();
+        cl7::byte_view source_data = source_image.get_data();
         assert( source_data.size() == source_width * source_height * source_depth * stride );
         cl7::byte_vector target_data( target_width * target_height * target_depth * stride );
 
@@ -86,7 +86,7 @@ namespace images {
         const size_t target_height = 1;
         const size_t target_depth = 1;
 
-        const cl7::byte_vector& source_data = source_image.get_data();
+        cl7::byte_view source_data = source_image.get_data();
         assert( source_data.size() == source_width * source_height * source_depth * stride );
         cl7::byte_vector target_data( target_width * target_height * target_depth * stride );
 
@@ -125,7 +125,7 @@ namespace images {
         const size_t target_height = static_cast<size_t>( source_height / 2 );
         const size_t target_depth = 1;
 
-        const cl7::byte_vector& source_data = source_image.get_data();
+        cl7::byte_view source_data = source_image.get_data();
         assert( source_data.size() == source_width * source_height * source_depth * stride );
         cl7::byte_vector target_data( target_width * target_height * target_depth * stride );
 
@@ -172,7 +172,7 @@ namespace images {
         const size_t target_height = static_cast<size_t>( source_height / 2 );
         const size_t target_depth = static_cast<size_t>( source_depth / 2 );
 
-        const cl7::byte_vector& source_data = source_image.get_data();
+        cl7::byte_view source_data = source_image.get_data();
         assert( source_data.size() == source_width * source_height * source_depth * stride );
         cl7::byte_vector target_data( target_width * target_height * target_depth * stride );
 
@@ -228,7 +228,7 @@ namespace images {
         const size_t target_height = static_cast<size_t>( height );
         const size_t target_depth = static_cast<size_t>( depth );
 
-        const cl7::byte_vector& source_data = source_image.get_data();
+        cl7::byte_view source_data = source_image.get_data();
         assert( source_data.size() == source_width * source_height * source_depth * stride );
         cl7::byte_vector target_data( target_width * target_height * target_depth * stride );
 

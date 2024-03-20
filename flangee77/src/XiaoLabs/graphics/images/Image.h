@@ -63,9 +63,11 @@ public:
     explicit Image(const Desc& desc);
 
     /**
-     * Explicit constructor.
+     * Explicit constructor. If view_only is true, no data will be copied; the data
+     * view of the image then points to the specified data view, which accordingly
+     * should outlive the image's lifetime.
      */
-    Image(const Desc& desc, cl7::byte_view data);
+    Image(const Desc& desc, cl7::byte_view data, bool view_only = false);
 
     /**
      * Explicit constructor.
@@ -95,9 +97,14 @@ private:
     Desc _desc;
 
     /**
-     * The image data.
+     * The image data view.
      */
-    cl7::byte_vector _data;
+    cl7::byte_view _data_view;
+
+    /**
+     * The image data buffer (or empty if "view only").
+     */
+    cl7::byte_vector _data_buffer;
 
 
 
@@ -138,7 +145,7 @@ public:
     /**
      * Returns the image data.
      */
-    const cl7::byte_vector& get_data() const { return _data; }
+    cl7::byte_view get_data() const { return _data_view; }
 
 
 
@@ -152,9 +159,11 @@ public:
     bool init(const Desc& desc);
 
     /**
-     * (Re)initializes the image based on the given data.
+     * (Re)initializes the image based on the given data. If view_only is true, no
+     * data will be copied; the data view of the image then points to the specified
+     * data view, which accordingly should outlive the image's lifetime.
      */
-    bool init(const Desc& desc, cl7::byte_view data);
+    bool init(const Desc& desc, cl7::byte_view data, bool view_only = false);
 
     /**
      * (Re)initializes the image based on the given data.
