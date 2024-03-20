@@ -244,12 +244,9 @@ namespace images {
         const float new_height_f = static_cast<float>( target_height );
         const float new_depth_f = static_cast<float>( target_depth );
 
-        const float sx = new_width_f / old_width_f;
-        const float sy = new_height_f / old_height_f;
-        const float sz = new_depth_f / old_depth_f;
-        const float rsx = old_width_f / new_width_f;
-        const float rsy = old_height_f / new_height_f;
-        const float rsz = old_depth_f / new_depth_f;
+        const float ratio_x = old_width_f / new_width_f;
+        const float ratio_y = old_height_f / new_height_f;
+        const float ratio_z = old_depth_f / new_depth_f;
 
         struct Dim
         {
@@ -263,17 +260,15 @@ namespace images {
             unsigned ofs;
             unsigned len;
 
-            float w0;
-            float w1;
+            float w0d;
+            float w1d;
 
-            float w;
-
-            void init(size_t dst_i, float rs_i, float old_size_f)
+            void init(size_t dst_i, float ratio_i, float old_size_f)
             {
                 dst0 = static_cast<float>( dst_i );
                 dst1 = static_cast<float>( dst_i + 1 );
-                src0 = dst0 * rs_i;
-                src1 = dst1 * rs_i;
+                src0 = dst0 * ratio_i;
+                src1 = dst1 * ratio_i;
 
                 map0 = ::floorf( src0 );
                 map1 = ::ceilf( src1 );
@@ -282,33 +277,34 @@ namespace images {
                 ofs = static_cast<unsigned>( map0 );
                 len = static_cast<unsigned>( map1 - map0 );
 
-                w0 = ::ceilf( src0 ) - src0;
-                w1 = src1 - ::floorf( src1 );
-
-                if ( !w0 && !w1 ) w0 = w1 = 0.5f;
+                w0d = src0 - map0;
+                w1d = map1 - src1;
             }
 
             float weight(unsigned i)
             {
+                float w = 1.0f;
                 if ( i == 0 )
-                    return w0;
-                else if ( i + 1 == len )
-                    return w1;
-                return 1.0f;
+                    w -= w0d;
+                if ( i + 1 == len )
+                    w -= w1d;
+                assert( w > 0.0f );
+                assert( w <= 1.0f );
+                return w;
             }
         } dim_x, dim_y, dim_z;
 
         for ( size_t dst_z = 0; dst_z < target_depth; ++dst_z )
         {
-            dim_z.init( dst_z, rsz, old_depth_f );
+            dim_z.init( dst_z, ratio_z, old_depth_f );
 
             for ( size_t dst_y = 0; dst_y < target_height; ++dst_y )
             {
-                dim_y.init( dst_y, rsy, old_height_f );
+                dim_y.init( dst_y, ratio_y, old_height_f );
 
                 for ( size_t dst_x = 0; dst_x < target_width; ++dst_x )
                 {
-                    dim_x.init( dst_x, rsx, old_width_f );
+                    dim_x.init( dst_x, ratio_x, old_width_f );
 
                     Color color;
                     float W = 0.0f;
