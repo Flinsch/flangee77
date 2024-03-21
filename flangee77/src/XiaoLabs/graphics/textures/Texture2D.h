@@ -75,6 +75,22 @@ public:
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+public:
+    /**
+     * Returns an "image view" of the texture data.
+     */
+    images::Image as_image() const { return _as_image( 0 ); }
+
+    /**
+     * Creates and returns mipmaps of the texture "image".
+     */
+    std::vector<images::Image> create_mipmaps(images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const { return _create_mipmaps( 0, resampling_method ); }
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 public:

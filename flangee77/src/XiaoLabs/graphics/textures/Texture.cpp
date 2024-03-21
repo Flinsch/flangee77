@@ -5,6 +5,7 @@
 #include "../PixelBitKit.h"
 
 #include "../images/ImageConverter.h"
+#include "../images/ImageResizer.h"
 
 #include <CoreLabs/logging.h>
 
@@ -115,6 +116,55 @@ namespace textures {
         auto image_data_provider = static_cast<const ImageDataProvider&>( data_provider );
 
         return _acquire_impl( image_data_provider );
+    }
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Returns the specified "image view" of the texture data.
+     */
+    images::Image Texture::_as_image(unsigned image_index) const
+    {
+        const size_t size = static_cast<size_t>( _slice_pitch );
+        const size_t offset = static_cast<size_t>( image_index ) * size;
+
+        assert( offset + size <= _data_size );
+
+        images::Image::Desc desc;
+        desc.pixel_format = _desc.pixel_format;
+        desc.channel_order = _channel_order;
+        desc.width = _desc.width;
+        desc.height = _desc.height;
+        desc.depth = _depth;
+        assert( size == desc.calculate_data_size() );
+
+        cl7::byte_view data;
+        if ( offset + size <= _data.size() )
+            data = { _data.data() + offset, size };
+
+        return images::Image( desc, data, true );
+    }
+
+    /**
+     * Creates and returns mipmaps of the specified texture "image".
+     */
+    std::vector<images::Image> Texture::_create_mipmaps( unsigned image_index, images::ResamplingMethod resampling_method ) const
+    {
+        std::vector<images::Image> mipmaps;
+
+        images::Image image = _as_image( image_index );
+        while ( image.get_width() > 1 || image.get_height() > 1 || image.get_depth() > 1 )
+        {
+            images::Image mipmap = images::ImageResizer::create_mipmap( image, resampling_method );
+            mipmaps.emplace_back( std::move(mipmap) );
+            image = { mipmaps.back().get_desc(), mipmaps.back().get_data(), true };
+        }
+
+        return mipmaps;
     }
 
 

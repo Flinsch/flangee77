@@ -6,6 +6,8 @@
 #include "../PixelFormat.h"
 #include "../ChannelOrder.h"
 
+#include "../images/ResamplingMethod.h"
+
 #include "./ImageDataProvider.h"
 
 
@@ -219,6 +221,22 @@ private:
      * it contains additional implementation-specific information.
      */
     virtual bool _acquire_impl(const ImageDataProvider& image_data_provider) = 0;
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+protected:
+    /**
+     * Returns the specified "image view" of the texture data.
+     */
+    images::Image _as_image(unsigned image_index) const;
+
+    /**
+     * Creates and returns mipmaps of the specified texture "image".
+     */
+    std::vector<images::Image> _create_mipmaps(unsigned image_index, images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const;
 
 }; // class Texture
 

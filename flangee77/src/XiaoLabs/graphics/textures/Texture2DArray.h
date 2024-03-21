@@ -76,6 +76,22 @@ public:
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+public:
+    /**
+     * Returns an "image view" of the specified texture slice data.
+     */
+    images::Image as_image(unsigned slice_index) const { return _as_image( slice_index ); }
+
+    /**
+     * Creates and returns mipmaps of the specified texture slice "image".
+     */
+    std::vector<images::Image> create_mipmaps(unsigned slice_index, images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const { return _create_mipmaps( slice_index, resampling_method ); }
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 public:

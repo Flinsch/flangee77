@@ -125,7 +125,7 @@ namespace helloworld {
         png_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy-indexed.png"), image );
 
         xl7::graphics::textures::Texture2D::Desc texture_desc {
-            xl7::resources::ResourceUsage::Default,
+            xl7::resources::ResourceUsage::Immutable,
             xl7::graphics::PixelFormat::R8G8B8A8_UNORM,
             xl7::graphics::ChannelOrder::RGBA,
             0, // mip_levels

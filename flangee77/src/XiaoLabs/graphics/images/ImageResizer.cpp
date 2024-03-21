@@ -451,6 +451,18 @@ namespace images {
         return { target_desc, std::move(_linear_interpolation( source_image, width, height, depth )) };
     }
 
+    /**
+     * Creates a mipmap from the specified image.
+     */
+    Image ImageResizer::create_mipmap(const Image& source_image, ResamplingMethod resampling_method)
+    {
+        unsigned width = source_image.get_width() / 2;
+        unsigned height = source_image.get_height() / 2;
+        unsigned depth = source_image.get_depth() / 2;
+
+        return resize_image( source_image, width ? width : 1, height ? height : 1, depth ? depth : 1, resampling_method );
+    }
+
 
 
 } // namespace images

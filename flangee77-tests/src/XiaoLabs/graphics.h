@@ -771,42 +771,42 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageResizer") )
         unsigned source_width, source_height, source_depth;
         unsigned target_width, target_height, target_depth;
 
-        xl7::graphics::images::ImageResizer::ResamplingMethod resampling_method;
+        xl7::graphics::images::ResamplingMethod resampling_method;
 
         cl7::byte_vector source_data;
         cl7::byte_vector target_data;
     } entry;
 
     const std::vector<Entry> container = {
-        { xl7::graphics::PixelFormat::R8_UNORM,  1, 1, 1,  1, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 0x7f ),  cl7::make_bytes( 0x7f ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  1, 1, 1,  1, 1, 1,  xl7::graphics::images::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 0x7f ),  cl7::make_bytes( 0x7f ) },
 
 
-        { xl7::graphics::PixelFormat::R8_UNORM,  3, 3, 3,  1, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 1,2,3, 4,5,6, 7,8,9,  10,11,12, 13,14,15, 16,17,18,  19,20,21, 22,23,24, 25,26,27 ),  cl7::make_bytes( 14 ) },
-        { xl7::graphics::PixelFormat::R8_UNORM,  3, 3, 3,  3, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 1,2,3, 4,5,6, 7,8,9,  10,11,12, 13,14,15, 16,17,18,  19,20,21, 22,23,24, 25,26,27 ),  cl7::make_bytes( 13,14,15 ) },
-        { xl7::graphics::PixelFormat::R8_UNORM,  3, 3, 3,  1, 3, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 1,2,3, 4,5,6, 7,8,9,  10,11,12, 13,14,15, 16,17,18,  19,20,21, 22,23,24, 25,26,27 ),  cl7::make_bytes( 11,14,17 ) },
-        { xl7::graphics::PixelFormat::R8_UNORM,  3, 3, 3,  1, 1, 3,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 1,2,3, 4,5,6, 7,8,9,  10,11,12, 13,14,15, 16,17,18,  19,20,21, 22,23,24, 25,26,27 ),  cl7::make_bytes( 5,14,23 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  3, 3, 3,  1, 1, 1,  xl7::graphics::images::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 1,2,3, 4,5,6, 7,8,9,  10,11,12, 13,14,15, 16,17,18,  19,20,21, 22,23,24, 25,26,27 ),  cl7::make_bytes( 14 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  3, 3, 3,  3, 1, 1,  xl7::graphics::images::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 1,2,3, 4,5,6, 7,8,9,  10,11,12, 13,14,15, 16,17,18,  19,20,21, 22,23,24, 25,26,27 ),  cl7::make_bytes( 13,14,15 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  3, 3, 3,  1, 3, 1,  xl7::graphics::images::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 1,2,3, 4,5,6, 7,8,9,  10,11,12, 13,14,15, 16,17,18,  19,20,21, 22,23,24, 25,26,27 ),  cl7::make_bytes( 11,14,17 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  3, 3, 3,  1, 1, 3,  xl7::graphics::images::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 1,2,3, 4,5,6, 7,8,9,  10,11,12, 13,14,15, 16,17,18,  19,20,21, 22,23,24, 25,26,27 ),  cl7::make_bytes( 5,14,23 ) },
 
-        { xl7::graphics::PixelFormat::R8_UNORM,  1, 1, 1,  3, 3, 3,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 14 ),        cl7::make_bytes( 14,14,14, 14,14,14, 14,14,14,  14,14,14, 14,14,14, 14,14,14,  14,14,14, 14,14,14, 14,14,14 ) },
-        { xl7::graphics::PixelFormat::R8_UNORM,  3, 1, 1,  3, 3, 3,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 13,14,15 ),  cl7::make_bytes( 13,14,15, 13,14,15, 13,14,15,  13,14,15, 13,14,15, 13,14,15,  13,14,15, 13,14,15, 13,14,15 ) },
-        { xl7::graphics::PixelFormat::R8_UNORM,  1, 3, 1,  3, 3, 3,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 11,14,17 ),  cl7::make_bytes( 11,11,11, 14,14,14, 17,17,17,  11,11,11, 14,14,14, 17,17,17,  11,11,11, 14,14,14, 17,17,17 ) },
-        { xl7::graphics::PixelFormat::R8_UNORM,  1, 1, 3,  3, 3, 3,  xl7::graphics::images::ImageResizer::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 5,14,23 ),   cl7::make_bytes( 5,5,5, 5,5,5, 5,5,5,  14,14,14, 14,14,14, 14,14,14,  23,23,23, 23,23,23, 23,23,23 ) },
-
-
-        { xl7::graphics::PixelFormat::R8_UNORM,  4, 1, 1,  2, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 1,2,3,4 ),  cl7::make_bytes( 2,4 ) },
-        { xl7::graphics::PixelFormat::R8_UNORM,  2, 2, 1,  1, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 1,2, 3,4 ),  cl7::make_bytes( 3 ) },
-        { xl7::graphics::PixelFormat::R8_UNORM,  2, 2, 2,  1, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 1,2, 3,4,  5,6, 7,8 ),  cl7::make_bytes( 5 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  1, 1, 1,  3, 3, 3,  xl7::graphics::images::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 14 ),        cl7::make_bytes( 14,14,14, 14,14,14, 14,14,14,  14,14,14, 14,14,14, 14,14,14,  14,14,14, 14,14,14, 14,14,14 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  3, 1, 1,  3, 3, 3,  xl7::graphics::images::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 13,14,15 ),  cl7::make_bytes( 13,14,15, 13,14,15, 13,14,15,  13,14,15, 13,14,15, 13,14,15,  13,14,15, 13,14,15, 13,14,15 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  1, 3, 1,  3, 3, 3,  xl7::graphics::images::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 11,14,17 ),  cl7::make_bytes( 11,11,11, 14,14,14, 17,17,17,  11,11,11, 14,14,14, 17,17,17,  11,11,11, 14,14,14, 17,17,17 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  1, 1, 3,  3, 3, 3,  xl7::graphics::images::ResamplingMethod::NearestNeighbor,  cl7::make_bytes( 5,14,23 ),   cl7::make_bytes( 5,5,5, 5,5,5, 5,5,5,  14,14,14, 14,14,14, 14,14,14,  23,23,23, 23,23,23, 23,23,23 ) },
 
 
-        { xl7::graphics::PixelFormat::R32_FLOAT,  1, 1, 1,  2, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x80,0x3f ) },
-        { xl7::graphics::PixelFormat::R32_FLOAT,  2, 1, 1,  1, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x80,0x3f ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f ) },
-        { xl7::graphics::PixelFormat::R32_FLOAT,  2, 1, 1,  3, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40 ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0xc0,0x3f, 0x00,0x00,0x00,0x40 ) },
-        { xl7::graphics::PixelFormat::R32_FLOAT,  3, 1, 1,  2, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x40,0x40 ),  cl7::make_bytes( 0xab,0xaa,0xaa,0x3f, 0xab,0xaa,0x2a,0x40 ) },
-        { xl7::graphics::PixelFormat::R32_FLOAT,  2, 1, 1,  4, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40 ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x00,0x40 ) },
-        { xl7::graphics::PixelFormat::R32_FLOAT,  4, 1, 1,  2, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x40,0x40, 0x00,0x00,0x80,0x40 ),  cl7::make_bytes( 0x00,0x00,0xc0,0x3f, 0x00,0x00,0x60,0x40 ) },
-        { xl7::graphics::PixelFormat::R32_FLOAT,  2, 1, 1,  5, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40 ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x80,0x3f, 0x00,0x00,0xc0,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x00,0x40 ) },
-        { xl7::graphics::PixelFormat::R32_FLOAT,  5, 1, 1,  2, 1, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x40,0x40, 0x00,0x00,0x80,0x40, 0x00,0x00,0xa0,0x40 ),  cl7::make_bytes( 0x66,0x66,0xe6,0x3f, 0x66,0x66,0x86,0x40 ) },
-        { xl7::graphics::PixelFormat::R32_FLOAT,  2, 2, 1,  3, 3, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40,  0x00,0x00,0x40,0x40, 0x00,0x00,0x80,0x40 ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0xc0,0x3f, 0x00,0x00,0x00,0x40,  0x00,0x00,0x00,0x40, 0x00,0x00,0x20,0x40, 0x00,0x00,0x40,0x40,  0x00,0x00,0x40,0x40, 0x00,0x00,0x60,0x40, 0x00,0x00,0x80,0x40 ) },
-        { xl7::graphics::PixelFormat::R32_FLOAT,  3, 3, 1,  2, 2, 1,  xl7::graphics::images::ImageResizer::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x40,0x40,  0x00,0x00,0x80,0x40, 0x00,0x00,0xa0,0x40, 0x00,0x00,0xc0,0x40,  0x00,0x00,0xe0,0x40, 0x00,0x00,0x00,0x41, 0x00,0x00,0x10,0x41 ),  cl7::make_bytes( 0x55,0x55,0x15,0x40, 0xab,0xaa,0x6a,0x40,  0xab,0xaa,0xca,0x40, 0x55,0x55,0xf5,0x40 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  4, 1, 1,  2, 1, 1,  xl7::graphics::images::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 1,2,3,4 ),  cl7::make_bytes( 2,4 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  2, 2, 1,  1, 1, 1,  xl7::graphics::images::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 1,2, 3,4 ),  cl7::make_bytes( 3 ) },
+        { xl7::graphics::PixelFormat::R8_UNORM,  2, 2, 2,  1, 1, 1,  xl7::graphics::images::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 1,2, 3,4,  5,6, 7,8 ),  cl7::make_bytes( 5 ) },
+
+
+        { xl7::graphics::PixelFormat::R32_FLOAT,  1, 1, 1,  2, 1, 1,  xl7::graphics::images::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x80,0x3f ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  2, 1, 1,  1, 1, 1,  xl7::graphics::images::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x80,0x3f ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  2, 1, 1,  3, 1, 1,  xl7::graphics::images::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40 ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0xc0,0x3f, 0x00,0x00,0x00,0x40 ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  3, 1, 1,  2, 1, 1,  xl7::graphics::images::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x40,0x40 ),  cl7::make_bytes( 0xab,0xaa,0xaa,0x3f, 0xab,0xaa,0x2a,0x40 ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  2, 1, 1,  4, 1, 1,  xl7::graphics::images::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40 ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x00,0x40 ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  4, 1, 1,  2, 1, 1,  xl7::graphics::images::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x40,0x40, 0x00,0x00,0x80,0x40 ),  cl7::make_bytes( 0x00,0x00,0xc0,0x3f, 0x00,0x00,0x60,0x40 ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  2, 1, 1,  5, 1, 1,  xl7::graphics::images::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40 ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x80,0x3f, 0x00,0x00,0xc0,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x00,0x40 ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  5, 1, 1,  2, 1, 1,  xl7::graphics::images::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x40,0x40, 0x00,0x00,0x80,0x40, 0x00,0x00,0xa0,0x40 ),  cl7::make_bytes( 0x66,0x66,0xe6,0x3f, 0x66,0x66,0x86,0x40 ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  2, 2, 1,  3, 3, 1,  xl7::graphics::images::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40,  0x00,0x00,0x40,0x40, 0x00,0x00,0x80,0x40 ),  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0xc0,0x3f, 0x00,0x00,0x00,0x40,  0x00,0x00,0x00,0x40, 0x00,0x00,0x20,0x40, 0x00,0x00,0x40,0x40,  0x00,0x00,0x40,0x40, 0x00,0x00,0x60,0x40, 0x00,0x00,0x80,0x40 ) },
+        { xl7::graphics::PixelFormat::R32_FLOAT,  3, 3, 1,  2, 2, 1,  xl7::graphics::images::ResamplingMethod::LinearInterpolation,  cl7::make_bytes( 0x00,0x00,0x80,0x3f, 0x00,0x00,0x00,0x40, 0x00,0x00,0x40,0x40,  0x00,0x00,0x80,0x40, 0x00,0x00,0xa0,0x40, 0x00,0x00,0xc0,0x40,  0x00,0x00,0xe0,0x40, 0x00,0x00,0x00,0x41, 0x00,0x00,0x10,0x41 ),  cl7::make_bytes( 0x55,0x55,0x15,0x40, 0xab,0xaa,0x6a,0x40,  0xab,0xaa,0xca,0x40, 0x55,0x55,0xf5,0x40 ) },
     };
 
 

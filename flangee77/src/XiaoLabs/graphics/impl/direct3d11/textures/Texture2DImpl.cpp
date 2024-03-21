@@ -5,6 +5,8 @@
 #include "../mappings.h"
 #include "../errors.h"
 
+#include "../../../images/ImageResizer.h"
+
 #include <CoreLabs/logging.h>
 
 
@@ -88,18 +90,27 @@ namespace textures {
         texture_desc.CPUAccessFlags = _desc.usage == resources::ResourceUsage::Dynamic ? D3D11_CPU_ACCESS_WRITE : 0;
         texture_desc.MiscFlags = 0;
 
-        /*D3D11_SUBRESOURCE_DATA subresource_data;
-        subresource_data.pSysMem = _data.data();
-        subresource_data.SysMemPitch = _line_pitch;
-        subresource_data.SysMemSlicePitch = 0;*/
-        constexpr unsigned MAX_LEVELS = 16; // Just some value big enough. We could also specifically calculate the exact value, but not today.
+        constexpr unsigned MAX_LEVELS = 16; // Just some value big enough.
         D3D11_SUBRESOURCE_DATA subresource_data[ MAX_LEVELS ];
-        for ( unsigned i = 0, wdth = _desc.width, hght = _desc.height; wdth || hght; wdth >>= 1, hght >>= 1, ++i )
+        subresource_data[ 0 ].pSysMem = _data.data();
+        subresource_data[ 0 ].SysMemPitch = _line_pitch;
+        subresource_data[ 0 ].SysMemSlicePitch = 0;
+
+        std::vector<xl7::graphics::images::Image> mipmaps;
+        if ( !_data.empty() && mip_levels != 1 )
         {
-            assert( i < MAX_LEVELS );
-            subresource_data[ i ].pSysMem = _data.data(); // For now we simply set the same source buffer for all levels.
-            subresource_data[ i ].SysMemPitch = (wdth ? wdth : 1) * _stride;
-            subresource_data[ i ].SysMemSlicePitch = 0;
+            mipmaps = create_mipmaps();
+            unsigned mip_level = 1;
+            for ( const auto& mipmap : mipmaps )
+            {
+                if ( mip_levels != 0 && mip_level >= mip_levels )
+                    break;
+                assert( mip_level < MAX_LEVELS );
+                subresource_data[ mip_level ].pSysMem = mipmap.get_data().data();
+                subresource_data[ mip_level ].SysMemPitch = _stride * mipmap.get_width();
+                subresource_data[ mip_level ].SysMemSlicePitch = 0;
+                ++mip_level;
+            }
         }
 
         HRESULT hresult = d3d_device->CreateTexture2D(

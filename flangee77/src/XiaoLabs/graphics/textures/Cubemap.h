@@ -75,6 +75,22 @@ public:
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+public:
+    /**
+     * Returns an "image view" of the specified texture face data.
+     */
+    images::Image as_image(unsigned face_index) const { return _as_image( face_index ); }
+
+    /**
+     * Creates and returns mipmaps of the specified texture face "image".
+     */
+    std::vector<images::Image> create_mipmaps(unsigned face_index, images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const { return _create_mipmaps( face_index, resampling_method ); }
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 public:
