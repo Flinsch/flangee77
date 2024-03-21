@@ -94,6 +94,8 @@ namespace images {
      */
     Image& Image::operator = (const Image& rhs)
     {
+        // We don't have to explicitly check the case of self-assignment here,
+        // because the init function handles this case for us accordingly.
         init( rhs._desc, rhs._data_view, false );
         return *this;
     }
@@ -172,12 +174,16 @@ namespace images {
         }
         else
         {
-            // Allocate buffer,
+            // Allocate new buffer,
             // copy data (unless empty),
+            // adopt new buffer,
             // and "view" our new buffer.
-            _data_buffer.resize( data.size() );
+            // The detour via the temporary buffer is "required"
+            // to correctly handle the self-assignment case.
+            cl7::byte_vector data_buffer{ data.size() };
             if ( data.size() )
-                ::memcpy( &_data_buffer[0], &data[0], data.size() );
+                ::memcpy( &data_buffer[0], &data[0], data.size() );
+            _data_buffer.swap( data_buffer );
             _data_view = _data_buffer;
         }
 
