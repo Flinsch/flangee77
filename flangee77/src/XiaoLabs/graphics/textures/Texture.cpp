@@ -7,6 +7,8 @@
 #include "../images/ImageConverter.h"
 #include "../images/ImageResizer.h"
 
+#include <MathLabs/utilities.h>
+
 #include <CoreLabs/logging.h>
 
 
@@ -35,6 +37,52 @@ namespace textures {
         , _slice_pitch( _line_pitch * params.desc.height )
         , _data_size( _slice_pitch * depth * image_count )
     {
+        const RenderingDevice::Capabilities& capabilities = GraphicsSystem::instance().get_rendering_device()->get_capabilities();
+
+        if ( _type == Type::Texture2D && capabilities.textures.max_texture_2d_width && _desc.width > capabilities.textures.max_texture_2d_width )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_2d_width) + TEXT(" is supported.") );
+        if ( _type == Type::Texture2D && capabilities.textures.max_texture_2d_height && _desc.height > capabilities.textures.max_texture_2d_height )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_2d_height) + TEXT(" is supported.") );
+
+        if ( _type == Type::Texture3D && capabilities.textures.max_texture_3d_size && _desc.width > capabilities.textures.max_texture_3d_size )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_3d_size) + TEXT(" is supported.") );
+        if ( _type == Type::Texture3D && capabilities.textures.max_texture_3d_size && _desc.height > capabilities.textures.max_texture_3d_size )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_3d_size) + TEXT(" is supported.") );
+        if ( _type == Type::Texture3D && capabilities.textures.max_texture_3d_size && _depth > capabilities.textures.max_texture_3d_size )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a depth of ") + cl7::to_string(_depth) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_3d_size) + TEXT(" is supported.") );
+
+        if ( _type == Type::Cubemap && capabilities.textures.max_cubemap_size && _desc.width > capabilities.textures.max_cubemap_size )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_cubemap_size) + TEXT(" is supported.") );
+        if ( _type == Type::Cubemap && capabilities.textures.max_cubemap_size && _desc.height > capabilities.textures.max_cubemap_size )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_cubemap_size) + TEXT(" is supported.") );
+
+        if ( _type == Type::Texture2DArray && capabilities.textures.max_texture_array_size && image_count > capabilities.textures.max_texture_array_size )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created should have ") + cl7::to_string(image_count) + TEXT(" slices, but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_array_size) + TEXT(" is supported.") );
+
+        if ( capabilities.textures.max_aspect_ratio && _desc.height && _desc.width / _desc.height > capabilities.textures.max_aspect_ratio )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has an width/height aspect ratio of ") + cl7::to_string(_desc.width / _desc.height) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_aspect_ratio) + TEXT(" is supported.") );
+        if ( capabilities.textures.max_aspect_ratio && _desc.width && _desc.height / _desc.width > capabilities.textures.max_aspect_ratio )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has an height/width aspect ratio of ") + cl7::to_string(_desc.height / _desc.width) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_aspect_ratio) + TEXT(" is supported.") );
+
+        if ( _type == Type::Texture2D && capabilities.textures.texture_2d_pow2_only && !ml7::utilities::is_power_of_2( _desc.width ) )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but only dimensions specified as a power of two are supported.") );
+        if ( _type == Type::Texture2D && capabilities.textures.texture_2d_pow2_only && !ml7::utilities::is_power_of_2( _desc.height ) )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but only dimensions specified as a power of two are supported.") );
+
+        if ( _type == Type::Texture3D && capabilities.textures.texture_3d_pow2_only && !ml7::utilities::is_power_of_2( _desc.width ) )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but only dimensions specified as a power of two are supported.") );
+        if ( _type == Type::Texture3D && capabilities.textures.texture_3d_pow2_only && !ml7::utilities::is_power_of_2( _desc.height ) )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but only dimensions specified as a power of two are supported.") );
+        if ( _type == Type::Texture3D && capabilities.textures.texture_3d_pow2_only && !ml7::utilities::is_power_of_2( _depth ) )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a depth of ") + cl7::to_string(_depth) + TEXT(", but only dimensions specified as a power of two are supported.") );
+
+        if ( _type == Type::Cubemap && capabilities.textures.cubemap_pow2_only && !ml7::utilities::is_power_of_2( _desc.width ) )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but only dimensions specified as a power of two are supported.") );
+        if ( _type == Type::Cubemap && capabilities.textures.cubemap_pow2_only && !ml7::utilities::is_power_of_2( _desc.height ) )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but only dimensions specified as a power of two are supported.") );
+
+        if ( capabilities.textures.square_only && _desc.width != _desc.height )
+            LOG_WARNING( TEXT("A non-square ") + get_typed_identifier_string() + TEXT(" is supposed to be created, but only square textures are supported.") );
     }
 
 

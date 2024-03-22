@@ -173,6 +173,18 @@ namespace direct3d11 {
             assert( false );
         }
 
+        // Adopt the supported texture capabilities.
+        capabilities.textures.max_texture_2d_width = D3D11_REQ_TEXTURE2D_U_OR_V_DIMENSION;
+        capabilities.textures.max_texture_2d_height = D3D11_REQ_TEXTURE2D_U_OR_V_DIMENSION;
+        capabilities.textures.max_texture_3d_size = D3D11_REQ_TEXTURE3D_U_V_OR_W_DIMENSION;
+        capabilities.textures.max_cubemap_size = D3D11_REQ_TEXTURECUBE_DIMENSION;
+        capabilities.textures.max_texture_array_size = D3D11_REQ_TEXTURE2D_ARRAY_AXIS_DIMENSION;
+        capabilities.textures.max_aspect_ratio = 0; // There is no limit, right?
+        capabilities.textures.texture_2d_pow2_only = false;
+        capabilities.textures.texture_3d_pow2_only = false;
+        capabilities.textures.cubemap_pow2_only = false;
+        capabilities.textures.square_only = false;
+
         // Adopt other capabilities.
         capabilities.max_simultaneous_render_target_count = D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT;
         capabilities.max_concurrent_vertex_stream_count = D3D11_IA_VERTEX_INPUT_RESOURCE_SLOT_COUNT;

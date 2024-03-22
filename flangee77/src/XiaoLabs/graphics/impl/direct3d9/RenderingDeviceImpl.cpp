@@ -120,6 +120,18 @@ namespace direct3d9 {
         capabilities.shaders.vertex_shader_version = { D3DSHADER_VERSION_MAJOR( _d3d_device_caps.VertexShaderVersion ), D3DSHADER_VERSION_MINOR( _d3d_device_caps.VertexShaderVersion ) };
         capabilities.shaders.pixel_shader_version = { D3DSHADER_VERSION_MAJOR( _d3d_device_caps.PixelShaderVersion ), D3DSHADER_VERSION_MINOR( _d3d_device_caps.PixelShaderVersion ) };
 
+        // Adopt the supported texture capabilities.
+        capabilities.textures.max_texture_2d_width = _d3d_device_caps.MaxTextureWidth;
+        capabilities.textures.max_texture_2d_height = _d3d_device_caps.MaxTextureHeight;
+        capabilities.textures.max_texture_3d_size = _d3d_device_caps.MaxVolumeExtent;
+        capabilities.textures.max_cubemap_size = (std::min)( _d3d_device_caps.MaxTextureWidth, _d3d_device_caps.MaxTextureHeight );
+        capabilities.textures.max_texture_array_size = 0; // Not supported at all.
+        capabilities.textures.max_aspect_ratio = _d3d_device_caps.MaxTextureAspectRatio;
+        capabilities.textures.texture_2d_pow2_only = _d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_POW2; // Ignore D3DPTEXTURECAPS_NONPOW2CONDITIONAL?
+        capabilities.textures.texture_3d_pow2_only = _d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_VOLUMEMAP_POW2;
+        capabilities.textures.cubemap_pow2_only = _d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_CUBEMAP_POW2;
+        capabilities.textures.square_only = _d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_SQUAREONLY;
+
         // Adopt other capabilities.
         capabilities.max_simultaneous_render_target_count = _d3d_device_caps.NumSimultaneousRTs;
         capabilities.max_concurrent_vertex_stream_count = _d3d_device_caps.MaxStreams;

@@ -56,6 +56,32 @@ public:
 
         struct
         {
+            /** The maximum width of 2D textures, in pixels. */
+            unsigned max_texture_2d_width;
+            /** The maximum height of 2D textures, in pixels. */
+            unsigned max_texture_2d_height;
+            /** The maximum width, height, and depth of 3D textures, in pixels. */
+            unsigned max_texture_3d_size;
+            /** The maximum width and height of cubemaps, in pixels. */
+            unsigned max_cubemap_size;
+            /** The maximum number of textures in a texture array. */
+            unsigned max_texture_array_size;
+
+            /** The maximum texture aspect ratio (0: no limit). */
+            unsigned max_aspect_ratio;
+
+            /** The flag that indicates whether 2D textures must have dimensions specified as powers of two. */
+            bool texture_2d_pow2_only;
+            /** The flag that indicates whether 3D textures must have dimensions specified as powers of two. */
+            bool texture_3d_pow2_only;
+            /** The flag that indicates whether cubemaps must have dimensions specified as powers of two. */
+            bool cubemap_pow2_only;
+            /** The flag that indicates whether all textures must be square. */
+            bool square_only;
+        } textures;
+
+        struct
+        {
             /** The maximum supported vertex shader version. */
             cl7::Version vertex_shader_version;
             /** The maximum supported pixel shader version. */
