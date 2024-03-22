@@ -59,11 +59,6 @@ namespace textures {
         if ( _type == Type::Texture2DArray && capabilities.textures.max_texture_array_size && image_count > capabilities.textures.max_texture_array_size )
             LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created should have ") + cl7::to_string(image_count) + TEXT(" slices, but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_array_size) + TEXT(" is supported.") );
 
-        if ( capabilities.textures.max_aspect_ratio && _desc.height && _desc.width / _desc.height > capabilities.textures.max_aspect_ratio )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has an width/height aspect ratio of ") + cl7::to_string(_desc.width / _desc.height) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_aspect_ratio) + TEXT(" is supported.") );
-        if ( capabilities.textures.max_aspect_ratio && _desc.width && _desc.height / _desc.width > capabilities.textures.max_aspect_ratio )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has an height/width aspect ratio of ") + cl7::to_string(_desc.height / _desc.width) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_aspect_ratio) + TEXT(" is supported.") );
-
         if ( _type == Type::Texture2D && capabilities.textures.texture_2d_pow2_only && !ml7::utilities::is_power_of_2( _desc.width ) )
             LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but only dimensions specified as a power of two are supported.") );
         if ( _type == Type::Texture2D && capabilities.textures.texture_2d_pow2_only && !ml7::utilities::is_power_of_2( _desc.height ) )
@@ -83,6 +78,11 @@ namespace textures {
 
         if ( capabilities.textures.square_only && _desc.width != _desc.height )
             LOG_WARNING( TEXT("A non-square ") + get_typed_identifier_string() + TEXT(" is supposed to be created, but only square textures are supported.") );
+
+        if ( capabilities.textures.max_aspect_ratio && _desc.height && _desc.width / _desc.height > capabilities.textures.max_aspect_ratio )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has an width/height aspect ratio of ") + cl7::to_string(_desc.width / _desc.height) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_aspect_ratio) + TEXT(" is supported.") );
+        if ( capabilities.textures.max_aspect_ratio && _desc.width && _desc.height / _desc.width > capabilities.textures.max_aspect_ratio )
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has an height/width aspect ratio of ") + cl7::to_string(_desc.height / _desc.width) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_aspect_ratio) + TEXT(" is supported.") );
     }
 
 

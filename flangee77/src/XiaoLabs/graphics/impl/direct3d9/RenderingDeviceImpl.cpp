@@ -126,11 +126,11 @@ namespace direct3d9 {
         capabilities.textures.max_texture_3d_size = _d3d_device_caps.MaxVolumeExtent;
         capabilities.textures.max_cubemap_size = (std::min)( _d3d_device_caps.MaxTextureWidth, _d3d_device_caps.MaxTextureHeight );
         capabilities.textures.max_texture_array_size = 0; // Not supported at all.
-        capabilities.textures.max_aspect_ratio = _d3d_device_caps.MaxTextureAspectRatio;
         capabilities.textures.texture_2d_pow2_only = _d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_POW2; // Ignore D3DPTEXTURECAPS_NONPOW2CONDITIONAL?
         capabilities.textures.texture_3d_pow2_only = _d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_VOLUMEMAP_POW2;
         capabilities.textures.cubemap_pow2_only = _d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_CUBEMAP_POW2;
         capabilities.textures.square_only = _d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_SQUAREONLY;
+        capabilities.textures.max_aspect_ratio = _d3d_device_caps.MaxTextureAspectRatio;
 
         // Adopt other capabilities.
         capabilities.max_simultaneous_render_target_count = _d3d_device_caps.NumSimultaneousRTs;

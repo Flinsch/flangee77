@@ -67,9 +67,6 @@ public:
             /** The maximum number of textures in a texture array. */
             unsigned max_texture_array_size;
 
-            /** The maximum texture aspect ratio (0: no limit). */
-            unsigned max_aspect_ratio;
-
             /** The flag that indicates whether 2D textures must have dimensions specified as powers of two. */
             bool texture_2d_pow2_only;
             /** The flag that indicates whether 3D textures must have dimensions specified as powers of two. */
@@ -78,6 +75,8 @@ public:
             bool cubemap_pow2_only;
             /** The flag that indicates whether all textures must be square. */
             bool square_only;
+            /** The maximum texture aspect ratio (0: no limit). */
+            unsigned max_aspect_ratio;
         } textures;
 
         struct

@@ -179,11 +179,14 @@ namespace direct3d11 {
         capabilities.textures.max_texture_3d_size = D3D11_REQ_TEXTURE3D_U_V_OR_W_DIMENSION;
         capabilities.textures.max_cubemap_size = D3D11_REQ_TEXTURECUBE_DIMENSION;
         capabilities.textures.max_texture_array_size = D3D11_REQ_TEXTURE2D_ARRAY_AXIS_DIMENSION;
-        capabilities.textures.max_aspect_ratio = 0; // There is no limit, right?
+        // Direct3D 11 supports non-power-of-two (NPOT) textures,
+        // does not require textures to be square, and does not
+        // impose any aspect ratio limits on textures.
         capabilities.textures.texture_2d_pow2_only = false;
         capabilities.textures.texture_3d_pow2_only = false;
         capabilities.textures.cubemap_pow2_only = false;
         capabilities.textures.square_only = false;
+        capabilities.textures.max_aspect_ratio = 0;
 
         // Adopt other capabilities.
         capabilities.max_simultaneous_render_target_count = D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT;
