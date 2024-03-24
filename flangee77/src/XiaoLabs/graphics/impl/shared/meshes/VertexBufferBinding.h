@@ -2,8 +2,7 @@
 #ifndef XL7_GRAPHICS_IMPL_SHARED_MESHES_VERTEXBUFFERBINDING_H
 #define XL7_GRAPHICS_IMPL_SHARED_MESHES_VERTEXBUFFERBINDING_H
 
-#include "../../../meshes/VertexBuffer.h"
-#include "../../../states/StreamStates.h"
+#include "../../../pipeline/InputAssemblerStage.h"
 
 
 
@@ -18,7 +17,7 @@ namespace meshes {
 struct VertexBufferBinding
 {
 
-    resources::ResourceID vertex_buffer_ids[ states::StreamStates::MAX_VERTEX_STREAMS ];
+    resources::ResourceID vertex_buffer_ids[ pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
     unsigned stream_count;
 
 

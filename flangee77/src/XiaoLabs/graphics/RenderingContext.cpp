@@ -22,10 +22,7 @@ namespace graphics {
     RenderingContext::RenderingContext(RenderingDevice* rendering_device, unsigned index)
         : _rendering_device( rendering_device )
         , _index( index )
-        , stream_states()
-        , vertex_shader_states()
-        , pixel_shader_states()
-        , render_states()
+        , pipeline()
         , _the_scene_is_on( false )
     {
     }
@@ -167,15 +164,15 @@ namespace graphics {
     void RenderingContext::_resolve_target_states(ResolvedTargetStates& resolved_target_states)
     {
         resolved_target_states.target_count = 0;
-        for ( unsigned target_index = 0; target_index < states::StreamStates::MAX_VERTEX_STREAMS; ++target_index )
+        for ( unsigned target_index = 0; target_index < pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS; ++target_index )
         {
-            auto* color_render_target = _rendering_device->get_surface_manager()->find_resource<surfaces::ColorRenderTarget>( target_states.get_color_render_target_id( target_index ) );
+            auto* color_render_target = _rendering_device->get_surface_manager()->find_resource<surfaces::ColorRenderTarget>( pipeline.om.get_color_render_target_id( target_index ) );
             resolved_target_states.color_render_targets[ target_index ] = color_render_target;
             if ( color_render_target )
                 resolved_target_states.target_count = target_index + 1;
         }
 
-        resolved_target_states.depth_stencil_target = _rendering_device->get_surface_manager()->find_resource<surfaces::DepthStencilTarget>( target_states.get_depth_stencil_target_id() );
+        resolved_target_states.depth_stencil_target = _rendering_device->get_surface_manager()->find_resource<surfaces::DepthStencilTarget>( pipeline.om.get_depth_stencil_target_id() );
     }
 
     /**
@@ -188,9 +185,9 @@ namespace graphics {
         meshes::Topology default_topology = meshes::Topology::Undefined;
 
         resolved_draw_states.stream_count = 0;
-        for ( unsigned stream_index = 0; stream_index < states::StreamStates::MAX_VERTEX_STREAMS; ++stream_index )
+        for ( unsigned stream_index = 0; stream_index < pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS; ++stream_index )
         {
-            auto* vertex_buffer = _rendering_device->get_mesh_manager()->find_resource<meshes::VertexBuffer>( stream_states.get_vertex_buffer_id( stream_index ) );
+            auto* vertex_buffer = _rendering_device->get_mesh_manager()->find_resource<meshes::VertexBuffer>( pipeline.ia.get_vertex_buffer_id( stream_index ) );
             resolved_draw_states.vertex_buffers[ stream_index ] = vertex_buffer;
             if ( vertex_buffer )
                 resolved_draw_states.stream_count = stream_index + 1;
@@ -200,17 +197,17 @@ namespace graphics {
 
         if ( indexed )
         {
-            resolved_draw_states.index_buffer = _rendering_device->get_mesh_manager()->find_resource<meshes::IndexBuffer>( stream_states.get_index_buffer_id() );
-            resolved_draw_states.topology = stream_states.get_topology( resolved_draw_states.index_buffer ? resolved_draw_states.index_buffer->get_desc().topology : default_topology );
+            resolved_draw_states.index_buffer = _rendering_device->get_mesh_manager()->find_resource<meshes::IndexBuffer>( pipeline.ia.get_index_buffer_id() );
+            resolved_draw_states.topology = pipeline.ia.get_topology( resolved_draw_states.index_buffer ? resolved_draw_states.index_buffer->get_desc().topology : default_topology );
         }
         else // => !indexed
         {
             resolved_draw_states.index_buffer = nullptr;
-            resolved_draw_states.topology = stream_states.get_topology( default_topology );
+            resolved_draw_states.topology = pipeline.ia.get_topology( default_topology );
         } // indexed?
 
-        resolved_draw_states.vertex_shader = _rendering_device->get_shader_manager()->find_resource<shaders::VertexShader>( vertex_shader_states.get_shader_id() );
-        resolved_draw_states.pixel_shader = _rendering_device->get_shader_manager()->find_resource<shaders::PixelShader>( pixel_shader_states.get_shader_id() );
+        resolved_draw_states.vertex_shader = _rendering_device->get_shader_manager()->find_resource<shaders::VertexShader>( pipeline.vs.get_shader_id() );
+        resolved_draw_states.pixel_shader = _rendering_device->get_shader_manager()->find_resource<shaders::PixelShader>( pipeline.ps.get_shader_id() );
     }
 
     /**
@@ -262,7 +259,7 @@ namespace graphics {
             return false;
         }
 
-        if ( render_states.get_fill_mode() == states::RenderStates::FillMode::None )
+        if ( pipeline.rs.get_fill_mode() == pipeline::RasterizerStage::FillMode::None )
         {
             // Just return false without issuing an error message.
             // Because it's not an error in the actual sense;

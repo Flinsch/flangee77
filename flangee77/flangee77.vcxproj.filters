@@ -261,18 +261,6 @@
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingContextImpl.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\states\AbstractStates.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\states\RenderStates.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\states\TargetStates.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\states\StreamStates.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="src\XiaoLabs\graphics\meshes\IndexType.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -340,9 +328,6 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\XiaoLabs\graphics\shaders\CodeProvider.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\states\ShaderStates.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\XiaoLabs\resources\ResourceID.h">
@@ -475,6 +460,33 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ParameterDesc.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\AbstractStage.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\InputAssemblerStage.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\VertexShaderStage.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\RasterizerStage.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\PixelShaderStage.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\OutputMergerStage.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\AbstractShaderStage.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\Pipeline.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\AbstractPipelineObject.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -656,18 +668,6 @@
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingContextImpl.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\states\AbstractStates.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\states\RenderStates.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\states\TargetStates.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\states\StreamStates.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\IndexBufferImpl.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -705,9 +705,6 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\shaders\CodeProvider.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\states\ShaderStates.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\resources\ResourceID.cpp">
@@ -813,6 +810,33 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\images\ImageProcessor.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\AbstractStage.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\InputAssemblerStage.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\VertexShaderStage.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\RasterizerStage.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\PixelShaderStage.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\OutputMergerStage.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\AbstractShaderStage.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\Pipeline.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\AbstractPipelineObject.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

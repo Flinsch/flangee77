@@ -489,7 +489,7 @@ namespace direct3d11 {
             return it->second.Get();
 
         std::vector<D3D11_INPUT_ELEMENT_DESC> d3d_input_element_descs;
-        for ( unsigned stream_index = 0; stream_index < states::StreamStates::MAX_VERTEX_STREAMS; ++stream_index )
+        for ( unsigned stream_index = 0; stream_index < pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS; ++stream_index )
         {
             if ( !vertex_buffer_binding.vertex_buffer_ids[ stream_index ].is_valid() )
                 continue;

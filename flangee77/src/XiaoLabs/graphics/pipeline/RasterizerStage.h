@@ -1,29 +1,19 @@
 #pragma once
-#ifndef XL7_GRAPHICS_STATES_RENDERSTATES_H
-#define XL7_GRAPHICS_STATES_RENDERSTATES_H
-#include "./AbstractStates.h"
+#ifndef XL7_GRAPHICS_PIPELINE_RASTERIZERSTAGE_H
+#define XL7_GRAPHICS_PIPELINE_RASTERIZERSTAGE_H
+#include "./AbstractStage.h"
 
 
 
 namespace xl7 {
 namespace graphics {
-namespace states {
+namespace pipeline {
 
 
 
-class RenderStates
-    : public AbstractStates
+class RasterizerStage
+    : public AbstractStage
 {
-
-private:
-    enum Type : size_t
-    {
-        FILL_MODE,
-        CULL_MODE,
-        WINDING_ORDER,
-
-        _TYPE_COUNT,
-    };
 
 public:
     /** Determines the fill mode to use when rendering. */
@@ -59,35 +49,27 @@ public:
         CounterClockwise,
     };
 
+private:
+    static constexpr unsigned DIRTY_FLAG_FILL_MODE      = 0x1;
+    static constexpr unsigned DIRTY_FLAG_CULL_MODE      = 0x2;
+    static constexpr unsigned DIRTY_FLAG_WINDING_ORDER  = 0x4;
+
 
 
     // #############################################################################
-    // Attributes
+    // States
     // #############################################################################
 private:
-    StateArray<unsigned long, _TYPE_COUNT> _states;
+    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( fill_mode, FillMode, FillMode::Solid, DIRTY_FLAG_FILL_MODE );
+    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( cull_mode, CullMode, CullMode::Back, DIRTY_FLAG_CULL_MODE );
+    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( winding_order, WindingOrder, WindingOrder::Clockwise, DIRTY_FLAG_WINDING_ORDER );
+
+}; // class RasterizerStage
 
 
 
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
-    FillMode get_fill_mode() const { return _states.get_value( FILL_MODE, FillMode::Solid ); }
-    CullMode get_cull_mode() const { return _states.get_value( CULL_MODE, CullMode::Back ); }
-    WindingOrder get_winding_order() const { return _states.get_value( WINDING_ORDER, WindingOrder::Clockwise ); }
-
-public:
-    void set_fill_mode(FillMode fill_mode) { _states.set_value( FILL_MODE, fill_mode ); }
-    void set_cull_mode(CullMode cull_mode) { _states.set_value( CULL_MODE, cull_mode ); }
-    void set_winding_order(WindingOrder winding_order) { _states.set_value( WINDING_ORDER, winding_order ); }
-
-}; // class RenderStates
-
-
-
-} // namespace states
+} // namespace pipeline
 } // namespace graphics
 } // namespace xl7
 
-#endif // XL7_GRAPHICS_STATES_RENDERSTATES_H
+#endif // XL7_GRAPHICS_PIPELINE_RASTERIZERSTAGE_H

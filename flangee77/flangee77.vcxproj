@@ -199,6 +199,14 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\AbstractPipelineObject.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\Pipeline.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\AbstractShaderStage.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\AbstractStage.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\InputAssemblerStage.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\OutputMergerStage.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\PixelShaderStage.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\RasterizerStage.h" />
     <ClInclude Include="src\XiaoLabs\graphics\images\ImageProcessor.h" />
     <ClInclude Include="src\CoreLabs\logging\HtmlLogHandler.h" />
     <ClInclude Include="src\XiaoLabs\graphics\images\ImageConverter.h" />
@@ -234,7 +242,6 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\DepthStencilTarget.h" />
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\ColorRenderTarget.h" />
     <ClInclude Include="src\XiaoLabs\resources\ResourceID.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\states\ShaderStates.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\CodeProvider.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\IndexDataProvider.h" />
     <ClInclude Include="src\XiaoLabs\resources\DefaultDataProvider.h" />
@@ -254,8 +261,6 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\IndexBufferImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\IndexType.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\Topology.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\states\AbstractStates.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\states\RenderStates.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingContextImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\RenderingContextImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\RenderingContext.h" />
@@ -339,8 +344,6 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\VertexShaderImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\VertexBuffer.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\VertexLayout.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\states\TargetStates.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\states\StreamStates.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\VertexBufferImpl.h" />
     <ClInclude Include="src\XiaoLabs\resources\ResourceUsage.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\VertexDataProvider.h" />
@@ -353,8 +356,17 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\textures\Texture2DArray.h" />
     <ClInclude Include="src\XiaoLabs\graphics\textures\Texture3D.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\textures\Texture2DImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\pipeline\VertexShaderStage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\AbstractPipelineObject.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\Pipeline.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\AbstractShaderStage.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\AbstractStage.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\InputAssemblerStage.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\OutputMergerStage.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\PixelShaderStage.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\RasterizerStage.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\images\ImageProcessor.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\ChannelOrder.cpp" />
     <ClCompile Include="src\CoreLabs\logging\HtmlLogHandler.cpp" />
@@ -381,7 +393,6 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\DepthStencilTarget.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\ColorRenderTarget.cpp" />
     <ClCompile Include="src\XiaoLabs\resources\ResourceID.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\states\ShaderStates.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\shaders\CodeProvider.cpp" />
     <ClCompile Include="src\XiaoLabs\resources\DefaultDataProvider.cpp" />
     <ClCompile Include="src\XiaoLabs\resources\DataProvider.cpp" />
@@ -394,8 +405,6 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\meshes\VertexBufferImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\meshes\MeshUtil.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\IndexBufferImpl.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\states\AbstractStates.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\states\RenderStates.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\RenderingContextImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\RenderingContextImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\RenderingContext.cpp" />
@@ -455,8 +464,6 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\VertexShaderImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\meshes\VertexBuffer.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\meshes\VertexLayout.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\states\TargetStates.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\states\StreamStates.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\meshes\VertexBufferImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\Surface.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\shared\meshes\VertexBufferBinding.cpp" />
@@ -467,6 +474,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClCompile Include="src\XiaoLabs\graphics\textures\Texture2DArray.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\textures\Texture3D.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\textures\Texture2DImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\pipeline\VertexShaderStage.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

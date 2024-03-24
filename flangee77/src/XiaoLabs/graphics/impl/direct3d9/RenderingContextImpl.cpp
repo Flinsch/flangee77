@@ -404,7 +404,7 @@ namespace direct3d9 {
             return it->second.Get();
 
         std::vector<D3DVERTEXELEMENT9> d3d_vertex_elements;
-        for ( unsigned stream_index = 0; stream_index < states::StreamStates::MAX_VERTEX_STREAMS; ++stream_index )
+        for ( unsigned stream_index = 0; stream_index < pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS; ++stream_index )
         {
             if ( !vertex_buffer_binding.vertex_buffer_ids[ stream_index ].is_valid() )
                 continue;

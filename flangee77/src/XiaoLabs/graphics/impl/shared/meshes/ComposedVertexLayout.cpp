@@ -22,7 +22,7 @@ namespace meshes {
     {
         auto* mesh_manager = xl7::graphics::GraphicsSystem::instance().get_rendering_device()->get_mesh_manager();
 
-        for ( unsigned stream_index = 0; stream_index < states::StreamStates::MAX_VERTEX_STREAMS; ++stream_index )
+        for ( unsigned stream_index = 0; stream_index < pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS; ++stream_index )
         {
             xl7::graphics::meshes::VertexBuffer* vertex_buffer;
             if ( vertex_buffer_binding.vertex_buffer_ids[ stream_index ].is_valid() )

@@ -1,15 +1,15 @@
-#include "AbstractStates.h"
+#include "AbstractStage.h"
 
 
 
 namespace xl7 {
 namespace graphics {
-namespace states {
+namespace pipeline {
 
 
 
 
 
-} // namespace states
+} // namespace pipeline
 } // namespace graphics
 } // namespace xl7

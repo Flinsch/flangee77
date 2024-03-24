@@ -4,8 +4,7 @@
 
 #include "./VertexBufferBinding.h"
 
-#include "../../../meshes/VertexBuffer.h"
-#include "../../../states/StreamStates.h"
+#include "../../../pipeline/InputAssemblerStage.h"
 
 
 
@@ -20,8 +19,8 @@ namespace meshes {
 struct ComposedVertexLayout
 {
 
-    xl7::graphics::meshes::VertexLayout vertex_layouts[ states::StreamStates::MAX_VERTEX_STREAMS ];
-    unsigned instance_data_step_rates[ states::StreamStates::MAX_VERTEX_STREAMS ];
+    xl7::graphics::meshes::VertexLayout vertex_layouts[ pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
+    unsigned instance_data_step_rates[ pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
     unsigned stream_count;
 
 

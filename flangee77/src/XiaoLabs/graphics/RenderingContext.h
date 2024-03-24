@@ -2,10 +2,7 @@
 #ifndef XL7_GRAPHICS_RENDERINGCONTEXT_H
 #define XL7_GRAPHICS_RENDERINGCONTEXT_H
 
-#include "./states/StreamStates.h"
-#include "./states/ShaderStates.h"
-#include "./states/RenderStates.h"
-#include "./states/TargetStates.h"
+#include "./pipeline/Pipeline.h"
 
 #include "./ClearFlags.h"
 #include "./Color.h"
@@ -35,7 +32,7 @@ protected:
     struct ResolvedTargetStates
     {
         unsigned target_count;
-        const surfaces::ColorRenderTarget* color_render_targets[ states::TargetStates::MAX_RENDER_TARGETS ];
+        const surfaces::ColorRenderTarget* color_render_targets[ pipeline::OutputMergerStage::MAX_RENDER_TARGETS ];
         const surfaces::DepthStencilTarget* depth_stencil_target;
     };
 
@@ -43,14 +40,14 @@ protected:
         : public ResolvedTargetStates
     {
         unsigned stream_count;
-        const meshes::VertexBuffer* vertex_buffers[ states::StreamStates::MAX_VERTEX_STREAMS ];
+        const meshes::VertexBuffer* vertex_buffers[ pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
         const meshes::IndexBuffer* index_buffer;
         meshes::Topology topology;
 
         const shaders::VertexShader* vertex_shader;
         const shaders::PixelShader* pixel_shader;
 
-        const states::RenderStates* render_states;
+        //const states::RenderStates* render_states;
     };
 
 
@@ -95,29 +92,9 @@ private:
 
 public:
     /**
-     * The stream states for the pipeline stage of the input assembler.
+     * The rendering pipeline and its stages.
      */
-    states::StreamStates stream_states;
-
-    /**
-     * The shader states for the pipeline stage of the vertex shader.
-     */
-    states::ShaderStates vertex_shader_states;
-
-    /**
-     * The shader states for the pipeline stage of the pixel shader.
-     */
-    states::ShaderStates pixel_shader_states;
-
-    /**
-     * The render states for the pipeline stage of the rasterizer.
-     */
-    states::RenderStates render_states;
-
-    /**
-     * The target states for the pipeline stage of the output merger.
-     */
-    states::TargetStates target_states;
+    pipeline::Pipeline pipeline;
 
 private:
     /**

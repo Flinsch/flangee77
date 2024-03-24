@@ -31,10 +31,10 @@ class RenderingContextImpl final
 private:
     struct HardwareStates
     {
-        IDirect3DSurface9* render_targets[ states::TargetStates::MAX_RENDER_TARGETS ];
+        IDirect3DSurface9* render_targets[ pipeline::OutputMergerStage::MAX_RENDER_TARGETS ];
         IDirect3DSurface9* depth_stencil_surface;
 
-        IDirect3DVertexBuffer9* vertex_buffers[ states::StreamStates::MAX_VERTEX_STREAMS ];
+        IDirect3DVertexBuffer9* vertex_buffers[ pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
         IDirect3DIndexBuffer9* index_buffer;
 
         IDirect3DVertexDeclaration9* vertex_declaration;

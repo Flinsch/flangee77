@@ -207,8 +207,8 @@ namespace direct3d11 {
 
 
         unsigned stream_count = 0;
-        unsigned stream_strides[ states::StreamStates::MAX_VERTEX_STREAMS ];
-        unsigned stream_offsets[ states::StreamStates::MAX_VERTEX_STREAMS ];
+        unsigned stream_strides[ pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
+        unsigned stream_offsets[ pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
 
         const unsigned max_vertex_stream_count = static_cast<RenderingDeviceImpl*>( get_rendering_device() )->get_capabilities().max_concurrent_vertex_stream_count;
         for ( unsigned stream_index = 0; stream_index < max_vertex_stream_count; ++stream_index )
