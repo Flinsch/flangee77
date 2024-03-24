@@ -191,6 +191,10 @@ namespace direct3d11 {
         // Adopt other capabilities.
         capabilities.max_simultaneous_render_target_count = D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT;
         capabilities.max_concurrent_vertex_stream_count = D3D11_IA_VERTEX_INPUT_RESOURCE_SLOT_COUNT;
+        capabilities.max_texture_sampler_slot_count = D3D11_COMMONSHADER_SAMPLER_SLOT_COUNT;
+
+        // And more.
+        capabilities.max_anisotropy = D3D11_REQ_MAXANISOTROPY;
 
         // Query the DXGI device interface.
         wrl::ComPtr<IDXGIDeviceN> dxgi_device;

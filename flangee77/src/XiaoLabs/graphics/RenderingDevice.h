@@ -53,6 +53,8 @@ public:
         unsigned max_simultaneous_render_target_count;
         /** The maximum number of concurrent vertex data streams. */
         unsigned max_concurrent_vertex_stream_count;
+        /** The maximum number of texture/sampler slots for any shader. */
+        unsigned max_texture_sampler_slot_count;
 
         struct
         {
@@ -78,6 +80,9 @@ public:
             /** The maximum texture aspect ratio (0: no limit). */
             unsigned max_aspect_ratio;
         } textures;
+
+        /** The maximum supported anisotropy to use when sampling a texture for minification, magnification, or mip-level sampling. */
+        unsigned max_anisotropy;
 
         struct
         {
