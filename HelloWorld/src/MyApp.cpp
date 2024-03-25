@@ -171,7 +171,9 @@ namespace helloworld {
         rendering_context->pipeline.ia.set_index_buffer_id( _index_buffer_id );
 
         rendering_context->pipeline.vs.set_shader_id( _vertex_shader_id );
+
         rendering_context->pipeline.ps.set_shader_id( _pixel_shader_id );
+        rendering_context->pipeline.ps.set_texture_id( 0, _texture_id );
 
         rendering_context->draw_indexed();
     }

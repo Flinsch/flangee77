@@ -176,6 +176,24 @@ namespace graphics {
     }
 
     /**
+     * 
+     */
+    template <class TShader>
+    static void _resolve_shader_states(RenderingContext::ResolvedShaderStates<TShader>& resolved_shader_states, RenderingDevice* const _rendering_device, pipeline::AbstractShaderStage& pipeline_as)
+    {
+        resolved_shader_states.shader = _rendering_device->get_shader_manager()->find_resource<TShader>( pipeline_as.get_shader_id() );
+
+        resolved_shader_states.texture_sampler_count = 0;
+        for ( unsigned slot_index = 0; slot_index < pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS; ++slot_index )
+        {
+            auto* texture = _rendering_device->get_texture_manager()->find_resource<textures::Texture>( pipeline_as.get_texture_id( slot_index ) );
+            resolved_shader_states.textures[ slot_index ] = texture;
+            if ( texture )
+                resolved_shader_states.texture_sampler_count = slot_index + 1;
+        }
+    }
+
+    /**
      * Gathers drawing states (including resolving resource IDs into usable objects).
      */
     void RenderingContext::_resolve_draw_states(ResolvedDrawStates& resolved_draw_states, bool indexed, bool instanced)
@@ -206,8 +224,8 @@ namespace graphics {
             resolved_draw_states.topology = pipeline.ia.get_topology( default_topology );
         } // indexed?
 
-        resolved_draw_states.vertex_shader = _rendering_device->get_shader_manager()->find_resource<shaders::VertexShader>( pipeline.vs.get_shader_id() );
-        resolved_draw_states.pixel_shader = _rendering_device->get_shader_manager()->find_resource<shaders::PixelShader>( pipeline.ps.get_shader_id() );
+        _resolve_shader_states( resolved_draw_states.vertex_shader, _rendering_device, pipeline.vs );
+        _resolve_shader_states( resolved_draw_states.pixel_shader, _rendering_device, pipeline.ps );
     }
 
     /**
@@ -247,13 +265,13 @@ namespace graphics {
             return false;
         }
 
-        if ( !resolved_draw_states.vertex_shader )
+        if ( !resolved_draw_states.vertex_shader.shader )
         {
             LOG_ERROR( TEXT("No vertex shader has been set.") );
             return false;
         }
 
-        if ( !resolved_draw_states.pixel_shader )
+        if ( !resolved_draw_states.pixel_shader.shader )
         {
             LOG_ERROR( TEXT("No pixel shader has been set.") );
             return false;

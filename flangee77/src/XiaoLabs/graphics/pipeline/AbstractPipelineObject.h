@@ -43,12 +43,12 @@ protected:
         std::array<Entry, N> a;
 
     public:
-        bool is_set(unsigned i) const { return a[i].is_set; }
+        bool is_set(unsigned index) const { return a[index].is_set; }
         template <typename TValue = TProxy>
-        TValue get_value(unsigned i, TValue default_value = TValue()) const { return a[i].is_set ? TValue(a[i].value) : default_value; }
+        TValue get_value(unsigned index, TValue default_value = TValue()) const { return a[index].is_set ? TValue(a[index].value) : default_value; }
         template <typename TValue = TProxy>
-        void set_value(unsigned i, TValue value) { a[i] = { true, TProxy(value) }; }
-        void reset_value(unsigned i) { a[i].is_set = false; }
+        void set_value(unsigned index, TValue value) { a[index] = { true, TProxy(value) }; }
+        void reset_value(unsigned index) { a[index].is_set = false; }
     }; // class StateArray
 
     /*template <typename TProxy>
@@ -56,20 +56,20 @@ protected:
     {
     struct Entry
     {
-    unsigned i;
+    unsigned index;
     TProxy value;
 
-    auto operator <=> (unsigned i) const { return this->i <=> i; }
+    auto operator <=> (unsigned index) const { return this->index <=> index; }
     };
     std::vector<Entry> v;
 
     public:
-    bool is_set(unsigned i) const { auto it = std::lower_bound( v.begin(), v.end(), i ); return it != v.end() && it->i == i; }
+    bool is_set(unsigned index) const { auto it = std::lower_bound( v.begin(), v.end(), index ); return it != v.end() && it->index == index; }
     template <typename TValue = TProxy>
-    TValue get_value(unsigned i, TValue default_value = TValue()) const { auto it = std::lower_bound( v.begin(), v.end(), i ); return it != v.end() && it->i == i ? TValue(it->value) : default_value; }
+    TValue get_value(unsigned index, TValue default_value = TValue()) const { auto it = std::lower_bound( v.begin(), v.end(), index ); return it != v.end() && it->index == index ? TValue(it->value) : default_value; }
     template <typename TValue = TProxy>
-    void set_value(unsigned i, TValue value) { auto it = std::lower_bound( v.begin(), v.end(), i ); if ( it != v.end() && it->i == i ) it->value = TProxy(value); else v.insert( it, { i, TProxy(value) } ); }
-    void reset_value(unsigned i) { auto it = std::lower_bound( v.begin(), v.end(), i ); if ( it != v.end() && it->i == i ) v.erase( it ); }
+    void set_value(unsigned index, TValue value) { auto it = std::lower_bound( v.begin(), v.end(), index ); if ( it != v.end() && it->index == index ) it->value = TProxy(value); else v.insert( it, { index, TProxy(value) } ); }
+    void reset_value(unsigned index) { auto it = std::lower_bound( v.begin(), v.end(), index ); if ( it != v.end() && it->index == index ) v.erase( it ); }
     }; // class StateVector*/
 
 #define _XL7_GRAPHICS_PIPELINE_SINGLE_STATE(name, type, default_value, dirty_flag) \
@@ -85,10 +85,10 @@ public: \
 private: \
     StateArray<type, count> _##name; \
 public: \
-    bool is_##name##_set(unsigned i) const { return i >= count ? false : _##name.is_set( i ); } \
-    type get_##name(unsigned i) const { return i >= count ? default_value : _##name.get_value( i, default_value ); } \
-    void set_##name(unsigned i, type value) { if (i >= count ) return; _##name.set_value( i, value ); _set_dirty( dirty_flag_base << i ); } \
-    void reset_##name(unsigned i) { if (i >= count ) return; _##name.reset_value( i ); _unset_dirty( dirty_flag_base << i ); }
+    bool is_##name##_set(unsigned index) const { return index >= count ? false : _##name.is_set( index ); } \
+    type get_##name(unsigned index) const { return index >= count ? default_value : _##name.get_value( index, default_value ); } \
+    void set_##name(unsigned index, type value) { if (index >= count ) return; _##name.set_value( index, value ); _set_dirty( dirty_flag_base << index ); } \
+    void reset_##name(unsigned index) { if (index >= count ) return; _##name.reset_value( index ); _unset_dirty( dirty_flag_base << index ); }
 
 #define _XL7_GRAPHICS_PIPELINE_STATE_ARRAY_DEFAULT0(name, count, type, default_value, dirty_flag_base) \
     _XL7_GRAPHICS_PIPELINE_STATE_ARRAY( name, count, type, default_value, dirty_flag_base ) \

@@ -3,9 +3,10 @@
 #define XL7_GRAPHICS_PIPELINE_ABSTRACTSHADERSTAGE_H
 #include "./AbstractStage.h"
 
-#include "../Color.h"
-
 #include "../shaders/Shader.h"
+#include "../textures/Texture.h"
+
+#include "../Color.h"
 
 
 
@@ -95,7 +96,8 @@ public:
     };
 
 private:
-    static constexpr unsigned DIRTY_FLAG_SHADER_ID  = 0x1;
+    static constexpr unsigned DIRTY_FLAG_SHADER     = 0x1;
+    static constexpr unsigned DIRTY_FLAG_TEXTURE    = 0x2;
 
 
 
@@ -103,7 +105,8 @@ private:
     // States
     // #############################################################################
 private:
-    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( shader_id, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_FLAG_SHADER_ID );
+    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( shader_id, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_FLAG_SHADER );
+    _XL7_GRAPHICS_PIPELINE_STATE_ARRAY( texture_id, MAX_TEXTURE_SAMPLER_SLOTS, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_FLAG_TEXTURE );
 
 }; // class AbstractShaderStage
 

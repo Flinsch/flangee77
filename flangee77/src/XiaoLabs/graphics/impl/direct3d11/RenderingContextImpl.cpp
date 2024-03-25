@@ -266,7 +266,7 @@ namespace direct3d11 {
         }
 
 
-        auto* vertex_shader = static_cast<const shaders::VertexShaderImpl*>( resolved_draw_states.vertex_shader );
+        auto* vertex_shader = static_cast<const shaders::VertexShaderImpl*>( resolved_draw_states.vertex_shader.shader );
         ID3D11VertexShader* d3d_vertex_shader;
         if ( vertex_shader )
             d3d_vertex_shader = vertex_shader->get_raw_d3d_vertex_shader();
@@ -279,7 +279,7 @@ namespace direct3d11 {
             hardware_states.vertex_shader = d3d_vertex_shader;
         }
 
-        auto* pixel_shader = static_cast<const shaders::PixelShaderImpl*>( resolved_draw_states.pixel_shader );
+        auto* pixel_shader = static_cast<const shaders::PixelShaderImpl*>( resolved_draw_states.pixel_shader.shader );
         ID3D11PixelShader* d3d_pixel_shader;
         if ( pixel_shader )
             d3d_pixel_shader = pixel_shader->get_raw_d3d_pixel_shader();
