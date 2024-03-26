@@ -79,6 +79,12 @@ public:
     // #############################################################################
 private:
     /**
+     * Returns the "raw" resource interface/accessor, if applicable, otherwise NULL.
+     */
+    virtual void* _get_raw_resource_impl() const override { return _d3d_vertex_shader.Get(); }
+
+private:
+    /**
      * Releases/"unacquires" the resource.
      * The resource may be in an incompletely acquired state when this function is
      * called. Any cleanup work that is necessary should still be carried out.

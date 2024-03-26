@@ -78,7 +78,7 @@ namespace resources {
             return false;
         }
 
-        if ( !_try_fill_data( data_provider ) )
+        if ( data_provider.get_size() > 0 && !_try_fill_data( data_provider ) )
         {
             return false;
         }

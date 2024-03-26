@@ -2,6 +2,7 @@
 
 #include "../GraphicsSystemImpl.h"
 #include "../RenderingDeviceImpl.h"
+#include "../RenderingContextImpl.h"
 #include "../mappings.h"
 #include "../errors.h"
 
@@ -58,7 +59,7 @@ namespace textures {
     // #############################################################################
 
     /**
-     * Requests/acquires a precompiled shader resource.
+     * Requests/acquires the texture resource.
      * The given data provider can possibly be ignored because the local data buffer
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
@@ -110,8 +111,8 @@ namespace textures {
                 subresource_data[ mip_level ].SysMemPitch = _stride * mipmap.get_width();
                 subresource_data[ mip_level ].SysMemSlicePitch = 0;
                 ++mip_level;
-            }
-        }
+            } // for each mip level
+        } // generate mipmaps?
 
         HRESULT hresult = d3d_device->CreateTexture2D(
             &texture_desc,
@@ -138,6 +139,81 @@ namespace textures {
         auto pair = mappings::_map_dxgi_format( _dxgi_format, _desc.preferred_channel_order );
         assert( pair.first == _desc.pixel_format );
         assert( pair.second == _channel_order );
+
+        return true;
+    }
+
+    /**
+     * Updates the contents of this texture (unless it is immutable).
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been updated based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    bool Texture2DImpl::_update_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider, bool discard, bool no_overwrite)
+    {
+        auto d3d_device_context = static_cast<RenderingContextImpl*>( GraphicsSystem::instance().get_rendering_device()->get_primary_context() )->get_raw_d3d_device_context();
+
+        if ( _desc.usage == resources::ResourceUsage::Dynamic )
+        {
+            D3D11_MAP map_type = D3D11_MAP_WRITE_DISCARD;
+
+            D3D11_MAPPED_SUBRESOURCE mapped_subresource;
+            HRESULT hresult = d3d_device_context->Map( _d3d_texture.Get(), 0, map_type, 0, &mapped_subresource );
+
+            if ( FAILED(hresult) )
+            {
+                LOG_ERROR( errors::d3d11_result( hresult, TEXT("ID3D11DeviceContext::Map") ) );
+                LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be mapped for writing.") );
+                return false;
+            }
+
+            std::byte* dst = static_cast<std::byte*>( mapped_subresource.pData );
+            const std::byte* src = _data.data();
+            for ( unsigned y = 0; y < _desc.height; ++y )
+            {
+                ::memcpy( dst, src, _line_pitch );
+                dst += mapped_subresource.RowPitch;
+                src += _line_pitch;
+            }
+
+            d3d_device_context->Unmap( _d3d_texture.Get(), 0 );
+        }
+        else // => _desc.usage == ResourceUsage::Default
+        {
+            unsigned copy_flags = D3D11_COPY_DISCARD;
+
+            D3D11_BOX box;
+            box.left = 0;
+            box.top = 0;
+            box.front = 0;
+            box.right = _desc.width;
+            box.bottom = _desc.height;
+            box.back = 1;
+
+            d3d_device_context->UpdateSubresource1( _d3d_texture.Get(), 0, &box, _data.data(), _line_pitch, 0, copy_flags );
+
+            if ( _desc.mip_levels != 1 )
+            {
+                std::vector<xl7::graphics::images::Image> mipmaps = create_mipmaps();
+                unsigned mip_level = 1;
+                for ( const auto& mipmap : mipmaps )
+                {
+                    if ( _desc.mip_levels != 0 && mip_level >= _desc.mip_levels )
+                        break;
+
+                    box.left = 0;
+                    box.top = 0;
+                    box.front = 0;
+                    box.right = mipmap.get_width();
+                    box.bottom = mipmap.get_height();
+                    box.back = 1;
+
+                    d3d_device_context->UpdateSubresource1( _d3d_texture.Get(), mip_level, &box, mipmap.get_data().data(), mipmap.get_width() * _stride, 0, D3D11_COPY_DISCARD );
+
+                    ++mip_level;
+                } // for each mip level
+            } // generate mipmaps?
+        }
 
         return true;
     }

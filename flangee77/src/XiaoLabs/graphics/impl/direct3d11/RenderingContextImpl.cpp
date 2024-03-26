@@ -266,31 +266,35 @@ namespace direct3d11 {
         }
 
 
-        auto* vertex_shader = static_cast<const shaders::VertexShaderImpl*>( resolved_draw_states.vertex_shader.shader );
+        auto* vertex_shader = static_cast<const shaders::VertexShaderImpl*>( resolved_draw_states.vs.shader );
         ID3D11VertexShader* d3d_vertex_shader;
         if ( vertex_shader )
             d3d_vertex_shader = vertex_shader->get_raw_d3d_vertex_shader();
         else
             d3d_vertex_shader = nullptr;
 
-        if ( d3d_vertex_shader != hardware_states.vertex_shader )
+        if ( d3d_vertex_shader != hardware_states.vs.shader )
         {
             _d3d_device_context->VSSetShader( d3d_vertex_shader, nullptr, 0 );
-            hardware_states.vertex_shader = d3d_vertex_shader;
+            hardware_states.vs.shader = d3d_vertex_shader;
         }
 
-        auto* pixel_shader = static_cast<const shaders::PixelShaderImpl*>( resolved_draw_states.pixel_shader.shader );
+        auto* pixel_shader = static_cast<const shaders::PixelShaderImpl*>( resolved_draw_states.ps.shader );
         ID3D11PixelShader* d3d_pixel_shader;
         if ( pixel_shader )
             d3d_pixel_shader = pixel_shader->get_raw_d3d_pixel_shader();
         else
             d3d_pixel_shader = nullptr;
 
-        if ( d3d_pixel_shader != hardware_states.pixel_shader )
+        if ( d3d_pixel_shader != hardware_states.ps.shader )
         {
             _d3d_device_context->PSSetShader( d3d_pixel_shader, nullptr, 0 );
-            hardware_states.pixel_shader = d3d_pixel_shader;
+            hardware_states.ps.shader = d3d_pixel_shader;
         }
+
+
+        _flush_texture_sampler_states( resolved_draw_states.vs, hardware_states.vs, &ID3D11DeviceContextN::VSSetShaderResources );
+        _flush_texture_sampler_states( resolved_draw_states.ps, hardware_states.ps, &ID3D11DeviceContextN::PSSetShaderResources );
 
 
         ID3D11InputLayout* d3d_input_layout = static_cast<RenderingDeviceImpl*>( get_rendering_device() )->_find_d3d_input_layout( vertex_buffer_binding );
@@ -310,6 +314,40 @@ namespace direct3d11 {
         {
             _d3d_device_context->IASetInputLayout( d3d_input_layout );
             hardware_states.input_layout = d3d_input_layout;
+        }
+
+
+        return true;
+    }
+
+    /**
+     * Transfers the current states to the device if necessary.
+     */
+    bool RenderingContextImpl::_flush_texture_sampler_states(const ResolvedTextureSamplerStates& resolved_texture_sampler_states, HardwareStates::TextureSamplerStates& hardware_texture_sampler_states, void (ID3D11DeviceContextN::*SetShaderResources)(unsigned, unsigned, ID3D11ShaderResourceView*const*))
+    {
+        unsigned slot_count = 0;
+
+        const unsigned max_texture_sampler_slot_count = static_cast<RenderingDeviceImpl*>( get_rendering_device() )->get_capabilities().max_texture_sampler_slot_count;
+        for ( unsigned slot_index = 0; slot_index < max_texture_sampler_slot_count; ++slot_index )
+        {
+            auto* texture = resolved_texture_sampler_states.textures[ slot_index ];
+            ID3D11ShaderResourceView* d3d_shader_resource_view;
+            if ( texture ) {
+                d3d_shader_resource_view = texture->get_raw_resource<ID3D11ShaderResourceView>();
+            } else {
+                d3d_shader_resource_view = nullptr;
+            }
+
+            if ( d3d_shader_resource_view != hardware_texture_sampler_states.shader_resource_views[ slot_index ] )
+            {
+                slot_count = slot_index + 1;
+                hardware_texture_sampler_states.shader_resource_views[ slot_index ] = d3d_shader_resource_view;
+            }
+        } // for each texture/sampler slot
+
+        if ( slot_count > 0 )
+        {
+            (_d3d_device_context.Get()->*SetShaderResources)( 0, slot_count, &hardware_texture_sampler_states.shader_resource_views[0] );
         }
 
 

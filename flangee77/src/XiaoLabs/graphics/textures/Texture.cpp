@@ -215,6 +215,30 @@ namespace textures {
         return mipmaps;
     }
 
+    /**
+     * Updates the contents of this texture (unless it is immutable).
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been updated based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    bool Texture::_update(const ImageDataProvider& image_data_provider)
+    {
+        if ( _desc.usage == resources::ResourceUsage::Immutable )
+        {
+            LOG_ERROR( TEXT("The immutable ") + get_typed_identifier_string() + TEXT(" cannot be updated.") );
+            return false;
+        }
+
+        if ( !_try_fill_data( image_data_provider ) )
+            return false;
+
+        assert( image_data_provider.get_offset() == 0 && _data.size() == _data_size );
+        bool discard = true;
+        bool no_overwrite = false;
+
+        return _update_impl( image_data_provider, discard, no_overwrite );
+    }
+
 
 
 } // namespace textures

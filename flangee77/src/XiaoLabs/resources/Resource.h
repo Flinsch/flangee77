@@ -121,6 +121,18 @@ protected:
     // #############################################################################
 public:
     /**
+     * Returns the "raw" resource interface/accessor, if applicable, otherwise NULL.
+     */
+    template <class T>
+    T* get_raw_resource() const
+    {
+        void* raw_resource = _get_raw_resource_impl();
+        //assert( static_cast<T*>( raw_resource ) == dynamic_cast<T*>( raw_resource ) ); // Unfortunately not possible with void*.
+        return static_cast<T*>( raw_resource );
+    }
+
+public:
+    /**
      * Returns the resource manager responsible for this resource.
      */
     ResourceManager* get_manager() const { return _manager; }
@@ -220,6 +232,12 @@ protected:
     // #############################################################################
     // Prototypes
     // #############################################################################
+private:
+    /**
+     * Returns the "raw" resource interface/accessor, if applicable, otherwise NULL.
+     */
+    virtual void* _get_raw_resource_impl() const { return nullptr; }
+
 private:
     /**
      * Checks whether the given data provider complies with the specific properties

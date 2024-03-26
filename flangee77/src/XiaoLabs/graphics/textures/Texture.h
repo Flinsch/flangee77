@@ -215,12 +215,20 @@ public:
     // #############################################################################
 private:
     /**
-     * Requests/acquires a precompiled shader resource.
+     * Requests/acquires the texture resource.
      * The given data provider can possibly be ignored because the local data buffer
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
     virtual bool _acquire_impl(const ImageDataProvider& image_data_provider) = 0;
+
+    /**
+     * Updates the contents of this texture (unless it is immutable).
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been updated based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    virtual bool _update_impl(const ImageDataProvider& image_data_provider, bool discard, bool no_overwrite) = 0;
 
 
 
@@ -237,6 +245,15 @@ protected:
      * Creates and returns mipmaps of the specified texture "image".
      */
     std::vector<images::Image> _create_mipmaps(unsigned image_index, images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const;
+
+protected:
+    /**
+     * Updates the contents of this texture (unless it is immutable).
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been updated based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    bool _update(const ImageDataProvider& image_data_provider);
 
 }; // class Texture
 

@@ -3,6 +3,8 @@
 #include "./meshes/VertexBufferImpl.h"
 #include "./meshes/IndexBufferImpl.h"
 
+#include "./textures/Texture2DImpl.h"
+
 #include "./shaders/VertexShaderImpl.h"
 #include "./shaders/PixelShaderImpl.h"
 
@@ -337,14 +339,14 @@ namespace direct3d9 {
         }
 
 
-        auto* vertex_shader = static_cast<const shaders::VertexShaderImpl*>( resolved_draw_states.vertex_shader.shader );
+        auto* vertex_shader = static_cast<const shaders::VertexShaderImpl*>( resolved_draw_states.vs.shader );
         IDirect3DVertexShader9* d3d_vertex_shader;
         if ( vertex_shader )
             d3d_vertex_shader = vertex_shader->get_raw_d3d_vertex_shader();
         else
             d3d_vertex_shader = nullptr;
 
-        if ( d3d_vertex_shader != hardware_states.vertex_shader )
+        if ( d3d_vertex_shader != hardware_states.vs.shader )
         {
             hresult = _d3d_device->SetVertexShader( d3d_vertex_shader );
             if ( FAILED(hresult) )
@@ -352,17 +354,17 @@ namespace direct3d9 {
                 LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetVertexShader") ) );
                 return false;
             }
-            hardware_states.vertex_shader = d3d_vertex_shader;
+            hardware_states.vs.shader = d3d_vertex_shader;
         }
 
-        auto* pixel_shader = static_cast<const shaders::PixelShaderImpl*>( resolved_draw_states.pixel_shader.shader );
+        auto* pixel_shader = static_cast<const shaders::PixelShaderImpl*>( resolved_draw_states.ps.shader );
         IDirect3DPixelShader9* d3d_pixel_shader;
         if ( pixel_shader )
             d3d_pixel_shader = pixel_shader->get_raw_d3d_pixel_shader();
         else
             d3d_pixel_shader = nullptr;
 
-        if ( d3d_pixel_shader != hardware_states.pixel_shader )
+        if ( d3d_pixel_shader != hardware_states.ps.shader )
         {
             hresult = _d3d_device->SetPixelShader( d3d_pixel_shader );
             if ( FAILED(hresult) )
@@ -370,8 +372,54 @@ namespace direct3d9 {
                 LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetPixelShader") ) );
                 return false;
             }
-            hardware_states.pixel_shader = d3d_pixel_shader;
+            hardware_states.ps.shader = d3d_pixel_shader;
         }
+
+
+        _flush_texture_sampler_states( resolved_draw_states.vs, hardware_states.vs, 4, D3DVERTEXTEXTURESAMPLER0 );
+        _flush_texture_sampler_states( resolved_draw_states.ps, hardware_states.ps, 8, 0 );
+
+
+        return true;
+    }
+
+    /**
+     * Transfers the current states to the device if necessary.
+     */
+    bool RenderingContextImpl::_flush_texture_sampler_states(const ResolvedTextureSamplerStates& resolved_texture_sampler_states, HardwareStates::TextureSamplerStates& hardware_texture_sampler_states, unsigned max_stage_count, unsigned stage_base)
+    {
+        HRESULT hresult;
+
+
+        const unsigned max_texture_sampler_slot_count = static_cast<RenderingDeviceImpl*>( get_rendering_device() )->get_capabilities().max_texture_sampler_slot_count;
+        for ( unsigned slot_index = 0; slot_index < max_texture_sampler_slot_count; ++slot_index )
+        {
+            auto* texture = resolved_texture_sampler_states.textures[ slot_index ];
+            IDirect3DBaseTexture9* d3d_base_texture;
+            if ( texture ) {
+                d3d_base_texture = texture->get_raw_resource<IDirect3DBaseTexture9>();
+            } else {
+                d3d_base_texture = nullptr;
+            }
+
+            if ( slot_index >= max_stage_count )
+            {
+                if ( d3d_base_texture )
+                    LOG_WARNING( TEXT("Texture/sampler slot exceeds allowed number of stages of ") + cl7::to_string(max_stage_count) + TEXT(".") );
+                continue;
+            }
+
+            if ( d3d_base_texture != hardware_texture_sampler_states.base_textures[ slot_index ] )
+            {
+                hresult = _d3d_device->SetTexture( stage_base + slot_index, d3d_base_texture );
+                if ( FAILED(hresult) )
+                {
+                    LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetTexture") ) );
+                    return false;
+                }
+                hardware_texture_sampler_states.base_textures[ slot_index ] = d3d_base_texture;
+            }
+        } // for each texture/sampler slot
 
 
         return true;

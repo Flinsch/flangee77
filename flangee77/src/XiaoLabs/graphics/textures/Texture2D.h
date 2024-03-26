@@ -88,6 +88,12 @@ public:
      */
     std::vector<images::Image> create_mipmaps(images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const { return _create_mipmaps( 0, resampling_method ); }
 
+public:
+    /**
+     * Updates the contents of this texture (unless it is immutable).
+     */
+    bool update(const ImageDataProvider& image_data_provider);
+
 
 
     // #############################################################################

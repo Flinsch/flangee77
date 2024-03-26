@@ -36,8 +36,20 @@ private:
 
         ID3D11InputLayout* input_layout;
 
-        ID3D11VertexShader* vertex_shader;
-        ID3D11PixelShader* pixel_shader;
+        struct TextureSamplerStates
+        {
+            ID3D11ShaderResourceView* shader_resource_views[ pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS ];
+        };
+
+        template <class TD3D11Shader>
+        struct ShaderStates
+            : public TextureSamplerStates
+        {
+            TD3D11Shader* shader;
+        };
+
+        ShaderStates<ID3D11VertexShader> vs;
+        ShaderStates<ID3D11PixelShader> ps;
 
         HardwareStates();
     } hardware_states;
@@ -145,6 +157,11 @@ private:
      * Transfers the current states to the device if necessary.
      */
     bool _flush_draw_states(const ResolvedDrawStates& resolved_draw_states);
+
+    /**
+     * Transfers the current states to the device if necessary.
+     */
+    bool _flush_texture_sampler_states(const ResolvedTextureSamplerStates& resolved_texture_sampler_states, HardwareStates::TextureSamplerStates& hardware_texture_sampler_states, void (ID3D11DeviceContextN::*SetShaderResources)(unsigned, unsigned, ID3D11ShaderResourceView*const*));
 
 }; // class RenderingContextImpl
 

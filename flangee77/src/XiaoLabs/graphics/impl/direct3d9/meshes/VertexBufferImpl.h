@@ -82,6 +82,12 @@ public:
     // #############################################################################
 private:
     /**
+     * Returns the "raw" resource interface/accessor, if applicable, otherwise NULL.
+     */
+    virtual void* _get_raw_resource_impl() const override { return _d3d_vertex_buffer.Get(); }
+
+private:
+    /**
      * Requests/acquires the resource, bringing it into a usable state.
      * The given data provider can possibly be ignored because the local data buffer
      * has already been filled based on it. It is still included in the event that

@@ -55,7 +55,7 @@ namespace textures {
     // #############################################################################
 
     /**
-     * Requests/acquires a precompiled shader resource.
+     * Requests/acquires the texture resource.
      * The given data provider can possibly be ignored because the local data buffer
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
@@ -90,7 +90,82 @@ namespace textures {
         if ( _data.empty() )
             return true;
 
-        //return _update_impl( data_provider, true, true );
+        return _update_impl( image_data_provider, true, true );
+    }
+
+    /**
+     * Updates the contents of this texture (unless it is immutable).
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been updated based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    bool Texture2DImpl::_update_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider, bool discard, bool no_overwrite)
+    {
+        DWORD flags = D3DLOCK_DISCARD;
+
+        constexpr unsigned MAX_LEVELS = 16; // Just some value big enough.
+        struct UpdateDesc
+        {
+            const std::byte* data;
+            RECT rect;
+        };
+        UpdateDesc update_desc[ MAX_LEVELS ];
+        update_desc[ 0 ].data = _data.data();
+        update_desc[ 0 ].rect.left = 0;
+        update_desc[ 0 ].rect.top = 0;
+        update_desc[ 0 ].rect.right = static_cast<LONG>( _desc.width );
+        update_desc[ 0 ].rect.bottom = static_cast<LONG>( _desc.height );
+        unsigned mip_level = 1;
+
+        std::vector<xl7::graphics::images::Image> mipmaps;
+        if ( false && _desc.mip_levels != 1 )
+        {
+            mipmaps = create_mipmaps();
+            for ( const auto& mipmap : mipmaps )
+            {
+                if ( _desc.mip_levels != 0 && mip_level >= _desc.mip_levels )
+                    break;
+                assert( mip_level < MAX_LEVELS );
+                update_desc[ mip_level ].data = mipmap.get_data().data();
+                update_desc[ mip_level ].rect.left = 0;
+                update_desc[ mip_level ].rect.top = 0;
+                update_desc[ mip_level ].rect.right = static_cast<LONG>( mipmap.get_width() );
+                update_desc[ mip_level ].rect.bottom = static_cast<LONG>( mipmap.get_height() );
+                ++mip_level;
+            } // for each mip level
+        } // generate mipmaps?
+
+        for ( unsigned i = 0; i < mip_level; ++i )
+        {
+            D3DLOCKED_RECT d3d_locked_rect;
+            HRESULT hresult = _d3d_texture->LockRect(
+                i,
+                &d3d_locked_rect,
+                &update_desc[ i ].rect,
+                i > 0 ? D3DLOCK_DISCARD : flags );
+
+            if ( FAILED(hresult) )
+            {
+                LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DTexture::LockRect") ) );
+                return false;
+            }
+
+            std::byte* dst = static_cast<std::byte*>( d3d_locked_rect.pBits );
+            const std::byte* src = update_desc[ i ].data;
+            unsigned width = static_cast<unsigned>( update_desc[ i ].rect.right - update_desc[ i ].rect.left );
+            unsigned height = static_cast<unsigned>( update_desc[ i ].rect.bottom - update_desc[ i ].rect.top );
+            unsigned pitch = width * _stride;
+            for ( unsigned y = 0; y < height; ++y )
+            {
+                ::memcpy( dst, src, pitch );
+                dst += d3d_locked_rect.Pitch;
+                src += pitch;
+            }
+
+            hresult = _d3d_texture->UnlockRect( i );
+            assert( SUCCEEDED(hresult) );
+        }
+
         return true;
     }
 

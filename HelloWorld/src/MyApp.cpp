@@ -63,11 +63,13 @@ namespace helloworld {
         {
             float x, y, z;
             unsigned color;
+            float u, v;
         };
 
         xl7::graphics::meshes::VertexLayout vertex_layout;
         vertex_layout.elements.push_back( { xl7::graphics::meshes::VertexLayout::Semantic::POSITION,    0,  xl7::graphics::meshes::VertexLayout::DataType::FLOAT3 } );
         vertex_layout.elements.push_back( { xl7::graphics::meshes::VertexLayout::Semantic::COLOR,       0,  xl7::graphics::meshes::VertexLayout::DataType::COLOR } );
+        vertex_layout.elements.push_back( { xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD,    0,  xl7::graphics::meshes::VertexLayout::DataType::FLOAT2 } );
         assert( vertex_layout.calculate_size() == sizeof(Vertex) );
 
         xl7::graphics::meshes::VertexBuffer::Desc vertex_buffer_desc {
@@ -86,10 +88,10 @@ namespace helloworld {
         };
 
         constexpr Vertex vertices[] {
-            { -0.5f, -0.5f,  0.0f, 0xffff0000 },
-            { -0.5f, +0.5f,  0.0f, 0xff00ff00 },
-            { +0.5f, -0.5f,  0.0f, 0xff0000ff },
-            { +0.5f, +0.5f,  0.0f, 0xffffff00 },
+            { -0.5f, -0.5f,  0.0f, 0xffff0000, 0.0, 1.0 },
+            { -0.5f, +0.5f,  0.0f, 0xff00ff00, 0.0, 0.0 },
+            { +0.5f, -0.5f,  0.0f, 0xff0000ff, 1.0, 1.0 },
+            { +0.5f, +0.5f,  0.0f, 0xffffff00, 1.0, 0.0 },
         };
         constexpr unsigned short indices[] { 0, 1, 2, 3 };
 
@@ -119,10 +121,10 @@ namespace helloworld {
         xl7::graphics::images::Image image;
         xl7::graphics::images::TargaImageHandler targa_image_handler;
         xl7::graphics::images::PngImageHandler png_image_handler;
-        targa_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy.tga"), image );
-        targa_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy-compressed.tga"), image );
+        //targa_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy.tga"), image );
+        //targa_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy-compressed.tga"), image );
         png_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy.png"), image );
-        png_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy-indexed.png"), image );
+        //png_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy-indexed.png"), image );
 
         xl7::graphics::textures::Texture2D::Desc texture_desc {
             xl7::resources::ResourceUsage::Immutable,

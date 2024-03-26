@@ -36,11 +36,16 @@ protected:
         const surfaces::DepthStencilTarget* depth_stencil_target;
     };
 
-    template <class TShader>
-    struct ResolvedShaderStates
+    struct ResolvedTextureSamplerStates
     {
         unsigned texture_sampler_count;
         const textures::Texture* textures[ pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS ];
+    };
+
+    template <class TShader>
+    struct ResolvedShaderStates
+        : public ResolvedTextureSamplerStates
+    {
         const TShader* shader;
     };
 
@@ -52,8 +57,8 @@ protected:
         const meshes::IndexBuffer* index_buffer;
         meshes::Topology topology;
 
-        ResolvedShaderStates<shaders::VertexShader> vertex_shader;
-        ResolvedShaderStates<shaders::PixelShader> pixel_shader;
+        ResolvedShaderStates<shaders::VertexShader> vs;
+        ResolvedShaderStates<shaders::PixelShader> ps;
 
         //const states::RenderStates* render_states;
     };

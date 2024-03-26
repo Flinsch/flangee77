@@ -82,6 +82,12 @@ public:
     // #############################################################################
 private:
     /**
+     * Returns the "raw" resource interface/accessor, if applicable, otherwise NULL.
+     */
+    virtual void* _get_raw_resource_impl() const override { return _d3d_texture.Get(); }
+
+private:
+    /**
      * Releases/"unacquires" the resource.
      * The resource may be in an incompletely acquired state when this function is
      * called. Any cleanup work that is necessary should still be carried out.
@@ -95,12 +101,20 @@ private:
     // #############################################################################
 private:
     /**
-     * Requests/acquires a precompiled shader resource.
+     * Requests/acquires the texture resource.
      * The given data provider can possibly be ignored because the local data buffer
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
     virtual bool _acquire_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider) override;
+
+    /**
+     * Updates the contents of this texture (unless it is immutable).
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been updated based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    virtual bool _update_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider, bool discard, bool no_overwrite) override;
 
 }; // class Texture2DImpl
 

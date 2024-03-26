@@ -23,6 +23,20 @@ namespace textures {
 
 
 
+    // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Updates the contents of this texture (unless it is immutable).
+     */
+    bool Texture2D::update(const ImageDataProvider& image_data_provider)
+    {
+        return _update( image_data_provider );
+    }
+
+
+
 } // namespace textures
 } // namespace graphics
 } // namespace xl7

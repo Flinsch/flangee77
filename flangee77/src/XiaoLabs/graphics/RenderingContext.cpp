@@ -224,8 +224,8 @@ namespace graphics {
             resolved_draw_states.topology = pipeline.ia.get_topology( default_topology );
         } // indexed?
 
-        _resolve_shader_states( resolved_draw_states.vertex_shader, _rendering_device, pipeline.vs );
-        _resolve_shader_states( resolved_draw_states.pixel_shader, _rendering_device, pipeline.ps );
+        _resolve_shader_states( resolved_draw_states.vs, _rendering_device, pipeline.vs );
+        _resolve_shader_states( resolved_draw_states.ps, _rendering_device, pipeline.ps );
     }
 
     /**
@@ -265,13 +265,13 @@ namespace graphics {
             return false;
         }
 
-        if ( !resolved_draw_states.vertex_shader.shader )
+        if ( !resolved_draw_states.vs.shader )
         {
             LOG_ERROR( TEXT("No vertex shader has been set.") );
             return false;
         }
 
-        if ( !resolved_draw_states.pixel_shader.shader )
+        if ( !resolved_draw_states.ps.shader )
         {
             LOG_ERROR( TEXT("No pixel shader has been set.") );
             return false;

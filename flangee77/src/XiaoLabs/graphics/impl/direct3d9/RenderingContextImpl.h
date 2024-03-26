@@ -39,8 +39,20 @@ private:
 
         IDirect3DVertexDeclaration9* vertex_declaration;
 
-        IDirect3DVertexShader9* vertex_shader;
-        IDirect3DPixelShader9* pixel_shader;
+        struct TextureSamplerStates
+        {
+            IDirect3DBaseTexture9* base_textures[ pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS ];
+        };
+
+        template <class TDirect3DShader9>
+        struct ShaderStates
+            : public TextureSamplerStates
+        {
+            TDirect3DShader9* shader;
+        };
+
+        ShaderStates<IDirect3DVertexShader9> vs;
+        ShaderStates<IDirect3DPixelShader9> ps;
 
         HardwareStates();
     };
@@ -154,6 +166,11 @@ private:
      * Transfers the current states to the device if necessary.
      */
     bool _flush_draw_states(const ResolvedDrawStates& resolved_draw_states);
+
+    /**
+     * Transfers the current states to the device if necessary.
+     */
+    bool _flush_texture_sampler_states(const ResolvedTextureSamplerStates& resolved_texture_sampler_states, HardwareStates::TextureSamplerStates& hardware_texture_sampler_states, unsigned max_stage_count, unsigned stage_base);
 
 private:
     /**
