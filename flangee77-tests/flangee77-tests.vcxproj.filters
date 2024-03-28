@@ -41,5 +41,11 @@
     <ClInclude Include="src\shared.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\CoreLabs\Guid.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CoreLabs\Base64.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

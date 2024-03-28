@@ -199,6 +199,8 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\CoreLabs\Base64.h" />
+    <ClInclude Include="src\CoreLabs\Guid.h" />
     <ClInclude Include="src\XiaoLabs\graphics\pipeline\AbstractPipelineObject.h" />
     <ClInclude Include="src\XiaoLabs\graphics\pipeline\Pipeline.h" />
     <ClInclude Include="src\XiaoLabs\graphics\pipeline\AbstractShaderStage.h" />
@@ -359,6 +361,8 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\pipeline\VertexShaderStage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\CoreLabs\Base64.cpp" />
+    <ClCompile Include="src\CoreLabs\Guid.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\pipeline\AbstractPipelineObject.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\pipeline\Pipeline.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\pipeline\AbstractShaderStage.cpp" />

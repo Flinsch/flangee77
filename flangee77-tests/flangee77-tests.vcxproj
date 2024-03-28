@@ -231,6 +231,8 @@ xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(LocalD
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\CoreLabs\Base64.h" />
+    <ClInclude Include="src\CoreLabs\Guid.h" />
     <ClInclude Include="src\CoreLabs\strings.h" />
     <ClInclude Include="src\CoreLabs\bits.h" />
     <ClInclude Include="src\CoreLabs\Version.h" />

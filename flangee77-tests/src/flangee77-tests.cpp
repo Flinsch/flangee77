@@ -4,6 +4,8 @@
 
 #include "./CoreLabs/bits.h"
 #include "./CoreLabs/strings.h"
+#include "./CoreLabs/Base64.h"
+#include "./CoreLabs/Guid.h"
 #include "./CoreLabs/Version.h"
 
 #include "./DataLabs/compression.h"

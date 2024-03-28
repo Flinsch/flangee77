@@ -489,6 +489,12 @@
     <ClInclude Include="src\XiaoLabs\graphics\pipeline\AbstractPipelineObject.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\CoreLabs\Guid.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CoreLabs\Base64.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -837,6 +843,12 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\pipeline\AbstractPipelineObject.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CoreLabs\Guid.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CoreLabs\Base64.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
