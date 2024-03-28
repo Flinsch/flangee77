@@ -1,28 +1,28 @@
 #pragma once
-#ifndef XL7_GRAPHICS_TEXTURES_TEXTUREMANAGER_H
-#define XL7_GRAPHICS_TEXTURES_TEXTUREMANAGER_H
+#ifndef XL7_GRAPHICS_STATES_STATEMANAGER_H
+#define XL7_GRAPHICS_STATES_STATEMANAGER_H
 #include "../../resources/ResourceManager.h"
 
-#include "./ITextureFactory.h"
+#include "./IStateFactory.h"
 
 
 
 namespace xl7 {
 namespace graphics {
     class RenderingDevice;
-namespace textures {
+namespace states {
 
 
 
-class TextureManager final
+class StateManager
     : public resources::ResourceManager
 {
 
 public:
     class Attorney
     {
-        static TextureManager* create(ITextureFactory* factory) { return new TextureManager( factory ); }
-        static void destroy(TextureManager* manager) { delete manager; }
+        static StateManager* create(IStateFactory* factory) { return new StateManager( factory ); }
+        static void destroy(StateManager* manager) { delete manager; }
         friend class RenderingDevice;
     };
 
@@ -35,20 +35,20 @@ protected:
     /**
      * Explicit constructor.
      */
-    TextureManager(ITextureFactory* factory);
+    StateManager(IStateFactory* factory);
 
     /**
      * Destructor.
      */
-    virtual ~TextureManager();
+    virtual ~StateManager();
 
 private:
     /** Default constructor. */
-    TextureManager() = delete;
+    StateManager() = delete;
     /** Copy constructor. */
-    TextureManager(const TextureManager&) = delete;
+    StateManager(const StateManager&) = delete;
     /** Copy assignment operator. */
-    TextureManager& operator = (const TextureManager&) = delete;
+    StateManager& operator = (const StateManager&) = delete;
 
 
 
@@ -57,9 +57,9 @@ private:
     // #############################################################################
 private:
     /**
-     * The texture factory.
+     * The state factory.
      */
-    ITextureFactory* const _factory;
+    IStateFactory* const _factory;
 
 
 
@@ -68,16 +68,16 @@ private:
     // #############################################################################
 public:
     /**
-     * Creates and acquires the specified 2D texture.
+     * Creates and acquires the specified sampler state if not already done.
      */
-    resources::ResourceID create_texture_2d(cl7::astring_view identifier, const Texture2D::Desc& desc, const ImageDataProvider& data_provider);
+    resources::ResourceID ensure_sampler_state(const SamplerState::Desc& desc);
 
-}; // class TextureManager
+}; // class StateManager
 
 
 
-} // namespace textures
+} // namespace states
 } // namespace graphics
 } // namespace xl7
 
-#endif // XL7_GRAPHICS_TEXTURES_TEXTUREMANAGER_H
+#endif // XL7_GRAPHICS_STATES_STATEMANAGER_H

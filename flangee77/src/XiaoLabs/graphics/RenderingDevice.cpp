@@ -24,6 +24,7 @@ namespace graphics {
         , _texture_manager( { textures::TextureManager::Attorney::create( _resource_factory.get() ), textures::TextureManager::Attorney::destroy } )
         , _mesh_manager( { meshes::MeshManager::Attorney::create( _resource_factory.get() ), meshes::MeshManager::Attorney::destroy } )
         , _shader_manager( { shaders::ShaderManager::Attorney::create( _resource_factory.get() ), shaders::ShaderManager::Attorney::destroy } )
+        , _state_manager( { states::StateManager::Attorney::create( _resource_factory.get() ), states::StateManager::Attorney::destroy } )
         , _device_lost( false )
     {
     }

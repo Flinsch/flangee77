@@ -199,6 +199,8 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\states\SamplerStateImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\states\SamplerStateImpl.h" />
     <ClInclude Include="src\CoreLabs\Base64.h" />
     <ClInclude Include="src\CoreLabs\Guid.h" />
     <ClInclude Include="src\XiaoLabs\graphics\pipeline\AbstractPipelineObject.h" />
@@ -217,6 +219,10 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\textures\Texture2DImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ParameterDesc.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ParameterType.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\states\AbstractState.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\states\IStateFactory.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\states\SamplerState.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\states\StateManager.h" />
     <ClInclude Include="src\XiaoLabs\graphics\textures\ImageDataProvider.h" />
     <ClInclude Include="src\XiaoLabs\graphics\images\ImageStack.h" />
     <ClInclude Include="src\CoreLabs\bits.h" />
@@ -361,6 +367,8 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\pipeline\VertexShaderStage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\states\SamplerStateImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\states\SamplerStateImpl.cpp" />
     <ClCompile Include="src\CoreLabs\Base64.cpp" />
     <ClCompile Include="src\CoreLabs\Guid.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\pipeline\AbstractPipelineObject.cpp" />
@@ -379,6 +387,9 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClCompile Include="src\XiaoLabs\graphics\images\ImageResizer.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\textures\Texture2DImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\PixelFormat.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\states\AbstractState.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\states\SamplerState.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\states\StateManager.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\textures\ImageDataProvider.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\images\ImageStack.cpp" />
     <ClCompile Include="src\CoreLabs\system\CPUID.cpp" />

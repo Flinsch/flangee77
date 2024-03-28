@@ -68,7 +68,7 @@ private:
      * A lookup table that maps a given resource identifier to the corresponding
      * resource ID.
      */
-    std::unordered_map<cl7::string_view, ResourceID> _resource_lookup;
+    std::unordered_map<cl7::astring_view, ResourceID> _resource_lookup;
 
     /**
      * A "list" of indices that mark free entries in the "linear list".
@@ -105,7 +105,7 @@ public:
      * Time complexity: constant on average, worst case linear in the number of
      * contained resources.
      */
-    bool contains_resource(cl7::string_view identifier) const;
+    bool contains_resource(cl7::astring_view identifier) const;
 
     /**
      * Returns the resource identified by the given index.
@@ -125,7 +125,7 @@ public:
      * Time complexity: constant on average, worst case linear in the number of
      * contained resources.
      */
-    Resource* find_resource(cl7::string_view identifier) const;
+    Resource* find_resource(cl7::astring_view identifier) const;
 
     /**
      * Returns the resource identified by the given index.
@@ -158,7 +158,7 @@ public:
      * contained resources.
      */
     template <class TResource>
-    TResource* find_resource(cl7::string_view identifier) const
+    TResource* find_resource(cl7::astring_view identifier) const
     {
         Resource* resource = find_resource( identifier );
         assert( static_cast<TResource*>( resource ) == dynamic_cast<TResource*>( resource ) );
@@ -189,7 +189,7 @@ public:
      * Time complexity: constant on average, worst case linear in the number of
      * contained resources.
      */
-    bool release_resource(cl7::string_view identifier);
+    bool release_resource(cl7::astring_view identifier);
 
     /**
      * Releases all managed resources (and removes them from this resource manager).

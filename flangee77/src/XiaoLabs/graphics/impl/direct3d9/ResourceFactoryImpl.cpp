@@ -8,6 +8,8 @@
 #include "./shaders/VertexShaderImpl.h"
 #include "./shaders/PixelShaderImpl.h"
 
+#include "./states/SamplerStateImpl.h"
+
 
 
 namespace xl7 {
@@ -59,6 +61,13 @@ namespace direct3d9 {
     xl7::graphics::shaders::PixelShader* ResourceFactoryImpl::create_pixel_shader(const resources::Resource::CreateParams<xl7::graphics::shaders::VertexShader::Desc>& params)
     {
         return shaders::PixelShaderImpl::Attorney::create( params );
+    }
+
+
+
+    xl7::graphics::states::SamplerState* ResourceFactoryImpl::create_sampler_state(const resources::Resource::CreateParams<xl7::graphics::states::SamplerState::Desc>& params)
+    {
+        return states::SamplerStateImpl::Attorney::create( params );
     }
 
 

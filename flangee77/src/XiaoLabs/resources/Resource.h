@@ -4,7 +4,7 @@
 
 #include "./ResourceID.h"
 #include "./ResourceUsage.h"
-#include "./DataProvider.h"
+#include "./DefaultDataProvider.h"
 
 #include <CoreLabs/byte_view.h>
 #include <CoreLabs/byte_vector.h>
@@ -42,7 +42,7 @@ public:
         /** The (new) ID of the resource to create. */
         ResourceID id;
         /** The textual identifier of the resource to create (may be empty). */
-        cl7::string_view identifier;
+        cl7::astring_view identifier;
         /** The descriptor of the resource to create. */
         TDesc desc;
     };
@@ -56,7 +56,7 @@ protected:
     /**
      * Explicit constructor.
      */
-    Resource(ResourceManager* manager, ResourceID id, cl7::string_view identifier);
+    Resource(ResourceManager* manager, ResourceID id, cl7::astring_view identifier);
 
     /**
      * Explicit constructor.
@@ -99,7 +99,7 @@ private:
     /**
      * The textual identifier of this resource (if specified, empty otherwise).
      */
-    const cl7::string _identifier;
+    const cl7::astring _identifier;
 
 private:
     /**
@@ -145,7 +145,7 @@ public:
     /**
      * Returns the identifier of this resource (if specified, empty otherwise).
      */
-    const cl7::string& get_identifier() const { return _identifier; }
+    const cl7::astring& get_identifier() const { return _identifier; }
 
     /**
      * Indicates whether this resource is ready for use (i.e., it is managed by its
@@ -165,9 +165,14 @@ public:
     // #############################################################################
 public:
     /**
+     * Returns the identifier of this resource (if specified, empty otherwise).
+     */
+    cl7::string get_identifier_string() const;
+
+    /**
      * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    cl7::string get_typed_identifier_string() const { return cl7::string(get_type_string()) + TEXT(" \"") + get_identifier() + TEXT("\""); }
+    cl7::string get_typed_identifier_string() const { return cl7::string(get_type_string()) + TEXT(" \"") + get_identifier_string() + TEXT("\""); }
 
     /**
      * Releases/"unacquires" the resource and removes it from its owning manager,

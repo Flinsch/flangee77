@@ -3,6 +3,7 @@
 #include "./ResourceManager.h"
 
 #include <CoreLabs/logging.h>
+#include <CoreLabs/strings.h>
 
 
 
@@ -18,7 +19,7 @@ namespace resources {
     /**
      * Explicit constructor.
      */
-    Resource::Resource(ResourceManager* manager, ResourceID id, cl7::string_view identifier)
+    Resource::Resource(ResourceManager* manager, ResourceID id, cl7::astring_view identifier)
         : _manager( manager )
         , _id( id )
         , _identifier( identifier )
@@ -41,6 +42,14 @@ namespace resources {
     // #############################################################################
     // Methods
     // #############################################################################
+
+    /**
+     * Returns the identifier of this resource (if specified, empty otherwise).
+     */
+    cl7::string Resource::get_identifier_string() const
+    {
+        return cl7::strings::from_ascii( get_identifier() );
+    }
 
     /**
      * Releases/"unacquires" the resource and removes it from its owning manager,

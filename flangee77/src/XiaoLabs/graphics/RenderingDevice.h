@@ -10,6 +10,7 @@
 #include "./textures/TextureManager.h"
 #include "./meshes/MeshManager.h"
 #include "./shaders/ShaderManager.h"
+#include "./states/StateManager.h"
 
 #include <CoreLabs/Version.h>
 
@@ -104,6 +105,7 @@ protected:
     typedef ResourceManagerPtr<textures::TextureManager> TextureManagerPtr;
     typedef ResourceManagerPtr<meshes::MeshManager> MeshManagerPtr;
     typedef ResourceManagerPtr<shaders::ShaderManager> ShaderManagerPtr;
+    typedef ResourceManagerPtr<states::StateManager> StateManagerPtr;
 
 
 
@@ -172,6 +174,11 @@ private:
      */
     ShaderManagerPtr _shader_manager;
 
+    /**
+     * The state manager.
+     */
+    StateManagerPtr _state_manager;
+
 private:
     /**
      * The flag indicating whether the device was lost.
@@ -221,6 +228,11 @@ public:
      *  Returns the shader manager.
      */
     shaders::ShaderManager* get_shader_manager() const { return _shader_manager.get(); }
+
+    /**
+     * Returns the state manager.
+     */
+    states::StateManager* get_state_manager() const { return _state_manager.get(); }
 
 
 

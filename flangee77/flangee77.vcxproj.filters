@@ -495,6 +495,24 @@
     <ClInclude Include="src\CoreLabs\Base64.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\states\AbstractState.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\states\IStateFactory.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\states\SamplerState.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\states\StateManager.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\states\SamplerStateImpl.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\states\SamplerStateImpl.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -849,6 +867,21 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\CoreLabs\Base64.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\states\AbstractState.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\states\SamplerState.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\states\StateManager.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\states\SamplerStateImpl.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\states\SamplerStateImpl.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

@@ -22,6 +22,7 @@ namespace graphics {
     inline textures::TextureManager* texture_manager() { return rendering_device()->get_texture_manager(); }
     inline meshes::MeshManager* mesh_manager() { return rendering_device()->get_mesh_manager(); }
     inline shaders::ShaderManager* shader_manager() { return rendering_device()->get_shader_manager(); }
+    inline states::StateManager* state_manager() { return rendering_device()->get_state_manager(); }
 
 
 

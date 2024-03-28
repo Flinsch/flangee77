@@ -38,7 +38,7 @@ namespace shaders {
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    resources::ResourceID ShaderManager::create_vertex_shader(cl7::string_view identifier, const CodeProvider& code_provider, cl7::astring_view entry_point)
+    resources::ResourceID ShaderManager::create_vertex_shader(cl7::astring_view identifier, const CodeProvider& code_provider, cl7::astring_view entry_point)
     {
         Shader::Desc desc{ code_provider.get_language(), cl7::astring(entry_point) };
         resources::Resource::CreateParams<Shader::Desc> params{ this, _next_id(), identifier, desc };
@@ -53,7 +53,7 @@ namespace shaders {
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    resources::ResourceID ShaderManager::create_pixel_shader(cl7::string_view identifier, const CodeProvider& code_provider, cl7::astring_view entry_point)
+    resources::ResourceID ShaderManager::create_pixel_shader(cl7::astring_view identifier, const CodeProvider& code_provider, cl7::astring_view entry_point)
     {
         Shader::Desc desc{ code_provider.get_language(), cl7::astring(entry_point) };
         resources::Resource::CreateParams<Shader::Desc> params{ this, _next_id(), identifier, desc };

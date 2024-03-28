@@ -39,7 +39,7 @@ namespace meshes {
     /**
      * Creates and acquires the specified vertex shader.
      */
-    resources::ResourceID MeshManager::_create_vertex_buffer(cl7::string_view identifier, const VertexBuffer::Desc& desc, const resources::DataProvider& data_provider)
+    resources::ResourceID MeshManager::_create_vertex_buffer(cl7::astring_view identifier, const VertexBuffer::Desc& desc, const resources::DataProvider& data_provider)
     {
         resources::Resource::CreateParams<VertexBuffer::Desc> params{ this, _next_id(), identifier, desc };
 
@@ -51,7 +51,7 @@ namespace meshes {
     /**
      * Creates and acquires the specified index buffer.
      */
-    resources::ResourceID MeshManager::_create_index_buffer(cl7::string_view identifier, const IndexBuffer::Desc& desc, const resources::DataProvider& data_provider)
+    resources::ResourceID MeshManager::_create_index_buffer(cl7::astring_view identifier, const IndexBuffer::Desc& desc, const resources::DataProvider& data_provider)
     {
         resources::Resource::CreateParams<IndexBuffer::Desc> params{ this, _next_id(), identifier, desc };
 

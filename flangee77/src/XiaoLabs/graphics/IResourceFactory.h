@@ -5,6 +5,7 @@
 #include "./textures/ITextureFactory.h"
 #include "./meshes/IMeshFactory.h"
 #include "./shaders/IShaderFactory.h"
+#include "./states/IStateFactory.h"
 
 
 
@@ -18,6 +19,7 @@ class IResourceFactory
     , public textures::ITextureFactory
     , public meshes::IMeshFactory
     , public shaders::IShaderFactory
+    , public states::IStateFactory
 {
 public:
     virtual ~IResourceFactory() = default;
