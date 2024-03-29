@@ -30,6 +30,7 @@ namespace states {
     StateManager::StateManager(IStateFactory* factory)
         : ResourceManager()
         , _factory( factory )
+        , _default_sampler_state( nullptr )
     {
     }
 
@@ -45,6 +46,30 @@ namespace states {
     // #############################################################################
     // Methods
     // #############################################################################
+
+    /**
+     * Creates and acquires the default state objects.
+     */
+    bool StateManager::create_default_states()
+    {
+        release_default_states();
+
+        _default_sampler_state = find_resource<states::SamplerState>( ensure_sampler_state( states::SamplerState::Desc() ) );
+        assert( _default_sampler_state );
+
+        return _default_sampler_state;
+    }
+
+    /**
+     * Releases the default state objects.
+     */
+    bool StateManager::release_default_states()
+    {
+        release_resource( _default_sampler_state );
+        _default_sampler_state = nullptr;
+
+        return true;
+    }
 
     /**
      * Creates and acquires the specified sampler state if not already done.

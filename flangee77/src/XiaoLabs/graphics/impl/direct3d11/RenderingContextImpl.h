@@ -39,6 +39,7 @@ private:
         struct TextureSamplerStates
         {
             ID3D11ShaderResourceView* shader_resource_views[ pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS ];
+            ID3D11SamplerState* sampler_states[ pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS ];
         };
 
         template <class TD3D11Shader>
@@ -161,7 +162,7 @@ private:
     /**
      * Transfers the current states to the device if necessary.
      */
-    bool _flush_texture_sampler_states(const ResolvedTextureSamplerStates& resolved_texture_sampler_states, HardwareStates::TextureSamplerStates& hardware_texture_sampler_states, void (ID3D11DeviceContextN::*SetShaderResources)(unsigned, unsigned, ID3D11ShaderResourceView*const*));
+    bool _flush_texture_sampler_states(const ResolvedTextureSamplerStates& resolved_texture_sampler_states, HardwareStates::TextureSamplerStates& hardware_texture_sampler_states, void (ID3D11DeviceContextN::*SetShaderResources)(unsigned, unsigned, ID3D11ShaderResourceView*const*), void (ID3D11DeviceContextN::*SetSamplers)(unsigned, unsigned, ID3D11SamplerState*const*));
 
 }; // class RenderingContextImpl
 

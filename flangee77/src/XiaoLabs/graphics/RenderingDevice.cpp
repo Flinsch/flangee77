@@ -218,6 +218,10 @@ namespace graphics {
         _check_adjust_max_cap( _capabilities.max_concurrent_vertex_stream_count, pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS, TEXT("vertex data streams concurrently") );
         _check_adjust_max_cap( _capabilities.max_texture_sampler_slot_count, pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS, TEXT("texture/sampler slots") );
 
+        // Create default state objects.
+        if ( !_state_manager->create_default_states() )
+            return false;
+
         // Ensure (primary) rendering context.
         if ( get_rendering_context() == nullptr )
             return false;
@@ -246,6 +250,8 @@ namespace graphics {
     bool RenderingDevice::_shutdown()
     {
         _rendering_contexts.clear();
+
+        _state_manager->release_default_states();
 
         _capabilities = Capabilities();
 

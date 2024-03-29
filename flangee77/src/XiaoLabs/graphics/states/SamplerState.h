@@ -78,11 +78,11 @@ public:
         Color border_color  = Color::ZERO;
 
         /** The offset from the calculated mipmap level (default: 0). For example, if a texture should actually be sampled at mipmap level 3 and mip_lod_bias is 2, the texture will be sampled at mipmap level 5. */
-        float mip_lod_bias  = 0.0f;
+        float lod_bias  = 0.0f;
         /** The lower end of the mipmap range to clamp access to, where 0 is the largest and most detailed mipmap level and any level higher than that is less detailed. */
-        float min_lod       = 0.0f;
+        float min_lod   = -FLT_MAX;
         /** The upper end of the mipmap range to clamp access to, where 0 is the largest and most detailed mipmap level and any level higher than that is less detailed. This value must be greater than or equal to min_lod. To have no upper limit, set this to a large value such as FLT_MAX. */
-        float max_lod       = FLT_MAX;
+        float max_lod   = +FLT_MAX;
 
         /** The maximum anisotropy to use (if applicable). Values range from 1 (default) to the maximum supported anisotropy specified in the capabilities of the rendering device. */
         unsigned max_anisotropy = 1;

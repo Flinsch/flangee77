@@ -61,12 +61,39 @@ private:
      */
     IStateFactory* const _factory;
 
+private:
+    /**
+     * The default sampler state.
+     */
+    states::SamplerState* _default_sampler_state;
+
+
+
+    // #############################################################################
+    // Properties
+    // #############################################################################
+public:
+    /**
+     * Returns the default sampler state.
+     */
+    states::SamplerState* get_default_sampler_state() const { return _default_sampler_state; }
+
 
 
     // #############################################################################
     // Methods
     // #############################################################################
 public:
+    /**
+     * Creates and acquires the default state objects.
+     */
+    bool create_default_states();
+
+    /**
+     * Releases the default state objects.
+     */
+    bool release_default_states();
+
     /**
      * Creates and acquires the specified sampler state if not already done.
      */

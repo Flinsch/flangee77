@@ -40,6 +40,7 @@ protected:
     {
         unsigned texture_sampler_count;
         const textures::Texture* textures[ pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS ];
+        const states::SamplerState* sampler_states[ pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS ];
     };
 
     template <class TShader>

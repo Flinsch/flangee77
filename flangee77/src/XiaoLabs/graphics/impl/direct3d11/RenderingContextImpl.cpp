@@ -6,6 +6,8 @@
 #include "./shaders/VertexShaderImpl.h"
 #include "./shaders/PixelShaderImpl.h"
 
+#include "./states/SamplerStateImpl.h"
+
 #include "./RenderingDeviceImpl.h"
 #include "./errors.h"
 
@@ -293,8 +295,8 @@ namespace direct3d11 {
         }
 
 
-        _flush_texture_sampler_states( resolved_draw_states.vs, hardware_states.vs, &ID3D11DeviceContextN::VSSetShaderResources );
-        _flush_texture_sampler_states( resolved_draw_states.ps, hardware_states.ps, &ID3D11DeviceContextN::PSSetShaderResources );
+        _flush_texture_sampler_states( resolved_draw_states.vs, hardware_states.vs, &ID3D11DeviceContextN::VSSetShaderResources, &ID3D11DeviceContextN::VSSetSamplers );
+        _flush_texture_sampler_states( resolved_draw_states.ps, hardware_states.ps, &ID3D11DeviceContextN::PSSetShaderResources, &ID3D11DeviceContextN::PSSetSamplers );
 
 
         ID3D11InputLayout* d3d_input_layout = static_cast<RenderingDeviceImpl*>( get_rendering_device() )->_find_d3d_input_layout( vertex_buffer_binding );
@@ -323,7 +325,7 @@ namespace direct3d11 {
     /**
      * Transfers the current states to the device if necessary.
      */
-    bool RenderingContextImpl::_flush_texture_sampler_states(const ResolvedTextureSamplerStates& resolved_texture_sampler_states, HardwareStates::TextureSamplerStates& hardware_texture_sampler_states, void (ID3D11DeviceContextN::*SetShaderResources)(unsigned, unsigned, ID3D11ShaderResourceView*const*))
+    bool RenderingContextImpl::_flush_texture_sampler_states(const ResolvedTextureSamplerStates& resolved_texture_sampler_states, HardwareStates::TextureSamplerStates& hardware_texture_sampler_states, void (ID3D11DeviceContextN::*SetShaderResources)(unsigned, unsigned, ID3D11ShaderResourceView*const*), void (ID3D11DeviceContextN::*SetSamplers)(unsigned, unsigned, ID3D11SamplerState*const*))
     {
         unsigned slot_count = 0;
 
@@ -338,16 +340,27 @@ namespace direct3d11 {
                 d3d_shader_resource_view = nullptr;
             }
 
+            auto* sampler_state = static_cast<const states::SamplerStateImpl*>( resolved_texture_sampler_states.sampler_states[ slot_index ] );
+            assert( sampler_state );
+            ID3D11SamplerState* d3d_sampler_state = sampler_state->get_raw_d3d_sampler_state();
+
             if ( d3d_shader_resource_view != hardware_texture_sampler_states.shader_resource_views[ slot_index ] )
             {
                 slot_count = slot_index + 1;
                 hardware_texture_sampler_states.shader_resource_views[ slot_index ] = d3d_shader_resource_view;
+            }
+
+            if ( d3d_sampler_state != hardware_texture_sampler_states.sampler_states[ slot_index ] )
+            {
+                slot_count = slot_index + 1;
+                hardware_texture_sampler_states.sampler_states[ slot_index ] = d3d_sampler_state;
             }
         } // for each texture/sampler slot
 
         if ( slot_count > 0 )
         {
             (_d3d_device_context.Get()->*SetShaderResources)( 0, slot_count, &hardware_texture_sampler_states.shader_resource_views[0] );
+            (_d3d_device_context.Get()->*SetSamplers)( 0, slot_count, &hardware_texture_sampler_states.sampler_states[0] );
         }
 
 

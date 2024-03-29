@@ -50,7 +50,7 @@ private:
     xl7::resources::ResourceID _pixel_shader_id;
 
     xl7::resources::ResourceID _texture_id;
-    xl7::resources::ResourceID _sampler_id;
+    xl7::resources::ResourceID _sampler_state_id;
 
 
 

@@ -190,6 +190,12 @@ namespace graphics {
             resolved_shader_states.textures[ slot_index ] = texture;
             if ( texture )
                 resolved_shader_states.texture_sampler_count = slot_index + 1;
+
+            auto* sampler_state = _rendering_device->get_state_manager()->find_resource<states::SamplerState>( pipeline_as.get_sampler_state_id( slot_index ) );
+            if ( !sampler_state )
+                sampler_state = _rendering_device->get_state_manager()->get_default_sampler_state();
+            assert( sampler_state );
+            resolved_shader_states.sampler_states[ slot_index ] = sampler_state;
         }
     }
 

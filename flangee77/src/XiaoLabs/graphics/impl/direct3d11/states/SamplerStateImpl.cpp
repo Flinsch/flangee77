@@ -45,7 +45,7 @@ namespace states {
             D3D11_FILTER_REDUCTION_TYPE_STANDARD );
     }
 
-    static D3D11_TEXTURE_ADDRESS_MODE _d3d_address_mode_from(xl7::graphics::states::SamplerState::AddressMode address_mode)
+    static D3D11_TEXTURE_ADDRESS_MODE _d3d_texture_address_mode_from(xl7::graphics::states::SamplerState::AddressMode address_mode)
     {
         static_assert( static_cast<unsigned>( xl7::graphics::states::SamplerState::AddressMode::Wrap ) == static_cast<unsigned>( D3D11_TEXTURE_ADDRESS_WRAP ) );
         static_assert( static_cast<unsigned>( xl7::graphics::states::SamplerState::AddressMode::Mirror ) == static_cast<unsigned>( D3D11_TEXTURE_ADDRESS_MIRROR ) );
@@ -89,10 +89,10 @@ namespace states {
 
         D3D11_SAMPLER_DESC sampler_desc;
         sampler_desc.Filter = _d3d_filter_from( _desc.min_filter_type, _desc.mag_filter_type, _desc.mip_filter_type );
-        sampler_desc.AddressU = _d3d_address_mode_from( _desc.address_u );
-        sampler_desc.AddressV = _d3d_address_mode_from( _desc.address_v );
-        sampler_desc.AddressW = _d3d_address_mode_from( _desc.address_w );
-        sampler_desc.MipLODBias = _desc.mip_lod_bias;
+        sampler_desc.AddressU = _d3d_texture_address_mode_from( _desc.address_u );
+        sampler_desc.AddressV = _d3d_texture_address_mode_from( _desc.address_v );
+        sampler_desc.AddressW = _d3d_texture_address_mode_from( _desc.address_w );
+        sampler_desc.MipLODBias = _desc.lod_bias;
         sampler_desc.MaxAnisotropy = _desc.max_anisotropy;
         sampler_desc.ComparisonFunc = D3D11_COMPARISON_NEVER;
         sampler_desc.BorderColor[0] = _desc.border_color.r;

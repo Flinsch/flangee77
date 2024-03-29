@@ -8,6 +8,8 @@
 #include "./shaders/VertexShaderImpl.h"
 #include "./shaders/PixelShaderImpl.h"
 
+#include "./states/SamplerStateImpl.h"
+
 #include "./RenderingDeviceImpl.h"
 #include "./errors.h"
 
@@ -419,6 +421,24 @@ namespace direct3d9 {
                 }
                 hardware_texture_sampler_states.base_textures[ slot_index ] = d3d_base_texture;
             }
+
+            auto* sampler_state = static_cast<const states::SamplerStateImpl*>( resolved_texture_sampler_states.sampler_states[ slot_index ] );
+            assert( sampler_state );
+            const states::D3DSamplerStateTypeValues& d3d_sampler_state_type_values = sampler_state->get_d3d_sampler_state_type_values();
+
+            for ( size_t k = 0; k < states::D3D_SAMPLER_STATE_TYPE_COUNT; ++k )
+            {
+                if ( d3d_sampler_state_type_values[ k ].second != hardware_texture_sampler_states.sampler_state_type_values[ slot_index ][ k ].second )
+                {
+                    hresult = _d3d_device->SetSamplerState( slot_index, d3d_sampler_state_type_values[ k ].first, d3d_sampler_state_type_values[ k ].second );
+                    if ( FAILED(hresult) )
+                    {
+                        LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetSamplerState") ) );
+                        return false;
+                    }
+                    hardware_texture_sampler_states.sampler_state_type_values[ slot_index ][ k ] = d3d_sampler_state_type_values[ k ];
+                }
+            } // for each sampler state
         } // for each texture/sampler slot
 
 

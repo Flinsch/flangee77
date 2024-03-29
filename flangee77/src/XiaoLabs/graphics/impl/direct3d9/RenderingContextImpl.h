@@ -5,6 +5,8 @@
 
 #include "./prerequisites.h"
 
+#include "./states/D3DSamplerStateTypeValues.h"
+
 #include "../shared/meshes/VertexBufferBinding.h"
 #include "../shared/meshes/ComposedVertexLayout.h"
 
@@ -42,6 +44,7 @@ private:
         struct TextureSamplerStates
         {
             IDirect3DBaseTexture9* base_textures[ pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS ];
+            states::D3DSamplerStateTypeValues sampler_state_type_values[ pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS ];
         };
 
         template <class TDirect3DShader9>

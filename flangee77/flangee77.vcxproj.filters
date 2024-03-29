@@ -513,6 +513,9 @@
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\states\SamplerStateImpl.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\states\D3DSamplerStateTypeValues.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">

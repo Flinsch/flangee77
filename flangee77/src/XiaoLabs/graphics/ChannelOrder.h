@@ -16,7 +16,7 @@ enum class ChannelOrder
     RGBA,
     ARGB,
     ABGR,
-    BGRA,
+    BGRA, // Corresponds to D3DCOLOR of Direct3D 9.
 };
 
 

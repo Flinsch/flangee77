@@ -140,7 +140,7 @@ namespace helloworld {
         xl7::graphics::textures::ImageDataProvider image_data_provider{ &image };
 
         _texture_id = xl7::graphics::texture_manager()->create_texture_2d( "My Texture", texture_desc, image_data_provider );
-        _sampler_id = xl7::graphics::state_manager()->ensure_sampler_state( sampler_desc );
+        _sampler_state_id = xl7::graphics::state_manager()->ensure_sampler_state( sampler_desc );
 
         return true;
     }
@@ -152,7 +152,7 @@ namespace helloworld {
      */
     bool MyApp::_shutdown_impl()
     {
-        xl7::graphics::state_manager()->release_resource_and_invalidate( _sampler_id );
+        xl7::graphics::state_manager()->release_resource_and_invalidate( _sampler_state_id );
         xl7::graphics::texture_manager()->release_resource_and_invalidate( _texture_id );
 
         xl7::graphics::mesh_manager()->release_resource_and_invalidate( _vertex_buffer_id );
@@ -180,6 +180,7 @@ namespace helloworld {
 
         rendering_context->pipeline.ps.set_shader_id( _pixel_shader_id );
         rendering_context->pipeline.ps.set_texture_id( 0, _texture_id );
+        rendering_context->pipeline.ps.set_sampler_state_id( 0, _sampler_state_id );
 
         rendering_context->draw_indexed();
     }

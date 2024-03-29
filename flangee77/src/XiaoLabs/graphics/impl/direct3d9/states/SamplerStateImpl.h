@@ -5,6 +5,8 @@
 
 #include "../prerequisites.h"
 
+#include "./D3DSamplerStateTypeValues.h"
+
 
 
 namespace xl7 {
@@ -56,6 +58,10 @@ private:
     // Attributes
     // #############################################################################
 private:
+    /**
+     * The Direct3D 9 sampler state type values.
+     */
+    D3DSamplerStateTypeValues _d3d_sampler_state_type_values;
 
 
 
@@ -63,6 +69,10 @@ private:
     // Properties
     // #############################################################################
 public:
+    /**
+     * Returns the Direct3D 9 sampler state type values.
+     */
+    const D3DSamplerStateTypeValues& get_d3d_sampler_state_type_values() const { return _d3d_sampler_state_type_values; }
 
 
 

@@ -200,6 +200,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\states\SamplerStateImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\states\D3DSamplerStateTypeValues.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\states\SamplerStateImpl.h" />
     <ClInclude Include="src\CoreLabs\Base64.h" />
     <ClInclude Include="src\CoreLabs\Guid.h" />
