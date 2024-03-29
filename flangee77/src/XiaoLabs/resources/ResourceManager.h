@@ -166,35 +166,43 @@ public:
     }
 
     /**
-     * Releases the specified resource (and removes it from this resource manager).
+     * Releases the specified resource. If its reference count reaches zero, the
+     * resource is actually disposed/"unacquired" (and removed from this resource
+     * manager).
      * Time complexity: constant.
      */
     bool release_resource(Resource* resource);
 
     /**
-     * Releases the specified resource (and removes it from this resource manager).
+     * Releases the specified resource. If its reference count reaches zero, the
+     * resource is actually disposed/"unacquired" (and removed from this resource
+     * manager).
      * Time complexity: constant.
      */
     bool release_resource(ResourceID id);
 
     /**
-     * Releases the specified resource (and removes it from this resource manager)
-     * and invalidates the given ID.
+     * Releases the specified resource and invalidates the given ID. If the
+     * reference count reaches zero, the resource is actually disposed/"unacquired"
+     * (and removed from this resource manager).
      * Time complexity: constant.
      */
     bool release_resource_and_invalidate(ResourceID& id);
 
     /**
-     * Releases the specified resource (and removes it from this resource manager).
+     * Releases the specified resource. If its reference count reaches zero, the
+     * resource is actually disposed/"unacquired" (and removed from this resource
+     * manager).
      * Time complexity: constant on average, worst case linear in the number of
      * contained resources.
      */
     bool release_resource(cl7::astring_view identifier);
 
     /**
-     * Releases all managed resources (and removes them from this resource manager).
+     * Disposes/"unacquires" all managed resources (and removes them from this
+     * resource manager).
      */
-    void release_resources();
+    void dispose_resources();
 
 
 

@@ -28,6 +28,7 @@ public:
     class Attorney
     {
         static bool acquire(Resource* resource, const DataProvider& data_provider) { return resource->_acquire( data_provider ); }
+        static void dispose(Resource* resource) { resource->_dispose(); }
         static void release(Resource* resource) { resource->_release(); }
         static void destroy(Resource* resource) { delete resource; }
         friend class ResourceManager;
@@ -103,6 +104,12 @@ private:
 
 private:
     /**
+     * The reference count to determine whether the resource should actually be
+     * disposed/"unacquired" when released.
+     */
+    unsigned _reference_count;
+
+    /**
      * The flag that indicates whether this resource is ready for use (i.e., it is
      * managed by its owning manager and has been successfully acquired).
      */
@@ -148,6 +155,12 @@ public:
     const cl7::astring& get_identifier() const { return _identifier; }
 
     /**
+     * Returns the reference count to determine whether the resource should actually
+     * be disposed/"unacquired" when released.
+     */
+    unsigned get_reference_count() const { return _reference_count; }
+
+    /**
      * Indicates whether this resource is ready for use (i.e., it is managed by its
      * owning manager and has been successfully acquired).
      */
@@ -175,8 +188,15 @@ public:
     cl7::string get_typed_identifier_string() const { return cl7::string(get_type_string()) + TEXT(" \"") + get_identifier_string() + TEXT("\""); }
 
     /**
-     * Releases/"unacquires" the resource and removes it from its owning manager,
-     * thereby rendering it unusable.
+     * Increases the reference count. A call to this function should be paired with
+     * a call to the release function (or one of the manager's release functions).
+     */
+    void add_reference();
+
+    /**
+     * Releases the resource. If the reference count reaches zero, the resource is
+     * actually disposed/"unacquired" (and removed from its owning manager), thereby
+     * rendering it unusable.
      * Time complexity: linear in the number of contained resources of the owning
      * manager.
      */
@@ -194,8 +214,15 @@ private:
     bool _acquire(const DataProvider& data_provider);
 
     /**
-     * Releases/"unacquires" the resource, thereby rendering it unusable, indicating
+     * Disposes/"unacquires" the resource, thereby rendering it unusable, indicating
      * that it is no longer managed by its owning manager.
+     */
+    void _dispose();
+
+    /**
+     * Decreases the reference count. If it reaches zero, the resource is actually
+     * disposed/"unacquired", thereby rendering it unusable, indicating that it is
+     * no longer managed by its owning manager.
      */
     void _release();
 
@@ -265,11 +292,11 @@ private:
     virtual bool _acquire_impl(const DataProvider& data_provider) = 0;
 
     /**
-     * Releases/"unacquires" the resource.
+     * Disposes/"unacquires" the resource.
      * The resource may be in an incompletely acquired state when this function is
      * called. Any cleanup work that is necessary should still be carried out.
      */
-    virtual bool _release_impl() = 0;
+    virtual bool _dispose_impl() = 0;
 
 public:
     /**

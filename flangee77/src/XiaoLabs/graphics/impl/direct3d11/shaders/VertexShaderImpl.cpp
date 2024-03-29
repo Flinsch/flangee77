@@ -37,11 +37,11 @@ namespace shaders {
     // #############################################################################
 
     /**
-     * Releases/"unacquires" the resource.
+     * Disposes/"unacquires" the resource.
      * The resource may be in an incompletely acquired state when this function is
      * called. Any cleanup work that is necessary should still be carried out.
      */
-    bool VertexShaderImpl::_release_impl()
+    bool VertexShaderImpl::_dispose_impl()
     {
         _d3d_vertex_shader.Reset();
 

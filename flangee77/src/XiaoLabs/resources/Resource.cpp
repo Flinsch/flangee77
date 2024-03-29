@@ -23,6 +23,7 @@ namespace resources {
         : _manager( manager )
         , _id( id )
         , _identifier( identifier )
+        , _reference_count( 1 )
         , _is_usable( false )
         , _data()
     {
@@ -34,6 +35,7 @@ namespace resources {
      */
     Resource::~Resource()
     {
+        assert( _reference_count == 0 );
         assert( !_is_usable );
     }
 
@@ -52,8 +54,25 @@ namespace resources {
     }
 
     /**
-     * Releases/"unacquires" the resource and removes it from its owning manager,
-     * thereby rendering it unusable.
+     * Increases the reference count. A call to this function should be paired with
+     * a call to the release function (or one of the manager's release functions).
+     */
+    void Resource::add_reference()
+    {
+        if ( !_is_usable )
+        {
+            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" appears to have already been released.") );
+            return;
+        }
+
+        assert( _reference_count > 0 );
+        ++_reference_count;
+    }
+
+    /**
+     * Releases the resource. If the reference count reaches zero, the resource is
+     * actually disposed/"unacquired" (and removed from its owning manager), thereby
+     * rendering it unusable.
      * Time complexity: linear in the number of contained resources of the owning
      * manager.
      */
@@ -95,7 +114,7 @@ namespace resources {
         if ( !_acquire_impl( data_provider ) )
         {
             LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be acquired.") );
-            _release();
+            _dispose();
             return false;
         }
 
@@ -104,17 +123,31 @@ namespace resources {
     }
 
     /**
-     * Releases/"unacquires" the resource, thereby rendering it unusable, indicating
+     * Disposes/"unacquires" the resource, thereby rendering it unusable, indicating
      * that it is no longer managed by its owning manager.
      */
-    void Resource::_release()
+    void Resource::_dispose()
     {
-        if ( !_release_impl() )
+        if ( !_dispose_impl() )
         {
             LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be released without problems.") );
         }
 
         _is_usable = false;
+    }
+
+    /**
+     * Decreases the reference count. If it reaches zero, the resource is actually
+     * disposed/"unacquired", thereby rendering it unusable, indicating that it is
+     * no longer managed by its owning manager.
+     */
+    void Resource::_release()
+    {
+        assert( _reference_count > 0 );
+        if ( --_reference_count > 0 )
+            return;
+
+        _dispose();
     }
 
 

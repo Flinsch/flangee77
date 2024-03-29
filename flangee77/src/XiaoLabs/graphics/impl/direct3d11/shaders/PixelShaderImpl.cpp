@@ -37,11 +37,11 @@ namespace shaders {
     // #############################################################################
 
     /**
-     * Releases/"unacquires" the resource.
+     * Disposes/"unacquires" the resource.
      * The resource may be in an incompletely acquired state when this function is
      * called. Any cleanup work that is necessary should still be carried out.
      */
-    bool PixelShaderImpl::_release_impl()
+    bool PixelShaderImpl::_dispose_impl()
     {
         _d3d_pixel_shader.Reset();
 

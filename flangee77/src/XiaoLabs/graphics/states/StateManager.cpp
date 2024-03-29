@@ -79,7 +79,10 @@ namespace states {
         const cl7::astring identifier = _identifier( "sampler state", desc );
         resources::Resource* resource = find_resource( identifier );
         if ( resource )
+        {
+            resource->add_reference();
             return resource->get_id();
+        }
 
         resources::Resource::CreateParams<SamplerState::Desc> params{ this, _next_id(), identifier, desc };
 

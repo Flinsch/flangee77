@@ -91,11 +91,11 @@ namespace states {
     }
 
     /**
-     * Releases/"unacquires" the resource.
+     * Disposes/"unacquires" the resource.
      * The resource may be in an incompletely acquired state when this function is
      * called. Any cleanup work that is necessary should still be carried out.
      */
-    bool SamplerStateImpl::_release_impl()
+    bool SamplerStateImpl::_dispose_impl()
     {
         return true;
     }

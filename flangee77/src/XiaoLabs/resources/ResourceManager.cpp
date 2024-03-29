@@ -146,7 +146,9 @@ namespace resources {
     }
 
     /**
-     * Releases the specified resource (and removes it from this resource manager).
+     * Releases the specified resource. If its reference count reaches zero, the
+     * resource is actually disposed/"unacquired" (and removed from this resource
+     * manager).
      * Time complexity: constant.
      */
     bool ResourceManager::release_resource(Resource* resource)
@@ -158,7 +160,9 @@ namespace resources {
     }
 
     /**
-     * Releases the specified resource (and removes it from this resource manager).
+     * Releases the specified resource. If its reference count reaches zero, the
+     * resource is actually disposed/"unacquired" (and removed from this resource
+     * manager).
      * Time complexity: constant.
      */
     bool ResourceManager::release_resource(ResourceID id)
@@ -181,18 +185,22 @@ namespace resources {
         auto it = _resource_lookup.find( resource->get_identifier() );
         assert( it != _resource_lookup.end() );
 
+        Resource::Attorney::release( resource );
+        if ( resource->get_reference_count() > 0 )
+            return true;
+
         _resource_lookup.erase( it );
         _free_indices.push_back( index );
 
-        Resource::Attorney::release( resource );
         resource_ptr.reset();
 
         return true;
     }
 
     /**
-     * Releases the specified resource (and removes it from this resource manager)
-     * and invalidates the given ID.
+     * Releases the specified resource and invalidates the given ID. If the
+     * reference count reaches zero, the resource is actually disposed/"unacquired"
+     * (and removed from this resource manager).
      * Time complexity: constant.
      */
     bool ResourceManager::release_resource_and_invalidate(ResourceID& id)
@@ -205,7 +213,9 @@ namespace resources {
     }
 
     /**
-     * Releases the specified resource (and removes it from this resource manager).
+     * Releases the specified resource. If its reference count reaches zero, the
+     * resource is actually disposed/"unacquired" (and removed from this resource
+     * manager).
      * Time complexity: constant on average, worst case linear in the number of
      * contained resources.
      */
@@ -215,13 +225,14 @@ namespace resources {
     }
 
     /**
-     * Releases all managed resources (and removes them from this resource manager).
+     * Disposes/"unacquires" all managed resources (and removes them from this
+     * resource manager).
      */
-    void ResourceManager::release_resources()
+    void ResourceManager::dispose_resources()
     {
         for ( auto& entry : _resources )
         {
-            Resource::Attorney::release( entry.ptr.get() );
+            Resource::Attorney::dispose( entry.ptr.get() );
         }
 
         _free_indices.clear();
