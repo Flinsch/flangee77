@@ -6,6 +6,8 @@
 
 #include <CoreLabs/filesystem.h>
 
+#include <CoreLabs/logging.h>
+
 #include <CoreLabs/fstream.h>
 #include <CoreLabs/sstream.h>
 
@@ -141,6 +143,24 @@ namespace helloworld {
 
         _texture_id = xl7::graphics::texture_manager()->create_texture_2d( "My Texture", texture_desc, image_data_provider );
         _sampler_state_id = xl7::graphics::state_manager()->ensure_sampler_state( sampler_desc );
+
+
+
+        LOG_INFO( TEXT("Please note the following: The quick brown fox jumps over the lazy dog.") );
+        LOG_SUCCESS( TEXT("Great things have been done!") );
+        LOG_WARNING( TEXT("Brace yourselves! Winter is coming.") );
+        LOG_ERROR( TEXT("Something went terribly wrong!") );
+
+        LOG_TYPE( TEXT("Caption"), cl7::logging::LogType::Caption );
+        LOG_TYPE( TEXT("Section"), cl7::logging::LogType::Section );
+        LOG_TYPE( TEXT("Item A\tItem"), cl7::logging::LogType::Item );
+        LOG_TYPE( TEXT("Item B\tPass"), cl7::logging::LogType::ItemPass );
+        LOG_TYPE( TEXT("Item C\tFail"), cl7::logging::LogType::ItemFail );
+
+        LOG_TYPE( TEXT("print( \"Hello, World!\" );"), cl7::logging::LogType::Code );
+        LOG_TYPE( TEXT("This is so meta"), cl7::logging::LogType::Meta );
+        LOG_TYPE( TEXT("The best comment is the one you don't have to write."), cl7::logging::LogType::Comment );
+        LOG_TYPE( TEXT("This is something completely different."), cl7::logging::LogType::Other );
 
         return true;
     }

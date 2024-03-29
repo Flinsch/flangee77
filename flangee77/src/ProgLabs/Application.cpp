@@ -6,7 +6,8 @@
 #include <CoreLabs/creational/Singleton.h>
 #include <CoreLabs/system/CPUID.h>
 #include <CoreLabs/system/MemoryStatus.h>
-#include <CoreLabs/logging/FileLogHandler.h>
+//#include <CoreLabs/logging/FileLogHandler.h>
+#include <CoreLabs/logging/HtmlLogHandler.h>
 #include <CoreLabs/logging.h>
 #include <CoreLabs/strings.h>
 #include <CoreLabs/memory.h>
@@ -82,7 +83,9 @@ namespace pl7 {
     bool Application::_init()
     {
         // Create/replace log handler.
-        cl7::logging::StandardLogger::instance().clear_log_handlers().add_log_handler( std::make_shared<cl7::logging::FileLogHandler>() );
+        //auto log_handler = std::make_shared<cl7::logging::FileLogHandler>();
+        auto log_handler = std::make_shared<cl7::logging::HtmlLogHandler>();
+        cl7::logging::StandardLogger::instance().clear_log_handlers().add_log_handler( log_handler );
 
         xl7::Config config;
 

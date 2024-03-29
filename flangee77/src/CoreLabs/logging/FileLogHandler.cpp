@@ -22,13 +22,15 @@ namespace logging {
      */
     FileLogHandler::FileLogHandler()
     {
+        constexpr cl7::string_view flangee77 = TEXT("flangee77");
+
         const std::time_t t = std::chrono::system_clock::to_time_t( std::chrono::system_clock::now() );
         std::tm tm;
         ::localtime_s( &tm, &t );
         const auto ldt = std::put_time( &tm, TEXT("%F %T %z") );
 
         cl7::osstream ss;
-        ss << TEXT("flangee77 \u2014 ");
+        ss << flangee77 << TEXT(" \u2014 ");
         ss << ldt;
 
         _write_line( ss.str(), true );
