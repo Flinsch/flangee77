@@ -41,6 +41,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Base64:  encode/decode") )
         { cl7::make_bytes( 0, 0, 0 ), "AAAA", default_options },
         { cl7::strings::to_bytes( "Hello, World!" ), "SGVsbG8sIFdvcmxkIQ==", default_options },
         { cl7::strings::to_bytes( "Dr. Stefan Fleischer" ), "RHIuIFN0ZWZhbiBGbGVpc2NoZXI=", default_options },
+        { cl7::strings::to_bytes( "The quick brown fox jumps over the lazy dog." ), "VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=", default_options },
         { cl7::strings::to_bytes( "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum." ), "TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwgc2VkIGRpYW0gbm9udW15IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9yZSBtYWduYSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3MgZXQgYWNjdXNhbSBldCBqdXN0byBkdW8gZG9sb3JlcyBldCBlYSByZWJ1bS4=", default_options },
         { cl7::make_bytes( 0xff, 0xee, 0xdd, 0x11 ), "/+7dEQ==", default_options },
 
@@ -49,6 +50,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Base64:  encode/decode") )
         { cl7::make_bytes( 0, 0, 0 ), "AAAA", without_padding },
         { cl7::strings::to_bytes( "Hello, World!" ), "SGVsbG8sIFdvcmxkIQ", without_padding },
         { cl7::strings::to_bytes( "Dr. Stefan Fleischer" ), "RHIuIFN0ZWZhbiBGbGVpc2NoZXI", without_padding },
+        { cl7::strings::to_bytes( "The quick brown fox jumps over the lazy dog." ), "VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4", without_padding },
         { cl7::strings::to_bytes( "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum." ), "TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwgc2VkIGRpYW0gbm9udW15IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9yZSBtYWduYSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3MgZXQgYWNjdXNhbSBldCBqdXN0byBkdW8gZG9sb3JlcyBldCBlYSByZWJ1bS4", without_padding },
         { cl7::make_bytes( 0xff, 0xee, 0xdd, 0x11 ), "/+7dEQ", without_padding },
 
@@ -57,6 +59,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Base64:  encode/decode") )
         { cl7::make_bytes( 0, 0, 0 ), "AAAA", other_characters },
         { cl7::strings::to_bytes( "Hello, World!" ), "SGVsbG8sIFdvcmxkIQ==", other_characters },
         { cl7::strings::to_bytes( "Dr. Stefan Fleischer" ), "RHIuIFN0ZWZhbiBGbGVpc2NoZXI=", other_characters },
+        { cl7::strings::to_bytes( "The quick brown fox jumps over the lazy dog." ), "VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=", other_characters },
         { cl7::strings::to_bytes( "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum." ), "TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwgc2VkIGRpYW0gbm9udW15IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9yZSBtYWduYSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3MgZXQgYWNjdXNhbSBldCBqdXN0byBkdW8gZG9sb3JlcyBldCBlYSByZWJ1bS4=", other_characters },
         { cl7::make_bytes( 0xff, 0xee, 0xdd, 0x11 ), "_-7dEQ==", other_characters },
 
@@ -65,6 +68,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Base64:  encode/decode") )
         { cl7::make_bytes( 0, 0, 0 ), "AAAA", insert_breaks },
         { cl7::strings::to_bytes( "Hello, World!" ), "SGVsbG8sIFdvcmxkIQ==", insert_breaks },
         { cl7::strings::to_bytes( "Dr. Stefan Fleischer" ), "RHIuIFN0ZWZhbiBGbGVpc2NoZXI=", insert_breaks },
+        { cl7::strings::to_bytes( "The quick brown fox jumps over the lazy dog." ), "VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=", insert_breaks },
         { cl7::strings::to_bytes( "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum." ), "TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwg\nc2VkIGRpYW0gbm9udW15IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9y\nZSBtYWduYSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3MgZXQg\nYWNjdXNhbSBldCBqdXN0byBkdW8gZG9sb3JlcyBldCBlYSByZWJ1bS4=", insert_breaks },
         { cl7::make_bytes( 0xff, 0xee, 0xdd, 0x11 ), "/+7dEQ==", insert_breaks },
     };
