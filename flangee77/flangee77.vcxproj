@@ -199,6 +199,10 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\states\RasterizerStateImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\states\D3DRasterizerStateTypeValues.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\states\RasterizerStateImpl.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\states\RasterizerState.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\states\SamplerStateImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\states\D3DSamplerStateTypeValues.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\states\SamplerStateImpl.h" />
@@ -368,6 +372,9 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\pipeline\VertexShaderStage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\states\RasterizerStateImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\states\RasterizerStateImpl.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\states\RasterizerState.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\states\SamplerStateImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\states\SamplerStateImpl.cpp" />
     <ClCompile Include="src\CoreLabs\Base64.cpp" />

@@ -104,7 +104,6 @@ namespace helloworld {
         _index_buffer_id = xl7::graphics::mesh_manager()->create_index_buffer( "My Index Buffer", index_buffer_desc, index_data_provider );
 
 
-
         cl7::aifstream ifs( cl7::filesystem::get_working_directory() + TEXT("assets/shaders/shader.hlsl") );
         assert( ifs );
         assert( ifs.is_open() );
@@ -117,7 +116,6 @@ namespace helloworld {
 
         _vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader( "My Vertex Shader", code_provider );
         _pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader( "My Pixel Shader", code_provider );
-
 
 
         xl7::graphics::images::Image image;
@@ -143,6 +141,11 @@ namespace helloworld {
 
         _texture_id = xl7::graphics::texture_manager()->create_texture_2d( "My Texture", texture_desc, image_data_provider );
         _sampler_state_id = xl7::graphics::state_manager()->ensure_sampler_state( sampler_desc );
+
+
+        xl7::graphics::states::RasterizerState::Desc rasterizer_desc;
+
+        _rasterizer_state_id = xl7::graphics::state_manager()->ensure_rasterizer_state( rasterizer_desc );
 
 
 
@@ -172,6 +175,8 @@ namespace helloworld {
      */
     bool MyApp::_shutdown_impl()
     {
+        xl7::graphics::state_manager()->release_resource_and_invalidate( _rasterizer_state_id );
+
         xl7::graphics::state_manager()->release_resource_and_invalidate( _sampler_state_id );
         xl7::graphics::texture_manager()->release_resource_and_invalidate( _texture_id );
 
@@ -201,6 +206,8 @@ namespace helloworld {
         rendering_context->pipeline.ps.set_shader_id( _pixel_shader_id );
         rendering_context->pipeline.ps.set_texture_id( 0, _texture_id );
         rendering_context->pipeline.ps.set_sampler_state_id( 0, _sampler_state_id );
+
+        rendering_context->pipeline.rs.set_rasterizer_state_id( _rasterizer_state_id );
 
         rendering_context->draw_indexed();
     }

@@ -67,6 +67,11 @@ private:
      */
     states::SamplerState* _default_sampler_state;
 
+    /**
+     * The default rasterizer state.
+     */
+    states::RasterizerState* _default_rasterizer_state;
+
 
 
     // #############################################################################
@@ -77,6 +82,11 @@ public:
      * Returns the default sampler state.
      */
     states::SamplerState* get_default_sampler_state() const { return _default_sampler_state; }
+
+    /**
+    * Returns the default rasterizer state.
+    */
+    states::RasterizerState* get_default_rasterizer_state() const { return _default_rasterizer_state; }
 
 
 
@@ -98,6 +108,11 @@ public:
      * Creates and acquires the specified sampler state if not already done.
      */
     resources::ResourceID ensure_sampler_state(const SamplerState::Desc& desc);
+
+    /**
+    * Creates and acquires the specified rasterizer state if not already done.
+    */
+    resources::ResourceID ensure_rasterizer_state(const RasterizerState::Desc& desc);
 
 }; // class StateManager
 

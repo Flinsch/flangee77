@@ -7,6 +7,7 @@
 #include "./shaders/PixelShaderImpl.h"
 
 #include "./states/SamplerStateImpl.h"
+#include "./states/RasterizerStateImpl.h"
 
 #include "./RenderingDeviceImpl.h"
 #include "./errors.h"
@@ -316,6 +317,20 @@ namespace direct3d11 {
         {
             _d3d_device_context->IASetInputLayout( d3d_input_layout );
             hardware_states.input_layout = d3d_input_layout;
+        }
+
+
+        auto* rasterizer_state = static_cast<const states::RasterizerStateImpl*>( resolved_draw_states.rasterizer_state );
+        ID3D11RasterizerState* d3d_rasterizer_state;
+        if ( rasterizer_state )
+            d3d_rasterizer_state = rasterizer_state->get_raw_d3d_rasterizer_state();
+        else
+            d3d_rasterizer_state = nullptr;
+
+        if ( d3d_rasterizer_state != hardware_states.rasterizer_state )
+        {
+            _d3d_device_context->RSSetState( d3d_rasterizer_state );
+            hardware_states.rasterizer_state = d3d_rasterizer_state;
         }
 
 

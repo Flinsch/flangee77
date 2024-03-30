@@ -31,6 +31,7 @@ namespace states {
         : ResourceManager()
         , _factory( factory )
         , _default_sampler_state( nullptr )
+        , _default_rasterizer_state( nullptr )
     {
     }
 
@@ -57,7 +58,10 @@ namespace states {
         _default_sampler_state = find_resource<states::SamplerState>( ensure_sampler_state( states::SamplerState::Desc() ) );
         assert( _default_sampler_state );
 
-        return _default_sampler_state;
+        _default_rasterizer_state = find_resource<states::RasterizerState>( ensure_rasterizer_state( states::RasterizerState::Desc() ) );
+        assert( _default_rasterizer_state );
+
+        return _default_sampler_state && _default_rasterizer_state;
     }
 
     /**
@@ -67,6 +71,9 @@ namespace states {
     {
         release_resource( _default_sampler_state );
         _default_sampler_state = nullptr;
+
+        release_resource( _default_rasterizer_state );
+        _default_rasterizer_state = nullptr;
 
         return true;
     }
@@ -89,6 +96,26 @@ namespace states {
         ResourcePtr sampler_state( _factory->create_sampler_state( params ), _destroy_resource );
 
         return _try_acquire_and_add_resource( std::move(sampler_state), resources::DefaultDataProvider() );
+    }
+
+    /**
+     * Creates and acquires the specified rasterizer state if not already done.
+     */
+    resources::ResourceID StateManager::ensure_rasterizer_state(const RasterizerState::Desc& desc)
+    {
+        const cl7::astring identifier = _identifier( "rasterizer state", desc );
+        resources::Resource* resource = find_resource( identifier );
+        if ( resource )
+        {
+            resource->add_reference();
+            return resource->get_id();
+        }
+
+        resources::Resource::CreateParams<RasterizerState::Desc> params{ this, _next_id(), identifier, desc };
+
+        ResourcePtr rasterizer_state( _factory->create_rasterizer_state( params ), _destroy_resource );
+
+        return _try_acquire_and_add_resource( std::move(rasterizer_state), resources::DefaultDataProvider() );
     }
 
 

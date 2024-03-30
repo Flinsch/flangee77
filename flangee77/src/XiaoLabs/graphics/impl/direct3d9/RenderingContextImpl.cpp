@@ -9,6 +9,7 @@
 #include "./shaders/PixelShaderImpl.h"
 
 #include "./states/SamplerStateImpl.h"
+#include "./states/RasterizerStateImpl.h"
 
 #include "./RenderingDeviceImpl.h"
 #include "./errors.h"
@@ -382,6 +383,27 @@ namespace direct3d9 {
         _flush_texture_sampler_states( resolved_draw_states.ps, hardware_states.ps, 8, 0 );
 
 
+        auto* rasterizer_state = static_cast<const states::RasterizerStateImpl*>( resolved_draw_states.rasterizer_state );
+        if ( rasterizer_state )
+        {
+            const states::D3DRasterizerStateTypeValues& d3d_rasterizer_state_type_values = rasterizer_state->get_d3d_rasterizer_state_type_values();
+
+            for ( size_t k = 0; k < states::D3D_RASTERIZER_STATE_TYPE_COUNT; ++k )
+            {
+                if ( d3d_rasterizer_state_type_values[ k ].second != hardware_states.rasterizer_state_type_values[ k ].second )
+                {
+                    hresult = _d3d_device->SetRenderState( d3d_rasterizer_state_type_values[ k ].first, d3d_rasterizer_state_type_values[ k ].second );
+                    if ( FAILED(hresult) )
+                    {
+                        LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetRenderState") ) );
+                        return false;
+                    }
+                    hardware_states.rasterizer_state_type_values[ k ] = d3d_rasterizer_state_type_values[ k ];
+                }
+            } // for each rasterizer state type/value
+        }
+
+
         return true;
     }
 
@@ -439,7 +461,7 @@ namespace direct3d9 {
                     }
                     hardware_texture_sampler_states.sampler_state_type_values[ slot_index ][ k ] = d3d_sampler_state_type_values[ k ];
                 }
-            } // for each sampler state
+            } // for each sampler state type/value
         } // for each texture/sampler slot
 
 

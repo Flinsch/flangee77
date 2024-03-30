@@ -52,6 +52,8 @@ private:
         ShaderStates<ID3D11VertexShader> vs;
         ShaderStates<ID3D11PixelShader> ps;
 
+        ID3D11RasterizerState* rasterizer_state;
+
         HardwareStates();
     } hardware_states;
 

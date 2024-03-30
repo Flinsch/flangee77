@@ -9,6 +9,7 @@
 #include "./shaders/PixelShaderImpl.h"
 
 #include "./states/SamplerStateImpl.h"
+#include "./states/RasterizerStateImpl.h"
 
 
 
@@ -68,6 +69,11 @@ namespace direct3d9 {
     xl7::graphics::states::SamplerState* ResourceFactoryImpl::create_sampler_state(const resources::Resource::CreateParams<xl7::graphics::states::SamplerState::Desc>& params)
     {
         return states::SamplerStateImpl::Attorney::create( params );
+    }
+
+    xl7::graphics::states::RasterizerState* ResourceFactoryImpl::create_rasterizer_state(const resources::Resource::CreateParams<xl7::graphics::states::RasterizerState::Desc>& params)
+    {
+        return states::RasterizerStateImpl::Attorney::create( params );
     }
 
 

@@ -61,7 +61,7 @@ protected:
         ResolvedShaderStates<shaders::VertexShader> vs;
         ResolvedShaderStates<shaders::PixelShader> ps;
 
-        //const states::RenderStates* render_states;
+        const states::RasterizerState* rasterizer_state;
     };
 
 

@@ -52,6 +52,8 @@ private:
     xl7::resources::ResourceID _texture_id;
     xl7::resources::ResourceID _sampler_state_id;
 
+    xl7::resources::ResourceID _rasterizer_state_id;
+
 
 
     // #############################################################################

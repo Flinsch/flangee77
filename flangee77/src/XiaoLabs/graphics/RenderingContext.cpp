@@ -232,6 +232,8 @@ namespace graphics {
 
         _resolve_shader_states( resolved_draw_states.vs, _rendering_device, pipeline.vs );
         _resolve_shader_states( resolved_draw_states.ps, _rendering_device, pipeline.ps );
+
+        resolved_draw_states.rasterizer_state = _rendering_device->get_state_manager()->find_resource<states::RasterizerState>( pipeline.rs.get_rasterizer_state_id() );
     }
 
     /**
@@ -283,7 +285,7 @@ namespace graphics {
             return false;
         }
 
-        if ( pipeline.rs.get_fill_mode() == pipeline::RasterizerStage::FillMode::None )
+        if ( resolved_draw_states.rasterizer_state && resolved_draw_states.rasterizer_state->get_desc().fill_mode == states::RasterizerState::FillMode::None )
         {
             // Just return false without issuing an error message.
             // Because it's not an error in the actual sense;

@@ -6,6 +6,7 @@
 #include "./prerequisites.h"
 
 #include "./states/D3DSamplerStateTypeValues.h"
+#include "./states/D3DRasterizerStateTypeValues.h"
 
 #include "../shared/meshes/VertexBufferBinding.h"
 #include "../shared/meshes/ComposedVertexLayout.h"
@@ -56,6 +57,8 @@ private:
 
         ShaderStates<IDirect3DVertexShader9> vs;
         ShaderStates<IDirect3DPixelShader9> ps;
+
+        states::D3DRasterizerStateTypeValues rasterizer_state_type_values;
 
         HardwareStates();
     };
