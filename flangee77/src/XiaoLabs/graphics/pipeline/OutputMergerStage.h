@@ -23,8 +23,9 @@ public:
     static constexpr unsigned MAX_RENDER_TARGETS = 8;
 
 private:
-    static constexpr unsigned DIRTY_FLAG_COLOR_RENDER_TARGET    = 0x1;
-    static constexpr unsigned DIRTY_FLAG_DEPTH_STENCTIL_TARGET  = 0x2 << (MAX_RENDER_TARGETS - 1);
+    static constexpr unsigned DIRTY_COLOR_RENDER_TARGET_FLAG_BASE   = 0x1;
+    static constexpr unsigned DIRTY_COLOR_RENDER_TARGET_FLAG_MASK   = ((DIRTY_COLOR_RENDER_TARGET_FLAG_BASE << MAX_RENDER_TARGETS) - 1) & ~(DIRTY_COLOR_RENDER_TARGET_FLAG_BASE - 1);
+    static constexpr unsigned DIRTY_DEPTH_STENCTIL_TARGET_FLAG      = 0x2 << (MAX_RENDER_TARGETS - 1);
 
 
 
@@ -32,8 +33,8 @@ private:
     // States
     // #############################################################################
 private:
-    _XL7_GRAPHICS_PIPELINE_STATE_ARRAY_DEFAULT0( color_render_target_id, MAX_RENDER_TARGETS, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_FLAG_COLOR_RENDER_TARGET );
-    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( depth_stencil_target_id, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_FLAG_DEPTH_STENCTIL_TARGET );
+    _XL7_GRAPHICS_PIPELINE_STATE_ARRAY_DEFAULT0( color_render_target_id, MAX_RENDER_TARGETS, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_COLOR_RENDER_TARGET_FLAG_BASE );
+    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( depth_stencil_target_id, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_DEPTH_STENCTIL_TARGET_FLAG );
 
 }; // class OutputMergerStage
 

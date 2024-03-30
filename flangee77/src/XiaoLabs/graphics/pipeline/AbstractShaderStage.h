@@ -24,8 +24,9 @@ public:
     static constexpr unsigned MAX_TEXTURE_SAMPLER_SLOTS = 16;
 
 private:
-    static constexpr unsigned DIRTY_FLAG_SHADER             = 0x1;
-    static constexpr unsigned DIRTY_FLAG_TEXTURE_SAMPLER    = 0x2;
+    static constexpr unsigned DIRTY_SHADER_FLAG                 = 0x1;
+    static constexpr unsigned DIRTY_TEXTURE_SAMPLER_FLAG_BASE   = 0x2;
+    static constexpr unsigned DIRTY_TEXTURE_SAMPLER_FLAG_MASK   = ((DIRTY_TEXTURE_SAMPLER_FLAG_BASE << MAX_TEXTURE_SAMPLER_SLOTS) - 1) & ~(DIRTY_TEXTURE_SAMPLER_FLAG_BASE - 1);
 
 
 
@@ -33,9 +34,9 @@ private:
     // States
     // #############################################################################
 private:
-    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( shader_id, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_FLAG_SHADER );
-    _XL7_GRAPHICS_PIPELINE_STATE_ARRAY( texture_id, MAX_TEXTURE_SAMPLER_SLOTS, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_FLAG_TEXTURE_SAMPLER );
-    _XL7_GRAPHICS_PIPELINE_STATE_ARRAY( sampler_state_id, MAX_TEXTURE_SAMPLER_SLOTS, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_FLAG_TEXTURE_SAMPLER );
+    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( shader_id, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_SHADER_FLAG );
+    _XL7_GRAPHICS_PIPELINE_STATE_ARRAY( texture_id, MAX_TEXTURE_SAMPLER_SLOTS, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_TEXTURE_SAMPLER_FLAG_BASE );
+    _XL7_GRAPHICS_PIPELINE_STATE_ARRAY( sampler_state_id, MAX_TEXTURE_SAMPLER_SLOTS, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_TEXTURE_SAMPLER_FLAG_BASE );
 
 }; // class AbstractShaderStage
 

@@ -50,9 +50,9 @@ public:
     };
 
 private:
-    static constexpr unsigned DIRTY_FLAG_FILL_MODE      = 0x1;
-    static constexpr unsigned DIRTY_FLAG_CULL_MODE      = 0x2;
-    static constexpr unsigned DIRTY_FLAG_WINDING_ORDER  = 0x4;
+    static constexpr unsigned DIRTY_FILL_MODE_FLAG      = 0x1;
+    static constexpr unsigned DIRTY_CULL_MODE_FLAG      = 0x2;
+    static constexpr unsigned DIRTY_WINDING_ORDER_FLAG  = 0x4;
 
 
 
@@ -60,9 +60,9 @@ private:
     // States
     // #############################################################################
 private:
-    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( fill_mode, FillMode, FillMode::Solid, DIRTY_FLAG_FILL_MODE );
-    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( cull_mode, CullMode, CullMode::Back, DIRTY_FLAG_CULL_MODE );
-    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( winding_order, WindingOrder, WindingOrder::Clockwise, DIRTY_FLAG_WINDING_ORDER );
+    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( fill_mode, FillMode, FillMode::Solid, DIRTY_FILL_MODE_FLAG );
+    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( cull_mode, CullMode, CullMode::Back, DIRTY_CULL_MODE_FLAG );
+    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( winding_order, WindingOrder, WindingOrder::Clockwise, DIRTY_WINDING_ORDER_FLAG );
 
 }; // class RasterizerStage
 
