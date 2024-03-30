@@ -423,7 +423,8 @@ namespace direct3d9 {
             }
 
             auto* sampler_state = static_cast<const states::SamplerStateImpl*>( resolved_texture_sampler_states.sampler_states[ slot_index ] );
-            assert( sampler_state );
+            if ( !sampler_state )
+                continue;
             const states::D3DSamplerStateTypeValues& d3d_sampler_state_type_values = sampler_state->get_d3d_sampler_state_type_values();
 
             for ( size_t k = 0; k < states::D3D_SAMPLER_STATE_TYPE_COUNT; ++k )

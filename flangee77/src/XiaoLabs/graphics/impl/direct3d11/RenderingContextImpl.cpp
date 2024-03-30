@@ -341,8 +341,11 @@ namespace direct3d11 {
             }
 
             auto* sampler_state = static_cast<const states::SamplerStateImpl*>( resolved_texture_sampler_states.sampler_states[ slot_index ] );
-            assert( sampler_state );
-            ID3D11SamplerState* d3d_sampler_state = sampler_state->get_raw_d3d_sampler_state();
+            ID3D11SamplerState* d3d_sampler_state;
+            if ( sampler_state )
+                d3d_sampler_state = sampler_state->get_raw_d3d_sampler_state();
+            else
+                d3d_sampler_state = nullptr;
 
             if ( d3d_shader_resource_view != hardware_texture_sampler_states.shader_resource_views[ slot_index ] )
             {
