@@ -14,6 +14,20 @@ class HtmlLogHandler
     : public AbstractLogHandler
 {
 
+private:
+    struct Block
+    {
+        Block(HtmlLogHandler* owner, cl7::string_view block_class);
+        ~Block();
+
+        HtmlLogHandler* const _owner;
+        const cl7::string _block_class;
+    };
+
+    typedef std::unique_ptr<Block> BlockPtr;
+
+
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
@@ -33,6 +47,14 @@ private:
     HtmlLogHandler(const HtmlLogHandler&) = delete;
     /** Copy assignment operator. */
     HtmlLogHandler& operator = (const HtmlLogHandler&) = delete;
+
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+private:
+    BlockPtr _block_ptr;
 
 
 

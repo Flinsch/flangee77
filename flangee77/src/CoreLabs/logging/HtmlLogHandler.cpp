@@ -13,6 +13,20 @@ namespace logging {
 
 
 
+    HtmlLogHandler::Block::Block(HtmlLogHandler* owner, cl7::string_view block_class)
+        : _owner( owner )
+        , _block_class( block_class )
+    {
+        _owner->_write_raw( TEXT("    <div class=\"") + _block_class + TEXT("\">\n") );
+    }
+
+    HtmlLogHandler::Block::~Block()
+    {
+        _owner->_write_raw( TEXT("    </div>\n") );
+    }
+
+
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
@@ -40,17 +54,24 @@ namespace logging {
         ss << TEXT("    body { font-family: sans-serif; }\n");
         ss << TEXT("    .container { display: grid; gap: 0.25rem 1rem; }\n");
         ss << TEXT("    .container > * {  }\n");
-        ss << TEXT("    .container > * > .badge { border: 0.125rem solid; border-radius: 0.25rem; font-weight: bold; padding: 0 0.125rem; }\n");
+        ss << TEXT("    .container > * > .badge { border: 0.125rem solid; border-radius: 0.25rem; font-weight: bold; padding: 0 0.125rem; text-transform: capitalize; }\n");
+        ss << TEXT("    .container > .info { color: #085786; }\n");
         ss << TEXT("    .container > .info > .badge { background-color: #085786; border-color: #085786; color: #ffffff; }\n");
+        ss << TEXT("    .container > .success { color: #386a1f; }\n");
         ss << TEXT("    .container > .success > .badge { background-color: #386a1f; border-color: #386a1f; color: #ffffff; }\n");
+        ss << TEXT("    .container > .warning { color: #8f4f00; }\n");
         ss << TEXT("    .container > .warning > .badge { background-color: #8f4f00; border-color: #8f4f00; color: #ffffff; }\n");
+        ss << TEXT("    .container > .error { color: #b3261e; }\n");
         ss << TEXT("    .container > .error > .badge { background-color: #b3261e; border-color: #b3261e; color: #ffffff; }\n");
         ss << TEXT("    .container > .caption { font-weight: bold; }\n");
         ss << TEXT("    .container > .section { font-style: italic; }\n");
-        ss << TEXT("    .container > .item {  }\n");
-        ss << TEXT("    .container > .item.pass { color: #386a1f; }\n");
-        ss << TEXT("    .container > .item.fail { color: #b3261e; }\n");
-        ss << TEXT("    .container > .code { font-family: monospace; }\n");
+        ss << TEXT("    .container > .list { display: grid; gap: 0.125rem 1rem; grid-template-columns: auto 1fr; margin-left: 1rem; }\n");
+        ss << TEXT("    .container > .list > .item {  }\n");
+        ss << TEXT("    .container > .list > .item.key {  }\n");
+        ss << TEXT("    .container > .list > .item.value { font-weight: bold; }\n");
+        ss << TEXT("    .container > .list > .item.pass { color: #386a1f; }\n");
+        ss << TEXT("    .container > .list > .item.fail { color: #b3261e; }\n");
+        ss << TEXT("    .container > .code { font-family: monospace; margin-left: 1rem; }\n");
         ss << TEXT("    .container > .meta {  }\n");
         ss << TEXT("    .container > .comment { font-family: monospace; }\n");
         ss << TEXT("    .container > .other {  }\n");
@@ -58,6 +79,7 @@ namespace logging {
         ss << TEXT("</head>\n");
         ss << TEXT("<body>\n");
         ss << TEXT("  <h1>") << title << TEXT("</h1>\n");
+        ss << TEXT("  <p>Session start: ") << ldt << TEXT("</p>\n");
         ss << TEXT("  <div class=\"container\">\n");
 
         _write_raw( ss.str(), true );
@@ -68,8 +90,16 @@ namespace logging {
      */
     HtmlLogHandler::~HtmlLogHandler()
     {
+        _block_ptr.reset();
+
+        const std::time_t t = std::chrono::system_clock::to_time_t( std::chrono::system_clock::now() );
+        std::tm tm;
+        ::localtime_s( &tm, &t );
+        const auto ldt = std::put_time( &tm, TEXT("%F %T %z") );
+
         cl7::osstream ss;
         ss << TEXT("  </div>\n");
+        ss << TEXT("  <p>Session end: ") << ldt << TEXT("</p>\n");
         ss << TEXT("</body>\n");
         ss << TEXT("</html>\n");
 
@@ -87,48 +117,67 @@ namespace logging {
      */
     void HtmlLogHandler::_write(const LogEntry& log_entry)
     {
-        cl7::string_view entry_class;
+        cl7::string_view entry_class, block_class, badge_class;
         switch ( log_entry.type )
         {
-        case cl7::logging::LogType::Info:       entry_class = TEXT("info");         break;
-        case cl7::logging::LogType::Success:    entry_class = TEXT("success");      break;
-        case cl7::logging::LogType::Warning:    entry_class = TEXT("warning");      break;
-        case cl7::logging::LogType::Error:      entry_class = TEXT("error");        break;
+        case cl7::logging::LogType::Info:       entry_class = TEXT("info");         badge_class = TEXT("info");     break;
+        case cl7::logging::LogType::Success:    entry_class = TEXT("success");      badge_class = TEXT("success");  break;
+        case cl7::logging::LogType::Warning:    entry_class = TEXT("warning");      badge_class = TEXT("warning");  break;
+        case cl7::logging::LogType::Error:      entry_class = TEXT("error");        badge_class = TEXT("error");    break;
         case cl7::logging::LogType::Caption:    entry_class = TEXT("caption");      break;
         case cl7::logging::LogType::Section:    entry_class = TEXT("section");      break;
-        case cl7::logging::LogType::Item:       entry_class = TEXT("item");         break;
-        case cl7::logging::LogType::ItemPass:   entry_class = TEXT("item pass");    break;
-        case cl7::logging::LogType::ItemFail:   entry_class = TEXT("item fail");    break;
-        case cl7::logging::LogType::Code:       entry_class = TEXT("code");         break;
+        case cl7::logging::LogType::Item:       entry_class = TEXT("item");         block_class = TEXT("list");     break;
+        case cl7::logging::LogType::ItemPass:   entry_class = TEXT("item pass");    block_class = TEXT("list");     break;
+        case cl7::logging::LogType::ItemFail:   entry_class = TEXT("item fail");    block_class = TEXT("list");     break;
+        case cl7::logging::LogType::Code:       entry_class = TEXT("code");         block_class = TEXT("code");     break;
         case cl7::logging::LogType::Meta:       entry_class = TEXT("meta");         break;
         case cl7::logging::LogType::Comment:    entry_class = TEXT("comment");      break;
         case cl7::logging::LogType::Other:      entry_class = TEXT("other");        break;
-        default:
-            entry_class = TEXT("");
         }
 
         cl7::osstream ss;
-        ss << TEXT("  <div class=\"") << entry_class << TEXT("\">\n");
 
-        switch ( log_entry.type )
+        if ( block_class.empty() )
         {
-        case cl7::logging::LogType::Info:
-            ss << TEXT("<span class=\"badge\">Info</span> ") << _escape( log_entry.message );
-            break;
-        case cl7::logging::LogType::Success:
-            ss << TEXT("<span class=\"badge\">Success</span> ") << _escape( log_entry.message );
-            break;
-        case cl7::logging::LogType::Warning:
-            ss << TEXT("<span class=\"badge\">Warning</span> ") << _escape( log_entry.message );
-            break;
-        case cl7::logging::LogType::Error:
-            ss << TEXT("<span class=\"badge\">Error</span> ") << _escape( log_entry.message );
-            break;
-        default:
-            ss << _escape( log_entry.message );
-        }
+            _block_ptr.reset();
 
-        ss << TEXT("  </div>\n");
+            ss << TEXT("    <div class=\"") << entry_class << TEXT("\">\n");
+            ss << TEXT("      ");
+            if ( !badge_class.empty() )
+                ss << TEXT("<span class=\"badge\">") << badge_class << TEXT("</span> ");
+            ss << _escape( log_entry.message ) << TEXT("\n");
+            ss << TEXT("    </div>\n");
+        }
+        else // => block
+        {
+            if ( _block_ptr && _block_ptr->_block_class != block_class )
+                _block_ptr.reset();
+            if ( !_block_ptr )
+                _block_ptr = std::make_unique<Block>( this, block_class );
+
+            if ( log_entry.type == cl7::logging::LogType::Code )
+            {
+                ss << TEXT("      ") << _escape( log_entry.message ) << TEXT("<br>\n");
+            }
+            else // => list
+            {
+                cl7::string_view key, value;
+                size_t p = log_entry.message.find( TEXT('\t') );
+                if ( p == log_entry.message.npos )
+                    key = log_entry.message;
+                else
+                    key = log_entry.message.substr( 0, p ),
+                    value = log_entry.message.substr( p + 1 );
+
+                ss << TEXT("      <div class=\"") << entry_class << TEXT(" key\">\n");
+                ss << TEXT("        ") << _escape( key ) << TEXT("\n");
+                ss << TEXT("      </div>\n");
+                ss << TEXT("      <div class=\"") << entry_class << TEXT(" value\">\n");
+                if ( !value.empty() )
+                    ss << TEXT("        ") << _escape( value ) << TEXT("\n");
+                ss << TEXT("      </div>\n");
+            }
+        }
 
         _write_raw( ss.str() );
     }
