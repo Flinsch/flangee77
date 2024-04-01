@@ -33,6 +33,11 @@ namespace states {
         if ( mag_anisotropic ) mag_filter_type = xl7::graphics::states::SamplerState::MinMagFilterType::Linear;
         if ( mip_anisotropic ) mip_filter_type = xl7::graphics::states::SamplerState::MipFilterType::Linear;
 
+        // Mip-level sampling "None" to disable mipmapping is specifically covered elsewhere.
+        // Direct3D 11 doesn't have a corresponding filter type, so we just take the "simplest" here: "Point".
+        if ( mip_filter_type == xl7::graphics::states::SamplerState::MipFilterType::None )
+            mip_filter_type = xl7::graphics::states::SamplerState::MipFilterType::Point;
+
         static_assert( static_cast<unsigned>( xl7::graphics::states::SamplerState::MinMagFilterType::Point ) - 1 == static_cast<unsigned>( D3D11_FILTER_TYPE_POINT ) );
         static_assert( static_cast<unsigned>( xl7::graphics::states::SamplerState::MinMagFilterType::Linear ) - 1 == static_cast<unsigned>( D3D11_FILTER_TYPE_LINEAR ) );
         static_assert( static_cast<unsigned>( xl7::graphics::states::SamplerState::MipFilterType::Point ) - 1 == static_cast<unsigned>( D3D11_FILTER_TYPE_POINT ) );
@@ -100,7 +105,7 @@ namespace states {
         sampler_desc.BorderColor[2] = _desc.border_color.b;
         sampler_desc.BorderColor[3] = _desc.border_color.a;
         sampler_desc.MinLOD = _desc.min_lod;
-        sampler_desc.MaxLOD = _desc.max_lod;
+        sampler_desc.MaxLOD = _desc.mip_filter_type == xl7::graphics::states::SamplerState::MipFilterType::None ? 0.0f : _desc.max_lod; // Is this sufficient, correct and sensible?
 
         HRESULT hresult = d3d_device->CreateSamplerState(
             &sampler_desc,
