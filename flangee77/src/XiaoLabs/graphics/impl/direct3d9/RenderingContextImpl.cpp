@@ -152,7 +152,7 @@ namespace direct3d9 {
         if ( !d3d_clear_flags )
             return true;
 
-        HRESULT hresult = _d3d_device->Clear( 0, nullptr, d3d_clear_flags, color.to_argb32(), depth, stencil );
+        HRESULT hresult = _d3d_device->Clear( 0, nullptr, d3d_clear_flags, color.to_bgra32(), depth, stencil );
         if ( FAILED(hresult) )
         {
             LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::Clear") ) );

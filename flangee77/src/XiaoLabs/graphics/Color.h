@@ -32,18 +32,18 @@ public:
         static_assert( static_cast<unsigned>( ChannelOrder::BGRA ) == 3 );
 #if ('RGBA') == 0x52474241 // => little endian
         static constexpr unsigned RGBA_INDICES_BY_CHANNEL_ORDER[4][4] = {
-            { 3, 2, 1, 0, }, // RGBA
-            { 2, 1, 0, 3, }, // ARGB
-            { 0, 1, 2, 3, }, // ABGR
-            { 1, 2, 3, 0, }, // BGRA
-        };
-#endif
-#if ('RGBA') == 0x41424752 // => big endian
-        static constexpr unsigned RGBA_INDICES_BY_CHANNEL_ORDER[4][4] = {
             { 0, 1, 2, 3, }, // RGBA
             { 1, 2, 3, 0, }, // ARGB
             { 3, 2, 1, 0, }, // ABGR
             { 2, 1, 0, 3, }, // BGRA
+        };
+#endif
+#if ('RGBA') == 0x41424752 // => big endian
+        static constexpr unsigned RGBA_INDICES_BY_CHANNEL_ORDER[4][4] = {
+            { 3, 2, 1, 0, }, // RGBA
+            { 2, 1, 0, 3, }, // ARGB
+            { 0, 1, 2, 3, }, // ABGR
+            { 1, 2, 3, 0, }, // BGRA
         };
 #endif
 
@@ -168,7 +168,7 @@ public:
     constexpr uint32_t to_rgba32() const { return to_uint32( ChannelOrder::RGBA ); }
     constexpr uint32_t to_argb32() const { return to_uint32( ChannelOrder::ARGB ); }
     constexpr uint32_t to_abgr32() const { return to_uint32( ChannelOrder::ABGR ); }
-    constexpr uint32_t to_bgra32() const { return to_uint32( ChannelOrder::BGRA ); }
+    constexpr uint32_t to_bgra32() const { return to_uint32( ChannelOrder::BGRA ); } // Corresponds to D3DCOLOR of Direct3D 9.
 
     const float* get_rgba_ptr() const { return &r; }
     float* get_rgba_ptr() { return &r; }

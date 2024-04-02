@@ -76,10 +76,10 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  Color") )
     TESTLABS_CHECK_EQ( xl7::graphics::Color(), xl7::graphics::Color( 0.0f, 0.0f, 0.0f, 0.0f ) );
     TESTLABS_CHECK_EQ( xl7::graphics::Color( uint8_t(63), uint8_t(127), uint8_t(255) ), xl7::graphics::Color( 0.25f, 0.5f, 1.0f, 1.0f ) );
 
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ), xl7::graphics::Color( uint8_t(0x12), uint8_t(0x34), uint8_t(0x56), uint8_t(0x78) ) );
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x78123456, xl7::graphics::ChannelOrder::ARGB ), xl7::graphics::Color( uint8_t(0x12), uint8_t(0x34), uint8_t(0x56), uint8_t(0x78) ) );
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x78563412, xl7::graphics::ChannelOrder::ABGR ), xl7::graphics::Color( uint8_t(0x12), uint8_t(0x34), uint8_t(0x56), uint8_t(0x78) ) );
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x56341278, xl7::graphics::ChannelOrder::BGRA ), xl7::graphics::Color( uint8_t(0x12), uint8_t(0x34), uint8_t(0x56), uint8_t(0x78) ) );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x78563412, xl7::graphics::ChannelOrder::RGBA ), xl7::graphics::Color( uint8_t(0x12), uint8_t(0x34), uint8_t(0x56), uint8_t(0x78) ) );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x56341278, xl7::graphics::ChannelOrder::ARGB ), xl7::graphics::Color( uint8_t(0x12), uint8_t(0x34), uint8_t(0x56), uint8_t(0x78) ) );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::ABGR ), xl7::graphics::Color( uint8_t(0x12), uint8_t(0x34), uint8_t(0x56), uint8_t(0x78) ) );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x78123456, xl7::graphics::ChannelOrder::BGRA ), xl7::graphics::Color( uint8_t(0x12), uint8_t(0x34), uint8_t(0x56), uint8_t(0x78) ) );
 
     TESTLABS_CHECK_EQ( xl7::graphics::Color::from_hsv( 220.0f, 0.75f, 1.0f ), xl7::graphics::Color( uint8_t(0x3f), uint8_t(0x7f), uint8_t(0xff) ) );
     TESTLABS_CHECK_EQ( xl7::graphics::Color::from_hsv( 580.0f, 0.75f, 1.0f ), xl7::graphics::Color( uint8_t(0x3f), uint8_t(0x7f), uint8_t(0xff) ) );
@@ -110,30 +110,30 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  Color") )
     color1.swap( color2 );
     TESTLABS_CHECK_EQ( color1, xl7::graphics::Color( 0.125f, 0.25f, 0.5f, 1.0f ) );
 
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).get_r(), 0x12 );
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).get_g(), 0x34 );
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).get_b(), 0x56 );
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).get_a(), 0x78 );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).get_r(), 0x78 );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).get_g(), 0x56 );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).get_b(), 0x34 );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).get_a(), 0x12 );
 
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).set_r( 0xff ), xl7::graphics::Color( uint8_t(0xff), uint8_t(0x34), uint8_t(0x56), uint8_t(0x78) ) );
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).set_g( 0xff ), xl7::graphics::Color( uint8_t(0x12), uint8_t(0xff), uint8_t(0x56), uint8_t(0x78) ) );
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).set_b( 0xff ), xl7::graphics::Color( uint8_t(0x12), uint8_t(0x34), uint8_t(0xff), uint8_t(0x78) ) );
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).set_a( 0xff ), xl7::graphics::Color( uint8_t(0x12), uint8_t(0x34), uint8_t(0x56), uint8_t(0xff) ) );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).set_r( 0xff ), xl7::graphics::Color( uint8_t(0xff), uint8_t(0x56), uint8_t(0x34), uint8_t(0x12) ) );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).set_g( 0xff ), xl7::graphics::Color( uint8_t(0x78), uint8_t(0xff), uint8_t(0x34), uint8_t(0x12) ) );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).set_b( 0xff ), xl7::graphics::Color( uint8_t(0x78), uint8_t(0x56), uint8_t(0xff), uint8_t(0x12) ) );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).set_a( 0xff ), xl7::graphics::Color( uint8_t(0x78), uint8_t(0x56), uint8_t(0x34), uint8_t(0xff) ) );
 
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).to_rgba32(), xl7::graphics::Color( uint8_t(0x12), uint8_t(0x34), uint8_t(0x56), uint8_t(0x78) ).to_uint32( xl7::graphics::ChannelOrder::RGBA ) );
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).to_argb32(), xl7::graphics::Color( uint8_t(0x12), uint8_t(0x34), uint8_t(0x56), uint8_t(0x78) ).to_uint32( xl7::graphics::ChannelOrder::ARGB ) );
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).to_abgr32(), xl7::graphics::Color( uint8_t(0x12), uint8_t(0x34), uint8_t(0x56), uint8_t(0x78) ).to_uint32( xl7::graphics::ChannelOrder::ABGR ) );
-    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).to_bgra32(), xl7::graphics::Color( uint8_t(0x12), uint8_t(0x34), uint8_t(0x56), uint8_t(0x78) ).to_uint32( xl7::graphics::ChannelOrder::BGRA ) );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).to_rgba32(), xl7::graphics::Color( uint8_t(0x78), uint8_t(0x56), uint8_t(0x34), uint8_t(0x12) ).to_uint32( xl7::graphics::ChannelOrder::RGBA ) );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).to_argb32(), xl7::graphics::Color( uint8_t(0x78), uint8_t(0x56), uint8_t(0x34), uint8_t(0x12) ).to_uint32( xl7::graphics::ChannelOrder::ARGB ) );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).to_abgr32(), xl7::graphics::Color( uint8_t(0x78), uint8_t(0x56), uint8_t(0x34), uint8_t(0x12) ).to_uint32( xl7::graphics::ChannelOrder::ABGR ) );
+    TESTLABS_CHECK_EQ( xl7::graphics::Color( 0x12345678, xl7::graphics::ChannelOrder::RGBA ).to_bgra32(), xl7::graphics::Color( uint8_t(0x78), uint8_t(0x56), uint8_t(0x34), uint8_t(0x12) ).to_uint32( xl7::graphics::ChannelOrder::BGRA ) );
 
     TESTLABS_CHECK_EQ_FLT( xl7::graphics::Color( 0.125f, 0.25f, 0.5f, 1.0f ).get_rgba_ptr()[0], 0.125f );
     TESTLABS_CHECK_EQ_FLT( xl7::graphics::Color( 0.125f, 0.25f, 0.5f, 1.0f ).get_rgba_ptr()[1], 0.25f );
     TESTLABS_CHECK_EQ_FLT( xl7::graphics::Color( 0.125f, 0.25f, 0.5f, 1.0f ).get_rgba_ptr()[2], 0.5f );
     TESTLABS_CHECK_EQ_FLT( xl7::graphics::Color( 0.125f, 0.25f, 0.5f, 1.0f ).get_rgba_ptr()[3], 1.0f );
 
-    TESTLABS_CHECK_EQ_FLT( ml7::utilities::round( xl7::graphics::Color( 0x1f3f7fff, xl7::graphics::ChannelOrder::RGBA ).get_hue(), 0 ), 220.0f );
-    TESTLABS_CHECK_EQ_FLT( ml7::utilities::round( xl7::graphics::Color( 0x1f3f7fff, xl7::graphics::ChannelOrder::RGBA ).get_saturation(), 3 ), 0.756f );
-    TESTLABS_CHECK_EQ_FLT( ml7::utilities::round( xl7::graphics::Color( 0x1f3f7fff, xl7::graphics::ChannelOrder::RGBA ).get_lightness(), 3 ), 0.310f );
-    TESTLABS_CHECK_EQ_FLT( ml7::utilities::round( xl7::graphics::Color( 0x1f3f7fff, xl7::graphics::ChannelOrder::RGBA ).get_brightness(), 3 ), 0.498f );
+    TESTLABS_CHECK_EQ_FLT( ml7::utilities::round( xl7::graphics::Color( 0xff7f3f1f, xl7::graphics::ChannelOrder::RGBA ).get_hue(), 0 ), 220.0f );
+    TESTLABS_CHECK_EQ_FLT( ml7::utilities::round( xl7::graphics::Color( 0xff7f3f1f, xl7::graphics::ChannelOrder::RGBA ).get_saturation(), 3 ), 0.756f );
+    TESTLABS_CHECK_EQ_FLT( ml7::utilities::round( xl7::graphics::Color( 0xff7f3f1f, xl7::graphics::ChannelOrder::RGBA ).get_lightness(), 3 ), 0.310f );
+    TESTLABS_CHECK_EQ_FLT( ml7::utilities::round( xl7::graphics::Color( 0xff7f3f1f, xl7::graphics::ChannelOrder::RGBA ).get_brightness(), 3 ), 0.498f );
 
     TESTLABS_CHECK_EQ( xl7::graphics::Color( -1.0f, -2.0f, -3.0f, -4.0f ).saturated(), xl7::graphics::Color( 0.0f, 0.0f, 0.0f, 0.0f ) );
     TESTLABS_CHECK_EQ( xl7::graphics::Color( +1.0f, +2.0f, +3.0f, +4.0f ).saturated(), xl7::graphics::Color( 1.0f, 1.0f, 1.0f, 1.0f ) );
@@ -580,6 +580,13 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageProcessor") )
         xl7::graphics::Color color = xl7::graphics::images::ImageProcessor::unpack_color( entry.packed_data, entry.pixel_format, entry.channel_order );
 
         TESTLABS_CHECK_EQ( packed_data, entry.packed_data );
+
+        if ( pbk.uniform_depth == 8 && pbk.channel_count == 4 ) // R8G8B8A8_UNORM
+        {
+            uint32_t packed_uint32 = *((const uint32_t*)(const uint8_t*)packed_data.data());
+            xl7::graphics::Color color{ uint8_t(entry.packed_data[pbk.r.index]), uint8_t(entry.packed_data[pbk.g.index]), uint8_t(entry.packed_data[pbk.b.index]), uint8_t(entry.packed_data[pbk.a.index]) };
+            TESTLABS_CHECK_EQ( packed_uint32, color.to_uint32( entry.channel_order ) );
+        }
 
         for ( unsigned rgba = 0; rgba < 4; ++rgba )
         {

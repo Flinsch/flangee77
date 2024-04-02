@@ -105,7 +105,7 @@ namespace states {
         sampler_desc.BorderColor[2] = _desc.border_color.b;
         sampler_desc.BorderColor[3] = _desc.border_color.a;
         sampler_desc.MinLOD = _desc.min_lod;
-        sampler_desc.MaxLOD = _desc.mip_filter_type == xl7::graphics::states::SamplerState::MipFilterType::None ? 0.0f : _desc.max_lod; // Is this sufficient, correct and sensible?
+        sampler_desc.MaxLOD = _desc.mip_filter_type == xl7::graphics::states::SamplerState::MipFilterType::None ? 0.0f : _desc.max_lod; // Is this sufficient, correct, and sensible?
 
         HRESULT hresult = d3d_device->CreateSamplerState(
             &sampler_desc,
