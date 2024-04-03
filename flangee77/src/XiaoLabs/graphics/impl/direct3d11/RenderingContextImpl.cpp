@@ -8,6 +8,7 @@
 
 #include "./states/SamplerStateImpl.h"
 #include "./states/RasterizerStateImpl.h"
+#include "./states/BlendStateImpl.h"
 
 #include "./RenderingDeviceImpl.h"
 #include "./errors.h"
@@ -331,6 +332,21 @@ namespace direct3d11 {
         {
             _d3d_device_context->RSSetState( d3d_rasterizer_state );
             hardware_states.rasterizer_state = d3d_rasterizer_state;
+        }
+
+
+        auto* blend_state = static_cast<const states::BlendStateImpl*>( resolved_draw_states.blend_state );
+        ID3D11BlendState* d3d_blend_state;
+        if ( blend_state )
+            d3d_blend_state = blend_state->get_raw_d3d_blend_state();
+        else
+            d3d_blend_state = nullptr;
+
+        if ( d3d_blend_state != hardware_states.blend_state || resolved_draw_states.blend_factor != hardware_states.blend_factor )
+        {
+            _d3d_device_context->OMSetBlendState( d3d_blend_state, resolved_draw_states.blend_factor.get_rgba_ptr(), 0xffffffff );
+            hardware_states.blend_state = d3d_blend_state;
+            hardware_states.blend_factor = resolved_draw_states.blend_factor;
         }
 
 

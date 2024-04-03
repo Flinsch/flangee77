@@ -10,6 +10,7 @@
 
 #include "./states/SamplerStateImpl.h"
 #include "./states/RasterizerStateImpl.h"
+#include "./states/BlendStateImpl.h"
 
 #include "./RenderingDeviceImpl.h"
 #include "./errors.h"
@@ -401,6 +402,38 @@ namespace direct3d9 {
                     hardware_states.rasterizer_state_type_values[ k ] = d3d_rasterizer_state_type_values[ k ];
                 }
             } // for each rasterizer state type/value
+        }
+
+
+        auto* blend_state = static_cast<const states::BlendStateImpl*>( resolved_draw_states.blend_state );
+        if ( blend_state )
+        {
+            const states::D3DBlendStateTypeValues& d3d_blend_state_type_values = blend_state->get_d3d_blend_state_type_values();
+
+            for ( size_t k = 0; k < states::D3D_BLEND_STATE_TYPE_COUNT; ++k )
+            {
+                if ( d3d_blend_state_type_values[ k ].second != hardware_states.blend_state_type_values[ k ].second )
+                {
+                    hresult = _d3d_device->SetRenderState( d3d_blend_state_type_values[ k ].first, d3d_blend_state_type_values[ k ].second );
+                    if ( FAILED(hresult) )
+                    {
+                        LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetRenderState") ) );
+                        return false;
+                    }
+                    hardware_states.blend_state_type_values[ k ] = d3d_blend_state_type_values[ k ];
+                }
+            } // for each blend state type/value
+        }
+
+        if ( resolved_draw_states.blend_factor != hardware_states.blend_factor )
+        {
+            hresult = _d3d_device->SetRenderState( D3DRS_BLENDFACTOR, resolved_draw_states.blend_factor.to_bgra32() );
+            if ( FAILED(hresult) )
+            {
+                LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetRenderState") ) );
+                return false;
+            }
+            hardware_states.blend_factor = resolved_draw_states.blend_factor;
         }
 
 

@@ -121,9 +121,9 @@ namespace helloworld {
         xl7::graphics::images::Image image;
         xl7::graphics::images::TargaImageHandler targa_image_handler;
         xl7::graphics::images::PngImageHandler png_image_handler;
-        //targa_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy.tga"), image );
+        targa_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy.tga"), image );
         //targa_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy-compressed.tga"), image );
-        png_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy.png"), image );
+        //png_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy.png"), image );
         //png_image_handler.load_from_file( cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy-indexed.png"), image );
 
         xl7::graphics::textures::Texture2D::Desc texture_desc {
@@ -146,6 +146,14 @@ namespace helloworld {
         xl7::graphics::states::RasterizerState::Desc rasterizer_desc;
 
         _rasterizer_state_id = xl7::graphics::state_manager()->ensure_rasterizer_state( rasterizer_desc );
+
+
+        xl7::graphics::states::BlendState::Desc blend_desc;
+        blend_desc.is_blending_enabled = true;
+        blend_desc.src_color_factor = blend_desc.src_alpha_factor = xl7::graphics::states::BlendState::BlendFactor::SrcAlpha;
+        blend_desc.dest_color_factor = blend_desc.dest_alpha_factor = xl7::graphics::states::BlendState::BlendFactor::InvSrcAlpha;
+
+        _blend_state_id = xl7::graphics::state_manager()->ensure_blend_state( blend_desc );
 
 
 
@@ -175,6 +183,7 @@ namespace helloworld {
      */
     bool MyApp::_shutdown_impl()
     {
+        xl7::graphics::state_manager()->release_resource_and_invalidate( _blend_state_id );
         xl7::graphics::state_manager()->release_resource_and_invalidate( _rasterizer_state_id );
 
         xl7::graphics::state_manager()->release_resource_and_invalidate( _sampler_state_id );
@@ -208,6 +217,8 @@ namespace helloworld {
         rendering_context->pipeline.ps.set_sampler_state_id( 0, _sampler_state_id );
 
         rendering_context->pipeline.rs.set_rasterizer_state_id( _rasterizer_state_id );
+
+        rendering_context->pipeline.om.set_blend_state_id( _blend_state_id );
 
         rendering_context->draw_indexed();
     }

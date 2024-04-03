@@ -72,6 +72,11 @@ private:
      */
     states::RasterizerState* _default_rasterizer_state;
 
+    /**
+     * The default blend state.
+     */
+    states::BlendState* _default_blend_state;
+
 
 
     // #############################################################################
@@ -87,6 +92,11 @@ public:
     * Returns the default rasterizer state.
     */
     states::RasterizerState* get_default_rasterizer_state() const { return _default_rasterizer_state; }
+
+    /**
+     * Returns the default blend state.
+     */
+    states::BlendState* get_default_blend_state() const { return _default_blend_state; }
 
 
 
@@ -110,9 +120,14 @@ public:
     resources::ResourceID ensure_sampler_state(const SamplerState::Desc& desc);
 
     /**
-    * Creates and acquires the specified rasterizer state if not already done.
-    */
+     * Creates and acquires the specified rasterizer state if not already done.
+     */
     resources::ResourceID ensure_rasterizer_state(const RasterizerState::Desc& desc);
+
+    /**
+     * Creates and acquires the specified blend state if not already done.
+     */
+    resources::ResourceID ensure_blend_state(const BlendState::Desc& desc);
 
 }; // class StateManager
 

@@ -7,6 +7,7 @@
 
 #include "./states/D3DSamplerStateTypeValues.h"
 #include "./states/D3DRasterizerStateTypeValues.h"
+#include "./states/D3DBlendStateTypeValues.h"
 
 #include "../shared/meshes/VertexBufferBinding.h"
 #include "../shared/meshes/ComposedVertexLayout.h"
@@ -59,6 +60,9 @@ private:
         ShaderStates<IDirect3DPixelShader9> ps;
 
         states::D3DRasterizerStateTypeValues rasterizer_state_type_values;
+        states::D3DBlendStateTypeValues blend_state_type_values;
+
+        Color blend_factor;
 
         HardwareStates();
     };

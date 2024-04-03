@@ -234,6 +234,9 @@ namespace graphics {
         _resolve_shader_states( resolved_draw_states.ps, _rendering_device, pipeline.ps );
 
         resolved_draw_states.rasterizer_state = _rendering_device->get_state_manager()->find_resource<states::RasterizerState>( pipeline.rs.get_rasterizer_state_id() );
+        resolved_draw_states.blend_state = _rendering_device->get_state_manager()->find_resource<states::BlendState>( pipeline.om.get_blend_state_id() );
+
+        resolved_draw_states.blend_factor = pipeline.om.get_blend_factor();
     }
 
     /**

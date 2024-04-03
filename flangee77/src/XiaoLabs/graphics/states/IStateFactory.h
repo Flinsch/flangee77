@@ -4,6 +4,7 @@
 
 #include "./SamplerState.h"
 #include "./RasterizerState.h"
+#include "./BlendState.h"
 
 
 
@@ -24,6 +25,7 @@ public:
 
     virtual xl7::graphics::states::SamplerState* create_sampler_state(const resources::Resource::CreateParams<xl7::graphics::states::SamplerState::Desc>& params) = 0;
     virtual xl7::graphics::states::RasterizerState* create_rasterizer_state(const resources::Resource::CreateParams<xl7::graphics::states::RasterizerState::Desc>& params) = 0;
+    virtual xl7::graphics::states::BlendState* create_blend_state(const resources::Resource::CreateParams<xl7::graphics::states::BlendState::Desc>& params) = 0;
 
 }; // class IStateFactory
 

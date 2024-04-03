@@ -53,6 +53,9 @@ private:
         ShaderStates<ID3D11PixelShader> ps;
 
         ID3D11RasterizerState* rasterizer_state;
+        ID3D11BlendState* blend_state;
+
+        Color blend_factor;
 
         HardwareStates();
     } hardware_states;

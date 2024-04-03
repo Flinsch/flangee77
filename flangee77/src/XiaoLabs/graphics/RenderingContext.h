@@ -62,6 +62,9 @@ protected:
         ResolvedShaderStates<shaders::PixelShader> ps;
 
         const states::RasterizerState* rasterizer_state;
+        const states::BlendState* blend_state;
+
+        Color blend_factor;
     };
 
 
