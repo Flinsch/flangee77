@@ -39,7 +39,7 @@ namespace images {
             desc.pixel_format = PixelFormat::R8G8B8_UNORM;
         if ( header.pixel_depth == 32 )
             desc.pixel_format = PixelFormat::R8G8B8A8_UNORM;
-        desc.channel_order = ChannelOrder::RGBA;
+        desc.channel_order = ChannelOrder::BGRA;
         desc.width = static_cast<unsigned>( cl7::bits::swap_bytes_unless_endian<std::endian::little>( header.width ) );
         desc.height = static_cast<unsigned>( cl7::bits::swap_bytes_unless_endian<std::endian::little>( header.height ) );
         desc.depth = 1;
@@ -110,32 +110,26 @@ namespace images {
             if ( rom.read( { (std::byte*)&chunk_header, 1 } ) != 1 )
                 return _log_bad_format_error( rom_name );
 
-            if ( chunk_header < 128 )
+            const size_t pixel_count = static_cast<size_t>( chunk_header & 0x7f ) + 1;
+            const size_t chunk_size = pixel_count * bytes_per_pixel;
+
+            if ( chunk_header <= 0x7f )
             {
-                // Chunk is a "raw" chunk.
-                // The number of raw pixels is
-                // the chunk header plus 1.
-                const size_t pixel_count = static_cast<size_t>( chunk_header ) + 1;
-                const size_t chunk_size = bytes_per_pixel * pixel_count;
+                // Chunk is a "raw" packet.
                 if ( rom.read( { cursor, chunk_size } ) != chunk_size )
                     return _log_bad_format_error( rom_name );
-                cursor += chunk_size;
-                pixel_index += pixel_count;
             }
             else
             {
-                // Chunk is an RLE header.
-                // The number of RLE pixels is
-                // the chunk header minus 127.
-                const size_t pixel_count = static_cast<size_t>( chunk_header ) - 127;
-                const size_t chunk_size = bytes_per_pixel * pixel_count;
+                // Chunk is an RLE packet.
                 if ( rom.read( { cursor, bytes_per_pixel } ) != bytes_per_pixel )
                     return _log_bad_format_error( rom_name );
                 for ( size_t i = 1; i < pixel_count; ++i )
-                    ::memcpy( cursor, cursor + i, bytes_per_pixel );
-                cursor += chunk_size;
-                pixel_index += pixel_count;
+                    ::memcpy( cursor + i * bytes_per_pixel, cursor, bytes_per_pixel );
             }
+
+            cursor += chunk_size;
+            pixel_index += pixel_count;
         } // for each chunk of pixels
 
         if ( pixel_index != total_pixel_count )

@@ -25,8 +25,8 @@ private:
         uint16_t    map_start;
         uint16_t    map_length;
         uint8_t     map_depth;
-        uint16_t    x_offset;
-        uint16_t    y_offset;
+        uint16_t    x_origin;
+        uint16_t    y_origin;
         uint16_t    width;
         uint16_t    height;
         uint8_t     pixel_depth;
