@@ -10,6 +10,7 @@
 
 #include "./states/SamplerStateImpl.h"
 #include "./states/RasterizerStateImpl.h"
+#include "./states/DepthStencilStateImpl.h"
 #include "./states/BlendStateImpl.h"
 
 #include "./RenderingDeviceImpl.h"
@@ -402,6 +403,45 @@ namespace direct3d9 {
                     hardware_states.rasterizer_state_type_values[ k ] = d3d_rasterizer_state_type_values[ k ];
                 }
             } // for each rasterizer state type/value
+        }
+
+
+        auto* depth_stencil_state = static_cast<const states::DepthStencilStateImpl*>( resolved_draw_states.depth_stencil_state );
+        if ( depth_stencil_state )
+        {
+            const states::D3DDepthStencilStateTypeValues& d3d_depth_stencil_state_type_values = depth_stencil_state->get_d3d_depth_stencil_state_type_values();
+
+            bool swapped_winding_order = resolved_draw_states.rasterizer_state && resolved_draw_states.rasterizer_state->get_desc().winding_order == xl7::graphics::states::RasterizerState::WindingOrder::CounterClockwise;
+
+            for ( size_t k = 0; k < states::D3D_DEPTH_STENCIL_STATE_TYPE_COUNT; ++k )
+            {
+                size_t ks = k;
+                size_t kh = k;
+                if ( swapped_winding_order && k >= 6 )
+                    k >= 10 ? ks -= 4 : ks += 4;
+
+                if ( d3d_depth_stencil_state_type_values[ ks ].second != hardware_states.depth_stencil_state_type_values[ kh ].second )
+                {
+                    hresult = _d3d_device->SetRenderState( d3d_depth_stencil_state_type_values[ ks ].first, d3d_depth_stencil_state_type_values[ ks ].second );
+                    if ( FAILED(hresult) )
+                    {
+                        LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetRenderState") ) );
+                        return false;
+                    }
+                    hardware_states.depth_stencil_state_type_values[ kh ] = d3d_depth_stencil_state_type_values[ ks ];
+                }
+            } // for each depth/stencil state type/value
+        }
+
+        if ( resolved_draw_states.stencil_reference_value != hardware_states.stencil_reference_value )
+        {
+            hresult = _d3d_device->SetRenderState( D3DRS_STENCILREF, resolved_draw_states.stencil_reference_value );
+            if ( FAILED(hresult) )
+            {
+                LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetRenderState") ) );
+                return false;
+            }
+            hardware_states.stencil_reference_value = resolved_draw_states.stencil_reference_value;
         }
 
 

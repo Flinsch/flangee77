@@ -8,6 +8,7 @@
 
 #include "./states/SamplerStateImpl.h"
 #include "./states/RasterizerStateImpl.h"
+#include "./states/DepthStencilStateImpl.h"
 #include "./states/BlendStateImpl.h"
 
 #include "./RenderingDeviceImpl.h"
@@ -332,6 +333,21 @@ namespace direct3d11 {
         {
             _d3d_device_context->RSSetState( d3d_rasterizer_state );
             hardware_states.rasterizer_state = d3d_rasterizer_state;
+        }
+
+
+        auto* depth_stencil_state = static_cast<const states::DepthStencilStateImpl*>( resolved_draw_states.depth_stencil_state );
+        ID3D11DepthStencilState* d3d_depth_stencil_state;
+        if ( depth_stencil_state )
+            d3d_depth_stencil_state = depth_stencil_state->get_raw_d3d_depth_stencil_state();
+        else
+            d3d_depth_stencil_state = nullptr;
+
+        if ( d3d_depth_stencil_state != hardware_states.depth_stencil_state || resolved_draw_states.stencil_reference_value != hardware_states.stencil_reference_value )
+        {
+            _d3d_device_context->OMSetDepthStencilState( d3d_depth_stencil_state, resolved_draw_states.stencil_reference_value );
+            hardware_states.depth_stencil_state = d3d_depth_stencil_state;
+            hardware_states.stencil_reference_value = resolved_draw_states.stencil_reference_value;
         }
 
 

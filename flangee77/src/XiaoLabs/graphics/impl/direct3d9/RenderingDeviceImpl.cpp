@@ -64,7 +64,7 @@ namespace direct3d9 {
         const unsigned back_buffer_height = cl7::utilities::coalesce( GraphicsSystem::instance().get_config().video.display_mode.height, MainWindow::instance().get_height() );
 
         // Set the format of the back buffer
-        // and the depth-stencil surface.
+        // and the depth/stencil surface.
         const D3DFORMAT back_buffer_format = D3DFMT_X8R8G8B8;
         const D3DFORMAT depth_stencil_format = D3DFMT_D24S8;
 

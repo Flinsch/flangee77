@@ -7,6 +7,7 @@
 
 #include "./states/D3DSamplerStateTypeValues.h"
 #include "./states/D3DRasterizerStateTypeValues.h"
+#include "./states/D3DDepthStencilStateTypeValues.h"
 #include "./states/D3DBlendStateTypeValues.h"
 
 #include "../shared/meshes/VertexBufferBinding.h"
@@ -60,8 +61,10 @@ private:
         ShaderStates<IDirect3DPixelShader9> ps;
 
         states::D3DRasterizerStateTypeValues rasterizer_state_type_values;
+        states::D3DDepthStencilStateTypeValues depth_stencil_state_type_values;
         states::D3DBlendStateTypeValues blend_state_type_values;
 
+        unsigned stencil_reference_value;
         Color blend_factor;
 
         HardwareStates();

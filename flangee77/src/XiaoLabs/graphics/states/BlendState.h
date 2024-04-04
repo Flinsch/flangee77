@@ -48,21 +48,21 @@ public:
     struct Desc
     {
         /** Enables (true) or disables (false) blending in general. */
-        bool is_blending_enabled        = false;
+        bool is_blending_enabled            = false;
         /** . */
-        BlendFactor src_color_factor    = BlendFactor::One;
+        BlendFactor src_color_factor        = BlendFactor::One;
         /** . */
-        BlendFactor dest_color_factor   = BlendFactor::Zero;
+        BlendFactor dest_color_factor       = BlendFactor::Zero;
         /** . */
-        BlendOperation color_operation  = BlendOperation::Add;
+        BlendOperation color_operation      = BlendOperation::Add;
         /** . */
-        BlendFactor src_alpha_factor    = BlendFactor::One;
+        BlendFactor src_alpha_factor        = BlendFactor::One;
         /** . */
-        BlendFactor dest_alpha_factor   = BlendFactor::Zero;
+        BlendFactor dest_alpha_factor       = BlendFactor::Zero;
         /** . */
-        BlendOperation alpha_operation  = BlendOperation::Add;
+        BlendOperation alpha_operation      = BlendOperation::Add;
         /** . */
-        ChannelFlags channel_write_flags= ChannelFlags::All;
+        ChannelFlags channel_write_flags    = ChannelFlags::All;
     };
 
 

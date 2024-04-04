@@ -53,8 +53,10 @@ private:
         ShaderStates<ID3D11PixelShader> ps;
 
         ID3D11RasterizerState* rasterizer_state;
+        ID3D11DepthStencilState* depth_stencil_state;
         ID3D11BlendState* blend_state;
 
+        unsigned stencil_reference_value;
         Color blend_factor;
 
         HardwareStates();

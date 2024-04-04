@@ -314,6 +314,20 @@ namespace mappings {
         return { PixelFormat::UNKNOWN, preferred_channel_order };
     }
 
+    D3DCMPFUNC _d3d_cmp_func_from(ComparisonFunction comparison_function)
+    {
+        static_assert( static_cast<unsigned>( ComparisonFunction::Never ) == static_cast<unsigned>( D3DCMP_NEVER ) );
+        static_assert( static_cast<unsigned>( ComparisonFunction::Less ) == static_cast<unsigned>( D3DCMP_LESS ) );
+        static_assert( static_cast<unsigned>( ComparisonFunction::Equal ) == static_cast<unsigned>( D3DCMP_EQUAL ) );
+        static_assert( static_cast<unsigned>( ComparisonFunction::LessEqual ) == static_cast<unsigned>( D3DCMP_LESSEQUAL ) );
+        static_assert( static_cast<unsigned>( ComparisonFunction::Greater ) == static_cast<unsigned>( D3DCMP_GREATER ) );
+        static_assert( static_cast<unsigned>( ComparisonFunction::NotEqual ) == static_cast<unsigned>( D3DCMP_NOTEQUAL ) );
+        static_assert( static_cast<unsigned>( ComparisonFunction::GreaterEqual ) == static_cast<unsigned>( D3DCMP_GREATEREQUAL ) );
+        static_assert( static_cast<unsigned>( ComparisonFunction::Always ) == static_cast<unsigned>( D3DCMP_ALWAYS ) );
+
+        return static_cast<D3DCMPFUNC>( comparison_function );
+    }
+
 
 
 } // namespace mappings

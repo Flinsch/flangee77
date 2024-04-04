@@ -53,6 +53,7 @@ private:
     xl7::resources::ResourceID _sampler_state_id;
 
     xl7::resources::ResourceID _rasterizer_state_id;
+    xl7::resources::ResourceID _depth_stencil_state_id;
     xl7::resources::ResourceID _blend_state_id;
 
 

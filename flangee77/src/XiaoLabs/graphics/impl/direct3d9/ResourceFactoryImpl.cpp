@@ -10,6 +10,7 @@
 
 #include "./states/SamplerStateImpl.h"
 #include "./states/RasterizerStateImpl.h"
+#include "./states/DepthStencilStateImpl.h"
 #include "./states/BlendStateImpl.h"
 
 
@@ -75,6 +76,11 @@ namespace direct3d9 {
     xl7::graphics::states::RasterizerState* ResourceFactoryImpl::create_rasterizer_state(const resources::Resource::CreateParams<xl7::graphics::states::RasterizerState::Desc>& params)
     {
         return states::RasterizerStateImpl::Attorney::create( params );
+    }
+
+    xl7::graphics::states::DepthStencilState* ResourceFactoryImpl::create_depth_stencil_state(const resources::Resource::CreateParams<xl7::graphics::states::DepthStencilState::Desc>& params)
+    {
+        return states::DepthStencilStateImpl::Attorney::create( params );
     }
 
     xl7::graphics::states::BlendState* ResourceFactoryImpl::create_blend_state(const resources::Resource::CreateParams<xl7::graphics::states::BlendState::Desc>& params)

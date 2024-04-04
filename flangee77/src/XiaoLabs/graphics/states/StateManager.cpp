@@ -32,6 +32,7 @@ namespace states {
         , _factory( factory )
         , _default_sampler_state( nullptr )
         , _default_rasterizer_state( nullptr )
+        , _default_depth_stencil_state( nullptr )
         , _default_blend_state( nullptr )
     {
     }
@@ -62,6 +63,9 @@ namespace states {
         _default_rasterizer_state = find_resource<states::RasterizerState>( ensure_rasterizer_state( states::RasterizerState::Desc() ) );
         assert( _default_rasterizer_state );
 
+        _default_depth_stencil_state = find_resource<states::DepthStencilState>( ensure_depth_stencil_state( states::DepthStencilState::Desc() ) );
+        assert( _default_depth_stencil_state );
+
         _default_blend_state = find_resource<states::BlendState>( ensure_blend_state( states::BlendState::Desc() ) );
         assert( _default_blend_state );
 
@@ -78,6 +82,9 @@ namespace states {
 
         release_resource( _default_rasterizer_state );
         _default_rasterizer_state = nullptr;
+
+        release_resource( _default_depth_stencil_state );
+        _default_depth_stencil_state = nullptr;
 
         release_resource( _default_blend_state );
         _default_blend_state = nullptr;
@@ -123,6 +130,26 @@ namespace states {
         ResourcePtr rasterizer_state( _factory->create_rasterizer_state( params ), _destroy_resource );
 
         return _try_acquire_and_add_resource( std::move(rasterizer_state), resources::DefaultDataProvider() );
+    }
+
+    /**
+     * Creates and acquires the specified depth/stencil state if not already done.
+     */
+    resources::ResourceID StateManager::ensure_depth_stencil_state(const DepthStencilState::Desc& desc)
+    {
+        const cl7::astring identifier = _identifier( "depth/stencil state", desc );
+        resources::Resource* resource = find_resource( identifier );
+        if ( resource )
+        {
+            resource->add_reference();
+            return resource->get_id();
+        }
+
+        resources::Resource::CreateParams<DepthStencilState::Desc> params{ this, _next_id(), identifier, desc };
+
+        ResourcePtr depth_stencil_state( _factory->create_depth_stencil_state( params ), _destroy_resource );
+
+        return _try_acquire_and_add_resource( std::move(depth_stencil_state), resources::DefaultDataProvider() );
     }
 
     /**

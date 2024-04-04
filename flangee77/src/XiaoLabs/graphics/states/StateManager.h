@@ -73,6 +73,11 @@ private:
     states::RasterizerState* _default_rasterizer_state;
 
     /**
+     * The default depth/stencil state.
+     */
+    states::DepthStencilState* _default_depth_stencil_state;
+
+    /**
      * The default blend state.
      */
     states::BlendState* _default_blend_state;
@@ -89,9 +94,14 @@ public:
     states::SamplerState* get_default_sampler_state() const { return _default_sampler_state; }
 
     /**
-    * Returns the default rasterizer state.
-    */
+     * Returns the default rasterizer state.
+     */
     states::RasterizerState* get_default_rasterizer_state() const { return _default_rasterizer_state; }
+
+    /**
+     * Returns the default depth/stencil state.
+     */
+    states::DepthStencilState* get_default_depth_stencil_state() const { return _default_depth_stencil_state; }
 
     /**
      * Returns the default blend state.
@@ -123,6 +133,11 @@ public:
      * Creates and acquires the specified rasterizer state if not already done.
      */
     resources::ResourceID ensure_rasterizer_state(const RasterizerState::Desc& desc);
+
+    /**
+     * Creates and acquires the specified depth/stencil state if not already done.
+     */
+    resources::ResourceID ensure_depth_stencil_state(const DepthStencilState::Desc& desc);
 
     /**
      * Creates and acquires the specified blend state if not already done.

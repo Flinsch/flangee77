@@ -62,8 +62,10 @@ protected:
         ResolvedShaderStates<shaders::PixelShader> ps;
 
         const states::RasterizerState* rasterizer_state;
+        const states::DepthStencilState* depth_stencil_state;
         const states::BlendState* blend_state;
 
+        unsigned stencil_reference_value;
         Color blend_factor;
     };
 

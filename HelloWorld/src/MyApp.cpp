@@ -90,10 +90,10 @@ namespace helloworld {
         };
 
         constexpr Vertex vertices[] {
-            { -0.5f, -0.5f,  0.0f, 0xffff0000, -0.5, 1.5 },
-            { -0.5f, +0.5f,  0.0f, 0xff00ff00, -0.5, -0.5 },
-            { +0.5f, -0.5f,  0.0f, 0xff0000ff, 1.5, 1.5 },
-            { +0.5f, +0.5f,  0.0f, 0xffffff00, 1.5, -0.5 },
+            { -0.5f, -0.5f,  0.5f, 0xffff0000, -0.5, 1.5 },
+            { -0.5f, +0.5f,  0.5f, 0xff00ff00, -0.5, -0.5 },
+            { +0.5f, -0.5f,  0.5f, 0xff0000ff, 1.5, 1.5 },
+            { +0.5f, +0.5f,  0.5f, 0xffffff00, 1.5, -0.5 },
         };
         constexpr unsigned short indices[] { 0, 1, 2, 3 };
 
@@ -144,8 +144,14 @@ namespace helloworld {
 
 
         xl7::graphics::states::RasterizerState::Desc rasterizer_desc;
+        rasterizer_desc.cull_mode = xl7::graphics::states::RasterizerState::CullMode::None;
 
         _rasterizer_state_id = xl7::graphics::state_manager()->ensure_rasterizer_state( rasterizer_desc );
+
+
+        xl7::graphics::states::DepthStencilState::Desc depth_stencil_desc;
+
+        _depth_stencil_state_id = xl7::graphics::state_manager()->ensure_depth_stencil_state( depth_stencil_desc );
 
 
         xl7::graphics::states::BlendState::Desc blend_desc;
@@ -184,6 +190,7 @@ namespace helloworld {
     bool MyApp::_shutdown_impl()
     {
         xl7::graphics::state_manager()->release_resource_and_invalidate( _blend_state_id );
+        xl7::graphics::state_manager()->release_resource_and_invalidate( _depth_stencil_state_id );
         xl7::graphics::state_manager()->release_resource_and_invalidate( _rasterizer_state_id );
 
         xl7::graphics::state_manager()->release_resource_and_invalidate( _sampler_state_id );
@@ -218,6 +225,7 @@ namespace helloworld {
 
         rendering_context->pipeline.rs.set_rasterizer_state_id( _rasterizer_state_id );
 
+        rendering_context->pipeline.om.set_depth_stencil_state_id( _depth_stencil_state_id );
         rendering_context->pipeline.om.set_blend_state_id( _blend_state_id );
 
         rendering_context->draw_indexed();

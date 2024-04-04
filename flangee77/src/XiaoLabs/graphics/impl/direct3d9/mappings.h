@@ -7,6 +7,8 @@
 #include "../../PixelFormat.h"
 #include "../../ChannelOrder.h"
 
+#include "../../ComparisonFunction.h"
+
 #include "./prerequisites.h"
 
 
@@ -27,6 +29,8 @@ namespace mappings {
     D3DFORMAT _d3d_format_from(PixelFormat pixel_format, ChannelOrder channel_order);
 
     std::pair<PixelFormat, ChannelOrder> _map_d3d_format(D3DFORMAT d3d_format, ChannelOrder preferred_channel_order);
+
+    D3DCMPFUNC _d3d_cmp_func_from(ComparisonFunction comparison_function);
 
 
 
