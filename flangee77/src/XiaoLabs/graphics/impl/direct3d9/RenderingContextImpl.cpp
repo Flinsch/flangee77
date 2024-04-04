@@ -113,6 +113,54 @@ namespace direct3d9 {
     // #############################################################################
 
     /**
+     * Performs a forced synchronization with the hardware state.
+     */
+    bool RenderingContextImpl::_synchronize_hardware_state_impl()
+    {
+        hardware_states = HardwareStates();
+        for ( unsigned i = 0; i < pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS; ++i )
+        {
+            states::SamplerStateImpl::map_d3d_values( {}, hardware_states.vs.sampler_state_type_values[ i ] );
+            states::SamplerStateImpl::map_d3d_values( {}, hardware_states.ps.sampler_state_type_values[ i ] );
+        }
+        states::RasterizerStateImpl::map_d3d_values( {}, hardware_states.rasterizer_state_type_values );
+        states::DepthStencilStateImpl::map_d3d_values( {}, hardware_states.depth_stencil_state_type_values );
+        states::BlendStateImpl::map_d3d_values( {}, hardware_states.blend_state_type_values );
+
+        auto _set_texture_and_sampler_states = [this](IDirect3DBaseTexture9* base_texture, std::span<const std::pair<D3DSAMPLERSTATETYPE, DWORD>> d3d_sampler_state_type_values, unsigned slot_index, unsigned stage_base)
+        {
+            _d3d_device->SetTexture( stage_base + slot_index, base_texture );
+            for ( const auto& p : d3d_sampler_state_type_values )
+                _d3d_device->SetSamplerState( stage_base + slot_index, p.first, p.second );
+        };
+
+        auto _set_render_states = [this](std::span<const std::pair<D3DRENDERSTATETYPE, DWORD>> d3d_render_state_type_values)
+        {
+            for ( const auto& p : d3d_render_state_type_values )
+                _d3d_device->SetRenderState( p.first, p.second );
+        };
+
+        for ( unsigned i = 0; i < get_rendering_device()->get_capabilities().max_concurrent_vertex_stream_count; ++i )
+            _d3d_device->SetStreamSource( 0, hardware_states.vertex_buffers[ i ], 0, 0 );
+        _d3d_device->SetIndices( hardware_states.index_buffer );
+        _d3d_device->SetVertexDeclaration( hardware_states.vertex_declaration );
+
+        _d3d_device->SetVertexShader( hardware_states.vs.shader );
+        for ( unsigned i = 0; i < 4; ++i )
+            _set_texture_and_sampler_states( hardware_states.vs.base_textures[ i ], hardware_states.vs.sampler_state_type_values[ i ], i, D3DVERTEXTEXTURESAMPLER0 );
+
+        _d3d_device->SetPixelShader( hardware_states.ps.shader );
+        for ( unsigned i = 0; i < 8; ++i )
+            _set_texture_and_sampler_states( hardware_states.ps.base_textures[ i ], hardware_states.ps.sampler_state_type_values[ i ], i, 0 );
+
+        _set_render_states( hardware_states.rasterizer_state_type_values );
+        _set_render_states( hardware_states.depth_stencil_state_type_values );
+        _set_render_states( hardware_states.blend_state_type_values );
+
+        return true;
+    }
+
+    /**
      * Begins a scene.
      */
     bool RenderingContextImpl::_begin_scene_impl()
@@ -223,7 +271,7 @@ namespace direct3d9 {
         HRESULT hresult;
 
 
-        const unsigned max_render_target_count = static_cast<RenderingDeviceImpl*>( get_rendering_device() )->get_capabilities().max_simultaneous_render_target_count;
+        const unsigned max_render_target_count = get_rendering_device()->get_capabilities().max_simultaneous_render_target_count;
         for ( unsigned target_index = 0; target_index < max_render_target_count; ++target_index )
         {
             IDirect3DSurface9* d3d_render_target;
@@ -280,7 +328,7 @@ namespace direct3d9 {
         HRESULT hresult;
 
 
-        const unsigned max_vertex_stream_count = static_cast<RenderingDeviceImpl*>( get_rendering_device() )->get_capabilities().max_concurrent_vertex_stream_count;
+        const unsigned max_vertex_stream_count = get_rendering_device()->get_capabilities().max_concurrent_vertex_stream_count;
         for ( unsigned stream_index = 0; stream_index < max_vertex_stream_count; ++stream_index )
         {
             auto* vertex_buffer = static_cast<const meshes::VertexBufferImpl*>( resolved_draw_states.vertex_buffers[ stream_index ] );
@@ -386,52 +434,61 @@ namespace direct3d9 {
 
 
         auto* rasterizer_state = static_cast<const states::RasterizerStateImpl*>( resolved_draw_states.rasterizer_state );
+        const states::D3DRasterizerStateTypeValues* d3d_rasterizer_state_type_values;
         if ( rasterizer_state )
+            d3d_rasterizer_state_type_values = &rasterizer_state->get_d3d_rasterizer_state_type_values();
+        else
         {
-            const states::D3DRasterizerStateTypeValues& d3d_rasterizer_state_type_values = rasterizer_state->get_d3d_rasterizer_state_type_values();
-
-            for ( size_t k = 0; k < states::D3D_RASTERIZER_STATE_TYPE_COUNT; ++k )
-            {
-                if ( d3d_rasterizer_state_type_values[ k ].second != hardware_states.rasterizer_state_type_values[ k ].second )
-                {
-                    hresult = _d3d_device->SetRenderState( d3d_rasterizer_state_type_values[ k ].first, d3d_rasterizer_state_type_values[ k ].second );
-                    if ( FAILED(hresult) )
-                    {
-                        LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetRenderState") ) );
-                        return false;
-                    }
-                    hardware_states.rasterizer_state_type_values[ k ] = d3d_rasterizer_state_type_values[ k ];
-                }
-            } // for each rasterizer state type/value
+            static states::D3DRasterizerStateTypeValues default_rasterizer_state_type_values;
+            states::RasterizerStateImpl::map_d3d_values( {}, default_rasterizer_state_type_values );
+            d3d_rasterizer_state_type_values = &default_rasterizer_state_type_values;
         }
+
+        for ( size_t k = 0; k < states::D3D_RASTERIZER_STATE_TYPE_COUNT; ++k )
+        {
+            if ( (*d3d_rasterizer_state_type_values)[ k ].second != hardware_states.rasterizer_state_type_values[ k ].second )
+            {
+                hresult = _d3d_device->SetRenderState( (*d3d_rasterizer_state_type_values)[ k ].first, (*d3d_rasterizer_state_type_values)[ k ].second );
+                if ( FAILED(hresult) )
+                {
+                    LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetRenderState") ) );
+                    return false;
+                }
+                hardware_states.rasterizer_state_type_values[ k ] = (*d3d_rasterizer_state_type_values)[ k ];
+            }
+        } // for each rasterizer state type/value
 
 
         auto* depth_stencil_state = static_cast<const states::DepthStencilStateImpl*>( resolved_draw_states.depth_stencil_state );
+        const states::D3DDepthStencilStateTypeValues* d3d_depth_stencil_state_type_values;
         if ( depth_stencil_state )
+            d3d_depth_stencil_state_type_values = &depth_stencil_state->get_d3d_depth_stencil_state_type_values();
+        else
         {
-            const states::D3DDepthStencilStateTypeValues& d3d_depth_stencil_state_type_values = depth_stencil_state->get_d3d_depth_stencil_state_type_values();
-
-            bool swapped_winding_order = resolved_draw_states.rasterizer_state && resolved_draw_states.rasterizer_state->get_desc().winding_order == xl7::graphics::states::RasterizerState::WindingOrder::CounterClockwise;
-
-            for ( size_t k = 0; k < states::D3D_DEPTH_STENCIL_STATE_TYPE_COUNT; ++k )
-            {
-                size_t ks = k;
-                size_t kh = k;
-                if ( swapped_winding_order && k >= 6 )
-                    k >= 10 ? ks -= 4 : ks += 4;
-
-                if ( d3d_depth_stencil_state_type_values[ ks ].second != hardware_states.depth_stencil_state_type_values[ kh ].second )
-                {
-                    hresult = _d3d_device->SetRenderState( d3d_depth_stencil_state_type_values[ ks ].first, d3d_depth_stencil_state_type_values[ ks ].second );
-                    if ( FAILED(hresult) )
-                    {
-                        LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetRenderState") ) );
-                        return false;
-                    }
-                    hardware_states.depth_stencil_state_type_values[ kh ] = d3d_depth_stencil_state_type_values[ ks ];
-                }
-            } // for each depth/stencil state type/value
+            static states::D3DDepthStencilStateTypeValues default_depth_stencil_state_type_values;
+            states::DepthStencilStateImpl::map_d3d_values( {}, default_depth_stencil_state_type_values );
+            d3d_depth_stencil_state_type_values = &default_depth_stencil_state_type_values;
         }
+
+        bool swapped_winding_order = resolved_draw_states.rasterizer_state && resolved_draw_states.rasterizer_state->get_desc().winding_order == xl7::graphics::states::RasterizerState::WindingOrder::CounterClockwise;
+        for ( size_t k = 0; k < states::D3D_DEPTH_STENCIL_STATE_TYPE_COUNT; ++k )
+        {
+            size_t ks = k;
+            size_t kh = k;
+            if ( swapped_winding_order && k >= 6 )
+                k >= 10 ? ks -= 4 : ks += 4;
+
+            if ( (*d3d_depth_stencil_state_type_values)[ ks ].second != hardware_states.depth_stencil_state_type_values[ kh ].second )
+            {
+                hresult = _d3d_device->SetRenderState( (*d3d_depth_stencil_state_type_values)[ ks ].first, (*d3d_depth_stencil_state_type_values)[ ks ].second );
+                if ( FAILED(hresult) )
+                {
+                    LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetRenderState") ) );
+                    return false;
+                }
+                hardware_states.depth_stencil_state_type_values[ kh ] = (*d3d_depth_stencil_state_type_values)[ ks ];
+            }
+        } // for each depth/stencil state type/value
 
         if ( resolved_draw_states.stencil_reference_value != hardware_states.stencil_reference_value )
         {
@@ -446,24 +503,29 @@ namespace direct3d9 {
 
 
         auto* blend_state = static_cast<const states::BlendStateImpl*>( resolved_draw_states.blend_state );
+        const states::D3DBlendStateTypeValues* d3d_blend_state_type_values;
         if ( blend_state )
+            d3d_blend_state_type_values = &blend_state->get_d3d_blend_state_type_values();
+        else
         {
-            const states::D3DBlendStateTypeValues& d3d_blend_state_type_values = blend_state->get_d3d_blend_state_type_values();
-
-            for ( size_t k = 0; k < states::D3D_BLEND_STATE_TYPE_COUNT; ++k )
-            {
-                if ( d3d_blend_state_type_values[ k ].second != hardware_states.blend_state_type_values[ k ].second )
-                {
-                    hresult = _d3d_device->SetRenderState( d3d_blend_state_type_values[ k ].first, d3d_blend_state_type_values[ k ].second );
-                    if ( FAILED(hresult) )
-                    {
-                        LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetRenderState") ) );
-                        return false;
-                    }
-                    hardware_states.blend_state_type_values[ k ] = d3d_blend_state_type_values[ k ];
-                }
-            } // for each blend state type/value
+            static states::D3DBlendStateTypeValues default_blend_state_type_values;
+            states::BlendStateImpl::map_d3d_values( {}, default_blend_state_type_values );
+            d3d_blend_state_type_values = &default_blend_state_type_values;
         }
+
+        for ( size_t k = 0; k < states::D3D_BLEND_STATE_TYPE_COUNT; ++k )
+        {
+            if ( (*d3d_blend_state_type_values)[ k ].second != hardware_states.blend_state_type_values[ k ].second )
+            {
+                hresult = _d3d_device->SetRenderState( (*d3d_blend_state_type_values)[ k ].first, (*d3d_blend_state_type_values)[ k ].second );
+                if ( FAILED(hresult) )
+                {
+                    LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetRenderState") ) );
+                    return false;
+                }
+                hardware_states.blend_state_type_values[ k ] = (*d3d_blend_state_type_values)[ k ];
+            }
+        } // for each blend state type/value
 
         if ( resolved_draw_states.blend_factor != hardware_states.blend_factor )
         {
@@ -488,7 +550,7 @@ namespace direct3d9 {
         HRESULT hresult;
 
 
-        const unsigned max_texture_sampler_slot_count = static_cast<RenderingDeviceImpl*>( get_rendering_device() )->get_capabilities().max_texture_sampler_slot_count;
+        const unsigned max_texture_sampler_slot_count = get_rendering_device()->get_capabilities().max_texture_sampler_slot_count;
         for ( unsigned slot_index = 0; slot_index < max_texture_sampler_slot_count; ++slot_index )
         {
             auto* texture = resolved_texture_sampler_states.textures[ slot_index ];
@@ -518,21 +580,27 @@ namespace direct3d9 {
             }
 
             auto* sampler_state = static_cast<const states::SamplerStateImpl*>( resolved_texture_sampler_states.sampler_states[ slot_index ] );
-            if ( !sampler_state )
-                continue;
-            const states::D3DSamplerStateTypeValues& d3d_sampler_state_type_values = sampler_state->get_d3d_sampler_state_type_values();
+            const states::D3DSamplerStateTypeValues* d3d_sampler_state_type_values;
+            if ( sampler_state )
+                d3d_sampler_state_type_values = &sampler_state->get_d3d_sampler_state_type_values();
+            else
+            {
+                static states::D3DSamplerStateTypeValues default_sampler_state_type_values;
+                states::SamplerStateImpl::map_d3d_values( {}, default_sampler_state_type_values );
+                d3d_sampler_state_type_values = &default_sampler_state_type_values;
+            }
 
             for ( size_t k = 0; k < states::D3D_SAMPLER_STATE_TYPE_COUNT; ++k )
             {
-                if ( d3d_sampler_state_type_values[ k ].second != hardware_texture_sampler_states.sampler_state_type_values[ slot_index ][ k ].second )
+                if ( (*d3d_sampler_state_type_values)[ k ].second != hardware_texture_sampler_states.sampler_state_type_values[ slot_index ][ k ].second )
                 {
-                    hresult = _d3d_device->SetSamplerState( slot_index, d3d_sampler_state_type_values[ k ].first, d3d_sampler_state_type_values[ k ].second );
+                    hresult = _d3d_device->SetSamplerState( stage_base + slot_index, (*d3d_sampler_state_type_values)[ k ].first, (*d3d_sampler_state_type_values)[ k ].second );
                     if ( FAILED(hresult) )
                     {
                         LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetSamplerState") ) );
                         return false;
                     }
-                    hardware_texture_sampler_states.sampler_state_type_values[ slot_index ][ k ] = d3d_sampler_state_type_values[ k ];
+                    hardware_texture_sampler_states.sampler_state_type_values[ slot_index ][ k ] = (*d3d_sampler_state_type_values)[ k ];
                 }
             } // for each sampler state type/value
         } // for each texture/sampler slot

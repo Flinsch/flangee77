@@ -78,6 +78,33 @@ namespace states {
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Maps the specified sampler state descriptor to corresponding Direct3D 11
+     * values and fills the given structure accordingly.
+     */
+    void SamplerStateImpl::map_d3d_values(const Desc& desc, D3D11_SAMPLER_DESC& d3d_sampler_desc)
+    {
+        d3d_sampler_desc.Filter = _d3d_filter_from( desc.min_filter_type, desc.mag_filter_type, desc.mip_filter_type );
+        d3d_sampler_desc.AddressU = _d3d_texture_address_mode_from( desc.address_u );
+        d3d_sampler_desc.AddressV = _d3d_texture_address_mode_from( desc.address_v );
+        d3d_sampler_desc.AddressW = _d3d_texture_address_mode_from( desc.address_w );
+        d3d_sampler_desc.MipLODBias = desc.lod_bias;
+        d3d_sampler_desc.MaxAnisotropy = desc.max_anisotropy;
+        d3d_sampler_desc.ComparisonFunc = D3D11_COMPARISON_NEVER;
+        d3d_sampler_desc.BorderColor[0] = desc.border_color.r;
+        d3d_sampler_desc.BorderColor[1] = desc.border_color.g;
+        d3d_sampler_desc.BorderColor[2] = desc.border_color.b;
+        d3d_sampler_desc.BorderColor[3] = desc.border_color.a;
+        d3d_sampler_desc.MinLOD = desc.min_lod;
+        d3d_sampler_desc.MaxLOD = desc.mip_filter_type == xl7::graphics::states::SamplerState::MipFilterType::None ? 0.0f : desc.max_lod; // Is this sufficient, correct, and sensible?
+    }
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 
@@ -92,23 +119,11 @@ namespace states {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
 
-        D3D11_SAMPLER_DESC sampler_desc;
-        sampler_desc.Filter = _d3d_filter_from( _desc.min_filter_type, _desc.mag_filter_type, _desc.mip_filter_type );
-        sampler_desc.AddressU = _d3d_texture_address_mode_from( _desc.address_u );
-        sampler_desc.AddressV = _d3d_texture_address_mode_from( _desc.address_v );
-        sampler_desc.AddressW = _d3d_texture_address_mode_from( _desc.address_w );
-        sampler_desc.MipLODBias = _desc.lod_bias;
-        sampler_desc.MaxAnisotropy = _desc.max_anisotropy;
-        sampler_desc.ComparisonFunc = D3D11_COMPARISON_NEVER;
-        sampler_desc.BorderColor[0] = _desc.border_color.r;
-        sampler_desc.BorderColor[1] = _desc.border_color.g;
-        sampler_desc.BorderColor[2] = _desc.border_color.b;
-        sampler_desc.BorderColor[3] = _desc.border_color.a;
-        sampler_desc.MinLOD = _desc.min_lod;
-        sampler_desc.MaxLOD = _desc.mip_filter_type == xl7::graphics::states::SamplerState::MipFilterType::None ? 0.0f : _desc.max_lod; // Is this sufficient, correct, and sensible?
+        D3D11_SAMPLER_DESC d3d_sampler_desc;
+        map_d3d_values( _desc, d3d_sampler_desc );
 
         HRESULT hresult = d3d_device->CreateSamplerState(
-            &sampler_desc,
+            &d3d_sampler_desc,
             &_d3d_sampler_state );
 
         if ( FAILED(hresult) )

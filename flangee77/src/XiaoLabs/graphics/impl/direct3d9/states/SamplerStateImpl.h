@@ -77,6 +77,18 @@ public:
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+public:
+    /**
+     * Maps the specified sampler state descriptor to corresponding Direct3D 9
+     * values and fills the given structure accordingly.
+     */
+    static void map_d3d_values(const Desc& desc, D3DSamplerStateTypeValues& d3d_sampler_state_type_values);
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 private:

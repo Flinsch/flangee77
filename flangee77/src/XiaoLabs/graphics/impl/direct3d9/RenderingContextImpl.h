@@ -140,6 +140,11 @@ public:
     // #############################################################################
 private:
     /**
+     * Performs a forced synchronization with the hardware state.
+     */
+    virtual bool _synchronize_hardware_state_impl() override;
+
+    /**
      * Begins a scene.
      */
     virtual bool _begin_scene_impl() override;

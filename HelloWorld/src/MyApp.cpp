@@ -150,6 +150,8 @@ namespace helloworld {
 
 
         xl7::graphics::states::DepthStencilState::Desc depth_stencil_desc;
+        depth_stencil_desc.is_depth_testing_enabled = true;
+        depth_stencil_desc.is_depth_writing_enabled = true;
 
         _depth_stencil_state_id = xl7::graphics::state_manager()->ensure_depth_stencil_state( depth_stencil_desc );
 

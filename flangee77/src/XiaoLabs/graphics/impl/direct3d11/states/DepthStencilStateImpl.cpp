@@ -48,6 +48,37 @@ namespace states {
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Maps the specified depth/stencil state descriptor to corresponding Direct3D 11
+     * values and fills the given structure accordingly.
+     */
+    void DepthStencilStateImpl::map_d3d_values(const Desc& desc, D3D11_DEPTH_STENCIL_DESC& d3d_depth_stencil_desc)
+    {
+        d3d_depth_stencil_desc.DepthEnable = desc.is_depth_testing_enabled ? TRUE : FALSE;
+        d3d_depth_stencil_desc.DepthWriteMask = desc.is_depth_writing_enabled ? D3D11_DEPTH_WRITE_MASK_ALL : D3D11_DEPTH_WRITE_MASK_ZERO;
+        d3d_depth_stencil_desc.DepthFunc = mappings::_d3d_comparison_func_from( desc.depth_test_function );
+
+        d3d_depth_stencil_desc.StencilEnable = desc.is_stenciling_enabled ? TRUE : FALSE;
+        d3d_depth_stencil_desc.StencilReadMask = static_cast<UINT8>( desc.stencil_test_mask );
+        d3d_depth_stencil_desc.StencilWriteMask = static_cast<UINT8>( desc.stencil_write_mask );
+
+        d3d_depth_stencil_desc.FrontFace.StencilFailOp = _d3d_stencil_op_from( desc.front_face_stenciling.stencil_fail_operation );
+        d3d_depth_stencil_desc.FrontFace.StencilDepthFailOp = _d3d_stencil_op_from( desc.front_face_stenciling.depth_fail_operation );
+        d3d_depth_stencil_desc.FrontFace.StencilPassOp = _d3d_stencil_op_from( desc.front_face_stenciling.pass_operation );
+        d3d_depth_stencil_desc.FrontFace.StencilFunc = mappings::_d3d_comparison_func_from( desc.front_face_stenciling.stencil_test_function );
+
+        d3d_depth_stencil_desc.BackFace.StencilFailOp = _d3d_stencil_op_from( desc.back_face_stenciling.stencil_fail_operation );
+        d3d_depth_stencil_desc.BackFace.StencilDepthFailOp = _d3d_stencil_op_from( desc.back_face_stenciling.depth_fail_operation );
+        d3d_depth_stencil_desc.BackFace.StencilPassOp = _d3d_stencil_op_from( desc.back_face_stenciling.pass_operation );
+        d3d_depth_stencil_desc.BackFace.StencilFunc = mappings::_d3d_comparison_func_from( desc.back_face_stenciling.stencil_test_function );
+    }
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 
@@ -62,27 +93,11 @@ namespace states {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
 
-        D3D11_DEPTH_STENCIL_DESC depth_stencil_desc;
-        depth_stencil_desc.DepthEnable = _desc.is_depth_testing_enabled ? TRUE : FALSE;
-        depth_stencil_desc.DepthWriteMask = _desc.is_depth_writing_enabled ? D3D11_DEPTH_WRITE_MASK_ALL : D3D11_DEPTH_WRITE_MASK_ZERO;
-        depth_stencil_desc.DepthFunc = mappings::_d3d_comparison_func_from( _desc.depth_test_function );
-
-        depth_stencil_desc.StencilEnable = _desc.is_stenciling_enabled ? TRUE : FALSE;
-        depth_stencil_desc.StencilReadMask = static_cast<UINT8>( _desc.stencil_test_mask );
-        depth_stencil_desc.StencilWriteMask = static_cast<UINT8>( _desc.stencil_write_mask );
-
-        depth_stencil_desc.FrontFace.StencilFailOp = _d3d_stencil_op_from( _desc.front_face_stenciling.stencil_fail_operation );
-        depth_stencil_desc.FrontFace.StencilDepthFailOp = _d3d_stencil_op_from( _desc.front_face_stenciling.depth_fail_operation );
-        depth_stencil_desc.FrontFace.StencilPassOp = _d3d_stencil_op_from( _desc.front_face_stenciling.pass_operation );
-        depth_stencil_desc.FrontFace.StencilFunc = mappings::_d3d_comparison_func_from( _desc.front_face_stenciling.stencil_test_function );
-
-        depth_stencil_desc.BackFace.StencilFailOp = _d3d_stencil_op_from( _desc.back_face_stenciling.stencil_fail_operation );
-        depth_stencil_desc.BackFace.StencilDepthFailOp = _d3d_stencil_op_from( _desc.back_face_stenciling.depth_fail_operation );
-        depth_stencil_desc.BackFace.StencilPassOp = _d3d_stencil_op_from( _desc.back_face_stenciling.pass_operation );
-        depth_stencil_desc.BackFace.StencilFunc = mappings::_d3d_comparison_func_from( _desc.back_face_stenciling.stencil_test_function );
+        D3D11_DEPTH_STENCIL_DESC d3d_depth_stencil_desc;
+        map_d3d_values( _desc, d3d_depth_stencil_desc );
 
         HRESULT hresult = d3d_device->CreateDepthStencilState(
-            &depth_stencil_desc,
+            &d3d_depth_stencil_desc,
             &_d3d_depth_stencil_state );
 
         if ( FAILED(hresult) )

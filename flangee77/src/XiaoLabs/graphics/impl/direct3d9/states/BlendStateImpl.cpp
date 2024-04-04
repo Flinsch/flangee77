@@ -68,6 +68,31 @@ namespace states {
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Maps the specified blend state descriptor to corresponding Direct3D 9
+     * values and fills the given structure accordingly.
+     */
+    void BlendStateImpl::map_d3d_values(const Desc& desc, D3DBlendStateTypeValues& d3d_blend_state_type_values)
+    {
+        d3d_blend_state_type_values = D3DBlendStateTypeValues( {
+            { D3DRS_ALPHABLENDENABLE, desc.is_blending_enabled ? TRUE : FALSE },
+            { D3DRS_SEPARATEALPHABLENDENABLE, desc.is_blending_enabled && (desc.src_alpha_factor != desc.src_color_factor || desc.dest_alpha_factor != desc.dest_color_factor || desc.alpha_operation != desc.color_operation) ? TRUE : FALSE },
+            { D3DRS_SRCBLEND, _d3d_blend_from( desc.src_color_factor ) },
+            { D3DRS_DESTBLEND, _d3d_blend_from( desc.dest_color_factor ) },
+            { D3DRS_BLENDOP, _d3d_blend_op_from( desc.color_operation ) },
+            { D3DRS_SRCBLENDALPHA, _d3d_blend_from( desc.src_alpha_factor ) },
+            { D3DRS_DESTBLENDALPHA, _d3d_blend_from( desc.dest_alpha_factor ) },
+            { D3DRS_BLENDOPALPHA, _d3d_blend_op_from( desc.alpha_operation ) },
+            { D3DRS_COLORWRITEENABLE, _d3d_color_write_enable_from( desc.channel_write_flags ) },
+        } );
+    }
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 
@@ -79,17 +104,7 @@ namespace states {
      */
     bool BlendStateImpl::_acquire_impl(const xl7::resources::DataProvider& data_provider)
     {
-        _d3d_blend_state_type_values = D3DBlendStateTypeValues( {
-            { D3DRS_ALPHABLENDENABLE, _desc.is_blending_enabled ? TRUE : FALSE },
-            { D3DRS_SEPARATEALPHABLENDENABLE, _desc.is_blending_enabled && (_desc.src_alpha_factor != _desc.src_color_factor || _desc.dest_alpha_factor != _desc.dest_color_factor || _desc.alpha_operation != _desc.color_operation) ? TRUE : FALSE },
-            { D3DRS_SRCBLEND, _d3d_blend_from( _desc.src_color_factor ) },
-            { D3DRS_DESTBLEND, _d3d_blend_from( _desc.dest_color_factor ) },
-            { D3DRS_BLENDOP, _d3d_blend_op_from( _desc.color_operation ) },
-            { D3DRS_SRCBLENDALPHA, _d3d_blend_from( _desc.src_alpha_factor ) },
-            { D3DRS_DESTBLENDALPHA, _d3d_blend_from( _desc.dest_alpha_factor ) },
-            { D3DRS_BLENDOPALPHA, _d3d_blend_op_from( _desc.alpha_operation ) },
-            { D3DRS_COLORWRITEENABLE, _d3d_color_write_enable_from( _desc.channel_write_flags ) },
-        } );
+        map_d3d_values( _desc, _d3d_blend_state_type_values );
 
         return true;
     }

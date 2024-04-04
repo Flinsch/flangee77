@@ -67,6 +67,30 @@ namespace states {
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Maps the specified rasterizer state descriptor to corresponding Direct3D 11
+     * values and fills the given structure accordingly.
+     */
+    void RasterizerStateImpl::map_d3d_values(const Desc& desc, D3D11_RASTERIZER_DESC& d3d_rasterizer_desc)
+    {
+        d3d_rasterizer_desc.FillMode = _d3d_fill_mode_from( desc.fill_mode );
+        d3d_rasterizer_desc.CullMode = _d3d_cull_mode_from( desc.cull_mode );
+        d3d_rasterizer_desc.FrontCounterClockwise = _d3d_front_counter_clockwise_from( desc.winding_order );
+        d3d_rasterizer_desc.DepthBias = 0;
+        d3d_rasterizer_desc.DepthBiasClamp = 0.0f;
+        d3d_rasterizer_desc.SlopeScaledDepthBias = 0.0f;
+        d3d_rasterizer_desc.DepthClipEnable = TRUE;
+        d3d_rasterizer_desc.ScissorEnable = FALSE;
+        d3d_rasterizer_desc.MultisampleEnable = FALSE;
+        d3d_rasterizer_desc.AntialiasedLineEnable = FALSE;
+    }
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 
@@ -81,20 +105,11 @@ namespace states {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
 
-        D3D11_RASTERIZER_DESC rasterizer_desc;
-        rasterizer_desc.FillMode = _d3d_fill_mode_from( _desc.fill_mode );
-        rasterizer_desc.CullMode = _d3d_cull_mode_from( _desc.cull_mode );
-        rasterizer_desc.FrontCounterClockwise = _d3d_front_counter_clockwise_from( _desc.winding_order );
-        rasterizer_desc.DepthBias = 0;
-        rasterizer_desc.DepthBiasClamp = 0.0f;
-        rasterizer_desc.SlopeScaledDepthBias = 0.0f;
-        rasterizer_desc.DepthClipEnable = TRUE;
-        rasterizer_desc.ScissorEnable = FALSE;
-        rasterizer_desc.MultisampleEnable = FALSE;
-        rasterizer_desc.AntialiasedLineEnable = FALSE;
+        D3D11_RASTERIZER_DESC d3d_rasterizer_desc;
+        map_d3d_values( _desc, d3d_rasterizer_desc );
 
         HRESULT hresult = d3d_device->CreateRasterizerState(
-            &rasterizer_desc,
+            &d3d_rasterizer_desc,
             &_d3d_rasterizer_state );
 
         if ( FAILED(hresult) )

@@ -34,6 +34,14 @@ namespace graphics {
     // #############################################################################
 
     /**
+     * Performs a forced synchronization with the hardware state.
+     */
+    bool RenderingContext::synchronize_hardware_state()
+    {
+        return _synchronize_hardware_state_impl();
+    }
+
+    /**
      * Begins a scene.
      */
     bool RenderingContext::begin_scene()

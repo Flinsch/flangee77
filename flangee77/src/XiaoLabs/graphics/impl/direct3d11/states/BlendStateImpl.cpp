@@ -73,6 +73,30 @@ namespace states {
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Maps the specified blend state descriptor to corresponding Direct3D 11
+     * values and fills the given structure accordingly.
+     */
+    void BlendStateImpl::map_d3d_values(const Desc& desc, D3D11_BLEND_DESC& d3d_blend_desc)
+    {
+        d3d_blend_desc.AlphaToCoverageEnable = FALSE;
+        d3d_blend_desc.IndependentBlendEnable = FALSE;
+        d3d_blend_desc.RenderTarget[0].BlendEnable = desc.is_blending_enabled ? TRUE : FALSE;
+        d3d_blend_desc.RenderTarget[0].SrcBlend = _d3d_blend_from( desc.src_color_factor );
+        d3d_blend_desc.RenderTarget[0].DestBlend = _d3d_blend_from( desc.dest_color_factor );
+        d3d_blend_desc.RenderTarget[0].BlendOp = _d3d_blend_op_from( desc.color_operation );
+        d3d_blend_desc.RenderTarget[0].SrcBlendAlpha = _d3d_blend_from( desc.src_alpha_factor );
+        d3d_blend_desc.RenderTarget[0].DestBlendAlpha = _d3d_blend_from( desc.dest_alpha_factor );
+        d3d_blend_desc.RenderTarget[0].BlendOpAlpha = _d3d_blend_op_from( desc.alpha_operation );
+        d3d_blend_desc.RenderTarget[0].RenderTargetWriteMask = _d3d_render_target_write_mask_from( desc.channel_write_flags );
+    }
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 
@@ -87,20 +111,11 @@ namespace states {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
 
-        D3D11_BLEND_DESC blend_desc;
-        blend_desc.AlphaToCoverageEnable = FALSE;
-        blend_desc.IndependentBlendEnable = FALSE;
-        blend_desc.RenderTarget[0].BlendEnable = _desc.is_blending_enabled ? TRUE : FALSE;
-        blend_desc.RenderTarget[0].SrcBlend = _d3d_blend_from( _desc.src_color_factor );
-        blend_desc.RenderTarget[0].DestBlend = _d3d_blend_from( _desc.dest_color_factor );
-        blend_desc.RenderTarget[0].BlendOp = _d3d_blend_op_from( _desc.color_operation );
-        blend_desc.RenderTarget[0].SrcBlendAlpha = _d3d_blend_from( _desc.src_alpha_factor );
-        blend_desc.RenderTarget[0].DestBlendAlpha = _d3d_blend_from( _desc.dest_alpha_factor );
-        blend_desc.RenderTarget[0].BlendOpAlpha = _d3d_blend_op_from( _desc.alpha_operation );
-        blend_desc.RenderTarget[0].RenderTargetWriteMask = _d3d_render_target_write_mask_from( _desc.channel_write_flags );
+        D3D11_BLEND_DESC d3d_blend_desc;
+        map_d3d_values( _desc, d3d_blend_desc );
 
         HRESULT hresult = d3d_device->CreateBlendState(
-            &blend_desc,
+            &d3d_blend_desc,
             &_d3d_blend_state );
 
         if ( FAILED(hresult) )

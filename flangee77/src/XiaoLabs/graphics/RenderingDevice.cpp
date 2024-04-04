@@ -61,6 +61,9 @@ namespace graphics {
             return nullptr;
         }
 
+        if ( !rendering_context->synchronize_hardware_state() )
+            LOG_WARNING( TEXT("The rendering context could not be synchronized with the hardware state.") );
+
         return rendering_context;
     }
 

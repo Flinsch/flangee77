@@ -76,6 +76,40 @@ namespace direct3d11 {
     // #############################################################################
 
     /**
+     * Performs a forced synchronization with the hardware state.
+     */
+    bool RenderingContextImpl::_synchronize_hardware_state_impl()
+    {
+        hardware_states = HardwareStates();
+        hardware_states.primitive_topology = D3D11_PRIMITIVE_TOPOLOGY_POINTLIST;
+
+        unsigned stream_strides[ xl7::graphics::pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
+        unsigned stream_offsets[ xl7::graphics::pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
+        ::memset( stream_strides, 0, sizeof(stream_strides) );
+        ::memset( stream_offsets, 0, sizeof(stream_offsets) );
+        _d3d_device_context->IASetVertexBuffers( 0, get_rendering_device()->get_capabilities().max_concurrent_vertex_stream_count, &hardware_states.vertex_buffers[0], stream_strides, stream_offsets );
+        _d3d_device_context->IASetIndexBuffer( hardware_states.index_buffer, DXGI_FORMAT_UNKNOWN, 0 );
+        _d3d_device_context->IASetInputLayout( hardware_states.input_layout );
+        _d3d_device_context->IASetPrimitiveTopology( hardware_states.primitive_topology );
+
+        _d3d_device_context->VSSetShader( hardware_states.vs.shader, nullptr, 0 );
+        _d3d_device_context->VSSetShaderResources( 0, get_rendering_device()->get_capabilities().max_texture_sampler_slot_count, &hardware_states.vs.shader_resource_views[0] );
+        _d3d_device_context->VSSetSamplers( 0, get_rendering_device()->get_capabilities().max_texture_sampler_slot_count, &hardware_states.vs.sampler_states[0] );
+
+        _d3d_device_context->PSSetShader( hardware_states.ps.shader, nullptr, 0 );
+        _d3d_device_context->PSSetShaderResources( 0, get_rendering_device()->get_capabilities().max_texture_sampler_slot_count, &hardware_states.ps.shader_resource_views[0] );
+        _d3d_device_context->PSSetSamplers( 0, get_rendering_device()->get_capabilities().max_texture_sampler_slot_count, &hardware_states.ps.sampler_states[0] );
+
+        _d3d_device_context->RSSetState( hardware_states.rasterizer_state );
+
+        _d3d_device_context->OMSetDepthStencilState( hardware_states.depth_stencil_state, hardware_states.stencil_reference_value );
+        _d3d_device_context->OMSetBlendState( hardware_states.blend_state, hardware_states.blend_factor.get_rgba_ptr(), 0xffffffff );
+        _d3d_device_context->OMSetRenderTargets( get_rendering_device()->get_capabilities().max_simultaneous_render_target_count, &hardware_states.render_target_views[0], hardware_states.depth_stencil_view );
+
+        return true;
+    }
+
+    /**
      * Begins a scene.
      */
     bool RenderingContextImpl::_begin_scene_impl()
@@ -165,7 +199,7 @@ namespace direct3d11 {
     {
         unsigned target_count = 0;
 
-        const unsigned max_render_target_count = static_cast<RenderingDeviceImpl*>( get_rendering_device() )->get_capabilities().max_simultaneous_render_target_count;
+        const unsigned max_render_target_count = get_rendering_device()->get_capabilities().max_simultaneous_render_target_count;
         for ( unsigned target_index = 0; target_index < max_render_target_count; ++target_index )
         {
             ID3D11RenderTargetView* d3d_render_target_view;
@@ -215,7 +249,7 @@ namespace direct3d11 {
         unsigned stream_strides[ pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
         unsigned stream_offsets[ pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
 
-        const unsigned max_vertex_stream_count = static_cast<RenderingDeviceImpl*>( get_rendering_device() )->get_capabilities().max_concurrent_vertex_stream_count;
+        const unsigned max_vertex_stream_count = get_rendering_device()->get_capabilities().max_concurrent_vertex_stream_count;
         for ( unsigned stream_index = 0; stream_index < max_vertex_stream_count; ++stream_index )
         {
             auto* vertex_buffer = static_cast<const meshes::VertexBufferImpl*>( resolved_draw_states.vertex_buffers[ stream_index ] );
@@ -376,7 +410,7 @@ namespace direct3d11 {
     {
         unsigned slot_count = 0;
 
-        const unsigned max_texture_sampler_slot_count = static_cast<RenderingDeviceImpl*>( get_rendering_device() )->get_capabilities().max_texture_sampler_slot_count;
+        const unsigned max_texture_sampler_slot_count = get_rendering_device()->get_capabilities().max_texture_sampler_slot_count;
         for ( unsigned slot_index = 0; slot_index < max_texture_sampler_slot_count; ++slot_index )
         {
             auto* texture = resolved_texture_sampler_states.textures[ slot_index ];

@@ -75,6 +75,18 @@ public:
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+public:
+    /**
+     * Maps the specified rasterizer state descriptor to corresponding Direct3D 11
+     * values and fills the given structure accordingly.
+     */
+    static void map_d3d_values(const Desc& desc, D3D11_RASTERIZER_DESC& d3d_rasterizer_desc);
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 private:

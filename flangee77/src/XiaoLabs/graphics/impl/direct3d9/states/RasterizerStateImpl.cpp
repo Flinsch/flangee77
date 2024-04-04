@@ -56,6 +56,24 @@ namespace states {
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Maps the specified rasterizer state descriptor to corresponding Direct3D 9
+     * values and fills the given structure accordingly.
+     */
+    void RasterizerStateImpl::map_d3d_values(const Desc& desc, D3DRasterizerStateTypeValues& d3d_rasterizer_state_type_values)
+    {
+        d3d_rasterizer_state_type_values = D3DRasterizerStateTypeValues( {
+            { D3DRS_FILLMODE, _d3d_fill_mode_from( desc.fill_mode ) },
+            { D3DRS_CULLMODE, _d3d_cull_from( desc.cull_mode, desc.winding_order ) },
+        } );
+    }
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 
@@ -67,10 +85,7 @@ namespace states {
      */
     bool RasterizerStateImpl::_acquire_impl(const xl7::resources::DataProvider& data_provider)
     {
-        _d3d_rasterizer_state_type_values = D3DRasterizerStateTypeValues( {
-            { D3DRS_FILLMODE, _d3d_fill_mode_from( _desc.fill_mode ) },
-            { D3DRS_CULLMODE, _d3d_cull_from( _desc.cull_mode, _desc.winding_order ) },
-        } );
+        map_d3d_values( _desc, _d3d_rasterizer_state_type_values );
 
         return true;
     }

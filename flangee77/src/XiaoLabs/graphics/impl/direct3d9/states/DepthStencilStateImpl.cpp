@@ -44,6 +44,42 @@ namespace states {
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Maps the specified depth/stencil state descriptor to corresponding Direct3D 9
+     * values and fills the given structure accordingly.
+     */
+    void DepthStencilStateImpl::map_d3d_values(const Desc& desc, D3DDepthStencilStateTypeValues& d3d_depth_stencil_state_type_values)
+    {
+        d3d_depth_stencil_state_type_values = D3DDepthStencilStateTypeValues( {
+            { D3DRS_ZENABLE, desc.is_depth_testing_enabled ? D3DZB_TRUE : D3DZB_FALSE },
+            { D3DRS_ZWRITEENABLE, desc.is_depth_writing_enabled ? TRUE : FALSE },
+            { D3DRS_ZFUNC, mappings::_d3d_cmp_func_from( desc.depth_test_function ) },
+
+            { D3DRS_STENCILENABLE, desc.is_stenciling_enabled ? TRUE : FALSE },
+            { D3DRS_STENCILMASK, static_cast<DWORD>( desc.stencil_test_mask ) },
+            { D3DRS_STENCILWRITEMASK, static_cast<DWORD>( desc.stencil_write_mask ) },
+
+            // Here we first equate "CW" with "front faces" and "CCW" with "back faces".
+            // These values may have to be swapped when flushing the rendering context.
+
+            { D3DRS_STENCILFAIL, _d3d_stencil_op_from( desc.front_face_stenciling.stencil_fail_operation ) },
+            { D3DRS_STENCILZFAIL, _d3d_stencil_op_from( desc.front_face_stenciling.depth_fail_operation ) },
+            { D3DRS_STENCILPASS, _d3d_stencil_op_from( desc.front_face_stenciling.pass_operation ) },
+            { D3DRS_STENCILFUNC, mappings::_d3d_cmp_func_from( desc.front_face_stenciling.stencil_test_function ) },
+
+            { D3DRS_CCW_STENCILFAIL, _d3d_stencil_op_from( desc.back_face_stenciling.stencil_fail_operation ) },
+            { D3DRS_CCW_STENCILZFAIL, _d3d_stencil_op_from( desc.back_face_stenciling.depth_fail_operation ) },
+            { D3DRS_CCW_STENCILPASS, _d3d_stencil_op_from( desc.back_face_stenciling.pass_operation ) },
+            { D3DRS_CCW_STENCILFUNC, mappings::_d3d_cmp_func_from( desc.back_face_stenciling.stencil_test_function ) },
+        } );
+    }
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 
@@ -55,28 +91,7 @@ namespace states {
      */
     bool DepthStencilStateImpl::_acquire_impl(const xl7::resources::DataProvider& data_provider)
     {
-        _d3d_depth_stencil_state_type_values = D3DDepthStencilStateTypeValues( {
-            { D3DRS_ZENABLE, _desc.is_depth_testing_enabled ? D3DZB_TRUE : D3DZB_FALSE },
-            { D3DRS_ZWRITEENABLE, _desc.is_depth_writing_enabled ? TRUE : FALSE },
-            { D3DRS_ZFUNC, mappings::_d3d_cmp_func_from( _desc.depth_test_function ) },
-
-            { D3DRS_STENCILENABLE, _desc.is_stenciling_enabled ? TRUE : FALSE },
-            { D3DRS_STENCILMASK, static_cast<DWORD>( _desc.stencil_test_mask ) },
-            { D3DRS_STENCILWRITEMASK, static_cast<DWORD>( _desc.stencil_write_mask ) },
-
-            // Here we first equate "CW" with "front faces" and "CCW" with "back faces".
-            // These values may have to be swapped when flushing the rendering context.
-
-            { D3DRS_STENCILFAIL, _d3d_stencil_op_from( _desc.front_face_stenciling.stencil_fail_operation ) },
-            { D3DRS_STENCILZFAIL, _d3d_stencil_op_from( _desc.front_face_stenciling.depth_fail_operation ) },
-            { D3DRS_STENCILPASS, _d3d_stencil_op_from( _desc.front_face_stenciling.pass_operation ) },
-            { D3DRS_STENCILFUNC, mappings::_d3d_cmp_func_from( _desc.front_face_stenciling.stencil_test_function ) },
-
-            { D3DRS_CCW_STENCILFAIL, _d3d_stencil_op_from( _desc.back_face_stenciling.stencil_fail_operation ) },
-            { D3DRS_CCW_STENCILZFAIL, _d3d_stencil_op_from( _desc.back_face_stenciling.depth_fail_operation ) },
-            { D3DRS_CCW_STENCILPASS, _d3d_stencil_op_from( _desc.back_face_stenciling.pass_operation ) },
-            { D3DRS_CCW_STENCILFUNC, mappings::_d3d_cmp_func_from( _desc.back_face_stenciling.stencil_test_function ) },
-        } );
+        map_d3d_values( _desc, _d3d_depth_stencil_state_type_values );
 
         return true;
     }

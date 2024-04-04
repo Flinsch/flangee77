@@ -77,6 +77,18 @@ public:
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+public:
+    /**
+     * Maps the specified blend state descriptor to corresponding Direct3D 9
+     * values and fills the given structure accordingly.
+     */
+    static void map_d3d_values(const Desc& desc, D3DBlendStateTypeValues& d3d_blend_state_type_values);
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 private:

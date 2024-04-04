@@ -157,6 +157,11 @@ public:
     // #############################################################################
 public:
     /**
+     * Performs a forced synchronization with the hardware state.
+     */
+    bool synchronize_hardware_state();
+
+    /**
      * Begins a scene.
      */
     bool begin_scene();
@@ -207,6 +212,11 @@ public:
     // Prototypes
     // #############################################################################
 private:
+    /**
+     * Performs a forced synchronization with the hardware state.
+     */
+    virtual bool _synchronize_hardware_state_impl() = 0;
+
     /**
      * Begins a scene.
      */

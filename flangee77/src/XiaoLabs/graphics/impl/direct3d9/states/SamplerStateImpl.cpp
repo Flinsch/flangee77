@@ -60,6 +60,35 @@ namespace states {
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Maps the specified sampler state descriptor to corresponding Direct3D 9
+     * values and fills the given structure accordingly.
+     */
+    void SamplerStateImpl::map_d3d_values(const Desc& desc, D3DSamplerStateTypeValues& d3d_sampler_state_type_values)
+    {
+        d3d_sampler_state_type_values = D3DSamplerStateTypeValues( {
+            { D3DSAMP_ADDRESSU, _d3d_texture_address_from( desc.address_u ) },
+            { D3DSAMP_ADDRESSV, _d3d_texture_address_from( desc.address_v ) },
+            { D3DSAMP_ADDRESSW, _d3d_texture_address_from( desc.address_w ) },
+            { D3DSAMP_BORDERCOLOR, desc.border_color.to_uint32( xl7::graphics::ChannelOrder::BGRA ) },
+            { D3DSAMP_MAGFILTER, _d3d_texture_filter_type_from( desc.mag_filter_type ) },
+            { D3DSAMP_MINFILTER, _d3d_texture_filter_type_from( desc.min_filter_type ) },
+            { D3DSAMP_MIPFILTER, _d3d_texture_filter_type_from( desc.mip_filter_type ) },
+            { D3DSAMP_MIPMAPLODBIAS, *reinterpret_cast<const DWORD*>( &desc.lod_bias ) },
+            { D3DSAMP_MAXMIPLEVEL, static_cast<DWORD>( ml7::utilities::round( desc.max_lod ) ) },
+            { D3DSAMP_MAXANISOTROPY, desc.max_anisotropy },
+            { D3DSAMP_SRGBTEXTURE, 0 },
+            { D3DSAMP_ELEMENTINDEX, 0 },
+            { D3DSAMP_DMAPOFFSET, 0 },
+        } );
+    }
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 
@@ -71,21 +100,7 @@ namespace states {
      */
     bool SamplerStateImpl::_acquire_impl(const xl7::resources::DataProvider& data_provider)
     {
-        _d3d_sampler_state_type_values = D3DSamplerStateTypeValues( {
-            { D3DSAMP_ADDRESSU, _d3d_texture_address_from( _desc.address_u ) },
-            { D3DSAMP_ADDRESSV, _d3d_texture_address_from( _desc.address_v ) },
-            { D3DSAMP_ADDRESSW, _d3d_texture_address_from( _desc.address_w ) },
-            { D3DSAMP_BORDERCOLOR, _desc.border_color.to_uint32( xl7::graphics::ChannelOrder::BGRA ) },
-            { D3DSAMP_MAGFILTER, _d3d_texture_filter_type_from( _desc.mag_filter_type ) },
-            { D3DSAMP_MINFILTER, _d3d_texture_filter_type_from( _desc.min_filter_type ) },
-            { D3DSAMP_MIPFILTER, _d3d_texture_filter_type_from( _desc.mip_filter_type ) },
-            { D3DSAMP_MIPMAPLODBIAS, *reinterpret_cast<const DWORD*>( &_desc.lod_bias ) },
-            { D3DSAMP_MAXMIPLEVEL, static_cast<DWORD>( ml7::utilities::round( _desc.max_lod ) ) },
-            { D3DSAMP_MAXANISOTROPY, _desc.max_anisotropy },
-            { D3DSAMP_SRGBTEXTURE, 0 },
-            { D3DSAMP_ELEMENTINDEX, 0 },
-            { D3DSAMP_DMAPOFFSET, 0 },
-        } );
+        map_d3d_values( _desc, _d3d_sampler_state_type_values );
 
         return true;
     }
