@@ -558,6 +558,12 @@
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\states\DepthStencilStateImpl.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\Viewport.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\surfaces\RenderTarget.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -954,6 +960,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\states\DepthStencilStateImpl.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\surfaces\RenderTarget.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

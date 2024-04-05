@@ -1,7 +1,7 @@
 #pragma once
 #ifndef XL7_GRAPHICS_SURFACES_COLORRENDERTARGET_H
 #define XL7_GRAPHICS_SURFACES_COLORRENDERTARGET_H
-#include "./Surface.h"
+#include "./RenderTarget.h"
 
 
 
@@ -12,7 +12,7 @@ namespace surfaces {
 
 
 class ColorRenderTarget
-    : public Surface
+    : public RenderTarget
 {
 
     // #############################################################################

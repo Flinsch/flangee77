@@ -1,7 +1,12 @@
 #include "RenderingDevice.h"
 
+#include "./GraphicsSystem.h"
+
+#include <XiaoLabs/MainWindow.h>
+
 #include <CoreLabs/logging.h>
 #include <CoreLabs/memory.h>
+#include <CoreLabs/utilities.h>
 
 
 
@@ -18,7 +23,10 @@ namespace graphics {
      * Explicit constructor.
      */
     RenderingDevice::RenderingDevice(std::unique_ptr<IResourceFactory> resource_factory)
-        : _capabilities()
+        : _back_buffer_width( 0 )
+        , _back_buffer_height( 0 )
+        , _default_viewport()
+        , _capabilities()
         , _resource_factory( std::move(resource_factory) )
         , _surface_manager( { surfaces::SurfaceManager::Attorney::create( _resource_factory.get() ), surfaces::SurfaceManager::Attorney::destroy } )
         , _texture_manager( { textures::TextureManager::Attorney::create( _resource_factory.get() ), textures::TextureManager::Attorney::destroy } )
@@ -201,6 +209,12 @@ namespace graphics {
      */
     bool RenderingDevice::_init()
     {
+        // "Calculate" the back buffer size
+        // and the default viewport.
+        _back_buffer_width = cl7::utilities::coalesce( GraphicsSystem::instance().get_config().video.display_mode.width, MainWindow::instance().get_width() );
+        _back_buffer_height = cl7::utilities::coalesce( GraphicsSystem::instance().get_config().video.display_mode.height, MainWindow::instance().get_height() );
+        _default_viewport = { 0, 0, _back_buffer_width, _back_buffer_height, 0.0f, 1.0f };
+
         _capabilities = Capabilities();
 
         Capabilities capabilities;

@@ -11,7 +11,6 @@
 
 #include <CoreLabs/logging.h>
 #include <CoreLabs/strings.h>
-#include <CoreLabs/utilities.h>
 
 #include <dxgi.h>
 
@@ -59,10 +58,6 @@ namespace direct3d9 {
         const MainWindow::DisplayMode window_display_mode = MainWindow::instance().get_display_mode();
         const bool fullscreen = window_display_mode == MainWindow::DisplayMode::Fullscreen;
 
-        // "Calculate" the back buffer size.
-        const unsigned back_buffer_width = cl7::utilities::coalesce( GraphicsSystem::instance().get_config().video.display_mode.width, MainWindow::instance().get_width() );
-        const unsigned back_buffer_height = cl7::utilities::coalesce( GraphicsSystem::instance().get_config().video.display_mode.height, MainWindow::instance().get_height() );
-
         // Set the format of the back buffer
         // and the depth/stencil surface.
         const D3DFORMAT back_buffer_format = D3DFMT_X8R8G8B8;
@@ -70,8 +65,8 @@ namespace direct3d9 {
 
         // Fill the presentation parameters structure.
         ::memset( &_d3d_present_parameters, 0, sizeof(_d3d_present_parameters) );
-        _d3d_present_parameters.BackBufferWidth             = back_buffer_width;
-        _d3d_present_parameters.BackBufferHeight            = back_buffer_height;
+        _d3d_present_parameters.BackBufferWidth             = get_back_buffer_width();
+        _d3d_present_parameters.BackBufferHeight            = get_back_buffer_height();
         _d3d_present_parameters.BackBufferFormat            = back_buffer_format;
         _d3d_present_parameters.BackBufferCount             = 1;
         _d3d_present_parameters.MultiSampleType             = D3DMULTISAMPLE_NONE;
@@ -167,8 +162,8 @@ namespace direct3d9 {
         ::memset( &d3d_viewport, 0, sizeof(d3d_viewport) );
         d3d_viewport.X = 0;
         d3d_viewport.Y = 0;
-        d3d_viewport.Width = back_buffer_width;
-        d3d_viewport.Height = back_buffer_height;
+        d3d_viewport.Width = get_back_buffer_width();
+        d3d_viewport.Height = get_back_buffer_height();
         d3d_viewport.MinZ = 0.0f;
         d3d_viewport.MaxZ = 1.0f;
         _d3d_device->SetViewport( &d3d_viewport );

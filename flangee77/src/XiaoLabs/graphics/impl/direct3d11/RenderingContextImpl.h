@@ -52,6 +52,8 @@ private:
         ShaderStates<ID3D11VertexShader> vs;
         ShaderStates<ID3D11PixelShader> ps;
 
+        D3D11_VIEWPORT viewport;
+
         ID3D11RasterizerState* rasterizer_state;
         ID3D11DepthStencilState* depth_stencil_state;
         ID3D11BlendState* blend_state;

@@ -10,7 +10,6 @@
 #include <XiaoLabs/graphics.h>
 
 #include <CoreLabs/logging.h>
-#include <CoreLabs/utilities.h>
 
 
 
@@ -230,15 +229,11 @@ namespace direct3d11 {
         const MainWindow::DisplayMode window_display_mode = MainWindow::instance().get_display_mode();
         const bool fullscreen = window_display_mode == MainWindow::DisplayMode::Fullscreen;
 
-        // "Calculate" the back buffer size.
-        const unsigned back_buffer_width = cl7::utilities::coalesce( GraphicsSystem::instance().get_config().video.display_mode.width, MainWindow::instance().get_width() );
-        const unsigned back_buffer_height = cl7::utilities::coalesce( GraphicsSystem::instance().get_config().video.display_mode.height, MainWindow::instance().get_height() );
-
         // Fill the swap chain description structure.
         DXGI_SWAP_CHAIN_DESCn dxgi_swap_chain_desc;
         ::memset( &dxgi_swap_chain_desc, 0, sizeof(dxgi_swap_chain_desc) );
-        dxgi_swap_chain_desc.BufferDesc.Width = back_buffer_width;
-        dxgi_swap_chain_desc.BufferDesc.Height = back_buffer_height;
+        dxgi_swap_chain_desc.BufferDesc.Width = get_back_buffer_width();
+        dxgi_swap_chain_desc.BufferDesc.Height = get_back_buffer_height();
         dxgi_swap_chain_desc.BufferDesc.RefreshRate.Numerator = fullscreen ? GraphicsSystem::instance().get_config().video.display_mode.refresh_rate : 0;
         dxgi_swap_chain_desc.BufferDesc.RefreshRate.Denominator = 1;
         dxgi_swap_chain_desc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -297,8 +292,8 @@ namespace direct3d11 {
         // ... fill the (standard) depth/stencil buffer description structure ...
         D3D11_TEXTURE2D_DESC d3d_z_buffer_desc;
         ::memset( &d3d_z_buffer_desc, 0, sizeof(d3d_z_buffer_desc) );
-        d3d_z_buffer_desc.Width = back_buffer_width;
-        d3d_z_buffer_desc.Height = back_buffer_height;
+        d3d_z_buffer_desc.Width = get_back_buffer_width();
+        d3d_z_buffer_desc.Height = get_back_buffer_height();
         d3d_z_buffer_desc.MipLevels = 1;
         d3d_z_buffer_desc.ArraySize = 1;
         d3d_z_buffer_desc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
@@ -336,8 +331,8 @@ namespace direct3d11 {
         ::memset( &d3d_viewport, 0, sizeof(d3d_viewport) );
         d3d_viewport.TopLeftX = 0.0f;
         d3d_viewport.TopLeftY = 0.0f;
-        d3d_viewport.Width = static_cast<float>( back_buffer_width );
-        d3d_viewport.Height = static_cast<float>( back_buffer_height );
+        d3d_viewport.Width = static_cast<float>( get_back_buffer_width() );
+        d3d_viewport.Height = static_cast<float>( get_back_buffer_height() );
         d3d_viewport.MinDepth = 0.0f;
         d3d_viewport.MaxDepth = 1.0f;
         _d3d_immediate_context->RSSetViewports( 1, &d3d_viewport );

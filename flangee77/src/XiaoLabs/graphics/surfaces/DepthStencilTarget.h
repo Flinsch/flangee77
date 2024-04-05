@@ -1,7 +1,7 @@
 #pragma once
 #ifndef XL7_GRAPHICS_SURFACES_DEPTHSTENCILTARGET_H
 #define XL7_GRAPHICS_SURFACES_DEPTHSTENCILTARGET_H
-#include "./Surface.h"
+#include "./RenderTarget.h"
 
 
 
@@ -12,7 +12,7 @@ namespace surfaces {
 
 
 class DepthStencilTarget
-    : public Surface
+    : public RenderTarget
 {
 
     // #############################################################################
