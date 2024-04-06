@@ -90,6 +90,12 @@ private:
      */
     void _write_raw(cl7::u8string_view utf8, bool truncate = false);
 
+    /**
+     * Writes certain information about the source code location from which the log
+     * entry came to the log file.
+     */
+    void _write_source_location(const cl7::char_type* file_path, unsigned line_number, const cl7::char_type* function_name);
+
 }; // class HtmlLogHandler
 
 

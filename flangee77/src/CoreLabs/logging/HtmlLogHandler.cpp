@@ -23,6 +23,7 @@ namespace logging {
     HtmlLogHandler::Block::~Block()
     {
         _owner->_write_raw( TEXT("    </div>\n") );
+        _owner->_write_raw( TEXT("    <div></div><div></div><div></div>\n") );
     }
 
 
@@ -52,7 +53,7 @@ namespace logging {
         ss << TEXT("  <title>") << title << TEXT("</title>\n");
         ss << TEXT("  <style>\n");
         ss << TEXT("    body { font-family: sans-serif; }\n");
-        ss << TEXT("    .container { display: grid; gap: 0.25rem 1rem; }\n");
+        ss << TEXT("    .container { display: grid; gap: 0.25rem 1rem; grid-template-columns: 1fr auto auto auto; }\n");
         ss << TEXT("    .container > * {  }\n");
         ss << TEXT("    .container > * > .badge { border: 0.125rem solid; border-radius: 0.25rem; font-weight: bold; padding: 0 0.125rem; text-transform: capitalize; }\n");
         ss << TEXT("    .container > .info { color: #085786; }\n");
@@ -75,6 +76,9 @@ namespace logging {
         ss << TEXT("    .container > .meta {  }\n");
         ss << TEXT("    .container > .comment { font-family: monospace; }\n");
         ss << TEXT("    .container > .other {  }\n");
+        ss << TEXT("    .container > .file-path { font-family: sans-serif; font-size: small; font-style: oblique; }\n");
+        ss << TEXT("    .container > .line-number { font-family: sans-serif; font-size: small; font-style: oblique; text-align: right; }\n");
+        ss << TEXT("    .container > .function-name { font-family: monospace; font-size: small; font-style: oblique; }\n");
         ss << TEXT("  </style>\n");
         ss << TEXT("</head>\n");
         ss << TEXT("<body>\n");
@@ -180,6 +184,8 @@ namespace logging {
         }
 
         _write_raw( ss.str() );
+        if ( block_class.empty() )
+            _write_source_location( log_entry.file_path, log_entry.line_number, log_entry.function_name );
     }
 
 
@@ -243,6 +249,35 @@ namespace logging {
         //if ( truncate )
         //    file.write( reinterpret_cast<const char*>( cl7::strings::to_bytes( u8"", true ).data() ), 3 );
         file.write( reinterpret_cast<const char*>( utf8.data() ), utf8.size() );
+    }
+
+    /**
+     * Writes certain information about the source code location from which the log
+     * entry came to the log file.
+     */
+    void HtmlLogHandler::_write_source_location(const cl7::char_type* file_path, unsigned line_number, const cl7::char_type* function_name)
+    {
+#pragma message( "Consider using std::source_location as a better alternative to __FILE__, __LINE__, etc." )
+
+        constexpr std::string_view file_path_view{ __FILE__ };
+        constexpr size_t file_path_skip = file_path_view.find( "flangee77" );
+        static_assert( file_path_skip != file_path_view.npos );
+
+        const cl7::string_view function_name_view{ function_name };
+        const size_t function_name_skip = function_name_view.rfind( TEXT("::") );
+
+        cl7::osstream ss;
+        ss << TEXT("    <div class=\"file-path\">\n");
+        ss << TEXT("      ") << _escape( file_path + file_path_skip ) << TEXT("\n");
+        ss << TEXT("    </div>\n");
+        ss << TEXT("    <div class=\"line-number\">\n");
+        ss << TEXT("      ") << ( line_number ) << TEXT("\n");
+        ss << TEXT("    </div>\n");
+        ss << TEXT("    <div class=\"function-name\">\n");
+        ss << TEXT("      ") << _escape( function_name_skip != function_name_view.npos ? function_name_view.substr( function_name_skip + 2 ) : function_name ) << TEXT("\n");
+        ss << TEXT("    </div>\n");
+
+        _write_raw( ss.str() );
     }
 
 
