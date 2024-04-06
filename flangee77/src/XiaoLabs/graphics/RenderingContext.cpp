@@ -244,6 +244,13 @@ namespace graphics {
         _resolve_shader_states( resolved_draw_states.vs, _rendering_device, pipeline.vs );
         _resolve_shader_states( resolved_draw_states.ps, _rendering_device, pipeline.ps );
 
+        if ( pipeline.rs.is_viewport_set() )
+            resolved_draw_states.viewport = pipeline.rs.get_viewport();
+        else if ( resolved_draw_states.color_render_targets[ 0 ] )
+            resolved_draw_states.viewport = resolved_draw_states.color_render_targets[ 0 ]->get_default_viewport();
+        else
+            resolved_draw_states.viewport = _rendering_device->get_default_viewport();
+
         resolved_draw_states.rasterizer_state = _rendering_device->get_state_manager()->find_resource<states::RasterizerState>( pipeline.rs.get_rasterizer_state_id() );
         resolved_draw_states.depth_stencil_state = _rendering_device->get_state_manager()->find_resource<states::DepthStencilState>( pipeline.om.get_depth_stencil_state_id() );
         resolved_draw_states.blend_state = _rendering_device->get_state_manager()->find_resource<states::BlendState>( pipeline.om.get_blend_state_id() );

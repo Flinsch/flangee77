@@ -87,6 +87,18 @@ namespace direct3d9 {
         return static_cast<BYTE>( data_type );
     }
 
+    static D3DVIEWPORT9 _d3d_viewport_from(const Viewport& viewport)
+    {
+        D3DVIEWPORT9 d3d_viewport;
+        d3d_viewport.X = viewport.x;
+        d3d_viewport.Y = viewport.y;
+        d3d_viewport.Width = viewport.width;
+        d3d_viewport.Height = viewport.height;
+        d3d_viewport.MinZ = viewport.min_z;
+        d3d_viewport.MaxZ = viewport.max_z;
+        return d3d_viewport;
+    }
+
 
 
     // #############################################################################
@@ -123,6 +135,7 @@ namespace direct3d9 {
             states::SamplerStateImpl::map_d3d_values( {}, hardware_states.vs.sampler_state_type_values[ i ] );
             states::SamplerStateImpl::map_d3d_values( {}, hardware_states.ps.sampler_state_type_values[ i ] );
         }
+        hardware_states.viewport = _d3d_viewport_from( get_rendering_device()->get_default_viewport() );
         states::RasterizerStateImpl::map_d3d_values( {}, hardware_states.rasterizer_state_type_values );
         states::DepthStencilStateImpl::map_d3d_values( {}, hardware_states.depth_stencil_state_type_values );
         states::BlendStateImpl::map_d3d_values( {}, hardware_states.blend_state_type_values );
@@ -152,6 +165,8 @@ namespace direct3d9 {
         _d3d_device->SetPixelShader( hardware_states.ps.shader );
         for ( unsigned i = 0; i < 8; ++i )
             _set_texture_and_sampler_states( hardware_states.ps.base_textures[ i ], hardware_states.ps.sampler_state_type_values[ i ], i, 0 );
+
+        _d3d_device->SetViewport( &hardware_states.viewport );
 
         _set_render_states( hardware_states.rasterizer_state_type_values );
         _set_render_states( hardware_states.depth_stencil_state_type_values );
@@ -431,6 +446,19 @@ namespace direct3d9 {
 
         _flush_texture_sampler_states( resolved_draw_states.vs, hardware_states.vs, 4, D3DVERTEXTEXTURESAMPLER0 );
         _flush_texture_sampler_states( resolved_draw_states.ps, hardware_states.ps, 8, 0 );
+
+
+        D3DVIEWPORT9 d3d_viewport = _d3d_viewport_from( resolved_draw_states.viewport );
+        if ( ::memcmp( &d3d_viewport, &hardware_states.viewport, sizeof(D3DVIEWPORT9) ) != 0 )
+        {
+            hresult = _d3d_device->SetViewport( &d3d_viewport );
+            if ( FAILED(hresult) )
+            {
+                LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetViewport") ) );
+                return false;
+            }
+            hardware_states.viewport = d3d_viewport;
+        }
 
 
         auto* rasterizer_state = static_cast<const states::RasterizerStateImpl*>( resolved_draw_states.rasterizer_state );

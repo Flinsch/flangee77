@@ -3,6 +3,8 @@
 #define XL7_GRAPHICS_PIPELINE_RASTERIZERSTAGE_H
 #include "./AbstractStage.h"
 
+#include "../Viewport.h"
+
 #include "../states/RasterizerState.h"
 
 
@@ -18,7 +20,8 @@ class RasterizerStage
 {
 
 private:
-    static constexpr unsigned DIRTY_RASTERIER_STATE_FLAG    = 0x1;
+    static constexpr unsigned DIRTY_VIEWPORT_FLAG           = 0x1;
+    static constexpr unsigned DIRTY_RASTERIER_STATE_FLAG    = 0x2;
 
 
 
@@ -26,6 +29,7 @@ private:
     // States
     // #############################################################################
 private:
+    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( viewport, Viewport, Viewport(), DIRTY_VIEWPORT_FLAG );
     _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( rasterizer_state_id, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_RASTERIER_STATE_FLAG );
 
 }; // class RasterizerStage

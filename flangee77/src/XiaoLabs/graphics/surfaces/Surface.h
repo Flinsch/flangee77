@@ -30,7 +30,10 @@ public:
 public:
     struct Desc
     {
-        
+        /** The width of the surface, in pixels. */
+        unsigned width;
+        /** The height of the surface, in pixels. */
+        unsigned height;
     };
 
 

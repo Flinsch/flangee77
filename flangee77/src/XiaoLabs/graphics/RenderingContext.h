@@ -61,6 +61,8 @@ protected:
         ResolvedShaderStates<shaders::VertexShader> vs;
         ResolvedShaderStates<shaders::PixelShader> ps;
 
+        Viewport viewport;
+
         const states::RasterizerState* rasterizer_state;
         const states::DepthStencilState* depth_stencil_state;
         const states::BlendState* blend_state;

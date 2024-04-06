@@ -1,4 +1,4 @@
-#include "ColorRenderTarget.h"
+#include "RenderTarget.h"
 
 
 
@@ -15,8 +15,9 @@ namespace surfaces {
     /**
      * Explicit constructor.
      */
-    ColorRenderTarget::ColorRenderTarget(const CreateParams<Desc>& params)
-        : RenderTarget( Type::ColorRenderTarget, params )
+    RenderTarget::RenderTarget(Type type, const CreateParams<Desc>& params)
+        : Surface( Type::ColorRenderTarget, params )
+        , _default_viewport{ 0, 0, params.desc.width, params.desc.height, 0.0f, 1.0f }
     {
     }
 

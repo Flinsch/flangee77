@@ -51,6 +51,18 @@ namespace direct3d11 {
         return static_cast<D3D11_PRIMITIVE_TOPOLOGY>( topology );
     }
 
+    static D3D11_VIEWPORT _d3d_viewport_from(const Viewport& viewport)
+    {
+        D3D11_VIEWPORT d3d_viewport;
+        d3d_viewport.TopLeftX = static_cast<float>( viewport.x );
+        d3d_viewport.TopLeftY = static_cast<float>( viewport.y );
+        d3d_viewport.Width = static_cast<float>( viewport.width );
+        d3d_viewport.Height = static_cast<float>( viewport.height );
+        d3d_viewport.MinDepth = viewport.min_z;
+        d3d_viewport.MaxDepth = viewport.max_z;
+        return d3d_viewport;
+    }
+
 
 
     // #############################################################################
@@ -82,6 +94,7 @@ namespace direct3d11 {
     {
         hardware_states = HardwareStates();
         hardware_states.primitive_topology = D3D11_PRIMITIVE_TOPOLOGY_POINTLIST;
+        hardware_states.viewport = _d3d_viewport_from( get_rendering_device()->get_default_viewport() );
 
         unsigned stream_strides[ xl7::graphics::pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
         unsigned stream_offsets[ xl7::graphics::pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
@@ -99,6 +112,8 @@ namespace direct3d11 {
         _d3d_device_context->PSSetShader( hardware_states.ps.shader, nullptr, 0 );
         _d3d_device_context->PSSetShaderResources( 0, get_rendering_device()->get_capabilities().max_texture_sampler_slot_count, &hardware_states.ps.shader_resource_views[0] );
         _d3d_device_context->PSSetSamplers( 0, get_rendering_device()->get_capabilities().max_texture_sampler_slot_count, &hardware_states.ps.sampler_states[0] );
+
+        _d3d_device_context->RSSetViewports( 1, &hardware_states.viewport );
 
         _d3d_device_context->RSSetState( hardware_states.rasterizer_state );
 
@@ -334,6 +349,14 @@ namespace direct3d11 {
 
         _flush_texture_sampler_states( resolved_draw_states.vs, hardware_states.vs, &ID3D11DeviceContextN::VSSetShaderResources, &ID3D11DeviceContextN::VSSetSamplers );
         _flush_texture_sampler_states( resolved_draw_states.ps, hardware_states.ps, &ID3D11DeviceContextN::PSSetShaderResources, &ID3D11DeviceContextN::PSSetSamplers );
+
+
+        D3D11_VIEWPORT d3d_viewport = _d3d_viewport_from( resolved_draw_states.viewport );
+        if ( ::memcmp( &d3d_viewport, &hardware_states.viewport, sizeof(D3D11_VIEWPORT) ) != 0 )
+        {
+            _d3d_device_context->RSSetViewports( 1, &d3d_viewport );
+            hardware_states.viewport = d3d_viewport;
+        }
 
 
         ID3D11InputLayout* d3d_input_layout = static_cast<RenderingDeviceImpl*>( get_rendering_device() )->_find_d3d_input_layout( vertex_buffer_binding );

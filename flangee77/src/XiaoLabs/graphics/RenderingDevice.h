@@ -138,6 +138,22 @@ private:
     // #############################################################################
 private:
     /**
+     * The width of the (default) back buffer, in pixels.
+     */
+    unsigned _back_buffer_width;
+
+    /**
+     * The height of the (default) back buffer, in pixels.
+     */
+    unsigned _back_buffer_height;
+
+    /**
+     * The default viewport based on the size of the (default) back buffer.
+     */
+    Viewport _default_viewport;
+
+private:
+    /**
      * The capabilities of the rendering device (as far as they can be determined).
      */
     Capabilities _capabilities;
@@ -190,6 +206,22 @@ private:
     // #############################################################################
     // Properties
     // #############################################################################
+public:
+    /**
+     * Returns the width of the (default) back buffer, in pixels.
+     */
+    unsigned get_back_buffer_width() const { return _back_buffer_width; }
+
+    /**
+     * Returns the height of the (default) back buffer, in pixels.
+     */
+    unsigned get_back_buffer_height() const { return _back_buffer_height; }
+
+    /**
+     * Returns the default viewport based on the size of the (default) back buffer.
+     */
+    const Viewport& get_default_viewport() const { return _default_viewport; }
+
 public:
     /**
      * Returns the capabilities of the rendering device (as far as they can be

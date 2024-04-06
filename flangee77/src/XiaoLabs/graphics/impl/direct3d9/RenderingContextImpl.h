@@ -60,6 +60,8 @@ private:
         ShaderStates<IDirect3DVertexShader9> vs;
         ShaderStates<IDirect3DPixelShader9> ps;
 
+        D3DVIEWPORT9 viewport;
+
         states::D3DRasterizerStateTypeValues rasterizer_state_type_values;
         states::D3DDepthStencilStateTypeValues depth_stencil_state_type_values;
         states::D3DBlendStateTypeValues blend_state_type_values;

@@ -199,6 +199,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\surfaces\RenderTarget.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\states\DepthStencilStateImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\states\D3DDepthStencilStateTypeValues.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\states\DepthStencilStateImpl.h" />
@@ -264,6 +265,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\ChannelOrder.h" />
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\DepthStencilTarget.h" />
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\ColorRenderTarget.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\Viewport.h" />
     <ClInclude Include="src\XiaoLabs\resources\ResourceID.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\CodeProvider.h" />
     <ClInclude Include="src\XiaoLabs\graphics\meshes\IndexDataProvider.h" />
@@ -382,6 +384,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\pipeline\VertexShaderStage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\surfaces\RenderTarget.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\states\DepthStencilStateImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\states\DepthStencilStateImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\states\DepthStencilState.cpp" />
