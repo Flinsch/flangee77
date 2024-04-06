@@ -35,6 +35,9 @@ namespace graphics {
 
     /**
      * Performs a forced synchronization with the hardware state.
+     * This function is called automatically after the rendering context has been
+     * created and does not actually need to be used any further, perhaps after
+     * resetting the rendering device, that's it.
      */
     bool RenderingContext::synchronize_hardware_state()
     {
