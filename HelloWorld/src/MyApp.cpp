@@ -112,10 +112,10 @@ namespace helloworld {
         cl7::astring high_level_code = oss.str();
         xl7::graphics::shaders::ShaderCode shader_code{ high_level_code };
         xl7::graphics::shaders::MacroDefinitions macro_definitions;
-        xl7::graphics::shaders::CodeProvider code_provider{ &shader_code, &macro_definitions };
+        xl7::graphics::shaders::CodeDataProvider code_data_provider{ &shader_code, &macro_definitions };
 
-        _vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader( "My Vertex Shader", code_provider );
-        _pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader( "My Pixel Shader", code_provider );
+        _vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader( "My Vertex Shader", code_data_provider );
+        _pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader( "My Pixel Shader", code_data_provider );
 
 
         xl7::graphics::images::Image image;

@@ -5,6 +5,8 @@
 #include "./meshes/VertexBufferImpl.h"
 #include "./meshes/IndexBufferImpl.h"
 
+#include "./shaders/ConstantBufferImpl.h"
+
 #include "./shaders/VertexShaderImpl.h"
 #include "./shaders/PixelShaderImpl.h"
 
@@ -52,6 +54,13 @@ namespace direct3d9 {
     xl7::graphics::meshes::IndexBuffer* ResourceFactoryImpl::create_index_buffer(const resources::Resource::CreateParams<xl7::graphics::meshes::IndexBuffer::Desc>& params)
     {
         return meshes::IndexBufferImpl::Attorney::create( params );
+    }
+
+
+
+    xl7::graphics::shaders::ConstantBuffer* ResourceFactoryImpl::create_constant_buffer(const resources::Resource::CreateParams<xl7::graphics::shaders::ConstantBuffer::Desc>& params)
+    {
+        return shaders::ConstantBufferImpl::Attorney::create( params );
     }
 
 

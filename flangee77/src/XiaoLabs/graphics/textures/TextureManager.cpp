@@ -37,13 +37,13 @@ namespace textures {
     /**
      * Creates and acquires the specified 2D texture.
      */
-    resources::ResourceID TextureManager::create_texture_2d(cl7::astring_view identifier, const Texture2D::Desc& desc, const ImageDataProvider& data_provider)
+    resources::ResourceID TextureManager::create_texture_2d(cl7::astring_view identifier, const Texture2D::Desc& desc, const ImageDataProvider& image_data_provider)
     {
         resources::Resource::CreateParams<Texture2D::Desc> params{ this, _next_id(), identifier, desc };
 
         ResourcePtr vertex_buffer( _factory->create_texture_2d( params ), _destroy_resource );
 
-        return _try_acquire_and_add_resource( std::move(vertex_buffer), data_provider );
+        return _try_acquire_and_add_resource( std::move(vertex_buffer), image_data_provider );
     }
 
 

@@ -68,28 +68,28 @@ namespace shaders {
      */
     bool Shader::_check_data_impl(const resources::DataProvider& data_provider)
     {
-        assert( typeid(data_provider) == typeid(const CodeProvider&) );
-        auto code_provider = static_cast<const CodeProvider&>( data_provider );
+        assert( typeid(data_provider) == typeid(const CodeDataProvider&) );
+        auto code_data_provider = static_cast<const CodeDataProvider&>( data_provider );
 
-        if ( code_provider.get_language() == ShaderCode::Language::Unknown )
+        if ( code_data_provider.get_language() == ShaderCode::Language::Unknown )
         {
             LOG_ERROR( TEXT("The language of the provided code for ") + get_typed_identifier_string() + TEXT(" is unknown.") );
             return false;
         }
 
-        if ( is_precompiled() && code_provider.get_language() != ShaderCode::Language::Bytecode )
+        if ( is_precompiled() && code_data_provider.get_language() != ShaderCode::Language::Bytecode )
         {
             LOG_ERROR( TEXT("The provided code for the precompiled ") + get_typed_identifier_string() + TEXT(" has to be in bytecode.") );
             return false;
         }
 
-        if ( is_recompilable() && code_provider.get_language() != ShaderCode::Language::HighLevel )
+        if ( is_recompilable() && code_data_provider.get_language() != ShaderCode::Language::HighLevel )
         {
             LOG_ERROR( TEXT("The provided code for the recompilable ") + get_typed_identifier_string() + TEXT(" has to be in high-level language.") );
             return false;
         }
 
-        if ( code_provider.get_code_data().empty() )
+        if ( code_data_provider.get_code_data().empty() )
         {
             LOG_ERROR( TEXT("The provided code for ") + get_typed_identifier_string() + TEXT(" is empty.") );
             return false;
@@ -106,19 +106,19 @@ namespace shaders {
      */
     bool Shader::_acquire_impl(const resources::DataProvider& data_provider)
     {
-        assert( typeid(data_provider) == typeid(const CodeProvider&) );
-        auto code_provider = static_cast<const CodeProvider&>( data_provider );
+        assert( typeid(data_provider) == typeid(const CodeDataProvider&) );
+        auto code_data_provider = static_cast<const CodeDataProvider&>( data_provider );
 
         if ( is_precompiled() )
         {
-            assert( code_provider.get_shader_code().get_language() == ShaderCode::Language::Bytecode );
-            _bytecode = code_provider.get_shader_code();
+            assert( code_data_provider.get_shader_code().get_language() == ShaderCode::Language::Bytecode );
+            _bytecode = code_data_provider.get_shader_code();
 
-            return _acquire_precompiled_impl( code_provider, _parameter_table );
+            return _acquire_precompiled_impl( code_data_provider, _parameter_table );
         }
         if ( is_recompilable() )
         {
-            return _acquire_recompilable_impl( code_provider, _bytecode, _parameter_table );
+            return _acquire_recompilable_impl( code_data_provider, _bytecode, _parameter_table );
         }
 
         assert( false );

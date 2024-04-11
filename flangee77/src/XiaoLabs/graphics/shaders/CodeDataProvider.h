@@ -1,6 +1,6 @@
 #pragma once
-#ifndef XL7_GRAPHICS_SHADERS_CODEPROVIDER_H
-#define XL7_GRAPHICS_SHADERS_CODEPROVIDER_H
+#ifndef XL7_GRAPHICS_SHADERS_CODEDATAPROVIDER_H
+#define XL7_GRAPHICS_SHADERS_CODEDATAPROVIDER_H
 #include "../../resources/DefaultDataProvider.h"
 
 #include "./ShaderCode.h"
@@ -14,7 +14,7 @@ namespace shaders {
 
 
 
-class CodeProvider
+class CodeDataProvider
     : public resources::DefaultDataProvider
 {
 
@@ -25,12 +25,12 @@ public:
     /**
      * Explicit constructor.
      */
-    CodeProvider(const ShaderCode* shader_code, const MacroDefinitions* macro_definitions);
+    CodeDataProvider(const ShaderCode* shader_code, const MacroDefinitions* macro_definitions);
 
     /**
      * Destructor.
      */
-    virtual ~CodeProvider() = default;
+    virtual ~CodeDataProvider() = default;
 
 
 
@@ -59,7 +59,7 @@ public:
     /** Returns the actual code data. */
     const cl7::byte_vector& get_code_data() const { return _shader_code.get_code_data(); }
 
-}; // class CodeProvider
+}; // class CodeDataProvider
 
 
 
@@ -67,4 +67,4 @@ public:
 } // namespace graphics
 } // namespace xl7
 
-#endif // XL7_GRAPHICS_SHADERS_CODEPROVIDER_H
+#endif // XL7_GRAPHICS_SHADERS_CODEDATAPROVIDER_H

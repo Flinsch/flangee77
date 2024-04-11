@@ -4,7 +4,7 @@
 #include "../../resources/Resource.h"
 
 #include "./ShaderCode.h"
-#include "./CodeProvider.h"
+#include "./CodeDataProvider.h"
 #include "./MacroDefinitions.h"
 #include "./ParameterTable.h"
 
@@ -180,7 +180,7 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_precompiled_impl(const CodeProvider& code_provider, ParameterTable& parameter_table_out) = 0;
+    virtual bool _acquire_precompiled_impl(const CodeDataProvider& code_data_provider, ParameterTable& parameter_table_out) = 0;
 
     /**
      * Requests/acquires a recompilable shader resource.
@@ -188,7 +188,7 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_recompilable_impl(const CodeProvider& code_provider, ShaderCode& bytecode_out, ParameterTable& parameter_table_out) = 0;
+    virtual bool _acquire_recompilable_impl(const CodeDataProvider& code_data_provider, ShaderCode& bytecode_out, ParameterTable& parameter_table_out) = 0;
 
     /**
      * Recompiles the shader code. This tends to result in the resource having to be

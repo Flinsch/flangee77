@@ -327,7 +327,7 @@
     <ClInclude Include="src\XiaoLabs\graphics\meshes\IndexDataProvider.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\shaders\CodeProvider.h">
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\CodeDataProvider.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\XiaoLabs\resources\ResourceID.h">
@@ -564,6 +564,18 @@
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\RenderTarget.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantBuffer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\ConstantBufferImpl.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\ConstantBufferImpl.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantDataProvider.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -779,7 +791,7 @@
     <ClCompile Include="src\XiaoLabs\resources\DefaultDataProvider.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\shaders\CodeProvider.cpp">
+    <ClCompile Include="src\XiaoLabs\graphics\shaders\CodeDataProvider.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\resources\ResourceID.cpp">
@@ -963,6 +975,15 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\RenderTarget.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\shaders\ConstantBuffer.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\ConstantBufferImpl.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\ConstantBufferImpl.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

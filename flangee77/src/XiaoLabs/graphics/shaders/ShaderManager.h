@@ -68,18 +68,23 @@ private:
     // #############################################################################
 public:
     /**
+     * Creates and acquires the specified constant buffer.
+     */
+    resources::ResourceID create_constant_buffer(cl7::astring_view identifier, const ConstantBuffer::Desc& desc, const ConstantDataProvider& constant_data_provider);
+
+    /**
      * Creates and acquires the specified vertex shader.
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    resources::ResourceID create_vertex_shader(cl7::astring_view identifier, const CodeProvider& code_provider, cl7::astring_view entry_point = "");
+    resources::ResourceID create_vertex_shader(cl7::astring_view identifier, const CodeDataProvider& code_data_provider, cl7::astring_view entry_point = "");
 
     /**
      * Creates and acquires the specified pixel shader.
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    resources::ResourceID create_pixel_shader(cl7::astring_view identifier, const CodeProvider& code_provider, cl7::astring_view entry_point = "");
+    resources::ResourceID create_pixel_shader(cl7::astring_view identifier, const CodeDataProvider& code_data_provider, cl7::astring_view entry_point = "");
 
 }; // class ShaderManager
 
