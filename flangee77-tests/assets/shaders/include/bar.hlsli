@@ -1,6 +1,13 @@
 
-float4x4 WorldViewProjection : WorldViewProjection;
-float4 BaseColor;
+cbuffer VertexConstants
+{
+    float4x4 WorldViewProjection;
+}
+
+cbuffer PixelConstants
+{
+    float4 BaseColor;
+}
 
 struct VertexIn
 {

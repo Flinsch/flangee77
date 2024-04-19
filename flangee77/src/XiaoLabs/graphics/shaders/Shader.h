@@ -6,7 +6,8 @@
 #include "./ShaderCode.h"
 #include "./CodeDataProvider.h"
 #include "./MacroDefinitions.h"
-#include "./ParameterTable.h"
+#include "./ConstantBufferTable.h"
+#include "./TextureSamplerTable.h"
 
 
 
@@ -87,9 +88,14 @@ private:
     ShaderCode _bytecode;
 
     /**
-     * The table of constant/sampler parameters.
+     * The table of constant buffer parameters.
      */
-    ParameterTable _parameter_table;
+    ConstantBufferTable _constant_buffer_table;
+
+    /**
+     * The table of texture/sampler parameters.
+     */
+    TextureSamplerTable _texture_sampler_table;
 
 
 
@@ -125,9 +131,14 @@ public:
     const ShaderCode& get_bytecode() const { return _bytecode; }
 
     /**
-     * Returns the table of constant/sampler parameters.
+     * Returns the table of constant buffer parameters.
      */
-    const ParameterTable& get_parameter_table() const { return _parameter_table; }
+    const ConstantBufferTable& get_constant_buffer_table() const { return _constant_buffer_table; }
+
+    /**
+     * Returns the table of texture/sampler parameters.
+     */
+    const TextureSamplerTable& get_texture_sampler_table() const { return _texture_sampler_table; }
 
 
 
@@ -180,7 +191,7 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_precompiled_impl(const CodeDataProvider& code_data_provider, ParameterTable& parameter_table_out) = 0;
+    virtual bool _acquire_precompiled_impl(const CodeDataProvider& code_data_provider, ConstantBufferTable& constant_buffer_table_out, TextureSamplerTable& texture_sampler_table_out) = 0;
 
     /**
      * Requests/acquires a recompilable shader resource.
@@ -188,13 +199,13 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_recompilable_impl(const CodeDataProvider& code_data_provider, ShaderCode& bytecode_out, ParameterTable& parameter_table_out) = 0;
+    virtual bool _acquire_recompilable_impl(const CodeDataProvider& code_data_provider, ShaderCode& bytecode_out, ConstantBufferTable& constant_buffer_table_out, TextureSamplerTable& texture_sampler_table_out) = 0;
 
     /**
      * Recompiles the shader code. This tends to result in the resource having to be
      * completely recreated in the background.
      */
-    virtual bool _recompile_impl(const MacroDefinitions& macro_definitions, ShaderCode& bytecode_out, ParameterTable& parameter_table_out) = 0;
+    virtual bool _recompile_impl(const MacroDefinitions& macro_definitions, ShaderCode& bytecode_out, ConstantBufferTable& constant_buffer_table_out, TextureSamplerTable& texture_sampler_table_out) = 0;
 
 }; // class Shader
 

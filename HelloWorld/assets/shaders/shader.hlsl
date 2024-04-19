@@ -1,4 +1,14 @@
 
+cbuffer MyVertexConstants
+{
+    float4 VertexBaseColor;
+};
+
+cbuffer MyPixelConstants
+{
+    float4 PixelBaseColor;
+};
+
 sampler2D TextureSampler;
 
 struct VertexIn
@@ -27,7 +37,7 @@ VertexOut mainVertex(VertexIn i)
     VertexOut o;
 
     o.pos = float4(i.pos, 1);
-    o.color = i.color;
+    o.color = (VertexBaseColor + i.color) * 0.5f;
     o.tex = i.tex;
 
     return o;
@@ -37,8 +47,7 @@ PixelOut mainPixel(PixelIn i)
 {
     PixelOut o;
 
-    o.color = i.color;
-    o.color = tex2D(TextureSampler, i.tex);
+    o.color = i.color * (PixelBaseColor + tex2D(TextureSampler, i.tex)) * 0.5f;
 
     return o;
 }

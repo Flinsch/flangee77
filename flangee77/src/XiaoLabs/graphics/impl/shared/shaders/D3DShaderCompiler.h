@@ -4,11 +4,8 @@
 
 #include "../../../shaders/ShaderCode.h"
 #include "../../../shaders/MacroDefinitions.h"
-#include "../../../shaders/ParameterTable.h"
 
 #include <CoreLabs/string.h>
-
-#include <map>
 
 
 
@@ -40,11 +37,6 @@ public:
      * object with an "unknown" language and empty data is returned.
      */
     xl7::graphics::shaders::ShaderCode compile_hlsl_code(const xl7::graphics::shaders::ShaderCode& hlsl_code, const cl7::string& include_path, const xl7::graphics::shaders::MacroDefinitions& macro_definitions, const cl7::astring& entry_point, const cl7::astring& target);
-
-    /**
-     * Builds a parameter table based on the specified bytecode.
-     */
-    xl7::graphics::shaders::ParameterTable build_parameter_table(const xl7::graphics::shaders::ShaderCode& bytecode);
 
 }; // class D3DShaderCompiler
 

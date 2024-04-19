@@ -7,9 +7,12 @@
 #include <CoreLabs/filesystem.h>
 
 #include <CoreLabs/logging.h>
+#include <CoreLabs/strings.h>
 
 #include <CoreLabs/fstream.h>
 #include <CoreLabs/sstream.h>
+
+#include <algorithm>
 
 
 
@@ -162,6 +165,60 @@ namespace helloworld {
         blend_desc.dest_color_factor = blend_desc.dest_alpha_factor = xl7::graphics::states::BlendState::BlendFactor::InvSrcAlpha;
 
         _blend_state_id = xl7::graphics::state_manager()->ensure_blend_state( blend_desc );
+
+
+
+        for ( size_t i = 0; i < xl7::graphics::shader_manager()->get_resource_count(); ++i )
+        {
+            const auto* shader = xl7::graphics::shader_manager()->get_resource<xl7::graphics::shaders::Shader>( i );
+            LOG_TYPE( TEXT("Parameters of ") + shader->get_typed_identifier_string() + TEXT(':'), cl7::logging::LogType::Caption );
+
+            const auto& constant_buffer_table = shader->get_constant_buffer_table();
+            const auto& texture_sampler_table = shader->get_texture_sampler_table();
+
+            std::vector<const xl7::graphics::shaders::ConstantBufferDeclaration*> constant_buffer_declarations;
+            for ( const auto& p : constant_buffer_table )
+                constant_buffer_declarations.push_back( &p.second );
+            std::sort( constant_buffer_declarations.begin(), constant_buffer_declarations.end(), [](const auto& a, const auto& b) {
+                return a->index < b->index;
+            } );
+
+            for ( const auto* cb : constant_buffer_declarations )
+            {
+                if ( !cb->name.empty() )
+                    LOG_TYPE( cl7::strings::from_ascii(cb->name) + TEXT("\tcb") + cl7::to_string(cb->index) + TEXT(" (") + cl7::to_string(cb->calculate_size()) + TEXT(")"), cl7::logging::LogType::Item );
+
+                const auto& constant_table = cb->constant_table;
+
+                std::vector<const xl7::graphics::shaders::ConstantDeclaration*> constant_declarations;
+                for ( const auto& p : constant_table )
+                    constant_declarations.push_back( &p.second );
+                std::sort( constant_declarations.begin(), constant_declarations.end(), [](const auto& a, const auto& b) {
+                    return a->offset < b->offset;
+                } );
+
+                for ( const auto* c : constant_declarations )
+                {
+                    assert( c->offset % 16 == 0 );
+                    if ( cb->name.empty() )
+                        LOG_TYPE( cl7::strings::from_ascii(c->name) + TEXT("\tc") + cl7::to_string(c->offset / 16) + TEXT(" (") + cl7::to_string((c->size + 15) / 16) + TEXT(")"), cl7::logging::LogType::Item );
+                    else
+                        LOG_TYPE( TEXT(".") + cl7::strings::from_ascii(c->name) + TEXT("\tc") + cl7::to_string(c->offset / 16) + TEXT(" (") + cl7::to_string((c->size + 15) / 16) + TEXT(")"), cl7::logging::LogType::Item );
+                } // for each constant "variable"
+            } // for each cbuffer
+
+            std::vector<const xl7::graphics::shaders::TextureSamplerDeclaration*> texture_sampler_declarations;
+            for ( const auto& p : texture_sampler_table )
+                texture_sampler_declarations.push_back( &p.second );
+            std::sort( texture_sampler_declarations.begin(), texture_sampler_declarations.end(), [](const auto& a, const auto& b) {
+                return a->index < b->index;
+            } );
+
+            for ( const auto* s : texture_sampler_declarations )
+            {
+                LOG_TYPE( cl7::strings::from_ascii(s->name) + TEXT("\ts") + cl7::to_string(s->index), cl7::logging::LogType::Item );
+            } // for each texture/sampler
+        }
 
 
 

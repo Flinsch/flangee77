@@ -6,6 +6,8 @@
 
 #include "../../shared/shaders/D3DShaderCompiler.h"
 
+#include "./D3DShaderReflection.h"
+
 #include <CoreLabs/logging.h>
 
 
@@ -60,7 +62,7 @@ namespace shaders {
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    bool PixelShaderImpl::_acquire_precompiled_impl(const xl7::graphics::shaders::CodeDataProvider& code_data_provider, xl7::graphics::shaders::ParameterTable& parameter_table_out)
+    bool PixelShaderImpl::_acquire_precompiled_impl(const xl7::graphics::shaders::CodeDataProvider& code_data_provider, xl7::graphics::shaders::ConstantBufferTable& constant_buffer_table_out, xl7::graphics::shaders::TextureSamplerTable& texture_sampler_table_out)
     {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
@@ -78,6 +80,9 @@ namespace shaders {
             return false;
         }
 
+        constant_buffer_table_out = D3DShaderReflection().build_constant_buffer_table( bytecode );
+        texture_sampler_table_out = D3DShaderReflection().build_texture_sampler_table( bytecode );
+
         return true;
     }
 
@@ -87,7 +92,7 @@ namespace shaders {
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    bool PixelShaderImpl::_acquire_recompilable_impl(const xl7::graphics::shaders::CodeDataProvider& code_data_provider, xl7::graphics::shaders::ShaderCode& bytecode_out, xl7::graphics::shaders::ParameterTable& parameter_table_out)
+    bool PixelShaderImpl::_acquire_recompilable_impl(const xl7::graphics::shaders::CodeDataProvider& code_data_provider, xl7::graphics::shaders::ShaderCode& bytecode_out, xl7::graphics::shaders::ConstantBufferTable& constant_buffer_table_out, xl7::graphics::shaders::TextureSamplerTable& texture_sampler_table_out)
     {
         const cl7::Version& version = GraphicsSystem::instance().get_rendering_device()->get_capabilities().shaders.pixel_shader_version;
         const cl7::astring target = "ps_" + cl7::to_astring(version.major) + "_" + cl7::to_astring(version.minor);
@@ -103,19 +108,19 @@ namespace shaders {
             return false;
         }
 
-        return _acquire_precompiled_impl( xl7::graphics::shaders::CodeDataProvider( &bytecode_out, &code_data_provider.get_macro_definitions() ), parameter_table_out );
+        return _acquire_precompiled_impl( xl7::graphics::shaders::CodeDataProvider( &bytecode_out, &code_data_provider.get_macro_definitions() ), constant_buffer_table_out, texture_sampler_table_out );
     }
 
     /**
      * Recompiles the shader code. This tends to result in the resource having to be
      * completely recreated in the background.
      */
-    bool PixelShaderImpl::_recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ShaderCode& bytecode_out, xl7::graphics::shaders::ParameterTable& parameter_table_out)
+    bool PixelShaderImpl::_recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ShaderCode& bytecode_out, xl7::graphics::shaders::ConstantBufferTable& constant_buffer_table_out, xl7::graphics::shaders::TextureSamplerTable& texture_sampler_table_out)
     {
         xl7::graphics::shaders::ShaderCode hlsl_code( _desc.language, _data );
         assert( hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel );
 
-        return _acquire_recompilable_impl( xl7::graphics::shaders::CodeDataProvider( &hlsl_code, &macro_definitions ), bytecode_out, parameter_table_out );
+        return _acquire_recompilable_impl( xl7::graphics::shaders::CodeDataProvider( &hlsl_code, &macro_definitions ), bytecode_out, constant_buffer_table_out, texture_sampler_table_out );
     }
 
 

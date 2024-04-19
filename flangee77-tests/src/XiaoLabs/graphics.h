@@ -7,6 +7,7 @@
 #include <XiaoLabs/graphics/images/ImageConverter.h>
 #include <XiaoLabs/graphics/images/ImageResizer.h>
 #include <XiaoLabs/graphics/impl/shared/shaders/D3DShaderCompiler.h>
+#include <XiaoLabs/graphics/impl/direct3d9/shaders/D3DShaderReflection.h>
 
 #include <CoreLabs/filesystem.h>
 #include <CoreLabs/strings.h>
@@ -862,7 +863,8 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageResizer") )
 
 TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
 {
-    xl7::graphics::impl::shared::shaders::D3DShaderCompiler shader_compiler;
+    xl7::graphics::impl::shared::shaders::D3DShaderCompiler d3d_shader_compiler;
+    xl7::graphics::impl::direct3d9::shaders::D3DShaderReflection d3d9_shader_reflection;
 
     const cl7::string file_path = cl7::filesystem::get_working_directory() + TEXT("assets/shaders/shader.hlsl");
 
@@ -870,35 +872,65 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
     {
         cl7::astring entry_point;
         cl7::astring target;
-        xl7::graphics::shaders::ParameterTable parameter_table;
+        xl7::graphics::shaders::ConstantBufferTable constant_buffer_table;
+        xl7::graphics::shaders::TextureSamplerTable texture_sampler_table;
     } entry;
 
     const std::vector<Entry> container {
-        { "mainVS", "vs_3_0", { { "WorldViewProjection", { xl7::graphics::shaders::ParameterType::Float, 0, 4, 4, 4, 1 } } } },
-        { "mainPS", "ps_3_0", { { "BaseColor", { xl7::graphics::shaders::ParameterType::Float, 0, 1, 1, 4, 1 } } } },
+        { "mainVS", "vs_3_0", { { "", { "", 0, { { "WorldViewProjection", { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, "WorldViewProjection", 0, 64, 4, 4, 1 } } } } } }, {} },
+        { "mainPS", "ps_3_0", { { "", { "", 0, { { "BaseColor", { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, "BaseColor", 0, 16, 1, 4, 1 } } } } } }, {} },
     };
 
     for ( size_t i = 0; i < container.size(); ++i )
     {
         const Entry& entry = container[ i ];
 
-        xl7::graphics::shaders::ShaderCode bytecode = shader_compiler.compile_hlsl_code( file_path, {}, entry.entry_point, entry.target );
-        xl7::graphics::shaders::ParameterTable parameter_table = shader_compiler.build_parameter_table( bytecode );
+        xl7::graphics::shaders::ShaderCode bytecode = d3d_shader_compiler.compile_hlsl_code( file_path, {}, entry.entry_point, entry.target );
+        xl7::graphics::shaders::ConstantBufferTable constant_buffer_table = d3d9_shader_reflection.build_constant_buffer_table( bytecode );
+        xl7::graphics::shaders::TextureSamplerTable texture_sampler_table = d3d9_shader_reflection.build_texture_sampler_table( bytecode );
 
         TESTLABS_CHECK_EQ( bytecode.get_language(), xl7::graphics::shaders::ShaderCode::Language::Bytecode );
-        TESTLABS_CHECK_EQ( parameter_table.size(), entry.parameter_table.size() );
+        TESTLABS_CHECK_EQ( constant_buffer_table.size(), entry.constant_buffer_table.size() );
+        TESTLABS_CHECK_EQ( texture_sampler_table.size(), entry.texture_sampler_table.size() );
 
-        for ( const auto& p : entry.parameter_table )
+        for ( const auto& p_cb : entry.constant_buffer_table )
         {
-            const auto it = parameter_table.find( p.first );
-            TESTLABS_ASSERT( it != parameter_table.end() );
-            TESTLABS_CHECK_EQ( unsigned(p.second.type), unsigned(it->second.type) );
-            TESTLABS_CHECK_EQ( p.second.register_index, it->second.register_index );
-            TESTLABS_CHECK_EQ( p.second.register_count, it->second.register_count );
-            TESTLABS_CHECK_EQ( p.second.row_count, it->second.row_count );
-            TESTLABS_CHECK_EQ( p.second.column_count, it->second.column_count );
+            const auto it_cb = constant_buffer_table.find( p_cb.first );
+            TESTLABS_ASSERT( it_cb != constant_buffer_table.end() );
+            TESTLABS_CHECK_EQ( p_cb.first, it_cb->second.name );
+
+            TESTLABS_CHECK_EQ( p_cb.second.name, it_cb->second.name );
+            TESTLABS_CHECK_EQ( p_cb.second.index, it_cb->second.index );
+
+            xl7::graphics::shaders::ConstantTable& constant_table = it_cb->second.constant_table;
+
+            for ( const auto& p_c : p_cb.second.constant_table )
+            {
+                const auto it_c = constant_table.find( p_c.first );
+                TESTLABS_ASSERT( it_c != constant_table.end() );
+                TESTLABS_CHECK_EQ( p_c.first, it_c->second.name );
+
+                TESTLABS_CHECK_EQ( unsigned(p_c.second.constant_type), unsigned(it_c->second.constant_type) );
+                TESTLABS_CHECK_EQ( unsigned(p_c.second.constant_class), unsigned(it_c->second.constant_class) );
+                TESTLABS_CHECK_EQ( p_c.second.name, it_c->second.name );
+                TESTLABS_CHECK_EQ( p_c.second.offset, it_c->second.offset );
+                TESTLABS_CHECK_EQ( p_c.second.size, it_c->second.size );
+                TESTLABS_CHECK_EQ( p_c.second.row_count, it_c->second.row_count );
+                TESTLABS_CHECK_EQ( p_c.second.column_count, it_c->second.column_count );
+                TESTLABS_CHECK_EQ( p_c.second.element_count, it_c->second.element_count );
+            } // for each constant "variable"
+        } // for each cbuffer
+
+        for ( const auto& p : entry.texture_sampler_table )
+        {
+            const auto it = texture_sampler_table.find( p.first );
+            TESTLABS_ASSERT( it != texture_sampler_table.end() );
+            TESTLABS_CHECK_EQ( p.first, it->second.name );
+
+            TESTLABS_CHECK_EQ( p.second.name, it->second.name );
+            TESTLABS_CHECK_EQ( p.second.index, it->second.index );
             TESTLABS_CHECK_EQ( p.second.element_count, it->second.element_count );
-        }
+        } // for each texture/sampler
     }
 }
 
