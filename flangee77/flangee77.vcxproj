@@ -205,14 +205,11 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\D3DShaderReflection.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantBuffer.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantBufferDeclaration.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantBufferTable.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantClass.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantDataProvider.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantDeclaration.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantTable.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantType.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\TextureSamplerDeclaration.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\shaders\TextureSamplerTable.h" />
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\RenderTarget.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\states\DepthStencilStateImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\states\D3DDepthStencilStateTypeValues.h" />

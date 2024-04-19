@@ -103,7 +103,7 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_precompiled_impl(const xl7::graphics::shaders::CodeDataProvider& code_data_provider, xl7::graphics::shaders::ConstantBufferTable& constant_buffer_table_out, xl7::graphics::shaders::TextureSamplerTable& texture_sampler_table_out) override;
+    virtual bool _acquire_precompiled_impl(const xl7::graphics::shaders::CodeDataProvider& code_data_provider, std::vector<xl7::graphics::shaders::ConstantBufferDeclaration>& constant_buffer_declarations_out, std::vector<xl7::graphics::shaders::TextureSamplerDeclaration>& texture_sampler_declarations_out) override;
 
     /**
      * Requests/acquires a recompilable shader resource.
@@ -111,13 +111,13 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_recompilable_impl(const xl7::graphics::shaders::CodeDataProvider& code_data_provider, xl7::graphics::shaders::ShaderCode& bytecode_out, xl7::graphics::shaders::ConstantBufferTable& constant_buffer_table_out, xl7::graphics::shaders::TextureSamplerTable& texture_sampler_table_out) override;
+    virtual bool _acquire_recompilable_impl(const xl7::graphics::shaders::CodeDataProvider& code_data_provider, xl7::graphics::shaders::ShaderCode& bytecode_out, std::vector<xl7::graphics::shaders::ConstantBufferDeclaration>& constant_buffer_declarations_out, std::vector<xl7::graphics::shaders::TextureSamplerDeclaration>& texture_sampler_declarations_out) override;
 
     /**
      * Recompiles the shader code. This tends to result in the resource having to be
      * completely recreated in the background.
      */
-    virtual bool _recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ShaderCode& bytecode_out, xl7::graphics::shaders::ConstantBufferTable& constant_buffer_table_out, xl7::graphics::shaders::TextureSamplerTable& texture_sampler_table_out) override;
+    virtual bool _recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ShaderCode& bytecode_out, std::vector<xl7::graphics::shaders::ConstantBufferDeclaration>& constant_buffer_declarations_out, std::vector<xl7::graphics::shaders::TextureSamplerDeclaration>& texture_sampler_declarations_out) override;
 
 }; // class PixelShaderImpl
 

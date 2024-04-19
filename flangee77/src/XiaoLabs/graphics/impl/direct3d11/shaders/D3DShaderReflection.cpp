@@ -22,7 +22,7 @@ namespace shaders {
 
 
 
-    bool _build_parameter_tables(const xl7::graphics::shaders::ShaderCode& bytecode, xl7::graphics::shaders::ConstantBufferTable& constant_buffer_table_out, xl7::graphics::shaders::TextureSamplerTable& texture_sampler_table_out)
+    bool _build_parameter_declarations(const xl7::graphics::shaders::ShaderCode& bytecode, std::vector<xl7::graphics::shaders::ConstantBufferDeclaration>& constant_buffer_declarations_out, std::vector<xl7::graphics::shaders::TextureSamplerDeclaration>& texture_sampler_declarations_out)
     {
         if ( bytecode.get_language() != xl7::graphics::shaders::ShaderCode::Language::Bytecode )
         {
@@ -77,10 +77,8 @@ namespace shaders {
             if ( d3d_shader_buffer_desc.Type != D3D_CT_CBUFFER )
                 continue;
 
-            xl7::graphics::shaders::ConstantBufferDeclaration constant_buffer_declaration;
-            constant_buffer_declaration.name = d3d_shader_buffer_desc.Name;
-            constant_buffer_declaration.index = cbuffer_index;
-            constant_buffer_declaration.constant_table = {};
+            constant_buffer_declarations_out.emplace_back( xl7::graphics::shaders::ConstantBufferDeclaration{ d3d_shader_buffer_desc.Name, cbuffer_index, {} } );
+            auto& constant_declarations_out = constant_buffer_declarations_out.back().constant_declarations;
 
             for ( unsigned variable_index = 0; variable_index < d3d_shader_buffer_desc.Variables; ++variable_index )
             {
@@ -164,10 +162,8 @@ namespace shaders {
                 constant_declaration.column_count = d3d_shader_type_desc.Columns;
                 constant_declaration.element_count = d3d_shader_type_desc.Elements;
 
-                constant_buffer_declaration.constant_table.emplace( d3d_shader_variable_desc.Name, std::move(constant_declaration) );
+                constant_declarations_out.emplace_back( std::move(constant_declaration) );
             } // for each variable
-
-            constant_buffer_table_out.emplace( d3d_shader_buffer_desc.Name, std::move(constant_buffer_declaration) );
         } // for each cbuffer
 
         for ( unsigned resource_index = 0; resource_index < d3d_shader_desc.BoundResources; ++resource_index )
@@ -189,7 +185,7 @@ namespace shaders {
             texture_sampler_declaration.index = d3d_shader_input_bind_desc.BindPoint;
             texture_sampler_declaration.element_count = d3d_shader_input_bind_desc.BindCount;
 
-            texture_sampler_table_out.emplace( d3d_shader_input_bind_desc.Name, std::move(texture_sampler_declaration) );
+            texture_sampler_declarations_out.emplace_back( std::move(texture_sampler_declaration) );
         } // for each (sampler) resource
 
         return true;
@@ -202,31 +198,31 @@ namespace shaders {
     // #############################################################################
 
     /**
-     * Builds a constant buffer table based on the specified bytecode.
+     * Builds constant buffer declarations based on the specified bytecode.
      */
-    xl7::graphics::shaders::ConstantBufferTable D3DShaderReflection::build_constant_buffer_table(const xl7::graphics::shaders::ShaderCode& bytecode)
+    std::vector<xl7::graphics::shaders::ConstantBufferDeclaration> D3DShaderReflection::build_constant_buffer_declarations(const xl7::graphics::shaders::ShaderCode& bytecode)
     {
-        xl7::graphics::shaders::ConstantBufferTable constant_buffer_table;
-        xl7::graphics::shaders::TextureSamplerTable texture_sampler_table;
+        std::vector<xl7::graphics::shaders::ConstantBufferDeclaration> constant_buffer_declarations;
+        std::vector<xl7::graphics::shaders::TextureSamplerDeclaration> texture_sampler_declarations;
 
-        if ( !_build_parameter_tables( bytecode, constant_buffer_table, texture_sampler_table ) )
+        if ( !_build_parameter_declarations( bytecode, constant_buffer_declarations, texture_sampler_declarations ) )
             return {};
 
-        return constant_buffer_table;
+        return constant_buffer_declarations;
     }
 
     /**
-     * Builds a texture/sampler table based on the specified bytecode.
+     * Builds texture/sampler declarations based on the specified bytecode.
      */
-    xl7::graphics::shaders::TextureSamplerTable D3DShaderReflection::build_texture_sampler_table(const xl7::graphics::shaders::ShaderCode& bytecode)
+    std::vector<xl7::graphics::shaders::TextureSamplerDeclaration> D3DShaderReflection::build_texture_sampler_declarations(const xl7::graphics::shaders::ShaderCode& bytecode)
     {
-        xl7::graphics::shaders::ConstantBufferTable constant_buffer_table;
-        xl7::graphics::shaders::TextureSamplerTable texture_sampler_table;
+        std::vector<xl7::graphics::shaders::ConstantBufferDeclaration> constant_buffer_declarations;
+        std::vector<xl7::graphics::shaders::TextureSamplerDeclaration> texture_sampler_declarations;
 
-        if ( !_build_parameter_tables( bytecode, constant_buffer_table, texture_sampler_table ) )
+        if ( !_build_parameter_declarations( bytecode, constant_buffer_declarations, texture_sampler_declarations ) )
             return {};
 
-        return texture_sampler_table;
+        return texture_sampler_declarations;
     }
 
 

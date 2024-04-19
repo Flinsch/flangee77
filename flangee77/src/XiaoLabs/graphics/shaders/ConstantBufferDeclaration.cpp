@@ -12,8 +12,8 @@ namespace shaders {
     unsigned ConstantBufferDeclaration::calculate_size() const
     {
         unsigned size = 0;
-        for ( const auto& p : constant_table )
-            size += p.second.size;
+        for ( const auto& constant_declaration : constant_declarations )
+            size += constant_declaration.size;
         return size;
     }
 

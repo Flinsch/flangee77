@@ -46,7 +46,7 @@ namespace shaders {
             return false;
         }
 
-        if ( !_recompile_impl( macro_definitions, _bytecode, _constant_buffer_table, _texture_sampler_table ) )
+        if ( !_recompile_impl( macro_definitions, _bytecode, _constant_buffer_declarations, _texture_sampler_declarations ) )
         {
             LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be recompiled.") );
             return false;
@@ -114,11 +114,11 @@ namespace shaders {
             assert( code_data_provider.get_shader_code().get_language() == ShaderCode::Language::Bytecode );
             _bytecode = code_data_provider.get_shader_code();
 
-            return _acquire_precompiled_impl( code_data_provider, _constant_buffer_table, _texture_sampler_table );
+            return _acquire_precompiled_impl( code_data_provider, _constant_buffer_declarations, _texture_sampler_declarations );
         }
         if ( is_recompilable() )
         {
-            return _acquire_recompilable_impl( code_data_provider, _bytecode, _constant_buffer_table, _texture_sampler_table );
+            return _acquire_recompilable_impl( code_data_provider, _bytecode, _constant_buffer_declarations, _texture_sampler_declarations );
         }
 
         assert( false );

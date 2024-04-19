@@ -173,12 +173,9 @@ namespace helloworld {
             const auto* shader = xl7::graphics::shader_manager()->get_resource<xl7::graphics::shaders::Shader>( i );
             LOG_TYPE( TEXT("Parameters of ") + shader->get_typed_identifier_string() + TEXT(':'), cl7::logging::LogType::Caption );
 
-            const auto& constant_buffer_table = shader->get_constant_buffer_table();
-            const auto& texture_sampler_table = shader->get_texture_sampler_table();
-
             std::vector<const xl7::graphics::shaders::ConstantBufferDeclaration*> constant_buffer_declarations;
-            for ( const auto& p : constant_buffer_table )
-                constant_buffer_declarations.push_back( &p.second );
+            for ( const auto& constant_buffer_declaration : shader->get_constant_buffer_declarations() )
+                constant_buffer_declarations.push_back( &constant_buffer_declaration );
             std::sort( constant_buffer_declarations.begin(), constant_buffer_declarations.end(), [](const auto& a, const auto& b) {
                 return a->index < b->index;
             } );
@@ -188,11 +185,9 @@ namespace helloworld {
                 if ( !cb->name.empty() )
                     LOG_TYPE( cl7::strings::from_ascii(cb->name) + TEXT("\tcb") + cl7::to_string(cb->index) + TEXT(" (") + cl7::to_string(cb->calculate_size()) + TEXT(")"), cl7::logging::LogType::Item );
 
-                const auto& constant_table = cb->constant_table;
-
                 std::vector<const xl7::graphics::shaders::ConstantDeclaration*> constant_declarations;
-                for ( const auto& p : constant_table )
-                    constant_declarations.push_back( &p.second );
+                for ( const auto& constant_declaration : cb->constant_declarations )
+                    constant_declarations.push_back( &constant_declaration );
                 std::sort( constant_declarations.begin(), constant_declarations.end(), [](const auto& a, const auto& b) {
                     return a->offset < b->offset;
                 } );
@@ -208,8 +203,8 @@ namespace helloworld {
             } // for each cbuffer
 
             std::vector<const xl7::graphics::shaders::TextureSamplerDeclaration*> texture_sampler_declarations;
-            for ( const auto& p : texture_sampler_table )
-                texture_sampler_declarations.push_back( &p.second );
+            for ( const auto& texture_sampler_declaration : shader->get_texture_sampler_declarations() )
+                texture_sampler_declarations.push_back( &texture_sampler_declaration );
             std::sort( texture_sampler_declarations.begin(), texture_sampler_declarations.end(), [](const auto& a, const auto& b) {
                 return a->index < b->index;
             } );

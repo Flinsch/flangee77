@@ -872,13 +872,13 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
     {
         cl7::astring entry_point;
         cl7::astring target;
-        xl7::graphics::shaders::ConstantBufferTable constant_buffer_table;
-        xl7::graphics::shaders::TextureSamplerTable texture_sampler_table;
+        std::vector<xl7::graphics::shaders::ConstantBufferDeclaration> constant_buffer_declarations;
+        std::vector<xl7::graphics::shaders::TextureSamplerDeclaration> texture_sampler_declarations;
     } entry;
 
     const std::vector<Entry> container {
-        { "mainVS", "vs_3_0", { { "", { "", 0, { { "WorldViewProjection", { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, "WorldViewProjection", 0, 64, 4, 4, 1 } } } } } }, {} },
-        { "mainPS", "ps_3_0", { { "", { "", 0, { { "BaseColor", { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, "BaseColor", 0, 16, 1, 4, 1 } } } } } }, {} },
+        { "mainVS", "vs_3_0", { { "", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, "WorldViewProjection", 0, 64, 4, 4, 1 } } } }, {} },
+        { "mainPS", "ps_3_0", { { "", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, "BaseColor", 0, 16, 1, 4, 1 } } } }, {} },
     };
 
     for ( size_t i = 0; i < container.size(); ++i )
@@ -886,50 +886,49 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
         const Entry& entry = container[ i ];
 
         xl7::graphics::shaders::ShaderCode bytecode = d3d_shader_compiler.compile_hlsl_code( file_path, {}, entry.entry_point, entry.target );
-        xl7::graphics::shaders::ConstantBufferTable constant_buffer_table = d3d9_shader_reflection.build_constant_buffer_table( bytecode );
-        xl7::graphics::shaders::TextureSamplerTable texture_sampler_table = d3d9_shader_reflection.build_texture_sampler_table( bytecode );
+        std::vector<xl7::graphics::shaders::ConstantBufferDeclaration> constant_buffer_declarations = d3d9_shader_reflection.build_constant_buffer_declarations( bytecode );
+        std::vector<xl7::graphics::shaders::TextureSamplerDeclaration> texture_sampler_declarations = d3d9_shader_reflection.build_texture_sampler_declarations( bytecode );
 
         TESTLABS_CHECK_EQ( bytecode.get_language(), xl7::graphics::shaders::ShaderCode::Language::Bytecode );
-        TESTLABS_CHECK_EQ( constant_buffer_table.size(), entry.constant_buffer_table.size() );
-        TESTLABS_CHECK_EQ( texture_sampler_table.size(), entry.texture_sampler_table.size() );
+        TESTLABS_ASSERT_EQ( constant_buffer_declarations.size(), entry.constant_buffer_declarations.size() );
+        TESTLABS_ASSERT_EQ( texture_sampler_declarations.size(), entry.texture_sampler_declarations.size() );
 
-        for ( const auto& p_cb : entry.constant_buffer_table )
+        for ( size_t i_cb = 0; i_cb < constant_buffer_declarations.size(); ++i_cb )
         {
-            const auto it_cb = constant_buffer_table.find( p_cb.first );
-            TESTLABS_ASSERT( it_cb != constant_buffer_table.end() );
-            TESTLABS_CHECK_EQ( p_cb.first, it_cb->second.name );
+            const auto& expected_cb = entry.constant_buffer_declarations[ i_cb ];
+            auto& actual_cb = constant_buffer_declarations[ i_cb ];
 
-            TESTLABS_CHECK_EQ( p_cb.second.name, it_cb->second.name );
-            TESTLABS_CHECK_EQ( p_cb.second.index, it_cb->second.index );
+            TESTLABS_CHECK_EQ( actual_cb.name, expected_cb.name );
+            TESTLABS_CHECK_EQ( actual_cb.index, expected_cb.index );
 
-            xl7::graphics::shaders::ConstantTable& constant_table = it_cb->second.constant_table;
+            std::vector<xl7::graphics::shaders::ConstantDeclaration>& constant_declarations = actual_cb.constant_declarations;
 
-            for ( const auto& p_c : p_cb.second.constant_table )
+            TESTLABS_ASSERT_EQ( constant_declarations.size(), entry.constant_buffer_declarations[ i_cb ].constant_declarations.size() );
+
+            for ( size_t i_c = 0; i_c < constant_declarations.size(); ++i_c )
             {
-                const auto it_c = constant_table.find( p_c.first );
-                TESTLABS_ASSERT( it_c != constant_table.end() );
-                TESTLABS_CHECK_EQ( p_c.first, it_c->second.name );
+                const auto& expected_c = entry.constant_buffer_declarations[ i_cb ].constant_declarations[ i_c ];
+                auto& actual_c = constant_declarations[ i_c ];
 
-                TESTLABS_CHECK_EQ( unsigned(p_c.second.constant_type), unsigned(it_c->second.constant_type) );
-                TESTLABS_CHECK_EQ( unsigned(p_c.second.constant_class), unsigned(it_c->second.constant_class) );
-                TESTLABS_CHECK_EQ( p_c.second.name, it_c->second.name );
-                TESTLABS_CHECK_EQ( p_c.second.offset, it_c->second.offset );
-                TESTLABS_CHECK_EQ( p_c.second.size, it_c->second.size );
-                TESTLABS_CHECK_EQ( p_c.second.row_count, it_c->second.row_count );
-                TESTLABS_CHECK_EQ( p_c.second.column_count, it_c->second.column_count );
-                TESTLABS_CHECK_EQ( p_c.second.element_count, it_c->second.element_count );
+                TESTLABS_CHECK_EQ( unsigned(actual_c.constant_type), unsigned(expected_c.constant_type) );
+                TESTLABS_CHECK_EQ( unsigned(actual_c.constant_class), unsigned(expected_c.constant_class) );
+                TESTLABS_CHECK_EQ( actual_c.name, expected_c.name );
+                TESTLABS_CHECK_EQ( actual_c.offset, expected_c.offset );
+                TESTLABS_CHECK_EQ( actual_c.size, expected_c.size );
+                TESTLABS_CHECK_EQ( actual_c.row_count, expected_c.row_count );
+                TESTLABS_CHECK_EQ( actual_c.column_count, expected_c.column_count );
+                TESTLABS_CHECK_EQ( actual_c.element_count, expected_c.element_count );
             } // for each constant "variable"
         } // for each cbuffer
 
-        for ( const auto& p : entry.texture_sampler_table )
+        for ( size_t i_ts = 0; i_ts < texture_sampler_declarations.size(); ++i_ts )
         {
-            const auto it = texture_sampler_table.find( p.first );
-            TESTLABS_ASSERT( it != texture_sampler_table.end() );
-            TESTLABS_CHECK_EQ( p.first, it->second.name );
+            const auto& expected_ts = entry.texture_sampler_declarations[ i_ts ];
+            auto& actual_ts = texture_sampler_declarations[ i_ts ];
 
-            TESTLABS_CHECK_EQ( p.second.name, it->second.name );
-            TESTLABS_CHECK_EQ( p.second.index, it->second.index );
-            TESTLABS_CHECK_EQ( p.second.element_count, it->second.element_count );
+            TESTLABS_CHECK_EQ( actual_ts.name, expected_ts.name );
+            TESTLABS_CHECK_EQ( actual_ts.index, expected_ts.index );
+            TESTLABS_CHECK_EQ( actual_ts.element_count, expected_ts.element_count );
         } // for each texture/sampler
     }
 }

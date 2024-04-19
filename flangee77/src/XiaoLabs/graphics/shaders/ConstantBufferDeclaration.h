@@ -2,9 +2,11 @@
 #ifndef XL7_GRAPHICS_SHADERS_CONSTANTBUFFERDECLARATION_H
 #define XL7_GRAPHICS_SHADERS_CONSTANTBUFFERDECLARATION_H
 
-#include "./ConstantTable.h"
+#include "./ConstantDeclaration.h"
 
 #include <CoreLabs/string.h>
+
+#include <vector>
 
 
 
@@ -23,8 +25,8 @@ struct ConstantBufferDeclaration
     /** The 0-based index of the constant buffer. */
     unsigned index;
 
-    /** The table of constant declarations. */
-    ConstantTable constant_table;
+    /** The constant declarations. */
+    std::vector<ConstantDeclaration> constant_declarations;
 
 
 

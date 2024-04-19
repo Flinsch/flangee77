@@ -6,8 +6,10 @@
 #include "./ShaderCode.h"
 #include "./CodeDataProvider.h"
 #include "./MacroDefinitions.h"
-#include "./ConstantBufferTable.h"
-#include "./TextureSamplerTable.h"
+#include "./ConstantBufferDeclaration.h"
+#include "./TextureSamplerDeclaration.h"
+
+#include <vector>
 
 
 
@@ -88,14 +90,14 @@ private:
     ShaderCode _bytecode;
 
     /**
-     * The table of constant buffer parameters.
+     * The constant buffer declarations.
      */
-    ConstantBufferTable _constant_buffer_table;
+    std::vector<ConstantBufferDeclaration> _constant_buffer_declarations;
 
     /**
-     * The table of texture/sampler parameters.
+     * The texture/sampler declarations.
      */
-    TextureSamplerTable _texture_sampler_table;
+    std::vector<TextureSamplerDeclaration> _texture_sampler_declarations;
 
 
 
@@ -131,14 +133,14 @@ public:
     const ShaderCode& get_bytecode() const { return _bytecode; }
 
     /**
-     * Returns the table of constant buffer parameters.
+     * Returns the constant buffer declarations.
      */
-    const ConstantBufferTable& get_constant_buffer_table() const { return _constant_buffer_table; }
+    const std::vector<ConstantBufferDeclaration>& get_constant_buffer_declarations() const { return _constant_buffer_declarations; }
 
     /**
-     * Returns the table of texture/sampler parameters.
+     * Returns the texture/sampler declarations.
      */
-    const TextureSamplerTable& get_texture_sampler_table() const { return _texture_sampler_table; }
+    const std::vector<TextureSamplerDeclaration>& get_texture_sampler_declarations() const { return _texture_sampler_declarations; }
 
 
 
@@ -191,7 +193,7 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_precompiled_impl(const CodeDataProvider& code_data_provider, ConstantBufferTable& constant_buffer_table_out, TextureSamplerTable& texture_sampler_table_out) = 0;
+    virtual bool _acquire_precompiled_impl(const CodeDataProvider& code_data_provider, std::vector<ConstantBufferDeclaration>& constant_buffer_declarations_out, std::vector<TextureSamplerDeclaration>& texture_sampler_declarations_out) = 0;
 
     /**
      * Requests/acquires a recompilable shader resource.
@@ -199,13 +201,13 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_recompilable_impl(const CodeDataProvider& code_data_provider, ShaderCode& bytecode_out, ConstantBufferTable& constant_buffer_table_out, TextureSamplerTable& texture_sampler_table_out) = 0;
+    virtual bool _acquire_recompilable_impl(const CodeDataProvider& code_data_provider, ShaderCode& bytecode_out, std::vector<ConstantBufferDeclaration>& constant_buffer_declarations_out, std::vector<TextureSamplerDeclaration>& texture_sampler_declarations_out) = 0;
 
     /**
      * Recompiles the shader code. This tends to result in the resource having to be
      * completely recreated in the background.
      */
-    virtual bool _recompile_impl(const MacroDefinitions& macro_definitions, ShaderCode& bytecode_out, ConstantBufferTable& constant_buffer_table_out, TextureSamplerTable& texture_sampler_table_out) = 0;
+    virtual bool _recompile_impl(const MacroDefinitions& macro_definitions, ShaderCode& bytecode_out, std::vector<ConstantBufferDeclaration>& constant_buffer_declarations_out, std::vector<TextureSamplerDeclaration>& texture_sampler_declarations_out) = 0;
 
 }; // class Shader
 
