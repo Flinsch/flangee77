@@ -209,6 +209,17 @@ private:
      */
     virtual bool _recompile_impl(const MacroDefinitions& macro_definitions, ShaderCode& bytecode_out, std::vector<ConstantBufferDeclaration>& constant_buffer_declarations_out, std::vector<TextureSamplerDeclaration>& texture_sampler_declarations_out) = 0;
 
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+protected:
+    /**
+     * 
+     */
+    bool _validate_declarations(const std::vector<ConstantBufferDeclaration>& constant_buffer_declarations, const std::vector<TextureSamplerDeclaration>& texture_sampler_declarations) const;
+
 }; // class Shader
 
 

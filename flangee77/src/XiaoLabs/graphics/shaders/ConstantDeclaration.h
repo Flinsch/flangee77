@@ -31,11 +31,11 @@ struct ConstantDeclaration
     /** The (total) size of the constant, in bytes. */
     unsigned size;
 
-    /** The number of rows. */
+    /** The number of rows (1 if not matrix). */
     unsigned row_count;
-    /** The number of columns. */
+    /** The number of columns (1 if scalar). */
     unsigned column_count;
-    /** The number of (array) elements. */
+    /** The number of (array) elements (1 if not array). */
     unsigned element_count;
 
 }; // struct ConstantDeclaration

@@ -52,7 +52,7 @@ namespace shaders {
             return false;
         }
 
-        return true;
+        return _validate_declarations( _constant_buffer_declarations, _texture_sampler_declarations );
     }
 
 
@@ -114,15 +114,51 @@ namespace shaders {
             assert( code_data_provider.get_shader_code().get_language() == ShaderCode::Language::Bytecode );
             _bytecode = code_data_provider.get_shader_code();
 
-            return _acquire_precompiled_impl( code_data_provider, _constant_buffer_declarations, _texture_sampler_declarations );
+            return _acquire_precompiled_impl( code_data_provider, _constant_buffer_declarations, _texture_sampler_declarations ) &&
+                _validate_declarations( _constant_buffer_declarations, _texture_sampler_declarations );
         }
         if ( is_recompilable() )
         {
-            return _acquire_recompilable_impl( code_data_provider, _bytecode, _constant_buffer_declarations, _texture_sampler_declarations );
+            return _acquire_recompilable_impl( code_data_provider, _bytecode, _constant_buffer_declarations, _texture_sampler_declarations ) &&
+                _validate_declarations( _constant_buffer_declarations, _texture_sampler_declarations );
         }
 
         assert( false );
         return false;
+    }
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * 
+     */
+    bool Shader::_validate_declarations(const std::vector<ConstantBufferDeclaration>& constant_buffer_declarations, const std::vector<TextureSamplerDeclaration>& texture_sampler_declarations) const
+    {
+        for ( const auto& constant_buffer_declaration : constant_buffer_declarations )
+        {
+            const auto& constant_declarations = constant_buffer_declaration.constant_declarations;
+
+            for ( const auto& constant_declaration : constant_declarations )
+            {
+                const bool is_scalar = constant_declaration.constant_class == xl7::graphics::shaders::ConstantClass::Scalar;
+                const bool is_vector = constant_declaration.constant_class == xl7::graphics::shaders::ConstantClass::Vector;
+                const bool is_matrix = constant_declaration.constant_class == xl7::graphics::shaders::ConstantClass::MatrixRows || constant_declaration.constant_class == xl7::graphics::shaders::ConstantClass::MatrixColumns;
+
+                assert( (constant_declaration.row_count == 1 && !is_matrix) || (constant_declaration.row_count > 1 && is_matrix) );
+                assert( (constant_declaration.column_count == 1 && is_scalar) || (constant_declaration.column_count > 1 && !is_scalar) );
+                assert( constant_declaration.element_count >= 1 );
+            } // for each constant declaration
+        } // for each constant buffer declaration
+
+        for ( const auto& texture_sampler_declaration : texture_sampler_declarations )
+        {
+        } // for each texture/sampler declaration
+
+        return true;
     }
 
 

@@ -8,6 +8,7 @@
 #include <XiaoLabs/graphics/images/ImageResizer.h>
 #include <XiaoLabs/graphics/impl/shared/shaders/D3DShaderCompiler.h>
 #include <XiaoLabs/graphics/impl/direct3d9/shaders/D3DShaderReflection.h>
+#include <XiaoLabs/graphics/impl/direct3d11/shaders/D3DShaderReflection.h>
 
 #include <CoreLabs/filesystem.h>
 #include <CoreLabs/strings.h>
@@ -865,11 +866,18 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
 {
     xl7::graphics::impl::shared::shaders::D3DShaderCompiler d3d_shader_compiler;
     xl7::graphics::impl::direct3d9::shaders::D3DShaderReflection d3d9_shader_reflection;
+    xl7::graphics::impl::direct3d11::shaders::D3DShaderReflection d3d11_shader_reflection;
 
-    const cl7::string file_path = cl7::filesystem::get_working_directory() + TEXT("assets/shaders/shader.hlsl");
+    enum class ImplType
+    {
+        Direct3D9,
+        Direct3D11,
+    };
 
     struct Entry
     {
+        ImplType impl_type;
+        cl7::astring filename;
         cl7::astring entry_point;
         cl7::astring target;
         std::vector<xl7::graphics::shaders::ConstantBufferDeclaration> constant_buffer_declarations;
@@ -877,17 +885,34 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
     } entry;
 
     const std::vector<Entry> container {
-        { "mainVS", "vs_3_0", { { "", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, "WorldViewProjection", 0, 64, 4, 4, 1 } } } }, {} },
-        { "mainPS", "ps_3_0", { { "", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, "BaseColor", 0, 16, 1, 4, 1 } } } }, {} },
+        { ImplType::Direct3D9, "shader.hlsl", "mainVS", "vs_3_0", { { "", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, "WorldViewProjection", 0, 64, 4, 4, 1 } } } }, {} },
+        { ImplType::Direct3D9, "shader.hlsl", "mainPS", "ps_3_0", { { "", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, "BaseColor", 0, 16, 1, 4, 1 } } } }, {} },
+        { ImplType::Direct3D11, "shader.hlsl", "mainVS", "vs_5_0", { { "VertexConstants", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, "WorldViewProjection", 0, 64, 4, 4, 1 } } } }, {} },
+        { ImplType::Direct3D11, "shader.hlsl", "mainPS", "ps_5_0", { { "PixelConstants", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, "BaseColor", 0, 16, 1, 4, 1 } } } }, {} },
     };
 
     for ( size_t i = 0; i < container.size(); ++i )
     {
         const Entry& entry = container[ i ];
 
+        const cl7::string file_path = cl7::filesystem::get_working_directory() + TEXT("assets/shaders/") + cl7::strings::from_ascii(entry.filename);
+
         xl7::graphics::shaders::ShaderCode bytecode = d3d_shader_compiler.compile_hlsl_code( file_path, {}, entry.entry_point, entry.target );
-        std::vector<xl7::graphics::shaders::ConstantBufferDeclaration> constant_buffer_declarations = d3d9_shader_reflection.build_constant_buffer_declarations( bytecode );
-        std::vector<xl7::graphics::shaders::TextureSamplerDeclaration> texture_sampler_declarations = d3d9_shader_reflection.build_texture_sampler_declarations( bytecode );
+        std::vector<xl7::graphics::shaders::ConstantBufferDeclaration> constant_buffer_declarations;
+        std::vector<xl7::graphics::shaders::TextureSamplerDeclaration> texture_sampler_declarations;
+        switch ( entry.impl_type )
+        {
+        case ImplType::Direct3D9:
+            constant_buffer_declarations = d3d9_shader_reflection.build_constant_buffer_declarations( bytecode );
+            texture_sampler_declarations = d3d9_shader_reflection.build_texture_sampler_declarations( bytecode );
+            break;
+        case ImplType::Direct3D11:
+            constant_buffer_declarations = d3d11_shader_reflection.build_constant_buffer_declarations( bytecode );
+            texture_sampler_declarations = d3d11_shader_reflection.build_texture_sampler_declarations( bytecode );
+            break;
+        default:
+            assert( false );
+        }
 
         TESTLABS_CHECK_EQ( bytecode.get_language(), xl7::graphics::shaders::ShaderCode::Language::Bytecode );
         TESTLABS_ASSERT_EQ( constant_buffer_declarations.size(), entry.constant_buffer_declarations.size() );

@@ -160,7 +160,7 @@ namespace shaders {
                 constant_declaration.size = d3d_shader_variable_desc.Size;
                 constant_declaration.row_count = d3d_shader_type_desc.Rows;
                 constant_declaration.column_count = d3d_shader_type_desc.Columns;
-                constant_declaration.element_count = d3d_shader_type_desc.Elements;
+                constant_declaration.element_count = (std::max)( d3d_shader_type_desc.Elements, 1u );
 
                 constant_declarations_out.emplace_back( std::move(constant_declaration) );
             } // for each variable
