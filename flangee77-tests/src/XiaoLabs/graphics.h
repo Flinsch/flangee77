@@ -880,15 +880,14 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
         cl7::astring filename;
         cl7::astring entry_point;
         cl7::astring target;
-        std::vector<xl7::graphics::shaders::ConstantBufferDeclaration> constant_buffer_declarations;
-        std::vector<xl7::graphics::shaders::TextureSamplerDeclaration> texture_sampler_declarations;
+        xl7::graphics::shaders::ReflectionResult reflection_result;
     } entry;
 
     const std::vector<Entry> container {
-        { ImplType::Direct3D9, "shader.hlsl", "mainVS", "vs_3_0", { { "", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, "WorldViewProjection", 0, 64, 4, 4, 1 } } } }, {} },
-        { ImplType::Direct3D9, "shader.hlsl", "mainPS", "ps_3_0", { { "", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, "BaseColor", 0, 16, 1, 4, 1 } } } }, {} },
-        { ImplType::Direct3D11, "shader.hlsl", "mainVS", "vs_5_0", { { "VertexConstants", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, "WorldViewProjection", 0, 64, 4, 4, 1 } } } }, {} },
-        { ImplType::Direct3D11, "shader.hlsl", "mainPS", "ps_5_0", { { "PixelConstants", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, "BaseColor", 0, 16, 1, 4, 1 } } } }, {} },
+        { ImplType::Direct3D9, "shader.hlsl", "mainVS", "vs_3_0", { { { "", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, "WorldViewProjection", 0, 64, 4, 4, 1 } } } }, {} } },
+        { ImplType::Direct3D9, "shader.hlsl", "mainPS", "ps_3_0", { { { "", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, "BaseColor", 0, 16, 1, 4, 1 } } } }, {} } },
+        { ImplType::Direct3D11, "shader.hlsl", "mainVS", "vs_5_0", { { { "VertexConstants", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, "WorldViewProjection", 0, 64, 4, 4, 1 } } } }, {} } },
+        { ImplType::Direct3D11, "shader.hlsl", "mainPS", "ps_5_0", { { { "PixelConstants", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, "BaseColor", 0, 16, 1, 4, 1 } } } }, {} } },
     };
 
     for ( size_t i = 0; i < container.size(); ++i )
@@ -898,29 +897,31 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
         const cl7::string file_path = cl7::filesystem::get_working_directory() + TEXT("assets/shaders/") + cl7::strings::from_ascii(entry.filename);
 
         xl7::graphics::shaders::ShaderCode bytecode = d3d_shader_compiler.compile_hlsl_code( file_path, {}, entry.entry_point, entry.target );
-        std::vector<xl7::graphics::shaders::ConstantBufferDeclaration> constant_buffer_declarations;
-        std::vector<xl7::graphics::shaders::TextureSamplerDeclaration> texture_sampler_declarations;
+        xl7::graphics::shaders::ReflectionResult reflection_result;
+        bool reflection_success;
         switch ( entry.impl_type )
         {
         case ImplType::Direct3D9:
-            constant_buffer_declarations = d3d9_shader_reflection.build_constant_buffer_declarations( bytecode );
-            texture_sampler_declarations = d3d9_shader_reflection.build_texture_sampler_declarations( bytecode );
+            reflection_success = d3d9_shader_reflection.reflect( bytecode, reflection_result );
             break;
         case ImplType::Direct3D11:
-            constant_buffer_declarations = d3d11_shader_reflection.build_constant_buffer_declarations( bytecode );
-            texture_sampler_declarations = d3d11_shader_reflection.build_texture_sampler_declarations( bytecode );
+            reflection_success = d3d11_shader_reflection.reflect( bytecode, reflection_result );
             break;
         default:
             assert( false );
         }
 
+        auto& constant_buffer_declarations = reflection_result.constant_buffer_declarations;
+        auto& texture_sampler_declarations = reflection_result.texture_sampler_declarations;
+
         TESTLABS_CHECK_EQ( bytecode.get_language(), xl7::graphics::shaders::ShaderCode::Language::Bytecode );
-        TESTLABS_ASSERT_EQ( constant_buffer_declarations.size(), entry.constant_buffer_declarations.size() );
-        TESTLABS_ASSERT_EQ( texture_sampler_declarations.size(), entry.texture_sampler_declarations.size() );
+        TESTLABS_CHECK( reflection_success );
+        TESTLABS_ASSERT_EQ( constant_buffer_declarations.size(), entry.reflection_result.constant_buffer_declarations.size() );
+        TESTLABS_ASSERT_EQ( texture_sampler_declarations.size(), entry.reflection_result.texture_sampler_declarations.size() );
 
         for ( size_t i_cb = 0; i_cb < constant_buffer_declarations.size(); ++i_cb )
         {
-            const auto& expected_cb = entry.constant_buffer_declarations[ i_cb ];
+            const auto& expected_cb = entry.reflection_result.constant_buffer_declarations[ i_cb ];
             auto& actual_cb = constant_buffer_declarations[ i_cb ];
 
             TESTLABS_CHECK_EQ( actual_cb.name, expected_cb.name );
@@ -928,11 +929,11 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
 
             std::vector<xl7::graphics::shaders::ConstantDeclaration>& constant_declarations = actual_cb.constant_declarations;
 
-            TESTLABS_ASSERT_EQ( constant_declarations.size(), entry.constant_buffer_declarations[ i_cb ].constant_declarations.size() );
+            TESTLABS_ASSERT_EQ( constant_declarations.size(), entry.reflection_result.constant_buffer_declarations[ i_cb ].constant_declarations.size() );
 
             for ( size_t i_c = 0; i_c < constant_declarations.size(); ++i_c )
             {
-                const auto& expected_c = entry.constant_buffer_declarations[ i_cb ].constant_declarations[ i_c ];
+                const auto& expected_c = entry.reflection_result.constant_buffer_declarations[ i_cb ].constant_declarations[ i_c ];
                 auto& actual_c = constant_declarations[ i_c ];
 
                 TESTLABS_CHECK_EQ( unsigned(actual_c.constant_type), unsigned(expected_c.constant_type) );
@@ -948,7 +949,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
 
         for ( size_t i_ts = 0; i_ts < texture_sampler_declarations.size(); ++i_ts )
         {
-            const auto& expected_ts = entry.texture_sampler_declarations[ i_ts ];
+            const auto& expected_ts = entry.reflection_result.texture_sampler_declarations[ i_ts ];
             auto& actual_ts = texture_sampler_declarations[ i_ts ];
 
             TESTLABS_CHECK_EQ( actual_ts.name, expected_ts.name );

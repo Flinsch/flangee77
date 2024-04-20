@@ -174,7 +174,7 @@ namespace helloworld {
             LOG_TYPE( TEXT("Parameters of ") + shader->get_typed_identifier_string() + TEXT(':'), cl7::logging::LogType::Caption );
 
             std::vector<const xl7::graphics::shaders::ConstantBufferDeclaration*> constant_buffer_declarations;
-            for ( const auto& constant_buffer_declaration : shader->get_constant_buffer_declarations() )
+            for ( const auto& constant_buffer_declaration : shader->get_reflection_result().constant_buffer_declarations )
                 constant_buffer_declarations.push_back( &constant_buffer_declaration );
             std::sort( constant_buffer_declarations.begin(), constant_buffer_declarations.end(), [](const auto& a, const auto& b) {
                 return a->index < b->index;
@@ -203,7 +203,7 @@ namespace helloworld {
             } // for each cbuffer
 
             std::vector<const xl7::graphics::shaders::TextureSamplerDeclaration*> texture_sampler_declarations;
-            for ( const auto& texture_sampler_declaration : shader->get_texture_sampler_declarations() )
+            for ( const auto& texture_sampler_declaration : shader->get_reflection_result().texture_sampler_declarations )
                 texture_sampler_declarations.push_back( &texture_sampler_declaration );
             std::sort( texture_sampler_declarations.begin(), texture_sampler_declarations.end(), [](const auto& a, const auto& b) {
                 return a->index < b->index;

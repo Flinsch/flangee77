@@ -3,8 +3,7 @@
 #define XL7_GRAPHICS_IMPL_D3D11_SHADERS_D3DSHADERREFLECTION_H
 
 #include "../../../shaders/ShaderCode.h"
-#include "../../../shaders/ConstantBufferDeclaration.h"
-#include "../../../shaders/TextureSamplerDeclaration.h"
+#include "../../../shaders/ReflectionResult.h"
 
 #include <vector>
 
@@ -26,14 +25,10 @@ class D3DShaderReflection
     // #############################################################################
 public:
     /**
-     * Builds constant buffer declarations based on the specified bytecode.
+     * Performs a "reflection" on the (compiled) shader bytecode to determine
+     * parameter declarations etc.
      */
-    std::vector<xl7::graphics::shaders::ConstantBufferDeclaration> build_constant_buffer_declarations(const xl7::graphics::shaders::ShaderCode& bytecode);
-
-    /**
-     * Builds texture/sampler declarations based on the specified bytecode.
-     */
-    std::vector<xl7::graphics::shaders::TextureSamplerDeclaration> build_texture_sampler_declarations(const xl7::graphics::shaders::ShaderCode& bytecode);
+    bool reflect(const xl7::graphics::shaders::ShaderCode& bytecode, xl7::graphics::shaders::ReflectionResult& reflection_result_out);
 
 }; // class D3DShaderReflection
 

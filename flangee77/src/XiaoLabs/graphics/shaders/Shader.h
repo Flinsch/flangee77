@@ -6,8 +6,7 @@
 #include "./ShaderCode.h"
 #include "./CodeDataProvider.h"
 #include "./MacroDefinitions.h"
-#include "./ConstantBufferDeclaration.h"
-#include "./TextureSamplerDeclaration.h"
+#include "./ReflectionResult.h"
 
 #include <vector>
 
@@ -90,14 +89,9 @@ private:
     ShaderCode _bytecode;
 
     /**
-     * The constant buffer declarations.
+     * The reflection result, which includes parameter declarations etc.
      */
-    std::vector<ConstantBufferDeclaration> _constant_buffer_declarations;
-
-    /**
-     * The texture/sampler declarations.
-     */
-    std::vector<TextureSamplerDeclaration> _texture_sampler_declarations;
+    ReflectionResult _reflection_result;
 
 
 
@@ -133,14 +127,9 @@ public:
     const ShaderCode& get_bytecode() const { return _bytecode; }
 
     /**
-     * Returns the constant buffer declarations.
+     * Returns the reflection result, which includes parameter declarations etc.
      */
-    const std::vector<ConstantBufferDeclaration>& get_constant_buffer_declarations() const { return _constant_buffer_declarations; }
-
-    /**
-     * Returns the texture/sampler declarations.
-     */
-    const std::vector<TextureSamplerDeclaration>& get_texture_sampler_declarations() const { return _texture_sampler_declarations; }
+    const ReflectionResult& get_reflection_result() const { return _reflection_result; }
 
 
 
@@ -193,7 +182,7 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_precompiled_impl(const CodeDataProvider& code_data_provider, std::vector<ConstantBufferDeclaration>& constant_buffer_declarations_out, std::vector<TextureSamplerDeclaration>& texture_sampler_declarations_out) = 0;
+    virtual bool _acquire_precompiled_impl(const CodeDataProvider& code_data_provider) = 0;
 
     /**
      * Requests/acquires a recompilable shader resource.
@@ -201,13 +190,19 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_recompilable_impl(const CodeDataProvider& code_data_provider, ShaderCode& bytecode_out, std::vector<ConstantBufferDeclaration>& constant_buffer_declarations_out, std::vector<TextureSamplerDeclaration>& texture_sampler_declarations_out) = 0;
+    virtual bool _acquire_recompilable_impl(const CodeDataProvider& code_data_provider, ShaderCode& bytecode_out) = 0;
 
     /**
      * Recompiles the shader code. This tends to result in the resource having to be
      * completely recreated in the background.
      */
-    virtual bool _recompile_impl(const MacroDefinitions& macro_definitions, ShaderCode& bytecode_out, std::vector<ConstantBufferDeclaration>& constant_buffer_declarations_out, std::vector<TextureSamplerDeclaration>& texture_sampler_declarations_out) = 0;
+    virtual bool _recompile_impl(const MacroDefinitions& macro_definitions, ShaderCode& bytecode_out) = 0;
+
+    /**
+     * Performs a "reflection" on the (compiled) shader bytecode to determine
+     * parameter declarations etc.
+     */
+    virtual bool _reflect_impl(const ShaderCode& bytecode, ReflectionResult& reflection_result_out) = 0;
 
 
 
@@ -218,7 +213,7 @@ protected:
     /**
      * 
      */
-    bool _validate_declarations(const std::vector<ConstantBufferDeclaration>& constant_buffer_declarations, const std::vector<TextureSamplerDeclaration>& texture_sampler_declarations) const;
+    bool _validate_reflection_result(const ReflectionResult& reflection_result) const;
 
 }; // class Shader
 

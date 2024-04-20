@@ -12,7 +12,15 @@ namespace shaders {
 
 
 
-    bool _build_parameter_declarations(const xl7::graphics::shaders::ShaderCode& bytecode, std::vector<xl7::graphics::shaders::ConstantBufferDeclaration>& constant_buffer_declarations_out, std::vector<xl7::graphics::shaders::TextureSamplerDeclaration>& texture_sampler_declarations_out)
+    // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+    * Performs a "reflection" on the (compiled) shader bytecode to determine
+    * parameter declarations etc.
+    */
+    bool D3DShaderReflection::reflect(const xl7::graphics::shaders::ShaderCode& bytecode, xl7::graphics::shaders::ReflectionResult& reflection_result_out)
     {
         if ( bytecode.get_language() != xl7::graphics::shaders::ShaderCode::Language::Bytecode )
         {
@@ -25,6 +33,9 @@ namespace shaders {
             LOG_ERROR( TEXT("The given bytecode is empty.") );
             return false;
         }
+
+        auto& constant_buffer_declarations_out = reflection_result_out.constant_buffer_declarations;
+        auto& texture_sampler_declarations_out = reflection_result_out.texture_sampler_declarations;
 
         // Inspired by:
         // https://www.gamedev.net/forums/topic/648016-replacement-for-id3dxconstanttable/
@@ -206,40 +217,6 @@ namespace shaders {
         //LOG_ERROR( TEXT("The shader parameter table could not be created.") );
         LOG_WARNING( TEXT("The shader parameter table could not be created.") );
         return false;
-    }
-
-
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
-
-    /**
-     * Builds constant buffer declarations based on the specified bytecode.
-     */
-    std::vector<xl7::graphics::shaders::ConstantBufferDeclaration> D3DShaderReflection::build_constant_buffer_declarations(const xl7::graphics::shaders::ShaderCode& bytecode)
-    {
-        std::vector<xl7::graphics::shaders::ConstantBufferDeclaration> constant_buffer_declarations;
-        std::vector<xl7::graphics::shaders::TextureSamplerDeclaration> texture_sampler_declarations;
-
-        if ( !_build_parameter_declarations( bytecode, constant_buffer_declarations, texture_sampler_declarations ) )
-            return {};
-
-        return constant_buffer_declarations;
-    }
-
-    /**
-     * Builds texture/sampler declarations based on the specified bytecode.
-     */
-    std::vector<xl7::graphics::shaders::TextureSamplerDeclaration> D3DShaderReflection::build_texture_sampler_declarations(const xl7::graphics::shaders::ShaderCode& bytecode)
-    {
-        std::vector<xl7::graphics::shaders::ConstantBufferDeclaration> constant_buffer_declarations;
-        std::vector<xl7::graphics::shaders::TextureSamplerDeclaration> texture_sampler_declarations;
-
-        if ( !_build_parameter_declarations( bytecode, constant_buffer_declarations, texture_sampler_declarations ) )
-            return {};
-
-        return texture_sampler_declarations;
     }
 
 

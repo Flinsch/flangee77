@@ -46,13 +46,13 @@ namespace shaders {
             return false;
         }
 
-        if ( !_recompile_impl( macro_definitions, _bytecode, _constant_buffer_declarations, _texture_sampler_declarations ) )
+        if ( !_recompile_impl( macro_definitions, _bytecode ) )
         {
             LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be recompiled.") );
             return false;
         }
 
-        return _validate_declarations( _constant_buffer_declarations, _texture_sampler_declarations );
+        return _reflect_impl( _bytecode, _reflection_result ) && _validate_reflection_result( _reflection_result );
     }
 
 
@@ -114,13 +114,13 @@ namespace shaders {
             assert( code_data_provider.get_shader_code().get_language() == ShaderCode::Language::Bytecode );
             _bytecode = code_data_provider.get_shader_code();
 
-            return _acquire_precompiled_impl( code_data_provider, _constant_buffer_declarations, _texture_sampler_declarations ) &&
-                _validate_declarations( _constant_buffer_declarations, _texture_sampler_declarations );
+            return _acquire_precompiled_impl( code_data_provider ) &&
+                _reflect_impl( _bytecode, _reflection_result ) && _validate_reflection_result( _reflection_result );
         }
         if ( is_recompilable() )
         {
-            return _acquire_recompilable_impl( code_data_provider, _bytecode, _constant_buffer_declarations, _texture_sampler_declarations ) &&
-                _validate_declarations( _constant_buffer_declarations, _texture_sampler_declarations );
+            return _acquire_recompilable_impl( code_data_provider, _bytecode ) &&
+                _reflect_impl( _bytecode, _reflection_result ) && _validate_reflection_result( _reflection_result );
         }
 
         assert( false );
@@ -136,9 +136,9 @@ namespace shaders {
     /**
      * 
      */
-    bool Shader::_validate_declarations(const std::vector<ConstantBufferDeclaration>& constant_buffer_declarations, const std::vector<TextureSamplerDeclaration>& texture_sampler_declarations) const
+    bool Shader::_validate_reflection_result(const ReflectionResult& reflection_result) const
     {
-        for ( const auto& constant_buffer_declaration : constant_buffer_declarations )
+        for ( const auto& constant_buffer_declaration : reflection_result.constant_buffer_declarations )
         {
             const auto& constant_declarations = constant_buffer_declaration.constant_declarations;
 
@@ -154,7 +154,7 @@ namespace shaders {
             } // for each constant declaration
         } // for each constant buffer declaration
 
-        for ( const auto& texture_sampler_declaration : texture_sampler_declarations )
+        for ( const auto& texture_sampler_declaration : reflection_result.texture_sampler_declarations )
         {
         } // for each texture/sampler declaration
 

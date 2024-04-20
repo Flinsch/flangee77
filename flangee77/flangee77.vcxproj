@@ -209,6 +209,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantDataProvider.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantDeclaration.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantType.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\ReflectionResult.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\TextureSamplerDeclaration.h" />
     <ClInclude Include="src\XiaoLabs\graphics\surfaces\RenderTarget.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\states\DepthStencilStateImpl.h" />
