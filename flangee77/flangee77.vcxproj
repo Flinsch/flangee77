@@ -205,9 +205,12 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\D3DShaderReflection.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantBuffer.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantBufferDeclaration.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantBufferLayout.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantBufferMapping.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantClass.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantDataProvider.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantDeclaration.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantMapping.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantType.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ReflectionResult.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\TextureSamplerDeclaration.h" />
@@ -398,7 +401,8 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\ConstantBufferImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\D3DShaderReflection.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\shaders\ConstantBuffer.cpp" />
-    <ClCompile Include="src\XiaoLabs\graphics\shaders\ConstantBufferDeclaration.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\shaders\ConstantBufferLayout.cpp" />
+    <ClCompile Include="src\XiaoLabs\graphics\shaders\ConstantBufferMapping.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\RenderTarget.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\states\DepthStencilStateImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\states\DepthStencilStateImpl.cpp" />

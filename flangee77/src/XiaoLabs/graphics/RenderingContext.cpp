@@ -194,6 +194,16 @@ namespace graphics {
     {
         resolved_shader_states.shader = _rendering_device->get_shader_manager()->find_resource<TShader>( pipeline_as.get_shader_id() );
 
+        resolved_shader_states.constant_buffer_count = 0;
+        for ( unsigned slot_index = 0; slot_index < pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS; ++slot_index )
+        {
+            auto* constant_buffer = _rendering_device->get_shader_manager()->find_resource<shaders::ConstantBuffer>( pipeline_as.get_constant_buffer_id( slot_index ) );
+            resolved_shader_states.constant_buffers[ slot_index ] = constant_buffer;
+            resolved_shader_states.constant_buffer_mappings[ slot_index ] = resolved_shader_states.shader ? resolved_shader_states.shader->find_or_create_constant_buffer_mapping( constant_buffer ) : nullptr;
+            if ( constant_buffer )
+                resolved_shader_states.constant_buffer_count = slot_index + 1;
+        }
+
         resolved_shader_states.texture_sampler_count = 0;
         for ( unsigned slot_index = 0; slot_index < pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS; ++slot_index )
         {

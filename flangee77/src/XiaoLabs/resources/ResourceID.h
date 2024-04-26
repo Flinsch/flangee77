@@ -131,11 +131,32 @@ public:
 public:
     operator bool () const { return is_valid(); }
 
+
+
+    // #############################################################################
+    // Hash Function
+    // #############################################################################
+public:
+    size_t hash() const { return static_cast<size_t>( _id ); };
+
 }; // class ResourceID
 
 
 
 } // namespace resources
 } // namespace xl7
+
+
+
+template <>
+struct std::hash<xl7::resources::ResourceID>
+{
+    size_t operator () (const xl7::resources::ResourceID& resource_id) const
+    {
+        return resource_id.hash();
+    }
+};
+
+
 
 #endif // XL7_RESOURCES_RESOURCEID_H

@@ -3,6 +3,7 @@
 #define XL7_GRAPHICS_SHADERS_CONSTANTBUFFER_H
 #include "../../resources/Resource.h"
 
+#include "./ConstantBufferLayout.h"
 #include "./ConstantDataProvider.h"
 
 
@@ -24,10 +25,8 @@ class ConstantBuffer
 public:
     struct Desc
     {
-        /** Identifies how the constant buffer is expected to be updated (frequency of update is a key factor). */
-        resources::ResourceUsage usage;
-
-        
+        /** The layout specification of the constant buffer. */
+        ConstantBufferLayout layout;
     };
 
 
@@ -83,6 +82,19 @@ public:
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+public:
+
+public:
+    /**
+     * Updates the contents of this constant buffer.
+     */
+    bool update(const ConstantDataProvider& constant_data_provider);
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 private:
@@ -93,11 +105,41 @@ private:
      */
     virtual bool _check_data_impl(const resources::DataProvider& data_provider) override;
 
+    /**
+     * Requests/acquires the resource, bringing it into a usable state.
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been filled based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    virtual bool _acquire_impl(const resources::DataProvider& data_provider) override;
+
 public:
     /**
      * Returns the specific type of the resource, as a "human-friendly" string.
      */
     virtual cl7::string_view get_type_string() const override { return TEXT("constant buffer"); }
+
+
+
+    // #############################################################################
+    // Prototypes
+    // #############################################################################
+private:
+    /**
+     * Requests/acquires the constant buffer resource.
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been filled based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    virtual bool _acquire_impl(const ConstantDataProvider& constant_data_provider) = 0;
+
+    /**
+     * Updates the contents of this constant buffer.
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been updated based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    virtual bool _update_impl(const ConstantDataProvider& constant_data_provider, bool discard, bool no_overwrite) = 0;
 
 }; // class ConstantBuffer
 

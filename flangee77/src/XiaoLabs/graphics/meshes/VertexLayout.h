@@ -74,6 +74,7 @@ struct VertexLayout
         unsigned get_size() const;
     };
 
+    /** The "ordered list" of vertex elements. */
     std::vector<Element> elements;
 
 

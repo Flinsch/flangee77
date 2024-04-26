@@ -2,11 +2,9 @@
 #ifndef XL7_GRAPHICS_SHADERS_CONSTANTBUFFERDECLARATION_H
 #define XL7_GRAPHICS_SHADERS_CONSTANTBUFFERDECLARATION_H
 
-#include "./ConstantDeclaration.h"
+#include "./ConstantBufferLayout.h"
 
 #include <CoreLabs/string.h>
-
-#include <vector>
 
 
 
@@ -25,13 +23,8 @@ struct ConstantBufferDeclaration
     /** The 0-based index of the constant buffer. */
     unsigned index;
 
-    /** The constant declarations. */
-    std::vector<ConstantDeclaration> constant_declarations;
-
-
-
-    /** Calculates the total size of the constant buffer, in bytes. */
-    unsigned calculate_size() const;
+    /** The layout specification of the constant buffer. */
+    ConstantBufferLayout layout;
 
 }; // struct ConstantBufferDeclaration
 

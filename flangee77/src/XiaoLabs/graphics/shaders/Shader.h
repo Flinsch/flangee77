@@ -7,8 +7,10 @@
 #include "./CodeDataProvider.h"
 #include "./MacroDefinitions.h"
 #include "./ReflectionResult.h"
+#include "./ConstantBufferMapping.h"
 
 #include <vector>
+#include <unordered_map>
 
 
 
@@ -19,6 +21,8 @@ namespace shaders {
 
 
 class ShaderManager;
+
+class ConstantBuffer;
 
 
 
@@ -93,6 +97,12 @@ private:
      */
     ReflectionResult _reflection_result;
 
+private:
+    /**
+     * The constant buffer mappings cached so far by constant buffer ID.
+     */
+    mutable std::unordered_map<resources::ResourceID, ConstantBufferMapping> _constant_buffer_mappings_by_constant_buffer_id;
+
 
 
     // #############################################################################
@@ -142,6 +152,34 @@ public:
      * completely recreated in the background.
      */
     bool recompile(const MacroDefinitions& macro_definitions);
+
+    /**
+     * Finds or creates the constant buffer mapping for the specified constant
+     * buffer based on the reflection result of this shader. Returns NULL if not
+     * applicable.
+     * The padded sizes of the constant declarations specified in the descriptor of
+     * the constant buffer should be set correctly to minimize the resulting mapping
+     * entries as much as possible.
+     */
+    const ConstantBufferMapping* find_or_create_constant_buffer_mapping(const ConstantBuffer* constant_buffer) const;
+
+    /**
+     * Searches for the specified constant buffer declaration and returns it if
+     * found, NULL otherwise.
+     */
+    const ConstantBufferDeclaration* find_constant_buffer_declaration(cl7::astring_view constant_buffer_name) const;
+
+    /**
+     * Searches for the specified constant declaration and returns it along with the
+     * associated constant buffer declaration if found, NULL twice otherwise.
+     */
+    std::pair<const ConstantBufferDeclaration*, const ConstantDeclaration*> find_constant_buffer_and_constant_declaration(cl7::astring_view constant_name) const;
+
+    /**
+     * Searches for the specified texture/sampler declaration and returns it if
+     * found, NULL otherwise.
+     */
+    const TextureSamplerDeclaration* find_texture_sampler_declaration(cl7::astring_view texture_sampler_name) const;
 
 
 
@@ -211,7 +249,13 @@ private:
     // #############################################################################
 protected:
     /**
-     * 
+     * Performs a "reflection" on the (compiled) shader bytecode to determine
+     * parameter declarations etc. and validates the result.
+     */
+    bool _reflect_and_validate(const ShaderCode& bytecode, ReflectionResult& reflection_result_out);
+
+    /**
+     * Validates the given reflection result.
      */
     bool _validate_reflection_result(const ReflectionResult& reflection_result) const;
 

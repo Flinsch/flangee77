@@ -18,18 +18,13 @@ namespace shaders {
 struct ConstantDeclaration
 {
 
+    /** The name of the constant. */
+    cl7::astring name;
+
     /** The constant type (bool, int, float). */
     ConstantType constant_type;
     /** The constant class (scalar, vector, matrix). */
     ConstantClass constant_class;
-
-    /** The name of the constant. */
-    cl7::astring name;
-
-    /** The offset within the constant buffer, in bytes. */
-    unsigned offset;
-    /** The (total) size of the constant, in bytes. */
-    unsigned size;
 
     /** The number of rows (1 if not matrix). */
     unsigned row_count;
@@ -37,6 +32,13 @@ struct ConstantDeclaration
     unsigned column_count;
     /** The number of (array) elements (1 if not array). */
     unsigned element_count;
+
+    /** The offset within the constant buffer, in bytes. */
+    unsigned offset;
+    /** The actual total size of the constant, in bytes. */
+    unsigned size;
+    /** The padded total size of the constant, in bytes. It is wise not to set this value manually, but via ConstantBufferLayout::sort_and_adjust_padded_sizes. */
+    unsigned padded_size;
 
 }; // struct ConstantDeclaration
 

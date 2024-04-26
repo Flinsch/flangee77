@@ -89,7 +89,7 @@ namespace shaders {
                 continue;
 
             constant_buffer_declarations_out.emplace_back( xl7::graphics::shaders::ConstantBufferDeclaration{ d3d_shader_buffer_desc.Name, cbuffer_index, {} } );
-            auto& constant_declarations_out = constant_buffer_declarations_out.back().constant_declarations;
+            auto& constant_declarations_out = constant_buffer_declarations_out.back().layout.constant_declarations;
 
             for ( unsigned variable_index = 0; variable_index < d3d_shader_buffer_desc.Variables; ++variable_index )
             {
@@ -107,7 +107,7 @@ namespace shaders {
                     continue;
                 }
 
-                ID3D11ShaderReflectionType* d3d_shader_variable_type =  d3d_variable_reflection->GetType();
+                ID3D11ShaderReflectionType* d3d_shader_variable_type = d3d_variable_reflection->GetType();
                 assert( d3d_shader_variable_type );
                 if ( !d3d_shader_variable_type )
                     continue;
@@ -164,17 +164,19 @@ namespace shaders {
                     continue;
 
                 xl7::graphics::shaders::ConstantDeclaration constant_declaration;
+                constant_declaration.name = d3d_shader_variable_desc.Name;
                 constant_declaration.constant_type = constant_type;
                 constant_declaration.constant_class = constant_class;
-                constant_declaration.name = d3d_shader_variable_desc.Name;
-                constant_declaration.offset = d3d_shader_variable_desc.StartOffset;
-                constant_declaration.size = d3d_shader_variable_desc.Size;
                 constant_declaration.row_count = d3d_shader_type_desc.Rows;
                 constant_declaration.column_count = d3d_shader_type_desc.Columns;
                 constant_declaration.element_count = (std::max)( d3d_shader_type_desc.Elements, 1u );
+                constant_declaration.offset = d3d_shader_variable_desc.StartOffset;
+                constant_declaration.size = d3d_shader_variable_desc.Size;
 
                 constant_declarations_out.emplace_back( std::move(constant_declaration) );
             } // for each variable
+
+            constant_buffer_declarations_out.back().layout.sort_and_adjust_padded_sizes();
         } // for each cbuffer
 
         for ( unsigned resource_index = 0; resource_index < d3d_shader_desc.BoundResources; ++resource_index )

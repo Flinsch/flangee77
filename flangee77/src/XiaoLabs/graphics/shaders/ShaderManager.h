@@ -70,7 +70,7 @@ public:
     /**
      * Creates and acquires the specified constant buffer.
      */
-    resources::ResourceID create_constant_buffer(cl7::astring_view identifier, const ConstantBuffer::Desc& desc, const ConstantDataProvider& constant_data_provider);
+    resources::ResourceID create_constant_buffer(cl7::astring_view identifier, const ConstantBuffer::Desc& desc, const ConstantDataProvider& constant_data_provider = {});
 
     /**
      * Creates and acquires the specified vertex shader.

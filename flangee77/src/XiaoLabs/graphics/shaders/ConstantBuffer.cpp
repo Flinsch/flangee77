@@ -26,6 +26,26 @@ namespace shaders {
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Updates the contents of this constant buffer.
+     */
+    bool ConstantBuffer::update(const ConstantDataProvider& constant_data_provider)
+    {
+        if ( !_try_fill_data( constant_data_provider ) )
+            return false;
+
+        bool discard = true;
+        bool no_overwrite = false;
+
+        return _update_impl( constant_data_provider, discard, no_overwrite );
+    }
+
+
+
+    // #############################################################################
     // Resource Implementations
     // #############################################################################
 
@@ -39,6 +59,20 @@ namespace shaders {
         
 
         return true;
+    }
+
+    /**
+     * Requests/acquires the resource, bringing it into a usable state.
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been filled based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    bool ConstantBuffer::_acquire_impl(const resources::DataProvider& data_provider)
+    {
+        assert( typeid(data_provider) == typeid(const ConstantDataProvider&) );
+        auto constant_data_provider = static_cast<const ConstantDataProvider&>( data_provider );
+
+        return _acquire_impl( constant_data_provider );
     }
 
 

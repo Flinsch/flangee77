@@ -121,6 +121,16 @@ namespace helloworld {
         _pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader( "My Pixel Shader", code_data_provider );
 
 
+        xl7::graphics::shaders::ConstantBuffer::Desc constant_buffer_desc;
+        constant_buffer_desc.layout.constant_declarations = {
+            { "VertexBaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, },
+            { "PixelBaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 16, 16, },
+        };
+        constant_buffer_desc.layout.sort_and_adjust_padded_sizes();
+        
+        _constant_buffer_id = xl7::graphics::shader_manager()->create_constant_buffer( "My Constant Buffer", constant_buffer_desc );
+
+
         xl7::graphics::images::Image image;
         xl7::graphics::images::TargaImageHandler targa_image_handler;
         xl7::graphics::images::PngImageHandler png_image_handler;
@@ -170,7 +180,11 @@ namespace helloworld {
 
         for ( size_t i = 0; i < xl7::graphics::shader_manager()->get_resource_count(); ++i )
         {
-            const auto* shader = xl7::graphics::shader_manager()->get_resource<xl7::graphics::shaders::Shader>( i );
+            const auto* resource = xl7::graphics::shader_manager()->get_resource( i );
+            const auto* shader = dynamic_cast<const xl7::graphics::shaders::Shader*>( resource );
+            if ( !shader )
+                continue;
+
             LOG_TYPE( TEXT("Parameters of ") + shader->get_typed_identifier_string() + TEXT(':'), cl7::logging::LogType::Caption );
 
             std::vector<const xl7::graphics::shaders::ConstantBufferDeclaration*> constant_buffer_declarations;
@@ -183,10 +197,10 @@ namespace helloworld {
             for ( const auto* cb : constant_buffer_declarations )
             {
                 if ( !cb->name.empty() )
-                    LOG_TYPE( cl7::strings::from_ascii(cb->name) + TEXT("\tcb") + cl7::to_string(cb->index) + TEXT(" (") + cl7::to_string(cb->calculate_size()) + TEXT(")"), cl7::logging::LogType::Item );
+                    LOG_TYPE( cl7::strings::from_ascii(cb->name) + TEXT("\tcb") + cl7::to_string(cb->index) + TEXT(" (") + cl7::to_string(cb->layout.calculate_size()) + TEXT(")"), cl7::logging::LogType::Item );
 
                 std::vector<const xl7::graphics::shaders::ConstantDeclaration*> constant_declarations;
-                for ( const auto& constant_declaration : cb->constant_declarations )
+                for ( const auto& constant_declaration : cb->layout.constant_declarations )
                     constant_declarations.push_back( &constant_declaration );
                 std::sort( constant_declarations.begin(), constant_declarations.end(), [](const auto& a, const auto& b) {
                     return a->offset < b->offset;
@@ -250,11 +264,13 @@ namespace helloworld {
         xl7::graphics::state_manager()->release_resource_and_invalidate( _sampler_state_id );
         xl7::graphics::texture_manager()->release_resource_and_invalidate( _texture_id );
 
-        xl7::graphics::mesh_manager()->release_resource_and_invalidate( _vertex_buffer_id );
-        xl7::graphics::mesh_manager()->release_resource_and_invalidate( _index_buffer_id );
+        xl7::graphics::shader_manager()->release_resource_and_invalidate( _constant_buffer_id );
 
         xl7::graphics::shader_manager()->release_resource_and_invalidate( _vertex_shader_id );
         xl7::graphics::shader_manager()->release_resource_and_invalidate( _pixel_shader_id );
+
+        xl7::graphics::mesh_manager()->release_resource_and_invalidate( _vertex_buffer_id );
+        xl7::graphics::mesh_manager()->release_resource_and_invalidate( _index_buffer_id );
 
         return true;
     }
@@ -264,6 +280,13 @@ namespace helloworld {
      */
     void MyApp::_render_impl()
     {
+        xl7::graphics::shaders::ConstantDataProvider constant_data_provider;
+
+        auto* constant_buffer = xl7::graphics::shader_manager()->find_resource<xl7::graphics::shaders::ConstantBuffer>( _constant_buffer_id );
+        assert( constant_buffer );
+        constant_buffer->update( constant_data_provider );
+
+
         auto* rendering_context = xl7::graphics::primary_context();
 
         rendering_context->clear( xl7::graphics::ClearFlags::All, { 1.0f, 0.333f, 0.75f }, 1.0f, 0x0 );
@@ -272,8 +295,10 @@ namespace helloworld {
         rendering_context->pipeline.ia.set_index_buffer_id( _index_buffer_id );
 
         rendering_context->pipeline.vs.set_shader_id( _vertex_shader_id );
+        rendering_context->pipeline.vs.set_constant_buffer_id( 0, _constant_buffer_id );
 
         rendering_context->pipeline.ps.set_shader_id( _pixel_shader_id );
+        rendering_context->pipeline.ps.set_constant_buffer_id( 0, _constant_buffer_id );
         rendering_context->pipeline.ps.set_texture_id( 0, _texture_id );
         rendering_context->pipeline.ps.set_sampler_state_id( 0, _sampler_state_id );
 

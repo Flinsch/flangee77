@@ -130,6 +130,7 @@ namespace direct3d9 {
         // Adopt other capabilities.
         capabilities.max_simultaneous_render_target_count = _d3d_device_caps.NumSimultaneousRTs;
         capabilities.max_concurrent_vertex_stream_count = _d3d_device_caps.MaxStreams;
+        capabilities.max_constant_buffer_slot_count = pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS; // There are no actual constant buffers in Direct3D 9. Just take the framework limit.
         capabilities.max_texture_sampler_slot_count = _d3d_device_caps.MaxSimultaneousTextures;
 
         // And more.

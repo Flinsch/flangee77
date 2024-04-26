@@ -1,6 +1,10 @@
 #include "Shader.h"
 
+#include "./ConstantBuffer.h"
+
 #include <CoreLabs/logging.h>
+
+#include <algorithm>
 
 
 
@@ -46,13 +50,115 @@ namespace shaders {
             return false;
         }
 
+        // The constant buffer mappings tend to have to be rebuilt.
+        // Maybe not all of them, but we don't know for sure,
+        // so we'll just delete them all "across the board".
+        _constant_buffer_mappings_by_constant_buffer_id.clear();
+
         if ( !_recompile_impl( macro_definitions, _bytecode ) )
         {
             LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be recompiled.") );
             return false;
         }
 
-        return _reflect_impl( _bytecode, _reflection_result ) && _validate_reflection_result( _reflection_result );
+        return _reflect_and_validate( _bytecode, _reflection_result );
+    }
+
+    /**
+     * Finds or creates the constant buffer mapping for the specified constant
+     * buffer based on the reflection result of this shader. Returns NULL if not
+     * applicable.
+     * The padded sizes of the constant declarations specified in the descriptor of
+     * the constant buffer should be set correctly to minimize the resulting mapping
+     * entries as much as possible.
+     */
+    const ConstantBufferMapping* Shader::find_or_create_constant_buffer_mapping(const ConstantBuffer* constant_buffer) const
+    {
+        if ( !constant_buffer )
+            return nullptr;
+
+        auto it = _constant_buffer_mappings_by_constant_buffer_id.find( constant_buffer->get_id() );
+        if ( it != _constant_buffer_mappings_by_constant_buffer_id.end() )
+            return &it->second;
+
+        auto p = _constant_buffer_mappings_by_constant_buffer_id.emplace( constant_buffer->get_id(), ConstantBufferMapping{} );
+        it = p.first;
+        ConstantBufferMapping& constant_buffer_mapping = it->second;
+
+        for ( const auto& source_constant_declaration : constant_buffer->get_desc().layout.constant_declarations )
+        {
+            const auto p = find_constant_buffer_and_constant_declaration( source_constant_declaration.name );
+            if ( !p.first /*|| !p.second*/ ) // Either both are NULL or both are not NULL, so one check is enough.
+                continue;
+
+            const ConstantBufferDeclaration& shader_constant_buffer_declaration = *p.first;
+            const ConstantDeclaration& shader_constant_declaration = *p.second;
+
+            assert( source_constant_declaration.size == shader_constant_declaration.size );
+
+            constant_buffer_mapping.constant_mappings.push_back( {
+                .index = shader_constant_buffer_declaration.index,
+                .source_offset = source_constant_declaration.offset,
+                .shader_offset = shader_constant_declaration.offset,
+                .size = (std::min)( source_constant_declaration.size, shader_constant_declaration.size ),
+                .padded_size = (std::min)( source_constant_declaration.padded_size, shader_constant_declaration.padded_size ),
+            } );
+        } // for each to-be-mapped "source" constant declaration
+
+        // The following action is not actually necessary, but can improve the later
+        // copying process of the data. We try to combine consecutive constants for
+        // this. At best, we end up with only one single effective mapping entry.
+        constant_buffer_mapping.try_merge_constant_mappings();
+
+        return &constant_buffer_mapping;
+    }
+
+    /**
+     * Searches for the specified constant buffer declaration and returns it if
+     * found, NULL otherwise.
+     */
+    const ConstantBufferDeclaration* Shader::find_constant_buffer_declaration(cl7::astring_view constant_buffer_name) const
+    {
+        for ( const auto& constant_buffer_declaration : _reflection_result.constant_buffer_declarations )
+        {
+            if ( constant_buffer_declaration.name.compare( constant_buffer_name ) == 0 )
+                return &constant_buffer_declaration;
+        }
+
+        return nullptr;
+    }
+
+    /**
+     * Searches for the specified constant declaration and returns it along with the
+     * associated constant buffer declaration if found, NULL twice otherwise.
+     */
+    std::pair<const ConstantBufferDeclaration*, const ConstantDeclaration*> Shader::find_constant_buffer_and_constant_declaration(cl7::astring_view constant_name) const
+    {
+        for ( const auto& constant_buffer_declaration : _reflection_result.constant_buffer_declarations )
+        {
+            for ( const auto& constant_declaration : constant_buffer_declaration.layout.constant_declarations )
+            {
+                if ( constant_declaration.name.compare( constant_name ) == 0 )
+                    return { &constant_buffer_declaration, &constant_declaration };
+            }
+        }
+
+        return { nullptr, nullptr };
+    }
+
+    /**
+     * Searches for the specified texture/sampler declaration and returns it if
+     * found, NULL otherwise.
+     */
+    const TextureSamplerDeclaration* Shader::find_texture_sampler_declaration(cl7::astring_view texture_sampler_name) const
+    {
+        for ( const auto& texture_sampler_declaration : _reflection_result.texture_sampler_declarations )
+        {
+            if ( texture_sampler_declaration.name.compare( texture_sampler_name ) == 0 )
+                return &texture_sampler_declaration;
+        }
+
+        return nullptr;
     }
 
 
@@ -115,12 +221,12 @@ namespace shaders {
             _bytecode = code_data_provider.get_shader_code();
 
             return _acquire_precompiled_impl( code_data_provider ) &&
-                _reflect_impl( _bytecode, _reflection_result ) && _validate_reflection_result( _reflection_result );
+                _reflect_and_validate( _bytecode, _reflection_result );
         }
         if ( is_recompilable() )
         {
             return _acquire_recompilable_impl( code_data_provider, _bytecode ) &&
-                _reflect_impl( _bytecode, _reflection_result ) && _validate_reflection_result( _reflection_result );
+                _reflect_and_validate( _bytecode, _reflection_result );
         }
 
         assert( false );
@@ -134,13 +240,28 @@ namespace shaders {
     // #############################################################################
 
     /**
-     * 
+     * Performs a "reflection" on the (compiled) shader bytecode to determine
+     * parameter declarations etc. and validates the result.
+     */
+    bool Shader::_reflect_and_validate(const ShaderCode& bytecode, ReflectionResult& reflection_result_out)
+    {
+        if ( !_reflect_impl( bytecode, reflection_result_out ) )
+            return false;
+
+        for ( auto& constant_buffer_declaration : reflection_result_out.constant_buffer_declarations )
+            constant_buffer_declaration.layout.sort_and_adjust_padded_sizes();
+
+        return _validate_reflection_result( reflection_result_out );
+    }
+
+    /**
+     * Validates the given reflection result.
      */
     bool Shader::_validate_reflection_result(const ReflectionResult& reflection_result) const
     {
         for ( const auto& constant_buffer_declaration : reflection_result.constant_buffer_declarations )
         {
-            const auto& constant_declarations = constant_buffer_declaration.constant_declarations;
+            const auto& constant_declarations = constant_buffer_declaration.layout.constant_declarations;
 
             for ( const auto& constant_declaration : constant_declarations )
             {
@@ -151,6 +272,8 @@ namespace shaders {
                 assert( (constant_declaration.row_count == 1 && !is_matrix) || (constant_declaration.row_count > 1 && is_matrix) );
                 assert( (constant_declaration.column_count == 1 && is_scalar) || (constant_declaration.column_count > 1 && !is_scalar) );
                 assert( constant_declaration.element_count >= 1 );
+
+                assert( constant_declaration.size <= constant_declaration.padded_size );
             } // for each constant declaration
         } // for each constant buffer declaration
 

@@ -591,6 +591,15 @@
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ReflectionResult.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantBufferLayout.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantBufferMapping.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantMapping.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -1007,7 +1016,10 @@
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DShaderReflection.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\XiaoLabs\graphics\shaders\ConstantBufferDeclaration.cpp">
+    <ClCompile Include="src\XiaoLabs\graphics\shaders\ConstantBufferLayout.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\shaders\ConstantBufferMapping.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

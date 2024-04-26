@@ -54,6 +54,8 @@ public:
         unsigned max_simultaneous_render_target_count;
         /** The maximum number of concurrent vertex data streams. */
         unsigned max_concurrent_vertex_stream_count;
+        /** The maximum number of constant buffer slots for any shader. */
+        unsigned max_constant_buffer_slot_count;
         /** The maximum number of texture/sampler slots for any shader. */
         unsigned max_texture_sampler_slot_count;
 

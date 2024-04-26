@@ -884,10 +884,10 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
     } entry;
 
     const std::vector<Entry> container {
-        { ImplType::Direct3D9, "shader.hlsl", "mainVS", "vs_3_0", { { { "", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, "WorldViewProjection", 0, 64, 4, 4, 1 } } } }, {} } },
-        { ImplType::Direct3D9, "shader.hlsl", "mainPS", "ps_3_0", { { { "", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, "BaseColor", 0, 16, 1, 4, 1 } } } }, {} } },
-        { ImplType::Direct3D11, "shader.hlsl", "mainVS", "vs_5_0", { { { "VertexConstants", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, "WorldViewProjection", 0, 64, 4, 4, 1 } } } }, {} } },
-        { ImplType::Direct3D11, "shader.hlsl", "mainPS", "ps_5_0", { { { "PixelConstants", 0, { { xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, "BaseColor", 0, 16, 1, 4, 1 } } } }, {} } },
+        { ImplType::Direct3D9, "shader.hlsl", "mainVS", "vs_3_0", { { { "", 0, { { { "WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
+        { ImplType::Direct3D9, "shader.hlsl", "mainPS", "ps_3_0", { { { "", 0, { { { "BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
+        { ImplType::Direct3D11, "shader.hlsl", "mainVS", "vs_5_0", { { { "VertexConstants", 0, { { { "WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
+        { ImplType::Direct3D11, "shader.hlsl", "mainPS", "ps_5_0", { { { "PixelConstants", 0, { { { "BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
     };
 
     for ( size_t i = 0; i < container.size(); ++i )
@@ -927,23 +927,24 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
             TESTLABS_CHECK_EQ( actual_cb.name, expected_cb.name );
             TESTLABS_CHECK_EQ( actual_cb.index, expected_cb.index );
 
-            std::vector<xl7::graphics::shaders::ConstantDeclaration>& constant_declarations = actual_cb.constant_declarations;
+            std::vector<xl7::graphics::shaders::ConstantDeclaration>& constant_declarations = actual_cb.layout.constant_declarations;
 
-            TESTLABS_ASSERT_EQ( constant_declarations.size(), entry.reflection_result.constant_buffer_declarations[ i_cb ].constant_declarations.size() );
+            TESTLABS_ASSERT_EQ( constant_declarations.size(), entry.reflection_result.constant_buffer_declarations[ i_cb ].layout.constant_declarations.size() );
 
             for ( size_t i_c = 0; i_c < constant_declarations.size(); ++i_c )
             {
-                const auto& expected_c = entry.reflection_result.constant_buffer_declarations[ i_cb ].constant_declarations[ i_c ];
+                const auto& expected_c = entry.reflection_result.constant_buffer_declarations[ i_cb ].layout.constant_declarations[ i_c ];
                 auto& actual_c = constant_declarations[ i_c ];
 
+                TESTLABS_CHECK_EQ( actual_c.name, expected_c.name );
                 TESTLABS_CHECK_EQ( unsigned(actual_c.constant_type), unsigned(expected_c.constant_type) );
                 TESTLABS_CHECK_EQ( unsigned(actual_c.constant_class), unsigned(expected_c.constant_class) );
-                TESTLABS_CHECK_EQ( actual_c.name, expected_c.name );
-                TESTLABS_CHECK_EQ( actual_c.offset, expected_c.offset );
-                TESTLABS_CHECK_EQ( actual_c.size, expected_c.size );
                 TESTLABS_CHECK_EQ( actual_c.row_count, expected_c.row_count );
                 TESTLABS_CHECK_EQ( actual_c.column_count, expected_c.column_count );
                 TESTLABS_CHECK_EQ( actual_c.element_count, expected_c.element_count );
+                TESTLABS_CHECK_EQ( actual_c.offset, expected_c.offset );
+                TESTLABS_CHECK_EQ( actual_c.size, expected_c.size );
+                TESTLABS_CHECK_EQ( actual_c.padded_size, expected_c.padded_size );
             } // for each constant "variable"
         } // for each cbuffer
 

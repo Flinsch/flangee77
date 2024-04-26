@@ -114,7 +114,7 @@ namespace shaders {
             const Info* const cinfo = reinterpret_cast<const Info*>( ctab_ptr + cheader->ConstantInfo );
 
             constant_buffer_declarations_out.emplace_back( xl7::graphics::shaders::ConstantBufferDeclaration{ "", 0, {} } );
-            auto& constant_declarations_out = constant_buffer_declarations_out.back().constant_declarations;
+            auto& constant_declarations_out = constant_buffer_declarations_out.back().layout.constant_declarations;
 
             for ( uint32_t i = 0; i < cheader->Constants; ++i )
             {
@@ -169,17 +169,19 @@ namespace shaders {
                     continue;
 
                 xl7::graphics::shaders::ConstantDeclaration constant_declaration;
+                constant_declaration.name = cl7::astring{ ctab_ptr + cinfo[i].Name };
                 constant_declaration.constant_type = constant_type;
                 constant_declaration.constant_class = constant_class;
-                constant_declaration.name = cl7::astring{ ctab_ptr + cinfo[i].Name };
-                constant_declaration.offset = static_cast<unsigned>( cinfo[i].RegisterIndex ) * 16;
-                constant_declaration.size = static_cast<unsigned>( cinfo[i].RegisterCount ) * 16;
                 constant_declaration.row_count = static_cast<unsigned>( ctype->Rows );
                 constant_declaration.column_count = static_cast<unsigned>( ctype->Columns );
                 constant_declaration.element_count = static_cast<unsigned>( ctype->Elements );
+                constant_declaration.offset = static_cast<unsigned>( cinfo[i].RegisterIndex ) * 16;
+                constant_declaration.size = static_cast<unsigned>( cinfo[i].RegisterCount ) * 16;
 
                 constant_declarations_out.emplace_back( std::move(constant_declaration) );
             } // for each "real" constant
+
+            constant_buffer_declarations_out.back().layout.sort_and_adjust_padded_sizes();
 
             for ( uint32_t i = 0; i < cheader->Constants; ++i )
             {

@@ -233,6 +233,7 @@ namespace graphics {
 
         _check_adjust_max_cap( _capabilities.max_simultaneous_render_target_count, pipeline::OutputMergerStage::MAX_RENDER_TARGETS, TEXT("(color) render targets simultaneously") );
         _check_adjust_max_cap( _capabilities.max_concurrent_vertex_stream_count, pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS, TEXT("vertex data streams concurrently") );
+        _check_adjust_max_cap( _capabilities.max_constant_buffer_slot_count, pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS, TEXT("constant buffer slots") );
         _check_adjust_max_cap( _capabilities.max_texture_sampler_slot_count, pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS, TEXT("texture/sampler slots") );
 
         // Create default state objects.

@@ -20,6 +20,14 @@ class ConstantDataProvider
     // #############################################################################
 public:
     /**
+     * Default constructor.
+     */
+    ConstantDataProvider()
+        : resources::DefaultDataProvider()
+    {
+    }
+
+    /**
      * Explicit constructor.
      */
     template <class TData>
