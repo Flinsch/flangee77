@@ -346,6 +346,10 @@ namespace direct3d11 {
      */
     bool RenderingDeviceImpl::_shutdown_impl()
     {
+        // Release the actual constant buffers.
+        _d3d_constant_buffers_by_shader_id.clear();
+        _d3d_constant_buffer_registry.clear();
+
         // Release the input layout interfaces.
         _d3d_input_layouts_by_binding.clear();
         _d3d_input_layouts_by_layout.clear();
@@ -527,6 +531,101 @@ namespace direct3d11 {
         _d3d_input_layouts_by_binding.insert( std::make_pair( vertex_buffer_binding, d3d_input_layout ) );
 
         return d3d_input_layout.Get();
+    }
+
+    /**
+     * Tries to find an actual Direct3D 11 constant buffer that matches the
+     * specified layout.
+     */
+    shaders::D3DConstantBufferWrapper* RenderingDeviceImpl::_find_d3d_constant_buffer(const xl7::graphics::shaders::ConstantBufferLayout& constant_buffer_layout)
+    {
+        for ( const auto& entry_ptr : _d3d_constant_buffer_registry )
+        {
+            if ( entry_ptr->matches( constant_buffer_layout ) )
+                return entry_ptr.get();
+        }
+
+        return nullptr;
+    }
+
+    /**
+     * Tries to find an actual Direct3D 11 constant buffer that matches the
+     * specified layout, otherwise creates a new one based on said layout.
+     */
+    shaders::D3DConstantBufferWrapper* RenderingDeviceImpl::_find_or_create_d3d_constant_buffer(const xl7::graphics::shaders::ConstantBufferLayout& constant_buffer_layout)
+    {
+        shaders::D3DConstantBufferWrapper* d3d_constant_buffer_wrapper = _find_d3d_constant_buffer( constant_buffer_layout );
+        if ( d3d_constant_buffer_wrapper )
+            return d3d_constant_buffer_wrapper;
+
+        auto entry_ptr = std::make_unique<shaders::D3DConstantBufferWrapper>( constant_buffer_layout );
+        if ( !entry_ptr->get_raw_d3d_constant_buffer() )
+            return nullptr;
+
+        _d3d_constant_buffer_registry.emplace_back( std::move(entry_ptr) );
+
+        return _d3d_constant_buffer_registry.back().get();
+    }
+
+    /**
+     * Tries to find actual Direct3D 11 constant buffers for the specified shader,
+     * and otherwise creates some.
+     */
+    std::span<shaders::D3DConstantBufferWrapper*> RenderingDeviceImpl::_find_or_create_d3d_constant_buffers(resources::ResourceID shader_id)
+    {
+        auto it = _d3d_constant_buffers_by_shader_id.find( shader_id );
+        if ( it != _d3d_constant_buffers_by_shader_id.end() )
+            return it->second;
+
+        auto* shader = get_shader_manager()->find_resource<xl7::graphics::shaders::Shader>( shader_id );
+        assert( shader );
+        if ( !shader )
+            return {};
+
+        _d3d_constant_buffers_by_shader_id.insert( std::make_pair( shader_id, std::vector<shaders::D3DConstantBufferWrapper*>() ) );
+        std::vector<shaders::D3DConstantBufferWrapper*>& d3d_constant_buffer_wrappers = _d3d_constant_buffers_by_shader_id[ shader_id ];
+
+        for ( const auto& constant_buffer_declaration : shader->get_reflection_result().constant_buffer_declarations )
+        {
+            shaders::D3DConstantBufferWrapper* d3d_constant_buffer_wrapper = _find_or_create_d3d_constant_buffer( constant_buffer_declaration.layout );
+            assert( d3d_constant_buffer_wrapper );
+            if ( !d3d_constant_buffer_wrapper )
+                continue;
+
+            d3d_constant_buffer_wrappers.push_back( d3d_constant_buffer_wrapper );
+
+            for ( const auto& entry_ptr : _d3d_constant_buffer_registry )
+                if ( entry_ptr.get() == d3d_constant_buffer_wrapper )
+                    entry_ptr->add_reference();
+        } // for each constant buffer declaration
+
+        return d3d_constant_buffer_wrappers;
+    }
+
+    /**
+     * Releases the actual Direct3D 11 constant buffers associated with the
+     * specified shader.
+     */
+    void RenderingDeviceImpl::_release_d3d_constant_buffers(resources::ResourceID shader_id)
+    {
+        auto it = _d3d_constant_buffers_by_shader_id.find( shader_id );
+        if ( it == _d3d_constant_buffers_by_shader_id.end() )
+            return;
+
+        for ( shaders::D3DConstantBufferWrapper* d3d_constant_buffer_wrapper : it->second )
+        {
+            for ( auto it = _d3d_constant_buffer_registry.begin(); it != _d3d_constant_buffer_registry.end(); )
+            {
+                auto& entry_ptr = *it;
+
+                if ( entry_ptr.get() == d3d_constant_buffer_wrapper && entry_ptr->release() == 0 )
+                    it = _d3d_constant_buffer_registry.erase( it );
+                else
+                    ++it;
+            }
+        }
+
+        _d3d_constant_buffers_by_shader_id.erase( it );
     }
 
 

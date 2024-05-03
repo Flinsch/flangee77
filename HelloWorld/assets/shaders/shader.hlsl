@@ -1,7 +1,7 @@
 
 cbuffer MyVertexConstants
 {
-    float4 VertexBaseColor;
+    float3 VertexOffset;
 };
 
 cbuffer MyPixelConstants
@@ -36,8 +36,8 @@ VertexOut mainVertex(VertexIn i)
 {
     VertexOut o;
 
-    o.pos = float4(i.pos, 1);
-    o.color = (VertexBaseColor + i.color) * 0.5f;
+    o.pos = float4(i.pos + VertexOffset, 1);
+    o.color = i.color;
     o.tex = i.tex;
 
     return o;
@@ -47,7 +47,7 @@ PixelOut mainPixel(PixelIn i)
 {
     PixelOut o;
 
-    o.color = i.color * (PixelBaseColor + tex2D(TextureSampler, i.tex)) * 0.5f;
+    o.color = i.color * PixelBaseColor * tex2D(TextureSampler, i.tex);
 
     return o;
 }

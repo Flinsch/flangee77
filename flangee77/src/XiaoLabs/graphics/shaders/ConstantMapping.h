@@ -2,7 +2,7 @@
 #ifndef XL7_GRAPHICS_SHADERS_CONSTANTMAPPING_H
 #define XL7_GRAPHICS_SHADERS_CONSTANTMAPPING_H
 
-#include <CoreLabs/root.h>
+#include "./ConstantType.h"
 
 
 
@@ -16,7 +16,10 @@ struct ConstantMapping
 {
 
     /** The 0-based index of the constant buffer, as expected by the shader. */
-    unsigned index;
+    unsigned slot_index;
+
+    /** The constant type (bool, int, float). */
+    ConstantType constant_type;
 
     /** The to-be-mapped offset within the "source" constant buffer, in bytes. */
     unsigned source_offset;

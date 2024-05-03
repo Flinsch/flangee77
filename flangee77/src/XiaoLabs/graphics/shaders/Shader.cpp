@@ -94,10 +94,9 @@ namespace shaders {
             const ConstantBufferDeclaration& shader_constant_buffer_declaration = *p.first;
             const ConstantDeclaration& shader_constant_declaration = *p.second;
 
-            assert( source_constant_declaration.size == shader_constant_declaration.size );
-
             constant_buffer_mapping.constant_mappings.push_back( {
-                .index = shader_constant_buffer_declaration.index,
+                .slot_index = shader_constant_buffer_declaration.index,
+                .constant_type = shader_constant_declaration.constant_type,
                 .source_offset = source_constant_declaration.offset,
                 .shader_offset = shader_constant_declaration.offset,
                 .size = (std::min)( source_constant_declaration.size, shader_constant_declaration.size ),

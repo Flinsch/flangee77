@@ -199,6 +199,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DConstantBufferWrapper.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\ConstantBufferImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DShaderReflection.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\ConstantBufferImpl.h" />
@@ -396,6 +397,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\pipeline\VertexShaderStage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DConstantBufferWrapper.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\ConstantBufferImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DShaderReflection.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\ConstantBufferImpl.cpp" />

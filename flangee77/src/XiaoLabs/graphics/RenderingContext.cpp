@@ -190,9 +190,10 @@ namespace graphics {
      * 
      */
     template <class TShader>
-    static void _resolve_shader_states(RenderingContext::ResolvedShaderStates<TShader>& resolved_shader_states, RenderingDevice* const _rendering_device, pipeline::AbstractShaderStage& pipeline_as)
+    static void _resolve_shader_states(RenderingDevice* const _rendering_device, RenderingContext::ResolvedShaderStates<TShader>& resolved_shader_states, pipeline::AbstractShaderStage& pipeline_as)
     {
         resolved_shader_states.shader = _rendering_device->get_shader_manager()->find_resource<TShader>( pipeline_as.get_shader_id() );
+        resolved_shader_states.abstract_shader = resolved_shader_states.shader;
 
         resolved_shader_states.constant_buffer_count = 0;
         for ( unsigned slot_index = 0; slot_index < pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS; ++slot_index )
@@ -251,8 +252,8 @@ namespace graphics {
             resolved_draw_states.topology = pipeline.ia.get_topology( default_topology );
         } // indexed?
 
-        _resolve_shader_states( resolved_draw_states.vs, _rendering_device, pipeline.vs );
-        _resolve_shader_states( resolved_draw_states.ps, _rendering_device, pipeline.ps );
+        _resolve_shader_states( _rendering_device, resolved_draw_states.vs, pipeline.vs );
+        _resolve_shader_states( _rendering_device, resolved_draw_states.ps, pipeline.ps );
 
         if ( pipeline.rs.is_viewport_set() )
             resolved_draw_states.viewport = pipeline.rs.get_viewport();

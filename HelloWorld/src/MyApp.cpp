@@ -123,10 +123,9 @@ namespace helloworld {
 
         xl7::graphics::shaders::ConstantBuffer::Desc constant_buffer_desc;
         constant_buffer_desc.layout.constant_declarations = {
-            { "VertexBaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, },
-            { "PixelBaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 16, 16, },
+            { "VertexOffset", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 3, 1, 0, 12, 12, },
+            { "PixelBaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 12, 16, 16, },
         };
-        constant_buffer_desc.layout.sort_and_adjust_padded_sizes();
         
         _constant_buffer_id = xl7::graphics::shader_manager()->create_constant_buffer( "My Constant Buffer", constant_buffer_desc );
 
@@ -280,7 +279,18 @@ namespace helloworld {
      */
     void MyApp::_render_impl()
     {
-        xl7::graphics::shaders::ConstantDataProvider constant_data_provider;
+        static float a = 0.0f;
+        a += 0.01f;
+        float sn = ::sinf( a ) * 0.01f;
+        float cs = ::cosf( a ) * 0.01f;
+
+        struct ConstantBufferData
+        {
+            float x, y, z;
+            xl7::graphics::Color color;
+        } constant_buffer_data = { cs, sn, 0.0f, { 1.0f, 1.0f, 1.0f, 1.0f } };
+
+        xl7::graphics::shaders::ConstantDataProvider constant_data_provider( &constant_buffer_data );
 
         auto* constant_buffer = xl7::graphics::shader_manager()->find_resource<xl7::graphics::shaders::ConstantBuffer>( _constant_buffer_id );
         assert( constant_buffer );

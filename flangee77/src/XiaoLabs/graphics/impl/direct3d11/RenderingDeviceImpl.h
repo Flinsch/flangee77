@@ -5,6 +5,8 @@
 
 #include "./prerequisites.h"
 
+#include "./shaders/D3DConstantBufferWrapper.h"
+
 #include "../shared/meshes/VertexBufferBinding.h"
 #include "../shared/meshes/ComposedVertexLayout.h"
 
@@ -86,6 +88,10 @@ private:
 private:
     std::unordered_map<shared::meshes::VertexBufferBinding, wrl::ComPtr<ID3D11InputLayout>> _d3d_input_layouts_by_binding;
     std::unordered_map<shared::meshes::ComposedVertexLayout, wrl::ComPtr<ID3D11InputLayout>> _d3d_input_layouts_by_layout;
+
+private:
+    std::vector<std::unique_ptr<shaders::D3DConstantBufferWrapper>> _d3d_constant_buffer_registry;
+    std::unordered_map<resources::ResourceID, std::vector<shaders::D3DConstantBufferWrapper*>> _d3d_constant_buffers_by_shader_id;
 
 
 
@@ -172,6 +178,32 @@ public:
      * buffer(s).
      */
     ID3D11InputLayout* _find_or_create_d3d_input_layout(const shared::meshes::VertexBufferBinding& vertex_buffer_binding, const void* shader_bytecode_with_input_signature, size_t bytecode_length);
+
+private:
+    /**
+     * Tries to find an actual Direct3D 11 constant buffer that matches the
+     * specified layout.
+     */
+    shaders::D3DConstantBufferWrapper* _find_d3d_constant_buffer(const xl7::graphics::shaders::ConstantBufferLayout& constant_buffer_layout);
+
+    /**
+     * Tries to find an actual Direct3D 11 constant buffer that matches the
+     * specified layout, otherwise creates a new one based on said layout.
+     */
+    shaders::D3DConstantBufferWrapper* _find_or_create_d3d_constant_buffer(const xl7::graphics::shaders::ConstantBufferLayout& constant_buffer_layout);
+
+public:
+    /**
+     * Tries to find actual Direct3D 11 constant buffers for the specified shader,
+     * and otherwise creates some.
+     */
+    std::span<shaders::D3DConstantBufferWrapper*> _find_or_create_d3d_constant_buffers(resources::ResourceID shader_id);
+
+    /**
+     * Releases the actual Direct3D 11 constant buffers associated with the
+     * specified shader.
+     */
+    void _release_d3d_constant_buffers(resources::ResourceID shader_id);
 
 }; // class RenderingDeviceImpl
 

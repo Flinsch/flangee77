@@ -121,6 +121,7 @@ namespace meshes {
     bool IndexBufferImpl::_update_impl(const resources::DataProvider& data_provider, bool discard, bool no_overwrite)
     {
         auto d3d_device_context = static_cast<RenderingContextImpl*>( GraphicsSystem::instance().get_rendering_device()->get_primary_context() )->get_raw_d3d_device_context();
+        assert( d3d_device_context );
 
         bool entire = data_provider.get_offset() == 0 && data_provider.get_size() == static_cast<size_t>( _size );
 

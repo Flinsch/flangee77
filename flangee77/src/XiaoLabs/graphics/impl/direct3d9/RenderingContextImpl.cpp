@@ -331,7 +331,7 @@ namespace direct3d9 {
     }
 
     /**
-     * Transfers the current states to the device if necessary.
+     * Transfers all current draw states to the device if necessary.
      */
     bool RenderingContextImpl::_flush_draw_states(const ResolvedDrawStates& resolved_draw_states)
     {
@@ -443,6 +443,9 @@ namespace direct3d9 {
             hardware_states.ps.shader = d3d_pixel_shader;
         }
 
+
+        _flush_shader_constant_states( resolved_draw_states.vs, hardware_states.vs, &IDirect3DDevice9::SetVertexShaderConstantF, &IDirect3DDevice9::SetVertexShaderConstantI, &IDirect3DDevice9::SetVertexShaderConstantB );
+        _flush_shader_constant_states( resolved_draw_states.ps, hardware_states.ps, &IDirect3DDevice9::SetPixelShaderConstantF, &IDirect3DDevice9::SetPixelShaderConstantI, &IDirect3DDevice9::SetPixelShaderConstantB );
 
         _flush_texture_sampler_states( resolved_draw_states.vs, hardware_states.vs, 4, D3DVERTEXTEXTURESAMPLER0 );
         _flush_texture_sampler_states( resolved_draw_states.ps, hardware_states.ps, 8, 0 );
@@ -571,7 +574,80 @@ namespace direct3d9 {
     }
 
     /**
-     * Transfers the current states to the device if necessary.
+     * Transfers the current shader constant states for the indirectly/implicitly
+     * specified shader to the device if necessary.
+     */
+    bool RenderingContextImpl::_flush_shader_constant_states(const ResolvedAbstractShaderStates& resolved_shader_states, HardwareStates::AbstractShaderStates& hardware_shader_states, HRESULT (IDirect3DDevice9::*SetShaderConstantF)(UINT, const float*, UINT), HRESULT (IDirect3DDevice9::*SetShaderConstantI)(UINT, const int*, UINT), HRESULT (IDirect3DDevice9::*SetShaderConstantB)(UINT, const BOOL*, UINT))
+    {
+        HRESULT hresult;
+
+
+        for ( unsigned mapping_index = 0; mapping_index < resolved_shader_states.constant_buffer_count; ++mapping_index )
+        {
+            auto* constant_buffer = resolved_shader_states.constant_buffers[ mapping_index ];
+            if ( !constant_buffer )
+                continue;
+            auto* constant_buffer_mapping = resolved_shader_states.constant_buffer_mappings[ mapping_index ];
+            assert( constant_buffer_mapping );
+
+            for ( const auto& constant_mapping : constant_buffer_mapping->constant_mappings )
+            {
+                assert( constant_mapping.slot_index == 0 );
+
+                assert( constant_buffer->get_data().size() >= static_cast<size_t>( constant_mapping.source_offset + constant_mapping.padded_size ) );
+                const void* data_ptr = constant_buffer->get_data().data() + constant_mapping.source_offset;
+
+                assert( constant_mapping.shader_offset % 16 == 0 );
+                assert( constant_mapping.padded_size % 4 == 0 );
+
+                unsigned start_register = constant_mapping.shader_offset / 16;
+                unsigned register_count = (constant_mapping.padded_size + 15) / 16;
+                if ( constant_mapping.padded_size % 16 != 0 )
+                {
+                    size_t min_size = static_cast<size_t>( register_count * 16 );
+                    if ( _temp_constant_data.size() < min_size )
+                        _temp_constant_data.resize( min_size );
+                    ::memcpy( _temp_constant_data.data(), data_ptr, constant_mapping.size ); // Yes, size, not padded_size. padded_size wouldn't be wrong either, but copying size bytes is completely sufficient.
+                    data_ptr = _temp_constant_data.data();
+                }
+
+                switch ( constant_mapping.constant_type )
+                {
+                case xl7::graphics::shaders::ConstantType::Float:
+                    static_assert( sizeof(float) == 4 );
+                    hresult = (_d3d_device.Get()->*SetShaderConstantF)( start_register, (const float*)data_ptr, register_count );
+                    break;
+                case xl7::graphics::shaders::ConstantType::Int:
+                    static_assert( sizeof(int) == 4 );
+                    assert( constant_mapping.shader_offset % 16 == 0 );
+                    assert( constant_mapping.padded_size % 4 == 0 );
+                    hresult = (_d3d_device.Get()->*SetShaderConstantI)( start_register, (const int*)data_ptr, register_count );
+                    break;
+                case xl7::graphics::shaders::ConstantType::Bool:
+                    static_assert( sizeof(BOOL) == 4 );
+                    assert( constant_mapping.shader_offset % 16 == 0 );
+                    assert( constant_mapping.padded_size % 4 == 0 );
+                    hresult = (_d3d_device.Get()->*SetShaderConstantB)( start_register, (const BOOL*)data_ptr, register_count );
+                    break;
+                default:
+                    assert( false );
+                } // switch constant type
+
+                if ( FAILED(hresult) )
+                {
+                    LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::SetShaderConstant") ) );
+                    return false;
+                }
+            } // for each constant mapping
+        } // for each constant buffer (mapping)
+
+
+        return true;
+    }
+
+    /**
+     * Transfers the current texture/sampler states for the indirectly/implicitly
+     * specified shader to the device if necessary.
      */
     bool RenderingContextImpl::_flush_texture_sampler_states(const ResolvedTextureSamplerStates& resolved_texture_sampler_states, HardwareStates::TextureSamplerStates& hardware_texture_sampler_states, unsigned max_stage_count, unsigned stage_base)
     {

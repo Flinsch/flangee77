@@ -45,6 +45,8 @@ namespace shaders {
      */
     bool PixelShaderImpl::_dispose_impl()
     {
+        static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->_release_d3d_constant_buffers( get_id() );
+
         _d3d_pixel_shader.Reset();
 
         return true;
@@ -116,6 +118,8 @@ namespace shaders {
      */
     bool PixelShaderImpl::_recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ShaderCode& bytecode_out)
     {
+        static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->_release_d3d_constant_buffers( get_id() );
+
         xl7::graphics::shaders::ShaderCode hlsl_code( _desc.language, _data );
         assert( hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel );
 

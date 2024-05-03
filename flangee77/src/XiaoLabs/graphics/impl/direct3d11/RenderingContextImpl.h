@@ -5,6 +5,8 @@
 
 #include "./prerequisites.h"
 
+#include "./shaders/D3DConstantBufferWrapper.h"
+
 
 
 namespace xl7 {
@@ -42,9 +44,16 @@ private:
             ID3D11SamplerState* sampler_states[ pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS ];
         };
 
+        struct AbstractShaderStates
+            : public TextureSamplerStates
+        {
+            shaders::D3DConstantBufferWrapper* constant_buffer_wrappers[ pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS ];
+            ID3D11Buffer* constant_buffers[ pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS ];
+        };
+
         template <class TD3D11Shader>
         struct ShaderStates
-            : public TextureSamplerStates
+            : public AbstractShaderStates
         {
             TD3D11Shader* shader;
         };
@@ -62,7 +71,7 @@ private:
         Color blend_factor;
 
         HardwareStates();
-    } hardware_states;
+    };
 
 
 
@@ -109,6 +118,11 @@ private:
      * The Direct3D 11 (standard) depth/stencil view interface.
      */
     wrl::ComPtr<ID3D11DepthStencilView> _d3d_depth_stencil_view;
+
+private:
+    HardwareStates hardware_states;
+
+    std::vector<shaders::D3DConstantBufferWrapper*> _temp_d3d_constant_buffer_wrappers;
 
 
 
@@ -164,17 +178,35 @@ private:
     // #############################################################################
 private:
     /**
-     * Transfers the current states to the device if necessary.
+     * Transfers the current render target states to the device if necessary.
      */
     bool _flush_target_states(const ResolvedTargetStates& resolved_draw_states);
 
     /**
-     * Transfers the current states to the device if necessary.
+     * Transfers all current draw states to the device if necessary.
      */
     bool _flush_draw_states(const ResolvedDrawStates& resolved_draw_states);
 
     /**
-     * Transfers the current states to the device if necessary.
+     * Gathers/prepares the current states for the indirectly/implicitly
+     * specified shader.
+     */
+    bool _prepare_shader_constant_states(const ResolvedAbstractShaderStates& resolved_shader_states, HardwareStates::AbstractShaderStates& hardware_shader_states);
+
+    /**
+     * Transfers the prepared constant buffer states to the device if necessary.
+     */
+    bool _flush_temp_constant_buffer_data();
+
+    /**
+     * Transfers the prepared constant buffer states for the indirectly/implicitly
+     * specified shader to the device if necessary.
+     */
+    bool _flush_constant_buffer_states(HardwareStates::AbstractShaderStates& hardware_shader_states, void (ID3D11DeviceContextN::*SetConstantBuffers)(unsigned, unsigned, ID3D11Buffer*const*));
+
+    /**
+     * Transfers the current texture/samper states for the indirectly/implicitly
+     * specified shader to the device if necessary.
      */
     bool _flush_texture_sampler_states(const ResolvedTextureSamplerStates& resolved_texture_sampler_states, HardwareStates::TextureSamplerStates& hardware_texture_sampler_states, void (ID3D11DeviceContextN::*SetShaderResources)(unsigned, unsigned, ID3D11ShaderResourceView*const*), void (ID3D11DeviceContextN::*SetSamplers)(unsigned, unsigned, ID3D11SamplerState*const*));
 

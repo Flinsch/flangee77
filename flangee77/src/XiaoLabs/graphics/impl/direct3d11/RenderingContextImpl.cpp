@@ -129,7 +129,10 @@ namespace direct3d11 {
      */
     bool RenderingContextImpl::_begin_scene_impl()
     {
-        // Nothing to do here?
+        // 
+        _temp_d3d_constant_buffer_wrappers.clear();
+
+        // Nothing (else) to do here?
 
         return true;
     }
@@ -208,7 +211,7 @@ namespace direct3d11 {
     // #############################################################################
 
     /**
-     * Transfers the current states to the device if necessary.
+     * Transfers the current render target states to the device if necessary.
      */
     bool RenderingContextImpl::_flush_target_states(const ResolvedTargetStates& resolved_target_states)
     {
@@ -250,7 +253,7 @@ namespace direct3d11 {
     }
 
     /**
-     * Transfers the current states to the device if necessary.
+     * Transfers all current draw states to the device if necessary.
      */
     bool RenderingContextImpl::_flush_draw_states(const ResolvedDrawStates& resolved_draw_states)
     {
@@ -347,6 +350,14 @@ namespace direct3d11 {
         }
 
 
+        _prepare_shader_constant_states( resolved_draw_states.vs, hardware_states.vs );
+        _prepare_shader_constant_states( resolved_draw_states.ps, hardware_states.ps );
+
+        _flush_temp_constant_buffer_data();
+
+        _flush_constant_buffer_states( hardware_states.vs, &ID3D11DeviceContextN::VSSetConstantBuffers );
+        _flush_constant_buffer_states( hardware_states.ps, &ID3D11DeviceContextN::PSSetConstantBuffers );
+
         _flush_texture_sampler_states( resolved_draw_states.vs, hardware_states.vs, &ID3D11DeviceContextN::VSSetShaderResources, &ID3D11DeviceContextN::VSSetSamplers );
         _flush_texture_sampler_states( resolved_draw_states.ps, hardware_states.ps, &ID3D11DeviceContextN::PSSetShaderResources, &ID3D11DeviceContextN::PSSetSamplers );
 
@@ -427,7 +438,106 @@ namespace direct3d11 {
     }
 
     /**
-     * Transfers the current states to the device if necessary.
+     * Gathers/prepares the current states for the indirectly/implicitly
+     * specified shader.
+     */
+    bool RenderingContextImpl::_prepare_shader_constant_states(const ResolvedAbstractShaderStates& resolved_shader_states, HardwareStates::AbstractShaderStates& hardware_shader_states)
+    {
+        ::memset( hardware_shader_states.constant_buffer_wrappers, 0, sizeof(hardware_shader_states.constant_buffer_wrappers) );
+        if ( !resolved_shader_states.abstract_shader )
+            return true;
+
+        auto constant_buffer_wrappers = static_cast<RenderingDeviceImpl*>( get_rendering_device() )->_find_or_create_d3d_constant_buffers( resolved_shader_states.abstract_shader->get_id() );
+
+        for ( unsigned mapping_index = 0; mapping_index < resolved_shader_states.constant_buffer_count; ++mapping_index )
+        {
+            auto* constant_buffer = resolved_shader_states.constant_buffers[ mapping_index ];
+            if ( !constant_buffer )
+                continue;
+            auto* constant_buffer_mapping = resolved_shader_states.constant_buffer_mappings[ mapping_index ];
+            assert( constant_buffer_mapping );
+
+            for ( const auto& constant_mapping : constant_buffer_mapping->constant_mappings )
+            {
+                assert( constant_mapping.slot_index < pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS );
+                if ( static_cast<size_t>( constant_mapping.slot_index ) >= constant_buffer_wrappers.size() )
+                {
+                    assert( false );
+                    continue;
+                }
+
+                shaders::D3DConstantBufferWrapper* d3d_constant_buffer_wrapper = constant_buffer_wrappers[ constant_mapping.slot_index ];
+                assert( d3d_constant_buffer_wrapper );
+                if ( !d3d_constant_buffer_wrapper )
+                    continue;
+
+                size_t temp_index = _temp_d3d_constant_buffer_wrappers.size();
+                for ( size_t i = 0; i < _temp_d3d_constant_buffer_wrappers.size(); ++i )
+                    if ( d3d_constant_buffer_wrapper == _temp_d3d_constant_buffer_wrappers[ i ] )
+                        temp_index = i;
+                if ( temp_index == _temp_d3d_constant_buffer_wrappers.size() )
+                    _temp_d3d_constant_buffer_wrappers.push_back( d3d_constant_buffer_wrapper );
+
+                d3d_constant_buffer_wrapper->update( constant_buffer->get_data(), constant_mapping );
+
+                hardware_shader_states.constant_buffer_wrappers[ constant_mapping.slot_index ] = d3d_constant_buffer_wrapper;
+            } // for each constant mapping
+        } // for each constant buffer (mapping)
+
+
+        return true;
+    }
+
+    /**
+     * Transfers the prepared constant buffer states to the device if necessary.
+     */
+    bool RenderingContextImpl::_flush_temp_constant_buffer_data()
+    {
+        for ( shaders::D3DConstantBufferWrapper* d3d_constant_buffer_wrapper : _temp_d3d_constant_buffer_wrappers )
+            d3d_constant_buffer_wrapper->flush();
+
+
+        return true;
+    }
+
+    /**
+     * Transfers the prepared constant buffer states for the indirectly/implicitly
+     * specified shader to the device if necessary.
+     */
+    bool RenderingContextImpl::_flush_constant_buffer_states(HardwareStates::AbstractShaderStates& hardware_shader_states, void (ID3D11DeviceContextN::*SetConstantBuffers)(unsigned, unsigned, ID3D11Buffer*const*))
+    {
+        unsigned slot_count = 0;
+
+        const unsigned max_constant_buffer_slot_count = get_rendering_device()->get_capabilities().max_constant_buffer_slot_count;
+        for ( unsigned slot_index = 0; slot_index < max_constant_buffer_slot_count; ++slot_index )
+        {
+            auto* constant_buffer_wrapper = hardware_shader_states.constant_buffer_wrappers[ slot_index ];
+            ID3D11Buffer* d3d_constant_buffer;
+            if ( constant_buffer_wrapper ) {
+                d3d_constant_buffer = constant_buffer_wrapper->get_raw_d3d_constant_buffer();
+            } else {
+                d3d_constant_buffer = nullptr;
+            }
+
+            if ( d3d_constant_buffer != hardware_shader_states.constant_buffers[ slot_index ] )
+            {
+                slot_count = slot_index + 1;
+                hardware_shader_states.constant_buffers[ slot_index ] = d3d_constant_buffer;
+            }
+        } // for each constant buffer slot
+
+        if ( slot_count > 0 )
+        {
+            (_d3d_device_context.Get()->*SetConstantBuffers)( 0, slot_count, &hardware_shader_states.constant_buffers[0] );
+        }
+
+
+        return true;
+    }
+
+    /**
+     * Transfers the current texture/samper states for the indirectly/implicitly
+     * specified shader to the device if necessary.
      */
     bool RenderingContextImpl::_flush_texture_sampler_states(const ResolvedTextureSamplerStates& resolved_texture_sampler_states, HardwareStates::TextureSamplerStates& hardware_texture_sampler_states, void (ID3D11DeviceContextN::*SetShaderResources)(unsigned, unsigned, ID3D11ShaderResourceView*const*), void (ID3D11DeviceContextN::*SetSamplers)(unsigned, unsigned, ID3D11SamplerState*const*))
     {

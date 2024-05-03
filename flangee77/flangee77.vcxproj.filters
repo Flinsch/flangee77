@@ -600,6 +600,9 @@
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantMapping.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DConstantBufferWrapper.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -1020,6 +1023,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\shaders\ConstantBufferMapping.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DConstantBufferWrapper.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

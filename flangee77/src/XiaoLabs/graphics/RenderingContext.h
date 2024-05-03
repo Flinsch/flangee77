@@ -49,6 +49,7 @@ protected:
         unsigned constant_buffer_count;
         const shaders::ConstantBuffer* constant_buffers[ pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS ];
         const shaders::ConstantBufferMapping* constant_buffer_mappings[ pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS ];
+        const shaders::Shader* abstract_shader;
     };
 
     template <class TShader>

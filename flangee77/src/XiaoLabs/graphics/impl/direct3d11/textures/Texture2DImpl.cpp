@@ -152,6 +152,7 @@ namespace textures {
     bool Texture2DImpl::_update_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider, bool discard, bool no_overwrite)
     {
         auto d3d_device_context = static_cast<RenderingContextImpl*>( GraphicsSystem::instance().get_rendering_device()->get_primary_context() )->get_raw_d3d_device_context();
+        assert( d3d_device_context );
 
         if ( _desc.usage == resources::ResourceUsage::Dynamic )
         {

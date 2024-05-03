@@ -50,9 +50,15 @@ private:
             states::D3DSamplerStateTypeValues sampler_state_type_values[ pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS ];
         };
 
+        struct AbstractShaderStates
+            : public TextureSamplerStates
+        {
+            
+        };
+
         template <class TDirect3DShader9>
         struct ShaderStates
-            : public TextureSamplerStates
+            : public AbstractShaderStates
         {
             TDirect3DShader9* shader;
         };
@@ -124,6 +130,8 @@ private:
     std::unordered_map<shared::meshes::VertexBufferBinding, wrl::ComPtr<IDirect3DVertexDeclaration9>> _d3d_vertex_declarations_by_binding;
     std::unordered_map<shared::meshes::ComposedVertexLayout, wrl::ComPtr<IDirect3DVertexDeclaration9>> _d3d_vertex_declarations_by_layout;
 
+    cl7::byte_vector _temp_constant_data;
+
 
 
     // #############################################################################
@@ -178,17 +186,24 @@ private:
     // #############################################################################
 private:
     /**
-     * Transfers the current states to the device if necessary.
+     * Transfers the current render target states to the device if necessary.
      */
     bool _flush_target_states(const ResolvedTargetStates& resolved_draw_states);
 
     /**
-     * Transfers the current states to the device if necessary.
+     * Transfers all current draw states to the device if necessary.
      */
     bool _flush_draw_states(const ResolvedDrawStates& resolved_draw_states);
 
     /**
-     * Transfers the current states to the device if necessary.
+     * Transfers the current shader constant states for the indirectly/implicitly
+     * specified shader to the device if necessary.
+     */
+    bool _flush_shader_constant_states(const ResolvedAbstractShaderStates& resolved_shader_states, HardwareStates::AbstractShaderStates& hardware_shader_states, HRESULT (IDirect3DDevice9::*SetShaderConstantF)(UINT, const float*, UINT), HRESULT (IDirect3DDevice9::*SetShaderConstantI)(UINT, const int*, UINT), HRESULT (IDirect3DDevice9::*SetShaderConstantB)(UINT, const BOOL*, UINT));
+
+    /**
+     * Transfers the current texture/sampler states for the indirectly/implicitly
+     * specified shader to the device if necessary.
      */
     bool _flush_texture_sampler_states(const ResolvedTextureSamplerStates& resolved_texture_sampler_states, HardwareStates::TextureSamplerStates& hardware_texture_sampler_states, unsigned max_stage_count, unsigned stage_base);
 
