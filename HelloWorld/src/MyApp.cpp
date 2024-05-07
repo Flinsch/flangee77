@@ -286,7 +286,7 @@ namespace helloworld {
         if ( !fps )
             fps = 60;
         static float a = 0.0f;
-        a += 2.0f * 3.1414927f / static_cast<float>( fps );
+        a += 2.0f * 3.1415927f / static_cast<float>( fps );
         float sn = ::sinf( a ) * 0.01f;
         float cs = ::cosf( a ) * 0.01f;
 
