@@ -205,11 +205,12 @@ namespace logging {
         {
             switch ( chr )
             {
+            case TEXT('"'):     ss << TEXT("&quot;");   break;
             case TEXT('&'):     ss << TEXT("&amp;");    break;
+            case TEXT('\''):    ss << TEXT("&#39;");    break;
             case TEXT('<'):     ss << TEXT("&lt;");     break;
             case TEXT('>'):     ss << TEXT("&gt;");     break;
-            case TEXT('"'):     ss << TEXT("&quot;");   break;
-            case TEXT('\''):    ss << TEXT("&#39;");    break;
+            case TEXT('\u00a0'):ss << TEXT("&nbsp;");   break;
             default:
                 ss << chr;
             }
@@ -259,22 +260,31 @@ namespace logging {
     {
 #pragma message( "Consider using std::source_location as a better alternative to __FILE__, __LINE__, etc." )
 
-        constexpr std::string_view file_path_view{ __FILE__ };
-        constexpr size_t file_path_skip = file_path_view.find( "flangee77" );
-        static_assert( file_path_skip != file_path_view.npos );
-
-        const cl7::string_view function_name_view{ function_name };
-        const size_t function_name_skip = function_name_view.rfind( TEXT("::") );
-
         cl7::osstream ss;
         ss << TEXT("    <div class=\"file-path\">\n");
-        ss << TEXT("      ") << _escape( file_path + file_path_skip ) << TEXT("\n");
+        if ( file_path )
+        {
+            constexpr std::string_view file_path_view{ __FILE__ };
+            constexpr size_t file_path_skip = file_path_view.find( "flangee77" );
+            static_assert( file_path_skip != file_path_view.npos );
+
+            ss << TEXT("      ") << _escape( file_path + file_path_skip ) << TEXT("\n");
+        }
         ss << TEXT("    </div>\n");
         ss << TEXT("    <div class=\"line-number\">\n");
-        ss << TEXT("      ") << ( line_number ) << TEXT("\n");
+        if ( file_path )
+        {
+            ss << TEXT("      ") << ( line_number ) << TEXT("\n");
+        }
         ss << TEXT("    </div>\n");
         ss << TEXT("    <div class=\"function-name\">\n");
-        ss << TEXT("      ") << _escape( function_name_skip != function_name_view.npos ? function_name_view.substr( function_name_skip + 2 ) : function_name ) << TEXT("\n");
+        if ( function_name )
+        {
+            const cl7::string_view function_name_view{ function_name };
+            const size_t function_name_skip = function_name_view.rfind( TEXT("::") );
+
+            ss << TEXT("      ") << _escape( function_name_skip != function_name_view.npos ? function_name_view.substr( function_name_skip + 2 ) : function_name ) << TEXT("\n");
+        }
         ss << TEXT("    </div>\n");
 
         _write_raw( ss.str() );
