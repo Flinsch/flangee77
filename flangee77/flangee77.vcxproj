@@ -199,6 +199,13 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\CoreLabs\profiling.h" />
+    <ClInclude Include="src\CoreLabs\profiling\Profiler.h" />
+    <ClInclude Include="src\CoreLabs\profiling\Registry.h" />
+    <ClInclude Include="src\CoreLabs\profiling\Sample.h" />
+    <ClInclude Include="src\CoreLabs\profiling\SampleHandler.h" />
+    <ClInclude Include="src\CoreLabs\profiling\StandardRegistry.h" />
+    <ClInclude Include="src\CoreLabs\profiling\Stopwatch.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DConstantBufferWrapper.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\ConstantBufferImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DShaderReflection.h" />
@@ -397,6 +404,11 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\pipeline\VertexShaderStage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\CoreLabs\profiling\Profiler.cpp" />
+    <ClCompile Include="src\CoreLabs\profiling\Registry.cpp" />
+    <ClCompile Include="src\CoreLabs\profiling\SampleHandler.cpp" />
+    <ClCompile Include="src\CoreLabs\profiling\StandardRegistry.cpp" />
+    <ClCompile Include="src\CoreLabs\profiling\Stopwatch.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DConstantBufferWrapper.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\ConstantBufferImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DShaderReflection.cpp" />

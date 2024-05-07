@@ -6,6 +6,7 @@
 #include <CoreLabs/creational/Singleton.h>
 #include <CoreLabs/system/CPUID.h>
 #include <CoreLabs/system/MemoryStatus.h>
+#include <CoreLabs/profiling.h>
 //#include <CoreLabs/logging/FileLogHandler.h>
 #include <CoreLabs/logging/HtmlLogHandler.h>
 #include <CoreLabs/logging.h>
@@ -142,6 +143,10 @@ namespace pl7 {
      */
     bool Application::_shutdown()
     {
+        // "Dump" the runtime performance profile.
+        LOG_TYPE( TEXT("Runtime performance profile:"), cl7::logging::LogType::Caption );
+        cl7::profiling::StandardRegistry::instance().dump( &cl7::logging::StandardLogger::instance() );
+
         // Perform "custom" shutdown.
         bool ok = _shutdown_impl();
 
@@ -185,10 +190,17 @@ namespace pl7 {
 
             
 
+            // Start the stopwatch.
+            cl7::profiling::Stopwatch stopwatch{ true };
+
             // Perform application loop iteration.
             _loop();
 
-            
+            // Stop the stopwatch.
+            stopwatch.stop();
+
+            // Update the profiler.
+            cl7::profiling::StandardRegistry::instance().end_frame_and_update_stats( stopwatch.calculate_elapsed_usecs() );
         } // while ( true )
 
         return true;
@@ -203,6 +215,8 @@ namespace pl7 {
      */
     void Application::_loop()
     {
+        cl7::profiling::Profiler profiler( "Application::_loop" );
+
         // We (first) render the complete scene (without "flipping" the swap chain),
         // (second) perform CPU calculations, and (third) present the scene (now by
         // "flipping" the swap chain). Having CPU calculations between rendering and
@@ -220,6 +234,8 @@ namespace pl7 {
      */
     void Application::_before_render()
     {
+        cl7::profiling::Profiler profiler( "Application::_before_render" );
+
         // Update resources etc.?
 
         //xl7::graphics::rendering_device()->clear_buffers();
@@ -233,6 +249,8 @@ namespace pl7 {
      */
     void Application::_render()
     {
+        cl7::profiling::Profiler profiler( "Application::_render" );
+
         _render_impl();
 
         // Draw FPS etc.?
@@ -243,6 +261,8 @@ namespace pl7 {
      */
     void Application::_after_render()
     {
+        cl7::profiling::Profiler profiler( "Application::after_render" );
+
         _after_render_impl();
 
         xl7::graphics::primary_context()->end_scene();
@@ -253,6 +273,8 @@ namespace pl7 {
      */
     void Application::_present()
     {
+        cl7::profiling::Profiler profiler( "Application::_present" );
+
         xl7::graphics::rendering_device()->present();
     }
 
@@ -261,6 +283,8 @@ namespace pl7 {
      */
     void Application::_move()
     {
+        cl7::profiling::Profiler profiler( "Application::_move" );
+
         // Update input devices etc.?
 
         _move_impl();

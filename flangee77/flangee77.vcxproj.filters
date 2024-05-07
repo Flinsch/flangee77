@@ -603,6 +603,27 @@
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DConstantBufferWrapper.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\CoreLabs\profiling\Sample.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CoreLabs\profiling\Registry.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CoreLabs\profiling\SampleHandler.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CoreLabs\profiling\Profiler.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CoreLabs\profiling\StandardRegistry.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CoreLabs\profiling.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CoreLabs\profiling\Stopwatch.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -1026,6 +1047,21 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DConstantBufferWrapper.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CoreLabs\profiling\Registry.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CoreLabs\profiling\SampleHandler.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CoreLabs\profiling\Profiler.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CoreLabs\profiling\StandardRegistry.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CoreLabs\profiling\Stopwatch.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
