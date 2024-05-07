@@ -282,11 +282,11 @@ namespace helloworld {
     {
         cl7::profiling::Profiler profiler( "MyApp::_render_impl" );
 
-        unsigned fps = static_cast<float>( xl7::graphics::graphics_system().get_config().video.display_mode.refresh_rate );
+        unsigned fps = xl7::graphics::graphics_system().get_config().video.display_mode.refresh_rate;
         if ( !fps )
             fps = 60;
         static float a = 0.0f;
-        a += 2.0f * 3.1414927f / fps;
+        a += 2.0f * 3.1414927f / static_cast<float>( fps );
         float sn = ::sinf( a ) * 0.01f;
         float cs = ::cosf( a ) * 0.01f;
 
