@@ -261,7 +261,7 @@ namespace pl7 {
      */
     void Application::_after_render()
     {
-        cl7::profiling::Profiler profiler( "Application::after_render" );
+        cl7::profiling::Profiler profiler( "Application::_after_render" );
 
         _after_render_impl();
 
