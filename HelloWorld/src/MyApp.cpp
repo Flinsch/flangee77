@@ -4,6 +4,8 @@
     #include <XiaoLabs/graphics/images/TargaImageHandler.h>
     #include <XiaoLabs/graphics/images/PngImageHandler.h>
 
+#include <MathLabs/constants.h>
+
 #include <CoreLabs/filesystem.h>
 
 #include <CoreLabs/profiling.h>
@@ -286,7 +288,7 @@ namespace helloworld {
         if ( !fps )
             fps = 60;
         static float a = 0.0f;
-        a += 2.0f * 3.1415927f / static_cast<float>( fps );
+        a += ml7::constants<>::pi2 / static_cast<float>( fps );
         float sn = ::sinf( a ) * 0.01f;
         float cs = ::cosf( a ) * 0.01f;
 

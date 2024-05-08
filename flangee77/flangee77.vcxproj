@@ -206,6 +206,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\CoreLabs\profiling\SampleHandler.h" />
     <ClInclude Include="src\CoreLabs\profiling\StandardRegistry.h" />
     <ClInclude Include="src\CoreLabs\profiling\Stopwatch.h" />
+    <ClInclude Include="src\MathLabs\constants.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DConstantBufferWrapper.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\ConstantBufferImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DShaderReflection.h" />
