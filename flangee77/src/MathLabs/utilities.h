@@ -15,6 +15,7 @@ namespace utilities {
      * Returns the less value of two given values.
      */
     template <typename T>
+        requires( std::is_arithmetic_v<T> )
     constexpr T min2(T a, T b)
     {
         if ( a <= b )
@@ -26,6 +27,7 @@ namespace utilities {
      * Returns the greater value of two given values.
      */
     template <typename T>
+        requires( std::is_arithmetic_v<T> )
     constexpr T max2(T a, T b)
     {
         if ( a >= b )
@@ -37,6 +39,7 @@ namespace utilities {
     * Returns the smallest value of three given values.
     */
     template <typename T>
+        requires( std::is_arithmetic_v<T> )
     constexpr T min3(T a, T b, T c)
     {
         T m = a;
@@ -49,6 +52,7 @@ namespace utilities {
     * Returns the greatest value of three given values.
     */
     template <typename T>
+        requires( std::is_arithmetic_v<T> )
     constexpr T max3(T a, T b, T c)
     {
         T m = a;
@@ -62,6 +66,7 @@ namespace utilities {
      * Clamps the given value to lie within the range [min; max].
      */
     template <typename T>
+        requires( std::is_arithmetic_v<T> )
     constexpr T clamp(T x, T min, T max)
     {
         if ( x <= min ) return min;

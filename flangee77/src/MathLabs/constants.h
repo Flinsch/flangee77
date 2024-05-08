@@ -16,7 +16,7 @@ struct constants
 {
 
     /**
-     * The mathematical constant Pi approximately equal to 3.14159.
+     * The mathematical constant Pi, approximately equal to 3.14159.
      */
     static constexpr T pi = T(3.141592653589793);
 
@@ -31,7 +31,7 @@ struct constants
     static constexpr T pi05 = T(1.5707963267948966);
 
     /**
-     * The mathematical constant e (Euler's number) approximately equal to 2.71828.
+     * The mathematical constant e (Euler's number), approximately equal to 2.71828.
      */
     static constexpr T e = T(2.718281828459045);
 
