@@ -38,7 +38,7 @@ namespace shaders {
      * (Re)compiles the shader code. This tends to result in the resource having to
      * be completely recreated in the background.
      */
-    bool Shader::recompile(const MacroDefinitions& macro_definitions)
+    bool Shader::recompile(const CompileOptions& compile_options)
     {
         if ( !_check_is_usable() )
             return false;
@@ -55,7 +55,7 @@ namespace shaders {
         // so we'll just delete them all "across the board".
         _constant_buffer_mappings_by_constant_buffer_id.clear();
 
-        if ( !_recompile_impl( macro_definitions, _bytecode ) )
+        if ( !_recompile_impl( compile_options, _bytecode ) )
         {
             LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be recompiled.") );
             return false;
@@ -200,6 +200,12 @@ namespace shaders {
             return false;
         }
 
+        if ( is_recompilable() && _cascade_entry_point( code_data_provider.get_compile_options() ).empty() )
+        {
+            LOG_ERROR( TEXT("The entry point for the recompilable ") + get_typed_identifier_string() + TEXT(" was not specified.") );
+            return false;
+        }
+
         return true;
     }
 
@@ -237,6 +243,27 @@ namespace shaders {
     // #############################################################################
     // Helpers
     // #############################################################################
+
+    /**
+     * Returns the effective name of the entry point for (re)compiling the shader.
+     */
+    cl7::astring Shader::_cascade_entry_point(const CompileOptions& compile_options) const
+    {
+        if ( !_desc.entry_point.empty() )
+            return _desc.entry_point;
+
+        switch ( _type )
+        {
+        case Type::VertexShader:
+            return cl7::astring(compile_options.default_vertex_entry_point);
+        case Type::PixelShader:
+            return cl7::astring(compile_options.default_pixel_entry_point);
+        default:
+            assert( false );
+        }
+
+        return {};
+    }
 
     /**
      * Performs a "reflection" on the (compiled) shader bytecode to determine

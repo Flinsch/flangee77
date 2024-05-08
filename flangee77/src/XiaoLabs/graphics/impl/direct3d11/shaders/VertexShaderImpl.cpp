@@ -97,33 +97,33 @@ namespace shaders {
     {
         const cl7::Version& version = GraphicsSystem::instance().get_rendering_device()->get_capabilities().shaders.vertex_shader_version;
         const cl7::astring target = "vs_" + cl7::to_astring(version.major) + "_" + cl7::to_astring(version.minor);
-        const cl7::astring entry_point = _desc.entry_point.empty() ? "mainVertex" : _desc.entry_point;
+        const cl7::astring entry_point = _cascade_entry_point( code_data_provider.get_compile_options() );
 
         const xl7::graphics::shaders::ShaderCode& hlsl_code = code_data_provider.get_shader_code();
         assert( hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel );
 
-        bytecode_out = shared::shaders::D3DShaderCompiler().compile_hlsl_code( hlsl_code, TEXT(""), code_data_provider.get_macro_definitions(), entry_point, target );
+        bytecode_out = shared::shaders::D3DShaderCompiler().compile_hlsl_code( hlsl_code, TEXT(""), code_data_provider.get_compile_options(), entry_point, target );
         if ( bytecode_out.get_code_data().empty() )
         {
             LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be compiled.") );
             return false;
         }
 
-        return _acquire_precompiled_impl( xl7::graphics::shaders::CodeDataProvider( &bytecode_out, &code_data_provider.get_macro_definitions() ) );
+        return _acquire_precompiled_impl( xl7::graphics::shaders::CodeDataProvider( &bytecode_out, &code_data_provider.get_compile_options() ) );
     }
 
     /**
      * Recompiles the shader code. This tends to result in the resource having to be
      * completely recreated in the background.
      */
-    bool VertexShaderImpl::_recompile_impl(const xl7::graphics::shaders::MacroDefinitions& macro_definitions, xl7::graphics::shaders::ShaderCode& bytecode_out)
+    bool VertexShaderImpl::_recompile_impl(const xl7::graphics::shaders::CompileOptions& compile_options, xl7::graphics::shaders::ShaderCode& bytecode_out)
     {
         static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->_release_d3d_constant_buffers( get_id() );
 
         xl7::graphics::shaders::ShaderCode hlsl_code( _desc.language, _data );
         assert( hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel );
 
-        return _acquire_recompilable_impl( xl7::graphics::shaders::CodeDataProvider( &hlsl_code, &macro_definitions ), bytecode_out );
+        return _acquire_recompilable_impl( xl7::graphics::shaders::CodeDataProvider( &hlsl_code, &compile_options ), bytecode_out );
     }
 
     /**

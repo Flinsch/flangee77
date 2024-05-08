@@ -5,7 +5,7 @@
 
 #include "./ShaderCode.h"
 #include "./CodeDataProvider.h"
-#include "./MacroDefinitions.h"
+#include "./CompileOptions.h"
 #include "./ReflectionResult.h"
 #include "./ConstantBufferMapping.h"
 
@@ -151,7 +151,7 @@ public:
      * Recompiles the shader code. This tends to result in the resource having to be
      * completely recreated in the background.
      */
-    bool recompile(const MacroDefinitions& macro_definitions);
+    bool recompile(const CompileOptions& compile_options);
 
     /**
      * Finds or creates the constant buffer mapping for the specified constant
@@ -234,7 +234,7 @@ private:
      * Recompiles the shader code. This tends to result in the resource having to be
      * completely recreated in the background.
      */
-    virtual bool _recompile_impl(const MacroDefinitions& macro_definitions, ShaderCode& bytecode_out) = 0;
+    virtual bool _recompile_impl(const CompileOptions& compile_options, ShaderCode& bytecode_out) = 0;
 
     /**
      * Performs a "reflection" on the (compiled) shader bytecode to determine
@@ -248,6 +248,11 @@ private:
     // Helpers
     // #############################################################################
 protected:
+    /**
+     * Returns the effective name of the entry point for (re)compiling the shader.
+     */
+    cl7::astring _cascade_entry_point(const CompileOptions& compile_options) const;
+
     /**
      * Performs a "reflection" on the (compiled) shader bytecode to determine
      * parameter declarations etc. and validates the result.

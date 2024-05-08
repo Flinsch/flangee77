@@ -212,6 +212,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DShaderReflection.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\ConstantBufferImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\shaders\D3DShaderReflection.h" />
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\CompileOptions.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantBuffer.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantBufferDeclaration.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ConstantBufferLayout.h" />
@@ -299,7 +300,6 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\CoreLabs\filesystem.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\shared\shaders\D3DShaderCompiler.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\shared\errors.h" />
-    <ClInclude Include="src\XiaoLabs\graphics\shaders\MacroDefinitions.h" />
     <ClInclude Include="src\XiaoLabs\graphics\shaders\ShaderCode.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\meshes\IndexBufferImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\meshes\VertexBufferImpl.h" />

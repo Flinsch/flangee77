@@ -136,11 +136,11 @@ namespace shaders {
      * The file path is also used to resolve any #include directives. If an error
      * occurs, an object with an "unknown" language and empty data is returned.
      */
-    xl7::graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const cl7::string& file_path, const xl7::graphics::shaders::MacroDefinitions& macro_definitions, const cl7::astring& entry_point, const cl7::astring& target)
+    xl7::graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const cl7::string& file_path, const xl7::graphics::shaders::CompileOptions& compile_options, const cl7::astring& entry_point, const cl7::astring& target)
     {
         cl7::astring source_code = Include::read_source_code( file_path );
 
-        return compile_hlsl_code( { xl7::graphics::shaders::ShaderCode::Language::HighLevel, cl7::byte_view( reinterpret_cast<std::byte*>( source_code.data() ), source_code.size() ) }, Include::directory( file_path ), macro_definitions, entry_point, target );
+        return compile_hlsl_code( { xl7::graphics::shaders::ShaderCode::Language::HighLevel, cl7::byte_view( reinterpret_cast<std::byte*>( source_code.data() ), source_code.size() ) }, Include::directory( file_path ), compile_options, entry_point, target );
     }
 
     /**
@@ -148,7 +148,7 @@ namespace shaders {
      * path is used to resolve any #include directives. If an error occurs, an
      * object with an "unknown" language and empty data is returned.
      */
-    xl7::graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const xl7::graphics::shaders::ShaderCode& hlsl_code, const cl7::string& include_path, const xl7::graphics::shaders::MacroDefinitions& macro_definitions, const cl7::astring& entry_point, const cl7::astring& target)
+    xl7::graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const xl7::graphics::shaders::ShaderCode& hlsl_code, const cl7::string& include_path, const xl7::graphics::shaders::CompileOptions& compile_options, const cl7::astring& entry_point, const cl7::astring& target)
     {
         if ( hlsl_code.get_language() != xl7::graphics::shaders::ShaderCode::Language::HighLevel )
         {
@@ -177,8 +177,8 @@ namespace shaders {
         Include include( include_path );
 
         std::vector<D3D_SHADER_MACRO> macros;
-        macros.reserve( macro_definitions.size() + 1 );
-        for ( const auto& p : macro_definitions )
+        macros.reserve( compile_options.macro_definitions.size() + 1 );
+        for ( const auto& p : compile_options.macro_definitions )
             macros.push_back( { p.first.c_str(), p.second.c_str() } );
         macros.push_back( { nullptr, nullptr } );
 

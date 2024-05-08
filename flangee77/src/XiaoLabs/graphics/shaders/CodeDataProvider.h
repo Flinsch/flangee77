@@ -4,7 +4,7 @@
 #include "../../resources/DefaultDataProvider.h"
 
 #include "./ShaderCode.h"
-#include "./MacroDefinitions.h"
+#include "./CompileOptions.h"
 
 
 
@@ -25,7 +25,7 @@ public:
     /**
      * Explicit constructor.
      */
-    CodeDataProvider(const ShaderCode* shader_code, const MacroDefinitions* macro_definitions);
+    CodeDataProvider(const ShaderCode* shader_code, const CompileOptions* compile_options);
 
     /**
      * Destructor.
@@ -40,8 +40,8 @@ public:
 public:
     /** A reference to the shader code. */
     const ShaderCode& _shader_code;
-    /** A reference to the macro definitions. */
-    const MacroDefinitions& _macro_definitions;
+    /** A reference to the compile options. */
+    const CompileOptions& _compile_options;
 
 
 
@@ -51,8 +51,8 @@ public:
 public:
     /** Returns a reference to the shader code. */
     const ShaderCode& get_shader_code() const { return _shader_code; }
-    /** Returns a reference to the macro definitions. */
-    const MacroDefinitions& get_macro_definitions() const { return _macro_definitions; }
+    /** Returns a reference to the compile options. */
+    const CompileOptions& get_compile_options() const { return _compile_options; }
 
     /** Returns the language in which the code is given. */
     ShaderCode::Language get_language() const { return _shader_code.get_language(); }

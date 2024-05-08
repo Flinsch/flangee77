@@ -294,9 +294,6 @@
     <ClInclude Include="src\CoreLabs\filesystem.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\XiaoLabs\graphics\shaders\MacroDefinitions.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="src\XiaoLabs\resources\ResourceUsage.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -625,6 +622,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\MathLabs\constants.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XiaoLabs\graphics\shaders\CompileOptions.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
