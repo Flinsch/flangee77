@@ -19,12 +19,12 @@ struct CompileOptions
 
     typedef std::map<cl7::astring, cl7::astring> MacroDefinitions;
 
-    /** . */
+    /** The macro definitions for (re)compiling shaders. */
     MacroDefinitions macro_definitions;
 
-    /** The default entry point for vertex shaders. */
+    /** The default entry point for (re)compiling vertex shaders. */
     cl7::astring default_vertex_entry_point = "mainVertex";
-    /** The default entry point for pixel shaders. */
+    /** The default entry point for (re)compiling pixel shaders. */
     cl7::astring default_pixel_entry_point = "mainPixel";
 
 }; // struct CompileOptions
