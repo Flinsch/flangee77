@@ -928,6 +928,37 @@ namespace strings {
         return len;
     }
 
+    Encoding detect_encoding(byte_view bys)
+    {
+        const size_t size = bys.size();
+
+        if ( size == 0 )
+            return Encoding::Unknown;
+
+        u32string u32s;
+
+        if ( size % 4 == 0 )
+        {
+            if ( check_utf32( to_utf32_unchecked( bys ) ) )
+                return Encoding::UTF32;
+        }
+
+        if ( size % 2 == 0 )
+        {
+            if ( parse_utf16( to_utf16_unchecked( bys ), u32s ) )
+                return Encoding::UTF16;
+        }
+
+        // We check ASCII before UTF-8 because ASCII is a subset of UTF-8.
+        if ( check_ascii( to_ascii( bys ) ) )
+            return Encoding::ASCII;
+
+        if ( parse_utf8( to_utf8_unchecked( bys ), u32s ) )
+            return Encoding::UTF8;
+
+        return Encoding::Latin1;
+    }
+
 
 
     string to_hex(unsigned long long val, char_type ca, unsigned pad_zeros)

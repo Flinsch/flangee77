@@ -12,6 +12,25 @@
 
 
 
+namespace cl7 {
+    template <> inline
+    cl7::string to_string(const cl7::strings::Encoding& encoding)
+    {
+        switch ( encoding )
+        {
+        case cl7::strings::Encoding::ASCII:     return TEXT("\"ASCII\"");
+        case cl7::strings::Encoding::Latin1:    return TEXT("\"Latin-1\"");
+        case cl7::strings::Encoding::UTF8:      return TEXT("\"UTF-8\"");
+        case cl7::strings::Encoding::UTF16:     return TEXT("\"UTF-16\"");
+        case cl7::strings::Encoding::UTF32:     return TEXT("\"UTF-32\"");
+        }
+
+        return TEXT("\"unknown encoding\"");
+    }
+}
+
+
+
 #define CoreLabs_strings_to_ASCII_Latin1_from_UTFx(from, type, prefix) \
 TESTLABS_CASE( TEXT("CoreLabs:  strings:  to ASCII/Latin-1 from " from) ) \
 { \
@@ -232,6 +251,8 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  between UTF-16 and UTF-32") )
 // 
 // size_t utf8_length(u8string_view u8s)
 // size_t utf16_length(u16string_view u16s)
+//
+// Encoding detect_encoding(byte_view bys)
 
 
 
@@ -832,6 +853,36 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::utf16_length(u16string_view)") )
 
         cl7::u16string_view input( reinterpret_cast<const cl7::u16char_type*>( &entry.input_data[0] ) );
         TESTLABS_CHECK_EQ( cl7::strings::utf16_length( input ), entry.expected );
+    }
+}
+
+
+
+TESTLABS_CASE( TEXT("CodeLabs:  strings:  detect_encoding") )
+{
+    struct Entry
+    {
+        cl7::byte_vector input;
+        cl7::strings::Encoding expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { {}, cl7::strings::Encoding::Unknown },
+        { cl7::strings::to_bytes( "ASCII: Oelrueckstossabdaempfung" ), cl7::strings::Encoding::ASCII },
+        { cl7::strings::to_bytes( "Latin1: Ölrückstoßabdämpfung" ), cl7::strings::Encoding::Latin1 },
+        { cl7::strings::to_bytes( u8"UTF-8: Ölrückstoßabdämpfung" ), cl7::strings::Encoding::UTF8 },
+        { cl7::strings::to_bytes( u"UTF-16: Ölrückstoßabdämpfung" ), cl7::strings::Encoding::UTF16 },
+        { cl7::strings::to_bytes( U"UTF-32: Ölrückstoßabdämpfung" ), cl7::strings::Encoding::UTF32 },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    {
+        const auto& input = entry.input;
+        const auto expected = entry.expected;
+
+        auto actual = cl7::strings::detect_encoding( input );
+
+        TESTLABS_CHECK_EQ( actual, expected );
     }
 }
 

@@ -31,6 +31,31 @@ namespace strings {
 
 
 
+    enum class Encoding
+    {
+        Unknown,
+
+        ASCII,
+        Latin1,
+        UTF8,
+        UTF16,
+        UTF32,
+
+#if WCHAR_MAX == UINT16_MAX
+        UTFx = UTF16,
+#elif WCHAR_MAX == UINT32_MAX
+        UTFx = UTF32,
+#endif
+
+#ifdef UNICODE
+        Default = UTFx,
+#else
+        Default = Latin1,
+#endif
+    };
+
+
+
     astring to_ascii(astring_view as);
     astring to_ascii(u8string_view u8s);
     astring to_ascii(u16string_view u16s);
@@ -98,6 +123,8 @@ namespace strings {
     size_t utf8_length(u8string_view u8s);
     /** Calculates the length of the specified UTF-16 string in terms of Unicode code points. */
     size_t utf16_length(u16string_view u16s);
+
+    Encoding detect_encoding(byte_view bys);
 
 
 
