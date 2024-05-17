@@ -627,6 +627,9 @@
     <ClInclude Include="src\XiaoLabs\graphics\shaders\CompileOptions.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\MathLabs\Vector2.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -1065,6 +1068,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\CoreLabs\profiling\Stopwatch.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MathLabs\Vector2.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

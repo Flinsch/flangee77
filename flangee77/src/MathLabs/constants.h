@@ -12,7 +12,7 @@ namespace ml7 {
 
 template <typename T = float>
     requires( std::is_floating_point_v<T> )
-struct constants
+struct constants_
 {
 
     /**
@@ -51,6 +51,10 @@ struct constants
     static constexpr T sqrt3 = T(1.7320508075688773);
 
 }; // struct constants
+
+
+
+typedef constants_<float> constants;
 
 
 

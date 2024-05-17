@@ -16,7 +16,7 @@ namespace meshes {
         : stream_count( 0 )
     {
     }
-    
+
     ComposedVertexLayout::ComposedVertexLayout(const VertexBufferBinding& vertex_buffer_binding)
         : ComposedVertexLayout()
     {

@@ -11,6 +11,7 @@
 #include "./DataLabs/compression.h"
 
 #include "./MathLabs/utilities.h"
+#include "./MathLabs/Vector2.h"
 
 #include "./XiaoLabs/graphics.h"
 
