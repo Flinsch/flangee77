@@ -79,7 +79,7 @@ public:
         }; // struct
 
         /** Array of all three componets. */
-        float data[2];
+        float data[3];
     }; // union
 
 
