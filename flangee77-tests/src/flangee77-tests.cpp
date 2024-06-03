@@ -12,6 +12,7 @@
 
 #include "./MathLabs/utilities.h"
 #include "./MathLabs/Vector2.h"
+#include "./MathLabs/Vector3.h"
 
 #include "./XiaoLabs/graphics.h"
 

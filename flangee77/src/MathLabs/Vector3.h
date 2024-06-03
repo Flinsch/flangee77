@@ -1,6 +1,6 @@
 #pragma once
-#ifndef ML7_VECTOR2_H
-#define ML7_VECTOR2_H
+#ifndef ML7_VECTOR3_H
+#define ML7_VECTOR3_H
 
 #include <CoreLabs/root.h>
 
@@ -10,13 +10,14 @@ namespace ml7 {
 
 
 
-class Vector2
+class Vector3
 {
 
 public:
-    static const Vector2 ZERO;
-    static const Vector2 X;
-    static const Vector2 Y;
+    static const Vector3 ZERO;
+    static const Vector3 X;
+    static const Vector3 Y;
+    static const Vector3 Z;
 
 
 
@@ -25,36 +26,39 @@ public:
     // #############################################################################
 public:
     /**
-     * Default constructor. Initializes the vector with x = y = 0.
+     * Default constructor. Initializes the vector with x = y = z = 0.
      */
-    constexpr Vector2(void)
+    constexpr Vector3(void)
         : x( 0.0f )
         , y( 0.0f )
+        , z( 0.0f )
     {
     }
 
     /**
-     * Explicit constructor with parameters for x and y.
+     * Explicit constructor with parameters for x, y, and z.
      */
-    constexpr Vector2(float x, float y)
+    constexpr Vector3(float x, float y, float z)
         : x( x )
         , y( y )
+        , z( z )
     {
     }
 
     /**
-     * Explicit constructor with one parameter for both x and y.
+     * Explicit constructor with one parameter for x, y, and z.
      */
-    constexpr explicit Vector2(float c)
+    constexpr explicit Vector3(float c)
         : x( c )
         , y( c )
+        , z( c )
     {
     }
 
     /**
      * Swap operation.
      */
-    void swap(Vector2& rhs);
+    void swap(Vector3& rhs);
 
 
 
@@ -66,29 +70,15 @@ public:
     {
         struct
         {
-            /** The vector's x value (x = u = s). */
+            /** The vector's x value. */
             float x;
-            /** The vector's y value (y = v = t). */
+            /** The vector's y value. */
             float y;
+            /** The vector's z value. */
+            float z;
         }; // struct
 
-        struct
-        {
-            /** The texture coordinate u (u = s = x). */
-            float u;
-            /** The texture coordinate v (v = t = y). */
-            float v;
-        };
-
-        struct
-        {
-            /** The texture coordinate s (s = u = x). */
-            float s;
-            /** The texture coordinate t (t = v = y). */
-            float t;
-        };
-
-        /** Array of the two componets. */
+        /** Array of all three componets. */
         float data[2];
     }; // union
 
@@ -99,20 +89,20 @@ public:
     // #############################################################################
 public:
     /** Returns the magnitude of the vector. */
-    float length() const { return ::sqrtf( x*x + y*y ); }
+    float length() const { return ::sqrtf( x*x + y*y + z*z ); }
 
     /** Returns the squared magnitude of the vector. */
-    float lensqr() const { return x*x + y*y; }
+    float lensqr() const { return x*x + y*y + z*z; }
 
     /**
      * Returns the azimuth angle of this vector in the signed range [-pi;+pi], with
-     * the positive x-axis pointing east and the positive y-axis pointing north.
+     * the positive x-axis pointing east and the positive z-axis pointing north.
      */
     float azimuth_symmetric() const;
 
     /**
      * Returns the azimuth angle of this vector in the positive range [0;2pi], with
-     * the positive x-axis pointing east and the positive y-axis pointing north.
+     * the positive x-axis pointing east and the positive z-axis pointing north.
      */
     float azimuth_asymmetric() const;
 
@@ -122,15 +112,26 @@ public:
      */
     float elevation() const;
 
-    /** Returns a new vector with the x component of this (y = 0). */
-    Vector2 x_() const { return Vector2( x, 0.0f ); }
-    /** Returns a new vector with the y component of this (x = 0). */
-    Vector2 _y() const { return Vector2( 0.0f, y ); }
+    /** Returns a new vector with the x component of this (y = z = 0). */
+    Vector3 x__() const { return Vector3( x, 0.0f, 0.0f ); }
+    /** Returns a new vector with the y component of this (x = z = 0). */
+    Vector3 _y_() const { return Vector3( 0.0f, y, 0.0f ); }
+    /** Returns a new vector with the y component of this (x = y = 0). */
+    Vector3 __z() const { return Vector3( 0.0f, 0.0f, z ); }
+
+    /** Returns a new vector with the x and y components of this (z = 0). */
+    Vector3 xy_() const { return Vector3( x, y, 0.0f ); }
+    /** Returns a new vector with the x and z components of this (y = 0). */
+    Vector3 x_z() const { return Vector3( x, 0.0f, z ); }
+    /** Returns a new vector with the y and z components of this (x = 0). */
+    Vector3 _yz() const { return Vector3( 0.0f, y, z ); }
 
     /** Returns a new vector with all of its components set to the x value of this. */
-    Vector2 xx() const { return Vector2( x, x ); }
+    Vector3 xxx() const { return Vector3( x, x, x ); }
     /** Returns a new vector with all of its components set to the y value of this. */
-    Vector2 yy() const { return Vector2( y, y ); }
+    Vector3 yyy() const { return Vector3( y, y, y ); }
+    /** Returns a new vector with all of its components set to the y value of this. */
+    Vector3 zzz() const { return Vector3( z, z, z ); }
 
 
 
@@ -141,67 +142,58 @@ public:
     /**
      * Returns a copy of this vector normalized.
      */
-    Vector2 normalized() const
+    Vector3 normalized() const
     {
         float d = lensqr();
         if ( d == 0.0f )
-            return Vector2( 0.0f ); // x = y = 0
+            return Vector3( 0.0f ); // x = y = z = 0
         d = 1.0f / ::sqrtf( d );
-        return Vector2( x*d, y*d );
+        return Vector3( x*d, y*d, z*d );
     }
 
     /**
      * Returns this vector having positive components.
      */
-    Vector2 abs() const
+    Vector3 abs() const
     {
-        return Vector2( ::abs(x), ::abs(y) );
+        return Vector3( ::abs(x), ::abs(y), ::abs(z) );
     }
 
     /**
      * Returns the dot product of this and a given vector v.
      */
-    float dot(const Vector2& v) const
+    float dot(const Vector3& v) const
     {
-        return x*v.x + y*v.y;
+        return x*v.x + y*v.y + z*v.z;
     }
 
     /**
      * Returns the squared dot product of this and a given vector v.
      */
-    float dotsqr(const Vector2& v) const
+    float dotsqr(const Vector3& v) const
     {
         const float tmp = dot(v);
         return tmp*tmp;
     }
 
     /**
-     * Returns the perpendicular of this vector. The perpendicular corresponds to
-     * the vector rotated 90 degrees to the left (counter-clockwise).
+     * Returns the cross product of this and a given vector v.
      */
-    Vector2 perp() const
+    Vector3 cross(const Vector3& v) const
     {
-        return Vector2( -y, x );
-    }
-
-    /**
-     * Returns the perp-dot product of this vector and a given vector v, i.e. the
-     * dot product of both vectors in which this vector is replaced by the
-     * perpendicular rotated 90 degrees to the left (counter-clockwise).
-     * So, a.perpdot(b) is the same as a.perp().dot(b).
-     */
-    float perpdot(const Vector2& v) const
-    {
-        return x*v.y - y*v.x;
+        return Vector3(
+            y*v.z - z*v.y,
+            z*v.x - x*v.z,
+            x*v.y - y*v.x );
     }
 
     /**
      * Returns this vector reflected across a plane defined by a given normal
      * vector n.
      */
-    Vector2 reflected(const Vector2& n) const
+    Vector3 reflected(const Vector3& n) const
     {
-        const ml7::Vector2 n2dot = n * 2.0f * dot(n);
+        const ml7::Vector3 n2dot = n * 2.0f * dot(n);
         return *this - n2dot;
     }
 
@@ -209,12 +201,12 @@ public:
      * Returns this vector refracted across a plane defined by a given normal
      * vector n with respect to the specified refractive index.
      */
-    Vector2 refracted(const Vector2& n, float index) const;
+    Vector3 refracted(const Vector3& n, float index) const;
 
     /**
      * Returns the scalar projection of a given vector v onto this.
      */
-    float comp(const Vector2& v) const
+    float comp(const Vector3& v) const
     {
         return dot( v ) / length();
     }
@@ -222,7 +214,7 @@ public:
     /**
      * Returns the vector projection of a given vector v onto this.
      */
-    Vector2 proj(const Vector2& v) const
+    Vector3 proj(const Vector3& v) const
     {
         return *this * ( dot( v ) / lensqr() );
     }
@@ -234,28 +226,29 @@ public:
     // #############################################################################
 public:
     /**
-     * Sets x = y = 0.
+     * Sets x = y = z = 0.
      */
-    Vector2& clear()
+    Vector3& clear()
     {
-        x = y = 0.0f;
+        x = y = z = 0.0f;
         return *this;
     }
 
     /**
      * Inverts the sign of the components of this vector.
      */
-    Vector2& invert()
+    Vector3& invert()
     {
         x = -x;
         y = -y;
+        z = -z;
         return *this;
     }
 
     /**
      * Normalizes this vector that it has a magnitude of 1.
      */
-    Vector2& normalize()
+    Vector3& normalize()
     {
         *this = normalized();
         return *this;
@@ -264,18 +257,19 @@ public:
     /**
      * Lets this vector have a magnitude of the given length.
      */
-    Vector2& length(float length)
+    Vector3& length(float length)
     {
         normalize();
         x *= length;
         y *= length;
+        z *= length;
         return *this;
     }
 
     /**
      * Reflects this vector across a plane defined by a given normal vector n.
      */
-    Vector2& reflect(const Vector2& n)
+    Vector3& reflect(const Vector3& n)
     {
         *this = reflected( n );
         return *this;
@@ -285,7 +279,7 @@ public:
      * Refracts this vector across a plane defined by a given normal vector n with
      * respect to the specified refractive index.
      */
-    Vector2& refract(const Vector2& n, float index)
+    Vector3& refract(const Vector3& n, float index)
     {
         *this = refracted( n, index );
         return *this;
@@ -297,8 +291,8 @@ public:
     // Access Operators
     // #############################################################################
 public:
-    float operator[] (unsigned i) const { assert( i < 2 ); return data[ i ]; }
-    float& operator[] (unsigned i) { assert( i < 2 ); return data[ i ]; }
+    float operator[] (unsigned i) const { assert( i < 3 ); return data[ i ]; }
+    float& operator[] (unsigned i) { assert( i < 3 ); return data[ i ]; }
 
 
 
@@ -306,17 +300,17 @@ public:
     // Arithmetic Operators
     // #############################################################################
 public:
-    constexpr Vector2 operator + () const { return *this; }
-    constexpr Vector2 operator - () const { return Vector2( -x, -y ); }
+    constexpr Vector3 operator + () const { return *this; }
+    constexpr Vector3 operator - () const { return Vector3( -x, -y, -z ); }
 
-    constexpr Vector2 operator + (const Vector2& v) const { return Vector2( x + v.x, y + v.y ); }
-    constexpr Vector2 operator - (const Vector2& v) const { return Vector2( x - v.x, y - v.y ); }
+    constexpr Vector3 operator + (const Vector3& v) const { return Vector3( x + v.x, y + v.y, z + v.z ); }
+    constexpr Vector3 operator - (const Vector3& v) const { return Vector3( x - v.x, y - v.y, z - v.z ); }
 
-    constexpr Vector2 operator * (const Vector2& v) const { return Vector2( x * v.x, y * v.y ); }
-    constexpr Vector2 operator / (const Vector2& v) const { return Vector2( x / v.x, y / v.y ); }
+    constexpr Vector3 operator * (const Vector3& v) const { return Vector3( x * v.x, y * v.y, z * v.z ); }
+    constexpr Vector3 operator / (const Vector3& v) const { return Vector3( x / v.x, y / v.y, z / v.z ); }
 
-    constexpr Vector2 operator * (float s) const { return Vector2( x * s, y * s ); }
-    constexpr Vector2 operator / (float s) const { return Vector2( x / s, y / s ); }
+    constexpr Vector3 operator * (float s) const { return Vector3( x * s, y * s, z * s ); }
+    constexpr Vector3 operator / (float s) const { return Vector3( x / s, y / s, z / s ); }
 
 
 
@@ -324,14 +318,14 @@ public:
     // Arithmetic Assignment Operators
     // #############################################################################
 public:
-    constexpr Vector2& operator += (const Vector2& v) { x += v.x; y += v.y; return *this; }
-    constexpr Vector2& operator -= (const Vector2& v) { x -= v.x; y -= v.y; return *this; }
+    constexpr Vector3& operator += (const Vector3& v) { x += v.x; y += v.y; z += v.z; return *this; }
+    constexpr Vector3& operator -= (const Vector3& v) { x -= v.x; y -= v.y; z -= v.z; return *this; }
 
-    constexpr Vector2& operator *= (const Vector2& v) { x *= v.x; y *= v.y; return *this; }
-    constexpr Vector2& operator /= (const Vector2& v) { x /= v.x; y /= v.y; return *this; }
+    constexpr Vector3& operator *= (const Vector3& v) { x *= v.x; y *= v.y; z *= v.z; return *this; }
+    constexpr Vector3& operator /= (const Vector3& v) { x /= v.x; y /= v.y; z /= v.z; return *this; }
 
-    constexpr Vector2& operator *= (float s) { x *= s; y *= s; return *this; }
-    constexpr Vector2& operator /= (float s) { x /= s; y /= s; return *this; }
+    constexpr Vector3& operator *= (float s) { x *= s; y *= s; z *= s; return *this; }
+    constexpr Vector3& operator /= (float s) { x /= s; y /= s; z /= s; return *this; }
 
 
 
@@ -339,41 +333,41 @@ public:
     // Comparison Operators
     // #############################################################################
 public:
-    bool operator == (const Vector2& v) const { return (x == v.x) && (y == v.y); }
-    bool operator != (const Vector2& v) const { return (x != v.x) || (y != v.y); }
+    bool operator == (const Vector3& v) const { return (x == v.x) && (y == v.y) && (z == v.z); }
+    bool operator != (const Vector3& v) const { return (x != v.x) || (y != v.y) || (z != v.z); }
 
     /**
      * Checks if this vector is component-by-component less than a given vector v.
      */
-    bool operator < (const Vector2& v) const
+    bool operator < (const Vector3& v) const
     {
-        return (x < v.x) && (y < v.y);
+        return (x < v.x) && (y < v.y) && (z < v.z);
     }
 
     /**
      * Checks if this vector is component-by-component greater than a given vector v.
      */
-    bool operator > (const Vector2& v) const
+    bool operator > (const Vector3& v) const
     {
-        return (x > v.x) && (y > v.y);
+        return (x > v.x) && (y > v.y) && (z > v.z);
     }
 
     /**
      * Checks if this vector is component-by-component less than or equal to a given
      * vector v.
      */
-    bool operator <= (const Vector2& v) const
+    bool operator <= (const Vector3& v) const
     {
-        return (x <= v.x) && (y <= v.y);
+        return (x <= v.x) && (y <= v.y) && (z <= v.z);
     }
 
     /**
      * Checks if this vector is component-by-component greater than or equal to a
      * given vector v.
      */
-    bool operator >= (const Vector2& v) const
+    bool operator >= (const Vector3& v) const
     {
-        return (x >= v.x) && (y >= v.y);
+        return (x >= v.x) && (y >= v.y) && (z >= v.z);
     }
 
 
@@ -383,35 +377,28 @@ public:
     // #############################################################################
 public:
     /** Returns a vector having the minimum components of two given vectors. */
-    static Vector2 min2(const Vector2& a, const Vector2& b);
+    static Vector3 min2(const Vector3& a, const Vector3& b);
 
     /** Returns a vector having the maximum components of two given vectors. */
-    static Vector2 max2(const Vector2& a, const Vector2& b);
+    static Vector3 max2(const Vector3& a, const Vector3& b);
 
     /**
      * Performs a linear interpolation between a and b, with y = a + (b-a)x.
      */
-    static Vector2 lerp(const Vector2& a, const Vector2& b, float x);
+    static Vector3 lerp(const Vector3& a, const Vector3& b, float x);
 
     /**
      * Performs a cosine interpolation between a and b, with y = a + (b-a)z and
      * z = (1-cos(wx))/2, w = pi.
      */
-    static Vector2 terp(const Vector2& a, const Vector2& b, float x);
+    static Vector3 terp(const Vector3& a, const Vector3& b, float x);
 
     /**
      * Performs a cubic interpolation between a and b (affected by a0, the point
      * "before" a, and b1, the point "after" b), with y = Px^3 + Qx^2 + Rx + S and
      * P = (b1-b)-(a0-a), Q = (a0-a)-P, R = b-a0, S = a.
      */
-    static Vector2 cerp(const Vector2& a0, const Vector2& a, const Vector2& b, const Vector2& b1, float x);
-
-    /**
-     * Checks whether the three given points are a counter-clockwise turn. In that
-     * case, the function returns a value greater than 0. A value less than 0
-     * indicates a clockwise turn. 0 indicates that the points are collinear.
-     */
-    static float ccw(const ml7::Vector2& a, const ml7::Vector2& b, const ml7::Vector2& c);
+    static Vector3 cerp(const Vector3& a0, const Vector3& a, const Vector3& b, const Vector3& b1, float x);
 
 
 
@@ -421,15 +408,17 @@ public:
 public:
     struct less
     {
-        bool operator () (const ml7::Vector2& a, const ml7::Vector2& b) const
+        bool operator () (const ml7::Vector3& a, const ml7::Vector3& b) const
         {
             if ( a.x < b.x ) return true;
             if ( a.x > b.x ) return false;
-            return a.y < b.y;
+            if ( a.y < b.y ) return true;
+            if ( a.y > b.y ) return false;
+            return a.z < b.z;
         }
     }; // struct less
 
-}; // class Vector2
+}; // class Vector3
 
 
 
@@ -437,10 +426,10 @@ public:
     // Additional Operators
     // #############################################################################
 
-    constexpr Vector2 operator * (float s, const Vector2& v) { return Vector2( s * v.x, s * v.y ); }
+    constexpr Vector3 operator * (float s, const Vector3& v) { return Vector3( s * v.x, s * v.y, s * v.z ); }
 
 
 
 } // namespace ml7
 
-#endif // ML7_VECTOR2_H
+#endif // ML7_VECTOR3_H

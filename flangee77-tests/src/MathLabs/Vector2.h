@@ -107,45 +107,17 @@ TESTLABS_CASE( TEXT("CoreLabs:  Vector2:  ") )
     TESTLABS_CHECK( ml7::Vector2( 1.0f, -2.0f ) != ml7::Vector2( -1.0f, 2.0f ) );
     TESTLABS_CHECK( !(ml7::Vector2( 1.0f, -2.0f ) != ml7::Vector2( 1.0f, -2.0f )) );
 
-    TESTLABS_CHECK( ml7::Vector2( -1.0f, -1.0f ) < ml7::Vector2( 0.0f, 0.0f ) );
-    TESTLABS_CHECK( !(ml7::Vector2(  0.0f, -1.0f ) < ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2( +1.0f, -1.0f ) < ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2( -1.0f,  0.0f ) < ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2(  0.0f,  0.0f ) < ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2( +1.0f,  0.0f ) < ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2( -1.0f, +1.0f ) < ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2(  0.0f, +1.0f ) < ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2( +1.0f, +1.0f ) < ml7::Vector2( 0.0f, 0.0f )) );
+    for ( float x = -1.0f; x <= +1.0f; x += 1.0f )
+    for ( float y = -1.0f; y <= +1.0f; y += 1.0f )
+    {
+        TESTLABS_CHECK_EQ( ml7::Vector2( x, y ) == ml7::Vector2( 0.0f, 0.0f ), x == 0.0f && y == 0.0f );
+        TESTLABS_CHECK_EQ( ml7::Vector2( x, y ) != ml7::Vector2( 0.0f, 0.0f ), x != 0.0f || y != 0.0f );
 
-    TESTLABS_CHECK( !(ml7::Vector2( -1.0f, -1.0f ) > ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2(  0.0f, -1.0f ) > ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2( +1.0f, -1.0f ) > ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2( -1.0f,  0.0f ) > ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2(  0.0f,  0.0f ) > ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2( +1.0f,  0.0f ) > ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2( -1.0f, +1.0f ) > ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2(  0.0f, +1.0f ) > ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( ml7::Vector2( +1.0f, +1.0f ) > ml7::Vector2( 0.0f, 0.0f ) );
-
-    TESTLABS_CHECK( ml7::Vector2( -1.0f, -1.0f ) <= ml7::Vector2( 0.0f, 0.0f ) );
-    TESTLABS_CHECK( ml7::Vector2(  0.0f, -1.0f ) <= ml7::Vector2( 0.0f, 0.0f ) );
-    TESTLABS_CHECK( !(ml7::Vector2( +1.0f, -1.0f ) <= ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( ml7::Vector2( -1.0f,  0.0f ) <= ml7::Vector2( 0.0f, 0.0f ) );
-    TESTLABS_CHECK( ml7::Vector2(  0.0f,  0.0f ) <= ml7::Vector2( 0.0f, 0.0f ) );
-    TESTLABS_CHECK( !(ml7::Vector2( +1.0f,  0.0f ) <= ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2( -1.0f, +1.0f ) <= ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2(  0.0f, +1.0f ) <= ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2( +1.0f, +1.0f ) <= ml7::Vector2( 0.0f, 0.0f )) );
-
-    TESTLABS_CHECK( !(ml7::Vector2( -1.0f, -1.0f ) >= ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2(  0.0f, -1.0f ) >= ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2( +1.0f, -1.0f ) >= ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( !(ml7::Vector2( -1.0f,  0.0f ) >= ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( ml7::Vector2(  0.0f,  0.0f ) >= ml7::Vector2( 0.0f, 0.0f ) );
-    TESTLABS_CHECK( ml7::Vector2( +1.0f,  0.0f ) >= ml7::Vector2( 0.0f, 0.0f ) );
-    TESTLABS_CHECK( !(ml7::Vector2( -1.0f, +1.0f ) >= ml7::Vector2( 0.0f, 0.0f )) );
-    TESTLABS_CHECK( ml7::Vector2(  0.0f, +1.0f ) >= ml7::Vector2( 0.0f, 0.0f ) );
-    TESTLABS_CHECK( ml7::Vector2( +1.0f, +1.0f ) >= ml7::Vector2( 0.0f, 0.0f ) );
+        TESTLABS_CHECK_EQ( ml7::Vector2( x, y ) < ml7::Vector2( 0.0f, 0.0f ), x < 0.0f && y < 0.0f );
+        TESTLABS_CHECK_EQ( ml7::Vector2( x, y ) > ml7::Vector2( 0.0f, 0.0f ), x > 0.0f && y > 0.0f );
+        TESTLABS_CHECK_EQ( ml7::Vector2( x, y ) <= ml7::Vector2( 0.0f, 0.0f ), x <= 0.0f && y <= 0.0f );
+        TESTLABS_CHECK_EQ( ml7::Vector2( x, y ) >= ml7::Vector2( 0.0f, 0.0f ), x >= 0.0f && y >= 0.0f );
+    }
 
     TESTLABS_CHECK_EQ( ml7::Vector2::min2( ml7::Vector2( 1.0f, -2.0f ), ml7::Vector2( -3.0f, 4.0f ) ), ml7::Vector2( -3.0f, -2.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector2::max2( ml7::Vector2( 1.0f, -2.0f ), ml7::Vector2( -3.0f, 4.0f ) ), ml7::Vector2( 1.0f, 4.0f ) );
