@@ -209,6 +209,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\MathLabs\constants.h" />
     <ClInclude Include="src\MathLabs\Vector2.h" />
     <ClInclude Include="src\MathLabs\Vector3.h" />
+    <ClInclude Include="src\MathLabs\Vector4.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DConstantBufferWrapper.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\ConstantBufferImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DShaderReflection.h" />
@@ -414,6 +415,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClCompile Include="src\CoreLabs\profiling\Stopwatch.cpp" />
     <ClCompile Include="src\MathLabs\Vector2.cpp" />
     <ClCompile Include="src\MathLabs\Vector3.cpp" />
+    <ClCompile Include="src\MathLabs\Vector4.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DConstantBufferWrapper.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\ConstantBufferImpl.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\impl\direct3d11\shaders\D3DShaderReflection.cpp" />
