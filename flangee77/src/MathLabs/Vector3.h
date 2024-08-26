@@ -28,7 +28,7 @@ public:
     /**
      * Default constructor. Initializes the vector with x = y = z = 0.
      */
-    constexpr Vector3(void)
+    constexpr Vector3()
         : x( 0.0f )
         , y( 0.0f )
         , z( 0.0f )
@@ -88,10 +88,10 @@ public:
     // Properties
     // #############################################################################
 public:
-    /** Returns the magnitude of the vector. */
+    /** Returns the magnitude of this vector. */
     float length() const { return ::sqrtf( x*x + y*y + z*z ); }
 
-    /** Returns the squared magnitude of the vector. */
+    /** Returns the squared magnitude of this vector. */
     float lensqr() const { return x*x + y*y + z*z; }
 
     /**
@@ -146,7 +146,7 @@ public:
     {
         float d = lensqr();
         if ( d == 0.0f )
-            return Vector3( 0.0f ); // x = y = z = 0
+            return ZERO; // x = y = z = 0
         d = 1.0f / ::sqrtf( d );
         return Vector3( x*d, y*d, z*d );
     }
@@ -160,7 +160,7 @@ public:
     }
 
     /**
-     * Returns the dot product of this and a given vector v.
+     * Returns the dot/scalar product of this and a given vector v.
      */
     float dot(const Vector3& v) const
     {
@@ -168,7 +168,7 @@ public:
     }
 
     /**
-     * Returns the squared dot product of this and a given vector v.
+     * Returns the squared dot/scalar product of this and a given vector v.
      */
     float dotsqr(const Vector3& v) const
     {
@@ -204,7 +204,7 @@ public:
     Vector3 refracted(const Vector3& n, float index) const;
 
     /**
-     * Returns the scalar projection of a given vector v onto this.
+     * Returns the scalar projection of a given vector v onto this one.
      */
     float comp(const Vector3& v) const
     {
@@ -212,7 +212,7 @@ public:
     }
 
     /**
-     * Returns the vector projection of a given vector v onto this.
+     * Returns the vector projection of a given vector v onto this one.
      */
     Vector3 proj(const Vector3& v) const
     {
@@ -300,16 +300,24 @@ public:
     // Arithmetic Operators
     // #############################################################################
 public:
+    /** Returns a copy of this vector unmodified. */
     constexpr Vector3 operator + () const { return *this; }
+    /** Returns a copy of this vector with the signs of the elements flipped. */
     constexpr Vector3 operator - () const { return Vector3( -x, -y, -z ); }
 
+    /** Returns the (component-wise) vector sum of two vectors. */
     constexpr Vector3 operator + (const Vector3& v) const { return Vector3( x + v.x, y + v.y, z + v.z ); }
+    /** Returns the (component-wise) vector difference of two vectors. */
     constexpr Vector3 operator - (const Vector3& v) const { return Vector3( x - v.x, y - v.y, z - v.z ); }
 
+    /** Returns the (component-wise) Hadamard product of two vectors. */
     constexpr Vector3 operator * (const Vector3& v) const { return Vector3( x * v.x, y * v.y, z * v.z ); }
+    /** Returns the (component-wise) Hadamard quotient of two vectors. */
     constexpr Vector3 operator / (const Vector3& v) const { return Vector3( x / v.x, y / v.y, z / v.z ); }
 
+    /** Returns a copy of this vector scaled by the specified factor (scalar multiplication). */
     constexpr Vector3 operator * (float s) const { return Vector3( x * s, y * s, z * s ); }
+    /** Returns a copy of this vector inversely scaled by the specified factor (scalar division). */
     constexpr Vector3 operator / (float s) const { return Vector3( x / s, y / s, z / s ); }
 
 
@@ -318,13 +326,19 @@ public:
     // Arithmetic Assignment Operators
     // #############################################################################
 public:
+    /** Adds the given vector to this one, resulting in the (component-wise) vector sum. */
     constexpr Vector3& operator += (const Vector3& v) { x += v.x; y += v.y; z += v.z; return *this; }
+    /** Subtracts the given vector from this one, resulting in the (component-wise) vector difference. */
     constexpr Vector3& operator -= (const Vector3& v) { x -= v.x; y -= v.y; z -= v.z; return *this; }
 
+    /** Multiplies the given vector with this one, resulting in the (component-wise) Hadamard product. */
     constexpr Vector3& operator *= (const Vector3& v) { x *= v.x; y *= v.y; z *= v.z; return *this; }
+    /** Divides this vector by the given one, resulting in the (component-wise) Hadamard quotient. */
     constexpr Vector3& operator /= (const Vector3& v) { x /= v.x; y /= v.y; z /= v.z; return *this; }
 
+    /** Scales this vector by the specified factor (scalar multiplication). */
     constexpr Vector3& operator *= (float s) { x *= s; y *= s; z *= s; return *this; }
+    /** Inversely scales this vector by the specified factor (scalar division). */
     constexpr Vector3& operator /= (float s) { x /= s; y /= s; z /= s; return *this; }
 
 
@@ -426,7 +440,8 @@ public:
     // Additional Operators
     // #############################################################################
 
-    constexpr Vector3 operator * (float s, const Vector3& v) { return Vector3( s * v.x, s * v.y, s * v.z ); }
+    /** Scales a vector by the specified factor (scalar multiplication). */
+    constexpr Vector3 operator * (float s, const Vector3& v) { return v * s; }
 
 
 

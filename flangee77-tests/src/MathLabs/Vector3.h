@@ -15,7 +15,7 @@
 
 namespace cl7 {
     template <> inline
-    cl7::string to_string(const ml7::Vector3& v) { return TEXT("{\"") + cl7::to_string(v.x) + TEXT(", ") + cl7::to_string(v.y) + TEXT(", ") + cl7::to_string(v.z) + TEXT("\"}"); }
+    cl7::string to_string(const ml7::Vector3& v) { return TEXT("{ ") + cl7::to_string(v.x) + TEXT(", ") + cl7::to_string(v.y) + TEXT(", ") + cl7::to_string(v.z) + TEXT(" }"); }
 }
 
 
@@ -90,6 +90,10 @@ TESTLABS_CASE( TEXT("CoreLabs:  Vector3:  ") )
     TESTLABS_CHECK_EQ( ml7::Vector3( 1.0f, 2.0f, 3.0f )[ 1 ], 2.0f );
     TESTLABS_CHECK_EQ( ml7::Vector3( 1.0f, 2.0f, 3.0f )[ 2 ], 3.0f );
 
+    TESTLABS_CHECK_EQ( ml7::Vector3( 1.0f, 2.0f, 3.0f )[ 0 ] = 4.0f, 4.0f );
+    TESTLABS_CHECK_EQ( ml7::Vector3( 1.0f, 2.0f, 3.0f )[ 1 ] = 4.0f, 4.0f );
+    TESTLABS_CHECK_EQ( ml7::Vector3( 1.0f, 2.0f, 3.0f )[ 2 ] = 4.0f, 4.0f );
+
     TESTLABS_CHECK_EQ( +ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( 1.0f, -2.0f, 3.0f ) );
     TESTLABS_CHECK_EQ( -ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -1.0f, 2.0f, -3.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector3( 1.0f, -2.0f, 3.0f ) + ml7::Vector3( -3.0f, 4.0f, -5.0f ), ml7::Vector3( -2.0f, 2.0f, -2.0f ) );
@@ -127,6 +131,8 @@ TESTLABS_CASE( TEXT("CoreLabs:  Vector3:  ") )
 
     TESTLABS_CHECK_EQ( ml7::Vector3::min2( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -3.0f, 4.0f, -5.0f ) ), ml7::Vector3( -3.0f, -2.0f, -5.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector3::max2( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -3.0f, 4.0f, -5.0f ) ), ml7::Vector3( 1.0f, 4.0f, 3.0f ) );
+
+    TESTLABS_CHECK_EQ( 5.0f * ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( 5.0f, -10.0f, 15.0f ) );
 }
 
 

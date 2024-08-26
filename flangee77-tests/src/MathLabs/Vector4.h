@@ -15,7 +15,7 @@
 
 namespace cl7 {
     template <> inline
-    cl7::string to_string(const ml7::Vector4& v) { return TEXT("{\"") + cl7::to_string(v.x) + TEXT(", ") + cl7::to_string(v.y) + TEXT(", ") + cl7::to_string(v.z) + TEXT(", ") + cl7::to_string(v.w) + TEXT("\"}"); }
+    cl7::string to_string(const ml7::Vector4& v) { return TEXT("{ ") + cl7::to_string(v.x) + TEXT(", ") + cl7::to_string(v.y) + TEXT(", ") + cl7::to_string(v.z) + TEXT(", ") + cl7::to_string(v.w) + TEXT(" }"); }
 }
 
 
@@ -43,6 +43,11 @@ TESTLABS_CASE( TEXT("CoreLabs:  Vector3:  ") )
     TESTLABS_CHECK_EQ( ml7::Vector4( 1.0f, 2.0f, 3.0f, 4.0f )[ 1 ], 2.0f );
     TESTLABS_CHECK_EQ( ml7::Vector4( 1.0f, 2.0f, 3.0f, 4.0f )[ 2 ], 3.0f );
     TESTLABS_CHECK_EQ( ml7::Vector4( 1.0f, 2.0f, 3.0f, 4.0f )[ 3 ], 4.0f );
+
+    TESTLABS_CHECK_EQ( ml7::Vector4( 1.0f, 2.0f, 3.0f, 4.0f )[ 0 ] = 5.0f, 5.0f );
+    TESTLABS_CHECK_EQ( ml7::Vector4( 1.0f, 2.0f, 3.0f, 4.0f )[ 1 ] = 5.0f, 5.0f );
+    TESTLABS_CHECK_EQ( ml7::Vector4( 1.0f, 2.0f, 3.0f, 4.0f )[ 2 ] = 5.0f, 5.0f );
+    TESTLABS_CHECK_EQ( ml7::Vector4( 1.0f, 2.0f, 3.0f, 4.0f )[ 3 ] = 5.0f, 5.0f );
 
     TESTLABS_CHECK_EQ( +ml7::Vector4( 1.0f, -2.0f, 3.0f, -4.0f ), ml7::Vector4( 1.0f, -2.0f, 3.0f, -4.0f ) );
     TESTLABS_CHECK_EQ( -ml7::Vector4( 1.0f, -2.0f, 3.0f, -4.0f ), ml7::Vector4( -1.0f, 2.0f, -3.0f, 4.0f ) );
@@ -82,6 +87,8 @@ TESTLABS_CASE( TEXT("CoreLabs:  Vector3:  ") )
 
     TESTLABS_CHECK_EQ( ml7::Vector4::min2( ml7::Vector4( 1.0f, -2.0f, 3.0f, -4.0f ), ml7::Vector4( -3.0f, 4.0f, -5.0f, 6.0f ) ), ml7::Vector4( -3.0f, -2.0f, -5.0f, -4.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector4::max2( ml7::Vector4( 1.0f, -2.0f, 3.0f, -4.0f ), ml7::Vector4( -3.0f, 4.0f, -5.0f, 6.0f ) ), ml7::Vector4( 1.0f, 4.0f, 3.0f, 6.0f ) );
+
+    TESTLABS_CHECK_EQ( 5.0f * ml7::Vector4( 1.0f, -2.0f, 3.0f, -4.0f ), ml7::Vector4( 5.0f, -10.0f, 15.0f, -20.0f ) );
 }
 
 

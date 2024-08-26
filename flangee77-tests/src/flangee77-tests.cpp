@@ -14,6 +14,7 @@
 #include "./MathLabs/Vector2.h"
 #include "./MathLabs/Vector3.h"
 #include "./MathLabs/Vector4.h"
+#include "./MathLabs/Matrix2x2.h"
 
 #include "./XiaoLabs/graphics.h"
 

@@ -15,7 +15,7 @@
 
 namespace cl7 {
     template <> inline
-    cl7::string to_string(const ml7::Vector2& v) { return TEXT("{\"") + cl7::to_string(v.x) + TEXT(", ") + cl7::to_string(v.y) + TEXT("\"}"); }
+    cl7::string to_string(const ml7::Vector2& v) { return TEXT("{ ") + cl7::to_string(v.x) + TEXT(", ") + cl7::to_string(v.y) + TEXT(" }"); }
 }
 
 
@@ -85,6 +85,9 @@ TESTLABS_CASE( TEXT("CoreLabs:  Vector2:  ") )
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, 2.0f )[ 0 ], 1.0f );
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, 2.0f )[ 1 ], 2.0f );
 
+    TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, 2.0f )[ 0 ] = 3.0f, 3.0f );
+    TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, 2.0f )[ 1 ] = 3.0f, 3.0f );
+
     TESTLABS_CHECK_EQ( +ml7::Vector2( 1.0f, -2.0f ), ml7::Vector2( 1.0f, -2.0f ) );
     TESTLABS_CHECK_EQ( -ml7::Vector2( 1.0f, -2.0f ), ml7::Vector2( -1.0f, 2.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, -2.0f ) + ml7::Vector2( -3.0f, 4.0f ), ml7::Vector2( -2.0f, 2.0f ) );
@@ -125,6 +128,8 @@ TESTLABS_CASE( TEXT("CoreLabs:  Vector2:  ") )
     TESTLABS_CHECK( ml7::Vector2::ccw( ml7::Vector2( 1.0f, 0.0f ), ml7::Vector2( 2.0f, 0.0f ), ml7::Vector2( 3.0f, 0.0f ) ) == 0.0f );
     TESTLABS_CHECK( ml7::Vector2::ccw( ml7::Vector2( 1.0f, 0.0f ), ml7::Vector2( 2.0f, 0.0f ), ml7::Vector2( 3.0f, -1.0f ) ) < 0.0f );
     TESTLABS_CHECK( ml7::Vector2::ccw( ml7::Vector2( 1.0f, 0.0f ), ml7::Vector2( 2.0f, 0.0f ), ml7::Vector2( 3.0f, +1.0f ) ) > 0.0f );
+
+    TESTLABS_CHECK_EQ( 5.0f * ml7::Vector2( 1.0f, -2.0f ), ml7::Vector2( 5.0f, -10.0f ) );
 }
 
 

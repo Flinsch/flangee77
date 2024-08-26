@@ -56,5 +56,8 @@
     <ClInclude Include="src\MathLabs\Vector4.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\MathLabs\Matrix2x2.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
