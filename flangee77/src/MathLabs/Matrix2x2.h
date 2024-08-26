@@ -46,7 +46,7 @@ public:
 
     /**
      * Initializes a transformation matrix from the specified basis vectors that
-     * form the columns of the matrix.
+     * define the transformed coordinate system (as the column vectors of the matrix).
      */
     static constexpr Matrix2x2 from_axes(const ml7::Vector2& x, const ml7::Vector2& y)
     {
@@ -219,9 +219,10 @@ public:
     }
 
     /**
-     * Extracts the basis vectors (the column vectors) of the transformation matrix.
+     * Extracts the basis vectors that define the transformed coordinate system
+     * (i.e., the column vectors of the transformation matrix).
      */
-    void to_axes(ml7::Vector2& x, ml7::Vector2& y)
+    void to_axes(ml7::Vector2& x, ml7::Vector2& y) const
     {
         x.x = m[0][0];
         x.y = m[1][0];
@@ -230,12 +231,12 @@ public:
     }
 
     /**
-     * Tries to extract the scaling vector s and the counter-clockwise rotation angle
+     * Tries to extract the scaling vector and the counter-clockwise rotation angle
      * theta (in the range [-pi;+pi]) this matrix is composed of.
      * This only works if the matrix actually consists of rotations and (positive)
      * scalings in the "common" order (no shears, negative scalings, etc.).
      */
-    void decompose(ml7::Vector2& s, float& theta) const;
+    void decompose(ml7::Vector2& scaling, float& theta) const;
 
     /**
      * Returns a copy of the given column-vector transformed by this matrix.

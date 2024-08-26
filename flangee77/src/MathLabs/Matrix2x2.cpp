@@ -48,16 +48,18 @@ namespace ml7 {
     // #############################################################################
 
     /**
-     * Tries to extract the scaling vector s and the counter-clockwise rotation angle
+     * Tries to extract the scaling vector and the counter-clockwise rotation angle
      * theta (in the range [-pi;+pi]) this matrix is composed of.
      * This only works if the matrix actually consists of rotations and (positive)
      * scalings in the "common" order (no shears, negative scalings, etc.).
      */
-    void Matrix2x2::decompose(ml7::Vector2& s, float& theta) const
+    void Matrix2x2::decompose(ml7::Vector2& scaling, float& theta) const
     {
-        s.x = Vector2( a, c ).length();
-        s.y = Vector2( b, d ).length();
-        theta = ::atan2f( -b / s.y, a / s.x );
+        const float sx = Vector2( a, c ).length();
+        const float sy = Vector2( b, d ).length();
+        scaling.x = sx;
+        scaling.y = sy;
+        theta = ::atan2f( -b / sy, a / sx );
     }
 
 
