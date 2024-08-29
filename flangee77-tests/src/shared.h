@@ -5,6 +5,8 @@
 #include <CoreLabs/byte_vector.h>
 #include <CoreLabs/string.h>
 
+#include <MathLabs/Vector2.h>
+
 
 
 namespace cl7 {
@@ -26,6 +28,12 @@ namespace cl7 {
         s[ bytes.size() * 4 + 1 ] = TEXT('}');
         return s;
     }
+}
+
+
+
+namespace _ {
+    ml7::Vector2 round(ml7::Vector2 v, unsigned num_decimals) { for ( unsigned k = 0; k < 2; ++k ) v.data[k] = ml7::utilities::round(v.data[k], num_decimals); return v; }
 }
 
 

@@ -72,7 +72,7 @@ public:
     /**
      * Explicit constructor with one parameter for x, y, and z and one for w.
      */
-    constexpr explicit Vector4(float c, float w)
+    constexpr Vector4(float c, float w)
         : x( c )
         , y( c )
         , z( c )

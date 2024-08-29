@@ -639,6 +639,9 @@
     <ClInclude Include="src\MathLabs\Matrix2x2.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\MathLabs\Matrix2x3.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -1089,6 +1092,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\MathLabs\Matrix2x2.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MathLabs\Matrix2x3.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

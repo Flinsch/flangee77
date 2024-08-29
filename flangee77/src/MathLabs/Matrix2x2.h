@@ -160,7 +160,7 @@ public:
     /**
      * Returns the determinant of the matrix.
      */
-    float determinant() const { return a*d - b*c; }
+    float determinant() const { return _11*_22 - _12*_21; }
 
 
 
@@ -174,25 +174,15 @@ public:
     Matrix2x2 transposed() const
     {
         return {
-            a, c,
-            b, d,
+            _11, _21,
+            _12, _22,
         };
     }
 
     /**
-     * Returns a copy of this matrix inverted.
+     * Returns a copy of this matrix inverted (if possible).
      */
-    Matrix2x2 inverted() const
-    {
-        const float det = determinant();
-        if ( det == 0.0f )
-            return ZERO;
-        const float i = 1.0f / det;
-        return {
-            d*i, -b*i,
-            -c*i, a*i,
-        };
-    }
+    Matrix2x2 inverted() const;
 
     /**
      * Returns the i-th (0-indexed) row vector of this matrix.
@@ -220,14 +210,14 @@ public:
 
     /**
      * Extracts the basis vectors that define the transformed coordinate system
-     * (i.e., the column vectors of the transformation matrix).
+     * (i.e., the column vectors of the matrix).
      */
     void to_axes(ml7::Vector2& x, ml7::Vector2& y) const
     {
-        x.x = m[0][0];
-        x.y = m[1][0];
-        y.x = m[0][1];
-        y.y = m[1][1];
+        x.x = _11;
+        x.y = _21;
+        y.x = _12;
+        y.y = _22;
     }
 
     /**
@@ -239,7 +229,7 @@ public:
     void decompose(ml7::Vector2& scaling, float& theta) const;
 
     /**
-     * Returns a copy of the given column-vector transformed by this matrix.
+     * Returns a copy of the given (column) vector transformed by this matrix.
      */
     constexpr Vector2 transform(const Vector2& v) const
     {
@@ -248,6 +238,12 @@ public:
             _21*v.x + _22*v.y,
         };
     }
+
+    /**
+     * Returns a copy of the given (column) vector transformed by this matrix
+     * inverted (if possible).
+     */
+    Vector2 transform_inverted(const Vector2& v) const;
 
 
 
@@ -260,12 +256,12 @@ public:
      */
     Matrix2x2& transpose()
     {
-        std::swap( b, c );
+        std::swap( _12, _21 );
         return *this;
     }
 
     /**
-     * Inverts this matrix.
+     * Inverts this matrix (if possible).
      */
     Matrix2x2& invert()
     {
@@ -333,7 +329,7 @@ public:
             _21*m._11 + _22*m._21,   _21*m._12 + _22*m._22 );
     }
 
-    /** Returns a copy of the given column-vector transformed by this matrix. */
+    /** Returns a copy of the given (column) vector transformed by this matrix. */
     constexpr Vector2 operator * (const Vector2& v) const { return transform( v ); }
 
 
@@ -371,15 +367,6 @@ public:
 
     /** "Scales" a matrix by the specified factor (scalar multiplication). */
     constexpr Matrix2x2 operator * (float s, const Matrix2x2& m) { return m * s; }
-
-    /** Returns a copy of the given row-vector transformed by the specified matrix. */
-    constexpr Vector2 operator * (const Vector2& v, const Matrix2x2& m)
-    {
-        return {
-            v.x*m._11 + v.y*m._21,
-            v.x*m._12 + v.y*m._22,
-        };
-    }
 
 
 
