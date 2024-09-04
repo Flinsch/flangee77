@@ -1024,37 +1024,37 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  padding right") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  to hex") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings:  Levenshtein distance") )
 {
     struct Entry
     {
-        unsigned val;
-        cl7::char_type chA;
-        unsigned pad;
-        cl7::string expected;
+        cl7::string s1;
+        cl7::string s2;
+        size_t distance;
+        float distance_normalized;
     } entry;
 
     const std::vector<Entry> container {
-        { 0x00000000, TEXT('a'), 0, TEXT("") },
-        { 0x00000000, TEXT('a'), 2, TEXT("00") },
-        { 0x00000000, TEXT('a'), 8, TEXT("00000000") },
-        { 0x0000bf00, TEXT('a'), 0, TEXT("bf00") },
-        { 0x0000bf00, TEXT('a'), 8, TEXT("0000bf00") },
-        { 0x12345678, TEXT('a'), 0, TEXT("12345678") },
-        { 0xffffffff, TEXT('a'), 0, TEXT("ffffffff") },
-        { 0xffffffff, TEXT('A'), 0, TEXT("FFFFFFFF") },
-        { 0xffffffff, TEXT('A'), 9, TEXT("0FFFFFFFF") },
+        { TEXT(""), TEXT(""), 0, 0.0f },
+        { TEXT(""), TEXT("b"), 1, 1.0f },
+        { TEXT("a"), TEXT(""), 1, 1.0f },
+        { TEXT("a"), TEXT("b"), 1, 1.0f },
+        { TEXT("kitten"), TEXT("sitting"), 3, 3.0f/7.0f },
+        { TEXT("uninformed"), TEXT("uniformed"), 1, 0.1f },
+        { TEXT("flaw"), TEXT("lawn"), 2, 0.5f },
+        { TEXT("Bar"), TEXT("Bier"), 2, 0.5f },
+        { TEXT("flangee77"), TEXT("flangee77"), 0, 0.0f },
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.s1 + TEXT(" <-> ") + entry.s2 )
     {
-        const auto val = entry.val;
-        const auto chA = entry.chA;
-        const auto pad = entry.pad;
-        const auto& expected = entry.expected;
+        const auto& s1 = entry.s1;
+        const auto& s2 = entry.s2;
+        const auto expected_distance = entry.distance;
+        const auto expected_normalized = entry.distance_normalized;
 
-        TESTLABS_CHECK_EQ( cl7::strings::to_hex( val, chA, pad ), expected );
-        TESTLABS_CHECK_EQ( cl7::strings::to_0xhex( val, chA, pad ), TEXT("0x") + expected );
+        TESTLABS_CHECK_EQ( cl7::strings::levenshtein( s1, s2 ), expected_distance );
+        TESTLABS_CHECK_EQ( cl7::strings::levenshtein_normalized( s1, s2 ), expected_normalized );
     }
 }
 

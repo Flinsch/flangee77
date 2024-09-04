@@ -278,6 +278,59 @@ namespace strings {
 
 
 
+    /**
+     * Calculates the Levenshtein distance between two strings. The difference is
+     * calculated in terms of characters, not in terms of (Unicode) code points.
+     */
+    template <class Tstring_view>
+    size_t levenshtein(const Tstring_view& s1, const Tstring_view& s2)
+    {
+        const size_t size1 = s1.size();
+        const size_t size2 = s2.size();
+        if ( size1 == 0 ) return size2;
+        if ( size2 == 0 ) return size1;
+
+        const size_t len = size2 + 1;
+        const size_t total_size = (size1 + 1) * (size2 + 1);
+
+        auto mat = std::make_unique_for_overwrite<size_t[]>( total_size );
+
+        for ( size_t i = 0; i <= size1; ++i )
+            mat[ i * len + 0 ] = i;
+        for ( size_t j = 0; j <= size2; ++j )
+            mat[ 0 * len + j ] = j;
+
+        for ( size_t i = 1; i <= size1; ++i )
+        {
+            for ( size_t j = 1; j <= size2; ++j )
+            {
+                const size_t cost = s1[ i - 1 ] == s2[ j - 1 ] ? 0 : 1;
+                mat[ i * len + j ] = (std::min)( { 
+                    mat[ (i - 1) * len + (j) ] + 1,
+                    mat[ (i) * len + (j - 1) ] + 1,
+                    mat[ (i - 1) * len + (j - 1) ] + cost,
+                } );
+            } // for ... j
+        } // for ... i
+
+        return mat[ size1 * len + size2 ];
+    }
+
+    /**
+     * Calculates a normalized Levenshtein distance between two strings on a single
+     * scale from 0 ("identical") to 1 ("nothing in common"). The difference is
+     * calculated in terms of characters, not in terms of (Unicode) code points.
+     */
+    template <class Tstring_view>
+    float levenshtein_normalized(const Tstring_view& s1, const Tstring_view& s2)
+    {
+        const size_t size = (std::max)( s1.size(), s2.size() );
+        if ( size == 0 ) return 0.0f;
+        return static_cast<float>( levenshtein( s1, s2 ) ) / static_cast<float>( size );
+    }
+
+
+
 } // namespace strings
 } // namespace cl7
 
