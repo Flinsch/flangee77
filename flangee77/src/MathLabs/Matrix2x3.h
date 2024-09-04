@@ -241,10 +241,8 @@ public:
      */
     void to_axes(ml7::Vector2& x, ml7::Vector2& y) const
     {
-        x.x = _11;
-        x.y = _21;
-        y.x = _12;
-        y.y = _22;
+        x.x = _11;   y.x = _12;
+        x.y = _21;   y.y = _22;
     }
 
     /**
@@ -253,12 +251,8 @@ public:
      */
     void to_axes(ml7::Vector2& x, ml7::Vector2& y, ml7::Vector2& origin) const
     {
-        x.x = _11;
-        x.y = _21;
-        y.x = _12;
-        y.y = _22;
-        origin.x = _13;
-        origin.y = _23;
+        x.x = _11;   y.x = _12;   origin.x = _13;
+        x.y = _21;   y.y = _22;   origin.y = _23;
     }
 
     /**
@@ -277,12 +271,8 @@ public:
      */
     void decompose(ml7::Matrix2x2& m2x2, ml7::Vector2& translation) const
     {
-        m2x2._11 = _11;
-        m2x2._12 = _12;
-        m2x2._21 = _21;
-        m2x2._22 = _22;
-        translation.x = _13;
-        translation.y = _23;
+        m2x2._11 = _11;   m2x2._12 = _12;   translation.x = _13;
+        m2x2._21 = _21;   m2x2._22 = _22;   translation.y = _23;
     }
 
     /**
@@ -291,7 +281,7 @@ public:
      * This only works if the matrix actually consists of translations, rotations and
      * (positive) scalings in the "common" order (no shears, negative scalings, etc.).
      */
-    void decompose(ml7::Vector2& scaling, float& theta, ml7::Vector2& translation) const;
+    bool decompose(ml7::Vector2& scaling, float& theta, ml7::Vector2& translation) const;
 
     /**
      * Returns a copy of the given (column) vector transformed by this matrix.

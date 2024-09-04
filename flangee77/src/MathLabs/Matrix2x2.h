@@ -214,10 +214,8 @@ public:
      */
     void to_axes(ml7::Vector2& x, ml7::Vector2& y) const
     {
-        x.x = _11;
-        x.y = _21;
-        y.x = _12;
-        y.y = _22;
+        x.x = _11;   y.x = _12;
+        x.y = _21;   y.y = _22;
     }
 
     /**
@@ -226,7 +224,7 @@ public:
      * This only works if the matrix actually consists of rotations and (positive)
      * scalings in the "common" order (no shears, negative scalings, etc.).
      */
-    void decompose(ml7::Vector2& scaling, float& theta) const;
+    bool decompose(ml7::Vector2& scaling, float& theta) const;
 
     /**
      * Returns a copy of the given (column) vector transformed by this matrix.

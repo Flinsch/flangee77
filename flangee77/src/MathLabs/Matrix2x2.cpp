@@ -68,13 +68,16 @@ namespace ml7 {
      * This only works if the matrix actually consists of rotations and (positive)
      * scalings in the "common" order (no shears, negative scalings, etc.).
      */
-    void Matrix2x2::decompose(ml7::Vector2& scaling, float& theta) const
+    bool Matrix2x2::decompose(ml7::Vector2& scaling, float& theta) const
     {
         const float sx = Vector2( _11, _21 ).length();
         const float sy = Vector2( _12, _22 ).length();
+        if ( !sx ) return false;
+        if ( !sy ) return false;
         scaling.x = sx;
         scaling.y = sy;
         theta = ::atan2f( -_12 / sy, _11 / sx );
+        return true;
     }
 
     /**
@@ -88,8 +91,8 @@ namespace ml7 {
             return v;
         const float i = 1.0f / det;
         return {
-            _22*i*v.x + -_12*i*v.y,
-            -_21*i*v.x + _11*i*v.y,
+            (_22*v.x + -_12*v.y)*i,
+            (-_21*v.x + _11*v.y)*i,
         };
     }
 

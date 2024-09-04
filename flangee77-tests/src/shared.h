@@ -6,6 +6,7 @@
 #include <CoreLabs/string.h>
 
 #include <MathLabs/Vector2.h>
+#include <MathLabs/Vector3.h>
 
 
 
@@ -34,6 +35,7 @@ namespace cl7 {
 
 namespace _ {
     ml7::Vector2 round(ml7::Vector2 v, unsigned num_decimals) { for ( unsigned k = 0; k < 2; ++k ) v.data[k] = ml7::utilities::round(v.data[k], num_decimals); return v; }
+    ml7::Vector3 round(ml7::Vector3 v, unsigned num_decimals) { for ( unsigned k = 0; k < 3; ++k ) v.data[k] = ml7::utilities::round(v.data[k], num_decimals); return v; }
 }
 
 

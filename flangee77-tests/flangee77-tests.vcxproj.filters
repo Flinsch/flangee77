@@ -62,5 +62,8 @@
     <ClInclude Include="src\MathLabs\Matrix2x3.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\MathLabs\Matrix3x3.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
