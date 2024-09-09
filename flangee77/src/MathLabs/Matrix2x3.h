@@ -267,7 +267,7 @@ public:
     }
 
     /**
-     * Decomposes thos matrix into a 2x2 matrix and a translation vector
+     * Decomposes this matrix into a 2x2 matrix and a translation vector
      */
     void decompose(ml7::Matrix2x2& m2x2, ml7::Vector2& translation) const
     {

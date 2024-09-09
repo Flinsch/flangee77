@@ -98,8 +98,8 @@ public:
     {
         return {
             1.0f, 0.0f, 0.0f,
-            0.0f, cos, -sin,
-            0.0f, sin, cos,
+            0.0f,  cos, -sin,
+            0.0f,  sin,  cos,
         };
     }
 
@@ -116,9 +116,9 @@ public:
     static Matrix3x3 roty(float sin, float cos)
     {
         return {
-            cos, 0.0f, sin,
+             cos, 0.0f,  sin,
             0.0f, 1.0f, 0.0f,
-            -sin, 0.0f, cos,
+            -sin, 0.0f,  cos,
         };
     }
 
@@ -135,9 +135,9 @@ public:
     static Matrix3x3 rotz(float sin, float cos)
     {
         return {
-            cos, -sin, 0.0f,
-            sin, cos, 0.0f,
-            0.0f, 0.0f, 1.0f
+             cos, -sin, 0.0f,
+             sin,  cos, 0.0f,
+            0.0f, 0.0f, 1.0f,
         };
     }
 

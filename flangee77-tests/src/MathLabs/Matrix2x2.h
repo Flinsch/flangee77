@@ -31,7 +31,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  ") )
     TESTLABS_CHECK_EQ( ml7::Matrix2x2(), ml7::Matrix2x2( 1.0f, 0.0f, 0.0f, 1.0f ) );
 
     TESTLABS_CHECK_EQ( ml7::Matrix2x2::from_axes( ml7::Vector2( 0.0f, 1.0f ), ml7::Vector2( -1.0f, 0.0f ) ), ml7::Matrix2x2( 0.0f, -1.0f, 1.0f, 0.0f ) );
-    TESTLABS_CHECK_EQ( ml7::Matrix2x2::from_axes( ml7::Vector2( 0.0f, 1.0f ), ml7::Vector2( -1.0f, 0.0f ) ).transform( ml7::Vector2( 1.0f, 1.0f ) ), ml7::Vector2( -1.0f, 1.0f ) );
+    TESTLABS_CHECK_EQ( ml7::Matrix2x2::from_axes( ml7::Vector2( 0.0f, 1.0f ), ml7::Vector2( -1.0f, 0.0f ) ).transform( ml7::Vector2( 1.0f, 2.0f ) ), ml7::Vector2( -2.0f, 1.0f ) );
 
     TESTLABS_CHECK_EQ( ml7::Matrix2x2::scaling( -1.0f ), ml7::Matrix2x2( -1.0f, 0.0f, 0.0f, -1.0f ) );
     TESTLABS_CHECK_EQ( ml7::Matrix2x2::scaling( ml7::Vector2( 0.5f, 2.0f ) ), ml7::Matrix2x2( 0.5f, 0.0f, 0.0f, 2.0f ) );

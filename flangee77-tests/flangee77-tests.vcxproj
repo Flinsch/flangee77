@@ -240,6 +240,7 @@ xcopy /Y /E "$(SolutionDir)temp\$(Platform)-$(Configuration)\3rdparty" "$(LocalD
     <ClInclude Include="src\MathLabs\Matrix2x2.h" />
     <ClInclude Include="src\MathLabs\Matrix2x3.h" />
     <ClInclude Include="src\MathLabs\Matrix3x3.h" />
+    <ClInclude Include="src\MathLabs\Matrix3x4.h" />
     <ClInclude Include="src\MathLabs\utilities.h" />
     <ClInclude Include="src\MathLabs\Vector2.h" />
     <ClInclude Include="src\MathLabs\Vector3.h" />

@@ -199,6 +199,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\MathLabs\Matrix3x4.h" />
     <ClInclude Include="src\MathLabs\Matrix3x3.h" />
     <ClInclude Include="src\MathLabs\Matrix2x3.h" />
     <ClInclude Include="src\MathLabs\Matrix2x2.h" />
@@ -411,6 +412,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\pipeline\VertexShaderStage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\MathLabs\Matrix3x4.cpp" />
     <ClCompile Include="src\MathLabs\Matrix3x3.cpp" />
     <ClCompile Include="src\MathLabs\Matrix2x3.cpp" />
     <ClCompile Include="src\MathLabs\Matrix2x2.cpp" />
