@@ -458,9 +458,9 @@ public:
 public:
     /**
      * Tells whether this matrix represents an affine transformation, i.e.,
-     * preserving points, straight lines, and planes. When used correctly, only
-     * projection matrices should behave non-affinely (with the fourth row altering
-     * the homogeneity of the coordinates).
+     * preserving points, straight lines, and planes. When used "correctly", only
+     * (perspective) projection matrices should behave non-affinely (with the fourth
+     * row altering the homogeneity of the coordinates).
      */
     bool is_affine() const
     {
