@@ -43,7 +43,7 @@ struct Sample
 
         /** The minimum percentage of frame time taken up. */
         float min_pct;
-        /** The maximum percentage offrame time taken up. */
+        /** The maximum percentage of frame time taken up. */
         float max_pct;
         /** The average percentage of frame time taken up. */
         float avg_pct;
