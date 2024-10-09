@@ -2,7 +2,7 @@
 #ifndef ML7_VECTOR4_H
 #define ML7_VECTOR4_H
 
-#include <CoreLabs/root.h>
+#include "./Vector3.h"
 
 
 
@@ -37,13 +37,13 @@ public:
     }
 
     /**
-     * Explicit constructor with parameters for x, y, and z. Sets w = 0.
+     * Explicit constructor with parameters for x, y, and z. Sets w = 1.
      */
     constexpr Vector4(float x, float y, float z)
         : x( x )
         , y( y )
         , z( z )
-        , w( 0.0f )
+        , w( 1.0f )
     {
     }
 
@@ -76,6 +76,28 @@ public:
         : x( c )
         , y( c )
         , z( c )
+        , w( w )
+    {
+    }
+
+    /**
+     * Explicit constructor with one parameter for a 3D vector. Sets w = 1.
+     */
+    constexpr explicit Vector4(const ml7::Vector3& v)
+        : x( v.x )
+        , y( v.y )
+        , z( v.z )
+        , w( 1.0f )
+    {
+    }
+
+    /**
+     * Explicit constructor with one parameter for a 3D vector and one for w.
+     */
+    constexpr explicit Vector4(const ml7::Vector3& v, float w)
+        : x( v.x )
+        , y( v.y )
+        , z( v.z )
         , w( w )
     {
     }
@@ -157,6 +179,16 @@ public:
     Vector4 abs() const
     {
         return Vector4( ::abs(x), ::abs(y), ::abs(z), ::abs(w) );
+    }
+
+    /**
+     * Interprets this 4D vector as a homogeneous 3D vector and returns a
+     * dehomogenized 3D "copy" of it.
+     */
+    Vector3 to_vector3() const
+    {
+        const ml7::Vector4 v = dehomogenized();
+        return Vector3( v.x, v.y, v.z );
     }
 
 

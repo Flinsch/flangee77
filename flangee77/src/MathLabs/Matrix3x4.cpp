@@ -35,6 +35,53 @@ namespace ml7 {
     }
 
     /**
+     * Initializes a view transformation matrix for a left-handed coordinate system
+     * using a camera position, a focal point, and an "up" direction.
+     */
+    Matrix3x4 Matrix3x4::look_at_lh(const Vector3& position, const Vector3& focus, const Vector3& up)
+    {
+        // https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3dxmatrixlookatlh
+        return look_to_lh( position, focus - position, up );
+    }
+
+    /**
+     * Initializes a view transformation matrix for a right-handed coordinate system
+     * using a camera position, a focal point, and an "up" direction.
+     */
+    Matrix3x4 Matrix3x4::look_at_rh(const Vector3& position, const Vector3& focus, const Vector3& up)
+    {
+        // https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3dxmatrixlookatrh
+        return look_to_rh( position, focus - position, up );
+    }
+
+    /**
+     * Initializes a view transformation matrix for a left-handed coordinate system
+     * using a camera position, a camera "look" direction, and an "up" direction.
+     */
+    Matrix3x4 Matrix3x4::look_to_lh(const Vector3& position, const Vector3& look, const Vector3& up)
+    {
+        // https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3dxmatrixlookatlh
+        const Vector3 z( look.normalized() );
+        const Vector3 x( up.cross(z).normalized() );
+        const Vector3 y( z.cross(x) );
+        return {
+            x.x,  x.y,  x.z,  -x.dot(position),
+            y.x,  y.y,  y.z,  -y.dot(position),
+            z.x,  z.y,  z.z,  -z.dot(position),
+        };
+    }
+
+    /**
+     * Initializes a view transformation matrix for a right-handed coordinate system
+     * using a camera position, a camera "look" direction, and an "up" direction.
+     */
+    Matrix3x4 Matrix3x4::look_to_rh(const Vector3& position, const Vector3& look, const Vector3& up)
+    {
+        // https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3dxmatrixlookatrh
+        return look_to_lh( position, -look, up );
+    }
+
+    /**
      * Swap operation.
      */
     void Matrix3x4::swap(Matrix3x4& rhs)
@@ -99,7 +146,46 @@ namespace ml7 {
     }
 
     /**
-     * Returns a copy of the given (column) vector transformed by this matrix.
+     * Assumes that this matrix is a view transformation matrix for a left-handed
+     * coordinate system and tries to extract the camera position, the camera "look"
+     * direction, and the "up" direction.
+     */
+    bool Matrix3x4::is_look_lh(ml7::Vector3& position, ml7::Vector3& look, ml7::Vector3& up) const
+    {
+        // Since we assume that the 3x3 part is a rotation matrix,
+        // we can simply transpose it (instead of "costly" inverting it).
+        position = {
+            -(_11*_14 + _21*_24 + _31*_34),
+            -(_12*_14 + _22*_24 + _32*_34),
+            -(_13*_14 + _23*_24 + _33*_34),
+        };
+        look = { _31, _32, _33 };
+        up = { _21, _22, _23 };
+        return look.lensqr() && up.lensqr(); // Just some bare minimum check.
+    }
+
+    /**
+     * Assumes that this matrix is a view transformation matrix for a right-handed
+     * coordinate system and tries to extract the camera position, the camera "look"
+     * direction, and the "up" direction.
+     */
+    bool Matrix3x4::is_look_rh(ml7::Vector3& position, ml7::Vector3& look, ml7::Vector3& up) const
+    {
+        // Since we assume that the 3x3 part is a rotation matrix,
+        // we can simply transpose it (instead of "costly" inverting it).
+        position = {
+            -(_11*_14 + _21*_24 + _31*_34),
+            -(_12*_14 + _22*_24 + _32*_34),
+            -(_13*_14 + _23*_24 + _33*_34),
+        };
+        look = { -_31, -_32, -_33 };
+        up = { _21, _22, _23 };
+        return look.lensqr() && up.lensqr(); // Just some bare minimum check.
+    }
+
+    /**
+     * Returns a copy of the given (column) vector transformed by this matrix
+     * inverted (if possible).
      * Used to transform position vectors rather than direction vectors.
      */
     Vector3 Matrix3x4::transform_inverted(const Vector3& v) const
@@ -109,7 +195,7 @@ namespace ml7 {
 
     /**
      * Returns a copy of the given (column) vector transformed by the 3x3 part of
-     * this matrix.
+     * this matrix inverted (if possible).
      * Used to transform direction vectors rather than position vectors.
      */
     Vector3 Matrix3x4::transform3x3_inverted(const Vector3& v) const

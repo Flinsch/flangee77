@@ -18,6 +18,7 @@
 #include "./MathLabs/Matrix2x3.h"
 #include "./MathLabs/Matrix3x3.h"
 #include "./MathLabs/Matrix3x4.h"
+#include "./MathLabs/Matrix4x4.h"
 
 #include "./XiaoLabs/graphics.h"
 

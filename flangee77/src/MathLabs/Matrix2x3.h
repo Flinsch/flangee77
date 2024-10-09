@@ -3,6 +3,7 @@
 #define ML7_MATRIX2X3_H
 
 #include "./Matrix2x2.h"
+#include "./Vector2.h"
 
 
 
@@ -208,6 +209,12 @@ public:
     // #############################################################################
 public:
     /**
+     * Tells whether this matrix is invertible (i.e., whether the determinant of its
+     * 2x2 part is non-zero).
+     */
+    bool is_invertible() const { return determinant() != 0.0f; }
+
+    /**
      * Returns the determinant of the 2x2 part of the matrix.
      */
     float determinant() const { return _11*_22 - _12*_21; }
@@ -267,7 +274,7 @@ public:
     }
 
     /**
-     * Decomposes this matrix into a 2x2 matrix and a translation vector
+     * Decomposes this matrix into a 2x2 matrix and a translation vector.
      */
     void decompose(ml7::Matrix2x2& m2x2, ml7::Vector2& translation) const
     {
@@ -309,14 +316,15 @@ public:
     }
 
     /**
-     * Returns a copy of the given (column) vector transformed by this matrix.
+     * Returns a copy of the given (column) vector transformed by this matrix
+     * inverted (if possible).
      * Used to transform position vectors rather than direction vectors.
      */
     Vector2 transform_inverted(const Vector2& v) const;
 
     /**
      * Returns a copy of the given (column) vector transformed by the 2x2 part of
-     * this matrix.
+     * this matrix inverted (if possible).
      * Used to transform direction vectors rather than position vectors.
      */
     Vector2 transform2x2_inverted(const Vector2& v) const;

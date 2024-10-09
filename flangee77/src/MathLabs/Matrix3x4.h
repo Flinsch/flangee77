@@ -3,6 +3,7 @@
 #define ML7_MATRIX3X4_H
 
 #include "./Matrix3x3.h"
+#include "./Vector3.h"
 
 
 
@@ -234,6 +235,30 @@ public:
      */
     static Matrix3x4 compose(const ml7::Vector3& scaling, const ml7::Vector3& axis, float theta, const ml7::Vector3& translation);
 
+    /**
+     * Initializes a view transformation matrix for a left-handed coordinate system
+     * using a camera position, a focal point, and an "up" direction.
+     */
+    static Matrix3x4 look_at_lh(const Vector3& position, const Vector3& focus, const Vector3& up);
+
+    /**
+     * Initializes a view transformation matrix for a right-handed coordinate system
+     * using a camera position, a focal point, and an "up" direction.
+     */
+    static Matrix3x4 look_at_rh(const Vector3& position, const Vector3& focus, const Vector3& up);
+
+    /**
+     * Initializes a view transformation matrix for a left-handed coordinate system
+     * using a camera position, a camera "look" direction, and an "up" direction.
+     */
+    static Matrix3x4 look_to_lh(const Vector3& position, const Vector3& look, const Vector3& up);
+
+    /**
+     * Initializes a view transformation matrix for a right-handed coordinate system
+     * using a camera position, a camera "look" direction, and an "up" direction.
+     */
+    static Matrix3x4 look_to_rh(const Vector3& position, const Vector3& look, const Vector3& up);
+
 
     /**
      * Swap operation.
@@ -290,6 +315,12 @@ public:
     // #############################################################################
 public:
     /**
+     * Tells whether this matrix is invertible (i.e., whether the determinant of its
+     * 3x3 part is non-zero).
+     */
+    bool is_invertible() const { return determinant() != 0.0f; }
+
+    /**
      * Returns the determinant of the 3x3 part of the matrix.
      */
     float determinant() const
@@ -325,7 +356,7 @@ public:
 
     /**
      * Extracts the basis vectors that define the transformed coordinate system
-     * (i.e., the column vectors of the matrix).
+     * (i.e., the column vectors of the 3x3 part of the matrix).
      */
     void to_axes(ml7::Vector3& x, ml7::Vector3& y, ml7::Vector3& z) const
     {
@@ -366,7 +397,7 @@ public:
     }
 
     /**
-     * Decomposes this matrix into a 3x3 matrix and a translation vector
+     * Decomposes this matrix into a 3x3 matrix and a translation vector.
      */
     void decompose(ml7::Matrix3x3& m3x3, ml7::Vector3& translation) const
     {
@@ -383,6 +414,20 @@ public:
      * (positive) scalings in the "common" order (no shears, negative scalings, etc.).
      */
     bool decompose(ml7::Vector3& scaling, ml7::Vector3& axis, float& theta, ml7::Vector3& translation) const;
+
+    /**
+     * Assumes that this matrix is a view transformation matrix for a left-handed
+     * coordinate system and tries to extract the camera position, the camera "look"
+     * direction, and the "up" direction.
+     */
+    bool is_look_lh(ml7::Vector3& position, ml7::Vector3& look, ml7::Vector3& up) const;
+
+    /**
+     * Assumes that this matrix is a view transformation matrix for a right-handed
+     * coordinate system and tries to extract the camera position, the camera "look"
+     * direction, and the "up" direction.
+     */
+    bool is_look_rh(ml7::Vector3& position, ml7::Vector3& look, ml7::Vector3& up) const;
 
     /**
      * Returns a copy of the given (column) vector transformed by this matrix.
@@ -412,14 +457,15 @@ public:
     }
 
     /**
-     * Returns a copy of the given (column) vector transformed by this matrix.
+     * Returns a copy of the given (column) vector transformed by this matrix
+     * inverted (if possible).
      * Used to transform position vectors rather than direction vectors.
      */
     Vector3 transform_inverted(const Vector3& v) const;
 
     /**
      * Returns a copy of the given (column) vector transformed by the 3x3 part of
-     * this matrix.
+     * this matrix inverted (if possible).
      * Used to transform direction vectors rather than position vectors.
      */
     Vector3 transform3x3_inverted(const Vector3& v) const;

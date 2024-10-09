@@ -187,6 +187,18 @@ public:
     static Matrix3x3 compose(const ml7::Vector3& scaling, const ml7::Vector3& axis, float theta);
 
     /**
+     * Initializes a view rotation matrix for a left-handed coordinate system using
+     * a camera "look" direction and an "up" direction.
+     */
+    static Matrix3x3 look_lh(const Vector3& look, const Vector3& up);
+
+    /**
+     * Initializes a view rotation matrix for a right-handed coordinate system using
+     * a camera "look" direction and an "up" direction.
+     */
+    static Matrix3x3 look_rh(const Vector3& look, const Vector3& up);
+
+    /**
      * Swap operation.
      */
     void swap(Matrix3x3& rhs);
@@ -257,6 +269,12 @@ public:
     // #############################################################################
 public:
     /**
+     * Tells whether this matrix is invertible (i.e., whether its determinant is
+     * non-zero).
+     */
+    bool is_invertible() const { return determinant() != 0.0f; }
+
+    /**
      * Returns the determinant of the matrix.
      */
     float determinant() const
@@ -311,7 +329,7 @@ public:
         return {
             m[0][j],
             m[1][j],
-            m[2][j]
+            m[2][j],
         };
     }
 
@@ -341,6 +359,20 @@ public:
      * scalings in the "common" order (no shears, negative scalings, etc.).
      */
     bool decompose(ml7::Vector3& scaling, ml7::Vector3& axis, float& theta) const;
+
+    /**
+     * Assumes that this matrix is a view rotation matrix for a left-handed
+     * coordinate system and tries to extract the camera "look" direction and the
+     * "up" direction.
+     */
+    bool is_look_lh(ml7::Vector3& look, ml7::Vector3& up) const;
+
+    /**
+     * Assumes that this matrix is a view rotation matrix for a right-handed
+     * coordinate system and tries to extract the camera "look" direction and the
+     * "up" direction.
+     */
+    bool is_look_rh(ml7::Vector3& look, ml7::Vector3& up) const;
 
     /**
      * Returns a copy of the given (column) vector transformed by this matrix.

@@ -83,7 +83,8 @@ namespace ml7 {
     }
 
     /**
-     * Returns a copy of the given (column) vector transformed by this matrix.
+     * Returns a copy of the given (column) vector transformed by this matrix
+     * inverted (if possible).
      * Used to transform position vectors rather than direction vectors.
      */
     Vector2 Matrix2x3::transform_inverted(const Vector2& v) const
@@ -93,7 +94,7 @@ namespace ml7 {
 
     /**
      * Returns a copy of the given (column) vector transformed by the 2x2 part of
-     * this matrix.
+     * this matrix inverted (if possible).
      * Used to transform direction vectors rather than position vectors.
      */
     Vector2 Matrix2x3::transform2x2_inverted(const Vector2& v) const

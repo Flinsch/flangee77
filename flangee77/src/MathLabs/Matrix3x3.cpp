@@ -76,6 +76,33 @@ namespace ml7 {
     }
 
     /**
+     * Initializes a view rotation matrix for a left-handed coordinate system using
+     * a camera "look" direction and an "up" direction.
+     */
+    Matrix3x3 Matrix3x3::look_lh(const Vector3& look, const Vector3& up)
+    {
+        // https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3dxmatrixlookatlh
+        const Vector3 z( look.normalized() );
+        const Vector3 x( up.cross(z).normalized() );
+        const Vector3 y( z.cross(x) );
+        return {
+            x.x,  x.y,  x.z,
+            y.x,  y.y,  y.z,
+            z.x,  z.y,  z.z,
+        };
+    }
+
+    /**
+     * Initializes a view rotation matrix for a right-handed coordinate system using
+     * a camera "look" direction and an "up" direction.
+     */
+    Matrix3x3 Matrix3x3::look_rh(const Vector3& look, const Vector3& up)
+    {
+        // https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3dxmatrixlookatrh
+        return look_lh( -look, up );
+    }
+
+    /**
      * Swap operation.
      */
     void Matrix3x3::swap(Matrix3x3& rhs)
@@ -201,6 +228,30 @@ namespace ml7 {
         };
 
         return m.to_axis_angle( axis, theta );
+    }
+
+    /**
+     * Assumes that this matrix is a view rotation matrix for a left-handed
+     * coordinate system and tries to extract the camera "look" direction and the
+     * "up" direction.
+     */
+    bool Matrix3x3::is_look_lh(ml7::Vector3& look, ml7::Vector3& up) const
+    {
+        look = { _31, _32, _33 };
+        up = { _21, _22, _23 };
+        return look.lensqr() && up.lensqr(); // Just some bare minimum check.
+    }
+
+    /**
+     * Assumes that this matrix is a view rotation matrix for a right-handed
+     * coordinate system and tries to extract the camera "look" direction and the
+     * "up" direction.
+     */
+    bool Matrix3x3::is_look_rh(ml7::Vector3& look, ml7::Vector3& up) const
+    {
+        look = { -_31, -_32, -_33 };
+        up = { _21, _22, _23 };
+        return look.lensqr() && up.lensqr(); // Just some bare minimum check.
     }
 
     /**

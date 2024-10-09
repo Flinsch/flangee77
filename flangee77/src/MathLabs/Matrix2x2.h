@@ -158,6 +158,12 @@ public:
     // #############################################################################
 public:
     /**
+     * Tells whether this matrix is invertible (i.e., whether its determinant is
+     * non-zero).
+     */
+    bool is_invertible() const { return determinant() != 0.0f; }
+
+    /**
      * Returns the determinant of the matrix.
      */
     float determinant() const { return _11*_22 - _12*_21; }

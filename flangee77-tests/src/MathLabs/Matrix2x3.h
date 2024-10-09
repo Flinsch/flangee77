@@ -47,10 +47,17 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x3:  ") )
 
     // compose (and decompose) see below
 
+    TESTLABS_CHECK_EQ( ml7::Matrix2x3( 1.0f, 2.0f, 5.0f, 3.0f, 4.0f, 6.0f ).is_invertible(), true );
+    TESTLABS_CHECK_EQ( ml7::Matrix2x3( 2.0f, 3.0f, 5.0f, 4.0f, 1.0f, 6.0f ).is_invertible(), true );
+    TESTLABS_CHECK_EQ( ml7::Matrix2x3( 3.0f, 4.0f, 5.0f, 1.0f, 2.0f, 6.0f ).is_invertible(), true );
+    TESTLABS_CHECK_EQ( ml7::Matrix2x3( 4.0f, 1.0f, 5.0f, 2.0f, 3.0f, 6.0f ).is_invertible(), true );
+    TESTLABS_CHECK_EQ( ml7::Matrix2x3( 3.0f, 12.0f, 0.0f, 2.0f, 8.0f, 0.0f ).is_invertible(), false );
+
     TESTLABS_CHECK_EQ( ml7::Matrix2x3( 1.0f, 2.0f, 5.0f, 3.0f, 4.0f, 6.0f ).determinant(), -2.0f );
     TESTLABS_CHECK_EQ( ml7::Matrix2x3( 2.0f, 3.0f, 5.0f, 4.0f, 1.0f, 6.0f ).determinant(), -10.0f );
     TESTLABS_CHECK_EQ( ml7::Matrix2x3( 3.0f, 4.0f, 5.0f, 1.0f, 2.0f, 6.0f ).determinant(), 2.0f );
     TESTLABS_CHECK_EQ( ml7::Matrix2x3( 4.0f, 1.0f, 5.0f, 2.0f, 3.0f, 6.0f ).determinant(), 10.0f );
+    TESTLABS_CHECK_EQ( ml7::Matrix2x3( 3.0f, 12.0f, 0.0f, 2.0f, 8.0f, 0.0f ).determinant(), 0.0f );
 
     TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x3( 1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f ).inverted(), 3 ), _::round( ml7::Matrix2x3( -5.0f/3.0f, 2.0f/3.0f, 1.0f, 4.0f/3.0f, -1.0f/3.0f, -2.0f ), 3 ) );
     TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x3( -5.0f/3.0f, 2.0f/3.0f, 1.0f, 4.0f/3.0f, -1.0f/3.0f, -2.0f ).inverted(), 3 ), _::round( ml7::Matrix2x3( 1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f ), 3 ) );
@@ -108,8 +115,8 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x3:  ") )
 
     TESTLABS_CHECK_EQ( +ml7::Matrix2x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f ), ml7::Matrix2x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f ) );
     TESTLABS_CHECK_EQ( -ml7::Matrix2x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f ), ml7::Matrix2x3( -1.0f, 2.0f, -3.0f, 4.0f, -5.0f, 6.0f ) );
-    TESTLABS_CHECK_EQ( ml7::Matrix2x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f ) + ml7::Matrix2x3( -7.0f, 8.0f, -9.0f, 10.0f, -11.0f, 12.0f ), ml7::Matrix2x3( -6.0f, 6.0f, -6.0f, 6.0f, -6.0f, 6.0f ) );
-    TESTLABS_CHECK_EQ( ml7::Matrix2x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f ) - ml7::Matrix2x3( -7.0f, 8.0f, -9.0f, 10.0f, -11.0f, 12.0f ), ml7::Matrix2x3( 8.0f, -10.0f, 12.0f, -14.0f, 16.0f, -18.0f ) );
+    TESTLABS_CHECK_EQ( ml7::Matrix2x3( 5.0f, -8.0f, 12.0f, 7.0f, -9.0f, 15.0f ) + ml7::Matrix2x3( -6.0f, 9.0f, -14.0f, 3.0f, 11.0f, -7.0f ), ml7::Matrix2x3( -1.0f, 1.0f, -2.0f, 10.0f, 2.0f, 8.0f ) );
+    TESTLABS_CHECK_EQ( ml7::Matrix2x3( 5.0f, -8.0f, 12.0f, 7.0f, -9.0f, 15.0f ) - ml7::Matrix2x3( -6.0f, 9.0f, -14.0f, 3.0f, 11.0f, -7.0f ), ml7::Matrix2x3( 11.0f, -17.0f, 26.0f, 4.0f, -20.0f, 22.0f ) );
     TESTLABS_CHECK_EQ( ml7::Matrix2x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f ) * 7.0f, ml7::Matrix2x3( 7.0f, -14.0f, 21.0f, -28.0f, 35.0f, -42.0f ) );
     TESTLABS_CHECK_EQ( ml7::Matrix2x3( 7.0f, -14.0f, 21.0f, -28.0f, 35.0f, -42.0f ) / 7.0f, ml7::Matrix2x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f ) );
 
@@ -118,8 +125,8 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x3:  ") )
 
     TESTLABS_CHECK_EQ( ml7::Matrix2x3( 1.0f, -2.0f, 7.0f, 3.0f, -4.0f, 8.0f ) * ml7::Vector2( -5.0f, 6.0f ), ml7::Vector2( -10.0f, -31.0f ) );
 
-    TESTLABS_CHECK_EQ( ml7::Matrix2x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f ) += ml7::Matrix2x3( -7.0f, 8.0f, -9.0f, 10.0f, -11.0f, 12.0f ), ml7::Matrix2x3( -6.0f, 6.0f, -6.0f, 6.0f, -6.0f, 6.0f ) );
-    TESTLABS_CHECK_EQ( ml7::Matrix2x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f ) -= ml7::Matrix2x3( -7.0f, 8.0f, -9.0f, 10.0f, -11.0f, 12.0f ), ml7::Matrix2x3( 8.0f, -10.0f, 12.0f, -14.0f, 16.0f, -18.0f ) );
+    TESTLABS_CHECK_EQ( ml7::Matrix2x3( 5.0f, -8.0f, 12.0f, 7.0f, -9.0f, 15.0f ) += ml7::Matrix2x3( -6.0f, 9.0f, -14.0f, 3.0f, 11.0f, -7.0f ), ml7::Matrix2x3( -1.0f, 1.0f, -2.0f, 10.0f, 2.0f, 8.0f ) );
+    TESTLABS_CHECK_EQ( ml7::Matrix2x3( 5.0f, -8.0f, 12.0f, 7.0f, -9.0f, 15.0f ) -= ml7::Matrix2x3( -6.0f, 9.0f, -14.0f, 3.0f, 11.0f, -7.0f ), ml7::Matrix2x3( 11.0f, -17.0f, 26.0f, 4.0f, -20.0f, 22.0f ) );
     TESTLABS_CHECK_EQ( ml7::Matrix2x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f ) *= 7.0f, ml7::Matrix2x3( 7.0f, -14.0f, 21.0f, -28.0f, 35.0f, -42.0f ) );
     TESTLABS_CHECK_EQ( ml7::Matrix2x3( 7.0f, -14.0f, 21.0f, -28.0f, 35.0f, -42.0f ) /= 7.0f, ml7::Matrix2x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f ) );
 
