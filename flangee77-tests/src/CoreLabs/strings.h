@@ -1024,6 +1024,42 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  padding right") )
 
 
 
+TESTLABS_CASE( TEXT("CoreLabs:  strings:  to hex") )
+{
+    struct Entry
+    {
+        unsigned val;
+        cl7::char_type chA;
+        unsigned pad;
+        cl7::string expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0x00000000, TEXT('a'), 0, TEXT("") },
+        { 0x00000000, TEXT('a'), 2, TEXT("00") },
+        { 0x00000000, TEXT('a'), 8, TEXT("00000000") },
+        { 0x0000bf00, TEXT('a'), 0, TEXT("bf00") },
+        { 0x0000bf00, TEXT('a'), 8, TEXT("0000bf00") },
+        { 0x12345678, TEXT('a'), 0, TEXT("12345678") },
+        { 0xffffffff, TEXT('a'), 0, TEXT("ffffffff") },
+        { 0xffffffff, TEXT('A'), 0, TEXT("FFFFFFFF") },
+        { 0xffffffff, TEXT('A'), 9, TEXT("0FFFFFFFF") },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    {
+        const auto val = entry.val;
+        const auto chA = entry.chA;
+        const auto pad = entry.pad;
+        const auto& expected = entry.expected;
+
+        TESTLABS_CHECK_EQ( cl7::strings::to_hex( val, chA, pad ), expected );
+        TESTLABS_CHECK_EQ( cl7::strings::to_0xhex( val, chA, pad ), TEXT("0x") + expected );
+    }
+}
+
+
+
 TESTLABS_CASE( TEXT("CoreLabs:  strings:  Levenshtein distance") )
 {
     struct Entry
