@@ -78,7 +78,7 @@ public:
             float z;
         }; // struct
 
-        /** Array of all three componets. */
+        /** Array of all three components. */
         float data[3];
     }; // union
 

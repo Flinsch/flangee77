@@ -112,12 +112,12 @@ public:
 
     /**
      * Initializes a rotation matrix representing a counter-clockwise rotation by
-     * angle theta (in radians).
+     * a certain angle (in radians).
      */
-    static Matrix2x3 rotation(float theta)
+    static Matrix2x3 rotation(float angle)
     {
-        const float cs = ::cosf( theta );
-        const float sn = ::sinf( theta );
+        const float cs = ::cosf( angle );
+        const float sn = ::sinf( angle );
         return {
             cs, -sn, 0.0f,
             sn, cs, 0.0f,
@@ -137,18 +137,18 @@ public:
 
     /**
      * Initializes a transformation matrix from the specified scaling factor, a
-     * counter-clockwise rotation angle theta (in radians), and a translation vector.
+     * counter-clockwise rotation angle (in radians), and a translation vector.
      */
-    static Matrix2x3 compose(float scaling, float theta, const ml7::Vector2& translation)
+    static Matrix2x3 compose(float scaling, float angle, const ml7::Vector2& translation)
     {
-        return compose( { scaling, scaling }, theta, translation );
+        return compose( { scaling, scaling }, angle, translation );
     }
 
     /**
      * Initializes a transformation matrix from the specified scaling vector, a
-     * counter-clockwise rotation angle theta (in radians), and a translation vector.
+     * counter-clockwise rotation angle (in radians), and a translation vector.
      */
-    static Matrix2x3 compose(const ml7::Vector2& scaling, float theta, const ml7::Vector2& translation);
+    static Matrix2x3 compose(const ml7::Vector2& scaling, float angle, const ml7::Vector2& translation);
 
     /**
      * Swap operation.
@@ -283,12 +283,12 @@ public:
     }
 
     /**
-     * Tries to extract the scaling vector, the counter-clockwise rotation angle theta
-     * (in the range [-pi;+pi]), and the translation vector this matrix is composed of.
+     * Tries to extract the scaling vector, the counter-clockwise rotation angle (in
+     * the range [-pi;+pi]), and the translation vector this matrix is composed of.
      * This only works if the matrix actually consists of translations, rotations and
      * (positive) scalings in the "common" order (no shears, negative scalings, etc.).
      */
-    bool decompose(ml7::Vector2& scaling, float& theta, ml7::Vector2& translation) const;
+    bool decompose(ml7::Vector2& scaling, float& angle, ml7::Vector2& translation) const;
 
     /**
      * Returns a copy of the given (column) vector transformed by this matrix.
@@ -380,17 +380,18 @@ public:
     /** Returns the (element-wise) matrix difference of two matrices. */
     constexpr Matrix2x3 operator - (const Matrix2x3& m) const { return Matrix2x3( a - m.a, b - m.b, c - m.c, d - m.d, e - m.e, f - m.f ); }
 
-    /** Returns a copy of this vector "scaled" by the specified factor (scalar multiplication). */
+    /** Returns a copy of this matrix "scaled" by the specified factor (scalar multiplication). */
     constexpr Matrix2x3 operator * (float s) const { return Matrix2x3( a * s, b * s, c * s, d * s, e * s, f * s ); }
-    /** Returns a copy of this vector inversely "scaled" by the specified factor (scalar division). */
+    /** Returns a copy of this matrix inversely "scaled" by the specified factor (scalar division). */
     constexpr Matrix2x3 operator / (float s) const { return Matrix2x3( a / s, b / s, c / s, d / s, e / s, f / s ); }
 
     /** Returns the matrix product of two matrices (matrix multiplication). */
     constexpr Matrix2x3 operator * (const Matrix2x3& m) const
     {
-        return Matrix2x3(
+        return {
             _11*m._11 + _12*m._21,   _11*m._12 + _12*m._22,   _11*m._13 + _12*m._23 + _13,
-            _21*m._11 + _22*m._21,   _21*m._12 + _22*m._22,   _21*m._13 + _22*m._23 + _23 );
+            _21*m._11 + _22*m._21,   _21*m._12 + _22*m._22,   _21*m._13 + _22*m._23 + _23,
+        };
     }
 
     /** Returns a copy of the given (column vector) transformed by this matrix. */
@@ -409,7 +410,7 @@ public:
 
     /** "Scales" this matrix by the specified factor (scalar multiplication). */
     constexpr Matrix2x3& operator *= (float s) { for ( unsigned k = 0; k < 6; ++k ) data[k] *= s; return *this; }
-    /** Inversely scales this vector by the specified factor (scalar division). */
+    /** Inversely "scales" this matrix by the specified factor (scalar division). */
     constexpr Matrix2x3& operator /= (float s) { for ( unsigned k = 0; k < 6; ++k ) data[k] /= s; return *this; }
 
 

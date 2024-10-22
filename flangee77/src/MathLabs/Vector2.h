@@ -88,7 +88,7 @@ public:
             float t;
         };
 
-        /** Array of the two componets. */
+        /** Array of the two components. */
         float data[2];
     }; // union
 

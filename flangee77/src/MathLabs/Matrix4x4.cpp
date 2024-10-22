@@ -16,22 +16,21 @@ namespace ml7 {
     // #############################################################################
 
     /**
-     * Initializes a rotation matrix representing a clockwise rotation by angle theta
-     * (in radians) around an axis specified as a unit vector.
+     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * radians) around an axis specified as a unit vector.
      */
-    Matrix4x4 Matrix4x4::rotation_normalized(const ml7::Vector3& u, float theta)
+    Matrix4x4 Matrix4x4::rotation_normalized(const ml7::Vector3& unit_axis, float angle)
     {
-        return Matrix4x4( Matrix3x3::rotation_normalized( u, theta ) );
+        return Matrix4x4( Matrix3x3::rotation_normalized( unit_axis, angle ) );
     }
 
     /**
      * Initializes a transformation matrix from the specified scaling vector, a
-     * clockwise rotation angle theta (in radians) around the specified axis, and a
-     * translation vector.
+     * rotation axis, a rotation angle (in radians), and a translation vector.
      */
-    Matrix4x4 Matrix4x4::compose(const ml7::Vector3& scaling, const ml7::Vector3& axis, float theta, const ml7::Vector3& translation)
+    Matrix4x4 Matrix4x4::compose(const ml7::Vector3& scaling, const ml7::Vector3& axis, float angle, const ml7::Vector3& translation)
     {
-        return Matrix4x4( Matrix3x4::compose( scaling, axis, theta, translation ) );
+        return Matrix4x4( Matrix3x4::compose( scaling, axis, angle, translation ) );
     }
 
     /**
@@ -357,25 +356,24 @@ namespace ml7 {
     }
 
     /**
-     * Tries to extract the rotation axis and the clockwise rotation angle theta (in
-     * the range [0;pi]) the 3x3 part of this matrix is composed of.
+     * Tries to extract the rotation axis and the rotation angle (in the range
+     * [0;pi]) the 3x3 part of this matrix is composed of.
      * This only works if the 3x3 part actually consists of rotations only (no
      * scalings, shears, etc.).
      */
-    bool Matrix4x4::to_axis_angle(ml7::Vector3& axis, float& theta) const
+    bool Matrix4x4::to_axis_angle(ml7::Vector3& axis, float& angle) const
     {
-        return to_matrix3x3().to_axis_angle( axis, theta );
+        return to_matrix3x3().to_axis_angle( axis, angle );
     }
 
     /**
-     * Tries to extract the scaling vector, the rotation axis, the clockwise rotation
-     * angle theta (in the range [0;pi]), and the translation vector this matrix is
-     * composed of.
+     * Tries to extract the scaling vector, the rotation axis, the rotation angle
+     * (in the range [0;pi]), and the translation vector this matrix is composed of.
      * This only works if the matrix actually consists of translations, rotations and
      * (positive) scalings in the "common" order (no projections, shears, negative
      * scalings, etc.).
      */
-    bool Matrix4x4::decompose(ml7::Vector3& scaling, ml7::Vector3& axis, float& theta, ml7::Vector3& translation) const
+    bool Matrix4x4::decompose(ml7::Vector3& scaling, ml7::Vector3& axis, float& angle, ml7::Vector3& translation) const
     {
         if ( !is_affine() )
             return false;
@@ -383,7 +381,7 @@ namespace ml7 {
         translation.x = _14;
         translation.y = _24;
         translation.z = _34;
-        return to_matrix3x3().decompose( scaling, axis, theta );
+        return to_matrix3x3().decompose( scaling, axis, angle );
     }
 
     /**

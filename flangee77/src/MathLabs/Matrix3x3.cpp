@@ -18,15 +18,16 @@ namespace ml7 {
     // #############################################################################
 
     /**
-     * Initializes a rotation matrix representing a clockwise rotation by angle theta
-     * (in radians) around an axis specified as a unit vector.
+     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * radians) around an axis specified as a unit vector.
      */
-    Matrix3x3 Matrix3x3::rotation_normalized(const ml7::Vector3& u, float theta)
+    Matrix3x3 Matrix3x3::rotation_normalized(const ml7::Vector3& unit_axis, float angle)
     {
-        if ( !theta )
+        const ml7::Vector3& u = unit_axis;
+        if ( !angle )
             return IDENTITY;
-        const float cs = ::cosf( theta );
-        const float sn = ::sinf( theta );
+        const float cs = ::cosf( angle );
+        const float sn = ::sinf( angle );
         const float C = 1.0f - cs;
         const float xsn = u.x*sn;
         const float ysn = u.y*sn;
@@ -45,19 +46,19 @@ namespace ml7 {
     }
 
     /**
-     * Initializes a transformation matrix from the specified scaling vector and a
-     * clockwise rotation angle theta (in radians) around the specified axis.
+     * Initializes a transformation matrix from the specified scaling vector, a
+     * rotation axis, and a rotation angle (in radians).
      */
-    Matrix3x3 Matrix3x3::compose(const ml7::Vector3& scaling, const ml7::Vector3& axis, float theta)
+    Matrix3x3 Matrix3x3::compose(const ml7::Vector3& scaling, const ml7::Vector3& axis, float angle)
     {
-        if ( !theta )
+        if ( !angle )
             return Matrix3x3::scaling( scaling );
         const float sx = scaling.x;
         const float sy = scaling.y;
         const float sz = scaling.z;
         const ml7::Vector3 u = axis.normalized();
-        const float cs = ::cosf( theta );
-        const float sn = ::sinf( theta );
+        const float cs = ::cosf( angle );
+        const float sn = ::sinf( angle );
         const float C = 1.0f - cs;
         const float xsn = u.x*sn;
         const float ysn = u.y*sn;
@@ -135,24 +136,24 @@ namespace ml7 {
     }
 
     /**
-     * Tries to extract the rotation axis and the clockwise rotation angle theta (in
-     * the range [0;pi]) this matrix is composed of.
+     * Tries to extract the rotation axis and the rotation angle (in the range
+     * [0;pi]) this matrix is composed of.
      * This only works if the matrix actually consists of rotations only (no
      * scalings, shears, etc.).
      */
-    bool Matrix3x3::to_axis_angle(ml7::Vector3& axis, float& theta) const
+    bool Matrix3x3::to_axis_angle(ml7::Vector3& axis, float& angle) const
     {
         float t = _11 + _22 + _33;
         float cs = 0.5f * (t - 1.0f);
-        theta = ::acosf( cs ); // [0;pi]
+        angle = ::acosf( cs ); // [0;pi]
 
-        if ( !(theta > 0.0f) )
+        if ( !(angle > 0.0f) )
         {
             axis = ml7::Vector3::X; // Any axis would be "correct" here.
-            return theta == 0.0f;
+            return angle == 0.0f;
         }
 
-        if ( theta < ml7::constants::pi )
+        if ( angle < ml7::constants::pi )
         {
             axis.x = _32 - _23;
             axis.y = _13 - _31;
@@ -201,12 +202,12 @@ namespace ml7 {
     }
 
     /**
-     * Tries to extract the scaling vector, the rotation axis, and the clockwise
-     * rotation angle theta (in the range [0;pi]) this matrix is composed of.
+     * Tries to extract the scaling vector, the rotation axis, and the rotation angle
+     * (in the range [0;pi]) this matrix is composed of.
      * This only works if the matrix actually consists of rotations and (positive)
      * scalings in the "common" order (no shears, negative scalings, etc.).
      */
-    bool Matrix3x3::decompose(ml7::Vector3& scaling, ml7::Vector3& axis, float& theta) const
+    bool Matrix3x3::decompose(ml7::Vector3& scaling, ml7::Vector3& axis, float& angle) const
     {
         const float sx = Vector3( _11, _21, _31 ).length();
         const float sy = Vector3( _12, _22, _32 ).length();
@@ -227,7 +228,7 @@ namespace ml7 {
             _31*sxi, _32*syi, _33*szi,
         };
 
-        return m.to_axis_angle( axis, theta );
+        return m.to_axis_angle( axis, angle );
     }
 
     /**

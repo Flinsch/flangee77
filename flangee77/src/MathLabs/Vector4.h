@@ -127,7 +127,7 @@ public:
             float w;
         }; // struct
 
-        /** Array of all four componets. */
+        /** Array of all four components. */
         float data[4];
     }; // union
 

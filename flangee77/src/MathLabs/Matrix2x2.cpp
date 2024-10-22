@@ -17,14 +17,14 @@ namespace ml7 {
 
     /**
      * Initializes a transformation matrix from the specified scaling vector and a
-     * counter-clockwise rotation angle theta (in radians).
+     * counter-clockwise rotation angle (in radians).
      */
-    Matrix2x2 Matrix2x2::compose(const ml7::Vector2& scaling, float theta)
+    Matrix2x2 Matrix2x2::compose(const ml7::Vector2& scaling, float angle)
     {
         const float sx = scaling.x;
         const float sy = scaling.y;
-        const float cs = ::cosf( theta );
-        const float sn = ::sinf( theta );
+        const float cs = ::cosf( angle );
+        const float sn = ::sinf( angle );
         return {
             cs * sx,    -sn * sy,
             sn * sx,    cs * sy,
@@ -64,11 +64,11 @@ namespace ml7 {
 
     /**
      * Tries to extract the scaling vector and the counter-clockwise rotation angle
-     * theta (in the range [-pi;+pi]) this matrix is composed of.
+     * (in the range [-pi;+pi]) this matrix is composed of.
      * This only works if the matrix actually consists of rotations and (positive)
      * scalings in the "common" order (no shears, negative scalings, etc.).
      */
-    bool Matrix2x2::decompose(ml7::Vector2& scaling, float& theta) const
+    bool Matrix2x2::decompose(ml7::Vector2& scaling, float& angle) const
     {
         const float sx = Vector2( _11, _21 ).length();
         const float sy = Vector2( _12, _22 ).length();
@@ -76,7 +76,7 @@ namespace ml7 {
         if ( !sy ) return false;
         scaling.x = sx;
         scaling.y = sy;
-        theta = ::atan2f( -_12 / sy, _11 / sx );
+        angle = ::atan2f( -_12 / sy, _11 / sx );
         return true;
     }
 

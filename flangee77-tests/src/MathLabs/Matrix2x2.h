@@ -30,6 +30,8 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  ") )
 {
     TESTLABS_CHECK_EQ( ml7::Matrix2x2(), ml7::Matrix2x2( 1.0f, 0.0f, 0.0f, 1.0f ) );
 
+    TESTLABS_CHECK_EQ( ml7::Matrix2x2::from_axes( ml7::Vector2( 1.0f, 0.0f ), ml7::Vector2( 0.0f, 1.0f ) ), ml7::Matrix2x2( 1.0f, 0.0f, 0.0f, 1.0f ) );
+    TESTLABS_CHECK_EQ( ml7::Matrix2x2::from_axes( ml7::Vector2( 1.0f, 0.0f ), ml7::Vector2( 0.0f, 1.0f ) ).transform( ml7::Vector2( 1.0f, 2.0f ) ), ml7::Vector2( 1.0f, 2.0f ) );
     TESTLABS_CHECK_EQ( ml7::Matrix2x2::from_axes( ml7::Vector2( 0.0f, 1.0f ), ml7::Vector2( -1.0f, 0.0f ) ), ml7::Matrix2x2( 0.0f, -1.0f, 1.0f, 0.0f ) );
     TESTLABS_CHECK_EQ( ml7::Matrix2x2::from_axes( ml7::Vector2( 0.0f, 1.0f ), ml7::Vector2( -1.0f, 0.0f ) ).transform( ml7::Vector2( 1.0f, 2.0f ) ), ml7::Vector2( -2.0f, 1.0f ) );
 
@@ -126,7 +128,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  rotation") )
 {
     struct Entry
     {
-        float theta;
+        float angle;
         ml7::Matrix2x2 expected;
     } entry;
 
@@ -143,7 +145,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  rotation") )
 
     TESTLABS_SUBCASE_BATCH( TEXT("rotation"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2::rotation( entry.theta ), 3 ), _::round( entry.expected, 3 ) );
+        TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2::rotation( entry.angle ), 3 ), _::round( entry.expected, 3 ) );
     }
 }
 
@@ -154,7 +156,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  compose(float, ...) / decompose") )
     struct Entry
     {
         float scaling;
-        float theta;
+        float angle;
         ml7::Matrix2x2 expected;
     } entry;
 
@@ -171,19 +173,19 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  compose(float, ...) / decompose") )
 
     TESTLABS_SUBCASE_BATCH( TEXT("compose(float, ...)"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2::compose( entry.scaling, entry.theta ), 3 ), _::round( entry.expected, 3 ) );
+        TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2::compose( entry.scaling, entry.angle ), 3 ), _::round( entry.expected, 3 ) );
     }
 
     TESTLABS_SUBCASE_BATCH( TEXT("decompose"), container, entry )
     {
-        float expected_theta = entry.theta < -ml7::constants::pi ? ml7::constants::pi - ::fmodf( -entry.theta - ml7::constants::pi, ml7::constants::pi2 ) : ::fmodf( entry.theta + ml7::constants::pi, ml7::constants::pi2 ) - ml7::constants::pi;
+        float expected_angle = entry.angle < -ml7::constants::pi ? ml7::constants::pi - ::fmodf( -entry.angle - ml7::constants::pi, ml7::constants::pi2 ) : ::fmodf( entry.angle + ml7::constants::pi, ml7::constants::pi2 ) - ml7::constants::pi;
 
         ml7::Vector2 scaling;
-        float theta;
-        TESTLABS_CHECK( entry.expected.decompose( scaling, theta ) );
+        float angle;
+        TESTLABS_CHECK( entry.expected.decompose( scaling, angle ) );
         TESTLABS_CHECK_EQ( ml7::utilities::round( scaling.x, 5 ), ml7::utilities::round( entry.scaling, 5 ) );
         TESTLABS_CHECK_EQ( ml7::utilities::round( scaling.y, 5 ), ml7::utilities::round( entry.scaling, 5 ) );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( theta, 5 ), ml7::utilities::round( expected_theta, 5 ) );
+        TESTLABS_CHECK_EQ( ml7::utilities::round( angle, 5 ), ml7::utilities::round( expected_angle, 5 ) );
     }
 }
 
@@ -192,7 +194,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  compose(Vector2, ...) / decompose") 
     struct Entry
     {
         ml7::Vector2 scaling;
-        float theta;
+        float angle;
         ml7::Matrix2x2 expected;
     } entry;
 
@@ -209,19 +211,19 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  compose(Vector2, ...) / decompose") 
 
     TESTLABS_SUBCASE_BATCH( TEXT("compose(Vector2, ...)"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2::compose( entry.scaling, entry.theta ), 3 ), _::round( entry.expected, 3 ) );
+        TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2::compose( entry.scaling, entry.angle ), 3 ), _::round( entry.expected, 3 ) );
     }
 
     TESTLABS_SUBCASE_BATCH( TEXT("decompose"), container, entry )
     {
-        float expected_theta = entry.theta < -ml7::constants::pi ? ml7::constants::pi - ::fmodf( -entry.theta - ml7::constants::pi, ml7::constants::pi2 ) : ::fmodf( entry.theta + ml7::constants::pi, ml7::constants::pi2 ) - ml7::constants::pi;
+        float expected_angle = entry.angle < -ml7::constants::pi ? ml7::constants::pi - ::fmodf( -entry.angle - ml7::constants::pi, ml7::constants::pi2 ) : ::fmodf( entry.angle + ml7::constants::pi, ml7::constants::pi2 ) - ml7::constants::pi;
 
         ml7::Vector2 scaling;
-        float theta;
-        TESTLABS_CHECK( entry.expected.decompose( scaling, theta ) );
+        float angle;
+        TESTLABS_CHECK( entry.expected.decompose( scaling, angle ) );
         TESTLABS_CHECK_EQ( ml7::utilities::round( scaling.x, 5 ), ml7::utilities::round( entry.scaling.x, 5 ) );
         TESTLABS_CHECK_EQ( ml7::utilities::round( scaling.y, 5 ), ml7::utilities::round( entry.scaling.y, 5 ) );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( theta, 5 ), ml7::utilities::round( expected_theta, 5 ) );
+        TESTLABS_CHECK_EQ( ml7::utilities::round( angle, 5 ), ml7::utilities::round( expected_angle, 5 ) );
     }
 }
 
@@ -232,7 +234,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  transform etc.") )
     struct Entry
     {
         ml7::Vector2 scaling;
-        float theta;
+        float angle;
         ml7::Vector2 untransformed;
         ml7::Vector2 transformed;
     } entry;
@@ -250,12 +252,12 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  transform etc.") )
 
     TESTLABS_SUBCASE_BATCH( TEXT("transform"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2::compose( entry.scaling, entry.theta ).transform( entry.untransformed ), 3 ), _::round( entry.transformed, 3 ) );
+        TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2::compose( entry.scaling, entry.angle ).transform( entry.untransformed ), 3 ), _::round( entry.transformed, 3 ) );
     }
 
     TESTLABS_SUBCASE_BATCH( TEXT("transform_inverted"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2::compose( entry.scaling, entry.theta ).transform_inverted( entry.transformed ), 3 ), _::round( entry.untransformed, 3 ) );
+        TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2::compose( entry.scaling, entry.angle ).transform_inverted( entry.transformed ), 3 ), _::round( entry.untransformed, 3 ) );
     }
 }
 

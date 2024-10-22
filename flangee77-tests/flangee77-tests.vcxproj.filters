@@ -71,5 +71,8 @@
     <ClInclude Include="src\MathLabs\Matrix4x4.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\MathLabs\Quaternion.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -85,14 +85,14 @@ public:
     }
 
     /**
-     * Initializes a rotation matrix representing a clockwise rotation by angle theta
-     * (in radians) around the x-axis.
+     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * radians) around the x-axis.
      */
-    static Matrix3x3 rotx(float theta) { return rotx( ::sinf( theta ), ::cosf( theta ) ); }
+    static Matrix3x3 rotx(float angle) { return rotx( ::sinf( angle ), ::cosf( angle ) ); }
 
     /**
-     * Initializes a rotation matrix representing a clockwise rotation around the
-     * x-axis based on ready-made sine and cosine values.
+     * Initializes a rotation matrix representing a rotation around the x-axis based
+     * on ready-made sine and cosine values.
      */
     static Matrix3x3 rotx(float sin, float cos)
     {
@@ -104,14 +104,14 @@ public:
     }
 
     /**
-     * Initializes a rotation matrix representing a clockwise rotation by angle theta
-     * (in radians) around the y-axis.
+     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * radians) around the y-axis.
      */
-    static Matrix3x3 roty(float theta) { return roty( ::sinf( theta ), ::cosf( theta ) ); }
+    static Matrix3x3 roty(float angle) { return roty( ::sinf( angle ), ::cosf( angle ) ); }
 
     /**
-     * Initializes a rotation matrix representing a clockwise rotation around the
-     * y-axis based on ready-made sine and cosine values.
+     * Initializes a rotation matrix representing a rotation around the y-axis based
+     * on ready-made sine and cosine values.
      */
     static Matrix3x3 roty(float sin, float cos)
     {
@@ -123,14 +123,14 @@ public:
     }
 
     /**
-     * Initializes a rotation matrix representing a clockwise rotation by angle theta
-     * (in radians) around the z-axis.
+     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * radians) around the z-axis.
      */
-    static Matrix3x3 rotz(float theta) { return rotz( ::sinf( theta ), ::cosf( theta ) ); }
+    static Matrix3x3 rotz(float angle) { return rotz( ::sinf( angle ), ::cosf( angle ) ); }
 
     /**
-     * Initializes a rotation matrix representing a clockwise rotation around the
-     * z-axis based on ready-made sine and cosine values.
+     * Initializes a rotation matrix representing a rotation around the z-axis based
+     * on ready-made sine and cosine values.
      */
     static Matrix3x3 rotz(float sin, float cos)
     {
@@ -142,49 +142,49 @@ public:
     }
 
     /**
-     * Initializes a rotation matrix representing a clockwise rotation around the
-     * specified axis, with an angle equal to the magnitude of the specified vector
-     * (in radians).
+     * Initializes a rotation matrix representing a rotation around the specified
+     * axis, with an angle equal to the magnitude of the specified vector (in
+     * radians).
      */
-    static Matrix3x3 rotation(const ml7::Vector3& v)
+    static Matrix3x3 rotation(const ml7::Vector3& axis_angle)
     {
-        const float theta = v.length();
-        if ( !theta )
+        const float angle = axis_angle.length();
+        if ( !angle )
             return IDENTITY;
-        return rotation_normalized( v / theta, theta );
+        return rotation_normalized( axis_angle / angle, angle );
     }
 
     /**
-     * Initializes a rotation matrix representing a clockwise rotation by angle theta
-     * (in radians) around the specified axis.
+     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * radians) around the specified axis.
      */
-    static Matrix3x3 rotation(const ml7::Vector3& v, float theta)
+    static Matrix3x3 rotation(const ml7::Vector3& axis, float angle)
     {
-        if ( !theta )
+        if ( !angle )
             return IDENTITY;
-        return rotation_normalized( v.normalized(), theta );
+        return rotation_normalized( axis.normalized(), angle );
     }
 
     /**
-     * Initializes a rotation matrix representing a clockwise rotation by angle theta
-     * (in radians) around an axis specified as a normalized unit vector.
+     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * radians) around an axis specified as a normalized unit vector.
      */
-    static Matrix3x3 rotation_normalized(const ml7::Vector3& u, float theta);
+    static Matrix3x3 rotation_normalized(const ml7::Vector3& unit_axis, float angle);
 
     /**
-     * Initializes a transformation matrix from the specified scaling factor and a
-     * clockwise rotation angle theta (in radians) around the specified axis.
+     * Initializes a transformation matrix from the specified scaling factor, a
+     * rotation axis, and a rotation angle (in radians).
      */
-    static Matrix3x3 compose(float scaling, const ml7::Vector3& axis, float theta)
+    static Matrix3x3 compose(float scaling, const ml7::Vector3& axis, float angle)
     {
-        return compose( { scaling, scaling, scaling }, axis, theta );
+        return compose( { scaling, scaling, scaling }, axis, angle );
     }
 
     /**
-     * Initializes a transformation matrix from the specified scaling vector and a
-     * clockwise rotation angle theta (in radians) around the specified axis.
+     * Initializes a transformation matrix from the specified scaling vector, a
+     * rotation axis, and a rotation angle (in radians).
      */
-    static Matrix3x3 compose(const ml7::Vector3& scaling, const ml7::Vector3& axis, float theta);
+    static Matrix3x3 compose(const ml7::Vector3& scaling, const ml7::Vector3& axis, float angle);
 
     /**
      * Initializes a view rotation matrix for a left-handed coordinate system using
@@ -345,20 +345,20 @@ public:
     }
 
     /**
-     * Tries to extract the rotation axis and the clockwise rotation angle theta (in
-     * the range [0;pi]) this matrix is composed of.
+     * Tries to extract the rotation axis and the rotation angle (in the range
+     * [0;pi]) this matrix is composed of.
      * This only works if the matrix actually consists of rotations only (no
      * scalings, shears, etc.).
      */
-    bool to_axis_angle(ml7::Vector3& axis, float& theta) const;
+    bool to_axis_angle(ml7::Vector3& axis, float& angle) const;
 
     /**
-     * Tries to extract the scaling vector, the rotation axis, and the clockwise
-     * rotation angle theta (in the range [0;pi]) this matrix is composed of.
+     * Tries to extract the scaling vector, the rotation axis, and the rotation
+     * angle (in the range [0;pi]) this matrix is composed of.
      * This only works if the matrix actually consists of rotations and (positive)
      * scalings in the "common" order (no shears, negative scalings, etc.).
      */
-    bool decompose(ml7::Vector3& scaling, ml7::Vector3& axis, float& theta) const;
+    bool decompose(ml7::Vector3& scaling, ml7::Vector3& axis, float& angle) const;
 
     /**
      * Assumes that this matrix is a view rotation matrix for a left-handed
@@ -475,10 +475,11 @@ public:
     /** Returns the matrix product of two matrices (matrix multiplication). */
     constexpr Matrix3x3 operator * (const Matrix3x3& m) const
     {
-        return Matrix3x3(
+        return {
             _11*m._11 + _12*m._21 + _13*m._31,   _11*m._12 + _12*m._22 + _13*m._32,   _11*m._13 + _12*m._23 + _13*m._33,
             _21*m._11 + _22*m._21 + _23*m._31,   _21*m._12 + _22*m._22 + _23*m._32,   _21*m._13 + _22*m._23 + _23*m._33,
-            _31*m._11 + _32*m._21 + _33*m._31,   _31*m._12 + _32*m._22 + _33*m._32,   _31*m._13 + _32*m._23 + _33*m._33 );
+            _31*m._11 + _32*m._21 + _33*m._31,   _31*m._12 + _32*m._22 + _33*m._32,   _31*m._13 + _32*m._23 + _33*m._33,
+        };
     }
 
     /** Returns a copy of the given (column) vector transformed by this matrix. */
@@ -497,7 +498,7 @@ public:
 
     /** "Scales" this matrix by the specified factor (scalar multiplication). */
     constexpr Matrix3x3& operator *= (float s) { for ( unsigned k = 0; k < 9; ++k ) data[k] *= s; return *this; }
-    /** Inversely scales this vector by the specified factor (scalar division). */
+    /** Inversely scales this matrix by the specified factor (scalar division). */
     constexpr Matrix3x3& operator /= (float s) { for ( unsigned k = 0; k < 9; ++k ) data[k] /= s; return *this; }
 
 
