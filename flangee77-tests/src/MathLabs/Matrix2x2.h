@@ -108,6 +108,11 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  ") )
 
     TESTLABS_CHECK_EQ( ml7::Matrix2x2( 1.0f, -2.0f, 3.0f, -4.0f ) * ml7::Vector2( -5.0f, 6.0f ), ml7::Vector2( -17.0f, -39.0f ) );
 
+    TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2( 1.0f, -2.0f, 3.0f, -4.0f ) * ml7::Matrix2x2( -5.0f, 6.0f, -7.0f, 8.0f ) * ml7::Vector2( 1.0f, 2.0f ), 3 ), _::round( ml7::Vector2( -11.0f, -15.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2( 1.0f, -2.0f, 3.0f, -4.0f ) * (ml7::Matrix2x2( -5.0f, 6.0f, -7.0f, 8.0f ) * ml7::Vector2( 1.0f, 2.0f )), 3 ), _::round( ml7::Vector2( -11.0f, -15.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( _::round( (ml7::Matrix2x2( 1.0f, -2.0f, 3.0f, -4.0f ) * ml7::Matrix2x2( -5.0f, 6.0f, -7.0f, 8.0f )) * ml7::Vector2( 1.0f, 2.0f ), 3 ), _::round( ml7::Vector2( -11.0f, -15.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2( 9.0f, -10.0f, 13.0f, -14.0f ) * ml7::Vector2( 1.0f, 2.0f ), 3 ), _::round( ml7::Vector2( -11.0f, -15.0f ), 3 ) );
+
     TESTLABS_CHECK_EQ( ml7::Matrix2x2( 5.0f, -8.0f, 12.0f, 7.0f ) += ml7::Matrix2x2( -6.0f, 9.0f, -14.0f, 3.0f ), ml7::Matrix2x2( -1.0f, 1.0f, -2.0f, 10.0f ) );
     TESTLABS_CHECK_EQ( ml7::Matrix2x2( 5.0f, -8.0f, 12.0f, 7.0f ) -= ml7::Matrix2x2( -6.0f, 9.0f, -14.0f, 3.0f ), ml7::Matrix2x2( 11.0f, -17.0f, 26.0f, 4.0f ) );
     TESTLABS_CHECK_EQ( ml7::Matrix2x2( 1.0f, -2.0f, 3.0f, -4.0f ) *= 5.0f, ml7::Matrix2x2( 5.0f, -10.0f, 15.0f, -20.0f ) );
