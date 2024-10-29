@@ -97,6 +97,27 @@ namespace utilities {
 
 
     /**
+     * Transforms a given angle in degrees to radians.
+     */
+    template <typename T>
+        requires( std::is_arithmetic_v<T> )
+    constexpr T deg2rad(T degrees)
+    {
+        return degrees * T(0.01745329251);
+    }
+
+    /**
+     * Transforms a given angle in radians to degrees.
+     */
+    template <typename T>
+        requires( std::is_arithmetic_v<T> )
+    constexpr T rad2deg(T radians)
+    {
+        return radians * T(57.2957795131);
+    }
+
+
+    /**
      * Checks whether the given value is a power of two.
      */
     template <typename T>

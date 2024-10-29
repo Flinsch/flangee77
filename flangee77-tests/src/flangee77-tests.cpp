@@ -20,6 +20,7 @@
 #include "./MathLabs/Matrix3x4.h"
 #include "./MathLabs/Matrix4x4.h"
 #include "./MathLabs/Quaternion.h"
+#include "./MathLabs/Angle.h"
 
 #include "./XiaoLabs/graphics.h"
 

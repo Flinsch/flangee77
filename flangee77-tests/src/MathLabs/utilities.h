@@ -193,6 +193,34 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  round") )
 
 
 
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  deg2rad") )
+{
+    TESTLABS_SUBCASE( TEXT("deg2rad<float>") )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::deg2rad( 1.0f ), 5 ), ml7::utilities::round( 0.0174533f, 5 ) );
+    }
+
+    TESTLABS_SUBCASE( TEXT("deg2rad<double>") )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::deg2rad( 1.0 ), 5 ), ml7::utilities::round( 0.0174533, 5 ) );
+    }
+}
+
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  rad2deg") )
+{
+    TESTLABS_SUBCASE( TEXT("rad2deg<float>") )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::rad2deg( 1.0f ), 4 ), ml7::utilities::round( 57.2958f, 4 ) );
+    }
+
+    TESTLABS_SUBCASE( TEXT("rad2deg<double>") )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::rad2deg( 1.0 ), 4 ), ml7::utilities::round( 57.2958, 4 ) );
+    }
+}
+
+
+
 TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_power_of_2") )
 {
     for ( unsigned x = 0; x < 9999; ++x )

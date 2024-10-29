@@ -654,6 +654,9 @@
     <ClInclude Include="src\MathLabs\Quaternion.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\MathLabs\Angle.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -1119,6 +1122,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\MathLabs\Quaternion.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MathLabs\Angle.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
