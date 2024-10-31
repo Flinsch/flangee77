@@ -170,7 +170,7 @@ namespace utilities {
         requires( std::is_floating_point_v<T> )
     constexpr bool is_greater(T a, T b, T epsilon = std::numeric_limits<T>::epsilon())
     {
-        return is_less( b, a );
+        return is_less( b, a, epsilon );
     }
 
     /**
@@ -180,7 +180,7 @@ namespace utilities {
         requires( std::is_floating_point_v<T> )
     constexpr bool is_greater_equal(T a, T b, T epsilon = std::numeric_limits<T>::epsilon())
     {
-        return is_less_equal( b, a );
+        return is_less_equal( b, a, epsilon );
     }
 
 
