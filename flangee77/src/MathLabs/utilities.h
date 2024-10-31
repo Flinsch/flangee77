@@ -97,10 +97,98 @@ namespace utilities {
 
 
     /**
+     * Checks whether the specified floating point value is (approximately) zero.
+     */
+    template <typename T>
+        requires( std::is_floating_point_v<T> )
+    constexpr bool is_zero(T x, T epsilon = std::numeric_limits<T>::epsilon())
+    {
+        return std::abs( x ) <= epsilon;
+    }
+
+    /**
+     * Checks whether the specified floating point value is (approximately) one.
+     */
+    template <typename T>
+        requires( std::is_floating_point_v<T> )
+    constexpr bool is_one(T x, T epsilon = std::numeric_limits<T>::epsilon())
+    {
+        return std::abs( x - T(1) ) <= epsilon;
+    }
+
+    /**
+     * Checks whether the specified (squared) floating point value is
+     * (approximately) one squared.
+     */
+    template <typename T>
+        requires( std::is_floating_point_v<T> )
+    constexpr bool is_one_sqr(T sqr, T epsilon = std::numeric_limits<T>::epsilon())
+    {
+        //  x  =  1+epsilon
+        // x^2 = (1+epsilon)^2
+        // x^2 = 1^2 + 2*epsilon + epsilon^2
+        // x^2 =  1  + 2*epsilon
+        // epsilon^2 is omitted because it is far below floating point precision.
+        return std::abs( sqr - T(1) ) <= T(2) * epsilon;
+    }
+
+    /**
+     * Checks whether the specified floating point values are (approximately) equal.
+     */
+    template <typename T>
+        requires( std::is_floating_point_v<T> )
+    constexpr bool is_equal(T a, T b, T epsilon = std::numeric_limits<T>::epsilon())
+    {
+        return std::abs( a - b ) <= epsilon;
+    }
+
+    /**
+     * Checks whether the value of a is less than the value of b.
+     */
+    template <typename T>
+        requires( std::is_floating_point_v<T> )
+    constexpr bool is_less(T a, T b, T epsilon = std::numeric_limits<T>::epsilon())
+    {
+        return ( b - a ) > epsilon;
+    }
+
+    /**
+     * Checks whether the value of a is less than or equal to the value of b.
+     */
+    template <typename T>
+        requires( std::is_floating_point_v<T> )
+    constexpr bool is_less_equal(T a, T b, T epsilon = std::numeric_limits<T>::epsilon())
+    {
+        if ( a < b ) return true;
+        return ( a - b ) <= epsilon;
+    }
+
+    /**
+     * Checks whether the value of a is greater than the value of b.
+     */
+    template <typename T>
+        requires( std::is_floating_point_v<T> )
+    constexpr bool is_greater(T a, T b, T epsilon = std::numeric_limits<T>::epsilon())
+    {
+        return is_less( b, a );
+    }
+
+    /**
+     * Checks whether the value of a is greater than or equal to the value of b.
+     */
+    template <typename T>
+        requires( std::is_floating_point_v<T> )
+    constexpr bool is_greater_equal(T a, T b, T epsilon = std::numeric_limits<T>::epsilon())
+    {
+        return is_less_equal( b, a );
+    }
+
+
+    /**
      * Transforms a given angle in degrees to radians.
      */
     template <typename T>
-        requires( std::is_arithmetic_v<T> )
+        requires( std::is_floating_point_v<T> )
     constexpr T deg2rad(T degrees)
     {
         return degrees * T(0.01745329251);
@@ -110,7 +198,7 @@ namespace utilities {
      * Transforms a given angle in radians to degrees.
      */
     template <typename T>
-        requires( std::is_arithmetic_v<T> )
+        requires( std::is_floating_point_v<T> )
     constexpr T rad2deg(T radians)
     {
         return radians * T(57.2957795131);

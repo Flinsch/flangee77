@@ -193,6 +193,284 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  round") )
 
 
 
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_zero") )
+{
+    struct Entry
+    {
+        float input;
+        bool expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, true },
+        { -1.0f, false },
+        { +1.0f, false },
+        { -FLT_EPSILON, true },
+        { +FLT_EPSILON, true },
+        { -2.0f * FLT_EPSILON, false },
+        { +2.0f * FLT_EPSILON, false },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_zero<float>"), container, entry, entry.input )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::is_zero( entry.input ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_one") )
+{
+    struct Entry
+    {
+        float input;
+        bool expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, false },
+        { -1.0f, false },
+        { +1.0f, true },
+        { -FLT_EPSILON, false },
+        { +FLT_EPSILON, false },
+        { -1.1f * FLT_EPSILON, false },
+        { +1.1f * FLT_EPSILON, false },
+        { -1.0f - FLT_EPSILON, false },
+        { -1.0f + FLT_EPSILON, false },
+        { +1.0f - FLT_EPSILON, true },
+        { +1.0f + FLT_EPSILON, true },
+        { +1.0f - 2.0f * FLT_EPSILON, false },
+        { +1.0f + 2.0f * FLT_EPSILON, false },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_one<float>"), container, entry, entry.input )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::is_one( entry.input ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_one_sqr") )
+{
+    struct Entry
+    {
+        float input;
+        bool expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, false },
+        { -1.0f, false },
+        { +1.0f, true },
+        { -FLT_EPSILON, false },
+        { +FLT_EPSILON, false },
+        { -1.1f * FLT_EPSILON, false },
+        { +1.1f * FLT_EPSILON, false },
+        { -1.0f - FLT_EPSILON, false },
+        { -1.0f + FLT_EPSILON, false },
+        { +1.0f - FLT_EPSILON, true },
+        { +1.0f + FLT_EPSILON, true },
+        { +1.0f - 2.0f * FLT_EPSILON, true },
+        { +1.0f + 2.0f * FLT_EPSILON, true },
+        { +1.0f - 3.0f * FLT_EPSILON, false },
+        { +1.0f + 3.0f * FLT_EPSILON, false },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_one_sqr<float>"), container, entry, entry.input )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::is_one_sqr( entry.input ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_equal") )
+{
+    struct Entry
+    {
+        float a, b;
+        bool expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f, true },
+        { -1.0f, 0.0f, false },
+        { +1.0f, 0.0f, false },
+        { 0.0f, -1.0f, false },
+        { -1.0f, -1.0f, true },
+        { +1.0f, -1.0f, false },
+        { 0.0f, +1.0f, false },
+        { -1.0f, +1.0f, false },
+        { +1.0f, +1.0f, true },
+        { 0.0f, -FLT_EPSILON, true },
+        { 0.0f, +FLT_EPSILON, true },
+        { 0.0f, -2.0f * FLT_EPSILON, false },
+        { 0.0f, +2.0f * FLT_EPSILON, false },
+        { -1.0f, -1.0f - FLT_EPSILON, true },
+        { -1.0f, -1.0f + FLT_EPSILON, true },
+        { -1.0f, -1.0f - 2.0f * FLT_EPSILON, false },
+        { -1.0f, -1.0f + 2.0f * FLT_EPSILON, false },
+        { +1.0f, +1.0f - FLT_EPSILON, true },
+        { +1.0f, +1.0f + FLT_EPSILON, true },
+        { +1.0f, +1.0f - 2.0f * FLT_EPSILON, false },
+        { +1.0f, +1.0f + 2.0f * FLT_EPSILON, false },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_equal<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::is_equal( entry.a, entry.b ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_less") )
+{
+    struct Entry
+    {
+        float a, b;
+        bool expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f, false },
+        { -1.0f, 0.0f, true },
+        { +1.0f, 0.0f, false },
+        { 0.0f, -1.0f, false },
+        { -1.0f, -1.0f, false },
+        { +1.0f, -1.0f, false },
+        { 0.0f, +1.0f, true },
+        { -1.0f, +1.0f, true },
+        { +1.0f, +1.0f, false },
+        { 0.0f, -FLT_EPSILON, false },
+        { 0.0f, +FLT_EPSILON, false },
+        { 0.0f, -2.0f * FLT_EPSILON, false },
+        { 0.0f, +2.0f * FLT_EPSILON, true },
+        { -1.0f, -1.0f - FLT_EPSILON, false },
+        { -1.0f, -1.0f + FLT_EPSILON, false },
+        { -1.0f, -1.0f - 2.0f * FLT_EPSILON, false },
+        { -1.0f, -1.0f + 2.0f * FLT_EPSILON, true },
+        { +1.0f, +1.0f - FLT_EPSILON, false },
+        { +1.0f, +1.0f + FLT_EPSILON, false },
+        { +1.0f, +1.0f - 2.0f * FLT_EPSILON, false },
+        { +1.0f, +1.0f + 2.0f * FLT_EPSILON, true },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_less<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::is_less( entry.a, entry.b ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_less_equal") )
+{
+    struct Entry
+    {
+        float a, b;
+        bool expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f, true },
+        { -1.0f, 0.0f, true },
+        { +1.0f, 0.0f, false },
+        { 0.0f, -1.0f, false },
+        { -1.0f, -1.0f, true },
+        { +1.0f, -1.0f, false },
+        { 0.0f, +1.0f, true },
+        { -1.0f, +1.0f, true },
+        { +1.0f, +1.0f, true },
+        { 0.0f, -FLT_EPSILON, true },
+        { 0.0f, +FLT_EPSILON, true },
+        { 0.0f, -2.0f * FLT_EPSILON, false },
+        { 0.0f, +2.0f * FLT_EPSILON, true },
+        { -1.0f, -1.0f - FLT_EPSILON, true },
+        { -1.0f, -1.0f + FLT_EPSILON, true },
+        { -1.0f, -1.0f - 2.0f * FLT_EPSILON, false },
+        { -1.0f, -1.0f + 2.0f * FLT_EPSILON, true },
+        { +1.0f, +1.0f - FLT_EPSILON, true },
+        { +1.0f, +1.0f + FLT_EPSILON, true },
+        { +1.0f, +1.0f - 2.0f * FLT_EPSILON, false },
+        { +1.0f, +1.0f + 2.0f * FLT_EPSILON, true },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_less_equal<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::is_less_equal( entry.a, entry.b ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_greater") )
+{
+    struct Entry
+    {
+        float a, b;
+        bool expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f, false },
+        { -1.0f, 0.0f, false },
+        { +1.0f, 0.0f, true },
+        { 0.0f, -1.0f, true },
+        { -1.0f, -1.0f, false },
+        { +1.0f, -1.0f, true },
+        { 0.0f, +1.0f, false },
+        { -1.0f, +1.0f, false },
+        { +1.0f, +1.0f, false },
+        { 0.0f, -FLT_EPSILON, false },
+        { 0.0f, +FLT_EPSILON, false },
+        { 0.0f, -2.0f * FLT_EPSILON, true },
+        { 0.0f, +2.0f * FLT_EPSILON, false },
+        { -1.0f, -1.0f - FLT_EPSILON, false },
+        { -1.0f, -1.0f + FLT_EPSILON, false },
+        { -1.0f, -1.0f - 2.0f * FLT_EPSILON, true },
+        { -1.0f, -1.0f + 2.0f * FLT_EPSILON, false },
+        { +1.0f, +1.0f - FLT_EPSILON, false },
+        { +1.0f, +1.0f + FLT_EPSILON, false },
+        { +1.0f, +1.0f - 2.0f * FLT_EPSILON, true },
+        { +1.0f, +1.0f + 2.0f * FLT_EPSILON, false },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_greater<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::is_greater( entry.a, entry.b ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_greater_equal") )
+{
+    struct Entry
+    {
+        float a, b;
+        bool expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f, true },
+        { -1.0f, 0.0f, false },
+        { +1.0f, 0.0f, true },
+        { 0.0f, -1.0f, true },
+        { -1.0f, -1.0f, true },
+        { +1.0f, -1.0f, true },
+        { 0.0f, +1.0f, false },
+        { -1.0f, +1.0f, false },
+        { +1.0f, +1.0f, true },
+        { 0.0f, -FLT_EPSILON, true },
+        { 0.0f, +FLT_EPSILON, true },
+        { 0.0f, -2.0f * FLT_EPSILON, true },
+        { 0.0f, +2.0f * FLT_EPSILON, false },
+        { -1.0f, -1.0f - FLT_EPSILON, true },
+        { -1.0f, -1.0f + FLT_EPSILON, true },
+        { -1.0f, -1.0f - 2.0f * FLT_EPSILON, true },
+        { -1.0f, -1.0f + 2.0f * FLT_EPSILON, false },
+        { +1.0f, +1.0f - FLT_EPSILON, true },
+        { +1.0f, +1.0f + FLT_EPSILON, true },
+        { +1.0f, +1.0f - 2.0f * FLT_EPSILON, true },
+        { +1.0f, +1.0f + 2.0f * FLT_EPSILON, false },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_greater_equal<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::is_greater_equal( entry.a, entry.b ), entry.expected );
+    }
+}
+
+
+
 TESTLABS_CASE( TEXT("MathLabs:  utilities:  deg2rad") )
 {
     TESTLABS_SUBCASE( TEXT("deg2rad<float>") )
