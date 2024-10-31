@@ -521,6 +521,193 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_greater_equal") )
 
 
 
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_equal_ulps") )
+{
+    struct Entry
+    {
+        float a, b;
+        int ulps;
+        bool expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f, 1000, true },
+        { -1.0f, 0.0f, 1000, false },
+        { +1.0f, 0.0f, 1000, false },
+        { 0.0f, -1.0f, 1000, false },
+        { -1.0f, -1.0f, 1000, true },
+        { +1.0f, -1.0f, 1000, false },
+        { 0.0f, +1.0f, 1000, false },
+        { -1.0f, +1.0f, 1000, false },
+        { +1.0f, +1.0f, 1000, true },
+        { -0.0f, +0.0f, 1000, true },
+        { +0.0f, -0.0f, 1000, true },
+        { -1.0f, -0.99999988079071044921875f, 2, true },
+        { -1.0f, -1.0000002384185791015625f, 2, true },
+        { +1.0f, +0.99999988079071044921875f, 2, true },
+        { +1.0f, +1.0000002384185791015625f, 2, true },
+        { -1.0f, -0.99999988079071044921875f, 1, false },
+        { -1.0f, -1.0000002384185791015625f, 1, false },
+        { +1.0f, +0.99999988079071044921875f, 1, false },
+        { +1.0f, +1.0000002384185791015625f, 1, false },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_equal_ulps<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::is_equal_ulps( entry.a, entry.b, entry.ulps ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_less_ulps") )
+{
+    struct Entry
+    {
+        float a, b;
+        int ulps;
+        bool expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f, 1000, false },
+        { -1.0f, 0.0f, 1000, true },
+        { +1.0f, 0.0f, 1000, false },
+        { 0.0f, -1.0f, 1000, false },
+        { -1.0f, -1.0f, 1000, false },
+        { +1.0f, -1.0f, 1000, false },
+        { 0.0f, +1.0f, 1000, true },
+        { -1.0f, +1.0f, 1000, true },
+        { +1.0f, +1.0f, 1000, false },
+        { -0.0f, +0.0f, 1000, false },
+        { +0.0f, -0.0f, 1000, false },
+        { -1.0f, -0.99999988079071044921875f, 2, false },
+        { -1.0f, -1.0000002384185791015625f, 2, false },
+        { +1.0f, +0.99999988079071044921875f, 2, false },
+        { +1.0f, +1.0000002384185791015625f, 2, false },
+        { -1.0f, -0.99999988079071044921875f, 1, true },
+        { -1.0f, -1.0000002384185791015625f, 1, false },
+        { +1.0f, +0.99999988079071044921875f, 1, false },
+        { +1.0f, +1.0000002384185791015625f, 1, true },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_less_ulps<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::is_less_ulps( entry.a, entry.b, entry.ulps ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_less_equal_ulps") )
+{
+    struct Entry
+    {
+        float a, b;
+        int ulps;
+        bool expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f, 1000, true },
+        { -1.0f, 0.0f, 1000, true },
+        { +1.0f, 0.0f, 1000, false },
+        { 0.0f, -1.0f, 1000, false },
+        { -1.0f, -1.0f, 1000, true },
+        { +1.0f, -1.0f, 1000, false },
+        { 0.0f, +1.0f, 1000, true },
+        { -1.0f, +1.0f, 1000, true },
+        { +1.0f, +1.0f, 1000, true },
+        { -0.0f, +0.0f, 1000, true },
+        { +0.0f, -0.0f, 1000, true },
+        { -1.0f, -0.99999988079071044921875f, 2, true },
+        { -1.0f, -1.0000002384185791015625f, 2, true },
+        { +1.0f, +0.99999988079071044921875f, 2, true },
+        { +1.0f, +1.0000002384185791015625f, 2, true },
+        { -1.0f, -0.99999988079071044921875f, 1, true },
+        { -1.0f, -1.0000002384185791015625f, 1, false },
+        { +1.0f, +0.99999988079071044921875f, 1, false },
+        { +1.0f, +1.0000002384185791015625f, 1, true },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_less_equal_ulps<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::is_less_equal_ulps( entry.a, entry.b, entry.ulps ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_greater_ulps") )
+{
+    struct Entry
+    {
+        float a, b;
+        int ulps;
+        bool expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f, 1000, false },
+        { -1.0f, 0.0f, 1000, false },
+        { +1.0f, 0.0f, 1000, true },
+        { 0.0f, -1.0f, 1000, true },
+        { -1.0f, -1.0f, 1000, false },
+        { +1.0f, -1.0f, 1000, true },
+        { 0.0f, +1.0f, 1000, false },
+        { -1.0f, +1.0f, 1000, false },
+        { +1.0f, +1.0f, 1000, false },
+        { -0.0f, +0.0f, 1000, false },
+        { +0.0f, -0.0f, 1000, false },
+        { -1.0f, -0.99999988079071044921875f, 2, false },
+        { -1.0f, -1.0000002384185791015625f, 2, false },
+        { +1.0f, +0.99999988079071044921875f, 2, false },
+        { +1.0f, +1.0000002384185791015625f, 2, false },
+        { -1.0f, -0.99999988079071044921875f, 1, false },
+        { -1.0f, -1.0000002384185791015625f, 1, true },
+        { +1.0f, +0.99999988079071044921875f, 1, true },
+        { +1.0f, +1.0000002384185791015625f, 1, false },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_greater_ulps<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::is_greater_ulps( entry.a, entry.b, entry.ulps ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_greater_equal_ulps") )
+{
+    struct Entry
+    {
+        float a, b;
+        int ulps;
+        bool expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f, 1000, true },
+        { -1.0f, 0.0f, 1000, false },
+        { +1.0f, 0.0f, 1000, true },
+        { 0.0f, -1.0f, 1000, true },
+        { -1.0f, -1.0f, 1000, true },
+        { +1.0f, -1.0f, 1000, true },
+        { 0.0f, +1.0f, 1000, false },
+        { -1.0f, +1.0f, 1000, false },
+        { +1.0f, +1.0f, 1000, true },
+        { -0.0f, +0.0f, 1000, true },
+        { +0.0f, -0.0f, 1000, true },
+        { -1.0f, -0.99999988079071044921875f, 2, true },
+        { -1.0f, -1.0000002384185791015625f, 2, true },
+        { +1.0f, +0.99999988079071044921875f, 2, true },
+        { +1.0f, +1.0000002384185791015625f, 2, true },
+        { -1.0f, -0.99999988079071044921875f, 1, false },
+        { -1.0f, -1.0000002384185791015625f, 1, true },
+        { +1.0f, +0.99999988079071044921875f, 1, true },
+        { +1.0f, +1.0000002384185791015625f, 1, false },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_greater_equal_ulps<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
+    {
+        TESTLABS_CHECK_EQ( ml7::utilities::is_greater_equal_ulps( entry.a, entry.b, entry.ulps ), entry.expected );
+    }
+}
+
+
+
 TESTLABS_CASE( TEXT("MathLabs:  utilities:  deg2rad") )
 {
     TESTLABS_SUBCASE( TEXT("deg2rad<float>") )

@@ -185,6 +185,38 @@ namespace utilities {
 
 
     /**
+     * Checks whether the specified floating point values are (approximately) equal.
+     */
+    bool is_equal_ulps(float a, float b, int ulps);
+
+    /**
+     * Checks whether the value of a is less than the value of b.
+     */
+    bool is_less_ulps(float a, float b, int ulps);
+
+    /**
+     * Checks whether the value of a is less than or equal to the value of b.
+     */
+    bool is_less_equal_ulps(float a, float b, int ulps);
+
+    /**
+     * Checks whether the value of a is less than the value of b.
+     */
+    inline bool is_greater_ulps(float a, float b, int ulps)
+    {
+        return is_less_ulps( b, a, ulps );
+    }
+
+    /**
+     * Checks whether the value of a is less than or equal to the value of b.
+     */
+    inline bool is_greater_equal_ulps(float a, float b, int ulps)
+    {
+        return is_less_equal_ulps( b, a, ulps );
+    }
+
+
+    /**
      * Transforms a given angle in degrees to radians.
      */
     template <typename T>
