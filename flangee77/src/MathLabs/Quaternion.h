@@ -107,7 +107,7 @@ public:
     }
 
     /**
-     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * Initializes a quaternion representing a rotation by a certain angle (in
      * radians) around the x-axis.
      */
     static Quaternion rotx(float angle)
@@ -123,7 +123,7 @@ public:
     }
 
     /**
-     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * Initializes a quaternion representing a rotation by a certain angle (in
      * radians) around the y-axis.
      */
     static Quaternion roty(float angle)
@@ -139,7 +139,7 @@ public:
     }
 
     /**
-     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * Initializes a quaternion representing a rotation by a certain angle (in
      * radians) around the z-axis.
      */
     static Quaternion rotz(float angle)
@@ -155,9 +155,8 @@ public:
     }
 
     /**
-     * Initializes a rotation matrix representing a rotation around the specified
-     * axis, with an angle equal to the magnitude of the specified vector (in
-     * radians).
+     * Initializes a quaternion representing a rotation around the specified axis,
+     * with an angle equal to the magnitude of the specified vector (in radians).
      */
     static Quaternion rotation(const ml7::Vector3& axis_angle)
     {
@@ -168,7 +167,7 @@ public:
     }
 
     /**
-     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * Initializes a quaternion representing a rotation by a certain angle (in
      * radians) around the specified axis.
      */
     static Quaternion rotation(const ml7::Vector3& axis, float angle)
@@ -179,7 +178,7 @@ public:
     }
 
     /**
-     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * Initializes a quaternion representing a rotation by a certain angle (in
      * radians) around an axis specified as a normalized unit vector.
      */
     static Quaternion rotation_normalized(const ml7::Vector3& unit_axis, float angle)
@@ -192,6 +191,24 @@ public:
             unit_axis.z * sn05,
             cs05,
         };
+    }
+
+    /**
+     * Initializes a quaternion representing a "view" rotation for a left-handed
+     * coordinate system using a camera "look" direction and an "up" direction.
+     */
+    static Quaternion look_lh(const Vector3& look, const Vector3& up)
+    {
+        return from_matrix3x3( ml7::Matrix3x3::look_lh( look, up ) );
+    }
+
+    /**
+     * Initializes a quaternion representing a "view" rotation for a right-handed
+     * coordinate system using a camera "look" direction and an "up" direction.
+     */
+    static Quaternion look_rh(const Vector3& look, const Vector3& up)
+    {
+        return from_matrix3x3( ml7::Matrix3x3::look_rh( look, up ) );
     }
 
     /**
@@ -291,6 +308,20 @@ public:
      * [0;pi]) this quaternion is composed of.
      */
     bool to_axis_angle(ml7::Vector3& axis, float& angle) const;
+
+    /**
+     * Assumes that this quaternion represents a "view" rotation for a left-handed
+     * coordinate system and tries to extract the camera "look" direction and the
+     * "up" direction.
+     */
+    bool is_look_lh(ml7::Vector3& look, ml7::Vector3& up) const;
+
+    /**
+     * Assumes that this quaternion represents a "view" rotation for a right-handed
+     * coordinate system and tries to extract the camera "look" direction and the
+     * "up" direction.
+     */
+    bool is_look_rh(ml7::Vector3& look, ml7::Vector3& up) const;
 
     /**
      * Returns a copy of the given vector transformed by this quaternion.

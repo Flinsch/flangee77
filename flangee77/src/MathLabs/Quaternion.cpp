@@ -118,6 +118,26 @@ namespace ml7 {
     }
 
     /**
+     * Assumes that this quaternion represents a "view" rotation for a left-handed
+     * coordinate system and tries to extract the camera "look" direction and the
+     * "up" direction.
+     */
+    bool Quaternion::is_look_lh(ml7::Vector3& look, ml7::Vector3& up) const
+    {
+        return to_matrix3x3().is_look_lh( look, up );
+    }
+
+    /**
+     * Assumes that this quaternion represents a "view" rotation for a right-handed
+     * coordinate system and tries to extract the camera "look" direction and the
+     * "up" direction.
+     */
+    bool Quaternion::is_look_rh(ml7::Vector3& look, ml7::Vector3& up) const
+    {
+        return to_matrix3x3().is_look_rh( look, up );
+    }
+
+    /**
      * Returns a copy of the given vector transformed by this quaternion.
      */
     Vector3 Quaternion::transform(const Vector3& v) const
