@@ -10,6 +10,131 @@
 
 
 
+TESTLABS_CASE( TEXT("MathLabs:  functions:  abs") )
+{
+    struct Entry
+    {
+        float x;
+        float expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f },
+        { 1.0f, 1.0f },
+        { -1.0f, 1.0f },
+        { 0.5f, 0.5f },
+        { -0.5f, 0.5f },
+        { 2.0f, 2.0f },
+        { -2.0f, 2.0f },
+    };
+
+    TESTLABS_SUBCASE_BATCH( TEXT("abs<float>"), container, entry )
+    {
+        auto x = entry.x;
+        auto expected = entry.expected;
+        TESTLABS_CHECK_EQ( ml7::abs( x ), expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("MathLabs:  functions:  sgn") )
+{
+    struct Entry
+    {
+        float x;
+        float expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f },
+        { 1.0f, +1.0f },
+        { -1.0f, -1.0f },
+        { 0.5f, +1.0f },
+        { -0.5f, -1.0f },
+        { 2.0f, +1.0f },
+        { -2.0f, -1.0f },
+    };
+
+    TESTLABS_SUBCASE_BATCH( TEXT("sgn<float>"), container, entry )
+    {
+        auto x = entry.x;
+        auto expected = entry.expected;
+        TESTLABS_CHECK_EQ( ml7::sgn( x ), expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("MathLabs:  functions:  step") )
+{
+    struct Entry
+    {
+        float x;
+        float edge;
+        float expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f, 1.0f },
+        { 1.0f, 0.0f, 1.0f },
+        { -1.0f, 0.0f, 0.0f },
+        { 0.5f, 0.0f, 1.0f },
+        { -0.5f, 0.0f, 0.0f },
+        { 2.0f, 0.0f, 1.0f },
+        { -2.0f, 0.0f, 0.0f },
+        { 0.0f, 0.5f, 0.0f },
+        { 1.0f, 0.5f, 1.0f },
+        { -1.0f, 0.5f, 0.0f },
+        { 0.5f, 0.5f, 1.0f },
+        { -0.5f, 0.5f, 0.0f },
+        { -0.5f, -0.5f, 1.0f },
+        { 2.0f, 0.5f, 1.0f },
+        { -2.0f, 0.5f, 0.0f },
+    };
+
+    TESTLABS_SUBCASE_BATCH( TEXT("step<float>"), container, entry )
+    {
+        auto x = entry.x;
+        auto edge = entry.edge;
+        auto expected = entry.expected;
+        TESTLABS_CHECK_EQ( ml7::step( x, edge ), expected );
+    }
+}
+
+TESTLABS_CASE( TEXT("MathLabs:  functions:  smoothstep") )
+{
+    struct Entry
+    {
+        float x;
+        float min, max;
+        float expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f, 1.0f, 0.0f },
+        { 1.0f, 0.0f, 1.0f, 1.0f },
+        { -1.0f, 0.0f, 1.0f, 0.0f },
+        { 0.5f, 0.0f, 1.0f, 0.5f },
+        { -0.5f, 0.0f, 1.0f, 0.0f },
+        { 2.0f, 0.0f, 1.0f, 1.0f },
+        { -2.0f, 0.0f, 1.0f, 0.0f },
+        { 0.0f, -1.0f, +1.0f, 0.5f },
+        { 1.0f, -1.0f, +1.0f, 1.0f },
+        { -1.0f, -1.0f, +1.0f, 0.0f },
+        { 0.5f, -1.0f, +1.0f, 0.84375f },
+        { -0.5f, -1.0f, +1.0f, 0.15625f },
+        { 2.0f, -1.0f, +1.0f, 1.0f },
+        { -2.0f, -1.0f, +1.0f, 0.0f },
+    };
+
+    TESTLABS_SUBCASE_BATCH( TEXT("smoothstep<float>"), container, entry )
+    {
+        auto x = entry.x;
+        auto min = entry.min;
+        auto max = entry.max;
+        auto expected = entry.expected;
+        TESTLABS_CHECK_EQ( ml7::smoothstep( x, min, max ), expected );
+    }
+}
+
+
 TESTLABS_CASE( TEXT("MathLabs:  functions:  min2") )
 {
     struct Entry

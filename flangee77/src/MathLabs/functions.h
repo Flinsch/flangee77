@@ -11,15 +11,63 @@ namespace ml7 {
 
 
     /**
+     * Returns the absolute amount of the given value.
+     */
+    template <typename T>
+        requires( std::is_arithmetic_v<T> )
+    constexpr T abs(T x)
+    {
+        return std::abs( x );
+    }
+
+    /**
+     * Returns -1, +1, or 0 according to whether the sign of the given value is
+     * negative, positive, or zero itself, respectively.
+     */
+    template <typename T>
+        requires( std::is_arithmetic_v<T> )
+    constexpr T sgn(T x)
+    {
+        if ( x < T(0) ) return T(-1);
+        if ( x > T(0) ) return T(+1);
+        return T(0);
+    }
+
+    /**
+     * Returns 1 if x >= edge, 0 otherwise.
+     */
+    template <typename T>
+        requires( std::is_arithmetic_v<T> )
+    constexpr T step(T x, T edge = T(0))
+    {
+        return x >= edge ? T(1) : T(0);
+    }
+
+    /**
+     * Returns 0 if x is less than min, 1 if x is greater than max, and a value
+     * between 0 and 1 otherwise using a Hermite polynomial.
+     */
+    template <typename T>
+        requires( std::is_arithmetic_v<T> )
+    constexpr T smoothstep(T x, T min, T max)
+    {
+        if ( min == max )
+            return step( x, min );
+        if ( x <= min ) return T(0);
+        if ( x >= max ) return T(1);
+        x = (x - min) / (max - min);
+        return x * x * (3.0f - 2.0f * x);
+    }
+
+
+    /**
      * Returns the less value of two given values.
      */
     template <typename T>
         requires( std::is_arithmetic_v<T> )
     constexpr T min2(T a, T b)
     {
-        if ( a <= b )
-            return a;
-        return b;
+        return a <= b ? a : b;
     }
 
     /**
@@ -29,9 +77,7 @@ namespace ml7 {
         requires( std::is_arithmetic_v<T> )
     constexpr T max2(T a, T b)
     {
-        if ( a >= b )
-            return a;
-        return b;
+        return a >= b ? a : b;
     }
 
     /**

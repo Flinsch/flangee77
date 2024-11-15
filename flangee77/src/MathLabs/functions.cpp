@@ -13,7 +13,7 @@ namespace ml7 {
      */
     float round(float x)
     {
-        return std::floorf( x + 0.5f );
+        return std::floor( x + 0.5f );
     }
 
     /**
@@ -29,7 +29,7 @@ namespace ml7 {
      */
     float round(float x, unsigned num_decimals)
     {
-        const auto p = std::powf( 10.0f, static_cast<float>( num_decimals ) );
+        const auto p = std::pow( 10.0f, static_cast<float>( num_decimals ) );
         return round( x * p ) / p;
     }
 
@@ -41,7 +41,8 @@ namespace ml7 {
         const auto p = std::pow( 10.0, static_cast<double>( num_decimals ) );
         return round( x * p ) / p;
     }
-    
+
+
     /**
      * Checks whether the specified floating point values are (approximately) equal.
      */
