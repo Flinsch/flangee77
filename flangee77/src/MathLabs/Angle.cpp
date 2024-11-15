@@ -1,7 +1,7 @@
 #include "Angle.h"
 
 #include <MathLabs/constants.h>
-#include <MathLabs/utilities.h>
+#include <MathLabs/functions.h>
 
 
 
@@ -18,7 +18,7 @@ namespace ml7 {
      */
     Angle Angle::from_degrees(float degrees)
     {
-        return Angle( ml7::utilities::deg_to_rad( degrees ) );
+        return Angle( ml7::deg_to_rad( degrees ) );
     }
 
     /**
@@ -48,7 +48,7 @@ namespace ml7 {
      */
     float Angle::to_degrees() const
     {
-        return ml7::utilities::rad_to_deg( radians );
+        return ml7::rad_to_deg( radians );
     }
 
     /**

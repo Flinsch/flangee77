@@ -35,11 +35,11 @@ namespace cl7 {
 
 
 namespace _ {
-    float round(float f, unsigned num_decimals) { return ml7::utilities::round(f, num_decimals); }
+    float round(float f, unsigned num_decimals) { return ml7::round(f, num_decimals); }
 
-    ml7::Vector2 round(ml7::Vector2 v, unsigned num_decimals) { for ( unsigned k = 0; k < 2; ++k ) v.data[k] = ml7::utilities::round(v.data[k], num_decimals); return v; }
-    ml7::Vector3 round(ml7::Vector3 v, unsigned num_decimals) { for ( unsigned k = 0; k < 3; ++k ) v.data[k] = ml7::utilities::round(v.data[k], num_decimals); return v; }
-    ml7::Vector4 round(ml7::Vector4 v, unsigned num_decimals) { for ( unsigned k = 0; k < 4; ++k ) v.data[k] = ml7::utilities::round(v.data[k], num_decimals); return v; }
+    ml7::Vector2 round(ml7::Vector2 v, unsigned num_decimals) { for ( unsigned k = 0; k < 2; ++k ) v.data[k] = ml7::round(v.data[k], num_decimals); return v; }
+    ml7::Vector3 round(ml7::Vector3 v, unsigned num_decimals) { for ( unsigned k = 0; k < 3; ++k ) v.data[k] = ml7::round(v.data[k], num_decimals); return v; }
+    ml7::Vector4 round(ml7::Vector4 v, unsigned num_decimals) { for ( unsigned k = 0; k < 4; ++k ) v.data[k] = ml7::round(v.data[k], num_decimals); return v; }
 }
 
 

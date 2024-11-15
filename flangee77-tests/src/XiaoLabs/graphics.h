@@ -132,10 +132,10 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  Color") )
     TESTLABS_CHECK_EQ_FLT( xl7::graphics::Color( 0.125f, 0.25f, 0.5f, 1.0f ).get_rgba_ptr()[2], 0.5f );
     TESTLABS_CHECK_EQ_FLT( xl7::graphics::Color( 0.125f, 0.25f, 0.5f, 1.0f ).get_rgba_ptr()[3], 1.0f );
 
-    TESTLABS_CHECK_EQ_FLT( ml7::utilities::round( xl7::graphics::Color( 0xff7f3f1f, xl7::graphics::ChannelOrder::RGBA ).get_hue(), 0 ), 220.0f );
-    TESTLABS_CHECK_EQ_FLT( ml7::utilities::round( xl7::graphics::Color( 0xff7f3f1f, xl7::graphics::ChannelOrder::RGBA ).get_saturation(), 3 ), 0.756f );
-    TESTLABS_CHECK_EQ_FLT( ml7::utilities::round( xl7::graphics::Color( 0xff7f3f1f, xl7::graphics::ChannelOrder::RGBA ).get_lightness(), 3 ), 0.310f );
-    TESTLABS_CHECK_EQ_FLT( ml7::utilities::round( xl7::graphics::Color( 0xff7f3f1f, xl7::graphics::ChannelOrder::RGBA ).get_brightness(), 3 ), 0.498f );
+    TESTLABS_CHECK_EQ_FLT( ml7::round( xl7::graphics::Color( 0xff7f3f1f, xl7::graphics::ChannelOrder::RGBA ).get_hue(), 0 ), 220.0f );
+    TESTLABS_CHECK_EQ_FLT( ml7::round( xl7::graphics::Color( 0xff7f3f1f, xl7::graphics::ChannelOrder::RGBA ).get_saturation(), 3 ), 0.756f );
+    TESTLABS_CHECK_EQ_FLT( ml7::round( xl7::graphics::Color( 0xff7f3f1f, xl7::graphics::ChannelOrder::RGBA ).get_lightness(), 3 ), 0.310f );
+    TESTLABS_CHECK_EQ_FLT( ml7::round( xl7::graphics::Color( 0xff7f3f1f, xl7::graphics::ChannelOrder::RGBA ).get_brightness(), 3 ), 0.498f );
 
     TESTLABS_CHECK_EQ( xl7::graphics::Color( -1.0f, -2.0f, -3.0f, -4.0f ).saturated(), xl7::graphics::Color( 0.0f, 0.0f, 0.0f, 0.0f ) );
     TESTLABS_CHECK_EQ( xl7::graphics::Color( +1.0f, +2.0f, +3.0f, +4.0f ).saturated(), xl7::graphics::Color( 1.0f, 1.0f, 1.0f, 1.0f ) );
@@ -598,7 +598,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageProcessor") )
 
             unsigned prec = _precision( depth );
 
-            TESTLABS_CHECK_EQ( ml7::utilities::round( color[rgba], prec ), ml7::utilities::round( entry_color[rgba], prec ) );
+            TESTLABS_CHECK_EQ( ml7::round( color[rgba], prec ), ml7::round( entry_color[rgba], prec ) );
         }
     }
 }
@@ -759,12 +759,12 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
                     depth1 = pbk1.channels[ rgba_ ].depth;
                     assert( depth1 );
 
-                    unsigned prec = ml7::utilities::min2( _precision( depth1 ), _precision( depth2 ) );
+                    unsigned prec = ml7::min2( _precision( depth1 ), _precision( depth2 ) );
 
-                    TESTLABS_CHECK_EQ( ml7::utilities::round( colors[0][rgba], prec ), ml7::utilities::round( image_colors[0][rgba_], prec ) );
-                    TESTLABS_CHECK_EQ( ml7::utilities::round( colors[1][rgba], prec ), ml7::utilities::round( image_colors[1][rgba_], prec ) );
-                    TESTLABS_CHECK_EQ( ml7::utilities::round( colors[2][rgba], prec ), ml7::utilities::round( image_colors[2][rgba_], prec ) );
-                    TESTLABS_CHECK_EQ( ml7::utilities::round( colors[3][rgba], prec ), ml7::utilities::round( image_colors[3][rgba_], prec ) );
+                    TESTLABS_CHECK_EQ( ml7::round( colors[0][rgba], prec ), ml7::round( image_colors[0][rgba_], prec ) );
+                    TESTLABS_CHECK_EQ( ml7::round( colors[1][rgba], prec ), ml7::round( image_colors[1][rgba_], prec ) );
+                    TESTLABS_CHECK_EQ( ml7::round( colors[2][rgba], prec ), ml7::round( image_colors[2][rgba_], prec ) );
+                    TESTLABS_CHECK_EQ( ml7::round( colors[3][rgba], prec ), ml7::round( image_colors[3][rgba_], prec ) );
                 }
             }
         }
@@ -848,7 +848,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageResizer") )
             {
                 assert( i % sizeof(float) == 0 );
                 size_t j = i / sizeof(float);
-                TESTLABS_CHECK_EQ( ml7::utilities::round( ((const float*)target_image.get_data().data())[ j ], 4 ), ml7::utilities::round( ((const float*)entry.target_data.data())[ j ], 4 ) );
+                TESTLABS_CHECK_EQ( ml7::round( ((const float*)target_image.get_data().data())[ j ], 4 ), ml7::round( ((const float*)entry.target_data.data())[ j ], 4 ) );
             }
         }
         else

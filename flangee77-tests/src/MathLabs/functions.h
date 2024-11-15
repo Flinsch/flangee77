@@ -1,8 +1,8 @@
 #pragma once
-#ifndef F77_TESTS_ML7_UTILITIES_H
-#define F77_TESTS_ML7_UTILITIES_H
+#ifndef F77_TESTS_ML7_FUNCTIONS_H
+#define F77_TESTS_ML7_FUNCTIONS_H
 
-#include <MathLabs/utilities.h>
+#include <MathLabs/functions.h>
 
 #include <TestLabs/TestSuite.h>
 
@@ -10,7 +10,7 @@
 
 
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  min2") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  min2") )
 {
     struct Entry
     {
@@ -29,11 +29,11 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  min2") )
         auto a = entry.a;
         auto b = entry.b;
         auto expected = entry.expected;
-        TESTLABS_CHECK_EQ( ml7::utilities::min2( a, b ), expected );
+        TESTLABS_CHECK_EQ( ml7::min2( a, b ), expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  max2") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  max2") )
 {
     struct Entry
     {
@@ -52,12 +52,12 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  max2") )
         auto a = entry.a;
         auto b = entry.b;
         auto expected = entry.expected;
-        TESTLABS_CHECK_EQ( ml7::utilities::max2( a, b ), expected );
+        TESTLABS_CHECK_EQ( ml7::max2( a, b ), expected );
     }
 }
 
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  min3") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  min3") )
 {
     struct Entry
     {
@@ -78,11 +78,11 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  min3") )
         auto b = entry.b;
         auto c = entry.c;
         auto expected = entry.expected;
-        TESTLABS_CHECK_EQ( ml7::utilities::min3( a, b, c ), expected );
+        TESTLABS_CHECK_EQ( ml7::min3( a, b, c ), expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  max3") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  max3") )
 {
     struct Entry
     {
@@ -103,13 +103,13 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  max3") )
         auto b = entry.b;
         auto c = entry.c;
         auto expected = entry.expected;
-        TESTLABS_CHECK_EQ( ml7::utilities::max3( a, b, c ), expected );
+        TESTLABS_CHECK_EQ( ml7::max3( a, b, c ), expected );
     }
 }
 
 
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  clamp") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  clamp") )
 {
     struct Entry
     {
@@ -130,70 +130,70 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  clamp") )
         auto min = entry.min;
         auto max = entry.max;
         auto expected = entry.expected;
-        TESTLABS_CHECK_EQ( ml7::utilities::clamp( x, min, max ), expected );
+        TESTLABS_CHECK_EQ( ml7::clamp( x, min, max ), expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  round") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  round") )
 {
     TESTLABS_SUBCASE( TEXT("round<float>") )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 0.0f ), 0.0f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 1.0f ), 1.0f );
+        TESTLABS_CHECK_EQ( ml7::round( 0.0f ), 0.0f );
+        TESTLABS_CHECK_EQ( ml7::round( 1.0f ), 1.0f );
 
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 0.1f ), 0.0f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 0.49f ), 0.0f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 0.5f ), 1.0f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 0.51f ), 1.0f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 0.9f ), 1.0f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 1.5f ), 2.0f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 1.51f ), 2.0f );
+        TESTLABS_CHECK_EQ( ml7::round( 0.1f ), 0.0f );
+        TESTLABS_CHECK_EQ( ml7::round( 0.49f ), 0.0f );
+        TESTLABS_CHECK_EQ( ml7::round( 0.5f ), 1.0f );
+        TESTLABS_CHECK_EQ( ml7::round( 0.51f ), 1.0f );
+        TESTLABS_CHECK_EQ( ml7::round( 0.9f ), 1.0f );
+        TESTLABS_CHECK_EQ( ml7::round( 1.5f ), 2.0f );
+        TESTLABS_CHECK_EQ( ml7::round( 1.51f ), 2.0f );
 
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -0.1f ), -0.0f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -0.49f ), -0.0f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -0.5f ), -0.0f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -0.51f ), -1.0f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -0.9f ), -1.0f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -1.5f ), -1.0f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -1.51f ), -2.0f );
+        TESTLABS_CHECK_EQ( ml7::round( -0.1f ), -0.0f );
+        TESTLABS_CHECK_EQ( ml7::round( -0.49f ), -0.0f );
+        TESTLABS_CHECK_EQ( ml7::round( -0.5f ), -0.0f );
+        TESTLABS_CHECK_EQ( ml7::round( -0.51f ), -1.0f );
+        TESTLABS_CHECK_EQ( ml7::round( -0.9f ), -1.0f );
+        TESTLABS_CHECK_EQ( ml7::round( -1.5f ), -1.0f );
+        TESTLABS_CHECK_EQ( ml7::round( -1.51f ), -2.0f );
 
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 1.234f, 1 ), 1.2f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 3.456f, 1 ), 3.5f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -1.234f, 1 ), -1.2f );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -3.456f, 1 ), -3.5f );
+        TESTLABS_CHECK_EQ( ml7::round( 1.234f, 1 ), 1.2f );
+        TESTLABS_CHECK_EQ( ml7::round( 3.456f, 1 ), 3.5f );
+        TESTLABS_CHECK_EQ( ml7::round( -1.234f, 1 ), -1.2f );
+        TESTLABS_CHECK_EQ( ml7::round( -3.456f, 1 ), -3.5f );
     }
 
     TESTLABS_SUBCASE( TEXT("round<double>") )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 0.0 ), 0.0 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 1.0 ), 1.0 );
+        TESTLABS_CHECK_EQ( ml7::round( 0.0 ), 0.0 );
+        TESTLABS_CHECK_EQ( ml7::round( 1.0 ), 1.0 );
 
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 0.1 ), 0.0 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 0.49 ), 0.0 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 0.5 ), 1.0 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 0.51 ), 1.0 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 0.9 ), 1.0 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 1.5 ), 2.0 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 1.51 ), 2.0 );
+        TESTLABS_CHECK_EQ( ml7::round( 0.1 ), 0.0 );
+        TESTLABS_CHECK_EQ( ml7::round( 0.49 ), 0.0 );
+        TESTLABS_CHECK_EQ( ml7::round( 0.5 ), 1.0 );
+        TESTLABS_CHECK_EQ( ml7::round( 0.51 ), 1.0 );
+        TESTLABS_CHECK_EQ( ml7::round( 0.9 ), 1.0 );
+        TESTLABS_CHECK_EQ( ml7::round( 1.5 ), 2.0 );
+        TESTLABS_CHECK_EQ( ml7::round( 1.51 ), 2.0 );
 
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -0.1 ), -0.0 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -0.49 ), -0.0 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -0.5 ), -0.0 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -0.51 ), -1.0 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -0.9 ), -1.0 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -1.5 ), -1.0 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -1.51 ), -2.0 );
+        TESTLABS_CHECK_EQ( ml7::round( -0.1 ), -0.0 );
+        TESTLABS_CHECK_EQ( ml7::round( -0.49 ), -0.0 );
+        TESTLABS_CHECK_EQ( ml7::round( -0.5 ), -0.0 );
+        TESTLABS_CHECK_EQ( ml7::round( -0.51 ), -1.0 );
+        TESTLABS_CHECK_EQ( ml7::round( -0.9 ), -1.0 );
+        TESTLABS_CHECK_EQ( ml7::round( -1.5 ), -1.0 );
+        TESTLABS_CHECK_EQ( ml7::round( -1.51 ), -2.0 );
 
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 1.234, 1 ), 1.2 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( 3.456, 1 ), 3.5 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -1.234, 1 ), -1.2 );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( -3.456, 1 ), -3.5 );
+        TESTLABS_CHECK_EQ( ml7::round( 1.234, 1 ), 1.2 );
+        TESTLABS_CHECK_EQ( ml7::round( 3.456, 1 ), 3.5 );
+        TESTLABS_CHECK_EQ( ml7::round( -1.234, 1 ), -1.2 );
+        TESTLABS_CHECK_EQ( ml7::round( -3.456, 1 ), -3.5 );
     }
 }
 
 
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_zero") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  is_zero") )
 {
     struct Entry
     {
@@ -219,11 +219,11 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_zero") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_zero<float>"), container, entry, entry.input )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::is_zero( entry.input, entry.epsilon ), entry.expected );
+        TESTLABS_CHECK_EQ( ml7::is_zero( entry.input, entry.epsilon ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_one") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  is_one") )
 {
     struct Entry
     {
@@ -255,11 +255,11 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_one") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_one<float>"), container, entry, entry.input )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::is_one( entry.input, entry.epsilon ), entry.expected );
+        TESTLABS_CHECK_EQ( ml7::is_one( entry.input, entry.epsilon ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_one_sqr") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  is_one_sqr") )
 {
     struct Entry
     {
@@ -295,11 +295,11 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_one_sqr") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_one_sqr<float>"), container, entry, entry.input )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::is_one_sqr( entry.input, entry.epsilon ), entry.expected );
+        TESTLABS_CHECK_EQ( ml7::is_one_sqr( entry.input, entry.epsilon ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_equal") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  is_equal") )
 {
     struct Entry
     {
@@ -339,11 +339,11 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_equal") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_equal<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::is_equal( entry.a, entry.b, entry.epsilon ), entry.expected );
+        TESTLABS_CHECK_EQ( ml7::is_equal( entry.a, entry.b, entry.epsilon ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_less") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  is_less") )
 {
     struct Entry
     {
@@ -383,11 +383,11 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_less") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_less<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::is_less( entry.a, entry.b, entry.epsilon ), entry.expected );
+        TESTLABS_CHECK_EQ( ml7::is_less( entry.a, entry.b, entry.epsilon ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_less_equal") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  is_less_equal") )
 {
     struct Entry
     {
@@ -427,11 +427,11 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_less_equal") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_less_equal<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::is_less_equal( entry.a, entry.b, entry.epsilon ), entry.expected );
+        TESTLABS_CHECK_EQ( ml7::is_less_equal( entry.a, entry.b, entry.epsilon ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_greater") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  is_greater") )
 {
     struct Entry
     {
@@ -471,11 +471,11 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_greater") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_greater<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::is_greater( entry.a, entry.b, entry.epsilon ), entry.expected );
+        TESTLABS_CHECK_EQ( ml7::is_greater( entry.a, entry.b, entry.epsilon ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_greater_equal") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  is_greater_equal") )
 {
     struct Entry
     {
@@ -515,13 +515,13 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_greater_equal") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_greater_equal<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::is_greater_equal( entry.a, entry.b, entry.epsilon ), entry.expected );
+        TESTLABS_CHECK_EQ( ml7::is_greater_equal( entry.a, entry.b, entry.epsilon ), entry.expected );
     }
 }
 
 
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_equal_ulps") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  is_equal_ulps") )
 {
     struct Entry
     {
@@ -554,11 +554,11 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_equal_ulps") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_equal_ulps<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::is_equal_ulps( entry.a, entry.b, entry.ulps ), entry.expected );
+        TESTLABS_CHECK_EQ( ml7::is_equal_ulps( entry.a, entry.b, entry.ulps ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_less_ulps") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  is_less_ulps") )
 {
     struct Entry
     {
@@ -591,11 +591,11 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_less_ulps") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_less_ulps<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::is_less_ulps( entry.a, entry.b, entry.ulps ), entry.expected );
+        TESTLABS_CHECK_EQ( ml7::is_less_ulps( entry.a, entry.b, entry.ulps ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_less_equal_ulps") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  is_less_equal_ulps") )
 {
     struct Entry
     {
@@ -628,11 +628,11 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_less_equal_ulps") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_less_equal_ulps<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::is_less_equal_ulps( entry.a, entry.b, entry.ulps ), entry.expected );
+        TESTLABS_CHECK_EQ( ml7::is_less_equal_ulps( entry.a, entry.b, entry.ulps ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_greater_ulps") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  is_greater_ulps") )
 {
     struct Entry
     {
@@ -665,11 +665,11 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_greater_ulps") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_greater_ulps<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::is_greater_ulps( entry.a, entry.b, entry.ulps ), entry.expected );
+        TESTLABS_CHECK_EQ( ml7::is_greater_ulps( entry.a, entry.b, entry.ulps ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_greater_equal_ulps") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  is_greater_equal_ulps") )
 {
     struct Entry
     {
@@ -702,41 +702,41 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_greater_equal_ulps") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("is_greater_equal_ulps<float>"), container, entry, cl7::to_string( entry.a ) + TEXT(" = ") + cl7::to_string( entry.b ) )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::is_greater_equal_ulps( entry.a, entry.b, entry.ulps ), entry.expected );
+        TESTLABS_CHECK_EQ( ml7::is_greater_equal_ulps( entry.a, entry.b, entry.ulps ), entry.expected );
     }
 }
 
 
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  deg_to_rad") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  deg_to_rad") )
 {
     TESTLABS_SUBCASE( TEXT("deg_to_rad<float>") )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::deg_to_rad( 1.0f ), 5 ), ml7::utilities::round( 0.0174533f, 5 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::deg_to_rad( 1.0f ), 5 ), ml7::round( 0.0174533f, 5 ) );
     }
 
     TESTLABS_SUBCASE( TEXT("deg_to_rad<double>") )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::deg_to_rad( 1.0 ), 5 ), ml7::utilities::round( 0.0174533, 5 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::deg_to_rad( 1.0 ), 5 ), ml7::round( 0.0174533, 5 ) );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  rad_to_deg") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  rad_to_deg") )
 {
     TESTLABS_SUBCASE( TEXT("rad_to_deg<float>") )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::rad_to_deg( 1.0f ), 4 ), ml7::utilities::round( 57.2958f, 4 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::rad_to_deg( 1.0f ), 4 ), ml7::round( 57.2958f, 4 ) );
     }
 
     TESTLABS_SUBCASE( TEXT("rad_to_deg<double>") )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::rad_to_deg( 1.0 ), 4 ), ml7::utilities::round( 57.2958, 4 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::rad_to_deg( 1.0 ), 4 ), ml7::round( 57.2958, 4 ) );
     }
 }
 
 
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_power_of_2") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  is_power_of_2") )
 {
     for ( unsigned x = 0; x < 9999; ++x )
     {
@@ -779,11 +779,11 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_power_of_2") )
             break;
         }
 
-        TESTLABS_CHECK_EQ( ml7::utilities::is_power_of_2( x ), expected );
+        TESTLABS_CHECK_EQ( ml7::is_power_of_2( x ), expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  prev_power_of_2") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  prev_power_of_2") )
 {
     struct Entry
     {
@@ -823,11 +823,11 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  prev_power_of_2") )
     {
         auto x = entry.x;
         auto expected = entry.expected;
-        TESTLABS_CHECK_EQ( ml7::utilities::prev_power_of_2( x ), expected );
+        TESTLABS_CHECK_EQ( ml7::prev_power_of_2( x ), expected );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  next_power_of_2") )
+TESTLABS_CASE( TEXT("MathLabs:  functions:  next_power_of_2") )
 {
     struct Entry
     {
@@ -867,10 +867,10 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  next_power_of_2") )
     {
         auto x = entry.x;
         auto expected = entry.expected;
-        TESTLABS_CHECK_EQ( ml7::utilities::next_power_of_2( x ), expected );
+        TESTLABS_CHECK_EQ( ml7::next_power_of_2( x ), expected );
     }
 }
 
 
 
-#endif // F77_TESTS_ML7_UTILITIES_H
+#endif // F77_TESTS_ML7_FUNCTIONS_H

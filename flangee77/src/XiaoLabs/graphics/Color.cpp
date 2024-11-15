@@ -1,6 +1,6 @@
 #include "Color.h"
 
-#include <MathLabs/utilities.h>
+#include <MathLabs/functions.h>
 
 
 
@@ -32,8 +32,8 @@ namespace graphics {
     Color Color::from_hsv(float hue, float saturation, float brightness)
     {
         float H = hue < 0.0f ? 360.0f - ::fmodf( -hue, 360.0f ) : ::fmodf( hue, 360.0f );
-        float S = ml7::utilities::clamp( saturation, 0.0f, 1.0f );
-        float V = ml7::utilities::clamp( brightness, 0.0f, 1.0f );
+        float S = ml7::clamp( saturation, 0.0f, 1.0f );
+        float V = ml7::clamp( brightness, 0.0f, 1.0f );
 
         // https://www.rapidtables.com/convert/color/hsv-to-rgb.html
 
@@ -72,8 +72,8 @@ namespace graphics {
     Color Color::from_hsl(float hue, float saturation, float lightness)
     {
         float H = hue < 0.0f ? 360.0f - ::fmodf( -hue, 360.0f ) : ::fmodf( hue, 360.0f );
-        float S = ml7::utilities::clamp( saturation, 0.0f, 1.0f );
-        float L = ml7::utilities::clamp( lightness, 0.0f, 1.0f );
+        float S = ml7::clamp( saturation, 0.0f, 1.0f );
+        float L = ml7::clamp( lightness, 0.0f, 1.0f );
 
         // https://www.rapidtables.com/convert/color/hsl-to-rgb.html
 
@@ -130,8 +130,8 @@ namespace graphics {
         // https://www.rapidtables.com/convert/color/rgb-to-hsl.html
         // https://www.rapidtables.com/convert/color/rgb-to-hsv.html
 
-        float Cmax = ml7::utilities::max3( r, g, b );
-        float Cmin = ml7::utilities::min3( r, g, b );
+        float Cmax = ml7::max3( r, g, b );
+        float Cmin = ml7::min3( r, g, b );
         float delta = Cmax - Cmin;
         if ( !delta ) return 0;
         float t = 1.0f / delta;
@@ -149,8 +149,8 @@ namespace graphics {
         // https://www.rapidtables.com/convert/color/rgb-to-hsl.html
         // https://www.rapidtables.com/convert/color/rgb-to-hsv.html
 
-        float Cmax = ml7::utilities::max3( r, g, b );
-        float Cmin = ml7::utilities::min3( r, g, b );
+        float Cmax = ml7::max3( r, g, b );
+        float Cmin = ml7::min3( r, g, b );
         float delta = Cmax - Cmin;
         return Cmax ? delta / Cmax : 0.0f;
     }
@@ -162,8 +162,8 @@ namespace graphics {
     {
         // https://www.rapidtables.com/convert/color/rgb-to-hsl.html
 
-        float Cmax = ml7::utilities::max3( r, g, b );
-        float Cmin = ml7::utilities::min3( r, g, b );
+        float Cmax = ml7::max3( r, g, b );
+        float Cmin = ml7::min3( r, g, b );
         return (Cmax + Cmin) * 0.5f;
     }
 
@@ -174,7 +174,7 @@ namespace graphics {
     {
         // https://www.rapidtables.com/convert/color/rgb-to-hsv.html
 
-        float Cmax = ml7::utilities::max3( r, g, b );
+        float Cmax = ml7::max3( r, g, b );
         return Cmax;
     }
 
@@ -197,10 +197,10 @@ namespace graphics {
      */
     Color& Color::saturate()
     {
-        r = ml7::utilities::clamp( r, 0.0f, 1.0f );
-        g = ml7::utilities::clamp( g, 0.0f, 1.0f );
-        b = ml7::utilities::clamp( b, 0.0f, 1.0f );
-        a = ml7::utilities::clamp( a, 0.0f, 1.0f );
+        r = ml7::clamp( r, 0.0f, 1.0f );
+        g = ml7::clamp( g, 0.0f, 1.0f );
+        b = ml7::clamp( b, 0.0f, 1.0f );
+        a = ml7::clamp( a, 0.0f, 1.0f );
         return *this;
     }
 

@@ -5,7 +5,7 @@
 #include <MathLabs/Quaternion.h>
 
 #include <MathLabs/constants.h>
-#include <MathLabs/utilities.h>
+#include <MathLabs/functions.h>
 
 #include <TestLabs/TestSuite.h>
 
@@ -21,7 +21,7 @@ namespace cl7 {
 
 
 namespace _ {
-    ml7::Quaternion round(ml7::Quaternion q, unsigned num_decimals) { for ( unsigned k = 0; k < 4; ++k ) q.data[k] = ml7::utilities::round(q.data[k], num_decimals); return q; }
+    ml7::Quaternion round(ml7::Quaternion q, unsigned num_decimals) { for ( unsigned k = 0; k < 4; ++k ) q.data[k] = ml7::round(q.data[k], num_decimals); return q; }
 }
 
 

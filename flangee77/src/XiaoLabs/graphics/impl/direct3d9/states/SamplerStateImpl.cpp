@@ -1,6 +1,6 @@
 #include "SamplerStateImpl.h"
 
-#include <MathLabs/utilities.h>
+#include <MathLabs/functions.h>
 
 
 
@@ -78,7 +78,7 @@ namespace states {
             { D3DSAMP_MINFILTER, _d3d_texture_filter_type_from( desc.min_filter_type ) },
             { D3DSAMP_MIPFILTER, _d3d_texture_filter_type_from( desc.mip_filter_type ) },
             { D3DSAMP_MIPMAPLODBIAS, *reinterpret_cast<const DWORD*>( &desc.lod_bias ) },
-            { D3DSAMP_MAXMIPLEVEL, static_cast<DWORD>( ml7::utilities::round( desc.max_lod ) ) },
+            { D3DSAMP_MAXMIPLEVEL, static_cast<DWORD>( ml7::round( desc.max_lod ) ) },
             { D3DSAMP_MAXANISOTROPY, desc.max_anisotropy },
             { D3DSAMP_SRGBTEXTURE, 0 },
             { D3DSAMP_ELEMENTINDEX, 0 },

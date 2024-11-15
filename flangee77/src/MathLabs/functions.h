@@ -1,13 +1,12 @@
 #pragma once
-#ifndef ML7_UTILITIES_H
-#define ML7_UTILITIES_H
+#ifndef ML7_FUNCTIONS_H
+#define ML7_FUNCTIONS_H
 
 #include <CoreLabs/root.h>
 
 
 
 namespace ml7 {
-namespace utilities {
 
 
 
@@ -284,7 +283,6 @@ namespace utilities {
 
 
 
-} // namespace utilities
 } // namespace ml7
 
-#endif // ML7_UTILITIES_H
+#endif // ML7_FUNCTIONS_H

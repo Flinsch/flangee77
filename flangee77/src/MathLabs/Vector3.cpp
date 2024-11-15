@@ -1,7 +1,7 @@
 #include "Vector3.h"
 
 #include <MathLabs/constants.h>
-#include <MathLabs/utilities.h>
+#include <MathLabs/functions.h>
 
 
 
@@ -97,13 +97,13 @@ namespace ml7 {
     /** Returns a vector having the minimum components of two given vectors. */
     Vector3 Vector3::min2(const Vector3& a, const Vector3& b)
     {
-        return Vector3( utilities::min2(a.x, b.x), utilities::min2(a.y, b.y), utilities::min2(a.z, b.z) );
+        return Vector3( ml7::min2(a.x, b.x), ml7::min2(a.y, b.y), ml7::min2(a.z, b.z) );
     }
 
     /** Returns a vector having the maximum components of two given vectors. */
     Vector3 Vector3::max2(const Vector3& a, const Vector3& b)
     {
-        return Vector3( utilities::max2(a.x, b.x), utilities::max2(a.y, b.y), utilities::max2(a.z, b.z) );
+        return Vector3( ml7::max2(a.x, b.x), ml7::max2(a.y, b.y), ml7::max2(a.z, b.z) );
     }
 
     /**

@@ -1,11 +1,10 @@
-#include "utilities.h"
+#include "functions.h"
 
 #include <cmath>
 
 
 
 namespace ml7 {
-namespace utilities {
 
 
 
@@ -80,5 +79,4 @@ namespace utilities {
 
 
 
-} // namespace utilities
 } // namespace ml7

@@ -5,7 +5,7 @@
 #include <MathLabs/Matrix4x4.h>
 
 #include <MathLabs/constants.h>
-#include <MathLabs/utilities.h>
+#include <MathLabs/functions.h>
 
 #include <TestLabs/TestSuite.h>
 
@@ -21,7 +21,7 @@ namespace cl7 {
 
 
 namespace _ {
-    ml7::Matrix4x4 round(ml7::Matrix4x4 m, unsigned num_decimals) { for ( unsigned k = 0; k < 16; ++k ) m.data[k] = ml7::utilities::round(m.data[k], num_decimals); return m; }
+    ml7::Matrix4x4 round(ml7::Matrix4x4 m, unsigned num_decimals) { for ( unsigned k = 0; k < 16; ++k ) m.data[k] = ml7::round(m.data[k], num_decimals); return m; }
 }
 
 

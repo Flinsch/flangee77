@@ -5,7 +5,7 @@
 #include <MathLabs/Matrix2x2.h>
 
 #include <MathLabs/constants.h>
-#include <MathLabs/utilities.h>
+#include <MathLabs/functions.h>
 
 #include <TestLabs/TestSuite.h>
 
@@ -21,7 +21,7 @@ namespace cl7 {
 
 
 namespace _ {
-    ml7::Matrix2x2 round(ml7::Matrix2x2 m, unsigned num_decimals) { for ( unsigned k = 0; k < 4; ++k ) m.data[k] = ml7::utilities::round(m.data[k], num_decimals); return m; }
+    ml7::Matrix2x2 round(ml7::Matrix2x2 m, unsigned num_decimals) { for ( unsigned k = 0; k < 4; ++k ) m.data[k] = ml7::round(m.data[k], num_decimals); return m; }
 }
 
 
@@ -188,9 +188,9 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  compose(float, ...) / decompose") )
         ml7::Vector2 scaling;
         float angle;
         TESTLABS_CHECK( entry.expected.decompose( scaling, angle ) );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( scaling.x, 5 ), ml7::utilities::round( entry.scaling, 5 ) );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( scaling.y, 5 ), ml7::utilities::round( entry.scaling, 5 ) );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( angle, 5 ), ml7::utilities::round( expected_angle, 5 ) );
+        TESTLABS_CHECK_EQ( ml7::round( scaling.x, 5 ), ml7::round( entry.scaling, 5 ) );
+        TESTLABS_CHECK_EQ( ml7::round( scaling.y, 5 ), ml7::round( entry.scaling, 5 ) );
+        TESTLABS_CHECK_EQ( ml7::round( angle, 5 ), ml7::round( expected_angle, 5 ) );
     }
 }
 
@@ -226,9 +226,9 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  compose(Vector2, ...) / decompose") 
         ml7::Vector2 scaling;
         float angle;
         TESTLABS_CHECK( entry.expected.decompose( scaling, angle ) );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( scaling.x, 5 ), ml7::utilities::round( entry.scaling.x, 5 ) );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( scaling.y, 5 ), ml7::utilities::round( entry.scaling.y, 5 ) );
-        TESTLABS_CHECK_EQ( ml7::utilities::round( angle, 5 ), ml7::utilities::round( expected_angle, 5 ) );
+        TESTLABS_CHECK_EQ( ml7::round( scaling.x, 5 ), ml7::round( entry.scaling.x, 5 ) );
+        TESTLABS_CHECK_EQ( ml7::round( scaling.y, 5 ), ml7::round( entry.scaling.y, 5 ) );
+        TESTLABS_CHECK_EQ( ml7::round( angle, 5 ), ml7::round( expected_angle, 5 ) );
     }
 }
 

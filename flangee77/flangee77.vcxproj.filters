@@ -342,7 +342,7 @@
     <ClInclude Include="src\XiaoLabs\graphics\Color.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\MathLabs\utilities.h">
+    <ClInclude Include="src\MathLabs\functions.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\XiaoLabs\graphics\ClearFlags.h">
@@ -890,7 +890,7 @@
     <ClCompile Include="src\XiaoLabs\graphics\Color.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\MathLabs\utilities.cpp">
+    <ClCompile Include="src\MathLabs\functions.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\XiaoLabs\graphics\impl\shared\meshes\ComposedVertexLayout.cpp">

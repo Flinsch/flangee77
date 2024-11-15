@@ -292,7 +292,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\images\ImageHandler.h" />
     <ClInclude Include="src\XiaoLabs\graphics\PixelBitKit.h" />
     <ClInclude Include="src\XiaoLabs\graphics\images\Image.h" />
-    <ClInclude Include="src\MathLabs\utilities.h" />
+    <ClInclude Include="src\MathLabs\functions.h" />
     <ClInclude Include="src\XiaoLabs\graphics\ClearFlags.h" />
     <ClInclude Include="src\XiaoLabs\graphics\Color.h" />
     <ClInclude Include="src\XiaoLabs\graphics\ChannelOrder.h" />
@@ -484,7 +484,7 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClCompile Include="src\XiaoLabs\graphics\images\ImageHandler.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\PixelBitKit.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\images\Image.cpp" />
-    <ClCompile Include="src\MathLabs\utilities.cpp" />
+    <ClCompile Include="src\MathLabs\functions.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\Color.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\DepthStencilTarget.cpp" />
     <ClCompile Include="src\XiaoLabs\graphics\surfaces\ColorRenderTarget.cpp" />

@@ -10,7 +10,7 @@
 
 #include "./DataLabs/compression.h"
 
-#include "./MathLabs/utilities.h"
+#include "./MathLabs/functions.h"
 #include "./MathLabs/Vector2.h"
 #include "./MathLabs/Vector3.h"
 #include "./MathLabs/Vector4.h"

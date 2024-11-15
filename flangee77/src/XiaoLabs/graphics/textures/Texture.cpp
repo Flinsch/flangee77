@@ -7,7 +7,7 @@
 #include "../images/ImageConverter.h"
 #include "../images/ImageResizer.h"
 
-#include <MathLabs/utilities.h>
+#include <MathLabs/functions.h>
 
 #include <CoreLabs/logging.h>
 
@@ -59,21 +59,21 @@ namespace textures {
         if ( _type == Type::Texture2DArray && capabilities.textures.max_texture_array_size && image_count > capabilities.textures.max_texture_array_size )
             LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created should have ") + cl7::to_string(image_count) + TEXT(" slices, but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_array_size) + TEXT(" is supported.") );
 
-        if ( _type == Type::Texture2D && capabilities.textures.texture_2d_pow2_only && !ml7::utilities::is_power_of_2( _desc.width ) )
+        if ( _type == Type::Texture2D && capabilities.textures.texture_2d_pow2_only && !ml7::is_power_of_2( _desc.width ) )
             LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but only dimensions specified as a power of two are supported.") );
-        if ( _type == Type::Texture2D && capabilities.textures.texture_2d_pow2_only && !ml7::utilities::is_power_of_2( _desc.height ) )
+        if ( _type == Type::Texture2D && capabilities.textures.texture_2d_pow2_only && !ml7::is_power_of_2( _desc.height ) )
             LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but only dimensions specified as a power of two are supported.") );
 
-        if ( _type == Type::Texture3D && capabilities.textures.texture_3d_pow2_only && !ml7::utilities::is_power_of_2( _desc.width ) )
+        if ( _type == Type::Texture3D && capabilities.textures.texture_3d_pow2_only && !ml7::is_power_of_2( _desc.width ) )
             LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but only dimensions specified as a power of two are supported.") );
-        if ( _type == Type::Texture3D && capabilities.textures.texture_3d_pow2_only && !ml7::utilities::is_power_of_2( _desc.height ) )
+        if ( _type == Type::Texture3D && capabilities.textures.texture_3d_pow2_only && !ml7::is_power_of_2( _desc.height ) )
             LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but only dimensions specified as a power of two are supported.") );
-        if ( _type == Type::Texture3D && capabilities.textures.texture_3d_pow2_only && !ml7::utilities::is_power_of_2( _depth ) )
+        if ( _type == Type::Texture3D && capabilities.textures.texture_3d_pow2_only && !ml7::is_power_of_2( _depth ) )
             LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a depth of ") + cl7::to_string(_depth) + TEXT(", but only dimensions specified as a power of two are supported.") );
 
-        if ( _type == Type::Cubemap && capabilities.textures.cubemap_pow2_only && !ml7::utilities::is_power_of_2( _desc.width ) )
+        if ( _type == Type::Cubemap && capabilities.textures.cubemap_pow2_only && !ml7::is_power_of_2( _desc.width ) )
             LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but only dimensions specified as a power of two are supported.") );
-        if ( _type == Type::Cubemap && capabilities.textures.cubemap_pow2_only && !ml7::utilities::is_power_of_2( _desc.height ) )
+        if ( _type == Type::Cubemap && capabilities.textures.cubemap_pow2_only && !ml7::is_power_of_2( _desc.height ) )
             LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but only dimensions specified as a power of two are supported.") );
 
         if ( capabilities.textures.square_only && _desc.width != _desc.height )

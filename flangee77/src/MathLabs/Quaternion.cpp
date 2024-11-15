@@ -1,8 +1,5 @@
 #include "Quaternion.h"
 
-#include <MathLabs/constants.h>
-#include <MathLabs/utilities.h>
-
 
 
 namespace ml7 {

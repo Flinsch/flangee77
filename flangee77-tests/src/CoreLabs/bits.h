@@ -4,7 +4,7 @@
 
 #include <CoreLabs/bits.h>
 
-#include <MathLabs/utilities.h>
+#include <MathLabs/functions.h>
 
 #include <TestLabs/TestSuite.h>
 
@@ -92,23 +92,23 @@ TESTLABS_CASE( TEXT("CoreLabs:  bits:  norm_to_fixed") )
 
 TESTLABS_CASE( TEXT("CoreLabs:  bits:  fixed_to_norm") )
 {
-    TESTLABS_CHECK_EQ( ml7::utilities::round( cl7::bits::fixed_to_norm( 0x00, 8 ), 2 ), 0.0f );
-    TESTLABS_CHECK_EQ( ml7::utilities::round( cl7::bits::fixed_to_norm( 0x7f, 8 ), 2 ), 0.5f );
-    TESTLABS_CHECK_EQ( ml7::utilities::round( cl7::bits::fixed_to_norm( 0x80, 8 ), 2 ), 0.5f );
-    TESTLABS_CHECK_EQ( ml7::utilities::round( cl7::bits::fixed_to_norm( 0xff, 8 ), 2 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 0x00, 8 ), 2 ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 0x7f, 8 ), 2 ), 0.5f );
+    TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 0x80, 8 ), 2 ), 0.5f );
+    TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 0xff, 8 ), 2 ), 1.0f );
 
-    TESTLABS_CHECK_EQ( ml7::utilities::round( cl7::bits::fixed_to_norm( 0x00000000, 32 ), 2 ), 0.0f );
-    TESTLABS_CHECK_EQ( ml7::utilities::round( cl7::bits::fixed_to_norm( 0x7fffffff, 32 ), 2 ), 0.5f );
-    TESTLABS_CHECK_EQ( ml7::utilities::round( cl7::bits::fixed_to_norm( 0x80000000, 32 ), 2 ), 0.5f );
-    TESTLABS_CHECK_EQ( ml7::utilities::round( cl7::bits::fixed_to_norm( 0xffffffff, 32 ), 2 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 0x00000000, 32 ), 2 ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 0x7fffffff, 32 ), 2 ), 0.5f );
+    TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 0x80000000, 32 ), 2 ), 0.5f );
+    TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 0xffffffff, 32 ), 2 ), 1.0f );
 
-    TESTLABS_CHECK_EQ( ml7::utilities::round( cl7::bits::fixed_to_norm( 0, 1 ), 1 ), 0.0f );
-    TESTLABS_CHECK_EQ( ml7::utilities::round( cl7::bits::fixed_to_norm( 1, 1 ), 1 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 0, 1 ), 1 ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 1, 1 ), 1 ), 1.0f );
 
-    TESTLABS_CHECK_EQ( ml7::utilities::round( cl7::bits::fixed_to_norm( 0, 2 ), 3 ), 0.000f );
-    TESTLABS_CHECK_EQ( ml7::utilities::round( cl7::bits::fixed_to_norm( 1, 2 ), 3 ), 0.333f );
-    TESTLABS_CHECK_EQ( ml7::utilities::round( cl7::bits::fixed_to_norm( 2, 2 ), 3 ), 0.667f );
-    TESTLABS_CHECK_EQ( ml7::utilities::round( cl7::bits::fixed_to_norm( 3, 2 ), 3 ), 1.000f );
+    TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 0, 2 ), 3 ), 0.000f );
+    TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 1, 2 ), 3 ), 0.333f );
+    TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 2, 2 ), 3 ), 0.667f );
+    TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 3, 2 ), 3 ), 1.000f );
 }
 
 TESTLABS_CASE( TEXT("CoreLabs:  bits:  fixed_to_fixed") )

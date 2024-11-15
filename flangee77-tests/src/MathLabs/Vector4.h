@@ -5,7 +5,7 @@
 #include <MathLabs/Vector4.h>
 
 #include <MathLabs/constants.h>
-#include <MathLabs/utilities.h>
+#include <MathLabs/functions.h>
 
 #include <TestLabs/TestSuite.h>
 
@@ -29,8 +29,8 @@ TESTLABS_CASE( TEXT("CoreLabs:  Vector3:  ") )
     TESTLABS_CHECK_EQ( ml7::Vector4( ml7::Vector3( 2.0f, 4.0f, 6.0f ) ), ml7::Vector4( 2.0f, 4.0f, 6.0f, 1.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector4( ml7::Vector3( 2.0f, 4.0f, 6.0f ), 2.0f ), ml7::Vector4( 2.0f, 4.0f, 6.0f, 2.0f ) );
 
-    TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::Vector4( 1.0f, 2.0f, 3.0f, 4.0f ).length(), 3 ), ml7::utilities::round( 5.477f, 3 ) );
-    TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::Vector4( 1.0f, 2.0f, 3.0f, 4.0f ).lensqr(), 3 ), ml7::utilities::round( 30.0f, 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Vector4( 1.0f, 2.0f, 3.0f, 4.0f ).length(), 3 ), ml7::round( 5.477f, 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Vector4( 1.0f, 2.0f, 3.0f, 4.0f ).lensqr(), 3 ), ml7::round( 30.0f, 3 ) );
 
     TESTLABS_CHECK_EQ( ml7::Vector4( 2.0f, 4.0f, 6.0f, 2.0f ).dehomogenized(), ml7::Vector4( 1.0f, 2.0f, 3.0f, 1.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector4( 2.0f, 0.0f, 0.0f, 0.0f ).normalized(), ml7::Vector4( 1.0f, 0.0f, 0.0f, 0.0f ) );

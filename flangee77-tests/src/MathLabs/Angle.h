@@ -5,7 +5,7 @@
 #include <MathLabs/Angle.h>
 
 #include <MathLabs/constants.h>
-#include <MathLabs/utilities.h>
+#include <MathLabs/functions.h>
 
 #include <TestLabs/TestSuite.h>
 
@@ -21,7 +21,7 @@ namespace cl7 {
 
 
 namespace _ {
-    ml7::Angle round(ml7::Angle a, unsigned num_decimals) { a.radians = ml7::utilities::round(a.radians, num_decimals); return a; }
+    ml7::Angle round(ml7::Angle a, unsigned num_decimals) { a.radians = ml7::round(a.radians, num_decimals); return a; }
 }
 
 
