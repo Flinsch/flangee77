@@ -221,7 +221,7 @@ namespace utilities {
      */
     template <typename T>
         requires( std::is_floating_point_v<T> )
-    constexpr T deg2rad(T degrees)
+    constexpr T deg_to_rad(T degrees)
     {
         return degrees * T(0.01745329251);
     }
@@ -231,7 +231,7 @@ namespace utilities {
      */
     template <typename T>
         requires( std::is_floating_point_v<T> )
-    constexpr T rad2deg(T radians)
+    constexpr T rad_to_deg(T radians)
     {
         return radians * T(57.2957795131);
     }

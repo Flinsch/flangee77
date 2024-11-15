@@ -708,29 +708,29 @@ TESTLABS_CASE( TEXT("MathLabs:  utilities:  is_greater_equal_ulps") )
 
 
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  deg2rad") )
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  deg_to_rad") )
 {
-    TESTLABS_SUBCASE( TEXT("deg2rad<float>") )
+    TESTLABS_SUBCASE( TEXT("deg_to_rad<float>") )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::deg2rad( 1.0f ), 5 ), ml7::utilities::round( 0.0174533f, 5 ) );
+        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::deg_to_rad( 1.0f ), 5 ), ml7::utilities::round( 0.0174533f, 5 ) );
     }
 
-    TESTLABS_SUBCASE( TEXT("deg2rad<double>") )
+    TESTLABS_SUBCASE( TEXT("deg_to_rad<double>") )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::deg2rad( 1.0 ), 5 ), ml7::utilities::round( 0.0174533, 5 ) );
+        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::deg_to_rad( 1.0 ), 5 ), ml7::utilities::round( 0.0174533, 5 ) );
     }
 }
 
-TESTLABS_CASE( TEXT("MathLabs:  utilities:  rad2deg") )
+TESTLABS_CASE( TEXT("MathLabs:  utilities:  rad_to_deg") )
 {
-    TESTLABS_SUBCASE( TEXT("rad2deg<float>") )
+    TESTLABS_SUBCASE( TEXT("rad_to_deg<float>") )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::rad2deg( 1.0f ), 4 ), ml7::utilities::round( 57.2958f, 4 ) );
+        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::rad_to_deg( 1.0f ), 4 ), ml7::utilities::round( 57.2958f, 4 ) );
     }
 
-    TESTLABS_SUBCASE( TEXT("rad2deg<double>") )
+    TESTLABS_SUBCASE( TEXT("rad_to_deg<double>") )
     {
-        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::rad2deg( 1.0 ), 4 ), ml7::utilities::round( 57.2958, 4 ) );
+        TESTLABS_CHECK_EQ( ml7::utilities::round( ml7::utilities::rad_to_deg( 1.0 ), 4 ), ml7::utilities::round( 57.2958, 4 ) );
     }
 }
 
