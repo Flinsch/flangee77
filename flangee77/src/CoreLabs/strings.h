@@ -321,12 +321,13 @@ namespace strings {
      * scale from 0 ("identical") to 1 ("nothing in common"). The difference is
      * calculated in terms of characters, not in terms of (Unicode) code points.
      */
-    template <class Tstring_view>
-    float levenshtein_normalized(const Tstring_view& s1, const Tstring_view& s2)
+    template <class Tstring_view, typename Tfloat = float>
+        requires( std::is_floating_point_v<Tfloat> )
+    Tfloat levenshtein_normalized(const Tstring_view& s1, const Tstring_view& s2)
     {
         const size_t size = (std::max)( s1.size(), s2.size() );
         if ( size == 0 ) return 0.0f;
-        return static_cast<float>( levenshtein( s1, s2 ) ) / static_cast<float>( size );
+        return static_cast<Tfloat>( levenshtein( s1, s2 ) ) / static_cast<Tfloat>( size );
     }
 
 
