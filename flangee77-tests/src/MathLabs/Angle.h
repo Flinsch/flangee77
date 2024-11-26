@@ -14,7 +14,7 @@
 
 
 namespace cl7 {
-    template <> inline
+    inline
     cl7::string to_string(const ml7::Angle& a) { return cl7::to_string(a.radians); }
 }
 

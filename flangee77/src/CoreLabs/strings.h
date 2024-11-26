@@ -154,32 +154,131 @@ namespace strings {
     bool is_whitespace(achar_type c)
     {
         return 
-            (c >= 0x0009 && c <= 0x000d) || // tab ... carriage return
-            c == 0x0020 ||                  // space
-            c == 0x0085 ||                  // next line
-            c == 0x00a0;                    // no-break space
+            (c >= 0x09 && c <= 0x0d) || // tab ... carriage return
+            c == 0x20 ||                // space
+            c == 0x85 ||                // next line
+            c == 0xa0;                  // no-break space
+    }
+
+    /**
+     * Checks whether the specified Unicode code point is whitespace and, if yes,
+     * returns the number of corresponding UTF-8 characters.
+     */
+    size_t is_whitespace(u8char_type c0, u8char_type c1 = 0, u8char_type c2 = 0);
+
+    /**
+     * Checks whether the given UTF-8 string starts with whitespace and, if yes,
+     * returns the number of UTF-8 characters of the corresponding code point.
+     */
+    size_t is_whitespace_prefix(u8string_view s);
+
+    /**
+     * Checks whether the given UTF-8 string ends with whitespace and, if yes,
+     * returns the number of UTF-8 characters of the corresponding code point.
+     */
+    size_t is_whitespace_suffix(u8string_view s);
+
+
+
+    /**
+     * Counts and returns the number of whitespace characters that begin the string.
+     */
+    template <class Tstring_view>
+        requires( is_any_string_view_v<Tstring_view> )
+    size_t count_whitespace_prefix(Tstring_view s)
+    {
+        const size_t n = s.size();
+        size_t i = 0;
+        while ( i < n && is_whitespace( s[ i ] ) )
+            ++i;
+        return i;
+    }
+
+    /**
+     * Counts and returns the number of whitespace characters that begin the string.
+     * The number is calculated in terms of UTF-8 characters, not in terms of
+     * Unicode code points.
+     */
+    template <> inline
+    size_t count_whitespace_prefix(u8string_view s)
+    {
+        const size_t n = s.size();
+        size_t i = 0, k;
+        while ( i < n && (k = is_whitespace_prefix( s.substr( i ) )) > 0 )
+            i += k;
+        return i;
+    }
+
+    /**
+     * Counts and returns the number of whitespace characters that end the string.
+     */
+    template <class Tstring_view>
+        requires( is_any_string_view_v<Tstring_view> )
+    size_t count_whitespace_suffix(Tstring_view s)
+    {
+        const size_t n = s.size();
+        size_t i = 0;
+        while ( i < n && is_whitespace( s[ n-i-1 ] ) )
+            ++i;
+        return i;
+    }
+
+    /**
+     * Counts and returns the number of whitespace characters that end the string.
+     * The number is calculated in terms of UTF-8 characters, not in terms of
+     * Unicode code points.
+     */
+    template <> inline
+    size_t count_whitespace_suffix(u8string_view s)
+    {
+        const size_t n = s.size();
+        size_t i = 0, k;
+        while ( i < n && (k = is_whitespace_suffix( s.substr( 0, n-i ) )) > 0 )
+            i += k;
+        return i;
     }
 
 
 
     template <class Tstring>
+        requires( is_any_string_v<Tstring> )
     void ltrim(Tstring& s)
     {
-        s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](decltype(s[0]) c) {
-            return !is_whitespace(c);
-        }));
+        const size_t k = count_whitespace_prefix( make_string_view( s ) );
+        assert( k <= s.size() );
+        s.erase( 0, k );
     }
 
     template <class Tstring>
+        requires( is_any_string_v<Tstring> )
     void rtrim(Tstring& s)
     {
-        s.erase(std::find_if(s.rbegin(), s.rend(), [](decltype(s[0]) c) {
-            return !is_whitespace(c);
-        }).base(), s.end());
+        const size_t k = count_whitespace_suffix( make_string_view( s ) );
+        assert( k <= s.size() );
+        s.erase( s.size() - k, k );
     }
 
-    template <class Tstring>
-    void trim(Tstring& s)
+    template <class Tstring_view>
+        requires( is_any_string_view_v<Tstring_view> )
+    void ltrim(Tstring_view& s)
+    {
+        const size_t k = count_whitespace_prefix( s );
+        assert( k <= s.size() );
+        s = s.substr( k );
+    }
+
+    template <class Tstring_view>
+        requires( is_any_string_view_v<Tstring_view> )
+    void rtrim(Tstring_view& s)
+    {
+        const size_t k = count_whitespace_suffix( s );
+        assert( k <= s.size() );
+        s = s.substr( 0, s.size() - k );
+    }
+
+    template <class Tstring_or_view>
+        requires( is_any_string_or_view_v<Tstring_or_view> )
+    void trim(Tstring_or_view& s)
     {
         rtrim( s );
         ltrim( s );
@@ -187,22 +286,25 @@ namespace strings {
 
 
 
-    template <class Tstring>
-    Tstring ltrimmed(Tstring s)
+    template <class Tstring_or_view>
+        requires( is_any_string_or_view_v<Tstring_or_view> )
+    Tstring_or_view ltrimmed(Tstring_or_view s)
     {
         ltrim( s );
         return s;
     }
 
-    template <class Tstring>
-    Tstring rtrimmed(Tstring s)
+    template <class Tstring_or_view>
+        requires( is_any_string_or_view_v<Tstring_or_view> )
+    Tstring_or_view rtrimmed(Tstring_or_view s)
     {
         rtrim( s );
         return s;
     }
 
-    template <class Tstring>
-    Tstring trimmed(Tstring s)
+    template <class Tstring_or_view>
+        requires( is_any_string_or_view_v<Tstring_or_view> )
+    Tstring_or_view trimmed(Tstring_or_view s)
     {
         trim( s );
         return s;
@@ -210,14 +312,16 @@ namespace strings {
 
 
 
-    template <class Tstring, typename Tchar>
+    template <class Tstring, typename Tchar = Tstring::value_type>
+        requires( is_any_string_v<Tstring> )
     void lpad(Tstring& s, size_t min_length, Tchar c)
     {
         if ( min_length > s.length() )
             s.insert( s.begin(), min_length - s.length(), c );
     }
 
-    template <class Tstring, typename Tchar>
+    template <class Tstring, typename Tchar = Tstring::value_type>
+        requires( is_any_string_v<Tstring> )
     void rpad(Tstring& s, size_t min_length, Tchar c)
     {
         if ( min_length > s.length() )
@@ -226,14 +330,16 @@ namespace strings {
 
 
 
-    template <class Tstring, typename Tchar>
+    template <class Tstring, typename Tchar = Tstring::value_type>
+        requires( is_any_string_v<Tstring> )
     Tstring lpadded(Tstring s, size_t min_length, Tchar c)
     {
         lpad( s, min_length, c );
         return s;
     }
 
-    template <class Tstring, typename Tchar>
+    template <class Tstring, typename Tchar = Tstring::value_type>
+        requires( is_any_string_v<Tstring> )
     Tstring rpadded(Tstring s, size_t min_length, Tchar c)
     {
         rpad( s, min_length, c );
@@ -242,7 +348,8 @@ namespace strings {
 
 
 
-    template <class Tstring, typename Tchar, typename Tval>
+    template <class Tstring, typename Tval, typename Tchar = Tstring::value_type>
+        requires( is_any_string_v<Tstring> && std::is_unsigned_v<Tval> )
     Tstring to_hex(Tval val, Tchar ca = Tchar('A'), unsigned pad_zeros = 0)
     {
         static constexpr auto c0 = Tchar('0');
@@ -262,7 +369,8 @@ namespace strings {
         return s;
     }
 
-    template <class Tstring, typename Tchar, typename Tval>
+    template <class Tstring, typename Tval, typename Tchar = Tstring::value_type>
+        requires( is_any_string_v<Tstring> && std::is_unsigned_v<Tval> )
     Tstring to_0xhex(Tval val, Tchar ca = Tchar('A'), unsigned pad_zeros = 0)
     {
         static constexpr auto c0 = Tchar('0');
@@ -282,8 +390,9 @@ namespace strings {
      * Calculates the Levenshtein distance between two strings. The difference is
      * calculated in terms of characters, not in terms of (Unicode) code points.
      */
-    template <class Tstring_view>
-    size_t levenshtein(const Tstring_view& s1, const Tstring_view& s2)
+    template <class Tstring_or_view>
+        requires( is_any_string_or_view_v<Tstring_or_view> )
+    size_t levenshtein(const Tstring_or_view& s1, const Tstring_or_view& s2)
     {
         const size_t size1 = s1.size();
         const size_t size2 = s2.size();
@@ -321,9 +430,9 @@ namespace strings {
      * scale from 0 ("identical") to 1 ("nothing in common"). The difference is
      * calculated in terms of characters, not in terms of (Unicode) code points.
      */
-    template <class Tstring_view, typename Tfloat = float>
-        requires( std::is_floating_point_v<Tfloat> )
-    Tfloat levenshtein_normalized(const Tstring_view& s1, const Tstring_view& s2)
+    template <class Tstring_or_view, typename Tfloat = float>
+        requires( is_any_string_or_view_v<Tstring_or_view> && std::is_floating_point_v<Tfloat> )
+    Tfloat levenshtein_normalized(const Tstring_or_view& s1, const Tstring_or_view& s2)
     {
         const size_t size = (std::max)( s1.size(), s2.size() );
         if ( size == 0 ) return 0.0f;

@@ -11,9 +11,10 @@
 
 
 
-namespace cl7 {
-    template <> inline
-    cl7::string to_string(const byte_vector& bytes)
+namespace tl7 {
+namespace internals {
+    inline
+    cl7::string to_string(const cl7::byte_vector& bytes)
     {
         cl7::string s( bytes.size() * 4 + 2, TEXT(' ') );
         s[ 0 ] = TEXT('{');
@@ -30,6 +31,7 @@ namespace cl7 {
         s[ bytes.size() * 4 + 1 ] = TEXT('}');
         return s;
     }
+}
 }
 
 

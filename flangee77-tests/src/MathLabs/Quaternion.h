@@ -13,9 +13,11 @@
 
 
 
-namespace cl7 {
-    template <> inline
+namespace tl7 {
+namespace internals {
+    inline
     cl7::string to_string(const ml7::Quaternion& q) { return TEXT("{ ( ") + cl7::to_string(q.x) + TEXT(", ") + cl7::to_string(q.y) + TEXT(", ") + cl7::to_string(q.z) + TEXT(" ), ") + cl7::to_string(q.w) + TEXT(" }"); }
+}
 }
 
 

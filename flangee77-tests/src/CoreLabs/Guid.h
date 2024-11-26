@@ -12,9 +12,11 @@
 
 
 
-namespace cl7 {
-    template <> inline
-    cl7::string to_string(const Guid& guid) { return guid.to_string(); }
+namespace tl7 {
+namespace internals {
+    inline
+    cl7::string to_string(const cl7::Guid& guid) { return guid.to_string(); }
+}
 }
 
 

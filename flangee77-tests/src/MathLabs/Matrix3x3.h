@@ -13,9 +13,11 @@
 
 
 
-namespace cl7 {
-    template <> inline
+namespace tl7 {
+namespace internals {
+    inline
     cl7::string to_string(const ml7::Matrix3x3& m) { return TEXT("{ ") + cl7::to_string(m.a) + TEXT(", ") + cl7::to_string(m.b) + TEXT(", ") + cl7::to_string(m.c) + TEXT("; ") + cl7::to_string(m.d) + TEXT(", ") + cl7::to_string(m.e) + TEXT(", ") + cl7::to_string(m.f) + TEXT("; ") + cl7::to_string(m.g) + TEXT(", ") + cl7::to_string(m.h) + TEXT(", ") + cl7::to_string(m.i) + TEXT(" }"); }
+}
 }
 
 

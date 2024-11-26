@@ -69,8 +69,17 @@ namespace internals {
 
 
 
-    template <typename T>
-    cl7::string to_string(const T& val) { return cl7::to_string( val ); }
+    inline cl7::string to_string(signed val) { return cl7::to_string( val ); }
+    inline cl7::string to_string(signed long val) { return cl7::to_string( val ); }
+    inline cl7::string to_string(signed long long val) { return cl7::to_string( val ); }
+    inline cl7::string to_string(unsigned val) { return cl7::to_string( val ); }
+    inline cl7::string to_string(unsigned long val) { return cl7::to_string( val ); }
+    inline cl7::string to_string(unsigned long long val) { return cl7::to_string( val ); }
+    inline cl7::string to_string(float val) { return cl7::to_string( val ); }
+    inline cl7::string to_string(double val) { return cl7::to_string( val ); }
+    inline cl7::string to_string(long double val) { return cl7::to_string( val ); }
+
+    inline cl7::string to_string(bool val) { return cl7::to_string( val ); }
 
     cl7::string to_string(const std::nullptr_t&);
 

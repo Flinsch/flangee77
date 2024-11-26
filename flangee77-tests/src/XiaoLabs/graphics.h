@@ -31,8 +31,9 @@ bool operator == (const xl7::graphics::PixelBitKit::Channel& lhs, const xl7::gra
 
 
 
-namespace cl7 {
-    template <> inline
+namespace tl7 {
+namespace internals {
+    inline
     cl7::string to_string(const xl7::graphics::shaders::ShaderCode::Language& shader_language)
     {
         switch ( shader_language )
@@ -47,10 +48,10 @@ namespace cl7 {
         return TEXT("#Unknown");
     }
 
-    template <> inline
+    inline
     cl7::string to_string(const xl7::graphics::Color& color) { return TEXT("rgba(") + cl7::to_string(color.get_r()) + TEXT(", ") + cl7::to_string(color.get_g()) + TEXT(", ") + cl7::to_string(color.get_b()) + TEXT(", ") + cl7::to_string(color.get_a()) + TEXT(")"); }
 
-    template <> inline
+    inline
     cl7::string to_string(const xl7::graphics::PixelBitKit::DataType& data_type)
     {
         switch ( data_type )
@@ -67,8 +68,9 @@ namespace cl7 {
         return TEXT("#UNKNOWN");
     }
 
-    template <> inline
+    inline
     cl7::string to_string(const xl7::graphics::PixelBitKit::Channel& channel) { return TEXT("{") + cl7::to_string(channel.index) + TEXT(", ") + cl7::to_string(channel.depth) + TEXT(", ") + cl7::to_string(channel.offset) + TEXT(", ") + (channel.mask ? cl7::strings::to_0xhex(channel.mask, TEXT('a')) : TEXT("0")) + TEXT(", ") + (channel.mask0 ? cl7::strings::to_0xhex(channel.mask0, TEXT('a')) : TEXT("0")) + TEXT("}"); }
+}
 }
 
 

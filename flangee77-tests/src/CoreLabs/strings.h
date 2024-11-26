@@ -12,8 +12,9 @@
 
 
 
-namespace cl7 {
-    template <> inline
+namespace tl7 {
+namespace internals {
+    inline
     cl7::string to_string(const cl7::strings::Encoding& encoding)
     {
         switch ( encoding )
@@ -27,6 +28,7 @@ namespace cl7 {
 
         return TEXT("\"unknown encoding\"");
     }
+}
 }
 
 
@@ -858,7 +860,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::utf16_length(u16string_view)") )
 
 
 
-TESTLABS_CASE( TEXT("CodeLabs:  strings:  detect_encoding") )
+TESTLABS_CASE( TEXT("CoreLabs:  strings:  detect_encoding") )
 {
     struct Entry
     {
@@ -888,6 +890,132 @@ TESTLABS_CASE( TEXT("CodeLabs:  strings:  detect_encoding") )
 
 
 
+TESTLABS_CASE( TEXT("CoreLabs:  strings:  count_whitespace_prefix") )
+{
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::astring_view( "" ) ), 0 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::astring_view( " " ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::astring_view( " x" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::astring_view( " x " ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::astring_view( "  x" ) ), 2 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::astring_view( "  x  " ) ), 2 );
+
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u0009" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u000a" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u000b" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u000c" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u000d" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u0020" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u0085" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u00a0" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u1680" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u2000" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u2001" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u2002" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u2003" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u2004" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u2005" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u2006" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u2007" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u2008" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u2009" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u200a" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u2028" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u2029" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u202f" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u205f" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u16string_view( u"\u3000" ) ), 1 );
+
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u0009" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u000a" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u000b" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u000c" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u000d" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u0020" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u0085" ) ), 2 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u00a0" ) ), 2 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u1680" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u2000" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u2001" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u2002" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u2003" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u2004" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u2005" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u2006" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u2007" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u2008" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u2009" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u200a" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u2028" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u2029" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u202f" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u205f" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u3000" ) ), 3 );
+}
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings:  count_whitespace_suffix") )
+{
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::astring_view( "" ) ), 0 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::astring_view( " " ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::astring_view( "x " ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::astring_view( " x " ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::astring_view( "x  " ) ), 2 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::astring_view( "  x  " ) ), 2 );
+
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u0009" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u000a" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u000b" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u000c" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u000d" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u0020" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u0085" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u00a0" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u1680" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u2000" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u2001" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u2002" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u2003" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u2004" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u2005" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u2006" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u2007" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u2008" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u2009" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u200a" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u2028" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u2029" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u202f" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u205f" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u16string_view( u"\u3000" ) ), 1 );
+
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u0009" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u000a" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u000b" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u000c" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u000d" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u0020" ) ), 1 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u0085" ) ), 2 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u00a0" ) ), 2 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u1680" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u2000" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u2001" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u2002" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u2003" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u2004" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u2005" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u2006" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u2007" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u2008" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u2009" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u200a" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u2028" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u2029" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u202f" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u205f" ) ), 3 );
+    TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::u8string_view( u8"\u3000" ) ), 3 );
+}
+
+
+
 TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming left") )
 {
     struct Entry
@@ -906,7 +1034,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming left") )
         { TEXT("\n\tx\n\t"), TEXT("x\n\t") },
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("<string>"), container, entry, entry.input )
     {
         const auto& input = entry.input;
         const auto& expected = entry.expected;
@@ -916,6 +1044,18 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming left") )
 
         TESTLABS_CHECK_EQ( actual, expected );
         TESTLABS_CHECK_EQ( cl7::strings::ltrimmed( input ), expected );
+    }
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("<string_view>"), container, entry, entry.input )
+    {
+        const auto input_view = cl7::make_string_view( entry.input );
+        const auto expected_view = cl7::make_string_view( entry.expected );
+
+        auto actual_view = cl7::make_string_view( entry.input );
+        cl7::strings::ltrim( actual_view );
+
+        TESTLABS_CHECK_EQ( actual_view, expected_view );
+        TESTLABS_CHECK_EQ( cl7::strings::ltrimmed( input_view ), expected_view );
     }
 }
 
@@ -937,7 +1077,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming right") )
         { TEXT("\n\tx\n\t"), TEXT("\n\tx") },
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("<string>"), container, entry, entry.input )
     {
         const auto& input = entry.input;
         const auto& expected = entry.expected;
@@ -947,6 +1087,61 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming right") )
 
         TESTLABS_CHECK_EQ( actual, expected );
         TESTLABS_CHECK_EQ( cl7::strings::rtrimmed( input ), expected );
+    }
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("<string_view>"), container, entry, entry.input )
+    {
+        const auto input_view = cl7::make_string_view( entry.input );
+        const auto expected_view = cl7::make_string_view( entry.expected );
+
+        auto actual_view = cl7::make_string_view( entry.input );
+        cl7::strings::rtrim( actual_view );
+
+        TESTLABS_CHECK_EQ( actual_view, expected_view );
+        TESTLABS_CHECK_EQ( cl7::strings::rtrimmed( input_view ), expected_view );
+    }
+}
+
+TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming both") )
+{
+    struct Entry
+    {
+        cl7::string input;
+        cl7::string expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { TEXT(""), TEXT("") },
+        { TEXT(" "), TEXT("") },
+        { TEXT("  "), TEXT("") },
+        { TEXT("  x"), TEXT("x") },
+        { TEXT("x  "), TEXT("x") },
+        { TEXT("  x  "), TEXT("x") },
+        { TEXT("\n\tx\n\t"), TEXT("x") },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("<string>"), container, entry, entry.input )
+    {
+        const auto& input = entry.input;
+        const auto& expected = entry.expected;
+
+        auto actual = entry.input;
+        cl7::strings::trim( actual );
+
+        TESTLABS_CHECK_EQ( actual, expected );
+        TESTLABS_CHECK_EQ( cl7::strings::trimmed( input ), expected );
+    }
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("<string_view>"), container, entry, entry.input )
+    {
+        const auto input_view = cl7::make_string_view( entry.input );
+        const auto expected_view = cl7::make_string_view( entry.expected );
+
+        auto actual_view = cl7::make_string_view( entry.input );
+        cl7::strings::trim( actual_view );
+
+        TESTLABS_CHECK_EQ( actual_view, expected_view );
+        TESTLABS_CHECK_EQ( cl7::strings::trimmed( input_view ), expected_view );
     }
 }
 

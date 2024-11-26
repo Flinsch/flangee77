@@ -13,9 +13,11 @@
 
 
 
-namespace cl7 {
-    template <> inline
+namespace tl7 {
+namespace internals {
+    inline
     cl7::string to_string(const ml7::Vector2& v) { return TEXT("{ ") + cl7::to_string(v.x) + TEXT(", ") + cl7::to_string(v.y) + TEXT(" }"); }
+}
 }
 
 

@@ -12,9 +12,11 @@
 
 
 
-namespace cl7 {
-    template <> inline
-    cl7::string to_string(const Version& version) { return TEXT("{\"") + version.to_string() + TEXT("\"}"); }
+namespace tl7 {
+namespace internals {
+    inline
+    cl7::string to_string(const cl7::Version& version) { return TEXT("{\"") + version.to_string() + TEXT("\"}"); }
+}
 }
 
 
