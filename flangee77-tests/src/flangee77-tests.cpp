@@ -9,6 +9,7 @@
 #include "./CoreLabs/Version.h"
 
 #include "./DataLabs/compression.h"
+#include "./DataLabs/syntax.h"
 
 #include "./MathLabs/functions.h"
 #include "./MathLabs/Vector2.h"

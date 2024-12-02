@@ -657,6 +657,39 @@
     <ClInclude Include="src\MathLabs\Angle.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\DataLabs\syntax\Grammar.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataLabs\syntax\Token.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataLabs\syntax\Lexer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataLabs\syntax\Parser.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataLabs\syntax\TerminalSymbol.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataLabs\syntax\ProductionRule.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataLabs\syntax\GenericLexer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataLabs\syntax\TerminalSymbolCollection.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataLabs\syntax\Diagnostic.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataLabs\syntax\SourceLocation.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataLabs\syntax\Diagnostics.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CoreLabs\creational\Singleton.cpp">
@@ -1125,6 +1158,24 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\MathLabs\Angle.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataLabs\syntax\Grammar.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataLabs\syntax\Parser.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataLabs\syntax\TerminalSymbol.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataLabs\syntax\GenericLexer.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataLabs\syntax\Diagnostics.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataLabs\syntax\Lexer.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

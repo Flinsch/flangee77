@@ -199,6 +199,16 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\DataLabs\syntax\Diagnostics.h" />
+    <ClInclude Include="src\DataLabs\syntax\Diagnostic.h" />
+    <ClInclude Include="src\DataLabs\syntax\GenericLexer.h" />
+    <ClInclude Include="src\DataLabs\syntax\Lexer.h" />
+    <ClInclude Include="src\DataLabs\syntax\SourceLocation.h" />
+    <ClInclude Include="src\DataLabs\syntax\Parser.h" />
+    <ClInclude Include="src\DataLabs\syntax\Grammar.h" />
+    <ClInclude Include="src\DataLabs\syntax\ProductionRule.h" />
+    <ClInclude Include="src\DataLabs\syntax\TerminalSymbol.h" />
+    <ClInclude Include="src\DataLabs\syntax\Token.h" />
     <ClInclude Include="src\MathLabs\Angle.h" />
     <ClInclude Include="src\MathLabs\Matrix4x4.h" />
     <ClInclude Include="src\MathLabs\Matrix3x4.h" />
@@ -413,8 +423,15 @@ xcopy /Y /E "$(ProjectDir)3rdparty\$(PlatformTarget)" "$(SolutionDir)temp\$(Plat
     <ClInclude Include="src\XiaoLabs\graphics\textures\Texture3D.h" />
     <ClInclude Include="src\XiaoLabs\graphics\impl\direct3d9\textures\Texture2DImpl.h" />
     <ClInclude Include="src\XiaoLabs\graphics\pipeline\VertexShaderStage.h" />
+    <ClInclude Include="src\DataLabs\syntax\TerminalSymbolCollection.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\DataLabs\syntax\Lexer.cpp" />
+    <ClCompile Include="src\DataLabs\syntax\Diagnostics.cpp" />
+    <ClCompile Include="src\DataLabs\syntax\GenericLexer.cpp" />
+    <ClCompile Include="src\DataLabs\syntax\Parser.cpp" />
+    <ClCompile Include="src\DataLabs\syntax\Grammar.cpp" />
+    <ClCompile Include="src\DataLabs\syntax\TerminalSymbol.cpp" />
     <ClCompile Include="src\MathLabs\Angle.cpp" />
     <ClCompile Include="src\MathLabs\Matrix4x4.cpp" />
     <ClCompile Include="src\MathLabs\Matrix3x4.cpp" />
