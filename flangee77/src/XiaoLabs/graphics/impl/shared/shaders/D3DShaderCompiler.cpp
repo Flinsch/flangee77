@@ -18,8 +18,6 @@
 #include <wrl/client.h>
 namespace wrl = Microsoft::WRL;
 
-#pragma comment( lib, "d3dcompiler.lib" )
-
 
 
 namespace xl7 {
@@ -72,7 +70,7 @@ namespace shaders {
 
         static cl7::astring read_source_code(const cl7::string& file_path)
         {
-            cl7::aifstream file( file_path, std::ios::in | std::ios::binary | std::ios::ate );
+            cl7::aifstream file( file_path.data(), std::ios::in | std::ios::binary | std::ios::ate );
             if ( !file.is_open() )
             {
                 LOG_ERROR( TEXT("Shader file \"") + Include::filename( file_path ) + TEXT("\" could not be opened. Does it exist?") );

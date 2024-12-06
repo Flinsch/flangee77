@@ -65,7 +65,7 @@ namespace cl7 {
         size_t data_size = data.size();
 
         cl7::astring base64;
-        base64.reserve( data_size * 140/100 ); // Base64 encoding causes an overhead of 33–37% relative to the size of the original binary data.
+        base64.reserve( data_size * 140/100 ); // Base64 encoding causes an overhead of 33-37% relative to the size of the original binary data.
 
         size_t _24_bit_count = data_size / 3;
         size_t _16_bit_count = (data_size % 3) / 2;

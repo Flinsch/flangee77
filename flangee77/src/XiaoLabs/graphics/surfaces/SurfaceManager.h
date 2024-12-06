@@ -23,7 +23,7 @@ public:
     {
         static SurfaceManager* create(ISurfaceFactory* factory) { return new SurfaceManager( factory ); }
         static void destroy(SurfaceManager* manager) { delete manager; }
-        friend class RenderingDevice;
+        friend class xl7::graphics::RenderingDevice;
     };
 
 

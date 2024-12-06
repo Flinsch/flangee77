@@ -1,0 +1,284 @@
+
+target_sources(flangee77
+    PRIVATE
+    audio.h
+    Component.cpp
+    Component.h
+    Config.cpp
+    Config.h
+    graphics.h
+    input.h
+    MainWindow.cpp
+    MainWindow.h
+
+    graphics/ChannelFlags.h
+    graphics/ChannelOrder.cpp
+    graphics/ChannelOrder.h
+    graphics/ClearFlags.h
+    graphics/Color.cpp
+    graphics/Color.h
+    graphics/ComparisonFunction.h
+    graphics/DepthStencilFormat.h
+    graphics/GraphicsSystem.cpp
+    graphics/GraphicsSystem.h
+    graphics/IResourceFactory.h
+    graphics/PixelBitKit.cpp
+    graphics/PixelBitKit.h
+    graphics/PixelFormat.cpp
+    graphics/PixelFormat.h
+    graphics/RenderingContext.cpp
+    graphics/RenderingContext.h
+    graphics/RenderingDevice.cpp
+    graphics/RenderingDevice.h
+    graphics/Viewport.h
+
+    graphics/images/Image.cpp
+    graphics/images/Image.h
+    graphics/images/ImageConverter.cpp
+    graphics/images/ImageConverter.h
+    graphics/images/ImageHandler.cpp
+    graphics/images/ImageHandler.h
+    graphics/images/ImageProcessor.cpp
+    graphics/images/ImageProcessor.h
+    graphics/images/ImageResizer.cpp
+    graphics/images/ImageResizer.h
+    graphics/images/ImageStack.cpp
+    graphics/images/ImageStack.h
+    graphics/images/PngImageHandler.cpp
+    graphics/images/PngImageHandler.h
+    graphics/images/ResamplingMethod.h
+    graphics/images/TargaImageHandler.cpp
+    graphics/images/TargaImageHandler.h
+
+    graphics/meshes/IMeshFactory.h
+    graphics/meshes/IndexBuffer.cpp
+    graphics/meshes/IndexBuffer.h
+    graphics/meshes/IndexDataProvider.h
+    graphics/meshes/IndexType.h
+    graphics/meshes/MeshBuffer.cpp
+    graphics/meshes/MeshBuffer.h
+    graphics/meshes/MeshManager.cpp
+    graphics/meshes/MeshManager.h
+    graphics/meshes/MeshUtil.cpp
+    graphics/meshes/MeshUtil.h
+    graphics/meshes/Topology.h
+    graphics/meshes/VertexBuffer.cpp
+    graphics/meshes/VertexBuffer.h
+    graphics/meshes/VertexDataProvider.h
+    graphics/meshes/VertexLayout.cpp
+    graphics/meshes/VertexLayout.h
+
+    graphics/pipeline/AbstractPipelineObject.cpp
+    graphics/pipeline/AbstractPipelineObject.h
+    graphics/pipeline/AbstractShaderStage.cpp
+    graphics/pipeline/AbstractShaderStage.h
+    graphics/pipeline/AbstractStage.cpp
+    graphics/pipeline/AbstractStage.h
+    graphics/pipeline/InputAssemblerStage.cpp
+    graphics/pipeline/InputAssemblerStage.h
+    graphics/pipeline/OutputMergerStage.cpp
+    graphics/pipeline/OutputMergerStage.h
+    graphics/pipeline/Pipeline.cpp
+    graphics/pipeline/Pipeline.h
+    graphics/pipeline/PixelShaderStage.cpp
+    graphics/pipeline/PixelShaderStage.h
+    graphics/pipeline/RasterizerStage.cpp
+    graphics/pipeline/RasterizerStage.h
+    graphics/pipeline/VertexShaderStage.cpp
+    graphics/pipeline/VertexShaderStage.h
+
+    graphics/shaders/CodeDataProvider.cpp
+    graphics/shaders/CodeDataProvider.h
+    graphics/shaders/CompileOptions.h
+    graphics/shaders/ConstantBuffer.cpp
+    graphics/shaders/ConstantBuffer.h
+    graphics/shaders/ConstantBufferDeclaration.h
+    graphics/shaders/ConstantBufferLayout.cpp
+    graphics/shaders/ConstantBufferLayout.h
+    graphics/shaders/ConstantBufferMapping.cpp
+    graphics/shaders/ConstantBufferMapping.h
+    graphics/shaders/ConstantClass.h
+    graphics/shaders/ConstantDataProvider.h
+    graphics/shaders/ConstantDeclaration.h
+    graphics/shaders/ConstantMapping.h
+    graphics/shaders/ConstantType.h
+    graphics/shaders/IShaderFactory.h
+    graphics/shaders/PixelShader.cpp
+    graphics/shaders/PixelShader.h
+    graphics/shaders/ReflectionResult.h
+    graphics/shaders/Shader.cpp
+    graphics/shaders/Shader.h
+    graphics/shaders/ShaderCode.cpp
+    graphics/shaders/ShaderCode.h
+    graphics/shaders/ShaderManager.cpp
+    graphics/shaders/ShaderManager.h
+    graphics/shaders/TextureSamplerDeclaration.h
+    graphics/shaders/VertexShader.cpp
+    graphics/shaders/VertexShader.h
+
+    graphics/states/AbstractState.cpp
+    graphics/states/AbstractState.h
+    graphics/states/BlendState.cpp
+    graphics/states/BlendState.h
+    graphics/states/DepthStencilState.cpp
+    graphics/states/DepthStencilState.h
+    graphics/states/IStateFactory.h
+    graphics/states/RasterizerState.cpp
+    graphics/states/RasterizerState.h
+    graphics/states/SamplerState.cpp
+    graphics/states/SamplerState.h
+    graphics/states/StateManager.cpp
+    graphics/states/StateManager.h
+
+    graphics/surfaces/ColorRenderTarget.cpp
+    graphics/surfaces/ColorRenderTarget.h
+    graphics/surfaces/DepthStencilTarget.cpp
+    graphics/surfaces/DepthStencilTarget.h
+    graphics/surfaces/ISurfaceFactory.h
+    graphics/surfaces/RenderTarget.cpp
+    graphics/surfaces/RenderTarget.h
+    graphics/surfaces/Surface.cpp
+    graphics/surfaces/Surface.h
+    graphics/surfaces/SurfaceManager.cpp
+    graphics/surfaces/SurfaceManager.h
+
+    graphics/textures/Cubemap.cpp
+    graphics/textures/Cubemap.h
+    graphics/textures/ImageDataProvider.cpp
+    graphics/textures/ImageDataProvider.h
+    graphics/textures/ITextureFactory.h
+    graphics/textures/Texture.cpp
+    graphics/textures/Texture.h
+    graphics/textures/Texture2D.cpp
+    graphics/textures/Texture2D.h
+    graphics/textures/Texture2DArray.cpp
+    graphics/textures/Texture2DArray.h
+    graphics/textures/Texture3D.cpp
+    graphics/textures/Texture3D.h
+    graphics/textures/TextureManager.cpp
+    graphics/textures/TextureManager.h
+
+    resources/DataProvider.cpp
+    resources/DataProvider.h
+    resources/DefaultDataProvider.cpp
+    resources/DefaultDataProvider.h
+    resources/Resource.cpp
+    resources/Resource.h
+    resources/ResourceID.cpp
+    resources/ResourceID.h
+    resources/ResourceManager.cpp
+    resources/ResourceManager.h
+    resources/ResourceUsage.h
+)
+
+target_sources(flangee77
+    PRIVATE
+    graphics/impl/shared/errors.cpp
+    graphics/impl/shared/errors.h
+
+    graphics/impl/shared/meshes/ComposedVertexLayout.cpp
+    graphics/impl/shared/meshes/ComposedVertexLayout.h
+    graphics/impl/shared/meshes/VertexBufferBinding.cpp
+    graphics/impl/shared/meshes/VertexBufferBinding.h
+
+    graphics/impl/shared/shaders/D3DShaderCompiler.cpp
+    graphics/impl/shared/shaders/D3DShaderCompiler.h
+)
+
+target_sources(flangee77
+    PRIVATE
+    graphics/impl/direct3d9/errors.cpp
+    graphics/impl/direct3d9/errors.h
+    graphics/impl/direct3d9/GraphicsSystemImpl.cpp
+    graphics/impl/direct3d9/GraphicsSystemImpl.h
+    graphics/impl/direct3d9/mappings.cpp
+    graphics/impl/direct3d9/mappings.h
+    graphics/impl/direct3d9/prerequisites.h
+    graphics/impl/direct3d9/RenderingContextImpl.cpp
+    graphics/impl/direct3d9/RenderingContextImpl.h
+    graphics/impl/direct3d9/RenderingDeviceImpl.cpp
+    graphics/impl/direct3d9/RenderingDeviceImpl.h
+    graphics/impl/direct3d9/ResourceFactoryImpl.cpp
+    graphics/impl/direct3d9/ResourceFactoryImpl.h
+
+    graphics/impl/direct3d9/meshes/IndexBufferImpl.cpp
+    graphics/impl/direct3d9/meshes/IndexBufferImpl.h
+    graphics/impl/direct3d9/meshes/VertexBufferImpl.cpp
+    graphics/impl/direct3d9/meshes/VertexBufferImpl.h
+
+    graphics/impl/direct3d9/shaders/ConstantBufferImpl.cpp
+    graphics/impl/direct3d9/shaders/ConstantBufferImpl.h
+    graphics/impl/direct3d9/shaders/D3DShaderReflection.cpp
+    graphics/impl/direct3d9/shaders/D3DShaderReflection.h
+    graphics/impl/direct3d9/shaders/PixelShaderImpl.cpp
+    graphics/impl/direct3d9/shaders/PixelShaderImpl.h
+    graphics/impl/direct3d9/shaders/VertexShaderImpl.cpp
+    graphics/impl/direct3d9/shaders/VertexShaderImpl.h
+
+    graphics/impl/direct3d9/states/BlendStateImpl.cpp
+    graphics/impl/direct3d9/states/BlendStateImpl.h
+    graphics/impl/direct3d9/states/D3DBlendStateTypeValues.h
+    graphics/impl/direct3d9/states/D3DDepthStencilStateTypeValues.h
+    graphics/impl/direct3d9/states/D3DRasterizerStateTypeValues.h
+    graphics/impl/direct3d9/states/D3DSamplerStateTypeValues.h
+    graphics/impl/direct3d9/states/DepthStencilStateImpl.cpp
+    graphics/impl/direct3d9/states/DepthStencilStateImpl.h
+    graphics/impl/direct3d9/states/RasterizerStateImpl.cpp
+    graphics/impl/direct3d9/states/RasterizerStateImpl.h
+    graphics/impl/direct3d9/states/SamplerStateImpl.cpp
+    graphics/impl/direct3d9/states/SamplerStateImpl.h
+
+    #graphics/impl/direct3d9/surfaces/
+
+    graphics/impl/direct3d9/textures/Texture2DImpl.cpp
+    graphics/impl/direct3d9/textures/Texture2DImpl.h
+)
+
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    target_sources(flangee77
+        PRIVATE
+        graphics/impl/direct3d11/errors.cpp
+        graphics/impl/direct3d11/errors.h
+        graphics/impl/direct3d11/GraphicsSystemImpl.cpp
+        graphics/impl/direct3d11/GraphicsSystemImpl.h
+        graphics/impl/direct3d11/mappings.cpp
+        graphics/impl/direct3d11/mappings.h
+        graphics/impl/direct3d11/prerequisites.h
+        graphics/impl/direct3d11/RenderingContextImpl.cpp
+        graphics/impl/direct3d11/RenderingContextImpl.h
+        graphics/impl/direct3d11/RenderingDeviceImpl.cpp
+        graphics/impl/direct3d11/RenderingDeviceImpl.h
+        graphics/impl/direct3d11/ResourceFactoryImpl.cpp
+        graphics/impl/direct3d11/ResourceFactoryImpl.h
+
+        graphics/impl/direct3d11/meshes/IndexBufferImpl.cpp
+        graphics/impl/direct3d11/meshes/IndexBufferImpl.h
+        graphics/impl/direct3d11/meshes/VertexBufferImpl.cpp
+        graphics/impl/direct3d11/meshes/VertexBufferImpl.h
+
+        graphics/impl/direct3d11/shaders/ConstantBufferImpl.cpp
+        graphics/impl/direct3d11/shaders/ConstantBufferImpl.h
+        graphics/impl/direct3d11/shaders/D3DConstantBufferWrapper.cpp
+        graphics/impl/direct3d11/shaders/D3DConstantBufferWrapper.h
+        graphics/impl/direct3d11/shaders/D3DShaderReflection.cpp
+        graphics/impl/direct3d11/shaders/D3DShaderReflection.h
+        graphics/impl/direct3d11/shaders/PixelShaderImpl.cpp
+        graphics/impl/direct3d11/shaders/PixelShaderImpl.h
+        graphics/impl/direct3d11/shaders/VertexShaderImpl.cpp
+        graphics/impl/direct3d11/shaders/VertexShaderImpl.h
+
+        graphics/impl/direct3d11/states/BlendStateImpl.cpp
+        graphics/impl/direct3d11/states/BlendStateImpl.h
+        graphics/impl/direct3d11/states/DepthStencilStateImpl.cpp
+        graphics/impl/direct3d11/states/DepthStencilStateImpl.h
+        graphics/impl/direct3d11/states/RasterizerStateImpl.cpp
+        graphics/impl/direct3d11/states/RasterizerStateImpl.h
+        graphics/impl/direct3d11/states/SamplerStateImpl.cpp
+        graphics/impl/direct3d11/states/SamplerStateImpl.h
+
+        #graphics/impl/direct3d11/surfaces/
+
+        graphics/impl/direct3d11/textures/Texture2DImpl.cpp
+        graphics/impl/direct3d11/textures/Texture2DImpl.h
+    )
+endif()

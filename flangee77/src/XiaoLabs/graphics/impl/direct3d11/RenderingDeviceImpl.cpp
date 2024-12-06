@@ -69,7 +69,11 @@ namespace direct3d11 {
      */
     RenderingDeviceImpl::RenderingDeviceImpl()
         : RenderingDevice( std::unique_ptr<IResourceFactory>( ResourceFactoryImpl::Attorney::create() ) )
+#if defined(_MSC_VER)
         , _d3d_feature_level( D3D_FEATURE_LEVEL_1_0_CORE )
+#else
+        , _d3d_feature_level( static_cast<D3D_FEATURE_LEVEL>(0x1000) )
+#endif
     {
     }
 
@@ -136,7 +140,11 @@ namespace direct3d11 {
         // based on a hard-coded feature level mapping.
         switch ( _d3d_feature_level )
         {
+#if defined(_MSC_VER)
         case D3D_FEATURE_LEVEL_1_0_CORE:
+#else
+        case static_cast<D3D_FEATURE_LEVEL>(0x1000):
+#endif
             capabilities.shaders.vertex_shader_version = { 0, 0 };
             capabilities.shaders.pixel_shader_version = { 0, 0 };
             break;

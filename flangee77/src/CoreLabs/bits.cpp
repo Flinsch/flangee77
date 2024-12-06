@@ -104,10 +104,10 @@ namespace bits {
     unsigned norm_to_fixed(float value, unsigned bit_depth)
     {
         assert( bit_depth <= 32 );
-        //return static_cast<unsigned>( value * static_cast<float>( (1ui64 << bit_depth) - 1 ) );
+        //return static_cast<unsigned>( value * static_cast<float>( (1ULL << bit_depth) - 1 ) );
         if ( value <= 0.0f ) return 0;
-        if ( value >= 1.0f ) return static_cast<unsigned>( (1ui64 << bit_depth) - 1 );
-        return static_cast<unsigned>( value * static_cast<float>( 1ui64 << bit_depth ) );
+        if ( value >= 1.0f ) return static_cast<unsigned>( (1ULL << bit_depth) - 1 );
+        return static_cast<unsigned>( value * static_cast<float>( 1ULL << bit_depth ) );
     }
 
     /**
@@ -118,7 +118,7 @@ namespace bits {
     float fixed_to_norm(unsigned value, unsigned bit_depth)
     {
         assert( bit_depth <= 32 );
-        return static_cast<float>( value ) / static_cast<float>( (1ui64 << bit_depth) - 1 );
+        return static_cast<float>( value ) / static_cast<float>( (1ULL << bit_depth) - 1 );
     }
 
     /**
@@ -137,10 +137,10 @@ namespace bits {
         }
         else if ( src_bit_depth < dst_bit_depth )
         {
-            if ( value >= static_cast<unsigned>( (1ui64 << src_bit_depth) - 1 ) )
-                value = static_cast<unsigned>( (1ui64 << dst_bit_depth) - 1 );
+            if ( value >= static_cast<unsigned>( (1ULL << src_bit_depth) - 1 ) )
+                value = static_cast<unsigned>( (1ULL << dst_bit_depth) - 1 );
             else if ( value > 0 )
-                value = static_cast<unsigned>( static_cast<uint64_t>( value ) * (1ui64 << dst_bit_depth) / ((1ui64 << src_bit_depth) - 1) );
+                value = static_cast<unsigned>( static_cast<uint64_t>( value ) * (1ULL << dst_bit_depth) / ((1ULL << src_bit_depth) - 1) );
         }
 
         return value;

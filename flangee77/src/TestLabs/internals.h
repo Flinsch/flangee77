@@ -4,6 +4,8 @@
 
 #include <CoreLabs/string.h>
 
+#include <cfloat>
+
 
 
 #define _TL7_DEFINE_AND_REGISTER_GLOBAL_FUNC(func, name) \

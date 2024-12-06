@@ -39,7 +39,7 @@ namespace profiling {
     {
         std::chrono::steady_clock::time_point end;
         if ( _is_running )
-            end = std::chrono::high_resolution_clock::now();
+            end = std::chrono::steady_clock::now();
         else
             end = _end;
 
@@ -96,7 +96,7 @@ namespace profiling {
      */
     void Stopwatch::reset()
     {
-        _start = _end = std::chrono::high_resolution_clock::now();
+        _start = _end = std::chrono::steady_clock::now();
         _pause = std::chrono::steady_clock::duration::zero();
     }
 
@@ -118,7 +118,7 @@ namespace profiling {
         if ( !_is_running )
             return;
 
-        _end = std::chrono::high_resolution_clock::now();
+        _end = std::chrono::steady_clock::now();
         _is_running = false;
     }
 
@@ -131,7 +131,7 @@ namespace profiling {
         if ( _is_running )
             return;
 
-        _pause += std::chrono::high_resolution_clock::now() - _end;
+        _pause += std::chrono::steady_clock::now() - _end;
         _is_running = true;
     }
 

@@ -30,6 +30,8 @@ public:
         static_assert( static_cast<unsigned>( ChannelOrder::ARGB ) == 1 );
         static_assert( static_cast<unsigned>( ChannelOrder::ABGR ) == 2 );
         static_assert( static_cast<unsigned>( ChannelOrder::BGRA ) == 3 );
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmultichar"
 #if ('RGBA') == 0x52474241 // => little endian
         static constexpr unsigned RGBA_INDICES_BY_CHANNEL_ORDER[4][4] = {
             { 0, 1, 2, 3, }, // RGBA
@@ -46,6 +48,7 @@ public:
             { 1, 2, 3, 0, }, // BGRA
         };
 #endif
+#pragma GCC diagnostic pop
 
 private:
     union Value32

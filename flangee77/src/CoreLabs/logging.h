@@ -32,12 +32,12 @@ namespace logging {
 
 
 
-#define LOG(msg)                    std_log( msg, cl7::logging::LogType::Log,       TEXT(__FILE__), __LINE__, TEXT(__FUNCTION__) )
-#define LOG_INFO(msg)               std_log( msg, cl7::logging::LogType::Info,      TEXT(__FILE__), __LINE__, TEXT(__FUNCTION__) )
-#define LOG_SUCCESS(msg)            std_log( msg, cl7::logging::LogType::Success,   TEXT(__FILE__), __LINE__, TEXT(__FUNCTION__) )
-#define LOG_WARNING(msg)            std_log( msg, cl7::logging::LogType::Warning,   TEXT(__FILE__), __LINE__, TEXT(__FUNCTION__) )
-#define LOG_ERROR(msg)              std_log( msg, cl7::logging::LogType::Error,     TEXT(__FILE__), __LINE__, TEXT(__FUNCTION__) )
-#define LOG_TYPE(msg, type)         std_log( msg, type,                             TEXT(__FILE__), __LINE__, TEXT(__FUNCTION__) )
+#define LOG(msg)                    std_log( msg, cl7::logging::LogType::Log,       TEXT(__FILE__), __LINE__, TEXT(""))//__FUNCTION__) )
+#define LOG_INFO(msg)               std_log( msg, cl7::logging::LogType::Info,      TEXT(__FILE__), __LINE__, TEXT(""))//__FUNCTION__) )
+#define LOG_SUCCESS(msg)            std_log( msg, cl7::logging::LogType::Success,   TEXT(__FILE__), __LINE__, TEXT(""))//__FUNCTION__) )
+#define LOG_WARNING(msg)            std_log( msg, cl7::logging::LogType::Warning,   TEXT(__FILE__), __LINE__, TEXT(""))//__FUNCTION__) )
+#define LOG_ERROR(msg)              std_log( msg, cl7::logging::LogType::Error,     TEXT(__FILE__), __LINE__, TEXT(""))//__FUNCTION__) )
+#define LOG_TYPE(msg, type)         std_log( msg, type,                             TEXT(__FILE__), __LINE__, TEXT(""))//__FUNCTION__) )
 
 
 

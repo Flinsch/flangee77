@@ -4,7 +4,7 @@
     #include <XiaoLabs/graphics/images/TargaImageHandler.h>
     #include <XiaoLabs/graphics/images/PngImageHandler.h>
 
-#include <MathLabs/constants.h>
+#include <MathLabs/math.h>
 
 #include <CoreLabs/filesystem.h>
 
@@ -110,7 +110,7 @@ namespace helloworld {
         _index_buffer_id = xl7::graphics::mesh_manager()->create_index_buffer( "My Index Buffer", index_buffer_desc, index_data_provider );
 
 
-        cl7::aifstream ifs( cl7::filesystem::get_working_directory() + TEXT("assets/shaders/shader.hlsl") );
+        cl7::aifstream ifs( (cl7::filesystem::get_working_directory() + TEXT("assets/shaders/shader.hlsl")).data() );
         assert( ifs );
         assert( ifs.is_open() );
         cl7::asstream oss;

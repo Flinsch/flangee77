@@ -23,7 +23,7 @@ public:
     {
         static TextureManager* create(ITextureFactory* factory) { return new TextureManager( factory ); }
         static void destroy(TextureManager* manager) { delete manager; }
-        friend class RenderingDevice;
+        friend class xl7::graphics::RenderingDevice;
     };
 
 

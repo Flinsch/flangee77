@@ -1,12 +1,7 @@
 
-.vs/
-*.aps
-*.user
+/.idea/
+/.vs/
 
-Directory.Build.props
+/build/
 
-/temp/
-/lib/
-
-/debug*/
-/release*/
+CMakeUserPresets.json

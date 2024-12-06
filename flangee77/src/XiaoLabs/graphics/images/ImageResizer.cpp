@@ -4,6 +4,8 @@
 
 #include <CoreLabs/logging.h>
 
+#include <cmath>
+
 
 
 namespace xl7 {

@@ -1,6 +1,7 @@
 #include "PixelBitKit.h"
 
 #include <array>
+#include <cstring>
 
 
 
@@ -212,8 +213,8 @@ namespace graphics {
             channel.index = index;
             channel.depth = depths[ i ];
             channel.offset = offset;
-            channel.mask = stride > 8 ? 0Ui64 : (((1Ui64 << channel.depth) - 1Ui64) << channel.offset);
-            channel.mask0 = (1Ui64 << channel.depth) - 1Ui64;
+            channel.mask = stride > 8 ? 0ULL : (((1ULL << channel.depth) - 1ULL) << channel.offset);
+            channel.mask0 = (1ULL << channel.depth) - 1ULL;
 
             if ( index == 0 )
                 // The first channel specifies the supposedly uniform bit depth.

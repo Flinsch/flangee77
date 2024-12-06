@@ -1,7 +1,5 @@
 #include "Matrix3x3.h"
 
-#include <MathLabs/constants.h>
-
 
 
 namespace ml7 {

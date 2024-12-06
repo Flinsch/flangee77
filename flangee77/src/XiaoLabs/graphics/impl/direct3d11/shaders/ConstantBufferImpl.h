@@ -11,6 +11,7 @@ namespace xl7 {
 namespace graphics {
 namespace impl {
 namespace direct3d11 {
+    class ResourceFactoryImpl;
 namespace shaders {
 
 
@@ -23,7 +24,7 @@ public:
     class Attorney
     {
         static ConstantBufferImpl* create(const CreateParams<Desc>& params) { return new ConstantBufferImpl( params ); }
-        friend class ResourceFactoryImpl;
+        friend class xl7::graphics::impl::direct3d11::ResourceFactoryImpl;
     };
 
 

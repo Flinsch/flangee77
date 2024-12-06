@@ -7,8 +7,6 @@
 #define SECURITY_WIN32
 #include <security.h>
 
-#pragma comment( lib, "Secur32.lib" )
-
 
 
 namespace cl7 {

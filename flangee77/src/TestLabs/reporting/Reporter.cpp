@@ -1,5 +1,7 @@
 #include "Reporter.h"
 
+#include <algorithm>
+
 
 
 namespace tl7 {

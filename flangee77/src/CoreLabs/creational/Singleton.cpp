@@ -1,5 +1,7 @@
 #include "Singleton.h"
 
+#include <algorithm>
+
 
 
 namespace cl7 {

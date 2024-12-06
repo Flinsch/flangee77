@@ -6,6 +6,7 @@
 #include <CoreLabs/byte_vector.h>
 #include <CoreLabs/byte_view.h>
 
+#include <algorithm>
 #include <bit>
 
 

@@ -5,6 +5,8 @@
 
 #include "../Color.h"
 
+#include <cfloat>
+
 
 
 namespace xl7 {

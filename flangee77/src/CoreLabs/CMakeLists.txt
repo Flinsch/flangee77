@@ -1,0 +1,79 @@
+
+target_sources(flangee77
+    PRIVATE
+    Base64.cpp
+    Base64.h
+    bits.cpp
+    bits.h
+    byte_span.h
+    byte_vector.h
+    byte_view.h
+    errors.cpp
+    errors.h
+    filesystem.cpp
+    filesystem.h
+    fstream.h
+    Guid.cpp
+    Guid.h
+    io.h
+    logging.cpp
+    logging.h
+    memory.cpp
+    memory.h
+    profiling.h
+    root.cpp
+    root.h
+    sstream.h
+    string.h
+    strings.cpp
+    strings.h
+    utilities.h
+    Version.cpp
+    Version.h
+
+    creational/Singleton.cpp
+    creational/Singleton.h
+
+    io/file.cpp
+    io/file.h
+    io/ifile.h
+    io/irom.h
+    io/open_mode.h
+    io/seek_mode.h
+
+    logging/AbstractLogHandler.cpp
+    logging/AbstractLogHandler.h
+    logging/CoutLogHandler.cpp
+    logging/CoutLogHandler.h
+    logging/FileLogHandler.cpp
+    logging/FileLogHandler.h
+    logging/HtmlLogHandler.cpp
+    logging/HtmlLogHandler.h
+    logging/LogEntry.h
+    logging/Logger.cpp
+    logging/Logger.h
+    logging/LogType.h
+    logging/StandardLogger.cpp
+    logging/StandardLogger.h
+
+    profiling/Profiler.cpp
+    profiling/Profiler.h
+    profiling/Registry.cpp
+    profiling/Registry.h
+    profiling/Sample.h
+    profiling/SampleHandler.cpp
+    profiling/SampleHandler.h
+    profiling/StandardRegistry.cpp
+    profiling/StandardRegistry.h
+    profiling/Stopwatch.cpp
+    profiling/Stopwatch.h
+
+    system/CPUID.cpp
+    system/CPUID.h
+    system/datetime.cpp
+    system/datetime.h
+    system/MemoryStatus.cpp
+    system/MemoryStatus.h
+    system/user.cpp
+    system/user.h
+)

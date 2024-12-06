@@ -4,6 +4,8 @@
 
 #include <CoreLabs/root.h>
 
+#include <cmath>
+
 
 
 namespace ml7 {

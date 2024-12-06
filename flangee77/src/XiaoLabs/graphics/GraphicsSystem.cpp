@@ -5,7 +5,7 @@
 #include "./impl/direct3d9/GraphicsSystemImpl.h"
 typedef xl7::graphics::impl::direct3d9::GraphicsSystemImpl GraphicsSystemImpl;
 
-#elif XL7_GRAPHICS_IMPL == XL7_GRAPHICS_IMPL_DIRECT3D11
+#elif XL7_GRAPHICS_IMPL == XL7_GRAPHICS_IMPL_DIRECT3D11 && defined(_MSC_VER)
 #define XL7_GRAPHICS_IMPL_NAME "Direct3D 11"
 #include "./impl/direct3d11/GraphicsSystemImpl.h"
 typedef xl7::graphics::impl::direct3d11::GraphicsSystemImpl GraphicsSystemImpl;

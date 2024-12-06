@@ -268,8 +268,14 @@ private:
     void _resolve_target_states(ResolvedTargetStates& resolved_target_states);
 
     /**
-    * Gathers drawing states (including resolving resource IDs into usable objects).
-    */
+     *
+     */
+    template <class TShader>
+    friend void _resolve_shader_states(RenderingDevice* const _rendering_device, RenderingContext::ResolvedShaderStates<TShader>& resolved_shader_states, pipeline::AbstractShaderStage& pipeline_as);
+
+    /**
+     * Gathers drawing states (including resolving resource IDs into usable objects).
+     */
     void _resolve_draw_states(ResolvedDrawStates& resolved_draw_states, bool indexed, bool instanced);
 
     /**

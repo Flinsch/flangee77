@@ -1,7 +1,5 @@
 #include "functions.h"
 
-#include <cmath>
-
 
 
 namespace ml7 {

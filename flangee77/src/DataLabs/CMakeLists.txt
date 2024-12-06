@@ -1,0 +1,26 @@
+
+target_sources(flangee77
+    PRIVATE
+    compression.h
+
+    compression/Deflate.cpp
+    compression/Deflate.h
+
+    syntax/Diagnostic.h
+    syntax/Diagnostics.cpp
+    syntax/Diagnostics.h
+    syntax/GenericLexer.cpp
+    syntax/GenericLexer.h
+    syntax/Grammar.cpp
+    syntax/Grammar.h
+    syntax/Lexer.cpp
+    syntax/Lexer.h
+    syntax/Parser.cpp
+    syntax/Parser.h
+    syntax/ProductionRule.h
+    syntax/SourceLocation.h
+    syntax/TerminalSymbol.cpp
+    syntax/TerminalSymbol.h
+    syntax/TerminalSymbolCollection.h
+    syntax/Token.h
+)

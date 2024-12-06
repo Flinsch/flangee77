@@ -26,8 +26,14 @@ namespace states {
             mag_anisotropic &&
             mip_anisotropic;
 
+#if defined(_MSC_VER)
+        const auto default_value = D3D11_FILTER_REDUCTION_TYPE_STANDARD;
+#else
+        const auto default_value = 0;
+#endif
+
         if ( all_anisotropic )
-            return D3D11_ENCODE_ANISOTROPIC_FILTER( D3D11_FILTER_REDUCTION_TYPE_STANDARD );
+            return D3D11_ENCODE_ANISOTROPIC_FILTER( default_value );
 
         if ( min_anisotropic ) min_filter_type = xl7::graphics::states::SamplerState::MinMagFilterType::Linear;
         if ( mag_anisotropic ) mag_filter_type = xl7::graphics::states::SamplerState::MinMagFilterType::Linear;
@@ -47,7 +53,7 @@ namespace states {
             static_cast<D3D11_FILTER_TYPE>( static_cast<unsigned>( min_filter_type ) - 1 ),
             static_cast<D3D11_FILTER_TYPE>( static_cast<unsigned>( mag_filter_type ) - 1 ),
             static_cast<D3D11_FILTER_TYPE>( static_cast<unsigned>( mip_filter_type ) - 1 ),
-            D3D11_FILTER_REDUCTION_TYPE_STANDARD );
+            default_value );
     }
 
     static D3D11_TEXTURE_ADDRESS_MODE _d3d_texture_address_mode_from(xl7::graphics::states::SamplerState::AddressMode address_mode)

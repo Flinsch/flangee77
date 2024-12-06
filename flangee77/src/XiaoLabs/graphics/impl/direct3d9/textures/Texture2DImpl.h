@@ -11,6 +11,7 @@ namespace xl7 {
 namespace graphics {
 namespace impl {
 namespace direct3d9 {
+    class ResourceFactoryImpl;
 namespace textures {
 
 
@@ -23,7 +24,7 @@ public:
     class Attorney
     {
         static Texture2DImpl* create(const CreateParams<Desc>& params) { return new Texture2DImpl( params ); }
-        friend class ResourceFactoryImpl;
+        friend class xl7::graphics::impl::direct3d9::ResourceFactoryImpl;
     };
 
 

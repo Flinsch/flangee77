@@ -38,7 +38,7 @@ public:
         requires( std::derived_from<TTerminalSymbol, TerminalSymbol> )
     void add(cl7::astring_view name, TerminalSymbol::ID id, Args&&... args)
     {
-        add( std::make_unique<TTerminalSymbol>( name, id, args ) );
+        add( std::make_unique<TTerminalSymbol>( name, id, args... ) );
     }
 
     /**

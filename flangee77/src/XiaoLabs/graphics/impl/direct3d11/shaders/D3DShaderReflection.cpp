@@ -9,9 +9,6 @@
 #include <wrl/client.h>
 namespace wrl = Microsoft::WRL;
 
-#pragma comment( lib, "d3dcompiler.lib" )
-#pragma comment( lib, "dxguid.lib" )
-
 
 
 namespace xl7 {

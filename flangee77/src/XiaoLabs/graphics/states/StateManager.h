@@ -23,7 +23,7 @@ public:
     {
         static StateManager* create(IStateFactory* factory) { return new StateManager( factory ); }
         static void destroy(StateManager* manager) { delete manager; }
-        friend class RenderingDevice;
+        friend class xl7::graphics::RenderingDevice;
     };
 
 

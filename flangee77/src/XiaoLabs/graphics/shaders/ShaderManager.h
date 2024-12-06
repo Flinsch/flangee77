@@ -23,7 +23,7 @@ public:
     {
         static ShaderManager* create(IShaderFactory* factory) { return new ShaderManager( factory ); }
         static void destroy(ShaderManager* manager) { delete manager; }
-        friend class RenderingDevice;
+        friend class xl7::graphics::RenderingDevice;
     };
 
 

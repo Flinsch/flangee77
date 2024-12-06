@@ -1,5 +1,7 @@
 #include "Logger.h"
 
+#include <algorithm>
+
 
 
 namespace cl7 {

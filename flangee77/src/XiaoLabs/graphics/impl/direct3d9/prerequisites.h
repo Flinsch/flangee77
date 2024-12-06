@@ -9,8 +9,6 @@
 #include <wrl/client.h>
 namespace wrl = Microsoft::WRL;
 
-#pragma comment( lib, "d3d9.lib" )
-
 
 
 #endif // XL7_GRAPHICS_IMPL_D3D9_PREREQUISITES_H

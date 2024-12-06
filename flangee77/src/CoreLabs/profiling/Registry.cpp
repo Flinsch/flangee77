@@ -96,7 +96,7 @@ namespace profiling {
         ( ss << TEXT("  Max  ") ).put( TEXT(' ') );
         while ( ss.str().length() % 14 )
             ss.put( TEXT(' ') );
-        ( ss << TEXT("  Ø time  ") ).put( TEXT(' ') );
+        ( ss << TEXT("  \u2300 time  ") ).put( TEXT(' ') );
         while ( ss.str().length() % 14 )
             ss.put( TEXT(' ') );
         ( ss << TEXT("  #  ") ).put( TEXT(' ') );
@@ -152,7 +152,7 @@ namespace profiling {
         else if ( sample->stats.avg_usecs > 1'000 )
             ( ss << std::fixed << std::setprecision(1) << std::setw(6) << (static_cast<float>(sample->stats.avg_usecs)*0.001f) << TEXT(" ms") ).put( TEXT(' ') );
         else
-            ( ss << std::fixed << std::setprecision(1) << std::setw(6) << (static_cast<float>(sample->stats.avg_usecs)) << TEXT(" µs") ).put( TEXT(' ') );
+            ( ss << std::fixed << std::setprecision(1) << std::setw(6) << (static_cast<float>(sample->stats.avg_usecs)) << TEXT(" \u00b5s") ).put( TEXT(' ') );
         while ( ss.str().length() % 14 )
             ss.put( TEXT(' ') );
         ( ss << std::fixed << std::setprecision(0) << std::setw(5) << sample->stats.call_count << TEXT(" ") ).put( TEXT(' ') );

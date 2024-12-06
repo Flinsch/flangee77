@@ -13,6 +13,7 @@ namespace xl7 {
 namespace graphics {
 namespace impl {
 namespace direct3d9 {
+    class ResourceFactoryImpl;
 namespace states {
 
 
@@ -25,7 +26,7 @@ public:
     class Attorney
     {
         static SamplerStateImpl* create(const CreateParams<Desc>& params) { return new SamplerStateImpl( params ); }
-        friend class ResourceFactoryImpl;
+        friend class xl7::graphics::impl::direct3d9::ResourceFactoryImpl;
     };
 
 

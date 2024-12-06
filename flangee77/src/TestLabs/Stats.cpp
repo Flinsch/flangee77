@@ -1,5 +1,7 @@
 #include "Stats.h"
 
+#include <cstring>
+
 
 
 namespace tl7 {

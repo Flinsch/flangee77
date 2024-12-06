@@ -1,0 +1,28 @@
+
+target_sources(flangee77
+    PRIVATE
+    Angle.cpp
+    Angle.h
+    constants.h
+    functions.cpp
+    functions.h
+    math.h
+    Matrix2x2.cpp
+    Matrix2x2.h
+    Matrix2x3.cpp
+    Matrix2x3.h
+    Matrix3x3.cpp
+    Matrix3x3.h
+    Matrix3x4.cpp
+    Matrix3x4.h
+    Matrix4x4.cpp
+    Matrix4x4.h
+    Quaternion.cpp
+    Quaternion.h
+    Vector2.cpp
+    Vector2.h
+    Vector3.cpp
+    Vector3.h
+    Vector4.cpp
+    Vector4.h
+)

@@ -22,7 +22,7 @@ namespace internals {
         oss << '"';
         for ( const auto c : val )
         {
-            constexpr unsigned long long mask = (1Ui64 << (sizeof(decltype(c)) * 8)) - 1;
+            constexpr unsigned long long mask = (1ULL << (sizeof(decltype(c)) * 8)) - 1;
             const unsigned long long ull = static_cast<unsigned long long>( c ) & mask;
 
             if ( c < 0x20 )

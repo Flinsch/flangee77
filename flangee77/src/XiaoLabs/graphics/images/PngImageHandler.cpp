@@ -5,6 +5,8 @@
 #include <CoreLabs/logging.h>
 #include <CoreLabs/bits.h>
 
+#include <cstring>
+
 
 
 namespace xl7 {

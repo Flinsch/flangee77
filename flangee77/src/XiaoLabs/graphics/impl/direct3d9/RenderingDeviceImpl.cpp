@@ -14,8 +14,6 @@
 
 #include <dxgi.h>
 
-#pragma comment( lib, "dxgi.lib" )
-
 
 
 namespace xl7 {

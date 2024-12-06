@@ -31,7 +31,7 @@ public:
     const Meta meta;
 
 public:
-    virtual char const* what() const
+    virtual char const* what() const noexcept
     {
         return "tl7::assertion_exception";
     }

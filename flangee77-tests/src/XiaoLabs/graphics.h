@@ -8,7 +8,9 @@
 #include <XiaoLabs/graphics/images/ImageResizer.h>
 #include <XiaoLabs/graphics/impl/shared/shaders/D3DShaderCompiler.h>
 #include <XiaoLabs/graphics/impl/direct3d9/shaders/D3DShaderReflection.h>
+#if defined(_MSC_VER)
 #include <XiaoLabs/graphics/impl/direct3d11/shaders/D3DShaderReflection.h>
+#endif
 
 #include <CoreLabs/filesystem.h>
 #include <CoreLabs/strings.h>
@@ -868,7 +870,9 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
 {
     xl7::graphics::impl::shared::shaders::D3DShaderCompiler d3d_shader_compiler;
     xl7::graphics::impl::direct3d9::shaders::D3DShaderReflection d3d9_shader_reflection;
+#if defined(_MSC_VER)
     xl7::graphics::impl::direct3d11::shaders::D3DShaderReflection d3d11_shader_reflection;
+#endif
 
     enum class ImplType
     {
@@ -888,8 +892,10 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
     const std::vector<Entry> container {
         { ImplType::Direct3D9, "shader.hlsl", "mainVS", "vs_3_0", { { { "", 0, { { { "WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
         { ImplType::Direct3D9, "shader.hlsl", "mainPS", "ps_3_0", { { { "", 0, { { { "BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
+#if defined(_MSC_VER)
         { ImplType::Direct3D11, "shader.hlsl", "mainVS", "vs_5_0", { { { "VertexConstants", 0, { { { "WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
         { ImplType::Direct3D11, "shader.hlsl", "mainPS", "ps_5_0", { { { "PixelConstants", 0, { { { "BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
+#endif
     };
 
     for ( size_t i = 0; i < container.size(); ++i )
@@ -906,9 +912,11 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
         case ImplType::Direct3D9:
             reflection_success = d3d9_shader_reflection.reflect( bytecode, reflection_result );
             break;
+#if defined(_MSC_VER)
         case ImplType::Direct3D11:
             reflection_success = d3d11_shader_reflection.reflect( bytecode, reflection_result );
             break;
+#endif
         default:
             assert( false );
         }

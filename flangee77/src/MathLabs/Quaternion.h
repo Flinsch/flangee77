@@ -28,8 +28,10 @@ public:
      * Default constructor. Initializes the quaternion with v = (0, 0, 0) and s = 1.
      */
     constexpr Quaternion()
-        : v( 0.0f )
-        , s( 1.0f )
+        : x( 0.0f )
+        , y( 0.0f )
+        , z( 0.0f )
+        , w( 1.0f )
     {
     }
 
@@ -50,8 +52,10 @@ public:
      * scalar/real part s.
      */
     constexpr Quaternion(const ml7::Vector3& v, float s)
-        : v( v )
-        , s( s )
+        : x( v.x )
+        , y( v.y )
+        , z( v.z )
+        , w( s )
     {
     }
 
@@ -82,10 +86,10 @@ public:
 
             const float r = ::sqrtf( m[i][i] - m[j][j] - m[k][k] + 1.0f );
             const float _05i = 0.5f / r;
-            v[i] = 0.5f * r;
-            v[j] = (m[i][j] + m[j][i]) * _05i;
-            v[k] = (m[k][i] + m[i][k]) * _05i;
-            s    = (m[k][j] - m[j][k]) * _05i;
+            data[i] = 0.5f * r;
+            data[j] = (m[i][j] + m[j][i]) * _05i;
+            data[k] = (m[k][i] + m[i][k]) * _05i;
+            w       = (m[k][j] - m[j][k]) * _05i;
         }
     }
 
@@ -236,14 +240,6 @@ public:
             float w;
         }; // struct
 
-        struct
-        {
-            /** The quaternion's vector/imaginary part v = (x, y, z). */
-            Vector3 v;
-            /** The quaternion's scalar/real part. */
-            float s;
-        };
-
         /** Array of all four components. */
         float data[4];
     }; // union
@@ -278,7 +274,7 @@ public:
     /**
      * Returns the conjugate of this quaternion.
      */
-    Quaternion conjugated() const { return ml7::Quaternion( -v, s ); }
+    Quaternion conjugated() const { return { -x, -y, -z, w }; }
 
     /**
      * Returns a copy of this quaternion inverted (if possible).
@@ -354,7 +350,9 @@ public:
      */
     Quaternion& conjugate()
     {
-        v = -v;
+        x = -x;
+        y = -y;
+        z = -z;
         return *this;
     }
 

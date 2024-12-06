@@ -6,8 +6,6 @@
 #define ZLIB_WINAPI
 #include <zlib.h>
 
-#pragma comment( lib, "zlibwapi.lib" )
-
 
 
 namespace dl7 {

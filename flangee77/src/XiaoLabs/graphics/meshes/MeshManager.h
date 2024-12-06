@@ -23,7 +23,7 @@ public:
     {
         static MeshManager* create(IMeshFactory* factory) { return new MeshManager( factory ); }
         static void destroy(MeshManager* manager) { delete manager; }
-        friend class RenderingDevice;
+        friend class xl7::graphics::RenderingDevice;
     };
 
 

@@ -1,8 +1,5 @@
 #include "Vector3.h"
 
-#include <MathLabs/constants.h>
-#include <MathLabs/functions.h>
-
 
 
 namespace ml7 {

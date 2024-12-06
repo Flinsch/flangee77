@@ -57,7 +57,7 @@ namespace io {
         if ( (open_mode & open_mode::truncate) == open_mode::truncate )
             om |= std::ios::trunc;
 
-        _fstream.open( path, om );
+        _fstream.open( path.data(), om );
         if ( !is_good() )
         {
             close();
