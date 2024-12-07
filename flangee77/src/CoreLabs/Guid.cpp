@@ -3,7 +3,7 @@
 #ifdef _WIN32
 #include <objbase.h>
 #else
-static_assert( false, "Not implemented." );
+#error Not implemented.
 #endif
 
 
