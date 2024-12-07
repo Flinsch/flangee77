@@ -64,7 +64,7 @@ jobs:
     - name: Install zlib on Windows
       if: runner.os == 'Windows'
       run: |
-        choco install zlib --version=1.2.11
+        choco install zlib --pre --yes
         echo "ZLIB_DIR=C:\\tools\\zlib" >> $GITHUB_ENV
 
     - name: Install zlib on Linux
