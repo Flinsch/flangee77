@@ -72,7 +72,7 @@ jobs:
       if: runner.os == 'Windows'
       run: |
         .\vcpkg\vcpkg install zlib
-        echo "ZLIB_DIR=${{ github.workspace }}\\vcpkg\\packages\\zlib_${{ matrix.os }}" >> $GITHUB_ENV
+        echo "ZLIB_DIR=${{ github.workspace }}\\vcpkg\\installed\\${{ matrix.os }}" >> $env:GITHUB_ENV
 
     - name: Install zlib on Linux
       if: runner.os == 'Linux'
@@ -89,7 +89,6 @@ jobs:
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
-        -DZLIB_DIR=$ZLIB_DIR
         -S ${{ github.workspace }}
 
     - name: Build
