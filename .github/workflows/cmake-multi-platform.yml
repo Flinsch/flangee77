@@ -61,18 +61,17 @@ jobs:
       run: |
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
-    - name: Install vcpkg on Windows
-      if: runner.os == 'Windows'
-      run: |
-        git clone https://github.com/microsoft/vcpkg.git
-        .\vcpkg\bootstrap-vcpkg.bat
-        .\vcpkg\vcpkg integrate install
-
     - name: Install zlib on Windows
       if: runner.os == 'Windows'
       run: |
-        .\vcpkg\vcpkg install zlib
-        echo "ZLIB_DIR=${{ github.workspace }}\\vcpkg\\installed\\${{ matrix.os }}" >> $env:GITHUB_ENV
+        curl -L -o zlib.zip https://zlib.net/zlib131.zip
+        mkdir zlib
+        tar -xf zlib.zip -C zlib-zip --strip-components=1
+        mkdir zlib-build
+        cd zlib-build
+        cmake -S ..\zlib-zip -B . -DCMAKE_INSTALL_PREFIX=../zlib -DBUILD_SHARED_LIBS=ON -DWIN32=ON
+        cmake --build . --config Release --target install
+        echo "ZLIB_DIR=${{ github.workspace }}\\zlib" >> $env:GITHUB_ENV
 
     - name: Install zlib on Linux
       if: runner.os == 'Linux'
