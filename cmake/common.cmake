@@ -8,7 +8,7 @@ include_directories(
 )
 
 link_directories(
-    $ENV{ZLIB_DIR}/x64
+    $ENV{ZLIB_DIR}/lib
 )
 
 link_libraries(

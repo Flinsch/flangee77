@@ -19,7 +19,7 @@ target_link_libraries(flangee77_tests
 
 add_custom_command(TARGET flangee77_tests
     POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy $ENV{ZLIB_DIR}/x64/zlibwapi.dll ${CMAKE_CURRENT_BINARY_DIR}
+    COMMAND ${CMAKE_COMMAND} -E copy $ENV{ZLIB_DIR}/bin/zlibwapi.dll ${CMAKE_CURRENT_BINARY_DIR}
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/assets ${CMAKE_CURRENT_BINARY_DIR}/assets
 )
 
