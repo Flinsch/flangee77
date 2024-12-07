@@ -22,3 +22,9 @@ add_custom_command(TARGET flangee77_tests
     COMMAND ${CMAKE_COMMAND} -E copy $ENV{ZLIB_DIR}/x64/zlibwapi.dll ${CMAKE_CURRENT_BINARY_DIR}
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/assets ${CMAKE_CURRENT_BINARY_DIR}/assets
 )
+
+enable_testing()
+
+add_test(NAME flangee77_tests
+    COMMAND $<TARGET_FILE:flangee77_tests>
+)
