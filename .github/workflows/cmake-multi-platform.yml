@@ -69,9 +69,12 @@ jobs:
         tar -xf zlib.zip -C zlib-zip --strip-components=1
         mkdir zlib-build
         cd zlib-build
-        cmake -S ..\zlib-zip -B . -DCMAKE_INSTALL_PREFIX=../zlib -DBUILD_SHARED_LIBS=ON -DWIN32=ON
+        cmake -S ..\zlib-zip -B . -DCMAKE_INSTALL_PREFIX=../zlib-install -DBUILD_SHARED_LIBS=ON -DWIN32=ON
         cmake --build . --config Release --target install
-        echo "ZLIB_DIR=${{ github.workspace }}\\zlib" >> $env:GITHUB_ENV
+        cd ..\zlib-install
+        copy lib\zlib.lib lib\zlibwapi.lib
+        copy bin\zlib1.dll bin\zlibwapi.dll
+        echo "ZLIB_DIR=${{ github.workspace }}\\zlib-install" >> $env:GITHUB_ENV
 
     - name: Install zlib on Linux
       if: runner.os == 'Linux'
