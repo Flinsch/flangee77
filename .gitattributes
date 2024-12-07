@@ -1,0 +1,18 @@
+# Autodetect text files ...
+* text=auto
+
+# ... unless the name matches the following overriding patterns
+
+# Definitively text files
+*.cpp text
+*.h text
+*.hlsl text
+*.hlsli text
+*.json text
+*.txt text
+
+# Definitively binary files
+*.dll binary
+*.jpg binary
+*.png binary
+*.tga binary
