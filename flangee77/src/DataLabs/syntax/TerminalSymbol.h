@@ -66,8 +66,11 @@ struct PatternSymbol
     const std::regex_constants::match_flag_type match_flags;
     /** The regular expression object to be used for matching. */
     const std::regex regex;
+    /** The (optional) literal prefix of the symbol. */
+    const cl7::u8string literal_prefix;
 
     PatternSymbol(cl7::astring_view name, ID id, cl7::astring_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
+    PatternSymbol(cl7::astring_view name, ID id, cl7::astring_view pattern, cl7::u8string_view literal_prefix, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
     virtual ~PatternSymbol() = default;
 
     virtual bool is_literal() const { return false; }

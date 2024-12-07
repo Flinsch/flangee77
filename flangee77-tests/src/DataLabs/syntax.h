@@ -18,7 +18,7 @@ TESTLABS_CASE( TEXT("DataLabs:  syntax:  GenericLexer:  tokenize") )
 
     dl7::syntax::TerminalSymbolCollection terminal_symbols;
     dl7::syntax::TerminalSymbol::ID symbol_id = 0;
-    terminal_symbols.add_pattern( "directive", ++symbol_id, R"(#[a-z]+)" );
+    terminal_symbols.add_pattern( "directive", ++symbol_id, R"(#[a-z]+)", u8"#" );
     terminal_symbols.add_literal( "left round bracket", ++symbol_id, u8"(" );
     terminal_symbols.add_literal( "left square bracket", ++symbol_id, u8"[" );
     terminal_symbols.add_literal( "left curly bracket", ++symbol_id, u8"{" );
@@ -35,7 +35,7 @@ TESTLABS_CASE( TEXT("DataLabs:  syntax:  GenericLexer:  tokenize") )
     terminal_symbols.add_pattern( "operator", ++symbol_id, R"([=!~^&|*/%+-])" );
     terminal_symbols.add_pattern( "integer number", ++symbol_id, R"(0|[1-9][0-9]*)" );
     terminal_symbols.add_pattern( "floating point number", ++symbol_id, R"((?:0?|[1-9][0-9]*)\.[0-9]*f?)" );
-    terminal_symbols.add_pattern( "string", ++symbol_id, R"(".*")" );
+    terminal_symbols.add_pattern( "string", ++symbol_id, R"(".*")", u8"\"" );
 
     dl7::syntax::GenericLexer lexer( terminal_symbols, {
         .whitespace_handling = dl7::syntax::Lexer::WhitespaceHandling::Discard,

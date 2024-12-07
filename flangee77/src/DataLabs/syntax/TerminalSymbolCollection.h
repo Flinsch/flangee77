@@ -58,6 +58,14 @@ public:
     }
 
     /**
+     * Adds the specified pattern symbol to the collection.
+     */
+    void add_pattern(cl7::astring_view name, TerminalSymbol::ID id, cl7::astring_view pattern, cl7::u8string_view literal_prefix, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default)
+    {
+        add( std::make_unique<PatternSymbol>( name, id, pattern, literal_prefix, syntax_options, match_flags ) );
+    }
+
+    /**
      * Returns the number of contained terminal symbols.
      */
     size_t get_count() const
