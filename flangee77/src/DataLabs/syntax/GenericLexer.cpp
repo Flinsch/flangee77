@@ -45,7 +45,7 @@ namespace syntax {
             if ( length == 0 )
                 continue;
 
-            // Apply longest match rule and prioritize literals over non-literals (patterns).
+            // Apply longest match rule and prioritize literals over non-literals (i.e., patterns).
             if ( best_match.first < 0 || length > best_match.second || (length == best_match.second && symbol.is_literal() && !best_is_literal) )
             {
                 best_match = { symbol.id, length };

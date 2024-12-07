@@ -60,12 +60,12 @@ struct PatternSymbol
 
     /** The dynamic regex pattern of the symbol. */
     const cl7::astring pattern;
-    /** The regular expression object to be used for matching. */
-    const std::regex regex;
     /** The bitmask that contains options that govern how the regular expression behaves ('optimize' is always applied). */
     const std::regex_constants::syntax_option_type syntax_options;
     /** The bitmask that specifies additional regular expression matching options ('match_continuous' is always applied). */
     const std::regex_constants::match_flag_type match_flags;
+    /** The regular expression object to be used for matching. */
+    const std::regex regex;
 
     PatternSymbol(cl7::astring_view name, ID id, cl7::astring_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
     virtual ~PatternSymbol() = default;
