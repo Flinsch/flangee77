@@ -65,7 +65,7 @@ jobs:
       if: runner.os == 'Windows'
       run: |
         curl -L -o zlib.zip https://zlib.net/zlib131.zip
-        mkdir zlib
+        mkdir zlib-zip
         tar -xf zlib.zip -C zlib-zip --strip-components=1
         mkdir zlib-build
         cd zlib-build
