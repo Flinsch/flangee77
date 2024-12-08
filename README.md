@@ -16,7 +16,8 @@ Is there really no reason to use this framework? Let me try to make a case
 distinction:
 
 - Are you a professional video game developer? Then you should definitely not
-  use this framework and instead go for something really professional!
+  use this framework and instead go for something really professional: an
+  off-the-shelf engine or an in-house engine from your company.
 - Are you an indie[^1] video game developer? Then you are interested in
   getting a finished game pretty soon and should use an engine that helps you
   with &ldquo;everything&rdquo; and not just a framework where you still have
