@@ -314,8 +314,8 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8(u32string_view)") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.comment )
     {
-        TESTLABS_ASSERT( entry.u32d.size() >= 1 && entry.u32d.back() == 0 );
-        TESTLABS_ASSERT( entry.u8d.size() >= 1 && entry.u8d.back() == 0 );
+        TESTLABS_ASSERT( !entry.u32d.empty() && entry.u32d.back() == 0 );
+        TESTLABS_ASSERT( !entry.u8d.empty() && entry.u8d.back() == 0 );
 
         const cl7::u32string_view u32s{ reinterpret_cast<const cl7::u32char_type*>( &entry.u32d[0] ) };
         const cl7::u8string_view u8s{ reinterpret_cast<const cl7::u8char_type*>( &entry.u8d[0] ) };
@@ -358,8 +358,8 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16(u32string_view)") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.comment )
     {
-        TESTLABS_ASSERT( entry.u32d.size() >= 1 && entry.u32d.back() == 0 );
-        TESTLABS_ASSERT( entry.u16d.size() >= 1 && entry.u16d.back() == 0 );
+        TESTLABS_ASSERT( !entry.u32d.empty() && entry.u32d.back() == 0 );
+        TESTLABS_ASSERT( !entry.u16d.empty() && entry.u16d.back() == 0 );
 
         const cl7::u32string_view u32s{ reinterpret_cast<const cl7::u32char_type*>( &entry.u32d[0] ) };
         const cl7::u16string_view u16s{ reinterpret_cast<const cl7::u16char_type*>( &entry.u16d[0] ) };
@@ -733,7 +733,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::parse_utf16(u16string_view, u32string&)
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
     {
-        TESTLABS_ASSERT( entry.input_data.size() >= 1 && entry.input_data.back() == 0 );
+        TESTLABS_ASSERT( !entry.input_data.empty() && entry.input_data.back() == 0 );
 
         cl7::u16string_view input( reinterpret_cast<const cl7::u16char_type*>( &entry.input_data[0] ) );
         cl7::u32string actual;
@@ -774,7 +774,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::check_utf32(u32string_view)") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
     {
-        TESTLABS_ASSERT( entry.input_data.size() >= 1 && entry.input_data.back() == 0 );
+        TESTLABS_ASSERT( !entry.input_data.empty() && entry.input_data.back() == 0 );
 
         cl7::u32string_view input( reinterpret_cast<const cl7::u32char_type*>( &entry.input_data[0] ) );
         TESTLABS_CHECK_EQ( cl7::strings::check_utf32( input ), entry.expected );
@@ -851,7 +851,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::utf16_length(u16string_view)") )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.comment )
     {
-        TESTLABS_ASSERT( entry.input_data.size() >= 1 && entry.input_data.back() == 0 );
+        TESTLABS_ASSERT( !entry.input_data.empty() && entry.input_data.back() == 0 );
 
         cl7::u16string_view input( reinterpret_cast<const cl7::u16char_type*>( &entry.input_data[0] ) );
         TESTLABS_CHECK_EQ( cl7::strings::utf16_length( input ), entry.expected );

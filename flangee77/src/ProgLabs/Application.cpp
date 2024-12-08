@@ -132,10 +132,7 @@ namespace pl7 {
         xl7::main_window().show_window();
 
         // Perform "custom" post-initialization.
-        if ( !_post_init_impl() )
-            return false;
-
-        return true;
+        return _post_init_impl();
     }
 
     /**

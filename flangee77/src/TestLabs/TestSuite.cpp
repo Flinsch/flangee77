@@ -27,7 +27,7 @@ namespace tl7 {
         , reporter()
         , stats()
     {
-        if ( true ) // Make it optional/configurable or something?
+        //if ( true ) // Make it optional/configurable or something?
         {
             _cout_logger = std::make_unique<reporting::CoutLogger>();
             reporter.add_listener( 0, _cout_logger.get() );

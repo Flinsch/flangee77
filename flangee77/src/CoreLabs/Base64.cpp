@@ -91,11 +91,11 @@ namespace cl7 {
                 base64 += cl7::achar_type('\n');
                 line_length = 0;
             }
-            else if ( data_left && false/*_options.insert_spaces*/ )
+            /*else if ( data_left && _options.insert_spaces )
             {
                 base64 += cl7::achar_type(' ');
                 ++line_length;
-            }
+            }*/
         }
 
         assert( _16_bit_count <= 1 );
