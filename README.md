@@ -4,8 +4,10 @@
 # flangee77
 *An unlikely modular game framework*
 
+---
+
 This framework is so unlikely that you probably shouldn't use it at all! I
-mean, you *can* use it, of course. It's here, under the MIT license. So go
+mean, you _can_ use it, of course. It's here, under the MIT license. So go
 ahead! But you would certainly be better off using other frameworks or even
 game engines, whether they are quadruple-A tier or free to use.
 
@@ -35,8 +37,12 @@ distinction:
 [^1]: Of course, you can still be a professional as an indie developer, that's
 for sure. Please don't get me wrong here!
 
-You see, there are &ldquo;not many&rdquo; reasons to use this framework. But
-hey, maybe you're thinking, *haha, I'll outsmart this guy by using his
-framework precisely because of that!*
+I don't want to start a big discussion about whether and when you should use
+which framework/engine or even build your own, but you see: there are
+&ldquo;not many&rdquo; reasons to use _this_ framework. But hey, maybe you're
+thinking, _haha, I'll outsmart this guy by using his framework precisely
+because of that!_
 
 In this case, yes: Welcome, my friend!
+
+---
