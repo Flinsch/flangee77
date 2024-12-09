@@ -6,6 +6,8 @@
 
 #include <CoreLabs/string.h>
 
+#include <source_location>
+
 
 
 namespace cl7 {
@@ -29,11 +31,11 @@ struct LogEntry
     LogType type;
 
     /** The (relative) path to the file the log was generated in. */
-    const cl7::char_type* file_path = nullptr;
+    const cl7::achar_type* file_path = nullptr;
     /** The line number the log was generated at. */
     unsigned line_number = 0;
     /** The function name the log was generated from. */
-    const cl7::char_type* function_name = nullptr;
+    const cl7::achar_type* function_name = nullptr;
 
 }; // class LogEntry
 

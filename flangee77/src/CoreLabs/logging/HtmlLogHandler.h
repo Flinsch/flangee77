@@ -17,11 +17,11 @@ class HtmlLogHandler
 private:
     struct Block
     {
-        Block(HtmlLogHandler* owner, cl7::string_view block_class);
+        Block(HtmlLogHandler* owner, std::string_view block_class);
         ~Block();
 
         HtmlLogHandler* const _owner;
-        const cl7::string _block_class;
+        const std::string _block_class;
     };
 
     typedef std::unique_ptr<Block> BlockPtr;
@@ -74,27 +74,33 @@ private:
     // #############################################################################
 private:
     /**
-     * Escapes the specified "raw" text.
+     * Escapes the specified "raw" text and returns it as UTF-8 encoded std::string.
      */
-    cl7::string _escape(cl7::string_view text) const;
+    std::string _escape(cl7::string_view text) const;
 
     /**
-     * Writes the specified "raw" text to the log file without escaping it. If
-     * specified, the file is initially truncated.
+     * Escapes the specified "raw" ASCII/Latin-1 text and returns it as UTF-8
+     * encoded std::string.
      */
-    void _write_raw(cl7::string_view text, bool truncate = false);
+    std::string _escape(cl7::astring_view as) const;
 
     /**
-     * Writes the specified "raw" UTF-8 text to the log file without escaping it. If
-     * specified, the file is initially truncated.
+     * Escapes the specified "raw" UTF-8 text and returns it as UTF-8 encoded
+     * std::string.
      */
-    void _write_raw(cl7::u8string_view utf8, bool truncate = false);
+    std::string _escape(cl7::u8string_view u8s) const;
+
+    /**
+     * Writes the specified "raw" ASCII/Latin-1 or UTF-8 encoded std::string to the
+     * log file without escaping it. If specified, the file is initially truncated.
+     */
+    void _write_raw(std::string_view raw, bool truncate = false);
 
     /**
      * Writes certain information about the source code location from which the log
      * entry came to the log file.
      */
-    void _write_source_location(const cl7::char_type* file_path, unsigned line_number, const cl7::char_type* function_name);
+    void _write_source_location(const cl7::achar_type* file_path, unsigned line_number, const cl7::achar_type* function_name);
 
 }; // class HtmlLogHandler
 
