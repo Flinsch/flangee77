@@ -41,9 +41,11 @@ namespace logging {
         constexpr std::string_view title = "flangee77 &mdash; log.html";
 
         const std::time_t t = std::chrono::system_clock::to_time_t( std::chrono::system_clock::now() );
-        std::tm tm;
+        std::tm tm{};
         ::localtime_s( &tm, &t );
-        const auto ldt = std::put_time( &tm, "%F %T %z" );
+        const auto ldt = std::put_time( &tm, "%Y-%m-%d %H:%M:%S %z" );
+        std::ostringstream ldt_ss;
+        ldt_ss << ldt;
 
         std::ostringstream ss;
         ss << "<!doctype html>\n";
@@ -83,7 +85,7 @@ namespace logging {
         ss << "</head>\n";
         ss << "<body>\n";
         ss << "  <h1>" << title << "</h1>\n";
-        ss << "  <p>Session start: " << ldt << "</p>\n";
+        ss << "  <p>Session start: " << _escape( ldt_ss.str() ) << "</p>\n";
         ss << "  <div class=\"container\">\n";
 
         _write_raw( ss.str(), true );
@@ -97,13 +99,15 @@ namespace logging {
         _block_ptr.reset();
 
         const std::time_t t = std::chrono::system_clock::to_time_t( std::chrono::system_clock::now() );
-        std::tm tm;
+        std::tm tm{};
         ::localtime_s( &tm, &t );
-        const auto ldt = std::put_time( &tm, "%F %T %z" );
+        const auto ldt = std::put_time( &tm, "%Y-%m-%d %H:%M:%S %z" );
+        std::ostringstream ldt_ss;
+        ldt_ss << ldt;
 
         std::ostringstream ss;
         ss << "  </div>\n";
-        ss << "  <p>Session end: " << ldt << "</p>\n";
+        ss << "  <p>Session end: " << _escape( ldt_ss.str() ) << "</p>\n";
         ss << "</body>\n";
         ss << "</html>\n";
 
@@ -208,7 +212,9 @@ namespace logging {
      */
     std::string HtmlLogHandler::_escape(cl7::astring_view as) const
     {
-        return _escape( cl7::u8string_view( reinterpret_cast<const cl7::u8char_type*>(as.data()), as.size() ) );
+        if ( cl7::strings::check_ascii( as ) )
+            return _escape( cl7::u8string_view( reinterpret_cast<const cl7::u8char_type*>(as.data()), as.size() ) );
+        return _escape( cl7::strings::to_utf8( as ) );
     }
 
     /**
