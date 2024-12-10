@@ -101,6 +101,10 @@ namespace pl7 {
             LOG_WARNING( TEXT("Unable to retrieve CPU identification/information.") );
         LOG_TYPE( TEXT("Vendor name\t") + cl7::strings::from_ascii( cpuid.vendor_name ), cl7::logging::LogType::Item );
         LOG_TYPE( TEXT("Processor name\t") + cl7::strings::from_ascii( cpuid.processor_name ), cl7::logging::LogType::Item );
+        if ( std::endian::native == std::endian::little )
+            LOG_TYPE( TEXT("Endianness\tlittle endian"), cl7::logging::LogType::Item );
+        if ( std::endian::native == std::endian::big )
+            LOG_TYPE( TEXT("Endianness\tbig endian"), cl7::logging::LogType::Item );
         if ( cpuid.bitness && cpuid.bitness != sizeof(size_t) * 8 )
             LOG_TYPE( TEXT("Bitness\t") + cl7::to_string( cpuid.bitness ) + TEXT("-bit") + TEXT(" (application: ") + cl7::to_string( sizeof(size_t) * 8 ) + TEXT("-bit") + TEXT(")"), cl7::logging::LogType::Item );
         else
