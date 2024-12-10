@@ -78,20 +78,9 @@ beginning of the `struct`, in any case before possible constructors etc.
 
 ## Curly Bracket Placement
 
-- Always wrap braces after `class`, `struct`, `union`, and `enum`
-  declarations/definitions as well as `extern` etc.
-- Always wrap braces after function declarations/definitions (if not
-  single-line anyway).
-- Place the opening curly bracket on the same line as a lambda function
-  definition.
-- Place the opening curly bracket on the same line of `namespace` definitions.
-- Use the same-line style for `if`, `else`, `for`, `while`, `switch`, and other
-  control statements.
-- Exception: `case` statements. These do not actually require a block, and if
-  they do (i.e., in the case of local variable declarations), this should be
-  treated like &ldquo;regular&rdquo; blocks for encapsulating temporary local
-  variable declarations (although they should be avoided) and should therefore
-  be wrapped accordingly.
+- (Nearly) always break before braces.
+- Exception: namespaces. Place the opening curly bracket on the same line here.
+- Also use the same-line style for lambda function definitions.
 - Don't indent braces themselves.
 
 ---
