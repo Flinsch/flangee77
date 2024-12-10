@@ -1,6 +1,8 @@
 
 target_sources(flangee77
     PRIVATE
+    Base64.cpp
+    Base64.h
     compression.h
 
     compression/Deflate.cpp

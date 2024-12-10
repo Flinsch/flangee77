@@ -1,6 +1,6 @@
 #include "StateManager.h"
 
-#include <CoreLabs/Base64.h>
+#include <DataLabs/Base64.h>
 
 
 
@@ -15,7 +15,7 @@ namespace states {
     {
         cl7::byte_view desc_data{ (const std::byte*)&desc, sizeof(TDesc) };
 
-        return cl7::astring(type_string) + (" ") + cl7::Base64().encode( desc_data );
+        return cl7::astring(type_string) + (" ") + dl7::Base64().encode( desc_data );
     }
 
 

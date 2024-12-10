@@ -1,8 +1,6 @@
 
 target_sources(flangee77
     PRIVATE
-    Base64.cpp
-    Base64.h
     bits.cpp
     bits.h
     byte_span.h

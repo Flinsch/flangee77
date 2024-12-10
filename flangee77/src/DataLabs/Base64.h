@@ -1,6 +1,6 @@
 #pragma once
-#ifndef CL7_BASE64_H
-#define CL7_BASE64_H
+#ifndef DL7_BASE64_H
+#define DL7_BASE64_H
 
 #include <CoreLabs/byte_vector.h>
 #include <CoreLabs/byte_view.h>
@@ -8,7 +8,7 @@
 
 
 
-namespace cl7 {
+namespace dl7 {
 
 
 
@@ -170,6 +170,6 @@ private:
 
 
 
-} // namespace cl7
+} // namespace dl7
 
-#endif // CL7_BASE64_H
+#endif // DL7_BASE64_H

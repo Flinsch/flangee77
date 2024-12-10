@@ -4,12 +4,12 @@ target_sources(flangee77_tests
     flangee77-tests.cpp
     shared.h
 
-    CoreLabs/Base64.h
     CoreLabs/bits.h
     CoreLabs/Guid.h
     CoreLabs/strings.h
     CoreLabs/Version.h
 
+    DataLabs/Base64.h
     DataLabs/compression.h
     DataLabs/syntax.h
 

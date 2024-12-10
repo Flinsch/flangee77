@@ -2,7 +2,7 @@
 #ifndef F77_TESTS_CL7_BASE64_H
 #define F77_TESTS_CL7_BASE64_H
 
-#include <CoreLabs/Base64.h>
+#include <DataLabs/Base64.h>
 
 #include <TestLabs/TestSuite.h>
 
@@ -18,19 +18,19 @@ TESTLABS_CASE( TEXT("CoreLabs:  Base64:  encode/decode") )
     {
         cl7::byte_vector data;
         cl7::astring base64;
-        cl7::Base64::Options options;
+        dl7::Base64::Options options;
     } entry;
 
-    cl7::Base64::Options default_options = cl7::Base64::default_options;
+    dl7::Base64::Options default_options = dl7::Base64::default_options;
 
-    cl7::Base64::Options without_padding = default_options;
+    dl7::Base64::Options without_padding = default_options;
     without_padding.pad = false;
 
-    cl7::Base64::Options other_characters = default_options;
+    dl7::Base64::Options other_characters = default_options;
     other_characters.ch62 = '-';
     other_characters.ch63 = '_';
 
-    cl7::Base64::Options insert_breaks = default_options;
+    dl7::Base64::Options insert_breaks = default_options;
     insert_breaks.insert_breaks = true;
 
     const std::vector<Entry> container {
@@ -77,7 +77,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Base64:  encode/decode") )
     {
         const Entry& entry = container[ i ];
 
-        cl7::Base64 base64{ entry.options };
+        dl7::Base64 base64{ entry.options };
 
         TESTLABS_CHECK_EQ( base64.encode( entry.data ), entry.base64 );
         TESTLABS_CHECK_EQ( base64.decode( entry.base64 ), entry.data );
@@ -106,7 +106,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Base64:  decoding bad strings") )
     {
         const Entry& entry = container[ i ];
 
-        cl7::Base64 base64;
+        dl7::Base64 base64;
 
         TESTLABS_CHECK_EQ( base64.decode( entry.base64 ).size(), 0 );
     }
