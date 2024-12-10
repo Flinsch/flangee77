@@ -20,7 +20,7 @@ struct TerminalSymbol
      * 0 is reserved for the "EOF" symbol. Any negative value indicates an
      * unrecognized character. Custom IDs can have any positive value.
      */
-    typedef unsigned ID;
+    typedef signed ID;
 
     /** The name of the symbol. */
     const cl7::astring name;
