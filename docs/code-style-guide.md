@@ -87,15 +87,16 @@ beginning of the `struct`, in any case before possible constructors etc.
 
 ## Naming Conventions
 
-- Use uppercase underscore for constants, constant expressions, and macros.
-- Use lowercase underscore for functions and variables.
-- Protected and private functions and variables should be prefixed by a single
-  underscore character.
-- Use PascalCase for `class`, `struct`, and `enum` names as well as `enum`
-  entries.
-- Depending on the purpose, `enum` entries can also be understood more like
-  constants or like &ldquo;constant variables&rdquo; and can therefore be
-  written entirely as uppercase/lowercase underscore.
-- In rare cases, `class`/`struct` names can also be lowercase underscore
-  (`byte_view` for example, to name just one).
-- Use lowercase letters (no underscores) for namespaces.
+- Use **UPPERCASE_UNDERSCORE** for constants, constant expressions, and macros.
+- Use **lowercase_underscore** for functions and variables (also
+  &ldquo;constant variables&rdquo;).
+- Use **PascalCase** for the names of `class`, `struct`, and `enum` types, as
+  well as for `enum` entries.
+- Depending on their purpose, `enum` entries may follow the conventions for
+  constants (UPPERCASE_UNDERSCORE) or &ldquo;constant variables&rdquo;
+  (lowercase_underscore).
+- In rare cases, the names of `class` or `struct` types may also follow the
+  lowercase_underscore convention (e.g., `byte_view`).
+- Use **lowercase letters (without underscores)** for namespaces.
+- Prefix **protected** and **private** functions and variables with a single underscore
+  (`_`).
