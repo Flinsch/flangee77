@@ -13,23 +13,23 @@ namespace cl7 {
 
 
 #ifdef UNICODE
-    typedef std::wfstream fstream;
-    typedef std::wifstream ifstream;
-    typedef std::wofstream ofstream;
+    using fstream = std::wfstream;
+    using ifstream = std::wifstream;
+    using ofstream = std::wofstream;
 #else // => !UNICODE
-    typedef std::fstream fstream;
-    typedef std::ifstream ifstream;
-    typedef std::ofstream ofstream;
+    using fstream = std::fstream;
+    using ifstream = std::ifstream;
+    using ofstream = std::ofstream;
 #endif // #else => !UNICODE
 
-    typedef std::fstream afstream;
-    typedef std::wfstream wfstream;
+    using afstream = std::fstream;
+    using wfstream = std::wfstream;
 
-    typedef std::ifstream aifstream;
-    typedef std::wifstream wifstream;
+    using aifstream = std::ifstream;
+    using wifstream = std::wifstream;
 
-    typedef std::ofstream aofstream;
-    typedef std::wofstream wofstream;
+    using aofstream = std::ofstream;
+    using wofstream = std::wofstream;
 
 
 

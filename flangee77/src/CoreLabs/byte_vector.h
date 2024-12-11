@@ -12,14 +12,14 @@ namespace cl7 {
 
 
 
-    typedef std::vector<std::byte> byte_vector;
+    using byte_vector = std::vector<std::byte>;
 
 
 
     template <typename... T>
     byte_vector make_bytes(T&&... args) noexcept
     {
-        return { std::byte( std::forward<T>( args ) )... };
+        return {static_cast<std::byte>(std::forward<T>(args))...};
     }
 
 

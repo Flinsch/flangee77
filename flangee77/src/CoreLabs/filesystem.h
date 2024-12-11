@@ -6,8 +6,7 @@
 
 
 
-namespace cl7 {
-namespace filesystem {
+namespace cl7::filesystem {
 
 
 
@@ -33,7 +32,6 @@ namespace filesystem {
 
 
 
-} // namespace filesystem
-} // namespace cl7
+} // namespace cl7::filesystem
 
 #endif // CL7_FILESYSTEM_H

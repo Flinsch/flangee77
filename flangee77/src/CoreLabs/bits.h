@@ -8,8 +8,7 @@
 
 
 
-namespace cl7 {
-namespace bits {
+namespace cl7::bits {
 
 
 
@@ -30,8 +29,9 @@ namespace bits {
 
 
 
+namespace detail {
     template <typename T, size_t size>
-    struct _SwapBytesImpl
+    struct SwapBytesImpl
     {
         static T swap_bytes(T value)
         {
@@ -41,28 +41,29 @@ namespace bits {
             // https://commandcenter.blogspot.com/2012/04/byte-order-fallacy.html
             // Or also related:
             // https://codereview.stackexchange.com/questions/149717/implementation-of-c-standard-library-function-ntohl
-            static_assert( std::has_unique_object_representations_v<T> );
-            static_assert( size == sizeof(T) );
+            static_assert(std::has_unique_object_representations_v<T>);
+            static_assert(size == sizeof(T));
             union
             {
                 T value;
-                uint8_t bytes[ size ];
+                uint8_t bytes[size];
             } src, dst;
             src.value = value;
-            for ( size_t i = 0, j = size; j; )
-                dst.bytes[ --j ] = src.bytes[ i++ ];
+            for (size_t i = 0, j = size; j; )
+                dst.bytes[--j] = src.bytes[i++];
             return dst.value;
         }
     };
 
     template <typename T>
-    struct _SwapBytesImpl<T, 1>
+    struct SwapBytesImpl<T, 1>
     {
         static T swap_bytes(T value)
         {
             return value;
         }
     };
+} // namespace detail
 
     /**
      * Reverses the bytes in the given (integer) value.
@@ -70,7 +71,7 @@ namespace bits {
     template <typename T>
     T swap_bytes(T value)
     {
-        return _SwapBytesImpl<T, sizeof(T)>::swap_bytes( value );
+        return detail::SwapBytesImpl<T, sizeof(T)>::swap_bytes(value);
     }
 
     /**
@@ -82,9 +83,9 @@ namespace bits {
     template <std::endian endian, typename T>
     T swap_bytes_if_endian(T value)
     {
-        static_assert( std::endian::native == std::endian::little || std::endian::native == std::endian::big );
-        if ( endian == std::endian::native )
-            value = swap_bytes( value );
+        static_assert(std::endian::native == std::endian::little || std::endian::native == std::endian::big);
+        if (endian == std::endian::native)
+            value = swap_bytes(value);
         return value;
     }
 
@@ -97,9 +98,9 @@ namespace bits {
     template <std::endian endian, typename T>
     T swap_bytes_unless_endian(T value)
     {
-        static_assert( std::endian::native == std::endian::little || std::endian::native == std::endian::big );
-        if ( endian != std::endian::native )
-            value = swap_bytes( value );
+        static_assert(std::endian::native == std::endian::little || std::endian::native == std::endian::big);
+        if (endian != std::endian::native)
+            value = swap_bytes(value);
         return value;
     }
 
@@ -142,7 +143,6 @@ namespace bits {
 
 
 
-} // namespace bits
-} // namespace cl7
+} // namespace cl7::bits
 
 #endif // CL7_BITS_H

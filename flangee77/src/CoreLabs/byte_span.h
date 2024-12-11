@@ -12,7 +12,7 @@ namespace cl7 {
 
 
 
-    typedef std::span<std::byte> byte_span;
+    using byte_span = std::span<std::byte>;
 
 
 

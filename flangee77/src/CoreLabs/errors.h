@@ -6,8 +6,7 @@
 
 
 
-namespace cl7 {
-namespace errors {
+namespace cl7::errors {
 
 
 
@@ -18,7 +17,6 @@ namespace errors {
 
 
 
-} // namespace errors
-} // namespace cl7
+} // namespace cl7::errors
 
 #endif // CL7_ERRORS_H
