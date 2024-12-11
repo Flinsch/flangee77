@@ -23,6 +23,8 @@
 #include "./MathLabs/Quaternion.h"
 #include "./MathLabs/Angle.h"
 
+#include "./ProgLabs/ArgumentBag.h"
+
 #include "./XiaoLabs/graphics.h"
 
 

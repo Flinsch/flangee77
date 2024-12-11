@@ -2,6 +2,9 @@
 
 #include <CoreLabs/strings.h>
 
+#include <regex>
+#include <utility>
+
 
 
 namespace pl7 {
@@ -16,68 +19,45 @@ namespace pl7 {
      * Explicit constructor.
      */
     ArgumentBag::ArgumentBag(int argc, cl7::char_type* argv[])
-        : _arguments()
-        , _positional_arguments()
-        , _option_names()
-        , _option_values()
+        : ArgumentBag()
     {
-        bool next_is_value = false;
-        std::vector<cl7::string>* values = nullptr;
-
         for ( int i = 0; i < argc; ++i )
         {
-            _arguments.push_back( cl7::string( argv[ i ] ) );
-            const cl7::string& argument = _arguments.back();
+            _arguments.emplace_back( argv[i] );
+            _try_resolve_quotation( _arguments.back() );
+        }
 
-            if ( next_is_value )
-            {
-                assert( values );
-                values->push_back( argument );
-                next_is_value = false;
-                values = nullptr;
-                continue;
-            }
+        _parse_arguments();
+    }
 
-            assert( argument.length() > 0 );
-            if ( argument[0] != TEXT('-') )
-            {
-                _positional_arguments.push_back( argument );
-                continue;
-            }
+    /**
+     * Explicit constructor.
+     */
+    ArgumentBag::ArgumentBag(const std::vector<cl7::string_view>& arguments)
+        : ArgumentBag()
+    {
+        for ( const auto& argument : arguments )
+        {
+            _arguments.emplace_back( argument );
+            _try_resolve_quotation( _arguments.back() );
+        }
 
-            size_t l = argument.find_first_not_of( TEXT('-') );
-            if ( l == argument.npos )
-                continue;
+        _parse_arguments();
+    }
 
-            size_t r = argument.find_first_of( TEXT('='), l + 1 );
-            if ( r == argument.npos )
-                r = argument.length();
+    /**
+     * Explicit constructor.
+     */
+    ArgumentBag::ArgumentBag(const std::vector<cl7::string>& arguments)
+        : ArgumentBag()
+    {
+        for ( const auto& argument : arguments )
+        {
+            _arguments.emplace_back( argument );
+            _try_resolve_quotation( _arguments.back() );
+        }
 
-            const cl7::string option_name = cl7::strings::trimmed( argument.substr( l, r - l ) );
-            if ( option_name.length() == 0 )
-                continue;
-
-            auto it = _option_values.find( option_name );
-            if ( it == _option_values.end() )
-            {
-                _option_names.push_back( option_name );
-                it = _option_values.emplace( option_name, std::vector<cl7::string>{} ).first;
-            }
-
-            values = &it->second;
-
-            if ( r >= argument.length() )
-            {
-                next_is_value = argument.length() == 2 && ((argument[1] >= TEXT('A') && argument[1] <= TEXT('Z')) || (argument[1] >= TEXT('a') && argument[1] <= TEXT('z')));
-                continue;
-            }
-
-            const cl7::string option_value = cl7::strings::trimmed( argument.substr( r + 1 ) );
-            if ( option_value.length() == 0 )
-                continue;
-
-            values->push_back( option_value );
-        } // for each argument
+        _parse_arguments();
     }
 
 
@@ -85,6 +65,14 @@ namespace pl7 {
     // #############################################################################
     // Methods
     // #############################################################################
+
+    /**
+     * Checks whether the specified flags was passed to the application.
+     */
+    bool ArgumentBag::has_flag(cl7::string_view flag_name) const
+    {
+        return _flags.contains( flag_name );
+    }
 
     /**
      * Checks whether the specified option was passed to the application.
@@ -96,17 +84,22 @@ namespace pl7 {
     }
 
     /**
+     * Checks whether the specified option has a single assigned value.
+     */
+    bool ArgumentBag::has_single_value(cl7::string_view option_name) const
+    {
+        const std::vector<cl7::string>& values = get_values( option_name );
+        return values.size() == 1;
+    }
+
+    /**
      * Returns the option value found for the specified option, or an empty string
-     * if not found.
+     * if not found. If multiple values are assigned, the last value is returned.
      */
     const cl7::string& ArgumentBag::get_value(cl7::string_view option_name) const
     {
-        auto it = _option_values.find( option_name );
-        if ( it == _option_values.end() )
-            return _empty_value;
-
-        const std::vector<cl7::string>& values = it->second;
-        if ( values.size() == 0 )
+        const std::vector<cl7::string>& values = get_values( option_name );
+        if ( values.empty() )
             return _empty_value;
 
         return values.back();
@@ -123,6 +116,179 @@ namespace pl7 {
             return _empty_values;
 
         return it->second;
+    }
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    void ArgumentBag::_parse_arguments()
+    {
+        cl7::string_view last_name{};
+
+        for ( const auto& argument : _arguments )
+        {
+            if ( argument.starts_with( TEXT("-") ) )
+            {
+                _try_add_flag( last_name );
+                if ( argument.starts_with( TEXT("--") ) )
+                    last_name = _parse_any_option( argument );
+                else
+                    last_name = _parse_short_option_or_flags( argument );
+                continue;
+            }
+
+            const bool next_might_be_value = !last_name.empty();
+            if ( next_might_be_value )
+            {
+                _add_option_value( last_name, argument );
+                last_name = {};
+                continue;
+            }
+
+            _positional_arguments.push_back( argument );
+        } // for each argument
+
+        _try_add_flag( last_name );
+    }
+
+    cl7::string_view ArgumentBag::_parse_short_option_or_flags(cl7::string_view argument)
+    {
+        assert( !argument.empty() );
+        assert( argument[0] == TEXT('-') );
+
+        if ( argument.length() < 2 )
+            return {}; // No actual option/flag name
+
+        assert( argument[1] != TEXT('-') );
+
+        // Is this a single-character option/flag name?
+        // Return the name to handle any subsequent
+        // assignment or treat it as a flag afterwards.
+        if ( argument.length() == 2 )
+            return argument.substr( 1 );
+
+        // Is this an explicit assignment?
+        // Then treat it as a potential option.
+        if ( argument.length() > 2 && argument[2] == TEXT('=') )
+            return _parse_any_option( argument );
+
+        // Parse as many flags as there are.
+        for ( size_t i = 1; i < argument.length(); ++i )
+            _add_flag( argument.substr( i, 1 ) );
+
+        // All flags processed. No subsequent assignment to be considered.
+        return {};
+    }
+
+    cl7::string_view ArgumentBag::_parse_any_option(cl7::string_view argument)
+    {
+        assert( !argument.empty() );
+        assert( argument[0] == TEXT('-') );
+
+        size_t l = argument.find_first_not_of( TEXT('-') );
+        if ( l == argument.npos )
+            return {}; // No actual option name.
+
+        size_t r = argument.find_first_of( TEXT('='), l + 1 );
+        if ( r == argument.npos )
+            r = argument.length();
+
+        const cl7::string_view option_name = argument.substr( l, r - l );
+        if ( option_name.length() == 0 )
+            return {}; // Still no actual option name.
+
+        // No value assignment? Return the name to handle any
+        // subsequent assignment or treat it as a flag afterwards.
+        if ( r + 1 >= argument.length() )
+            return option_name;
+
+        const cl7::string_view option_value = argument.substr( r + 1 );
+        assert( !option_value.empty() );
+
+        // Add option-value assignment.
+        _add_option_value( option_name, option_value );
+
+        // Option processed. No subsequent assignment to be considered.
+        return {};
+    }
+
+    void ArgumentBag::_try_add_flag(cl7::string_view flag_name)
+    {
+        if ( flag_name.empty() )
+            return;
+
+        _add_flag( flag_name );
+    }
+
+    void ArgumentBag::_add_flag(cl7::string_view flag_name)
+    {
+        assert( !flag_name.empty() );
+
+        _flags.insert( cl7::string(flag_name) );
+    }
+
+    void ArgumentBag::_add_option_value(cl7::string_view option_name, cl7::string_view option_value)
+    {
+        assert( !option_name.empty() );
+        assert( !option_value.empty() );
+
+        auto it = _option_values.find( option_name );
+        if ( it == _option_values.end() )
+        {
+            _option_names.emplace_back( option_name );
+            it = _option_values.emplace( option_name, std::vector<cl7::string>{} ).first;
+        }
+
+        auto values = &it->second;
+        values->emplace_back( option_value );
+
+        _try_resolve_quotation( values->back() );
+    }
+
+    void ArgumentBag::_try_resolve_quotation(cl7::string& option_value)
+    {
+        if ( option_value.length() < 2 )
+            return;
+
+        if ( option_value.front() == TEXT('"') && option_value.back() == TEXT('"') )
+        {
+            std::basic_regex<cl7::char_type> regex{ TEXT(R"(^"[^"\\]*(?:\\.[^"\\]*)*"$)") };
+            std::match_results<const cl7::char_type*> m;
+            if ( std::regex_match( option_value.data(), m, regex ) )
+                _resolve_quotation( option_value, TEXT('"') );
+        }
+
+        if ( option_value.front() == TEXT('\'') && option_value.back() == TEXT('\'') )
+        {
+            std::basic_regex<cl7::char_type> regex{ TEXT(R"(^'[^'\\]*(?:\\.[^'\\]*)*'$)") };
+            std::match_results<const cl7::char_type*> m;
+            if ( std::regex_match( option_value.data(), m, regex ) )
+                _resolve_quotation( option_value, TEXT('\'') );
+        }
+    }
+
+    void ArgumentBag::_resolve_quotation(cl7::string& option_value, cl7::char_type ch)
+    {
+        assert( option_value.length() >= 2 );
+
+        cl7::string tmp = option_value.substr( 1, option_value.length() - 2 );
+
+        option_value.clear();
+        for ( size_t i = 0; i < tmp.length(); ++i )
+        {
+            const bool escape =
+                tmp[i] == TEXT('\\') &&
+                i + 1 < tmp.length() &&
+                tmp[i + 1] == TEXT('"');
+
+            if ( escape )
+                ++i;
+
+            option_value += tmp[i];
+        } // for ...
     }
 
 

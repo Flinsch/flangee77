@@ -25,5 +25,7 @@ target_sources(flangee77_tests
     MathLabs/Vector3.h
     MathLabs/Vector4.h
 
+    ProgLabs/ArgumentBag.h
+
     XiaoLabs/graphics.h
 )

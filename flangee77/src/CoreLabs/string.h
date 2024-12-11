@@ -152,6 +152,25 @@ namespace cl7 {
 
 
 
+    template <typename Tchar = cl7::char_type>
+    struct string_hash
+    {
+        using is_transparent = void;
+        using Tstring_view = std::basic_string_view<Tchar, std::char_traits<Tchar>>;
+        using Tstring = std::basic_string<Tchar, std::char_traits<Tchar>>;
+        size_t operator () (const Tchar* str) const { return std::hash<Tstring_view>{}( str ); }
+        size_t operator () (Tstring_view str) const { return std::hash<Tstring_view>{}( str ); }
+        size_t operator () (const Tstring& str) const { return std::hash<Tstring>{}( str ); }
+    };
+
+    using astring_hash = string_hash<cl7::achar_type>;
+    using u8string_hash = string_hash<cl7::u8char_type>;
+    using u16string_hash = string_hash<cl7::u16char_type>;
+    using u32string_hash = string_hash<cl7::u32char_type>;
+    using wstring_hash = string_hash<cl7::wchar_type>;
+
+
+
     inline astring to_astring(signed val) { return std::to_string( val ); }
     inline astring to_astring(signed long val) { return std::to_string( val ); }
     inline astring to_astring(signed long long val) { return std::to_string( val ); }

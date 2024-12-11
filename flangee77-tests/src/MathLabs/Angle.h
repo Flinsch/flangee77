@@ -4,9 +4,6 @@
 
 #include <MathLabs/Angle.h>
 
-#include <MathLabs/constants.h>
-#include <MathLabs/functions.h>
-
 #include <TestLabs/TestSuite.h>
 
 #include "../shared.h"

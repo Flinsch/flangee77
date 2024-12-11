@@ -4,8 +4,6 @@
 
 #include <MathLabs/Matrix4x4.h>
 
-#include <MathLabs/constants.h>
-#include <MathLabs/functions.h>
 
 #include <TestLabs/TestSuite.h>
 
