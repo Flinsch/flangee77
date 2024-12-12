@@ -1,6 +1,7 @@
 
 target_sources(flangee77
     PRIVATE
+    auto_invoke.h
     bits.cpp
     bits.h
     byte_span.h

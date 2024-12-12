@@ -1,6 +1,7 @@
 #include "filesystem.h"
 
 #include <CoreLabs/strings.h>
+#include <CoreLabs/auto_invoke.h>
 
 #include <windows.h>
 #include <shlobj.h>
@@ -38,6 +39,7 @@ namespace cl7::filesystem {
             first_call = false;
 
             DWORD length = ::GetCurrentDirectory(MAX_PATH, _path);
+
             if (length == 0 || _path[length - 1] != TEXT('\\'))
                 _path[length] = TEXT('\\');
         }
@@ -53,6 +55,7 @@ namespace cl7::filesystem {
         cl7::char_type _path[MAX_PATH + 2] = {0};
 
         DWORD length = ::GetCurrentDirectory(MAX_PATH, _path);
+
         if (length == 0 || _path[length - 1] != TEXT('\\'))
             _path[length] = TEXT('\\');
 
@@ -73,16 +76,17 @@ namespace cl7::filesystem {
 
             DWORD length = 0;
             cl7::wchar_type* tmp = nullptr;
+            auto auto_free_tmp = cl7::finally([&tmp] { if (tmp) ::CoTaskMemFree(tmp); tmp = nullptr; });
             HRESULT hresult = ::SHGetKnownFolderPath(FOLDERID_RoamingAppData, KF_FLAG_CREATE, nullptr, &tmp);
 
             if (hresult == S_OK)
             {
+                assert(tmp);
                 cl7::string path = cl7::strings::from_utfx(tmp);
                 for (const cl7::char_type* p = path.c_str(); *p; ++p)
                     _path[length++] = *p;
             }
 
-            if (tmp) ::CoTaskMemFree(tmp);
             if (length == 0 || _path[length - 1] != TEXT('\\'))
                 _path[length] = TEXT('\\');
         }
