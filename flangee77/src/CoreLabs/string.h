@@ -91,52 +91,52 @@ namespace cl7 {
 
 
 #ifdef UNICODE
-    typedef wchar_t char_type;
-    typedef std::wstring string;
-    typedef std::wstring_view string_view;
+    using char_type = wchar_t;
+    using string = std::wstring;
+    using string_view = std::wstring_view;
 #else // => !UNICODE
-    typedef char char_type;
-    typedef std::string string;
-    typedef std::string_view string_view;
+    using char_type = char;
+    using string = std::string;
+    using string_view = std::string_view;
 #endif // #else => !UNICODE
 
-#ifdef  UNICODE                     
-#define __TEXT(quote) L##quote      
-#define __RTEXT(quote) LR##quote    
+#ifdef  UNICODE
+#define __TEXT(quote) L##quote      // NOLINT(bugprone-reserved-identifier)
+#define __RTEXT(quote) LR##quote    // NOLINT(bugprone-reserved-identifier)
 #else   /* UNICODE */               
 #define __TEXT(quote) quote         
 #define __RTEXT(quote) R##quote     
 #endif /* UNICODE */                
-#define TEXT(quote) __TEXT(quote)   
-#define RTEXT(quote) __RTEXT(quote) 
+#define TEXT(quote) __TEXT(quote)
+#define RTEXT(quote) __RTEXT(quote)
 
 
 
-    typedef char        achar_type;
-    typedef char8_t     u8char_type;
-    typedef char16_t    u16char_type;
-    typedef char32_t    u32char_type;
-    typedef wchar_t     wchar_type;
+    using achar_type        = char;
+    using u8char_type       = char8_t;
+    using u16char_type      = char16_t;
+    using u32char_type      = char32_t;
+    using wchar_type        = wchar_t;
 
-    typedef std::string     astring;
-    typedef std::u8string   u8string;
-    typedef std::u16string  u16string;
-    typedef std::u32string  u32string;
-    typedef std::wstring    wstring;
+    using astring           = std::string;
+    using u8string          = std::u8string;
+    using u16string         = std::u16string;
+    using u32string         = std::u32string;
+    using wstring           = std::wstring;
 
-    typedef std::string_view    astring_view;
-    typedef std::u8string_view  u8string_view;
-    typedef std::u16string_view u16string_view;
-    typedef std::u32string_view u32string_view;
-    typedef std::wstring_view   wstring_view;
+    using astring_view      = std::string_view;
+    using u8string_view     = std::u8string_view;
+    using u16string_view    = std::u16string_view;
+    using u32string_view    = std::u32string_view;
+    using wstring_view      = std::wstring_view;
 
 
 
     template <class Tstring>
-    concept is_any_string_v = std::is_base_of<std::basic_string<typename Tstring::value_type, typename Tstring::traits_type, typename Tstring::allocator_type>, Tstring>::value;
+    concept is_any_string_v = std::is_base_of_v<std::basic_string<typename Tstring::value_type, typename Tstring::traits_type, typename Tstring::allocator_type>, Tstring>;
 
     template <class Tstring_view>
-    concept is_any_string_view_v = std::is_base_of<std::basic_string_view<typename Tstring_view::value_type, typename Tstring_view::traits_type>, Tstring_view>::value;
+    concept is_any_string_view_v = std::is_base_of_v<std::basic_string_view<typename Tstring_view::value_type, typename Tstring_view::traits_type>, Tstring_view>;
 
     template <class Tstring_or_view>
     concept is_any_string_or_view_v = is_any_string_v<Tstring_or_view> || is_any_string_view_v<Tstring_or_view>;
@@ -144,10 +144,10 @@ namespace cl7 {
 
 
     template <class Tstring>
-        requires( is_any_string_v<Tstring> )
+        requires(is_any_string_v<Tstring>)
     auto make_string_view(const Tstring& s)
     {
-        return std::basic_string_view<typename Tstring::value_type, typename Tstring::traits_type>( s.data(), s.size() );
+        return std::basic_string_view<typename Tstring::value_type, typename Tstring::traits_type>(s.data(), s.size());
     }
 
 
@@ -156,11 +156,11 @@ namespace cl7 {
     struct string_hash
     {
         using is_transparent = void;
-        using Tstring_view = std::basic_string_view<Tchar, std::char_traits<Tchar>>;
-        using Tstring = std::basic_string<Tchar, std::char_traits<Tchar>>;
-        size_t operator () (const Tchar* str) const { return std::hash<Tstring_view>{}( str ); }
-        size_t operator () (Tstring_view str) const { return std::hash<Tstring_view>{}( str ); }
-        size_t operator () (const Tstring& str) const { return std::hash<Tstring>{}( str ); }
+        using Tstring_view = std::basic_string_view<Tchar>;
+        using Tstring = std::basic_string<Tchar>;
+        size_t operator () (const Tchar* str) const { return std::hash<Tstring_view>{}(str); }
+        size_t operator () (Tstring_view str) const { return std::hash<Tstring_view>{}(str); }
+        size_t operator () (const Tstring& str) const { return std::hash<Tstring>{}(str); }
     };
 
     using astring_hash = string_hash<cl7::achar_type>;
@@ -171,56 +171,56 @@ namespace cl7 {
 
 
 
-    inline astring to_astring(signed val) { return std::to_string( val ); }
-    inline astring to_astring(signed long val) { return std::to_string( val ); }
-    inline astring to_astring(signed long long val) { return std::to_string( val ); }
-    inline astring to_astring(unsigned val) { return std::to_string( val ); }
-    inline astring to_astring(unsigned long val) { return std::to_string( val ); }
-    inline astring to_astring(unsigned long long val) { return std::to_string( val ); }
-    inline astring to_astring(float val) { return std::to_string( val ); }
-    inline astring to_astring(double val) { return std::to_string( val ); }
-    inline astring to_astring(long double val) { return std::to_string( val ); }
+    inline astring to_astring(signed val) { return std::to_string(val); }
+    inline astring to_astring(signed long val) { return std::to_string(val); }
+    inline astring to_astring(signed long long val) { return std::to_string(val); }
+    inline astring to_astring(unsigned val) { return std::to_string(val); }
+    inline astring to_astring(unsigned long val) { return std::to_string(val); }
+    inline astring to_astring(unsigned long long val) { return std::to_string(val); }
+    inline astring to_astring(float val) { return std::to_string(val); }
+    inline astring to_astring(double val) { return std::to_string(val); }
+    inline astring to_astring(long double val) { return std::to_string(val); }
 
-    inline wstring to_wstring(signed val) { return std::to_wstring( val ); }
-    inline wstring to_wstring(signed long val) { return std::to_wstring( val ); }
-    inline wstring to_wstring(signed long long val) { return std::to_wstring( val ); }
-    inline wstring to_wstring(unsigned val) { return std::to_wstring( val ); }
-    inline wstring to_wstring(unsigned long val) { return std::to_wstring( val ); }
-    inline wstring to_wstring(unsigned long long val) { return std::to_wstring( val ); }
-    inline wstring to_wstring(float val) { return std::to_wstring( val ); }
-    inline wstring to_wstring(double val) { return std::to_wstring( val ); }
-    inline wstring to_wstring(long double val) { return std::to_wstring( val ); }
+    inline wstring to_wstring(signed val) { return std::to_wstring(val); }
+    inline wstring to_wstring(signed long val) { return std::to_wstring(val); }
+    inline wstring to_wstring(signed long long val) { return std::to_wstring(val); }
+    inline wstring to_wstring(unsigned val) { return std::to_wstring(val); }
+    inline wstring to_wstring(unsigned long val) { return std::to_wstring(val); }
+    inline wstring to_wstring(unsigned long long val) { return std::to_wstring(val); }
+    inline wstring to_wstring(float val) { return std::to_wstring(val); }
+    inline wstring to_wstring(double val) { return std::to_wstring(val); }
+    inline wstring to_wstring(long double val) { return std::to_wstring(val); }
 
 
-    inline astring to_astring(bool val) { return cl7::astring(val ? "true" : "false"); }
+    inline astring to_astring(bool val) { return {val ? "true" : "false"}; }
 
-    inline wstring to_wstring(bool val) { return cl7::wstring(val ? L"true" : L"false"); }
+    inline wstring to_wstring(bool val) { return {val ? L"true" : L"false"}; }
 
 
 #ifdef UNICODE
-    inline string to_string(signed val) { return to_wstring( val ); }
-    inline string to_string(signed long val) { return to_wstring( val ); }
-    inline string to_string(signed long long val) { return to_wstring( val ); }
-    inline string to_string(unsigned val) { return to_wstring( val ); }
-    inline string to_string(unsigned long val) { return to_wstring( val ); }
-    inline string to_string(unsigned long long val) { return to_wstring( val ); }
-    inline string to_string(float val) { return to_wstring( val ); }
-    inline string to_string(double val) { return to_wstring( val ); }
-    inline string to_string(long double val) { return to_wstring( val ); }
+    inline string to_string(signed val) { return to_wstring(val); }
+    inline string to_string(signed long val) { return to_wstring(val); }
+    inline string to_string(signed long long val) { return to_wstring(val); }
+    inline string to_string(unsigned val) { return to_wstring(val); }
+    inline string to_string(unsigned long val) { return to_wstring(val); }
+    inline string to_string(unsigned long long val) { return to_wstring(val); }
+    inline string to_string(float val) { return to_wstring(val); }
+    inline string to_string(double val) { return to_wstring(val); }
+    inline string to_string(long double val) { return to_wstring(val); }
 
-    inline string to_string(bool val) { return to_wstring( val ); }
+    inline string to_string(bool val) { return to_wstring(val); }
 #else // => !UNICODE
-    inline string to_string(signed val) { return to_astring( val ); }
-    inline string to_string(signed long val) { return to_astring( val ); }
-    inline string to_string(signed long long val) { return to_astring( val ); }
-    inline string to_string(unsigned val) { return to_astring( val ); }
-    inline string to_string(unsigned long val) { return to_astring( val ); }
-    inline string to_string(unsigned long long val) { return to_astring( val ); }
-    inline string to_string(float val) { return to_astring( val ); }
-    inline string to_string(double val) { return to_astring( val ); }
-    inline string to_string(long double val) { return to_astring( val ); }
+    inline string to_string(signed val) { return to_astring(val); }
+    inline string to_string(signed long val) { return to_astring(val); }
+    inline string to_string(signed long long val) { return to_astring(val); }
+    inline string to_string(unsigned val) { return to_astring(val); }
+    inline string to_string(unsigned long val) { return to_astring(val); }
+    inline string to_string(unsigned long long val) { return to_astring(val); }
+    inline string to_string(float val) { return to_astring(val); }
+    inline string to_string(double val) { return to_astring(val); }
+    inline string to_string(long double val) { return to_astring(val); }
 
-    inline string to_string(bool val) { return to_astring( val ); }
+    inline string to_string(bool val) { return to_astring(val); }
 #endif // #else => !UNICODE
 
 

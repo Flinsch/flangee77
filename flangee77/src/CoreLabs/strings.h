@@ -27,11 +27,10 @@
 
 
 
-namespace cl7 {
-namespace strings {
+namespace cl7::strings {
 
 
-
+    // NOLINTBEGIN(readability-enum-initial-value)
     enum class Encoding
     {
         Unknown,
@@ -54,6 +53,7 @@ namespace strings {
         Default = Latin1,
 #endif
     };
+    // NOLINTEND(readability-enum-initial-value)
 
 
 
@@ -133,7 +133,7 @@ namespace strings {
     bool is_whitespace(Tchar c)
     {
         // https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt
-        const auto u32c = static_cast<u32char_type>( c );
+        const auto u32c = static_cast<u32char_type>(c);
         return 
             (u32c >= 0x0009 && u32c <= 0x000d) ||   // tab ... carriage return
             u32c == 0x0020 ||                       // space
@@ -146,9 +146,8 @@ namespace strings {
             u32c == 0x202f ||                       // narrow no-break space
             u32c == 0x205f ||                       // medium mathematical space
             u32c == 0x3000;                         // ideographic space
-        return true;
 
-        static_assert( !std::is_same<Tchar, u8char_type>::value, "Not implemented for UTF-8 and its variable-length character encoding." );
+        static_assert(!std::is_same_v<Tchar, u8char_type>, "Not implemented for UTF-8 and its variable-length character encoding.");
     }
 
     template <> inline
@@ -185,12 +184,12 @@ namespace strings {
      * Counts and returns the number of whitespace characters that begin the string.
      */
     template <class Tstring_view>
-        requires( is_any_string_view_v<Tstring_view> )
+        requires(is_any_string_view_v<Tstring_view>)
     size_t count_whitespace_prefix(Tstring_view s)
     {
         const size_t n = s.size();
         size_t i = 0;
-        while ( i < n && is_whitespace( s[ i ] ) )
+        while (i < n && is_whitespace(s[i]))
             ++i;
         return i;
     }
@@ -204,8 +203,9 @@ namespace strings {
     size_t count_whitespace_prefix(u8string_view s)
     {
         const size_t n = s.size();
-        size_t i = 0, k;
-        while ( i < n && (k = is_whitespace_prefix( s.substr( i ) )) > 0 )
+        size_t i = 0;
+        size_t k;
+        while (i < n && (k = is_whitespace_prefix(s.substr(i))) > 0)
             i += k;
         return i;
     }
@@ -214,12 +214,12 @@ namespace strings {
      * Counts and returns the number of whitespace characters that end the string.
      */
     template <class Tstring_view>
-        requires( is_any_string_view_v<Tstring_view> )
+        requires(is_any_string_view_v<Tstring_view>)
     size_t count_whitespace_suffix(Tstring_view s)
     {
         const size_t n = s.size();
         size_t i = 0;
-        while ( i < n && is_whitespace( s[ n-i-1 ] ) )
+        while (i < n && is_whitespace(s[n - i - 1]))
             ++i;
         return i;
     }
@@ -233,8 +233,9 @@ namespace strings {
     size_t count_whitespace_suffix(u8string_view s)
     {
         const size_t n = s.size();
-        size_t i = 0, k;
-        while ( i < n && (k = is_whitespace_suffix( s.substr( 0, n-i ) )) > 0 )
+        size_t i = 0;
+        size_t k;
+        while (i < n && (k = is_whitespace_suffix(s.substr(0, n - i))) > 0)
             i += k;
         return i;
     }
@@ -242,143 +243,143 @@ namespace strings {
 
 
     template <class Tstring>
-        requires( is_any_string_v<Tstring> )
+        requires(is_any_string_v<Tstring>)
     void ltrim(Tstring& s)
     {
-        const size_t k = count_whitespace_prefix( make_string_view( s ) );
-        assert( k <= s.size() );
-        s.erase( 0, k );
+        const size_t k = count_whitespace_prefix(make_string_view(s));
+        assert(k <= s.size());
+        s.erase(0, k);
     }
 
     template <class Tstring>
-        requires( is_any_string_v<Tstring> )
+        requires(is_any_string_v<Tstring>)
     void rtrim(Tstring& s)
     {
-        const size_t k = count_whitespace_suffix( make_string_view( s ) );
-        assert( k <= s.size() );
-        s.erase( s.size() - k, k );
+        const size_t k = count_whitespace_suffix(make_string_view(s));
+        assert(k <= s.size());
+        s.erase(s.size() - k, k);
     }
 
     template <class Tstring_view>
-        requires( is_any_string_view_v<Tstring_view> )
+        requires(is_any_string_view_v<Tstring_view>)
     void ltrim(Tstring_view& s)
     {
-        const size_t k = count_whitespace_prefix( s );
-        assert( k <= s.size() );
-        s = s.substr( k );
+        const size_t k = count_whitespace_prefix(s);
+        assert(k <= s.size());
+        s = s.substr(k);
     }
 
     template <class Tstring_view>
-        requires( is_any_string_view_v<Tstring_view> )
+        requires(is_any_string_view_v<Tstring_view>)
     void rtrim(Tstring_view& s)
     {
-        const size_t k = count_whitespace_suffix( s );
-        assert( k <= s.size() );
-        s = s.substr( 0, s.size() - k );
+        const size_t k = count_whitespace_suffix(s);
+        assert(k <= s.size());
+        s = s.substr(0, s.size() - k);
     }
 
     template <class Tstring_or_view>
-        requires( is_any_string_or_view_v<Tstring_or_view> )
+        requires(is_any_string_or_view_v<Tstring_or_view>)
     void trim(Tstring_or_view& s)
     {
-        rtrim( s );
-        ltrim( s );
+        rtrim(s);
+        ltrim(s);
     }
 
 
 
     template <class Tstring_or_view>
-        requires( is_any_string_or_view_v<Tstring_or_view> )
+        requires(is_any_string_or_view_v<Tstring_or_view>)
     Tstring_or_view ltrimmed(Tstring_or_view s)
     {
-        ltrim( s );
+        ltrim(s);
         return s;
     }
 
     template <class Tstring_or_view>
-        requires( is_any_string_or_view_v<Tstring_or_view> )
+        requires(is_any_string_or_view_v<Tstring_or_view>)
     Tstring_or_view rtrimmed(Tstring_or_view s)
     {
-        rtrim( s );
+        rtrim(s);
         return s;
     }
 
     template <class Tstring_or_view>
-        requires( is_any_string_or_view_v<Tstring_or_view> )
+        requires(is_any_string_or_view_v<Tstring_or_view>)
     Tstring_or_view trimmed(Tstring_or_view s)
     {
-        trim( s );
+        trim(s);
         return s;
     }
 
 
 
-    template <class Tstring, typename Tchar = Tstring::value_type>
-        requires( is_any_string_v<Tstring> )
+    template <class Tstring, typename Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring>)
     void lpad(Tstring& s, size_t min_length, Tchar c)
     {
-        if ( min_length > s.length() )
-            s.insert( s.begin(), min_length - s.length(), c );
+        if (min_length > s.length())
+            s.insert(s.begin(), min_length - s.length(), c);
     }
 
-    template <class Tstring, typename Tchar = Tstring::value_type>
-        requires( is_any_string_v<Tstring> )
+    template <class Tstring, typename Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring>)
     void rpad(Tstring& s, size_t min_length, Tchar c)
     {
-        if ( min_length > s.length() )
-            s.append( min_length - s.length(), c );
+        if (min_length > s.length())
+            s.append(min_length - s.length(), c);
     }
 
 
 
-    template <class Tstring, typename Tchar = Tstring::value_type>
-        requires( is_any_string_v<Tstring> )
+    template <class Tstring, typename Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring>)
     Tstring lpadded(Tstring s, size_t min_length, Tchar c)
     {
-        lpad( s, min_length, c );
+        lpad(s, min_length, c);
         return s;
     }
 
-    template <class Tstring, typename Tchar = Tstring::value_type>
-        requires( is_any_string_v<Tstring> )
+    template <class Tstring, typename Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring>)
     Tstring rpadded(Tstring s, size_t min_length, Tchar c)
     {
-        rpad( s, min_length, c );
+        rpad(s, min_length, c);
         return s;
     }
 
 
 
-    template <class Tstring, typename Tval, typename Tchar = Tstring::value_type>
-        requires( is_any_string_v<Tstring> && std::is_unsigned_v<Tval> )
+    template <class Tstring, typename Tval, typename Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval>)
     Tstring to_hex(Tval val, Tchar ca = Tchar('A'), unsigned pad_zeros = 0)
     {
         static constexpr auto c0 = Tchar('0');
-        if ( val == 0 )
-            return pad_zeros ? Tstring( pad_zeros, c0 ) : Tstring();
+        if (val == 0)
+            return pad_zeros ? Tstring(pad_zeros, c0) : Tstring();
         Tstring s;
-        s.reserve( 16 );
-        while ( val )
+        s.reserve(16);
+        while (val)
         {
-            Tchar x = static_cast<Tchar>( val & 0xf );
+            auto x = static_cast<Tchar>(val & 0xf);
             val >>= 4;
             Tchar c = x < 0xa ? c0+x : ca+x-0xa;
             s += c;
         }
-        rpad( s, pad_zeros, c0 );
-        std::reverse( s.begin(), s.end() );
+        rpad(s, pad_zeros, c0);
+        std::reverse(s.begin(), s.end());
         return s;
     }
 
-    template <class Tstring, typename Tval, typename Tchar = Tstring::value_type>
-        requires( is_any_string_v<Tstring> && std::is_unsigned_v<Tval> )
+    template <class Tstring, typename Tval, typename Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval>)
     Tstring to_0xhex(Tval val, Tchar ca = Tchar('A'), unsigned pad_zeros = 0)
     {
         static constexpr auto c0 = Tchar('0');
         static constexpr auto cx = Tchar('x');
-        Tstring s = to_hex<Tstring>( val, ca, pad_zeros );
-        s.insert( s.begin(), 2, c0 );
-        s[ 1 ] = cx;
+        Tstring s = to_hex<Tstring>(val, ca, pad_zeros);
+        s.insert(s.begin(), 2, c0);
+        s[1] = cx;
         return s;
     }
 
@@ -392,38 +393,38 @@ namespace strings {
      * calculated in terms of characters, not in terms of (Unicode) code points.
      */
     template <class Tstring_or_view>
-        requires( is_any_string_or_view_v<Tstring_or_view> )
+        requires(is_any_string_or_view_v<Tstring_or_view>)
     size_t levenshtein(const Tstring_or_view& s1, const Tstring_or_view& s2)
     {
         const size_t size1 = s1.size();
         const size_t size2 = s2.size();
-        if ( size1 == 0 ) return size2;
-        if ( size2 == 0 ) return size1;
+        if (size1 == 0) return size2;
+        if (size2 == 0) return size1;
 
         const size_t len = size2 + 1;
         const size_t total_size = (size1 + 1) * (size2 + 1);
 
-        auto mat = std::make_unique_for_overwrite<size_t[]>( total_size );
+        auto mat = std::make_unique_for_overwrite<size_t[]>(total_size);
 
-        for ( size_t i = 0; i <= size1; ++i )
-            mat[ i * len + 0 ] = i;
-        for ( size_t j = 0; j <= size2; ++j )
-            mat[ 0 * len + j ] = j;
+        for (size_t i = 0; i <= size1; ++i)
+            mat[i * len + 0] = i;
+        for (size_t j = 0; j <= size2; ++j)
+            mat[0 * len + j] = j;
 
-        for ( size_t i = 1; i <= size1; ++i )
+        for (size_t i = 1; i <= size1; ++i)
         {
-            for ( size_t j = 1; j <= size2; ++j )
+            for (size_t j = 1; j <= size2; ++j)
             {
-                const size_t cost = s1[ i - 1 ] == s2[ j - 1 ] ? 0 : 1;
-                mat[ i * len + j ] = (std::min)( { 
-                    mat[ (i - 1) * len + (j) ] + 1,
-                    mat[ (i) * len + (j - 1) ] + 1,
-                    mat[ (i - 1) * len + (j - 1) ] + cost,
-                } );
+                const size_t cost = s1[i - 1] == s2[j - 1] ? 0 : 1;
+                mat[i * len + j] = (std::min)({
+                    mat[(i - 1) * len + (j)] + 1,
+                    mat[(i) * len + (j - 1)] + 1,
+                    mat[(i - 1) * len + (j - 1)] + cost,
+                });
             } // for ... j
         } // for ... i
 
-        return mat[ size1 * len + size2 ];
+        return mat[size1 * len + size2];
     }
 
     /**
@@ -432,17 +433,16 @@ namespace strings {
      * calculated in terms of characters, not in terms of (Unicode) code points.
      */
     template <class Tstring_or_view, typename Tfloat = float>
-        requires( is_any_string_or_view_v<Tstring_or_view> && std::is_floating_point_v<Tfloat> )
+        requires(is_any_string_or_view_v<Tstring_or_view> && std::is_floating_point_v<Tfloat>)
     Tfloat levenshtein_normalized(const Tstring_or_view& s1, const Tstring_or_view& s2)
     {
-        const size_t size = (std::max)( s1.size(), s2.size() );
-        if ( size == 0 ) return 0.0f;
-        return static_cast<Tfloat>( levenshtein( s1, s2 ) ) / static_cast<Tfloat>( size );
+        const size_t size = (std::max)(s1.size(), s2.size());
+        if (size == 0) return 0.0f;
+        return static_cast<Tfloat>(levenshtein(s1, s2)) / static_cast<Tfloat>(size);
     }
 
 
 
-} // namespace strings
-} // namespace cl7
+} // namespace cl7::strings
 
 #endif // CL7_STRINGS_H

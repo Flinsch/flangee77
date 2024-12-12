@@ -211,8 +211,8 @@ namespace graphics {
     {
         // "Calculate" the back buffer size
         // and the default viewport.
-        _back_buffer_width = cl7::utilities::coalesce( GraphicsSystem::instance().get_config().video.display_mode.width, MainWindow::instance().get_width() );
-        _back_buffer_height = cl7::utilities::coalesce( GraphicsSystem::instance().get_config().video.display_mode.height, MainWindow::instance().get_height() );
+        _back_buffer_width = cl7::coalesce( GraphicsSystem::instance().get_config().video.display_mode.width, MainWindow::instance().get_width() );
+        _back_buffer_height = cl7::coalesce( GraphicsSystem::instance().get_config().video.display_mode.height, MainWindow::instance().get_height() );
         _default_viewport = { 0, 0, _back_buffer_width, _back_buffer_height, 0.0f, 1.0f };
 
         _capabilities = Capabilities();

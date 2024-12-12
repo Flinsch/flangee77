@@ -1,11 +1,11 @@
 #include "Singleton.h"
 
 #include <algorithm>
+#include <memory>
 
 
 
-namespace cl7 {
-namespace creational {
+namespace cl7::creational {
 
 
 
@@ -13,68 +13,71 @@ namespace creational {
 
 
 
-    std::vector<SingletonBase*>::iterator SingletonBase::_find(SingletonBase* singleton)
-    {
-        assert( singleton );
-        assert( _stack );
-
-        return std::find( _stack->begin(), _stack->end(), singleton );
-    }
-
     void SingletonBase::_register(SingletonBase* singleton)
     {
-        assert( singleton );
-        if ( !_stack )
-            _stack.reset( new std::vector<SingletonBase*>() );
+        assert(singleton);
+        if (!_stack)
+            _stack = std::make_unique<std::vector<SingletonBase*>>();
 
-        assert( _find( singleton ) == _stack->end() );
+        assert(_find(singleton) == _stack->end());
 
-        _stack->push_back( singleton );
+        _stack->push_back(singleton);
     }
 
-    void SingletonBase::_unregister(SingletonBase* singleton)
+    void SingletonBase::_unregister(SingletonBase* singleton, bool keep_stack)
     {
-        assert( singleton );
-        assert( _stack );
+        assert(singleton);
+        assert(_stack);
 
-        auto it = _find( singleton );
-        assert( it != _stack->end() );
-        _stack->erase( it );
+        auto it = _find(singleton);
+        assert(it != _stack->end());
+        _stack->erase(it);
+
+        if (_stack->empty() && !keep_stack)
+            _stack.reset();
     }
 
     void SingletonBase::_reregister(SingletonBase* singleton)
     {
-        assert( singleton );
-        assert( _stack );
+        assert(singleton);
+        assert(_stack);
 
-        _unregister( singleton );
-        _register( singleton );
+        _unregister(singleton, true);
+        _register(singleton);
     }
 
     void SingletonBase::_before_destroy(SingletonBase* singleton)
     {
-        assert( singleton );
+        assert(singleton);
 
         singleton->_before_destroy();
     }
 
+    std::vector<SingletonBase*>::iterator SingletonBase::_find(SingletonBase* singleton)
+    {
+        assert(singleton);
+        assert(_stack);
+
+        return std::find(_stack->begin(), _stack->end(), singleton);
+    }
+
     void SingletonManager::destroy_all()
     {
-        if ( !_stack )
+        if (!_stack)
             return;
 
-        while ( !_stack->empty() )
+        while (!_stack->empty())
         {
             SingletonBase* singleton = _stack->back();
             singleton->_invoke_destroy();
 
-            assert( _find( singleton ) == _stack->end() );
+            assert(_find(singleton) == _stack->end());
         }
 
-        _stack.reset();
+        assert(!_stack);
+        _stack.reset(); // Actually not necessary.
     }
 
 
 
-} // namespace creational
-} // namespace cl7
+} // namespace cl7::creational

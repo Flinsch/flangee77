@@ -6,8 +6,7 @@
 
 
 
-namespace cl7 {
-namespace io {
+namespace cl7::io {
 
 
 
@@ -23,17 +22,16 @@ enum class open_mode
 
 inline open_mode operator | (open_mode a, open_mode b)
 {
-    return static_cast<open_mode>( static_cast<unsigned>( a ) | static_cast<unsigned>( b ) );
+    return static_cast<open_mode>(static_cast<unsigned>(a) | static_cast<unsigned>(b));
 }
 
 inline open_mode operator & (open_mode a, open_mode b)
 {
-    return static_cast<open_mode>( static_cast<unsigned>( a ) & static_cast<unsigned>( b ) );
+    return static_cast<open_mode>(static_cast<unsigned>(a) & static_cast<unsigned>(b));
 }
 
 
 
-} // namespace io
-} // namespace cl7
+} // namespace cl7::io
 
 #endif // CL7_IO_OPENMODE_H

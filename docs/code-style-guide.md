@@ -42,7 +42,7 @@ guidelines ensures consistent and readable code throughout the project.
   - Variables
     - Static class variables
     - Instance variables
-  - Friend declarations
+  - Friend declarations (or optionally at the very beginning of the class)
 
 The same order tends to apply to a `struct` as well, but with one crucial
 difference: variables are all public and come immediately after constants and

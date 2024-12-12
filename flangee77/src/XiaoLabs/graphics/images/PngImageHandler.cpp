@@ -22,7 +22,7 @@ namespace images {
     /**
      * Loads an image from any rom.
      */
-    bool PngImageHandler::_load_from(cl7::io::irom& rom, cl7::string_view rom_name, Image& image)
+    bool PngImageHandler::_load_from(cl7::io::irom& rom, const cl7::string& rom_name, Image& image)
     {
         Signature signature;
         if ( rom.read( { (std::byte*)&signature, sizeof(Signature) } ) != sizeof(Signature) )
@@ -127,7 +127,7 @@ namespace images {
     /**
      * Processes the PNG chunks.
      */
-    bool PngImageHandler::_process_chunks(cl7::io::irom& rom, cl7::string_view rom_name, BitInfo& bit_info, std::vector<PaletteEntry>& palette, cl7::byte_vector& data)
+    bool PngImageHandler::_process_chunks(cl7::io::irom& rom, const cl7::string& rom_name, BitInfo& bit_info, std::vector<PaletteEntry>& palette, cl7::byte_vector& data)
     {
         while ( true )
         {
@@ -176,7 +176,7 @@ namespace images {
     /**
      * Processes the image header chunk, "IHDR".
      */
-    bool PngImageHandler::_process_IHDR_chunk(cl7::io::irom& rom, cl7::string_view rom_name, uint32_t chunk_length, BitInfo& bit_info)
+    bool PngImageHandler::_process_IHDR_chunk(cl7::io::irom& rom, const cl7::string& rom_name, uint32_t chunk_length, BitInfo& bit_info)
     {
         if ( chunk_length != sizeof(Header) )
             return _log_bad_format_error( rom_name );
@@ -226,7 +226,7 @@ namespace images {
     /**
      * Processes the palette chunk, "PLTE".
      */
-    bool PngImageHandler::_process_PLTE_chunk(cl7::io::irom& rom, cl7::string_view rom_name, uint32_t chunk_length, std::vector<PaletteEntry>& palette)
+    bool PngImageHandler::_process_PLTE_chunk(cl7::io::irom& rom, const cl7::string& rom_name, uint32_t chunk_length, std::vector<PaletteEntry>& palette)
     {
         if ( chunk_length % 3 != 0 )
             return _log_bad_format_error( rom_name );
@@ -245,7 +245,7 @@ namespace images {
     /**
      * Processes the image data chunk, "IDAT".
      */
-    bool PngImageHandler::_process_IDAT_chunk(cl7::io::irom& rom, cl7::string_view rom_name, uint32_t chunk_length, cl7::byte_vector& data)
+    bool PngImageHandler::_process_IDAT_chunk(cl7::io::irom& rom, const cl7::string& rom_name, uint32_t chunk_length, cl7::byte_vector& data)
     {
         if ( chunk_length == 0 )
             return true;

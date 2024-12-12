@@ -13,10 +13,6 @@ namespace cl7 {
 struct Version
 {
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-public:
     unsigned major = 0;
     unsigned minor = 0;
     unsigned patch = 0;
@@ -36,33 +32,25 @@ public:
 
 
 
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
-    /**
-     * Parses the given version string.
-     */
-    static Version parse(const cl7::string& string);
-
     /**
      * "Stringifies" this version object.
      */
     cl7::string to_string(bool short_format = false) const;
 
 
-
-    // #############################################################################
-    // Comparison Operator
-    // #############################################################################
-public:
     /**
      * Compares two version objects.
      * The build metadata doesn't actually need to be part of the comparison. But I
      * ask myself: why not? So let's just fall back to the default implementation of
      * the "spaceship" operator.
      */
-    auto operator <=> (const Version& rhs) const = default;
+    auto operator <=> (const Version& rhs) const noexcept = default;
+
+
+    /**
+     * Parses the given version string.
+     */
+    static Version parse(const cl7::string& string);
 
 }; // struct Version
 

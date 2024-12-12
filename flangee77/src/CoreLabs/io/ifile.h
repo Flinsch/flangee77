@@ -7,23 +7,18 @@
 
 
 
-namespace cl7 {
-namespace io {
+namespace cl7::io {
 
 
 
 class ifile
     : public irom
 {
+
 public:
-    virtual ~ifile() = default;
+    ~ifile() override = default;
 
 
-
-    // #############################################################################
-    // Prototypes
-    // #############################################################################
-public:
     /**
      * Writes data to the file (at the current position) from the specified buffer
      * and returns the number of bytes transferred.
@@ -51,7 +46,6 @@ public:
 
 
 
-} // namespace io
-} // namespace cl7
+} // namespace cl7::io
 
 #endif // CL7_IO_IFILE_H

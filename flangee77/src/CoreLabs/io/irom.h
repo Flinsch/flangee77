@@ -8,22 +8,17 @@
 
 
 
-namespace cl7 {
-namespace io {
+namespace cl7::io {
 
 
 
 class irom
 {
+
 public:
     virtual ~irom() = default;
 
 
-
-    // #############################################################################
-    // Prototypes
-    // #############################################################################
-public:
     /**
      * Checks whether the file is "open" and can be used.
      */
@@ -51,7 +46,7 @@ public:
      * as specified.
      * Returns the new/current byte position.
      */
-    virtual size_t seek(ptrdiff_t relative, const seek_mode seek_mode = seek_mode::current) = 0;
+    virtual size_t seek(ptrdiff_t relative, seek_mode seek_mode = seek_mode::current) = 0;
 
     /**
      * Reads data from the file (at the current position) into the specified buffer
@@ -63,7 +58,6 @@ public:
 
 
 
-} // namespace io
-} // namespace cl7
+} // namespace cl7::io
 
 #endif // CL7_IO_IROM_H

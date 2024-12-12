@@ -36,12 +36,12 @@ public:
     /**
      * Loads an image from a file.
      */
-    bool load_from_file(cl7::string_view file_path, Image& image);
+    bool load_from_file(const cl7::string& file_path, Image& image);
 
     /**
      * Loads an image from any rom.
      */
-    bool load_from(cl7::io::irom& rom, cl7::string_view rom_name, Image& image);
+    bool load_from(cl7::io::irom& rom, const cl7::string& rom_name, Image& image);
 
 
 
@@ -52,7 +52,7 @@ private:
     /**
      * Loads an image from any rom.
      */
-    virtual bool _load_from(cl7::io::irom& rom, cl7::string_view rom_name, Image& image) = 0;
+    virtual bool _load_from(cl7::io::irom& rom, const cl7::string& rom_name, Image& image) = 0;
 
 
 
@@ -60,8 +60,8 @@ private:
     // Helpers
     // #############################################################################
 protected:
-    bool _log_bad_format_error(cl7::string_view rom_name);
-    bool _log_bad_header_error(cl7::string_view rom_name);
+    static bool _log_bad_format_error(const cl7::string& rom_name);
+    static bool _log_bad_header_error(const cl7::string& rom_name);
 
 }; // class ImageHandler
 

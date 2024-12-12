@@ -4,18 +4,15 @@
 
 #include <CoreLabs/root.h>
 
-#include <bit>
-
 
 
 namespace cl7 {
-namespace utilities {
 
 
 
     /**
      * Returns the first parameter that, when interpreted as a Boolean, evaluates to
-     * a "true-ish" value.
+     * a "true-ish" value. Otherwise, the last value is returned.
      */
     template <typename T>
     const T& coalesce(const T& a, const T& b)
@@ -25,7 +22,6 @@ namespace utilities {
 
 
 
-} // namespace utilities
 } // namespace cl7
 
 #endif // CL7_UTILITIES_H

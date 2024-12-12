@@ -6,8 +6,7 @@
 
 
 
-namespace cl7 {
-namespace io {
+namespace cl7::io {
 
 
 
@@ -20,7 +19,6 @@ enum class seek_mode
 
 
 
-} // namespace io
-} // namespace cl7
+} // namespace cl7::io
 
 #endif // CL7_IO_SEEKMODE_H

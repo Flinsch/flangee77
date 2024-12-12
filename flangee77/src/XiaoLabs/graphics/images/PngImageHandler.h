@@ -90,7 +90,7 @@ private:
     /**
      * Loads an image from any rom.
      */
-    virtual bool _load_from(cl7::io::irom& rom, cl7::string_view rom_name, Image& image) override;
+    virtual bool _load_from(cl7::io::irom& rom, const cl7::string& rom_name, Image& image) override;
 
 
 
@@ -101,22 +101,22 @@ private:
     /**
      * Processes the PNG chunks.
      */
-    bool _process_chunks(cl7::io::irom& rom, cl7::string_view rom_name, BitInfo& bit_info, std::vector<PaletteEntry>& palette, cl7::byte_vector& data);
+    bool _process_chunks(cl7::io::irom& rom, const cl7::string& rom_name, BitInfo& bit_info, std::vector<PaletteEntry>& palette, cl7::byte_vector& data);
 
     /**
      * Processes the image header chunk, "IHDR".
      */
-    bool _process_IHDR_chunk(cl7::io::irom& rom, cl7::string_view rom_name, uint32_t chunk_length, BitInfo& bit_info);
+    bool _process_IHDR_chunk(cl7::io::irom& rom, const cl7::string& rom_name, uint32_t chunk_length, BitInfo& bit_info);
 
     /**
      * Processes the palette chunk, "PLTE".
      */
-    bool _process_PLTE_chunk(cl7::io::irom& rom, cl7::string_view rom_name, uint32_t chunk_length, std::vector<PaletteEntry>& palette);
+    bool _process_PLTE_chunk(cl7::io::irom& rom, const cl7::string& rom_name, uint32_t chunk_length, std::vector<PaletteEntry>& palette);
 
     /**
      * Processes the image data chunk, "IDAT".
      */
-    bool _process_IDAT_chunk(cl7::io::irom& rom, cl7::string_view rom_name, uint32_t chunk_length, cl7::byte_vector& data);
+    bool _process_IDAT_chunk(cl7::io::irom& rom, const cl7::string& rom_name, uint32_t chunk_length, cl7::byte_vector& data);
 
     /**
      * Decompresses the given source data.

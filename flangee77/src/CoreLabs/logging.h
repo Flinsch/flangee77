@@ -6,14 +6,9 @@
 
 
 
-namespace cl7 {
-namespace logging {
+namespace cl7::logging {
 
 
-
-    // #############################################################################
-    // Utility Functions
-    // #############################################################################
 
     /**
      * Logs the specified entry to the standard logger.
@@ -27,17 +22,16 @@ namespace logging {
 
 
 
-} // namespace logging
-} // namespace cl7
+} // namespace cl7::logging
 
 
 
-#define LOG(msg)                    std_log( msg, cl7::logging::LogType::Log,       __FILE__, __LINE__, __FUNCTION__ )
-#define LOG_INFO(msg)               std_log( msg, cl7::logging::LogType::Info,      __FILE__, __LINE__, __FUNCTION__ )
-#define LOG_SUCCESS(msg)            std_log( msg, cl7::logging::LogType::Success,   __FILE__, __LINE__, __FUNCTION__ )
-#define LOG_WARNING(msg)            std_log( msg, cl7::logging::LogType::Warning,   __FILE__, __LINE__, __FUNCTION__ )
-#define LOG_ERROR(msg)              std_log( msg, cl7::logging::LogType::Error,     __FILE__, __LINE__, __FUNCTION__ )
-#define LOG_TYPE(msg, type)         std_log( msg, type,                             __FILE__, __LINE__, __FUNCTION__ )
+#define LOG(msg)                    std_log(msg, cl7::logging::LogType::Log,       __FILE__, __LINE__, __FUNCTION__)
+#define LOG_INFO(msg)               std_log(msg, cl7::logging::LogType::Info,      __FILE__, __LINE__, __FUNCTION__)
+#define LOG_SUCCESS(msg)            std_log(msg, cl7::logging::LogType::Success,   __FILE__, __LINE__, __FUNCTION__)
+#define LOG_WARNING(msg)            std_log(msg, cl7::logging::LogType::Warning,   __FILE__, __LINE__, __FUNCTION__)
+#define LOG_ERROR(msg)              std_log(msg, cl7::logging::LogType::Error,     __FILE__, __LINE__, __FUNCTION__)
+#define LOG_TYPE(msg, type)         std_log(msg, type,                             __FILE__, __LINE__, __FUNCTION__)
 
 
 

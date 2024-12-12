@@ -4,7 +4,7 @@
 
 
 
-#ifndef _WIN32_WINNT
+#ifndef _WIN32_WINNT // NOLINT(bugprone-reserved-identifier)
 //#define _WIN32_WINNT _WIN32_WINNT_WIN7
 //#define _WIN32_WINNT _WIN32_WINNT_WIN8
 #define _WIN32_WINNT _WIN32_WINNT_WIN10
@@ -18,25 +18,25 @@
 
 
 // "unknown pragma 'GCC'" etc.
-#pragma warning( disable: 4068 )
+#pragma warning(disable: 4068)
 
 // "This object file does not define any previously undefined public symbols,
 // so it will not be used by any link operation that consumes this library."
-#pragma warning( disable: 4221 )
+#pragma warning(disable: 4221)
 
 
 
 // Stupid and unnecessary, I know.
 // And yet: let me calm my paranoia!
-static_assert( sizeof(signed) == 4 );
-static_assert( sizeof(unsigned) == 4 );
-static_assert( sizeof(int) == 4 );
-static_assert( sizeof(char) == 1 );
-static_assert( sizeof(short) == 2 );
-static_assert( sizeof(long) == 4 );
-static_assert( sizeof(long long) == 8 );
-static_assert( sizeof(float) == 4 );
-static_assert( sizeof(double) == 8 );
+static_assert(sizeof(signed) == 4);
+static_assert(sizeof(unsigned) == 4);
+static_assert(sizeof(int) == 4);
+static_assert(sizeof(char) == 1);
+static_assert(sizeof(short) == 2);
+static_assert(sizeof(long) == 4);
+static_assert(sizeof(long long) == 8);
+static_assert(sizeof(float) == 4);
+static_assert(sizeof(double) == 8);
 
 
 

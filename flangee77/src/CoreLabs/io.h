@@ -6,14 +6,12 @@
 
 
 
-namespace cl7 {
-namespace io {
+namespace cl7::io {
 
 
 
 
 
-} // namespace io
-} // namespace cl7
+} // namespace cl7::io
 
 #endif // CL7_IO_H
