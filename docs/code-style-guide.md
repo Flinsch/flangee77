@@ -64,12 +64,15 @@ beginning of the `struct`, in any case before possible constructors etc.
 - If you can avoid defining any default operation, do so (**rule of zero**).
 - If you **define** or **delete** any **copy**, **move**, or **destructor**
   operation, define or delete them all (**rule of five**).
+- Exception to the rule of five: classes that act as an **interface** and have
+  a (public) **virtual default destructor** for this purpose may (and should)
+  skip the other four.
 - A base class destructor should be either **public and virtual**, or
   **protected and non-virtual**.
 - Define and initialize data members in the order of member declaration.
 - By default, declare single-argument constructors as `explicit`.
 - Make move, destructor, and `swap` operations `noexcept`.
-- Default constructors, parameterized constructors, and copy operations also
+- The default constructor, parameterized constructors, and copy operations also
   preferably &ldquo;want&rdquo; to be `noexcept` if possible.
 - Make copy/move assignments safe for self-assignment.
 - Use factory functions if you need &ldquo;virtual behavior&rdquo; during
