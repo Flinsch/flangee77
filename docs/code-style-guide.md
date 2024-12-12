@@ -18,10 +18,10 @@ guidelines ensures consistent and readable code throughout the project.
     - Default constructor
     - Parameterized constructors
     - Copy constructor
-    - Move constructor (`noexcept`)
-    - Destructor (`noexcept`)
     - Copy assignment operator
+    - Move constructor (`noexcept`)
     - Move assignment operator (`noexcept`)
+    - Destructor (`noexcept`)
     - Swap operation (`noexcept`)
   - Prototypes and implementations
     - (Pure) virtual functions
@@ -48,6 +48,38 @@ The same order tends to apply to a `struct` as well, but with one crucial
 difference: variables are all public and come immediately after constants and
 type definitions&mdash;if there are any, otherwise variables are right at the
 beginning of the `struct`, in any case before possible constructors etc.
+
+## `class` vs. `struct`
+
+- If **any member variable** is **non-public** then there is an **invariant**
+  and you should use `class`.
+- Conversely, if **all member variables** are **public** and therefore can vary
+  **independently**, you could/should use `struct`.
+- However, in (rather rare) cases of need, a `struct` _may_ also contain
+  private auxiliary methods, etc.
+- When in doubt, use `class` rather than `struct`.
+
+## Constructors, destructors, etc.
+
+- If you can avoid defining any default operation, do so (**rule of zero**).
+- If you **define** or **delete** any **copy**, **move**, or **destructor**
+  operation, define or delete them all (**rule of five**).
+- A base class destructor should be either **public and virtual**, or
+  **protected and non-virtual**.
+- Define and initialize data members in the order of member declaration.
+- By default, declare single-argument constructors as `explicit`.
+- Make move, destructor, and `swap` operations `noexcept`.
+- Default constructors, parameterized constructors, and copy operations also
+  preferably &ldquo;want&rdquo; to be `noexcept` if possible.
+- Make copy/move assignments safe for self-assignment.
+- Use factory functions if you need &ldquo;virtual behavior&rdquo; during
+  construction/destruction.
+
+## Other default operations
+
+- Make `==` etc. symmetric with respect of operand types and `noexcept`.
+- Beware of `==` etc. on base classes.
+- Make `hash` etc. `noexcept`.
 
 ---
 
