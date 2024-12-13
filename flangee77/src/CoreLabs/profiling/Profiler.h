@@ -6,8 +6,7 @@
 
 
 
-namespace cl7 {
-namespace profiling {
+namespace cl7::profiling {
 
 
 
@@ -18,54 +17,31 @@ class Registry;
 class Profiler
 {
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
 public:
-    /**
-     * Explicit constructor.
-     */
-    Profiler(const cl7::astring& sample_name);
+    Profiler() = delete;
 
-    /**
-     * Explicit constructor.
-     */
+    Profiler(const cl7::astring& sample_name);
     Profiler(const cl7::astring& sample_name, Registry* registry);
 
-    /**
-     * Destructor.
-     */
+    Profiler(const Profiler&) = delete;
+    Profiler& operator = (const Profiler&) = delete;
+    Profiler(Profiler&&) = delete;
+    Profiler& operator = (Profiler&&) = delete;
+
     ~Profiler();
 
+
+
 private:
-    /** Default constructor. */
-    Profiler() = delete;
-    /** Copy constructor. */
-    Profiler(const Profiler&) = delete;
-    /** Copy assignment operator. */
-    Profiler& operator = (const Profiler&) = delete;
-
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The registry that stores the sample.
-     */
+    /** The registry that stores the sample. */
     Registry* const _registry;
-
-    /**
-     * The sample "attended" by this profiler.
-     */
+    /** The sample "attended" by this profiler. */
     Sample* const _sample;
 
 }; // class Profiler
 
 
 
-} // namespace profiling
-} // namespace cl7
+} // namespace cl7::profiling
 
 #endif // CL7_PROFILING_PROFILER_H

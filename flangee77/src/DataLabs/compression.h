@@ -6,14 +6,12 @@
 
 
 
-namespace dl7 {
-namespace compression {
+namespace dl7::compression {
 
 
 
 
 
-} // namespace compression
-} // namespace dl7
+} // namespace dl7::compression
 
 #endif // DL7_COMPRESSION_H

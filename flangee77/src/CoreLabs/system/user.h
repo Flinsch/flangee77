@@ -6,8 +6,7 @@
 
 
 
-namespace cl7 {
-namespace system {
+namespace cl7::system {
 
 
 
@@ -19,14 +18,10 @@ public:
     {
         FullUserName,
         PureUserName,
-    }; // enum class UserNameFormat
+    };
 
 
 
-    // #############################################################################
-    // Static Methods
-    // #############################################################################
-public:
     /**
      * Retrieves the name of the system user.
      */
@@ -36,7 +31,6 @@ public:
 
 
 
-} // namespace system
-} // namespace cl7
+} // namespace cl7::system
 
 #endif // CL7_SYSTEM_SECURITY_H

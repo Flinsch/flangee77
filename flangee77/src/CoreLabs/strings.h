@@ -125,6 +125,11 @@ namespace cl7::strings {
     /** Calculates the length of the specified UTF-16 string in terms of Unicode code points. */
     size_t utf16_length(u16string_view u16s);
 
+    /** Reinterprets the character format of the specified UTF-8 string. Attention: It is not checked whether a correct UTF-8 encoding is given. */
+    astring_view reinterpret_utf8(u8string_view u8s);
+    /** Reinterprets the character format of the specified UTF-8 string. Attention: It is not checked whether a correct UTF-8 encoding is given. */
+    u8string_view reinterpret_utf8(astring_view as);
+
     Encoding detect_encoding(byte_view bys);
 
 

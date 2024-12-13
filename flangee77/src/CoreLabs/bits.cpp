@@ -13,7 +13,7 @@ namespace cl7::bits {
     int16_t float_to_half(float value)
     {
         static_assert(sizeof(float) == sizeof(uint32_t));
-        const uint32_t f = *reinterpret_cast<uint32_t*>(&value); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        const uint32_t f = *reinterpret_cast<uint32_t*>(&value);
 
         uint32_t h;
 
@@ -90,7 +90,7 @@ namespace cl7::bits {
         }
 
         static_assert(sizeof(float) == sizeof(uint32_t));
-        return *reinterpret_cast<float*>(&f); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return *reinterpret_cast<float*>(&f);
     }
 
 

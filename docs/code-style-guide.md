@@ -102,7 +102,7 @@ beginning of the `struct`, in any case before possible constructors etc.
 
 ## Maximum Line Length
 
-- Limit lines to **80-100** characters.
+- Limit lines to **80-120** characters.
 - However, this is a soft limit that should not be adhered to if there are good
   reasons.
 - Comments should not exceed 84 characters.

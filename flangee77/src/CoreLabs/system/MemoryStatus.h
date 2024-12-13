@@ -6,8 +6,7 @@
 
 
 
-namespace cl7 {
-namespace system {
+namespace cl7::system {
 
 
 
@@ -28,7 +27,7 @@ struct MemoryStatus
     unsigned long long maximum_swap_space;
     /** The potentially additional size of the swap space available, in bytes. This is the potential maximum size of the swap space minus the currently committed size (used or unused). */
     unsigned long long available_swap_space;
-    /** The currently committed size of the swap space (used or unsed), in bytes. */
+    /** The currently committed size of the swap space (used or unused), in bytes. */
     unsigned long long current_swap_space;
     /** The current amount of committed but unused swap space. */
     unsigned long long free_swap_space;
@@ -45,10 +44,7 @@ struct MemoryStatus
 
 
 
-    /** Default constructor. */
     MemoryStatus();
-
-
 
     /**
      * Retrieves information about the system's current usage of both physical and
@@ -60,7 +56,6 @@ struct MemoryStatus
 
 
 
-} // namespace system
-} // namespace cl7
+} // namespace cl7::system
 
 #endif // CL7_SYSTEM_MEMORYSTATUS_H

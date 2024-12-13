@@ -7,8 +7,7 @@
 
 
 
-namespace cl7 {
-namespace profiling {
+namespace cl7::profiling {
 
 
 
@@ -17,60 +16,28 @@ class StandardRegistry final
 {
     friend class creational::Singleton<StandardRegistry>;
 
-
-
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-private:
-    /**
-     * Default constructor.
-     */
-    StandardRegistry();
-
-    /**
-     * Destructor.
-     */
-    ~StandardRegistry() = default;
-
-private:
-    /** Copy constructor. */
-    StandardRegistry(const StandardRegistry&) = delete;
-    /** Copy assignment operator. */
-    StandardRegistry& operator = (const StandardRegistry&) = delete;
-
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The actual registry.
-     */
-    Registry _registry;
-
-
-
-    // #############################################################################
-    // Dereferenciation
-    // #############################################################################
 public:
-    /**
-     * Returns the actual registry.
-     */
+    StandardRegistry(const StandardRegistry&) = delete;
+    StandardRegistry& operator = (const StandardRegistry&) = delete;
+    StandardRegistry(StandardRegistry&&) = delete;
+    StandardRegistry& operator = (StandardRegistry&&) = delete;
+
     static Registry& instance() { return creational::Singleton<StandardRegistry>::instance()._registry; }
 
-    /**
-     * Returns the actual registry.
-     */
     Registry* operator -> () { return &_registry; }
+
+
+
+private:
+    StandardRegistry() = default;
+    ~StandardRegistry() override = default;
+
+    Registry _registry;
 
 }; // class StandardRegistry final
 
 
 
-} // namespace profiling
-} // namespace cl7
+} // namespace cl7::profiling
 
 #endif // CL7_PROFILING_STANDARDREGISTRY_H

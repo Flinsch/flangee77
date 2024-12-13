@@ -6,20 +6,21 @@
 
 
 
-namespace cl7 {
-namespace profiling {
+namespace cl7::profiling {
 
 
 
 struct Sample
 {
 
+    // NOLINTBEGIN(cppcoreguidelines-avoid-const-or-ref-data-members)
     /** The name of this sample. */
     const cl7::astring name;
     /** The immediate parent of this sample. */
     Sample* const parent_sample;
     /** The number of parent samples. */
     const unsigned parent_count;
+    // NOLINTEND(cppcoreguidelines-avoid-const-or-ref-data-members)
 
     struct
     {
@@ -57,11 +58,11 @@ struct Sample
 
 
     Sample(cl7::astring_view name, Sample* parent_sample = nullptr)
-        : name( name )
-        , parent_sample( parent_sample )
-        , parent_count( parent_sample ? parent_sample->parent_count + 1 : 0 )
-        , frame( { false, false, 0 } )
-        , stats( { 0, 0, 0, 0.0f, 0.0f, 0.0f, 0, 0 } )
+        : name(name)
+        , parent_sample(parent_sample)
+        , parent_count(parent_sample ? parent_sample->parent_count + 1 : 0)
+        , frame({.is_open=false, .is_profiled=false, .frame_usecs=0})
+        , stats({.min_usecs=0, .max_usecs=0, .avg_usecs=0, .min_pct=0.0f, .max_pct=0.0f, .avg_pct=0.0f, .data_count=0, .call_count=0})
     {
     }
 
@@ -69,7 +70,6 @@ struct Sample
 
 
 
-} // namespace profiling
-} // namespace cl7
+} // namespace cl7::profiling
 
 #endif // CL7_PROFILING_SAMPLE_H

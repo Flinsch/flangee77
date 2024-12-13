@@ -2,25 +2,15 @@
 
 
 
-namespace cl7 {
-namespace profiling {
+namespace cl7::profiling {
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Default constructor.
-     */
     Stopwatch::Stopwatch(bool start)
-        : _start()
-        , _end()
-        , _pause()
-        , _is_running( false )
+        : _pause()
+        , _is_running(false)
     {
-        if ( start )
+        if (start)
             this->start();
         else
             this->reset();
@@ -28,17 +18,13 @@ namespace profiling {
 
 
 
-    // #############################################################################
-    // Methods
-    // #############################################################################
-
     /**
      * Calculates and returns the elapsed time.
      */
     std::chrono::steady_clock::duration Stopwatch::calculate_elapsed_time()
     {
         std::chrono::steady_clock::time_point end;
-        if ( _is_running )
+        if (_is_running)
             end = std::chrono::steady_clock::now();
         else
             end = _end;
@@ -55,16 +41,16 @@ namespace profiling {
     {
         auto duration = calculate_elapsed_time();
 
-        auto duration_microseconds = std::chrono::duration_cast<std::chrono::microseconds>( duration ).count();
-        if ( duration_microseconds <= 1'000'1000 )
-            return static_cast<float>( duration_microseconds / 1'000 ) * 0.001f;
+        auto duration_microseconds = std::chrono::duration_cast<std::chrono::microseconds>(duration).count();
+        if (duration_microseconds <= 1'000'1000)
+            return static_cast<float>(duration_microseconds / 1'000) * 0.001f; // NOLINT(bugprone-integer-division)
 
-        auto duration_milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>( duration ).count();
-        if ( duration_milliseconds <= 1'000'000 )
-            return static_cast<float>( duration_milliseconds ) * 0.001f;
+        auto duration_milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
+        if (duration_milliseconds <= 1'000'000)
+            return static_cast<float>(duration_milliseconds) * 0.001f;
 
-        auto duration_seconds = std::chrono::duration_cast<std::chrono::seconds>( duration ).count();
-        return static_cast<float>( duration_seconds );
+        auto duration_seconds = std::chrono::duration_cast<std::chrono::seconds>(duration).count();
+        return static_cast<float>(duration_seconds);
     }
 
     /**
@@ -73,9 +59,9 @@ namespace profiling {
      */
     unsigned Stopwatch::calculate_elapsed_msecs()
     {
-        auto duration_milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>( calculate_elapsed_time() ).count();
-        assert( duration_milliseconds <= static_cast<decltype(duration_milliseconds)>( std::numeric_limits<unsigned>::max() ) );
-        return static_cast<unsigned>( duration_milliseconds );
+        auto duration_milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(calculate_elapsed_time()).count();
+        assert(duration_milliseconds <= static_cast<decltype(duration_milliseconds)>(std::numeric_limits<unsigned>::max()));
+        return static_cast<unsigned>(duration_milliseconds);
     }
 
     /**
@@ -84,9 +70,9 @@ namespace profiling {
      */
     unsigned Stopwatch::calculate_elapsed_usecs()
     {
-        auto duration_microseconds = std::chrono::duration_cast<std::chrono::microseconds>( calculate_elapsed_time() ).count();
-        assert( duration_microseconds <= static_cast<decltype(duration_microseconds)>( std::numeric_limits<unsigned>::max() ) );
-        return static_cast<unsigned>( duration_microseconds );
+        auto duration_microseconds = std::chrono::duration_cast<std::chrono::microseconds>(calculate_elapsed_time()).count();
+        assert(duration_microseconds <= static_cast<decltype(duration_microseconds)>(std::numeric_limits<unsigned>::max()));
+        return static_cast<unsigned>(duration_microseconds);
     }
 
     /**
@@ -115,7 +101,7 @@ namespace profiling {
      */
     void Stopwatch::stop()
     {
-        if ( !_is_running )
+        if (!_is_running)
             return;
 
         _end = std::chrono::steady_clock::now();
@@ -128,7 +114,7 @@ namespace profiling {
      */
     void Stopwatch::resume()
     {
-        if ( _is_running )
+        if (_is_running)
             return;
 
         _pause += std::chrono::steady_clock::now() - _end;
@@ -137,5 +123,4 @@ namespace profiling {
 
 
 
-} // namespace profiling
-} // namespace cl7
+} // namespace cl7::profiling

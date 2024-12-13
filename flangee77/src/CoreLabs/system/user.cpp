@@ -9,39 +9,34 @@
 
 
 
-namespace cl7 {
-namespace system {
+namespace cl7::system {
 
 
-
-    // #############################################################################
-    // Static Methods
-    // #############################################################################
 
     /**
      * Retrieves the name of the system user.
      */
     cl7::string user::get_user_name(UserNameFormat user_name_format)
     {
-        const unsigned long MAX_NAME_LENGTH = 1024;
-        cl7::char_type name[ MAX_NAME_LENGTH ];
-        ::memset( name, 0, MAX_NAME_LENGTH * sizeof(cl7::char_type) );
+        constexpr unsigned long MAX_NAME_LENGTH = 1024;
+        cl7::char_type name[MAX_NAME_LENGTH];
+        ::memset(name, 0, MAX_NAME_LENGTH * sizeof(cl7::char_type));
 
         EXTENDED_NAME_FORMAT extended_name_format = NameSamCompatible;
 
-        unsigned long name_length = MAX_NAME_LENGTH;
-        if ( !::GetUserNameEx( extended_name_format, name, &name_length ) )
+        unsigned long name_length = MAX_NAME_LENGTH - 1;
+        if (!::GetUserNameEx(extended_name_format, name, &name_length))
         {
-            LOG_ERROR( cl7::errors::system_result( ::GetLastError(), TEXT("::GetUserNameEx") ) );
+            LOG_ERROR(cl7::errors::system_result(::GetLastError(), TEXT("::GetUserNameEx")));
         }
 
-        cl7::string user_name( name );
+        cl7::string user_name(name);
 
-        if ( user_name_format == UserNameFormat::PureUserName )
+        if (user_name_format == UserNameFormat::PureUserName)
         {
-            size_t p = user_name.find( TEXT('\\') );
-            if ( p >= 0 )
-                user_name = user_name.substr( p + 1 );
+            size_t p = user_name.find(TEXT('\\'));
+            if (p != cl7::string::npos)
+                user_name = user_name.substr(p + 1);
         }
 
         return user_name;
@@ -49,5 +44,4 @@ namespace system {
 
 
 
-} // namespace system
-} // namespace cl7
+} // namespace cl7::system

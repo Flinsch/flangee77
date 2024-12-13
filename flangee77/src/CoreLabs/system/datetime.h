@@ -6,18 +6,13 @@
 
 
 
-namespace cl7 {
-namespace system {
+namespace cl7::system {
 
 
 
-class datetime
+struct datetime
 {
 
-    // #############################################################################
-    // Static Methods
-    // #############################################################################
-public:
     /**
      * Returns the number of milliseconds since the "epoch". Attention: This epoch
      * is local. Thus, the returned value should be shared only locally, not across
@@ -27,11 +22,10 @@ public:
      */
     static long long current_msecs_since_epoch();
 
-}; // class datetime
+}; // struct datetime
 
 
 
-} // namespace system
-} // namespace cl7
+} // namespace cl7::system
 
 #endif // CL7_SYSTEM_DATETIME_H

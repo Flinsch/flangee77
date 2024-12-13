@@ -4,14 +4,9 @@
 
 
 
-namespace cl7 {
-namespace system {
+namespace cl7::system {
 
 
-
-    // #############################################################################
-    // Static Methods
-    // #############################################################################
 
     /**
      * Returns the number of milliseconds since the "epoch". Attention: This epoch
@@ -21,10 +16,9 @@ namespace system {
      */
     long long datetime::current_msecs_since_epoch()
     {
-        return std::chrono::duration_cast<std::chrono::milliseconds>( std::chrono::steady_clock::now().time_since_epoch() ).count();
+        return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
     }
 
 
 
-} // namespace system
-} // namespace cl7
+} // namespace cl7::system

@@ -8,73 +8,24 @@
 
 
 
-namespace cl7 {
-namespace profiling {
+namespace cl7::profiling {
 
 
 
 class Stopwatch
 {
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
 public:
-    /**
-     * Default/explicit constructor.
-     */
     Stopwatch(bool start = true);
 
-    /**
-     * Destructor.
-     */
-    ~Stopwatch() = default;
 
 
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The start point in time.
-     */
-    std::chrono::steady_clock::time_point _start;
-
-    /**
-     * The end point in time.
-     */
-    std::chrono::steady_clock::time_point _end;
-
-    /**
-     * The cumulative duration of pauses during the stopwatch's operation.
-     */
-    std::chrono::steady_clock::duration _pause;
-
-    /**
-     * The flag that indicates whether the stopwatch is running (true) or
-     * stopped/paused (false).
-     */
-    bool _is_running;
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
     /**
      * Returns the flag that indicates whether the stopwatch is running (true) or
      * stopped/paused (false).
      */
     bool is_running() const { return _is_running; }
 
-
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
     /**
      * Calculates and returns the elapsed time.
      */
@@ -123,11 +74,22 @@ public:
      */
     void resume();
 
+
+
+private:
+    /** The start point in time. */
+    std::chrono::steady_clock::time_point _start;
+    /** The end point in time. */
+    std::chrono::steady_clock::time_point _end;
+    /** The cumulative duration of pauses during the stopwatch's operation. */
+    std::chrono::steady_clock::duration _pause;
+    /** The flag that indicates whether the stopwatch is running (true) or stopped/paused (false). */
+    bool _is_running;
+
 }; // class Stopwatch
 
 
 
-} // namespace profiling
-} // namespace cl7
+} // namespace cl7::profiling
 
 #endif // CL7_PROFILING_STOPWATCH_H

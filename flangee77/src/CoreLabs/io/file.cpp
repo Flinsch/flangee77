@@ -64,7 +64,7 @@ namespace cl7::io {
             return 0;
 
         auto position = _position;
-        _fstream.read(reinterpret_cast<char*>(buffer.data()), static_cast<std::streamsize>(buffer.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        _fstream.read(reinterpret_cast<char*>(buffer.data()), static_cast<std::streamsize>(buffer.size()));
 
         _position = _fstream.tellg();
         _fstream.seekp(static_cast<std::streamoff>(_position));
@@ -82,7 +82,7 @@ namespace cl7::io {
             return 0;
 
         auto position = _position;
-        _fstream.write(reinterpret_cast<const char*>(buffer.data()), static_cast<std::streamsize>(buffer.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        _fstream.write(reinterpret_cast<const char*>(buffer.data()), static_cast<std::streamsize>(buffer.size()));
 
         _position = _fstream.tellp();
         _fstream.seekg(static_cast<std::streamoff>(_position));

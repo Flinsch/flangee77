@@ -4,25 +4,15 @@
 
 
 
-namespace cl7 {
-namespace logging {
+namespace cl7::logging {
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Default constructor.
-     */
     StandardLogger::StandardLogger()
-        : _logger()
     {
-        _logger.add_log_handler( std::make_shared<CoutLogHandler>() );
+        _logger.add_log_handler(std::make_shared<CoutLogHandler>());
     }
 
 
 
-} // namespace logging
-} // namespace cl7
+} // namespace cl7::logging

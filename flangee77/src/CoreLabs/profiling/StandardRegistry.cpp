@@ -2,24 +2,10 @@
 
 
 
-namespace cl7 {
-namespace profiling {
+namespace cl7::profiling {
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Default constructor.
-     */
-    StandardRegistry::StandardRegistry()
-        : _registry()
-    {
-    }
 
 
-
-} // namespace profiling
-} // namespace cl7
+} // namespace cl7::profiling

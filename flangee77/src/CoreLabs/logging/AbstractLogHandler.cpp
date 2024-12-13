@@ -2,8 +2,7 @@
 
 
 
-namespace cl7 {
-namespace logging {
+namespace cl7::logging {
 
 
 
@@ -16,10 +15,9 @@ namespace logging {
      */
     void AbstractLogHandler::on_log(const LogEntry& log_entry)
     {
-        _write( log_entry );
+        _write(log_entry);
     }
 
 
 
-} // namespace logging
-} // namespace cl7
+} // namespace cl7::logging

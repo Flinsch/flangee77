@@ -4,8 +4,7 @@
 
 
 
-namespace cl7 {
-namespace logging {
+namespace cl7::logging {
 
 
 
@@ -19,13 +18,12 @@ namespace logging {
     void CoutLogHandler::_write(const LogEntry& log_entry)
     {
 #ifdef UNICODE
-        std::wcout << log_entry.message << std::endl;
+        std::wcout << log_entry.message << '\n';
 #else
-        std::cout << log_entry.message << std::endl;
+        std::cout << log_entry.message << '\n';
 #endif
     }
 
 
 
-} // namespace logging
-} // namespace cl7
+} // namespace cl7::logging

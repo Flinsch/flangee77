@@ -5,8 +5,7 @@
 
 
 
-namespace cl7 {
-namespace logging {
+namespace cl7::logging {
 
 
 
@@ -14,42 +13,38 @@ class CoutLogHandler
     : public AbstractLogHandler
 {
 
+public:
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
-public:
-    /**
-     * Default constructor.
-     */
+
     CoutLogHandler() = default;
 
-    /**
-     * Destructor.
-     */
-    virtual ~CoutLogHandler() override = default;
+    CoutLogHandler(const CoutLogHandler&) = delete;
+    CoutLogHandler& operator = (const CoutLogHandler&) = delete;
+    CoutLogHandler(CoutLogHandler&&) = delete;
+    CoutLogHandler& operator = (CoutLogHandler&&) = delete;
+
+    ~CoutLogHandler() override = default;
+
+
 
 private:
-    /** Copy constructor. */
-    CoutLogHandler(const CoutLogHandler&) = delete;
-    /** Copy assignment operator. */
-    CoutLogHandler& operator = (const CoutLogHandler&) = delete;
-
-
 
     // #############################################################################
     // Implementations
     // #############################################################################
-private:
+
     /**
      * Writes the specified log entry.
      */
-    virtual void _write(const LogEntry& log_entry) override;
+    void _write(const LogEntry& log_entry) override;
 
 }; // class CoutLogHandler
 
 
 
-} // namespace logging
-} // namespace cl7
+} // namespace cl7::logging
 
 #endif // CL7_LOGGING_COUTLOGHANDLER_H

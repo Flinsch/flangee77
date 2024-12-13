@@ -7,46 +7,27 @@
 
 
 
-namespace cl7 {
-namespace profiling {
+namespace cl7::profiling {
 
 
 
 struct SampleHandler
 {
 
-    /** The sample to be "handled". */
     Sample* sample;
 
-    /** . */
     Stopwatch stopwatch;
 
 
 
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
-    /**
-     * 
-     */
     void open_sample();
-
-    /**
-     * 
-     */
     void close_sample();
-
-    /**
-     * 
-     */
     void update_sample(unsigned frame_usecs);
 
 }; // struct SampleHandler
 
 
 
-} // namespace profiling
-} // namespace cl7
+} // namespace cl7::profiling
 
 #endif // CL7_PROFILING_SAMPLEHANDLER_H

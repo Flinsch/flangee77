@@ -6,12 +6,9 @@
 
 #include <CoreLabs/string.h>
 
-#include <source_location>
 
 
-
-namespace cl7 {
-namespace logging {
+namespace cl7::logging {
 
 
 
@@ -41,7 +38,6 @@ struct LogEntry
 
 
 
-} // namespace logging
-} // namespace cl7
+} // namespace cl7::logging
 
 #endif // CL7_LOGGING_LOGENTRY_H

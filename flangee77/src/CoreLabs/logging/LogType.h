@@ -6,8 +6,7 @@
 
 
 
-namespace cl7 {
-namespace logging {
+namespace cl7::logging {
 
 
 
@@ -31,7 +30,6 @@ enum class LogType
 
 
 
-} // namespace logging
-} // namespace cl7
+} // namespace cl7::logging
 
 #endif // CL7_LOGGING_LOGTYPE_H

@@ -5,8 +5,7 @@
 
 
 
-namespace cl7 {
-namespace logging {
+namespace cl7::logging {
 
 
 
@@ -14,54 +13,50 @@ class FileLogHandler
     : public AbstractLogHandler
 {
 
+public:
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
-public:
-    /**
-     * Default constructor.
-     */
+
     FileLogHandler();
 
-    /**
-     * Destructor.
-     */
-    virtual ~FileLogHandler() override = default;
+    FileLogHandler(const FileLogHandler&) = delete;
+    FileLogHandler& operator = (const FileLogHandler&) = delete;
+    FileLogHandler(FileLogHandler&&) = delete;
+    FileLogHandler& operator = (FileLogHandler&&) = delete;
+
+    ~FileLogHandler() override = default;
+
+
 
 private:
-    /** Copy constructor. */
-    FileLogHandler(const FileLogHandler&) = delete;
-    /** Copy assignment operator. */
-    FileLogHandler& operator = (const FileLogHandler&) = delete;
-
-
 
     // #############################################################################
     // Implementations
     // #############################################################################
-private:
+
     /**
      * Writes the specified log entry.
      */
-    virtual void _write(const LogEntry& log_entry) override;
+    void _write(const LogEntry& log_entry) override;
 
 
 
     // #############################################################################
     // Helpers
     // #############################################################################
-private:
+
     /**
-     * Writes the specified text line to the log file. If specified, the file is
-     * initially truncated.
+     * Writes the specified "raw" ASCII or UTF-8 encoded std::string to the log
+     * file. If specified, the file is initially truncated.
      */
-    void _write_line(cl7::string_view line, bool truncate = false);
+    static void _write_line(std::string_view line, bool truncate = false);
 
 }; // class FileLogHandler
 
 
 
-} // namespace logging
-} // namespace cl7
+} // namespace cl7::logging
 
 #endif // CL7_LOGGING_FILELOGHANDLER_H

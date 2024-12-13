@@ -9,8 +9,7 @@
 
 
 
-namespace cl7 {
-namespace logging {
+namespace cl7::logging {
 
 
 
@@ -18,56 +17,39 @@ class Logger final
 {
 
 public:
-    typedef std::shared_ptr<AbstractLogHandler> LogHandlerPtr;
+    using LogHandler = AbstractLogHandler;
+    using LogHandlerPtr = std::shared_ptr<LogHandler>;
 
 
 
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
-public:
-    /**
-     * Default constructor.
-     */
+
     Logger() = default;
 
-    /**
-     * Destructor.
-     */
-    ~Logger() = default;
-
-private:
-    /** Copy constructor. */
     Logger(const Logger&) = delete;
-    /** Copy assignment operator. */
     Logger& operator = (const Logger&) = delete;
+    Logger(Logger&&) = delete;
+    Logger& operator = (Logger&&) = delete;
 
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * A "list" of log handlers.
-     */
-    std::vector<LogHandlerPtr> _log_handlers;
+    ~Logger() = default;
 
 
 
     // #############################################################################
     // Methods
     // #############################################################################
-public:
+
     /**
      * (Re-)adds the specified log handler.
      */
-    Logger& add_log_handler(LogHandlerPtr log_handler);
+    Logger& add_log_handler(const LogHandlerPtr& log_handler);
 
     /**
      * Removes the specified log handler. Does nothing if not found.
      */
-    Logger& remove_log_handler(LogHandlerPtr log_handler);
+    Logger& remove_log_handler(const LogHandlerPtr& log_handler);
 
     /**
      * Removes all log handlers.
@@ -81,21 +63,33 @@ public:
 
 
 
+private:
+
     // #############################################################################
     // Helpers
     // #############################################################################
-private:
+
     /**
      * Searches for the specified log handler and returns a matching iterator (if
      * found).
      */
-    std::vector<LogHandlerPtr>::iterator _find_log_handler(LogHandlerPtr log_handler);
+    std::vector<LogHandlerPtr>::iterator _find_log_handler(const LogHandlerPtr& log_handler);
+
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    /**
+     * A "list" of log handlers.
+     */
+    std::vector<LogHandlerPtr> _log_handlers;
 
 }; // class Logger
 
 
 
-} // namespace logging
-} // namespace cl7
+} // namespace cl7::logging
 
 #endif // CL7_LOGGING_LOGGER_H

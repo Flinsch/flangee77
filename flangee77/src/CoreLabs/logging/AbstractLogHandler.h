@@ -4,44 +4,36 @@
 
 #include "./LogEntry.h"
 
-#include <vector>
 
 
-
-namespace cl7 {
-namespace logging {
+namespace cl7::logging {
 
 
 
 class AbstractLogHandler
 {
 
+public:
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
-public:
-    /**
-     * Default constructor.
-     */
+
     AbstractLogHandler() = default;
 
-    /**
-     * Destructor.
-     */
-    virtual ~AbstractLogHandler() = default;
-
-private:
-    /** Copy constructor. */
     AbstractLogHandler(const AbstractLogHandler&) = delete;
-    /** Copy assignment operator. */
     AbstractLogHandler& operator = (const AbstractLogHandler&) = delete;
+    AbstractLogHandler(AbstractLogHandler&&) = delete;
+    AbstractLogHandler& operator = (AbstractLogHandler&&) = delete;
+
+    virtual ~AbstractLogHandler() = default;
 
 
 
     // #############################################################################
     // Methods
     // #############################################################################
-public:
+
     /**
      * Logs the specified entry.
      */
@@ -49,10 +41,12 @@ public:
 
 
 
+private:
+
     // #############################################################################
     // Prototypes
     // #############################################################################
-private:
+
     /**
      * Writes the specified log entry.
      */
@@ -62,7 +56,7 @@ private:
 
 
 
-} // namespace logging
-} // namespace cl7
+} // namespace cl7::logging
+
 
 #endif // CL7_LOGGING_ABSTRACTLOGHANDLER_H

@@ -7,8 +7,7 @@
 
 
 
-namespace cl7 {
-namespace logging {
+namespace cl7::logging {
 
 
 
@@ -17,60 +16,28 @@ class StandardLogger final
 {
     friend class creational::Singleton<StandardLogger>;
 
-
-
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-private:
-    /**
-     * Default constructor.
-     */
-    StandardLogger();
-
-    /**
-     * Destructor.
-     */
-    ~StandardLogger() = default;
-
-private:
-    /** Copy constructor. */
-    StandardLogger(const StandardLogger&) = delete;
-    /** Copy assignment operator. */
-    StandardLogger& operator = (const StandardLogger&) = delete;
-
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The actual logger.
-     */
-    Logger _logger;
-
-
-
-    // #############################################################################
-    // Dereferenciation
-    // #############################################################################
 public:
-    /**
-     * Returns the actual logger.
-     */
+    StandardLogger(const StandardLogger&) = delete;
+    StandardLogger& operator = (const StandardLogger&) = delete;
+    StandardLogger(StandardLogger&&) = delete;
+    StandardLogger& operator = (StandardLogger&&) = delete;
+
     static Logger& instance() { return creational::Singleton<StandardLogger>::instance()._logger; }
 
-    /**
-     * Returns the actual logger.
-     */
     Logger* operator -> () { return &_logger; }
+
+
+
+private:
+    StandardLogger();
+    ~StandardLogger() override = default;
+
+    Logger _logger;
 
 }; // class StandardLogger final
 
 
 
-} // namespace logging
-} // namespace cl7
+} // namespace cl7::logging
 
 #endif // CL7_LOGGING_STANDARDLOGGER_H

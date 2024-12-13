@@ -151,9 +151,9 @@ namespace cl7::strings {
     astring to_latin1(wstring_view ws)
     {
 #if WCHAR_MAX == UINT16_MAX
-        return to_latin1(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return to_latin1(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size()));
 #elif WCHAR_MAX == UINT32_MAX
-        return to_latin1(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return to_latin1(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size()));
 #else
         static_assert(false);
 #endif
@@ -229,9 +229,9 @@ namespace cl7::strings {
     u8string to_utf8(wstring_view ws)
     {
 #if WCHAR_MAX == UINT16_MAX
-        return to_utf8(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return to_utf8(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size()));
 #elif WCHAR_MAX == UINT32_MAX
-        return to_utf8(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return to_utf8(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size()));
 #else
         static_assert(false);
 #endif
@@ -292,9 +292,9 @@ namespace cl7::strings {
     u16string to_utf16(wstring_view ws)
     {
 #if WCHAR_MAX == UINT16_MAX
-        return to_utf16(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return to_utf16(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size()));
 #elif WCHAR_MAX == UINT32_MAX
-        return to_utf16(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return to_utf16(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size()));
 #else
         static_assert(false);
 #endif
@@ -327,9 +327,9 @@ namespace cl7::strings {
     u32string to_utf32(wstring_view ws)
     {
 #if WCHAR_MAX == UINT16_MAX
-        return to_utf32(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return to_utf32(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size()));
 #elif WCHAR_MAX == UINT32_MAX
-        return to_utf32(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return to_utf32(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size()));
 #else
         static_assert(false);
 #endif
@@ -344,7 +344,7 @@ namespace cl7::strings {
 #else
         static_assert(false);
 #endif
-        return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size()));
     }
 
     wstring to_utfx(u8string_view u8s)
@@ -356,7 +356,7 @@ namespace cl7::strings {
 #else
         static_assert(false);
 #endif
-        return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size()));
     }
 
     wstring to_utfx(u16string_view u16s)
@@ -368,7 +368,7 @@ namespace cl7::strings {
 #else
         static_assert(false);
 #endif
-        return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size()));
     }
 
     wstring to_utfx(u32string_view u32s)
@@ -380,7 +380,7 @@ namespace cl7::strings {
 #else
         static_assert(false);
 #endif
-        return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size()));
     }
 
     wstring to_utfx(wstring_view ws)
@@ -432,9 +432,9 @@ namespace cl7::strings {
     string from_utfx(wstring_view ws)
     {
 #if WCHAR_MAX == UINT16_MAX
-        return from_utf16(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return from_utf16(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size()));
 #elif WCHAR_MAX == UINT32_MAX
-        return from_utf32(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return from_utf32(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size()));
 #else
         static_assert(false);
 #endif
@@ -447,12 +447,12 @@ namespace cl7::strings {
 
     astring to_latin1(byte_view bys)
     {
-        return {reinterpret_cast<const achar_type*>(bys.data()), bys.size()}; // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return {reinterpret_cast<const achar_type*>(bys.data()), bys.size()};
     }
 
     u8string to_utf8_unchecked(byte_view bys)
     {
-        const auto* data = reinterpret_cast<const u8char_type*>(bys.data()); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        const auto* data = reinterpret_cast<const u8char_type*>(bys.data());
         size_t size = bys.size();
 
         if (size >= 3)
@@ -470,7 +470,7 @@ namespace cl7::strings {
 
     u16string to_utf16_unchecked(byte_view bys)
     {
-        const auto* data = reinterpret_cast<const u16char_type*>(bys.data()); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        const auto* data = reinterpret_cast<const u16char_type*>(bys.data());
         size_t size = bys.size() / 2;
 
         bool byteswap = false;
@@ -511,7 +511,7 @@ namespace cl7::strings {
 
     u32string to_utf32_unchecked(byte_view bys)
     {
-        const auto* data = reinterpret_cast<const u32char_type*>(bys.data()); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        const auto* data = reinterpret_cast<const u32char_type*>(bys.data());
         size_t size = bys.size() / 4;
 
         bool byteswap = false;
@@ -559,7 +559,7 @@ namespace cl7::strings {
 #else
         static_assert(false);
 #endif
-        return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size())); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size()));
     }
 
     string from_bytes(byte_view bys)
@@ -573,7 +573,7 @@ namespace cl7::strings {
 
     byte_vector to_bytes(astring_view as)
     {
-        const auto* const data = reinterpret_cast<const std::byte*>(as.data()); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        const auto* const data = reinterpret_cast<const std::byte*>(as.data());
         const size_t size = as.size();
 
         return {data, data + size};
@@ -581,7 +581,7 @@ namespace cl7::strings {
 
     byte_vector to_bytes(u8string_view u8s, bool add_bom)
     {
-        const auto* const data = reinterpret_cast<const std::byte*>(u8s.data()); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        const auto* const data = reinterpret_cast<const std::byte*>(u8s.data());
         const size_t size = u8s.size();
 
         if (!add_bom)
@@ -601,7 +601,7 @@ namespace cl7::strings {
 
     byte_vector to_bytes(u16string_view u16s, bool add_bom, std::endian endian)
     {
-        const auto* const data = reinterpret_cast<const std::byte*>(u16s.data()); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        const auto* const data = reinterpret_cast<const std::byte*>(u16s.data());
         const size_t size = u16s.size() * 2;
 
         const bool byteswap = endian != std::endian::native;
@@ -614,7 +614,7 @@ namespace cl7::strings {
         if (byteswap)
         {
             if (add_bom)
-                *reinterpret_cast<u16char_type*>(bys.data()) = 0xfffe; // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+                *reinterpret_cast<u16char_type*>(bys.data()) = 0xfffe;
             for (size_t i = 0; i < size; i += 2)
             {
                 bys[ofs + i + 0] = data[i + 1];
@@ -624,7 +624,7 @@ namespace cl7::strings {
         else
         {
             if (add_bom)
-                *reinterpret_cast<u16char_type*>(bys.data()) = 0xfeff; // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+                *reinterpret_cast<u16char_type*>(bys.data()) = 0xfeff;
             for (size_t i = 0; i < size; i += 2)
             {
                 bys[ofs + i + 0] = data[i + 0];
@@ -637,7 +637,7 @@ namespace cl7::strings {
 
     byte_vector to_bytes(u32string_view u32s, bool add_bom, std::endian endian)
     {
-        const auto* const data = reinterpret_cast<const std::byte*>(u32s.data()); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        const auto* const data = reinterpret_cast<const std::byte*>(u32s.data());
         const size_t size = u32s.size() * 4;
 
         const bool byteswap = endian != std::endian::native;
@@ -650,7 +650,7 @@ namespace cl7::strings {
         if (byteswap)
         {
             if (add_bom)
-                *reinterpret_cast<u32char_type*>(bys.data()) = 0xfffe'0000; // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+                *reinterpret_cast<u32char_type*>(bys.data()) = 0xfffe'0000;
             for (size_t i = 0; i < size; i += 4)
             {
                 bys[ofs + i + 0] = data[i + 3];
@@ -662,7 +662,7 @@ namespace cl7::strings {
         else
         {
             if (add_bom)
-                *reinterpret_cast<u32char_type*>(bys.data()) = 0x0000'feff; // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+                *reinterpret_cast<u32char_type*>(bys.data()) = 0x0000'feff;
             for (size_t i = 0; i < size; i += 4)
             {
                 bys[ofs + i + 0] = data[i + 0];
@@ -678,9 +678,9 @@ namespace cl7::strings {
     byte_vector to_bytes(wstring_view ws, bool add_bom, std::endian endian)
     {
 #if WCHAR_MAX == UINT16_MAX
-        return to_bytes(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size()), add_bom, endian); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return to_bytes(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size()), add_bom, endian);
 #elif WCHAR_MAX == UINT32_MAX
-        return to_bytes(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size()), add_bom, endian); // NOLINT(cppcoreguidelines-pro-type-reinterpret-cast)
+        return to_bytes(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size()), add_bom, endian);
 #else
         static_assert(false);
 #endif
@@ -700,7 +700,7 @@ namespace cl7::strings {
         return true;
     }
 
-    bool parse_utf8(u8string_view u8s, u32string& u32s, bool log_warning) // NOLINT(readability-function-cognitive-complexity)
+    bool parse_utf8(u8string_view u8s, u32string& u32s, bool log_warning)
     {
         u32s.resize(utf8_length(u8s), u32char_type{0});
 
@@ -925,6 +925,20 @@ namespace cl7::strings {
         }
 
         return len;
+    }
+
+    /** Reinterprets the character format of the specified UTF-8 string. Attention: It is not checked whether a correct UTF-8 encoding is given. */
+    astring_view reinterpret_utf8(u8string_view u8s)
+    {
+        static_assert(sizeof(achar_type) == sizeof(u8char_type));
+        return {reinterpret_cast<const achar_type*>(u8s.data()), u8s.size()};
+    }
+
+    /** Reinterprets the character format of the specified UTF-8 string. Attention: It is not checked whether a correct UTF-8 encoding is given. */
+    u8string_view reinterpret_utf8(astring_view as)
+    {
+        static_assert(sizeof(u8char_type) == sizeof(achar_type));
+        return {reinterpret_cast<const u8char_type*>(as.data()), as.size()};
     }
 
     Encoding detect_encoding(byte_view bys)
