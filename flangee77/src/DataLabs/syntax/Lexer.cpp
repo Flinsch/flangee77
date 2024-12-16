@@ -4,8 +4,7 @@
 
 
 
-namespace dl7 {
-namespace syntax {
+namespace dl7::syntax {
 
 
 
@@ -17,10 +16,7 @@ namespace syntax {
      * Explicit constructor.
      */
     Lexer::Lexer(Options options)
-        : _options( options )
-        , _source()
-        , _source_location()
-    {
+        : _options(options) {
     }
 
 
@@ -46,10 +42,10 @@ namespace syntax {
     Token Lexer::next()
     {
         // Keep or skip whitespace?
-        if ( _options.whitespace_handling == WhitespaceHandling::Discard )
+        if (_options.whitespace_handling == WhitespaceHandling::Discard)
             _skip_whitespace();
 
-        if ( _source_location.offset >= _source.length() )
+        if (_source_location.offset >= _source.length())
         {
             // Return "EOF" token.
             return {
@@ -60,21 +56,21 @@ namespace syntax {
         }
 
         // (Try to) recognize next token.
-        const auto [symbol_id, length] = _recognize( get_remainder() );
+        const auto [symbol_id, length] = _recognize(get_remainder());
 
-        assert( symbol_id != 0 );
-        assert( length > 0 );
-        assert( length + _source_location.offset <= _source.length() );
+        assert(symbol_id != 0);
+        assert(length > 0);
+        assert(length + _source_location.offset <= _source.length());
 
         // Capture token ...
-        Token token {
+        Token token{
             .symbol_id = symbol_id,
-            .lexeme = _source.substr( _source_location.offset, length ),
+            .lexeme = _source.substr(_source_location.offset, length),
             .source_location = _source_location,
         };
 
         // Move cursor forward and handle different line endings.
-        _advance( length );
+        _advance(length);
 
         // ... and return.
         return token;
@@ -88,10 +84,10 @@ namespace syntax {
     {
         std::vector<Token> tokens;
 
-        init( source );
+        init(source);
         do
-            tokens.push_back( next() );
-        while ( tokens.back().symbol_id != 0 );
+            tokens.push_back(next());
+        while (tokens.back().symbol_id != 0);
 
         return tokens;
     }
@@ -108,9 +104,9 @@ namespace syntax {
      */
     size_t Lexer::_skip_whitespace()
     {
-        const size_t length = cl7::strings::count_whitespace_prefix( get_remainder() );
-        assert( length + _source_location.offset <= _source.length() );
-        _advance( length );
+        const size_t length = cl7::strings::count_whitespace_prefix(get_remainder());
+        assert(length + _source_location.offset <= _source.length());
+        _advance(length);
         return length;
     }
 
@@ -119,24 +115,24 @@ namespace syntax {
      */
     void Lexer::_advance(size_t count)
     {
-        for ( size_t i = 0; i < count; ++i, ++_source_location.offset )
+        for (size_t i = 0; i < count; ++i, ++_source_location.offset)
         {
-            assert( _source_location.offset < _source.length() );
-            const auto ch0 = _source[ _source_location.offset ];
+            assert(_source_location.offset < _source.length());
+            const auto ch0 = _source[_source_location.offset];
             // Handle different line endings:
             // \r\n (CR LF): Windows, DOS
             // \n (LF): Unix, Linux, macOS, and "modern" line-ending styles in general
             // \r (CR): Legacy Mac
-            if ( ch0 == u8'\r' || ch0 == u8'\n' )
+            if (ch0 == u8'\r' || ch0 == u8'\n')
             {
                 // Line break: advance the line, resetting the column.
                 ++_source_location.line;
                 _source_location.column = 1;
 
-                if ( ch0 == u8'\r' && _source_location.offset + 1 < _source.length() )
+                if (ch0 == u8'\r' && _source_location.offset + 1 < _source.length())
                 {
-                    const auto ch1 = _source[ _source_location.offset + 1 ];
-                    if ( ch1 == u8'\n' )
+                    const auto ch1 = _source[_source_location.offset + 1];
+                    if (ch1 == u8'\n')
                         ++_source_location.offset; // Skip second character as well.
                 }
             }
@@ -150,5 +146,4 @@ namespace syntax {
 
 
 
-} // namespace syntax
-} // namespace dl7
+} // namespace dl7::syntax

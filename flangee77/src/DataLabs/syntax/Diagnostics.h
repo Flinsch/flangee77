@@ -8,59 +8,13 @@
 
 
 
-namespace dl7 {
-namespace syntax {
+namespace dl7::syntax {
 
 
 
 class Diagnostics
 {
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The "list" of diagnostics.
-     */
-    std::vector<Diagnostic> _diagnostics;
-
-    /**
-     * The number of errors.
-     */
-    size_t _error_count = 0;
-
-    /**
-     * The number of warnings.
-     */
-    size_t _warning_count = 0;
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
-    /**
-     * Returns the total number of diagnostics.
-     */
-    size_t get_count() const { return _diagnostics.size(); }
-
-    /**
-     * Returns the number of errors.
-     */
-    size_t get_error_count() const { return _error_count; }
-
-    /**
-     * Returns the number of warnings.
-     */
-    size_t get_warning_count() const { return _warning_count; }
-
-
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
 public:
     /**
      * Erases all diagnostics.
@@ -82,11 +36,37 @@ public:
      */
     const std::vector<Diagnostic>& get_all() const { return _diagnostics; }
 
+    /**
+     * Returns the total number of diagnostics.
+     */
+    size_t get_count() const { return _diagnostics.size(); }
+
+    /**
+     * Returns the number of errors.
+     */
+    size_t get_error_count() const { return _error_count; }
+
+    /**
+     * Returns the number of warnings.
+     */
+    size_t get_warning_count() const { return _warning_count; }
+
+
+
+private:
+    /** The "list" of diagnostics. */
+    std::vector<Diagnostic> _diagnostics;
+
+    /** The number of errors. */
+    size_t _error_count = 0;
+
+    /** The number of warnings. */
+    size_t _warning_count = 0;
+
 }; // class Diagnostics
 
 
 
-} // namespace syntax
-} // namespace dl7
+} // namespace dl7::syntax
 
 #endif // DL7_SYNTAX_DIAGNOSTICS_H

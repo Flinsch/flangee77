@@ -2,8 +2,7 @@
 
 
 
-namespace dl7 {
-namespace syntax {
+namespace dl7::syntax {
 
 
 
@@ -14,9 +13,10 @@ namespace syntax {
     /**
      * Explicit constructor.
      */
-    Parser::Parser(const Grammar& grammar)
-        : _grammar( grammar )
+    Parser::Parser(const Grammar* grammar)
+        : _grammar(grammar)
     {
+        assert(_grammar);
     }
 
 
@@ -30,6 +30,7 @@ namespace syntax {
      */
     bool Parser::parse(cl7::u8string_view text)
     {
+        _grammar->config;
         return false;
     }
 
@@ -38,10 +39,10 @@ namespace syntax {
      */
     bool Parser::parse(const std::vector<Token>& tokens)
     {
+        _grammar->config;
         return false;
     }
 
 
 
-} // namespace syntax
-} // namespace dl7
+} // namespace dl7::syntax

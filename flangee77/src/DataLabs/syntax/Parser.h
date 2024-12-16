@@ -11,53 +11,36 @@
 
 
 
-namespace dl7 {
-namespace syntax {
+namespace dl7::syntax {
 
 
 
 class Parser
 {
 
+public:
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
-public:
-    /**
-     * Explicit constructor.
-     */
-    Parser(const Grammar& grammar);
 
-    /**
-     * Destructor.
-     */
-    virtual ~Parser() = default;
-
-private:
-    /** Default constructor. */
     Parser() = delete;
-    /** Copy constructor. */
+
+    Parser(const Grammar* grammar);
+
     Parser(const Parser&) = delete;
-    /** Copy assignment operator. */
     Parser& operator = (const Parser&) = delete;
+    Parser(Parser&&) = delete;
+    Parser& operator = (Parser&&) = delete;
 
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The underlying grammar.
-     */
-    const Grammar& _grammar;
+    virtual ~Parser() = default;
 
 
 
     // #############################################################################
     // Methods
     // #############################################################################
-public:
+
     /**
      * 
      */
@@ -70,17 +53,29 @@ public:
 
 
 
+private:
+
     // #############################################################################
     // Prototypes
     // #############################################################################
-private:
+
     //bool _parse_next(Token current, Token next);
+
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    /**
+     * The underlying grammar.
+     */
+    const Grammar* _grammar;
 
 }; // class Parser
 
 
 
-} // namespace syntax
-} // namespace dl7
+} // namespace dl7::syntax
 
 #endif // DL7_SYNTAX_PARSER_H

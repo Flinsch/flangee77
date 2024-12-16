@@ -8,19 +8,12 @@
 
 
 
-namespace dl7 {
-namespace syntax {
+namespace dl7::syntax {
 
 
 
 class TerminalSymbolCollection
 {
-
-private:
-    /** The "list" of terminal symbols. */
-    std::vector<std::unique_ptr<TerminalSymbol>> _terminal_symbols;
-
-
 
 public:
     /**
@@ -28,17 +21,17 @@ public:
      */
     void add(std::unique_ptr<TerminalSymbol> terminal_symbol)
     {
-        _terminal_symbols.emplace_back( std::move(terminal_symbol) );
+        _terminal_symbols.emplace_back(std::move(terminal_symbol));
     }
 
     /**
      * Adds the specified terminal symbol to the collection.
      */
     template <class TTerminalSymbol, class... Args>
-        requires( std::derived_from<TTerminalSymbol, TerminalSymbol> )
+        requires(std::derived_from<TTerminalSymbol, TerminalSymbol>)
     void add(cl7::astring_view name, TerminalSymbol::ID id, Args&&... args)
     {
-        add( std::make_unique<TTerminalSymbol>( name, id, args... ) );
+        add(std::make_unique<TTerminalSymbol>(name, id, std::forward<Args>(args)...));
     }
 
     /**
@@ -46,7 +39,7 @@ public:
      */
     void add_literal(cl7::astring_view name, TerminalSymbol::ID id, cl7::u8string_view literal)
     {
-        add( std::make_unique<LiteralSymbol>( name, id, literal ) );
+        add(std::make_unique<LiteralSymbol>(name, id, literal));
     }
 
     /**
@@ -54,7 +47,7 @@ public:
      */
     void add_pattern(cl7::astring_view name, TerminalSymbol::ID id, cl7::astring_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default)
     {
-        add( std::make_unique<PatternSymbol>( name, id, pattern, syntax_options, match_flags ) );
+        add(std::make_unique<PatternSymbol>(name, id, pattern, syntax_options, match_flags));
     }
 
     /**
@@ -62,7 +55,7 @@ public:
      */
     void add_pattern(cl7::astring_view name, TerminalSymbol::ID id, cl7::astring_view pattern, cl7::u8string_view literal_prefix, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default)
     {
-        add( std::make_unique<PatternSymbol>( name, id, pattern, literal_prefix, syntax_options, match_flags ) );
+        add(std::make_unique<PatternSymbol>(name, id, pattern, literal_prefix, syntax_options, match_flags));
     }
 
     /**
@@ -78,14 +71,19 @@ public:
      */
     const TerminalSymbol& get(size_t index) const
     {
-        return *_terminal_symbols[ index ].get();
+        return *_terminal_symbols[index].get();
     }
 
-}; // class GenericLexer
+
+
+private:
+    /** The "list" of terminal symbols. */
+    std::vector<std::unique_ptr<TerminalSymbol>> _terminal_symbols;
+
+}; // class TerminalSymbolCollection
 
 
 
-} // namespace syntax
-} // namespace dl7
+} // namespace dl7::syntax
 
 #endif // DL7_SYNTAX_TERMINALSYMBOLCOLLECTION_H

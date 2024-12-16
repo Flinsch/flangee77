@@ -9,8 +9,7 @@
 
 
 
-namespace dl7 {
-namespace syntax {
+namespace dl7::syntax {
 
 
 
@@ -30,7 +29,6 @@ struct Token
 
 
 
-} // namespace syntax
-} // namespace dl7
+} // namespace dl7::syntax
 
 #endif // DL7_SYNTAX_TOKEN_H

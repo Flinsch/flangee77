@@ -6,8 +6,7 @@
 
 
 
-namespace dl7 {
-namespace syntax {
+namespace dl7::syntax {
 
 
 
@@ -26,7 +25,6 @@ struct SourceLocation
 
 
 
-} // namespace syntax
-} // namespace dl7
+} // namespace dl7::syntax
 
 #endif // DL7_SYNTAX_SOURCELOCATION_H

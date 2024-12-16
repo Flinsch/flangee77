@@ -39,7 +39,7 @@ TESTLABS_CASE( TEXT("DataLabs:  syntax:  GenericLexer:  tokenize") )
     terminal_symbols.add_pattern( "character", 20, R"('(?:[^'\\]|\\.)')", u8"'" );
     terminal_symbols.add_pattern( "string", 21, R"("[^"\\]*(?:\\.[^"\\]*)*")", u8"\"" );
 
-    dl7::syntax::GenericLexer lexer( terminal_symbols, {
+    dl7::syntax::GenericLexer lexer( &terminal_symbols, {
         .whitespace_handling = dl7::syntax::Lexer::WhitespaceHandling::Discard,
     } );
 

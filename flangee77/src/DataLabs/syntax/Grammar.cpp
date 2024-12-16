@@ -2,12 +2,10 @@
 
 
 
-namespace dl7 {
-namespace syntax {
+namespace dl7::syntax {
 
 
 
 
 
-} // namespace syntax
-} // namespace dl7
+} // namespace dl7::syntax

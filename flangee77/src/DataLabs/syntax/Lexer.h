@@ -12,8 +12,7 @@
 
 
 
-namespace dl7 {
-namespace syntax {
+namespace dl7::syntax {
 
 
 
@@ -30,59 +29,55 @@ public:
     struct Options
     {
         WhitespaceHandling whitespace_handling = WhitespaceHandling::Discard;
-    }; // struct Options
+    };
 
 
 
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
-public:
-    /**
-     * Explicit constructor.
-     */
+
+    Lexer() = delete;
+
     Lexer(Options options);
 
-    /**
-     * Destructor.
-     */
+    Lexer(const Lexer&) = delete;
+    Lexer& operator = (const Lexer&) = delete;
+    Lexer(Lexer&&) = delete;
+    Lexer& operator = (Lexer&&) = delete;
+
     virtual ~Lexer() = default;
 
-private:
-    /** Default constructor. */
-    Lexer() = delete;
-    /** Copy constructor. */
-    Lexer(const Lexer&) = delete;
-    /** Copy assignment operator. */
-    Lexer& operator = (const Lexer&) = delete;
-
 
 
     // #############################################################################
-    // Attributes
+    // Methods
     // #############################################################################
-private:
-    /**
-     * The options.
-     */
-    const Options _options;
 
     /**
-     * The source text.
+     * Initializes this lexer with the specified source text and resets all internal
+     * data, especially the current cursor position.
      */
-    cl7::u8string_view _source;
+    void init(cl7::u8string_view source);
 
     /**
-     * The current source location of the next character/token to be recognized.
+     * Performs a lexical analysis of the source text at the current cursor position
+     * and returns the next token after the cursor has been moved forward.
      */
-    SourceLocation _source_location;
+    Token next();
+
+    /**
+     * Initializes this lexer with the specified source text, performs a lexical
+     * analysis of it, and returns a "list" of recognized tokens.
+     */
+    std::vector<Token> tokenize(cl7::u8string_view source);
 
 
 
     // #############################################################################
     // Properties
     // #############################################################################
-public:
+
     /**
      * Returns the options.
      */
@@ -107,34 +102,12 @@ public:
 
 
 
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
-    /**
-     * Initializes this lexer with the specified source text and resets all internal
-     * data, especially the current cursor position.
-     */
-    void init(cl7::u8string_view source);
-
-    /**
-     * Performs a lexical analysis of the source text at the current cursor position
-     * and returns the next token after the cursor has been moved forward.
-     */
-    Token next();
-
-    /**
-     * Initializes this lexer with the specified source text, performs a lexical
-     * analysis of it, and returns a "list" of recognized tokens.
-     */
-    std::vector<Token> tokenize(cl7::u8string_view source);
-
-
+private:
 
     // #############################################################################
     // Prototypes
     // #############################################################################
-private:
+
     /**
      * Performs a lexical analysis of the specified source text and returns the
      * symbol ID and the lexeme of the first/next token at the very beginning.
@@ -146,7 +119,7 @@ private:
     // #############################################################################
     // Helpers
     // #############################################################################
-private:
+
     /**
      * Skips any whitespace characters and moves the cursor position forward if
      * necessary. Returns the number of whitespace characters skipped.
@@ -158,11 +131,31 @@ private:
      */
     void _advance(size_t count);
 
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    /**
+     * The options.
+     */
+    const Options _options;
+
+    /**
+     * The source text.
+     */
+    cl7::u8string_view _source;
+
+    /**
+     * The current source location of the next character/token to be recognized.
+     */
+    SourceLocation _source_location;
+
 }; // class Lexer
 
 
 
-} // namespace syntax
-} // namespace dl7
+} // namespace dl7::syntax
 
 #endif // DL7_SYNTAX_LEXER_H

@@ -6,8 +6,7 @@
 
 
 
-namespace dl7 {
-namespace syntax {
+namespace dl7::syntax {
 
 
 
@@ -24,12 +23,6 @@ public:
         cl7::u8char_type regex_delimiter = '/';
     }; // struct Config
 
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-public:
     /**
      * The meta-configuration of the grammar.
      */
@@ -39,7 +32,6 @@ public:
 
 
 
-} // namespace syntax
-} // namespace dl7
+} // namespace dl7::syntax
 
 #endif // DL7_SYNTAX_GRAMMAR_H
