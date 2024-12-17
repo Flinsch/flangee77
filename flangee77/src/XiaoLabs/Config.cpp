@@ -6,12 +6,11 @@ namespace xl7 {
 
 
 
-    /** Default constructor. */
     Config::Config()
     {
         generic.window.title = TEXT("flangee77");
-        generic.window.icon_handle = NULL;
-        generic.window.small_icon_handle = NULL;
+        generic.window.icon_handle = nullptr;
+        generic.window.small_icon_handle = nullptr;
 
         //generic.console_key = VK_OEM_5;
         generic.console_key = VK_F1;

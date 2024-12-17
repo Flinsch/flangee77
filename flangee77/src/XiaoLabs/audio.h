@@ -6,8 +6,7 @@
 
 
 
-namespace xl7 {
-namespace audio {
+namespace xl7::audio {
 
 
 
@@ -15,7 +14,6 @@ namespace audio {
 
 
 
-} // namespace audio
-} // namespace xl7
+} // namespace xl7::audio
 
 #endif // XL7_AUDIO_H

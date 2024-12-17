@@ -61,7 +61,6 @@ struct Config
 
 
 
-    /** Default constructor. */
     Config();
 
 }; // struct Config

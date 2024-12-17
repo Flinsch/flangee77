@@ -6,8 +6,7 @@
 
 
 
-namespace xl7 {
-namespace input {
+namespace xl7::input {
 
 
 
@@ -15,7 +14,6 @@ namespace input {
 
 
 
-} // namespace input
-} // namespace xl7
+} // namespace xl7::input
 
 #endif // XL7_INPUT_H

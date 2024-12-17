@@ -22,80 +22,21 @@ public:
         NotInitialized,
         FullyInitialized,
         PartiallyInitialized,
-    }; // enum class State
+    };
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Default constructor.
-     */
-    Component()
-        : _config()
-        , _state( State::NotInitialized )
-    {
-    }
-
-    /**
-     * Destructor.
-     */
-    virtual ~Component() override
-    {
-        assert( _state == State::NotInitialized );
-    }
-
-private:
-    /** Copy constructor. */
     Component(const Component&) = delete;
-    /** Copy assignment operator. */
     Component& operator = (const Component&) = delete;
-
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The "X" pre-config structure.
-     */
-    Config _config;
-
-    /**
-     * The state indicating whether the component has been initialized.
-     */
-    State _state;
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
-    /**
-     * Returns the "X" pre-config structure.
-     */
-    const Config& get_config() const { return _config; }
-
-    /**
-     * Returns the state indicating whether the component has been initialized.
-     */
-    State get_state() const { return _state; }
-
-    /**
-     * Returns the flag indicating whether the component has been fully initialized.
-     */
-    bool is_operational() const { return _state == State::FullyInitialized; }
+    Component(Component&&) = delete;
+    Component& operator = (Component&&) = delete;
 
 
 
     // #############################################################################
     // Methods
     // #############################################################################
-public:
+
     /**
      * Initializes the component.
      */
@@ -103,16 +44,16 @@ public:
     {
         _config = config;
 
-        if ( _state != State::NotInitialized )
+        if (_state != State::NotInitialized)
         {
-            if ( !shutdown() )
+            if (!shutdown())
                 return false;
         }
 
-        assert( _state == State::NotInitialized );
+        assert(_state == State::NotInitialized);
 
         _state = State::PartiallyInitialized;
-        if ( _init() )
+        if (_init())
             _state = State::FullyInitialized;
 
         return is_operational();
@@ -133,26 +74,50 @@ public:
 
 
     // #############################################################################
-    // Singleton Implementations
+    // Properties
     // #############################################################################
-private:
+
     /**
-     * This is called just before the singleton object is destroyed.
-     * If the singleton object has cleanup functions that are virtual and therefore
-     * cannot be called from the destructor, then they should be called here.
+     * Returns the "X" pre-config structure.
      */
-    virtual void _before_destroy() final
+    const Config& get_config() const { return _config; }
+
+    /**
+     * Returns the state indicating whether the component has been initialized.
+     */
+    State get_state() const { return _state; }
+
+    /**
+     * Returns the flag indicating whether the component has been fully initialized.
+     */
+    bool is_operational() const { return _state == State::FullyInitialized; }
+
+
+
+protected:
+
+    // #############################################################################
+    // Construction / Destruction
+    // #############################################################################
+
+    Component()
+        : _state(State::NotInitialized)
     {
-        if ( _state != State::NotInitialized )
-            shutdown();
+    }
+
+    ~Component() override
+    {
+        assert(_state == State::NotInitialized);
     }
 
 
 
+private:
+
     // #############################################################################
     // Prototypes
     // #############################################################################
-private:
+
     /**
      * Initializes the component.
      */
@@ -162,6 +127,39 @@ private:
      * De-initializes the component.
      */
     virtual bool _shutdown() = 0;
+
+
+
+    // #############################################################################
+    // Singleton Implementations
+    // #############################################################################
+
+    /**
+     * This is called just before the singleton object is destroyed.
+     * If the singleton object has cleanup functions that are virtual and therefore
+     * cannot be called from the destructor, then they should be called here.
+     */
+    void _before_destroy() final
+    {
+        if (_state != State::NotInitialized)
+            shutdown();
+    }
+
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    /**
+     * The "X" pre-config structure.
+     */
+    Config _config;
+
+    /**
+     * The state indicating whether the component has been initialized.
+     */
+    State _state;
 
 }; // class Component
 

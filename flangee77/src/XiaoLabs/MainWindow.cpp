@@ -10,27 +10,6 @@ namespace xl7 {
 
 
     // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Default constructor.
-     */
-    MainWindow::MainWindow()
-        : _handle( NULL )
-        , _display_mode( DisplayMode::Unknown )
-        , _width( 0 )
-        , _height( 0 )
-        , _title( TEXT("flangee77") )
-        , _icon_handle( NULL )
-        , _small_icon_handle( NULL )
-        , _active( false )
-    {
-    }
-
-
-
-    // #############################################################################
     // Methods
     // #############################################################################
 
@@ -42,11 +21,11 @@ namespace xl7 {
     {
         // Show the window and remember
         // previous visibility state.
-        bool visible_before = ::ShowWindow( _handle, SW_SHOW ) != 0;
+        bool visible_before = ::ShowWindow(_handle, SW_SHOW) != 0;
 
         // Update the client area of the window.
-        if ( !::UpdateWindow( _handle ) )
-            LOG_ERROR( cl7::errors::system_result( ::GetLastError(), TEXT("::UpdateWindow") ) );
+        if (!::UpdateWindow(_handle))
+            LOG_ERROR(cl7::errors::system_result(::GetLastError(), TEXT("::UpdateWindow")));
 
         return visible_before;
     }
@@ -59,7 +38,7 @@ namespace xl7 {
     {
         // Hide the window and remember
         // previous visibility state.
-        bool visible_before = ::ShowWindow( _handle, SW_HIDE ) != 0;
+        bool visible_before = ::ShowWindow(_handle, SW_HIDE) != 0;
 
         return visible_before;
     }
@@ -71,7 +50,7 @@ namespace xl7 {
     {
         // Send WM_CLOSE to the window. The window will
         // be destroyed from the window callback.
-        ::SendMessage( _handle, WM_CLOSE, 0, 0 );
+        ::SendMessage(_handle, WM_CLOSE, 0, 0);
 
         return true;
     }
@@ -83,25 +62,46 @@ namespace xl7 {
      */
     std::pair<bool, int> MainWindow::process_window_messages()
     {
-        std::pair<bool, int> quit_flag_and_exit_code{ false, 0 };
+        std::pair<bool, int> quit_flag_and_exit_code{false, 0};
 
         MSG msg;
 
-        while ( ::PeekMessage( &msg, NULL, 0, 0, PM_REMOVE ) )
+        while (::PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
-            if ( msg.message == WM_QUIT )
+            if (msg.message == WM_QUIT)
                 break;
 
-            ::TranslateMessage( &msg );
-            ::DispatchMessage( &msg );
+            ::TranslateMessage(&msg);
+            ::DispatchMessage(&msg);
         } // while ...
 
         // Check for WM_QUIT message and, if present,
         // set the quit flag and the exit code.
-        if ( msg.message == WM_QUIT )
-            quit_flag_and_exit_code = { true, static_cast<int>( msg.wParam ) };
+        if (msg.message == WM_QUIT)
+            quit_flag_and_exit_code = {true, static_cast<int>(msg.wParam)};
 
         return quit_flag_and_exit_code;
+    }
+
+
+
+    // #############################################################################
+    // Construction / Destruction
+    // #############################################################################
+
+    /**
+     * Default constructor.
+     */
+    MainWindow::MainWindow()
+        : _handle(nullptr)
+        , _display_mode(DisplayMode::Unknown)
+        , _width(0)
+        , _height(0)
+        , _title(TEXT("flangee77"))
+        , _icon_handle(nullptr)
+        , _small_icon_handle(nullptr)
+        , _active(false)
+    {
     }
 
 
@@ -115,19 +115,19 @@ namespace xl7 {
      */
     bool MainWindow::_init()
     {
-        if ( !_register_window_class() )
+        if (!_register_window_class())
         {
-            LOG_ERROR( TEXT("The window class for the flangee77 main window could not be registered.") );
+            LOG_ERROR(TEXT("The window class for the flangee77 main window could not be registered."));
             return false;
         }
 
-        if ( !_create_window() )
+        if (!_create_window())
         {
-            LOG_ERROR( TEXT("The flangee77 main window could not be created.") );
+            LOG_ERROR(TEXT("The flangee77 main window could not be created."));
             return false;
         }
 
-        LOG_SUCCESS( TEXT("The flangee77 main window has been successfully initialized.") );
+        LOG_SUCCESS(TEXT("The flangee77 main window has been successfully initialized."));
         return true;
     }
 
@@ -136,12 +136,12 @@ namespace xl7 {
      */
     bool MainWindow::_shutdown()
     {
-        if ( ::IsWindow( _handle ) )
+        if (::IsWindow(_handle))
             _destroy_window();
 
         _unregister_window_class();
 
-        LOG_SUCCESS( TEXT("The flangee77 main window has been closed and destroyed.") );
+        LOG_SUCCESS(TEXT("The flangee77 main window has been closed and destroyed."));
         return true;
     }
 
@@ -158,8 +158,8 @@ namespace xl7 {
     {
         // Determine the handles
         // of the desired icons.
-        _icon_handle = NULL;
-        _small_icon_handle = NULL;
+        _icon_handle = nullptr;
+        _small_icon_handle = nullptr;
 
         // Fill the data structure.
         WNDCLASSEX wnd_class;
@@ -168,18 +168,18 @@ namespace xl7 {
         wnd_class.lpfnWndProc = wnd_proc;
         wnd_class.cbClsExtra = 0;
         wnd_class.cbWndExtra = 0;
-        wnd_class.hInstance = ::GetModuleHandle( NULL );
+        wnd_class.hInstance = ::GetModuleHandle(nullptr);
         wnd_class.hIcon = _icon_handle;
-        wnd_class.hCursor = NULL;
-        wnd_class.hbrBackground = NULL;
-        wnd_class.lpszMenuName = NULL;
+        wnd_class.hCursor = nullptr;
+        wnd_class.hbrBackground = nullptr;
+        wnd_class.lpszMenuName = nullptr;
         wnd_class.lpszClassName = TEXT("flangee77_window_class");
         wnd_class.hIconSm = _small_icon_handle;
 
         // Register the window class.
-        if ( !RegisterClassEx( &wnd_class ) )
+        if (!RegisterClassEx(&wnd_class))
         {
-            LOG_ERROR( cl7::errors::system_result( ::GetLastError(), TEXT("::RegisterClassEx") ) );
+            LOG_ERROR(cl7::errors::system_result(::GetLastError(), TEXT("::RegisterClassEx")));
             return false;
         }
 
@@ -192,13 +192,13 @@ namespace xl7 {
     bool MainWindow::_create_window()
     {
         // Fetch the desktop resolution...
-        const int screen_width = ::GetSystemMetrics( SM_CXSCREEN );
-        const int screen_height = ::GetSystemMetrics( SM_CYSCREEN );
+        const int screen_width = ::GetSystemMetrics(SM_CXSCREEN);
+        const int screen_height = ::GetSystemMetrics(SM_CYSCREEN);
 
         // ...and the desired window size.
-        int width = static_cast<int>( get_config().video.display_mode.width );
-        int height = static_cast<int>( get_config().video.display_mode.height );
-        if ( width <= 0 || height <= 0 )
+        int width = static_cast<int>(get_config().video.display_mode.width);
+        int height = static_cast<int>(get_config().video.display_mode.height);
+        if (width <= 0 || height <= 0)
         {
             // If no legal size has been specified,
             // take the desktop size as default.
@@ -213,15 +213,16 @@ namespace xl7 {
         // depending on the display mode.
         DisplayMode display_mode = DisplayMode::Unknown;
         DWORD style;
-        int x, y;
-        if ( get_config().video.display_mode.fullscreen )
+        int x;
+        int y;
+        if (get_config().video.display_mode.fullscreen)
         {
             // Fullscreen mode
             display_mode = DisplayMode::Fullscreen;
             style = WS_POPUP | WS_MAXIMIZE;
             x = y = 0;
         }
-        else if ( width == screen_width && height == screen_height )
+        else if (width == screen_width && height == screen_height)
         {
             // Borderless mode
             display_mode = DisplayMode::Borderless;
@@ -247,24 +248,24 @@ namespace xl7 {
             y,                              // Y
             width,                          // nWidth
             height,                         // nHeight
-            NULL,                           // hWndParent
-            NULL,                           // hMenu
-            ::GetModuleHandle( NULL ),      // hInstance
-            NULL );                         // lpParam
+            nullptr,                        // hWndParent
+            nullptr,                        // hMenu
+            ::GetModuleHandle(nullptr),     // hInstance
+            nullptr);                       // lpParam
 
-        if ( !_handle )
+        if (!_handle)
         {
-            LOG_ERROR( cl7::errors::system_result( ::GetLastError(), TEXT("::CreateWindowEx") ) );
+            LOG_ERROR(cl7::errors::system_result(::GetLastError(), TEXT("::CreateWindowEx")));
             return false;
         }
 
         _display_mode = display_mode;
-        _width = static_cast<unsigned>( width );
-        _height = static_cast<unsigned>( height );
+        _width = static_cast<unsigned>(width);
+        _height = static_cast<unsigned>(height);
 
         // Hide the hardware cursor?
-        if ( !get_config().generic.use_hardware_cursor )
-            ::ShowCursor( FALSE );
+        if (!get_config().generic.use_hardware_cursor)
+            ::ShowCursor(FALSE);
 
         return true;
     }
@@ -276,9 +277,9 @@ namespace xl7 {
     {
         // The window will be destroyed in
         // the window callback for WM_CLOSE.
-        if ( !::CloseWindow( _handle ) )
+        if (!::CloseWindow(_handle))
         {
-            LOG_WARNING( cl7::errors::system_result( ::GetLastError(), TEXT("::CloseWindow") ) );
+            LOG_WARNING(cl7::errors::system_result(::GetLastError(), TEXT("::CloseWindow")));
             return false;
         }
 
@@ -290,9 +291,9 @@ namespace xl7 {
      */
     bool MainWindow::_unregister_window_class()
     {
-        if ( !::UnregisterClass( TEXT("flangee77_window_class"), ::GetModuleHandle( NULL ) ) )
+        if (!::UnregisterClass(TEXT("flangee77_window_class"), ::GetModuleHandle(nullptr)))
         {
-            LOG_WARNING( cl7::errors::system_result( ::GetLastError(), TEXT("::UnregisterClass") ) );
+            LOG_WARNING(cl7::errors::system_result(::GetLastError(), TEXT("::UnregisterClass")));
             return false;
         }
 
@@ -314,41 +315,41 @@ namespace xl7 {
         WPARAM wparam,
         LPARAM lparam)
     {
-        switch ( msg )
+        switch (msg)
         {
 
         case WM_ACTIVATE:
         {
-            MainWindow::instance()._active = LOWORD( wparam ) != WA_INACTIVE;
+            MainWindow::instance()._active = LOWORD(wparam) != WA_INACTIVE;
             break;
         }
 
         case WM_CLOSE:
         {
-            ::DestroyWindow( hwnd );
+            ::DestroyWindow(hwnd);
             break;
         }
 
         case WM_DESTROY:
         {
-            ::PostQuitMessage( 0 );
+            ::PostQuitMessage(0);
             break;
         }
 
         case WM_KEYDOWN:
         case WM_SYSKEYDOWN:
         {
-            if ( MainWindow::instance()._active && wparam == MainWindow::instance().get_config().generic.quit_key )
-                ::PostQuitMessage( 0 );
+            if (MainWindow::instance()._active && wparam == MainWindow::instance().get_config().generic.quit_key)
+                ::PostQuitMessage(0);
             break;
         }
 
         default:
         {
-            return ::DefWindowProc( hwnd, msg, wparam, lparam );
+            return ::DefWindowProc(hwnd, msg, wparam, lparam);
         }
 
-        } // switch ( msg )
+        } // switch (msg)
 
         return 0;
     }

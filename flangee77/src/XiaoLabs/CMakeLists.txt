@@ -2,7 +2,6 @@
 target_sources(flangee77
     PRIVATE
     audio.h
-    Component.cpp
     Component.h
     Config.cpp
     Config.h
