@@ -18,6 +18,7 @@
 namespace pl7 {
 
 
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
@@ -25,18 +26,8 @@ namespace pl7 {
     /**
      * Explicit constructor.
      */
-    Application::Application(int argc, cl7::char_type* argv[])
-        : _argument_bag( argc, argv )
-        , _exit_code( 0 )
-        , _quit_flag( false )
-        , _restart_flag( false )
-    {
-    }
-
-    /**
-     * Destructor.
-     */
-    Application::~Application()
+    Application::Application(ArgumentBag argument_bag)
+        : _argument_bag(std::move(argument_bag))
     {
     }
 
@@ -55,7 +46,7 @@ namespace pl7 {
     {
         bool ok = true;
 
-        while ( ok )
+        while (ok)
         {
             _quit_flag = false;
             _restart_flag = false;
@@ -64,10 +55,10 @@ namespace pl7 {
             ok = ok && _run_loop();
             ok = _shutdown() && ok;
 
-            if ( ok && _restart_flag )
+            if (ok && _restart_flag)
                 continue;
             break;
-        } // while ( ok )
+        } // while (ok)
 
         return ok;
     }
@@ -86,50 +77,50 @@ namespace pl7 {
         // Create/replace log handler.
         //auto log_handler = std::make_shared<cl7::logging::FileLogHandler>();
         auto log_handler = std::make_shared<cl7::logging::HtmlLogHandler>();
-        cl7::logging::StandardLogger::instance().clear_log_handlers().add_log_handler( log_handler );
+        cl7::logging::StandardLogger::instance().clear_log_handlers().add_log_handler(log_handler);
 
         xl7::Config config;
 
         // Perform "custom" pre-initialization.
-        if ( !_pre_init_impl( config ) )
+        if (!_pre_init_impl(config))
             return false;
 
         // Print out CPU identification/information.
-        LOG_TYPE( TEXT("CPU identification/information:"), cl7::logging::LogType::Caption );
+        LOG_TYPE(TEXT("CPU identification/information:"), cl7::logging::LogType::Caption);
         cl7::system::CPUID cpuid;
-        if ( !cpuid.capture() )
-            LOG_WARNING( TEXT("Unable to retrieve CPU identification/information.") );
-        LOG_TYPE( TEXT("Vendor name\t") + cl7::strings::from_ascii( cpuid.vendor_name ), cl7::logging::LogType::Item );
-        LOG_TYPE( TEXT("Processor name\t") + cl7::strings::from_ascii( cpuid.processor_name ), cl7::logging::LogType::Item );
-        if ( std::endian::native == std::endian::little )
-            LOG_TYPE( TEXT("Endianness\tlittle endian"), cl7::logging::LogType::Item );
-        if ( std::endian::native == std::endian::big )
-            LOG_TYPE( TEXT("Endianness\tbig endian"), cl7::logging::LogType::Item );
-        if ( cpuid.bitness && cpuid.bitness != sizeof(size_t) * 8 )
-            LOG_TYPE( TEXT("Bitness\t") + cl7::to_string( cpuid.bitness ) + TEXT("-bit") + TEXT(" (application: ") + cl7::to_string( sizeof(size_t) * 8 ) + TEXT("-bit") + TEXT(")"), cl7::logging::LogType::Item );
+        if (!cpuid.capture())
+            LOG_WARNING(TEXT("Unable to retrieve CPU identification/information."));
+        LOG_TYPE(TEXT("Vendor name\t") + cl7::strings::from_ascii(cpuid.vendor_name), cl7::logging::LogType::Item);
+        LOG_TYPE(TEXT("Processor name\t") + cl7::strings::from_ascii(cpuid.processor_name), cl7::logging::LogType::Item);
+        if (std::endian::native == std::endian::little)
+            LOG_TYPE(TEXT("Endianness\tlittle endian"), cl7::logging::LogType::Item);
+        if (std::endian::native == std::endian::big)
+            LOG_TYPE(TEXT("Endianness\tbig endian"), cl7::logging::LogType::Item);
+        if (cpuid.bitness && cpuid.bitness != sizeof(size_t) * 8)
+            LOG_TYPE(TEXT("Bitness\t") + cl7::to_string(cpuid.bitness) + TEXT("-bit") + TEXT(" (application: ") + cl7::to_string(sizeof(size_t) * 8) + TEXT("-bit") + TEXT(")"), cl7::logging::LogType::Item);
         else
-            LOG_TYPE( TEXT("Bitness\t") + (cpuid.bitness ? cl7::to_string( cpuid.bitness ) + TEXT("-bit") : cl7::string( TEXT("unknown") )), cl7::logging::LogType::Item );
-        LOG_TYPE( TEXT("Frequency\t") + (cpuid.frequency ? cl7::to_string( cpuid.frequency ) + TEXT(" MHz") : cl7::string( TEXT("unknown") )), cl7::logging::LogType::Item );
-        LOG_TYPE( TEXT("Concurrency\t") + (cpuid.hardware_concurrency ? cl7::to_string( cpuid.hardware_concurrency ) + TEXT(" thread contexts") : cl7::string( TEXT("unknown") )), cl7::logging::LogType::Item );
+            LOG_TYPE(TEXT("Bitness\t") + (cpuid.bitness ? cl7::to_string(cpuid.bitness) + TEXT("-bit") : cl7::string(TEXT("unknown"))), cl7::logging::LogType::Item);
+        LOG_TYPE(TEXT("Frequency\t") + (cpuid.frequency ? cl7::to_string(cpuid.frequency) + TEXT(" MHz") : cl7::string(TEXT("unknown"))), cl7::logging::LogType::Item);
+        LOG_TYPE(TEXT("Concurrency\t") + (cpuid.hardware_concurrency ? cl7::to_string(cpuid.hardware_concurrency) + TEXT(" thread contexts") : cl7::string(TEXT("unknown"))), cl7::logging::LogType::Item);
 
         // Print out the system memory status.
-        LOG_TYPE( TEXT("System memory status:"), cl7::logging::LogType::Caption );
+        LOG_TYPE(TEXT("System memory status:"), cl7::logging::LogType::Caption);
         cl7::system::MemoryStatus memory_status;
-        if ( !memory_status.capture() )
-            LOG_WARNING( TEXT("Unable to retrieve system memory status.") );
-        LOG_TYPE( TEXT("Total physical memory\t") + cl7::memory::stringify_byte_amount_si( memory_status.total_physical_memory ), cl7::logging::LogType::Item );
-        LOG_TYPE( TEXT("Available physical memory\t") + cl7::memory::stringify_byte_amount_si( memory_status.available_physical_memory ), cl7::logging::LogType::Item );
+        if (!memory_status.capture())
+            LOG_WARNING(TEXT("Unable to retrieve system memory status."));
+        LOG_TYPE(TEXT("Total physical memory\t") + cl7::memory::stringify_byte_amount_si(memory_status.total_physical_memory), cl7::logging::LogType::Item);
+        LOG_TYPE(TEXT("Available physical memory\t") + cl7::memory::stringify_byte_amount_si(memory_status.available_physical_memory), cl7::logging::LogType::Item);
 
         // 
-        if ( sizeof(size_t) == 4 )
-            LOG_TYPE( TEXT("Apologies for sticking to 32-bit and thus limiting usable memory. But this software doesn't need more either. \U0001f618"), cl7::logging::LogType::Comment );
+        if (sizeof(size_t) == 4)
+            LOG_TYPE(TEXT("Apologies for sticking to 32-bit and thus limiting usable memory. But this software doesn't need more either. \U0001f618"), cl7::logging::LogType::Comment);
 
         // Create the main window.
-        if ( !xl7::main_window().init( config ) )
+        if (!xl7::main_window().init(config))
             return false;
 
         // Initialize the graphics system.
-        if ( !xl7::graphics::graphics_system().init( config ) )
+        if (!xl7::graphics::graphics_system().init(config))
             return false;
 
         // Show the main window.
@@ -145,8 +136,8 @@ namespace pl7 {
     bool Application::_shutdown()
     {
         // "Dump" the runtime performance profile.
-        LOG_TYPE( TEXT("Runtime performance profile:"), cl7::logging::LogType::Caption );
-        cl7::profiling::StandardRegistry::instance().dump( &cl7::logging::StandardLogger::instance() );
+        LOG_TYPE(TEXT("Runtime performance profile:"), cl7::logging::LogType::Caption);
+        cl7::profiling::StandardRegistry::instance().dump(&cl7::logging::StandardLogger::instance());
 
         // Perform "custom" shutdown.
         bool ok = _shutdown_impl();
@@ -166,33 +157,33 @@ namespace pl7 {
      */
     bool Application::_run_loop()
     {
-        while ( true )
+        while (true)
         {
-            const std::pair<bool, int> quit_flag_and_exit_code = xl7::MainWindow::instance().process_window_messages();
+            const auto [quit_flag, exit_code] = xl7::MainWindow::instance().process_window_messages();
 
-            if ( quit_flag_and_exit_code.first )
+            if (quit_flag)
             {
                 _quit_flag = true;
-                _exit_code = quit_flag_and_exit_code.second;
+                _exit_code = exit_code;
             }
 
-            if ( _quit_flag || _restart_flag )
+            if (_quit_flag || _restart_flag)
                 break;
 
             
 
             // Pause the application logic while the
             // rendering device is lost and not reset.
-            if ( xl7::graphics::rendering_device()->check_device_lost() )
+            if (xl7::graphics::rendering_device()->check_device_lost())
             {
-                if ( !xl7::graphics::rendering_device()->handle_device_lost() )
+                if (!xl7::graphics::rendering_device()->handle_device_lost())
                     continue;
             }
 
             
 
             // Start the stopwatch.
-            cl7::profiling::Stopwatch stopwatch{ true };
+            cl7::profiling::Stopwatch stopwatch{true};
 
             // Perform application loop iteration.
             _loop();
@@ -201,8 +192,8 @@ namespace pl7 {
             stopwatch.stop();
 
             // Update the profiler.
-            cl7::profiling::StandardRegistry::instance().end_frame_and_update_stats( stopwatch.calculate_elapsed_usecs() );
-        } // while ( true )
+            cl7::profiling::StandardRegistry::instance().end_frame_and_update_stats(stopwatch.calculate_elapsed_usecs());
+        } // while (true)
 
         return true;
     }
@@ -216,7 +207,7 @@ namespace pl7 {
      */
     void Application::_loop()
     {
-        cl7::profiling::Profiler profiler( "Application::_loop" );
+        cl7::profiling::Profiler profiler("Application::_loop");
 
         // We (first) render the complete scene (without "flipping" the swap chain),
         // (second) perform CPU calculations, and (third) present the scene (now by
@@ -235,7 +226,7 @@ namespace pl7 {
      */
     void Application::_before_render()
     {
-        cl7::profiling::Profiler profiler( "Application::_before_render" );
+        cl7::profiling::Profiler profiler("Application::_before_render");
 
         // Update resources etc.?
 
@@ -250,7 +241,7 @@ namespace pl7 {
      */
     void Application::_render()
     {
-        cl7::profiling::Profiler profiler( "Application::_render" );
+        cl7::profiling::Profiler profiler("Application::_render");
 
         _render_impl();
 
@@ -262,7 +253,7 @@ namespace pl7 {
      */
     void Application::_after_render()
     {
-        cl7::profiling::Profiler profiler( "Application::_after_render" );
+        cl7::profiling::Profiler profiler("Application::_after_render");
 
         _after_render_impl();
 
@@ -272,9 +263,9 @@ namespace pl7 {
     /**
      * Presents the rendered scene by "flipping" the swap chain.
      */
-    void Application::_present()
+    void Application::_present() // NOLINT(*-convert-member-functions-to-static)
     {
-        cl7::profiling::Profiler profiler( "Application::_present" );
+        cl7::profiling::Profiler profiler("Application::_present");
 
         xl7::graphics::rendering_device()->present();
     }
@@ -284,7 +275,7 @@ namespace pl7 {
      */
     void Application::_move()
     {
-        cl7::profiling::Profiler profiler( "Application::_move" );
+        cl7::profiling::Profiler profiler("Application::_move");
 
         // Update input devices etc.?
 

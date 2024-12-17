@@ -31,7 +31,7 @@ namespace helloworld {
      * Explicit constructor.
      */
     MyApp::MyApp(int argc, cl7::char_type* argv[])
-        : pl7::Application( argc, argv )
+        : pl7::Application( { argc, argv } )
     {
     }
 
