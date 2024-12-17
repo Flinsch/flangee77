@@ -13,7 +13,6 @@ namespace tl7 {
 struct Result
 {
 
-public:
     enum class OriginType
     {
         Unknown,
@@ -22,33 +21,16 @@ public:
         Presumption,
         Assertion,
         Exception,
-    }; // enum class OriginType
+    };
 
     enum class Outcome
     {
         Failure = 0,
         Success = -1,
-    }; // enum class Outcome
-
-    static Outcome make_outcome(bool success) { return success ? Outcome::Success : Outcome::Failure; }
+    };
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-public:
-    /**
-     * Default constructor.
-     */
-    Result();
-
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-public:
     /**
      * The test result's origin type.
      */
@@ -88,12 +70,14 @@ public:
 
 
 
-    // #############################################################################
-    // Derived Properties
-    // #############################################################################
-public:
+    Result();
+
+
+
     bool is_success() const { return outcome == Outcome::Success; }
     bool is_failure() const { return outcome == Outcome::Failure; }
+
+    static Outcome make_outcome(bool success) { return success ? Outcome::Success : Outcome::Failure; }
 
 }; // struct Result
 

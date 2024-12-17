@@ -41,6 +41,7 @@ Checks: >
 
   -readability-avoid-unconditional-preprocessor-if,
   -readability-braces-around-statements,
+  -readability-enum-initial-value,
   -readability-function-cognitive-complexity,
   -readability-identifier-length,
   -readability-magic-numbers,

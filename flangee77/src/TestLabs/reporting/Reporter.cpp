@@ -4,14 +4,13 @@
 
 
 
-namespace tl7 {
-namespace reporting {
+namespace tl7::reporting {
 
 
 
     auto Reporter::ListenerEntry::operator <=> (const ListenerEntry& rhs) const
     {
-        if ( auto c = -priority <=> -rhs.priority; c != 0 )
+        if (auto c = -priority <=> -rhs.priority; c != 0)
             return c;
         return consecutive_number <=> rhs.consecutive_number;
     }
@@ -34,22 +33,22 @@ namespace reporting {
      */
     void Reporter::add_listener(signed priority, reporting::IListener* listener)
     {
-        remove_listener( listener );
+        remove_listener(listener);
 
-        ListenerEntry entry{ priority, consecutive_number++, listener };
-        auto it = std::upper_bound( _listeners.begin(), _listeners.end(), entry );
-        _listeners.insert( it, entry );
+        ListenerEntry entry{.priority=priority, .consecutive_number=consecutive_number++, .listener=listener};
+        auto it = std::ranges::upper_bound(_listeners, entry, std::less<>());
+        _listeners.insert(it, entry);
     }
 
     /**
      * Removes the specified listener.
      */
-    void Reporter::remove_listener(reporting::IListener* listener)
+    void Reporter::remove_listener(const reporting::IListener* listener)
     {
-        for ( auto it = _listeners.begin(); it != _listeners.end(); )
+        for (auto it = _listeners.begin(); it != _listeners.end(); )
         {
-            if ( it->listener == listener )
-                it = _listeners.erase( it );
+            if (it->listener == listener)
+                it = _listeners.erase(it);
             else
                 ++it;
         } // for each listener
@@ -68,9 +67,9 @@ namespace reporting {
      */
     void Reporter::post_start_run(size_t count)
     {
-        for ( const auto& entry : _listeners )
+        for (const auto& entry : _listeners)
         {
-            entry.listener->on_start_run( count );
+            entry.listener->on_start_run(count);
         } // for each listener
     }
 
@@ -79,9 +78,9 @@ namespace reporting {
      */
     void Reporter::post_start_case(const Meta& meta)
     {
-        for ( const auto& entry : _listeners )
+        for (const auto& entry : _listeners)
         {
-            entry.listener->on_start_case( meta );
+            entry.listener->on_start_case(meta);
         } // for each listener
     }
 
@@ -90,9 +89,9 @@ namespace reporting {
      */
     void Reporter::post_result(const Result& result)
     {
-        for ( const auto& entry : _listeners )
+        for (const auto& entry : _listeners)
         {
-            entry.listener->on_result( result );
+            entry.listener->on_result(result);
         } // for each listener
     }
 
@@ -102,9 +101,9 @@ namespace reporting {
      */
     void Reporter::post_end_case(const Stats& stats)
     {
-        for ( const auto& entry : _listeners )
+        for (const auto& entry : _listeners)
         {
-            entry.listener->on_end_case( stats );
+            entry.listener->on_end_case(stats);
         } // for each listener
     }
 
@@ -113,13 +112,12 @@ namespace reporting {
      */
     void Reporter::post_end_run(const Stats& stats)
     {
-        for ( const auto& entry : _listeners )
+        for (const auto& entry : _listeners)
         {
-            entry.listener->on_end_run( stats );
+            entry.listener->on_end_run(stats);
         } // for each listener
     }
 
 
 
-} // namespace reporting
-} // namespace tl7
+} // namespace tl7::reporting

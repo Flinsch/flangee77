@@ -13,57 +13,34 @@ namespace tl7 {
 class SubcaseBranchSwitch
 {
 
+public:
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
-public:
-    /**
-     * Explicit constructor.
-     */
+
+    SubcaseBranchSwitch() = delete;
+
     SubcaseBranchSwitch(Context& ctx, cl7::string_view name, const cl7::char_type* file_path, unsigned line_number, signed iteration_number = -1);
 
-    /**
-     * Destructor.
-     */
+    SubcaseBranchSwitch(const SubcaseBranchSwitch&) = delete;
+    SubcaseBranchSwitch& operator = (const SubcaseBranchSwitch&) = delete;
+    SubcaseBranchSwitch(SubcaseBranchSwitch&&) = delete;
+    SubcaseBranchSwitch& operator = (SubcaseBranchSwitch&&) = delete;
+
     ~SubcaseBranchSwitch();
 
-private:
-    /** Default constructor. */
-    SubcaseBranchSwitch() = delete;
-    /** Copy constructor. */
-    SubcaseBranchSwitch(const SubcaseBranchSwitch&) = delete;
-    /** Copy assignment operator. */
-    SubcaseBranchSwitch& operator = (const SubcaseBranchSwitch&) = delete;
-
 
 
     // #############################################################################
-    // Attributes
+    // Methods
     // #############################################################################
-private:
-    /**
-     * The current context within which the subcase is executed.
-     */
-    Context& _ctx;
 
     /**
-     * The flag indicating whether the corresponding subcase branch has been entered
-     * or not.
+     * Returns the meta description of where the subtest has been defined and registered.
      */
-    bool _has_been_entered;
+    const Meta& meta() const { return _meta; }
 
-public:
-    /**
-     * The meta description of where the subtest has been defined and registered.
-     */
-    const Meta meta;
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
     /**
      * Returns the flag indicating whether the corresponding subcase branch has
      * been entered or not.
@@ -75,12 +52,36 @@ public:
     // #############################################################################
     // Boolean Conversion Operator
     // #############################################################################
-public:
+
     /**
      * Returns the flag indicating whether the corresponding subcase branch has
      * been entered or not.
      */
     operator bool () const { return _has_been_entered; }
+
+
+
+private:
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    /**
+     * The meta description of where the subtest has been defined and registered.
+     */
+    const Meta _meta;
+
+    /**
+     * The current context within which the subcase is executed.
+     */
+    Context& _ctx;
+
+    /**
+     * The flag indicating whether the corresponding subcase branch has been entered
+     * or not.
+     */
+    bool _has_been_entered;
 
 }; // class SubcaseBranchSwitch
 

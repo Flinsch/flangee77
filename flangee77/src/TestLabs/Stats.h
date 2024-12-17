@@ -22,11 +22,11 @@ struct Stats
         /** The number that failed. */
         unsigned fail_count = 0;
 
-        Group operator + (const Group& rhs) const;
-        Group& operator += (const Group& rhs);
-
         void reset();
         void update(bool success);
+
+        Group operator + (const Group& rhs) const;
+        Group& operator += (const Group& rhs);
     };
 
     /** The test cases executed. */
@@ -45,13 +45,13 @@ struct Stats
     /** The execution time in milliseconds. */
     unsigned execution_time_msecs = 0;
 
-    Stats operator + (const Stats& rhs) const;
-    Stats& operator += (const Stats& rhs);
-
     void reset();
     void update(const Result& result);
 
     unsigned interim_fail_count() const;
+
+    Stats operator + (const Stats& rhs) const;
+    Stats& operator += (const Stats& rhs);
 
 }; // struct Stats
 

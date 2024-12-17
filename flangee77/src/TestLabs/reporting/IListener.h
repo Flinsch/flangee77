@@ -8,8 +8,7 @@
 
 
 
-namespace tl7 {
-namespace reporting {
+namespace tl7::reporting {
 
 
 
@@ -18,10 +17,6 @@ class IListener
 public:
     virtual ~IListener() = default;
 
-    // #############################################################################
-    // Prototypes
-    // #############################################################################
-public:
     /**
      * Handles the start of a new test run, providing the total number of test cases
      * (multiple executions/branches due to subcases etc. are not taken into account
@@ -53,7 +48,6 @@ public:
 
 
 
-} // namespace reporting
-} // namespace tl7
+} // namespace tl7::reporting
 
 #endif // TL7_REPORTING_ILISTENER_H

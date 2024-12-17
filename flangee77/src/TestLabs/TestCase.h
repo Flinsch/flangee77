@@ -4,7 +4,6 @@
 
 #include "./Meta.h"
 #include "./Context.h"
-#include "./Stats.h"
 
 #include <CoreLabs/string.h>
 
@@ -15,7 +14,7 @@ namespace tl7 {
 
 
 class TestCase;
-typedef std::unique_ptr<TestCase> TestCasePtr;
+using TestCasePtr = std::unique_ptr<TestCase>;
 
 
 
@@ -23,66 +22,58 @@ class TestCase
 {
 
 public:
-    typedef void(*FuncType)(Context& ctx);
+    using FuncType = std::add_pointer_t<void (Context &)>;
 
 
 
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
-public:
-    /**
-     * Explicit constructor.
-     */
+
+    TestCase() = delete;
+
     TestCase(FuncType func, cl7::string_view name, const cl7::char_type* file_path, unsigned line_number);
 
-    /**
-     * Destructor.
-     */
-    ~TestCase() = default;
-
-private:
-    /** Default constructor. */
-    TestCase() = delete;
-    /** Copy constructor. */
     TestCase(const TestCase&) = delete;
-    /** Copy assignment operator. */
     TestCase& operator = (const TestCase&) = delete;
+    TestCase(TestCase&&) = delete;
+    TestCase& operator = (TestCase&&) = delete;
 
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The function to be called running the test case.
-     */
-    const FuncType _func;
-
-public:
-    /**
-     * The meta description of where the test case has been defined and registered.
-     */
-    const Meta meta;
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
+    ~TestCase() = default;
 
 
 
     // #############################################################################
     // Methods
     // #############################################################################
-public:
+
+    /**
+     * The meta description of where the test case has been defined and registered.
+     */
+    const Meta& meta() const { return _meta; }
+
     /**
      * Runs the test case.
      */
     void run(Context& ctx);
+
+
+
+private:
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    /**
+     * The meta description of where the test case has been defined and registered.
+     */
+    const Meta _meta;
+
+    /**
+     * The function to be called running the test case.
+     */
+    const FuncType _func;
 
 }; // class TestCase
 

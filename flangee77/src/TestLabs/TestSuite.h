@@ -43,32 +43,18 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-private:
-    /**
-     * Default constructor.
-     */
-    TestSuite();
-
-    /**
-     * Destructor.
-     */
-    ~TestSuite();
-
-private:
-    /** Copy constructor. */
     TestSuite(const TestSuite&) = delete;
-    /** Copy assignment operator. */
     TestSuite& operator = (const TestSuite&) = delete;
+    TestSuite(TestSuite&&) = delete;
+    TestSuite& operator = (TestSuite&&) = delete;
+
 
 
 
     // #############################################################################
     // Singleton Object/Access
     // #############################################################################
-public:
+
     static TestSuite& instance()
     {
         static TestSuite _instance;
@@ -78,43 +64,9 @@ public:
 
 
     // #############################################################################
-    // Attributes
-    // #############################################################################
-public:
-    /**
-     * The settings.
-     */
-    Settings settings;
-
-private:
-    /**
-     * The registered test cases.
-     */
-    std::unique_ptr<std::vector<TestCasePtr>> _registered_test_cases;
-
-    /**
-     * The central listener object for logging test results etc. to the standard
-     * output stream.
-     */
-    std::unique_ptr<reporting::CoutLogger> _cout_logger;
-
-public:
-    /**
-     * The central reporter object for communicating test results etc.
-     */
-    reporting::Reporter reporter;
-
-    /**
-     * The aggregated statistics about tests carried out.
-     */
-    Stats stats;
-
-
-
-    // #############################################################################
     // Methods
     // #############################################################################
-public:
+
     /**
      * Registers the specified test case.
      */
@@ -128,9 +80,52 @@ public:
 
 
     // #############################################################################
+    // Properties
+    // #############################################################################
+
+    /**
+     * Returns the settings.
+     */
+    const Settings& get_settings() const { return _settings; }
+
+    /**
+     * Sets the settings.
+     */
+    void set_settings(const Settings& settings) { _settings = settings; }
+
+    /**
+     * Returns the central reporter object for communicating test results etc.
+     */
+    const reporting::Reporter& get_reporter() const { return _reporter; }
+
+    /**
+     * Returns the aggregated statistics about tests carried out.
+     */
+    const Stats& get_stats() const { return _stats; }
+
+    /**
+     * Resets the aggregated statistics about tests carried out.
+     */
+    void reset_stats() { _stats = {}; }
+
+
+
+private:
+
+    // #############################################################################
+    // Construction / Destruction
+    // #############################################################################
+
+    TestSuite();
+
+    ~TestSuite();
+
+
+
+    // #############################################################################
     // Helpers
     // #############################################################################
-private:
+
     /**
      * Runs the specified test case (and all of its branches).
      */
@@ -141,6 +136,38 @@ private:
      * exception and returns false then (true otherwise).
      */
     bool _run_test_case_branch(TestCase& test_case, Context& ctx);
+
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    /**
+     * The settings.
+     */
+    Settings _settings;
+
+    /**
+     * The registered test cases.
+     */
+    std::unique_ptr<std::vector<TestCasePtr>> _registered_test_cases;
+
+    /**
+     * The central listener object for logging test results etc. to the standard
+     * output stream.
+     */
+    std::unique_ptr<reporting::CoutLogger> _cout_logger;
+
+    /**
+     * The central reporter object for communicating test results etc.
+     */
+    reporting::Reporter _reporter;
+
+    /**
+     * The aggregated statistics about tests carried out.
+     */
+    Stats _stats;
 
 }; // class TestSuite
 

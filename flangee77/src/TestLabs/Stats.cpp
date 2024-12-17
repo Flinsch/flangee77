@@ -8,6 +8,19 @@ namespace tl7 {
 
 
 
+    void Stats::Group::reset()
+    {
+        total_count = 0;
+        pass_count = 0;
+        fail_count = 0;
+    }
+
+    void Stats::Group::update(bool success)
+    {
+        ++total_count;
+        success ? ++pass_count : ++fail_count;
+    }
+
     Stats::Group Stats::Group::operator + (const Group& rhs) const
     {
         Group that = *this;
@@ -24,20 +37,41 @@ namespace tl7 {
         return *this;
     }
 
-    void Stats::Group::reset()
+
+
+    void Stats::reset()
     {
-        total_count = 0;
-        pass_count = 0;
-        fail_count = 0;
+        ::memset(this, 0, sizeof(*this));
     }
 
-    void Stats::Group::update(bool success)
+    void Stats::update(const Result& result)
     {
-        ++total_count;
-        success ? ++pass_count : ++fail_count;
+        switch (result.origin_type)
+        {
+        case Result::OriginType::TestCase:
+            // Don't update cases, but subcases instead.
+            subcases.update(result.is_success());
+            break;
+        case Result::OriginType::Check:
+            checks.update(result.is_success());
+            break;
+        case Result::OriginType::Assertion:
+            assertions.update(result.is_success());
+            break;
+        case Result::OriginType::Exception:
+            assert(result.is_failure());
+            ++exception_count;
+            break;
+        case Result::OriginType::Presumption:
+            if (result.is_failure()) ++warning_count;
+            break;
+        }
     }
 
-
+    unsigned Stats::interim_fail_count() const
+    {
+        return checks.fail_count + assertions.fail_count + exception_count;
+    }
 
     Stats Stats::operator + (const Stats& rhs) const
     {
@@ -58,40 +92,6 @@ namespace tl7 {
         execution_time_msecs += rhs.execution_time_msecs;
 
         return *this;
-    }
-
-    void Stats::reset()
-    {
-        ::memset( this, 0, sizeof(*this) );
-    }
-
-    void Stats::update(const Result& result)
-    {
-        switch ( result.origin_type )
-        {
-        case Result::OriginType::TestCase:
-            // Don't update cases, but subcases instead.
-            subcases.update( result.is_success() );
-            break;
-        case Result::OriginType::Check:
-            checks.update( result.is_success() );
-            break;
-        case Result::OriginType::Assertion:
-            assertions.update( result.is_success() );
-            break;
-        case Result::OriginType::Exception:
-            assert( result.is_failure() );
-            ++exception_count;
-            break;
-        case Result::OriginType::Presumption:
-            if ( result.is_failure() ) ++warning_count;
-            break;
-        }
-    }
-
-    unsigned Stats::interim_fail_count() const
-    {
-        return checks.fail_count + assertions.fail_count + exception_count;
     }
 
 

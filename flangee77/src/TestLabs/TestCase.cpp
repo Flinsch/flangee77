@@ -10,12 +10,9 @@ namespace tl7 {
     // Construction / Destruction
     // #############################################################################
 
-    /**
-     * Explicit constructor.
-     */
     TestCase::TestCase(FuncType func, cl7::string_view name, const cl7::char_type* file_path, unsigned line_number)
-        : _func( func )
-        , meta{ cl7::string(name), file_path, line_number }
+        : _meta{cl7::string(name), file_path, line_number}
+        , _func(func)
     {
     }
 
@@ -30,7 +27,7 @@ namespace tl7 {
      */
     void TestCase::run(Context& ctx)
     {
-        _func( ctx );
+        _func(ctx);
     }
 
 

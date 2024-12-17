@@ -27,9 +27,9 @@ struct Signature
 
 
     Signature(const cl7::char_type* file_path, unsigned line_number, signed iteration_number = -1)
-        : file_path( file_path )
-        , line_number( line_number )
-        , iteration_number( iteration_number )
+        : file_path(file_path)
+        , line_number(line_number)
+        , iteration_number(iteration_number)
     {}
 
 

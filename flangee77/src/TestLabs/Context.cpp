@@ -12,50 +12,16 @@ namespace tl7 {
     // Construction / Destruction
     // #############################################################################
 
-    /**
-     * Explicit constructor.
-     */
     Context::Context(reporting::Reporter* reporter, const Meta* root_meta)
-        : reporter( reporter )
-        , root_meta( root_meta )
-        , subcases()
-        , stats()
+        : reporter(reporter)
+        , root_meta(root_meta)
     {
-        reporter->add_listener( 0, this );
+        reporter->add_listener(0, this);
     }
 
-    /**
-     * Destructor.
-     */
     Context::~Context()
     {
-        reporter->remove_listener( this );
-    }
-
-
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
-
-    /**
-     * Publishes the specified result by forwarding it to the reporter, with a few
-     * exceptions: In the case of a "successful presumption", nothing happens. In
-     * the case of a "failed assertion", a corresponding exception is thrown. All
-     * other cases will be passed unchanged.
-     */
-    void Context::try_post_result(const Result& result)
-    {
-        // "Successful presumption"? Do nothing.
-        if ( result.origin_type == Result::OriginType::Presumption && result.is_success() )
-            return;
-
-        // "Failed assertion"? Throw exception instead.
-        if ( result.origin_type == Result::OriginType::Assertion && result.is_failure() )
-            throw exceptions::assertion_exception( result.original_expression, result.evaluated_expression, result.result_meta.stringification, result.result_meta.file_path, result.result_meta.line_number );
-
-        // Forward all other cases.
-        reporter->post_result( result );
+        reporter->remove_listener(this);
     }
 
 
@@ -87,7 +53,7 @@ namespace tl7 {
      */
     void Context::on_result(const Result& result)
     {
-        stats.update( result );
+        stats.update(result);
     }
 
     /**
@@ -104,6 +70,32 @@ namespace tl7 {
     void Context::on_end_run(const Stats& stats)
     {
         // Nothing to do here.
+    }
+
+
+
+    // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Publishes the specified result by forwarding it to the reporter, with a few
+     * exceptions: In the case of a "successful presumption", nothing happens. In
+     * the case of a "failed assertion", a corresponding exception is thrown. All
+     * other cases will be passed unchanged.
+     */
+    void Context::try_post_result(const Result& result) const
+    {
+        // "Successful presumption"? Do nothing.
+        if (result.origin_type == Result::OriginType::Presumption && result.is_success())
+            return;
+
+        // "Failed assertion"? Throw exception instead.
+        if (result.origin_type == Result::OriginType::Assertion && result.is_failure())
+            throw exceptions::assertion_exception(result.original_expression, result.evaluated_expression, result.result_meta.stringification, result.result_meta.file_path, result.result_meta.line_number);
+
+        // Forward all other cases.
+        reporter->post_result(result);
     }
 
 

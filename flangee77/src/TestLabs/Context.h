@@ -10,47 +10,84 @@
 #include "./Result.h"
 #include "./Stats.h"
 
-#include <vector>
-#include <unordered_set>
-
 
 
 namespace tl7 {
 
 
 
-class Context
+struct Context
     : public reporting::IListener
 {
 
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
-public:
-    /**
-     * Explicit constructor.
-     */
+
+    Context() = delete;
+
     Context(reporting::Reporter* reporter, const Meta* root_meta);
 
-    /**
-     * Destructor.
-     */
-    ~Context();
-
-private:
-    /** Default constructor. */
-    Context() = delete;
-    /** Copy constructor. */
     Context(const Context&) = delete;
-    /** Copy assignment operator. */
     Context& operator = (const Context&) = delete;
+    Context(Context&&) = delete;
+    Context& operator = (Context&&) = delete;
+
+    ~Context() override;
+
+
+
+    // #############################################################################
+    // IListener Implementations
+    // #############################################################################
+
+    /**
+     * Handles the start of a new test run, providing the total number of test cases
+     * (multiple executions/branches due to subcases etc. are not taken into account
+     * here).
+     */
+    void on_start_run(size_t count) override;
+
+    /**
+     * Handles the start of the specified test case.
+     */
+    void on_start_case(const Meta& meta) override;
+
+    /**
+     * Handles the specified result.
+     */
+    void on_result(const Result& result) override;
+
+    /**
+     * Handles the specified (test case) stats at the end of a test case.
+     */
+    void on_end_case(const Stats& stats) override;
+
+    /**
+     * Handles the specified (final) stats at the end of a test run.
+     */
+    void on_end_run(const Stats& stats) override;
+
+
+
+    // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Publishes the specified result by forwarding it to the reporter, with a few
+     * exceptions: In the case of a "successful presumption", nothing happens. In
+     * the case of a "failed assertion", a corresponding exception is thrown. All
+     * other cases will be passed unchanged.
+     */
+    void try_post_result(const Result& result) const;
 
 
 
     // #############################################################################
     // Attributes
     // #############################################################################
-public:
+
     /**
      * The reporter with which the context will be registered as a listener during
      * its lifetime.
@@ -72,54 +109,7 @@ public:
      */
     Stats stats;
 
-
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
-    /**
-     * Publishes the specified result by forwarding it to the reporter, with a few
-     * exceptions: In the case of a "successful presumption", nothing happens. In
-     * the case of a "failed assertion", a corresponding exception is thrown. All
-     * other cases will be passed unchanged.
-     */
-    void try_post_result(const Result& result);
-
-
-
-    // #############################################################################
-    // IListener Implementations
-    // #############################################################################
-public:
-    /**
-     * Handles the start of a new test run, providing the total number of test cases
-     * (multiple executions/branches due to subcases etc. are not taken into account
-     * here).
-     */
-    virtual void on_start_run(size_t count) override;
-
-    /**
-     * Handles the start of the specified test case.
-     */
-    virtual void on_start_case(const Meta& meta) override;
-
-    /**
-     * Handles the specified result.
-     */
-    virtual void on_result(const Result& result) override;
-
-    /**
-     * Handles the specified (test case) stats at the end of a test case.
-     */
-    virtual void on_end_case(const Stats& stats) override;
-
-    /**
-     * Handles the specified (final) stats at the end of a test run.
-     */
-    virtual void on_end_run(const Stats& stats) override;
-
-}; // class Context
+}; // struct Context
 
 
 

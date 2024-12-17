@@ -12,47 +12,19 @@
 
 
 
-namespace tl7 {
-namespace reporting {
+namespace tl7::reporting {
 
 
 
 class Reporter
 {
 
-private:
-    struct ListenerEntry
-    {
-        signed priority;
-        unsigned consecutive_number;
-        reporting::IListener* listener;
-
-        auto operator <=> (const ListenerEntry& rhs) const;
-    }; // struct ListenerEntry
-
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The sequential number assigned to newly registered listeners.
-     */
-    static unsigned consecutive_number;
-
-private:
-    /**
-     * The registered listeners.
-     */
-    std::vector<ListenerEntry> _listeners;
-
-
+public:
 
     // #############################################################################
     // Listener Management
     // #############################################################################
-public:
+
     /**
      * (Re-)adds the specified listener.
      */
@@ -61,14 +33,14 @@ public:
     /**
      * Removes the specified listener.
      */
-    void remove_listener(reporting::IListener *listener);
+    void remove_listener(const reporting::IListener* listener);
 
 
 
     // #############################################################################
     // Posting Results/Stats
     // #############################################################################
-public:
+
     /**
      * Posts the start of a new test run by notifying registered listeners,
      * providing the total number of test cases (multiple executions/branches due to
@@ -98,11 +70,35 @@ public:
      */
     void post_end_run(const Stats& stats);
 
+
+
+private:
+
+    struct ListenerEntry
+    {
+        signed priority;
+        unsigned consecutive_number;
+        reporting::IListener* listener;
+
+        auto operator <=> (const ListenerEntry& rhs) const;
+    }; // struct ListenerEntry
+
+
+
+    /**
+     * The sequential number assigned to newly registered listeners.
+     */
+    static unsigned consecutive_number;
+
+    /**
+     * The registered listeners.
+     */
+    std::vector<ListenerEntry> _listeners;
+
 }; // class Reporter
 
 
 
-} // namespace reporting
-} // namespace tl7
+} // namespace tl7::reporting
 
 #endif // TL7_REPORTING_REPORTER_H
