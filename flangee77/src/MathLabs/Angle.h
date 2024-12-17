@@ -10,55 +10,13 @@ namespace ml7 {
 
 
 
-class Angle
+struct Angle
 {
-
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-public:
-    /**
-     * Default/explicit constructor.
-     */
-    constexpr Angle(float radians = 0.0f)
-        : radians( radians )
-    {
-    }
-
-    /**
-     * Initializes an angle in radians.
-     */
-    static constexpr Angle from_radians(float radians) { return Angle( radians ); }
-
-    /**
-     * Initializes an angle in degrees.
-     */
-    static Angle from_degrees(float degrees);
-
-    /**
-     * Initializes an angle from a value with the specified half-cycle.
-     */
-    static Angle from_half_cycle(float value, float half_cycle);
-
-    /**
-     * Initializes an angle from a value with the specified cycle.
-     */
-    static Angle from_cycle(float value, float cycle);
-    
-    /**
-     * Swap operation.
-     */
-    void swap(Angle& a)
-    {
-        std::swap( radians, a.radians );
-    }
-
-
 
     // #############################################################################
     // Attributes
     // #############################################################################
-public:
+
     /**
      * The angle in radians.
      */
@@ -67,9 +25,57 @@ public:
 
 
     // #############################################################################
+    // Construction / Destruction
+    // #############################################################################
+
+    constexpr Angle(float radians = 0.0f) noexcept
+        : radians(radians)
+    {
+    }
+    
+    void swap(Angle& a) noexcept
+    {
+        std::swap(radians, a.radians);
+    }
+
+
+
+    // #############################################################################
+    // Transformations
+    // #############################################################################
+
+    /**
+     * Returns a copy of this angle normalized to the range [-pi;+pi].
+     */
+    Angle normalized_symmetric() const;
+
+    /**
+     * Returns a copy of this angle normalized to the range [0;2pi].
+     */
+    Angle normalized_asymmetric() const;
+
+
+
+    // #############################################################################
+    // Manipulations
+    // #############################################################################
+
+    /**
+     * Normalizes this angle to the range [-pi;+pi].
+     */
+    Angle& normalize_symmetric();
+
+    /**
+     * Normalizes this angle to the range [0;2pi].
+     */
+    Angle& normalize_asymmetric();
+
+
+
+    // #############################################################################
     // Properties
     // #############################################################################
-public:
+
     /**
      * Returns the angle value in radians.
      */
@@ -93,62 +99,45 @@ public:
 
 
     // #############################################################################
-    // Transformations
+    // Comparison Operators
     // #############################################################################
-public:
-    /**
-     * Returns a copy of this angle normalized to the range [-pi;+pi].
-     */
-    Angle normalized_symmetric() const;
 
-    /**
-     * Returns a copy of this angle normalized to the range [0;2pi].
-     */
-    Angle normalized_asymmetric() const;
+    bool operator == (Angle a) const { return radians == a.radians; }
+    bool operator != (Angle a) const { return radians != a.radians; }
 
+    bool operator < (Angle a) const { return radians < a.radians; }
+    bool operator > (Angle a) const { return radians > a.radians; }
 
-
-    // #############################################################################
-    // Manipulations
-    // #############################################################################
-public:
-    /**
-     * Normalizes this angle to the range [-pi;+pi].
-     */
-    Angle& normalize_symmetric();
-
-    /**
-     * Normalizes this angle to the range [0;2pi].
-     */
-    Angle& normalize_asymmetric();
+    bool operator <= (Angle a) const { return radians <= a.radians; }
+    bool operator >= (Angle a) const { return radians >= a.radians; }
 
 
 
     // #############################################################################
     // Arithmetic Operators
     // #############################################################################
-public:
+
     /** Returns a copy of this angle unmodified. */
     constexpr Angle operator + () const { return *this; }
     /** Returns a copy of this angle negated. */
-    constexpr Angle operator - () const { return Angle( -radians ); }
+    constexpr Angle operator - () const { return {-radians}; }
 
     /** Returns the sum of two angles. */
-    constexpr Angle operator + (Angle a) const { return Angle( radians + a.radians ); }
+    constexpr Angle operator + (Angle a) const { return {radians + a.radians}; }
     /** Returns the difference of two angles. */
-    constexpr Angle operator - (Angle a) const { return Angle( radians - a.radians ); }
+    constexpr Angle operator - (Angle a) const { return {radians - a.radians}; }
 
     /** Returns a copy of this angle multiplied by the specified scalar. */
-    constexpr Angle operator * (float s) const { return Angle( radians * s ); }
+    constexpr Angle operator * (float s) const { return {radians * s}; }
     /** Returns a copy of this angle divided by the given scalar. */
-    constexpr Angle operator / (float s) const { return Angle( radians / s ); }
+    constexpr Angle operator / (float s) const { return {radians / s}; }
 
 
 
     // #############################################################################
     // Arithmetic Assignment Operators
     // #############################################################################
-public:
+
     /** Adds the given angle to this one. */
     constexpr Angle& operator += (Angle a) { radians += a.radians; return *this; }
     /** Subtracts the given angle from this one. */
@@ -162,27 +151,38 @@ public:
 
 
     // #############################################################################
-    // Comparison Operators
-    // #############################################################################
-public:
-    bool operator == (Angle a) const { return radians == a.radians; }
-    bool operator != (Angle a) const { return radians != a.radians; }
-
-    bool operator < (Angle a) const { return radians < a.radians; }
-    bool operator > (Angle a) const { return radians > a.radians; }
-
-    bool operator <= (Angle a) const { return radians <= a.radians; }
-    bool operator >= (Angle a) const { return radians >= a.radians; }
-
-
-
-    // #############################################################################
     // Conversion Operators
     // #############################################################################
-public:
+
     operator float () const { return radians; }
 
-}; // class Angle
+
+
+    // #############################################################################
+    // Static Functions
+    // #############################################################################
+
+    /**
+     * Initializes an angle in radians.
+     */
+    static constexpr Angle from_radians(float radians) { return {radians}; }
+
+    /**
+     * Initializes an angle in degrees.
+     */
+    static Angle from_degrees(float degrees);
+
+    /**
+     * Initializes an angle from a value with the specified half-cycle.
+     */
+    static Angle from_half_cycle(float value, float half_cycle);
+
+    /**
+     * Initializes an angle from a value with the specified cycle.
+     */
+    static Angle from_cycle(float value, float cycle);
+
+}; // struct Angle
 
 
 

@@ -6,10 +6,10 @@ namespace ml7 {
 
 
 
-    const Vector4 Vector4::ZERO =   { 0.0f, 0.0f, 0.0f };
-    const Vector4 Vector4::X =      { 1.0f, 0.0f, 0.0f };
-    const Vector4 Vector4::Y =      { 0.0f, 1.0f, 0.0f };
-    const Vector4 Vector4::Z =      { 0.0f, 0.0f, 1.0f };
+    const Vector4 Vector4::ZERO =   {0.0f, 0.0f, 0.0f};
+    const Vector4 Vector4::X =      {1.0f, 0.0f, 0.0f};
+    const Vector4 Vector4::Y =      {0.0f, 1.0f, 0.0f};
+    const Vector4 Vector4::Z =      {0.0f, 0.0f, 1.0f};
 
 
 
@@ -20,12 +20,12 @@ namespace ml7 {
     /**
      * Swap operation.
      */
-    void Vector4::swap(Vector4& rhs)
+    void Vector4::swap(Vector4& other) noexcept
     {
-        std::swap( x, rhs.x );
-        std::swap( y, rhs.y );
-        std::swap( z, rhs.z );
-        std::swap( w, rhs.w );
+        std::swap(x, other.x);
+        std::swap(y, other.y);
+        std::swap(z, other.z);
+        std::swap(w, other.w);
     }
 
 
@@ -37,13 +37,13 @@ namespace ml7 {
     /** Returns a vector having the minimum components of two given vectors. */
     Vector4 Vector4::min2(const Vector4& a, const Vector4& b)
     {
-        return Vector4( ml7::min2(a.x, b.x), ml7::min2(a.y, b.y), ml7::min2(a.z, b.z), ml7::min2(a.w, b.w) );
+        return {ml7::min2(a.x, b.x), ml7::min2(a.y, b.y), ml7::min2(a.z, b.z), ml7::min2(a.w, b.w)};
     }
 
     /** Returns a vector having the maximum components of two given vectors. */
     Vector4 Vector4::max2(const Vector4& a, const Vector4& b)
     {
-        return Vector4( ml7::max2(a.x, b.x), ml7::max2(a.y, b.y), ml7::max2(a.z, b.z), ml7::max2(a.w, b.w) );
+        return {ml7::max2(a.x, b.x), ml7::max2(a.y, b.y), ml7::max2(a.z, b.z), ml7::max2(a.w, b.w)};
     }
 
     /**
@@ -60,7 +60,7 @@ namespace ml7 {
      */
     Vector4 Vector4::terp(const Vector4& a, const Vector4& b, float x)
     {
-        x = (1.0f-::cosf( constants::pi*x ))*0.5f;
+        x = (1.0f-::cosf(constants::pi*x))*0.5f;
         return a + (b-a)*x;
     }
 

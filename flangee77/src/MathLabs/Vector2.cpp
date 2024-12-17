@@ -6,9 +6,9 @@ namespace ml7 {
 
 
 
-    const Vector2 Vector2::ZERO =   { 0.0f, 0.0f };
-    const Vector2 Vector2::X =      { 1.0f, 0.0f };
-    const Vector2 Vector2::Y =      { 0.0f, 1.0f };
+    const Vector2 Vector2::ZERO =   {0.0f, 0.0f};
+    const Vector2 Vector2::X =      {1.0f, 0.0f};
+    const Vector2 Vector2::Y =      {0.0f, 1.0f};
 
 
 
@@ -19,10 +19,10 @@ namespace ml7 {
     /**
      * Swap operation.
      */
-    void Vector2::swap(Vector2& rhs)
+    void Vector2::swap(Vector2& other) noexcept
     {
-        std::swap( x, rhs.x );
-        std::swap( y, rhs.y );
+        std::swap(x, other.x);
+        std::swap(y, other.y);
     }
 
 
@@ -37,7 +37,7 @@ namespace ml7 {
      */
     float Vector2::azimuth_symmetric() const
     {
-        return ::atan2f( x, y );
+        return ::atan2f(x, y);
     }
 
     /**
@@ -46,8 +46,8 @@ namespace ml7 {
      */
     float Vector2::azimuth_asymmetric() const
     {
-        float a = ::atan2f( x, y );
-        if ( x < 0.0f )
+        float a = ::atan2f(x, y);
+        if (x < 0.0f)
             a += ml7::constants::pi2;
         return a;
     }
@@ -58,7 +58,7 @@ namespace ml7 {
      */
     float Vector2::elevation() const
     {
-        return ::atan2f( y, ::abs(x) );
+        return ::atan2f(y, ::abs(x));
     }
 
 
@@ -76,8 +76,8 @@ namespace ml7 {
         const float t = dot(n);
         const float r = 1-index*index*(1-t*t);
 
-        if ( r < 0 )
-            return Vector2();
+        if (r < 0)
+            return {};
 
         const float s = index*t + ::sqrtf(r);
         return index * *this - s * n;
@@ -92,13 +92,13 @@ namespace ml7 {
     /** Returns a vector having the minimum components of two given vectors. */
     Vector2 Vector2::min2(const Vector2& a, const Vector2& b)
     {
-        return Vector2( ml7::min2(a.x, b.x), ml7::min2(a.y, b.y) );
+        return {ml7::min2(a.x, b.x), ml7::min2(a.y, b.y)};
     }
 
     /** Returns a vector having the maximum components of two given vectors. */
     Vector2 Vector2::max2(const Vector2& a, const Vector2& b)
     {
-        return Vector2( ml7::max2(a.x, b.x), ml7::max2(a.y, b.y) );
+        return {ml7::max2(a.x, b.x), ml7::max2(a.y, b.y)};
     }
 
     /**
@@ -115,7 +115,7 @@ namespace ml7 {
      */
     Vector2 Vector2::terp(const Vector2& a, const Vector2& b, float x)
     {
-        x = (1.0f-::cosf( constants::pi*x ))*0.5f;
+        x = (1.0f-::cosf(constants::pi*x))*0.5f;
         return a + (b-a)*x;
     }
 

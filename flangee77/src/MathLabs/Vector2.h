@@ -10,10 +10,9 @@ namespace ml7 {
 
 
 
-class Vector2
+struct Vector2
 {
 
-public:
     static const Vector2 ZERO;
     static const Vector2 X;
     static const Vector2 Y;
@@ -21,55 +20,19 @@ public:
 
 
     // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-public:
-    /**
-     * Default constructor. Initializes the vector with x = y = 0.
-     */
-    constexpr Vector2()
-        : x( 0.0f )
-        , y( 0.0f )
-    {
-    }
-
-    /**
-     * Explicit constructor with parameters for x and y.
-     */
-    constexpr Vector2(float x, float y)
-        : x( x )
-        , y( y )
-    {
-    }
-
-    /**
-     * Explicit constructor with one parameter for both x and y.
-     */
-    constexpr explicit Vector2(float c)
-        : x( c )
-        , y( c )
-    {
-    }
-
-    /**
-     * Swap operation.
-     */
-    void swap(Vector2& rhs);
-
-
-
-    // #############################################################################
     // Attributes
     // #############################################################################
-public:
+
     union
     {
         struct
         {
+            // NOLINTBEGIN(*-use-default-member-init)
             /** The vector's x value (x = u = s). */
             float x;
             /** The vector's y value (y = v = t). */
             float y;
+            // NOLINTEND(*-use-default-member-init)
         }; // struct
 
         struct
@@ -95,11 +58,49 @@ public:
 
 
     // #############################################################################
+    // Construction / Destruction
+    // #############################################################################
+
+    /**
+     * Default constructor. Initializes the vector with x = y = 0.
+     */
+    constexpr Vector2() noexcept
+        : x(0.0f)
+        , y(0.0f)
+    {
+    }
+
+    /**
+     * Explicit constructor with parameters for x and y.
+     */
+    constexpr Vector2(float x, float y) noexcept
+        : x(x)
+        , y(y)
+    {
+    }
+
+    /**
+     * Explicit constructor with one parameter for both x and y.
+     */
+    constexpr explicit Vector2(float c) noexcept
+        : x(c)
+        , y(c)
+    {
+    }
+
+    /**
+     * Swap operation.
+     */
+    void swap(Vector2& other) noexcept;
+
+
+
+    // #############################################################################
     // Properties
     // #############################################################################
-public:
+
     /** Returns the magnitude of this vector. */
-    float length() const { return ::sqrtf( x*x + y*y ); }
+    float length() const { return ::sqrtf(x*x + y*y); }
 
     /** Returns the squared magnitude of this vector. */
     float lensqr() const { return x*x + y*y; }
@@ -123,31 +124,31 @@ public:
     float elevation() const;
 
     /** Returns a new vector with the x component of this (y = 0). */
-    Vector2 x_() const { return Vector2( x, 0.0f ); }
+    Vector2 x_() const { return {x, 0.0f}; }
     /** Returns a new vector with the y component of this (x = 0). */
-    Vector2 _y() const { return Vector2( 0.0f, y ); }
+    Vector2 _y() const { return {0.0f, y}; }
 
     /** Returns a new vector with all of its components set to the x value of this. */
-    Vector2 xx() const { return Vector2( x, x ); }
+    Vector2 xx() const { return {x, x}; }
     /** Returns a new vector with all of its components set to the y value of this. */
-    Vector2 yy() const { return Vector2( y, y ); }
+    Vector2 yy() const { return {y, y}; }
 
 
 
     // #############################################################################
     // Transformations
     // #############################################################################
-public:
+
     /**
      * Returns a copy of this vector normalized.
      */
     Vector2 normalized() const
     {
         float d = lensqr();
-        if ( d == 0.0f )
+        if (d == 0.0f)
             return ZERO; // x = y = 0
-        d = 1.0f / ::sqrtf( d );
-        return Vector2( x*d, y*d );
+        d = 1.0f / ::sqrtf(d);
+        return {x*d, y*d};
     }
 
     /**
@@ -155,7 +156,7 @@ public:
      */
     Vector2 abs() const
     {
-        return Vector2( ::abs(x), ::abs(y) );
+        return {::abs(x), ::abs(y)};
     }
 
     /**
@@ -181,7 +182,7 @@ public:
      */
     Vector2 perp() const
     {
-        return Vector2( -y, x );
+        return {-y, x};
     }
 
     /**
@@ -216,7 +217,7 @@ public:
      */
     float comp(const Vector2& v) const
     {
-        return dot( v ) / length();
+        return dot(v) / length();
     }
 
     /**
@@ -224,7 +225,7 @@ public:
      */
     Vector2 proj(const Vector2& v) const
     {
-        return *this * ( dot( v ) / lensqr() );
+        return *this * (dot(v) / lensqr());
     }
 
 
@@ -232,7 +233,7 @@ public:
     // #############################################################################
     // Manipulations
     // #############################################################################
-public:
+
     /**
      * Sets x = y = 0.
      */
@@ -277,7 +278,7 @@ public:
      */
     Vector2& reflect(const Vector2& n)
     {
-        *this = reflected( n );
+        *this = reflected(n);
         return *this;
     }
 
@@ -287,72 +288,16 @@ public:
      */
     Vector2& refract(const Vector2& n, float index)
     {
-        *this = refracted( n, index );
+        *this = refracted(n, index);
         return *this;
     }
 
 
 
     // #############################################################################
-    // Access Operators
-    // #############################################################################
-public:
-    float operator[] (unsigned i) const { assert( i < 2 ); return data[ i ]; }
-    float& operator[] (unsigned i) { assert( i < 2 ); return data[ i ]; }
-
-
-
-    // #############################################################################
-    // Arithmetic Operators
-    // #############################################################################
-public:
-    /** Returns a copy of this vector unmodified. */
-    constexpr Vector2 operator + () const { return *this; }
-    /** Returns a copy of this vector with the signs of the elements flipped. */
-    constexpr Vector2 operator - () const { return Vector2( -x, -y ); }
-
-    /** Returns the (component-wise) vector sum of two vectors. */
-    constexpr Vector2 operator + (const Vector2& v) const { return Vector2( x + v.x, y + v.y ); }
-    /** Returns the (component-wise) vector difference of two vectors. */
-    constexpr Vector2 operator - (const Vector2& v) const { return Vector2( x - v.x, y - v.y ); }
-
-    /** Returns the (component-wise) Hadamard product of two vectors. */
-    constexpr Vector2 operator * (const Vector2& v) const { return Vector2( x * v.x, y * v.y ); }
-    /** Returns the (component-wise) Hadamard quotient of two vectors. */
-    constexpr Vector2 operator / (const Vector2& v) const { return Vector2( x / v.x, y / v.y ); }
-
-    /** Returns a copy of this vector scaled by the specified factor (scalar multiplication). */
-    constexpr Vector2 operator * (float s) const { return Vector2( x * s, y * s ); }
-    /** Returns a copy of this vector inversely scaled by the specified factor (scalar division). */
-    constexpr Vector2 operator / (float s) const { return Vector2( x / s, y / s ); }
-
-
-
-    // #############################################################################
-    // Arithmetic Assignment Operators
-    // #############################################################################
-public:
-    /** Adds the given vector to this one, resulting in the (component-wise) vector sum. */
-    constexpr Vector2& operator += (const Vector2& v) { x += v.x; y += v.y; return *this; }
-    /** Subtracts the given vector from this one, resulting in the (component-wise) vector difference. */
-    constexpr Vector2& operator -= (const Vector2& v) { x -= v.x; y -= v.y; return *this; }
-
-    /** Multiplies the given vector with this one, resulting in the (component-wise) Hadamard product. */
-    constexpr Vector2& operator *= (const Vector2& v) { x *= v.x; y *= v.y; return *this; }
-    /** Divides this vector by the given one, resulting in the (component-wise) Hadamard quotient. */
-    constexpr Vector2& operator /= (const Vector2& v) { x /= v.x; y /= v.y; return *this; }
-
-    /** Scales this vector by the specified factor (scalar multiplication). */
-    constexpr Vector2& operator *= (float s) { x *= s; y *= s; return *this; }
-    /** Inversely scales this vector by the specified factor (scalar division). */
-    constexpr Vector2& operator /= (float s) { x /= s; y /= s; return *this; }
-
-
-
-    // #############################################################################
     // Comparison Operators
     // #############################################################################
-public:
+
     bool operator == (const Vector2& v) const { return (x == v.x) && (y == v.y); }
     bool operator != (const Vector2& v) const { return (x != v.x) || (y != v.y); }
 
@@ -393,9 +338,65 @@ public:
 
 
     // #############################################################################
+    // Arithmetic Operators
+    // #############################################################################
+
+    /** Returns a copy of this vector unmodified. */
+    constexpr Vector2 operator + () const { return *this; }
+    /** Returns a copy of this vector with the signs of the elements flipped. */
+    constexpr Vector2 operator - () const { return {-x, -y}; }
+
+    /** Returns the (component-wise) vector sum of two vectors. */
+    constexpr Vector2 operator + (const Vector2& v) const { return {x + v.x, y + v.y}; }
+    /** Returns the (component-wise) vector difference of two vectors. */
+    constexpr Vector2 operator - (const Vector2& v) const { return {x - v.x, y - v.y}; }
+
+    /** Returns the (component-wise) Hadamard product of two vectors. */
+    constexpr Vector2 operator * (const Vector2& v) const { return {x * v.x, y * v.y}; }
+    /** Returns the (component-wise) Hadamard quotient of two vectors. */
+    constexpr Vector2 operator / (const Vector2& v) const { return {x / v.x, y / v.y}; }
+
+    /** Returns a copy of this vector scaled by the specified factor (scalar multiplication). */
+    constexpr Vector2 operator * (float s) const { return {x * s, y * s}; }
+    /** Returns a copy of this vector inversely scaled by the specified factor (scalar division). */
+    constexpr Vector2 operator / (float s) const { return {x / s, y / s}; }
+
+
+
+    // #############################################################################
+    // Arithmetic Assignment Operators
+    // #############################################################################
+
+    /** Adds the given vector to this one, resulting in the (component-wise) vector sum. */
+    constexpr Vector2& operator += (const Vector2& v) { x += v.x; y += v.y; return *this; }
+    /** Subtracts the given vector from this one, resulting in the (component-wise) vector difference. */
+    constexpr Vector2& operator -= (const Vector2& v) { x -= v.x; y -= v.y; return *this; }
+
+    /** Multiplies the given vector with this one, resulting in the (component-wise) Hadamard product. */
+    constexpr Vector2& operator *= (const Vector2& v) { x *= v.x; y *= v.y; return *this; }
+    /** Divides this vector by the given one, resulting in the (component-wise) Hadamard quotient. */
+    constexpr Vector2& operator /= (const Vector2& v) { x /= v.x; y /= v.y; return *this; }
+
+    /** Scales this vector by the specified factor (scalar multiplication). */
+    constexpr Vector2& operator *= (float s) { x *= s; y *= s; return *this; }
+    /** Inversely scales this vector by the specified factor (scalar division). */
+    constexpr Vector2& operator /= (float s) { x /= s; y /= s; return *this; }
+
+
+
+    // #############################################################################
+    // Access Operators
+    // #############################################################################
+
+    float operator [] (unsigned i) const { assert(i < 2); return data[i]; }
+    float& operator [] (unsigned i) { assert(i < 2); return data[i]; }
+
+
+
+    // #############################################################################
     // Static Methods
     // #############################################################################
-public:
+
     /** Returns a vector having the minimum components of two given vectors. */
     static Vector2 min2(const Vector2& a, const Vector2& b);
 
@@ -432,18 +433,18 @@ public:
     // #############################################################################
     // Sorting
     // #############################################################################
-public:
+
     struct less
     {
         bool operator () (const ml7::Vector2& a, const ml7::Vector2& b) const
         {
-            if ( a.x < b.x ) return true;
-            if ( a.x > b.x ) return false;
+            if (a.x < b.x) return true;
+            if (a.x > b.x) return false;
             return a.y < b.y;
         }
     }; // struct less
 
-}; // class Vector2
+}; // struct Vector2
 
 
 

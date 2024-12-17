@@ -10,10 +10,9 @@ namespace ml7 {
 
 
 
-class Vector4
+struct Vector4
 {
 
-public:
     static const Vector4 ZERO;
     static const Vector4 X;
     static const Vector4 Y;
@@ -22,101 +21,14 @@ public:
 
 
     // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-public:
-    /**
-     * Default constructor. Initializes the vector with x = y = z = w = 0.
-     */
-    constexpr Vector4()
-        : x( 0.0f )
-        , y( 0.0f )
-        , z( 0.0f )
-        , w( 0.0f )
-    {
-    }
-
-    /**
-     * Explicit constructor with parameters for x, y, and z. Sets w = 1.
-     */
-    constexpr Vector4(float x, float y, float z)
-        : x( x )
-        , y( y )
-        , z( z )
-        , w( 1.0f )
-    {
-    }
-
-    /**
-     * Explicit constructor with parameters for x, y, z, and w.
-     */
-    constexpr Vector4(float x, float y, float z, float w)
-        : x( x )
-        , y( y )
-        , z( z )
-        , w( w )
-    {
-    }
-
-    /**
-     * Explicit constructor with one parameter for x, y, z, and w.
-     */
-    constexpr explicit Vector4(float c)
-        : x( c )
-        , y( c )
-        , z( c )
-        , w( c )
-    {
-    }
-
-    /**
-     * Explicit constructor with one parameter for x, y, and z and one for w.
-     */
-    constexpr Vector4(float c, float w)
-        : x( c )
-        , y( c )
-        , z( c )
-        , w( w )
-    {
-    }
-
-    /**
-     * Explicit constructor with one parameter for a 3D vector. Sets w = 1.
-     */
-    constexpr explicit Vector4(const ml7::Vector3& v)
-        : x( v.x )
-        , y( v.y )
-        , z( v.z )
-        , w( 1.0f )
-    {
-    }
-
-    /**
-     * Explicit constructor with one parameter for a 3D vector and one for w.
-     */
-    constexpr explicit Vector4(const ml7::Vector3& v, float w)
-        : x( v.x )
-        , y( v.y )
-        , z( v.z )
-        , w( w )
-    {
-    }
-
-    /**
-     * Swap operation.
-     */
-    void swap(Vector4& rhs);
-
-
-
-    // #############################################################################
     // Attributes
     // #############################################################################
-public:
+
     union
     {
         struct
         {
+            // NOLINTBEGIN(*-use-default-member-init)
             /** The vector's x value. */
             float x;
             /** The vector's y value. */
@@ -125,6 +37,7 @@ public:
             float z;
             /** The vector's w value. */
             float w;
+            // NOLINTEND(*-use-default-member-init)
         }; // struct
 
         /** Array of all four components. */
@@ -134,11 +47,99 @@ public:
 
 
     // #############################################################################
+    // Construction / Destruction
+    // #############################################################################
+
+    /**
+     * Default constructor. Initializes the vector with x = y = z = w = 0.
+     */
+    constexpr Vector4() noexcept
+        : x(0.0f)
+        , y(0.0f)
+        , z(0.0f)
+        , w(0.0f)
+    {
+    }
+
+    /**
+     * Explicit constructor with parameters for x, y, and z. Sets w = 1.
+     */
+    constexpr Vector4(float x, float y, float z) noexcept
+        : x(x)
+        , y(y)
+        , z(z)
+        , w(1.0f)
+    {
+    }
+
+    /**
+     * Explicit constructor with parameters for x, y, z, and w.
+     */
+    constexpr Vector4(float x, float y, float z, float w) noexcept
+        : x(x)
+        , y(y)
+        , z(z)
+        , w(w)
+    {
+    }
+
+    /**
+     * Explicit constructor with one parameter for x, y, z, and w.
+     */
+    constexpr explicit Vector4(float c) noexcept
+        : x(c)
+        , y(c)
+        , z(c)
+        , w(c)
+    {
+    }
+
+    /**
+     * Explicit constructor with one parameter for x, y, and z and one for w.
+     */
+    constexpr Vector4(float c, float w) noexcept
+        : x(c)
+        , y(c)
+        , z(c)
+        , w(w)
+    {
+    }
+
+    /**
+     * Explicit constructor with one parameter for a 3D vector. Sets w = 1.
+     */
+    constexpr explicit Vector4(const ml7::Vector3& v) noexcept
+        : x(v.x)
+        , y(v.y)
+        , z(v.z)
+        , w(1.0f)
+    {
+    }
+
+    /**
+     * Explicit constructor with one parameter for a 3D vector and one for w.
+     */
+    constexpr explicit Vector4(const ml7::Vector3& v, float w) noexcept
+        : x(v.x)
+        , y(v.y)
+        , z(v.z)
+        , w(w)
+    {
+    }
+
+    /**
+     * Swap operation.
+     */
+    void swap(Vector4& other) noexcept;
+
+
+
+    // #############################################################################
     // Properties
     // #############################################################################
-public:
+
     /** Returns the magnitude of this vector. */
-    float length() const { return ::sqrtf( x*x + y*y + z*z + w*w ); }
+    float length() const { return ::sqrtf(x*x + y*y + z*z + w*w); }
 
     /** Returns the squared magnitude of this vector. */
     float lensqr() const { return x*x + y*y + z*z + w*w; }
@@ -148,17 +149,17 @@ public:
     // #############################################################################
     // Transformations
     // #############################################################################
-public:
+
     /**
      * Interprets this 4D vector as a homogeneous 3D vector and returns a
      * dehomogenized copy of it with w = 1 (if w != 0).
      */
     Vector4 dehomogenized() const
     {
-        if ( w == 0.0f )
+        if (w == 0.0f)
             return *this; // Do nothing!
         const float rw = 1.0f / w;
-        return Vector4( x*rw, y*rw, z*rw, 1.0f );
+        return {x*rw, y*rw, z*rw, 1.0f};
     }
 
     /**
@@ -167,10 +168,10 @@ public:
     Vector4 normalized() const
     {
         float d = lensqr();
-        if ( d == 0.0f )
+        if (d == 0.0f)
             return ZERO; // x = y = z = w = 0
-        d = 1.0f / ::sqrtf( d );
-        return Vector4( x*d, y*d, z*d, w*d );
+        d = 1.0f / ::sqrtf(d);
+        return {x*d, y*d, z*d, w*d};
     }
 
     /**
@@ -178,7 +179,7 @@ public:
      */
     Vector4 abs() const
     {
-        return Vector4( ::abs(x), ::abs(y), ::abs(z), ::abs(w) );
+        return {::abs(x), ::abs(y), ::abs(z), ::abs(w)};
     }
 
     /**
@@ -188,7 +189,7 @@ public:
     Vector3 to_vector3() const
     {
         const ml7::Vector4 v = dehomogenized();
-        return Vector3( v.x, v.y, v.z );
+        return {v.x, v.y, v.z};
     }
 
 
@@ -196,7 +197,7 @@ public:
     // #############################################################################
     // Manipulations
     // #############################################################################
-public:
+
     /**
      * Sets x = y = z = w = 0.
      */
@@ -224,7 +225,7 @@ public:
      */
     Vector4& dehomogenize()
     {
-        if ( w == 0.0f )
+        if (w == 0.0f)
             return *this; // Do nothing!
         const float rw = 1.0f / w;
         x *= rw;
@@ -259,65 +260,9 @@ public:
 
 
     // #############################################################################
-    // Access Operators
-    // #############################################################################
-public:
-    float operator[] (unsigned i) const { assert( i < 4 ); return data[ i ]; }
-    float& operator[] (unsigned i) { assert( i < 4 ); return data[ i ]; }
-
-
-
-    // #############################################################################
-    // Arithmetic Operators
-    // #############################################################################
-public:
-    /** Returns a copy of this vector unmodified. */
-    constexpr Vector4 operator + () const { return *this; }
-    /** Returns a copy of this vector with the signs of the elements flipped. */
-    constexpr Vector4 operator - () const { return Vector4( -x, -y, -z, -w ); }
-
-    /** Returns the (component-wise) vector sum of two vectors. */
-    constexpr Vector4 operator + (const Vector4& v) const { return Vector4( x + v.x, y + v.y, z + v.z, w + v.w ); }
-    /** Returns the (component-wise) vector difference of two vectors. */
-    constexpr Vector4 operator - (const Vector4& v) const { return Vector4( x - v.x, y - v.y, z - v.z, w - v.w ); }
-
-    /** Returns the (component-wise) Hadamard product of two vectors. */
-    constexpr Vector4 operator * (const Vector4& v) const { return Vector4( x * v.x, y * v.y, z * v.z, w * v.w ); }
-    /** Returns the (component-wise) Hadamard quotient of two vectors. */
-    constexpr Vector4 operator / (const Vector4& v) const { return Vector4( x / v.x, y / v.y, z / v.z, w / v.w ); }
-
-    /** Returns a copy of this vector scaled by the specified factor (scalar multiplication). */
-    constexpr Vector4 operator * (float s) const { return Vector4( x * s, y * s, z * s, w * s ); }
-    /** Returns a copy of this vector inversely scaled by the specified factor (scalar division). */
-    constexpr Vector4 operator / (float s) const { return Vector4( x / s, y / s, z / s, w / s ); }
-
-
-
-    // #############################################################################
-    // Arithmetic Assignment Operators
-    // #############################################################################
-public:
-    /** Adds the given vector to this one, resulting in the (component-wise) vector sum. */
-    constexpr Vector4& operator += (const Vector4& v) { x += v.x; y += v.y; z += v.z; w += v.w; return *this; }
-    /** Subtracts the given vector from this one, resulting in the (component-wise) vector difference. */
-    constexpr Vector4& operator -= (const Vector4& v) { x -= v.x; y -= v.y; z -= v.z; w -= v.w; return *this; }
-
-    /** Multiplies the given vector with this one, resulting in the (component-wise) Hadamard product. */
-    constexpr Vector4& operator *= (const Vector4& v) { x *= v.x; y *= v.y; z *= v.z; w *= v.w; return *this; }
-    /** Divides this vector by the given one, resulting in the (component-wise) Hadamard quotient. */
-    constexpr Vector4& operator /= (const Vector4& v) { x /= v.x; y /= v.y; z /= v.z; w /= v.w; return *this; }
-
-    /** Scales this vector by the specified factor (scalar multiplication). */
-    constexpr Vector4& operator *= (float s) { x *= s; y *= s; z *= s; w *= s; return *this; }
-    /** Inversely scales this vector by the specified factor (scalar division). */
-    constexpr Vector4& operator /= (float s) { x /= s; y /= s; z /= s; w /= s; return *this; }
-
-
-
-    // #############################################################################
     // Comparison Operators
     // #############################################################################
-public:
+
     bool operator == (const Vector4& v) const { return (x == v.x) && (y == v.y) && (z == v.z) && (w == v.w); }
     bool operator != (const Vector4& v) const { return (x != v.x) || (y != v.y) || (z != v.z) || (w != v.w); }
 
@@ -358,9 +303,65 @@ public:
 
 
     // #############################################################################
+    // Arithmetic Operators
+    // #############################################################################
+
+    /** Returns a copy of this vector unmodified. */
+    constexpr Vector4 operator + () const { return *this; }
+    /** Returns a copy of this vector with the signs of the elements flipped. */
+    constexpr Vector4 operator - () const { return {-x, -y, -z, -w}; }
+
+    /** Returns the (component-wise) vector sum of two vectors. */
+    constexpr Vector4 operator + (const Vector4& v) const { return {x + v.x, y + v.y, z + v.z, w + v.w}; }
+    /** Returns the (component-wise) vector difference of two vectors. */
+    constexpr Vector4 operator - (const Vector4& v) const { return {x - v.x, y - v.y, z - v.z, w - v.w}; }
+
+    /** Returns the (component-wise) Hadamard product of two vectors. */
+    constexpr Vector4 operator * (const Vector4& v) const { return {x * v.x, y * v.y, z * v.z, w * v.w}; }
+    /** Returns the (component-wise) Hadamard quotient of two vectors. */
+    constexpr Vector4 operator / (const Vector4& v) const { return {x / v.x, y / v.y, z / v.z, w / v.w}; }
+
+    /** Returns a copy of this vector scaled by the specified factor (scalar multiplication). */
+    constexpr Vector4 operator * (float s) const { return {x * s, y * s, z * s, w * s}; }
+    /** Returns a copy of this vector inversely scaled by the specified factor (scalar division). */
+    constexpr Vector4 operator / (float s) const { return {x / s, y / s, z / s, w / s}; }
+
+
+
+    // #############################################################################
+    // Arithmetic Assignment Operators
+    // #############################################################################
+
+    /** Adds the given vector to this one, resulting in the (component-wise) vector sum. */
+    constexpr Vector4& operator += (const Vector4& v) { x += v.x; y += v.y; z += v.z; w += v.w; return *this; }
+    /** Subtracts the given vector from this one, resulting in the (component-wise) vector difference. */
+    constexpr Vector4& operator -= (const Vector4& v) { x -= v.x; y -= v.y; z -= v.z; w -= v.w; return *this; }
+
+    /** Multiplies the given vector with this one, resulting in the (component-wise) Hadamard product. */
+    constexpr Vector4& operator *= (const Vector4& v) { x *= v.x; y *= v.y; z *= v.z; w *= v.w; return *this; }
+    /** Divides this vector by the given one, resulting in the (component-wise) Hadamard quotient. */
+    constexpr Vector4& operator /= (const Vector4& v) { x /= v.x; y /= v.y; z /= v.z; w /= v.w; return *this; }
+
+    /** Scales this vector by the specified factor (scalar multiplication). */
+    constexpr Vector4& operator *= (float s) { x *= s; y *= s; z *= s; w *= s; return *this; }
+    /** Inversely scales this vector by the specified factor (scalar division). */
+    constexpr Vector4& operator /= (float s) { x /= s; y /= s; z /= s; w /= s; return *this; }
+
+
+
+    // #############################################################################
+    // Access Operators
+    // #############################################################################
+
+    float operator [] (unsigned i) const { assert(i < 4); return data[i]; }
+    float& operator [] (unsigned i) { assert(i < 4); return data[i]; }
+
+
+
+    // #############################################################################
     // Static Methods
     // #############################################################################
-public:
+
     /** Returns a vector having the minimum components of two given vectors. */
     static Vector4 min2(const Vector4& a, const Vector4& b);
 
@@ -390,22 +391,22 @@ public:
     // #############################################################################
     // Sorting
     // #############################################################################
-public:
+
     struct less
     {
         bool operator () (const ml7::Vector4& a, const ml7::Vector4& b) const
         {
-            if ( a.x < b.x ) return true;
-            if ( a.x > b.x ) return false;
-            if ( a.y < b.y ) return true;
-            if ( a.y > b.y ) return false;
-            if ( a.z < b.z ) return true;
-            if ( a.z > b.z ) return false;
+            if (a.x < b.x) return true;
+            if (a.x > b.x) return false;
+            if (a.y < b.y) return true;
+            if (a.y > b.y) return false;
+            if (a.z < b.z) return true;
+            if (a.z > b.z) return false;
             return a.w < b.w;
         }
     }; // struct less
 
-}; // class Vector4
+}; // struct Vector4
 
 
 

@@ -6,10 +6,10 @@ namespace ml7 {
 
 
 
-    const Vector3 Vector3::ZERO =   { 0.0f, 0.0f, 0.0f };
-    const Vector3 Vector3::X =      { 1.0f, 0.0f, 0.0f };
-    const Vector3 Vector3::Y =      { 0.0f, 1.0f, 0.0f };
-    const Vector3 Vector3::Z =      { 0.0f, 0.0f, 1.0f };
+    const Vector3 Vector3::ZERO =   {0.0f, 0.0f, 0.0f};
+    const Vector3 Vector3::X =      {1.0f, 0.0f, 0.0f};
+    const Vector3 Vector3::Y =      {0.0f, 1.0f, 0.0f};
+    const Vector3 Vector3::Z =      {0.0f, 0.0f, 1.0f};
 
 
 
@@ -20,11 +20,11 @@ namespace ml7 {
     /**
      * Swap operation.
      */
-    void Vector3::swap(Vector3& rhs)
+    void Vector3::swap(Vector3& other) noexcept
     {
-        std::swap( x, rhs.x );
-        std::swap( y, rhs.y );
-        std::swap( z, rhs.z );
+        std::swap(x, other.x);
+        std::swap(y, other.y);
+        std::swap(z, other.z);
     }
 
 
@@ -39,7 +39,7 @@ namespace ml7 {
      */
     float Vector3::azimuth_symmetric() const
     {
-        return ::atan2f( x, z );
+        return ::atan2f(x, z);
     }
 
     /**
@@ -48,8 +48,8 @@ namespace ml7 {
      */
     float Vector3::azimuth_asymmetric() const
     {
-        float a = ::atan2f( x, z );
-        if ( x < 0.0f )
+        float a = ::atan2f(x, z);
+        if (x < 0.0f)
             a += ml7::constants::pi2;
         return a;
     }
@@ -60,7 +60,7 @@ namespace ml7 {
      */
     float Vector3::elevation() const
     {
-        return ::atan2f( y, ::sqrtf( x*x + z*z ) );
+        return ::atan2f(y, ::sqrtf(x*x + z*z));
     }
 
 
@@ -78,8 +78,8 @@ namespace ml7 {
         const float t = dot(n);
         const float r = 1-index*index*(1-t*t);
 
-        if ( r < 0 )
-            return Vector3();
+        if (r < 0)
+            return {};
 
         const float s = index*t + ::sqrtf(r);
         return index * *this - s * n;
@@ -94,13 +94,13 @@ namespace ml7 {
     /** Returns a vector having the minimum components of two given vectors. */
     Vector3 Vector3::min2(const Vector3& a, const Vector3& b)
     {
-        return Vector3( ml7::min2(a.x, b.x), ml7::min2(a.y, b.y), ml7::min2(a.z, b.z) );
+        return {ml7::min2(a.x, b.x), ml7::min2(a.y, b.y), ml7::min2(a.z, b.z)};
     }
 
     /** Returns a vector having the maximum components of two given vectors. */
     Vector3 Vector3::max2(const Vector3& a, const Vector3& b)
     {
-        return Vector3( ml7::max2(a.x, b.x), ml7::max2(a.y, b.y), ml7::max2(a.z, b.z) );
+        return {ml7::max2(a.x, b.x), ml7::max2(a.y, b.y), ml7::max2(a.z, b.z)};
     }
 
     /**
@@ -117,7 +117,7 @@ namespace ml7 {
      */
     Vector3 Vector3::terp(const Vector3& a, const Vector3& b, float x)
     {
-        x = (1.0f-::cosf( constants::pi*x ))*0.5f;
+        x = (1.0f-::cosf(constants::pi*x))*0.5f;
         return a + (b-a)*x;
     }
 

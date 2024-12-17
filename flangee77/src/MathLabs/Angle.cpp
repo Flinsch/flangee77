@@ -7,31 +7,61 @@ namespace ml7 {
 
 
     // #############################################################################
-    // Construction / Destruction
+    // Transformations
     // #############################################################################
 
     /**
-     * Initializes an angle in degrees.
+     * Returns a copy of this angle normalized to the range [-pi;+pi].
      */
-    Angle Angle::from_degrees(float degrees)
+    Angle Angle::normalized_symmetric() const
     {
-        return Angle( ml7::deg_to_rad( degrees ) );
+        if (radians < -ml7::constants::pi)
+            return ml7::constants::pi - ::fmodf(-radians - ml7::constants::pi, ml7::constants::pi2);
+        if (radians > ml7::constants::pi)
+            return ::fmodf(radians + ml7::constants::pi, ml7::constants::pi2) - ml7::constants::pi;
+        return radians;
     }
 
     /**
-     * Initializes an angle from a value with the specified half-cycle.
+     * Returns a copy of this angle normalized to the range [0;2pi].
      */
-    Angle Angle::from_half_cycle(float value, float half_cycle)
+    Angle Angle::normalized_asymmetric() const
     {
-        return Angle( value / half_cycle * ml7::constants::pi );
+        if (radians < 0.0f)
+            return ml7::constants::pi2 - ::fmodf(-radians, ml7::constants::pi2);
+        if (radians > ml7::constants::pi2)
+            return ::fmodf(radians, ml7::constants::pi2);
+        return radians;
+    }
+
+
+
+    // #############################################################################
+    // Manipulations
+    // #############################################################################
+
+    /**
+     * Normalizes this angle to the range [-pi;+pi].
+     */
+    Angle& Angle::normalize_symmetric()
+    {
+        if (radians < -ml7::constants::pi)
+            radians = ml7::constants::pi - ::fmodf(-radians - ml7::constants::pi, ml7::constants::pi2);
+        else if (radians > ml7::constants::pi)
+            radians = ::fmodf(radians + ml7::constants::pi, ml7::constants::pi2) - ml7::constants::pi;
+        return *this;
     }
 
     /**
-     * Initializes an angle from a value with the specified cycle.
+     * Normalizes this angle to the range [0;2pi].
      */
-    Angle Angle::from_cycle(float value, float cycle)
+    Angle& Angle::normalize_asymmetric()
     {
-        return Angle( value / cycle * ml7::constants::pi2 );
+        if (radians < 0.0f)
+            radians = ml7::constants::pi2 - ::fmodf(-radians, ml7::constants::pi2);
+        else if (radians > ml7::constants::pi2)
+            radians = ::fmodf(radians, ml7::constants::pi2);
+        return *this;
     }
 
 
@@ -45,7 +75,7 @@ namespace ml7 {
      */
     float Angle::to_degrees() const
     {
-        return ml7::rad_to_deg( radians );
+        return ml7::rad_to_deg(radians);
     }
 
     /**
@@ -67,61 +97,31 @@ namespace ml7 {
 
 
     // #############################################################################
-    // Transformations
+    // Static Functions
     // #############################################################################
 
     /**
-     * Returns a copy of this angle normalized to the range [-pi;+pi].
+     * Initializes an angle in degrees.
      */
-    Angle Angle::normalized_symmetric() const
+    Angle Angle::from_degrees(float degrees)
     {
-        if ( radians < -ml7::constants::pi )
-            return ml7::constants::pi - ::fmodf( -radians - ml7::constants::pi, ml7::constants::pi2 );
-        if ( radians > ml7::constants::pi )
-            return ::fmodf( radians + ml7::constants::pi, ml7::constants::pi2 ) - ml7::constants::pi;
-        return radians;
+        return {ml7::deg_to_rad(degrees)};
     }
 
     /**
-     * Returns a copy of this angle normalized to the range [0;2pi].
+     * Initializes an angle from a value with the specified half-cycle.
      */
-    Angle Angle::normalized_asymmetric() const
+    Angle Angle::from_half_cycle(float value, float half_cycle)
     {
-        if ( radians < 0.0f )
-            return ml7::constants::pi2 - ::fmodf( -radians, ml7::constants::pi2 );
-        if ( radians > ml7::constants::pi2 )
-            return ::fmodf( radians, ml7::constants::pi2 );
-        return radians;
-    }
-
-
-
-    // #############################################################################
-    // Manipulations
-    // #############################################################################
-
-    /**
-     * Normalizes this angle to the range [-pi;+pi].
-     */
-    Angle& Angle::normalize_symmetric()
-    {
-        if ( radians < -ml7::constants::pi )
-            radians = ml7::constants::pi - ::fmodf( -radians - ml7::constants::pi, ml7::constants::pi2 );
-        else if ( radians > ml7::constants::pi )
-            radians = ::fmodf( radians + ml7::constants::pi, ml7::constants::pi2 ) - ml7::constants::pi;
-        return *this;
+        return {value / half_cycle * ml7::constants::pi};
     }
 
     /**
-     * Normalizes this angle to the range [0;2pi].
+     * Initializes an angle from a value with the specified cycle.
      */
-    Angle& Angle::normalize_asymmetric()
+    Angle Angle::from_cycle(float value, float cycle)
     {
-        if ( radians < 0.0f )
-            radians = ml7::constants::pi2 - ::fmodf( -radians, ml7::constants::pi2 );
-        else if ( radians > ml7::constants::pi2 )
-            radians = ::fmodf( radians, ml7::constants::pi2 );
-        return *this;
+        return {value / cycle * ml7::constants::pi2};
     }
 
 

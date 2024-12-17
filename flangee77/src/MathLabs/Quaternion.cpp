@@ -6,8 +6,8 @@ namespace ml7 {
 
 
 
-    const Quaternion Quaternion::ZERO =     { 0.0f, 0.0f, 0.0f, 0.0f };
-    const Quaternion Quaternion::IDENTITY = { 0.0f, 0.0f, 0.0f, 1.0f };
+    const Quaternion Quaternion::ZERO =     {0.0f, 0.0f, 0.0f, 0.0f};
+    const Quaternion Quaternion::IDENTITY = {0.0f, 0.0f, 0.0f, 1.0f};
 
 
 
@@ -18,12 +18,12 @@ namespace ml7 {
     /**
      * Swap operation.
      */
-    void Quaternion::swap(Quaternion& rhs)
+    void Quaternion::swap(Quaternion& other) noexcept
     {
-        std::swap( x, rhs.x );
-        std::swap( y, rhs.y );
-        std::swap( z, rhs.z );
-        std::swap( w, rhs.w );
+        std::swap(x, other.x);
+        std::swap(y, other.y);
+        std::swap(z, other.z);
+        std::swap(w, other.w);
     }
 
 
@@ -38,10 +38,10 @@ namespace ml7 {
     Quaternion Quaternion::normalized() const
     {
         float d = norm();
-        if ( d == 0.0f )
+        if (d == 0.0f)
             return ZERO; // x = y = z = w = 0
         d = 1.0f / d;
-        return Quaternion( x*d, y*d, z*d, w*d );
+        return {x*d, y*d, z*d, w*d};
     }
 
     /**
@@ -50,10 +50,10 @@ namespace ml7 {
     Quaternion Quaternion::inverted() const
     {
         float d = norm();
-        if ( d == 0.0f )
+        if (d == 0.0f)
             return ZERO; // x = y = z = w = 0
         d = -1.0f / d;
-        return Quaternion( x*d, y*d, z*d, -w*d );
+        return {x*d, y*d, z*d, -w*d};
     }
 
     /**
@@ -87,7 +87,7 @@ namespace ml7 {
      */
     void Quaternion::to_axes(ml7::Vector3& x, ml7::Vector3& y, ml7::Vector3& z) const
     {
-        to_matrix3x3().to_axes( x, y, z );
+        to_matrix3x3().to_axes(x, y, z);
     }
 
     /**
@@ -97,21 +97,19 @@ namespace ml7 {
     bool Quaternion::to_axis_angle(ml7::Vector3& axis, float& angle) const
     {
         const float lensqr = x*x + y*y + z*z;
-        if ( lensqr > 0.0f )
-        {
-            const float invlen = 1.0f / ::sqrtf( lensqr );
-            axis.x = x * invlen;
-            axis.y = y * invlen;
-            axis.z = z * invlen;
-            angle = 2.0f * ::acosf( w );
-            return true;
-        }
-        else
+        if (!(lensqr > 0.0f))
         {
             axis = ml7::Vector3::X; // Any axis would be "correct" here.
             angle = 0.0f;
             return false;
         }
+
+        const float invlen = 1.0f / ::sqrtf(lensqr);
+        axis.x = x * invlen;
+        axis.y = y * invlen;
+        axis.z = z * invlen;
+        angle = 2.0f * ::acosf(w);
+        return true;
     }
 
     /**
@@ -121,7 +119,7 @@ namespace ml7 {
      */
     bool Quaternion::is_look_lh(ml7::Vector3& look, ml7::Vector3& up) const
     {
-        return to_matrix3x3().is_look_lh( look, up );
+        return to_matrix3x3().is_look_lh(look, up);
     }
 
     /**
@@ -131,7 +129,7 @@ namespace ml7 {
      */
     bool Quaternion::is_look_rh(ml7::Vector3& look, ml7::Vector3& up) const
     {
-        return to_matrix3x3().is_look_rh( look, up );
+        return to_matrix3x3().is_look_rh(look, up);
     }
 
     /**
@@ -139,9 +137,9 @@ namespace ml7 {
      */
     Vector3 Quaternion::transform(const Vector3& v) const
     {
-        ml7::Vector3 u{ x, y, z };
-        ml7::Vector3 uv = u.cross( v );
-        ml7::Vector3 uuv = u.cross( uv );
+        ml7::Vector3 u{x, y, z};
+        ml7::Vector3 uv = u.cross(v);
+        ml7::Vector3 uuv = u.cross(uv);
         uv *= 2.0f * w;
         uuv *= 2.0f;
         return v + uv + uuv;
@@ -154,12 +152,12 @@ namespace ml7 {
     Vector3 Quaternion::transform_inverted(const Vector3& v) const
     {
         float d = norm();
-        if ( d == 0.0f )
+        if (d == 0.0f)
             return v;
         d = -1.0f / d;
-        ml7::Vector3 u{ x*d, y*d, z*d };
-        ml7::Vector3 uv = u.cross( v );
-        ml7::Vector3 uuv = u.cross( uv );
+        ml7::Vector3 u{x*d, y*d, z*d};
+        ml7::Vector3 uv = u.cross(v);
+        ml7::Vector3 uuv = u.cross(uv);
         uv *= 2.0f * -w*d;
         uuv *= 2.0f;
         return v + uv + uuv;

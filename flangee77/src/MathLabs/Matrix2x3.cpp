@@ -6,8 +6,8 @@ namespace ml7 {
 
 
 
-    const Matrix2x3 Matrix2x3::ZERO =       { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
-    const Matrix2x3 Matrix2x3::IDENTITY =   { 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f };
+    const Matrix2x3 Matrix2x3::ZERO =       {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+    const Matrix2x3 Matrix2x3::IDENTITY =   {1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f};
 
 
 
@@ -16,28 +16,12 @@ namespace ml7 {
     // #############################################################################
 
     /**
-     * Initializes a transformation matrix from the specified scaling vector, a
-     * counter-clockwise rotation angle (in radians), and a translation vector.
-     */
-    Matrix2x3 Matrix2x3::compose(const ml7::Vector2& scaling, float angle, const ml7::Vector2& translation)
-    {
-        const float sx = scaling.x;
-        const float sy = scaling.y;
-        const float cs = ::cosf( angle );
-        const float sn = ::sinf( angle );
-        return {
-            cs * sx,    -sn * sy,   translation.x,
-            sn * sx,    cs * sy,    translation.y,
-        };
-    }
-
-    /**
      * Swap operation.
      */
-    void Matrix2x3::swap(Matrix2x3& rhs)
+    void Matrix2x3::swap(Matrix2x3& other) noexcept
     {
-        Matrix2x3 tmp( rhs );
-        rhs = *this;
+        Matrix2x3 tmp(other);
+        other = *this;
         *this = tmp;
     }
 
@@ -53,7 +37,7 @@ namespace ml7 {
     Matrix2x3 Matrix2x3::inverted() const
     {
         const float det = determinant();
-        if ( det == 0.0f )
+        if (det == 0.0f)
             return ZERO;
         const float i = 1.0f / det;
         return {
@@ -70,13 +54,13 @@ namespace ml7 {
      */
     bool Matrix2x3::decompose(ml7::Vector2& scaling, float& angle, ml7::Vector2& translation) const
     {
-        const float sx = Vector2( _11, _21 ).length();
-        const float sy = Vector2( _12, _22 ).length();
-        if ( !sx ) return false;
-        if ( !sy ) return false;
+        const float sx = Vector2(_11, _21).length();
+        const float sy = Vector2(_12, _22).length();
+        if (sx == 0.0f) return false;
+        if (sy == 0.0f) return false;
         scaling.x = sx;
         scaling.y = sy;
-        angle = ::atan2f( -_12 / sy, _11 / sx );
+        angle = ::atan2f(-_12 / sy, _11 / sx);
         translation.x = _13;
         translation.y = _23;
         return true;
@@ -89,7 +73,7 @@ namespace ml7 {
      */
     Vector2 Matrix2x3::transform_inverted(const Vector2& v) const
     {
-        return transform2x2_inverted( v - ml7::Vector2( _13, _23 ) );
+        return transform2x2_inverted(v - ml7::Vector2(_13, _23));
     }
 
     /**
@@ -100,12 +84,34 @@ namespace ml7 {
     Vector2 Matrix2x3::transform2x2_inverted(const Vector2& v) const
     {
         const float det = determinant();
-        if ( det == 0.0f )
+        if (det == 0.0f)
             return v;
         const float i = 1.0f / det;
         return {
             (_22*v.x + -_12*v.y)*i,
             (-_21*v.x + _11*v.y)*i,
+        };
+    }
+
+
+
+    // #############################################################################
+    // Static Functions
+    // #############################################################################
+
+    /**
+     * Initializes a transformation matrix from the specified scaling vector, a
+     * counter-clockwise rotation angle (in radians), and a translation vector.
+     */
+    Matrix2x3 Matrix2x3::compose(const ml7::Vector2& scaling, float angle, const ml7::Vector2& translation)
+    {
+        const float sx = scaling.x;
+        const float sy = scaling.y;
+        const float cs = ::cosf(angle);
+        const float sn = ::sinf(angle);
+        return {
+            cs * sx,    -sn * sy,   translation.x,
+            sn * sx,    cs * sy,    translation.y,
         };
     }
 

@@ -10,209 +10,24 @@ namespace ml7 {
 
 
 
-class Matrix3x3
+struct Matrix3x3
 {
 
-public:
+
     static const Matrix3x3 ZERO;
     static const Matrix3x3 IDENTITY;
 
 
 
     // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-public:
-    /**
-     * Default constructor. Initializes an identity matrix representing a neutral
-     * transformation.
-     */
-    constexpr Matrix3x3()
-        : _11( 1.0f ), _12( 0.0f ), _13( 0.0f )
-        , _21( 0.0f ), _22( 1.0f ), _23( 0.0f )
-        , _31( 0.0f ), _32( 0.0f ), _33( 1.0f )
-    {
-    }
-
-    /**
-     * Explicit constructor with parameters for each element.
-     */
-    constexpr Matrix3x3(
-        float _11, float _12, float _13,
-        float _21, float _22, float _23,
-        float _31, float _32, float _33)
-        : _11( _11 ), _12( _12 ), _13( _13 )
-        , _21( _21 ), _22( _22 ), _23( _23 )
-        , _31( _31 ), _32( _32 ), _33( _33 )
-    {
-    }
-
-    /**
-     * Initializes a transformation matrix from the specified basis vectors that
-     * define the transformed coordinate system (as the column vectors of the matrix).
-     */
-    static constexpr Matrix3x3 from_axes(const ml7::Vector3& x, const ml7::Vector3& y, const ml7::Vector3& z)
-    {
-        return {
-            x.x, y.x, z.x,
-            x.y, y.y, z.y,
-            x.z, y.z, z.z,
-        };
-    }
-
-    /**
-     * Initializes a scaling matrix with scaling factor s.
-     */
-    static constexpr Matrix3x3 scaling(float s)
-    {
-        return {
-            s, 0.0f, 0.0f,
-            0.0f, s, 0.0f,
-            0.0f, 0.0f, s,
-        };
-    }
-
-    /**
-     * Initializes a scaling matrix with scaling vector s.
-     */
-    static constexpr Matrix3x3 scaling(const ml7::Vector3& s)
-    {
-        return {
-            s.x, 0.0f, 0.0f,
-            0.0f, s.y, 0.0f,
-            0.0f, 0.0f, s.z,
-        };
-    }
-
-    /**
-     * Initializes a rotation matrix representing a rotation by a certain angle (in
-     * radians) around the x-axis.
-     */
-    static Matrix3x3 rotx(float angle) { return rotx( ::sinf( angle ), ::cosf( angle ) ); }
-
-    /**
-     * Initializes a rotation matrix representing a rotation around the x-axis based
-     * on ready-made sine and cosine values.
-     */
-    static Matrix3x3 rotx(float sin, float cos)
-    {
-        return {
-            1.0f, 0.0f, 0.0f,
-            0.0f,  cos, -sin,
-            0.0f,  sin,  cos,
-        };
-    }
-
-    /**
-     * Initializes a rotation matrix representing a rotation by a certain angle (in
-     * radians) around the y-axis.
-     */
-    static Matrix3x3 roty(float angle) { return roty( ::sinf( angle ), ::cosf( angle ) ); }
-
-    /**
-     * Initializes a rotation matrix representing a rotation around the y-axis based
-     * on ready-made sine and cosine values.
-     */
-    static Matrix3x3 roty(float sin, float cos)
-    {
-        return {
-             cos, 0.0f,  sin,
-            0.0f, 1.0f, 0.0f,
-            -sin, 0.0f,  cos,
-        };
-    }
-
-    /**
-     * Initializes a rotation matrix representing a rotation by a certain angle (in
-     * radians) around the z-axis.
-     */
-    static Matrix3x3 rotz(float angle) { return rotz( ::sinf( angle ), ::cosf( angle ) ); }
-
-    /**
-     * Initializes a rotation matrix representing a rotation around the z-axis based
-     * on ready-made sine and cosine values.
-     */
-    static Matrix3x3 rotz(float sin, float cos)
-    {
-        return {
-             cos, -sin, 0.0f,
-             sin,  cos, 0.0f,
-            0.0f, 0.0f, 1.0f,
-        };
-    }
-
-    /**
-     * Initializes a rotation matrix representing a rotation around the specified
-     * axis, with an angle equal to the magnitude of the specified vector (in
-     * radians).
-     */
-    static Matrix3x3 rotation(const ml7::Vector3& axis_angle)
-    {
-        const float angle = axis_angle.length();
-        if ( !angle )
-            return IDENTITY;
-        return rotation_normalized( axis_angle / angle, angle );
-    }
-
-    /**
-     * Initializes a rotation matrix representing a rotation by a certain angle (in
-     * radians) around the specified axis.
-     */
-    static Matrix3x3 rotation(const ml7::Vector3& axis, float angle)
-    {
-        if ( !angle )
-            return IDENTITY;
-        return rotation_normalized( axis.normalized(), angle );
-    }
-
-    /**
-     * Initializes a rotation matrix representing a rotation by a certain angle (in
-     * radians) around an axis specified as a normalized unit vector.
-     */
-    static Matrix3x3 rotation_normalized(const ml7::Vector3& unit_axis, float angle);
-
-    /**
-     * Initializes a transformation matrix from the specified scaling factor, a
-     * rotation axis, and a rotation angle (in radians).
-     */
-    static Matrix3x3 compose(float scaling, const ml7::Vector3& axis, float angle)
-    {
-        return compose( { scaling, scaling, scaling }, axis, angle );
-    }
-
-    /**
-     * Initializes a transformation matrix from the specified scaling vector, a
-     * rotation axis, and a rotation angle (in radians).
-     */
-    static Matrix3x3 compose(const ml7::Vector3& scaling, const ml7::Vector3& axis, float angle);
-
-    /**
-     * Initializes a view rotation matrix for a left-handed coordinate system using
-     * a camera "look" direction and an "up" direction.
-     */
-    static Matrix3x3 look_lh(const Vector3& look, const Vector3& up);
-
-    /**
-     * Initializes a view rotation matrix for a right-handed coordinate system using
-     * a camera "look" direction and an "up" direction.
-     */
-    static Matrix3x3 look_rh(const Vector3& look, const Vector3& up);
-
-    /**
-     * Swap operation.
-     */
-    void swap(Matrix3x3& rhs);
-
-
-
-    // #############################################################################
     // Attributes
     // #############################################################################
-public:
+
     union
     {
         struct
         {
+            // NOLINTBEGIN(*-use-default-member-init)
             /** Element in the 1st row and 1st column. */
             float _11;
             /** Element in the 1st row and 2nd column. */
@@ -231,6 +46,7 @@ public:
             float _32;
             /** Element in the 3rd row and 3rd column. */
             float _33;
+            // NOLINTEND(*-use-default-member-init)
         }; // struct
 
         struct
@@ -265,9 +81,44 @@ public:
 
 
     // #############################################################################
+    // Construction / Destruction
+    // #############################################################################
+
+    /**
+     * Default constructor. Initializes an identity matrix representing a neutral
+     * transformation.
+     */
+    constexpr Matrix3x3() noexcept
+        : _11(1.0f), _12(0.0f), _13(0.0f)
+        , _21(0.0f), _22(1.0f), _23(0.0f)
+        , _31(0.0f), _32(0.0f), _33(1.0f)
+    {
+    }
+
+    /**
+     * Explicit constructor with parameters for each element.
+     */
+    constexpr Matrix3x3(
+        float _11, float _12, float _13,
+        float _21, float _22, float _23,
+        float _31, float _32, float _33) noexcept
+        : _11(_11), _12(_12), _13(_13)
+        , _21(_21), _22(_22), _23(_23)
+        , _31(_31), _32(_32), _33(_33)
+    {
+    }
+
+    /**
+     * Swap operation.
+     */
+    void swap(Matrix3x3& other) noexcept;
+
+
+
+    // #############################################################################
     // Properties
     // #############################################################################
-public:
+
     /**
      * Tells whether this matrix is invertible (i.e., whether its determinant is
      * non-zero).
@@ -289,7 +140,7 @@ public:
     // #############################################################################
     // Transformations
     // #############################################################################
-public:
+
     /**
      * Returns a copy of this matrix transposed.
      */
@@ -312,7 +163,7 @@ public:
      */
     Vector3 get_row(unsigned i) const
     {
-        assert( i < 3 );
+        assert(i < 3);
         return {
             m[i][0],
             m[i][1],
@@ -325,7 +176,7 @@ public:
      */
     Vector3 get_column(unsigned j) const
     {
-        assert( j < 3 );
+        assert(j < 3);
         return {
             m[0][j],
             m[1][j],
@@ -397,15 +248,15 @@ public:
     // #############################################################################
     // Manipulations
     // #############################################################################
-public:
+
     /**
      * Transposes this matrix.
      */
     Matrix3x3& transpose()
     {
-        std::swap( _12, _21 );
-        std::swap( _13, _31 );
-        std::swap( _23, _32 );
+        std::swap(_12, _21);
+        std::swap(_13, _31);
+        std::swap(_23, _32);
         return *this;
     }
 
@@ -423,7 +274,7 @@ public:
      */
     Matrix3x3& set_row(unsigned i, Vector3 v)
     {
-        assert( i < 3 );
+        assert(i < 3);
         m[i][0] = v[0];
         m[i][1] = v[1];
         m[i][2] = v[2];
@@ -435,7 +286,7 @@ public:
      */
     Matrix3x3& set_column(unsigned j, Vector3 v)
     {
-        assert( j < 3 );
+        assert(j < 3);
         m[0][j] = v[0];
         m[1][j] = v[1];
         m[2][j] = v[2];
@@ -445,32 +296,32 @@ public:
 
 
     // #############################################################################
-    // Access Operators
+    // Comparison Operators
     // #############################################################################
-public:
-    const float* operator[] (unsigned i) const { assert( i < 3 ); return m[ i ]; }
-    float* operator[] (unsigned i) { assert( i < 3 ); return m[ i ]; }
+
+    bool operator == (const Matrix3x3& m) const { for (unsigned k = 0; k < 9; ++k) if (data[k] != m.data[k]) return false; return true; }
+    bool operator != (const Matrix3x3& m) const { for (unsigned k = 0; k < 9; ++k) if (data[k] != m.data[k]) return true; return false; }
 
 
 
     // #############################################################################
     // Arithmetic Operators
     // #############################################################################
-public:
+
     /** Returns a copy of this matrix unmodified. */
     constexpr Matrix3x3 operator + () const { return *this; }
     /** Returns a copy of this matrix with the signs of the elements flipped. */
-    constexpr Matrix3x3 operator - () const { return Matrix3x3( -a, -b, -c, -d, -e, -f, -g, -h, -i ); }
+    constexpr Matrix3x3 operator - () const { return {-a, -b, -c, -d, -e, -f, -g, -h, -i}; }
 
     /** Returns the (element-wise) matrix sum of two matrices. */
-    constexpr Matrix3x3 operator + (const Matrix3x3& m) const { return Matrix3x3( a + m.a, b + m.b, c + m.c, d + m.d, e + m.e, f + m.f, g + m.g, h + m.h, i + m.i ); }
+    constexpr Matrix3x3 operator + (const Matrix3x3& m) const { return {a + m.a, b + m.b, c + m.c, d + m.d, e + m.e, f + m.f, g + m.g, h + m.h, i + m.i}; }
     /** Returns the (element-wise) matrix difference of two matrices. */
-    constexpr Matrix3x3 operator - (const Matrix3x3& m) const { return Matrix3x3( a - m.a, b - m.b, c - m.c, d - m.d, e - m.e, f - m.f, g - m.g, h - m.h, i - m.i ); }
+    constexpr Matrix3x3 operator - (const Matrix3x3& m) const { return {a - m.a, b - m.b, c - m.c, d - m.d, e - m.e, f - m.f, g - m.g, h - m.h, i - m.i}; }
 
     /** Returns a copy of this vector "scaled" by the specified factor (scalar multiplication). */
-    constexpr Matrix3x3 operator * (float s) const { return Matrix3x3( a * s, b * s, c * s, d * s, e * s, f * s, g * s, h * s, i * s ); }
+    constexpr Matrix3x3 operator * (float s) const { return {a * s, b * s, c * s, d * s, e * s, f * s, g * s, h * s, i * s}; }
     /** Returns a copy of this vector inversely "scaled" by the specified factor (scalar division). */
-    constexpr Matrix3x3 operator / (float s) const { return Matrix3x3( a / s, b / s, c / s, d / s, e / s, f / s, g / s, h / s, i / s ); }
+    constexpr Matrix3x3 operator / (float s) const { return {a / s, b / s, c / s, d / s, e / s, f / s, g / s, h / s, i / s}; }
 
     /** Returns the matrix product of two matrices (matrix multiplication). */
     constexpr Matrix3x3 operator * (const Matrix3x3& m) const
@@ -483,34 +334,191 @@ public:
     }
 
     /** Returns a copy of the given (column) vector transformed by this matrix. */
-    constexpr Vector3 operator * (const Vector3& v) const { return transform( v ); }
+    constexpr Vector3 operator * (const Vector3& v) const { return transform(v); }
 
 
 
     // #############################################################################
     // Arithmetic Assignment Operators
     // #############################################################################
-public:
+
     /** Adds the given matrix to this one, resulting in the (element-wise) matrix sum. */
-    constexpr Matrix3x3& operator += (const Matrix3x3& m) { for ( unsigned k = 0; k < 9; ++k ) data[k] += m.data[k]; return *this; }
+    constexpr Matrix3x3& operator += (const Matrix3x3& m) { for (unsigned k = 0; k < 9; ++k) data[k] += m.data[k]; return *this; }
     /** Subtracts the given matrix from this one, resulting in the (element-wise) matrix difference. */
-    constexpr Matrix3x3& operator -= (const Matrix3x3& m) { for ( unsigned k = 0; k < 9; ++k ) data[k] -= m.data[k]; return *this; }
+    constexpr Matrix3x3& operator -= (const Matrix3x3& m) { for (unsigned k = 0; k < 9; ++k) data[k] -= m.data[k]; return *this; }
 
     /** "Scales" this matrix by the specified factor (scalar multiplication). */
-    constexpr Matrix3x3& operator *= (float s) { for ( unsigned k = 0; k < 9; ++k ) data[k] *= s; return *this; }
+    constexpr Matrix3x3& operator *= (float s) { for (float& k : data) k *= s; return *this; }
     /** Inversely scales this matrix by the specified factor (scalar division). */
-    constexpr Matrix3x3& operator /= (float s) { for ( unsigned k = 0; k < 9; ++k ) data[k] /= s; return *this; }
+    constexpr Matrix3x3& operator /= (float s) { for (float& k : data) k /= s; return *this; }
 
 
 
     // #############################################################################
-    // Comparison Operators
+    // Access Operators
     // #############################################################################
-public:
-    bool operator == (const Matrix3x3& m) const { for ( unsigned k = 0; k < 9; ++k ) if ( data[k] != m.data[k] ) return false; return true; }
-    bool operator != (const Matrix3x3& m) const { for ( unsigned k = 0; k < 9; ++k ) if ( data[k] != m.data[k] ) return true; return false; }
 
-}; // class Matrix3x3
+    const float* operator [] (unsigned i) const { assert(i < 3); return m[i]; }
+    float* operator [] (unsigned i) { assert(i < 3); return m[i]; }
+
+
+
+    // #############################################################################
+    // Static Functions
+    // #############################################################################
+
+    /**
+     * Initializes a transformation matrix from the specified basis vectors that
+     * define the transformed coordinate system (as the column vectors of the matrix).
+     */
+    static constexpr Matrix3x3 from_axes(const ml7::Vector3& x, const ml7::Vector3& y, const ml7::Vector3& z)
+    {
+        return {
+            x.x, y.x, z.x,
+            x.y, y.y, z.y,
+            x.z, y.z, z.z,
+        };
+    }
+
+    /**
+     * Initializes a scaling matrix with scaling factor s.
+     */
+    static constexpr Matrix3x3 scaling(float s)
+    {
+        return {
+            s, 0.0f, 0.0f,
+            0.0f, s, 0.0f,
+            0.0f, 0.0f, s,
+        };
+    }
+
+    /**
+     * Initializes a scaling matrix with scaling vector s.
+     */
+    static constexpr Matrix3x3 scaling(const ml7::Vector3& s)
+    {
+        return {
+            s.x, 0.0f, 0.0f,
+            0.0f, s.y, 0.0f,
+            0.0f, 0.0f, s.z,
+        };
+    }
+
+    /**
+     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * radians) around the x-axis.
+     */
+    static Matrix3x3 rotx(float angle) { return rotx(::sinf(angle), ::cosf(angle)); }
+
+    /**
+     * Initializes a rotation matrix representing a rotation around the x-axis based
+     * on ready-made sine and cosine values.
+     */
+    static Matrix3x3 rotx(float sin, float cos)
+    {
+        return {
+            1.0f, 0.0f, 0.0f,
+            0.0f,  cos, -sin,
+            0.0f,  sin,  cos,
+        };
+    }
+
+    /**
+     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * radians) around the y-axis.
+     */
+    static Matrix3x3 roty(float angle) { return roty(::sinf(angle), ::cosf(angle)); }
+
+    /**
+     * Initializes a rotation matrix representing a rotation around the y-axis based
+     * on ready-made sine and cosine values.
+     */
+    static Matrix3x3 roty(float sin, float cos)
+    {
+        return {
+             cos, 0.0f,  sin,
+            0.0f, 1.0f, 0.0f,
+            -sin, 0.0f,  cos,
+        };
+    }
+
+    /**
+     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * radians) around the z-axis.
+     */
+    static Matrix3x3 rotz(float angle) { return rotz(::sinf(angle), ::cosf(angle)); }
+
+    /**
+     * Initializes a rotation matrix representing a rotation around the z-axis based
+     * on ready-made sine and cosine values.
+     */
+    static Matrix3x3 rotz(float sin, float cos)
+    {
+        return {
+             cos, -sin, 0.0f,
+             sin,  cos, 0.0f,
+            0.0f, 0.0f, 1.0f,
+        };
+    }
+
+    /**
+     * Initializes a rotation matrix representing a rotation around the specified
+     * axis, with an angle equal to the magnitude of the specified vector (in
+     * radians).
+     */
+    static Matrix3x3 rotation(const ml7::Vector3& axis_angle)
+    {
+        const float angle = axis_angle.length();
+        if (angle == 0.0f)
+            return IDENTITY;
+        return rotation_normalized(axis_angle / angle, angle);
+    }
+
+    /**
+     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * radians) around the specified axis.
+     */
+    static Matrix3x3 rotation(const ml7::Vector3& axis, float angle)
+    {
+        if (angle == 0.0f)
+            return IDENTITY;
+        return rotation_normalized(axis.normalized(), angle);
+    }
+
+    /**
+     * Initializes a rotation matrix representing a rotation by a certain angle (in
+     * radians) around an axis specified as a normalized unit vector.
+     */
+    static Matrix3x3 rotation_normalized(const ml7::Vector3& unit_axis, float angle);
+
+    /**
+     * Initializes a transformation matrix from the specified scaling factor, a
+     * rotation axis, and a rotation angle (in radians).
+     */
+    static Matrix3x3 compose(float scaling, const ml7::Vector3& axis, float angle)
+    {
+        return compose({scaling, scaling, scaling}, axis, angle);
+    }
+
+    /**
+     * Initializes a transformation matrix from the specified scaling vector, a
+     * rotation axis, and a rotation angle (in radians).
+     */
+    static Matrix3x3 compose(const ml7::Vector3& scaling, const ml7::Vector3& axis, float angle);
+
+    /**
+     * Initializes a view rotation matrix for a left-handed coordinate system using
+     * a camera "look" direction and an "up" direction.
+     */
+    static Matrix3x3 look_lh(const Vector3& look, const Vector3& up);
+
+    /**
+     * Initializes a view rotation matrix for a right-handed coordinate system using
+     * a camera "look" direction and an "up" direction.
+     */
+    static Matrix3x3 look_rh(const Vector3& look, const Vector3& up);
+
+}; // struct Matrix3x3
 
 
 
