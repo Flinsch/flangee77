@@ -65,7 +65,7 @@ namespace textures {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
 
-        assert( _data.empty() || _data.size() == static_cast<size_t>( _data_size ) );
+        assert( get_data().empty() || get_data().size() == static_cast<size_t>( _data_size ) );
 
         HRESULT hresult = d3d_device->CreateTexture(
             _desc.width,
@@ -87,7 +87,7 @@ namespace textures {
         assert( pair.first == _desc.pixel_format );
         assert( pair.second == _channel_order );
 
-        if ( _data.empty() )
+        if ( get_data().empty() )
             return true;
 
         return _update_impl( image_data_provider, true, true );
@@ -110,7 +110,7 @@ namespace textures {
             RECT rect;
         };
         UpdateDesc update_desc[ MAX_LEVELS ];
-        update_desc[ 0 ].data = _data.data();
+        update_desc[ 0 ].data = get_data().data();
         update_desc[ 0 ].rect.left = 0;
         update_desc[ 0 ].rect.top = 0;
         update_desc[ 0 ].rect.right = static_cast<LONG>( _desc.width );

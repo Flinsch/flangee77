@@ -69,7 +69,7 @@ namespace textures {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
 
-        assert( _data.empty() || _data.size() == static_cast<size_t>( _data_size ) );
+        assert( get_data().empty() || get_data().size() == static_cast<size_t>( _data_size ) );
 
         unsigned mip_levels = _desc.mip_levels;
         if ( _desc.usage == resources::ResourceUsage::Dynamic && mip_levels != 1 )
@@ -93,12 +93,12 @@ namespace textures {
 
         constexpr unsigned MAX_LEVELS = 16; // Just some value big enough.
         D3D11_SUBRESOURCE_DATA subresource_data[ MAX_LEVELS ];
-        subresource_data[ 0 ].pSysMem = _data.data();
+        subresource_data[ 0 ].pSysMem = get_data().data();
         subresource_data[ 0 ].SysMemPitch = _line_pitch;
         subresource_data[ 0 ].SysMemSlicePitch = 0;
 
         std::vector<xl7::graphics::images::Image> mipmaps;
-        if ( !_data.empty() && mip_levels != 1 )
+        if ( !get_data().empty() && mip_levels != 1 )
         {
             mipmaps = create_mipmaps();
             unsigned mip_level = 1;
@@ -116,7 +116,7 @@ namespace textures {
 
         HRESULT hresult = d3d_device->CreateTexture2D(
             &texture_desc,
-            _data.empty() ? nullptr : subresource_data,
+            get_data().empty() ? nullptr : subresource_data,
             &_d3d_texture );
 
         if ( FAILED(hresult) )
@@ -169,7 +169,7 @@ namespace textures {
             }
 
             std::byte* dst = static_cast<std::byte*>( mapped_subresource.pData );
-            const std::byte* src = _data.data();
+            const std::byte* src = get_data().data();
             for ( unsigned y = 0; y < _desc.height; ++y )
             {
                 ::memcpy( dst, src, _line_pitch );
@@ -191,7 +191,7 @@ namespace textures {
             box.bottom = _desc.height;
             box.back = 1;
 
-            d3d_device_context->UpdateSubresource1( _d3d_texture.Get(), 0, &box, _data.data(), _line_pitch, 0, copy_flags );
+            d3d_device_context->UpdateSubresource1( _d3d_texture.Get(), 0, &box, get_data().data(), _line_pitch, 0, copy_flags );
 
             if ( _desc.mip_levels != 1 )
             {

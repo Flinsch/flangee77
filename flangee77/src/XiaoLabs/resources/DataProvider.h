@@ -7,8 +7,7 @@
 
 
 
-namespace xl7 {
-namespace resources {
+namespace xl7::resources {
 
 
 
@@ -19,10 +18,6 @@ public:
 
 
 
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
     /**
      * Fills the given byte span with the provided data. Any specified offset of
      * this data provider is not taken into account here; this must have been
@@ -41,10 +36,6 @@ public:
 
 
 
-    // #############################################################################
-    // Prototypes
-    // #############################################################################
-public:
     /**
      * Returns the target data offset, in bytes.
      */
@@ -55,7 +46,10 @@ public:
      */
     virtual size_t get_size() const { return 0; }
 
+
+
 private:
+
     /**
      * Fills the given byte span with the provided data. Any specified offset of
      * this data provider is not taken into account here; this must have been
@@ -67,7 +61,6 @@ private:
 
 
 
-} // namespace resources
-} // namespace xl7
+} // namespace xl7::resources
 
 #endif // XL7_RESOURCES_DATAPROVIDER_H

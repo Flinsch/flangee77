@@ -12,75 +12,21 @@
 
 
 
-namespace xl7 {
-namespace resources {
+namespace xl7::resources {
 
 
 
 class ResourceManager
 {
 
-protected:
-    static void _destroy_resource(Resource* resource);
-
-protected:
-    typedef std::unique_ptr<Resource, decltype(&_destroy_resource)> ResourcePtr;
-
-
-
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Default constructor.
-     */
-    ResourceManager();
-
-    /**
-     * Destructor.
-     */
-    virtual ~ResourceManager();
-
-private:
-    /** Copy constructor. */
-    ResourceManager(const ResourceManager&) = delete;
-    /** Copy assignment operator. */
-    ResourceManager& operator = (const ResourceManager&) = delete;
-
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * A "linear list" of the managed resources.
-     */
-    struct ResourceEntry
-    {
-        ResourceID id;
-        ResourcePtr ptr;
-    };
-    std::vector<ResourceEntry> _resources;
-
-    /**
-     * A lookup table that maps a given resource identifier to the corresponding
-     * resource ID.
-     */
-    std::unordered_map<cl7::astring_view, ResourceID> _resource_lookup;
-
-    /**
-     * A "list" of indices that mark free entries in the "linear list".
-     */
-    std::vector<size_t> _free_indices;
-
-
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
 public:
+    ResourceManager(const ResourceManager&) = delete;
+    ResourceManager& operator = (const ResourceManager&) = delete;
+    ResourceManager(ResourceManager&&) = delete;
+    ResourceManager& operator = (ResourceManager&&) = delete;
+
+
+
     /**
      * Returns the number of contained resources in this resource manager.
      */
@@ -135,9 +81,9 @@ public:
     template <class TResource>
     TResource* get_resource(size_t index) const
     {
-        Resource* resource = get_resource( index );
-        assert( static_cast<TResource*>( resource ) == dynamic_cast<TResource*>( resource ) );
-        return static_cast<TResource*>( resource );
+        Resource* resource = get_resource(index);
+        assert(static_cast<TResource*>(resource) == dynamic_cast<TResource*>(resource));
+        return static_cast<TResource*>(resource);
     }
 
     /**
@@ -147,9 +93,9 @@ public:
     template <class TResource>
     TResource* find_resource(ResourceID id) const
     {
-        Resource* resource = find_resource( id );
-        assert( static_cast<TResource*>( resource ) == dynamic_cast<TResource*>( resource ) );
-        return static_cast<TResource*>( resource );
+        Resource* resource = find_resource(id);
+        assert(static_cast<TResource*>(resource) == dynamic_cast<TResource*>(resource));
+        return static_cast<TResource*>(resource);
     }
 
     /**
@@ -160,9 +106,9 @@ public:
     template <class TResource>
     TResource* find_resource(cl7::astring_view identifier) const
     {
-        Resource* resource = find_resource( identifier );
-        assert( static_cast<TResource*>( resource ) == dynamic_cast<TResource*>( resource ) );
-        return static_cast<TResource*>( resource );
+        Resource* resource = find_resource(identifier);
+        assert(static_cast<TResource*>(resource) == dynamic_cast<TResource*>(resource));
+        return static_cast<TResource*>(resource);
     }
 
     /**
@@ -206,14 +152,21 @@ public:
 
 
 
-    // #############################################################################
-    // Management Functions
-    // #############################################################################
 protected:
+    using ResourcePtr = std::unique_ptr<Resource, std::add_pointer_t<void (Resource*)>>;
+
+
+
+    ResourceManager() = default;
+
+    ~ResourceManager();
+
+
+
     /**
      * Generates and returns the next resource ID to use when adding a new resource.
      */
-    ResourceID _next_id();
+    ResourceID _next_id() const;
 
     /**
      * Adds the given resource to this resource manager (and returns the ID of the
@@ -222,7 +175,24 @@ protected:
      */
     ResourceID _try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider);
 
+
+
+    /**
+     * Destroys the resource via `Resource::Attorney::destroy`.
+     */
+    static void _destroy_resource(Resource* resource);
+
+
+
 private:
+    struct ResourceEntry
+    {
+        ResourceID id;
+        ResourcePtr ptr;
+    };
+
+
+
     /**
      * Adds the given resource to this resource manager. This operation does not
      * request/acquire the resource. This must have happened successfully before.
@@ -230,11 +200,28 @@ private:
      */
     ResourceID _add_resource(ResourcePtr resource_ptr);
 
+
+
+    /**
+     * A "linear list" of the managed resources.
+     */
+    std::vector<ResourceEntry> _resources;
+
+    /**
+     * A lookup table that maps a given resource identifier to the corresponding
+     * resource ID.
+     */
+    std::unordered_map<cl7::astring_view, ResourceID> _resource_lookup;
+
+    /**
+     * A "list" of indices that mark free entries in the "linear list".
+     */
+    std::vector<size_t> _free_indices;
+
 }; // class ResourceManager
 
 
 
-} // namespace resources
-} // namespace xl7
+} // namespace xl7::resources
 
 #endif // XL7_RESOURCES_RESOURCEMANAGER_H

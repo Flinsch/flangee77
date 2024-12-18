@@ -12,8 +12,7 @@
 
 
 
-namespace xl7 {
-namespace resources {
+namespace xl7::resources {
 
 
 
@@ -21,20 +20,19 @@ class ResourceManager;
 
 
 
-class Resource
+class Resource // NOLINT(*-virtual-class-destructor)
 {
 
 public:
     class Attorney
     {
-        static bool acquire(Resource* resource, const DataProvider& data_provider) { return resource->_acquire( data_provider ); }
+        static bool acquire(Resource* resource, const DataProvider& data_provider) { return resource->_acquire(data_provider); }
         static void dispose(Resource* resource) { resource->_dispose(); }
         static void release(Resource* resource) { resource->_release(); }
         static void destroy(Resource* resource) { delete resource; }
         friend class ResourceManager;
     };
 
-public:
     template <class TDesc>
     struct CreateParams
     {
@@ -42,7 +40,7 @@ public:
         ResourceManager* manager;
         /** The (new) ID of the resource to create. */
         ResourceID id;
-        /** The textual identifier of the resource to create (may be empty). */
+        /** The textual identifier of the resource to create (can be empty). */
         cl7::astring_view identifier;
         /** The descriptor of the resource to create. */
         TDesc desc;
@@ -50,83 +48,57 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    Resource(ResourceManager* manager, ResourceID id, cl7::astring_view identifier);
-
-    /**
-     * Explicit constructor.
-     */
-    template <class TDesc>
-    Resource(const CreateParams<TDesc>& params)
-        : Resource( params.manager, params.id, params.identifier )
-    {
-    }
-
-    /**
-     * Destructor.
-     */
-    virtual ~Resource();
-
-private:
-    /** Default constructor. */
     Resource() = delete;
-    /** Copy constructor. */
+
     Resource(const Resource&) = delete;
-    /** Copy assignment operator. */
     Resource& operator = (const Resource&) = delete;
+    Resource(Resource&&) = delete;
+    Resource& operator = (Resource&&) = delete;
+
+
+
+    /**
+     * Returns the specific type of the resource, as a "human-friendly" string.
+     */
+    virtual cl7::string_view get_type_string() const { return TEXT("resource"); }
 
 
 
     // #############################################################################
-    // Attributes
+    // Methods
     // #############################################################################
-private:
-    /**
-     * The resource manager that owns this resource.
-     */
-    ResourceManager* const _manager;
 
     /**
-     * The ID of this resource.
+     * Returns the identifier of this resource (if specified, empty otherwise).
      */
-    const ResourceID _id;
+    cl7::string get_identifier_string() const;
 
     /**
-     * The textual identifier of this resource (if specified, empty otherwise).
+     * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    const cl7::astring _identifier;
-
-private:
-    /**
-     * The reference count to determine whether the resource should actually be
-     * disposed/"unacquired" when released.
-     */
-    unsigned _reference_count;
+    cl7::string get_typed_identifier_string() const { return cl7::string(get_type_string()) + TEXT(" \"") + get_identifier_string() + TEXT("\""); }
 
     /**
-     * The flag that indicates whether this resource is ready for use (i.e., it is
-     * managed by its owning manager and has been successfully acquired).
+     * Increases the reference count. A call to this function should be paired with
+     * a call to the release function (or one of the manager's release functions).
      */
-    bool _is_usable;
+    void add_reference();
 
-protected:
     /**
-     * The (optional) local copy of the resource data.
+     * Releases the resource. If the reference count reaches zero, the resource is
+     * actually disposed/"unacquired" (and removed from its owning manager), thereby
+     * rendering it unusable.
+     * Time complexity: linear in the number of contained resources of the owning
+     * manager.
      */
-    cl7::byte_vector _data;
+    void release();
 
 
 
     // #############################################################################
     // Properties
     // #############################################################################
-public:
+
     /**
      * Returns the "raw" resource interface/accessor, if applicable, otherwise NULL.
      */
@@ -134,11 +106,10 @@ public:
     T* get_raw_resource() const
     {
         void* raw_resource = _get_raw_resource_impl();
-        //assert( static_cast<T*>( raw_resource ) == dynamic_cast<T*>( raw_resource ) ); // Unfortunately not possible with void*.
-        return static_cast<T*>( raw_resource );
+        //assert(static_cast<T*>(raw_resource) == dynamic_cast<T*>(raw_resource)); // Unfortunately not possible with void*.
+        return static_cast<T*>(raw_resource);
     }
 
-public:
     /**
      * Returns the resource manager responsible for this resource.
      */
@@ -169,69 +140,37 @@ public:
     /**
      * Returns the (optional) local copy of the resource data.
      */
-    const cl7::byte_vector& get_data() const { return _data; }
+    cl7::byte_view get_data() const { return _data; }
 
 
 
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
-    /**
-     * Returns the identifier of this resource (if specified, empty otherwise).
-     */
-    cl7::string get_identifier_string() const;
-
-    /**
-     * Returns the specific type of the resource, as a "human-friendly" string.
-     */
-    cl7::string get_typed_identifier_string() const { return cl7::string(get_type_string()) + TEXT(" \"") + get_identifier_string() + TEXT("\""); }
-
-    /**
-     * Increases the reference count. A call to this function should be paired with
-     * a call to the release function (or one of the manager's release functions).
-     */
-    void add_reference();
-
-    /**
-     * Releases the resource. If the reference count reaches zero, the resource is
-     * actually disposed/"unacquired" (and removed from its owning manager), thereby
-     * rendering it unusable.
-     * Time complexity: linear in the number of contained resources of the owning
-     * manager.
-     */
-    void release();
-
-
+protected:
 
     // #############################################################################
-    // Lifetime Management
+    // Construction / Destruction
     // #############################################################################
-private:
-    /**
-     * Requests/acquires the resource, bringing it into a usable state (or not).
-     */
-    bool _acquire(const DataProvider& data_provider);
 
-    /**
-     * Disposes/"unacquires" the resource, thereby rendering it unusable, indicating
-     * that it is no longer managed by its owning manager.
-     */
-    void _dispose();
+    Resource(ResourceManager* manager, ResourceID id, cl7::astring_view identifier);
 
-    /**
-     * Decreases the reference count. If it reaches zero, the resource is actually
-     * disposed/"unacquired", thereby rendering it unusable, indicating that it is
-     * no longer managed by its owning manager.
-     */
-    void _release();
+    template <class TDesc>
+    Resource(const CreateParams<TDesc>& params)
+        : Resource(params.manager, params.id, params.identifier)
+    {
+    }
+
+    virtual ~Resource();
 
 
 
     // #############################################################################
     // Helpers
     // #############################################################################
-protected:
+
+    /**
+     * Provides mutable access to the (optional) local copy of the resource data.
+     */
+    cl7::byte_vector& _access_data() { return _data; }
+
     /**
      * Checks whether this resource is ready for use (i.e., it is managed by its
      * owning manager and has been successfully acquired) and fires an error message
@@ -239,14 +178,12 @@ protected:
      */
     bool _check_is_usable() const;
 
-protected:
     /**
      * Checks whether the given data provider complies with the specific properties
      * of the resource and, if so, (re)populates the local data buffer.
      */
     bool _try_fill_data(const DataProvider& data_provider);
 
-protected:
     /**
      * Checks whether the given data provider complies with the specified total data
      * size and fires an error message if not.
@@ -261,16 +198,17 @@ protected:
 
 
 
+private:
+
     // #############################################################################
     // Prototypes
     // #############################################################################
-private:
+
     /**
      * Returns the "raw" resource interface/accessor, if applicable, otherwise NULL.
      */
     virtual void* _get_raw_resource_impl() const { return nullptr; }
 
-private:
     /**
      * Checks whether the given data provider complies with the specific properties
      * of the resource to (re)populate it, taking into account the current state of
@@ -298,17 +236,72 @@ private:
      */
     virtual bool _dispose_impl() = 0;
 
-public:
+
+
+    // #############################################################################
+    // Lifetime Management
+    // #############################################################################
+
     /**
-     * Returns the specific type of the resource, as a "human-friendly" string.
+     * Requests/acquires the resource, bringing it into a usable state (or not).
      */
-    virtual cl7::string_view get_type_string() const { return TEXT("resource"); }
+    bool _acquire(const DataProvider& data_provider);
+
+    /**
+     * Disposes/"unacquires" the resource, thereby rendering it unusable, indicating
+     * that it is no longer managed by its owning manager.
+     */
+    void _dispose();
+
+    /**
+     * Decreases the reference count. If it reaches zero, the resource is actually
+     * disposed/"unacquired", thereby rendering it unusable, indicating that it is
+     * no longer managed by its owning manager.
+     */
+    void _release();
+
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    /**
+     * The resource manager that owns this resource.
+     */
+    ResourceManager* const _manager;
+
+    /**
+     * The ID of this resource.
+     */
+    const ResourceID _id;
+
+    /**
+     * The textual identifier of this resource (if specified, empty otherwise).
+     */
+    const cl7::astring _identifier;
+
+    /**
+     * The reference count to determine whether the resource should actually be
+     * disposed/"unacquired" when released.
+     */
+    unsigned _reference_count;
+
+    /**
+     * The flag that indicates whether this resource is ready for use (i.e., it is
+     * managed by its owning manager and has been successfully acquired).
+     */
+    bool _is_usable;
+
+    /**
+     * The (optional) local copy of the resource data.
+     */
+    cl7::byte_vector _data;
 
 }; // class Resource
 
 
 
-} // namespace resources
-} // namespace xl7
+} // namespace xl7::resources
 
 #endif // XL7_RESOURCES_RESOURCE_H

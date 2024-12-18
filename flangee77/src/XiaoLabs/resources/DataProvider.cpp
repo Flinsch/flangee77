@@ -2,14 +2,9 @@
 
 
 
-namespace xl7 {
-namespace resources {
+namespace xl7::resources {
 
 
-
-    // #############################################################################
-    // Prototypes
-    // #############################################################################
 
     /**
      * Fills the given byte span with the provided data. Any specified offset of
@@ -19,12 +14,12 @@ namespace resources {
     void DataProvider::fill(cl7::byte_span target) const
     {
         const size_t size = get_size();
-        if ( size == 0 )
+        if (size == 0)
             return; // Nothing to do here.
 
-        assert( size <= target.size() );
+        assert(size <= target.size());
 
-        return _fill( target );
+        _fill(target);
     }
 
     /**
@@ -37,19 +32,18 @@ namespace resources {
     void DataProvider::fill(cl7::byte_vector& target) const
     {
         const size_t size = get_size();
-        if ( size == 0 )
+        if (size == 0)
             return; // Nothing to do here.
 
         const size_t offset = get_offset();
 
         const size_t min_total_size = offset + size;
-        if ( target.size() < min_total_size )
-            target.resize( min_total_size );
+        if (target.size() < min_total_size)
+            target.resize(min_total_size);
 
-        return _fill( cl7::byte_span( target.begin() + offset, size ) );
+        _fill(cl7::byte_span(target.begin() + static_cast<std::ptrdiff_t>(offset), size));
     }
 
 
 
-} // namespace resources
-} // namespace xl7
+} // namespace xl7::resources

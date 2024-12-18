@@ -56,7 +56,7 @@ namespace meshes {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
 
-        assert( _data.empty() || _data.size() == static_cast<size_t>( _size ) );
+        assert( get_data().empty() || get_data().size() == static_cast<size_t>( _size ) );
 
         HRESULT hresult = d3d_device->CreateVertexBuffer(
             _size,
@@ -72,7 +72,7 @@ namespace meshes {
             return false;
         }
 
-        if ( _data.empty() )
+        if ( get_data().empty() )
             return true;
 
         return _update_impl( data_provider, true, true );
@@ -123,7 +123,7 @@ namespace meshes {
             return false;
         }
 
-        ::memcpy( dst, _data.data() + data_provider.get_offset(), data_provider.get_size() );
+        ::memcpy( dst, get_data().data() + data_provider.get_offset(), data_provider.get_size() );
 
         hresult = _d3d_vertex_buffer->Unlock();
         assert( SUCCEEDED(hresult) );

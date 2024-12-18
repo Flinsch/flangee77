@@ -2,8 +2,7 @@
 
 
 
-namespace xl7 {
-namespace resources {
+namespace xl7::resources {
 
 
 
@@ -16,29 +15,23 @@ namespace resources {
     // #############################################################################
 
     /**
-     * Default constructor.
+     * Creates an invalid resource ID.
      */
-    ResourceID::ResourceID()
-        : _id( id_t(-1) )
+    ResourceID::ResourceID() noexcept
+        : _id(static_cast<id_t>(-1))
     {
     }
 
-    /**
-     * Explicit constructor.
-     */
     ResourceID::ResourceID(size_t index, unsigned version)
-        : _id( (static_cast<id_t>( index ) & INDEX_MASK) | ((static_cast<id_t>( version ) & VERSION_MASK) << VERSION_SHIFT) )
+        : _id((static_cast<id_t>(index) & INDEX_MASK) | ((static_cast<id_t>(version) & VERSION_MASK) << VERSION_SHIFT))
     {
-        assert( static_cast<id_t>( index ) <= INDEX_MASK );
-        assert( static_cast<id_t>( version ) <= VERSION_MASK );
+        assert(static_cast<id_t>(index) <= INDEX_MASK);
+        assert(static_cast<id_t>(version) <= VERSION_MASK);
     }
 
-    /**
-     * Swap operation.
-     */
-    void ResourceID::swap(ResourceID& rhs)
+    void ResourceID::swap(ResourceID& other) noexcept
     {
-        std::swap( _id, rhs._id );
+        std::swap(_id, other._id);
     }
 
 
@@ -50,7 +43,7 @@ namespace resources {
     /**
      * Returns true if the resource ID is valid, false otherwise.
      */
-    bool ResourceID::is_valid() const
+    bool ResourceID::is_valid() const noexcept
     {
         return _id != INVALID_ID._id;
     }
@@ -58,17 +51,17 @@ namespace resources {
     /**
      * Returns the index part of the resource ID.
      */
-    size_t ResourceID::index() const
+    size_t ResourceID::index() const noexcept
     {
-        return static_cast<size_t>( _id & INDEX_MASK );
+        return static_cast<size_t>(_id & INDEX_MASK);
     }
 
     /**
      * Extracts the version from the resource ID.
      */
-    unsigned ResourceID::version() const
+    unsigned ResourceID::version() const noexcept
     {
-        return static_cast<unsigned>( (_id & VERSION_MASK) >> VERSION_SHIFT );
+        return static_cast<unsigned>((_id & VERSION_MASK) >> VERSION_SHIFT);
     }
 
 
@@ -80,12 +73,11 @@ namespace resources {
     /**
      * Invalidates this resource ID.
      */
-    void ResourceID::invalidate()
+    void ResourceID::invalidate() noexcept
     {
         _id = INVALID_ID._id;
     }
 
 
 
-} // namespace resources
-} // namespace xl7
+} // namespace xl7::resources

@@ -114,7 +114,7 @@ namespace shaders {
      */
     bool PixelShaderImpl::_recompile_impl(const xl7::graphics::shaders::CompileOptions& compile_options, xl7::graphics::shaders::ShaderCode& bytecode_out)
     {
-        xl7::graphics::shaders::ShaderCode hlsl_code( _desc.language, _data );
+        xl7::graphics::shaders::ShaderCode hlsl_code( _desc.language, get_data() );
         assert( hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel );
 
         return _acquire_recompilable_impl( xl7::graphics::shaders::CodeDataProvider( &hlsl_code, &compile_options ), bytecode_out );

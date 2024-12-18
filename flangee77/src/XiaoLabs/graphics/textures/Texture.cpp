@@ -139,14 +139,14 @@ namespace textures {
         if ( image_data_provider.image_desc.pixel_format == _desc.pixel_format && image_data_provider.image_desc.channel_order == _channel_order )
         {
             // No conversion required at all.
-            image_data.swap( _data );
+            image_data.swap( _access_data() );
         }
         else
         {
             // Perform image format conversion.
             images::Image source_image( image_data_provider.image_desc, std::move(image_data) );
             images::Image target_image = images::ImageConverter().convert_image( source_image, _desc.pixel_format, _channel_order );
-            target_image.swap( _data );
+            target_image.swap( _access_data() );
         }
 
         return true;
@@ -191,8 +191,8 @@ namespace textures {
         assert( size == desc.calculate_data_size() );
 
         cl7::byte_view data;
-        if ( offset + size <= _data.size() )
-            data = { _data.data() + offset, size };
+        if ( offset + size <= get_data().size() )
+            data = { get_data().data() + offset, size };
 
         return images::Image( desc, data, true );
     }
@@ -232,7 +232,7 @@ namespace textures {
         if ( !_try_fill_data( image_data_provider ) )
             return false;
 
-        assert( image_data_provider.get_offset() == 0 && _data.size() == _data_size );
+        assert( image_data_provider.get_offset() == 0 && get_data().size() == _data_size );
         bool discard = true;
         bool no_overwrite = false;
 

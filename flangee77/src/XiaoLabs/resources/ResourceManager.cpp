@@ -2,52 +2,16 @@
 
 
 
-namespace xl7 {
-namespace resources {
+namespace xl7::resources {
 
 
-
-    void ResourceManager::_destroy_resource(Resource* resource)
-    {
-        Resource::Attorney::destroy( resource );
-    }
-
-
-
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Default constructor.
-     */
-    ResourceManager::ResourceManager()
-        : _resources()
-        , _resource_lookup()
-        , _free_indices()
-    {
-    }
-
-    /**
-     * Destructor.
-     */
-    ResourceManager::~ResourceManager()
-    {
-        assert( get_resource_count() == 0 );
-    }
-
-
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
 
     /**
      * Returns the number of contained resources in this resource manager.
      */
     size_t ResourceManager::get_resource_count() const
     {
-        assert( _resources.size() - _free_indices.size() == _resource_lookup.size() );
+        assert(_resources.size() - _free_indices.size() == _resource_lookup.size());
         return _resource_lookup.size();
     }
 
@@ -57,10 +21,10 @@ namespace resources {
      */
     bool ResourceManager::contains_resource(const Resource* resource) const
     {
-        if ( !resource )
+        if (!resource)
             return false;
 
-        return contains_resource( resource->get_id() );
+        return contains_resource(resource->get_id());
     }
 
     /**
@@ -70,7 +34,7 @@ namespace resources {
      */
     bool ResourceManager::contains_resource(ResourceID id) const
     {
-        return find_resource( id ) != nullptr;
+        return find_resource(id) != nullptr;
     }
 
     /**
@@ -80,7 +44,7 @@ namespace resources {
      */
     bool ResourceManager::contains_resource(cl7::astring_view identifier) const
     {
-        return find_resource( identifier ) != nullptr;
+        return find_resource(identifier) != nullptr;
     }
 
     /**
@@ -90,18 +54,18 @@ namespace resources {
      */
     Resource* ResourceManager::get_resource(size_t index) const
     {
-        assert( index < get_resource_count() );
-        if ( index >= get_resource_count() )
+        assert(index < get_resource_count());
+        if (index >= get_resource_count())
             return nullptr;
 
-        if ( _free_indices.empty() )
-            return _resources[ index ].ptr.get();
+        if (_free_indices.empty())
+            return _resources[index].ptr.get();
 
-        for ( const auto& entry : _resources )
+        for (const auto& entry : _resources)
         {
-            if ( !entry.ptr )
+            if (!entry.ptr)
                 continue;
-            if ( index == 0 )
+            if (index == 0)
                 return entry.ptr.get();
             --index;
         }
@@ -116,18 +80,18 @@ namespace resources {
     Resource* ResourceManager::find_resource(ResourceID id) const
     {
         size_t index = id.index();
-        if ( index >= _resources.size() )
+        if (index >= _resources.size())
             return nullptr;
 
-        auto &entry = _resources[ index ];
-        if ( entry.id != id )
+        const auto& entry = _resources[index];
+        if (entry.id != id)
             return nullptr;
 
         Resource* resource = entry.ptr.get();
-        if ( !resource )
+        if (!resource)
             return nullptr;
 
-        assert( resource->get_id() == id );
+        assert(resource->get_id() == id);
         return resource;
     }
 
@@ -138,11 +102,11 @@ namespace resources {
      */
     Resource* ResourceManager::find_resource(cl7::astring_view identifier) const
     {
-        auto it = _resource_lookup.find( identifier );
-        if ( it == _resource_lookup.end() )
+        auto it = _resource_lookup.find(identifier);
+        if (it == _resource_lookup.end())
             return nullptr;
 
-        return find_resource( it->second );
+        return find_resource(it->second);
     }
 
     /**
@@ -153,10 +117,10 @@ namespace resources {
      */
     bool ResourceManager::release_resource(Resource* resource)
     {
-        if ( !resource )
+        if (!resource)
             return false;
 
-        return release_resource( resource->get_id() );
+        return release_resource(resource->get_id());
     }
 
     /**
@@ -168,29 +132,29 @@ namespace resources {
     bool ResourceManager::release_resource(ResourceID id)
     {
         size_t index = id.index();
-        if ( index >= _resources.size() )
+        if (index >= _resources.size())
             return false;
 
-        auto &entry = _resources[ index ];
-        if ( entry.id != id )
+        auto& entry = _resources[index];
+        if (entry.id != id)
             return false;
 
         auto& resource_ptr = entry.ptr;
         Resource* resource = resource_ptr.get();
-        if ( !resource )
+        if (!resource)
             return false;
 
-        assert( resource->get_id() == id );
+        assert(resource->get_id() == id);
 
-        auto it = _resource_lookup.find( resource->get_identifier() );
-        assert( it != _resource_lookup.end() );
+        auto it = _resource_lookup.find(resource->get_identifier());
+        assert(it != _resource_lookup.end());
 
-        Resource::Attorney::release( resource );
-        if ( resource->get_reference_count() > 0 )
+        Resource::Attorney::release(resource);
+        if (resource->get_reference_count() > 0)
             return true;
 
-        _resource_lookup.erase( it );
-        _free_indices.push_back( index );
+        _resource_lookup.erase(it);
+        _free_indices.push_back(index);
 
         resource_ptr.reset();
 
@@ -205,7 +169,7 @@ namespace resources {
      */
     bool ResourceManager::release_resource_and_invalidate(ResourceID& id)
     {
-        if ( !release_resource( id ) )
+        if (!release_resource(id))
             return false;
 
         id.invalidate();
@@ -221,7 +185,7 @@ namespace resources {
      */
     bool ResourceManager::release_resource(cl7::astring_view identifier)
     {
-        return release_resource( find_resource( identifier ) );
+        return release_resource(find_resource(identifier));
     }
 
     /**
@@ -230,9 +194,9 @@ namespace resources {
      */
     void ResourceManager::dispose_resources()
     {
-        for ( auto& entry : _resources )
+        for (auto& entry : _resources)
         {
-            Resource::Attorney::dispose( entry.ptr.get() );
+            Resource::Attorney::dispose(entry.ptr.get());
         }
 
         _free_indices.clear();
@@ -242,21 +206,24 @@ namespace resources {
 
 
 
-    // #############################################################################
-    // Management Functions
-    // #############################################################################
+    ResourceManager::~ResourceManager()
+    {
+        assert(get_resource_count() == 0);
+    }
+
+
 
     /**
      * Generates and returns the next resource ID to use when adding a new resource.
      */
-    ResourceID ResourceManager::_next_id()
+    ResourceID ResourceManager::_next_id() const
     {
-        if ( _free_indices.empty() )
-            return ResourceID( _resources.size(), 0 );
+        if (_free_indices.empty())
+            return {_resources.size(), 0};
 
         size_t index = _free_indices.back();
-        assert( index < _resources.size() );
-        return ResourceID( index, _resources[ index ].id.version() + 1 );
+        assert(index < _resources.size());
+        return {index, _resources[index].id.version() + 1};
     }
 
     /**
@@ -266,16 +233,28 @@ namespace resources {
      */
     ResourceID ResourceManager::_try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider)
     {
-        assert( resource_ptr );
-        if ( !resource_ptr )
-            return ResourceID();
+        assert(resource_ptr);
+        if (!resource_ptr)
+            return {};
 
-        assert( !resource_ptr->is_usable() );
-        if ( !Resource::Attorney::acquire( resource_ptr.get(), data_provider ) )
-            return ResourceID();
+        assert(!resource_ptr->is_usable());
+        if (!Resource::Attorney::acquire(resource_ptr.get(), data_provider))
+            return {};
 
-        return _add_resource( std::move(resource_ptr) );
+        return _add_resource(std::move(resource_ptr));
     }
+
+
+
+    /**
+     * Destroys the resource via `Resource::Attorney::destroy`.
+     */
+    void ResourceManager::_destroy_resource(Resource* resource)
+    {
+        Resource::Attorney::destroy(resource);
+    }
+
+
 
     /**
      * Adds the given resource to this resource manager. This operation does not
@@ -284,39 +263,38 @@ namespace resources {
      */
     ResourceID ResourceManager::_add_resource(ResourcePtr resource_ptr)
     {
-        assert( resource_ptr );
-        assert( resource_ptr->is_usable() );
-        assert( _resource_lookup.find( resource_ptr->get_identifier() ) == _resource_lookup.end() );
+        assert(resource_ptr);
+        assert(resource_ptr->is_usable());
+        assert(!_resource_lookup.contains(resource_ptr->get_identifier()));
 
         ResourceID id = resource_ptr->get_id();
         size_t index = id.index();
-        assert( index <= _resources.size() );
+        assert(index <= _resources.size());
 
-        _resource_lookup.insert( { resource_ptr->get_identifier(), id } );
+        _resource_lookup.insert({resource_ptr->get_identifier(), id});
 
-        if ( index == _resources.size() )
+        if (index == _resources.size())
         {
-            _resources.emplace_back( id, std::move(resource_ptr) );
+            _resources.emplace_back(id, std::move(resource_ptr));
         }
         else
         {
-            assert( _resources[ index ].id.index() == index );
-            assert( _resources[ index ].id.version() + 1 == id.version() );
-            assert( !_resources[ index ].ptr );
+            assert(_resources[index].id.index() == index);
+            assert(_resources[index].id.version() + 1 == id.version());
+            assert(!_resources[index].ptr);
 
-            assert( _free_indices.size() > 0 );
-            assert( _free_indices.back() == index );
+            assert(!_free_indices.empty());
+            assert(_free_indices.back() == index);
 
-            _resources[ index ].id = id;
-            _resources[ index ].ptr.swap( resource_ptr );
+            _resources[index].id = id;
+            _resources[index].ptr.swap(resource_ptr);
             _free_indices.pop_back();
         }
 
-        assert( get_resource_count() > 0 );
+        assert(get_resource_count() > 0);
         return id;
     }
 
 
 
-} // namespace resources
-} // namespace xl7
+} // namespace xl7::resources

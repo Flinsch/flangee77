@@ -2,12 +2,11 @@
 #ifndef XL7_RESOURCES_RESOURCEUSAGE_H
 #define XL7_RESOURCES_RESOURCEUSAGE_H
 
+#include <CoreLabs/root.h>
 
 
 
-
-namespace xl7 {
-namespace resources {
+namespace xl7::resources {
 
 
 
@@ -30,7 +29,6 @@ enum class ResourceUsage
 
 
 
-} // namespace resources
-} // namespace xl7
+} // namespace xl7::resources
 
 #endif // XL7_RESOURCES_RESOURCEUSAGE_H

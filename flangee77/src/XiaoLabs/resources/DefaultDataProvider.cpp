@@ -1,39 +1,20 @@
 #include "DefaultDataProvider.h"
 
-
-
-namespace xl7 {
-namespace resources {
+#include <algorithm>
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
+namespace xl7::resources {
 
-    /**
-     * Default constructor.
-     */
-    DefaultDataProvider::DefaultDataProvider()
-        : _data()
-        , _offset( 0 )
-    {
-    }
 
-    /**
-     * Explicit constructor.
-     */
+
     DefaultDataProvider::DefaultDataProvider(cl7::byte_view data, size_t offset)
-        : _data( data )
-        , _offset( offset )
+        : _data(data)
+        , _offset(offset)
     {
     }
 
 
-
-    // #############################################################################
-    // Implementations
-    // #############################################################################
 
     /**
      * Fills the given byte span with the provided data. Any specified offset of
@@ -42,11 +23,10 @@ namespace resources {
      */
     void DefaultDataProvider::_fill(cl7::byte_span target) const
     {
-        assert( target.size() >= _data.size() );
-        std::copy( _data.begin(), _data.end(), target.begin() );
+        assert(target.size() >= _data.size());
+        std::ranges::copy(_data, target.begin());
     }
 
 
 
-} // namespace resources
-} // namespace xl7
+} // namespace xl7::resources

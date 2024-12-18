@@ -7,37 +7,7 @@
 
 
 
-namespace xl7 {
-namespace resources {
-
-
-
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Explicit constructor.
-     */
-    Resource::Resource(ResourceManager* manager, ResourceID id, cl7::astring_view identifier)
-        : _manager( manager )
-        , _id( id )
-        , _identifier( identifier )
-        , _reference_count( 1 )
-        , _is_usable( false )
-        , _data()
-    {
-        assert( _manager );
-    }
-
-    /**
-     * Destructor.
-     */
-    Resource::~Resource()
-    {
-        assert( _reference_count == 0 );
-        assert( !_is_usable );
-    }
+namespace xl7::resources {
 
 
 
@@ -50,7 +20,7 @@ namespace resources {
      */
     cl7::string Resource::get_identifier_string() const
     {
-        return cl7::strings::from_ascii( get_identifier() );
+        return cl7::strings::from_ascii(get_identifier());
     }
 
     /**
@@ -59,13 +29,13 @@ namespace resources {
      */
     void Resource::add_reference()
     {
-        if ( !_is_usable )
+        if (!_is_usable)
         {
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" appears to have already been released.") );
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" appears to have already been released."));
             return;
         }
 
-        assert( _reference_count > 0 );
+        assert(_reference_count > 0);
         ++_reference_count;
     }
 
@@ -78,76 +48,42 @@ namespace resources {
      */
     void Resource::release()
     {
-        if ( !_is_usable )
+        if (!_is_usable)
         {
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" appears to have already been released.") );
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" appears to have already been released."));
             return;
         }
 
-        assert( _manager );
-        _manager->release_resource( this );
+        assert(_manager);
+        _manager->release_resource(this);
     }
 
 
 
     // #############################################################################
-    // Lifetime Management
+    // Construction / Destruction
     // #############################################################################
 
     /**
-     * Requests/acquires the resource, bringing it into a usable state (or not).
+     * Explicit constructor.
      */
-    bool Resource::_acquire(const DataProvider& data_provider)
+    Resource::Resource(ResourceManager* manager, ResourceID id, cl7::astring_view identifier)
+        : _manager(manager)
+        , _id(id)
+        , _identifier(identifier)
+        , _reference_count(1)
+        , _is_usable(false)
     {
-        assert( !_is_usable );
-        if ( _is_usable )
-        {
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" appears to have already been acquired.") );
-            return false;
-        }
-
-        if ( data_provider.get_size() > 0 && !_try_fill_data( data_provider ) )
-        {
-            return false;
-        }
-
-        if ( !_acquire_impl( data_provider ) )
-        {
-            LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be acquired.") );
-            _dispose();
-            return false;
-        }
-
-        _is_usable = true;
-        return true;
+        assert(_manager);
     }
 
     /**
-     * Disposes/"unacquires" the resource, thereby rendering it unusable, indicating
-     * that it is no longer managed by its owning manager.
+     * Destructor.
      */
-    void Resource::_dispose()
+    Resource::~Resource()
     {
-        if ( !_dispose_impl() )
-        {
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be released without problems.") );
-        }
-
-        _is_usable = false;
-    }
-
-    /**
-     * Decreases the reference count. If it reaches zero, the resource is actually
-     * disposed/"unacquired", thereby rendering it unusable, indicating that it is
-     * no longer managed by its owning manager.
-     */
-    void Resource::_release()
-    {
-        assert( _reference_count > 0 );
-        if ( --_reference_count > 0 )
-            return;
-
-        _dispose();
+        assert(_reference_count == 0);
+        assert(!_is_usable);
     }
 
 
@@ -163,10 +99,10 @@ namespace resources {
      */
     bool Resource::_check_is_usable() const
     {
-        if ( _is_usable )
+        if (_is_usable)
             return true;
 
-        LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" is not usable anymore.") );
+        LOG_ERROR(TEXT("The ") + get_typed_identifier_string() + TEXT(" is not usable anymore."));
         return false;
     }
 
@@ -176,12 +112,12 @@ namespace resources {
      */
     bool Resource::_try_fill_data(const DataProvider& data_provider)
     {
-        if ( !_check_data_impl( data_provider ) )
+        if (!_check_data_impl(data_provider))
         {
             return false;
         }
 
-        return _fill_data_impl( data_provider );
+        return _fill_data_impl(data_provider);
     }
 
     /**
@@ -190,9 +126,9 @@ namespace resources {
      */
     bool Resource::_check_against_size(const DataProvider& data_provider, size_t size) const
     {
-        if ( data_provider.get_offset() + data_provider.get_size() > size )
+        if (data_provider.get_offset() + data_provider.get_size() > size)
         {
-            LOG_ERROR( TEXT("The data offset and size provided for ") + get_typed_identifier_string() + TEXT(" would exceed the total size of the ") + cl7::string(get_type_string()) + TEXT(".") );
+            LOG_ERROR(TEXT("The data offset and size provided for ") + get_typed_identifier_string() + TEXT(" would exceed the total size of the ") + cl7::string(get_type_string()) + TEXT("."));
             return false;
         }
 
@@ -205,19 +141,19 @@ namespace resources {
      */
     bool Resource::_check_against_stride(const DataProvider& data_provider, size_t stride) const
     {
-        assert( stride != 0 );
+        assert(stride != 0);
 
         bool is_valid = true;
 
-        if ( data_provider.get_offset() % stride != 0 )
+        if (data_provider.get_offset() % stride != 0)
         {
-            LOG_ERROR( TEXT("The data offset provided for ") + get_typed_identifier_string() + TEXT(" does not match the element size of the ") + cl7::string(get_type_string()) + TEXT(".") );
+            LOG_ERROR(TEXT("The data offset provided for ") + get_typed_identifier_string() + TEXT(" does not match the element size of the ") + cl7::string(get_type_string()) + TEXT("."));
             is_valid = false;
         }
 
-        if ( data_provider.get_size() % stride != 0 )
+        if (data_provider.get_size() % stride != 0)
         {
-            LOG_ERROR( TEXT("The data size provided for ") + get_typed_identifier_string() + TEXT(" does not match the element size of the ") + cl7::string(get_type_string()) + TEXT(".") );
+            LOG_ERROR(TEXT("The data size provided for ") + get_typed_identifier_string() + TEXT(" does not match the element size of the ") + cl7::string(get_type_string()) + TEXT("."));
             is_valid = false;
         }
 
@@ -235,12 +171,73 @@ namespace resources {
      */
     bool Resource::_fill_data_impl(const DataProvider& data_provider)
     {
-        data_provider.fill( _data );
+        data_provider.fill(_data);
 
         return true;
     }
 
 
 
-} // namespace resources
-} // namespace xl7
+    // #############################################################################
+    // Lifetime Management
+    // #############################################################################
+
+    /**
+     * Requests/acquires the resource, bringing it into a usable state (or not).
+     */
+    bool Resource::_acquire(const DataProvider& data_provider)
+    {
+        assert(!_is_usable);
+        if (_is_usable)
+        {
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" appears to have already been acquired."));
+            return false;
+        }
+
+        if (data_provider.get_size() > 0 && !_try_fill_data(data_provider))
+        {
+            return false;
+        }
+
+        if (!_acquire_impl(data_provider))
+        {
+            LOG_ERROR(TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be acquired."));
+            _dispose();
+            return false;
+        }
+
+        _is_usable = true;
+        return true;
+    }
+
+    /**
+     * Disposes/"unacquires" the resource, thereby rendering it unusable, indicating
+     * that it is no longer managed by its owning manager.
+     */
+    void Resource::_dispose()
+    {
+        if (!_dispose_impl())
+        {
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be released without problems."));
+        }
+
+        _is_usable = false;
+    }
+
+    /**
+     * Decreases the reference count. If it reaches zero, the resource is actually
+     * disposed/"unacquired", thereby rendering it unusable, indicating that it is
+     * no longer managed by its owning manager.
+     */
+    void Resource::_release()
+    {
+        assert(_reference_count > 0);
+        if (--_reference_count > 0)
+            return;
+
+        _dispose();
+    }
+
+
+
+} // namespace xl7::resources

@@ -47,7 +47,7 @@ namespace meshes {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
 
-        assert( _data.empty() || _data.size() == static_cast<size_t>( _size ) );
+        assert( get_data().empty() || get_data().size() == static_cast<size_t>( _size ) );
 
         D3D11_BUFFER_DESC buffer_desc;
         buffer_desc.ByteWidth = _size;
@@ -58,13 +58,13 @@ namespace meshes {
         buffer_desc.StructureByteStride = _desc.stride;
 
         D3D11_SUBRESOURCE_DATA subresource_data;
-        subresource_data.pSysMem = _data.data();
+        subresource_data.pSysMem = get_data().data();
         subresource_data.SysMemPitch = 0;
         subresource_data.SysMemSlicePitch = 0;
 
         HRESULT hresult = d3d_device->CreateBuffer(
             &buffer_desc,
-            _data.empty() ? nullptr : &subresource_data,
+            get_data().empty() ? nullptr : &subresource_data,
             &_d3d_vertex_buffer );
 
         if ( FAILED(hresult) )
@@ -125,7 +125,7 @@ namespace meshes {
                 return false;
             }
 
-            ::memcpy( mapped_subresource.pData, _data.data() + data_provider.get_offset(), data_provider.get_size() );
+            ::memcpy( mapped_subresource.pData, get_data().data() + data_provider.get_offset(), data_provider.get_size() );
 
             d3d_device_context->Unmap( _d3d_vertex_buffer.Get(), 0 );
         }
@@ -145,7 +145,7 @@ namespace meshes {
             box.bottom = 1;
             box.back = 1;
 
-            d3d_device_context->UpdateSubresource1( _d3d_vertex_buffer.Get(), 0, &box, _data.data() + data_provider.get_offset(), 0, 0, copy_flags );
+            d3d_device_context->UpdateSubresource1( _d3d_vertex_buffer.Get(), 0, &box, get_data().data() + data_provider.get_offset(), 0, 0, copy_flags );
         }
 
         return true;
