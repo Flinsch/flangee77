@@ -138,7 +138,7 @@ namespace direct3d11 {
     }
 
     /**
-     * Ends a scene that was begun by calling begin_scene.
+     * Ends a scene that was begun by calling `begin_scene`.
      */
     bool RenderingContextImpl::_end_scene_impl()
     {

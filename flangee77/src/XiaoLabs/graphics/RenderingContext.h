@@ -9,8 +9,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
+namespace xl7::graphics {
 
 
 
@@ -18,7 +17,7 @@ class RenderingDevice;
 
 
 
-class RenderingContext
+class RenderingContext // NOLINT(*-virtual-class-destructor)
 {
 
 public:
@@ -28,117 +27,26 @@ public:
         friend class RenderingDevice;
     };
 
-protected:
-    struct ResolvedTargetStates
-    {
-        unsigned target_count;
-        const surfaces::ColorRenderTarget* color_render_targets[ pipeline::OutputMergerStage::MAX_RENDER_TARGETS ];
-        const surfaces::DepthStencilTarget* depth_stencil_target;
-    };
-
-    struct ResolvedTextureSamplerStates
-    {
-        unsigned texture_sampler_count;
-        const textures::Texture* textures[ pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS ];
-        const states::SamplerState* sampler_states[ pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS ];
-    };
-
-    struct ResolvedAbstractShaderStates
-        : public ResolvedTextureSamplerStates
-    {
-        unsigned constant_buffer_count;
-        const shaders::ConstantBuffer* constant_buffers[ pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS ];
-        const shaders::ConstantBufferMapping* constant_buffer_mappings[ pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS ];
-        const shaders::Shader* abstract_shader;
-    };
-
-    template <class TShader>
-    struct ResolvedShaderStates
-        : public ResolvedAbstractShaderStates
-    {
-        const TShader* shader;
-    };
-
-    struct ResolvedDrawStates
-        : public ResolvedTargetStates
-    {
-        unsigned stream_count;
-        const meshes::VertexBuffer* vertex_buffers[ pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
-        const meshes::IndexBuffer* index_buffer;
-        meshes::Topology topology;
-
-        ResolvedShaderStates<shaders::VertexShader> vs;
-        ResolvedShaderStates<shaders::PixelShader> ps;
-
-        Viewport viewport;
-
-        const states::RasterizerState* rasterizer_state;
-        const states::DepthStencilState* depth_stencil_state;
-        const states::BlendState* blend_state;
-
-        unsigned stencil_reference_value;
-        Color blend_factor;
-    };
 
 
+    RenderingContext() = delete;
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    RenderingContext(RenderingDevice* rendering_device, unsigned index);
-
-    /**
-     * Destructor.
-     */
-    virtual ~RenderingContext() = default;
-
-private:
-    /** Default constructor. */
-    RenderingContext();
-    /** Copy constructor. */
     RenderingContext(const RenderingContext&) = delete;
-    /** Copy assignment operator. */
     RenderingContext& operator = (const RenderingContext&) = delete;
-
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The owning rendering device.
-     */
-    RenderingDevice* const _rendering_device;
-
-    /**
-     * The 0-based index of the context (0: primary context).
-     */
-    const unsigned _index;
-
-public:
-    /**
-     * The rendering pipeline and its stages.
-     */
-    pipeline::Pipeline pipeline;
-
-private:
-    /**
-     * The flag indicating whether the function begin_scene has been called without
-     * a following call to end_scene.
-     */
-    bool _the_scene_is_on;
+    RenderingContext(RenderingContext&&) = delete;
+    RenderingContext& operator = (RenderingContext&&) = delete;
 
 
 
     // #############################################################################
     // Properties
     // #############################################################################
-public:
+
+    /**
+     * The rendering pipeline and its stages.
+     */
+    pipeline::Pipeline pipeline; // NOLINT(*-non-private-member-variables-in-classes)
+
     /**
      * Returns the owning rendering device.
      */
@@ -154,10 +62,9 @@ public:
      */
     bool is_primary() const { return _index == 0; }
 
-public:
     /**
-     * Returns the flag indicating whether the function begin_scene has been called
-     * without a following call to end_scene.
+     * Returns the flag indicating whether the function `begin_scene` has been
+     * called without a following call to `end_scene`.
      */
     bool is_scene_on() const { return _the_scene_is_on; }
 
@@ -166,7 +73,7 @@ public:
     // #############################################################################
     // Methods
     // #############################################################################
-public:
+
     /**
      * Performs a forced synchronization with the hardware state.
      * This function is called automatically after the rendering context has been
@@ -181,7 +88,7 @@ public:
     bool begin_scene();
 
     /**
-     * Ends a scene that was begun by calling begin_scene.
+     * Ends a scene that was begun by calling `begin_scene`.
      */
     bool end_scene();
 
@@ -222,10 +129,76 @@ public:
 
 
 
+protected:
+    struct ResolvedTargetStates
+    {
+        unsigned target_count;
+        const surfaces::ColorRenderTarget* color_render_targets[pipeline::OutputMergerStage::MAX_RENDER_TARGETS];
+        const surfaces::DepthStencilTarget* depth_stencil_target;
+    };
+
+    struct ResolvedTextureSamplerStates
+    {
+        unsigned texture_sampler_count;
+        const textures::Texture* textures[pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS];
+        const states::SamplerState* sampler_states[pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS];
+    };
+
+    struct ResolvedAbstractShaderStates
+        : public ResolvedTextureSamplerStates
+    {
+        unsigned constant_buffer_count;
+        const shaders::ConstantBuffer* constant_buffers[pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS];
+        const shaders::ConstantBufferMapping* constant_buffer_mappings[pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS];
+        const shaders::Shader* abstract_shader;
+    };
+
+    template <class TShader>
+    struct ResolvedShaderStates
+        : public ResolvedAbstractShaderStates
+    {
+        const TShader* shader;
+    };
+
+    struct ResolvedDrawStates
+        : public ResolvedTargetStates
+    {
+        unsigned stream_count;
+        const meshes::VertexBuffer* vertex_buffers[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];
+        const meshes::IndexBuffer* index_buffer;
+        meshes::Topology topology;
+
+        ResolvedShaderStates<shaders::VertexShader> vs;
+        ResolvedShaderStates<shaders::PixelShader> ps;
+
+        Viewport viewport;
+
+        const states::RasterizerState* rasterizer_state;
+        const states::DepthStencilState* depth_stencil_state;
+        const states::BlendState* blend_state;
+
+        unsigned stencil_reference_value;
+        Color blend_factor;
+    };
+
+
+
+    // #############################################################################
+    // Construction / Destruction
+    // #############################################################################
+
+    RenderingContext(RenderingDevice* rendering_device, unsigned index);
+
+    virtual ~RenderingContext() = default;
+
+
+
+private:
+
     // #############################################################################
     // Prototypes
     // #############################################################################
-private:
+
     /**
      * Performs a forced synchronization with the hardware state.
      */
@@ -237,7 +210,7 @@ private:
     virtual bool _begin_scene_impl() = 0;
 
     /**
-     * Ends a scene that was begun by calling begin_scene.
+     * Ends a scene that was begun by calling `begin_scene`.
      */
     virtual bool _end_scene_impl() = 0;
 
@@ -261,7 +234,7 @@ private:
     // #############################################################################
     // Helpers
     // #############################################################################
-private:
+
     /**
      * Gathers render targets (including resolving resource IDs into usable objects).
      */
@@ -271,7 +244,7 @@ private:
      *
      */
     template <class TShader>
-    friend void _resolve_shader_states(RenderingDevice* const _rendering_device, RenderingContext::ResolvedShaderStates<TShader>& resolved_shader_states, pipeline::AbstractShaderStage& pipeline_as);
+    friend void _resolve_shader_states(RenderingDevice* _rendering_device, RenderingContext::ResolvedShaderStates<TShader>& resolved_shader_states, pipeline::AbstractShaderStage& pipeline_as);
 
     /**
      * Gathers drawing states (including resolving resource IDs into usable objects).
@@ -281,13 +254,34 @@ private:
     /**
      * Validates the specified drawing states.
      */
-    bool _validate_resolved_draw_states(const ResolvedDrawStates& resolved_draw_states, bool indexed, bool instanced);
+    static bool _validate_resolved_draw_states(const ResolvedDrawStates& resolved_draw_states, bool indexed, bool instanced);
+
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    /**
+     * The owning rendering device.
+     */
+    RenderingDevice* const _rendering_device;
+
+    /**
+     * The 0-based index of the context (0: primary context).
+     */
+    const unsigned _index;
+
+    /**
+     * The flag indicating whether the function begin_scene has been called without
+     * a following call to end_scene.
+     */
+    bool _the_scene_is_on;
 
 }; // class RenderingContext
 
 
 
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics
 
 #endif // XL7_GRAPHICS_RENDERINGCONTEXT_H

@@ -6,8 +6,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
+namespace xl7::graphics {
 
 
 
@@ -25,7 +24,6 @@ enum class ComparisonFunction
 
 
 
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics
 
 #endif // XL7_GRAPHICS_COMPARISONFUNCTION_H

@@ -28,30 +28,40 @@
 
 
 
-namespace xl7 {
-namespace graphics {
+namespace xl7::graphics {
 
 
 
-class GraphicsSystem
+class GraphicsSystem // NOLINT(*-virtual-class-destructor)
     : public Component<GraphicsSystem>
 {
     friend class cl7::creational::Singleton<GraphicsSystem>;
 
+public:
+    GraphicsSystem(const GraphicsSystem&) = delete;
+    GraphicsSystem& operator = (const GraphicsSystem&) = delete;
+    GraphicsSystem(GraphicsSystem&&) = delete;
+    GraphicsSystem& operator = (GraphicsSystem&&) = delete;
+
 
 
     // #############################################################################
-    // Factory Function
+    // Properties
     // #############################################################################
+
+    /**
+     * Returns the rendering device.
+     */
+    RenderingDevice* get_rendering_device() { return _rendering_device.get(); }
+
+
+
 protected:
-    static GraphicsSystem* factory_func();
-
-
 
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
-protected:
+
     /**
      * Default constructor.
      */
@@ -60,58 +70,64 @@ protected:
     /**
      * Destructor.
      */
-    virtual ~GraphicsSystem() override = default;
+    ~GraphicsSystem() override = default;
+
+
+
+    // #############################################################################
+    // Factory Function
+    // #############################################################################
+
+    static GraphicsSystem* factory_func();
+
+
 
 private:
-    /** Copy constructor. */
-    GraphicsSystem(const GraphicsSystem&) = delete;
-    /** Copy assignment operator. */
-    GraphicsSystem& operator = (const GraphicsSystem&) = delete;
-
-
 
     // #############################################################################
-    // Attributes
+    // Prototypes
     // #############################################################################
-private:
+
     /**
-     * The rendering device.
+     * Performs preliminary initialization steps so that the rendering device can be
+     * created afterward.
      */
-    std::unique_ptr<RenderingDevice, std::function<void(RenderingDevice*)>> _rendering_device;
+    virtual bool _init_before_rendering_device_impl() = 0;
 
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
     /**
-     * Returns the rendering device.
+     * Handles any remaining cleanup actions after the rendering device has been
+     * destroyed.
      */
-    RenderingDevice* get_rendering_device() { return _rendering_device.get(); }
+    virtual bool _shutdown_after_rendering_device_impl() = 0;
+
+    /**
+     * Creates the rendering device (and all of its manager objects), but without
+     * fully initializing it so that it can be initialized afterward.
+     */
+    virtual RenderingDevice* _rendering_device_factory_impl() = 0;
 
 
 
     // #############################################################################
     // Component Implementations
     // #############################################################################
-private:
+
     /**
      * Initializes the component.
      */
-    virtual bool _init() final;
+    bool _init() final;
 
     /**
      * De-initializes the component.
      */
-    virtual bool _shutdown() final;
+    bool _shutdown() final;
 
 
 
     // #############################################################################
     // Helpers
     // #############################################################################
-private:
+
     /**
      * Creates and initializes the rendering device.
      */
@@ -125,32 +141,18 @@ private:
 
 
     // #############################################################################
-    // Prototypes
+    // Attributes
     // #############################################################################
-private:
-    /**
-     * Performs preliminary initialization steps so that the rendering device can be
-     * created afterwards.
-     */
-    virtual bool _init_before_rendering_device_impl() = 0;
 
     /**
-     * Handles any remaining cleanup actions after the rendering device has been
-     * destroyed.
+     * The rendering device.
      */
-    virtual bool _shutdown_after_rendering_device_impl() = 0;
-
-    /**
-     * Creates the rendering device (and all of its manager objects), but without
-     * fully initializing it so that it can be initialized afterwards.
-     */
-    virtual RenderingDevice* _rendering_device_factory_impl() = 0;
+    std::unique_ptr<RenderingDevice, std::function<void(RenderingDevice*)>> _rendering_device;
 
 }; // class GraphicsSystem
 
 
 
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics
 
 #endif // XL7_GRAPHICS_GRAPHICSSYSTEM_H

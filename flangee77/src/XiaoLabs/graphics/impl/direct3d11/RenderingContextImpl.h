@@ -152,7 +152,7 @@ private:
     virtual bool _begin_scene_impl() override;
 
     /**
-     * Ends a scene that was begun by calling begin_scene.
+     * Ends a scene that was begun by calling `begin_scene`.
      */
     virtual bool _end_scene_impl() override;
 

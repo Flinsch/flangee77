@@ -5,7 +5,7 @@
 namespace cl7 {
     cl7::string to_string(xl7::graphics::ChannelOrder channel_order)
     {
-        switch ( channel_order )
+        switch (channel_order)
         {
 #define DEFINE_CASE(name) case xl7::graphics::ChannelOrder::name: return TEXT(#name)
             DEFINE_CASE(RGBA);

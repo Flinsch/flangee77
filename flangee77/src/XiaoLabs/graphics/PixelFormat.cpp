@@ -5,7 +5,7 @@
 namespace cl7 {
     cl7::string to_string(xl7::graphics::PixelFormat pixel_format)
     {
-        switch ( pixel_format )
+        switch (pixel_format)
         {
 #define DEFINE_CASE(name) case xl7::graphics::PixelFormat::name: return TEXT(#name)
             DEFINE_CASE(UNKNOWN);
@@ -81,7 +81,7 @@ namespace cl7 {
             DEFINE_CASE(A8_UNORM);
 #undef DEFINE_CASE
         default:
-            assert( false );
+            assert(false);
         }
 
         return TEXT("UNKNOWN");

@@ -6,8 +6,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
+namespace xl7::graphics {
 
 
 
@@ -90,8 +89,7 @@ enum class PixelFormat
 
 
 
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics
 
 
 

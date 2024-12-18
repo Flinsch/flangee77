@@ -6,8 +6,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
+namespace xl7::graphics {
 
 
 
@@ -21,8 +20,7 @@ enum class ChannelOrder
 
 
 
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics
 
 
 

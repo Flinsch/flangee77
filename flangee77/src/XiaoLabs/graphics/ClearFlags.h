@@ -6,8 +6,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
+namespace xl7::graphics {
 
 
 
@@ -25,17 +24,16 @@ enum class ClearFlags
 
 inline ClearFlags operator | (ClearFlags a, ClearFlags b)
 {
-    return static_cast<ClearFlags>( static_cast<unsigned>( a ) | static_cast<unsigned>( b ) );
+    return static_cast<ClearFlags>(static_cast<unsigned>(a) | static_cast<unsigned>(b));
 }
 
 inline ClearFlags operator & (ClearFlags a, ClearFlags b)
 {
-    return static_cast<ClearFlags>( static_cast<unsigned>( a ) & static_cast<unsigned>( b ) );
+    return static_cast<ClearFlags>(static_cast<unsigned>(a) & static_cast<unsigned>(b));
 }
 
 
 
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics
 
 #endif // XL7_GRAPHICS_CLEARFLAGS_H

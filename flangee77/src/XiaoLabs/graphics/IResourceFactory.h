@@ -9,8 +9,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
+namespace xl7::graphics {
 
 
 
@@ -22,13 +21,12 @@ class IResourceFactory
     , public states::IStateFactory
 {
 public:
-    virtual ~IResourceFactory() = default;
+    ~IResourceFactory() override = default;
 
 }; // class IResourceFactory
 
 
 
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics
 
 #endif // XL7_GRAPHICS_IRESOURCEFACTORY_H

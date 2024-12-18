@@ -28,7 +28,7 @@ guidelines ensures consistent and readable code throughout the project.
     - Overridden (virtual) functions
     - Final (virtual) functions
   - &ldquo;Regular&rdquo; (non-virtual) functions
-  - Accessors and mutators (getters and setters)
+    - Also &ldquo;properties&rdquo;, accessors and mutators (getters and setters), etc.
   - Operator overloads
     - Unary increment/decrement operators (`++`, `--`)
     - Comparison operators (`==`, `!=`, `<`, `>`, `<=`, `>=`)
@@ -115,7 +115,7 @@ beginning of the `struct`, in any case before possible constructors etc.
 
 - (Nearly) always break before braces.
 - Exception: namespaces. Place the opening curly bracket on the same line here.
-- Also use the same-line style for lambda function definitions.
+- Also use the same-line style for initializer lists and lambda function definitions.
 - Don't indent braces themselves.
 
 ---

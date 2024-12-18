@@ -18,12 +18,11 @@
 
 
 
-namespace xl7 {
-namespace graphics {
+namespace xl7::graphics {
 
 
 
-class RenderingDevice
+class RenderingDevice // NOLINT(*-virtual-class-destructor)
 {
 
 public:
@@ -37,7 +36,6 @@ public:
 
 
 
-public:
     struct Capabilities
     {
         struct Memory
@@ -99,116 +97,19 @@ public:
 
 
 
-protected:
-    template <class TResourceManager>
-    using ResourceManagerPtr = std::unique_ptr<TResourceManager, std::function<void(TResourceManager*)>>;
-
-    typedef ResourceManagerPtr<surfaces::SurfaceManager> SurfaceManagerPtr;
-    typedef ResourceManagerPtr<textures::TextureManager> TextureManagerPtr;
-    typedef ResourceManagerPtr<meshes::MeshManager> MeshManagerPtr;
-    typedef ResourceManagerPtr<shaders::ShaderManager> ShaderManagerPtr;
-    typedef ResourceManagerPtr<states::StateManager> StateManagerPtr;
-
-
-
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    RenderingDevice(std::unique_ptr<IResourceFactory> resource_factory);
-
-    /**
-     * Destructor.
-     */
-    virtual ~RenderingDevice() = default;
-
-private:
-    /** Default constructor. */
     RenderingDevice() = delete;
-    /** Copy constructor. */
+
     RenderingDevice(const RenderingDevice&) = delete;
-    /** Copy assignment operator. */
     RenderingDevice& operator = (const RenderingDevice&) = delete;
-
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The width of the (default) back buffer, in pixels.
-     */
-    unsigned _back_buffer_width;
-
-    /**
-     * The height of the (default) back buffer, in pixels.
-     */
-    unsigned _back_buffer_height;
-
-    /**
-     * The default viewport based on the size of the (default) back buffer.
-     */
-    Viewport _default_viewport;
-
-private:
-    /**
-     * The capabilities of the rendering device (as far as they can be determined).
-     */
-    Capabilities _capabilities;
-
-private:
-    /**
-     * The rendering contexts.
-     */
-    std::vector<std::unique_ptr<RenderingContext, std::function<void(RenderingContext*)>>> _rendering_contexts;
-
-private:
-    /**
-     * The central resource factory for the resource managers.
-     */
-    std::unique_ptr<IResourceFactory> _resource_factory;
-
-    /**
-     * The surface manager.
-     */
-    SurfaceManagerPtr _surface_manager;
-
-    /**
-     * The texture manager.
-     */
-    TextureManagerPtr _texture_manager;
-
-    /**
-     * The mesh manager.
-     */
-    MeshManagerPtr _mesh_manager;
-
-    /**
-     * The shader manager.
-     */
-    ShaderManagerPtr _shader_manager;
-
-    /**
-     * The state manager.
-     */
-    StateManagerPtr _state_manager;
-
-private:
-    /**
-     * The flag indicating whether the device was lost.
-     */
-    bool _device_lost;
+    RenderingDevice(RenderingDevice&&) = delete;
+    RenderingDevice& operator = (RenderingDevice&&) = delete;
 
 
 
     // #############################################################################
     // Properties
     // #############################################################################
-public:
+
     /**
      * Returns the width of the (default) back buffer, in pixels.
      */
@@ -224,25 +125,22 @@ public:
      */
     const Viewport& get_default_viewport() const { return _default_viewport; }
 
-public:
     /**
      * Returns the capabilities of the rendering device (as far as they can be
      * determined).
      */
     const Capabilities& get_capabilities() const { return _capabilities; }
 
-public:
     /**
      * Returns the primary rendering context.
      */
-    RenderingContext* get_primary_context() const { return _rendering_contexts[ 0 ].get(); }
+    RenderingContext* get_primary_context() const { return _rendering_contexts[0].get(); }
 
     /**
      * Returns the specified rendering context (0: primary context).
      */
     RenderingContext* get_rendering_context(unsigned index = 0);
 
-public:
     /**
      * Returns the surface manager.
      */
@@ -273,10 +171,10 @@ public:
     // #############################################################################
     // Methods
     // #############################################################################
-public:
+
     /**
      * Checks whether the device is lost. If so, true is returned, and the
-     * application should pause and periodically call handle_device_lost.
+     * application should pause and periodically call `handle_device_lost`.
      * Reasons for a lost device could be:
      * * A full-screen application loses focus.
      * * The graphics driver is upgraded.
@@ -290,26 +188,18 @@ public:
     bool check_device_lost();
 
     /**
-     * If the device is lost (see check_device_lost), the application should pause
-     * and periodically call handle_device_lost to attempt to reset/reinitialize the
-     * device and restore/reacquire/recreate the device-dependent resources. If the
-     * device has been restored to an operational state, true is returned.
+     * If the device is lost (see `check_device_lost`), the application should pause
+     * and periodically call `handle_device_lost` to attempt to reset/reinitialize
+     * the device and restore/reacquire/recreate the device-dependent resources. If
+     * the device has been restored to an operational state, true is returned.
      */
     bool handle_device_lost();
 
-protected:
-    /**
-     * Notifies about a "device lost" state.
-     */
-    void _notify_device_lost();
-
-public:
     /**
      * Presents the contents of the next buffer in the device's swap chain.
      */
     bool present();
 
-public:
     /**
      * Checks whether the device (generally) supports the specified combination of
      * pixel format and channel order for the specified texture type.
@@ -327,10 +217,90 @@ public:
 
 
 
+protected:
+    template <class TResourceManager>
+    using ResourceManagerPtr = std::unique_ptr<TResourceManager, std::function<void(TResourceManager*)>>;
+
+    using SurfaceManagerPtr = ResourceManagerPtr<surfaces::SurfaceManager>;
+    using TextureManagerPtr = ResourceManagerPtr<textures::TextureManager>;
+    using MeshManagerPtr = ResourceManagerPtr<meshes::MeshManager>;
+    using ShaderManagerPtr = ResourceManagerPtr<shaders::ShaderManager>;
+    using StateManagerPtr = ResourceManagerPtr<states::StateManager>;
+
+
+
+    // #############################################################################
+    // Construction / Destruction
+    // #############################################################################
+
+    RenderingDevice(std::unique_ptr<IResourceFactory> resource_factory);
+
+    virtual ~RenderingDevice() = default;
+
+
+
+    // #############################################################################
+    // Protected Methods
+    // #############################################################################
+
+    /**
+     * Notifies about a "device lost" state.
+     */
+    void _notify_device_lost();
+
+
+
+private:
+
+    // #############################################################################
+    // Prototypes
+    // #############################################################################
+
+    /**
+     * Initializes the rendering device and determines the capabilities (as far as
+     * they can be determined).
+     */
+    virtual bool _init_impl(Capabilities& capabilities) = 0;
+
+    /**
+     * De-initializes the rendering device.
+     */
+    virtual bool _shutdown_impl() = 0;
+
+    /**
+     * Creates a new rendering context with the specified index (0: primary context).
+     * Returns NULL if the rendering context could not be created.
+     */
+    virtual RenderingContext* _create_rendering_context_impl(unsigned index) = 0;
+
+    /**
+     * Checks whether the device is lost. If so, true is returned.
+     */
+    virtual bool _check_device_lost_impl() = 0;
+
+    /**
+     * Tries to reset/reinitialize the device after it has been lost. If the device
+     * has been restored to an operational state, true is returned.
+     */
+    virtual bool _handle_device_lost_impl() = 0;
+
+    /**
+     * Presents the contents of the next buffer in the device's swap chain.
+     */
+    virtual bool _present_impl() = 0;
+
+    /**
+     * Checks whether the device (generally) supports the specified combination of
+     * pixel format and channel order for the specified texture type.
+     */
+    virtual bool _check_texture_format_impl(textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder channel_order) = 0;
+
+
+
     // #############################################################################
     // Lifetime Management
     // #############################################################################
-private:
+
     /**
      * Initializes the rendering device.
      */
@@ -344,57 +314,73 @@ private:
 
 
     // #############################################################################
-    // Prototypes
+    // Attributes
     // #############################################################################
-private:
-    /**
-     * Initializes the rendering device and determines the capabilities (as far as
-     * they can be determined).
-     */
-    virtual bool _init_impl(Capabilities& capabilities) = 0;
 
     /**
-     * De-initializes the rendering device.
+     * The width of the (default) back buffer, in pixels.
      */
-    virtual bool _shutdown_impl() = 0;
-
-private:
-    /**
-     * Creates a new rendering context with the specified index (0: primary context).
-     * Returns NULL if the rendering context could not be created.
-     */
-    virtual RenderingContext* _create_rendering_context_impl(unsigned index) = 0;
-
-private:
-    /**
-     * Checks whether the device is lost. If so, true is returned.
-     */
-    virtual bool _check_device_lost_impl() = 0;
+    unsigned _back_buffer_width;
 
     /**
-     * Tries to reset/reinitialize the device after it has been lost. If the device
-     * has been restored to an operational state, true is returned.
+     * The height of the (default) back buffer, in pixels.
      */
-    virtual bool _handle_device_lost_impl() = 0;
+    unsigned _back_buffer_height;
 
-private:
     /**
-     * Presents the contents of the next buffer in the device's swap chain.
+     * The default viewport based on the size of the (default) back buffer.
      */
-    virtual bool _present_impl() = 0;
+    Viewport _default_viewport;
 
-private:
     /**
-     * Checks whether the device (generally) supports the specified combination of
-     * pixel format and channel order for the specified texture type.
+     * The capabilities of the rendering device (as far as they can be determined).
      */
-    virtual bool _check_texture_format_impl(textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder channel_order) = 0;
+    Capabilities _capabilities;
+
+    /**
+     * The rendering contexts.
+     */
+    std::vector<std::unique_ptr<RenderingContext, std::function<void(RenderingContext*)>>> _rendering_contexts;
+
+    /**
+     * The central resource factory for the resource managers.
+     */
+    std::unique_ptr<IResourceFactory> _resource_factory;
+
+    /**
+     * The surface manager.
+     */
+    SurfaceManagerPtr _surface_manager;
+
+    /**
+     * The texture manager.
+     */
+    TextureManagerPtr _texture_manager;
+
+    /**
+     * The mesh manager.
+     */
+    MeshManagerPtr _mesh_manager;
+
+    /**
+     * The shader manager.
+     */
+    ShaderManagerPtr _shader_manager;
+
+    /**
+     * The state manager.
+     */
+    StateManagerPtr _state_manager;
+
+    /**
+     * The flag indicating whether the device was lost.
+     */
+    bool _device_lost;
 
 }; // class RenderingDevice
 
 
 
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics
 
 #endif // XL7_GRAPHICS_RENDERINGDEVICE_H

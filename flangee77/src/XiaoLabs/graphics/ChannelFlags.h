@@ -6,8 +6,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
+namespace xl7::graphics {
 
 
 
@@ -26,17 +25,16 @@ enum class ChannelFlags
 
 inline ChannelFlags operator | (ChannelFlags a, ChannelFlags b)
 {
-    return static_cast<ChannelFlags>( static_cast<unsigned>( a ) | static_cast<unsigned>( b ) );
+    return static_cast<ChannelFlags>(static_cast<unsigned>(a) | static_cast<unsigned>(b));
 }
 
 inline ChannelFlags operator & (ChannelFlags a, ChannelFlags b)
 {
-    return static_cast<ChannelFlags>( static_cast<unsigned>( a ) & static_cast<unsigned>( b ) );
+    return static_cast<ChannelFlags>(static_cast<unsigned>(a) & static_cast<unsigned>(b));
 }
 
 
 
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics
 
 #endif // XL7_GRAPHICS_CHANNELFLAGS_H
