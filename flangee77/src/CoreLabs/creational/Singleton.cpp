@@ -63,15 +63,12 @@ namespace cl7::creational {
 
     void SingletonManager::destroy_all()
     {
-        if (!_stack)
-            return;
-
-        while (!_stack->empty())
+        while (_stack && !_stack->empty())
         {
             SingletonBase* singleton = _stack->back();
             singleton->_invoke_destroy();
 
-            assert(_find(singleton) == _stack->end());
+            assert(!_stack || _find(singleton) == _stack->end());
         }
 
         assert(!_stack);
