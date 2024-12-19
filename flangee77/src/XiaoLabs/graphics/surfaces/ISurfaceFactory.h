@@ -6,9 +6,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace surfaces {
+namespace xl7::graphics::surfaces {
 
 
 
@@ -27,8 +25,6 @@ public:
 
 
 
-} // namespace surfaces
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::surfaces
 
 #endif // XL7_GRAPHICS_SURFACES_ISURFACEFACTORY_H

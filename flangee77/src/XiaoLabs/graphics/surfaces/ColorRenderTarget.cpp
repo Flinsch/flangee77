@@ -2,26 +2,10 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace surfaces {
+namespace xl7::graphics::surfaces {
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Explicit constructor.
-     */
-    ColorRenderTarget::ColorRenderTarget(const CreateParams<Desc>& params)
-        : RenderTarget( Type::ColorRenderTarget, params )
-    {
-    }
 
 
-
-} // namespace surfaces
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::surfaces

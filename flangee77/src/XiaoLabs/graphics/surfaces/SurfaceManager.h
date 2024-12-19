@@ -7,14 +7,13 @@
 
 
 
-namespace xl7 {
-namespace graphics {
+namespace xl7::graphics {
     class RenderingDevice;
 namespace surfaces {
 
 
 
-class SurfaceManager
+class SurfaceManager // NOLINT(*-virtual-class-destructor)
     : public resources::ResourceManager
 {
 
@@ -28,52 +27,32 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    SurfaceManager(ISurfaceFactory* factory);
-
-    /**
-     * Destructor.
-     */
-    virtual ~SurfaceManager();
-
-private:
-    /** Default constructor. */
     SurfaceManager() = delete;
-    /** Copy constructor. */
+
     SurfaceManager(const SurfaceManager&) = delete;
-    /** Copy assignment operator. */
     SurfaceManager& operator = (const SurfaceManager&) = delete;
+    SurfaceManager(SurfaceManager&&) = delete;
+    SurfaceManager& operator = (SurfaceManager&&) = delete;
 
 
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
+protected:
+    SurfaceManager(ISurfaceFactory* factory) : _factory(factory) {}
+    ~SurfaceManager() override = default;
+
+
+
 private:
     /**
      * The surface factory.
      */
     ISurfaceFactory* const _factory;
 
-
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
-
 }; // class SurfaceManager
 
 
 
 } // namespace surfaces
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics
 
 #endif // XL7_GRAPHICS_SURFACES_SURFACEMANAGER_H

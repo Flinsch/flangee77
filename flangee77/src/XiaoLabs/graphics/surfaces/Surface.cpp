@@ -4,31 +4,9 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace surfaces {
+namespace xl7::graphics::surfaces {
 
 
-
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Explicit constructor.
-     */
-    Surface::Surface(Type type, const CreateParams<Desc>& params)
-        : Resource( params )
-        , _type( type )
-        , _desc( params.desc )
-    {
-    }
-
-
-
-    // #############################################################################
-    // Resource Implementations
-    // #############################################################################
 
     /**
      * Checks whether the given data provider complies with the specific properties
@@ -37,10 +15,10 @@ namespace surfaces {
      */
     bool Surface::_check_data_impl(const resources::DataProvider& data_provider)
     {
-        if ( data_provider.get_offset() > 0 || data_provider.get_size() > 0 )
+        if (data_provider.get_offset() > 0 || data_provider.get_size() > 0)
         {
-            assert( false );
-            LOG_WARNING( TEXT("Providing data for requesting/acquiring a surface makes no sense.") );
+            assert(false);
+            LOG_WARNING(TEXT("Providing data for requesting/acquiring a surface makes no sense."));
             //return false;
         }
 
@@ -57,12 +35,10 @@ namespace surfaces {
     {
         
 
-        assert( false );
+        assert(false);
         return false;
     }
 
 
 
-} // namespace surfaces
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::surfaces

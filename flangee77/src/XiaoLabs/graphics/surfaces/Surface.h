@@ -5,9 +5,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace surfaces {
+namespace xl7::graphics::surfaces {
 
 
 
@@ -15,7 +13,7 @@ class SurfaceManager;
 
 
 
-class Surface
+class Surface // NOLINT(*-virtual-class-destructor)
     : public resources::Resource
 {
 
@@ -27,7 +25,6 @@ public:
         DepthStencilTarget,
     };
 
-public:
     struct Desc
     {
         /** The width of the surface, in pixels. */
@@ -38,52 +35,20 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    Surface(Type type, const CreateParams<Desc>& params);
-
-    /**
-     * Destructor.
-     */
-    virtual ~Surface() = default;
-
-private:
-    /** Default constructor. */
     Surface() = delete;
-    /** Copy constructor. */
+
     Surface(const Surface&) = delete;
-    /** Copy assignment operator. */
     Surface& operator = (const Surface&) = delete;
+    Surface(Surface&&) = delete;
+    Surface& operator = (Surface&&) = delete;
 
 
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-protected:
-    /**
-     * The type of the surface.
-     */
-    const Type _type;
 
     /**
-     * The descriptor of the surface.
+     * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    const Desc _desc;
+    cl7::string_view get_type_string() const override { return TEXT("surface"); }
 
-private:
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
     /**
      * Returns the type of the surface.
      */
@@ -94,20 +59,28 @@ public:
      */
     const Desc& get_desc() const { return _desc; }
 
-public:
+
+
+protected:
+    Surface(Type type, const CreateParams<Desc>& params)
+        : Resource(params)
+        , _type(type)
+        , _desc(params.desc)
+    {
+    }
+
+    ~Surface() override = default;
 
 
 
-    // #############################################################################
-    // Resource Implementations
-    // #############################################################################
 private:
+
     /**
      * Checks whether the given data provider complies with the specific properties
      * of the resource to (re)populate it, taking into account the current state of
      * the resource if necessary.
      */
-    virtual bool _check_data_impl(const resources::DataProvider& data_provider) override;
+    bool _check_data_impl(const resources::DataProvider& data_provider) override;
 
     /**
      * Requests/acquires the resource, bringing it into a usable state.
@@ -115,20 +88,24 @@ private:
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_impl(const resources::DataProvider& data_provider) override;
+    bool _acquire_impl(const resources::DataProvider& data_provider) override;
 
-public:
+
+
     /**
-     * Returns the specific type of the resource, as a "human-friendly" string.
+     * The type of the surface.
      */
-    virtual cl7::string_view get_type_string() const override { return TEXT("surface"); }
+    const Type _type;
+
+    /**
+     * The descriptor of the surface.
+     */
+    const Desc _desc;
 
 }; // class Surface
 
 
 
-} // namespace surfaces
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::surfaces
 
 #endif // XL7_GRAPHICS_SURFACES_SURFACE_H

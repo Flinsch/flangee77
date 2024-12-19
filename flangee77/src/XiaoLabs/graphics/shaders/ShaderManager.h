@@ -58,11 +58,7 @@ public:
 
 
 protected:
-    ShaderManager(IShaderFactory* factory)
-        : _factory(factory)
-    {
-    }
-
+    ShaderManager(IShaderFactory* factory) : _factory(factory) {}
     ~ShaderManager() override = default;
 
 
