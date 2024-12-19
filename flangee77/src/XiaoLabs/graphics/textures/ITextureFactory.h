@@ -9,9 +9,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace textures {
+namespace xl7::graphics::textures {
 
 
 
@@ -33,8 +31,6 @@ public:
 
 
 
-} // namespace textures
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::textures
 
 #endif // XL7_GRAPHICS_TEXTURES_ITEXTUREFACTORY_H

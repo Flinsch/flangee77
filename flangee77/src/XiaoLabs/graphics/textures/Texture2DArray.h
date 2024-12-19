@@ -5,13 +5,11 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace textures {
+namespace xl7::graphics::textures {
 
 
 
-class Texture2DArray
+class Texture2DArray // NOLINT(*-virtual-class-destructor)
     : public Texture
 {
 
@@ -25,87 +23,56 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    Texture2DArray(const CreateParams<Desc>& params);
-
-    /**
-     * Destructor.
-     */
-    virtual ~Texture2DArray() = default;
-
-private:
-    /** Default constructor. */
     Texture2DArray() = delete;
-    /** Copy constructor. */
+
     Texture2DArray(const Texture2DArray&) = delete;
-    /** Copy assignment operator. */
     Texture2DArray& operator = (const Texture2DArray&) = delete;
+    Texture2DArray(Texture2DArray&&) = delete;
+    Texture2DArray& operator = (Texture2DArray&&) = delete;
 
 
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-protected:
     /**
-     * The descriptor of the 2D array texture.
+     * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    const Desc _desc;
+    cl7::string_view get_type_string() const override { return TEXT("2D array texture"); }
 
-private:
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
     /**
      * Returns the descriptor of the 2D array texture.
      */
     const Desc& get_desc() const { return _desc; }
 
-public:
 
 
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
     /**
      * Returns an "image view" of the specified texture slice data.
      */
-    images::Image as_image(unsigned slice_index) const { return _as_image( slice_index ); }
+    images::Image as_image(unsigned slice_index) const { return _as_image(slice_index); }
 
     /**
      * Creates and returns mipmaps of the specified texture slice "image".
      */
-    std::vector<images::Image> create_mipmaps(unsigned slice_index, images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const { return _create_mipmaps( slice_index, resampling_method ); }
+    std::vector<images::Image> create_mipmaps(unsigned slice_index, images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const { return _create_mipmaps(slice_index, resampling_method); }
 
 
 
-    // #############################################################################
-    // Resource Implementations
-    // #############################################################################
-public:
+protected:
+    Texture2DArray(const CreateParams<Desc>& params);
+
+    ~Texture2DArray() override = default;
+
+
+
+private:
     /**
-     * Returns the specific type of the resource, as a "human-friendly" string.
+     * The descriptor of the 2D array texture.
      */
-    virtual cl7::string_view get_type_string() const override { return TEXT("2D array texture"); }
+    const Desc _desc;
 
 }; // class Texture2DArray
 
 
 
-} // namespace textures
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::textures
 
 #endif // XL7_GRAPHICS_TEXTURES_TEXTURE2DARRAY_H

@@ -13,7 +13,7 @@ namespace meshes {
 
 
 
-class MeshManager // NOLINT(*-virtual-class-destructor)
+class MeshManager final // NOLINT(*-virtual-class-destructor)
     : public resources::ResourceManager
 {
 

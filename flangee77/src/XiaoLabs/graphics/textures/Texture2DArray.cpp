@@ -2,27 +2,16 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace textures {
+namespace xl7::graphics::textures {
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Explicit constructor.
-     */
     Texture2DArray::Texture2DArray(const CreateParams<Desc>& params)
-        : Texture( Type::Texture2DArray, { params.manager, params.id, params.identifier, params.desc }, 1, params.desc.count )
-        , _desc( params.desc )
+        : Texture(Type::Texture2DArray, {.manager=params.manager, .id=params.id, .identifier=params.identifier, .desc=params.desc}, 1, params.desc.count)
+        , _desc(params.desc)
     {
     }
 
 
 
-} // namespace textures
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::textures

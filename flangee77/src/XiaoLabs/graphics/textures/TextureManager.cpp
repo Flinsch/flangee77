@@ -2,52 +2,22 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace textures {
+namespace xl7::graphics::textures {
 
 
-
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Explicit constructor.
-     */
-    TextureManager::TextureManager(ITextureFactory* factory)
-        : ResourceManager()
-        , _factory( factory )
-    {
-    }
-
-    /**
-     * Destructor.
-     */
-    TextureManager::~TextureManager()
-    {
-    }
-
-
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
 
     /**
      * Creates and acquires the specified 2D texture.
      */
     resources::ResourceID TextureManager::create_texture_2d(cl7::astring_view identifier, const Texture2D::Desc& desc, const ImageDataProvider& image_data_provider)
     {
-        resources::Resource::CreateParams<Texture2D::Desc> params{ this, _next_id(), identifier, desc };
+        resources::Resource::CreateParams<Texture2D::Desc> params{.manager=this, .id=_next_id(), .identifier=identifier, .desc=desc};
 
-        ResourcePtr vertex_buffer( _factory->create_texture_2d( params ), _destroy_resource );
+        ResourcePtr vertex_buffer(_factory->create_texture_2d(params), _destroy_resource);
 
-        return _try_acquire_and_add_resource( std::move(vertex_buffer), image_data_provider );
+        return _try_acquire_and_add_resource(std::move(vertex_buffer), image_data_provider);
     }
 
 
 
-} // namespace textures
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::textures

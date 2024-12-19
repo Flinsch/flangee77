@@ -13,7 +13,7 @@ namespace shaders {
 
 
 
-class ShaderManager // NOLINT(*-virtual-class-destructor)
+class ShaderManager final // NOLINT(*-virtual-class-destructor)
     : public resources::ResourceManager
 {
 

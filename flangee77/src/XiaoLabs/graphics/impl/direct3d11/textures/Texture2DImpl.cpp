@@ -29,7 +29,7 @@ namespace textures {
      */
     Texture2DImpl::Texture2DImpl(const CreateParams<Desc>& params)
         : Texture2D( params )
-        , _dxgi_format( mappings::_dxgi_format_from( params.desc.pixel_format, _channel_order ) )
+        , _dxgi_format( mappings::_dxgi_format_from( params.desc.pixel_format, get_channel_order() ) )
     {
     }
 
@@ -69,32 +69,32 @@ namespace textures {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
 
-        assert( get_data().empty() || get_data().size() == static_cast<size_t>( _data_size ) );
+        assert( get_data().empty() || get_data().size() == static_cast<size_t>( get_data_size() ) );
 
-        unsigned mip_levels = _desc.mip_levels;
-        if ( _desc.usage == resources::ResourceUsage::Dynamic && mip_levels != 1 )
+        unsigned mip_levels = get_desc().mip_levels;
+        if ( get_desc().usage == resources::ResourceUsage::Dynamic && mip_levels != 1 )
         {
             mip_levels = 1;
             LOG_WARNING( TEXT("A dynamic texture cannot have mipmaps, so the number of mipmap levels is set to 1.") );
         }
 
         D3D11_TEXTURE2D_DESC texture_desc;
-        texture_desc.Width = _desc.width;
-        texture_desc.Height = _desc.height;
+        texture_desc.Width = get_desc().width;
+        texture_desc.Height = get_desc().height;
         texture_desc.MipLevels = mip_levels;
         texture_desc.ArraySize = 1;
         texture_desc.Format = _dxgi_format;
         texture_desc.SampleDesc.Count = 1;
         texture_desc.SampleDesc.Quality = 0;
-        texture_desc.Usage = mappings::_d3d_usage_from( _desc.usage );
+        texture_desc.Usage = mappings::_d3d_usage_from( get_desc().usage );
         texture_desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
-        texture_desc.CPUAccessFlags = _desc.usage == resources::ResourceUsage::Dynamic ? D3D11_CPU_ACCESS_WRITE : 0;
+        texture_desc.CPUAccessFlags = get_desc().usage == resources::ResourceUsage::Dynamic ? D3D11_CPU_ACCESS_WRITE : 0;
         texture_desc.MiscFlags = 0;
 
         constexpr unsigned MAX_LEVELS = 16; // Just some value big enough.
         D3D11_SUBRESOURCE_DATA subresource_data[ MAX_LEVELS ];
         subresource_data[ 0 ].pSysMem = get_data().data();
-        subresource_data[ 0 ].SysMemPitch = _line_pitch;
+        subresource_data[ 0 ].SysMemPitch = get_line_pitch();
         subresource_data[ 0 ].SysMemSlicePitch = 0;
 
         std::vector<xl7::graphics::images::Image> mipmaps;
@@ -108,7 +108,7 @@ namespace textures {
                     break;
                 assert( mip_level < MAX_LEVELS );
                 subresource_data[ mip_level ].pSysMem = mipmap.get_data().data();
-                subresource_data[ mip_level ].SysMemPitch = _stride * mipmap.get_width();
+                subresource_data[ mip_level ].SysMemPitch = get_stride() * mipmap.get_width();
                 subresource_data[ mip_level ].SysMemSlicePitch = 0;
                 ++mip_level;
             } // for each mip level
@@ -136,9 +136,9 @@ namespace textures {
             return false;
         }
 
-        auto pair = mappings::_map_dxgi_format( _dxgi_format, _desc.preferred_channel_order );
-        assert( pair.first == _desc.pixel_format );
-        assert( pair.second == _channel_order );
+        auto pair = mappings::_map_dxgi_format( _dxgi_format, get_desc().preferred_channel_order );
+        assert( pair.first == get_desc().pixel_format );
+        assert( pair.second == get_channel_order() );
 
         return true;
     }
@@ -154,7 +154,7 @@ namespace textures {
         auto d3d_device_context = static_cast<RenderingContextImpl*>( GraphicsSystem::instance().get_rendering_device()->get_primary_context() )->get_raw_d3d_device_context();
         assert( d3d_device_context );
 
-        if ( _desc.usage == resources::ResourceUsage::Dynamic )
+        if ( get_desc().usage == resources::ResourceUsage::Dynamic )
         {
             D3D11_MAP map_type = D3D11_MAP_WRITE_DISCARD;
 
@@ -170,11 +170,11 @@ namespace textures {
 
             std::byte* dst = static_cast<std::byte*>( mapped_subresource.pData );
             const std::byte* src = get_data().data();
-            for ( unsigned y = 0; y < _desc.height; ++y )
+            for ( unsigned y = 0; y < get_desc().height; ++y )
             {
-                ::memcpy( dst, src, _line_pitch );
+                ::memcpy( dst, src, get_line_pitch() );
                 dst += mapped_subresource.RowPitch;
-                src += _line_pitch;
+                src += get_line_pitch();
             }
 
             d3d_device_context->Unmap( _d3d_texture.Get(), 0 );
@@ -187,19 +187,19 @@ namespace textures {
             box.left = 0;
             box.top = 0;
             box.front = 0;
-            box.right = _desc.width;
-            box.bottom = _desc.height;
+            box.right = get_desc().width;
+            box.bottom = get_desc().height;
             box.back = 1;
 
-            d3d_device_context->UpdateSubresource1( _d3d_texture.Get(), 0, &box, get_data().data(), _line_pitch, 0, copy_flags );
+            d3d_device_context->UpdateSubresource1( _d3d_texture.Get(), 0, &box, get_data().data(), get_line_pitch(), 0, copy_flags );
 
-            if ( _desc.mip_levels != 1 )
+            if ( get_desc().mip_levels != 1 )
             {
                 std::vector<xl7::graphics::images::Image> mipmaps = create_mipmaps();
                 unsigned mip_level = 1;
                 for ( const auto& mipmap : mipmaps )
                 {
-                    if ( _desc.mip_levels != 0 && mip_level >= _desc.mip_levels )
+                    if ( get_desc().mip_levels != 0 && mip_level >= get_desc().mip_levels )
                         break;
 
                     box.left = 0;
@@ -209,7 +209,7 @@ namespace textures {
                     box.bottom = mipmap.get_height();
                     box.back = 1;
 
-                    d3d_device_context->UpdateSubresource1( _d3d_texture.Get(), mip_level, &box, mipmap.get_data().data(), mipmap.get_width() * _stride, 0, D3D11_COPY_DISCARD );
+                    d3d_device_context->UpdateSubresource1( _d3d_texture.Get(), mip_level, &box, mipmap.get_data().data(), mipmap.get_width() * get_stride(), 0, D3D11_COPY_DISCARD );
 
                     ++mip_level;
                 } // for each mip level

@@ -13,7 +13,7 @@ namespace surfaces {
 
 
 
-class SurfaceManager // NOLINT(*-virtual-class-destructor)
+class SurfaceManager final // NOLINT(*-virtual-class-destructor)
     : public resources::ResourceManager
 {
 

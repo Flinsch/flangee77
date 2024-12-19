@@ -2,41 +2,26 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace textures {
+namespace xl7::graphics::textures {
 
 
-
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Explicit constructor.
-     */
-    Texture2D::Texture2D(const CreateParams<Desc>& params)
-        : Texture( Type::Texture2D, { params.manager, params.id, params.identifier, params.desc }, 1, 1 )
-        , _desc( params.desc )
-    {
-    }
-
-
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
 
     /**
      * Updates the contents of this texture (unless it is immutable).
      */
     bool Texture2D::update(const ImageDataProvider& image_data_provider)
     {
-        return _update( image_data_provider );
+        return _update(image_data_provider);
     }
 
 
 
-} // namespace textures
-} // namespace graphics
-} // namespace xl7
+    Texture2D::Texture2D(const CreateParams<Desc>& params)
+        : Texture(Type::Texture2D, {.manager=params.manager, .id=params.id, .identifier=params.identifier, .desc=params.desc}, 1, 1)
+        , _desc(params.desc)
+    {
+    }
+
+
+
+} // namespace xl7::graphics::textures

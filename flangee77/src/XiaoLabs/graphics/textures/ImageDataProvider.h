@@ -8,9 +8,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace textures {
+namespace xl7::graphics::textures {
 
 
 
@@ -18,47 +16,33 @@ class ImageDataProvider
     : public resources::DefaultDataProvider
 {
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
 public:
-    /**
-     * Default constructor.
-     */
     ImageDataProvider();
 
-    /**
-     * Explicit constructor.
-     */
     ImageDataProvider(const images::Image* image);
-
-    /**
-     * Explicit constructor.
-     */
     ImageDataProvider(const images::ImageStack* image_stack);
 
-    /**
-     * Destructor.
-     */
-    virtual ~ImageDataProvider() = default;
+    ~ImageDataProvider() override = default;
 
 
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-public:
+    /** Returns the descriptor of the image(s). */
+    const images::Image::Desc& get_image_desc() const { return _image_desc; }
+    /** Returns the number of provided images. */
+    unsigned get_image_count() const { return _image_count; }
+
+
+
+private:
     /** The descriptor of the image(s). */
-    const images::Image::Desc image_desc;
+    images::Image::Desc _image_desc;
     /** The number of provided images. */
-    const unsigned image_count;
+    unsigned _image_count;
 
 }; // class ImageDataProvider
 
 
 
-} // namespace textures
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::textures
 
 #endif // XL7_GRAPHICS_TEXTURES_IMAGEDATAPROVIDER_H

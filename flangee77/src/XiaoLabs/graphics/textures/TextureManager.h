@@ -7,14 +7,13 @@
 
 
 
-namespace xl7 {
-namespace graphics {
+namespace xl7::graphics {
     class RenderingDevice;
 namespace textures {
 
 
 
-class TextureManager final
+class TextureManager final // NOLINT(*-virtual-class-destructor)
     : public resources::ResourceManager
 {
 
@@ -28,56 +27,39 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    TextureManager(ITextureFactory* factory);
-
-    /**
-     * Destructor.
-     */
-    virtual ~TextureManager();
-
-private:
-    /** Default constructor. */
     TextureManager() = delete;
-    /** Copy constructor. */
+
     TextureManager(const TextureManager&) = delete;
-    /** Copy assignment operator. */
     TextureManager& operator = (const TextureManager&) = delete;
+    TextureManager(TextureManager&&) = delete;
+    TextureManager& operator = (TextureManager&&) = delete;
 
 
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
+    /**
+     * Creates and acquires the specified 2D texture.
+     */
+    resources::ResourceID create_texture_2d(cl7::astring_view identifier, const Texture2D::Desc& desc, const ImageDataProvider& data_provider);
+
+
+
+protected:
+    TextureManager(ITextureFactory* factory) : _factory(factory) {}
+    ~TextureManager() override = default;
+
+
+
 private:
     /**
      * The texture factory.
      */
     ITextureFactory* const _factory;
 
-
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
-    /**
-     * Creates and acquires the specified 2D texture.
-     */
-    resources::ResourceID create_texture_2d(cl7::astring_view identifier, const Texture2D::Desc& desc, const ImageDataProvider& data_provider);
-
 }; // class TextureManager
 
 
 
 } // namespace textures
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics
 
 #endif // XL7_GRAPHICS_TEXTURES_TEXTUREMANAGER_H

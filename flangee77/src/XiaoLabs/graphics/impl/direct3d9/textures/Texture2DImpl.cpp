@@ -26,7 +26,7 @@ namespace textures {
      */
     Texture2DImpl::Texture2DImpl(const CreateParams<Desc>& params)
         : Texture2D( params )
-        , _d3d_format( mappings::_d3d_format_from( params.desc.pixel_format, _channel_order ) )
+        , _d3d_format( mappings::_d3d_format_from( params.desc.pixel_format, get_channel_order() ) )
     {
     }
 
@@ -65,15 +65,15 @@ namespace textures {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
 
-        assert( get_data().empty() || get_data().size() == static_cast<size_t>( _data_size ) );
+        assert( get_data().empty() || get_data().size() == static_cast<size_t>( get_data_size() ) );
 
         HRESULT hresult = d3d_device->CreateTexture(
-            _desc.width,
-            _desc.height,
-            _desc.mip_levels,
-            mappings::_d3d_usage_from( _desc.usage, _desc.mip_levels ),
+            get_desc().width,
+            get_desc().height,
+            get_desc().mip_levels,
+            mappings::_d3d_usage_from( get_desc().usage, get_desc().mip_levels ),
             _d3d_format,
-            mappings::_d3d_pool_from( _desc.usage ),
+            mappings::_d3d_pool_from( get_desc().usage ),
             &_d3d_texture,
             NULL );
 
@@ -83,9 +83,9 @@ namespace textures {
             return false;
         }
 
-        auto pair = mappings::_map_d3d_format( _d3d_format, _desc.preferred_channel_order );
-        assert( pair.first == _desc.pixel_format );
-        assert( pair.second == _channel_order );
+        auto pair = mappings::_map_d3d_format( _d3d_format, get_desc().preferred_channel_order );
+        assert( pair.first == get_desc().pixel_format );
+        assert( pair.second == get_channel_order() );
 
         if ( get_data().empty() )
             return true;
@@ -113,17 +113,17 @@ namespace textures {
         update_desc[ 0 ].data = get_data().data();
         update_desc[ 0 ].rect.left = 0;
         update_desc[ 0 ].rect.top = 0;
-        update_desc[ 0 ].rect.right = static_cast<LONG>( _desc.width );
-        update_desc[ 0 ].rect.bottom = static_cast<LONG>( _desc.height );
+        update_desc[ 0 ].rect.right = static_cast<LONG>( get_desc().width );
+        update_desc[ 0 ].rect.bottom = static_cast<LONG>( get_desc().height );
         unsigned mip_level = 1;
 
         std::vector<xl7::graphics::images::Image> mipmaps;
-        if ( false && _desc.mip_levels != 1 )
+        if ( false && get_desc().mip_levels != 1 )
         {
             mipmaps = create_mipmaps();
             for ( const auto& mipmap : mipmaps )
             {
-                if ( _desc.mip_levels != 0 && mip_level >= _desc.mip_levels )
+                if ( get_desc().mip_levels != 0 && mip_level >= get_desc().mip_levels )
                     break;
                 assert( mip_level < MAX_LEVELS );
                 update_desc[ mip_level ].data = mipmap.get_data().data();
@@ -154,7 +154,7 @@ namespace textures {
             const std::byte* src = update_desc[ i ].data;
             unsigned width = static_cast<unsigned>( update_desc[ i ].rect.right - update_desc[ i ].rect.left );
             unsigned height = static_cast<unsigned>( update_desc[ i ].rect.bottom - update_desc[ i ].rect.top );
-            unsigned pitch = width * _stride;
+            unsigned pitch = width * get_stride();
             for ( unsigned y = 0; y < height; ++y )
             {
                 ::memcpy( dst, src, pitch );

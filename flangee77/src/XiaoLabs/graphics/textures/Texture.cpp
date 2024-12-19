@@ -13,83 +13,70 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace textures {
+namespace xl7::graphics::textures {
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Explicit constructor.
-     */
     Texture::Texture(Type type, const CreateParams<Desc>& params, unsigned depth, unsigned image_count)
-        : Resource( params )
-        , _type( type )
-        , _desc( params.desc )
-        , _channel_order( GraphicsSystem::instance().get_rendering_device()->recommend_channel_order( type, params.desc.pixel_format, params.desc.preferred_channel_order ).first )
-        , _depth( depth )
-        , _stride( PixelBitKit::determine_stride( params.desc.pixel_format ) )
-        , _line_pitch( _stride * params.desc.width )
-        , _slice_pitch( _line_pitch * params.desc.height )
-        , _data_size( _slice_pitch * depth * image_count )
+        : Resource(params)
+        , _type(type)
+        , _desc(params.desc)
+        , _channel_order(GraphicsSystem::instance().get_rendering_device()->recommend_channel_order(type, params.desc.pixel_format, params.desc.preferred_channel_order).first)
+        , _depth(depth)
+        , _stride(PixelBitKit::determine_stride(params.desc.pixel_format))
+        , _line_pitch(_stride * params.desc.width)
+        , _slice_pitch(_line_pitch * params.desc.height)
+        , _data_size(_slice_pitch * depth * image_count)
     {
         const RenderingDevice::Capabilities& capabilities = GraphicsSystem::instance().get_rendering_device()->get_capabilities();
 
-        if ( _type == Type::Texture2D && capabilities.textures.max_texture_2d_width && _desc.width > capabilities.textures.max_texture_2d_width )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_2d_width) + TEXT(" is supported.") );
-        if ( _type == Type::Texture2D && capabilities.textures.max_texture_2d_height && _desc.height > capabilities.textures.max_texture_2d_height )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_2d_height) + TEXT(" is supported.") );
+        if (_type == Type::Texture2D && capabilities.textures.max_texture_2d_width && _desc.width > capabilities.textures.max_texture_2d_width)
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_2d_width) + TEXT(" is supported."));
+        if (_type == Type::Texture2D && capabilities.textures.max_texture_2d_height && _desc.height > capabilities.textures.max_texture_2d_height)
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_2d_height) + TEXT(" is supported."));
 
-        if ( _type == Type::Texture3D && capabilities.textures.max_texture_3d_size && _desc.width > capabilities.textures.max_texture_3d_size )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_3d_size) + TEXT(" is supported.") );
-        if ( _type == Type::Texture3D && capabilities.textures.max_texture_3d_size && _desc.height > capabilities.textures.max_texture_3d_size )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_3d_size) + TEXT(" is supported.") );
-        if ( _type == Type::Texture3D && capabilities.textures.max_texture_3d_size && _depth > capabilities.textures.max_texture_3d_size )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a depth of ") + cl7::to_string(_depth) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_3d_size) + TEXT(" is supported.") );
+        if (_type == Type::Texture3D && capabilities.textures.max_texture_3d_size && _desc.width > capabilities.textures.max_texture_3d_size)
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_3d_size) + TEXT(" is supported."));
+        if (_type == Type::Texture3D && capabilities.textures.max_texture_3d_size && _desc.height > capabilities.textures.max_texture_3d_size)
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_3d_size) + TEXT(" is supported."));
+        if (_type == Type::Texture3D && capabilities.textures.max_texture_3d_size && _depth > capabilities.textures.max_texture_3d_size)
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a depth of ") + cl7::to_string(_depth) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_3d_size) + TEXT(" is supported."));
 
-        if ( _type == Type::Cubemap && capabilities.textures.max_cubemap_size && _desc.width > capabilities.textures.max_cubemap_size )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_cubemap_size) + TEXT(" is supported.") );
-        if ( _type == Type::Cubemap && capabilities.textures.max_cubemap_size && _desc.height > capabilities.textures.max_cubemap_size )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_cubemap_size) + TEXT(" is supported.") );
+        if (_type == Type::Cubemap && capabilities.textures.max_cubemap_size && _desc.width > capabilities.textures.max_cubemap_size)
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_cubemap_size) + TEXT(" is supported."));
+        if (_type == Type::Cubemap && capabilities.textures.max_cubemap_size && _desc.height > capabilities.textures.max_cubemap_size)
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_cubemap_size) + TEXT(" is supported."));
 
-        if ( _type == Type::Texture2DArray && capabilities.textures.max_texture_array_size && image_count > capabilities.textures.max_texture_array_size )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created should have ") + cl7::to_string(image_count) + TEXT(" slices, but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_array_size) + TEXT(" is supported.") );
+        if (_type == Type::Texture2DArray && capabilities.textures.max_texture_array_size && image_count > capabilities.textures.max_texture_array_size)
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created should have ") + cl7::to_string(image_count) + TEXT(" slices, but a maximum of ") + cl7::to_string(capabilities.textures.max_texture_array_size) + TEXT(" is supported."));
 
-        if ( _type == Type::Texture2D && capabilities.textures.texture_2d_pow2_only && !ml7::is_power_of_2( _desc.width ) )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but only dimensions specified as a power of two are supported.") );
-        if ( _type == Type::Texture2D && capabilities.textures.texture_2d_pow2_only && !ml7::is_power_of_2( _desc.height ) )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but only dimensions specified as a power of two are supported.") );
+        if (_type == Type::Texture2D && capabilities.textures.texture_2d_pow2_only && !ml7::is_power_of_2(_desc.width))
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but only dimensions specified as a power of two are supported."));
+        if (_type == Type::Texture2D && capabilities.textures.texture_2d_pow2_only && !ml7::is_power_of_2(_desc.height))
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but only dimensions specified as a power of two are supported."));
 
-        if ( _type == Type::Texture3D && capabilities.textures.texture_3d_pow2_only && !ml7::is_power_of_2( _desc.width ) )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but only dimensions specified as a power of two are supported.") );
-        if ( _type == Type::Texture3D && capabilities.textures.texture_3d_pow2_only && !ml7::is_power_of_2( _desc.height ) )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but only dimensions specified as a power of two are supported.") );
-        if ( _type == Type::Texture3D && capabilities.textures.texture_3d_pow2_only && !ml7::is_power_of_2( _depth ) )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a depth of ") + cl7::to_string(_depth) + TEXT(", but only dimensions specified as a power of two are supported.") );
+        if (_type == Type::Texture3D && capabilities.textures.texture_3d_pow2_only && !ml7::is_power_of_2(_desc.width))
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but only dimensions specified as a power of two are supported."));
+        if (_type == Type::Texture3D && capabilities.textures.texture_3d_pow2_only && !ml7::is_power_of_2(_desc.height))
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but only dimensions specified as a power of two are supported."));
+        if (_type == Type::Texture3D && capabilities.textures.texture_3d_pow2_only && !ml7::is_power_of_2(_depth))
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a depth of ") + cl7::to_string(_depth) + TEXT(", but only dimensions specified as a power of two are supported."));
 
-        if ( _type == Type::Cubemap && capabilities.textures.cubemap_pow2_only && !ml7::is_power_of_2( _desc.width ) )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but only dimensions specified as a power of two are supported.") );
-        if ( _type == Type::Cubemap && capabilities.textures.cubemap_pow2_only && !ml7::is_power_of_2( _desc.height ) )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but only dimensions specified as a power of two are supported.") );
+        if (_type == Type::Cubemap && capabilities.textures.cubemap_pow2_only && !ml7::is_power_of_2(_desc.width))
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a width of ") + cl7::to_string(_desc.width) + TEXT(", but only dimensions specified as a power of two are supported."));
+        if (_type == Type::Cubemap && capabilities.textures.cubemap_pow2_only && !ml7::is_power_of_2(_desc.height))
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has a height of ") + cl7::to_string(_desc.height) + TEXT(", but only dimensions specified as a power of two are supported."));
 
-        if ( capabilities.textures.square_only && _desc.width != _desc.height )
-            LOG_WARNING( TEXT("A non-square ") + get_typed_identifier_string() + TEXT(" is supposed to be created, but only square textures are supported.") );
+        if (capabilities.textures.square_only && _desc.width != _desc.height)
+            LOG_WARNING(TEXT("A non-square ") + get_typed_identifier_string() + TEXT(" is supposed to be created, but only square textures are supported."));
 
-        if ( capabilities.textures.max_aspect_ratio && _desc.height && _desc.width / _desc.height > capabilities.textures.max_aspect_ratio )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has an width/height aspect ratio of ") + cl7::to_string(_desc.width / _desc.height) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_aspect_ratio) + TEXT(" is supported.") );
-        if ( capabilities.textures.max_aspect_ratio && _desc.width && _desc.height / _desc.width > capabilities.textures.max_aspect_ratio )
-            LOG_WARNING( TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has an height/width aspect ratio of ") + cl7::to_string(_desc.height / _desc.width) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_aspect_ratio) + TEXT(" is supported.") );
+        if (capabilities.textures.max_aspect_ratio && _desc.height && _desc.width / _desc.height > capabilities.textures.max_aspect_ratio)
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has an width/height aspect ratio of ") + cl7::to_string(_desc.width / _desc.height) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_aspect_ratio) + TEXT(" is supported."));
+        if (capabilities.textures.max_aspect_ratio && _desc.width && _desc.height / _desc.width > capabilities.textures.max_aspect_ratio)
+            LOG_WARNING(TEXT("The ") + get_typed_identifier_string() + TEXT(" to be created has an height/width aspect ratio of ") + cl7::to_string(_desc.height / _desc.width) + TEXT(", but a maximum of ") + cl7::to_string(capabilities.textures.max_aspect_ratio) + TEXT(" is supported."));
     }
 
 
-
-    // #############################################################################
-    // Resource Implementations
-    // #############################################################################
 
     /**
      * Checks whether the given data provider complies with the specific properties
@@ -98,28 +85,28 @@ namespace textures {
      */
     bool Texture::_check_data_impl(const resources::DataProvider& data_provider)
     {
-        assert( typeid(data_provider) == typeid(const ImageDataProvider&) );
-        auto image_data_provider = static_cast<const ImageDataProvider&>( data_provider );
+        assert(typeid(data_provider) == typeid(const ImageDataProvider&));
+        auto image_data_provider = static_cast<const ImageDataProvider&>(data_provider); // NOLINT(*-pro-type-static-cast-downcast)
 
-        if ( image_data_provider.image_desc.width != _desc.width )
+        if (image_data_provider.get_image_desc().width != _desc.width)
         {
-            LOG_ERROR( TEXT("The image width provided for ") + get_typed_identifier_string() + TEXT(" does not match the width of the ") + cl7::string(get_type_string()) + TEXT(".") );
+            LOG_ERROR(TEXT("The image width provided for ") + get_typed_identifier_string() + TEXT(" does not match the width of the ") + cl7::string(get_type_string()) + TEXT("."));
             return false;
         }
-        if ( image_data_provider.image_desc.height != _desc.height )
+        if (image_data_provider.get_image_desc().height != _desc.height)
         {
-            LOG_ERROR( TEXT("The image height provided for ") + get_typed_identifier_string() + TEXT(" does not match the height of the ") + cl7::string(get_type_string()) + TEXT(".") );
+            LOG_ERROR(TEXT("The image height provided for ") + get_typed_identifier_string() + TEXT(" does not match the height of the ") + cl7::string(get_type_string()) + TEXT("."));
             return false;
         }
-        if ( image_data_provider.image_desc.depth != _depth )
+        if (image_data_provider.get_image_desc().depth != _depth)
         {
-            LOG_ERROR( TEXT("The image depth provided for ") + get_typed_identifier_string() + TEXT(" does not match the depth of the ") + cl7::string(get_type_string()) + TEXT(".") );
+            LOG_ERROR(TEXT("The image depth provided for ") + get_typed_identifier_string() + TEXT(" does not match the depth of the ") + cl7::string(get_type_string()) + TEXT("."));
             return false;
         }
 
-        if ( !_check_against_size( data_provider, image_data_provider.image_desc.calculate_data_size() * image_data_provider.image_count ) )
+        if (!_check_against_size(data_provider, image_data_provider.get_image_desc().calculate_data_size() * image_data_provider.get_image_count()))
             return false;
-        if ( !_check_against_stride( data_provider, image_data_provider.image_desc.determine_pixel_stride() ) )
+        if (!_check_against_stride(data_provider, image_data_provider.get_image_desc().determine_pixel_stride()))
             return false;
 
         return true;
@@ -130,23 +117,23 @@ namespace textures {
      */
     bool Texture::_fill_data_impl(const resources::DataProvider& data_provider)
     {
-        assert( typeid(data_provider) == typeid(const ImageDataProvider&) );
-        auto image_data_provider = static_cast<const ImageDataProvider&>( data_provider );
+        assert(typeid(data_provider) == typeid(const ImageDataProvider&));
+        auto image_data_provider = static_cast<const ImageDataProvider&>(data_provider); // NOLINT(*-pro-type-static-cast-downcast)
 
         cl7::byte_vector image_data;
-        data_provider.fill( image_data );
+        data_provider.fill(image_data);
 
-        if ( image_data_provider.image_desc.pixel_format == _desc.pixel_format && image_data_provider.image_desc.channel_order == _channel_order )
+        if (image_data_provider.get_image_desc().pixel_format == _desc.pixel_format && image_data_provider.get_image_desc().channel_order == _channel_order)
         {
             // No conversion required at all.
-            image_data.swap( _access_data() );
+            image_data.swap(_access_data());
         }
         else
         {
             // Perform image format conversion.
-            images::Image source_image( image_data_provider.image_desc, std::move(image_data) );
-            images::Image target_image = images::ImageConverter().convert_image( source_image, _desc.pixel_format, _channel_order );
-            target_image.swap( _access_data() );
+            images::Image source_image(image_data_provider.get_image_desc(), std::move(image_data));
+            images::Image target_image = images::ImageConverter::convert_image(source_image, _desc.pixel_format, _channel_order);
+            target_image.swap(_access_data());
         }
 
         return true;
@@ -160,27 +147,23 @@ namespace textures {
      */
     bool Texture::_acquire_impl(const resources::DataProvider& data_provider)
     {
-        assert( typeid(data_provider) == typeid(const ImageDataProvider&) );
-        auto image_data_provider = static_cast<const ImageDataProvider&>( data_provider );
+        assert(typeid(data_provider) == typeid(const ImageDataProvider&));
+        auto image_data_provider = static_cast<const ImageDataProvider&>(data_provider); // NOLINT(*-pro-type-static-cast-downcast)
 
-        return _acquire_impl( image_data_provider );
+        return _acquire_impl(image_data_provider);
     }
 
 
-
-    // #############################################################################
-    // Helpers
-    // #############################################################################
 
     /**
      * Returns the specified "image view" of the texture data.
      */
     images::Image Texture::_as_image(unsigned image_index) const
     {
-        const size_t size = static_cast<size_t>( _slice_pitch );
-        const size_t offset = static_cast<size_t>( image_index ) * size;
+        const auto size = static_cast<size_t>(_slice_pitch);
+        const auto offset = static_cast<size_t>(image_index) * size;
 
-        assert( offset + size <= _data_size );
+        assert(offset + size <= _data_size);
 
         images::Image::Desc desc;
         desc.pixel_format = _desc.pixel_format;
@@ -188,28 +171,28 @@ namespace textures {
         desc.width = _desc.width;
         desc.height = _desc.height;
         desc.depth = _depth;
-        assert( size == desc.calculate_data_size() );
+        assert(size == desc.calculate_data_size());
 
         cl7::byte_view data;
-        if ( offset + size <= get_data().size() )
-            data = { get_data().data() + offset, size };
+        if (offset + size <= get_data().size())
+            data = {get_data().data() + offset, size};
 
-        return images::Image( desc, data, true );
+        return {desc, data, true};
     }
 
     /**
      * Creates and returns mipmaps of the specified texture "image".
      */
-    std::vector<images::Image> Texture::_create_mipmaps( unsigned image_index, images::ResamplingMethod resampling_method ) const
+    std::vector<images::Image> Texture::_create_mipmaps(unsigned image_index, images::ResamplingMethod resampling_method) const
     {
         std::vector<images::Image> mipmaps;
 
-        images::Image image = _as_image( image_index );
-        while ( image.get_width() > 1 || image.get_height() > 1 || image.get_depth() > 1 )
+        images::Image image = _as_image(image_index);
+        while (image.get_width() > 1 || image.get_height() > 1 || image.get_depth() > 1)
         {
-            images::Image mipmap = images::ImageResizer::create_mipmap( image, resampling_method );
-            mipmaps.emplace_back( std::move(mipmap) );
-            image = { mipmaps.back().get_desc(), mipmaps.back().get_data(), true };
+            images::Image mipmap = images::ImageResizer::create_mipmap(image, resampling_method);
+            mipmaps.emplace_back(std::move(mipmap));
+            image = {mipmaps.back().get_desc(), mipmaps.back().get_data(), true};
         }
 
         return mipmaps;
@@ -223,24 +206,22 @@ namespace textures {
      */
     bool Texture::_update(const ImageDataProvider& image_data_provider)
     {
-        if ( _desc.usage == resources::ResourceUsage::Immutable )
+        if (_desc.usage == resources::ResourceUsage::Immutable)
         {
-            LOG_ERROR( TEXT("The immutable ") + get_typed_identifier_string() + TEXT(" cannot be updated.") );
+            LOG_ERROR(TEXT("The immutable ") + get_typed_identifier_string() + TEXT(" cannot be updated."));
             return false;
         }
 
-        if ( !_try_fill_data( image_data_provider ) )
+        if (!_try_fill_data(image_data_provider))
             return false;
 
-        assert( image_data_provider.get_offset() == 0 && get_data().size() == _data_size );
+        assert(image_data_provider.get_offset() == 0 && get_data().size() == _data_size);
         bool discard = true;
         bool no_overwrite = false;
 
-        return _update_impl( image_data_provider, discard, no_overwrite );
+        return _update_impl(image_data_provider, discard, no_overwrite);
     }
 
 
 
-} // namespace textures
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::textures

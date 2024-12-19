@@ -13,7 +13,7 @@ namespace states {
 
 
 
-class StateManager // NOLINT(*-virtual-class-destructor)
+class StateManager final // NOLINT(*-virtual-class-destructor)
     : public resources::ResourceManager
 {
 

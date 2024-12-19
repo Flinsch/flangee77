@@ -2,27 +2,16 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace textures {
+namespace xl7::graphics::textures {
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Explicit constructor.
-     */
     Texture3D::Texture3D(const CreateParams<Desc>& params)
-        : Texture( Type::Texture3D, { params.manager, params.id, params.identifier, params.desc }, params.desc.depth, 1 )
-        , _desc( params.desc )
+        : Texture(Type::Texture3D, {.manager=params.manager, .id=params.id, .identifier=params.identifier, .desc=params.desc}, params.desc.depth, 1)
+        , _desc(params.desc)
     {
     }
 
 
 
-} // namespace textures
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::textures
