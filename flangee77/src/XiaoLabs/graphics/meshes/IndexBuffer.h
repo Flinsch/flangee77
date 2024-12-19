@@ -8,13 +8,11 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace meshes {
+namespace xl7::graphics::meshes {
 
 
 
-class IndexBuffer
+class IndexBuffer // NOLINT(*-virtual-class-destructor)
     : public MeshBuffer
 {
 
@@ -28,71 +26,43 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    IndexBuffer(const CreateParams<Desc>& params);
-
-    /**
-     * Destructor.
-     */
-    virtual ~IndexBuffer() = default;
-
-private:
-    /** Default constructor. */
     IndexBuffer() = delete;
-    /** Copy constructor. */
+
     IndexBuffer(const IndexBuffer&) = delete;
-    /** Copy assignment operator. */
     IndexBuffer& operator = (const IndexBuffer&) = delete;
+    IndexBuffer(IndexBuffer&&) = delete;
+    IndexBuffer& operator = (IndexBuffer&&) = delete;
 
 
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-protected:
     /**
-     * The descriptor of the index buffer.
+     * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    const Desc _desc;
+    cl7::string_view get_type_string() const override { return TEXT("index buffer"); }
 
-private:
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
     /**
      * Returns the descriptor of the index buffer.
      */
     const Desc& get_desc() const { return _desc; }
 
-public:
+
+
+protected:
+    IndexBuffer(const CreateParams<Desc>& params);
+    ~IndexBuffer() override = default;
 
 
 
-    // #############################################################################
-    // Resource Implementations
-    // #############################################################################
-public:
+private:
     /**
-     * Returns the specific type of the resource, as a "human-friendly" string.
+     * The descriptor of the index buffer.
      */
-    virtual cl7::string_view get_type_string() const override { return TEXT("index buffer"); }
+    const Desc _desc;
 
 }; // class IndexBuffer
 
 
 
-} // namespace meshes
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::meshes
 
 #endif // XL7_GRAPHICS_MESHES_INDEXBUFFER_H

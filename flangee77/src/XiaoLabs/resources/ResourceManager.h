@@ -16,7 +16,7 @@ namespace xl7::resources {
 
 
 
-class ResourceManager
+class ResourceManager // NOLINT(*-virtual-class-destructor)
 {
 
 public:
@@ -159,7 +159,7 @@ protected:
 
     ResourceManager() = default;
 
-    ~ResourceManager();
+    virtual ~ResourceManager();
 
 
 

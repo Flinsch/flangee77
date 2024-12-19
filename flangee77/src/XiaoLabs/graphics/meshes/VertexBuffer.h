@@ -8,13 +8,11 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace meshes {
+namespace xl7::graphics::meshes {
 
 
 
-class VertexBuffer
+class VertexBuffer // NOLINT(*-virtual-class-destructor)
     : public MeshBuffer
 {
 
@@ -33,71 +31,43 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    VertexBuffer(const CreateParams<Desc>& params);
-
-    /**
-     * Destructor.
-     */
-    virtual ~VertexBuffer() = default;
-
-private:
-    /** Default constructor. */
     VertexBuffer() = delete;
-    /** Copy constructor. */
+
     VertexBuffer(const VertexBuffer&) = delete;
-    /** Copy assignment operator. */
     VertexBuffer& operator = (const VertexBuffer&) = delete;
+    VertexBuffer(VertexBuffer&&) = delete;
+    VertexBuffer& operator = (VertexBuffer&&) = delete;
 
 
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-protected:
     /**
-     * The descriptor of the vertex buffer.
+     * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    const Desc _desc;
+    cl7::string_view get_type_string() const override { return TEXT("vertex buffer"); }
 
-private:
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
     /**
      * Returns the descriptor of the vertex buffer.
      */
     const Desc& get_desc() const { return _desc; }
 
-public:
+
+
+protected:
+    VertexBuffer(const CreateParams<Desc>& params);
+    ~VertexBuffer() override = default;
 
 
 
-    // #############################################################################
-    // Resource Implementations
-    // #############################################################################
-public:
+private:
     /**
-     * Returns the specific type of the resource, as a "human-friendly" string.
+     * The descriptor of the vertex buffer.
      */
-    virtual cl7::string_view get_type_string() const override { return TEXT("vertex buffer"); }
+    const Desc _desc;
 
 }; // class VertexBuffer
 
 
 
-} // namespace meshes
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::meshes
 
 #endif // XL7_GRAPHICS_MESHES_VERTEXBUFFER_H

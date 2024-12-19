@@ -35,7 +35,7 @@ namespace meshes {
      */
     VertexBufferImpl::VertexBufferImpl(const CreateParams<Desc>& params)
         : VertexBuffer( params )
-        , _d3d_fvf( _d3d_fvf_from( _desc.vertex_layout ) )
+        , _d3d_fvf( _d3d_fvf_from( get_desc().vertex_layout ) )
     {
     }
 
@@ -56,13 +56,13 @@ namespace meshes {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
 
-        assert( get_data().empty() || get_data().size() == static_cast<size_t>( _size ) );
+        assert( get_data().empty() || get_data().size() == static_cast<size_t>( get_size() ) );
 
         HRESULT hresult = d3d_device->CreateVertexBuffer(
-            _size,
-            mappings::_d3d_usage_from( _desc.usage ),
+            get_size(),
+            mappings::_d3d_usage_from( get_desc().usage ),
             _d3d_fvf,
-            mappings::_d3d_pool_from( _desc.usage ),
+            mappings::_d3d_pool_from( get_desc().usage ),
             &_d3d_vertex_buffer,
             NULL );
 

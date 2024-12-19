@@ -4,28 +4,17 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace meshes {
+namespace xl7::graphics::meshes {
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Explicit constructor.
-     */
     VertexBuffer::VertexBuffer(const CreateParams<Desc>& params)
-        : MeshBuffer( Type::VertexBuffer, params, params.desc.stride )
-        , _desc( params.desc )
+        : MeshBuffer(Type::VertexBuffer, params, params.desc.stride)
+        , _desc(params.desc)
     {
-        assert( _stride > 0 && _stride >= _desc.vertex_layout.calculate_size() );
+        assert(get_stride() > 0 && get_stride() >= _desc.vertex_layout.calculate_size());
     }
 
 
 
-} // namespace meshes
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::meshes

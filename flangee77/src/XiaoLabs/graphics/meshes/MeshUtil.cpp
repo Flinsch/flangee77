@@ -2,9 +2,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace meshes {
+namespace xl7::graphics::meshes {
 
 
 
@@ -22,14 +20,14 @@ namespace meshes {
      */
     unsigned MeshUtil::calculate_index_stride(IndexType index_type)
     {
-        switch ( index_type )
+        switch (index_type)
         {
         case IndexType::UINT16:
             return 2;
         case IndexType::UINT32:
             return 4;
         default:
-            assert( false );
+            assert(false);
         }
 
         return 0;
@@ -41,7 +39,7 @@ namespace meshes {
      */
     unsigned MeshUtil::calculate_vertex_index_count(Topology topology, unsigned primitive_count)
     {
-        switch ( topology )
+        switch (topology)
         {
         case Topology::Undefined:
             return 0;
@@ -56,7 +54,7 @@ namespace meshes {
         case Topology::TriangleStrip:
             return primitive_count + 2;
         default:
-            assert( false );
+            assert(false);
         }
 
         return 0;
@@ -68,7 +66,7 @@ namespace meshes {
      */
     unsigned MeshUtil::calculate_primitive_count(Topology topology, unsigned vertex_index_count)
     {
-        switch ( topology )
+        switch (topology)
         {
         case Topology::Undefined:
             return 0;
@@ -77,17 +75,17 @@ namespace meshes {
         case Topology::LineList:
             return vertex_index_count / 2;
         case Topology::LineStrip:
-            if ( vertex_index_count < 2 )
+            if (vertex_index_count < 2)
                 return 0;
             return vertex_index_count - 1;
         case Topology::TriangleList:
             return vertex_index_count / 3;
         case Topology::TriangleStrip:
-            if ( vertex_index_count < 3 )
+            if (vertex_index_count < 3)
                 return 0;
             return vertex_index_count - 2;
         default:
-            assert( false );
+            assert(false);
         }
 
         return 0;
@@ -95,6 +93,4 @@ namespace meshes {
 
 
 
-} // namespace meshes
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::meshes

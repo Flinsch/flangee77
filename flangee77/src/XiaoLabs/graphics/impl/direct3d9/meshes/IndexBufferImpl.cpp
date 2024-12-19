@@ -43,7 +43,7 @@ namespace meshes {
      */
     IndexBufferImpl::IndexBufferImpl(const CreateParams<Desc>& params)
         : IndexBuffer( params )
-        , _d3d_format( _d3d_format_from( _desc.index_type ) )
+        , _d3d_format( _d3d_format_from( get_desc().index_type ) )
     {
     }
 
@@ -64,13 +64,13 @@ namespace meshes {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
 
-        assert( get_data().empty() || get_data().size() == static_cast<size_t>( _size ) );
+        assert( get_data().empty() || get_data().size() == static_cast<size_t>( get_size() ) );
 
         HRESULT hresult = d3d_device->CreateIndexBuffer(
-            _size,
-            mappings::_d3d_usage_from( _desc.usage ),
+            get_size(),
+            mappings::_d3d_usage_from( get_desc().usage ),
             _d3d_format,
-            mappings::_d3d_pool_from( _desc.usage ),
+            mappings::_d3d_pool_from( get_desc().usage ),
             &_d3d_index_buffer,
             NULL );
 

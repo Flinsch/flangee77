@@ -47,15 +47,15 @@ namespace meshes {
         auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
         assert( d3d_device );
 
-        assert( get_data().empty() || get_data().size() == static_cast<size_t>( _size ) );
+        assert( get_data().empty() || get_data().size() == static_cast<size_t>( get_size() ) );
 
         D3D11_BUFFER_DESC buffer_desc;
-        buffer_desc.ByteWidth = _size;
-        buffer_desc.Usage = mappings::_d3d_usage_from( _desc.usage );
+        buffer_desc.ByteWidth = get_size();
+        buffer_desc.Usage = mappings::_d3d_usage_from( get_desc().usage );
         buffer_desc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-        buffer_desc.CPUAccessFlags = _desc.usage == resources::ResourceUsage::Dynamic ? D3D11_CPU_ACCESS_WRITE : 0;
+        buffer_desc.CPUAccessFlags = get_desc().usage == resources::ResourceUsage::Dynamic ? D3D11_CPU_ACCESS_WRITE : 0;
         buffer_desc.MiscFlags = 0;
-        buffer_desc.StructureByteStride = _desc.stride;
+        buffer_desc.StructureByteStride = get_desc().stride;
 
         D3D11_SUBRESOURCE_DATA subresource_data;
         subresource_data.pSysMem = get_data().data();
@@ -105,7 +105,7 @@ namespace meshes {
         auto d3d_device_context = static_cast<RenderingContextImpl*>( GraphicsSystem::instance().get_rendering_device()->get_primary_context() )->get_raw_d3d_device_context();
         assert( d3d_device_context );
 
-        if ( _desc.usage == resources::ResourceUsage::Dynamic )
+        if ( get_desc().usage == resources::ResourceUsage::Dynamic )
         {
             D3D11_MAP map_type;
             if ( discard )

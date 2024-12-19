@@ -6,28 +6,20 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace meshes {
+namespace xl7::graphics::meshes {
 
 
-
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
 
     /**
      * Explicit constructor.
      */
     IndexBuffer::IndexBuffer(const CreateParams<Desc>& params)
-        : MeshBuffer( Type::IndexBuffer, params, MeshUtil::calculate_index_stride( params.desc.index_type ) )
-        , _desc( params.desc )
+        : MeshBuffer(Type::IndexBuffer, params, MeshUtil::calculate_index_stride(params.desc.index_type))
+        , _desc(params.desc)
     {
-        assert( _stride == 2 || _stride == 4 );
+        assert(get_stride() == 2 || get_stride() == 4);
     }
 
 
 
-} // namespace meshes
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::meshes

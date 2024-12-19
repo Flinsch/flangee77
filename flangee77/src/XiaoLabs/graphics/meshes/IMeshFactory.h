@@ -7,9 +7,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace meshes {
+namespace xl7::graphics::meshes {
 
 
 
@@ -29,8 +27,6 @@ public:
 
 
 
-} // namespace meshes
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::meshes
 
 #endif // XL7_GRAPHICS_MESHES_IMESHFACTORY_H

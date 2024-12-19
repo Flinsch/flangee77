@@ -2,16 +2,14 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace meshes {
+namespace xl7::graphics::meshes {
 
 
 
     /** Returns the size of the given data type, in bytes. */
     unsigned VertexLayout::Element::get_size(DataType data_type)
     {
-        switch ( data_type )
+        switch (data_type)
         {
         case DataType::FLOAT1:
             return 1 * sizeof(float);
@@ -25,7 +23,7 @@ namespace meshes {
         case DataType::UBYTE4:
             return 4;
         default:
-            assert( false );
+            assert(false);
         }
 
         return 0;
@@ -34,20 +32,18 @@ namespace meshes {
     /** Returns the data size of this element, in bytes. */
     unsigned VertexLayout::Element::get_size() const
     {
-        return get_size( data_type );
+        return get_size(data_type);
     }
 
     /** Calculates the total size of the vertex layout, in bytes. */
     unsigned VertexLayout::calculate_size() const
     {
         unsigned size = 0;
-        for ( const Element& element : elements )
+        for (const Element& element : elements)
             size += element.get_size();
         return size;
     }
 
 
 
-} // namespace meshes
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::meshes

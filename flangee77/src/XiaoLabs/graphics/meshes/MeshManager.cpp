@@ -4,48 +4,27 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace meshes {
+namespace xl7::graphics::meshes {
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Explicit constructor.
-     */
     MeshManager::MeshManager(IMeshFactory* factory)
-        : ResourceManager()
-        , _factory( factory )
-    {
-    }
-
-    /**
-     * Destructor.
-     */
-    MeshManager::~MeshManager()
+        : _factory(factory)
     {
     }
 
 
-
-    // #############################################################################
-    // Helpers
-    // #############################################################################
 
     /**
      * Creates and acquires the specified vertex shader.
      */
     resources::ResourceID MeshManager::_create_vertex_buffer(cl7::astring_view identifier, const VertexBuffer::Desc& desc, const resources::DataProvider& data_provider)
     {
-        resources::Resource::CreateParams<VertexBuffer::Desc> params{ this, _next_id(), identifier, desc };
+        resources::Resource::CreateParams<VertexBuffer::Desc> params{.manager=this, .id=_next_id(), .identifier=identifier, .desc=desc};
 
-        ResourcePtr vertex_buffer( _factory->create_vertex_buffer( params ), _destroy_resource );
+        ResourcePtr vertex_buffer(_factory->create_vertex_buffer(params), _destroy_resource);
 
-        return _try_acquire_and_add_resource( std::move(vertex_buffer), data_provider );
+        return _try_acquire_and_add_resource(std::move(vertex_buffer), data_provider);
     }
 
     /**
@@ -53,15 +32,13 @@ namespace meshes {
      */
     resources::ResourceID MeshManager::_create_index_buffer(cl7::astring_view identifier, const IndexBuffer::Desc& desc, const resources::DataProvider& data_provider)
     {
-        resources::Resource::CreateParams<IndexBuffer::Desc> params{ this, _next_id(), identifier, desc };
+        resources::Resource::CreateParams<IndexBuffer::Desc> params{.manager=this, .id=_next_id(), .identifier=identifier, .desc=desc};
 
-        ResourcePtr index_buffer( _factory->create_index_buffer( params ), _destroy_resource );
+        ResourcePtr index_buffer(_factory->create_index_buffer(params), _destroy_resource);
 
-        return _try_acquire_and_add_resource( std::move(index_buffer), data_provider );
+        return _try_acquire_and_add_resource(std::move(index_buffer), data_provider);
     }
 
 
 
-} // namespace meshes
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::meshes

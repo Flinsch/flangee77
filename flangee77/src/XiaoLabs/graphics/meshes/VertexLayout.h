@@ -8,9 +8,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace meshes {
+namespace xl7::graphics::meshes {
 
 
 
@@ -74,6 +72,8 @@ struct VertexLayout
         unsigned get_size() const;
     };
 
+
+
     /** The "ordered list" of vertex elements. */
     std::vector<Element> elements;
 
@@ -86,8 +86,6 @@ struct VertexLayout
 
 
 
-} // namespace meshes
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::meshes
 
 #endif // XL7_GRAPHICS_MESHES_VERTEXLAYOUT_H

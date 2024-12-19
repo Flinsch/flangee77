@@ -5,41 +5,28 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace meshes {
+namespace xl7::graphics::meshes {
 
 
 
 template <class TVertex>
-    requires( sizeof(TVertex) > 0 )
+    requires(sizeof(TVertex) >= 1)
 class VertexDataProvider
     : public resources::DefaultDataProvider
 {
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
 public:
-    /**
-     * Explicit constructor.
-     */
     VertexDataProvider(std::span<const TVertex> data, size_t offset = 0)
-         : resources::DefaultDataProvider( cl7::byte_view( reinterpret_cast<const std::byte*>( data.data() ), data.size_bytes() ), offset )
+         : resources::DefaultDataProvider(cl7::byte_view(reinterpret_cast<const std::byte*>(data.data()), data.size_bytes()), offset)
     {
     }
 
-    /**
-     * Destructor.
-     */
-    virtual ~VertexDataProvider() = default;
+    ~VertexDataProvider() override = default;
 
 }; // class VertexDataProvider
 
 
 
-} // namespace meshes
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::meshes
 
 #endif // XL7_GRAPHICS_MESHES_VERTEXDATAPROVIDER_H
