@@ -5,13 +5,11 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace states {
+namespace xl7::graphics::states {
 
 
 
-class RasterizerState
+class RasterizerState // NOLINT(*-virtual-class-destructor)
     : public AbstractState
 {
 
@@ -49,7 +47,6 @@ public:
         CounterClockwise,
     };
 
-public:
     struct Desc
     {
         /** Determines the fill mode to use when rendering. */
@@ -62,71 +59,48 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    RasterizerState(const CreateParams<Desc>& params);
-
-    /**
-     * Destructor.
-     */
-    virtual ~RasterizerState() = default;
-
-private:
-    /** Default constructor. */
     RasterizerState() = delete;
-    /** Copy constructor. */
+
     RasterizerState(const RasterizerState&) = delete;
-    /** Copy assignment operator. */
     RasterizerState& operator = (const RasterizerState&) = delete;
+    RasterizerState(RasterizerState&&) = delete;
+    RasterizerState& operator = (RasterizerState&&) = delete;
 
 
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-protected:
-    /**
-     * The descriptor of the sampler state.
-     */
-    const Desc _desc;
-
-private:
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
-    /**
-     * Returns the descriptor of the sampler state.
-     */
-    const Desc& get_desc() const { return _desc; }
-
-public:
-
-
-
-    // #############################################################################
-    // Resource Implementations
-    // #############################################################################
-public:
     /**
      * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    virtual cl7::string_view get_type_string() const override { return TEXT("rasterizer state"); }
+    cl7::string_view get_type_string() const override { return TEXT("rasterizer state"); }
+
+    /**
+     * Returns the descriptor of the rasterizer state.
+     */
+    const Desc& get_desc() const { return _desc; }
+
+
+
+protected:
+    RasterizerState(const CreateParams<Desc>& params)
+        : AbstractState(params)
+        , _desc(params.desc)
+    {
+    }
+
+    ~RasterizerState() override = default;
+
+
+
+private:
+    /**
+     * The descriptor of the rasterizer state.
+     */
+    const Desc _desc;
 
 }; // class RasterizerState
 
 
 
-} // namespace states
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::states
 
 #endif // XL7_GRAPHICS_STATES_RASTERIZERSTATE_H

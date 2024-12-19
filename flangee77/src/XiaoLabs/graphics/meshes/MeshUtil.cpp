@@ -16,9 +16,9 @@ namespace xl7::graphics::meshes {
     }
 
     /**
-     * Calculates the size of an index of the specified index type, in bytes.
+     * Returns the size of an index of the specified index type, in bytes.
      */
-    unsigned MeshUtil::calculate_index_stride(IndexType index_type)
+    unsigned MeshUtil::get_index_stride(IndexType index_type)
     {
         switch (index_type)
         {

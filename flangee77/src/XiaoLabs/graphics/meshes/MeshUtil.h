@@ -22,9 +22,9 @@ struct MeshUtil
     static unsigned calculate_default_vertex_stride(const VertexLayout& vertex_layout);
 
     /**
-     * Calculates the size of an index of the specified index type, in bytes.
+     * Returns the size of an index of the specified index type, in bytes.
      */
-    static unsigned calculate_index_stride(IndexType index_type);
+    static unsigned get_index_stride(IndexType index_type);
 
     /**
      * Calculates the corresponding number of vertices/indices for the specified

@@ -5,9 +5,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace states {
+namespace xl7::graphics::states {
 
 
 
@@ -15,73 +13,43 @@ class StateManager;
 
 
 
-class AbstractState
+class AbstractState // NOLINT(*-virtual-class-destructor)
     : public resources::Resource
 {
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
+public:
+    AbstractState() = delete;
+
+    AbstractState(const AbstractState&) = delete;
+    AbstractState& operator = (const AbstractState&) = delete;
+    AbstractState(AbstractState&&) = delete;
+    AbstractState& operator = (AbstractState&&) = delete;
+
+
+
 protected:
-    /**
-     * Explicit constructor.
-     */
     template <class TDesc>
     AbstractState(const CreateParams<TDesc>& params)
-        : resources::Resource( params )
+        : resources::Resource(params)
     {
     }
 
-    /**
-     * Destructor.
-     */
-    virtual ~AbstractState() = default;
-
-private:
-    /** Default constructor. */
-    AbstractState() = delete;
-    /** Copy constructor. */
-    AbstractState(const AbstractState&) = delete;
-    /** Copy assignment operator. */
-    AbstractState& operator = (const AbstractState&) = delete;
+    ~AbstractState() override = default;
 
 
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-protected:
-
-private:
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
-
-public:
-
-
-
-    // #############################################################################
-    // Resource Implementations
-    // #############################################################################
 private:
     /**
      * Checks whether the given data provider complies with the specific properties
      * of the resource to (re)populate it, taking into account the current state of
      * the resource if necessary.
      */
-    virtual bool _check_data_impl(const resources::DataProvider& data_provider) override;
+    bool _check_data_impl(const resources::DataProvider& data_provider) override;
 
 }; // class AbstractState
 
 
 
-} // namespace states
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::states
 
 #endif // XL7_GRAPHICS_STATES_ABSTRACTSTATE_H

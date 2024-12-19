@@ -2,27 +2,10 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace states {
+namespace xl7::graphics::states {
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Explicit constructor.
-     */
-    RasterizerState::RasterizerState(const CreateParams<Desc>& params)
-        : AbstractState( params )
-        , _desc( params.desc )
-    {
-    }
 
 
-
-} // namespace states
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::states

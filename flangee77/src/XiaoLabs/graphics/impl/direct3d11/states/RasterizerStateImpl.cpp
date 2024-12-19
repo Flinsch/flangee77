@@ -106,7 +106,7 @@ namespace states {
         assert( d3d_device );
 
         D3D11_RASTERIZER_DESC d3d_rasterizer_desc;
-        map_d3d_values( _desc, d3d_rasterizer_desc );
+        map_d3d_values( get_desc(), d3d_rasterizer_desc );
 
         HRESULT hresult = d3d_device->CreateRasterizerState(
             &d3d_rasterizer_desc,

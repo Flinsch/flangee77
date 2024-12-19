@@ -9,9 +9,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace states {
+namespace xl7::graphics::states {
 
 
 
@@ -33,8 +31,6 @@ public:
 
 
 
-} // namespace states
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::states
 
 #endif // XL7_GRAPHICS_SURFACES_ISTATEFACTORY_H

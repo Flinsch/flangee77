@@ -1,7 +1,5 @@
 #include "VertexBuffer.h"
 
-#include <CoreLabs/logging.h>
-
 
 
 namespace xl7::graphics::meshes {

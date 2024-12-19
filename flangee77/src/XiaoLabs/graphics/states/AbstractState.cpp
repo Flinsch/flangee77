@@ -4,15 +4,9 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace states {
+namespace xl7::graphics::states {
 
 
-
-    // #############################################################################
-    // Resource Implementations
-    // #############################################################################
 
     /**
      * Checks whether the given data provider complies with the specific properties
@@ -21,13 +15,11 @@ namespace states {
      */
     bool AbstractState::_check_data_impl(const resources::DataProvider& data_provider)
     {
-        assert( data_provider.get_offset() == 0 && data_provider.get_size() == 0 );
+        assert(data_provider.get_offset() == 0 && data_provider.get_size() == 0);
 
         return true;
     }
 
 
 
-} // namespace states
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::states

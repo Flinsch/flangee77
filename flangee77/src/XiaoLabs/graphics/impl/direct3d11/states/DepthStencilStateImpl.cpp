@@ -94,7 +94,7 @@ namespace states {
         assert( d3d_device );
 
         D3D11_DEPTH_STENCIL_DESC d3d_depth_stencil_desc;
-        map_d3d_values( _desc, d3d_depth_stencil_desc );
+        map_d3d_values( get_desc(), d3d_depth_stencil_desc );
 
         HRESULT hresult = d3d_device->CreateDepthStencilState(
             &d3d_depth_stencil_desc,

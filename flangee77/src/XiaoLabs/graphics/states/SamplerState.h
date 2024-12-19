@@ -9,13 +9,11 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace states {
+namespace xl7::graphics::states {
 
 
 
-class SamplerState
+class SamplerState // NOLINT(*-virtual-class-destructor)
     : public AbstractState
 {
 
@@ -59,7 +57,6 @@ public:
         MirrorOnce,
     };
 
-public:
     struct Desc
     {
         /** The filtering method to use when sampling for minification. */
@@ -92,71 +89,48 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    SamplerState(const CreateParams<Desc>& params);
-
-    /**
-     * Destructor.
-     */
-    virtual ~SamplerState() = default;
-
-private:
-    /** Default constructor. */
     SamplerState() = delete;
-    /** Copy constructor. */
+
     SamplerState(const SamplerState&) = delete;
-    /** Copy assignment operator. */
     SamplerState& operator = (const SamplerState&) = delete;
+    SamplerState(SamplerState&&) = delete;
+    SamplerState& operator = (SamplerState&&) = delete;
 
 
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-protected:
     /**
-     * The descriptor of the sampler state.
+     * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    const Desc _desc;
+    cl7::string_view get_type_string() const override { return TEXT("sampler state"); }
 
-private:
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
     /**
      * Returns the descriptor of the sampler state.
      */
     const Desc& get_desc() const { return _desc; }
 
-public:
+
+
+protected:
+    SamplerState(const CreateParams<Desc>& params)
+        : AbstractState(params)
+        , _desc(params.desc)
+    {
+    }
+
+    ~SamplerState() override = default;
 
 
 
-    // #############################################################################
-    // Resource Implementations
-    // #############################################################################
-public:
+private:
     /**
-     * Returns the specific type of the resource, as a "human-friendly" string.
+     * The descriptor of the sampler state.
      */
-    virtual cl7::string_view get_type_string() const override { return TEXT("sampler state"); }
+    const Desc _desc;
 
 }; // class SamplerState
 
 
 
-} // namespace states
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::states
 
 #endif // XL7_GRAPHICS_STATES_SAMPLERSTATE_H

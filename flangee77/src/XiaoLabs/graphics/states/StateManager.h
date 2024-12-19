@@ -7,14 +7,13 @@
 
 
 
-namespace xl7 {
-namespace graphics {
+namespace xl7::graphics {
     class RenderingDevice;
 namespace states {
 
 
 
-class StateManager
+class StateManager // NOLINT(*-virtual-class-destructor)
     : public resources::ResourceManager
 {
 
@@ -28,66 +27,15 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    StateManager(IStateFactory* factory);
-
-    /**
-     * Destructor.
-     */
-    virtual ~StateManager();
-
-private:
-    /** Default constructor. */
     StateManager() = delete;
-    /** Copy constructor. */
+
     StateManager(const StateManager&) = delete;
-    /** Copy assignment operator. */
     StateManager& operator = (const StateManager&) = delete;
+    StateManager(StateManager&&) = delete;
+    StateManager& operator = (StateManager&&) = delete;
 
 
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The state factory.
-     */
-    IStateFactory* const _factory;
-
-private:
-    /**
-     * The default sampler state.
-     */
-    states::SamplerState* _default_sampler_state;
-
-    /**
-     * The default rasterizer state.
-     */
-    states::RasterizerState* _default_rasterizer_state;
-
-    /**
-     * The default depth/stencil state.
-     */
-    states::DepthStencilState* _default_depth_stencil_state;
-
-    /**
-     * The default blend state.
-     */
-    states::BlendState* _default_blend_state;
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
     /**
      * Returns the default sampler state.
      */
@@ -110,10 +58,6 @@ public:
 
 
 
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
     /**
      * Creates and acquires the default state objects.
      */
@@ -144,12 +88,53 @@ public:
      */
     resources::ResourceID ensure_blend_state(const BlendState::Desc& desc);
 
+
+
+protected:
+    StateManager(IStateFactory* factory)
+        : _factory(factory)
+        , _default_sampler_state(nullptr)
+        , _default_rasterizer_state(nullptr)
+        , _default_depth_stencil_state(nullptr)
+        , _default_blend_state(nullptr)
+    {
+    }
+
+    ~StateManager() override = default;
+
+
+
+private:
+    /**
+     * The state factory.
+     */
+    IStateFactory* const _factory;
+
+    /**
+     * The default sampler state.
+     */
+    states::SamplerState* _default_sampler_state;
+
+    /**
+     * The default rasterizer state.
+     */
+    states::RasterizerState* _default_rasterizer_state;
+
+    /**
+     * The default depth/stencil state.
+     */
+    states::DepthStencilState* _default_depth_stencil_state;
+
+    /**
+     * The default blend state.
+     */
+    states::BlendState* _default_blend_state;
+
 }; // class StateManager
 
 
 
 } // namespace states
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics
 
 #endif // XL7_GRAPHICS_STATES_STATEMANAGER_H

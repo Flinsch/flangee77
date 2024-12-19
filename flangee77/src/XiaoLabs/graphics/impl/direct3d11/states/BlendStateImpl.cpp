@@ -112,7 +112,7 @@ namespace states {
         assert( d3d_device );
 
         D3D11_BLEND_DESC d3d_blend_desc;
-        map_d3d_values( _desc, d3d_blend_desc );
+        map_d3d_values( get_desc(), d3d_blend_desc );
 
         HRESULT hresult = d3d_device->CreateBlendState(
             &d3d_blend_desc,

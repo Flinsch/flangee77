@@ -7,13 +7,11 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace states {
+namespace xl7::graphics::states {
 
 
 
-class BlendState
+class BlendState // NOLINT(*-virtual-class-destructor)
     : public AbstractState
 {
 
@@ -44,7 +42,6 @@ public:
         Max,
     };
 
-public:
     struct Desc
     {
         /** Enables (true) or disables (false) blending in general. */
@@ -67,71 +64,48 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    BlendState(const CreateParams<Desc>& params);
-
-    /**
-     * Destructor.
-     */
-    virtual ~BlendState() = default;
-
-private:
-    /** Default constructor. */
     BlendState() = delete;
-    /** Copy constructor. */
+
     BlendState(const BlendState&) = delete;
-    /** Copy assignment operator. */
     BlendState& operator = (const BlendState&) = delete;
+    BlendState(BlendState&&) = delete;
+    BlendState& operator = (BlendState&&) = delete;
 
 
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-protected:
-    /**
-     * The descriptor of the sampler state.
-     */
-    const Desc _desc;
-
-private:
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
-    /**
-     * Returns the descriptor of the sampler state.
-     */
-    const Desc& get_desc() const { return _desc; }
-
-public:
-
-
-
-    // #############################################################################
-    // Resource Implementations
-    // #############################################################################
-public:
     /**
      * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    virtual cl7::string_view get_type_string() const override { return TEXT("blend state"); }
+    cl7::string_view get_type_string() const override { return TEXT("blend state"); }
+
+    /**
+     * Returns the descriptor of the blend state.
+     */
+    const Desc& get_desc() const { return _desc; }
+
+
+
+protected:
+    BlendState(const CreateParams<Desc>& params)
+        : AbstractState(params)
+        , _desc(params.desc)
+    {
+    }
+
+    ~BlendState() override = default;
+
+
+
+private:
+    /**
+     * The descriptor of the blend state.
+     */
+    const Desc _desc;
 
 }; // class BlendState
 
 
 
-} // namespace states
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::states
 
 #endif // XL7_GRAPHICS_STATES_BLENDSTATE_H

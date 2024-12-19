@@ -100,7 +100,7 @@ namespace states {
      */
     bool SamplerStateImpl::_acquire_impl(const xl7::resources::DataProvider& data_provider)
     {
-        map_d3d_values( _desc, _d3d_sampler_state_type_values );
+        map_d3d_values( get_desc(), _d3d_sampler_state_type_values );
 
         return true;
     }
