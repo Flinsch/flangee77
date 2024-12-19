@@ -5,60 +5,32 @@
 #include "./Image.h"
 
 #include <CoreLabs/byte_vector.h>
-#include <CoreLabs/byte_view.h>
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace images {
+namespace xl7::graphics::images {
 
 
 
 class ImageStack
 {
 
+public:
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
-public:
-    /**
-     * Default constructor.
-     */
+
     ImageStack();
-
-    /**
-     * Explicit constructor.
-     */
     ImageStack(const Image::Desc& desc);
-
-    /**
-     * Explicit constructor.
-     */
     ImageStack(const Image& image);
-
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The descriptor of the images.
-     */
-    Image::Desc _desc;
-
-    /**
-     * The consecutive data of the contained images.
-     */
-    cl7::byte_vector _data;
 
 
 
     // #############################################################################
     // Properties
     // #############################################################################
-public:
+
     /**
      * Returns the descriptor of the images.
      */
@@ -104,7 +76,7 @@ public:
     // #############################################################################
     // Methods
     // #############################################################################
-public:
+
     /**
      * (Re)initializes the image stack.
      */
@@ -120,12 +92,28 @@ public:
      */
     bool add_image(const Image& image);
 
+
+
+private:
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    /**
+     * The descriptor of the images.
+     */
+    Image::Desc _desc;
+
+    /**
+     * The consecutive data of the contained images.
+     */
+    cl7::byte_vector _data;
+
 }; // class ImageStack
 
 
 
-} // namespace images
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::images
 
 #endif // XL7_GRAPHICS_IMAGES_IMAGESTACK_H

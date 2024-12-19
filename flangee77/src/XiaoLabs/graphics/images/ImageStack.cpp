@@ -2,9 +2,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace images {
+namespace xl7::graphics::images {
 
 
 
@@ -12,31 +10,21 @@ namespace images {
     // Construction / Destruction
     // #############################################################################
 
-    /**
-     * Default constructor.
-     */
     ImageStack::ImageStack()
-        : _desc( { PixelFormat::UNKNOWN, ChannelOrder::RGBA, 0, 0 } )
-        , _data()
+        : _desc({.pixel_format=PixelFormat::UNKNOWN, .channel_order=ChannelOrder::RGBA, .width=0, .height=0})
     {
     }
 
-    /**
-     * Explicit constructor.
-     */
     ImageStack::ImageStack(const Image::Desc& desc)
         : ImageStack()
     {
-        init( desc );
+        init(desc);
     }
 
-    /**
-     * Explicit constructor.
-     */
     ImageStack::ImageStack(const Image& image)
         : ImageStack()
     {
-        init( image );
+        init(image);
     }
 
 
@@ -50,14 +38,14 @@ namespace images {
      */
     unsigned ImageStack::get_image_count() const
     {
-        if ( _data.empty() )
+        if (_data.empty())
             return 0;
 
         size_t image_size = _desc.calculate_data_size();
-        assert( image_size > 0 );
-        assert( _data.size() % image_size == 0 );
+        assert(image_size > 0);
+        assert(_data.size() % image_size == 0);
 
-        return static_cast<unsigned>( _data.size() / image_size );
+        return static_cast<unsigned>(_data.size() / image_size);
     }
 
 
@@ -81,7 +69,7 @@ namespace images {
      */
     bool ImageStack::init(const Image& image)
     {
-        return init( image.get_desc() ) && add_image( image );
+        return init(image.get_desc()) && add_image(image);
     }
 
     /**
@@ -90,22 +78,20 @@ namespace images {
     bool ImageStack::add_image(const Image& image)
     {
         const Image::Desc& desc = image.get_desc();
-        if ( desc.width != _desc.width || desc.height != _desc.height || desc.depth != _desc.depth )
+        if (desc.width != _desc.width || desc.height != _desc.height || desc.depth != _desc.depth)
         {
             // Should we log an error message or something?
             return false;
         }
 
-        assert( desc.pixel_format == _desc.pixel_format );
-        assert( desc.channel_order == _desc.channel_order );
+        assert(desc.pixel_format == _desc.pixel_format);
+        assert(desc.channel_order == _desc.channel_order);
 
-        _data.insert( _data.end(), image.get_data().begin(), image.get_data().end() );
+        _data.insert(_data.end(), image.get_data().begin(), image.get_data().end());
 
         return true;
     }
 
 
 
-} // namespace images
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::images

@@ -12,19 +12,13 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace images {
+namespace xl7::graphics::images {
 
 
 
-class ImageProcessor
+struct ImageProcessor
 {
 
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
     /**
      * Transforms the given color into the specified pixel format and channel order.
      * The receiving data buffer is required to have at least the corresponding byte
@@ -41,10 +35,6 @@ public:
 
 
 
-    // #############################################################################
-    // Helpers
-    // #############################################################################
-public:
     /**
      * Transforms the given color into the specified pixel format and channel order.
      * The receiving data buffer is required to have at least the corresponding byte
@@ -59,12 +49,10 @@ public:
      */
     static Color _unpack_color(cl7::byte_view packed_data, const PixelBitKit& pbk);
 
-}; // class ImageProcessor
+}; // struct ImageProcessor
 
 
 
-} // namespace images
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::images
 
 #endif // XL7_GRAPHICS_IMAGES_IMAGEPROCESSOR_H

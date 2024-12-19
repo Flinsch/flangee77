@@ -6,9 +6,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace images {
+namespace xl7::graphics::images {
 
 
 
@@ -21,8 +19,6 @@ enum class ResamplingMethod
 
 
 
-} // namespace images
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::images
 
 #endif // XL7_GRAPHICS_IMAGES_RESAMPLINGMETHOD_H

@@ -4,25 +4,23 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace images {
+namespace xl7::graphics::images {
 
 
 
     /** Returns the size of one pixel, in bytes. */
     unsigned Image::Desc::determine_pixel_stride() const
     {
-        return PixelBitKit::determine_stride( pixel_format );
+        return PixelBitKit::determine_stride(pixel_format);
     }
 
     /** Calculates the number of pixels of the image. */
     size_t Image::Desc::calculate_pixel_count() const
     {
         return
-            static_cast<size_t>( width ) *
-            static_cast<size_t>( height ) *
-            static_cast<size_t>( depth );
+            static_cast<size_t>(width) *
+            static_cast<size_t>(height) *
+            static_cast<size_t>(depth);
     }
 
     /** Calculates the total size of the image data, in bytes. */
@@ -43,9 +41,7 @@ namespace images {
      * Default constructor. Initializes an "empty" image.
      */
     Image::Image()
-        : _desc( { PixelFormat::UNKNOWN, ChannelOrder::RGBA, 0, 0, 0 } )
-        , _data_view()
-        , _data_buffer()
+        : _desc{.pixel_format=PixelFormat::UNKNOWN, .channel_order=ChannelOrder::RGBA, .width=0, .height=0, .depth=0}
     {
     }
 
@@ -55,18 +51,18 @@ namespace images {
     Image::Image(const Desc& desc)
         : Image()
     {
-        init( desc );
+        init(desc);
     }
 
     /**
-     * Explicit constructor. If view_only is set to true, no data will be duplicated;
-     * instead, the image's data view will point to the specified data view, which
-     * accordingly should persist beyond the lifetime of the image.
+     * Explicit constructor. If `view_only` is set to true, no data will be
+     * duplicated; instead, the image's data view will point to the specified data
+     * view, which accordingly should persist beyond the lifetime of the image.
      */
     Image::Image(const Desc& desc, cl7::byte_view data, bool view_only)
         : Image()
     {
-        init( desc, data, view_only );
+        init(desc, data, view_only);
     }
 
     /**
@@ -75,39 +71,39 @@ namespace images {
     Image::Image(const Desc& desc, cl7::byte_vector&& data)
         : Image()
     {
-        init( desc, std::move(data) );
+        init(desc, std::move(data));
     }
 
     /**
      * Copy constructor. Creates a buffer and duplicates the data regardless of
      * whether the other image is "view only".
      */
-    Image::Image(const Image& rhs)
+    Image::Image(const Image& other)
         : Image()
     {
-        *this = rhs;
+        *this = other;
     }
 
     /**
      * Copy assignment operator. Creates a buffer and duplicates the data regardless
      * of whether the other image is "view only".
      */
-    Image& Image::operator = (const Image& rhs)
+    Image& Image::operator = (const Image& other)
     {
         // We don't have to explicitly check the case of self-assignment here,
         // because the init function handles this case for us accordingly.
-        init( rhs._desc, rhs._data_view, false );
+        init(other._desc, other._data_view, false);
         return *this;
     }
 
     /**
      * Swap operation.
      */
-    void Image::swap(Image& rhs)
+    void Image::swap(Image& other) noexcept
     {
-        std::swap( _desc, rhs._desc );
-        std::swap( _data_view, rhs._data_view );
-        _data_buffer.swap( rhs._data_buffer );
+        std::swap(_desc, other._desc);
+        std::swap(_data_view, other._data_view);
+        _data_buffer.swap(other._data_buffer);
     }
 
     /**
@@ -118,16 +114,16 @@ namespace images {
     {
         // If our buffer is empty ("view only"),
         // fill it now with the "viewed" data.
-        if ( _data_buffer.empty() && _data_view.size() )
-            _data_buffer = { _data_view.data(), _data_view.data() + _data_view.size() };
+        if (_data_buffer.empty() && !_data_view.empty())
+            _data_buffer = {_data_view.data(), _data_view.data() + _data_view.size()};
 
         // "Export" the data.
-        _data_buffer.swap( data );
+        _data_buffer.swap(data);
 
         // Our "new" buffer should either be
         // empty or of the appropriate size.
-        if ( !_data_buffer.empty() )
-            _data_buffer.resize( _desc.calculate_data_size() );
+        if (!_data_buffer.empty())
+            _data_buffer.resize(_desc.calculate_data_size());
 
         // "View" our "new" buffer.
         _data_view = _data_buffer;
@@ -153,19 +149,19 @@ namespace images {
     }
 
     /**
-     * (Re)initializes the image based on the given data. If view_only is set to
+     * (Re)initializes the image based on the given data. If `view_only` is set to
      * true, no data will be duplicated; instead, the image's data view will point
      * to the specified data view, which accordingly should persist beyond the
      * lifetime of the image.
      */
     bool Image::init(const Desc& desc, cl7::byte_view data, bool view_only)
     {
-        if ( !_validate( desc, data ) )
+        if (!_validate(desc, data))
             return false;
 
         _desc = desc;
 
-        if ( view_only )
+        if (view_only)
         {
             // Just adopt the specified data view.
             // No own buffer required.
@@ -180,10 +176,10 @@ namespace images {
             // and "view" our new buffer.
             // The detour via the temporary buffer is "required"
             // to correctly handle the self-assignment case.
-            cl7::byte_vector data_buffer{ data.size() };
-            if ( data.size() )
-                ::memcpy( &data_buffer[0], &data[0], data.size() );
-            _data_buffer.swap( data_buffer );
+            cl7::byte_vector data_buffer{data.size()};
+            if (!data.empty())
+                ::memcpy(data_buffer.data(), data.data(), data.size());
+            _data_buffer.swap(data_buffer);
             _data_view = _data_buffer;
         }
 
@@ -195,14 +191,14 @@ namespace images {
      */
     bool Image::init(const Desc& desc, cl7::byte_vector&& data)
     {
-        if ( !_validate( desc, data ) )
+        if (!_validate(desc, data))
             return false;
 
         _desc = desc;
 
-        // Swap data buffers and
+        // "Move" data buffer and
         // "view" our new buffer.
-        _data_buffer.swap( data );
+        _data_buffer = std::move(data);
         _data_view = _data_buffer;
 
         return true;
@@ -221,10 +217,10 @@ namespace images {
     bool Image::_validate(const Desc& desc, cl7::byte_view data)
     {
         // No data means an empty image: everything is fine.
-        if ( data.empty() )
+        if (data.empty())
             return true;
 
-        if ( desc.calculate_data_size() != data.size() )
+        if (desc.calculate_data_size() != data.size())
         {
             // Should we log an error message or something?
             return false;
@@ -235,6 +231,4 @@ namespace images {
 
 
 
-} // namespace images
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::images

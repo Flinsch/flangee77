@@ -9,30 +9,17 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace images {
+namespace xl7::graphics::images {
 
 
 
 class ImageHandler
 {
-
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
 public:
-    /**
-     * Destructor.
-     */
     virtual ~ImageHandler() = default;
 
 
 
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
     /**
      * Loads an image from a file.
      */
@@ -45,30 +32,22 @@ public:
 
 
 
-    // #############################################################################
-    // Prototypes
-    // #############################################################################
+protected:
+    static bool _log_bad_format_error(const cl7::string& rom_name);
+    static bool _log_bad_header_error(const cl7::string& rom_name);
+
+
+
 private:
     /**
      * Loads an image from any rom.
      */
     virtual bool _load_from(cl7::io::irom& rom, const cl7::string& rom_name, Image& image) = 0;
 
-
-
-    // #############################################################################
-    // Helpers
-    // #############################################################################
-protected:
-    static bool _log_bad_format_error(const cl7::string& rom_name);
-    static bool _log_bad_header_error(const cl7::string& rom_name);
-
 }; // class ImageHandler
 
 
 
-} // namespace images
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::images
 
 #endif // XL7_GRAPHICS_IMAGES_IMAGEHANDLER_H

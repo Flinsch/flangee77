@@ -10,9 +10,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace images {
+namespace xl7::graphics::images {
 
 
 
@@ -51,7 +49,7 @@ public:
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
-public:
+
     /**
      * Default constructor. Initializes an "empty" image.
      */
@@ -63,9 +61,9 @@ public:
     explicit Image(const Desc& desc);
 
     /**
-     * Explicit constructor. If view_only is set to true, no data will be duplicated;
-     * instead, the image's data view will point to the specified data view, which
-     * accordingly should persist beyond the lifetime of the image.
+     * Explicit constructor. If `view_only` is set to true, no data will be
+     * duplicated; instead, the image's data view will point to the specified data
+     * view, which accordingly should persist beyond the lifetime of the image.
      */
     Image(const Desc& desc, cl7::byte_view data, bool view_only = false);
 
@@ -78,18 +76,33 @@ public:
      * Copy constructor. Creates a buffer and duplicates the data regardless of
      * whether the other image is "view only".
      */
-    Image(const Image& rhs);
+    Image(const Image& other);
 
     /**
      * Copy assignment operator. Creates a buffer and duplicates the data regardless
      * of whether the other image is "view only".
      */
-    Image& operator = (const Image& rhs);
+    Image& operator = (const Image& other);
+
+    /**
+     * Move constructor.
+     */
+    Image(Image&& other) noexcept = default;
+
+    /**
+     * Move assignment operator.
+     */
+    Image &operator=(Image &&other) noexcept = default;
+
+    /**
+     * Destructor.
+     */
+    ~Image() noexcept = default;
 
     /**
      * Swap operation.
      */
-    void swap(Image& rhs);
+    void swap(Image& other) noexcept;
 
     /**
      * Special swap operation. The image's data is essentially "exported" and then
@@ -100,30 +113,9 @@ public:
 
 
     // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The descriptor of the image.
-     */
-    Desc _desc;
-
-    /**
-     * The image data view.
-     */
-    cl7::byte_view _data_view;
-
-    /**
-     * The image data buffer (or empty if "view only").
-     */
-    cl7::byte_vector _data_buffer;
-
-
-
-    // #############################################################################
     // Properties
     // #############################################################################
-public:
+
     /**
      * Returns the descriptor of the image.
      */
@@ -164,14 +156,14 @@ public:
     // #############################################################################
     // Methods
     // #############################################################################
-public:
+
     /**
      * (Re)initializes an "empty" image.
      */
     bool init(const Desc& desc);
 
     /**
-     * (Re)initializes the image based on the given data. If view_only is set to
+     * (Re)initializes the image based on the given data. If `view_only` is set to
      * true, no data will be duplicated; instead, the image's data view will point
      * to the specified data view, which accordingly should persist beyond the
      * lifetime of the image.
@@ -185,22 +177,43 @@ public:
 
 
 
+private:
+
     // #############################################################################
     // Helpers
     // #############################################################################
-private:
+
     /**
      * Validates the initialization data (not in terms of content, but only roughly
      * with regard to technical aspects).
      */
-    bool _validate(const Desc& desc, cl7::byte_view data);
+    static bool _validate(const Desc& desc, cl7::byte_view data);
+
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    /**
+     * The descriptor of the image.
+     */
+    Desc _desc;
+
+    /**
+     * The image data view.
+     */
+    cl7::byte_view _data_view;
+
+    /**
+     * The image data buffer (or empty if "view only").
+     */
+    cl7::byte_vector _data_buffer;
 
 }; // class Image
 
 
 
-} // namespace images
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::images
 
 #endif // XL7_GRAPHICS_IMAGES_IMAGE_H

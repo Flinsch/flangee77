@@ -7,20 +7,14 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace images {
+namespace xl7::graphics::images {
 
 
 
-class ImageResizer
+struct ImageResizer
     : public ImageProcessor
 {
 
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
     /**
      * Resizes an image. Pixel format and channel order do not change.
      */
@@ -31,12 +25,10 @@ public:
      */
     static Image create_mipmap(const Image& source_image, ResamplingMethod resampling_method = ResamplingMethod::LinearInterpolation);
 
-}; // class ImageResizer
+}; // struct ImageResizer
 
 
 
-} // namespace images
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::images
 
 #endif // XL7_GRAPHICS_IMAGES_IMAGERESIZER_H
