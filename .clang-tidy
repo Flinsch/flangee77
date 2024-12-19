@@ -47,6 +47,7 @@ Checks: >
   -readability-magic-numbers,
   -readability-math-missing-parentheses,
   -readability-uppercase-literal-suffix,
+  -readability-use-std-min-max,
 
 WarningsAsErrors: false
 HeaderFileExtensions:         ['h']

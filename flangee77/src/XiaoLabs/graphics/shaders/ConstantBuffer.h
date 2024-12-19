@@ -8,9 +8,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace shaders {
+namespace xl7::graphics::shaders {
 
 
 
@@ -18,7 +16,7 @@ class ShaderManager;
 
 
 
-class ConstantBuffer
+class ConstantBuffer // NOLINT(*-virtual-class-destructor)
     : public resources::Resource
 {
 
@@ -31,62 +29,25 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    ConstantBuffer(const CreateParams<Desc>& params);
-
-    /**
-     * Destructor.
-     */
-    virtual ~ConstantBuffer() = default;
-
-private:
-    /** Default constructor. */
     ConstantBuffer() = delete;
-    /** Copy constructor. */
+
     ConstantBuffer(const ConstantBuffer&) = delete;
-    /** Copy assignment operator. */
     ConstantBuffer& operator = (const ConstantBuffer&) = delete;
+    ConstantBuffer(ConstantBuffer&&) = delete;
+    ConstantBuffer& operator = (ConstantBuffer&&) = delete;
 
 
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-protected:
     /**
-     * The descriptor of the constant buffer.
+     * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    const Desc _desc;
+    cl7::string_view get_type_string() const override { return TEXT("constant buffer"); }
 
-private:
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
     /**
      * Returns the descriptor of the constant buffer.
      */
     const Desc& get_desc() const { return _desc; }
 
-public:
-
-
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
-
-public:
     /**
      * Updates the contents of this constant buffer.
      */
@@ -94,37 +55,14 @@ public:
 
 
 
-    // #############################################################################
-    // Resource Implementations
-    // #############################################################################
+protected:
+    ConstantBuffer(const CreateParams<Desc>& params);
+    ~ConstantBuffer() override = default;
+
+
+
 private:
-    /**
-     * Checks whether the given data provider complies with the specific properties
-     * of the resource to (re)populate it, taking into account the current state of
-     * the resource if necessary.
-     */
-    virtual bool _check_data_impl(const resources::DataProvider& data_provider) override;
 
-    /**
-     * Requests/acquires the resource, bringing it into a usable state.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
-     */
-    virtual bool _acquire_impl(const resources::DataProvider& data_provider) override;
-
-public:
-    /**
-     * Returns the specific type of the resource, as a "human-friendly" string.
-     */
-    virtual cl7::string_view get_type_string() const override { return TEXT("constant buffer"); }
-
-
-
-    // #############################################################################
-    // Prototypes
-    // #############################################################################
-private:
     /**
      * Requests/acquires the constant buffer resource.
      * The given data provider can possibly be ignored because the local data buffer
@@ -141,12 +79,34 @@ private:
      */
     virtual bool _update_impl(const ConstantDataProvider& constant_data_provider, bool discard, bool no_overwrite) = 0;
 
+
+
+    /**
+     * Checks whether the given data provider complies with the specific properties
+     * of the resource to (re)populate it, taking into account the current state of
+     * the resource if necessary.
+     */
+    bool _check_data_impl(const resources::DataProvider& data_provider) override;
+
+    /**
+     * Requests/acquires the resource, bringing it into a usable state.
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been filled based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
+     */
+    bool _acquire_impl(const resources::DataProvider& data_provider) override;
+
+
+
+    /**
+     * The descriptor of the constant buffer.
+     */
+    const Desc _desc;
+
 }; // class ConstantBuffer
 
 
 
-} // namespace shaders
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::shaders
 
 #endif // XL7_GRAPHICS_SHADERS_CONSTANTBUFFER_H

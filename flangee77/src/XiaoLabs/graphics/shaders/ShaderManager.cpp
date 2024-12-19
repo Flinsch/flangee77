@@ -2,47 +2,20 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace shaders {
+namespace xl7::graphics::shaders {
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Explicit constructor.
-     */
-    ShaderManager::ShaderManager(IShaderFactory* factory)
-        : ResourceManager()
-        , _factory( factory )
-    {
-    }
-
-    /**
-     * Destructor.
-     */
-    ShaderManager::~ShaderManager()
-    {
-    }
-
-
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
 
     /**
      * Creates and acquires the specified constant buffer.
      */
     resources::ResourceID ShaderManager::create_constant_buffer(cl7::astring_view identifier, const ConstantBuffer::Desc& desc, const ConstantDataProvider& constant_data_provider)
     {
-        resources::Resource::CreateParams<ConstantBuffer::Desc> params{ this, _next_id(), identifier, desc };
+        resources::Resource::CreateParams<ConstantBuffer::Desc> params{.manager=this, .id=_next_id(), .identifier=identifier, .desc=desc};
 
-        ResourcePtr constant_buffer( _factory->create_constant_buffer( params ), _destroy_resource );
+        ResourcePtr constant_buffer(_factory->create_constant_buffer(params), _destroy_resource);
 
-        return _try_acquire_and_add_resource( std::move(constant_buffer), constant_data_provider );
+        return _try_acquire_and_add_resource(std::move(constant_buffer), constant_data_provider);
     }
 
     /**
@@ -52,12 +25,12 @@ namespace shaders {
      */
     resources::ResourceID ShaderManager::create_vertex_shader(cl7::astring_view identifier, const CodeDataProvider& code_data_provider, cl7::astring_view entry_point)
     {
-        Shader::Desc desc{ code_data_provider.get_language(), cl7::astring(entry_point) };
-        resources::Resource::CreateParams<Shader::Desc> params{ this, _next_id(), identifier, desc };
+        Shader::Desc desc{.language=code_data_provider.get_language(), .entry_point=cl7::astring(entry_point)};
+        resources::Resource::CreateParams<Shader::Desc> params{.manager=this, .id=_next_id(), .identifier=identifier, .desc=desc};
 
-        ResourcePtr vertex_shader( _factory->create_vertex_shader( params ), _destroy_resource );
+        ResourcePtr vertex_shader(_factory->create_vertex_shader(params), _destroy_resource);
 
-        return _try_acquire_and_add_resource( std::move(vertex_shader), code_data_provider );
+        return _try_acquire_and_add_resource(std::move(vertex_shader), code_data_provider);
     }
 
     /**
@@ -67,16 +40,14 @@ namespace shaders {
      */
     resources::ResourceID ShaderManager::create_pixel_shader(cl7::astring_view identifier, const CodeDataProvider& code_data_provider, cl7::astring_view entry_point)
     {
-        Shader::Desc desc{ code_data_provider.get_language(), cl7::astring(entry_point) };
-        resources::Resource::CreateParams<Shader::Desc> params{ this, _next_id(), identifier, desc };
+        Shader::Desc desc{.language=code_data_provider.get_language(), .entry_point=cl7::astring(entry_point)};
+        resources::Resource::CreateParams<Shader::Desc> params{.manager=this, .id=_next_id(), .identifier=identifier, .desc=desc};
 
-        ResourcePtr pixel_shader( _factory->create_pixel_shader( params ), _destroy_resource );
+        ResourcePtr pixel_shader(_factory->create_pixel_shader(params), _destroy_resource);
 
-        return _try_acquire_and_add_resource( std::move(pixel_shader), code_data_provider );
+        return _try_acquire_and_add_resource(std::move(pixel_shader), code_data_provider);
     }
 
 
 
-} // namespace shaders
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::shaders

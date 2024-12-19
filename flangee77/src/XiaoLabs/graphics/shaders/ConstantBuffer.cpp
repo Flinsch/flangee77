@@ -4,37 +4,16 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace shaders {
+namespace xl7::graphics::shaders {
 
 
-
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Explicit constructor.
-     */
-    ConstantBuffer::ConstantBuffer(const CreateParams<Desc>& params)
-        : Resource( params )
-        , _desc( params.desc )
-    {
-    }
-
-
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
 
     /**
      * Updates the contents of this constant buffer.
      */
     bool ConstantBuffer::update(const ConstantDataProvider& constant_data_provider)
     {
-        if ( !_try_fill_data( constant_data_provider ) )
+        if (!_try_fill_data(constant_data_provider))
             return false;
 
         bool discard = true;
@@ -45,9 +24,13 @@ namespace shaders {
 
 
 
-    // #############################################################################
-    // Resource Implementations
-    // #############################################################################
+    ConstantBuffer::ConstantBuffer(const CreateParams<Desc>& params)
+        : Resource(params)
+        , _desc(params.desc)
+    {
+    }
+
+
 
     /**
      * Checks whether the given data provider complies with the specific properties
@@ -69,14 +52,12 @@ namespace shaders {
      */
     bool ConstantBuffer::_acquire_impl(const resources::DataProvider& data_provider)
     {
-        assert( typeid(data_provider) == typeid(const ConstantDataProvider&) );
-        auto constant_data_provider = static_cast<const ConstantDataProvider&>( data_provider );
+        assert(typeid(data_provider) == typeid(const ConstantDataProvider&));
+        auto constant_data_provider = static_cast<const ConstantDataProvider&>(data_provider); // NOLINT(*-pro-type-static-cast-downcast)
 
-        return _acquire_impl( constant_data_provider );
+        return _acquire_impl(constant_data_provider);
     }
 
 
 
-} // namespace shaders
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::shaders

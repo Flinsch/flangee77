@@ -7,14 +7,13 @@
 
 
 
-namespace xl7 {
-namespace graphics {
+namespace xl7::graphics {
     class RenderingDevice;
 namespace shaders {
 
 
 
-class ShaderManager
+class ShaderManager // NOLINT(*-virtual-class-destructor)
     : public resources::ResourceManager
 {
 
@@ -28,45 +27,15 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    ShaderManager(IShaderFactory* factory);
-
-    /**
-     * Destructor.
-     */
-    virtual ~ShaderManager();
-
-private:
-    /** Default constructor. */
     ShaderManager() = delete;
-    /** Copy constructor. */
+
     ShaderManager(const ShaderManager&) = delete;
-    /** Copy assignment operator. */
     ShaderManager& operator = (const ShaderManager&) = delete;
+    ShaderManager(ShaderManager&&) = delete;
+    ShaderManager& operator = (ShaderManager&&) = delete;
 
 
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The shader factory.
-     */
-    IShaderFactory* const _factory;
-
-
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
     /**
      * Creates and acquires the specified constant buffer.
      */
@@ -86,12 +55,29 @@ public:
      */
     resources::ResourceID create_pixel_shader(cl7::astring_view identifier, const CodeDataProvider& code_data_provider, cl7::astring_view entry_point = "");
 
+
+
+protected:
+    ShaderManager(IShaderFactory* factory)
+        : _factory(factory)
+    {
+    }
+
+    ~ShaderManager() override = default;
+
+
+
+private:
+    /**
+     * The shader factory.
+     */
+    IShaderFactory* const _factory;
+
 }; // class ShaderManager
 
 
 
 } // namespace shaders
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics
 
 #endif // XL7_GRAPHICS_SHADERS_SHADERMANAGER_H

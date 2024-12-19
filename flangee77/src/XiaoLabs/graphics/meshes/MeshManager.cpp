@@ -8,13 +8,6 @@ namespace xl7::graphics::meshes {
 
 
 
-    MeshManager::MeshManager(IMeshFactory* factory)
-        : _factory(factory)
-    {
-    }
-
-
-
     /**
      * Creates and acquires the specified vertex shader.
      */

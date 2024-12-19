@@ -8,16 +8,14 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace shaders {
+namespace xl7::graphics::shaders {
 
 
 
 struct CompileOptions
 {
 
-    typedef std::map<cl7::astring, cl7::astring> MacroDefinitions;
+    using MacroDefinitions = std::map<cl7::astring, cl7::astring>;
 
     /** The macro definitions for (re)compiling shaders. */
     MacroDefinitions macro_definitions;
@@ -31,8 +29,6 @@ struct CompileOptions
 
 
 
-} // namespace shaders
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::shaders
 
 #endif // XL7_GRAPHICS_SHADERS_COMPILEOPTIONS_H

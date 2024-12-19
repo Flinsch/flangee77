@@ -8,9 +8,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace shaders {
+namespace xl7::graphics::shaders {
 
 
 
@@ -28,30 +26,24 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-public:
-    /**
-     * Default constructor.
-     */
     ShaderCode() = default;
-
-    /**
-     * Explicit constructor.
-     */
     ShaderCode(Language language, cl7::byte_view code_data);
-
-    /**
-     * Explicit constructor.
-     */
     ShaderCode(cl7::astring_view high_level_code);
 
 
 
-     // #############################################################################
-     // Attributes
-     // #############################################################################
+    /**
+     * Returns the language in which the code is given.
+     */
+    Language get_language() const { return _language; }
+
+    /**
+     * Returns the actual code data.
+     */
+    const cl7::byte_vector& get_code_data() const { return _code_data; }
+
+
+
 private:
     /**
      * The language in which the code is given.
@@ -63,28 +55,10 @@ private:
      */
     cl7::byte_vector _code_data;
 
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
-    /**
-     * Returns the language in which the code is given.
-     */
-    Language get_language() const { return _language; }
-
-    /**
-     * Returns the actual code data.
-     */
-    const cl7::byte_vector& get_code_data() const { return _code_data; }
-
 }; // class ShaderCode
 
 
 
-} // namespace shaders
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::shaders
 
 #endif // XL7_GRAPHICS_SHADERS_SHADERCODE_H

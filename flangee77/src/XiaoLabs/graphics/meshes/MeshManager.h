@@ -57,7 +57,11 @@ public:
 
 
 protected:
-    MeshManager(IMeshFactory* factory);
+    MeshManager(IMeshFactory* factory)
+        : _factory(factory)
+    {
+    }
+
     ~MeshManager() override = default;
 
 

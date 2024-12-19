@@ -5,55 +5,39 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace shaders {
+namespace xl7::graphics::shaders {
 
 
 
-class PixelShader
+class PixelShader // NOLINT(*-virtual-class-destructor)
     : public Shader
 {
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    PixelShader(const CreateParams<Desc>& params);
-
-    /**
-     * Destructor.
-     */
-    virtual ~PixelShader() = default;
-
-private:
-    /** Default constructor. */
-    PixelShader() = delete;
-    /** Copy constructor. */
-    PixelShader(const PixelShader&) = delete;
-    /** Copy assignment operator. */
-    PixelShader& operator = (const PixelShader&) = delete;
-
-
-
-    // #############################################################################
-    // Resource Implementations
-    // #############################################################################
 public:
+    PixelShader() = delete;
+
+    PixelShader(const PixelShader&) = delete;
+    PixelShader& operator = (const PixelShader&) = delete;
+    PixelShader(PixelShader&&) = delete;
+    PixelShader& operator = (PixelShader&&) = delete;
+
+
+
     /**
      * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    virtual cl7::string_view get_type_string() const override { return TEXT("pixel shader"); }
+    cl7::string_view get_type_string() const override { return TEXT("pixel shader"); }
+
+
+
+protected:
+    PixelShader(const CreateParams<Desc>& params);
+    ~PixelShader() override = default;
 
 }; // class PixelShader
 
 
 
-} // namespace shaders
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::shaders
 
 #endif // XL7_GRAPHICS_SHADERS_PIXELSHADER_H

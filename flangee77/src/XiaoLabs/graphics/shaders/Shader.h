@@ -9,14 +9,11 @@
 #include "./ReflectionResult.h"
 #include "./ConstantBufferMapping.h"
 
-#include <vector>
 #include <unordered_map>
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace shaders {
+namespace xl7::graphics::shaders {
 
 
 
@@ -26,7 +23,7 @@ class ConstantBuffer;
 
 
 
-class Shader
+class Shader // NOLINT(*-virtual-class-destructor)
     : public resources::Resource
 {
 
@@ -37,7 +34,6 @@ public:
         PixelShader,
     };
 
-public:
     struct Desc
     {
         /** The language of the (source) code on which the shader is based. */
@@ -48,67 +44,20 @@ public:
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    Shader(Type type, const CreateParams<Desc>& params);
-
-    /**
-     * Destructor.
-     */
-    virtual ~Shader() = default;
-
-private:
-    /** Default constructor. */
     Shader() = delete;
-    /** Copy constructor. */
+
     Shader(const Shader&) = delete;
-    /** Copy assignment operator. */
     Shader& operator = (const Shader&) = delete;
+    Shader(Shader&&) = delete;
+    Shader& operator = (Shader&&) = delete;
 
 
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-protected:
-    /**
-     * The type of the shader.
-     */
-    const Type _type;
 
     /**
-     * The descriptor of the shader.
+     * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    const Desc _desc;
+    cl7::string_view get_type_string() const override { return TEXT("shader"); }
 
-private:
-    /**
-     * The compiled bytecode.
-     */
-    ShaderCode _bytecode;
-
-    /**
-     * The reflection result, which includes parameter declarations etc.
-     */
-    ReflectionResult _reflection_result;
-
-private:
-    /**
-     * The constant buffer mappings cached so far by constant buffer ID.
-     */
-    mutable std::unordered_map<resources::ResourceID, ConstantBufferMapping> _constant_buffer_mappings_by_constant_buffer_id;
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
     /**
      * Returns the type of the shader.
      */
@@ -119,7 +68,6 @@ public:
      */
     const Desc& get_desc() const { return _desc; }
 
-public:
     /**
      * Indicates whether the shader is precompiled (based on bytecode).
      */
@@ -130,7 +78,6 @@ public:
      */
     bool is_recompilable() const { return _desc.language == ShaderCode::Language::HighLevel; }
 
-public:
     /**
      * Returns the compiled bytecode.
      */
@@ -143,10 +90,6 @@ public:
 
 
 
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
     /**
      * Recompiles the shader code. This tends to result in the resource having to be
      * completely recreated in the background.
@@ -183,37 +126,32 @@ public:
 
 
 
-    // #############################################################################
-    // Resource Implementations
-    // #############################################################################
+protected:
+    Shader(Type type, const CreateParams<Desc>& params);
+    ~Shader() override = default;
+
+
+
+    /**
+     * Returns the effective name of the entry point for (re)compiling the shader.
+     */
+    cl7::astring _cascade_entry_point(const CompileOptions& compile_options) const;
+
+    /**
+     * Performs a "reflection" on the (compiled) shader bytecode to determine
+     * parameter declarations etc. and validates the result.
+     */
+    bool _reflect_and_validate(const ShaderCode& bytecode, ReflectionResult& reflection_result_out);
+
+    /**
+     * Validates the given reflection result.
+     */
+    static bool _validate_reflection_result(const ReflectionResult& reflection_result);
+
+
+
 private:
-    /**
-     * Checks whether the given data provider complies with the specific properties
-     * of the resource to (re)populate it, taking into account the current state of
-     * the resource if necessary.
-     */
-    virtual bool _check_data_impl(const resources::DataProvider& data_provider) override;
 
-    /**
-     * Requests/acquires the resource, bringing it into a usable state.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
-     */
-    virtual bool _acquire_impl(const resources::DataProvider& data_provider) override;
-
-public:
-    /**
-     * Returns the specific type of the resource, as a "human-friendly" string.
-     */
-    virtual cl7::string_view get_type_string() const override { return TEXT("shader"); }
-
-
-
-    // #############################################################################
-    // Prototypes
-    // #############################################################################
-private:
     /**
      * Requests/acquires a precompiled shader resource.
      * The actual code of the given code provider can possibly be ignored because the
@@ -244,32 +182,52 @@ private:
 
 
 
-    // #############################################################################
-    // Helpers
-    // #############################################################################
-protected:
     /**
-     * Returns the effective name of the entry point for (re)compiling the shader.
+     * Checks whether the given data provider complies with the specific properties
+     * of the resource to (re)populate it, taking into account the current state of
+     * the resource if necessary.
      */
-    cl7::astring _cascade_entry_point(const CompileOptions& compile_options) const;
+    bool _check_data_impl(const resources::DataProvider& data_provider) override;
 
     /**
-     * Performs a "reflection" on the (compiled) shader bytecode to determine
-     * parameter declarations etc. and validates the result.
+     * Requests/acquires the resource, bringing it into a usable state.
+     * The given data provider can possibly be ignored because the local data buffer
+     * has already been filled based on it. It is still included in the event that
+     * it contains additional implementation-specific information.
      */
-    bool _reflect_and_validate(const ShaderCode& bytecode, ReflectionResult& reflection_result_out);
+    bool _acquire_impl(const resources::DataProvider& data_provider) override;
+
+
 
     /**
-     * Validates the given reflection result.
+     * The type of the shader.
      */
-    bool _validate_reflection_result(const ReflectionResult& reflection_result) const;
+    const Type _type;
+
+    /**
+     * The descriptor of the shader.
+     */
+    const Desc _desc;
+
+    /**
+     * The compiled bytecode.
+     */
+    ShaderCode _bytecode;
+
+    /**
+     * The reflection result, which includes parameter declarations etc.
+     */
+    ReflectionResult _reflection_result;
+
+    /**
+     * The constant buffer mappings cached so far by constant buffer ID.
+     */
+    mutable std::unordered_map<resources::ResourceID, ConstantBufferMapping> _constant_buffer_mappings_by_constant_buffer_id;
 
 }; // class Shader
 
 
 
-} // namespace shaders
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::shaders
 
 #endif // XL7_GRAPHICS_SHADERS_SHADER_H

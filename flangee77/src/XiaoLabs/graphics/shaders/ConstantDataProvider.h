@@ -5,9 +5,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace shaders {
+namespace xl7::graphics::shaders {
 
 
 
@@ -15,38 +13,21 @@ class ConstantDataProvider
     : public resources::DefaultDataProvider
 {
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
 public:
-    /**
-     * Default constructor.
-     */
-    ConstantDataProvider()
-        : resources::DefaultDataProvider()
-    {
-    }
+    ConstantDataProvider() = default;
 
-    /**
-     * Explicit constructor.
-     */
     template <class TData>
     ConstantDataProvider(const TData* data)
-         : resources::DefaultDataProvider( cl7::byte_view( reinterpret_cast<const std::byte*>( data ), sizeof(TData) ), 0 )
+         : resources::DefaultDataProvider(cl7::byte_view(reinterpret_cast<const std::byte*>(data), sizeof(TData)), 0)
     {
     }
 
-    /**
-     * Destructor.
-     */
-    virtual ~ConstantDataProvider() = default;
+    ~ConstantDataProvider() override = default;
 
 }; // class ConstantDataProvider
 
 
 
-} // namespace shaders
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::shaders
 
 #endif // XL7_GRAPHICS_SHADERS_CONSTANTDATAPROVIDER_H
