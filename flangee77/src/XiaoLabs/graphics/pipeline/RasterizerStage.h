@@ -9,9 +9,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace pipeline {
+namespace xl7::graphics::pipeline {
 
 
 
@@ -25,19 +23,13 @@ private:
 
 
 
-    // #############################################################################
-    // States
-    // #############################################################################
-private:
-    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( viewport, Viewport, Viewport(), DIRTY_VIEWPORT_FLAG );
-    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( rasterizer_state_id, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_RASTERIER_STATE_FLAG );
+    XL7_GRAPHICS_PIPELINE_SINGLE_STATE(viewport, Viewport, Viewport(), DIRTY_VIEWPORT_FLAG);
+    XL7_GRAPHICS_PIPELINE_SINGLE_STATE(rasterizer_state_id, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_RASTERIER_STATE_FLAG);
 
 }; // class RasterizerStage
 
 
 
-} // namespace pipeline
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::pipeline
 
 #endif // XL7_GRAPHICS_PIPELINE_RASTERIZERSTAGE_H

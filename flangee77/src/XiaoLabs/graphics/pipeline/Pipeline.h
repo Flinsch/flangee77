@@ -11,9 +11,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace pipeline {
+namespace xl7::graphics::pipeline {
 
 
 
@@ -21,9 +19,6 @@ class Pipeline
     : public AbstractPipelineObject
 {
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
 public:
     /** The input assembler stage. */
     InputAssemblerStage ia;
@@ -40,8 +35,6 @@ public:
 
 
 
-} // namespace pipeline
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::pipeline
 
 #endif // XL7_GRAPHICS_PIPELINE_PIPELINE_H

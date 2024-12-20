@@ -10,9 +10,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace pipeline {
+namespace xl7::graphics::pipeline {
 
 
 
@@ -26,6 +24,8 @@ public:
     /** The maximum number of texture/sampler slots (ignoring hardware/driver capabilities). */
     static constexpr unsigned MAX_TEXTURE_SAMPLER_SLOTS = 16;
 
+
+
 private:
     static constexpr unsigned DIRTY_SHADER_FLAG                 = 0x1;
     static constexpr unsigned DIRTY_CONSTANT_BUFFER_FLAG_BASE   = 0x2;
@@ -35,21 +35,15 @@ private:
 
 
 
-    // #############################################################################
-    // States
-    // #############################################################################
-private:
-    _XL7_GRAPHICS_PIPELINE_SINGLE_STATE( shader_id, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_SHADER_FLAG );
-    _XL7_GRAPHICS_PIPELINE_STATE_ARRAY( constant_buffer_id, MAX_CONSTANT_BUFFER_SLOTS, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_CONSTANT_BUFFER_FLAG_BASE );
-    _XL7_GRAPHICS_PIPELINE_STATE_ARRAY( texture_id, MAX_TEXTURE_SAMPLER_SLOTS, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_TEXTURE_SAMPLER_FLAG_BASE );
-    _XL7_GRAPHICS_PIPELINE_STATE_ARRAY( sampler_state_id, MAX_TEXTURE_SAMPLER_SLOTS, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_TEXTURE_SAMPLER_FLAG_BASE );
+    XL7_GRAPHICS_PIPELINE_SINGLE_STATE(shader_id, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_SHADER_FLAG);
+    XL7_GRAPHICS_PIPELINE_STATE_ARRAY(constant_buffer_id, MAX_CONSTANT_BUFFER_SLOTS, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_CONSTANT_BUFFER_FLAG_BASE);
+    XL7_GRAPHICS_PIPELINE_STATE_ARRAY(texture_id, MAX_TEXTURE_SAMPLER_SLOTS, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_TEXTURE_SAMPLER_FLAG_BASE);
+    XL7_GRAPHICS_PIPELINE_STATE_ARRAY(sampler_state_id, MAX_TEXTURE_SAMPLER_SLOTS, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_TEXTURE_SAMPLER_FLAG_BASE);
 
 }; // class AbstractShaderStage
 
 
 
-} // namespace pipeline
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::pipeline
 
 #endif // XL7_GRAPHICS_PIPELINE_ABSTRACTSHADERSTAGE_H

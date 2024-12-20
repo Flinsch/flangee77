@@ -7,9 +7,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace pipeline {
+namespace xl7::graphics::pipeline {
 
 
 
@@ -23,8 +21,6 @@ class PixelShaderStage
 
 
 
-} // namespace pipeline
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::pipeline
 
 #endif // XL7_GRAPHICS_PIPELINE_PIXELSHADERSTAGE_H

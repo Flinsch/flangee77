@@ -67,23 +67,14 @@ target_sources(flangee77
     graphics/meshes/VertexLayout.cpp
     graphics/meshes/VertexLayout.h
 
-    graphics/pipeline/AbstractPipelineObject.cpp
     graphics/pipeline/AbstractPipelineObject.h
-    graphics/pipeline/AbstractShaderStage.cpp
     graphics/pipeline/AbstractShaderStage.h
-    graphics/pipeline/AbstractStage.cpp
     graphics/pipeline/AbstractStage.h
-    graphics/pipeline/InputAssemblerStage.cpp
     graphics/pipeline/InputAssemblerStage.h
-    graphics/pipeline/OutputMergerStage.cpp
     graphics/pipeline/OutputMergerStage.h
-    graphics/pipeline/Pipeline.cpp
     graphics/pipeline/Pipeline.h
-    graphics/pipeline/PixelShaderStage.cpp
     graphics/pipeline/PixelShaderStage.h
-    graphics/pipeline/RasterizerStage.cpp
     graphics/pipeline/RasterizerStage.h
-    graphics/pipeline/VertexShaderStage.cpp
     graphics/pipeline/VertexShaderStage.h
 
     graphics/shaders/CodeDataProvider.cpp
