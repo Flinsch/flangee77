@@ -6,11 +6,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace shared {
-namespace errors {
+namespace xl7::graphics::impl::shared::errors {
 
 
 
@@ -22,10 +18,6 @@ namespace errors {
 
 
 
-} // namespace errors
-} // namespace shared
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::shared::errors
 
 #endif // XL7_GRAPHICS_IMPL_SHARED_ERRORS_H

@@ -102,7 +102,7 @@ namespace shaders {
         const xl7::graphics::shaders::ShaderCode& hlsl_code = code_data_provider.get_shader_code();
         assert( hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel );
 
-        bytecode_out = shared::shaders::D3DShaderCompiler().compile_hlsl_code( hlsl_code, TEXT(""), code_data_provider.get_compile_options(), entry_point, target );
+        bytecode_out = shared::shaders::D3DShaderCompiler::compile_hlsl_code( hlsl_code, TEXT(""), code_data_provider.get_compile_options(), entry_point, target );
         if ( bytecode_out.get_code_data().empty() )
         {
             LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be compiled.") );

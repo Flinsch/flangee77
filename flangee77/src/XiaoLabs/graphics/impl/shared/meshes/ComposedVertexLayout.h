@@ -8,45 +8,37 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace shared {
-namespace meshes {
+namespace xl7::graphics::impl::shared::meshes {
 
 
 
 struct ComposedVertexLayout
 {
 
-    xl7::graphics::meshes::VertexLayout vertex_layouts[ pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
-    unsigned instance_data_step_rates[ pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
+    xl7::graphics::meshes::VertexLayout vertex_layouts[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];
+    unsigned instance_data_step_rates[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];
     unsigned stream_count;
 
 
     ComposedVertexLayout();
     ComposedVertexLayout(const VertexBufferBinding& vertex_buffer_binding);
 
-    bool operator == (const ComposedVertexLayout& rhs) const;
+    bool operator == (const ComposedVertexLayout& rhs) const noexcept;
 
-    size_t hash() const;
+    size_t hash() const noexcept;
 
 }; // struct ComposedVertexLayout
 
 
 
-} // namespace meshes
-} // namespace shared
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::shared::meshes
 
 
 
 template <>
 struct std::hash<xl7::graphics::impl::shared::meshes::ComposedVertexLayout>
 {
-    size_t operator () (const xl7::graphics::impl::shared::meshes::ComposedVertexLayout& composed_vertex_layout) const
+    size_t operator () (const xl7::graphics::impl::shared::meshes::ComposedVertexLayout& composed_vertex_layout) const noexcept
     {
         return composed_vertex_layout.hash();
     }
