@@ -6,10 +6,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d9 {
+namespace xl7::graphics::impl::direct3d9 {
 
 
 
@@ -19,14 +16,14 @@ namespace direct3d9 {
 
     /**
      * Performs preliminary initialization steps so that the rendering device can be
-     * created afterwards.
+     * created afterward.
      */
     bool GraphicsSystemImpl::_init_before_rendering_device_impl()
     {
-        if ( !_create_main_interface() )
+        if (!_create_main_interface())
             return false;
 
-        LOG_TYPE( TEXT("Sorry for using \u201cold\u201d technology."), cl7::logging::LogType::Comment );
+        LOG_TYPE(TEXT("Sorry for using \u201cold\u201d technology."), cl7::logging::LogType::Comment);
 
         return true;
     }
@@ -44,7 +41,7 @@ namespace direct3d9 {
 
     /**
      * Creates the rendering device (and all of its manager objects), but without
-     * fully initializing it so that it can be initialized afterwards.
+     * fully initializing it so that it can be initialized afterward.
      */
     RenderingDevice* GraphicsSystemImpl::_rendering_device_factory_impl()
     {
@@ -62,21 +59,21 @@ namespace direct3d9 {
      */
     bool GraphicsSystemImpl::_create_main_interface()
     {
-        if ( _d3d_main )
+        if (_d3d_main)
         {
-            LOG_WARNING( TEXT("The Direct3D 9 main interface has already been created.") );
+            LOG_WARNING(TEXT("The Direct3D 9 main interface has already been created."));
             return true;
         }
 
-        _d3d_main.Attach( ::Direct3DCreate9( D3D_SDK_VERSION ) );
+        _d3d_main.Attach(::Direct3DCreate9(D3D_SDK_VERSION));
 
-        if ( !_d3d_main )
+        if (!_d3d_main)
         {
-            LOG_ERROR( TEXT("The Direct3D 9 main interface could not be created.") );
+            LOG_ERROR(TEXT("The Direct3D 9 main interface could not be created."));
             return false;
         }
 
-        LOG( TEXT("The Direct3D 9 main interface has been created.") );
+        LOG(TEXT("The Direct3D 9 main interface has been created."));
         return true;
     }
 
@@ -87,13 +84,10 @@ namespace direct3d9 {
     {
         _d3d_main.Reset();
 
-        LOG( TEXT("The Direct3D 9 main interface has been released.") );
+        LOG(TEXT("The Direct3D 9 main interface has been released."));
         return true;
     }
 
 
 
-} // namespace direct3d9
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d9

@@ -244,16 +244,16 @@ namespace xl7::graphics {
         case PixelFormat::R8_SNORM:
         case PixelFormat::R8_UINT:
         case PixelFormat::R8_SINT:
-            //channel_count = 1;
-            // Fall through!
+            channel_count = 1;
+            break;
 
         case PixelFormat::R16_UNORM:
         case PixelFormat::R16_SNORM:
         case PixelFormat::R16_UINT:
         case PixelFormat::R16_SINT:
         case PixelFormat::R16_FLOAT:
-            //channel_count = 1;
-            // Fall through!
+            channel_count = 1;
+            break;
 
         case PixelFormat::R32_UINT:
         case PixelFormat::R32_SINT:
@@ -265,16 +265,16 @@ namespace xl7::graphics {
         case PixelFormat::R8G8_SNORM:
         case PixelFormat::R8G8_UINT:
         case PixelFormat::R8G8_SINT:
-            //channel_count = 2;
-            // Fall through!
+            channel_count = 2;
+            break;
 
         case PixelFormat::R16G16_UNORM:
         case PixelFormat::R16G16_SNORM:
         case PixelFormat::R16G16_UINT:
         case PixelFormat::R16G16_SINT:
         case PixelFormat::R16G16_FLOAT:
-            //channel_count = 2;
-            // Fall through!
+            channel_count = 2;
+            break;
 
         case PixelFormat::R32G32_UINT:
         case PixelFormat::R32G32_SINT:
@@ -283,29 +283,29 @@ namespace xl7::graphics {
             break;
 
         case PixelFormat::R4G4B4X4_UNORM:
-            //channel_count = 3;
-            // Fall through!
+            channel_count = 3;
+            break;
         case PixelFormat::R5G5B5X1_UNORM:
-            //channel_count = 3;
-            // Fall through!
+            channel_count = 3;
+            break;
         case PixelFormat::R5G6B5_UNORM:
-            //channel_count = 3;
-            // Fall through!
+            channel_count = 3;
+            break;
 
         case PixelFormat::R8G8B8_UNORM:
         case PixelFormat::R8G8B8_SNORM:
         case PixelFormat::R8G8B8_UINT:
         case PixelFormat::R8G8B8_SINT:
-            //channel_count = 3;
-            // Fall through!
+            channel_count = 3;
+            break;
 
         case PixelFormat::R8G8B8X8_UNORM:
-            //channel_count = 3;
-            // Fall through!
+            channel_count = 3;
+            break;
 
         case PixelFormat::R11G11B10_FLOAT:
-            //channel_count = 3;
-            // Fall through!
+            channel_count = 3;
+            break;
 
         case PixelFormat::R32G32B32_UINT:
         case PixelFormat::R32G32B32_SINT:
@@ -314,31 +314,31 @@ namespace xl7::graphics {
             break;
 
         case PixelFormat::R4G4B4A4_UNORM:
-            //channel_count = 4;
-            // Fall through!
+            channel_count = 4;
+            break;
         case PixelFormat::R5G5B5A1_UNORM:
-            //channel_count = 4;
-            // Fall through!
+            channel_count = 4;
+            break;
 
         case PixelFormat::R8G8B8A8_UNORM:
         case PixelFormat::R8G8B8A8_SNORM:
         case PixelFormat::R8G8B8A8_UINT:
         case PixelFormat::R8G8B8A8_SINT:
-            //channel_count = 4;
-            // Fall through!
+            channel_count = 4;
+            break;
 
         case PixelFormat::R10G10B10A2_UNORM:
         case PixelFormat::R10G10B10A2_UINT:
-            //channel_count = 4;
-            // Fall through!
+            channel_count = 4;
+            break;
 
         case PixelFormat::R16G16B16A16_UNORM:
         case PixelFormat::R16G16B16A16_SNORM:
         case PixelFormat::R16G16B16A16_UINT:
         case PixelFormat::R16G16B16A16_SINT:
         case PixelFormat::R16G16B16A16_FLOAT:
-            //channel_count = 4;
-            // Fall through!
+            channel_count = 4;
+            break;
 
         case PixelFormat::R32G32B32A32_UINT:
         case PixelFormat::R32G32B32A32_SINT:
@@ -412,11 +412,11 @@ namespace xl7::graphics {
             break;
 
         case PixelFormat::R4G4B4X4_UNORM:
-            //stride = 2;
-            // Fall through!
+            stride = 2;
+            break;
         case PixelFormat::R5G5B5X1_UNORM:
-            //stride = 2;
-            // Fall through!
+            stride = 2;
+            break;
         case PixelFormat::R5G6B5_UNORM:
             stride = 2;
             break;
@@ -429,8 +429,8 @@ namespace xl7::graphics {
             break;
 
         case PixelFormat::R8G8B8X8_UNORM:
-            //stride = 4;
-            // Fall through!
+            stride = 4;
+            break;
 
         case PixelFormat::R11G11B10_FLOAT:
             stride = 4;
@@ -443,8 +443,8 @@ namespace xl7::graphics {
             break;
 
         case PixelFormat::R4G4B4A4_UNORM:
-            //stride = 2;
-            // Fall through!
+            stride = 2;
+            break;
         case PixelFormat::R5G5B5A1_UNORM:
             stride = 2;
             break;
@@ -453,8 +453,8 @@ namespace xl7::graphics {
         case PixelFormat::R8G8B8A8_SNORM:
         case PixelFormat::R8G8B8A8_UINT:
         case PixelFormat::R8G8B8A8_SINT:
-            //stride = 4;
-            // Fall through!
+            stride = 4;
+            break;
 
         case PixelFormat::R10G10B10A2_UNORM:
         case PixelFormat::R10G10B10A2_UINT:

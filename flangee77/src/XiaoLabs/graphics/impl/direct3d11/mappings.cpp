@@ -2,17 +2,13 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d11 {
-namespace mappings {
+namespace xl7::graphics::impl::direct3d11::mappings {
 
 
 
     D3D11_USAGE _d3d_usage_from(resources::ResourceUsage resource_usage)
     {
-        switch ( resource_usage )
+        switch (resource_usage)
         {
         case resources::ResourceUsage::Default:
             return D3D11_USAGE_DEFAULT;
@@ -21,7 +17,7 @@ namespace mappings {
         case resources::ResourceUsage::Dynamic:
             return D3D11_USAGE_DYNAMIC;
         default:
-            assert( false );
+            assert(false);
         }
 
         return D3D11_USAGE_DEFAULT;
@@ -29,12 +25,12 @@ namespace mappings {
 
     DXGI_FORMAT _dxgi_format_from(PixelFormat pixel_format, ChannelOrder channel_order)
     {
-        static_assert( static_cast<unsigned>( ChannelOrder::RGBA ) == 0 );
-        static_assert( static_cast<unsigned>( ChannelOrder::ARGB ) == 1 );
-        static_assert( static_cast<unsigned>( ChannelOrder::ABGR ) == 2 );
-        static_assert( static_cast<unsigned>( ChannelOrder::BGRA ) == 3 );
+        static_assert(static_cast<unsigned>(ChannelOrder::RGBA) == 0);
+        static_assert(static_cast<unsigned>(ChannelOrder::ARGB) == 1);
+        static_assert(static_cast<unsigned>(ChannelOrder::ABGR) == 2);
+        static_assert(static_cast<unsigned>(ChannelOrder::BGRA) == 3);
 
-        switch ( pixel_format )
+        switch (pixel_format)
         {
         case PixelFormat::UNKNOWN:
             return DXGI_FORMAT_UNKNOWN;
@@ -134,7 +130,7 @@ namespace mappings {
                     DXGI_FORMAT_R8G8B8A8_UNORM, // ABGR
                     DXGI_FORMAT_B8G8R8A8_UNORM, // BGRA
                 };
-                return r8g8b8a8_map[ static_cast<unsigned>( channel_order ) ];
+                return r8g8b8a8_map[static_cast<unsigned>(channel_order)];
             }
         case PixelFormat::R8G8B8A8_SNORM:
             return DXGI_FORMAT_R8G8B8A8_SNORM;
@@ -170,7 +166,7 @@ namespace mappings {
             return DXGI_FORMAT_A8_UNORM;
 
         default:
-            assert( false );
+            assert(false);
         }
 
         return DXGI_FORMAT_UNKNOWN;
@@ -179,148 +175,144 @@ namespace mappings {
     std::pair<PixelFormat, ChannelOrder> _map_dxgi_format(DXGI_FORMAT d3d_format, ChannelOrder preferred_channel_order)
     {
         auto rgb = [](ChannelOrder preferred_channel_order) -> ChannelOrder {
-            return preferred_channel_order ==  ChannelOrder::ARGB ?  ChannelOrder::ARGB :  ChannelOrder::RGBA;
+            return preferred_channel_order == ChannelOrder::ARGB ? ChannelOrder::ARGB : ChannelOrder::RGBA;
         };
         auto bgr = [](ChannelOrder preferred_channel_order) -> ChannelOrder {
-            return preferred_channel_order ==  ChannelOrder::ABGR ?  ChannelOrder::ABGR :  ChannelOrder::BGRA;
+            return preferred_channel_order == ChannelOrder::ABGR ? ChannelOrder::ABGR : ChannelOrder::BGRA;
         };
 
-        switch ( d3d_format )
+        switch (d3d_format)
         {
         case DXGI_FORMAT_R8_UNORM:
-            return { PixelFormat::R8_UNORM, preferred_channel_order };
+            return {PixelFormat::R8_UNORM, preferred_channel_order};
         case DXGI_FORMAT_R8_SNORM:
-            return { PixelFormat::R8_SNORM, preferred_channel_order };
+            return {PixelFormat::R8_SNORM, preferred_channel_order};
         case DXGI_FORMAT_R8_UINT:
-            return { PixelFormat::R8_UINT, preferred_channel_order };
+            return {PixelFormat::R8_UINT, preferred_channel_order};
         case DXGI_FORMAT_R8_SINT:
-            return { PixelFormat::R8_SINT, preferred_channel_order };
+            return {PixelFormat::R8_SINT, preferred_channel_order};
 
         case DXGI_FORMAT_R16_UNORM:
-            return { PixelFormat::R16_UNORM, preferred_channel_order };
+            return {PixelFormat::R16_UNORM, preferred_channel_order};
         case DXGI_FORMAT_R16_SNORM:
-            return { PixelFormat::R16_SNORM, preferred_channel_order };
+            return {PixelFormat::R16_SNORM, preferred_channel_order};
         case DXGI_FORMAT_R16_UINT:
-            return { PixelFormat::R16_UINT, preferred_channel_order };
+            return {PixelFormat::R16_UINT, preferred_channel_order};
         case DXGI_FORMAT_R16_SINT:
-            return { PixelFormat::R16_SINT, preferred_channel_order };
+            return {PixelFormat::R16_SINT, preferred_channel_order};
         case DXGI_FORMAT_R16_FLOAT:
-            return { PixelFormat::R16_FLOAT, preferred_channel_order };
+            return {PixelFormat::R16_FLOAT, preferred_channel_order};
 
         case DXGI_FORMAT_R32_UINT:
-            return { PixelFormat::R32_UINT, preferred_channel_order };
+            return {PixelFormat::R32_UINT, preferred_channel_order};
         case DXGI_FORMAT_R32_SINT:
-            return { PixelFormat::R32_SINT, preferred_channel_order };
+            return {PixelFormat::R32_SINT, preferred_channel_order};
         case DXGI_FORMAT_R32_FLOAT:
-            return { PixelFormat::R32_FLOAT, preferred_channel_order };
+            return {PixelFormat::R32_FLOAT, preferred_channel_order};
 
         case DXGI_FORMAT_R8G8_UNORM:
-            return { PixelFormat::R8G8_UNORM, rgb( preferred_channel_order ) };
+            return {PixelFormat::R8G8_UNORM, rgb(preferred_channel_order)};
         case DXGI_FORMAT_R8G8_SNORM:
-            return { PixelFormat::R8G8_SNORM, rgb( preferred_channel_order ) };
+            return {PixelFormat::R8G8_SNORM, rgb(preferred_channel_order)};
         case DXGI_FORMAT_R8G8_UINT:
-            return { PixelFormat::R8G8_UINT, rgb( preferred_channel_order ) };
+            return {PixelFormat::R8G8_UINT, rgb(preferred_channel_order)};
         case DXGI_FORMAT_R8G8_SINT:
-            return { PixelFormat::R8G8_SINT, rgb( preferred_channel_order ) };
+            return {PixelFormat::R8G8_SINT, rgb(preferred_channel_order)};
 
         case DXGI_FORMAT_R16G16_UNORM:
-            return { PixelFormat::R16G16_UNORM, rgb( preferred_channel_order ) };
+            return {PixelFormat::R16G16_UNORM, rgb(preferred_channel_order)};
         case DXGI_FORMAT_R16G16_SNORM:
-            return { PixelFormat::R16G16_SNORM, rgb( preferred_channel_order ) };
+            return {PixelFormat::R16G16_SNORM, rgb(preferred_channel_order)};
         case DXGI_FORMAT_R16G16_UINT:
-            return { PixelFormat::R16G16_UINT, rgb( preferred_channel_order ) };
+            return {PixelFormat::R16G16_UINT, rgb(preferred_channel_order)};
         case DXGI_FORMAT_R16G16_SINT:
-            return { PixelFormat::R16G16_SINT, rgb( preferred_channel_order ) };
+            return {PixelFormat::R16G16_SINT, rgb(preferred_channel_order)};
         case DXGI_FORMAT_R16G16_FLOAT:
-            return { PixelFormat::R16G16_FLOAT, rgb( preferred_channel_order ) };
+            return {PixelFormat::R16G16_FLOAT, rgb(preferred_channel_order)};
 
         case DXGI_FORMAT_R32G32_UINT:
-            return { PixelFormat::R32G32_UINT, rgb( preferred_channel_order ) };
+            return {PixelFormat::R32G32_UINT, rgb(preferred_channel_order)};
         case DXGI_FORMAT_R32G32_SINT:
-            return { PixelFormat::R32G32_SINT, rgb( preferred_channel_order ) };
+            return {PixelFormat::R32G32_SINT, rgb(preferred_channel_order)};
         case DXGI_FORMAT_R32G32_FLOAT:
-            return { PixelFormat::R32G32_FLOAT, rgb( preferred_channel_order ) };
+            return {PixelFormat::R32G32_FLOAT, rgb(preferred_channel_order)};
 
         case DXGI_FORMAT_B5G6R5_UNORM:
-            return { PixelFormat::R5G6B5_UNORM, bgr( preferred_channel_order ) };
+            return {PixelFormat::R5G6B5_UNORM, bgr(preferred_channel_order)};
 
         case DXGI_FORMAT_B8G8R8X8_UNORM:
-            return { PixelFormat::R8G8B8X8_UNORM, ChannelOrder::BGRA };
+            return {PixelFormat::R8G8B8X8_UNORM, ChannelOrder::BGRA};
 
         case DXGI_FORMAT_R11G11B10_FLOAT:
-            return { PixelFormat::R11G11B10_FLOAT, rgb( preferred_channel_order ) };
+            return {PixelFormat::R11G11B10_FLOAT, rgb(preferred_channel_order)};
 
         case DXGI_FORMAT_R32G32B32_UINT:
-            return { PixelFormat::R32G32B32_UINT, rgb( preferred_channel_order ) };
+            return {PixelFormat::R32G32B32_UINT, rgb(preferred_channel_order)};
         case DXGI_FORMAT_R32G32B32_SINT:
-            return { PixelFormat::R32G32B32_SINT, rgb( preferred_channel_order ) };
+            return {PixelFormat::R32G32B32_SINT, rgb(preferred_channel_order)};
         case DXGI_FORMAT_R32G32B32_FLOAT:
-            return { PixelFormat::R32G32B32_FLOAT, rgb( preferred_channel_order ) };
+            return {PixelFormat::R32G32B32_FLOAT, rgb(preferred_channel_order)};
 
         case DXGI_FORMAT_B4G4R4A4_UNORM:
-            return { PixelFormat::R4G4B4A4_UNORM, ChannelOrder::BGRA };
+            return {PixelFormat::R4G4B4A4_UNORM, ChannelOrder::BGRA};
         case DXGI_FORMAT_B5G5R5A1_UNORM:
-            return { PixelFormat::R5G5B5A1_UNORM, ChannelOrder::BGRA };
+            return {PixelFormat::R5G5B5A1_UNORM, ChannelOrder::BGRA};
 
         case DXGI_FORMAT_R8G8B8A8_UNORM:
-            return { PixelFormat::R8G8B8A8_UNORM, ChannelOrder::RGBA };
+            return {PixelFormat::R8G8B8A8_UNORM, ChannelOrder::RGBA};
         case DXGI_FORMAT_B8G8R8A8_UNORM:
-            return { PixelFormat::R8G8B8A8_UNORM, ChannelOrder::BGRA };
+            return {PixelFormat::R8G8B8A8_UNORM, ChannelOrder::BGRA};
         case DXGI_FORMAT_R8G8B8A8_SNORM:
-            return { PixelFormat::R8G8B8A8_SNORM, ChannelOrder::RGBA };
+            return {PixelFormat::R8G8B8A8_SNORM, ChannelOrder::RGBA};
         case DXGI_FORMAT_R8G8B8A8_UINT:
-            return { PixelFormat::R8G8B8A8_UINT, ChannelOrder::RGBA };
+            return {PixelFormat::R8G8B8A8_UINT, ChannelOrder::RGBA};
         case DXGI_FORMAT_R8G8B8A8_SINT:
-            return { PixelFormat::R8G8B8A8_SINT, ChannelOrder::RGBA };
+            return {PixelFormat::R8G8B8A8_SINT, ChannelOrder::RGBA};
 
         case DXGI_FORMAT_R10G10B10A2_UNORM:
-            return { PixelFormat::R10G10B10A2_UNORM, ChannelOrder::RGBA };
+            return {PixelFormat::R10G10B10A2_UNORM, ChannelOrder::RGBA};
         case DXGI_FORMAT_R10G10B10A2_UINT:
-            return { PixelFormat::R10G10B10A2_UINT, ChannelOrder::RGBA };
+            return {PixelFormat::R10G10B10A2_UINT, ChannelOrder::RGBA};
 
         case DXGI_FORMAT_R16G16B16A16_UNORM:
-            return { PixelFormat::R16G16B16A16_UNORM, ChannelOrder::RGBA };
+            return {PixelFormat::R16G16B16A16_UNORM, ChannelOrder::RGBA};
         case DXGI_FORMAT_R16G16B16A16_SNORM:
-            return { PixelFormat::R16G16B16A16_SNORM , ChannelOrder::RGBA};
+            return {PixelFormat::R16G16B16A16_SNORM , ChannelOrder::RGBA};
         case DXGI_FORMAT_R16G16B16A16_UINT:
-            return { PixelFormat::R16G16B16A16_UINT, ChannelOrder::RGBA };
+            return {PixelFormat::R16G16B16A16_UINT, ChannelOrder::RGBA};
         case DXGI_FORMAT_R16G16B16A16_SINT:
-            return { PixelFormat::R16G16B16A16_SINT, ChannelOrder::RGBA };
+            return {PixelFormat::R16G16B16A16_SINT, ChannelOrder::RGBA};
         case DXGI_FORMAT_R16G16B16A16_FLOAT:
-            return { PixelFormat::R16G16B16A16_FLOAT, ChannelOrder::RGBA };
+            return {PixelFormat::R16G16B16A16_FLOAT, ChannelOrder::RGBA};
 
         case DXGI_FORMAT_R32G32B32A32_UINT:
-            return { PixelFormat::R32G32B32A32_UINT, ChannelOrder::RGBA };
+            return {PixelFormat::R32G32B32A32_UINT, ChannelOrder::RGBA};
         case DXGI_FORMAT_R32G32B32A32_SINT:
-            return { PixelFormat::R32G32B32A32_SINT, ChannelOrder::RGBA };
+            return {PixelFormat::R32G32B32A32_SINT, ChannelOrder::RGBA};
         case DXGI_FORMAT_R32G32B32A32_FLOAT:
-            return { PixelFormat::R32G32B32A32_FLOAT, ChannelOrder::RGBA };
+            return {PixelFormat::R32G32B32A32_FLOAT, ChannelOrder::RGBA};
 
         case DXGI_FORMAT_A8_UNORM:
-            return { PixelFormat::A8_UNORM, preferred_channel_order };
+            return {PixelFormat::A8_UNORM, preferred_channel_order};
         }
 
-        return { PixelFormat::UNKNOWN, preferred_channel_order };
+        return {PixelFormat::UNKNOWN, preferred_channel_order};
     }
 
     D3D11_COMPARISON_FUNC _d3d_comparison_func_from(ComparisonFunction comparison_function)
     {
-        static_assert( static_cast<unsigned>( ComparisonFunction::Never ) == static_cast<unsigned>( D3D11_COMPARISON_NEVER ) );
-        static_assert( static_cast<unsigned>( ComparisonFunction::Less ) == static_cast<unsigned>( D3D11_COMPARISON_LESS ) );
-        static_assert( static_cast<unsigned>( ComparisonFunction::Equal ) == static_cast<unsigned>( D3D11_COMPARISON_EQUAL ) );
-        static_assert( static_cast<unsigned>( ComparisonFunction::LessEqual ) == static_cast<unsigned>( D3D11_COMPARISON_LESS_EQUAL ) );
-        static_assert( static_cast<unsigned>( ComparisonFunction::Greater ) == static_cast<unsigned>( D3D11_COMPARISON_GREATER ) );
-        static_assert( static_cast<unsigned>( ComparisonFunction::NotEqual ) == static_cast<unsigned>( D3D11_COMPARISON_NOT_EQUAL ) );
-        static_assert( static_cast<unsigned>( ComparisonFunction::GreaterEqual ) == static_cast<unsigned>( D3D11_COMPARISON_GREATER_EQUAL ) );
-        static_assert( static_cast<unsigned>( ComparisonFunction::Always ) == static_cast<unsigned>( D3D11_COMPARISON_ALWAYS ) );
+        static_assert(static_cast<unsigned>(ComparisonFunction::Never) == static_cast<unsigned>(D3D11_COMPARISON_NEVER));
+        static_assert(static_cast<unsigned>(ComparisonFunction::Less) == static_cast<unsigned>(D3D11_COMPARISON_LESS));
+        static_assert(static_cast<unsigned>(ComparisonFunction::Equal) == static_cast<unsigned>(D3D11_COMPARISON_EQUAL));
+        static_assert(static_cast<unsigned>(ComparisonFunction::LessEqual) == static_cast<unsigned>(D3D11_COMPARISON_LESS_EQUAL));
+        static_assert(static_cast<unsigned>(ComparisonFunction::Greater) == static_cast<unsigned>(D3D11_COMPARISON_GREATER));
+        static_assert(static_cast<unsigned>(ComparisonFunction::NotEqual) == static_cast<unsigned>(D3D11_COMPARISON_NOT_EQUAL));
+        static_assert(static_cast<unsigned>(ComparisonFunction::GreaterEqual) == static_cast<unsigned>(D3D11_COMPARISON_GREATER_EQUAL));
+        static_assert(static_cast<unsigned>(ComparisonFunction::Always) == static_cast<unsigned>(D3D11_COMPARISON_ALWAYS));
 
-        return static_cast<D3D11_COMPARISON_FUNC>( comparison_function );
+        return static_cast<D3D11_COMPARISON_FUNC>(comparison_function);
     }
 
 
 
-} // namespace mappings
-} // namespace direct3d11
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d11::mappings

@@ -7,10 +7,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d11 {
+namespace xl7::graphics::impl::direct3d11 {
 
 
 
@@ -20,14 +17,11 @@ namespace direct3d11 {
 
     /**
      * Performs preliminary initialization steps so that the rendering device can be
-     * created afterwards.
+     * created afterward.
      */
     bool GraphicsSystemImpl::_init_before_rendering_device_impl()
     {
-        if ( !_create_dxgi_factory() )
-            return false;
-
-        return true;
+        return _create_dxgi_factory();
     }
 
     /**
@@ -43,7 +37,7 @@ namespace direct3d11 {
 
     /**
      * Creates the rendering device (and all of its manager objects), but without
-     * fully initializing it so that it can be initialized afterwards.
+     * fully initializing it so that it can be initialized afterward.
      */
     RenderingDevice* GraphicsSystemImpl::_rendering_device_factory_impl()
     {
@@ -61,16 +55,16 @@ namespace direct3d11 {
      */
     bool GraphicsSystemImpl::_create_dxgi_factory()
     {
-        if ( _dxgi_factory )
+        if (_dxgi_factory)
         {
-            LOG_WARNING( TEXT("The DXGI factory interface has already been created.") );
+            LOG_WARNING(TEXT("The DXGI factory interface has already been created."));
             return true;
         }
 
-        HRESULT hresult = ::CreateDXGIFactory1( __uuidof(IDXGIFactoryN), &_dxgi_factory );
-        if ( FAILED(hresult) )
+        HRESULT hresult = ::CreateDXGIFactory1(__uuidof(IDXGIFactoryN), &_dxgi_factory);
+        if (FAILED(hresult))
         {
-            LOG_ERROR( errors::dxgi_result( hresult, TEXT("::CreateDXGIFactory1") ) );
+            LOG_ERROR(errors::dxgi_result(hresult, TEXT("::CreateDXGIFactory1")));
             return false;
         }
 
@@ -79,18 +73,17 @@ namespace direct3d11 {
         size_t best_dedicated_video_memory = 0;
 
         wrl::ComPtr<IDXGIAdapter> dxgi_adapter;
-        for ( unsigned i = 0; _dxgi_factory->EnumAdapters( i, &dxgi_adapter ) != DXGI_ERROR_NOT_FOUND; ++i )
+        for (unsigned i = 0; _dxgi_factory->EnumAdapters(i, &dxgi_adapter) != DXGI_ERROR_NOT_FOUND; ++i)
         {
-            DXGI_ADAPTER_DESC dxgi_adapter_desc;
-            memset( &dxgi_adapter_desc, 0, sizeof(DXGI_ADAPTER_DESC) );
-            hresult = dxgi_adapter->GetDesc( &dxgi_adapter_desc );
-            if ( FAILED(hresult) )
+            DXGI_ADAPTER_DESC dxgi_adapter_desc = {};
+            hresult = dxgi_adapter->GetDesc(&dxgi_adapter_desc);
+            if (FAILED(hresult))
             {
-                LOG_WARNING( cl7::errors::system_result( hresult, TEXT("IDXGIAdapter::GetDesc") ) );
+                LOG_WARNING(cl7::errors::system_result(hresult, TEXT("IDXGIAdapter::GetDesc")));
                 continue;
             }
 
-            if ( !best_found || dxgi_adapter_desc.DedicatedVideoMemory > best_dedicated_video_memory )
+            if (!best_found || dxgi_adapter_desc.DedicatedVideoMemory > best_dedicated_video_memory)
             {
                 best_dedicated_video_memory = dxgi_adapter_desc.DedicatedVideoMemory;
                 best_index = i;
@@ -98,13 +91,13 @@ namespace direct3d11 {
             }
         } // for each enumerated adapter
 
-        if ( !best_found )
+        if (!best_found)
         {
-            LOG_ERROR( TEXT("No suitable adapter (video card) could be found.") );
+            LOG_ERROR(TEXT("No suitable adapter (video card) could be found."));
             return false;
         }*/
 
-        LOG( TEXT("The DXGI factory interface has been created.") );
+        LOG(TEXT("The DXGI factory interface has been created."));
         return true;
     }
 
@@ -115,13 +108,10 @@ namespace direct3d11 {
     {
         _dxgi_factory.Reset();
 
-        LOG( TEXT("The DXGI factory interface has been released.") );
+        LOG(TEXT("The DXGI factory interface has been released."));
         return true;
     }
 
 
 
-} // namespace direct3d11
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d11

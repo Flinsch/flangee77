@@ -17,10 +17,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d9 {
+namespace xl7::graphics::impl::direct3d9 {
 
 
 
@@ -33,21 +30,50 @@ class RenderingContextImpl final
 {
     friend class RenderingDeviceImpl;
 
+public:
+    RenderingContextImpl() = delete;
+
+    RenderingContextImpl(const RenderingContextImpl&) = delete;
+    RenderingContextImpl& operator = (const RenderingContextImpl&) = delete;
+    RenderingContextImpl(RenderingContextImpl&&) = delete;
+    RenderingContextImpl& operator = (RenderingContextImpl&&) = delete;
+
+
+
+    /**
+     * Returns the Direct3D 9 device interface.
+     */
+    IDirect3DDevice9* get_raw_d3d_device() const { return _d3d_device.Get(); }
+
+
+
+protected:
+
+    // #############################################################################
+    // Construction / Destruction
+    // #############################################################################
+
+    RenderingContextImpl(RenderingDeviceImpl* rendering_device, unsigned index, wrl::ComPtr<IDirect3DDevice9> d3d_device, wrl::ComPtr<IDirect3DSurface9> d3d_render_target_surface, wrl::ComPtr<IDirect3DSurface9> d3d_depth_stencil_surface);
+    ~RenderingContextImpl() override = default;
+
+
+
 private:
+
     struct HardwareStates
     {
-        IDirect3DSurface9* render_targets[ pipeline::OutputMergerStage::MAX_RENDER_TARGETS ];
+        IDirect3DSurface9* render_targets[pipeline::OutputMergerStage::MAX_RENDER_TARGETS];
         IDirect3DSurface9* depth_stencil_surface;
 
-        IDirect3DVertexBuffer9* vertex_buffers[ pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS ];
+        IDirect3DVertexBuffer9* vertex_buffers[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];
         IDirect3DIndexBuffer9* index_buffer;
 
         IDirect3DVertexDeclaration9* vertex_declaration;
 
         struct TextureSamplerStates
         {
-            IDirect3DBaseTexture9* base_textures[ pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS ];
-            states::D3DSamplerStateTypeValues sampler_state_type_values[ pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS ];
+            IDirect3DBaseTexture9* base_textures[pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS];
+            states::D3DSamplerStateTypeValues sampler_state_type_values[pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS];
         };
 
         struct AbstractShaderStates
@@ -81,110 +107,45 @@ private:
 
 
     // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    RenderingContextImpl(RenderingDeviceImpl* rendering_device, unsigned index, wrl::ComPtr<IDirect3DDevice9> d3d_device, wrl::ComPtr<IDirect3DSurface9> d3d_render_target_surface, wrl::ComPtr<IDirect3DSurface9> d3d_depth_stencil_surface);
-
-    /**
-     * Destructor.
-     */
-    virtual ~RenderingContextImpl() = default;
-
-private:
-    /** Default constructor. */
-    RenderingContextImpl();
-    /** Copy constructor. */
-    RenderingContextImpl(const RenderingContextImpl&) = delete;
-    /** Copy assignment operator. */
-    RenderingContextImpl& operator = (const RenderingContextImpl&) = delete;
-
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The Direct3D 9 device interface.
-     */
-    wrl::ComPtr<IDirect3DDevice9> _d3d_device;
-
-private:
-    /**
-     * The Direct3D 9 (standard) render target surface interface.
-     */
-    wrl::ComPtr<IDirect3DSurface9> _d3d_render_target_surface;
-
-    /**
-     * The Direct3D 9 (standard) depth/stencil surface interface.
-     */
-    wrl::ComPtr<IDirect3DSurface9> _d3d_depth_stencil_surface;
-
-private:
-    HardwareStates hardware_states;
-
-    std::unordered_map<shared::meshes::VertexBufferBinding, wrl::ComPtr<IDirect3DVertexDeclaration9>> _d3d_vertex_declarations_by_binding;
-    std::unordered_map<shared::meshes::ComposedVertexLayout, wrl::ComPtr<IDirect3DVertexDeclaration9>> _d3d_vertex_declarations_by_layout;
-
-    cl7::byte_vector _temp_constant_data;
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
-    /**
-     * Returns the Direct3D 9 device interface.
-     */
-    IDirect3DDevice9* get_raw_d3d_device() const { return _d3d_device.Get(); }
-
-
-
-    // #############################################################################
     // RenderingContext Implementations
     // #############################################################################
-private:
+
     /**
      * Performs a forced synchronization with the hardware state.
      */
-    virtual bool _synchronize_hardware_state_impl() override;
+    bool _synchronize_hardware_state_impl() override;
 
     /**
      * Begins a scene.
      */
-    virtual bool _begin_scene_impl() override;
+    bool _begin_scene_impl() override;
 
     /**
      * Ends a scene that was begun by calling `begin_scene`.
      */
-    virtual bool _end_scene_impl() override;
+    bool _end_scene_impl() override;
 
     /**
      * Clears the currently bound render target(s).
      */
-    virtual bool _clear_impl(const ResolvedTargetStates& resolved_target_states, ClearFlags clear_flags, const Color& color, float depth, unsigned stencil) override;
+    bool _clear_impl(const ResolvedTargetStates& resolved_target_states, ClearFlags clear_flags, const Color& color, float depth, unsigned stencil) override;
 
     /**
      * Draws non-indexed, non-instanced primitives.
      */
-    virtual bool _draw_impl(const ResolvedDrawStates& resolved_draw_states, unsigned primitive_count, unsigned start_vertex) override;
+    bool _draw_impl(const ResolvedDrawStates& resolved_draw_states, unsigned primitive_count, unsigned start_vertex) override;
 
     /**
      * Draws indexed, non-instanced primitives.
      */
-    virtual bool _draw_indexed_impl(const ResolvedDrawStates& resolved_draw_states, unsigned primitive_count, unsigned start_index, signed base_vertex) override;
+    bool _draw_indexed_impl(const ResolvedDrawStates& resolved_draw_states, unsigned primitive_count, unsigned start_index, signed base_vertex) override;
 
 
 
     // #############################################################################
     // Helpers
     // #############################################################################
-private:
+
     /**
      * Transfers the current render target states to the device if necessary.
      */
@@ -207,7 +168,6 @@ private:
      */
     bool _flush_texture_sampler_states(const ResolvedTextureSamplerStates& resolved_texture_sampler_states, HardwareStates::TextureSamplerStates& hardware_texture_sampler_states, unsigned max_stage_count, unsigned stage_base);
 
-private:
     /**
      * Tries to find a suitable Direct3D 9 vertex declaration based on the currently
      * set vertex buffer(s).
@@ -221,13 +181,39 @@ private:
      */
     IDirect3DVertexDeclaration9* _find_or_create_d3d_vertex_declaration(const shared::meshes::VertexBufferBinding& vertex_buffer_binding);
 
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    /**
+     * The Direct3D 9 device interface.
+     */
+    wrl::ComPtr<IDirect3DDevice9> _d3d_device;
+
+    /**
+     * The Direct3D 9 (standard) render target surface interface.
+     */
+    wrl::ComPtr<IDirect3DSurface9> _d3d_render_target_surface;
+
+    /**
+     * The Direct3D 9 (standard) depth/stencil surface interface.
+     */
+    wrl::ComPtr<IDirect3DSurface9> _d3d_depth_stencil_surface;
+
+
+    HardwareStates hardware_states;
+
+    std::unordered_map<shared::meshes::VertexBufferBinding, wrl::ComPtr<IDirect3DVertexDeclaration9>> _d3d_vertex_declarations_by_binding;
+    std::unordered_map<shared::meshes::ComposedVertexLayout, wrl::ComPtr<IDirect3DVertexDeclaration9>> _d3d_vertex_declarations_by_layout;
+
+    cl7::byte_vector _temp_constant_data;
+
 }; // class RenderingContextImpl
 
 
 
-} // namespace direct3d9
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d9
 
 #endif // XL7_GRAPHICS_IMPL_D3D9_RENDERINGCONTEXTIMPL_H

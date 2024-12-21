@@ -6,11 +6,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d9 {
-namespace errors {
+namespace xl7::graphics::impl::direct3d9::errors {
 
 
 
@@ -19,10 +15,6 @@ namespace errors {
 
 
 
-} // namespace errors
-} // namespace direct3d9
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d9::errors
 
 #endif // XL7_GRAPHICS_IMPL_D3D9_ERRORS_H

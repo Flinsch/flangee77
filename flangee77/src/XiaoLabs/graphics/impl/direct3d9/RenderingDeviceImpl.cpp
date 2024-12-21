@@ -16,10 +16,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d9 {
+namespace xl7::graphics::impl::direct3d9 {
 
 
 
@@ -27,15 +24,12 @@ namespace direct3d9 {
     // Construction / Destruction
     // #############################################################################
 
-    /**
-     * Default constructor.
-     */
     RenderingDeviceImpl::RenderingDeviceImpl()
-        : RenderingDevice( std::unique_ptr<IResourceFactory>( ResourceFactoryImpl::Attorney::create() ) )
+        : RenderingDevice(std::unique_ptr<IResourceFactory>(ResourceFactoryImpl::Attorney::create()))
     {
-        ::memset( &_d3d_adapter_identifier, 0, sizeof(_d3d_adapter_identifier) );
-        ::memset( &_d3d_present_parameters, 0, sizeof(_d3d_present_parameters) );
-        ::memset( &_d3d_device_caps, 0, sizeof(_d3d_device_caps) );
+        ::memset(&_d3d_adapter_identifier, 0, sizeof(_d3d_adapter_identifier));
+        ::memset(&_d3d_present_parameters, 0, sizeof(_d3d_present_parameters));
+        ::memset(&_d3d_device_caps, 0, sizeof(_d3d_device_caps));
     }
 
 
@@ -50,7 +44,7 @@ namespace direct3d9 {
      */
     bool RenderingDeviceImpl::_init_impl(Capabilities& capabilities)
     {
-        auto const d3d_main = static_cast<GraphicsSystemImpl*>( &GraphicsSystem::instance() )->get_raw_d3d_main();
+        auto* const d3d_main = static_cast<GraphicsSystemImpl*>(&GraphicsSystem::instance())->get_raw_d3d_main(); // NOLINT(*-pro-type-static-cast-downcast)
 
         // Cache the main window's display mode.
         const MainWindow::DisplayMode window_display_mode = MainWindow::instance().get_display_mode();
@@ -58,11 +52,11 @@ namespace direct3d9 {
 
         // Set the format of the back buffer
         // and the depth/stencil surface.
-        const D3DFORMAT back_buffer_format = D3DFMT_X8R8G8B8;
-        const D3DFORMAT depth_stencil_format = D3DFMT_D24S8;
+        constexpr D3DFORMAT back_buffer_format = D3DFMT_X8R8G8B8;
+        constexpr D3DFORMAT depth_stencil_format = D3DFMT_D24S8;
 
         // Fill the presentation parameters structure.
-        ::memset( &_d3d_present_parameters, 0, sizeof(_d3d_present_parameters) );
+        ::memset(&_d3d_present_parameters, 0, sizeof(_d3d_present_parameters));
         _d3d_present_parameters.BackBufferWidth             = get_back_buffer_width();
         _d3d_present_parameters.BackBufferHeight            = get_back_buffer_height();
         _d3d_present_parameters.BackBufferFormat            = back_buffer_format;
@@ -71,7 +65,7 @@ namespace direct3d9 {
         _d3d_present_parameters.MultiSampleQuality          = 0;
         _d3d_present_parameters.SwapEffect                  = D3DSWAPEFFECT_DISCARD;
         _d3d_present_parameters.hDeviceWindow               = MainWindow::instance().get_handle();
-        _d3d_present_parameters.Windowed                    = !fullscreen;
+        _d3d_present_parameters.Windowed                    = fullscreen ? FALSE : TRUE;
         _d3d_present_parameters.EnableAutoDepthStencil      = TRUE;
         _d3d_present_parameters.AutoDepthStencilFormat      = depth_stencil_format;
         _d3d_present_parameters.Flags                       = depth_stencil_format != D3DFMT_D16_LOCKABLE ? D3DPRESENTFLAG_DISCARD_DEPTHSTENCIL : 0;
@@ -86,12 +80,12 @@ namespace direct3d9 {
             MainWindow::instance().get_handle(),
             D3DCREATE_HARDWARE_VERTEXPROCESSING,
             &_d3d_present_parameters,
-            &_d3d_device );
+            &_d3d_device);
 
-        if ( hresult != D3D_OK )
+        if (hresult != D3D_OK)
         {
-            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3D9::CreateDevice") ) );
-            LOG_ERROR( TEXT("The Direct3D 9 device interface could not be created.") );
+            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3D9::CreateDevice")));
+            LOG_ERROR(TEXT("The Direct3D 9 device interface could not be created."));
             return false;
         }
 
@@ -100,29 +94,35 @@ namespace direct3d9 {
         hresult = d3d_main->GetAdapterIdentifier(
             D3DADAPTER_DEFAULT,
             0,
-            &_d3d_adapter_identifier );
-        if ( FAILED(hresult) )
-            LOG_WARNING( errors::d3d9_result( hresult, TEXT("IDirect3D9::GetAdapterIdentifier") ) );
+            &_d3d_adapter_identifier);
+        if (FAILED(hresult))
+            LOG_WARNING(errors::d3d9_result(hresult, TEXT("IDirect3D9::GetAdapterIdentifier")));
 
         // Capture the device capabilities.
-        hresult = _d3d_device->GetDeviceCaps( &_d3d_device_caps );
-        if ( FAILED(hresult) )
-            LOG_WARNING( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::GetDeviceCaps") ) );
+        hresult = _d3d_device->GetDeviceCaps(&_d3d_device_caps);
+        if (FAILED(hresult))
+            LOG_WARNING(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::GetDeviceCaps")));
 
         // Adopt the supported shader versions.
-        capabilities.shaders.vertex_shader_version = { D3DSHADER_VERSION_MAJOR( _d3d_device_caps.VertexShaderVersion ), D3DSHADER_VERSION_MINOR( _d3d_device_caps.VertexShaderVersion ) };
-        capabilities.shaders.pixel_shader_version = { D3DSHADER_VERSION_MAJOR( _d3d_device_caps.PixelShaderVersion ), D3DSHADER_VERSION_MINOR( _d3d_device_caps.PixelShaderVersion ) };
+        capabilities.shaders.vertex_shader_version = {
+            .major=D3DSHADER_VERSION_MAJOR(_d3d_device_caps.VertexShaderVersion),
+            .minor=D3DSHADER_VERSION_MINOR(_d3d_device_caps.VertexShaderVersion),
+        };
+        capabilities.shaders.pixel_shader_version = {
+            .major=D3DSHADER_VERSION_MAJOR(_d3d_device_caps.PixelShaderVersion),
+            .minor=D3DSHADER_VERSION_MINOR(_d3d_device_caps.PixelShaderVersion),
+        };
 
         // Adopt the supported texture capabilities.
         capabilities.textures.max_texture_2d_width = _d3d_device_caps.MaxTextureWidth;
         capabilities.textures.max_texture_2d_height = _d3d_device_caps.MaxTextureHeight;
         capabilities.textures.max_texture_3d_size = _d3d_device_caps.MaxVolumeExtent;
-        capabilities.textures.max_cubemap_size = (std::min)( _d3d_device_caps.MaxTextureWidth, _d3d_device_caps.MaxTextureHeight );
+        capabilities.textures.max_cubemap_size = (std::min)(_d3d_device_caps.MaxTextureWidth, _d3d_device_caps.MaxTextureHeight);
         capabilities.textures.max_texture_array_size = 0; // Not supported at all.
-        capabilities.textures.texture_2d_pow2_only = _d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_POW2; // Ignore D3DPTEXTURECAPS_NONPOW2CONDITIONAL?
-        capabilities.textures.texture_3d_pow2_only = _d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_VOLUMEMAP_POW2;
-        capabilities.textures.cubemap_pow2_only = _d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_CUBEMAP_POW2;
-        capabilities.textures.square_only = _d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_SQUAREONLY;
+        capabilities.textures.texture_2d_pow2_only = (_d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_POW2) != 0; // Ignore D3DPTEXTURECAPS_NONPOW2CONDITIONAL?
+        capabilities.textures.texture_3d_pow2_only = (_d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_VOLUMEMAP_POW2) != 0;
+        capabilities.textures.cubemap_pow2_only = (_d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_CUBEMAP_POW2) != 0;
+        capabilities.textures.square_only = (_d3d_device_caps.TextureCaps & D3DPTEXTURECAPS_SQUAREONLY) != 0;
         capabilities.textures.max_aspect_ratio = _d3d_device_caps.MaxTextureAspectRatio;
 
         // Adopt other capabilities.
@@ -136,40 +136,39 @@ namespace direct3d9 {
 
         // (Try to) determine the available
         // video memory composition.
-        _determine_video_memory( capabilities.memory );
+        _determine_video_memory(capabilities.memory);
 
         // Grab the (standard) render target surface interface ...
-        hresult = _d3d_device->GetRenderTarget( 0, &_d3d_render_target_surface );
-        if ( hresult != D3D_OK )
+        hresult = _d3d_device->GetRenderTarget(0, &_d3d_render_target_surface);
+        if (hresult != D3D_OK)
         {
-            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3D9::GetRenderTarget") ) );
-            LOG_ERROR( TEXT("The Direct3D 9 (standard) render target surface interface could not be queried.") );
+            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3D9::GetRenderTarget")));
+            LOG_ERROR(TEXT("The Direct3D 9 (standard) render target surface interface could not be queried."));
             return false;
         }
 
         // ... and the (standard) depth/stencil surface interface.
-        hresult = _d3d_device->GetDepthStencilSurface( &_d3d_depth_stencil_surface );
-        if ( hresult != D3D_OK )
+        hresult = _d3d_device->GetDepthStencilSurface(&_d3d_depth_stencil_surface);
+        if (hresult != D3D_OK)
         {
-            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3D9::GetDepthStencilSurface") ) );
-            LOG_ERROR( TEXT("The Direct3D 9 (standard) depth/stencil surface interface could not be queried.") );
+            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3D9::GetDepthStencilSurface")));
+            LOG_ERROR(TEXT("The Direct3D 9 (standard) depth/stencil surface interface could not be queried."));
             return false;
         }
 
         // To be on the safe side, set the (standard) viewport.
-        D3DVIEWPORT9 d3d_viewport;
-        ::memset( &d3d_viewport, 0, sizeof(d3d_viewport) );
+        D3DVIEWPORT9 d3d_viewport = {};
         d3d_viewport.X = 0;
         d3d_viewport.Y = 0;
         d3d_viewport.Width = get_back_buffer_width();
         d3d_viewport.Height = get_back_buffer_height();
         d3d_viewport.MinZ = 0.0f;
         d3d_viewport.MaxZ = 1.0f;
-        _d3d_device->SetViewport( &d3d_viewport );
-        if ( hresult != D3D_OK )
+        hresult = _d3d_device->SetViewport(&d3d_viewport);
+        if (hresult != D3D_OK)
         {
-            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3D9::SetViewport") ) );
-            LOG_ERROR( TEXT("The Direct3D 9 (standard) viewport could not be set.") );
+            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3D9::SetViewport")));
+            LOG_ERROR(TEXT("The Direct3D 9 (standard) viewport could not be set."));
             return false;
         }
 
@@ -197,11 +196,11 @@ namespace direct3d9 {
      */
     RenderingContext* RenderingDeviceImpl::_create_rendering_context_impl(unsigned index)
     {
-        assert( index == 0 );
-        if ( index == 0 )
-            return new RenderingContextImpl( this, index, _d3d_device, _d3d_render_target_surface, _d3d_depth_stencil_surface );
+        assert(index == 0);
+        if (index == 0)
+            return new RenderingContextImpl(this, index, _d3d_device, _d3d_render_target_surface, _d3d_depth_stencil_surface);
 
-        LOG_ERROR( TEXT("Direct3D 9 does not support multiple rendering contexts.") );
+        LOG_ERROR(TEXT("Direct3D 9 does not support multiple rendering contexts."));
         return nullptr;
     }
 
@@ -231,17 +230,17 @@ namespace direct3d9 {
      */
     bool RenderingDeviceImpl::_present_impl()
     {
-        HRESULT hresult = _d3d_device->Present( nullptr, nullptr, nullptr, nullptr );
+        HRESULT hresult = _d3d_device->Present(nullptr, nullptr, nullptr, nullptr);
 
-        if ( hresult == D3DERR_DEVICEREMOVED )
+        if (hresult == D3DERR_DEVICEREMOVED)
         {
             _notify_device_lost();
             return false;
         }
 
-        if ( FAILED(hresult) )
+        if (FAILED(hresult))
         {
-            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::Present") ) );
+            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::Present")));
             return false;
         }
 
@@ -254,35 +253,35 @@ namespace direct3d9 {
      */
     bool RenderingDeviceImpl::_check_texture_format_impl(textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder channel_order)
     {
-        D3DFORMAT d3d_adapter_format = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_d3d_present_parameters().BackBufferFormat;
-        D3DFORMAT d3d_texture_format = mappings::_d3d_format_from( pixel_format, channel_order );
+        D3DFORMAT d3d_adapter_format = static_cast<RenderingDeviceImpl*>(GraphicsSystem::instance().get_rendering_device())->get_d3d_present_parameters().BackBufferFormat; // NOLINT(*-pro-type-static-cast-downcast)
+        D3DFORMAT d3d_texture_format = mappings::_d3d_format_from(pixel_format, channel_order);
 
         D3DRESOURCETYPE d3d_rtype;
-        switch ( texture_type )
+        switch (texture_type)
         {
         case textures::Texture::Type::Texture2D:        d3d_rtype = D3DRTYPE_TEXTURE;       break;
         case textures::Texture::Type::Texture3D:        d3d_rtype = D3DRTYPE_VOLUMETEXTURE; break;
         case textures::Texture::Type::Cubemap:          d3d_rtype = D3DRTYPE_CUBETEXTURE;   break;
         default:
-            assert( texture_type == textures::Texture::Type::Texture2DArray );
-            LOG_ERROR( TEXT("Direct3D 9 does not support 2D texture arrays.") );
+            assert(texture_type == textures::Texture::Type::Texture2DArray);
+            LOG_ERROR(TEXT("Direct3D 9 does not support 2D texture arrays."));
             return false;
         }
 
-        HRESULT hresult = static_cast<GraphicsSystemImpl&>( GraphicsSystem::instance() ).get_raw_d3d_main()->CheckDeviceFormat(
+        HRESULT hresult = static_cast<GraphicsSystemImpl&>(GraphicsSystem::instance()).get_raw_d3d_main()->CheckDeviceFormat( // NOLINT(*-pro-type-static-cast-downcast)
             D3DADAPTER_DEFAULT,
             D3DDEVTYPE_HAL,
             d3d_adapter_format,
             0,
             d3d_rtype,
-            d3d_texture_format );
+            d3d_texture_format);
 
-        if ( hresult == D3DERR_NOTAVAILABLE )
+        if (hresult == D3DERR_NOTAVAILABLE)
             return false;
 
-        if ( FAILED(hresult) )
+        if (FAILED(hresult))
         {
-            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3D9::CheckDeviceFormat") ) );
+            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3D9::CheckDeviceFormat")));
             return false;
         }
 
@@ -300,58 +299,57 @@ namespace direct3d9 {
      */
     bool RenderingDeviceImpl::_determine_video_memory(Capabilities::Memory& memory_capabilities)
     {
-        ::memset( &memory_capabilities, 0, sizeof(memory_capabilities) );
+        ::memset(&memory_capabilities, 0, sizeof(memory_capabilities));
 
-        const HMODULE hDXGI = ::LoadLibrary( TEXT("dxgi.dll") );
-        if ( !hDXGI )
+        const HMODULE hDXGI = ::LoadLibrary(TEXT("dxgi.dll"));
+        if (!hDXGI)
         {
-            LOG_WARNING( cl7::errors::system_result( ::GetLastError(), TEXT("::LoadLibrary") ) );
+            LOG_WARNING(cl7::errors::system_result(::GetLastError(), TEXT("::LoadLibrary")));
             return false;
         }
 
-        typedef HRESULT (WINAPI* CREATEDXGIFACTORYPROC)(REFIID, void**);
-        CREATEDXGIFACTORYPROC CreateDXGIFactoryProc = (CREATEDXGIFACTORYPROC)::GetProcAddress( hDXGI, "CreateDXGIFactory1" );
-        if ( !CreateDXGIFactoryProc )
+        using CREATEDXGIFACTORYPROC = std::add_pointer_t<HRESULT (REFIID, void**)>;
+        auto CreateDXGIFactoryProc = reinterpret_cast<CREATEDXGIFACTORYPROC>(::GetProcAddress(hDXGI, "CreateDXGIFactory1"));
+        if (!CreateDXGIFactoryProc)
         {
-            LOG_WARNING( cl7::errors::system_result( ::GetLastError(), TEXT("::GetProcAddress") ) );
-            ::FreeLibrary( hDXGI );
+            LOG_WARNING(cl7::errors::system_result(::GetLastError(), TEXT("::GetProcAddress")));
+            ::FreeLibrary(hDXGI);
             return false;
         }
 
         IDXGIFactory* factory = nullptr;
-        HRESULT hresult = CreateDXGIFactoryProc( __uuidof( IDXGIFactory ), (void**)&factory );
-        if ( FAILED(hresult) )
+        HRESULT hresult = CreateDXGIFactoryProc(__uuidof(IDXGIFactory), reinterpret_cast<void**>(&factory));
+        if (FAILED(hresult))
         {
-            LOG_WARNING( cl7::errors::system_result( hresult, TEXT("::CreateDXGIFactory1") ) );
-            ::FreeLibrary( hDXGI );
+            LOG_WARNING(cl7::errors::system_result(hresult, TEXT("::CreateDXGIFactory1")));
+            ::FreeLibrary(hDXGI);
             return false;
         }
 
-        assert( factory );
+        assert(factory);
 
-        const cl7::string adapter_name = cl7::strings::from_ascii( _d3d_adapter_identifier.DeviceName );
-        assert( adapter_name.length() > 0 );
+        const cl7::string adapter_name = cl7::strings::from_ascii(_d3d_adapter_identifier.DeviceName);
+        assert(!adapter_name.empty());
 
-        for ( unsigned i = 0; ; ++i )
+        for (unsigned i = 0; ; ++i)
         {
             IDXGIAdapter* adapter = nullptr;
-            hresult = factory->EnumAdapters( i, &adapter );
-            if ( FAILED(hresult) )
+            hresult = factory->EnumAdapters(i, &adapter);
+            if (FAILED(hresult))
                 break;
 
-            assert( adapter );
+            assert(adapter);
 
-            DXGI_ADAPTER_DESC adapter_desc;
-            memset( &adapter_desc, 0, sizeof(DXGI_ADAPTER_DESC) );
-            hresult = adapter->GetDesc( &adapter_desc );
+            DXGI_ADAPTER_DESC adapter_desc = {};
+            hresult = adapter->GetDesc(&adapter_desc);
             adapter->Release();
-            if ( FAILED(hresult) )
+            if (FAILED(hresult))
             {
-                LOG_WARNING( cl7::errors::system_result( hresult, TEXT("IDXGIAdapter::GetDesc") ) );
+                LOG_WARNING(cl7::errors::system_result(hresult, TEXT("IDXGIAdapter::GetDesc")));
                 continue;
             }
 
-            if ( memory_capabilities.dedicated_video_memory && cl7::string_view( adapter_desc.Description ) != adapter_name )
+            if (memory_capabilities.dedicated_video_memory && cl7::string_view(adapter_desc.Description) != adapter_name)
                 continue;
 
             memory_capabilities.dedicated_video_memory = adapter_desc.DedicatedVideoMemory;
@@ -361,14 +359,11 @@ namespace direct3d9 {
 
         factory->Release();
 
-        ::FreeLibrary( hDXGI );
+        ::FreeLibrary(hDXGI);
 
         return true;
     }
 
 
 
-} // namespace direct3d9
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d9

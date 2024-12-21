@@ -13,11 +13,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d9 {
-namespace mappings {
+namespace xl7::graphics::impl::direct3d9::mappings {
 
 
 
@@ -34,10 +30,6 @@ namespace mappings {
 
 
 
-} // namespace mappings
-} // namespace direct3d9
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d9::mappings
 
 #endif // XL7_GRAPHICS_IMPL_D3D9_MAPPINGS_H

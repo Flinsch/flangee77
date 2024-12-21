@@ -7,10 +7,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d11 {
+namespace xl7::graphics::impl::direct3d11 {
 
 
 
@@ -19,87 +16,57 @@ class GraphicsSystemImpl final
 {
     friend GraphicsSystem* GraphicsSystem::factory_func();
 
-
-
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Default constructor.
-     */
-    GraphicsSystemImpl() = default;
-
-    /**
-     * Destructor.
-     */
-    virtual ~GraphicsSystemImpl() override = default;
-
-private:
-    /** Copy constructor. */
-    GraphicsSystemImpl(const GraphicsSystemImpl&) = delete;
-    /** Copy assignment operator. */
-    GraphicsSystemImpl& operator = (const GraphicsSystemImpl&) = delete;
-
-
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The DXGI factory interface.
-     */
-    wrl::ComPtr<IDXGIFactoryN> _dxgi_factory;
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
 public:
+    GraphicsSystemImpl(const GraphicsSystemImpl&) = delete;
+    GraphicsSystemImpl& operator = (const GraphicsSystemImpl&) = delete;
+    GraphicsSystemImpl(GraphicsSystemImpl&&) = delete;
+    GraphicsSystemImpl& operator = (GraphicsSystemImpl&&) = delete;
+
+
+
     /**
-    * Returns the DXGI factory interface.
-    */
+     * Returns the DXGI factory interface.
+     */
     IDXGIFactoryN* get_raw_dxgi_factory() const { return _dxgi_factory.Get(); }
 
 
 
-    // #############################################################################
-    // Methods
-    // #############################################################################
-public:
+protected:
+    GraphicsSystemImpl() = default;
+    ~GraphicsSystemImpl() override = default;
 
 
+
+private:
 
     // #############################################################################
     // GraphicsSystem Implementations
     // #############################################################################
-private:
+
     /**
      * Performs preliminary initialization steps so that the rendering device can be
-     * created afterwards.
+     * created afterward.
      */
-    virtual bool _init_before_rendering_device_impl() override;
+    bool _init_before_rendering_device_impl() override;
 
     /**
      * Handles any remaining cleanup actions after the rendering device has been
      * destroyed.
      */
-    virtual bool _shutdown_after_rendering_device_impl() override;
+    bool _shutdown_after_rendering_device_impl() override;
 
     /**
      * Creates the rendering device (and all of its manager objects), but without
-     * fully initializing it so that it can be initialized afterwards.
+     * fully initializing it so that it can be initialized afterward.
      */
-    virtual RenderingDevice* _rendering_device_factory_impl() override;
+    RenderingDevice* _rendering_device_factory_impl() override;
 
 
 
     // #############################################################################
     // Helpers
     // #############################################################################
-private:
+
     /**
      * Creates the DXGI factory interface.
      */
@@ -110,13 +77,21 @@ private:
      */
     bool _release_dxgi_factory();
 
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    /**
+     * The DXGI factory interface.
+     */
+    wrl::ComPtr<IDXGIFactoryN> _dxgi_factory;
+
 }; // class GraphicsSystemImpl
 
 
 
-} // namespace direct3d11
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d11
 
 #endif // XL7_GRAPHICS_IMPL_D3D11_GRAPHICSSYSTEMIMPL_H

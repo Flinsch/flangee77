@@ -6,11 +6,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d9 {
-namespace errors {
+namespace xl7::graphics::impl::direct3d9::errors {
 
 
 
@@ -18,7 +14,7 @@ namespace errors {
     {
         const char* message = nullptr;
 
-        switch ( error_code )
+        switch (error_code)
         {
         case D3D_OK:
             message = "D3D_OK: No error occurred.";
@@ -132,8 +128,8 @@ namespace errors {
 #endif
         } // switch error code
 
-        if ( !message )
-            return cl7::errors::system_result( static_cast<unsigned long>( error_code ) );
+        if (!message)
+            return cl7::errors::system_result(static_cast<unsigned long>(error_code));
 
         cl7::osstream oss;
         oss << std::hex << TEXT("0x") << error_code;
@@ -145,13 +141,9 @@ namespace errors {
 
     cl7::string d3d9_result(long error_code, cl7::string_view context)
     {
-        return cl7::errors::with_context( d3d9_result( error_code ), context );
+        return cl7::errors::with_context(d3d9_result(error_code), context);
     }
 
 
 
-} // namespace errors
-} // namespace direct3d9
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d9::errors

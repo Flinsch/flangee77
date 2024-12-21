@@ -17,20 +17,20 @@ namespace wrl = Microsoft::WRL;
 // interface versions are primarily determined by the operating system, not any
 // hardware capabilities. However, hardware capabilities may affect the performance
 // or level of support for certain features. Just for info at this point.
-static_assert( _WIN32_WINNT >= _WIN32_WINNT_WIN7 );
+static_assert(_WIN32_WINNT >= _WIN32_WINNT_WIN7);
 
-typedef ID3D11Device1           ID3D11DeviceN;
-typedef ID3D11DeviceContext1    ID3D11DeviceContextN;
+using ID3D11DeviceN             = ID3D11Device1;
+using ID3D11DeviceContextN      = ID3D11DeviceContext1;
 
-typedef IDXGIFactory2           IDXGIFactoryN;
-//typedef IDXGIAdapter2           IDXGIAdapterN;
-typedef IDXGIAdapter            IDXGIAdapterN;
-typedef IDXGIDevice2            IDXGIDeviceN;
-//typedef IDXGISwapChain1         IDXGISwapChainN;
-typedef IDXGISwapChain          IDXGISwapChainN;
+using IDXGIFactoryN             = IDXGIFactory2;
+//using IDXGIAdapterN             = IDXGIAdapter2;
+using IDXGIAdapterN             = IDXGIAdapter;
+using IDXGIDeviceN              = IDXGIDevice2;
+//using IDXGISwapChainN           = IDXGISwapChain1;
+using IDXGISwapChainN           = IDXGISwapChain;
 
-//typedef DXGI_SWAP_CHAIN_DESC1   DXGI_SWAP_CHAIN_DESCn;
-typedef DXGI_SWAP_CHAIN_DESC    DXGI_SWAP_CHAIN_DESCn;
+//using DXGI_SWAP_CHAIN_DESCn     = DXGI_SWAP_CHAIN_DESC1;
+using DXGI_SWAP_CHAIN_DESCn     = DXGI_SWAP_CHAIN_DESC;
 
 
 
