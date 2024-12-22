@@ -9,11 +9,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d9 {
-namespace textures {
+namespace xl7::graphics::impl::direct3d9::textures {
 
 
 
@@ -21,12 +17,9 @@ namespace textures {
     // Construction / Destruction
     // #############################################################################
 
-    /**
-     * Explicit constructor.
-     */
     Texture2DImpl::Texture2DImpl(const CreateParams<Desc>& params)
-        : Texture2D( params )
-        , _d3d_format( mappings::_d3d_format_from( params.desc.pixel_format, get_channel_order() ) )
+        : Texture2D(params)
+        , _d3d_format(mappings::_d3d_format_from(params.desc.pixel_format, get_channel_order()))
     {
     }
 
@@ -62,35 +55,35 @@ namespace textures {
      */
     bool Texture2DImpl::_acquire_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider)
     {
-        auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
-        assert( d3d_device );
+        auto* d3d_device = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_d3d_device();
+        assert(d3d_device);
 
-        assert( get_data().empty() || get_data().size() == static_cast<size_t>( get_data_size() ) );
+        assert(get_data().empty() || get_data().size() == static_cast<size_t>(get_data_size()));
 
         HRESULT hresult = d3d_device->CreateTexture(
             get_desc().width,
             get_desc().height,
             get_desc().mip_levels,
-            mappings::_d3d_usage_from( get_desc().usage, get_desc().mip_levels ),
+            mappings::_d3d_usage_from(get_desc().usage, get_desc().mip_levels),
             _d3d_format,
-            mappings::_d3d_pool_from( get_desc().usage ),
+            mappings::_d3d_pool_from(get_desc().usage),
             &_d3d_texture,
-            NULL );
+            nullptr);
 
-        if ( FAILED(hresult) )
+        if (FAILED(hresult))
         {
-            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::CreateTexture") ) );
+            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::CreateTexture")));
             return false;
         }
 
-        auto pair = mappings::_map_d3d_format( _d3d_format, get_desc().preferred_channel_order );
-        assert( pair.first == get_desc().pixel_format );
-        assert( pair.second == get_channel_order() );
+        auto pair = mappings::_map_d3d_format(_d3d_format, get_desc().preferred_channel_order);
+        assert(pair.first == get_desc().pixel_format);
+        assert(pair.second == get_channel_order());
 
-        if ( get_data().empty() )
+        if (get_data().empty())
             return true;
 
-        return _update_impl( image_data_provider, true, true );
+        return _update_impl(image_data_provider, true, true);
     }
 
     /**
@@ -109,61 +102,61 @@ namespace textures {
             const std::byte* data;
             RECT rect;
         };
-        UpdateDesc update_desc[ MAX_LEVELS ];
-        update_desc[ 0 ].data = get_data().data();
-        update_desc[ 0 ].rect.left = 0;
-        update_desc[ 0 ].rect.top = 0;
-        update_desc[ 0 ].rect.right = static_cast<LONG>( get_desc().width );
-        update_desc[ 0 ].rect.bottom = static_cast<LONG>( get_desc().height );
+        UpdateDesc update_desc[MAX_LEVELS];
+        update_desc[0].data = get_data().data();
+        update_desc[0].rect.left = 0;
+        update_desc[0].rect.top = 0;
+        update_desc[0].rect.right = static_cast<LONG>(get_desc().width);
+        update_desc[0].rect.bottom = static_cast<LONG>(get_desc().height);
         unsigned mip_level = 1;
 
-        std::vector<xl7::graphics::images::Image> mipmaps;
-        if ( false && get_desc().mip_levels != 1 )
+        /*std::vector<xl7::graphics::images::Image> mipmaps;
+        if (get_desc().mip_levels != 1)
         {
             mipmaps = create_mipmaps();
-            for ( const auto& mipmap : mipmaps )
+            for (const auto& mipmap : mipmaps)
             {
-                if ( get_desc().mip_levels != 0 && mip_level >= get_desc().mip_levels )
+                if (get_desc().mip_levels != 0 && mip_level >= get_desc().mip_levels)
                     break;
-                assert( mip_level < MAX_LEVELS );
-                update_desc[ mip_level ].data = mipmap.get_data().data();
-                update_desc[ mip_level ].rect.left = 0;
-                update_desc[ mip_level ].rect.top = 0;
-                update_desc[ mip_level ].rect.right = static_cast<LONG>( mipmap.get_width() );
-                update_desc[ mip_level ].rect.bottom = static_cast<LONG>( mipmap.get_height() );
+                assert(mip_level < MAX_LEVELS);
+                update_desc[mip_level].data = mipmap.get_data().data();
+                update_desc[mip_level].rect.left = 0;
+                update_desc[mip_level].rect.top = 0;
+                update_desc[mip_level].rect.right = static_cast<LONG>(mipmap.get_width());
+                update_desc[mip_level].rect.bottom = static_cast<LONG>(mipmap.get_height());
                 ++mip_level;
             } // for each mip level
-        } // generate mipmaps?
+        } // generate mipmaps?*/
 
-        for ( unsigned i = 0; i < mip_level; ++i )
+        for (unsigned i = 0; i < mip_level; ++i)
         {
             D3DLOCKED_RECT d3d_locked_rect;
             HRESULT hresult = _d3d_texture->LockRect(
                 i,
                 &d3d_locked_rect,
-                &update_desc[ i ].rect,
-                i > 0 ? D3DLOCK_DISCARD : flags );
+                &update_desc[i].rect,
+                i > 0 ? D3DLOCK_DISCARD : flags);
 
-            if ( FAILED(hresult) )
+            if (FAILED(hresult))
             {
-                LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DTexture::LockRect") ) );
+                LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DTexture::LockRect")));
                 return false;
             }
 
-            std::byte* dst = static_cast<std::byte*>( d3d_locked_rect.pBits );
-            const std::byte* src = update_desc[ i ].data;
-            unsigned width = static_cast<unsigned>( update_desc[ i ].rect.right - update_desc[ i ].rect.left );
-            unsigned height = static_cast<unsigned>( update_desc[ i ].rect.bottom - update_desc[ i ].rect.top );
+            auto* dst = static_cast<std::byte*>(d3d_locked_rect.pBits);
+            const std::byte* src = update_desc[i].data;
+            auto width = static_cast<unsigned>(update_desc[i].rect.right - update_desc[i].rect.left);
+            auto height = static_cast<unsigned>(update_desc[i].rect.bottom - update_desc[i].rect.top);
             unsigned pitch = width * get_stride();
-            for ( unsigned y = 0; y < height; ++y )
+            for (unsigned y = 0; y < height; ++y)
             {
-                ::memcpy( dst, src, pitch );
+                ::memcpy(dst, src, pitch);
                 dst += d3d_locked_rect.Pitch;
                 src += pitch;
             }
 
-            hresult = _d3d_texture->UnlockRect( i );
-            assert( SUCCEEDED(hresult) );
+            hresult = _d3d_texture->UnlockRect(i);
+            assert(SUCCEEDED(hresult));
         }
 
         return true;
@@ -171,8 +164,4 @@ namespace textures {
 
 
 
-} // namespace textures
-} // namespace direct3d9
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d9::textures

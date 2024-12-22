@@ -8,23 +8,15 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d9 {
-namespace states {
+namespace xl7::graphics::impl::direct3d9::states {
 
 
 
 static constexpr size_t D3D_SAMPLER_STATE_TYPE_COUNT = 13;
-typedef std::array<std::pair<D3DSAMPLERSTATETYPE, DWORD>, D3D_SAMPLER_STATE_TYPE_COUNT> D3DSamplerStateTypeValues;
+using D3DSamplerStateTypeValues = std::array<std::pair<D3DSAMPLERSTATETYPE, DWORD>, D3D_SAMPLER_STATE_TYPE_COUNT>;
 
 
 
-} // namespace states
-} // namespace direct3d9
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d9::states
 
 #endif // XL7_GRAPHICS_IMPL_D3D9_STATES_D3DSAMPLERSTATETYPEVALUES_H

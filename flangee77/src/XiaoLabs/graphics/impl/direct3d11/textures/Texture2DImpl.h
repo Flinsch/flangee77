@@ -7,10 +7,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d11 {
+namespace xl7::graphics::impl::direct3d11 {
     class ResourceFactoryImpl;
 namespace textures {
 
@@ -23,59 +20,21 @@ class Texture2DImpl final
 public:
     class Attorney
     {
-        static Texture2DImpl* create(const CreateParams<Desc>& params) { return new Texture2DImpl( params ); }
+        static Texture2DImpl* create(const CreateParams<Desc>& params) { return new Texture2DImpl(params); }
         friend class xl7::graphics::impl::direct3d11::ResourceFactoryImpl;
     };
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    Texture2DImpl(const CreateParams<Desc>& params);
-
-    /**
-     * Destructor.
-     */
-    virtual ~Texture2DImpl() = default;
-
-private:
-    /** Default constructor. */
     Texture2DImpl() = delete;
-    /** Copy constructor. */
+
     Texture2DImpl(const Texture2DImpl&) = delete;
-    /** Copy assignment operator. */
     Texture2DImpl& operator = (const Texture2DImpl&) = delete;
+    Texture2DImpl(Texture2DImpl&&) = delete;
+    Texture2DImpl& operator = (Texture2DImpl&&) = delete;
 
 
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    const DXGI_FORMAT _dxgi_format;
-
-private:
-    /**
-     * The Direct3D 11 texture interface.
-     */
-    wrl::ComPtr<ID3D11Texture2D> _d3d_texture;
-
-    /**
-     * The Direct3D 11 shader resource view interface.
-     */
-    wrl::ComPtr<ID3D11ShaderResourceView> _d3d_shader_resource_view;
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
     /**
      * Returns the Direct3D 11 texture interface.
      */
@@ -88,36 +47,48 @@ public:
 
 
 
+protected:
+
+    // #############################################################################
+    // Construction / Destruction
+    // #############################################################################
+
+    Texture2DImpl(const CreateParams<Desc>& params);
+    ~Texture2DImpl() override = default;
+
+
+
+private:
+
     // #############################################################################
     // Resource Implementations
     // #############################################################################
-private:
+
     /**
      * Returns the "raw" resource interface/accessor, if applicable, otherwise NULL.
      */
-    virtual void* _get_raw_resource_impl() const override { return _d3d_shader_resource_view.Get(); }
+    void* _get_raw_resource_impl() const override { return _d3d_shader_resource_view.Get(); }
 
-private:
     /**
      * Disposes/"unacquires" the resource.
      * The resource may be in an incompletely acquired state when this function is
      * called. Any cleanup work that is necessary should still be carried out.
      */
-    virtual bool _dispose_impl() override;
+    bool _dispose_impl() override;
 
 
 
     // #############################################################################
     // Texture2D Implementations
     // #############################################################################
-private:
+
     /**
      * Requests/acquires the texture resource.
      * The given data provider can possibly be ignored because the local data buffer
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider) override;
+    bool _acquire_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider) override;
 
     /**
      * Updates the contents of this texture (unless it is immutable).
@@ -125,16 +96,31 @@ private:
      * has already been updated based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    virtual bool _update_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider, bool discard, bool no_overwrite) override;
+    bool _update_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider, bool discard, bool no_overwrite) override;
+
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    const DXGI_FORMAT _dxgi_format;
+
+    /**
+     * The Direct3D 11 texture interface.
+     */
+    wrl::ComPtr<ID3D11Texture2D> _d3d_texture;
+
+    /**
+     * The Direct3D 11 shader resource view interface.
+     */
+    wrl::ComPtr<ID3D11ShaderResourceView> _d3d_shader_resource_view;
 
 }; // class Texture2DImpl
 
 
 
 } // namespace textures
-} // namespace direct3d11
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d11
 
 #endif // XL7_GRAPHICS_IMPL_D3D11_TEXTURES_TEXTURE2DIMPL_H

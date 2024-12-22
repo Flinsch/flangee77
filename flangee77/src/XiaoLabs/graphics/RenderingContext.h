@@ -53,6 +53,16 @@ public:
     RenderingDevice* get_rendering_device() const { return _rendering_device; }
 
     /**
+     * Returns the owning rendering device implementation.
+     */
+    template <class TRenderingDeviceImpl>
+    TRenderingDeviceImpl* get_rendering_device_impl() const
+    {
+        assert(static_cast<TRenderingDeviceImpl*>(_rendering_device) == dynamic_cast<TRenderingDeviceImpl*>(_rendering_device));
+        return static_cast<TRenderingDeviceImpl*>(_rendering_device);
+    }
+
+    /**
      * Returns the 0-based index of the context (0: primary context).
      */
     unsigned get_index() const { return _index; }

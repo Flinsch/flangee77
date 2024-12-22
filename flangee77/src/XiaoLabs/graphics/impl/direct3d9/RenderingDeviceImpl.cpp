@@ -253,7 +253,7 @@ namespace xl7::graphics::impl::direct3d9 {
      */
     bool RenderingDeviceImpl::_check_texture_format_impl(textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder channel_order)
     {
-        D3DFORMAT d3d_adapter_format = static_cast<RenderingDeviceImpl*>(GraphicsSystem::instance().get_rendering_device())->get_d3d_present_parameters().BackBufferFormat; // NOLINT(*-pro-type-static-cast-downcast)
+        D3DFORMAT d3d_adapter_format = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_d3d_present_parameters().BackBufferFormat;
         D3DFORMAT d3d_texture_format = mappings::_d3d_format_from(pixel_format, channel_order);
 
         D3DRESOURCETYPE d3d_rtype;

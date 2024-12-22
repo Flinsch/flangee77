@@ -5,39 +5,27 @@
 #include "../../../shaders/ShaderCode.h"
 #include "../../../shaders/ReflectionResult.h"
 
-#include <vector>
 
 
-
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d9 {
-namespace shaders {
+namespace xl7::graphics::impl::direct3d9::shaders {
 
 
 
 class D3DShaderReflection
 {
 
-    // #############################################################################
-    // Methods
-    // #############################################################################
 public:
+
     /**
      * Performs a "reflection" on the (compiled) shader bytecode to determine
      * parameter declarations etc.
      */
-    bool reflect(const xl7::graphics::shaders::ShaderCode& bytecode, xl7::graphics::shaders::ReflectionResult& reflection_result_out);
+    static bool reflect(const xl7::graphics::shaders::ShaderCode& bytecode, xl7::graphics::shaders::ReflectionResult& reflection_result_out);
 
 }; // class D3DShaderReflection
 
 
 
-} // namespace shaders
-} // namespace direct3d9
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d9::shaders
 
 #endif // XL7_GRAPHICS_IMPL_D3D9_SHADERS_D3DSHADERREFLECTION_H

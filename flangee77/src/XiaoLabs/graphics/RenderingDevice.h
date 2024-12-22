@@ -142,6 +142,28 @@ public:
     RenderingContext* get_rendering_context(unsigned index = 0);
 
     /**
+     * Returns the primary rendering context implementation.
+     */
+    template <class TRenderingContextImpl>
+    TRenderingContextImpl* get_primary_context_impl() const
+    {
+        auto* rendering_context = get_primary_context();
+        assert(static_cast<TRenderingContextImpl*>(rendering_context) == dynamic_cast<TRenderingContextImpl*>(rendering_context));
+        return static_cast<TRenderingContextImpl*>(rendering_context);
+    }
+
+    /**
+     * Returns the specified rendering context implementation (0: primary context).
+     */
+    template <class TRenderingContextImpl>
+    TRenderingContextImpl* get_rendering_context_impl(unsigned index = 0)
+    {
+        auto* rendering_context = get_rendering_context(index);
+        assert(static_cast<TRenderingContextImpl*>(rendering_context) == dynamic_cast<TRenderingContextImpl*>(rendering_context));
+        return static_cast<TRenderingContextImpl*>(rendering_context);
+    }
+
+    /**
      * Returns the surface manager.
      */
     surfaces::SurfaceManager* get_surface_manager() const { return _surface_manager.get(); }

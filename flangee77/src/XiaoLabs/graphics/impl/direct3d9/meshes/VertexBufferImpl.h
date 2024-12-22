@@ -7,10 +7,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d9 {
+namespace xl7::graphics::impl::direct3d9 {
     class ResourceFactoryImpl;
 namespace meshes {
 
@@ -23,54 +20,21 @@ class VertexBufferImpl final
 public:
     class Attorney
     {
-        static VertexBufferImpl* create(const CreateParams<Desc>& params) { return new VertexBufferImpl( params ); }
+        static VertexBufferImpl* create(const CreateParams<Desc>& params) { return new VertexBufferImpl(params); }
         friend class xl7::graphics::impl::direct3d9::ResourceFactoryImpl;
     };
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-protected:
-    /**
-     * Explicit constructor.
-     */
-    VertexBufferImpl(const CreateParams<Desc>& params);
-
-    /**
-     * Destructor.
-     */
-    virtual ~VertexBufferImpl() = default;
-
-private:
-    /** Default constructor. */
     VertexBufferImpl() = delete;
-    /** Copy constructor. */
+
     VertexBufferImpl(const VertexBufferImpl&) = delete;
-    /** Copy assignment operator. */
     VertexBufferImpl& operator = (const VertexBufferImpl&) = delete;
+    VertexBufferImpl(VertexBufferImpl&&) = delete;
+    VertexBufferImpl& operator = (VertexBufferImpl&&) = delete;
 
 
 
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    const DWORD _d3d_fvf;
-
-private:
-    /**
-     * The Direct3D 9 vertex buffer interface.
-     */
-    wrl::ComPtr<IDirect3DVertexBuffer9> _d3d_vertex_buffer;
-
-
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
-public:
     /**
      * Returns the Direct3D 9 vertex buffer interface.
      */
@@ -78,53 +42,75 @@ public:
 
 
 
+protected:
+
+    // #############################################################################
+    // Construction / Destruction
+    // #############################################################################
+
+    VertexBufferImpl(const CreateParams<Desc>& params);
+    ~VertexBufferImpl() override = default;
+
+
+
+private:
+
     // #############################################################################
     // Resource Implementations
     // #############################################################################
-private:
+
     /**
      * Returns the "raw" resource interface/accessor, if applicable, otherwise NULL.
      */
-    virtual void* _get_raw_resource_impl() const override { return _d3d_vertex_buffer.Get(); }
+    void* _get_raw_resource_impl() const override { return _d3d_vertex_buffer.Get(); }
 
-private:
     /**
      * Requests/acquires the resource, bringing it into a usable state.
      * The given data provider can possibly be ignored because the local data buffer
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_impl(const resources::DataProvider& data_provider) override;
+    bool _acquire_impl(const resources::DataProvider& data_provider) override;
 
     /**
      * Disposes/"unacquires" the resource.
      * The resource may be in an incompletely acquired state when this function is
      * called. Any cleanup work that is necessary should still be carried out.
      */
-    virtual bool _dispose_impl() override;
+    bool _dispose_impl() override;
 
 
 
     // #############################################################################
     // VertexBuffer Implementations
     // #############################################################################
-private:
+
     /**
      * Updates the contents of this vertex buffer (unless it is immutable).
      * The given data provider can possibly be ignored because the local data buffer
      * has already been updated based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    virtual bool _update_impl(const resources::DataProvider& data_provider, bool discard, bool no_overwrite) override;
+    bool _update_impl(const resources::DataProvider& data_provider, bool discard, bool no_overwrite) override;
+
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    const DWORD _d3d_fvf;
+
+    /**
+     * The Direct3D 9 vertex buffer interface.
+     */
+    wrl::ComPtr<IDirect3DVertexBuffer9> _d3d_vertex_buffer;
 
 }; // class VertexBufferImpl
 
 
 
 } // namespace meshes
-} // namespace direct3d9
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d9
 
 #endif // XL7_GRAPHICS_IMPL_D3D9_MESHES_VERTEXBUFFERIMPL_H

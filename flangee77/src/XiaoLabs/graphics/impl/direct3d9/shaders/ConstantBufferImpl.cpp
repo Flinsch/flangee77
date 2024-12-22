@@ -2,11 +2,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d9 {
-namespace shaders {
+namespace xl7::graphics::impl::direct3d9::shaders {
 
 
 
@@ -14,11 +10,8 @@ namespace shaders {
     // Construction / Destruction
     // #############################################################################
 
-    /**
-     * Explicit constructor.
-     */
     ConstantBufferImpl::ConstantBufferImpl(const CreateParams<Desc>& params)
-        : ConstantBuffer( params )
+        : ConstantBuffer(params)
     {
     }
 
@@ -68,8 +61,4 @@ namespace shaders {
 
 
 
-} // namespace shaders
-} // namespace direct3d9
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d9::shaders

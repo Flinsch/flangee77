@@ -360,8 +360,7 @@ namespace xl7::graphics::impl::direct3d11 {
             hardware_states.viewport = d3d_viewport;
         }
 
-
-        ID3D11InputLayout* d3d_input_layout = static_cast<RenderingDeviceImpl*>(get_rendering_device())->_find_d3d_input_layout(vertex_buffer_binding); // NOLINT(*-pro-type-static-cast-downcast)
+        ID3D11InputLayout* d3d_input_layout = get_rendering_device_impl<RenderingDeviceImpl>()->_find_d3d_input_layout(vertex_buffer_binding);
         if (!d3d_input_layout)
         {
             if (!vertex_shader || vertex_shader->get_bytecode().get_code_data().empty())
@@ -371,7 +370,7 @@ namespace xl7::graphics::impl::direct3d11 {
             }
 
             const cl7::byte_vector& code_data = vertex_shader->get_bytecode().get_code_data();
-            d3d_input_layout = static_cast<RenderingDeviceImpl*>(get_rendering_device())->_find_or_create_d3d_input_layout(vertex_buffer_binding, code_data.data(), code_data.size()); // NOLINT(*-pro-type-static-cast-downcast)
+            d3d_input_layout = get_rendering_device_impl<RenderingDeviceImpl>()->_find_or_create_d3d_input_layout(vertex_buffer_binding, code_data.data(), code_data.size());
         }
 
         if (d3d_input_layout != hardware_states.input_layout)
@@ -438,7 +437,7 @@ namespace xl7::graphics::impl::direct3d11 {
         if (!resolved_shader_states.abstract_shader)
             return true;
 
-        auto constant_buffer_wrappers = static_cast<RenderingDeviceImpl*>(get_rendering_device())->_find_or_create_d3d_constant_buffers(resolved_shader_states.abstract_shader->get_id()); // NOLINT(*-pro-type-static-cast-downcast)
+        auto constant_buffer_wrappers = get_rendering_device_impl<RenderingDeviceImpl>()->_find_or_create_d3d_constant_buffers(resolved_shader_states.abstract_shader->get_id());
 
         for (unsigned mapping_index = 0; mapping_index < resolved_shader_states.constant_buffer_count; ++mapping_index)
         {

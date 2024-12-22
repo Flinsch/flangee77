@@ -12,94 +12,37 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d11 {
-namespace shaders {
+namespace xl7::graphics::impl::direct3d11::shaders {
 
 
 
 class D3DConstantBufferWrapper
 {
 
+public:
+
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
-public:
-    /**
-     * Explicit constructor.
-     */
-    D3DConstantBufferWrapper(const xl7::graphics::shaders::ConstantBufferLayout& layout);
 
-    /**
-     * Destructor.
-     */
-    ~D3DConstantBufferWrapper();
-
-    /** Move constructor. */
-    D3DConstantBufferWrapper(D3DConstantBufferWrapper&&) = default;
-
-    /** Move  assignment operator. */
-    D3DConstantBufferWrapper& operator = (D3DConstantBufferWrapper&&) = default;
-
-private:
-    /** Default constructor. */
     D3DConstantBufferWrapper() = delete;
-    /** Copy constructor. */
+
+    D3DConstantBufferWrapper(xl7::graphics::shaders::ConstantBufferLayout layout);
+
     D3DConstantBufferWrapper(const D3DConstantBufferWrapper&) = delete;
-    /** Copy assignment operator. */
     D3DConstantBufferWrapper& operator = (const D3DConstantBufferWrapper&) = delete;
 
+    D3DConstantBufferWrapper(D3DConstantBufferWrapper&&) = default;
+    D3DConstantBufferWrapper& operator = (D3DConstantBufferWrapper&&) = default;
 
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
-private:
-    /**
-     * The layout specification of the constant buffer.
-     */
-    const xl7::graphics::shaders::ConstantBufferLayout _layout;
-
-    /**
-     * The size of the constant buffer, in bytes.
-     */
-    const unsigned _size;
-
-private:
-    /**
-     * The Direct3D 11 constant buffer interface.
-     */
-    wrl::ComPtr<ID3D11Buffer> _d3d_constant_buffer;
-
-private:
-    /**
-     * The reference count to determine whether the constant buffer is in use.
-     */
-    unsigned _reference_count;
-
-    /**
-     * The local copy of the constant buffer data.
-     */
-    std::byte* _data;
-
-    /**
-     * The offset of the dirty data region, in bytes.
-     */
-    unsigned _dirty_offset;
-
-    /**
-     * The size of the dirty data region, in bytes.
-     */
-    unsigned _dirty_size;
+    ~D3DConstantBufferWrapper();
 
 
 
     // #############################################################################
     // Properties
     // #############################################################################
-public:
+
     /**
      * Returns the layout specification of the constant buffer.
      */
@@ -110,13 +53,11 @@ public:
      */
     unsigned get_size() const { return _size; }
 
-public:
     /**
      * Returns the Direct3D 11 constant buffer interface.
      */
     ID3D11Buffer* get_raw_d3d_constant_buffer() const { return _d3d_constant_buffer.Get(); }
 
-public:
     /**
      * Returns the reference count to determine whether the constant buffer is in use.
      */
@@ -125,7 +66,7 @@ public:
     /**
      * Returns the local copy of the constant buffer data.
      */
-    cl7::byte_view get_data() const { return cl7::byte_view( _data, _size ); }
+    cl7::byte_view get_data() const { return {_data, _size}; }
 
     /**
      * Returns true if the local data of the constant buffer is "dirty".
@@ -137,7 +78,7 @@ public:
     // #############################################################################
     // Methods
     // #############################################################################
-public:
+
     /**
      * Returns true if the constant buffer matches the given layout specification.
      */
@@ -167,14 +108,53 @@ public:
      */
     unsigned release();
 
+
+
+private:
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    /**
+     * The layout specification of the constant buffer.
+     */
+    xl7::graphics::shaders::ConstantBufferLayout _layout;
+
+    /**
+     * The size of the constant buffer, in bytes.
+     */
+    unsigned _size;
+
+    /**
+     * The Direct3D 11 constant buffer interface.
+     */
+    wrl::ComPtr<ID3D11Buffer> _d3d_constant_buffer;
+
+    /**
+     * The reference count to determine whether the constant buffer is in use.
+     */
+    unsigned _reference_count;
+
+    /**
+     * The local copy of the constant buffer data.
+     */
+    std::byte* _data;
+
+    /**
+     * The offset of the dirty data region, in bytes.
+     */
+    unsigned _dirty_offset;
+
+    /**
+     * The size of the dirty data region, in bytes.
+     */
+    unsigned _dirty_size;
+
 }; // class D3DConstantBufferWrapper
 
 
 
-} // namespace shaders
-} // namespace direct3d11
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d11::shaders
 
 #endif // XL7_GRAPHICS_IMPL_D3D11_SHADERS_D3DCONSTANTBUFFERWRAPPER_H

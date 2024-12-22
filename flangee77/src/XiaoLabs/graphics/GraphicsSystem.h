@@ -54,6 +54,16 @@ public:
      */
     RenderingDevice* get_rendering_device() { return _rendering_device.get(); }
 
+    /**
+     * Returns the rendering device implementation.
+     */
+    template <class TRenderingDeviceImpl>
+    TRenderingDeviceImpl* get_rendering_device_impl()
+    {
+        assert(static_cast<TRenderingDeviceImpl*>(get_rendering_device()) == dynamic_cast<TRenderingDeviceImpl*>(get_rendering_device()));
+        return static_cast<TRenderingDeviceImpl*>(get_rendering_device());
+    }
+
 
 
 protected:

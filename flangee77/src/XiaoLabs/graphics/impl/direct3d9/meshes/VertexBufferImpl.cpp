@@ -9,11 +9,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d9 {
-namespace meshes {
+namespace xl7::graphics::impl::direct3d9::meshes {
 
 
 
@@ -30,12 +26,9 @@ namespace meshes {
     // Construction / Destruction
     // #############################################################################
 
-    /**
-     * Explicit constructor.
-     */
     VertexBufferImpl::VertexBufferImpl(const CreateParams<Desc>& params)
-        : VertexBuffer( params )
-        , _d3d_fvf( _d3d_fvf_from( get_desc().vertex_layout ) )
+        : VertexBuffer(params)
+        , _d3d_fvf(_d3d_fvf_from(get_desc().vertex_layout))
     {
     }
 
@@ -53,29 +46,29 @@ namespace meshes {
      */
     bool VertexBufferImpl::_acquire_impl(const resources::DataProvider& data_provider)
     {
-        auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
-        assert( d3d_device );
+        auto* d3d_device = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_d3d_device();
+        assert(d3d_device);
 
-        assert( get_data().empty() || get_data().size() == static_cast<size_t>( get_size() ) );
+        assert(get_data().empty() || get_data().size() == static_cast<size_t>(get_size()));
 
         HRESULT hresult = d3d_device->CreateVertexBuffer(
             get_size(),
-            mappings::_d3d_usage_from( get_desc().usage ),
+            mappings::_d3d_usage_from(get_desc().usage),
             _d3d_fvf,
-            mappings::_d3d_pool_from( get_desc().usage ),
+            mappings::_d3d_pool_from(get_desc().usage),
             &_d3d_vertex_buffer,
-            NULL );
+            nullptr);
 
-        if ( FAILED(hresult) )
+        if (FAILED(hresult))
         {
-            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DDevice9::CreateVertexBuffer") ) );
+            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::CreateVertexBuffer")));
             return false;
         }
 
-        if ( get_data().empty() )
+        if (get_data().empty())
             return true;
 
-        return _update_impl( data_provider, true, true );
+        return _update_impl(data_provider, true, true);
     }
 
     /**
@@ -105,36 +98,32 @@ namespace meshes {
     bool VertexBufferImpl::_update_impl(const resources::DataProvider& data_provider, bool discard, bool no_overwrite)
     {
         DWORD flags = 0;
-        if ( discard )
+        if (discard)
             flags |= D3DLOCK_DISCARD;
-        else if ( no_overwrite )
+        else if (no_overwrite)
             flags |= D3DLOCK_NOOVERWRITE;
 
         void* dst;
         HRESULT hresult = _d3d_vertex_buffer->Lock(
-            static_cast<unsigned>( data_provider.get_offset() ),
-            static_cast<unsigned>( data_provider.get_size() ),
+            static_cast<unsigned>(data_provider.get_offset()),
+            static_cast<unsigned>(data_provider.get_size()),
             &dst,
-            flags );
+            flags);
 
-        if ( FAILED(hresult) )
+        if (FAILED(hresult))
         {
-            LOG_ERROR( errors::d3d9_result( hresult, TEXT("IDirect3DVertexBuffer9::Lock") ) );
+            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DVertexBuffer9::Lock")));
             return false;
         }
 
-        ::memcpy( dst, get_data().data() + data_provider.get_offset(), data_provider.get_size() );
+        ::memcpy(dst, get_data().data() + data_provider.get_offset(), data_provider.get_size());
 
         hresult = _d3d_vertex_buffer->Unlock();
-        assert( SUCCEEDED(hresult) );
+        assert(SUCCEEDED(hresult));
 
         return true;
     }
 
 
 
-} // namespace meshes
-} // namespace direct3d9
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d9::meshes

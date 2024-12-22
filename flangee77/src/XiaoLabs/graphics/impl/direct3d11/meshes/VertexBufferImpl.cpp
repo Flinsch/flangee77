@@ -10,11 +10,7 @@
 
 
 
-namespace xl7 {
-namespace graphics {
-namespace impl {
-namespace direct3d11 {
-namespace meshes {
+namespace xl7::graphics::impl::direct3d11::meshes {
 
 
 
@@ -22,11 +18,8 @@ namespace meshes {
     // Construction / Destruction
     // #############################################################################
 
-    /**
-     * Explicit constructor.
-     */
     VertexBufferImpl::VertexBufferImpl(const CreateParams<Desc>& params)
-        : VertexBuffer( params )
+        : VertexBuffer(params)
     {
     }
 
@@ -44,14 +37,14 @@ namespace meshes {
      */
     bool VertexBufferImpl::_acquire_impl(const resources::DataProvider& data_provider)
     {
-        auto d3d_device = static_cast<RenderingDeviceImpl*>( GraphicsSystem::instance().get_rendering_device() )->get_raw_d3d_device();
-        assert( d3d_device );
+        auto* d3d_device = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_d3d_device();
+        assert(d3d_device);
 
-        assert( get_data().empty() || get_data().size() == static_cast<size_t>( get_size() ) );
+        assert(get_data().empty() || get_data().size() == static_cast<size_t>(get_size()));
 
         D3D11_BUFFER_DESC buffer_desc;
         buffer_desc.ByteWidth = get_size();
-        buffer_desc.Usage = mappings::_d3d_usage_from( get_desc().usage );
+        buffer_desc.Usage = mappings::_d3d_usage_from(get_desc().usage);
         buffer_desc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
         buffer_desc.CPUAccessFlags = get_desc().usage == resources::ResourceUsage::Dynamic ? D3D11_CPU_ACCESS_WRITE : 0;
         buffer_desc.MiscFlags = 0;
@@ -65,11 +58,11 @@ namespace meshes {
         HRESULT hresult = d3d_device->CreateBuffer(
             &buffer_desc,
             get_data().empty() ? nullptr : &subresource_data,
-            &_d3d_vertex_buffer );
+            &_d3d_vertex_buffer);
 
-        if ( FAILED(hresult) )
+        if (FAILED(hresult))
         {
-            LOG_ERROR( errors::d3d11_result( hresult, TEXT("ID3D11Device::CreateBuffer") ) );
+            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11Device::CreateBuffer")));
             return false;
         }
 
@@ -102,50 +95,50 @@ namespace meshes {
      */
     bool VertexBufferImpl::_update_impl(const resources::DataProvider& data_provider, bool discard, bool no_overwrite)
     {
-        auto d3d_device_context = static_cast<RenderingContextImpl*>( GraphicsSystem::instance().get_rendering_device()->get_primary_context() )->get_raw_d3d_device_context();
-        assert( d3d_device_context );
+        auto* d3d_device_context = GraphicsSystem::instance().get_rendering_device()->get_primary_context_impl<RenderingContextImpl>()->get_raw_d3d_device_context();
+        assert(d3d_device_context);
 
-        if ( get_desc().usage == resources::ResourceUsage::Dynamic )
+        if (get_desc().usage == resources::ResourceUsage::Dynamic)
         {
             D3D11_MAP map_type;
-            if ( discard )
+            if (discard)
                 map_type = D3D11_MAP_WRITE_DISCARD;
-            else if ( no_overwrite )
+            else if (no_overwrite)
                 map_type = D3D11_MAP_WRITE_NO_OVERWRITE;
             else
                 map_type = D3D11_MAP_WRITE;
 
             D3D11_MAPPED_SUBRESOURCE mapped_subresource;
-            HRESULT hresult = d3d_device_context->Map( _d3d_vertex_buffer.Get(), 0, map_type, 0, &mapped_subresource );
+            HRESULT hresult = d3d_device_context->Map(_d3d_vertex_buffer.Get(), 0, map_type, 0, &mapped_subresource);
 
-            if ( FAILED(hresult) )
+            if (FAILED(hresult))
             {
-                LOG_ERROR( errors::d3d11_result( hresult, TEXT("ID3D11DeviceContext::Map") ) );
-                LOG_ERROR( TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be mapped for writing.") );
+                LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11DeviceContext::Map")));
+                LOG_ERROR(TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be mapped for writing."));
                 return false;
             }
 
-            ::memcpy( mapped_subresource.pData, get_data().data() + data_provider.get_offset(), data_provider.get_size() );
+            ::memcpy(mapped_subresource.pData, get_data().data() + data_provider.get_offset(), data_provider.get_size());
 
-            d3d_device_context->Unmap( _d3d_vertex_buffer.Get(), 0 );
+            d3d_device_context->Unmap(_d3d_vertex_buffer.Get(), 0);
         }
         else // => _desc.usage == ResourceUsage::Default
         {
             unsigned copy_flags = 0;
-            if ( discard )
+            if (discard)
                 copy_flags |= D3D11_COPY_DISCARD;
-            else if ( no_overwrite )
+            else if (no_overwrite)
                 copy_flags |= D3D11_COPY_NO_OVERWRITE;
 
             D3D11_BOX box;
-            box.left = static_cast<unsigned>( data_provider.get_offset() );
+            box.left = static_cast<unsigned>(data_provider.get_offset());
             box.top = 0;
             box.front = 0;
-            box.right = static_cast<unsigned>( data_provider.get_offset() + data_provider.get_size() );
+            box.right = static_cast<unsigned>(data_provider.get_offset() + data_provider.get_size());
             box.bottom = 1;
             box.back = 1;
 
-            d3d_device_context->UpdateSubresource1( _d3d_vertex_buffer.Get(), 0, &box, get_data().data() + data_provider.get_offset(), 0, 0, copy_flags );
+            d3d_device_context->UpdateSubresource1(_d3d_vertex_buffer.Get(), 0, &box, get_data().data() + data_provider.get_offset(), 0, 0, copy_flags);
         }
 
         return true;
@@ -153,8 +146,4 @@ namespace meshes {
 
 
 
-} // namespace meshes
-} // namespace direct3d11
-} // namespace impl
-} // namespace graphics
-} // namespace xl7
+} // namespace xl7::graphics::impl::direct3d11::meshes
