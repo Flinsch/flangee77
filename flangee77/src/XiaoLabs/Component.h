@@ -12,7 +12,7 @@ namespace xl7 {
 
 
 template <class TSingleton>
-class Component
+class Component // NOLINT(*-virtual-class-destructor)
     : public cl7::creational::Singleton<TSingleton>
 {
 

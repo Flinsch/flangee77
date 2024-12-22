@@ -12,7 +12,7 @@ namespace cl7::creational {
 
 
 
-class SingletonBase // NOLINT(cppcoreguidelines-virtual-class-destructor)
+class SingletonBase // NOLINT(*-virtual-class-destructor)
 {
     friend class SingletonManager;
 
@@ -75,7 +75,7 @@ public:
 
 
 template <class TSingleton>
-class Singleton
+class Singleton // NOLINT(*-virtual-class-destructor)
     : public SingletonBase
 {
 

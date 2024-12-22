@@ -159,7 +159,7 @@ namespace pl7 {
     {
         while (true)
         {
-            const auto [quit_flag, exit_code] = xl7::MainWindow::instance().process_window_messages();
+            const auto [quit_flag, exit_code] = xl7::MainWindow::process_window_messages();
 
             if (quit_flag)
             {
