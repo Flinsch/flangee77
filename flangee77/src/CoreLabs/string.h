@@ -69,13 +69,24 @@
  * memory requirements, and allows for some string manipulations because many or even
  * most common code points can be represented with one single code unit (good/okay
  * for almost everything, but loses to UTF-8 in storage and transmission).
+ *
+ * Why specifically Latin-1 and not ISO 8859 in general? Because despite different
+ * encodings we still want to remain as compatible as possible. And Latin-1 is a
+ * subset of Unicode, unlike Latin-2 or Latin-15 for example: the Latin-1 characters
+ * correspond 1-to-1 to the first 256 Unicode code points. So if you need to work
+ * with an ISO 8859 standard part other than Latin-1, you can of course do so as
+ * usual, but it is not semantically supported by this framework, and you would have
+ * to take care of appropriate conversions yourself in order to use certain
+ * framework functions "correctly".
  * 
  * Don't be afraid to use different character encodings or string types within your
  * software. If you look at the different ways strings are used within a project,
  * you will see that in most cases different types don't even touch each other. But
- * where there are points of contact, use should of course be as uniform as possible
- * and conversions should be minimized. "Most" important thing is that you always
- * know which encoding a given string (or file, etc.) has.
+ * where there are points of contact, you should of course be as uniform as possible
+ * and conversions should be minimized. Okay, at least when it comes to logging, all
+ * possible encodings potentially come into contact with each other. Anyway, "most"
+ * important thing is that you always know which encoding a given string (or file,
+ * etc.) has.
  */
 
 
