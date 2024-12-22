@@ -12,6 +12,7 @@ Checks: >
 
   -bugprone-branch-clone,
   -bugprone-easily-swappable-parameters,
+  -bugprone-macro-parentheses,
   -bugprone-switch-missing-default-case,
 
   -clang-analyzer-alpha.*,

@@ -20,7 +20,7 @@ class ShaderManager final // NOLINT(*-virtual-class-destructor)
 public:
     class Attorney
     {
-        static ShaderManager* create(IShaderFactory* factory) { return new ShaderManager( factory ); }
+        static ShaderManager* create(IShaderFactory* factory) { return new ShaderManager(factory); }
         static void destroy(ShaderManager* manager) { delete manager; }
         friend class xl7::graphics::RenderingDevice;
     };

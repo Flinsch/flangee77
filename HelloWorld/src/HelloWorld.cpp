@@ -1,5 +1,5 @@
 
-#define _CRTDBG_MAP_ALLOC
+#define _CRTDBG_MAP_ALLOC // NOLINT(*-reserved-identifier)
 #include <cstdlib>
 #include <crtdbg.h>
 
@@ -14,8 +14,8 @@ using namespace helloworld;
 
 
 #ifdef _DEBUG
-#pragma warning( disable: 4074 ) // Disable "initializers put in compiler reserved initialization area".
-#pragma init_seg( compiler ) // Global objects in this file get constructed very early on.
+#pragma warning(disable: 4074) // Disable "initializers put in compiler reserved initialization area".
+#pragma init_seg(compiler) // Global objects in this file get constructed very early on.
 struct CrtBreakAllocSetter {
     CrtBreakAllocSetter() {
         //_crtBreakAlloc = <request_number>;
@@ -31,15 +31,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ int       nCmdShow)
 {
 #ifdef _DEBUG
-    //_CrtSetDbgFlag( _CrtSetDbgFlag( _CRTDBG_REPORT_FLAG ) | _CRTDBG_LEAK_CHECK_DF );
-    _CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
+    //_CrtSetDbgFlag(_CrtSetDbgFlag(_CRTDBG_REPORT_FLAG) | _CRTDBG_LEAK_CHECK_DF);
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif // _DEBUG
 
 #ifdef _DEBUG
-    //_CrtSetBreakAlloc( <request_number> );
+    //_CrtSetBreakAlloc(<request_number>);
 #endif // _DEBUG
 
-    auto app = std::make_unique<MyApp>( __argc, __targv );
+    auto app = std::make_unique<MyApp>(__argc, __targv);
     app->run();
 
     const int exit_code = app->get_exit_code();

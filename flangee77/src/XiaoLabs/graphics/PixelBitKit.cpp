@@ -196,7 +196,7 @@ namespace xl7::graphics {
             rgba = {2, 1, 0, 3};
             break;
         default:
-            assert( false );
+            assert(false);
         } // switch channel order
 
         unsigned index = 0;

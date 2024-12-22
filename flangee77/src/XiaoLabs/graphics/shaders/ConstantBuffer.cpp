@@ -19,7 +19,7 @@ namespace xl7::graphics::shaders {
         bool discard = true;
         bool no_overwrite = false;
 
-        return _update_impl( constant_data_provider, discard, no_overwrite );
+        return _update_impl(constant_data_provider, discard, no_overwrite);
     }
 
 

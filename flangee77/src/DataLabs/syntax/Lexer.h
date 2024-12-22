@@ -92,7 +92,7 @@ public:
      * Returns the rest of the source text that has not yet been analyzed, depending
      * on the current cursor position.
      */
-    cl7::u8string_view get_remainder() const { return _source.substr( _source_location.offset ); }
+    cl7::u8string_view get_remainder() const { return _source.substr(_source_location.offset); }
 
     /**
      * Returns the current source location of the next character/token to be

@@ -57,7 +57,7 @@ namespace xl7::graphics::impl::shared::shaders {
 
             _parent_entries.emplace(*data_out, ParentEntry{.directory=Include::directory(file_path), .code=std::move(code)});
 
-            assert( *data_out == _parent_entries[*data_out].code.data() );
+            assert(*data_out == _parent_entries[*data_out].code.data());
 
             return S_OK;
         }
@@ -99,7 +99,7 @@ namespace xl7::graphics::impl::shared::shaders {
             cl7::aifstream file(file_path.data(), std::ios::in | std::ios::binary | std::ios::ate);
             if (!file.is_open())
             {
-                LOG_ERROR(TEXT("Shader file \"") + Include::filename( file_path ) + TEXT("\" could not be opened. Does it exist?"));
+                LOG_ERROR(TEXT("Shader file \"") + Include::filename(file_path) + TEXT("\" could not be opened. Does it exist?"));
                 return {};
             }
 
@@ -109,7 +109,7 @@ namespace xl7::graphics::impl::shared::shaders {
             cl7::astring code(size, 0);
             if (!file.read(code.data(), static_cast<std::streamsize>(size)))
             {
-                LOG_ERROR(TEXT("Shader file \"") + Include::filename( file_path ) + TEXT("\" could not be read."));
+                LOG_ERROR(TEXT("Shader file \"") + Include::filename(file_path) + TEXT("\" could not be read."));
                 return {};
             }
 

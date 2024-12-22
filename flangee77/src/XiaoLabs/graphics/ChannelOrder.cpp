@@ -14,7 +14,7 @@ namespace cl7 {
             DEFINE_CASE(BGRA);
 #undef DEFINE_CASE
         default:
-            assert( false );
+            assert(false);
         }
 
         return TEXT("UNKNOWN");

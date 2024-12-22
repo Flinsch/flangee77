@@ -20,7 +20,7 @@ class SurfaceManager final // NOLINT(*-virtual-class-destructor)
 public:
     class Attorney
     {
-        static SurfaceManager* create(ISurfaceFactory* factory) { return new SurfaceManager( factory ); }
+        static SurfaceManager* create(ISurfaceFactory* factory) { return new SurfaceManager(factory); }
         static void destroy(SurfaceManager* manager) { delete manager; }
         friend class xl7::graphics::RenderingDevice;
     };

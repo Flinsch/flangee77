@@ -20,7 +20,7 @@ class TextureManager final // NOLINT(*-virtual-class-destructor)
 public:
     class Attorney
     {
-        static TextureManager* create(ITextureFactory* factory) { return new TextureManager( factory ); }
+        static TextureManager* create(ITextureFactory* factory) { return new TextureManager(factory); }
         static void destroy(TextureManager* manager) { delete manager; }
         friend class xl7::graphics::RenderingDevice;
     };

@@ -82,7 +82,7 @@ namespace tl7::internals {
 
     inline cl7::string to_string(bool val) { return cl7::to_string(val); }
 
-    cl7::string to_string(const std::nullptr_t&);
+    cl7::string to_string(const std::nullptr_t& null);
 
     cl7::string to_string(const std::string& val);
     cl7::string to_string(const std::wstring& val);
