@@ -10,11 +10,9 @@
 
 
 
-namespace tl7 {
-namespace internals {
+namespace tl7::internals {
     inline
     cl7::string to_string(const ml7::Vector2& v) { return TEXT("{ ") + cl7::to_string(v.x) + TEXT(", ") + cl7::to_string(v.y) + TEXT(" }"); }
-}
 }
 
 

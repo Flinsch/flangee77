@@ -1,0 +1,11 @@
+---
+Checks: >
+  -cert-flp30-c,
+  -cert-msc50-cpp,
+  -*-loop-convert,
+  -*-narrowing-conversions,
+  -*-pro-type-cstyle-cast,
+  -*-pro-type-member-init,
+  -*-raw-string-literal,
+  -*-use-auto,
+  -*-use-designated-initializers,

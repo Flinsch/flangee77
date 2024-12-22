@@ -12,8 +12,7 @@
 
 
 
-namespace tl7 {
-namespace internals {
+namespace tl7::internals {
     inline
     cl7::string to_string(const cl7::strings::Encoding& encoding)
     {
@@ -28,7 +27,6 @@ namespace internals {
 
         return TEXT("\"unknown encoding\"");
     }
-}
 }
 
 

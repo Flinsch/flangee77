@@ -10,16 +10,15 @@
 
 
 
-namespace tl7 {
-namespace internals {
+namespace tl7::internals {
     inline
     cl7::string to_string(const ml7::Matrix2x2& m) { return TEXT("{ ") + cl7::to_string(m.a) + TEXT(", ") + cl7::to_string(m.b) + TEXT("; ") + cl7::to_string(m.c) + TEXT(", ") + cl7::to_string(m.d) + TEXT(" }"); }
 }
-}
 
 
 
-namespace _ {
+namespace ml7 {
+    inline
     ml7::Matrix2x2 round(ml7::Matrix2x2 m, unsigned num_decimals) { for ( unsigned k = 0; k < 4; ++k ) m.data[k] = ml7::round(m.data[k], num_decimals); return m; }
 }
 
@@ -107,10 +106,10 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  ") )
 
     TESTLABS_CHECK_EQ( ml7::Matrix2x2( 1.0f, -2.0f, 3.0f, -4.0f ) * ml7::Vector2( -5.0f, 6.0f ), ml7::Vector2( -17.0f, -39.0f ) );
 
-    TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2( 1.0f, -2.0f, 3.0f, -4.0f ) * ml7::Matrix2x2( -5.0f, 6.0f, -7.0f, 8.0f ) * ml7::Vector2( 1.0f, 2.0f ), 3 ), _::round( ml7::Vector2( -11.0f, -15.0f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2( 1.0f, -2.0f, 3.0f, -4.0f ) * (ml7::Matrix2x2( -5.0f, 6.0f, -7.0f, 8.0f ) * ml7::Vector2( 1.0f, 2.0f )), 3 ), _::round( ml7::Vector2( -11.0f, -15.0f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( (ml7::Matrix2x2( 1.0f, -2.0f, 3.0f, -4.0f ) * ml7::Matrix2x2( -5.0f, 6.0f, -7.0f, 8.0f )) * ml7::Vector2( 1.0f, 2.0f ), 3 ), _::round( ml7::Vector2( -11.0f, -15.0f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2( 9.0f, -10.0f, 13.0f, -14.0f ) * ml7::Vector2( 1.0f, 2.0f ), 3 ), _::round( ml7::Vector2( -11.0f, -15.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix2x2( 1.0f, -2.0f, 3.0f, -4.0f ) * ml7::Matrix2x2( -5.0f, 6.0f, -7.0f, 8.0f ) * ml7::Vector2( 1.0f, 2.0f ), 3 ), ml7::round( ml7::Vector2( -11.0f, -15.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix2x2( 1.0f, -2.0f, 3.0f, -4.0f ) * (ml7::Matrix2x2( -5.0f, 6.0f, -7.0f, 8.0f ) * ml7::Vector2( 1.0f, 2.0f )), 3 ), ml7::round( ml7::Vector2( -11.0f, -15.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( (ml7::Matrix2x2( 1.0f, -2.0f, 3.0f, -4.0f ) * ml7::Matrix2x2( -5.0f, 6.0f, -7.0f, 8.0f )) * ml7::Vector2( 1.0f, 2.0f ), 3 ), ml7::round( ml7::Vector2( -11.0f, -15.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix2x2( 9.0f, -10.0f, 13.0f, -14.0f ) * ml7::Vector2( 1.0f, 2.0f ), 3 ), ml7::round( ml7::Vector2( -11.0f, -15.0f ), 3 ) );
 
     TESTLABS_CHECK_EQ( ml7::Matrix2x2( 5.0f, -8.0f, 12.0f, 7.0f ) += ml7::Matrix2x2( -6.0f, 9.0f, -14.0f, 3.0f ), ml7::Matrix2x2( -1.0f, 1.0f, -2.0f, 10.0f ) );
     TESTLABS_CHECK_EQ( ml7::Matrix2x2( 5.0f, -8.0f, 12.0f, 7.0f ) -= ml7::Matrix2x2( -6.0f, 9.0f, -14.0f, 3.0f ), ml7::Matrix2x2( 11.0f, -17.0f, 26.0f, 4.0f ) );
@@ -149,7 +148,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  rotation") )
 
     TESTLABS_SUBCASE_BATCH( TEXT("rotation"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2::rotation( entry.angle ), 3 ), _::round( entry.expected, 3 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix2x2::rotation( entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 }
 
@@ -177,7 +176,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  compose(float, ...) / decompose") )
 
     TESTLABS_SUBCASE_BATCH( TEXT("compose(float, ...)"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2::compose( entry.scaling, entry.angle ), 3 ), _::round( entry.expected, 3 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix2x2::compose( entry.scaling, entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 
     TESTLABS_SUBCASE_BATCH( TEXT("decompose"), container, entry )
@@ -215,7 +214,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  compose(Vector2, ...) / decompose") 
 
     TESTLABS_SUBCASE_BATCH( TEXT("compose(Vector2, ...)"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2::compose( entry.scaling, entry.angle ), 3 ), _::round( entry.expected, 3 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix2x2::compose( entry.scaling, entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 
     TESTLABS_SUBCASE_BATCH( TEXT("decompose"), container, entry )
@@ -256,12 +255,12 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix2x2:  transform etc.") )
 
     TESTLABS_SUBCASE_BATCH( TEXT("transform"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2::compose( entry.scaling, entry.angle ).transform( entry.untransformed ), 3 ), _::round( entry.transformed, 3 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix2x2::compose( entry.scaling, entry.angle ).transform( entry.untransformed ), 3 ), ml7::round( entry.transformed, 3 ) );
     }
 
     TESTLABS_SUBCASE_BATCH( TEXT("transform_inverted"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Matrix2x2::compose( entry.scaling, entry.angle ).transform_inverted( entry.transformed ), 3 ), _::round( entry.untransformed, 3 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix2x2::compose( entry.scaling, entry.angle ).transform_inverted( entry.transformed ), 3 ), ml7::round( entry.untransformed, 3 ) );
     }
 }
 

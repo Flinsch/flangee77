@@ -10,16 +10,15 @@
 
 
 
-namespace tl7 {
-namespace internals {
+namespace tl7::internals {
     inline
     cl7::string to_string(const ml7::Quaternion& q) { return TEXT("{ ( ") + cl7::to_string(q.x) + TEXT(", ") + cl7::to_string(q.y) + TEXT(", ") + cl7::to_string(q.z) + TEXT(" ), ") + cl7::to_string(q.w) + TEXT(" }"); }
 }
-}
 
 
 
-namespace _ {
+namespace ml7 {
+    inline
     ml7::Quaternion round(ml7::Quaternion q, unsigned num_decimals) { for ( unsigned k = 0; k < 4; ++k ) q.data[k] = ml7::round(q.data[k], num_decimals); return q; }
 }
 
@@ -32,24 +31,24 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  ") )
     TESTLABS_CHECK_EQ( ml7::Quaternion( ml7::Vector3( 1.0f, 2.0f, 3.0f ), 4.0f ), ml7::Quaternion( 1.0f, 2.0f, 3.0f, 4.0f ) );
     TESTLABS_CHECK_EQ( ml7::Quaternion( ml7::Matrix3x3() ), ml7::Quaternion() );
     TESTLABS_CHECK_EQ( ml7::Quaternion( ml7::Matrix3x3( 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f ) ), ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( ml7::Matrix3x3( 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f ) ), 3 ), _::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( ml7::Matrix3x3( 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, -1.0f, 0.0f, 0.0f ) ), 3 ), _::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( ml7::Matrix3x3( 0.0f, -1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f ) ), 3 ), _::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( ml7::Matrix3x3( 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f ) ), 3 ), ml7::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( ml7::Matrix3x3( 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, -1.0f, 0.0f, 0.0f ) ), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( ml7::Matrix3x3( 0.0f, -1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f ) ), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ), 3 ) );
 
     TESTLABS_CHECK_EQ( ml7::Quaternion::from_matrix3x3( ml7::Matrix3x3() ), ml7::Quaternion() );
     TESTLABS_CHECK_EQ( ml7::Quaternion::from_matrix3x3( ml7::Matrix3x3( 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f ) ), ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::from_matrix3x3( ml7::Matrix3x3( 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f ) ), 3 ), _::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::from_matrix3x3( ml7::Matrix3x3( 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, -1.0f, 0.0f, 0.0f ) ), 3 ), _::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::from_matrix3x3( ml7::Matrix3x3( 0.0f, -1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f ) ), 3 ), _::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::from_matrix3x3( ml7::Matrix3x3( 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f ) ), 3 ), ml7::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::from_matrix3x3( ml7::Matrix3x3( 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, -1.0f, 0.0f, 0.0f ) ), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::from_matrix3x3( ml7::Matrix3x3( 0.0f, -1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f ) ), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ), 3 ) );
 
     TESTLABS_CHECK_EQ( ml7::Quaternion::from_axes( ml7::Vector3( 1.0f, 0.0f, 0.0f ), ml7::Vector3( 0.0f, 1.0f, 0.0f ), ml7::Vector3( 0.0f, 0.0f, 1.0f ) ), ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ) );
     TESTLABS_CHECK_EQ( ml7::Quaternion::from_axes( ml7::Vector3( 1.0f, 0.0f, 0.0f ), ml7::Vector3( 0.0f, 1.0f, 0.0f ), ml7::Vector3( 0.0f, 0.0f, 1.0f ) ).transform( ml7::Vector3( 1.0f, 2.0f, 3.0f ) ), ml7::Vector3( 1.0f, 2.0f, 3.0f ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::from_axes( ml7::Vector3( 1.0f, 0.0f, 0.0f ), ml7::Vector3( 0.0f, 0.0f, 1.0f ), ml7::Vector3( 0.0f, -1.0f, 0.0f ) ), 3 ), _::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::from_axes( ml7::Vector3( 1.0f, 0.0f, 0.0f ), ml7::Vector3( 0.0f, 0.0f, 1.0f ), ml7::Vector3( 0.0f, -1.0f, 0.0f ) ).transform( ml7::Vector3( 1.0f, 2.0f, 3.0f ) ), 3 ), _::round( ml7::Vector3( 1.0f, -3.0f, 2.0f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::from_axes( ml7::Vector3( 0.0f, 0.0f, -1.0f ), ml7::Vector3( 0.0f, 1.0f, 0.0f ), ml7::Vector3( 1.0f, 0.0f, 0.0f ) ), 3 ), _::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::from_axes( ml7::Vector3( 0.0f, 0.0f, -1.0f ), ml7::Vector3( 0.0f, 1.0f, 0.0f ), ml7::Vector3( 1.0f, 0.0f, 0.0f ) ).transform( ml7::Vector3( 1.0f, 2.0f, 3.0f ) ), 3 ), _::round( ml7::Vector3( 3.0f, 2.0f, -1.0f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::from_axes( ml7::Vector3( 0.0f, 1.0f, 0.0f ), ml7::Vector3( -1.0f, 0.0f, 0.0f ), ml7::Vector3( 0.0f, 0.0f, 1.0f ) ), 3 ), _::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::from_axes( ml7::Vector3( 0.0f, 1.0f, 0.0f ), ml7::Vector3( -1.0f, 0.0f, 0.0f ), ml7::Vector3( 0.0f, 0.0f, 1.0f ) ).transform( ml7::Vector3( 1.0f, 2.0f, 3.0f ) ), 3 ), _::round( ml7::Vector3( -2.0f, 1.0f, 3.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::from_axes( ml7::Vector3( 1.0f, 0.0f, 0.0f ), ml7::Vector3( 0.0f, 0.0f, 1.0f ), ml7::Vector3( 0.0f, -1.0f, 0.0f ) ), 3 ), ml7::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::from_axes( ml7::Vector3( 1.0f, 0.0f, 0.0f ), ml7::Vector3( 0.0f, 0.0f, 1.0f ), ml7::Vector3( 0.0f, -1.0f, 0.0f ) ).transform( ml7::Vector3( 1.0f, 2.0f, 3.0f ) ), 3 ), ml7::round( ml7::Vector3( 1.0f, -3.0f, 2.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::from_axes( ml7::Vector3( 0.0f, 0.0f, -1.0f ), ml7::Vector3( 0.0f, 1.0f, 0.0f ), ml7::Vector3( 1.0f, 0.0f, 0.0f ) ), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::from_axes( ml7::Vector3( 0.0f, 0.0f, -1.0f ), ml7::Vector3( 0.0f, 1.0f, 0.0f ), ml7::Vector3( 1.0f, 0.0f, 0.0f ) ).transform( ml7::Vector3( 1.0f, 2.0f, 3.0f ) ), 3 ), ml7::round( ml7::Vector3( 3.0f, 2.0f, -1.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::from_axes( ml7::Vector3( 0.0f, 1.0f, 0.0f ), ml7::Vector3( -1.0f, 0.0f, 0.0f ), ml7::Vector3( 0.0f, 0.0f, 1.0f ) ), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::from_axes( ml7::Vector3( 0.0f, 1.0f, 0.0f ), ml7::Vector3( -1.0f, 0.0f, 0.0f ), ml7::Vector3( 0.0f, 0.0f, 1.0f ) ).transform( ml7::Vector3( 1.0f, 2.0f, 3.0f ) ), 3 ), ml7::round( ml7::Vector3( -2.0f, 1.0f, 3.0f ), 3 ) );
 
     // rotation etc. see below
 
@@ -65,54 +64,54 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  ") )
     TESTLABS_CHECK_EQ( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ).is_invertible(), true );
     TESTLABS_CHECK_EQ( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ).is_invertible(), true );
 
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 0.0f ).norm(), 3 ), 0.0f );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ).norm(), 3 ), 1.0f );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 1.0f, 0.0f, 0.0f, 0.0f ).norm(), 3 ), 1.0f );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 1.0f, 0.0f, 0.0f ).norm(), 3 ), 1.0f );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 1.0f, 0.0f ).norm(), 3 ), 1.0f );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 1.0f, 0.0f, 0.0f, 1.0f ).norm(), 3 ), 1.414f );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 1.0f, 0.0f, 1.0f ).norm(), 3 ), 1.414f );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 1.0f, 1.0f ).norm(), 3 ), 1.414f );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ).norm(), 3 ), 1.0f );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ).norm(), 3 ), 1.0f );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ).norm(), 3 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 0.0f ).norm(), 3 ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ).norm(), 3 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 1.0f, 0.0f, 0.0f, 0.0f ).norm(), 3 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 1.0f, 0.0f, 0.0f ).norm(), 3 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 1.0f, 0.0f ).norm(), 3 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 1.0f, 0.0f, 0.0f, 1.0f ).norm(), 3 ), 1.414f );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 1.0f, 0.0f, 1.0f ).norm(), 3 ), 1.414f );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 1.0f, 1.0f ).norm(), 3 ), 1.414f );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ).norm(), 3 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ).norm(), 3 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ).norm(), 3 ), 1.0f );
 
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ).normalized(), 3 ), _::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 1.0f, 0.0f, 0.0f, 1.0f ).normalized(), 3 ), _::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, -1.0f, 0.0f, 1.0f ).normalized(), 3 ), _::round( ml7::Quaternion( 0.0f, -0.7071f, 0.0f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 1.0f, -1.0f ).normalized(), 3 ), _::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, -0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ).normalized(), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 1.0f, 0.0f, 0.0f, 1.0f ).normalized(), 3 ), ml7::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, -1.0f, 0.0f, 1.0f ).normalized(), 3 ), ml7::round( ml7::Quaternion( 0.0f, -0.7071f, 0.0f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 1.0f, -1.0f ).normalized(), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, -0.7071f ), 3 ) );
 
     TESTLABS_CHECK_EQ( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ).conjugated(), ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ) );
     TESTLABS_CHECK_EQ( ml7::Quaternion( 1.0f, 2.0f, 3.0f, 0.7071f ).conjugated(), ml7::Quaternion( -1.0f, -2.0f, -3.0f, 0.7071f ) );
 
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ).inverted(), 3 ), _::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ).inverted(), 3 ), _::round( ml7::Quaternion( -0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ).inverted(), 3 ), _::round( ml7::Quaternion( 0.0f, -0.7071f, 0.0f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ).inverted(), 3 ), _::round( ml7::Quaternion( 0.0f, 0.0f, -0.7071f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.1889793f, 0.3779585f, 0.5669378f, 0.7071179f ).inverted(), 3 ), _::round( ml7::Quaternion( -0.1889793f, -0.3779585f, -0.5669378f, 0.7071179f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( -0.1889793f, -0.3779585f, -0.5669378f, 0.7071179f ).inverted(), 3 ), _::round( ml7::Quaternion( 0.1889793f, 0.3779585f, 0.5669378f, 0.7071179f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ).inverted(), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ).inverted(), 3 ), ml7::round( ml7::Quaternion( -0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ).inverted(), 3 ), ml7::round( ml7::Quaternion( 0.0f, -0.7071f, 0.0f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ).inverted(), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.0f, -0.7071f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.1889793f, 0.3779585f, 0.5669378f, 0.7071179f ).inverted(), 3 ), ml7::round( ml7::Quaternion( -0.1889793f, -0.3779585f, -0.5669378f, 0.7071179f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( -0.1889793f, -0.3779585f, -0.5669378f, 0.7071179f ).inverted(), 3 ), ml7::round( ml7::Quaternion( 0.1889793f, 0.3779585f, 0.5669378f, 0.7071179f ), 3 ) );
 
     // to_matrix3x3, to_axes, and to_axis_angle see below (with rotation etc.)
 
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.2260934f, -0.7913268f, 0.5652334f, -0.0565233f ).transform( ml7::Vector3( 1.0f, 2.0f, 3.0f ) ), 3 ), _::round( ml7::Vector3( -0.4440895f, -2.5111822f, -2.7380192f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.2260934f, -0.7913268f, 0.5652334f, -0.0565233f ).transform_inverted( ml7::Vector3( -0.4440895f, -2.5111822f, -2.7380192f ) ), 3 ), _::round( ml7::Vector3( 1.0f, 2.0f, 3.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.2260934f, -0.7913268f, 0.5652334f, -0.0565233f ).transform( ml7::Vector3( 1.0f, 2.0f, 3.0f ) ), 3 ), ml7::round( ml7::Vector3( -0.4440895f, -2.5111822f, -2.7380192f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.2260934f, -0.7913268f, 0.5652334f, -0.0565233f ).transform_inverted( ml7::Vector3( -0.4440895f, -2.5111822f, -2.7380192f ) ), 3 ), ml7::round( ml7::Vector3( 1.0f, 2.0f, 3.0f ), 3 ) );
 
     // (further) transform etc. see below
 
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ).normalize(), 3 ), _::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 1.0f, 0.0f, 0.0f, 1.0f ).normalize(), 3 ), _::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, -1.0f, 0.0f, 1.0f ).normalize(), 3 ), _::round( ml7::Quaternion( 0.0f, -0.7071f, 0.0f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 1.0f, -1.0f ).normalize(), 3 ), _::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, -0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ).normalize(), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 1.0f, 0.0f, 0.0f, 1.0f ).normalize(), 3 ), ml7::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, -1.0f, 0.0f, 1.0f ).normalize(), 3 ), ml7::round( ml7::Quaternion( 0.0f, -0.7071f, 0.0f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 1.0f, -1.0f ).normalize(), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, -0.7071f ), 3 ) );
 
     TESTLABS_CHECK_EQ( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ).conjugate(), ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ) );
     TESTLABS_CHECK_EQ( ml7::Quaternion( 1.0f, 2.0f, 3.0f, 0.7071f ).conjugate(), ml7::Quaternion( -1.0f, -2.0f, -3.0f, 0.7071f ) );
 
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ).invert(), 3 ), _::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ).invert(), 3 ), _::round( ml7::Quaternion( -0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ).invert(), 3 ), _::round( ml7::Quaternion( 0.0f, -0.7071f, 0.0f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ).invert(), 3 ), _::round( ml7::Quaternion( 0.0f, 0.0f, -0.7071f, 0.7071f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.1889793f, 0.3779585f, 0.5669378f, 0.7071179f ).invert(), 3 ), _::round( ml7::Quaternion( -0.1889793f, -0.3779585f, -0.5669378f, 0.7071179f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( -0.1889793f, -0.3779585f, -0.5669378f, 0.7071179f ).invert(), 3 ), _::round( ml7::Quaternion( 0.1889793f, 0.3779585f, 0.5669378f, 0.7071179f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ).invert(), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ).invert(), 3 ), ml7::round( ml7::Quaternion( -0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ).invert(), 3 ), ml7::round( ml7::Quaternion( 0.0f, -0.7071f, 0.0f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ).invert(), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.0f, -0.7071f, 0.7071f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.1889793f, 0.3779585f, 0.5669378f, 0.7071179f ).invert(), 3 ), ml7::round( ml7::Quaternion( -0.1889793f, -0.3779585f, -0.5669378f, 0.7071179f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( -0.1889793f, -0.3779585f, -0.5669378f, 0.7071179f ).invert(), 3 ), ml7::round( ml7::Quaternion( 0.1889793f, 0.3779585f, 0.5669378f, 0.7071179f ), 3 ) );
 
     TESTLABS_CHECK_EQ( ml7::Quaternion( 1.0f, -2.0f, 3.0f, -4.0f ).dot( ml7::Quaternion( -1.0f, 2.0f, -3.0f, 4.0f ) ), -30.0f );
 
@@ -133,24 +132,24 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  ") )
     TESTLABS_CHECK_EQ( ml7::Quaternion( 1.0f, -2.0f, 3.0f, -4.0f ) * 5.0f, ml7::Quaternion( 5.0f, -10.0f, 15.0f, -20.0f ) );
     TESTLABS_CHECK_EQ( ml7::Quaternion( 5.0f, -10.0f, 15.0f, -20.0f ) / 5.0f, ml7::Quaternion( 1.0f, -2.0f, 3.0f, -4.0f ) );
 
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ) * ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ), 3 ), _::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ) * ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ), _::round( ml7::Quaternion( 1.0f, 0.0f, 0.0f, 0.0f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ) * ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ), 3 ), _::round( ml7::Quaternion( 0.0f, 1.0f, 0.0f, 0.0f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ) * ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ), 3 ), _::round( ml7::Quaternion( 0.0f, 0.0f, 1.0f, 0.0f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ) * ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ), 3 ), _::round( ml7::Quaternion( 0.5f, 0.5f, 0.5f, 0.5f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ) * ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ), 3 ), _::round( ml7::Quaternion( 0.5f, -0.5f, 0.5f, 0.5f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ) * ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ), _::round( ml7::Quaternion( 0.5f, 0.5f, -0.5f, 0.5f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ) * ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ), 3 ), _::round( ml7::Quaternion( 0.5f, 0.5f, 0.5f, 0.5f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ) * ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ), _::round( ml7::Quaternion( 0.5f, 0.5f, 0.5f, 0.5f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ) * ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ), 3 ), _::round( ml7::Quaternion( -0.5f, 0.5f, 0.5f, 0.5f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 1.0f, -2.0f, 3.0f, -4.0f ) * ml7::Quaternion( -5.0f, 6.0f, -7.0f, 8.0f ), 3 ), _::round( ml7::Quaternion( 24.0f, -48.0f, 48.0f, 6.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ) * ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ) * ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ), ml7::round( ml7::Quaternion( 1.0f, 0.0f, 0.0f, 0.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ) * ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ), 3 ), ml7::round( ml7::Quaternion( 0.0f, 1.0f, 0.0f, 0.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ) * ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ), 3 ), ml7::round( ml7::Quaternion( 0.0f, 0.0f, 1.0f, 0.0f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ) * ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ), 3 ), ml7::round( ml7::Quaternion( 0.5f, 0.5f, 0.5f, 0.5f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ) * ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ), 3 ), ml7::round( ml7::Quaternion( 0.5f, -0.5f, 0.5f, 0.5f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ) * ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ), ml7::round( ml7::Quaternion( 0.5f, 0.5f, -0.5f, 0.5f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ) * ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ), 3 ), ml7::round( ml7::Quaternion( 0.5f, 0.5f, 0.5f, 0.5f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ) * ml7::Quaternion( 0.7071f, 0.0f, 0.0f, 0.7071f ), 3 ), ml7::round( ml7::Quaternion( 0.5f, 0.5f, 0.5f, 0.5f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.0f, 0.0f, 0.7071f, 0.7071f ) * ml7::Quaternion( 0.0f, 0.7071f, 0.0f, 0.7071f ), 3 ), ml7::round( ml7::Quaternion( -0.5f, 0.5f, 0.5f, 0.5f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 1.0f, -2.0f, 3.0f, -4.0f ) * ml7::Quaternion( -5.0f, 6.0f, -7.0f, 8.0f ), 3 ), ml7::round( ml7::Quaternion( 24.0f, -48.0f, 48.0f, 6.0f ), 3 ) );
 
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 0.2260934f, -0.7913268f, 0.5652334f, -0.0565233f ) * ml7::Vector3( 1.0f, 2.0f, 3.0f ), 3 ), _::round( ml7::Vector3( -0.4440895f, -2.5111822f, -2.7380192f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 0.2260934f, -0.7913268f, 0.5652334f, -0.0565233f ) * ml7::Vector3( 1.0f, 2.0f, 3.0f ), 3 ), ml7::round( ml7::Vector3( -0.4440895f, -2.5111822f, -2.7380192f ), 3 ) );
 
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 1.0f, -2.0f, 3.0f, -4.0f ).normalized() * ml7::Quaternion( -5.0f, 6.0f, -7.0f, 8.0f ).normalized() * ml7::Vector3( 1.0f, 2.0f, 3.0f ), 3 ), _::round( ml7::Vector3( -0.8758619f, -3.3517244f, -1.4137932f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 1.0f, -2.0f, 3.0f, -4.0f ).normalized() * (ml7::Quaternion( -5.0f, 6.0f, -7.0f, 8.0f ).normalized() * ml7::Vector3( 1.0f, 2.0f, 3.0f )), 3 ), _::round( ml7::Vector3( -0.8758619f, -3.3517244f, -1.4137932f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( (ml7::Quaternion( 1.0f, -2.0f, 3.0f, -4.0f ).normalized() * ml7::Quaternion( -5.0f, 6.0f, -7.0f, 8.0f ).normalized()) * ml7::Vector3( 1.0f, 2.0f, 3.0f ), 3 ), _::round( ml7::Vector3( -0.8758619f, -3.3517244f, -1.4137932f ), 3 ) );
-    TESTLABS_CHECK_EQ( _::round( ml7::Quaternion( 24.0f, -48.0f, 48.0f, 6.0f ).normalized() * ml7::Vector3( 1.0f, 2.0f, 3.0f ), 3 ), _::round( ml7::Vector3( -0.8758619f, -3.3517244f, -1.4137932f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 1.0f, -2.0f, 3.0f, -4.0f ).normalized() * ml7::Quaternion( -5.0f, 6.0f, -7.0f, 8.0f ).normalized() * ml7::Vector3( 1.0f, 2.0f, 3.0f ), 3 ), ml7::round( ml7::Vector3( -0.8758619f, -3.3517244f, -1.4137932f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 1.0f, -2.0f, 3.0f, -4.0f ).normalized() * (ml7::Quaternion( -5.0f, 6.0f, -7.0f, 8.0f ).normalized() * ml7::Vector3( 1.0f, 2.0f, 3.0f )), 3 ), ml7::round( ml7::Vector3( -0.8758619f, -3.3517244f, -1.4137932f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( (ml7::Quaternion( 1.0f, -2.0f, 3.0f, -4.0f ).normalized() * ml7::Quaternion( -5.0f, 6.0f, -7.0f, 8.0f ).normalized()) * ml7::Vector3( 1.0f, 2.0f, 3.0f ), 3 ), ml7::round( ml7::Vector3( -0.8758619f, -3.3517244f, -1.4137932f ), 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion( 24.0f, -48.0f, 48.0f, 6.0f ).normalized() * ml7::Vector3( 1.0f, 2.0f, 3.0f ), 3 ), ml7::round( ml7::Vector3( -0.8758619f, -3.3517244f, -1.4137932f ), 3 ) );
 
     TESTLABS_CHECK_EQ( ml7::Quaternion( 5.0f, -8.0f, 12.0f, 7.0f ) += ml7::Quaternion( -6.0f, 9.0f, -14.0f, 3.0f ), ml7::Quaternion( -1.0f, 1.0f, -2.0f, 10.0f ) );
     TESTLABS_CHECK_EQ( ml7::Quaternion( 5.0f, -8.0f, 12.0f, 7.0f ) -= ml7::Quaternion( -6.0f, 9.0f, -14.0f, 3.0f ), ml7::Quaternion( 11.0f, -17.0f, 26.0f, 4.0f ) );
@@ -189,7 +188,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  rotx") )
 
     TESTLABS_SUBCASE_BATCH( TEXT("rotx"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::rotx( entry.angle ), 3 ), _::round( entry.expected, 3 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::rotx( entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 }
 
@@ -214,7 +213,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  roty") )
 
     TESTLABS_SUBCASE_BATCH( TEXT("roty"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::roty( entry.angle ), 3 ), _::round( entry.expected, 3 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::roty( entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 }
 
@@ -239,7 +238,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  rotz") )
 
     TESTLABS_SUBCASE_BATCH( TEXT("rotz"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::rotz( entry.angle ), 3 ), _::round( entry.expected, 3 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::rotz( entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 }
 
@@ -324,17 +323,17 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  rotation etc.") )
     TESTLABS_SUBCASE_BATCH( TEXT("rotation (axis with angle magnitude)"), container, entry )
     {
         ml7::Vector3 axis = entry.axis.normalized() * entry.angle;
-        TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::rotation( axis ), 3 ), _::round( entry.expected, 3 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::rotation( axis ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 
     TESTLABS_SUBCASE_BATCH( TEXT("rotation (axis-angle)"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::rotation( entry.axis, entry.angle ), 3 ), _::round( entry.expected, 3 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::rotation( entry.axis, entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 
     TESTLABS_SUBCASE_BATCH( TEXT("rotation_normalized"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::rotation_normalized( entry.axis.normalized(), entry.angle ), 3 ), _::round( entry.expected, 3 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::rotation_normalized( entry.axis.normalized(), entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 
     TESTLABS_SUBCASE_BATCH( TEXT("to_matrix3x3, to_axes, and to_axis_angle"), container, entry )
@@ -342,16 +341,16 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  rotation etc.") )
         ml7::Matrix3x3 m = ml7::Matrix3x3::rotation( entry.axis, entry.angle );
         ml7::Quaternion q = ml7::Quaternion::rotation( entry.axis, entry.angle );
 
-        TESTLABS_CHECK_EQ( _::round( q.to_matrix3x3(), 3 ), _::round( m, 3 ) );
+        TESTLABS_CHECK_EQ( ml7::round( q.to_matrix3x3(), 3 ), ml7::round( m, 3 ) );
 
         ml7::Vector3 x, y, z;
         q.to_axes( x, y, z );
-        TESTLABS_CHECK_EQ( _::round( ml7::Matrix3x3::from_axes( x, y, z ), 2 ), _::round( m, 2 ) ); // Allow a larger rounding error than before!
+        TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix3x3::from_axes( x, y, z ), 2 ), ml7::round( m, 2 ) ); // Allow a larger rounding error than before!
 
         ml7::Vector3 axis;
         float angle;
         TESTLABS_CHECK_EQ( q.to_axis_angle( axis, angle ), entry.angle != 0.0f );
-        TESTLABS_CHECK_EQ( _::round( ml7::Matrix3x3::rotation( axis, angle ), 2 ), _::round( m, 2 ) ); // Allow a larger rounding error than before!
+        TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix3x3::rotation( axis, angle ), 2 ), ml7::round( m, 2 ) ); // Allow a larger rounding error than before!
     }
 }
 
@@ -375,12 +374,12 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  transform etc.") )
 
     TESTLABS_SUBCASE_BATCH( TEXT("transform"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::rotation( entry.axis, entry.angle ).transform( entry.untransformed ), 3 ), _::round( entry.transformed, 3 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::rotation( entry.axis, entry.angle ).transform( entry.untransformed ), 3 ), ml7::round( entry.transformed, 3 ) );
     }
 
     TESTLABS_SUBCASE_BATCH( TEXT("transform_inverted"), container, entry )
     {
-        TESTLABS_CHECK_EQ( _::round( ml7::Quaternion::rotation( entry.axis, entry.angle ).transform_inverted( entry.transformed ), 3 ), _::round( entry.untransformed, 3 ) );
+        TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::rotation( entry.axis, entry.angle ).transform_inverted( entry.transformed ), 3 ), ml7::round( entry.untransformed, 3 ) );
     }
 }
 

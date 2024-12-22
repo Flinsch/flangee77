@@ -20,9 +20,8 @@ TESTLABS_CASE( TEXT("DataLabs:  compression:  Deflate") )
     cl7::byte_vector compressed_data;
     cl7::byte_vector result_data;
 
-    dl7::compression::Deflate deflate;
-    deflate.compress( source_data, compressed_data );
-    deflate.decompress( compressed_data, result_data );
+    dl7::compression::Deflate::compress( source_data, compressed_data );
+    dl7::compression::Deflate::decompress( compressed_data, result_data );
 
     cl7::astring result_string = cl7::strings::to_ascii( result_data );
 

@@ -12,12 +12,11 @@
 
 
 
-namespace tl7 {
-namespace internals {
+namespace tl7::internals {
     inline
     cl7::string to_string(const cl7::Version& version) { return TEXT("{\"") + version.to_string() + TEXT("\"}"); }
 }
-}
+
 
 
 

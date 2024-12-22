@@ -12,11 +12,9 @@
 
 
 
-namespace tl7 {
-namespace internals {
+namespace tl7::internals {
     inline
     cl7::string to_string(const cl7::Guid& guid) { return guid.to_string(); }
-}
 }
 
 
@@ -43,7 +41,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Guid:  to_string/parse") )
 
         cl7::Guid guid;
 
-        if ( entry.bytes.size() > 0 )
+        if ( !entry.bytes.empty() )
         {
             TESTLABS_ASSERT_EQ( entry.bytes.size(), 16 );
 

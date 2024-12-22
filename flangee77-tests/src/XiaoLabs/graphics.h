@@ -21,7 +21,7 @@
 
 
 
-bool operator == (const xl7::graphics::PixelBitKit::Channel& lhs, const xl7::graphics::PixelBitKit::Channel& rhs)
+inline bool operator == (const xl7::graphics::PixelBitKit::Channel& lhs, const xl7::graphics::PixelBitKit::Channel& rhs)
 {
     return
         lhs.index == rhs.index &&
@@ -33,8 +33,7 @@ bool operator == (const xl7::graphics::PixelBitKit::Channel& lhs, const xl7::gra
 
 
 
-namespace tl7 {
-namespace internals {
+namespace tl7::internals {
     inline
     cl7::string to_string(const xl7::graphics::shaders::ShaderCode::Language& shader_language)
     {
@@ -72,7 +71,6 @@ namespace internals {
 
     inline
     cl7::string to_string(const xl7::graphics::PixelBitKit::Channel& channel) { return TEXT("{") + cl7::to_string(channel.index) + TEXT(", ") + cl7::to_string(channel.depth) + TEXT(", ") + cl7::to_string(channel.offset) + TEXT(", ") + (channel.mask ? cl7::strings::to_0xhex(channel.mask, TEXT('a')) : TEXT("0")) + TEXT(", ") + (channel.mask0 ? cl7::strings::to_0xhex(channel.mask0, TEXT('a')) : TEXT("0")) + TEXT("}"); }
-}
 }
 
 
@@ -572,7 +570,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageProcessor") )
         if ( depth <= 16 )
             return 3;
         // => depth > 16
-            return 4;
+        return     4;
     };
 
 
@@ -649,7 +647,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
         if ( depth <= 16 )
             return 3;
         // => depth > 16
-            return 4;
+        return     4;
     };
 
 
@@ -868,12 +866,6 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageResizer") )
 
 TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
 {
-    xl7::graphics::impl::shared::shaders::D3DShaderCompiler d3d_shader_compiler;
-    xl7::graphics::impl::direct3d9::shaders::D3DShaderReflection d3d9_shader_reflection;
-#if defined(_MSC_VER)
-    xl7::graphics::impl::direct3d11::shaders::D3DShaderReflection d3d11_shader_reflection;
-#endif
-
     enum class ImplType
     {
         Direct3D9,
@@ -904,17 +896,17 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
 
         const cl7::string file_path = cl7::filesystem::get_working_directory() + TEXT("assets/shaders/") + cl7::strings::from_ascii(entry.filename);
 
-        xl7::graphics::shaders::ShaderCode bytecode = d3d_shader_compiler.compile_hlsl_code( file_path, {}, entry.entry_point, entry.target );
+        xl7::graphics::shaders::ShaderCode bytecode = xl7::graphics::impl::shared::shaders::D3DShaderCompiler::compile_hlsl_code( file_path, {}, entry.entry_point, entry.target );
         xl7::graphics::shaders::ReflectionResult reflection_result;
         bool reflection_success;
         switch ( entry.impl_type )
         {
         case ImplType::Direct3D9:
-            reflection_success = d3d9_shader_reflection.reflect( bytecode, reflection_result );
+            reflection_success = xl7::graphics::impl::direct3d9::shaders::D3DShaderReflection::reflect( bytecode, reflection_result );
             break;
 #if defined(_MSC_VER)
         case ImplType::Direct3D11:
-            reflection_success = d3d11_shader_reflection.reflect( bytecode, reflection_result );
+            reflection_success = xl7::graphics::impl::direct3d11::shaders::D3DShaderReflection::reflect( bytecode, reflection_result );
             break;
 #endif
         default:
