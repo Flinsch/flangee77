@@ -57,9 +57,9 @@ public:
     Texture() = delete;
 
     Texture(const Texture&) = delete;
-    Texture& operator = (const Texture&) = delete;
+    Texture& operator=(const Texture&) = delete;
     Texture(Texture&&) = delete;
-    Texture& operator = (Texture&&) = delete;
+    Texture& operator=(Texture&&) = delete;
 
 
 

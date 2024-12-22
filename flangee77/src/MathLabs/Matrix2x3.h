@@ -275,8 +275,8 @@ struct Matrix2x3
     // Comparison Operators
     // #############################################################################
 
-    bool operator == (const Matrix2x3& m) const { for (unsigned k = 0; k < 6; ++k) if (data[k] != m.data[k]) return false; return true; }
-    bool operator != (const Matrix2x3& m) const { for (unsigned k = 0; k < 6; ++k) if (data[k] != m.data[k]) return true; return false; }
+    bool operator==(const Matrix2x3& m) const { for (unsigned k = 0; k < 6; ++k) if (data[k] != m.data[k]) return false; return true; }
+    bool operator!=(const Matrix2x3& m) const { for (unsigned k = 0; k < 6; ++k) if (data[k] != m.data[k]) return true; return false; }
 
 
 
@@ -285,22 +285,22 @@ struct Matrix2x3
     // #############################################################################
 
     /** Returns a copy of this matrix unmodified. */
-    constexpr Matrix2x3 operator + () const { return *this; }
+    constexpr Matrix2x3 operator+() const { return *this; }
     /** Returns a copy of this matrix with the signs of the elements flipped. */
-    constexpr Matrix2x3 operator - () const { return {-a, -b, -c, -d, -e, -f}; }
+    constexpr Matrix2x3 operator-() const { return {-a, -b, -c, -d, -e, -f}; }
 
     /** Returns the (element-wise) matrix sum of two matrices. */
-    constexpr Matrix2x3 operator + (const Matrix2x3& m) const { return {a + m.a, b + m.b, c + m.c, d + m.d, e + m.e, f + m.f}; }
+    constexpr Matrix2x3 operator+(const Matrix2x3& m) const { return {a + m.a, b + m.b, c + m.c, d + m.d, e + m.e, f + m.f}; }
     /** Returns the (element-wise) matrix difference of two matrices. */
-    constexpr Matrix2x3 operator - (const Matrix2x3& m) const { return {a - m.a, b - m.b, c - m.c, d - m.d, e - m.e, f - m.f}; }
+    constexpr Matrix2x3 operator-(const Matrix2x3& m) const { return {a - m.a, b - m.b, c - m.c, d - m.d, e - m.e, f - m.f}; }
 
     /** Returns a copy of this matrix "scaled" by the specified factor (scalar multiplication). */
-    constexpr Matrix2x3 operator * (float s) const { return {a * s, b * s, c * s, d * s, e * s, f * s}; }
+    constexpr Matrix2x3 operator*(float s) const { return {a * s, b * s, c * s, d * s, e * s, f * s}; }
     /** Returns a copy of this matrix inversely "scaled" by the specified factor (scalar division). */
-    constexpr Matrix2x3 operator / (float s) const { return {a / s, b / s, c / s, d / s, e / s, f / s}; }
+    constexpr Matrix2x3 operator/(float s) const { return {a / s, b / s, c / s, d / s, e / s, f / s}; }
 
     /** Returns the matrix product of two matrices (matrix multiplication). */
-    constexpr Matrix2x3 operator * (const Matrix2x3& m) const
+    constexpr Matrix2x3 operator*(const Matrix2x3& m) const
     {
         return {
             _11*m._11 + _12*m._21,   _11*m._12 + _12*m._22,   _11*m._13 + _12*m._23 + _13,
@@ -309,7 +309,7 @@ struct Matrix2x3
     }
 
     /** Returns a copy of the given (column vector) transformed by this matrix. */
-    constexpr Vector2 operator * (const Vector2& v) const { return transform(v); }
+    constexpr Vector2 operator*(const Vector2& v) const { return transform(v); }
 
 
 
@@ -318,14 +318,14 @@ struct Matrix2x3
     // #############################################################################
 
     /** Adds the given matrix to this one, resulting in the (element-wise) matrix sum. */
-    constexpr Matrix2x3& operator += (const Matrix2x3& m) { for (unsigned k = 0; k < 6; ++k) data[k] += m.data[k]; return *this; }
+    constexpr Matrix2x3& operator+=(const Matrix2x3& m) { for (unsigned k = 0; k < 6; ++k) data[k] += m.data[k]; return *this; }
     /** Subtracts the given matrix from this one, resulting in the (element-wise) matrix difference. */
-    constexpr Matrix2x3& operator -= (const Matrix2x3& m) { for (unsigned k = 0; k < 6; ++k) data[k] -= m.data[k]; return *this; }
+    constexpr Matrix2x3& operator-=(const Matrix2x3& m) { for (unsigned k = 0; k < 6; ++k) data[k] -= m.data[k]; return *this; }
 
     /** "Scales" this matrix by the specified factor (scalar multiplication). */
-    constexpr Matrix2x3& operator *= (float s) { for (float& k : data) k *= s; return *this; }
+    constexpr Matrix2x3& operator*=(float s) { for (float& k : data) k *= s; return *this; }
     /** Inversely "scales" this matrix by the specified factor (scalar division). */
-    constexpr Matrix2x3& operator /= (float s) { for (float& k : data) k /= s; return *this; }
+    constexpr Matrix2x3& operator/=(float s) { for (float& k : data) k /= s; return *this; }
 
 
 
@@ -333,8 +333,8 @@ struct Matrix2x3
     // Access Operators
     // #############################################################################
 
-    const float* operator [] (unsigned i) const { assert(i < 2); return m[i]; }
-    float* operator [] (unsigned i) { assert(i < 2); return m[i]; }
+    const float* operator[](unsigned i) const { assert(i < 2); return m[i]; }
+    float* operator[](unsigned i) { assert(i < 2); return m[i]; }
 
 
 
@@ -438,7 +438,7 @@ struct Matrix2x3
     // #############################################################################
 
     /** "Scales" a matrix by the specified factor (scalar multiplication). */
-    constexpr Matrix2x3 operator * (float s, const Matrix2x3& m) { return m * s; }
+    constexpr Matrix2x3 operator*(float s, const Matrix2x3& m) { return m * s; }
 
 
 

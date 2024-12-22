@@ -293,13 +293,13 @@ struct Vector3
     // Comparison Operators
     // #############################################################################
 
-    bool operator == (const Vector3& v) const { return (x == v.x) && (y == v.y) && (z == v.z); }
-    bool operator != (const Vector3& v) const { return (x != v.x) || (y != v.y) || (z != v.z); }
+    bool operator==(const Vector3& v) const { return (x == v.x) && (y == v.y) && (z == v.z); }
+    bool operator!=(const Vector3& v) const { return (x != v.x) || (y != v.y) || (z != v.z); }
 
     /**
      * Checks if this vector is component-by-component less than a given vector v.
      */
-    bool operator < (const Vector3& v) const
+    bool operator<(const Vector3& v) const
     {
         return (x < v.x) && (y < v.y) && (z < v.z);
     }
@@ -307,7 +307,7 @@ struct Vector3
     /**
      * Checks if this vector is component-by-component greater than a given vector v.
      */
-    bool operator > (const Vector3& v) const
+    bool operator>(const Vector3& v) const
     {
         return (x > v.x) && (y > v.y) && (z > v.z);
     }
@@ -316,7 +316,7 @@ struct Vector3
      * Checks if this vector is component-by-component less than or equal to a given
      * vector v.
      */
-    bool operator <= (const Vector3& v) const
+    bool operator<=(const Vector3& v) const
     {
         return (x <= v.x) && (y <= v.y) && (z <= v.z);
     }
@@ -325,7 +325,7 @@ struct Vector3
      * Checks if this vector is component-by-component greater than or equal to a
      * given vector v.
      */
-    bool operator >= (const Vector3& v) const
+    bool operator>=(const Vector3& v) const
     {
         return (x >= v.x) && (y >= v.y) && (z >= v.z);
     }
@@ -337,24 +337,24 @@ struct Vector3
     // #############################################################################
 
     /** Returns a copy of this vector unmodified. */
-    constexpr Vector3 operator + () const { return *this; }
+    constexpr Vector3 operator+() const { return *this; }
     /** Returns a copy of this vector with the signs of the elements flipped. */
-    constexpr Vector3 operator - () const { return {-x, -y, -z}; }
+    constexpr Vector3 operator-() const { return {-x, -y, -z}; }
 
     /** Returns the (component-wise) vector sum of two vectors. */
-    constexpr Vector3 operator + (const Vector3& v) const { return {x + v.x, y + v.y, z + v.z}; }
+    constexpr Vector3 operator+(const Vector3& v) const { return {x + v.x, y + v.y, z + v.z}; }
     /** Returns the (component-wise) vector difference of two vectors. */
-    constexpr Vector3 operator - (const Vector3& v) const { return {x - v.x, y - v.y, z - v.z}; }
+    constexpr Vector3 operator-(const Vector3& v) const { return {x - v.x, y - v.y, z - v.z}; }
 
     /** Returns the (component-wise) Hadamard product of two vectors. */
-    constexpr Vector3 operator * (const Vector3& v) const { return {x * v.x, y * v.y, z * v.z}; }
+    constexpr Vector3 operator*(const Vector3& v) const { return {x * v.x, y * v.y, z * v.z}; }
     /** Returns the (component-wise) Hadamard quotient of two vectors. */
-    constexpr Vector3 operator / (const Vector3& v) const { return {x / v.x, y / v.y, z / v.z}; }
+    constexpr Vector3 operator/(const Vector3& v) const { return {x / v.x, y / v.y, z / v.z}; }
 
     /** Returns a copy of this vector scaled by the specified factor (scalar multiplication). */
-    constexpr Vector3 operator * (float s) const { return {x * s, y * s, z * s}; }
+    constexpr Vector3 operator*(float s) const { return {x * s, y * s, z * s}; }
     /** Returns a copy of this vector inversely scaled by the specified factor (scalar division). */
-    constexpr Vector3 operator / (float s) const { return {x / s, y / s, z / s}; }
+    constexpr Vector3 operator/(float s) const { return {x / s, y / s, z / s}; }
 
 
 
@@ -363,19 +363,19 @@ struct Vector3
     // #############################################################################
 
     /** Adds the given vector to this one, resulting in the (component-wise) vector sum. */
-    constexpr Vector3& operator += (const Vector3& v) { x += v.x; y += v.y; z += v.z; return *this; }
+    constexpr Vector3& operator+=(const Vector3& v) { x += v.x; y += v.y; z += v.z; return *this; }
     /** Subtracts the given vector from this one, resulting in the (component-wise) vector difference. */
-    constexpr Vector3& operator -= (const Vector3& v) { x -= v.x; y -= v.y; z -= v.z; return *this; }
+    constexpr Vector3& operator-=(const Vector3& v) { x -= v.x; y -= v.y; z -= v.z; return *this; }
 
     /** Multiplies the given vector with this one, resulting in the (component-wise) Hadamard product. */
-    constexpr Vector3& operator *= (const Vector3& v) { x *= v.x; y *= v.y; z *= v.z; return *this; }
+    constexpr Vector3& operator*=(const Vector3& v) { x *= v.x; y *= v.y; z *= v.z; return *this; }
     /** Divides this vector by the given one, resulting in the (component-wise) Hadamard quotient. */
-    constexpr Vector3& operator /= (const Vector3& v) { x /= v.x; y /= v.y; z /= v.z; return *this; }
+    constexpr Vector3& operator/=(const Vector3& v) { x /= v.x; y /= v.y; z /= v.z; return *this; }
 
     /** Scales this vector by the specified factor (scalar multiplication). */
-    constexpr Vector3& operator *= (float s) { x *= s; y *= s; z *= s; return *this; }
+    constexpr Vector3& operator*=(float s) { x *= s; y *= s; z *= s; return *this; }
     /** Inversely scales this vector by the specified factor (scalar division). */
-    constexpr Vector3& operator /= (float s) { x /= s; y /= s; z /= s; return *this; }
+    constexpr Vector3& operator/=(float s) { x /= s; y /= s; z /= s; return *this; }
 
 
 
@@ -383,8 +383,8 @@ struct Vector3
     // Access Operators
     // #############################################################################
 
-    float operator [] (unsigned i) const { assert(i < 3); return data[i]; }
-    float& operator [] (unsigned i) { assert(i < 3); return data[i]; }
+    float operator[](unsigned i) const { assert(i < 3); return data[i]; }
+    float& operator[](unsigned i) { assert(i < 3); return data[i]; }
 
 
 
@@ -424,7 +424,7 @@ struct Vector3
 
     struct less
     {
-        bool operator () (const ml7::Vector3& a, const ml7::Vector3& b) const
+        bool operator()(const ml7::Vector3& a, const ml7::Vector3& b) const
         {
             if (a.x < b.x) return true;
             if (a.x > b.x) return false;
@@ -443,7 +443,7 @@ struct Vector3
     // #############################################################################
 
     /** Scales a vector by the specified factor (scalar multiplication). */
-    constexpr Vector3 operator * (float s, const Vector3& v) { return v * s; }
+    constexpr Vector3 operator*(float s, const Vector3& v) { return v * s; }
 
 
 

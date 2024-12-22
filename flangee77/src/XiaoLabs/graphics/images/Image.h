@@ -82,7 +82,7 @@ public:
      * Copy assignment operator. Creates a buffer and duplicates the data regardless
      * of whether the other image is "view only".
      */
-    Image& operator = (const Image& other);
+    Image& operator=(const Image& other);
 
     /**
      * Move constructor.

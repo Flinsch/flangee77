@@ -17,9 +17,9 @@ public:
     PixelShader() = delete;
 
     PixelShader(const PixelShader&) = delete;
-    PixelShader& operator = (const PixelShader&) = delete;
+    PixelShader& operator=(const PixelShader&) = delete;
     PixelShader(PixelShader&&) = delete;
-    PixelShader& operator = (PixelShader&&) = delete;
+    PixelShader& operator=(PixelShader&&) = delete;
 
 
 

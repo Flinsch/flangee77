@@ -193,7 +193,7 @@ struct Color
      * unsigned-integer representation, even if the floating point values should be
      * different.
      */
-    constexpr bool operator == (const Color& c) const { return ((r == c.r) && (g == c.g) && (b == c.b) && (a == c.a)) || to_rgba32() == c.to_rgba32(); }
+    constexpr bool operator==(const Color& c) const { return ((r == c.r) && (g == c.g) && (b == c.b) && (a == c.a)) || to_rgba32() == c.to_rgba32(); }
 
     /**
      * Checks whether two colors are unequal. The comparison is quite fuzzy:
@@ -201,7 +201,7 @@ struct Color
      * the colors must also differ in terms of their 32-bit unsigned-integer
      * representation.
      */
-    constexpr bool operator != (const Color& c) const { return ((r != c.r) || (b != c.g) || (b != c.b) || (a != c.a)) && to_rgba32() != c.to_rgba32(); }
+    constexpr bool operator!=(const Color& c) const { return ((r != c.r) || (b != c.g) || (b != c.b) || (a != c.a)) && to_rgba32() != c.to_rgba32(); }
 
 
 
@@ -209,17 +209,17 @@ struct Color
     // Arithmetic Operators
     // #############################################################################
 
-    constexpr Color operator + () const { return *this; }
-    constexpr Color operator - () const { return {-r, -g, -b, -a}; }
+    constexpr Color operator+() const { return *this; }
+    constexpr Color operator-() const { return {-r, -g, -b, -a}; }
 
-    constexpr Color operator + (const Color& c) const { return {r + c.r, g + c.g, b + c.b, a + c.a}; }
-    constexpr Color operator - (const Color& c) const { return {r - c.r, g - c.g, b - c.b, a - c.a}; }
+    constexpr Color operator+(const Color& c) const { return {r + c.r, g + c.g, b + c.b, a + c.a}; }
+    constexpr Color operator-(const Color& c) const { return {r - c.r, g - c.g, b - c.b, a - c.a}; }
 
-    constexpr Color operator * (const Color& c) const { return {r * c.r, g * c.g, b * c.b, a * c.a}; }
-    constexpr Color operator / (const Color& c) const { return {r / c.r, g / c.g, b / c.b, a / c.a}; }
+    constexpr Color operator*(const Color& c) const { return {r * c.r, g * c.g, b * c.b, a * c.a}; }
+    constexpr Color operator/(const Color& c) const { return {r / c.r, g / c.g, b / c.b, a / c.a}; }
 
-    constexpr Color operator * (float s) const { return {r * s, g * s, b * s, a * s}; }
-    constexpr Color operator / (float s) const { return {r / s, g / s, b / s, a / s}; }
+    constexpr Color operator*(float s) const { return {r * s, g * s, b * s, a * s}; }
+    constexpr Color operator/(float s) const { return {r / s, g / s, b / s, a / s}; }
 
 
 
@@ -227,14 +227,14 @@ struct Color
     // Arithmetic Assignment Operators
     // #############################################################################
 
-    constexpr Color& operator += (const Color& c) { r += c.r; g += c.g; b += c.b; a += c.a; return *this; }
-    constexpr Color& operator -= (const Color& c) { r -= c.r; g -= c.g; b -= c.b; a -= c.a; return *this; }
+    constexpr Color& operator+=(const Color& c) { r += c.r; g += c.g; b += c.b; a += c.a; return *this; }
+    constexpr Color& operator-=(const Color& c) { r -= c.r; g -= c.g; b -= c.b; a -= c.a; return *this; }
 
-    constexpr Color& operator *= (const Color& c) { r *= c.r; g *= c.g; b *= c.b; a *= c.a; return *this; }
-    constexpr Color& operator /= (const Color& c) { r /= c.r; g /= c.g; b /= c.b; a /= c.a; return *this; }
+    constexpr Color& operator*=(const Color& c) { r *= c.r; g *= c.g; b *= c.b; a *= c.a; return *this; }
+    constexpr Color& operator/=(const Color& c) { r /= c.r; g /= c.g; b /= c.b; a /= c.a; return *this; }
 
-    constexpr Color& operator *= (float s) { r *= s; g *= s; b *= s; a *= s; return *this; }
-    constexpr Color& operator /= (float s) { r /= s; g /= s; b /= s; a /= s; return *this; }
+    constexpr Color& operator*=(float s) { r *= s; g *= s; b *= s; a *= s; return *this; }
+    constexpr Color& operator/=(float s) { r /= s; g /= s; b /= s; a /= s; return *this; }
 
 
 
@@ -242,8 +242,8 @@ struct Color
     // Access Operators
     // #############################################################################
 
-    float operator [] (unsigned i) const { assert(i < 4); return get_rgba_ptr()[i]; }
-    float& operator [] (unsigned i) { assert(i < 4); return get_rgba_ptr()[i]; }
+    float operator[](unsigned i) const { assert(i < 4); return get_rgba_ptr()[i]; }
+    float& operator[](unsigned i) { assert(i < 4); return get_rgba_ptr()[i]; }
 
 
 
@@ -292,7 +292,7 @@ private:
     // Additional Operators
     // #############################################################################
 
-    constexpr Color operator * (float s, const Color& c) { return {s * c.r, s * c.g, s * c.b, s * c.a}; }
+    constexpr Color operator*(float s, const Color& c) { return {s * c.r, s * c.g, s * c.b, s * c.a}; }
 
 
 

@@ -32,9 +32,9 @@ public:
     ConstantBuffer() = delete;
 
     ConstantBuffer(const ConstantBuffer&) = delete;
-    ConstantBuffer& operator = (const ConstantBuffer&) = delete;
+    ConstantBuffer& operator=(const ConstantBuffer&) = delete;
     ConstantBuffer(ConstantBuffer&&) = delete;
-    ConstantBuffer& operator = (ConstantBuffer&&) = delete;
+    ConstantBuffer& operator=(ConstantBuffer&&) = delete;
 
 
 

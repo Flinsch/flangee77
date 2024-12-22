@@ -6,7 +6,7 @@ namespace tl7 {
 
 
 
-    bool Signature::operator == (const Signature& rhs) const
+    bool Signature::operator==(const Signature& rhs) const
     {
         assert(file_path == rhs.file_path || cl7::string_view(file_path) == cl7::string_view(rhs.file_path));
         return line_number == rhs.line_number && iteration_number == rhs.iteration_number;
@@ -14,7 +14,7 @@ namespace tl7 {
 
 
 
-    size_t Signature::hash::operator () (const Signature& sig) const
+    size_t Signature::hash::operator()(const Signature& sig) const
     {
         constexpr auto s = sizeof(size_t) / 2 * 8;
         constexpr size_t m = (size_t{1} << s) - 1;
@@ -25,7 +25,7 @@ namespace tl7 {
         return (hi << s) | lo;
     }
 
-    bool Signature::equal_to::operator () (const Signature& sig1, const Signature& sig2) const
+    bool Signature::equal_to::operator()(const Signature& sig1, const Signature& sig2) const
     {
         return sig1 == sig2;
     }

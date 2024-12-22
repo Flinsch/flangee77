@@ -26,9 +26,9 @@ public:
     MyApp(int argc, cl7::char_type* argv[]);
 
     MyApp(const MyApp&) = delete;
-    MyApp& operator = (const MyApp&) = delete;
+    MyApp& operator=(const MyApp&) = delete;
     MyApp(MyApp&&) = delete;
-    MyApp& operator = (MyApp&&) = delete;
+    MyApp& operator=(MyApp&&) = delete;
 
     ~MyApp() override = default;
 

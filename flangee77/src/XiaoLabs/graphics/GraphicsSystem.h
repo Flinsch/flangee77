@@ -39,9 +39,9 @@ class GraphicsSystem // NOLINT(*-virtual-class-destructor)
 
 public:
     GraphicsSystem(const GraphicsSystem&) = delete;
-    GraphicsSystem& operator = (const GraphicsSystem&) = delete;
+    GraphicsSystem& operator=(const GraphicsSystem&) = delete;
     GraphicsSystem(GraphicsSystem&&) = delete;
-    GraphicsSystem& operator = (GraphicsSystem&&) = delete;
+    GraphicsSystem& operator=(GraphicsSystem&&) = delete;
 
 
 

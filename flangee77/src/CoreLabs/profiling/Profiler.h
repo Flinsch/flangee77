@@ -24,9 +24,9 @@ public:
     Profiler(const cl7::astring& sample_name, Registry* registry);
 
     Profiler(const Profiler&) = delete;
-    Profiler& operator = (const Profiler&) = delete;
+    Profiler& operator=(const Profiler&) = delete;
     Profiler(Profiler&&) = delete;
-    Profiler& operator = (Profiler&&) = delete;
+    Profiler& operator=(Profiler&&) = delete;
 
     ~Profiler();
 

@@ -27,9 +27,9 @@ public:
 
 
     Component(const Component&) = delete;
-    Component& operator = (const Component&) = delete;
+    Component& operator=(const Component&) = delete;
     Component(Component&&) = delete;
-    Component& operator = (Component&&) = delete;
+    Component& operator=(Component&&) = delete;
 
 
 

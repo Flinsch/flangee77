@@ -29,9 +29,9 @@ public:
     VertexBufferImpl() = delete;
 
     VertexBufferImpl(const VertexBufferImpl&) = delete;
-    VertexBufferImpl& operator = (const VertexBufferImpl&) = delete;
+    VertexBufferImpl& operator=(const VertexBufferImpl&) = delete;
     VertexBufferImpl(VertexBufferImpl&&) = delete;
-    VertexBufferImpl& operator = (VertexBufferImpl&&) = delete;
+    VertexBufferImpl& operator=(VertexBufferImpl&&) = delete;
 
 
 

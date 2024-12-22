@@ -21,9 +21,9 @@ public:
     GenericLexer(const TerminalSymbolCollection* terminal_symbols, Options options);
 
     GenericLexer(const GenericLexer&) = delete;
-    GenericLexer& operator = (const GenericLexer&) = delete;
+    GenericLexer& operator=(const GenericLexer&) = delete;
     GenericLexer(GenericLexer&&) = delete;
-    GenericLexer& operator = (GenericLexer&&) = delete;
+    GenericLexer& operator=(GenericLexer&&) = delete;
 
     ~GenericLexer() override = default;
 

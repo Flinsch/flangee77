@@ -30,10 +30,10 @@ public:
     D3DConstantBufferWrapper(xl7::graphics::shaders::ConstantBufferLayout layout);
 
     D3DConstantBufferWrapper(const D3DConstantBufferWrapper&) = delete;
-    D3DConstantBufferWrapper& operator = (const D3DConstantBufferWrapper&) = delete;
+    D3DConstantBufferWrapper& operator=(const D3DConstantBufferWrapper&) = delete;
 
     D3DConstantBufferWrapper(D3DConstantBufferWrapper&&) = default;
-    D3DConstantBufferWrapper& operator = (D3DConstantBufferWrapper&&) = default;
+    D3DConstantBufferWrapper& operator=(D3DConstantBufferWrapper&&) = default;
 
     ~D3DConstantBufferWrapper();
 

@@ -80,7 +80,7 @@ private:
         unsigned consecutive_number;
         reporting::IListener* listener;
 
-        auto operator <=> (const ListenerEntry& rhs) const;
+        auto operator<=>(const ListenerEntry& rhs) const;
     }; // struct ListenerEntry
 
 

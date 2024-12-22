@@ -43,9 +43,9 @@ public:
     MeshBuffer() = delete;
 
     MeshBuffer(const MeshBuffer&) = delete;
-    MeshBuffer& operator = (const MeshBuffer&) = delete;
+    MeshBuffer& operator=(const MeshBuffer&) = delete;
     MeshBuffer(MeshBuffer&&) = delete;
-    MeshBuffer& operator = (MeshBuffer&&) = delete;
+    MeshBuffer& operator=(MeshBuffer&&) = delete;
 
 
 

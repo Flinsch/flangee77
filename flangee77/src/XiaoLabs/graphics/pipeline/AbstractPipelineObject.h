@@ -57,7 +57,7 @@ protected:
             unsigned index;
             TProxy value;
 
-            auto operator <=> (unsigned index) const { return this->index <=> index; }
+            auto operator<=>(unsigned index) const { return this->index <=> index; }
         };
         std::vector<Entry> v;
 

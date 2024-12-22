@@ -34,19 +34,19 @@ struct Signature
 
 
 
-    bool operator == (const Signature& rhs) const;
-    auto operator <=> (const Signature& rhs) const = default;
+    bool operator==(const Signature& rhs) const;
+    auto operator<=>(const Signature& rhs) const = default;
 
 
 
     struct hash
     {
-        size_t operator () (const Signature& sig) const;
+        size_t operator()(const Signature& sig) const;
     };
 
     struct equal_to
     {
-        bool operator () (const Signature& sig1, const Signature& sig2) const;
+        bool operator()(const Signature& sig1, const Signature& sig2) const;
     };
 
 }; // struct Signature

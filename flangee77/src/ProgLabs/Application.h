@@ -26,9 +26,9 @@ public:
     Application(ArgumentBag argument_bag);
 
     Application(const Application&) = delete;
-    Application& operator = (const Application&) = delete;
+    Application& operator=(const Application&) = delete;
     Application(Application&&) = delete;
-    Application& operator = (Application&&) = delete;
+    Application& operator=(Application&&) = delete;
 
     virtual ~Application() = default;
 

@@ -34,9 +34,9 @@ public:
     RenderingContextImpl() = delete;
 
     RenderingContextImpl(const RenderingContextImpl&) = delete;
-    RenderingContextImpl& operator = (const RenderingContextImpl&) = delete;
+    RenderingContextImpl& operator=(const RenderingContextImpl&) = delete;
     RenderingContextImpl(RenderingContextImpl&&) = delete;
-    RenderingContextImpl& operator = (RenderingContextImpl&&) = delete;
+    RenderingContextImpl& operator=(RenderingContextImpl&&) = delete;
 
 
 

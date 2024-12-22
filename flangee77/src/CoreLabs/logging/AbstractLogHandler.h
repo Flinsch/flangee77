@@ -22,9 +22,9 @@ public:
     AbstractLogHandler() = default;
 
     AbstractLogHandler(const AbstractLogHandler&) = delete;
-    AbstractLogHandler& operator = (const AbstractLogHandler&) = delete;
+    AbstractLogHandler& operator=(const AbstractLogHandler&) = delete;
     AbstractLogHandler(AbstractLogHandler&&) = delete;
-    AbstractLogHandler& operator = (AbstractLogHandler&&) = delete;
+    AbstractLogHandler& operator=(AbstractLogHandler&&) = delete;
 
     virtual ~AbstractLogHandler() = default;
 

@@ -17,9 +17,9 @@ public:
     ColorRenderTarget() = delete;
 
     ColorRenderTarget(const ColorRenderTarget&) = delete;
-    ColorRenderTarget& operator = (const ColorRenderTarget&) = delete;
+    ColorRenderTarget& operator=(const ColorRenderTarget&) = delete;
     ColorRenderTarget(ColorRenderTarget&&) = delete;
-    ColorRenderTarget& operator = (ColorRenderTarget&&) = delete;
+    ColorRenderTarget& operator=(ColorRenderTarget&&) = delete;
 
 
 

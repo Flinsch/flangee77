@@ -18,9 +18,9 @@ class GraphicsSystemImpl final
 
 public:
     GraphicsSystemImpl(const GraphicsSystemImpl&) = delete;
-    GraphicsSystemImpl& operator = (const GraphicsSystemImpl&) = delete;
+    GraphicsSystemImpl& operator=(const GraphicsSystemImpl&) = delete;
     GraphicsSystemImpl(GraphicsSystemImpl&&) = delete;
-    GraphicsSystemImpl& operator = (GraphicsSystemImpl&&) = delete;
+    GraphicsSystemImpl& operator=(GraphicsSystemImpl&&) = delete;
 
 
 

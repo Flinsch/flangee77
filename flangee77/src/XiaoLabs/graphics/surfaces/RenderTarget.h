@@ -19,9 +19,9 @@ public:
     RenderTarget() = delete;
 
     RenderTarget(const RenderTarget&) = delete;
-    RenderTarget& operator = (const RenderTarget&) = delete;
+    RenderTarget& operator=(const RenderTarget&) = delete;
     RenderTarget(RenderTarget&&) = delete;
-    RenderTarget& operator = (RenderTarget&&) = delete;
+    RenderTarget& operator=(RenderTarget&&) = delete;
 
 
 

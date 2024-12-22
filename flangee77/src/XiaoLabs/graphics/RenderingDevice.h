@@ -100,9 +100,9 @@ public:
     RenderingDevice() = delete;
 
     RenderingDevice(const RenderingDevice&) = delete;
-    RenderingDevice& operator = (const RenderingDevice&) = delete;
+    RenderingDevice& operator=(const RenderingDevice&) = delete;
     RenderingDevice(RenderingDevice&&) = delete;
-    RenderingDevice& operator = (RenderingDevice&&) = delete;
+    RenderingDevice& operator=(RenderingDevice&&) = delete;
 
 
 

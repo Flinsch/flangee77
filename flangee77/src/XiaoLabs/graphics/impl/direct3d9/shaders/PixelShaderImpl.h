@@ -29,9 +29,9 @@ public:
     PixelShaderImpl() = delete;
 
     PixelShaderImpl(const PixelShaderImpl&) = delete;
-    PixelShaderImpl& operator = (const PixelShaderImpl&) = delete;
+    PixelShaderImpl& operator=(const PixelShaderImpl&) = delete;
     PixelShaderImpl(PixelShaderImpl&&) = delete;
-    PixelShaderImpl& operator = (PixelShaderImpl&&) = delete;
+    PixelShaderImpl& operator=(PixelShaderImpl&&) = delete;
 
 
 

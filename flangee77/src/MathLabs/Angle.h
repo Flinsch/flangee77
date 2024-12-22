@@ -102,14 +102,14 @@ struct Angle
     // Comparison Operators
     // #############################################################################
 
-    bool operator == (Angle a) const { return radians == a.radians; }
-    bool operator != (Angle a) const { return radians != a.radians; }
+    bool operator==(Angle a) const { return radians == a.radians; }
+    bool operator!=(Angle a) const { return radians != a.radians; }
 
-    bool operator < (Angle a) const { return radians < a.radians; }
-    bool operator > (Angle a) const { return radians > a.radians; }
+    bool operator<(Angle a) const { return radians < a.radians; }
+    bool operator>(Angle a) const { return radians > a.radians; }
 
-    bool operator <= (Angle a) const { return radians <= a.radians; }
-    bool operator >= (Angle a) const { return radians >= a.radians; }
+    bool operator<=(Angle a) const { return radians <= a.radians; }
+    bool operator>=(Angle a) const { return radians >= a.radians; }
 
 
 
@@ -118,19 +118,19 @@ struct Angle
     // #############################################################################
 
     /** Returns a copy of this angle unmodified. */
-    constexpr Angle operator + () const { return *this; }
+    constexpr Angle operator+() const { return *this; }
     /** Returns a copy of this angle negated. */
-    constexpr Angle operator - () const { return {-radians}; }
+    constexpr Angle operator-() const { return {-radians}; }
 
     /** Returns the sum of two angles. */
-    constexpr Angle operator + (Angle a) const { return {radians + a.radians}; }
+    constexpr Angle operator+(Angle a) const { return {radians + a.radians}; }
     /** Returns the difference of two angles. */
-    constexpr Angle operator - (Angle a) const { return {radians - a.radians}; }
+    constexpr Angle operator-(Angle a) const { return {radians - a.radians}; }
 
     /** Returns a copy of this angle multiplied by the specified scalar. */
-    constexpr Angle operator * (float s) const { return {radians * s}; }
+    constexpr Angle operator*(float s) const { return {radians * s}; }
     /** Returns a copy of this angle divided by the given scalar. */
-    constexpr Angle operator / (float s) const { return {radians / s}; }
+    constexpr Angle operator/(float s) const { return {radians / s}; }
 
 
 
@@ -139,14 +139,14 @@ struct Angle
     // #############################################################################
 
     /** Adds the given angle to this one. */
-    constexpr Angle& operator += (Angle a) { radians += a.radians; return *this; }
+    constexpr Angle& operator+=(Angle a) { radians += a.radians; return *this; }
     /** Subtracts the given angle from this one. */
-    constexpr Angle& operator -= (Angle a) { radians -= a.radians; return *this; }
+    constexpr Angle& operator-=(Angle a) { radians -= a.radians; return *this; }
 
     /** Multiplies this angle by the specified scalar. */
-    constexpr Angle& operator *= (float s) { radians *= s; return *this; }
+    constexpr Angle& operator*=(float s) { radians *= s; return *this; }
     /** Divides this angle by the specified scalar. */
-    constexpr Angle& operator /= (float s) { radians /= s; return *this; }
+    constexpr Angle& operator/=(float s) { radians /= s; return *this; }
 
 
 
@@ -193,7 +193,7 @@ struct Angle
     /**
      * Scales a given angle by the specified scalar.
      */
-    constexpr Angle operator * (float s, Angle a) { return a * s; }
+    constexpr Angle operator*(float s, Angle a) { return a * s; }
 
 
 

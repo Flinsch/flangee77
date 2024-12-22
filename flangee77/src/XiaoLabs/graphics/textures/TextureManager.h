@@ -30,9 +30,9 @@ public:
     TextureManager() = delete;
 
     TextureManager(const TextureManager&) = delete;
-    TextureManager& operator = (const TextureManager&) = delete;
+    TextureManager& operator=(const TextureManager&) = delete;
     TextureManager(TextureManager&&) = delete;
-    TextureManager& operator = (TextureManager&&) = delete;
+    TextureManager& operator=(TextureManager&&) = delete;
 
 
 

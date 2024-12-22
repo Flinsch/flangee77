@@ -17,9 +17,9 @@ public:
     DepthStencilTarget() = delete;
 
     DepthStencilTarget(const DepthStencilTarget&) = delete;
-    DepthStencilTarget& operator = (const DepthStencilTarget&) = delete;
+    DepthStencilTarget& operator=(const DepthStencilTarget&) = delete;
     DepthStencilTarget(DepthStencilTarget&&) = delete;
-    DepthStencilTarget& operator = (DepthStencilTarget&&) = delete;
+    DepthStencilTarget& operator=(DepthStencilTarget&&) = delete;
 
 
 

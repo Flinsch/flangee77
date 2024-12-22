@@ -250,8 +250,8 @@ struct Quaternion
     // Comparison Operators
     // #############################################################################
 
-    bool operator == (const Quaternion& q) const { return (x == q.x) && (y == q.y) && (z == q.z) && (w == q.w); }
-    bool operator != (const Quaternion& q) const { return (x != q.x) || (y != q.y) || (z != q.z) || (w != q.w); }
+    bool operator==(const Quaternion& q) const { return (x == q.x) && (y == q.y) && (z == q.z) && (w == q.w); }
+    bool operator!=(const Quaternion& q) const { return (x != q.x) || (y != q.y) || (z != q.z) || (w != q.w); }
 
 
 
@@ -260,22 +260,22 @@ struct Quaternion
     // #############################################################################
 
     /** Returns a copy of this quaternion unmodified. */
-    constexpr Quaternion operator + () const { return *this; }
+    constexpr Quaternion operator+() const { return *this; }
     /** Returns a copy of this quaternion with the signs of the components flipped. */
-    constexpr Quaternion operator - () const { return {-x, -y, -z, -w}; }
+    constexpr Quaternion operator-() const { return {-x, -y, -z, -w}; }
 
     /** Returns the (component-wise) sum of two quaternions. */
-    constexpr Quaternion operator + (const Quaternion& v) const { return {x + v.x, y + v.y, z + v.z, w + v.w}; }
+    constexpr Quaternion operator+(const Quaternion& v) const { return {x + v.x, y + v.y, z + v.z, w + v.w}; }
     /** Returns the (component-wise) difference of two quaternions. */
-    constexpr Quaternion operator - (const Quaternion& v) const { return {x - v.x, y - v.y, z - v.z, w - v.w}; }
+    constexpr Quaternion operator-(const Quaternion& v) const { return {x - v.x, y - v.y, z - v.z, w - v.w}; }
 
     /** Returns a copy of this quaternion "scaled" by the specified factor (scalar multiplication). */
-    constexpr Quaternion operator * (float s) const { return {x * s, y * s, z * s, w * s}; }
+    constexpr Quaternion operator*(float s) const { return {x * s, y * s, z * s, w * s}; }
     /** Returns a copy of this quaternion inversely "scaled" by the specified factor (scalar division). */
-    constexpr Quaternion operator / (float s) const { return {x / s, y / s, z / s, w / s}; }
+    constexpr Quaternion operator/(float s) const { return {x / s, y / s, z / s, w / s}; }
 
     /** Returns the quaternion product of two quaternions (quaternion multiplication). */
-    constexpr Quaternion operator * (const Quaternion& q) const
+    constexpr Quaternion operator*(const Quaternion& q) const
     {
         return {
             w*q.x + x*q.w + y*q.z - z*q.y,
@@ -286,7 +286,7 @@ struct Quaternion
     }
 
     /** Returns a copy of the given vector transformed by this quaternion. */
-    Vector3 operator * (const Vector3& v) const { return transform(v); }
+    Vector3 operator*(const Vector3& v) const { return transform(v); }
 
 
 
@@ -295,14 +295,14 @@ struct Quaternion
     // #############################################################################
 
     /** Adds the given quaternion to this one, resulting in the (component-wise) quaternion sum. */
-    constexpr Quaternion& operator += (const Quaternion& v) { x += v.x; y += v.y; z += v.z; w += v.w; return *this; }
+    constexpr Quaternion& operator+=(const Quaternion& v) { x += v.x; y += v.y; z += v.z; w += v.w; return *this; }
     /** Subtracts the given quaternion from this one, resulting in the (component-wise) quaternion difference. */
-    constexpr Quaternion& operator -= (const Quaternion& v) { x -= v.x; y -= v.y; z -= v.z; w -= v.w; return *this; }
+    constexpr Quaternion& operator-=(const Quaternion& v) { x -= v.x; y -= v.y; z -= v.z; w -= v.w; return *this; }
 
     /** "Scales" this quaternion by the specified factor (scalar multiplication). */
-    constexpr Quaternion& operator *= (float s) { x *= s; y *= s; z *= s; w *= s; return *this; }
+    constexpr Quaternion& operator*=(float s) { x *= s; y *= s; z *= s; w *= s; return *this; }
     /** Inversely "scales" this quaternion by the specified factor (scalar division). */
-    constexpr Quaternion& operator /= (float s) { x /= s; y /= s; z /= s; w /= s; return *this; }
+    constexpr Quaternion& operator/=(float s) { x /= s; y /= s; z /= s; w /= s; return *this; }
 
 
 
@@ -310,8 +310,8 @@ struct Quaternion
     // Access Operators
     // #############################################################################
 
-    float operator [] (unsigned i) const { assert(i < 4); return data[i]; }
-    float& operator [] (unsigned i) { assert(i < 4); return data[i]; }
+    float operator[](unsigned i) const { assert(i < 4); return data[i]; }
+    float& operator[](unsigned i) { assert(i < 4); return data[i]; }
 
 
 
@@ -450,7 +450,7 @@ struct Quaternion
     // #############################################################################
 
     /** "Scales" a quaternion by the specified factor (scalar multiplication). */
-    constexpr Quaternion operator * (float s, const Quaternion& q) { return q * s; }
+    constexpr Quaternion operator*(float s, const Quaternion& q) { return q * s; }
 
 
 

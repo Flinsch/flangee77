@@ -39,7 +39,7 @@ struct Guid
     /**
      * Compares two GUID objects.
      */
-    auto operator <=> (const Guid& other) const noexcept = default;
+    auto operator<=>(const Guid& other) const noexcept = default;
 
 
     /**

@@ -21,7 +21,7 @@
 
 
 
-inline bool operator == (const xl7::graphics::PixelBitKit::Channel& lhs, const xl7::graphics::PixelBitKit::Channel& rhs)
+inline bool operator==(const xl7::graphics::PixelBitKit::Channel& lhs, const xl7::graphics::PixelBitKit::Channel& rhs)
 {
     return
         lhs.index == rhs.index &&

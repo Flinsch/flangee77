@@ -312,8 +312,8 @@ struct Matrix3x4
     // Comparison Operators
     // #############################################################################
 
-    bool operator == (const Matrix3x4& m) const { for (unsigned k = 0; k < 12; ++k) if (data[k] != m.data[k]) return false; return true; }
-    bool operator != (const Matrix3x4& m) const { for (unsigned k = 0; k < 12; ++k) if (data[k] != m.data[k]) return true; return false; }
+    bool operator==(const Matrix3x4& m) const { for (unsigned k = 0; k < 12; ++k) if (data[k] != m.data[k]) return false; return true; }
+    bool operator!=(const Matrix3x4& m) const { for (unsigned k = 0; k < 12; ++k) if (data[k] != m.data[k]) return true; return false; }
 
 
 
@@ -322,22 +322,22 @@ struct Matrix3x4
     // #############################################################################
 
     /** Returns a copy of this matrix unmodified. */
-    constexpr Matrix3x4 operator + () const { return *this; }
+    constexpr Matrix3x4 operator+() const { return *this; }
     /** Returns a copy of this matrix with the signs of the elements flipped. */
-    constexpr Matrix3x4 operator - () const { return {-_11, -_12, -_13, -_14, -_21, -_22, -_23, -_24, -_31, -_32, -_33, -_34}; }
+    constexpr Matrix3x4 operator-() const { return {-_11, -_12, -_13, -_14, -_21, -_22, -_23, -_24, -_31, -_32, -_33, -_34}; }
 
     /** Returns the (element-wise) matrix sum of two matrices. */
-    constexpr Matrix3x4 operator + (const Matrix3x4& m) const { return {_11 + m._11, _12 + m._12, _13 + m._13, _14 + m._14, _21 + m._21, _22 + m._22, _23 + m._23, _24 + m._24, _31 + m._31, _32 + m._32, _33 + m._33, _34 + m._34}; }
+    constexpr Matrix3x4 operator+(const Matrix3x4& m) const { return {_11 + m._11, _12 + m._12, _13 + m._13, _14 + m._14, _21 + m._21, _22 + m._22, _23 + m._23, _24 + m._24, _31 + m._31, _32 + m._32, _33 + m._33, _34 + m._34}; }
     /** Returns the (element-wise) matrix difference of two matrices. */
-    constexpr Matrix3x4 operator - (const Matrix3x4& m) const { return {_11 - m._11, _12 - m._12, _13 - m._13, _14 - m._14, _21 - m._21, _22 - m._22, _23 - m._23, _24 - m._24, _31 - m._31, _32 - m._32, _33 - m._33, _34 - m._34}; }
+    constexpr Matrix3x4 operator-(const Matrix3x4& m) const { return {_11 - m._11, _12 - m._12, _13 - m._13, _14 - m._14, _21 - m._21, _22 - m._22, _23 - m._23, _24 - m._24, _31 - m._31, _32 - m._32, _33 - m._33, _34 - m._34}; }
 
     /** Returns a copy of this matrix "scaled" by the specified factor (scalar multiplication). */
-    constexpr Matrix3x4 operator * (float s) const { return {_11 * s, _12 * s, _13 * s, _14 * s, _21 * s, _22 * s, _23 * s, _24 * s, _31 * s, _32 * s, _33 * s, _34 * s}; }
+    constexpr Matrix3x4 operator*(float s) const { return {_11 * s, _12 * s, _13 * s, _14 * s, _21 * s, _22 * s, _23 * s, _24 * s, _31 * s, _32 * s, _33 * s, _34 * s}; }
     /** Returns a copy of this matrix inversely "scaled" by the specified factor (scalar division). */
-    constexpr Matrix3x4 operator / (float s) const { return {_11 / s, _12 / s, _13 / s, _14 / s, _21 / s, _22 / s, _23 / s, _24 / s, _31 / s, _32 / s, _33 / s, _34 / s}; }
+    constexpr Matrix3x4 operator/(float s) const { return {_11 / s, _12 / s, _13 / s, _14 / s, _21 / s, _22 / s, _23 / s, _24 / s, _31 / s, _32 / s, _33 / s, _34 / s}; }
 
     /** Returns the matrix product of two matrices (matrix multiplication). */
-    constexpr Matrix3x4 operator * (const Matrix3x4& m) const
+    constexpr Matrix3x4 operator*(const Matrix3x4& m) const
     {
         return {
             _11*m._11 + _12*m._21 + _13*m._31,   _11*m._12 + _12*m._22 + _13*m._32,   _11*m._13 + _12*m._23 + _13*m._33,   _11*m._14 + _12*m._24 + _13*m._34 + _14,
@@ -347,7 +347,7 @@ struct Matrix3x4
     }
 
     /** Returns a copy of the given (column vector) transformed by this matrix. */
-    constexpr Vector3 operator * (const Vector3& v) const { return transform(v); }
+    constexpr Vector3 operator*(const Vector3& v) const { return transform(v); }
 
 
 
@@ -356,14 +356,14 @@ struct Matrix3x4
     // #############################################################################
 
     /** Adds the given matrix to this one, resulting in the (element-wise) matrix sum. */
-    constexpr Matrix3x4& operator += (const Matrix3x4& m) { for (unsigned k = 0; k < 12; ++k) data[k] += m.data[k]; return *this; }
+    constexpr Matrix3x4& operator+=(const Matrix3x4& m) { for (unsigned k = 0; k < 12; ++k) data[k] += m.data[k]; return *this; }
     /** Subtracts the given matrix from this one, resulting in the (element-wise) matrix difference. */
-    constexpr Matrix3x4& operator -= (const Matrix3x4& m) { for (unsigned k = 0; k < 12; ++k) data[k] -= m.data[k]; return *this; }
+    constexpr Matrix3x4& operator-=(const Matrix3x4& m) { for (unsigned k = 0; k < 12; ++k) data[k] -= m.data[k]; return *this; }
 
     /** "Scales" this matrix by the specified factor (scalar multiplication). */
-    constexpr Matrix3x4& operator *= (float s) { for (float& k : data) k *= s; return *this; }
+    constexpr Matrix3x4& operator*=(float s) { for (float& k : data) k *= s; return *this; }
     /** Inversely "scales" this matrix by the specified factor (scalar division). */
-    constexpr Matrix3x4& operator /= (float s) { for (float& k : data) k /= s; return *this; }
+    constexpr Matrix3x4& operator/=(float s) { for (float& k : data) k /= s; return *this; }
 
 
 
@@ -371,8 +371,8 @@ struct Matrix3x4
     // Access Operators
     // #############################################################################
 
-    const float* operator [] (unsigned i) const { assert(i < 3); return m[i]; }
-    float* operator [] (unsigned i) { assert(i < 3); return m[i]; }
+    const float* operator[](unsigned i) const { assert(i < 3); return m[i]; }
+    float* operator[](unsigned i) { assert(i < 3); return m[i]; }
 
 
 
@@ -578,7 +578,7 @@ struct Matrix3x4
     // #############################################################################
 
     /** "Scales" a matrix by the specified factor (scalar multiplication). */
-    constexpr Matrix3x4 operator * (float s, const Matrix3x4& m) { return m * s; }
+    constexpr Matrix3x4 operator*(float s, const Matrix3x4& m) { return m * s; }
 
 
 

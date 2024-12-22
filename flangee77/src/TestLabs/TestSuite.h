@@ -44,9 +44,9 @@ public:
 
 
     TestSuite(const TestSuite&) = delete;
-    TestSuite& operator = (const TestSuite&) = delete;
+    TestSuite& operator=(const TestSuite&) = delete;
     TestSuite(TestSuite&&) = delete;
-    TestSuite& operator = (TestSuite&&) = delete;
+    TestSuite& operator=(TestSuite&&) = delete;
 
 
 

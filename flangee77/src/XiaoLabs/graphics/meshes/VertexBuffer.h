@@ -34,9 +34,9 @@ public:
     VertexBuffer() = delete;
 
     VertexBuffer(const VertexBuffer&) = delete;
-    VertexBuffer& operator = (const VertexBuffer&) = delete;
+    VertexBuffer& operator=(const VertexBuffer&) = delete;
     VertexBuffer(VertexBuffer&&) = delete;
-    VertexBuffer& operator = (VertexBuffer&&) = delete;
+    VertexBuffer& operator=(VertexBuffer&&) = delete;
 
 
 

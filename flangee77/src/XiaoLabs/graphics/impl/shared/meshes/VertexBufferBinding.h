@@ -19,7 +19,7 @@ struct VertexBufferBinding
 
     VertexBufferBinding();
 
-    bool operator == (const VertexBufferBinding& rhs) const noexcept;
+    bool operator==(const VertexBufferBinding& rhs) const noexcept;
 
     size_t hash() const noexcept;
 
@@ -34,7 +34,7 @@ struct VertexBufferBinding
 template <>
 struct std::hash<xl7::graphics::impl::shared::meshes::VertexBufferBinding>
 {
-    size_t operator () (const xl7::graphics::impl::shared::meshes::VertexBufferBinding& vertex_buffer_binding) const noexcept
+    size_t operator()(const xl7::graphics::impl::shared::meshes::VertexBufferBinding& vertex_buffer_binding) const noexcept
     {
         return vertex_buffer_binding.hash();
     }

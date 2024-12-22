@@ -25,8 +25,8 @@ struct Stats
         void reset();
         void update(bool success);
 
-        Group operator + (const Group& rhs) const;
-        Group& operator += (const Group& rhs);
+        Group operator+(const Group& rhs) const;
+        Group& operator+=(const Group& rhs);
     };
 
     /** The test cases executed. */
@@ -50,8 +50,8 @@ struct Stats
 
     unsigned interim_fail_count() const;
 
-    Stats operator + (const Stats& rhs) const;
-    Stats& operator += (const Stats& rhs);
+    Stats operator+(const Stats& rhs) const;
+    Stats& operator+=(const Stats& rhs);
 
 }; // struct Stats
 

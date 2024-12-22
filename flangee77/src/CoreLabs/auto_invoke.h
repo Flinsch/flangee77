@@ -21,10 +21,10 @@ public:
     explicit auto_invoke(Callable&& callable) noexcept : _callable(std::move(callable)) {}
 
     auto_invoke(const auto_invoke&) = delete;
-    auto_invoke& operator = (const auto_invoke&) = delete;
+    auto_invoke& operator=(const auto_invoke&) = delete;
 
     auto_invoke(auto_invoke&& other) noexcept : _callable(std::move(other._callable)), _invoke(std::exchange(other._invoke, false)) {}
-    auto_invoke& operator = (auto_invoke&& other) noexcept { _callable = std::move(other._callable); _invoke = std::exchange(other._invoke, false); return *this; }
+    auto_invoke& operator=(auto_invoke&& other) noexcept { _callable = std::move(other._callable); _invoke = std::exchange(other._invoke, false); return *this; }
 
     ~auto_invoke() noexcept { if (_invoke) _callable(); }
 

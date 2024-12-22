@@ -31,9 +31,9 @@ public:
     RasterizerStateImpl() = delete;
 
     RasterizerStateImpl(const RasterizerStateImpl&) = delete;
-    RasterizerStateImpl& operator = (const RasterizerStateImpl&) = delete;
+    RasterizerStateImpl& operator=(const RasterizerStateImpl&) = delete;
     RasterizerStateImpl(RasterizerStateImpl&&) = delete;
-    RasterizerStateImpl& operator = (RasterizerStateImpl&&) = delete;
+    RasterizerStateImpl& operator=(RasterizerStateImpl&&) = delete;
 
 
 

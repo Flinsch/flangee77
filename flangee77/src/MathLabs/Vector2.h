@@ -298,13 +298,13 @@ struct Vector2
     // Comparison Operators
     // #############################################################################
 
-    bool operator == (const Vector2& v) const { return (x == v.x) && (y == v.y); }
-    bool operator != (const Vector2& v) const { return (x != v.x) || (y != v.y); }
+    bool operator==(const Vector2& v) const { return (x == v.x) && (y == v.y); }
+    bool operator!=(const Vector2& v) const { return (x != v.x) || (y != v.y); }
 
     /**
      * Checks if this vector is component-by-component less than a given vector v.
      */
-    bool operator < (const Vector2& v) const
+    bool operator<(const Vector2& v) const
     {
         return (x < v.x) && (y < v.y);
     }
@@ -312,7 +312,7 @@ struct Vector2
     /**
      * Checks if this vector is component-by-component greater than a given vector v.
      */
-    bool operator > (const Vector2& v) const
+    bool operator>(const Vector2& v) const
     {
         return (x > v.x) && (y > v.y);
     }
@@ -321,7 +321,7 @@ struct Vector2
      * Checks if this vector is component-by-component less than or equal to a given
      * vector v.
      */
-    bool operator <= (const Vector2& v) const
+    bool operator<=(const Vector2& v) const
     {
         return (x <= v.x) && (y <= v.y);
     }
@@ -330,7 +330,7 @@ struct Vector2
      * Checks if this vector is component-by-component greater than or equal to a
      * given vector v.
      */
-    bool operator >= (const Vector2& v) const
+    bool operator>=(const Vector2& v) const
     {
         return (x >= v.x) && (y >= v.y);
     }
@@ -342,24 +342,24 @@ struct Vector2
     // #############################################################################
 
     /** Returns a copy of this vector unmodified. */
-    constexpr Vector2 operator + () const { return *this; }
+    constexpr Vector2 operator+() const { return *this; }
     /** Returns a copy of this vector with the signs of the elements flipped. */
-    constexpr Vector2 operator - () const { return {-x, -y}; }
+    constexpr Vector2 operator-() const { return {-x, -y}; }
 
     /** Returns the (component-wise) vector sum of two vectors. */
-    constexpr Vector2 operator + (const Vector2& v) const { return {x + v.x, y + v.y}; }
+    constexpr Vector2 operator+(const Vector2& v) const { return {x + v.x, y + v.y}; }
     /** Returns the (component-wise) vector difference of two vectors. */
-    constexpr Vector2 operator - (const Vector2& v) const { return {x - v.x, y - v.y}; }
+    constexpr Vector2 operator-(const Vector2& v) const { return {x - v.x, y - v.y}; }
 
     /** Returns the (component-wise) Hadamard product of two vectors. */
-    constexpr Vector2 operator * (const Vector2& v) const { return {x * v.x, y * v.y}; }
+    constexpr Vector2 operator*(const Vector2& v) const { return {x * v.x, y * v.y}; }
     /** Returns the (component-wise) Hadamard quotient of two vectors. */
-    constexpr Vector2 operator / (const Vector2& v) const { return {x / v.x, y / v.y}; }
+    constexpr Vector2 operator/(const Vector2& v) const { return {x / v.x, y / v.y}; }
 
     /** Returns a copy of this vector scaled by the specified factor (scalar multiplication). */
-    constexpr Vector2 operator * (float s) const { return {x * s, y * s}; }
+    constexpr Vector2 operator*(float s) const { return {x * s, y * s}; }
     /** Returns a copy of this vector inversely scaled by the specified factor (scalar division). */
-    constexpr Vector2 operator / (float s) const { return {x / s, y / s}; }
+    constexpr Vector2 operator/(float s) const { return {x / s, y / s}; }
 
 
 
@@ -368,19 +368,19 @@ struct Vector2
     // #############################################################################
 
     /** Adds the given vector to this one, resulting in the (component-wise) vector sum. */
-    constexpr Vector2& operator += (const Vector2& v) { x += v.x; y += v.y; return *this; }
+    constexpr Vector2& operator+=(const Vector2& v) { x += v.x; y += v.y; return *this; }
     /** Subtracts the given vector from this one, resulting in the (component-wise) vector difference. */
-    constexpr Vector2& operator -= (const Vector2& v) { x -= v.x; y -= v.y; return *this; }
+    constexpr Vector2& operator-=(const Vector2& v) { x -= v.x; y -= v.y; return *this; }
 
     /** Multiplies the given vector with this one, resulting in the (component-wise) Hadamard product. */
-    constexpr Vector2& operator *= (const Vector2& v) { x *= v.x; y *= v.y; return *this; }
+    constexpr Vector2& operator*=(const Vector2& v) { x *= v.x; y *= v.y; return *this; }
     /** Divides this vector by the given one, resulting in the (component-wise) Hadamard quotient. */
-    constexpr Vector2& operator /= (const Vector2& v) { x /= v.x; y /= v.y; return *this; }
+    constexpr Vector2& operator/=(const Vector2& v) { x /= v.x; y /= v.y; return *this; }
 
     /** Scales this vector by the specified factor (scalar multiplication). */
-    constexpr Vector2& operator *= (float s) { x *= s; y *= s; return *this; }
+    constexpr Vector2& operator*=(float s) { x *= s; y *= s; return *this; }
     /** Inversely scales this vector by the specified factor (scalar division). */
-    constexpr Vector2& operator /= (float s) { x /= s; y /= s; return *this; }
+    constexpr Vector2& operator/=(float s) { x /= s; y /= s; return *this; }
 
 
 
@@ -388,8 +388,8 @@ struct Vector2
     // Access Operators
     // #############################################################################
 
-    float operator [] (unsigned i) const { assert(i < 2); return data[i]; }
-    float& operator [] (unsigned i) { assert(i < 2); return data[i]; }
+    float operator[](unsigned i) const { assert(i < 2); return data[i]; }
+    float& operator[](unsigned i) { assert(i < 2); return data[i]; }
 
 
 
@@ -436,7 +436,7 @@ struct Vector2
 
     struct less
     {
-        bool operator () (const ml7::Vector2& a, const ml7::Vector2& b) const
+        bool operator()(const ml7::Vector2& a, const ml7::Vector2& b) const
         {
             if (a.x < b.x) return true;
             if (a.x > b.x) return false;
@@ -453,7 +453,7 @@ struct Vector2
     // #############################################################################
 
     /** Scales a vector by the specified factor (scalar multiplication). */
-    constexpr Vector2 operator * (float s, const Vector2& v) { return v * s; }
+    constexpr Vector2 operator*(float s, const Vector2& v) { return v * s; }
 
 
 

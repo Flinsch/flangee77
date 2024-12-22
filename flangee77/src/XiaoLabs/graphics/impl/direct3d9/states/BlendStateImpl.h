@@ -31,9 +31,9 @@ public:
     BlendStateImpl() = delete;
 
     BlendStateImpl(const BlendStateImpl&) = delete;
-    BlendStateImpl& operator = (const BlendStateImpl&) = delete;
+    BlendStateImpl& operator=(const BlendStateImpl&) = delete;
     BlendStateImpl(BlendStateImpl&&) = delete;
-    BlendStateImpl& operator = (BlendStateImpl&&) = delete;
+    BlendStateImpl& operator=(BlendStateImpl&&) = delete;
 
 
 

@@ -75,9 +75,9 @@ public:
     DepthStencilState() = delete;
 
     DepthStencilState(const DepthStencilState&) = delete;
-    DepthStencilState& operator = (const DepthStencilState&) = delete;
+    DepthStencilState& operator=(const DepthStencilState&) = delete;
     DepthStencilState(DepthStencilState&&) = delete;
-    DepthStencilState& operator = (DepthStencilState&&) = delete;
+    DepthStencilState& operator=(DepthStencilState&&) = delete;
 
 
 

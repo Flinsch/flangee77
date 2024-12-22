@@ -26,9 +26,9 @@ public:
     Texture3D() = delete;
 
     Texture3D(const Texture3D&) = delete;
-    Texture3D& operator = (const Texture3D&) = delete;
+    Texture3D& operator=(const Texture3D&) = delete;
     Texture3D(Texture3D&&) = delete;
-    Texture3D& operator = (Texture3D&&) = delete;
+    Texture3D& operator=(Texture3D&&) = delete;
 
 
 

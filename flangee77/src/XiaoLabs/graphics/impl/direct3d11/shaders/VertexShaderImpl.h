@@ -29,9 +29,9 @@ public:
     VertexShaderImpl() = delete;
 
     VertexShaderImpl(const VertexShaderImpl&) = delete;
-    VertexShaderImpl& operator = (const VertexShaderImpl&) = delete;
+    VertexShaderImpl& operator=(const VertexShaderImpl&) = delete;
     VertexShaderImpl(VertexShaderImpl&&) = delete;
-    VertexShaderImpl& operator = (VertexShaderImpl&&) = delete;
+    VertexShaderImpl& operator=(VertexShaderImpl&&) = delete;
 
 
 

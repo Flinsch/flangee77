@@ -32,7 +32,7 @@ struct Meta
 
 
 
-    auto operator <=> (const Meta& rhs) const = default;
+    auto operator<=>(const Meta& rhs) const = default;
 
 }; // struct Meta
 

@@ -29,9 +29,9 @@ public:
     Texture2DImpl() = delete;
 
     Texture2DImpl(const Texture2DImpl&) = delete;
-    Texture2DImpl& operator = (const Texture2DImpl&) = delete;
+    Texture2DImpl& operator=(const Texture2DImpl&) = delete;
     Texture2DImpl(Texture2DImpl&&) = delete;
-    Texture2DImpl& operator = (Texture2DImpl&&) = delete;
+    Texture2DImpl& operator=(Texture2DImpl&&) = delete;
 
 
 

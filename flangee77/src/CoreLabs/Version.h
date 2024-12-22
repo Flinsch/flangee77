@@ -44,7 +44,7 @@ struct Version
      * ask myself: why not? So let's just fall back to the default implementation of
      * the "spaceship" operator.
      */
-    auto operator <=> (const Version& rhs) const noexcept = default;
+    auto operator<=>(const Version& rhs) const noexcept = default;
 
 
     /**

@@ -92,9 +92,9 @@ public:
     SamplerState() = delete;
 
     SamplerState(const SamplerState&) = delete;
-    SamplerState& operator = (const SamplerState&) = delete;
+    SamplerState& operator=(const SamplerState&) = delete;
     SamplerState(SamplerState&&) = delete;
-    SamplerState& operator = (SamplerState&&) = delete;
+    SamplerState& operator=(SamplerState&&) = delete;
 
 
 

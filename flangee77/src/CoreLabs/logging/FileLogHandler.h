@@ -22,9 +22,9 @@ public:
     FileLogHandler();
 
     FileLogHandler(const FileLogHandler&) = delete;
-    FileLogHandler& operator = (const FileLogHandler&) = delete;
+    FileLogHandler& operator=(const FileLogHandler&) = delete;
     FileLogHandler(FileLogHandler&&) = delete;
-    FileLogHandler& operator = (FileLogHandler&&) = delete;
+    FileLogHandler& operator=(FileLogHandler&&) = delete;
 
     ~FileLogHandler() override = default;
 

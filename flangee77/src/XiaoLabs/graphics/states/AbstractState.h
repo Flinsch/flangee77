@@ -21,9 +21,9 @@ public:
     AbstractState() = delete;
 
     AbstractState(const AbstractState&) = delete;
-    AbstractState& operator = (const AbstractState&) = delete;
+    AbstractState& operator=(const AbstractState&) = delete;
     AbstractState(AbstractState&&) = delete;
-    AbstractState& operator = (AbstractState&&) = delete;
+    AbstractState& operator=(AbstractState&&) = delete;
 
 
 

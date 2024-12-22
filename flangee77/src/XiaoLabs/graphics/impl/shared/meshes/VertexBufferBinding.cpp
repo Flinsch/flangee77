@@ -12,7 +12,7 @@ namespace xl7::graphics::impl::shared::meshes {
     {
     }
 
-    bool VertexBufferBinding::operator == (const VertexBufferBinding& rhs) const noexcept
+    bool VertexBufferBinding::operator==(const VertexBufferBinding& rhs) const noexcept
     {
         if (stream_count != rhs.stream_count)
             return false;

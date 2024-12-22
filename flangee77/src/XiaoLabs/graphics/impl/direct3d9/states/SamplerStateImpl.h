@@ -31,9 +31,9 @@ public:
     SamplerStateImpl() = delete;
 
     SamplerStateImpl(const SamplerStateImpl&) = delete;
-    SamplerStateImpl& operator = (const SamplerStateImpl&) = delete;
+    SamplerStateImpl& operator=(const SamplerStateImpl&) = delete;
     SamplerStateImpl(SamplerStateImpl&&) = delete;
-    SamplerStateImpl& operator = (SamplerStateImpl&&) = delete;
+    SamplerStateImpl& operator=(SamplerStateImpl&&) = delete;
 
 
 

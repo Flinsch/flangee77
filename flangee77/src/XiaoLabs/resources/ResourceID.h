@@ -76,8 +76,8 @@ public:
     // Comparison Operators
     // #############################################################################
 
-    auto operator == (ResourceID other) const noexcept { return _id == other._id; }
-    auto operator != (ResourceID other) const noexcept { return _id != other._id; }
+    auto operator==(ResourceID other) const noexcept { return _id == other._id; }
+    auto operator!=(ResourceID other) const noexcept { return _id != other._id; }
 
 
 
@@ -127,7 +127,7 @@ private:
 template <>
 struct std::hash<xl7::resources::ResourceID>
 {
-    size_t operator () (const xl7::resources::ResourceID& resource_id) const noexcept
+    size_t operator()(const xl7::resources::ResourceID& resource_id) const noexcept
     {
         return resource_id.hash();
     }

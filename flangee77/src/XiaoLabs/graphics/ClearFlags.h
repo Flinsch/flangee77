@@ -22,12 +22,12 @@ enum class ClearFlags
 
 
 
-inline ClearFlags operator | (ClearFlags a, ClearFlags b)
+inline ClearFlags operator|(ClearFlags a, ClearFlags b)
 {
     return static_cast<ClearFlags>(static_cast<unsigned>(a) | static_cast<unsigned>(b));
 }
 
-inline ClearFlags operator & (ClearFlags a, ClearFlags b)
+inline ClearFlags operator&(ClearFlags a, ClearFlags b)
 {
     return static_cast<ClearFlags>(static_cast<unsigned>(a) & static_cast<unsigned>(b));
 }

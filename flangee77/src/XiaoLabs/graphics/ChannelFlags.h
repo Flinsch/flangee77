@@ -23,12 +23,12 @@ enum class ChannelFlags
 
 
 
-inline ChannelFlags operator | (ChannelFlags a, ChannelFlags b)
+inline ChannelFlags operator|(ChannelFlags a, ChannelFlags b)
 {
     return static_cast<ChannelFlags>(static_cast<unsigned>(a) | static_cast<unsigned>(b));
 }
 
-inline ChannelFlags operator & (ChannelFlags a, ChannelFlags b)
+inline ChannelFlags operator&(ChannelFlags a, ChannelFlags b)
 {
     return static_cast<ChannelFlags>(static_cast<unsigned>(a) & static_cast<unsigned>(b));
 }

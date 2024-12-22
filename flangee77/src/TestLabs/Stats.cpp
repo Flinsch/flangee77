@@ -21,14 +21,14 @@ namespace tl7 {
         success ? ++pass_count : ++fail_count;
     }
 
-    Stats::Group Stats::Group::operator + (const Group& rhs) const
+    Stats::Group Stats::Group::operator+(const Group& rhs) const
     {
         Group that = *this;
         that += rhs;
         return that;
     }
 
-    Stats::Group& Stats::Group::operator += (const Group& rhs)
+    Stats::Group& Stats::Group::operator+=(const Group& rhs)
     {
         total_count += rhs.total_count;
         pass_count += rhs.pass_count;
@@ -73,14 +73,14 @@ namespace tl7 {
         return checks.fail_count + assertions.fail_count + exception_count;
     }
 
-    Stats Stats::operator + (const Stats& rhs) const
+    Stats Stats::operator+(const Stats& rhs) const
     {
         Stats that = *this;
         that += rhs;
         return that;
     }
 
-    Stats& Stats::operator += (const Stats& rhs)
+    Stats& Stats::operator+=(const Stats& rhs)
     {
         cases += rhs.cases;
         subcases += rhs.subcases;

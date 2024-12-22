@@ -22,9 +22,9 @@ public:
     CoutLogHandler() = default;
 
     CoutLogHandler(const CoutLogHandler&) = delete;
-    CoutLogHandler& operator = (const CoutLogHandler&) = delete;
+    CoutLogHandler& operator=(const CoutLogHandler&) = delete;
     CoutLogHandler(CoutLogHandler&&) = delete;
-    CoutLogHandler& operator = (CoutLogHandler&&) = delete;
+    CoutLogHandler& operator=(CoutLogHandler&&) = delete;
 
     ~CoutLogHandler() override = default;
 

@@ -30,9 +30,9 @@ public:
     SurfaceManager() = delete;
 
     SurfaceManager(const SurfaceManager&) = delete;
-    SurfaceManager& operator = (const SurfaceManager&) = delete;
+    SurfaceManager& operator=(const SurfaceManager&) = delete;
     SurfaceManager(SurfaceManager&&) = delete;
-    SurfaceManager& operator = (SurfaceManager&&) = delete;
+    SurfaceManager& operator=(SurfaceManager&&) = delete;
 
 
 

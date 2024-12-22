@@ -18,13 +18,13 @@ class StandardLogger final
 
 public:
     StandardLogger(const StandardLogger&) = delete;
-    StandardLogger& operator = (const StandardLogger&) = delete;
+    StandardLogger& operator=(const StandardLogger&) = delete;
     StandardLogger(StandardLogger&&) = delete;
-    StandardLogger& operator = (StandardLogger&&) = delete;
+    StandardLogger& operator=(StandardLogger&&) = delete;
 
     static Logger& instance() { return creational::Singleton<StandardLogger>::instance()._logger; }
 
-    Logger* operator -> () { return &_logger; }
+    Logger* operator->() { return &_logger; }
 
 
 

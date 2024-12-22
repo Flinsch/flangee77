@@ -40,9 +40,9 @@ public:
     Registry() = default;
 
     Registry(const Registry&) = delete;
-    Registry& operator = (const Registry&) = delete;
+    Registry& operator=(const Registry&) = delete;
     Registry(Registry&&) = delete;
-    Registry& operator = (Registry&&) = delete;
+    Registry& operator=(Registry&&) = delete;
 
     ~Registry() = default;
 

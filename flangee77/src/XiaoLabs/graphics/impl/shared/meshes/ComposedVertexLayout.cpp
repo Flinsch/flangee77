@@ -42,7 +42,7 @@ namespace xl7::graphics::impl::shared::meshes {
         } // for each vertex stream
     }
 
-    bool ComposedVertexLayout::operator == (const ComposedVertexLayout& rhs) const noexcept
+    bool ComposedVertexLayout::operator==(const ComposedVertexLayout& rhs) const noexcept
     {
         if (stream_count != rhs.stream_count)
             return false;

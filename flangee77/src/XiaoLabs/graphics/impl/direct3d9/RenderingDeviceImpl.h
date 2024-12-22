@@ -18,9 +18,9 @@ class RenderingDeviceImpl final
 
 public:
     RenderingDeviceImpl(const RenderingDeviceImpl&) = delete;
-    RenderingDeviceImpl& operator = (const RenderingDeviceImpl&) = delete;
+    RenderingDeviceImpl& operator=(const RenderingDeviceImpl&) = delete;
     RenderingDeviceImpl(RenderingDeviceImpl&&) = delete;
-    RenderingDeviceImpl& operator = (RenderingDeviceImpl&&) = delete;
+    RenderingDeviceImpl& operator=(RenderingDeviceImpl&&) = delete;
 
 
 

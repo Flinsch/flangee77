@@ -29,9 +29,9 @@ public:
     IndexBufferImpl() = delete;
 
     IndexBufferImpl(const IndexBufferImpl&) = delete;
-    IndexBufferImpl& operator = (const IndexBufferImpl&) = delete;
+    IndexBufferImpl& operator=(const IndexBufferImpl&) = delete;
     IndexBufferImpl(IndexBufferImpl&&) = delete;
-    IndexBufferImpl& operator = (IndexBufferImpl&&) = delete;
+    IndexBufferImpl& operator=(IndexBufferImpl&&) = delete;
 
 
 

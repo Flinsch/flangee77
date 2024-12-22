@@ -35,9 +35,9 @@ public:
     TestCase(FuncType func, cl7::string_view name, const cl7::char_type* file_path, unsigned line_number);
 
     TestCase(const TestCase&) = delete;
-    TestCase& operator = (const TestCase&) = delete;
+    TestCase& operator=(const TestCase&) = delete;
     TestCase(TestCase&&) = delete;
-    TestCase& operator = (TestCase&&) = delete;
+    TestCase& operator=(TestCase&&) = delete;
 
     ~TestCase() = default;
 

@@ -8,7 +8,7 @@ namespace tl7::reporting {
 
 
 
-    auto Reporter::ListenerEntry::operator <=> (const ListenerEntry& rhs) const
+    auto Reporter::ListenerEntry::operator<=>(const ListenerEntry& rhs) const
     {
         if (auto c = -priority <=> -rhs.priority; c != 0)
             return c;

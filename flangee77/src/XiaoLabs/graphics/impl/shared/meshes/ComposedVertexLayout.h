@@ -23,7 +23,7 @@ struct ComposedVertexLayout
     ComposedVertexLayout();
     ComposedVertexLayout(const VertexBufferBinding& vertex_buffer_binding);
 
-    bool operator == (const ComposedVertexLayout& rhs) const noexcept;
+    bool operator==(const ComposedVertexLayout& rhs) const noexcept;
 
     size_t hash() const noexcept;
 
@@ -38,7 +38,7 @@ struct ComposedVertexLayout
 template <>
 struct std::hash<xl7::graphics::impl::shared::meshes::ComposedVertexLayout>
 {
-    size_t operator () (const xl7::graphics::impl::shared::meshes::ComposedVertexLayout& composed_vertex_layout) const noexcept
+    size_t operator()(const xl7::graphics::impl::shared::meshes::ComposedVertexLayout& composed_vertex_layout) const noexcept
     {
         return composed_vertex_layout.hash();
     }

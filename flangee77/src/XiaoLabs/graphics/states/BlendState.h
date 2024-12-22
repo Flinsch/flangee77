@@ -67,9 +67,9 @@ public:
     BlendState() = delete;
 
     BlendState(const BlendState&) = delete;
-    BlendState& operator = (const BlendState&) = delete;
+    BlendState& operator=(const BlendState&) = delete;
     BlendState(BlendState&&) = delete;
-    BlendState& operator = (BlendState&&) = delete;
+    BlendState& operator=(BlendState&&) = delete;
 
 
 

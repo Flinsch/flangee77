@@ -42,7 +42,7 @@ namespace tl7::reporting {
 
 
     template <class Tcout>
-    static Tcout& operator << (Tcout& cout, ColorCode color_code)
+    static Tcout& operator<<(Tcout& cout, ColorCode color_code)
     {
         cout << "\033";
         if (color_code == ColorCode::Black)

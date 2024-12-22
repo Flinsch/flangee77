@@ -42,9 +42,9 @@ public:
     Lexer(Options options);
 
     Lexer(const Lexer&) = delete;
-    Lexer& operator = (const Lexer&) = delete;
+    Lexer& operator=(const Lexer&) = delete;
     Lexer(Lexer&&) = delete;
-    Lexer& operator = (Lexer&&) = delete;
+    Lexer& operator=(Lexer&&) = delete;
 
     virtual ~Lexer() = default;
 

@@ -20,12 +20,12 @@ enum class open_mode
 
 
 
-inline open_mode operator | (open_mode a, open_mode b)
+inline open_mode operator|(open_mode a, open_mode b)
 {
     return static_cast<open_mode>(static_cast<unsigned>(a) | static_cast<unsigned>(b));
 }
 
-inline open_mode operator & (open_mode a, open_mode b)
+inline open_mode operator&(open_mode a, open_mode b)
 {
     return static_cast<open_mode>(static_cast<unsigned>(a) & static_cast<unsigned>(b));
 }

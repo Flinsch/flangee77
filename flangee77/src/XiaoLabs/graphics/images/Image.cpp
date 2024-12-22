@@ -88,7 +88,7 @@ namespace xl7::graphics::images {
      * Copy assignment operator. Creates a buffer and duplicates the data regardless
      * of whether the other image is "view only".
      */
-    Image& Image::operator = (const Image& other)
+    Image& Image::operator=(const Image& other)
     {
         // We don't have to explicitly check the case of self-assignment here,
         // because the init function handles this case for us accordingly.

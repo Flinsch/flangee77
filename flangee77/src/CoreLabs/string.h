@@ -158,9 +158,9 @@ namespace cl7 {
         using is_transparent = void;
         using Tstring_view = std::basic_string_view<Tchar>;
         using Tstring = std::basic_string<Tchar>;
-        size_t operator () (const Tchar* str) const { return std::hash<Tstring_view>{}(str); }
-        size_t operator () (Tstring_view str) const { return std::hash<Tstring_view>{}(str); }
-        size_t operator () (const Tstring& str) const { return std::hash<Tstring>{}(str); }
+        size_t operator()(const Tchar* str) const { return std::hash<Tstring_view>{}(str); }
+        size_t operator()(Tstring_view str) const { return std::hash<Tstring_view>{}(str); }
+        size_t operator()(const Tstring& str) const { return std::hash<Tstring>{}(str); }
     };
 
     using astring_hash = string_hash<cl7::achar_type>;

@@ -17,9 +17,9 @@ public:
     VertexShader() = delete;
 
     VertexShader(const VertexShader&) = delete;
-    VertexShader& operator = (const VertexShader&) = delete;
+    VertexShader& operator=(const VertexShader&) = delete;
     VertexShader(VertexShader&&) = delete;
-    VertexShader& operator = (VertexShader&&) = delete;
+    VertexShader& operator=(VertexShader&&) = delete;
 
 
 

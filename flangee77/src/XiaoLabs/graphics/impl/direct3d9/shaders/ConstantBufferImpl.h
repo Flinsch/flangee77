@@ -29,9 +29,9 @@ public:
     ConstantBufferImpl() = delete;
 
     ConstantBufferImpl(const ConstantBufferImpl&) = delete;
-    ConstantBufferImpl& operator = (const ConstantBufferImpl&) = delete;
+    ConstantBufferImpl& operator=(const ConstantBufferImpl&) = delete;
     ConstantBufferImpl(ConstantBufferImpl&&) = delete;
-    ConstantBufferImpl& operator = (ConstantBufferImpl&&) = delete;
+    ConstantBufferImpl& operator=(ConstantBufferImpl&&) = delete;
 
 
 

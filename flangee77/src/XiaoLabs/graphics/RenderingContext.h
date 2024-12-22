@@ -32,9 +32,9 @@ public:
     RenderingContext() = delete;
 
     RenderingContext(const RenderingContext&) = delete;
-    RenderingContext& operator = (const RenderingContext&) = delete;
+    RenderingContext& operator=(const RenderingContext&) = delete;
     RenderingContext(RenderingContext&&) = delete;
-    RenderingContext& operator = (RenderingContext&&) = delete;
+    RenderingContext& operator=(RenderingContext&&) = delete;
 
 
 

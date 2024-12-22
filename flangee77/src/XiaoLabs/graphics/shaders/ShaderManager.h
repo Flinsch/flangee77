@@ -30,9 +30,9 @@ public:
     ShaderManager() = delete;
 
     ShaderManager(const ShaderManager&) = delete;
-    ShaderManager& operator = (const ShaderManager&) = delete;
+    ShaderManager& operator=(const ShaderManager&) = delete;
     ShaderManager(ShaderManager&&) = delete;
-    ShaderManager& operator = (ShaderManager&&) = delete;
+    ShaderManager& operator=(ShaderManager&&) = delete;
 
 
 

@@ -30,9 +30,9 @@ public:
     StateManager() = delete;
 
     StateManager(const StateManager&) = delete;
-    StateManager& operator = (const StateManager&) = delete;
+    StateManager& operator=(const StateManager&) = delete;
     StateManager(StateManager&&) = delete;
-    StateManager& operator = (StateManager&&) = delete;
+    StateManager& operator=(StateManager&&) = delete;
 
 
 

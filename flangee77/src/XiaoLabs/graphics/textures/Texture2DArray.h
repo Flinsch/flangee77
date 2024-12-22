@@ -26,9 +26,9 @@ public:
     Texture2DArray() = delete;
 
     Texture2DArray(const Texture2DArray&) = delete;
-    Texture2DArray& operator = (const Texture2DArray&) = delete;
+    Texture2DArray& operator=(const Texture2DArray&) = delete;
     Texture2DArray(Texture2DArray&&) = delete;
-    Texture2DArray& operator = (Texture2DArray&&) = delete;
+    Texture2DArray& operator=(Texture2DArray&&) = delete;
 
 
 

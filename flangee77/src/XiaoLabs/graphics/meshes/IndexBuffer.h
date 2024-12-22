@@ -29,9 +29,9 @@ public:
     IndexBuffer() = delete;
 
     IndexBuffer(const IndexBuffer&) = delete;
-    IndexBuffer& operator = (const IndexBuffer&) = delete;
+    IndexBuffer& operator=(const IndexBuffer&) = delete;
     IndexBuffer(IndexBuffer&&) = delete;
-    IndexBuffer& operator = (IndexBuffer&&) = delete;
+    IndexBuffer& operator=(IndexBuffer&&) = delete;
 
 
 

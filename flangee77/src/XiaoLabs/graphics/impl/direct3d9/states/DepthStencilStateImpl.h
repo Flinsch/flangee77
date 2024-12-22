@@ -31,9 +31,9 @@ public:
     DepthStencilStateImpl() = delete;
 
     DepthStencilStateImpl(const DepthStencilStateImpl&) = delete;
-    DepthStencilStateImpl& operator = (const DepthStencilStateImpl&) = delete;
+    DepthStencilStateImpl& operator=(const DepthStencilStateImpl&) = delete;
     DepthStencilStateImpl(DepthStencilStateImpl&&) = delete;
-    DepthStencilStateImpl& operator = (DepthStencilStateImpl&&) = delete;
+    DepthStencilStateImpl& operator=(DepthStencilStateImpl&&) = delete;
 
 
 

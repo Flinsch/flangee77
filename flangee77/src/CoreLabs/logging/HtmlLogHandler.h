@@ -22,9 +22,9 @@ public:
     HtmlLogHandler();
 
     HtmlLogHandler(const HtmlLogHandler&) = delete;
-    HtmlLogHandler& operator = (const HtmlLogHandler&) = delete;
+    HtmlLogHandler& operator=(const HtmlLogHandler&) = delete;
     HtmlLogHandler(HtmlLogHandler&&) = delete;
-    HtmlLogHandler& operator = (HtmlLogHandler&&) = delete;
+    HtmlLogHandler& operator=(HtmlLogHandler&&) = delete;
 
     ~HtmlLogHandler() override;
 

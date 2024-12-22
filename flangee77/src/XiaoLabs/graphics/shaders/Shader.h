@@ -47,9 +47,9 @@ public:
     Shader() = delete;
 
     Shader(const Shader&) = delete;
-    Shader& operator = (const Shader&) = delete;
+    Shader& operator=(const Shader&) = delete;
     Shader(Shader&&) = delete;
-    Shader& operator = (Shader&&) = delete;
+    Shader& operator=(Shader&&) = delete;
 
 
 

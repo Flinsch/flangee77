@@ -18,9 +18,9 @@ class SingletonBase // NOLINT(*-virtual-class-destructor)
 
 public:
     SingletonBase(const SingletonBase&) = delete;
-    SingletonBase& operator = (const SingletonBase&) = delete;
+    SingletonBase& operator=(const SingletonBase&) = delete;
     SingletonBase(SingletonBase&&) = delete;
-    SingletonBase& operator = (SingletonBase&&) = delete;
+    SingletonBase& operator=(SingletonBase&&) = delete;
 
 
 
@@ -81,9 +81,9 @@ class Singleton // NOLINT(*-virtual-class-destructor)
 
 public:
     Singleton(const Singleton&) = delete;
-    Singleton& operator = (const Singleton&) = delete;
+    Singleton& operator=(const Singleton&) = delete;
     Singleton(Singleton&&) = delete;
-    Singleton& operator = (Singleton&&) = delete;
+    Singleton& operator=(Singleton&&) = delete;
 
 
     /**

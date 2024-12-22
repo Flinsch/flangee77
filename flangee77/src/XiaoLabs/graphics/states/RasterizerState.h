@@ -62,9 +62,9 @@ public:
     RasterizerState() = delete;
 
     RasterizerState(const RasterizerState&) = delete;
-    RasterizerState& operator = (const RasterizerState&) = delete;
+    RasterizerState& operator=(const RasterizerState&) = delete;
     RasterizerState(RasterizerState&&) = delete;
-    RasterizerState& operator = (RasterizerState&&) = delete;
+    RasterizerState& operator=(RasterizerState&&) = delete;
 
 
 

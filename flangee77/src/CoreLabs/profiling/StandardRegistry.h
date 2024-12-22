@@ -18,13 +18,13 @@ class StandardRegistry final
 
 public:
     StandardRegistry(const StandardRegistry&) = delete;
-    StandardRegistry& operator = (const StandardRegistry&) = delete;
+    StandardRegistry& operator=(const StandardRegistry&) = delete;
     StandardRegistry(StandardRegistry&&) = delete;
-    StandardRegistry& operator = (StandardRegistry&&) = delete;
+    StandardRegistry& operator=(StandardRegistry&&) = delete;
 
     static Registry& instance() { return creational::Singleton<StandardRegistry>::instance()._registry; }
 
-    Registry* operator -> () { return &_registry; }
+    Registry* operator->() { return &_registry; }
 
 
 
