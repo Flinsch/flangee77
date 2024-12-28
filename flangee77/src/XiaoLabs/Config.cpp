@@ -8,7 +8,7 @@ namespace xl7 {
 
     Config::Config()
     {
-        generic.window.title = TEXT("flangee77");
+        generic.window.title = u8"flangee77";
         generic.window.icon_handle = nullptr;
         generic.window.small_icon_handle = nullptr;
 

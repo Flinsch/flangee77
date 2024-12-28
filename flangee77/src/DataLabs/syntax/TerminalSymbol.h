@@ -22,11 +22,11 @@ struct TerminalSymbol
     using ID = int;
 
     /** The name of the symbol. */
-    cl7::astring name;
+    cl7::u8string name;
     /** The terminal symbol ID. */
     ID id;
 
-    TerminalSymbol(cl7::astring_view name, ID id);
+    TerminalSymbol(cl7::u8string_view name, ID id);
     virtual ~TerminalSymbol() = default;
 
     virtual bool is_literal() const = 0;
@@ -43,7 +43,7 @@ struct LiteralSymbol
     /** The static string literal of the symbol. */
     cl7::u8string literal;
 
-    LiteralSymbol(cl7::astring_view name, ID id, cl7::u8string_view literal);
+    LiteralSymbol(cl7::u8string_view name, ID id, cl7::u8string_view literal);
     ~LiteralSymbol() override = default;
 
     bool is_literal() const override { return true; }
@@ -58,7 +58,7 @@ struct PatternSymbol
 {
 
     /** The dynamic regex pattern of the symbol. */
-    cl7::astring pattern;
+    std::string pattern;
     /** The bitmask that contains options that govern how the regular expression behaves ('optimize' is always applied). */
     std::regex_constants::syntax_option_type syntax_options;
     /** The bitmask that specifies additional regular expression matching options ('match_continuous' is always applied). */
@@ -68,8 +68,8 @@ struct PatternSymbol
     /** The (optional) literal prefix of the symbol. */
     cl7::u8string literal_prefix;
 
-    PatternSymbol(cl7::astring_view name, ID id, cl7::astring_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
-    PatternSymbol(cl7::astring_view name, ID id, cl7::astring_view pattern, cl7::u8string_view literal_prefix, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
+    PatternSymbol(cl7::u8string_view name, ID id, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
+    PatternSymbol(cl7::u8string_view name, ID id, std::string_view pattern, cl7::u8string_view literal_prefix, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
     ~PatternSymbol() override = default;
 
     bool is_literal() const override { return false; }

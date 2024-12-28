@@ -18,7 +18,7 @@ namespace xl7::graphics::surfaces {
         if (data_provider.get_offset() > 0 || data_provider.get_size() > 0)
         {
             assert(false);
-            LOG_WARNING(TEXT("Providing data for requesting/acquiring a surface makes no sense."));
+            LOG_WARNING(u8"Providing data for requesting/acquiring a surface makes no sense.");
             //return false;
         }
 

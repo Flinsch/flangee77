@@ -24,22 +24,22 @@ namespace dl7::compression {
         switch (z_return_code)
         {
         case Z_STREAM_ERROR:
-            LOG_ERROR(TEXT("zlib: invalid compression level."));
+            LOG_ERROR(u8"zlib: invalid compression level.");
             break;
         case Z_DATA_ERROR:
-            LOG_ERROR(TEXT("zlib: corrupted or incomplete data stream."));
+            LOG_ERROR(u8"zlib: corrupted or incomplete data stream.");
             break;
         case Z_MEM_ERROR:
-            LOG_ERROR(TEXT("zlib: not enough memory."));
+            LOG_ERROR(u8"zlib: not enough memory.");
             break;
         case Z_BUF_ERROR:
-            LOG_ERROR(TEXT("zlib: output buffer too small."));
+            LOG_ERROR(u8"zlib: output buffer too small.");
             break;
         case Z_VERSION_ERROR:
-            LOG_ERROR(TEXT("Invalid zlib version."));
+            LOG_ERROR(u8"Invalid zlib version.");
             break;
         default:
-            LOG_ERROR(TEXT("zlib caused an unknown error."));
+            LOG_ERROR(u8"zlib caused an unknown error.");
         }
 
         return false;

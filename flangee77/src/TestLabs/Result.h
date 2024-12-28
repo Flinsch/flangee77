@@ -44,18 +44,18 @@ struct Result
     /**
      * The original expression (or empty if not applicable).
      */
-    cl7::string original_expression;
+    cl7::u8string original_expression;
 
     /**
      * The evaluated expression (or empty if not applicable).
      */
-    cl7::string evaluated_expression;
+    cl7::u8string evaluated_expression;
 
     /**
      * The "stringification" of the underlying input data, of a subcase iteration
      * for example (or NULL if not applicable).
      */
-    std::shared_ptr<cl7::string> data_string;
+    std::shared_ptr<cl7::u8string> data_string;
 
     /**
      * The meta description of the respective test case/subcase branch.

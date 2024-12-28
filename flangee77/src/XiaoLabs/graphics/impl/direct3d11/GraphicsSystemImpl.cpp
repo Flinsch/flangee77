@@ -57,14 +57,14 @@ namespace xl7::graphics::impl::direct3d11 {
     {
         if (_dxgi_factory)
         {
-            LOG_WARNING(TEXT("The DXGI factory interface has already been created."));
+            LOG_WARNING(u8"The DXGI factory interface has already been created.");
             return true;
         }
 
         HRESULT hresult = ::CreateDXGIFactory1(__uuidof(IDXGIFactoryN), &_dxgi_factory);
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::dxgi_result(hresult, TEXT("::CreateDXGIFactory1")));
+            LOG_ERROR(errors::dxgi_result(hresult, u8"::CreateDXGIFactory1"));
             return false;
         }
 
@@ -79,7 +79,7 @@ namespace xl7::graphics::impl::direct3d11 {
             hresult = dxgi_adapter->GetDesc(&dxgi_adapter_desc);
             if (FAILED(hresult))
             {
-                LOG_WARNING(cl7::errors::system_result(hresult, TEXT("IDXGIAdapter::GetDesc")));
+                LOG_WARNING(cl7::errors::system_result(hresult, u8"IDXGIAdapter::GetDesc"));
                 continue;
             }
 
@@ -93,11 +93,11 @@ namespace xl7::graphics::impl::direct3d11 {
 
         if (!best_found)
         {
-            LOG_ERROR(TEXT("No suitable adapter (video card) could be found."));
+            LOG_ERROR(u8"No suitable adapter (video card) could be found.");
             return false;
         }*/
 
-        LOG(TEXT("The DXGI factory interface has been created."));
+        LOG(u8"The DXGI factory interface has been created.");
         return true;
     }
 
@@ -108,7 +108,7 @@ namespace xl7::graphics::impl::direct3d11 {
     {
         _dxgi_factory.Reset();
 
-        LOG(TEXT("The DXGI factory interface has been released."));
+        LOG(u8"The DXGI factory interface has been released.");
         return true;
     }
 

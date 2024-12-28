@@ -109,7 +109,7 @@ namespace xl7::graphics::impl::direct3d11::states {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11Device::CreateBlendState")));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CreateBlendState"));
             return false;
         }
 

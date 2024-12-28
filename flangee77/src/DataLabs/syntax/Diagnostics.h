@@ -29,7 +29,7 @@ public:
     /**
      * Adds the specified diagnostic.
      */
-    void add(Diagnostic::Severity severity, cl7::string_view message, const SourceLocation& source_location);
+    void add(Diagnostic::Severity severity, cl7::u8string_view message, const SourceLocation& source_location);
 
     /**
      * Returns the "list" of all diagnostics.

@@ -12,12 +12,12 @@
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  Base64:  encode/decode") )
+TESTLABS_CASE( u8"CoreLabs:  Base64:  encode/decode" )
 {
     struct Entry
     {
         cl7::byte_vector data;
-        cl7::astring base64;
+        cl7::u8string base64;
         dl7::Base64::Options options;
     } entry;
 
@@ -34,43 +34,43 @@ TESTLABS_CASE( TEXT("CoreLabs:  Base64:  encode/decode") )
     insert_breaks.insert_breaks = true;
 
     const std::vector<Entry> container {
-        { {}, "" },
+        { {}, u8"" },
 
-        { cl7::make_bytes( 0 ), "AA==", default_options },
-        { cl7::make_bytes( 0, 0 ), "AAA=", default_options },
-        { cl7::make_bytes( 0, 0, 0 ), "AAAA", default_options },
-        { cl7::strings::to_bytes( "Hello, World!" ), "SGVsbG8sIFdvcmxkIQ==", default_options },
-        { cl7::strings::to_bytes( "Dr. Stefan Fleischer" ), "RHIuIFN0ZWZhbiBGbGVpc2NoZXI=", default_options },
-        { cl7::strings::to_bytes( "The quick brown fox jumps over the lazy dog." ), "VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=", default_options },
-        { cl7::strings::to_bytes( "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum." ), "TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwgc2VkIGRpYW0gbm9udW15IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9yZSBtYWduYSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3MgZXQgYWNjdXNhbSBldCBqdXN0byBkdW8gZG9sb3JlcyBldCBlYSByZWJ1bS4=", default_options },
-        { cl7::make_bytes( 0xff, 0xee, 0xdd, 0x11 ), "/+7dEQ==", default_options },
+        { cl7::make_bytes( 0 ), u8"AA==", default_options },
+        { cl7::make_bytes( 0, 0 ), u8"AAA=", default_options },
+        { cl7::make_bytes( 0, 0, 0 ), u8"AAAA", default_options },
+        { cl7::strings::to_bytes( "Hello, World!" ), u8"SGVsbG8sIFdvcmxkIQ==", default_options },
+        { cl7::strings::to_bytes( "Dr. Stefan Fleischer" ), u8"RHIuIFN0ZWZhbiBGbGVpc2NoZXI=", default_options },
+        { cl7::strings::to_bytes( "The quick brown fox jumps over the lazy dog." ), u8"VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=", default_options },
+        { cl7::strings::to_bytes( "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum." ), u8"TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwgc2VkIGRpYW0gbm9udW15IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9yZSBtYWduYSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3MgZXQgYWNjdXNhbSBldCBqdXN0byBkdW8gZG9sb3JlcyBldCBlYSByZWJ1bS4=", default_options },
+        { cl7::make_bytes( 0xff, 0xee, 0xdd, 0x11 ), u8"/+7dEQ==", default_options },
 
-        { cl7::make_bytes( 0 ), "AA", without_padding },
-        { cl7::make_bytes( 0, 0 ), "AAA", without_padding },
-        { cl7::make_bytes( 0, 0, 0 ), "AAAA", without_padding },
-        { cl7::strings::to_bytes( "Hello, World!" ), "SGVsbG8sIFdvcmxkIQ", without_padding },
-        { cl7::strings::to_bytes( "Dr. Stefan Fleischer" ), "RHIuIFN0ZWZhbiBGbGVpc2NoZXI", without_padding },
-        { cl7::strings::to_bytes( "The quick brown fox jumps over the lazy dog." ), "VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4", without_padding },
-        { cl7::strings::to_bytes( "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum." ), "TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwgc2VkIGRpYW0gbm9udW15IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9yZSBtYWduYSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3MgZXQgYWNjdXNhbSBldCBqdXN0byBkdW8gZG9sb3JlcyBldCBlYSByZWJ1bS4", without_padding },
-        { cl7::make_bytes( 0xff, 0xee, 0xdd, 0x11 ), "/+7dEQ", without_padding },
+        { cl7::make_bytes( 0 ), u8"AA", without_padding },
+        { cl7::make_bytes( 0, 0 ), u8"AAA", without_padding },
+        { cl7::make_bytes( 0, 0, 0 ), u8"AAAA", without_padding },
+        { cl7::strings::to_bytes( "Hello, World!" ), u8"SGVsbG8sIFdvcmxkIQ", without_padding },
+        { cl7::strings::to_bytes( "Dr. Stefan Fleischer" ), u8"RHIuIFN0ZWZhbiBGbGVpc2NoZXI", without_padding },
+        { cl7::strings::to_bytes( "The quick brown fox jumps over the lazy dog." ), u8"VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4", without_padding },
+        { cl7::strings::to_bytes( "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum." ), u8"TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwgc2VkIGRpYW0gbm9udW15IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9yZSBtYWduYSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3MgZXQgYWNjdXNhbSBldCBqdXN0byBkdW8gZG9sb3JlcyBldCBlYSByZWJ1bS4", without_padding },
+        { cl7::make_bytes( 0xff, 0xee, 0xdd, 0x11 ), u8"/+7dEQ", without_padding },
 
-        { cl7::make_bytes( 0 ), "AA==", other_characters },
-        { cl7::make_bytes( 0, 0 ), "AAA=", other_characters },
-        { cl7::make_bytes( 0, 0, 0 ), "AAAA", other_characters },
-        { cl7::strings::to_bytes( "Hello, World!" ), "SGVsbG8sIFdvcmxkIQ==", other_characters },
-        { cl7::strings::to_bytes( "Dr. Stefan Fleischer" ), "RHIuIFN0ZWZhbiBGbGVpc2NoZXI=", other_characters },
-        { cl7::strings::to_bytes( "The quick brown fox jumps over the lazy dog." ), "VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=", other_characters },
-        { cl7::strings::to_bytes( "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum." ), "TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwgc2VkIGRpYW0gbm9udW15IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9yZSBtYWduYSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3MgZXQgYWNjdXNhbSBldCBqdXN0byBkdW8gZG9sb3JlcyBldCBlYSByZWJ1bS4=", other_characters },
-        { cl7::make_bytes( 0xff, 0xee, 0xdd, 0x11 ), "_-7dEQ==", other_characters },
+        { cl7::make_bytes( 0 ), u8"AA==", other_characters },
+        { cl7::make_bytes( 0, 0 ), u8"AAA=", other_characters },
+        { cl7::make_bytes( 0, 0, 0 ), u8"AAAA", other_characters },
+        { cl7::strings::to_bytes( "Hello, World!" ), u8"SGVsbG8sIFdvcmxkIQ==", other_characters },
+        { cl7::strings::to_bytes( "Dr. Stefan Fleischer" ), u8"RHIuIFN0ZWZhbiBGbGVpc2NoZXI=", other_characters },
+        { cl7::strings::to_bytes( "The quick brown fox jumps over the lazy dog." ), u8"VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=", other_characters },
+        { cl7::strings::to_bytes( "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum." ), u8"TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwgc2VkIGRpYW0gbm9udW15IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9yZSBtYWduYSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3MgZXQgYWNjdXNhbSBldCBqdXN0byBkdW8gZG9sb3JlcyBldCBlYSByZWJ1bS4=", other_characters },
+        { cl7::make_bytes( 0xff, 0xee, 0xdd, 0x11 ), u8"_-7dEQ==", other_characters },
 
-        { cl7::make_bytes( 0 ), "AA==", insert_breaks },
-        { cl7::make_bytes( 0, 0 ), "AAA=", insert_breaks },
-        { cl7::make_bytes( 0, 0, 0 ), "AAAA", insert_breaks },
-        { cl7::strings::to_bytes( "Hello, World!" ), "SGVsbG8sIFdvcmxkIQ==", insert_breaks },
-        { cl7::strings::to_bytes( "Dr. Stefan Fleischer" ), "RHIuIFN0ZWZhbiBGbGVpc2NoZXI=", insert_breaks },
-        { cl7::strings::to_bytes( "The quick brown fox jumps over the lazy dog." ), "VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=", insert_breaks },
-        { cl7::strings::to_bytes( "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum." ), "TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwg\nc2VkIGRpYW0gbm9udW15IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9y\nZSBtYWduYSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3MgZXQg\nYWNjdXNhbSBldCBqdXN0byBkdW8gZG9sb3JlcyBldCBlYSByZWJ1bS4=", insert_breaks },
-        { cl7::make_bytes( 0xff, 0xee, 0xdd, 0x11 ), "/+7dEQ==", insert_breaks },
+        { cl7::make_bytes( 0 ), u8"AA==", insert_breaks },
+        { cl7::make_bytes( 0, 0 ), u8"AAA=", insert_breaks },
+        { cl7::make_bytes( 0, 0, 0 ), u8"AAAA", insert_breaks },
+        { cl7::strings::to_bytes( "Hello, World!" ), u8"SGVsbG8sIFdvcmxkIQ==", insert_breaks },
+        { cl7::strings::to_bytes( "Dr. Stefan Fleischer" ), u8"RHIuIFN0ZWZhbiBGbGVpc2NoZXI=", insert_breaks },
+        { cl7::strings::to_bytes( "The quick brown fox jumps over the lazy dog." ), u8"VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=", insert_breaks },
+        { cl7::strings::to_bytes( "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum." ), u8"TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwg\nc2VkIGRpYW0gbm9udW15IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9y\nZSBtYWduYSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3MgZXQg\nYWNjdXNhbSBldCBqdXN0byBkdW8gZG9sb3JlcyBldCBlYSByZWJ1bS4=", insert_breaks },
+        { cl7::make_bytes( 0xff, 0xee, 0xdd, 0x11 ), u8"/+7dEQ==", insert_breaks },
     };
 
     for ( size_t i = 0; i < container.size(); ++i )
@@ -86,19 +86,19 @@ TESTLABS_CASE( TEXT("CoreLabs:  Base64:  encode/decode") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  Base64:  decoding bad strings") )
+TESTLABS_CASE( u8"CoreLabs:  Base64:  decoding bad strings" )
 {
     struct Entry
     {
-        cl7::astring base64;
+        cl7::u8string base64;
     } entry;
 
     const std::vector<Entry> container {
-        { "" },
-        { "0" },
-        { "=" },
-        { "!" },
-        { "=AAA" },
+        { u8"" },
+        { u8"0" },
+        { u8"=" },
+        { u8"!" },
+        { u8"=AAA" },
         // ...
     };
 

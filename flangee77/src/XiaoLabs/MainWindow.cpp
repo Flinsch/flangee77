@@ -2,6 +2,7 @@
 
 #include <CoreLabs/errors.h>
 #include <CoreLabs/logging.h>
+#include <CoreLabs/strings.h>
 
 
 
@@ -25,7 +26,7 @@ namespace xl7 {
 
         // Update the client area of the window.
         if (!::UpdateWindow(_handle))
-            LOG_ERROR(cl7::errors::system_result(::GetLastError(), TEXT("::UpdateWindow")));
+            LOG_ERROR(cl7::errors::system_result(::GetLastError(), u8"::UpdateWindow"));
 
         return visible_before;
     }
@@ -97,7 +98,7 @@ namespace xl7 {
         , _display_mode(DisplayMode::Unknown)
         , _width(0)
         , _height(0)
-        , _title(TEXT("flangee77"))
+        , _title(u8"flangee77")
         , _icon_handle(nullptr)
         , _small_icon_handle(nullptr)
         , _active(false)
@@ -117,17 +118,17 @@ namespace xl7 {
     {
         if (!_register_window_class())
         {
-            LOG_ERROR(TEXT("The window class for the flangee77 main window could not be registered."));
+            LOG_ERROR(u8"The window class for the flangee77 main window could not be registered.");
             return false;
         }
 
         if (!_create_window())
         {
-            LOG_ERROR(TEXT("The flangee77 main window could not be created."));
+            LOG_ERROR(u8"The flangee77 main window could not be created.");
             return false;
         }
 
-        LOG_SUCCESS(TEXT("The flangee77 main window has been successfully initialized."));
+        LOG_SUCCESS(u8"The flangee77 main window has been successfully initialized.");
         return true;
     }
 
@@ -141,7 +142,7 @@ namespace xl7 {
 
         _unregister_window_class();
 
-        LOG_SUCCESS(TEXT("The flangee77 main window has been closed and destroyed."));
+        LOG_SUCCESS(u8"The flangee77 main window has been closed and destroyed.");
         return true;
     }
 
@@ -162,24 +163,24 @@ namespace xl7 {
         _small_icon_handle = nullptr;
 
         // Fill the data structure.
-        WNDCLASSEX wnd_class;
+        WNDCLASSEXW wnd_class;
         wnd_class.cbSize = sizeof(wnd_class);
         wnd_class.style = CS_CLASSDC;
         wnd_class.lpfnWndProc = wnd_proc;
         wnd_class.cbClsExtra = 0;
         wnd_class.cbWndExtra = 0;
-        wnd_class.hInstance = ::GetModuleHandle(nullptr);
+        wnd_class.hInstance = ::GetModuleHandleW(nullptr);
         wnd_class.hIcon = _icon_handle;
         wnd_class.hCursor = nullptr;
         wnd_class.hbrBackground = nullptr;
         wnd_class.lpszMenuName = nullptr;
-        wnd_class.lpszClassName = TEXT("flangee77_window_class");
+        wnd_class.lpszClassName = L"flangee77_window_class";
         wnd_class.hIconSm = _small_icon_handle;
 
         // Register the window class.
-        if (!RegisterClassEx(&wnd_class))
+        if (!::RegisterClassExW(&wnd_class))
         {
-            LOG_ERROR(cl7::errors::system_result(::GetLastError(), TEXT("::RegisterClassEx")));
+            LOG_ERROR(cl7::errors::system_result(::GetLastError(), u8"::RegisterClassEx"));
             return false;
         }
 
@@ -238,11 +239,13 @@ namespace xl7 {
             y = (screen_height - height) / 2;
         }
 
+        std::wstring window_name = cl7::strings::to_utfx(_title);
+
         // Create the window.
-        _handle = ::CreateWindowEx(
+        _handle = ::CreateWindowExW(
             0,                              // dwExStyle
-            TEXT("flangee77_window_class"), // lpClassName
-            _title.c_str(),                 // lpWindowName
+            L"flangee77_window_class",      // lpClassName
+            window_name.c_str(),            // lpWindowName
             style,                          // dwStyle
             x,                              // X
             y,                              // Y
@@ -250,12 +253,12 @@ namespace xl7 {
             height,                         // nHeight
             nullptr,                        // hWndParent
             nullptr,                        // hMenu
-            ::GetModuleHandle(nullptr),     // hInstance
+            ::GetModuleHandleW(nullptr),     // hInstance
             nullptr);                       // lpParam
 
         if (!_handle)
         {
-            LOG_ERROR(cl7::errors::system_result(::GetLastError(), TEXT("::CreateWindowEx")));
+            LOG_ERROR(cl7::errors::system_result(::GetLastError(), u8"::CreateWindowEx"));
             return false;
         }
 
@@ -279,7 +282,7 @@ namespace xl7 {
         // the window callback for WM_CLOSE.
         if (!::CloseWindow(_handle))
         {
-            LOG_WARNING(cl7::errors::system_result(::GetLastError(), TEXT("::CloseWindow")));
+            LOG_WARNING(cl7::errors::system_result(::GetLastError(), u8"::CloseWindow"));
             return false;
         }
 
@@ -291,9 +294,9 @@ namespace xl7 {
      */
     bool MainWindow::_unregister_window_class()
     {
-        if (!::UnregisterClass(TEXT("flangee77_window_class"), ::GetModuleHandle(nullptr)))
+        if (!::UnregisterClassW(L"flangee77_window_class", ::GetModuleHandleW(nullptr)))
         {
-            LOG_WARNING(cl7::errors::system_result(::GetLastError(), TEXT("::UnregisterClass")));
+            LOG_WARNING(cl7::errors::system_result(::GetLastError(), u8"::UnregisterClass"));
             return false;
         }
 

@@ -23,7 +23,7 @@ struct Config
         struct
         {
             /** The main window title. */
-            cl7::string         title;
+            cl7::u8string         title;
             /** The main window icon handle. */
             HICON               icon_handle;
             /** The main window small icon handle. */

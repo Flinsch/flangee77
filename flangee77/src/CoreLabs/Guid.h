@@ -20,7 +20,7 @@ struct Guid
 
     Guid();
     explicit Guid(const std::array<std::byte, 16>& bytes);
-    explicit Guid(cl7::string_view string);
+    explicit Guid(cl7::u8string_view string);
 
     void swap(Guid& other) noexcept;
 
@@ -33,7 +33,7 @@ struct Guid
     /**
      * "Stringifies" this GUID object.
      */
-    cl7::string to_string(bool uppercase = false) const;
+    cl7::u8string to_string(bool uppercase = false) const;
 
 
     /**
@@ -50,7 +50,7 @@ struct Guid
     /**
      * Parses the given GUID string.
      */
-    static Guid parse(cl7::string_view string);
+    static Guid parse(cl7::u8string_view string);
 
 }; // struct Guid
 

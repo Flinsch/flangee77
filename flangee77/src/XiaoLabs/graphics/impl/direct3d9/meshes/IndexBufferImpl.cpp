@@ -69,7 +69,7 @@ namespace xl7::graphics::impl::direct3d9::meshes {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::CreateIndexBuffer")));
+            LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::CreateIndexBuffer"));
             return false;
         }
 
@@ -120,7 +120,7 @@ namespace xl7::graphics::impl::direct3d9::meshes {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DIndexBuffer9::Lock")));
+            LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DIndexBuffer9::Lock"));
             return false;
         }
 

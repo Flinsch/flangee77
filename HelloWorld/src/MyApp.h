@@ -23,7 +23,7 @@ public:
 
     MyApp() = delete;
 
-    MyApp(int argc, cl7::char_type* argv[]);
+    MyApp(int argc, wchar_t* argv[]);
 
     MyApp(const MyApp&) = delete;
     MyApp& operator=(const MyApp&) = delete;

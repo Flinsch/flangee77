@@ -9,7 +9,7 @@ namespace cl7::io {
 
 
 
-    file::file(const cl7::string& path, open_mode open_mode)
+    file::file(const cl7::u8string& path, open_mode open_mode)
         : file()
     {
         open(path, open_mode);
@@ -134,7 +134,7 @@ namespace cl7::io {
     /**
      * Opens the specified file for reading and writing.
      */
-    bool file::open(const cl7::string& path, open_mode open_mode)
+    bool file::open(const cl7::u8string& path, open_mode open_mode)
     {
         close();
 
@@ -148,14 +148,14 @@ namespace cl7::io {
         if ((open_mode & open_mode::truncate) == open_mode::truncate)
             om |= std::ios::trunc;
 
-        _fstream.open(path.data(), om);
+        _fstream.open(std::filesystem::path(path), om);
         if (!is_good())
         {
             close();
             return false;
         }
 
-        _path = cl7::string(path);
+        _path = cl7::u8string(path);
         _open_mode = open_mode;
 
         _position = _tell_position();

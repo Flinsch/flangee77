@@ -21,7 +21,7 @@ public:
 
     SubcaseBranchSwitch() = delete;
 
-    SubcaseBranchSwitch(Context& ctx, cl7::string_view name, const cl7::char_type* file_path, unsigned line_number, signed iteration_number = -1);
+    SubcaseBranchSwitch(Context& ctx, cl7::u8string_view name, const char* file_path, unsigned line_number, signed iteration_number = -1);
 
     SubcaseBranchSwitch(const SubcaseBranchSwitch&) = delete;
     SubcaseBranchSwitch& operator=(const SubcaseBranchSwitch&) = delete;

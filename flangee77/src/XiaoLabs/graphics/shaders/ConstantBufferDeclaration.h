@@ -16,7 +16,7 @@ struct ConstantBufferDeclaration
 {
 
     /** The name of the constant buffer. */
-    cl7::astring name;
+    cl7::u8string name;
 
     /** The 0-based index of the constant buffer. */
     unsigned index;

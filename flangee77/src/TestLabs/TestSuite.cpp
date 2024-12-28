@@ -20,7 +20,7 @@ namespace tl7 {
     /**
      * Registers the specified test case.
      */
-    int TestSuite::register_test_case(TestCase::FuncType func, cl7::string_view name, const cl7::char_type* file_path, unsigned line_number)
+    int TestSuite::register_test_case(TestCase::FuncType func, cl7::u8string_view name, const char* file_path, unsigned line_number)
     {
         if (!_registered_test_cases)
             _registered_test_cases = std::make_unique<std::vector<TestCasePtr>>();
@@ -146,19 +146,19 @@ namespace tl7 {
         }
         catch (const std::exception& e)
         {
-            _reporter.post_result(ResultBuilder::make_exception_result(ctx, cl7::strings::from_latin1(e.what())));
+            _reporter.post_result(ResultBuilder::make_exception_result(ctx, cl7::strings::reinterpret_utf8(e.what())));
         }
         catch (const std::string& message)
         {
-            _reporter.post_result(ResultBuilder::make_exception_result(ctx, cl7::strings::from_latin1(message)));
+            _reporter.post_result(ResultBuilder::make_exception_result(ctx, cl7::strings::reinterpret_utf8(message)));
         }
         catch (const char* message)
         {
-            _reporter.post_result(ResultBuilder::make_exception_result(ctx, cl7::strings::from_latin1(message)));
+            _reporter.post_result(ResultBuilder::make_exception_result(ctx, cl7::strings::reinterpret_utf8(message)));
         }
         catch (...)
         {
-            _reporter.post_result(ResultBuilder::make_exception_result(ctx, TEXT("Unknown exception")));
+            _reporter.post_result(ResultBuilder::make_exception_result(ctx, u8"Unknown exception"));
         }
 
         return false;

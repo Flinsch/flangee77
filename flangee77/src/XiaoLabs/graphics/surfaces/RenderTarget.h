@@ -28,7 +28,7 @@ public:
     /**
      * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    cl7::string_view get_type_string() const override { return TEXT("render target"); }
+    cl7::u8string_view get_type_string() const override { return u8"render target"; }
 
     /**
      * Returns the default viewport based on the size of the render target.

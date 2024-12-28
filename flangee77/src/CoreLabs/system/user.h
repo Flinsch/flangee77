@@ -25,7 +25,7 @@ public:
     /**
      * Retrieves the name of the system user.
      */
-    static cl7::string get_user_name(UserNameFormat user_name_format);
+    static cl7::u8string get_user_name(UserNameFormat user_name_format);
 
 }; // class user
 

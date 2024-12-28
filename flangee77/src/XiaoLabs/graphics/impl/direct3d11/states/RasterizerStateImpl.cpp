@@ -22,7 +22,7 @@ namespace xl7::graphics::impl::direct3d11::states {
 
         if (fill_mode == xl7::graphics::states::RasterizerState::FillMode::Point)
         {
-            LOG_WARNING(TEXT("\"Point\" fill mode is not supported."));
+            LOG_WARNING(u8"\"Point\" fill mode is not supported.");
             return D3D11_FILL_SOLID;
         }
 
@@ -103,7 +103,7 @@ namespace xl7::graphics::impl::direct3d11::states {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11Device::CreateRasterizerState")));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CreateRasterizerState"));
             return false;
         }
 

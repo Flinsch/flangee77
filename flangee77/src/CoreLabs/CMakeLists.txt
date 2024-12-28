@@ -11,7 +11,6 @@ target_sources(flangee77
     errors.h
     filesystem.cpp
     filesystem.h
-    fstream.h
     Guid.cpp
     Guid.h
     io.h
@@ -22,7 +21,9 @@ target_sources(flangee77
     profiling.h
     root.cpp
     root.h
+    sstream.cpp
     sstream.h
+    string.cpp
     string.h
     strings.cpp
     strings.h

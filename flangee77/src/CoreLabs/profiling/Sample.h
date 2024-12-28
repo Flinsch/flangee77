@@ -15,7 +15,7 @@ struct Sample
 
     // NOLINTBEGIN(cppcoreguidelines-avoid-const-or-ref-data-members)
     /** The name of this sample. */
-    const cl7::astring name;
+    const cl7::u8string name;
     /** The immediate parent of this sample. */
     Sample* const parent_sample;
     /** The number of parent samples. */
@@ -57,7 +57,7 @@ struct Sample
 
 
 
-    Sample(cl7::astring_view name, Sample* parent_sample = nullptr)
+    Sample(cl7::u8string_view name, Sample* parent_sample = nullptr)
         : name(name)
         , parent_sample(parent_sample)
         , parent_count(parent_sample ? parent_sample->parent_count + 1 : 0)

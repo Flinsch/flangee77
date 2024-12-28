@@ -41,7 +41,7 @@ public:
         /** The (new) ID of the resource to create. */
         ResourceID id;
         /** The textual identifier of the resource to create (can be empty). */
-        cl7::astring_view identifier;
+        cl7::u8string_view identifier;
         /** The descriptor of the resource to create. */
         TDesc desc;
     };
@@ -60,7 +60,7 @@ public:
     /**
      * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    virtual cl7::string_view get_type_string() const { return TEXT("resource"); }
+    virtual cl7::u8string_view get_type_string() const { return u8"resource"; }
 
 
 
@@ -71,12 +71,12 @@ public:
     /**
      * Returns the identifier of this resource (if specified, empty otherwise).
      */
-    cl7::string get_identifier_string() const;
+    cl7::u8string get_identifier_string() const;
 
     /**
      * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    cl7::string get_typed_identifier_string() const { return cl7::string(get_type_string()) + TEXT(" \"") + get_identifier_string() + TEXT("\""); }
+    cl7::u8string get_typed_identifier_string() const { return cl7::u8string(get_type_string()) + u8" \"" + get_identifier_string() + u8"\""; }
 
     /**
      * Increases the reference count. A call to this function should be paired with
@@ -123,7 +123,7 @@ public:
     /**
      * Returns the identifier of this resource (if specified, empty otherwise).
      */
-    const cl7::astring& get_identifier() const { return _identifier; }
+    const cl7::u8string& get_identifier() const { return _identifier; }
 
     /**
      * Returns the reference count to determine whether the resource should actually
@@ -150,7 +150,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    Resource(ResourceManager* manager, ResourceID id, cl7::astring_view identifier);
+    Resource(ResourceManager* manager, ResourceID id, cl7::u8string_view identifier);
 
     template <class TDesc>
     Resource(const CreateParams<TDesc>& params)
@@ -279,7 +279,7 @@ private:
     /**
      * The textual identifier of this resource (if specified, empty otherwise).
      */
-    const cl7::astring _identifier;
+    const cl7::u8string _identifier;
 
     /**
      * The reference count to determine whether the resource should actually be

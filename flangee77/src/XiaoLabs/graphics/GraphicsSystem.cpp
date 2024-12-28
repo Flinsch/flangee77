@@ -65,9 +65,9 @@ namespace xl7::graphics {
         const bool result = _init_before_rendering_device_impl() && _create_rendering_device();
 
         if (result)
-            LOG_SUCCESS(TEXT("The graphics component based on " XL7_GRAPHICS_IMPL_NAME " has been successfully initialized."));
+            LOG_SUCCESS(u8"The graphics component based on " XL7_GRAPHICS_IMPL_NAME " has been successfully initialized.");
         else
-            LOG_ERROR(TEXT("The graphics component based on " XL7_GRAPHICS_IMPL_NAME " could not be initialized."));
+            LOG_ERROR(u8"The graphics component based on " XL7_GRAPHICS_IMPL_NAME " could not be initialized.");
 
         return result;
     }
@@ -82,9 +82,9 @@ namespace xl7::graphics {
             result = false;
 
         if (result)
-            LOG_SUCCESS(TEXT("The graphics component based on " XL7_GRAPHICS_IMPL_NAME " has been shut down successfully."));
+            LOG_SUCCESS(u8"The graphics component based on " XL7_GRAPHICS_IMPL_NAME " has been shut down successfully.");
         else
-            LOG_WARNING(TEXT("The graphics component based on " XL7_GRAPHICS_IMPL_NAME " could not be shut down correctly."));
+            LOG_WARNING(u8"The graphics component based on " XL7_GRAPHICS_IMPL_NAME " could not be shut down correctly.");
 
         return result;
     }
@@ -103,17 +103,17 @@ namespace xl7::graphics {
         _rendering_device.reset(_rendering_device_factory_impl());
         if (!_rendering_device)
         {
-            LOG_ERROR(TEXT("The rendering device could not be created."));
+            LOG_ERROR(u8"The rendering device could not be created.");
             return false;
         }
 
         if (!RenderingDevice::Attorney::init(_rendering_device.get()))
         {
-            LOG_ERROR(TEXT("The rendering device could not be initialized."));
+            LOG_ERROR(u8"The rendering device could not be initialized.");
             return false;
         }
 
-        LOG(TEXT("The rendering device has been created and initialized."));
+        LOG(u8"The rendering device has been created and initialized.");
 
         return true;
     }
@@ -125,14 +125,14 @@ namespace xl7::graphics {
     {
         if (!_rendering_device)
         {
-            LOG_WARNING(TEXT("There is no rendering device to destroy."));
+            LOG_WARNING(u8"There is no rendering device to destroy.");
             return false;
         }
 
         if (!RenderingDevice::Attorney::shutdown(_rendering_device.get()))
-            LOG_WARNING(TEXT("The rendering device could not be shut down correctly."));
+            LOG_WARNING(u8"The rendering device could not be shut down correctly.");
         _rendering_device.reset();
-        LOG(TEXT("The rendering device has been destroyed."));
+        LOG(u8"The rendering device has been destroyed.");
 
         return true;
     }

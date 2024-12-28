@@ -366,12 +366,12 @@ namespace xl7::graphics::images {
 
         if (source_desc.pixel_format == PixelFormat::UNKNOWN && resampling_method != ResamplingMethod::NearestNeighbor)
         {
-            LOG_WARNING(TEXT("Cannot resample an unknown format."));
+            LOG_WARNING(u8"Cannot resample an unknown format.");
             return {};
         }
         if (source_desc.pixel_format == PixelFormat::R11G11B10_FLOAT && resampling_method != ResamplingMethod::NearestNeighbor)
         {
-            LOG_WARNING(TEXT("Cannot resample R11G11B10_FLOAT."));
+            LOG_WARNING(u8"Cannot resample R11G11B10_FLOAT.");
             return {};
         }
 

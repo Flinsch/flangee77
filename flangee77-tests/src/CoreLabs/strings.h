@@ -14,58 +14,55 @@
 
 namespace tl7::internals {
     inline
-    cl7::string to_string(const cl7::strings::Encoding& encoding)
+    cl7::u8string to_string(const cl7::strings::Encoding& encoding)
     {
         switch ( encoding )
         {
-        case cl7::strings::Encoding::ASCII:     return TEXT("\"ASCII\"");
-        case cl7::strings::Encoding::Latin1:    return TEXT("\"Latin-1\"");
-        case cl7::strings::Encoding::UTF8:      return TEXT("\"UTF-8\"");
-        case cl7::strings::Encoding::UTF16:     return TEXT("\"UTF-16\"");
-        case cl7::strings::Encoding::UTF32:     return TEXT("\"UTF-32\"");
+        case cl7::strings::Encoding::ASCII:     return u8"\"ASCII\"";
+        case cl7::strings::Encoding::UTF8:      return u8"\"UTF-8\"";
+        case cl7::strings::Encoding::UTF16:     return u8"\"UTF-16\"";
+        case cl7::strings::Encoding::UTF32:     return u8"\"UTF-32\"";
         }
 
-        return TEXT("\"unknown encoding\"");
+        return u8"\"unknown encoding\"";
     }
 }
 
 
 
-#define CoreLabs_strings_to_ASCII_Latin1_from_UTFx(from, type, prefix) \
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  to ASCII/Latin-1 from " from) ) \
+#define CoreLabs_strings_to_ASCII_from_UTFx(from, type, prefix) \
+TESTLABS_CASE( (u8"CoreLabs:  strings:  to ASCII from " from) ) \
 { \
     struct Entry \
     { \
         type input; \
         cl7::astring_view expected; \
-        bool check_ascii; \
     } entry; \
  \
     const std::vector<Entry> container { \
-        { prefix##"pure ASCII", "pure ASCII", true }, \
-        { prefix##"\u00df", "\xdf", false }, /* valid Latin-1 character, but invalid ASCII character */ \
-        { prefix##"\u0100", "\x1a", true }, /* invalid Latin-1 character, but valid replacement character (even ASCII) */ \
-        { prefix##"aou \u00e4\u00f6\u00fc \ud7ff\ue000 123", "aou \xe4\xf6\xfc \x1a\x1a 123", false }, /* just some valid and invalid code points */ \
-        { prefix##"\u007f", "\x7f", true }, /* highest ASCII character */ \
-        { prefix##"\u0080", "\x80", false }, /* lowest non-ASCII character */ \
-        { prefix##"\u00ff", "\xff", false }, /* highest Latin-1 character */ \
+        { prefix##"pure ASCII", "pure ASCII" }, \
+        { prefix##"\u00df", "\x1a" }, /* valid Latin-1 character, but invalid ASCII character */ \
+        { prefix##"\u0100", "\x1a" }, /* invalid Latin-1 character, but valid replacement character (even ASCII) */ \
+        { prefix##"aou \u00e4\u00f6\u00fc \ud7ff\ue000 123", "aou \x1a\x1a\x1a \x1a\x1a 123" }, /* just some valid and invalid code points */ \
+        { prefix##"\u007f", "\x7f" }, /* highest ASCII character */ \
+        { prefix##"\u0080", "\x1a" }, /* lowest non-ASCII character */ \
+        { prefix##"\u00ff", "\x1a" }, /* highest Latin-1 character */ \
     }; \
  \
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("from " from), container, entry, entry.input ) \
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( (u8"from " from), container, entry, entry.input ) \
     { \
         auto actual = cl7::strings::to_ascii( entry.input ); \
         TESTLABS_CHECK_EQ( actual, entry.expected ); \
-        TESTLABS_CHECK_EQ( cl7::strings::check_ascii( actual ), entry.check_ascii ); \
     } \
 }
 
-CoreLabs_strings_to_ASCII_Latin1_from_UTFx( "UTF-8", cl7::u8string_view, u8 );
-CoreLabs_strings_to_ASCII_Latin1_from_UTFx( "UTF-16", cl7::u16string_view, u );
-CoreLabs_strings_to_ASCII_Latin1_from_UTFx( "UTF-32", cl7::u32string_view, U );
+CoreLabs_strings_to_ASCII_from_UTFx( "UTF-8", cl7::u8string_view, u8 );
+CoreLabs_strings_to_ASCII_from_UTFx( "UTF-16", cl7::u16string_view, u );
+CoreLabs_strings_to_ASCII_from_UTFx( "UTF-32", cl7::u32string_view, U );
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  to UTF-8 from ASCII/Latin-1") )
+TESTLABS_CASE( u8"CoreLabs:  strings:  to UTF-8 from ASCII" )
 {
     struct Entry
     {
@@ -83,7 +80,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  to UTF-8 from ASCII/Latin-1") )
         { "\xff", u8"\u00ff", 2 }, /* highest Latin-1 character */ \
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("to UTF-8"), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"to UTF-8", container, entry, entry.input )
     {
         auto actual = cl7::strings::to_utf8( entry.input );
         TESTLABS_CHECK_EQ( actual, entry.expected );
@@ -91,8 +88,8 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  to UTF-8 from ASCII/Latin-1") )
     }
 }
 
-#define CoreLabs_strings_to_UTFx_from_ASCII_Latin1(to, type, prefix, to_utfx) \
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  to " to " from ASCII/Latin-1") ) \
+#define CoreLabs_strings_to_UTFx_from_ASCII(to, type, prefix, to_utfx) \
+TESTLABS_CASE( (u8"CoreLabs:  strings:  to " to " from ASCII") ) \
 { \
     struct Entry \
     { \
@@ -108,20 +105,20 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  to " to " from ASCII/Latin-1") ) \
         { "\xff", prefix##"\u00ff" }, /* highest Latin-1 character */ \
     }; \
  \
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("to " to), container, entry, entry.input ) \
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( (u8"to " to), container, entry, entry.input ) \
     { \
         auto actual = cl7::strings::to_utfx( entry.input ); \
         TESTLABS_CHECK_EQ( actual, entry.expected ); \
     } \
 }
 
-CoreLabs_strings_to_UTFx_from_ASCII_Latin1( "UTF-16", cl7::u16string_view, u, to_utf16 );
-CoreLabs_strings_to_UTFx_from_ASCII_Latin1( "UTF-32", cl7::u32string_view, U, to_utf32 );
+CoreLabs_strings_to_UTFx_from_ASCII( "UTF-16", cl7::u16string_view, u, to_utf16 );
+CoreLabs_strings_to_UTFx_from_ASCII( "UTF-32", cl7::u32string_view, U, to_utf32 );
 
 
 
 #define CoreLabs_strings_to_UTF8_from_UTFx(from, type, prefix) \
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  to UTF-8 from " from) ) \
+TESTLABS_CASE( (u8"CoreLabs:  strings:  to UTF-8 from " from) ) \
 { \
     struct Entry \
     { \
@@ -140,7 +137,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  to UTF-8 from " from) ) \
         { prefix##"\U0010ffff", u8"\U0010ffff", 4 }, /* "last" 3-byte sequence */ \
     }; \
  \
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("from " from), container, entry, entry.input ) \
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( (u8"from " from), container, entry, entry.input ) \
     { \
         auto actual = cl7::strings::to_utf8( entry.input ); \
         TESTLABS_CHECK_EQ( actual, entry.expected ); \
@@ -154,7 +151,7 @@ CoreLabs_strings_to_UTF8_from_UTFx( "UTF-32", cl7::u32string_view, U );
 
 
 #define CoreLabs_strings_to_UTFx_from_UTF8(to, type, prefix, to_utfx) \
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  to " to " from UTF-8") ) \
+TESTLABS_CASE( (u8"CoreLabs:  strings:  to " to " from UTF-8") ) \
 { \
     struct Entry \
     { \
@@ -172,7 +169,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  to " to " from UTF-8") ) \
         { u8"\U0010ffff", prefix##"\U0010ffff" }, /* "last" 4-byte sequence */ \
     }; \
  \
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("to " to), container, entry, entry.input ) \
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( (u8"to " to), container, entry, entry.input ) \
     { \
         auto actual = cl7::strings::to_utfx( entry.input ); \
         TESTLABS_CHECK_EQ( actual, entry.expected ); \
@@ -184,7 +181,7 @@ CoreLabs_strings_to_UTFx_from_UTF8( "UTF-32", cl7::u32string_view, U, to_utf32 )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  between UTF-16 and UTF-32") )
+TESTLABS_CASE( u8"CoreLabs:  strings:  between UTF-16 and UTF-32" )
 {
     struct Entry
     {
@@ -209,7 +206,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  between UTF-16 and UTF-32") )
         { { 0xdbff, 0xdfff }, U"\U0010ffff", "u+dbff u+dfff  <=>  u+0010ffff" },
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("between UTF-16 and UTF-32"), container, entry, entry.comment )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"between UTF-16 and UTF-32", container, entry, entry.comment )
     {
         cl7::u16string entry_u16s( entry.u16d.size(), u' ' );
         for ( size_t i = 0; i < entry.u16d.size(); ++i )
@@ -230,11 +227,11 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  between UTF-16 and UTF-32") )
 
 // Functions to be tested explicitly:
 // 
-// astring to_latin1(u32string_view u32s)
+// astring to_ascii(u32string_view u32s)
 // u8string to_utf8(u32string_view u32s)
 // u16string to_utf16(u32string_view u32s)
 // 
-// astring to_latin1(byte_view bys)
+// astring to_ascii_unchecked(byte_view bys)
 // u8string to_utf8_unchecked(byte_view bys)
 // u16string to_utf16_unchecked(byte_view bys)
 // u32string to_utf32_unchecked(byte_view bys)
@@ -256,14 +253,22 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  between UTF-16 and UTF-32") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(u32string_view)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::to_ascii(u32string_view)" )
 {
-    for ( cl7::u32char_type u32c = 0; u32c <= 0xff; ++u32c )
+    for ( cl7::u32char_type u32c = 0; u32c <= 0x7f; ++u32c )
     {
         const cl7::achar_type ac = static_cast<cl7::achar_type>( u32c );
         const cl7::astring as( 1, ac );
         const cl7::u32string u32s( 1, u32c );
-        TESTLABS_CHECK_EQ( cl7::strings::to_latin1( u32s ), as );
+        TESTLABS_CHECK_EQ( cl7::strings::to_ascii( u32s ), as );
+    }
+
+    for ( cl7::u32char_type u32c = 0x80; u32c <= 0xff; ++u32c )
+    {
+        const cl7::achar_type ac = 0x1a;
+        const cl7::astring as( 1, ac );
+        const cl7::u32string u32s( 1, u32c );
+        TESTLABS_CHECK_EQ( cl7::strings::to_ascii( u32s ), as );
     }
 
     for ( cl7::u32char_type u32c = 0x0100; ; u32c *= 2 )
@@ -271,14 +276,14 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(u32string_view)") )
         const cl7::achar_type ac = 0x1a;
         const cl7::astring as( 1, ac );
         const cl7::u32string u32s( 1, u32c );
-        TESTLABS_CHECK_EQ( cl7::strings::to_latin1( u32s ), as );
+        TESTLABS_CHECK_EQ( cl7::strings::to_ascii( u32s ), as );
 
         if ( u32c > 0x10ffff ) // Deliberately include also an invalid code point (above 0x10ffff).
             break;
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8(u32string_view)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::to_utf8(u32string_view)" )
 {
     struct Entry
     {
@@ -310,7 +315,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8(u32string_view)") )
         { { 0x20, 0x7f, 0x80, 0xff, 0x07ff, 0x0800, 0xd7ff, 0xd800, 0xdbff, 0xdc00, 0xdfff, 0xe000, 0xffff, 0x0001'0000, 0x0010'ffff, 0x0011'0000, 0 }, { 0x20, 0x7f, 0xc2,0x80, 0xc3,0xbf, 0xdf,0xbf, 0xe0,0xa0,0x80, 0xed,0x9f,0xbf, 0xed,0xa0,0x80, 0xed,0xaf,0xbf, 0xed,0xb0,0x80, 0xed,0xbf,0xbf, 0xee,0x80,0x80, 0xef,0xbf,0xbf, 0xf0,0x90,0x80,0x80, 0xf4,0x8f,0xbf,0xbf, 0xef,0xbf,0xbd, 0 }, "..." },
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.comment )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.comment )
     {
         TESTLABS_ASSERT( !entry.u32d.empty() && entry.u32d.back() == 0 );
         TESTLABS_ASSERT( !entry.u8d.empty() && entry.u8d.back() == 0 );
@@ -322,7 +327,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8(u32string_view)") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16(u32string_view)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::to_utf16(u32string_view)" )
 {
     struct Entry
     {
@@ -354,7 +359,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16(u32string_view)") )
         { { 0x20, 0x7f, 0x80, 0xff, 0x07ff, 0x0800, 0xd7ff, 0xd800, 0xdbff, 0xdc00, 0xdfff, 0xe000, 0xffff, 0x0001'0000, 0x0010'ffff, 0x0011'0000, 0 }, { 0x20, 0x7f, 0x80, 0xff, 0x07ff, 0x0800, 0xd7ff, 0xd800, 0xdbff, 0xdc00, 0xdfff, 0xe000, 0xffff, 0xd800,0xdc00, 0xdbff,0xdfff, 0xfffd, 0 }, "..." },
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.comment )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.comment )
     {
         TESTLABS_ASSERT( !entry.u32d.empty() && entry.u32d.back() == 0 );
         TESTLABS_ASSERT( !entry.u16d.empty() && entry.u16d.back() == 0 );
@@ -368,7 +373,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16(u32string_view)") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(byte_view)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::to_ascii_unchecked(byte_view)" )
 {
     struct Entry
     {
@@ -386,13 +391,13 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_latin1(byte_view)") )
         { cl7::make_bytes( 0xff ), "\xff", false }, /* highest Latin-1 character */
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.expected )
     {
-        TESTLABS_CHECK_EQ( cl7::strings::to_latin1( entry.input ), entry.expected );
+        TESTLABS_CHECK_EQ( cl7::strings::to_ascii_unchecked( entry.input ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8_unchecked(byte_view)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::to_utf8_unchecked(byte_view)" )
 {
     struct Entry
     {
@@ -413,7 +418,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8_unchecked(byte_view)") )
         { cl7::make_bytes( 0xef,0xbb,0xbf, 0x20 ), u8" ", 1 }, /* BOM with "something" */
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.expected )
     {
         auto actual = cl7::strings::to_utf8_unchecked( entry.input );
         TESTLABS_CHECK_EQ( actual, entry.expected );
@@ -421,7 +426,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf8_unchecked(byte_view)") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16_unchecked(byte_view)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::to_utf16_unchecked(byte_view)" )
 {
     struct Entry
     {
@@ -458,7 +463,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16_unchecked(byte_view)") )
     };
 #pragma warning( pop ) // Finally!
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.expected )
     {
         auto actual = cl7::strings::to_utf16_unchecked( entry.input );
         TESTLABS_CHECK_EQ( actual, entry.expected );
@@ -466,7 +471,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf16_unchecked(byte_view)") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf32_unchecked(byte_view)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::to_utf32_unchecked(byte_view)" )
 {
     struct Entry
     {
@@ -503,7 +508,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf32_unchecked(byte_view)") )
     };
 #pragma warning( pop ) // Finally!
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.expected )
     {
         auto actual = cl7::strings::to_utf32_unchecked( entry.input );
         TESTLABS_CHECK_EQ( actual, entry.expected );
@@ -513,7 +518,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_utf32_unchecked(byte_view)") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(astring_view)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::to_bytes(astring_view)" )
 {
     struct Entry
     {
@@ -530,13 +535,13 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(astring_view)") )
         { "\xff", cl7::make_bytes( 0xff ) }, /* highest Latin-1 character */
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.input )
     {
         TESTLABS_CHECK_EQ( cl7::strings::to_bytes( entry.input ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(u8string_view, bool)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::to_bytes(u8string_view, bool)" )
 {
     struct Entry
     {
@@ -556,13 +561,13 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(u8string_view, bool)") )
         { u8" ", true, cl7::make_bytes( 0xef,0xbb,0xbf, 0x20 ) }, /* BOM with "something" */
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.input )
     {
         TESTLABS_CHECK_EQ( cl7::strings::to_bytes( entry.input, entry.add_bom ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(u16string_view, bool, std::endian)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::to_bytes(u16string_view, bool, std::endian)" )
 {
     struct Entry
     {
@@ -593,13 +598,13 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(u16string_view, bool, std::end
         { u" ", true, std::endian::big, cl7::make_bytes( 0xfe,0xff, 0x00,0x20 ) }, /* BOM (big endian) with "something" */
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.input )
     {
         TESTLABS_CHECK_EQ( cl7::strings::to_bytes( entry.input, entry.add_bom, entry.endian ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(u32string_view, bool, std::endian)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::to_bytes(u32string_view, bool, std::endian)" )
 {
     struct Entry
     {
@@ -630,7 +635,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(u32string_view, bool, std::end
         { U" ", true, std::endian::big, cl7::make_bytes( 0x00,0x00,0xfe,0xff, 0x00,0x00,0x00,0x20 ) }, /* BOM (big endian) with "something" */
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.input )
     {
         TESTLABS_CHECK_EQ( cl7::strings::to_bytes( entry.input, entry.add_bom, entry.endian ), entry.expected );
     }
@@ -638,7 +643,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::to_bytes(u32string_view, bool, std::end
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::check_ascii(astring_view)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::check_ascii(astring_view)" )
 {
     struct Entry
     {
@@ -655,13 +660,13 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::check_ascii(astring_view)") )
         { "\xff", false }, /* highest Latin-1 character */
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.input )
     {
         TESTLABS_CHECK_EQ( cl7::strings::check_ascii( entry.input ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::parse_utf8(u8string_view, u32string&)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::parse_utf8(u8string_view, u32string&)" )
 {
     struct Entry
     {
@@ -688,7 +693,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::parse_utf8(u8string_view, u32string&)")
         { "\xfc\xfc...", U"\U0000fffd", false }, /* invalid 6-byte sequence */
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.expected )
     {
         cl7::u8string_view input( reinterpret_cast<const cl7::u8char_type*>( entry.input_data.data() ) );
         cl7::u32string actual;
@@ -697,7 +702,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::parse_utf8(u8string_view, u32string&)")
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::parse_utf16(u16string_view, u32string&)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::parse_utf16(u16string_view, u32string&)" )
 {
     struct Entry
     {
@@ -729,7 +734,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::parse_utf16(u16string_view, u32string&)
         { { 0xd800,0xd800,0xd800,0xdc00, 0 }, U"\ufffd\U00010000", false }, // messed-up surrogates
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.expected )
     {
         TESTLABS_ASSERT( !entry.input_data.empty() && entry.input_data.back() == 0 );
 
@@ -740,7 +745,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::parse_utf16(u16string_view, u32string&)
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::check_utf32(u32string_view)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::check_utf32(u32string_view)" )
 {
     struct Entry
     {
@@ -770,7 +775,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::check_utf32(u32string_view)") )
         { { 0x110000, 0 }, false, "\\U00110000" }, // invalid code point
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.expected )
     {
         TESTLABS_ASSERT( !entry.input_data.empty() && entry.input_data.back() == 0 );
 
@@ -781,7 +786,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::check_utf32(u32string_view)") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::utf8_length(u8string_view)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::utf8_length(u8string_view)" )
 {
     struct Entry
     {
@@ -808,14 +813,14 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::utf8_length(u8string_view)") )
         { "\xfc\xfc...", 1, "\xfc\xfc..." }, /* invalid 6-byte sequence */
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.comment )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.comment )
     {
         cl7::u8string_view input( reinterpret_cast<const cl7::u8char_type*>( entry.input_data.data() ) );
         TESTLABS_CHECK_EQ( cl7::strings::utf8_length( input ), entry.expected );
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings::utf16_length(u16string_view)") )
+TESTLABS_CASE( u8"CoreLabs:  strings::utf16_length(u16string_view)" )
 {
     struct Entry
     {
@@ -847,7 +852,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::utf16_length(u16string_view)") )
         { { 0xd800,0xd800,0xd800,0xdc00, 0 }, 2, "\\ud800\\ud800\\ud800\\udc00" }, // messed-up surrogates
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.comment )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.comment )
     {
         TESTLABS_ASSERT( !entry.input_data.empty() && entry.input_data.back() == 0 );
 
@@ -858,7 +863,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings::utf16_length(u16string_view)") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  detect_encoding") )
+TESTLABS_CASE( u8"CoreLabs:  strings:  detect_encoding" )
 {
     struct Entry
     {
@@ -869,13 +874,12 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  detect_encoding") )
     const std::vector<Entry> container {
         { {}, cl7::strings::Encoding::Unknown },
         { cl7::strings::to_bytes( "ASCII: Oelrueckstossabdaempfung" ), cl7::strings::Encoding::ASCII },
-        { cl7::strings::to_bytes( "Latin1: \xd6lr\xfc""cksto\xdf""abd\xe4mpfung" ), cl7::strings::Encoding::Latin1 },
         { cl7::strings::to_bytes( u8"UTF-8: \u00d6lr\u00fccksto\u00dfabd\u00e4mpfung" ), cl7::strings::Encoding::UTF8 },
         { cl7::strings::to_bytes( u"UTF-16: \u00d6lr\u00fccksto\u00dfabd\u00e4mpfung" ), cl7::strings::Encoding::UTF16 },
         { cl7::strings::to_bytes( U"UTF-32: \u00d6lr\u00fccksto\u00dfabd\u00e4mpfung" ), cl7::strings::Encoding::UTF32 },
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.input )
     {
         const auto& input = entry.input;
         const auto expected = entry.expected;
@@ -888,7 +892,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  detect_encoding") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  count_whitespace_prefix") )
+TESTLABS_CASE( u8"CoreLabs:  strings:  count_whitespace_prefix" )
 {
     TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::astring_view( "" ) ), 0 );
     TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::astring_view( " " ) ), 1 );
@@ -950,7 +954,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  count_whitespace_prefix") )
     TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::u8string_view( u8"\u3000" ) ), 3 );
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  count_whitespace_suffix") )
+TESTLABS_CASE( u8"CoreLabs:  strings:  count_whitespace_suffix" )
 {
     TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::astring_view( "" ) ), 0 );
     TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_suffix( cl7::astring_view( " " ) ), 1 );
@@ -1014,25 +1018,25 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  count_whitespace_suffix") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming left") )
+TESTLABS_CASE( u8"CoreLabs:  strings:  trimming left" )
 {
     struct Entry
     {
-        cl7::string input;
-        cl7::string expected;
+        cl7::u8string input;
+        cl7::u8string expected;
     } entry;
 
     const std::vector<Entry> container {
-        { TEXT(""), TEXT("") },
-        { TEXT(" "), TEXT("") },
-        { TEXT("  "), TEXT("") },
-        { TEXT("  x"), TEXT("x") },
-        { TEXT("x  "), TEXT("x  ") },
-        { TEXT("  x  "), TEXT("x  ") },
-        { TEXT("\n\tx\n\t"), TEXT("x\n\t") },
+        { u8"", u8"" },
+        { u8" ", u8"" },
+        { u8"  ", u8"" },
+        { u8"  x", u8"x" },
+        { u8"x  ", u8"x  " },
+        { u8"  x  ", u8"x  " },
+        { u8"\n\tx\n\t", u8"x\n\t" },
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("<string>"), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string>", container, entry, entry.input )
     {
         const auto& input = entry.input;
         const auto& expected = entry.expected;
@@ -1044,7 +1048,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming left") )
         TESTLABS_CHECK_EQ( cl7::strings::ltrimmed( input ), expected );
     }
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("<string_view>"), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string_view>", container, entry, entry.input )
     {
         const auto input_view = cl7::make_string_view( entry.input );
         const auto expected_view = cl7::make_string_view( entry.expected );
@@ -1057,25 +1061,25 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming left") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming right") )
+TESTLABS_CASE( u8"CoreLabs:  strings:  trimming right" )
 {
     struct Entry
     {
-        cl7::string input;
-        cl7::string expected;
+        cl7::u8string input;
+        cl7::u8string expected;
     } entry;
 
     const std::vector<Entry> container {
-        { TEXT(""), TEXT("") },
-        { TEXT(" "), TEXT("") },
-        { TEXT("  "), TEXT("") },
-        { TEXT("  x"), TEXT("  x") },
-        { TEXT("x  "), TEXT("x") },
-        { TEXT("  x  "), TEXT("  x") },
-        { TEXT("\n\tx\n\t"), TEXT("\n\tx") },
+        { u8"", u8"" },
+        { u8" ", u8"" },
+        { u8"  ", u8"" },
+        { u8"  x", u8"  x" },
+        { u8"x  ", u8"x" },
+        { u8"  x  ", u8"  x" },
+        { u8"\n\tx\n\t", u8"\n\tx" },
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("<string>"), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string>", container, entry, entry.input )
     {
         const auto& input = entry.input;
         const auto& expected = entry.expected;
@@ -1087,7 +1091,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming right") )
         TESTLABS_CHECK_EQ( cl7::strings::rtrimmed( input ), expected );
     }
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("<string_view>"), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string_view>", container, entry, entry.input )
     {
         const auto input_view = cl7::make_string_view( entry.input );
         const auto expected_view = cl7::make_string_view( entry.expected );
@@ -1100,25 +1104,25 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming right") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming both") )
+TESTLABS_CASE( u8"CoreLabs:  strings:  trimming both" )
 {
     struct Entry
     {
-        cl7::string input;
-        cl7::string expected;
+        cl7::u8string input;
+        cl7::u8string expected;
     } entry;
 
     const std::vector<Entry> container {
-        { TEXT(""), TEXT("") },
-        { TEXT(" "), TEXT("") },
-        { TEXT("  "), TEXT("") },
-        { TEXT("  x"), TEXT("x") },
-        { TEXT("x  "), TEXT("x") },
-        { TEXT("  x  "), TEXT("x") },
-        { TEXT("\n\tx\n\t"), TEXT("x") },
+        { u8"", u8"" },
+        { u8" ", u8"" },
+        { u8"  ", u8"" },
+        { u8"  x", u8"x" },
+        { u8"x  ", u8"x" },
+        { u8"  x  ", u8"x" },
+        { u8"\n\tx\n\t", u8"x" },
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("<string>"), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string>", container, entry, entry.input )
     {
         const auto& input = entry.input;
         const auto& expected = entry.expected;
@@ -1130,7 +1134,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming both") )
         TESTLABS_CHECK_EQ( cl7::strings::trimmed( input ), expected );
     }
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("<string_view>"), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string_view>", container, entry, entry.input )
     {
         const auto input_view = cl7::make_string_view( entry.input );
         const auto expected_view = cl7::make_string_view( entry.expected );
@@ -1145,27 +1149,27 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  trimming both") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  padding left") )
+TESTLABS_CASE( u8"CoreLabs:  strings:  padding left" )
 {
     struct Entry
     {
-        cl7::string input;
+        cl7::u8string input;
         size_t len;
-        cl7::char_type chr;
-        cl7::string expected;
+        cl7::u8char_type chr;
+        cl7::u8string expected;
     } entry;
 
     const std::vector<Entry> container {
-        { TEXT(""), 0, TEXT(' '), TEXT("") },
-        { TEXT(""), 1, TEXT(' '), TEXT(" ") },
-        { TEXT(""), 2, TEXT(' '), TEXT("  ") },
-        { TEXT("xx"), 2, TEXT(' '), TEXT("xx") },
-        { TEXT("xx"), 3, TEXT(' '), TEXT(" xx") },
-        { TEXT("xx"), 4, TEXT(' '), TEXT("  xx") },
-        { TEXT("x"), 2, TEXT('x'), TEXT("xx") },
+        { u8"", 0, u8' ', u8"" },
+        { u8"", 1, u8' ', u8" " },
+        { u8"", 2, u8' ', u8"  " },
+        { u8"xx", 2, u8' ', u8"xx" },
+        { u8"xx", 3, u8' ', u8" xx" },
+        { u8"xx", 4, u8' ', u8"  xx" },
+        { u8"x", 2, u8'x', u8"xx" },
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.input )
     {
         const auto& input = entry.input;
         const auto len = entry.len;
@@ -1180,27 +1184,27 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  padding left") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  padding right") )
+TESTLABS_CASE( u8"CoreLabs:  strings:  padding right" )
 {
     struct Entry
     {
-        cl7::string input;
+        cl7::u8string input;
         size_t len;
-        cl7::char_type chr;
-        cl7::string expected;
+        cl7::u8char_type chr;
+        cl7::u8string expected;
     } entry;
 
     const std::vector<Entry> container {
-        { TEXT(""), 0, TEXT(' '), TEXT("") },
-        { TEXT(""), 1, TEXT(' '), TEXT(" ") },
-        { TEXT(""), 2, TEXT(' '), TEXT("  ") },
-        { TEXT("xx"), 2, TEXT(' '), TEXT("xx") },
-        { TEXT("xx"), 3, TEXT(' '), TEXT("xx ") },
-        { TEXT("xx"), 4, TEXT(' '), TEXT("xx  ") },
-        { TEXT("x"), 2, TEXT('x'), TEXT("xx") },
+        { u8"", 0, u8' ', u8"" },
+        { u8"", 1, u8' ', u8" " },
+        { u8"", 2, u8' ', u8"  " },
+        { u8"xx", 2, u8' ', u8"xx" },
+        { u8"xx", 3, u8' ', u8"xx " },
+        { u8"xx", 4, u8' ', u8"xx  " },
+        { u8"x", 2, u8'x', u8"xx" },
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.input )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.input )
     {
         const auto& input = entry.input;
         const auto len = entry.len;
@@ -1217,29 +1221,29 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  padding right") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  to hex") )
+TESTLABS_CASE( u8"CoreLabs:  strings:  to hex" )
 {
     struct Entry
     {
         unsigned val;
-        cl7::char_type chA;
+        cl7::u8char_type chA;
         unsigned pad;
-        cl7::string expected;
+        cl7::u8string expected;
     } entry;
 
     const std::vector<Entry> container {
-        { 0x00000000, TEXT('a'), 0, TEXT("") },
-        { 0x00000000, TEXT('a'), 2, TEXT("00") },
-        { 0x00000000, TEXT('a'), 8, TEXT("00000000") },
-        { 0x0000bf00, TEXT('a'), 0, TEXT("bf00") },
-        { 0x0000bf00, TEXT('a'), 8, TEXT("0000bf00") },
-        { 0x12345678, TEXT('a'), 0, TEXT("12345678") },
-        { 0xffffffff, TEXT('a'), 0, TEXT("ffffffff") },
-        { 0xffffffff, TEXT('A'), 0, TEXT("FFFFFFFF") },
-        { 0xffffffff, TEXT('A'), 9, TEXT("0FFFFFFFF") },
+        { 0x00000000, u8'a', 0, u8"" },
+        { 0x00000000, u8'a', 2, u8"00" },
+        { 0x00000000, u8'a', 8, u8"00000000" },
+        { 0x0000bf00, u8'a', 0, u8"bf00" },
+        { 0x0000bf00, u8'a', 8, u8"0000bf00" },
+        { 0x12345678, u8'a', 0, u8"12345678" },
+        { 0xffffffff, u8'a', 0, u8"ffffffff" },
+        { 0xffffffff, u8'A', 0, u8"FFFFFFFF" },
+        { 0xffffffff, u8'A', 9, u8"0FFFFFFFF" },
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.expected )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.expected )
     {
         const auto val = entry.val;
         const auto chA = entry.chA;
@@ -1247,35 +1251,35 @@ TESTLABS_CASE( TEXT("CoreLabs:  strings:  to hex") )
         const auto& expected = entry.expected;
 
         TESTLABS_CHECK_EQ( cl7::strings::to_hex( val, chA, pad ), expected );
-        TESTLABS_CHECK_EQ( cl7::strings::to_0xhex( val, chA, pad ), TEXT("0x") + expected );
+        TESTLABS_CHECK_EQ( cl7::strings::to_0xhex( val, chA, pad ), u8"0x" + expected );
     }
 }
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  strings:  Levenshtein distance") )
+TESTLABS_CASE( u8"CoreLabs:  strings:  Levenshtein distance" )
 {
     struct Entry
     {
-        cl7::string s1;
-        cl7::string s2;
+        cl7::u8string s1;
+        cl7::u8string s2;
         size_t distance;
         float distance_normalized;
     } entry;
 
     const std::vector<Entry> container {
-        { TEXT(""), TEXT(""), 0, 0.0f },
-        { TEXT(""), TEXT("b"), 1, 1.0f },
-        { TEXT("a"), TEXT(""), 1, 1.0f },
-        { TEXT("a"), TEXT("b"), 1, 1.0f },
-        { TEXT("kitten"), TEXT("sitting"), 3, 3.0f/7.0f },
-        { TEXT("uninformed"), TEXT("uniformed"), 1, 0.1f },
-        { TEXT("flaw"), TEXT("lawn"), 2, 0.5f },
-        { TEXT("Bar"), TEXT("Bier"), 2, 0.5f },
-        { TEXT("flangee77"), TEXT("flangee77"), 0, 0.0f },
+        { u8"", u8"", 0, 0.0f },
+        { u8"", u8"b", 1, 1.0f },
+        { u8"a", u8"", 1, 1.0f },
+        { u8"a", u8"b", 1, 1.0f },
+        { u8"kitten", u8"sitting", 3, 3.0f/7.0f },
+        { u8"uninformed", u8"uniformed", 1, 0.1f },
+        { u8"flaw", u8"lawn", 2, 0.5f },
+        { u8"Bar", u8"Bier", 2, 0.5f },
+        { u8"flangee77", u8"flangee77", 0, 0.0f },
     };
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT(""), container, entry, entry.s1 + TEXT(" <-> ") + entry.s2 )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.s1 + u8" <-> " + entry.s2 )
     {
         const auto& s1 = entry.s1;
         const auto& s2 = entry.s2;

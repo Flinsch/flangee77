@@ -1,10 +1,10 @@
 #include "HtmlLogHandler.h"
 
-#include <CoreLabs/fstream.h>
 #include <CoreLabs/sstream.h>
 #include <CoreLabs/strings.h>
 
 #include <chrono>
+#include <fstream>
 
 
 
@@ -12,16 +12,16 @@ namespace cl7::logging {
 
 
 
-    HtmlLogHandler::Block::Block(std::string_view block_class)
+    HtmlLogHandler::Block::Block(cl7::u8string_view block_class)
         : block_class(block_class)
     {
-        _write_raw("    <div class=\"" + this->block_class + "\">\n");
+        _write_raw(u8"    <div class=\"" + this->block_class + u8"\">\n");
     }
 
     HtmlLogHandler::Block::~Block()
     {
-        _write_raw("    </div>\n");
-        _write_raw("    <div></div><div></div><div></div>\n");
+        _write_raw(u8"    </div>\n");
+        _write_raw(u8"    <div></div><div></div><div></div>\n");
     }
 
 
@@ -32,57 +32,56 @@ namespace cl7::logging {
 
     HtmlLogHandler::HtmlLogHandler()
     {
-        constexpr std::string_view title = "flangee77 &mdash; log.html";
+        constexpr cl7::u8string_view title = u8"flangee77 &mdash; log.html";
 
         const std::time_t t = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
         std::tm tm{};
         ::localtime_s(&tm, &t);
-        const auto ldt = std::put_time(&tm, "%Y-%m-%d %H:%M:%S %z");
-        std::ostringstream ldt_ss;
-        ldt_ss << ldt;
+        std::wostringstream ldt_woss;
+        ldt_woss << std::put_time(&tm, L"%Y-%m-%d %H:%M:%S %z");
 
-        std::ostringstream ss;
-        ss << "<!doctype html>\n";
-        ss << "<html lang=\"en\">\n";
-        ss << "<head>\n";
-        ss << "  <meta charset=\"utf-8\">\n";
-        ss << "  <title>" << title << "</title>\n";
-        ss << "  <style>\n";
-        ss << "    body { font-family: sans-serif; }\n";
-        ss << "    .container { display: grid; gap: 0.25rem 1rem; grid-template-columns: 1fr auto auto auto; }\n";
-        ss << "    .container > * {  }\n";
-        ss << "    .container > * > .badge { border: 0.125rem solid; border-radius: 0.25rem; font-weight: bold; padding: 0 0.125rem; text-transform: capitalize; }\n";
-        ss << "    .container > .info { color: #085786; }\n";
-        ss << "    .container > .info > .badge { background-color: #085786; border-color: #085786; color: #ffffff; }\n";
-        ss << "    .container > .success { color: #386a1f; }\n";
-        ss << "    .container > .success > .badge { background-color: #386a1f; border-color: #386a1f; color: #ffffff; }\n";
-        ss << "    .container > .warning { color: #8f4f00; }\n";
-        ss << "    .container > .warning > .badge { background-color: #8f4f00; border-color: #8f4f00; color: #ffffff; }\n";
-        ss << "    .container > .error { color: #b3261e; }\n";
-        ss << "    .container > .error > .badge { background-color: #b3261e; border-color: #b3261e; color: #ffffff; }\n";
-        ss << "    .container > .caption { font-weight: bold; }\n";
-        ss << "    .container > .section { font-style: italic; }\n";
-        ss << "    .container > .list { display: grid; gap: 0.125rem 1rem; grid-template-columns: auto 1fr; margin-left: 1rem; }\n";
-        ss << "    .container > .list > .item {  }\n";
-        ss << "    .container > .list > .item.key {  }\n";
-        ss << "    .container > .list > .item.value { font-weight: bold; }\n";
-        ss << "    .container > .list > .item.pass { color: #386a1f; }\n";
-        ss << "    .container > .list > .item.fail { color: #b3261e; }\n";
-        ss << "    .container > .code { font-family: monospace; margin-left: 1rem; }\n";
-        ss << "    .container > .meta {  }\n";
-        ss << "    .container > .comment { font-family: monospace; }\n";
-        ss << "    .container > .other {  }\n";
-        ss << "    .container > .file-path { font-family: sans-serif; font-size: small; font-style: oblique; }\n";
-        ss << "    .container > .line-number { font-family: sans-serif; font-size: small; font-style: oblique; text-align: right; }\n";
-        ss << "    .container > .function-name { font-family: monospace; font-size: small; font-style: oblique; }\n";
-        ss << "  </style>\n";
-        ss << "</head>\n";
-        ss << "<body>\n";
-        ss << "  <h1>" << title << "</h1>\n";
-        ss << "  <p>Session start: " << _escape(ldt_ss.str()) << "</p>\n";
-        ss << "  <div class=\"container\">\n";
+        cl7::u8osstream oss;
+        oss << "<!doctype html>\n";
+        oss << "<html lang=\"en\">\n";
+        oss << "<head>\n";
+        oss << "  <meta charset=\"utf-8\">\n";
+        oss << "  <title>" << title << "</title>\n";
+        oss << "  <style>\n";
+        oss << "    body { font-family: sans-serif; }\n";
+        oss << "    .container { display: grid; gap: 0.25rem 1rem; grid-template-columns: 1fr auto auto auto; }\n";
+        oss << "    .container > * {  }\n";
+        oss << "    .container > * > .badge { border: 0.125rem solid; border-radius: 0.25rem; font-weight: bold; padding: 0 0.125rem; text-transform: capitalize; }\n";
+        oss << "    .container > .info { color: #085786; }\n";
+        oss << "    .container > .info > .badge { background-color: #085786; border-color: #085786; color: #ffffff; }\n";
+        oss << "    .container > .success { color: #386a1f; }\n";
+        oss << "    .container > .success > .badge { background-color: #386a1f; border-color: #386a1f; color: #ffffff; }\n";
+        oss << "    .container > .warning { color: #8f4f00; }\n";
+        oss << "    .container > .warning > .badge { background-color: #8f4f00; border-color: #8f4f00; color: #ffffff; }\n";
+        oss << "    .container > .error { color: #b3261e; }\n";
+        oss << "    .container > .error > .badge { background-color: #b3261e; border-color: #b3261e; color: #ffffff; }\n";
+        oss << "    .container > .caption { font-weight: bold; }\n";
+        oss << "    .container > .section { font-style: italic; }\n";
+        oss << "    .container > .list { display: grid; gap: 0.125rem 1rem; grid-template-columns: auto 1fr; margin-left: 1rem; }\n";
+        oss << "    .container > .list > .item {  }\n";
+        oss << "    .container > .list > .item.key {  }\n";
+        oss << "    .container > .list > .item.value { font-weight: bold; }\n";
+        oss << "    .container > .list > .item.pass { color: #386a1f; }\n";
+        oss << "    .container > .list > .item.fail { color: #b3261e; }\n";
+        oss << "    .container > .code { font-family: monospace; margin-left: 1rem; }\n";
+        oss << "    .container > .meta {  }\n";
+        oss << "    .container > .comment { font-family: monospace; }\n";
+        oss << "    .container > .other {  }\n";
+        oss << "    .container > .file-path { font-family: sans-serif; font-size: small; font-style: oblique; }\n";
+        oss << "    .container > .line-number { font-family: sans-serif; font-size: small; font-style: oblique; text-align: right; }\n";
+        oss << "    .container > .function-name { font-family: monospace; font-size: small; font-style: oblique; }\n";
+        oss << "  </style>\n";
+        oss << "</head>\n";
+        oss << "<body>\n";
+        oss << "  <h1>" << title << "</h1>\n";
+        oss << "  <p>Session start: " << _escape(cl7::strings::to_utf8(ldt_woss.str())) << "</p>\n";
+        oss << "  <div class=\"container\">\n";
 
-        _write_raw(ss.str(), true);
+        _write_raw(oss.str(), true);
     }
 
     HtmlLogHandler::~HtmlLogHandler()
@@ -92,17 +91,16 @@ namespace cl7::logging {
         const std::time_t t = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
         std::tm tm{};
         ::localtime_s(&tm, &t);
-        const auto ldt = std::put_time(&tm, "%Y-%m-%d %H:%M:%S %z");
-        std::ostringstream ldt_ss;
-        ldt_ss << ldt;
+        std::wostringstream ldt_woss;
+        ldt_woss << std::put_time(&tm, L"%Y-%m-%d %H:%M:%S %z");
 
-        std::ostringstream ss;
-        ss << "  </div>\n";
-        ss << "  <p>Session end: " << _escape(ldt_ss.str()) << "</p>\n";
-        ss << "</body>\n";
-        ss << "</html>\n";
+        cl7::u8osstream oss;
+        oss << "  </div>\n";
+        oss << "  <p>Session end: " << _escape(cl7::strings::to_utf8(ldt_woss.str())) << "</p>\n";
+        oss << "</body>\n";
+        oss << "</html>\n";
 
-        _write_raw(ss.str());
+        _write_raw(oss.str());
     }
 
 
@@ -116,39 +114,39 @@ namespace cl7::logging {
      */
     void HtmlLogHandler::_write(const LogEntry& log_entry)
     {
-        std::string_view entry_class;
-        std::string_view block_class;
-        std::string_view badge_class;
+        cl7::u8string_view entry_class;
+        cl7::u8string_view block_class;
+        cl7::u8string_view badge_class;
         switch (log_entry.type)
         {
-        case cl7::logging::LogType::Info:       entry_class = "info";        badge_class = "info";      break;
-        case cl7::logging::LogType::Success:    entry_class = "success";     badge_class = "success";   break;
-        case cl7::logging::LogType::Warning:    entry_class = "warning";     badge_class = "warning";   break;
-        case cl7::logging::LogType::Error:      entry_class = "error";       badge_class = "error";     break;
-        case cl7::logging::LogType::Caption:    entry_class = "caption";     break;
-        case cl7::logging::LogType::Section:    entry_class = "section";     break;
-        case cl7::logging::LogType::Item:       entry_class = "item";        block_class = "list";      break;
-        case cl7::logging::LogType::ItemPass:   entry_class = "item pass";   block_class = "list";      break;
-        case cl7::logging::LogType::ItemFail:   entry_class = "item fail";   block_class = "list";      break;
-        case cl7::logging::LogType::Code:       entry_class = "code";        block_class = "code";      break;
-        case cl7::logging::LogType::Meta:       entry_class = "meta";        break;
-        case cl7::logging::LogType::Comment:    entry_class = "comment";     break;
-        case cl7::logging::LogType::Other:      entry_class = "other";       break;
+        case cl7::logging::LogType::Info:       entry_class = u8"info";        badge_class = u8"info";      break;
+        case cl7::logging::LogType::Success:    entry_class = u8"success";     badge_class = u8"success";   break;
+        case cl7::logging::LogType::Warning:    entry_class = u8"warning";     badge_class = u8"warning";   break;
+        case cl7::logging::LogType::Error:      entry_class = u8"error";       badge_class = u8"error";     break;
+        case cl7::logging::LogType::Caption:    entry_class = u8"caption";     break;
+        case cl7::logging::LogType::Section:    entry_class = u8"section";     break;
+        case cl7::logging::LogType::Item:       entry_class = u8"item";        block_class = u8"list";      break;
+        case cl7::logging::LogType::ItemPass:   entry_class = u8"item pass";   block_class = u8"list";      break;
+        case cl7::logging::LogType::ItemFail:   entry_class = u8"item fail";   block_class = u8"list";      break;
+        case cl7::logging::LogType::Code:       entry_class = u8"code";        block_class = u8"code";      break;
+        case cl7::logging::LogType::Meta:       entry_class = u8"meta";        break;
+        case cl7::logging::LogType::Comment:    entry_class = u8"comment";     break;
+        case cl7::logging::LogType::Other:      entry_class = u8"other";       break;
         default: break; // Nothing to do here.
         }
 
-        std::ostringstream ss;
+        cl7::u8osstream oss;
 
         if (block_class.empty())
         {
             _block_ptr.reset();
 
-            ss << "    <div class=\"" << entry_class << "\">\n";
-            ss << "      ";
+            oss << "    <div class=\"" << entry_class << "\">\n";
+            oss << "      ";
             if (!badge_class.empty())
-                ss << "<span class=\"badge\">" << badge_class << "</span> ";
-            ss << _escape(log_entry.message) << "\n";
-            ss << "    </div>\n";
+                oss << "<span class=\"badge\">" << badge_class << "</span> ";
+            oss << _escape(log_entry.message) << "\n";
+            oss << "    </div>\n";
         }
         else // => block
         {
@@ -159,30 +157,30 @@ namespace cl7::logging {
 
             if (log_entry.type == cl7::logging::LogType::Code)
             {
-                ss << "      " << _escape(log_entry.message) << "<br>\n";
+                oss << "      " << _escape(log_entry.message) << "<br>\n";
             }
             else // => list
             {
-                cl7::string_view key;
-                cl7::string_view value;
-                size_t p = log_entry.message.find(TEXT('\t'));
-                if (p == cl7::string::npos)
+                cl7::u8string_view key;
+                cl7::u8string_view value;
+                size_t p = log_entry.message.find(u8'\t');
+                if (p == cl7::u8string::npos)
                     key = log_entry.message;
                 else
                     key = log_entry.message.substr(0, p),
                     value = log_entry.message.substr(p + 1);
 
-                ss << "      <div class=\"" << entry_class << " key\">\n";
-                ss << "        " << _escape(key) << "\n";
-                ss << "      </div>\n";
-                ss << "      <div class=\"" << entry_class << " value\">\n";
+                oss << "      <div class=\"" << entry_class << " key\">\n";
+                oss << "        " << _escape(key) << "\n";
+                oss << "      </div>\n";
+                oss << "      <div class=\"" << entry_class << " value\">\n";
                 if (!value.empty())
-                    ss << "        " << _escape(value) << "\n";
-                ss << "      </div>\n";
+                    oss << "        " << _escape(value) << "\n";
+                oss << "      </div>\n";
             }
         }
 
-        _write_raw(ss.str());
+        _write_raw(oss.str());
         if (block_class.empty())
             _write_source_location(log_entry.file_path, log_entry.line_number, log_entry.function_name);
     }
@@ -194,117 +192,105 @@ namespace cl7::logging {
     // #############################################################################
 
     /**
-     * Escapes the specified "raw" text and returns it as UTF-8 encoded std::string.
+     * Escapes the specified "raw" std::string and returns it as UTF-8 encoded text.
      */
-    std::string HtmlLogHandler::_escape(cl7::string_view text)
+    cl7::u8string HtmlLogHandler::_escape(std::string_view s)
     {
-        return _escape(cl7::strings::to_utf8(text));
+        return _escape(cl7::strings::reinterpret_utf8(s));
     }
 
     /**
-     * Escapes the specified "raw" ASCII/Latin-1 text and returns it as UTF-8
-     * encoded std::string.
+     * Escapes the specified "raw" UTF-8 text.
      */
-    std::string HtmlLogHandler::_escape(cl7::astring_view as)
+    cl7::u8string HtmlLogHandler::_escape(cl7::u8string_view u8s)
     {
-        if (cl7::strings::check_ascii(as))
-            return _escape(cl7::strings::reinterpret_utf8(as));
-        return _escape(cl7::strings::to_utf8(as));
-    }
-
-    /**
-     * Escapes the specified "raw" UTF-8 text and returns it as UTF-8 encoded
-     * std::string.
-     */
-    std::string HtmlLogHandler::_escape(cl7::u8string_view u8s)
-    {
-        std::ostringstream ss;
+        cl7::u8osstream oss;
 
         for (size_t i = 0; i < u8s.size(); ++i)
         {
             switch (const auto chr = u8s[i])
             {
-            case '"':       ss << "&quot;";   break;
-            case '&':       ss << "&amp;";    break;
-            case '\'':      ss << "&#39;";    break;
-            case '<':       ss << "&lt;";     break;
-            case '>':       ss << "&gt;";     break;
+            case u8'"':     oss << u8"&quot;";    break;
+            case u8'&':     oss << u8"&amp;";     break;
+            case u8'\'':    oss << u8"&#39;";     break;
+            case u8'<':     oss << u8"&lt;";      break;
+            case u8'>':     oss << u8"&gt;";      break;
 
-            // Check for \u00a0, which is 0xc2 0xa0 in UTF-8.
+            // Check for \u00a0 (no-break space), which is {0xc2, 0xa0} in UTF-8.
             case 0xc2:
                 if (i + 1 < u8s.size() && u8s[i + 1] == 0xa0)
                 {
                     ++i;
-                    ss << "&nbsp;";
+                    oss << u8"&nbsp;";
                     break;
                 }
 
             default:
-                ss << static_cast<char>(chr);
+                oss << chr;
             }
         } // for each character
 
-        return ss.str();
+        return oss.str();
     }
 
     /**
-     * Writes the specified "raw" ASCII/Latin-1 or UTF-8 encoded std::string to the
-     * log file without escaping it. If specified, the file is initially truncated.
+     * Writes the specified "raw" UTF-8 encoded text to the log file without
+     * escaping it. If specified, the file is initially truncated.
      */
-    void HtmlLogHandler::_write_raw(std::string_view raw, bool truncate)
+    void HtmlLogHandler::_write_raw(cl7::u8string_view raw, bool truncate)
     {
-        auto mode = cl7::aofstream::binary | cl7::aofstream::out;
+        auto mode = std::ofstream::binary | std::ofstream::out;
         if (truncate)
-            mode |= cl7::aofstream::trunc;
+            mode |= std::ofstream::trunc;
         else
-            mode |= cl7::aofstream::app;
+            mode |= std::ofstream::app;
 
-        cl7::aofstream file(TEXT("log.html"), mode);
+        std::ofstream file("log.html", mode);
 
         if (!file.is_open())
             return;
 
         //if (truncate)
         //    file.write(reinterpret_cast<const char*>(cl7::strings::to_bytes(u8"", true).data()), 3);
-        file.write(raw.data(), static_cast<std::streamsize>(raw.size()));
+        file.write(reinterpret_cast<const char*>(raw.data()), static_cast<std::streamsize>(raw.size()));
     }
 
     /**
      * Writes certain information about the source code location from which the log
      * entry came to the log file.
      */
-    void HtmlLogHandler::_write_source_location(const cl7::achar_type* file_path, unsigned line_number, const cl7::achar_type* function_name)
+    void HtmlLogHandler::_write_source_location(const char* file_path, unsigned line_number, const char* function_name)
     {
 #pragma message("Consider using std::source_location as a better alternative to __FILE__, __LINE__, etc.")
 
-        std::ostringstream ss;
-        ss << "    <div class=\"file-path\">\n";
+        cl7::u8osstream oss;
+        oss << "    <div class=\"file-path\">\n";
         if (file_path)
         {
             constexpr std::string_view file_path_view{__FILE__};
             constexpr size_t file_path_skip = file_path_view.find("flangee77");
             static_assert(file_path_skip != std::string_view::npos);
 
-            ss << "      " << _escape(file_path + file_path_skip) << "\n";
+            oss << "      " << _escape(file_path + file_path_skip) << "\n";
         }
-        ss << "    </div>\n";
-        ss << "    <div class=\"line-number\">\n";
+        oss << "    </div>\n";
+        oss << "    <div class=\"line-number\">\n";
         if (file_path)
         {
-            ss << "      " << line_number << "\n";
+            oss << "      " << line_number << "\n";
         }
-        ss << "    </div>\n";
-        ss << "    <div class=\"function-name\">\n";
+        oss << "    </div>\n";
+        oss << "    <div class=\"function-name\">\n";
         if (function_name)
         {
             const std::string_view function_name_view{function_name};
             const size_t function_name_skip = function_name_view.rfind("::");
 
-            ss << "      " << _escape(function_name_skip != std::string_view::npos ? function_name_view.substr(function_name_skip + 2) : function_name) << "\n";
+            oss << "      " << _escape(function_name_skip != std::string_view::npos ? function_name_view.substr(function_name_skip + 2) : function_name) << "\n";
         }
-        ss << "    </div>\n";
+        oss << "    </div>\n";
 
-        _write_raw(ss.str());
+        _write_raw(oss.str());
     }
 
 

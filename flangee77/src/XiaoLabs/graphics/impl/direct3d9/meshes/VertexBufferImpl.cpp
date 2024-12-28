@@ -61,7 +61,7 @@ namespace xl7::graphics::impl::direct3d9::meshes {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::CreateVertexBuffer")));
+            LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::CreateVertexBuffer"));
             return false;
         }
 
@@ -112,7 +112,7 @@ namespace xl7::graphics::impl::direct3d9::meshes {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DVertexBuffer9::Lock")));
+            LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DVertexBuffer9::Lock"));
             return false;
         }
 

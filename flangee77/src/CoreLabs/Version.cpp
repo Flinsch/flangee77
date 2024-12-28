@@ -11,9 +11,9 @@ namespace cl7 {
     /**
      * "Stringifies" this version object.
      */
-    cl7::string Version::to_string(bool short_format) const
+    cl7::u8string Version::to_string(bool short_format) const
     {
-        cl7::osstream oss;
+        cl7::u8osstream oss;
         oss << major << '.' << minor;
         if (patch)
             oss << '.' << patch;
@@ -71,55 +71,55 @@ namespace cl7 {
     /**
      * Parses the given version string.
      */
-    Version Version::parse(const cl7::string& string)
+    Version Version::parse(const cl7::u8string& string)
     {
         Version version;
 
-        cl7::isstream iss(string);
+        cl7::u8isstream iss(string);
         iss >> version.major;
-        if (iss.peek() == TEXT('.'))
+        if (iss.peek() == u8'.')
         {
             iss.ignore(1); // Skip dot
             iss >> version.minor;
         }
-        if (iss.peek() == TEXT('.'))
+        if (iss.peek() == u8'.')
         {
             iss.ignore(1); // Skip dot
             iss >> version.patch;
         }
 
-        cl7::char_type peek = iss.peek();
-        if (peek == TEXT('-'))
+        cl7::u8char_type peek = iss.peek();
+        if (peek == u8'-')
         {
             iss.ignore(1); // Skip hyphen
-            cl7::string pre_release_identifier;
-            std::getline(iss, pre_release_identifier, TEXT('.'));
+            cl7::u8string pre_release_identifier;
+            std::getline(iss, pre_release_identifier, u8'.');
 
-            if (pre_release_identifier == TEXT("alpha"))
+            if (pre_release_identifier == u8"alpha")
                 version.pre_release_type = PreReleaseType::Alpha;
-            else if (pre_release_identifier == TEXT("beta"))
+            else if (pre_release_identifier == u8"beta")
                 version.pre_release_type = PreReleaseType::Beta;
-            else if (pre_release_identifier == TEXT("rc"))
+            else if (pre_release_identifier == u8"rc")
                 version.pre_release_type = PreReleaseType::ReleaseCandidate;
 
             if (version.pre_release_type != PreReleaseType::None) // Dot already skipped by std::getline
                 iss >> version.pre_release_number;
         }
-        else if (peek == TEXT('a') || peek == TEXT('b') || peek == TEXT('r'))
+        else if (peek == u8'a' || peek == u8'b' || peek == u8'r')
         {
             switch (peek)
             {
-                case TEXT('a'):
+                case u8'a':
                     iss.ignore(1); // Skip 'a'
                     version.pre_release_type = PreReleaseType::Alpha;
                     break;
-                case TEXT('b'):
+                case u8'b':
                     iss.ignore(1); // Skip 'b'
                     version.pre_release_type = PreReleaseType::Beta;
                     break;
-                case TEXT('r'):
+                case u8'r':
                     iss.ignore(1); // Skip 'r'
-                    if (iss.peek() == TEXT('c'))
+                    if (iss.peek() == u8'c')
                     {
                         iss.ignore(1); // Skip 'c'
                         version.pre_release_type = PreReleaseType::ReleaseCandidate;
@@ -127,14 +127,14 @@ namespace cl7 {
                     break;
             }
 
-            if (version.pre_release_type != PreReleaseType::None && iss.peek() != TEXT(' '))
+            if (version.pre_release_type != PreReleaseType::None && iss.peek() != u8' ')
                 iss >> version.pre_release_number;
         }
 
-        if (iss.peek() == TEXT('+') || iss.peek() == TEXT(' '))
+        if (iss.peek() == u8'+' || iss.peek() == u8' ')
         {
             iss.ignore(1); // Skip plus/space
-            std::getline(iss, version.build, TEXT(' '));
+            std::getline(iss, version.build, u8' ');
         }
 
         return version;

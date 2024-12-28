@@ -25,9 +25,9 @@ struct CPUID
 
 
     /** The vendor name. */
-    cl7::achar_type vendor_name[12 + 1];
+    cl7::u8char_type vendor_name[12 + 1];
     /** The processor name. */
-    cl7::achar_type processor_name[48 + 1];
+    cl7::u8char_type processor_name[48 + 1];
 
     /** The bitness of the CPU. */
     unsigned bitness;

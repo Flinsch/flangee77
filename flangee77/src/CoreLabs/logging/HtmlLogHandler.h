@@ -34,9 +34,9 @@ private:
 
     struct Block
     {
-        std::string block_class;
+        cl7::u8string block_class;
 
-        Block(std::string_view block_class);
+        Block(cl7::u8string_view block_class);
         ~Block();
     };
 
@@ -60,33 +60,26 @@ private:
     // #############################################################################
 
     /**
-     * Escapes the specified "raw" text and returns it as UTF-8 encoded std::string.
+     * Escapes the specified "raw" std::string and returns it as UTF-8 encoded text.
      */
-    static std::string _escape(cl7::string_view text);
+    static cl7::u8string _escape(std::string_view s);
 
     /**
-     * Escapes the specified "raw" ASCII/Latin-1 text and returns it as UTF-8
-     * encoded std::string.
+     * Escapes the specified "raw" UTF-8 encoded text.
      */
-    static std::string _escape(cl7::astring_view as);
+    static cl7::u8string _escape(cl7::u8string_view u8s);
 
     /**
-     * Escapes the specified "raw" UTF-8 text and returns it as UTF-8 encoded
-     * std::string.
+     * Writes the specified "raw" UTF-8 encoded text to the log file without
+     * escaping it. If specified, the file is initially truncated.
      */
-    static std::string _escape(cl7::u8string_view u8s);
-
-    /**
-     * Writes the specified "raw" ASCII/Latin-1 or UTF-8 encoded std::string to the
-     * log file without escaping it. If specified, the file is initially truncated.
-     */
-    static void _write_raw(std::string_view raw, bool truncate = false);
+    static void _write_raw(cl7::u8string_view raw, bool truncate = false);
 
     /**
      * Writes certain information about the source code location from which the log
      * entry came to the log file.
      */
-    static void _write_source_location(const cl7::achar_type* file_path, unsigned line_number, const cl7::achar_type* function_name);
+    static void _write_source_location(const char* file_path, unsigned line_number, const char* function_name);
 
 
 

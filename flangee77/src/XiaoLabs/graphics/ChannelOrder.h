@@ -25,7 +25,7 @@ enum class ChannelOrder
 
 
 namespace cl7 {
-    cl7::string to_string(xl7::graphics::ChannelOrder channel_order);
+    cl7::u8string to_string(xl7::graphics::ChannelOrder channel_order);
 }
 
 

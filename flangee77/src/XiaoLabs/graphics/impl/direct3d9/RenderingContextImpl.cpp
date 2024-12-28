@@ -177,7 +177,7 @@ namespace xl7::graphics::impl::direct3d9 {
         HRESULT hresult = _d3d_device->BeginScene();
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::BeginScene")));
+            LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::BeginScene"));
             return false;
         }
 
@@ -192,7 +192,7 @@ namespace xl7::graphics::impl::direct3d9 {
         HRESULT hresult = _d3d_device->EndScene();
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::EndScene")));
+            LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::EndScene"));
             return false;
         }
 
@@ -214,7 +214,7 @@ namespace xl7::graphics::impl::direct3d9 {
         HRESULT hresult = _d3d_device->Clear(0, nullptr, d3d_clear_flags, color.to_bgra32(), depth, stencil);
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::Clear")));
+            LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::Clear"));
             return false;
         }
 
@@ -234,7 +234,7 @@ namespace xl7::graphics::impl::direct3d9 {
         HRESULT hresult = _d3d_device->DrawPrimitive(d3d_primitive_type, start_vertex, primitive_count);
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::DrawPrimitive")));
+            LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::DrawPrimitive"));
             return false;
         }
 
@@ -259,7 +259,7 @@ namespace xl7::graphics::impl::direct3d9 {
         HRESULT hresult = _d3d_device->DrawIndexedPrimitive(d3d_primitive_type, base_vertex, min_vertex_index, vertex_count, start_index, primitive_count);
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::DrawPrimitive")));
+            LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::DrawPrimitive"));
             return false;
         }
 
@@ -294,7 +294,7 @@ namespace xl7::graphics::impl::direct3d9 {
                 hresult = _d3d_device->SetRenderTarget(target_index, d3d_render_target);
                 if (FAILED(hresult))
                 {
-                    LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetRenderTarget")));
+                    LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetRenderTarget"));
                     return false;
                 }
                 hardware_states.render_targets[target_index] = d3d_render_target;
@@ -308,7 +308,7 @@ namespace xl7::graphics::impl::direct3d9 {
             hresult = _d3d_device->SetDepthStencilSurface(d3d_depth_stencil_surface);
             if (FAILED(hresult))
             {
-                LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetDepthStencilSurface")));
+                LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetDepthStencilSurface"));
                 return false;
             }
             hardware_states.depth_stencil_surface = d3d_depth_stencil_surface;
@@ -353,7 +353,7 @@ namespace xl7::graphics::impl::direct3d9 {
                 hresult = _d3d_device->SetStreamSource(stream_index, d3d_vertex_buffer, 0, stride);
                 if (FAILED(hresult))
                 {
-                    LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetStreamSource")));
+                    LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetStreamSource"));
                     return false;
                 }
                 hardware_states.vertex_buffers[stream_index] = d3d_vertex_buffer;
@@ -372,7 +372,7 @@ namespace xl7::graphics::impl::direct3d9 {
             hresult = _d3d_device->SetIndices(d3d_index_buffer);
             if (FAILED(hresult))
             {
-                LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetIndices")));
+                LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetIndices"));
                 return false;
             }
             hardware_states.index_buffer = d3d_index_buffer;
@@ -388,7 +388,7 @@ namespace xl7::graphics::impl::direct3d9 {
             hresult = _d3d_device->SetVertexDeclaration(d3d_vertex_declaration);
             if (FAILED(hresult))
             {
-                LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetVertexDeclaration")));
+                LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetVertexDeclaration"));
                 return false;
             }
             hardware_states.vertex_declaration = d3d_vertex_declaration;
@@ -407,7 +407,7 @@ namespace xl7::graphics::impl::direct3d9 {
             hresult = _d3d_device->SetVertexShader(d3d_vertex_shader);
             if (FAILED(hresult))
             {
-                LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetVertexShader")));
+                LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetVertexShader"));
                 return false;
             }
             hardware_states.vs.shader = d3d_vertex_shader;
@@ -425,7 +425,7 @@ namespace xl7::graphics::impl::direct3d9 {
             hresult = _d3d_device->SetPixelShader(d3d_pixel_shader);
             if (FAILED(hresult))
             {
-                LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetPixelShader")));
+                LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetPixelShader"));
                 return false;
             }
             hardware_states.ps.shader = d3d_pixel_shader;
@@ -445,7 +445,7 @@ namespace xl7::graphics::impl::direct3d9 {
             hresult = _d3d_device->SetViewport(&d3d_viewport);
             if (FAILED(hresult))
             {
-                LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetViewport")));
+                LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetViewport"));
                 return false;
             }
             hardware_states.viewport = d3d_viewport;
@@ -470,7 +470,7 @@ namespace xl7::graphics::impl::direct3d9 {
                 hresult = _d3d_device->SetRenderState((*d3d_rasterizer_state_type_values)[k].first, (*d3d_rasterizer_state_type_values)[k].second);
                 if (FAILED(hresult))
                 {
-                    LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetRenderState")));
+                    LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetRenderState"));
                     return false;
                 }
                 hardware_states.rasterizer_state_type_values[k] = (*d3d_rasterizer_state_type_values)[k];
@@ -502,7 +502,7 @@ namespace xl7::graphics::impl::direct3d9 {
                 hresult = _d3d_device->SetRenderState((*d3d_depth_stencil_state_type_values)[ks].first, (*d3d_depth_stencil_state_type_values)[ks].second);
                 if (FAILED(hresult))
                 {
-                    LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetRenderState")));
+                    LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetRenderState"));
                     return false;
                 }
                 hardware_states.depth_stencil_state_type_values[kh] = (*d3d_depth_stencil_state_type_values)[ks];
@@ -514,7 +514,7 @@ namespace xl7::graphics::impl::direct3d9 {
             hresult = _d3d_device->SetRenderState(D3DRS_STENCILREF, resolved_draw_states.stencil_reference_value);
             if (FAILED(hresult))
             {
-                LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetRenderState")));
+                LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetRenderState"));
                 return false;
             }
             hardware_states.stencil_reference_value = resolved_draw_states.stencil_reference_value;
@@ -539,7 +539,7 @@ namespace xl7::graphics::impl::direct3d9 {
                 hresult = _d3d_device->SetRenderState((*d3d_blend_state_type_values)[k].first, (*d3d_blend_state_type_values)[k].second);
                 if (FAILED(hresult))
                 {
-                    LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetRenderState")));
+                    LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetRenderState"));
                     return false;
                 }
                 hardware_states.blend_state_type_values[k] = (*d3d_blend_state_type_values)[k];
@@ -551,7 +551,7 @@ namespace xl7::graphics::impl::direct3d9 {
             hresult = _d3d_device->SetRenderState(D3DRS_BLENDFACTOR, resolved_draw_states.blend_factor.to_bgra32());
             if (FAILED(hresult))
             {
-                LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetRenderState")));
+                LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetRenderState"));
                 return false;
             }
             hardware_states.blend_factor = resolved_draw_states.blend_factor;
@@ -623,7 +623,7 @@ namespace xl7::graphics::impl::direct3d9 {
 
                 if (FAILED(hresult))
                 {
-                    LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetShaderConstant")));
+                    LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetShaderConstant"));
                     return false;
                 }
             } // for each constant mapping
@@ -656,7 +656,7 @@ namespace xl7::graphics::impl::direct3d9 {
             if (slot_index >= max_stage_count)
             {
                 if (d3d_base_texture)
-                    LOG_WARNING(TEXT("Texture/sampler slot exceeds allowed number of stages of ") + cl7::to_string(max_stage_count) + TEXT("."));
+                    LOG_WARNING(u8"Texture/sampler slot exceeds allowed number of stages of " + cl7::to_string(max_stage_count) + u8".");
                 continue;
             }
 
@@ -665,7 +665,7 @@ namespace xl7::graphics::impl::direct3d9 {
                 hresult = _d3d_device->SetTexture(stage_base + slot_index, d3d_base_texture);
                 if (FAILED(hresult))
                 {
-                    LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetTexture")));
+                    LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetTexture"));
                     return false;
                 }
                 hardware_texture_sampler_states.base_textures[slot_index] = d3d_base_texture;
@@ -689,7 +689,7 @@ namespace xl7::graphics::impl::direct3d9 {
                     hresult = _d3d_device->SetSamplerState(stage_base + slot_index, (*d3d_sampler_state_type_values)[k].first, (*d3d_sampler_state_type_values)[k].second);
                     if (FAILED(hresult))
                     {
-                        LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::SetSamplerState")));
+                        LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetSamplerState"));
                         return false;
                     }
                     hardware_texture_sampler_states.sampler_state_type_values[slot_index][k] = (*d3d_sampler_state_type_values)[k];
@@ -757,7 +757,7 @@ namespace xl7::graphics::impl::direct3d9 {
         HRESULT hresult = _d3d_device->CreateVertexDeclaration(d3d_vertex_elements.data(), &d3d_vertex_declaration);
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::CreateVertexDeclaration")));
+            LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::CreateVertexDeclaration"));
             return nullptr;
         }
 

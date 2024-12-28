@@ -34,9 +34,9 @@ namespace xl7::graphics {
         if (_the_scene_is_on)
         {
             if (_index == 0)
-                LOG_WARNING(TEXT("The scene of the primary rendering context is already on."));
+                LOG_WARNING(u8"The scene of the primary rendering context is already on.");
             else
-                LOG_WARNING(TEXT("The scene of the rendering context with 0-based index ") + cl7::to_string(_index) + TEXT(" is already on."));
+                LOG_WARNING(u8"The scene of the rendering context with 0-based index " + cl7::to_string(_index) + u8" is already on.");
             return false;
         }
 
@@ -55,9 +55,9 @@ namespace xl7::graphics {
         if (!_the_scene_is_on)
         {
             if (_index == 0)
-                LOG_WARNING(TEXT("The scene of the primary rendering context is not on."));
+                LOG_WARNING(u8"The scene of the primary rendering context is not on.");
             else
-                LOG_WARNING(TEXT("The scene of the rendering context with 0-based index ") + cl7::to_string(_index) + TEXT(" is not on."));
+                LOG_WARNING(u8"The scene of the rendering context with 0-based index " + cl7::to_string(_index) + u8" is not on.");
             return false;
         }
 
@@ -278,7 +278,7 @@ namespace xl7::graphics {
         {
             if (resolved_draw_states.stream_count < 2)
             {
-                LOG_ERROR(TEXT("Too few vertex buffers have been set. Instanced rendering requires at least two vertex buffers."));
+                LOG_ERROR(u8"Too few vertex buffers have been set. Instanced rendering requires at least two vertex buffers.");
                 return false;
             }
         }
@@ -286,7 +286,7 @@ namespace xl7::graphics {
         {
             if (resolved_draw_states.stream_count < 1)
             {
-                LOG_ERROR(TEXT("No vertex buffer has been set."));
+                LOG_ERROR(u8"No vertex buffer has been set.");
                 return false;
             }
         } // instanced?
@@ -295,26 +295,26 @@ namespace xl7::graphics {
         {
             if (!resolved_draw_states.index_buffer)
             {
-                LOG_ERROR(TEXT("No index buffer has been set."));
+                LOG_ERROR(u8"No index buffer has been set.");
                 return false;
             }
         }
 
         if (resolved_draw_states.topology == meshes::Topology::Undefined)
         {
-            LOG_ERROR(TEXT("No/unknown topology is provided."));
+            LOG_ERROR(u8"No/unknown topology is provided.");
             return false;
         }
 
         if (!resolved_draw_states.vs.shader)
         {
-            LOG_ERROR(TEXT("No vertex shader has been set."));
+            LOG_ERROR(u8"No vertex shader has been set.");
             return false;
         }
 
         if (!resolved_draw_states.ps.shader)
         {
-            LOG_ERROR(TEXT("No pixel shader has been set."));
+            LOG_ERROR(u8"No pixel shader has been set.");
             return false;
         }
 

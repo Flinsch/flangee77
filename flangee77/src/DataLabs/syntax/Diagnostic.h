@@ -26,7 +26,7 @@ struct Diagnostic
     Severity severity;
 
     /** The error/warning/notice message. */
-    cl7::string message;
+    cl7::u8string message;
 
     /** The location of the "incident" in the source text. */
     SourceLocation source_location;

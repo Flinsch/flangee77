@@ -38,8 +38,8 @@ public:
     // Properties
     // #############################################################################
 
-    std::shared_ptr<cl7::string> get_data_string() const { return _data_string; }
-    void set_data_string(const std::shared_ptr<cl7::string>& data_string) { _data_string = data_string; }
+    std::shared_ptr<cl7::u8string> get_data_string() const { return _data_string; }
+    void set_data_string(const std::shared_ptr<cl7::u8string>& data_string) { _data_string = data_string; }
     void reset_data_string() { _data_string.reset(); }
 
 
@@ -50,7 +50,7 @@ private:
     // Attributes
     // #############################################################################
 
-    std::shared_ptr<cl7::string> _data_string;
+    std::shared_ptr<cl7::u8string> _data_string;
 
     bool _leaf_reached = false;
     size_t _current_depth = 0;

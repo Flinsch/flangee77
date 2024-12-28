@@ -118,7 +118,7 @@ namespace xl7::graphics::impl::direct3d11 {
         HRESULT hresult = _d3d_device->CreateInputLayout(d3d_input_element_descs.data(), num_elements, shader_bytecode_with_input_signature, bytecode_length, &d3d_input_layout);
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11Device::CreateInputLayout")));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CreateInputLayout"));
             return nullptr;
         }
 
@@ -251,14 +251,14 @@ namespace xl7::graphics::impl::direct3d11 {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("::D3D11CreateDevice")));
-            LOG_ERROR(TEXT("The Direct3D 11 device interface could not be created."));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"::D3D11CreateDevice"));
+            LOG_ERROR(u8"The Direct3D 11 device interface could not be created.");
             return false;
         }
 
         // Check whether Direct3D 11 is even supported!
         if (_d3d_feature_level < D3D_FEATURE_LEVEL_11_0)
-            LOG_WARNING(TEXT("Direct3D 11 is not supported."));
+            LOG_WARNING(u8"Direct3D 11 is not supported.");
 
         // Try to access extended interface versions.
         d3d_device.As(&_d3d_device);
@@ -339,8 +339,8 @@ namespace xl7::graphics::impl::direct3d11 {
         hresult = _d3d_device.As(&dxgi_device);
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11Device::QueryInterface")));
-            LOG_ERROR(TEXT("The DXGI device interface could not be requested."));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::QueryInterface"));
+            LOG_ERROR(u8"The DXGI device interface could not be requested.");
             return false;
         }
 
@@ -349,8 +349,8 @@ namespace xl7::graphics::impl::direct3d11 {
         hresult = dxgi_device->GetAdapter(&dxgi_adapter);
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::dxgi_result(hresult, TEXT("IDXGIDevice::GetAdapter")));
-            LOG_ERROR(TEXT("The DXGI adapter interface could not be requested."));
+            LOG_ERROR(errors::dxgi_result(hresult, u8"IDXGIDevice::GetAdapter"));
+            LOG_ERROR(u8"The DXGI adapter interface could not be requested.");
             return false;
         }
 
@@ -359,8 +359,8 @@ namespace xl7::graphics::impl::direct3d11 {
         hresult = dxgi_adapter->GetParent(__uuidof(IDXGIFactoryN), &dxgi_factory);
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::dxgi_result(hresult, TEXT("IDXGIAdapter::GetParent")));
-            LOG_ERROR(TEXT("The DXGI factory interface could not be requested."));
+            LOG_ERROR(errors::dxgi_result(hresult, u8"IDXGIAdapter::GetParent"));
+            LOG_ERROR(u8"The DXGI factory interface could not be requested.");
             return false;
         }
 
@@ -390,8 +390,8 @@ namespace xl7::graphics::impl::direct3d11 {
         hresult = dxgi_factory->CreateSwapChain(_d3d_device.Get(), &dxgi_swap_chain_desc, &_dxgi_swap_chain);
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::dxgi_result(hresult, TEXT("IDXGIFactory::CreateSwapChain")));
-            LOG_ERROR(TEXT("The DXGI swap chain could not be created."));
+            LOG_ERROR(errors::dxgi_result(hresult, u8"IDXGIFactory::CreateSwapChain"));
+            LOG_ERROR(u8"The DXGI swap chain could not be created.");
             return false;
         }
 
@@ -399,7 +399,7 @@ namespace xl7::graphics::impl::direct3d11 {
         DXGI_ADAPTER_DESC dxgi_adapter_desc = {};
         hresult = dxgi_adapter->GetDesc(&dxgi_adapter_desc);
         if (FAILED(hresult))
-            LOG_WARNING(errors::dxgi_result(hresult, TEXT("IDXGIAdapter::GetDesc")));
+            LOG_WARNING(errors::dxgi_result(hresult, u8"IDXGIAdapter::GetDesc"));
 
         // Adopt the available
         // video memory composition.
@@ -412,8 +412,8 @@ namespace xl7::graphics::impl::direct3d11 {
         hresult = _dxgi_swap_chain->GetBuffer(0, __uuidof(ID3D11Texture2D), &d3d_back_buffer);
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::dxgi_result(hresult, TEXT("IDXGISwapChain::GetBuffer")));
-            LOG_ERROR(TEXT("The DXGI swap chain's primary back buffer could not be accessed."));
+            LOG_ERROR(errors::dxgi_result(hresult, u8"IDXGISwapChain::GetBuffer"));
+            LOG_ERROR(u8"The DXGI swap chain's primary back buffer could not be accessed.");
             return false;
         }
 
@@ -421,8 +421,8 @@ namespace xl7::graphics::impl::direct3d11 {
         hresult = _d3d_device->CreateRenderTargetView(d3d_back_buffer.Get(), nullptr, &_d3d_render_target_view);
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11Device::CreateRenderTargetView")));
-            LOG_ERROR(TEXT("The Direct3D 11 (standard) render target view interface could not be created."));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CreateRenderTargetView"));
+            LOG_ERROR(u8"The Direct3D 11 (standard) render target view interface could not be created.");
             return false;
         }
 
@@ -444,8 +444,8 @@ namespace xl7::graphics::impl::direct3d11 {
         hresult = _d3d_device->CreateTexture2D(&d3d_z_buffer_desc, nullptr, &d3d_z_buffer);
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11Device::CreateTexture2D")));
-            LOG_ERROR(TEXT("The Direct3D 11 (standard) depth/stencil buffer could not be created."));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CreateTexture2D"));
+            LOG_ERROR(u8"The Direct3D 11 (standard) depth/stencil buffer could not be created.");
             return false;
         }
 
@@ -453,8 +453,8 @@ namespace xl7::graphics::impl::direct3d11 {
         hresult = _d3d_device->CreateDepthStencilView(d3d_z_buffer.Get(), nullptr, &_d3d_depth_stencil_view);
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11Device::CreateDepthStencilView")));
-            LOG_ERROR(TEXT("The Direct3D 11 (standard) depth/stencil view interface could not be created."));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CreateDepthStencilView"));
+            LOG_ERROR(u8"The Direct3D 11 (standard) depth/stencil view interface could not be created.");
             return false;
         }
 
@@ -514,7 +514,7 @@ namespace xl7::graphics::impl::direct3d11 {
         HRESULT hresult = _d3d_device->CreateDeferredContext1(0 , &d3d_deferred_context);
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11Device::CreateDeferredContext")));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CreateDeferredContext"));
             return nullptr;
         }
 
@@ -557,7 +557,7 @@ namespace xl7::graphics::impl::direct3d11 {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::dxgi_result(hresult, TEXT("IDXGISwapChain::Present")));
+            LOG_ERROR(errors::dxgi_result(hresult, u8"IDXGISwapChain::Present"));
             return false;
         }
 
@@ -577,7 +577,7 @@ namespace xl7::graphics::impl::direct3d11 {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11Device::CheckFormatSupport")));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CheckFormatSupport"));
             return false;
         }
 

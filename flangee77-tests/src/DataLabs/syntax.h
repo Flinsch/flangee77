@@ -12,32 +12,32 @@
 
 
 
-TESTLABS_CASE( TEXT("DataLabs:  syntax:  GenericLexer:  tokenize") )
+TESTLABS_CASE( u8"DataLabs:  syntax:  GenericLexer:  tokenize" )
 {
     cl7::u8string_view source = u8"#include <iostream>\n\nint main() {\n    std::cout << \"\\\"Hello, World!\\\"\" << '\\n';\n    return 0;\n}\n";
 
     dl7::syntax::TerminalSymbolCollection terminal_symbols;
-    terminal_symbols.add_pattern( "directive", 1, R"(#[a-z]+)", u8"#" );
-    terminal_symbols.add_literal( "left round bracket", 2, u8"(" );
-    terminal_symbols.add_literal( "right round bracket", 3, u8")" );
-    terminal_symbols.add_literal( "left square bracket", 4, u8"[" );
-    terminal_symbols.add_literal( "right square bracket", 5, u8"]" );
-    terminal_symbols.add_literal( "left curly bracket", 6, u8"{" );
-    terminal_symbols.add_literal( "right curly bracket", 7, u8"}" );
-    terminal_symbols.add_literal( "left angle bracket", 8, u8"<" );
-    terminal_symbols.add_literal( "right angle bracket", 9, u8">" );
-    terminal_symbols.add_literal( "comma", 10, u8"," );
-    terminal_symbols.add_literal( "dot", 11, u8"." );
-    terminal_symbols.add_literal( "colon", 12, u8":" );
-    terminal_symbols.add_literal( "semicolon", 13, u8";" );
-    terminal_symbols.add_pattern( "flow", 14, R"(return)" );
-    terminal_symbols.add_pattern( "type", 15, R"(int|bool|float)" );
-    terminal_symbols.add_pattern( "identifier", 16, R"([_a-zA-Z][_a-zA-Z0-9]*)" );
-    terminal_symbols.add_pattern( "operator", 17, R"([=!~^&|*/%+-])" );
-    terminal_symbols.add_pattern( "integer number", 18, R"(0|[1-9][0-9]*)" );
-    terminal_symbols.add_pattern( "floating point number", 19, R"((?:0?|[1-9][0-9]*)\.[0-9]*f?)" );
-    terminal_symbols.add_pattern( "character", 20, R"('(?:[^'\\]|\\.)')", u8"'" );
-    terminal_symbols.add_pattern( "string", 21, R"("[^"\\]*(?:\\.[^"\\]*)*")", u8"\"" );
+    terminal_symbols.add_pattern( u8"directive", 1, R"(#[a-z]+)", u8"#" );
+    terminal_symbols.add_literal( u8"left round bracket", 2, u8"(" );
+    terminal_symbols.add_literal( u8"right round bracket", 3, u8")" );
+    terminal_symbols.add_literal( u8"left square bracket", 4, u8"[" );
+    terminal_symbols.add_literal( u8"right square bracket", 5, u8"]" );
+    terminal_symbols.add_literal( u8"left curly bracket", 6, u8"{" );
+    terminal_symbols.add_literal( u8"right curly bracket", 7, u8"}" );
+    terminal_symbols.add_literal( u8"left angle bracket", 8, u8"<" );
+    terminal_symbols.add_literal( u8"right angle bracket", 9, u8">" );
+    terminal_symbols.add_literal( u8"comma", 10, u8"," );
+    terminal_symbols.add_literal( u8"dot", 11, u8"." );
+    terminal_symbols.add_literal( u8"colon", 12, u8":" );
+    terminal_symbols.add_literal( u8"semicolon", 13, u8";" );
+    terminal_symbols.add_pattern( u8"flow", 14, R"(return)" );
+    terminal_symbols.add_pattern( u8"type", 15, R"(int|bool|float)" );
+    terminal_symbols.add_pattern( u8"identifier", 16, R"([_a-zA-Z][_a-zA-Z0-9]*)" );
+    terminal_symbols.add_pattern( u8"operator", 17, R"([=!~^&|*/%+-])" );
+    terminal_symbols.add_pattern( u8"integer number", 18, R"(0|[1-9][0-9]*)" );
+    terminal_symbols.add_pattern( u8"floating point number", 19, R"((?:0?|[1-9][0-9]*)\.[0-9]*f?)" );
+    terminal_symbols.add_pattern( u8"character", 20, R"('(?:[^'\\]|\\.)')", u8"'" );
+    terminal_symbols.add_pattern( u8"string", 21, R"("[^"\\]*(?:\\.[^"\\]*)*")", u8"\"" );
 
     dl7::syntax::GenericLexer lexer( &terminal_symbols, {
         .whitespace_handling = dl7::syntax::Lexer::WhitespaceHandling::Discard,

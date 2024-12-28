@@ -21,11 +21,11 @@ struct Meta
 {
 
     /** The textual description of the test incident. */
-    cl7::string stringification;
+    cl7::u8string stringification;
 
 
 
-    Meta(cl7::string_view stringification, const cl7::char_type* file_path, unsigned line_number, signed iteration_number = -1)
+    Meta(cl7::u8string_view stringification, const char* file_path, unsigned line_number, signed iteration_number = -1)
         : Signature{file_path, line_number, iteration_number}
         , stringification(stringification)
     {}

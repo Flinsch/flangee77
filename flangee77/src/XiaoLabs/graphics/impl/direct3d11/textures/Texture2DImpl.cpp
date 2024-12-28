@@ -68,7 +68,7 @@ namespace xl7::graphics::impl::direct3d11::textures {
         if (get_desc().usage == resources::ResourceUsage::Dynamic && mip_levels != 1)
         {
             mip_levels = 1;
-            LOG_WARNING(TEXT("A dynamic texture cannot have mipmaps, so the number of mipmap levels is set to 1."));
+            LOG_WARNING(u8"A dynamic texture cannot have mipmaps, so the number of mipmap levels is set to 1.");
         }
 
         D3D11_TEXTURE2D_DESC texture_desc;
@@ -114,7 +114,7 @@ namespace xl7::graphics::impl::direct3d11::textures {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11Device::CreateTexture2D")));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CreateTexture2D"));
             return false;
         }
 
@@ -125,7 +125,7 @@ namespace xl7::graphics::impl::direct3d11::textures {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11Device::CreateShaderResourceView")));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CreateShaderResourceView"));
             return false;
         }
 
@@ -156,8 +156,8 @@ namespace xl7::graphics::impl::direct3d11::textures {
 
             if (FAILED(hresult))
             {
-                LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11DeviceContext::Map")));
-                LOG_ERROR(TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be mapped for writing."));
+                LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11DeviceContext::Map"));
+                LOG_ERROR(u8"The " + get_typed_identifier_string() + u8" could not be mapped for writing.");
                 return false;
             }
 

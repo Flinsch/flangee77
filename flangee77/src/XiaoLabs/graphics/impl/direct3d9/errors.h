@@ -10,8 +10,8 @@ namespace xl7::graphics::impl::direct3d9::errors {
 
 
 
-    cl7::string d3d9_result(long error_code);
-    cl7::string d3d9_result(long error_code, cl7::string_view context);
+    cl7::u8string d3d9_result(long error_code);
+    cl7::u8string d3d9_result(long error_code, cl7::u8string_view context);
 
 
 

@@ -12,27 +12,96 @@ namespace cl7 {
 
 
 
-#ifdef UNICODE
-    using sstream = std::wstringstream;
-    using isstream = std::wistringstream;
-    using osstream = std::wostringstream;
-#else // => !UNICODE
-    using sstream = std::stringstream;
-    using isstream = std::istringstream;
-    using osstream = std::ostringstream;
-#endif // #else => !UNICODE
-
-    using asstream = std::stringstream;
-    using wsstream = std::wstringstream;
-
     using aisstream = std::istringstream;
     using wisstream = std::wistringstream;
 
     using aosstream = std::ostringstream;
     using wosstream = std::wostringstream;
 
+    // As long as the "experts" from the C++ committee cannot get the simplest
+    // Unicode-related things under control, we will have to take care of certain
+    // things ourselves (see below).
+
+    //using u8isstream = std::basic_istringstream<char8_t>;
+    using u16isstream = std::basic_istringstream<char16_t>;
+    using u32isstream = std::basic_istringstream<char32_t>;
+
+    //using u8osstream = std::basic_ostringstream<char8_t>;
+    using u16osstream = std::basic_ostringstream<char16_t>;
+    using u32osstream = std::basic_ostringstream<char32_t>;
+
+
+
+class u8isstream
+{
+public:
+    u8isstream(u8string_view str);
+
+    unsigned int peek();
+    unsigned int get();
+    u8isstream& get(u8char_type& ch);
+    u8isstream& getline(u8char_type* s, std::streamsize count, u8char_type delim = cl7::u8char_type{'\n'});
+    u8isstream& ignore(std::streamsize count = 1, unsigned int delim = std::char_traits<u8char_type>::eof());
+
+    template <typename T>
+    u8isstream& operator>>(T& value)
+    {
+        _iss >> value;
+        return *this;
+    }
+
+    explicit operator bool() const;
+
+private:
+    std::istringstream _iss;
+};
+
+
+
+class u8osstream
+{
+public:
+    u8string str() const;
+
+    u8osstream& put(u8char_type ch);
+
+    template <typename T>
+    typename std::enable_if<std::is_fundamental<T>::value, u8osstream&>::type
+    operator<<(T value)
+    {
+        _oss << value;
+        return *this;
+    }
+
+    template <typename T>
+    typename std::enable_if<!std::is_fundamental<T>::value, u8osstream&>::type
+    operator<<(const T& value)
+    {
+        _oss << value;
+        return *this;
+    }
+
+    u8osstream& operator<<(u8char_type value);
+    u8osstream& operator<<(u8string_view value);
+    u8osstream& operator<<(const u8string& value);
+    u8osstream& operator<<(const u8char_type* value);
+
+    explicit operator bool() const;
+
+private:
+    std::ostringstream _oss;
+};
+
 
 
 } // namespace cl7
+
+
+
+namespace std {
+
+    cl7::u8isstream& getline(cl7::u8isstream& input, cl7::u8string& str, cl7::u8char_type delim = cl7::u8char_type{'\n'});
+
+} // namespace std
 
 #endif // CL7_SSTREAM_H

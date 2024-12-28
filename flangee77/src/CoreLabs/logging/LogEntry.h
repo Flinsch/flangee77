@@ -23,16 +23,16 @@ struct LogEntry
 {
 
     /** The log message itself (as a string_view not suitable for storing for later use). */
-    cl7::string_view message;
+    cl7::u8string_view message;
     /** The log type (error, warning, etc.). */
     LogType type;
 
     /** The (relative) path to the file the log was generated in. */
-    const cl7::achar_type* file_path = nullptr;
+    const char* file_path = nullptr;
     /** The line number the log was generated at. */
     unsigned line_number = 0;
     /** The function name the log was generated from. */
-    const cl7::achar_type* function_name = nullptr;
+    const char* function_name = nullptr;
 
 }; // class LogEntry
 

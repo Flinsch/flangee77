@@ -28,14 +28,14 @@ struct Version
 
     unsigned pre_release_number = 0;
 
-    cl7::string build;
+    cl7::u8string build;
 
 
 
     /**
      * "Stringifies" this version object.
      */
-    cl7::string to_string(bool short_format = false) const;
+    cl7::u8string to_string(bool short_format = false) const;
 
 
     /**
@@ -50,7 +50,7 @@ struct Version
     /**
      * Parses the given version string.
      */
-    static Version parse(const cl7::string& string);
+    static Version parse(const cl7::u8string& string);
 
 }; // struct Version
 

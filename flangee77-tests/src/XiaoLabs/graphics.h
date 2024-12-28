@@ -35,47 +35,47 @@ inline bool operator==(const xl7::graphics::PixelBitKit::Channel& lhs, const xl7
 
 namespace tl7::internals {
     inline
-    cl7::string to_string(const xl7::graphics::shaders::ShaderCode::Language& shader_language)
+    cl7::u8string to_string(const xl7::graphics::shaders::ShaderCode::Language& shader_language)
     {
         switch ( shader_language )
         {
-        case xl7::graphics::shaders::ShaderCode::Language::Unknown: return TEXT("#Unknown");
-        case xl7::graphics::shaders::ShaderCode::Language::Bytecode: return TEXT("#Bytecode");
-        //case xl7::graphics::shaders::ShaderCode::Language::Assembly: return TEXT("#Assembly");
-        case xl7::graphics::shaders::ShaderCode::Language::HighLevel: return TEXT("#HighLevel");
+        case xl7::graphics::shaders::ShaderCode::Language::Unknown: return u8"#Unknown";
+        case xl7::graphics::shaders::ShaderCode::Language::Bytecode: return u8"#Bytecode";
+        //case xl7::graphics::shaders::ShaderCode::Language::Assembly: return u8"#Assembly";
+        case xl7::graphics::shaders::ShaderCode::Language::HighLevel: return u8"#HighLevel";
         default:
             assert( false );
         }
-        return TEXT("#Unknown");
+        return u8"#Unknown";
     }
 
     inline
-    cl7::string to_string(const xl7::graphics::Color& color) { return TEXT("rgba(") + cl7::to_string(color.get_r()) + TEXT(", ") + cl7::to_string(color.get_g()) + TEXT(", ") + cl7::to_string(color.get_b()) + TEXT(", ") + cl7::to_string(color.get_a()) + TEXT(")"); }
+    cl7::u8string to_string(const xl7::graphics::Color& color) { return u8"rgba(" + cl7::to_string(color.get_r()) + u8", " + cl7::to_string(color.get_g()) + u8", " + cl7::to_string(color.get_b()) + u8", " + cl7::to_string(color.get_a()) + u8")"; }
 
     inline
-    cl7::string to_string(const xl7::graphics::PixelBitKit::DataType& data_type)
+    cl7::u8string to_string(const xl7::graphics::PixelBitKit::DataType& data_type)
     {
         switch ( data_type )
         {
-        case xl7::graphics::PixelBitKit::DataType::UNKNOWN: return TEXT("#UNKNOWN");
-        case xl7::graphics::PixelBitKit::DataType::UNORM: return TEXT("#UNORM");
-        case xl7::graphics::PixelBitKit::DataType::SNORM: return TEXT("#SNORM");
-        case xl7::graphics::PixelBitKit::DataType::UINT: return TEXT("#UINT");
-        case xl7::graphics::PixelBitKit::DataType::SINT: return TEXT("#SINT");
-        case xl7::graphics::PixelBitKit::DataType::FLOAT: return TEXT("#FLOAT");
+        case xl7::graphics::PixelBitKit::DataType::UNKNOWN: return u8"#UNKNOWN";
+        case xl7::graphics::PixelBitKit::DataType::UNORM: return u8"#UNORM";
+        case xl7::graphics::PixelBitKit::DataType::SNORM: return u8"#SNORM";
+        case xl7::graphics::PixelBitKit::DataType::UINT: return u8"#UINT";
+        case xl7::graphics::PixelBitKit::DataType::SINT: return u8"#SINT";
+        case xl7::graphics::PixelBitKit::DataType::FLOAT: return u8"#FLOAT";
         default:
             assert( false );
         }
-        return TEXT("#UNKNOWN");
+        return u8"#UNKNOWN";
     }
 
     inline
-    cl7::string to_string(const xl7::graphics::PixelBitKit::Channel& channel) { return TEXT("{") + cl7::to_string(channel.index) + TEXT(", ") + cl7::to_string(channel.depth) + TEXT(", ") + cl7::to_string(channel.offset) + TEXT(", ") + (channel.mask ? cl7::strings::to_0xhex(channel.mask, TEXT('a')) : TEXT("0")) + TEXT(", ") + (channel.mask0 ? cl7::strings::to_0xhex(channel.mask0, TEXT('a')) : TEXT("0")) + TEXT("}"); }
+    cl7::u8string to_string(const xl7::graphics::PixelBitKit::Channel& channel) { return u8"{" + cl7::to_string(channel.index) + u8", " + cl7::to_string(channel.depth) + u8", " + cl7::to_string(channel.offset) + u8", " + (channel.mask ? cl7::strings::to_0xhex(channel.mask, u8'a') : u8"0") + u8", " + (channel.mask0 ? cl7::strings::to_0xhex(channel.mask0, u8'a') : u8"0") + u8"}"; }
 }
 
 
 
-TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  Color") )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  Color" )
 {
     TESTLABS_CHECK_EQ( xl7::graphics::Color(), xl7::graphics::Color( 0.0f, 0.0f, 0.0f, 0.0f ) );
     TESTLABS_CHECK_EQ( xl7::graphics::Color( uint8_t(63), uint8_t(127), uint8_t(255) ), xl7::graphics::Color( 0.25f, 0.5f, 1.0f, 1.0f ) );
@@ -173,14 +173,14 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  Color") )
 
 
 
-TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  PixelBitKit") )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  PixelBitKit" )
 {
     // This is just so that we notice when a value is inserted or removed
     // and then we should also adjust the tests accordingly.
     TESTLABS_ASSERT_EQ( static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ), 53 );
 
 
-    TESTLABS_SUBCASE( TEXT("data type") )
+    TESTLABS_SUBCASE( u8"data type" )
     {
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
@@ -242,7 +242,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  PixelBitKit") )
     }
 
 
-    TESTLABS_SUBCASE( TEXT("channel count") )
+    TESTLABS_SUBCASE( u8"channel count" )
     {
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8_SNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
@@ -418,7 +418,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  PixelBitKit") )
 
 
 
-TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageProcessor") )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageProcessor" )
 {
     // This is just so that we notice when a value is inserted or removed
     // and then we should also adjust the tests accordingly.
@@ -574,7 +574,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageProcessor") )
     };
 
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("pack_color/unpack_color"), container, entry, cl7::to_string( entry.pixel_format ) + TEXT(" ") + cl7::to_string( entry.channel_order ) )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"pack_color/unpack_color", container, entry, cl7::to_string( entry.pixel_format ) + u8" " + cl7::to_string( entry.channel_order ) )
     {
         xl7::graphics::PixelBitKit pbk{ entry.pixel_format, entry.channel_order };
         size_t stride = static_cast<size_t>( pbk.stride );
@@ -605,7 +605,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageProcessor") )
     }
 }
 
-TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageConverter" )
 {
     // This is just so that we notice when a value is inserted or removed
     // and then we should also adjust the tests accordingly.
@@ -635,7 +635,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
     };
 
 
-    constexpr cl7::char_type rgbakeys[4] = { TEXT('R'), TEXT('G'), TEXT('B'), TEXT('A') };
+    constexpr cl7::u8char_type rgbakeys[4] = { u8'R', u8'G', u8'B', u8'A' };
 
     auto _precision = [](unsigned depth) -> unsigned {
         if ( depth <= 2 )
@@ -651,7 +651,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
     };
 
 
-    TESTLABS_SUBCASE_BATCH( TEXT("convert_image"), container, entry1 )
+    TESTLABS_SUBCASE_BATCH( u8"convert_image", container, entry1 )
     {
         xl7::graphics::PixelBitKit pbk1{ entry1.pixel_format, entry1.channel_order };
         size_t stride1 = static_cast<size_t>( pbk1.stride );
@@ -666,7 +666,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
 
         TESTLABS_ASSERT_EQ( source_image.get_data().size(), 4 * stride1 );
 
-        TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("convert_image"), container, entry2, cl7::to_string( entry1.pixel_format ) + TEXT(" ") + cl7::to_string( entry1.channel_order ) + TEXT(" -> ") + cl7::to_string( entry2.pixel_format ) + TEXT(" ") + cl7::to_string( entry2.channel_order ) )
+        TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"convert_image", container, entry2, cl7::to_string( entry1.pixel_format ) + u8" " + cl7::to_string( entry1.channel_order ) + u8" -> " + cl7::to_string( entry2.pixel_format ) + u8" " + cl7::to_string( entry2.channel_order ) )
         {
             xl7::graphics::PixelBitKit pbk2{ entry2.pixel_format, entry2.channel_order };
             size_t stride2 = static_cast<size_t>( pbk2.stride );
@@ -696,7 +696,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
                 unsigned depth1 = pbk1.channels[ rgba ].depth;
                 unsigned depth2 = pbk2.channels[ rgba ].depth;
 
-                TESTLABS_SUBCASE_DATA_STRING( cl7::to_string( entry1.pixel_format ) + TEXT(" ") + cl7::to_string( entry1.channel_order ) + TEXT(" -> ") + cl7::to_string( entry2.pixel_format ) + TEXT(" ") + cl7::to_string( entry2.channel_order ) + TEXT("  (") + rgbakeys[rgba] + TEXT(")") );
+                TESTLABS_SUBCASE_DATA_STRING( cl7::to_string( entry1.pixel_format ) + u8" " + cl7::to_string( entry1.channel_order ) + u8" -> " + cl7::to_string( entry2.pixel_format ) + u8" " + cl7::to_string( entry2.channel_order ) + u8"  (" + rgbakeys[rgba] + u8")" );
 
                 constexpr signed rgba_map[5][5][4] = {
                     {
@@ -756,7 +756,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
                     assert( rgba_ < 4 );
 
                     if ( rgba_ != rgba )
-                        TESTLABS_SUBCASE_DATA_STRING( cl7::to_string( entry1.pixel_format ) + TEXT(" ") + cl7::to_string( entry1.channel_order ) + TEXT(" -> ") + cl7::to_string( entry2.pixel_format ) + TEXT(" ") + cl7::to_string( entry2.channel_order ) + TEXT("  (") + rgbakeys[rgba_] + TEXT(" -> ") + rgbakeys[rgba] + TEXT(")") );
+                        TESTLABS_SUBCASE_DATA_STRING( cl7::to_string( entry1.pixel_format ) + u8" " + cl7::to_string( entry1.channel_order ) + u8" -> " + cl7::to_string( entry2.pixel_format ) + u8" " + cl7::to_string( entry2.channel_order ) + u8"  (" + rgbakeys[rgba_] + u8" -> " + rgbakeys[rgba] + u8")" );
 
                     depth1 = pbk1.channels[ rgba_ ].depth;
                     assert( depth1 );
@@ -773,7 +773,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageConverter") )
     }
 }
 
-TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageResizer") )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageResizer" )
 {
     struct Entry
     {
@@ -821,7 +821,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageResizer") )
     };
 
 
-    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( TEXT("resize_image"), container, entry, cl7::to_string( entry.pixel_format ) + TEXT(" ") + cl7::to_string(entry.source_width) + TEXT("x") + cl7::to_string(entry.source_height) + TEXT("x") + cl7::to_string(entry.source_depth) + TEXT(" -> ") + cl7::to_string(entry.target_width) + TEXT("x") + cl7::to_string(entry.target_height) + TEXT("x") + cl7::to_string(entry.target_depth) )
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"resize_image", container, entry, cl7::to_string( entry.pixel_format ) + u8" " + cl7::to_string(entry.source_width) + u8"x" + cl7::to_string(entry.source_height) + u8"x" + cl7::to_string(entry.source_depth) + u8" -> " + cl7::to_string(entry.target_width) + u8"x" + cl7::to_string(entry.target_height) + u8"x" + cl7::to_string(entry.target_depth) )
     {
         xl7::graphics::PixelBitKit pbk{ entry.pixel_format, xl7::graphics::ChannelOrder::RGBA };
         size_t stride = static_cast<size_t>( pbk.stride );
@@ -864,7 +864,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  ImageResizer") )
 
 
 
-TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  compile shaders" )
 {
     enum class ImplType
     {
@@ -875,18 +875,18 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
     struct Entry
     {
         ImplType impl_type;
-        cl7::astring filename;
-        cl7::astring entry_point;
-        cl7::astring target;
+        cl7::u8string filename;
+        cl7::u8string entry_point;
+        cl7::u8string target;
         xl7::graphics::shaders::ReflectionResult reflection_result;
     } entry;
 
     const std::vector<Entry> container {
-        { ImplType::Direct3D9, "shader.hlsl", "mainVS", "vs_3_0", { { { "", 0, { { { "WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
-        { ImplType::Direct3D9, "shader.hlsl", "mainPS", "ps_3_0", { { { "", 0, { { { "BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
+        { ImplType::Direct3D9, u8"shader.hlsl", u8"mainVS", u8"vs_3_0", { { { u8"", 0, { { { u8"WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
+        { ImplType::Direct3D9, u8"shader.hlsl", u8"mainPS", u8"ps_3_0", { { { u8"", 0, { { { u8"BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
 #if defined(_MSC_VER)
-        { ImplType::Direct3D11, "shader.hlsl", "mainVS", "vs_5_0", { { { "VertexConstants", 0, { { { "WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
-        { ImplType::Direct3D11, "shader.hlsl", "mainPS", "ps_5_0", { { { "PixelConstants", 0, { { { "BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
+        { ImplType::Direct3D11, u8"shader.hlsl", u8"mainVS", u8"vs_5_0", { { { u8"VertexConstants", 0, { { { u8"WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
+        { ImplType::Direct3D11, u8"shader.hlsl", u8"mainPS", u8"ps_5_0", { { { u8"PixelConstants", 0, { { { u8"BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
 #endif
     };
 
@@ -894,7 +894,7 @@ TESTLABS_CASE( TEXT("XiaoLabs:  graphics:  compile shaders") )
     {
         const Entry& entry = container[ i ];
 
-        const cl7::string file_path = cl7::filesystem::get_working_directory() + TEXT("assets/shaders/") + cl7::strings::from_ascii(entry.filename);
+        const cl7::u8string file_path = cl7::filesystem::get_working_directory() + u8"assets/shaders/" + entry.filename;
 
         xl7::graphics::shaders::ShaderCode bytecode = xl7::graphics::impl::shared::shaders::D3DShaderCompiler::compile_hlsl_code( file_path, {}, entry.entry_point, entry.target );
         xl7::graphics::shaders::ReflectionResult reflection_result;

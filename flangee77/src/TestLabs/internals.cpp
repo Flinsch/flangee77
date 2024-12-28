@@ -10,13 +10,13 @@ namespace tl7::internals {
 
 
 
-    cl7::string to_string(const std::nullptr_t& null) { return {}; }
+    cl7::u8string to_string(const std::nullptr_t& null) { return {}; }
 
     template <class Tstring>
-    static cl7::string _to_string(const Tstring& val)
+    static cl7::u8string _to_string(const Tstring& val)
     {
-        cl7::osstream oss;
-        oss << std::hex << std::setfill(TEXT('0'));
+        cl7::u8osstream oss;
+        oss << std::hex << std::setfill('0');
 
         oss << '"';
         for (const auto c : val)
@@ -27,7 +27,7 @@ namespace tl7::internals {
             if (c < 0x20)
                 oss << "\\x" << std::setw(2) << ull; // NOLINT(bugprone-branch-clone)
             else if (c < 0x7f)
-                oss << static_cast<cl7::char_type>(c);
+                oss << static_cast<cl7::u8char_type>(c);
             else if (c <= 0xff)
                 oss << "\\x" << std::setw(2) << ull;
             else if (c <= 0xffff)
@@ -40,17 +40,17 @@ namespace tl7::internals {
         return oss.str();
     }
 
-    cl7::string to_string(const std::string& val) { return _to_string(val); }
-    cl7::string to_string(const std::wstring& val) { return _to_string(val); }
-    cl7::string to_string(const std::u8string& val) { return _to_string(val); }
-    cl7::string to_string(const std::u16string& val) { return _to_string(val); }
-    cl7::string to_string(const std::u32string& val) { return _to_string(val); }
+    cl7::u8string to_string(const std::string& val) { return _to_string(val); }
+    cl7::u8string to_string(const std::wstring& val) { return _to_string(val); }
+    cl7::u8string to_string(const std::u8string& val) { return _to_string(val); }
+    cl7::u8string to_string(const std::u16string& val) { return _to_string(val); }
+    cl7::u8string to_string(const std::u32string& val) { return _to_string(val); }
 
-    cl7::string to_string(std::string_view val) { return _to_string(val); }
-    cl7::string to_string(std::wstring_view val) { return _to_string(val); }
-    cl7::string to_string(std::u8string_view val) { return _to_string(val); }
-    cl7::string to_string(std::u16string_view val) { return _to_string(val); }
-    cl7::string to_string(std::u32string_view val) { return _to_string(val); }
+    cl7::u8string to_string(std::string_view val) { return _to_string(val); }
+    cl7::u8string to_string(std::wstring_view val) { return _to_string(val); }
+    cl7::u8string to_string(std::u8string_view val) { return _to_string(val); }
+    cl7::u8string to_string(std::u16string_view val) { return _to_string(val); }
+    cl7::u8string to_string(std::u32string_view val) { return _to_string(val); }
 
 
 

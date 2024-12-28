@@ -80,7 +80,7 @@ namespace xl7::graphics::impl::direct3d11::meshes {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11Device::CreateBuffer")));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CreateBuffer"));
             return false;
         }
 
@@ -133,8 +133,8 @@ namespace xl7::graphics::impl::direct3d11::meshes {
 
             if (FAILED(hresult))
             {
-                LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11DeviceContext::Map")));
-                LOG_ERROR(TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be mapped for writing."));
+                LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11DeviceContext::Map"));
+                LOG_ERROR(u8"The " + get_typed_identifier_string() + u8" could not be mapped for writing.");
                 return false;
             }
 

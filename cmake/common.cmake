@@ -30,18 +30,18 @@ add_compile_definitions(
     NOMINMAX
 )
 
-if(USE_UNICODE)
-    add_compile_definitions(UNICODE _UNICODE)
-endif()
+add_compile_definitions(UNICODE _UNICODE)
+
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    add_compile_options(/utf-8)
+endif ()
 
 function(equip_windows_app target)
     if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-        target_link_options(HelloWorld PRIVATE -mwindows)
-        if(USE_UNICODE)
-            target_link_options(${target} PRIVATE -municode)
-        endif()
+        target_link_options(${target} PRIVATE -mwindows)
+        target_link_options(${target} PRIVATE -municode)
     elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-        set_target_properties(HelloWorld PROPERTIES LINK_FLAGS "/SUBSYSTEM:WINDOWS")
+        set_target_properties(${target} PROPERTIES LINK_FLAGS "/SUBSYSTEM:WINDOWS")
     endif()
 endfunction()
 

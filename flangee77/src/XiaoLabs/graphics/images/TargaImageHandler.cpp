@@ -16,7 +16,7 @@ namespace xl7::graphics::images {
     /**
      * Loads an image from any rom.
      */
-    bool TargaImageHandler::_load_from(cl7::io::irom& rom, const cl7::string& rom_name, Image& image)
+    bool TargaImageHandler::_load_from(cl7::io::irom& rom, const cl7::u8string& rom_name, Image& image)
     {
         Header header;
         if (rom.read({reinterpret_cast<std::byte*>(&header), sizeof(Header)}) != sizeof(Header))
@@ -77,7 +77,7 @@ namespace xl7::graphics::images {
     /**
      * Loads an uncompressed TGA.
      */
-    bool TargaImageHandler::_load_uncompressed(cl7::io::irom& rom, const cl7::string& rom_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
+    bool TargaImageHandler::_load_uncompressed(cl7::io::irom& rom, const cl7::u8string& rom_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
     {
         assert(data.size() == desc.calculate_data_size());
 
@@ -90,7 +90,7 @@ namespace xl7::graphics::images {
     /**
      * Loads a compressed TGA.
      */
-    bool TargaImageHandler::_load_compressed(cl7::io::irom& rom, const cl7::string& rom_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
+    bool TargaImageHandler::_load_compressed(cl7::io::irom& rom, const cl7::u8string& rom_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
     {
         assert(data.size() == desc.calculate_data_size());
 

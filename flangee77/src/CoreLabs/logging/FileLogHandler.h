@@ -48,10 +48,10 @@ private:
     // #############################################################################
 
     /**
-     * Writes the specified "raw" ASCII or UTF-8 encoded std::string to the log
-     * file. If specified, the file is initially truncated.
+     * Writes the specified "raw" UTF-8 encoded string to the log file. If
+     * specified, the file is initially truncated.
      */
-    static void _write_line(std::string_view line, bool truncate = false);
+    static void _write_line(cl7::u8string_view line, bool truncate = false);
 
 }; // class FileLogHandler
 

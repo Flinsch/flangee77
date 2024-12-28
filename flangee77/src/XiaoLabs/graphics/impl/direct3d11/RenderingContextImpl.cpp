@@ -365,7 +365,7 @@ namespace xl7::graphics::impl::direct3d11 {
         {
             if (!vertex_shader || vertex_shader->get_bytecode().get_code_data().empty())
             {
-                LOG_ERROR(TEXT("No compiled vertex shader bytecode provided to validate against the input layout being created."));
+                LOG_ERROR(u8"No compiled vertex shader bytecode provided to validate against the input layout being created.");
                 return false;
             }
 

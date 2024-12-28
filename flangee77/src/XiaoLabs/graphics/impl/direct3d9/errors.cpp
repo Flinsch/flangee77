@@ -10,7 +10,7 @@ namespace xl7::graphics::impl::direct3d9::errors {
 
 
 
-    cl7::string d3d9_result(long error_code)
+    cl7::u8string d3d9_result(long error_code)
     {
         const char* message = nullptr;
 
@@ -131,15 +131,15 @@ namespace xl7::graphics::impl::direct3d9::errors {
         if (!message)
             return cl7::errors::system_result(static_cast<unsigned long>(error_code));
 
-        cl7::osstream oss;
-        oss << std::hex << TEXT("0x") << error_code;
-        oss << TEXT(" ");
+        cl7::u8osstream oss;
+        oss << std::hex << u8"0x" << error_code;
+        oss << u8" ";
         oss << message;
 
         return oss.str();
     }
 
-    cl7::string d3d9_result(long error_code, cl7::string_view context)
+    cl7::u8string d3d9_result(long error_code, cl7::u8string_view context)
     {
         return cl7::errors::with_context(d3d9_result(error_code), context);
     }

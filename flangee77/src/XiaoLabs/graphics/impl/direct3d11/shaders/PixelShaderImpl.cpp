@@ -73,7 +73,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11Device::CreatePixelShader")));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CreatePixelShader"));
             return false;
         }
 
@@ -89,16 +89,16 @@ namespace xl7::graphics::impl::direct3d11::shaders {
     bool PixelShaderImpl::_acquire_recompilable_impl(const xl7::graphics::shaders::CodeDataProvider& code_data_provider, xl7::graphics::shaders::ShaderCode& bytecode_out)
     {
         const cl7::Version& version = GraphicsSystem::instance().get_rendering_device()->get_capabilities().shaders.pixel_shader_version;
-        const cl7::astring target = "ps_" + cl7::to_astring(version.major) + "_" + cl7::to_astring(version.minor);
-        const cl7::astring entry_point = _cascade_entry_point(code_data_provider.get_compile_options());
+        const cl7::u8string target = u8"ps_" + cl7::to_string(version.major) + u8"_" + cl7::to_string(version.minor);
+        const cl7::u8string entry_point = _cascade_entry_point(code_data_provider.get_compile_options());
 
         const xl7::graphics::shaders::ShaderCode& hlsl_code = code_data_provider.get_shader_code();
         assert(hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel);
 
-        bytecode_out = shared::shaders::D3DShaderCompiler::compile_hlsl_code(hlsl_code, TEXT(""), code_data_provider.get_compile_options(), entry_point, target);
+        bytecode_out = shared::shaders::D3DShaderCompiler::compile_hlsl_code(hlsl_code, u8"", code_data_provider.get_compile_options(), entry_point, target);
         if (bytecode_out.get_code_data().empty())
         {
-            LOG_ERROR(TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be compiled."));
+            LOG_ERROR(u8"The " + get_typed_identifier_string() + u8" could not be compiled.");
             return false;
         }
 

@@ -8,12 +8,12 @@ namespace cl7::profiling {
 
 
 
-    Profiler::Profiler(const cl7::astring& sample_name)
+    Profiler::Profiler(const cl7::u8string& sample_name)
         : Profiler(sample_name, &StandardRegistry::instance())
     {
     }
 
-    Profiler::Profiler(const cl7::astring& sample_name, Registry* registry)
+    Profiler::Profiler(const cl7::u8string& sample_name, Registry* registry)
         : _registry(registry)
         , _sample(Registry::Attorney::begin_sample(registry, sample_name))
     {

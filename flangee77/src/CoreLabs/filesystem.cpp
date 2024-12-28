@@ -15,59 +15,59 @@ namespace cl7::filesystem {
     /**
      * Returns the working directory of the module instance.
      */
-    cl7::string get_working_directory()
+    cl7::u8string get_working_directory()
     {
-        /*cl7::char_type _full_path[MAX_PATH + 1];
-        ::GetModuleFileName(nullptr, _full_path, MAX_PATH);
+        /*wchar_t _full_path[MAX_PATH + 1];
+        ::GetModuleFileNameW(nullptr, _full_path, MAX_PATH);
 
-        cl7::string_view full_path(_full_path);
-        size_t p = full_path.find_last_of(TEXT('\\'));
-        return cl7::string{full_path.substr(0, p + 1)};*/
+        std::wstring_view full_path{_full_path};
+        size_t p = full_path.find_last_of(L'\\');
+        return cl7::strings::to_utf8(full_path.substr(0, p + 1));*/
         return get_initial_directory();
     }
 
     /**
      * Returns the initial directory (where the execution started).
      */
-    cl7::string get_initial_directory()
+    cl7::u8string get_initial_directory()
     {
-        static cl7::char_type _path[MAX_PATH + 2] = {0};
+        static wchar_t _path[MAX_PATH + 2] = {0};
         static bool first_call = true;
 
         if (first_call)
         {
             first_call = false;
 
-            DWORD length = ::GetCurrentDirectory(MAX_PATH, _path);
+            DWORD length = ::GetCurrentDirectoryW(MAX_PATH, _path);
 
-            if (length == 0 || _path[length - 1] != TEXT('\\'))
-                _path[length] = TEXT('\\');
+            if (length == 0 || _path[length - 1] != u8'\\')
+                _path[length] = u8'\\';
         }
 
-        return {_path};
+        return cl7::strings::to_utf8(_path);
     }
 
     /**
      * Returns the current directory.
      */
-    cl7::string get_current_directory()
+    cl7::u8string get_current_directory()
     {
-        cl7::char_type _path[MAX_PATH + 2] = {0};
+        wchar_t _path[MAX_PATH + 2] = {0};
 
-        DWORD length = ::GetCurrentDirectory(MAX_PATH, _path);
+        DWORD length = ::GetCurrentDirectoryW(MAX_PATH, _path);
 
-        if (length == 0 || _path[length - 1] != TEXT('\\'))
-            _path[length] = TEXT('\\');
+        if (length == 0 || _path[length - 1] != u8'\\')
+            _path[length] = u8'\\';
 
-        return {_path};
+        return cl7::strings::to_utf8(_path);
     }
 
     /**
      * Returns the user directory.
      */
-    cl7::string get_user_directory()
+    cl7::u8string get_user_directory()
     {
-        static cl7::char_type _path[MAX_PATH + 2] = {0};
+        static cl7::u8char_type _path[MAX_PATH + 2] = {0};
         static bool first_call = true;
 
         if (first_call)
@@ -75,20 +75,20 @@ namespace cl7::filesystem {
             first_call = false;
 
             DWORD length = 0;
-            cl7::wchar_type* tmp = nullptr;
+            wchar_t* tmp = nullptr;
             auto auto_free_tmp = cl7::finally([&tmp] { if (tmp) ::CoTaskMemFree(tmp); tmp = nullptr; });
             HRESULT hresult = ::SHGetKnownFolderPath(FOLDERID_RoamingAppData, KF_FLAG_CREATE, nullptr, &tmp);
 
             if (hresult == S_OK)
             {
                 assert(tmp);
-                cl7::string path = cl7::strings::from_utfx(tmp);
-                for (const cl7::char_type* p = path.c_str(); *p; ++p)
+                cl7::u8string path = cl7::strings::to_utf8(tmp);
+                for (const cl7::u8char_type* p = path.c_str(); *p; ++p)
                     _path[length++] = *p;
             }
 
-            if (length == 0 || _path[length - 1] != TEXT('\\'))
-                _path[length] = TEXT('\\');
+            if (length == 0 || _path[length - 1] != u8'\\')
+                _path[length] = u8'\\';
         }
 
         return {_path};

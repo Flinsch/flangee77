@@ -36,35 +36,35 @@ namespace cl7::profiling {
         if (!logger)
             logger = &logging::StandardLogger::instance();
 
-        cl7::sstream ss;
+        std::wostringstream woss;
 
-        (ss << TEXT("  Min  ")).put(TEXT(' '));
-        while (ss.str().length() % 14 != 0)
-            ss.put(TEXT(' '));
-        (ss << TEXT("  Avg  ")).put(TEXT(' '));
-        while (ss.str().length() % 14 != 0)
-            ss.put(TEXT(' '));
-        (ss << TEXT("  Max  ")).put(TEXT(' '));
-        while (ss.str().length() % 14 != 0)
-            ss.put(TEXT(' '));
-        (ss << TEXT("  \u2300 time  ")).put(TEXT(' '));
-        while (ss.str().length() % 14 != 0)
-            ss.put(TEXT(' '));
-        (ss << TEXT("  #  ")).put(TEXT(' '));
-        while (ss.str().length() % 10 != 0)
-            ss.put(TEXT(' '));
+        (woss << "  Min  ").put(' ');
+        while (woss.str().length() % 14 != 0)
+            woss.put(' ');
+        (woss << "  Avg  ").put(' ');
+        while (woss.str().length() % 14 != 0)
+            woss.put(' ');
+        (woss << "  Max  ").put(' ');
+        while (woss.str().length() % 14 != 0)
+            woss.put(' ');
+        (woss << "  \u2300 time  ").put(' ');
+        while (woss.str().length() % 14 != 0)
+            woss.put(' ');
+        (woss << "  #  ").put(' ');
+        while (woss.str().length() % 10 != 0)
+            woss.put(' ');
 
-        ss << TEXT("  Sample  ");
+        woss << "  Sample  ";
 
-        cl7::string text = ss.str();
-        for (auto& c : text)
+        std::wstring utfx = woss.str();
+        for (auto& ch : utfx)
         {
-            if (c == TEXT(' '))
-                c = cl7::char_type{0xa0}; // no-break space
+            if (ch == 0x20) // space
+                ch = wchar_t{0xa0}; // no-break space
         }
 
-        logger->log(cl7::logging::LogEntry{.message=text, .type=cl7::logging::LogType::Code});
-        logger->log(cl7::logging::LogEntry{.message=TEXT("--------------------------------------------------------------------------------"), .type=cl7::logging::LogType::Code});
+        logger->log(cl7::logging::LogEntry{.message=cl7::strings::to_utf8(utfx), .type=cl7::logging::LogType::Code});
+        logger->log(cl7::logging::LogEntry{.message=u8"--------------------------------------------------------------------------------", .type=cl7::logging::LogType::Code});
 
         for (const auto& p : _sample_lookup)
         {
@@ -85,7 +85,7 @@ namespace cl7::profiling {
     /**
      * Begins and returns the sample with the specified name.
      */
-    Sample* Registry::_begin_sample(const cl7::astring& sample_name)
+    Sample* Registry::_begin_sample(const cl7::u8string& sample_name)
     {
         auto it = _sample_lookup.find({sample_name, _last_opened_sample});
         if (it == _sample_lookup.end())
@@ -135,42 +135,42 @@ namespace cl7::profiling {
      */
     void Registry::_log(cl7::logging::Logger* logger, const Sample* sample, unsigned indent) const
     {
-        cl7::sstream ss;
+        std::wostringstream woss;
 
-        (ss << std::fixed << std::setprecision(2) << std::setw(6) << (sample->stats.min_pct*100.0f) << TEXT(" %")).put(TEXT(' '));
-        while (ss.str().length() % 14 != 0)
-            ss.put(TEXT(' '));
-        (ss << std::fixed << std::setprecision(2) << std::setw(6) << (sample->stats.avg_pct*100.0f) << TEXT(" %")).put(TEXT(' '));
-        while (ss.str().length() % 14 != 0)
-            ss.put(TEXT(' '));
-        (ss << std::fixed << std::setprecision(2) << std::setw(6) << (sample->stats.max_pct*100.0f) << TEXT(" %")).put(TEXT(' '));
-        while (ss.str().length() % 14 != 0)
-            ss.put(TEXT(' '));
+        (woss << std::fixed << std::setprecision(2) << std::setw(6) << (sample->stats.min_pct*100.0f) << " %").put(' ');
+        while (woss.str().length() % 14 != 0)
+            woss.put(' ');
+        (woss << std::fixed << std::setprecision(2) << std::setw(6) << (sample->stats.avg_pct*100.0f) << " %").put(' ');
+        while (woss.str().length() % 14 != 0)
+            woss.put(' ');
+        (woss << std::fixed << std::setprecision(2) << std::setw(6) << (sample->stats.max_pct*100.0f) << " %").put(' ');
+        while (woss.str().length() % 14 != 0)
+            woss.put(' ');
         if (sample->stats.avg_usecs > 1'000'000)
-            (ss << std::fixed << std::setprecision(1) << std::setw(6) << (static_cast<float>(sample->stats.avg_usecs / 1000) * 0.001f) << TEXT(" s")).put(TEXT(' ')); // NOLINT(bugprone-integer-division)
+            (woss << std::fixed << std::setprecision(1) << std::setw(6) << (static_cast<float>(sample->stats.avg_usecs / 1000) * 0.001f) << " s").put(' '); // NOLINT(bugprone-integer-division)
         else if (sample->stats.avg_usecs > 1'000)
-            (ss << std::fixed << std::setprecision(1) << std::setw(6) << (static_cast<float>(sample->stats.avg_usecs) * 0.001f) << TEXT(" ms")).put(TEXT(' '));
+            (woss << std::fixed << std::setprecision(1) << std::setw(6) << (static_cast<float>(sample->stats.avg_usecs) * 0.001f) << " ms").put(' ');
         else
-            (ss << std::fixed << std::setprecision(1) << std::setw(6) << (static_cast<float>(sample->stats.avg_usecs)) << TEXT(" \u00b5s")).put(TEXT(' '));
-        while (ss.str().length() % 14 != 0)
-            ss.put(TEXT(' '));
-        (ss << std::fixed << std::setprecision(0) << std::setw(5) << sample->stats.call_count << TEXT(" ")).put(TEXT(' '));
-        while (ss.str().length() % 10 != 0)
-            ss.put(TEXT(' '));
+            (woss << std::fixed << std::setprecision(1) << std::setw(6) << (static_cast<float>(sample->stats.avg_usecs)) << " \u00b5s").put(' ');
+        while (woss.str().length() % 14 != 0)
+            woss.put(' ');
+        (woss << std::fixed << std::setprecision(0) << std::setw(5) << sample->stats.call_count << " ").put(' ');
+        while (woss.str().length() % 10 != 0)
+            woss.put(' ');
 
         unsigned c = indent;
         while (c--)
-            ss.put(TEXT(' '));
-        ss << cl7::strings::from_ascii(sample->name);
+            woss.put(' ');
+        woss << cl7::strings::to_utfx(sample->name);
 
-        cl7::string text = ss.str();
-        for (auto& ch : text)
+        std::wstring utfx = woss.str();
+        for (auto& ch : utfx)
         {
-            if (ch == TEXT(' '))
-                ch = cl7::char_type{0xa0}; // no-break space
+            if (ch == 0x20) // space
+                ch = wchar_t{0xa0}; // no-break space
         }
 
-        logger->log(cl7::logging::LogEntry{.message=text, .type=cl7::logging::LogType::Code});
+        logger->log(cl7::logging::LogEntry{.message=cl7::strings::to_utf8(utfx), .type=cl7::logging::LogType::Code});
 
         for (const auto& p : _sample_lookup)
         {

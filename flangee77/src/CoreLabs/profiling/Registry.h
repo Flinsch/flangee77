@@ -26,7 +26,7 @@ class Registry
 public:
     class Attorney
     {
-        static Sample* begin_sample(Registry* registry, const cl7::astring& sample_name) { return registry->_begin_sample(sample_name); }
+        static Sample* begin_sample(Registry* registry, const cl7::u8string& sample_name) { return registry->_begin_sample(sample_name); }
         static void end_sample(Registry* registry, Sample* sample) { registry->_end_sample(sample); }
         friend class Profiler;
     };
@@ -67,7 +67,7 @@ public:
 
 private:
 
-    using SampleKey = std::pair<cl7::astring, Sample *>;
+    using SampleKey = std::pair<cl7::u8string, Sample *>;
 
 
 
@@ -78,7 +78,7 @@ private:
     /**
      * Begins and returns the sample with the specified name.
      */
-    Sample* _begin_sample(const cl7::astring& sample_name);
+    Sample* _begin_sample(const cl7::u8string& sample_name);
 
     /**
      * Ends the specified sample.

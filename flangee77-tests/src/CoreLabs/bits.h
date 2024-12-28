@@ -12,7 +12,7 @@
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  bits:  swap_bytes") )
+TESTLABS_CASE( u8"CoreLabs:  bits:  swap_bytes" )
 {
     TESTLABS_CHECK_EQ( cl7::bits::swap_bytes( uint8_t( 7 ) ), uint8_t( 7 ) );
 
@@ -37,7 +37,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  bits:  swap_bytes") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  bits:  float_to_half/half_to_float") )
+TESTLABS_CASE( u8"CoreLabs:  bits:  float_to_half/half_to_float" )
 {
     TESTLABS_CHECK_EQ( cl7::bits::half_to_float( cl7::bits::float_to_half( 0.0f ) ), 0.0f );
     TESTLABS_CHECK_EQ( cl7::bits::half_to_float( cl7::bits::float_to_half( 0.5f ) ), 0.5f );
@@ -69,7 +69,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  bits:  float_to_half/half_to_float") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  bits:  norm_to_fixed") )
+TESTLABS_CASE( u8"CoreLabs:  bits:  norm_to_fixed" )
 {
     TESTLABS_CHECK_EQ( cl7::bits::norm_to_fixed( 0.0f, 8 ), 0x00 );
     //TESTLABS_CHECK_EQ( cl7::bits::norm_to_fixed( 0.5f, 8 ), 0x7f );
@@ -90,7 +90,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  bits:  norm_to_fixed") )
     TESTLABS_CHECK_EQ( cl7::bits::norm_to_fixed( 1.000f, 2 ), 3 );
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  bits:  fixed_to_norm") )
+TESTLABS_CASE( u8"CoreLabs:  bits:  fixed_to_norm" )
 {
     TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 0x00, 8 ), 2 ), 0.0f );
     TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 0x7f, 8 ), 2 ), 0.5f );
@@ -111,7 +111,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  bits:  fixed_to_norm") )
     TESTLABS_CHECK_EQ( ml7::round( cl7::bits::fixed_to_norm( 3, 2 ), 3 ), 1.000f );
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  bits:  fixed_to_fixed") )
+TESTLABS_CASE( u8"CoreLabs:  bits:  fixed_to_fixed" )
 {
     TESTLABS_CHECK_EQ( cl7::bits::fixed_to_fixed( 0, 32, 32 ), 0 );
     TESTLABS_CHECK_EQ( cl7::bits::fixed_to_fixed( -1, 32, 32 ), -1 );

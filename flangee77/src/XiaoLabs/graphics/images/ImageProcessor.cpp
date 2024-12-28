@@ -19,12 +19,12 @@ namespace xl7::graphics::images {
     {
         if (pixel_format == PixelFormat::UNKNOWN)
         {
-            LOG_WARNING(TEXT("Cannot pack a color to an unknown format."));
+            LOG_WARNING(u8"Cannot pack a color to an unknown format.");
             return;
         }
         if (pixel_format == PixelFormat::R11G11B10_FLOAT)
         {
-            LOG_WARNING(TEXT("Cannot pack a color to R11G11B10_FLOAT."));
+            LOG_WARNING(u8"Cannot pack a color to R11G11B10_FLOAT.");
             return;
         }
 
@@ -32,7 +32,7 @@ namespace xl7::graphics::images {
 
         if (packed_data.size() < static_cast<size_t>(pbk.stride))
         {
-            LOG_WARNING(TEXT("The receiving data buffer does not have the minimum required size."));
+            LOG_WARNING(u8"The receiving data buffer does not have the minimum required size.");
             return;
         }
 
@@ -48,12 +48,12 @@ namespace xl7::graphics::images {
     {
         if (pixel_format == PixelFormat::UNKNOWN)
         {
-            LOG_WARNING(TEXT("Cannot unpack a color from an unknown format."));
+            LOG_WARNING(u8"Cannot unpack a color from an unknown format.");
             return Color::ZERO;
         }
         if (pixel_format == PixelFormat::R11G11B10_FLOAT)
         {
-            LOG_WARNING(TEXT("Cannot unpack a color from R11G11B10_FLOAT."));
+            LOG_WARNING(u8"Cannot unpack a color from R11G11B10_FLOAT.");
             return Color::ZERO;
         }
 
@@ -61,7 +61,7 @@ namespace xl7::graphics::images {
 
         if (packed_data.size() < static_cast<size_t>(pbk.stride))
         {
-            LOG_WARNING(TEXT("The source data buffer does not have the expected minimum size."));
+            LOG_WARNING(u8"The source data buffer does not have the expected minimum size.");
             return Color::ZERO;
         }
 

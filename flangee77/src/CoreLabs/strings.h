@@ -36,7 +36,6 @@ namespace cl7::strings {
         Unknown,
 
         ASCII,
-        Latin1,
         UTF8,
         UTF16,
         UTF32,
@@ -47,11 +46,7 @@ namespace cl7::strings {
         UTFx = UTF32,
 #endif
 
-#ifdef UNICODE
-        Default = UTFx,
-#else
-        Default = Latin1,
-#endif
+        Default = UTF8,
     };
     // NOLINTEND(readability-enum-initial-value)
 
@@ -62,12 +57,6 @@ namespace cl7::strings {
     astring to_ascii(u16string_view u16s);
     astring to_ascii(u32string_view u32s);
     astring to_ascii(wstring_view ws);
-
-    astring to_latin1(astring_view as);
-    astring to_latin1(u8string_view u8s);
-    astring to_latin1(u16string_view u16s);
-    astring to_latin1(u32string_view u32s);
-    astring to_latin1(wstring_view ws);
 
     u8string to_utf8(astring_view as);
     u8string to_utf8(u8string_view u8s);
@@ -93,21 +82,11 @@ namespace cl7::strings {
     wstring to_utfx(u32string_view u32s);
     wstring to_utfx(wstring_view ws);
 
-    string from_ascii(astring_view as);
-    string from_latin1(astring_view as);
-    string from_utf8(u8string_view u8s);
-    string from_utf16(u16string_view u16s);
-    string from_utf32(u32string_view u32s);
-    string from_utfx(wstring_view ws);
-
-    astring to_ascii(byte_view bys);
-    astring to_latin1(byte_view bys);
+    astring to_ascii_unchecked(byte_view bys);
     u8string to_utf8_unchecked(byte_view bys);
     u16string to_utf16_unchecked(byte_view bys);
     u32string to_utf32_unchecked(byte_view bys);
     wstring to_utfx_unchecked(byte_view bys);
-
-    string from_bytes(byte_view bys);
 
     byte_vector to_bytes(astring_view as);
     byte_vector to_bytes(u8string_view u8s, bool add_bom = false);
@@ -116,9 +95,12 @@ namespace cl7::strings {
     byte_vector to_bytes(wstring_view ws, bool add_bom = false, std::endian endian = std::endian::native);
 
     bool check_ascii(astring_view as, bool log_warning = false);
+    bool check_utf8(u8string_view u8s, bool log_warning = false);
+    bool check_utf16(u16string_view u16s, bool log_warning = false);
+    bool check_utf32(u32string_view u32s, bool log_warning = false);
+
     bool parse_utf8(u8string_view u8s, u32string& u32s, bool log_warning = false);
     bool parse_utf16(u16string_view u16s, u32string& u32s, bool log_warning = false);
-    bool check_utf32(u32string_view u32s, bool log_warning = false);
 
     /** Calculates the length of the specified UTF-8 string in terms of Unicode code points. */
     size_t utf8_length(u8string_view u8s);
@@ -126,9 +108,9 @@ namespace cl7::strings {
     size_t utf16_length(u16string_view u16s);
 
     /** Reinterprets the character format of the specified UTF-8 string. Attention: It is not checked whether a correct UTF-8 encoding is given. */
-    astring_view reinterpret_utf8(u8string_view u8s);
+    std::string_view reinterpret_utf8(u8string_view u8s);
     /** Reinterprets the character format of the specified UTF-8 string. Attention: It is not checked whether a correct UTF-8 encoding is given. */
-    u8string_view reinterpret_utf8(astring_view as);
+    u8string_view reinterpret_utf8(std::string_view s);
 
     Encoding detect_encoding(byte_view bys);
 
@@ -167,19 +149,21 @@ namespace cl7::strings {
 
     /**
      * Checks whether the specified Unicode code point is whitespace and, if yes,
-     * returns the number of corresponding UTF-8 characters.
+     * returns the number of corresponding UTF-8 characters (code units).
      */
     size_t is_whitespace(u8char_type c0, u8char_type c1 = 0, u8char_type c2 = 0);
 
     /**
      * Checks whether the given UTF-8 string starts with whitespace and, if yes,
-     * returns the number of UTF-8 characters of the corresponding code point.
+     * returns the number of UTF-8 characters (code units) of the corresponding code
+     * point.
      */
     size_t is_whitespace_prefix(u8string_view s);
 
     /**
      * Checks whether the given UTF-8 string ends with whitespace and, if yes,
-     * returns the number of UTF-8 characters of the corresponding code point.
+     * returns the number of UTF-8 characters (code units) of the corresponding code
+     * point.
      */
     size_t is_whitespace_suffix(u8string_view s);
 
@@ -201,8 +185,8 @@ namespace cl7::strings {
 
     /**
      * Counts and returns the number of whitespace characters that begin the string.
-     * The number is calculated in terms of UTF-8 characters, not in terms of
-     * Unicode code points.
+     * The number is calculated in terms of UTF-8 characters (code units), not in
+     * terms of Unicode code points.
      */
     template <> inline
     size_t count_whitespace_prefix(u8string_view s)
@@ -231,8 +215,8 @@ namespace cl7::strings {
 
     /**
      * Counts and returns the number of whitespace characters that end the string.
-     * The number is calculated in terms of UTF-8 characters, not in terms of
-     * Unicode code points.
+     * The number is calculated in terms of UTF-8 characters (code units), not in
+     * terms of Unicode code points.
      */
     template <> inline
     size_t count_whitespace_suffix(u8string_view s)
@@ -388,14 +372,15 @@ namespace cl7::strings {
         return s;
     }
 
-    string to_hex(unsigned long long val, char_type ca = TEXT('A'), unsigned pad_zeros = 0);
-    string to_0xhex(unsigned long long val, char_type ca = TEXT('A'), unsigned pad_zeros = 0);
+    u8string to_hex(unsigned long long val, u8char_type ca = u8'A', unsigned pad_zeros = 0);
+    u8string to_0xhex(unsigned long long val, u8char_type ca = u8'A', unsigned pad_zeros = 0);
 
 
 
     /**
      * Calculates the Levenshtein distance between two strings. The difference is
-     * calculated in terms of characters, not in terms of (Unicode) code points.
+     * calculated in terms of characters (code units), not in terms of (Unicode)
+     * code points.
      */
     template <class Tstring_or_view>
         requires(is_any_string_or_view_v<Tstring_or_view>)
@@ -435,7 +420,8 @@ namespace cl7::strings {
     /**
      * Calculates a normalized Levenshtein distance between two strings on a single
      * scale from 0 ("identical") to 1 ("nothing in common"). The difference is
-     * calculated in terms of characters, not in terms of (Unicode) code points.
+     * calculated in terms of characters (code units), not in terms of (Unicode)
+     * code points.
      */
     template <class Tstring_or_view, typename Tfloat = float>
         requires(is_any_string_or_view_v<Tstring_or_view> && std::is_floating_point_v<Tfloat>)

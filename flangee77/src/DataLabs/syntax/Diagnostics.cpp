@@ -38,9 +38,9 @@ namespace dl7::syntax {
     /**
      * Adds the specified diagnostic.
      */
-    void Diagnostics::add(Diagnostic::Severity severity, cl7::string_view message, const SourceLocation& source_location)
+    void Diagnostics::add(Diagnostic::Severity severity, cl7::u8string_view message, const SourceLocation& source_location)
     {
-        add({.severity=severity, .message=cl7::string(message), .source_location=source_location});
+        add({.severity=severity, .message=cl7::u8string(message), .source_location=source_location});
     }
 
 

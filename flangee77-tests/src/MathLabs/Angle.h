@@ -12,7 +12,7 @@
 
 namespace cl7 {
     inline
-    cl7::string to_string(const ml7::Angle& a) { return cl7::to_string(a.radians); }
+    cl7::u8string to_string(const ml7::Angle& a) { return cl7::to_string(a.radians); }
 }
 
 
@@ -24,7 +24,7 @@ namespace ml7 {
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  Angle:  ") )
+TESTLABS_CASE( u8"CoreLabs:  Angle:  " )
 {
     TESTLABS_CHECK_EQ( ml7::Angle(), ml7::Angle( 0.0f ) );
 

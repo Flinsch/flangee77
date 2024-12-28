@@ -72,7 +72,7 @@ namespace xl7::graphics::impl::direct3d9::textures {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DDevice9::CreateTexture")));
+            LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::CreateTexture"));
             return false;
         }
 
@@ -139,7 +139,7 @@ namespace xl7::graphics::impl::direct3d9::textures {
 
             if (FAILED(hresult))
             {
-                LOG_ERROR(errors::d3d9_result(hresult, TEXT("IDirect3DTexture::LockRect")));
+                LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DTexture::LockRect"));
                 return false;
             }
 

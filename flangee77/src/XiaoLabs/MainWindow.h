@@ -65,7 +65,7 @@ public:
     /**
      * Returns the title of the window.
      */
-    const cl7::string& get_title() const { return _title; }
+    const cl7::u8string& get_title() const { return _title; }
 
     /**
      * Returns the handle of the icon (or NULL).
@@ -216,7 +216,7 @@ private:
     /**
      * The title of the window.
      */
-    cl7::string _title;
+    cl7::u8string _title;
 
     /**
      * The handle of the icon (or NULL).

@@ -12,7 +12,7 @@
 
 namespace tl7::internals {
     inline
-    cl7::string to_string(const ml7::Quaternion& q) { return TEXT("{ ( ") + cl7::to_string(q.x) + TEXT(", ") + cl7::to_string(q.y) + TEXT(", ") + cl7::to_string(q.z) + TEXT(" ), ") + cl7::to_string(q.w) + TEXT(" }"); }
+    cl7::u8string to_string(const ml7::Quaternion& q) { return u8"{ ( " + cl7::to_string(q.x) + u8", " + cl7::to_string(q.y) + u8", " + cl7::to_string(q.z) + u8" ), " + cl7::to_string(q.w) + u8" }"; }
 }
 
 
@@ -24,7 +24,7 @@ namespace ml7 {
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  ") )
+TESTLABS_CASE( u8"CoreLabs:  Quaternion:  " )
 {
     TESTLABS_CHECK_EQ( ml7::Quaternion(), ml7::Quaternion( 0.0f, 0.0f, 0.0f, 1.0f ) );
 
@@ -167,7 +167,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  ") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  rotx") )
+TESTLABS_CASE( u8"CoreLabs:  Quaternion:  rotx" )
 {
     struct Entry
     {
@@ -186,13 +186,13 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  rotx") )
         { -3.0f/4.0f * ml7::constants::pi2, ml7::Quaternion( -0.7071f, 0.0f, 0.0f, -0.7071f ) },
     };
 
-    TESTLABS_SUBCASE_BATCH( TEXT("rotx"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"rotx", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::rotx( entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  roty") )
+TESTLABS_CASE( u8"CoreLabs:  Quaternion:  roty" )
 {
     struct Entry
     {
@@ -211,13 +211,13 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  roty") )
         { -3.0f/4.0f * ml7::constants::pi2, ml7::Quaternion( 0.0f, -0.7071f, 0.0f, -0.7071f ) },
     };
 
-    TESTLABS_SUBCASE_BATCH( TEXT("roty"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"roty", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::roty( entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  rotz") )
+TESTLABS_CASE( u8"CoreLabs:  Quaternion:  rotz" )
 {
     struct Entry
     {
@@ -236,13 +236,13 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  rotz") )
         { -3.0f/4.0f * ml7::constants::pi2, ml7::Quaternion( 0.0f, 0.0f, -0.7071f, -0.7071f ) },
     };
 
-    TESTLABS_SUBCASE_BATCH( TEXT("rotz"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"rotz", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::rotz( entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  rotation etc.") )
+TESTLABS_CASE( u8"CoreLabs:  Quaternion:  rotation etc." )
 {
     struct Entry
     {
@@ -320,23 +320,23 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  rotation etc.") )
         { ml7::Vector3( 2.0f, 2.0f, -3.0f ) * 1.0f/::sqrtf(13.0f), ml7::constants::pi * 1.0f/7.0f, ml7::Quaternion( 0.1079385f, 0.1079385f, -0.1619078f, 0.9749279f ) },
     };
 
-    TESTLABS_SUBCASE_BATCH( TEXT("rotation (axis with angle magnitude)"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"rotation (axis with angle magnitude)", container, entry )
     {
         ml7::Vector3 axis = entry.axis.normalized() * entry.angle;
         TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::rotation( axis ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 
-    TESTLABS_SUBCASE_BATCH( TEXT("rotation (axis-angle)"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"rotation (axis-angle)", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::rotation( entry.axis, entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 
-    TESTLABS_SUBCASE_BATCH( TEXT("rotation_normalized"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"rotation_normalized", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::rotation_normalized( entry.axis.normalized(), entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 
-    TESTLABS_SUBCASE_BATCH( TEXT("to_matrix3x3, to_axes, and to_axis_angle"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"to_matrix3x3, to_axes, and to_axis_angle", container, entry )
     {
         ml7::Matrix3x3 m = ml7::Matrix3x3::rotation( entry.axis, entry.angle );
         ml7::Quaternion q = ml7::Quaternion::rotation( entry.axis, entry.angle );
@@ -356,7 +356,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  rotation etc.") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  transform etc.") )
+TESTLABS_CASE( u8"CoreLabs:  Quaternion:  transform etc." )
 {
     struct Entry
     {
@@ -372,12 +372,12 @@ TESTLABS_CASE( TEXT("CoreLabs:  Quaternion:  transform etc.") )
         // ...
     };
 
-    TESTLABS_SUBCASE_BATCH( TEXT("transform"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"transform", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::rotation( entry.axis, entry.angle ).transform( entry.untransformed ), 3 ), ml7::round( entry.transformed, 3 ) );
     }
 
-    TESTLABS_SUBCASE_BATCH( TEXT("transform_inverted"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"transform_inverted", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Quaternion::rotation( entry.axis, entry.angle ).transform_inverted( entry.transformed ), 3 ), ml7::round( entry.untransformed, 3 ) );
     }

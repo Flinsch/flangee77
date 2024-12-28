@@ -13,22 +13,22 @@ namespace cl7::filesystem {
     /**
      * Returns the working directory of the module instance.
      */
-    cl7::string get_working_directory();
+    cl7::u8string get_working_directory();
 
     /**
      * Returns the initial directory (where the execution started).
      */
-    cl7::string get_initial_directory();
+    cl7::u8string get_initial_directory();
 
     /**
      * Returns the current directory.
      */
-    cl7::string get_current_directory();
+    cl7::u8string get_current_directory();
 
     /**
      * Returns the user directory.
      */
-    cl7::string get_user_directory();
+    cl7::u8string get_user_directory();
 
 
 

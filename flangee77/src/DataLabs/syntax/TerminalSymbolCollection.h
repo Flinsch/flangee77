@@ -29,7 +29,7 @@ public:
      */
     template <class TTerminalSymbol, class... Args>
         requires(std::derived_from<TTerminalSymbol, TerminalSymbol>)
-    void add(cl7::astring_view name, TerminalSymbol::ID id, Args&&... args)
+    void add(cl7::u8string_view name, TerminalSymbol::ID id, Args&&... args)
     {
         add(std::make_unique<TTerminalSymbol>(name, id, std::forward<Args>(args)...));
     }
@@ -37,7 +37,7 @@ public:
     /**
      * Adds the specified literal symbol to the collection.
      */
-    void add_literal(cl7::astring_view name, TerminalSymbol::ID id, cl7::u8string_view literal)
+    void add_literal(cl7::u8string_view name, TerminalSymbol::ID id, cl7::u8string_view literal)
     {
         add(std::make_unique<LiteralSymbol>(name, id, literal));
     }
@@ -45,7 +45,7 @@ public:
     /**
      * Adds the specified pattern symbol to the collection.
      */
-    void add_pattern(cl7::astring_view name, TerminalSymbol::ID id, cl7::astring_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default)
+    void add_pattern(cl7::u8string_view name, TerminalSymbol::ID id, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default)
     {
         add(std::make_unique<PatternSymbol>(name, id, pattern, syntax_options, match_flags));
     }
@@ -53,7 +53,7 @@ public:
     /**
      * Adds the specified pattern symbol to the collection.
      */
-    void add_pattern(cl7::astring_view name, TerminalSymbol::ID id, cl7::astring_view pattern, cl7::u8string_view literal_prefix, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default)
+    void add_pattern(cl7::u8string_view name, TerminalSymbol::ID id, std::string_view pattern, cl7::u8string_view literal_prefix, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default)
     {
         add(std::make_unique<PatternSymbol>(name, id, pattern, literal_prefix, syntax_options, match_flags));
     }

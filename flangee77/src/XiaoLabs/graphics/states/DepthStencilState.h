@@ -84,7 +84,7 @@ public:
     /**
      * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    cl7::string_view get_type_string() const override { return TEXT("depth/stencil state"); }
+    cl7::u8string_view get_type_string() const override { return u8"depth/stencil state"; }
 
     /**
      * Returns the descriptor of the depth/stencil state.

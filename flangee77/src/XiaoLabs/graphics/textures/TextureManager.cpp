@@ -9,7 +9,7 @@ namespace xl7::graphics::textures {
     /**
      * Creates and acquires the specified 2D texture.
      */
-    resources::ResourceID TextureManager::create_texture_2d(cl7::astring_view identifier, const Texture2D::Desc& desc, const ImageDataProvider& image_data_provider)
+    resources::ResourceID TextureManager::create_texture_2d(cl7::u8string_view identifier, const Texture2D::Desc& desc, const ImageDataProvider& image_data_provider)
     {
         resources::Resource::CreateParams<Texture2D::Desc> params{.manager=this, .id=_next_id(), .identifier=identifier, .desc=desc};
 

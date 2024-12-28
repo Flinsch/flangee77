@@ -14,41 +14,41 @@
 
 namespace tl7::internals {
     inline
-    cl7::string to_string(const cl7::Version& version) { return TEXT("{\"") + version.to_string() + TEXT("\"}"); }
+    cl7::u8string to_string(const cl7::Version& version) { return u8"{\"" + version.to_string() + u8"\"}"; }
 }
 
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  Version:  to_string/parse") )
+TESTLABS_CASE( u8"CoreLabs:  Version:  to_string/parse" )
 {
     struct Entry
     {
         cl7::Version version;
-        cl7::string default_format;
-        cl7::string short_format;
+        cl7::u8string default_format;
+        cl7::u8string short_format;
     } entry;
 
     const std::vector<Entry> container {
-        { cl7::Version{}, TEXT("0.0"), TEXT("0.0") },
-        { cl7::Version{ 0, 9 }, TEXT("0.9"), TEXT("0.9") },
-        { cl7::Version{ 0, 9, 1 }, TEXT("0.9.1"), TEXT("0.9.1") },
-        { cl7::Version{ 1, 0 }, TEXT("1.0"), TEXT("1.0") },
-        { cl7::Version{ 1, 2 }, TEXT("1.2"), TEXT("1.2") },
-        { cl7::Version{ 1, 2, 3 }, TEXT("1.2.3"), TEXT("1.2.3") },
-        { cl7::Version{ 0, 9, 0, cl7::Version::PreReleaseType::Alpha }, TEXT("0.9-alpha"), TEXT("0.9a") },
-        { cl7::Version{ 0, 9, 0, cl7::Version::PreReleaseType::Beta }, TEXT("0.9-beta"), TEXT("0.9b") },
-        { cl7::Version{ 0, 9, 0, cl7::Version::PreReleaseType::ReleaseCandidate }, TEXT("0.9-rc"), TEXT("0.9rc") },
-        { cl7::Version{ 0, 9, 1, cl7::Version::PreReleaseType::Alpha }, TEXT("0.9.1-alpha"), TEXT("0.9.1a") },
-        { cl7::Version{ 0, 9, 1, cl7::Version::PreReleaseType::Beta }, TEXT("0.9.1-beta"), TEXT("0.9.1b") },
-        { cl7::Version{ 0, 9, 1, cl7::Version::PreReleaseType::ReleaseCandidate }, TEXT("0.9.1-rc"), TEXT("0.9.1rc") },
-        { cl7::Version{ 0, 9, 1, cl7::Version::PreReleaseType::Alpha, 2 }, TEXT("0.9.1-alpha.2"), TEXT("0.9.1a2") },
-        { cl7::Version{ 0, 9, 1, cl7::Version::PreReleaseType::Beta, 2 }, TEXT("0.9.1-beta.2"), TEXT("0.9.1b2") },
-        { cl7::Version{ 0, 9, 1, cl7::Version::PreReleaseType::ReleaseCandidate, 2 }, TEXT("0.9.1-rc.2"), TEXT("0.9.1rc2") },
-        { cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::None, 0, TEXT("build") }, TEXT("1.0+build"), TEXT("1.0 build") },
-        { cl7::Version{ 1, 2, 3, cl7::Version::PreReleaseType::ReleaseCandidate, 4, TEXT("build") }, TEXT("1.2.3-rc.4+build"), TEXT("1.2.3rc4 build") },
-        { cl7::Version{ 1, 22 }, TEXT("1.22"), TEXT("1.22") },
-        { cl7::Version{ 1, 22, 3 }, TEXT("1.22.3"), TEXT("1.22.3") },
+        { cl7::Version{}, u8"0.0", u8"0.0" },
+        { cl7::Version{ 0, 9 }, u8"0.9", u8"0.9" },
+        { cl7::Version{ 0, 9, 1 }, u8"0.9.1", u8"0.9.1" },
+        { cl7::Version{ 1, 0 }, u8"1.0", u8"1.0" },
+        { cl7::Version{ 1, 2 }, u8"1.2", u8"1.2" },
+        { cl7::Version{ 1, 2, 3 }, u8"1.2.3", u8"1.2.3" },
+        { cl7::Version{ 0, 9, 0, cl7::Version::PreReleaseType::Alpha }, u8"0.9-alpha", u8"0.9a" },
+        { cl7::Version{ 0, 9, 0, cl7::Version::PreReleaseType::Beta }, u8"0.9-beta", u8"0.9b" },
+        { cl7::Version{ 0, 9, 0, cl7::Version::PreReleaseType::ReleaseCandidate }, u8"0.9-rc", u8"0.9rc" },
+        { cl7::Version{ 0, 9, 1, cl7::Version::PreReleaseType::Alpha }, u8"0.9.1-alpha", u8"0.9.1a" },
+        { cl7::Version{ 0, 9, 1, cl7::Version::PreReleaseType::Beta }, u8"0.9.1-beta", u8"0.9.1b" },
+        { cl7::Version{ 0, 9, 1, cl7::Version::PreReleaseType::ReleaseCandidate }, u8"0.9.1-rc", u8"0.9.1rc" },
+        { cl7::Version{ 0, 9, 1, cl7::Version::PreReleaseType::Alpha, 2 }, u8"0.9.1-alpha.2", u8"0.9.1a2" },
+        { cl7::Version{ 0, 9, 1, cl7::Version::PreReleaseType::Beta, 2 }, u8"0.9.1-beta.2", u8"0.9.1b2" },
+        { cl7::Version{ 0, 9, 1, cl7::Version::PreReleaseType::ReleaseCandidate, 2 }, u8"0.9.1-rc.2", u8"0.9.1rc2" },
+        { cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::None, 0, u8"build" }, u8"1.0+build", u8"1.0 build" },
+        { cl7::Version{ 1, 2, 3, cl7::Version::PreReleaseType::ReleaseCandidate, 4, u8"build" }, u8"1.2.3-rc.4+build", u8"1.2.3rc4 build" },
+        { cl7::Version{ 1, 22 }, u8"1.22", u8"1.22" },
+        { cl7::Version{ 1, 22, 3 }, u8"1.22.3", u8"1.22.3" },
     };
 
     for ( size_t i = 0; i < container.size(); ++i )
@@ -62,26 +62,26 @@ TESTLABS_CASE( TEXT("CoreLabs:  Version:  to_string/parse") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  Version:  parsing bad strings") )
+TESTLABS_CASE( u8"CoreLabs:  Version:  parsing bad strings" )
 {
     struct Entry
     {
-        cl7::string string;
+        cl7::u8string string;
         cl7::Version version;
     } entry;
 
     const std::vector<Entry> container {
-        { TEXT(""), cl7::Version{} },
-        { TEXT("0"), cl7::Version{ 0 } },
-        { TEXT("1"), cl7::Version{ 1 } },
-        { TEXT("foo"), cl7::Version{} },
-        { TEXT("1.0-bad"), cl7::Version{ 1, 0 } },
-        { TEXT("1.0-bad.2"), cl7::Version{ 1, 0 } },
-        { TEXT("1.0-bad.3+build"), cl7::Version{ 1, 0 } },
-        { TEXT("1.0bad"), cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::Beta } },
-        { TEXT("1.0bad2"), cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::Beta } },
-        { TEXT("1.0bad3 build"), cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::Beta } },
-        { TEXT("1-rc.1"), cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::ReleaseCandidate, 1 } },
+        { u8"", cl7::Version{} },
+        { u8"0", cl7::Version{ 0 } },
+        { u8"1", cl7::Version{ 1 } },
+        { u8"foo", cl7::Version{} },
+        { u8"1.0-bad", cl7::Version{ 1, 0 } },
+        { u8"1.0-bad.2", cl7::Version{ 1, 0 } },
+        { u8"1.0-bad.3+build", cl7::Version{ 1, 0 } },
+        { u8"1.0bad", cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::Beta } },
+        { u8"1.0bad2", cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::Beta } },
+        { u8"1.0bad3 build", cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::Beta } },
+        { u8"1-rc.1", cl7::Version{ 1, 0, 0, cl7::Version::PreReleaseType::ReleaseCandidate, 1 } },
     };
 
     for ( size_t i = 0; i < container.size(); ++i )
@@ -92,7 +92,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Version:  parsing bad strings") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  Version:  comparisons") )
+TESTLABS_CASE( u8"CoreLabs:  Version:  comparisons" )
 {
     const std::vector<cl7::Version> container {
         { cl7::Version{ 0, 9 } },

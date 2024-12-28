@@ -58,13 +58,13 @@ public:
     /**
      * Encodes the specified data as Base64.
      */
-    cl7::astring encode(cl7::byte_view data);
+    cl7::u8string encode(cl7::byte_view data);
 
     /**
      * Decodes the specified Base64 text. If the text is invalid, an empty buffer is
      * returned.
      */
-    cl7::byte_vector decode(cl7::astring_view base64);
+    cl7::byte_vector decode(cl7::u8string_view base64);
 
 
 
@@ -93,7 +93,7 @@ public:
      * specified Base64 text. If the text has an invalid length, 0 is returned.
      * However, the function does not fully validate the data.
      */
-    static size_t calculate_data_size(cl7::astring_view base64);
+    static size_t calculate_data_size(cl7::u8string_view base64);
 
 
 
@@ -106,14 +106,14 @@ private:
     /**
      * Returns the Base64 character of the given 6-bit character sextet.
      */
-    cl7::achar_type _encode(uint8_t sextet) const;
+    cl7::u8char_type _encode(uint8_t sextet) const;
 
     /**
      * Checks the given character whether it is a valid Base64 character.
      * If it is valid, its 6-bit character sextet will be returned.
      * If it is invalid, an invalid value above 63 will be returned.
      */
-    uint8_t _decode(cl7::achar_type chr) const;
+    uint8_t _decode(cl7::u8char_type chr) const;
 
     /**
      * Extracts the first 6-bit Base64 character sextet from the first data byte.

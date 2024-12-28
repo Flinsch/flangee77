@@ -28,7 +28,7 @@ namespace xl7::graphics {
             return _rendering_contexts[i].get();
 
         if (i > _rendering_contexts.size())
-            LOG_WARNING(TEXT("The creation of a new rendering context was triggered whose index is out of sequence."));
+            LOG_WARNING(u8"The creation of a new rendering context was triggered whose index is out of sequence.");
         while (_rendering_contexts.size() < i)
             _rendering_contexts.push_back(nullptr);
 
@@ -38,14 +38,14 @@ namespace xl7::graphics {
         if (rendering_context == nullptr)
         {
             if (index == 0)
-                LOG_ERROR(TEXT("The primary rendering context could not be created."));
+                LOG_ERROR(u8"The primary rendering context could not be created.");
             else
-                LOG_WARNING(TEXT("An additional rendering context could not be created."));
+                LOG_WARNING(u8"An additional rendering context could not be created.");
             return nullptr;
         }
 
         if (!rendering_context->synchronize_hardware_state())
-            LOG_WARNING(TEXT("The rendering context could not be synchronized with the hardware state."));
+            LOG_WARNING(u8"The rendering context could not be synchronized with the hardware state.");
 
         return rendering_context;
     }
@@ -108,7 +108,7 @@ namespace xl7::graphics {
 
         if (the_scene_is_on)
         {
-            LOG_WARNING(TEXT("The scene is still on."));
+            LOG_WARNING(u8"The scene is still on.");
             return false;
         }
 
@@ -228,18 +228,18 @@ namespace xl7::graphics {
 
         _capabilities = capabilities;
 
-        auto _check_adjust_max_cap = [](unsigned& cap_value, unsigned max_value, cl7::string_view cap_name) {
+        auto _check_adjust_max_cap = [](unsigned& cap_value, unsigned max_value, cl7::u8string_view cap_name) {
             if (cap_value > max_value)
             {
-                LOG_INFO(TEXT("Your rendering device seems capable of handling ") + cl7::to_string(cap_value) + TEXT(" ") + cl7::string(cap_name) + TEXT(", but this framework doesn't support more than ") + cl7::to_string(max_value) + TEXT(" anyway."));
+                LOG_INFO(u8"Your rendering device seems capable of handling " + cl7::to_string(cap_value) + u8" " + cl7::u8string(cap_name) + u8", but this framework doesn't support more than " + cl7::to_string(max_value) + u8" anyway.");
                 cap_value = max_value;
             }
         };
 
-        _check_adjust_max_cap(_capabilities.max_simultaneous_render_target_count, pipeline::OutputMergerStage::MAX_RENDER_TARGETS, TEXT("(color) render targets simultaneously"));
-        _check_adjust_max_cap(_capabilities.max_concurrent_vertex_stream_count, pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS, TEXT("vertex data streams concurrently"));
-        _check_adjust_max_cap(_capabilities.max_constant_buffer_slot_count, pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS, TEXT("constant buffer slots"));
-        _check_adjust_max_cap(_capabilities.max_texture_sampler_slot_count, pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS, TEXT("texture/sampler slots"));
+        _check_adjust_max_cap(_capabilities.max_simultaneous_render_target_count, pipeline::OutputMergerStage::MAX_RENDER_TARGETS, u8"(color) render targets simultaneously");
+        _check_adjust_max_cap(_capabilities.max_concurrent_vertex_stream_count, pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS, u8"vertex data streams concurrently");
+        _check_adjust_max_cap(_capabilities.max_constant_buffer_slot_count, pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS, u8"constant buffer slots");
+        _check_adjust_max_cap(_capabilities.max_texture_sampler_slot_count, pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS, u8"texture/sampler slots");
 
         // Create default state objects.
         if (!_state_manager->create_default_states())
@@ -250,15 +250,15 @@ namespace xl7::graphics {
             return false;
 
         // Print out the supported shader versions.
-        LOG_TYPE(TEXT("Shader model versions:"), cl7::logging::LogType::Caption);
-        LOG_TYPE(TEXT("Vertex shader\t") + _capabilities.shaders.vertex_shader_version.to_string(true), cl7::logging::LogType::Item);
-        LOG_TYPE(TEXT("Pixel shader\t") + _capabilities.shaders.pixel_shader_version.to_string(true), cl7::logging::LogType::Item);
+        LOG_TYPE(u8"Shader model versions:", cl7::logging::LogType::Caption);
+        LOG_TYPE(u8"Vertex shader\t" + _capabilities.shaders.vertex_shader_version.to_string(true), cl7::logging::LogType::Item);
+        LOG_TYPE(u8"Pixel shader\t" + _capabilities.shaders.pixel_shader_version.to_string(true), cl7::logging::LogType::Item);
 
         // Print out the available video memory.
-        LOG_TYPE(TEXT("Usable video memory:"), cl7::logging::LogType::Caption);
-        LOG_TYPE(TEXT("Dedicated video memory\t") + cl7::memory::stringify_byte_amount_si(_capabilities.memory.dedicated_video_memory), cl7::logging::LogType::Item);
-        LOG_TYPE(TEXT("Dedicated system memory\t") + cl7::memory::stringify_byte_amount_si(_capabilities.memory.dedicated_system_memory), cl7::logging::LogType::Item);
-        LOG_TYPE(TEXT("Shared system memory\t") + cl7::memory::stringify_byte_amount_si(_capabilities.memory.shared_system_memory), cl7::logging::LogType::Item);
+        LOG_TYPE(u8"Usable video memory:", cl7::logging::LogType::Caption);
+        LOG_TYPE(u8"Dedicated video memory\t" + cl7::memory::stringify_byte_amount_si(_capabilities.memory.dedicated_video_memory), cl7::logging::LogType::Item);
+        LOG_TYPE(u8"Dedicated system memory\t" + cl7::memory::stringify_byte_amount_si(_capabilities.memory.dedicated_system_memory), cl7::logging::LogType::Item);
+        LOG_TYPE(u8"Shared system memory\t" + cl7::memory::stringify_byte_amount_si(_capabilities.memory.shared_system_memory), cl7::logging::LogType::Item);
 
         // Allriggedy, we got a new device
         // that surely is not lost.

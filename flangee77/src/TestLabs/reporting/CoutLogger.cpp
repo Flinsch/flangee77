@@ -41,6 +41,12 @@ namespace tl7::reporting {
 
 
 
+    static auto& _cout()
+    {
+        //return std::wcout;
+        return std::cout;
+    }
+
     template <class Tcout>
     static Tcout& operator<<(Tcout& cout, ColorCode color_code)
     {
@@ -57,38 +63,48 @@ namespace tl7::reporting {
         return cout;
     }
 
-
-
-    static cl7::string_view _file_path(const cl7::char_type* file_path)
+    template <class Tcout>
+    static Tcout& operator<<(Tcout& cout, cl7::u8string_view u8s)
     {
-        const cl7::char_type* my_path = TEXT(__FILE__);
+        if constexpr (std::is_same_v<typename std::remove_reference_t<decltype(cout)>::char_type, wchar_t>)
+            cout << cl7::strings::to_utfx(u8s);
+        else
+            cout << cl7::strings::reinterpret_utf8(u8s);
+        return cout;
+    }
 
-        size_t sep = cl7::string::npos;
+
+
+    static cl7::u8string_view _file_path(const char* file_path)
+    {
+        auto my_path = __FILE__;
+
+        size_t sep = cl7::u8string::npos;
 
         for (size_t i = 0; file_path[i] && my_path[i] && file_path[i] == my_path[i]; ++i)
         {
-            if (file_path[i] == TEXT('/') || file_path[i] == TEXT('\\'))
+            if (file_path[i] == u8'/' || file_path[i] == u8'\\')
                 sep = i;
         }
 
-        if (sep == cl7::string::npos)
-            return file_path;
+        if (sep == cl7::u8string::npos)
+            return cl7::strings::reinterpret_utf8(file_path);
 
-        return {file_path + sep + 1};
+        return cl7::strings::reinterpret_utf8({file_path + sep + 1});
     }
 
-    static cl7::string_view _directory_path(cl7::string_view file_path)
+    static cl7::u8string_view _directory_path(cl7::u8string_view file_path)
     {
         for (size_t i = file_path.size(); i-- > 0; )
-            if (file_path[i] == TEXT('/') || file_path[i] == TEXT('\\'))
+            if (file_path[i] == u8'/' || file_path[i] == u8'\\')
                 return file_path.substr(0, i + 1);
         return file_path;
     }
 
-    static cl7::string_view _filename(cl7::string_view file_path)
+    static cl7::u8string_view _filename(cl7::u8string_view file_path)
     {
         for (size_t i = file_path.size(); i-- > 0; )
-            if (file_path[i] == TEXT('/') || file_path[i] == TEXT('\\'))
+            if (file_path[i] == u8'/' || file_path[i] == u8'\\')
                 return file_path.substr(i + 1);
         return file_path;
     }
@@ -242,11 +258,7 @@ namespace tl7::reporting {
      */
     void CoutLogger::_log_result(const Result& result)
     {
-#ifdef UNICODE
-        auto& cout = std::wcout;
-#else
-        auto& cout = std::cout;
-#endif
+        auto& cout = _cout();
 
         assert(result.origin_type > Result::OriginType::TestCase);
         assert(result.is_failure());
@@ -316,40 +328,36 @@ namespace tl7::reporting {
      */
     void CoutLogger::_log_final_stats(const Stats& stats) const
     {
-#ifdef UNICODE
-        auto& cout = std::wcout;
-#else
-        auto& cout = std::cout;
-#endif
+        auto& cout = _cout();
 
         if (_defer_result_output || !_continue)
             cout << "\n\n";
 
-        auto write_group = [&cout](cl7::string_view label, const Stats::Group& group) {
-            cout << cl7::strings::rpadded(cl7::string(label), 11, TEXT(' ')) << ColorCode::Default;
-            cout << cl7::strings::lpadded(cl7::to_string(group.total_count), 11, TEXT(' ')) << " total" << ColorCode::Default;
-            cout << ColorCode::Success << cl7::strings::lpadded(cl7::to_string(group.pass_count), 11, TEXT(' ')) << " passed" << ColorCode::Default;
+        auto write_group = [&cout](cl7::u8string_view label, const Stats::Group& group) {
+            cout << cl7::strings::rpadded(cl7::u8string(label), 11, u8' ') << ColorCode::Default;
+            cout << cl7::strings::lpadded(cl7::to_string(group.total_count), 11, u8' ') << " total" << ColorCode::Default;
+            cout << ColorCode::Success << cl7::strings::lpadded(cl7::to_string(group.pass_count), 11, u8' ') << " passed" << ColorCode::Default;
             if (group.fail_count > 0)
-                cout << ColorCode::Error << cl7::strings::lpadded(cl7::to_string(group.fail_count), 11, TEXT(' ')) << " failed" << ColorCode::Default;
+                cout << ColorCode::Error << cl7::strings::lpadded(cl7::to_string(group.fail_count), 11, u8' ') << " failed" << ColorCode::Default;
             cout << '\n';
         };
 
-        auto write_single = [&cout](cl7::string_view label, unsigned count, ColorCode color_code, cl7::string_view suffix) {
-            cout << cl7::strings::rpadded(cl7::string(label), 11, TEXT(' ')) << ColorCode::Default;
-            cout << color_code << cl7::strings::lpadded(cl7::to_string(count), 11, TEXT(' ')) << suffix << ColorCode::Default;
+        auto write_single = [&cout](cl7::u8string_view label, unsigned count, ColorCode color_code, cl7::u8string_view suffix) {
+            cout << cl7::strings::rpadded(cl7::u8string(label), 11, u8' ') << ColorCode::Default;
+            cout << color_code << cl7::strings::lpadded(cl7::to_string(count), 11, u8' ') << suffix << ColorCode::Default;
             cout << '\n';
         };
 
-        write_group(TEXT("Test cases:"), stats.cases);
+        write_group(u8"Test cases:", stats.cases);
         if (stats.subcases.total_count != stats.cases.total_count)
-            write_group(TEXT("Subcases:"), stats.subcases);
-        write_group(TEXT("Checks:"), stats.checks);
+            write_group(u8"Subcases:", stats.subcases);
+        write_group(u8"Checks:", stats.checks);
         if (stats.assertions.total_count > 0)
-            write_group(TEXT("Assertions:"), stats.assertions);
+            write_group(u8"Assertions:", stats.assertions);
         if (stats.exception_count > 0)
-            write_single(TEXT("Exceptions:"), stats.exception_count, ColorCode::Error, TEXT(" exceptions"));
+            write_single(u8"Exceptions:", stats.exception_count, ColorCode::Error, u8" exceptions");
         if (stats.warning_count > 0)
-            write_single(TEXT("Warnings:"), stats.warning_count, ColorCode::Warning, TEXT(" warnings"));
+            write_single(u8"Warnings:", stats.warning_count, ColorCode::Warning, u8" warnings");
 
         const unsigned hours = stats.execution_time_msecs / (1000 * 60 * 60);
         const unsigned minutes = (stats.execution_time_msecs % (1000 * 60 * 60)) / (1000 * 60);
@@ -376,11 +384,7 @@ namespace tl7::reporting {
      */
     void CoutLogger::_log_test_case(const Meta& meta)
     {
-#ifdef UNICODE
-        auto& cout = std::wcout;
-#else
-        auto& cout = std::cout;
-#endif
+        auto& cout = _cout();
 
         cout << "Test case: " << ColorCode::Info << meta.stringification << ColorCode::Default;
         cout << ' ' << ColorCode::Error << "FAILED" << ColorCode::Default;
@@ -394,15 +398,11 @@ namespace tl7::reporting {
      */
     void CoutLogger::_log_signature(const Signature& signature)
     {
-#ifdef UNICODE
-        auto& cout = std::wcout;
-#else
-        auto& cout = std::cout;
-#endif
+        auto& cout = _cout();
 
-        const cl7::string_view file_path = _file_path(signature.file_path);
-        const cl7::string_view directory_path = _directory_path(file_path);
-        const cl7::string_view filename = _filename(file_path);
+        const cl7::u8string_view file_path = _file_path(signature.file_path);
+        const cl7::u8string_view directory_path = _directory_path(file_path);
+        const cl7::u8string_view filename = _filename(file_path);
 
         cout << ColorCode::DarkGray << directory_path << ColorCode::White << filename << ColorCode::Default << '(' << signature.line_number << ')';
     }

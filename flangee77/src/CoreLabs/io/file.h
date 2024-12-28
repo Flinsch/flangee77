@@ -5,8 +5,9 @@
 
 #include "./open_mode.h"
 
-#include <CoreLabs/fstream.h>
 #include <CoreLabs/string.h>
+
+#include <fstream>
 
 
 
@@ -20,7 +21,7 @@ class file
 
 public:
     file() = default;
-    file(const cl7::string& path, open_mode open_mode = open_mode::read | open_mode::write);
+    file(const cl7::u8string& path, open_mode open_mode = open_mode::read | open_mode::write);
 
     file(const file&) = delete;
     file& operator=(const file&) = delete;
@@ -93,7 +94,7 @@ public:
      * Opens the specified file for reading and/or writing. The seek mode specifies
      * whether to truncate
      */
-    bool open(const cl7::string& path, open_mode open_mode = open_mode::read | open_mode::write);
+    bool open(const cl7::u8string& path, open_mode open_mode = open_mode::read | open_mode::write);
 
     /**
      * Closes the file (if opened before).
@@ -108,8 +109,8 @@ private:
     void _seek_position(ptrdiff_t relative, seek_mode seek_mode);
 
 
-    cl7::afstream _fstream;
-    cl7::string _path;
+    std::fstream _fstream;
+    cl7::u8string _path;
     open_mode _open_mode;
     size_t _size = 0;
     size_t _position = 0;

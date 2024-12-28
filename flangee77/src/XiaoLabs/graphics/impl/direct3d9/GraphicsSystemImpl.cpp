@@ -23,7 +23,7 @@ namespace xl7::graphics::impl::direct3d9 {
         if (!_create_main_interface())
             return false;
 
-        LOG_TYPE(TEXT("Sorry for using \u201cold\u201d technology."), cl7::logging::LogType::Comment);
+        LOG_TYPE(u8"Sorry for using \u201cold\u201d technology.", cl7::logging::LogType::Comment);
 
         return true;
     }
@@ -61,7 +61,7 @@ namespace xl7::graphics::impl::direct3d9 {
     {
         if (_d3d_main)
         {
-            LOG_WARNING(TEXT("The Direct3D 9 main interface has already been created."));
+            LOG_WARNING(u8"The Direct3D 9 main interface has already been created.");
             return true;
         }
 
@@ -69,11 +69,11 @@ namespace xl7::graphics::impl::direct3d9 {
 
         if (!_d3d_main)
         {
-            LOG_ERROR(TEXT("The Direct3D 9 main interface could not be created."));
+            LOG_ERROR(u8"The Direct3D 9 main interface could not be created.");
             return false;
         }
 
-        LOG(TEXT("The Direct3D 9 main interface has been created."));
+        LOG(u8"The Direct3D 9 main interface has been created.");
         return true;
     }
 
@@ -84,7 +84,7 @@ namespace xl7::graphics::impl::direct3d9 {
     {
         _d3d_main.Reset();
 
-        LOG(TEXT("The Direct3D 9 main interface has been released."));
+        LOG(u8"The Direct3D 9 main interface has been released.");
         return true;
     }
 

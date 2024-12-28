@@ -12,12 +12,12 @@
 
 namespace tl7::internals {
     inline
-    cl7::string to_string(const ml7::Vector2& v) { return TEXT("{ ") + cl7::to_string(v.x) + TEXT(", ") + cl7::to_string(v.y) + TEXT(" }"); }
+    cl7::u8string to_string(const ml7::Vector2& v) { return u8"{ " + cl7::to_string(v.x) + u8", " + cl7::to_string(v.y) + u8" }"; }
 }
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  Vector2:  ") )
+TESTLABS_CASE( u8"CoreLabs:  Vector2:  " )
 {
     TESTLABS_CHECK_EQ( ml7::Vector2(), ml7::Vector2( 0.0f, 0.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f ), ml7::Vector2( 1.0f, 1.0f ) );

@@ -28,12 +28,12 @@ namespace xl7::graphics::images {
 
         if (source_desc.pixel_format == PixelFormat::UNKNOWN || target_desc.pixel_format == PixelFormat::UNKNOWN)
         {
-            LOG_WARNING(TEXT("Cannot convert from/to an unknown format."));
+            LOG_WARNING(u8"Cannot convert from/to an unknown format.");
             return {};
         }
         if (source_desc.pixel_format == PixelFormat::R11G11B10_FLOAT || target_desc.pixel_format == PixelFormat::R11G11B10_FLOAT)
         {
-            LOG_WARNING(TEXT("Cannot convert from/to R11G11B10_FLOAT."));
+            LOG_WARNING(u8"Cannot convert from/to R11G11B10_FLOAT.");
             return {};
         }
 

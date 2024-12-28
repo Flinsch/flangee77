@@ -43,7 +43,7 @@ public:
     /**
      * Returns the specific type of the resource, as a "human-friendly" string.
      */
-    cl7::string_view get_type_string() const override { return TEXT("vertex buffer"); }
+    cl7::u8string_view get_type_string() const override { return u8"vertex buffer"; }
 
     /**
      * Returns the descriptor of the vertex buffer.

@@ -1,5 +1,7 @@
 #include "CoutLogHandler.h"
 
+#include <CoreLabs/strings.h>
+
 #include <iostream>
 
 
@@ -17,11 +19,7 @@ namespace cl7::logging {
      */
     void CoutLogHandler::_write(const LogEntry& log_entry)
     {
-#ifdef UNICODE
-        std::wcout << log_entry.message << '\n';
-#else
-        std::cout << log_entry.message << '\n';
-#endif
+        std::cout << cl7::strings::reinterpret_utf8(log_entry.message) << '\n';
     }
 
 

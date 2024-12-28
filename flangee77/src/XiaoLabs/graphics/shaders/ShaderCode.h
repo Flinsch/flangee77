@@ -28,7 +28,7 @@ public:
 
     ShaderCode() = default;
     ShaderCode(Language language, cl7::byte_view code_data);
-    ShaderCode(cl7::astring_view high_level_code);
+    ShaderCode(cl7::u8string_view high_level_code);
 
 
 

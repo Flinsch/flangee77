@@ -24,7 +24,7 @@ namespace xl7::graphics::shaders {
         if (!is_recompilable())
         {
             assert(is_precompiled());
-            LOG_ERROR(TEXT("The (precompiled) ") + get_typed_identifier_string() + TEXT(" is not recompilable."));
+            LOG_ERROR(u8"The (precompiled) " + get_typed_identifier_string() + u8" is not recompilable.");
             return false;
         }
 
@@ -35,7 +35,7 @@ namespace xl7::graphics::shaders {
 
         if (!_recompile_impl(compile_options, _bytecode))
         {
-            LOG_ERROR(TEXT("The ") + get_typed_identifier_string() + TEXT(" could not be recompiled."));
+            LOG_ERROR(u8"The " + get_typed_identifier_string() + u8" could not be recompiled.");
             return false;
         }
 
@@ -94,7 +94,7 @@ namespace xl7::graphics::shaders {
      * Searches for the specified constant buffer declaration and returns it if
      * found, NULL otherwise.
      */
-    const ConstantBufferDeclaration* Shader::find_constant_buffer_declaration(cl7::astring_view constant_buffer_name) const
+    const ConstantBufferDeclaration* Shader::find_constant_buffer_declaration(cl7::u8string_view constant_buffer_name) const
     {
         for (const auto& constant_buffer_declaration : _reflection_result.constant_buffer_declarations)
         {
@@ -109,7 +109,7 @@ namespace xl7::graphics::shaders {
      * Searches for the specified constant declaration and returns it along with the
      * associated constant buffer declaration if found, NULL twice otherwise.
      */
-    std::pair<const ConstantBufferDeclaration*, const ConstantDeclaration*> Shader::find_constant_buffer_and_constant_declaration(cl7::astring_view constant_name) const
+    std::pair<const ConstantBufferDeclaration*, const ConstantDeclaration*> Shader::find_constant_buffer_and_constant_declaration(cl7::u8string_view constant_name) const
     {
         for (const auto& constant_buffer_declaration : _reflection_result.constant_buffer_declarations)
         {
@@ -127,7 +127,7 @@ namespace xl7::graphics::shaders {
      * Searches for the specified texture/sampler declaration and returns it if
      * found, NULL otherwise.
      */
-    const TextureSamplerDeclaration* Shader::find_texture_sampler_declaration(cl7::astring_view texture_sampler_name) const
+    const TextureSamplerDeclaration* Shader::find_texture_sampler_declaration(cl7::u8string_view texture_sampler_name) const
     {
         for (const auto& texture_sampler_declaration : _reflection_result.texture_sampler_declarations)
         {
@@ -155,7 +155,7 @@ namespace xl7::graphics::shaders {
     /**
      * Returns the effective name of the entry point for (re)compiling the shader.
      */
-    cl7::astring Shader::_cascade_entry_point(const CompileOptions& compile_options) const
+    cl7::u8string Shader::_cascade_entry_point(const CompileOptions& compile_options) const
     {
         if (!_desc.entry_point.empty())
             return _desc.entry_point;
@@ -232,31 +232,31 @@ namespace xl7::graphics::shaders {
 
         if (code_data_provider.get_language() == ShaderCode::Language::Unknown)
         {
-            LOG_ERROR(TEXT("The language of the provided code for ") + get_typed_identifier_string() + TEXT(" is unknown."));
+            LOG_ERROR(u8"The language of the provided code for " + get_typed_identifier_string() + u8" is unknown.");
             return false;
         }
 
         if (is_precompiled() && code_data_provider.get_language() != ShaderCode::Language::Bytecode)
         {
-            LOG_ERROR(TEXT("The provided code for the precompiled ") + get_typed_identifier_string() + TEXT(" has to be in bytecode."));
+            LOG_ERROR(u8"The provided code for the precompiled " + get_typed_identifier_string() + u8" has to be in bytecode.");
             return false;
         }
 
         if (is_recompilable() && code_data_provider.get_language() != ShaderCode::Language::HighLevel)
         {
-            LOG_ERROR(TEXT("The provided code for the recompilable ") + get_typed_identifier_string() + TEXT(" has to be in high-level language."));
+            LOG_ERROR(u8"The provided code for the recompilable " + get_typed_identifier_string() + u8" has to be in high-level language.");
             return false;
         }
 
         if (code_data_provider.get_code_data().empty())
         {
-            LOG_ERROR(TEXT("The provided code for ") + get_typed_identifier_string() + TEXT(" is empty."));
+            LOG_ERROR(u8"The provided code for " + get_typed_identifier_string() + u8" is empty.");
             return false;
         }
 
         if (is_recompilable() && _cascade_entry_point(code_data_provider.get_compile_options()).empty())
         {
-            LOG_ERROR(TEXT("The entry point for the recompilable ") + get_typed_identifier_string() + TEXT(" was not specified."));
+            LOG_ERROR(u8"The entry point for the recompilable " + get_typed_identifier_string() + u8" was not specified.");
             return false;
         }
 

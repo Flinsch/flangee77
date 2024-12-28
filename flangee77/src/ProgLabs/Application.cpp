@@ -86,34 +86,34 @@ namespace pl7 {
             return false;
 
         // Print out CPU identification/information.
-        LOG_TYPE(TEXT("CPU identification/information:"), cl7::logging::LogType::Caption);
+        LOG_TYPE(u8"CPU identification/information:", cl7::logging::LogType::Caption);
         cl7::system::CPUID cpuid;
         if (!cpuid.capture())
-            LOG_WARNING(TEXT("Unable to retrieve CPU identification/information."));
-        LOG_TYPE(TEXT("Vendor name\t") + cl7::strings::from_ascii(cpuid.vendor_name), cl7::logging::LogType::Item);
-        LOG_TYPE(TEXT("Processor name\t") + cl7::strings::from_ascii(cpuid.processor_name), cl7::logging::LogType::Item);
+            LOG_WARNING(u8"Unable to retrieve CPU identification/information.");
+        LOG_TYPE(u8"Vendor name\t" + cl7::u8string{cpuid.vendor_name}, cl7::logging::LogType::Item);
+        LOG_TYPE(u8"Processor name\t" + cl7::u8string{cpuid.processor_name}, cl7::logging::LogType::Item);
         if (std::endian::native == std::endian::little)
-            LOG_TYPE(TEXT("Endianness\tlittle endian"), cl7::logging::LogType::Item);
+            LOG_TYPE(u8"Endianness\tlittle endian", cl7::logging::LogType::Item);
         if (std::endian::native == std::endian::big)
-            LOG_TYPE(TEXT("Endianness\tbig endian"), cl7::logging::LogType::Item);
+            LOG_TYPE(u8"Endianness\tbig endian", cl7::logging::LogType::Item);
         if (cpuid.bitness && cpuid.bitness != sizeof(size_t) * 8)
-            LOG_TYPE(TEXT("Bitness\t") + cl7::to_string(cpuid.bitness) + TEXT("-bit") + TEXT(" (application: ") + cl7::to_string(sizeof(size_t) * 8) + TEXT("-bit") + TEXT(")"), cl7::logging::LogType::Item);
+            LOG_TYPE(u8"Bitness\t" + cl7::to_string(cpuid.bitness) + u8"-bit" + u8" (application: " + cl7::to_string(sizeof(size_t) * 8) + u8"-bit" + u8")", cl7::logging::LogType::Item);
         else
-            LOG_TYPE(TEXT("Bitness\t") + (cpuid.bitness ? cl7::to_string(cpuid.bitness) + TEXT("-bit") : cl7::string(TEXT("unknown"))), cl7::logging::LogType::Item);
-        LOG_TYPE(TEXT("Frequency\t") + (cpuid.frequency ? cl7::to_string(cpuid.frequency) + TEXT(" MHz") : cl7::string(TEXT("unknown"))), cl7::logging::LogType::Item);
-        LOG_TYPE(TEXT("Concurrency\t") + (cpuid.hardware_concurrency ? cl7::to_string(cpuid.hardware_concurrency) + TEXT(" thread contexts") : cl7::string(TEXT("unknown"))), cl7::logging::LogType::Item);
+            LOG_TYPE(u8"Bitness\t" + (cpuid.bitness ? cl7::to_string(cpuid.bitness) + u8"-bit" : cl7::u8string(u8"unknown")), cl7::logging::LogType::Item);
+        LOG_TYPE(u8"Frequency\t" + (cpuid.frequency ? cl7::to_string(cpuid.frequency) + u8" MHz" : cl7::u8string(u8"unknown")), cl7::logging::LogType::Item);
+        LOG_TYPE(u8"Concurrency\t" + (cpuid.hardware_concurrency ? cl7::to_string(cpuid.hardware_concurrency) + u8" thread contexts" : cl7::u8string(u8"unknown")), cl7::logging::LogType::Item);
 
         // Print out the system memory status.
-        LOG_TYPE(TEXT("System memory status:"), cl7::logging::LogType::Caption);
+        LOG_TYPE(u8"System memory status:", cl7::logging::LogType::Caption);
         cl7::system::MemoryStatus memory_status;
         if (!memory_status.capture())
-            LOG_WARNING(TEXT("Unable to retrieve system memory status."));
-        LOG_TYPE(TEXT("Total physical memory\t") + cl7::memory::stringify_byte_amount_si(memory_status.total_physical_memory), cl7::logging::LogType::Item);
-        LOG_TYPE(TEXT("Available physical memory\t") + cl7::memory::stringify_byte_amount_si(memory_status.available_physical_memory), cl7::logging::LogType::Item);
+            LOG_WARNING(u8"Unable to retrieve system memory status.");
+        LOG_TYPE(u8"Total physical memory\t" + cl7::memory::stringify_byte_amount_si(memory_status.total_physical_memory), cl7::logging::LogType::Item);
+        LOG_TYPE(u8"Available physical memory\t" + cl7::memory::stringify_byte_amount_si(memory_status.available_physical_memory), cl7::logging::LogType::Item);
 
         // 
         if (sizeof(size_t) == 4)
-            LOG_TYPE(TEXT("Apologies for sticking to 32-bit and thus limiting usable memory. But this software doesn't need more either. \U0001f618"), cl7::logging::LogType::Comment);
+            LOG_TYPE(u8"Apologies for sticking to 32-bit and thus limiting usable memory. But this software doesn't need more either. \U0001f618", cl7::logging::LogType::Comment);
 
         // Create the main window.
         if (!xl7::main_window().init(config))
@@ -136,7 +136,7 @@ namespace pl7 {
     bool Application::_shutdown()
     {
         // "Dump" the runtime performance profile.
-        LOG_TYPE(TEXT("Runtime performance profile:"), cl7::logging::LogType::Caption);
+        LOG_TYPE(u8"Runtime performance profile:", cl7::logging::LogType::Caption);
         cl7::profiling::StandardRegistry::instance().dump(&cl7::logging::StandardLogger::instance());
 
         // Perform "custom" shutdown.
@@ -207,7 +207,7 @@ namespace pl7 {
      */
     void Application::_loop()
     {
-        cl7::profiling::Profiler profiler("Application::_loop");
+        cl7::profiling::Profiler profiler(u8"Application::_loop");
 
         // We (first) render the complete scene (without "flipping" the swap chain),
         // (second) perform CPU calculations, and (third) present the scene (now by
@@ -226,7 +226,7 @@ namespace pl7 {
      */
     void Application::_before_render()
     {
-        cl7::profiling::Profiler profiler("Application::_before_render");
+        cl7::profiling::Profiler profiler(u8"Application::_before_render");
 
         // Update resources etc.?
 
@@ -241,7 +241,7 @@ namespace pl7 {
      */
     void Application::_render()
     {
-        cl7::profiling::Profiler profiler("Application::_render");
+        cl7::profiling::Profiler profiler(u8"Application::_render");
 
         _render_impl();
 
@@ -253,7 +253,7 @@ namespace pl7 {
      */
     void Application::_after_render()
     {
-        cl7::profiling::Profiler profiler("Application::_after_render");
+        cl7::profiling::Profiler profiler(u8"Application::_after_render");
 
         _after_render_impl();
 
@@ -265,7 +265,7 @@ namespace pl7 {
      */
     void Application::_present() // NOLINT(*-convert-member-functions-to-static)
     {
-        cl7::profiling::Profiler profiler("Application::_present");
+        cl7::profiling::Profiler profiler(u8"Application::_present");
 
         xl7::graphics::rendering_device()->present();
     }
@@ -275,7 +275,7 @@ namespace pl7 {
      */
     void Application::_move()
     {
-        cl7::profiling::Profiler profiler("Application::_move");
+        cl7::profiling::Profiler profiler(u8"Application::_move");
 
         // Update input devices etc.?
 

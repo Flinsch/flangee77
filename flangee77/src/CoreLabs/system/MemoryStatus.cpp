@@ -34,7 +34,7 @@ namespace cl7::system {
         memory_status_ex.dwLength = sizeof(memory_status_ex);
         if (!::GlobalMemoryStatusEx(&memory_status_ex))
         {
-            LOG_WARNING(cl7::errors::system_result(::GetLastError(), TEXT("::GlobalMemoryStatusEx")));
+            LOG_WARNING(cl7::errors::system_result(::GetLastError(), u8"::GlobalMemoryStatusEx"));
             return false;
         }
 
@@ -66,7 +66,7 @@ namespace cl7::system {
         ::memset(&sys_info, 0, sizeof(sys_info));
         if (::sysinfo(&sys_info) != 0)
         {
-            LOG_WARNING(cl7::errors::system_result(errno, TEXT("::sysinfo")));
+            LOG_WARNING(cl7::errors::system_result(errno, u8"::sysinfo"));
             return false;
         }
 
@@ -74,7 +74,7 @@ namespace cl7::system {
         ::memset(&r_limit, 0, sizeof(r_limit));
         if (::getrlimit(RLIMIT_AS, &r_limit) != 0)
         {
-            LOG_WARNING(cl7::errors::system_result(errno, TEXT("::getrlimit")));
+            LOG_WARNING(cl7::errors::system_result(errno, u8"::getrlimit"));
             //return false;
         }
 

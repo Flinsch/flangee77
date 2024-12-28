@@ -42,7 +42,7 @@ namespace xl7::resources {
      * resource manager.
      * Time complexity: linear in the number of contained resources.
      */
-    bool ResourceManager::contains_resource(cl7::astring_view identifier) const
+    bool ResourceManager::contains_resource(cl7::u8string_view identifier) const
     {
         return find_resource(identifier) != nullptr;
     }
@@ -100,7 +100,7 @@ namespace xl7::resources {
      * Time complexity: constant on average, worst case linear in the number of
      * contained resources.
      */
-    Resource* ResourceManager::find_resource(cl7::astring_view identifier) const
+    Resource* ResourceManager::find_resource(cl7::u8string_view identifier) const
     {
         auto it = _resource_lookup.find(identifier);
         if (it == _resource_lookup.end())
@@ -183,7 +183,7 @@ namespace xl7::resources {
      * Time complexity: constant on average, worst case linear in the number of
      * contained resources.
      */
-    bool ResourceManager::release_resource(cl7::astring_view identifier)
+    bool ResourceManager::release_resource(cl7::u8string_view identifier)
     {
         return release_resource(find_resource(identifier));
     }

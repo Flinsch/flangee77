@@ -48,7 +48,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11Device::CreateBuffer")));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CreateBuffer"));
             return;
         }
     }
@@ -165,8 +165,8 @@ namespace xl7::graphics::impl::direct3d11::shaders {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11DeviceContext::Map")));
-            LOG_ERROR(TEXT("The constant buffer could not be mapped for writing."));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11DeviceContext::Map"));
+            LOG_ERROR(u8"The constant buffer could not be mapped for writing.");
             return false;
         }
 

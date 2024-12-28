@@ -28,23 +28,23 @@ namespace cl7::strings {
 
 
 
-    void _try_log_warning(bool log_warning, cl7::string_view message)
+    void _try_log_warning(bool log_warning, cl7::u8string_view message)
     {
         if (log_warning)
             LOG_WARNING(message);
     }
 
-    bool _try_log_warning_always_return_false(bool log_warning, cl7::string_view message)
+    bool _try_log_warning_always_return_false(bool log_warning, cl7::u8string_view message)
     {
         _try_log_warning(log_warning, message);
         return false;
     }
 
-    achar_type _check_adjust_latin1(u32char_type u32c, bool log_warning = false)
+    achar_type _check_adjust_ascii(u32char_type u32c, bool log_warning = false)
     {
-        if (u32c > 0xff)
+        if (u32c > 0x7f)
         {
-            _try_log_warning(log_warning, TEXT("Invalid ASCII/Latin-1 character: ") + to_0xhex(u32c) + TEXT(" (") + to_string(uint32_t(u32c)) + TEXT(")"));
+            _try_log_warning(log_warning, u8"Invalid ASCII character: " + to_0xhex(u32c) + u8" (" + to_string(uint32_t{u32c}) + u8")");
             u32c = _replacement_ascii;
         }
 
@@ -55,12 +55,12 @@ namespace cl7::strings {
     {
         if (u32c > 0x10ffff)
         {
-            _try_log_warning(log_warning, TEXT("Invalid Unicode code point: ") + to_0xhex(u32c));
+            _try_log_warning(log_warning, u8"Invalid Unicode code point: " + to_0xhex(u32c));
             u32c = _replacement_unicode;
         }
         else if (u32c >= 0xd800 && u32c <= 0xdfff)
         {
-            _try_log_warning(log_warning, TEXT("Unpaired Unicode surrogate: ") + to_0xhex(u32c));
+            _try_log_warning(log_warning, u8"Unpaired Unicode surrogate: " + to_0xhex(u32c));
             // Just pass the code point unchanged. This might even "make sense":
             // Windows allows unpaired surrogates in filenames and other places,
             // which generally means they have to be supported by software in
@@ -99,61 +99,36 @@ namespace cl7::strings {
 
     astring to_ascii(u8string_view u8s)
     {
-        return to_ascii(to_latin1(u8s));
+        u32string u32s;
+        parse_utf8(u8s, u32s, true);
+        return to_ascii(u32s);
     }
 
     astring to_ascii(u16string_view u16s)
     {
-        return to_ascii(to_latin1(u16s));
+        u32string u32s;
+        parse_utf16(u16s, u32s, true);
+        return to_ascii(u32s);
     }
 
     astring to_ascii(u32string_view u32s)
-    {
-        return to_ascii(to_latin1(u32s));
-    }
-
-    astring to_ascii(wstring_view ws)
-    {
-        return to_ascii(to_latin1(ws));
-    }
-
-    astring to_latin1(astring_view as)
-    {
-        return astring(as);
-    }
-
-    astring to_latin1(u8string_view u8s)
-    {
-        u32string u32s;
-        parse_utf8(u8s, u32s, true);
-        return to_latin1(u32s);
-    }
-
-    astring to_latin1(u16string_view u16s)
-    {
-        u32string u32s;
-        parse_utf16(u16s, u32s, true);
-        return to_latin1(u32s);
-    }
-
-    astring to_latin1(u32string_view u32s)
     {
         astring as(u32s.size(), achar_type{0});
 
         for (size_t i = 0; i < u32s.size(); ++i)
         {
-            as[i] = _check_adjust_latin1(u32s[i], true);
+            as[i] = _check_adjust_ascii(u32s[i], true);
         }
 
         return as;
     }
 
-    astring to_latin1(wstring_view ws)
+    astring to_ascii(wstring_view ws)
     {
 #if WCHAR_MAX == UINT16_MAX
-        return to_latin1(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size()));
+        return to_ascii(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size()));
 #elif WCHAR_MAX == UINT32_MAX
-        return to_latin1(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size()));
+        return to_ascii(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size()));
 #else
         static_assert(false);
 #endif
@@ -161,6 +136,7 @@ namespace cl7::strings {
 
     u8string to_utf8(astring_view as)
     {
+        //return {as.begin(), as.end()}; // Should we trust that there isn't Latin-1 or something like that in here?
         return to_utf8(to_utf32(as)); // _to_utfx cannot be used here because characters above 0x7f must be encoded.
     }
 
@@ -388,64 +364,7 @@ namespace cl7::strings {
         return wstring(ws);
     }
 
-    string from_ascii(astring_view as)
-    {
-        return from_latin1(as);
-    }
-
-    string from_latin1(astring_view as)
-    {
-#ifdef UNICODE
-        return to_utfx(as);
-#else
-        return string(as);
-#endif
-    }
-
-    string from_utf8(u8string_view u8s)
-    {
-#ifdef UNICODE
-        return to_utfx(u8s);
-#else
-        return to_latin1(u8s);
-#endif
-    }
-
-    string from_utf16(u16string_view u16s)
-    {
-#ifdef UNICODE
-        return to_utfx(u16s);
-#else
-        return to_latin1(u16s);
-#endif
-    }
-
-    string from_utf32(u32string_view u32s)
-    {
-#ifdef UNICODE
-        return to_utfx(u32s);
-#else
-        return to_latin1(u32s);
-#endif
-    }
-
-    string from_utfx(wstring_view ws)
-    {
-#if WCHAR_MAX == UINT16_MAX
-        return from_utf16(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size()));
-#elif WCHAR_MAX == UINT32_MAX
-        return from_utf32(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size()));
-#else
-        static_assert(false);
-#endif
-    }
-
-    astring to_ascii(byte_view bys)
-    {
-        return to_ascii(to_latin1(bys));
-    }
-
-    astring to_latin1(byte_view bys)
+    astring to_ascii_unchecked(byte_view bys)
     {
         return {reinterpret_cast<const achar_type*>(bys.data()), bys.size()};
     }
@@ -560,15 +479,6 @@ namespace cl7::strings {
         static_assert(false);
 #endif
         return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size()));
-    }
-
-    string from_bytes(byte_view bys)
-    {
-#ifdef UNICODE
-        return to_utfx_unchecked(bys);
-#else
-        return to_latin1(bys);
-#endif
     }
 
     byte_vector to_bytes(astring_view as)
@@ -694,7 +604,134 @@ namespace cl7::strings {
             // following check would always be false anyway.
             const auto u8c = static_cast<uint8_t>(ac);
             if (u8c > 0x7f)
-                return _try_log_warning_always_return_false(log_warning, TEXT("Invalid ASCII character: ") + to_0xhex(u8c) + TEXT(" (") + to_string(u8c) + TEXT(")"));
+                return _try_log_warning_always_return_false(log_warning, u8"Invalid ASCII character: " + to_0xhex(u8c) + u8" (" + to_string(u8c) + u8")");
+        }
+
+        return true;
+    }
+
+    bool check_utf8(u8string_view u8s, bool log_warning)
+    {
+        unsigned continuation = 0;
+
+        for (u8char_type u8c : u8s)
+        {
+            if (continuation)
+            {
+                if (u8c >= 0x80 && u8c <= 0xbf) // (expected) continuation byte of a sequence
+                {
+                    // Everything's fine: Nothing to do here.
+                }
+                else // bad code unit
+                {
+                    return _try_log_warning_always_return_false(log_warning, u8"Bad UTF-8 continuation byte: " + to_0xhex(u8c));
+                }
+                --continuation;
+            }
+            else // => no sequence continuation (yet)
+            {
+                if (u8c <= 0x7f) // "regular" character (ASCII compatible)
+                {
+                    // Nothing to do here.
+                }
+                else if (u8c >= 0xc0 && u8c <= 0xdf) // start of 2-byte sequence
+                {
+                    if (u8c < 0xc2) // invalid 2-byte sequence that represents code range from 0 to 127
+                        return _try_log_warning_always_return_false(log_warning, u8"Start of invalid 2-byte UTF-8 sequence representing code range from 0 to 127.");
+                    continuation = 1;
+                }
+                else if (u8c >= 0xe0 && u8c <= 0xef) // start of 3-byte sequence
+                {
+                    continuation = 2;
+                }
+                else if (u8c >= 0xf0 && u8c <= 0xf7) // start of 4-byte sequence
+                {
+                    if (u8c > 0xf4) // invalid 4-byte sequence that represents code range above 0x140000
+                        return _try_log_warning_always_return_false(log_warning, u8"Start of invalid 4-byte UTF-8 sequence representing code range above 0x140000.");
+                    continuation = 3;
+                }
+                else if (u8c >= 0xf8 && u8c <= 0xfb) // start of invalid 5-byte sequence
+                {
+                    return _try_log_warning_always_return_false(log_warning, u8"Start of invalid 5-byte UTF-8 sequence.");
+                }
+                else if (u8c >= 0xfc && u8c <= 0xfd) // start of invalid 6-byte sequence
+                {
+                    return _try_log_warning_always_return_false(log_warning, u8"Start of invalid 6-byte UTF-8 sequence.");
+                }
+                else if (u8c >= 0x80 && u8c <= 0xbf) // unexpected continuation byte of unknown sequence
+                {
+                    return _try_log_warning_always_return_false(log_warning, u8"Unexpected UTF-8 continuation byte: " + to_0xhex(u8c));
+                }
+                else // invalid code unit (probably 0xfe or 0xff, because we should have already covered all others)
+                {
+                    return _try_log_warning_always_return_false(log_warning, u8"Invalid UTF-8 code unit: " + to_0xhex(u8c));
+                }
+            } // no sequence continuation (yet)
+        } // for ...
+        if (continuation)
+        {
+            return _try_log_warning_always_return_false(log_warning, u8"Incomplete UTF-8 sequence: " + to_string(continuation) + u8" byte(s) missing");
+        }
+
+        return true;
+    }
+
+    bool check_utf16(u16string_view u16s, bool log_warning)
+    {
+        bool surrogate = false;
+        u16char_type prev = 0;
+
+        for (u16char_type u16c : u16s)
+        {
+            if (surrogate)
+            {
+                if (u16c >= 0xdc00 && u16c <= 0xdfff) // (expected) trailing/low surrogate
+                {
+                    // Everything's fine: Nothing to do here.
+                }
+                else if (u16c >= 0xd800 && u16c <= 0xdbff) // (another) leading/high surrogate
+                {
+                    return _try_log_warning_always_return_false(log_warning, u8"Unpaired leading/high UTF-16 surrogates: " + to_0xhex(prev) + u8" " + to_0xhex(u16c));
+                }
+                else // "regular" character (but invalid here)
+                {
+                    return _try_log_warning_always_return_false(log_warning, u8"Unpaired leading/high UTF-16 surrogate: " + to_0xhex(prev));
+                }
+                surrogate = false;
+            }
+            else // => no surrogate (yet)
+            {
+                if (u16c <= 0xd7ff || u16c >= 0xe000) // "regular" character
+                {
+                    // Nothing to do here.
+                }
+                else if (u16c >= 0xd800 && u16c <= 0xdbff) // leading/high surrogate
+                {
+                    // Everything's fine: remember the leading/high surrogate.
+                    // This is the only case where we don't pass a character (yet).
+                    prev = u16c;
+                    surrogate = true;
+                }
+                else //if (u16c >= 0xdc00 && u16c <= 0xdfff) // (unexpected) trailing/low surrogate
+                {
+                    return _try_log_warning_always_return_false(log_warning, u8"Unpaired trailing/low UTF-16 surrogate: " + to_0xhex(u16c));
+                }
+            } // no surrogate (yet)
+        } // for ...
+        if (surrogate)
+        {
+            return _try_log_warning_always_return_false(log_warning, u8"Unpaired leading/high UTF-16 surrogate: " + to_0xhex(prev));
+        }
+
+        return true;
+    }
+
+    bool check_utf32(u32string_view u32s, bool log_warning)
+    {
+        for (u32char_type u32c : u32s)
+        {
+            if (u32c > 0x10ffff || (u32c >= 0xd800 && u32c <= 0xdfff))
+                return _try_log_warning_always_return_false(log_warning, u8"Invalid Unicode code point: " + to_0xhex(u32c));
         }
 
         return true;
@@ -722,7 +759,7 @@ namespace cl7::strings {
                 }
                 else // bad code unit
                 {
-                    is_valid = is_char_valid = _try_log_warning_always_return_false(log_warning, TEXT("Bad UTF-8 continuation byte: ") + to_0xhex(u8c));
+                    is_valid = is_char_valid = _try_log_warning_always_return_false(log_warning, u8"Bad UTF-8 continuation byte: " + to_0xhex(u8c));
                 }
                 if (--continuation == 0) // end of sequence
                 {
@@ -741,7 +778,7 @@ namespace cl7::strings {
                 else if (u8c >= 0xc0 && u8c <= 0xdf) // start of 2-byte sequence
                 {
                     if (u8c < 0xc2) // invalid 2-byte sequence that represents code range from 0 to 127
-                        is_valid = is_char_valid = _try_log_warning_always_return_false(log_warning, TEXT("Start of invalid 2-byte UTF-8 sequence representing code range from 0 to 127."));
+                        is_valid = is_char_valid = _try_log_warning_always_return_false(log_warning, u8"Start of invalid 2-byte UTF-8 sequence representing code range from 0 to 127.");
                     else
                         is_char_valid = true;
                     u32c = u8c & 0x1f;
@@ -756,7 +793,7 @@ namespace cl7::strings {
                 else if (u8c >= 0xf0 && u8c <= 0xf7) // start of 4-byte sequence
                 {
                     if (u8c > 0xf4) // invalid 4-byte sequence that represents code range above 0x140000
-                        is_valid = is_char_valid = _try_log_warning_always_return_false(log_warning, TEXT("Start of invalid 4-byte UTF-8 sequence representing code range above 0x140000."));
+                        is_valid = is_char_valid = _try_log_warning_always_return_false(log_warning, u8"Start of invalid 4-byte UTF-8 sequence representing code range above 0x140000.");
                     else
                         is_char_valid = true;
                     u32c = u8c & 0x07;
@@ -764,31 +801,31 @@ namespace cl7::strings {
                 }
                 else if (u8c >= 0xf8 && u8c <= 0xfb) // start of invalid 5-byte sequence
                 {
-                    is_valid = is_char_valid = _try_log_warning_always_return_false(log_warning, TEXT("Start of invalid 5-byte UTF-8 sequence."));
+                    is_valid = is_char_valid = _try_log_warning_always_return_false(log_warning, u8"Start of invalid 5-byte UTF-8 sequence.");
                     u32c = u8c & 0x03;
                     continuation = 4;
                 }
                 else if (u8c >= 0xfc && u8c <= 0xfd) // start of invalid 6-byte sequence
                 {
-                    is_valid = is_char_valid = _try_log_warning_always_return_false(log_warning, TEXT("Start of invalid 6-byte UTF-8 sequence."));
+                    is_valid = is_char_valid = _try_log_warning_always_return_false(log_warning, u8"Start of invalid 6-byte UTF-8 sequence.");
                     u32c = u8c & 0x01;
                     continuation = 5;
                 }
                 else if (u8c >= 0x80 && u8c <= 0xbf) // unexpected continuation byte of unknown sequence
                 {
-                    is_valid = _try_log_warning_always_return_false(log_warning, TEXT("Unexpected UTF-8 continuation byte: ") + to_0xhex(u8c));
+                    is_valid = _try_log_warning_always_return_false(log_warning, u8"Unexpected UTF-8 continuation byte: " + to_0xhex(u8c));
                     u32s[i++] = _replacement_unicode;
                 }
                 else // invalid code unit (probably 0xfe or 0xff, because we should have already covered all others)
                 {
-                    is_valid = _try_log_warning_always_return_false(log_warning, TEXT("Invalid UTF-8 code unit: ") + to_0xhex(u8c));
+                    is_valid = _try_log_warning_always_return_false(log_warning, u8"Invalid UTF-8 code unit: " + to_0xhex(u8c));
                     u32s[i++] = _replacement_unicode;
                 }
             } // no sequence continuation (yet)
         } // for ...
         if (continuation)
         {
-            is_valid = _try_log_warning_always_return_false(log_warning, TEXT("Incomplete UTF-8 sequence: ") + to_string(continuation) + TEXT(" byte(s) missing"));
+            is_valid = _try_log_warning_always_return_false(log_warning, u8"Incomplete UTF-8 sequence: " + to_string(continuation) + u8" byte(s) missing");
             u32s[i++] = _replacement_unicode;
         }
         assert(i == u32s.size());
@@ -817,12 +854,12 @@ namespace cl7::strings {
                 }
                 else if (u16c >= 0xd800 && u16c <= 0xdbff) // (another) leading/high surrogate
                 {
-                    is_valid = _try_log_warning_always_return_false(log_warning, TEXT("Unpaired leading/high UTF-16 surrogates: ") + to_0xhex(prev) + TEXT(" ") + to_0xhex(u16c));
+                    is_valid = _try_log_warning_always_return_false(log_warning, u8"Unpaired leading/high UTF-16 surrogates: " + to_0xhex(prev) + u8" " + to_0xhex(u16c));
                     u32s[i++] = _replacement_unicode;
                 }
                 else // "regular" character (but invalid here)
                 {
-                    is_valid = _try_log_warning_always_return_false(log_warning, TEXT("Unpaired leading/high UTF-16 surrogate: ") + to_0xhex(prev));
+                    is_valid = _try_log_warning_always_return_false(log_warning, u8"Unpaired leading/high UTF-16 surrogate: " + to_0xhex(prev));
                     // Consistently, we might also have to fall back to the replacement
                     // character here, but then we would "waste" the valid character we
                     // hold in our hands. So we just pass it in any case.
@@ -849,30 +886,19 @@ namespace cl7::strings {
                 }
                 else //if (u16c >= 0xdc00 && u16c <= 0xdfff) // (unexpected) trailing/low surrogate
                 {
-                    is_valid = _try_log_warning_always_return_false(log_warning, TEXT("Unpaired trailing/low UTF-16 surrogate: ") + to_0xhex(u16c));
+                    is_valid = _try_log_warning_always_return_false(log_warning, u8"Unpaired trailing/low UTF-16 surrogate: " + to_0xhex(u16c));
                     u32s[i++] = _replacement_unicode;
                 }
             } // no surrogate (yet)
         } // for ...
         if (surrogate)
         {
-            is_valid = _try_log_warning_always_return_false(log_warning, TEXT("Unpaired leading/high UTF-16 surrogate: ") + to_0xhex(prev));
+            is_valid = _try_log_warning_always_return_false(log_warning, u8"Unpaired leading/high UTF-16 surrogate: " + to_0xhex(prev));
             u32s[i++] = _replacement_unicode;
         }
         assert(i == u32s.size());
 
         return is_valid;
-    }
-
-    bool check_utf32(u32string_view u32s, bool log_warning)
-    {
-        for (u32char_type u32c : u32s)
-        {
-            if (u32c > 0x10ffff || (u32c >= 0xd800 && u32c <= 0xdfff))
-                return _try_log_warning_always_return_false(log_warning, TEXT("Invalid Unicode code point: ") + to_0xhex(u32c));
-        }
-
-        return true;
     }
 
     /** Calculates the length of the specified UTF-8 string in terms of Unicode code points. */
@@ -928,17 +954,17 @@ namespace cl7::strings {
     }
 
     /** Reinterprets the character format of the specified UTF-8 string. Attention: It is not checked whether a correct UTF-8 encoding is given. */
-    astring_view reinterpret_utf8(u8string_view u8s)
+    std::string_view reinterpret_utf8(u8string_view u8s)
     {
-        static_assert(sizeof(achar_type) == sizeof(u8char_type));
-        return {reinterpret_cast<const achar_type*>(u8s.data()), u8s.size()};
+        static_assert(sizeof(char) == sizeof(u8char_type));
+        return {reinterpret_cast<const char*>(u8s.data()), u8s.size()};
     }
 
     /** Reinterprets the character format of the specified UTF-8 string. Attention: It is not checked whether a correct UTF-8 encoding is given. */
-    u8string_view reinterpret_utf8(astring_view as)
+    u8string_view reinterpret_utf8(std::string_view s)
     {
-        static_assert(sizeof(u8char_type) == sizeof(achar_type));
-        return {reinterpret_cast<const u8char_type*>(as.data()), as.size()};
+        static_assert(sizeof(u8char_type) == sizeof(char));
+        return {reinterpret_cast<const u8char_type*>(s.data()), s.size()};
     }
 
     Encoding detect_encoding(byte_view bys)
@@ -948,8 +974,6 @@ namespace cl7::strings {
         if (size == 0)
             return Encoding::Unknown;
 
-        u32string u32s;
-
         if (size % 4 == 0)
         {
             if (check_utf32(to_utf32_unchecked(bys)))
@@ -958,34 +982,40 @@ namespace cl7::strings {
 
         if (size % 2 == 0)
         {
-            if (parse_utf16(to_utf16_unchecked(bys), u32s))
+            if (check_utf16(to_utf16_unchecked(bys)))
                 return Encoding::UTF16;
         }
 
         // We check ASCII before UTF-8 because ASCII is a subset of UTF-8.
-        if (check_ascii(to_ascii(bys)))
+        if (check_ascii(to_ascii_unchecked(bys)))
             return Encoding::ASCII;
 
-        if (parse_utf8(to_utf8_unchecked(bys), u32s))
+        if (check_utf8(to_utf8_unchecked(bys)))
             return Encoding::UTF8;
 
-        return Encoding::Latin1;
+        return Encoding::Unknown;
     }
 
 
 
     /**
      * Checks whether the specified Unicode code point is whitespace and, if yes,
-     * returns the number of corresponding UTF-8 characters.
+     * returns the number of corresponding UTF-8 characters (code units).
      */
     size_t is_whitespace(u8char_type c0, u8char_type c1, u8char_type c2)
     {
-        if ((c0 >= 0x09 && c0 <= 0x0d) || // tab ... carriage return
-            c0 == 0x20)                   // space
-            return 1;
+        if (c1 == 0 && c2 == 0)
+        {
+            if ((c0 >= 0x09 && c0 <= 0x0d) || // tab ... carriage return
+                c0 == 0x20)                   // space
+                return 1;
+        }
 
-        if (c0 == 0xc2 && c1 == 0x85) return 2; // next line
-        if (c0 == 0xc2 && c1 == 0xa0) return 2; // no-break space
+        if (c2 == 0)
+        {
+            if (c0 == 0xc2 && c1 == 0x85) return 2; // next line
+            if (c0 == 0xc2 && c1 == 0xa0) return 2; // no-break space
+        }
 
         if (c0 == 0xe1 && c1 == 0x9a && c2 == 0x80) return 3; // Ogham space mark
 
@@ -1005,20 +1035,25 @@ namespace cl7::strings {
 
     /**
      * Checks whether the given UTF-8 string starts with whitespace and, if yes,
-     * returns the number of UTF-8 characters of the corresponding code point.
+     * returns the number of UTF-8 characters (code units) of the corresponding code
+     * point.
      */
     size_t is_whitespace_prefix(u8string_view s)
     {
         const size_t n = s.size();
-        if (n >= 3) return is_whitespace(s[0], s[1], s[2]);
-        if (n >= 2) return is_whitespace(s[0], s[1]);
-        if (n >= 1) return is_whitespace(s[0]);
+        size_t k;
+        // NOLINTBEGIN(bugprone-assignment-in-if-condition)
+        if (n >= 3 && (k = is_whitespace(s[0], s[1], s[2])) > 0) return k;
+        if (n >= 2 && (k = is_whitespace(s[0], s[1])) > 0) return k;
+        if (n >= 1 && (k = is_whitespace(s[0])) > 0) return k;
+        // NOLINTEND(bugprone-assignment-in-if-condition)
         return 0;
     }
 
     /**
      * Checks whether the given UTF-8 string ends with whitespace and, if yes,
-     * returns the number of UTF-8 characters of the corresponding code point.
+     * returns the number of UTF-8 characters (code units) of the corresponding code
+     * point.
      */
     size_t is_whitespace_suffix(u8string_view s)
     {
@@ -1034,14 +1069,14 @@ namespace cl7::strings {
 
 
 
-    string to_hex(unsigned long long val, char_type ca, unsigned pad_zeros)
+    u8string to_hex(unsigned long long val, u8char_type ca, unsigned pad_zeros)
     {
-        return to_hex<string>(val, ca, pad_zeros);
+        return to_hex<u8string>(val, ca, pad_zeros);
     }
 
-    string to_0xhex(unsigned long long val, char_type ca, unsigned pad_zeros)
+    u8string to_0xhex(unsigned long long val, u8char_type ca, unsigned pad_zeros)
     {
-        return to_0xhex<string>(val, ca, pad_zeros);
+        return to_0xhex<u8string>(val, ca, pad_zeros);
     }
 
 

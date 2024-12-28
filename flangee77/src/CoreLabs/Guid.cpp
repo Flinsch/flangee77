@@ -21,7 +21,7 @@ namespace cl7 {
     {
     }
 
-    Guid::Guid(cl7::string_view string)
+    Guid::Guid(cl7::u8string_view string)
         : bytes()
     {
         *this = parse(string);
@@ -45,9 +45,9 @@ namespace cl7 {
     /**
      * "Stringifies" this GUID object.
      */
-    cl7::string Guid::to_string(bool uppercase) const
+    cl7::u8string Guid::to_string(bool uppercase) const
     {
-        cl7::string string(36, TEXT('-'));
+        cl7::u8string string(36, u8'-');
 
         for (size_t i = 0; i < 16; ++i)
         {
@@ -62,8 +62,8 @@ namespace cl7 {
             auto x = static_cast<uint8_t>(bytes[i]);
             uint8_t x0 = (x & 0xf0) >> 4;
             uint8_t x1 = (x & 0x0f);
-            auto ch0 = static_cast<cl7::char_type>((x0 >= 10 ? (uppercase ? TEXT('A') : TEXT('a')) - 10 : TEXT('0')) + x0);
-            auto ch1 = static_cast<cl7::char_type>((x1 >= 10 ? (uppercase ? TEXT('A') : TEXT('a')) - 10 : TEXT('0')) + x1);
+            auto ch0 = static_cast<cl7::u8char_type>((x0 >= 10 ? (uppercase ? u8'A' : u8'a') - 10 : u8'0') + x0);
+            auto ch1 = static_cast<cl7::u8char_type>((x1 >= 10 ? (uppercase ? u8'A' : u8'a') - 10 : u8'0') + x1);
             string[i * 2 + skip + 0] = ch0;
             string[i * 2 + skip + 1] = ch1;
         }
@@ -114,13 +114,13 @@ namespace cl7 {
     /**
      * Parses the given GUID string.
      */
-    Guid Guid::parse(cl7::string_view string)
+    Guid Guid::parse(cl7::u8string_view string)
     {
         std::array<std::byte, 16> bytes{{std::byte{0}}};
 
         if (string.length() != 36)
             return {};
-        if (string[8+0] != TEXT('-') || string[12+1] != TEXT('-') || string[16+2] != TEXT('-') || string[20+3] != TEXT('-'))
+        if (string[8+0] != u8'-' || string[12+1] != u8'-' || string[16+2] != u8'-' || string[20+3] != u8'-')
             return {};
 
         for (size_t i = 0; i < 16; ++i)
@@ -133,12 +133,12 @@ namespace cl7 {
             else
                 skip = (i - 2) / 2;
 
-            cl7::char_type ch0 = string[i * 2 + skip + 0];
-            cl7::char_type ch1 = string[i * 2 + skip + 1];
-            if ((ch0 < TEXT('0') || ch0 > TEXT('9')) && ((ch0 | 32) < TEXT('a') || (ch0 | 32) > TEXT('f'))) return {};
-            if ((ch1 < TEXT('0') || ch1 > TEXT('9')) && ((ch1 | 32) < TEXT('a') || (ch1 | 32) > TEXT('f'))) return {};
-            auto x0 = static_cast<uint8_t>(ch0 > TEXT('9') ? (ch0 | 32) - TEXT('a') + 10 : ch0 - TEXT('0'));
-            auto x1 = static_cast<uint8_t>(ch1 > TEXT('9') ? (ch1 | 32) - TEXT('a') + 10 : ch1 - TEXT('0'));
+            cl7::u8char_type ch0 = string[i * 2 + skip + 0];
+            cl7::u8char_type ch1 = string[i * 2 + skip + 1];
+            if ((ch0 < u8'0' || ch0 > u8'9') && ((ch0 | 32) < u8'a' || (ch0 | 32) > u8'f')) return {};
+            if ((ch1 < u8'0' || ch1 > u8'9') && ((ch1 | 32) < u8'a' || (ch1 | 32) > u8'f')) return {};
+            auto x0 = static_cast<uint8_t>(ch0 > u8'9' ? (ch0 | 32) - u8'a' + 10 : ch0 - u8'0');
+            auto x1 = static_cast<uint8_t>(ch1 > u8'9' ? (ch1 | 32) - u8'a' + 10 : ch1 - u8'0');
             assert(x0 < 16);
             assert(x1 < 16);
             uint8_t x = (x0 << 4) | x1;

@@ -13,12 +13,12 @@ namespace cl7::memory {
     /**
      *
      */
-    cl7::string stringify_byte_amount_si(unsigned long long bytes, cl7::string_view zero_string = TEXT("0 MB"));
+    cl7::u8string stringify_byte_amount_si(unsigned long long bytes, cl7::u8string_view zero_string = u8"0 MB");
 
     /**
      *
      */
-    cl7::string stringify_byte_amount_binary(unsigned long long bytes, cl7::string_view zero_string = TEXT("0 MiB"));
+    cl7::u8string stringify_byte_amount_binary(unsigned long long bytes, cl7::u8string_view zero_string = u8"0 MiB");
 
     /**
      *

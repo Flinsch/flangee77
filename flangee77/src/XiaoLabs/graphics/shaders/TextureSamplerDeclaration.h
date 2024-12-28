@@ -14,7 +14,7 @@ struct TextureSamplerDeclaration
 {
 
     /** The name of the texture/sampler. */
-    cl7::astring name;
+    cl7::u8string name;
 
     /** The 0-based texture/sampler slot index. */
     unsigned index;

@@ -12,7 +12,7 @@
 
 namespace tl7::internals {
     inline
-    cl7::string to_string(const ml7::Matrix3x4& m) { return TEXT("{ ") + cl7::to_string(m._11) + TEXT(", ") + cl7::to_string(m._12) + TEXT(", ") + cl7::to_string(m._13) + TEXT(", ") + cl7::to_string(m._14) + TEXT("; ") + cl7::to_string(m._21) + TEXT(", ") + cl7::to_string(m._22) + TEXT(", ") + cl7::to_string(m._23) + TEXT(", ") + cl7::to_string(m._24) + TEXT("; ") + cl7::to_string(m._31) + TEXT(", ") + cl7::to_string(m._32) + TEXT(", ") + cl7::to_string(m._33) + TEXT(", ") + cl7::to_string(m._34) + TEXT(" }"); }
+    cl7::u8string to_string(const ml7::Matrix3x4& m) { return u8"{ " + cl7::to_string(m._11) + u8", " + cl7::to_string(m._12) + u8", " + cl7::to_string(m._13) + u8", " + cl7::to_string(m._14) + u8"; " + cl7::to_string(m._21) + u8", " + cl7::to_string(m._22) + u8", " + cl7::to_string(m._23) + u8", " + cl7::to_string(m._24) + u8"; " + cl7::to_string(m._31) + u8", " + cl7::to_string(m._32) + u8", " + cl7::to_string(m._33) + u8", " + cl7::to_string(m._34) + u8" }"; }
 }
 
 
@@ -24,7 +24,7 @@ namespace ml7 {
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  ") )
+TESTLABS_CASE( u8"CoreLabs:  Matrix3x4:  " )
 {
     TESTLABS_CHECK_EQ( ml7::Matrix3x4(), ml7::Matrix3x4( 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f ) );
 
@@ -178,7 +178,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  ") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  rotx") )
+TESTLABS_CASE( u8"CoreLabs:  Matrix3x4:  rotx" )
 {
     struct Entry
     {
@@ -197,13 +197,13 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  rotx") )
         { -3.0f/4.0f * ml7::constants::pi2, ml7::Matrix3x4( 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f ) },
     };
 
-    TESTLABS_SUBCASE_BATCH( TEXT("rotx"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"rotx", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix3x4::rotx( entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  roty") )
+TESTLABS_CASE( u8"CoreLabs:  Matrix3x4:  roty" )
 {
     struct Entry
     {
@@ -222,13 +222,13 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  roty") )
         { -3.0f/4.0f * ml7::constants::pi2, ml7::Matrix3x4( 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f ) },
     };
 
-    TESTLABS_SUBCASE_BATCH( TEXT("roty"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"roty", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix3x4::roty( entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  rotz") )
+TESTLABS_CASE( u8"CoreLabs:  Matrix3x4:  rotz" )
 {
     struct Entry
     {
@@ -247,13 +247,13 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  rotz") )
         { -3.0f/4.0f * ml7::constants::pi2, ml7::Matrix3x4( 0.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f ) },
     };
 
-    TESTLABS_SUBCASE_BATCH( TEXT("rotz"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"rotz", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix3x4::rotz( entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  rotation etc.") )
+TESTLABS_CASE( u8"CoreLabs:  Matrix3x4:  rotation etc." )
 {
     struct Entry
     {
@@ -331,18 +331,18 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  rotation etc.") )
         { ml7::Vector3( 2.0f, 2.0f, -3.0f ) * 1.0f/::sqrtf(13.0f), ml7::constants::pi * 1.0f/7.0f, ml7::Matrix3x4( 0.9242703f, 0.3389983f, 0.1755124f, 0.0f, -0.2923954f, 0.9242703f, -0.2454167f, 0.0f, -0.2454167f, 0.1755124f, 0.9533971f, 0.0f ) },
     };
 
-    TESTLABS_SUBCASE_BATCH( TEXT("rotation (axis with angle magnitude)"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"rotation (axis with angle magnitude)", container, entry )
     {
         ml7::Vector3 axis = entry.axis.normalized() * entry.angle;
         TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix3x4::rotation( axis ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 
-    TESTLABS_SUBCASE_BATCH( TEXT("rotation (axis-angle)"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"rotation (axis-angle)", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix3x4::rotation( entry.axis, entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
 
-    TESTLABS_SUBCASE_BATCH( TEXT("rotation_normalized"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"rotation_normalized", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix3x4::rotation_normalized( entry.axis.normalized(), entry.angle ), 3 ), ml7::round( entry.expected, 3 ) );
     }
@@ -350,7 +350,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  rotation etc.") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  compose(float, ...) / decompose") )
+TESTLABS_CASE( u8"CoreLabs:  Matrix3x4:  compose(float, ...) / decompose" )
 {
     struct Entry
     {
@@ -382,7 +382,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  compose(float, ...) / decompose") )
         container.push_back( { scaling, axis, angle, translation } );
     }
 
-    TESTLABS_SUBCASE_BATCH( TEXT("compose(float, ...) / decompose"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"compose(float, ...) / decompose", container, entry )
     {
         ml7::Matrix3x4 entry_expected = ml7::Matrix3x4::translation( entry.translation ) * ml7::Matrix3x4::rotation( entry.axis, entry.angle ) * ml7::Matrix3x4::scaling( entry.scaling );
 
@@ -398,7 +398,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  compose(float, ...) / decompose") )
     }
 }
 
-TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  compose(Vector3, ...) / decompose (and to_axis_angle)") )
+TESTLABS_CASE( u8"CoreLabs:  Matrix3x4:  compose(Vector3, ...) / decompose (and to_axis_angle)" )
 {
     struct Entry
     {
@@ -433,7 +433,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  compose(Vector3, ...) / decompose (a
         container.push_back( { scaling, axis, angle, translation } );
     }
 
-    TESTLABS_SUBCASE_BATCH( TEXT("compose(Vector3, ...) / decompose (and to_axis_angle)"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"compose(Vector3, ...) / decompose (and to_axis_angle)", container, entry )
     {
         const ml7::Matrix3x4 entry_rotation = ml7::Matrix3x4::rotation( entry.axis, entry.angle );
         const ml7::Matrix3x4 entry_expected = ml7::Matrix3x4::translation( entry.translation ) * entry_rotation * ml7::Matrix3x4::scaling( entry.scaling );
@@ -455,7 +455,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  compose(Vector3, ...) / decompose (a
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  look_at / look_to / is_look etc.") )
+TESTLABS_CASE( u8"CoreLabs:  Matrix3x4:  look_at / look_to / is_look etc." )
 {
     struct Entry
     {
@@ -476,7 +476,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  look_at / look_to / is_look etc.") )
         // ...
     };
 
-    TESTLABS_SUBCASE_BATCH( TEXT("look_at_lh / look_to_lh / is_look_lh"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"look_at_lh / look_to_lh / is_look_lh", container, entry )
     {
         const ml7::Vector3 entry_look_at = entry.position + entry.look;
         const ml7::Vector3 entry_look_to = entry.look;
@@ -497,7 +497,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  look_at / look_to / is_look etc.") )
         TESTLABS_CHECK_EQ( ml7::round( up, 3 ), ml7::round( expected_up, 3 ) );
     }
 
-    TESTLABS_SUBCASE_BATCH( TEXT("look_at_rh / look_to_rh / is_look_rh"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"look_at_rh / look_to_rh / is_look_rh", container, entry )
     {
         const ml7::Vector3 entry_look_at = entry.position + entry.look;
         const ml7::Vector3 entry_look_to = entry.look;
@@ -521,7 +521,7 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  look_at / look_to / is_look etc.") )
 
 
 
-TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  transform etc.") )
+TESTLABS_CASE( u8"CoreLabs:  Matrix3x4:  transform etc." )
 {
     struct Entry
     {
@@ -541,22 +541,22 @@ TESTLABS_CASE( TEXT("CoreLabs:  Matrix3x4:  transform etc.") )
         // ...
     };
 
-    TESTLABS_SUBCASE_BATCH( TEXT("transform"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"transform", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix3x4::compose( entry.scaling, entry.axis, entry.angle, entry.translation ).transform( entry.untransformed ), 3 ), ml7::round( entry.transformed, 3 ) );
     }
 
-    TESTLABS_SUBCASE_BATCH( TEXT("transform3x3"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"transform3x3", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix3x4::compose( entry.scaling, entry.axis, entry.angle, entry.translation ).transform3x3( entry.untransformed ), 3 ), ml7::round( entry.transformed_3x3, 3 ) );
     }
 
-    TESTLABS_SUBCASE_BATCH( TEXT("transform_inverted"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"transform_inverted", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix3x4::compose( entry.scaling, entry.axis, entry.angle, entry.translation ).transform_inverted( entry.transformed ), 3 ), ml7::round( entry.untransformed, 3 ) );
     }
 
-    TESTLABS_SUBCASE_BATCH( TEXT("transform3x3_inverted"), container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"transform3x3_inverted", container, entry )
     {
         TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix3x4::compose( entry.scaling, entry.axis, entry.angle, entry.translation ).transform3x3_inverted( entry.transformed_3x3 ), 3 ), ml7::round( entry.untransformed, 3 ) );
     }

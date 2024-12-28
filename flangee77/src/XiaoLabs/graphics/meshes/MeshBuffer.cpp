@@ -15,7 +15,7 @@ namespace xl7::graphics::meshes {
     {
         if (_desc.usage == resources::ResourceUsage::Immutable)
         {
-            LOG_ERROR(TEXT("The immutable ") + get_typed_identifier_string() + TEXT(" cannot be updated."));
+            LOG_ERROR(u8"The immutable " + get_typed_identifier_string() + u8" cannot be updated.");
             return false;
         }
 

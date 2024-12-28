@@ -23,13 +23,13 @@ namespace xl7::graphics::impl::direct3d11::shaders {
     {
         if (bytecode.get_language() != xl7::graphics::shaders::ShaderCode::Language::Bytecode)
         {
-            LOG_ERROR(TEXT("The given code does not appear to be bytecode."));
+            LOG_ERROR(u8"The given code does not appear to be bytecode.");
             return false;
         }
 
         if (bytecode.get_code_data().empty())
         {
-            LOG_ERROR(TEXT("The given bytecode is empty."));
+            LOG_ERROR(u8"The given bytecode is empty.");
             return false;
         }
 
@@ -42,7 +42,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("::D3DReflect")));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"::D3DReflect"));
             return false;
         }
 
@@ -54,7 +54,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
 
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11ShaderReflection::GetDesc")));
+            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11ShaderReflection::GetDesc"));
             return false;
         }
 
@@ -70,14 +70,14 @@ namespace xl7::graphics::impl::direct3d11::shaders {
 
             if (FAILED(hresult))
             {
-                LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11ShaderReflectionConstantBuffer::GetDesc")));
+                LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11ShaderReflectionConstantBuffer::GetDesc"));
                 continue;
             }
 
             if (d3d_shader_buffer_desc.Type != D3D_CT_CBUFFER)
                 continue;
 
-            constant_buffer_declarations_out.emplace_back(xl7::graphics::shaders::ConstantBufferDeclaration{.name=d3d_shader_buffer_desc.Name, .index=cbuffer_index, .layout={}});
+            constant_buffer_declarations_out.emplace_back(xl7::graphics::shaders::ConstantBufferDeclaration{.name=reinterpret_cast<const cl7::u8char_type*>(d3d_shader_buffer_desc.Name), .index=cbuffer_index, .layout={}});
             auto& constant_declarations_out = constant_buffer_declarations_out.back().layout.constant_declarations;
 
             for (unsigned variable_index = 0; variable_index < d3d_shader_buffer_desc.Variables; ++variable_index)
@@ -92,7 +92,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
 
                 if (FAILED(hresult))
                 {
-                    LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11ShaderReflectionVariable::GetDesc")));
+                    LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11ShaderReflectionVariable::GetDesc"));
                     continue;
                 }
 
@@ -106,7 +106,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
 
                 if (FAILED(hresult))
                 {
-                    LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11ShaderReflectionType::GetDesc")));
+                    LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11ShaderReflectionType::GetDesc"));
                     continue;
                 }
 
@@ -153,7 +153,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
                     continue;
 
                 xl7::graphics::shaders::ConstantDeclaration constant_declaration;
-                constant_declaration.name = d3d_shader_variable_desc.Name;
+                constant_declaration.name = reinterpret_cast<const cl7::u8char_type*>(d3d_shader_variable_desc.Name);
                 constant_declaration.constant_type = constant_type;
                 constant_declaration.constant_class = constant_class;
                 constant_declaration.row_count = d3d_shader_type_desc.Rows;
@@ -175,7 +175,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
 
             if (FAILED(hresult))
             {
-                LOG_ERROR(errors::d3d11_result(hresult, TEXT("ID3D11ShaderReflection::GetResourceBindingDesc")));
+                LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11ShaderReflection::GetResourceBindingDesc"));
                 continue;
             }
 
@@ -183,7 +183,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
                 continue;
 
             xl7::graphics::shaders::TextureSamplerDeclaration texture_sampler_declaration;
-            texture_sampler_declaration.name = d3d_shader_input_bind_desc.Name;
+            texture_sampler_declaration.name = reinterpret_cast<const cl7::u8char_type*>(d3d_shader_input_bind_desc.Name);
             texture_sampler_declaration.index = d3d_shader_input_bind_desc.BindPoint;
             texture_sampler_declaration.element_count = d3d_shader_input_bind_desc.BindCount;
 

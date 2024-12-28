@@ -4,11 +4,13 @@
 
 
 
-#ifndef _WIN32_WINNT // NOLINT(bugprone-reserved-identifier)
+// NOLINTBEGIN(*-reserved-identifier)
+#ifndef _WIN32_WINNT
 //#define _WIN32_WINNT _WIN32_WINNT_WIN7
 //#define _WIN32_WINNT _WIN32_WINNT_WIN8
 #define _WIN32_WINNT _WIN32_WINNT_WIN10
 #endif // !_WIN32_WINNT
+// NOLINTEND(*-reserved-identifier)
 #include <sdkddkver.h>
 
 #include <cassert>

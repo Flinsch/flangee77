@@ -9,11 +9,11 @@ namespace xl7::graphics::states {
 
 
     template <class TDesc>
-    static cl7::astring _identifier(cl7::astring_view type_string, const TDesc& desc)
+    static cl7::u8string _identifier(cl7::u8string_view type_string, const TDesc& desc)
     {
         cl7::byte_view desc_data{reinterpret_cast<const std::byte*>(&desc), sizeof(TDesc)};
 
-        return cl7::astring(type_string) + (" ") + dl7::Base64().encode(desc_data);
+        return cl7::u8string(type_string) + u8" " + dl7::Base64().encode(desc_data);
     }
 
 
@@ -65,7 +65,7 @@ namespace xl7::graphics::states {
      */
     resources::ResourceID StateManager::ensure_sampler_state(const SamplerState::Desc& desc)
     {
-        const cl7::astring identifier = _identifier("sampler state", desc);
+        const cl7::u8string identifier = _identifier(u8"sampler state", desc);
         resources::Resource* resource = find_resource(identifier);
         if (resource)
         {
@@ -85,7 +85,7 @@ namespace xl7::graphics::states {
      */
     resources::ResourceID StateManager::ensure_rasterizer_state(const RasterizerState::Desc& desc)
     {
-        const cl7::astring identifier = _identifier("rasterizer state", desc);
+        const cl7::u8string identifier = _identifier(u8"rasterizer state", desc);
         resources::Resource* resource = find_resource(identifier);
         if (resource)
         {
@@ -105,7 +105,7 @@ namespace xl7::graphics::states {
      */
     resources::ResourceID StateManager::ensure_depth_stencil_state(const DepthStencilState::Desc& desc)
     {
-        const cl7::astring identifier = _identifier("depth/stencil state", desc);
+        const cl7::u8string identifier = _identifier(u8"depth/stencil state", desc);
         resources::Resource* resource = find_resource(identifier);
         if (resource)
         {
@@ -125,7 +125,7 @@ namespace xl7::graphics::states {
      */
     resources::ResourceID StateManager::ensure_blend_state(const BlendState::Desc& desc)
     {
-        const cl7::astring identifier = _identifier("blend state", desc);
+        const cl7::u8string identifier = _identifier(u8"blend state", desc);
         resources::Resource* resource = find_resource(identifier);
         if (resource)
         {

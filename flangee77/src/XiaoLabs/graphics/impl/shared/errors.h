@@ -10,11 +10,11 @@ namespace xl7::graphics::impl::shared::errors {
 
 
 
-    cl7::string dxgi_result(long error_code);
-    cl7::string dxgi_result(long error_code, cl7::string_view context);
+    cl7::u8string dxgi_result(long error_code);
+    cl7::u8string dxgi_result(long error_code, cl7::u8string_view context);
 
-    cl7::string d3d_result(long error_code);
-    cl7::string d3d_result(long error_code, cl7::string_view context);
+    cl7::u8string d3d_result(long error_code);
+    cl7::u8string d3d_result(long error_code, cl7::u8string_view context);
 
 
 

@@ -10,12 +10,13 @@
 
 #include <CoreLabs/profiling.h>
 #include <CoreLabs/logging.h>
+
+#include <CoreLabs/sstream.h>
 #include <CoreLabs/strings.h>
 
-#include <CoreLabs/fstream.h>
-#include <CoreLabs/sstream.h>
-
 #include <algorithm>
+#include <filesystem>
+#include <fstream>
 
 
 
@@ -27,7 +28,7 @@ namespace helloworld {
     // Construction / Destruction
     // #############################################################################
 
-    MyApp::MyApp(int argc, cl7::char_type* argv[])
+    MyApp::MyApp(int argc, wchar_t* argv[])
         : pl7::Application({argc, argv})
     {
     }
@@ -98,42 +99,42 @@ namespace helloworld {
         xl7::graphics::meshes::VertexDataProvider<Vertex> vertex_data_provider{vertices};
         xl7::graphics::meshes::IndexDataProvider<unsigned short> index_data_provider{indices};
 
-        _vertex_buffer_id = xl7::graphics::mesh_manager()->create_vertex_buffer("My Vertex Buffer", vertex_buffer_desc, vertex_data_provider);
-        _index_buffer_id = xl7::graphics::mesh_manager()->create_index_buffer("My Index Buffer", index_buffer_desc, index_data_provider);
+        _vertex_buffer_id = xl7::graphics::mesh_manager()->create_vertex_buffer(u8"My Vertex Buffer", vertex_buffer_desc, vertex_data_provider);
+        _index_buffer_id = xl7::graphics::mesh_manager()->create_index_buffer(u8"My Index Buffer", index_buffer_desc, index_data_provider);
 
 
-        cl7::aifstream ifs((cl7::filesystem::get_working_directory() + TEXT("assets/shaders/shader.hlsl")).data());
+        std::ifstream ifs(cl7::strings::reinterpret_utf8(cl7::filesystem::get_working_directory() + u8"assets/shaders/shader.hlsl").data());
         assert(ifs);
         assert(ifs.is_open());
-        cl7::asstream oss;
+        cl7::u8osstream oss;
         oss << ifs.rdbuf();
-        cl7::astring high_level_code = oss.str();
+        cl7::u8string high_level_code = oss.str();
         xl7::graphics::shaders::ShaderCode shader_code{high_level_code};
         xl7::graphics::shaders::CompileOptions compile_options;
         xl7::graphics::shaders::CodeDataProvider code_data_provider{&shader_code, &compile_options};
 
-        _vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader("My Vertex Shader", code_data_provider);
-        _pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader("My Pixel Shader", code_data_provider);
+        _vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader(u8"My Vertex Shader", code_data_provider);
+        _pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader(u8"My Pixel Shader", code_data_provider);
 
 
         xl7::graphics::shaders::ConstantBuffer::Desc constant_buffer_desc;
         // NOLINTBEGIN(*-use-designated-initializers)
         constant_buffer_desc.layout.constant_declarations = {
-            {"VertexOffset", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 3, 1, 0, 12, 12},
-            {"PixelBaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 12, 16, 16},
+            {u8"VertexOffset", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 3, 1, 0, 12, 12},
+            {u8"PixelBaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 12, 16, 16},
         };
         // NOLINTEND(*-use-designated-initializers)
         
-        _constant_buffer_id = xl7::graphics::shader_manager()->create_constant_buffer("My Constant Buffer", constant_buffer_desc);
+        _constant_buffer_id = xl7::graphics::shader_manager()->create_constant_buffer(u8"My Constant Buffer", constant_buffer_desc);
 
 
         xl7::graphics::images::Image image;
         xl7::graphics::images::TargaImageHandler targa_image_handler;
         xl7::graphics::images::PngImageHandler png_image_handler;
-        targa_image_handler.load_from_file(cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy.tga"), image);
-        //targa_image_handler.load_from_file(cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy-compressed.tga"), image);
-        //png_image_handler.load_from_file(cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy.png"), image);
-        //png_image_handler.load_from_file(cl7::filesystem::get_working_directory() + TEXT("assets/gfx/dummy-indexed.png"), image);
+        targa_image_handler.load_from_file(cl7::filesystem::get_working_directory() + u8"assets/gfx/dummy.tga", image);
+        //targa_image_handler.load_from_file(cl7::filesystem::get_working_directory() + u8"assets/gfx/dummy-compressed.tga", image);
+        //png_image_handler.load_from_file(cl7::filesystem::get_working_directory() + u8"assets/gfx/dummy.png", image);
+        //png_image_handler.load_from_file(cl7::filesystem::get_working_directory() + u8"assets/gfx/dummy-indexed.png", image);
 
         xl7::graphics::textures::Texture2D::Desc texture_desc{
             xl7::resources::ResourceUsage::Immutable,
@@ -148,7 +149,7 @@ namespace helloworld {
 
         xl7::graphics::textures::ImageDataProvider image_data_provider{&image};
 
-        _texture_id = xl7::graphics::texture_manager()->create_texture_2d("My Texture", texture_desc, image_data_provider);
+        _texture_id = xl7::graphics::texture_manager()->create_texture_2d(u8"My Texture", texture_desc, image_data_provider);
         _sampler_state_id = xl7::graphics::state_manager()->ensure_sampler_state(sampler_desc);
 
 
@@ -181,7 +182,7 @@ namespace helloworld {
             if (!shader)
                 continue;
 
-            LOG_TYPE(TEXT("Parameters of ") + shader->get_typed_identifier_string() + TEXT(':'), cl7::logging::LogType::Caption);
+            LOG_TYPE(u8"Parameters of " + shader->get_typed_identifier_string() + u8':', cl7::logging::LogType::Caption);
 
             std::vector<const xl7::graphics::shaders::ConstantBufferDeclaration*> constant_buffer_declarations;
             for (const auto& constant_buffer_declaration : shader->get_reflection_result().constant_buffer_declarations)
@@ -193,7 +194,7 @@ namespace helloworld {
             for (const auto* cb : constant_buffer_declarations)
             {
                 if (!cb->name.empty())
-                    LOG_TYPE(cl7::strings::from_ascii(cb->name) + TEXT("\tcb") + cl7::to_string(cb->index) + TEXT(" (") + cl7::to_string(cb->layout.calculate_size()) + TEXT(")"), cl7::logging::LogType::Item);
+                    LOG_TYPE(cb->name + u8"\tcb" + cl7::to_string(cb->index) + u8" (" + cl7::to_string(cb->layout.calculate_size()) + u8")", cl7::logging::LogType::Item);
 
                 std::vector<const xl7::graphics::shaders::ConstantDeclaration*> constant_declarations;
                 for (const auto& constant_declaration : cb->layout.constant_declarations)
@@ -206,9 +207,9 @@ namespace helloworld {
                 {
                     assert(c->offset % 16 == 0);
                     if (cb->name.empty())
-                        LOG_TYPE(cl7::strings::from_ascii(c->name) + TEXT("\tc") + cl7::to_string(c->offset / 16) + TEXT(" (") + cl7::to_string((c->size + 15) / 16) + TEXT(")"), cl7::logging::LogType::Item);
+                        LOG_TYPE(c->name + u8"\tc" + cl7::to_string(c->offset / 16) + u8" (" + cl7::to_string((c->size + 15) / 16) + u8")", cl7::logging::LogType::Item);
                     else
-                        LOG_TYPE(TEXT(".") + cl7::strings::from_ascii(c->name) + TEXT("\tc") + cl7::to_string(c->offset / 16) + TEXT(" (") + cl7::to_string((c->size + 15) / 16) + TEXT(")"), cl7::logging::LogType::Item);
+                        LOG_TYPE(u8"." + c->name + u8"\tc" + cl7::to_string(c->offset / 16) + u8" (" + cl7::to_string((c->size + 15) / 16) + u8")", cl7::logging::LogType::Item);
                 } // for each constant "variable"
             } // for each cbuffer
 
@@ -221,27 +222,27 @@ namespace helloworld {
 
             for (const auto* s : texture_sampler_declarations)
             {
-                LOG_TYPE(cl7::strings::from_ascii(s->name) + TEXT("\ts") + cl7::to_string(s->index), cl7::logging::LogType::Item);
+                LOG_TYPE(s->name + u8"\ts" + cl7::to_string(s->index), cl7::logging::LogType::Item);
             } // for each texture/sampler
         }
 
 
 
-        LOG_INFO(TEXT("Please note the following: The quick brown fox jumps over the lazy dog."));
-        LOG_SUCCESS(TEXT("Great things have been done!"));
-        LOG_WARNING(TEXT("Brace yourselves! Winter is coming."));
-        LOG_ERROR(TEXT("Something went terribly wrong!"));
+        LOG_INFO(u8"Please note the following: The quick brown fox jumps over the lazy dog.");
+        LOG_SUCCESS(u8"Great things have been done!");
+        LOG_WARNING(u8"Brace yourselves! Winter is coming.");
+        LOG_ERROR(u8"Something went terribly wrong!");
 
-        LOG_TYPE(TEXT("Caption"), cl7::logging::LogType::Caption);
-        LOG_TYPE(TEXT("Section"), cl7::logging::LogType::Section);
-        LOG_TYPE(TEXT("Item A\tItem"), cl7::logging::LogType::Item);
-        LOG_TYPE(TEXT("Item B\tPass"), cl7::logging::LogType::ItemPass);
-        LOG_TYPE(TEXT("Item C\tFail"), cl7::logging::LogType::ItemFail);
+        LOG_TYPE(u8"Caption", cl7::logging::LogType::Caption);
+        LOG_TYPE(u8"Section", cl7::logging::LogType::Section);
+        LOG_TYPE(u8"Item A\tItem", cl7::logging::LogType::Item);
+        LOG_TYPE(u8"Item B\tPass", cl7::logging::LogType::ItemPass);
+        LOG_TYPE(u8"Item C\tFail", cl7::logging::LogType::ItemFail);
 
-        LOG_TYPE(TEXT("print(\"Hello, World!\");"), cl7::logging::LogType::Code);
-        LOG_TYPE(TEXT("This is so meta"), cl7::logging::LogType::Meta);
-        LOG_TYPE(TEXT("The best comment is the one you don't have to write."), cl7::logging::LogType::Comment);
-        LOG_TYPE(TEXT("This is something completely different."), cl7::logging::LogType::Other);
+        LOG_TYPE(u8"print(\"Hello, World!\");", cl7::logging::LogType::Code);
+        LOG_TYPE(u8"This is so meta", cl7::logging::LogType::Meta);
+        LOG_TYPE(u8"The best comment is the one you don't have to write.", cl7::logging::LogType::Comment);
+        LOG_TYPE(u8"This is something completely different.", cl7::logging::LogType::Other);
 
         return true;
     }
@@ -276,7 +277,7 @@ namespace helloworld {
      */
     void MyApp::_render_impl()
     {
-        cl7::profiling::Profiler profiler("MyApp::_render_impl");
+        cl7::profiling::Profiler profiler(u8"MyApp::_render_impl");
 
         unsigned fps = xl7::graphics::graphics_system().get_config().video.display_mode.refresh_rate;
         if (!fps)
@@ -327,7 +328,7 @@ namespace helloworld {
      */
     void MyApp::_move_impl()
     {
-        cl7::profiling::Profiler profiler("MyApp::_move_impl");
+        cl7::profiling::Profiler profiler(u8"MyApp::_move_impl");
     }
 
 

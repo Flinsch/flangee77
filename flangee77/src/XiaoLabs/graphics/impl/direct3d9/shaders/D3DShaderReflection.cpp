@@ -20,13 +20,13 @@ namespace xl7::graphics::impl::direct3d9::shaders {
     {
         if (bytecode.get_language() != xl7::graphics::shaders::ShaderCode::Language::Bytecode)
         {
-            LOG_ERROR(TEXT("The given code does not appear to be bytecode."));
+            LOG_ERROR(u8"The given code does not appear to be bytecode.");
             return false;
         }
 
         if (bytecode.get_code_data().empty())
         {
-            LOG_ERROR(TEXT("The given bytecode is empty."));
+            LOG_ERROR(u8"The given bytecode is empty.");
             return false;
         }
 
@@ -103,13 +103,13 @@ namespace xl7::graphics::impl::direct3d9::shaders {
             const auto* const cheader = reinterpret_cast<const Header*>(ctab_ptr);
             if (ctab_size < sizeof(Header) || cheader->Size != sizeof(Header))
             {
-                LOG_ERROR(TEXT("Bad shader constant/parameter table header size."));
+                LOG_ERROR(u8"Bad shader constant/parameter table header size.");
                 return false;
             }
 
             const auto* const cinfo = reinterpret_cast<const Info*>(ctab_ptr + cheader->ConstantInfo);
 
-            constant_buffer_declarations_out.emplace_back(xl7::graphics::shaders::ConstantBufferDeclaration{.name="", .index=0, .layout={}});
+            constant_buffer_declarations_out.emplace_back(xl7::graphics::shaders::ConstantBufferDeclaration{.name=u8"", .index=0, .layout={}});
             auto& constant_declarations_out = constant_buffer_declarations_out.back().layout.constant_declarations;
 
             for (uint32_t i = 0; i < cheader->Constants; ++i)
@@ -165,7 +165,7 @@ namespace xl7::graphics::impl::direct3d9::shaders {
                     continue;
 
                 xl7::graphics::shaders::ConstantDeclaration constant_declaration;
-                constant_declaration.name = cl7::astring{ctab_ptr + cinfo[i].Name};
+                constant_declaration.name = cl7::u8string{reinterpret_cast<const cl7::u8char_type*>(ctab_ptr + cinfo[i].Name)};
                 constant_declaration.constant_type = constant_type;
                 constant_declaration.constant_class = constant_class;
                 constant_declaration.row_count = static_cast<unsigned>(ctype->Rows);
@@ -200,7 +200,7 @@ namespace xl7::graphics::impl::direct3d9::shaders {
                 } // switch parameter type
 
                 xl7::graphics::shaders::TextureSamplerDeclaration texture_sampler_declaration;
-                texture_sampler_declaration.name = cl7::astring{ctab_ptr + cinfo[i].Name};
+                texture_sampler_declaration.name = cl7::u8string{reinterpret_cast<const cl7::u8char_type*>(ctab_ptr + cinfo[i].Name)};
                 texture_sampler_declaration.index = static_cast<unsigned>(cinfo[i].RegisterIndex);
                 texture_sampler_declaration.element_count = static_cast<unsigned>(ctype->Elements);
 
@@ -212,8 +212,8 @@ namespace xl7::graphics::impl::direct3d9::shaders {
 
         // End of code reached without hitting comments sections.
         // This should be considered an error (or at least a warning).
-        //LOG_ERROR(TEXT("The shader parameter table could not be created."));
-        LOG_WARNING(TEXT("The shader parameter table could not be created."));
+        //LOG_ERROR(u8"The shader parameter table could not be created.");
+        LOG_WARNING(u8"The shader parameter table could not be created.");
         return false;
     }
 

@@ -29,9 +29,14 @@
  * what Joel Spolsky said):
  * https://www.linkedin.com/pulse/mastering-unicode-modern-c-comprehensive-guide-wide-characters-tariq
  * 
+ * And then there is the "UTF-8 Everywhere" manifesto by Pavel Radzivilovsky, Yakov
+ * Galka, and Slava Novgorodov:
+ * https://utf8everywhere.org/
+ * UTF-8 remains the most widely supported and efficient encoding for applications.
+ * 
  * In summary, what this means for us here: The framework provides 5 string types of
  * different encodings (as well as corresponding character and string view types):
- *  cl7::astring    ASCII/Latin-1
+ *  cl7::astring    ASCII
  *  cl7::u8string   UTF-8
  *  cl7::u16string  UTF-16
  *  cl7::u32string  UTF-32
@@ -40,86 +45,78 @@
  * These types are simple typedefs of corresponding types from the C++ Standard
  * Library.
  * 
- * Then there is the generic string type, cl7::string, which maps to either
- * cl7::wstring or cl7::astring, depending on whether or not the use of Unicode is
- * enabled via the UNICODE preprocessor definition.
+ * The intention of these types is to emphasize the respective encoding a little
+ * more semantically, especially with regard to cl7::astring and cl7::u8string, as a
+ * contrast to std::string, which can contain "any" encoding, ASCII, ANSI, UTF-8,
+ * ISO 8859, etc. If you need the flexibility of std::string, you can still use it,
+ * even in parallel with the types of this framework (which are just typedefs
+ * anyway). You just have to be aware of which encoding you are using (which you
+ * "have" to do anyway). This framework also sometimes uses std::string (internally)
+ * here and there, but more for utility and compatibility purposes.
  * 
  * Regarding "best practices", the different string types are used within this
  * framework as follows (which you can follow in your own code, but of course you
  * don't have to):
- *  Internal processing         cl7::wstring (or cl7::u16string or cl7::u32string
- *                              specifically); sometimes cl7::astring for rather
- *                              language-independent technical stuff
- *  Storage and transmission    cl7::u8string mainly; sometimes cl7::astring for
- *                              rather language-independent technical stuff
- *  User interaction            cl7::wstring (or cl7::u16string or cl7::u32string
- *                              specifically)
+ *  Platform-specific stuff     "Native" std::string and/or std::wstring
+ *  Internal processing         Whatever serves, preferably cl7::u8string (even if
+ *                              cl7::astring would be "enough" in case of rather
+ *                              language-independent technical stuff)
+ *  Storage and transmission    cl7::u8string
+ *  User interaction            cl7::u32string
  * 
- * ASCII/Latin-1 and UTF-32 have the great advantage that one character corresponds
- * to exactly one (representable) code point. This makes string manipulations easy
- * or even possible. (Let's ignore things like graphemes or normalization for now.)
- * In addition, UTF-32 has the advantage that "all" characters in the world are
- * supported (good for user interaction); ASCII/Latin-1 has/have limited coverage
- * but the advantage of being space-saving, simple, and "close to code" (good for
+ * ASCII and UTF-32 have the great advantage that one character (code unit)
+ * corresponds to exactly one (representable) code point. This makes string
+ * manipulations easy or even possible (let's ignore things like graphemes or
+ * normalization for now).
+ * In addition, UTF-32 has the advantage that "all" symbols in the world are
+ * supported (good for user interaction); ASCII has limited coverage but the
+ * advantage of being space-saving, simple, and "close to code" (good for
  * language-independent technical stuff).
  * UTF-8 tends to being space-saving as well, but at the same time has the ability
  * to "somehow" represent "all" characters (good for storage and transmission of
- * non-technical, language-dependent stuff).
+ * language-dependent stuff and (other) special characters; as a superset of ASCII,
+ * it is also suitable for language-independent technical stuff as well).
  * UTF-16 is a kind of hybrid: it covers "all" characters, is okay in terms of
  * memory requirements, and allows for some string manipulations because many or even
  * most common code points can be represented with one single code unit (good/okay
- * for almost everything, but loses to UTF-8 in storage and transmission).
- *
- * Why specifically Latin-1 and not ISO 8859 in general? Because despite different
- * encodings we still want to remain as compatible as possible. And Latin-1 is a
- * subset of Unicode, unlike Latin-2 or Latin-15 for example: the Latin-1 characters
- * correspond 1-to-1 to the first 256 Unicode code points. So if you need to work
- * with an ISO 8859 standard part other than Latin-1, you can of course do so as
- * usual, but it is not semantically supported by this framework, and you would have
- * to take care of appropriate conversions yourself in order to use certain
- * framework functions "correctly".
+ * for almost everything, but loses to UTF-8 in storage and transmission). However,
+ * UTF-16 is rarely used within this framework (tends to be used only in the case of
+ * platform-specific things).
  * 
- * Don't be afraid to use different character encodings or string types within your
- * software. If you look at the different ways strings are used within a project,
- * you will see that in most cases different types don't even touch each other. But
- * where there are points of contact, you should of course be as uniform as possible
- * and conversions should be minimized. Okay, at least when it comes to logging, all
- * possible encodings potentially come into contact with each other. Anyway, "most"
- * important thing is that you always know which encoding a given string (or file,
- * etc.) has.
+ * Despite the presence of the eighth bit of cl7::astring, we deliberately do not
+ * support ANSI, ISO 8859, etc., not even Latin-1, although it corresponds 1-to-1 to
+ * the first 256 Unicode characters. If you need these encodings (for whatever
+ * reason, for example under Windows), you have to take care of them yourself. At
+ * best, you avoid ANSI, ISO 8859, etc. as much as possible and stick with ASCII and
+ * Unicode. And then you end up with UTF-8 as a superset of ASCII (or UTF-32 if you
+ * need the quasi-1-to-1 correspondence of code units and code points).
+ * 
+ * So you see: UTF-8 (almost) everywhere. As mentioned before, you may have to take
+ * care of ISO 8859, ANSI, etc. yourself, but to avoid this as much as possible, we
+ * are forcing the UNICODE/_UNICODE definition, also as suggested by the manifesto,
+ * "UTF-8 Everywhere".
+ * 
+ * I'm already taking cover, but despite everything, don't be afraid to use
+ * different character encodings or string types within your software. If you look
+ * at the different ways strings are used within a project, you will see that in
+ * most cases different types don't even touch each other. But where there are
+ * points of contact, you should of course be as uniform as possible and conversions
+ * should be minimized. Okay, at least when it comes to logging, all possible
+ * encodings potentially come into contact with each other. Anyway, "most" important
+ * thing is that you always know which encoding a given string (or file, etc.) has.
  */
 
 
 
 #if defined(UNICODE) ^ defined(_UNICODE)
 #error Inconsistent UNICODE and _UNICODE definition.
+#elif !defined(UNICODE) || !defined(_UNICODE)
+#error Missing UNICODE and/or _UNICODE definition.
 #endif
 
 
 
 namespace cl7 {
-
-
-
-#ifdef UNICODE
-    using char_type = wchar_t;
-    using string = std::wstring;
-    using string_view = std::wstring_view;
-#else // => !UNICODE
-    using char_type = char;
-    using string = std::string;
-    using string_view = std::string_view;
-#endif // #else => !UNICODE
-
-#ifdef  UNICODE
-#define __TEXT(quote) L##quote      // NOLINT(bugprone-reserved-identifier)
-#define __RTEXT(quote) LR##quote    // NOLINT(bugprone-reserved-identifier)
-#else   /* UNICODE */               
-#define __TEXT(quote) quote         
-#define __RTEXT(quote) R##quote     
-#endif /* UNICODE */                
-#define TEXT(quote) __TEXT(quote)
-#define RTEXT(quote) __RTEXT(quote)
 
 
 
@@ -163,7 +160,7 @@ namespace cl7 {
 
 
 
-    template <typename Tchar = cl7::char_type>
+    template <typename Tchar = cl7::u8char_type>
     struct string_hash
     {
         using is_transparent = void;
@@ -182,57 +179,17 @@ namespace cl7 {
 
 
 
-    inline astring to_astring(signed val) { return std::to_string(val); }
-    inline astring to_astring(signed long val) { return std::to_string(val); }
-    inline astring to_astring(signed long long val) { return std::to_string(val); }
-    inline astring to_astring(unsigned val) { return std::to_string(val); }
-    inline astring to_astring(unsigned long val) { return std::to_string(val); }
-    inline astring to_astring(unsigned long long val) { return std::to_string(val); }
-    inline astring to_astring(float val) { return std::to_string(val); }
-    inline astring to_astring(double val) { return std::to_string(val); }
-    inline astring to_astring(long double val) { return std::to_string(val); }
+    u8string to_string(bool val);
 
-    inline wstring to_wstring(signed val) { return std::to_wstring(val); }
-    inline wstring to_wstring(signed long val) { return std::to_wstring(val); }
-    inline wstring to_wstring(signed long long val) { return std::to_wstring(val); }
-    inline wstring to_wstring(unsigned val) { return std::to_wstring(val); }
-    inline wstring to_wstring(unsigned long val) { return std::to_wstring(val); }
-    inline wstring to_wstring(unsigned long long val) { return std::to_wstring(val); }
-    inline wstring to_wstring(float val) { return std::to_wstring(val); }
-    inline wstring to_wstring(double val) { return std::to_wstring(val); }
-    inline wstring to_wstring(long double val) { return std::to_wstring(val); }
-
-
-    inline astring to_astring(bool val) { return {val ? "true" : "false"}; }
-
-    inline wstring to_wstring(bool val) { return {val ? L"true" : L"false"}; }
-
-
-#ifdef UNICODE
-    inline string to_string(signed val) { return to_wstring(val); }
-    inline string to_string(signed long val) { return to_wstring(val); }
-    inline string to_string(signed long long val) { return to_wstring(val); }
-    inline string to_string(unsigned val) { return to_wstring(val); }
-    inline string to_string(unsigned long val) { return to_wstring(val); }
-    inline string to_string(unsigned long long val) { return to_wstring(val); }
-    inline string to_string(float val) { return to_wstring(val); }
-    inline string to_string(double val) { return to_wstring(val); }
-    inline string to_string(long double val) { return to_wstring(val); }
-
-    inline string to_string(bool val) { return to_wstring(val); }
-#else // => !UNICODE
-    inline string to_string(signed val) { return to_astring(val); }
-    inline string to_string(signed long val) { return to_astring(val); }
-    inline string to_string(signed long long val) { return to_astring(val); }
-    inline string to_string(unsigned val) { return to_astring(val); }
-    inline string to_string(unsigned long val) { return to_astring(val); }
-    inline string to_string(unsigned long long val) { return to_astring(val); }
-    inline string to_string(float val) { return to_astring(val); }
-    inline string to_string(double val) { return to_astring(val); }
-    inline string to_string(long double val) { return to_astring(val); }
-
-    inline string to_string(bool val) { return to_astring(val); }
-#endif // #else => !UNICODE
+    u8string to_string(signed val);
+    u8string to_string(signed long val);
+    u8string to_string(signed long long val);
+    u8string to_string(unsigned val);
+    u8string to_string(unsigned long val);
+    u8string to_string(unsigned long long val);
+    u8string to_string(float val);
+    u8string to_string(double val);
+    u8string to_string(long double val);
 
 
 

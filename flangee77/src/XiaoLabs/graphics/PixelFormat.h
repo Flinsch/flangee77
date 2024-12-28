@@ -94,7 +94,7 @@ enum class PixelFormat
 
 
 namespace cl7 {
-    cl7::string to_string(xl7::graphics::PixelFormat pixel_format);
+    cl7::u8string to_string(xl7::graphics::PixelFormat pixel_format);
 }
 
 

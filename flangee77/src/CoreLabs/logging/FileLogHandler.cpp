@@ -1,10 +1,10 @@
 #include "FileLogHandler.h"
 
-#include <CoreLabs/fstream.h>
 #include <CoreLabs/sstream.h>
 #include <CoreLabs/strings.h>
 
 #include <chrono>
+#include <fstream>
 
 
 
@@ -18,20 +18,19 @@ namespace cl7::logging {
 
     FileLogHandler::FileLogHandler()
     {
-        constexpr cl7::astring_view flangee77 = "flangee77";
+        constexpr cl7::u8string_view flangee77 = u8"flangee77";
 
         const std::time_t t = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-        std::tm tm;
+        std::tm tm{};
         ::localtime_s(&tm, &t);
-        const auto ldt = std::put_time(&tm, "%Y-%m-%d %H:%M:%S %z");
-        std::ostringstream ldt_ss;
-        ldt_ss << ldt;
+        std::wostringstream ldt_woss;
+        ldt_woss << std::put_time(&tm, L"%Y-%m-%d %H:%M:%S %z");
 
-        cl7::aosstream ss;
-        ss << flangee77 << " \xe2\x80\x94 "; // \u2014 (em dash) as UTF-8
-        ss << ldt_ss.str();
+        cl7::u8osstream oss;
+        oss << flangee77 << u8" \xe2\x80\x94 "; // \u2014 (em dash) as UTF-8
+        oss << cl7::strings::to_utf8(ldt_woss.str());
 
-        _write_line(ss.str(), true);
+        _write_line(oss.str(), true);
     }
 
 
@@ -45,29 +44,29 @@ namespace cl7::logging {
      */
     void FileLogHandler::_write(const LogEntry& log_entry)
     {
-        std::ostringstream ss;
+        cl7::u8osstream oss;
 
         switch (log_entry.type)
         {
         case cl7::logging::LogType::Info:
-            ss << "[INFO] ";
+            oss << "[INFO] ";
             break;
         case cl7::logging::LogType::Success:
-            ss << "[SUCCESS] ";
+            oss << "[SUCCESS] ";
             break;
         case cl7::logging::LogType::Warning:
-            ss << "[WARNING] ";
+            oss << "[WARNING] ";
             break;
         case cl7::logging::LogType::Error:
-            ss << "[ERROR] ";
+            oss << "[ERROR] ";
             break;
         default:
             break; // Nothing to do here.
         }
 
-        ss << cl7::strings::reinterpret_utf8(cl7::strings::to_utf8(log_entry.message));
+        oss << log_entry.message;
 
-        _write_line(ss.str());
+        _write_line(oss.str());
     }
 
 
@@ -77,29 +76,26 @@ namespace cl7::logging {
     // #############################################################################
 
     /**
-     * Writes the specified "raw" ASCII or UTF-8 encoded std::string to the log
-     * file. If specified, the file is initially truncated.
+     * Writes the specified "raw" UTF-8 encoded string to the log file. If
+     * specified, the file is initially truncated.
      */
-    void FileLogHandler::_write_line(std::string_view line, bool truncate)
+    void FileLogHandler::_write_line(cl7::u8string_view line, bool truncate)
     {
-        auto mode = cl7::aofstream::binary | cl7::aofstream::out;
+        auto mode = std::ofstream::binary | std::ofstream::out;
         if (truncate)
-            mode |= cl7::aofstream::trunc;
+            mode |= std::ofstream::trunc;
         else
-            mode |= cl7::aofstream::app;
+            mode |= std::ofstream::app;
 
-        cl7::aofstream file("log.txt", mode);
+        std::ofstream file("log.txt", mode);
 
         if (!file.is_open())
             return;
 
-        auto utf8 = cl7::strings::to_utf8(line);
-        utf8.push_back(u8'\n');
-
         //if (truncate)
         //    file.write(reinterpret_cast<const char*>(cl7::strings::to_bytes(u8"", true).data()), 3);
-        auto data = cl7::strings::reinterpret_utf8(utf8);
-        file.write(data.data(), static_cast<std::streamsize>(data.size()));
+        file.write(reinterpret_cast<const char*>(line.data()), static_cast<std::streamsize>(line.size()));
+        file.put('\n');
     }
 
 
