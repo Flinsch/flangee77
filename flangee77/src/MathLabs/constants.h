@@ -1,4 +1,3 @@
-#pragma once
 #ifndef ML7_CONSTANTS_H
 #define ML7_CONSTANTS_H
 

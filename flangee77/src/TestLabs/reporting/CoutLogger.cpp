@@ -77,7 +77,7 @@ namespace tl7::reporting {
 
     static cl7::u8string_view _file_path(const char* file_path)
     {
-        auto my_path = __FILE__;
+        const auto* my_path = __FILE__;
 
         size_t sep = cl7::u8string::npos;
 

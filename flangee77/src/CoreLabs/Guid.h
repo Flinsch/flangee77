@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_GUID_H
 #define CL7_GUID_H
 

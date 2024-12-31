@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_IMPL_D3D9_STATES_BLENDSTATEIMPL_H
 #define XL7_GRAPHICS_IMPL_D3D9_STATES_BLENDSTATEIMPL_H
 #include "../../../states/BlendState.h"

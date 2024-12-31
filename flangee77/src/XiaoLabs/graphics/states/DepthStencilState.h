@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_STATES_DEPTHSTENCILSTATE_H
 #define XL7_GRAPHICS_STATES_DEPTHSTENCILSTATE_H
 #include "./AbstractState.h"
@@ -11,7 +10,7 @@ namespace xl7::graphics::states {
 
 
 
-class DepthStencilState // NOLINT(*-virtual-class-destructor)
+class DepthStencilState
     : public AbstractState
 {
 

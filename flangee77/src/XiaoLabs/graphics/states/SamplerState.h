@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_STATES_SAMPLERSTATE_H
 #define XL7_GRAPHICS_STATES_SAMPLERSTATE_H
 #include "./AbstractState.h"
@@ -13,7 +12,7 @@ namespace xl7::graphics::states {
 
 
 
-class SamplerState // NOLINT(*-virtual-class-destructor)
+class SamplerState
     : public AbstractState
 {
 

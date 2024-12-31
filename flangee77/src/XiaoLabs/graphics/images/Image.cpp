@@ -110,7 +110,7 @@ namespace xl7::graphics::images {
      * Special swap operation. The image's data is essentially "exported" and then
      * remains undefined.
      */
-    void Image::swap(cl7::byte_vector& data)
+    void Image::swap_data(cl7::byte_vector& data)
     {
         // If our buffer is empty ("view only"),
         // fill it now with the "viewed" data.

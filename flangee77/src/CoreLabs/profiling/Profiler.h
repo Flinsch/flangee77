@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_PROFILING_PROFILER_H
 #define CL7_PROFILING_PROFILER_H
 

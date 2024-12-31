@@ -1,4 +1,3 @@
-#pragma once
 #ifndef F77_TESTS_CL7_BITS_H
 #define F77_TESTS_CL7_BITS_H
 

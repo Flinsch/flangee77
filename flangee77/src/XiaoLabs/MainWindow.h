@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_MAINWINDOW_H
 #define XL7_MAINWINDOW_H
 #include "./Component.h"
@@ -196,22 +195,22 @@ private:
     /**
      * The handle of the window.
      */
-    HWND _handle;
+    HWND _handle = nullptr;
 
     /**
      * The display mode (fullscreen, borderless, or windowed).
      */
-    DisplayMode _display_mode;
+    DisplayMode _display_mode = DisplayMode::Unknown;
 
     /**
      * The window width, in pixels.
      */
-    unsigned _width;
+    unsigned _width = 0;
 
     /**
      * The window height, in pixels.
      */
-    unsigned _height;
+    unsigned _height = 0;
 
     /**
      * The title of the window.
@@ -221,17 +220,17 @@ private:
     /**
      * The handle of the icon (or NULL).
      */
-    HICON _icon_handle;
+    HICON _icon_handle = nullptr;
 
     /**
      * The handle of the small icon (or NULL).
      */
-    HICON _small_icon_handle;
+    HICON _small_icon_handle = nullptr;
 
     /**
      * The flag indicating whether the window is currently active.
      */
-    bool _active;
+    bool _active = false;
 
 }; // class MainWindow
 

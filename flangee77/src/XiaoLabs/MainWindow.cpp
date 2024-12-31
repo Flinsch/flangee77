@@ -94,14 +94,7 @@ namespace xl7 {
      * Default constructor.
      */
     MainWindow::MainWindow()
-        : _handle(nullptr)
-        , _display_mode(DisplayMode::Unknown)
-        , _width(0)
-        , _height(0)
-        , _title(u8"flangee77")
-        , _icon_handle(nullptr)
-        , _small_icon_handle(nullptr)
-        , _active(false)
+        : _title(u8"flangee77")
     {
     }
 

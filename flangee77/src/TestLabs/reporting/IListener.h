@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TL7_REPORTING_ILISTENER_H
 #define TL7_REPORTING_ILISTENER_H
 

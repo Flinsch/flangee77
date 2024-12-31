@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_IMAGES_IMAGERESIZER_H
 #define XL7_GRAPHICS_IMAGES_IMAGERESIZER_H
 #include "./ImageProcessor.h"

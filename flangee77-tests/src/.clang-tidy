@@ -1,11 +1,14 @@
 ---
 Checks: >
-  -cert-flp30-c,
+  -cert-flp30-cpp,
   -cert-msc50-cpp,
+  -*-abstract-final-class,
   -*-loop-convert,
+  -*-multichar,
   -*-narrowing-conversions,
   -*-pro-type-cstyle-cast,
   -*-pro-type-member-init,
   -*-raw-string-literal,
+  -*-security.FloatLoopCounter,
   -*-use-auto,
   -*-use-designated-initializers,

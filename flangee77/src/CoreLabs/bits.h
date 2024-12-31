@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_BITS_H
 #define CL7_BITS_H
 

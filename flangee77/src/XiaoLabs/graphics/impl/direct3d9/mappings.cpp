@@ -26,9 +26,8 @@ namespace xl7::graphics::impl::direct3d9::mappings {
             return D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC;
         default:
             assert(false);
+            return 0;
         }
-
-        return 0;
     }
 
     DWORD _d3d_usage_from(resources::ResourceUsage resource_usage, unsigned mip_levels)
@@ -225,9 +224,8 @@ namespace xl7::graphics::impl::direct3d9::mappings {
 
         default:
             assert(false);
+            return D3DFMT_UNKNOWN;
         }
-
-        return D3DFMT_UNKNOWN;
     }
 
     std::pair<PixelFormat, ChannelOrder> _map_d3d_format(D3DFORMAT d3d_format, ChannelOrder preferred_channel_order)
@@ -304,9 +302,10 @@ namespace xl7::graphics::impl::direct3d9::mappings {
 
         case D3DFMT_A8:
             return {PixelFormat::A8_UNORM, preferred_channel_order};
-        }
 
-        return {PixelFormat::UNKNOWN, preferred_channel_order};
+        default:
+            return {PixelFormat::UNKNOWN, preferred_channel_order};
+        }
     }
 
     D3DCMPFUNC _d3d_cmp_func_from(ComparisonFunction comparison_function)

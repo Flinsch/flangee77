@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_MESHES_INDEXBUFFER_H
 #define XL7_GRAPHICS_MESHES_INDEXBUFFER_H
 #include "./MeshBuffer.h"
@@ -12,7 +11,7 @@ namespace xl7::graphics::meshes {
 
 
 
-class IndexBuffer // NOLINT(*-virtual-class-destructor)
+class IndexBuffer
     : public MeshBuffer
 {
 

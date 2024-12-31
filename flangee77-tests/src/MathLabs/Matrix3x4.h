@@ -1,4 +1,3 @@
-#pragma once
 #ifndef F77_TESTS_ML7_MATRIX3X4_H
 #define F77_TESTS_ML7_MATRIX3X4_H
 
@@ -6,21 +5,7 @@
 
 #include <TestLabs/TestSuite.h>
 
-#include "../shared.h"
-
-
-
-namespace tl7::internals {
-    inline
-    cl7::u8string to_string(const ml7::Matrix3x4& m) { return u8"{ " + cl7::to_string(m._11) + u8", " + cl7::to_string(m._12) + u8", " + cl7::to_string(m._13) + u8", " + cl7::to_string(m._14) + u8"; " + cl7::to_string(m._21) + u8", " + cl7::to_string(m._22) + u8", " + cl7::to_string(m._23) + u8", " + cl7::to_string(m._24) + u8"; " + cl7::to_string(m._31) + u8", " + cl7::to_string(m._32) + u8", " + cl7::to_string(m._33) + u8", " + cl7::to_string(m._34) + u8" }"; }
-}
-
-
-
-namespace ml7 {
-    inline
-    ml7::Matrix3x4 round(ml7::Matrix3x4 m, unsigned num_decimals) { for ( unsigned k = 0; k < 12; ++k ) m.data[k] = ml7::round(m.data[k], num_decimals); return m; }
-}
+#include "./shared.h"
 
 
 

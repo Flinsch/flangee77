@@ -7,7 +7,7 @@ namespace dl7 {
 
 
     bool Base64::_initialized = false;
-    char Base64::_base64_char_table[64];
+    cl7::u8char_type Base64::_base64_char_table[64];
     uint8_t Base64::_base64_sextet_lookup[128];
 
 
@@ -30,22 +30,22 @@ namespace dl7 {
 
         for (uint8_t i = 0; i < 26; ++i)
         {
-            _base64_char_table[i] = static_cast<char>('A' + i);
+            _base64_char_table[i] = static_cast<cl7::u8char_type>('A' + i);
             _base64_sextet_lookup[static_cast<uint8_t>('A' + i)] = i;
         }
         for (uint8_t i = 0; i < 26; ++i)
         {
-            _base64_char_table[i + 26] = static_cast<char>('a' + i);
+            _base64_char_table[i + 26] = static_cast<cl7::u8char_type>('a' + i);
             _base64_sextet_lookup[static_cast<uint8_t>('a' + i)] = i + 26;
         }
         for (uint8_t i = 0; i < 10; ++i)
         {
-            _base64_char_table[i + 52] = static_cast<char>('0' + i);
+            _base64_char_table[i + 52] = static_cast<cl7::u8char_type>('0' + i);
             _base64_sextet_lookup[static_cast<uint8_t>('0' + i)] = i + 52;
         }
-        _base64_char_table[62] = '+';
+        _base64_char_table[62] = static_cast<cl7::u8char_type>('+');
         _base64_sextet_lookup[static_cast<uint8_t>('+')] = 62;
-        _base64_char_table[63] = '/';
+        _base64_char_table[63] = static_cast<cl7::u8char_type>('/');
         _base64_sextet_lookup[static_cast<uint8_t>('/')] = 63;
 
         _initialized = true;

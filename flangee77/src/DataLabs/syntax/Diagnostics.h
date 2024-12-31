@@ -1,4 +1,3 @@
-#pragma once
 #ifndef DL7_SYNTAX_DIAGNOSTICS_H
 #define DL7_SYNTAX_DIAGNOSTICS_H
 

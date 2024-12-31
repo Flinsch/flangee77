@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_SURFACES_COLORRENDERTARGET_H
 #define XL7_GRAPHICS_SURFACES_COLORRENDERTARGET_H
 #include "./RenderTarget.h"
@@ -9,7 +8,7 @@ namespace xl7::graphics::surfaces {
 
 
 
-class ColorRenderTarget // NOLINT(*-virtual-class-destructor)
+class ColorRenderTarget
     : public RenderTarget
 {
 

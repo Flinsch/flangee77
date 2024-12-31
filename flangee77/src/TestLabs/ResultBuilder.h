@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TL7_RESULTBUILDER_H
 #define TL7_RESULTBUILDER_H
 

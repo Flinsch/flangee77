@@ -1,4 +1,3 @@
-#pragma once
 #ifndef DL7_SYNTAX_TERMINALSYMBOLCOLLECTION_H
 #define DL7_SYNTAX_TERMINALSYMBOLCOLLECTION_H
 
@@ -71,7 +70,7 @@ public:
      */
     const TerminalSymbol& get(size_t index) const
     {
-        return *_terminal_symbols[index].get();
+        return *_terminal_symbols[index];
     }
 
 

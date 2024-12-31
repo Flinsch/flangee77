@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_IMPL_SHARED_MESHES_VERTEXBUFFERBINDING_H
 #define XL7_GRAPHICS_IMPL_SHARED_MESHES_VERTEXBUFFERBINDING_H
 
@@ -13,11 +12,11 @@ namespace xl7::graphics::impl::shared::meshes {
 struct VertexBufferBinding
 {
 
-    resources::ResourceID vertex_buffer_ids[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];
-    unsigned stream_count;
+    resources::ResourceID vertex_buffer_ids[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS] = {};
+    unsigned stream_count = 0;
 
 
-    VertexBufferBinding();
+    VertexBufferBinding() = default;
 
     bool operator==(const VertexBufferBinding& rhs) const noexcept;
 

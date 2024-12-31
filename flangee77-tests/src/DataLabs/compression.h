@@ -1,10 +1,7 @@
-#pragma once
 #ifndef F77_TESTS_DL7_COMPRESSION_H
 #define F77_TESTS_DL7_COMPRESSION_H
 
 #include <DataLabs/compression.h>
-
-#include <CoreLabs/strings.h>
 
 #include <TestLabs/TestSuite.h>
 

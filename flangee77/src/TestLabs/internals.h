@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TL7_INTERNALS_H
 #define TL7_INTERNALS_H
 

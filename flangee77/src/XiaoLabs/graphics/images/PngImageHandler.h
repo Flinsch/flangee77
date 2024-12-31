@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_IMAGES_PNGIMAGEHANDLER_H
 #define XL7_GRAPHICS_IMAGES_PNGIMAGEHANDLER_H
 #include "./ImageHandler.h"

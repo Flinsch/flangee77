@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_GRAPHICSSYSTEM_H
 #define XL7_GRAPHICS_GRAPHICSSYSTEM_H
 #include "../Component.h"
@@ -9,8 +8,11 @@
 
 
 
-#define XL7_GRAPHICS_IMPL_DIRECT3D9     0x6b8f8219
-#define XL7_GRAPHICS_IMPL_DIRECT3D11    0x9b09a2b4
+enum : unsigned
+{
+    XL7_GRAPHICS_IMPL_DIRECT3D9     = 0x6b8f8219,
+    XL7_GRAPHICS_IMPL_DIRECT3D11    = 0x9b09a2b4,
+};
 
 #ifndef XL7_GRAPHICS_IMPL_DEFAULT
 #if defined(_MSC_VER)
@@ -32,7 +34,7 @@ namespace xl7::graphics {
 
 
 
-class GraphicsSystem // NOLINT(*-virtual-class-destructor)
+class GraphicsSystem
     : public Component<GraphicsSystem>
 {
     friend class cl7::creational::Singleton<GraphicsSystem>;

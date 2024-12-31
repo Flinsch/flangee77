@@ -1,4 +1,3 @@
-#pragma once
 #ifndef F77_TESTS_ML7_MATRIX2X2_H
 #define F77_TESTS_ML7_MATRIX2X2_H
 
@@ -6,21 +5,7 @@
 
 #include <TestLabs/TestSuite.h>
 
-#include "../shared.h"
-
-
-
-namespace tl7::internals {
-    inline
-    cl7::u8string to_string(const ml7::Matrix2x2& m) { return u8"{ " + cl7::to_string(m.a) + u8", " + cl7::to_string(m.b) + u8"; " + cl7::to_string(m.c) + u8", " + cl7::to_string(m.d) + u8" }"; }
-}
-
-
-
-namespace ml7 {
-    inline
-    ml7::Matrix2x2 round(ml7::Matrix2x2 m, unsigned num_decimals) { for ( unsigned k = 0; k < 4; ++k ) m.data[k] = ml7::round(m.data[k], num_decimals); return m; }
-}
+#include "./shared.h"
 
 
 

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_SYSTEM_DATETIME_H
 #define CL7_SYSTEM_DATETIME_H
 

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef HELLOWORLD_TARGETVER_H
+#define HELLOWORLD_TARGETVER_H
 
 // Including "SDKDDKVer.h" defines the highest available Windows platform.
 // If you want to build your application for an earlier Windows platform, include "WinSDKVer.h", and
@@ -12,3 +13,5 @@
 #endif // !_WIN32_WINNT
 // NOLINTEND(*-reserved-identifier)
 #include <SDKDDKVer.h>
+
+#endif // HELLOWORLD_TARGETVER_H

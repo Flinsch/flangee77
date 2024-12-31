@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_TEXTURES_TEXTURE2DARRAY_H
 #define XL7_GRAPHICS_TEXTURES_TEXTURE2DARRAY_H
 #include "./Texture.h"
@@ -9,7 +8,7 @@ namespace xl7::graphics::textures {
 
 
 
-class Texture2DArray // NOLINT(*-virtual-class-destructor)
+class Texture2DArray
     : public Texture
 {
 

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_PIPELINE_ABSTRACTSTAGE_H
 #define XL7_GRAPHICS_PIPELINE_ABSTRACTSTAGE_H
 #include "./AbstractPipelineObject.h"

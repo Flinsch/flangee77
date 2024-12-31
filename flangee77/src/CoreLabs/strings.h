@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_STRINGS_H
 #define CL7_STRINGS_H
 
@@ -120,19 +119,19 @@ namespace cl7::strings {
     bool is_whitespace(Tchar c)
     {
         // https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt
-        const auto u32c = static_cast<u32char_type>(c);
+        const auto ui32 = static_cast<uint32_t>(c);
         return 
-            (u32c >= 0x0009 && u32c <= 0x000d) ||   // tab ... carriage return
-            u32c == 0x0020 ||                       // space
-            u32c == 0x0085 ||                       // next line
-            u32c == 0x00a0 ||                       // no-break space
-            u32c == 0x1680 ||                       // Ogham space mark
-            (u32c >= 0x2000 && u32c <= 0x200a) ||   // en quad ... hair space
-            u32c == 0x2028 ||                       // line separator
-            u32c == 0x2029 ||                       // paragraph separator
-            u32c == 0x202f ||                       // narrow no-break space
-            u32c == 0x205f ||                       // medium mathematical space
-            u32c == 0x3000;                         // ideographic space
+            (ui32 >= 0x0009 && ui32 <= 0x000d) ||   // tab ... carriage return
+            ui32 == 0x0020 ||                       // space
+            ui32 == 0x0085 ||                       // next line
+            ui32 == 0x00a0 ||                       // no-break space
+            ui32 == 0x1680 ||                       // Ogham space mark
+            (ui32 >= 0x2000 && ui32 <= 0x200a) ||   // en quad ... hair space
+            ui32 == 0x2028 ||                       // line separator
+            ui32 == 0x2029 ||                       // paragraph separator
+            ui32 == 0x202f ||                       // narrow no-break space
+            ui32 == 0x205f ||                       // medium mathematical space
+            ui32 == 0x3000;                         // ideographic space
 
         static_assert(!std::is_same_v<Tchar, u8char_type>, "Not implemented for UTF-8 and its variable-length character encoding.");
     }
@@ -140,11 +139,13 @@ namespace cl7::strings {
     template <> inline
     bool is_whitespace(achar_type c)
     {
+        const auto ui8 = static_cast<uint8_t>(c);
         return 
-            (c >= 0x09 && c <= 0x0d) || // tab ... carriage return
-            c == 0x20 ||                // space
-            c == 0x85 ||                // next line
-            c == 0xa0;                  // no-break space
+            (ui8 >= 0x09 && ui8 <= 0x0d) || // tab ... carriage return
+            ui8 == 0x20/* ||                  // space
+            ui8 == 0x85 ||                  // next line
+            ui8 == 0xa0*/;                    // no-break space
+        // Since ASCII only has 128 characters, 0x85 and 0xa0 should actually not be possible.
     }
 
     /**
@@ -347,7 +348,7 @@ namespace cl7::strings {
         if (val == 0)
             return pad_zeros ? Tstring(pad_zeros, c0) : Tstring();
         Tstring s;
-        s.reserve(16);
+        s.reserve(18); // 16 + 2 (up to 64-bit hexadecimal number with possible prefix "0x")
         while (val)
         {
             auto x = static_cast<Tchar>(val & 0xf);
@@ -366,7 +367,7 @@ namespace cl7::strings {
     {
         static constexpr auto c0 = Tchar('0');
         static constexpr auto cx = Tchar('x');
-        Tstring s = to_hex<Tstring>(val, ca, pad_zeros);
+        auto s = to_hex<Tstring>(val, ca, pad_zeros);
         s.insert(s.begin(), 2, c0);
         s[1] = cx;
         return s;

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef DL7_BASE64_H
 #define DL7_BASE64_H
 
@@ -19,9 +18,9 @@ public:
     struct Options
     {
         /** The second last character used in the Base64 alphabet at position 62 (default: '+'). */
-        char ch62;
+        cl7::u8char_type ch62;
         /** The very last character used in the Base64 alphabet at position 63 (default: '/'). */
-        char ch63;
+        cl7::u8char_type ch63;
         /** The flag specifying whether the Base64 text is padded to always be a multiple of 4 characters (padding character: '='). */
         bool pad;
         /** The maximum line length (default: 76 characters). */
@@ -33,8 +32,8 @@ public:
     };
 
     static constexpr Options default_options = {
-        .ch62='+',
-        .ch63='/',
+        .ch62=u8'+',
+        .ch63=u8'/',
         .pad=true,
         .line_length=76,
         .insert_breaks=false,
@@ -157,7 +156,7 @@ private:
     // #############################################################################
 
     static bool _initialized;
-    static char _base64_char_table[64];
+    static cl7::u8char_type _base64_char_table[64];
     static uint8_t _base64_sextet_lookup[128];
 
     /**

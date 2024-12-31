@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_SSTREAM_H
 #define CL7_SSTREAM_H
 
@@ -66,16 +65,16 @@ public:
     u8osstream& put(u8char_type ch);
 
     template <typename T>
-    typename std::enable_if<std::is_fundamental<T>::value, u8osstream&>::type
-    operator<<(T value)
+        requires(std::is_fundamental_v<T>)
+    u8osstream& operator<<(T value)
     {
         _oss << value;
         return *this;
     }
 
     template <typename T>
-    typename std::enable_if<!std::is_fundamental<T>::value, u8osstream&>::type
-    operator<<(const T& value)
+        requires(!std::is_fundamental_v<T>)
+    u8osstream& operator<<(const T& value)
     {
         _oss << value;
         return *this;

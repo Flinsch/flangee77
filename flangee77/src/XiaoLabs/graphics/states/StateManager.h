@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_STATES_STATEMANAGER_H
 #define XL7_GRAPHICS_STATES_STATEMANAGER_H
 #include "../../resources/ResourceManager.h"
@@ -13,7 +12,7 @@ namespace states {
 
 
 
-class StateManager final // NOLINT(*-virtual-class-destructor)
+class StateManager final
     : public resources::ResourceManager
 {
 

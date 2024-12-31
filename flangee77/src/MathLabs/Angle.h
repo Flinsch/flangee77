@@ -1,4 +1,3 @@
-#pragma once
 #ifndef ML7_ANGLE_H
 #define ML7_ANGLE_H
 

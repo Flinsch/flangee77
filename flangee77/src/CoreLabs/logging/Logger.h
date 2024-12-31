@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_LOGGING_LOGGER_H
 #define CL7_LOGGING_LOGGER_H
 
@@ -33,7 +32,7 @@ public:
     Logger(Logger&&) = delete;
     Logger& operator=(Logger&&) = delete;
 
-    ~Logger() = default;
+    ~Logger() noexcept = default;
 
 
 

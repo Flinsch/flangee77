@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_PIPELINE_VERTEXSHADERSTAGE_H
 #define XL7_GRAPHICS_PIPELINE_VERTEXSHADERSTAGE_H
 #include "./AbstractShaderStage.h"

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef PL7_APPLICATION_H
 #define PL7_APPLICATION_H
 

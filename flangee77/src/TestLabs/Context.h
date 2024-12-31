@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TL7_CONTEXT_H
 #define TL7_CONTEXT_H
 #include "./reporting/IListener.h"

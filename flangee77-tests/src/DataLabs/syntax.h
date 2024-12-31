@@ -1,10 +1,7 @@
-#pragma once
 #ifndef F77_TESTS_DL7_SYNTAX_H
 #define F77_TESTS_DL7_SYNTAX_H
 
 #include <DataLabs/syntax/GenericLexer.h>
-
-#include <CoreLabs/strings.h>
 
 #include <TestLabs/TestSuite.h>
 

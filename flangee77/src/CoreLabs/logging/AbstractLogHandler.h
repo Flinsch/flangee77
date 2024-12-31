@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_LOGGING_ABSTRACTLOGHANDLER_H
 #define CL7_LOGGING_ABSTRACTLOGHANDLER_H
 
@@ -26,7 +25,7 @@ public:
     AbstractLogHandler(AbstractLogHandler&&) = delete;
     AbstractLogHandler& operator=(AbstractLogHandler&&) = delete;
 
-    virtual ~AbstractLogHandler() = default;
+    virtual ~AbstractLogHandler() noexcept = default;
 
 
 

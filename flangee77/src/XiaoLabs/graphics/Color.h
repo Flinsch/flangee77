@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_COLOR_H
 #define XL7_GRAPHICS_COLOR_H
 

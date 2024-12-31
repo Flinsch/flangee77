@@ -1,4 +1,3 @@
-#pragma once
 #ifndef DL7_SYNTAX_SYMBOL_H
 #define DL7_SYNTAX_SYMBOL_H
 

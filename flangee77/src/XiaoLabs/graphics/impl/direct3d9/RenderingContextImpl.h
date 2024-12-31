@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_IMPL_D3D9_RENDERINGCONTEXTIMPL_H
 #define XL7_GRAPHICS_IMPL_D3D9_RENDERINGCONTEXTIMPL_H
 #include "../../RenderingContext.h"
@@ -149,7 +148,7 @@ private:
     /**
      * Transfers the current render target states to the device if necessary.
      */
-    bool _flush_target_states(const ResolvedTargetStates& resolved_draw_states);
+    bool _flush_target_states(const ResolvedTargetStates& resolved_target_states);
 
     /**
      * Transfers all current draw states to the device if necessary.

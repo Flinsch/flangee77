@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_IMAGES_IMAGE_H
 #define XL7_GRAPHICS_IMAGES_IMAGE_H
 
@@ -108,7 +107,7 @@ public:
      * Special swap operation. The image's data is essentially "exported" and then
      * remains undefined.
      */
-    void swap(cl7::byte_vector& data);
+    void swap_data(cl7::byte_vector& data);
 
 
 

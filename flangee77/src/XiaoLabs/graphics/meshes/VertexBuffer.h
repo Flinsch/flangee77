@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_MESHES_VERTEXBUFFER_H
 #define XL7_GRAPHICS_MESHES_VERTEXBUFFER_H
 #include "./MeshBuffer.h"
@@ -12,7 +11,7 @@ namespace xl7::graphics::meshes {
 
 
 
-class VertexBuffer // NOLINT(*-virtual-class-destructor)
+class VertexBuffer
     : public MeshBuffer
 {
 

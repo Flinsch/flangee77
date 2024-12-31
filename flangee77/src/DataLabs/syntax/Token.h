@@ -1,4 +1,3 @@
-#pragma once
 #ifndef DL7_SYNTAX_TOKEN_H
 #define DL7_SYNTAX_TOKEN_H
 

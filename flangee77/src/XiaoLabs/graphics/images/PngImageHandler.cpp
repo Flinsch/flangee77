@@ -37,7 +37,7 @@ namespace xl7::graphics::images {
         if (signature.lf != 0x0a)
             return _log_bad_format_error(rom_name);
 
-        BitInfo bit_info;
+        BitInfo bit_info = {};
         std::vector<PaletteEntry> palette;
 
         cl7::byte_vector data;

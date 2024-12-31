@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_MESHES_MESHBUFFER_H
 #define XL7_GRAPHICS_MESHES_MESHBUFFER_H
 #include "../../resources/Resource.h"
@@ -16,7 +15,7 @@ class MeshManager;
 
 
 
-class MeshBuffer // NOLINT(*-virtual-class-destructor)
+class MeshBuffer
     : public resources::Resource
 {
 

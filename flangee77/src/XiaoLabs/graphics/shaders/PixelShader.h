@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_SHADERS_PIXELSHADER_H
 #define XL7_GRAPHICS_SHADERS_PIXELSHADER_H
 #include "./Shader.h"
@@ -9,7 +8,7 @@ namespace xl7::graphics::shaders {
 
 
 
-class PixelShader // NOLINT(*-virtual-class-destructor)
+class PixelShader
     : public Shader
 {
 

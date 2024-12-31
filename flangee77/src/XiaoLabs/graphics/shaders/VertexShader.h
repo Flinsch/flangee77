@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_SHADERS_VERTEXSHADER_H
 #define XL7_GRAPHICS_SHADERS_VERTEXSHADER_H
 #include "./Shader.h"
@@ -9,7 +8,7 @@ namespace xl7::graphics::shaders {
 
 
 
-class VertexShader // NOLINT(*-virtual-class-destructor)
+class VertexShader
     : public Shader
 {
 

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_IMPL_D3D11_SHADERS_CONSTANTBUFFERIMPL_H
 #define XL7_GRAPHICS_IMPL_D3D11_SHADERS_CONSTANTBUFFERIMPL_H
 #include "../../../shaders/ConstantBuffer.h"

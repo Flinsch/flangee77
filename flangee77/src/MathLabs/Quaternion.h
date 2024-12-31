@@ -1,4 +1,3 @@
-#pragma once
 #ifndef ML7_QUATERNION_H
 #define ML7_QUATERNION_H
 

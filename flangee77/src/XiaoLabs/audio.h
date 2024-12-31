@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_AUDIO_H
 #define XL7_AUDIO_H
 

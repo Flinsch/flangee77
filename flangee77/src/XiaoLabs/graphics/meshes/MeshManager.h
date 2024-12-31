@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_MESHES_MESHMANAGER_H
 #define XL7_GRAPHICS_MESHES_MESHMANAGER_H
 #include "../../resources/ResourceManager.h"
@@ -13,7 +12,7 @@ namespace meshes {
 
 
 
-class MeshManager final // NOLINT(*-virtual-class-destructor)
+class MeshManager final
     : public resources::ResourceManager
 {
 

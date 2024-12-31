@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_SURFACES_RENDERTARGET_H
 #define XL7_GRAPHICS_SURFACES_RENDERTARGET_H
 #include "./Surface.h"
@@ -11,7 +10,7 @@ namespace xl7::graphics::surfaces {
 
 
 
-class RenderTarget // NOLINT(*-virtual-class-destructor)
+class RenderTarget
     : public Surface
 {
 

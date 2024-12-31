@@ -21,6 +21,7 @@ target_sources(flangee77_tests
     MathLabs/Matrix3x4.h
     MathLabs/Matrix4x4.h
     MathLabs/Quaternion.h
+    MathLabs/shared.h
     MathLabs/Vector2.h
     MathLabs/Vector3.h
     MathLabs/Vector4.h
@@ -28,4 +29,5 @@ target_sources(flangee77_tests
     ProgLabs/ArgumentBag.h
 
     XiaoLabs/graphics.h
+    XiaoLabs/shared.h
 )

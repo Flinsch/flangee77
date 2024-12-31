@@ -1,4 +1,3 @@
-#pragma once
 #ifndef DL7_COMPRESSION_H
 #define DL7_COMPRESSION_H
 

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_SYSTEM_SECURITY_H
 #define CL7_SYSTEM_SECURITY_H
 

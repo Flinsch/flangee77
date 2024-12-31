@@ -8,13 +8,6 @@ namespace xl7::graphics::impl::shared::meshes {
 
 
 
-    ComposedVertexLayout::ComposedVertexLayout()
-        : vertex_layouts{}
-        , instance_data_step_rates{}
-        , stream_count(0)
-    {
-    }
-
     ComposedVertexLayout::ComposedVertexLayout(const VertexBufferBinding& vertex_buffer_binding)
         : ComposedVertexLayout()
     {

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_PIXELBITKIT_H
 #define XL7_GRAPHICS_PIXELBITKIT_H
 
@@ -69,7 +68,7 @@ struct PixelBitKit
     DataType data_type;
 
     /** The uniform bit depth of each channel (the size of each channel in bits), or zero if not all channels have the same bit depth. */
-    unsigned uniform_depth;
+    unsigned uniform_depth = 0;
 
 
 

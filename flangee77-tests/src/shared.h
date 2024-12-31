@@ -1,13 +1,8 @@
-#pragma once
 #ifndef F77_TESTS_SHARED_H
 #define F77_TESTS_SHARED_H
 
 #include <CoreLabs/byte_vector.h>
-#include <CoreLabs/string.h>
-
-#include <MathLabs/Vector2.h>
-#include <MathLabs/Vector3.h>
-#include <MathLabs/Vector4.h>
+#include <CoreLabs/strings.h>
 
 
 
@@ -30,14 +25,6 @@ namespace tl7::internals {
         s[bytes.size() * 4 + 1] = u8'}';
         return s;
     }
-}
-
-
-
-namespace ml7 {
-    inline ml7::Vector2 round(ml7::Vector2 v, unsigned num_decimals) { for (float& k : v.data) k = ml7::round(k, num_decimals); return v; }
-    inline ml7::Vector3 round(ml7::Vector3 v, unsigned num_decimals) { for (float& k : v.data) k = ml7::round(k, num_decimals); return v; }
-    inline ml7::Vector4 round(ml7::Vector4 v, unsigned num_decimals) { for (float& k : v.data) k = ml7::round(k, num_decimals); return v; }
 }
 
 

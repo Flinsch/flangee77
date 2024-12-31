@@ -1,4 +1,3 @@
-#pragma once
 #ifndef DL7_SYNTAX_SOURCELOCATION_H
 #define DL7_SYNTAX_SOURCELOCATION_H
 

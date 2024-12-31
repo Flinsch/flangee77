@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_MEMORY_H
 #define CL7_MEMORY_H
 

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_PIPELINE_OUTPUTMERGERSTAGE_H
 #define XL7_GRAPHICS_PIPELINE_OUTPUTMERGERSTAGE_H
 #include "./AbstractStage.h"

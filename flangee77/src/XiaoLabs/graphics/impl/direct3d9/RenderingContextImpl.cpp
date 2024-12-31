@@ -273,7 +273,7 @@ namespace xl7::graphics::impl::direct3d9 {
     // #############################################################################
 
     /**
-     * Transfers the current states to the device if necessary.
+     * Transfers the current render target states to the device if necessary.
      */
     bool RenderingContextImpl::_flush_target_states(const ResolvedTargetStates& resolved_target_states)
     {

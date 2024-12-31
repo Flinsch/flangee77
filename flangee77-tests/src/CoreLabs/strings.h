@@ -1,4 +1,3 @@
-#pragma once
 #ifndef F77_TESTS_CL7_STRINGS_H
 #define F77_TESTS_CL7_STRINGS_H
 
@@ -22,9 +21,9 @@ namespace tl7::internals {
         case cl7::strings::Encoding::UTF8:      return u8"\"UTF-8\"";
         case cl7::strings::Encoding::UTF16:     return u8"\"UTF-16\"";
         case cl7::strings::Encoding::UTF32:     return u8"\"UTF-32\"";
+        default:
+            return u8"\"unknown encoding\"";
         }
-
-        return u8"\"unknown encoding\"";
     }
 }
 

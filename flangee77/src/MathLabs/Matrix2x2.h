@@ -1,4 +1,3 @@
-#pragma once
 #ifndef ML7_MATRIX2X2_H
 #define ML7_MATRIX2X2_H
 

@@ -6,12 +6,6 @@ namespace xl7::graphics::impl::shared::meshes {
 
 
 
-    VertexBufferBinding::VertexBufferBinding()
-        : vertex_buffer_ids{}
-        , stream_count(0)
-    {
-    }
-
     bool VertexBufferBinding::operator==(const VertexBufferBinding& rhs) const noexcept
     {
         if (stream_count != rhs.stream_count)

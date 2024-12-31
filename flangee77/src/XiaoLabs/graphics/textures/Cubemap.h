@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_TEXTURES_CUBEMAP_H
 #define XL7_GRAPHICS_TEXTURES_CUBEMAP_H
 #include "./Texture.h"
@@ -9,7 +8,7 @@ namespace xl7::graphics::textures {
 
 
 
-class Cubemap // NOLINT(*-virtual-class-destructor)
+class Cubemap
     : public Texture
 {
 

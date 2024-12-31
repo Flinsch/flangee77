@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TL7_TESTSUITE_H
 #define TL7_TESTSUITE_H
 

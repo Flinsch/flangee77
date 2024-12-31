@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_VERSION_H
 #define CL7_VERSION_H
 

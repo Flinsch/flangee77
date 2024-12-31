@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_SURFACES_SURFACE_H
 #define XL7_GRAPHICS_SURFACES_SURFACE_H
 #include "../../resources/Resource.h"
@@ -13,7 +12,7 @@ class SurfaceManager;
 
 
 
-class Surface // NOLINT(*-virtual-class-destructor)
+class Surface
     : public resources::Resource
 {
 

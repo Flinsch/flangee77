@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_COMPONENT_H
 #define XL7_COMPONENT_H
 #include <CoreLabs/creational/Singleton.h>
@@ -12,7 +11,7 @@ namespace xl7 {
 
 
 template <class TSingleton>
-class Component // NOLINT(*-virtual-class-destructor)
+class Component
     : public cl7::creational::Singleton<TSingleton>
 {
 

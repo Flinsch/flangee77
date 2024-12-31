@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_SURFACES_SURFACEMANAGER_H
 #define XL7_GRAPHICS_SURFACES_SURFACEMANAGER_H
 #include "../../resources/ResourceManager.h"
@@ -13,7 +12,7 @@ namespace surfaces {
 
 
 
-class SurfaceManager final // NOLINT(*-virtual-class-destructor)
+class SurfaceManager final
     : public resources::ResourceManager
 {
 

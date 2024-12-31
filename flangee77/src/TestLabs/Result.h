@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TL7_RESULT_H
 #define TL7_RESULT_H
 
@@ -34,12 +33,12 @@ struct Result
     /**
      * The test result's origin type.
      */
-    OriginType origin_type;
+    OriginType origin_type = OriginType::Unknown;
 
     /**
      * The outcome of the test.
      */
-    Outcome outcome;
+    Outcome outcome = Outcome::Failure;
 
     /**
      * The original expression (or empty if not applicable).
@@ -60,17 +59,17 @@ struct Result
     /**
      * The meta description of the respective test case/subcase branch.
      */
-    Meta context_meta;
+    Meta context_meta{{}, "", 0};
 
     /**
      * The meta description of what the result is about and where it has been
      * generated.
      */
-    Meta result_meta;
+    Meta result_meta{{}, "", 0};
 
 
 
-    Result();
+    Result() = default;
 
 
 

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_TEXTURES_TEXTUREMANAGER_H
 #define XL7_GRAPHICS_TEXTURES_TEXTUREMANAGER_H
 #include "../../resources/ResourceManager.h"
@@ -13,7 +12,7 @@ namespace textures {
 
 
 
-class TextureManager final // NOLINT(*-virtual-class-destructor)
+class TextureManager final
     : public resources::ResourceManager
 {
 

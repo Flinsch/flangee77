@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_TEXTURES_TEXTURE2D_H
 #define XL7_GRAPHICS_TEXTURES_TEXTURE2D_H
 #include "./Texture.h"
@@ -9,7 +8,7 @@ namespace xl7::graphics::textures {
 
 
 
-class Texture2D // NOLINT(*-virtual-class-destructor)
+class Texture2D
     : public Texture
 {
 

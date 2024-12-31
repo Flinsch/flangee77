@@ -1,4 +1,3 @@
-#pragma once
 #ifndef F77_TESTS_XL7_GRAPHICS_H
 #define F77_TESTS_XL7_GRAPHICS_H
 
@@ -13,11 +12,10 @@
 #endif
 
 #include <CoreLabs/filesystem.h>
-#include <CoreLabs/strings.h>
 
 #include <TestLabs/TestSuite.h>
 
-#include "../shared.h"
+#include "./shared.h"
 
 
 
@@ -693,9 +691,6 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageConverter" )
 
             for ( unsigned rgba = 0; rgba < 4; ++rgba )
             {
-                unsigned depth1 = pbk1.channels[ rgba ].depth;
-                unsigned depth2 = pbk2.channels[ rgba ].depth;
-
                 TESTLABS_SUBCASE_DATA_STRING( cl7::to_string( entry1.pixel_format ) + u8" " + cl7::to_string( entry1.channel_order ) + u8" -> " + cl7::to_string( entry2.pixel_format ) + u8" " + cl7::to_string( entry2.channel_order ) + u8"  (" + rgbakeys[rgba] + u8")" );
 
                 constexpr signed rgba_map[5][5][4] = {
@@ -758,8 +753,9 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageConverter" )
                     if ( rgba_ != rgba )
                         TESTLABS_SUBCASE_DATA_STRING( cl7::to_string( entry1.pixel_format ) + u8" " + cl7::to_string( entry1.channel_order ) + u8" -> " + cl7::to_string( entry2.pixel_format ) + u8" " + cl7::to_string( entry2.channel_order ) + u8"  (" + rgbakeys[rgba_] + u8" -> " + rgbakeys[rgba] + u8")" );
 
-                    depth1 = pbk1.channels[ rgba_ ].depth;
+                    unsigned depth1 = pbk1.channels[ rgba_ ].depth;
                     assert( depth1 );
+                    unsigned depth2 = pbk2.channels[ rgba ].depth;
 
                     unsigned prec = ml7::min2( _precision( depth1 ), _precision( depth2 ) );
 
@@ -846,7 +842,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageResizer" )
 
         if ( pbk.data_type == xl7::graphics::PixelBitKit::DataType::FLOAT )
         {
-            for ( size_t i = 0; i < target_image.get_data().size(); i += pbk.stride )
+            for ( size_t i = 0; i < target_image.get_data().size(); i += stride )
             {
                 assert( i % sizeof(float) == 0 );
                 size_t j = i / sizeof(float);

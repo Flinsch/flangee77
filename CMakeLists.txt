@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.29)
-project(flangee77)
 
-#find_program(CLANG_TIDY_EXE NAMES "clang-tidy" REQUIRED)
-#set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-config-file=${CMAKE_SOURCE_DIR}/.clang-tidy")
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE BOOL "Generate compile_commands.json")
+
+project(flangee77)
 
 set(CMAKE_CXX_STANDARD 20)
 

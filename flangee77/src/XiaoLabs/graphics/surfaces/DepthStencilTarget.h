@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_SURFACES_DEPTHSTENCILTARGET_H
 #define XL7_GRAPHICS_SURFACES_DEPTHSTENCILTARGET_H
 #include "./RenderTarget.h"
@@ -9,7 +8,7 @@ namespace xl7::graphics::surfaces {
 
 
 
-class DepthStencilTarget // NOLINT(*-virtual-class-destructor)
+class DepthStencilTarget
     : public RenderTarget
 {
 

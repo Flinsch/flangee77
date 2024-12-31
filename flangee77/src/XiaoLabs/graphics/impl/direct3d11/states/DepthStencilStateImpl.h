@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_IMPL_D3D11_STATES_DEPTHSTENCILSTATEIMPL_H
 #define XL7_GRAPHICS_IMPL_D3D11_STATES_DEPTHSTENCILSTATEIMPL_H
 #include "../../../states/DepthStencilState.h"

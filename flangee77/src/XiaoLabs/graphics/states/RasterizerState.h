@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_STATES_RASTERIZERSTATE_H
 #define XL7_GRAPHICS_STATES_RASTERIZERSTATE_H
 #include "./AbstractState.h"
@@ -9,7 +8,7 @@ namespace xl7::graphics::states {
 
 
 
-class RasterizerState // NOLINT(*-virtual-class-destructor)
+class RasterizerState
     : public AbstractState
 {
 

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_MESHES_INDEXDATAPROVIDER_H
 #define XL7_GRAPHICS_MESHES_INDEXDATAPROVIDER_H
 #include "../../resources/DefaultDataProvider.h"

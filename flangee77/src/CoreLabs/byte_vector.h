@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_BYTEVECTOR_H
 #define CL7_BYTEVECTOR_H
 

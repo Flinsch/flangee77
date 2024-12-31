@@ -7,8 +7,6 @@ namespace cl7::profiling {
 
 
     Stopwatch::Stopwatch(bool start)
-        : _pause()
-        , _is_running(false)
     {
         if (start)
             this->start();

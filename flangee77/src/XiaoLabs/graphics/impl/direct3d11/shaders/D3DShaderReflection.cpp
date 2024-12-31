@@ -123,12 +123,8 @@ namespace xl7::graphics::impl::direct3d11::shaders {
                         break;
                     default:
                         assert(false);
-                        constant_type = xl7::graphics::shaders::ConstantType{-1};
+                        continue;
                 } // switch parameter type
-
-                assert(constant_type != xl7::graphics::shaders::ConstantType{-1});
-                if (constant_type == xl7::graphics::shaders::ConstantType{-1})
-                    continue;
 
                 xl7::graphics::shaders::ConstantClass constant_class;
                 switch (d3d_shader_type_desc.Class)
@@ -145,12 +141,8 @@ namespace xl7::graphics::impl::direct3d11::shaders {
                         break;
                     default:
                         assert(false);
-                        constant_class = xl7::graphics::shaders::ConstantClass{-1};
+                        continue;
                 } // switch parameter type
-
-                assert(constant_class != xl7::graphics::shaders::ConstantClass{-1});
-                if (constant_class == xl7::graphics::shaders::ConstantClass{-1})
-                    continue;
 
                 xl7::graphics::shaders::ConstantDeclaration constant_declaration;
                 constant_declaration.name = reinterpret_cast<const cl7::u8char_type*>(d3d_shader_variable_desc.Name);

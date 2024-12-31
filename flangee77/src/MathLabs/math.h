@@ -1,4 +1,3 @@
-#pragma once
 #ifndef ML7_MATH_H
 #define ML7_MATH_H
 

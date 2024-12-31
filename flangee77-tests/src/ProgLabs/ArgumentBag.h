@@ -1,4 +1,3 @@
-#pragma once
 #ifndef F77_TESTS_PL7_ARGUMENTBAG_H
 #define F77_TESTS_PL7_ARGUMENTBAG_H
 

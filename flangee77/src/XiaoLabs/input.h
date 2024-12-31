@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_INPUT_H
 #define XL7_INPUT_H
 

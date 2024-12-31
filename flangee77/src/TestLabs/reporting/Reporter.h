@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TL7_REPORTING_REPORTER_H
 #define TL7_REPORTING_REPORTER_H
 

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_LOGGING_FILELOGHANDLER_H
 #define CL7_LOGGING_FILELOGHANDLER_H
 #include "./AbstractLogHandler.h"
@@ -26,7 +25,7 @@ public:
     FileLogHandler(FileLogHandler&&) = delete;
     FileLogHandler& operator=(FileLogHandler&&) = delete;
 
-    ~FileLogHandler() override = default;
+    ~FileLogHandler() noexcept override = default;
 
 
 

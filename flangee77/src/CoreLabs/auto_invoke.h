@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_AUTO_INVOKE_H
 #define CL7_AUTO_INVOKE_H
 

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_STATES_ABSTRACTSTATE_H
 #define XL7_GRAPHICS_STATES_ABSTRACTSTATE_H
 #include "../../resources/Resource.h"
@@ -13,7 +12,7 @@ class StateManager;
 
 
 
-class AbstractState // NOLINT(*-virtual-class-destructor)
+class AbstractState
     : public resources::Resource
 {
 

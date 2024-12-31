@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_LOGGING_COUTLOGHANDLER_H
 #define CL7_LOGGING_COUTLOGHANDLER_H
 #include "./AbstractLogHandler.h"
@@ -26,7 +25,7 @@ public:
     CoutLogHandler(CoutLogHandler&&) = delete;
     CoutLogHandler& operator=(CoutLogHandler&&) = delete;
 
-    ~CoutLogHandler() override = default;
+    ~CoutLogHandler() noexcept override = default;
 
 
 

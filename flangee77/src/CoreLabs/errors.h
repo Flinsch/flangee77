@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_ERRORS_H
 #define CL7_ERRORS_H
 

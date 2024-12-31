@@ -15,7 +15,6 @@ namespace xl7::graphics {
         , channel_count(determine_channel_count(pixel_format))
         , stride(determine_stride(pixel_format))
         , data_type(determine_data_type(pixel_format))
-        , uniform_depth(0)
     {
         ::memset(channels, 0, sizeof(Channel) * 4);
 

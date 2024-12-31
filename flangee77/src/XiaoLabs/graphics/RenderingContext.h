@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_RENDERINGCONTEXT_H
 #define XL7_GRAPHICS_RENDERINGCONTEXT_H
 
@@ -17,7 +16,7 @@ class RenderingDevice;
 
 
 
-class RenderingContext // NOLINT(*-virtual-class-destructor)
+class RenderingContext
 {
 
 public:

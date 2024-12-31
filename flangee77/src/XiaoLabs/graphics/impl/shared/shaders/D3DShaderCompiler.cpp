@@ -41,34 +41,19 @@ namespace xl7::graphics::impl::shared::shaders {
 
         __declspec(nothrow) HRESULT __stdcall Open(D3D_INCLUDE_TYPE include_type, const char* filename, const void* parent_data, const void** data_out, unsigned* bytes_out) override
         {
-            assert(include_type == D3D_INCLUDE_LOCAL);
-
-            auto it = _parent_entries.find(parent_data);
-            const cl7::u8string& directory = it == _parent_entries.end() ? _root_directory : it->second.directory;
-            cl7::u8string file_path = directory + cl7::u8string(cl7::strings::reinterpret_utf8(filename));
-            std::ranges::replace(file_path, u8'/', u8'\\');
-
-            cl7::u8string code = Include::read_source_code(file_path);
-            if (code.empty())
+            try
+            {
+                return _open_impl(include_type, filename, parent_data, data_out, bytes_out);
+            }
+            catch (...)
+            {
                 return E_FAIL;
-
-            *data_out = static_cast<const void*>(code.data());
-            *bytes_out = static_cast<unsigned>(code.size());
-
-            _parent_entries.emplace(*data_out, ParentEntry{.directory=Include::directory(file_path), .code=std::move(code)});
-
-            assert(*data_out == _parent_entries[*data_out].code.data());
-
-            return S_OK;
+            }
         }
 
         __declspec(nothrow) HRESULT __stdcall Close(const void* data) override
         {
-            auto it = _parent_entries.find(data);
-            assert(it != _parent_entries.end());
-            _parent_entries.erase(it);
-
-            return S_OK;
+            return _close_impl(data);
         }
 
         static cl7::u8string directory(const cl7::u8string& path)
@@ -114,6 +99,40 @@ namespace xl7::graphics::impl::shared::shaders {
             }
 
             return code;
+        }
+
+    private:
+
+        HRESULT _open_impl(D3D_INCLUDE_TYPE include_type, const char* filename, const void* parent_data, const void** data_out, unsigned* bytes_out)
+        {
+            assert(include_type == D3D_INCLUDE_LOCAL);
+
+            auto it = _parent_entries.find(parent_data);
+            const cl7::u8string& directory = it == _parent_entries.end() ? _root_directory : it->second.directory;
+            cl7::u8string file_path = directory + cl7::u8string(cl7::strings::reinterpret_utf8(filename));
+            std::ranges::replace(file_path, u8'/', u8'\\');
+
+            cl7::u8string code = Include::read_source_code(file_path);
+            if (code.empty())
+                return E_FAIL;
+
+            *data_out = static_cast<const void*>(code.data());
+            *bytes_out = static_cast<unsigned>(code.size());
+
+            _parent_entries.emplace(*data_out, ParentEntry{.directory=Include::directory(file_path), .code=std::move(code)});
+
+            assert(*data_out == _parent_entries[*data_out].code.data());
+
+            return S_OK;
+        }
+
+        HRESULT _close_impl(const void* data)
+        {
+            auto it = _parent_entries.find(data);
+            assert(it != _parent_entries.end());
+            _parent_entries.erase(it);
+
+            return S_OK;
         }
     }; // struct Include
 

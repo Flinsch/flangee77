@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_SHADERS_CONSTANTBUFFER_H
 #define XL7_GRAPHICS_SHADERS_CONSTANTBUFFER_H
 #include "../../resources/Resource.h"
@@ -16,7 +15,7 @@ class ShaderManager;
 
 
 
-class ConstantBuffer // NOLINT(*-virtual-class-destructor)
+class ConstantBuffer
     : public resources::Resource
 {
 

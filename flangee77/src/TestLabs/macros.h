@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TL7_MACROS_H
 #define TL7_MACROS_H
 

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_IMPL_D3D9_ERRORS_H
 #define XL7_GRAPHICS_IMPL_D3D9_ERRORS_H
 

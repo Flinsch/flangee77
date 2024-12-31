@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_BYTESPAN_H
 #define CL7_BYTESPAN_H
 

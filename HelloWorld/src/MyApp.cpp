@@ -197,6 +197,7 @@ namespace helloworld {
                     LOG_TYPE(cb->name + u8"\tcb" + cl7::to_string(cb->index) + u8" (" + cl7::to_string(cb->layout.calculate_size()) + u8")", cl7::logging::LogType::Item);
 
                 std::vector<const xl7::graphics::shaders::ConstantDeclaration*> constant_declarations;
+                constant_declarations.reserve(cb->layout.constant_declarations.size());
                 for (const auto& constant_declaration : cb->layout.constant_declarations)
                     constant_declarations.push_back(&constant_declaration);
                 std::ranges::sort(constant_declarations, [](const auto& a, const auto& b) {

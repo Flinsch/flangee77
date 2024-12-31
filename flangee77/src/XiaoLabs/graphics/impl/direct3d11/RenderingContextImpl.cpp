@@ -433,7 +433,7 @@ namespace xl7::graphics::impl::direct3d11 {
      */
     bool RenderingContextImpl::_prepare_shader_constant_states(const ResolvedAbstractShaderStates& resolved_shader_states, HardwareStates::AbstractShaderStates& hardware_shader_states)
     {
-        ::memset(static_cast<void*>(hardware_shader_states.constant_buffer_wrappers), 0, sizeof(hardware_shader_states.constant_buffer_wrappers));
+        std::fill(std::begin(hardware_shader_states.constant_buffer_wrappers), std::end(hardware_shader_states.constant_buffer_wrappers), nullptr);
         if (!resolved_shader_states.abstract_shader)
             return true;
 

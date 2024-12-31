@@ -135,12 +135,8 @@ namespace xl7::graphics::impl::direct3d9::shaders {
                         continue;
                     default:
                         assert(false);
-                        constant_type = xl7::graphics::shaders::ConstantType(-1);
+                        continue;
                 } // switch parameter type
-
-                assert(constant_type != xl7::graphics::shaders::ConstantType(-1));
-                if (constant_type == xl7::graphics::shaders::ConstantType(-1))
-                    continue;
 
                 xl7::graphics::shaders::ConstantClass constant_class;
                 switch (ctype->Class)
@@ -157,12 +153,8 @@ namespace xl7::graphics::impl::direct3d9::shaders {
                         break;
                     default:
                         assert(false);
-                        constant_class = xl7::graphics::shaders::ConstantClass{-1};
+                        continue;
                 } // switch parameter class
-
-                assert(constant_class != xl7::graphics::shaders::ConstantClass{-1});
-                if (constant_class == xl7::graphics::shaders::ConstantClass{-1})
-                    continue;
 
                 xl7::graphics::shaders::ConstantDeclaration constant_declaration;
                 constant_declaration.name = cl7::u8string{reinterpret_cast<const cl7::u8char_type*>(ctab_ptr + cinfo[i].Name)};

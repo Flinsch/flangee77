@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_IRESOURCEFACTORY_H
 #define XL7_GRAPHICS_IRESOURCEFACTORY_H
 #include "./surfaces/ISurfaceFactory.h"

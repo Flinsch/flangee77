@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_SHADERS_SHADERMANAGER_H
 #define XL7_GRAPHICS_SHADERS_SHADERMANAGER_H
 #include "../../resources/ResourceManager.h"
@@ -13,7 +12,7 @@ namespace shaders {
 
 
 
-class ShaderManager final // NOLINT(*-virtual-class-destructor)
+class ShaderManager final
     : public resources::ResourceManager
 {
 

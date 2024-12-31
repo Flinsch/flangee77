@@ -1,4 +1,3 @@
-#pragma once
 #ifndef ML7_VECTOR2_H
 #define ML7_VECTOR2_H
 

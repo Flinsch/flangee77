@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TL7_SUBCASECONTEXT_H
 #define TL7_SUBCASECONTEXT_H
 

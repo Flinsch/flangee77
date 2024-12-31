@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_IMPL_D3D11_MESHES_INDEXBUFFERIMPL_H
 #define XL7_GRAPHICS_IMPL_D3D11_MESHES_INDEXBUFFERIMPL_H
 #include "../../../meshes/IndexBuffer.h"

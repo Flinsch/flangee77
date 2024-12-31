@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TL7_SIGNATURE_H
 #define TL7_SIGNATURE_H
 

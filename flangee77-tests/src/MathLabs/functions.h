@@ -1,4 +1,3 @@
-#pragma once
 #ifndef F77_TESTS_ML7_FUNCTIONS_H
 #define F77_TESTS_ML7_FUNCTIONS_H
 
@@ -6,7 +5,7 @@
 
 #include <TestLabs/TestSuite.h>
 
-#include "../shared.h"
+#include "./shared.h"
 
 
 

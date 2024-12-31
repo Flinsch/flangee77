@@ -200,7 +200,7 @@ namespace xl7::graphics::shaders {
             for (const auto& constant_declaration : constant_declarations)
             {
                 const bool is_scalar = constant_declaration.constant_class == xl7::graphics::shaders::ConstantClass::Scalar;
-                const bool is_vector = constant_declaration.constant_class == xl7::graphics::shaders::ConstantClass::Vector;
+                //const bool is_vector = constant_declaration.constant_class == xl7::graphics::shaders::ConstantClass::Vector;
                 const bool is_matrix = constant_declaration.constant_class == xl7::graphics::shaders::ConstantClass::MatrixRows || constant_declaration.constant_class == xl7::graphics::shaders::ConstantClass::MatrixColumns;
 
                 assert((constant_declaration.row_count == 1 && !is_matrix) || (constant_declaration.row_count > 1 && is_matrix));

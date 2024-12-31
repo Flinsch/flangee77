@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_RENDERINGDEVICE_H
 #define XL7_GRAPHICS_RENDERINGDEVICE_H
 
@@ -22,7 +21,7 @@ namespace xl7::graphics {
 
 
 
-class RenderingDevice // NOLINT(*-virtual-class-destructor)
+class RenderingDevice
 {
 
 public:

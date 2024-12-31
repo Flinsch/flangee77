@@ -17,10 +17,10 @@ using namespace helloworld;
 #pragma warning(disable: 4074) // Disable "initializers put in compiler reserved initialization area".
 #pragma init_seg(compiler) // Global objects in this file get constructed very early on.
 struct CrtBreakAllocSetter {
-    CrtBreakAllocSetter() {
+    CrtBreakAllocSetter() { // NOLINT(*-use-equals-default)
         //_crtBreakAlloc = <request_number>;
     }
-} g_crtBreakAllocSetter;
+} const g_crtBreakAllocSetter;
 #endif // _DEBUG
 
 
@@ -28,7 +28,7 @@ struct CrtBreakAllocSetter {
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
+                     _In_ int       nShowCmd)
 {
 #ifdef _DEBUG
     //_CrtSetDbgFlag(_CrtSetDbgFlag(_CRTDBG_REPORT_FLAG) | _CRTDBG_LEAK_CHECK_DF);
@@ -39,7 +39,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     //_CrtSetBreakAlloc(<request_number>);
 #endif // _DEBUG
 
-    auto app = std::make_unique<MyApp>(__argc, __targv);
+    auto app = std::make_unique<MyApp>(__argc, __wargv);
     app->run();
 
     const int exit_code = app->get_exit_code();

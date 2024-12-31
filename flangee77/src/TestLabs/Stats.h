@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TL7_STATS_H
 #define TL7_STATS_H
 

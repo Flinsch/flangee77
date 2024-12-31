@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_FILESYSTEM_H
 #define CL7_FILESYSTEM_H
 

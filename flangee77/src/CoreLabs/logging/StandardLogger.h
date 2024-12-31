@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_LOGGING_STANDARDLOGGER_H
 #define CL7_LOGGING_STANDARDLOGGER_H
 #include <CoreLabs/creational/Singleton.h>
@@ -30,7 +29,7 @@ public:
 
 private:
     StandardLogger();
-    ~StandardLogger() override = default;
+    ~StandardLogger() noexcept override = default;
 
     Logger _logger;
 

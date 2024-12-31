@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_SHADERS_CODEDATAPROVIDER_H
 #define XL7_GRAPHICS_SHADERS_CODEDATAPROVIDER_H
 #include "../../resources/DefaultDataProvider.h"

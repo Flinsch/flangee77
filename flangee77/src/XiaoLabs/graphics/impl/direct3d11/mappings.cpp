@@ -18,9 +18,8 @@ namespace xl7::graphics::impl::direct3d11::mappings {
             return D3D11_USAGE_DYNAMIC;
         default:
             assert(false);
+            return D3D11_USAGE_DEFAULT;
         }
-
-        return D3D11_USAGE_DEFAULT;
     }
 
     DXGI_FORMAT _dxgi_format_from(PixelFormat pixel_format, ChannelOrder channel_order)
@@ -167,9 +166,8 @@ namespace xl7::graphics::impl::direct3d11::mappings {
 
         default:
             assert(false);
+            return DXGI_FORMAT_UNKNOWN;
         }
-
-        return DXGI_FORMAT_UNKNOWN;
     }
 
     std::pair<PixelFormat, ChannelOrder> _map_dxgi_format(DXGI_FORMAT d3d_format, ChannelOrder preferred_channel_order)
@@ -294,9 +292,10 @@ namespace xl7::graphics::impl::direct3d11::mappings {
 
         case DXGI_FORMAT_A8_UNORM:
             return {PixelFormat::A8_UNORM, preferred_channel_order};
-        }
 
-        return {PixelFormat::UNKNOWN, preferred_channel_order};
+        default:
+            return {PixelFormat::UNKNOWN, preferred_channel_order};
+        }
     }
 
     D3D11_COMPARISON_FUNC _d3d_comparison_func_from(ComparisonFunction comparison_function)

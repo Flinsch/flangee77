@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_RESOURCES_RESOURCE_H
 #define XL7_RESOURCES_RESOURCE_H
 
@@ -20,7 +19,7 @@ class ResourceManager;
 
 
 
-class Resource // NOLINT(*-virtual-class-destructor)
+class Resource
 {
 
 public:

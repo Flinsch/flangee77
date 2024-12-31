@@ -1,4 +1,3 @@
-#pragma once
 #ifndef HELLOWORLD_MYAPP_H
 #define HELLOWORLD_MYAPP_H
 #include <ProgLabs/Application.h>

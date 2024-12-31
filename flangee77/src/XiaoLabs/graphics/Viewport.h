@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_VIEWPORT_H
 #define XL7_GRAPHICS_VIEWPORT_H
 

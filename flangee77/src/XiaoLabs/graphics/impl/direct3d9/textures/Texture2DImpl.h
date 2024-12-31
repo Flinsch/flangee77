@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_IMPL_D3D9_TEXTURES_TEXTURE2DIMPL_H
 #define XL7_GRAPHICS_IMPL_D3D9_TEXTURES_TEXTURE2DIMPL_H
 #include "../../../textures/Texture2D.h"

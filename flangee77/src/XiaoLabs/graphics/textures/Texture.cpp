@@ -133,7 +133,7 @@ namespace xl7::graphics::textures {
             // Perform image format conversion.
             images::Image source_image(image_data_provider.get_image_desc(), std::move(image_data));
             images::Image target_image = images::ImageConverter::convert_image(source_image, _desc.pixel_format, _channel_order);
-            target_image.swap(_access_data());
+            target_image.swap_data(_access_data());
         }
 
         return true;

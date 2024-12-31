@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_IO_SEEKMODE_H
 #define CL7_IO_SEEKMODE_H
 

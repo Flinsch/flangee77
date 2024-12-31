@@ -1,4 +1,3 @@
-#pragma once
 #ifndef F77_TESTS_ML7_VECTOR2_H
 #define F77_TESTS_ML7_VECTOR2_H
 
@@ -6,14 +5,7 @@
 
 #include <TestLabs/TestSuite.h>
 
-#include "../shared.h"
-
-
-
-namespace tl7::internals {
-    inline
-    cl7::u8string to_string(const ml7::Vector2& v) { return u8"{ " + cl7::to_string(v.x) + u8", " + cl7::to_string(v.y) + u8" }"; }
-}
+#include "./shared.h"
 
 
 

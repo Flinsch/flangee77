@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_RESOURCES_DATAPROVIDER_H
 #define XL7_RESOURCES_DATAPROVIDER_H
 

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_TEXTURES_TEXTURE_H
 #define XL7_GRAPHICS_TEXTURES_TEXTURE_H
 #include "../../resources/Resource.h"
@@ -20,7 +19,7 @@ class TextureManager;
 
 
 
-class Texture // NOLINT(*-virtual-class-destructor)
+class Texture
     : public resources::Resource
 {
 

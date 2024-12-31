@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_IO_IFILE_H
 #define CL7_IO_IFILE_H
 #include "./irom.h"

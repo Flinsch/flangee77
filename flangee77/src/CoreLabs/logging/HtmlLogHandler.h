@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_LOGGING_HTMLLOGHANDLER_H
 #define CL7_LOGGING_HTMLLOGHANDLER_H
 #include "./AbstractLogHandler.h"
@@ -26,18 +25,18 @@ public:
     HtmlLogHandler(HtmlLogHandler&&) = delete;
     HtmlLogHandler& operator=(HtmlLogHandler&&) = delete;
 
-    ~HtmlLogHandler() override;
+    ~HtmlLogHandler() noexcept override;
 
 
 
 private:
 
-    struct Block
+    struct Block // NOLINT(cppcoreguidelines-special-member-functions)
     {
         cl7::u8string block_class;
 
         Block(cl7::u8string_view block_class);
-        ~Block();
+        ~Block() noexcept;
     };
 
     using BlockPtr = std::unique_ptr<Block>;

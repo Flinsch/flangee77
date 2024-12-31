@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_ROOT_H
 #define CL7_ROOT_H
 

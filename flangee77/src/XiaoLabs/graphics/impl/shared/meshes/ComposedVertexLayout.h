@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_IMPL_SHARED_MESHES_COMPOSEDVERTEXLAYOUT_H
 #define XL7_GRAPHICS_IMPL_SHARED_MESHES_COMPOSEDVERTEXLAYOUT_H
 
@@ -15,12 +14,12 @@ namespace xl7::graphics::impl::shared::meshes {
 struct ComposedVertexLayout
 {
 
-    xl7::graphics::meshes::VertexLayout vertex_layouts[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];
-    unsigned instance_data_step_rates[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];
-    unsigned stream_count;
+    xl7::graphics::meshes::VertexLayout vertex_layouts[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS] = {};
+    unsigned instance_data_step_rates[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS] = {};
+    unsigned stream_count = 0;
 
 
-    ComposedVertexLayout();
+    ComposedVertexLayout() = default;
     ComposedVertexLayout(const VertexBufferBinding& vertex_buffer_binding);
 
     bool operator==(const ComposedVertexLayout& rhs) const noexcept;

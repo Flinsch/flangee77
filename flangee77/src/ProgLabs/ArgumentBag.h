@@ -1,4 +1,3 @@
-#pragma once
 #ifndef PL7_ARGUMENTBAG_H
 #define PL7_ARGUMENTBAG_H
 

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TL7_REPORTING_COUTLOGGER_H
 #define TL7_REPORTING_COUTLOGGER_H
 #include "./IListener.h"

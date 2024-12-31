@@ -29,9 +29,6 @@ namespace dl7::syntax {
         case Diagnostic::Severity::Warning:
             ++_warning_count;
             break;
-        default:
-            // Nothing to do here.
-            break;
         }
     }
 

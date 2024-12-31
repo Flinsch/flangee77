@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_GRAPHICS_MESHES_VERTEXDATAPROVIDER_H
 #define XL7_GRAPHICS_MESHES_VERTEXDATAPROVIDER_H
 #include "../../resources/DefaultDataProvider.h"

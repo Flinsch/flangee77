@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_CONFIG_H
 #define XL7_CONFIG_H
 

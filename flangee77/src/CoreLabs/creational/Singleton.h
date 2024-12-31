@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_CREATIONAL_SINGLETON_H
 #define CL7_CREATIONAL_SINGLETON_H
 
@@ -12,7 +11,7 @@ namespace cl7::creational {
 
 
 
-class SingletonBase // NOLINT(*-virtual-class-destructor)
+class SingletonBase
 {
     friend class SingletonManager;
 
@@ -75,7 +74,7 @@ public:
 
 
 template <class TSingleton>
-class Singleton // NOLINT(*-virtual-class-destructor)
+class Singleton
     : public SingletonBase
 {
 

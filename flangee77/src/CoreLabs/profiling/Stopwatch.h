@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_PROFILING_STOPWATCH_H
 #define CL7_PROFILING_STOPWATCH_H
 
@@ -82,9 +81,9 @@ private:
     /** The end point in time. */
     std::chrono::steady_clock::time_point _end;
     /** The cumulative duration of pauses during the stopwatch's operation. */
-    std::chrono::steady_clock::duration _pause;
+    std::chrono::steady_clock::duration _pause = {};
     /** The flag that indicates whether the stopwatch is running (true) or stopped/paused (false). */
-    bool _is_running;
+    bool _is_running = false;
 
 }; // class Stopwatch
 

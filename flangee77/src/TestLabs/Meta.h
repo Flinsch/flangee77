@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TL7_META_H
 #define TL7_META_H
 

@@ -116,8 +116,6 @@ namespace xl7::graphics::impl::direct3d11::meshes {
         auto* d3d_device_context = GraphicsSystem::instance().get_rendering_device()->get_primary_context_impl<RenderingContextImpl>()->get_raw_d3d_device_context();
         assert(d3d_device_context);
 
-        bool entire = data_provider.get_offset() == 0 && data_provider.get_size() == static_cast<size_t>(get_size());
-
         if (get_desc().usage == resources::ResourceUsage::Dynamic)
         {
             D3D11_MAP map_type;

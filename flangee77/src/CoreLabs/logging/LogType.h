@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CL7_LOGGING_LOGTYPE_H
 #define CL7_LOGGING_LOGTYPE_H
 

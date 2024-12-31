@@ -1,4 +1,3 @@
-#pragma once
 #ifndef XL7_RESOURCES_RESOURCEMANAGER_H
 #define XL7_RESOURCES_RESOURCEMANAGER_H
 
@@ -16,7 +15,7 @@ namespace xl7::resources {
 
 
 
-class ResourceManager // NOLINT(*-virtual-class-destructor)
+class ResourceManager
 {
 
 public:

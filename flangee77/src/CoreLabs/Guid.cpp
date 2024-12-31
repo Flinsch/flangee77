@@ -1,4 +1,4 @@
-#include "guid.h"
+#include "Guid.h"
 
 #ifdef _WIN32
 #include <objbase.h>
