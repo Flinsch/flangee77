@@ -29,4 +29,6 @@ target_sources(flangee77
     syntax/TerminalSymbolCollection.cpp
     syntax/TerminalSymbolCollection.h
     syntax/Token.h
+    syntax/Vocabulary.cpp
+    syntax/Vocabulary.h
 )

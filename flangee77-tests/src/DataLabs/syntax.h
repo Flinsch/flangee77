@@ -2,6 +2,7 @@
 #define F77_TESTS_DL7_SYNTAX_H
 
 #include <DataLabs/syntax/GenericLexer.h>
+#include <DataLabs/syntax/Vocabulary.h>
 
 #include <TestLabs/TestSuite.h>
 
@@ -68,6 +69,59 @@ TESTLABS_CASE( u8"DataLabs:  syntax:  GenericLexer:  tokenize" )
     TESTLABS_CHECK_EQ( tokens[22].symbol_id, 13 );
     TESTLABS_CHECK_EQ( tokens[23].symbol_id, 7 );
     TESTLABS_CHECK_EQ( tokens[24].symbol_id, 0 );
+}
+
+
+
+TESTLABS_CASE( u8"DataLabs:  syntax:  Vocabulary" )
+{
+    dl7::syntax::Vocabulary vocabulary;
+    vocabulary.add_symbol( 1, u8"directive" );
+    vocabulary.add_symbol( 2, u8"left round bracket" );
+    vocabulary.add_symbol( 3, u8"right round bracket" );
+    vocabulary.add_symbol( 4, u8"left square bracket" );
+    vocabulary.add_symbol( 5, u8"right square bracket" );
+    vocabulary.add_symbol( 6, u8"left curly bracket" );
+    vocabulary.add_symbol( 7, u8"right curly bracket" );
+    vocabulary.add_symbol( 8, u8"left angle bracket" );
+    vocabulary.add_symbol( 9, u8"right angle bracket" );
+    vocabulary.add_symbol( 10, u8"comma" );
+    vocabulary.add_symbol( 11, u8"dot" );
+    vocabulary.add_symbol( 12, u8"colon" );
+    vocabulary.add_symbol( 13, u8"semicolon" );
+    vocabulary.add_symbol( 14, u8"flow" );
+    vocabulary.add_symbol( 15, u8"type" );
+    vocabulary.add_symbol( 16, u8"identifier" );
+    vocabulary.add_symbol( 17, u8"operator" );
+    vocabulary.add_symbol( 18, u8"integer number" );
+    vocabulary.add_symbol( 19, u8"floating point number" );
+    vocabulary.add_symbol( 20, u8"character" );
+    vocabulary.add_symbol( 21, u8"string" );
+
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 7 ), u8"directive" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 2 ), u8"left round bracket" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 3 ), u8"right round bracket" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 4 ), u8"left square bracket" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 5 ), u8"right square bracket" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 6 ), u8"left curly bracket" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 7 ), u8"right curly bracket" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 8 ), u8"left angle bracket" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 9 ), u8"right angle bracket" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 10 ), u8"comma" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 11 ), u8"dot" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 12 ), u8"colon" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 13 ), u8"semicolon" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 14 ), u8"flow" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 15 ), u8"type" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 16 ), u8"identifier" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 17 ), u8"operator" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 18 ), u8"integer number" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 19 ), u8"floating point number" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 20 ), u8"character" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 21 ), u8"string" );
+
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 0 ), u8"" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 22 ), u8"" );
 }
 
 
