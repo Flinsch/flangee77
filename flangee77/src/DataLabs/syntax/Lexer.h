@@ -22,7 +22,7 @@ public:
     enum class WhitespaceHandling
     {
         Discard,
-        Perserve,
+        Preserve,
     };
 
     struct Options
