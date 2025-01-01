@@ -12,8 +12,8 @@ namespace tl7::internals {
 
     cl7::u8string to_string(const std::nullptr_t& null) { return {}; }
 
-    template <class Tstring>
-    static cl7::u8string _to_string(const Tstring& val)
+    template <class Tstring_or_view>
+    static cl7::u8string _to_string(const Tstring_or_view& val)
     {
         cl7::u8osstream oss;
         oss << std::hex << std::setfill('0');
@@ -51,6 +51,12 @@ namespace tl7::internals {
     cl7::u8string to_string(std::u8string_view val) { return _to_string(val); }
     cl7::u8string to_string(std::u16string_view val) { return _to_string(val); }
     cl7::u8string to_string(std::u32string_view val) { return _to_string(val); }
+
+    cl7::u8string to_string(const char* val) { return _to_string(std::string_view(val)); }
+    cl7::u8string to_string(const wchar_t* val) { return _to_string(std::wstring_view(val)); }
+    cl7::u8string to_string(const char8_t* val) { return _to_string(std::u8string_view(val)); }
+    cl7::u8string to_string(const char16_t* val) { return _to_string(std::u16string_view(val)); }
+    cl7::u8string to_string(const char32_t* val) { return _to_string(std::u32string_view(val)); }
 
 
 

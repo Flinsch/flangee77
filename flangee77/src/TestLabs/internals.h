@@ -95,6 +95,12 @@ namespace tl7::internals {
     cl7::u8string to_string(std::u16string_view val);
     cl7::u8string to_string(std::u32string_view val);
 
+    cl7::u8string to_string(const char* val);
+    cl7::u8string to_string(const wchar_t* val);
+    cl7::u8string to_string(const char8_t* val);
+    cl7::u8string to_string(const char16_t* val);
+    cl7::u8string to_string(const char32_t* val);
+
 
 
 } // namespace tl7::internals
