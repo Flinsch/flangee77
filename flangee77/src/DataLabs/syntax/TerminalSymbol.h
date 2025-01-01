@@ -1,5 +1,7 @@
-#ifndef DL7_SYNTAX_SYMBOL_H
-#define DL7_SYNTAX_SYMBOL_H
+#ifndef DL7_SYNTAX_TERMINALSYMBOL_H
+#define DL7_SYNTAX_TERMINALSYMBOL_H
+
+#include "./SymbolID.h"
 
 #include <CoreLabs/string.h>
 
@@ -14,18 +16,10 @@ namespace dl7::syntax {
 struct TerminalSymbol
 {
 
-    /**
-     * 0 is reserved for the "EOF" symbol. Any negative value indicates an
-     * unrecognized character. Custom IDs can have any positive value.
-     */
-    using ID = int;
-
-    /** The name of the symbol. */
-    cl7::u8string name;
     /** The terminal symbol ID. */
-    ID id;
+    SymbolID id;
 
-    TerminalSymbol(cl7::u8string_view name, ID id);
+    TerminalSymbol(SymbolID id);
     virtual ~TerminalSymbol() = default;
 
     virtual bool is_literal() const = 0;
@@ -42,7 +36,7 @@ struct LiteralSymbol
     /** The static string literal of the symbol. */
     cl7::u8string literal;
 
-    LiteralSymbol(cl7::u8string_view name, ID id, cl7::u8string_view literal);
+    LiteralSymbol(SymbolID id, cl7::u8string_view literal);
     ~LiteralSymbol() override = default;
 
     bool is_literal() const override { return true; }
@@ -67,8 +61,8 @@ struct PatternSymbol
     /** The (optional) literal prefix of the symbol. */
     cl7::u8string literal_prefix;
 
-    PatternSymbol(cl7::u8string_view name, ID id, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
-    PatternSymbol(cl7::u8string_view name, ID id, std::string_view pattern, cl7::u8string_view literal_prefix, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
+    PatternSymbol(SymbolID id, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
+    PatternSymbol(SymbolID id, std::string_view pattern, cl7::u8string_view literal_prefix, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
     ~PatternSymbol() override = default;
 
     bool is_literal() const override { return false; }
@@ -80,4 +74,4 @@ struct PatternSymbol
 
 } // namespace dl7::syntax
 
-#endif // DL7_SYNTAX_SYMBOL_H
+#endif // DL7_SYNTAX_TERMINALSYMBOL_H

@@ -33,7 +33,7 @@ private:
      * Performs a lexical analysis of the specified source text and returns the
      * symbol ID and the lexeme of the first/next token at the very beginning.
      */
-    std::pair<TerminalSymbol::ID, size_t> _recognize(cl7::u8string_view source) override;
+    std::pair<SymbolID, size_t> _recognize(cl7::u8string_view source) override;
 
     /**
      * Tries to match (the beginning of) the specified source text against the given

@@ -111,7 +111,7 @@ private:
      * Performs a lexical analysis of the specified source text and returns the
      * symbol ID and the lexeme of the first/next token at the very beginning.
      */
-    virtual std::pair<TerminalSymbol::ID, size_t> _recognize(cl7::u8string_view source) = 0;
+    virtual std::pair<SymbolID, size_t> _recognize(cl7::u8string_view source) = 0;
 
 
 

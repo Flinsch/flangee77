@@ -20,9 +20,13 @@ target_sources(flangee77
     syntax/Parser.cpp
     syntax/Parser.h
     syntax/ProductionRule.h
+    syntax/ProductionRuleCollection.cpp
+    syntax/ProductionRuleCollection.h
     syntax/SourceLocation.h
+    syntax/SymbolID.h
     syntax/TerminalSymbol.cpp
     syntax/TerminalSymbol.h
+    syntax/TerminalSymbolCollection.cpp
     syntax/TerminalSymbolCollection.h
     syntax/Token.h
 )

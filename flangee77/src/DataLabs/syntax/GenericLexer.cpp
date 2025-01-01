@@ -22,11 +22,11 @@ namespace dl7::syntax {
      * Performs a lexical analysis of the specified source text and returns the
      * symbol ID and the lexeme of the first/next token at the very beginning.
      */
-    std::pair<TerminalSymbol::ID, size_t> GenericLexer::_recognize(cl7::u8string_view source)
+    std::pair<SymbolID, size_t> GenericLexer::_recognize(cl7::u8string_view source)
     {
         assert(!source.empty());
 
-        std::pair<TerminalSymbol::ID, size_t> best_match = {-1, 1};
+        std::pair<SymbolID, size_t> best_match = {-1, 1};
         bool best_is_literal = false;
 
         for (size_t i = 0; i < _terminal_symbols->get_count(); ++i)
@@ -37,7 +37,7 @@ namespace dl7::syntax {
             if (length == 0)
                 continue;
 
-            // Apply longest match rule and prioritize literals over non-literals (i.e., patterns).
+            // Apply longest-match rule and prioritize literals over non-literals (i.e., patterns).
             if (best_match.first < 0 || length > best_match.second || (length == best_match.second && symbol.is_literal() && !best_is_literal))
             {
                 best_match = {symbol.id, length};

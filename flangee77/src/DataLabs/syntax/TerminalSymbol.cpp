@@ -19,16 +19,15 @@ namespace dl7::syntax {
 
 
 
-    TerminalSymbol::TerminalSymbol(cl7::u8string_view name, ID id)
-        : name(name)
-        , id(id)
+    TerminalSymbol::TerminalSymbol(SymbolID id)
+        : id(id)
     {
     }
 
 
 
-    LiteralSymbol::LiteralSymbol(cl7::u8string_view name, ID id, cl7::u8string_view literal)
-        : TerminalSymbol(name, id)
+    LiteralSymbol::LiteralSymbol(SymbolID id, cl7::u8string_view literal)
+        : TerminalSymbol(id)
         , literal(literal)
     {
     }
@@ -40,13 +39,13 @@ namespace dl7::syntax {
 
 
 
-    PatternSymbol::PatternSymbol(cl7::u8string_view name, ID id, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options, std::regex_constants::match_flag_type match_flags)
-        : PatternSymbol(name, id, pattern, {}, syntax_options, match_flags)
+    PatternSymbol::PatternSymbol(SymbolID id, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options, std::regex_constants::match_flag_type match_flags)
+        : PatternSymbol(id, pattern, {}, syntax_options, match_flags)
     {
     }
 
-    PatternSymbol::PatternSymbol(cl7::u8string_view name, ID id, std::string_view pattern, cl7::u8string_view literal_prefix, std::regex_constants::syntax_option_type syntax_options, std::regex_constants::match_flag_type match_flags)
-        : TerminalSymbol(name, id)
+    PatternSymbol::PatternSymbol(SymbolID id, std::string_view pattern, cl7::u8string_view literal_prefix, std::regex_constants::syntax_option_type syntax_options, std::regex_constants::match_flag_type match_flags)
+        : TerminalSymbol(id)
         , pattern(pattern)
         , syntax_options(syntax_options | std::regex_constants::optimize)
         , match_flags(match_flags | std::regex_constants::match_continuous)
