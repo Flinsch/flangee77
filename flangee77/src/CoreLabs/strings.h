@@ -10,22 +10,6 @@
 
 
 
-/**
- * In addition to what I have already said (see string.h), let me say a few words
- * regarding the functions provided here:
- * 
- * Within the given framework we want to provide some basic functionality to deal
- * with different encodings and Unicode transformation formats and to convert
- * between them. We do not want to reinvent the wheel or to push it further than
- * necessary, so we really only limit ourselves to selected aspects that the
- * framework uses internally itself, without having to include external libraries.
- * If you need more extensive or robust functionality, you could/should include and
- * use 3rd party libraries in your projects yourself, like International Components
- * for Unicode (ICU) or Boost.Locale, for example.
- */
-
-
-
 namespace cl7::strings {
 
 
