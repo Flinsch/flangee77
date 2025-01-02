@@ -98,7 +98,7 @@ TESTLABS_CASE( u8"DataLabs:  syntax:  Vocabulary" )
     vocabulary.add_symbol( 20, u8"character" );
     vocabulary.add_symbol( 21, u8"string" );
 
-    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 7 ), u8"directive" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 1 ), u8"directive" );
     TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 2 ), u8"left round bracket" );
     TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 3 ), u8"right round bracket" );
     TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 4 ), u8"left square bracket" );
