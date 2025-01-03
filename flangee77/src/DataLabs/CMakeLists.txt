@@ -13,12 +13,14 @@ target_sources(flangee77
     syntax/Diagnostics.h
     syntax/GenericLexer.cpp
     syntax/GenericLexer.h
-    syntax/Grammar.cpp
     syntax/Grammar.h
+    syntax/GrammarAnalyzer.cpp
+    syntax/GrammarAnalyzer.h
     syntax/Lexer.cpp
     syntax/Lexer.h
     syntax/Parser.cpp
     syntax/Parser.h
+    syntax/ProductionRule.cpp
     syntax/ProductionRule.h
     syntax/ProductionRuleCollection.cpp
     syntax/ProductionRuleCollection.h

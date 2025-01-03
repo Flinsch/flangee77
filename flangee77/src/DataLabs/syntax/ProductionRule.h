@@ -20,6 +20,14 @@ struct ProductionRule
     /** The sequence of terminal/non-terminal symbols (right-hand side of the production rule). */
     std::vector<SymbolID> sequence;
 
+
+
+    /**
+     * Checks whether the specified symbol is used in the sequence of this
+     * production rule.
+     */
+    bool is_used(SymbolID symbol_id) const;
+
 }; // struct ProductionRule
 
 

@@ -3,6 +3,8 @@
 
 #include "./TerminalSymbol.h"
 
+#include <CoreLabs/iterator.h>
+
 #include <vector>
 
 
@@ -11,10 +13,22 @@ namespace dl7::syntax {
 
 
 
+/**
+ * A "set" of terminal symbols and their lexical compositions for BNF-like grammars.
+ * A symbol can be defined multiple times, for example to resolve complex regular
+ * expressions or to replace those patterns with literal variants.
+ */
 class TerminalSymbolCollection
 {
 
 public:
+    using const_iterator = cl7::const_ptr_iterator<TerminalSymbol>;
+
+    const_iterator begin() const { return {_terminal_symbols.cbegin()}; }
+    const_iterator end() const { return {_terminal_symbols.cend()}; }
+
+
+
     /**
      * Adds the specified terminal symbol to the collection.
      */
@@ -54,6 +68,11 @@ public:
      * Returns the terminal symbol identified by the given index.
      */
     const TerminalSymbol& get(size_t index) const { assert(index < _terminal_symbols.size()); return *_terminal_symbols[index]; }
+
+    /**
+     * Checks whether the supposed terminal symbol is defined.
+     */
+    bool is_defined(SymbolID id) const;
 
 
 

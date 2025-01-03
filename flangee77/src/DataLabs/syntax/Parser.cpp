@@ -30,7 +30,7 @@ namespace dl7::syntax {
      */
     bool Parser::parse(cl7::u8string_view text)
     {
-        _grammar->config;
+
         return false;
     }
 
@@ -39,7 +39,7 @@ namespace dl7::syntax {
      */
     bool Parser::parse(const std::vector<Token>& tokens)
     {
-        _grammar->config;
+
         return false;
     }
 

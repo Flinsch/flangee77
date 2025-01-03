@@ -29,9 +29,8 @@ namespace dl7::syntax {
         std::pair<SymbolID, size_t> best_match = {-1, 1};
         bool best_is_literal = false;
 
-        for (size_t i = 0; i < _terminal_symbols->get_count(); ++i)
+        for (const auto& symbol : *_terminal_symbols)
         {
-            const TerminalSymbol& symbol = _terminal_symbols->get(i);
             const size_t length = _try_match(source, symbol);
 
             if (length == 0)

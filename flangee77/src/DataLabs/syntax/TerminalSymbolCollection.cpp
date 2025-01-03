@@ -1,5 +1,7 @@
 #include "TerminalSymbolCollection.h"
 
+#include <algorithm>
+
 
 
 namespace dl7::syntax {
@@ -36,6 +38,16 @@ namespace dl7::syntax {
     void TerminalSymbolCollection::add_pattern(SymbolID id, std::string_view pattern, cl7::u8string_view literal_prefix, std::regex_constants::syntax_option_type syntax_options, std::regex_constants::match_flag_type match_flags)
     {
         add(std::make_unique<PatternSymbol>(id, pattern, literal_prefix, syntax_options, match_flags));
+    }
+
+    /**
+     * Checks whether the supposed terminal symbol is defined.
+     */
+    bool TerminalSymbolCollection::is_defined(SymbolID id) const
+    {
+        return std::ranges::any_of(_terminal_symbols, [id](const auto& terminal_symbol_ptr) {
+            return terminal_symbol_ptr->id == id;
+        });
     }
 
 
