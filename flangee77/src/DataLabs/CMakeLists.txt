@@ -8,6 +8,14 @@ target_sources(flangee77
     compression/Deflate.cpp
     compression/Deflate.h
 
+    json/factory.cpp
+    json/factory.h
+    json/json.cpp
+    json/json.h
+    json/object.cpp
+    json/object.h
+    json/types.h
+
     syntax/Diagnostic.h
     syntax/Diagnostics.cpp
     syntax/Diagnostics.h
