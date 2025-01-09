@@ -6,6 +6,7 @@ target_sources(flangee77_tests
 
     CoreLabs/bits.h
     CoreLabs/Guid.h
+    CoreLabs/ordered_map.h
     CoreLabs/strings.h
     CoreLabs/Version.h
 

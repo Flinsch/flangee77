@@ -3,6 +3,7 @@
 #include <CoreLabs/logging.h>
 
 #include "./CoreLabs/bits.h"
+#include "./CoreLabs/ordered_map.h"
 #include "./CoreLabs/strings.h"
 #include "./CoreLabs/Guid.h"
 #include "./CoreLabs/Version.h"

@@ -62,6 +62,7 @@ ImplementationFileExtensions: ['cpp']
 HeaderFilterRegex: '.*flangee77.*'
 FormatStyle: file
 CheckOptions:
+  cppcoreguidelines-rvalue-reference-param-not-moved.AllowPartialMove: true
   cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor: true
   readability-implicit-bool-conversion.AllowIntegerConditions: true
   readability-implicit-bool-conversion.AllowPointerConditions: true
