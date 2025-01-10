@@ -108,7 +108,7 @@ public:
     {
         _vector = other._vector;
         _compare.comp = other._compare.comp;
-        _table = {_compare};
+        _table = table_type(_compare);
         _rebuild_lookup_table();
         return *this;
     }
@@ -117,7 +117,7 @@ public:
     {
         _vector = std::move(other._vector);
         _compare.comp = other._compare.comp;
-        _table = {_compare};
+        _table = table_type(_compare);
         _rebuild_lookup_table();
         return *this;
     }
