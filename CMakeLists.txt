@@ -4,6 +4,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE BOOL "Generate compile_commands.json"
 
 project(flangee77)
 
+enable_testing()
+
 set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(flangee77)
