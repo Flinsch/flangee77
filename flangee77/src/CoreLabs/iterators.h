@@ -40,7 +40,7 @@ private:
 
 
 template <typename Titem, typename Tptr = std::unique_ptr<Titem>, typename Tcontainer = std::vector<Tptr>>
-class const_ptr_iterator
+class const_ptr_forward_iterator
 {
 public:
     using iterator_category = std::forward_iterator_tag;
@@ -49,18 +49,18 @@ public:
     using pointer = const Titem*;
     using reference = const Titem&;
 
-    const_ptr_iterator(typename Tcontainer::const_iterator it) : _it(it) {}
+    const_ptr_forward_iterator(typename Tcontainer::const_iterator it) : _it(it) {}
 
     reference operator*() const { return **_it; }
     pointer operator->() const { return _it->get(); }
-    const_ptr_iterator& operator++() { ++_it; return *this; }
-    const_ptr_iterator operator++(int) { const_ptr_iterator it = *this; ++(*this); return it; }
-    friend bool operator==(const const_ptr_iterator& a, const const_ptr_iterator& b) noexcept { return a._it == b._it; }
-    friend bool operator!=(const const_ptr_iterator& a, const const_ptr_iterator& b) noexcept { return !(a == b); }
+    const_ptr_forward_iterator& operator++() { ++_it; return *this; }
+    const_ptr_forward_iterator operator++(int) { const_ptr_forward_iterator it = *this; ++(*this); return it; }
+    friend bool operator==(const const_ptr_forward_iterator& a, const const_ptr_forward_iterator& b) noexcept { return a._it == b._it; }
+    friend bool operator!=(const const_ptr_forward_iterator& a, const const_ptr_forward_iterator& b) noexcept { return !(a == b); }
 
 private:
     typename Tcontainer::const_iterator _it;
-}; // class const_ptr_iterator
+}; // class const_ptr_forward_iterator
 
 
 

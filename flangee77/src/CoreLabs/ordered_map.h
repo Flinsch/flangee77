@@ -1,7 +1,7 @@
 #ifndef CL7_ORDEREDMAP_H
 #define CL7_ORDEREDMAP_H
 
-#include <CoreLabs/iterator.h>
+#include <CoreLabs/iterators.h>
 
 #include <set>
 #include <vector>
@@ -12,7 +12,7 @@ namespace cl7 {
 
 
 
-template <typename Key, typename T, typename Compare = std::less<Key>, typename Allocator = std::allocator<std::pair<Key, T>>>
+template <typename Key, typename T, typename KeyView = Key, typename Compare = std::less<KeyView>, typename Allocator = std::allocator<std::pair<Key, T>>>
 class ordered_map
 {
 
@@ -166,7 +166,7 @@ public:
     /** Returns the maximum possible number of elements. */
     size_type max_size() const noexcept
     {
-        return (std::min)(_vector.max_size(), _table.max_size());
+        return (std::min)((std::min)(_vector.max_size(), _table.max_size()), Lookup::max_index);
     }
 
     /** Returns the number of elements that can be held in currently allocated storage. */
@@ -189,29 +189,27 @@ public:
 
 
     /** Finds element with specific key. */
-    iterator find(const Key& key)
+    iterator find(const KeyView& key)
     {
-        Lookup lookup{&key};
-        auto it = _table.find(lookup);
+        auto it = _table.find(Lookup{key});
         if (it == _table.end())
             return end();
         return {_vector.data() + it->index};
     }
 
     /** Finds element with specific key. */
-    const_iterator find(const Key& key) const
+    const_iterator find(const KeyView& key) const
     {
-        Lookup lookup{&key};
-        auto it = _table.find(lookup);
+        auto it = _table.find(Lookup{key});
         if (it == _table.end())
             return cend();
         return {_vector.data() + it->index};
     }
 
     /** Checks if the container contains element with specific key. */
-    bool contains(const Key& key) const
+    bool contains(const KeyView& key) const
     {
-        return _table.contains(Lookup{&key});
+        return _table.contains(Lookup{key});
     }
 
 
@@ -228,7 +226,7 @@ public:
     std::pair<iterator, bool> insert(Key_&& key, T_&& value)
     {
         Key tmp{std::forward<Key_>(key)};
-        Lookup lookup{&tmp};
+        Lookup lookup{tmp};
         auto it = _table.lower_bound(lookup);
         if (it != _table.end() && !_table.key_comp()(lookup, it->index))
             return _update_and_return_iterator_false(it, std::forward<T_>(value));
@@ -239,7 +237,7 @@ public:
     /** Inserts elements. */
     std::pair<iterator, bool> insert(const value_type& value)
     {
-        Lookup lookup{&value.first};
+        Lookup lookup{value.first};
         auto it = _table.lower_bound(lookup);
         if (it != _table.end() && !_table.key_comp()(lookup, it->index))
             return _update_and_return_iterator_false(it, value.second);
@@ -251,7 +249,7 @@ public:
     std::pair<iterator, bool> insert(value_type&& value)
     {
         Key tmp{std::move(value.first)};
-        Lookup lookup{&tmp};
+        Lookup lookup{tmp};
         auto it = _table.lower_bound(lookup);
         if (it != _table.end() && !_table.key_comp()(lookup, it->index))
             return _update_and_return_iterator_false(it, std::move(value.second));
@@ -269,7 +267,7 @@ public:
             if constexpr (std::is_same_v<allocator_type, std::allocator<std::pair<Key, T>>>)
             {
                 value_type value{std::forward<Args>(args)...};
-                Lookup lookup(&value.first);
+                Lookup lookup{value.first};
                 auto it = _table.lower_bound(lookup);
                 if (it != _table.end() && !_table.key_comp()(lookup, it->index))
                     return _update_and_return_iterator_false(it, std::move(value.second));
@@ -301,10 +299,9 @@ public:
     }
 
     /** Erases elements. */
-    size_type erase(const Key& key)
+    size_type erase(const KeyView& key)
     {
-        Lookup lookup{&key};
-        auto it = _table.find(lookup);
+        auto it = _table.find(Lookup{key});
         if (it == _table.end())
             return 0;
         _erase(it->index);
@@ -325,18 +322,18 @@ public:
 
 
     /** Access specified element with bounds checking. */
-    T& at(const Key& key)
+    T& at(const KeyView& key)
     {
-        Lookup lookup{&key};
+        Lookup lookup{key};
         auto it = _table.find(lookup);
         size_t index = it == _table.end() ? lookup.index : it->index;
         return _vector.at(index);
     }
 
     /** Access specified element with bounds checking. */
-    const T& at(const Key& key) const
+    const T& at(const KeyView& key) const
     {
-        Lookup lookup{&key};
+        Lookup lookup{key};
         auto it = _table.find(lookup);
         size_t index = it == _table.end() ? lookup.index : it->index;
         return _vector.at(index);
@@ -345,9 +342,9 @@ public:
 
 
     /** Access or insert specified element. */
-    T& operator[](const Key& key)
+    T& operator[](const KeyView& key)
     {
-        Lookup lookup(&key);
+        Lookup lookup{key};
         auto it = _table.lower_bound(lookup);
         if (it != _table.end() && !_table.key_comp()(lookup, it->index))
             return _vector[it->index].second;
@@ -359,7 +356,7 @@ public:
     T& operator[](Key&& key)
     {
         Key tmp{std::move(key)};
-        Lookup lookup{&tmp};
+        Lookup lookup{tmp};
         auto it = _table.lower_bound(lookup);
         if (it != _table.end() && !_table.key_comp()(lookup, it->index))
             return _vector[it->index].second;
@@ -393,11 +390,15 @@ private:
 
     struct Lookup
     {
-        size_t index = -1;
-        const Key* ptr = nullptr;
+        static constexpr size_t invalid_index = -1;
+        static constexpr size_t max_index = invalid_index - 1;
 
-        explicit Lookup(size_t index) : index(index) {}
-        explicit Lookup(const Key* ptr) : ptr(ptr) {}
+        static KeyView key;
+
+        size_t index;
+
+        Lookup(int dummy, size_t index) : index(index) {}
+        Lookup(KeyView key) : index(invalid_index) { Lookup::key = key; }
     };
 
     struct LookupCompare
@@ -409,17 +410,17 @@ private:
 
         bool operator()(const Lookup& a, const Lookup& b) const
         {
-            assert(!a.ptr || !b.ptr);
-            const Key* a_ptr = a.ptr ? a.ptr : &vector->at(a.index).first;
-            const Key* b_ptr = b.ptr ? b.ptr : &vector->at(b.index).first;
-            return comp(*a_ptr, *b_ptr);
+            assert(a.index != Lookup::invalid_index || b.index != Lookup::invalid_index);
+            KeyView a_key = a.index == Lookup::invalid_index ? a.key : vector->at(a.index).first;
+            KeyView b_key = b.index == Lookup::invalid_index ? b.key : vector->at(b.index).first;
+            return comp(a_key, b_key);
         }
 
         bool operator()(const Lookup& a, size_t b_index) const
         {
-            assert(a.ptr);
-            const Key* b_ptr = &vector->at(b_index).first;
-            return comp(*a.ptr, *b_ptr);
+            assert(a.index == Lookup::invalid_index);
+            KeyView b_key = vector->at(b_index).first;
+            return comp(a.key, b_key);
         }
     };
 
@@ -431,14 +432,14 @@ private:
     {
         _table.clear();
         for (size_t i = 0; i < _vector.size(); ++i)
-            _table.emplace(i);
+            _table.emplace(0, i);
     }
 
     void _dismantle_partial_table(size_t index)
     {
         for (size_t i = index; i < _vector.size(); ++i)
         {
-            auto it = _table.find(Lookup(i));
+            auto it = _table.find(Lookup(0, i));
             assert(it != _table.end());
             _table.erase(it);
         }
@@ -448,8 +449,8 @@ private:
     {
         for (size_t i = index; i < _vector.size(); ++i)
         {
-            assert(!_table.contains(Lookup(i)));
-            _table.emplace(i);
+            assert(!_table.contains(Lookup(0, i)));
+            _table.emplace(0, i);
         }
     }
 
@@ -476,7 +477,7 @@ private:
 
     void _map_after_insert(typename table_type::iterator it)
     {
-        _table.insert(it, Lookup(_vector.size() - 1));
+        _table.insert(it, Lookup(0, _vector.size() - 1));
         assert(_vector.size() == _table.size());
     }
 
@@ -497,6 +498,11 @@ private:
     table_type _table;
 
 }; // class ordered_map
+
+
+
+    template <typename Key, typename T, typename KeyView, typename Compare, typename Allocator>
+    KeyView ordered_map<Key, T, KeyView, Compare, Allocator>::Lookup::key = {};
 
 
 

@@ -354,6 +354,17 @@ TESTLABS_CASE( u8"CoreLabs:  ordered_map:  miscellaneous / string/struct" )
     TESTLABS_CHECK_EQ( ordered_map.size(), 3 );
     TESTLABS_CHECK_EQ( other.size(), 3 );
 
+    ordered_map.clear();
+
+    TESTLABS_CHECK( ordered_map != other );
+    TESTLABS_CHECK( ordered_map.empty() );
+
+    ordered_map = other;
+
+    TESTLABS_CHECK( ordered_map == other );
+    TESTLABS_CHECK_EQ( ordered_map.size(), 3 );
+    TESTLABS_CHECK_EQ( other.size(), 3 );
+
     TESTLABS_CHECK( ordered_map.contains( u8"0-false" ) );
     TESTLABS_CHECK( ordered_map.contains( u8"1-true" ) );
     TESTLABS_CHECK( ordered_map.contains( u8"foo" ) );
@@ -361,6 +372,110 @@ TESTLABS_CASE( u8"CoreLabs:  ordered_map:  miscellaneous / string/struct" )
     TESTLABS_CHECK( other.contains( u8"0-false" ) );
     TESTLABS_CHECK( other.contains( u8"1-true" ) );
     TESTLABS_CHECK( other.contains( u8"foo" ) );
+
+    ordered_map.clear();
+
+    TESTLABS_CHECK( ordered_map != other );
+    TESTLABS_CHECK( ordered_map.empty() );
+
+    ordered_map = std::move(other);
+
+    TESTLABS_CHECK_EQ( ordered_map.size(), 3 );
+
+    TESTLABS_CHECK( ordered_map.contains( u8"0-false" ) );
+    TESTLABS_CHECK( ordered_map.contains( u8"1-true" ) );
+    TESTLABS_CHECK( ordered_map.contains( u8"foo" ) );
+}
+
+
+
+TESTLABS_CASE( u8"CoreLabs:  ordered_map:  miscellaneous / string/struct/string_view" )
+{
+    struct item
+    {
+        int i;
+        bool b;
+
+        bool operator==(const item&) const noexcept = default;
+    };
+
+    cl7::ordered_map<cl7::u8string, item, cl7::u8string_view> ordered_map;
+    cl7::ordered_map<cl7::u8string, item, cl7::u8string_view> other{
+        { u8"0-false", { 0, false } },
+        { u8"1-true", { 1, true } },
+    };
+
+    TESTLABS_CHECK( ordered_map != other );
+
+    ordered_map[ u8"1-true" ] = { 1, true };
+    ordered_map[ u8"0-false" ] = { 0, false };
+
+    TESTLABS_CHECK( ordered_map == other );
+    TESTLABS_CHECK_EQ( ordered_map.size(), 2 );
+    TESTLABS_CHECK_EQ( other.size(), 2 );
+
+    ordered_map.clear();
+    ordered_map[ u8"0-false" ] = { 0, false };
+    ordered_map[ u8"1-true" ] = { 1, true };
+
+    TESTLABS_CHECK( ordered_map == other );
+    TESTLABS_CHECK_EQ( ordered_map.size(), 2 );
+    TESTLABS_CHECK_EQ( other.size(), 2 );
+
+    ordered_map.insert( u8"foo", item{ 1, false } );
+    other.emplace( u8"bar", item{ 2, false } );
+
+    TESTLABS_CHECK( ordered_map != other );
+    TESTLABS_CHECK_EQ( ordered_map.size(), 3 );
+    TESTLABS_CHECK_EQ( other.size(), 3 );
+
+    ordered_map[ u8"foo" ] = { 1, false };
+    ordered_map[ u8"bar" ] = { 2, true };
+    other[ u8"foo" ] = { 1, false };
+    other[ u8"bar" ] = { 2, true };
+
+    TESTLABS_CHECK( ordered_map == other );
+    TESTLABS_CHECK_EQ( ordered_map.size(), 4 );
+    TESTLABS_CHECK_EQ( other.size(), 4 );
+
+    ordered_map.erase( u8"bar" );
+    other.erase( u8"bar" );
+
+    TESTLABS_CHECK( ordered_map == other );
+    TESTLABS_CHECK_EQ( ordered_map.size(), 3 );
+    TESTLABS_CHECK_EQ( other.size(), 3 );
+
+    ordered_map.clear();
+
+    TESTLABS_CHECK( ordered_map != other );
+    TESTLABS_CHECK( ordered_map.empty() );
+
+    ordered_map = other;
+
+    TESTLABS_CHECK( ordered_map == other );
+    TESTLABS_CHECK_EQ( ordered_map.size(), 3 );
+    TESTLABS_CHECK_EQ( other.size(), 3 );
+
+    TESTLABS_CHECK( ordered_map.contains( u8"0-false" ) );
+    TESTLABS_CHECK( ordered_map.contains( u8"1-true" ) );
+    TESTLABS_CHECK( ordered_map.contains( u8"foo" ) );
+
+    TESTLABS_CHECK( other.contains( u8"0-false" ) );
+    TESTLABS_CHECK( other.contains( u8"1-true" ) );
+    TESTLABS_CHECK( other.contains( u8"foo" ) );
+
+    ordered_map.clear();
+
+    TESTLABS_CHECK( ordered_map != other );
+    TESTLABS_CHECK( ordered_map.empty() );
+
+    ordered_map = std::move(other);
+
+    TESTLABS_CHECK_EQ( ordered_map.size(), 3 );
+
+    TESTLABS_CHECK( ordered_map.contains( u8"0-false" ) );
+    TESTLABS_CHECK( ordered_map.contains( u8"1-true" ) );
+    TESTLABS_CHECK( ordered_map.contains( u8"foo" ) );
 }
 
 

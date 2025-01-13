@@ -3,7 +3,7 @@
 
 #include "./TerminalSymbol.h"
 
-#include <CoreLabs/iterator.h>
+#include <CoreLabs/iterators.h>
 
 #include <vector>
 
@@ -22,7 +22,7 @@ class TerminalSymbolCollection
 {
 
 public:
-    using const_iterator = cl7::const_ptr_iterator<TerminalSymbol>;
+    using const_iterator = cl7::const_ptr_forward_iterator<TerminalSymbol>;
 
     const_iterator begin() const { return {_terminal_symbols.cbegin()}; }
     const_iterator end() const { return {_terminal_symbols.cend()}; }
