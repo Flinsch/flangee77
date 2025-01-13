@@ -327,7 +327,7 @@ public:
         Lookup lookup{key};
         auto it = _table.find(lookup);
         size_t index = it == _table.end() ? lookup.index : it->index;
-        return _vector.at(index);
+        return _vector.at(index).second;
     }
 
     /** Access specified element with bounds checking. */
@@ -336,7 +336,7 @@ public:
         Lookup lookup{key};
         auto it = _table.find(lookup);
         size_t index = it == _table.end() ? lookup.index : it->index;
-        return _vector.at(index);
+        return _vector.at(index).second;
     }
 
 

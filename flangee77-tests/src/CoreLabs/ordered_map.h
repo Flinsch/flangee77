@@ -33,6 +33,9 @@ TESTLABS_CASE( u8"CoreLabs:  ordered_map::ordered_map(It first, It last)" )
 
     TESTLABS_CHECK_EQ( ordered_map[2], 6 );
     TESTLABS_CHECK_EQ( ordered_map[3], 7 );
+
+    TESTLABS_CHECK_EQ( ordered_map.at(2), 6 );
+    TESTLABS_CHECK_EQ( ordered_map.at(3), 7 );
 }
 
 TESTLABS_CASE( u8"CoreLabs:  ordered_map::ordered_map(const ordered_map&)" )
@@ -338,10 +341,10 @@ TESTLABS_CASE( u8"CoreLabs:  ordered_map:  miscellaneous / string/struct" )
     TESTLABS_CHECK_EQ( ordered_map.size(), 3 );
     TESTLABS_CHECK_EQ( other.size(), 3 );
 
-    ordered_map[ u8"foo" ] = { 1, false };
+    ordered_map.at( u8"foo" ) = { 1, false };
     ordered_map[ u8"bar" ] = { 2, true };
     other[ u8"foo" ] = { 1, false };
-    other[ u8"bar" ] = { 2, true };
+    other.at( u8"bar" ) = { 2, true };
 
     TESTLABS_CHECK( ordered_map == other );
     TESTLABS_CHECK_EQ( ordered_map.size(), 4 );
@@ -429,10 +432,10 @@ TESTLABS_CASE( u8"CoreLabs:  ordered_map:  miscellaneous / string/struct/string_
     TESTLABS_CHECK_EQ( ordered_map.size(), 3 );
     TESTLABS_CHECK_EQ( other.size(), 3 );
 
-    ordered_map[ u8"foo" ] = { 1, false };
+    ordered_map.at( u8"foo" ) = { 1, false };
     ordered_map[ u8"bar" ] = { 2, true };
     other[ u8"foo" ] = { 1, false };
-    other[ u8"bar" ] = { 2, true };
+    other.at( u8"bar" ) = { 2, true };
 
     TESTLABS_CHECK( ordered_map == other );
     TESTLABS_CHECK_EQ( ordered_map.size(), 4 );
