@@ -1,5 +1,5 @@
 
-target_sources(flangee77_tests
+target_sources(flangee77-tests
     PRIVATE
     flangee77-tests.cpp
     shared.h
