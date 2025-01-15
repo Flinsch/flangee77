@@ -17,11 +17,19 @@ namespace cl7::io {
 
 
     /**
-     * Checks whether the file is "open" and can be read.
+     * Checks whether the file is "open" and can be used.
      */
     bool file::is_good() const
     {
         return _fstream.is_open();
+    }
+
+    /**
+     * Checks whether the current byte position exceeds the size of the file.
+     */
+    bool file::is_eof() const
+    {
+        return _position >= _size;
     }
 
     /**
@@ -73,6 +81,34 @@ namespace cl7::io {
     }
 
     /**
+     * Reads a single byte from the file (at the current position) and returns the
+     * number of bytes transferred (i.e. 0 or 1).
+     */
+    size_t file::read(std::byte& byte)
+    {
+        return read(cl7::byte_span(&byte, 1));
+    }
+
+    /**
+     * "Peeks" a single byte from the file (at the current position) without
+     * extracting it. Returns the number of bytes that would have been extracted if
+     * actually read (i.e. 0 or 1).
+     */
+    size_t file::peek(std::byte& byte)
+    {
+        if (!is_readable())
+            return 0;
+
+        auto result = _fstream.peek();
+        if (result < 0)
+            return 0;
+
+        assert(result <= 0xff);
+        byte = static_cast<std::byte>(result);
+        return 1;
+    }
+
+    /**
      * Writes data to the file (at the current position) from the specified buffer
      * and returns the number of bytes transferred.
      */
@@ -88,6 +124,15 @@ namespace cl7::io {
         _fstream.seekg(static_cast<std::streamoff>(_position));
 
         return _position = position;
+    }
+
+    /**
+     * Writes a single byte to the file (at the current position) and returns the
+     * number of bytes transferred (i.e. 0 or 1).
+     */
+    size_t file::write(std::byte byte)
+    {
+        return write(cl7::byte_view(&byte, 1));
     }
 
     /**

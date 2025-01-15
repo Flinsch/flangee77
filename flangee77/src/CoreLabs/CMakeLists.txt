@@ -36,12 +36,20 @@ target_sources(flangee77
     creational/Singleton.cpp
     creational/Singleton.h
 
+    io/byte_reader.cpp
+    io/byte_reader.h
+    io/byte_writer.cpp
+    io/byte_writer.h
     io/file.cpp
     io/file.h
     io/ifile.h
     io/irom.h
     io/open_mode.h
     io/seek_mode.h
+    io/utf8_reader.cpp
+    io/utf8_reader.h
+    io/utf8_writer.cpp
+    io/utf8_writer.h
 
     logging/AbstractLogHandler.cpp
     logging/AbstractLogHandler.h

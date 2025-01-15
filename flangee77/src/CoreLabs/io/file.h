@@ -36,6 +36,11 @@ public:
     bool is_good() const override;
 
     /**
+     * Checks whether the current byte position exceeds the size of the file.
+     */
+    bool is_eof() const override;
+
+    /**
      * Returns the size of the file, in bytes.
      */
     size_t get_size() const override { return _size; }
@@ -66,10 +71,29 @@ public:
     size_t read(cl7::byte_span buffer) override;
 
     /**
+     * Reads a single byte from the file (at the current position) and returns the
+     * number of bytes transferred (i.e. 0 or 1).
+     */
+    size_t read(std::byte& byte) override;
+
+    /**
+     * "Peeks" a single byte from the file (at the current position) without
+     * extracting it. Returns the number of bytes that would have been extracted if
+     * actually read (i.e. 0 or 1).
+     */
+    size_t peek(std::byte& byte) override;
+
+    /**
      * Writes data to the file (at the current position) from the specified buffer
      * and returns the number of bytes transferred.
      */
     size_t write(cl7::byte_view buffer) override;
+
+    /**
+     * Writes a single byte to the file (at the current position) and returns the
+     * number of bytes transferred (i.e. 0 or 1).
+     */
+    size_t write(std::byte byte) override;
 
     /**
      * (Re)sets the size of the file, in bytes, and truncates or appends the

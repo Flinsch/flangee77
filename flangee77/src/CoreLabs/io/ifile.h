@@ -25,6 +25,12 @@ public:
     virtual size_t write(cl7::byte_view buffer) = 0;
 
     /**
+     * Writes a single byte to the file (at the current position) and returns the
+     * number of bytes transferred (i.e. 0 or 1).
+     */
+    virtual size_t write(std::byte byte) = 0;
+
+    /**
      * (Re)sets the size of the file, in bytes, and truncates or appends the
      * difference in bytes accordingly.
      * Returns the new/current file size.

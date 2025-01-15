@@ -24,6 +24,11 @@ public:
     virtual bool is_good() const = 0;
 
     /**
+     * Checks whether the current byte position exceeds the size of the file.
+     */
+    virtual bool is_eof() const = 0;
+
+    /**
      * Returns the size of the file, in bytes.
      */
     virtual size_t get_size() const = 0;
@@ -52,6 +57,19 @@ public:
      * and returns the number of bytes transferred.
      */
     virtual size_t read(cl7::byte_span buffer) = 0;
+
+    /**
+     * Reads a single byte from the file (at the current position) and returns the
+     * number of bytes transferred (i.e. 0 or 1).
+     */
+    virtual size_t read(std::byte& byte) = 0;
+
+    /**
+     * "Peeks" a single byte from the file (at the current position) without
+     * extracting it. Returns the number of bytes that would have been extracted if
+     * actually read (i.e. 0 or 1).
+     */
+    virtual size_t peek(std::byte& byte) = 0;
 
 }; // class irom
 
