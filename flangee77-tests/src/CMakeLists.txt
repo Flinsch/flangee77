@@ -12,6 +12,7 @@ target_sources(flangee77-tests
 
     DataLabs/Base64.h
     DataLabs/compression.h
+    DataLabs/json.h
     DataLabs/syntax.h
 
     MathLabs/Angle.h

@@ -1,7 +1,7 @@
 #ifndef DL7_JSON_TYPES_H
 #define DL7_JSON_TYPES_H
 
-#include "./object.h"
+#include <CoreLabs/ordered_map.h>
 
 #include <CoreLabs/string.h>
 
@@ -13,15 +13,15 @@ namespace dl7::json {
 
 
 
-class json;
+class Json;
 
 using null_t = std::nullptr_t;
-using object_t = object;
-using array_t = std::vector<json>;
+using object_t = cl7::ordered_map<cl7::u8string, Json, cl7::u8string_view>;
+using array_t = std::vector<Json>;
 using string_t = cl7::u8string;
-using number_real_t = double;
-using number_integer_t = int64_t;
-using number_unsigned_t = uint64_t;
+using decimal_t = double;
+using integer_t = int64_t;
+using unsigned_t = uint64_t;
 using boolean_t = bool;
 
 

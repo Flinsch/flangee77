@@ -99,6 +99,9 @@ namespace cl7::strings {
 
 
 
+    /**
+     * Checks whether the specified character is a whitespace character.
+     */
     template <typename Tchar>
     bool is_whitespace(Tchar c)
     {
@@ -120,6 +123,9 @@ namespace cl7::strings {
         static_assert(!std::is_same_v<Tchar, u8char_type>, "Not implemented for UTF-8 and its variable-length character encoding.");
     }
 
+    /**
+     * Checks whether the specified character is a whitespace character.
+     */
     template <> inline
     bool is_whitespace(achar_type c)
     {
@@ -135,22 +141,125 @@ namespace cl7::strings {
     /**
      * Checks whether the specified Unicode code point is whitespace and, if yes,
      * returns the number of corresponding UTF-8 characters (code units).
+     * This function enforces strict matching rules:
+     * - For single-byte whitespace, c1 and c2 must be 0.
+     * - For two-byte whitespace, c2 must be 0.
      */
-    size_t is_whitespace(u8char_type c0, u8char_type c1 = 0, u8char_type c2 = 0);
+    size_t is_whitespace_strict(u8char_type c0, u8char_type c1 = 0, u8char_type c2 = 0);
 
     /**
-     * Checks whether the given UTF-8 string starts with whitespace and, if yes,
+     * Checks whether the specified Unicode code point is whitespace and, if yes,
+     * returns the number of corresponding UTF-8 characters (code units).
+     * Unlike the strict version, this function does not require c1 or c2 to be 0
+     * for shorter combinations.
+     */
+    size_t is_whitespace_relaxed(u8char_type c0, u8char_type c1 = 0, u8char_type c2 = 0);
+
+
+
+    /**
+     * Checks whether the specified character is a line break character (LF or CR).
+     */
+    template <typename Tchar>
+    bool is_line_break(Tchar c)
+    {
+        return c == Tchar{'\n'} || c == Tchar{'\r'};
+    }
+
+    /**
+     * Checks whether the specified character sequence represents a line break and,
+     * if yes, returns the number of characters (code units) involved.
+     * Possible combinations are (regardless of the current platform):
+     * - CRLF (`\r\n`): Windows, DOS
+     * - LF (`\n`): Unix, Linux, macOS, and "modern" line-ending styles in general
+     * - CR (`\r`): Legacy Mac
+     * This function enforces strict matching rules and requires c1 to be 0 for
+     * single-character line breaks (LF or CR).
+     */
+    template <typename Tchar>
+    size_t is_line_break_strict(Tchar c0, Tchar c1 = 0)
+    {
+        if (c0 == Tchar{'\r'} && c1 == Tchar{'\n'}) return 2;
+        if (c0 == Tchar{'\n'} && c1 == 0) return 1;
+        if (c0 == Tchar{'\r'} && c1 == 0) return 1;
+        return 0;
+    }
+
+    /**
+     * Checks whether the specified character sequence represents a line break and,
+     * if yes, returns the number of characters (code units) involved.
+     * Possible combinations are (regardless of the current platform):
+     * - CRLF (`\r\n`): Windows, DOS
+     * - LF (`\n`): Unix, Linux, macOS, and "modern" line-ending styles in general
+     * - CR (`\r`): Legacy Mac
+     * Unlike the strict version, this function does not require c1 to be 0 for
+     * single-byte line breaks.
+     */
+    template <typename Tchar>
+    size_t is_line_break_relaxed(Tchar c0, Tchar c1 = 0)
+    {
+        if (c0 == Tchar{'\r'})
+            return c1 == Tchar{'\n'} ? 2 : 1;
+        if (c0 == Tchar{'\n'}) return 1;
+        return 0;
+    }
+
+
+
+    /**
+     * Checks whether the specified UTF-8 string starts with whitespace and, if yes,
      * returns the number of UTF-8 characters (code units) of the corresponding code
      * point.
      */
     size_t is_whitespace_prefix(u8string_view s);
 
     /**
-     * Checks whether the given UTF-8 string ends with whitespace and, if yes,
+     * Checks whether the specified UTF-8 string ends with whitespace and, if yes,
      * returns the number of UTF-8 characters (code units) of the corresponding code
      * point.
      */
     size_t is_whitespace_suffix(u8string_view s);
+
+
+
+    /**
+     * Checks whether the specified string starts with a line break and, if yes,
+     * returns the number of characters (code units) involved.
+     * Possible combinations are (regardless of the current platform):
+     * - CRLF (`\r\n`): Windows, DOS
+     * - LF (`\n`): Unix, Linux, macOS, and "modern" line-ending styles in general
+     * - CR (`\r`): Legacy Mac
+     */
+    template <class Tstring_view>
+        requires(is_any_string_view_v<Tstring_view>)
+    size_t is_line_break_prefix(Tstring_view s)
+    {
+        const size_t n = s.size();
+        if (n >= 2) return is_line_break_relaxed(s[0], s[1]);
+        if (n >= 1) return is_line_break_relaxed(s[0]);
+        return 0;
+    }
+
+    /**
+     * Checks whether the specified string ends with a line break and, if yes,
+     * returns the number of characters (code units) involved.
+     * Possible combinations are (regardless of the current platform):
+     * - CRLF (`\r\n`): Windows, DOS
+     * - LF (`\n`): Unix, Linux, macOS, and "modern" line-ending styles in general
+     * - CR (`\r`): Legacy Mac
+     */
+    template <class Tstring_view>
+        requires(is_any_string_view_v<Tstring_view>)
+    size_t is_line_break_suffix(Tstring_view s)
+    {
+        const size_t n = s.size();
+        size_t k;
+        // NOLINTBEGIN(bugprone-assignment-in-if-condition)
+        if (n >= 1 && (k = is_line_break_strict(s[n - 1])) > 0) return k;
+        if (n >= 2 && (k = is_line_break_strict(s[n - 2], s[n - 1])) > 0) return k;
+        // NOLINTEND(bugprone-assignment-in-if-condition)
+        return 0;
+    }
 
 
 

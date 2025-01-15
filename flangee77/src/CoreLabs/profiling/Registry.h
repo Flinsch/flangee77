@@ -58,9 +58,10 @@ public:
     void end_frame_and_update_stats(unsigned frame_usecs);
 
     /**
-     * "Dumps" the profiling/sample stats to the specified logger.
+     * "Dumps" the profiling/sample stats to the specified logger (NULL: standard
+     * logger).
      */
-    void dump(cl7::logging::Logger* logger) const;
+    void dump(cl7::logging::Logger* logger = nullptr) const;
 
 
 

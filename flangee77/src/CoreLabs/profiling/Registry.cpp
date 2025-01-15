@@ -26,7 +26,8 @@ namespace cl7::profiling {
     }
 
     /**
-     * "Dumps" the profiling/sample stats to the specified logger.
+     * "Dumps" the profiling/sample stats to the specified logger (NULL: standard
+     * logger).
      */
     void Registry::dump(cl7::logging::Logger* logger) const
     {

@@ -118,23 +118,15 @@ namespace dl7::syntax {
         for (size_t i = 0; i < count; ++i, ++_source_location.offset)
         {
             assert(_source_location.offset < _source.length());
-            const auto ch0 = _source[_source_location.offset];
-            // Handle different line endings:
-            // \r\n (CR LF): Windows, DOS
-            // \n (LF): Unix, Linux, macOS, and "modern" line-ending styles in general
-            // \r (CR): Legacy Mac
-            if (ch0 == u8'\r' || ch0 == u8'\n')
+            const size_t line_break = cl7::strings::is_line_break_prefix(_source.substr(_source_location.offset));
+            if (line_break > 0)
             {
                 // Line break: advance the line, resetting the column.
                 ++_source_location.line;
                 _source_location.column = 1;
 
-                if (ch0 == u8'\r' && _source_location.offset + 1 < _source.length())
-                {
-                    const auto ch1 = _source[_source_location.offset + 1];
-                    if (ch1 == u8'\n')
-                        ++_source_location.offset; // Skip second character as well.
-                }
+                if (line_break > 1)
+                    _source_location.offset += line_break - 1; // Skip second character as well.
             }
             else
             {

@@ -11,6 +11,7 @@
 #include "./DataLabs/Base64.h"
 #include "./DataLabs/compression.h"
 #include "./DataLabs/syntax.h"
+#include "./DataLabs/json.h"
 
 #include "./MathLabs/functions.h"
 #include "./MathLabs/Vector2.h"
