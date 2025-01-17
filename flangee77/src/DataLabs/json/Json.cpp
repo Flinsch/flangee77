@@ -223,7 +223,7 @@ namespace dl7::json {
         return as_array()[index];
     }
 
-    Json& Json::operator[](cl7::u8string_view key)
+    Json& Json::operator[](const cl7::u8string& key)
     {
         if (is_null())
             set_object({});

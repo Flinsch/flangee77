@@ -342,7 +342,7 @@ public:
 
 
     /** Access or insert specified element. */
-    T& operator[](const KeyView& key)
+    T& operator[](const Key& key)
     {
         Lookup lookup{key};
         auto it = _table.lower_bound(lookup);
@@ -355,12 +355,11 @@ public:
     /** Access or insert specified element. */
     T& operator[](Key&& key)
     {
-        Key tmp{std::move(key)};
-        Lookup lookup{tmp};
+        Lookup lookup{key};
         auto it = _table.lower_bound(lookup);
         if (it != _table.end() && !_table.key_comp()(lookup, it->index))
             return _vector[it->index].second;
-        _vector.emplace_back(std::move(tmp), T{});
+        _vector.emplace_back(std::move(key), T{});
         return _map_after_insert_and_return_reference(it);
     }
 
