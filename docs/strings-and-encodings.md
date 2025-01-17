@@ -26,9 +26,8 @@ different encodings (as well as corresponding character and string-view types):
 
 These types are simple &ldquo;typedefs&rdquo; of corresponding types from the C++ Standard Library.
 
-The intention of these types is to emphasize the respective encoding a little more semantically, especially with regard to `cl7::astring` and `cl7::u8string`, as a contrast to `std::string`, which can contain &ldquo;any&rdquo; encoding, ASCII, ANSI, UTF-8, ISO 8859, etc.
+The intention of these types is to emphasize the respective encoding a little more semantically, especially with regard to `cl7::astring` and `cl7::u8string`, as a contrast to `std::string`, which can contain any one-byte character encoding, ASCII, ANSI, UTF-8, ISO 8859, etc.
 If you need the flexibility of `std::string`, you can still use it, even in parallel with the types of this framework (which are just typedefs anyway).
-You just have to be aware of which encoding you are using (which you &ldquo;have&rdquo; to do anyway).
 This framework also sometimes uses `std::string` etc. here and there (internally), but more for utility and compatibility purposes.
 
 Regarding &ldquo;best practices,&rdquo; the different string types are used within this framework as follows (which you can follow in your own code, but of course you don't have to):
@@ -51,10 +50,10 @@ UTF-8 tends to being space-saving as well, but at the same time has the ability 
 UTF-16 is a kind of hybrid: it covers &ldquo;all&rdquo; characters, is okay in terms of memory requirements, and allows for some string manipulations because many or even most common code points can be represented with one single code unit (good/okay for almost everything, but loses to UTF-8 in storage and transmission).
 However, UTF-16 is rarely used within this framework (tends to be used only in the case of platform-specific things).
 
-Despite the presence of the eighth bit of `cl7::astring`, we deliberately do not support ANSI, ISO 8859, etc., not even Latin-1, although it corresponds 1-to-1 to the first 256 Unicode characters.
+Despite the presence of the eighth bit of `cl7::astring`, we deliberately do not support &ldquo;extended ASCII,&rdquo; ANSI, ISO 8859, etc., not even Latin-1, although it corresponds 1-to-1 to the first 256 Unicode characters.
 If you need these encodings (for whatever reason, for example under Windows), you have to take care of them yourself.
-At best, you avoid ANSI, ISO 8859, etc. as much as possible and stick with ASCII and Unicode.
-And then you end up with UTF-8 as a superset of ASCII (or UTF-32 if you need the quasi-1-to-1 correspondence of code units and code points).
+At best, you avoid ANSI, ISO 8859, etc. as much as possible and stick to standard ASCII and Unicode, with Unicode being a superset of ASCII.
+And then you might end up with UTF-8 as a &ldquo;technical&rdquo; superset of standard ASCII as well (or UTF-32 if you need the quasi-1-to-1 correspondence between code units and code points).
 
 So you see: UTF-8 (almost) everywhere.
 As mentioned before, you may have to take care of ISO 8859, ANSI, etc. yourself, but to avoid this as much as possible, we are forcing the `UNICODE`/`_UNICODE` definition, also as suggested by the &ldquo;UTF-8 Everywhere&rdquo; manifesto.

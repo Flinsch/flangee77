@@ -78,6 +78,13 @@ target_sources(flangee77
     profiling/Stopwatch.cpp
     profiling/Stopwatch.h
 
+    strings/AsciiCodec.cpp
+    strings/AsciiCodec.h
+    strings/Codec.h
+    strings/codepoint.cpp
+    strings/codepoint.h
+    strings/Encoding.h
+
     system/CPUID.cpp
     system/CPUID.h
     system/datetime.cpp
