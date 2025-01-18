@@ -56,7 +56,7 @@ public:
      * Returns the flag indicating whether the corresponding subcase branch has
      * been entered or not.
      */
-    operator bool () const { return _has_been_entered; }
+    operator bool() const { return _has_been_entered; }
 
 
 

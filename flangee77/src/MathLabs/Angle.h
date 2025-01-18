@@ -153,7 +153,7 @@ struct Angle
     // Conversion Operators
     // #############################################################################
 
-    operator float () const { return radians; }
+    operator float() const { return radians; }
 
 
 

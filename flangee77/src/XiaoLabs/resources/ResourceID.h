@@ -84,7 +84,7 @@ public:
     // Conversion Operators
     // #############################################################################
 
-    operator bool () const noexcept { return is_valid(); }
+    operator bool() const noexcept { return is_valid(); }
 
 
 
