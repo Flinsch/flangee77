@@ -17,6 +17,8 @@ class AbstractState
 {
 
 public:
+    XL7_DECLARE_RESOURCE_ID();
+
     AbstractState() = delete;
 
     AbstractState(const AbstractState&) = delete;

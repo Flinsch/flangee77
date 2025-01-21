@@ -14,7 +14,7 @@ class VertexShaderStage
     : public AbstractShaderStage
 {
 
-    
+    XL7_GRAPHICS_PIPELINE_SPECIFIC_STATE_PROXY(vertex_shader_id, shaders::VertexShader::ID, shader_id, xl7::resources::id_cast<shaders::VertexShader::ID>);
 
 }; // class VertexShaderStage
 

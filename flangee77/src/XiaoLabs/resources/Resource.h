@@ -120,6 +120,12 @@ public:
     ResourceID get_id() const { return _id; }
 
     /**
+     * Returns the ID of this resource.
+     */
+    template <class TResourceID>
+    TResourceID get_id() const { return id_cast<TResourceID>(_id); }
+
+    /**
      * Returns the identifier of this resource (if specified, empty otherwise).
      */
     const cl7::u8string& get_identifier() const { return _identifier; }

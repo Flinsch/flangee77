@@ -78,6 +78,7 @@ public:
      * contained resources.
      */
     template <class TResource>
+        requires(std::is_base_of_v<Resource, TResource>)
     TResource* get_resource(size_t index) const
     {
         Resource* resource = get_resource(index);
@@ -90,6 +91,7 @@ public:
      * Time complexity: constant.
      */
     template <class TResource>
+        requires(std::is_base_of_v<Resource, TResource>)
     TResource* find_resource(ResourceID id) const
     {
         Resource* resource = find_resource(id);
@@ -103,6 +105,7 @@ public:
      * contained resources.
      */
     template <class TResource>
+        requires(std::is_base_of_v<Resource, TResource>)
     TResource* find_resource(cl7::u8string_view identifier) const
     {
         Resource* resource = find_resource(identifier);
@@ -173,6 +176,18 @@ protected:
      * ID otherwise.
      */
     ResourceID _try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider);
+
+    /**
+     * Adds the given resource to this resource manager (and returns the ID of the
+     * resource), but only if it can be acquired in this process. Returns an invalid
+     * ID otherwise.
+     */
+    template <class TResourceID>
+        requires(std::is_base_of_v<ResourceID, TResourceID>)
+    TResourceID _try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider)
+    {
+        return id_cast<TResourceID>(_try_acquire_and_add_resource(std::move(resource_ptr), data_provider));
+    }
 
 
 

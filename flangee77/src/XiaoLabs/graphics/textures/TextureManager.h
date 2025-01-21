@@ -38,7 +38,7 @@ public:
     /**
      * Creates and acquires the specified 2D texture.
      */
-    resources::ResourceID create_texture_2d(cl7::u8string_view identifier, const Texture2D::Desc& desc, const ImageDataProvider& data_provider);
+    Texture2D::ID create_texture_2d(cl7::u8string_view identifier, const Texture2D::Desc& desc, const ImageDataProvider& data_provider);
 
 
 

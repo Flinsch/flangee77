@@ -13,6 +13,8 @@ class RasterizerState
 {
 
 public:
+    XL7_DERIVE_RESOURCE_ID(AbstractState);
+
     /** Determines the fill mode to use when rendering. */
     enum class FillMode
     {

@@ -20,6 +20,8 @@ class ConstantBuffer
 {
 
 public:
+    XL7_DECLARE_RESOURCE_ID();
+
     struct Desc
     {
         /** The layout specification of the constant buffer. */

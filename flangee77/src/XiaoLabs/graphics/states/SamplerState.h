@@ -17,6 +17,8 @@ class SamplerState
 {
 
 public:
+    XL7_DERIVE_RESOURCE_ID(AbstractState);
+
     /** The filtering method to use when sampling for minification and magnification. */
     enum class MinMagFilterType
     {

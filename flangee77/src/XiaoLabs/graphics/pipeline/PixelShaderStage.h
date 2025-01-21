@@ -14,7 +14,7 @@ class PixelShaderStage
     : public AbstractShaderStage
 {
 
-    
+    XL7_GRAPHICS_PIPELINE_SPECIFIC_STATE_PROXY(pixel_shader_id, shaders::PixelShader::ID, shader_id, xl7::resources::id_cast<shaders::PixelShader::ID>);
 
 }; // class PixelShaderStage
 

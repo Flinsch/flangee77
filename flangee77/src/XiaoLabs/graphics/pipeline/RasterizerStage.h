@@ -23,7 +23,7 @@ private:
 
 
     XL7_GRAPHICS_PIPELINE_SINGLE_STATE(viewport, Viewport, Viewport(), DIRTY_VIEWPORT_FLAG);
-    XL7_GRAPHICS_PIPELINE_SINGLE_STATE(rasterizer_state_id, resources::ResourceID, resources::ResourceID::INVALID_ID, DIRTY_RASTERIER_STATE_FLAG);
+    XL7_GRAPHICS_PIPELINE_SINGLE_STATE(rasterizer_state_id, states::RasterizerState::ID, states::RasterizerState::ID(), DIRTY_RASTERIER_STATE_FLAG);
 
 }; // class RasterizerStage
 
