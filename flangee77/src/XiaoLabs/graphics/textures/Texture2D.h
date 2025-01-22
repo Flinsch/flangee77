@@ -13,6 +13,8 @@ class Texture2D
 {
 
 public:
+    XL7_DERIVE_RESOURCE_ID(Texture);
+
     struct Desc
         : public Texture::Desc
     {

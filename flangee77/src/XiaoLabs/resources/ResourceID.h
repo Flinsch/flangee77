@@ -9,6 +9,11 @@ namespace xl7::resources {
 
 
 
+#define XL7_DECLARE_RESOURCE_ID()           class ID : public xl7::resources::ResourceID    { using TBaseID = xl7::resources::ResourceID; using TBaseID::TBaseID; }; ID get_id() const { return xl7::resources::Resource::get_id<ID>(); }
+#define XL7_DERIVE_RESOURCE_ID(TBase)       class ID : public TBase::ID                     { using TBaseID = TBase::ID;                  using TBaseID::TBaseID; }; ID get_id() const { return xl7::resources::Resource::get_id<ID>(); }
+
+
+
 class ResourceID
 {
 
@@ -29,8 +34,6 @@ public:
     ResourceID() noexcept;
 
     ResourceID(size_t index, unsigned version);
-
-    void swap(ResourceID& other) noexcept;
 
 
 
@@ -72,19 +75,10 @@ public:
 
 
     // #############################################################################
-    // Comparison Operators
-    // #############################################################################
-
-    auto operator==(ResourceID other) const noexcept { return _id == other._id; }
-    auto operator!=(ResourceID other) const noexcept { return _id != other._id; }
-
-
-
-    // #############################################################################
     // Conversion Operators
     // #############################################################################
 
-    operator bool () const noexcept { return is_valid(); }
+    operator bool() const noexcept { return is_valid(); }
 
 
 
@@ -116,6 +110,42 @@ private:
     id_t _id;
 
 }; // class ResourceID
+
+
+
+    // #############################################################################
+    // Comparison Operators
+    // #############################################################################
+
+    template <class T1, class T2>
+        requires(std::is_base_of_v<ResourceID, T1> && std::is_base_of_v<ResourceID, T2>)
+    auto operator==(T1 a, T2 b) noexcept
+    {
+        if (!std::is_base_of_v<T1, T2> && !std::is_base_of_v<T2, T1>)
+            return false;
+        return a.value() == b.value();
+    }
+
+    template <class T1, class T2>
+        requires(std::is_base_of_v<ResourceID, T1> && std::is_base_of_v<ResourceID, T2>)
+    auto operator!=(T1 a, T2 b) noexcept
+    {
+        return !(a == b);
+    }
+
+
+
+    // #############################################################################
+    // Conversions
+    // #############################################################################
+
+    template <class T1, class T2>
+        requires(std::is_base_of_v<ResourceID, T1> && std::is_base_of_v<ResourceID, T2>)
+    T1 id_cast(T2 other)
+    {
+        static_assert(std::is_base_of_v<T1, T2> || std::is_base_of_v<T2, T1>, "invalid id_cast");
+        return T1(other.index(), other.version());
+    }
 
 
 

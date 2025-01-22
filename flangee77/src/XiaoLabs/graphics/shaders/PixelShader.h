@@ -13,6 +13,8 @@ class PixelShader
 {
 
 public:
+    XL7_DERIVE_RESOURCE_ID(Shader);
+
     PixelShader() = delete;
 
     PixelShader(const PixelShader&) = delete;

@@ -16,6 +16,8 @@ class VertexBuffer
 {
 
 public:
+    XL7_DERIVE_RESOURCE_ID(MeshBuffer);
+
     struct Desc
         : public MeshBuffer::Desc
     {

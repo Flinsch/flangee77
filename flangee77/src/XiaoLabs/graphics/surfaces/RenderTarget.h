@@ -15,6 +15,8 @@ class RenderTarget
 {
 
 public:
+    XL7_DERIVE_RESOURCE_ID(Surface);
+
     RenderTarget() = delete;
 
     RenderTarget(const RenderTarget&) = delete;

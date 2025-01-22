@@ -78,6 +78,23 @@ public: \
     void set_##name(type value) { _##name.set_value(value); _set_dirty(dirty_flag); } \
     void reset_##name() { _##name.reset_value(); _unset_dirty(dirty_flag); }
 
+#define XL7_GRAPHICS_PIPELINE_GENERIC_STATE_BEING(name, type, default_value, dirty_flag) \
+private: \
+    SingleState<type> _##name; \
+public: \
+    bool is_##name##_set() const { return _##name.is_set(); } \
+    type get_##name() const { return _##name.get_value(default_value); } \
+protected: \
+    void _set_##name(type value) { _##name.set_value(value); _set_dirty(dirty_flag); } \
+    void _reset_##name() { _##name.reset_value(); _unset_dirty(dirty_flag); }
+
+#define XL7_GRAPHICS_PIPELINE_SPECIFIC_STATE_PROXY(name, type, generic_name, type_cast) \
+public: \
+    bool is_##name##_set() const { return is_##generic_name##_set(); } \
+    type get_##name() const { return type_cast(get_##generic_name()); } \
+    void set_##name(type value) { _set_##generic_name(value); } \
+    void reset_##name() { _reset_##generic_name(); }
+
 #define XL7_GRAPHICS_PIPELINE_STATE_ARRAY(name, count, type, default_value, dirty_flag_base) \
 private: \
     StateArray<type, count> _##name; \

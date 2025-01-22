@@ -13,6 +13,8 @@ class ColorRenderTarget
 {
 
 public:
+    XL7_DERIVE_RESOURCE_ID(RenderTarget);
+
     ColorRenderTarget() = delete;
 
     ColorRenderTarget(const ColorRenderTarget&) = delete;

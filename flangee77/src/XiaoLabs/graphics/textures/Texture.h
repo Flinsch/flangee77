@@ -24,6 +24,8 @@ class Texture
 {
 
 public:
+    XL7_DECLARE_RESOURCE_ID();
+
     enum class Type
     {
         Texture2D,

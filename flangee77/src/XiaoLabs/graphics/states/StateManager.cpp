@@ -63,10 +63,10 @@ namespace xl7::graphics::states {
     /**
      * Creates and acquires the specified sampler state if not already done.
      */
-    resources::ResourceID StateManager::ensure_sampler_state(const SamplerState::Desc& desc)
+    SamplerState::ID StateManager::ensure_sampler_state(const SamplerState::Desc& desc)
     {
         const cl7::u8string identifier = _identifier(u8"sampler state", desc);
-        resources::Resource* resource = find_resource(identifier);
+        auto* resource = find_resource<SamplerState>(identifier);
         if (resource)
         {
             resource->add_reference();
@@ -77,16 +77,16 @@ namespace xl7::graphics::states {
 
         ResourcePtr sampler_state(_factory->create_sampler_state(params), _destroy_resource);
 
-        return _try_acquire_and_add_resource(std::move(sampler_state), resources::DefaultDataProvider());
+        return _try_acquire_and_add_resource<SamplerState::ID>(std::move(sampler_state), resources::DefaultDataProvider());
     }
 
     /**
      * Creates and acquires the specified rasterizer state if not already done.
      */
-    resources::ResourceID StateManager::ensure_rasterizer_state(const RasterizerState::Desc& desc)
+    RasterizerState::ID StateManager::ensure_rasterizer_state(const RasterizerState::Desc& desc)
     {
         const cl7::u8string identifier = _identifier(u8"rasterizer state", desc);
-        resources::Resource* resource = find_resource(identifier);
+        auto* resource = find_resource<RasterizerState>(identifier);
         if (resource)
         {
             resource->add_reference();
@@ -97,16 +97,16 @@ namespace xl7::graphics::states {
 
         ResourcePtr rasterizer_state(_factory->create_rasterizer_state(params), _destroy_resource);
 
-        return _try_acquire_and_add_resource(std::move(rasterizer_state), resources::DefaultDataProvider());
+        return _try_acquire_and_add_resource<RasterizerState::ID>(std::move(rasterizer_state), resources::DefaultDataProvider());
     }
 
     /**
      * Creates and acquires the specified depth/stencil state if not already done.
      */
-    resources::ResourceID StateManager::ensure_depth_stencil_state(const DepthStencilState::Desc& desc)
+    DepthStencilState::ID StateManager::ensure_depth_stencil_state(const DepthStencilState::Desc& desc)
     {
         const cl7::u8string identifier = _identifier(u8"depth/stencil state", desc);
-        resources::Resource* resource = find_resource(identifier);
+        auto* resource = find_resource<DepthStencilState>(identifier);
         if (resource)
         {
             resource->add_reference();
@@ -117,16 +117,16 @@ namespace xl7::graphics::states {
 
         ResourcePtr depth_stencil_state(_factory->create_depth_stencil_state(params), _destroy_resource);
 
-        return _try_acquire_and_add_resource(std::move(depth_stencil_state), resources::DefaultDataProvider());
+        return _try_acquire_and_add_resource<DepthStencilState::ID>(std::move(depth_stencil_state), resources::DefaultDataProvider());
     }
 
     /**
      * Creates and acquires the specified blend state if not already done.
      */
-    resources::ResourceID StateManager::ensure_blend_state(const BlendState::Desc& desc)
+    BlendState::ID StateManager::ensure_blend_state(const BlendState::Desc& desc)
     {
         const cl7::u8string identifier = _identifier(u8"blend state", desc);
-        resources::Resource* resource = find_resource(identifier);
+        auto* resource = find_resource<BlendState>(identifier);
         if (resource)
         {
             resource->add_reference();
@@ -137,7 +137,7 @@ namespace xl7::graphics::states {
 
         ResourcePtr blend_state(_factory->create_blend_state(params), _destroy_resource);
 
-        return _try_acquire_and_add_resource(std::move(blend_state), resources::DefaultDataProvider());
+        return _try_acquire_and_add_resource<BlendState::ID>(std::move(blend_state), resources::DefaultDataProvider());
     }
 
 

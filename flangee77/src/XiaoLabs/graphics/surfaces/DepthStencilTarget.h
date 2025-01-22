@@ -13,6 +13,8 @@ class DepthStencilTarget
 {
 
 public:
+    XL7_DERIVE_RESOURCE_ID(RenderTarget);
+
     DepthStencilTarget() = delete;
 
     DepthStencilTarget(const DepthStencilTarget&) = delete;

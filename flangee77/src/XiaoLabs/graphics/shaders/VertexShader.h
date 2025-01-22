@@ -13,6 +13,8 @@ class VertexShader
 {
 
 public:
+    XL7_DERIVE_RESOURCE_ID(Shader);
+
     VertexShader() = delete;
 
     VertexShader(const VertexShader&) = delete;

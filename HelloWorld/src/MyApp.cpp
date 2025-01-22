@@ -308,10 +308,10 @@ namespace helloworld {
         rendering_context->pipeline.ia.set_vertex_buffer_id(_vertex_buffer_id);
         rendering_context->pipeline.ia.set_index_buffer_id(_index_buffer_id);
 
-        rendering_context->pipeline.vs.set_shader_id(_vertex_shader_id);
+        rendering_context->pipeline.vs.set_vertex_shader_id(_vertex_shader_id);
         rendering_context->pipeline.vs.set_constant_buffer_id(0, _constant_buffer_id);
 
-        rendering_context->pipeline.ps.set_shader_id(_pixel_shader_id);
+        rendering_context->pipeline.ps.set_pixel_shader_id(_pixel_shader_id);
         rendering_context->pipeline.ps.set_constant_buffer_id(0, _constant_buffer_id);
         rendering_context->pipeline.ps.set_texture_id(0, _texture_id);
         rendering_context->pipeline.ps.set_sampler_state_id(0, _sampler_state_id);

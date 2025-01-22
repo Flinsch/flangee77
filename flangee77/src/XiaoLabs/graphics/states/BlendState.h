@@ -15,6 +15,8 @@ class BlendState
 {
 
 public:
+    XL7_DERIVE_RESOURCE_ID(AbstractState);
+
     enum class BlendFactor
     {
         Zero = 1,

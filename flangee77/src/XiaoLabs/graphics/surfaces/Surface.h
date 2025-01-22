@@ -17,6 +17,8 @@ class Surface
 {
 
 public:
+    XL7_DECLARE_RESOURCE_ID();
+
     enum class Type
     {
         TextureSurface,

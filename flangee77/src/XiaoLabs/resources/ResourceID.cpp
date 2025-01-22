@@ -29,11 +29,6 @@ namespace xl7::resources {
         assert(static_cast<id_t>(version) <= VERSION_MASK);
     }
 
-    void ResourceID::swap(ResourceID& other) noexcept
-    {
-        std::swap(_id, other._id);
-    }
-
 
 
     // #############################################################################
