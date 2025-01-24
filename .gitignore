@@ -5,6 +5,8 @@
 /build/
 Testing/
 
-/doxygen/html/
+/doxygen-sphinx/_build/
+/doxygen-sphinx/html/
+/doxygen-sphinx/xml/
 
 CMakeUserPresets.json
