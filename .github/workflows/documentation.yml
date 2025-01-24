@@ -2,9 +2,9 @@ name: Documentation
 
 on:
   push:
-    branches: [ "test" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "test" ]
+    branches: [ "main" ]
 
 jobs:
   build-docs:
@@ -38,7 +38,7 @@ jobs:
   deploy-docs:
     needs: build-docs
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/test'
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - uses: actions/checkout@v4
