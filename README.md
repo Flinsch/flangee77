@@ -2,6 +2,7 @@
 [![License](https://img.shields.io/github/license/Flinsch/flangee77)](https://github.com/Flinsch/flangee77/blob/main/LICENSE)
 [![C++](https://img.shields.io/badge/C%2B%2B-20-blue?logo=C%2B%2B)](https://en.cppreference.com/w/cpp/20)
 [![Build & Test](https://github.com/Flinsch/flangee77/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/Flinsch/flangee77/actions/workflows/cmake-multi-platform.yml)
+[![Documentation](https://github.com/Flinsch/flangee77/actions/workflows/documentation.yml/badge.svg)](https://github.com/Flinsch/flangee77/actions/workflows/documentation.yml)
 
 # flangee77
 *An unlikely modular game framework*
@@ -10,7 +11,7 @@
 
 This framework is so unlikely that it probably shouldn't exist.
 At least _you_ probably shouldn't use it at all!
-I mean, you _can_ use it, of course. It's here, under the MIT license. So go ahead!
+I mean, you _can_ use it, of course. It's here, under the [MIT license](https://choosealicense.com/licenses/mit/). So go ahead!
 But you would certainly be better off using other frameworks or even game engines, whether they are quadruple-A tier or free to use.
 
 Before we go further, let's get something straight: this isn't a game engine.
@@ -36,9 +37,10 @@ And to answer the question of who might use this framework now, I will try to ma
   Then you should definitely not use this framework and instead go for something really professional:
   robust, industry-standard tools that are tested, maintained, and supported by large teams, an off-the-shelf engine, or an in-house engine from your company.
   Compared to those, this framework is like an oddball: unlikely to fit into your pipelines unless you're unusually adventurous.
-- Are you an **indie**[^1] video game developer?
+- Are you an **indie** video game developer?
   Then you are likely focused on speed, polish, and tools that &ldquo;just work.&rdquo;
   You are interested in getting a finished game pretty soon and should use tools that help you with &ldquo;everything&rdquo; and not just an unusual framework where you still have to build a lot of things yourself.
+  <br>(Of course, you can still be a professional as an indie developer, that's for sure. Please don't get me wrong here!)
 - Are you a **hobbyist** video game developer?
   Then the question is what your intention is:
   Do you really want to do game development that will produce a finished product?
@@ -53,8 +55,6 @@ And to answer the question of who might use this framework now, I will try to ma
   It reflects my journey and priorities (see my [Personal Background and Intention](docs/personal-intention.md) again), and while it may not suit everyone, it's &ldquo;exactly&rdquo; what I wanted to build.
   (Well, not quite. This may sound familiar to you: when you look at your own code after a few months, you want to throw parts of it out and do it again in a new and better way. So this will never be &ldquo;finished&rdquo; anyway.)
 
-[^1]: Of course, you can still be a professional as an indie developer, that's for sure. Please don't get me wrong here!
-
 Now, I'm not here to start a big discussion about whether and when you should use which framework/engine or even build your own, but you see: there are &ldquo;not many&rdquo; reasons to use _this_ framework.
 I've probably done a better job of convincing you to _not_ use it than the other way around.
 But hey, maybe you're thinking, _what kind of framework is so unlikely that its own creator argues against using it? I have to try this precisely because of that!_
@@ -62,3 +62,12 @@ But hey, maybe you're thinking, _what kind of framework is so unlikely that its 
 In this case, yes: Welcome, my friend!
 
 ---
+
+## API reference and source code
+
+- Documentation &mdash; https://flinsch.github.io/flangee77
+- GitHub &mdash; https://github.com/flinsch/flangee77
+
+## License
+
+The flangee77 framework is licensed under the general [MIT License](https://opensource.org/licenses/MIT/), which can be found specifically [here](LICENSE).
