@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-docs:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,42 +17,15 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y doxygen graphviz
-          python -m pip install --upgrade pip
-          pip install sphinx breathe
-          pip install sphinx-rtd-theme
 
-      - name: Generate Doxygen XML output
-        working-directory: doxygen-sphinx
+      - name: Generate Doxygen HTML output
+        working-directory: doxygen
         run: doxygen Doxyfile
-
-      - name: Build Sphinx HTML output
-        working-directory: doxygen-sphinx
-        run: sphinx-build -M html . _build
-
-      - name: Upload documentation artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: html-docs
-          path: doxygen-sphinx/_build/html/
-
-  deploy-docs:
-    needs: build-docs
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Download documentation artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: html-docs
-          path: doxygen-sphinx/_build/html/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: doxygen-sphinx/_build/html
+          publish_dir: doxygen/html
           allow_empty_commit: true
