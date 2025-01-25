@@ -16,11 +16,6 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-  $(document).ready(function() { init_search(); });
-/* @license-end */
-</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -34,18 +29,6 @@
    </div>
    <div id="projectbrief">An unlikely modular game framework</div>
   </td>
-    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
-          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
-          </span>
-        </div>
-</td>
  </tr>
  </tbody>
 </table>
@@ -57,6 +40,17 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -106,14 +100,14 @@ Directory dependency graph for textures:</div>
 <map name="adir__4c006f8cc92b84dfe8ab8b2794d8b951__dep" id="adir__4c006f8cc92b84dfe8ab8b2794d8b951__dep">
 <area shape="rect" href="dir_4c006f8cc92b84dfe8ab8b2794d8b951.html" title="textures" alt="" coords="103,52,179,77"/>
 <area shape="rect" href="dir_320c9f2162412964262971130eaddd74.html" title="textures" alt="" coords="5,125,81,151"/>
-<area shape="poly" href="dir_000037_000039.html" alt="" coords="127,80,72,119,69,115,123,75"/>
-<area shape="rect" href="dir_000037_000039.html" title="1" alt="" coords="74,114,84,129"/>
+<area shape="poly" href="dir_000038_000040.html" alt="" coords="127,80,72,119,69,115,123,75"/>
+<area shape="rect" href="dir_000038_000040.html" title="1" alt="" coords="74,114,84,129"/>
 <area shape="rect" href="dir_cb96e6168df3a538abd69f5dd00d7e92.html" title="images" alt="" coords="105,125,176,151"/>
-<area shape="poly" href="dir_000037_000009.html" alt="" coords="143,78,143,112,138,112,138,78"/>
-<area shape="rect" href="dir_000037_000009.html" title="1" alt="" coords="144,100,154,114"/>
+<area shape="poly" href="dir_000038_000010.html" alt="" coords="143,78,143,112,138,112,138,78"/>
+<area shape="rect" href="dir_000038_000010.html" title="1" alt="" coords="144,100,154,114"/>
 <area shape="rect" href="dir_fb545740611cd0a95ac83c551d6cb629.html" title="CoreLabs" alt="" coords="201,125,283,151"/>
-<area shape="poly" href="dir_000037_000001.html" alt="" coords="158,75,216,115,213,119,155,80"/>
-<area shape="rect" href="dir_000037_000001.html" title="1" alt="" coords="211,100,220,115"/>
+<area shape="poly" href="dir_000038_000001.html" alt="" coords="158,75,216,115,213,119,155,80"/>
+<area shape="rect" href="dir_000038_000001.html" title="1" alt="" coords="211,100,220,115"/>
 <area shape="rect" href="dir_462e037cd8f93e4f738403b1b7994e95.html" title="direct3d11" alt="" coords="91,16,190,88"/>
 </map>
 </div>

@@ -16,11 +16,6 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-  $(document).ready(function() { init_search(); });
-/* @license-end */
-</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -34,18 +29,6 @@
    </div>
    <div id="projectbrief">An unlikely modular game framework</div>
   </td>
-    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
-          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
-          </span>
-        </div>
-</td>
  </tr>
  </tbody>
 </table>
@@ -57,6 +40,17 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -105,49 +99,49 @@ Directory dependency graph for direct3d9:</div>
 <div class="center"><img src="dir_e8f4eeb65825cc5cd6d0c9bcd747ad1e_dep.png" border="0" usemap="#adir__e8f4eeb65825cc5cd6d0c9bcd747ad1e__dep" alt="/home/runner/work/flangee77/flangee77/flangee77/src/XiaoLabs/graphics/impl/direct3d9"/></div>
 <map name="adir__e8f4eeb65825cc5cd6d0c9bcd747ad1e__dep" id="adir__e8f4eeb65825cc5cd6d0c9bcd747ad1e__dep">
 <area shape="rect" href="dir_f1af5f2cc9b2880523da07eb422f4ab7.html" title="shared" alt="" coords="85,209,152,235"/>
-<area shape="poly" href="dir_000005_000028.html" alt="" coords="235,84,124,103,74,118,55,128,44,138,37,154,44,171,58,188,76,201,73,205,54,192,39,173,32,153,39,134,52,123,72,113,123,97,234,78"/>
-<area shape="rect" href="dir_000005_000028.html" title="4" alt="" coords="70,186,79,201"/>
+<area shape="poly" href="dir_000005_000029.html" alt="" coords="235,84,124,103,74,118,55,128,44,138,37,154,44,171,58,188,76,201,73,205,54,192,39,173,32,153,39,134,52,123,72,113,123,97,234,78"/>
+<area shape="rect" href="dir_000005_000029.html" title="4" alt="" coords="70,186,79,201"/>
 <area shape="rect" href="dir_1e3a036f997292a614c1502e8d9ed6ba.html" title="meshes" alt="" coords="338,136,411,161"/>
-<area shape="poly" href="dir_000005_000016.html" alt="" coords="293,86,349,126,346,130,290,90"/>
-<area shape="rect" href="dir_000005_000016.html" title="4" alt="" coords="344,111,353,126"/>
+<area shape="poly" href="dir_000005_000017.html" alt="" coords="293,86,349,126,346,130,290,90"/>
+<area shape="rect" href="dir_000005_000017.html" title="4" alt="" coords="344,111,353,126"/>
 <area shape="rect" href="dir_ab028f0f772fa9acf4e548584170f1a0.html" title="shaders" alt="" coords="141,136,214,161"/>
-<area shape="poly" href="dir_000005_000025.html" alt="" coords="262,90,206,130,203,126,259,86"/>
-<area shape="rect" href="dir_000005_000025.html" title="5" alt="" coords="208,125,218,139"/>
+<area shape="poly" href="dir_000005_000026.html" alt="" coords="262,90,206,130,203,126,259,86"/>
+<area shape="rect" href="dir_000005_000026.html" title="5" alt="" coords="208,125,218,139"/>
 <area shape="rect" href="dir_33a5c693393e68f7c4ca328f2306a4f9.html" title="states" alt="" coords="54,136,117,161"/>
-<area shape="poly" href="dir_000005_000031.html" alt="" coords="246,91,130,133,128,128,244,86"/>
-<area shape="rect" href="dir_000005_000031.html" title="12" alt="" coords="128,130,145,145"/>
+<area shape="poly" href="dir_000005_000032.html" alt="" coords="246,91,130,133,128,128,244,86"/>
+<area shape="rect" href="dir_000005_000032.html" title="12" alt="" coords="128,130,145,145"/>
 <area shape="rect" href="dir_80f1f92631602f7b710cb8e22e522257.html" title="textures" alt="" coords="238,136,314,161"/>
-<area shape="poly" href="dir_000005_000038.html" alt="" coords="279,88,279,122,273,122,273,88"/>
-<area shape="rect" href="dir_000005_000038.html" title="2" alt="" coords="280,110,289,125"/>
+<area shape="poly" href="dir_000005_000039.html" alt="" coords="279,88,279,122,273,122,273,88"/>
+<area shape="rect" href="dir_000005_000039.html" title="2" alt="" coords="280,110,289,125"/>
 <area shape="rect" href="dir_92d8d9c589245655998ff9d4e66a8217.html" title="resources" alt="" coords="444,136,529,161"/>
-<area shape="poly" href="dir_000005_000023.html" alt="" coords="311,85,441,129,439,134,309,91"/>
-<area shape="rect" href="dir_000005_000023.html" title="1" alt="" coords="433,115,443,129"/>
+<area shape="poly" href="dir_000005_000024.html" alt="" coords="311,85,441,129,439,134,309,91"/>
+<area shape="rect" href="dir_000005_000024.html" title="1" alt="" coords="433,115,443,129"/>
 <area shape="rect" href="dir_fb545740611cd0a95ac83c551d6cb629.html" title="CoreLabs" alt="" coords="840,209,923,235"/>
 <area shape="poly" href="dir_000005_000001.html" alt="" coords="318,83,542,133,827,204,826,209,541,139,317,88"/>
 <area shape="rect" href="dir_000005_000001.html" title="13" alt="" coords="815,190,833,205"/>
-<area shape="poly" href="dir_000016_000001.html" alt="" coords="401,159,433,169,540,188,626,193,714,196,826,207,826,212,714,201,626,199,539,194,431,175,399,164"/>
-<area shape="rect" href="dir_000016_000001.html" title="2" alt="" coords="818,193,827,208"/>
+<area shape="poly" href="dir_000017_000001.html" alt="" coords="401,159,433,169,540,188,626,193,714,196,826,207,826,212,714,201,626,199,539,194,431,175,399,164"/>
+<area shape="rect" href="dir_000017_000001.html" title="2" alt="" coords="818,193,827,208"/>
 <area shape="rect" href="dir_17366dcc079f1075478b84a90ac19b5f.html" title="meshes" alt="" coords="947,209,1021,235"/>
-<area shape="poly" href="dir_000016_000018.html" alt="" coords="401,159,433,169,506,183,570,191,680,194,791,194,857,198,934,207,933,212,856,203,791,200,680,199,569,196,506,189,431,175,399,164"/>
-<area shape="rect" href="dir_000016_000018.html" title="2" alt="" coords="926,193,935,208"/>
-<area shape="poly" href="dir_000025_000028.html" alt="" coords="170,163,139,201,135,197,166,160"/>
-<area shape="rect" href="dir_000025_000028.html" title="2" alt="" coords="142,193,151,208"/>
-<area shape="poly" href="dir_000025_000001.html" alt="" coords="199,159,226,169,314,188,390,197,458,200,522,199,656,195,735,198,827,207,826,212,734,203,656,201,522,205,458,206,390,203,313,193,225,175,197,164"/>
-<area shape="rect" href="dir_000025_000001.html" title="3" alt="" coords="818,193,827,208"/>
+<area shape="poly" href="dir_000017_000019.html" alt="" coords="401,159,433,169,506,183,570,191,680,194,791,194,857,198,934,207,933,212,856,203,791,200,680,199,569,196,506,189,431,175,399,164"/>
+<area shape="rect" href="dir_000017_000019.html" title="2" alt="" coords="926,193,935,208"/>
+<area shape="poly" href="dir_000026_000029.html" alt="" coords="170,163,139,201,135,197,166,160"/>
+<area shape="rect" href="dir_000026_000029.html" title="2" alt="" coords="142,193,151,208"/>
+<area shape="poly" href="dir_000026_000001.html" alt="" coords="199,159,226,169,314,188,390,197,458,200,522,199,656,195,735,198,827,207,826,212,734,203,656,201,522,205,458,206,390,203,313,193,225,175,197,164"/>
+<area shape="rect" href="dir_000026_000001.html" title="3" alt="" coords="818,193,827,208"/>
 <area shape="rect" href="dir_22ee55289926d10689e40ffcc65fa186.html" title="shaders" alt="" coords="642,209,715,235"/>
-<area shape="poly" href="dir_000025_000027.html" alt="" coords="199,159,226,169,285,183,335,191,423,195,513,196,628,207,628,212,513,201,423,200,334,196,284,188,225,175,197,164"/>
-<area shape="rect" href="dir_000025_000027.html" title="5" alt="" coords="620,193,630,208"/>
+<area shape="poly" href="dir_000026_000028.html" alt="" coords="199,159,226,169,285,183,335,191,423,195,513,196,628,207,628,212,513,201,423,200,334,196,284,188,225,175,197,164"/>
+<area shape="rect" href="dir_000026_000028.html" title="5" alt="" coords="620,193,630,208"/>
 <area shape="rect" href="dir_fb43fb3b0ac28ee31dd8a2e0839b3f31.html" title="states" alt="" coords="445,209,507,235"/>
-<area shape="poly" href="dir_000031_000032.html" alt="" coords="105,159,129,169,212,188,279,193,347,195,431,205,431,211,346,200,278,198,211,193,127,175,103,164"/>
-<area shape="rect" href="dir_000031_000032.html" title="4" alt="" coords="424,191,433,206"/>
+<area shape="poly" href="dir_000032_000033.html" alt="" coords="105,159,129,169,212,188,279,193,347,195,431,205,431,211,346,200,278,198,211,193,127,175,103,164"/>
+<area shape="rect" href="dir_000032_000033.html" title="4" alt="" coords="424,191,433,206"/>
 <area shape="rect" href="dir_e458fe1626b19869ed3ef42e4babb188.html" title="MathLabs" alt="" coords="532,209,617,235"/>
-<area shape="poly" href="dir_000031_000014.html" alt="" coords="105,159,129,169,186,184,236,192,321,197,408,197,519,207,519,207,519,212,518,212,408,202,321,202,235,198,185,189,127,175,103,164"/>
-<area shape="rect" href="dir_000031_000014.html" title="1" alt="" coords="511,193,520,208"/>
-<area shape="poly" href="dir_000038_000001.html" alt="" coords="298,159,326,169,399,185,462,194,572,197,684,196,750,199,826,207,826,212,749,204,684,201,572,202,462,199,398,190,325,175,297,164"/>
-<area shape="rect" href="dir_000038_000001.html" title="1" alt="" coords="818,193,827,208"/>
+<area shape="poly" href="dir_000032_000015.html" alt="" coords="105,159,129,169,186,184,236,192,321,197,408,197,519,207,519,207,519,212,518,212,408,202,321,202,235,198,185,189,127,175,103,164"/>
+<area shape="rect" href="dir_000032_000015.html" title="1" alt="" coords="511,193,520,208"/>
+<area shape="poly" href="dir_000039_000001.html" alt="" coords="298,159,326,169,399,185,462,194,572,197,684,196,750,199,826,207,826,212,749,204,684,201,572,202,462,199,398,190,325,175,297,164"/>
+<area shape="rect" href="dir_000039_000001.html" title="1" alt="" coords="818,193,827,208"/>
 <area shape="rect" href="dir_320c9f2162412964262971130eaddd74.html" title="textures" alt="" coords="739,209,815,235"/>
-<area shape="poly" href="dir_000038_000039.html" alt="" coords="298,159,326,169,384,183,435,190,523,195,612,196,726,207,725,212,612,201,522,200,434,195,383,188,325,175,297,164"/>
-<area shape="rect" href="dir_000038_000039.html" title="1" alt="" coords="718,193,727,208"/>
+<area shape="poly" href="dir_000039_000040.html" alt="" coords="298,159,326,169,384,183,435,190,523,195,612,196,726,207,725,212,612,201,522,200,434,195,383,188,325,175,297,164"/>
+<area shape="rect" href="dir_000039_000040.html" title="1" alt="" coords="718,193,727,208"/>
 <area shape="rect" href="dir_e8f4eeb65825cc5cd6d0c9bcd747ad1e.html" alt="" coords="43,52,423,172"/>
 <area shape="rect" href="dir_b2e83435d4cc27a0bbe91bc985a570a1.html" title="impl" alt="" coords="16,16,433,245"/>
 </map>

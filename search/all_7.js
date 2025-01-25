@@ -162,5 +162,6 @@ var searchData=
   ['group_159',['Group',['../da/d74/structtl7_1_1Stats_1_1Group.html',1,'tl7::Stats']]],
   ['guid_160',['guid',['../dc/dbd/structcl7_1_1Guid.html#a3040f328b15399ee4685271cebd3f64c',1,'cl7::Guid::Guid(cl7::u8string_view string)'],['../dc/dbd/structcl7_1_1Guid.html#ac03a92151437cfdb73eecc30844b3f76',1,'cl7::Guid::Guid(const std::array&lt; std::byte, 16 &gt; &amp;bytes)'],['../dc/dbd/structcl7_1_1Guid.html#aca05495200e4422a23d9da1063220f76',1,'cl7::Guid::Guid()'],['../dc/dbd/structcl7_1_1Guid.html',1,'cl7::Guid']]],
   ['guid_2ecpp_161',['Guid.cpp',['../dd/dc0/Guid_8cpp.html',1,'']]],
-  ['guid_2eh_162',['Guid.h',['../d6/d2a/Guid_8h.html',1,'']]]
+  ['guid_2eh_162',['Guid.h',['../d6/d2a/Guid_8h.html',1,'']]],
+  ['guide_163',['Code Style Guide',['../dd/de7/md__2home_2runner_2work_2flangee77_2flangee77_2docs_2code-style-guide.html',1,'']]]
 ];
