@@ -1,0 +1,36 @@
+<map id="xl7::graphics::RenderingContext" name="xl7::graphics::RenderingContext">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1543,261,1721,301"/>
+<area shape="rect" id="Node000002" href="$d6/d62/classxl7_1_1graphics_1_1pipeline_1_1Pipeline.html" title=" " alt="" coords="1199,169,1364,209"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1372,210,1556,259,1554,264,1371,215"/>
+<area shape="rect" id="Node000003" href="$d9/df9/classxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject.html" title=" " alt="" coords="5,56,184,96"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="145,48,223,18,269,7,315,3,935,3,1005,9,1058,26,1108,53,1169,91,1222,129,1262,167,1259,171,1218,133,1167,96,1106,58,1056,31,1004,14,935,8,315,8,269,12,225,23,147,53"/>
+<area shape="rect" id="Node000005" href="$d6/d2d/classxl7_1_1graphics_1_1pipeline_1_1AbstractStage.html" title=" " alt="" coords="233,125,399,165"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="173,98,252,123,251,128,171,103"/>
+<area shape="rect" id="Node000004" href="$d8/d9d/classxl7_1_1graphics_1_1pipeline_1_1InputAssemblerStage.html" title=" " alt="" coords="651,40,820,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="834,61,908,68,994,80,1083,98,1169,126,1212,145,1250,167,1247,172,1210,150,1167,130,1081,104,993,85,908,73,833,66"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="408,120,447,111,650,72,651,77,449,116,410,125"/>
+<area shape="rect" id="Node000007" href="$d1/d95/classxl7_1_1graphics_1_1pipeline_1_1AbstractShaderStage.html" title=" " alt="" coords="454,125,621,165"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="412,143,454,143,454,148,412,148"/>
+<area shape="rect" id="Node000008" href="$d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html" title=" " alt="" coords="653,215,818,255"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="411,166,449,175,653,217,652,222,447,180,410,171"/>
+<area shape="rect" id="Node000010" href="$d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html" title=" " alt="" coords="653,287,818,327"/>
+<area shape="poly" id="edge14_Node000010_Node000005" title=" " alt="" coords="361,170,403,195,449,218,554,256,653,285,651,290,552,261,447,222,400,200,358,175"/>
+<area shape="rect" id="Node000006" href="$d6/d69/classxl7_1_1graphics_1_1pipeline_1_1VertexShaderStage.html" title=" " alt="" coords="851,105,1016,145"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="1030,140,1199,172,1198,177,1029,145"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="634,138,851,127,851,132,635,143"/>
+<area shape="rect" id="Node000009" href="$dc/dba/classxl7_1_1graphics_1_1pipeline_1_1PixelShaderStage.html" title=" " alt="" coords="851,169,1016,209"/>
+<area shape="poly" id="edge12_Node000009_Node000007" title=" " alt="" coords="635,153,851,178,850,183,634,159"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="832,233,844,233,933,236,1022,233,1113,221,1198,205,1199,211,1114,227,1023,239,933,242,844,239,832,239"/>
+<area shape="poly" id="edge11_Node000002_Node000009" title=" " alt="" coords="1030,187,1199,187,1199,192,1030,192"/>
+<area shape="poly" id="edge13_Node000002_Node000010" title=" " alt="" coords="832,297,991,276,1080,260,1167,237,1206,223,1241,207,1243,212,1208,228,1169,243,1081,265,991,282,833,302"/>
+<area shape="rect" id="Node000011" href="$dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html" title=" " alt="" coords="1192,352,1371,392"/>
+<area shape="poly" id="edge15_Node000001_Node000011" title=" " alt="" coords="1372,346,1553,299,1554,304,1373,351"/>
+<area shape="rect" id="Node000012" href="$dc/d8f/structxl7_1_1graphics_1_1Viewport.html" title=" " alt="" coords="848,359,1019,385"/>
+<area shape="poly" id="edge16_Node000011_Node000012" title=" " alt="" coords="1033,369,1192,369,1192,375,1033,375"/>
+<area shape="rect" id="Node000013" href="$dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html" title=" " alt="" coords="844,409,1023,449"/>
+<area shape="poly" id="edge17_Node000011_Node000013" title=" " alt="" coords="1036,411,1168,389,1192,385,1192,390,1168,395,1037,416"/>
+<area shape="rect" id="Node000014" href="$da/dd9/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities_1_1Memory.html" title=" " alt="" coords="448,370,627,425"/>
+<area shape="poly" id="edge18_Node000013_Node000014" title=" " alt="" coords="641,403,844,419,843,425,640,408"/>
+<area shape="rect" id="Node000015" href="$db/ddf/structcl7_1_1Version.html" title=" " alt="" coords="489,449,586,474"/>
+<area shape="poly" id="edge19_Node000013_Node000015" title=" " alt="" coords="600,460,703,459,820,451,846,447,846,452,820,456,703,464,600,465"/>
+</map>

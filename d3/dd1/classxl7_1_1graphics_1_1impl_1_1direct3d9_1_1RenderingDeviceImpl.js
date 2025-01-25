@@ -1,0 +1,28 @@
+var classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl =
+[
+    [ "RenderingDeviceImpl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#aa59bfc7ff924369dc8bbbae91606621f", null ],
+    [ "RenderingDeviceImpl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#adaf80aec74e18999c51512b87b7d0342", null ],
+    [ "RenderingDeviceImpl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a6abfff71f11a7df403b4ddbc36d9448d", null ],
+    [ "~RenderingDeviceImpl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#ad0ad0017231ae70ac21591b6d6b006c7", null ],
+    [ "_check_device_lost_impl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#ac8760fc6a9cf210831b91f2c3429e48f", null ],
+    [ "_check_texture_format_impl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a0838b7472f68c13c47a78b9d51fa9e0b", null ],
+    [ "_create_rendering_context_impl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#abc7cbce1fd5ad813650cb301cb13b3e3", null ],
+    [ "_determine_video_memory", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#ad80a16a32e37502bc8663f2c524da037", null ],
+    [ "_handle_device_lost_impl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#ad4bbf5ac55943d2f81e2c0de247e5d97", null ],
+    [ "_init_impl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a5451b36f1d8ce1c0e24aaf9477c2c99c", null ],
+    [ "_present_impl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a0ad441f91e602140eb645b87bae01d0d", null ],
+    [ "_shutdown_impl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a2f8085c03de07e3592da02cd02ed4d0c", null ],
+    [ "get_d3d_adapter_identifier", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#ab0f4cd16476fb0175d565a8ef42f1b1c", null ],
+    [ "get_d3d_device_caps", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a3ab95d4dff5d10429d51cf1b6e6f25c1", null ],
+    [ "get_d3d_present_parameters", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a8dbbe268c262885e296823117ddd1a90", null ],
+    [ "get_raw_d3d_device", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a880ef6a482f683377a6e05fbe4c16544", null ],
+    [ "operator=", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a62631ef5887878791bb4c2b8ed8fb0f3", null ],
+    [ "operator=", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#ae88bace5994cb7ab85831f447e12e977", null ],
+    [ "GraphicsSystemImpl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a3e5523a1f47c452553e338ec03bc48e6", null ],
+    [ "_d3d_adapter_identifier", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#ae12af08724de40903b6a41c8a1094263", null ],
+    [ "_d3d_depth_stencil_surface", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#ac140939bab1afaf362519c2686698db4", null ],
+    [ "_d3d_device", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#ada310a1c9c1208f6421846e5cc42282f", null ],
+    [ "_d3d_device_caps", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a5ddda33f7915f0a4de8d2b074644cd47", null ],
+    [ "_d3d_present_parameters", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a6d49b057022a9f2381bbb42cf3d073a1", null ],
+    [ "_d3d_render_target_surface", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a9dcc092376bd557967140d587a17bb7b", null ]
+];
