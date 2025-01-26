@@ -26,7 +26,7 @@ different encodings (as well as corresponding character and string-view types):
 
 These types are simple &ldquo;typedefs&rdquo; of corresponding types from the C++ Standard Library.
 
-The intention of these types is to emphasize the respective encoding a little more semantically, especially with regard to `cl7::astring` and `cl7::u8string`, as a contrast to `std::string`, which can contain &ldquo;any&rdquo; encoding, ASCII, ANSI, UTF-8, ISO 8859, etc.
+The intention of these types is to emphasize the respective encoding a little more semantically, especially with regard to `cl7::astring` and `cl7::u8string` (as one-byte-wide strings), as a contrast to `std::string`, which can contain &ldquo;any&rdquo; encoding, ASCII, ANSI, UTF-8, ISO 8859, etc.
 If you need the flexibility of `std::string`, you can still use it, even in parallel with the types of this framework (which are just typedefs anyway).
 You just have to be aware of which encoding you are using (which you &ldquo;have&rdquo; to do anyway).
 This framework also sometimes uses `std::string` etc. here and there (internally), but more for utility and compatibility purposes.

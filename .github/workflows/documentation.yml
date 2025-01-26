@@ -17,10 +17,12 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y doxygen graphviz
+          python -m pip install --upgrade pip
 
       - name: Generate Doxygen HTML output
         working-directory: doxygen
-        run: doxygen Doxyfile
+        #run: doxygen Doxyfile
+        run: python doxygen-build.py
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -29,3 +31,4 @@ jobs:
           publish_branch: gh-pages
           publish_dir: doxygen/html
           allow_empty_commit: true
+          full_commit_message: ${{ github.event.head_commit.message }}

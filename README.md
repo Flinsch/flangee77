@@ -11,7 +11,7 @@
 
 This framework is so unlikely that it probably shouldn't exist.
 At least _you_ probably shouldn't use it at all!
-I mean, you _can_ use it, of course. It's here, under the [MIT license](https://choosealicense.com/licenses/mit/). So go ahead!
+I mean, you _can_ use it, of course. It's here, under the [MIT License](https://choosealicense.com/licenses/mit/). So go ahead!
 But you would certainly be better off using other frameworks or even game engines, whether they are quadruple-A tier or free to use.
 
 Before we go further, let's get something straight: this isn't a game engine.
@@ -33,22 +33,22 @@ I'll try to give a somewhat comprehensible answer to that, see my [Personal Back
 
 And to answer the question of who might use this framework now, I will try to make a case distinction:
 
-- Are you a **professional** video game developer?
+- Are you a **professional** video game developer? <br>
   Then you should definitely not use this framework and instead go for something really professional:
   robust, industry-standard tools that are tested, maintained, and supported by large teams, an off-the-shelf engine, or an in-house engine from your company.
   Compared to those, this framework is like an oddball: unlikely to fit into your pipelines unless you're unusually adventurous.
-- Are you an **indie** video game developer?
+- Are you an **indie** video game developer? <br>
   Then you are likely focused on speed, polish, and tools that &ldquo;just work.&rdquo;
   You are interested in getting a finished game pretty soon and should use tools that help you with &ldquo;everything&rdquo; and not just an unusual framework where you still have to build a lot of things yourself.
   <br>(Of course, you can still be a professional as an indie developer, that's for sure. Please don't get me wrong here!)
-- Are you a **hobbyist** video game developer?
+- Are you a **hobbyist** video game developer? <br>
   Then the question is what your intention is:
   Do you really want to do game development that will produce a finished product?
   Then the same answer applies to you as to the indie developer.
   Or are you like me and prefer to build &ldquo;everything&rdquo; yourself because it's fun and the journey is the goal, not necessarily a finished game, even though that would still be welcome?
   Well, then the recommendation is not necessarily a full-fledged engine, but still another, mature framework.
   Or you can do what I did and build your own framework (or even your own engine).
-- Are you the **original author** (that's me!)?
+- Are you the **original author** (that's me!)? <br>
   Then I'm just talking to myself.
   Let's be honest:
   This framework was made for my own &ldquo;creative&rdquo; needs, challenges, and ideas.
@@ -63,7 +63,7 @@ In this case, yes: Welcome, my friend!
 
 ---
 
-## API reference and source code
+## API Reference and Source Code
 
 - Documentation &mdash; https://flinsch.github.io/flangee77
 - GitHub &mdash; https://github.com/flinsch/flangee77
