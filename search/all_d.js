@@ -75,8 +75,8 @@ var searchData=
   ['max_5fusecs_72',['max_usecs',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#ae68bd080356a84680793b63e01cf3643',1,'cl7::profiling::Sample']]],
   ['max_5fvertex_5fstreams_73',['MAX_VERTEX_STREAMS',['../d8/d9d/classxl7_1_1graphics_1_1pipeline_1_1InputAssemblerStage.html#aae0c6e03ae3ffc67f312d662ef6057f2',1,'xl7::graphics::pipeline::InputAssemblerStage']]],
   ['max_5fz_74',['max_z',['../dc/d8f/structxl7_1_1graphics_1_1Viewport.html#a07c5d7b1f9e0d415dca2d1a191619f7c',1,'xl7::graphics::Viewport']]],
-  ['maximum_20line_20length_75',['Maximum Line Length',['../dd/de7/md__2home_2runner_2work_2flangee77_2flangee77_2docs_2code-style-guide.html#autotoc_md14',1,'']]],
-  ['member_20order_76',['Class Structure and Member Order',['../dd/de7/md__2home_2runner_2work_2flangee77_2flangee77_2docs_2code-style-guide.html#autotoc_md7',1,'']]],
+  ['maximum_20line_20length_75',['Maximum Line Length',['../de/d95/md_code-style-guide.html#autotoc_md14',1,'']]],
+  ['member_20order_76',['Class Structure and Member Order',['../de/d95/md_code-style-guide.html#autotoc_md7',1,'']]],
   ['memory_77',['memory',['../da/dd9/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities_1_1Memory.html',1,'xl7::graphics::RenderingDevice::Capabilities::Memory'],['../dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#afa91d27656ea53c522528f7317ddc6af',1,'xl7::graphics::RenderingDevice::Capabilities::memory']]],
   ['memory_2ecpp_78',['memory.cpp',['../d8/d71/memory_8cpp.html',1,'']]],
   ['memory_2eh_79',['memory.h',['../dc/d18/memory_8h.html',1,'']]],
@@ -116,5 +116,5 @@ var searchData=
   ['multi_5fline_5foptions_113',['multi_line_options',['../df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html#a617b36b3eaf8e053d51486d375545f71',1,'dl7::json::JsonWriter::Format']]],
   ['multiline_114',['MultiLine',['../df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html#a8898108efa3ed4e4bdf809de9cfe301dad16a748b5543974384bc43d392f1e566',1,'dl7::json::JsonWriter::Format']]],
   ['multilineoptions_115',['MultiLineOptions',['../df/d81/structdl7_1_1json_1_1JsonWriter_1_1Format_1_1MultiLineOptions.html',1,'dl7::json::JsonWriter::Format']]],
-  ['my_20framework_116',['The Journey of (Re)building My Framework',['../d7/ddb/md__2home_2runner_2work_2flangee77_2flangee77_2docs_2personal-intention.html#autotoc_md20',1,'']]]
+  ['my_20framework_116',['The Journey of (Re)building My Framework',['../d1/d55/md_personal-intention.html#autotoc_md20',1,'']]]
 ];

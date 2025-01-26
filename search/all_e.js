@@ -1,7 +1,7 @@
 var searchData=
 [
   ['name_0',['name',['../dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html#a981723567425313ce2102e4a02fb23e2',1,'xl7::graphics::shaders::ConstantBufferDeclaration::name'],['../d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html#af39f7aaa56a80852fc7cc2fba3466ee0',1,'xl7::graphics::shaders::ConstantDeclaration::name'],['../d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html#a8261dfe443d4ee092b775c7af6c03f9e',1,'xl7::graphics::shaders::TextureSamplerDeclaration::name'],['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a4f59f58f099d86e34e4ccf23ff3eee1f',1,'cl7::profiling::Sample::name']]],
-  ['naming_20conventions_1',['Naming Conventions',['../dd/de7/md__2home_2runner_2work_2flangee77_2flangee77_2docs_2code-style-guide.html#autotoc_md18',1,'']]],
+  ['naming_20conventions_1',['Naming Conventions',['../de/d95/md_code-style-guide.html#autotoc_md18',1,'']]],
   ['nearestneighbor_2',['NearestNeighbor',['../d8/dd2/namespacexl7_1_1graphics_1_1images.html#ac9d829a5933316d55f7f267a17474dd9aaa020331bb30d2fa2ecf7c3a0777823f',1,'xl7::graphics::images']]],
   ['never_3',['Never',['../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa6e7b34fa59e1bd229b207892956dc41c',1,'xl7::graphics']]],
   ['next_4',['next',['../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a5b54d0aa8196584f614d205c2fd10485',1,'dl7::syntax::Lexer']]],

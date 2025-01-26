@@ -58,5 +58,5 @@ var searchData=
   ['vocabulary_2ecpp_55',['Vocabulary.cpp',['../d4/d68/Vocabulary_8cpp.html',1,'']]],
   ['vocabulary_2eh_56',['Vocabulary.h',['../dd/d7d/Vocabulary_8h.html',1,'']]],
   ['vs_57',['vs',['../d7/d0a/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates.html#a38140ce257c8142d46083d5f5d51d3f0',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates::vs'],['../d7/d8c/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates.html#abe883ab2b2cfa3c188406d2adf37aab3',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates::vs'],['../d6/d62/classxl7_1_1graphics_1_1pipeline_1_1Pipeline.html#a872a8087066a91ee48c59d6c4e83b29a',1,'xl7::graphics::pipeline::Pipeline::vs'],['../d9/d2e/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedDrawStates.html#a44596137c909dc3d7e426193011c799f',1,'xl7::graphics::RenderingContext::ResolvedDrawStates::vs']]],
-  ['vs_20tt_20struct_20tt_58',['&lt;tt&gt;class&lt;/tt&gt; vs. &lt;tt&gt;struct&lt;/tt&gt;',['../dd/de7/md__2home_2runner_2work_2flangee77_2flangee77_2docs_2code-style-guide.html#autotoc_md8',1,'']]]
+  ['vs_20tt_20struct_20tt_58',['&lt;tt&gt;class&lt;/tt&gt; vs. &lt;tt&gt;struct&lt;/tt&gt;',['../de/d95/md_code-style-guide.html#autotoc_md8',1,'']]]
 ];

@@ -89,7 +89,7 @@ var searchData=
   ['texturesamplerdeclaration_2eh_86',['TextureSamplerDeclaration.h',['../dc/d88/TextureSamplerDeclaration_8h.html',1,'']]],
   ['texturesamplerstates_87',['texturesamplerstates',['../dc/d09/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates::TextureSamplerStates'],['../dc/db4/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates::TextureSamplerStates']]],
   ['texturesurface_88',['TextureSurface',['../d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53a1412f4ac0af027752228f6c03e01e6e0',1,'xl7::graphics::surfaces::Surface']]],
-  ['the_20journey_20of_20re_20building_20my_20framework_89',['The Journey of (Re)building My Framework',['../d7/ddb/md__2home_2runner_2work_2flangee77_2flangee77_2docs_2personal-intention.html#autotoc_md20',1,'']]],
+  ['the_20journey_20of_20re_20building_20my_20framework_89',['The Journey of (Re)building My Framework',['../d1/d55/md_personal-intention.html#autotoc_md20',1,'']]],
   ['title_90',['title',['../d7/db0/structxl7_1_1Config_1_1Generic.html#a2571051e089dd5632d8e2095ef871235',1,'xl7::Config::Generic']]],
   ['tl7_91',['tl7',['../d1/dce/namespacetl7.html',1,'']]],
   ['tl7_3a_3aexceptions_92',['exceptions',['../da/d05/namespacetl7_1_1exceptions.html',1,'tl7']]],
@@ -167,7 +167,7 @@ var searchData=
   ['try_5fpush_164',['try_push',['../d4/dc8/classtl7_1_1SubcaseContext.html#a230bb1c3cc374dcd9cc74d1e9ab72d87',1,'tl7::SubcaseContext']]],
   ['tstring_165',['Tstring',['../d0/dbc/structcl7_1_1string__hash.html#a7f965c342868e72721bf9a6f10bd02b6',1,'cl7::string_hash']]],
   ['tstring_5fview_166',['Tstring_view',['../d0/dbc/structcl7_1_1string__hash.html#a5bb6033eeb64195e5c038615850e01e2',1,'cl7::string_hash']]],
-  ['tt_20class_20tt_20vs_20tt_20struct_20tt_167',['&lt;tt&gt;class&lt;/tt&gt; vs. &lt;tt&gt;struct&lt;/tt&gt;',['../dd/de7/md__2home_2runner_2work_2flangee77_2flangee77_2docs_2code-style-guide.html#autotoc_md8',1,'']]],
+  ['tt_20class_20tt_20vs_20tt_20struct_20tt_167',['&lt;tt&gt;class&lt;/tt&gt; vs. &lt;tt&gt;struct&lt;/tt&gt;',['../de/d95/md_code-style-guide.html#autotoc_md8',1,'']]],
   ['type_168',['type',['../d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#abb42284bf893f561e35443a0a0985703',1,'xl7::graphics::shaders::Shader::Type'],['../d9/dc0/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1ChunkInfo.html#a2484cb7fc63bf23cc2b0da6758266417',1,'xl7::graphics::images::PngImageHandler::ChunkInfo::type'],['../d6/d58/structcl7_1_1logging_1_1LogEntry.html#a96ee0576398e3e780599877034dccedf',1,'cl7::logging::LogEntry::type'],['../d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#aec19ff6b1326410f7415a57864356402',1,'xl7::graphics::textures::Texture::Type'],['../d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53',1,'xl7::graphics::surfaces::Surface::Type'],['../dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#a48ead427fac8dae8bd894d8c7d598b69',1,'xl7::graphics::meshes::MeshBuffer::Type'],['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615ca',1,'dl7::json::Json::Type']]],
   ['types_2eh_169',['types.h',['../d9/d49/types_8h.html',1,'']]]
 ];
