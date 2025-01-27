@@ -1,0 +1,25 @@
+
+body {
+    background: rgb(6, 9, 14);
+}
+
+#projectname {
+    font-weight: bold;
+}
+
+#projectbrief {
+    font-style: italic;
+}
+
+#MSearchBox {
+    background: rgb(2, 3, 5);
+}
+
+#side-nav #nav-tree #nav-tree-contents > ul > li > div.item:first-child {
+    display: none;
+}
+
+#side-nav #nav-tree #nav-tree-contents > ul > li > ul.children_ul .custom-item {
+    font-weight: bold;
+    padding-left: 8px;
+}

@@ -59,7 +59,7 @@ beginning of the `struct`, in any case before possible constructors etc.
   private auxiliary methods, etc.
 - When in doubt, use `class` rather than `struct`.
 
-## Constructors, destructors, etc.
+## Constructors, Destructors, etc.
 
 - If you can avoid defining any default operation, do so (**rule of zero**).
 - If you **define** or **delete** any **copy**, **move**, or **destructor**
@@ -78,7 +78,7 @@ beginning of the `struct`, in any case before possible constructors etc.
 - Use factory functions if you need &ldquo;virtual behavior&rdquo; during
   construction/destruction.
 
-## Other default operations
+## Other Default Operations
 
 - Make `==` etc. symmetric with respect of operand types and `noexcept`.
 - Beware of `==` etc. on base classes.
