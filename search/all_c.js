@@ -42,7 +42,7 @@ var searchData=
   ['load_5ffrom_39',['load_from',['../df/d4a/classxl7_1_1graphics_1_1images_1_1ImageHandler.html#a3470006d99ab0d3b6f10e1b96bea5acb',1,'xl7::graphics::images::ImageHandler']]],
   ['load_5ffrom_5ffile_40',['load_from_file',['../df/d4a/classxl7_1_1graphics_1_1images_1_1ImageHandler.html#a7734919444479229c7caff6544917cbf',1,'xl7::graphics::images::ImageHandler']]],
   ['lod_5fbias_41',['lod_bias',['../d2/dcd/structxl7_1_1graphics_1_1states_1_1SamplerState_1_1Desc.html#aaf83f296b03c5c5b0572245803ef642e',1,'xl7::graphics::states::SamplerState::Desc']]],
-  ['log_42',['log',['../d5/d77/logging_8h.html#a158a8c64f24645c7478298399825737f',1,'LOG:&#160;logging.h'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#ad0169f921cd35b7f5ee5930638514037',1,'cl7::logging::Logger::log()'],['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ace0be71e33226e4c1db2bcea5959f16b',1,'cl7::logging::Log']]],
+  ['log_42',['log',['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ace0be71e33226e4c1db2bcea5959f16b',1,'cl7::logging::Log'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#ad0169f921cd35b7f5ee5930638514037',1,'cl7::logging::Logger::log()'],['../d5/d77/logging_8h.html#a158a8c64f24645c7478298399825737f',1,'LOG:&#160;logging.h']]],
   ['log_5ferror_43',['LOG_ERROR',['../d5/d77/logging_8h.html#a7ebf4c3b4fb05d6f9094089ded75cbdd',1,'logging.h']]],
   ['log_5finfo_44',['LOG_INFO',['../d5/d77/logging_8h.html#ac8e803773221119947b55f6ae85a9c63',1,'logging.h']]],
   ['log_5fsuccess_45',['LOG_SUCCESS',['../d5/d77/logging_8h.html#a0f0159f0d51c4f3236da669c55474f46',1,'logging.h']]],

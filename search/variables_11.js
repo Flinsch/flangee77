@@ -9,9 +9,11 @@ var searchData=
   ['regex_6',['regex',['../d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#aa0421a7659f166b61d6e23b6684a93a8',1,'dl7::syntax::PatternSymbol']]],
   ['render_5ftarget_5fviews_7',['render_target_views',['../d7/d0a/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates.html#a5960a726120c84f805260ba9dcb24850',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates']]],
   ['render_5ftargets_8',['render_targets',['../d7/d8c/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates.html#abb446a0766572a07457ad63168d9a402',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates']]],
-  ['reporter_9',['reporter',['../d9/d7e/structtl7_1_1Context.html#a415a5b4ddfcd31d9f4f042813101d1ab',1,'tl7::Context']]],
-  ['result_5fmeta_10',['result_meta',['../da/d3a/structtl7_1_1Result.html#af0bf36ebe997c76bdb8ca90ce1cde2cd',1,'tl7::Result']]],
-  ['root_5fmeta_11',['root_meta',['../d9/d7e/structtl7_1_1Context.html#a97196caec0950fa40298140f6179113a',1,'tl7::Context']]],
-  ['row_5fcount_12',['row_count',['../d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html#a4a5cdcb79665795e3c3f6892eef2b3c0',1,'xl7::graphics::shaders::ConstantDeclaration']]],
-  ['rs_13',['rs',['../d6/d62/classxl7_1_1graphics_1_1pipeline_1_1Pipeline.html#a6350be75a595f446d6b7127e1b3e70a3',1,'xl7::graphics::pipeline::Pipeline']]]
+  ['replacement_5fascii_9',['replacement_ascii',['../dc/d49/structcl7_1_1strings_1_1codepoint.html#a3ff23324925a3c643ddcd5a617d55f3d',1,'cl7::strings::codepoint']]],
+  ['replacement_5funicode_10',['replacement_unicode',['../dc/d49/structcl7_1_1strings_1_1codepoint.html#abc983d0f54a9af228c9fa3f73cf00564',1,'cl7::strings::codepoint']]],
+  ['reporter_11',['reporter',['../d9/d7e/structtl7_1_1Context.html#a415a5b4ddfcd31d9f4f042813101d1ab',1,'tl7::Context']]],
+  ['result_5fmeta_12',['result_meta',['../da/d3a/structtl7_1_1Result.html#af0bf36ebe997c76bdb8ca90ce1cde2cd',1,'tl7::Result']]],
+  ['root_5fmeta_13',['root_meta',['../d9/d7e/structtl7_1_1Context.html#a97196caec0950fa40298140f6179113a',1,'tl7::Context']]],
+  ['row_5fcount_14',['row_count',['../d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html#a4a5cdcb79665795e3c3f6892eef2b3c0',1,'xl7::graphics::shaders::ConstantDeclaration']]],
+  ['rs_15',['rs',['../d6/d62/classxl7_1_1graphics_1_1pipeline_1_1Pipeline.html#a6350be75a595f446d6b7127e1b3e70a3',1,'xl7::graphics::pipeline::Pipeline']]]
 ];

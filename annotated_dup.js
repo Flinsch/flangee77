@@ -38,6 +38,12 @@ var annotated_dup =
         [ "StandardRegistry", "d2/da1/classcl7_1_1profiling_1_1StandardRegistry.html", "d2/da1/classcl7_1_1profiling_1_1StandardRegistry" ],
         [ "Stopwatch", "d6/dac/classcl7_1_1profiling_1_1Stopwatch.html", "d6/dac/classcl7_1_1profiling_1_1Stopwatch" ]
       ] ],
+      [ "strings", "dc/d17/namespacecl7_1_1strings.html", [
+        [ "AsciiCodecImpl", "da/db3/classcl7_1_1strings_1_1AsciiCodecImpl.html", "da/db3/classcl7_1_1strings_1_1AsciiCodecImpl" ],
+        [ "Codec", "da/d25/classcl7_1_1strings_1_1Codec.html", "da/d25/classcl7_1_1strings_1_1Codec" ],
+        [ "CodecResult", "d9/db8/structcl7_1_1strings_1_1CodecResult.html", "d9/db8/structcl7_1_1strings_1_1CodecResult" ],
+        [ "codepoint", "dc/d49/structcl7_1_1strings_1_1codepoint.html", "dc/d49/structcl7_1_1strings_1_1codepoint" ]
+      ] ],
       [ "system", "dc/df8/namespacecl7_1_1system.html", [
         [ "CPUID", "d5/d80/structcl7_1_1system_1_1CPUID.html", "d5/d80/structcl7_1_1system_1_1CPUID" ],
         [ "datetime", "d6/d16/structcl7_1_1system_1_1datetime.html", "d6/d16/structcl7_1_1system_1_1datetime" ],

@@ -93,12 +93,12 @@ $(document).ready(function(){initNavTree('d6/d90/strings_8h.html','../../'); ini
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">strings.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="../../da/d66/string_8h_source.html">CoreLabs/string.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="../../df/d92/Encoding_8h_source.html">./strings/Encoding.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="../../da/d66/string_8h_source.html">CoreLabs/string.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../dd/d42/byte__vector_8h_source.html">CoreLabs/byte_vector.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../d9/d58/byte__view_8h_source.html">CoreLabs/byte_view.h</a>&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
@@ -108,33 +108,36 @@ Include dependency graph for strings.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d9/d80/strings_8h__incl.png" border="0" usemap="#aCoreLabs_2strings_8h" alt=""/></div>
 <map name="aCoreLabs_2strings_8h" id="aCoreLabs_2strings_8h">
-<area shape="rect" title=" " alt="" coords="388,5,531,31"/>
-<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="392,79,527,104"/>
-<area shape="poly" title=" " alt="" coords="462,31,462,65,457,65,457,31"/>
-<area shape="rect" href="../../dd/d42/byte__vector_8h.html" title=" " alt="" coords="5,79,180,104"/>
-<area shape="poly" title=" " alt="" coords="401,33,166,79,165,73,400,28"/>
-<area shape="rect" href="../../d9/d58/byte__view_8h.html" title=" " alt="" coords="204,79,368,104"/>
-<area shape="poly" title=" " alt="" coords="432,33,328,76,326,71,430,28"/>
-<area shape="rect" title=" " alt="" coords="551,79,637,104"/>
-<area shape="poly" title=" " alt="" coords="482,28,561,70,559,74,480,33"/>
-<area shape="rect" title=" " alt="" coords="661,79,700,104"/>
-<area shape="poly" title=" " alt="" coords="498,28,649,76,647,81,496,33"/>
-<area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="176,152,300,177"/>
-<area shape="poly" title=" " alt="" coords="425,107,287,150,286,145,423,101"/>
-<area shape="rect" title=" " alt="" coords="430,152,489,177"/>
-<area shape="poly" title=" " alt="" coords="462,104,462,138,457,138,457,104"/>
-<area shape="rect" title=" " alt="" coords="78,225,179,251"/>
-<area shape="poly" title=" " alt="" coords="222,180,160,220,157,215,219,175"/>
-<area shape="rect" title=" " alt="" coords="203,225,273,251"/>
-<area shape="poly" title=" " alt="" coords="241,178,241,212,235,212,235,178"/>
-<area shape="rect" title=" " alt="" coords="297,225,374,251"/>
-<area shape="poly" title=" " alt="" coords="255,175,310,215,307,219,252,180"/>
-<area shape="poly" title=" " alt="" coords="117,102,203,144,201,148,115,106"/>
-<area shape="rect" title=" " alt="" coords="61,152,124,177"/>
-<area shape="poly" title=" " alt="" coords="95,104,95,138,90,138,90,104"/>
-<area shape="poly" title=" " alt="" coords="280,106,256,142,251,139,276,103"/>
-<area shape="rect" title=" " alt="" coords="325,152,378,177"/>
-<area shape="poly" title=" " alt="" coords="299,103,333,140,330,144,295,106"/>
+<area shape="rect" title=" " alt="" coords="451,5,593,31"/>
+<area shape="rect" href="../../df/d92/Encoding_8h.html" title=" " alt="" coords="165,79,314,104"/>
+<area shape="poly" title=" " alt="" coords="477,33,299,78,297,73,476,28"/>
+<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="5,79,140,104"/>
+<area shape="poly" title=" " alt="" coords="451,33,154,80,153,75,450,28"/>
+<area shape="rect" href="../../dd/d42/byte__vector_8h.html" title=" " alt="" coords="339,79,513,104"/>
+<area shape="poly" title=" " alt="" coords="508,33,454,72,451,68,505,29"/>
+<area shape="rect" href="../../d9/d58/byte__view_8h.html" title=" " alt="" coords="537,79,701,104"/>
+<area shape="poly" title=" " alt="" coords="539,29,594,68,591,72,536,33"/>
+<area shape="rect" title=" " alt="" coords="726,79,811,104"/>
+<area shape="poly" title=" " alt="" coords="562,28,716,72,715,77,561,33"/>
+<area shape="rect" title=" " alt="" coords="836,79,875,104"/>
+<area shape="poly" title=" " alt="" coords="594,28,699,47,823,76,822,82,698,52,593,33"/>
+<area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="212,152,336,177"/>
+<area shape="poly" title=" " alt="" coords="247,103,265,138,260,141,243,106"/>
+<area shape="rect" title=" " alt="" coords="114,225,215,251"/>
+<area shape="poly" title=" " alt="" coords="258,180,196,220,193,215,255,175"/>
+<area shape="rect" title=" " alt="" coords="239,225,309,251"/>
+<area shape="poly" title=" " alt="" coords="277,178,277,212,271,212,271,178"/>
+<area shape="rect" title=" " alt="" coords="333,225,410,251"/>
+<area shape="poly" title=" " alt="" coords="291,175,346,215,343,219,288,180"/>
+<area shape="poly" title=" " alt="" coords="106,102,229,145,228,150,104,107"/>
+<area shape="rect" title=" " alt="" coords="43,152,102,177"/>
+<area shape="poly" title=" " alt="" coords="75,104,75,138,70,138,70,104"/>
+<area shape="poly" title=" " alt="" coords="403,106,312,149,310,144,400,102"/>
+<area shape="rect" title=" " alt="" coords="395,152,457,177"/>
+<area shape="poly" title=" " alt="" coords="429,104,429,138,423,138,423,104"/>
+<area shape="poly" title=" " alt="" coords="564,107,344,152,343,147,563,101"/>
+<area shape="rect" title=" " alt="" coords="593,152,646,177"/>
+<area shape="poly" title=" " alt="" coords="622,104,622,138,617,138,617,104"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -196,21 +199,6 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:dc/d17/namespacecl7_1_1strings" id="r_dc/d17/namespacecl7_1_1strings"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html">cl7::strings</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a37a51f58a3c2c021cef2f5f85ca6695d" id="r_a37a51f58a3c2c021cef2f5f85ca6695d"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a37a51f58a3c2c021cef2f5f85ca6695d">cl7::strings::Encoding</a> { <br />
-&#160;&#160;<a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a37a51f58a3c2c021cef2f5f85ca6695da88183b946cc5f0e8c96b2e66e1c74a7e">cl7::strings::Unknown</a>
-, <a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a37a51f58a3c2c021cef2f5f85ca6695dad2cd8253361a9c732d21ca1d336599cc">cl7::strings::ASCII</a>
-, <a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a37a51f58a3c2c021cef2f5f85ca6695daeb7ee0fb585e2ac64fdc086466c474b1">cl7::strings::UTF8</a>
-, <a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a37a51f58a3c2c021cef2f5f85ca6695daf023832671d1cf95ebe4934d58722a14">cl7::strings::UTF16</a>
-, <br />
-&#160;&#160;<a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a37a51f58a3c2c021cef2f5f85ca6695da92dca193c750fb95044806ff8f00db6c">cl7::strings::UTF32</a>
-, <a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a37a51f58a3c2c021cef2f5f85ca6695da48e281ccf8618c5d930b7c62d9d7bb1b">cl7::strings::UTFx</a> = UTF16
-, <a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a37a51f58a3c2c021cef2f5f85ca6695da7a1920d61156abc05a60135aefe8bc67">cl7::strings::Default</a> = UTF8
-<br />
- }</td></tr>
-<tr class="separator:a37a51f58a3c2c021cef2f5f85ca6695d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
