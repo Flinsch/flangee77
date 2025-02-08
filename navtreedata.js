@@ -111,6 +111,11 @@ var NAVTREE = [
         null
       ],
       [
+        "MIT License",
+        "dd/d7f/md__2home_2runner_2work_2flangee77_2flangee77_2LICENSE.html",
+        null
+      ],
+      [
         "Namespaces",
         "namespaces.html",
         [
@@ -295,12 +300,12 @@ var NAVTREEINDEX =
 "dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html#a0f9d77ad168b3467adcd4897ae63f064",
 "dd/d42/classcl7_1_1ordered__map.html#a28c07b4e9c36d84afab69dcf957eff51",
 "dd/d7d/Vocabulary_8h_source.html",
-"dd/dd8/filesystem_8h.html#aec8623427dd48d59be5a21e002d9bfa0",
-"de/d3c/macros_8h.html#a22a9ad32b4439bbfcea3a21b2db991a1",
+"dd/dd8/filesystem_8h.html#ae648a0df3b069e6fc6b9aeb571cf9d4e",
+"de/d3c/macros_8h.html#a108bf0c5e8f97a5d92114d87e132779a",
 "de/df3/structxl7_1_1graphics_1_1Color.html#a046fda9881058652baf23aa41522235a",
-"df/d81/structdl7_1_1json_1_1JsonWriter_1_1Format_1_1MultiLineOptions.html#a0381cc8202e2359f49a9a07118848f63a1b80cbd7d3cc0d459b01742d9e931f0d",
-"df/dcb/ResamplingMethod_8h.html#ac9d829a5933316d55f7f267a17474dd9aaa020331bb30d2fa2ecf7c3a0777823f",
-"functions_rela.html"
+"df/d81/structdl7_1_1json_1_1JsonWriter_1_1Format_1_1MultiLineOptions.html#a0381cc8202e2359f49a9a07118848f63",
+"df/dcb/ResamplingMethod_8h.html#ac9d829a5933316d55f7f267a17474dd9a14517b35b26ed67a34ffd446a9b86e33",
+"functions_r.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

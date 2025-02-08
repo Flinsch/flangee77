@@ -23,3 +23,7 @@ body {
     font-weight: bold;
     padding-left: 8px;
 }
+
+.header > .headertitle > .title {
+    font-size: 28px;
+}
