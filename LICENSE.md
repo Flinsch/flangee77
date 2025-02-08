@@ -1,4 +1,5 @@
 MIT License
+-----------
 
 Copyright (c) 2023-2025 Dr. Stefan "Flinsch" Fleischer
 
