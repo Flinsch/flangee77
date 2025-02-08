@@ -143,7 +143,7 @@ public:
 
     Json& operator[](size_t index);
 
-    Json& operator[](cl7::u8string_view key);
+    Json& operator[](const cl7::u8string& key);
     Json& operator[](cl7::u8string&& key);
 
 

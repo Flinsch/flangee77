@@ -1,6 +1,8 @@
 #ifndef CL7_STRINGS_H
 #define CL7_STRINGS_H
 
+#include "./strings/Encoding.h"
+
 #include <CoreLabs/string.h>
 #include <CoreLabs/byte_vector.h>
 #include <CoreLabs/byte_view.h>
@@ -11,27 +13,6 @@
 
 
 namespace cl7::strings {
-
-
-    // NOLINTBEGIN(readability-enum-initial-value)
-    enum class Encoding
-    {
-        Unknown,
-
-        ASCII,
-        UTF8,
-        UTF16,
-        UTF32,
-
-#if WCHAR_MAX == UINT16_MAX
-        UTFx = UTF16,
-#elif WCHAR_MAX == UINT32_MAX
-        UTFx = UTF32,
-#endif
-
-        Default = UTF8,
-    };
-    // NOLINTEND(readability-enum-initial-value)
 
 
 

@@ -2,6 +2,7 @@
 #define F77_TESTS_CL7_STRINGS_H
 
 #include <CoreLabs/strings.h>
+#include "CoreLabs/strings/AsciiCodec.h"
 
 #include <TestLabs/TestSuite.h>
 
@@ -24,6 +25,100 @@ namespace tl7::internals {
         default:
             return u8"\"unknown encoding\"";
         }
+    }
+
+    inline
+    cl7::u8string to_string(const cl7::strings::CodecState& codec_state)
+    {
+        switch ( codec_state )
+        {
+        case cl7::strings::CodecState::Uninitialized:   return u8"\"uninitialized\"";
+        case cl7::strings::CodecState::Valid:           return u8"\"valid\"";
+        case cl7::strings::CodecState::Invalid:         return u8"\"invalid\"";
+        case cl7::strings::CodecState::Incomplete:      return u8"\"incomplete\"";
+        default:
+            return u8"\"unknown codec state\"";
+        }
+    }
+}
+
+
+
+TESTLABS_CASE( u8"CoreLabs:  strings:  AsciiCodec::init" )
+{
+    struct Entry
+    {
+        cl7::strings::codepoint codepoint;
+        cl7::astring_view encoded;
+        cl7::strings::CodecState state;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0, "", cl7::strings::CodecState::Uninitialized },
+
+        { 0x0020, " ", cl7::strings::CodecState::Valid },
+        { 0x0041, "A", cl7::strings::CodecState::Valid },
+        { 0x001a, "\x1a", cl7::strings::CodecState::Valid },
+        { 0x007f, "\x7f", cl7::strings::CodecState::Valid },
+
+        { 0x00ff, "\x1a", cl7::strings::CodecState::Invalid },
+        { 0x0080, "\x1a", cl7::strings::CodecState::Invalid },
+        { 0x07ff, "\x1a", cl7::strings::CodecState::Invalid },
+        { 0x0800, "\x1a", cl7::strings::CodecState::Invalid },
+
+        { 0xd7ff, "\x1a", cl7::strings::CodecState::Invalid },
+        { 0xd800, "\x1a", cl7::strings::CodecState::Invalid },
+        { 0xdbff, "\x1a", cl7::strings::CodecState::Invalid },
+        { 0xdc00, "\x1a", cl7::strings::CodecState::Invalid },
+        { 0xdfff, "\x1a", cl7::strings::CodecState::Invalid },
+        { 0xe000, "\x1a", cl7::strings::CodecState::Invalid },
+
+        { 0xfffd, "\x1a", cl7::strings::CodecState::Invalid },
+        { 0xffff, "\x1a", cl7::strings::CodecState::Invalid },
+        { 0x10000, "\x1a", cl7::strings::CodecState::Invalid },
+        { 0x10ffff, "\x1a", cl7::strings::CodecState::Invalid },
+        { 0x110000, "\x1a", cl7::strings::CodecState::Invalid },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.encoded )
+    {
+        cl7::strings::AsciiCodec codec;
+        codec.init( entry.codepoint );
+        TESTLABS_CHECK_EQ( codec.get_codepoint().value, entry.codepoint.value );
+        TESTLABS_CHECK_EQ( codec.get_encoded(), entry.encoded );
+        TESTLABS_CHECK_EQ( codec.get_state(), entry.state );
+    }
+}
+
+TESTLABS_CASE( u8"CoreLabs:  strings:  AsciiCodec::input" )
+{
+    struct Entry
+    {
+        cl7::astring_view encoded;
+        cl7::strings::codepoint codepoint;
+        cl7::strings::CodecState state;
+    } entry;
+
+    const std::vector<Entry> container {
+        { "", 0, cl7::strings::CodecState::Uninitialized },
+        { "\x0", 0, cl7::strings::CodecState::Uninitialized },
+
+        { " ", 0x0020, cl7::strings::CodecState::Valid },
+        { "A", 0x0041, cl7::strings::CodecState::Valid },
+        { "\x1a", 0x001a, cl7::strings::CodecState::Valid },
+        { "\x7f", 0x007f, cl7::strings::CodecState::Valid },
+
+        { "\x80", 0xfffd, cl7::strings::CodecState::Invalid },
+        { "\xff", 0xfffd, cl7::strings::CodecState::Invalid },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.encoded )
+    {
+        cl7::strings::AsciiCodec codec;
+        codec.input( entry.encoded.empty() ? 0 : entry.encoded[0] );
+        TESTLABS_CHECK_EQ( codec.get_encoded(), entry.encoded );
+        TESTLABS_CHECK_EQ( codec.get_codepoint().value, entry.codepoint.value );
+        TESTLABS_CHECK_EQ( codec.get_state(), entry.state );
     }
 }
 
