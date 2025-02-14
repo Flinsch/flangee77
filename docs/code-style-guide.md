@@ -135,3 +135,12 @@ beginning of the `struct`, in any case before possible constructors etc.
 - Use **lowercase letters (without underscores)** for namespaces.
 - Prefix **protected** and **private** functions and variables with a single underscore
   (`_`).
+
+---
+
+## Other Stuff
+
+- Prefer `static constexpr` over `constexpr`, especially for non-trivial data
+  types, and especially if you want to reference the data via pointers, etc.
+  `constexpr` values are stack values (unless they are `static`) and may be copied there at runtime.
+  `static` forces initialization at compile-time through the means of &ldquo;constant initialization&rdquo;.
