@@ -173,16 +173,16 @@ namespace xl7::graphics {
      */
     void RenderingContext::_resolve_target_states(ResolvedTargetStates& resolved_target_states)
     {
-        resolved_target_states.target_count = 0;
+        resolved_target_states.render_target_count = 0;
         for (unsigned target_index = 0; target_index < pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS; ++target_index)
         {
-            auto* color_render_target = _rendering_device->get_surface_manager()->find_resource<surfaces::ColorRenderTarget>(pipeline.om.get_color_render_target_id(target_index));
-            resolved_target_states.color_render_targets[target_index] = color_render_target;
-            if (color_render_target)
-                resolved_target_states.target_count = target_index + 1;
+            auto* render_target_surface = _rendering_device->get_surface_manager()->find_resource<surfaces::RenderTargetSurface>(pipeline.om.get_render_target_surface_id(target_index));
+            resolved_target_states.render_target_surfaces[target_index] = render_target_surface;
+            if (render_target_surface)
+                resolved_target_states.render_target_count = target_index + 1;
         }
 
-        resolved_target_states.depth_stencil_target = _rendering_device->get_surface_manager()->find_resource<surfaces::DepthStencilTarget>(pipeline.om.get_depth_stencil_target_id());
+        resolved_target_states.depth_stencil_surface = _rendering_device->get_surface_manager()->find_resource<surfaces::DepthStencilSurface>(pipeline.om.get_depth_stencil_surface_id());
     }
 
     /**
@@ -256,8 +256,10 @@ namespace xl7::graphics {
 
         if (pipeline.rs.is_viewport_set())
             resolved_draw_states.viewport = pipeline.rs.get_viewport();
-        else if (resolved_draw_states.color_render_targets[0])
-            resolved_draw_states.viewport = resolved_draw_states.color_render_targets[0]->get_default_viewport();
+        else if (resolved_draw_states.render_target_surfaces[0])
+            resolved_draw_states.viewport = resolved_draw_states.render_target_surfaces[0]->get_default_viewport();
+        else if (resolved_draw_states.depth_stencil_surface)
+            resolved_draw_states.viewport = resolved_draw_states.depth_stencil_surface->get_default_viewport();
         else
             resolved_draw_states.viewport = _rendering_device->get_default_viewport();
 

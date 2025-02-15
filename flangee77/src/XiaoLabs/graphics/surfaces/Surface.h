@@ -21,9 +21,10 @@ public:
 
     enum class Type
     {
+        OffScreenSurface,
+        RenderTargetSurface,
+        DepthStencilSurface,
         TextureSurface,
-        ColorRenderTarget,
-        DepthStencilTarget,
     };
 
     struct Desc

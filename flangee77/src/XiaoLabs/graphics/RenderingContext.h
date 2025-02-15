@@ -141,9 +141,9 @@ public:
 protected:
     struct ResolvedTargetStates
     {
-        unsigned target_count;
-        const surfaces::ColorRenderTarget* color_render_targets[pipeline::OutputMergerStage::MAX_RENDER_TARGETS];
-        const surfaces::DepthStencilTarget* depth_stencil_target;
+        unsigned render_target_count;
+        const surfaces::RenderTargetSurface* render_target_surfaces[pipeline::OutputMergerStage::MAX_RENDER_TARGETS];
+        const surfaces::DepthStencilSurface* depth_stencil_surface;
     };
 
     struct ResolvedTextureSamplerStates
