@@ -2,9 +2,10 @@ var classxl7_1_1graphics_1_1surfaces_1_1Surface =
 [
     [ "Desc", "d1/dc7/structxl7_1_1graphics_1_1surfaces_1_1Surface_1_1Desc.html", "d1/dc7/structxl7_1_1graphics_1_1surfaces_1_1Surface_1_1Desc" ],
     [ "Type", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53", [
-      [ "TextureSurface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53a1412f4ac0af027752228f6c03e01e6e0", null ],
-      [ "ColorRenderTarget", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53a0183f41a0f0149ea28ae444f5c0b5758", null ],
-      [ "DepthStencilTarget", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53acec614506ac7d4f4cb239c406797e512", null ]
+      [ "OffScreenSurface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53ae56eb71b289d562b969cd0bc12db7f8b", null ],
+      [ "RenderTargetSurface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53ad4b0dab305efd7e3f50430c367e20ea3", null ],
+      [ "DepthStencilSurface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53a3022b396179580ece750901c67d9914c", null ],
+      [ "TextureSurface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53a1412f4ac0af027752228f6c03e01e6e0", null ]
     ] ],
     [ "Surface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#af45273c061db16580b8af287e63841ee", null ],
     [ "Surface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#afdb71a7efeebcd5990801488a8e683d5", null ],

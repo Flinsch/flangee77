@@ -272,9 +272,9 @@ var hierarchy =
         ] ]
       ] ],
       [ "xl7::graphics::surfaces::Surface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html", [
-        [ "xl7::graphics::surfaces::RenderTarget", "d8/d5d/classxl7_1_1graphics_1_1surfaces_1_1RenderTarget.html", [
-          [ "xl7::graphics::surfaces::ColorRenderTarget", "d8/df5/classxl7_1_1graphics_1_1surfaces_1_1ColorRenderTarget.html", null ],
-          [ "xl7::graphics::surfaces::DepthStencilTarget", "db/d61/classxl7_1_1graphics_1_1surfaces_1_1DepthStencilTarget.html", null ]
+        [ "xl7::graphics::surfaces::FramebufferSurface", "d0/d60/classxl7_1_1graphics_1_1surfaces_1_1FramebufferSurface.html", [
+          [ "xl7::graphics::surfaces::DepthStencilSurface", "d8/d6c/classxl7_1_1graphics_1_1surfaces_1_1DepthStencilSurface.html", null ],
+          [ "xl7::graphics::surfaces::RenderTargetSurface", "da/d06/classxl7_1_1graphics_1_1surfaces_1_1RenderTargetSurface.html", null ]
         ] ]
       ] ],
       [ "xl7::graphics::textures::Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html", [

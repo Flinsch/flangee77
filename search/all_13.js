@@ -1,7 +1,7 @@
 var searchData=
 [
   ['s_0',['s',['../d7/db1/structml7_1_1Vector2.html#a471f6f48d79e9b8e06f0398b71d634c9',1,'ml7::Vector2']]],
-  ['sample_1',['sample',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a1cfab5d0cd1b6a45b2d196f1b8196f46',1,'cl7::profiling::Sample::Sample()'],['../d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#ad2675a4f2c22ed0bd7d35d1dc9b99d37',1,'cl7::profiling::SampleHandler::sample'],['../d6/d1f/structcl7_1_1profiling_1_1Sample.html',1,'cl7::profiling::Sample']]],
+  ['sample_1',['sample',['../d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#ad2675a4f2c22ed0bd7d35d1dc9b99d37',1,'cl7::profiling::SampleHandler::sample'],['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a1cfab5d0cd1b6a45b2d196f1b8196f46',1,'cl7::profiling::Sample::Sample()'],['../d6/d1f/structcl7_1_1profiling_1_1Sample.html',1,'cl7::profiling::Sample']]],
   ['sample_2eh_2',['Sample.h',['../df/d9d/Sample_8h.html',1,'']]],
   ['samplehandler_3',['SampleHandler',['../d3/dea/structcl7_1_1profiling_1_1SampleHandler.html',1,'cl7::profiling']]],
   ['samplehandler_2ecpp_4',['SampleHandler.cpp',['../df/de6/SampleHandler_8cpp.html',1,'']]],
@@ -25,7 +25,7 @@ var searchData=
   ['seek_22',['seek',['../df/dd8/classcl7_1_1io_1_1file.html#a07551d160ed26ee1222b79d8bd28f01f',1,'cl7::io::file::seek()'],['../d3/d68/classcl7_1_1io_1_1irom.html#a898ee5ec3d78b298b499e3f0b24be443',1,'cl7::io::irom::seek()']]],
   ['seek_5fmode_23',['seek_mode',['../d6/dc7/namespacecl7_1_1io.html#a0f931513923724726468ff773ef730ed',1,'cl7::io']]],
   ['seek_5fmode_2eh_24',['seek_mode.h',['../de/d85/seek__mode_8h.html',1,'']]],
-  ['semantic_25',['semantic',['../d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html#afdeb411c2add838c434ad4825397f6e5',1,'xl7::graphics::meshes::VertexLayout::Element::semantic'],['../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html#a8ba8f7d466c9fa95934c53f04900c01b',1,'xl7::graphics::meshes::VertexLayout::Semantic']]],
+  ['semantic_25',['semantic',['../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html#a8ba8f7d466c9fa95934c53f04900c01b',1,'xl7::graphics::meshes::VertexLayout::Semantic'],['../d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html#afdeb411c2add838c434ad4825397f6e5',1,'xl7::graphics::meshes::VertexLayout::Element::semantic']]],
   ['semantic_5findex_26',['semantic_index',['../d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html#a0b6eada95ed6d5dfb67c34a29ec99fa0',1,'xl7::graphics::meshes::VertexLayout::Element']]],
   ['sequence_27',['sequence',['../d1/d16/structdl7_1_1syntax_1_1ProductionRule.html#a4428b9f7c3fac954c0dd04033027d3cc',1,'dl7::syntax::ProductionRule']]],
   ['set_5fa_28',['set_a',['../de/df3/structxl7_1_1graphics_1_1Color.html#aab86990af5cd0726f76f4d58130349ca',1,'xl7::graphics::Color']]],
@@ -170,7 +170,7 @@ var searchData=
   ['strings_2eh_167',['strings.h',['../d6/d90/strings_8h.html',1,'']]],
   ['struct_20tt_168',['&lt;tt&gt;class&lt;/tt&gt; vs. &lt;tt&gt;struct&lt;/tt&gt;',['../de/d95/md_code-style-guide.html#autotoc_md8',1,'']]],
   ['structure_20and_20member_20order_169',['Class Structure and Member Order',['../de/d95/md_code-style-guide.html#autotoc_md7',1,'']]],
-  ['style_170',['style',['../df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html#a8898108efa3ed4e4bdf809de9cfe301d',1,'dl7::json::JsonWriter::Format::Style'],['../df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html#afca79a7a92caeb856ad0523e8afc1410',1,'dl7::json::JsonWriter::Format::style']]],
+  ['style_170',['style',['../df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html#afca79a7a92caeb856ad0523e8afc1410',1,'dl7::json::JsonWriter::Format::style'],['../df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html#a8898108efa3ed4e4bdf809de9cfe301d',1,'dl7::json::JsonWriter::Format::Style']]],
   ['style_20guide_171',['Code Style Guide',['../de/d95/md_code-style-guide.html',1,'']]],
   ['subcasebranchswitch_172',['subcasebranchswitch',['../d3/d95/classtl7_1_1SubcaseBranchSwitch.html#a552684c62e1cb8dbfa01290b2c6ee493',1,'tl7::SubcaseBranchSwitch::SubcaseBranchSwitch()'],['../d3/d95/classtl7_1_1SubcaseBranchSwitch.html',1,'tl7::SubcaseBranchSwitch'],['../d3/d95/classtl7_1_1SubcaseBranchSwitch.html#a129fc13e1bc2ae69d670a5d25837a10d',1,'tl7::SubcaseBranchSwitch::SubcaseBranchSwitch(Context &amp;ctx, cl7::u8string_view name, const char *file_path, unsigned line_number, signed iteration_number=-1)'],['../d3/d95/classtl7_1_1SubcaseBranchSwitch.html#ab2955d0d709155251829421be213c337',1,'tl7::SubcaseBranchSwitch::SubcaseBranchSwitch(const SubcaseBranchSwitch &amp;)=delete'],['../d3/d95/classtl7_1_1SubcaseBranchSwitch.html#ab6ea3bc9c5958f8657088eda7a15e2c9',1,'tl7::SubcaseBranchSwitch::SubcaseBranchSwitch(SubcaseBranchSwitch &amp;&amp;)=delete']]],
   ['subcasebranchswitch_2ecpp_173',['SubcaseBranchSwitch.cpp',['../d5/db6/SubcaseBranchSwitch_8cpp.html',1,'']]],

@@ -10,7 +10,7 @@ var searchData=
   ['renderingcontextimpl_7',['renderingcontextimpl',['../dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl'],['../d9/dfb/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl.html',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl']]],
   ['renderingdevice_8',['RenderingDevice',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html',1,'xl7::graphics']]],
   ['renderingdeviceimpl_9',['renderingdeviceimpl',['../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html',1,'xl7::graphics::impl::direct3d11::RenderingDeviceImpl'],['../d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html',1,'xl7::graphics::impl::direct3d9::RenderingDeviceImpl']]],
-  ['rendertarget_10',['RenderTarget',['../d8/d5d/classxl7_1_1graphics_1_1surfaces_1_1RenderTarget.html',1,'xl7::graphics::surfaces']]],
+  ['rendertargetsurface_10',['RenderTargetSurface',['../da/d06/classxl7_1_1graphics_1_1surfaces_1_1RenderTargetSurface.html',1,'xl7::graphics::surfaces']]],
   ['reporter_11',['Reporter',['../d1/de4/classtl7_1_1reporting_1_1Reporter.html',1,'tl7::reporting']]],
   ['resolvedabstractshaderstates_12',['ResolvedAbstractShaderStates',['../d1/dbc/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedAbstractShaderStates.html',1,'xl7::graphics::RenderingContext']]],
   ['resolveddrawstates_13',['ResolvedDrawStates',['../d9/d2e/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedDrawStates.html',1,'xl7::graphics::RenderingContext']]],

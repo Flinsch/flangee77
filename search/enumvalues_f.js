@@ -56,8 +56,9 @@ var searchData=
   ['red_53',['red',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a39e617c46612e12d2ef5ac48d760ad20',1,'tl7::reporting::Red'],['../d8/d30/namespacexl7_1_1graphics.html#a7f932a51645d57b7b508969692d213deaee38e4d5dd68c4e440825018d549cb47',1,'xl7::graphics::Red']]],
   ['release_54',['Release',['../db/ddf/structcl7_1_1Version.html#a890721a856e7cc2fbb0c524521e0b635ab8e7b465df7c5979dc731d06e84ce2cf',1,'cl7::Version']]],
   ['releasecandidate_55',['ReleaseCandidate',['../db/ddf/structcl7_1_1Version.html#a890721a856e7cc2fbb0c524521e0b635ad51e7d58a0cd2de144621030dcae1337',1,'cl7::Version']]],
-  ['replace_56',['Replace',['../db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#a5ea224e29dd36067e266b081eb767292a0ebe6df8a3ac338e0512acc741823fdb',1,'xl7::graphics::states::DepthStencilState']]],
-  ['revsubtract_57',['RevSubtract',['../d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#a40e09472faa3fca650e6204e40010175a7e13cbb7a9ac0f76c06b1f663ec12d8f',1,'xl7::graphics::states::BlendState']]],
-  ['rgb_58',['RGB',['../d8/d30/namespacexl7_1_1graphics.html#a7f932a51645d57b7b508969692d213dea889574aebacda6bfd3e534e2b49b8028',1,'xl7::graphics']]],
-  ['rgba_59',['RGBA',['../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2aea3495a278957dc58165e48a8945469f',1,'xl7::graphics']]]
+  ['rendertargetsurface_56',['RenderTargetSurface',['../d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53ad4b0dab305efd7e3f50430c367e20ea3',1,'xl7::graphics::surfaces::Surface']]],
+  ['replace_57',['Replace',['../db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#a5ea224e29dd36067e266b081eb767292a0ebe6df8a3ac338e0512acc741823fdb',1,'xl7::graphics::states::DepthStencilState']]],
+  ['revsubtract_58',['RevSubtract',['../d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#a40e09472faa3fca650e6204e40010175a7e13cbb7a9ac0f76c06b1f663ec12d8f',1,'xl7::graphics::states::BlendState']]],
+  ['rgb_59',['RGB',['../d8/d30/namespacexl7_1_1graphics.html#a7f932a51645d57b7b508969692d213dea889574aebacda6bfd3e534e2b49b8028',1,'xl7::graphics']]],
+  ['rgba_60',['RGBA',['../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2aea3495a278957dc58165e48a8945469f',1,'xl7::graphics']]]
 ];
