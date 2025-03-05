@@ -60,7 +60,7 @@ As mentioned before, you may have to take care of ISO 8859, ANSI, etc. yourself,
 
 Within the given framework, we want to provide some basic functionality to deal with different encodings and Unicode transformation formats and to convert between them.
 We do not want to reinvent the wheel or to push it further than necessary, so we really only limit ourselves to selected aspects that the framework uses internally itself, without having to include external libraries.
-If you need more extensive or robust functionality, you could/should include and use 3rd-party libraries in your projects yourself, like [International Components for Unicode (ICU)](https://icu.unicode.org/) or [Boost.Locale](https://www.boost.org/doc/libs/1_87_0/libs/locale/doc/html/index.html), for example.
+If you need more extensive or robust functionality, you could/should include and use 3rd-party libraries in your projects yourself, like [International Components for Unicode (ICU)](https://icu.unicode.org/) or [Boost.Locale](https://www.boost.org/doc/libs/release/libs/locale/) or maybe [ztd.text](https://github.com/soasis/text/), for example.
 
 I'm already taking cover, but despite everything, don't be afraid to use different character encodings or string types within your software.
 If you look at the different ways strings are used within a project, you will see that in most cases different types don't even touch each other.
