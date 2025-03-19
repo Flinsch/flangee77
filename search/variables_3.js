@@ -11,7 +11,7 @@ var searchData=
   ['channels_8',['channels',['../d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html#a529a3f83f12dbb0ef4731d3d33fe6e0c',1,'xl7::graphics::PixelBitKit']]],
   ['checks_9',['checks',['../de/d12/structtl7_1_1Stats.html#a0896b99d3d738a20f3b881575ef4582c',1,'tl7::Stats']]],
   ['code_10',['code',['../dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html#aa9c19b3482e3a24bf5bfa791c0f3b326',1,'xl7::graphics::impl::shared::shaders::Include::ParentEntry']]],
-  ['codepoint_11',['codepoint',['../d9/db8/structcl7_1_1strings_1_1CodecResult.html#a83770b2a238f496493f366361f0b2aae',1,'cl7::strings::CodecResult']]],
+  ['codepoint_11',['codepoint',['../de/d47/structcl7_1_1strings_1_1CodepointResult.html#a426dbb0217b18dcd344178a6c46dc244',1,'cl7::strings::CodepointResult']]],
   ['color_5fmap_5ftype_12',['color_map_type',['../d7/de1/structxl7_1_1graphics_1_1images_1_1TargaImageHandler_1_1Header.html#a3b0dfe709ed4c879ec0a6902d906d38e',1,'xl7::graphics::images::TargaImageHandler::Header']]],
   ['color_5foperation_13',['color_operation',['../d1/da4/structxl7_1_1graphics_1_1states_1_1BlendState_1_1Desc.html#a6fa457e4b2c6ebc15df0920a870a7099',1,'xl7::graphics::states::BlendState::Desc']]],
   ['color_5ftype_14',['color_type',['../d4/de1/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Header.html#a0f7de388f81ef96d0a2e32dad8427eb7',1,'xl7::graphics::images::PngImageHandler::Header::color_type'],['../d1/db4/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1BitInfo.html#a4b5d079e60ae3e1826ad01de30e329d4',1,'xl7::graphics::images::PngImageHandler::BitInfo::color_type']]],

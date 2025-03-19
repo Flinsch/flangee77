@@ -20,7 +20,7 @@ var hierarchy =
     [ "ml7::Angle", "d4/d9d/structml7_1_1Angle.html", null ],
     [ "pl7::Application", "d8/d91/classpl7_1_1Application.html", null ],
     [ "pl7::ArgumentBag", "dd/d75/classpl7_1_1ArgumentBag.html", null ],
-    [ "cl7::strings::AsciiCodecImpl", "da/db3/classcl7_1_1strings_1_1AsciiCodecImpl.html", null ],
+    [ "cl7::strings::AsciiCodec", "d1/d63/classcl7_1_1strings_1_1AsciiCodec.html", null ],
     [ "cl7::profiling::Registry::Attorney", "d6/df3/classcl7_1_1profiling_1_1Registry_1_1Attorney.html", null ],
     [ "xl7::graphics::impl::direct3d11::meshes::IndexBufferImpl::Attorney", "d0/d6a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl_1_1Attorney.html", null ],
     [ "xl7::graphics::impl::direct3d11::meshes::VertexBufferImpl::Attorney", "dc/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl_1_1Attorney.html", null ],
@@ -54,6 +54,12 @@ var hierarchy =
     [ "xl7::resources::Resource::Attorney", "d0/d78/classxl7_1_1resources_1_1Resource_1_1Attorney.html", null ],
     [ "cl7::auto_invoke< Callable >", "de/dbb/classcl7_1_1auto__invoke.html", null ],
     [ "dl7::Base64", "da/d3b/classdl7_1_1Base64.html", null ],
+    [ "cl7::strings::BaseResult", "d0/d8d/structcl7_1_1strings_1_1BaseResult.html", [
+      [ "cl7::strings::CodepointResult", "de/d47/structcl7_1_1strings_1_1CodepointResult.html", [
+        [ "cl7::strings::DecodeResult< Tchar >", "d7/d98/structcl7_1_1strings_1_1DecodeResult.html", null ],
+        [ "cl7::strings::EncodeResult< Tchar >", "db/d55/structcl7_1_1strings_1_1EncodeResult.html", null ]
+      ] ]
+    ] ],
     [ "xl7::graphics::images::PngImageHandler::BitInfo", "d1/db4/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1BitInfo.html", null ],
     [ "cl7::logging::HtmlLogHandler::Block", "dc/d37/structcl7_1_1logging_1_1HtmlLogHandler_1_1Block.html", null ],
     [ "cl7::io::byte_reader", "db/d94/classcl7_1_1io_1_1byte__reader.html", null ],
@@ -61,8 +67,6 @@ var hierarchy =
     [ "xl7::graphics::RenderingDevice::Capabilities", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html", null ],
     [ "xl7::graphics::PixelBitKit::Channel", "d3/da3/structxl7_1_1graphics_1_1PixelBitKit_1_1Channel.html", null ],
     [ "xl7::graphics::images::PngImageHandler::ChunkInfo", "d9/dc0/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1ChunkInfo.html", null ],
-    [ "cl7::strings::Codec< Tchar, TCodecImpl >", "da/d25/classcl7_1_1strings_1_1Codec.html", null ],
-    [ "cl7::strings::CodecResult", "d9/db8/structcl7_1_1strings_1_1CodecResult.html", null ],
     [ "cl7::strings::codepoint", "dc/d49/structcl7_1_1strings_1_1codepoint.html", null ],
     [ "xl7::graphics::Color", "de/df3/structxl7_1_1graphics_1_1Color.html", null ],
     [ "xl7::graphics::shaders::CompileOptions", "de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html", null ],
@@ -114,8 +118,12 @@ var hierarchy =
     [ "dl7::syntax::Diagnostic", "d0/d46/structdl7_1_1syntax_1_1Diagnostic.html", null ],
     [ "dl7::syntax::Diagnostics", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html", null ],
     [ "xl7::graphics::meshes::VertexLayout::Element", "d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html", null ],
+    [ "cl7::strings::EncodeBuffer< Tchar >", "d1/d9d/structcl7_1_1strings_1_1EncodeBuffer.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::StateArray< TProxy, N >::Entry", "d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html", null ],
     [ "tl7::Signature::equal_to", "da/dc1/structtl7_1_1Signature_1_1equal__to.html", null ],
+    [ "cl7::strings::ErrorHandler", "d7/dff/classcl7_1_1strings_1_1ErrorHandler.html", [
+      [ "cl7::strings::LoggingErrorHandler", "d0/d92/classcl7_1_1strings_1_1LoggingErrorHandler.html", null ]
+    ] ],
     [ "std::exception", null, [
       [ "tl7::exceptions::assertion_exception", "d6/db9/structtl7_1_1exceptions_1_1assertion__exception.html", null ]
     ] ],
@@ -182,6 +190,7 @@ var hierarchy =
       [ "dl7::syntax::GenericLexer", "d5/da3/classdl7_1_1syntax_1_1GenericLexer.html", null ]
     ] ],
     [ "tl7::reporting::Reporter::ListenerEntry", "dd/d07/structtl7_1_1reporting_1_1Reporter_1_1ListenerEntry.html", null ],
+    [ "cl7::logging::LogContext", "d9/d4c/structcl7_1_1logging_1_1LogContext.html", null ],
     [ "cl7::logging::LogEntry", "d6/d58/structcl7_1_1logging_1_1LogEntry.html", null ],
     [ "cl7::logging::Logger", "df/dc2/classcl7_1_1logging_1_1Logger.html", null ],
     [ "cl7::ordered_map< Key, T, KeyView, Compare, Allocator >::Lookup", "d3/dd0/structcl7_1_1ordered__map_1_1Lookup.html", null ],
@@ -367,8 +376,11 @@ var hierarchy =
     [ "cl7::u8isstream", "d9/d44/classcl7_1_1u8isstream.html", null ],
     [ "cl7::u8osstream", "d3/d63/classcl7_1_1u8osstream.html", null ],
     [ "cl7::system::user", "dd/d72/classcl7_1_1system_1_1user.html", null ],
+    [ "cl7::strings::Utf16Codec", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html", null ],
+    [ "cl7::strings::Utf32Codec", "d2/dec/classcl7_1_1strings_1_1Utf32Codec.html", null ],
     [ "cl7::io::utf8_reader", "db/d4a/classcl7_1_1io_1_1utf8__reader.html", null ],
     [ "cl7::io::utf8_writer", "df/d3b/classcl7_1_1io_1_1utf8__writer.html", null ],
+    [ "cl7::strings::Utf8Codec", "d7/ddc/classcl7_1_1strings_1_1Utf8Codec.html", null ],
     [ "xl7::graphics::Color::Value32", "da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html", null ],
     [ "ml7::Vector2", "d7/db1/structml7_1_1Vector2.html", null ],
     [ "ml7::Vector3", "d6/d64/structml7_1_1Vector3.html", null ],

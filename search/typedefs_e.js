@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['samplekey_0',['SampleKey',['../d5/d99/classcl7_1_1profiling_1_1Registry.html#aae071476652b7569e1a5d8487324ad8d',1,'cl7::profiling::Registry']]],
-  ['shadermanagerptr_1',['ShaderManagerPtr',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#aba0131a5b84132354afbe373976cbc0b',1,'xl7::graphics::RenderingDevice']]],
-  ['size_5ftype_2',['size_type',['../dd/d42/classcl7_1_1ordered__map.html#a2cc3dabd496c512bd70cc1314e321779',1,'cl7::ordered_map']]],
-  ['statemanagerptr_3',['StateManagerPtr',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#a5cbf395a76e8eaab300086416382f698',1,'xl7::graphics::RenderingDevice']]],
-  ['string_5ft_4',['string_t',['../df/d87/namespacedl7_1_1json.html#aaf86201e42f7a8df9722d1f885ddc38c',1,'dl7::json']]],
-  ['surfacemanagerptr_5',['SurfaceManagerPtr',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#ad7473ecfb121c1be447244a1f33e4039',1,'xl7::graphics::RenderingDevice']]],
-  ['symbolid_6',['SymbolID',['../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3',1,'dl7::syntax']]]
+  ['reference_0',['reference',['../d2/dbf/classcl7_1_1continuous__forward__iterator.html#aeb0c14d830d180f5f2f0c8a66ecd32fd',1,'cl7::continuous_forward_iterator::reference'],['../d2/d93/classcl7_1_1const__ptr__forward__iterator.html#a6d78f8393b065e6d6f1747b697dc843c',1,'cl7::const_ptr_forward_iterator::reference'],['../dd/d42/classcl7_1_1ordered__map.html#a3abe87ddf42aec389473907ffc16977c',1,'cl7::ordered_map::reference']]],
+  ['resourcemanagerptr_1',['ResourceManagerPtr',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#afa984ffd4400e8377079614b55837413',1,'xl7::graphics::RenderingDevice']]],
+  ['resourceptr_2',['ResourcePtr',['../d3/d00/classxl7_1_1resources_1_1ResourceManager.html#aeff5712fa4edcf49d69a95b13c1381d1',1,'xl7::resources::ResourceManager']]]
 ];

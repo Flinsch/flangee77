@@ -98,149 +98,51 @@ $(document).ready(function(){initNavTree('d5/d77/logging_8h.html','../../'); ini
   <div class="headertitle"><div class="title">logging.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="../../d3/dce/StandardLogger_8h_source.html">CoreLabs/logging/StandardLogger.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="../../df/d15/LogContext_8h_source.html">CoreLabs/logging/LogContext.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d3/dce/StandardLogger_8h_source.html">CoreLabs/logging/StandardLogger.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for logging.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/d60/logging_8h__incl.png" border="0" usemap="#aCoreLabs_2logging_8h" alt=""/></div>
 <map name="aCoreLabs_2logging_8h" id="aCoreLabs_2logging_8h">
-<area shape="rect" title=" " alt="" coords="144,5,291,31"/>
-<area shape="rect" href="../../d3/dce/StandardLogger_8h.html" title=" " alt="" coords="119,79,315,119"/>
-<area shape="poly" title=" " alt="" coords="220,31,220,65,215,65,215,31"/>
-<area shape="rect" href="../../d5/dae/Singleton_8h.html" title=" " alt="" coords="71,167,222,207"/>
-<area shape="poly" title=" " alt="" coords="204,121,173,158,169,154,200,117"/>
-<area shape="rect" href="../../dd/da4/Logger_8h.html" title=" " alt="" coords="247,174,332,199"/>
-<area shape="poly" title=" " alt="" coords="235,117,273,161,269,165,231,121"/>
+<area shape="rect" title=" " alt="" coords="197,5,344,31"/>
+<area shape="rect" href="../../df/d15/LogContext_8h.html" title=" " alt="" coords="276,86,500,111"/>
+<area shape="poly" title=" " alt="" coords="289,29,361,76,358,80,287,33"/>
+<area shape="rect" href="../../d3/dce/StandardLogger_8h.html" title=" " alt="" coords="55,79,251,119"/>
+<area shape="poly" title=" " alt="" coords="255,33,195,73,192,69,252,29"/>
+<area shape="rect" href="../../dd/da4/Logger_8h.html" title=" " alt="" coords="287,174,372,199"/>
+<area shape="poly" title=" " alt="" coords="382,113,348,164,343,161,378,110"/>
+<area shape="rect" href="../../d7/d96/AbstractLogHandler_8h.html" title=" " alt="" coords="245,255,414,280"/>
+<area shape="poly" title=" " alt="" coords="332,200,332,241,327,241,327,200"/>
+<area shape="rect" href="../../d4/d8d/LogEntry_8h.html" title=" " alt="" coords="287,328,385,353"/>
+<area shape="poly" title=" " alt="" coords="361,197,398,219,415,235,429,254,432,275,422,295,402,311,380,324,377,320,399,307,417,292,427,275,424,256,412,238,395,223,358,202"/>
+<area shape="rect" title=" " alt="" coords="158,255,221,280"/>
+<area shape="poly" title=" " alt="" coords="310,202,223,250,221,246,307,197"/>
+<area shape="poly" title=" " alt="" coords="333,280,336,314,331,315,328,281"/>
+<area shape="rect" href="../../d5/de4/LogType_8h.html" title=" " alt="" coords="158,401,253,427"/>
+<area shape="poly" title=" " alt="" coords="316,356,240,397,237,392,314,351"/>
+<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="277,401,411,427"/>
+<area shape="poly" title=" " alt="" coords="340,353,344,388,339,388,335,354"/>
 <area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="103,475,227,500"/>
-<area shape="poly" title=" " alt="" coords="133,208,119,230,108,256,95,303,89,342,93,380,108,426,121,447,139,464,135,468,117,450,103,428,87,381,84,342,90,302,103,254,114,228,129,206"/>
-<area shape="rect" title=" " alt="" coords="118,255,181,280"/>
-<area shape="poly" title=" " alt="" coords="150,207,151,241,146,241,145,207"/>
+<area shape="poly" title=" " alt="" coords="201,428,181,464,176,461,196,426"/>
 <area shape="rect" title=" " alt="" coords="5,548,107,573"/>
 <area shape="poly" title=" " alt="" coords="149,502,87,543,84,538,146,498"/>
 <area shape="rect" title=" " alt="" coords="131,548,200,573"/>
 <area shape="poly" title=" " alt="" coords="168,500,168,534,163,534,163,500"/>
 <area shape="rect" title=" " alt="" coords="224,548,301,573"/>
 <area shape="poly" title=" " alt="" coords="183,498,237,537,234,542,179,502"/>
-<area shape="poly" title=" " alt="" coords="270,202,183,250,181,246,267,197"/>
-<area shape="rect" href="../../d7/d96/AbstractLogHandler_8h.html" title=" " alt="" coords="205,255,374,280"/>
-<area shape="poly" title=" " alt="" coords="292,200,292,241,287,241,287,200"/>
-<area shape="rect" href="../../d4/d8d/LogEntry_8h.html" title=" " alt="" coords="247,328,345,353"/>
-<area shape="poly" title=" " alt="" coords="321,197,358,219,375,235,389,254,392,275,382,295,362,311,340,324,337,320,359,307,377,292,387,275,384,256,372,238,355,223,318,202"/>
-<area shape="poly" title=" " alt="" coords="293,280,296,314,291,315,288,281"/>
-<area shape="rect" href="../../d5/de4/LogType_8h.html" title=" " alt="" coords="118,401,213,427"/>
-<area shape="poly" title=" " alt="" coords="276,356,200,397,197,392,274,351"/>
-<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="237,401,371,427"/>
-<area shape="poly" title=" " alt="" coords="300,353,304,388,299,388,295,354"/>
-<area shape="poly" title=" " alt="" coords="168,427,168,461,163,461,163,427"/>
-<area shape="poly" title=" " alt="" coords="283,429,201,471,199,466,281,424"/>
-<area shape="rect" title=" " alt="" coords="275,475,333,500"/>
-<area shape="poly" title=" " alt="" coords="307,427,307,461,301,461,301,427"/>
-</map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d6/dcc/logging_8h__dep__incl.png" border="0" usemap="#aCoreLabs_2logging_8hdep" alt=""/></div>
-<map name="aCoreLabs_2logging_8hdep" id="aCoreLabs_2logging_8hdep">
-<area shape="rect" title=" " alt="" coords="5679,5,5826,31"/>
-<area shape="rect" href="../../dd/daf/logging_8cpp.html" title=" " alt="" coords="5,93,167,119"/>
-<area shape="poly" title=" " alt="" coords="5665,22,4558,27,2771,38,1060,55,468,67,280,74,180,81,119,96,118,91,179,76,280,69,468,62,1059,50,2771,32,4558,21,5665,17"/>
-<area shape="rect" href="../../d9/d15/strings_8cpp.html" title=" " alt="" coords="191,93,349,119"/>
-<area shape="poly" title=" " alt="" coords="5666,22,4591,27,2863,38,1210,56,640,67,458,74,361,81,302,96,301,91,360,76,458,69,639,62,1210,50,2863,32,4591,22,5666,17"/>
-<area shape="rect" href="../../d6/da8/MemoryStatus_8cpp.html" title=" " alt="" coords="373,93,633,119"/>
-<area shape="poly" title=" " alt="" coords="5666,22,4688,25,3114,33,2296,41,1560,51,985,65,781,72,646,81,554,96,553,91,646,76,781,67,985,59,1560,46,2296,36,3114,28,4688,19,5666,17"/>
-<area shape="rect" href="../../d6/d33/user_8cpp.html" title=" " alt="" coords="658,93,850,119"/>
-<area shape="poly" title=" " alt="" coords="5666,22,4725,22,3218,28,2437,35,1734,46,1185,61,991,70,862,81,793,96,792,91,862,76,990,65,1185,56,1734,41,2436,30,3218,23,4725,17,5666,17"/>
-<area shape="rect" href="../../da/de1/Deflate_8cpp.html" title=" " alt="" coords="874,86,1045,126"/>
-<area shape="poly" title=" " alt="" coords="5665,22,4757,21,3312,27,2564,34,1891,44,1366,60,1180,70,1057,81,1021,89,1020,83,1056,76,1179,65,1366,55,1891,39,2564,28,3312,21,4757,16,5665,16"/>
-<area shape="rect" href="../../dc/d93/GrammarAnalyzer_8cpp.html" title=" " alt="" coords="1069,93,1349,119"/>
-<area shape="poly" title=" " alt="" coords="5666,22,4811,27,3462,38,2139,55,1649,67,1361,81,1263,96,1263,91,1360,76,1649,62,2139,50,3462,32,4811,22,5666,17"/>
-<area shape="rect" href="../../d2/db6/Application_8cpp.html" title=" " alt="" coords="1373,93,1559,119"/>
-<area shape="poly" title=" " alt="" coords="5665,22,4847,24,3564,32,2902,39,2309,49,1844,63,1680,72,1572,81,1504,96,1503,91,1571,76,1680,66,1844,58,2308,44,2902,34,3564,26,4847,19,5665,17"/>
-<area shape="rect" href="../../d3/db7/MainWindow_8cpp.html" title=" " alt="" coords="1583,93,1778,119"/>
-<area shape="poly" title=" " alt="" coords="5666,22,4886,25,3672,34,3047,41,2486,51,2048,65,1893,73,1790,81,1720,96,1719,91,1790,76,1893,67,2048,59,2486,46,3047,36,3672,28,4886,20,5666,17"/>
-<area shape="rect" href="../../d0/dc4/GraphicsSystem_8cpp.html" title=" " alt="" coords="1803,86,2004,126"/>
-<area shape="poly" title=" " alt="" coords="5666,22,4926,26,3783,36,2670,53,2259,66,2113,73,2017,81,1975,89,1974,83,2016,76,2113,68,2259,61,2670,48,3783,30,4926,21,5666,17"/>
-<area shape="rect" href="../../dc/d3b/RenderingContext_8cpp.html" title=" " alt="" coords="2029,86,2239,126"/>
-<area shape="poly" title=" " alt="" coords="5666,22,4967,27,3899,37,2860,55,2477,67,2252,81,2209,89,2208,83,2251,76,2477,62,2860,50,3899,32,4967,22,5665,17"/>
-<area shape="rect" href="../../df/de6/RenderingDevice_8cpp.html" title=" " alt="" coords="2263,86,2474,126"/>
-<area shape="poly" title=" " alt="" coords="5666,23,5009,28,4015,39,3051,56,2696,68,2486,81,2443,89,2442,83,2486,76,2695,63,3051,51,4015,33,5009,22,5666,17"/>
-<area shape="rect" href="../../d1/de0/ImageConverter_8cpp.html" title=" " alt="" coords="2498,86,2690,126"/>
-<area shape="poly" title=" " alt="" coords="5665,23,5048,28,4121,39,3226,56,2897,68,2702,81,2663,89,2662,83,2702,76,2896,63,3226,51,4121,33,5047,22,5665,17"/>
-<area shape="rect" href="../../de/d8b/ImageHandler_8cpp.html" title=" " alt="" coords="2714,86,2906,126"/>
-<area shape="poly" title=" " alt="" coords="5666,23,4229,40,3402,58,3098,69,2918,81,2879,89,2878,83,2918,76,3097,63,3402,52,4229,35,5666,17"/>
-<area shape="rect" href="../../d1/dbc/ImageProcessor_8cpp.html" title=" " alt="" coords="2930,86,3122,126"/>
-<area shape="poly" title=" " alt="" coords="5665,23,4336,41,3577,59,3299,69,3134,81,3095,89,3094,83,3134,76,3298,64,3577,53,4336,36,5665,18"/>
-<area shape="rect" href="../../d4/d85/ImageResizer_8cpp.html" title=" " alt="" coords="3146,86,3338,126"/>
-<area shape="poly" title=" " alt="" coords="5666,22,5210,22,4540,28,4186,36,3854,46,3567,61,3350,81,3311,89,3310,83,3350,76,3566,56,3853,41,4186,30,4540,23,5210,17,5666,16"/>
-<area shape="rect" href="../../d3/d14/PngImageHandler_8cpp.html" title=" " alt="" coords="3362,86,3554,126"/>
-<area shape="poly" title=" " alt="" coords="5665,22,5247,24,4639,31,4320,38,4020,49,3761,63,3566,81,3527,89,3526,83,3566,76,3761,58,4020,43,4320,33,4639,26,5247,18,5665,17"/>
-<area shape="rect" href="../../d6/d5f/TargaImageHandler_8cpp.html" title=" " alt="" coords="3578,86,3770,126"/>
-<area shape="poly" title=" " alt="" coords="5665,22,5284,25,4739,34,4187,51,3956,65,3782,81,3743,89,3742,83,3782,76,3956,59,4186,46,4739,28,5284,20,5665,17"/>
-<area shape="rect" href="../../d9/d5b/direct3d11_2GraphicsSystemImpl_8cpp.html" title=" " alt="" coords="3794,86,4055,126"/>
-<area shape="poly" title=" " alt="" coords="5665,23,4872,42,4408,59,4214,69,4068,81,4016,89,4016,83,4067,76,4214,64,4407,53,4872,36,5665,18"/>
-<area shape="rect" href="../../d3/dec/direct3d11_2RenderingContextImpl_8cpp.html" title=" " alt="" coords="4079,79,4295,133"/>
-<area shape="poly" title=" " alt="" coords="5666,24,4985,42,4594,59,4431,69,4308,81,4296,83,4295,78,4307,76,4431,64,4593,53,4984,36,5666,18"/>
-<area shape="rect" href="../../dc/d6e/direct3d11_2RenderingDeviceImpl_8cpp.html" title=" " alt="" coords="4319,86,4586,126"/>
-<area shape="poly" title=" " alt="" coords="5666,23,5473,27,5209,36,4905,53,4598,81,4548,89,4547,83,4598,76,4905,48,5208,31,5473,21,5666,17"/>
-<area shape="rect" href="../../d5/d8e/direct3d11_2meshes_2IndexBufferImpl_8cpp.html" title=" " alt="" coords="4610,79,4839,133"/>
-<area shape="poly" title=" " alt="" coords="5666,24,5310,39,5081,56,4852,81,4840,83,4839,78,4851,76,5081,51,5309,34,5666,18"/>
-<area shape="rect" href="../../da/d69/direct3d11_2meshes_2VertexBufferImpl_8cpp.html" title=" " alt="" coords="4863,79,5098,133"/>
-<area shape="poly" title=" " alt="" coords="5666,27,5416,46,5263,62,5110,81,5099,83,5098,78,5110,76,5263,56,5415,41,5665,22"/>
-<area shape="rect" href="../../d6/dbd/D3DConstantBufferWrapper_8cpp.html" title=" " alt="" coords="5122,79,5362,133"/>
-<area shape="poly" title=" " alt="" coords="5666,35,5374,81,5363,83,5362,78,5374,76,5665,29"/>
-<area shape="rect" href="../../d9/dbb/direct3d11_2shaders_2D3DShaderReflection_8cpp.html" title=" " alt="" coords="5386,79,5613,133"/>
-<area shape="poly" title=" " alt="" coords="5706,38,5577,81,5576,76,5705,33"/>
-<area shape="rect" href="../../d4/dd7/direct3d11_2shaders_2PixelShaderImpl_8cpp.html" title=" " alt="" coords="5637,79,5868,133"/>
-<area shape="poly" title=" " alt="" coords="5755,44,5755,79,5750,79,5750,44"/>
-<area shape="rect" href="../../d1/d8c/direct3d11_2shaders_2VertexShaderImpl_8cpp.html" title=" " alt="" coords="5892,79,6133,133"/>
-<area shape="poly" title=" " alt="" coords="5802,33,5934,76,5933,81,5800,38"/>
-<area shape="rect" href="../../dc/d0c/direct3d11_2states_2BlendStateImpl_8cpp.html" title=" " alt="" coords="6157,79,6372,133"/>
-<area shape="poly" title=" " alt="" coords="5840,28,5984,49,6146,76,6157,78,6156,83,6146,81,5983,54,5839,33"/>
-<area shape="rect" href="../../d9/dd4/direct3d11_2states_2DepthStencilStateImpl_8cpp.html" title=" " alt="" coords="6397,79,6623,133"/>
-<area shape="poly" title=" " alt="" coords="5840,22,6086,41,6236,56,6385,76,6397,78,6396,83,6384,81,6235,62,6086,46,5840,27"/>
-<area shape="rect" href="../../d9/d9b/direct3d11_2states_2RasterizerStateImpl_8cpp.html" title=" " alt="" coords="6648,79,6857,133"/>
-<area shape="poly" title=" " alt="" coords="5840,18,5990,23,6189,33,6411,50,6636,76,6648,78,6647,83,6635,81,6411,55,6188,38,5990,28,5840,24"/>
-<area shape="rect" href="../../dd/dc5/direct3d11_2states_2SamplerStateImpl_8cpp.html" title=" " alt="" coords="6881,79,7112,133"/>
-<area shape="poly" title=" " alt="" coords="5840,17,6027,20,6283,29,6575,46,6870,76,6882,78,6881,83,6870,81,6574,52,6282,34,6027,25,5840,22"/>
-<area shape="rect" href="../../d4/d26/direct3d11_2textures_2Texture2DImpl_8cpp.html" title=" " alt="" coords="7137,79,7350,133"/>
-<area shape="poly" title=" " alt="" coords="5840,18,6486,37,6855,54,7009,64,7125,76,7136,78,7136,83,7124,81,7008,70,6855,59,6486,42,5840,24"/>
-<area shape="rect" href="../../d7/d77/direct3d9_2GraphicsSystemImpl_8cpp.html" title=" " alt="" coords="7374,86,7627,126"/>
-<area shape="poly" title=" " alt="" coords="5840,18,6598,37,7039,54,7223,64,7362,76,7412,83,7411,89,7362,81,7223,69,7039,59,6598,42,5840,24"/>
-<area shape="rect" href="../../df/d9f/direct3d9_2RenderingContextImpl_8cpp.html" title=" " alt="" coords="7651,86,7915,126"/>
-<area shape="poly" title=" " alt="" coords="5839,18,6726,34,7253,52,7473,63,7640,76,7692,83,7691,89,7639,81,7473,68,7253,57,6726,40,5839,23"/>
-<area shape="rect" href="../../d3/d84/direct3d9_2RenderingDeviceImpl_8cpp.html" title=" " alt="" coords="7939,86,8198,126"/>
-<area shape="poly" title=" " alt="" coords="5840,17,6257,21,6860,31,7476,49,7733,61,7928,76,7979,83,7978,89,7927,81,7733,66,7476,54,6860,37,6256,27,5840,23"/>
-<area shape="rect" href="../../dc/d22/direct3d9_2meshes_2IndexBufferImpl_8cpp.html" title=" " alt="" coords="8222,79,8443,133"/>
-<area shape="poly" title=" " alt="" coords="5840,17,6304,18,6990,26,7353,33,7694,43,7988,58,8210,76,8222,78,8221,83,8210,81,7988,63,7693,49,7352,38,6990,31,6304,23,5840,22"/>
-<area shape="rect" href="../../db/d8c/direct3d9_2meshes_2VertexBufferImpl_8cpp.html" title=" " alt="" coords="8467,79,8694,133"/>
-<area shape="poly" title=" " alt="" coords="5840,16,6346,17,7103,24,7504,31,7883,41,8209,56,8456,76,8467,78,8467,83,8455,81,8209,62,7882,47,7504,36,7103,29,6346,22,5840,22"/>
-<area shape="rect" href="../../da/df8/direct3d9_2shaders_2D3DShaderReflection_8cpp.html" title=" " alt="" coords="8718,79,8937,133"/>
-<area shape="poly" title=" " alt="" coords="5839,17,7335,36,8200,53,8518,64,8706,76,8718,78,8717,83,8706,81,8518,69,8200,59,7335,41,5839,23"/>
-<area shape="rect" href="../../d1/d5c/direct3d9_2shaders_2PixelShaderImpl_8cpp.html" title=" " alt="" coords="8961,79,9184,133"/>
-<area shape="poly" title=" " alt="" coords="5840,17,7456,35,8397,52,8744,63,8949,76,8962,78,8961,83,8948,81,8744,69,8397,58,7456,40,5840,23"/>
-<area shape="rect" href="../../d4/d65/direct3d9_2shaders_2VertexShaderImpl_8cpp.html" title=" " alt="" coords="9208,79,9441,133"/>
-<area shape="poly" title=" " alt="" coords="5840,17,7578,34,8598,52,8975,63,9197,76,9208,77,9208,83,9196,81,8975,68,8598,57,7578,39,5840,23"/>
-<area shape="rect" href="../../d9/d83/direct3d9_2textures_2Texture2DImpl_8cpp.html" title=" " alt="" coords="9466,79,9671,133"/>
-<area shape="poly" title=" " alt="" coords="5840,17,6574,21,7705,31,8807,48,9214,61,9454,76,9466,78,9465,83,9454,81,9214,66,8807,54,7705,36,6574,26,5840,22"/>
-<area shape="rect" href="../../d4/d6f/D3DShaderCompiler_8cpp.html" title=" " alt="" coords="9696,86,9983,126"/>
-<area shape="poly" title=" " alt="" coords="5840,17,7817,35,8993,52,9427,63,9684,76,9741,83,9741,89,9683,81,9427,69,8993,58,7817,40,5840,23"/>
-<area shape="rect" href="../../d2/d67/MeshBuffer_8cpp.html" title=" " alt="" coords="10007,86,10202,126"/>
-<area shape="poly" title=" " alt="" coords="5840,17,6669,19,7971,27,8643,34,9246,44,9718,58,9885,67,9996,76,10037,83,10036,89,9995,81,9885,72,9718,64,9246,50,8643,39,7971,32,6669,24,5840,22"/>
-<area shape="rect" href="../../dc/d5c/MeshManager_8cpp.html" title=" " alt="" coords="10226,86,10421,126"/>
-<area shape="poly" title=" " alt="" coords="5840,17,6707,18,8078,26,8787,33,9423,43,9921,57,10098,66,10214,76,10255,83,10254,89,10214,81,10097,71,9921,63,9423,49,8787,38,8078,31,6707,24,5840,22"/>
-<area shape="rect" href="../../d9/d3a/ConstantBuffer_8cpp.html" title=" " alt="" coords="10445,86,10639,126"/>
-<area shape="poly" title=" " alt="" coords="5840,17,6744,18,8185,24,8931,32,9601,42,10125,57,10310,66,10433,76,10474,83,10473,89,10432,81,10310,71,10124,62,9600,47,8930,37,8185,30,6744,23,5840,22"/>
-<area shape="rect" href="../../dd/d84/Shader_8cpp.html" title=" " alt="" coords="10663,86,10858,126"/>
-<area shape="poly" title=" " alt="" coords="5840,17,6782,17,8291,23,9074,30,9778,41,10328,56,10523,65,10652,76,10693,83,10692,89,10651,81,10522,71,10328,61,9777,46,9074,36,8291,28,6782,22,5840,22"/>
-<area shape="rect" href="../../de/d8d/AbstractState_8cpp.html" title=" " alt="" coords="10882,86,11066,126"/>
-<area shape="poly" title=" " alt="" coords="5840,16,6820,16,8398,21,9218,27,9955,38,10531,54,10735,64,10870,76,10909,83,10908,89,10870,81,10735,70,10531,60,9955,44,9218,33,8398,26,6820,21,5840,22"/>
-<area shape="rect" href="../../d5/d24/Surface_8cpp.html" title=" " alt="" coords="11091,86,11289,126"/>
-<area shape="poly" title=" " alt="" coords="5840,16,6856,16,8500,21,9354,28,10123,39,10725,55,10937,65,11078,76,11120,83,11119,89,11078,81,10937,70,10724,60,10123,44,9354,34,8500,27,6856,22,5840,22"/>
-<area shape="rect" href="../../d5/d87/Texture_8cpp.html" title=" " alt="" coords="11313,86,11512,126"/>
-<area shape="poly" title=" " alt="" coords="5840,16,6893,15,8608,20,9500,27,10304,38,10933,54,11155,64,11302,76,11344,83,11343,89,11302,81,11155,69,10932,59,10304,43,9500,32,8608,25,6893,21,5840,22"/>
-<area shape="rect" href="../../d5/d63/Resource_8cpp.html" title=" " alt="" coords="11536,86,11684,126"/>
-<area shape="poly" title=" " alt="" coords="5840,17,6982,20,8835,30,10611,48,11225,61,11420,68,11525,76,11557,83,11556,89,11524,81,11420,73,11225,66,10611,53,8835,35,6982,26,5840,22"/>
+<area shape="poly" title=" " alt="" coords="316,429,208,472,206,467,314,424"/>
+<area shape="rect" title=" " alt="" coords="252,475,311,500"/>
+<area shape="poly" title=" " alt="" coords="336,429,303,466,299,462,332,425"/>
+<area shape="rect" title=" " alt="" coords="335,475,433,500"/>
+<area shape="poly" title=" " alt="" coords="353,426,373,461,368,464,348,428"/>
+<area shape="rect" title=" " alt="" coords="457,475,511,500"/>
+<area shape="poly" title=" " alt="" coords="368,424,450,466,448,471,365,429"/>
+<area shape="poly" title=" " alt="" coords="193,116,295,166,293,170,191,121"/>
+<area shape="rect" href="../../d5/dae/Singleton_8h.html" title=" " alt="" coords="78,167,229,207"/>
+<area shape="poly" title=" " alt="" coords="156,119,156,153,151,153,151,119"/>
+<area shape="poly" title=" " alt="" coords="153,207,143,302,142,364,148,426,158,461,153,463,143,427,137,364,138,301,148,206"/>
+<area shape="poly" title=" " alt="" coords="164,206,181,241,176,243,160,208"/>
 </map>
 </div>
 </div>
@@ -267,6 +169,18 @@ Macros</h2></td></tr>
 <tr class="separator:a7ebf4c3b4fb05d6f9094089ded75cbdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a5a897bd0e286a74a830e66c643f276" id="r_a8a5a897bd0e286a74a830e66c643f276"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d77/logging_8h.html#a8a5a897bd0e286a74a830e66c643f276">LOG_TYPE</a>(msg,  type)&#160;&#160;&#160;std_log(msg, type,                             __FILE__, __LINE__, __FUNCTION__)</td></tr>
 <tr class="separator:a8a5a897bd0e286a74a830e66c643f276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7753b3808da53d0d89281f28e22c7593" id="r_a7753b3808da53d0d89281f28e22c7593"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d77/logging_8h.html#a7753b3808da53d0d89281f28e22c7593">TRY_LOG</a>(ctx,  msg)&#160;&#160;&#160;ctx.try_log(msg, <a class="el" href="../../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ace0be71e33226e4c1db2bcea5959f16b">cl7::logging::LogType::Log</a>,       __FILE__, __LINE__, __FUNCTION__)</td></tr>
+<tr class="separator:a7753b3808da53d0d89281f28e22c7593"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace5b104a50ba16eb7fa2c1aad532d629" id="r_ace5b104a50ba16eb7fa2c1aad532d629"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d77/logging_8h.html#ace5b104a50ba16eb7fa2c1aad532d629">TRY_LOG_INFO</a>(ctx,  msg)&#160;&#160;&#160;ctx.try_log(msg, <a class="el" href="../../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a4059b0251f66a18cb56f544728796875">cl7::logging::LogType::Info</a>,      __FILE__, __LINE__, __FUNCTION__)</td></tr>
+<tr class="separator:ace5b104a50ba16eb7fa2c1aad532d629"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6b7e6d981e207f0104c902c7e0c45a0" id="r_ad6b7e6d981e207f0104c902c7e0c45a0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d77/logging_8h.html#ad6b7e6d981e207f0104c902c7e0c45a0">TRY_LOG_SUCCESS</a>(ctx,  msg)&#160;&#160;&#160;ctx.try_log(msg, <a class="el" href="../../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a505a83f220c02df2f85c3810cd9ceb38">cl7::logging::LogType::Success</a>,   __FILE__, __LINE__, __FUNCTION__)</td></tr>
+<tr class="separator:ad6b7e6d981e207f0104c902c7e0c45a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad07681aa1df4afcab947dde13562f133" id="r_ad07681aa1df4afcab947dde13562f133"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d77/logging_8h.html#ad07681aa1df4afcab947dde13562f133">TRY_LOG_WARNING</a>(ctx,  msg)&#160;&#160;&#160;ctx.try_log(msg, <a class="el" href="../../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a0eaadb4fcb48a0a0ed7bc9868be9fbaa">cl7::logging::LogType::Warning</a>,   __FILE__, __LINE__, __FUNCTION__)</td></tr>
+<tr class="separator:ad07681aa1df4afcab947dde13562f133"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b4724d949d7f9ee66a791e610e96747" id="r_a6b4724d949d7f9ee66a791e610e96747"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d77/logging_8h.html#a6b4724d949d7f9ee66a791e610e96747">TRY_LOG_ERROR</a>(ctx,  msg)&#160;&#160;&#160;ctx.try_log(msg, <a class="el" href="../../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a902b0d55fddef6f8d651fe1035b7d4bd">cl7::logging::LogType::Error</a>,     __FILE__, __LINE__, __FUNCTION__)</td></tr>
+<tr class="separator:a6b4724d949d7f9ee66a791e610e96747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29e4868802fcabb19e55fbafd9dbb5b9" id="r_a29e4868802fcabb19e55fbafd9dbb5b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d77/logging_8h.html#a29e4868802fcabb19e55fbafd9dbb5b9">TRY_LOG_TYPE</a>(ctx,  msg,  type)&#160;&#160;&#160;ctx.try_log(msg, type,                             __FILE__, __LINE__, __FUNCTION__)</td></tr>
+<tr class="separator:a29e4868802fcabb19e55fbafd9dbb5b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -388,6 +302,180 @@ Functions</h2></td></tr>
           <td class="paramtype">&#160;</td>
           <td class="paramname">msg</td><td>)</td>
           <td>&#160;&#160;&#160;std_log(msg, <a class="el" href="../../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a0eaadb4fcb48a0a0ed7bc9868be9fbaa">cl7::logging::LogType::Warning</a>,   __FILE__, __LINE__, __FUNCTION__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7753b3808da53d0d89281f28e22c7593" name="a7753b3808da53d0d89281f28e22c7593"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7753b3808da53d0d89281f28e22c7593">&#9670;&#160;</a></span>TRY_LOG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRY_LOG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ctx, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">msg&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;ctx.try_log(msg, <a class="el" href="../../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ace0be71e33226e4c1db2bcea5959f16b">cl7::logging::LogType::Log</a>,       __FILE__, __LINE__, __FUNCTION__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6b4724d949d7f9ee66a791e610e96747" name="a6b4724d949d7f9ee66a791e610e96747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b4724d949d7f9ee66a791e610e96747">&#9670;&#160;</a></span>TRY_LOG_ERROR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRY_LOG_ERROR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ctx, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">msg&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;ctx.try_log(msg, <a class="el" href="../../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a902b0d55fddef6f8d651fe1035b7d4bd">cl7::logging::LogType::Error</a>,     __FILE__, __LINE__, __FUNCTION__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ace5b104a50ba16eb7fa2c1aad532d629" name="ace5b104a50ba16eb7fa2c1aad532d629"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace5b104a50ba16eb7fa2c1aad532d629">&#9670;&#160;</a></span>TRY_LOG_INFO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRY_LOG_INFO</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ctx, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">msg&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;ctx.try_log(msg, <a class="el" href="../../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a4059b0251f66a18cb56f544728796875">cl7::logging::LogType::Info</a>,      __FILE__, __LINE__, __FUNCTION__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6b7e6d981e207f0104c902c7e0c45a0" name="ad6b7e6d981e207f0104c902c7e0c45a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6b7e6d981e207f0104c902c7e0c45a0">&#9670;&#160;</a></span>TRY_LOG_SUCCESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRY_LOG_SUCCESS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ctx, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">msg&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;ctx.try_log(msg, <a class="el" href="../../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a505a83f220c02df2f85c3810cd9ceb38">cl7::logging::LogType::Success</a>,   __FILE__, __LINE__, __FUNCTION__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a29e4868802fcabb19e55fbafd9dbb5b9" name="a29e4868802fcabb19e55fbafd9dbb5b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29e4868802fcabb19e55fbafd9dbb5b9">&#9670;&#160;</a></span>TRY_LOG_TYPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRY_LOG_TYPE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ctx, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">msg, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;ctx.try_log(msg, type,                             __FILE__, __LINE__, __FUNCTION__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad07681aa1df4afcab947dde13562f133" name="ad07681aa1df4afcab947dde13562f133"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad07681aa1df4afcab947dde13562f133">&#9670;&#160;</a></span>TRY_LOG_WARNING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRY_LOG_WARNING</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ctx, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">msg&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;ctx.try_log(msg, <a class="el" href="../../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a0eaadb4fcb48a0a0ed7bc9868be9fbaa">cl7::logging::LogType::Warning</a>,   __FILE__, __LINE__, __FUNCTION__)</td>
         </tr>
       </table>
 </div><div class="memdoc">

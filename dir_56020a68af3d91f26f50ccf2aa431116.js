@@ -8,6 +8,8 @@ var dir_56020a68af3d91f26f50ccf2aa431116 =
     [ "FileLogHandler.h", "d7/d8b/FileLogHandler_8h.html", "d7/d8b/FileLogHandler_8h" ],
     [ "HtmlLogHandler.cpp", "d9/de4/HtmlLogHandler_8cpp.html", null ],
     [ "HtmlLogHandler.h", "df/d5d/HtmlLogHandler_8h.html", "df/d5d/HtmlLogHandler_8h" ],
+    [ "LogContext.cpp", "d8/d50/LogContext_8cpp.html", null ],
+    [ "LogContext.h", "df/d15/LogContext_8h.html", "df/d15/LogContext_8h" ],
     [ "LogEntry.h", "d4/d8d/LogEntry_8h.html", "d4/d8d/LogEntry_8h" ],
     [ "Logger.cpp", "d9/df5/Logger_8cpp.html", null ],
     [ "Logger.h", "dd/da4/Logger_8h.html", "dd/da4/Logger_8h" ],

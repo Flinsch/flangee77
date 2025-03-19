@@ -220,7 +220,13 @@ Naming Conventions</h1>
 <li>Depending on their purpose, <code>enum</code> entries may follow the conventions for constants (UPPERCASE_UNDERSCORE) or &ldquo;constant variables&rdquo; (lowercase_underscore).</li>
 <li>In rare cases, the names of <code>class</code> or <code>struct</code> types may also follow the lowercase_underscore convention (e.g., <code>byte_view</code>).</li>
 <li>Use <b>lowercase letters (without underscores)</b> for namespaces.</li>
-<li>Prefix <b>protected</b> and <b>private</b> functions and variables with a single underscore (<code>_</code>). </li>
+<li>Prefix <b>protected</b> and <b>private</b> functions and variables with a single underscore (<code>_</code>).</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md20"></a>
+Other Stuff</h1>
+<ul>
+<li>Prefer <code>static constexpr</code> over <code>constexpr</code>, especially for non-trivial data types, and especially if you want to reference the data via pointers, etc. <code>constexpr</code> values are stack values (unless they are <code>static</code>) and may be copied there at runtime. <code>static</code> forces initialization at compile-time through the means of &ldquo;constant initialization&rdquo;. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

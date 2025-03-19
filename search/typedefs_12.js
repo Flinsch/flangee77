@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['wchar_5ftype_0',['wchar_type',['../d1/d2e/namespacecl7.html#a4552b2422296ff42d22df064b09f131f',1,'cl7']]],
-  ['wisstream_1',['wisstream',['../d1/d2e/namespacecl7.html#a66b3f7e3de4ec23e6f0ea6b9c1b33899',1,'cl7']]],
-  ['wosstream_2',['wosstream',['../d1/d2e/namespacecl7.html#a88069306694d6b5b47cf47582b4d597e',1,'cl7']]],
-  ['wstring_3',['wstring',['../d1/d2e/namespacecl7.html#a1f05c151c8a40836a841f380ce757c50',1,'cl7']]],
-  ['wstring_5fhash_4',['wstring_hash',['../d1/d2e/namespacecl7.html#a8f696132455b96c25ac9a6cd4f53822e',1,'cl7']]],
-  ['wstring_5fview_5',['wstring_view',['../d1/d2e/namespacecl7.html#aff252be98b0f27a4c0412e290a8e6a29',1,'cl7']]]
+  ['value_5ftype_0',['value_type',['../d2/dbf/classcl7_1_1continuous__forward__iterator.html#a2447703ebbf53bdd02d309b658c3c253',1,'cl7::continuous_forward_iterator::value_type'],['../d2/d93/classcl7_1_1const__ptr__forward__iterator.html#a5c733e0b4457cee775cf42ad699c7cd9',1,'cl7::const_ptr_forward_iterator::value_type'],['../dd/d42/classcl7_1_1ordered__map.html#af772f8e01cd55698cdf1fa4d40694985',1,'cl7::ordered_map::value_type'],['../dc/d49/structcl7_1_1strings_1_1codepoint.html#a8b8feeeb6a491736d9e0adb8c2f94437',1,'cl7::strings::codepoint::value_type']]],
+  ['vector_5ftype_1',['vector_type',['../dd/d42/classcl7_1_1ordered__map.html#add57afe33e822afebdfcf0103bfd6a38',1,'cl7::ordered_map']]]
 ];

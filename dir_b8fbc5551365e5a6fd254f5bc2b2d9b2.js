@@ -2,8 +2,24 @@ var dir_b8fbc5551365e5a6fd254f5bc2b2d9b2 =
 [
     [ "AsciiCodec.cpp", "d6/dd4/AsciiCodec_8cpp.html", null ],
     [ "AsciiCodec.h", "d2/dfb/AsciiCodec_8h.html", "d2/dfb/AsciiCodec_8h" ],
-    [ "Codec.h", "d5/d45/Codec_8h.html", "d5/d45/Codec_8h" ],
+    [ "BaseResult.h", "d6/d40/BaseResult_8h.html", "d6/d40/BaseResult_8h" ],
     [ "codepoint.cpp", "d2/d7e/codepoint_8cpp.html", null ],
     [ "codepoint.h", "d8/d47/codepoint_8h.html", "d8/d47/codepoint_8h" ],
-    [ "Encoding.h", "df/d92/Encoding_8h.html", "df/d92/Encoding_8h" ]
+    [ "CodepointResult.h", "d7/d16/CodepointResult_8h.html", "d7/d16/CodepointResult_8h" ],
+    [ "DecodeResult.h", "d8/d8f/DecodeResult_8h.html", "d8/d8f/DecodeResult_8h" ],
+    [ "DefaultErrorHandler.h", "df/d29/DefaultErrorHandler_8h.html", "df/d29/DefaultErrorHandler_8h" ],
+    [ "EncodeBuffer.h", "d9/d52/EncodeBuffer_8h.html", "d9/d52/EncodeBuffer_8h" ],
+    [ "EncodeResult.h", "dc/db8/EncodeResult_8h.html", "dc/db8/EncodeResult_8h" ],
+    [ "Encoding.h", "df/d92/Encoding_8h.html", "df/d92/Encoding_8h" ],
+    [ "EncodingError.h", "d9/d2a/EncodingError_8h.html", "d9/d2a/EncodingError_8h" ],
+    [ "ErrorHandler.cpp", "d7/d91/ErrorHandler_8cpp.html", null ],
+    [ "ErrorHandler.h", "dd/d0e/ErrorHandler_8h.html", "dd/d0e/ErrorHandler_8h" ],
+    [ "LoggingErrorHandler.cpp", "d7/d5a/LoggingErrorHandler_8cpp.html", null ],
+    [ "LoggingErrorHandler.h", "d5/dd6/LoggingErrorHandler_8h.html", "d5/dd6/LoggingErrorHandler_8h" ],
+    [ "Utf16Codec.cpp", "d1/d12/Utf16Codec_8cpp.html", "d1/d12/Utf16Codec_8cpp" ],
+    [ "Utf16Codec.h", "d3/ddc/Utf16Codec_8h.html", "d3/ddc/Utf16Codec_8h" ],
+    [ "Utf32Codec.cpp", "df/da7/Utf32Codec_8cpp.html", null ],
+    [ "Utf32Codec.h", "db/d6d/Utf32Codec_8h.html", "db/d6d/Utf32Codec_8h" ],
+    [ "Utf8Codec.cpp", "da/db3/Utf8Codec_8cpp.html", "da/db3/Utf8Codec_8cpp" ],
+    [ "Utf8Codec.h", "d0/d7f/Utf8Codec_8h.html", "d0/d7f/Utf8Codec_8h" ]
 ];

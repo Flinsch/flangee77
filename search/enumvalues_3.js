@@ -16,6 +16,7 @@ var searchData=
   ['depthstencilsurface_13',['DepthStencilSurface',['../d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53a3022b396179580ece750901c67d9914c',1,'xl7::graphics::surfaces::Surface']]],
   ['destalpha_14',['DestAlpha',['../d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#ab8f817106c9cfaac6dc9ebaf63a679b9a340eaea78e78517c42c479447b871ad2',1,'xl7::graphics::states::BlendState']]],
   ['destcolor_15',['DestColor',['../d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#ab8f817106c9cfaac6dc9ebaf63a679b9ab5c77c29513009d6ea5f34de4561bbb2',1,'xl7::graphics::states::BlendState']]],
-  ['discard_16',['Discard',['../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ac4ce5eaf77a0e31efdbbe3df2c3209e6ad94b42030b9785fd754d5c1754961269',1,'dl7::syntax::Lexer']]],
-  ['dynamic_17',['Dynamic',['../da/d60/namespacexl7_1_1resources.html#acb7b1bb91ccf1f69b4fe83b89d1db5eea971fd8cc345d8bd9f92e9f7d88fdf20c',1,'xl7::resources']]]
+  ['disallowedunicode_16',['DisallowedUnicode',['../dc/d17/namespacecl7_1_1strings.html#af691638e9c6fbf723b19957270f2c0d2a29e79381f4e76ecd75afbbd48f51b3d3',1,'cl7::strings']]],
+  ['discard_17',['Discard',['../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ac4ce5eaf77a0e31efdbbe3df2c3209e6ad94b42030b9785fd754d5c1754961269',1,'dl7::syntax::Lexer']]],
+  ['dynamic_18',['Dynamic',['../da/d60/namespacexl7_1_1resources.html#acb7b1bb91ccf1f69b4fe83b89d1db5eea971fd8cc345d8bd9f92e9f7d88fdf20c',1,'xl7::resources']]]
 ];

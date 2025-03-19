@@ -1,9 +1,12 @@
 var searchData=
 [
-  ['table_5ftype_0',['table_type',['../dd/d42/classcl7_1_1ordered__map.html#aabb9991c9d070a21809bacc7f6bc6645',1,'cl7::ordered_map']]],
-  ['testcaseptr_1',['TestCasePtr',['../d1/dce/namespacetl7.html#aa29ab0a6a987370f802179ca203ce9e0',1,'tl7']]],
-  ['texturemanagerptr_2',['TextureManagerPtr',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#a9d4771ca5ab27421834a08b4cf8f8111',1,'xl7::graphics::RenderingDevice']]],
-  ['tptr_3',['Tptr',['../d2/dbf/classcl7_1_1continuous__forward__iterator.html#ac0f33455c593fbec5bcd38c86b741d47',1,'cl7::continuous_forward_iterator']]],
-  ['tstring_4',['Tstring',['../d0/dbc/structcl7_1_1string__hash.html#a7f965c342868e72721bf9a6f10bd02b6',1,'cl7::string_hash']]],
-  ['tstring_5fview_5',['Tstring_view',['../d0/dbc/structcl7_1_1string__hash.html#a5bb6033eeb64195e5c038615850e01e2',1,'cl7::string_hash']]]
+  ['samplekey_0',['SampleKey',['../d5/d99/classcl7_1_1profiling_1_1Registry.html#aae071476652b7569e1a5d8487324ad8d',1,'cl7::profiling::Registry']]],
+  ['shadermanagerptr_1',['ShaderManagerPtr',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#aba0131a5b84132354afbe373976cbc0b',1,'xl7::graphics::RenderingDevice']]],
+  ['size_5ftype_2',['size_type',['../dd/d42/classcl7_1_1ordered__map.html#a2cc3dabd496c512bd70cc1314e321779',1,'cl7::ordered_map']]],
+  ['statemanagerptr_3',['StateManagerPtr',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#a5cbf395a76e8eaab300086416382f698',1,'xl7::graphics::RenderingDevice']]],
+  ['string_5fspan_5ftype_4',['string_span_type',['../d7/ddc/classcl7_1_1strings_1_1Utf8Codec.html#a1093bfbebe149ce37735483d86279511',1,'cl7::strings::Utf8Codec::string_span_type'],['../d2/dec/classcl7_1_1strings_1_1Utf32Codec.html#ae1fcc0811377ae3b96536f223f137c9e',1,'cl7::strings::Utf32Codec::string_span_type'],['../d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#a0b2a8281f9d09ef92c65a971e4b25330',1,'cl7::strings::Utf16Codec::string_span_type'],['../db/d55/structcl7_1_1strings_1_1EncodeResult.html#a7a7c2d07c3e1ee6875925f24f470773e',1,'cl7::strings::EncodeResult::string_span_type'],['../d1/d9d/structcl7_1_1strings_1_1EncodeBuffer.html#ab562d23645f59b694264b48636fe3c7f',1,'cl7::strings::EncodeBuffer::string_span_type'],['../d1/d63/classcl7_1_1strings_1_1AsciiCodec.html#a9a99d4700232cae0b677fe781af2c3ae',1,'cl7::strings::AsciiCodec::string_span_type']]],
+  ['string_5ft_5',['string_t',['../df/d87/namespacedl7_1_1json.html#aaf86201e42f7a8df9722d1f885ddc38c',1,'dl7::json']]],
+  ['string_5fview_5ftype_6',['string_view_type',['../d1/d63/classcl7_1_1strings_1_1AsciiCodec.html#ade2a712b596f9ecaab990363fe3e6d00',1,'cl7::strings::AsciiCodec::string_view_type'],['../d7/d98/structcl7_1_1strings_1_1DecodeResult.html#a2c0bdd7f3b97f0b3ccecdd01545bce81',1,'cl7::strings::DecodeResult::string_view_type'],['../d1/d9d/structcl7_1_1strings_1_1EncodeBuffer.html#afb2a3f4e116ca6245a356749d2723427',1,'cl7::strings::EncodeBuffer::string_view_type'],['../d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#aea2439f73f0ba013f2cf7cef23adacb1',1,'cl7::strings::Utf16Codec::string_view_type'],['../d2/dec/classcl7_1_1strings_1_1Utf32Codec.html#a0ccc68a0b0c7cbd08a42a5e25fbb77d4',1,'cl7::strings::Utf32Codec::string_view_type'],['../d7/ddc/classcl7_1_1strings_1_1Utf8Codec.html#a16b69c9aca0ae849d83b7fd733938c8e',1,'cl7::strings::Utf8Codec::string_view_type']]],
+  ['surfacemanagerptr_7',['SurfaceManagerPtr',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#ad7473ecfb121c1be447244a1f33e4039',1,'xl7::graphics::RenderingDevice']]],
+  ['symbolid_8',['SymbolID',['../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3',1,'dl7::syntax']]]
 ];

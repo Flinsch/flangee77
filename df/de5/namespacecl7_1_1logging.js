@@ -4,6 +4,7 @@ var namespacecl7_1_1logging =
     [ "CoutLogHandler", "d9/d31/classcl7_1_1logging_1_1CoutLogHandler.html", "d9/d31/classcl7_1_1logging_1_1CoutLogHandler" ],
     [ "FileLogHandler", "d3/d69/classcl7_1_1logging_1_1FileLogHandler.html", "d3/d69/classcl7_1_1logging_1_1FileLogHandler" ],
     [ "HtmlLogHandler", "d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html", "d9/dce/classcl7_1_1logging_1_1HtmlLogHandler" ],
+    [ "LogContext", "d9/d4c/structcl7_1_1logging_1_1LogContext.html", "d9/d4c/structcl7_1_1logging_1_1LogContext" ],
     [ "LogEntry", "d6/d58/structcl7_1_1logging_1_1LogEntry.html", "d6/d58/structcl7_1_1logging_1_1LogEntry" ],
     [ "Logger", "df/dc2/classcl7_1_1logging_1_1Logger.html", "df/dc2/classcl7_1_1logging_1_1Logger" ],
     [ "StandardLogger", "d2/df3/classcl7_1_1logging_1_1StandardLogger.html", "d2/df3/classcl7_1_1logging_1_1StandardLogger" ],
