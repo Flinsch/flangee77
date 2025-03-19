@@ -32,6 +32,6 @@ It would probably have been enough to abandon the DirectX SDK (June 2010) and sw
 Well, in the end, I did make the switch&mdash;both of those changes&mdash;but with the far more consequential decision to rebuild &ldquo;everything&rdquo; from the ground up (well, I still reuse a lot of things, of course).
 This time, I aimed to generalize the framework so it wouldn't be limited to a single technology stack but could potentially support multiple ones (e.g., Direct3D 9 and Direct3D 11, and maybe later OpenGL or others, and generally not just DirectX components).
 
-This, of course, requires an additional abstraction layer, as the technologies offer different interfaces while the application is meant to offer a uniform &ldquo;facade.&rdquo;
+This, of course, requires an additional abstraction layer, as the technologies offer different interfaces while the application is meant to offer a uniform &ldquo;facade&rdquo;.
 And who knows? Perhaps I'll even target platforms other than Windows. We'll see.
 But smartphones, and especially consoles, are probably off the table&mdash;that wouldn't make much sense, in my opinion, even despite (or perhaps because of) my personal background I've just described.

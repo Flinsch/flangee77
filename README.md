@@ -38,7 +38,7 @@ And to answer the question of who might use this framework now, I will try to ma
   robust, industry-standard tools that are tested, maintained, and supported by large teams, an off-the-shelf engine, or an in-house engine from your company.
   Compared to those, this framework is like an oddball: unlikely to fit into your pipelines unless you're unusually adventurous.
 - Are you an **indie** video game developer? <br>
-  Then you are likely focused on speed, polish, and tools that &ldquo;just work.&rdquo;
+  Then you are likely focused on speed, polish, and tools that &ldquo;just work&rdquo;.
   You are interested in getting a finished game pretty soon and should use tools that help you with &ldquo;everything&rdquo; and not just an unusual framework where you still have to build a lot of things yourself.
   <br>(Of course, you can still be a professional as an indie developer, that's for sure. Please don't get me wrong here!)
 - Are you a **hobbyist** video game developer? <br>
