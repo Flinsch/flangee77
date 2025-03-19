@@ -11,16 +11,26 @@ namespace cl7::strings {
 
 struct codepoint
 {
+    using value_type = unsigned;
 
-    static constexpr unsigned max_ascii = 0x7f;
-    static constexpr unsigned max_unicode = 0x10ffff;
+    // At least 21 bits to cover all Unicode code points.
+    // Expressed in bytes, that would be 3 (24 bits >= 21 bits).
+    static_assert(sizeof(value_type) >= 3);
 
-    static constexpr unsigned replacement_ascii = 0x1a;
-    static constexpr unsigned replacement_unicode = 0xfffd;
+    static constexpr value_type max_ascii = 0x7f;
+    static constexpr value_type max_unicode = 0x10ffff;
+
+    static constexpr value_type high_surrogate_min = 0xd800;
+    static constexpr value_type high_surrogate_max = 0xdbff;
+    static constexpr value_type low_surrogate_min = 0xdc00;
+    static constexpr value_type low_surrogate_max = 0xdfff;
+
+    static constexpr value_type replacement_ascii = 0x1a;
+    static constexpr value_type replacement_unicode = 0xfffd;
 
 
 
-    unsigned value = 0;
+    value_type value = 0;
 
 
 

@@ -6,36 +6,43 @@ namespace cl7::strings {
 
 
 
-    /**
-     * Processes the specified Unicode code point and stores its corresponding
-     * character encoding. Returns true if the code point is valid and can be
-     * represented in ASCII.
-     */
-    bool AsciiCodecImpl::init(codepoint codepoint)
+    AsciiCodec::EncodeResult AsciiCodec::encode_one(codepoint codepoint, string_span_type output, const ErrorHandler& error_handler)
     {
-        if (codepoint.is_valid_ascii())
+        auto codepoint_result = error_handler.check_adjust_ascii(codepoint);
+
+        if (output.empty())
         {
-            _ac = static_cast<cl7::achar_type>(codepoint.value);
-            return true;
+            return {
+                error_handler.on_exhausted_output_space(encoding, codepoint_result),
+                {},
+            };
         }
 
-        _ac = static_cast<cl7::achar_type>(codepoint::replacement_ascii);
-        return false;
+        assert(codepoint_result.codepoint.is_valid_ascii());
+        output[0] = static_cast<char_type>(codepoint_result.codepoint.value & 0x7f);
+
+        return {
+            codepoint_result,
+            output.subspan(0, 1),
+        };
     }
 
-    /**
-     * Processes the specified code unit and updates the current state accordingly.
-     * After that we have either a valid, invalid, or incomplete Unicode code point.
-     */
-    CodecResult AsciiCodecImpl::input(cl7::achar_type ac, const CodecResult& base_result)
+
+
+    AsciiCodec::DecodeResult AsciiCodec::decode_one(string_view_type input, const ErrorHandler& error_handler)
     {
-        _ac = ac;
+        if (input.empty())
+            return {};
 
-        codepoint codepoint{static_cast<unsigned>(_ac)};
-        if (codepoint.is_valid_ascii())
-            return {.codepoint=codepoint, .state=CodecState::Valid};
+        if (input[0] & 0x80)
+        {
+            return error_handler.on_invalid_code_unit(input.substr(0, 1));
+        }
 
-        return {.codepoint=codepoint::replacement_unicode, .state=CodecState::Invalid};
+        return {
+            {static_cast<codepoint::value_type>(static_cast<uint8_t>(input[0]))},
+            input.substr(0, 1),
+        };
     }
 
 

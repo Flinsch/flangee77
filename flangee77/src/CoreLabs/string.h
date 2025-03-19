@@ -4,6 +4,8 @@
 #include <CoreLabs/root.h>
 
 #include <string>
+#include <string_view>
+#include <span>
 
 
 
@@ -37,6 +39,12 @@ namespace cl7 {
     using u32string_view    = std::u32string_view;
     using wstring_view      = std::wstring_view;
 
+    using astring_span      = std::span<achar_type>;
+    using u8string_span     = std::span<u8char_type>;
+    using u16string_span    = std::span<u16char_type>;
+    using u32string_span    = std::span<u32char_type>;
+    using wstring_span      = std::span<wchar_type>;
+
 
 
     template <class Tstring>
@@ -45,21 +53,35 @@ namespace cl7 {
     template <class Tstring_view>
     concept is_any_string_view_v = std::is_base_of_v<std::basic_string_view<typename Tstring_view::value_type, typename Tstring_view::traits_type>, Tstring_view>;
 
+    template <class Tstring_span>
+    concept is_any_string_span_v = std::is_base_of_v<std::span<typename Tstring_span::value_type>, Tstring_span>;
+
     template <class Tstring_or_view>
     concept is_any_string_or_view_v = is_any_string_v<Tstring_or_view> || is_any_string_view_v<Tstring_or_view>;
 
+    template <class Tstring_or_span>
+    concept is_any_string_or_span_v = is_any_string_v<Tstring_or_span> || is_any_string_span_v<Tstring_or_span>;
 
+
+
+    template <class Tstring_or_span>
+        requires(is_any_string_or_span_v<Tstring_or_span>)
+    auto make_string_view(const Tstring_or_span& s)
+    {
+        return std::basic_string_view<typename Tstring_or_span::value_type>(s.data(), s.size());
+    }
 
     template <class Tstring>
         requires(is_any_string_v<Tstring>)
-    auto make_string_view(const Tstring& s)
+    auto make_string_span(Tstring& s)
     {
-        return std::basic_string_view<typename Tstring::value_type, typename Tstring::traits_type>(s.data(), s.size());
+        return std::span<typename Tstring::value_type>(s.data(), s.size());
     }
 
 
 
     template <typename Tchar = cl7::u8char_type>
+        requires(std::is_integral_v<Tchar>)
     struct string_hash
     {
         using is_transparent = void;

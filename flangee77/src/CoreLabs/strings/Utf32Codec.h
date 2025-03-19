@@ -1,5 +1,5 @@
-#ifndef CL7_STRINGS_ASCIICODEC_H
-#define CL7_STRINGS_ASCIICODEC_H
+#ifndef CL7_STRINGS_UTF32CODEC_H
+#define CL7_STRINGS_UTF32CODEC_H
 
 #include "./codepoint.h"
 #include "./Encoding.h"
@@ -15,13 +15,13 @@ namespace cl7::strings {
 
 
 
-class AsciiCodec
+class Utf32Codec
 {
 
 public:
-    static constexpr Encoding encoding = Encoding::ASCII;
+    static constexpr Encoding encoding = Encoding::UTF32;
 
-    using char_type = cl7::achar_type;
+    using char_type = cl7::u32char_type;
 
     using EncodeResult = EncodeResult<char_type>;
     using DecodeResult = DecodeResult<char_type>;
@@ -33,10 +33,10 @@ public:
     static EncodeResult encode_one(codepoint codepoint, string_span_type output, const ErrorHandler& error_handler);
     static DecodeResult decode_one(string_view_type input, const ErrorHandler& error_handler);
 
-}; // class AsciiCodec
+}; // class Utf32Codec
 
 
 
 } // namespace cl7::strings
 
-#endif // CL7_STRINGS_ASCIICODEC_H
+#endif // CL7_STRINGS_UTF32CODEC_H

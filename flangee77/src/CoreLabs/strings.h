@@ -84,6 +84,7 @@ namespace cl7::strings {
      * Checks whether the specified character is a whitespace character.
      */
     template <typename Tchar>
+        requires(std::is_integral_v<Tchar>)
     bool is_whitespace(Tchar c)
     {
         // https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt
@@ -142,6 +143,7 @@ namespace cl7::strings {
      * Checks whether the specified character is a line break character (LF or CR).
      */
     template <typename Tchar>
+        requires(std::is_integral_v<Tchar>)
     bool is_line_break(Tchar c)
     {
         return c == Tchar{'\n'} || c == Tchar{'\r'};
@@ -158,6 +160,7 @@ namespace cl7::strings {
      * single-character line breaks (LF or CR).
      */
     template <typename Tchar>
+        requires(std::is_integral_v<Tchar>)
     size_t is_line_break_strict(Tchar c0, Tchar c1 = 0)
     {
         if (c0 == Tchar{'\r'} && c1 == Tchar{'\n'}) return 2;
@@ -177,6 +180,7 @@ namespace cl7::strings {
      * single-byte line breaks.
      */
     template <typename Tchar>
+        requires(std::is_integral_v<Tchar>)
     size_t is_line_break_relaxed(Tchar c0, Tchar c1 = 0)
     {
         if (c0 == Tchar{'\r'})
@@ -307,7 +311,7 @@ namespace cl7::strings {
 
 
     template <class Tstring>
-        requires(is_any_string_v<Tstring>)
+        requires(is_any_string_v<Tstring> && !std::is_const_v<Tstring>)
     void ltrim(Tstring& s)
     {
         const size_t k = count_whitespace_prefix(make_string_view(s));
@@ -316,7 +320,7 @@ namespace cl7::strings {
     }
 
     template <class Tstring>
-        requires(is_any_string_v<Tstring>)
+        requires(is_any_string_v<Tstring> && !std::is_const_v<Tstring>)
     void rtrim(Tstring& s)
     {
         const size_t k = count_whitespace_suffix(make_string_view(s));
@@ -379,7 +383,7 @@ namespace cl7::strings {
 
 
     template <class Tstring, typename Tchar = typename Tstring::value_type>
-        requires(is_any_string_v<Tstring>)
+        requires(is_any_string_v<Tstring> && !std::is_const_v<Tstring> && std::is_integral_v<Tchar>)
     void lpad(Tstring& s, size_t min_length, Tchar c)
     {
         if (min_length > s.length())
@@ -387,7 +391,7 @@ namespace cl7::strings {
     }
 
     template <class Tstring, typename Tchar = typename Tstring::value_type>
-        requires(is_any_string_v<Tstring>)
+        requires(is_any_string_v<Tstring> && !std::is_const_v<Tstring> && std::is_integral_v<Tchar>)
     void rpad(Tstring& s, size_t min_length, Tchar c)
     {
         if (min_length > s.length())
@@ -397,7 +401,7 @@ namespace cl7::strings {
 
 
     template <class Tstring, typename Tchar = typename Tstring::value_type>
-        requires(is_any_string_v<Tstring>)
+        requires(is_any_string_v<Tstring> && std::is_integral_v<Tchar>)
     Tstring lpadded(Tstring s, size_t min_length, Tchar c)
     {
         lpad(s, min_length, c);
@@ -405,7 +409,7 @@ namespace cl7::strings {
     }
 
     template <class Tstring, typename Tchar = typename Tstring::value_type>
-        requires(is_any_string_v<Tstring>)
+        requires(is_any_string_v<Tstring> && std::is_integral_v<Tchar>)
     Tstring rpadded(Tstring s, size_t min_length, Tchar c)
     {
         rpad(s, min_length, c);
@@ -414,11 +418,75 @@ namespace cl7::strings {
 
 
 
-    template <class Tstring, typename Tval, typename Tchar = typename Tstring::value_type>
-        requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval>)
-    Tstring to_hex(Tval val, Tchar ca = Tchar('A'), unsigned pad_zeros = 0)
+    template <typename Tchar>
+        requires(std::is_integral_v<Tchar>)
+    Tchar to_lower_ascii(Tchar c)
     {
-        static constexpr auto c0 = Tchar('0');
+        if (c >= Tchar{'A'} && c <= Tchar{'Z'})
+            return c + 0x20;
+        return c;
+    }
+
+    template <typename Tchar>
+        requires(std::is_integral_v<Tchar>)
+    Tchar to_upper_ascii(Tchar c)
+    {
+        if (c >= Tchar{'a'} && c <= Tchar{'z'})
+            return c - 0x20;
+        return c;
+    }
+
+
+
+    template <class Tstring_or_span>
+        requires(is_any_string_or_span_v<Tstring_or_span> && !std::is_const_v<Tstring_or_span>)
+    Tstring_or_span& to_lower_ascii_inplace(Tstring_or_span& s)
+    {
+        for (auto& c : s)
+        {
+            if (c >= typename Tstring_or_span::value_type('A') && c <= typename Tstring_or_span::value_type('Z'))
+                c += 0x20;
+        }
+        return s;
+    }
+
+    template <class Tstring_or_span>
+        requires(is_any_string_or_span_v<Tstring_or_span> && !std::is_const_v<Tstring_or_span>)
+    Tstring_or_span& to_upper_ascii_inplace(Tstring_or_span& s)
+    {
+        for (auto& c : s)
+        {
+            if (c >= typename Tstring_or_span::value_type('a') && c <= typename Tstring_or_span::value_type('z'))
+                c -= 0x20;
+        }
+        return s;
+    }
+
+
+
+    template <class Tstring_or_span>
+        requires(is_any_string_or_span_v<Tstring_or_span>)
+    Tstring_or_span to_lower_ascii(Tstring_or_span s)
+    {
+        to_lower_ascii_inplace(s);
+        return s;
+    }
+
+    template <class Tstring_or_span>
+        requires(is_any_string_or_span_v<Tstring_or_span>)
+    Tstring_or_span to_upper_ascii(Tstring_or_span s)
+    {
+        to_upper_ascii_inplace(s);
+        return s;
+    }
+
+
+
+    template <class Tstring, typename Tval, typename Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval> && std::is_integral_v<Tchar>)
+    Tstring to_hex(Tval val, unsigned pad_zeros = 0, Tchar ca = Tchar{'A'})
+    {
+        static constexpr auto c0 = Tchar{'0'};
         if (val == 0)
             return pad_zeros ? Tstring(pad_zeros, c0) : Tstring();
         Tstring s;
@@ -436,19 +504,52 @@ namespace cl7::strings {
     }
 
     template <class Tstring, typename Tval, typename Tchar = typename Tstring::value_type>
-        requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval>)
-    Tstring to_0xhex(Tval val, Tchar ca = Tchar('A'), unsigned pad_zeros = 0)
+        requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval> && std::is_integral_v<Tchar>)
+    Tstring to_0xhex(Tval val, unsigned pad_zeros = 0, Tchar ca = Tchar{'A'})
     {
-        static constexpr auto c0 = Tchar('0');
-        static constexpr auto cx = Tchar('x');
-        auto s = to_hex<Tstring>(val, ca, pad_zeros);
+        static constexpr auto c0 = Tchar{'0'};
+        static constexpr auto cx = Tchar{'x'};
+        auto s = to_hex<Tstring>(val, pad_zeros, ca);
         s.insert(s.begin(), 2, c0);
         s[1] = cx;
         return s;
     }
 
-    u8string to_hex(unsigned long long val, u8char_type ca = u8'A', unsigned pad_zeros = 0);
-    u8string to_0xhex(unsigned long long val, u8char_type ca = u8'A', unsigned pad_zeros = 0);
+    template <class Tstring, typename Tval, typename Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval> && std::is_integral_v<Tchar>)
+    Tstring to_hex_lc(Tval val, unsigned pad_zeros = 0)
+    {
+        return to_hex<Tstring>(val, pad_zeros, Tchar{'a'});
+    }
+
+    template <class Tstring, typename Tval, typename Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval> && std::is_integral_v<Tchar>)
+    Tstring to_hex_uc(Tval val, unsigned pad_zeros = 0)
+    {
+        return to_hex<Tstring>(val, pad_zeros, Tchar{'A'});
+    }
+
+    template <class Tstring, typename Tval, typename Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval> && std::is_integral_v<Tchar>)
+    Tstring to_0xhex_lc(Tval val, unsigned pad_zeros = 0)
+    {
+        return to_0xhex<Tstring>(val, pad_zeros, Tchar{'a'});
+    }
+
+    template <class Tstring, typename Tval, typename Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval> && std::is_integral_v<Tchar>)
+    Tstring to_0xhex_uc(Tval val, unsigned pad_zeros = 0)
+    {
+        return to_0xhex<Tstring>(val, pad_zeros, Tchar{'A'});
+    }
+
+    u8string to_hex(unsigned long long val, unsigned pad_zeros = 0, u8char_type ca = u8'A');
+    u8string to_0xhex(unsigned long long val, unsigned pad_zeros = 0, u8char_type ca = u8'A');
+
+    inline u8string to_hex_lc(unsigned long long val, unsigned pad_zeros = 0) { return to_hex(val, pad_zeros, u8'a'); }
+    inline u8string to_hex_uc(unsigned long long val, unsigned pad_zeros = 0) { return to_hex(val, pad_zeros, u8'A'); }
+    inline u8string to_0xhex_lc(unsigned long long val, unsigned pad_zeros = 0) { return to_0xhex(val, pad_zeros, u8'a'); }
+    inline u8string to_0xhex_uc(unsigned long long val, unsigned pad_zeros = 0) { return to_0xhex(val, pad_zeros, u8'A'); }
 
 
 

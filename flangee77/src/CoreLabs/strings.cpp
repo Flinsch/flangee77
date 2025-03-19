@@ -79,7 +79,7 @@ namespace cl7::strings {
     template <class uxstring, typename uxchar_type>
     uxstring _to_utfx(astring_view as)
     {
-        uxstring uxs(as.size(), uxchar_type(0));
+        uxstring uxs(as.size(), uxchar_type{0});
 
         for (size_t i = 0; i < as.size(); ++i)
         {
@@ -1102,14 +1102,14 @@ namespace cl7::strings {
 
 
 
-    u8string to_hex(unsigned long long val, u8char_type ca, unsigned pad_zeros)
+    u8string to_hex(unsigned long long val, unsigned pad_zeros, u8char_type ca)
     {
-        return to_hex<u8string>(val, ca, pad_zeros);
+        return to_hex<u8string>(val, pad_zeros, ca);
     }
 
-    u8string to_0xhex(unsigned long long val, u8char_type ca, unsigned pad_zeros)
+    u8string to_0xhex(unsigned long long val, unsigned pad_zeros, u8char_type ca)
     {
-        return to_0xhex<u8string>(val, ca, pad_zeros);
+        return to_0xhex<u8string>(val, pad_zeros, ca);
     }
 
 

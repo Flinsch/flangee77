@@ -1,6 +1,7 @@
 #ifndef CL7_LOGGING_H
 #define CL7_LOGGING_H
 
+#include <CoreLabs/logging/LogContext.h>
 #include <CoreLabs/logging/StandardLogger.h>
 
 
@@ -31,6 +32,13 @@ namespace cl7::logging {
 #define LOG_WARNING(msg)            std_log(msg, cl7::logging::LogType::Warning,   __FILE__, __LINE__, __FUNCTION__)
 #define LOG_ERROR(msg)              std_log(msg, cl7::logging::LogType::Error,     __FILE__, __LINE__, __FUNCTION__)
 #define LOG_TYPE(msg, type)         std_log(msg, type,                             __FILE__, __LINE__, __FUNCTION__)
+
+#define TRY_LOG(ctx, msg)                   ctx.try_log(msg, cl7::logging::LogType::Log,       __FILE__, __LINE__, __FUNCTION__)
+#define TRY_LOG_INFO(ctx, msg)              ctx.try_log(msg, cl7::logging::LogType::Info,      __FILE__, __LINE__, __FUNCTION__)
+#define TRY_LOG_SUCCESS(ctx, msg)           ctx.try_log(msg, cl7::logging::LogType::Success,   __FILE__, __LINE__, __FUNCTION__)
+#define TRY_LOG_WARNING(ctx, msg)           ctx.try_log(msg, cl7::logging::LogType::Warning,   __FILE__, __LINE__, __FUNCTION__)
+#define TRY_LOG_ERROR(ctx, msg)             ctx.try_log(msg, cl7::logging::LogType::Error,     __FILE__, __LINE__, __FUNCTION__)
+#define TRY_LOG_TYPE(ctx, msg, type)        ctx.try_log(msg, type,                             __FILE__, __LINE__, __FUNCTION__)
 
 
 

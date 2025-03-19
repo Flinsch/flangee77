@@ -59,6 +59,8 @@ target_sources(flangee77
     logging/FileLogHandler.h
     logging/HtmlLogHandler.cpp
     logging/HtmlLogHandler.h
+    logging/LogContext.cpp
+    logging/LogContext.h
     logging/LogEntry.h
     logging/Logger.cpp
     logging/Logger.h
@@ -80,10 +82,26 @@ target_sources(flangee77
 
     strings/AsciiCodec.cpp
     strings/AsciiCodec.h
-    strings/Codec.h
+    strings/BaseResult.h
     strings/codepoint.cpp
     strings/codepoint.h
+    strings/CodepointResult.h
+    strings/DecodeResult.h
+    strings/DefaultErrorHandler.h
+    strings/EncodeBuffer.h
+    strings/EncodeResult.h
     strings/Encoding.h
+    strings/EncodingError.h
+    strings/ErrorHandler.cpp
+    strings/ErrorHandler.h
+    strings/LoggingErrorHandler.cpp
+    strings/LoggingErrorHandler.h
+    strings/Utf8Codec.cpp
+    strings/Utf8Codec.h
+    strings/Utf16Codec.cpp
+    strings/Utf16Codec.h
+    strings/Utf32Codec.cpp
+    strings/Utf32Codec.h
 
     system/CPUID.cpp
     system/CPUID.h

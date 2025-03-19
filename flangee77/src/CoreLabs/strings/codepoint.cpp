@@ -30,7 +30,8 @@ namespace cl7::strings {
      */
     bool codepoint::is_high_surrogate() const
     {
-        return value >= 0xd800 && value <= 0xdbff;
+        //return value >= high_surrogate_min && value <= high_surrogate_max;
+        return (value & 0xfc00) == 0xd800;
     }
 
     /**
@@ -39,7 +40,8 @@ namespace cl7::strings {
      */
     bool codepoint::is_low_surrogate() const
     {
-        return value >= 0xdc00 && value <= 0xdfff;
+        //return value >= low_surrogate_min && value <= low_surrogate_max;
+        return (value & 0xfc00) == 0xdc00;
     }
 
     /**
@@ -48,7 +50,8 @@ namespace cl7::strings {
      */
     bool codepoint::is_surrogate() const
     {
-        return value >= 0xd800 && value <= 0xdfff;
+        //return value >= high_surrogate_min && value <= low_surrogate_max;
+        return (value & 0xf800) == 0xd800;
     }
 
 
