@@ -120,13 +120,13 @@ target_sources(flangee77
     graphics/states/StateManager.cpp
     graphics/states/StateManager.h
 
-    graphics/surfaces/ColorRenderTarget.cpp
-    graphics/surfaces/ColorRenderTarget.h
-    graphics/surfaces/DepthStencilTarget.cpp
-    graphics/surfaces/DepthStencilTarget.h
+    graphics/surfaces/DepthStencilSurface.cpp
+    graphics/surfaces/DepthStencilSurface.h
+    graphics/surfaces/FramebufferSurface.cpp
+    graphics/surfaces/FramebufferSurface.h
     graphics/surfaces/ISurfaceFactory.h
-    graphics/surfaces/RenderTarget.cpp
-    graphics/surfaces/RenderTarget.h
+    graphics/surfaces/RenderTargetSurface.cpp
+    graphics/surfaces/RenderTargetSurface.h
     graphics/surfaces/Surface.cpp
     graphics/surfaces/Surface.h
     graphics/surfaces/SurfaceManager.cpp

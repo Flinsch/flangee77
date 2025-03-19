@@ -1,5 +1,5 @@
 
-[![License](https://img.shields.io/github/license/Flinsch/flangee77)](https://github.com/Flinsch/flangee77/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/Flinsch/flangee77)](https://github.com/Flinsch/flangee77/blob/main/LICENSE.md)
 [![C++](https://img.shields.io/badge/C%2B%2B-20-blue?logo=C%2B%2B)](https://en.cppreference.com/w/cpp/20)
 [![Build & Test](https://github.com/Flinsch/flangee77/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/Flinsch/flangee77/actions/workflows/cmake-multi-platform.yml)
 [![Documentation](https://github.com/Flinsch/flangee77/actions/workflows/documentation.yml/badge.svg)](https://github.com/Flinsch/flangee77/actions/workflows/documentation.yml)
@@ -70,4 +70,4 @@ In this case, yes: Welcome, my friend!
 
 ## License
 
-The flangee77 framework is licensed under the general [MIT License](https://opensource.org/licenses/MIT/), which can be found specifically [here](LICENSE).
+The flangee77 framework is licensed under the general [MIT License](https://opensource.org/licenses/MIT/), which can be found specifically [here](LICENSE.md).
