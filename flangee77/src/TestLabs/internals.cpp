@@ -27,7 +27,7 @@ namespace tl7::internals {
             if (c < 0x20)
                 oss << "\\x" << std::setw(2) << ull; // NOLINT(bugprone-branch-clone)
             else if (c < 0x7f)
-                oss << static_cast<cl7::u8char_type>(c);
+                oss << static_cast<cl7::u8char_t>(c);
             else if (c <= 0xff)
                 oss << "\\x" << std::setw(2) << ull;
             else if (c <= 0xffff)

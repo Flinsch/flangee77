@@ -32,14 +32,14 @@ namespace pl7 {
     {
         for (int i = 0; i < argc; ++i)
         {
-            _arguments.emplace_back(cl7::strings::to_utf8(argv[i]));
+            _arguments.emplace_back(cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(argv[i])));
             _try_resolve_quotation(_arguments.back());
         }
 
         _parse_arguments();
     }
 
-    ArgumentBag::ArgumentBag(int argc, cl7::u8char_type* argv[])
+    ArgumentBag::ArgumentBag(int argc, cl7::u8char_t* argv[])
         : ArgumentBag()
     {
         for (int i = 0; i < argc; ++i)
@@ -285,7 +285,7 @@ namespace pl7 {
         }
     }
 
-    void ArgumentBag::_resolve_quotation(cl7::u8string& option_value, cl7::u8char_type ch)
+    void ArgumentBag::_resolve_quotation(cl7::u8string& option_value, cl7::u8char_t ch)
     {
         assert(option_value.length() >= 2);
 

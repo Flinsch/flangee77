@@ -62,8 +62,8 @@ namespace cl7 {
             auto x = static_cast<uint8_t>(bytes[i]);
             uint8_t x0 = (x & 0xf0) >> 4;
             uint8_t x1 = (x & 0x0f);
-            auto ch0 = static_cast<cl7::u8char_type>((x0 >= 10 ? (uppercase ? u8'A' : u8'a') - 10 : u8'0') + x0);
-            auto ch1 = static_cast<cl7::u8char_type>((x1 >= 10 ? (uppercase ? u8'A' : u8'a') - 10 : u8'0') + x1);
+            auto ch0 = static_cast<cl7::u8char_t>((x0 >= 10 ? (uppercase ? u8'A' : u8'a') - 10 : u8'0') + x0);
+            auto ch1 = static_cast<cl7::u8char_t>((x1 >= 10 ? (uppercase ? u8'A' : u8'a') - 10 : u8'0') + x1);
             string[i * 2 + skip + 0] = ch0;
             string[i * 2 + skip + 1] = ch1;
         }
@@ -133,8 +133,8 @@ namespace cl7 {
             else
                 skip = (i - 2) / 2;
 
-            cl7::u8char_type ch0 = string[i * 2 + skip + 0];
-            cl7::u8char_type ch1 = string[i * 2 + skip + 1];
+            cl7::u8char_t ch0 = string[i * 2 + skip + 0];
+            cl7::u8char_t ch1 = string[i * 2 + skip + 1];
             if ((ch0 < u8'0' || ch0 > u8'9') && ((ch0 | 32) < u8'a' || (ch0 | 32) > u8'f')) return {};
             if ((ch1 < u8'0' || ch1 > u8'9') && ((ch1 | 32) < u8'a' || (ch1 | 32) > u8'f')) return {};
             auto x0 = static_cast<uint8_t>(ch0 > u8'9' ? (ch0 | 32) - u8'a' + 10 : ch0 - u8'0');

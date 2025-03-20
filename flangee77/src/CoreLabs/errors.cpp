@@ -22,7 +22,7 @@ namespace cl7::errors {
     {
         // Extract from microsoft.com for the FormatMessage function:
         // "This buffer cannot be larger than 64K bytes."
-        constexpr unsigned buffer_size = 65536 / sizeof(cl7::u8char_type);
+        constexpr unsigned buffer_size = 65536 / sizeof(cl7::u8char_t);
         static wchar_t buffer[buffer_size];
         auto* buffer_ptr = static_cast<wchar_t*>(buffer);
 
@@ -39,7 +39,7 @@ namespace cl7::errors {
         oss << std::hex << u8"0x" << error_code;
         oss << u8" ";
         if (length)
-            oss << cl7::strings::to_utf8(cl7::strings::trimmed(cl7::wstring_view(buffer_ptr, length)));
+            oss << cl7::strings::to_utf8(cl7::strings::trimmed(cl7::strings::reinterpret_utf16(std::wstring_view(buffer_ptr, length))));
         else
             oss << u8"An unknown error occurred.";
         return oss.str();

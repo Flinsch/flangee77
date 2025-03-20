@@ -88,7 +88,7 @@ namespace cl7 {
             iss >> version.patch;
         }
 
-        cl7::u8char_type peek = iss.peek();
+        cl7::u8char_t peek = iss.peek();
         if (peek == u8'-')
         {
             iss.ignore(1); // Skip hyphen

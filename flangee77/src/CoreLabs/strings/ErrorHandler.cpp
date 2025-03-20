@@ -41,25 +41,25 @@ namespace cl7::strings {
 
 
 
-    DecodeResult<cl7::achar_type> ErrorHandler::_on_invalid_code_unit(cl7::astring_view input_read) const
+    DecodeResult<cl7::achar_t> ErrorHandler::_on_invalid_code_unit(cl7::astring_view input_read) const
     {
         assert(input_read.size() == 1);
         return {EncodingError::InvalidCodeUnit, replacement_ascii, input_read};
     }
 
-    DecodeResult<cl7::u8char_type> ErrorHandler::_on_invalid_code_unit(cl7::u8string_view input_read) const
+    DecodeResult<cl7::u8char_t> ErrorHandler::_on_invalid_code_unit(cl7::u8string_view input_read) const
     {
         assert(input_read.size() == 1);
         return {EncodingError::InvalidCodeUnit, replacement_unicode, input_read};
     }
 
-    DecodeResult<cl7::u16char_type> ErrorHandler::_on_invalid_code_unit(cl7::u16string_view input_read) const
+    DecodeResult<cl7::u16char_t> ErrorHandler::_on_invalid_code_unit(cl7::u16string_view input_read) const
     {
         assert(input_read.size() == 1);
         return {EncodingError::InvalidCodeUnit, replacement_unicode, input_read};
     }
 
-    DecodeResult<cl7::u32char_type> ErrorHandler::_on_invalid_code_unit(cl7::u32string_view input_read) const
+    DecodeResult<cl7::u32char_t> ErrorHandler::_on_invalid_code_unit(cl7::u32string_view input_read) const
     {
         assert(input_read.size() == 1);
         return {EncodingError::InvalidCodeUnit, replacement_unicode, input_read};
@@ -67,7 +67,7 @@ namespace cl7::strings {
 
 
 
-    DecodeResult<cl7::u8char_type> ErrorHandler::_on_invalid_sequence(cl7::u8string_view input_read) const
+    DecodeResult<cl7::u8char_t> ErrorHandler::_on_invalid_sequence(cl7::u8string_view input_read) const
     {
         assert(!input_read.empty());
         return {EncodingError::InvalidSequence, replacement_unicode, input_read};
@@ -75,13 +75,13 @@ namespace cl7::strings {
 
 
 
-    DecodeResult<cl7::u8char_type> ErrorHandler::_on_incomplete_sequence(cl7::u8string_view input_read, size_t expected_length) const
+    DecodeResult<cl7::u8char_t> ErrorHandler::_on_incomplete_sequence(cl7::u8string_view input_read, size_t expected_length) const
     {
         assert(!input_read.empty());
         return {EncodingError::IncompleteSequence, replacement_unicode, input_read};
     }
 
-    DecodeResult<cl7::u16char_type> ErrorHandler::_on_incomplete_sequence(cl7::u16string_view input_read) const
+    DecodeResult<cl7::u16char_t> ErrorHandler::_on_incomplete_sequence(cl7::u16string_view input_read) const
     {
         assert(input_read.size() == 1);
         return {EncodingError::IncompleteSequence, replacement_unicode, input_read};
@@ -89,7 +89,7 @@ namespace cl7::strings {
 
 
 
-    DecodeResult<cl7::u8char_type> ErrorHandler::_on_overlong_encoding(cl7::u8string_view input_read) const
+    DecodeResult<cl7::u8char_t> ErrorHandler::_on_overlong_encoding(cl7::u8string_view input_read) const
     {
         assert(!input_read.empty());
         return {EncodingError::OverlongEncoding, replacement_unicode, input_read};
@@ -97,7 +97,7 @@ namespace cl7::strings {
 
 
 
-    DecodeResult<cl7::u16char_type> ErrorHandler::_on_unpaired_surrogate(cl7::u16string_view input_read) const
+    DecodeResult<cl7::u16char_t> ErrorHandler::_on_unpaired_surrogate(cl7::u16string_view input_read) const
     {
         assert(input_read.size() == 1);
         return {EncodingError::UnpairedSurrogate, replacement_unicode, input_read};

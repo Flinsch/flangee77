@@ -37,17 +37,17 @@ namespace cl7::io {
     {
         cl7::byte_vector data;
         std::byte byte;
-        while (_rom->read(byte) && !cl7::strings::is_line_break(static_cast<cl7::u8char_type>(byte)))
+        while (_rom->read(byte) && !cl7::strings::is_line_break(static_cast<cl7::u8char_t>(byte)))
         {
             if (data.size() == data.capacity())
                 data.reserve(data.capacity() + 128);
             data.push_back(byte);
         }
 
-        if (cl7::strings::is_line_break(static_cast<cl7::u8char_type>(byte)))
+        if (cl7::strings::is_line_break(static_cast<cl7::u8char_t>(byte)))
         {
             std::byte byte1;
-            if (_rom->peek(byte1) && cl7::strings::is_line_break_strict(static_cast<cl7::u8char_type>(byte), static_cast<cl7::u8char_type>(byte1)))
+            if (_rom->peek(byte1) && cl7::strings::is_line_break_strict(static_cast<cl7::u8char_t>(byte), static_cast<cl7::u8char_t>(byte1)))
                 _rom->read(byte1);
         }
 

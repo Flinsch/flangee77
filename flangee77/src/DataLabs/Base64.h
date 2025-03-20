@@ -18,9 +18,9 @@ public:
     struct Options
     {
         /** The second last character used in the Base64 alphabet at position 62 (default: '+'). */
-        cl7::u8char_type ch62;
+        cl7::u8char_t ch62;
         /** The very last character used in the Base64 alphabet at position 63 (default: '/'). */
-        cl7::u8char_type ch63;
+        cl7::u8char_t ch63;
         /** The flag specifying whether the Base64 text is padded to always be a multiple of 4 characters (padding character: '='). */
         bool pad;
         /** The maximum line length (default: 76 characters). */
@@ -105,14 +105,14 @@ private:
     /**
      * Returns the Base64 character of the given 6-bit character sextet.
      */
-    cl7::u8char_type _encode(uint8_t sextet) const;
+    cl7::u8char_t _encode(uint8_t sextet) const;
 
     /**
      * Checks the given character whether it is a valid Base64 character.
      * If it is valid, its 6-bit character sextet will be returned.
      * If it is invalid, an invalid value above 63 will be returned.
      */
-    uint8_t _decode(cl7::u8char_type chr) const;
+    uint8_t _decode(cl7::u8char_t chr) const;
 
     /**
      * Extracts the first 6-bit Base64 character sextet from the first data byte.
@@ -156,7 +156,7 @@ private:
     // #############################################################################
 
     static bool _initialized;
-    static cl7::u8char_type _base64_char_table[64];
+    static cl7::u8char_t _base64_char_table[64];
     static uint8_t _base64_sextet_lookup[128];
 
     /**

@@ -6,7 +6,7 @@
 
 
 // Make sure a wchar is either 2 bytes (UTF-16) or 4 bytes (UTF-32).
-static_assert(sizeof(cl7::wchar_type) == 2 || sizeof(cl7::wchar_type) == 4);
+static_assert(sizeof(wchar_t) == 2 || sizeof(wchar_t) == 4);
 
 // Additionally, make sure that the limits are defined properly so that we can
 // use them for case distinctions at compile time (where we cannot use sizeof).
@@ -15,7 +15,7 @@ static_assert(WCHAR_MAX == UINT16_MAX || WCHAR_MAX == UINT32_MAX);
 // Verify byte order mark (BOM).
 // This check is actually a "tautology" and should pass on all systems. But
 // it's good for our psyche to simply leave it here; it doesn't do any harm.
-static_assert(cl7::u32char_type{U'\ufeff'} == 0xfeff);
+static_assert(cl7::u32char_t{U'\ufeff'} == 0xfeff);
 
 
 
@@ -40,7 +40,7 @@ namespace cl7::strings {
         return false;
     }
 
-    achar_type _check_adjust_ascii(u32char_type u32c, bool log_warning = false)
+    achar_t _check_adjust_ascii(u32char_t u32c, bool log_warning = false)
     {
         if (u32c > 0x7f)
         {
@@ -48,10 +48,10 @@ namespace cl7::strings {
             u32c = _replacement_ascii;
         }
 
-        return static_cast<achar_type>(u32c);
+        return static_cast<achar_t>(u32c);
     }
 
-    u32char_type _check_adjust_unicode(u32char_type u32c, bool log_warning = false)
+    u32char_t _check_adjust_unicode(u32char_t u32c, bool log_warning = false)
     {
         if (u32c > 0x10ffff)
         {
@@ -113,7 +113,7 @@ namespace cl7::strings {
 
     astring to_ascii(u32string_view u32s)
     {
-        astring as(u32s.size(), achar_type{0});
+        astring as(u32s.size(), achar_t{0});
 
         for (size_t i = 0; i < u32s.size(); ++i)
         {
@@ -121,17 +121,6 @@ namespace cl7::strings {
         }
 
         return as;
-    }
-
-    astring to_ascii(wstring_view ws)
-    {
-#if WCHAR_MAX == UINT16_MAX
-        return to_ascii(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size()));
-#elif WCHAR_MAX == UINT32_MAX
-        return to_ascii(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size()));
-#else
-        static_assert(false);
-#endif
     }
 
     u8string to_utf8(astring_view as)
@@ -153,7 +142,7 @@ namespace cl7::strings {
     u8string to_utf8(u32string_view u32s)
     {
         size_t size = 0;
-        for (u32char_type u32c : u32s)
+        for (u32char_t u32c : u32s)
         {
             u32c = _check_adjust_unicode(u32c);
 
@@ -167,34 +156,34 @@ namespace cl7::strings {
                 size += 4;
         }
 
-        u8string u8s(size, u8char_type{0});
+        u8string u8s(size, u8char_t{0});
 
         size_t i = 0;
-        for (u32char_type u32c : u32s)
+        for (u32char_t u32c : u32s)
         {
             u32c = _check_adjust_unicode(u32c, true);
 
             if (u32c <= 0x7f)
             {
-                u8s[i++] = static_cast<u8char_type>(u32c);
+                u8s[i++] = static_cast<u8char_t>(u32c);
             }
             else if (u32c <= 0x7ff)
             {
-                u8s[i++] = static_cast<u8char_type>(0xc0 | ((u32c >> 6) & 0x1f));
-                u8s[i++] = static_cast<u8char_type>(0x80 | (u32c & 0x3f));
+                u8s[i++] = static_cast<u8char_t>(0xc0 | ((u32c >> 6) & 0x1f));
+                u8s[i++] = static_cast<u8char_t>(0x80 | (u32c & 0x3f));
             }
             else if (u32c <= 0xffff)
             {
-                u8s[i++] = static_cast<u8char_type>(0xe0 | ((u32c >> 12) & 0x0f));
-                u8s[i++] = static_cast<u8char_type>(0x80 | ((u32c >> 6) & 0x3f));
-                u8s[i++] = static_cast<u8char_type>(0x80 | (u32c & 0x3f));
+                u8s[i++] = static_cast<u8char_t>(0xe0 | ((u32c >> 12) & 0x0f));
+                u8s[i++] = static_cast<u8char_t>(0x80 | ((u32c >> 6) & 0x3f));
+                u8s[i++] = static_cast<u8char_t>(0x80 | (u32c & 0x3f));
             }
             else
             {
-                u8s[i++] = static_cast<u8char_type>(0xf0 | ((u32c >> 18) & 0x07));
-                u8s[i++] = static_cast<u8char_type>(0x80 | ((u32c >> 12) & 0x3f));
-                u8s[i++] = static_cast<u8char_type>(0x80 | ((u32c >> 6) & 0x3f));
-                u8s[i++] = static_cast<u8char_type>(0x80 | (u32c & 0x3f));
+                u8s[i++] = static_cast<u8char_t>(0xf0 | ((u32c >> 18) & 0x07));
+                u8s[i++] = static_cast<u8char_t>(0x80 | ((u32c >> 12) & 0x3f));
+                u8s[i++] = static_cast<u8char_t>(0x80 | ((u32c >> 6) & 0x3f));
+                u8s[i++] = static_cast<u8char_t>(0x80 | (u32c & 0x3f));
             }
         } // for ...
         assert(i == size);
@@ -202,20 +191,9 @@ namespace cl7::strings {
         return u8s;
     }
 
-    u8string to_utf8(wstring_view ws)
-    {
-#if WCHAR_MAX == UINT16_MAX
-        return to_utf8(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size()));
-#elif WCHAR_MAX == UINT32_MAX
-        return to_utf8(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size()));
-#else
-        static_assert(false);
-#endif
-    }
-
     u16string to_utf16(astring_view as)
     {
-        return _to_utfx<u16string, u16char_type>(as);
+        return _to_utfx<u16string, u16char_t>(as);
     }
 
     u16string to_utf16(u8string_view u8s)
@@ -231,7 +209,7 @@ namespace cl7::strings {
     u16string to_utf16(u32string_view u32s)
     {
         size_t size = 0;
-        for (u32char_type u32c : u32s)
+        for (u32char_t u32c : u32s)
         {
             u32c = _check_adjust_unicode(u32c);
 
@@ -241,23 +219,23 @@ namespace cl7::strings {
                 size += 2;
         }
 
-        u16string u16s(size, u16char_type{0});
+        u16string u16s(size, u16char_t{0});
 
         size_t i = 0;
-        for (u32char_type u32c : u32s)
+        for (u32char_t u32c : u32s)
         {
             u32c = _check_adjust_unicode(u32c, true);
 
             if (u32c <= 0xffff)
             {
-                u16s[i++] = static_cast<u16char_type>(u32c);
+                u16s[i++] = static_cast<u16char_t>(u32c);
             }
             else
             {
-                u32char_type u32c_ = u32c - 0x10000;
+                u32char_t u32c_ = u32c - 0x10000;
                 assert((u32c_ >> 10) <= 0x3ff);
-                u16s[i++] = static_cast<u16char_type>(0xd800 | (u32c_ >> 10));
-                u16s[i++] = static_cast<u16char_type>(0xdc00 | (u32c_ & 0x3ff));
+                u16s[i++] = static_cast<u16char_t>(0xd800 | (u32c_ >> 10));
+                u16s[i++] = static_cast<u16char_t>(0xdc00 | (u32c_ & 0x3ff));
             }
         } // for ...
         assert(i == size);
@@ -265,20 +243,9 @@ namespace cl7::strings {
         return u16s;
     }
 
-    u16string to_utf16(wstring_view ws)
-    {
-#if WCHAR_MAX == UINT16_MAX
-        return to_utf16(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size()));
-#elif WCHAR_MAX == UINT32_MAX
-        return to_utf16(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size()));
-#else
-        static_assert(false);
-#endif
-    }
-
     u32string to_utf32(astring_view as)
     {
-        return _to_utfx<u32string, u32char_type>(as);
+        return _to_utfx<u32string, u32char_t>(as);
     }
 
     u32string to_utf32(u8string_view u8s)
@@ -300,78 +267,27 @@ namespace cl7::strings {
         return u32string(u32s);
     }
 
-    u32string to_utf32(wstring_view ws)
-    {
 #if WCHAR_MAX == UINT16_MAX
-        return to_utf32(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size()));
-#elif WCHAR_MAX == UINT32_MAX
-        return to_utf32(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size()));
-#else
-        static_assert(false);
+    u16string to_utfx(astring_view as) { return to_utf16(as); }
+    u16string to_utfx(u8string_view u8s) { return to_utf16(u8s); }
+    u16string to_utfx(u16string_view u16s) { return to_utf16(u16s); }
+    u16string to_utfx(u32string_view u32s) { return to_utf16(u32s); }
 #endif
-    }
-
-    wstring to_utfx(astring_view as)
-    {
-#if WCHAR_MAX == UINT16_MAX
-        auto uxs = to_utf16(as);
-#elif WCHAR_MAX == UINT32_MAX
-        auto uxs = to_utf32(as);
-#else
-        static_assert(false);
+#if WCHAR_MAX == UINT32_MAX
+    u32string to_utfx(astring_view as) { return to_utf32(as); }
+    u32string to_utfx(u8string_view u8s) { return to_utf32(u8s); }
+    u32string to_utfx(u16string_view u16s) { return to_utf32(u16s); }
+    u32string to_utfx(u32string_view u32s) { return to_utf32(u32s); }
 #endif
-        return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size()));
-    }
-
-    wstring to_utfx(u8string_view u8s)
-    {
-#if WCHAR_MAX == UINT16_MAX
-        auto uxs = to_utf16(u8s);
-#elif WCHAR_MAX == UINT32_MAX
-        auto uxs = to_utf32(u8s);
-#else
-        static_assert(false);
-#endif
-        return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size()));
-    }
-
-    wstring to_utfx(u16string_view u16s)
-    {
-#if WCHAR_MAX == UINT16_MAX
-        auto uxs = u16s;
-#elif WCHAR_MAX == UINT32_MAX
-        auto uxs = to_utf32(u16s);
-#else
-        static_assert(false);
-#endif
-        return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size()));
-    }
-
-    wstring to_utfx(u32string_view u32s)
-    {
-#if WCHAR_MAX == UINT16_MAX
-        auto uxs = to_utf16(u32s);
-#elif WCHAR_MAX == UINT32_MAX
-        auto uxs = u32s;
-#else
-        static_assert(false);
-#endif
-        return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size()));
-    }
-
-    wstring to_utfx(wstring_view ws)
-    {
-        return wstring(ws);
-    }
 
     astring to_ascii_unchecked(byte_view bys)
     {
-        return {reinterpret_cast<const achar_type*>(bys.data()), bys.size()};
+        return {reinterpret_cast<const achar_t*>(bys.data()), bys.size()};
     }
 
     u8string to_utf8_unchecked(byte_view bys)
     {
-        const auto* data = reinterpret_cast<const u8char_type*>(bys.data());
+        const auto* data = reinterpret_cast<const u8char_t*>(bys.data());
         size_t size = bys.size();
 
         if (size >= 3)
@@ -389,7 +305,7 @@ namespace cl7::strings {
 
     u16string to_utf16_unchecked(byte_view bys)
     {
-        const auto* data = reinterpret_cast<const u16char_type*>(bys.data());
+        const auto* data = reinterpret_cast<const u16char_t*>(bys.data());
         size_t size = bys.size() / 2;
 
         bool byteswap = false;
@@ -416,7 +332,7 @@ namespace cl7::strings {
         if (!byteswap)
             return {data, size};
 
-        u16string u16s(size, u16char_type{0});
+        u16string u16s(size, u16char_t{0});
 
         for (size_t i = 0; i < size; ++i)
         {
@@ -430,7 +346,7 @@ namespace cl7::strings {
 
     u32string to_utf32_unchecked(byte_view bys)
     {
-        const auto* data = reinterpret_cast<const u32char_type*>(bys.data());
+        const auto* data = reinterpret_cast<const u32char_t*>(bys.data());
         size_t size = bys.size() / 4;
 
         bool byteswap = false;
@@ -457,7 +373,7 @@ namespace cl7::strings {
         if (!byteswap)
             return {data, size};
 
-        u32string u32s(size, u32char_type{0});
+        u32string u32s(size, u32char_t{0});
 
         for (size_t i = 0; i < size; ++i)
         {
@@ -467,18 +383,6 @@ namespace cl7::strings {
         } // for ...
 
         return u32s;
-    }
-
-    wstring to_utfx_unchecked(byte_view bys)
-    {
-#if WCHAR_MAX == UINT16_MAX
-        auto uxs = to_utf16_unchecked(bys);
-#elif WCHAR_MAX == UINT32_MAX
-        auto uxs = to_utf32_unchecked(bys);
-#else
-        static_assert(false);
-#endif
-        return wstring(wstring_view(reinterpret_cast<const wchar_type*>(uxs.data()), uxs.size()));
     }
 
     byte_vector to_bytes(astring_view as)
@@ -524,7 +428,7 @@ namespace cl7::strings {
         if (byteswap)
         {
             if (add_bom)
-                *reinterpret_cast<u16char_type*>(bys.data()) = 0xfffe;
+                *reinterpret_cast<u16char_t*>(bys.data()) = 0xfffe;
             for (size_t i = 0; i < size; i += 2)
             {
                 bys[ofs + i + 0] = data[i + 1];
@@ -534,7 +438,7 @@ namespace cl7::strings {
         else
         {
             if (add_bom)
-                *reinterpret_cast<u16char_type*>(bys.data()) = 0xfeff;
+                *reinterpret_cast<u16char_t*>(bys.data()) = 0xfeff;
             for (size_t i = 0; i < size; i += 2)
             {
                 bys[ofs + i + 0] = data[i + 0];
@@ -560,7 +464,7 @@ namespace cl7::strings {
         if (byteswap)
         {
             if (add_bom)
-                *reinterpret_cast<u32char_type*>(bys.data()) = 0xfffe'0000;
+                *reinterpret_cast<u32char_t*>(bys.data()) = 0xfffe'0000;
             for (size_t i = 0; i < size; i += 4)
             {
                 bys[ofs + i + 0] = data[i + 3];
@@ -572,7 +476,7 @@ namespace cl7::strings {
         else
         {
             if (add_bom)
-                *reinterpret_cast<u32char_type*>(bys.data()) = 0x0000'feff;
+                *reinterpret_cast<u32char_t*>(bys.data()) = 0x0000'feff;
             for (size_t i = 0; i < size; i += 4)
             {
                 bys[ofs + i + 0] = data[i + 0];
@@ -585,20 +489,9 @@ namespace cl7::strings {
         return bys;
     }
 
-    byte_vector to_bytes(wstring_view ws, bool add_bom, std::endian endian)
-    {
-#if WCHAR_MAX == UINT16_MAX
-        return to_bytes(u16string_view(reinterpret_cast<const u16char_type*>(ws.data()), ws.size()), add_bom, endian);
-#elif WCHAR_MAX == UINT32_MAX
-        return to_bytes(u32string_view(reinterpret_cast<const u32char_type*>(ws.data()), ws.size()), add_bom, endian);
-#else
-        static_assert(false);
-#endif
-    }
-
     bool check_ascii(astring_view as, bool log_warning)
     {
-        for (achar_type ac : as)
+        for (achar_t ac : as)
         {
             // Explicitly cast to unsigned, otherwise the
             // following check would always be false anyway.
@@ -614,7 +507,7 @@ namespace cl7::strings {
     {
         unsigned continuation = 0;
 
-        for (u8char_type u8c : u8s)
+        for (u8char_t u8c : u8s)
         {
             if (continuation)
             {
@@ -679,9 +572,9 @@ namespace cl7::strings {
     bool check_utf16(u16string_view u16s, bool log_warning)
     {
         bool surrogate = false;
-        u16char_type prev = 0;
+        u16char_t prev = 0;
 
-        for (u16char_type u16c : u16s)
+        for (u16char_t u16c : u16s)
         {
             if (surrogate)
             {
@@ -728,7 +621,7 @@ namespace cl7::strings {
 
     bool check_utf32(u32string_view u32s, bool log_warning)
     {
-        for (u32char_type u32c : u32s)
+        for (u32char_t u32c : u32s)
         {
             if (u32c > 0x10ffff || (u32c >= 0xd800 && u32c <= 0xdfff))
                 return _try_log_warning_always_return_false(log_warning, u8"Invalid Unicode code point: " + to_0xhex(u32c));
@@ -739,16 +632,16 @@ namespace cl7::strings {
 
     bool parse_utf8(u8string_view u8s, u32string& u32s, bool log_warning)
     {
-        u32s.resize(utf8_length(u8s), u32char_type{0});
+        u32s.resize(utf8_length(u8s), u32char_t{0});
 
         bool is_valid = true;
 
         unsigned continuation = 0;
-        u32char_type u32c = 0;
+        u32char_t u32c = 0;
         bool is_char_valid = false;
 
         size_t i = 0;
-        for (u8char_type u8c : u8s)
+        for (u8char_t u8c : u8s)
         {
             if (continuation)
             {
@@ -773,7 +666,7 @@ namespace cl7::strings {
             {
                 if (u8c <= 0x7f) // "regular" character (ASCII compatible)
                 {
-                    u32s[i++] = static_cast<u32char_type>(u8c);
+                    u32s[i++] = static_cast<u32char_t>(u8c);
                 }
                 else if (u8c >= 0xc0 && u8c <= 0xdf) // start of 2-byte sequence
                 {
@@ -835,22 +728,22 @@ namespace cl7::strings {
 
     bool parse_utf16(u16string_view u16s, u32string& u32s, bool log_warning)
     {
-        u32s.resize(utf16_length(u16s), u32char_type{0});
+        u32s.resize(utf16_length(u16s), u32char_t{0});
 
         bool is_valid = true;
 
         bool surrogate = false;
-        u16char_type prev = 0;
+        u16char_t prev = 0;
 
         size_t i = 0;
-        for (u16char_type u16c : u16s)
+        for (u16char_t u16c : u16s)
         {
             if (surrogate)
             {
                 if (u16c >= 0xdc00 && u16c <= 0xdfff) // (expected) trailing/low surrogate
                 {
                     // Everything's fine: put the two surrogates back together.
-                    u32s[i++] = ((static_cast<u32char_type>(prev & 0x3ff) << 10) | (u16c & 0x3ff)) + 0x10000;
+                    u32s[i++] = ((static_cast<u32char_t>(prev & 0x3ff) << 10) | (u16c & 0x3ff)) + 0x10000;
                 }
                 else if (u16c >= 0xd800 && u16c <= 0xdbff) // (another) leading/high surrogate
                 {
@@ -863,7 +756,7 @@ namespace cl7::strings {
                     // Consistently, we might also have to fall back to the replacement
                     // character here, but then we would "waste" the valid character we
                     // hold in our hands. So we just pass it in any case.
-                    u32s[i++] = static_cast<u32char_type>(u16c);
+                    u32s[i++] = static_cast<u32char_t>(u16c);
                 }
                 // Also in the case of a leading/high surrogate set the flag to
                 // false as not to distort the skipping. In such case the structure
@@ -875,7 +768,7 @@ namespace cl7::strings {
             {
                 if (u16c <= 0xd7ff || u16c >= 0xe000) // "regular" character
                 {
-                    u32s[i++] = static_cast<u32char_type>(u16c);
+                    u32s[i++] = static_cast<u32char_t>(u16c);
                 }
                 else if (u16c >= 0xd800 && u16c <= 0xdbff) // leading/high surrogate
                 {
@@ -909,7 +802,7 @@ namespace cl7::strings {
 
         for (size_t i = 0; i < size; ++i, ++len)
         {
-            const u8char_type u8c = u8s[i];
+            const u8char_t u8c = u8s[i];
             if (u8c >= 0xc0 && u8c <= 0xdf) // 0xc0 and 0xc1 are actually invalid, but the following byte still has to be skipped.
                 ++i; // Skip 1 continuation byte of a 2-byte sequence.
             else if (u8c >= 0xe0 && u8c <= 0xef)
@@ -938,7 +831,7 @@ namespace cl7::strings {
 
         for (size_t i = 0; i < size; ++i, ++len)
         {
-            const u16char_type u16c = u16s[i];
+            const u16char_t u16c = u16s[i];
             if (u16c >= 0xd800 && u16c <= 0xdbff)
                 ++i; // Skip trailing/low surrogate of a surrogate pair.
 
@@ -956,16 +849,53 @@ namespace cl7::strings {
     /** Reinterprets the character format of the specified UTF-8 string. Attention: It is not checked whether a correct UTF-8 encoding is given. */
     std::string_view reinterpret_utf8(u8string_view u8s)
     {
-        static_assert(sizeof(char) == sizeof(u8char_type));
+        static_assert(sizeof(char) == sizeof(u8char_t));
         return {reinterpret_cast<const char*>(u8s.data()), u8s.size()};
     }
 
     /** Reinterprets the character format of the specified UTF-8 string. Attention: It is not checked whether a correct UTF-8 encoding is given. */
     u8string_view reinterpret_utf8(std::string_view s)
     {
-        static_assert(sizeof(u8char_type) == sizeof(char));
-        return {reinterpret_cast<const u8char_type*>(s.data()), s.size()};
+        static_assert(sizeof(u8char_t) == sizeof(char));
+        return {reinterpret_cast<const u8char_t*>(s.data()), s.size()};
     }
+
+#if WCHAR_MAX == UINT16_MAX
+    /** Reinterprets the character format of the specified UTF-16 string. Attention: It is not checked whether a correct UTF-16 encoding is given. */
+    std::wstring_view reinterpret_utf16(u16string_view u16s)
+    {
+        static_assert(sizeof(wchar_t) == sizeof(u16char_t));
+        return {reinterpret_cast<const wchar_t*>(u16s.data()), u16s.size()};
+    }
+
+    /** Reinterprets the character format of the specified UTF-16 string. Attention: It is not checked whether a correct UTF-16 encoding is given. */
+    u16string_view reinterpret_utf16(std::wstring_view ws)
+    {
+        static_assert(sizeof(u16char_t) == sizeof(wchar_t));
+        return {reinterpret_cast<const u16char_t*>(ws.data()), ws.size()};
+    }
+
+    std::wstring_view reinterpret_utfx(u16string_view u16s) { return reinterpret_utf16(u16s); }
+    u16string_view reinterpret_utfx(std::wstring_view ws) { return reinterpret_utf16(ws); }
+#endif
+#if WCHAR_MAX == UINT32_MAX
+    /** Reinterprets the character format of the specified UTF-32 string. Attention: It is not checked whether a correct UTF-32 encoding is given. */
+    std::wstring_view reinterpret_utf32(u32string_view u32s)
+    {
+        static_assert(sizeof(wchar_t) == sizeof(u32char_t));
+        return {reinterpret_cast<const wchar_t*>(u32s.data()), u32s.size()};
+    }
+
+    /** Reinterprets the character format of the specified UTF-32 string. Attention: It is not checked whether a correct UTF-32 encoding is given. */
+    u32string_view reinterpret_utf32(std::wstring_view ws)
+    {
+        static_assert(sizeof(u32char_t) == sizeof(wchar_t));
+        return {reinterpret_cast<const u32char_t*>(ws.data()), ws.size()};
+    }
+
+    std::wstring_view reinterpret_utfx(u32string_view u32s) { return reinterpret_utf32(u32s); }
+    u32string_view reinterpret_utfx(std::wstring_view ws) { return reinterpret_utf32(ws); }
+#endif
 
     Encoding detect_encoding(byte_view bys)
     {
@@ -1005,7 +935,7 @@ namespace cl7::strings {
      * - For single-byte whitespace, c1 and c2 must be 0.
      * - For two-byte whitespace, c2 must be 0.
      */
-    size_t is_whitespace_strict(u8char_type c0, u8char_type c1, u8char_type c2)
+    size_t is_whitespace_strict(u8char_t c0, u8char_t c1, u8char_t c2)
     {
         if (c1 == 0 && c2 == 0)
         {
@@ -1042,7 +972,7 @@ namespace cl7::strings {
      * Unlike the strict version, this function does not require c1 or c2 to be 0
      * for shorter combinations.
      */
-    size_t is_whitespace_relaxed(u8char_type c0, u8char_type c1, u8char_type c2)
+    size_t is_whitespace_relaxed(u8char_t c0, u8char_t c1, u8char_t c2)
     {
         if ((c0 >= 0x09 && c0 <= 0x0d) || // tab ... carriage return
             c0 == 0x20)                   // space
@@ -1102,12 +1032,12 @@ namespace cl7::strings {
 
 
 
-    u8string to_hex(unsigned long long val, unsigned pad_zeros, u8char_type ca)
+    u8string to_hex(unsigned long long val, unsigned pad_zeros, u8char_t ca)
     {
         return to_hex<u8string>(val, pad_zeros, ca);
     }
 
-    u8string to_0xhex(unsigned long long val, unsigned pad_zeros, u8char_type ca)
+    u8string to_0xhex(unsigned long long val, unsigned pad_zeros, u8char_t ca)
     {
         return to_0xhex<u8string>(val, pad_zeros, ca);
     }

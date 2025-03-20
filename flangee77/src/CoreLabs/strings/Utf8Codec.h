@@ -21,7 +21,7 @@ class Utf8Codec
 public:
     static constexpr Encoding encoding = Encoding::UTF8;
 
-    using char_type = cl7::u8char_type;
+    using char_type = cl7::u8char_t;
 
     using EncodeResult = EncodeResult<char_type>;
     using DecodeResult = DecodeResult<char_type>;

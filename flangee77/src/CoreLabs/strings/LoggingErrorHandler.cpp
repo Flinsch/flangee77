@@ -53,7 +53,7 @@ namespace cl7::strings {
 
 
 
-    DecodeResult<cl7::achar_type> LoggingErrorHandler::_on_invalid_code_unit(cl7::astring_view input_read) const
+    DecodeResult<cl7::achar_t> LoggingErrorHandler::_on_invalid_code_unit(cl7::astring_view input_read) const
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint8_t>(input_read[0]);
@@ -62,7 +62,7 @@ namespace cl7::strings {
         return ErrorHandler::_on_invalid_code_unit(input_read);
     }
 
-    DecodeResult<cl7::u8char_type> LoggingErrorHandler::_on_invalid_code_unit(cl7::u8string_view input_read) const
+    DecodeResult<cl7::u8char_t> LoggingErrorHandler::_on_invalid_code_unit(cl7::u8string_view input_read) const
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint8_t>(input_read[0]);
@@ -74,7 +74,7 @@ namespace cl7::strings {
         return ErrorHandler::_on_invalid_code_unit(input_read);
     }
 
-    DecodeResult<cl7::u16char_type> LoggingErrorHandler::_on_invalid_code_unit(cl7::u16string_view input_read) const
+    DecodeResult<cl7::u16char_t> LoggingErrorHandler::_on_invalid_code_unit(cl7::u16string_view input_read) const
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint16_t>(input_read[0]);
@@ -83,7 +83,7 @@ namespace cl7::strings {
         return ErrorHandler::_on_invalid_code_unit(input_read);
     }
 
-    DecodeResult<cl7::u32char_type> LoggingErrorHandler::_on_invalid_code_unit(cl7::u32string_view input_read) const
+    DecodeResult<cl7::u32char_t> LoggingErrorHandler::_on_invalid_code_unit(cl7::u32string_view input_read) const
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint32_t>(input_read[0]);
@@ -94,7 +94,7 @@ namespace cl7::strings {
 
 
 
-    DecodeResult<cl7::u8char_type> LoggingErrorHandler::_on_invalid_sequence(cl7::u8string_view input_read) const
+    DecodeResult<cl7::u8char_t> LoggingErrorHandler::_on_invalid_sequence(cl7::u8string_view input_read) const
     {
         assert(!input_read.empty());
         const auto first = static_cast<uint8_t>(input_read[0]);
@@ -124,7 +124,7 @@ namespace cl7::strings {
 
 
 
-    DecodeResult<cl7::u8char_type> LoggingErrorHandler::_on_incomplete_sequence(cl7::u8string_view input_read, size_t expected_length) const
+    DecodeResult<cl7::u8char_t> LoggingErrorHandler::_on_incomplete_sequence(cl7::u8string_view input_read, size_t expected_length) const
     {
         assert(!input_read.empty());
         assert(expected_length > input_read.size());
@@ -136,7 +136,7 @@ namespace cl7::strings {
         return ErrorHandler::_on_incomplete_sequence(input_read, expected_length);
     }
 
-    DecodeResult<cl7::u16char_type> LoggingErrorHandler::_on_incomplete_sequence(cl7::u16string_view input_read) const
+    DecodeResult<cl7::u16char_t> LoggingErrorHandler::_on_incomplete_sequence(cl7::u16string_view input_read) const
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint16_t>(input_read[0]);
@@ -147,7 +147,7 @@ namespace cl7::strings {
 
 
 
-    DecodeResult<cl7::u8char_type> LoggingErrorHandler::_on_overlong_encoding(cl7::u8string_view input_read) const
+    DecodeResult<cl7::u8char_t> LoggingErrorHandler::_on_overlong_encoding(cl7::u8string_view input_read) const
     {
         assert(!input_read.empty());
         const auto first = static_cast<uint8_t>(input_read[0]);
@@ -171,7 +171,7 @@ namespace cl7::strings {
 
 
 
-    DecodeResult<cl7::u16char_type> LoggingErrorHandler::_on_unpaired_surrogate(cl7::u16string_view input_read) const
+    DecodeResult<cl7::u16char_t> LoggingErrorHandler::_on_unpaired_surrogate(cl7::u16string_view input_read) const
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint16_t>(input_read[0]);

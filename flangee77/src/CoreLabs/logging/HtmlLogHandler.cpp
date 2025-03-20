@@ -88,7 +88,7 @@ namespace cl7::logging {
             oss << "</head>\n";
             oss << "<body>\n";
             oss << "  <h1>" << title << "</h1>\n";
-            oss << "  <p>Session start: " << _escape(cl7::strings::to_utf8(ldt_woss.str())) << "</p>\n";
+            oss << "  <p>Session start: " << _escape(cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(ldt_woss.str()))) << "</p>\n";
             oss << "  <div class=\"container\">\n";
 
             _write_raw(oss.str(), true);
@@ -110,7 +110,7 @@ namespace cl7::logging {
 
             cl7::u8osstream oss;
             oss << "  </div>\n";
-            oss << "  <p>Session end: " << _escape(cl7::strings::to_utf8(ldt_woss.str())) << "</p>\n";
+            oss << "  <p>Session end: " << _escape(cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(ldt_woss.str()))) << "</p>\n";
             oss << "</body>\n";
             oss << "</html>\n";
 

@@ -23,15 +23,15 @@ namespace cl7 {
         return static_cast<unsigned int>(_iss.get());
     }
 
-    u8isstream& u8isstream::get(u8char_type& ch)
+    u8isstream& u8isstream::get(u8char_t& ch)
     {
         char ch_;
         _iss.get(ch_);
-        ch = static_cast<u8char_type>(ch_);
+        ch = static_cast<u8char_t>(ch_);
         return *this;
     }
 
-    u8isstream& u8isstream::getline(u8char_type* s, std::streamsize count, u8char_type delim)
+    u8isstream& u8isstream::getline(u8char_t* s, std::streamsize count, u8char_t delim)
     {
         _iss.getline(reinterpret_cast<char*>(s), count, static_cast<char>(delim));
         return *this;
@@ -55,13 +55,13 @@ namespace cl7 {
         return u8string{cl7::strings::reinterpret_utf8(_oss.str())};
     }
 
-    u8osstream& u8osstream::put(u8char_type ch)
+    u8osstream& u8osstream::put(u8char_t ch)
     {
         _oss << static_cast<char>(ch);
         return *this;
     }
 
-    u8osstream& u8osstream::operator<<(u8char_type value)
+    u8osstream& u8osstream::operator<<(u8char_t value)
     {
         _oss << static_cast<char>(value);
         return *this;
@@ -79,7 +79,7 @@ namespace cl7 {
         return *this;
     }
 
-    u8osstream& u8osstream::operator<<(const u8char_type* value)
+    u8osstream& u8osstream::operator<<(const u8char_t* value)
     {
         _oss << cl7::strings::reinterpret_utf8(value);
         return *this;
@@ -98,10 +98,10 @@ namespace cl7 {
 
 namespace std {
 
-    cl7::u8isstream& getline(cl7::u8isstream& input, cl7::u8string& str, cl7::u8char_type delim)
+    cl7::u8isstream& getline(cl7::u8isstream& input, cl7::u8string& str, cl7::u8char_t delim)
     {
         str.clear();
-        cl7::u8char_type ch;
+        cl7::u8char_t ch;
         while (input.get(ch) && ch != delim)
             str.push_back(ch);
         return input;

@@ -216,7 +216,7 @@ namespace xl7::graphics::impl::shared::shaders {
         {
             LOG_ERROR(errors::d3d_result(hresult, u8"::D3DCompile"));
 
-            cl7::u8string error_messages{static_cast<cl7::u8char_type*>(error_blob->GetBufferPointer()), error_blob->GetBufferSize()};
+            cl7::u8string error_messages{static_cast<cl7::u8char_t*>(error_blob->GetBufferPointer()), error_blob->GetBufferSize()};
             for (size_t offset = 0, p = 0; offset < error_messages.length(); offset = p + 1)
             {
                 p = error_messages.find(u8'\n', offset);

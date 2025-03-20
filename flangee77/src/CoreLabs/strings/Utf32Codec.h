@@ -21,7 +21,7 @@ class Utf32Codec
 public:
     static constexpr Encoding encoding = Encoding::UTF32;
 
-    using char_type = cl7::u32char_type;
+    using char_type = cl7::u32char_t;
 
     using EncodeResult = EncodeResult<char_type>;
     using DecodeResult = DecodeResult<char_type>;

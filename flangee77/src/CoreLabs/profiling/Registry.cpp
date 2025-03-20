@@ -64,7 +64,9 @@ namespace cl7::profiling {
                 ch = wchar_t{0xa0}; // no-break space
         }
 
-        logger->log(cl7::logging::LogEntry{.message=cl7::strings::to_utf8(utfx), .type=cl7::logging::LogType::Code});
+        cl7::u8string utf8 = cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(utfx));
+
+        logger->log(cl7::logging::LogEntry{.message=utf8, .type=cl7::logging::LogType::Code});
         logger->log(cl7::logging::LogEntry{.message=u8"--------------------------------------------------------------------------------", .type=cl7::logging::LogType::Code});
 
         for (const auto& p : _sample_lookup)
@@ -162,7 +164,7 @@ namespace cl7::profiling {
         unsigned c = indent;
         while (c--)
             woss.put(' ');
-        woss << cl7::strings::to_utfx(sample->name);
+        woss << cl7::strings::reinterpret_utfx(cl7::strings::to_utfx(sample->name));
 
         std::wstring utfx = woss.str();
         for (auto& ch : utfx)
@@ -171,7 +173,9 @@ namespace cl7::profiling {
                 ch = wchar_t{0xa0}; // no-break space
         }
 
-        logger->log(cl7::logging::LogEntry{.message=cl7::strings::to_utf8(utfx), .type=cl7::logging::LogType::Code});
+        cl7::u8string utf8 = cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(utfx));
+
+        logger->log(cl7::logging::LogEntry{.message=utf8, .type=cl7::logging::LogType::Code});
 
         for (const auto& p : _sample_lookup)
         {

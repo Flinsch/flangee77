@@ -157,7 +157,7 @@ namespace xl7::graphics::impl::direct3d9::shaders {
                 } // switch parameter class
 
                 xl7::graphics::shaders::ConstantDeclaration constant_declaration;
-                constant_declaration.name = cl7::u8string{reinterpret_cast<const cl7::u8char_type*>(ctab_ptr + cinfo[i].Name)};
+                constant_declaration.name = cl7::u8string{reinterpret_cast<const cl7::u8char_t*>(ctab_ptr + cinfo[i].Name)};
                 constant_declaration.constant_type = constant_type;
                 constant_declaration.constant_class = constant_class;
                 constant_declaration.row_count = static_cast<unsigned>(ctype->Rows);
@@ -192,7 +192,7 @@ namespace xl7::graphics::impl::direct3d9::shaders {
                 } // switch parameter type
 
                 xl7::graphics::shaders::TextureSamplerDeclaration texture_sampler_declaration;
-                texture_sampler_declaration.name = cl7::u8string{reinterpret_cast<const cl7::u8char_type*>(ctab_ptr + cinfo[i].Name)};
+                texture_sampler_declaration.name = cl7::u8string{reinterpret_cast<const cl7::u8char_t*>(ctab_ptr + cinfo[i].Name)};
                 texture_sampler_declaration.index = static_cast<unsigned>(cinfo[i].RegisterIndex);
                 texture_sampler_declaration.element_count = static_cast<unsigned>(ctype->Elements);
 

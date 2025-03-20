@@ -349,7 +349,7 @@ namespace xl7::graphics::impl::direct3d9 {
                 continue;
             }
 
-            if (memory_capabilities.dedicated_video_memory > 0 && cl7::strings::to_utf8(adapter_desc.Description) != adapter_name)
+            if (memory_capabilities.dedicated_video_memory > 0 && cl7::strings::to_utf8(cl7::strings::reinterpret_utf16(adapter_desc.Description)) != adapter_name)
                 continue;
 
             memory_capabilities.dedicated_video_memory = adapter_desc.DedicatedVideoMemory;

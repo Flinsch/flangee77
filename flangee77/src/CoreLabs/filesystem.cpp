@@ -22,7 +22,7 @@ namespace cl7::filesystem {
 
         std::wstring_view full_path{_full_path};
         size_t p = full_path.find_last_of(L'\\');
-        return cl7::strings::to_utf8(full_path.substr(0, p + 1));*/
+        return cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(full_path.substr(0, p + 1)));*/
         return get_initial_directory();
     }
 
@@ -44,7 +44,7 @@ namespace cl7::filesystem {
                 _path[length] = u8'\\';
         }
 
-        return cl7::strings::to_utf8(_path);
+        return cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(_path));
     }
 
     /**
@@ -59,7 +59,7 @@ namespace cl7::filesystem {
         if (length == 0 || _path[length - 1] != u8'\\')
             _path[length] = u8'\\';
 
-        return cl7::strings::to_utf8(_path);
+        return cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(_path));
     }
 
     /**
@@ -67,7 +67,7 @@ namespace cl7::filesystem {
      */
     cl7::u8string get_user_directory()
     {
-        static cl7::u8char_type _path[MAX_PATH + 2] = {0};
+        static cl7::u8char_t _path[MAX_PATH + 2] = {0};
         static bool first_call = true;
 
         if (first_call)
@@ -82,8 +82,8 @@ namespace cl7::filesystem {
             if (hresult == S_OK)
             {
                 assert(tmp);
-                cl7::u8string path = cl7::strings::to_utf8(tmp);
-                for (const cl7::u8char_type* p = path.c_str(); *p; ++p)
+                cl7::u8string path = cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(tmp));
+                for (const cl7::u8char_t* p = path.c_str(); *p; ++p)
                     _path[length++] = *p;
             }
 

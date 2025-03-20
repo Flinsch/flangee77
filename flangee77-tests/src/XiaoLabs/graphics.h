@@ -633,7 +633,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageConverter" )
     };
 
 
-    constexpr cl7::u8char_type rgbakeys[4] = { u8'R', u8'G', u8'B', u8'A' };
+    constexpr cl7::u8char_t rgbakeys[4] = { u8'R', u8'G', u8'B', u8'A' };
 
     auto _precision = [](unsigned depth) -> unsigned {
         if ( depth <= 2 )

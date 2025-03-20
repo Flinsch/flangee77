@@ -29,7 +29,7 @@ public:
 
     ArgumentBag(int argc, char* argv[]);
     ArgumentBag(int argc, wchar_t* argv[]);
-    ArgumentBag(int argc, cl7::u8char_type* argv[]);
+    ArgumentBag(int argc, cl7::u8char_t* argv[]);
     ArgumentBag(const std::vector<cl7::u8string_view>& arguments);
     ArgumentBag(const std::vector<cl7::u8string>& arguments);
 
@@ -107,7 +107,7 @@ private:
     void _add_flag(cl7::u8string_view flag_name);
     void _add_option_value(cl7::u8string_view option_name, cl7::u8string_view option_value);
     static void _try_resolve_quotation(cl7::u8string& option_value);
-    static void _resolve_quotation(cl7::u8string& option_value, cl7::u8char_type ch);
+    static void _resolve_quotation(cl7::u8string& option_value, cl7::u8char_t ch);
 
 
 

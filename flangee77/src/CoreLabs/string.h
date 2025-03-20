@@ -21,29 +21,25 @@ namespace cl7 {
 
 
 
-    using achar_type        = char;
-    using u8char_type       = char8_t;
-    using u16char_type      = char16_t;
-    using u32char_type      = char32_t;
-    using wchar_type        = wchar_t;
+    using achar_t           = char;
+    using u8char_t          = char8_t;
+    using u16char_t         = char16_t;
+    using u32char_t         = char32_t;
 
-    using astring           = std::string;
-    using u8string          = std::u8string;
-    using u16string         = std::u16string;
-    using u32string         = std::u32string;
-    using wstring           = std::wstring;
+    using astring           = std::basic_string<achar_t>;
+    using u8string          = std::basic_string<u8char_t>;
+    using u16string         = std::basic_string<u16char_t>;
+    using u32string         = std::basic_string<u32char_t>;
 
-    using astring_view      = std::string_view;
-    using u8string_view     = std::u8string_view;
-    using u16string_view    = std::u16string_view;
-    using u32string_view    = std::u32string_view;
-    using wstring_view      = std::wstring_view;
+    using astring_view      = std::basic_string_view<achar_t>;
+    using u8string_view     = std::basic_string_view<u8char_t>;
+    using u16string_view    = std::basic_string_view<u16char_t>;
+    using u32string_view    = std::basic_string_view<u32char_t>;
 
-    using astring_span      = std::span<achar_type>;
-    using u8string_span     = std::span<u8char_type>;
-    using u16string_span    = std::span<u16char_type>;
-    using u32string_span    = std::span<u32char_type>;
-    using wstring_span      = std::span<wchar_type>;
+    using astring_span      = std::span<achar_t>;
+    using u8string_span     = std::span<u8char_t>;
+    using u16string_span    = std::span<u16char_t>;
+    using u32string_span    = std::span<u32char_t>;
 
 
 
@@ -80,7 +76,7 @@ namespace cl7 {
 
 
 
-    template <typename Tchar = cl7::u8char_type>
+    template <typename Tchar = cl7::u8char_t>
         requires(std::is_integral_v<Tchar>)
     struct string_hash
     {
@@ -92,11 +88,10 @@ namespace cl7 {
         size_t operator()(const Tstring& str) const { return std::hash<Tstring>{}(str); }
     };
 
-    using astring_hash = string_hash<cl7::achar_type>;
-    using u8string_hash = string_hash<cl7::u8char_type>;
-    using u16string_hash = string_hash<cl7::u16char_type>;
-    using u32string_hash = string_hash<cl7::u32char_type>;
-    using wstring_hash = string_hash<cl7::wchar_type>;
+    using astring_hash = string_hash<cl7::achar_t>;
+    using u8string_hash = string_hash<cl7::u8char_t>;
+    using u16string_hash = string_hash<cl7::u16char_t>;
+    using u32string_hash = string_hash<cl7::u32char_t>;
 
 
 

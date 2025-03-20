@@ -7,7 +7,7 @@ namespace dl7 {
 
 
     bool Base64::_initialized = false;
-    cl7::u8char_type Base64::_base64_char_table[64];
+    cl7::u8char_t Base64::_base64_char_table[64];
     uint8_t Base64::_base64_sextet_lookup[128];
 
 
@@ -30,22 +30,22 @@ namespace dl7 {
 
         for (uint8_t i = 0; i < 26; ++i)
         {
-            _base64_char_table[i] = static_cast<cl7::u8char_type>('A' + i);
+            _base64_char_table[i] = static_cast<cl7::u8char_t>('A' + i);
             _base64_sextet_lookup[static_cast<uint8_t>('A' + i)] = i;
         }
         for (uint8_t i = 0; i < 26; ++i)
         {
-            _base64_char_table[i + 26] = static_cast<cl7::u8char_type>('a' + i);
+            _base64_char_table[i + 26] = static_cast<cl7::u8char_t>('a' + i);
             _base64_sextet_lookup[static_cast<uint8_t>('a' + i)] = i + 26;
         }
         for (uint8_t i = 0; i < 10; ++i)
         {
-            _base64_char_table[i + 52] = static_cast<cl7::u8char_type>('0' + i);
+            _base64_char_table[i + 52] = static_cast<cl7::u8char_t>('0' + i);
             _base64_sextet_lookup[static_cast<uint8_t>('0' + i)] = i + 52;
         }
-        _base64_char_table[62] = static_cast<cl7::u8char_type>('+');
+        _base64_char_table[62] = static_cast<cl7::u8char_t>('+');
         _base64_sextet_lookup[static_cast<uint8_t>('+')] = 62;
-        _base64_char_table[63] = static_cast<cl7::u8char_type>('/');
+        _base64_char_table[63] = static_cast<cl7::u8char_t>('/');
         _base64_sextet_lookup[static_cast<uint8_t>('/')] = 63;
 
         _initialized = true;
@@ -88,12 +88,12 @@ namespace dl7 {
 
             if (data_left && _options.insert_breaks && (_options.line_length > 0 && line_length >= _options.line_length))
             {
-                base64 += cl7::u8char_type{'\n'};
+                base64 += cl7::u8char_t{'\n'};
                 line_length = 0;
             }
             /*else if (data_left && _options.insert_spaces)
             {
-                base64 += cl7::u8char_type{' '};
+                base64 += cl7::u8char_t{' '};
                 ++line_length;
             }*/
         }
@@ -110,7 +110,7 @@ namespace dl7 {
             ptr += 2;
 
             if (_options.pad)
-                base64.append(1, cl7::u8char_type{'='});
+                base64.append(1, cl7::u8char_t{'='});
         }
         else if (_8_bit_count)
         {
@@ -119,7 +119,7 @@ namespace dl7 {
             ptr += 1;
 
             if (_options.pad)
-                base64.append(2, cl7::u8char_type{'='});
+                base64.append(2, cl7::u8char_t{'='});
         }
 
         assert(ptr == reinterpret_cast<const uint8_t*>(data.data() + data_size));
@@ -140,9 +140,9 @@ namespace dl7 {
         {
             auto chr = base64[i];
 
-            if (chr == cl7::u8char_type{' '}) continue;
-            if (chr == cl7::u8char_type{'\n'}) continue;
-            if (chr == cl7::u8char_type{'\r'}) continue;
+            if (chr == cl7::u8char_t{' '}) continue;
+            if (chr == cl7::u8char_t{'\n'}) continue;
+            if (chr == cl7::u8char_t{'\r'}) continue;
 
             base64_ += chr;
         }
@@ -153,15 +153,15 @@ namespace dl7 {
         if (base64_.length() % 4 == 1)
             return {};
         if (base64_.length() % 4 == 2)
-            base64_.append(2, cl7::u8char_type{'='});
+            base64_.append(2, cl7::u8char_t{'='});
         else if (base64_.length() % 4 == 3)
-            base64_.append(1, cl7::u8char_type{'='});
+            base64_.append(1, cl7::u8char_t{'='});
 
         assert(base64_.length() >= 4);
         assert(base64_.length() % 4 == 0);
         size_t pad = 0;
-        if (base64_[base64_.length() - 1] == cl7::u8char_type{'='}) ++pad;
-        if (base64_[base64_.length() - 2] == cl7::u8char_type{'='}) ++pad;
+        if (base64_[base64_.length() - 1] == cl7::u8char_t{'='}) ++pad;
+        if (base64_[base64_.length() - 2] == cl7::u8char_t{'='}) ++pad;
         size_t data_size = base64_.length() / 4 * 3 - pad;
         assert(data_size > 0);
 
@@ -172,7 +172,7 @@ namespace dl7 {
         size_t _16_bit_count = (data_size % 3) / 2;
         size_t _8_bit_count = (data_size % 3) % 2;
 
-        const cl7::u8char_type* ptr = base64_.data();
+        const cl7::u8char_t* ptr = base64_.data();
 
         while (_24_bit_count--)
         {
@@ -235,11 +235,11 @@ namespace dl7 {
         {
             auto chr = base64[i];
 
-            if (chr == cl7::u8char_type{' '}) continue;
-            if (chr == cl7::u8char_type{'\n'}) continue;
-            if (chr == cl7::u8char_type{'\r'}) continue;
+            if (chr == cl7::u8char_t{' '}) continue;
+            if (chr == cl7::u8char_t{'\n'}) continue;
+            if (chr == cl7::u8char_t{'\r'}) continue;
 
-            if (chr == cl7::u8char_type{'='}) continue;
+            if (chr == cl7::u8char_t{'='}) continue;
 
             ++length;
         }
@@ -266,7 +266,7 @@ namespace dl7 {
     /**
      * Returns the Base64 character of the given 6-bit character sextet.
      */
-    cl7::u8char_type Base64::_encode(uint8_t sextet) const
+    cl7::u8char_t Base64::_encode(uint8_t sextet) const
     {
         if (sextet == 62) return _options.ch62;
         if (sextet == 63) return _options.ch63;
@@ -280,12 +280,12 @@ namespace dl7 {
      * If it is valid, its 6-bit character sextet will be returned.
      * If it is invalid, an invalid value above 63 will be returned.
      */
-    uint8_t Base64::_decode(cl7::u8char_type chr) const
+    uint8_t Base64::_decode(cl7::u8char_t chr) const
     {
         if (chr == _options.ch62) return 62;
         if (chr == _options.ch63) return 63;
 
-        auto lookup = static_cast<size_t>(static_cast<std::make_unsigned_t<cl7::u8char_type>>(chr));
+        auto lookup = static_cast<size_t>(static_cast<std::make_unsigned_t<cl7::u8char_t>>(chr));
         if (lookup >= 128)
             return static_cast<uint8_t>(-1);
 

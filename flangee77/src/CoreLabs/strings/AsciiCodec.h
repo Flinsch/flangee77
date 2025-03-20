@@ -21,7 +21,7 @@ class AsciiCodec
 public:
     static constexpr Encoding encoding = Encoding::ASCII;
 
-    using char_type = cl7::achar_type;
+    using char_type = cl7::achar_t;
 
     using EncodeResult = EncodeResult<char_type>;
     using DecodeResult = DecodeResult<char_type>;

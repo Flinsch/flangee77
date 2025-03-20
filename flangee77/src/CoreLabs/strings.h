@@ -20,43 +20,44 @@ namespace cl7::strings {
     astring to_ascii(u8string_view u8s);
     astring to_ascii(u16string_view u16s);
     astring to_ascii(u32string_view u32s);
-    astring to_ascii(wstring_view ws);
 
     u8string to_utf8(astring_view as);
     u8string to_utf8(u8string_view u8s);
     u8string to_utf8(u16string_view u16s);
     u8string to_utf8(u32string_view u32s);
-    u8string to_utf8(wstring_view ws);
 
     u16string to_utf16(astring_view as);
     u16string to_utf16(u8string_view u8s);
     u16string to_utf16(u16string_view u16s);
     u16string to_utf16(u32string_view u32s);
-    u16string to_utf16(wstring_view ws);
 
     u32string to_utf32(astring_view as);
     u32string to_utf32(u8string_view u8s);
     u32string to_utf32(u16string_view u16s);
     u32string to_utf32(u32string_view u32s);
-    u32string to_utf32(wstring_view ws);
 
-    wstring to_utfx(astring_view as);
-    wstring to_utfx(u8string_view u8s);
-    wstring to_utfx(u16string_view u16s);
-    wstring to_utfx(u32string_view u32s);
-    wstring to_utfx(wstring_view ws);
+#if WCHAR_MAX == UINT16_MAX
+    u16string to_utfx(astring_view as);
+    u16string to_utfx(u8string_view u8s);
+    u16string to_utfx(u16string_view u16s);
+    u16string to_utfx(u32string_view u32s);
+#endif
+#if WCHAR_MAX == UINT32_MAX
+    u32string to_utfx(astring_view as);
+    u32string to_utfx(u8string_view u8s);
+    u32string to_utfx(u16string_view u16s);
+    u32string to_utfx(u32string_view u32s);
+#endif
 
     astring to_ascii_unchecked(byte_view bys);
     u8string to_utf8_unchecked(byte_view bys);
     u16string to_utf16_unchecked(byte_view bys);
     u32string to_utf32_unchecked(byte_view bys);
-    wstring to_utfx_unchecked(byte_view bys);
 
     byte_vector to_bytes(astring_view as);
     byte_vector to_bytes(u8string_view u8s, bool add_bom = false);
     byte_vector to_bytes(u16string_view u16s, bool add_bom = false, std::endian endian = std::endian::native);
     byte_vector to_bytes(u32string_view u32s, bool add_bom = false, std::endian endian = std::endian::native);
-    byte_vector to_bytes(wstring_view ws, bool add_bom = false, std::endian endian = std::endian::native);
 
     bool check_ascii(astring_view as, bool log_warning = false);
     bool check_utf8(u8string_view u8s, bool log_warning = false);
@@ -75,6 +76,32 @@ namespace cl7::strings {
     std::string_view reinterpret_utf8(u8string_view u8s);
     /** Reinterprets the character format of the specified UTF-8 string. Attention: It is not checked whether a correct UTF-8 encoding is given. */
     u8string_view reinterpret_utf8(std::string_view s);
+
+#if WCHAR_MAX == UINT16_MAX
+    /** Reinterprets the character format of the specified UTF-16 string. Attention: It is not checked whether a correct UTF-16 encoding is given. */
+    std::wstring_view reinterpret_utf16(u16string_view u16s);
+    /** Reinterprets the character format of the specified UTF-16 string. Attention: It is not checked whether a correct UTF-16 encoding is given. */
+    u16string_view reinterpret_utf16(std::wstring_view ws);
+#endif
+#if WCHAR_MAX == UINT32_MAX
+    /** Reinterprets the character format of the specified UTF-32 string. Attention: It is not checked whether a correct UTF-32 encoding is given. */
+    std::wstring_view reinterpret_utf32(u32string_view u32s);
+    /** Reinterprets the character format of the specified UTF-32 string. Attention: It is not checked whether a correct UTF-32 encoding is given. */
+    u32string_view reinterpret_utf32(std::wstring_view ws);
+#endif
+
+#if WCHAR_MAX == UINT16_MAX
+    /** Reinterprets the character format of the specified UTF-16 (Windows) or UTF-32 (non-Windows) string. Attention: It is not checked whether a correct UTF-16/UTF-32 encoding is given. */
+    std::wstring_view reinterpret_utfx(u16string_view u16s);
+    /** Reinterprets the character format of the specified UTF-16 (Windows) or UTF-32 (non-Windows) string. Attention: It is not checked whether a correct UTF-16/UTF-32 encoding is given. */
+    u16string_view reinterpret_utfx(std::wstring_view ws);
+#endif
+#if WCHAR_MAX == UINT32_MAX
+    /** Reinterprets the character format of the specified UTF-16 (Windows) or UTF-32 (non-Windows) string. Attention: It is not checked whether a correct UTF-16/UTF-32 encoding is given. */
+    std::wstring_view reinterpret_utfx(u32string_view u32s);
+    /** Reinterprets the character format of the specified UTF-16 (Windows) or UTF-32 (non-Windows) string. Attention: It is not checked whether a correct UTF-16/UTF-32 encoding is given. */
+    u32string_view reinterpret_utfx(std::wstring_view ws);
+#endif
 
     Encoding detect_encoding(byte_view bys);
 
@@ -102,14 +129,14 @@ namespace cl7::strings {
             ui32 == 0x205f ||                       // medium mathematical space
             ui32 == 0x3000;                         // ideographic space
 
-        static_assert(!std::is_same_v<Tchar, u8char_type>, "Not implemented for UTF-8 and its variable-length character encoding.");
+        static_assert(!std::is_same_v<Tchar, u8char_t>, "Not implemented for UTF-8 and its variable-length character encoding.");
     }
 
     /**
      * Checks whether the specified character is a whitespace character.
      */
     template <> inline
-    bool is_whitespace(achar_type c)
+    bool is_whitespace(achar_t c)
     {
         const auto ui8 = static_cast<uint8_t>(c);
         return 
@@ -127,7 +154,7 @@ namespace cl7::strings {
      * - For single-byte whitespace, c1 and c2 must be 0.
      * - For two-byte whitespace, c2 must be 0.
      */
-    size_t is_whitespace_strict(u8char_type c0, u8char_type c1 = 0, u8char_type c2 = 0);
+    size_t is_whitespace_strict(u8char_t c0, u8char_t c1 = 0, u8char_t c2 = 0);
 
     /**
      * Checks whether the specified Unicode code point is whitespace and, if yes,
@@ -135,7 +162,7 @@ namespace cl7::strings {
      * Unlike the strict version, this function does not require c1 or c2 to be 0
      * for shorter combinations.
      */
-    size_t is_whitespace_relaxed(u8char_type c0, u8char_type c1 = 0, u8char_type c2 = 0);
+    size_t is_whitespace_relaxed(u8char_t c0, u8char_t c1 = 0, u8char_t c2 = 0);
 
 
 
@@ -543,8 +570,8 @@ namespace cl7::strings {
         return to_0xhex<Tstring>(val, pad_zeros, Tchar{'A'});
     }
 
-    u8string to_hex(unsigned long long val, unsigned pad_zeros = 0, u8char_type ca = u8'A');
-    u8string to_0xhex(unsigned long long val, unsigned pad_zeros = 0, u8char_type ca = u8'A');
+    u8string to_hex(unsigned long long val, unsigned pad_zeros = 0, u8char_t ca = u8'A');
+    u8string to_0xhex(unsigned long long val, unsigned pad_zeros = 0, u8char_t ca = u8'A');
 
     inline u8string to_hex_lc(unsigned long long val, unsigned pad_zeros = 0) { return to_hex(val, pad_zeros, u8'a'); }
     inline u8string to_hex_uc(unsigned long long val, unsigned pad_zeros = 0) { return to_hex(val, pad_zeros, u8'A'); }

@@ -57,55 +57,55 @@ public:
      * Returns a decode result that represents an "invalid code unit" error based on
      * the specified ASCII input being processed.
      */
-    DecodeResult<cl7::achar_type> on_invalid_code_unit(cl7::astring_view input_read) const { return _on_invalid_code_unit(input_read); }
+    DecodeResult<cl7::achar_t> on_invalid_code_unit(cl7::astring_view input_read) const { return _on_invalid_code_unit(input_read); }
 
     /**
      * Returns a decode result that represents an "invalid code unit" error based on
      * the specified UTF-8 input being processed.
      */
-    DecodeResult<cl7::u8char_type> on_invalid_code_unit(cl7::u8string_view input_read) const { return _on_invalid_code_unit(input_read); }
+    DecodeResult<cl7::u8char_t> on_invalid_code_unit(cl7::u8string_view input_read) const { return _on_invalid_code_unit(input_read); }
 
     /**
      * Returns a decode result that represents an "invalid code unit" error based on
      * the specified UTF-16 input being processed.
      */
-    DecodeResult<cl7::u16char_type> on_invalid_code_unit(cl7::u16string_view input_read) const { return _on_invalid_code_unit(input_read); }
+    DecodeResult<cl7::u16char_t> on_invalid_code_unit(cl7::u16string_view input_read) const { return _on_invalid_code_unit(input_read); }
 
     /**
      * Returns a decode result that represents an "invalid code unit" error based on
      * the specified UTF-32 input being processed.
      */
-    DecodeResult<cl7::u32char_type> on_invalid_code_unit(cl7::u32string_view input_read) const { return _on_invalid_code_unit(input_read); }
+    DecodeResult<cl7::u32char_t> on_invalid_code_unit(cl7::u32string_view input_read) const { return _on_invalid_code_unit(input_read); }
 
     /**
      * Returns a decode result that represents an "invalid sequence" error based on
      * the specified UTF-8 input being processed.
      */
-    DecodeResult<cl7::u8char_type> on_invalid_sequence(cl7::u8string_view input_read) const { return _on_invalid_sequence(input_read); }
+    DecodeResult<cl7::u8char_t> on_invalid_sequence(cl7::u8string_view input_read) const { return _on_invalid_sequence(input_read); }
 
     /**
      * Returns a decode result that represents an "incomplete sequence" error based
      * on the specified UTF-8 input being processed.
      */
-    DecodeResult<cl7::u8char_type> on_incomplete_sequence(cl7::u8string_view input_read, size_t expected_length) const { return _on_incomplete_sequence(input_read, expected_length); }
+    DecodeResult<cl7::u8char_t> on_incomplete_sequence(cl7::u8string_view input_read, size_t expected_length) const { return _on_incomplete_sequence(input_read, expected_length); }
 
     /**
      * Returns a decode result that represents an "incomplete sequence" error based
      * on the specified UTF-16 input being processed.
      */
-    DecodeResult<cl7::u16char_type> on_incomplete_sequence(cl7::u16string_view input_read) const { return _on_incomplete_sequence(input_read); }
+    DecodeResult<cl7::u16char_t> on_incomplete_sequence(cl7::u16string_view input_read) const { return _on_incomplete_sequence(input_read); }
 
     /**
      * Returns a decode result that represents an "overlong encoding" error based on
      * the specified UTF-8 input being processed.
      */
-    DecodeResult<cl7::u8char_type> on_overlong_encoding(cl7::u8string_view input_read) const { return _on_overlong_encoding(input_read); }
+    DecodeResult<cl7::u8char_t> on_overlong_encoding(cl7::u8string_view input_read) const { return _on_overlong_encoding(input_read); }
 
     /**
      * Returns a decode result that represents an "unpaired surrogate" error based
      * on the specified UTF-16 input being processed.
      */
-    DecodeResult<cl7::u16char_type> on_unpaired_surrogate(cl7::u16string_view input_read) const { return _on_unpaired_surrogate(input_read); }
+    DecodeResult<cl7::u16char_t> on_unpaired_surrogate(cl7::u16string_view input_read) const { return _on_unpaired_surrogate(input_read); }
 
 
 
@@ -117,19 +117,19 @@ protected:
     virtual CodepointResult _on_exhausted_output_space(Encoding encoding, CodepointResult codepoint_result) const;
     virtual CodepointResult _on_insufficient_output_space(Encoding encoding, CodepointResult codepoint_result, size_t required, size_t available) const;
 
-    virtual DecodeResult<cl7::achar_type> _on_invalid_code_unit(cl7::astring_view input_read) const;
-    virtual DecodeResult<cl7::u8char_type> _on_invalid_code_unit(cl7::u8string_view input_read) const;
-    virtual DecodeResult<cl7::u16char_type> _on_invalid_code_unit(cl7::u16string_view input_read) const;
-    virtual DecodeResult<cl7::u32char_type> _on_invalid_code_unit(cl7::u32string_view input_read) const;
+    virtual DecodeResult<cl7::achar_t> _on_invalid_code_unit(cl7::astring_view input_read) const;
+    virtual DecodeResult<cl7::u8char_t> _on_invalid_code_unit(cl7::u8string_view input_read) const;
+    virtual DecodeResult<cl7::u16char_t> _on_invalid_code_unit(cl7::u16string_view input_read) const;
+    virtual DecodeResult<cl7::u32char_t> _on_invalid_code_unit(cl7::u32string_view input_read) const;
 
-    virtual DecodeResult<cl7::u8char_type> _on_invalid_sequence(cl7::u8string_view input_read) const;
+    virtual DecodeResult<cl7::u8char_t> _on_invalid_sequence(cl7::u8string_view input_read) const;
 
-    virtual DecodeResult<cl7::u8char_type> _on_incomplete_sequence(cl7::u8string_view input_read, size_t expected_length) const;
-    virtual DecodeResult<cl7::u16char_type> _on_incomplete_sequence(cl7::u16string_view input_read) const;
+    virtual DecodeResult<cl7::u8char_t> _on_incomplete_sequence(cl7::u8string_view input_read, size_t expected_length) const;
+    virtual DecodeResult<cl7::u16char_t> _on_incomplete_sequence(cl7::u16string_view input_read) const;
 
-    virtual DecodeResult<cl7::u8char_type> _on_overlong_encoding(cl7::u8string_view input_read) const;
+    virtual DecodeResult<cl7::u8char_t> _on_overlong_encoding(cl7::u8string_view input_read) const;
 
-    virtual DecodeResult<cl7::u16char_type> _on_unpaired_surrogate(cl7::u16string_view input_read) const;
+    virtual DecodeResult<cl7::u16char_t> _on_unpaired_surrogate(cl7::u16string_view input_read) const;
 
 }; // class ErrorHandler
 

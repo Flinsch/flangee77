@@ -16,19 +16,20 @@ Then Salik Tariq also has a few interesting things to say, including some best p
 And then there is the &ldquo;[UTF-8 Everywhere](https://utf8everywhere.org/)&rdquo; manifesto by Pavel Radzivilovsky, Yakov Galka, and Slava Novgorodov.
 UTF-8 remains the most widely supported and efficient encoding for applications.
 
-In summary, what this means for us here: The framework provides 5 string types of
-different encodings (as well as corresponding character and string-view types):
+In summary, what this means for us here: The framework provides four string types of
+different encodings (as well as corresponding character and string-view types and the like):
 * `cl7::astring`: ASCII
 * `cl7::u8string`: UTF-8
 * `cl7::u16string`: UTF-16
 * `cl7::u32string`: UTF-32
-* `cl7::wstring`: UTF-16 (Windows) or UTF-32 (non-Windows), I guess
 
 These types are simple &ldquo;typedefs&rdquo; of corresponding types from the C++ Standard Library.
 
 The intention of these types is to emphasize the respective encoding a little more semantically, especially with regard to `cl7::astring` and `cl7::u8string`, as a contrast to `std::string`, which can contain any one-byte character encoding, ASCII, ANSI, UTF-8, ISO 8859, etc.
 If you need the flexibility of `std::string`, you can still use it, even in parallel with the types of this framework (which are just typedefs anyway).
 This framework also sometimes uses `std::string` etc. here and there (internally), but more for utility and compatibility purposes.
+This also applies to `std::wstring`.
+To support any possible contact points with the &ldquo;native&rdquo; string types, utility functions are provided for &ldquo;reinterpreting&rdquo; `std::string` as `cl7::u8string` and `std::wstring` as `cl7::u16string` (Windows) or `cl7::u32string` (non-Windows) and vice versa.
 
 Regarding &ldquo;best practices&rdquo;, the different string types are used within this framework as follows (which you can follow in your own code, but of course you don't have to):
 * **Platform-specific stuff**:
@@ -36,7 +37,6 @@ Regarding &ldquo;best practices&rdquo;, the different string types are used with
 * **Internal processing**:
   whatever serves, preferably `cl7::u8string`, following &ldquo;UTF-8 Everywhere&rdquo;,
   even though the recommendations regarding UTF-32 also make a lot of sense
-  (and even if `cl7::astring` would be &ldquo;enough&rdquo; in case of rather language-independent technical stuff)
 * **Storage and transmission**:
   `cl7::u8string` (UTF-8)
 * **User interaction**:
@@ -53,14 +53,14 @@ However, UTF-16 is rarely used within this framework (tends to be used only in t
 Despite the presence of the eighth bit of `cl7::astring`, we deliberately do not support &ldquo;extended ASCII&rdquo;, ANSI, ISO 8859, etc., not even Latin-1, although it corresponds 1-to-1 to the first 256 Unicode characters.
 If you need these encodings (for whatever reason, for example under Windows), you have to take care of them yourself.
 At best, you avoid ANSI, ISO 8859, etc. as much as possible and stick to standard ASCII and Unicode, with Unicode being a superset of ASCII.
-And then you might end up with UTF-8 as a &ldquo;technical&rdquo; superset of standard ASCII as well (or UTF-32 if you need the quasi-1-to-1 correspondence between code units and code points).
+And then you might end up with UTF-8 as a &ldquo;technical&rdquo; superset of standard ASCII anyhow as well (or UTF-32 if you need the quasi-1-to-1 correspondence between code units and code points).
 
 So you see: UTF-8 (almost) everywhere.
 As mentioned before, you may have to take care of ISO 8859, ANSI, etc. yourself, but to avoid this as much as possible, we are forcing the `UNICODE`/`_UNICODE` definition, also as suggested by the &ldquo;UTF-8 Everywhere&rdquo; manifesto.
 
 Within the given framework, we want to provide some basic functionality to deal with different encodings and Unicode transformation formats and to convert between them.
 We do not want to reinvent the wheel or to push it further than necessary, so we really only limit ourselves to selected aspects that the framework uses internally itself, without having to include external libraries.
-If you need more extensive or robust functionality, you could/should include and use 3rd-party libraries in your projects yourself, like [International Components for Unicode (ICU)](https://icu.unicode.org/) or [Boost.Locale](https://www.boost.org/doc/libs/release/libs/locale/) or maybe [ztd.text](https://github.com/soasis/text/), for example.
+If you need more extensive or robust functionality, you could/should include and use 3rd-party libraries in your projects yourself, like [International Components for Unicode (ICU)](https://icu.unicode.org/) or [Boost.Locale](https://www.boost.org/doc/libs/release/libs/locale/) or maybe [ztd.text](https://ztdtext.readthedocs.io/en/latest/), for example.
 
 I'm already taking cover, but despite everything, don't be afraid to use different character encodings or string types within your software.
 If you look at the different ways strings are used within a project, you will see that in most cases different types don't even touch each other.

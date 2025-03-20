@@ -71,7 +71,7 @@ namespace dl7::syntax {
 
         const auto& sm = m[0];
         assert(sm.matched);
-        assert(_try_match_prefix({reinterpret_cast<const cl7::u8char_type*>(sm.first), static_cast<size_t>(sm.second - sm.first)}, source) == m.length());
+        assert(_try_match_prefix({reinterpret_cast<const cl7::u8char_t*>(sm.first), static_cast<size_t>(sm.second - sm.first)}, source) == m.length());
         return m.length();
     }
 

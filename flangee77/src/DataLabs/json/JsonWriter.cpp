@@ -62,7 +62,7 @@ namespace dl7::json {
         }
     }
 
-    static cl7::u8osstream& _write_string(cl7::u8osstream& oss, cl7::u8string_view string, cl7::u8char_type quote_char, const JsonWriter::Format& format)
+    static cl7::u8osstream& _write_string(cl7::u8osstream& oss, cl7::u8string_view string, cl7::u8char_t quote_char, const JsonWriter::Format& format)
     {
         oss << quote_char;
         for (const auto& ch : string)
@@ -108,7 +108,7 @@ namespace dl7::json {
             if (ch == u8'"') ++double_quotes;
         }
 
-        cl7::u8char_type quote_char = single_quotes > double_quotes ? u8'\'' : u8'"';
+        cl7::u8char_t quote_char = single_quotes > double_quotes ? u8'\'' : u8'"';
         return _write_string(oss, string, quote_char, format);
     }
 

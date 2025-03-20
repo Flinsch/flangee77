@@ -21,7 +21,7 @@ class Utf16Codec
 public:
     static constexpr Encoding encoding = Encoding::UTF16;
 
-    using char_type = cl7::u16char_type;
+    using char_type = cl7::u16char_t;
 
     using EncodeResult = EncodeResult<char_type>;
     using DecodeResult = DecodeResult<char_type>;

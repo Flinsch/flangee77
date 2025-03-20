@@ -40,7 +40,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  AsciiCodec::encode_one" )
     {
         cl7::strings::codepoint codepoint;
         cl7::strings::CodepointResult codepoint_result;
-        std::vector<cl7::achar_type> output_written;
+        std::vector<cl7::achar_t> output_written;
     } entry;
 
     const std::vector<Entry> container {
@@ -72,7 +72,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  AsciiCodec::encode_one" )
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
-        cl7::strings::EncodeBuffer<cl7::achar_type> buffer;
+        cl7::strings::EncodeBuffer<cl7::achar_t> buffer;
         cl7::strings::AsciiCodec::EncodeResult encode_result = cl7::strings::AsciiCodec::encode_one( entry.codepoint, buffer.string_span(), {} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count );
@@ -112,7 +112,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  AsciiCodec::decode_one" )
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
-        cl7::strings::AsciiCodec::DecodeResult decode_result = cl7::strings::AsciiCodec::decode_one( cl7::astring_view(reinterpret_cast<const cl7::achar_type*>(entry.input.data()), entry.input.size()), {} );
+        cl7::strings::AsciiCodec::DecodeResult decode_result = cl7::strings::AsciiCodec::decode_one( cl7::astring_view(reinterpret_cast<const cl7::achar_t*>(entry.input.data()), entry.input.size()), {} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( decode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( decode_result.error_count, entry.codepoint_result.error_count );
         TESTLABS_CHECK_EQ( decode_result.codepoint.value, entry.codepoint_result.codepoint.value );
@@ -128,7 +128,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf8Codec::encode_one" )
     {
         cl7::strings::codepoint codepoint;
         cl7::strings::CodepointResult codepoint_result;
-        std::vector<cl7::u8char_type> output_written;
+        std::vector<cl7::u8char_t> output_written;
     } entry;
 
     const std::vector<Entry> container {
@@ -160,7 +160,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf8Codec::encode_one" )
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
-        cl7::strings::EncodeBuffer<cl7::u8char_type> buffer;
+        cl7::strings::EncodeBuffer<cl7::u8char_t> buffer;
         cl7::strings::Utf8Codec::EncodeResult encode_result = cl7::strings::Utf8Codec::encode_one( entry.codepoint, buffer.string_span(), {} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count );
@@ -245,7 +245,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf8Codec::decode_one" )
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
-        auto input = cl7::u8string_view(reinterpret_cast<const cl7::u8char_type*>(entry.input.data()), entry.input.size());
+        auto input = cl7::u8string_view(reinterpret_cast<const cl7::u8char_t*>(entry.input.data()), entry.input.size());
         cl7::strings::Utf8Codec::DecodeResult decode_result = cl7::strings::Utf8Codec::decode_one( input, {} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( decode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( decode_result.error_count, entry.codepoint_result.error_count );
@@ -264,7 +264,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf16Codec::encode_one" )
     {
         cl7::strings::codepoint codepoint;
         cl7::strings::CodepointResult codepoint_result;
-        std::vector<cl7::u16char_type> output_written;
+        std::vector<cl7::u16char_t> output_written;
     } entry;
 
     const std::vector<Entry> container {
@@ -296,7 +296,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf16Codec::encode_one" )
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
-        cl7::strings::EncodeBuffer<cl7::u16char_type> buffer;
+        cl7::strings::EncodeBuffer<cl7::u16char_t> buffer;
         cl7::strings::Utf16Codec::EncodeResult encode_result = cl7::strings::Utf16Codec::encode_one( entry.codepoint, buffer.string_span(), {} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count );
@@ -365,7 +365,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf16Codec::decode_one" )
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
-        auto input = cl7::u16string_view(reinterpret_cast<const cl7::u16char_type*>(entry.input.data()), entry.input.size());
+        auto input = cl7::u16string_view(reinterpret_cast<const cl7::u16char_t*>(entry.input.data()), entry.input.size());
         cl7::strings::Utf16Codec::DecodeResult decode_result = cl7::strings::Utf16Codec::decode_one( input, {} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( decode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( decode_result.error_count, entry.codepoint_result.error_count );
@@ -384,7 +384,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf32Codec::encode_one" )
     {
         cl7::strings::codepoint codepoint;
         cl7::strings::CodepointResult codepoint_result;
-        std::vector<cl7::u32char_type> output_written;
+        std::vector<cl7::u32char_t> output_written;
     } entry;
 
     const std::vector<Entry> container {
@@ -416,7 +416,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf32Codec::encode_one" )
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
-        cl7::strings::EncodeBuffer<cl7::u32char_type> buffer;
+        cl7::strings::EncodeBuffer<cl7::u32char_t> buffer;
         cl7::strings::Utf32Codec::EncodeResult encode_result = cl7::strings::Utf32Codec::encode_one( entry.codepoint, buffer.string_span(), {} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count );
@@ -474,7 +474,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf32Codec::decode_one" )
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
-        cl7::strings::Utf32Codec::DecodeResult decode_result = cl7::strings::Utf32Codec::decode_one( cl7::u32string_view(reinterpret_cast<const cl7::u32char_type*>(entry.input.data()), entry.input.size()), {} );
+        cl7::strings::Utf32Codec::DecodeResult decode_result = cl7::strings::Utf32Codec::decode_one( cl7::u32string_view(reinterpret_cast<const cl7::u32char_t*>(entry.input.data()), entry.input.size()), {} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( decode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( decode_result.error_count, entry.codepoint_result.error_count );
         TESTLABS_CHECK_EQ( decode_result.codepoint.value, entry.codepoint_result.codepoint.value );
@@ -664,7 +664,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  between UTF-16 and UTF-32" )
     {
         cl7::u16string entry_u16s( entry.u16d.size(), u' ' );
         for ( size_t i = 0; i < entry.u16d.size(); ++i )
-            entry_u16s[ i ] = static_cast<cl7::u16char_type>( entry.u16d[ i ] );
+            entry_u16s[ i ] = static_cast<cl7::u16char_t>( entry.u16d[ i ] );
 
         auto actual_u16s = cl7::strings::to_utf16( entry.u32s );
         auto actual_u32s = cl7::strings::to_utf32( entry_u16s );
@@ -709,25 +709,25 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  between UTF-16 and UTF-32" )
 
 TESTLABS_CASE( u8"CoreLabs:  strings::to_ascii(u32string_view)" )
 {
-    for ( cl7::u32char_type u32c = 0; u32c <= 0x7f; ++u32c )
+    for ( cl7::u32char_t u32c = 0; u32c <= 0x7f; ++u32c )
     {
-        const cl7::achar_type ac = static_cast<cl7::achar_type>( u32c );
+        const cl7::achar_t ac = static_cast<cl7::achar_t>( u32c );
         const cl7::astring as( 1, ac );
         const cl7::u32string u32s( 1, u32c );
         TESTLABS_CHECK_EQ( cl7::strings::to_ascii( u32s ), as );
     }
 
-    for ( cl7::u32char_type u32c = 0x80; u32c <= 0xff; ++u32c )
+    for ( cl7::u32char_t u32c = 0x80; u32c <= 0xff; ++u32c )
     {
-        const cl7::achar_type ac = 0x1a;
+        const cl7::achar_t ac = 0x1a;
         const cl7::astring as( 1, ac );
         const cl7::u32string u32s( 1, u32c );
         TESTLABS_CHECK_EQ( cl7::strings::to_ascii( u32s ), as );
     }
 
-    for ( cl7::u32char_type u32c = 0x0100; ; u32c *= 2 )
+    for ( cl7::u32char_t u32c = 0x0100; ; u32c *= 2 )
     {
-        const cl7::achar_type ac = 0x1a;
+        const cl7::achar_t ac = 0x1a;
         const cl7::astring as( 1, ac );
         const cl7::u32string u32s( 1, u32c );
         TESTLABS_CHECK_EQ( cl7::strings::to_ascii( u32s ), as );
@@ -774,8 +774,8 @@ TESTLABS_CASE( u8"CoreLabs:  strings::to_utf8(u32string_view)" )
         TESTLABS_ASSERT( !entry.u32d.empty() && entry.u32d.back() == 0 );
         TESTLABS_ASSERT( !entry.u8d.empty() && entry.u8d.back() == 0 );
 
-        const cl7::u32string_view u32s{ reinterpret_cast<const cl7::u32char_type*>( &entry.u32d[0] ) };
-        const cl7::u8string_view u8s{ reinterpret_cast<const cl7::u8char_type*>( &entry.u8d[0] ) };
+        const cl7::u32string_view u32s{ reinterpret_cast<const cl7::u32char_t*>( &entry.u32d[0] ) };
+        const cl7::u8string_view u8s{ reinterpret_cast<const cl7::u8char_t*>( &entry.u8d[0] ) };
 
         TESTLABS_CHECK_EQ( cl7::strings::to_utf8( u32s ), u8s );
     }
@@ -818,8 +818,8 @@ TESTLABS_CASE( u8"CoreLabs:  strings::to_utf16(u32string_view)" )
         TESTLABS_ASSERT( !entry.u32d.empty() && entry.u32d.back() == 0 );
         TESTLABS_ASSERT( !entry.u16d.empty() && entry.u16d.back() == 0 );
 
-        const cl7::u32string_view u32s{ reinterpret_cast<const cl7::u32char_type*>( &entry.u32d[0] ) };
-        const cl7::u16string_view u16s{ reinterpret_cast<const cl7::u16char_type*>( &entry.u16d[0] ) };
+        const cl7::u32string_view u32s{ reinterpret_cast<const cl7::u32char_t*>( &entry.u32d[0] ) };
+        const cl7::u16string_view u16s{ reinterpret_cast<const cl7::u16char_t*>( &entry.u16d[0] ) };
 
         TESTLABS_CHECK_EQ( cl7::strings::to_utf16( u32s ), u16s );
     }
@@ -867,7 +867,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings::to_utf8_unchecked(byte_view)" )
         { cl7::make_bytes( 0x7f ), u8"\u007f", 1 }, /* highest ASCII character */
         { cl7::make_bytes( 0xc2,0x80 ), u8"\u0080", 2 }, /* lowest non-ASCII character */
         { cl7::make_bytes( 0xc3,0xbf ), u8"\u00ff", 2 }, /* highest Latin-1 character */
-        { cl7::make_bytes( 0x80,0xff,0xc2,0xc3 ), (const cl7::u8char_type*)"\x80\xff\xc2\xc3", 4 }, /* Invalid character sequence (should stay the same) */
+        { cl7::make_bytes( 0x80,0xff,0xc2,0xc3 ), (const cl7::u8char_t*)"\x80\xff\xc2\xc3", 4 }, /* Invalid character sequence (should stay the same) */
         { cl7::make_bytes( 0xef,0xbb,0xbf ), u8"", 0 }, /* BOM only */
         { cl7::make_bytes( 0xef,0xbb,0xbf, 0x20 ), u8" ", 1 }, /* BOM with "something" */
     };
@@ -899,7 +899,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings::to_utf16_unchecked(byte_view)" )
         { cl7::make_bytes( 0x7f,0x00 ), u"\u007f", 1 }, /* highest ASCII character */
         { cl7::make_bytes( 0x80,0x00 ), u"\u0080", 1 }, /* lowest non-ASCII character */
         { cl7::make_bytes( 0xff,0x00 ), u"\u00ff", 1 }, /* highest Latin-1 character */
-        { cl7::make_bytes( 0x00,0xd8, 0xff,0xdb, 0x00,0xdc, 0xff,0xdf ), (const cl7::u16char_type*)"\x00\xd8\xff\xdb\x00\xdc\xff\xdf", 4 }, /* Invalid character sequence (should stay the same) */
+        { cl7::make_bytes( 0x00,0xd8, 0xff,0xdb, 0x00,0xdc, 0xff,0xdf ), (const cl7::u16char_t*)"\x00\xd8\xff\xdb\x00\xdc\xff\xdf", 4 }, /* Invalid character sequence (should stay the same) */
 #endif
 #if ('AB') == 0x4241 // => big endian
         { cl7::make_bytes( 0x00,0x70, 0x00,0x75, 0x00,0x72, 0x00,0x65, 0x00,0x20, 0x00,0x41, 0x00,0x53, 0x00,0x43, 0x00,0x49, 0x00,0x49 ), u"pure ASCII", 10 },
@@ -908,7 +908,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings::to_utf16_unchecked(byte_view)" )
         { cl7::make_bytes( 0x00,0x7f ), u"\u007f", 1 }, /* highest ASCII character */
         { cl7::make_bytes( 0x00,0x80 ), u"\u0080", 1 }, /* lowest non-ASCII character */
         { cl7::make_bytes( 0x00,0xff ), u"\u00ff", 1 }, /* highest Latin-1 character */
-        { cl7::make_bytes( 0xd8,0x00, 0xdb,0xff, 0xdc,0x00, 0xdf,0xff ), (const cl7::u16char_type*)"\xd8\x00\xdb\xff\xdc\x00\xdf\xff", 4 }, /* Invalid character sequence (should stay the same) */
+        { cl7::make_bytes( 0xd8,0x00, 0xdb,0xff, 0xdc,0x00, 0xdf,0xff ), (const cl7::u16char_t*)"\xd8\x00\xdb\xff\xdc\x00\xdf\xff", 4 }, /* Invalid character sequence (should stay the same) */
 #endif
         { cl7::make_bytes( 0xff,0xfe ), u"", 0 }, /* BOM only (little endian) */
         { cl7::make_bytes( 0xfe,0xff ), u"", 0 }, /* BOM only (big endian) */
@@ -944,7 +944,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings::to_utf32_unchecked(byte_view)" )
         { cl7::make_bytes( 0x7f,0x00,0x00,0x00 ), U"\U0000007f", 1 }, /* highest ASCII character */
         { cl7::make_bytes( 0x80,0x00,0x00,0x00 ), U"\U00000080", 1 }, /* lowest non-ASCII character */
         { cl7::make_bytes( 0xff,0x00,0x00,0x00 ), U"\U000000ff", 1 }, /* highest Latin-1 character */
-        { cl7::make_bytes( 0x00,0xd8,0x00,0x00, 0xff,0xdb,0x00,0x00, 0x00,0xdc,0x00,0x00, 0xff,0xdf,0x00,0x00 ), (const cl7::u32char_type*)"\x00\xd8\x00\x00\xff\xdb\x00\x00\x00\xdc\x00\x00\xff\xdf\x00\x00", 4 }, /* Invalid character sequence (should stay the same) */
+        { cl7::make_bytes( 0x00,0xd8,0x00,0x00, 0xff,0xdb,0x00,0x00, 0x00,0xdc,0x00,0x00, 0xff,0xdf,0x00,0x00 ), (const cl7::u32char_t*)"\x00\xd8\x00\x00\xff\xdb\x00\x00\x00\xdc\x00\x00\xff\xdf\x00\x00", 4 }, /* Invalid character sequence (should stay the same) */
 #endif
 #if ('AB') == 0x4241 // => big endian
         { cl7::make_bytes( 0x00,0x00,0x00,0x70, 0x00,0x00,0x00,0x75, 0x00,0x00,0x00,0x72, 0x00,0x00,0x00,0x65, 0x00,0x00,0x00,0x20, 0x00,0x00,0x00,0x41, 0x00,0x00,0x00,0x53, 0x00,0x00,0x00,0x43, 0x00,0x00,0x00,0x49, 0x00,0x00,0x00,0x49 ), U"pure ASCII", 10 },
@@ -953,7 +953,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings::to_utf32_unchecked(byte_view)" )
         { cl7::make_bytes( 0x00,0x00,0x00,0x7f ), U"\U0000007f", 1 }, /* highest ASCII character */
         { cl7::make_bytes( 0x00,0x00,0x00,0x80 ), U"\U00000080", 1 }, /* lowest non-ASCII character */
         { cl7::make_bytes( 0x00,0x00,0x00,0xff ), U"\U000000ff", 1 }, /* highest Latin-1 character */
-        { cl7::make_bytes( 0x00,0x00,0xd8,0x00, 0x00,0x00,0xdb,0xff, 0x00,0x00,0xdc,0x00, 0x00,0x00,0xdf,0xff ), (const cl7::u32char_type*)"\x00\x00\xd8\x00\x00\x00\xdb\xff\x00\x00\xdc\x00\x00\x00\xdf\xff", 4 }, /* Invalid character sequence (should stay the same) */
+        { cl7::make_bytes( 0x00,0x00,0xd8,0x00, 0x00,0x00,0xdb,0xff, 0x00,0x00,0xdc,0x00, 0x00,0x00,0xdf,0xff ), (const cl7::u32char_t*)"\x00\x00\xd8\x00\x00\x00\xdb\xff\x00\x00\xdc\x00\x00\x00\xdf\xff", 4 }, /* Invalid character sequence (should stay the same) */
 #endif
         { cl7::make_bytes( 0xff,0xfe,0x00,0x00 ), U"", 0 }, /* BOM only (little endian) */
         { cl7::make_bytes( 0x00,0x00,0xfe,0xff ), U"", 0 }, /* BOM only (big endian) */
@@ -1149,7 +1149,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings::parse_utf8(u8string_view, u32string&)" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.expected )
     {
-        cl7::u8string_view input( reinterpret_cast<const cl7::u8char_type*>( entry.input_data.data() ) );
+        cl7::u8string_view input( reinterpret_cast<const cl7::u8char_t*>( entry.input_data.data() ) );
         cl7::u32string actual;
         TESTLABS_CHECK_EQ( cl7::strings::parse_utf8( input, actual ), entry.check );
         TESTLABS_CHECK_EQ( actual, entry.expected );
@@ -1192,7 +1192,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings::parse_utf16(u16string_view, u32string&)" )
     {
         TESTLABS_ASSERT( !entry.input_data.empty() && entry.input_data.back() == 0 );
 
-        cl7::u16string_view input( reinterpret_cast<const cl7::u16char_type*>( &entry.input_data[0] ) );
+        cl7::u16string_view input( reinterpret_cast<const cl7::u16char_t*>( &entry.input_data[0] ) );
         cl7::u32string actual;
         TESTLABS_CHECK_EQ( cl7::strings::parse_utf16( input, actual ), entry.check );
         TESTLABS_CHECK_EQ( actual, entry.expected );
@@ -1233,7 +1233,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings::check_utf32(u32string_view)" )
     {
         TESTLABS_ASSERT( !entry.input_data.empty() && entry.input_data.back() == 0 );
 
-        cl7::u32string_view input( reinterpret_cast<const cl7::u32char_type*>( &entry.input_data[0] ) );
+        cl7::u32string_view input( reinterpret_cast<const cl7::u32char_t*>( &entry.input_data[0] ) );
         TESTLABS_CHECK_EQ( cl7::strings::check_utf32( input ), entry.expected );
     }
 }
@@ -1269,7 +1269,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings::utf8_length(u8string_view)" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.comment )
     {
-        cl7::u8string_view input( reinterpret_cast<const cl7::u8char_type*>( entry.input_data.data() ) );
+        cl7::u8string_view input( reinterpret_cast<const cl7::u8char_t*>( entry.input_data.data() ) );
         TESTLABS_CHECK_EQ( cl7::strings::utf8_length( input ), entry.expected );
     }
 }
@@ -1310,7 +1310,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings::utf16_length(u16string_view)" )
     {
         TESTLABS_ASSERT( !entry.input_data.empty() && entry.input_data.back() == 0 );
 
-        cl7::u16string_view input( reinterpret_cast<const cl7::u16char_type*>( &entry.input_data[0] ) );
+        cl7::u16string_view input( reinterpret_cast<const cl7::u16char_t*>( &entry.input_data[0] ) );
         TESTLABS_CHECK_EQ( cl7::strings::utf16_length( input ), entry.expected );
     }
 }
@@ -1609,7 +1609,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  padding left" )
     {
         cl7::u8string input;
         size_t len;
-        cl7::u8char_type chr;
+        cl7::u8char_t chr;
         cl7::u8string expected;
     } entry;
 
@@ -1644,7 +1644,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  padding right" )
     {
         cl7::u8string input;
         size_t len;
-        cl7::u8char_type chr;
+        cl7::u8char_t chr;
         cl7::u8string expected;
     } entry;
 
@@ -1679,13 +1679,13 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  to lower ASCII character")
 {
     struct Entry
     {
-        cl7::u8char_type input;
-        cl7::u8char_type expected;
+        cl7::u8char_t input;
+        cl7::u8char_t expected;
     } entry;
 
     std::vector<Entry> container;
     for (unsigned i = 0x20; i <= 0x7f; ++i)
-        container.push_back( { cl7::u8char_type(i), cl7::u8char_type(i >= 0x41 && i <= 0x5a ? i + 0x20 : i) } );
+        container.push_back( { cl7::u8char_t(i), cl7::u8char_t(i >= 0x41 && i <= 0x5a ? i + 0x20 : i) } );
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.expected )
     {
@@ -1697,13 +1697,13 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  to upper ASCII character")
 {
     struct Entry
     {
-        cl7::u8char_type input;
-        cl7::u8char_type expected;
+        cl7::u8char_t input;
+        cl7::u8char_t expected;
     } entry;
 
     std::vector<Entry> container;
     for (unsigned i = 0x20; i <= 0x7f; ++i)
-        container.push_back( { cl7::u8char_type(i), cl7::u8char_type(i >= 0x61 && i <= 0x7a ? i - 0x20 : i) } );
+        container.push_back( { cl7::u8char_t(i), cl7::u8char_t(i >= 0x61 && i <= 0x7a ? i - 0x20 : i) } );
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.expected )
     {
@@ -1773,7 +1773,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  to hex" )
     {
         unsigned val;
         unsigned pad;
-        cl7::u8char_type chA;
+        cl7::u8char_t chA;
         cl7::u8string expected;
     } entry;
 

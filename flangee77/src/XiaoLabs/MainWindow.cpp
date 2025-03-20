@@ -232,7 +232,7 @@ namespace xl7 {
             y = (screen_height - height) / 2;
         }
 
-        std::wstring window_name = cl7::strings::to_utfx(_title);
+        std::wstring window_name{cl7::strings::reinterpret_utf16(cl7::strings::to_utf16(_title))};
 
         // Create the window.
         _handle = ::CreateWindowExW(

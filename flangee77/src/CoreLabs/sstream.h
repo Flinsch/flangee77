@@ -38,9 +38,9 @@ public:
 
     unsigned int peek();
     unsigned int get();
-    u8isstream& get(u8char_type& ch);
-    u8isstream& getline(u8char_type* s, std::streamsize count, u8char_type delim = cl7::u8char_type{'\n'});
-    u8isstream& ignore(std::streamsize count = 1, unsigned int delim = std::char_traits<u8char_type>::eof());
+    u8isstream& get(u8char_t& ch);
+    u8isstream& getline(u8char_t* s, std::streamsize count, u8char_t delim = cl7::u8char_t{'\n'});
+    u8isstream& ignore(std::streamsize count = 1, unsigned int delim = std::char_traits<u8char_t>::eof());
 
     template <typename T>
     u8isstream& operator>>(T& value)
@@ -62,7 +62,7 @@ class u8osstream
 public:
     u8string str() const;
 
-    u8osstream& put(u8char_type ch);
+    u8osstream& put(u8char_t ch);
 
     template <typename T>
         requires(std::is_fundamental_v<T>)
@@ -80,10 +80,10 @@ public:
         return *this;
     }
 
-    u8osstream& operator<<(u8char_type value);
+    u8osstream& operator<<(u8char_t value);
     u8osstream& operator<<(u8string_view value);
     u8osstream& operator<<(const u8string& value);
-    u8osstream& operator<<(const u8char_type* value);
+    u8osstream& operator<<(const u8char_t* value);
 
     explicit operator bool() const;
 
@@ -99,7 +99,7 @@ private:
 
 namespace std {
 
-    cl7::u8isstream& getline(cl7::u8isstream& input, cl7::u8string& str, cl7::u8char_type delim = cl7::u8char_type{'\n'});
+    cl7::u8isstream& getline(cl7::u8isstream& input, cl7::u8string& str, cl7::u8char_t delim = cl7::u8char_t{'\n'});
 
 } // namespace std
 
