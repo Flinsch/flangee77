@@ -3,6 +3,8 @@
 #include <CoreLabs/logging.h>
 #include <CoreLabs/strings.h>
 
+#include <iostream>
+
 
 
 namespace cl7::strings {
@@ -19,7 +21,12 @@ namespace cl7::strings {
     CodepointResult LoggingErrorHandler::_check_adjust_ascii(codepoint codepoint) const
     {
         if (codepoint.value > codepoint::max_ascii)
-            _try_log_warning(u8"Invalid ASCII character: " + to_0xhex(codepoint.value) + u8" (" + to_string(codepoint.value) + u8")");
+        {
+            if (codepoint.value <= 0xff)
+                _try_log_warning(u8"Invalid code point outside ASCII range: " + to_0xhex(codepoint.value) + u8" (" + to_string(codepoint.value) + u8")");
+            else
+                _try_log_warning(u8"Invalid code point outside ASCII range: " + to_0xhex(codepoint.value));
+        }
 
         return ErrorHandler::_check_adjust_ascii(codepoint);
     }
@@ -27,10 +34,10 @@ namespace cl7::strings {
     CodepointResult LoggingErrorHandler::_check_adjust_unicode(codepoint codepoint) const
     {
         if (codepoint.value > codepoint::max_unicode)
-            _try_log_warning(u8"Invalid Unicode code point: " + to_0xhex(codepoint.value));
+            _try_log_warning(u8"Invalid Unicode code point (out of range): " + to_0xhex(codepoint.value));
 
         if (codepoint.is_surrogate())
-            _try_log_warning(u8"Invalid Unicode surrogate: " + to_0xhex(codepoint.value));
+            _try_log_warning(u8"Invalid Unicode code point (surrogate): " + to_0xhex(codepoint.value));
 
         return ErrorHandler::_check_adjust_unicode(codepoint);
     }
@@ -101,13 +108,13 @@ namespace cl7::strings {
         cl7::u8string message = u8"Invalid UTF-8 byte sequence:";
 
         if (first == 0xed && input_read.size() > 1 && input_read[1] >= 0xa0)
-            message = u8"Invalid 3-byte UTF-8 sequence representing the surrogate range 0xd800 through 0xdfff:";
+            message = u8"Invalid 3-byte UTF-8 sequence representing the surrogate range 0xD800 through 0xDFFF:";
 
         if (first == 0xf4 && input_read.size() > 1 && input_read[1] >= 0x90)
-            message = u8"Invalid 4-byte UTF-8 sequence representing a code range above 0x10ffff:";
+            message = u8"Invalid 4-byte UTF-8 sequence representing a code range above 0x10FFFF:";
 
         if (first >= 0xf5 && first <= 0xf7)
-            message = u8"Invalid 4-byte UTF-8 sequence representing a code range starting at 0x140000:";
+            message = u8"Invalid 4-byte UTF-8 sequence (representing a code range starting at 0x140000):";
 
         if (first >= 0xf8 && first <= 0xfb)
             message = u8"Invalid 5-byte UTF-8 sequence:";
@@ -128,7 +135,20 @@ namespace cl7::strings {
     {
         assert(!input_read.empty());
         assert(expected_length > input_read.size());
-        cl7::u8string message = u8"Incomplete UTF-8 sequence, " + to_string(expected_length - input_read.size()) + u8" byte(s) missing:";
+        const auto first = static_cast<uint8_t>(input_read[0]);
+        cl7::u8string message = u8"Incomplete UTF-8 sequence, ";
+
+        if (first >= 0xc0 && first <= 0xdf)
+            message = u8"Incomplete 2-byte UTF-8 sequence, ";
+
+        if (first >= 0xe0 && first <= 0xef)
+            message = u8"Incomplete 3-byte UTF-8 sequence, ";
+
+        if (first >= 0xf0 && first <= 0xf4)
+            message = u8"Incomplete 4-byte UTF-8 sequence, ";
+
+        message += to_string(expected_length - input_read.size()) + u8" byte(s) missing:";
+
         for (auto u8c : input_read)
             message += u8" " + to_0xhex(static_cast<uint8_t>(u8c));
         _try_log_warning(message);
@@ -154,13 +174,13 @@ namespace cl7::strings {
         cl7::u8string message = u8"Overlong UTF-8 encoding:";
 
         if (first == 0xc0 || first == 0xc1)
-            message = u8"Overlong 2-byte UTF-8 encoding representing the code range from 0 to 0x7f:";
+            message = u8"Overlong 2-byte UTF-8 encoding representing the code range from 0 to 0x7F:";
 
         if (first == 0xe0 && input_read.size() > 1 && input_read[1] < 0xa0)
-            message = u8"Overlong 3-byte UTF-8 encoding representing the code range from 0 to 0x7ff:";
+            message = u8"Overlong 3-byte UTF-8 encoding representing the code range from 0 to 0x7FF:";
 
         if (first == 0xf0 && input_read.size() > 1 && input_read[1] < 0x90)
-            message = u8"Overlong 4-byte UTF-8 encoding representing the code range from 0 to 0xffff:";
+            message = u8"Overlong 4-byte UTF-8 encoding representing the code range from 0 to 0xFFFF:";
 
         for (auto u8c : input_read)
             message += u8" " + to_0xhex(static_cast<uint8_t>(u8c));
@@ -185,6 +205,7 @@ namespace cl7::strings {
     void LoggingErrorHandler::_try_log_warning(cl7::u8string_view message) const
     {
         TRY_LOG_WARNING(_log_context, message);
+        //std::cout << cl7::strings::reinterpret_utf8(message) << "\n";
     }
 
 

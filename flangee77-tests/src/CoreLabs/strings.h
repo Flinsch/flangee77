@@ -7,6 +7,7 @@
 #include <CoreLabs/strings/Utf16Codec.h>
 #include <CoreLabs/strings/Utf32Codec.h>
 #include <CoreLabs/strings/EncodeBuffer.h>
+#include <CoreLabs/strings/DefaultErrorHandler.h>
 
 #include <TestLabs/TestSuite.h>
 
@@ -31,6 +32,10 @@ namespace tl7::internals {
         }
     }
 }
+
+
+
+using MyErrorHandler = cl7::strings::ErrorHandler;//cl7::strings::DefaultErrorHandler;
 
 
 
@@ -73,13 +78,13 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  AsciiCodec::encode_one" )
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
         cl7::strings::EncodeBuffer<cl7::achar_t> buffer;
-        cl7::strings::AsciiCodec::EncodeResult encode_result = cl7::strings::AsciiCodec::encode_one( entry.codepoint, buffer.string_span(), {} );
+        cl7::strings::AsciiCodec::EncodeResult encode_result = cl7::strings::AsciiCodec::encode_one( entry.codepoint, buffer.string_span(), MyErrorHandler{} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count );
         TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
         TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::astring_view(entry.output_written.data(), 1) );
 
-        encode_result = cl7::strings::AsciiCodec::encode_one( entry.codepoint, {}, {} );
+        encode_result = cl7::strings::AsciiCodec::encode_one( entry.codepoint, {}, MyErrorHandler{} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error | cl7::strings::EncodingError::ExhaustedOutputSpace ) );
         TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count + 1 );
         TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
@@ -112,7 +117,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  AsciiCodec::decode_one" )
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
-        cl7::strings::AsciiCodec::DecodeResult decode_result = cl7::strings::AsciiCodec::decode_one( cl7::astring_view(reinterpret_cast<const cl7::achar_t*>(entry.input.data()), entry.input.size()), {} );
+        cl7::strings::AsciiCodec::DecodeResult decode_result = cl7::strings::AsciiCodec::decode_one( cl7::astring_view(reinterpret_cast<const cl7::achar_t*>(entry.input.data()), entry.input.size()), MyErrorHandler{} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( decode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( decode_result.error_count, entry.codepoint_result.error_count );
         TESTLABS_CHECK_EQ( decode_result.codepoint.value, entry.codepoint_result.codepoint.value );
@@ -161,7 +166,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf8Codec::encode_one" )
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
         cl7::strings::EncodeBuffer<cl7::u8char_t> buffer;
-        cl7::strings::Utf8Codec::EncodeResult encode_result = cl7::strings::Utf8Codec::encode_one( entry.codepoint, buffer.string_span(), {} );
+        cl7::strings::Utf8Codec::EncodeResult encode_result = cl7::strings::Utf8Codec::encode_one( entry.codepoint, buffer.string_span(), MyErrorHandler{} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count );
         TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
@@ -169,7 +174,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf8Codec::encode_one" )
 
         TESTLABS_CHECK_EQ( encode_result.output_written.size(), cl7::strings::Utf8Codec::determine_encode_length( entry.codepoint ) );
 
-        encode_result = cl7::strings::Utf8Codec::encode_one( entry.codepoint, {}, {} );
+        encode_result = cl7::strings::Utf8Codec::encode_one( entry.codepoint, {}, MyErrorHandler{} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error | cl7::strings::EncodingError::ExhaustedOutputSpace ) );
         TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count + 1 );
         TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
@@ -177,7 +182,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf8Codec::encode_one" )
 
         if (entry.output_written.size() > 1)
         {
-            encode_result = cl7::strings::Utf8Codec::encode_one( entry.codepoint, buffer.string_span().subspan(0, entry.output_written.size() - 1), {} );
+            encode_result = cl7::strings::Utf8Codec::encode_one( entry.codepoint, buffer.string_span().subspan(0, entry.output_written.size() - 1), MyErrorHandler{} );
             TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error | cl7::strings::EncodingError::InsufficientOutputSpace ) );
             TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count + 1 );
             TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
@@ -246,7 +251,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf8Codec::decode_one" )
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
         auto input = cl7::u8string_view(reinterpret_cast<const cl7::u8char_t*>(entry.input.data()), entry.input.size());
-        cl7::strings::Utf8Codec::DecodeResult decode_result = cl7::strings::Utf8Codec::decode_one( input, {} );
+        cl7::strings::Utf8Codec::DecodeResult decode_result = cl7::strings::Utf8Codec::decode_one( input, MyErrorHandler{} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( decode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( decode_result.error_count, entry.codepoint_result.error_count );
         TESTLABS_CHECK_EQ( decode_result.codepoint.value, entry.codepoint_result.codepoint.value );
@@ -297,7 +302,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf16Codec::encode_one" )
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
         cl7::strings::EncodeBuffer<cl7::u16char_t> buffer;
-        cl7::strings::Utf16Codec::EncodeResult encode_result = cl7::strings::Utf16Codec::encode_one( entry.codepoint, buffer.string_span(), {} );
+        cl7::strings::Utf16Codec::EncodeResult encode_result = cl7::strings::Utf16Codec::encode_one( entry.codepoint, buffer.string_span(), MyErrorHandler{} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count );
         TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
@@ -305,7 +310,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf16Codec::encode_one" )
 
         TESTLABS_CHECK_EQ( encode_result.output_written.size(), cl7::strings::Utf16Codec::determine_encode_length( entry.codepoint ) );
 
-        encode_result = cl7::strings::Utf16Codec::encode_one( entry.codepoint, {}, {} );
+        encode_result = cl7::strings::Utf16Codec::encode_one( entry.codepoint, {}, MyErrorHandler{} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error | cl7::strings::EncodingError::ExhaustedOutputSpace ) );
         TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count + 1 );
         TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
@@ -313,7 +318,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf16Codec::encode_one" )
 
         if (entry.output_written.size() > 1)
         {
-            encode_result = cl7::strings::Utf16Codec::encode_one( entry.codepoint, buffer.string_span().subspan(0, entry.output_written.size() - 1), {} );
+            encode_result = cl7::strings::Utf16Codec::encode_one( entry.codepoint, buffer.string_span().subspan(0, entry.output_written.size() - 1), MyErrorHandler{} );
             TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error | cl7::strings::EncodingError::InsufficientOutputSpace ) );
             TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count + 1 );
             TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
@@ -366,7 +371,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf16Codec::decode_one" )
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
         auto input = cl7::u16string_view(reinterpret_cast<const cl7::u16char_t*>(entry.input.data()), entry.input.size());
-        cl7::strings::Utf16Codec::DecodeResult decode_result = cl7::strings::Utf16Codec::decode_one( input, {} );
+        cl7::strings::Utf16Codec::DecodeResult decode_result = cl7::strings::Utf16Codec::decode_one( input, MyErrorHandler{} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( decode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( decode_result.error_count, entry.codepoint_result.error_count );
         TESTLABS_CHECK_EQ( decode_result.codepoint.value, entry.codepoint_result.codepoint.value );
@@ -417,13 +422,13 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf32Codec::encode_one" )
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
         cl7::strings::EncodeBuffer<cl7::u32char_t> buffer;
-        cl7::strings::Utf32Codec::EncodeResult encode_result = cl7::strings::Utf32Codec::encode_one( entry.codepoint, buffer.string_span(), {} );
+        cl7::strings::Utf32Codec::EncodeResult encode_result = cl7::strings::Utf32Codec::encode_one( entry.codepoint, buffer.string_span(), MyErrorHandler{} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count );
         TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
         TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::u32string_view(entry.output_written.data(), 1) );
 
-        encode_result = cl7::strings::Utf32Codec::encode_one( entry.codepoint, {}, {} );
+        encode_result = cl7::strings::Utf32Codec::encode_one( entry.codepoint, {}, MyErrorHandler{} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error | cl7::strings::EncodingError::ExhaustedOutputSpace ) );
         TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count + 1 );
         TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
@@ -474,7 +479,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf32Codec::decode_one" )
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
-        cl7::strings::Utf32Codec::DecodeResult decode_result = cl7::strings::Utf32Codec::decode_one( cl7::u32string_view(reinterpret_cast<const cl7::u32char_t*>(entry.input.data()), entry.input.size()), {} );
+        cl7::strings::Utf32Codec::DecodeResult decode_result = cl7::strings::Utf32Codec::decode_one( cl7::u32string_view(reinterpret_cast<const cl7::u32char_t*>(entry.input.data()), entry.input.size()), MyErrorHandler{} );
         TESTLABS_CHECK_EQ( static_cast<unsigned>( decode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
         TESTLABS_CHECK_EQ( decode_result.error_count, entry.codepoint_result.error_count );
         TESTLABS_CHECK_EQ( decode_result.codepoint.value, entry.codepoint_result.codepoint.value );
