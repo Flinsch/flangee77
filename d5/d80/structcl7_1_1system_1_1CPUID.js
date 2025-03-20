@@ -7,6 +7,6 @@ var structcl7_1_1system_1_1CPUID =
     [ "bitness", "d5/d80/structcl7_1_1system_1_1CPUID.html#aaa20e92faec944acc0a68575e219d39f", null ],
     [ "frequency", "d5/d80/structcl7_1_1system_1_1CPUID.html#a8168bb8a104eee4f315567c62693095a", null ],
     [ "hardware_concurrency", "d5/d80/structcl7_1_1system_1_1CPUID.html#aa39af4a8f713ad76d1e857a7dcac27b3", null ],
-    [ "processor_name", "d5/d80/structcl7_1_1system_1_1CPUID.html#a2261faf6d52ccfaf0ed0045be15cea21", null ],
-    [ "vendor_name", "d5/d80/structcl7_1_1system_1_1CPUID.html#a0d205ed39680546502dae506ef22507c", null ]
+    [ "processor_name", "d5/d80/structcl7_1_1system_1_1CPUID.html#a9e2302e584b6cd5ce14daba54c0a599d", null ],
+    [ "vendor_name", "d5/d80/structcl7_1_1system_1_1CPUID.html#aff89747060a3dc6e892010bf09fd4c08", null ]
 ];

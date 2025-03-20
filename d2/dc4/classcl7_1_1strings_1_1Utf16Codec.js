@@ -1,6 +1,6 @@
 var classcl7_1_1strings_1_1Utf16Codec =
 [
-    [ "char_type", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#a678f5d2430dd9e844824accc3b949b99", null ],
+    [ "char_type", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#aae6578685956a639e421f477bf95f458", null ],
     [ "DecodeResult", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#acd36b91d89d2046bbd00fdfcbae2cf46", null ],
     [ "EncodeResult", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#a10684324a60b1e86abe72121f6ce8d1f", null ],
     [ "string_span_type", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#a0b2a8281f9d09ef92c65a971e4b25330", null ],

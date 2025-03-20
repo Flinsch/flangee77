@@ -3,7 +3,7 @@ var searchData=
   ['v_0',['v',['../da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html#ad9baa9cfea4061dba8ae7c68d20cc579',1,'xl7::graphics::Color::Value32::v'],['../d7/db1/structml7_1_1Vector2.html#ac031e47505ab5794df4b82a577ffa2d9',1,'ml7::Vector2::v']]],
   ['value_1',['value',['../dc/d49/structcl7_1_1strings_1_1codepoint.html#a60c8996c306a8c8d66e9a2610aa67aa8',1,'cl7::strings::codepoint::value'],['../da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html#a34ffee333d2de74ca5fc66c782e97ba8',1,'xl7::graphics::Color::Value32::value'],['../d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html#ac5abd12da6839ae1d6c5599af20cd8b2',1,'xl7::graphics::pipeline::AbstractPipelineObject::StateArray::Entry::value']]],
   ['vector_2',['vector',['../d0/dbe/structcl7_1_1ordered__map_1_1LookupCompare.html#a2dc6e827eb043a4d2c67ec7ff7d5d782',1,'cl7::ordered_map::LookupCompare']]],
-  ['vendor_5fname_3',['vendor_name',['../d5/d80/structcl7_1_1system_1_1CPUID.html#a0d205ed39680546502dae506ef22507c',1,'cl7::system::CPUID']]],
+  ['vendor_5fname_3',['vendor_name',['../d5/d80/structcl7_1_1system_1_1CPUID.html#aff89747060a3dc6e892010bf09fd4c08',1,'cl7::system::CPUID']]],
   ['version_5fmask_4',['VERSION_MASK',['../d8/d44/classxl7_1_1resources_1_1ResourceID.html#a63855e378211d192d754bbcf3b9df651',1,'xl7::resources::ResourceID']]],
   ['version_5fshift_5',['VERSION_SHIFT',['../d8/d44/classxl7_1_1resources_1_1ResourceID.html#ab8dcd1121e86735ba72952cf0cd6fbb5',1,'xl7::resources::ResourceID']]],
   ['version_5fsize_5fbits_6',['VERSION_SIZE_BITS',['../d8/d44/classxl7_1_1resources_1_1ResourceID.html#a6125d0cd98d8327b3e2d3e785e66d3e8',1,'xl7::resources::ResourceID']]],

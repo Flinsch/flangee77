@@ -16,7 +16,7 @@ var searchData=
   ['vector4_2ecpp_13',['Vector4.cpp',['../da/dc5/Vector4_8cpp.html',1,'']]],
   ['vector4_2eh_14',['Vector4.h',['../d7/d36/Vector4_8h.html',1,'']]],
   ['vector_5ftype_15',['vector_type',['../dd/d42/classcl7_1_1ordered__map.html#add57afe33e822afebdfcf0103bfd6a38',1,'cl7::ordered_map']]],
-  ['vendor_5fname_16',['vendor_name',['../d5/d80/structcl7_1_1system_1_1CPUID.html#a0d205ed39680546502dae506ef22507c',1,'cl7::system::CPUID']]],
+  ['vendor_5fname_16',['vendor_name',['../d5/d80/structcl7_1_1system_1_1CPUID.html#aff89747060a3dc6e892010bf09fd4c08',1,'cl7::system::CPUID']]],
   ['version_17',['version',['../db/ddf/structcl7_1_1Version.html',1,'cl7::Version'],['../d8/d44/classxl7_1_1resources_1_1ResourceID.html#a287799b9bf95f04900d50d6c47572cfe',1,'xl7::resources::ResourceID::version()']]],
   ['version_2ecpp_18',['Version.cpp',['../d3/d7a/Version_8cpp.html',1,'']]],
   ['version_2eh_19',['Version.h',['../de/d3a/Version_8h.html',1,'']]],

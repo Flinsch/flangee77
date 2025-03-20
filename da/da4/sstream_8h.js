@@ -10,5 +10,5 @@ var sstream_8h =
     [ "u32osstream", "da/da4/sstream_8h.html#a284c2fff1f1fa42cdfdb8fc1a0b45c78", null ],
     [ "wisstream", "da/da4/sstream_8h.html#a66b3f7e3de4ec23e6f0ea6b9c1b33899", null ],
     [ "wosstream", "da/da4/sstream_8h.html#a88069306694d6b5b47cf47582b4d597e", null ],
-    [ "getline", "da/da4/sstream_8h.html#ae6339d26d3a9686caa0ce0f915807d8a", null ]
+    [ "getline", "da/da4/sstream_8h.html#a9a1e9f11987c7329826476c661b0e4c9", null ]
 ];
