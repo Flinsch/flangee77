@@ -48,7 +48,7 @@ namespace cl7::profiling {
         (woss << "  Max  ").put(' ');
         while (woss.str().length() % 14 != 0)
             woss.put(' ');
-        (woss << "  \u2300 time  ").put(' ');
+        (woss << L"  \u2300 time  ").put(' ');
         while (woss.str().length() % 14 != 0)
             woss.put(' ');
         (woss << "  #  ").put(' ');
@@ -154,7 +154,7 @@ namespace cl7::profiling {
         else if (sample->stats.avg_usecs > 1'000)
             (woss << std::fixed << std::setprecision(1) << std::setw(6) << (static_cast<float>(sample->stats.avg_usecs) * 0.001f) << " ms").put(' ');
         else
-            (woss << std::fixed << std::setprecision(1) << std::setw(6) << (static_cast<float>(sample->stats.avg_usecs)) << " \u00b5s").put(' ');
+            (woss << std::fixed << std::setprecision(1) << std::setw(6) << (static_cast<float>(sample->stats.avg_usecs)) << L" \u00b5s").put(' ');
         while (woss.str().length() % 14 != 0)
             woss.put(' ');
         (woss << std::fixed << std::setprecision(0) << std::setw(5) << sample->stats.call_count << " ").put(' ');
