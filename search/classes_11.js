@@ -13,5 +13,11 @@ var searchData=
   ['texturemanager_10',['TextureManager',['../df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html',1,'xl7::graphics::textures']]],
   ['texturesamplerdeclaration_11',['TextureSamplerDeclaration',['../d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html',1,'xl7::graphics::shaders']]],
   ['texturesamplerstates_12',['texturesamplerstates',['../dc/db4/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates::TextureSamplerStates'],['../dc/d09/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates::TextureSamplerStates']]],
-  ['token_13',['Token',['../dc/d58/structdl7_1_1syntax_1_1Token.html',1,'dl7::syntax']]]
+  ['token_13',['Token',['../dc/d58/structdl7_1_1syntax_1_1Token.html',1,'dl7::syntax']]],
+  ['traits_14',['traits',['../d8/d97/structcl7_1_1strings_1_1traits.html',1,'cl7::strings']]],
+  ['traits_3c_20cl7_3a_3aachar_5ft_20_3e_15',['traits&lt; cl7::achar_t &gt;',['../de/da3/structcl7_1_1strings_1_1traits_3_01cl7_1_1achar__t_01_4.html',1,'cl7::strings']]],
+  ['traits_3c_20cl7_3a_3au16char_5ft_20_3e_16',['traits&lt; cl7::u16char_t &gt;',['../de/dc0/structcl7_1_1strings_1_1traits_3_01cl7_1_1u16char__t_01_4.html',1,'cl7::strings']]],
+  ['traits_3c_20cl7_3a_3au32char_5ft_20_3e_17',['traits&lt; cl7::u32char_t &gt;',['../d0/d0c/structcl7_1_1strings_1_1traits_3_01cl7_1_1u32char__t_01_4.html',1,'cl7::strings']]],
+  ['traits_3c_20cl7_3a_3au8char_5ft_20_3e_18',['traits&lt; cl7::u8char_t &gt;',['../dd/d07/structcl7_1_1strings_1_1traits_3_01cl7_1_1u8char__t_01_4.html',1,'cl7::strings']]],
+  ['transcoder_19',['Transcoder',['../d8/d71/classcl7_1_1strings_1_1Transcoder.html',1,'cl7::strings']]]
 ];

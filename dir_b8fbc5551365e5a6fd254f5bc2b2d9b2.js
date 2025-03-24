@@ -1,8 +1,8 @@
 var dir_b8fbc5551365e5a6fd254f5bc2b2d9b2 =
 [
+    [ "Analyzer.h", "d6/d69/Analyzer_8h.html", "d6/d69/Analyzer_8h" ],
     [ "AsciiCodec.cpp", "d6/dd4/AsciiCodec_8cpp.html", null ],
     [ "AsciiCodec.h", "d2/dfb/AsciiCodec_8h.html", "d2/dfb/AsciiCodec_8h" ],
-    [ "BaseResult.h", "d6/d40/BaseResult_8h.html", "d6/d40/BaseResult_8h" ],
     [ "codepoint.cpp", "d2/d7e/codepoint_8cpp.html", null ],
     [ "codepoint.h", "d8/d47/codepoint_8h.html", "d8/d47/codepoint_8h" ],
     [ "CodepointResult.h", "d7/d16/CodepointResult_8h.html", "d7/d16/CodepointResult_8h" ],
@@ -14,8 +14,11 @@ var dir_b8fbc5551365e5a6fd254f5bc2b2d9b2 =
     [ "EncodingError.h", "d9/d2a/EncodingError_8h.html", "d9/d2a/EncodingError_8h" ],
     [ "ErrorHandler.cpp", "d7/d91/ErrorHandler_8cpp.html", null ],
     [ "ErrorHandler.h", "dd/d0e/ErrorHandler_8h.html", "dd/d0e/ErrorHandler_8h" ],
+    [ "ErrorStatus.h", "dd/d42/ErrorStatus_8h.html", "dd/d42/ErrorStatus_8h" ],
     [ "LoggingErrorHandler.cpp", "d7/d5a/LoggingErrorHandler_8cpp.html", null ],
     [ "LoggingErrorHandler.h", "d5/dd6/LoggingErrorHandler_8h.html", "d5/dd6/LoggingErrorHandler_8h" ],
+    [ "traits.h", "dd/dff/traits_8h.html", "dd/dff/traits_8h" ],
+    [ "Transcoder.h", "d6/db9/Transcoder_8h.html", "d6/db9/Transcoder_8h" ],
     [ "Utf16Codec.cpp", "d1/d12/Utf16Codec_8cpp.html", "d1/d12/Utf16Codec_8cpp" ],
     [ "Utf16Codec.h", "d3/ddc/Utf16Codec_8h.html", "d3/ddc/Utf16Codec_8h" ],
     [ "Utf32Codec.cpp", "df/da7/Utf32Codec_8cpp.html", null ],

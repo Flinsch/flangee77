@@ -40,15 +40,22 @@ var annotated_dup =
         [ "Stopwatch", "d6/dac/classcl7_1_1profiling_1_1Stopwatch.html", "d6/dac/classcl7_1_1profiling_1_1Stopwatch" ]
       ] ],
       [ "strings", "dc/d17/namespacecl7_1_1strings.html", [
+        [ "Analyzer", "d7/d68/classcl7_1_1strings_1_1Analyzer.html", "d7/d68/classcl7_1_1strings_1_1Analyzer" ],
         [ "AsciiCodec", "d1/d63/classcl7_1_1strings_1_1AsciiCodec.html", "d1/d63/classcl7_1_1strings_1_1AsciiCodec" ],
-        [ "BaseResult", "d0/d8d/structcl7_1_1strings_1_1BaseResult.html", "d0/d8d/structcl7_1_1strings_1_1BaseResult" ],
         [ "codepoint", "dc/d49/structcl7_1_1strings_1_1codepoint.html", "dc/d49/structcl7_1_1strings_1_1codepoint" ],
         [ "CodepointResult", "de/d47/structcl7_1_1strings_1_1CodepointResult.html", "de/d47/structcl7_1_1strings_1_1CodepointResult" ],
         [ "DecodeResult", "d7/d98/structcl7_1_1strings_1_1DecodeResult.html", "d7/d98/structcl7_1_1strings_1_1DecodeResult" ],
         [ "EncodeBuffer", "d1/d9d/structcl7_1_1strings_1_1EncodeBuffer.html", "d1/d9d/structcl7_1_1strings_1_1EncodeBuffer" ],
         [ "EncodeResult", "db/d55/structcl7_1_1strings_1_1EncodeResult.html", "db/d55/structcl7_1_1strings_1_1EncodeResult" ],
         [ "ErrorHandler", "d7/dff/classcl7_1_1strings_1_1ErrorHandler.html", "d7/dff/classcl7_1_1strings_1_1ErrorHandler" ],
+        [ "ErrorStatus", "dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html", "dd/d0d/structcl7_1_1strings_1_1ErrorStatus" ],
         [ "LoggingErrorHandler", "d0/d92/classcl7_1_1strings_1_1LoggingErrorHandler.html", "d0/d92/classcl7_1_1strings_1_1LoggingErrorHandler" ],
+        [ "traits", "d8/d97/structcl7_1_1strings_1_1traits.html", "d8/d97/structcl7_1_1strings_1_1traits" ],
+        [ "traits< cl7::achar_t >", "de/da3/structcl7_1_1strings_1_1traits_3_01cl7_1_1achar__t_01_4.html", "de/da3/structcl7_1_1strings_1_1traits_3_01cl7_1_1achar__t_01_4" ],
+        [ "traits< cl7::u16char_t >", "de/dc0/structcl7_1_1strings_1_1traits_3_01cl7_1_1u16char__t_01_4.html", "de/dc0/structcl7_1_1strings_1_1traits_3_01cl7_1_1u16char__t_01_4" ],
+        [ "traits< cl7::u32char_t >", "d0/d0c/structcl7_1_1strings_1_1traits_3_01cl7_1_1u32char__t_01_4.html", "d0/d0c/structcl7_1_1strings_1_1traits_3_01cl7_1_1u32char__t_01_4" ],
+        [ "traits< cl7::u8char_t >", "dd/d07/structcl7_1_1strings_1_1traits_3_01cl7_1_1u8char__t_01_4.html", "dd/d07/structcl7_1_1strings_1_1traits_3_01cl7_1_1u8char__t_01_4" ],
+        [ "Transcoder", "d8/d71/classcl7_1_1strings_1_1Transcoder.html", "d8/d71/classcl7_1_1strings_1_1Transcoder" ],
         [ "Utf16Codec", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec" ],
         [ "Utf32Codec", "d2/dec/classcl7_1_1strings_1_1Utf32Codec.html", "d2/dec/classcl7_1_1strings_1_1Utf32Codec" ],
         [ "Utf8Codec", "d7/ddc/classcl7_1_1strings_1_1Utf8Codec.html", "d7/ddc/classcl7_1_1strings_1_1Utf8Codec" ]

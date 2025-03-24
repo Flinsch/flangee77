@@ -17,6 +17,7 @@ var hierarchy =
       ] ],
       [ "xl7::graphics::pipeline::Pipeline", "d6/d62/classxl7_1_1graphics_1_1pipeline_1_1Pipeline.html", null ]
     ] ],
+    [ "cl7::strings::Analyzer< Tchar, TDefaultErrorHandler >", "d7/d68/classcl7_1_1strings_1_1Analyzer.html", null ],
     [ "ml7::Angle", "d4/d9d/structml7_1_1Angle.html", null ],
     [ "pl7::Application", "d8/d91/classpl7_1_1Application.html", null ],
     [ "pl7::ArgumentBag", "dd/d75/classpl7_1_1ArgumentBag.html", null ],
@@ -54,12 +55,6 @@ var hierarchy =
     [ "xl7::resources::Resource::Attorney", "d0/d78/classxl7_1_1resources_1_1Resource_1_1Attorney.html", null ],
     [ "cl7::auto_invoke< Callable >", "de/dbb/classcl7_1_1auto__invoke.html", null ],
     [ "dl7::Base64", "da/d3b/classdl7_1_1Base64.html", null ],
-    [ "cl7::strings::BaseResult", "d0/d8d/structcl7_1_1strings_1_1BaseResult.html", [
-      [ "cl7::strings::CodepointResult", "de/d47/structcl7_1_1strings_1_1CodepointResult.html", [
-        [ "cl7::strings::DecodeResult< Tchar >", "d7/d98/structcl7_1_1strings_1_1DecodeResult.html", null ],
-        [ "cl7::strings::EncodeResult< Tchar >", "db/d55/structcl7_1_1strings_1_1EncodeResult.html", null ]
-      ] ]
-    ] ],
     [ "xl7::graphics::images::PngImageHandler::BitInfo", "d1/db4/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1BitInfo.html", null ],
     [ "cl7::logging::HtmlLogHandler::Block", "dc/d37/structcl7_1_1logging_1_1HtmlLogHandler_1_1Block.html", null ],
     [ "cl7::io::byte_reader", "db/d94/classcl7_1_1io_1_1byte__reader.html", null ],
@@ -68,6 +63,10 @@ var hierarchy =
     [ "xl7::graphics::PixelBitKit::Channel", "d3/da3/structxl7_1_1graphics_1_1PixelBitKit_1_1Channel.html", null ],
     [ "xl7::graphics::images::PngImageHandler::ChunkInfo", "d9/dc0/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1ChunkInfo.html", null ],
     [ "cl7::strings::codepoint", "dc/d49/structcl7_1_1strings_1_1codepoint.html", null ],
+    [ "cl7::strings::CodepointResult", "de/d47/structcl7_1_1strings_1_1CodepointResult.html", [
+      [ "cl7::strings::DecodeResult< Tchar >", "d7/d98/structcl7_1_1strings_1_1DecodeResult.html", null ],
+      [ "cl7::strings::EncodeResult< Tchar >", "db/d55/structcl7_1_1strings_1_1EncodeResult.html", null ]
+    ] ],
     [ "xl7::graphics::Color", "de/df3/structxl7_1_1graphics_1_1Color.html", null ],
     [ "xl7::graphics::shaders::CompileOptions", "de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html", null ],
     [ "xl7::graphics::impl::shared::meshes::ComposedVertexLayout", "d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout.html", null ],
@@ -124,6 +123,7 @@ var hierarchy =
     [ "cl7::strings::ErrorHandler", "d7/dff/classcl7_1_1strings_1_1ErrorHandler.html", [
       [ "cl7::strings::LoggingErrorHandler", "d0/d92/classcl7_1_1strings_1_1LoggingErrorHandler.html", null ]
     ] ],
+    [ "cl7::strings::ErrorStatus", "dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html", null ],
     [ "std::exception", null, [
       [ "tl7::exceptions::assertion_exception", "d6/db9/structtl7_1_1exceptions_1_1assertion__exception.html", null ]
     ] ],
@@ -373,6 +373,12 @@ var hierarchy =
       ] ]
     ] ],
     [ "dl7::syntax::Token", "dc/d58/structdl7_1_1syntax_1_1Token.html", null ],
+    [ "cl7::strings::traits< Tchar >", "d8/d97/structcl7_1_1strings_1_1traits.html", null ],
+    [ "cl7::strings::traits< cl7::achar_t >", "de/da3/structcl7_1_1strings_1_1traits_3_01cl7_1_1achar__t_01_4.html", null ],
+    [ "cl7::strings::traits< cl7::u16char_t >", "de/dc0/structcl7_1_1strings_1_1traits_3_01cl7_1_1u16char__t_01_4.html", null ],
+    [ "cl7::strings::traits< cl7::u32char_t >", "d0/d0c/structcl7_1_1strings_1_1traits_3_01cl7_1_1u32char__t_01_4.html", null ],
+    [ "cl7::strings::traits< cl7::u8char_t >", "dd/d07/structcl7_1_1strings_1_1traits_3_01cl7_1_1u8char__t_01_4.html", null ],
+    [ "cl7::strings::Transcoder< Tchar_from, Tchar_to, TDefaultErrorHandler >", "d8/d71/classcl7_1_1strings_1_1Transcoder.html", null ],
     [ "cl7::u8isstream", "d9/d44/classcl7_1_1u8isstream.html", null ],
     [ "cl7::u8osstream", "d3/d63/classcl7_1_1u8osstream.html", null ],
     [ "cl7::system::user", "dd/d72/classcl7_1_1system_1_1user.html", null ],

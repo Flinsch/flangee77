@@ -1,14 +1,21 @@
 var namespacecl7_1_1strings =
 [
+    [ "Analyzer", "d7/d68/classcl7_1_1strings_1_1Analyzer.html", "d7/d68/classcl7_1_1strings_1_1Analyzer" ],
     [ "AsciiCodec", "d1/d63/classcl7_1_1strings_1_1AsciiCodec.html", "d1/d63/classcl7_1_1strings_1_1AsciiCodec" ],
-    [ "BaseResult", "d0/d8d/structcl7_1_1strings_1_1BaseResult.html", "d0/d8d/structcl7_1_1strings_1_1BaseResult" ],
     [ "codepoint", "dc/d49/structcl7_1_1strings_1_1codepoint.html", "dc/d49/structcl7_1_1strings_1_1codepoint" ],
     [ "CodepointResult", "de/d47/structcl7_1_1strings_1_1CodepointResult.html", "de/d47/structcl7_1_1strings_1_1CodepointResult" ],
     [ "DecodeResult", "d7/d98/structcl7_1_1strings_1_1DecodeResult.html", "d7/d98/structcl7_1_1strings_1_1DecodeResult" ],
     [ "EncodeBuffer", "d1/d9d/structcl7_1_1strings_1_1EncodeBuffer.html", "d1/d9d/structcl7_1_1strings_1_1EncodeBuffer" ],
     [ "EncodeResult", "db/d55/structcl7_1_1strings_1_1EncodeResult.html", "db/d55/structcl7_1_1strings_1_1EncodeResult" ],
     [ "ErrorHandler", "d7/dff/classcl7_1_1strings_1_1ErrorHandler.html", "d7/dff/classcl7_1_1strings_1_1ErrorHandler" ],
+    [ "ErrorStatus", "dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html", "dd/d0d/structcl7_1_1strings_1_1ErrorStatus" ],
     [ "LoggingErrorHandler", "d0/d92/classcl7_1_1strings_1_1LoggingErrorHandler.html", "d0/d92/classcl7_1_1strings_1_1LoggingErrorHandler" ],
+    [ "traits", "d8/d97/structcl7_1_1strings_1_1traits.html", "d8/d97/structcl7_1_1strings_1_1traits" ],
+    [ "traits< cl7::achar_t >", "de/da3/structcl7_1_1strings_1_1traits_3_01cl7_1_1achar__t_01_4.html", "de/da3/structcl7_1_1strings_1_1traits_3_01cl7_1_1achar__t_01_4" ],
+    [ "traits< cl7::u16char_t >", "de/dc0/structcl7_1_1strings_1_1traits_3_01cl7_1_1u16char__t_01_4.html", "de/dc0/structcl7_1_1strings_1_1traits_3_01cl7_1_1u16char__t_01_4" ],
+    [ "traits< cl7::u32char_t >", "d0/d0c/structcl7_1_1strings_1_1traits_3_01cl7_1_1u32char__t_01_4.html", "d0/d0c/structcl7_1_1strings_1_1traits_3_01cl7_1_1u32char__t_01_4" ],
+    [ "traits< cl7::u8char_t >", "dd/d07/structcl7_1_1strings_1_1traits_3_01cl7_1_1u8char__t_01_4.html", "dd/d07/structcl7_1_1strings_1_1traits_3_01cl7_1_1u8char__t_01_4" ],
+    [ "Transcoder", "d8/d71/classcl7_1_1strings_1_1Transcoder.html", "d8/d71/classcl7_1_1strings_1_1Transcoder" ],
     [ "Utf16Codec", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec" ],
     [ "Utf32Codec", "d2/dec/classcl7_1_1strings_1_1Utf32Codec.html", "d2/dec/classcl7_1_1strings_1_1Utf32Codec" ],
     [ "Utf8Codec", "d7/ddc/classcl7_1_1strings_1_1Utf8Codec.html", "d7/ddc/classcl7_1_1strings_1_1Utf8Codec" ],
@@ -35,8 +42,6 @@ var namespacecl7_1_1strings =
       [ "OverlongEncoding", "dc/d17/namespacecl7_1_1strings.html#af691638e9c6fbf723b19957270f2c0d2a60eb458e335e22953749121d8e4ec18c", null ],
       [ "UnpairedSurrogate", "dc/d17/namespacecl7_1_1strings.html#af691638e9c6fbf723b19957270f2c0d2a90ede45c5db434f01ca0e067daf5b5fe", null ]
     ] ],
-    [ "_check_adjust_ascii", "dc/d17/namespacecl7_1_1strings.html#a0c52a4b43abca0ad72a492923c12c0ed", null ],
-    [ "_check_adjust_unicode", "dc/d17/namespacecl7_1_1strings.html#a26a1042d0e86ca0e498614ef860a78c0", null ],
     [ "_determine_decode_length", "dc/d17/namespacecl7_1_1strings.html#a242956c18013e4802e0fe289c67d4282", null ],
     [ "_determine_decode_length", "dc/d17/namespacecl7_1_1strings.html#a77007af316145b6203421065aba44e7d", null ],
     [ "_determine_encode_length", "dc/d17/namespacecl7_1_1strings.html#a7011cb062633edf0cfb758034bd4260d", null ],
@@ -47,9 +52,6 @@ var namespacecl7_1_1strings =
     [ "_do_decode_4", "dc/d17/namespacecl7_1_1strings.html#adee0798cea0c5fc537d3bae9fd61677c", null ],
     [ "_do_encode", "dc/d17/namespacecl7_1_1strings.html#a5302ff1a609e3769781fe79e8c3741c1", null ],
     [ "_do_encode", "dc/d17/namespacecl7_1_1strings.html#abae7909f54de496991b22cab9489636d", null ],
-    [ "_to_utfx", "dc/d17/namespacecl7_1_1strings.html#ae4a70009b308226fdafa049e33bc8d53", null ],
-    [ "_try_log_warning", "dc/d17/namespacecl7_1_1strings.html#ab6b751fdd6f6102e1ef942569b3c483f", null ],
-    [ "_try_log_warning_always_return_false", "dc/d17/namespacecl7_1_1strings.html#a11b0272f9c513807318db0ac36c067ab", null ],
     [ "check_ascii", "dc/d17/namespacecl7_1_1strings.html#ab2999c590b20ba302d7b451a5623fd4b", null ],
     [ "check_utf16", "dc/d17/namespacecl7_1_1strings.html#a91f5986390acde1554b5f0a6450cf84c", null ],
     [ "check_utf32", "dc/d17/namespacecl7_1_1strings.html#a2d0f06b2b836df7fb30f221277f84d49", null ],
@@ -145,7 +147,5 @@ var namespacecl7_1_1strings =
     [ "trim", "dc/d17/namespacecl7_1_1strings.html#a13ee460b13d6eafcf049c71cf45a3df0", null ],
     [ "trimmed", "dc/d17/namespacecl7_1_1strings.html#a1d22859e70f098383e22365337b5ed81", null ],
     [ "utf16_length", "dc/d17/namespacecl7_1_1strings.html#a7e9505c495a8abc798ec7f77c800d353", null ],
-    [ "utf8_length", "dc/d17/namespacecl7_1_1strings.html#a0a0b08220b93d9c9f24705d4334ca576", null ],
-    [ "_replacement_ascii", "dc/d17/namespacecl7_1_1strings.html#a96a459a03bf4b6e366838121f2782e23", null ],
-    [ "_replacement_unicode", "dc/d17/namespacecl7_1_1strings.html#a53170a17082d6004de3d5cfc4461975e", null ]
+    [ "utf8_length", "dc/d17/namespacecl7_1_1strings.html#a0a0b08220b93d9c9f24705d4334ca576", null ]
 ];

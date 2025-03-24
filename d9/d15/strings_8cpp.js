@@ -1,10 +1,5 @@
 var strings_8cpp =
 [
-    [ "_check_adjust_ascii", "d9/d15/strings_8cpp.html#a0c52a4b43abca0ad72a492923c12c0ed", null ],
-    [ "_check_adjust_unicode", "d9/d15/strings_8cpp.html#a26a1042d0e86ca0e498614ef860a78c0", null ],
-    [ "_to_utfx", "d9/d15/strings_8cpp.html#ae4a70009b308226fdafa049e33bc8d53", null ],
-    [ "_try_log_warning", "d9/d15/strings_8cpp.html#ab6b751fdd6f6102e1ef942569b3c483f", null ],
-    [ "_try_log_warning_always_return_false", "d9/d15/strings_8cpp.html#a11b0272f9c513807318db0ac36c067ab", null ],
     [ "check_ascii", "d9/d15/strings_8cpp.html#ab2999c590b20ba302d7b451a5623fd4b", null ],
     [ "check_utf16", "d9/d15/strings_8cpp.html#a91f5986390acde1554b5f0a6450cf84c", null ],
     [ "check_utf32", "d9/d15/strings_8cpp.html#a2d0f06b2b836df7fb30f221277f84d49", null ],
@@ -56,7 +51,5 @@ var strings_8cpp =
     [ "to_utfx", "d9/d15/strings_8cpp.html#acdcf98154f959af7f7dd4cc9da9d8119", null ],
     [ "to_utfx", "d9/d15/strings_8cpp.html#aa7642d0ecaec53fc102cffeb22711d30", null ],
     [ "utf16_length", "d9/d15/strings_8cpp.html#a7e9505c495a8abc798ec7f77c800d353", null ],
-    [ "utf8_length", "d9/d15/strings_8cpp.html#a0a0b08220b93d9c9f24705d4334ca576", null ],
-    [ "_replacement_ascii", "d9/d15/strings_8cpp.html#a96a459a03bf4b6e366838121f2782e23", null ],
-    [ "_replacement_unicode", "d9/d15/strings_8cpp.html#a53170a17082d6004de3d5cfc4461975e", null ]
+    [ "utf8_length", "d9/d15/strings_8cpp.html#a0a0b08220b93d9c9f24705d4334ca576", null ]
 ];
