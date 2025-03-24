@@ -6,14 +6,14 @@ namespace cl7::strings {
 
 
 
-    Utf32Codec::EncodeResult Utf32Codec::encode_one(codepoint codepoint, string_span_type output, const ErrorHandler& error_handler)
+    Utf32Codec::EncodeResult Utf32Codec::encode_one(ErrorStatus& error_status, codepoint codepoint, string_span_type output, const ErrorHandler& error_handler)
     {
-        auto codepoint_result = error_handler.check_adjust_unicode(codepoint);
+        auto codepoint_result = error_handler.check_adjust_unicode(error_status, codepoint);
 
         if (output.empty())
         {
             return {
-                error_handler.on_exhausted_output_space(encoding, codepoint_result),
+                error_handler.on_exhausted_output_space(error_status, encoding, codepoint_result),
                 {},
             };
         }
@@ -29,7 +29,7 @@ namespace cl7::strings {
 
 
 
-    Utf32Codec::DecodeResult Utf32Codec::decode_one(string_view_type input, const ErrorHandler& error_handler)
+    Utf32Codec::DecodeResult Utf32Codec::decode_one(ErrorStatus& error_status, string_view_type input, const ErrorHandler& error_handler)
     {
         if (input.empty())
             return {};
@@ -38,7 +38,7 @@ namespace cl7::strings {
 
         if (!codepoint.is_valid_unicode())
         {
-            return error_handler.on_invalid_code_unit(input.substr(0, 1));
+            return error_handler.on_invalid_code_unit(error_status, input.substr(0, 1));
         }
 
         return {

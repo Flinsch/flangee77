@@ -46,6 +46,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  AsciiCodec::encode_one" )
         cl7::strings::codepoint codepoint;
         cl7::strings::CodepointResult codepoint_result;
         std::vector<cl7::achar_t> output_written;
+        cl7::strings::ErrorStatus error_status;
     } entry;
 
     const std::vector<Entry> container {
@@ -56,39 +57,46 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  AsciiCodec::encode_one" )
         { 0x001a, { {0x001a} }, {0x1a} },
         { 0x007f, { {0x007f} }, {0x7f} },
 
-        { 0x0080, { cl7::strings::EncodingError::OutOfRangeAscii, {0x001a} }, {0x1a} },
-        { 0x00ff, { cl7::strings::EncodingError::OutOfRangeAscii, {0x001a} }, {0x1a} },
-        { 0x07ff, { cl7::strings::EncodingError::OutOfRangeAscii, {0x001a} }, {0x1a} },
-        { 0x0800, { cl7::strings::EncodingError::OutOfRangeAscii, {0x001a} }, {0x1a} },
+        { 0x0080, { {0x001a} }, {0x1a}, cl7::strings::EncodingError::OutOfRangeAscii },
+        { 0x00ff, { {0x001a} }, {0x1a}, cl7::strings::EncodingError::OutOfRangeAscii },
+        { 0x07ff, { {0x001a} }, {0x1a}, cl7::strings::EncodingError::OutOfRangeAscii },
+        { 0x0800, { {0x001a} }, {0x1a}, cl7::strings::EncodingError::OutOfRangeAscii },
 
-        { 0xd7ff, { cl7::strings::EncodingError::OutOfRangeAscii, {0x001a} }, {0x1a} },
-        { 0xd800, { cl7::strings::EncodingError::OutOfRangeAscii, {0x001a} }, {0x1a} },
-        { 0xdbff, { cl7::strings::EncodingError::OutOfRangeAscii, {0x001a} }, {0x1a} },
-        { 0xdc00, { cl7::strings::EncodingError::OutOfRangeAscii, {0x001a} }, {0x1a} },
-        { 0xdfff, { cl7::strings::EncodingError::OutOfRangeAscii, {0x001a} }, {0x1a} },
-        { 0xe000, { cl7::strings::EncodingError::OutOfRangeAscii, {0x001a} }, {0x1a} },
+        { 0xd7ff, { {0x001a} }, {0x1a}, cl7::strings::EncodingError::OutOfRangeAscii },
+        { 0xd800, { {0x001a} }, {0x1a}, cl7::strings::EncodingError::OutOfRangeAscii },
+        { 0xdbff, { {0x001a} }, {0x1a}, cl7::strings::EncodingError::OutOfRangeAscii },
+        { 0xdc00, { {0x001a} }, {0x1a}, cl7::strings::EncodingError::OutOfRangeAscii },
+        { 0xdfff, { {0x001a} }, {0x1a}, cl7::strings::EncodingError::OutOfRangeAscii },
+        { 0xe000, { {0x001a} }, {0x1a}, cl7::strings::EncodingError::OutOfRangeAscii },
 
-        { 0xfffd, { cl7::strings::EncodingError::OutOfRangeAscii, {0x001a} }, {0x1a} },
-        { 0xffff, { cl7::strings::EncodingError::OutOfRangeAscii, {0x001a} }, {0x1a} },
-        { 0x10000, { cl7::strings::EncodingError::OutOfRangeAscii, {0x001a} }, {0x1a} },
-        { 0x10ffff, { cl7::strings::EncodingError::OutOfRangeAscii, {0x001a} }, {0x1a} },
-        { 0x110000, { cl7::strings::EncodingError::OutOfRangeAscii, {0x001a} }, {0x1a} },
+        { 0xfffd, { {0x001a} }, {0x1a}, cl7::strings::EncodingError::OutOfRangeAscii },
+        { 0xffff, { {0x001a} }, {0x1a}, cl7::strings::EncodingError::OutOfRangeAscii },
+        { 0x10000, { {0x001a} }, {0x1a}, cl7::strings::EncodingError::OutOfRangeAscii },
+        { 0x10ffff, { {0x001a} }, {0x1a}, cl7::strings::EncodingError::OutOfRangeAscii },
+        { 0x110000, { {0x001a} }, {0x1a}, cl7::strings::EncodingError::OutOfRangeAscii },
     };
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
         cl7::strings::EncodeBuffer<cl7::achar_t> buffer;
-        cl7::strings::AsciiCodec::EncodeResult encode_result = cl7::strings::AsciiCodec::encode_one( entry.codepoint, buffer.string_span(), MyErrorHandler{} );
-        TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
-        TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count );
-        TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
-        TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::astring_view(entry.output_written.data(), 1) );
 
-        encode_result = cl7::strings::AsciiCodec::encode_one( entry.codepoint, {}, MyErrorHandler{} );
-        TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error | cl7::strings::EncodingError::ExhaustedOutputSpace ) );
-        TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count + 1 );
-        TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
-        TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::astring_view() );
+        {
+            cl7::strings::ErrorStatus error_status;
+            cl7::strings::AsciiCodec::EncodeResult encode_result = cl7::strings::AsciiCodec::encode_one( error_status, entry.codepoint, buffer.string_span(), MyErrorHandler{} );
+            TESTLABS_CHECK_EQ( static_cast<unsigned>( error_status.error ), static_cast<unsigned>( entry.error_status.error ) );
+            TESTLABS_CHECK_EQ( error_status.error_count, entry.error_status.error_count );
+            TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
+            TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::astring_view(entry.output_written.data(), 1) );
+        }
+
+        {
+            cl7::strings::ErrorStatus error_status;
+            cl7::strings::AsciiCodec::EncodeResult encode_result = cl7::strings::AsciiCodec::encode_one( error_status, entry.codepoint, {}, MyErrorHandler{} );
+            TESTLABS_CHECK_EQ( static_cast<unsigned>( error_status.error ), static_cast<unsigned>( entry.error_status.error | cl7::strings::EncodingError::ExhaustedOutputSpace ) );
+            TESTLABS_CHECK_EQ( error_status.error_count, entry.error_status.error_count + 1 );
+            TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
+            TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::astring_view() );
+        }
     }
 }
 
@@ -99,6 +107,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  AsciiCodec::decode_one" )
         std::vector<uint8_t> input;
         cl7::strings::CodepointResult codepoint_result;
         size_t input_read_size;
+        cl7::strings::ErrorStatus error_status;
     } entry;
 
     const std::vector<Entry> container {
@@ -111,15 +120,16 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  AsciiCodec::decode_one" )
         { {0x7f}, { {0x007f} }, 1 },
         { {0x7f, 0x7f}, { {0x007f} }, 1 },
 
-        { {0x80}, { cl7::strings::EncodingError::InvalidCodeUnit, {0x001a} }, 1 },
-        { {0xff}, { cl7::strings::EncodingError::InvalidCodeUnit, {0x001a} }, 1 },
+        { {0x80}, { {0x001a} }, 1, cl7::strings::EncodingError::InvalidCodeUnit },
+        { {0xff}, { {0x001a} }, 1, cl7::strings::EncodingError::InvalidCodeUnit },
     };
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
-        cl7::strings::AsciiCodec::DecodeResult decode_result = cl7::strings::AsciiCodec::decode_one( cl7::astring_view(reinterpret_cast<const cl7::achar_t*>(entry.input.data()), entry.input.size()), MyErrorHandler{} );
-        TESTLABS_CHECK_EQ( static_cast<unsigned>( decode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
-        TESTLABS_CHECK_EQ( decode_result.error_count, entry.codepoint_result.error_count );
+        cl7::strings::ErrorStatus error_status;
+        cl7::strings::AsciiCodec::DecodeResult decode_result = cl7::strings::AsciiCodec::decode_one( error_status, cl7::astring_view(reinterpret_cast<const cl7::achar_t*>(entry.input.data()), entry.input.size()), MyErrorHandler{} );
+        TESTLABS_CHECK_EQ( static_cast<unsigned>( error_status.error ), static_cast<unsigned>( entry.error_status.error ) );
+        TESTLABS_CHECK_EQ( error_status.error_count, entry.error_status.error_count );
         TESTLABS_CHECK_EQ( decode_result.codepoint.value, entry.codepoint_result.codepoint.value );
         TESTLABS_CHECK_EQ( decode_result.input_read.size(), entry.input_read_size );
     }
@@ -134,6 +144,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf8Codec::encode_one" )
         cl7::strings::codepoint codepoint;
         cl7::strings::CodepointResult codepoint_result;
         std::vector<cl7::u8char_t> output_written;
+        cl7::strings::ErrorStatus error_status;
     } entry;
 
     const std::vector<Entry> container {
@@ -150,41 +161,49 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf8Codec::encode_one" )
         { 0x0800, { {0x0800} }, {0xe0, 0xa0, 0x80} },
 
         { 0xd7ff, { {0xd7ff} }, {0xed, 0x9f, 0xbf} },
-        { 0xd800, { cl7::strings::EncodingError::DisallowedUnicode, {0xfffd} }, {0xef, 0xbf, 0xbd} },
-        { 0xdbff, { cl7::strings::EncodingError::DisallowedUnicode, {0xfffd} }, {0xef, 0xbf, 0xbd} },
-        { 0xdc00, { cl7::strings::EncodingError::DisallowedUnicode, {0xfffd} }, {0xef, 0xbf, 0xbd} },
-        { 0xdfff, { cl7::strings::EncodingError::DisallowedUnicode, {0xfffd} }, {0xef, 0xbf, 0xbd} },
+        { 0xd800, { {0xfffd} }, {0xef, 0xbf, 0xbd}, cl7::strings::EncodingError::DisallowedUnicode },
+        { 0xdbff, { {0xfffd} }, {0xef, 0xbf, 0xbd}, cl7::strings::EncodingError::DisallowedUnicode },
+        { 0xdc00, { {0xfffd} }, {0xef, 0xbf, 0xbd}, cl7::strings::EncodingError::DisallowedUnicode },
+        { 0xdfff, { {0xfffd} }, {0xef, 0xbf, 0xbd}, cl7::strings::EncodingError::DisallowedUnicode },
         { 0xe000, { {0xe000} }, {0xee, 0x80, 0x80} },
 
         { 0xfffd, { {0xfffd} }, {0xef, 0xbf, 0xbd} },
         { 0xffff, { {0xffff} }, {0xef, 0xbf, 0xbf} },
         { 0x10000, { {0x10000} }, {0xf0, 0x90, 0x80, 0x80} },
         { 0x10ffff, { {0x10ffff} }, {0xf4, 0x8f, 0xbf, 0xbf} },
-        { 0x110000, { cl7::strings::EncodingError::OutOfRangeUnicode, {0xfffd} }, {0xef, 0xbf, 0xbd} },
+        { 0x110000, { {0xfffd} }, {0xef, 0xbf, 0xbd}, cl7::strings::EncodingError::OutOfRangeUnicode },
     };
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
         cl7::strings::EncodeBuffer<cl7::u8char_t> buffer;
-        cl7::strings::Utf8Codec::EncodeResult encode_result = cl7::strings::Utf8Codec::encode_one( entry.codepoint, buffer.string_span(), MyErrorHandler{} );
-        TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
-        TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count );
-        TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
-        TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::u8string_view(entry.output_written.data(), entry.output_written.size()) );
 
-        TESTLABS_CHECK_EQ( encode_result.output_written.size(), cl7::strings::Utf8Codec::determine_encode_length( entry.codepoint ) );
+        {
+            cl7::strings::ErrorStatus error_status;
+            cl7::strings::Utf8Codec::EncodeResult encode_result = cl7::strings::Utf8Codec::encode_one( error_status, entry.codepoint, buffer.string_span(), MyErrorHandler{} );
+            TESTLABS_CHECK_EQ( static_cast<unsigned>( error_status.error ), static_cast<unsigned>( entry.error_status.error ) );
+            TESTLABS_CHECK_EQ( error_status.error_count, entry.error_status.error_count );
+            TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
+            TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::u8string_view(entry.output_written.data(), entry.output_written.size()) );
 
-        encode_result = cl7::strings::Utf8Codec::encode_one( entry.codepoint, {}, MyErrorHandler{} );
-        TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error | cl7::strings::EncodingError::ExhaustedOutputSpace ) );
-        TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count + 1 );
-        TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
-        TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::u8string_view() );
+            TESTLABS_CHECK_EQ( encode_result.output_written.size(), cl7::strings::Utf8Codec::determine_encode_length( entry.codepoint ) );
+        }
+
+        {
+            cl7::strings::ErrorStatus error_status;
+            cl7::strings::Utf8Codec::EncodeResult encode_result = cl7::strings::Utf8Codec::encode_one( error_status, entry.codepoint, {}, MyErrorHandler{} );
+            TESTLABS_CHECK_EQ( static_cast<unsigned>( error_status.error ), static_cast<unsigned>( entry.error_status.error | cl7::strings::EncodingError::ExhaustedOutputSpace ) );
+            TESTLABS_CHECK_EQ( error_status.error_count, entry.error_status.error_count + 1 );
+            TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
+            TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::u8string_view() );
+        }
 
         if (entry.output_written.size() > 1)
         {
-            encode_result = cl7::strings::Utf8Codec::encode_one( entry.codepoint, buffer.string_span().subspan(0, entry.output_written.size() - 1), MyErrorHandler{} );
-            TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error | cl7::strings::EncodingError::InsufficientOutputSpace ) );
-            TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count + 1 );
+            cl7::strings::ErrorStatus error_status;
+            cl7::strings::Utf8Codec::EncodeResult encode_result = cl7::strings::Utf8Codec::encode_one( error_status, entry.codepoint, buffer.string_span().subspan(0, entry.output_written.size() - 1), MyErrorHandler{} );
+            TESTLABS_CHECK_EQ( static_cast<unsigned>( error_status.error ), static_cast<unsigned>( entry.error_status.error | cl7::strings::EncodingError::InsufficientOutputSpace ) );
+            TESTLABS_CHECK_EQ( error_status.error_count, entry.error_status.error_count + 1 );
             TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
             TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::u8string_view(entry.output_written.data(), entry.output_written.size() - 1) );
         }
@@ -198,6 +217,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf8Codec::decode_one" )
         std::vector<uint8_t> input;
         cl7::strings::CodepointResult codepoint_result;
         size_t input_read_size;
+        cl7::strings::ErrorStatus error_status;
     } entry;
 
     const std::vector<Entry> container {
@@ -210,50 +230,51 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf8Codec::decode_one" )
         { {0x7f}, { {0x007f} }, 1 },
         { {0x7f, 0x7f}, { {0x007f} }, 1 },
 
-        { {0x80}, { cl7::strings::EncodingError::InvalidCodeUnit, {0xfffd} }, 1 },
-        { {0xbf}, { cl7::strings::EncodingError::InvalidCodeUnit, {0xfffd} }, 1 },
+        { {0x80}, { {0xfffd} }, 1, cl7::strings::EncodingError::InvalidCodeUnit },
+        { {0xbf}, { {0xfffd} }, 1, cl7::strings::EncodingError::InvalidCodeUnit },
 
-        { {0xc0, 0x80}, { cl7::strings::EncodingError::OverlongEncoding, {0xfffd} }, 2 },
-        { {0xc1, 0xbf}, { cl7::strings::EncodingError::OverlongEncoding, {0xfffd} }, 2 },
+        { {0xc0, 0x80}, { {0xfffd} }, 2, cl7::strings::EncodingError::OverlongEncoding },
+        { {0xc1, 0xbf}, { {0xfffd} }, 2, cl7::strings::EncodingError::OverlongEncoding },
 
         { {0xc2, 0x80}, { {0x0080} }, 2 },
         { {0xc3, 0xbf}, { {0x00ff} }, 2 },
         { {0xdf, 0xbf}, { {0x07ff} }, 2 },
-        { {0xe0, 0x80, 0x80}, { cl7::strings::EncodingError::OverlongEncoding, {0xfffd} }, 3 },
-        { {0xe0, 0x9f, 0xbf}, { cl7::strings::EncodingError::OverlongEncoding, {0xfffd} }, 3 },
+        { {0xe0, 0x80, 0x80}, { {0xfffd} }, 3, cl7::strings::EncodingError::OverlongEncoding },
+        { {0xe0, 0x9f, 0xbf}, { {0xfffd} }, 3, cl7::strings::EncodingError::OverlongEncoding },
         { {0xe0, 0xa0, 0x80}, { {0x0800} }, 3 },
-        { {0xe1, 0xa0, 0x20}, { cl7::strings::EncodingError::IncompleteSequence, {0xfffd} }, 2 },
+        { {0xe1, 0xa0, 0x20}, { {0xfffd} }, 2, cl7::strings::EncodingError::IncompleteSequence },
 
         { {0xed, 0x9f, 0xbf}, { {0xd7ff} }, 3 },
-        { {0xed, 0xa0, 0x80}, { cl7::strings::EncodingError::InvalidSequence, {0xfffd} }, 3 },
-        { {0xed, 0xaf, 0xbf}, { cl7::strings::EncodingError::InvalidSequence, {0xfffd} }, 3 },
-        { {0xed, 0xb0, 0x80}, { cl7::strings::EncodingError::InvalidSequence, {0xfffd} }, 3 },
-        { {0xed, 0xbf, 0xbf}, { cl7::strings::EncodingError::InvalidSequence, {0xfffd} }, 3 },
+        { {0xed, 0xa0, 0x80}, { {0xfffd} }, 3, cl7::strings::EncodingError::InvalidSequence },
+        { {0xed, 0xaf, 0xbf}, { {0xfffd} }, 3, cl7::strings::EncodingError::InvalidSequence },
+        { {0xed, 0xb0, 0x80}, { {0xfffd} }, 3, cl7::strings::EncodingError::InvalidSequence },
+        { {0xed, 0xbf, 0xbf}, { {0xfffd} }, 3, cl7::strings::EncodingError::InvalidSequence },
         { {0xee, 0x80, 0x80}, { {0xe000} }, 3 },
 
         { {0xef, 0xbf, 0xbd}, { {0xfffd} }, 3 },
         { {0xef, 0xbf, 0xbf}, { {0xffff} }, 3 },
-        { {0xf0, 0x80, 0x80, 0x80}, { cl7::strings::EncodingError::OverlongEncoding, {0xfffd} }, 4 },
-        { {0xf0, 0x8f, 0xbf, 0xbf}, { cl7::strings::EncodingError::OverlongEncoding, {0xfffd} }, 4 },
+        { {0xf0, 0x80, 0x80, 0x80}, { {0xfffd} }, 4, cl7::strings::EncodingError::OverlongEncoding },
+        { {0xf0, 0x8f, 0xbf, 0xbf}, { {0xfffd} }, 4, cl7::strings::EncodingError::OverlongEncoding },
         { {0xf0, 0x90, 0x80, 0x80}, { {0x10000} }, 4 },
         { {0xf4, 0x8f, 0xbf, 0xbf}, { {0x10ffff} }, 4 },
-        { {0xf4, 0x90, 0x80, 0x80}, { cl7::strings::EncodingError::InvalidSequence, {0xfffd} }, 4 },
-        { {0xf5, 0x80, 0x80, 0x80, 0x80}, { cl7::strings::EncodingError::InvalidSequence, {0xfffd} }, 4 },
-        { {0xf7, 0x80, 0x7f, 0x80, 0x80}, { cl7::strings::EncodingError::InvalidSequence, {0xfffd} }, 2 },
-        { {0xf8, 0x80, 0x80, 0x80, 0x80, 0x80}, { cl7::strings::EncodingError::InvalidSequence, {0xfffd} }, 5 },
-        { {0xfb, 0x80, 0x7f, 0x80, 0x80, 0x80}, { cl7::strings::EncodingError::InvalidSequence, {0xfffd} }, 2 },
-        { {0xfc, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80}, { cl7::strings::EncodingError::InvalidSequence, {0xfffd} }, 6 },
-        { {0xfd, 0x80, 0x7f, 0x80, 0x80, 0x80, 0x80}, { cl7::strings::EncodingError::InvalidSequence, {0xfffd} }, 2 },
-        { {0xfe, 0x80}, { cl7::strings::EncodingError::InvalidCodeUnit, {0xfffd} }, 1 },
-        { {0xff, 0x80}, { cl7::strings::EncodingError::InvalidCodeUnit, {0xfffd} }, 1 },
+        { {0xf4, 0x90, 0x80, 0x80}, { {0xfffd} }, 4, cl7::strings::EncodingError::InvalidSequence },
+        { {0xf5, 0x80, 0x80, 0x80, 0x80}, { {0xfffd} }, 4, cl7::strings::EncodingError::InvalidSequence },
+        { {0xf7, 0x80, 0x7f, 0x80, 0x80}, { {0xfffd} }, 2, cl7::strings::EncodingError::InvalidSequence },
+        { {0xf8, 0x80, 0x80, 0x80, 0x80, 0x80}, { {0xfffd} }, 5, cl7::strings::EncodingError::InvalidSequence },
+        { {0xfb, 0x80, 0x7f, 0x80, 0x80, 0x80}, { {0xfffd} }, 2, cl7::strings::EncodingError::InvalidSequence },
+        { {0xfc, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80}, { {0xfffd} }, 6, cl7::strings::EncodingError::InvalidSequence },
+        { {0xfd, 0x80, 0x7f, 0x80, 0x80, 0x80, 0x80}, { {0xfffd} }, 2, cl7::strings::EncodingError::InvalidSequence },
+        { {0xfe, 0x80}, { {0xfffd} }, 1, cl7::strings::EncodingError::InvalidCodeUnit },
+        { {0xff, 0x80}, { {0xfffd} }, 1, cl7::strings::EncodingError::InvalidCodeUnit },
     };
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
+        cl7::strings::ErrorStatus error_status;
         auto input = cl7::u8string_view(reinterpret_cast<const cl7::u8char_t*>(entry.input.data()), entry.input.size());
-        cl7::strings::Utf8Codec::DecodeResult decode_result = cl7::strings::Utf8Codec::decode_one( input, MyErrorHandler{} );
-        TESTLABS_CHECK_EQ( static_cast<unsigned>( decode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
-        TESTLABS_CHECK_EQ( decode_result.error_count, entry.codepoint_result.error_count );
+        cl7::strings::Utf8Codec::DecodeResult decode_result = cl7::strings::Utf8Codec::decode_one( error_status, input, MyErrorHandler{} );
+        TESTLABS_CHECK_EQ( static_cast<unsigned>( error_status.error ), static_cast<unsigned>( entry.error_status.error ) );
+        TESTLABS_CHECK_EQ( error_status.error_count, entry.error_status.error_count );
         TESTLABS_CHECK_EQ( decode_result.codepoint.value, entry.codepoint_result.codepoint.value );
         TESTLABS_CHECK_EQ( decode_result.input_read.size(), entry.input_read_size );
 
@@ -270,6 +291,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf16Codec::encode_one" )
         cl7::strings::codepoint codepoint;
         cl7::strings::CodepointResult codepoint_result;
         std::vector<cl7::u16char_t> output_written;
+        cl7::strings::ErrorStatus error_status;
     } entry;
 
     const std::vector<Entry> container {
@@ -286,41 +308,49 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf16Codec::encode_one" )
         { 0x0800, { {0x0800} }, {0x0800} },
 
         { 0xd7ff, { {0xd7ff} }, {0xd7ff} },
-        { 0xd800, { cl7::strings::EncodingError::DisallowedUnicode, {0xfffd} }, {0xfffd} },
-        { 0xdbff, { cl7::strings::EncodingError::DisallowedUnicode, {0xfffd} }, {0xfffd} },
-        { 0xdc00, { cl7::strings::EncodingError::DisallowedUnicode, {0xfffd} }, {0xfffd} },
-        { 0xdfff, { cl7::strings::EncodingError::DisallowedUnicode, {0xfffd} }, {0xfffd} },
+        { 0xd800, { {0xfffd} }, {0xfffd}, cl7::strings::EncodingError::DisallowedUnicode },
+        { 0xdbff, { {0xfffd} }, {0xfffd}, cl7::strings::EncodingError::DisallowedUnicode },
+        { 0xdc00, { {0xfffd} }, {0xfffd}, cl7::strings::EncodingError::DisallowedUnicode },
+        { 0xdfff, { {0xfffd} }, {0xfffd}, cl7::strings::EncodingError::DisallowedUnicode },
         { 0xe000, { {0xe000} }, {0xe000} },
 
         { 0xfffd, { {0xfffd} }, {0xfffd} },
         { 0xffff, { {0xffff} }, {0xffff} },
         { 0x10000, { {0x10000} }, {0xd800, 0xdc00} },
         { 0x10ffff, { {0x10ffff} }, {0xdbff, 0xdfff} },
-        { 0x110000, { cl7::strings::EncodingError::OutOfRangeUnicode, {0xfffd} }, {0xfffd} },
+        { 0x110000, { {0xfffd} }, {0xfffd}, cl7::strings::EncodingError::OutOfRangeUnicode },
     };
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
         cl7::strings::EncodeBuffer<cl7::u16char_t> buffer;
-        cl7::strings::Utf16Codec::EncodeResult encode_result = cl7::strings::Utf16Codec::encode_one( entry.codepoint, buffer.string_span(), MyErrorHandler{} );
-        TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
-        TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count );
-        TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
-        TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::u16string_view(entry.output_written.data(), entry.output_written.size()) );
 
-        TESTLABS_CHECK_EQ( encode_result.output_written.size(), cl7::strings::Utf16Codec::determine_encode_length( entry.codepoint ) );
+        {
+            cl7::strings::ErrorStatus error_status;
+            cl7::strings::Utf16Codec::EncodeResult encode_result = cl7::strings::Utf16Codec::encode_one( error_status, entry.codepoint, buffer.string_span(), MyErrorHandler{} );
+            TESTLABS_CHECK_EQ( static_cast<unsigned>( error_status.error ), static_cast<unsigned>( entry.error_status.error ) );
+            TESTLABS_CHECK_EQ( error_status.error_count, entry.error_status.error_count );
+            TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
+            TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::u16string_view(entry.output_written.data(), entry.output_written.size()) );
 
-        encode_result = cl7::strings::Utf16Codec::encode_one( entry.codepoint, {}, MyErrorHandler{} );
-        TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error | cl7::strings::EncodingError::ExhaustedOutputSpace ) );
-        TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count + 1 );
-        TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
-        TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::u16string_view() );
+            TESTLABS_CHECK_EQ( encode_result.output_written.size(), cl7::strings::Utf16Codec::determine_encode_length( entry.codepoint ) );
+        }
+
+        {
+            cl7::strings::ErrorStatus error_status;
+            cl7::strings::Utf16Codec::EncodeResult encode_result = cl7::strings::Utf16Codec::encode_one( error_status, entry.codepoint, {}, MyErrorHandler{} );
+            TESTLABS_CHECK_EQ( static_cast<unsigned>( error_status.error ), static_cast<unsigned>( entry.error_status.error | cl7::strings::EncodingError::ExhaustedOutputSpace ) );
+            TESTLABS_CHECK_EQ( error_status.error_count, entry.error_status.error_count + 1 );
+            TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
+            TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::u16string_view() );
+        }
 
         if (entry.output_written.size() > 1)
         {
-            encode_result = cl7::strings::Utf16Codec::encode_one( entry.codepoint, buffer.string_span().subspan(0, entry.output_written.size() - 1), MyErrorHandler{} );
-            TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error | cl7::strings::EncodingError::InsufficientOutputSpace ) );
-            TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count + 1 );
+            cl7::strings::ErrorStatus error_status;
+            cl7::strings::Utf16Codec::EncodeResult encode_result = cl7::strings::Utf16Codec::encode_one( error_status, entry.codepoint, buffer.string_span().subspan(0, entry.output_written.size() - 1), MyErrorHandler{} );
+            TESTLABS_CHECK_EQ( static_cast<unsigned>( error_status.error ), static_cast<unsigned>( entry.error_status.error | cl7::strings::EncodingError::InsufficientOutputSpace ) );
+            TESTLABS_CHECK_EQ( error_status.error_count, entry.error_status.error_count + 1 );
             TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
             TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::u16string_view(entry.output_written.data(), entry.output_written.size() - 1) );
         }
@@ -334,6 +364,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf16Codec::decode_one" )
         std::vector<uint16_t> input;
         cl7::strings::CodepointResult codepoint_result;
         size_t input_read_size;
+        cl7::strings::ErrorStatus error_status;
     } entry;
 
     const std::vector<Entry> container {
@@ -355,25 +386,26 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf16Codec::decode_one" )
         { {0x0800}, { {0x0800} }, 1 },
 
         { {0xd7ff}, { {0xd7ff} }, 1 },
-        { {0xd800}, { cl7::strings::EncodingError::IncompleteSequence, {0xfffd} }, 1 },
-        { {0xdbff}, { cl7::strings::EncodingError::IncompleteSequence, {0xfffd} }, 1 },
-        { {0xdc00}, { cl7::strings::EncodingError::UnpairedSurrogate, {0xfffd} }, 1 },
-        { {0xdfff}, { cl7::strings::EncodingError::UnpairedSurrogate, {0xfffd} }, 1 },
+        { {0xd800}, { {0xfffd} }, 1, cl7::strings::EncodingError::IncompleteSequence },
+        { {0xdbff}, { {0xfffd} }, 1, cl7::strings::EncodingError::IncompleteSequence },
+        { {0xdc00}, { {0xfffd} }, 1, cl7::strings::EncodingError::UnpairedSurrogate },
+        { {0xdfff}, { {0xfffd} }, 1, cl7::strings::EncodingError::UnpairedSurrogate },
         { {0xe000}, { {0xe000} }, 1 },
 
         { {0xfffd}, { {0xfffd} }, 1 },
         { {0xffff}, { {0xffff} }, 1 },
         { {0xd800, 0xdc00}, { {0x10000} }, 2 },
         { {0xdbff, 0xdfff}, { {0x10ffff} }, 2 },
-        //{ {0x110000}, { cl7::strings::EncodingError::InvalidCodeUnit, {0xfffd} }, 1 },
+        //{ {0x110000}, { {0xfffd} }, 1, cl7::strings::EncodingError::InvalidCodeUnit },
     };
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
+        cl7::strings::ErrorStatus error_status;
         auto input = cl7::u16string_view(reinterpret_cast<const cl7::u16char_t*>(entry.input.data()), entry.input.size());
-        cl7::strings::Utf16Codec::DecodeResult decode_result = cl7::strings::Utf16Codec::decode_one( input, MyErrorHandler{} );
-        TESTLABS_CHECK_EQ( static_cast<unsigned>( decode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
-        TESTLABS_CHECK_EQ( decode_result.error_count, entry.codepoint_result.error_count );
+        cl7::strings::Utf16Codec::DecodeResult decode_result = cl7::strings::Utf16Codec::decode_one( error_status, input, MyErrorHandler{} );
+        TESTLABS_CHECK_EQ( static_cast<unsigned>( error_status.error ), static_cast<unsigned>( entry.error_status.error ) );
+        TESTLABS_CHECK_EQ( error_status.error_count, entry.error_status.error_count );
         TESTLABS_CHECK_EQ( decode_result.codepoint.value, entry.codepoint_result.codepoint.value );
         TESTLABS_CHECK_EQ( decode_result.input_read.size(), entry.input_read_size );
 
@@ -390,6 +422,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf32Codec::encode_one" )
         cl7::strings::codepoint codepoint;
         cl7::strings::CodepointResult codepoint_result;
         std::vector<cl7::u32char_t> output_written;
+        cl7::strings::ErrorStatus error_status;
     } entry;
 
     const std::vector<Entry> container {
@@ -406,33 +439,40 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf32Codec::encode_one" )
         { 0x0800, { {0x0800} }, {0x0800} },
 
         { 0xd7ff, { {0xd7ff} }, {0xd7ff} },
-        { 0xd800, { cl7::strings::EncodingError::DisallowedUnicode, {0xfffd} }, {0xfffd} },
-        { 0xdbff, { cl7::strings::EncodingError::DisallowedUnicode, {0xfffd} }, {0xfffd} },
-        { 0xdc00, { cl7::strings::EncodingError::DisallowedUnicode, {0xfffd} }, {0xfffd} },
-        { 0xdfff, { cl7::strings::EncodingError::DisallowedUnicode, {0xfffd} }, {0xfffd} },
+        { 0xd800, { {0xfffd} }, {0xfffd}, cl7::strings::EncodingError::DisallowedUnicode },
+        { 0xdbff, { {0xfffd} }, {0xfffd}, cl7::strings::EncodingError::DisallowedUnicode },
+        { 0xdc00, { {0xfffd} }, {0xfffd}, cl7::strings::EncodingError::DisallowedUnicode },
+        { 0xdfff, { {0xfffd} }, {0xfffd}, cl7::strings::EncodingError::DisallowedUnicode },
         { 0xe000, { {0xe000} }, {0xe000} },
 
         { 0xfffd, { {0xfffd} }, {0xfffd} },
         { 0xffff, { {0xffff} }, {0xffff} },
         { 0x10000, { {0x10000} }, {0x10000} },
         { 0x10ffff, { {0x10ffff} }, {0x10ffff} },
-        { 0x110000, { cl7::strings::EncodingError::OutOfRangeUnicode, {0xfffd} }, {0xfffd} },
+        { 0x110000, { {0xfffd} }, {0xfffd}, cl7::strings::EncodingError::OutOfRangeUnicode },
     };
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
         cl7::strings::EncodeBuffer<cl7::u32char_t> buffer;
-        cl7::strings::Utf32Codec::EncodeResult encode_result = cl7::strings::Utf32Codec::encode_one( entry.codepoint, buffer.string_span(), MyErrorHandler{} );
-        TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
-        TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count );
-        TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
-        TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::u32string_view(entry.output_written.data(), 1) );
 
-        encode_result = cl7::strings::Utf32Codec::encode_one( entry.codepoint, {}, MyErrorHandler{} );
-        TESTLABS_CHECK_EQ( static_cast<unsigned>( encode_result.error ), static_cast<unsigned>( entry.codepoint_result.error | cl7::strings::EncodingError::ExhaustedOutputSpace ) );
-        TESTLABS_CHECK_EQ( encode_result.error_count, entry.codepoint_result.error_count + 1 );
-        TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
-        TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::u32string_view() );
+        {
+            cl7::strings::ErrorStatus error_status;
+            cl7::strings::Utf32Codec::EncodeResult encode_result = cl7::strings::Utf32Codec::encode_one( error_status, entry.codepoint, buffer.string_span(), MyErrorHandler{} );
+            TESTLABS_CHECK_EQ( static_cast<unsigned>( error_status.error ), static_cast<unsigned>( entry.error_status.error ) );
+            TESTLABS_CHECK_EQ( error_status.error_count, entry.error_status.error_count );
+            TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
+            TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::u32string_view(entry.output_written.data(), 1) );
+        }
+
+        {
+            cl7::strings::ErrorStatus error_status;
+            cl7::strings::Utf32Codec::EncodeResult encode_result = cl7::strings::Utf32Codec::encode_one( error_status, entry.codepoint, {}, MyErrorHandler{} );
+            TESTLABS_CHECK_EQ( static_cast<unsigned>( error_status.error ), static_cast<unsigned>( entry.error_status.error | cl7::strings::EncodingError::ExhaustedOutputSpace ) );
+            TESTLABS_CHECK_EQ( error_status.error_count, entry.error_status.error_count + 1 );
+            TESTLABS_CHECK_EQ( encode_result.codepoint.value, entry.codepoint_result.codepoint.value );
+            TESTLABS_CHECK_EQ( cl7::make_string_view(encode_result.output_written), cl7::u32string_view() );
+        }
     }
 }
 
@@ -443,6 +483,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf32Codec::decode_one" )
         std::vector<uint32_t> input;
         cl7::strings::CodepointResult codepoint_result;
         size_t input_read_size;
+        cl7::strings::ErrorStatus error_status;
     } entry;
 
     const std::vector<Entry> container {
@@ -464,24 +505,25 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  Utf32Codec::decode_one" )
         { {0x0800}, { {0x0800} }, 1 },
 
         { {0xd7ff}, { {0xd7ff} }, 1 },
-        { {0xd800}, { cl7::strings::EncodingError::InvalidCodeUnit, {0xfffd} }, 1 },
-        { {0xdbff}, { cl7::strings::EncodingError::InvalidCodeUnit, {0xfffd} }, 1 },
-        { {0xdc00}, { cl7::strings::EncodingError::InvalidCodeUnit, {0xfffd} }, 1 },
-        { {0xdfff}, { cl7::strings::EncodingError::InvalidCodeUnit, {0xfffd} }, 1 },
+        { {0xd800}, { {0xfffd} }, 1, cl7::strings::EncodingError::InvalidCodeUnit },
+        { {0xdbff}, { {0xfffd} }, 1, cl7::strings::EncodingError::InvalidCodeUnit },
+        { {0xdc00}, { {0xfffd} }, 1, cl7::strings::EncodingError::InvalidCodeUnit },
+        { {0xdfff}, { {0xfffd} }, 1, cl7::strings::EncodingError::InvalidCodeUnit },
         { {0xe000}, { {0xe000} }, 1 },
 
         { {0xfffd}, { {0xfffd} }, 1 },
         { {0xffff}, { {0xffff} }, 1 },
         { {0x10000}, { {0x10000} }, 1 },
         { {0x10ffff}, { {0x10ffff} }, 1 },
-        { {0x110000}, { cl7::strings::EncodingError::InvalidCodeUnit, {0xfffd} }, 1 },
+        { {0x110000}, { {0xfffd} }, 1, cl7::strings::EncodingError::InvalidCodeUnit },
     };
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
-        cl7::strings::Utf32Codec::DecodeResult decode_result = cl7::strings::Utf32Codec::decode_one( cl7::u32string_view(reinterpret_cast<const cl7::u32char_t*>(entry.input.data()), entry.input.size()), MyErrorHandler{} );
-        TESTLABS_CHECK_EQ( static_cast<unsigned>( decode_result.error ), static_cast<unsigned>( entry.codepoint_result.error ) );
-        TESTLABS_CHECK_EQ( decode_result.error_count, entry.codepoint_result.error_count );
+        cl7::strings::ErrorStatus error_status;
+        cl7::strings::Utf32Codec::DecodeResult decode_result = cl7::strings::Utf32Codec::decode_one( error_status, cl7::u32string_view(reinterpret_cast<const cl7::u32char_t*>(entry.input.data()), entry.input.size()), MyErrorHandler{} );
+        TESTLABS_CHECK_EQ( static_cast<unsigned>( error_status.error ), static_cast<unsigned>( entry.error_status.error ) );
+        TESTLABS_CHECK_EQ( error_status.error_count, entry.error_status.error_count );
         TESTLABS_CHECK_EQ( decode_result.codepoint.value, entry.codepoint_result.codepoint.value );
         TESTLABS_CHECK_EQ( decode_result.input_read.size(), entry.input_read_size );
     }
@@ -532,11 +574,11 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  to UTF-8 from ASCII" )
 
     const std::vector<Entry> container {
         { "pure ASCII", u8"pure ASCII", 10 }, // 1 byte per character
-        { "\xdf", u8"\u00df", 2 }, // 2-byte sequence
-        { "aou \xe4\xf6\xfc \x1a\x1a 123", u8"aou \u00e4\u00f6\u00fc \x1a\x1a 123", 17 }, /* just some "random" characters */ \
+        { "\xdf", u8"\u001a", 1 }, // 2-byte sequence (supposedly)
+        { "aou \xe4\xf6\xfc \x1a\x1a 123", u8"aou \u001a\u001a\u001a \x1a\x1a 123", 14 }, /* just some "random" characters */ \
         { "\x7f", u8"\u007f", 1 }, /* highest ASCII character */ \
-        { "\x80", u8"\u0080", 2 }, /* lowest non-ASCII character */ \
-        { "\xff", u8"\u00ff", 2 }, /* highest Latin-1 character */ \
+        { "\x80", u8"\u001a", 1 }, /* lowest non-ASCII character */ \
+        { "\xff", u8"\u001a", 1 }, /* highest Latin-1 character */ \
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"to UTF-8", container, entry, entry.input )
@@ -558,10 +600,10 @@ TESTLABS_CASE( (u8"CoreLabs:  strings:  to " to " from ASCII") ) \
  \
     const std::vector<Entry> container { \
         { "pure ASCII", prefix##"pure ASCII" }, \
-        { "\xdf", prefix##"\u00df" }, \
+        { "\xdf", prefix##"\u001a" }, \
         { "\x7f", prefix##"\u007f" }, /* highest ASCII character */ \
-        { "\x80", prefix##"\u0080" }, /* lowest non-ASCII character */ \
-        { "\xff", prefix##"\u00ff" }, /* highest Latin-1 character */ \
+        { "\x80", prefix##"\u001a" }, /* lowest non-ASCII character */ \
+        { "\xff", prefix##"\u001a" }, /* highest Latin-1 character */ \
     }; \
  \
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( (u8"to " to), container, entry, entry.input ) \
@@ -762,16 +804,16 @@ TESTLABS_CASE( u8"CoreLabs:  strings::to_utf8(u32string_view)" )
         { { 0x07ff, 0 }, { 0xdf,0xbf, 0 }, "u+07ff  =>  \\xdf\\xbf" },
         { { 0x0800, 0 }, { 0xe0,0xa0,0x80, 0 }, "u+0800  =>  \\xe0\\xa0\\x80" },
         { { 0xd7ff, 0 }, { 0xed,0x9f,0xbf, 0 }, "u+d7ff  =>  \\xed\\x9f\\xbf" },
-        { { 0xd800, 0 }, { 0xed,0xa0,0x80, 0 }, "u+d800  =>  \\xed\\xa0\\x80  (invalid code point, but codeable)" },
-        { { 0xdbff, 0 }, { 0xed,0xaf,0xbf, 0 }, "u+dbff  =>  \\xed\\xaf\\xbf  (invalid code point, but codeable)" },
-        { { 0xdc00, 0 }, { 0xed,0xb0,0x80, 0 }, "u+dc00  =>  \\xed\\xb0\\x80  (invalid code point, but codeable)" },
-        { { 0xdfff, 0 }, { 0xed,0xbf,0xbf, 0 }, "u+dfff  =>  \\xed\\xbf\\xbf  (invalid code point, but codeable)" },
+        { { 0xd800, 0 }, { 0xef,0xbf,0xbd, 0 }, "u+d800  =>  \\xef\\xbf\\xbd  (disallowed code point)" },
+        { { 0xdbff, 0 }, { 0xef,0xbf,0xbd, 0 }, "u+dbff  =>  \\xef\\xbf\\xbd  (disallowed code point)" },
+        { { 0xdc00, 0 }, { 0xef,0xbf,0xbd, 0 }, "u+dc00  =>  \\xef\\xbf\\xbd  (disallowed code point)" },
+        { { 0xdfff, 0 }, { 0xef,0xbf,0xbd, 0 }, "u+dfff  =>  \\xef\\xbf\\xbd  (disallowed code point)" },
         { { 0xe000, 0 }, { 0xee,0x80,0x80, 0 }, "u+e000  =>  \\xee\\x80\\x80" },
         { { 0xffff, 0 }, { 0xef,0xbf,0xbf, 0 }, "u+ffff  =>  \\xef\\xbf\\xbf" },
         { { 0x0001'0000, 0 }, { 0xf0,0x90,0x80,0x80, 0 }, "u+00010000  =>  \\xf0\\x90\\x80\\x80" },
         { { 0x0010'ffff, 0 }, { 0xf4,0x8f,0xbf,0xbf, 0 }, "u+0010ffff  =>  \\xf4\\x8f\\xbf\\xbf" },
         { { 0x0011'0000, 0 }, { 0xef,0xbf,0xbd, 0 }, "u+00110000  =>  \\xef\\xbf\\xbd  (invalid code point)" },
-        { { 0x20, 0x7f, 0x80, 0xff, 0x07ff, 0x0800, 0xd7ff, 0xd800, 0xdbff, 0xdc00, 0xdfff, 0xe000, 0xffff, 0x0001'0000, 0x0010'ffff, 0x0011'0000, 0 }, { 0x20, 0x7f, 0xc2,0x80, 0xc3,0xbf, 0xdf,0xbf, 0xe0,0xa0,0x80, 0xed,0x9f,0xbf, 0xed,0xa0,0x80, 0xed,0xaf,0xbf, 0xed,0xb0,0x80, 0xed,0xbf,0xbf, 0xee,0x80,0x80, 0xef,0xbf,0xbf, 0xf0,0x90,0x80,0x80, 0xf4,0x8f,0xbf,0xbf, 0xef,0xbf,0xbd, 0 }, "..." },
+        { { 0x20, 0x7f, 0x80, 0xff, 0x07ff, 0x0800, 0xd7ff, 0xd800, 0xdbff, 0xdc00, 0xdfff, 0xe000, 0xffff, 0x0001'0000, 0x0010'ffff, 0x0011'0000, 0 }, { 0x20, 0x7f, 0xc2,0x80, 0xc3,0xbf, 0xdf,0xbf, 0xe0,0xa0,0x80, 0xed,0x9f,0xbf, 0xef,0xbf,0xbd, 0xef,0xbf,0xbd, 0xef,0xbf,0xbd, 0xef,0xbf,0xbd, 0xee,0x80,0x80, 0xef,0xbf,0xbf, 0xf0,0x90,0x80,0x80, 0xf4,0x8f,0xbf,0xbf, 0xef,0xbf,0xbd, 0 }, "..." },
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.comment )
@@ -806,16 +848,16 @@ TESTLABS_CASE( u8"CoreLabs:  strings::to_utf16(u32string_view)" )
         { { 0x07ff, 0 }, { 0x07ff, 0 }, "u+07ff  =>  u+07ff" },
         { { 0x0800, 0 }, { 0x0800, 0 }, "u+0800  =>  u+0800" },
         { { 0xd7ff, 0 }, { 0xd7ff, 0 }, "u+d7ff  =>  u+d7ff" },
-        { { 0xd800, 0 }, { 0xd800, 0 }, "u+d800  =>  u+d800  (invalid code point, but codeable)" },
-        { { 0xdbff, 0 }, { 0xdbff, 0 }, "u+dbff  =>  u+dbff  (invalid code point, but codeable)" },
-        { { 0xdc00, 0 }, { 0xdc00, 0 }, "u+dc00  =>  u+dc00  (invalid code point, but codeable)" },
-        { { 0xdfff, 0 }, { 0xdfff, 0 }, "u+dfff  =>  u+dfff  (invalid code point, but codeable)" },
+        { { 0xd800, 0 }, { 0xfffd, 0 }, "u+d800  =>  u+fffd  (disallowed code point)" },
+        { { 0xdbff, 0 }, { 0xfffd, 0 }, "u+dbff  =>  u+fffd  (disallowed code point)" },
+        { { 0xdc00, 0 }, { 0xfffd, 0 }, "u+dc00  =>  u+fffd  (disallowed code point)" },
+        { { 0xdfff, 0 }, { 0xfffd, 0 }, "u+dfff  =>  u+fffd  (disallowed code point)" },
         { { 0xe000, 0 }, { 0xe000, 0 }, "u+e000  =>  u+e000" },
         { { 0xffff, 0 }, { 0xffff, 0 }, "u+ffff  =>  u+ffff" },
         { { 0x0001'0000, 0 }, { 0xd800,0xdc00, 0 }, "u+00010000  =>  u+d800 u+dc00" },
         { { 0x0010'ffff, 0 }, { 0xdbff,0xdfff, 0 }, "u+0010ffff  =>  u+dbff u+dfff" },
         { { 0x0011'0000, 0 }, { 0xfffd, 0 }, "u+00110000  =>  u+fffd  (invalid code point)" },
-        { { 0x20, 0x7f, 0x80, 0xff, 0x07ff, 0x0800, 0xd7ff, 0xd800, 0xdbff, 0xdc00, 0xdfff, 0xe000, 0xffff, 0x0001'0000, 0x0010'ffff, 0x0011'0000, 0 }, { 0x20, 0x7f, 0x80, 0xff, 0x07ff, 0x0800, 0xd7ff, 0xd800, 0xdbff, 0xdc00, 0xdfff, 0xe000, 0xffff, 0xd800,0xdc00, 0xdbff,0xdfff, 0xfffd, 0 }, "..." },
+        { { 0x20, 0x7f, 0x80, 0xff, 0x07ff, 0x0800, 0xd7ff, 0xd800, 0xdbff, 0xdc00, 0xdfff, 0xe000, 0xffff, 0x0001'0000, 0x0010'ffff, 0x0011'0000, 0 }, { 0x20, 0x7f, 0x80, 0xff, 0x07ff, 0x0800, 0xd7ff, 0xfffd, 0xfffd, 0xfffd, 0xfffd, 0xe000, 0xffff, 0xd800,0xdc00, 0xdbff,0xdfff, 0xfffd, 0 }, "..." },
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.comment )
@@ -1143,13 +1185,16 @@ TESTLABS_CASE( u8"CoreLabs:  strings::parse_utf8(u8string_view, u32string&)" )
         { "\xf0\x90\x80\x80", U"\U00010000", true }, /* "first" 4-byte sequence */
         { "\xf4\x8f\xbf\xbf", U"\U0010ffff", true }, /* "last" 4-byte sequence */
         { "\x80", U"\U0000fffd", false }, /* invalid continuation byte */
-        { "\xc0\xc0...", U"\U0000fffd...", false }, /* invalid 2-byte sequence */
-        { "\xc1\x80...", U"\U0000fffd...", false }, /* invalid 2-byte sequence */
-        { "\xe0\xe0...", U"\U0000fffd..", false }, /* invalid 3-byte sequence */
-        { "\xf0\xf0...", U"\U0000fffd.", false }, /* invalid 4-byte sequence */
-        { "\xf5\xf5...", U"\U0000fffd.", false }, /* invalid 4-byte sequence */
-        { "\xf8\xf8...", U"\U0000fffd", false }, /* invalid 5-byte sequence */
-        { "\xfc\xfc...", U"\U0000fffd", false }, /* invalid 6-byte sequence */
+        { "\xc0\xc0.....", U"\U0000fffd\U0000fffd.....", false }, /* invalid 2-byte sequence */
+        { "\xc0\x80.....", U"\U0000fffd.....", false }, /* invalid 2-byte sequence */
+        { "\xc1\xbf.....", U"\U0000fffd.....", false }, /* invalid 2-byte sequence */
+        { "\xe0\x80\x80....", U"\U0000fffd....", false }, /* invalid 3-byte sequence */
+        { "\xe0\x9f\x80....", U"\U0000fffd....", false }, /* invalid 3-byte sequence */
+        { "\xf0\x80\x80\x80...", U"\U0000fffd...", false }, /* invalid 4-byte sequence */
+        { "\xf0\x8f\x80\x80...", U"\U0000fffd...", false }, /* invalid 4-byte sequence */
+        { "\xf5\x80\x80\x80...", U"\U0000fffd...", false }, /* invalid 4-byte sequence */
+        { "\xf8\x80\x80\x80\x80..", U"\U0000fffd..", false }, /* invalid 5-byte sequence */
+        { "\xfc\x80\x80\x80\x80\x80.", U"\U0000fffd.", false }, /* invalid 6-byte sequence */
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.expected )
@@ -1189,8 +1234,8 @@ TESTLABS_CASE( u8"CoreLabs:  strings::parse_utf16(u16string_view, u32string&)" )
         { { 0xdbff,0xdfff, 0 }, U"\U0010ffff", true },
         { { 0xdc00,0xd800, 0 }, U"\ufffd\ufffd", false }, // messed-up surrogates
         { { 0xdfff,0xdbff, 0 }, U"\ufffd\ufffd", false }, // messed-up surrogates
-        { { 0xd800,0xd800,0xdc00, 0 }, U"\ufffd\ufffd", false }, // messed-up surrogates
-        { { 0xd800,0xd800,0xd800,0xdc00, 0 }, U"\ufffd\U00010000", false }, // messed-up surrogates
+        { { 0xd800,0xd800,0xdc00, 0 }, U"\ufffd\U00010000", false }, // messed-up surrogates
+        { { 0xd800,0xd800,0xd800,0xdc00, 0 }, U"\ufffd\ufffd\U00010000", false }, // messed-up surrogates
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.expected )
@@ -1263,13 +1308,16 @@ TESTLABS_CASE( u8"CoreLabs:  strings::utf8_length(u8string_view)" )
         { "\xf0\x90\x80\x80", 1, "\xf0\x90\x80\x80" }, /* "first" 4-byte sequence */
         { "\xf4\x8f\xbf\xbf", 1, "\xf4\x8f\xbf\xbf" }, /* "last" 4-byte sequence */
         { "\x80", 1, "\x80" }, /* invalid continuation byte */
-        { "\xc0\xc0...", 4, "\xc0\xc0..." }, /* invalid 2-byte sequence */
-        { "\xc1\x80...", 4, "\xc1\x80..." }, /* invalid 2-byte sequence */
-        { "\xe0\xe0...", 3, "\xe0\xe0..." }, /* invalid 3-byte sequence */
-        { "\xf0\xf0...", 2, "\xf0\xf0..." }, /* invalid 4-byte sequence */
-        { "\xf5\xf5...", 2, "\xf5\xf5..." }, /* invalid 4-byte sequence */
-        { "\xf8\xf8...", 1, "\xf8\xf8..." }, /* invalid 5-byte sequence */
-        { "\xfc\xfc...", 1, "\xfc\xfc..." }, /* invalid 6-byte sequence */
+        { "\xc0\xc0.....", 7, "\xc0\xc0....." }, /* invalid 2-byte sequence */
+        { "\xc0\x80.....", 6, "\xc0\x80....." }, /* invalid 2-byte sequence */
+        { "\xc1\xbf.....", 6, "\xc1\xbf....." }, /* invalid 2-byte sequence */
+        { "\xe0\x80\x80....", 5, "\xe0\x80\x80...." }, /* invalid 3-byte sequence */
+        { "\xe0\x9f\x80....", 5, "\xe0\x9f\x80...." }, /* invalid 3-byte sequence */
+        { "\xf0\x80\x80\x80...", 4, "\xf0\x80\x80\x80..." }, /* invalid 4-byte sequence */
+        { "\xf0\x8f\x80\x80...", 4, "\xf0\x8f\x80\x80..." }, /* invalid 4-byte sequence */
+        { "\xf5\x80\x80\x80...", 4, "\xf5\x80\x80\x80..." }, /* invalid 4-byte sequence */
+        { "\xf8\x80\x80\x80\x80..", 3, "\xf8\x80\x80\x80\x80.." }, /* invalid 5-byte sequence */
+        { "\xfc\x80\x80\x80\x80\x80.", 2, "\xfc\x80\x80\x80\x80\x80." }, /* invalid 6-byte sequence */
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.comment )
@@ -1308,7 +1356,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings::utf16_length(u16string_view)" )
         { { 0xdc00,0xd800, 0 }, 2, "\\udc00\\ud800" }, // messed-up surrogates
         { { 0xdfff,0xdbff, 0 }, 2, "\\udfff\\udbff" }, // messed-up surrogates
         { { 0xd800,0xd800,0xdc00, 0 }, 2, "\\ud800\\ud800\\udc00" }, // messed-up surrogates
-        { { 0xd800,0xd800,0xd800,0xdc00, 0 }, 2, "\\ud800\\ud800\\ud800\\udc00" }, // messed-up surrogates
+        { { 0xd800,0xd800,0xd800,0xdc00, 0 }, 3, "\\ud800\\ud800\\ud800\\udc00" }, // messed-up surrogates
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.comment )

@@ -78,14 +78,14 @@ namespace cl7::strings {
 
 
 
-    Utf16Codec::EncodeResult Utf16Codec::encode_one(codepoint codepoint, string_span_type output, const ErrorHandler& error_handler)
+    Utf16Codec::EncodeResult Utf16Codec::encode_one(ErrorStatus& error_status, codepoint codepoint, string_span_type output, const ErrorHandler& error_handler)
     {
-        auto codepoint_result = error_handler.check_adjust_unicode(codepoint);
+        auto codepoint_result = error_handler.check_adjust_unicode(error_status, codepoint);
 
         if (output.empty())
         {
             return {
-                error_handler.on_exhausted_output_space(encoding, codepoint_result),
+                error_handler.on_exhausted_output_space(error_status, encoding, codepoint_result),
                 {},
             };
         }
@@ -115,14 +115,14 @@ namespace cl7::strings {
         output[0] = buffer.data[0];
 
         return {
-            error_handler.on_insufficient_output_space(encoding, codepoint_result, length, output.size()),
+            error_handler.on_insufficient_output_space(error_status, encoding, codepoint_result, length, output.size()),
             output,
         };
     }
 
 
 
-    Utf16Codec::DecodeResult Utf16Codec::decode_one(string_view_type input, const ErrorHandler& error_handler)
+    Utf16Codec::DecodeResult Utf16Codec::decode_one(ErrorStatus& error_status, string_view_type input, const ErrorHandler& error_handler)
     {
         if (input.empty())
             return {};
@@ -142,7 +142,7 @@ namespace cl7::strings {
             size_t length = _determine_decode_length(input);
             if (length != 2)
             {
-                return error_handler.on_incomplete_sequence(input.substr(0, length));
+                return error_handler.on_incomplete_sequence(error_status, input.substr(0, length));
             }
 
             return {
@@ -152,7 +152,7 @@ namespace cl7::strings {
         }
 
         assert(first >= 0xdc00 && first <= 0xdfff); // (unexpected) trailing/low surrogate
-        return error_handler.on_unpaired_surrogate(input.substr(0, 1));
+        return error_handler.on_unpaired_surrogate(error_status, input.substr(0, 1));
     }
 
 

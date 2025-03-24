@@ -80,9 +80,9 @@ target_sources(flangee77
     profiling/Stopwatch.cpp
     profiling/Stopwatch.h
 
+    strings/Analyzer.h
     strings/AsciiCodec.cpp
     strings/AsciiCodec.h
-    strings/BaseResult.h
     strings/codepoint.cpp
     strings/codepoint.h
     strings/CodepointResult.h
@@ -94,8 +94,11 @@ target_sources(flangee77
     strings/EncodingError.h
     strings/ErrorHandler.cpp
     strings/ErrorHandler.h
+    strings/ErrorStatus.h
     strings/LoggingErrorHandler.cpp
     strings/LoggingErrorHandler.h
+    strings/traits.h
+    strings/Transcoder.h
     strings/Utf8Codec.cpp
     strings/Utf8Codec.h
     strings/Utf16Codec.cpp

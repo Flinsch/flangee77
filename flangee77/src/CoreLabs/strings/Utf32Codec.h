@@ -20,6 +20,7 @@ class Utf32Codec
 
 public:
     static constexpr Encoding encoding = Encoding::UTF32;
+    static constexpr bool variable_length_encoding = false;
 
     using char_type = cl7::u32char_t;
 
@@ -30,8 +31,11 @@ public:
 
 
 
-    static EncodeResult encode_one(codepoint codepoint, string_span_type output, const ErrorHandler& error_handler);
-    static DecodeResult decode_one(string_view_type input, const ErrorHandler& error_handler);
+    static size_t determine_encode_length(codepoint codepoint, strings::codepoint replacement = {codepoint::replacement_unicode}) { return 1; }
+    static size_t determine_decode_length(string_view_type input) { return input.empty() ? 0 : 1; }
+
+    static EncodeResult encode_one(ErrorStatus& error_status, codepoint codepoint, string_span_type output, const ErrorHandler& error_handler);
+    static DecodeResult decode_one(ErrorStatus& error_status, string_view_type input, const ErrorHandler& error_handler);
 
 }; // class Utf32Codec
 

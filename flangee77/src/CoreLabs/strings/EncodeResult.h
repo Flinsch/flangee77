@@ -25,16 +25,8 @@ struct EncodeResult
 
 
 
-    /** Initializes an "empty" result with no errors. */
     EncodeResult() = default;
-
-    /** Initializes a result with no errors. */
     EncodeResult(strings::codepoint codepoint, string_span_type output_written) : CodepointResult(codepoint), output_written(output_written) {}
-
-    /** Initializes a result with the specified error code and an error counter of 1. */
-    EncodeResult(EncodingError error, strings::codepoint codepoint, string_span_type output_written) : CodepointResult(error, codepoint), output_written(output_written) {}
-
-    /** Initializes a forwarded result. */
     EncodeResult(const CodepointResult& codepoint_result, string_span_type output_written) : CodepointResult(codepoint_result), output_written(output_written) {}
 };
 

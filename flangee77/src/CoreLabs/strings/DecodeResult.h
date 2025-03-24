@@ -25,16 +25,8 @@ struct DecodeResult
 
 
 
-    /** Initializes an "empty" result with no errors. */
     DecodeResult() = default;
-
-    /** Initializes a result with no errors. */
     DecodeResult(strings::codepoint codepoint, string_view_type input_read) : CodepointResult(codepoint), input_read(input_read) {}
-
-    /** Initializes a result with the specified error code and an error counter of 1. */
-    DecodeResult(EncodingError error, strings::codepoint codepoint, string_view_type input_read) : CodepointResult(error, codepoint), input_read(input_read) {}
-
-    /** Initializes a forwarded result. */
     DecodeResult(const CodepointResult& codepoint_result, string_view_type input_read) : CodepointResult(codepoint_result), input_read(input_read) {}
 };
 
