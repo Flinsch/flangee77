@@ -43,6 +43,10 @@ public:
 
 
 
+    /**
+     * Converts a given input string from the source encoding to the target
+     * encoding.
+     */
     string_type transcode(string_view_type input) const
     {
         string_type output(determine_output_length(input), typename string_view_type::value_type());
@@ -50,23 +54,43 @@ public:
         return output;
     }
 
+    /**
+     * Converts a given input string from the source encoding to the target encoding
+     * and stores the result in the provided output string.
+     */
     void transcode_into(string_view_type input, string_type& output) const
     {
         output.resize(determine_output_length(input));
         transcode_into(input, cl7::make_string_span(output));
     }
 
+    /**
+     * Converts a given input string from the source encoding to the target encoding
+     * and stores the result in the provided output buffer, if space allows. The
+     * operation does not null-terminate the output.
+     */
     void transcode_into(string_view_type input, string_span_type output) const
     {
         transcode_with_status(input, output);
     }
 
+    /**
+     * Converts a given input string from the source encoding to the target encoding
+     * and stores the result in the provided output string, returning a status
+     * indicating any errors encountered.
+     */
     ErrorStatus transcode_with_status(string_view_type input, string_type& output) const
     {
         output.resize(determine_output_length(input));
         return transcode_with_status(input, cl7::make_string_span(output));
     }
 
+    /**
+     * Converts a given input string from the source encoding to the target encoding
+     * and stores the result in the provided output buffer, if space allows,
+     * returning a status indicating any errors encountered. The operation does not
+     * null-terminate the output.
+     */
     ErrorStatus transcode_with_status(string_view_type input, string_span_type output) const
     {
         ErrorStatus error_status;

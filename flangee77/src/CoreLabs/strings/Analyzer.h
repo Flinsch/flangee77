@@ -107,7 +107,7 @@ public:
     }
 
     /**
-     * Performs validation and returns a result object indicating whether the input
+     * Performs validation and returns a status object indicating whether the input
      * conforms to the expected encoding format.
      */
     ErrorStatus validate_with_status(string_view_type input) const
