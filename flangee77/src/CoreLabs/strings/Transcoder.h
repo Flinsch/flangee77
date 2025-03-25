@@ -38,7 +38,7 @@ public:
      */
     size_t determine_output_length(string_view_type input) const
     {
-        return Analyzer<Tchar_from> (_error_handler).template determine_target_length<Tchar_to>(input);
+        return Analyzer<Tchar_from>(_error_handler).template determine_target_length<Tchar_to>(input);
     }
 
 
@@ -71,7 +71,8 @@ public:
      */
     void transcode_into(string_view_type input, string_span_type output) const
     {
-        transcode_with_status(input, output);
+        ErrorStatus error_status;
+        _do_transcode(error_status, input, output);
     }
 
     /**
@@ -94,7 +95,15 @@ public:
     ErrorStatus transcode_with_status(string_view_type input, string_span_type output) const
     {
         ErrorStatus error_status;
+        _do_transcode(error_status, input, output);
+        return error_status;
+    }
 
+
+
+private:
+    void _do_transcode(ErrorStatus& error_status, string_view_type input, string_span_type output) const
+    {
         size_t output_offset = 0;
 
         size_t input_offset = 0;
@@ -104,17 +113,17 @@ public:
             const auto encode_result = OutputCodec::encode_one(error_status, decode_result.codepoint, output.subspan(output_offset), *_error_handler);
             input_offset += decode_result.input_read.size();
             output_offset += encode_result.output_written.size();
+            // Check output offset separately and not in the while condition,
+            // but explicitly after the (first) transcoding step to generate
+            // any errors regarding a supposedly empty/exhausted buffer.
             if (output_offset >= output.size())
                 break;
         }
         assert(input_offset == input.size());
-
-        return error_status;
     }
 
 
 
-private:
     TDefaultErrorHandler _default_error_handler;
     const ErrorHandler* _error_handler;
 
