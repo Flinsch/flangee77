@@ -1,5 +1,7 @@
 var NAVTREEINDEX29 =
 {
+"db/dad/structml7_1_1Vector4.html#a91103e11c8f3cf78868a23efbe3e507d":[5,0,2,10,38],
+"db/dad/structml7_1_1Vector4.html#a940970d55b89d97ad1bad95315928682":[7,0,2,10,7],
 "db/dad/structml7_1_1Vector4.html#a940970d55b89d97ad1bad95315928682":[5,0,2,10,7],
 "db/dad/structml7_1_1Vector4.html#a9e273fcd75cba772c230edede46c395d":[5,0,2,10,23],
 "db/dad/structml7_1_1Vector4.html#a9e273fcd75cba772c230edede46c395d":[7,0,2,10,23],
@@ -247,7 +249,5 @@ var NAVTREEINDEX29 =
 "dc/d17/namespacecl7_1_1strings.html#a7d548b8edf26d33e2af005041edb75b8":[5,0,0,8,60],
 "dc/d17/namespacecl7_1_1strings.html#a7e4e2a4b764561e1680c4808280877a8":[5,0,0,8,81],
 "dc/d17/namespacecl7_1_1strings.html#a7e6355d716fd83bbab3b9f202aaa742c":[5,0,0,8,45],
-"dc/d17/namespacecl7_1_1strings.html#a7e9505c495a8abc798ec7f77c800d353":[5,0,0,8,126],
-"dc/d17/namespacecl7_1_1strings.html#a7f7aff1319572564677b55ef9beaf0ce":[5,0,0,8,93],
-"dc/d17/namespacecl7_1_1strings.html#a8a09be67abb2ac38a52f2bc06adc34d7":[5,0,0,8,38]
+"dc/d17/namespacecl7_1_1strings.html#a7e9505c495a8abc798ec7f77c800d353":[5,0,0,8,126]
 };

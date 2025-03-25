@@ -1,5 +1,7 @@
 var NAVTREEINDEX27 =
 {
+"db/d02/classtl7_1_1reporting_1_1CoutLogger.html#a091baa378eafaac760205fdfce63f105":[7,0,5,1,0,19],
+"db/d02/classtl7_1_1reporting_1_1CoutLogger.html#a0970bb0a2c322ff970ae96b3bd1a5c74":[7,0,5,1,0,7],
 "db/d02/classtl7_1_1reporting_1_1CoutLogger.html#a0970bb0a2c322ff970ae96b3bd1a5c74":[5,0,5,2,0,7],
 "db/d02/classtl7_1_1reporting_1_1CoutLogger.html#a20bcf9b6bdda15788342a4a31323dbe2":[5,0,5,2,0,18],
 "db/d02/classtl7_1_1reporting_1_1CoutLogger.html#a20bcf9b6bdda15788342a4a31323dbe2":[7,0,5,1,0,18],
@@ -247,7 +249,5 @@ var NAVTREEINDEX27 =
 "db/d6b/classxl7_1_1graphics_1_1shaders_1_1PixelShader.html#a9d72683c4e1a809706003d84fe074310":[7,0,6,0,4,10,4],
 "db/d6b/classxl7_1_1graphics_1_1shaders_1_1PixelShader.html#ab693ff90ebbff8ff74ce255830a6f097":[5,0,6,1,4,10,8],
 "db/d6b/classxl7_1_1graphics_1_1shaders_1_1PixelShader.html#ab693ff90ebbff8ff74ce255830a6f097":[7,0,6,0,4,10,8],
-"db/d6b/classxl7_1_1graphics_1_1shaders_1_1PixelShader.html#ab71e8f290c1e19dc18e0fd7f1c80daf7":[7,0,6,0,4,10,3],
-"db/d6b/classxl7_1_1graphics_1_1shaders_1_1PixelShader.html#ab71e8f290c1e19dc18e0fd7f1c80daf7":[5,0,6,1,4,10,3],
-"db/d6b/classxl7_1_1graphics_1_1shaders_1_1PixelShader.html#ac7bca0aab29ba5a66c76178023622b1a":[7,0,6,0,4,10,6]
+"db/d6b/classxl7_1_1graphics_1_1shaders_1_1PixelShader.html#ab71e8f290c1e19dc18e0fd7f1c80daf7":[7,0,6,0,4,10,3]
 };
