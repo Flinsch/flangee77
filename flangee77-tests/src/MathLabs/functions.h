@@ -995,6 +995,66 @@ TESTLABS_CASE( u8"MathLabs:  functions:  next_power_of_2" )
     }
 }
 
+TESTLABS_CASE( u8"MathLabs:  functions:  decimal_digits" )
+{
+    struct Entry
+    {
+        unsigned x;
+        unsigned expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0, 1 },
+        { 1, 1 },
+        { 2, 1 },
+        { 3, 1 },
+        { 4, 1 },
+        { 5, 1 },
+        { 6, 1 },
+        { 7, 1 },
+        { 8, 1 },
+        { 9, 1 },
+        { 10, 2 },
+        { 11, 2 },
+        { 12, 2 },
+        { 13, 2 },
+        { 14, 2 },
+        { 15, 2 },
+        { 16, 2 },
+        { 17, 2 },
+        { 18, 2 },
+        { 19, 2 },
+        { 20, 2 },
+        { 99, 2 },
+        { 100, 3 },
+        { 999, 3 },
+        { 1000, 4 },
+        { 9999, 4 },
+        { 10000, 5 },
+        { 99999, 5 },
+        { 100000, 6 },
+        { 999999, 6 },
+        { 1000000, 7 },
+        { 9999999, 7 },
+        { 10000000, 8 },
+        { 99999999, 8 },
+        { 100000000, 9 },
+        { 999999999, 9 },
+        { 1000000000, 10 },
+        { 0x7fffffff, 10 },
+        { 0x80000000, 10 },
+        { 0x80000001, 10 },
+        { 0xffffffff, 10 },
+    };
+
+    TESTLABS_SUBCASE_BATCH( u8"decimal_digits", container, entry )
+    {
+        auto x = entry.x;
+        auto expected = entry.expected;
+        TESTLABS_CHECK_EQ( ml7::decimal_digits( x ), expected );
+    }
+}
+
 
 
 #endif // F77_TESTS_ML7_FUNCTIONS_H

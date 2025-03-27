@@ -300,7 +300,7 @@ namespace ml7 {
      * Checks whether the given value is a power of two.
      */
     template <typename T>
-        requires(std::is_integral_v<T>)
+        requires(std::is_integral_v<T> && std::is_unsigned_v<T>)
     constexpr bool is_power_of_2(T x)
     {
         return x > 0 && (x & (x - 1)) == 0;
@@ -311,13 +311,13 @@ namespace ml7 {
      * specified non-zero value. If the value is 0, 0 is returned.
      */
     template <typename T>
-        requires(std::is_integral_v<T>)
+        requires(std::is_integral_v<T> && std::is_unsigned_v<T>)
     constexpr T prev_power_of_2(T x)
     {
         constexpr T max = T(1) << (sizeof(T) * 8 - 1);
         if (x >= max)
             return max;
-        unsigned y = 1;
+        T y = T(1);
         while (y <= x)
             y <<= 1;
         return y >> 1;
@@ -329,16 +329,30 @@ namespace ml7 {
      * 0 is returned.
      */
     template <typename T>
-        requires(std::is_integral_v<T>)
+        requires(std::is_integral_v<T> && std::is_unsigned_v<T>)
     constexpr T next_power_of_2(T x)
     {
         constexpr T max = T(1) << (sizeof(T) * 8 - 1);
         if (x > max)
             return 0;
-        unsigned y = 1;
+        T y = T(1);
         while (y < x)
             y <<= 1;
         return y;
+    }
+
+    /**
+     * Determines the number of decimal digits of an unsigned integer value.
+     */
+    template <typename U = unsigned, typename T>
+        requires(std::is_integral_v<T> && std::is_unsigned_v<T>)
+    constexpr U decimal_digits(T x)
+    {
+        constexpr T _10 = T(10);
+        U n = U(1);
+        for (; x >= _10; ++n)
+            x /= _10;
+        return n;
     }
 
 
