@@ -93,7 +93,8 @@ $(document).ready(function(){initNavTree('d9/d58/byte__view_8h.html','../../'); 
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">byte_view.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -244,6 +245,17 @@ Namespaces</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:a392a212050307677351feba78ccf36e6" id="r_a392a212050307677351feba78ccf36e6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a392a212050307677351feba78ccf36e6">cl7::byte_view</a> = std::span&lt; const std::byte &gt;</td></tr>
 <tr class="separator:a392a212050307677351feba78ccf36e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:aba3a040a0a3655e21080868053aabb6f" id="r_aba3a040a0a3655e21080868053aabb6f"><td class="memTemplParams" colspan="2">template&lt;class T &gt; <br />
+requires (requires { typename T::value_type; } &amp;&amp; requires (const T&amp; v) { { v.data() } -&gt; std::same_as&lt;const typename T::value_type*&gt;; { v.size() } -&gt; std::convertible_to&lt;size_t&gt;; } &amp;&amp; sizeof(typename T::value_type) == sizeof(std::byte))</td></tr>
+<tr class="memitem:aba3a040a0a3655e21080868053aabb6f"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#aba3a040a0a3655e21080868053aabb6f">cl7::make_byte_view</a> (const T &amp;v)</td></tr>
+<tr class="separator:aba3a040a0a3655e21080868053aabb6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad75b54112b78cca68bcee10b7c37e603" id="r_ad75b54112b78cca68bcee10b7c37e603"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
+requires (std::is_same_v&lt;std::remove_cvref_t&lt;T&gt;, T&gt; &amp;&amp; sizeof(T) == sizeof(std::byte))</td></tr>
+<tr class="memitem:ad75b54112b78cca68bcee10b7c37e603"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#ad75b54112b78cca68bcee10b7c37e603">cl7::make_byte_view</a> (const T *data, size_t size)</td></tr>
+<tr class="separator:ad75b54112b78cca68bcee10b7c37e603"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -119,6 +119,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8d657cffabb3e20152b52b65f047ba1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa457695da5096d1d9af2063bd0ed8437" id="r_aa457695da5096d1d9af2063bd0ed8437"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d4a/classcl7_1_1io_1_1utf8__reader.html#aa457695da5096d1d9af2063bd0ed8437">read_line</a> () const</td></tr>
 <tr class="separator:aa457695da5096d1d9af2063bd0ed8437"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27fbce8e1350b49b6c1a7ce0dec4d33d" id="r_a27fbce8e1350b49b6c1a7ce0dec4d33d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d4a/classcl7_1_1io_1_1utf8__reader.html#a27fbce8e1350b49b6c1a7ce0dec4d33d">read_validated</a> () const</td></tr>
+<tr class="separator:a27fbce8e1350b49b6c1a7ce0dec4d33d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e5a07ac01da4d044d355c81f8d21a93" id="r_a0e5a07ac01da4d044d355c81f8d21a93"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d4a/classcl7_1_1io_1_1utf8__reader.html#a0e5a07ac01da4d044d355c81f8d21a93">read_line_validated</a> () const</td></tr>
+<tr class="separator:a0e5a07ac01da4d044d355c81f8d21a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -168,7 +172,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Reads and returns all available/remaining data. </p>
+<p>Reads all available/remaining data without checking for valid UTF-8. </p>
 
 </div>
 </div>
@@ -186,7 +190,43 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Attempts to read the next line. </p>
+<p>Attempts to read the next line without checking for valid UTF-8. </p>
+
+</div>
+</div>
+<a id="a0e5a07ac01da4d044d355c81f8d21a93" name="a0e5a07ac01da4d044d355c81f8d21a93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e5a07ac01da4d044d355c81f8d21a93">&#9670;&#160;</a></span>read_line_validated()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> cl7::io::utf8_reader::read_line_validated </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Attempts to read the next line with UTF-8 validation/"correction". </p>
+
+</div>
+</div>
+<a id="a27fbce8e1350b49b6c1a7ce0dec4d33d" name="a27fbce8e1350b49b6c1a7ce0dec4d33d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27fbce8e1350b49b6c1a7ce0dec4d33d">&#9670;&#160;</a></span>read_validated()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> cl7::io::utf8_reader::read_validated </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Reads all available/remaining data with UTF-8 validation/"correction". </p>
 
 </div>
 </div>

@@ -217,7 +217,6 @@ var menudata={children:[
 {text:"x",url:"globals.html#index_x"},
 {text:"z",url:"globals.html#index_z"}]},
 {text:"Typedefs",url:"globals_type.html"},
-{text:"Enumerator",url:"globals_eval.html"},
 {text:"Macros",url:"globals_defs.html",children:[
 {text:"_",url:"globals_defs.html#index__5F"},
 {text:"d",url:"globals_defs.html#index_d"},
