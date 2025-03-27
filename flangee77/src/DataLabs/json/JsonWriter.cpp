@@ -79,7 +79,7 @@ namespace dl7::json {
             case u8'\'':
                 if (ch == quote_char)
                     oss << u8'\\';
-                oss << quote_char;
+                oss << ch;
                 break;
 
             case u8'\\': oss << u8"\\\\"; break;
