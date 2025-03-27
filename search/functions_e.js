@@ -1,7 +1,7 @@
 var searchData=
 [
   ['next_0',['next',['../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a5b54d0aa8196584f614d205c2fd10485',1,'dl7::syntax::Lexer']]],
-  ['next_5fpower_5fof_5f2_1',['next_power_of_2',['../d3/d53/namespaceml7.html#ad1ebbc2b7874cc99d631b68a07c7b337',1,'ml7']]],
+  ['next_5fpower_5fof_5f2_1',['next_power_of_2',['../d3/d53/namespaceml7.html#a3850d5a6089847eb6af83e706f69e006',1,'ml7']]],
   ['norm_2',['norm',['../d8/d1f/structml7_1_1Quaternion.html#a0e7be6b4ae8a2a53f49957b75be085cf',1,'ml7::Quaternion']]],
   ['norm_5fto_5ffixed_3',['norm_to_fixed',['../d9/df1/namespacecl7_1_1bits.html#a92a7092d745ebe9351dda7a8483d48ba',1,'cl7::bits']]],
   ['normalize_4',['normalize',['../d8/d1f/structml7_1_1Quaternion.html#a4c038fc65cc7c70586df29456d62c44f',1,'ml7::Quaternion::normalize()'],['../d7/db1/structml7_1_1Vector2.html#a9c52e73f3edf3328da32d839a310295f',1,'ml7::Vector2::normalize()'],['../d6/d64/structml7_1_1Vector3.html#ad84ef9306fd91dca55cf18ae5f035ba6',1,'ml7::Vector3::normalize()'],['../db/dad/structml7_1_1Vector4.html#a29f56f79ba22e5d6359db5090bc3f645',1,'ml7::Vector4::normalize()']]],

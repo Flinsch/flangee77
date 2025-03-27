@@ -75,7 +75,7 @@ var searchData=
   ['present_72',['present',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#ab8735d8d41be58f15a40b4bdf12d5163',1,'xl7::graphics::RenderingDevice']]],
   ['preserve_73',['Preserve',['../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ac4ce5eaf77a0e31efdbbe3df2c3209e6a6d2a1af98f2cad1e5ec2dd0a75953919',1,'dl7::syntax::Lexer']]],
   ['presumption_74',['Presumption',['../da/d3a/structtl7_1_1Result.html#abc74a2ae21cd48cdb73884084ad1d692a4823ceacc145cd9d551aeb94aa8435d7',1,'tl7::Result']]],
-  ['prev_5fpower_5fof_5f2_75',['prev_power_of_2',['../d3/d53/namespaceml7.html#a8b91a7dbbef0d68e6f1f12ef2fcb753a',1,'ml7']]],
+  ['prev_5fpower_5fof_5f2_75',['prev_power_of_2',['../d3/d53/namespaceml7.html#aebf7e35e42759a81cfc8b99922f381f0',1,'ml7']]],
   ['primary_5fcontext_76',['primary_context',['../d8/d30/namespacexl7_1_1graphics.html#a344cd22b4053ee9891356608de3dc0c0',1,'xl7::graphics']]],
   ['primitive_5ftopology_77',['primitive_topology',['../d7/d0a/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates.html#a1cb834d9f250a6faef4501c0dd35eb6e',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates']]],
   ['priority_78',['priority',['../dd/d07/structtl7_1_1reporting_1_1Reporter_1_1ListenerEntry.html#a8afd813c5801ab5fbcb7cfac4ba0d81a',1,'tl7::reporting::Reporter::ListenerEntry']]],
