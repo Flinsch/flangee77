@@ -18,21 +18,21 @@ namespace cl7::io {
      * Attempts to write the given UTF-8 string and returns the number of UTF-8
      * characters/bytes actually transferred.
      */
-    size_t utf8_writer::write(cl7::u8string_view text)
+    size_t utf8_writer::write(cl7::u8string_view text) const
     {
-        return _file->write(cl7::byte_view(reinterpret_cast<const std::byte*>(text.data()), text.size()));
+        return _file->write(cl7::make_byte_view(text));
     }
 
     /**
-     * Attempts to write the given UTF-8 string followed by a line break (`\n`). The
-     * number of UTF-8 characters/bytes actually transferred is then returned,
-     * without the appended line break.
+     * Attempts to write the given UTF-8 string followed by a line break (`\n`, or
+     * whatever you specify). The number of UTF-8 characters/bytes actually
+     * transferred is then returned, without the appended line break.
      */
-    size_t utf8_writer::write_line(cl7::u8string_view line)
+    size_t utf8_writer::write_line(cl7::u8string_view line, cl7::u8string_view line_break) const
     {
         const auto written = write(line);
-        std::byte line_break[1] = {static_cast<std::byte>('\n')};
-        _file->write(cl7::byte_view(line_break, 1));
+        if (!line_break.empty())
+            _file->write(cl7::make_byte_view(line_break));
         return written;
     }
 

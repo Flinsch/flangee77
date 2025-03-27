@@ -24,14 +24,14 @@ public:
      * Attempts to write the given UTF-8 string and returns the number of UTF-8
      * characters/bytes actually transferred.
      */
-    size_t write(cl7::u8string_view text);
+    size_t write(cl7::u8string_view text) const;
 
     /**
-     * Attempts to write the given UTF-8 string followed by a line break (`\n`). The
-     * number of UTF-8 characters/bytes actually transferred is then returned,
-     * without the appended line break.
+     * Attempts to write the given UTF-8 string followed by a line break (`\n`, or
+     * whatever you specify). The number of UTF-8 characters/bytes actually
+     * transferred is then returned, without the appended line break.
      */
-    size_t write_line(cl7::u8string_view line);
+    size_t write_line(cl7::u8string_view line, cl7::u8string_view line_break = u8"\n") const;
 
 private:
     /** The file to write to. */

@@ -24,7 +24,7 @@ public:
      * Attempts to write the given data and returns the number of bytes actually
      * transferred.
      */
-    size_t write(cl7::byte_view data);
+    size_t write(cl7::byte_view data) const;
 
 private:
     /** The file to write to. */

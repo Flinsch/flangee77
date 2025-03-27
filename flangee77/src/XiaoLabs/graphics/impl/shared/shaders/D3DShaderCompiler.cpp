@@ -147,7 +147,7 @@ namespace xl7::graphics::impl::shared::shaders {
     {
         cl7::u8string source_code = Include::read_source_code(file_path);
 
-        return compile_hlsl_code({xl7::graphics::shaders::ShaderCode::Language::HighLevel, cl7::byte_view(reinterpret_cast<std::byte*>(source_code.data()), source_code.size())}, Include::directory(file_path), compile_options, entry_point, target);
+        return compile_hlsl_code({xl7::graphics::shaders::ShaderCode::Language::HighLevel, cl7::make_byte_view(source_code)}, Include::directory(file_path), compile_options, entry_point, target);
     }
 
     /**

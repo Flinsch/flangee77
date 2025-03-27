@@ -106,7 +106,7 @@ namespace dl7::compression {
 
                 // Copy data from temporary buffer
                 // to the destination buffer.
-                cl7::byte_view buffer_view{reinterpret_cast<const std::byte*>(buffer.get()), dst_block_size};
+                auto buffer_view = cl7::make_byte_view(buffer.get(), dst_block_size);
                 dst.insert(dst.end(), buffer_view.begin(), buffer_view.end());
 
             } while (z_strm.avail_out == 0);
@@ -181,7 +181,7 @@ namespace dl7::compression {
 
                 // Copy data from temporary buffer
                 // to the destination vector.
-                cl7::byte_view buffer_view{reinterpret_cast<const std::byte*>(buffer.get()), dst_block_size};
+                auto buffer_view = cl7::make_byte_view(buffer.get(), dst_block_size);
                 dst.insert(dst.end(), buffer_view.begin(), buffer_view.end());
 
             } while (z_strm.avail_out == 0);

@@ -21,14 +21,24 @@ public:
     explicit utf8_reader(irom* rom) noexcept;
 
     /**
-     * Reads and returns all available/remaining data.
+     * Reads all available/remaining data without checking for valid UTF-8.
      */
     cl7::u8string read() const;
 
     /**
-     * Attempts to read the next line.
+     * Attempts to read the next line without checking for valid UTF-8.
      */
     cl7::u8string read_line() const;
+
+    /**
+     * Reads all available/remaining data with UTF-8 validation/"correction".
+     */
+    cl7::u8string read_validated() const;
+
+    /**
+     * Attempts to read the next line with UTF-8 validation/"correction".
+     */
+    cl7::u8string read_line_validated() const;
 
 private:
     /** The read-only memory to read from. */
