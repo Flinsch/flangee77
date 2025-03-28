@@ -54,7 +54,7 @@ var searchData=
   ['logcontext_2eh_51',['LogContext.h',['../df/d15/LogContext_8h.html',1,'']]],
   ['logentry_52',['LogEntry',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html',1,'cl7::logging']]],
   ['logentry_2eh_53',['LogEntry.h',['../d4/d8d/LogEntry_8h.html',1,'']]],
-  ['logger_54',['logger',['../df/dc2/classcl7_1_1logging_1_1Logger.html#aedaabe4a04737734002c9bdf6f0f1892',1,'cl7::logging::Logger::Logger(const Logger &amp;)=delete'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#a8c10e2cf2a9aa0149283f7651cb4460d',1,'cl7::logging::Logger::Logger()=default'],['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a7f8bb9e9cf3071b88972022362521bcd',1,'cl7::logging::LogContext::logger'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#a9184bacc8747c6f28a4f29971f99cb89',1,'cl7::logging::Logger::Logger()'],['../df/dc2/classcl7_1_1logging_1_1Logger.html',1,'cl7::logging::Logger']]],
+  ['logger_54',['logger',['../df/dc2/classcl7_1_1logging_1_1Logger.html#a9184bacc8747c6f28a4f29971f99cb89',1,'cl7::logging::Logger::Logger(Logger &amp;&amp;)=delete'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#aedaabe4a04737734002c9bdf6f0f1892',1,'cl7::logging::Logger::Logger(const Logger &amp;)=delete'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#a8c10e2cf2a9aa0149283f7651cb4460d',1,'cl7::logging::Logger::Logger()=default'],['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a7f8bb9e9cf3071b88972022362521bcd',1,'cl7::logging::LogContext::logger'],['../df/dc2/classcl7_1_1logging_1_1Logger.html',1,'cl7::logging::Logger']]],
   ['logger_2ecpp_55',['Logger.cpp',['../d9/df5/Logger_8cpp.html',1,'']]],
   ['logger_2eh_56',['Logger.h',['../dd/da4/Logger_8h.html',1,'']]],
   ['logging_2ecpp_57',['logging.cpp',['../dd/daf/logging_8cpp.html',1,'']]],

@@ -7,8 +7,9 @@ var classcl7_1_1strings_1_1Utf16Codec =
     [ "string_view_type", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#aea2439f73f0ba013f2cf7cef23adacb1", null ],
     [ "decode_one", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#ab0f9bab3384dd63df3279cf98389fba0", null ],
     [ "determine_decode_length", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#ac21d763661c7b9404b5b2d7467d1b992", null ],
-    [ "determine_encode_length", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#abbd1fe4abbdb20eea1db440bc78a83eb", null ],
+    [ "determine_encode_length", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#a2ad32a90dcbfd55ad83f21283b225d40", null ],
     [ "encode_one", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#a6e57a6d358ab9da78b4d8e31279d55ff", null ],
+    [ "default_replacement", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#a4c2e8fe1da9b9fa5f5f88d4cd640db0d", null ],
     [ "encoding", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#aa09d9447f7159c1b503bbb18f1e87039", null ],
     [ "variable_length_encoding", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#aa0c5cc1c202b2941abd7155153f3c68d", null ]
 ];

@@ -95,6 +95,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "cl7::system::datetime", "d6/d16/structcl7_1_1system_1_1datetime.html", null ],
+    [ "cl7::strings::Decoder< Tchar, TDefaultErrorHandler >", "db/d5c/classcl7_1_1strings_1_1Decoder.html", null ],
     [ "dl7::compression::Deflate", "d2/d26/structdl7_1_1compression_1_1Deflate.html", null ],
     [ "xl7::graphics::images::Image::Desc", "d0/d81/structxl7_1_1graphics_1_1images_1_1Image_1_1Desc.html", null ],
     [ "xl7::graphics::meshes::MeshBuffer::Desc", "d8/df2/structxl7_1_1graphics_1_1meshes_1_1MeshBuffer_1_1Desc.html", [
@@ -118,6 +119,7 @@ var hierarchy =
     [ "dl7::syntax::Diagnostics", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html", null ],
     [ "xl7::graphics::meshes::VertexLayout::Element", "d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html", null ],
     [ "cl7::strings::EncodeBuffer< Tchar >", "d1/d9d/structcl7_1_1strings_1_1EncodeBuffer.html", null ],
+    [ "cl7::strings::Encoder< Tchar, TDefaultErrorHandler >", "dc/d4e/classcl7_1_1strings_1_1Encoder.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::StateArray< TProxy, N >::Entry", "d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html", null ],
     [ "tl7::Signature::equal_to", "da/dc1/structtl7_1_1Signature_1_1equal__to.html", null ],
     [ "cl7::strings::ErrorHandler", "d7/dff/classcl7_1_1strings_1_1ErrorHandler.html", [
