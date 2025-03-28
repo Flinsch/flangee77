@@ -49,7 +49,7 @@ public:
      */
     string_type transcode(string_view_type input) const
     {
-        string_type output(determine_output_length(input), typename string_view_type::value_type());
+        string_type output(determine_output_length(input), typename string_type::value_type());
         transcode_into(input, cl7::make_string_span(output));
         return output;
     }
