@@ -86,9 +86,11 @@ target_sources(flangee77
     strings/codepoint.cpp
     strings/codepoint.h
     strings/CodepointResult.h
+    strings/Decoder.h
     strings/DecodeResult.h
     strings/DefaultErrorHandler.h
     strings/EncodeBuffer.h
+    strings/Encoder.h
     strings/EncodeResult.h
     strings/Encoding.h
     strings/EncodingError.h

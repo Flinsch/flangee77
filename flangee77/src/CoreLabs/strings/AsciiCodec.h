@@ -21,6 +21,7 @@ class AsciiCodec
 public:
     static constexpr Encoding encoding = Encoding::ASCII;
     static constexpr bool variable_length_encoding = false;
+    static constexpr codepoint default_replacement = {codepoint::replacement_ascii};
 
     using char_type = cl7::achar_t;
 
@@ -31,7 +32,7 @@ public:
 
 
 
-    static size_t determine_encode_length(codepoint codepoint, strings::codepoint replacement = {codepoint::replacement_ascii}) { return 1; }
+    static size_t determine_encode_length(codepoint codepoint, strings::codepoint replacement = default_replacement) { return 1; }
     static size_t determine_decode_length(string_view_type input) { return input.empty() ? 0 : 1; }
 
     static EncodeResult encode_one(ErrorStatus& error_status, codepoint codepoint, string_span_type output, const ErrorHandler& error_handler);

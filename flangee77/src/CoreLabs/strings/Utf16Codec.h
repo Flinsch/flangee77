@@ -21,6 +21,7 @@ class Utf16Codec
 public:
     static constexpr Encoding encoding = Encoding::UTF16;
     static constexpr bool variable_length_encoding = true;
+    static constexpr codepoint default_replacement = {codepoint::replacement_unicode};
 
     using char_type = cl7::u16char_t;
 
@@ -31,7 +32,7 @@ public:
 
 
 
-    static size_t determine_encode_length(codepoint codepoint, strings::codepoint replacement = {codepoint::replacement_unicode});
+    static size_t determine_encode_length(codepoint codepoint, strings::codepoint replacement = default_replacement);
     static size_t determine_decode_length(string_view_type input);
 
     static EncodeResult encode_one(ErrorStatus& error_status, codepoint codepoint, string_span_type output, const ErrorHandler& error_handler);
