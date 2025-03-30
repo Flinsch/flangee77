@@ -140,6 +140,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:aaf654362addd309ea98f3209e0e8e099"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ad7847d203ebbd9521a70240b779114" id="r_a0ad7847d203ebbd9521a70240b779114"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html#a0ad7847d203ebbd9521a70240b779114">allow_single_quotes</a> = false</td></tr>
 <tr class="separator:a0ad7847d203ebbd9521a70240b779114"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acca8d9de55aa60d4446e27cbb71aab56" id="r_acca8d9de55aa60d4446e27cbb71aab56"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html#acca8d9de55aa60d4446e27cbb71aab56">allow_unquoted_keys</a> = false</td></tr>
+<tr class="separator:acca8d9de55aa60d4446e27cbb71aab56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a8898108efa3ed4e4bdf809de9cfe301d" name="a8898108efa3ed4e4bdf809de9cfe301d"></a>
@@ -162,8 +164,10 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8898108efa3ed4e4bdf809de9cfe301da3e5c1fb76b6543ac61af54b185f02af9" name="a8898108efa3ed4e4bdf809de9cfe301da3e5c1fb76b6543ac61af54b185f02af9"></a>SingleLine&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8898108efa3ed4e4bdf809de9cfe301dad16a748b5543974384bc43d392f1e566" name="a8898108efa3ed4e4bdf809de9cfe301dad16a748b5543974384bc43d392f1e566"></a>MultiLine&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8898108efa3ed4e4bdf809de9cfe301da3e5c1fb76b6543ac61af54b185f02af9" name="a8898108efa3ed4e4bdf809de9cfe301da3e5c1fb76b6543ac61af54b185f02af9"></a>SingleLine&#160;</td><td class="fielddoc"><p>Force single-line output, even for structured objects and arrays (primitive values are single-line anyway). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a8898108efa3ed4e4bdf809de9cfe301dad16a748b5543974384bc43d392f1e566" name="a8898108efa3ed4e4bdf809de9cfe301dad16a748b5543974384bc43d392f1e566"></a>MultiLine&#160;</td><td class="fielddoc"><p>Allow multi-line output for structured objects and arrays (primitive values are single-line anyway). </p>
+</td></tr>
 </table>
 
 </div>
@@ -180,6 +184,22 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Whether to allow single-quoted strings. </p>
+
+</div>
+</div>
+<a id="acca8d9de55aa60d4446e27cbb71aab56" name="acca8d9de55aa60d4446e27cbb71aab56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acca8d9de55aa60d4446e27cbb71aab56">&#9670;&#160;</a></span>allow_unquoted_keys</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool dl7::json::JsonWriter::Format::allow_unquoted_keys = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether to allow unquoted object keys. </p>
 
 </div>
 </div>
@@ -194,6 +214,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Whether to escape non-ASCII characters as hexadecimal UTF-16 code units and/or surrogate pairs (<code>\uXXXX</code> format). </p>
 
 </div>
 </div>
@@ -208,6 +229,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The specific options for the multi-line style. </p>
 
 </div>
 </div>
@@ -222,6 +244,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The specific options for the single-line style. </p>
 
 </div>
 </div>
@@ -236,6 +259,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Single-line or multi-line style? </p>
 
 </div>
 </div>

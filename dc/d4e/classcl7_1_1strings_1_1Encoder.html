@@ -126,6 +126,8 @@ Collaboration diagram for cl7::strings::Encoder&lt; Tchar, TDefaultErrorHandler 
 Public Types</h2></td></tr>
 <tr class="memitem:aadb0325e8633a9c170b106ed84239965" id="r_aadb0325e8633a9c170b106ed84239965"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#aadb0325e8633a9c170b106ed84239965">Codec</a> = typename <a class="el" href="../../d8/d97/structcl7_1_1strings_1_1traits.html">traits</a>&lt; Tchar &gt;::codec_type</td></tr>
 <tr class="separator:aadb0325e8633a9c170b106ed84239965"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a439bc5ed118012d15a98b585d5277c6b" id="r_a439bc5ed118012d15a98b585d5277c6b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a439bc5ed118012d15a98b585d5277c6b">EncodeResult</a> = typename Codec::EncodeResult</td></tr>
+<tr class="separator:a439bc5ed118012d15a98b585d5277c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a682503562b973563d16b43a1033b5c10" id="r_a682503562b973563d16b43a1033b5c10"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a682503562b973563d16b43a1033b5c10">string_span_type</a> = typename <a class="el" href="../../d8/d97/structcl7_1_1strings_1_1traits.html">traits</a>&lt; Tchar &gt;::string_span_type</td></tr>
 <tr class="separator:a682503562b973563d16b43a1033b5c10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a451b8ffe9c308a90c459e27d7c27c1aa" id="r_a451b8ffe9c308a90c459e27d7c27c1aa"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a451b8ffe9c308a90c459e27d7c27c1aa">string_type</a> = typename <a class="el" href="../../d8/d97/structcl7_1_1strings_1_1traits.html">traits</a>&lt; Tchar &gt;::string_type</td></tr>
@@ -139,19 +141,19 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a66d57ca3a81fdf04bb8db14d896b9473"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cc9533ed5d4519adb15cb0fa3f835cb" id="r_a9cc9533ed5d4519adb15cb0fa3f835cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a451b8ffe9c308a90c459e27d7c27c1aa">string_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a9cc9533ed5d4519adb15cb0fa3f835cb">encode_one</a> (<a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a> <a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>) const</td></tr>
 <tr class="separator:a9cc9533ed5d4519adb15cb0fa3f835cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93dcf41c2f9887157de0fc31ebe88479" id="r_a93dcf41c2f9887157de0fc31ebe88479"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a93dcf41c2f9887157de0fc31ebe88479">encode_one_into</a> (<a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a> <a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>, <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a451b8ffe9c308a90c459e27d7c27c1aa">string_type</a> &amp;output) const</td></tr>
-<tr class="separator:a93dcf41c2f9887157de0fc31ebe88479"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab47cab17df3feef6c8fbcfcff603a0c7" id="r_ab47cab17df3feef6c8fbcfcff603a0c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#ab47cab17df3feef6c8fbcfcff603a0c7">encode_one_into</a> (<a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a> <a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>, <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a682503562b973563d16b43a1033b5c10">string_span_type</a> output) const</td></tr>
-<tr class="separator:ab47cab17df3feef6c8fbcfcff603a0c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1740c0e96ecda3e8f1993d489103a35" id="r_ac1740c0e96ecda3e8f1993d489103a35"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html">ErrorStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#ac1740c0e96ecda3e8f1993d489103a35">encode_one_with_status</a> (<a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a> <a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>, <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a451b8ffe9c308a90c459e27d7c27c1aa">string_type</a> &amp;output) const</td></tr>
-<tr class="separator:ac1740c0e96ecda3e8f1993d489103a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6d160affd2a1e489d9af0f4ca0c6aa5" id="r_af6d160affd2a1e489d9af0f4ca0c6aa5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html">ErrorStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#af6d160affd2a1e489d9af0f4ca0c6aa5">encode_one_with_status</a> (<a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a> <a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>, <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a682503562b973563d16b43a1033b5c10">string_span_type</a> output) const</td></tr>
-<tr class="separator:af6d160affd2a1e489d9af0f4ca0c6aa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a420b6e70f3d7c260a7bc8fe167a46acc" id="r_a420b6e70f3d7c260a7bc8fe167a46acc"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a420b6e70f3d7c260a7bc8fe167a46acc">encode_one_into</a> (<a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a> <a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>, <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a451b8ffe9c308a90c459e27d7c27c1aa">string_type</a> &amp;output) const</td></tr>
+<tr class="separator:a420b6e70f3d7c260a7bc8fe167a46acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab82a13190a0ed6c4f5cf99454f62f16a" id="r_ab82a13190a0ed6c4f5cf99454f62f16a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#ab82a13190a0ed6c4f5cf99454f62f16a">encode_one_into</a> (<a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a> <a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>, <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a682503562b973563d16b43a1033b5c10">string_span_type</a> output) const</td></tr>
+<tr class="separator:ab82a13190a0ed6c4f5cf99454f62f16a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11dc58544c176ecb7d0c4387126a7ef0" id="r_a11dc58544c176ecb7d0c4387126a7ef0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a439bc5ed118012d15a98b585d5277c6b">EncodeResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a11dc58544c176ecb7d0c4387126a7ef0">encode_one_with_result</a> (<a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a> <a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>, <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a451b8ffe9c308a90c459e27d7c27c1aa">string_type</a> &amp;output) const</td></tr>
+<tr class="separator:a11dc58544c176ecb7d0c4387126a7ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af78856843ca43af7e44db71bc6551dcb" id="r_af78856843ca43af7e44db71bc6551dcb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a439bc5ed118012d15a98b585d5277c6b">EncodeResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#af78856843ca43af7e44db71bc6551dcb">encode_one_with_result</a> (<a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a> <a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>, <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a682503562b973563d16b43a1033b5c10">string_span_type</a> output) const</td></tr>
+<tr class="separator:af78856843ca43af7e44db71bc6551dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:af0b4040f743906a373d848486dce6580" id="r_af0b4040f743906a373d848486dce6580"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#af0b4040f743906a373d848486dce6580">_do_encode_one</a> (<a class="el" href="../../dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html">ErrorStatus</a> &amp;error_status, <a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a> <a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>, <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a682503562b973563d16b43a1033b5c10">string_span_type</a> output) const</td></tr>
-<tr class="separator:af0b4040f743906a373d848486dce6580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a099d329e368f2b5c4044a2ab55daea37" id="r_a099d329e368f2b5c4044a2ab55daea37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a439bc5ed118012d15a98b585d5277c6b">EncodeResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a099d329e368f2b5c4044a2ab55daea37">_do_encode_one</a> (<a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a> <a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>, <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a682503562b973563d16b43a1033b5c10">string_span_type</a> output) const</td></tr>
+<tr class="separator:a099d329e368f2b5c4044a2ab55daea37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -171,6 +173,22 @@ template&lt;typename Tchar , class TDefaultErrorHandler  = DefaultErrorHandler&g
       <table class="memname">
         <tr>
           <td class="memname">using <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html">cl7::strings::Encoder</a>&lt; Tchar, TDefaultErrorHandler &gt;::Codec =  typename <a class="el" href="../../d8/d97/structcl7_1_1strings_1_1traits.html">traits</a>&lt;Tchar&gt;::codec_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a439bc5ed118012d15a98b585d5277c6b" name="a439bc5ed118012d15a98b585d5277c6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a439bc5ed118012d15a98b585d5277c6b">&#9670;&#160;</a></span>EncodeResult</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tchar , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html">cl7::strings::Encoder</a>&lt; Tchar, TDefaultErrorHandler &gt;::EncodeResult =  typename Codec::EncodeResult</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -239,8 +257,8 @@ template&lt;typename Tchar , class TDefaultErrorHandler  = DefaultErrorHandler&g
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af0b4040f743906a373d848486dce6580" name="af0b4040f743906a373d848486dce6580"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0b4040f743906a373d848486dce6580">&#9670;&#160;</a></span>_do_encode_one()</h2>
+<a id="a099d329e368f2b5c4044a2ab55daea37" name="a099d329e368f2b5c4044a2ab55daea37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a099d329e368f2b5c4044a2ab55daea37">&#9670;&#160;</a></span>_do_encode_one()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -251,14 +269,8 @@ template&lt;typename Tchar , class TDefaultErrorHandler  = DefaultErrorHandler&g
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html">cl7::strings::Encoder</a>&lt; Tchar, TDefaultErrorHandler &gt;::_do_encode_one </td>
+          <td class="memname"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a439bc5ed118012d15a98b585d5277c6b">EncodeResult</a> <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html">cl7::strings::Encoder</a>&lt; Tchar, TDefaultErrorHandler &gt;::_do_encode_one </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html">ErrorStatus</a> &amp;&#160;</td>
-          <td class="paramname"><em>error_status</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype"><a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>&#160;</td>
           <td class="paramname"><em>codepoint</em>, </td>
         </tr>
@@ -341,8 +353,8 @@ template&lt;typename Tchar , class TDefaultErrorHandler  = DefaultErrorHandler&g
 
 </div>
 </div>
-<a id="ab47cab17df3feef6c8fbcfcff603a0c7" name="ab47cab17df3feef6c8fbcfcff603a0c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab47cab17df3feef6c8fbcfcff603a0c7">&#9670;&#160;</a></span>encode_one_into() <span class="overload">[1/2]</span></h2>
+<a id="ab82a13190a0ed6c4f5cf99454f62f16a" name="ab82a13190a0ed6c4f5cf99454f62f16a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab82a13190a0ed6c4f5cf99454f62f16a">&#9670;&#160;</a></span>encode_one_into() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -353,7 +365,7 @@ template&lt;typename Tchar , class TDefaultErrorHandler  = DefaultErrorHandler&g
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html">cl7::strings::Encoder</a>&lt; Tchar, TDefaultErrorHandler &gt;::encode_one_into </td>
+          <td class="memname">size_t <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html">cl7::strings::Encoder</a>&lt; Tchar, TDefaultErrorHandler &gt;::encode_one_into </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>&#160;</td>
           <td class="paramname"><em>codepoint</em>, </td>
@@ -376,12 +388,12 @@ template&lt;typename Tchar , class TDefaultErrorHandler  = DefaultErrorHandler&g
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Encodes a given code point into the target encoding and stores the result in the provided output buffer, if space allows. The operation does not null-terminate the output. </p>
+<p>Encodes a given code point into the target encoding and stores the result in the provided output buffer, if space allows, returning the number of code units written. The operation does not null-terminate the output. </p>
 
 </div>
 </div>
-<a id="a93dcf41c2f9887157de0fc31ebe88479" name="a93dcf41c2f9887157de0fc31ebe88479"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a93dcf41c2f9887157de0fc31ebe88479">&#9670;&#160;</a></span>encode_one_into() <span class="overload">[2/2]</span></h2>
+<a id="a420b6e70f3d7c260a7bc8fe167a46acc" name="a420b6e70f3d7c260a7bc8fe167a46acc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a420b6e70f3d7c260a7bc8fe167a46acc">&#9670;&#160;</a></span>encode_one_into() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -392,7 +404,7 @@ template&lt;typename Tchar , class TDefaultErrorHandler  = DefaultErrorHandler&g
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html">cl7::strings::Encoder</a>&lt; Tchar, TDefaultErrorHandler &gt;::encode_one_into </td>
+          <td class="memname">size_t <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html">cl7::strings::Encoder</a>&lt; Tchar, TDefaultErrorHandler &gt;::encode_one_into </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>&#160;</td>
           <td class="paramname"><em>codepoint</em>, </td>
@@ -415,12 +427,12 @@ template&lt;typename Tchar , class TDefaultErrorHandler  = DefaultErrorHandler&g
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Encodes a given code point into the target encoding and stores the result in the provided output string. </p>
+<p>Encodes a given code point into the target encoding and stores the result in the provided output string, returning the number of code units written. </p>
 
 </div>
 </div>
-<a id="af6d160affd2a1e489d9af0f4ca0c6aa5" name="af6d160affd2a1e489d9af0f4ca0c6aa5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6d160affd2a1e489d9af0f4ca0c6aa5">&#9670;&#160;</a></span>encode_one_with_status() <span class="overload">[1/2]</span></h2>
+<a id="af78856843ca43af7e44db71bc6551dcb" name="af78856843ca43af7e44db71bc6551dcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af78856843ca43af7e44db71bc6551dcb">&#9670;&#160;</a></span>encode_one_with_result() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -431,7 +443,7 @@ template&lt;typename Tchar , class TDefaultErrorHandler  = DefaultErrorHandler&g
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html">ErrorStatus</a> <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html">cl7::strings::Encoder</a>&lt; Tchar, TDefaultErrorHandler &gt;::encode_one_with_status </td>
+          <td class="memname"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a439bc5ed118012d15a98b585d5277c6b">EncodeResult</a> <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html">cl7::strings::Encoder</a>&lt; Tchar, TDefaultErrorHandler &gt;::encode_one_with_result </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>&#160;</td>
           <td class="paramname"><em>codepoint</em>, </td>
@@ -454,12 +466,12 @@ template&lt;typename Tchar , class TDefaultErrorHandler  = DefaultErrorHandler&g
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Encodes a given code point into the target encoding and stores the result in the provided output buffer, if space allows, returning a status indicating any errors encountered. The operation does not null-terminate the output. </p>
+<p>Encodes a given code point into the target encoding and stores the result in the provided output buffer, if space allows, returning a result indicating any errors encountered, the number of code units written, etc. The operation does not null-terminate the output. </p>
 
 </div>
 </div>
-<a id="ac1740c0e96ecda3e8f1993d489103a35" name="ac1740c0e96ecda3e8f1993d489103a35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1740c0e96ecda3e8f1993d489103a35">&#9670;&#160;</a></span>encode_one_with_status() <span class="overload">[2/2]</span></h2>
+<a id="a11dc58544c176ecb7d0c4387126a7ef0" name="a11dc58544c176ecb7d0c4387126a7ef0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11dc58544c176ecb7d0c4387126a7ef0">&#9670;&#160;</a></span>encode_one_with_result() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -470,7 +482,7 @@ template&lt;typename Tchar , class TDefaultErrorHandler  = DefaultErrorHandler&g
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html">ErrorStatus</a> <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html">cl7::strings::Encoder</a>&lt; Tchar, TDefaultErrorHandler &gt;::encode_one_with_status </td>
+          <td class="memname"><a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html#a439bc5ed118012d15a98b585d5277c6b">EncodeResult</a> <a class="el" href="../../dc/d4e/classcl7_1_1strings_1_1Encoder.html">cl7::strings::Encoder</a>&lt; Tchar, TDefaultErrorHandler &gt;::encode_one_with_result </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">codepoint</a>&#160;</td>
           <td class="paramname"><em>codepoint</em>, </td>
@@ -493,7 +505,7 @@ template&lt;typename Tchar , class TDefaultErrorHandler  = DefaultErrorHandler&g
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Encodes a given code point into the target encoding and stores the result in the provided output string, returning a status indicating any errors encountered. </p>
+<p>Encodes a given code point into the target encoding and stores the result in the provided output string, returning a result indicating any errors encountered, the number of code units written, etc. </p>
 
 </div>
 </div>

@@ -11,5 +11,5 @@ var searchData=
   ['integer_5ft_8',['integer_t',['../df/d87/namespacedl7_1_1json.html#a522cfa0841bdb6b7c463b3545d635db0',1,'dl7::json']]],
   ['is_5ftransparent_9',['is_transparent',['../d0/dbc/structcl7_1_1string__hash.html#a434add8ebf6bdaf76eb9859065819a8c',1,'cl7::string_hash']]],
   ['iterator_10',['iterator',['../dd/d42/classcl7_1_1ordered__map.html#aea14a571edeea6159c4c2178294c4fb4',1,'cl7::ordered_map']]],
-  ['iterator_5fcategory_11',['iterator_category',['../d2/dbf/classcl7_1_1continuous__forward__iterator.html#ad183879534d704e3ee2b8787e99fbbbe',1,'cl7::continuous_forward_iterator::iterator_category'],['../d2/d93/classcl7_1_1const__ptr__forward__iterator.html#ad4071a3fd7ac27c4c5fbbb3e008277a3',1,'cl7::const_ptr_forward_iterator::iterator_category']]]
+  ['iterator_5fcategory_11',['iterator_category',['../d2/dbf/classcl7_1_1continuous__forward__iterator.html#ad183879534d704e3ee2b8787e99fbbbe',1,'cl7::continuous_forward_iterator::iterator_category'],['../d2/d93/classcl7_1_1const__ptr__forward__iterator.html#ad4071a3fd7ac27c4c5fbbb3e008277a3',1,'cl7::const_ptr_forward_iterator::iterator_category'],['../d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#a021ade16f22a87d2ca13e69f0efd5e76',1,'cl7::strings::Decoder::iterator::iterator_category']]]
 ];

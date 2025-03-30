@@ -180,6 +180,7 @@ var hierarchy =
     [ "xl7::graphics::surfaces::ISurfaceFactory", "dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html", [
       [ "xl7::graphics::IResourceFactory", "d3/daa/classxl7_1_1graphics_1_1IResourceFactory.html", null ]
     ] ],
+    [ "cl7::strings::Decoder< Tchar, TDefaultErrorHandler >::iterator", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html", null ],
     [ "xl7::graphics::textures::ITextureFactory", "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html", [
       [ "xl7::graphics::IResourceFactory", "d3/daa/classxl7_1_1graphics_1_1IResourceFactory.html", null ]
     ] ],
@@ -311,6 +312,7 @@ var hierarchy =
     [ "tl7::ResultBuilder", "db/d89/classtl7_1_1ResultBuilder.html", null ],
     [ "cl7::profiling::Sample", "d6/d1f/structcl7_1_1profiling_1_1Sample.html", null ],
     [ "cl7::profiling::SampleHandler", "d3/dea/structcl7_1_1profiling_1_1SampleHandler.html", null ],
+    [ "cl7::strings::Decoder< Tchar, TDefaultErrorHandler >::sentinel", "d8/d2c/classcl7_1_1strings_1_1Decoder_1_1sentinel.html", null ],
     [ "tl7::TestSuite::Settings", "db/dbc/structtl7_1_1TestSuite_1_1Settings.html", null ],
     [ "xl7::graphics::shaders::ShaderCode", "d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html", null ],
     [ "tl7::Signature", "d1/d32/structtl7_1_1Signature.html", [

@@ -1,6 +1,7 @@
 var classdl7_1_1json_1_1JsonWriter =
 [
     [ "Format", "df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html", "df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format" ],
+    [ "is_valid_unquoted_key", "df/d83/classdl7_1_1json_1_1JsonWriter.html#af84f92f675b3cbe8e9f8cd9e4cc89cb1", null ],
     [ "to_string", "df/d83/classdl7_1_1json_1_1JsonWriter.html#afa86238b04a2f4b4e28a0c45e4a7e132", null ],
     [ "DEFAULT_COMPACT_FORMAT", "df/d83/classdl7_1_1json_1_1JsonWriter.html#aa5db864f0c47526a8896e16edf8252fd", null ],
     [ "DEFAULT_FORMAT", "df/d83/classdl7_1_1json_1_1JsonWriter.html#ab25497c15a3e6fbe49f0f67eb00a4ff5", null ],

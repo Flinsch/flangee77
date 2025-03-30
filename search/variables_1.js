@@ -8,9 +8,10 @@ var searchData=
   ['address_5fv_5',['address_v',['../d2/dcd/structxl7_1_1graphics_1_1states_1_1SamplerState_1_1Desc.html#a2c9ae7484eb7629e47a611d33066c71e',1,'xl7::graphics::states::SamplerState::Desc']]],
   ['address_5fw_6',['address_w',['../d2/dcd/structxl7_1_1graphics_1_1states_1_1SamplerState_1_1Desc.html#a61f1f71b461de80571a88b8d7a4452b9',1,'xl7::graphics::states::SamplerState::Desc']]],
   ['allow_5fsingle_5fquotes_7',['allow_single_quotes',['../df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html#a0ad7847d203ebbd9521a70240b779114',1,'dl7::json::JsonWriter::Format']]],
-  ['alpha_5foperation_8',['alpha_operation',['../d1/da4/structxl7_1_1graphics_1_1states_1_1BlendState_1_1Desc.html#a1ccb6d7a5e8ffd0571d1e8c869f029c5',1,'xl7::graphics::states::BlendState::Desc']]],
-  ['assertions_9',['assertions',['../de/d12/structtl7_1_1Stats.html#a855fa55d101adcdefde55c431ba18ab1',1,'tl7::Stats']]],
-  ['available_5fphysical_5fmemory_10',['available_physical_memory',['../d1/d7a/structcl7_1_1system_1_1MemoryStatus.html#a4e09c6f6c358c2392469d6f82e74a944',1,'cl7::system::MemoryStatus']]],
-  ['avg_5fpct_11',['avg_pct',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a4e78bb0152f00bcbe2f76570167d85b5',1,'cl7::profiling::Sample']]],
-  ['avg_5fusecs_12',['avg_usecs',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a198648d094bcd71fc79dea245d00689b',1,'cl7::profiling::Sample']]]
+  ['allow_5funquoted_5fkeys_8',['allow_unquoted_keys',['../df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html#acca8d9de55aa60d4446e27cbb71aab56',1,'dl7::json::JsonWriter::Format']]],
+  ['alpha_5foperation_9',['alpha_operation',['../d1/da4/structxl7_1_1graphics_1_1states_1_1BlendState_1_1Desc.html#a1ccb6d7a5e8ffd0571d1e8c869f029c5',1,'xl7::graphics::states::BlendState::Desc']]],
+  ['assertions_10',['assertions',['../de/d12/structtl7_1_1Stats.html#a855fa55d101adcdefde55c431ba18ab1',1,'tl7::Stats']]],
+  ['available_5fphysical_5fmemory_11',['available_physical_memory',['../d1/d7a/structcl7_1_1system_1_1MemoryStatus.html#a4e09c6f6c358c2392469d6f82e74a944',1,'cl7::system::MemoryStatus']]],
+  ['avg_5fpct_12',['avg_pct',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a4e78bb0152f00bcbe2f76570167d85b5',1,'cl7::profiling::Sample']]],
+  ['avg_5fusecs_13',['avg_usecs',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a198648d094bcd71fc79dea245d00689b',1,'cl7::profiling::Sample']]]
 ];

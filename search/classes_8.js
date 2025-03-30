@@ -20,5 +20,6 @@ var searchData=
   ['ishaderfactory_17',['IShaderFactory',['../d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory.html',1,'xl7::graphics::shaders']]],
   ['istatefactory_18',['IStateFactory',['../dc/da2/classxl7_1_1graphics_1_1states_1_1IStateFactory.html',1,'xl7::graphics::states']]],
   ['isurfacefactory_19',['ISurfaceFactory',['../dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html',1,'xl7::graphics::surfaces']]],
-  ['itexturefactory_20',['ITextureFactory',['../d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html',1,'xl7::graphics::textures']]]
+  ['iterator_20',['iterator',['../d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html',1,'cl7::strings::Decoder']]],
+  ['itexturefactory_21',['ITextureFactory',['../d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html',1,'xl7::graphics::textures']]]
 ];
