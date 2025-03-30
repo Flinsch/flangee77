@@ -6,6 +6,7 @@
 
 #include <cmath>
 #include <format>
+#include <unordered_set>
 
 
 
@@ -213,7 +214,10 @@ namespace dl7::json {
             for (const auto& p : object)
             {
                 _start_item(oss, depth + 1, format);
-                _write_string(oss, p.first, format);
+                if (format.allow_unquoted_keys && JsonWriter::is_valid_unquoted_key(p.first))
+                    oss << p.first;
+                else
+                    _write_string(oss, p.first, format);
                 oss.put(u8':');
                 if (format.style == JsonWriter::Format::Style::SingleLine && !format.single_line_options.compact)
                     oss.put(u8' ');
@@ -232,6 +236,10 @@ namespace dl7::json {
 
 
 
+    /**
+     * Generates a string representing the given JSON object/value based on the
+     * specified format.
+     */
     cl7::u8string JsonWriter::to_string(const Json& json, const Format& format)
     {
         cl7::u8osstream oss;
@@ -242,6 +250,47 @@ namespace dl7::json {
             _put_line_ending(oss, format);
 
         return std::move(oss).str();
+    }
+
+
+
+    /**
+     * Checks whether the specified string is a valid identifier for an unquoted
+     * object key. Not all conditions of JavaScript's identifier naming rules are
+     * considered, as with JSON5, for example. We allow identifiers that begin with
+     * a letter (A-Z or a-z), an underscore, or a dollar sign; consist of letters,
+     * digits, underscores, and/or dollar signs; and do not correspond to any
+     * reserved keyword (as per the ECMAScript specification).
+     */
+    bool JsonWriter::is_valid_unquoted_key(cl7::u8string_view key)
+    {
+        // Empty keys are invalid.
+        if (key.empty())
+            return false;
+
+        // First character must be a letter (A-Z, a-z), underscore (_), or dollar sign ($).
+        if (!(std::isalpha(key[0]) || key[0] == '_' || key[0] == '$'))
+            return false;
+
+        // Remaining characters can be letters, digits, underscores, or dollar signs.
+        for (size_t i = 1; i < key.size(); ++i)
+        {
+            if (!(std::isalnum(key[i]) || key[i] == '_' || key[i] == '$'))
+                return false;
+        }
+
+        // JavaScript reserved words:
+        // https://tc39.es/ecma262/#prod-ReservedWord
+        const std::unordered_set<cl7::u8string_view> JS_RESERVED_WORDS = {
+            u8"await", u8"break", u8"case", u8"catch", u8"class", u8"const", u8"continue", u8"debugger", u8"default",
+            u8"delete", u8"do", u8"else", u8"enum", u8"export", u8"extends", u8"false", u8"finally", u8"for",
+            u8"function", u8"if", u8"import", u8"in", u8"instanceof", u8"new", u8"null", u8"return", u8"super",
+            u8"switch", u8"this", u8"throw", u8"true", u8"try", u8"typeof", u8"var", u8"void", u8"while", u8"with",
+            u8"yield",
+        };
+
+        // Ensure the key is not a reserved JavaScript keyword.
+        return !JS_RESERVED_WORDS.contains(key);
     }
 
 
