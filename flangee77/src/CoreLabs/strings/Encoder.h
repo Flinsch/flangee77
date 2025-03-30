@@ -19,6 +19,7 @@ class Encoder
 
 public:
     using Codec = typename traits<Tchar>::codec_type;
+    using EncodeResult = typename Codec::EncodeResult;
 
     using string_span_type = typename traits<Tchar>::string_span_type;
     using string_type = typename traits<Tchar>::string_type;
@@ -62,60 +63,59 @@ public:
     string_type encode_one(codepoint codepoint) const
     {
         string_type output(determine_encode_length(codepoint), typename string_type::value_type());
-        encode_one_into(codepoint, cl7::make_string_span(output));
+        _do_encode_one(codepoint, cl7::make_string_span(output));
         return output;
     }
 
     /**
      * Encodes a given code point into the target encoding and stores the result in
-     * the provided output string.
+     * the provided output string, returning the number of code units written.
      */
-    void encode_one_into(codepoint codepoint, string_type& output) const
+    size_t encode_one_into(codepoint codepoint, string_type& output) const
     {
         output.resize(determine_encode_length(codepoint));
-        encode_one_into(codepoint, cl7::make_string_span(output));
+        return encode_one_into(codepoint, cl7::make_string_span(output));
     }
 
     /**
      * Encodes a given code point into the target encoding and stores the result in
-     * the provided output buffer, if space allows. The operation does not
-     * null-terminate the output.
+     * the provided output buffer, if space allows, returning the number of code
+     * units written. The operation does not null-terminate the output.
      */
-    void encode_one_into(codepoint codepoint, string_span_type output) const
+    size_t encode_one_into(codepoint codepoint, string_span_type output) const
     {
-        ErrorStatus error_status;
-        _do_encode_one(error_status, codepoint, output);
+        return _do_encode_one(codepoint, output).output_written.size();
     }
 
     /**
      * Encodes a given code point into the target encoding and stores the result in
-     * the provided output string, returning a status indicating any errors
-     * encountered.
+     * the provided output string, returning a result indicating any errors
+     * encountered, the number of code units written, etc.
      */
-    ErrorStatus encode_one_with_status(codepoint codepoint, string_type& output) const
+    EncodeResult encode_one_with_result(codepoint codepoint, string_type& output) const
     {
         output.resize(determine_encode_length(codepoint));
-        return encode_one_with_status(codepoint, cl7::make_string_span(output));
+        return encode_one_with_result(codepoint, cl7::make_string_span(output));
     }
 
     /**
      * Encodes a given code point into the target encoding and stores the result in
-     * the provided output buffer, if space allows, returning a status indicating
-     * any errors encountered. The operation does not null-terminate the output.
+     * the provided output buffer, if space allows, returning a result indicating
+     * any errors encountered, the number of code units written, etc. The operation
+     * does not null-terminate the output.
      */
-    ErrorStatus encode_one_with_status(codepoint codepoint, string_span_type output) const
+    EncodeResult encode_one_with_result(codepoint codepoint, string_span_type output) const
     {
-        ErrorStatus error_status;
-        _do_encode_one(error_status, codepoint, output);
-        return error_status;
+        return _do_encode_one(codepoint, output);
     }
 
 
 
 private:
-    void _do_encode_one(ErrorStatus& error_status, codepoint codepoint, string_span_type output) const
+    EncodeResult _do_encode_one(codepoint codepoint, string_span_type output) const
     {
-        Codec::encode_one(error_status, codepoint, output, *_error_handler);
+        ErrorStatus error_status;
+        return Codec::encode_one(error_status, codepoint, output, *_error_handler);
     }
 
 

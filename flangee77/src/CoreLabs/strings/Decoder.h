@@ -16,8 +16,61 @@ class Decoder
 
 public:
     using Codec = typename traits<Tchar>::codec_type;
+    using DecodeResult = typename Codec::DecodeResult;
 
     using string_view_type = typename traits<Tchar>::string_view_type;
+
+
+
+    class sentinel {};
+
+    class iterator
+    {
+    public:
+        using iterator_category = std::forward_iterator_tag;
+        using difference_type = std::ptrdiff_t;
+        using value_type = codepoint;
+        using pointer = const codepoint*;
+        using reference = codepoint;
+
+        iterator() = delete;
+        iterator(string_view_type input, const ErrorHandler* error_handler = nullptr)
+            : _input(input)
+            , _default_error_handler()
+            , _error_handler(error_handler ? error_handler : &_default_error_handler)
+        {
+        }
+
+        reference operator*() const { return _codepoint; }
+        pointer operator->() const { return &_codepoint; }
+        iterator& operator++() { _advance(); return *this; }
+        iterator operator++(int) { iterator it = *this; ++(*this); return it; }
+        friend bool operator==(const iterator& a, sentinel b) noexcept { return a._pos >= a._input.size(); }
+        friend bool operator!=(const iterator& a, sentinel b) noexcept { return !(a == b); }
+
+    private:
+        void _advance()
+        {
+            if (_pos >= _input.size())
+            {
+                _codepoint = {0};
+                return;
+            }
+
+            ErrorStatus error_status;
+            auto decode_result = Codec::decode_one(error_status, _input.substr(_pos), *_error_handler);
+            _codepoint = decode_result.codepoint;
+            _pos += decode_result.input_read.size();
+        }
+
+        string_view_type _input;
+
+        size_t _pos = 0;
+        codepoint _codepoint = {0};
+
+        TDefaultErrorHandler _default_error_handler;
+        const ErrorHandler* _error_handler;
+    }; // class iterator
 
 
 
@@ -54,26 +107,36 @@ public:
     codepoint decode_one(string_view_type input) const
     {
         ErrorStatus error_status;
-        return _do_decode_one(error_status, input);
+        return Codec::decode_one(error_status, input, *_error_handler).codepoint;
     }
 
     /**
-     * Decodes a single code point from the given input string, returning a status
-     * indicating any errors encountered.
+     * Decodes a single code point from the given input string, returning the number
+     * of code units read.
      */
-    ErrorStatus decode_one_with_status(string_view_type input, codepoint& codepoint) const
+    size_t decode_one_into(string_view_type input, codepoint& codepoint) const
     {
-        ErrorStatus error_status;
-        codepoint = _do_decode_one(error_status, input);
-        return error_status;
+        const auto decode_result = _do_decode_one(input);
+        codepoint = decode_result.codepoint;
+        return decode_result.input_read.size();
+    }
+
+    /**
+     * Decodes a single code point from the given input string, returning a result
+     * indicating any errors encountered, the number of code units read, etc.
+     */
+    DecodeResult decode_one_with_result(string_view_type input) const
+    {
+        return _do_decode_one(input);
     }
 
 
 
 private:
-    codepoint _do_decode_one(ErrorStatus& error_status, string_view_type input) const
+    DecodeResult _do_decode_one(string_view_type input) const
     {
-        return Codec::decode_one(error_status, input, *_error_handler).codepoint;
+        ErrorStatus error_status;
+        return Codec::decode_one(error_status, input, *_error_handler);
     }
 
 
