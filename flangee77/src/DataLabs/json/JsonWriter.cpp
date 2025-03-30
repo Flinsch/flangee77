@@ -1,5 +1,7 @@
 #include "JsonWriter.h"
 
+#include <CoreLabs/strings/Encoder.h>
+#include <CoreLabs/strings/Decoder.h>
 #include <CoreLabs/sstream.h>
 
 #include <cmath>
@@ -65,32 +67,80 @@ namespace dl7::json {
     static cl7::u8osstream& _write_string(cl7::u8osstream& oss, cl7::u8string_view string, cl7::u8char_t quote_char, const JsonWriter::Format& format)
     {
         oss << quote_char;
-        for (const auto& ch : string)
+
+        cl7::strings::Encoder<cl7::u8char_t> utf8_encoder;
+        cl7::u8char_t utf8_buffer[4];
+
+        cl7::strings::Decoder<cl7::u8char_t>::iterator it{string};
+        cl7::strings::Decoder<cl7::u8char_t>::sentinel end;
+
+        for (; it != end; ++it)
         {
-            switch (ch)
+            const auto codepoint = *it;
+            const auto value = codepoint.value;
+
+            switch (value)
             {
+                // Backslash-escape backspace, tab, newline,
+                // form feed, and carriage return.
             case u8'\b': oss << u8"\\b"; break;
             case u8'\t': oss << u8"\\t"; break;
             case u8'\n': oss << u8"\\n"; break;
             case u8'\f': oss << u8"\\f"; break;
             case u8'\r': oss << u8"\\r"; break;
 
+                // Handle single and/or double quotes.
             case u8'"':
             case u8'\'':
-                if (ch == quote_char)
+                if (value == quote_char)
                     oss << u8'\\';
-                oss << ch;
+                oss << static_cast<cl7::u8char_t>(value);
                 break;
 
+                // Of course, "self-escape" backslash as well.
             case u8'\\': oss << u8"\\\\"; break;
 
+                // Okay, the actual case distinction
+                // is just beginning right now.
             default:
-                if (ch < 0x20)
-                    oss << std::format("\\u{:04X}", static_cast<unsigned>(ch));
+                if (value < 0x20)
+                    // Escape control characters.
+                    oss << std::format("\\u{:04X}", value);
+
+                else if (value < 0x80)
+                    // ASCII can be simply "waved through".
+                    oss << static_cast<cl7::u8char_t>(value);
+
+                else if (format.escape_unicode)
+                {
+                    if (value <= 0xffff)
+                        // Escape code point within the Basic
+                        // Multilingual Plane (U+0000 to U+FFFF).
+                        oss << std::format("\\u{:04X}", value);
+
+                    else
+                    {
+                        // Escape code point outside the Basic Multilingual Plane
+                        // (above U+FFFF) using UTF-16 surrogate pair.
+                        cl7::strings::Encoder<cl7::u16char_t> utf16_encoder;
+                        cl7::u16char_t utf16_buffer[2];
+
+                        const auto size = utf16_encoder.encode_one_into(codepoint, cl7::u16string_span(utf16_buffer, 2));
+                        assert(size == 2);
+
+                        oss << std::format("\\u{:04X}", static_cast<unsigned>(utf16_buffer[0]));
+                        oss << std::format("\\u{:04X}", static_cast<unsigned>(utf16_buffer[1]));
+                    }
+                }
                 else
-                    oss << ch;
-            }
-        }
+                {
+                    // Encode code point "regular" as UTF-8.
+                    const auto size = utf8_encoder.encode_one_into(codepoint, cl7::u8string_span(utf8_buffer, 4));
+                    oss << cl7::u8string_view(utf8_buffer, size);
+                }
+            } // switch code point
+        } // for each Unicode code point
+
         oss << quote_char;
         return oss;
     }
