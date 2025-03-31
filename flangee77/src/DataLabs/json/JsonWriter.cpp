@@ -246,7 +246,7 @@ namespace dl7::json {
 
         _write_json(oss, json, 0, format);
 
-        if (format.style == JsonWriter::Format::Style::MultiLine && format.multi_line_options.add_empty_line && json.is_structured())
+        if (format.style == JsonWriter::Format::Style::MultiLine && format.multi_line_options.add_empty_line && json.is_structured() && !json.is_empty())
             _put_line_ending(oss, format);
 
         return std::move(oss).str();

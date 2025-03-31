@@ -57,6 +57,77 @@ namespace dl7::json {
         reset_type(type);
     }
 
+    Json::Json(const Json& json)
+    {
+        *this = json;
+    }
+
+    Json& Json::operator=(const Json& json)
+    {
+        switch (json.get_type())
+        {
+        case Type::Object:
+            set_object(json.as_object());
+            break;
+        case Type::Array:
+            set_array(json.as_array());
+            break;
+        case Type::String:
+            set_string(json.as_string());
+            break;
+        case Type::Decimal:
+            set_decimal(json.as_decimal());
+            break;
+        case Type::Integer:
+            set_integer(json.as_integer());
+            break;
+        case Type::Unsigned:
+            set_unsigned(json.as_unsigned());
+            break;
+        case Type::Boolean:
+            set_boolean(json.as_boolean());
+            break;
+        default:
+            assert(is_null());
+        }
+
+        return *this;
+    }
+
+    Json::Json(Json&& json) noexcept
+        : _value(std::move(json._value))
+    {
+    }
+
+    Json& Json::operator=(Json&& json) noexcept
+    {
+        _value = std::move(json._value);
+        return *this;
+    }
+
+    void Json::swap(Json& other) noexcept
+    {
+        _value.swap(other._value);
+    }
+
+
+
+    /**
+     * Returns true if this JSON value represents null, an empty object, an empty
+     * array, or an empty string; returns false otherwise (i.e., numbers, including
+     * 0, and booleans, including false, are considered non-empty).
+     */
+    bool Json::is_empty() const noexcept
+    {
+        if (is_null()) return true;
+
+        if (is_object()) { const object_ptr_t* object_ptr = std::get_if<object_ptr_t>(&_value); return object_ptr ? (*object_ptr)->empty() : true; }
+        if (is_array()) { const array_ptr_t* array_ptr = std::get_if<array_ptr_t>(&_value); return array_ptr ? (*array_ptr)->empty() : true; }
+        if (is_string()) { const string_t* string = std::get_if<string_t>(&_value); return string ? string->empty() : true; }
+
+        return false;
+    }
+
 
 
     const object_t& Json::as_object() const
@@ -171,7 +242,7 @@ namespace dl7::json {
             set_integer(integer_t{});
             break;
         case Type::Unsigned:
-            _set_unsigned(unsigned_t{});
+            set_unsigned(unsigned_t{});
             break;
         case Type::Boolean:
             set_boolean(boolean_t{});

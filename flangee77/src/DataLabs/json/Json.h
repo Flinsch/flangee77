@@ -52,6 +52,15 @@ public:
 
     explicit Json(Type type);
 
+    Json(const Json& json);
+    Json& operator=(const Json& json);
+    Json(Json&& json) noexcept;
+    Json& operator=(Json&& json) noexcept;
+
+    ~Json() noexcept = default;
+
+    void swap(Json& other) noexcept;
+
 
 
     Type get_type() const noexcept { return static_cast<Type>(_value.index()); }
@@ -65,10 +74,17 @@ public:
     bool is_unsigned() const noexcept { return std::holds_alternative<unsigned_t>(_value); }
     bool is_number() const noexcept { return is_decimal() || is_integer() || is_unsigned(); }
     bool is_boolean() const noexcept { return std::holds_alternative<boolean_t>(_value); }
-    bool is_true() const noexcept { return is_boolean() && std::get<boolean_t>(_value); }
-    bool is_false() const noexcept { return is_boolean() && !std::get<boolean_t>(_value); }
+    bool is_true() const noexcept { const boolean_t* b = std::get_if<boolean_t>(&_value); return b ? *b : false; }
+    bool is_false() const noexcept { const boolean_t* b = std::get_if<boolean_t>(&_value); return b ? !*b : false; }
     bool is_primitive() const noexcept { return is_null() || is_string() || is_number() || is_boolean(); }
     bool is_structured() const noexcept { return is_object() || is_array(); }
+
+    /**
+     * Returns true if this JSON value represents null, an empty object, an empty
+     * array, or an empty string; returns false otherwise (i.e., numbers, including
+     * 0, and booleans, including false, are considered non-empty).
+     */
+    bool is_empty() const noexcept;
 
 
 
