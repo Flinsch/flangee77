@@ -39,34 +39,39 @@ public:
             , _default_error_handler()
             , _error_handler(error_handler ? error_handler : &_default_error_handler)
         {
+            _decode();
         }
 
-        reference operator*() const { return _codepoint; }
-        pointer operator->() const { return &_codepoint; }
-        iterator& operator++() { _advance(); return *this; }
+        reference operator*() const { return _decode_result.codepoint; }
+        pointer operator->() const { return &_decode_result.codepoint; }
+        iterator& operator++() { _advance_and_decode(); return *this; }
         iterator operator++(int) { iterator it = *this; ++(*this); return it; }
         friend bool operator==(const iterator& a, sentinel b) noexcept { return a._pos >= a._input.size(); }
         friend bool operator!=(const iterator& a, sentinel b) noexcept { return !(a == b); }
 
     private:
-        void _advance()
+        void _decode()
         {
             if (_pos >= _input.size())
             {
-                _codepoint = {0};
+                _decode_result = {};
                 return;
             }
 
             ErrorStatus error_status;
-            auto decode_result = Codec::decode_one(error_status, _input.substr(_pos), *_error_handler);
-            _codepoint = decode_result.codepoint;
-            _pos += decode_result.input_read.size();
+            _decode_result = Codec::decode_one(error_status, _input.substr(_pos), *_error_handler);
+        }
+
+        void _advance_and_decode()
+        {
+            _pos += _decode_result.input_read.size();
+            _decode();
         }
 
         string_view_type _input;
 
         size_t _pos = 0;
-        codepoint _codepoint = {0};
+        DecodeResult _decode_result;
 
         TDefaultErrorHandler _default_error_handler;
         const ErrorHandler* _error_handler;
