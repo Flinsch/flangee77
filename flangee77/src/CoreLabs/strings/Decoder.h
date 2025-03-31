@@ -42,6 +42,9 @@ public:
             _decode();
         }
 
+        size_t pos() const { return _pos; }
+        DecodeResult result() const { return _decode_result; }
+
         reference operator*() const { return _decode_result.codepoint; }
         pointer operator->() const { return &_decode_result.codepoint; }
         iterator& operator++() { _advance_and_decode(); return *this; }
