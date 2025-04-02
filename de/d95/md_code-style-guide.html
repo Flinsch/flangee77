@@ -226,6 +226,7 @@ Naming Conventions</h1>
 <h1><a class="anchor" id="autotoc_md20"></a>
 Other Stuff</h1>
 <ul>
+<li>Prefer <code>enum struct</code> over <code>enum class</code> for defining scoped enumerations. While both are functionally identical, <code>struct</code> has <code>public</code> as the default access specifier, whereas <code>class</code> defaults to <code>private</code>. Using <code>enum struct</code> ensures consistency with this expected behavior. It also aligns with the convention that <code>struct</code> is the default choice for POD-like types.</li>
 <li>Prefer <code>static constexpr</code> over <code>constexpr</code>, especially for non-trivial data types, and especially if you want to reference the data via pointers, etc. <code>constexpr</code> values are stack values (unless they are <code>static</code>) and may be copied there at runtime. <code>static</code> forces initialization at compile-time through the means of &ldquo;constant initialization&rdquo;. </li>
 </ul>
 </div></div><!-- contents -->
