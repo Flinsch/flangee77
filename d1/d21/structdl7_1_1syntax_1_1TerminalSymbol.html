@@ -105,11 +105,15 @@ Inheritance diagram for dl7::syntax::TerminalSymbol:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/d26/structdl7_1_1syntax_1_1TerminalSymbol__inherit__graph.png" border="0" usemap="#adl7_1_1syntax_1_1TerminalSymbol_inherit__map" alt="Inheritance graph"/></div>
 <map name="adl7_1_1syntax_1_1TerminalSymbol_inherit__map" id="adl7_1_1syntax_1_1TerminalSymbol_inherit__map">
-<area shape="rect" title=" " alt="" coords="107,5,314,31"/>
+<area shape="rect" title=" " alt="" coords="113,5,319,31"/>
 <area shape="rect" href="../../d7/d6d/structdl7_1_1syntax_1_1LiteralSymbol.html" title=" " alt="" coords="5,79,197,104"/>
-<area shape="poly" title=" " alt="" coords="183,40,121,81,118,76,180,36"/>
-<area shape="rect" href="../../d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html" title=" " alt="" coords="221,79,419,104"/>
-<area shape="poly" title=" " alt="" coords="241,36,304,76,301,81,238,40"/>
+<area shape="poly" title=" " alt="" coords="188,40,121,81,119,76,185,35"/>
+<area shape="rect" href="../../d8/d79/structdl7_1_1syntax_1_1NonLiteralSymbol.html" title=" " alt="" coords="221,79,440,104"/>
+<area shape="poly" title=" " alt="" coords="247,35,313,76,311,81,244,40"/>
+<area shape="rect" href="../../d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html" title=" " alt="" coords="118,152,319,192"/>
+<area shape="poly" title=" " alt="" coords="304,114,247,154,244,150,301,110"/>
+<area shape="rect" href="../../d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html" title=" " alt="" coords="344,159,541,185"/>
+<area shape="poly" title=" " alt="" coords="360,110,428,157,425,161,357,114"/>
 </map>
 <center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -121,15 +125,17 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1fff8b8a770a32c86f74a89ab99469f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9619ed1c8e2c52d3933895b45a0f6fc" id="r_ac9619ed1c8e2c52d3933895b45a0f6fc"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html#ac9619ed1c8e2c52d3933895b45a0f6fc">is_literal</a> () const =0</td></tr>
 <tr class="separator:ac9619ed1c8e2c52d3933895b45a0f6fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cbbcb40a065560637b516423f194c34" id="r_a3cbbcb40a065560637b516423f194c34"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html#a3cbbcb40a065560637b516423f194c34">try_match_prefix</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> source) const =0</td></tr>
-<tr class="separator:a3cbbcb40a065560637b516423f194c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98f0f192f1d046a0a74e68727d0a566a" id="r_a98f0f192f1d046a0a74e68727d0a566a"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html#a98f0f192f1d046a0a74e68727d0a566a">try_match_next</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> source) const =0</td></tr>
+<tr class="separator:a98f0f192f1d046a0a74e68727d0a566a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a98996a2d3ce191da1cc71a65fb94c323" id="r_a98996a2d3ce191da1cc71a65fb94c323"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html#a98996a2d3ce191da1cc71a65fb94c323">id</a></td></tr>
 <tr class="separator:a98996a2d3ce191da1cc71a65fb94c323"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a terminal symbol in the lexer and/or of a grammar. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab85a311c7a018fcaac3822654f522b0b" name="ab85a311c7a018fcaac3822654f522b0b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab85a311c7a018fcaac3822654f522b0b">&#9670;&#160;</a></span>TerminalSymbol()</h2>
 
@@ -196,13 +202,14 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns true if the symbol corresponds to a fixed string, false otherwise. </p>
 
-<p>Implemented in <a class="el" href="../../d7/d6d/structdl7_1_1syntax_1_1LiteralSymbol.html#a234fa642568605c792aed69efaaa98c7">dl7::syntax::LiteralSymbol</a>, and <a class="el" href="../../d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a8d0fd50646df3811784b432d661e080f">dl7::syntax::PatternSymbol</a>.</p>
+<p>Implemented in <a class="el" href="../../d7/d6d/structdl7_1_1syntax_1_1LiteralSymbol.html#a952ddfa48c5be148ef45eca78e9f75c0">dl7::syntax::LiteralSymbol</a>, and <a class="el" href="../../d8/d79/structdl7_1_1syntax_1_1NonLiteralSymbol.html#abb0472b2cdc04f98c898ace595dec231">dl7::syntax::NonLiteralSymbol</a>.</p>
 
 </div>
 </div>
-<a id="a3cbbcb40a065560637b516423f194c34" name="a3cbbcb40a065560637b516423f194c34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3cbbcb40a065560637b516423f194c34">&#9670;&#160;</a></span>try_match_prefix()</h2>
+<a id="a98f0f192f1d046a0a74e68727d0a566a" name="a98f0f192f1d046a0a74e68727d0a566a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98f0f192f1d046a0a74e68727d0a566a">&#9670;&#160;</a></span>try_match_next()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -211,7 +218,7 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual size_t dl7::syntax::TerminalSymbol::try_match_prefix </td>
+          <td class="memname">virtual size_t dl7::syntax::TerminalSymbol::try_match_next </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a>&#160;</td>
           <td class="paramname"><em>source</em></td><td>)</td>
@@ -224,8 +231,9 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Attempts to match this symbol at the beginning of the given source text. </p>
 
-<p>Implemented in <a class="el" href="../../d7/d6d/structdl7_1_1syntax_1_1LiteralSymbol.html#a4275f13b45048cf8ed4c3ff5d72e877a">dl7::syntax::LiteralSymbol</a>, and <a class="el" href="../../d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#abda4256d2cb8bf95b68b215666165b89">dl7::syntax::PatternSymbol</a>.</p>
+<p>Implemented in <a class="el" href="../../d7/d6d/structdl7_1_1syntax_1_1LiteralSymbol.html#acb71eeb0db4cff129e37f796d6fad24d">dl7::syntax::LiteralSymbol</a>, <a class="el" href="../../d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a2824b3b93557fb174eb606a73ff6a161">dl7::syntax::PatternSymbol</a>, and <a class="el" href="../../d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html#a0cd24651541ecc6ece3b0e57f8470b76">dl7::syntax::CustomSymbol&lt; TCustomMatcher &gt;</a>.</p>
 
 </div>
 </div>

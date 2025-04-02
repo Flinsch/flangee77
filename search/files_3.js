@@ -25,10 +25,11 @@ var searchData=
   ['depthstencilstate_2ecpp_22',['DepthStencilState.cpp',['../d1/d85/DepthStencilState_8cpp.html',1,'']]],
   ['depthstencilstate_2eh_23',['DepthStencilState.h',['../da/d41/DepthStencilState_8h.html',1,'']]],
   ['depthstencilstateimpl_2ecpp_24',['depthstencilstateimpl.cpp',['../d7/dbf/direct3d9_2states_2DepthStencilStateImpl_8cpp.html',1,'(Global Namespace)'],['../d9/dd4/direct3d11_2states_2DepthStencilStateImpl_8cpp.html',1,'(Global Namespace)']]],
-  ['depthstencilstateimpl_2eh_25',['depthstencilstateimpl.h',['../d3/d5f/direct3d9_2states_2DepthStencilStateImpl_8h.html',1,'(Global Namespace)'],['../dc/d14/direct3d11_2states_2DepthStencilStateImpl_8h.html',1,'(Global Namespace)']]],
+  ['depthstencilstateimpl_2eh_25',['depthstencilstateimpl.h',['../dc/d14/direct3d11_2states_2DepthStencilStateImpl_8h.html',1,'(Global Namespace)'],['../d3/d5f/direct3d9_2states_2DepthStencilStateImpl_8h.html',1,'(Global Namespace)']]],
   ['depthstencilsurface_2ecpp_26',['DepthStencilSurface.cpp',['../d4/d16/DepthStencilSurface_8cpp.html',1,'']]],
   ['depthstencilsurface_2eh_27',['DepthStencilSurface.h',['../d2/d08/DepthStencilSurface_8h.html',1,'']]],
-  ['diagnostic_2eh_28',['Diagnostic.h',['../d5/d6d/Diagnostic_8h.html',1,'']]],
-  ['diagnostics_2ecpp_29',['Diagnostics.cpp',['../de/d66/Diagnostics_8cpp.html',1,'']]],
-  ['diagnostics_2eh_30',['Diagnostics.h',['../d9/d08/Diagnostics_8h.html',1,'']]]
+  ['diagnostic_2ecpp_28',['Diagnostic.cpp',['../d2/df4/Diagnostic_8cpp.html',1,'']]],
+  ['diagnostic_2eh_29',['Diagnostic.h',['../d5/d6d/Diagnostic_8h.html',1,'']]],
+  ['diagnostics_2ecpp_30',['Diagnostics.cpp',['../de/d66/Diagnostics_8cpp.html',1,'']]],
+  ['diagnostics_2eh_31',['Diagnostics.h',['../d9/d08/Diagnostics_8h.html',1,'']]]
 ];

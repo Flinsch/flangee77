@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['parser_2ecpp_0',['Parser.cpp',['../dc/df5/Parser_8cpp.html',1,'']]],
-  ['parser_2eh_1',['Parser.h',['../d6/d0c/Parser_8h.html',1,'']]],
+  ['parsestage_2ecpp_0',['ParseStage.cpp',['../d4/d76/ParseStage_8cpp.html',1,'']]],
+  ['parsestage_2eh_1',['ParseStage.h',['../d8/da6/ParseStage_8h.html',1,'']]],
   ['personal_2dintention_2emd_2',['personal-intention.md',['../dc/dda/personal-intention_8md.html',1,'']]],
   ['pipeline_2eh_3',['Pipeline.h',['../da/d1e/Pipeline_8h.html',1,'']]],
   ['pixelbitkit_2ecpp_4',['PixelBitKit.cpp',['../df/d9e/PixelBitKit_8cpp.html',1,'']]],

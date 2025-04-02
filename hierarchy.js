@@ -22,6 +22,7 @@ var hierarchy =
     [ "pl7::Application", "d8/d91/classpl7_1_1Application.html", null ],
     [ "pl7::ArgumentBag", "dd/d75/classpl7_1_1ArgumentBag.html", null ],
     [ "cl7::strings::AsciiCodec", "d1/d63/classcl7_1_1strings_1_1AsciiCodec.html", null ],
+    [ "dl7::syntax::AstNode< Ttype >", "db/dcc/classdl7_1_1syntax_1_1AstNode.html", null ],
     [ "cl7::profiling::Registry::Attorney", "d6/df3/classcl7_1_1profiling_1_1Registry_1_1Attorney.html", null ],
     [ "xl7::graphics::impl::direct3d11::meshes::IndexBufferImpl::Attorney", "d0/d6a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl_1_1Attorney.html", null ],
     [ "xl7::graphics::impl::direct3d11::meshes::VertexBufferImpl::Attorney", "dc/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl_1_1Attorney.html", null ],
@@ -81,6 +82,7 @@ var hierarchy =
     [ "cl7::continuous_forward_iterator< is_const, Titem, Tbase >", "d2/dbf/classcl7_1_1continuous__forward__iterator.html", null ],
     [ "cl7::system::CPUID", "d5/d80/structcl7_1_1system_1_1CPUID.html", null ],
     [ "xl7::resources::Resource::CreateParams< TDesc >", "db/df9/structxl7_1_1resources_1_1Resource_1_1CreateParams.html", null ],
+    [ "dl7::syntax::CstNode", "d0/df6/classdl7_1_1syntax_1_1CstNode.html", null ],
     [ "xl7::graphics::impl::direct3d11::shaders::D3DConstantBufferWrapper", "d6/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1D3DConstantBufferWrapper.html", null ],
     [ "xl7::graphics::impl::shared::shaders::D3DShaderCompiler", "d0/db2/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1D3DShaderCompiler.html", null ],
     [ "xl7::graphics::impl::direct3d11::shaders::D3DShaderReflection", "db/d71/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1D3DShaderReflection.html", null ],
@@ -132,7 +134,7 @@ var hierarchy =
     [ "dl7::json::JsonWriter::Format", "df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html", null ],
     [ "xl7::Config::Generic", "d7/db0/structxl7_1_1Config_1_1Generic.html", null ],
     [ "dl7::syntax::Grammar", "d8/d95/structdl7_1_1syntax_1_1Grammar.html", null ],
-    [ "dl7::syntax::GrammarAnalyzer", "db/d4e/structdl7_1_1syntax_1_1GrammarAnalyzer.html", null ],
+    [ "dl7::syntax::GrammarAnalyzer", "dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html", null ],
     [ "tl7::Stats::Group", "da/d74/structtl7_1_1Stats_1_1Group.html", null ],
     [ "cl7::Guid", "dc/dbd/structcl7_1_1Guid.html", null ],
     [ "xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates", "d7/d0a/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates.html", null ],
@@ -189,9 +191,6 @@ var hierarchy =
     [ "ml7::Vector2::less", "d6/d6c/structml7_1_1Vector2_1_1less.html", null ],
     [ "ml7::Vector3::less", "d5/d80/structml7_1_1Vector3_1_1less.html", null ],
     [ "ml7::Vector4::less", "d4/df6/structml7_1_1Vector4_1_1less.html", null ],
-    [ "dl7::syntax::Lexer", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html", [
-      [ "dl7::syntax::GenericLexer", "d5/da3/classdl7_1_1syntax_1_1GenericLexer.html", null ]
-    ] ],
     [ "tl7::reporting::Reporter::ListenerEntry", "dd/d07/structtl7_1_1reporting_1_1Reporter_1_1ListenerEntry.html", null ],
     [ "cl7::logging::LogContext", "d9/d4c/structcl7_1_1logging_1_1LogContext.html", null ],
     [ "cl7::logging::LogEntry", "d6/d58/structcl7_1_1logging_1_1LogEntry.html", null ],
@@ -212,7 +211,14 @@ var hierarchy =
     [ "cl7::ordered_map< Key, T, KeyView, Compare, Allocator >", "dd/d42/classcl7_1_1ordered__map.html", null ],
     [ "xl7::graphics::images::PngImageHandler::PaletteEntry", "d6/d53/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1PaletteEntry.html", null ],
     [ "xl7::graphics::impl::shared::shaders::Include::ParentEntry", "dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html", null ],
-    [ "dl7::syntax::Parser", "da/d4c/classdl7_1_1syntax_1_1Parser.html", null ],
+    [ "dl7::syntax::ParseStage", "d9/d44/classdl7_1_1syntax_1_1ParseStage.html", [
+      [ "dl7::syntax::AstProcessor< class TAstNode=AstNode >", "d2/dfa/classdl7_1_1syntax_1_1AstProcessor_3_01class_01TAstNode_0aAstNode_01_4.html", null ],
+      [ "dl7::syntax::CstBuilder", "db/dc4/classdl7_1_1syntax_1_1CstBuilder.html", null ],
+      [ "dl7::syntax::CstToAstTransformer< class TAstNode=AstNode >", "d8/dd7/classdl7_1_1syntax_1_1CstToAstTransformer_3_01class_01TAstNode_0aAstNode_01_4.html", null ],
+      [ "dl7::syntax::Lexer", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html", [
+        [ "dl7::syntax::GenericLexer", "d5/da3/classdl7_1_1syntax_1_1GenericLexer.html", null ]
+      ] ]
+    ] ],
     [ "xl7::graphics::PixelBitKit", "d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html", null ],
     [ "dl7::syntax::ProductionRule", "d1/d16/structdl7_1_1syntax_1_1ProductionRule.html", null ],
     [ "dl7::syntax::ProductionRuleCollection", "dd/d0c/classdl7_1_1syntax_1_1ProductionRuleCollection.html", null ],
@@ -356,7 +362,10 @@ var hierarchy =
     [ "cl7::bits::detail::SwapBytesImpl< T, 1 >", "d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4.html", null ],
     [ "dl7::syntax::TerminalSymbol", "d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html", [
       [ "dl7::syntax::LiteralSymbol", "d7/d6d/structdl7_1_1syntax_1_1LiteralSymbol.html", null ],
-      [ "dl7::syntax::PatternSymbol", "d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html", null ]
+      [ "dl7::syntax::NonLiteralSymbol", "d8/d79/structdl7_1_1syntax_1_1NonLiteralSymbol.html", [
+        [ "dl7::syntax::CustomSymbol< TCustomMatcher >", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html", null ],
+        [ "dl7::syntax::PatternSymbol", "d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html", null ]
+      ] ]
     ] ],
     [ "dl7::syntax::TerminalSymbolCollection", "dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html", null ],
     [ "tl7::TestCase", "dd/de5/classtl7_1_1TestCase.html", null ],

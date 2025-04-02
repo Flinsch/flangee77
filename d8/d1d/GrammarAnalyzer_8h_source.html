@@ -104,31 +104,49 @@ $(document).ready(function(){initNavTree('d8/d1d/GrammarAnalyzer_8h_source.html'
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="../../d4/d03/Grammar_8h.html">./Grammar.h</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;<a class="code" href="../../df/d15/LogContext_8h.html">CoreLabs/logging/LogContext.h</a>&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../db/d34/namespacedl7_1_1syntax.html">dl7::syntax</a> {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../db/d34/namespacedl7_1_1syntax.html">dl7::syntax</a> {</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../db/d4e/structdl7_1_1syntax_1_1GrammarAnalyzer.html">   12</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../db/d4e/structdl7_1_1syntax_1_1GrammarAnalyzer.html">GrammarAnalyzer</a></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="../../db/d4e/structdl7_1_1syntax_1_1GrammarAnalyzer.html#abacb1eb7851ec9e0f2b313ad46d5969f">validate</a>(<span class="keyword">const</span> <a class="code hl_struct" href="../../d8/d95/structdl7_1_1syntax_1_1Grammar.html">Grammar</a>&amp; grammar);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}; <span class="comment">// struct GrammarAnalyzer</span></div>
-</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>} <span class="comment">// namespace dl7::syntax</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="../../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html">   18</a></span><span class="keyword">class </span><a class="code hl_class" href="../../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html">GrammarAnalyzer</a></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="../../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html#a3be9829c7298a5dea31944fdf817ccc1">   22</a></span>    <a class="code hl_function" href="../../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html#a3be9829c7298a5dea31944fdf817ccc1">GrammarAnalyzer</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="../../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html#ae325f10b8b3c884433f04d01632ba3f0">   23</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="../../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html#ae325f10b8b3c884433f04d01632ba3f0">GrammarAnalyzer</a>(<a class="code hl_struct" href="../../d9/d4c/structcl7_1_1logging_1_1LogContext.html">cl7::logging::LogContext</a> log_context) : <a class="code hl_variable" href="../../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html#a19d8158ed852d8802fd0272203974740">_log_context</a>(log_context) {}</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#endif </span><span class="comment">// DL7_SYNTAX_GRAMMARANALYZER_H</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="../../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html#a4aeb97a96a1a105b7a67a596111552b0">validate</a>(<span class="keyword">const</span> <a class="code hl_struct" href="../../d8/d95/structdl7_1_1syntax_1_1Grammar.html">Grammar</a>&amp; grammar) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="../../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html#a19d8158ed852d8802fd0272203974740">   35</a></span>    <a class="code hl_struct" href="../../d9/d4c/structcl7_1_1logging_1_1LogContext.html">cl7::logging::LogContext</a> <a class="code hl_variable" href="../../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html#a19d8158ed852d8802fd0272203974740">_log_context</a>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}; <span class="comment">// class GrammarAnalyzer</span></div>
+</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>} <span class="comment">// namespace dl7::syntax</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#endif </span><span class="comment">// DL7_SYNTAX_GRAMMARANALYZER_H</span></div>
 <div class="ttc" id="aGrammar_8h_html"><div class="ttname"><a href="../../d4/d03/Grammar_8h.html">Grammar.h</a></div></div>
-<div class="ttc" id="anamespacedl7_1_1syntax_html"><div class="ttname"><a href="../../db/d34/namespacedl7_1_1syntax.html">dl7::syntax</a></div><div class="ttdef"><b>Definition</b> Diagnostic.h:10</div></div>
-<div class="ttc" id="astructdl7_1_1syntax_1_1GrammarAnalyzer_html"><div class="ttname"><a href="../../db/d4e/structdl7_1_1syntax_1_1GrammarAnalyzer.html">dl7::syntax::GrammarAnalyzer</a></div><div class="ttdef"><b>Definition</b> GrammarAnalyzer.h:13</div></div>
-<div class="ttc" id="astructdl7_1_1syntax_1_1GrammarAnalyzer_html_abacb1eb7851ec9e0f2b313ad46d5969f"><div class="ttname"><a href="../../db/d4e/structdl7_1_1syntax_1_1GrammarAnalyzer.html#abacb1eb7851ec9e0f2b313ad46d5969f">dl7::syntax::GrammarAnalyzer::validate</a></div><div class="ttdeci">static bool validate(const Grammar &amp;grammar)</div><div class="ttdef"><b>Definition</b> GrammarAnalyzer.cpp:17</div></div>
-<div class="ttc" id="astructdl7_1_1syntax_1_1Grammar_html"><div class="ttname"><a href="../../d8/d95/structdl7_1_1syntax_1_1Grammar.html">dl7::syntax::Grammar</a></div><div class="ttdef"><b>Definition</b> Grammar.h:18</div></div>
+<div class="ttc" id="aLogContext_8h_html"><div class="ttname"><a href="../../df/d15/LogContext_8h.html">LogContext.h</a></div></div>
+<div class="ttc" id="aclassdl7_1_1syntax_1_1GrammarAnalyzer_html"><div class="ttname"><a href="../../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html">dl7::syntax::GrammarAnalyzer</a></div><div class="ttdef"><b>Definition</b> GrammarAnalyzer.h:19</div></div>
+<div class="ttc" id="aclassdl7_1_1syntax_1_1GrammarAnalyzer_html_a19d8158ed852d8802fd0272203974740"><div class="ttname"><a href="../../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html#a19d8158ed852d8802fd0272203974740">dl7::syntax::GrammarAnalyzer::_log_context</a></div><div class="ttdeci">cl7::logging::LogContext _log_context</div><div class="ttdef"><b>Definition</b> GrammarAnalyzer.h:35</div></div>
+<div class="ttc" id="aclassdl7_1_1syntax_1_1GrammarAnalyzer_html_a3be9829c7298a5dea31944fdf817ccc1"><div class="ttname"><a href="../../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html#a3be9829c7298a5dea31944fdf817ccc1">dl7::syntax::GrammarAnalyzer::GrammarAnalyzer</a></div><div class="ttdeci">GrammarAnalyzer()=default</div></div>
+<div class="ttc" id="aclassdl7_1_1syntax_1_1GrammarAnalyzer_html_a4aeb97a96a1a105b7a67a596111552b0"><div class="ttname"><a href="../../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html#a4aeb97a96a1a105b7a67a596111552b0">dl7::syntax::GrammarAnalyzer::validate</a></div><div class="ttdeci">bool validate(const Grammar &amp;grammar) const</div><div class="ttdef"><b>Definition</b> GrammarAnalyzer.cpp:14</div></div>
+<div class="ttc" id="aclassdl7_1_1syntax_1_1GrammarAnalyzer_html_ae325f10b8b3c884433f04d01632ba3f0"><div class="ttname"><a href="../../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html#ae325f10b8b3c884433f04d01632ba3f0">dl7::syntax::GrammarAnalyzer::GrammarAnalyzer</a></div><div class="ttdeci">GrammarAnalyzer(cl7::logging::LogContext log_context)</div><div class="ttdef"><b>Definition</b> GrammarAnalyzer.h:23</div></div>
+<div class="ttc" id="anamespacedl7_1_1syntax_html"><div class="ttname"><a href="../../db/d34/namespacedl7_1_1syntax.html">dl7::syntax</a></div><div class="ttdef"><b>Definition</b> AstNode.h:8</div></div>
+<div class="ttc" id="astructcl7_1_1logging_1_1LogContext_html"><div class="ttname"><a href="../../d9/d4c/structcl7_1_1logging_1_1LogContext.html">cl7::logging::LogContext</a></div><div class="ttdef"><b>Definition</b> LogContext.h:13</div></div>
+<div class="ttc" id="astructdl7_1_1syntax_1_1Grammar_html"><div class="ttname"><a href="../../d8/d95/structdl7_1_1syntax_1_1Grammar.html">dl7::syntax::Grammar</a></div><div class="ttdef"><b>Definition</b> Grammar.h:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

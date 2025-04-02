@@ -113,7 +113,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a4428b9f7c3fac954c0dd04033027d3cc" id="r_a4428b9f7c3fac954c0dd04033027d3cc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d16/structdl7_1_1syntax_1_1ProductionRule.html#a4428b9f7c3fac954c0dd04033027d3cc">sequence</a></td></tr>
 <tr class="separator:a4428b9f7c3fac954c0dd04033027d3cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a production rule in a context-free, BNF-like grammar. A production rule defines how a non-terminal symbol can be expanded into a sequence of symbols. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="afb407132e8a6fa2e802bef82aaf21216" name="afb407132e8a6fa2e802bef82aaf21216"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afb407132e8a6fa2e802bef82aaf21216">&#9670;&#160;</a></span>is_used()</h2>
 
@@ -145,7 +147,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The sequence of terminal/non-terminal symbols (right-hand side of the production rule). </p>
+<p>The sequence of terminal and/or non-terminal symbols (right-hand side of the production rule). This specifies how the left-hand side symbol can be rewritten in the parsing process. </p>
 
 </div>
 </div>
@@ -160,7 +162,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The non-terminal symbol ID (left-hand side of the production rule). </p>
+<p>The non-terminal symbol ID (left-hand side of the production rule). This symbol is defined by this rule and can be expanded using the sequence. </p>
 
 </div>
 </div>

@@ -6,5 +6,6 @@ var searchData=
   ['const_5fiterator_3',['const_iterator',['../dd/d42/classcl7_1_1ordered__map.html#abd24462e46a94cb463fb472daae2a96c',1,'cl7::ordered_map::const_iterator'],['../dd/d0c/classdl7_1_1syntax_1_1ProductionRuleCollection.html#a560cdced187f0edce473214662b72e69',1,'dl7::syntax::ProductionRuleCollection::const_iterator'],['../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#aa90e32d42e170fcad12c4981a2dbadd2',1,'dl7::syntax::TerminalSymbolCollection::const_iterator']]],
   ['const_5fpointer_4',['const_pointer',['../dd/d42/classcl7_1_1ordered__map.html#a1c27be0b0af0e5ed81c536936064dc57',1,'cl7::ordered_map']]],
   ['const_5freference_5',['const_reference',['../dd/d42/classcl7_1_1ordered__map.html#a79458000f6037217acebcb36e38fec5a',1,'cl7::ordered_map']]],
-  ['constants_6',['constants',['../d3/d53/namespaceml7.html#a14a8466ef534c7f5ce9246620e54c8b1',1,'ml7']]]
+  ['constants_6',['constants',['../d3/d53/namespaceml7.html#a14a8466ef534c7f5ce9246620e54c8b1',1,'ml7']]],
+  ['custommatcher_7',['CustomMatcher',['../d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html#a4bfb7f18a341b1d4d629f8f984e6736e',1,'dl7::syntax::CustomSymbol']]]
 ];

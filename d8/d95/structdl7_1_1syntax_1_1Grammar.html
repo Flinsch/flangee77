@@ -122,7 +122,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ada579a9bf955092a4ea15a41a9d0fe24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A BNF-like grammar with terminal symbols and their lexical compositions, non-terminal symbols and their production sequences, and a start symbol. </p>
+<div class="textblock"><p>A context-free, BNF-like grammar with terminal symbols and their lexical compositions, non-terminal symbols defined by production rules and their expansion sequences, and a start symbol as the entry point for parsing. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a925e2ec5bd5453d3488fe3d398ae85bd" name="a925e2ec5bd5453d3488fe3d398ae85bd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a925e2ec5bd5453d3488fe3d398ae85bd">&#9670;&#160;</a></span>production_rules</h2>
@@ -135,6 +135,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The collection of production rules that define non-terminal symbols. </p>
 
 </div>
 </div>
@@ -149,6 +150,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The start symbol ID, representing the entry point of the grammar (defaults to -1, indicating an uninitialized or undefined start symbol). </p>
 
 </div>
 </div>
@@ -163,6 +165,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The collection of terminal symbols and their lexical compositions. </p>
 
 </div>
 </div>

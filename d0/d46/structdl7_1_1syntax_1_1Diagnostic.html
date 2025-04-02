@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('d0/d46/structdl7_1_1syntax_1_1Diagnost
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="../../dd/da3/structdl7_1_1syntax_1_1Diagnostic-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">dl7::syntax::Diagnostic Struct Reference</div></div>
@@ -119,6 +120,11 @@ Public Types</h2></td></tr>
  }</td></tr>
 <tr class="separator:afb8b280322219dfc4a99ec89802c4406"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a4e411da56691028ce7772ae62e5135fc" id="r_a4e411da56691028ce7772ae62e5135fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d46/structdl7_1_1syntax_1_1Diagnostic.html#a4e411da56691028ce7772ae62e5135fc">try_log</a> (<a class="el" href="../../d9/d4c/structcl7_1_1logging_1_1LogContext.html">cl7::logging::LogContext</a> log_context) const</td></tr>
+<tr class="separator:a4e411da56691028ce7772ae62e5135fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a3f53b56cf7f2805ef68731b53dc92f91" id="r_a3f53b56cf7f2805ef68731b53dc92f91"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d46/structdl7_1_1syntax_1_1Diagnostic.html#afb8b280322219dfc4a99ec89802c4406">Severity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d46/structdl7_1_1syntax_1_1Diagnostic.html#a3f53b56cf7f2805ef68731b53dc92f91">severity</a></td></tr>
@@ -128,7 +134,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a7a0977b8aa281f6616642deffa089c8a" id="r_a7a0977b8aa281f6616642deffa089c8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html">SourceLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d46/structdl7_1_1syntax_1_1Diagnostic.html#a7a0977b8aa281f6616642deffa089c8a">source_location</a></td></tr>
 <tr class="separator:a7a0977b8aa281f6616642deffa089c8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a single diagnostic entry, such as an error, warning, or notice. This structure encapsulates information about the severity, message content, and source location of the diagnostic event. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="afb8b280322219dfc4a99ec89802c4406" name="afb8b280322219dfc4a99ec89802c4406"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afb8b280322219dfc4a99ec89802c4406">&#9670;&#160;</a></span>Severity</h2>
 
@@ -148,11 +156,35 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Enumerates the severity levels of a diagnostic event. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="afb8b280322219dfc4a99ec89802c4406a902b0d55fddef6f8d651fe1035b7d4bd" name="afb8b280322219dfc4a99ec89802c4406a902b0d55fddef6f8d651fe1035b7d4bd"></a>Error&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="afb8b280322219dfc4a99ec89802c4406a0eaadb4fcb48a0a0ed7bc9868be9fbaa" name="afb8b280322219dfc4a99ec89802c4406a0eaadb4fcb48a0a0ed7bc9868be9fbaa"></a>Warning&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="afb8b280322219dfc4a99ec89802c4406a24efa7ee4511563b16144f39706d594f" name="afb8b280322219dfc4a99ec89802c4406a24efa7ee4511563b16144f39706d594f"></a>Notice&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="afb8b280322219dfc4a99ec89802c4406a902b0d55fddef6f8d651fe1035b7d4bd" name="afb8b280322219dfc4a99ec89802c4406a902b0d55fddef6f8d651fe1035b7d4bd"></a>Error&#160;</td><td class="fielddoc"><p>Represents a critical issue that may, but does not necessarily, prevent further execution. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afb8b280322219dfc4a99ec89802c4406a0eaadb4fcb48a0a0ed7bc9868be9fbaa" name="afb8b280322219dfc4a99ec89802c4406a0eaadb4fcb48a0a0ed7bc9868be9fbaa"></a>Warning&#160;</td><td class="fielddoc"><p>Indicates a potential problem that may not be fatal. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afb8b280322219dfc4a99ec89802c4406a24efa7ee4511563b16144f39706d594f" name="afb8b280322219dfc4a99ec89802c4406a24efa7ee4511563b16144f39706d594f"></a>Notice&#160;</td><td class="fielddoc"><p>Provides informational messages or minor issues. </p>
+</td></tr>
 </table>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4e411da56691028ce7772ae62e5135fc" name="a4e411da56691028ce7772ae62e5135fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e411da56691028ce7772ae62e5135fc">&#9670;&#160;</a></span>try_log()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dl7::syntax::Diagnostic::try_log </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d9/d4c/structcl7_1_1logging_1_1LogContext.html">cl7::logging::LogContext</a>&#160;</td>
+          <td class="paramname"><em>log_context</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Tries to log this diagnostic according to the specified log context. </p>
 
 </div>
 </div>
@@ -202,8 +234,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>DataLabs/syntax/<a class="el" href="../../d5/d6d/Diagnostic_8h_source.html">Diagnostic.h</a></li>
+<li>DataLabs/syntax/<a class="el" href="../../d2/df4/Diagnostic_8cpp.html">Diagnostic.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
