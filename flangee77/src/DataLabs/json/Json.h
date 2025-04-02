@@ -15,7 +15,7 @@ class Json
 {
 
 public:
-    enum class Type
+    enum struct Type
     {
         Null,
         Object,

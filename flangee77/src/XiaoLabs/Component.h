@@ -16,7 +16,7 @@ class Component
 {
 
 public:
-    enum class State
+    enum struct State
     {
         NotInitialized,
         FullyInitialized,

@@ -9,7 +9,7 @@ namespace xl7::graphics::meshes {
 
 
 
-enum class Topology
+enum struct Topology
 {
     Undefined,
     PointList,

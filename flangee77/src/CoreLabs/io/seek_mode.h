@@ -9,7 +9,7 @@ namespace cl7::io {
 
 
 
-enum class seek_mode
+enum struct seek_mode
 {
     begin,
     current,

@@ -22,7 +22,7 @@ class MeshBuffer
 public:
     XL7_DECLARE_RESOURCE_ID();
 
-    enum class Type
+    enum struct Type
     {
         VertexBuffer,
         IndexBuffer,

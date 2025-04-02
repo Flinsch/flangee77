@@ -140,6 +140,10 @@ beginning of the `struct`, in any case before possible constructors etc.
 
 ## Other Stuff
 
+- Prefer `enum struct` over `enum class` for defining scoped enumerations.
+  While both are functionally identical, `struct` has `public` as the default access specifier, whereas `class` defaults to `private`.
+  Using `enum struct` ensures consistency with this expected behavior.
+  It also aligns with the convention that `struct` is the default choice for POD-like types.
 - Prefer `static constexpr` over `constexpr`, especially for non-trivial data
   types, and especially if you want to reference the data via pointers, etc.
   `constexpr` values are stack values (unless they are `static`) and may be copied there at runtime.

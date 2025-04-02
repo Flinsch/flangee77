@@ -862,7 +862,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageResizer" )
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  compile shaders" )
 {
-    enum class ImplType
+    enum struct ImplType
     {
         Direct3D9,
         Direct3D11,

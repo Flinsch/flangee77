@@ -9,7 +9,7 @@ namespace xl7::graphics::shaders {
 
 
 
-enum class ConstantClass
+enum struct ConstantClass
 {
     /** The shader constant is a scalar. */
     Scalar = 0, // Have immediate compatibility with Direct3D.

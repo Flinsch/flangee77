@@ -9,7 +9,7 @@ namespace xl7::graphics::meshes {
 
 
 
-enum class IndexType
+enum struct IndexType
 {
     UINT16,
     UINT32,

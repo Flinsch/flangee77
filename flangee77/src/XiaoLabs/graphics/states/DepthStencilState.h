@@ -17,7 +17,7 @@ class DepthStencilState
 public:
     XL7_DERIVE_RESOURCE_ID(AbstractState);
 
-    enum class StencilOperation
+    enum struct StencilOperation
     {
         /** Keep the existing stencil value. */
         Keep = 1,

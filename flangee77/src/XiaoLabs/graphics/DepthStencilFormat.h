@@ -9,7 +9,7 @@ namespace xl7::graphics {
 
 
 
-enum class DepthStencilFormat
+enum struct DepthStencilFormat
 {
     UNKNOWN,
 

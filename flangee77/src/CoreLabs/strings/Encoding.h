@@ -10,7 +10,7 @@ namespace cl7::strings {
 
 
     // NOLINTBEGIN(readability-enum-initial-value)
-    enum class Encoding
+    enum struct Encoding
     {
         Unknown,
 

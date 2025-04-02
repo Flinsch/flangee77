@@ -30,7 +30,7 @@ public:
     /**
      * Specifies how the lexer should handle whitespace characters (between tokens).
      */
-    enum class WhitespaceHandling
+    enum struct WhitespaceHandling
     {
         /**
          * Whitespace characters are discarded and not emitted as tokens.

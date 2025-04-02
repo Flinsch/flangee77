@@ -17,7 +17,7 @@ namespace xl7::graphics {
 struct PixelBitKit
 {
 
-    enum class DataType
+    enum struct DataType
     {
         UNKNOWN,
 

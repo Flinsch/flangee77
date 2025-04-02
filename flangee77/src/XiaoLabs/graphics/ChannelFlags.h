@@ -9,7 +9,7 @@ namespace xl7::graphics {
 
 
 
-enum class ChannelFlags
+enum struct ChannelFlags
 {
     Red     = 0x1,
     Green   = 0x2,

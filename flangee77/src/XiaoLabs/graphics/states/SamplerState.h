@@ -20,7 +20,7 @@ public:
     XL7_DERIVE_RESOURCE_ID(AbstractState);
 
     /** The filtering method to use when sampling for minification and magnification. */
-    enum class MinMagFilterType
+    enum struct MinMagFilterType
     {
         /** Use point sampling. */
         Point = 1,
@@ -31,7 +31,7 @@ public:
     };
 
     /** The filtering method to use when sampling for mip-level sampling. */
-    enum class MipFilterType
+    enum struct MipFilterType
     {
         /** Disables mipmapping. */
         None,
@@ -44,7 +44,7 @@ public:
     };
 
     /** Identifies the technique for resolving texture coordinates that are outside of the boundaries of a texture. */
-    enum class AddressMode
+    enum struct AddressMode
     {
         /** Tile the texture at every integer junction. For example, for values between 0 and 3, the texture is repeated three times. */
         Wrap = 1,

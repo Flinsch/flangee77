@@ -9,7 +9,7 @@ namespace xl7::graphics::images {
 
 
 
-enum class ResamplingMethod
+enum struct ResamplingMethod
 {
     NearestNeighbor,
     LinearInterpolation,

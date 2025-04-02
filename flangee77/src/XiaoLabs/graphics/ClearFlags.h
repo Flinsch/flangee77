@@ -9,7 +9,7 @@ namespace xl7::graphics {
 
 
 
-enum class ClearFlags
+enum struct ClearFlags
 {
     ColorBuffer = 0x1,
     DepthBuffer = 0x2,

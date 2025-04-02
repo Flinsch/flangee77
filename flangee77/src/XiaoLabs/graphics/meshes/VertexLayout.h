@@ -14,7 +14,7 @@ namespace xl7::graphics::meshes {
 struct VertexLayout
 {
 
-    enum class Semantic
+    enum struct Semantic
     {
         /** Vertex position in object space. */
         POSITION,
@@ -38,7 +38,7 @@ struct VertexLayout
         PSIZE,
     };
 
-    enum class DataType
+    enum struct DataType
     {
         /** One-component float expanded to (value, 0, 0, 1). */
         FLOAT1,

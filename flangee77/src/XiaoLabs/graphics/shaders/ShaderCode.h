@@ -15,7 +15,7 @@ class ShaderCode
 {
 
 public:
-    enum class Language
+    enum struct Language
     {
         Unknown,
         Bytecode,

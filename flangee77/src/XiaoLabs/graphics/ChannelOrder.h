@@ -9,7 +9,7 @@ namespace xl7::graphics {
 
 
 
-enum class ChannelOrder
+enum struct ChannelOrder
 {
     RGBA,
     ARGB,

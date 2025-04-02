@@ -15,7 +15,7 @@ class JsonWriter
 public:
     struct Format
     {
-        enum class Style : unsigned
+        enum struct Style : unsigned
         {
             /** Force single-line output, even for structured objects and arrays (primitive values are single-line anyway). */
             SingleLine = 0,
@@ -31,7 +31,7 @@ public:
 
         struct MultiLineOptions
         {
-            enum class Indentation : unsigned
+            enum struct Indentation : unsigned
             {
                 /** Indent using tabs. */
                 Tabs = 0,
@@ -41,7 +41,7 @@ public:
                 Spaces4 = 4,
             };
 
-            enum class LineEnding
+            enum struct LineEnding
             {
                 /** CRLF (`\r\n`): Windows, DOS */
                 CRLF,

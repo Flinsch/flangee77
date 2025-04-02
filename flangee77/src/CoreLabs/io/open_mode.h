@@ -9,7 +9,7 @@ namespace cl7::io {
 
 
 
-enum class open_mode
+enum struct open_mode
 {
     read        = 0x1,
     write       = 0x2,

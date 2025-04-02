@@ -17,7 +17,7 @@ class BlendState
 public:
     XL7_DERIVE_RESOURCE_ID(AbstractState);
 
-    enum class BlendFactor
+    enum struct BlendFactor
     {
         Zero = 1,
         One,
@@ -34,7 +34,7 @@ public:
         InvBlendFactor,
     };
 
-    enum class BlendOperation
+    enum struct BlendOperation
     {
         Add = 1,
         Subtract,

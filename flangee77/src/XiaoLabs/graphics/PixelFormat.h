@@ -9,7 +9,7 @@ namespace xl7::graphics {
 
 
 
-enum class PixelFormat
+enum struct PixelFormat
 {
     UNKNOWN,
 

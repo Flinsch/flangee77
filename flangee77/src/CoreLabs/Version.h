@@ -16,7 +16,7 @@ struct Version
     unsigned minor = 0;
     unsigned patch = 0;
 
-    enum class PreReleaseType : signed
+    enum struct PreReleaseType : signed
     {
         Alpha = -3,
         Beta = -2,

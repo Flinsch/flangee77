@@ -9,7 +9,7 @@ namespace xl7::graphics {
 
 
 
-enum class ComparisonFunction
+enum struct ComparisonFunction
 {
     Never = 1,
     Less,

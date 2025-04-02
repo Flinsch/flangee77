@@ -9,7 +9,7 @@ namespace cl7::logging {
 
 
 
-enum class LogType
+enum struct LogType
 {
     Log,
     Info,
@@ -25,7 +25,7 @@ enum class LogType
     Meta,
     Comment,
     Other
-}; // enum class LogType
+}; // enum struct LogType
 
 
 

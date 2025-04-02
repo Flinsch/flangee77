@@ -9,7 +9,7 @@ namespace cl7::strings {
 
 
 
-enum class EncodingError : unsigned
+enum struct EncodingError : unsigned
 {
     None                    = 0,
     /** A (decoded) code point is beyond the valid ASCII range up to 0x7F. */

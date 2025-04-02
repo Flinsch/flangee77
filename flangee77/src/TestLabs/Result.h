@@ -12,7 +12,7 @@ namespace tl7 {
 struct Result
 {
 
-    enum class OriginType
+    enum struct OriginType
     {
         Unknown,
         TestCase,
@@ -22,7 +22,7 @@ struct Result
         Exception,
     };
 
-    enum class Outcome
+    enum struct Outcome
     {
         Failure = 0,
         Success = -1,

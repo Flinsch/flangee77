@@ -13,7 +13,7 @@ class user
 {
 
 public:
-    enum class UserNameFormat
+    enum struct UserNameFormat
     {
         FullUserName,
         PureUserName,

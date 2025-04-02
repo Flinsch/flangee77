@@ -16,7 +16,7 @@ public:
     XL7_DERIVE_RESOURCE_ID(AbstractState);
 
     /** Determines the fill mode to use when rendering. */
-    enum class FillMode
+    enum struct FillMode
     {
         /** Do not draw anything at all. */
         None,
@@ -29,7 +29,7 @@ public:
     };
 
     /** Indicates which triangles should be discarded (culled). */
-    enum class CullMode
+    enum struct CullMode
     {
         /** Always draw all triangles. */
         None,
@@ -40,7 +40,7 @@ public:
     };
 
     /** Determines the orientation of the triangles. */
-    enum class WindingOrder
+    enum struct WindingOrder
     {
         /** Consider a triangle front-facing if its vertices are clockwise on the render target (consider back-facing if they are counter-clockwise). */
         Clockwise,

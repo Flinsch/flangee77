@@ -20,7 +20,7 @@ class MainWindow final
 
 
 public:
-    enum class DisplayMode
+    enum struct DisplayMode
     {
         Unknown,
         Fullscreen,

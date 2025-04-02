@@ -16,7 +16,7 @@ namespace xl7::resources {
 
 
 
-enum class ResourceUsage
+enum struct ResourceUsage
 {
     /** A non-static/"reusable" resource that is expected to last for "a while". */
     Default,

@@ -23,7 +23,7 @@ struct Diagnostic
     /**
      * Enumerates the severity levels of a diagnostic event.
      */
-    enum class Severity
+    enum struct Severity
     {
         /** Represents a critical issue that may, but does not necessarily, prevent further execution. */
         Error,
