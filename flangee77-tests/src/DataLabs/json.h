@@ -209,7 +209,7 @@ TESTLABS_CASE( u8"DataLabs:  json:  JsonWriter:  to_string" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
     {
-        TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( entry.json ), entry.string );
+        TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( entry.json, entry.format ), entry.string );
     }
 }
 
