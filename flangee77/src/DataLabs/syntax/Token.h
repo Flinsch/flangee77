@@ -12,6 +12,9 @@ namespace dl7::syntax {
 
 
 
+/**
+ * Represents a lexical token produced by a lexer.
+ */
 struct Token
 {
 

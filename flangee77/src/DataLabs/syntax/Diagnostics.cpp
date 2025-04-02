@@ -7,7 +7,7 @@ namespace dl7::syntax {
 
 
     /**
-     * Erases all diagnostics.
+     * Clears all diagnostics and the number of errors and warnings.
      */
     void Diagnostics::clear()
     {
@@ -29,7 +29,11 @@ namespace dl7::syntax {
         case Diagnostic::Severity::Warning:
             ++_warning_count;
             break;
+        default:
+            break; // Nothing to do here.
         }
+
+        diagnostic.try_log(_log_context);
     }
 
     /**
@@ -38,6 +42,23 @@ namespace dl7::syntax {
     void Diagnostics::add(Diagnostic::Severity severity, cl7::u8string_view message, const SourceLocation& source_location)
     {
         add({.severity=severity, .message=cl7::u8string(message), .source_location=source_location});
+    }
+
+    /**
+     * Tries to log all diagnostic entries according to the set log context.
+     */
+    void Diagnostics::try_log_all() const
+    {
+        try_log_all(_log_context);
+    }
+
+    /**
+     * Tries to log all diagnostic entries according to the specified log context.
+     */
+    void Diagnostics::try_log_all(cl7::logging::LogContext log_context) const
+    {
+        for (const auto& diagnostic : _diagnostics)
+            diagnostic.try_log(log_context);
     }
 
 

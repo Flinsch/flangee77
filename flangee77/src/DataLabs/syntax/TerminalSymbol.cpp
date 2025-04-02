@@ -6,7 +6,7 @@ namespace dl7::syntax {
 
 
 
-    static size_t _try_match_prefix(cl7::u8string_view literal, cl7::u8string_view source)
+    static size_t _try_match_next(cl7::u8string_view literal, cl7::u8string_view source)
     {
         if (source.length() < literal.length())
             return 0;
@@ -32,31 +32,38 @@ namespace dl7::syntax {
     {
     }
 
-    size_t LiteralSymbol::try_match_prefix(cl7::u8string_view source) const
+    size_t LiteralSymbol::try_match_next(cl7::u8string_view source) const
     {
-        return _try_match_prefix(literal, source);
+        return _try_match_next(literal, source);
+    }
+
+
+
+    NonLiteralSymbol::NonLiteralSymbol(SymbolID id)
+        : TerminalSymbol(id)
+    {
     }
 
 
 
     PatternSymbol::PatternSymbol(SymbolID id, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options, std::regex_constants::match_flag_type match_flags)
-        : PatternSymbol(id, pattern, {}, syntax_options, match_flags)
+        : PatternSymbol(id, {}, pattern, syntax_options, match_flags)
     {
     }
 
-    PatternSymbol::PatternSymbol(SymbolID id, std::string_view pattern, cl7::u8string_view literal_prefix, std::regex_constants::syntax_option_type syntax_options, std::regex_constants::match_flag_type match_flags)
-        : TerminalSymbol(id)
+    PatternSymbol::PatternSymbol(SymbolID id, cl7::u8string_view literal_prefix, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options, std::regex_constants::match_flag_type match_flags)
+        : NonLiteralSymbol(id)
+        , literal_prefix(literal_prefix)
         , pattern(pattern)
         , syntax_options(syntax_options | std::regex_constants::optimize)
         , match_flags(match_flags | std::regex_constants::match_continuous)
         , regex(this->pattern, this->syntax_options)
-        , literal_prefix(literal_prefix)
     {
     }
 
-    size_t PatternSymbol::try_match_prefix(cl7::u8string_view source) const
+    size_t PatternSymbol::try_match_next(cl7::u8string_view source) const
     {
-        if (!literal_prefix.empty() && _try_match_prefix(literal_prefix, source) == 0)
+        if (!literal_prefix.empty() && _try_match_next(literal_prefix, source) == 0)
             return 0;
 
         const char* const data = reinterpret_cast<const char*>(source.data());
@@ -71,7 +78,7 @@ namespace dl7::syntax {
 
         const auto& sm = m[0];
         assert(sm.matched);
-        assert(_try_match_prefix({reinterpret_cast<const cl7::u8char_t*>(sm.first), static_cast<size_t>(sm.second - sm.first)}, source) == m.length());
+        assert(_try_match_next({reinterpret_cast<const cl7::u8char_t*>(sm.first), static_cast<size_t>(sm.second - sm.first)}, source) == m.length());
         return m.length();
     }
 

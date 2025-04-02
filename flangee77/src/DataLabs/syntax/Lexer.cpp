@@ -8,22 +8,13 @@ namespace dl7::syntax {
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
-
-    /**
-     * Explicit constructor.
-     */
-    Lexer::Lexer(Options options)
-        : _options(options) {
+    Lexer::Lexer(Diagnostics* diagnostics, Options options)
+        : ParseStage(diagnostics)
+        , _options(options)
+    {
     }
 
 
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
 
     /**
      * Initializes this lexer with the specified source text and resets all internal
@@ -78,7 +69,7 @@ namespace dl7::syntax {
 
     /**
      * Initializes this lexer with the specified source text, performs a lexical
-     * analysis of it, and returns a "list" of recognized tokens.
+     * analysis of it, and returns a sequence of recognized tokens.
      */
     std::vector<Token> Lexer::tokenize(cl7::u8string_view source)
     {
@@ -93,10 +84,6 @@ namespace dl7::syntax {
     }
 
 
-
-    // #############################################################################
-    // Helpers
-    // #############################################################################
 
     /**
      * Skips any whitespace characters and moves the cursor position forward if
@@ -126,7 +113,7 @@ namespace dl7::syntax {
                 _source_location.column = 1;
 
                 if (line_break > 1)
-                    _source_location.offset += line_break - 1; // Skip second character as well.
+                    _source_location.offset += line_break - 1; // Skip second line-break character, i.e. LF (`\n`) after CR (`\r`) on Windows.
             }
             else
             {

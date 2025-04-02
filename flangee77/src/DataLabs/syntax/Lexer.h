@@ -1,5 +1,6 @@
 #ifndef DL7_SYNTAX_LEXER_H
 #define DL7_SYNTAX_LEXER_H
+#include "./ParseStage.h"
 
 #include "./SourceLocation.h"
 #include "./TerminalSymbol.h"
@@ -15,43 +16,51 @@ namespace dl7::syntax {
 
 
 
+/**
+ * An abstract lexer responsible for tokenizing source text. A lexer is the first
+ * stage in the parsing process. It analyzes raw source text and converts it into a
+ * sequence of recognized tokens. Concrete implementations must define the actual
+ * tokenization logic.
+ */
 class Lexer
+    : public ParseStage
 {
 
 public:
+    /**
+     * Specifies how the lexer should handle whitespace characters (between tokens).
+     */
     enum class WhitespaceHandling
     {
+        /**
+         * Whitespace characters are discarded and not emitted as tokens.
+         * This is useful when whitespace (between tokens) is insignificant.
+         */
         Discard,
+
+        /**
+         * Whitespace characters are preserved and treated as meaningful input.
+         * This is useful when whitespace has semantic significance (e.g., YAML).
+         */
         Preserve,
     };
 
+    /**
+     * Configuration options for the lexer to control its basic behavior.
+     */
     struct Options
     {
+        /** Defines how whitespace (between tokens) should be handled by the lexer. */
         WhitespaceHandling whitespace_handling = WhitespaceHandling::Discard;
     };
 
 
 
-    // #############################################################################
-    // Construction / Destruction
-    // #############################################################################
+    using ParseStage::ParseStage;
 
-    Lexer() = delete;
-
-    Lexer(Options options);
-
-    Lexer(const Lexer&) = delete;
-    Lexer& operator=(const Lexer&) = delete;
-    Lexer(Lexer&&) = delete;
-    Lexer& operator=(Lexer&&) = delete;
-
-    virtual ~Lexer() = default;
+    Lexer(Diagnostics* diagnostics, Options options);
 
 
-
-    // #############################################################################
-    // Methods
-    // #############################################################################
 
     /**
      * Initializes this lexer with the specified source text and resets all internal
@@ -67,15 +76,11 @@ public:
 
     /**
      * Initializes this lexer with the specified source text, performs a lexical
-     * analysis of it, and returns a "list" of recognized tokens.
+     * analysis of it, and returns a sequence of recognized tokens.
      */
     std::vector<Token> tokenize(cl7::u8string_view source);
 
 
-
-    // #############################################################################
-    // Properties
-    // #############################################################################
 
     /**
      * Returns the options.
@@ -102,22 +107,14 @@ public:
 
 
 private:
-
-    // #############################################################################
-    // Prototypes
-    // #############################################################################
-
     /**
      * Performs a lexical analysis of the specified source text and returns the
-     * symbol ID and the lexeme of the first/next token at the very beginning.
+     * symbol ID and the character length of the recognized lexeme of the first/next
+     * token at the very beginning of the source text.
      */
     virtual std::pair<SymbolID, size_t> _recognize(cl7::u8string_view source) = 0;
 
 
-
-    // #############################################################################
-    // Helpers
-    // #############################################################################
 
     /**
      * Skips any whitespace characters and moves the cursor position forward if
@@ -131,10 +128,6 @@ private:
     void _advance(size_t count);
 
 
-
-    // #############################################################################
-    // Attributes
-    // #############################################################################
 
     /**
      * The options.

@@ -1,9 +1,6 @@
 #include "GrammarAnalyzer.h"
 
-#include <optional>
 #include <CoreLabs/logging.h>
-
-#include <unordered_set>
 
 
 
@@ -12,27 +9,27 @@ namespace dl7::syntax {
 
 
     /**
-     * Checks the given grammar for inconsistencies and contradictions.
+     * Validates the given grammar for inconsistencies and contradictions.
      */
-    bool GrammarAnalyzer::validate(const Grammar& grammar)
+    bool GrammarAnalyzer::validate(const Grammar& grammar) const
     {
         bool is_valid = true;
 
         if (grammar.terminal_symbols.get_count() == 0)
         {
-            LOG_ERROR(u8"Invalid grammar: no terminal symbols provided.");
+            TRY_LOG_ERROR(_log_context, u8"Invalid grammar: no terminal symbols provided.");
             is_valid = false;
         }
 
         if (grammar.production_rules.get_count() == 0)
         {
-            LOG_ERROR(u8"Invalid grammar: no production rules provided.");
+            TRY_LOG_ERROR(_log_context, u8"Invalid grammar: no production rules provided.");
             is_valid = false;
         }
 
         if (grammar.start_symbol_id <= 0)
         {
-            LOG_ERROR(u8"Invalid grammar: no start symbol provided.");
+            TRY_LOG_ERROR(_log_context, u8"Invalid grammar: no start symbol provided.");
             is_valid = false;
         }
 
@@ -44,7 +41,7 @@ namespace dl7::syntax {
             {
                 if (production_rule.symbol_id == terminal_symbol.id)
                 {
-                    LOG_ERROR(u8"Invalid grammar: a symbol must be either terminal or non-terminal, not both (id: " + cl7::to_string(terminal_symbol.id) + u8").");
+                    TRY_LOG_ERROR(_log_context, u8"Invalid grammar: a symbol must be either terminal or non-terminal, not both (id: " + cl7::to_string(terminal_symbol.id) + u8").");
                     is_valid = false;
                 }
 
@@ -53,7 +50,7 @@ namespace dl7::syntax {
 
             if (!is_symbol_used)
             {
-                LOG_WARNING(u8"Inconsistent grammar: a terminal symbol is not used in any production rule (id: " + cl7::to_string(terminal_symbol.id) + u8").");
+                TRY_LOG_WARNING(_log_context, u8"Inconsistent grammar: a terminal symbol is not used in any production rule (id: " + cl7::to_string(terminal_symbol.id) + u8").");
             }
         } // for each terminal symbol
 

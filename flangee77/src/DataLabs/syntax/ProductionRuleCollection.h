@@ -12,8 +12,9 @@ namespace dl7::syntax {
 
 
 /**
- * A "set" of non-terminal symbols and their production rules for BNF-like grammars.
- * A symbol can be defined multiple times, to represent the aspect of choices.
+ * A collection of non-terminal symbols and their production rules for context-free,
+ * BNF-like grammars. A non-terminal symbol can be defined multiple times to
+ * represent the aspect of choices in the grammar.
  */
 class ProductionRuleCollection
 {
@@ -42,18 +43,18 @@ public:
     void add(SymbolID symbol_id, std::vector<SymbolID>&& sequence);
 
     /**
-     * Returns the number of contained production rules.
+     * Returns the number of production rules in the collection.
      */
     size_t get_count() const { return _production_rules.size(); }
 
     /**
-     * Returns the production rule identified by the given index.
+     * Retrieves the production rule at the specified index.
      */
     const ProductionRule& get(size_t index) const { assert(index < _production_rules.size()); return _production_rules[index]; }
 
     /**
      * Checks whether the assumed non-terminal symbol is defined by any production
-     * rule.
+     * rule in the collection.
      */
     bool is_defined(SymbolID symbol_id) const;
 

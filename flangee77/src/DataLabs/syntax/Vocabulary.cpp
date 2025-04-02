@@ -19,8 +19,8 @@ namespace dl7::syntax {
     }
 
     /**
-     * Searches for the name of the specified symbol and returns it (or an empty
-     * string if not found).
+     * Searches for the associated name of the specified symbol and returns it
+     * (or an empty string if not found).
      */
     cl7::u8string_view Vocabulary::get_symbol_name(SymbolID symbol_id) const
     {

@@ -34,7 +34,7 @@ namespace dl7::syntax {
 
     /**
      * Checks whether the assumed non-terminal symbol is defined by any production
-     * rule.
+     * rule in the collection.
      */
     bool ProductionRuleCollection::is_defined(SymbolID symbol_id) const
     {

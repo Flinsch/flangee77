@@ -3,6 +3,8 @@
 
 #include "./Diagnostic.h"
 
+#include <CoreLabs/logging/LogContext.h>
+
 #include <vector>
 
 
@@ -11,12 +13,22 @@ namespace dl7::syntax {
 
 
 
+/**
+ * Manages a collection of diagnostic entries. This class maintains a log context
+ * for newly added diagnostics and keeps a record of diagnostic entries along with
+ * respective counts of errors and warnings.
+ */
 class Diagnostics
 {
 
 public:
+    Diagnostics() = default;
+    explicit Diagnostics(cl7::logging::LogContext log_context) : _log_context(log_context) {}
+
+
+
     /**
-     * Erases all diagnostics.
+     * Clears all diagnostics and the number of errors and warnings.
      */
     void clear();
 
@@ -50,9 +62,22 @@ public:
      */
     size_t get_warning_count() const { return _warning_count; }
 
+    /**
+     * Tries to log all diagnostic entries.
+     */
+    void try_log_all() const;
+
+    /**
+     * Tries to log all diagnostic entries according to the specified log context.
+     */
+    void try_log_all(cl7::logging::LogContext log_context) const;
+
 
 
 private:
+    /** The log context to be used for newly added diagnostic entries. */
+    cl7::logging::LogContext _log_context;
+
     /** The "list" of diagnostics. */
     std::vector<Diagnostic> _diagnostics;
 

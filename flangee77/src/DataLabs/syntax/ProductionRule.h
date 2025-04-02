@@ -11,13 +11,23 @@ namespace dl7::syntax {
 
 
 
+/**
+ * Represents a production rule in a context-free, BNF-like grammar. A production
+ * rule defines how a non-terminal symbol can be expanded into a sequence of symbols.
+ */
 struct ProductionRule
 {
 
-    /** The non-terminal symbol ID (left-hand side of the production rule). */
+    /**
+     * The non-terminal symbol ID (left-hand side of the production rule).
+     * This symbol is defined by this rule and can be expanded using the sequence.
+     */
     SymbolID symbol_id;
 
-    /** The sequence of terminal/non-terminal symbols (right-hand side of the production rule). */
+    /**
+     * The sequence of terminal and/or non-terminal symbols (right-hand side of the production rule).
+     * This specifies how the left-hand side symbol can be rewritten in the parsing process.
+     */
     std::vector<SymbolID> sequence;
 
 

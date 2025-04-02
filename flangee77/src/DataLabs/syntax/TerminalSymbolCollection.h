@@ -14,9 +14,10 @@ namespace dl7::syntax {
 
 
 /**
- * A "set" of terminal symbols and their lexical compositions for BNF-like grammars.
- * A symbol can be defined multiple times, for example to resolve complex regular
- * expressions or to replace those patterns with literal variants.
+ * A collection of terminal symbols and their lexical compositions for use in lexers
+ * and/or context-free, BNF-like grammars. A terminal symbol can be defined multiple
+ * times, for example to resolve complex regular expressions or to replace those
+ * patterns (or custom symbols) with literal variants.
  */
 class TerminalSymbolCollection
 {
@@ -35,7 +36,7 @@ public:
     void add(std::unique_ptr<TerminalSymbol> terminal_symbol);
 
     /**
-     * Adds the specified terminal symbol to the collection.
+     * Adds a terminal symbol of the specified type to the collection.
      */
     template <class TTerminalSymbol, class... Args>
         requires(std::derived_from<TTerminalSymbol, TerminalSymbol>)
@@ -45,32 +46,41 @@ public:
     }
 
     /**
-     * Adds the specified literal symbol to the collection.
+     * Adds a literal terminal symbol to the collection.
      */
     void add_literal(SymbolID id, cl7::u8string_view literal);
 
     /**
-     * Adds the specified pattern symbol to the collection.
+     * Adds a pattern-based terminal symbol to the collection.
      */
     void add_pattern(SymbolID id, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
 
     /**
-     * Adds the specified pattern symbol to the collection.
+     * Adds a pattern-based terminal symbol with a literal prefix for optimization.
      */
-    void add_pattern(SymbolID id, std::string_view pattern, cl7::u8string_view literal_prefix, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
+    void add_pattern(SymbolID id, cl7::u8string_view literal_prefix, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
 
     /**
-     * Returns the number of contained terminal symbols.
+     * Adds a custom terminal symbol using a user-defined matching function.
+     */
+    template <typename TCustomMatcher>
+    void add_custom(SymbolID id, typename CustomSymbol<TCustomMatcher>::CustomMatcher matcher)
+    {
+        add(std::make_unique<CustomSymbol<TCustomMatcher>>(id, matcher));
+    }
+
+    /**
+     * Returns the number of terminal symbols in the collection.
      */
     size_t get_count() const { return _terminal_symbols.size(); }
 
     /**
-     * Returns the terminal symbol identified by the given index.
+     * Retrieves the terminal symbol at the specified index.
      */
     const TerminalSymbol& get(size_t index) const { assert(index < _terminal_symbols.size()); return *_terminal_symbols[index]; }
 
     /**
-     * Checks whether the supposed terminal symbol is defined.
+     * Checks whether a terminal symbol with the given ID is defined in the collection.
      */
     bool is_defined(SymbolID id) const;
 

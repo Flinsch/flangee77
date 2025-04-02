@@ -14,6 +14,13 @@ target_sources(flangee77
     json/JsonWriter.h
     json/types.h
 
+    syntax/AstNode.h
+    syntax/AstProcessor.h
+    syntax/CstBuilder.h
+    syntax/CstNode.cpp
+    syntax/CstNode.h
+    syntax/CstToAstTransformer.h
+    syntax/Diagnostic.cpp
     syntax/Diagnostic.h
     syntax/Diagnostics.cpp
     syntax/Diagnostics.h
@@ -24,8 +31,8 @@ target_sources(flangee77
     syntax/GrammarAnalyzer.h
     syntax/Lexer.cpp
     syntax/Lexer.h
-    syntax/Parser.cpp
-    syntax/Parser.h
+    syntax/ParseStage.cpp
+    syntax/ParseStage.h
     syntax/ProductionRule.cpp
     syntax/ProductionRule.h
     syntax/ProductionRuleCollection.cpp

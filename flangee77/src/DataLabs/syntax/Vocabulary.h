@@ -13,6 +13,10 @@ namespace dl7::syntax {
 
 
 
+/**
+ * Manages symbol names within a vocabulary: maps symbol IDs to their human-readable
+ * names, facilitating grammar debugging and analysis.
+ */
 class Vocabulary
 {
 
@@ -23,8 +27,8 @@ public:
     void add_symbol(SymbolID symbol_id, cl7::u8string_view symbol_name);
 
     /**
-     * Searches for the name of the specified symbol and returns it (or an empty
-     * string if not found).
+     * Searches for the associated name of the specified symbol and returns it
+     * (or an empty string if not found).
      */
     cl7::u8string_view get_symbol_name(SymbolID symbol_id) const;
 

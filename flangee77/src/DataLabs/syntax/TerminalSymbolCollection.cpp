@@ -17,7 +17,7 @@ namespace dl7::syntax {
     }
 
     /**
-     * Adds the specified literal symbol to the collection.
+     * Adds a literal terminal symbol to the collection.
      */
     void TerminalSymbolCollection::add_literal(SymbolID id, cl7::u8string_view literal)
     {
@@ -25,7 +25,7 @@ namespace dl7::syntax {
     }
 
     /**
-     * Adds the specified pattern symbol to the collection.
+     * Adds a pattern-based terminal symbol to the collection.
      */
     void TerminalSymbolCollection::add_pattern(SymbolID id, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options, std::regex_constants::match_flag_type match_flags)
     {
@@ -33,15 +33,15 @@ namespace dl7::syntax {
     }
 
     /**
-     * Adds the specified pattern symbol to the collection.
+     * Adds a pattern-based terminal symbol with a literal prefix for optimization.
      */
-    void TerminalSymbolCollection::add_pattern(SymbolID id, std::string_view pattern, cl7::u8string_view literal_prefix, std::regex_constants::syntax_option_type syntax_options, std::regex_constants::match_flag_type match_flags)
+    void TerminalSymbolCollection::add_pattern(SymbolID id, cl7::u8string_view literal_prefix, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options, std::regex_constants::match_flag_type match_flags)
     {
-        add(std::make_unique<PatternSymbol>(id, pattern, literal_prefix, syntax_options, match_flags));
+        add(std::make_unique<PatternSymbol>(id, literal_prefix, pattern, syntax_options, match_flags));
     }
 
     /**
-     * Checks whether the supposed terminal symbol is defined.
+     * Checks whether a terminal symbol with the given ID is defined in the collection.
      */
     bool TerminalSymbolCollection::is_defined(SymbolID id) const
     {

@@ -15,7 +15,7 @@ TESTLABS_CASE( u8"DataLabs:  syntax:  GenericLexer:  tokenize" )
     cl7::u8string_view source = u8"#include <iostream>\n\nint main() {\n    std::cout << \"\\\"Hello, World!\\\"\" << '\\n';\n    return 0;\n}\n";
 
     dl7::syntax::TerminalSymbolCollection terminal_symbols;
-    terminal_symbols.add_pattern( /*u8"directive",*/ 1, R"(#[a-z]+)", u8"#" );
+    terminal_symbols.add_pattern( /*u8"directive",*/ 1, u8"#", R"(#[a-z]+)" );
     terminal_symbols.add_literal( /*u8"left round bracket",*/ 2, u8"(" );
     terminal_symbols.add_literal( /*u8"right round bracket",*/ 3, u8")" );
     terminal_symbols.add_literal( /*u8"left square bracket",*/ 4, u8"[" );
@@ -34,10 +34,11 @@ TESTLABS_CASE( u8"DataLabs:  syntax:  GenericLexer:  tokenize" )
     terminal_symbols.add_pattern( /*u8"operator",*/ 17, R"([=!~^&|*/%+-])" );
     terminal_symbols.add_pattern( /*u8"integer number",*/ 18, R"(0|[1-9][0-9]*)" );
     terminal_symbols.add_pattern( /*u8"floating point number",*/ 19, R"((?:0?|[1-9][0-9]*)\.[0-9]*f?)" );
-    terminal_symbols.add_pattern( /*u8"character",*/ 20, R"('(?:[^'\\]|\\.)')", u8"'" );
-    terminal_symbols.add_pattern( /*u8"string",*/ 21, R"("[^"\\]*(?:\\.[^"\\]*)*")", u8"\"" );
+    terminal_symbols.add_pattern( /*u8"character",*/ 20, u8"'", R"('(?:[^'\\]|\\.)')" );
+    terminal_symbols.add_pattern( /*u8"string",*/ 21, u8"\"", R"("[^"\\]*(?:\\.[^"\\]*)*")" );
 
-    dl7::syntax::GenericLexer lexer( &terminal_symbols, {
+    dl7::syntax::Diagnostics diagnostics;
+    dl7::syntax::GenericLexer lexer( &diagnostics, &terminal_symbols, {
         .whitespace_handling = dl7::syntax::Lexer::WhitespaceHandling::Discard,
     } );
 
