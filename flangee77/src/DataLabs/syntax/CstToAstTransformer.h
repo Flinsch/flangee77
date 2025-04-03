@@ -16,6 +16,10 @@ namespace dl7::syntax {
  * an abstract syntax tree (AST). A syntax tree transformer is an intermediate stage
  * after CST creation and before AST processing. It converts a fully detailed CST
  * into a more compact and semantically meaningful AST representation.
+ *
+ * This stage is part of a multi-step parsing process that first constructs a CST
+ * and then converts it into an AST. For cases where a CST is unnecessary, consider
+ * using `DirectAstBuilder` instead.
  */
 template <class TAstNode = AstNode>
 class CstToAstTransformer

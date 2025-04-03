@@ -16,8 +16,12 @@ namespace dl7::syntax {
 /**
  * An abstract CST builder responsible for constructing a concrete syntax tree (CST).
  * A CST builder is an intermediate stage after tokenization and before AST
- * transformation/processing. It analyzes a sequence of tokens and build a full
+ * transformation/processing. It analyzes a sequence of tokens and builds a full
  * syntax tree representation that preserves all syntactic elements from the source.
+ *
+ * This stage is part of a multi-step parsing process where the CST is later
+ * transformed into an abstract syntax tree (AST). For cases where a CST is
+ * unnecessary, consider using `DirectAstBuilder` instead.
  */
 class CstBuilder
     : public ParseStage

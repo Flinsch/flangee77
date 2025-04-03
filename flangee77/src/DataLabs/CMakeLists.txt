@@ -24,6 +24,7 @@ target_sources(flangee77
     syntax/Diagnostic.h
     syntax/Diagnostics.cpp
     syntax/Diagnostics.h
+    syntax/DirectAstBuilder.h
     syntax/GenericLexer.cpp
     syntax/GenericLexer.h
     syntax/Grammar.h
