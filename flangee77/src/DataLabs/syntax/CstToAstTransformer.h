@@ -17,7 +17,8 @@ namespace dl7::syntax {
  * after CST creation and before AST processing. It converts a fully detailed CST
  * into a more compact and semantically meaningful AST representation.
  */
-class CstToAstTransformer<class TAstNode = AstNode>
+template <class TAstNode = AstNode>
+class CstToAstTransformer
     : public ParseStage
 {
 

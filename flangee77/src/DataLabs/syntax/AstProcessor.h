@@ -15,7 +15,8 @@ namespace dl7::syntax {
  * AST processor is the final stage in the parsing process. It takes an AST as input
  * and performs semantic analysis, optimization, and/or code generation, etc.
  */
-class AstProcessor<class TAstNode = AstNode>
+template <class TAstNode = AstNode>
+class AstProcessor
     : public ParseStage
 {
 
