@@ -72,6 +72,9 @@ namespace dl7::json {
         cl7::strings::Encoder<cl7::u8char_t> utf8_encoder;
         cl7::u8char_t utf8_buffer[4];
 
+        cl7::strings::Encoder<cl7::u16char_t> utf16_encoder;
+        cl7::u16char_t utf16_buffer[2];
+
         cl7::strings::Decoder<cl7::u8char_t>::iterator it{string};
         cl7::strings::Decoder<cl7::u8char_t>::sentinel end;
 
@@ -123,12 +126,8 @@ namespace dl7::json {
                     {
                         // Escape code point outside the Basic Multilingual Plane
                         // (above U+FFFF) using UTF-16 surrogate pair.
-                        cl7::strings::Encoder<cl7::u16char_t> utf16_encoder;
-                        cl7::u16char_t utf16_buffer[2];
-
                         const auto size = utf16_encoder.encode_one_into(codepoint, cl7::u16string_span(utf16_buffer, 2));
                         assert(size == 2);
-
                         oss << std::format("\\u{:04X}", static_cast<unsigned>(utf16_buffer[0]));
                         oss << std::format("\\u{:04X}", static_cast<unsigned>(utf16_buffer[1]));
                     }
