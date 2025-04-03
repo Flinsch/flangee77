@@ -70,9 +70,9 @@ public:
 
     /**
      * Performs a lexical analysis of the source text at the current cursor position
-     * and returns the next token after the cursor has been moved forward.
+     * and advances the cursor accordingly. Returns the recognized token.
      */
-    Token next();
+    Token next_token();
 
     /**
      * Initializes this lexer with the specified source text, performs a lexical

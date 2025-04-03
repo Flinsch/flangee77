@@ -2,6 +2,8 @@
 #define F77_TESTS_DL7_SYNTAX_H
 
 #include <DataLabs/syntax/GenericLexer.h>
+#include <DataLabs/syntax/BufferedTokenReader.h>
+#include <DataLabs/syntax/LexingTokenReader.h>
 #include <DataLabs/syntax/Vocabulary.h>
 
 #include <TestLabs/TestSuite.h>
@@ -10,9 +12,9 @@
 
 
 
-TESTLABS_CASE( u8"DataLabs:  syntax:  GenericLexer:  tokenize" )
+TESTLABS_CASE( u8"DataLabs:  syntax:  GenericLexer / TokenReader" )
 {
-    cl7::u8string_view source = u8"#include <iostream>\n\nint main() {\n    std::cout << \"\\\"Hello, World!\\\"\" << '\\n';\n    return 0;\n}\n";
+    constexpr cl7::u8string_view source = u8"#include <iostream>\n\nint main() {\n    std::cout << \"\\\"Hello, World!\\\"\" << '\\n';\n    return 0;\n}\n";
 
     dl7::syntax::TerminalSymbolCollection terminal_symbols;
     terminal_symbols.add_pattern( /*u8"directive",*/ 1, u8"#", R"(#[a-z]+)" );
@@ -70,6 +72,22 @@ TESTLABS_CASE( u8"DataLabs:  syntax:  GenericLexer:  tokenize" )
     TESTLABS_CHECK_EQ( tokens[22].symbol_id, 13 );
     TESTLABS_CHECK_EQ( tokens[23].symbol_id, 7 );
     TESTLABS_CHECK_EQ( tokens[24].symbol_id, 0 );
+
+    lexer.init( source ); // reset lexer
+
+    dl7::syntax::BufferedTokenReader<> buffered_reader( tokens );
+    dl7::syntax::LexingTokenReader lexing_reader( &lexer );
+    for ( const auto& token : tokens )
+    {
+        TESTLABS_CHECK_EQ( buffered_reader.peek_symbol_id(), token.symbol_id );
+        TESTLABS_CHECK_EQ( lexing_reader.peek_symbol_id(), token.symbol_id );
+        buffered_reader.next_token();
+        lexing_reader.next_token();
+    }
+    TESTLABS_CHECK_EQ( buffered_reader.peek_symbol_id(), dl7::syntax::EOF_SYMBOL_ID );
+    TESTLABS_CHECK_EQ( lexing_reader.peek_symbol_id(), dl7::syntax::EOF_SYMBOL_ID );
+    TESTLABS_CHECK( buffered_reader.is_eof() );
+    TESTLABS_CHECK( lexing_reader.is_eof() );
 }
 
 

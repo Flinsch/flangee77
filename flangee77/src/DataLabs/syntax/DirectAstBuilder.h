@@ -2,10 +2,8 @@
 #define DL7_SYNTAX_DIRECTASTBUILDER_H
 #include "./ParseStage.h"
 
-#include "./Token.h"
+#include "./TokenReader.h"
 #include "./AstNode.h"
-
-#include <vector>
 
 
 
@@ -43,7 +41,7 @@ public:
      * (without generating an intermediate concrete syntax tree), and returns the
      * root node of this tree.
      */
-    virtual std::unique_ptr<AstNode> build(const std::vector<Token>& tokens) = 0;
+    virtual std::unique_ptr<AstNode> build(TokenReader& token_reader) = 0;
 
 }; // class DirectAstBuilder
 

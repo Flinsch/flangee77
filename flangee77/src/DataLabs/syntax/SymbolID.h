@@ -17,6 +17,11 @@ using SymbolID = signed;
 
 
 
+static constexpr SymbolID EOF_SYMBOL_ID = static_cast<SymbolID>(0);
+//static constexpr SymbolID INVALID_SYMBOL_ID = static_cast<SymbolID>(-1);
+
+
+
 } // namespace dl7::syntax
 
 #endif // DL7_SYNTAX_SYMBOLID_H

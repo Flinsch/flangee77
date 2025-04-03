@@ -28,9 +28,9 @@ namespace dl7::syntax {
 
     /**
      * Performs a lexical analysis of the source text at the current cursor position
-     * and returns the next token after the cursor has been moved forward.
+     * and advances the cursor accordingly. Returns the recognized token.
      */
-    Token Lexer::next()
+    Token Lexer::next_token()
     {
         // Keep or skip whitespace?
         if (_options.whitespace_handling == WhitespaceHandling::Discard)
@@ -40,7 +40,7 @@ namespace dl7::syntax {
         {
             // Return "EOF" token.
             return {
-                .symbol_id = 0,
+                .symbol_id = EOF_SYMBOL_ID,
                 .lexeme = cl7::u8string_view(),
                 .source_location = _source_location,
             };
@@ -49,7 +49,7 @@ namespace dl7::syntax {
         // (Try to) recognize next token.
         const auto [symbol_id, length] = _recognize(get_remainder());
 
-        assert(symbol_id != 0);
+        assert(symbol_id != EOF_SYMBOL_ID);
         assert(length > 0);
         assert(length + _source_location.offset <= _source.length());
 
@@ -77,8 +77,8 @@ namespace dl7::syntax {
 
         init(source);
         do
-            tokens.push_back(next());
-        while (tokens.back().symbol_id != 0);
+            tokens.push_back(next_token());
+        while (tokens.back().symbol_id != EOF_SYMBOL_ID);
 
         return tokens;
     }

@@ -2,10 +2,8 @@
 #define DL7_SYNTAX_CSTBUILDER_H
 #include "./ParseStage.h"
 
-#include "./Token.h"
+#include "./TokenReader.h"
 #include "./CstNode.h"
-
-#include <vector>
 
 
 
@@ -36,7 +34,7 @@ public:
      * Parses a sequence of tokens, constructs a parse tree (concrete syntax tree),
      * and returns the root node of this tree.
      */
-    virtual std::unique_ptr<CstNode> build(const std::vector<Token>& tokens) = 0;
+    virtual std::unique_ptr<CstNode> build(TokenReader& token_reader) = 0;
 
 }; // class CstBuilder
 

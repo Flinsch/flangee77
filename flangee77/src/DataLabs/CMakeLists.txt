@@ -16,6 +16,7 @@ target_sources(flangee77
 
     syntax/AstNode.h
     syntax/AstProcessor.h
+    syntax/BufferedTokenReader.h
     syntax/CstBuilder.h
     syntax/CstNode.cpp
     syntax/CstNode.h
@@ -32,6 +33,7 @@ target_sources(flangee77
     syntax/GrammarAnalyzer.h
     syntax/Lexer.cpp
     syntax/Lexer.h
+    syntax/LexingTokenReader.h
     syntax/ParseStage.cpp
     syntax/ParseStage.h
     syntax/ProductionRule.cpp
@@ -45,6 +47,7 @@ target_sources(flangee77
     syntax/TerminalSymbolCollection.cpp
     syntax/TerminalSymbolCollection.h
     syntax/Token.h
+    syntax/TokenReader.h
     syntax/Vocabulary.cpp
     syntax/Vocabulary.h
 )
