@@ -154,8 +154,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acfe84b5a3760c5339d35e4f7aa0570b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad13606b999e2aae1a6b2782165da17b5" id="r_ad13606b999e2aae1a6b2782165da17b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ad13606b999e2aae1a6b2782165da17b5">init</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> source)</td></tr>
 <tr class="separator:ad13606b999e2aae1a6b2782165da17b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b54d0aa8196584f614d205c2fd10485" id="r_a5b54d0aa8196584f614d205c2fd10485"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d58/structdl7_1_1syntax_1_1Token.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a5b54d0aa8196584f614d205c2fd10485">next</a> ()</td></tr>
-<tr class="separator:a5b54d0aa8196584f614d205c2fd10485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a829f082da6ffa0e754ff50925cc04a2f" id="r_a829f082da6ffa0e754ff50925cc04a2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d58/structdl7_1_1syntax_1_1Token.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a829f082da6ffa0e754ff50925cc04a2f">next_token</a> ()</td></tr>
+<tr class="separator:a829f082da6ffa0e754ff50925cc04a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad3813f967db1aeb7dc329db3605642e" id="r_aad3813f967db1aeb7dc329db3605642e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../dc/d58/structdl7_1_1syntax_1_1Token.html">Token</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#aad3813f967db1aeb7dc329db3605642e">tokenize</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> source)</td></tr>
 <tr class="separator:aad3813f967db1aeb7dc329db3605642e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa51c5a61a4cb4e76045c08fcbd550dd4" id="r_aa51c5a61a4cb4e76045c08fcbd550dd4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/d72/structdl7_1_1syntax_1_1Lexer_1_1Options.html">Options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#aa51c5a61a4cb4e76045c08fcbd550dd4">get_options</a> () const</td></tr>
@@ -481,21 +481,21 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a5b54d0aa8196584f614d205c2fd10485" name="a5b54d0aa8196584f614d205c2fd10485"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b54d0aa8196584f614d205c2fd10485">&#9670;&#160;</a></span>next()</h2>
+<a id="a829f082da6ffa0e754ff50925cc04a2f" name="a829f082da6ffa0e754ff50925cc04a2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a829f082da6ffa0e754ff50925cc04a2f">&#9670;&#160;</a></span>next_token()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dc/d58/structdl7_1_1syntax_1_1Token.html">Token</a> dl7::syntax::Lexer::next </td>
+          <td class="memname"><a class="el" href="../../dc/d58/structdl7_1_1syntax_1_1Token.html">Token</a> dl7::syntax::Lexer::next_token </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Performs a lexical analysis of the source text at the current cursor position and returns the next token after the cursor has been moved forward. </p>
+<p>Performs a lexical analysis of the source text at the current cursor position and advances the cursor accordingly. Returns the recognized token. </p>
 
 </div>
 </div>

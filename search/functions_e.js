@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['next_0',['next',['../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a5b54d0aa8196584f614d205c2fd10485',1,'dl7::syntax::Lexer']]],
-  ['next_5fpower_5fof_5f2_1',['next_power_of_2',['../d3/d53/namespaceml7.html#a3850d5a6089847eb6af83e706f69e006',1,'ml7']]],
+  ['next_5fpower_5fof_5f2_0',['next_power_of_2',['../d3/d53/namespaceml7.html#a3850d5a6089847eb6af83e706f69e006',1,'ml7']]],
+  ['next_5ftoken_1',['next_token',['../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a829f082da6ffa0e754ff50925cc04a2f',1,'dl7::syntax::Lexer::next_token()'],['../dd/ddd/classdl7_1_1syntax_1_1LexingTokenReader.html#a9b61c20877e6b82c91d53065fe78bbc7',1,'dl7::syntax::LexingTokenReader::next_token()'],['../db/d76/classdl7_1_1syntax_1_1TokenReader.html#a8418fb235675deffb8bf9d7c21c3a7fe',1,'dl7::syntax::TokenReader::next_token()'],['../d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html#ae305e209c632ada772dab8b2ff4779de',1,'dl7::syntax::BufferedTokenReader::next_token()']]],
   ['nonliteralsymbol_2',['NonLiteralSymbol',['../d8/d79/structdl7_1_1syntax_1_1NonLiteralSymbol.html#a8d451d2f90943c6cb0a16cf1b3272bb7',1,'dl7::syntax::NonLiteralSymbol']]],
   ['norm_3',['norm',['../d8/d1f/structml7_1_1Quaternion.html#a0e7be6b4ae8a2a53f49957b75be085cf',1,'ml7::Quaternion']]],
   ['norm_5fto_5ffixed_4',['norm_to_fixed',['../d9/df1/namespacecl7_1_1bits.html#a92a7092d745ebe9351dda7a8483d48ba',1,'cl7::bits']]],

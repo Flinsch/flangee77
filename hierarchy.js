@@ -212,9 +212,10 @@ var hierarchy =
     [ "xl7::graphics::images::PngImageHandler::PaletteEntry", "d6/d53/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1PaletteEntry.html", null ],
     [ "xl7::graphics::impl::shared::shaders::Include::ParentEntry", "dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html", null ],
     [ "dl7::syntax::ParseStage", "d9/d44/classdl7_1_1syntax_1_1ParseStage.html", [
-      [ "dl7::syntax::AstProcessor< class TAstNode=AstNode >", "d2/dfa/classdl7_1_1syntax_1_1AstProcessor_3_01class_01TAstNode_0aAstNode_01_4.html", null ],
+      [ "dl7::syntax::AstProcessor< TAstNode >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", null ],
       [ "dl7::syntax::CstBuilder", "db/dc4/classdl7_1_1syntax_1_1CstBuilder.html", null ],
-      [ "dl7::syntax::CstToAstTransformer< class TAstNode=AstNode >", "d8/dd7/classdl7_1_1syntax_1_1CstToAstTransformer_3_01class_01TAstNode_0aAstNode_01_4.html", null ],
+      [ "dl7::syntax::CstToAstTransformer< TAstNode >", "d2/d8a/classdl7_1_1syntax_1_1CstToAstTransformer.html", null ],
+      [ "dl7::syntax::DirectAstBuilder< TAstNode >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", null ],
       [ "dl7::syntax::Lexer", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html", [
         [ "dl7::syntax::GenericLexer", "d5/da3/classdl7_1_1syntax_1_1GenericLexer.html", null ]
       ] ]
@@ -386,6 +387,10 @@ var hierarchy =
       ] ]
     ] ],
     [ "dl7::syntax::Token", "dc/d58/structdl7_1_1syntax_1_1Token.html", null ],
+    [ "dl7::syntax::TokenReader", "db/d76/classdl7_1_1syntax_1_1TokenReader.html", [
+      [ "dl7::syntax::BufferedTokenReader< Tcontainer >", "d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html", null ],
+      [ "dl7::syntax::LexingTokenReader", "dd/ddd/classdl7_1_1syntax_1_1LexingTokenReader.html", null ]
+    ] ],
     [ "cl7::strings::traits< Tchar >", "d8/d97/structcl7_1_1strings_1_1traits.html", null ],
     [ "cl7::strings::traits< cl7::achar_t >", "de/da3/structcl7_1_1strings_1_1traits_3_01cl7_1_1achar__t_01_4.html", null ],
     [ "cl7::strings::traits< cl7::u16char_t >", "de/dc0/structcl7_1_1strings_1_1traits_3_01cl7_1_1u16char__t_01_4.html", null ],

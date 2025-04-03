@@ -128,8 +128,8 @@ Collaboration diagram for dl7::syntax::CstBuilder:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3bbd10bf09ddcac2e485b1752b1b49c4" id="r_a3bbd10bf09ddcac2e485b1752b1b49c4"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="../../d0/df6/classdl7_1_1syntax_1_1CstNode.html">CstNode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc4/classdl7_1_1syntax_1_1CstBuilder.html#a3bbd10bf09ddcac2e485b1752b1b49c4">build</a> (const std::vector&lt; <a class="el" href="../../dc/d58/structdl7_1_1syntax_1_1Token.html">Token</a> &gt; &amp;tokens)=0</td></tr>
-<tr class="separator:a3bbd10bf09ddcac2e485b1752b1b49c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7f694803866acdea65cd8fd49fd9ea5" id="r_ad7f694803866acdea65cd8fd49fd9ea5"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="../../d0/df6/classdl7_1_1syntax_1_1CstNode.html">CstNode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc4/classdl7_1_1syntax_1_1CstBuilder.html#ad7f694803866acdea65cd8fd49fd9ea5">build</a> (<a class="el" href="../../db/d76/classdl7_1_1syntax_1_1TokenReader.html">TokenReader</a> &amp;token_reader)=0</td></tr>
+<tr class="separator:ad7f694803866acdea65cd8fd49fd9ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae835818ce00e45c0d7728d818c03d4e8" id="r_ae835818ce00e45c0d7728d818c03d4e8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc4/classdl7_1_1syntax_1_1CstBuilder.html#ae835818ce00e45c0d7728d818c03d4e8">ParseStage</a> ()=delete</td></tr>
 <tr class="separator:ae835818ce00e45c0d7728d818c03d4e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa44b9c66ebc30f4121d81e455cb67f1c" id="r_aa44b9c66ebc30f4121d81e455cb67f1c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc4/classdl7_1_1syntax_1_1CstBuilder.html#aa44b9c66ebc30f4121d81e455cb67f1c">ParseStage</a> (const <a class="el" href="../../d9/d44/classdl7_1_1syntax_1_1ParseStage.html">ParseStage</a> &amp;)=delete</td></tr>
@@ -161,10 +161,11 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a90b2362a63c095e1fe0597f5ec0a13e3 inherit pro_methods_classdl7_1_1syntax_1_1ParseStage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>An abstract CST builder responsible for constructing a concrete syntax tree (CST). A CST builder is an intermediate stage after tokenization and before AST transformation/processing. It analyzes a sequence of tokens and build a full syntax tree representation that preserves all syntactic elements from the source. </p>
+<div class="textblock"><p>An abstract CST builder responsible for constructing a concrete syntax tree (CST). A CST builder is an intermediate stage after tokenization and before AST transformation/processing. It analyzes a sequence of tokens and builds a full syntax tree representation that preserves all syntactic elements from the source.</p>
+<p>This stage is part of a multi-step parsing process where the CST is later transformed into an abstract syntax tree (AST). For cases where a CST is unnecessary, consider using <code><a class="el" href="../../df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html">DirectAstBuilder</a></code> instead. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3bbd10bf09ddcac2e485b1752b1b49c4" name="a3bbd10bf09ddcac2e485b1752b1b49c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3bbd10bf09ddcac2e485b1752b1b49c4">&#9670;&#160;</a></span>build()</h2>
+<a id="ad7f694803866acdea65cd8fd49fd9ea5" name="ad7f694803866acdea65cd8fd49fd9ea5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7f694803866acdea65cd8fd49fd9ea5">&#9670;&#160;</a></span>build()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -175,8 +176,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">virtual std::unique_ptr&lt; <a class="el" href="../../d0/df6/classdl7_1_1syntax_1_1CstNode.html">CstNode</a> &gt; dl7::syntax::CstBuilder::build </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="../../dc/d58/structdl7_1_1syntax_1_1Token.html">Token</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>tokens</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../db/d76/classdl7_1_1syntax_1_1TokenReader.html">TokenReader</a> &amp;&#160;</td>
+          <td class="paramname"><em>token_reader</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

@@ -14,7 +14,7 @@ var classdl7_1_1syntax_1_1Lexer =
     [ "get_source", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a334ebe6d63eadcfa436de4ace647f8de", null ],
     [ "get_source_location", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ac68e94ad96c243bd03d08a66b45dbd8f", null ],
     [ "init", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ad13606b999e2aae1a6b2782165da17b5", null ],
-    [ "next", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a5b54d0aa8196584f614d205c2fd10485", null ],
+    [ "next_token", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a829f082da6ffa0e754ff50925cc04a2f", null ],
     [ "ParseStage", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ae835818ce00e45c0d7728d818c03d4e8", null ],
     [ "ParseStage", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#aa44b9c66ebc30f4121d81e455cb67f1c", null ],
     [ "ParseStage", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a90b2362a63c095e1fe0597f5ec0a13e3", null ],
