@@ -17,9 +17,10 @@ var searchData=
   ['normalized_14',['normalized',['../db/dad/structml7_1_1Vector4.html#ab7ca01dea095e77d88c6120a1c8b5a23',1,'ml7::Vector4::normalized()'],['../d6/d64/structml7_1_1Vector3.html#aa3eb5712e62796110ab01c03a9d54884',1,'ml7::Vector3::normalized()'],['../d7/db1/structml7_1_1Vector2.html#aa39d3f2ea84d1c1a5884c78e38707854',1,'ml7::Vector2::normalized()'],['../d8/d1f/structml7_1_1Quaternion.html#a14211dfdef18288bbec6ba09f2d1f3fe',1,'ml7::Quaternion::normalized()']]],
   ['normalized_5fasymmetric_15',['normalized_asymmetric',['../d4/d9d/structml7_1_1Angle.html#a4030af897b8932a1df4ca4e8eb603ac6',1,'ml7::Angle']]],
   ['normalized_5fsymmetric_16',['normalized_symmetric',['../d4/d9d/structml7_1_1Angle.html#ad44f5d463a444fa5e6fa732f8c6cd1d3',1,'ml7::Angle']]],
-  ['notequal_17',['NotEqual',['../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa19bb0af2c3c530538cb41aff7f235b96',1,'xl7::graphics']]],
-  ['notice_18',['Notice',['../d0/d46/structdl7_1_1syntax_1_1Diagnostic.html#afb8b280322219dfc4a99ec89802c4406a24efa7ee4511563b16144f39706d594f',1,'dl7::syntax::Diagnostic']]],
-  ['notinitialized_19',['NotInitialized',['../db/d24/classxl7_1_1Component.html#aea3f7614470b769182fb5b6a016e40b6a9646ad3a1c3e708b4fa8b4b4270fbab6',1,'xl7::Component']]],
-  ['null_20',['Null',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caabbb93ef26e3c101ff11cdd21cab08a94',1,'dl7::json::Json']]],
-  ['null_5ft_21',['null_t',['../df/d87/namespacedl7_1_1json.html#ab488b16563e7b3bc84675eda7f88bee1',1,'dl7::json']]]
+  ['notation_17',['notation',['../df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher.html#a6d572dc5a1bba03f8eb7c60d1984e45e',1,'dl7::syntax::matchers::FloatingPointLiteralMatcher']]],
+  ['notequal_18',['NotEqual',['../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa19bb0af2c3c530538cb41aff7f235b96',1,'xl7::graphics']]],
+  ['notice_19',['Notice',['../d0/d46/structdl7_1_1syntax_1_1Diagnostic.html#afb8b280322219dfc4a99ec89802c4406a24efa7ee4511563b16144f39706d594f',1,'dl7::syntax::Diagnostic']]],
+  ['notinitialized_20',['NotInitialized',['../db/d24/classxl7_1_1Component.html#aea3f7614470b769182fb5b6a016e40b6a9646ad3a1c3e708b4fa8b4b4270fbab6',1,'xl7::Component']]],
+  ['null_21',['Null',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caabbb93ef26e3c101ff11cdd21cab08a94',1,'dl7::json::Json']]],
+  ['null_5ft_22',['null_t',['../df/d87/namespacedl7_1_1json.html#ab488b16563e7b3bc84675eda7f88bee1',1,'dl7::json']]]
 ];

@@ -1,5 +1,6 @@
 var namespacedl7_1_1syntax =
 [
+    [ "matchers", "d3/d6a/namespacedl7_1_1syntax_1_1matchers.html", "d3/d6a/namespacedl7_1_1syntax_1_1matchers" ],
     [ "AstNode", "db/dcc/classdl7_1_1syntax_1_1AstNode.html", "db/dcc/classdl7_1_1syntax_1_1AstNode" ],
     [ "AstProcessor", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor" ],
     [ "BufferedTokenReader", "d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html", "d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader" ],

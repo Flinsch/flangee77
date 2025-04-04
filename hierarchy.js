@@ -58,6 +58,7 @@ var hierarchy =
     [ "dl7::Base64", "da/d3b/classdl7_1_1Base64.html", null ],
     [ "xl7::graphics::images::PngImageHandler::BitInfo", "d1/db4/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1BitInfo.html", null ],
     [ "cl7::logging::HtmlLogHandler::Block", "dc/d37/structcl7_1_1logging_1_1HtmlLogHandler_1_1Block.html", null ],
+    [ "dl7::syntax::matchers::BlockCommentMatcher", "d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html", null ],
     [ "cl7::io::byte_reader", "db/d94/classcl7_1_1io_1_1byte__reader.html", null ],
     [ "cl7::io::byte_writer", "de/dc7/classcl7_1_1io_1_1byte__writer.html", null ],
     [ "xl7::graphics::RenderingDevice::Capabilities", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html", null ],
@@ -119,6 +120,7 @@ var hierarchy =
     ] ],
     [ "dl7::syntax::Diagnostic", "d0/d46/structdl7_1_1syntax_1_1Diagnostic.html", null ],
     [ "dl7::syntax::Diagnostics", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html", null ],
+    [ "dl7::syntax::matchers::DoubleQuotedStringMatcher", "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html", null ],
     [ "xl7::graphics::meshes::VertexLayout::Element", "d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html", null ],
     [ "cl7::strings::EncodeBuffer< Tchar >", "d1/d9d/structcl7_1_1strings_1_1EncodeBuffer.html", null ],
     [ "cl7::strings::Encoder< Tchar, TDefaultErrorHandler >", "dc/d4e/classcl7_1_1strings_1_1Encoder.html", null ],
@@ -131,6 +133,7 @@ var hierarchy =
     [ "std::exception", null, [
       [ "tl7::exceptions::assertion_exception", "d6/db9/structtl7_1_1exceptions_1_1assertion__exception.html", null ]
     ] ],
+    [ "dl7::syntax::matchers::FloatingPointLiteralMatcher", "df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher.html", null ],
     [ "dl7::json::JsonWriter::Format", "df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html", null ],
     [ "xl7::Config::Generic", "d7/db0/structxl7_1_1Config_1_1Generic.html", null ],
     [ "dl7::syntax::Grammar", "d8/d95/structdl7_1_1syntax_1_1Grammar.html", null ],
@@ -148,6 +151,7 @@ var hierarchy =
     [ "ID3DInclude", null, [
       [ "xl7::graphics::impl::shared::shaders::Include", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html", null ]
     ] ],
+    [ "dl7::syntax::matchers::IdentifierMatcher", "da/d47/structdl7_1_1syntax_1_1matchers_1_1IdentifierMatcher.html", null ],
     [ "tl7::reporting::IListener", "de/d0b/classtl7_1_1reporting_1_1IListener.html", [
       [ "tl7::Context", "d9/d7e/structtl7_1_1Context.html", null ],
       [ "tl7::reporting::CoutLogger", "db/d02/classtl7_1_1reporting_1_1CoutLogger.html", null ]
@@ -168,6 +172,7 @@ var hierarchy =
         [ "xl7::graphics::impl::direct3d9::ResourceFactoryImpl", "de/d84/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl.html", null ]
       ] ]
     ] ],
+    [ "dl7::syntax::matchers::IntegerLiteralMatcher", "d9/d3c/structdl7_1_1syntax_1_1matchers_1_1IntegerLiteralMatcher.html", null ],
     [ "cl7::io::irom", "d3/d68/classcl7_1_1io_1_1irom.html", [
       [ "cl7::io::ifile", "d5/d84/classcl7_1_1io_1_1ifile.html", [
         [ "cl7::io::file", "df/dd8/classcl7_1_1io_1_1file.html", null ]
@@ -191,6 +196,7 @@ var hierarchy =
     [ "ml7::Vector2::less", "d6/d6c/structml7_1_1Vector2_1_1less.html", null ],
     [ "ml7::Vector3::less", "d5/d80/structml7_1_1Vector3_1_1less.html", null ],
     [ "ml7::Vector4::less", "d4/df6/structml7_1_1Vector4_1_1less.html", null ],
+    [ "dl7::syntax::matchers::LineCommentMatcher", "de/de7/structdl7_1_1syntax_1_1matchers_1_1LineCommentMatcher.html", null ],
     [ "tl7::reporting::Reporter::ListenerEntry", "dd/d07/structtl7_1_1reporting_1_1Reporter_1_1ListenerEntry.html", null ],
     [ "cl7::logging::LogContext", "d9/d4c/structcl7_1_1logging_1_1LogContext.html", null ],
     [ "cl7::logging::LogEntry", "d6/d58/structcl7_1_1logging_1_1LogEntry.html", null ],
@@ -327,6 +333,7 @@ var hierarchy =
     ] ],
     [ "xl7::graphics::images::PngImageHandler::Signature", "d3/d3e/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Signature.html", null ],
     [ "dl7::json::JsonWriter::Format::SingleLineOptions", "d8/dea/structdl7_1_1json_1_1JsonWriter_1_1Format_1_1SingleLineOptions.html", null ],
+    [ "dl7::syntax::matchers::SingleQuotedStringMatcher", "de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::SingleState< TValue >", "dc/df6/classxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1SingleState.html", null ],
     [ "cl7::creational::SingletonBase", "d9/d10/classcl7_1_1creational_1_1SingletonBase.html", [
       [ "cl7::creational::Singleton< StandardLogger >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", [

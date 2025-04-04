@@ -87,6 +87,15 @@ var annotated_dup =
         [ "JsonWriter", "df/d83/classdl7_1_1json_1_1JsonWriter.html", "df/d83/classdl7_1_1json_1_1JsonWriter" ]
       ] ],
       [ "syntax", "db/d34/namespacedl7_1_1syntax.html", [
+        [ "matchers", "d3/d6a/namespacedl7_1_1syntax_1_1matchers.html", [
+          [ "BlockCommentMatcher", "d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html", "d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher" ],
+          [ "DoubleQuotedStringMatcher", "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html", "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher" ],
+          [ "FloatingPointLiteralMatcher", "df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher.html", "df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher" ],
+          [ "IdentifierMatcher", "da/d47/structdl7_1_1syntax_1_1matchers_1_1IdentifierMatcher.html", "da/d47/structdl7_1_1syntax_1_1matchers_1_1IdentifierMatcher" ],
+          [ "IntegerLiteralMatcher", "d9/d3c/structdl7_1_1syntax_1_1matchers_1_1IntegerLiteralMatcher.html", "d9/d3c/structdl7_1_1syntax_1_1matchers_1_1IntegerLiteralMatcher" ],
+          [ "LineCommentMatcher", "de/de7/structdl7_1_1syntax_1_1matchers_1_1LineCommentMatcher.html", "de/de7/structdl7_1_1syntax_1_1matchers_1_1LineCommentMatcher" ],
+          [ "SingleQuotedStringMatcher", "de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html", "de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher" ]
+        ] ],
         [ "AstNode", "db/dcc/classdl7_1_1syntax_1_1AstNode.html", "db/dcc/classdl7_1_1syntax_1_1AstNode" ],
         [ "AstProcessor", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor" ],
         [ "BufferedTokenReader", "d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html", "d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader" ],
