@@ -1399,6 +1399,22 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  detect_encoding" )
 
 
 
+TESTLABS_CASE( u8"CoreLabs:  strings:  is_digit / is_hex_digit / is_ascii_letter / is_ascii_lower / is_ascii_upper" )
+{
+    for (unsigned i = 0; i < 256; ++i)
+    {
+        const auto ch = static_cast<cl7::achar_t>( i );
+
+        TESTLABS_CHECK_EQ( cl7::strings::is_digit( ch ), ch >= '0' && ch <= '9' );
+        TESTLABS_CHECK_EQ( cl7::strings::is_hex_digit( ch ), (ch >= '0' && ch <= '9') || (ch >= 'A' && ch <= 'F') || (ch >= 'a' && ch <= 'f') );
+        TESTLABS_CHECK_EQ( cl7::strings::is_ascii_letter( ch ), (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') );
+        TESTLABS_CHECK_EQ( cl7::strings::is_ascii_lower( ch ), ch >= 'a' && ch <= 'z' );
+        TESTLABS_CHECK_EQ( cl7::strings::is_ascii_upper( ch ), ch >= 'A' && ch <= 'Z' );
+    }
+}
+
+
+
 TESTLABS_CASE( u8"CoreLabs:  strings:  count_whitespace_prefix" )
 {
     TESTLABS_CHECK_EQ( cl7::strings::count_whitespace_prefix( cl7::astring_view( "" ) ), 0 );

@@ -219,6 +219,62 @@ namespace cl7::strings {
 
 
     /**
+     * Checks whether the specified character is a (decimal) digit: 0-9.
+     */
+    template <typename Tchar>
+        requires(std::is_integral_v<Tchar>)
+    bool is_digit(Tchar c)
+    {
+        return c >= Tchar{'0'} && c <= Tchar{'9'};
+    }
+
+    /**
+     * Checks whether the specified character is a hexadecimal numeric character:
+     * 0-9, A-F, a-f.
+     */
+    template <typename Tchar>
+        requires(std::is_integral_v<Tchar>)
+    bool is_hex_digit(Tchar c)
+    {
+        Tchar c_ = c | 0x20; // Force lowercase bit
+        return (c >= Tchar{'0'} && c <= Tchar{'9'}) || (c_ >= Tchar{'a'} && c_ <= Tchar{'f'});
+    }
+
+    /**
+     * Checks whether the specified character is an ASCII letter (either lowercase
+     * or uppercase).
+     */
+    template <typename Tchar>
+        requires(std::is_integral_v<Tchar>)
+    bool is_ascii_letter(Tchar c)
+    {
+        c |= 0x20; // Force lowercase bit
+        return c >= Tchar{'a'} && c <= Tchar{'z'};
+    }
+
+    /**
+     * Checks whether the specified character is a lowercase ASCII letter.
+     */
+    template <typename Tchar>
+        requires(std::is_integral_v<Tchar>)
+    bool is_ascii_lower(Tchar c)
+    {
+        return c >= Tchar{'a'} && c <= Tchar{'z'};
+    }
+
+    /**
+     * Checks whether the specified character is a uppercase ASCII letter.
+     */
+    template <typename Tchar>
+        requires(std::is_integral_v<Tchar>)
+    bool is_ascii_upper(Tchar c)
+    {
+        return c >= Tchar{'A'} && c <= Tchar{'Z'};
+    }
+
+
+
+    /**
      * Checks whether the specified UTF-8 string starts with whitespace and, if yes,
      * returns the number of UTF-8 characters (code units) of the corresponding code
      * point.

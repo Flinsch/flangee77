@@ -34,6 +34,8 @@ target_sources(flangee77
     syntax/Lexer.cpp
     syntax/Lexer.h
     syntax/LexingTokenReader.h
+    syntax/matchers.cpp
+    syntax/matchers.h
     syntax/ParseStage.cpp
     syntax/ParseStage.h
     syntax/ProductionRule.cpp

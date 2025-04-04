@@ -1,6 +1,7 @@
 #ifndef F77_TESTS_DL7_SYNTAX_H
 #define F77_TESTS_DL7_SYNTAX_H
 
+#include <DataLabs/syntax/matchers.h>
 #include <DataLabs/syntax/GenericLexer.h>
 #include <DataLabs/syntax/BufferedTokenReader.h>
 #include <DataLabs/syntax/LexingTokenReader.h>
@@ -9,6 +10,230 @@
 #include <TestLabs/TestSuite.h>
 
 #include "../shared.h"
+
+
+
+TESTLABS_CASE( u8"DataLabs:  syntax:  SingleQuotedStringMatcher" )
+{
+    struct Entry
+    {
+        cl7::u8string_view source;
+        size_t expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", 0 },
+        { u8"'", 0 },
+        { u8"''", 2 },
+        { u8"'Hello World'", 13 },
+        { u8"'Hello World' ", 13 },
+        { u8" 'Hello World'", 0 },
+        { u8"'Hello World", 0 },
+        { u8"Hello World'", 0 },
+        { u8"'Don't Call Me White'", 5 },
+        { u8"'Don\'t Call Me White'", 5 },
+        { u8"'Don\\'t Call Me White'", 22 },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.source )
+    {
+        TESTLABS_CHECK_EQ( dl7::syntax::matchers::SingleQuotedStringMatcher()( entry.source ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  syntax:  DoubleQuotedStringMatcher" )
+{
+    struct Entry
+    {
+        cl7::u8string_view source;
+        size_t expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", 0 },
+        { u8"\"", 0 },
+        { u8"\"\"", 2 },
+        { u8"\"Hello World\"", 13 },
+        { u8"\"Hello World\" ", 13 },
+        { u8" \"Hello World\"", 0 },
+        { u8"\"Hello World", 0 },
+        { u8"Hello World\"", 0 },
+        { u8"\"\"Hello World\"\"", 2 },
+        { u8"\"\\\"Hello World\\\"\"", 17 },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.source )
+    {
+        TESTLABS_CHECK_EQ( dl7::syntax::matchers::DoubleQuotedStringMatcher()( entry.source ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  syntax:  IntegerLiteralMatcher" )
+{
+    struct Entry
+    {
+        dl7::syntax::matchers::SignPolicy sign_policy;
+        cl7::u8string_view source;
+        size_t expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { dl7::syntax::matchers::SignPolicy::Unsigned, u8"", 0 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, u8"0", 1 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, u8"1", 1 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, u8"1 ", 1 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, u8" 1", 0 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, u8"01", 0 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, u8"10", 2 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, u8"42", 2 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, u8"7", 1 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, u8"-7", 0 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, u8"+7", 0 },
+        { dl7::syntax::matchers::SignPolicy::AllowMinus, u8"7", 1 },
+        { dl7::syntax::matchers::SignPolicy::AllowMinus, u8"-7", 2 },
+        { dl7::syntax::matchers::SignPolicy::AllowMinus, u8"+7", 0 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, u8"7", 1 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, u8"-7", 2 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, u8"+7", 2 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, u8"-07", 0 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, u8"+07", 0 },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.source )
+    {
+        TESTLABS_CHECK_EQ( dl7::syntax::matchers::IntegerLiteralMatcher( entry.sign_policy )( entry.source ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  syntax:  FloatingPointLiteralMatcher" )
+{
+    struct Entry
+    {
+        dl7::syntax::matchers::SignPolicy sign_policy;
+        dl7::syntax::matchers::FloatNotation notation;
+        cl7::u8string_view source;
+        size_t expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { dl7::syntax::matchers::SignPolicy::Unsigned, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"", 0 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"0", 1 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"1", 1 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"1 ", 1 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8" 1", 0 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"01", 0 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"10", 2 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"42", 2 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"7", 1 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"-7", 0 },
+        { dl7::syntax::matchers::SignPolicy::Unsigned, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"+7", 0 },
+        { dl7::syntax::matchers::SignPolicy::AllowMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"7", 1 },
+        { dl7::syntax::matchers::SignPolicy::AllowMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"-7", 2 },
+        { dl7::syntax::matchers::SignPolicy::AllowMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"+7", 0 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"7", 1 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"-7", 2 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"+7", 2 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"-07", 0 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"+07", 0 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"1.0", 3 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"0.1", 3 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"1.", 2 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8".1", 2 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"+1.", 3 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"+.1", 3 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"10.10", 5 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"01.10", 0 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"1.e2", 2 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"-1.e+2", 3 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"+1.e-2", 3 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8".1e2", 2 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"-.1e+2", 3 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8"+.1e-2", 3 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::AllowScientific, u8"1.e2", 4 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::AllowScientific, u8"-1.e+2", 6 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::AllowScientific, u8"+1.e-2", 6 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::AllowScientific, u8".1e2", 4 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::AllowScientific, u8"-.1e+2", 6 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::AllowScientific, u8"+.1e-2", 6 },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.source )
+    {
+        TESTLABS_CHECK_EQ( dl7::syntax::matchers::FloatingPointLiteralMatcher( entry.sign_policy, entry.notation )( entry.source ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  syntax:  IdentifierMatcher" )
+{
+    struct Entry
+    {
+        cl7::u8string_view source;
+        size_t expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", 0 },
+        { u8" ", 0 },
+        { u8"_", 1 },
+        { u8"Hello World", 5 },
+        { u8" Hello World", 0 },
+        { u8"0zero", 0 },
+        { u8"zero0", 5 },
+        { u8"one-", 3 },
+        { u8"$one", 0 },
+        { u8"abcxyzABCXYZ0123456789_", 23 },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.source )
+    {
+        TESTLABS_CHECK_EQ( dl7::syntax::matchers::IdentifierMatcher()( entry.source ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  syntax:  LineCommentMatcher" )
+{
+    struct Entry
+    {
+        cl7::u8string_view source;
+        size_t expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", 0 },
+        { u8" ", 0 },
+        { u8"// ...", 6 },
+        { u8"// ...\n...", 6 },
+        { u8" // ...", 0 },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.source )
+    {
+        TESTLABS_CHECK_EQ( dl7::syntax::matchers::LineCommentMatcher()( entry.source ), entry.expected );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  syntax:  BlockCommentMatcher" )
+{
+    struct Entry
+    {
+        cl7::u8string_view source;
+        size_t expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", 0 },
+        { u8" ", 0 },
+        { u8"/* ... */", 9 },
+        { u8"/* ...\n... */", 13 },
+        { u8" /* ... */", 0 },
+        { u8"/* ...\n", 0 },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.source )
+    {
+        TESTLABS_CHECK_EQ( dl7::syntax::matchers::BlockCommentMatcher()( entry.source ), entry.expected );
+    }
+}
 
 
 
