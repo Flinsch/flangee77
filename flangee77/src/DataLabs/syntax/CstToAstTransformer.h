@@ -21,7 +21,7 @@ namespace dl7::syntax {
  * and then converts it into an AST. For cases where a CST is unnecessary, consider
  * using `DirectAstBuilder` instead.
  */
-template <class TAstNode = AstNode>
+template <class TAstNode = AstNode<>>
 class CstToAstTransformer
     : public ParseStage
 {

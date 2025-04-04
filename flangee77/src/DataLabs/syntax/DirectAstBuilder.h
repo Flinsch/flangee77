@@ -22,7 +22,7 @@ namespace dl7::syntax {
  * is first built and then transformed into an AST. Direct AST construction can be
  * beneficial for performance or when a CST is not necessary.
  */
-template <class TAstNode = AstNode>
+template <class TAstNode = AstNode<>>
 class DirectAstBuilder
     : public ParseStage
 {
