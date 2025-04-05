@@ -146,13 +146,28 @@ namespace dl7::syntax::matchers {
         if (!source.starts_with(open))
             return 0;
 
-        for (size_t i = open.size(); i < source.size(); ++i)
+        size_t i = open.size();
+        int depth = 1;
+        int max_depth = depth;
+
+        while (i + close.size() <= source.size())
         {
-            if (source.substr(i).starts_with(close))
-                return i + close.size();
+            if (allow_nesting && source.substr(i, open.size()) == open)
+            {
+                i += open.size();
+                max_depth = ++depth;
+            }
+            else if (source.substr(i, close.size()) == close)
+            {
+                i += close.size();
+                if (--depth == 0)
+                    return i;
+            }
+            else
+                ++i;
         }
 
-        return 0; // Unclosed comment.
+        return max_depth > 1 ? 0 : source.size(); // Unclosed comment: not okay with nesting.
     }
 
 

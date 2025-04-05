@@ -97,6 +97,8 @@ TESTLABS_CASE( u8"DataLabs:  syntax:  IntegerLiteralMatcher" )
         { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, u8"+7", 2 },
         { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, u8"-07", 0 },
         { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, u8"+07", 0 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, u8"1.0e2", 1 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, u8"1e2", 1 },
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.source )
@@ -155,6 +157,9 @@ TESTLABS_CASE( u8"DataLabs:  syntax:  FloatingPointLiteralMatcher" )
         { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::AllowScientific, u8".1e2", 4 },
         { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::AllowScientific, u8"-.1e+2", 6 },
         { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::AllowScientific, u8"+.1e-2", 6 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::AllowScientific, u8".1E2", 4 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::AllowScientific, u8".1E ", 0 },
+        { dl7::syntax::matchers::SignPolicy::AllowPlusMinus, dl7::syntax::matchers::FloatNotation::DecimalOnly, u8".1E ", 2 },
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.source )
@@ -204,11 +209,13 @@ TESTLABS_CASE( u8"DataLabs:  syntax:  LineCommentMatcher" )
         { u8"// ...", 6 },
         { u8"// ...\n...", 6 },
         { u8" // ...", 0 },
+        { u8"// /* ...\n... */", 9 },
+        { u8"// // ...\n...", 9 },
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.source )
     {
-        TESTLABS_CHECK_EQ( dl7::syntax::matchers::LineCommentMatcher()( entry.source ), entry.expected );
+        TESTLABS_CHECK_EQ( dl7::syntax::matchers::LineCommentMatcher( u8"//" )( entry.source ), entry.expected );
     }
 }
 
@@ -216,22 +223,33 @@ TESTLABS_CASE( u8"DataLabs:  syntax:  BlockCommentMatcher" )
 {
     struct Entry
     {
+        bool allow_nesting;
         cl7::u8string_view source;
         size_t expected;
     } entry;
 
     const std::vector<Entry> container {
-        { u8"", 0 },
-        { u8" ", 0 },
-        { u8"/* ... */", 9 },
-        { u8"/* ...\n... */", 13 },
-        { u8" /* ... */", 0 },
-        { u8"/* ...\n", 0 },
+        { false, u8"", 0 },
+        { false, u8" ", 0 },
+        { false, u8"/* ... */", 9 },
+        { false, u8"/* ...\n... */", 13 },
+        { false, u8" /* ... */", 0 },
+        { false, u8"/* ...\n", 7 },
+        { false, u8"/* comment */ code", 13 },
+        { false, u8"code /* comment */ code", 0 },
+        { false, u8"/* code /* comment */ code */ code", 21 },
+        { false, u8"/* code // comment\ncode */ code", 26 },
+        { false, u8"/* end of file", 14 },
+        { false, u8"/* end of /* comment */ file", 23 },
+        { true, u8"/* code /* comment */ code */ code", 29 },
+        { true, u8"/* code // comment\ncode */ code", 26 },
+        { true, u8"/* end of file", 14 },
+        { true, u8"/* end of /* comment */ file", 0 },
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.source )
     {
-        TESTLABS_CHECK_EQ( dl7::syntax::matchers::BlockCommentMatcher()( entry.source ), entry.expected );
+        TESTLABS_CHECK_EQ( dl7::syntax::matchers::BlockCommentMatcher( u8"/*", u8"*/", entry.allow_nesting )( entry.source ), entry.expected );
     }
 }
 

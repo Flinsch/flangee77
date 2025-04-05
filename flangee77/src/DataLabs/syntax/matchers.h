@@ -66,7 +66,7 @@ struct IdentifierMatcher
 
 
 /**
- * Matches a line comment (e.g., // comment to end of line).
+ * Matches a line comment with a specified delimiter (default: //).
  */
 struct LineCommentMatcher
 {
@@ -76,12 +76,14 @@ struct LineCommentMatcher
 };
 
 /**
- * Matches a block comment (e.g., /* comment *\/).
+ * Matches a block comment with configurable start and end delimiters (default: /* ... *\/),
+ * with optional support for nesting.
  */
 struct BlockCommentMatcher
 {
     cl7::u8string_view open = u8"/*";
     cl7::u8string_view close = u8"*/";
+    bool allow_nesting = false;
 
     size_t operator()(cl7::u8string_view source) const;
 };
