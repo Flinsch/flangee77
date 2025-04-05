@@ -148,6 +148,7 @@ var hierarchy =
     [ "std::hash< xl7::resources::ResourceID >", "d8/d59/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceID_01_4.html", null ],
     [ "xl7::graphics::images::PngImageHandler::Header", "d4/de1/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Header.html", null ],
     [ "xl7::graphics::images::TargaImageHandler::Header", "d7/de1/structxl7_1_1graphics_1_1images_1_1TargaImageHandler_1_1Header.html", null ],
+    [ "dl7::syntax::matchers::HexadecimalLiteralMatcher", "d9/d44/structdl7_1_1syntax_1_1matchers_1_1HexadecimalLiteralMatcher.html", null ],
     [ "ID3DInclude", null, [
       [ "xl7::graphics::impl::shared::shaders::Include", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html", null ]
     ] ],

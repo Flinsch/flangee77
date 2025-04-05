@@ -4,6 +4,7 @@ var matchers_8h =
     [ "dl7::syntax::matchers::DoubleQuotedStringMatcher", "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html", "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher" ],
     [ "dl7::syntax::matchers::IntegerLiteralMatcher", "d9/d3c/structdl7_1_1syntax_1_1matchers_1_1IntegerLiteralMatcher.html", "d9/d3c/structdl7_1_1syntax_1_1matchers_1_1IntegerLiteralMatcher" ],
     [ "dl7::syntax::matchers::FloatingPointLiteralMatcher", "df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher.html", "df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher" ],
+    [ "dl7::syntax::matchers::HexadecimalLiteralMatcher", "d9/d44/structdl7_1_1syntax_1_1matchers_1_1HexadecimalLiteralMatcher.html", "d9/d44/structdl7_1_1syntax_1_1matchers_1_1HexadecimalLiteralMatcher" ],
     [ "dl7::syntax::matchers::IdentifierMatcher", "da/d47/structdl7_1_1syntax_1_1matchers_1_1IdentifierMatcher.html", "da/d47/structdl7_1_1syntax_1_1matchers_1_1IdentifierMatcher" ],
     [ "dl7::syntax::matchers::LineCommentMatcher", "de/de7/structdl7_1_1syntax_1_1matchers_1_1LineCommentMatcher.html", "de/de7/structdl7_1_1syntax_1_1matchers_1_1LineCommentMatcher" ],
     [ "dl7::syntax::matchers::BlockCommentMatcher", "d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html", "d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher" ],

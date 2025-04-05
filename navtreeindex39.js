@@ -1,5 +1,13 @@
 var NAVTREEINDEX39 =
 {
+"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#acb0ccdae7352c2b4ae5a51e26daa521d":[5,0,6,1,1,0,4,3,5],
+"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#acb0ccdae7352c2b4ae5a51e26daa521d":[7,0,6,0,1,0,2,3,5],
+"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#accf50ad9fda2abeeb32b0957963df404":[5,0,6,1,1,0,4,3,9],
+"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#accf50ad9fda2abeeb32b0957963df404":[7,0,6,0,1,0,2,3,9],
+"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#acd7d4e7a6ccf79f5813bbd362250d0fd":[7,0,6,0,1,0,2,3,6],
+"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#acd7d4e7a6ccf79f5813bbd362250d0fd":[5,0,6,1,1,0,4,3,6],
+"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#ae8d41c9d497309c51aa54c3fb1b8c8d2":[7,0,6,0,1,0,2,3,2],
+"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#ae8d41c9d497309c51aa54c3fb1b8c8d2":[5,0,6,1,1,0,4,3,2],
 "df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#aeecf5ecc3bf326013d53892d8b1f294a":[5,0,6,1,1,0,4,3,10],
 "df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#aeecf5ecc3bf326013d53892d8b1f294a":[7,0,6,0,1,0,2,3,10],
 "df/d29/DefaultErrorHandler_8h.html":[8,0,0,4,8],
@@ -241,13 +249,5 @@ var NAVTREEINDEX39 =
 "df/d9d/namespacetl7_1_1reporting.html#ad428c153040247d9372cba06ac2d0ad9":[5,0,5,2,9],
 "df/d9d/structxl7_1_1graphics_1_1textures_1_1Texture2DArray_1_1Desc.html":[5,0,6,1,7,5,0],
 "df/d9d/structxl7_1_1graphics_1_1textures_1_1Texture2DArray_1_1Desc.html":[7,0,6,0,7,5,0],
-"df/d9d/structxl7_1_1graphics_1_1textures_1_1Texture2DArray_1_1Desc.html#a624bd939cb88855ec886e5ca2bb1c678":[5,0,6,1,7,5,0,0],
-"df/d9d/structxl7_1_1graphics_1_1textures_1_1Texture2DArray_1_1Desc.html#a624bd939cb88855ec886e5ca2bb1c678":[7,0,6,0,7,5,0,0],
-"df/d9e/PixelBitKit_8cpp.html":[8,0,5,0,19],
-"df/d9f/direct3d9_2RenderingContextImpl_8cpp.html":[8,0,5,0,1,1,11],
-"df/d9f/direct3d9_2RenderingContextImpl_8cpp.html#a070751be12a6af8370789603c950040d":[8,0,5,0,1,1,11,2],
-"df/d9f/direct3d9_2RenderingContextImpl_8cpp.html#a57e3d7375fc87d46671a87f1e55395c1":[8,0,5,0,1,1,11,0],
-"df/d9f/direct3d9_2RenderingContextImpl_8cpp.html#a661dc591b73eee5df76ca3ad7ab02454":[8,0,5,0,1,1,11,3],
-"df/d9f/direct3d9_2RenderingContextImpl_8cpp.html#a7e3ef8cfcfd57d1818794a1c1fdcf7c5":[8,0,5,0,1,1,11,4],
-"df/d9f/direct3d9_2RenderingContextImpl_8cpp.html#a870f4d6687c40793f8a0356a7b8eab93":[8,0,5,0,1,1,11,1]
+"df/d9d/structxl7_1_1graphics_1_1textures_1_1Texture2DArray_1_1Desc.html#a624bd939cb88855ec886e5ca2bb1c678":[5,0,6,1,7,5,0,0]
 };

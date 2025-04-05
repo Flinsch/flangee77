@@ -1,5 +1,13 @@
 var NAVTREEINDEX40 =
 {
+"df/d9d/structxl7_1_1graphics_1_1textures_1_1Texture2DArray_1_1Desc.html#a624bd939cb88855ec886e5ca2bb1c678":[7,0,6,0,7,5,0,0],
+"df/d9e/PixelBitKit_8cpp.html":[8,0,5,0,19],
+"df/d9f/direct3d9_2RenderingContextImpl_8cpp.html":[8,0,5,0,1,1,11],
+"df/d9f/direct3d9_2RenderingContextImpl_8cpp.html#a070751be12a6af8370789603c950040d":[8,0,5,0,1,1,11,2],
+"df/d9f/direct3d9_2RenderingContextImpl_8cpp.html#a57e3d7375fc87d46671a87f1e55395c1":[8,0,5,0,1,1,11,0],
+"df/d9f/direct3d9_2RenderingContextImpl_8cpp.html#a661dc591b73eee5df76ca3ad7ab02454":[8,0,5,0,1,1,11,3],
+"df/d9f/direct3d9_2RenderingContextImpl_8cpp.html#a7e3ef8cfcfd57d1818794a1c1fdcf7c5":[8,0,5,0,1,1,11,4],
+"df/d9f/direct3d9_2RenderingContextImpl_8cpp.html#a870f4d6687c40793f8a0356a7b8eab93":[8,0,5,0,1,1,11,1],
 "df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html":[7,0,1,1,1,0],
 "df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html":[5,0,1,1,1,0],
 "df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html#a0416be87c00a81e6f1ac9044a1a678b6":[7,0,1,1,1,0,7],
@@ -241,13 +249,5 @@ var NAVTREEINDEX40 =
 "df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a505a83f220c02df2f85c3810cd9ceb38":[5,0,0,5,8,2],
 "df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a6311ae17c1ee52b36e68aaf4ad066387":[5,0,0,5,8,13],
 "df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a7d74f3b92b19da5e606d737d339a9679":[5,0,0,5,8,7],
-"df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a902b0d55fddef6f8d651fe1035b7d4bd":[5,0,0,5,8,4],
-"df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ab6755d218d5f4e1cef9cce9cc39aeda9":[5,0,0,5,8,11],
-"df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3aca0dbad92a874b2f69b549293387925e":[5,0,0,5,8,10],
-"df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ace0be71e33226e4c1db2bcea5959f16b":[5,0,0,5,8,0],
-"df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ad2c24d59e0baff4d0155fbdf62590867":[5,0,0,5,8,6],
-"df/de5/namespacecl7_1_1logging.html#ada44c64ca361943177c03420c2724251":[5,0,0,5,9],
-"df/de6/RenderingDevice_8cpp.html":[8,0,5,0,25],
-"df/de6/SampleHandler_8cpp.html":[8,0,0,3,5],
-"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html":[5,0,6,1,7,7]
+"df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a902b0d55fddef6f8d651fe1035b7d4bd":[5,0,0,5,8,4]
 };
