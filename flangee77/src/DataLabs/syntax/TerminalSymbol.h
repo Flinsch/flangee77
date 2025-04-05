@@ -107,22 +107,33 @@ struct PatternSymbol
 
 
 /**
+ * A concept that defined the interface for a custom prefix matcher used in custom
+ * terminal symbols.
+ *
+ * A custom prefix matcher is a callable object (e.g., a struct with `operator()`)
+ * that returns the number of characters it successfully matched at the beginning of
+ * a source text. If no match is found, it returns 0.
+ */
+template <typename TPrefixMatcher>
+concept PrefixMatcher = requires(TPrefixMatcher matcher)
+{
+    { matcher(cl7::u8string_view{}) } -> std::convertible_to<size_t>;
+};
+
+/**
  * Represents a terminal symbol that is matched using a user-defined function.
  */
-template <typename TCustomMatcher>
-    requires(requires (TCustomMatcher matcher) {
-        { matcher(cl7::u8string_view{}) } -> std::convertible_to<size_t>;
-    })
+template <PrefixMatcher TPrefixMatcher>
 struct CustomSymbol
     : public NonLiteralSymbol
 {
 
-    using CustomMatcher = TCustomMatcher;
+    using PrefixMatcher = TPrefixMatcher;
 
     /** A user-defined function or object that performs the custom matching logic. */
-    CustomMatcher matcher;
+    PrefixMatcher matcher;
 
-    CustomSymbol(SymbolID id, CustomMatcher matcher)
+    CustomSymbol(SymbolID id, PrefixMatcher matcher)
         : NonLiteralSymbol(id)
         , matcher(matcher)
     {}

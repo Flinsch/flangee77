@@ -15,13 +15,14 @@ namespace dl7::syntax {
  * AST processor is the final stage in the parsing process. It takes an AST as input
  * and performs semantic analysis, optimization, and/or code generation, etc.
  */
-template <class TAstNode = AstNode<>>
+template <class TAstNode = AstNode<>, typename Tresult = bool>
 class AstProcessor
     : public ParseStage
 {
 
 public:
     using AstNode = TAstNode;
+    using result_type = Tresult;
 
 
 
@@ -31,9 +32,8 @@ public:
 
     /**
      * Processes an abstract syntax tree (AST) to generate an output representation.
-     * Returns true if operation succeeds, false otherwise.
      */
-    virtual bool process(const AstNode& root) = 0;
+    virtual result_type process(const AstNode& root) = 0;
 
 }; // class AstProcessor
 

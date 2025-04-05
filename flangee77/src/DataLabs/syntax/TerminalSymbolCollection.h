@@ -63,10 +63,19 @@ public:
     /**
      * Adds a custom terminal symbol using a user-defined matching function.
      */
-    template <typename TCustomMatcher>
-    void add_custom(SymbolID id, typename CustomSymbol<TCustomMatcher>::CustomMatcher matcher)
+    template <PrefixMatcher TPrefixMatcher>
+    void add_custom(SymbolID id, typename CustomSymbol<TPrefixMatcher>::PrefixMatcher matcher)
     {
-        add(std::make_unique<CustomSymbol<TCustomMatcher>>(id, matcher));
+        add(std::make_unique<CustomSymbol<TPrefixMatcher>>(id, matcher));
+    }
+
+    /**
+     * Adds a custom terminal symbol using a user-defined matching function.
+     */
+    template <PrefixMatcher TPrefixMatcher>
+    void add_custom(SymbolID id, TPrefixMatcher matcher)
+    {
+        add(std::make_unique<CustomSymbol<TPrefixMatcher>>(id, matcher));
     }
 
     /**

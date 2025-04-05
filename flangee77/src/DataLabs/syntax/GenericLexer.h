@@ -14,6 +14,10 @@ namespace dl7::syntax {
  * A generic lexer that tokenizes source text based on terminal symbol definitions.
  * It provides a generic implementation to transform a source text into a sequence
  * of recognized tokens suitable for various parser types.
+ *
+ * Applies the longest-match rule and prioritizes literals over non-literals (e.g.,
+ * patterns). Otherwise, "earlier" symbols win over "later" ones added to the
+ * terminal symbol collection.
  */
 class GenericLexer
     : public Lexer

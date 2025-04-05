@@ -27,6 +27,7 @@ namespace dl7::syntax {
         std::pair<SymbolID, size_t> best_match = {-1, 1};
         bool best_is_literal = false;
 
+        assert(_terminal_symbols->get_count() > 0);
         for (const auto& symbol : *_terminal_symbols)
         {
             const size_t length = _try_match_next(source, symbol);
@@ -34,7 +35,7 @@ namespace dl7::syntax {
             if (length == 0)
                 continue;
 
-            // Apply longest-match rule and prioritize literals over non-literals (i.e., patterns).
+            // Apply longest-match rule and prioritize literals over non-literals (e.g., patterns).
             if (best_match.first < 0 || length > best_match.second || (length == best_match.second && symbol.is_literal() && !best_is_literal))
             {
                 best_match = {symbol.id, length};
