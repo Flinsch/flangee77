@@ -1,8 +1,8 @@
 var structdl7_1_1syntax_1_1CustomSymbol =
 [
-    [ "CustomMatcher", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html#a4bfb7f18a341b1d4d629f8f984e6736e", null ],
-    [ "CustomSymbol", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html#a707c5e0a52e06375fac246918005a623", null ],
-    [ "~CustomSymbol", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html#a26c40b71a81e032cc160b57c05910a64", null ],
-    [ "try_match_next", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html#a0cd24651541ecc6ece3b0e57f8470b76", null ],
-    [ "matcher", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html#a28c0ed3ea32d70889f64b6ad072906f0", null ]
+    [ "PrefixMatcher", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html#aeb5e92bbcba64dee92559333214987e9", null ],
+    [ "CustomSymbol", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html#a2bca3446ee18a37c5e054f49ac2ba979", null ],
+    [ "~CustomSymbol", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html#a73734c15e954637114044811763469b0", null ],
+    [ "try_match_next", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html#aaa48db5764de38cabf680f331e3ed3a7", null ],
+    [ "matcher", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html#a249c38e8437fa078cc6ead7682603773", null ]
 ];

@@ -12,7 +12,7 @@ var searchData=
   ['mask_9',['mask',['../d3/da3/structxl7_1_1graphics_1_1PixelBitKit_1_1Channel.html#a379d717c664d44956a2b729e923d318c',1,'xl7::graphics::PixelBitKit::Channel']]],
   ['mask0_10',['mask0',['../d3/da3/structxl7_1_1graphics_1_1PixelBitKit_1_1Channel.html#a5b1e212d500ad96058bdc669949070f5',1,'xl7::graphics::PixelBitKit::Channel']]],
   ['match_5fflags_11',['match_flags',['../d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a8187a5c0e6414a9cdc5aa42a94283f78',1,'dl7::syntax::PatternSymbol']]],
-  ['matcher_12',['matcher',['../d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html#a28c0ed3ea32d70889f64b6ad072906f0',1,'dl7::syntax::CustomSymbol']]],
+  ['matcher_12',['matcher',['../d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html#a249c38e8437fa078cc6ead7682603773',1,'dl7::syntax::CustomSymbol']]],
   ['max_5fanisotropy_13',['max_anisotropy',['../dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#abc9b2740b2bc7f65fb9aa415792f6291',1,'xl7::graphics::RenderingDevice::Capabilities::max_anisotropy'],['../d2/dcd/structxl7_1_1graphics_1_1states_1_1SamplerState_1_1Desc.html#a4c7cf26e3afc43045223261b45cbd9d8',1,'xl7::graphics::states::SamplerState::Desc::max_anisotropy']]],
   ['max_5fascii_14',['max_ascii',['../dc/d49/structcl7_1_1strings_1_1codepoint.html#a42f483b72331c0629ef5f4bbc817f4b1',1,'cl7::strings::codepoint']]],
   ['max_5faspect_5fratio_15',['max_aspect_ratio',['../dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a749aa78f6e29422044911831696ab766',1,'xl7::graphics::RenderingDevice::Capabilities']]],

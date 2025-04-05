@@ -219,7 +219,7 @@ var hierarchy =
     [ "xl7::graphics::images::PngImageHandler::PaletteEntry", "d6/d53/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1PaletteEntry.html", null ],
     [ "xl7::graphics::impl::shared::shaders::Include::ParentEntry", "dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html", null ],
     [ "dl7::syntax::ParseStage", "d9/d44/classdl7_1_1syntax_1_1ParseStage.html", [
-      [ "dl7::syntax::AstProcessor< TAstNode >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", null ],
+      [ "dl7::syntax::AstProcessor< TAstNode, Tresult >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", null ],
       [ "dl7::syntax::CstBuilder", "db/dc4/classdl7_1_1syntax_1_1CstBuilder.html", null ],
       [ "dl7::syntax::CstToAstTransformer< TAstNode >", "d2/d8a/classdl7_1_1syntax_1_1CstToAstTransformer.html", null ],
       [ "dl7::syntax::DirectAstBuilder< TAstNode >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", null ],
@@ -372,7 +372,7 @@ var hierarchy =
     [ "dl7::syntax::TerminalSymbol", "d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html", [
       [ "dl7::syntax::LiteralSymbol", "d7/d6d/structdl7_1_1syntax_1_1LiteralSymbol.html", null ],
       [ "dl7::syntax::NonLiteralSymbol", "d8/d79/structdl7_1_1syntax_1_1NonLiteralSymbol.html", [
-        [ "dl7::syntax::CustomSymbol< TCustomMatcher >", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html", null ],
+        [ "dl7::syntax::CustomSymbol< TPrefixMatcher >", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html", null ],
         [ "dl7::syntax::PatternSymbol", "d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html", null ]
       ] ]
     ] ],
