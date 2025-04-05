@@ -168,6 +168,34 @@ TESTLABS_CASE( u8"DataLabs:  syntax:  FloatingPointLiteralMatcher" )
     }
 }
 
+TESTLABS_CASE( u8"DataLabs:  syntax:  HexadecimalLiteralMatcher" )
+{
+    struct Entry
+    {
+        cl7::u8string_view source;
+        size_t expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", 0 },
+        { u8" ", 0 },
+        { u8"1", 0 },
+        { u8"0x1", 3 },
+        { u8"0x0123456789ABCDEFabcdef", 24 },
+        { u8"0", 0 },
+        { u8"0x", 0 },
+        { u8"0xG", 0 },
+        { u8"0xg", 0 },
+        { u8"xyz", 0 },
+        { u8"0b1010", 0 },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.source )
+    {
+        TESTLABS_CHECK_EQ( dl7::syntax::matchers::HexadecimalLiteralMatcher( u8"0x" )( entry.source ), entry.expected );
+    }
+}
+
 TESTLABS_CASE( u8"DataLabs:  syntax:  IdentifierMatcher" )
 {
     struct Entry

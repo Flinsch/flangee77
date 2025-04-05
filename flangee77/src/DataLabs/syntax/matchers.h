@@ -52,6 +52,16 @@ struct FloatingPointLiteralMatcher
     size_t operator()(cl7::u8string_view source) const;
 };
 
+/**
+ * Matches a hexadecimal integer literal with a configurable prefix (e.g., "0x").
+ */
+struct HexadecimalLiteralMatcher
+{
+    cl7::u8string_view prefix = u8"0x";
+
+    size_t operator()(cl7::u8string_view source) const;
+};
+
 
 
 /**

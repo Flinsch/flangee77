@@ -108,6 +108,21 @@ namespace dl7::syntax::matchers {
         return i;
     }
 
+    size_t HexadecimalLiteralMatcher::operator()(cl7::u8string_view source) const
+    {
+        if (!source.starts_with(prefix))
+            return 0;
+
+        size_t i = prefix.size();
+        if (i >= source.size() || !cl7::strings::is_hex_digit(source[i]))
+            return 0;
+
+        while (i < source.size() && cl7::strings::is_hex_digit(source[i]))
+            ++i;
+
+        return i;
+    }
+
 
 
     size_t IdentifierMatcher::operator()(cl7::u8string_view source) const
