@@ -14,8 +14,8 @@ if not exist "%BUILD_DIR%" (
 )
 
 for /r %%f in (*.cpp *.h) do (
-  ::echo Running `clang-tidy -p "%BUILD_DIR%" "%%f"` ...
-  clang-tidy -p "%BUILD_DIR%" "%%f"
+    ::echo Running `clang-tidy -p "%BUILD_DIR%" "%%f"` ...
+    clang-tidy -p "%BUILD_DIR%" "%%f"
 )
 
 echo All files processed.
