@@ -22,6 +22,7 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl =
     [ "operator=", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#aa432f289ce5d2900697f188531175a6f", null ],
     [ "operator=", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a7d75e71b89a060c420caacd46c2a0404", null ],
     [ "GraphicsSystemImpl", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a3e5523a1f47c452553e338ec03bc48e6", null ],
+    [ "_allow_tearing", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#ad910449a9d169746df1e8d9a6c11632f", null ],
     [ "_d3d_constant_buffer_registry", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#adc15ceb2ac641d8539ffeed9507e6f2e", null ],
     [ "_d3d_constant_buffers_by_shader_id", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a6223a54fa6d63f55129cd310889b7635", null ],
     [ "_d3d_depth_stencil_view", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a4d81253e217059344a4a298c1121ae24", null ],

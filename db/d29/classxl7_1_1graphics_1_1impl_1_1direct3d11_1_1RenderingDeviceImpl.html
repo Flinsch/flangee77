@@ -245,7 +245,9 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a29b95f52003a7557f343e687ba9f0312"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47b53ebce6b410d3cbe8120867dee62f" id="r_a47b53ebce6b410d3cbe8120867dee62f"><td class="memItemLeft" align="right" valign="top">D3D_FEATURE_LEVEL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a47b53ebce6b410d3cbe8120867dee62f">_d3d_feature_level</a></td></tr>
 <tr class="separator:a47b53ebce6b410d3cbe8120867dee62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a065940059283a319bd0c28491e47880d" id="r_a065940059283a319bd0c28491e47880d"><td class="memItemLeft" align="right" valign="top">wrl::ComPtr&lt; <a class="el" href="../../d8/d42/direct3d11_2prerequisites_8h.html#a8cba626c66981af317706479b5f4eea8">IDXGISwapChainN</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a065940059283a319bd0c28491e47880d">_dxgi_swap_chain</a></td></tr>
+<tr class="memitem:ad910449a9d169746df1e8d9a6c11632f" id="r_ad910449a9d169746df1e8d9a6c11632f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#ad910449a9d169746df1e8d9a6c11632f">_allow_tearing</a></td></tr>
+<tr class="separator:ad910449a9d169746df1e8d9a6c11632f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a065940059283a319bd0c28491e47880d" id="r_a065940059283a319bd0c28491e47880d"><td class="memItemLeft" align="right" valign="top">wrl::ComPtr&lt; <a class="el" href="../../d8/d42/direct3d11_2prerequisites_8h.html#a3c1322b2bdacf028c24ebfb733bb5e57">IDXGISwapChainN</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a065940059283a319bd0c28491e47880d">_dxgi_swap_chain</a></td></tr>
 <tr class="separator:a065940059283a319bd0c28491e47880d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29144eec66c1379fefcf6f1cf04e7f50" id="r_a29144eec66c1379fefcf6f1cf04e7f50"><td class="memItemLeft" align="right" valign="top">wrl::ComPtr&lt; <a class="el" href="../../d8/d42/direct3d11_2prerequisites_8h.html#a5e4ecd36372dce7a3eaebde5eafc31b4">ID3D11DeviceContextN</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a29144eec66c1379fefcf6f1cf04e7f50">_d3d_immediate_context</a></td></tr>
 <tr class="separator:a29144eec66c1379fefcf6f1cf04e7f50"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -877,6 +879,29 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad910449a9d169746df1e8d9a6c11632f" name="ad910449a9d169746df1e8d9a6c11632f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad910449a9d169746df1e8d9a6c11632f">&#9670;&#160;</a></span>_allow_tearing</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool xl7::graphics::impl::direct3d11::RenderingDeviceImpl::_allow_tearing</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The flag specifying whether the display supports tearing, a requirement of variable refresh rate displays. </p>
+
+</div>
+</div>
 <a id="adc15ceb2ac641d8539ffeed9507e6f2e" name="adc15ceb2ac641d8539ffeed9507e6f2e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc15ceb2ac641d8539ffeed9507e6f2e">&#9670;&#160;</a></span>_d3d_constant_buffer_registry</h2>
 
@@ -1090,7 +1115,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">wrl::ComPtr&lt;<a class="el" href="../../d8/d42/direct3d11_2prerequisites_8h.html#a8cba626c66981af317706479b5f4eea8">IDXGISwapChainN</a>&gt; xl7::graphics::impl::direct3d11::RenderingDeviceImpl::_dxgi_swap_chain</td>
+          <td class="memname">wrl::ComPtr&lt;<a class="el" href="../../d8/d42/direct3d11_2prerequisites_8h.html#a3c1322b2bdacf028c24ebfb733bb5e57">IDXGISwapChainN</a>&gt; xl7::graphics::impl::direct3d11::RenderingDeviceImpl::_dxgi_swap_chain</td>
         </tr>
       </table>
   </td>
