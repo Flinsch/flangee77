@@ -164,6 +164,12 @@ private:
     D3D_FEATURE_LEVEL _d3d_feature_level;
 
     /**
+     * The flag specifying whether the display supports tearing, a requirement of
+     * variable refresh rate displays.
+     */
+    bool _allow_tearing;
+
+    /**
      * The DXGI swap chain interface.
      */
     wrl::ComPtr<IDXGISwapChainN> _dxgi_swap_chain;

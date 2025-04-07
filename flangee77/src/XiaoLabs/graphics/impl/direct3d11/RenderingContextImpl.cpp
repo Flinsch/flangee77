@@ -123,10 +123,25 @@ namespace xl7::graphics::impl::direct3d11 {
      */
     bool RenderingContextImpl::_begin_scene_impl()
     {
+        // Due to the (potential) switch to flip model, we reset
+        // the render target (and depth/stencil) views and the
+        // viewport so that they are freshly set on each frame.
+        const unsigned max_render_target_count = get_rendering_device()->get_capabilities().max_simultaneous_render_target_count;
+        for (unsigned target_index = 0; target_index < max_render_target_count; ++target_index)
+        {
+            // Reset render target view.
+            hardware_states.render_target_views[target_index] = nullptr;
+        }
+
+        // Reset depth/stencil view.
+        hardware_states.depth_stencil_view = nullptr;
+
+        // Resetting the viewport every frame is probably not necessary,
+        // but is still recommended in the context of the flip model.
+        hardware_states.viewport = {};
+
         // 
         _temp_d3d_constant_buffer_wrappers.clear();
-
-        // Nothing (else) to do here?
 
         return true;
     }

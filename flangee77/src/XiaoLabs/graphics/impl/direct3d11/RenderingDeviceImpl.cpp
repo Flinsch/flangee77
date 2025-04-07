@@ -202,6 +202,7 @@ namespace xl7::graphics::impl::direct3d11 {
 #else
         , _d3d_feature_level(static_cast<D3D_FEATURE_LEVEL>(0x1000))
 #endif
+        , _allow_tearing(false)
     {
     }
 
@@ -345,7 +346,7 @@ namespace xl7::graphics::impl::direct3d11 {
         }
 
         // Get the DXGI adapter interface.
-        wrl::ComPtr<IDXGIAdapterN> dxgi_adapter;
+        wrl::ComPtr<IDXGIAdapter> dxgi_adapter;
         hresult = dxgi_device->GetAdapter(&dxgi_adapter);
         if (FAILED(hresult))
         {
@@ -356,7 +357,7 @@ namespace xl7::graphics::impl::direct3d11 {
 
         // Get the DXGI factory interface.
         wrl::ComPtr<IDXGIFactoryN> dxgi_factory;
-        hresult = dxgi_adapter->GetParent(__uuidof(IDXGIFactoryN), &dxgi_factory);
+        hresult = dxgi_adapter->GetParent(IID_PPV_ARGS(&dxgi_factory));
         if (FAILED(hresult))
         {
             LOG_ERROR(errors::dxgi_result(hresult, u8"IDXGIAdapter::GetParent"));
@@ -367,33 +368,65 @@ namespace xl7::graphics::impl::direct3d11 {
         // Cache the main window's display mode.
         const MainWindow::DisplayMode window_display_mode = MainWindow::instance().get_display_mode();
         const bool fullscreen = window_display_mode == MainWindow::DisplayMode::Fullscreen;
+        const bool borderless = window_display_mode == MainWindow::DisplayMode::Borderless;
+        const bool flip_model = !fullscreen;
 
         // Fill the swap chain description structure.
         DXGI_SWAP_CHAIN_DESCn dxgi_swap_chain_desc = {};
-        dxgi_swap_chain_desc.BufferDesc.Width = get_back_buffer_width();
-        dxgi_swap_chain_desc.BufferDesc.Height = get_back_buffer_height();
-        dxgi_swap_chain_desc.BufferDesc.RefreshRate.Numerator = fullscreen ? GraphicsSystem::instance().get_config().video.display_mode.refresh_rate : 0;
-        dxgi_swap_chain_desc.BufferDesc.RefreshRate.Denominator = 1;
-        dxgi_swap_chain_desc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-        dxgi_swap_chain_desc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
-        dxgi_swap_chain_desc.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
+        dxgi_swap_chain_desc.Width = get_back_buffer_width();
+        dxgi_swap_chain_desc.Height = get_back_buffer_height();
+        dxgi_swap_chain_desc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+        dxgi_swap_chain_desc.Stereo = FALSE;
         dxgi_swap_chain_desc.SampleDesc.Count = 1;
         dxgi_swap_chain_desc.SampleDesc.Quality = 0;
         dxgi_swap_chain_desc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-        dxgi_swap_chain_desc.BufferCount = 1;
-        dxgi_swap_chain_desc.OutputWindow = MainWindow::instance().get_handle();
-        dxgi_swap_chain_desc.Windowed = fullscreen ? FALSE : TRUE;
-        dxgi_swap_chain_desc.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
-        dxgi_swap_chain_desc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
+        dxgi_swap_chain_desc.BufferCount = flip_model ? 2 : 1;
+        dxgi_swap_chain_desc.Scaling = DXGI_SCALING_STRETCH;
+        dxgi_swap_chain_desc.SwapEffect = flip_model ? DXGI_SWAP_EFFECT_FLIP_DISCARD : DXGI_SWAP_EFFECT_DISCARD;
+        dxgi_swap_chain_desc.AlphaMode = DXGI_ALPHA_MODE_UNSPECIFIED;
+        dxgi_swap_chain_desc.Flags = fullscreen ? DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH : 0;
+
+        _allow_tearing = false;
+        if (borderless)
+        {
+            BOOL allow_tearing = FALSE;
+            dxgi_factory->CheckFeatureSupport(DXGI_FEATURE_PRESENT_ALLOW_TEARING, &allow_tearing, sizeof(allow_tearing));
+            _allow_tearing = static_cast<bool>(allow_tearing);
+        }
+
+        if (_allow_tearing)
+            dxgi_swap_chain_desc.Flags |= DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING;
+
+        // Fill the swap chain fullscreen description structure (if applicable).
+        DXGI_SWAP_CHAIN_FULLSCREEN_DESC dxgi_swap_chain_fullscreen_desc = {};
+        dxgi_swap_chain_fullscreen_desc.RefreshRate.Numerator = fullscreen ? GraphicsSystem::instance().get_config().video.display_mode.refresh_rate : 0;
+        dxgi_swap_chain_fullscreen_desc.RefreshRate.Denominator = 1;
+        dxgi_swap_chain_fullscreen_desc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
+        dxgi_swap_chain_fullscreen_desc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
+        dxgi_swap_chain_fullscreen_desc.Windowed = fullscreen ? FALSE : TRUE;
 
         // Create the swap chain.
-        hresult = dxgi_factory->CreateSwapChain(_d3d_device.Get(), &dxgi_swap_chain_desc, &_dxgi_swap_chain);
+        wrl::ComPtr<IDXGISwapChain1> dxgi_swap_chain;
+        hresult = dxgi_factory->CreateSwapChainForHwnd(
+            _d3d_device.Get(),
+            MainWindow::instance().get_handle(),
+            &dxgi_swap_chain_desc,
+            flip_model && borderless ? nullptr : &dxgi_swap_chain_fullscreen_desc,
+            nullptr,
+            &dxgi_swap_chain);
+
         if (FAILED(hresult))
         {
-            LOG_ERROR(errors::dxgi_result(hresult, u8"IDXGIFactory::CreateSwapChain"));
+            LOG_ERROR(errors::dxgi_result(hresult, u8"IDXGIFactory::CreateSwapChainForHwnd"));
             LOG_ERROR(u8"The DXGI swap chain could not be created.");
             return false;
         }
+
+        // Try to access extended interface version.
+        dxgi_swap_chain.As(&_dxgi_swap_chain);
+
+        // Optional: disable Alt+Enter.
+        dxgi_factory->MakeWindowAssociation(MainWindow::instance().get_handle(), DXGI_MWA_NO_ALT_ENTER);
 
         // Ask for the adapter description.
         DXGI_ADAPTER_DESC dxgi_adapter_desc = {};
@@ -409,7 +442,7 @@ namespace xl7::graphics::impl::direct3d11 {
 
         // Query the (primary) back buffer in order to ...
         wrl::ComPtr<ID3D11Texture2D> d3d_back_buffer;
-        hresult = _dxgi_swap_chain->GetBuffer(0, __uuidof(ID3D11Texture2D), &d3d_back_buffer);
+        hresult = _dxgi_swap_chain->GetBuffer(0, IID_PPV_ARGS(&d3d_back_buffer));
         if (FAILED(hresult))
         {
             LOG_ERROR(errors::dxgi_result(hresult, u8"IDXGISwapChain::GetBuffer"));
@@ -547,7 +580,7 @@ namespace xl7::graphics::impl::direct3d11 {
      */
     bool RenderingDeviceImpl::_present_impl()
     {
-        HRESULT hresult = _dxgi_swap_chain->Present(1, 0);
+        HRESULT hresult = _dxgi_swap_chain->Present(_allow_tearing ? 0 : 1, _allow_tearing ? DXGI_PRESENT_ALLOW_TEARING : 0);
 
         if (hresult == DXGI_ERROR_DEVICE_REMOVED || hresult == DXGI_ERROR_DEVICE_RESET)
         {

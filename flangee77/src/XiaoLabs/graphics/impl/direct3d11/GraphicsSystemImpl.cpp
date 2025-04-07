@@ -61,7 +61,7 @@ namespace xl7::graphics::impl::direct3d11 {
             return true;
         }
 
-        HRESULT hresult = ::CreateDXGIFactory1(__uuidof(IDXGIFactoryN), &_dxgi_factory);
+        HRESULT hresult = ::CreateDXGIFactory1(IID_PPV_ARGS(&_dxgi_factory));
         if (FAILED(hresult))
         {
             LOG_ERROR(errors::dxgi_result(hresult, u8"::CreateDXGIFactory1"));
