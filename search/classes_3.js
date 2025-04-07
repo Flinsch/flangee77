@@ -16,5 +16,6 @@ var searchData=
   ['diagnostic_13',['Diagnostic',['../d0/d46/structdl7_1_1syntax_1_1Diagnostic.html',1,'dl7::syntax']]],
   ['diagnostics_14',['Diagnostics',['../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html',1,'dl7::syntax']]],
   ['directastbuilder_15',['DirectAstBuilder',['../df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html',1,'dl7::syntax']]],
-  ['doublequotedstringmatcher_16',['DoubleQuotedStringMatcher',['../db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html',1,'dl7::syntax::matchers']]]
+  ['directastbuilder_3c_20json_20_3e_16',['DirectAstBuilder&lt; Json &gt;',['../df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html',1,'dl7::syntax']]],
+  ['doublequotedstringmatcher_17',['DoubleQuotedStringMatcher',['../db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html',1,'dl7::syntax::matchers']]]
 ];

@@ -15,7 +15,7 @@ var searchData=
   ['shaderstates_3c_20idirect3dpixelshader9_20_3e_12',['ShaderStates&lt; IDirect3DPixelShader9 &gt;',['../df/d3c/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates_1_1ShaderStates.html',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates']]],
   ['shaderstates_3c_20idirect3dvertexshader9_20_3e_13',['ShaderStates&lt; IDirect3DVertexShader9 &gt;',['../df/d3c/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates_1_1ShaderStates.html',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates']]],
   ['signature_14',['signature',['../d1/d32/structtl7_1_1Signature.html',1,'tl7::Signature'],['../d3/d3e/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Signature.html',1,'xl7::graphics::images::PngImageHandler::Signature']]],
-  ['singlelineoptions_15',['SingleLineOptions',['../d8/dea/structdl7_1_1json_1_1JsonWriter_1_1Format_1_1SingleLineOptions.html',1,'dl7::json::JsonWriter::Format']]],
+  ['singlelineoptions_15',['SingleLineOptions',['../df/dd2/structdl7_1_1json_1_1Format_1_1SingleLineOptions.html',1,'dl7::json::Format']]],
   ['singlequotedstringmatcher_16',['SingleQuotedStringMatcher',['../de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html',1,'dl7::syntax::matchers']]],
   ['singlestate_17',['SingleState',['../dc/df6/classxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1SingleState.html',1,'xl7::graphics::pipeline::AbstractPipelineObject']]],
   ['singleton_18',['Singleton',['../d7/de2/classcl7_1_1creational_1_1Singleton.html',1,'cl7::creational']]],

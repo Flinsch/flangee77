@@ -7,6 +7,7 @@ var searchData=
   ['block_4',['Block',['../dc/d37/structcl7_1_1logging_1_1HtmlLogHandler_1_1Block.html',1,'cl7::logging::HtmlLogHandler']]],
   ['blockcommentmatcher_5',['BlockCommentMatcher',['../d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html',1,'dl7::syntax::matchers']]],
   ['bufferedtokenreader_6',['BufferedTokenReader',['../d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html',1,'dl7::syntax']]],
-  ['byte_5freader_7',['byte_reader',['../db/d94/classcl7_1_1io_1_1byte__reader.html',1,'cl7::io']]],
-  ['byte_5fwriter_8',['byte_writer',['../de/dc7/classcl7_1_1io_1_1byte__writer.html',1,'cl7::io']]]
+  ['builder_7',['Builder',['../de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html',1,'dl7::json::detail']]],
+  ['byte_5freader_8',['byte_reader',['../db/d94/classcl7_1_1io_1_1byte__reader.html',1,'cl7::io']]],
+  ['byte_5fwriter_9',['byte_writer',['../de/dc7/classcl7_1_1io_1_1byte__writer.html',1,'cl7::io']]]
 ];

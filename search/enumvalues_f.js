@@ -60,5 +60,7 @@ var searchData=
   ['replace_57',['Replace',['../db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#a5ea224e29dd36067e266b081eb767292a0ebe6df8a3ac338e0512acc741823fdb',1,'xl7::graphics::states::DepthStencilState']]],
   ['revsubtract_58',['RevSubtract',['../d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#a40e09472faa3fca650e6204e40010175a7e13cbb7a9ac0f76c06b1f663ec12d8f',1,'xl7::graphics::states::BlendState']]],
   ['rgb_59',['RGB',['../d8/d30/namespacexl7_1_1graphics.html#a7f932a51645d57b7b508969692d213dea889574aebacda6bfd3e534e2b49b8028',1,'xl7::graphics']]],
-  ['rgba_60',['RGBA',['../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2aea3495a278957dc58165e48a8945469f',1,'xl7::graphics']]]
+  ['rgba_60',['RGBA',['../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2aea3495a278957dc58165e48a8945469f',1,'xl7::graphics']]],
+  ['right_5fcurly_5fbracket_61',['RIGHT_CURLY_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a3d582a29f62ad189b35f29bd524c36cf',1,'dl7::json::detail']]],
+  ['right_5fsquare_5fbracket_62',['RIGHT_SQUARE_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989aecaf8b60a7c6c308e7ff6211f4587efe',1,'dl7::json::detail']]]
 ];

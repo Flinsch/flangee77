@@ -12,5 +12,5 @@ var searchData=
   ['meshmanager_9',['MeshManager',['../d3/d9b/classxl7_1_1graphics_1_1meshes_1_1MeshManager.html',1,'xl7::graphics::meshes']]],
   ['meshutil_10',['MeshUtil',['../d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil.html',1,'xl7::graphics::meshes']]],
   ['meta_11',['Meta',['../dd/d81/structtl7_1_1Meta.html',1,'tl7']]],
-  ['multilineoptions_12',['MultiLineOptions',['../df/d81/structdl7_1_1json_1_1JsonWriter_1_1Format_1_1MultiLineOptions.html',1,'dl7::json::JsonWriter::Format']]]
+  ['multilineoptions_12',['MultiLineOptions',['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html',1,'dl7::json::Format']]]
 ];

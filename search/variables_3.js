@@ -19,7 +19,7 @@ var searchData=
   ['column_16',['column',['../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#a988fd1d9656adf647cd0d05379af99fd',1,'dl7::syntax::SourceLocation']]],
   ['column_5fcount_17',['column_count',['../d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html#aa03d69c8a40c51bd92dd7ba06b6d6ffb',1,'xl7::graphics::shaders::ConstantDeclaration']]],
   ['comp_18',['comp',['../d0/dbe/structcl7_1_1ordered__map_1_1LookupCompare.html#a0aad792bc24437e11079cefb1d7664e4',1,'cl7::ordered_map::LookupCompare']]],
-  ['compact_19',['compact',['../d8/dea/structdl7_1_1json_1_1JsonWriter_1_1Format_1_1SingleLineOptions.html#ac63b9a76ad609c7f0c653e88df7eea15',1,'dl7::json::JsonWriter::Format::SingleLineOptions']]],
+  ['compact_19',['compact',['../df/dd2/structdl7_1_1json_1_1Format_1_1SingleLineOptions.html#a2063169c120a0128ddd89e9b8188f3bb',1,'dl7::json::Format::SingleLineOptions']]],
   ['compression_5fmethod_20',['compression_method',['../d4/de1/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Header.html#a430514f65c60ac1936deac3c149d8a89',1,'xl7::graphics::images::PngImageHandler::Header']]],
   ['consecutive_5fnumber_21',['consecutive_number',['../d1/de4/classtl7_1_1reporting_1_1Reporter.html#a9aa3eecea61fb21d8b9f37ab1f973e71',1,'tl7::reporting::Reporter::consecutive_number'],['../dd/d07/structtl7_1_1reporting_1_1Reporter_1_1ListenerEntry.html#af1a90fa670d648f36d2961a4075469d0',1,'tl7::reporting::Reporter::ListenerEntry::consecutive_number']]],
   ['console_5fkey_22',['console_key',['../d7/db0/structxl7_1_1Config_1_1Generic.html#af51acf7a8b0efaca3ffd8d18cc4e90fe',1,'xl7::Config::Generic']]],

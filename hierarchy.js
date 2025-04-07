@@ -134,7 +134,7 @@ var hierarchy =
       [ "tl7::exceptions::assertion_exception", "d6/db9/structtl7_1_1exceptions_1_1assertion__exception.html", null ]
     ] ],
     [ "dl7::syntax::matchers::FloatingPointLiteralMatcher", "df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher.html", null ],
-    [ "dl7::json::JsonWriter::Format", "df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html", null ],
+    [ "dl7::json::Format", "df/d52/structdl7_1_1json_1_1Format.html", null ],
     [ "xl7::Config::Generic", "d7/db0/structxl7_1_1Config_1_1Generic.html", null ],
     [ "dl7::syntax::Grammar", "d8/d95/structdl7_1_1syntax_1_1Grammar.html", null ],
     [ "dl7::syntax::GrammarAnalyzer", "dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html", null ],
@@ -152,6 +152,7 @@ var hierarchy =
     [ "ID3DInclude", null, [
       [ "xl7::graphics::impl::shared::shaders::Include", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html", null ]
     ] ],
+    [ "dl7::json::detail::IdentifierMatcher", "d0/d21/structdl7_1_1json_1_1detail_1_1IdentifierMatcher.html", null ],
     [ "dl7::syntax::matchers::IdentifierMatcher", "da/d47/structdl7_1_1syntax_1_1matchers_1_1IdentifierMatcher.html", null ],
     [ "tl7::reporting::IListener", "de/d0b/classtl7_1_1reporting_1_1IListener.html", [
       [ "tl7::Context", "d9/d7e/structtl7_1_1Context.html", null ],
@@ -193,6 +194,7 @@ var hierarchy =
       [ "xl7::graphics::IResourceFactory", "d3/daa/classxl7_1_1graphics_1_1IResourceFactory.html", null ]
     ] ],
     [ "dl7::json::Json", "d7/d95/classdl7_1_1json_1_1Json.html", null ],
+    [ "dl7::json::JsonReader", "de/da5/classdl7_1_1json_1_1JsonReader.html", null ],
     [ "dl7::json::JsonWriter", "df/d83/classdl7_1_1json_1_1JsonWriter.html", null ],
     [ "ml7::Vector2::less", "d6/d6c/structml7_1_1Vector2_1_1less.html", null ],
     [ "ml7::Vector3::less", "d5/d80/structml7_1_1Vector3_1_1less.html", null ],
@@ -212,19 +214,27 @@ var hierarchy =
     [ "xl7::graphics::RenderingDevice::Capabilities::Memory", "da/dd9/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities_1_1Memory.html", null ],
     [ "cl7::system::MemoryStatus", "d1/d7a/structcl7_1_1system_1_1MemoryStatus.html", null ],
     [ "xl7::graphics::meshes::MeshUtil", "d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil.html", null ],
-    [ "dl7::json::JsonWriter::Format::MultiLineOptions", "df/d81/structdl7_1_1json_1_1JsonWriter_1_1Format_1_1MultiLineOptions.html", null ],
+    [ "dl7::json::Format::MultiLineOptions", "d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html", null ],
     [ "dl7::Base64::Options", "de/d56/structdl7_1_1Base64_1_1Options.html", null ],
     [ "dl7::syntax::Lexer::Options", "dd/d72/structdl7_1_1syntax_1_1Lexer_1_1Options.html", null ],
     [ "cl7::ordered_map< Key, T, KeyView, Compare, Allocator >", "dd/d42/classcl7_1_1ordered__map.html", null ],
     [ "xl7::graphics::images::PngImageHandler::PaletteEntry", "d6/d53/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1PaletteEntry.html", null ],
     [ "xl7::graphics::impl::shared::shaders::Include::ParentEntry", "dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html", null ],
     [ "dl7::syntax::ParseStage", "d9/d44/classdl7_1_1syntax_1_1ParseStage.html", [
+      [ "dl7::syntax::AstProcessor< Json, cl7::u8string >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", [
+        [ "dl7::json::detail::Generator", "d5/dc2/classdl7_1_1json_1_1detail_1_1Generator.html", null ]
+      ] ],
+      [ "dl7::syntax::DirectAstBuilder< Json >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", [
+        [ "dl7::json::detail::Builder", "de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html", null ]
+      ] ],
       [ "dl7::syntax::AstProcessor< TAstNode, Tresult >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", null ],
       [ "dl7::syntax::CstBuilder", "db/dc4/classdl7_1_1syntax_1_1CstBuilder.html", null ],
       [ "dl7::syntax::CstToAstTransformer< TAstNode >", "d2/d8a/classdl7_1_1syntax_1_1CstToAstTransformer.html", null ],
       [ "dl7::syntax::DirectAstBuilder< TAstNode >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", null ],
       [ "dl7::syntax::Lexer", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html", [
-        [ "dl7::syntax::GenericLexer", "d5/da3/classdl7_1_1syntax_1_1GenericLexer.html", null ]
+        [ "dl7::syntax::GenericLexer", "d5/da3/classdl7_1_1syntax_1_1GenericLexer.html", [
+          [ "dl7::json::detail::Lexer", "d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer.html", null ]
+        ] ]
       ] ]
     ] ],
     [ "xl7::graphics::PixelBitKit", "d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html", null ],
@@ -333,7 +343,7 @@ var hierarchy =
       [ "tl7::Meta", "dd/d81/structtl7_1_1Meta.html", null ]
     ] ],
     [ "xl7::graphics::images::PngImageHandler::Signature", "d3/d3e/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Signature.html", null ],
-    [ "dl7::json::JsonWriter::Format::SingleLineOptions", "d8/dea/structdl7_1_1json_1_1JsonWriter_1_1Format_1_1SingleLineOptions.html", null ],
+    [ "dl7::json::Format::SingleLineOptions", "df/dd2/structdl7_1_1json_1_1Format_1_1SingleLineOptions.html", null ],
     [ "dl7::syntax::matchers::SingleQuotedStringMatcher", "de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::SingleState< TValue >", "dc/df6/classxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1SingleState.html", null ],
     [ "cl7::creational::SingletonBase", "d9/d10/classcl7_1_1creational_1_1SingletonBase.html", [

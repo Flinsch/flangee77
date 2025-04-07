@@ -12,7 +12,7 @@ var classdl7_1_1json_1_1Json =
       [ "Unsigned", "d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caaa1a914735b205424ba6c40b85528d78a", null ],
       [ "Boolean", "d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caa27226c864bac7454a8504f8edb15d95b", null ]
     ] ],
-    [ "Json", "d7/d95/classdl7_1_1json_1_1Json.html#a0881a861e6519cab7e2ecd0e8231e9b6", null ],
+    [ "Json", "d7/d95/classdl7_1_1json_1_1Json.html#a6b13aeac94603b6feff51c057faf94e9", null ],
     [ "Json", "d7/d95/classdl7_1_1json_1_1Json.html#acc19d96692cf7cd7dfe887be3fa69e4b", null ],
     [ "Json", "d7/d95/classdl7_1_1json_1_1Json.html#a3e30e390f07dbc0494b8e679e650e38b", null ],
     [ "Json", "d7/d95/classdl7_1_1json_1_1Json.html#ab96b1d1733416a1efde46e3ac0c21aaf", null ],
@@ -70,6 +70,7 @@ var classdl7_1_1json_1_1Json =
     [ "is_structured", "d7/d95/classdl7_1_1json_1_1Json.html#a13d84922853d04aea9f1d7e8db8e398a", null ],
     [ "is_true", "d7/d95/classdl7_1_1json_1_1Json.html#a4bf1d1d8c4a9d4a856544d65046bddc9", null ],
     [ "is_unsigned", "d7/d95/classdl7_1_1json_1_1Json.html#a4664f96fa5ccc3b16fc2c78518233474", null ],
+    [ "is_valid_unquoted_key", "d7/d95/classdl7_1_1json_1_1Json.html#a5c1e751081cabaf91a300ff6fd2d9de4", null ],
     [ "operator=", "d7/d95/classdl7_1_1json_1_1Json.html#addcf91f93a41ef1d5b715577f207cc6a", null ],
     [ "operator=", "d7/d95/classdl7_1_1json_1_1Json.html#af71fb86dc3919c0df2d209c2363378c8", null ],
     [ "operator[]", "d7/d95/classdl7_1_1json_1_1Json.html#a8eb4e091c93ead17cdafad3bc943880e", null ],

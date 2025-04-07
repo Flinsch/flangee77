@@ -89,7 +89,7 @@ var searchData=
   ['is_5fvalid_86',['is_valid',['../d8/d44/classxl7_1_1resources_1_1ResourceID.html#a66149cb30e5a5a060f1e0599a7f2eeee',1,'xl7::resources::ResourceID::is_valid()'],['../dc/dbd/structcl7_1_1Guid.html#ad07bd681362e48c1945379dd51d89a4d',1,'cl7::Guid::is_valid()']]],
   ['is_5fvalid_5fascii_87',['is_valid_ascii',['../dc/d49/structcl7_1_1strings_1_1codepoint.html#a390d37176b466a1d8818f59cb60a491c',1,'cl7::strings::codepoint']]],
   ['is_5fvalid_5funicode_88',['is_valid_unicode',['../dc/d49/structcl7_1_1strings_1_1codepoint.html#a8cb767998ad2eba28e57e504ff9d6ea2',1,'cl7::strings::codepoint']]],
-  ['is_5fvalid_5funquoted_5fkey_89',['is_valid_unquoted_key',['../df/d83/classdl7_1_1json_1_1JsonWriter.html#af84f92f675b3cbe8e9f8cd9e4cc89cb1',1,'dl7::json::JsonWriter']]],
+  ['is_5fvalid_5funquoted_5fkey_89',['is_valid_unquoted_key',['../d7/d95/classdl7_1_1json_1_1Json.html#a5c1e751081cabaf91a300ff6fd2d9de4',1,'dl7::json::Json']]],
   ['is_5fwhitespace_90',['is_whitespace',['../dc/d17/namespacecl7_1_1strings.html#a66a64e42bbc85444c20b8e5ecfcbbb0a',1,'cl7::strings::is_whitespace(Tchar c)'],['../dc/d17/namespacecl7_1_1strings.html#a7548a302a2decd0f62b3001e60e34ff1',1,'cl7::strings::is_whitespace(achar_t c)']]],
   ['is_5fwhitespace_5fprefix_91',['is_whitespace_prefix',['../dc/d17/namespacecl7_1_1strings.html#a732b637fea88e2894cdd63691672e0d1',1,'cl7::strings']]],
   ['is_5fwhitespace_5frelaxed_92',['is_whitespace_relaxed',['../dc/d17/namespacecl7_1_1strings.html#aefc7154259ad6b6a532542fc94ed1891',1,'cl7::strings']]],

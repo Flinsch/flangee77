@@ -1,15 +1,25 @@
 <map id="dl7::syntax::ParseStage" name="dl7::syntax::ParseStage">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,127,180,153"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,198,180,223"/>
 <area shape="rect" id="Node000002" href="$dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html" title=" " alt="" coords="253,5,439,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,117,169,85,227,55,259,43,261,48,229,60,172,90,124,121"/>
-<area shape="rect" id="Node000003" href="$db/dc4/classdl7_1_1syntax_1_1CstBuilder.html" title=" " alt="" coords="261,70,431,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="159,122,227,105,284,93,285,98,229,111,160,127"/>
-<area shape="rect" id="Node000004" href="$d2/d8a/classdl7_1_1syntax_1_1CstToAstTransformer.html" title=" " alt="" coords="228,120,464,160"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="194,137,228,137,228,143,194,143"/>
-<area shape="rect" id="Node000005" href="$df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html" title=" " alt="" coords="242,184,450,224"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="158,154,267,181,265,186,157,159"/>
-<area shape="rect" id="Node000006" href="$d6/d8c/classdl7_1_1syntax_1_1Lexer.html" title=" " alt="" coords="277,249,415,274"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="119,160,168,198,229,234,278,249,276,254,227,238,165,202,116,164"/>
-<area shape="rect" id="Node000007" href="$d5/da3/classdl7_1_1syntax_1_1GenericLexer.html" title=" " alt="" coords="512,249,699,274"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="428,259,512,259,512,264,428,264"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,184,155,120,188,85,227,55,251,43,254,47,229,60,192,89,159,123,111,188"/>
+<area shape="rect" id="Node000004" href="$df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html" title=" " alt="" coords="242,69,450,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="119,187,167,152,227,119,258,107,260,112,229,124,170,157,122,192"/>
+<area shape="rect" id="Node000006" href="$dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html" title=" " alt="" coords="253,133,439,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="162,192,257,171,258,176,163,198"/>
+<area shape="rect" id="Node000007" href="$db/dc4/classdl7_1_1syntax_1_1CstBuilder.html" title=" " alt="" coords="261,198,431,223"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="194,208,261,208,261,213,194,213"/>
+<area shape="rect" id="Node000008" href="$d2/d8a/classdl7_1_1syntax_1_1CstToAstTransformer.html" title=" " alt="" coords="228,248,464,288"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="163,224,258,245,257,251,162,229"/>
+<area shape="rect" id="Node000009" href="$df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html" title=" " alt="" coords="242,312,450,352"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="122,230,170,264,229,298,260,309,258,314,227,302,167,269,119,234"/>
+<area shape="rect" id="Node000010" href="$d6/d8c/classdl7_1_1syntax_1_1Lexer.html" title=" " alt="" coords="277,377,415,402"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="110,234,158,299,191,333,229,362,253,372,278,380,276,385,251,377,227,366,188,337,154,302,106,237"/>
+<area shape="rect" id="Node000003" href="$d5/dc2/classdl7_1_1json_1_1detail_1_1Generator.html" title=" " alt="" coords="540,5,671,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="453,23,540,23,540,28,453,28"/>
+<area shape="rect" id="Node000005" href="$de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html" title=" " alt="" coords="540,69,671,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="464,87,540,87,540,92,464,92"/>
+<area shape="rect" id="Node000011" href="$d5/da3/classdl7_1_1syntax_1_1GenericLexer.html" title=" " alt="" coords="512,377,699,402"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="428,387,512,387,512,392,428,392"/>
+<area shape="rect" id="Node000012" href="$d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer.html" title=" " alt="" coords="747,369,877,409"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="713,387,747,387,747,392,713,392"/>
 </map>

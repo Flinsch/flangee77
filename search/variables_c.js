@@ -49,5 +49,5 @@ var searchData=
   ['minor_46',['minor',['../db/ddf/structcl7_1_1Version.html#a88896337d7fc15d01bfd84330e7cef25',1,'cl7::Version']]],
   ['mip_5ffilter_5ftype_47',['mip_filter_type',['../d2/dcd/structxl7_1_1graphics_1_1states_1_1SamplerState_1_1Desc.html#a1b9da5a9375a4ab25497534274800a75',1,'xl7::graphics::states::SamplerState::Desc']]],
   ['mip_5flevels_48',['mip_levels',['../da/d78/structxl7_1_1graphics_1_1textures_1_1Texture_1_1Desc.html#a44ff2ac56b390f7ae1ab14e768c8a228',1,'xl7::graphics::textures::Texture::Desc']]],
-  ['multi_5fline_5foptions_49',['multi_line_options',['../df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html#a617b36b3eaf8e053d51486d375545f71',1,'dl7::json::JsonWriter::Format']]]
+  ['multi_5fline_5foptions_49',['multi_line_options',['../df/d52/structdl7_1_1json_1_1Format.html#a7f251dde405cff77efb2fd272e4b0da0',1,'dl7::json::Format']]]
 ];

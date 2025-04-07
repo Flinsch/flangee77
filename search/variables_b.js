@@ -6,7 +6,7 @@ var searchData=
   ['lexeme_3',['lexeme',['../dc/d58/structdl7_1_1syntax_1_1Token.html#a681fa824a30c0fe56f984bba4ea81ef7',1,'dl7::syntax::Token']]],
   ['lf_4',['lf',['../d3/d3e/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Signature.html#a077469d0c02e2f1649aa98d47f80f6d7',1,'xl7::graphics::images::PngImageHandler::Signature']]],
   ['line_5',['line',['../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#ad9d9387d6b6d1d81316cd74002803234',1,'dl7::syntax::SourceLocation']]],
-  ['line_5fending_6',['line_ending',['../df/d81/structdl7_1_1json_1_1JsonWriter_1_1Format_1_1MultiLineOptions.html#a740dd5183128ea5ee1ef1c3f4d840972',1,'dl7::json::JsonWriter::Format::MultiLineOptions']]],
+  ['line_5fending_6',['line_ending',['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html#aca183b0f163bda76dd357ee8c5702141',1,'dl7::json::Format::MultiLineOptions']]],
   ['line_5flength_7',['line_length',['../de/d56/structdl7_1_1Base64_1_1Options.html#a8fadae0ba0ba58e8ba2e6efd34a4557f',1,'dl7::Base64::Options']]],
   ['line_5fnumber_8',['line_number',['../d1/d32/structtl7_1_1Signature.html#a9bf99b8f83ae2dab740f2827027f0c27',1,'tl7::Signature::line_number'],['../d6/d58/structcl7_1_1logging_1_1LogEntry.html#a1927025ae20ee3145488e44c4545c3dd',1,'cl7::logging::LogEntry::line_number']]],
   ['listener_9',['listener',['../dd/d07/structtl7_1_1reporting_1_1Reporter_1_1ListenerEntry.html#a2d896b1a9da1a565e8f63da080ac31ad',1,'tl7::reporting::Reporter::ListenerEntry']]],

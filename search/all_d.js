@@ -125,8 +125,8 @@ var searchData=
   ['mirroronce_122',['MirrorOnce',['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#a4f8492702caa383f50f8ebd226c1ecb4abbfe58735042c726d2d04562ea4e265a',1,'xl7::graphics::states::SamplerState']]],
   ['mit_20license_123',['MIT License',['../dd/d7f/md__2home_2runner_2work_2flangee77_2flangee77_2LICENSE.html',1,'']]],
   ['ml7_124',['ml7',['../d3/d53/namespaceml7.html',1,'']]],
-  ['multi_5fline_5foptions_125',['multi_line_options',['../df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html#a617b36b3eaf8e053d51486d375545f71',1,'dl7::json::JsonWriter::Format']]],
-  ['multiline_126',['MultiLine',['../df/da2/structdl7_1_1json_1_1JsonWriter_1_1Format.html#a8898108efa3ed4e4bdf809de9cfe301dad16a748b5543974384bc43d392f1e566',1,'dl7::json::JsonWriter::Format']]],
-  ['multilineoptions_127',['MultiLineOptions',['../df/d81/structdl7_1_1json_1_1JsonWriter_1_1Format_1_1MultiLineOptions.html',1,'dl7::json::JsonWriter::Format']]],
+  ['multi_5fline_5foptions_125',['multi_line_options',['../df/d52/structdl7_1_1json_1_1Format.html#a7f251dde405cff77efb2fd272e4b0da0',1,'dl7::json::Format']]],
+  ['multiline_126',['MultiLine',['../df/d52/structdl7_1_1json_1_1Format.html#a6a8a994bee9e67bd29d6ff5bd5eb6b64ad16a748b5543974384bc43d392f1e566',1,'dl7::json::Format']]],
+  ['multilineoptions_127',['MultiLineOptions',['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html',1,'dl7::json::Format']]],
   ['my_20framework_128',['The Journey of (Re)building My Framework',['../d1/d55/md_personal-intention.html#autotoc_md22',1,'']]]
 ];
