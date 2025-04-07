@@ -8,11 +8,24 @@ target_sources(flangee77
     compression/Deflate.cpp
     compression/Deflate.h
 
+    json/Format.h
     json/Json.cpp
     json/Json.h
+    json/JsonReader.cpp
+    json/JsonReader.h
     json/JsonWriter.cpp
     json/JsonWriter.h
     json/types.h
+
+    json/detail/Builder.cpp
+    json/detail/Builder.h
+    json/detail/Generator.cpp
+    json/detail/Generator.h
+    json/detail/IdentifierMatcher.cpp
+    json/detail/IdentifierMatcher.h
+    json/detail/Lexer.cpp
+    json/detail/Lexer.h
+    json/detail/Symbol.h
 
     syntax/AstNode.h
     syntax/AstProcessor.h

@@ -2,6 +2,10 @@
 
 #include "./JsonWriter.h"
 
+#include "./detail/IdentifierMatcher.h"
+
+#include <CoreLabs/strings.h>
+
 #include <utility>
 
 
@@ -9,6 +13,10 @@
 namespace dl7::json {
 
 
+    Json::Json()
+        : _value(nullptr)
+    {
+    }
 
     Json::Json(object_t object)
         : _value(std::make_unique<object_t>(std::move(object)))
@@ -261,6 +269,21 @@ namespace dl7::json {
     string_t Json::to_string() const
     {
         return JsonWriter::to_string(*this, JsonWriter::DEFAULT_COMPACT_FORMAT);
+    }
+
+
+
+    /**
+     * Checks whether the specified string is a valid identifier for an unquoted
+     * object key. Not all conditions of JavaScript's identifier naming rules are
+     * considered, as with JSON5, for example. We allow identifiers that begin with
+     * a letter (A-Z or a-z), an underscore, or a dollar sign; consist of letters,
+     * digits, underscores, and/or dollar signs; and do not correspond to any
+     * reserved keyword (as per the ECMAScript specification).
+     */
+    bool Json::is_valid_unquoted_key(cl7::u8string_view key)
+    {
+        return !key.empty() && detail::IdentifierMatcher{}(key) == key.size();
     }
 
 

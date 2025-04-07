@@ -2,6 +2,7 @@
 #define F77_TESTS_DL7_JSON_H
 
 #include <DataLabs/json/Json.h>
+#include <DataLabs/json/JsonReader.h>
 #include <DataLabs/json/JsonWriter.h>
 
 #include <TestLabs/TestSuite.h>
@@ -182,7 +183,7 @@ TESTLABS_CASE( u8"DataLabs:  json:  JsonWriter:  is_valid_unquoted_key" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.key )
     {
-        TESTLABS_CHECK_EQ( dl7::json::JsonWriter::is_valid_unquoted_key( entry.key ), entry.expected );
+        TESTLABS_CHECK_EQ( dl7::json::Json::is_valid_unquoted_key( entry.key ), entry.expected );
     }
 }
 
@@ -191,7 +192,7 @@ TESTLABS_CASE( u8"DataLabs:  json:  JsonWriter:  to_string" )
     struct Entry
     {
         dl7::json::Json json;
-        dl7::json::JsonWriter::Format format;
+        dl7::json::Format format;
         cl7::u8string string;
     } entry;
 
@@ -210,6 +211,68 @@ TESTLABS_CASE( u8"DataLabs:  json:  JsonWriter:  to_string" )
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
     {
         TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( entry.json, entry.format ), entry.string );
+    }
+}
+
+
+
+TESTLABS_CASE( u8"DataLabs:  json:  JsonReader / JsonWriter" )
+{
+    struct Entry
+    {
+        cl7::u8string string;
+        dl7::json::Format format;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", dl7::json::JsonWriter::DEFAULT_FORMAT },
+        { u8"null", dl7::json::JsonWriter::DEFAULT_FORMAT },
+        //{ u8"true", dl7::json::JsonWriter::DEFAULT_FORMAT },
+        //{ u8"false", dl7::json::JsonWriter::DEFAULT_FORMAT },
+        /*{
+u8"{\n"
+"    \"first_name\": \"John\",\n"
+"    \"last_name\": \"Smith\",\n"
+"    \"is_alive\": true,\n"
+"    \"age\": 27,\n"
+"    \"address\": {\n"
+"        \"street_address\": \"21 2nd Street\",\n"
+"        \"city\": \"New York\",\n"
+"        \"state\": \"NY\",\n"
+"        \"postal_code\": \"10021-3100\",\n"
+"    },\n"
+"    \"phone_numbers\": [\n"
+"        {\n"
+"           \"type\": \"home\",\n"
+"           \"number\": \"212 555-1234\",\n"
+"        },\n"
+"        {\n"
+"            \"type\": \"office\",\n"
+"            \"number\": \"646 555-4567\",\n"
+"        }\n"
+"    ],\n"
+"    \"children\": [\n"
+"        \"Catherine\",\n"
+"        \"Thomas\",\n"
+"        \"Trevor\",\n"
+"    ],\n"
+"    \"spouse\": null,\n"
+"    \"favorite_umlauts\": \"ÄÖÜ\",\n"
+"    \"favorite_integer\": \"7\",\n"
+"    \"favorite_decimal\": \"-77.0\",\n"
+"    \"is_confirmed\": false,\n"
+"}\n",
+            dl7::json::JsonWriter::DEFAULT_FORMAT,
+        },*/
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
+    {
+        const auto json = dl7::json::JsonReader::parse( entry.string );
+        if (json.is_null())
+            TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( json, entry.format ), u8"null" );
+        else
+            TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( json, entry.format ), entry.string );
     }
 }
 
