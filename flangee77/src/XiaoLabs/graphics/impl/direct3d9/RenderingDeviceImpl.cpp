@@ -60,7 +60,7 @@ namespace xl7::graphics::impl::direct3d9 {
         _d3d_present_parameters.BackBufferWidth             = get_back_buffer_width();
         _d3d_present_parameters.BackBufferHeight            = get_back_buffer_height();
         _d3d_present_parameters.BackBufferFormat            = back_buffer_format;
-        _d3d_present_parameters.BackBufferCount             = 1;
+        _d3d_present_parameters.BackBufferCount             = GraphicsSystem::instance().get_config().video.back_buffer_count;
         _d3d_present_parameters.MultiSampleType             = D3DMULTISAMPLE_NONE;
         _d3d_present_parameters.MultiSampleQuality          = 0;
         _d3d_present_parameters.SwapEffect                  = D3DSWAPEFFECT_DISCARD;
@@ -69,8 +69,8 @@ namespace xl7::graphics::impl::direct3d9 {
         _d3d_present_parameters.EnableAutoDepthStencil      = TRUE;
         _d3d_present_parameters.AutoDepthStencilFormat      = depth_stencil_format;
         _d3d_present_parameters.Flags                       = depth_stencil_format != D3DFMT_D16_LOCKABLE ? D3DPRESENTFLAG_DISCARD_DEPTHSTENCIL : 0;
-        _d3d_present_parameters.FullScreen_RefreshRateInHz  = fullscreen ? GraphicsSystem::instance().get_config().video.display_mode.refresh_rate : D3DPRESENT_RATE_DEFAULT;
-        _d3d_present_parameters.PresentationInterval        = fullscreen ? D3DPRESENT_INTERVAL_IMMEDIATE : D3DPRESENT_INTERVAL_IMMEDIATE;
+        _d3d_present_parameters.FullScreen_RefreshRateInHz  = fullscreen ? GraphicsSystem::instance().get_config().video.refresh_rate : D3DPRESENT_RATE_DEFAULT;
+        _d3d_present_parameters.PresentationInterval        = GraphicsSystem::instance().get_config().video.vsync_enabled ? D3DPRESENT_INTERVAL_ONE : D3DPRESENT_INTERVAL_IMMEDIATE;
 
         // (Try to) create the hardware-based
         // Direct3D 9 device interface.

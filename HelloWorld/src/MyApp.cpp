@@ -280,7 +280,7 @@ namespace helloworld {
     {
         cl7::profiling::Profiler profiler(u8"MyApp::_render_impl");
 
-        unsigned fps = xl7::graphics::graphics_system().get_config().video.display_mode.refresh_rate;
+        unsigned fps = xl7::graphics::graphics_system().get_config().video.refresh_rate;
         if (!fps)
             fps = 60;
         static float a = 0.0f;

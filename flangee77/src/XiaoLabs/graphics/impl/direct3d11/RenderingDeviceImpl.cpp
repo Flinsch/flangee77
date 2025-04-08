@@ -380,26 +380,29 @@ namespace xl7::graphics::impl::direct3d11 {
         dxgi_swap_chain_desc.SampleDesc.Count = 1;
         dxgi_swap_chain_desc.SampleDesc.Quality = 0;
         dxgi_swap_chain_desc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-        dxgi_swap_chain_desc.BufferCount = flip_model ? 2 : 1;
+        dxgi_swap_chain_desc.BufferCount = (std::max)(static_cast<unsigned>(flip_model ? 2 : 1), GraphicsSystem::instance().get_config().video.back_buffer_count);
         dxgi_swap_chain_desc.Scaling = DXGI_SCALING_STRETCH;
         dxgi_swap_chain_desc.SwapEffect = flip_model ? DXGI_SWAP_EFFECT_FLIP_DISCARD : DXGI_SWAP_EFFECT_DISCARD;
         dxgi_swap_chain_desc.AlphaMode = DXGI_ALPHA_MODE_UNSPECIFIED;
         dxgi_swap_chain_desc.Flags = fullscreen ? DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH : 0;
 
         _allow_tearing = false;
-        if (borderless)
+        if (borderless && GraphicsSystem::instance().get_config().video.allow_tearing && !GraphicsSystem::instance().get_config().video.vsync_enabled)
         {
             BOOL allow_tearing = FALSE;
             dxgi_factory->CheckFeatureSupport(DXGI_FEATURE_PRESENT_ALLOW_TEARING, &allow_tearing, sizeof(allow_tearing));
             _allow_tearing = static_cast<bool>(allow_tearing);
+            if (!_allow_tearing)
+                LOG_WARNING(u8"The display does not support tearing.");
         }
 
         if (_allow_tearing)
             dxgi_swap_chain_desc.Flags |= DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING;
 
-        // Fill the swap chain fullscreen description structure (if applicable).
+        // Fill the swap chain fullscreen description structure
+        // (may not be needed, see creating the swap chain below).
         DXGI_SWAP_CHAIN_FULLSCREEN_DESC dxgi_swap_chain_fullscreen_desc = {};
-        dxgi_swap_chain_fullscreen_desc.RefreshRate.Numerator = fullscreen ? GraphicsSystem::instance().get_config().video.display_mode.refresh_rate : 0;
+        dxgi_swap_chain_fullscreen_desc.RefreshRate.Numerator = fullscreen ? GraphicsSystem::instance().get_config().video.refresh_rate : 0;
         dxgi_swap_chain_fullscreen_desc.RefreshRate.Denominator = 1;
         dxgi_swap_chain_fullscreen_desc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
         dxgi_swap_chain_fullscreen_desc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
@@ -580,7 +583,13 @@ namespace xl7::graphics::impl::direct3d11 {
      */
     bool RenderingDeviceImpl::_present_impl()
     {
-        HRESULT hresult = _dxgi_swap_chain->Present(_allow_tearing ? 0 : 1, _allow_tearing ? DXGI_PRESENT_ALLOW_TEARING : 0);
+        HRESULT hresult;
+        if (GraphicsSystem::instance().get_config().video.vsync_enabled)
+            hresult = _dxgi_swap_chain->Present(1, 0);
+        else if (_allow_tearing)
+            hresult = _dxgi_swap_chain->Present(0, DXGI_PRESENT_ALLOW_TEARING);
+        else
+            hresult = _dxgi_swap_chain->Present(0, 0);
 
         if (hresult == DXGI_ERROR_DEVICE_REMOVED || hresult == DXGI_ERROR_DEVICE_RESET)
         {
