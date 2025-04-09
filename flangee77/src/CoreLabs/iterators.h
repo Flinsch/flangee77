@@ -26,10 +26,14 @@ public:
 
     continuous_forward_iterator(Tptr ptr) : _ptr(ptr) {}
 
+    operator continuous_forward_iterator<true, Titem, Tbase>() const { return continuous_forward_iterator<true, Titem, Tbase>(_ptr); }
+
     reference operator*() const { return *reinterpret_cast<pointer>(_ptr); }
     pointer operator->() const { return reinterpret_cast<pointer>(_ptr); }
     continuous_forward_iterator& operator++() { ++_ptr; return *this; }
     continuous_forward_iterator operator++(int) { continuous_forward_iterator it = *this; ++(*this); return it; }
+    friend continuous_forward_iterator operator+(const continuous_forward_iterator& it, difference_type n) noexcept { return {it._ptr + n}; }
+    continuous_forward_iterator& operator+=(difference_type n) noexcept { return {_ptr + n}; }
     friend bool operator==(const continuous_forward_iterator& a, const continuous_forward_iterator& b) noexcept { return a._ptr == b._ptr; }
     friend bool operator!=(const continuous_forward_iterator& a, const continuous_forward_iterator& b) noexcept { return !(a == b); }
 

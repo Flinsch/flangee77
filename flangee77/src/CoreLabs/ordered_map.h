@@ -279,9 +279,9 @@ public:
     }
 
     /** Erases elements. */
-    iterator erase(iterator it)
+    iterator erase(iterator pos)
     {
-        const size_t index = reinterpret_cast<typename vector_type::value_type*>(it.operator->()) - _vector.data();
+        const size_t index = reinterpret_cast<typename vector_type::value_type*>(pos.operator->()) - _vector.data();
         if (index >= _vector.size())
             return end();
         _erase(index);
@@ -289,9 +289,9 @@ public:
     }
 
     /** Erases elements. */
-    iterator erase(const_iterator it)
+    iterator erase(const_iterator pos)
     {
-        const size_t index = reinterpret_cast<const typename vector_type::value_type*>(it.operator->()) - _vector.data();
+        const size_t index = reinterpret_cast<const typename vector_type::value_type*>(pos.operator->()) - _vector.data();
         if (index >= _vector.size())
             return end();
         _erase(index);
