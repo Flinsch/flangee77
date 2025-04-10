@@ -24,9 +24,50 @@ public:
 
 
     /**
-     * Returns the ID of the symbol of the current token without advancing the reader.
+     * Returns the ID of the symbol of the current token without advancing the
+     * reader.
      */
-    SymbolID peek_symbol_id() const { return peek_token().symbol_id; }
+    SymbolID peek_symbol_id() const;
+
+    /**
+     * Returns the first character of the current token's lexeme (or '\0' if
+     * unavailable).
+     */
+    cl7::u8char_t peek_first_char() const;
+
+    /**
+     * Returns the first `n` characters of the current token's lexeme (can be
+     * shorter).
+     */
+    cl7::u8string_view peek_prefix(size_t n) const;
+
+
+
+    /**
+     * Returns true if the current token's symbol ID matches the given one.
+     */
+    bool check_symbol_id(SymbolID symbol_id) const;
+
+    /**
+     * Returns true if the first character of the current token's lexeme matches the
+     * given one.
+     */
+    bool check_first_char(cl7::u8char_t first_char) const;
+
+    /**
+     * Returns true if the current token's lexeme starts with the given prefix.
+     */
+    bool check_prefix(cl7::u8string_view prefix) const;
+
+
+
+    /**
+     * Advances to the next token, but returns the token that was current before
+     * advancing.
+     */
+    Token consume_token();
+
+
 
     /**
      * Returns the current token without advancing the reader.

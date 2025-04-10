@@ -62,6 +62,7 @@ target_sources(flangee77
     syntax/TerminalSymbolCollection.cpp
     syntax/TerminalSymbolCollection.h
     syntax/Token.h
+    syntax/TokenReader.cpp
     syntax/TokenReader.h
     syntax/Vocabulary.cpp
     syntax/Vocabulary.h
