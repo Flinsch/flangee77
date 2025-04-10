@@ -13,13 +13,29 @@ namespace xl7::graphics::impl::direct3d11 {
 class GraphicsSystemImpl final
     : public GraphicsSystem
 {
-    friend GraphicsSystem* GraphicsSystem::factory_func();
+    struct Registrar
+    {
+        Registrar() { backend_registry().register_backend(DRIVER_NAME, DRIVER_ALIASES, factory_func, 2); }
+        static GraphicsSystem* factory_func() { return new GraphicsSystemImpl(); }
+    } static inline const _registrar = {};
 
 public:
+    static constexpr cl7::u8string_view DRIVER_NAME = u8"Direct3D 11";
+    static constexpr std::initializer_list<cl7::u8string_view> DRIVER_ALIASES = {u8"D3D", u8"Direct3D", u8"D3D11", u8"Direct3D 11", u8"Direct3D 11.0", u8"Direct3D 11.1"};
+
+
+
     GraphicsSystemImpl(const GraphicsSystemImpl&) = delete;
     GraphicsSystemImpl& operator=(const GraphicsSystemImpl&) = delete;
     GraphicsSystemImpl(GraphicsSystemImpl&&) = delete;
     GraphicsSystemImpl& operator=(GraphicsSystemImpl&&) = delete;
+
+
+
+    /**
+     * Returns the name of the driver/implementation.
+     */
+    cl7::u8string_view get_driver_name() const override { return DRIVER_NAME; }
 
 
 

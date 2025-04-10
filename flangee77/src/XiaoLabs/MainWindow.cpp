@@ -201,7 +201,7 @@ namespace xl7 {
         }
 
         // Fetch the desired window title.
-        _title = get_config().generic.title;
+        _title = get_config().general.title;
 
         // Define the window style and position,
         // depending on the display mode.
@@ -264,7 +264,7 @@ namespace xl7 {
         _height = static_cast<unsigned>(height);
 
         // Hide the hardware cursor?
-        if (!get_config().generic.use_hardware_cursor)
+        if (!get_config().general.use_hardware_cursor)
             ::ShowCursor(FALSE);
 
         return true;
@@ -339,7 +339,7 @@ namespace xl7 {
         case WM_KEYDOWN:
         case WM_SYSKEYDOWN:
         {
-            if (MainWindow::instance()._active && wparam == MainWindow::instance().get_config().generic.quit_key)
+            if (MainWindow::instance()._active && wparam == MainWindow::instance().get_config().general.quit_key)
                 ::PostQuitMessage(0);
             break;
         }

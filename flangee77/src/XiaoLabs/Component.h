@@ -2,7 +2,7 @@
 #define XL7_COMPONENT_H
 #include <CoreLabs/creational/Singleton.h>
 
-#include "./Config.h"
+#include "./ConfigProvider.h"
 
 
 
@@ -39,9 +39,10 @@ public:
     /**
      * Initializes the component.
      */
-    bool init(const Config& config)
+    bool init()
     {
-        _config = config;
+        // Capture own copy of the "X" pre-config structure.
+        _config = ConfigProvider::instance().get_config();
 
         if (_state != State::NotInitialized)
         {
@@ -77,7 +78,7 @@ public:
     // #############################################################################
 
     /**
-     * Returns the "X" pre-config structure.
+     * Returns own copy of the "X" pre-config structure.
      */
     const Config& get_config() const { return _config; }
 
@@ -151,7 +152,7 @@ private:
     // #############################################################################
 
     /**
-     * The "X" pre-config structure.
+     * Own copy of the "X" pre-config structure.
      */
     Config _config;
 

@@ -263,7 +263,7 @@ namespace cl7::strings {
     }
 
     /**
-     * Checks whether the specified character is a uppercase ASCII letter.
+     * Checks whether the specified character is an uppercase ASCII letter.
      */
     template <typename Tchar>
         requires(std::is_integral_v<Tchar>)
@@ -547,20 +547,22 @@ namespace cl7::strings {
 
 
 
-    template <class Tstring_or_span>
-        requires(is_any_string_or_span_v<Tstring_or_span>)
-    Tstring_or_span to_lower_ascii(Tstring_or_span s)
+    template <class Tstring_or_view, class Tstring = std::basic_string<typename Tstring_or_view::value_type>>
+        requires(is_any_string_or_view_v<Tstring_or_view>)
+    Tstring to_lower_ascii(Tstring_or_view s)
     {
-        to_lower_ascii_inplace(s);
-        return s;
+        Tstring s_{std::move(s)};
+        to_lower_ascii_inplace(s_);
+        return s_;
     }
 
-    template <class Tstring_or_span>
-        requires(is_any_string_or_span_v<Tstring_or_span>)
-    Tstring_or_span to_upper_ascii(Tstring_or_span s)
+    template <class Tstring_or_view, class Tstring = std::basic_string<typename Tstring_or_view::value_type>>
+        requires(is_any_string_or_view_v<Tstring_or_view>)
+    Tstring to_upper_ascii(Tstring_or_view s)
     {
-        to_upper_ascii_inplace(s);
-        return s;
+        Tstring s_{std::move(s)};
+        to_upper_ascii_inplace(s_);
+        return s_;
     }
 
 

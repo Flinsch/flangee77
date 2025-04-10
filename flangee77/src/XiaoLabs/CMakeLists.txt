@@ -2,9 +2,15 @@
 target_sources(flangee77
     PRIVATE
     audio.h
+    BackendRegistry.h
     Component.h
     Config.cpp
     Config.h
+    ConfigProvider.cpp
+    ConfigProvider.h
+    DriverBasedComponent.h
+    DriverResolver.cpp
+    DriverResolver.h
     graphics.h
     input.h
     MainWindow.cpp

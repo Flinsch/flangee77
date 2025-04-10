@@ -3,8 +3,6 @@
 
 #include <CoreLabs/string.h>
 
-#include <windows.h>
-
 
 
 namespace xl7 {
@@ -15,9 +13,9 @@ struct Config
 {
 
     /**
-     * The generic presets.
+     * The general presets.
      */
-    struct Generic
+    struct General
     {
         /** The application's main window title. */
         cl7::u8string title;
@@ -29,7 +27,7 @@ struct Config
 
         /** The flag indicating whether to use the hardware cursor or not. */
         bool use_hardware_cursor;
-    } generic;
+    } general;
 
 
 
@@ -47,6 +45,9 @@ struct Config
             /** Exclusive fullscreen mode. Takes full control of the display and may change resolution. Can offer better performance or lower latency, but slower to alt-tab. */
             ExclusiveFullscreen,
         };
+
+        /** The name of the driver/implementation of the graphics component. */
+        cl7::u8string driver_name;
 
         /** The presentation mode: windowed, borderless fullscreen, exclusive fullscreen. */
         PresentationMode presentation_mode;

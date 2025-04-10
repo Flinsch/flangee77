@@ -28,6 +28,7 @@
 
 #include "./ProgLabs/ArgumentBag.h"
 
+#include "./XiaoLabs/general.h"
 #include "./XiaoLabs/graphics.h"
 
 

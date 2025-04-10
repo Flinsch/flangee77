@@ -31,6 +31,7 @@ target_sources(flangee77-tests
 
     ProgLabs/ArgumentBag.h
 
+    XiaoLabs/general.h
     XiaoLabs/graphics.h
     XiaoLabs/shared.h
 )

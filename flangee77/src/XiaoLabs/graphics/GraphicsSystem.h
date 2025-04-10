@@ -1,29 +1,10 @@
 #ifndef XL7_GRAPHICS_GRAPHICSSYSTEM_H
 #define XL7_GRAPHICS_GRAPHICSSYSTEM_H
-#include "../Component.h"
+#include "../DriverBasedComponent.h"
 
 #include "./RenderingDevice.h"
 
 #include <functional>
-
-
-
-#define XL7_GRAPHICS_IMPL_DIRECT3D9     0x6b8f8219
-#define XL7_GRAPHICS_IMPL_DIRECT3D11    0x9b09a2b4
-
-#ifndef XL7_GRAPHICS_IMPL_DEFAULT
-#if defined(_MSC_VER)
-#define XL7_GRAPHICS_IMPL_DEFAULT       XL7_GRAPHICS_IMPL_DIRECT3D11
-#else
-#define XL7_GRAPHICS_IMPL_DEFAULT       XL7_GRAPHICS_IMPL_DIRECT3D9
-#endif
-#endif // !XL7_GRAPHICS_IMPL_DEFAULT
-
-#ifndef XL7_GRAPHICS_IMPL
-#define XL7_GRAPHICS_IMPL               XL7_GRAPHICS_IMPL_DEFAULT
-//#define XL7_GRAPHICS_IMPL               XL7_GRAPHICS_IMPL_DIRECT3D9
-//#define XL7_GRAPHICS_IMPL               XL7_GRAPHICS_IMPL_DIRECT3D11
-#endif // !XL7_GRAPHICS_IMPL
 
 
 
@@ -32,7 +13,7 @@ namespace xl7::graphics {
 
 
 class GraphicsSystem
-    : public Component<GraphicsSystem>
+    : public DriverBasedComponent<GraphicsSystem>
 {
     friend class cl7::creational::Singleton<GraphicsSystem>;
 
