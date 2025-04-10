@@ -95,6 +95,7 @@ $(document).ready(function(){initNavTree('de/d95/md_code-style-guide.html','../.
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md5"></a> This document outlines the coding conventions for the project. Following these guidelines ensures consistent and readable code throughout the project.</p>
+<p>Note on exceptions to the rules and special cases: While consistency is key to readability and maintainability, there are cases where deviating from the rule improves clarity or expressiveness. Such exceptions should be rare, deliberate, and justifiable. Some exceptions are mentioned below specifically or at least by way of example, but generally speaking: The rules can (and should) be explicitly deviated from if the individual case &ldquo;requires&rdquo; this in terms of readability, comprehensibility, and/or maintainability.</p>
 <hr  />
 <h1><a class="anchor" id="autotoc_md7"></a>
 Class Structure and Member Order</h1>
@@ -130,7 +131,7 @@ Class Structure and Member Order</h1>
 </li>
 <li>Operator overloads<ul>
 <li>Unary increment/decrement operators (<code>++</code>, <code>--</code>)</li>
-<li>Comparison operators (<code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>)</li>
+<li>Comparison operators (<code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, and/or <code>&lt;=&gt;</code>)</li>
 <li>Arithmetic operators (unary <code>+</code>/<code>-</code>, <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>)</li>
 <li>Bitwise operators (<code>~</code>, <code>&amp;</code>, <code>|</code>, <code>^</code>, <code>&amp;=</code>, <code>|=</code>, <code>^=</code>)</li>
 <li>Logical operators (<code>!</code>, <code>&amp;&amp;</code>, <code>||</code>)</li>
@@ -150,6 +151,7 @@ Class Structure and Member Order</h1>
 </li>
 </ul>
 <p>The same order tends to apply to a <code>struct</code> as well, but with one crucial difference: variables are all public and come immediately after constants and type definitions&mdash;if there are any, otherwise variables are right at the beginning of the <code>struct</code>, in any case before possible constructors etc.</p>
+<p>A concrete example of (possible) exceptions to the above rules: Even though friend declarations usually go at the end (or optionally at the top) of a class, it's fine to place a friend operator with the other operator overloads if it replaces what would otherwise be a regular member operator. <code>friend bool operator==(Foo a, Foo b) noexcept</code> instead of <code>bool operator==(Foo other) const noexcept</code> would be such a case, for example. This can make the class interface easier to read and understand.</p>
 <h1><a class="anchor" id="autotoc_md8"></a>
 &lt;tt&gt;class&lt;/tt&gt; vs. &lt;tt&gt;struct&lt;/tt&gt;</h1>
 <ul>

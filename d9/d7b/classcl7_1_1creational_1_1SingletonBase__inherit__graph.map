@@ -1,33 +1,41 @@
 <map id="cl7::creational::SingletonBase" name="cl7::creational::SingletonBase">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,173,220,198"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,205,220,230"/>
 <area shape="rect" id="Node000002" href="$d7/de2/classcl7_1_1creational_1_1Singleton.html" title=" " alt="" coords="268,5,451,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,161,191,109,228,80,267,55,292,43,294,48,269,60,231,84,195,113,138,165"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,192,185,125,224,88,267,55,289,43,292,48,269,60,227,92,189,129,133,195"/>
 <area shape="rect" id="Node000004" href="$d7/de2/classcl7_1_1creational_1_1Singleton.html" title=" " alt="" coords="268,69,451,109"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="155,165,267,119,299,107,301,112,269,124,157,170"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="141,195,198,157,267,119,295,107,297,112,269,124,201,162,144,199"/>
 <area shape="rect" id="Node000006" href="$d7/de2/classcl7_1_1creational_1_1Singleton.html" title=" " alt="" coords="268,133,451,173"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="224,168,267,163,268,168,224,174"/>
-<area shape="rect" id="Node000007" href="$d7/de2/classcl7_1_1creational_1_1Singleton.html" title=" " alt="" coords="268,197,451,237"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="224,197,268,203,267,208,224,202"/>
-<area shape="rect" id="Node000008" href="$d7/de2/classcl7_1_1creational_1_1Singleton.html" title=" " alt="" coords="268,261,451,301"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="157,201,269,247,301,259,299,264,267,252,155,206"/>
-<area shape="rect" id="Node000016" href="$d7/dba/classcl7_1_1creational_1_1SingletonManager.html" title=" " alt="" coords="268,325,451,365"/>
-<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="138,206,195,258,231,286,269,311,294,323,292,328,267,316,228,291,191,262,134,210"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="175,198,281,171,282,176,177,204"/>
+<area shape="rect" id="Node000008" href="$d7/de2/classcl7_1_1creational_1_1Singleton.html" title=" " alt="" coords="268,197,451,237"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="234,215,268,215,268,220,234,220"/>
+<area shape="rect" id="Node000009" href="$d7/de2/classcl7_1_1creational_1_1Singleton.html" title=" " alt="" coords="268,261,451,301"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="177,231,282,259,281,264,175,236"/>
+<area shape="rect" id="Node000010" href="$d7/de2/classcl7_1_1creational_1_1Singleton.html" title=" " alt="" coords="268,325,451,365"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="144,236,201,273,269,311,297,323,295,328,267,316,198,277,141,240"/>
+<area shape="rect" id="Node000020" href="$d7/dba/classcl7_1_1creational_1_1SingletonManager.html" title=" " alt="" coords="268,389,451,429"/>
+<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="133,239,189,306,227,343,269,375,292,387,289,392,267,380,224,347,185,310,129,243"/>
 <area shape="rect" id="Node000003" href="$d2/df3/classcl7_1_1logging_1_1StandardLogger.html" title=" " alt="" coords="515,13,721,38"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="465,23,515,23,515,28,465,28"/>
 <area shape="rect" id="Node000005" href="$d2/da1/classcl7_1_1profiling_1_1StandardRegistry.html" title=" " alt="" coords="534,69,702,109"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="464,87,534,87,534,92,464,92"/>
-<area shape="rect" id="Node000009" href="$db/d24/classxl7_1_1Component.html" title=" " alt="" coords="499,211,737,237"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="459,256,498,247,556,234,557,239,499,252,460,261"/>
-<area shape="rect" id="Node000011" href="$db/d24/classxl7_1_1Component.html" title=" " alt="" coords="519,261,717,301"/>
-<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="465,279,519,279,519,284,465,284"/>
-<area shape="rect" id="Node000015" href="$db/d24/classxl7_1_1Component.html" title=" " alt="" coords="506,326,730,351"/>
-<area shape="poly" id="edge14_Node000008_Node000015" title=" " alt="" coords="460,302,499,311,557,323,556,329,498,316,459,307"/>
-<area shape="rect" id="Node000010" href="$da/df2/classxl7_1_1MainWindow.html" title=" " alt="" coords="827,211,962,237"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="751,221,827,221,827,227,751,227"/>
-<area shape="rect" id="Node000012" href="$da/d03/classxl7_1_1graphics_1_1GraphicsSystem.html" title=" " alt="" coords="785,269,1004,294"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="730,279,785,279,785,284,730,284"/>
-<area shape="rect" id="Node000013" href="$d8/d86/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl.html" title=" " alt="" coords="1052,229,1295,269"/>
-<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="1018,265,1051,261,1052,266,1018,270"/>
-<area shape="rect" id="Node000014" href="$da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html" title=" " alt="" coords="1056,293,1291,333"/>
-<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="1018,293,1056,297,1056,303,1018,298"/>
+<area shape="rect" id="Node000007" href="$d9/d8f/classxl7_1_1ConfigProvider.html" title=" " alt="" coords="545,141,691,166"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="465,151,545,151,545,156,465,156"/>
+<area shape="rect" id="Node000011" href="$db/d24/classxl7_1_1Component.html" title=" " alt="" coords="499,275,737,301"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="459,320,498,311,556,298,557,303,499,316,460,325"/>
+<area shape="rect" id="Node000013" href="$db/d24/classxl7_1_1Component.html" title=" " alt="" coords="519,325,717,365"/>
+<area shape="poly" id="edge12_Node000010_Node000013" title=" " alt="" coords="465,343,519,343,519,348,465,348"/>
+<area shape="rect" id="Node000014" href="$db/d24/classxl7_1_1Component.html" title=" " alt="" coords="506,390,730,415"/>
+<area shape="poly" id="edge13_Node000010_Node000014" title=" " alt="" coords="460,366,499,375,557,387,556,393,498,380,459,371"/>
+<area shape="rect" id="Node000012" href="$da/df2/classxl7_1_1MainWindow.html" title=" " alt="" coords="821,275,955,301"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="751,285,821,285,821,291,751,291"/>
+<area shape="rect" id="Node000015" href="$d8/d3d/classxl7_1_1DriverBasedComponent.html" title=" " alt="" coords="785,353,991,393"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="744,386,785,382,785,387,744,392"/>
+<area shape="rect" id="Node000019" href="$d8/d3d/classxl7_1_1DriverBasedComponent.html" title=" " alt="" coords="785,417,991,457"/>
+<area shape="poly" id="edge18_Node000014_Node000019" title=" " alt="" coords="731,414,785,422,785,427,731,420"/>
+<area shape="rect" id="Node000016" href="$da/d03/classxl7_1_1graphics_1_1GraphicsSystem.html" title=" " alt="" coords="1039,361,1257,386"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="1004,371,1039,371,1039,376,1004,376"/>
+<area shape="rect" id="Node000017" href="$d8/d86/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl.html" title=" " alt="" coords="1305,321,1548,361"/>
+<area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="1271,357,1305,353,1305,358,1272,362"/>
+<area shape="rect" id="Node000018" href="$da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html" title=" " alt="" coords="1309,385,1544,425"/>
+<area shape="poly" id="edge17_Node000016_Node000018" title=" " alt="" coords="1272,385,1309,389,1309,395,1271,390"/>
 </map>

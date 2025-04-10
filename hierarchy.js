@@ -55,6 +55,7 @@ var hierarchy =
     [ "xl7::graphics::textures::TextureManager::Attorney", "d4/ddc/classxl7_1_1graphics_1_1textures_1_1TextureManager_1_1Attorney.html", null ],
     [ "xl7::resources::Resource::Attorney", "d0/d78/classxl7_1_1resources_1_1Resource_1_1Attorney.html", null ],
     [ "cl7::auto_invoke< Callable >", "de/dbb/classcl7_1_1auto__invoke.html", null ],
+    [ "xl7::BackendRegistry< TBackendBase >", "d1/da6/classxl7_1_1BackendRegistry.html", null ],
     [ "dl7::Base64", "da/d3b/classdl7_1_1Base64.html", null ],
     [ "xl7::graphics::images::PngImageHandler::BitInfo", "d1/db4/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1BitInfo.html", null ],
     [ "cl7::logging::HtmlLogHandler::Block", "dc/d37/structcl7_1_1logging_1_1HtmlLogHandler_1_1Block.html", null ],
@@ -80,7 +81,7 @@ var hierarchy =
     [ "xl7::graphics::shaders::ConstantDeclaration", "d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html", null ],
     [ "xl7::graphics::shaders::ConstantMapping", "d2/d58/structxl7_1_1graphics_1_1shaders_1_1ConstantMapping.html", null ],
     [ "ml7::constants_< T >", "da/df2/structml7_1_1constants__.html", null ],
-    [ "cl7::continuous_forward_iterator< is_const, Titem, Tbase >", "d2/dbf/classcl7_1_1continuous__forward__iterator.html", null ],
+    [ "cl7::contiguous_iterator< is_const, Titem, Tbase >", "d1/d5d/classcl7_1_1contiguous__iterator.html", null ],
     [ "cl7::system::CPUID", "d5/d80/structcl7_1_1system_1_1CPUID.html", null ],
     [ "xl7::resources::Resource::CreateParams< TDesc >", "db/df9/structxl7_1_1resources_1_1Resource_1_1CreateParams.html", null ],
     [ "dl7::syntax::CstNode", "d0/df6/classdl7_1_1syntax_1_1CstNode.html", null ],
@@ -121,6 +122,8 @@ var hierarchy =
     [ "dl7::syntax::Diagnostic", "d0/d46/structdl7_1_1syntax_1_1Diagnostic.html", null ],
     [ "dl7::syntax::Diagnostics", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html", null ],
     [ "dl7::syntax::matchers::DoubleQuotedStringMatcher", "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html", null ],
+    [ "xl7::DriverResolver::DriverEntry", "df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html", null ],
+    [ "xl7::DriverResolver", "de/d70/structxl7_1_1DriverResolver.html", null ],
     [ "xl7::graphics::meshes::VertexLayout::Element", "d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html", null ],
     [ "cl7::strings::EncodeBuffer< Tchar >", "d1/d9d/structcl7_1_1strings_1_1EncodeBuffer.html", null ],
     [ "cl7::strings::Encoder< Tchar, TDefaultErrorHandler >", "dc/d4e/classcl7_1_1strings_1_1Encoder.html", null ],
@@ -135,7 +138,7 @@ var hierarchy =
     ] ],
     [ "dl7::syntax::matchers::FloatingPointLiteralMatcher", "df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher.html", null ],
     [ "dl7::json::Format", "df/d52/structdl7_1_1json_1_1Format.html", null ],
-    [ "xl7::Config::Generic", "d7/db0/structxl7_1_1Config_1_1Generic.html", null ],
+    [ "xl7::Config::General", "dd/d38/structxl7_1_1Config_1_1General.html", null ],
     [ "dl7::syntax::Grammar", "d8/d95/structdl7_1_1syntax_1_1Grammar.html", null ],
     [ "dl7::syntax::GrammarAnalyzer", "dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html", null ],
     [ "tl7::Stats::Group", "da/d74/structtl7_1_1Stats_1_1Group.html", null ],
@@ -243,7 +246,10 @@ var hierarchy =
     [ "cl7::profiling::Profiler", "d8/dd2/classcl7_1_1profiling_1_1Profiler.html", null ],
     [ "ml7::Quaternion", "d8/d1f/structml7_1_1Quaternion.html", null ],
     [ "xl7::graphics::shaders::ReflectionResult", "d2/d19/structxl7_1_1graphics_1_1shaders_1_1ReflectionResult.html", null ],
+    [ "xl7::graphics::impl::direct3d11::GraphicsSystemImpl::Registrar", "dc/d25/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl_1_1Registrar.html", null ],
+    [ "xl7::graphics::impl::direct3d9::GraphicsSystemImpl::Registrar", "d5/d15/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl_1_1Registrar.html", null ],
     [ "cl7::profiling::Registry", "d5/d99/classcl7_1_1profiling_1_1Registry.html", null ],
+    [ "xl7::BackendRegistry< TBackendBase >::RegistryEntry", "d6/d6b/structxl7_1_1BackendRegistry_1_1RegistryEntry.html", null ],
     [ "cl7::system::CPUID::regs", "dd/d93/structcl7_1_1system_1_1CPUID_1_1regs.html", null ],
     [ "xl7::graphics::RenderingContext", "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html", [
       [ "xl7::graphics::impl::direct3d11::RenderingContextImpl", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html", null ],
@@ -353,24 +359,33 @@ var hierarchy =
       [ "cl7::creational::Singleton< StandardRegistry >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", [
         [ "cl7::profiling::StandardRegistry", "d2/da1/classcl7_1_1profiling_1_1StandardRegistry.html", null ]
       ] ],
+      [ "cl7::creational::Singleton< ConfigProvider >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", [
+        [ "xl7::ConfigProvider", "d9/d8f/classxl7_1_1ConfigProvider.html", null ]
+      ] ],
       [ "cl7::creational::Singleton< MainWindow >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", null ],
       [ "cl7::creational::Singleton< GraphicsSystem >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", null ],
       [ "cl7::creational::Singleton< TSingleton >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", [
         [ "xl7::Component< MainWindow >", "db/d24/classxl7_1_1Component.html", [
           [ "xl7::MainWindow", "da/df2/classxl7_1_1MainWindow.html", null ]
         ] ],
-        [ "xl7::Component< GraphicsSystem >", "db/d24/classxl7_1_1Component.html", [
-          [ "xl7::graphics::GraphicsSystem", "da/d03/classxl7_1_1graphics_1_1GraphicsSystem.html", [
-            [ "xl7::graphics::impl::direct3d11::GraphicsSystemImpl", "d8/d86/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl.html", null ],
-            [ "xl7::graphics::impl::direct3d9::GraphicsSystemImpl", "da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html", null ]
-          ] ]
-        ] ],
-        [ "xl7::Component< TSingleton >", "db/d24/classxl7_1_1Component.html", null ]
+        [ "xl7::Component< GraphicsSystem >", "db/d24/classxl7_1_1Component.html", null ],
+        [ "xl7::Component< TSingleton >", "db/d24/classxl7_1_1Component.html", [
+          [ "xl7::DriverBasedComponent< GraphicsSystem >", "d8/d3d/classxl7_1_1DriverBasedComponent.html", [
+            [ "xl7::graphics::GraphicsSystem", "da/d03/classxl7_1_1graphics_1_1GraphicsSystem.html", [
+              [ "xl7::graphics::impl::direct3d11::GraphicsSystemImpl", "d8/d86/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl.html", null ],
+              [ "xl7::graphics::impl::direct3d9::GraphicsSystemImpl", "da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html", null ]
+            ] ]
+          ] ],
+          [ "xl7::DriverBasedComponent< TSingleton >", "d8/d3d/classxl7_1_1DriverBasedComponent.html", null ]
+        ] ]
       ] ],
       [ "cl7::creational::SingletonManager", "d7/dba/classcl7_1_1creational_1_1SingletonManager.html", null ]
     ] ],
     [ "dl7::syntax::SourceLocation", "d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::StateArray< TProxy, N >", "d7/df7/classxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray.html", null ],
+    [ "cl7::static_vector< T, N >", "da/d4e/classcl7_1_1static__vector.html", null ],
+    [ "cl7::static_vector< cl7::u8string_view, MAX_ALIASES_PER_ENTRY >", "da/d4e/classcl7_1_1static__vector.html", null ],
+    [ "cl7::static_vector< xl7::BackendRegistry::RegistryEntry, MAX_BACKEND_ENTRIES >", "da/d4e/classcl7_1_1static__vector.html", null ],
     [ "tl7::Stats", "de/d12/structtl7_1_1Stats.html", null ],
     [ "xl7::graphics::states::DepthStencilState::StencilOperationDesc", "d4/d68/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1StencilOperationDesc.html", null ],
     [ "cl7::profiling::Stopwatch", "d6/dac/classcl7_1_1profiling_1_1Stopwatch.html", null ],

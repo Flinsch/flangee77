@@ -1,10 +1,23 @@
 var searchData=
 [
-  ['table_5ftype_0',['table_type',['../dd/d42/classcl7_1_1ordered__map.html#aabb9991c9d070a21809bacc7f6bc6645',1,'cl7::ordered_map']]],
-  ['testcaseptr_1',['TestCasePtr',['../d1/dce/namespacetl7.html#aa29ab0a6a987370f802179ca203ce9e0',1,'tl7']]],
-  ['texturemanagerptr_2',['TextureManagerPtr',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#a9d4771ca5ab27421834a08b4cf8f8111',1,'xl7::graphics::RenderingDevice']]],
-  ['tptr_3',['Tptr',['../d2/dbf/classcl7_1_1continuous__forward__iterator.html#ac0f33455c593fbec5bcd38c86b741d47',1,'cl7::continuous_forward_iterator']]],
-  ['tstring_4',['Tstring',['../d0/dbc/structcl7_1_1string__hash.html#a7f965c342868e72721bf9a6f10bd02b6',1,'cl7::string_hash']]],
-  ['tstring_5fview_5',['Tstring_view',['../d0/dbc/structcl7_1_1string__hash.html#a5bb6033eeb64195e5c038615850e01e2',1,'cl7::string_hash']]],
-  ['type_6',['Type',['../db/dcc/classdl7_1_1syntax_1_1AstNode.html#a680cd435af07c277dae60e6522e46d22',1,'dl7::syntax::AstNode']]]
+  ['u16char_5ft_0',['u16char_t',['../d1/d2e/namespacecl7.html#ab2d5cb4095ebc2919ee52cea43f57a3b',1,'cl7']]],
+  ['u16isstream_1',['u16isstream',['../d1/d2e/namespacecl7.html#a8eaecf6e54a4b19408ed619e88b3b0db',1,'cl7']]],
+  ['u16osstream_2',['u16osstream',['../d1/d2e/namespacecl7.html#a8d72b9ef38aa235a4d992d70bcb3257c',1,'cl7']]],
+  ['u16string_3',['u16string',['../d1/d2e/namespacecl7.html#a89e54e8ff102dfc52bba1e794020eab0',1,'cl7']]],
+  ['u16string_5fhash_4',['u16string_hash',['../d1/d2e/namespacecl7.html#a758c82b41497b1e193dd8deb4a5bd331',1,'cl7']]],
+  ['u16string_5fspan_5',['u16string_span',['../d1/d2e/namespacecl7.html#a1b822772eb3d4281f6d0826b85a3a6ba',1,'cl7']]],
+  ['u16string_5fview_6',['u16string_view',['../d1/d2e/namespacecl7.html#afc9161de86519db353edd785b942b6c0',1,'cl7']]],
+  ['u32char_5ft_7',['u32char_t',['../d1/d2e/namespacecl7.html#af0feb368c72afcda70b2d988c6b0f238',1,'cl7']]],
+  ['u32isstream_8',['u32isstream',['../d1/d2e/namespacecl7.html#a17ba72a2be1f517da059fc0f8f36d57f',1,'cl7']]],
+  ['u32osstream_9',['u32osstream',['../d1/d2e/namespacecl7.html#a284c2fff1f1fa42cdfdb8fc1a0b45c78',1,'cl7']]],
+  ['u32string_10',['u32string',['../d1/d2e/namespacecl7.html#a34e3c57061a467049da30df1c7fe8fb1',1,'cl7']]],
+  ['u32string_5fhash_11',['u32string_hash',['../d1/d2e/namespacecl7.html#a318fed40cabedc85668e342d577c7aa7',1,'cl7']]],
+  ['u32string_5fspan_12',['u32string_span',['../d1/d2e/namespacecl7.html#a2d857fc2f4de4f9904a8899ddca3315a',1,'cl7']]],
+  ['u32string_5fview_13',['u32string_view',['../d1/d2e/namespacecl7.html#a32c38038812559f56f420fcd3be6a4a9',1,'cl7']]],
+  ['u8char_5ft_14',['u8char_t',['../d1/d2e/namespacecl7.html#a0460ea70cccc81840bd000e69ebfa913',1,'cl7']]],
+  ['u8string_15',['u8string',['../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3',1,'cl7']]],
+  ['u8string_5fhash_16',['u8string_hash',['../d1/d2e/namespacecl7.html#ab90fc6af0c05fa3213039c711dabd50a',1,'cl7']]],
+  ['u8string_5fspan_17',['u8string_span',['../d1/d2e/namespacecl7.html#a164301a25cec5cc6a50ecee9108229a9',1,'cl7']]],
+  ['u8string_5fview_18',['u8string_view',['../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec',1,'cl7']]],
+  ['unsigned_5ft_19',['unsigned_t',['../df/d87/namespacedl7_1_1json.html#a48927497e8fc57d5c38da9d895434285',1,'dl7::json']]]
 ];

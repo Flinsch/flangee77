@@ -70,9 +70,10 @@ var annotated_dup =
       ] ],
       [ "auto_invoke", "de/dbb/classcl7_1_1auto__invoke.html", "de/dbb/classcl7_1_1auto__invoke" ],
       [ "const_ptr_forward_iterator", "d2/d93/classcl7_1_1const__ptr__forward__iterator.html", "d2/d93/classcl7_1_1const__ptr__forward__iterator" ],
-      [ "continuous_forward_iterator", "d2/dbf/classcl7_1_1continuous__forward__iterator.html", "d2/dbf/classcl7_1_1continuous__forward__iterator" ],
+      [ "contiguous_iterator", "d1/d5d/classcl7_1_1contiguous__iterator.html", "d1/d5d/classcl7_1_1contiguous__iterator" ],
       [ "Guid", "dc/dbd/structcl7_1_1Guid.html", "dc/dbd/structcl7_1_1Guid" ],
       [ "ordered_map", "dd/d42/classcl7_1_1ordered__map.html", "dd/d42/classcl7_1_1ordered__map" ],
+      [ "static_vector", "da/d4e/classcl7_1_1static__vector.html", "da/d4e/classcl7_1_1static__vector" ],
       [ "string_hash", "d0/dbc/structcl7_1_1string__hash.html", "d0/dbc/structcl7_1_1string__hash" ],
       [ "u8isstream", "d9/d44/classcl7_1_1u8isstream.html", "d9/d44/classcl7_1_1u8isstream" ],
       [ "u8osstream", "d3/d63/classcl7_1_1u8osstream.html", "d3/d63/classcl7_1_1u8osstream" ],
@@ -335,8 +336,12 @@ var annotated_dup =
         [ "ResourceID", "d8/d44/classxl7_1_1resources_1_1ResourceID.html", "d8/d44/classxl7_1_1resources_1_1ResourceID" ],
         [ "ResourceManager", "d3/d00/classxl7_1_1resources_1_1ResourceManager.html", "d3/d00/classxl7_1_1resources_1_1ResourceManager" ]
       ] ],
+      [ "BackendRegistry", "d1/da6/classxl7_1_1BackendRegistry.html", "d1/da6/classxl7_1_1BackendRegistry" ],
       [ "Component", "db/d24/classxl7_1_1Component.html", "db/d24/classxl7_1_1Component" ],
       [ "Config", "d9/dfb/structxl7_1_1Config.html", "d9/dfb/structxl7_1_1Config" ],
+      [ "ConfigProvider", "d9/d8f/classxl7_1_1ConfigProvider.html", "d9/d8f/classxl7_1_1ConfigProvider" ],
+      [ "DriverBasedComponent", "d8/d3d/classxl7_1_1DriverBasedComponent.html", "d8/d3d/classxl7_1_1DriverBasedComponent" ],
+      [ "DriverResolver", "de/d70/structxl7_1_1DriverResolver.html", "de/d70/structxl7_1_1DriverResolver" ],
       [ "MainWindow", "da/df2/classxl7_1_1MainWindow.html", "da/df2/classxl7_1_1MainWindow" ]
     ] ]
 ];

@@ -7,12 +7,14 @@ var searchData=
   ['address_5fu_4',['address_u',['../d2/dcd/structxl7_1_1graphics_1_1states_1_1SamplerState_1_1Desc.html#addf6d05f5bc2a3a1e7a8c0ac484afece',1,'xl7::graphics::states::SamplerState::Desc']]],
   ['address_5fv_5',['address_v',['../d2/dcd/structxl7_1_1graphics_1_1states_1_1SamplerState_1_1Desc.html#a2c9ae7484eb7629e47a611d33066c71e',1,'xl7::graphics::states::SamplerState::Desc']]],
   ['address_5fw_6',['address_w',['../d2/dcd/structxl7_1_1graphics_1_1states_1_1SamplerState_1_1Desc.html#a61f1f71b461de80571a88b8d7a4452b9',1,'xl7::graphics::states::SamplerState::Desc']]],
-  ['allow_5fnesting_7',['allow_nesting',['../d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html#ac75bad3071a2fdabad260547e96eb590',1,'dl7::syntax::matchers::BlockCommentMatcher']]],
-  ['allow_5fsingle_5fquotes_8',['allow_single_quotes',['../df/d52/structdl7_1_1json_1_1Format.html#a0be86fe44d6aff88749ec868ff1e2dbf',1,'dl7::json::Format']]],
-  ['allow_5funquoted_5fkeys_9',['allow_unquoted_keys',['../df/d52/structdl7_1_1json_1_1Format.html#a49160a3419321b34533f45dab42b2101',1,'dl7::json::Format']]],
-  ['alpha_5foperation_10',['alpha_operation',['../d1/da4/structxl7_1_1graphics_1_1states_1_1BlendState_1_1Desc.html#a1ccb6d7a5e8ffd0571d1e8c869f029c5',1,'xl7::graphics::states::BlendState::Desc']]],
-  ['assertions_11',['assertions',['../de/d12/structtl7_1_1Stats.html#a855fa55d101adcdefde55c431ba18ab1',1,'tl7::Stats']]],
-  ['available_5fphysical_5fmemory_12',['available_physical_memory',['../d1/d7a/structcl7_1_1system_1_1MemoryStatus.html#a4e09c6f6c358c2392469d6f82e74a944',1,'cl7::system::MemoryStatus']]],
-  ['avg_5fpct_13',['avg_pct',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a4e78bb0152f00bcbe2f76570167d85b5',1,'cl7::profiling::Sample']]],
-  ['avg_5fusecs_14',['avg_usecs',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a198648d094bcd71fc79dea245d00689b',1,'cl7::profiling::Sample']]]
+  ['aliases_7',['aliases',['../d6/d6b/structxl7_1_1BackendRegistry_1_1RegistryEntry.html#abbc47cbf3c38c8a241dacadb4d847312',1,'xl7::BackendRegistry::RegistryEntry::aliases'],['../df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html#a93c89b261d11965453de06facb283753',1,'xl7::DriverResolver::DriverEntry::aliases']]],
+  ['allow_5fnesting_8',['allow_nesting',['../d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html#ac75bad3071a2fdabad260547e96eb590',1,'dl7::syntax::matchers::BlockCommentMatcher']]],
+  ['allow_5fsingle_5fquotes_9',['allow_single_quotes',['../df/d52/structdl7_1_1json_1_1Format.html#a0be86fe44d6aff88749ec868ff1e2dbf',1,'dl7::json::Format']]],
+  ['allow_5ftearing_10',['allow_tearing',['../d2/d33/structxl7_1_1Config_1_1Video.html#ab95a27e5ff4ccbba4d0682fc9ae45055',1,'xl7::Config::Video']]],
+  ['allow_5funquoted_5fkeys_11',['allow_unquoted_keys',['../df/d52/structdl7_1_1json_1_1Format.html#a49160a3419321b34533f45dab42b2101',1,'dl7::json::Format']]],
+  ['alpha_5foperation_12',['alpha_operation',['../d1/da4/structxl7_1_1graphics_1_1states_1_1BlendState_1_1Desc.html#a1ccb6d7a5e8ffd0571d1e8c869f029c5',1,'xl7::graphics::states::BlendState::Desc']]],
+  ['assertions_13',['assertions',['../de/d12/structtl7_1_1Stats.html#a855fa55d101adcdefde55c431ba18ab1',1,'tl7::Stats']]],
+  ['available_5fphysical_5fmemory_14',['available_physical_memory',['../d1/d7a/structcl7_1_1system_1_1MemoryStatus.html#a4e09c6f6c358c2392469d6f82e74a944',1,'cl7::system::MemoryStatus']]],
+  ['avg_5fpct_15',['avg_pct',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a4e78bb0152f00bcbe2f76570167d85b5',1,'cl7::profiling::Sample']]],
+  ['avg_5fusecs_16',['avg_usecs',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a198648d094bcd71fc79dea245d00689b',1,'cl7::profiling::Sample']]]
 ];

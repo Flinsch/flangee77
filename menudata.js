@@ -223,7 +223,6 @@ var menudata={children:[
 {text:"All",url:"globals.html",children:[
 {text:"_",url:"globals.html#index__5F"},
 {text:"d",url:"globals.html#index_d"},
-{text:"g",url:"globals.html#index_g"},
 {text:"i",url:"globals.html#index_i"},
 {text:"l",url:"globals.html#index_l"},
 {text:"p",url:"globals.html#index_p"},

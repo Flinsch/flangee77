@@ -14,7 +14,7 @@ var classxl7_1_1Component =
     [ "_shutdown", "db/d24/classxl7_1_1Component.html#ada35093d987886b46d44116a95dee323", null ],
     [ "get_config", "db/d24/classxl7_1_1Component.html#af61c019d3661312465736ab55c21e4c1", null ],
     [ "get_state", "db/d24/classxl7_1_1Component.html#a1b07575d9d439583d7bc76f9846f0fff", null ],
-    [ "init", "db/d24/classxl7_1_1Component.html#a7ed68dcbf84d8847d5be4d0d88721058", null ],
+    [ "init", "db/d24/classxl7_1_1Component.html#a1b850a4ae4b6186c4f7fb8470d14f71c", null ],
     [ "is_operational", "db/d24/classxl7_1_1Component.html#a2f04fdadeeed4f7980514c6b182d1be5", null ],
     [ "operator=", "db/d24/classxl7_1_1Component.html#ae2fde17a3a1163ddc146fb1fca52d5e7", null ],
     [ "operator=", "db/d24/classxl7_1_1Component.html#a445d3b362b15a545310a8ebe4f3dfa0c", null ],

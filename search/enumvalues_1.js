@@ -15,5 +15,6 @@ var searchData=
   ['boolean_12',['Boolean',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caa27226c864bac7454a8504f8edb15d95b',1,'dl7::json::Json']]],
   ['border_13',['Border',['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#a4f8492702caa383f50f8ebd226c1ecb4a070554647306343cbea29ebfdd278ba8',1,'xl7::graphics::states::SamplerState']]],
   ['borderless_14',['Borderless',['../da/df2/classxl7_1_1MainWindow.html#a65d67e130764aea53e92a93a196e76e7a78f0192ac55eba33ee88d026452952e5',1,'xl7::MainWindow']]],
-  ['bytecode_15',['Bytecode',['../d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html#a67a32fc444b59dd218cbcacc4cb8b2e1afc348a9ae898bbbe1406eecc7db967d7',1,'xl7::graphics::shaders::ShaderCode']]]
+  ['borderlessfullscreen_15',['BorderlessFullscreen',['../d2/d33/structxl7_1_1Config_1_1Video.html#ae385a3a6e937c6aef106ebdf94bd0e59ac1999bb36fd75c30832ec398d5b249ea',1,'xl7::Config::Video']]],
+  ['bytecode_16',['Bytecode',['../d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html#a67a32fc444b59dd218cbcacc4cb8b2e1afc348a9ae898bbbe1406eecc7db967d7',1,'xl7::graphics::shaders::ShaderCode']]]
 ];

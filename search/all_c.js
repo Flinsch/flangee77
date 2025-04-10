@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['language_0',['language',['../d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html#a67a32fc444b59dd218cbcacc4cb8b2e1',1,'xl7::graphics::shaders::ShaderCode::Language'],['../db/d7e/structxl7_1_1graphics_1_1shaders_1_1Shader_1_1Desc.html#ac10054ab3bfd90e03b41751e10f81009',1,'xl7::graphics::shaders::Shader::Desc::language']]],
+  ['language_0',['language',['../db/d7e/structxl7_1_1graphics_1_1shaders_1_1Shader_1_1Desc.html#ac10054ab3bfd90e03b41751e10f81009',1,'xl7::graphics::shaders::Shader::Desc::language'],['../d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html#a67a32fc444b59dd218cbcacc4cb8b2e1',1,'xl7::graphics::shaders::ShaderCode::Language']]],
   ['layout_1',['layout',['../d4/d9e/structxl7_1_1graphics_1_1shaders_1_1ConstantBuffer_1_1Desc.html#aca60d580f4040c77533300b9f2460709',1,'xl7::graphics::shaders::ConstantBuffer::Desc::layout'],['../dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html#af3ddf62deb3fd0f5d099cb11d6aec724',1,'xl7::graphics::shaders::ConstantBufferDeclaration::layout']]],
   ['left_5fcurly_5fbracket_2',['LEFT_CURLY_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989aa57529caab966ddb18bbdc45d97438f9',1,'dl7::json::detail']]],
   ['left_5fsquare_5fbracket_3',['LEFT_SQUARE_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989ae7401bd44c58fa0eb237be3d1ce7c426',1,'dl7::json::detail']]],
@@ -49,7 +49,7 @@ var searchData=
   ['load_5ffrom_46',['load_from',['../df/d4a/classxl7_1_1graphics_1_1images_1_1ImageHandler.html#a3470006d99ab0d3b6f10e1b96bea5acb',1,'xl7::graphics::images::ImageHandler']]],
   ['load_5ffrom_5ffile_47',['load_from_file',['../df/d4a/classxl7_1_1graphics_1_1images_1_1ImageHandler.html#a7734919444479229c7caff6544917cbf',1,'xl7::graphics::images::ImageHandler']]],
   ['lod_5fbias_48',['lod_bias',['../d2/dcd/structxl7_1_1graphics_1_1states_1_1SamplerState_1_1Desc.html#aaf83f296b03c5c5b0572245803ef642e',1,'xl7::graphics::states::SamplerState::Desc']]],
-  ['log_49',['log',['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ace0be71e33226e4c1db2bcea5959f16b',1,'cl7::logging::Log'],['../d5/d77/logging_8h.html#a158a8c64f24645c7478298399825737f',1,'LOG:&#160;logging.h'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#ad0169f921cd35b7f5ee5930638514037',1,'cl7::logging::Logger::log()']]],
+  ['log_49',['log',['../d5/d77/logging_8h.html#a158a8c64f24645c7478298399825737f',1,'LOG:&#160;logging.h'],['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ace0be71e33226e4c1db2bcea5959f16b',1,'cl7::logging::Log'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#ad0169f921cd35b7f5ee5930638514037',1,'cl7::logging::Logger::log()']]],
   ['log_5ferror_50',['LOG_ERROR',['../d5/d77/logging_8h.html#a7ebf4c3b4fb05d6f9094089ded75cbdd',1,'logging.h']]],
   ['log_5finfo_51',['LOG_INFO',['../d5/d77/logging_8h.html#ac8e803773221119947b55f6ae85a9c63',1,'logging.h']]],
   ['log_5fsuccess_52',['LOG_SUCCESS',['../d5/d77/logging_8h.html#a0f0159f0d51c4f3236da669c55474f46',1,'logging.h']]],
@@ -60,7 +60,7 @@ var searchData=
   ['logcontext_2eh_57',['LogContext.h',['../df/d15/LogContext_8h.html',1,'']]],
   ['logentry_58',['LogEntry',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html',1,'cl7::logging']]],
   ['logentry_2eh_59',['LogEntry.h',['../d4/d8d/LogEntry_8h.html',1,'']]],
-  ['logger_60',['logger',['../df/dc2/classcl7_1_1logging_1_1Logger.html#a9184bacc8747c6f28a4f29971f99cb89',1,'cl7::logging::Logger::Logger(Logger &amp;&amp;)=delete'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#aedaabe4a04737734002c9bdf6f0f1892',1,'cl7::logging::Logger::Logger(const Logger &amp;)=delete'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#a8c10e2cf2a9aa0149283f7651cb4460d',1,'cl7::logging::Logger::Logger()=default'],['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a7f8bb9e9cf3071b88972022362521bcd',1,'cl7::logging::LogContext::logger'],['../df/dc2/classcl7_1_1logging_1_1Logger.html',1,'cl7::logging::Logger']]],
+  ['logger_60',['logger',['../df/dc2/classcl7_1_1logging_1_1Logger.html#aedaabe4a04737734002c9bdf6f0f1892',1,'cl7::logging::Logger::Logger(const Logger &amp;)=delete'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#a8c10e2cf2a9aa0149283f7651cb4460d',1,'cl7::logging::Logger::Logger()=default'],['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a7f8bb9e9cf3071b88972022362521bcd',1,'cl7::logging::LogContext::logger'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#a9184bacc8747c6f28a4f29971f99cb89',1,'cl7::logging::Logger::Logger()'],['../df/dc2/classcl7_1_1logging_1_1Logger.html',1,'cl7::logging::Logger']]],
   ['logger_2ecpp_61',['Logger.cpp',['../d9/df5/Logger_8cpp.html',1,'']]],
   ['logger_2eh_62',['Logger.h',['../dd/da4/Logger_8h.html',1,'']]],
   ['logging_2ecpp_63',['logging.cpp',['../dd/daf/logging_8cpp.html',1,'']]],
