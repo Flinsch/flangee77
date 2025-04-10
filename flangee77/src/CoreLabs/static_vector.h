@@ -26,8 +26,8 @@ public:
     using pointer = value_type*;
     using const_pointer = const value_type*;
 
-    using iterator = cl7::continuous_forward_iterator<false, value_type>;
-    using const_iterator = cl7::continuous_forward_iterator<true, value_type>;
+    using iterator = cl7::contiguous_iterator<false, value_type>;
+    using const_iterator = cl7::contiguous_iterator<true, value_type>;
 
 
 

@@ -33,7 +33,7 @@ public:
         using pointer = const codepoint*;
         using reference = codepoint;
 
-        iterator() = delete;
+        iterator() = default;
         iterator(string_view_type input, const ErrorHandler* error_handler = nullptr)
             : _input(input)
             , _default_error_handler()
@@ -42,15 +42,19 @@ public:
             _decode();
         }
 
+        friend void swap(iterator& a, iterator& b) noexcept { std::swap(a, b); }
+
         size_t pos() const { return _pos; }
         DecodeResult result() const { return _decode_result; }
 
-        reference operator*() const { return _decode_result.codepoint; }
-        pointer operator->() const { return &_decode_result.codepoint; }
         iterator& operator++() { _advance_and_decode(); return *this; }
         iterator operator++(int) { iterator it = *this; ++(*this); return it; }
+
+        friend bool operator==(const iterator& a, const iterator& b) noexcept { return a._input == b._input && a._pos == b._pos; };
         friend bool operator==(const iterator& a, sentinel b) noexcept { return a._pos >= a._input.size(); }
-        friend bool operator!=(const iterator& a, sentinel b) noexcept { return !(a == b); }
+
+        reference operator*() const { return _decode_result.codepoint; }
+        pointer operator->() const { return &_decode_result.codepoint; }
 
     private:
         void _decode()
@@ -153,6 +157,8 @@ private:
     const ErrorHandler* _error_handler;
 
 }; // class Decoder
+
+static_assert(std::forward_iterator<Decoder<char>::iterator>);
 
 
 

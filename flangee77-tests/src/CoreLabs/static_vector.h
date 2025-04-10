@@ -231,9 +231,9 @@ TESTLABS_CASE( u8"CoreLabs:  static_vector:  erase" )
     TESTLABS_CHECK_EQ( static_vector[0], 1 );
     TESTLABS_CHECK_EQ( static_vector[1], 4 );
 
-    it = static_vector.erase( static_vector.begin() );
+    it = static_vector.erase( static_vector.end() - 2 );
     TESTLABS_CHECK_EQ( static_vector.size(), 1 );
-    TESTLABS_CHECK( *it, 4 );
+    TESTLABS_CHECK_EQ( *it, 4 );
 }
 
 

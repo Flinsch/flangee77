@@ -31,8 +31,8 @@ public:
 
     using vector_type = std::vector<std::pair<Key, T>, Allocator>;
 
-    using iterator = cl7::continuous_forward_iterator<false, value_type, typename vector_type::value_type>;
-    using const_iterator = cl7::continuous_forward_iterator<true, value_type, typename vector_type::value_type>;
+    using iterator = cl7::contiguous_iterator<false, value_type, typename vector_type::value_type>;
+    using const_iterator = cl7::contiguous_iterator<true, value_type, typename vector_type::value_type>;
 
 
 
