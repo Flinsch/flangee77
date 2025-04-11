@@ -1,5 +1,7 @@
 #include "Config.h"
 
+#include <windows.h>
+
 
 
 namespace xl7 {
@@ -8,19 +10,21 @@ namespace xl7 {
 
     Config::Config()
     {
-        generic.window.title = u8"flangee77";
-        generic.window.icon_handle = nullptr;
-        generic.window.small_icon_handle = nullptr;
+        general.title = u8"flangee77";
 
-        //generic.console_key = VK_OEM_5;
-        generic.console_key = VK_F1;
-        generic.quit_key = VK_F10;
-        generic.use_hardware_cursor = false;
+        //general.console_key = VK_OEM_5;
+        general.console_key = VK_F1;
+        general.quit_key = VK_F10;
+        general.use_hardware_cursor = false;
 
-        video.display_mode.fullscreen = false;
-        video.display_mode.width = 0;
-        video.display_mode.height = 0;
-        video.display_mode.refresh_rate = 0;
+        video.driver_name = u8"Direct3D";
+        video.presentation_mode = Video::PresentationMode::BorderlessFullscreen;
+        video.back_buffer_width = 0;
+        video.back_buffer_height = 0;
+        video.back_buffer_count = 2;
+        video.refresh_rate = 0;
+        video.vsync_enabled = false;
+        video.allow_tearing = true;
     }
 
 

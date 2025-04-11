@@ -133,14 +133,16 @@ namespace xl7::graphics::impl::direct3d11 {
             hardware_states.render_target_views[target_index] = nullptr;
         }
 
-        // Reset depth/stencil view.
+        // Resetting the depth/stencil view and the viewport is actually not necessary.
+        // The depth/stencil buffer doesn't rotate through the swap chain at all
+        // and is explicitly set along with the render target(s) anyway.
+        // Any unchanged viewport data is also preserved.
+        // But since they belong together, it is good practice to freshly set them
+        // anyway, so we make this quite explicit here for the sake of completeness.
         hardware_states.depth_stencil_view = nullptr;
+        hardware_states.viewport = {0};
 
-        // Resetting the viewport every frame is probably not necessary,
-        // but is still recommended in the context of the flip model.
-        hardware_states.viewport = {};
-
-        // 
+        // Reset temporary constant buffers since they are ... temporary.
         _temp_d3d_constant_buffer_wrappers.clear();
 
         return true;

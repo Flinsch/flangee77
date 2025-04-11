@@ -301,6 +301,51 @@ TESTLABS_CASE( u8"CoreLabs:  ordered_map:  erase" )
 
 
 
+TESTLABS_CASE( u8"CoreLabs:  ordered_map:  iterate / \"random\" access" )
+{
+    cl7::ordered_map<int, int> ordered_map{
+        { 1, 5 },
+        { 2, 6 },
+        { 3, 7 },
+        { 4, 8 },
+    };
+
+    TESTLABS_CHECK_EQ( ordered_map.size(), 4 );
+
+    size_t i = 0;
+
+    for (const auto& p : ordered_map)
+    {
+        ++i;
+        const auto& a = p.second;
+        const auto& b = ordered_map[p.first];
+        TESTLABS_CHECK_EQ( a, b );
+        TESTLABS_CHECK_EQ( a, i + 4 );
+        TESTLABS_CHECK_EQ( p.first, i );
+        if (i > 0)
+            TESTLABS_CHECK_EQ( (ordered_map.begin() + i)[-1].second, std::prev(ordered_map.begin() + i)->second );
+    }
+
+    TESTLABS_CHECK_EQ( i, ordered_map.size() );
+
+    for (auto it = ordered_map.rbegin(); it != ordered_map.rend(); ++it)
+    {
+        --i;
+        const auto& a = it->second;
+        const auto& b = ordered_map[it->first];
+        TESTLABS_CHECK_EQ( a, b );
+        TESTLABS_CHECK_EQ( it[0].second, b );
+        TESTLABS_CHECK_EQ( a, i + 5 );
+        TESTLABS_CHECK_EQ( it->first, i + 1 );
+        if (i > 0)
+            TESTLABS_CHECK_EQ( it[1].second, std::next(it)->second );
+    }
+
+    TESTLABS_CHECK_EQ( i, 0 );
+}
+
+
+
 TESTLABS_CASE( u8"CoreLabs:  ordered_map:  miscellaneous / string/struct" )
 {
     struct item

@@ -4,6 +4,7 @@
 
 #include "./CoreLabs/bits.h"
 #include "./CoreLabs/ordered_map.h"
+#include "./CoreLabs/static_vector.h"
 #include "./CoreLabs/strings.h"
 #include "./CoreLabs/Guid.h"
 #include "./CoreLabs/Version.h"
@@ -27,6 +28,7 @@
 
 #include "./ProgLabs/ArgumentBag.h"
 
+#include "./XiaoLabs/general.h"
 #include "./XiaoLabs/graphics.h"
 
 

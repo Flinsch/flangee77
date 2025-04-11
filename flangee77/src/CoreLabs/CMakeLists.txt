@@ -25,6 +25,7 @@ target_sources(flangee77
     root.h
     sstream.cpp
     sstream.h
+    static_vector.h
     string.cpp
     string.h
     strings.cpp

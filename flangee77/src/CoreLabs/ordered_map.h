@@ -31,8 +31,11 @@ public:
 
     using vector_type = std::vector<std::pair<Key, T>, Allocator>;
 
-    using iterator = cl7::continuous_forward_iterator<false, value_type, typename vector_type::value_type>;
-    using const_iterator = cl7::continuous_forward_iterator<true, value_type, typename vector_type::value_type>;
+    using iterator = cl7::contiguous_iterator<false, value_type, typename vector_type::value_type>;
+    using const_iterator = cl7::contiguous_iterator<true, value_type, typename vector_type::value_type>;
+
+    using reverse_iterator = std::reverse_iterator<iterator>;
+    using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
 
 
@@ -279,9 +282,9 @@ public:
     }
 
     /** Erases elements. */
-    iterator erase(iterator it)
+    iterator erase(iterator pos)
     {
-        const size_t index = reinterpret_cast<typename vector_type::value_type*>(it.operator->()) - _vector.data();
+        const size_t index = reinterpret_cast<typename vector_type::value_type*>(pos.operator->()) - _vector.data();
         if (index >= _vector.size())
             return end();
         _erase(index);
@@ -289,9 +292,9 @@ public:
     }
 
     /** Erases elements. */
-    iterator erase(const_iterator it)
+    iterator erase(const_iterator pos)
     {
-        const size_t index = reinterpret_cast<const typename vector_type::value_type*>(it.operator->()) - _vector.data();
+        const size_t index = reinterpret_cast<const typename vector_type::value_type*>(pos.operator->()) - _vector.data();
         if (index >= _vector.size())
             return end();
         _erase(index);
@@ -311,13 +314,20 @@ public:
 
 
     iterator begin() noexcept { return {_vector.data()}; }
-    iterator end() noexcept { return {_vector.data() + _vector.size()}; }
-
     const_iterator begin() const noexcept { return {_vector.data()}; }
-    const_iterator end() const noexcept { return {_vector.data() + _vector.size()}; }
-
     const_iterator cbegin() const noexcept { return {_vector.data()}; }
+
+    iterator end() noexcept { return {_vector.data() + _vector.size()}; }
+    const_iterator end() const noexcept { return {_vector.data() + _vector.size()}; }
     const_iterator cend() const noexcept { return {_vector.data() + _vector.size()}; }
+
+    reverse_iterator rbegin() noexcept { return std::reverse_iterator<iterator>(end()); }
+    const_reverse_iterator rbegin() const noexcept { return std::reverse_iterator<const_iterator>(end()); }
+    const_reverse_iterator crbegin() const noexcept { return std::reverse_iterator<const_iterator>(end()); }
+
+    reverse_iterator rend() noexcept { return std::reverse_iterator<iterator>(begin()); }
+    const_reverse_iterator rend() const noexcept { return std::reverse_iterator<const_iterator>(begin()); }
+    const_reverse_iterator crend() const noexcept { return std::reverse_iterator<const_iterator>(begin()); }
 
 
 

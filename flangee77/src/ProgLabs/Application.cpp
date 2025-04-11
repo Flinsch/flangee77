@@ -79,11 +79,16 @@ namespace pl7 {
         auto log_handler = std::make_shared<cl7::logging::HtmlLogHandler>();
         cl7::logging::StandardLogger::instance().clear_log_handlers().add_log_handler(log_handler);
 
-        xl7::Config config;
+        // "Touch" the "X" pre-config provider
+        // and get the "default" settings.
+        auto config = xl7::config_provider().get_config();
 
         // Perform "custom" pre-initialization.
         if (!_pre_init_impl(config))
             return false;
+
+        // Write the settings back to the provider.
+        xl7::config_provider().set_config(config);
 
         // Print out CPU identification/information.
         LOG_TYPE(u8"CPU identification/information:", cl7::logging::LogType::Caption);
@@ -92,9 +97,9 @@ namespace pl7 {
             LOG_WARNING(u8"Unable to retrieve CPU identification/information.");
         LOG_TYPE(u8"Vendor name\t" + cl7::u8string{cpuid.vendor_name}, cl7::logging::LogType::Item);
         LOG_TYPE(u8"Processor name\t" + cl7::u8string{cpuid.processor_name}, cl7::logging::LogType::Item);
-        if (std::endian::native == std::endian::little)
+        if constexpr (std::endian::native == std::endian::little)
             LOG_TYPE(u8"Endianness\tlittle endian", cl7::logging::LogType::Item);
-        if (std::endian::native == std::endian::big)
+        if constexpr (std::endian::native == std::endian::big)
             LOG_TYPE(u8"Endianness\tbig endian", cl7::logging::LogType::Item);
         if (cpuid.bitness && cpuid.bitness != sizeof(size_t) * 8)
             LOG_TYPE(u8"Bitness\t" + cl7::to_string(cpuid.bitness) + u8"-bit" + u8" (application: " + cl7::to_string(sizeof(size_t) * 8) + u8"-bit" + u8")", cl7::logging::LogType::Item);
@@ -112,15 +117,15 @@ namespace pl7 {
         LOG_TYPE(u8"Available physical memory\t" + cl7::memory::stringify_byte_amount_si(memory_status.available_physical_memory), cl7::logging::LogType::Item);
 
         // 
-        if (sizeof(size_t) == 4)
+        if constexpr (sizeof(size_t) == 4)
             LOG_TYPE(u8"Apologies for sticking to 32-bit and thus limiting usable memory. But this software doesn't need more either. \U0001f618", cl7::logging::LogType::Comment);
 
         // Create the main window.
-        if (!xl7::main_window().init(config))
+        if (!xl7::main_window().init())
             return false;
 
         // Initialize the graphics system.
-        if (!xl7::graphics::graphics_system().init(config))
+        if (!xl7::graphics::graphics_system().init())
             return false;
 
         // Show the main window.

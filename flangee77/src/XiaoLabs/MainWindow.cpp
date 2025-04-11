@@ -190,8 +190,8 @@ namespace xl7 {
         const int screen_height = ::GetSystemMetrics(SM_CYSCREEN);
 
         // ...and the desired window size.
-        int width = static_cast<int>(get_config().video.display_mode.width);
-        int height = static_cast<int>(get_config().video.display_mode.height);
+        int width = static_cast<int>(get_config().video.back_buffer_width);
+        int height = static_cast<int>(get_config().video.back_buffer_height);
         if (width <= 0 || height <= 0)
         {
             // If no legal size has been specified,
@@ -201,7 +201,7 @@ namespace xl7 {
         }
 
         // Fetch the desired window title.
-        _title = get_config().generic.window.title;
+        _title = get_config().general.title;
 
         // Define the window style and position,
         // depending on the display mode.
@@ -209,22 +209,26 @@ namespace xl7 {
         DWORD style;
         int x;
         int y;
-        if (get_config().video.display_mode.fullscreen)
+        if (get_config().video.presentation_mode == Config::Video::PresentationMode::ExclusiveFullscreen)
         {
             // Fullscreen mode
             display_mode = DisplayMode::Fullscreen;
             style = WS_POPUP | WS_MAXIMIZE;
             x = y = 0;
         }
-        else if (width == screen_width && height == screen_height)
+        else if (get_config().video.presentation_mode == Config::Video::PresentationMode::BorderlessFullscreen)
         {
             // Borderless mode
             display_mode = DisplayMode::Borderless;
             style = WS_POPUP | WS_MAXIMIZE;
             x = y = 0;
+            // Force width and height to match the desktop size.
+            width = screen_width;
+            height = screen_height;
         }
         else
         {
+            assert(get_config().video.presentation_mode == Config::Video::PresentationMode::Windowed);
             // Windowed mode
             display_mode = DisplayMode::Windowed;
             style = WS_OVERLAPPEDWINDOW;
@@ -232,7 +236,7 @@ namespace xl7 {
             y = (screen_height - height) / 2;
         }
 
-        std::wstring window_name{cl7::strings::reinterpret_utf16(cl7::strings::to_utf16(_title))};
+        const std::wstring window_name{cl7::strings::reinterpret_utf16(cl7::strings::to_utf16(_title))};
 
         // Create the window.
         _handle = ::CreateWindowExW(
@@ -260,7 +264,7 @@ namespace xl7 {
         _height = static_cast<unsigned>(height);
 
         // Hide the hardware cursor?
-        if (!get_config().generic.use_hardware_cursor)
+        if (!get_config().general.use_hardware_cursor)
             ::ShowCursor(FALSE);
 
         return true;
@@ -335,7 +339,7 @@ namespace xl7 {
         case WM_KEYDOWN:
         case WM_SYSKEYDOWN:
         {
-            if (MainWindow::instance()._active && wparam == MainWindow::instance().get_config().generic.quit_key)
+            if (MainWindow::instance()._active && wparam == MainWindow::instance().get_config().general.quit_key)
                 ::PostQuitMessage(0);
             break;
         }

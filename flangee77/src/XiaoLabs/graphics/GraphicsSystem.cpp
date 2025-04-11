@@ -1,24 +1,16 @@
 #include "GraphicsSystem.h"
 
-#if XL7_GRAPHICS_IMPL == XL7_GRAPHICS_IMPL_DIRECT3D9
-#define XL7_GRAPHICS_IMPL_NAME "Direct3D 9"
-#include "./impl/direct3d9/GraphicsSystemImpl.h"
-using GraphicsSystemImpl = xl7::graphics::impl::direct3d9::GraphicsSystemImpl;
+#if !defined(_MSC_VER) && !defined(XL7_GRAPHICS_IMPL_DIRECT3D11_DISABLED)
+#define XL7_GRAPHICS_IMPL_DIRECT3D11_DISABLED
+#endif
 
-#elif XL7_GRAPHICS_IMPL == XL7_GRAPHICS_IMPL_DIRECT3D11 && defined(_MSC_VER)
-#define XL7_GRAPHICS_IMPL_NAME "Direct3D 11"
+#if !defined(XL7_GRAPHICS_IMPL_DIRECT3D11_DISABLED)
 #include "./impl/direct3d11/GraphicsSystemImpl.h"
-typedef xl7::graphics::impl::direct3d11::GraphicsSystemImpl GraphicsSystemImpl;
-
-#else
-#ifdef XL7_GRAPHICS_IMPL
-#error Bad XL7_GRAPHICS_IMPL definition.
-#else
-#error Missing XL7_GRAPHICS_IMPL definition.
-#endif
 #endif
 
-#pragma message("The XiaoLabs graphics implementation is based on " XL7_GRAPHICS_IMPL_NAME ".")
+#if !defined(XL7_GRAPHICS_IMPL_DIRECT3D9_DISABLED)
+#include "./impl/direct3d9/GraphicsSystemImpl.h"
+#endif
 
 #include <CoreLabs/logging.h>
 
@@ -48,7 +40,7 @@ namespace xl7::graphics {
 
     GraphicsSystem* GraphicsSystem::factory_func()
     {
-        return new GraphicsSystemImpl();
+        return backend_registry().resolve(config_provider().get_config().video.driver_name);
     }
 
 
@@ -65,9 +57,9 @@ namespace xl7::graphics {
         const bool result = _init_before_rendering_device_impl() && _create_rendering_device();
 
         if (result)
-            LOG_SUCCESS(u8"The graphics component based on " XL7_GRAPHICS_IMPL_NAME " has been successfully initialized.");
+            LOG_SUCCESS(u8"The graphics component based on " + cl7::u8string{get_driver_name()} + u8" has been successfully initialized.");
         else
-            LOG_ERROR(u8"The graphics component based on " XL7_GRAPHICS_IMPL_NAME " could not be initialized.");
+            LOG_ERROR(u8"The graphics component based on " + cl7::u8string{get_driver_name()} + u8" could not be initialized.");
 
         return result;
     }
@@ -82,9 +74,9 @@ namespace xl7::graphics {
             result = false;
 
         if (result)
-            LOG_SUCCESS(u8"The graphics component based on " XL7_GRAPHICS_IMPL_NAME " has been shut down successfully.");
+            LOG_SUCCESS(u8"The graphics component based on " + cl7::u8string{get_driver_name()} + u8" has been shut down successfully.");
         else
-            LOG_WARNING(u8"The graphics component based on " XL7_GRAPHICS_IMPL_NAME " could not be shut down correctly.");
+            LOG_WARNING(u8"The graphics component based on " + cl7::u8string{get_driver_name()} + u8" could not be shut down correctly.");
 
         return result;
     }
