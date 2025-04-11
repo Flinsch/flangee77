@@ -29,6 +29,9 @@ public:
     using iterator = cl7::contiguous_iterator<false, value_type>;
     using const_iterator = cl7::contiguous_iterator<true, value_type>;
 
+    using reverse_iterator = std::reverse_iterator<iterator>;
+    using const_reverse_iterator = std::reverse_iterator<const_iterator>;
+
 
 
     static_vector() = default;
@@ -237,13 +240,20 @@ public:
 
 
     iterator begin() noexcept { return {_data.data()}; }
-    iterator end() noexcept { return {_data.data() + _size}; }
-
     const_iterator begin() const noexcept { return {_data.data()}; }
-    const_iterator end() const noexcept { return const_iterator(_data.data() + _size); }
-
     const_iterator cbegin() const noexcept { return {_data.data()}; }
+
+    iterator end() noexcept { return {_data.data() + _size}; }
+    const_iterator end() const noexcept { return {_data.data() + _size}; }
     const_iterator cend() const noexcept { return {_data.data() + _size}; }
+
+    reverse_iterator rbegin() noexcept { return std::reverse_iterator<iterator>(end()); }
+    const_reverse_iterator rbegin() const noexcept { return std::reverse_iterator<const_iterator>(end()); }
+    const_reverse_iterator crbegin() const noexcept { return std::reverse_iterator<const_iterator>(end()); }
+
+    reverse_iterator rend() noexcept { return std::reverse_iterator<iterator>(begin()); }
+    const_reverse_iterator rend() const noexcept { return std::reverse_iterator<const_iterator>(begin()); }
+    const_reverse_iterator crend() const noexcept { return std::reverse_iterator<const_iterator>(begin()); }
 
 
 

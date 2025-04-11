@@ -238,4 +238,44 @@ TESTLABS_CASE( u8"CoreLabs:  static_vector:  erase" )
 
 
 
+TESTLABS_CASE( u8"CoreLabs:  static_vector:  iterate / \"random\" access" )
+{
+    cl7::static_vector<int, 10> static_vector{
+        { 1 },
+        { 2 },
+        { 3 },
+        { 4 },
+    };
+
+    TESTLABS_CHECK_EQ( static_vector.size(), 4 );
+
+    size_t i = 0;
+
+    for (const auto& a : static_vector)
+    {
+        const auto& b = static_vector[i++];
+        TESTLABS_CHECK_EQ( a, b );
+        TESTLABS_CHECK_EQ( a, i );
+        if (i > 0)
+            TESTLABS_CHECK_EQ( (static_vector.begin() + i)[-1], *std::prev(static_vector.begin() + i) );
+    }
+
+    TESTLABS_CHECK_EQ( i, static_vector.size() );
+
+    for (auto it = static_vector.rbegin(); it != static_vector.rend(); ++it)
+    {
+        const auto& a = *it;
+        const auto& b = static_vector[--i];
+        TESTLABS_CHECK_EQ( a, b );
+        TESTLABS_CHECK_EQ( it[0], b );
+        TESTLABS_CHECK_EQ( a, i + 1 );
+        if (i > 0)
+            TESTLABS_CHECK_EQ( it[1], *std::next(it) );
+    }
+
+    TESTLABS_CHECK_EQ( i, 0 );
+}
+
+
+
 #endif // F77_TESTS_CL7_STATICVECTOR_H
