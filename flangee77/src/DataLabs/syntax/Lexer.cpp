@@ -113,7 +113,12 @@ namespace dl7::syntax {
                 _source_location.column = 1;
 
                 if (line_break > 1)
-                    _source_location.offset += line_break - 1; // Skip second line-break character, i.e. LF (`\n`) after CR (`\r`) on Windows.
+                {
+                    // Skip second line-break character, i.e. LF (`\n`) after CR (`\r`) on Windows.
+                    assert(line_break == 2);
+                    _source_location.offset += line_break - 1;
+                    i += line_break - 1;
+                }
             }
             else
             {
