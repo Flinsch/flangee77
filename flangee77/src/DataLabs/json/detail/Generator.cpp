@@ -179,7 +179,7 @@ namespace dl7::json::detail {
             constexpr decimal_t max_int = std::numeric_limits<signed long>::max();
             if (int_part >= min_int && int_part <= max_int)
                 return oss << static_cast<signed long>(int_part) << u8".0";
-            return oss << std::scientific << int_part;
+            return oss << std::defaultfloat << int_part;
         }
 
         return oss << std::defaultfloat << decimal;
