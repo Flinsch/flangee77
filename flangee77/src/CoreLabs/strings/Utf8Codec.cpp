@@ -141,7 +141,7 @@ namespace cl7::strings {
         if (output.empty())
         {
             return {
-                error_handler.on_exhausted_output_space(error_status, encoding, codepoint_result),
+                error_handler.process_exhausted_output_space(error_status, encoding, codepoint_result),
                 {},
             };
         }
@@ -171,7 +171,7 @@ namespace cl7::strings {
             output[i] = buffer.data[i];
 
         return {
-            error_handler.on_insufficient_output_space(error_status, encoding, codepoint_result, length, output.size()),
+            error_handler.process_insufficient_output_space(error_status, encoding, codepoint_result, length, output.size()),
             output,
         };
     }
@@ -198,12 +198,12 @@ namespace cl7::strings {
             size_t length = _determine_decode_length(input, 2);
             if (length != 2)
             {
-                return error_handler.on_incomplete_sequence(error_status, input.substr(0, length), 2);
+                return error_handler.process_incomplete_sequence(error_status, input.substr(0, length), 2);
             }
 
             if (first < 0xc2) // overlong encoding (0 through 0x7f)
             {
-                return error_handler.on_overlong_encoding(error_status, input.substr(0, length));
+                return error_handler.process_overlong_encoding(error_status, input.substr(0, length));
             }
 
             return {
@@ -217,17 +217,17 @@ namespace cl7::strings {
             size_t length = _determine_decode_length(input, 3);
             if (length != 3)
             {
-                return error_handler.on_incomplete_sequence(error_status, input.substr(0, length), 3);
+                return error_handler.process_incomplete_sequence(error_status, input.substr(0, length), 3);
             }
 
             if (first == 0xe0 && input[1] < 0xa0) // overlong encoding (0 through 0x7ff)
             {
-                return error_handler.on_overlong_encoding(error_status, input.substr(0, length));
+                return error_handler.process_overlong_encoding(error_status, input.substr(0, length));
             }
 
             if (first == 0xed && input[1] >= 0xa0) // surrogate range 0xd800 through 0xdfff
             {
-                return error_handler.on_invalid_sequence(error_status, input.substr(0, length));
+                return error_handler.process_invalid_sequence(error_status, input.substr(0, length));
             }
 
             return {
@@ -241,17 +241,17 @@ namespace cl7::strings {
             size_t length = _determine_decode_length(input, 4);
             if (length != 4)
             {
-                return error_handler.on_incomplete_sequence(error_status, input.substr(0, length), 4);
+                return error_handler.process_incomplete_sequence(error_status, input.substr(0, length), 4);
             }
 
             if (first == 0xf0 && input[1] < 0x90) // overlong encoding (0 through 0xffff)
             {
-                return error_handler.on_overlong_encoding(error_status, input.substr(0, length));
+                return error_handler.process_overlong_encoding(error_status, input.substr(0, length));
             }
 
             if (first == 0xf4 && input[1] >= 0x90) // code range above 0x10ffff
             {
-                return error_handler.on_invalid_sequence(error_status, input.substr(0, length));
+                return error_handler.process_invalid_sequence(error_status, input.substr(0, length));
             }
 
             return {
@@ -262,29 +262,29 @@ namespace cl7::strings {
 
         if (/*first >= 0x80 && */first <= 0xbf) // unexpected continuation byte of unknown sequence
         {
-            return error_handler.on_invalid_code_unit(error_status, input.substr(0, 1));
+            return error_handler.process_invalid_code_unit(error_status, input.substr(0, 1));
         }
 
         if (/*first >= 0xf5 && */first <= 0xf7) // start of invalid 4-byte sequence (representing values of 0x140000 and above)
         {
             size_t length = _determine_decode_length(input, 4);
-            return error_handler.on_invalid_sequence(error_status, input.substr(0, length));
+            return error_handler.process_invalid_sequence(error_status, input.substr(0, length));
         }
 
         if (/*first >= 0xf8 && */first <= 0xfb) // start of invalid 5-byte sequence
         {
             size_t length = _determine_decode_length(input, 5);
-            return error_handler.on_invalid_sequence(error_status, input.substr(0, length));
+            return error_handler.process_invalid_sequence(error_status, input.substr(0, length));
         }
 
         if (/*first >= 0xfc && */first <= 0xfd) // start of invalid 6-byte sequence
         {
             size_t length = _determine_decode_length(input, 6);
-            return error_handler.on_invalid_sequence(error_status, input.substr(0, length));
+            return error_handler.process_invalid_sequence(error_status, input.substr(0, length));
         }
 
         assert(first >= 0xfe && first <= 0xff);
-        return error_handler.on_invalid_code_unit(error_status, input.substr(0, 1));
+        return error_handler.process_invalid_code_unit(error_status, input.substr(0, 1));
     }
 
 

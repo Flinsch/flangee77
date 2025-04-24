@@ -14,6 +14,13 @@ namespace dl7::json::detail {
     Lexer::Lexer(syntax::Diagnostics* diagnostics)
         : GenericLexer(diagnostics, &_terminal_symbols, {WhitespaceHandling::Discard})
     {
+        _init_symbols();
+    }
+
+
+
+    void Lexer::_init_symbols()
+    {
         _terminal_symbols.add_literal( NULL_CONSTANT, u8"null" );
         _terminal_symbols.add_literal( TRUE_CONSTANT, u8"true" );
         _terminal_symbols.add_literal( FALSE_CONSTANT, u8"false" );
@@ -36,6 +43,7 @@ namespace dl7::json::detail {
         _terminal_symbols.add_custom( LINE_COMMENT, syntax::matchers::LineCommentMatcher{} );
         _terminal_symbols.add_custom( BLOCK_COMMENT, syntax::matchers::BlockCommentMatcher{} );
     }
+
 
 
 

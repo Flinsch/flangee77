@@ -4,6 +4,9 @@
 #include <DataLabs/json/Json.h>
 #include <DataLabs/json/JsonReader.h>
 #include <DataLabs/json/JsonWriter.h>
+#include <DataLabs/json/util/Validator.h>
+#include <DataLabs/json/util/Escaper.h>
+#include <DataLabs/json/util/Unescaper.h>
 
 #include <TestLabs/TestSuite.h>
 
@@ -108,7 +111,7 @@ TESTLABS_CASE( u8"DataLabs:  json:  Json:  false" )
 
 
 
-TESTLABS_CASE( u8"DataLabs:  json:  JsonWriter:  is_valid_unquoted_key" )
+TESTLABS_CASE( u8"DataLabs:  json:  util::Validator::is_valid_unquoted_key" )
 {
     struct Entry
     {
@@ -183,9 +186,82 @@ TESTLABS_CASE( u8"DataLabs:  json:  JsonWriter:  is_valid_unquoted_key" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.key )
     {
-        TESTLABS_CHECK_EQ( dl7::json::Json::is_valid_unquoted_key( entry.key ), entry.expected );
+        TESTLABS_CHECK_EQ( dl7::json::util::Validator::is_valid_unquoted_key( entry.key ), entry.expected );
     }
 }
+
+
+
+TESTLABS_CASE( u8"DataLabs:  json:  util::Escaper::escape_string" )
+{
+    struct Entry
+    {
+        cl7::u8string raw_string;
+        dl7::json::util::Escaper::Options options;
+        cl7::u8string expected_string;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", {}, u8"" },
+        { u8"Hello World", {}, u8"Hello World" },
+        { u8"Hello\nWorld", {}, u8"Hello\\nWorld" },
+        { u8"Quote: \"", { dl7::json::util::Escaper::QuoteChar::DoubleQuote }, u8"Quote: \\\"" },
+        { u8"Quote: '", { dl7::json::util::Escaper::QuoteChar::DoubleQuote }, u8"Quote: '" },
+        { u8"Quote: \"", { dl7::json::util::Escaper::QuoteChar::SingleQuote }, u8"Quote: \"" },
+        { u8"Quote: '", { dl7::json::util::Escaper::QuoteChar::SingleQuote }, u8"Quote: \\'" },
+        { u8"\x01", {}, u8"\\u0001" },
+        { u8"\U0001f610", { {}, false }, u8"\U0001f610" },
+        { u8"\U0001f610", { {}, true }, u8"\\uD83D\\uDE10" },
+        { u8"\x07\x08\x09\x0a\x0b\x0c\x0d\x1a\x1b/\\", {}, u8"\\u0007\\b\\t\\n\\u000B\\f\\r\\u001A\\u001B/\\\\" },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.raw_string )
+    {
+        TESTLABS_CHECK_EQ( dl7::json::util::Escaper{}.escape_string( entry.raw_string, entry.options ), entry.expected_string );
+    }
+}
+
+
+
+TESTLABS_CASE( u8"DataLabs:  json:  util::Unescaper::unescape_string" )
+{
+    struct Entry
+    {
+        cl7::u8string json_string;
+        cl7::u8string expected_string;
+        bool expected_result = true;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", u8"" },
+        { u8"Hello World", u8"Hello World" },
+        { u8"Hello\\nWorld", u8"Hello\nWorld" },
+        { u8"Quote: \\\"", u8"Quote: \"" },
+        { u8"Quote: '", u8"Quote: '" },
+        { u8"Quote: \"", u8"Quote: \"" },
+        { u8"Quote: \\'", u8"Quote: '" },
+        { u8"\\u0001", u8"\x01" },
+        { u8"\U0001f610", u8"\U0001f610" },
+        { u8"\\uD83D\\uDE10", u8"\U0001f610" },
+        { u8"\\x07\\b\\t\\n\\v\\f\\r\\u001A\\u001B/\\/\\\\", u8"\x07\x08\x09\x0a\x0b\x0c\x0d\x1a\x1b//\\" },
+        { u8"a\\x61\\xF0\\x9f\\x98\\x90\\x61a", u8"aa\U0001f610aa", true },
+        { u8"a\\x61\\x9F\\xF0\\x98\\x90\\x61a", u8"aa\ufffd\ufffdaa", false },
+        { u8"\\", u8"\\", false },
+        { u8"\\uDE10\\uD83D", u8"\ufffd\ufffd", false },
+        { u8"\\u123", u8"\\u123", false },
+        { u8"\\x1", u8"\\x1", false },
+        { u8"\\yz", u8"\\yz", false },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.json_string )
+    {
+        TESTLABS_CHECK_EQ( dl7::json::util::Unescaper{}.unescape_string( entry.json_string ), entry.expected_string );
+        cl7::u8osstream oss;
+        TESTLABS_CHECK_EQ( dl7::json::util::Unescaper{}.unescape_string( oss, entry.json_string ), entry.expected_result );
+    }
+}
+
+
 
 TESTLABS_CASE( u8"DataLabs:  json:  JsonWriter:  to_string" )
 {
@@ -227,12 +303,54 @@ TESTLABS_CASE( u8"DataLabs:  json:  JsonReader / JsonWriter" )
     const std::vector<Entry> container {
         { u8"", dl7::json::JsonWriter::DEFAULT_FORMAT },
         { u8"null", dl7::json::JsonWriter::DEFAULT_FORMAT },
-        //{ u8"true", dl7::json::JsonWriter::DEFAULT_FORMAT },
-        //{ u8"false", dl7::json::JsonWriter::DEFAULT_FORMAT },
-        /*{
+        { u8"true", dl7::json::JsonWriter::DEFAULT_FORMAT },
+        { u8"false", dl7::json::JsonWriter::DEFAULT_FORMAT },
+        { u8"-7", dl7::json::JsonWriter::DEFAULT_FORMAT },
+        { u8"7", dl7::json::JsonWriter::DEFAULT_FORMAT },
+        { u8"7.0", dl7::json::JsonWriter::DEFAULT_FORMAT },
+        { u8"7e+10", dl7::json::JsonWriter::DEFAULT_FORMAT },
+        { u8"Hello World", dl7::json::JsonWriter::DEFAULT_FORMAT },
+        { u8"[]", dl7::json::JsonWriter::DEFAULT_FORMAT },
+        { u8"{}", dl7::json::JsonWriter::DEFAULT_FORMAT },
+        {
 u8"{\n"
 "    \"first_name\": \"John\",\n"
 "    \"last_name\": \"Smith\",\n"
+"    \"full_name\": \"John \\\"Pseudo\\\" Smith\",\n"
+"    \"is_alive\": true,\n"
+"    \"age\": 27,\n"
+"    \"address\": {\n"
+"        \"street_address\": \"21 2nd Street\",\n"
+"        \"city\": \"New York\",\n"
+"        \"state\": \"NY\",\n"
+"        \"postal_code\": \"10021-3100\"\n"
+"    },\n"
+"    \"phone_numbers\": [\n"
+"        {\n"
+"            \"type\": \"home\",\n"
+"            \"number\": \"212 555-1234\"\n"
+"        },\n"
+"        {\n"
+"            \"type\": \"office\",\n"
+"            \"number\": \"646 555-4567\"\n"
+"        }\n"
+"    ],\n"
+"    \"children\": [\n"
+"        \"Catherine\",\n"
+"        \"Thomas\",\n"
+"        \"Trevor\"\n"
+"    ],\n"
+"    \"spouse\": null,\n"
+"    \"emoji\": \"\U0001f610\",\n"
+"    \"is_confirmed\": false\n"
+"}",
+            dl7::json::JsonWriter::DEFAULT_MULTI_LINE_FORMAT,
+        },
+        {
+u8"{\n"
+"    \"first_name\": \"John\",\n"
+"    \"last_name\": \"Smith\",\n"
+"    \"full_name\": \"John \\\"Pseudo\\\" Smith\",\n"
 "    \"is_alive\": true,\n"
 "    \"age\": 27,\n"
 "    \"address\": {\n"
@@ -243,13 +361,13 @@ u8"{\n"
 "    },\n"
 "    \"phone_numbers\": [\n"
 "        {\n"
-"           \"type\": \"home\",\n"
-"           \"number\": \"212 555-1234\",\n"
+"            \"type\": \"home\",\n"
+"            \"number\": \"212 555-1234\",\n"
 "        },\n"
 "        {\n"
 "            \"type\": \"office\",\n"
 "            \"number\": \"646 555-4567\",\n"
-"        }\n"
+"        },\n"
 "    ],\n"
 "    \"children\": [\n"
 "        \"Catherine\",\n"
@@ -257,13 +375,107 @@ u8"{\n"
 "        \"Trevor\",\n"
 "    ],\n"
 "    \"spouse\": null,\n"
-"    \"favorite_umlauts\": \"ÄÖÜ\",\n"
-"    \"favorite_integer\": \"7\",\n"
-"    \"favorite_decimal\": \"-77.0\",\n"
+"    \"emoji\": \"\U0001f610\",\n"
 "    \"is_confirmed\": false,\n"
 "}\n",
-            dl7::json::JsonWriter::DEFAULT_FORMAT,
-        },*/
+            dl7::json::JsonWriter::DEFAULT_PRETTY_PRINT_FORMAT,
+        },
+        {
+u8"{"
+"\"first_name\": \"John\", "
+"\"last_name\": \"Smith\", "
+"\"full_name\": \"John \\\"Pseudo\\\" Smith\", "
+"\"is_alive\": true, "
+"\"age\": 27, "
+"\"address\": {"
+"\"street_address\": \"21 2nd Street\", "
+"\"city\": \"New York\", "
+"\"state\": \"NY\", "
+"\"postal_code\": \"10021-3100\""
+"}, "
+"\"phone_numbers\": ["
+"{"
+"\"type\": \"home\", "
+"\"number\": \"212 555-1234\""
+"}, "
+"{"
+"\"type\": \"office\", "
+"\"number\": \"646 555-4567\""
+"}"
+"], "
+"\"children\": ["
+"\"Catherine\", "
+"\"Thomas\", "
+"\"Trevor\""
+"], "
+"\"spouse\": null, "
+"\"emoji\": \"\U0001f610\", "
+"\"is_confirmed\": false"
+"}",
+            dl7::json::JsonWriter::DEFAULT_SINGLE_LINE_FORMAT,
+        },
+        {
+u8"{"
+"\"first_name\":\"John\","
+"\"last_name\":\"Smith\","
+"\"full_name\":\"John \\\"Pseudo\\\" Smith\","
+"\"is_alive\":true,"
+"\"age\":27,"
+"\"address\":{"
+"\"street_address\":\"21 2nd Street\","
+"\"city\":\"New York\","
+"\"state\":\"NY\","
+"\"postal_code\":\"10021-3100\""
+"},"
+"\"phone_numbers\":["
+"{"
+"\"type\":\"home\","
+"\"number\":\"212 555-1234\""
+"},"
+"{"
+"\"type\":\"office\","
+"\"number\":\"646 555-4567\""
+"}"
+"],"
+"\"children\":["
+"\"Catherine\","
+"\"Thomas\","
+"\"Trevor\""
+"],"
+"\"spouse\":null,"
+"\"emoji\":\"\U0001f610\","
+"\"is_confirmed\":false"
+"}",
+            dl7::json::JsonWriter::DEFAULT_COMPACT_FORMAT,
+        },
+        {
+u8"{\r"
+"  first_name: \"John\",\r"
+"  last_name: \"Smith\",\r"
+"  full_name: 'John \"Pseudo\" Smith',\r"
+"  \"foo-bar\": [\r"
+"    \"foo\",\r"
+"    \"bar\"\r"
+"  ],\r"
+"  emoji: \"\\uD83D\\uDE10\",\r"
+"  is_confirmed: false\r"
+"}",
+            {.style=dl7::json::Format::Style::MultiLine, .single_line_options={.compact=false}, .multi_line_options={.indentation=dl7::json::Format::MultiLineOptions::Indentation::Spaces2, .line_ending=dl7::json::Format::MultiLineOptions::LineEnding::CR, .add_trailing_commas=false, .add_empty_line=false}, .escape_unicode=true, .allow_single_quotes=true, .allow_unquoted_keys=true},
+        },
+        {
+u8"{\r\n"
+"\tfirst_name: \"John\",\r\n"
+"\tlast_name: \"Smith\",\r\n"
+"\tfull_name: 'John \"Pseudo\" Smith',\r\n"
+"\t\"foo-bar\": [\r\n"
+"\t\t\"foo\",\r\n"
+"\t\t\"bar\"\r\n"
+"\t],\r\n"
+"\temoji: \"\\uD83D\\uDE10\",\r\n"
+"\tis_confirmed: false\r\n"
+"}",
+            {.style=dl7::json::Format::Style::MultiLine, .single_line_options={.compact=false}, .multi_line_options={.indentation=dl7::json::Format::MultiLineOptions::Indentation::Tabs, .line_ending=dl7::json::Format::MultiLineOptions::LineEnding::CRLF, .add_trailing_commas=false, .add_empty_line=false}, .escape_unicode=true, .allow_single_quotes=true, .allow_unquoted_keys=true},
+        },
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )

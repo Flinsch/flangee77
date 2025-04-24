@@ -18,58 +18,46 @@ namespace cl7::strings {
 
 
 
-    CodepointResult LoggingErrorHandler::_check_adjust_ascii(ErrorStatus& error_status, codepoint codepoint) const
+    void LoggingErrorHandler::_on_out_of_range_ascii(codepoint codepoint) const
     {
-        if (codepoint.value > codepoint::max_ascii)
-        {
-            if (codepoint.value <= 0xff)
-                _try_log_warning(u8"Invalid code point outside ASCII range: " + to_0xhex(codepoint.value) + u8" (" + to_string(codepoint.value) + u8")");
-            else
-                _try_log_warning(u8"Invalid code point outside ASCII range: " + to_0xhex(codepoint.value));
-        }
-
-        return ErrorHandler::_check_adjust_ascii(error_status, codepoint);
+        if (codepoint.value <= 0xff)
+            _try_log_warning(u8"Invalid code point outside ASCII range: " + to_0xhex(codepoint.value) + u8" (" + to_string(codepoint.value) + u8")");
+        else
+            _try_log_warning(u8"Invalid code point outside ASCII range: " + to_0xhex(codepoint.value));
     }
 
-    CodepointResult LoggingErrorHandler::_check_adjust_unicode(ErrorStatus& error_status, codepoint codepoint) const
+    void LoggingErrorHandler::_on_out_of_range_unicode(codepoint codepoint) const
     {
-        if (codepoint.value > codepoint::max_unicode)
-            _try_log_warning(u8"Invalid Unicode code point (out of range): " + to_0xhex(codepoint.value));
+        _try_log_warning(u8"Invalid Unicode code point (out of range): " + to_0xhex(codepoint.value));
+    }
 
-        if (codepoint.is_surrogate())
-            _try_log_warning(u8"Invalid Unicode code point (surrogate): " + to_0xhex(codepoint.value));
-
-        return ErrorHandler::_check_adjust_unicode(error_status, codepoint);
+    void LoggingErrorHandler::_on_disallowed_unicode(codepoint codepoint) const
+    {
+        _try_log_warning(u8"Invalid Unicode code point (surrogate): " + to_0xhex(codepoint.value));
     }
 
 
 
-    CodepointResult LoggingErrorHandler::_on_exhausted_output_space(ErrorStatus& error_status, Encoding encoding, CodepointResult codepoint_result) const
+    void LoggingErrorHandler::_on_exhausted_output_space(Encoding encoding, CodepointResult codepoint_result) const
     {
         _try_log_warning(u8"Exhausted output space.");
-
-        return ErrorHandler::_on_exhausted_output_space(error_status, encoding, codepoint_result);
     }
 
-    CodepointResult LoggingErrorHandler::_on_insufficient_output_space(ErrorStatus& error_status, Encoding encoding, CodepointResult codepoint_result, size_t required, size_t available) const
+    void LoggingErrorHandler::_on_insufficient_output_space(Encoding encoding, CodepointResult codepoint_result, size_t required, size_t available) const
     {
         _try_log_warning(u8"Insufficient output space (required: " + to_string(required) + u8", available: " + to_string(available) + u8").");
-
-        return ErrorHandler::_on_insufficient_output_space(error_status, encoding, codepoint_result, required, available);
     }
 
 
 
-    DecodeResult<cl7::achar_t> LoggingErrorHandler::_on_invalid_code_unit(ErrorStatus& error_status, cl7::astring_view input_read) const
+    void LoggingErrorHandler::_on_invalid_code_unit(cl7::astring_view input_read) const
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint8_t>(input_read[0]);
         _try_log_warning(u8"Invalid ASCII character: " + to_0xhex(value) + u8" (" + to_string(value) + u8")");
-
-        return ErrorHandler::_on_invalid_code_unit(error_status, input_read);
     }
 
-    DecodeResult<cl7::u8char_t> LoggingErrorHandler::_on_invalid_code_unit(ErrorStatus& error_status, cl7::u8string_view input_read) const
+    void LoggingErrorHandler::_on_invalid_code_unit(cl7::u8string_view input_read) const
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint8_t>(input_read[0]);
@@ -77,31 +65,25 @@ namespace cl7::strings {
             _try_log_warning(u8"Unexpected UTF-8 continuation byte: " + to_0xhex(value));
         else
             _try_log_warning(u8"Invalid UTF-8 code unit: " + to_0xhex(value));
-
-        return ErrorHandler::_on_invalid_code_unit(error_status, input_read);
     }
 
-    DecodeResult<cl7::u16char_t> LoggingErrorHandler::_on_invalid_code_unit(ErrorStatus& error_status, cl7::u16string_view input_read) const
+    void LoggingErrorHandler::_on_invalid_code_unit(cl7::u16string_view input_read) const
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint16_t>(input_read[0]);
         _try_log_warning(u8"Invalid UTF-16 code unit: " + to_0xhex(value));
-
-        return ErrorHandler::_on_invalid_code_unit(error_status, input_read);
     }
 
-    DecodeResult<cl7::u32char_t> LoggingErrorHandler::_on_invalid_code_unit(ErrorStatus& error_status, cl7::u32string_view input_read) const
+    void LoggingErrorHandler::_on_invalid_code_unit(cl7::u32string_view input_read) const
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint32_t>(input_read[0]);
         _try_log_warning(u8"Invalid UTF-32 code unit: " + to_0xhex(value));
-
-        return ErrorHandler::_on_invalid_code_unit(error_status, input_read);
     }
 
 
 
-    DecodeResult<cl7::u8char_t> LoggingErrorHandler::_on_invalid_sequence(ErrorStatus& error_status, cl7::u8string_view input_read) const
+    void LoggingErrorHandler::_on_invalid_sequence(cl7::u8string_view input_read) const
     {
         assert(!input_read.empty());
         const auto first = static_cast<uint8_t>(input_read[0]);
@@ -125,13 +107,11 @@ namespace cl7::strings {
         for (auto u8c : input_read)
             message += u8" " + to_0xhex(static_cast<uint8_t>(u8c));
         _try_log_warning(message);
-
-        return ErrorHandler::_on_invalid_sequence(error_status, input_read);
     }
 
 
 
-    DecodeResult<cl7::u8char_t> LoggingErrorHandler::_on_incomplete_sequence(ErrorStatus& error_status, cl7::u8string_view input_read, size_t expected_length) const
+    void LoggingErrorHandler::_on_incomplete_sequence(cl7::u8string_view input_read, size_t expected_length) const
     {
         assert(!input_read.empty());
         assert(expected_length > input_read.size());
@@ -152,22 +132,18 @@ namespace cl7::strings {
         for (auto u8c : input_read)
             message += u8" " + to_0xhex(static_cast<uint8_t>(u8c));
         _try_log_warning(message);
-
-        return ErrorHandler::_on_incomplete_sequence(error_status, input_read, expected_length);
     }
 
-    DecodeResult<cl7::u16char_t> LoggingErrorHandler::_on_incomplete_sequence(ErrorStatus& error_status, cl7::u16string_view input_read) const
+    void LoggingErrorHandler::_on_incomplete_sequence(cl7::u16string_view input_read) const
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint16_t>(input_read[0]);
         _try_log_warning(u8"Incomplete UTF-16 surrogate pair (unpaired leading/high UTF-16 surrogate): " + to_0xhex(value));
-
-        return ErrorHandler::_on_incomplete_sequence(error_status, input_read);
     }
 
 
 
-    DecodeResult<cl7::u8char_t> LoggingErrorHandler::_on_overlong_encoding(ErrorStatus& error_status, cl7::u8string_view input_read) const
+    void LoggingErrorHandler::_on_overlong_encoding(cl7::u8string_view input_read) const
     {
         assert(!input_read.empty());
         const auto first = static_cast<uint8_t>(input_read[0]);
@@ -185,19 +161,15 @@ namespace cl7::strings {
         for (auto u8c : input_read)
             message += u8" " + to_0xhex(static_cast<uint8_t>(u8c));
         _try_log_warning(message);
-
-        return ErrorHandler::_on_overlong_encoding(error_status, input_read);
     }
 
 
 
-    DecodeResult<cl7::u16char_t> LoggingErrorHandler::_on_unpaired_surrogate(ErrorStatus& error_status, cl7::u16string_view input_read) const
+    void LoggingErrorHandler::_on_unpaired_surrogate(cl7::u16string_view input_read) const
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint16_t>(input_read[0]);
         _try_log_warning(u8"Unpaired trailing/low UTF-16 surrogate: " + to_0xhex(value));
-
-        return ErrorHandler::_on_unpaired_surrogate(error_status, input_read);
     }
 
 

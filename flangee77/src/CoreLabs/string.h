@@ -44,13 +44,13 @@ namespace cl7 {
 
 
     template <class Tstring>
-    concept is_any_string_v = std::is_base_of_v<std::basic_string<typename Tstring::value_type, typename Tstring::traits_type, typename Tstring::allocator_type>, Tstring>;
+    concept is_any_string_v = std::is_base_of_v<std::basic_string<typename std::remove_cvref_t<Tstring>::value_type, typename std::remove_cvref_t<Tstring>::traits_type, typename std::remove_cvref_t<Tstring>::allocator_type>, std::remove_cvref_t<Tstring>>;
 
     template <class Tstring_view>
-    concept is_any_string_view_v = std::is_base_of_v<std::basic_string_view<typename Tstring_view::value_type, typename Tstring_view::traits_type>, Tstring_view>;
+    concept is_any_string_view_v = std::is_base_of_v<std::basic_string_view<typename std::remove_cvref_t<Tstring_view>::value_type, typename std::remove_cvref_t<Tstring_view>::traits_type>, std::remove_cvref_t<Tstring_view>>;
 
     template <class Tstring_span>
-    concept is_any_string_span_v = std::is_base_of_v<std::span<typename Tstring_span::value_type>, Tstring_span>;
+    concept is_any_string_span_v = std::is_base_of_v<std::span<typename std::remove_cvref_t<Tstring_span>::value_type>, std::remove_cvref_t<Tstring_span>>;
 
     template <class Tstring_or_view>
     concept is_any_string_or_view_v = is_any_string_v<Tstring_or_view> || is_any_string_view_v<Tstring_or_view>;

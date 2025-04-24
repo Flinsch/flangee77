@@ -85,7 +85,7 @@ namespace cl7::strings {
         if (output.empty())
         {
             return {
-                error_handler.on_exhausted_output_space(error_status, encoding, codepoint_result),
+                error_handler.process_exhausted_output_space(error_status, encoding, codepoint_result),
                 {},
             };
         }
@@ -115,7 +115,7 @@ namespace cl7::strings {
         output[0] = buffer.data[0];
 
         return {
-            error_handler.on_insufficient_output_space(error_status, encoding, codepoint_result, length, output.size()),
+            error_handler.process_insufficient_output_space(error_status, encoding, codepoint_result, length, output.size()),
             output,
         };
     }
@@ -142,7 +142,7 @@ namespace cl7::strings {
             size_t length = _determine_decode_length(input);
             if (length != 2)
             {
-                return error_handler.on_incomplete_sequence(error_status, input.substr(0, length));
+                return error_handler.process_incomplete_sequence(error_status, input.substr(0, length));
             }
 
             return {
@@ -152,7 +152,7 @@ namespace cl7::strings {
         }
 
         assert(first >= 0xdc00 && first <= 0xdfff); // (unexpected) trailing/low surrogate
-        return error_handler.on_unpaired_surrogate(error_status, input.substr(0, 1));
+        return error_handler.process_unpaired_surrogate(error_status, input.substr(0, 1));
     }
 
 

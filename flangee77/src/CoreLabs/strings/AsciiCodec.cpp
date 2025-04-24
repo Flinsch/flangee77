@@ -13,7 +13,7 @@ namespace cl7::strings {
         if (output.empty())
         {
             return {
-                error_handler.on_exhausted_output_space(error_status, encoding, codepoint_result),
+                error_handler.process_exhausted_output_space(error_status, encoding, codepoint_result),
                 {},
             };
         }
@@ -36,7 +36,7 @@ namespace cl7::strings {
 
         if (input[0] & 0x80)
         {
-            return error_handler.on_invalid_code_unit(error_status, input.substr(0, 1));
+            return error_handler.process_invalid_code_unit(error_status, input.substr(0, 1));
         }
 
         return {

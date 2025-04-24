@@ -44,8 +44,22 @@ public:
 
         friend void swap(iterator& a, iterator& b) noexcept { std::swap(a, b); }
 
+        /**
+         * Resets the current offset position of the read cursor.
+         * Caution! Since the cursor is measured in code units, you can mess things
+         * up if you place it on a code unit that doesn't represent the beginning of
+         * a code point.
+         */
+        void reset_pos(size_t pos = 0) { _pos = pos; }
+        /** Resets the cumulative error status. */
+        void reset_status() { _error_status = {}; }
+
+        /** Returns the current offset position of the read cursor pointing to the first code unit of the current code point. */
         size_t pos() const { return _pos; }
-        DecodeResult result() const { return _decode_result; }
+        /** Returns the cumulative error status. */
+        const ErrorStatus& status() const { return _error_status; }
+        /** Returns the current decode result. */
+        const DecodeResult& result() const { return _decode_result; }
 
         iterator& operator++() { _advance_and_decode(); return *this; }
         iterator operator++(int) { iterator it = *this; ++(*this); return it; }
@@ -65,8 +79,7 @@ public:
                 return;
             }
 
-            ErrorStatus error_status;
-            _decode_result = Codec::decode_one(error_status, _input.substr(_pos), *_error_handler);
+            _decode_result = Codec::decode_one(_error_status, _input.substr(_pos), *_error_handler);
         }
 
         void _advance_and_decode()
@@ -78,6 +91,7 @@ public:
         string_view_type _input;
 
         size_t _pos = 0;
+        ErrorStatus _error_status;
         DecodeResult _decode_result;
 
         TDefaultErrorHandler _default_error_handler;

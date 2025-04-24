@@ -26,6 +26,15 @@ target_sources(flangee77
     json/detail/Lexer.cpp
     json/detail/Lexer.h
     json/detail/Symbol.h
+    json/detail/UnescaperErrorHandler.cpp
+    json/detail/UnescaperErrorHandler.h
+
+    json/util/Escaper.cpp
+    json/util/Escaper.h
+    json/util/Unescaper.cpp
+    json/util/Unescaper.h
+    json/util/Validator.cpp
+    json/util/Validator.h
 
     syntax/AstNode.h
     syntax/AstProcessor.h

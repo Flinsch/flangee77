@@ -62,6 +62,26 @@ public:
 
 
     /**
+     * Advances to the next token if the current token's symbol ID matches the given
+     * one. Returns true if advanced, false otherwise.
+     */
+    bool skip_symbol_id(SymbolID symbol_id);
+
+    /**
+     * Advances to the next token if the first character of the current token's
+     * lexeme matches the given one. Returns true if advanced, false otherwise.
+     */
+    bool skip_first_char(cl7::u8char_t first_char);
+
+    /**
+     * Advances to the next token if the current token's lexeme starts with the
+     * given prefix. Returns true if advanced, false otherwise.
+     */
+    bool skip_prefix(cl7::u8string_view prefix);
+
+
+
+    /**
      * Advances to the next token, but returns the token that was current before
      * advancing.
      */

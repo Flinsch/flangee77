@@ -18,6 +18,8 @@ public:
 
 
 private:
+    void _init_symbols();
+
     syntax::TerminalSymbolCollection _terminal_symbols;
 
 }; // class Lexer

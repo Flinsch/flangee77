@@ -298,13 +298,14 @@ namespace cl7::strings {
      * - LF (`\n`): Unix, Linux, macOS, and "modern" line-ending styles in general
      * - CR (`\r`): Legacy Mac
      */
-    template <class Tstring_view>
-        requires(is_any_string_view_v<Tstring_view>)
-    size_t is_line_break_prefix(Tstring_view s)
+    template <class Tstring_or_view>
+        requires(is_any_string_or_view_v<Tstring_or_view>)
+    size_t is_line_break_prefix(Tstring_or_view&& s)
     {
-        const size_t n = s.size();
-        if (n >= 2) return is_line_break_relaxed(s[0], s[1]);
-        if (n >= 1) return is_line_break_relaxed(s[0]);
+        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view>::value_type> sv{std::forward<Tstring_or_view>(s)};
+        const size_t n = sv.size();
+        if (n >= 2) return is_line_break_relaxed(sv[0], sv[1]);
+        if (n >= 1) return is_line_break_relaxed(sv[0]);
         return 0;
     }
 
@@ -316,15 +317,16 @@ namespace cl7::strings {
      * - LF (`\n`): Unix, Linux, macOS, and "modern" line-ending styles in general
      * - CR (`\r`): Legacy Mac
      */
-    template <class Tstring_view>
-        requires(is_any_string_view_v<Tstring_view>)
-    size_t is_line_break_suffix(Tstring_view s)
+    template <class Tstring_or_view>
+        requires(is_any_string_or_view_v<Tstring_or_view>)
+    size_t is_line_break_suffix(Tstring_or_view&& s)
     {
-        const size_t n = s.size();
+        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view>::value_type> sv{std::forward<Tstring_or_view>(s)};
+        const size_t n = sv.size();
         size_t k;
         // NOLINTBEGIN(bugprone-assignment-in-if-condition)
-        if (n >= 1 && (k = is_line_break_strict(s[n - 1])) > 0) return k;
-        if (n >= 2 && (k = is_line_break_strict(s[n - 2], s[n - 1])) > 0) return k;
+        if (n >= 1 && (k = is_line_break_strict(sv[n - 1])) > 0) return k;
+        if (n >= 2 && (k = is_line_break_strict(sv[n - 2], sv[n - 1])) > 0) return k;
         // NOLINTEND(bugprone-assignment-in-if-condition)
         return 0;
     }
@@ -334,13 +336,14 @@ namespace cl7::strings {
     /**
      * Counts and returns the number of whitespace characters that begin the string.
      */
-    template <class Tstring_view>
-        requires(is_any_string_view_v<Tstring_view>)
-    size_t count_whitespace_prefix(Tstring_view s)
+    template <class Tstring_or_view>
+        requires(is_any_string_or_view_v<Tstring_or_view>)
+    size_t count_whitespace_prefix(Tstring_or_view&& s)
     {
-        const size_t n = s.size();
+        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view>::value_type> sv{std::forward<Tstring_or_view>(s)};
+        const size_t n = sv.size();
         size_t i = 0;
-        while (i < n && is_whitespace(s[i]))
+        while (i < n && is_whitespace(sv[i]))
             ++i;
         return i;
     }
@@ -350,13 +353,14 @@ namespace cl7::strings {
      * The number is calculated in terms of UTF-8 characters (code units), not in
      * terms of Unicode code points.
      */
-    template <> inline
+    /*template <> */inline
     size_t count_whitespace_prefix(u8string_view s)
     {
-        const size_t n = s.size();
+        u8string_view sv{s};
+        const size_t n = sv.size();
         size_t i = 0;
         size_t k;
-        while (i < n && (k = is_whitespace_prefix(s.substr(i))) > 0)
+        while (i < n && (k = is_whitespace_prefix(sv.substr(i))) > 0)
             i += k;
         return i;
     }
@@ -364,13 +368,14 @@ namespace cl7::strings {
     /**
      * Counts and returns the number of whitespace characters that end the string.
      */
-    template <class Tstring_view>
-        requires(is_any_string_view_v<Tstring_view>)
-    size_t count_whitespace_suffix(Tstring_view s)
+    template <class Tstring_or_view>
+        requires(is_any_string_or_view_v<Tstring_or_view>)
+    size_t count_whitespace_suffix(Tstring_or_view&& s)
     {
-        const size_t n = s.size();
+        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view>::value_type> sv{std::forward<Tstring_or_view>(s)};
+        const size_t n = sv.size();
         size_t i = 0;
-        while (i < n && is_whitespace(s[n - i - 1]))
+        while (i < n && is_whitespace(sv[n - i - 1]))
             ++i;
         return i;
     }
@@ -380,13 +385,14 @@ namespace cl7::strings {
      * The number is calculated in terms of UTF-8 characters (code units), not in
      * terms of Unicode code points.
      */
-    template <> inline
+    /*template <> */inline
     size_t count_whitespace_suffix(u8string_view s)
     {
-        const size_t n = s.size();
+        u8string_view sv{s};
+        const size_t n = sv.size();
         size_t i = 0;
         size_t k;
-        while (i < n && (k = is_whitespace_suffix(s.substr(0, n - i))) > 0)
+        while (i < n && (k = is_whitespace_suffix(sv.substr(0, n - i))) > 0)
             i += k;
         return i;
     }
@@ -415,7 +421,7 @@ namespace cl7::strings {
         requires(is_any_string_view_v<Tstring_view>)
     void ltrim(Tstring_view& s)
     {
-        const size_t k = count_whitespace_prefix(s);
+        const size_t k = count_whitespace_prefix(Tstring_view(s));
         assert(k <= s.size());
         s = s.substr(k);
     }
@@ -424,7 +430,7 @@ namespace cl7::strings {
         requires(is_any_string_view_v<Tstring_view>)
     void rtrim(Tstring_view& s)
     {
-        const size_t k = count_whitespace_suffix(s);
+        const size_t k = count_whitespace_suffix(Tstring_view(s));
         assert(k <= s.size());
         s = s.substr(0, s.size() - k);
     }
@@ -638,17 +644,43 @@ namespace cl7::strings {
 
 
 
+    template <typename Tval = unsigned, class Tstring_or_view, typename Tchar = typename std::remove_cvref_t<Tstring_or_view>::value_type>
+        requires(std::is_integral_v<Tval> && is_any_string_or_view_v<Tstring_or_view>)
+    Tval parse_hex(Tstring_or_view&& s)
+    {
+        static constexpr auto c0 = Tchar{'0'};
+        static constexpr auto cx = Tchar{'x'};
+        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view>::value_type> sv{std::forward<Tstring_or_view>(s)};
+        Tval val = 0;
+        size_t p = count_whitespace_prefix(sv);
+        if (p + 1 < sv.size() && sv[p] == c0 && sv[p + 1] == cx)
+            p += 2;
+        for (; p < sv.size() && is_hex_digit(sv[p]); ++p)
+        {
+            val *= 0x10;
+            val += is_digit(sv[p])
+                ? static_cast<Tval>(sv[p]) - 0x30 // '0' = 48 = 0x30
+                : (static_cast<Tval>(sv[p]) | 0x20) - 0x57; // 'a' = 97 = 0x61; set off 10: 87 = 0x57
+        }
+        return val;
+    }
+
+
+
     /**
      * Calculates the Levenshtein distance between two strings. The difference is
      * calculated in terms of characters (code units), not in terms of (Unicode)
      * code points.
      */
-    template <class Tstring_or_view>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
-    size_t levenshtein(const Tstring_or_view& s1, const Tstring_or_view& s2)
+    template <class Tstring_or_view1, class Tstring_or_view2>
+        requires(is_any_string_or_view_v<Tstring_or_view1> && is_any_string_or_view_v<Tstring_or_view2>)
+    size_t levenshtein(Tstring_or_view1&& s1, Tstring_or_view2&& s2)
     {
-        const size_t size1 = s1.size();
-        const size_t size2 = s2.size();
+        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view1>::value_type> sv1{std::forward<Tstring_or_view1>(s1)};
+        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view2>::value_type> sv2{std::forward<Tstring_or_view2>(s2)};
+
+        const size_t size1 = sv1.size();
+        const size_t size2 = sv2.size();
         if (size1 == 0) return size2;
         if (size2 == 0) return size1;
 
@@ -666,7 +698,7 @@ namespace cl7::strings {
         {
             for (size_t j = 1; j <= size2; ++j)
             {
-                const size_t cost = s1[i - 1] == s2[j - 1] ? 0 : 1;
+                const size_t cost = sv1[i - 1] == sv2[j - 1] ? 0 : 1;
                 mat[i * len + j] = (std::min)({
                     mat[(i - 1) * len + (j)] + 1,
                     mat[(i) * len + (j - 1)] + 1,
@@ -684,13 +716,16 @@ namespace cl7::strings {
      * calculated in terms of characters (code units), not in terms of (Unicode)
      * code points.
      */
-    template <class Tstring_or_view, typename Tfloat = float>
-        requires(is_any_string_or_view_v<Tstring_or_view> && std::is_floating_point_v<Tfloat>)
-    Tfloat levenshtein_normalized(const Tstring_or_view& s1, const Tstring_or_view& s2)
+    template <typename Tfloat = float, class Tstring_or_view1, class Tstring_or_view2>
+        requires(std::is_floating_point_v<Tfloat> && is_any_string_or_view_v<Tstring_or_view1> && is_any_string_or_view_v<Tstring_or_view2>)
+    Tfloat levenshtein_normalized(Tstring_or_view1&& s1, Tstring_or_view2&& s2)
     {
-        const size_t size = (std::max)(s1.size(), s2.size());
+        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view1>::value_type> sv1{std::forward<Tstring_or_view1>(s1)};
+        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view2>::value_type> sv2{std::forward<Tstring_or_view2>(s2)};
+
+        const size_t size = (std::max)(sv1.size(), sv2.size());
         if (size == 0) return 0.0f;
-        return static_cast<Tfloat>(levenshtein(s1, s2)) / static_cast<Tfloat>(size);
+        return static_cast<Tfloat>(levenshtein(sv1, sv2)) / static_cast<Tfloat>(size);
     }
 
 

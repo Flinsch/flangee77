@@ -1872,6 +1872,40 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  to hex" )
     }
 }
 
+TESTLABS_CASE( u8"CoreLabs:  strings:  parse hex" )
+{
+    struct Entry
+    {
+        cl7::u8string input;
+        unsigned expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", 0x00000000 },
+        { u8"00", 0x00000000 },
+        { u8"00000000", 0x00000000 },
+        { u8"bf00", 0x0000bf00 },
+        { u8"0000bf00", 0x0000bf00 },
+        { u8"12345678", 0x12345678 },
+        { u8"ffffffff", 0xffffffff },
+        { u8"FFFFFFFF", 0xffffffff },
+        { u8"0FFFFFFFF", 0xffffffff },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.input )
+    {
+        const auto& input = entry.input;
+        const auto expected = entry.expected;
+
+        TESTLABS_CHECK_EQ( cl7::strings::parse_hex<>( input ), expected );
+        TESTLABS_CHECK_EQ( cl7::strings::parse_hex<>( u8"  " + input ), expected );
+        TESTLABS_CHECK_EQ( cl7::strings::parse_hex<>( u8"0x" + input ), cl7::strings::to_lower_ascii( expected ) );
+        TESTLABS_CHECK_EQ( cl7::strings::parse_hex<>( u8"  0x" + input ), cl7::strings::to_upper_ascii( expected ) );
+        TESTLABS_CHECK_EQ( cl7::strings::parse_hex<>( input + u8"XX" ), expected );
+        TESTLABS_CHECK_EQ( cl7::strings::parse_hex<>( u8"  0x" + input + u8"  " ), expected );
+    }
+}
+
 
 
 TESTLABS_CASE( u8"CoreLabs:  strings:  Levenshtein distance" )

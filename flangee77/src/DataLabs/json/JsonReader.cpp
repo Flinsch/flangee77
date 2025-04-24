@@ -26,6 +26,9 @@ namespace dl7::json {
         detail::Builder builder{&diagnostics};
         auto json = builder.build(token_reader);
 
+        if (!json)
+            return {};
+
         return std::move(*json);
     }
 

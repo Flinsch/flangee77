@@ -72,6 +72,11 @@ public:
      */
     void try_log_all(cl7::logging::LogContext log_context) const;
 
+    /**
+     * Returns the log context (to be used for newly added diagnostic entries).
+     */
+    cl7::logging::LogContext get_log_context() const { return _log_context; }
+
 
 
 private:

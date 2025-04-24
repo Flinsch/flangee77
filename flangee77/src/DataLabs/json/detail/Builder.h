@@ -21,6 +21,24 @@ public:
 
     std::unique_ptr<Json> build(syntax::TokenReader& token_reader) override;
 
+
+
+private:
+    std::unique_ptr<Json> _parse_value(syntax::TokenReader& token_reader);
+
+    object_t _parse_object(syntax::TokenReader& token_reader);
+    array_t _parse_array(syntax::TokenReader& token_reader);
+    string_t _parse_string(syntax::TokenReader& token_reader);
+    decimal_t _parse_decimal(syntax::TokenReader& token_reader);
+    integer_t _parse_integer(syntax::TokenReader& token_reader);
+    unsigned_t _parse_unsigned(syntax::TokenReader& token_reader);
+
+    std::pair<string_t, std::unique_ptr<Json>> _parse_object_member(syntax::TokenReader& token_reader);
+    string_t _parse_object_key(syntax::TokenReader& token_reader);
+    string_t _parse_identifier(syntax::TokenReader& token_reader);
+
+    void _error(cl7::u8string_view message, const syntax::Token& token);
+
 }; // class Builder
 
 
