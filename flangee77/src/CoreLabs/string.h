@@ -9,9 +9,10 @@
 
 
 
-#if defined(UNICODE) ^ defined(_UNICODE)
+#if (defined(UNICODE) && !defined(_UNICODE)) || (!defined(UNICODE) && defined(_UNICODE))
 #error Inconsistent UNICODE and _UNICODE definition.
 #elif !defined(UNICODE) || !defined(_UNICODE)
+// Force UNICODE/_UNICODE definition, as suggested by the "UTF-8 Everywhere" manifesto.
 #error Missing UNICODE and/or _UNICODE definition.
 #endif
 
