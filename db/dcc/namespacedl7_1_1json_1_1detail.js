@@ -4,6 +4,7 @@ var namespacedl7_1_1json_1_1detail =
     [ "Generator", "d5/dc2/classdl7_1_1json_1_1detail_1_1Generator.html", "d5/dc2/classdl7_1_1json_1_1detail_1_1Generator" ],
     [ "IdentifierMatcher", "d0/d21/structdl7_1_1json_1_1detail_1_1IdentifierMatcher.html", "d0/d21/structdl7_1_1json_1_1detail_1_1IdentifierMatcher" ],
     [ "Lexer", "d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer.html", "d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer" ],
+    [ "UnescaperErrorHandler", "dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler.html", "dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler" ],
     [ "Symbol", "db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989", [
       [ "NULL_CONSTANT", "db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989abef43e7f7b5a0e0b62c55906ca91740f", null ],
       [ "TRUE_CONSTANT", "db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a7da289c327b2f071a70cb72f06861ebb", null ],
@@ -20,12 +21,5 @@ var namespacedl7_1_1json_1_1detail =
       [ "COLON", "db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a0365f4452de682e0f7e7ab8a73d22b6b", null ],
       [ "LINE_COMMENT", "db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989afaae99a68e9c8134443a770fcbc635fd", null ],
       [ "BLOCK_COMMENT", "db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a0417ffa721e0d5c07a02ad21c08656d9", null ]
-    ] ],
-    [ "_end_item", "db/dcc/namespacedl7_1_1json_1_1detail.html#ad38ed528be40a00f03d4e85171a884d2", null ],
-    [ "_put_line_ending", "db/dcc/namespacedl7_1_1json_1_1detail.html#abc5ea080ac33b44af19069277f61c625", null ],
-    [ "_start_item", "db/dcc/namespacedl7_1_1json_1_1detail.html#a275016d7b788b34d90035a770f2e0704", null ],
-    [ "_write_decimal", "db/dcc/namespacedl7_1_1json_1_1detail.html#abd90573e1eeba5a7055f666a7be47b07", null ],
-    [ "_write_json", "db/dcc/namespacedl7_1_1json_1_1detail.html#a6ba1897bdaa4c0c941dbb24171514ad5", null ],
-    [ "_write_string", "db/dcc/namespacedl7_1_1json_1_1detail.html#a76ecd38990881c0cd79c65c10c5e4577", null ],
-    [ "_write_string", "db/dcc/namespacedl7_1_1json_1_1detail.html#a393a470619754f781a375c9f7273fb1b", null ]
+    ] ]
 ];

@@ -1,6 +1,7 @@
 var namespacedl7_1_1json =
 [
     [ "detail", "db/dcc/namespacedl7_1_1json_1_1detail.html", "db/dcc/namespacedl7_1_1json_1_1detail" ],
+    [ "util", "d3/d94/namespacedl7_1_1json_1_1util.html", "d3/d94/namespacedl7_1_1json_1_1util" ],
     [ "Format", "df/d52/structdl7_1_1json_1_1Format.html", "df/d52/structdl7_1_1json_1_1Format" ],
     [ "Json", "d7/d95/classdl7_1_1json_1_1Json.html", "d7/d95/classdl7_1_1json_1_1Json" ],
     [ "JsonReader", "de/da5/classdl7_1_1json_1_1JsonReader.html", "de/da5/classdl7_1_1json_1_1JsonReader" ],

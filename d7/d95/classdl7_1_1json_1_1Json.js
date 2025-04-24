@@ -70,7 +70,6 @@ var classdl7_1_1json_1_1Json =
     [ "is_structured", "d7/d95/classdl7_1_1json_1_1Json.html#a13d84922853d04aea9f1d7e8db8e398a", null ],
     [ "is_true", "d7/d95/classdl7_1_1json_1_1Json.html#a4bf1d1d8c4a9d4a856544d65046bddc9", null ],
     [ "is_unsigned", "d7/d95/classdl7_1_1json_1_1Json.html#a4664f96fa5ccc3b16fc2c78518233474", null ],
-    [ "is_valid_unquoted_key", "d7/d95/classdl7_1_1json_1_1Json.html#a5c1e751081cabaf91a300ff6fd2d9de4", null ],
     [ "operator=", "d7/d95/classdl7_1_1json_1_1Json.html#addcf91f93a41ef1d5b715577f207cc6a", null ],
     [ "operator=", "d7/d95/classdl7_1_1json_1_1Json.html#af71fb86dc3919c0df2d209c2363378c8", null ],
     [ "operator[]", "d7/d95/classdl7_1_1json_1_1Json.html#a8eb4e091c93ead17cdafad3bc943880e", null ],

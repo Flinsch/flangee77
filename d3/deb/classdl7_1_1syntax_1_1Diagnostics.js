@@ -8,6 +8,7 @@ var classdl7_1_1syntax_1_1Diagnostics =
     [ "get_all", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#acfb6c5fbfee5ac6423e7c60b2842badf", null ],
     [ "get_count", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#a36ddc0f4d775bb0c5a53eef3cc14aa11", null ],
     [ "get_error_count", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#af4a65487513fca655ded9bc986b93fce", null ],
+    [ "get_log_context", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#ac40dd352ad87c1aca55470c69ad1c88e", null ],
     [ "get_warning_count", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#af9a96e491349046e238342eaa1f34dc5", null ],
     [ "try_log_all", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#a2b9ac05f0931ea62c7df990bd690b542", null ],
     [ "try_log_all", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#a14583efa703f8ec72e5bac2192e4c569", null ],

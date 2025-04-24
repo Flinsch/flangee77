@@ -20,5 +20,6 @@ var searchData=
   ['destcolor_17',['DestColor',['../d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#ab8f817106c9cfaac6dc9ebaf63a679b9ab5c77c29513009d6ea5f34de4561bbb2',1,'xl7::graphics::states::BlendState']]],
   ['disallowedunicode_18',['DisallowedUnicode',['../dc/d17/namespacecl7_1_1strings.html#af691638e9c6fbf723b19957270f2c0d2a29e79381f4e76ecd75afbbd48f51b3d3',1,'cl7::strings']]],
   ['discard_19',['Discard',['../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ac4ce5eaf77a0e31efdbbe3df2c3209e6ad94b42030b9785fd754d5c1754961269',1,'dl7::syntax::Lexer']]],
-  ['dynamic_20',['Dynamic',['../da/d60/namespacexl7_1_1resources.html#acb7b1bb91ccf1f69b4fe83b89d1db5eea971fd8cc345d8bd9f92e9f7d88fdf20c',1,'xl7::resources']]]
+  ['doublequote_20',['DoubleQuote',['../d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html#a597cb193de9275b68b56fd9a8a074228a312f3eacb3208038b0963fd457c576e8',1,'dl7::json::util::Escaper']]],
+  ['dynamic_21',['Dynamic',['../da/d60/namespacexl7_1_1resources.html#acb7b1bb91ccf1f69b4fe83b89d1db5eea971fd8cc345d8bd9f92e9f7d88fdf20c',1,'xl7::resources']]]
 ];

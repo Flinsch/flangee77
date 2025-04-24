@@ -13,7 +13,7 @@ var searchData=
   ['eof_5fsymbol_5fid_10',['EOF_SYMBOL_ID',['../db/d34/namespacedl7_1_1syntax.html#a97e0694c1566845acf277eff7fa1b38f',1,'dl7::syntax']]],
   ['error_11',['error',['../dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#aa1d87aaca7175a856536d9722826b130',1,'cl7::strings::ErrorStatus']]],
   ['error_5fcount_12',['error_count',['../dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#a2ae82228238813029cd21fa99f7d2511',1,'cl7::strings::ErrorStatus']]],
-  ['escape_5funicode_13',['escape_unicode',['../df/d52/structdl7_1_1json_1_1Format.html#aeca34823985353f4319260f2a3ab3aea',1,'dl7::json::Format']]],
+  ['escape_5funicode_13',['escape_unicode',['../df/d52/structdl7_1_1json_1_1Format.html#aeca34823985353f4319260f2a3ab3aea',1,'dl7::json::Format::escape_unicode'],['../d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html#aa1f098b03aed19802999d961c14dd4d0',1,'dl7::json::util::Escaper::Options::escape_unicode']]],
   ['evaluated_5fexpression_14',['evaluated_expression',['../d6/db9/structtl7_1_1exceptions_1_1assertion__exception.html#ac737aef4c3c2e20565e76244a239b37e',1,'tl7::exceptions::assertion_exception::evaluated_expression'],['../da/d3a/structtl7_1_1Result.html#ae0cbb3b4e43f093bb933060a7adccac5',1,'tl7::Result::evaluated_expression']]],
   ['exception_5fcount_15',['exception_count',['../de/d12/structtl7_1_1Stats.html#adbcce38c6deda70f2ed2793122440d75',1,'tl7::Stats']]],
   ['execution_5ftime_5fmsecs_16',['execution_time_msecs',['../de/d12/structtl7_1_1Stats.html#a00ece552ba80bea96c8d961c685018ab',1,'tl7::Stats']]]

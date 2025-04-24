@@ -14,13 +14,17 @@ var classcl7_1_1strings_1_1Decoder_1_1iterator =
     [ "operator++", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#a29de6e95be28585e13d3a9f7ab2f6232", null ],
     [ "operator->", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#aaf302eefc77580e026dce68045d81908", null ],
     [ "pos", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#accdb7f186003853eb8e8e73d18cbee5b", null ],
-    [ "result", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#a6df97c504aced455afc77267d4246388", null ],
+    [ "reset_pos", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#a6bb352fe0795a8b412b8f0e7ca1450cd", null ],
+    [ "reset_status", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#afe5b1d5c20cd4e241d466bc2e0c04b4d", null ],
+    [ "result", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#acc5a3938c2ccce4c284c64a159676416", null ],
+    [ "status", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#adf92eb978b5ebe57eeae053b1c921cb8", null ],
     [ "operator==", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#aea9dc293645164bb5d5f8fd30b2eff23", null ],
     [ "operator==", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#ab4b7eafbdda797cc3578761f76c87557", null ],
     [ "swap", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#a02860e23ad86c6d1718a1b341ecb79a3", null ],
     [ "_decode_result", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#afc6f69187768b0e77f9f7afc1c2fa667", null ],
     [ "_default_error_handler", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#ae11250ba261668f4d7efbf35298c4d03", null ],
     [ "_error_handler", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#a83e888eda58a01279016b3fb85a0e5e6", null ],
+    [ "_error_status", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#a0c9b47a78f4eeea53cff86c5cc667034", null ],
     [ "_input", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#ab0eb8a070a6dc54616b4cbea18021f97", null ],
     [ "_pos", "d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#ad08b814bd6ef22fed69651788001c123", null ]
 ];

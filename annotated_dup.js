@@ -88,7 +88,13 @@ var annotated_dup =
           [ "Builder", "de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html", "de/dd7/classdl7_1_1json_1_1detail_1_1Builder" ],
           [ "Generator", "d5/dc2/classdl7_1_1json_1_1detail_1_1Generator.html", "d5/dc2/classdl7_1_1json_1_1detail_1_1Generator" ],
           [ "IdentifierMatcher", "d0/d21/structdl7_1_1json_1_1detail_1_1IdentifierMatcher.html", "d0/d21/structdl7_1_1json_1_1detail_1_1IdentifierMatcher" ],
-          [ "Lexer", "d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer.html", "d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer" ]
+          [ "Lexer", "d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer.html", "d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer" ],
+          [ "UnescaperErrorHandler", "dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler.html", "dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler" ]
+        ] ],
+        [ "util", "d3/d94/namespacedl7_1_1json_1_1util.html", [
+          [ "Escaper", "d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html", "d9/dd0/classdl7_1_1json_1_1util_1_1Escaper" ],
+          [ "Unescaper", "df/df1/classdl7_1_1json_1_1util_1_1Unescaper.html", "df/df1/classdl7_1_1json_1_1util_1_1Unescaper" ],
+          [ "Validator", "d6/d9c/classdl7_1_1json_1_1util_1_1Validator.html", "d6/d9c/classdl7_1_1json_1_1util_1_1Validator" ]
         ] ],
         [ "Format", "df/d52/structdl7_1_1json_1_1Format.html", "df/d52/structdl7_1_1json_1_1Format" ],
         [ "Json", "d7/d95/classdl7_1_1json_1_1Json.html", "d7/d95/classdl7_1_1json_1_1Json" ],

@@ -132,7 +132,11 @@ var hierarchy =
     [ "cl7::strings::ErrorHandler", "d7/dff/classcl7_1_1strings_1_1ErrorHandler.html", [
       [ "cl7::strings::LoggingErrorHandler", "d0/d92/classcl7_1_1strings_1_1LoggingErrorHandler.html", null ]
     ] ],
+    [ "dl7::json::util::Unescaper::ErrorHandler", "d0/d2a/structdl7_1_1json_1_1util_1_1Unescaper_1_1ErrorHandler.html", [
+      [ "dl7::json::detail::UnescaperErrorHandler", "dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler.html", null ]
+    ] ],
     [ "cl7::strings::ErrorStatus", "dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html", null ],
+    [ "dl7::json::util::Escaper", "d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html", null ],
     [ "std::exception", null, [
       [ "tl7::exceptions::assertion_exception", "d6/db9/structtl7_1_1exceptions_1_1assertion__exception.html", null ]
     ] ],
@@ -219,6 +223,7 @@ var hierarchy =
     [ "xl7::graphics::meshes::MeshUtil", "d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil.html", null ],
     [ "dl7::json::Format::MultiLineOptions", "d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html", null ],
     [ "dl7::Base64::Options", "de/d56/structdl7_1_1Base64_1_1Options.html", null ],
+    [ "dl7::json::util::Escaper::Options", "d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html", null ],
     [ "dl7::syntax::Lexer::Options", "dd/d72/structdl7_1_1syntax_1_1Lexer_1_1Options.html", null ],
     [ "cl7::ordered_map< Key, T, KeyView, Compare, Allocator >", "dd/d42/classcl7_1_1ordered__map.html", null ],
     [ "xl7::graphics::images::PngImageHandler::PaletteEntry", "d6/d53/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1PaletteEntry.html", null ],
@@ -432,12 +437,14 @@ var hierarchy =
     [ "cl7::strings::Transcoder< Tchar_from, Tchar_to, TDefaultErrorHandler >", "d8/d71/classcl7_1_1strings_1_1Transcoder.html", null ],
     [ "cl7::u8isstream", "d9/d44/classcl7_1_1u8isstream.html", null ],
     [ "cl7::u8osstream", "d3/d63/classcl7_1_1u8osstream.html", null ],
+    [ "dl7::json::util::Unescaper", "df/df1/classdl7_1_1json_1_1util_1_1Unescaper.html", null ],
     [ "cl7::system::user", "dd/d72/classcl7_1_1system_1_1user.html", null ],
     [ "cl7::strings::Utf16Codec", "d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html", null ],
     [ "cl7::strings::Utf32Codec", "d2/dec/classcl7_1_1strings_1_1Utf32Codec.html", null ],
     [ "cl7::io::utf8_reader", "db/d4a/classcl7_1_1io_1_1utf8__reader.html", null ],
     [ "cl7::io::utf8_writer", "df/d3b/classcl7_1_1io_1_1utf8__writer.html", null ],
     [ "cl7::strings::Utf8Codec", "d7/ddc/classcl7_1_1strings_1_1Utf8Codec.html", null ],
+    [ "dl7::json::util::Validator", "d6/d9c/classdl7_1_1json_1_1util_1_1Validator.html", null ],
     [ "xl7::graphics::Color::Value32", "da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html", null ],
     [ "ml7::Vector2", "d7/db1/structml7_1_1Vector2.html", null ],
     [ "ml7::Vector3", "d6/d64/structml7_1_1Vector3.html", null ],
