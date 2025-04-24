@@ -215,7 +215,7 @@ namespace dl7::json::detail {
         {
             const object_t& object = json.as_object();
             if (object.empty()) return oss << u8"{}";
-            oss << u8"[";
+            oss << u8"{";
             size_t i = 0;
             for (const auto& p : object)
             {
@@ -225,14 +225,14 @@ namespace dl7::json::detail {
                 else
                     _write_string(oss, p.first, format);
                 oss.put(u8':');
-                if (format.style == Format::Style::SingleLine && !format.single_line_options.compact)
+                if (format.style != Format::Style::SingleLine || !format.single_line_options.compact)
                     oss.put(u8' ');
                 _write_json(oss, p.second, depth + 1, format);
                 _end_item(oss, i, object.size(), format);
                 ++i;
             }
             _start_item(oss, depth, format);
-            oss << u8"]";
+            oss << u8"}";
             return oss;
         }
 
