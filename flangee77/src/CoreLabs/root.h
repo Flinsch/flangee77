@@ -4,6 +4,19 @@
 
 
 // NOLINTBEGIN(*-reserved-identifier)
+#if !defined(NDEBUG) && !defined(_DEBUG)
+// Neither set: assume debug build. GCC/Clang don't set _DEBUG, for example, while
+// MSVC does; but all three set NDEBUG in the case of a non-debug build.
+#define _DEBUG
+#endif
+#if (defined(NDEBUG) && defined(_DEBUG)) || (!defined(NDEBUG) && !defined(_DEBUG))
+#error Inconsistent NDEBUG and _DEBUG definition.
+#endif
+// NOLINTEND(*-reserved-identifier)
+
+
+
+// NOLINTBEGIN(*-reserved-identifier)
 #ifndef _WIN32_WINNT
 //#define _WIN32_WINNT _WIN32_WINNT_WIN7
 //#define _WIN32_WINNT _WIN32_WINNT_WIN8
