@@ -165,7 +165,7 @@ namespace dl7::json::detail {
             if (ch == u8'"') ++double_quotes;
         }
 
-        cl7::u8char_t quote_char = single_quotes > double_quotes ? u8'\'' : u8'"';
+        cl7::u8char_t quote_char = single_quotes < double_quotes ? u8'\'' : u8'"';
         return _write_string(oss, string, quote_char, format);
     }
 
