@@ -1,15 +1,44 @@
 #ifndef F77_TESTS_DL7_SYNTAX_H
 #define F77_TESTS_DL7_SYNTAX_H
 
+#include <DataLabs/syntax/SourceContext.h>
 #include <DataLabs/syntax/matchers.h>
 #include <DataLabs/syntax/GenericLexer.h>
 #include <DataLabs/syntax/BufferedTokenReader.h>
 #include <DataLabs/syntax/LexingTokenReader.h>
+#include <DataLabs/syntax/SourceAwareDiagnostics.h>
 #include <DataLabs/syntax/Vocabulary.h>
 
 #include <TestLabs/TestSuite.h>
 
 #include "../shared.h"
+
+
+
+TESTLABS_CASE( u8"DataLabs:  syntax:  SourceContext"  )
+{
+    struct Entry
+    {
+        cl7::u8string_view source;
+        size_t offset;
+        dl7::syntax::SourceContext expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", 0, { 1, 1, u8"" } },
+        { u8"Hello World", 0, { 1, 1, u8"Hello World" } },
+        { u8"Hello World", 6, { 1, 7, u8"Hello World" } },
+        { u8"ABC\r\nHello World\r\nXYZ", 11, { 2, 7, u8"Hello World" } },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, cl7::to_string(entry.offset) + u8": " + cl7::u8string{entry.source} )
+    {
+        auto actual = dl7::syntax::SourceContext::from_source_offset( entry.source, entry.offset );
+        TESTLABS_CHECK_EQ( actual.location.line, entry.expected.location.line );
+        TESTLABS_CHECK_EQ( actual.location.column, entry.expected.location.column );
+        TESTLABS_CHECK_EQ( actual.line_extract, entry.expected.line_extract );
+    }
+}
 
 
 
@@ -310,7 +339,7 @@ TESTLABS_CASE( u8"DataLabs:  syntax:  GenericLexer / TokenReader" )
     terminal_symbols.add_pattern( /*u8"character",*/ 20, u8"'", R"('(?:[^'\\]|\\.)')" );
     terminal_symbols.add_pattern( /*u8"string",*/ 21, u8"\"", R"("[^"\\]*(?:\\.[^"\\]*)*")" );
 
-    dl7::syntax::Diagnostics diagnostics;
+    dl7::syntax::SourceAwareDiagnostics diagnostics{ source };
     dl7::syntax::GenericLexer lexer( &diagnostics, &terminal_symbols, {
         .whitespace_handling = dl7::syntax::Lexer::WhitespaceHandling::Discard,
     } );

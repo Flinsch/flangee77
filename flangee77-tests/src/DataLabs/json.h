@@ -309,7 +309,7 @@ TESTLABS_CASE( u8"DataLabs:  json:  JsonReader / JsonWriter" )
         { u8"7", dl7::json::JsonWriter::DEFAULT_FORMAT },
         { u8"7.0", dl7::json::JsonWriter::DEFAULT_FORMAT },
         { u8"7e+10", dl7::json::JsonWriter::DEFAULT_FORMAT },
-        { u8"Hello World", dl7::json::JsonWriter::DEFAULT_FORMAT },
+        { u8"\"Hello World\"", dl7::json::JsonWriter::DEFAULT_FORMAT },
         { u8"[]", dl7::json::JsonWriter::DEFAULT_FORMAT },
         { u8"{}", dl7::json::JsonWriter::DEFAULT_FORMAT },
         {
@@ -481,7 +481,7 @@ u8"{\r\n"
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
     {
         const auto json = dl7::json::JsonReader::parse( entry.string );
-        if (json.is_null())
+        if (entry.string.empty())
             TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( json, entry.format ), u8"null" );
         else
             TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( json, entry.format ), entry.string );

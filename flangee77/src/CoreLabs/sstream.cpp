@@ -13,6 +13,16 @@ namespace cl7 {
     {
     }
 
+    void u8isstream::str(const u8string& s)
+    {
+        _iss.str(std::string(cl7::strings::reinterpret_utf8(s)));
+    }
+
+    void u8isstream::str(u8string&& s)
+    {
+        _iss.str(std::string(cl7::strings::reinterpret_utf8(std::move(s))));
+    }
+
     unsigned int u8isstream::peek()
     {
         return static_cast<unsigned int>(_iss.peek());
@@ -50,9 +60,24 @@ namespace cl7 {
 
 
 
+    void u8osstream::str(const u8string& s)
+    {
+        _oss.str(std::string(cl7::strings::reinterpret_utf8(s)));
+    }
+
+    void u8osstream::str(u8string&& s)
+    {
+        _oss.str(std::string(cl7::strings::reinterpret_utf8(std::move(s))));
+    }
+
     u8string u8osstream::str() const
     {
-        return u8string{cl7::strings::reinterpret_utf8(_oss.str())};
+        return u8string{cl7::strings::reinterpret_utf8(_oss.view())};
+    }
+
+    u8string_view u8osstream::view() const
+    {
+        return cl7::strings::reinterpret_utf8(_oss.view());
     }
 
     u8osstream& u8osstream::put(u8char_t ch)

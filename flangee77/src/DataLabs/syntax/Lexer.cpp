@@ -23,7 +23,7 @@ namespace dl7::syntax {
     void Lexer::init(cl7::u8string_view source)
     {
         _source = source;
-        _source_location = SourceLocation();
+        _source_offset = 0;
     }
 
     /**
@@ -36,13 +36,13 @@ namespace dl7::syntax {
         if (_options.whitespace_handling == WhitespaceHandling::Discard)
             _skip_whitespace();
 
-        if (_source_location.offset >= _source.length())
+        if (_source_offset >= _source.length())
         {
             // Return "EOF" token.
             return {
                 .symbol_id = EOF_SYMBOL_ID,
                 .lexeme = cl7::u8string_view(),
-                .source_location = _source_location,
+                .source_offset = _source_offset,
             };
         }
 
@@ -51,13 +51,13 @@ namespace dl7::syntax {
 
         assert(symbol_id != EOF_SYMBOL_ID);
         assert(length > 0);
-        assert(length + _source_location.offset <= _source.length());
+        assert(length + _source_offset <= _source.length());
 
         // Capture token ...
         Token token{
             .symbol_id = symbol_id,
-            .lexeme = _source.substr(_source_location.offset, length),
-            .source_location = _source_location,
+            .lexeme = _source.substr(_source_offset, length),
+            .source_offset = _source_offset,
         };
 
         // Move cursor forward and handle different line endings.
@@ -92,7 +92,7 @@ namespace dl7::syntax {
     size_t Lexer::_skip_whitespace()
     {
         const size_t length = cl7::strings::count_whitespace_prefix(get_remainder());
-        assert(length + _source_location.offset <= _source.length());
+        assert(length + _source_offset <= _source.length());
         _advance(length);
         return length;
     }
@@ -102,30 +102,7 @@ namespace dl7::syntax {
      */
     void Lexer::_advance(size_t count)
     {
-        for (size_t i = 0; i < count; ++i, ++_source_location.offset)
-        {
-            assert(_source_location.offset < _source.length());
-            const size_t line_break = cl7::strings::is_line_break_prefix(_source.substr(_source_location.offset));
-            if (line_break > 0)
-            {
-                // Line break: advance the line, resetting the column.
-                ++_source_location.line;
-                _source_location.column = 1;
-
-                if (line_break > 1)
-                {
-                    // Skip second line-break character, i.e. LF (`\n`) after CR (`\r`) on Windows.
-                    assert(line_break == 2);
-                    _source_location.offset += line_break - 1;
-                    i += line_break - 1;
-                }
-            }
-            else
-            {
-                // "Regular" character: advance the column.
-                ++_source_location.column;
-            }
-        } // for ...
+        _source_offset += count;
     }
 
 

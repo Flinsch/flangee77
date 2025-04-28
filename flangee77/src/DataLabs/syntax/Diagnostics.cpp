@@ -7,11 +7,23 @@ namespace dl7::syntax {
 
 
     /**
+     * Tries to transform the given byte offset into a textual source context.
+     * In the basic version, an "empty" source context is returned. The logic can be
+     * overridden in derived classes to refine/customize the behavior.
+     */
+    SourceContext Diagnostics::make_source_context(size_t source_offset) const
+    {
+        return {};
+    }
+
+
+
+    /**
      * Clears all diagnostics and the number of errors and warnings.
      */
     void Diagnostics::clear()
     {
-        *this = Diagnostics();
+        *this = Diagnostics(_log_context);
     }
 
     /**
@@ -37,11 +49,38 @@ namespace dl7::syntax {
     }
 
     /**
-     * Adds the specified diagnostic.
+     * Adds the specified diagnostic with a simple message.
+     */
+    void Diagnostics::add(Diagnostic::Severity severity, cl7::u8string_view message)
+    {
+        add({.severity=severity, .message=cl7::u8string(message)});
+    }
+
+    /**
+     * Adds the specified diagnostic with a message and a byte offset into the
+     * source text. Depending on the overridable function `make_source_context`, a
+     * basic source location or a concrete textual source context may be derived.
+     */
+    void Diagnostics::add(Diagnostic::Severity severity, cl7::u8string_view message, size_t source_offset)
+    {
+        add({.severity=severity, .message=cl7::u8string(message), .source_context=make_source_context(source_offset)});
+    }
+
+    /**
+     * Adds the specified diagnostic with a message and a basic source location.
      */
     void Diagnostics::add(Diagnostic::Severity severity, cl7::u8string_view message, const SourceLocation& source_location)
     {
-        add({.severity=severity, .message=cl7::u8string(message), .source_location=source_location});
+        add({.severity=severity, .message=cl7::u8string(message), .source_context={.location=source_location, .line_extract={}}});
+    }
+
+    /**
+     * Adds the specified diagnostic with a message and an explicit textual source
+     * context.
+     */
+    void Diagnostics::add(Diagnostic::Severity severity, cl7::u8string_view message, const SourceContext& source_context)
+    {
+        add({.severity=severity, .message=cl7::u8string(message), .source_context=source_context});
     }
 
     /**

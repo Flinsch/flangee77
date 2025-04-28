@@ -36,6 +36,9 @@ class u8isstream
 public:
     u8isstream(u8string_view str);
 
+    void str(const u8string& s);
+    void str(u8string&& s);
+
     unsigned int peek();
     unsigned int get();
     u8isstream& get(u8char_t& ch);
@@ -60,7 +63,11 @@ private:
 class u8osstream
 {
 public:
+    void str(const u8string& s);
+    void str(u8string&& s);
+
     u8string str() const;
+    u8string_view view() const;
 
     u8osstream& put(u8char_t ch);
 

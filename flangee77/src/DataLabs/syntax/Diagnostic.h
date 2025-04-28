@@ -1,7 +1,7 @@
 #ifndef DL7_SYNTAX_DIAGNOSTIC_H
 #define DL7_SYNTAX_DIAGNOSTIC_H
 
-#include "./SourceLocation.h"
+#include "./SourceContext.h"
 
 #include <CoreLabs/logging/LogContext.h>
 #include <CoreLabs/string.h>
@@ -39,8 +39,8 @@ struct Diagnostic
     /** The error/warning/notice message. */
     cl7::u8string message;
 
-    /** The location of the "incident" in the source text. */
-    SourceLocation source_location;
+    /** The textual context of the "incident" in the source text. */
+    SourceContext source_context;
 
 
 

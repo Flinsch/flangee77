@@ -64,6 +64,11 @@ target_sources(flangee77
     syntax/ProductionRule.h
     syntax/ProductionRuleCollection.cpp
     syntax/ProductionRuleCollection.h
+    syntax/SourceAwareDiagnostics.cpp
+    syntax/SourceAwareDiagnostics.h
+    syntax/SourceContext.cpp
+    syntax/SourceContext.h
+    syntax/SourceLocation.cpp
     syntax/SourceLocation.h
     syntax/SymbolID.h
     syntax/TerminalSymbol.cpp

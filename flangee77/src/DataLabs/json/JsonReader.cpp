@@ -3,6 +3,7 @@
 #include "./detail/Lexer.h"
 #include "./detail/Builder.h"
 
+#include <DataLabs/syntax/SourceAwareDiagnostics.h>
 #include <DataLabs/syntax/LexingTokenReader.h>
 
 
@@ -16,7 +17,7 @@ namespace dl7::json {
      */
     Json JsonReader::parse(cl7::u8string_view source)
     {
-        syntax::Diagnostics diagnostics;
+        syntax::SourceAwareDiagnostics diagnostics{source};
 
         detail::Lexer lexer{&diagnostics};
         lexer.init(source);

@@ -2,7 +2,6 @@
 #define DL7_SYNTAX_TOKEN_H
 
 #include "./TerminalSymbol.h"
-#include "./SourceLocation.h"
 
 #include <CoreLabs/string.h>
 
@@ -24,8 +23,8 @@ struct Token
     /** The piece of the source text that matches the terminal symbol definition. */
     cl7::u8string_view lexeme;
 
-    /** The location of the token in the source text. */
-    SourceLocation source_location;
+    /** The offset position of the token's lexeme in the source text (in terms of code units). */
+    size_t source_offset;
 
 }; // struct Token
 

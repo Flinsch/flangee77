@@ -264,7 +264,7 @@ namespace dl7::json::detail {
 
     void Builder::_error(cl7::u8string_view message, const syntax::Token& token)
     {
-        get_diagnostics()->add(syntax::Diagnostic::Severity::Error, message, token.source_location);
+        get_diagnostics()->add(syntax::Diagnostic::Severity::Error, message, token.source_offset);
     }
 
 

@@ -2,7 +2,6 @@
 #define DL7_SYNTAX_LEXER_H
 #include "./ParseStage.h"
 
-#include "./SourceLocation.h"
 #include "./TerminalSymbol.h"
 #include "./Token.h"
 
@@ -96,13 +95,13 @@ public:
      * Returns the rest of the source text that has not yet been analyzed, depending
      * on the current cursor position.
      */
-    cl7::u8string_view get_remainder() const { return _source.substr(_source_location.offset); }
+    cl7::u8string_view get_remainder() const { return _source.substr(_source_offset); }
 
     /**
-     * Returns the current source location of the next character/token to be
-     * recognized.
+     * Returns the current source text offset, in terms of code units, of the next
+     * character/token to be recognized.
      */
-    const SourceLocation& get_source_location() const { return _source_location; }
+    size_t get_source_offset() const { return _source_offset; }
 
 
 
@@ -140,9 +139,10 @@ private:
     cl7::u8string_view _source;
 
     /**
-     * The current source location of the next character/token to be recognized.
+     * The current source text offset, in terms of code units, of the next
+     * character/token to be recognized.
      */
-    SourceLocation _source_location;
+    size_t _source_offset;
 
 }; // class Lexer
 

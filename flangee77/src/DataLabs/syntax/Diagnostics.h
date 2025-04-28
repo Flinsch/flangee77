@@ -24,6 +24,16 @@ class Diagnostics
 public:
     Diagnostics() = default;
     explicit Diagnostics(cl7::logging::LogContext log_context) : _log_context(log_context) {}
+    virtual ~Diagnostics() = default;
+
+
+
+    /**
+     * Tries to transform the given byte offset into a textual source context.
+     * In the basic version, an "empty" source context is returned. The logic can be
+     * overridden in derived classes to refine/customize the behavior.
+     */
+    virtual SourceContext make_source_context(size_t source_offset) const;
 
 
 
@@ -38,9 +48,27 @@ public:
     void add(const Diagnostic& diagnostic);
 
     /**
-     * Adds the specified diagnostic.
+     * Adds the specified diagnostic with a simple message.
+     */
+    void add(Diagnostic::Severity severity, cl7::u8string_view message);
+
+    /**
+     * Adds the specified diagnostic with a message and a byte offset into the
+     * source text. Depending on the overridable function `make_source_context`, a
+     * basic source location or a concrete textual source context may be derived.
+     */
+    void add(Diagnostic::Severity severity, cl7::u8string_view message, size_t source_offset);
+
+    /**
+     * Adds the specified diagnostic with a message and a basic source location.
      */
     void add(Diagnostic::Severity severity, cl7::u8string_view message, const SourceLocation& source_location);
+
+    /**
+     * Adds the specified diagnostic with a message and an explicit textual source
+     * context.
+     */
+    void add(Diagnostic::Severity severity, cl7::u8string_view message, const SourceContext& source_context);
 
     /**
      * Returns the "list" of all diagnostics.
