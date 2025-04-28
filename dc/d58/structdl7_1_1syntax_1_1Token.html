@@ -99,16 +99,6 @@ $(document).ready(function(){initNavTree('dc/d58/structdl7_1_1syntax_1_1Token.ht
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="../../dc/d33/Token_8h_source.html">Token.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for dl7::syntax::Token:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d8/dc8/structdl7_1_1syntax_1_1Token__coll__graph.png" border="0" usemap="#adl7_1_1syntax_1_1Token_coll__map" alt="Collaboration graph"/></div>
-<map name="adl7_1_1syntax_1_1Token_coll__map" id="adl7_1_1syntax_1_1Token_coll__map">
-<area shape="rect" title=" " alt="" coords="37,93,175,119"/>
-<area shape="rect" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html" title=" " alt="" coords="5,5,207,31"/>
-<area shape="poly" title=" " alt="" coords="109,45,109,93,103,93,103,45"/>
-</map>
-<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -116,8 +106,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a982e4ff2770b2d956c7dff7f17ba776e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a681fa824a30c0fe56f984bba4ea81ef7" id="r_a681fa824a30c0fe56f984bba4ea81ef7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d58/structdl7_1_1syntax_1_1Token.html#a681fa824a30c0fe56f984bba4ea81ef7">lexeme</a></td></tr>
 <tr class="separator:a681fa824a30c0fe56f984bba4ea81ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdad291634aafdeb452802e902d0696c" id="r_abdad291634aafdeb452802e902d0696c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html">SourceLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d58/structdl7_1_1syntax_1_1Token.html#abdad291634aafdeb452802e902d0696c">source_location</a></td></tr>
-<tr class="separator:abdad291634aafdeb452802e902d0696c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea98731c04dc0b4c55b6d14caf04ff8f" id="r_aea98731c04dc0b4c55b6d14caf04ff8f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d58/structdl7_1_1syntax_1_1Token.html#aea98731c04dc0b4c55b6d14caf04ff8f">source_offset</a></td></tr>
+<tr class="separator:aea98731c04dc0b4c55b6d14caf04ff8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a lexical token produced by a lexer. </p>
@@ -137,18 +127,18 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="abdad291634aafdeb452802e902d0696c" name="abdad291634aafdeb452802e902d0696c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abdad291634aafdeb452802e902d0696c">&#9670;&#160;</a></span>source_location</h2>
+<a id="aea98731c04dc0b4c55b6d14caf04ff8f" name="aea98731c04dc0b4c55b6d14caf04ff8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea98731c04dc0b4c55b6d14caf04ff8f">&#9670;&#160;</a></span>source_offset</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html">SourceLocation</a> dl7::syntax::Token::source_location</td>
+          <td class="memname">size_t dl7::syntax::Token::source_offset</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The location of the token in the source text. </p>
+<p>The offset position of the token's lexeme in the source text (in terms of code units). </p>
 
 </div>
 </div>

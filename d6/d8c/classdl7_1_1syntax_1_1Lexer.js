@@ -12,7 +12,7 @@ var classdl7_1_1syntax_1_1Lexer =
     [ "get_options", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#aa51c5a61a4cb4e76045c08fcbd550dd4", null ],
     [ "get_remainder", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ae85bc4550386ceb0c02bde967118dab5", null ],
     [ "get_source", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a334ebe6d63eadcfa436de4ace647f8de", null ],
-    [ "get_source_location", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ac68e94ad96c243bd03d08a66b45dbd8f", null ],
+    [ "get_source_offset", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a5d1d1defaac84ff79308590353b33c25", null ],
     [ "init", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ad13606b999e2aae1a6b2782165da17b5", null ],
     [ "next_token", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a829f082da6ffa0e754ff50925cc04a2f", null ],
     [ "ParseStage", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ae835818ce00e45c0d7728d818c03d4e8", null ],
@@ -22,5 +22,5 @@ var classdl7_1_1syntax_1_1Lexer =
     [ "tokenize", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#aad3813f967db1aeb7dc329db3605642e", null ],
     [ "_options", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ad430069a8f31c075cff9450c1ea0236c", null ],
     [ "_source", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a32d87959c92857962ea4ba13dc85ad83", null ],
-    [ "_source_location", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#acd9132d1ae59e8573fb78a78f6744142", null ]
+    [ "_source_offset", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a7d3e75d09124c3d7a84323f59d46f5e3", null ]
 ];

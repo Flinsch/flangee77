@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('d3/d9a/SourceLocation_8h_source.html',
 <a href="../../d3/d9a/SourceLocation_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef DL7_SYNTAX_SOURCELOCATION_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define DL7_SYNTAX_SOURCELOCATION_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="../../de/d99/root_8h.html">CoreLabs/root.h</a>&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="../../da/d66/string_8h.html">CoreLabs/string.h</a>&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
@@ -110,29 +110,33 @@ $(document).ready(function(){initNavTree('d3/d9a/SourceLocation_8h_source.html',
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html">   12</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html">SourceLocation</a></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#aaaa70ba03b0b2f3387544891234227fa">   16</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#aaaa70ba03b0b2f3387544891234227fa">offset</a> = 0;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#ad9d9387d6b6d1d81316cd74002803234">   19</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#ad9d9387d6b6d1d81316cd74002803234">line</a> = 1;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#a988fd1d9656adf647cd0d05379af99fd">   21</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#a988fd1d9656adf647cd0d05379af99fd">column</a> = 1;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}; <span class="comment">// struct SourceLocation</span></div>
-</div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html">   16</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html">SourceLocation</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#ad9d9387d6b6d1d81316cd74002803234">   20</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#ad9d9387d6b6d1d81316cd74002803234">line</a> = 1;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#a988fd1d9656adf647cd0d05379af99fd">   23</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#a988fd1d9656adf647cd0d05379af99fd">column</a> = 1;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>} <span class="comment">// namespace dl7::syntax</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#endif </span><span class="comment">// DL7_SYNTAX_SOURCELOCATION_H</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">static</span> <a class="code hl_struct" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html">SourceLocation</a> <a class="code hl_function" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#af3e9ef8cb9f576cd0697d84a0f0d385d">from_source_offset</a>(<a class="code hl_typedef" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> source, <span class="keywordtype">size_t</span> offset);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}; <span class="comment">// struct SourceLocation</span></div>
+</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>} <span class="comment">// namespace dl7::syntax</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif </span><span class="comment">// DL7_SYNTAX_SOURCELOCATION_H</span></div>
+<div class="ttc" id="anamespacecl7_html_a3f50fdc015f0eb140ce63df6b8a954ec"><div class="ttname"><a href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a></div><div class="ttdeci">std::basic_string_view&lt; u8char_t &gt; u8string_view</div><div class="ttdef"><b>Definition</b> string.h:36</div></div>
 <div class="ttc" id="anamespacedl7_1_1syntax_html"><div class="ttname"><a href="../../db/d34/namespacedl7_1_1syntax.html">dl7::syntax</a></div><div class="ttdef"><b>Definition</b> AstNode.h:8</div></div>
-<div class="ttc" id="aroot_8h_html"><div class="ttname"><a href="../../de/d99/root_8h.html">root.h</a></div></div>
-<div class="ttc" id="astructdl7_1_1syntax_1_1SourceLocation_html"><div class="ttname"><a href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html">dl7::syntax::SourceLocation</a></div><div class="ttdef"><b>Definition</b> SourceLocation.h:13</div></div>
-<div class="ttc" id="astructdl7_1_1syntax_1_1SourceLocation_html_a988fd1d9656adf647cd0d05379af99fd"><div class="ttname"><a href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#a988fd1d9656adf647cd0d05379af99fd">dl7::syntax::SourceLocation::column</a></div><div class="ttdeci">size_t column</div><div class="ttdef"><b>Definition</b> SourceLocation.h:21</div></div>
-<div class="ttc" id="astructdl7_1_1syntax_1_1SourceLocation_html_aaaa70ba03b0b2f3387544891234227fa"><div class="ttname"><a href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#aaaa70ba03b0b2f3387544891234227fa">dl7::syntax::SourceLocation::offset</a></div><div class="ttdeci">size_t offset</div><div class="ttdef"><b>Definition</b> SourceLocation.h:16</div></div>
-<div class="ttc" id="astructdl7_1_1syntax_1_1SourceLocation_html_ad9d9387d6b6d1d81316cd74002803234"><div class="ttname"><a href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#ad9d9387d6b6d1d81316cd74002803234">dl7::syntax::SourceLocation::line</a></div><div class="ttdeci">size_t line</div><div class="ttdef"><b>Definition</b> SourceLocation.h:19</div></div>
+<div class="ttc" id="astring_8h_html"><div class="ttname"><a href="../../da/d66/string_8h.html">string.h</a></div></div>
+<div class="ttc" id="astructdl7_1_1syntax_1_1SourceLocation_html"><div class="ttname"><a href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html">dl7::syntax::SourceLocation</a></div><div class="ttdef"><b>Definition</b> SourceLocation.h:17</div></div>
+<div class="ttc" id="astructdl7_1_1syntax_1_1SourceLocation_html_a988fd1d9656adf647cd0d05379af99fd"><div class="ttname"><a href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#a988fd1d9656adf647cd0d05379af99fd">dl7::syntax::SourceLocation::column</a></div><div class="ttdeci">size_t column</div><div class="ttdef"><b>Definition</b> SourceLocation.h:23</div></div>
+<div class="ttc" id="astructdl7_1_1syntax_1_1SourceLocation_html_ad9d9387d6b6d1d81316cd74002803234"><div class="ttname"><a href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#ad9d9387d6b6d1d81316cd74002803234">dl7::syntax::SourceLocation::line</a></div><div class="ttdeci">size_t line</div><div class="ttdef"><b>Definition</b> SourceLocation.h:20</div></div>
+<div class="ttc" id="astructdl7_1_1syntax_1_1SourceLocation_html_af3e9ef8cb9f576cd0697d84a0f0d385d"><div class="ttname"><a href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#af3e9ef8cb9f576cd0697d84a0f0d385d">dl7::syntax::SourceLocation::from_source_offset</a></div><div class="ttdeci">static SourceLocation from_source_offset(cl7::u8string_view source, size_t offset)</div><div class="ttdef"><b>Definition</b> SourceLocation.cpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

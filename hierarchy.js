@@ -120,7 +120,9 @@ var hierarchy =
       [ "xl7::graphics::textures::Texture3D::Desc", "d7/d4d/structxl7_1_1graphics_1_1textures_1_1Texture3D_1_1Desc.html", null ]
     ] ],
     [ "dl7::syntax::Diagnostic", "d0/d46/structdl7_1_1syntax_1_1Diagnostic.html", null ],
-    [ "dl7::syntax::Diagnostics", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html", null ],
+    [ "dl7::syntax::Diagnostics", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html", [
+      [ "dl7::syntax::SourceAwareDiagnostics", "d2/d51/classdl7_1_1syntax_1_1SourceAwareDiagnostics.html", null ]
+    ] ],
     [ "dl7::syntax::matchers::DoubleQuotedStringMatcher", "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html", null ],
     [ "xl7::DriverResolver::DriverEntry", "df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html", null ],
     [ "xl7::DriverResolver", "de/d70/structxl7_1_1DriverResolver.html", null ],
@@ -386,6 +388,7 @@ var hierarchy =
       ] ],
       [ "cl7::creational::SingletonManager", "d7/dba/classcl7_1_1creational_1_1SingletonManager.html", null ]
     ] ],
+    [ "dl7::syntax::SourceContext", "d7/d8c/structdl7_1_1syntax_1_1SourceContext.html", null ],
     [ "dl7::syntax::SourceLocation", "d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::StateArray< TProxy, N >", "d7/df7/classxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray.html", null ],
     [ "cl7::static_vector< T, N >", "da/d4e/classcl7_1_1static__vector.html", null ],

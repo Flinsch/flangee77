@@ -8,5 +8,7 @@ var classcl7_1_1u8isstream =
     [ "operator bool", "d9/d44/classcl7_1_1u8isstream.html#abf89a3cd3065eefccd365d19a754a474", null ],
     [ "operator>>", "d9/d44/classcl7_1_1u8isstream.html#a4fce1ad9946a2c80cf75ed8a93448608", null ],
     [ "peek", "d9/d44/classcl7_1_1u8isstream.html#aa581eb75affd430f88fd3566cc9c1505", null ],
+    [ "str", "d9/d44/classcl7_1_1u8isstream.html#af67fe3c43813ba7f52fa252e6d8971c1", null ],
+    [ "str", "d9/d44/classcl7_1_1u8isstream.html#af37c7880a7f93ab19f15bb6a654e9491", null ],
     [ "_iss", "d9/d44/classcl7_1_1u8isstream.html#af7ad88657c3020edf8f7783f785fe2d2", null ]
 ];

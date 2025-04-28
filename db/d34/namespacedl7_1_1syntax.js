@@ -22,6 +22,8 @@ var namespacedl7_1_1syntax =
     [ "PatternSymbol", "d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html", "d3/d62/structdl7_1_1syntax_1_1PatternSymbol" ],
     [ "ProductionRule", "d1/d16/structdl7_1_1syntax_1_1ProductionRule.html", "d1/d16/structdl7_1_1syntax_1_1ProductionRule" ],
     [ "ProductionRuleCollection", "dd/d0c/classdl7_1_1syntax_1_1ProductionRuleCollection.html", "dd/d0c/classdl7_1_1syntax_1_1ProductionRuleCollection" ],
+    [ "SourceAwareDiagnostics", "d2/d51/classdl7_1_1syntax_1_1SourceAwareDiagnostics.html", "d2/d51/classdl7_1_1syntax_1_1SourceAwareDiagnostics" ],
+    [ "SourceContext", "d7/d8c/structdl7_1_1syntax_1_1SourceContext.html", "d7/d8c/structdl7_1_1syntax_1_1SourceContext" ],
     [ "SourceLocation", "d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html", "d0/d4d/structdl7_1_1syntax_1_1SourceLocation" ],
     [ "TerminalSymbol", "d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html", "d1/d21/structdl7_1_1syntax_1_1TerminalSymbol" ],
     [ "TerminalSymbolCollection", "dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html", "dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection" ],

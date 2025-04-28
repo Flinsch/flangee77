@@ -92,6 +92,7 @@ $(document).ready(function(){initNavTree('d0/d4d/structdl7_1_1syntax_1_1SourceLo
 
 <div class="header">
   <div class="summary">
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="../../d2/d03/structdl7_1_1syntax_1_1SourceLocation-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">dl7::syntax::SourceLocation Struct Reference</div></div>
@@ -100,15 +101,58 @@ $(document).ready(function(){initNavTree('d0/d4d/structdl7_1_1syntax_1_1SourceLo
 
 <p><code>#include &lt;<a class="el" href="../../d3/d9a/SourceLocation_8h_source.html">SourceLocation.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:af3e9ef8cb9f576cd0697d84a0f0d385d" id="r_af3e9ef8cb9f576cd0697d84a0f0d385d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html">SourceLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#af3e9ef8cb9f576cd0697d84a0f0d385d">from_source_offset</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> source, size_t offset)</td></tr>
+<tr class="separator:af3e9ef8cb9f576cd0697d84a0f0d385d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aaaa70ba03b0b2f3387544891234227fa" id="r_aaaa70ba03b0b2f3387544891234227fa"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#aaaa70ba03b0b2f3387544891234227fa">offset</a> = 0</td></tr>
-<tr class="separator:aaaa70ba03b0b2f3387544891234227fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9d9387d6b6d1d81316cd74002803234" id="r_ad9d9387d6b6d1d81316cd74002803234"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#ad9d9387d6b6d1d81316cd74002803234">line</a> = 1</td></tr>
 <tr class="separator:ad9d9387d6b6d1d81316cd74002803234"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a988fd1d9656adf647cd0d05379af99fd" id="r_a988fd1d9656adf647cd0d05379af99fd"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#a988fd1d9656adf647cd0d05379af99fd">column</a> = 1</td></tr>
 <tr class="separator:a988fd1d9656adf647cd0d05379af99fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a specific location in a source text using 1-indexed line and column numbers. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="af3e9ef8cb9f576cd0697d84a0f0d385d" name="af3e9ef8cb9f576cd0697d84a0f0d385d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3e9ef8cb9f576cd0697d84a0f0d385d">&#9670;&#160;</a></span>from_source_offset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html">SourceLocation</a> dl7::syntax::SourceLocation::from_source_offset </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a>&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>offset</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Constructs a source location from a byte offset into the given source text. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a988fd1d9656adf647cd0d05379af99fd" name="a988fd1d9656adf647cd0d05379af99fd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a988fd1d9656adf647cd0d05379af99fd">&#9670;&#160;</a></span>column</h2>
@@ -121,7 +165,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The 1-indexed column number in the source text (in terms of code units). </p>
+<p>The 1-indexed column number, in terms of code points. </p>
 
 </div>
 </div>
@@ -136,27 +180,13 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The 1-indexed line number in the source text. </p>
+<p>The 1-indexed line number on the source text. </p>
 
 </div>
 </div>
-<a id="aaaa70ba03b0b2f3387544891234227fa" name="aaaa70ba03b0b2f3387544891234227fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaaa70ba03b0b2f3387544891234227fa">&#9670;&#160;</a></span>offset</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t dl7::syntax::SourceLocation::offset = 0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>The 0-indexed offset position of the token's lexeme in the source text (in terms of code units). </p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>DataLabs/syntax/<a class="el" href="../../d3/d9a/SourceLocation_8h_source.html">SourceLocation.h</a></li>
+<li>DataLabs/syntax/<a class="el" href="../../d2/d87/SourceLocation_8cpp.html">SourceLocation.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
