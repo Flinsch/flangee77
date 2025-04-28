@@ -19,11 +19,11 @@ namespace xl7::graphics::images {
     {
         const Image::Desc source_desc = source_image.get_desc();
         const Image::Desc target_desc = {
-            .pixel_format=pixel_format,
-            .channel_order=channel_order,
-            .width=source_image.get_desc().width,
-            .height=source_image.get_desc().height,
-            .depth=source_image.get_desc().depth,
+            .pixel_format = pixel_format,
+            .channel_order = channel_order,
+            .width = source_image.get_desc().width,
+            .height = source_image.get_desc().height,
+            .depth = source_image.get_desc().depth,
         };
 
         if (source_desc.pixel_format == PixelFormat::UNKNOWN || target_desc.pixel_format == PixelFormat::UNKNOWN)

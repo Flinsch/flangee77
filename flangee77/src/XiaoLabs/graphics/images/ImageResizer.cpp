@@ -357,11 +357,11 @@ namespace xl7::graphics::images {
     {
         const Image::Desc source_desc = source_image.get_desc();
         const Image::Desc target_desc = {
-            .pixel_format=source_image.get_desc().pixel_format,
-            .channel_order=source_image.get_desc().channel_order,
-            .width=width,
-            .height=height,
-            .depth=depth,
+            .pixel_format = source_image.get_desc().pixel_format,
+            .channel_order = source_image.get_desc().channel_order,
+            .width = width,
+            .height = height,
+            .depth = depth,
         };
 
         if (source_desc.pixel_format == PixelFormat::UNKNOWN && resampling_method != ResamplingMethod::NearestNeighbor)

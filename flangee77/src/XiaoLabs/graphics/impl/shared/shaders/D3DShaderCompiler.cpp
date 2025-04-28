@@ -119,7 +119,7 @@ namespace xl7::graphics::impl::shared::shaders {
             *data_out = static_cast<const void*>(code.data());
             *bytes_out = static_cast<unsigned>(code.size());
 
-            _parent_entries.emplace(*data_out, ParentEntry{.directory=Include::directory(file_path), .code=std::move(code)});
+            _parent_entries.emplace(*data_out, ParentEntry{.directory = Include::directory(file_path), .code = std::move(code)});
 
             assert(*data_out == _parent_entries[*data_out].code.data());
 

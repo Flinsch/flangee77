@@ -41,7 +41,7 @@ namespace xl7::graphics::images {
      * Default constructor. Initializes an "empty" image.
      */
     Image::Image()
-        : _desc{.pixel_format=PixelFormat::UNKNOWN, .channel_order=ChannelOrder::RGBA, .width=0, .height=0, .depth=0}
+        : _desc{.pixel_format = PixelFormat::UNKNOWN, .channel_order = ChannelOrder::RGBA, .width = 0, .height = 0, .depth = 0}
     {
     }
 

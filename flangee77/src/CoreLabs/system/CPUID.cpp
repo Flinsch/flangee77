@@ -108,7 +108,7 @@ namespace cl7::system {
 
     CPUID::regs CPUID::cpuid(unsigned eax, unsigned ecx)
     {
-        regs regs = {.eax=0, .ebx=0, .ecx=0, .edx=0};
+        regs regs = {.eax = 0, .ebx = 0, .ecx = 0, .edx = 0};
 
 #ifdef _WIN32
         if (ecx)

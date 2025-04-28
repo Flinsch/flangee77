@@ -60,8 +60,8 @@ struct Sample
         : name(name)
         , parent_sample(parent_sample)
         , parent_count(parent_sample ? parent_sample->parent_count + 1 : 0)
-        , frame({.is_open=false, .is_profiled=false, .frame_usecs=0})
-        , stats({.min_usecs=0, .max_usecs=0, .avg_usecs=0, .min_pct=0.0f, .max_pct=0.0f, .avg_pct=0.0f, .data_count=0, .call_count=0})
+        , frame({.is_open = false, .is_profiled = false, .frame_usecs = 0})
+        , stats({.min_usecs = 0, .max_usecs = 0, .avg_usecs = 0, .min_pct = 0.0f, .max_pct = 0.0f, .avg_pct = 0.0f, .data_count = 0, .call_count = 0})
     {
     }
 

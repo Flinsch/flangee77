@@ -21,7 +21,7 @@ namespace dl7::syntax {
      */
     void ProductionRuleCollection::add(SymbolID symbol_id, const std::vector<SymbolID>& sequence)
     {
-        add({.symbol_id=symbol_id, .sequence=sequence});
+        add({.symbol_id = symbol_id, .sequence = sequence});
     }
 
     /**
@@ -29,7 +29,7 @@ namespace dl7::syntax {
      */
     void ProductionRuleCollection::add(SymbolID symbol_id, std::vector<SymbolID>&& sequence)
     {
-        add({.symbol_id=symbol_id, .sequence=std::move(sequence)});
+        add({.symbol_id = symbol_id, .sequence = std::move(sequence)});
     }
 
     /**

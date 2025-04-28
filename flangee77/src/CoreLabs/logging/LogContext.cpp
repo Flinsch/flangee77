@@ -24,7 +24,7 @@ namespace cl7::logging {
      */
     void LogContext::try_log(cl7::u8string_view message, LogType type, const char* file_path, unsigned line_number, const char* function_name) const
     {
-        try_log({.message=message, .type=type, .file_path=file_path, .line_number=line_number, .function_name=function_name});
+        try_log({.message = message, .type = type, .file_path = file_path, .line_number = line_number, .function_name = function_name});
     }
 
 

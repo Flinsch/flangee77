@@ -45,7 +45,7 @@ namespace dl7::syntax {
 
         size_t column = cl7::strings::utf8_length(source.substr(line_offset, offset - line_offset)) + 1;
 
-        return {.line=line, .column=column};
+        return {.line = line, .column = column};
     }
 
 

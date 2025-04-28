@@ -66,8 +66,8 @@ namespace cl7::profiling {
 
         cl7::u8string utf8 = cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(utfx));
 
-        logger->log(cl7::logging::LogEntry{.message=utf8, .type=cl7::logging::LogType::Code});
-        logger->log(cl7::logging::LogEntry{.message=u8"--------------------------------------------------------------------------------", .type=cl7::logging::LogType::Code});
+        logger->log(cl7::logging::LogEntry{.message = utf8, .type = cl7::logging::LogType::Code});
+        logger->log(cl7::logging::LogEntry{.message = u8"--------------------------------------------------------------------------------", .type = cl7::logging::LogType::Code});
 
         for (const auto& p : _sample_lookup)
         {
@@ -95,7 +95,7 @@ namespace cl7::profiling {
         {
             auto sample_ptr = std::make_unique<Sample>(sample_name, _last_opened_sample);
             _samples.emplace_back(std::move(sample_ptr));
-            auto p = _sample_lookup.insert(std::pair<SampleKey, SampleHandler>({sample_name, _last_opened_sample}, {.sample=_samples.back().get()}));
+            auto p = _sample_lookup.insert(std::pair<SampleKey, SampleHandler>({sample_name, _last_opened_sample}, {.sample = _samples.back().get()}));
             assert(p.second);
             it = p.first;
         }
@@ -175,7 +175,7 @@ namespace cl7::profiling {
 
         cl7::u8string utf8 = cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(utfx));
 
-        logger->log(cl7::logging::LogEntry{.message=utf8, .type=cl7::logging::LogType::Code});
+        logger->log(cl7::logging::LogEntry{.message = utf8, .type = cl7::logging::LogType::Code});
 
         for (const auto& p : _sample_lookup)
         {

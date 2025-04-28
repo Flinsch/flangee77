@@ -77,7 +77,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
             if (d3d_shader_buffer_desc.Type != D3D_CT_CBUFFER)
                 continue;
 
-            constant_buffer_declarations_out.emplace_back(xl7::graphics::shaders::ConstantBufferDeclaration{.name=reinterpret_cast<const cl7::u8char_t*>(d3d_shader_buffer_desc.Name), .index=cbuffer_index, .layout={}});
+            constant_buffer_declarations_out.emplace_back(xl7::graphics::shaders::ConstantBufferDeclaration{.name = reinterpret_cast<const cl7::u8char_t*>(d3d_shader_buffer_desc.Name), .index = cbuffer_index, .layout = {}});
             auto& constant_declarations_out = constant_buffer_declarations_out.back().layout.constant_declarations;
 
             for (unsigned variable_index = 0; variable_index < d3d_shader_buffer_desc.Variables; ++variable_index)

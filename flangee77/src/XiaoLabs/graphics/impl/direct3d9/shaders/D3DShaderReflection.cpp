@@ -109,7 +109,7 @@ namespace xl7::graphics::impl::direct3d9::shaders {
 
             const auto* const cinfo = reinterpret_cast<const Info*>(ctab_ptr + cheader->ConstantInfo);
 
-            constant_buffer_declarations_out.emplace_back(xl7::graphics::shaders::ConstantBufferDeclaration{.name=u8"", .index=0, .layout={}});
+            constant_buffer_declarations_out.emplace_back(xl7::graphics::shaders::ConstantBufferDeclaration{.name = u8"", .index = 0, .layout = {}});
             auto& constant_declarations_out = constant_buffer_declarations_out.back().layout.constant_declarations;
 
             for (uint32_t i = 0; i < cheader->Constants; ++i)

@@ -32,12 +32,12 @@ public:
     };
 
     static constexpr Options default_options = {
-        .ch62=u8'+',
-        .ch63=u8'/',
-        .pad=true,
-        .line_length=76,
-        .insert_breaks=false,
-        //.insert_spaces=false,
+        .ch62 = u8'+',
+        .ch63 = u8'/',
+        .pad = true,
+        .line_length = 76,
+        .insert_breaks = false,
+        //.insert_spaces = false,
     };
 
 

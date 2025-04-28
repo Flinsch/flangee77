@@ -333,37 +333,37 @@ namespace cl7::strings {
 
     bool check_ascii(astring_view as, bool log_warning)
     {
-        cl7::strings::LoggingErrorHandler error_handler{{.logging_enabled=log_warning, .logger=nullptr}};
+        cl7::strings::LoggingErrorHandler error_handler{{.logging_enabled = log_warning, .logger = nullptr}};
         return Analyzer<achar_t>(&error_handler).validate(as);
     }
 
     bool check_utf8(u8string_view u8s, bool log_warning)
     {
-        cl7::strings::LoggingErrorHandler error_handler{{.logging_enabled=log_warning, .logger=nullptr}};
+        cl7::strings::LoggingErrorHandler error_handler{{.logging_enabled = log_warning, .logger = nullptr}};
         return Analyzer<u8char_t>(&error_handler).validate(u8s);
     }
 
     bool check_utf16(u16string_view u16s, bool log_warning)
     {
-        cl7::strings::LoggingErrorHandler error_handler{{.logging_enabled=log_warning, .logger=nullptr}};
+        cl7::strings::LoggingErrorHandler error_handler{{.logging_enabled = log_warning, .logger = nullptr}};
         return Analyzer<u16char_t>(&error_handler).validate(u16s);
     }
 
     bool check_utf32(u32string_view u32s, bool log_warning)
     {
-        cl7::strings::LoggingErrorHandler error_handler{{.logging_enabled=log_warning, .logger=nullptr}};
+        cl7::strings::LoggingErrorHandler error_handler{{.logging_enabled = log_warning, .logger = nullptr}};
         return Analyzer<u32char_t>(&error_handler).validate(u32s);
     }
 
     bool parse_utf8(u8string_view u8s, u32string& u32s, bool log_warning)
     {
-        cl7::strings::LoggingErrorHandler error_handler{{.logging_enabled=log_warning, .logger=nullptr}};
+        cl7::strings::LoggingErrorHandler error_handler{{.logging_enabled = log_warning, .logger = nullptr}};
         return Transcoder<u8char_t, u32char_t>(&error_handler).transcode_with_status(u8s, u32s).error_count == 0;
     }
 
     bool parse_utf16(u16string_view u16s, u32string& u32s, bool log_warning)
     {
-        cl7::strings::LoggingErrorHandler error_handler{{.logging_enabled=log_warning, .logger=nullptr}};
+        cl7::strings::LoggingErrorHandler error_handler{{.logging_enabled = log_warning, .logger = nullptr}};
         return Transcoder<u16char_t, u32char_t>(&error_handler).transcode_with_status(u16s, u32s).error_count == 0;
     }
 

@@ -26,8 +26,8 @@ namespace dl7::syntax {
             ++end;
 
         return {
-            .location=SourceLocation::from_source_offset(source, offset),
-            .line_extract=cl7::u8string{source.substr(begin, end - begin)},
+            .location = SourceLocation::from_source_offset(source, offset),
+            .line_extract = cl7::u8string{source.substr(begin, end - begin)},
         };
     }
 

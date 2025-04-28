@@ -112,7 +112,7 @@ namespace dl7::json::detail {
         oss << quote_char;
 
         util::Escaper escaper{get_diagnostics()->get_log_context()};
-        escaper.escape_string(oss, string, {.quote_char=static_cast<util::Escaper::QuoteChar>(quote_char), .escape_unicode=format.escape_unicode});
+        escaper.escape_string(oss, string, {.quote_char = static_cast<util::Escaper::QuoteChar>(quote_char), .escape_unicode = format.escape_unicode});
 
         return oss << quote_char;
     }

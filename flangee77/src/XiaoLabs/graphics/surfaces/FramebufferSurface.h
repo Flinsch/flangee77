@@ -41,7 +41,7 @@ public:
 protected:
     FramebufferSurface(Type type, const CreateParams<Desc>& params)
         : Surface(Type::RenderTargetSurface, params)
-        , _default_viewport{.x=0, .y=0, .width=params.desc.width, .height=params.desc.height, .min_z=0.0f, .max_z=1.0f}
+        , _default_viewport{.x = 0, .y = 0, .width = params.desc.width, .height = params.desc.height, .min_z = 0.0f, .max_z = 1.0f}
     {
     }
 

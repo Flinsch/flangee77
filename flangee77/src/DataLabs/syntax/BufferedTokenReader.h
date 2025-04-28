@@ -81,7 +81,7 @@ private:
     container_type _tokens;
     iterator _it;
 
-    Token _invalid_eof_token = {.symbol_id=EOF_SYMBOL_ID};
+    Token _invalid_eof_token = {.symbol_id = EOF_SYMBOL_ID};
 
 }; // class BufferedTokenReader
 

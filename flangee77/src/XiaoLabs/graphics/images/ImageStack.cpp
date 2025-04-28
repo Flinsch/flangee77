@@ -11,7 +11,7 @@ namespace xl7::graphics::images {
     // #############################################################################
 
     ImageStack::ImageStack()
-        : _desc({.pixel_format=PixelFormat::UNKNOWN, .channel_order=ChannelOrder::RGBA, .width=0, .height=0})
+        : _desc({.pixel_format = PixelFormat::UNKNOWN, .channel_order = ChannelOrder::RGBA, .width = 0, .height = 0})
     {
     }
 

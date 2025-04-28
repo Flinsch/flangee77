@@ -105,12 +105,12 @@ namespace xl7::graphics::impl::direct3d9 {
 
         // Adopt the supported shader versions.
         capabilities.shaders.vertex_shader_version = {
-            .major=D3DSHADER_VERSION_MAJOR(_d3d_device_caps.VertexShaderVersion),
-            .minor=D3DSHADER_VERSION_MINOR(_d3d_device_caps.VertexShaderVersion),
+            .major = static_cast<unsigned>(D3DSHADER_VERSION_MAJOR(_d3d_device_caps.VertexShaderVersion)),
+            .minor = static_cast<unsigned>(D3DSHADER_VERSION_MINOR(_d3d_device_caps.VertexShaderVersion)),
         };
         capabilities.shaders.pixel_shader_version = {
-            .major=D3DSHADER_VERSION_MAJOR(_d3d_device_caps.PixelShaderVersion),
-            .minor=D3DSHADER_VERSION_MINOR(_d3d_device_caps.PixelShaderVersion),
+            .major = static_cast<unsigned>(D3DSHADER_VERSION_MAJOR(_d3d_device_caps.PixelShaderVersion)),
+            .minor = static_cast<unsigned>(D3DSHADER_VERSION_MINOR(_d3d_device_caps.PixelShaderVersion)),
         };
 
         // Adopt the supported texture capabilities.

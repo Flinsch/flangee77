@@ -35,7 +35,7 @@ public:
         bool escape_unicode = false;
     };
 
-    static constexpr Options DEFAULT_OPTIONS = {.quote_char=QuoteChar::DoubleQuote, .escape_unicode=false};
+    static constexpr Options DEFAULT_OPTIONS = {.quote_char = QuoteChar::DoubleQuote, .escape_unicode = false};
 
 
 

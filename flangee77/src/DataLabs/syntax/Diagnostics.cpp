@@ -53,7 +53,7 @@ namespace dl7::syntax {
      */
     void Diagnostics::add(Diagnostic::Severity severity, cl7::u8string_view message)
     {
-        add({.severity=severity, .message=cl7::u8string(message)});
+        add({.severity = severity, .message = cl7::u8string(message)});
     }
 
     /**
@@ -63,7 +63,7 @@ namespace dl7::syntax {
      */
     void Diagnostics::add(Diagnostic::Severity severity, cl7::u8string_view message, size_t source_offset)
     {
-        add({.severity=severity, .message=cl7::u8string(message), .source_context=make_source_context(source_offset)});
+        add({.severity = severity, .message = cl7::u8string(message), .source_context = make_source_context(source_offset)});
     }
 
     /**
@@ -71,7 +71,7 @@ namespace dl7::syntax {
      */
     void Diagnostics::add(Diagnostic::Severity severity, cl7::u8string_view message, const SourceLocation& source_location)
     {
-        add({.severity=severity, .message=cl7::u8string(message), .source_context={.location=source_location, .line_extract={}}});
+        add({.severity = severity, .message = cl7::u8string(message), .source_context = {.location = source_location, .line_extract = {}}});
     }
 
     /**
@@ -80,7 +80,7 @@ namespace dl7::syntax {
      */
     void Diagnostics::add(Diagnostic::Severity severity, cl7::u8string_view message, const SourceContext& source_context)
     {
-        add({.severity=severity, .message=cl7::u8string(message), .source_context=source_context});
+        add({.severity = severity, .message = cl7::u8string(message), .source_context = source_context});
     }
 
     /**

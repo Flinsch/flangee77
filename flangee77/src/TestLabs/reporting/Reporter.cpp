@@ -35,7 +35,7 @@ namespace tl7::reporting {
     {
         remove_listener(listener);
 
-        ListenerEntry entry{.priority=priority, .consecutive_number=consecutive_number++, .listener=listener};
+        ListenerEntry entry{.priority = priority, .consecutive_number = consecutive_number++, .listener = listener};
         auto it = std::ranges::upper_bound(_listeners, entry, std::less<>());
         _listeners.insert(it, entry);
     }
