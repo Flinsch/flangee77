@@ -12,7 +12,7 @@ namespace dl7::syntax {
 
 /**
  * In addition to the basic functionalities, this class also holds a reference to
- * the source text to be processed and offers an additional function for adding
+ * the source text to be processed and overrides `make_source_context` for adding
  * diagnostic entries related to this source text.
  */
 class SourceAwareDiagnostics

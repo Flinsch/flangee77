@@ -16,7 +16,7 @@ namespace dl7::syntax {
 struct SourceLocation
 {
 
-    /** The 1-indexed line number on the source text. */
+    /** The 1-indexed line number in the source text. */
     size_t line = 1;
 
     /** The 1-indexed column number, in terms of code points. */

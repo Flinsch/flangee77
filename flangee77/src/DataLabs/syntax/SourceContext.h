@@ -11,7 +11,7 @@ namespace dl7::syntax {
 
 /**
  * Represents a textual context in a source text, as location (line and column
- * numbers) along with the corresponding line of code.
+ * numbers) along with the corresponding line of text.
  */
 struct SourceContext
 {

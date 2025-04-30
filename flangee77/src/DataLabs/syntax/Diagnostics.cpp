@@ -59,7 +59,7 @@ namespace dl7::syntax {
     /**
      * Adds the specified diagnostic with a message and a byte offset into the
      * source text. Depending on the overridable function `make_source_context`, a
-     * basic source location or a concrete textual source context may be derived.
+     * basic source location or a concrete textual source context may be pulled in.
      */
     void Diagnostics::add(Diagnostic::Severity severity, cl7::u8string_view message, size_t source_offset)
     {
