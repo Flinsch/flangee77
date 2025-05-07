@@ -52,10 +52,10 @@ public:
 
     explicit Json(Type type);
 
-    Json(const Json& json);
-    Json& operator=(const Json& json);
-    Json(Json&& json) noexcept;
-    Json& operator=(Json&& json) noexcept;
+    Json(const Json& other);
+    Json& operator=(const Json& other);
+    Json(Json&& other) noexcept;
+    Json& operator=(Json&& other) noexcept;
 
     ~Json() noexcept = default;
 
