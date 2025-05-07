@@ -15,13 +15,14 @@ var searchData=
   ['indexbuffer_12',['IndexBuffer',['../d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html',1,'xl7::graphics::meshes']]],
   ['indexbufferimpl_13',['indexbufferimpl',['../df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html',1,'xl7::graphics::impl::direct3d11::meshes::IndexBufferImpl'],['../dd/d8e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl.html',1,'xl7::graphics::impl::direct3d9::meshes::IndexBufferImpl']]],
   ['indexdataprovider_14',['IndexDataProvider',['../d3/d72/classxl7_1_1graphics_1_1meshes_1_1IndexDataProvider.html',1,'xl7::graphics::meshes']]],
-  ['inputassemblerstage_15',['InputAssemblerStage',['../d8/d9d/classxl7_1_1graphics_1_1pipeline_1_1InputAssemblerStage.html',1,'xl7::graphics::pipeline']]],
-  ['integerliteralmatcher_16',['IntegerLiteralMatcher',['../d9/d3c/structdl7_1_1syntax_1_1matchers_1_1IntegerLiteralMatcher.html',1,'dl7::syntax::matchers']]],
-  ['iresourcefactory_17',['IResourceFactory',['../d3/daa/classxl7_1_1graphics_1_1IResourceFactory.html',1,'xl7::graphics']]],
-  ['irom_18',['irom',['../d3/d68/classcl7_1_1io_1_1irom.html',1,'cl7::io']]],
-  ['ishaderfactory_19',['IShaderFactory',['../d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory.html',1,'xl7::graphics::shaders']]],
-  ['istatefactory_20',['IStateFactory',['../dc/da2/classxl7_1_1graphics_1_1states_1_1IStateFactory.html',1,'xl7::graphics::states']]],
-  ['isurfacefactory_21',['ISurfaceFactory',['../dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html',1,'xl7::graphics::surfaces']]],
-  ['iterator_22',['iterator',['../d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html',1,'cl7::strings::Decoder']]],
-  ['itexturefactory_23',['ITextureFactory',['../d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html',1,'xl7::graphics::textures']]]
+  ['ini_15',['Ini',['../da/d48/classdl7_1_1ini_1_1Ini.html',1,'dl7::ini']]],
+  ['inputassemblerstage_16',['InputAssemblerStage',['../d8/d9d/classxl7_1_1graphics_1_1pipeline_1_1InputAssemblerStage.html',1,'xl7::graphics::pipeline']]],
+  ['integerliteralmatcher_17',['IntegerLiteralMatcher',['../d9/d3c/structdl7_1_1syntax_1_1matchers_1_1IntegerLiteralMatcher.html',1,'dl7::syntax::matchers']]],
+  ['iresourcefactory_18',['IResourceFactory',['../d3/daa/classxl7_1_1graphics_1_1IResourceFactory.html',1,'xl7::graphics']]],
+  ['irom_19',['irom',['../d3/d68/classcl7_1_1io_1_1irom.html',1,'cl7::io']]],
+  ['ishaderfactory_20',['IShaderFactory',['../d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory.html',1,'xl7::graphics::shaders']]],
+  ['istatefactory_21',['IStateFactory',['../dc/da2/classxl7_1_1graphics_1_1states_1_1IStateFactory.html',1,'xl7::graphics::states']]],
+  ['isurfacefactory_22',['ISurfaceFactory',['../dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html',1,'xl7::graphics::surfaces']]],
+  ['iterator_23',['iterator',['../d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html',1,'cl7::strings::Decoder']]],
+  ['itexturefactory_24',['ITextureFactory',['../d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html',1,'xl7::graphics::textures']]]
 ];

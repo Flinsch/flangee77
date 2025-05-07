@@ -12,7 +12,7 @@ var searchData=
   ['block_5fcomment_9',['BLOCK_COMMENT',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a0417ffa721e0d5c07a02ad21c08656d9',1,'dl7::json::detail']]],
   ['blue_10',['blue',['../d8/d30/namespacexl7_1_1graphics.html#a7f932a51645d57b7b508969692d213dea9594eec95be70e7b1710f730fdda33d9',1,'xl7::graphics::Blue'],['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a3b3ee3fef238e2ac2e478ac84126b985',1,'tl7::reporting::Blue']]],
   ['bool_11',['Bool',['../d7/db8/namespacexl7_1_1graphics_1_1shaders.html#a085c34184496b18274daf7e0044b82e8ac26f15e86e3de4c398a8273272aba034',1,'xl7::graphics::shaders']]],
-  ['boolean_12',['Boolean',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caa27226c864bac7454a8504f8edb15d95b',1,'dl7::json::Json']]],
+  ['boolean_12',['boolean',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caa27226c864bac7454a8504f8edb15d95b',1,'dl7::json::Json::Boolean'],['../da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18a27226c864bac7454a8504f8edb15d95b',1,'dl7::ini::Value::Boolean']]],
   ['border_13',['Border',['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#a4f8492702caa383f50f8ebd226c1ecb4a070554647306343cbea29ebfdd278ba8',1,'xl7::graphics::states::SamplerState']]],
   ['borderless_14',['Borderless',['../da/df2/classxl7_1_1MainWindow.html#a65d67e130764aea53e92a93a196e76e7a78f0192ac55eba33ee88d026452952e5',1,'xl7::MainWindow']]],
   ['borderlessfullscreen_15',['BorderlessFullscreen',['../d2/d33/structxl7_1_1Config_1_1Video.html#ae385a3a6e937c6aef106ebdf94bd0e59ac1999bb36fd75c30832ec398d5b249ea',1,'xl7::Config::Video']]],

@@ -9,7 +9,7 @@ var searchData=
   ['info_6',['info',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a8f8b7b6f5296a5279cba94c1485337b1',1,'tl7::reporting::Info'],['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a4059b0251f66a18cb56f544728796875',1,'cl7::logging::Info']]],
   ['insufficientoutputspace_7',['InsufficientOutputSpace',['../dc/d17/namespacecl7_1_1strings.html#af691638e9c6fbf723b19957270f2c0d2ae49a033b028684cbd39180d4a9bebfeb',1,'cl7::strings']]],
   ['int_8',['Int',['../d7/db8/namespacexl7_1_1graphics_1_1shaders.html#a085c34184496b18274daf7e0044b82e8a1686a6c336b71b36d77354cea19a8b52',1,'xl7::graphics::shaders']]],
-  ['integer_9',['Integer',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caaa0faef0851b4294c06f2b94bb1cb2044',1,'dl7::json::Json']]],
+  ['integer_9',['integer',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caaa0faef0851b4294c06f2b94bb1cb2044',1,'dl7::json::Json::Integer'],['../da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18aa0faef0851b4294c06f2b94bb1cb2044',1,'dl7::ini::Value::Integer']]],
   ['integer_5fliteral_10',['INTEGER_LITERAL',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a77b89817e9fdd11bcdcac65b0f2e89dd',1,'dl7::json::detail']]],
   ['invalidcodeunit_11',['InvalidCodeUnit',['../dc/d17/namespacecl7_1_1strings.html#af691638e9c6fbf723b19957270f2c0d2a03ab58dec6991b8b352e04bd55c4d6cf',1,'cl7::strings']]],
   ['invalidsequence_12',['InvalidSequence',['../dc/d17/namespacecl7_1_1strings.html#af691638e9c6fbf723b19957270f2c0d2aff5c3eeddd1c7a19875b5686efd52fdb',1,'cl7::strings']]],

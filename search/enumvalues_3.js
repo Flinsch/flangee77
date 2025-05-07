@@ -7,7 +7,7 @@ var searchData=
   ['d32_4',['D32',['../d8/d30/namespacexl7_1_1graphics.html#a43b1458b1fd0bf912e9f69eec93adea5aa6b2eecc4252564f599b9a979e4e0602',1,'xl7::graphics']]],
   ['d32s8x24_5',['D32S8X24',['../d8/d30/namespacexl7_1_1graphics.html#a43b1458b1fd0bf912e9f69eec93adea5a0ed5381773e6db4448da9d8e74d4e95c',1,'xl7::graphics']]],
   ['darkgray_6',['DarkGray',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740ac414dd0df47b25bc4d5fb9522682bd17',1,'tl7::reporting']]],
-  ['decimal_7',['Decimal',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caa937504f318f04eaf0f1d701df4c4d7f3',1,'dl7::json::Json']]],
+  ['decimal_7',['decimal',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caa937504f318f04eaf0f1d701df4c4d7f3',1,'dl7::json::Json::Decimal'],['../da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18a937504f318f04eaf0f1d701df4c4d7f3',1,'dl7::ini::Value::Decimal']]],
   ['decimal_5fliteral_8',['DECIMAL_LITERAL',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a01defdf75773e6428d6ab13ce433a4f1',1,'dl7::json::detail']]],
   ['decimalonly_9',['DecimalOnly',['../d3/d6a/namespacedl7_1_1syntax_1_1matchers.html#a52fc665d8a9a783b2d6454378201ea24a89fadab93cff77afedbf025863b09916',1,'dl7::syntax::matchers']]],
   ['decrclamp_10',['DecrClamp',['../db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#a5ea224e29dd36067e266b081eb767292a26e3e085a0f76ba4a9b87cfa74bef0cc',1,'xl7::graphics::states::DepthStencilState']]],

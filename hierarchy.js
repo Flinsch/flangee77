@@ -349,6 +349,9 @@ var hierarchy =
     [ "tl7::ResultBuilder", "db/d89/classtl7_1_1ResultBuilder.html", null ],
     [ "cl7::profiling::Sample", "d6/d1f/structcl7_1_1profiling_1_1Sample.html", null ],
     [ "cl7::profiling::SampleHandler", "d3/dea/structcl7_1_1profiling_1_1SampleHandler.html", null ],
+    [ "dl7::ini::Section", "dc/d3a/classdl7_1_1ini_1_1Section.html", [
+      [ "dl7::ini::Ini", "da/d48/classdl7_1_1ini_1_1Ini.html", null ]
+    ] ],
     [ "cl7::strings::Decoder< Tchar, TDefaultErrorHandler >::sentinel", "d8/d2c/classcl7_1_1strings_1_1Decoder_1_1sentinel.html", null ],
     [ "tl7::TestSuite::Settings", "db/dbc/structtl7_1_1TestSuite_1_1Settings.html", null ],
     [ "xl7::graphics::shaders::ShaderCode", "d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html", null ],
@@ -448,6 +451,7 @@ var hierarchy =
     [ "cl7::io::utf8_writer", "df/d3b/classcl7_1_1io_1_1utf8__writer.html", null ],
     [ "cl7::strings::Utf8Codec", "d7/ddc/classcl7_1_1strings_1_1Utf8Codec.html", null ],
     [ "dl7::json::util::Validator", "d6/d9c/classdl7_1_1json_1_1util_1_1Validator.html", null ],
+    [ "dl7::ini::Value", "da/d29/classdl7_1_1ini_1_1Value.html", null ],
     [ "xl7::graphics::Color::Value32", "da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html", null ],
     [ "ml7::Vector2", "d7/db1/structml7_1_1Vector2.html", null ],
     [ "ml7::Vector3", "d6/d64/structml7_1_1Vector3.html", null ],
