@@ -8,6 +8,14 @@ target_sources(flangee77
     compression/Deflate.cpp
     compression/Deflate.h
 
+    ini/Ini.cpp
+    ini/Ini.h
+    ini/Section.cpp
+    ini/Section.h
+    ini/types.h
+    ini/Value.cpp
+    ini/Value.h
+
     json/Format.h
     json/Json.cpp
     json/Json.h
