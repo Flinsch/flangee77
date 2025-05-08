@@ -2,13 +2,12 @@
 
 #include "./JsonWriter.h"
 
-#include <CoreLabs/strings.h>
-
 #include <utility>
 
 
 
 namespace dl7::json {
+
 
 
     Json::Json()
@@ -63,35 +62,35 @@ namespace dl7::json {
         reset_type(type);
     }
 
-    Json::Json(const Json& json)
+    Json::Json(const Json& other)
     {
-        *this = json;
+        *this = other;
     }
 
-    Json& Json::operator=(const Json& json)
+    Json& Json::operator=(const Json& other)
     {
-        switch (json.get_type())
+        switch (other.get_type())
         {
         case Type::Object:
-            set_object(json.as_object());
+            set_object(other.as_object());
             break;
         case Type::Array:
-            set_array(json.as_array());
+            set_array(other.as_array());
             break;
         case Type::String:
-            set_string(json.as_string());
+            set_string(other.as_string());
             break;
         case Type::Decimal:
-            set_decimal(json.as_decimal());
+            set_decimal(other.as_decimal());
             break;
         case Type::Integer:
-            set_integer(json.as_integer());
+            set_integer(other.as_integer());
             break;
         case Type::Unsigned:
-            set_unsigned(json.as_unsigned());
+            set_unsigned(other.as_unsigned());
             break;
         case Type::Boolean:
-            set_boolean(json.as_boolean());
+            set_boolean(other.as_boolean());
             break;
         default:
             assert(is_null());
@@ -100,14 +99,14 @@ namespace dl7::json {
         return *this;
     }
 
-    Json::Json(Json&& json) noexcept
-        : _value(std::move(json._value))
+    Json::Json(Json&& other) noexcept
+        : _value(std::move(other._value))
     {
     }
 
-    Json& Json::operator=(Json&& json) noexcept
+    Json& Json::operator=(Json&& other) noexcept
     {
-        _value = std::move(json._value);
+        _value = std::move(other._value);
         return *this;
     }
 
