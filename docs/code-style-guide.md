@@ -54,6 +54,10 @@ The same order tends to apply to a `struct` as well, but with one crucial differ
 variables are all public and come immediately after constants and type definitions&mdash;if there are any, otherwise variables are right at the beginning of the `struct`, in any case before possible constructors etc.
 
 A concrete example of (possible) exceptions to the above rules:
+Static factory methods should be placed immediately after the default and/or parameterized constructors, rather than grouped later with other &ldquo;regular&rdquo; static functions.
+This order may be semantically more appropriate and improve code readability.
+
+And another one:
 Even though friend declarations usually go at the end (or optionally at the top) of a class, it's fine to place a friend operator with the other operator overloads if it replaces what would otherwise be a regular member operator.
 `friend bool operator==(Foo a, Foo b) noexcept` instead of `bool operator==(Foo other) const noexcept` would be such a case, for example.
 This can make the class interface easier to read and understand.
