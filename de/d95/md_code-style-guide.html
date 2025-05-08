@@ -151,7 +151,8 @@ Class Structure and Member Order</h1>
 </li>
 </ul>
 <p>The same order tends to apply to a <code>struct</code> as well, but with one crucial difference: variables are all public and come immediately after constants and type definitions&mdash;if there are any, otherwise variables are right at the beginning of the <code>struct</code>, in any case before possible constructors etc.</p>
-<p>A concrete example of (possible) exceptions to the above rules: Even though friend declarations usually go at the end (or optionally at the top) of a class, it's fine to place a friend operator with the other operator overloads if it replaces what would otherwise be a regular member operator. <code>friend bool operator==(Foo a, Foo b) noexcept</code> instead of <code>bool operator==(Foo other) const noexcept</code> would be such a case, for example. This can make the class interface easier to read and understand.</p>
+<p>A concrete example of (possible) exceptions to the above rules: Static factory methods should be placed immediately after the default and/or parameterized constructors, rather than grouped later with other &ldquo;regular&rdquo; static functions. This order may be semantically more appropriate and improve code readability.</p>
+<p>And another one: Even though friend declarations usually go at the end (or optionally at the top) of a class, it's fine to place a friend operator with the other operator overloads if it replaces what would otherwise be a regular member operator. <code>friend bool operator==(Foo a, Foo b) noexcept</code> instead of <code>bool operator==(Foo other) const noexcept</code> would be such a case, for example. This can make the class interface easier to read and understand.</p>
 <h1><a class="anchor" id="autotoc_md8"></a>
 &lt;tt&gt;class&lt;/tt&gt; vs. &lt;tt&gt;struct&lt;/tt&gt;</h1>
 <ul>
