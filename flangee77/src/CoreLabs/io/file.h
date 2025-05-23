@@ -20,7 +20,7 @@ class file
 
 public:
     file() = default;
-    file(const cl7::u8string& path, open_mode open_mode = open_mode::read | open_mode::write);
+    file(cl7::u8string_view path, open_mode open_mode = open_mode::read | open_mode::write);
 
     file(const file&) = delete;
     file& operator=(const file&) = delete;
@@ -117,7 +117,7 @@ public:
      * Opens the specified file for reading and/or writing. The seek mode specifies
      * whether to truncate
      */
-    bool open(const cl7::u8string& path, open_mode open_mode = open_mode::read | open_mode::write);
+    bool open(cl7::u8string_view path, open_mode open_mode = open_mode::read | open_mode::write);
 
     /**
      * Closes the file (if opened before).
