@@ -15,10 +15,18 @@ namespace cl7::io {
     }
 
     /**
-     * Attempts to write the given data and returns the number of bytes actually
-     * transferred.
+     * Attempts to write a single byte. Returns 1 on success, 0 on failure.
      */
-    size_t byte_writer::write(cl7::byte_view data) const
+    size_t byte_writer::write_byte(std::byte byte) const
+    {
+        return _file->write(cl7::make_byte_view(&byte));
+    }
+
+    /**
+     * Attempts to write multiple bytes from a buffer. Returns the number of bytes
+     * actually written.
+     */
+    size_t byte_writer::write_bytes(cl7::byte_view data) const
     {
         return _file->write(data);
     }
