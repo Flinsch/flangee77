@@ -42,11 +42,11 @@ public:
      * with optional endian conversion. Returns the number of bytes successfully
      * written.
      */
-    template <std::endian endian = std::endian::native, typename T>
+    template <std::endian target_endian = std::endian::native, typename T>
     size_t write_scalar(T value) const
     {
         static_assert(std::is_trivially_copyable_v<T>);
-        value = cl7::bits::swap_bytes_unless_endian<endian>(value);
+        value = cl7::bits::swap_bytes_unless_endian<target_endian>(value);
         return _file->write(cl7::make_byte_view(&value));
     }
 

@@ -51,13 +51,13 @@ public:
      * successful. In case of an error or out-of-bounds, 0 is returned. However, a
      * value other than 0 is not a reliable indicator of success.
      */
-    template <typename T, std::endian endian = std::endian::native>
+    template <typename T, std::endian source_endian = std::endian::native>
     T read_scalar() const
     {
         static_assert(std::is_trivially_copyable_v<T>);
         T value{0};
         _rom->read(cl7::make_byte_span(&value));
-        return cl7::bits::swap_bytes_unless_endian<endian>(value);
+        return cl7::bits::swap_bytes_unless_endian<source_endian>(value);
     }
 
     /**
@@ -65,12 +65,12 @@ public:
      * into the given reference and performs optional endian conversion. Returns the
      * number of bytes actually read.
      */
-    template <std::endian endian = std::endian::native, typename T>
+    template <std::endian source_endian = std::endian::native, typename T>
     size_t read_scalar(T& value) const
     {
         static_assert(std::is_trivially_copyable_v<T>);
         const auto read = _rom->read(cl7::make_byte_span(&value));
-        value = cl7::bits::swap_bytes_unless_endian<endian>(value);
+        value = cl7::bits::swap_bytes_unless_endian<source_endian>(value);
         return read;
     }
 

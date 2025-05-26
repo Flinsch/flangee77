@@ -41,6 +41,8 @@ target_sources(flangee77
     io/byte_reader.h
     io/byte_writer.cpp
     io/byte_writer.h
+    io/endian_aware_reader.h
+    io/endian_aware_writer.h
     io/file.cpp
     io/file.h
     io/ifile.h
