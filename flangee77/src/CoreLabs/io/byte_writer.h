@@ -46,6 +46,7 @@ public:
     size_t write_scalar(T value) const
     {
         static_assert(std::is_trivially_copyable_v<T>);
+        value = cl7::bits::swap_bytes_unless_endian<endian>(value);
         return _file->write(cl7::make_byte_view(&value));
     }
 
