@@ -25,7 +25,7 @@ public:
 
     void swap(Ini& other) noexcept;
 
-}; // class Json
+}; // class Ini
 
 
 
