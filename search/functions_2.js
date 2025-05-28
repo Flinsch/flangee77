@@ -12,6 +12,6 @@ var searchData=
   ['bufferedtokenreader_9',['bufferedtokenreader',['../d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html#a5615e7651d437c15c574cb6dbd363e2a',1,'dl7::syntax::BufferedTokenReader::BufferedTokenReader(const container_type &amp;tokens)'],['../d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html#a2fc21ca1831a6827ea5adb78290880d3',1,'dl7::syntax::BufferedTokenReader::BufferedTokenReader(container_type &amp;&amp;tokens)']]],
   ['build_10',['build',['../de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html#abfc7680a4a106a6945ccf460225702ad',1,'dl7::json::detail::Builder::build()'],['../db/dc4/classdl7_1_1syntax_1_1CstBuilder.html#ad7f694803866acdea65cd8fd49fd9ea5',1,'dl7::syntax::CstBuilder::build()'],['../df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html#ace79efa3e10db44057ad42dd04ad09e1',1,'dl7::syntax::DirectAstBuilder::build()']]],
   ['builder_11',['Builder',['../de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html#ac68da976dde445299d66bfbc535cfc75',1,'dl7::json::detail::Builder']]],
-  ['byte_5freader_12',['byte_reader',['../db/d94/classcl7_1_1io_1_1byte__reader.html#aa4ed12060a61441b01a9a48a2f000530',1,'cl7::io::byte_reader']]],
-  ['byte_5fwriter_13',['byte_writer',['../de/dc7/classcl7_1_1io_1_1byte__writer.html#abc21a9b8f9d0e915150af63ae2eab109',1,'cl7::io::byte_writer']]]
+  ['bytereader_12',['ByteReader',['../d7/df3/classcl7_1_1io_1_1ByteReader.html#a1093edc6cc821c255a9897e14c5b276f',1,'cl7::io::ByteReader']]],
+  ['bytewriter_13',['ByteWriter',['../de/d6e/classcl7_1_1io_1_1ByteWriter.html#a5204677d34b59cee7a24deb7d4b1e876',1,'cl7::io::ByteWriter']]]
 ];

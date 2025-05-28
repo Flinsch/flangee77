@@ -52,7 +52,7 @@ var searchData=
   ['r8g8b8a8_5fuint_49',['R8G8B8A8_UINT',['../d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082da67db604c7206857ceb4fe94ee620cae4',1,'xl7::graphics']]],
   ['r8g8b8a8_5funorm_50',['R8G8B8A8_UNORM',['../d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082daf55c1c722034e92213df328d31e33c62',1,'xl7::graphics']]],
   ['r8g8b8x8_5funorm_51',['R8G8B8X8_UNORM',['../d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082da85e5f8f16c9aadfb6de4c7973574e199',1,'xl7::graphics']]],
-  ['read_52',['read',['../d6/dc7/namespacecl7_1_1io.html#a4d0c7de3ed78333bd515ceb10f750544aecae13117d6f0584c25a9da6c8f8415e',1,'cl7::io']]],
+  ['read_52',['Read',['../d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5a7a1a5f3e79fdc91edf2f5ead9d66abb4',1,'cl7::io']]],
   ['red_53',['red',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a39e617c46612e12d2ef5ac48d760ad20',1,'tl7::reporting::Red'],['../d8/d30/namespacexl7_1_1graphics.html#a7f932a51645d57b7b508969692d213deaee38e4d5dd68c4e440825018d549cb47',1,'xl7::graphics::Red']]],
   ['release_54',['Release',['../db/ddf/structcl7_1_1Version.html#a890721a856e7cc2fbb0c524521e0b635ab8e7b465df7c5979dc731d06e84ce2cf',1,'cl7::Version']]],
   ['releasecandidate_55',['ReleaseCandidate',['../db/ddf/structcl7_1_1Version.html#a890721a856e7cc2fbb0c524521e0b635ad51e7d58a0cd2de144621030dcae1337',1,'cl7::Version']]],

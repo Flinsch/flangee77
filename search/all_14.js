@@ -180,7 +180,7 @@ var searchData=
   ['trim_177',['trim',['../dc/d17/namespacecl7_1_1strings.html#a13ee460b13d6eafcf049c71cf45a3df0',1,'cl7::strings']]],
   ['trimmed_178',['trimmed',['../dc/d17/namespacecl7_1_1strings.html#a1d22859e70f098383e22365337b5ed81',1,'cl7::strings']]],
   ['true_5fconstant_179',['TRUE_CONSTANT',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a7da289c327b2f071a70cb72f06861ebb',1,'dl7::json::detail']]],
-  ['truncate_180',['truncate',['../d6/dc7/namespacecl7_1_1io.html#a4d0c7de3ed78333bd515ceb10f750544a244f58cf07c35fd48d7524b289551e5c',1,'cl7::io']]],
+  ['truncate_180',['Truncate',['../d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5aa8156810bfee2bd2b44765b9e91db3bd',1,'cl7::io']]],
   ['try_5flog_181',['try_log',['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a90462026ca00fcd260a156cee13d3f8c',1,'cl7::logging::LogContext::try_log()'],['../d0/d46/structdl7_1_1syntax_1_1Diagnostic.html#a4e411da56691028ce7772ae62e5135fc',1,'dl7::syntax::Diagnostic::try_log()'],['../d5/d77/logging_8h.html#a7753b3808da53d0d89281f28e22c7593',1,'TRY_LOG:&#160;logging.h'],['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a41f9377e52ff096c9db717a399dd7bb8',1,'cl7::logging::LogContext::try_log()']]],
   ['try_5flog_5fall_182',['try_log_all',['../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#a2b9ac05f0931ea62c7df990bd690b542',1,'dl7::syntax::Diagnostics::try_log_all() const'],['../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#a14583efa703f8ec72e5bac2192e4c569',1,'dl7::syntax::Diagnostics::try_log_all(cl7::logging::LogContext log_context) const']]],
   ['try_5flog_5ferror_183',['TRY_LOG_ERROR',['../d5/d77/logging_8h.html#a6b4724d949d7f9ee66a791e610e96747',1,'logging.h']]],

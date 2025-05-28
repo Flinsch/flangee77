@@ -33,12 +33,13 @@ var searchData=
   ['constant_5fmappings_30',['constant_mappings',['../df/de3/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferMapping.html#a409bfbac8cd9406cfb670245e3d593ab',1,'xl7::graphics::shaders::ConstantBufferMapping']]],
   ['constant_5ftype_31',['constant_type',['../d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html#aa4ae0bc5d011f4ebd1de9aa33eac953f',1,'xl7::graphics::shaders::ConstantDeclaration::constant_type'],['../d2/d58/structxl7_1_1graphics_1_1shaders_1_1ConstantMapping.html#ad580b4302b47653e791d4d9561024843',1,'xl7::graphics::shaders::ConstantMapping::constant_type']]],
   ['context_5fmeta_32',['context_meta',['../da/d3a/structtl7_1_1Result.html#a80d518668d3a47fa45c5087324d36344',1,'tl7::Result']]],
-  ['count_33',['count',['../d8/df2/structxl7_1_1graphics_1_1meshes_1_1MeshBuffer_1_1Desc.html#a3fc09257412db35e3dccd9507cd5c81e',1,'xl7::graphics::meshes::MeshBuffer::Desc::count'],['../df/d9d/structxl7_1_1graphics_1_1textures_1_1Texture2DArray_1_1Desc.html#a624bd939cb88855ec886e5ca2bb1c678',1,'xl7::graphics::textures::Texture2DArray::Desc::count']]],
-  ['crlf_34',['crlf',['../d3/d3e/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Signature.html#ac216bbe5e6dacb4c7c82f7bd6f12a92d',1,'xl7::graphics::images::PngImageHandler::Signature']]],
-  ['ct_5falpha_5fused_35',['CT_ALPHA_USED',['../da/d30/classxl7_1_1graphics_1_1images_1_1PngImageHandler.html#afe5ff080c4677311b64d83bafe5be28f',1,'xl7::graphics::images::PngImageHandler']]],
-  ['ct_5fcolor_5fused_36',['CT_COLOR_USED',['../da/d30/classxl7_1_1graphics_1_1images_1_1PngImageHandler.html#adf168eff0bd39dadedf52421e9a8878e',1,'xl7::graphics::images::PngImageHandler']]],
-  ['ct_5fpalette_5fused_37',['CT_PALETTE_USED',['../da/d30/classxl7_1_1graphics_1_1images_1_1PngImageHandler.html#a480c835a9f79b054fbcf92b25cb2e267',1,'xl7::graphics::images::PngImageHandler']]],
-  ['cubemap_5fpow2_5fonly_38',['cubemap_pow2_only',['../dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a8f6a111fc0420c50a723cde76d0a9686',1,'xl7::graphics::RenderingDevice::Capabilities']]],
-  ['cull_5fmode_39',['cull_mode',['../d7/d93/structxl7_1_1graphics_1_1states_1_1RasterizerState_1_1Desc.html#a4047fa725289af92a3126507bd353d1b',1,'xl7::graphics::states::RasterizerState::Desc']]],
-  ['cyan_40',['CYAN',['../de/df3/structxl7_1_1graphics_1_1Color.html#a65222e76b6136661008f5dd301aa51cf',1,'xl7::graphics::Color']]]
+  ['contour_5fpoints_33',['contour_points',['../d2/d26/structfl7_1_1fonts_1_1Glyph.html#aed50f156d50c6865dc30df18fb39be20',1,'fl7::fonts::Glyph']]],
+  ['count_34',['count',['../d8/df2/structxl7_1_1graphics_1_1meshes_1_1MeshBuffer_1_1Desc.html#a3fc09257412db35e3dccd9507cd5c81e',1,'xl7::graphics::meshes::MeshBuffer::Desc::count'],['../df/d9d/structxl7_1_1graphics_1_1textures_1_1Texture2DArray_1_1Desc.html#a624bd939cb88855ec886e5ca2bb1c678',1,'xl7::graphics::textures::Texture2DArray::Desc::count']]],
+  ['crlf_35',['crlf',['../d3/d3e/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Signature.html#ac216bbe5e6dacb4c7c82f7bd6f12a92d',1,'xl7::graphics::images::PngImageHandler::Signature']]],
+  ['ct_5falpha_5fused_36',['CT_ALPHA_USED',['../da/d30/classxl7_1_1graphics_1_1images_1_1PngImageHandler.html#afe5ff080c4677311b64d83bafe5be28f',1,'xl7::graphics::images::PngImageHandler']]],
+  ['ct_5fcolor_5fused_37',['CT_COLOR_USED',['../da/d30/classxl7_1_1graphics_1_1images_1_1PngImageHandler.html#adf168eff0bd39dadedf52421e9a8878e',1,'xl7::graphics::images::PngImageHandler']]],
+  ['ct_5fpalette_5fused_38',['CT_PALETTE_USED',['../da/d30/classxl7_1_1graphics_1_1images_1_1PngImageHandler.html#a480c835a9f79b054fbcf92b25cb2e267',1,'xl7::graphics::images::PngImageHandler']]],
+  ['cubemap_5fpow2_5fonly_39',['cubemap_pow2_only',['../dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a8f6a111fc0420c50a723cde76d0a9686',1,'xl7::graphics::RenderingDevice::Capabilities']]],
+  ['cull_5fmode_40',['cull_mode',['../d7/d93/structxl7_1_1graphics_1_1states_1_1RasterizerState_1_1Desc.html#a4047fa725289af92a3126507bd353d1b',1,'xl7::graphics::states::RasterizerState::Desc']]],
+  ['cyan_41',['CYAN',['../de/df3/structxl7_1_1graphics_1_1Color.html#a65222e76b6136661008f5dd301aa51cf',1,'xl7::graphics::Color']]]
 ];

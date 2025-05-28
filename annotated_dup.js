@@ -13,13 +13,17 @@ var annotated_dup =
         [ "SingletonManager", "d7/dba/classcl7_1_1creational_1_1SingletonManager.html", "d7/dba/classcl7_1_1creational_1_1SingletonManager" ]
       ] ],
       [ "io", "d6/dc7/namespacecl7_1_1io.html", [
-        [ "byte_reader", "db/d94/classcl7_1_1io_1_1byte__reader.html", "db/d94/classcl7_1_1io_1_1byte__reader" ],
-        [ "byte_writer", "de/dc7/classcl7_1_1io_1_1byte__writer.html", "de/dc7/classcl7_1_1io_1_1byte__writer" ],
-        [ "file", "df/dd8/classcl7_1_1io_1_1file.html", "df/dd8/classcl7_1_1io_1_1file" ],
-        [ "ifile", "d5/d84/classcl7_1_1io_1_1ifile.html", "d5/d84/classcl7_1_1io_1_1ifile" ],
-        [ "irom", "d3/d68/classcl7_1_1io_1_1irom.html", "d3/d68/classcl7_1_1io_1_1irom" ],
-        [ "utf8_reader", "db/d4a/classcl7_1_1io_1_1utf8__reader.html", "db/d4a/classcl7_1_1io_1_1utf8__reader" ],
-        [ "utf8_writer", "df/d3b/classcl7_1_1io_1_1utf8__writer.html", "df/d3b/classcl7_1_1io_1_1utf8__writer" ]
+        [ "ByteReader", "d7/df3/classcl7_1_1io_1_1ByteReader.html", "d7/df3/classcl7_1_1io_1_1ByteReader" ],
+        [ "ByteWriter", "de/d6e/classcl7_1_1io_1_1ByteWriter.html", "de/d6e/classcl7_1_1io_1_1ByteWriter" ],
+        [ "EndianAwareReader", "d9/d5a/classcl7_1_1io_1_1EndianAwareReader.html", "d9/d5a/classcl7_1_1io_1_1EndianAwareReader" ],
+        [ "EndianAwareWriter", "db/d48/classcl7_1_1io_1_1EndianAwareWriter.html", "db/d48/classcl7_1_1io_1_1EndianAwareWriter" ],
+        [ "File", "d2/d67/classcl7_1_1io_1_1File.html", "d2/d67/classcl7_1_1io_1_1File" ],
+        [ "IReadable", "d5/ddf/classcl7_1_1io_1_1IReadable.html", "d5/ddf/classcl7_1_1io_1_1IReadable" ],
+        [ "IReadWritable", "db/d48/classcl7_1_1io_1_1IReadWritable.html", "db/d48/classcl7_1_1io_1_1IReadWritable" ],
+        [ "IResizable", "d0/d1b/classcl7_1_1io_1_1IResizable.html", "d0/d1b/classcl7_1_1io_1_1IResizable" ],
+        [ "IWritable", "df/db8/classcl7_1_1io_1_1IWritable.html", "df/db8/classcl7_1_1io_1_1IWritable" ],
+        [ "Utf8Reader", "d4/d97/classcl7_1_1io_1_1Utf8Reader.html", "d4/d97/classcl7_1_1io_1_1Utf8Reader" ],
+        [ "Utf8Writer", "d6/dba/classcl7_1_1io_1_1Utf8Writer.html", "d6/dba/classcl7_1_1io_1_1Utf8Writer" ]
       ] ],
       [ "logging", "df/de5/namespacecl7_1_1logging.html", [
         [ "AbstractLogHandler", "d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html", "d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler" ],
@@ -148,6 +152,13 @@ var annotated_dup =
         [ "Vocabulary", "dd/d27/classdl7_1_1syntax_1_1Vocabulary.html", "dd/d27/classdl7_1_1syntax_1_1Vocabulary" ]
       ] ],
       [ "Base64", "da/d3b/classdl7_1_1Base64.html", "da/d3b/classdl7_1_1Base64" ]
+    ] ],
+    [ "fl7", "d5/d46/namespacefl7.html", [
+      [ "fonts", "d7/da5/namespacefl7_1_1fonts.html", [
+        [ "Font", "d3/d00/classfl7_1_1fonts_1_1Font.html", "d3/d00/classfl7_1_1fonts_1_1Font" ],
+        [ "Glyph", "d2/d26/structfl7_1_1fonts_1_1Glyph.html", "d2/d26/structfl7_1_1fonts_1_1Glyph" ],
+        [ "Point", "d7/d7b/structfl7_1_1fonts_1_1Point.html", "d7/d7b/structfl7_1_1fonts_1_1Point" ]
+      ] ]
     ] ],
     [ "ml7", "d3/d53/namespaceml7.html", [
       [ "Angle", "d4/d9d/structml7_1_1Angle.html", "d4/d9d/structml7_1_1Angle" ],

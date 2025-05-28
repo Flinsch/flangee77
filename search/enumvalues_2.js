@@ -14,6 +14,6 @@ var searchData=
   ['cr_11',['CR',['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html#af77ef15789b42d037ea54228daa5c1c2a1d7b33fc26ca22c2011aaa97fecc43d8',1,'dl7::json::Format::MultiLineOptions']]],
   ['crlf_12',['CRLF',['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html#af77ef15789b42d037ea54228daa5c1c2a50d5a4893c775dd805a095efef17ef3d',1,'dl7::json::Format::MultiLineOptions']]],
   ['cubemap_13',['Cubemap',['../d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#aec19ff6b1326410f7415a57864356402a29b142520cd0349c9f7375be4aa848c0',1,'xl7::graphics::textures::Texture']]],
-  ['current_14',['current',['../d6/dc7/namespacecl7_1_1io.html#a0f931513923724726468ff773ef730eda43b5c9175984c071f30b873fdce0a000',1,'cl7::io']]],
+  ['current_14',['Current',['../d6/dc7/namespacecl7_1_1io.html#a4ff74034025df11666f80f69b9069053a222a267cc5778206b253be35ee3ddab5',1,'cl7::io']]],
   ['cyan_15',['Cyan',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a4fa2c5b617368421e5dc2cabd8f2eae9',1,'tl7::reporting']]]
 ];

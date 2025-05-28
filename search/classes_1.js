@@ -9,6 +9,6 @@ var searchData=
   ['blockcommentmatcher_6',['BlockCommentMatcher',['../d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html',1,'dl7::syntax::matchers']]],
   ['bufferedtokenreader_7',['BufferedTokenReader',['../d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html',1,'dl7::syntax']]],
   ['builder_8',['Builder',['../de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html',1,'dl7::json::detail']]],
-  ['byte_5freader_9',['byte_reader',['../db/d94/classcl7_1_1io_1_1byte__reader.html',1,'cl7::io']]],
-  ['byte_5fwriter_10',['byte_writer',['../de/dc7/classcl7_1_1io_1_1byte__writer.html',1,'cl7::io']]]
+  ['bytereader_9',['ByteReader',['../d7/df3/classcl7_1_1io_1_1ByteReader.html',1,'cl7::io']]],
+  ['bytewriter_10',['ByteWriter',['../de/d6e/classcl7_1_1io_1_1ByteWriter.html',1,'cl7::io']]]
 ];

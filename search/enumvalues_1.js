@@ -1,7 +1,7 @@
 var searchData=
 [
   ['back_0',['Back',['../d2/df3/classxl7_1_1graphics_1_1states_1_1RasterizerState.html#a0bec4701af47bd83d6bc5bfd9a2d3f5ea0557fa923dcee4d0f86b1409f5c2167f',1,'xl7::graphics::states::RasterizerState']]],
-  ['begin_1',['begin',['../d6/dc7/namespacecl7_1_1io.html#a0f931513923724726468ff773ef730eda8d589afa4dfaeeed85fff5aa78e5ff6a',1,'cl7::io']]],
+  ['begin_1',['Begin',['../d6/dc7/namespacecl7_1_1io.html#a4ff74034025df11666f80f69b9069053a1a06729125544cab7cee73195fc044f0',1,'cl7::io']]],
   ['beta_2',['Beta',['../db/ddf/structcl7_1_1Version.html#a890721a856e7cc2fbb0c524521e0b635a0b87d66b88c72957dfea8c9605016442',1,'cl7::Version']]],
   ['bgra_3',['BGRA',['../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2a5a1fe3c61c9e2fd6dbbc823589f6e697',1,'xl7::graphics']]],
   ['binormal_4',['BINORMAL',['../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html#a8ba8f7d466c9fa95934c53f04900c01ba2e6df916fd94fd74aec3434f9870bb7a',1,'xl7::graphics::meshes::VertexLayout']]],

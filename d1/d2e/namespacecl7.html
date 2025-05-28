@@ -234,6 +234,10 @@ Functions</h2></td></tr>
 requires (requires { typename T::value_type; } &amp;&amp; requires (T&amp; v) { { v.data() } -&gt; std::same_as&lt;typename T::value_type*&gt;; { v.size() } -&gt; std::convertible_to&lt;size_t&gt;; } &amp;&amp; sizeof(typename T::value_type) == sizeof(std::byte))</td></tr>
 <tr class="memitem:a2553b68df24c678e5f1b3ed9dfb87433"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a2553b68df24c678e5f1b3ed9dfb87433">make_byte_span</a> (T &amp;v)</td></tr>
 <tr class="separator:a2553b68df24c678e5f1b3ed9dfb87433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4f4d97f63134da04214db8257bfe109" id="r_aa4f4d97f63134da04214db8257bfe109"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
+requires (std::is_same_v&lt;std::remove_cvref_t&lt;T&gt;, T&gt; &amp;&amp; std::is_trivially_copyable_v&lt;T&gt;)</td></tr>
+<tr class="memitem:aa4f4d97f63134da04214db8257bfe109"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#aa4f4d97f63134da04214db8257bfe109">make_byte_span</a> (T *obj)</td></tr>
+<tr class="separator:aa4f4d97f63134da04214db8257bfe109"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2e588df60b6e290d30d679ef6277a7a" id="r_aa2e588df60b6e290d30d679ef6277a7a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
 requires (std::is_same_v&lt;std::remove_cvref_t&lt;T&gt;, T&gt; &amp;&amp; sizeof(T) == sizeof(std::byte))</td></tr>
 <tr class="memitem:aa2e588df60b6e290d30d679ef6277a7a"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#aa2e588df60b6e290d30d679ef6277a7a">make_byte_span</a> (T *data, size_t size)</td></tr>
@@ -245,6 +249,10 @@ requires (std::is_same_v&lt;std::remove_cvref_t&lt;T&gt;, T&gt; &amp;&amp; sizeo
 requires (requires { typename T::value_type; } &amp;&amp; requires (const T&amp; v) { { v.data() } -&gt; std::same_as&lt;const typename T::value_type*&gt;; { v.size() } -&gt; std::convertible_to&lt;size_t&gt;; } &amp;&amp; sizeof(typename T::value_type) == sizeof(std::byte))</td></tr>
 <tr class="memitem:aba3a040a0a3655e21080868053aabb6f"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#aba3a040a0a3655e21080868053aabb6f">make_byte_view</a> (const T &amp;v)</td></tr>
 <tr class="separator:aba3a040a0a3655e21080868053aabb6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a621ad2135251dd6e39ba548c06505fab" id="r_a621ad2135251dd6e39ba548c06505fab"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
+requires (std::is_same_v&lt;std::remove_cvref_t&lt;T&gt;, T&gt; &amp;&amp; std::is_trivially_copyable_v&lt;T&gt;)</td></tr>
+<tr class="memitem:a621ad2135251dd6e39ba548c06505fab"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a621ad2135251dd6e39ba548c06505fab">make_byte_view</a> (const T *obj)</td></tr>
+<tr class="separator:a621ad2135251dd6e39ba548c06505fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad75b54112b78cca68bcee10b7c37e603" id="r_ad75b54112b78cca68bcee10b7c37e603"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
 requires (std::is_same_v&lt;std::remove_cvref_t&lt;T&gt;, T&gt; &amp;&amp; sizeof(T) == sizeof(std::byte))</td></tr>
 <tr class="memitem:ad75b54112b78cca68bcee10b7c37e603"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#ad75b54112b78cca68bcee10b7c37e603">make_byte_view</a> (const T *data, size_t size)</td></tr>
@@ -814,7 +822,7 @@ template&lt;class Callable &gt; </div>
 </div>
 </div>
 <a id="a2553b68df24c678e5f1b3ed9dfb87433" name="a2553b68df24c678e5f1b3ed9dfb87433"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2553b68df24c678e5f1b3ed9dfb87433">&#9670;&#160;</a></span>make_byte_span() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2553b68df24c678e5f1b3ed9dfb87433">&#9670;&#160;</a></span>make_byte_span() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -835,7 +843,7 @@ requires (requires { typename T::value_type; } &amp;&amp; requires (T&amp; v) { 
 </div>
 </div>
 <a id="aa2e588df60b6e290d30d679ef6277a7a" name="aa2e588df60b6e290d30d679ef6277a7a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2e588df60b6e290d30d679ef6277a7a">&#9670;&#160;</a></span>make_byte_span() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2e588df60b6e290d30d679ef6277a7a">&#9670;&#160;</a></span>make_byte_span() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -865,8 +873,29 @@ requires (std::is_same_v&lt;std::remove_cvref_t&lt;T&gt;, T&gt; &amp;&amp; sizeo
 
 </div>
 </div>
+<a id="aa4f4d97f63134da04214db8257bfe109" name="aa4f4d97f63134da04214db8257bfe109"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4f4d97f63134da04214db8257bfe109">&#9670;&#160;</a></span>make_byte_span() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; <br />
+requires (std::is_same_v&lt;std::remove_cvref_t&lt;T&gt;, T&gt; &amp;&amp; std::is_trivially_copyable_v&lt;T&gt;)</div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto cl7::make_byte_span </td>
+          <td>(</td>
+          <td class="paramtype">T *&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aba3a040a0a3655e21080868053aabb6f" name="aba3a040a0a3655e21080868053aabb6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba3a040a0a3655e21080868053aabb6f">&#9670;&#160;</a></span>make_byte_view() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aba3a040a0a3655e21080868053aabb6f">&#9670;&#160;</a></span>make_byte_view() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -887,7 +916,7 @@ requires (requires { typename T::value_type; } &amp;&amp; requires (const T&amp;
 </div>
 </div>
 <a id="ad75b54112b78cca68bcee10b7c37e603" name="ad75b54112b78cca68bcee10b7c37e603"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad75b54112b78cca68bcee10b7c37e603">&#9670;&#160;</a></span>make_byte_view() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad75b54112b78cca68bcee10b7c37e603">&#9670;&#160;</a></span>make_byte_view() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -911,6 +940,27 @@ requires (std::is_same_v&lt;std::remove_cvref_t&lt;T&gt;, T&gt; &amp;&amp; sizeo
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a621ad2135251dd6e39ba548c06505fab" name="a621ad2135251dd6e39ba548c06505fab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a621ad2135251dd6e39ba548c06505fab">&#9670;&#160;</a></span>make_byte_view() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; <br />
+requires (std::is_same_v&lt;std::remove_cvref_t&lt;T&gt;, T&gt; &amp;&amp; std::is_trivially_copyable_v&lt;T&gt;)</div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto cl7::make_byte_view </td>
+          <td>(</td>
+          <td class="paramtype">const T *&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
