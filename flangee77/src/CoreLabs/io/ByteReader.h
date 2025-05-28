@@ -1,7 +1,7 @@
 #ifndef CL7_IO_BYTEREADER_H
 #define CL7_IO_BYTEREADER_H
 
-#include "./irom.h"
+#include "./IReadable.h"
 
 #include <CoreLabs/byte_vector.h>
 #include <CoreLabs/byte_span.h>
@@ -14,18 +14,18 @@ namespace cl7::io {
 
 
 /**
- * A utility class for reading single or multiple bytes from a read-only memory.
+ * A utility class for reading single or multiple bytes from a readable object.
  * Also supports reading various integral and floating-point types with optional
  * endian-awareness.
  */
-class byte_reader
+class ByteReader
 {
 
 public:
     /**
-     * Prepares a byte reader for reading from the specified read-only memory.
+     * Prepares a byte reader for reading from the specified readable object.
      */
-    explicit byte_reader(irom* rom) noexcept;
+    explicit ByteReader(IReadable* readable) noexcept;
 
     /**
      * Reads and returns a single byte. There is no guarantee that the operation was
@@ -56,7 +56,7 @@ public:
     {
         static_assert(std::is_trivially_copyable_v<T>);
         T value{0};
-        _rom->read(cl7::make_byte_span(&value));
+        _readable->read(cl7::make_byte_span(&value));
         return cl7::bits::swap_bytes_unless_endian<source_endian>(value);
     }
 
@@ -69,16 +69,16 @@ public:
     size_t read_scalar(T& value) const
     {
         static_assert(std::is_trivially_copyable_v<T>);
-        const auto read = _rom->read(cl7::make_byte_span(&value));
+        const auto read = _readable->read(cl7::make_byte_span(&value));
         value = cl7::bits::swap_bytes_unless_endian<source_endian>(value);
         return read;
     }
 
 private:
-    /** The read-only memory to read from. */
-    irom* _rom;
+    /** The readable source object. */
+    IReadable* _readable;
 
-}; // class byte_reader
+}; // class ByteReader
 
 
 

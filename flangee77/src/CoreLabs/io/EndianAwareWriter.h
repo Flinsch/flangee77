@@ -1,7 +1,7 @@
 #ifndef CL7_IO_ENDIANAWAREWRITER_H
 #define CL7_IO_ENDIANAWAREWRITER_H
 
-#include "./byte_writer.h"
+#include "./ByteWriter.h"
 
 
 
@@ -10,18 +10,18 @@ namespace cl7::io {
 
 
 /**
- * Wraps a `byte_writer` and writes scalar types using the specified fixed endian
+ * Wraps a `ByteWriter` and writes scalar types using the specified fixed endian
  * order. Useful when writing to a format with a predefined byte order.
  */
 template <std::endian target_endian>
-class endian_aware_writer
+class EndianAwareWriter
 {
 
 public:
     /**
-     * Prepares an endian-aware writer for writing to the specified file.
+     * Prepares an endian-aware writer for writing to the specified writable object.
      */
-    explicit endian_aware_writer(ifile* file) noexcept : _byte_writer(file) {}
+    explicit EndianAwareWriter(IWritable* writable) noexcept : _byte_writer(writable) {}
 
     /**
      * Attempts to write a single byte. Returns 1 on success, 0 on failure.
@@ -44,9 +44,9 @@ public:
 
 private:
     /** The wrapped byte writer. */
-    byte_writer _byte_writer;
+    ByteWriter _byte_writer;
 
-}; // class endian_aware_writer
+}; // class EndianAwareWriter
 
 
 

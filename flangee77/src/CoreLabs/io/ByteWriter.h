@@ -1,7 +1,7 @@
 #ifndef CL7_IO_BYTEWRITER_H
 #define CL7_IO_BYTEWRITER_H
 
-#include "./ifile.h"
+#include "./IWritable.h"
 
 #include <CoreLabs/byte_view.h>
 #include <CoreLabs/bits.h>
@@ -17,14 +17,14 @@ namespace cl7::io {
  * Also supports writing various integral and floating-point types with optional
  * endian-awareness.
  */
-class byte_writer
+class ByteWriter
 {
 
 public:
     /**
-     * Prepares a byte writer for writing to the specified file.
+     * Prepares a byte writer for writing to the specified writable object.
      */
-    explicit byte_writer(ifile* file) noexcept;
+    explicit ByteWriter(IWritable* writable) noexcept;
 
   /**
      * Attempts to write a single byte. Returns 1 on success, 0 on failure.
@@ -47,14 +47,14 @@ public:
     {
         static_assert(std::is_trivially_copyable_v<T>);
         value = cl7::bits::swap_bytes_unless_endian<target_endian>(value);
-        return _file->write(cl7::make_byte_view(&value));
+        return _writable->write(cl7::make_byte_view(&value));
     }
 
 private:
-    /** The file to write to. */
-    ifile* _file;
+    /** The writable target object. */
+    IWritable* _writable;
 
-}; // class byte_writer
+}; // class ByteWriter
 
 
 

@@ -37,22 +37,24 @@ target_sources(flangee77
     creational/Singleton.cpp
     creational/Singleton.h
 
-    io/byte_reader.cpp
-    io/byte_reader.h
-    io/byte_writer.cpp
-    io/byte_writer.h
-    io/endian_aware_reader.h
-    io/endian_aware_writer.h
-    io/file.cpp
-    io/file.h
-    io/ifile.h
-    io/irom.h
-    io/open_mode.h
-    io/seek_mode.h
-    io/utf8_reader.cpp
-    io/utf8_reader.h
-    io/utf8_writer.cpp
-    io/utf8_writer.h
+    io/ByteReader.cpp
+    io/ByteReader.h
+    io/ByteWriter.cpp
+    io/ByteWriter.h
+    io/EndianAwareReader.h
+    io/EndianAwareWriter.h
+    io/File.cpp
+    io/File.h
+    io/IReadable.h
+    io/IReadWritable.h
+    io/IResizable.h
+    io/IWritable.h
+    io/OpenMode.h
+    io/SeekMode.h
+    io/Utf8Reader.cpp
+    io/Utf8Reader.h
+    io/Utf8Writer.cpp
+    io/Utf8Writer.h
 
     logging/AbstractLogHandler.cpp
     logging/AbstractLogHandler.h

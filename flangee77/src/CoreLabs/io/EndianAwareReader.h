@@ -1,7 +1,7 @@
 #ifndef CL7_IO_ENDIANAWAREREADER_H
 #define CL7_IO_ENDIANAWAREREADER_H
 
-#include "./byte_reader.h"
+#include "./ByteReader.h"
 
 
 
@@ -10,18 +10,18 @@ namespace cl7::io {
 
 
 /**
- * Wraps a `byte_reader` and reads scalar types using the specified fixed endian
+ * Wraps a `ByteReader` and reads scalar types using the specified fixed endian
  * order. Simplifies repeated reads from a known-endian source.
  */
 template <std::endian source_endian>
-class endian_aware_reader
+class EndianAwareReader
 {
 
 public:
     /**
-     * Prepares an endian-aware reader for reading from the specified read-only memory.
+     * Prepares an endian-aware reader for reading from the specified readable object.
      */
-    explicit endian_aware_reader(irom* rom) noexcept : _byte_reader(rom) {}
+    explicit EndianAwareReader(IReadable* readable) noexcept : _byte_reader(readable) {}
 
     /**
      * Reads and returns a single byte. There is no guarantee that the operation was
@@ -60,9 +60,9 @@ public:
 
 private:
     /** The wrapped byte reader. */
-    byte_reader _byte_reader;
+    ByteReader _byte_reader;
 
-}; // class endian_aware_reader
+}; // class EndianAwareReader
 
 
 
