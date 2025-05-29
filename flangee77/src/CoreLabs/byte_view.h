@@ -28,6 +28,13 @@ namespace cl7 {
     }
 
     template <typename T>
+        requires(std::is_same_v<std::remove_cvref_t<T>, T> && std::is_trivially_copyable_v<T>)
+    auto make_byte_view(const T* obj)
+    {
+        return byte_view(reinterpret_cast<const std::byte*>(obj), sizeof(T));
+    }
+
+    template <typename T>
         requires(std::is_same_v<std::remove_cvref_t<T>, T> && sizeof(T) == sizeof(std::byte))
     auto make_byte_view(const T* data, size_t size)
     {

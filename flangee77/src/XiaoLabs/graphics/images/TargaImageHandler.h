@@ -45,9 +45,9 @@ private:
     // #############################################################################
 
     /**
-     * Loads an image from any rom.
+     * Loads an image from any readable object.
      */
-    bool _load_from(cl7::io::irom& rom, const cl7::u8string& rom_name, Image& image) override;
+    bool _load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image) override;
 
 
 
@@ -58,12 +58,12 @@ private:
     /**
      * Loads an uncompressed TGA.
      */
-    static bool _load_uncompressed(cl7::io::irom& rom, const cl7::u8string& rom_name, const Header& header, const Image::Desc& desc, cl7::byte_span data);
+    static bool _load_uncompressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Header& header, const Image::Desc& desc, cl7::byte_span data);
 
     /**
      * Loads a compressed TGA.
      */
-    static bool _load_compressed(cl7::io::irom& rom, const cl7::u8string& rom_name, const Header& header, const Image::Desc& desc, cl7::byte_span data);
+    static bool _load_compressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Header& header, const Image::Desc& desc, cl7::byte_span data);
 
 }; // class TargaImageHandler
 

@@ -1,7 +1,7 @@
 #ifndef CL7_IO_UTF8WRITER_H
 #define CL7_IO_UTF8WRITER_H
 
-#include "./ifile.h"
+#include "./IWritable.h"
 
 #include "CoreLabs/string.h"
 
@@ -11,14 +11,14 @@ namespace cl7::io {
 
 
 
-class utf8_writer
+class Utf8Writer
 {
 
 public:
     /**
-     * Prepares a UTF-8 writer for writing to the specified file.
+     * Prepares a UTF-8 writer for writing to the specified writable object.
      */
-    explicit utf8_writer(ifile* file) noexcept;
+    explicit Utf8Writer(IWritable* writable) noexcept;
 
     /**
      * Attempts to write the given UTF-8 string and returns the number of UTF-8
@@ -34,10 +34,10 @@ public:
     size_t write_line(cl7::u8string_view line, cl7::u8string_view line_break = u8"\n") const;
 
 private:
-    /** The file to write to. */
-    ifile* _file;
+    /** The writable target object. */
+    IWritable* _writable;
 
-}; // class utf8_writer
+}; // class Utf8Writer
 
 
 

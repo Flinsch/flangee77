@@ -18,40 +18,40 @@ namespace xl7::graphics::images {
     // #############################################################################
 
     /**
-     * Loads an image from any rom.
+     * Loads an image from any readable object.
      */
-    bool PngImageHandler::_load_from(cl7::io::irom& rom, const cl7::u8string& rom_name, Image& image)
+    bool PngImageHandler::_load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
     {
         Signature signature;
-        if (rom.read({reinterpret_cast<std::byte*>(&signature), sizeof(Signature)}) != sizeof(Signature))
-            return _log_bad_format_error(rom_name);
+        if (readable.read({reinterpret_cast<std::byte*>(&signature), sizeof(Signature)}) != sizeof(Signature))
+            return _log_bad_format_error(source_name);
 
         if (signature._x89 != 0x89)
-            return _log_bad_format_error(rom_name);
+            return _log_bad_format_error(source_name);
         if (signature.png[0] != 'P' || signature.png[1] != 'N' || signature.png[2] != 'G')
-            return _log_bad_format_error(rom_name);
+            return _log_bad_format_error(source_name);
         if (signature.crlf[0] != 0x0d || signature.crlf[1] != 0x0a)
-            return _log_bad_format_error(rom_name);
+            return _log_bad_format_error(source_name);
         if (signature.eof != 0x1a)
-            return _log_bad_format_error(rom_name);
+            return _log_bad_format_error(source_name);
         if (signature.lf != 0x0a)
-            return _log_bad_format_error(rom_name);
+            return _log_bad_format_error(source_name);
 
         BitInfo bit_info = {};
         std::vector<PaletteEntry> palette;
 
         cl7::byte_vector data;
 
-        if (!_process_chunks(rom, rom_name, bit_info, palette, data))
+        if (!_process_chunks(readable, source_name, bit_info, palette, data))
             return false; // An error message has already been logged.
 
         cl7::byte_vector buffer;
         cl7::byte_vector temp;
 
         if (!_decompress(data, temp))
-            return _log_bad_format_error(rom_name);
+            return _log_bad_format_error(source_name);
         if (!_reconstruct(temp, buffer, bit_info))
-            return _log_bad_format_error(rom_name);
+            return _log_bad_format_error(source_name);
 
         Image::Desc desc;
         if (bit_info.color_type & CT_ALPHA_USED)
@@ -126,29 +126,29 @@ namespace xl7::graphics::images {
     /**
      * Processes the PNG chunks.
      */
-    bool PngImageHandler::_process_chunks(cl7::io::irom& rom, const cl7::u8string& rom_name, BitInfo& bit_info, std::vector<PaletteEntry>& palette, cl7::byte_vector& data)
+    bool PngImageHandler::_process_chunks(cl7::io::IReadable& readable, const cl7::u8string& source_name, BitInfo& bit_info, std::vector<PaletteEntry>& palette, cl7::byte_vector& data)
     {
         while (true)
         {
             ChunkInfo chunk_info;
-            if (rom.read({reinterpret_cast<std::byte*>(&chunk_info), sizeof(ChunkInfo)}) != sizeof(ChunkInfo))
-                return _log_bad_format_error(rom_name);
+            if (readable.read({reinterpret_cast<std::byte*>(&chunk_info), sizeof(ChunkInfo)}) != sizeof(ChunkInfo))
+                return _log_bad_format_error(source_name);
 
             chunk_info.length = cl7::bits::swap_bytes_unless_endian<std::endian::big>(chunk_info.length);
 
             if (::strncmp(chunk_info.type, "IHDR", 4) == 0)
             {
-                if (!_process_IHDR_chunk(rom, rom_name, chunk_info.length, bit_info))
+                if (!_process_IHDR_chunk(readable, source_name, chunk_info.length, bit_info))
                     return false;
             }
             else if (::strncmp(chunk_info.type, "PLTE", 4) == 0)
             {
-                if (!_process_PLTE_chunk(rom, rom_name, chunk_info.length, palette))
+                if (!_process_PLTE_chunk(readable, source_name, chunk_info.length, palette))
                     return false;
             }
             else if (::strncmp(chunk_info.type, "IDAT", 4) == 0)
             {
-                if (!_process_IDAT_chunk(rom, rom_name, chunk_info.length, data))
+                if (!_process_IDAT_chunk(readable, source_name, chunk_info.length, data))
                     return false;
             }
             else if (::strncmp(chunk_info.type, "IEND", 4) == 0)
@@ -159,12 +159,12 @@ namespace xl7::graphics::images {
             {
                 // This is just a (temporary?) workaround:
                 // we skip <chunk_length> bytes of data.
-                rom.seek(chunk_info.length);
+                readable.seek_read(chunk_info.length);
             }
 
             uint32_t crc;
-            if (rom.read({reinterpret_cast<std::byte*>(&crc), 4}) != 4)
-                return _log_bad_format_error(rom_name);
+            if (readable.read({reinterpret_cast<std::byte*>(&crc), 4}) != 4)
+                return _log_bad_format_error(source_name);
             // Should we also specifically verify
             // the content of the check value?
         } // for each chunk
@@ -175,30 +175,30 @@ namespace xl7::graphics::images {
     /**
      * Processes the image header chunk, "IHDR".
      */
-    bool PngImageHandler::_process_IHDR_chunk(cl7::io::irom& rom, const cl7::u8string& rom_name, uint32_t chunk_length, BitInfo& bit_info)
+    bool PngImageHandler::_process_IHDR_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, BitInfo& bit_info)
     {
         if (chunk_length != sizeof(Header))
-            return _log_bad_format_error(rom_name);
+            return _log_bad_format_error(source_name);
 
         Header header;
-        if (rom.read({reinterpret_cast<std::byte*>(&header), sizeof(Header)}) != sizeof(Header))
-            return _log_bad_format_error(rom_name);
+        if (readable.read({reinterpret_cast<std::byte*>(&header), sizeof(Header)}) != sizeof(Header))
+            return _log_bad_format_error(source_name);
 
         header.width = cl7::bits::swap_bytes_unless_endian<std::endian::big>(header.width);
         header.height = cl7::bits::swap_bytes_unless_endian<std::endian::big>(header.height);
 
         if (header.width == 0 || header.height == 0)
-            return _log_bad_header_error(rom_name);
+            return _log_bad_header_error(source_name);
         if (std::popcount(header.bit_depth) != 1 || header.bit_depth > 16)
-            return _log_bad_header_error(rom_name);
+            return _log_bad_header_error(source_name);
         if (header.color_type == 1 || header.color_type == 5 || header.color_type >= 7)
-            return _log_bad_header_error(rom_name);
+            return _log_bad_header_error(source_name);
         if (header.compression_method != 0)
-            return _log_bad_header_error(rom_name);
+            return _log_bad_header_error(source_name);
         if (header.filter_method != 0)
-            return _log_bad_header_error(rom_name);
+            return _log_bad_header_error(source_name);
         if (header.interlace_method > 1)
-            return _log_bad_header_error(rom_name);
+            return _log_bad_header_error(source_name);
 
         // 
         static constexpr unsigned CHANNEL_COUNT[7] = {
@@ -225,18 +225,18 @@ namespace xl7::graphics::images {
     /**
      * Processes the palette chunk, "PLTE".
      */
-    bool PngImageHandler::_process_PLTE_chunk(cl7::io::irom& rom, const cl7::u8string& rom_name, uint32_t chunk_length, std::vector<PaletteEntry>& palette)
+    bool PngImageHandler::_process_PLTE_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, std::vector<PaletteEntry>& palette)
     {
         if (chunk_length % 3 != 0)
-            return _log_bad_format_error(rom_name);
+            return _log_bad_format_error(source_name);
 
         static_assert(sizeof(PaletteEntry) == 3);
         const size_t number_of_entries = chunk_length / 3;
 
         palette.resize(number_of_entries);
 
-        if (rom.read({reinterpret_cast<std::byte*>(palette.data()), number_of_entries * 3}) != static_cast<size_t>(chunk_length))
-            return _log_bad_format_error(rom_name);
+        if (readable.read({reinterpret_cast<std::byte*>(palette.data()), number_of_entries * 3}) != static_cast<size_t>(chunk_length))
+            return _log_bad_format_error(source_name);
 
         return true;
     }
@@ -244,7 +244,7 @@ namespace xl7::graphics::images {
     /**
      * Processes the image data chunk, "IDAT".
      */
-    bool PngImageHandler::_process_IDAT_chunk(cl7::io::irom& rom, const cl7::u8string& rom_name, uint32_t chunk_length, cl7::byte_vector& data)
+    bool PngImageHandler::_process_IDAT_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, cl7::byte_vector& data)
     {
         if (chunk_length == 0)
             return true;
@@ -254,8 +254,8 @@ namespace xl7::graphics::images {
 
         data.resize(data_offset + data_length);
 
-        if (rom.read({&data[data_offset], data_length}) != data_length)
-            return _log_bad_format_error(rom_name);
+        if (readable.read({&data[data_offset], data_length}) != data_length)
+            return _log_bad_format_error(source_name);
 
         return true;
     }

@@ -14,22 +14,22 @@ namespace xl7::graphics::images {
     // #############################################################################
 
     /**
-     * Loads an image from any rom.
+     * Loads an image from any readable object.
      */
-    bool TargaImageHandler::_load_from(cl7::io::irom& rom, const cl7::u8string& rom_name, Image& image)
+    bool TargaImageHandler::_load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
     {
         Header header;
-        if (rom.read({reinterpret_cast<std::byte*>(&header), sizeof(Header)}) != sizeof(Header))
-            return _log_bad_format_error(rom_name);
+        if (readable.read({reinterpret_cast<std::byte*>(&header), sizeof(Header)}) != sizeof(Header))
+            return _log_bad_format_error(source_name);
 
         if (header.id_length || header.color_map_type)
-            return _log_bad_header_error(rom_name);
+            return _log_bad_header_error(source_name);
         if (header.image_type != 2 && header.image_type != 10)
-            return _log_bad_header_error(rom_name);
+            return _log_bad_header_error(source_name);
         if (header.map_start || header.map_length || header.map_depth)
-            return _log_bad_header_error(rom_name);
+            return _log_bad_header_error(source_name);
         if (header.pixel_depth != 24 && header.pixel_depth != 32)
-            return _log_bad_header_error(rom_name);
+            return _log_bad_header_error(source_name);
 
         Image::Desc desc;
         desc.pixel_format = PixelFormat::UNKNOWN;
@@ -45,10 +45,10 @@ namespace xl7::graphics::images {
         cl7::byte_vector data(desc.calculate_data_size());
 
         if (header.image_type == 2)
-            if (!_load_uncompressed(rom, rom_name, header, desc, data))
+            if (!_load_uncompressed(readable, source_name, header, desc, data))
                 return false;
         if (header.image_type == 10)
-            if (!_load_compressed(rom, rom_name, header, desc, data))
+            if (!_load_compressed(readable, source_name, header, desc, data))
                 return false;
 
         // Flip vertically.
@@ -77,12 +77,12 @@ namespace xl7::graphics::images {
     /**
      * Loads an uncompressed TGA.
      */
-    bool TargaImageHandler::_load_uncompressed(cl7::io::irom& rom, const cl7::u8string& rom_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
+    bool TargaImageHandler::_load_uncompressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
     {
         assert(data.size() == desc.calculate_data_size());
 
-        if (rom.read(data) != data.size())
-            return _log_bad_format_error(rom_name);
+        if (readable.read(data) != data.size())
+            return _log_bad_format_error(source_name);
 
         return true;
     }
@@ -90,7 +90,7 @@ namespace xl7::graphics::images {
     /**
      * Loads a compressed TGA.
      */
-    bool TargaImageHandler::_load_compressed(cl7::io::irom& rom, const cl7::u8string& rom_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
+    bool TargaImageHandler::_load_compressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
     {
         assert(data.size() == desc.calculate_data_size());
 
@@ -105,8 +105,8 @@ namespace xl7::graphics::images {
         while (pixel_index < total_pixel_count)
         {
             unsigned char chunk_header;
-            if (rom.read({reinterpret_cast<std::byte*>(&chunk_header), 1}) != 1)
-                return _log_bad_format_error(rom_name);
+            if (readable.read({reinterpret_cast<std::byte*>(&chunk_header), 1}) != 1)
+                return _log_bad_format_error(source_name);
 
             const size_t pixel_count = static_cast<size_t>(chunk_header & 0x7f) + 1;
             const size_t chunk_size = pixel_count * bytes_per_pixel;
@@ -114,14 +114,14 @@ namespace xl7::graphics::images {
             if (chunk_header <= 0x7f)
             {
                 // Chunk is a "raw" packet.
-                if (rom.read({cursor, chunk_size}) != chunk_size)
-                    return _log_bad_format_error(rom_name);
+                if (readable.read({cursor, chunk_size}) != chunk_size)
+                    return _log_bad_format_error(source_name);
             }
             else
             {
                 // Chunk is an RLE packet.
-                if (rom.read({cursor, bytes_per_pixel}) != bytes_per_pixel)
-                    return _log_bad_format_error(rom_name);
+                if (readable.read({cursor, bytes_per_pixel}) != bytes_per_pixel)
+                    return _log_bad_format_error(source_name);
                 for (size_t i = 1; i < pixel_count; ++i)
                     ::memcpy(cursor + i * bytes_per_pixel, cursor, bytes_per_pixel);
             }
@@ -131,7 +131,7 @@ namespace xl7::graphics::images {
         } // for each chunk of pixels
 
         if (pixel_index != total_pixel_count)
-            return _log_bad_format_error(rom_name);
+            return _log_bad_format_error(source_name);
 
         return true;
     }
