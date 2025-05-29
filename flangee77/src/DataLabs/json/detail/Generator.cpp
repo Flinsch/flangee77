@@ -3,8 +3,6 @@
 #include "../util/Validator.h"
 #include "../util/Escaper.h"
 
-#include <cmath>
-
 
 
 namespace dl7::json::detail {
@@ -119,18 +117,7 @@ namespace dl7::json::detail {
 
     cl7::u8osstream& Generator::_write_decimal(cl7::u8osstream& oss, decimal_t decimal, const Format& format)
     {
-        decimal_t int_part;
-        decimal_t frac_part = std::modf(decimal, &int_part);
-        if (frac_part == decimal_t{0.0})
-        {
-            constexpr decimal_t min_int = std::numeric_limits<signed long>::min();
-            constexpr decimal_t max_int = std::numeric_limits<signed long>::max();
-            if (int_part >= min_int && int_part <= max_int)
-                return oss << static_cast<signed long>(int_part) << u8".0";
-            return oss << std::defaultfloat << int_part;
-        }
-
-        return oss << std::defaultfloat << decimal;
+        return oss << cl7::to_string(decimal);
     }
 
     void Generator::_start_item(cl7::u8osstream& oss, size_t depth, const Format& format)
