@@ -99,16 +99,19 @@ $(document).ready(function(){initNavTree('d5/d24/string_8cpp.html','../../'); in
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="../../da/da4/sstream_8h_source.html">sstream.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d6/d90/strings_8h_source.html">strings.h</a>&quot;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for string.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dd/de6/string_8cpp__incl.png" border="0" usemap="#aCoreLabs_2string_8cpp" alt=""/></div>
 <map name="aCoreLabs_2string_8cpp" id="aCoreLabs_2string_8cpp">
-<area shape="rect" title=" " alt="" coords="581,5,732,31"/>
+<area shape="rect" title=" " alt="" coords="731,5,881,31"/>
 <area shape="rect" href="../../da/da4/sstream_8h.html" title=" " alt="" coords="763,79,849,104"/>
-<area shape="poly" title=" " alt="" coords="682,28,770,70,768,75,680,33"/>
+<area shape="poly" title=" " alt="" coords="809,31,809,65,803,65,803,31"/>
 <area shape="rect" href="../../d6/d90/strings_8h.html" title=" " alt="" coords="468,79,547,104"/>
-<area shape="poly" title=" " alt="" coords="634,33,545,75,543,70,632,28"/>
+<area shape="poly" title=" " alt="" coords="759,33,561,80,560,75,757,28"/>
+<area shape="rect" title=" " alt="" coords="873,79,936,104"/>
+<area shape="poly" title=" " alt="" coords="823,29,879,68,876,73,820,33"/>
 <area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="739,152,873,177"/>
 <area shape="poly" title=" " alt="" coords="809,104,809,138,803,138,803,104"/>
 <area shape="rect" title=" " alt="" coords="898,152,973,177"/>
@@ -154,10 +157,14 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1bea4e575f48e88b4a352f70a0d92c3a" id="r_a1bea4e575f48e88b4a352f70a0d92c3a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
-requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
-<tr class="memitem:a1bea4e575f48e88b4a352f70a0d92c3a"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a1bea4e575f48e88b4a352f70a0d92c3a">cl7::_to_string</a> (T val)</td></tr>
-<tr class="separator:a1bea4e575f48e88b4a352f70a0d92c3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebe9841fb66068b2872904fc695c0cc6" id="r_aebe9841fb66068b2872904fc695c0cc6"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
+requires (std::is_arithmetic_v&lt;T&gt; &amp;&amp; !std::is_floating_point_v&lt;T&gt;)</td></tr>
+<tr class="memitem:aebe9841fb66068b2872904fc695c0cc6"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#aebe9841fb66068b2872904fc695c0cc6">cl7::_to_string</a> (T val)</td></tr>
+<tr class="separator:aebe9841fb66068b2872904fc695c0cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7916f97b3323ae86892fdd0547cabbf5" id="r_a7916f97b3323ae86892fdd0547cabbf5"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
+requires (std::is_arithmetic_v&lt;T&gt; &amp;&amp; std::is_floating_point_v&lt;T&gt;)</td></tr>
+<tr class="memitem:a7916f97b3323ae86892fdd0547cabbf5"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a7916f97b3323ae86892fdd0547cabbf5">cl7::_to_string</a> (T val)</td></tr>
+<tr class="separator:a7916f97b3323ae86892fdd0547cabbf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77903d2176b1a6ef2b24bca912ccf1b5" id="r_a77903d2176b1a6ef2b24bca912ccf1b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a77903d2176b1a6ef2b24bca912ccf1b5">cl7::to_string</a> (bool val)</td></tr>
 <tr class="separator:a77903d2176b1a6ef2b24bca912ccf1b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c641b5801ed965c1374fa6e2e0ca9ac" id="r_a3c641b5801ed965c1374fa6e2e0ca9ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a3c641b5801ed965c1374fa6e2e0ca9ac">cl7::to_string</a> (signed val)</td></tr>

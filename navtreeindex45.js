@@ -1,5 +1,7 @@
 var NAVTREEINDEX45 =
 {
+"functions_func_c.html":[7,3,1,3],
+"functions_func_d.html":[7,3,1,4],
 "functions_func_e.html":[7,3,1,5],
 "functions_func_f.html":[7,3,1,6],
 "functions_func_g.html":[7,3,1,7],
@@ -41,8 +43,8 @@ var NAVTREEINDEX45 =
 "functions_type.html":[7,3,3],
 "functions_u.html":[7,3,0,21],
 "functions_v.html":[7,3,0,22],
-"functions_vars.html":[7,3,2],
 "functions_vars.html":[7,3,2,0],
+"functions_vars.html":[7,3,2],
 "functions_vars_a.html":[7,3,2,1],
 "functions_vars_b.html":[7,3,2,2],
 "functions_vars_c.html":[7,3,2,3],
@@ -81,8 +83,8 @@ var NAVTREEINDEX45 =
 "index.html#autotoc_md0":[0],
 "index.html#autotoc_md3":[0,0],
 "index.html#autotoc_md4":[0,1],
-"namespacemembers.html":[5,1,0],
 "namespacemembers.html":[5,1,0,0],
+"namespacemembers.html":[5,1,0],
 "namespacemembers_a.html":[5,1,0,1],
 "namespacemembers_b.html":[5,1,0,2],
 "namespacemembers_c.html":[5,1,0,3],
