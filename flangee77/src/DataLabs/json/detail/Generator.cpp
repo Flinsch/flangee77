@@ -3,6 +3,8 @@
 #include "../util/Validator.h"
 #include "../util/Escaper.h"
 
+#include <cmath>
+
 
 
 namespace dl7::json::detail {
@@ -117,6 +119,22 @@ namespace dl7::json::detail {
 
     cl7::u8osstream& Generator::_write_decimal(cl7::u8osstream& oss, decimal_t decimal, const Format& format)
     {
+        if (std::isnan(decimal) || std::isinf(decimal))
+        {
+            switch (format.float_policy)
+            {
+            case Format::FloatPolicy::ReplaceWithNull:
+                return oss << u8"null";
+            case Format::FloatPolicy::ReplaceWithZero:
+                return oss << u8"0.0";
+            case Format::FloatPolicy::EncodeAsString:
+                return oss << (
+                    std::isnan(decimal) ? u8"\"NaN\"" :
+                    std::signbit(decimal) ? u8"\"-Infinity\"" : u8"\"Infinity\""
+                );
+            }
+        }
+
         return oss << cl7::to_string(decimal);
     }
 
