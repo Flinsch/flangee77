@@ -18,7 +18,7 @@ var searchData=
   ['lexer_2eh_15',['lexer.h',['../d9/d75/json_2detail_2Lexer_8h.html',1,'(Global Namespace)'],['../d4/ded/syntax_2Lexer_8h.html',1,'(Global Namespace)']]],
   ['lexingtokenreader_16',['lexingtokenreader',['../dd/ddd/classdl7_1_1syntax_1_1LexingTokenReader.html#ae811e958ebae467399452135058be225',1,'dl7::syntax::LexingTokenReader::LexingTokenReader()'],['../dd/ddd/classdl7_1_1syntax_1_1LexingTokenReader.html',1,'dl7::syntax::LexingTokenReader']]],
   ['lexingtokenreader_2eh_17',['LexingTokenReader.h',['../d7/de1/LexingTokenReader_8h.html',1,'']]],
-  ['lf_18',['lf',['../d3/d3e/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Signature.html#a077469d0c02e2f1649aa98d47f80f6d7',1,'xl7::graphics::images::PngImageHandler::Signature::lf'],['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html#af77ef15789b42d037ea54228daa5c1c2a618441d41cce47dbcfd9bed6e5ff64e6',1,'dl7::json::Format::MultiLineOptions::LF']]],
+  ['lf_18',['lf',['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html#af77ef15789b42d037ea54228daa5c1c2a618441d41cce47dbcfd9bed6e5ff64e6',1,'dl7::json::Format::MultiLineOptions::LF'],['../d3/d3e/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Signature.html#a077469d0c02e2f1649aa98d47f80f6d7',1,'xl7::graphics::images::PngImageHandler::Signature::lf']]],
   ['license_19',['license',['../index.html#autotoc_md4',1,'License'],['../dd/d7f/md__2home_2runner_2work_2flangee77_2flangee77_2LICENSE.html',1,'MIT License']]],
   ['license_2emd_20',['LICENSE.md',['../d7/dd2/LICENSE_8md.html',1,'']]],
   ['lightblue_21',['LightBlue',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a6b0fc8cfa1abd676a44659ea403e2e8a',1,'tl7::reporting']]],

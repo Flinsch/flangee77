@@ -58,9 +58,11 @@ var searchData=
   ['releasecandidate_55',['ReleaseCandidate',['../db/ddf/structcl7_1_1Version.html#a890721a856e7cc2fbb0c524521e0b635ad51e7d58a0cd2de144621030dcae1337',1,'cl7::Version']]],
   ['rendertargetsurface_56',['RenderTargetSurface',['../d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53ad4b0dab305efd7e3f50430c367e20ea3',1,'xl7::graphics::surfaces::Surface']]],
   ['replace_57',['Replace',['../db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#a5ea224e29dd36067e266b081eb767292a0ebe6df8a3ac338e0512acc741823fdb',1,'xl7::graphics::states::DepthStencilState']]],
-  ['revsubtract_58',['RevSubtract',['../d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#a40e09472faa3fca650e6204e40010175a7e13cbb7a9ac0f76c06b1f663ec12d8f',1,'xl7::graphics::states::BlendState']]],
-  ['rgb_59',['RGB',['../d8/d30/namespacexl7_1_1graphics.html#a7f932a51645d57b7b508969692d213dea889574aebacda6bfd3e534e2b49b8028',1,'xl7::graphics']]],
-  ['rgba_60',['RGBA',['../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2aea3495a278957dc58165e48a8945469f',1,'xl7::graphics']]],
-  ['right_5fcurly_5fbracket_61',['RIGHT_CURLY_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a3d582a29f62ad189b35f29bd524c36cf',1,'dl7::json::detail']]],
-  ['right_5fsquare_5fbracket_62',['RIGHT_SQUARE_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989aecaf8b60a7c6c308e7ff6211f4587efe',1,'dl7::json::detail']]]
+  ['replacewithnull_58',['ReplaceWithNull',['../df/d52/structdl7_1_1json_1_1Format.html#a7b4346aabdbd131ec8e0deee8e7ec2a7afd164995f9faf0774522eefdc3a73279',1,'dl7::json::Format']]],
+  ['replacewithzero_59',['ReplaceWithZero',['../df/d52/structdl7_1_1json_1_1Format.html#a7b4346aabdbd131ec8e0deee8e7ec2a7a25a9a3016e24ebc66ffa80fc54ad7b43',1,'dl7::json::Format']]],
+  ['revsubtract_60',['RevSubtract',['../d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#a40e09472faa3fca650e6204e40010175a7e13cbb7a9ac0f76c06b1f663ec12d8f',1,'xl7::graphics::states::BlendState']]],
+  ['rgb_61',['RGB',['../d8/d30/namespacexl7_1_1graphics.html#a7f932a51645d57b7b508969692d213dea889574aebacda6bfd3e534e2b49b8028',1,'xl7::graphics']]],
+  ['rgba_62',['RGBA',['../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2aea3495a278957dc58165e48a8945469f',1,'xl7::graphics']]],
+  ['right_5fcurly_5fbracket_63',['RIGHT_CURLY_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a3d582a29f62ad189b35f29bd524c36cf',1,'dl7::json::detail']]],
+  ['right_5fsquare_5fbracket_64',['RIGHT_SQUARE_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989aecaf8b60a7c6c308e7ff6211f4587efe',1,'dl7::json::detail']]]
 ];

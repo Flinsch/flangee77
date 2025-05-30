@@ -63,7 +63,7 @@ var searchData=
   ['other_60',['Other',['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a6311ae17c1ee52b36e68aaf4ad066387',1,'cl7::logging']]],
   ['other_20default_20operations_61',['Other Default Operations',['../de/d95/md_code-style-guide.html#autotoc_md10',1,'']]],
   ['other_20stuff_62',['Other Stuff',['../de/d95/md_code-style-guide.html#autotoc_md20',1,'']]],
-  ['outcome_63',['outcome',['../da/d3a/structtl7_1_1Result.html#aaec2741a52824282bfa51c26af18bc59',1,'tl7::Result::outcome'],['../da/d3a/structtl7_1_1Result.html#ad6e0dd3748757a0237c43a26f19bb6eb',1,'tl7::Result::Outcome']]],
+  ['outcome_63',['outcome',['../da/d3a/structtl7_1_1Result.html#ad6e0dd3748757a0237c43a26f19bb6eb',1,'tl7::Result::Outcome'],['../da/d3a/structtl7_1_1Result.html#aaec2741a52824282bfa51c26af18bc59',1,'tl7::Result::outcome']]],
   ['outofrangeascii_64',['OutOfRangeAscii',['../dc/d17/namespacecl7_1_1strings.html#af691638e9c6fbf723b19957270f2c0d2ac4899c5e1062865b1e92f133ac1a4cda',1,'cl7::strings']]],
   ['outofrangeunicode_65',['OutOfRangeUnicode',['../dc/d17/namespacecl7_1_1strings.html#af691638e9c6fbf723b19957270f2c0d2a08e574442871c42b8ae836886301f64c',1,'cl7::strings']]],
   ['output_5fwritten_66',['output_written',['../db/d55/structcl7_1_1strings_1_1EncodeResult.html#aa4bf7eb07f2bc3b1ba3ee27459016a5c',1,'cl7::strings::EncodeResult']]],
