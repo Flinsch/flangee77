@@ -1,5 +1,7 @@
 #include "MyApp.h"
 
+    #include <FaceLabs/fonts/TrueTypeFontLoader.h>
+
 #include <XiaoLabs/graphics.h>
     #include <XiaoLabs/graphics/images/TargaImageHandler.h>
     #include <XiaoLabs/graphics/images/PngImageHandler.h>
@@ -226,6 +228,10 @@ namespace helloworld {
                 LOG_TYPE(s->name + u8"\ts" + cl7::to_string(s->index), cl7::logging::LogType::Item);
             } // for each texture/sampler
         }
+
+
+        fl7::fonts::TrueTypeFontLoader font_loader(cl7::filesystem::get_working_directory() + u8"assets/fonts/NotoSans-VariableFont_wdth,wght.ttf");
+        font_loader.load_glyph({0x41});
 
 
 
