@@ -13,6 +13,8 @@ var dir_1f313f182193c08b56ad7fac433077e3 =
     [ "IResizable.h", "d4/d03/IResizable_8h.html", "d4/d03/IResizable_8h" ],
     [ "IWritable.h", "d6/d28/IWritable_8h.html", "d6/d28/IWritable_8h" ],
     [ "OpenMode.h", "d2/d7e/OpenMode_8h.html", "d2/d7e/OpenMode_8h" ],
+    [ "ReadableMemory.cpp", "dc/d92/ReadableMemory_8cpp.html", null ],
+    [ "ReadableMemory.h", "de/d9a/ReadableMemory_8h.html", "de/d9a/ReadableMemory_8h" ],
     [ "SeekMode.h", "d2/da2/SeekMode_8h.html", "d2/da2/SeekMode_8h" ],
     [ "Utf8Reader.cpp", "d5/db2/Utf8Reader_8cpp.html", "d5/db2/Utf8Reader_8cpp" ],
     [ "Utf8Reader.h", "df/df2/Utf8Reader_8h.html", "df/df2/Utf8Reader_8h" ],

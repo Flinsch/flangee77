@@ -146,6 +146,10 @@ var hierarchy =
     ] ],
     [ "dl7::syntax::matchers::FloatingPointLiteralMatcher", "df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher.html", null ],
     [ "fl7::fonts::Font", "d3/d00/classfl7_1_1fonts_1_1Font.html", null ],
+    [ "fl7::fonts::TrueTypeFontLoader::FontHeader", "d9/ded/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontHeader.html", null ],
+    [ "fl7::fonts::FontLoader", "da/d82/classfl7_1_1fonts_1_1FontLoader.html", [
+      [ "fl7::fonts::TrueTypeFontLoader", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html", null ]
+    ] ],
     [ "dl7::json::Format", "df/d52/structdl7_1_1json_1_1Format.html", null ],
     [ "xl7::Config::General", "dd/d38/structxl7_1_1Config_1_1General.html", null ],
     [ "fl7::fonts::Glyph", "d2/d26/structfl7_1_1fonts_1_1Glyph.html", null ],
@@ -191,7 +195,8 @@ var hierarchy =
     [ "cl7::io::IReadable", "d5/ddf/classcl7_1_1io_1_1IReadable.html", [
       [ "cl7::io::IReadWritable", "db/d48/classcl7_1_1io_1_1IReadWritable.html", [
         [ "cl7::io::File", "d2/d67/classcl7_1_1io_1_1File.html", null ]
-      ] ]
+      ] ],
+      [ "cl7::io::ReadableMemory", "db/d3c/classcl7_1_1io_1_1ReadableMemory.html", null ]
     ] ],
     [ "cl7::io::IResizable", "d0/d1b/classcl7_1_1io_1_1IResizable.html", [
       [ "cl7::io::File", "d2/d67/classcl7_1_1io_1_1File.html", null ]
@@ -230,10 +235,12 @@ var hierarchy =
     [ "ml7::Matrix3x3", "d6/d14/structml7_1_1Matrix3x3.html", null ],
     [ "ml7::Matrix3x4", "d8/dd9/structml7_1_1Matrix3x4.html", null ],
     [ "ml7::Matrix4x4", "d7/dea/structml7_1_1Matrix4x4.html", null ],
+    [ "fl7::fonts::TrueTypeFontLoader::MaximumProfile", "d1/d29/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1MaximumProfile.html", null ],
     [ "xl7::graphics::RenderingDevice::Capabilities::Memory", "da/dd9/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities_1_1Memory.html", null ],
     [ "cl7::system::MemoryStatus", "d1/d7a/structcl7_1_1system_1_1MemoryStatus.html", null ],
     [ "xl7::graphics::meshes::MeshUtil", "d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil.html", null ],
     [ "dl7::json::Format::MultiLineOptions", "d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html", null ],
+    [ "fl7::fonts::TrueTypeFontLoader::OffsetSubtable", "d2/d3d/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OffsetSubtable.html", null ],
     [ "dl7::Base64::Options", "de/d56/structdl7_1_1Base64_1_1Options.html", null ],
     [ "dl7::json::util::Escaper::Options", "d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html", null ],
     [ "dl7::syntax::Lexer::Options", "dd/d72/structdl7_1_1syntax_1_1Lexer_1_1Options.html", null ],
@@ -416,6 +423,7 @@ var hierarchy =
     [ "tl7::SubcaseContext", "d4/dc8/classtl7_1_1SubcaseContext.html", null ],
     [ "cl7::bits::detail::SwapBytesImpl< T, size >", "d6/d9e/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl.html", null ],
     [ "cl7::bits::detail::SwapBytesImpl< T, 1 >", "d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4.html", null ],
+    [ "fl7::fonts::TrueTypeFontLoader::TableDirectoryEntry", "de/d13/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TableDirectoryEntry.html", null ],
     [ "dl7::syntax::TerminalSymbol", "d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html", [
       [ "dl7::syntax::LiteralSymbol", "d7/d6d/structdl7_1_1syntax_1_1LiteralSymbol.html", null ],
       [ "dl7::syntax::NonLiteralSymbol", "d8/d79/structdl7_1_1syntax_1_1NonLiteralSymbol.html", [

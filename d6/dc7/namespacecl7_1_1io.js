@@ -9,6 +9,7 @@ var namespacecl7_1_1io =
     [ "IReadWritable", "db/d48/classcl7_1_1io_1_1IReadWritable.html", "db/d48/classcl7_1_1io_1_1IReadWritable" ],
     [ "IResizable", "d0/d1b/classcl7_1_1io_1_1IResizable.html", "d0/d1b/classcl7_1_1io_1_1IResizable" ],
     [ "IWritable", "df/db8/classcl7_1_1io_1_1IWritable.html", "df/db8/classcl7_1_1io_1_1IWritable" ],
+    [ "ReadableMemory", "db/d3c/classcl7_1_1io_1_1ReadableMemory.html", "db/d3c/classcl7_1_1io_1_1ReadableMemory" ],
     [ "Utf8Reader", "d4/d97/classcl7_1_1io_1_1Utf8Reader.html", "d4/d97/classcl7_1_1io_1_1Utf8Reader" ],
     [ "Utf8Writer", "d6/dba/classcl7_1_1io_1_1Utf8Writer.html", "d6/dba/classcl7_1_1io_1_1Utf8Writer" ],
     [ "OpenMode", "d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5", [

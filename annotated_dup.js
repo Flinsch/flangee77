@@ -22,6 +22,7 @@ var annotated_dup =
         [ "IReadWritable", "db/d48/classcl7_1_1io_1_1IReadWritable.html", "db/d48/classcl7_1_1io_1_1IReadWritable" ],
         [ "IResizable", "d0/d1b/classcl7_1_1io_1_1IResizable.html", "d0/d1b/classcl7_1_1io_1_1IResizable" ],
         [ "IWritable", "df/db8/classcl7_1_1io_1_1IWritable.html", "df/db8/classcl7_1_1io_1_1IWritable" ],
+        [ "ReadableMemory", "db/d3c/classcl7_1_1io_1_1ReadableMemory.html", "db/d3c/classcl7_1_1io_1_1ReadableMemory" ],
         [ "Utf8Reader", "d4/d97/classcl7_1_1io_1_1Utf8Reader.html", "d4/d97/classcl7_1_1io_1_1Utf8Reader" ],
         [ "Utf8Writer", "d6/dba/classcl7_1_1io_1_1Utf8Writer.html", "d6/dba/classcl7_1_1io_1_1Utf8Writer" ]
       ] ],
@@ -156,8 +157,10 @@ var annotated_dup =
     [ "fl7", "d5/d46/namespacefl7.html", [
       [ "fonts", "d7/da5/namespacefl7_1_1fonts.html", [
         [ "Font", "d3/d00/classfl7_1_1fonts_1_1Font.html", "d3/d00/classfl7_1_1fonts_1_1Font" ],
+        [ "FontLoader", "da/d82/classfl7_1_1fonts_1_1FontLoader.html", "da/d82/classfl7_1_1fonts_1_1FontLoader" ],
         [ "Glyph", "d2/d26/structfl7_1_1fonts_1_1Glyph.html", "d2/d26/structfl7_1_1fonts_1_1Glyph" ],
-        [ "Point", "d7/d7b/structfl7_1_1fonts_1_1Point.html", "d7/d7b/structfl7_1_1fonts_1_1Point" ]
+        [ "Point", "d7/d7b/structfl7_1_1fonts_1_1Point.html", "d7/d7b/structfl7_1_1fonts_1_1Point" ],
+        [ "TrueTypeFontLoader", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader" ]
       ] ]
     ] ],
     [ "ml7", "d3/d53/namespaceml7.html", [

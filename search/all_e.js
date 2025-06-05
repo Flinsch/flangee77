@@ -23,5 +23,7 @@ var searchData=
   ['notinitialized_20',['NotInitialized',['../db/d24/classxl7_1_1Component.html#aea3f7614470b769182fb5b6a016e40b6a9646ad3a1c3e708b4fa8b4b4270fbab6',1,'xl7::Component']]],
   ['null_21',['Null',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caabbb93ef26e3c101ff11cdd21cab08a94',1,'dl7::json::Json']]],
   ['null_5fconstant_22',['NULL_CONSTANT',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989abef43e7f7b5a0e0b62c55906ca91740f',1,'dl7::json::detail']]],
-  ['null_5ft_23',['null_t',['../df/d87/namespacedl7_1_1json.html#ab488b16563e7b3bc84675eda7f88bee1',1,'dl7::json']]]
+  ['null_5ft_23',['null_t',['../df/d87/namespacedl7_1_1json.html#ab488b16563e7b3bc84675eda7f88bee1',1,'dl7::json']]],
+  ['num_5fglyphs_24',['num_glyphs',['../d1/d29/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1MaximumProfile.html#a8fba8a82a95bea5c4fd4ebdd1f0d792b',1,'fl7::fonts::TrueTypeFontLoader::MaximumProfile']]],
+  ['num_5ftables_25',['num_tables',['../d2/d3d/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OffsetSubtable.html#a65e1c78e977df14ed41b53617f399ff7',1,'fl7::fonts::TrueTypeFontLoader::OffsetSubtable']]]
 ];

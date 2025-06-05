@@ -10,12 +10,13 @@ var searchData=
   ['encoding_7',['encoding',['../d7/ddc/classcl7_1_1strings_1_1Utf8Codec.html#a13ce5bee6eac28634768be34c19e7824',1,'cl7::strings::Utf8Codec::encoding'],['../d2/dec/classcl7_1_1strings_1_1Utf32Codec.html#af9653eab1d7a9c6756225e7e41740b41',1,'cl7::strings::Utf32Codec::encoding'],['../d2/dc4/classcl7_1_1strings_1_1Utf16Codec.html#aa09d9447f7159c1b503bbb18f1e87039',1,'cl7::strings::Utf16Codec::encoding'],['../d1/d63/classcl7_1_1strings_1_1AsciiCodec.html#a569211dfc85000fa1d0c693d6efa6c3c',1,'cl7::strings::AsciiCodec::encoding']]],
   ['end_5fpoint_5findices_8',['end_point_indices',['../d2/d26/structfl7_1_1fonts_1_1Glyph.html#ab5ccfc90c26ee6f7dc0276a3a8f86076',1,'fl7::fonts::Glyph']]],
   ['entry_5fpoint_9',['entry_point',['../db/d7e/structxl7_1_1graphics_1_1shaders_1_1Shader_1_1Desc.html#aceaecba5d72c130e872dae967da839e3',1,'xl7::graphics::shaders::Shader::Desc']]],
-  ['eof_10',['eof',['../d3/d3e/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Signature.html#a0062622f4273df34cc40fa7fb5d3d1f2',1,'xl7::graphics::images::PngImageHandler::Signature']]],
-  ['eof_5fsymbol_5fid_11',['EOF_SYMBOL_ID',['../db/d34/namespacedl7_1_1syntax.html#a97e0694c1566845acf277eff7fa1b38f',1,'dl7::syntax']]],
-  ['error_12',['error',['../dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#aa1d87aaca7175a856536d9722826b130',1,'cl7::strings::ErrorStatus']]],
-  ['error_5fcount_13',['error_count',['../dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#a2ae82228238813029cd21fa99f7d2511',1,'cl7::strings::ErrorStatus']]],
-  ['escape_5funicode_14',['escape_unicode',['../df/d52/structdl7_1_1json_1_1Format.html#aeca34823985353f4319260f2a3ab3aea',1,'dl7::json::Format::escape_unicode'],['../d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html#aa1f098b03aed19802999d961c14dd4d0',1,'dl7::json::util::Escaper::Options::escape_unicode']]],
-  ['evaluated_5fexpression_15',['evaluated_expression',['../d6/db9/structtl7_1_1exceptions_1_1assertion__exception.html#ac737aef4c3c2e20565e76244a239b37e',1,'tl7::exceptions::assertion_exception::evaluated_expression'],['../da/d3a/structtl7_1_1Result.html#ae0cbb3b4e43f093bb933060a7adccac5',1,'tl7::Result::evaluated_expression']]],
-  ['exception_5fcount_16',['exception_count',['../de/d12/structtl7_1_1Stats.html#adbcce38c6deda70f2ed2793122440d75',1,'tl7::Stats']]],
-  ['execution_5ftime_5fmsecs_17',['execution_time_msecs',['../de/d12/structtl7_1_1Stats.html#a00ece552ba80bea96c8d961c685018ab',1,'tl7::Stats']]]
+  ['entry_5fselector_10',['entry_selector',['../d2/d3d/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OffsetSubtable.html#a9d03da3810edbd18efd2fbc2337bd618',1,'fl7::fonts::TrueTypeFontLoader::OffsetSubtable']]],
+  ['eof_11',['eof',['../d3/d3e/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Signature.html#a0062622f4273df34cc40fa7fb5d3d1f2',1,'xl7::graphics::images::PngImageHandler::Signature']]],
+  ['eof_5fsymbol_5fid_12',['EOF_SYMBOL_ID',['../db/d34/namespacedl7_1_1syntax.html#a97e0694c1566845acf277eff7fa1b38f',1,'dl7::syntax']]],
+  ['error_13',['error',['../dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#aa1d87aaca7175a856536d9722826b130',1,'cl7::strings::ErrorStatus']]],
+  ['error_5fcount_14',['error_count',['../dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#a2ae82228238813029cd21fa99f7d2511',1,'cl7::strings::ErrorStatus']]],
+  ['escape_5funicode_15',['escape_unicode',['../df/d52/structdl7_1_1json_1_1Format.html#aeca34823985353f4319260f2a3ab3aea',1,'dl7::json::Format::escape_unicode'],['../d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html#aa1f098b03aed19802999d961c14dd4d0',1,'dl7::json::util::Escaper::Options::escape_unicode']]],
+  ['evaluated_5fexpression_16',['evaluated_expression',['../d6/db9/structtl7_1_1exceptions_1_1assertion__exception.html#ac737aef4c3c2e20565e76244a239b37e',1,'tl7::exceptions::assertion_exception::evaluated_expression'],['../da/d3a/structtl7_1_1Result.html#ae0cbb3b4e43f093bb933060a7adccac5',1,'tl7::Result::evaluated_expression']]],
+  ['exception_5fcount_17',['exception_count',['../de/d12/structtl7_1_1Stats.html#adbcce38c6deda70f2ed2793122440d75',1,'tl7::Stats']]],
+  ['execution_5ftime_5fmsecs_18',['execution_time_msecs',['../de/d12/structtl7_1_1Stats.html#a00ece552ba80bea96c8d961c685018ab',1,'tl7::Stats']]]
 ];

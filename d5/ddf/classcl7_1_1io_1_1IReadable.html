@@ -104,9 +104,11 @@ Inheritance diagram for cl7::io::IReadable:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d95/classcl7_1_1io_1_1IReadable__inherit__graph.png" border="0" usemap="#acl7_1_1io_1_1IReadable_inherit__map" alt="Inheritance graph"/></div>
 <map name="acl7_1_1io_1_1IReadable_inherit__map" id="acl7_1_1io_1_1IReadable_inherit__map">
-<area shape="rect" title=" " alt="" coords="19,5,153,31"/>
+<area shape="rect" title=" " alt="" coords="117,5,252,31"/>
 <area shape="rect" href="../../db/d48/classcl7_1_1io_1_1IReadWritable.html" title=" " alt="" coords="5,79,167,104"/>
-<area shape="poly" title=" " alt="" coords="89,44,89,79,83,79,83,44"/>
+<area shape="poly" title=" " alt="" coords="160,41,104,81,101,76,156,36"/>
+<area shape="rect" href="../../db/d3c/classcl7_1_1io_1_1ReadableMemory.html" title=" " alt="" coords="191,79,375,104"/>
+<area shape="poly" title=" " alt="" coords="213,36,269,76,266,81,210,41"/>
 <area shape="rect" href="../../d2/d67/classcl7_1_1io_1_1File.html" title=" " alt="" coords="40,152,132,177"/>
 <area shape="poly" title=" " alt="" coords="89,118,89,152,83,152,83,118"/>
 </map>
@@ -188,7 +190,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns the current read position within the source (in bytes, relative to the beginning). </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a18bf7fe6c433f1eb19a59dbbc8114db1">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a18bf7fe6c433f1eb19a59dbbc8114db1">cl7::io::File</a>, and <a class="el" href="../../db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a319126659ba78490c17055f4af8f25b2">cl7::io::ReadableMemory</a>.</p>
 
 </div>
 </div>
@@ -216,7 +218,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns the number of bytes that can be read from the source at the current read position. </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a3171111a102fec56ced940358c955e3a">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a3171111a102fec56ced940358c955e3a">cl7::io::File</a>, and <a class="el" href="../../db/d3c/classcl7_1_1io_1_1ReadableMemory.html#aaf2c72b35583db3d404579ac8a8ddc56">cl7::io::ReadableMemory</a>.</p>
 
 </div>
 </div>
@@ -244,7 +246,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns the total readable size of the source, in bytes. </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a235c72c6b242679f45fa9ab0b75983a1">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a235c72c6b242679f45fa9ab0b75983a1">cl7::io::File</a>, and <a class="el" href="../../db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a998f44a901246a04715e1e1c13bf266c">cl7::io::ReadableMemory</a>.</p>
 
 </div>
 </div>
@@ -272,7 +274,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Checks whether EOF has been reached, so that there is no more data to read at the current byte position. </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a2b6c53c3f0dbdbe18b9d2393df52744e">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a2b6c53c3f0dbdbe18b9d2393df52744e">cl7::io::File</a>, and <a class="el" href="../../db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a9e2a6deaeb67f2505f06b59769ab5770">cl7::io::ReadableMemory</a>.</p>
 
 </div>
 </div>
@@ -300,7 +302,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Checks whether the source is readable, i.e. whether the device is open or whatever. </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a57e18ea99b28a9d1a61f58ee17af981f">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a57e18ea99b28a9d1a61f58ee17af981f">cl7::io::File</a>, and <a class="el" href="../../db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a6fe9e93b875e4995b3f75e33a7c530a1">cl7::io::ReadableMemory</a>.</p>
 
 </div>
 </div>
@@ -329,7 +331,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>"Peeks" a single byte from the source (at the current position) without extracting it. Returns the number of bytes that would have been extracted if actually read (i.e. 0 or 1). </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a77bbf6dcbef43711ce757cd447cda171">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a77bbf6dcbef43711ce757cd447cda171">cl7::io::File</a>, and <a class="el" href="../../db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a06a6b8f0d8c84bfd84367efc5e98a563">cl7::io::ReadableMemory</a>.</p>
 
 </div>
 </div>
@@ -358,7 +360,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Reads data from the source (at the current position) into the specified buffer and returns the number of bytes actually read. </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a58038aba571d75041d545cdc905afb6d">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a58038aba571d75041d545cdc905afb6d">cl7::io::File</a>, and <a class="el" href="../../db/d3c/classcl7_1_1io_1_1ReadableMemory.html#ab2a5c9b6caa9888306bc9894a8805456">cl7::io::ReadableMemory</a>.</p>
 
 </div>
 </div>
@@ -387,7 +389,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Reads a single byte from the source (at the current position) and returns the number of bytes actually read (i.e. 0 or 1). </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a1863c258e03743d6dfa374889aa07859">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a1863c258e03743d6dfa374889aa07859">cl7::io::File</a>, and <a class="el" href="../../db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a43d7554f42a21752f5b1522aab22cba2">cl7::io::ReadableMemory</a>.</p>
 
 </div>
 </div>
@@ -426,7 +428,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>(Re)sets the current read position within the source by moving it by the specified bytes relative to the beginning, end, or current position, as specified. Returns the new/current byte position. </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#aa194900a48ba5f817dd567bdff607c17">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#aa194900a48ba5f817dd567bdff607c17">cl7::io::File</a>, and <a class="el" href="../../db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a49c9e6a5765996f41b8868d67bf8de46">cl7::io::ReadableMemory</a>.</p>
 
 </div>
 </div>
@@ -455,7 +457,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>(Re)sets the current read position within the source (in bytes, relative to the beginning). Returns the new/current byte position. </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a18cccde139301eb5127805c83b5a2628">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a18cccde139301eb5127805c83b5a2628">cl7::io::File</a>, and <a class="el" href="../../db/d3c/classcl7_1_1io_1_1ReadableMemory.html#aaea2dff32e5e34315e30150c99661fa4">cl7::io::ReadableMemory</a>.</p>
 
 </div>
 </div>

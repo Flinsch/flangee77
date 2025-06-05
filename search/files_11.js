@@ -29,5 +29,7 @@ var searchData=
   ['topology_2eh_26',['Topology.h',['../d9/d93/Topology_8h.html',1,'']]],
   ['traits_2eh_27',['traits.h',['../dd/dff/traits_8h.html',1,'']]],
   ['transcoder_2eh_28',['Transcoder.h',['../d6/db9/Transcoder_8h.html',1,'']]],
-  ['types_2eh_29',['types.h',['../d5/d79/json_2types_8h.html',1,'(Global Namespace)'],['../dc/df4/ini_2types_8h.html',1,'(Global Namespace)']]]
+  ['truetypefontloader_2ecpp_29',['TrueTypeFontLoader.cpp',['../db/d10/TrueTypeFontLoader_8cpp.html',1,'']]],
+  ['truetypefontloader_2eh_30',['TrueTypeFontLoader.h',['../d2/de5/TrueTypeFontLoader_8h.html',1,'']]],
+  ['types_2eh_31',['types.h',['../d5/d79/json_2types_8h.html',1,'(Global Namespace)'],['../dc/df4/ini_2types_8h.html',1,'(Global Namespace)']]]
 ];

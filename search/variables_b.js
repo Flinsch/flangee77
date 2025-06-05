@@ -3,7 +3,7 @@ var searchData=
   ['language_0',['language',['../db/d7e/structxl7_1_1graphics_1_1shaders_1_1Shader_1_1Desc.html#ac10054ab3bfd90e03b41751e10f81009',1,'xl7::graphics::shaders::Shader::Desc']]],
   ['layout_1',['layout',['../d4/d9e/structxl7_1_1graphics_1_1shaders_1_1ConstantBuffer_1_1Desc.html#aca60d580f4040c77533300b9f2460709',1,'xl7::graphics::shaders::ConstantBuffer::Desc::layout'],['../dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html#af3ddf62deb3fd0f5d099cb11d6aec724',1,'xl7::graphics::shaders::ConstantBufferDeclaration::layout']]],
   ['left_5fside_5fbearing_2',['left_side_bearing',['../d2/d26/structfl7_1_1fonts_1_1Glyph.html#a15f9324f0197f01c74397f82db8b6e0e',1,'fl7::fonts::Glyph']]],
-  ['length_3',['length',['../d9/dc0/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1ChunkInfo.html#a5561c6091b8ddd4cd898a94401e807fb',1,'xl7::graphics::images::PngImageHandler::ChunkInfo']]],
+  ['length_3',['length',['../de/d13/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TableDirectoryEntry.html#a2474a44472dbc8be45f7b7d69a5eb6de',1,'fl7::fonts::TrueTypeFontLoader::TableDirectoryEntry::length'],['../d9/dc0/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1ChunkInfo.html#a5561c6091b8ddd4cd898a94401e807fb',1,'xl7::graphics::images::PngImageHandler::ChunkInfo::length']]],
   ['lexeme_4',['lexeme',['../dc/d58/structdl7_1_1syntax_1_1Token.html#a681fa824a30c0fe56f984bba4ea81ef7',1,'dl7::syntax::Token']]],
   ['lf_5',['lf',['../d3/d3e/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Signature.html#a077469d0c02e2f1649aa98d47f80f6d7',1,'xl7::graphics::images::PngImageHandler::Signature']]],
   ['line_6',['line',['../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#ad9d9387d6b6d1d81316cd74002803234',1,'dl7::syntax::SourceLocation']]],
@@ -21,5 +21,6 @@ var searchData=
   ['logger_18',['logger',['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a7f8bb9e9cf3071b88972022362521bcd',1,'cl7::logging::LogContext']]],
   ['logging_5fenabled_19',['logging_enabled',['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a76e529536f3bfc42aade1232a223109b',1,'cl7::logging::LogContext']]],
   ['low_5fsurrogate_5fmax_20',['low_surrogate_max',['../dc/d49/structcl7_1_1strings_1_1codepoint.html#a8a4e70cdf8ab4d56c1ddcd77f615697e',1,'cl7::strings::codepoint']]],
-  ['low_5fsurrogate_5fmin_21',['low_surrogate_min',['../dc/d49/structcl7_1_1strings_1_1codepoint.html#aaa821c647bb4eeb8716ff7aba77420e4',1,'cl7::strings::codepoint']]]
+  ['low_5fsurrogate_5fmin_21',['low_surrogate_min',['../dc/d49/structcl7_1_1strings_1_1codepoint.html#aaa821c647bb4eeb8716ff7aba77420e4',1,'cl7::strings::codepoint']]],
+  ['lowest_5frec_5fppem_22',['lowest_rec_ppem',['../d9/ded/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontHeader.html#a5b8feeb671da95c3066312422b955e08',1,'fl7::fonts::TrueTypeFontLoader::FontHeader']]]
 ];
