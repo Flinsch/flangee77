@@ -32,13 +32,10 @@
 #error Unknown bitness
 #endif
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmultichar"
-#if ('ABCD') == 0x41424344
+#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
 #pragma message("Little endian")
-#elif ('ABCD') == 0x44434241
+#elif defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
 #pragma message("Big endian")
 #else
 #error Unknown or unsupported endianness
 #endif
-#pragma GCC diagnostic pop

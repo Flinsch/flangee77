@@ -26,9 +26,7 @@ struct Color
     static_assert(static_cast<unsigned>(ChannelOrder::ARGB) == 1);
     static_assert(static_cast<unsigned>(ChannelOrder::ABGR) == 2);
     static_assert(static_cast<unsigned>(ChannelOrder::BGRA) == 3);
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmultichar"
-#if ('RGBA') == 0x52474241 // => little endian
+#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
     static constexpr unsigned RGBA_INDICES_BY_CHANNEL_ORDER[4][4] = {
         { 0, 1, 2, 3, }, // RGBA
         { 1, 2, 3, 0, }, // ARGB
@@ -36,7 +34,7 @@ struct Color
         { 2, 1, 0, 3, }, // BGRA
     };
 #endif
-#if ('RGBA') == 0x41424752 // => big endian
+#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
     static constexpr unsigned RGBA_INDICES_BY_CHANNEL_ORDER[4][4] = {
         { 3, 2, 1, 0, }, // RGBA
         { 2, 1, 0, 3, }, // ARGB
@@ -44,7 +42,6 @@ struct Color
         { 1, 2, 3, 0, }, // BGRA
     };
 #endif
-#pragma GCC diagnostic pop
 
 
 
