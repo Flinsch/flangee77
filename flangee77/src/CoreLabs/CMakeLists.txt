@@ -50,6 +50,8 @@ target_sources(flangee77
     io/IResizable.h
     io/IWritable.h
     io/OpenMode.h
+    io/ReadableMemory.cpp
+    io/ReadableMemory.h
     io/SeekMode.h
     io/Utf8Reader.cpp
     io/Utf8Reader.h
