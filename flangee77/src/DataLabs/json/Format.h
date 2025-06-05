@@ -17,6 +17,16 @@ struct Format
         MultiLine = 1,
     };
 
+    enum struct FloatPolicy
+    {
+        /** Replace NaN and infinite values with the JSON literal `null`. */
+        ReplaceWithNull,
+        /** Replace NaN and infinite values with the numeric value `0.0`. */
+        ReplaceWithZero,
+        /** Serializes NaN and infinite values as JSON strings, e.g., "NaN", "Infinity", "-Infinity". */
+        EncodeAsString,
+    };
+
     struct SingleLineOptions
     {
         /** A compact single-line style omits spaces after colons and commas. */
@@ -67,6 +77,8 @@ struct Format
     bool allow_single_quotes = false;
     /** Whether to allow unquoted object keys. */
     bool allow_unquoted_keys = false;
+    /** Specifies how special floating-point values (NaN, +Infinity, -Infinity) should be handled. */
+    FloatPolicy float_policy = FloatPolicy::ReplaceWithNull;
 }; // struct Format
 
 

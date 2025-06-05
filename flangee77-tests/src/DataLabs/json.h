@@ -460,7 +460,7 @@ u8"{\r"
 "  emoji: \"\\uD83D\\uDE10\",\r"
 "  is_confirmed: false\r"
 "}",
-            {.style=dl7::json::Format::Style::MultiLine, .single_line_options={.compact=false}, .multi_line_options={.indentation=dl7::json::Format::MultiLineOptions::Indentation::Spaces2, .line_ending=dl7::json::Format::MultiLineOptions::LineEnding::CR, .add_trailing_commas=false, .add_empty_line=false}, .escape_unicode=true, .allow_single_quotes=true, .allow_unquoted_keys=true},
+            {.style=dl7::json::Format::Style::MultiLine, .single_line_options={.compact=false}, .multi_line_options={.indentation=dl7::json::Format::MultiLineOptions::Indentation::Spaces2, .line_ending=dl7::json::Format::MultiLineOptions::LineEnding::CR, .add_trailing_commas=false, .add_empty_line=false}, .escape_unicode=true, .allow_single_quotes=true, .allow_unquoted_keys=true, .float_policy=dl7::json::Format::FloatPolicy::ReplaceWithNull},
         },
         {
 u8"{\r\n"
@@ -474,7 +474,7 @@ u8"{\r\n"
 "\temoji: \"\\uD83D\\uDE10\",\r\n"
 "\tis_confirmed: false\r\n"
 "}",
-            {.style=dl7::json::Format::Style::MultiLine, .single_line_options={.compact=false}, .multi_line_options={.indentation=dl7::json::Format::MultiLineOptions::Indentation::Tabs, .line_ending=dl7::json::Format::MultiLineOptions::LineEnding::CRLF, .add_trailing_commas=false, .add_empty_line=false}, .escape_unicode=true, .allow_single_quotes=true, .allow_unquoted_keys=true},
+            {.style=dl7::json::Format::Style::MultiLine, .single_line_options={.compact=false}, .multi_line_options={.indentation=dl7::json::Format::MultiLineOptions::Indentation::Tabs, .line_ending=dl7::json::Format::MultiLineOptions::LineEnding::CRLF, .add_trailing_commas=false, .add_empty_line=false}, .escape_unicode=true, .allow_single_quotes=true, .allow_unquoted_keys=true, .float_policy=dl7::json::Format::FloatPolicy::ReplaceWithNull},
         },
     };
 
@@ -486,6 +486,36 @@ u8"{\r\n"
         else
             TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( json, entry.format ), entry.string );
     }
+}
+
+TESTLABS_CASE( u8"DataLabs:  json:  JsonWriter (NaN and infinite values)" )
+{
+    dl7::json::Format default_format = dl7::json::JsonWriter::DEFAULT_FORMAT;
+
+    dl7::json::Format format_replace_with_null = default_format;
+    format_replace_with_null.float_policy = dl7::json::Format::FloatPolicy::ReplaceWithNull;
+
+    dl7::json::Format format_replace_with_zero = default_format;
+    format_replace_with_zero.float_policy = dl7::json::Format::FloatPolicy::ReplaceWithZero;
+
+    dl7::json::Format format_encode_as_string = default_format;
+    format_encode_as_string.float_policy = dl7::json::Format::FloatPolicy::EncodeAsString;
+
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( std::numeric_limits<float>::quiet_NaN() ), default_format ), u8"null" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( +std::numeric_limits<float>::infinity() ), default_format ), u8"null" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( -std::numeric_limits<float>::infinity() ), default_format ), u8"null" );
+
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( std::numeric_limits<float>::quiet_NaN() ), format_replace_with_null ), u8"null" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( +std::numeric_limits<float>::infinity() ), format_replace_with_null ), u8"null" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( -std::numeric_limits<float>::infinity() ), format_replace_with_null ), u8"null" );
+
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( std::numeric_limits<float>::quiet_NaN() ), format_replace_with_zero ), u8"0.0" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( +std::numeric_limits<float>::infinity() ), format_replace_with_zero ), u8"0.0" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( -std::numeric_limits<float>::infinity() ), format_replace_with_zero ), u8"0.0" );
+
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( std::numeric_limits<float>::quiet_NaN() ), format_encode_as_string ), u8"\"NaN\"" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( +std::numeric_limits<float>::infinity() ), format_encode_as_string ), u8"\"Infinity\"" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( -std::numeric_limits<float>::infinity() ), format_encode_as_string ), u8"\"-Infinity\"" );
 }
 
 
