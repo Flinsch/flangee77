@@ -30,6 +30,11 @@ public:
     /** Returns the file path to the font file. */
     const cl7::u8string& get_file_path() const { return _file_path; }
 
+    /**
+     * Returns a fallback name based on the font's filename.
+     */
+    cl7::u8string get_fallback_name() const;
+
 
 
     /**

@@ -190,13 +190,7 @@ namespace fl7::fonts {
     bool TrueTypeFontLoader::_try_read_font_name()
     {
         // Prepare fallback from the filename.
-        _font_name = get_file_path();
-        size_t pos = _font_name.find_last_of(u8"/\\");
-        if (pos != cl7::u8string::npos)
-            _font_name = _font_name.substr(pos + 1);
-        pos = _font_name.find_last_of(u8'.');
-        if (pos != cl7::u8string::npos)
-            _font_name = _font_name.substr(0, pos);
+        _font_name = get_fallback_name();
 
         auto readable = _read_table("name");
         if (readable.is_eof())
