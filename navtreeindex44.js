@@ -1,5 +1,7 @@
 var NAVTREEINDEX44 =
 {
+"df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html":[7,0,7,7,0],
+"df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html":[5,0,7,9,0],
 "df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html#a93833881d24c1fd01ab51c5ffcc4d957":[7,0,7,7,0,1],
 "df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html#a93833881d24c1fd01ab51c5ffcc4d957":[5,0,7,9,0,1],
 "df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html#a93c89b261d11965453de06facb283753":[7,0,7,7,0,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX44 =
 "df/dcb/ResamplingMethod_8h.html#ac9d829a5933316d55f7f267a17474dd9a14517b35b26ed67a34ffd446a9b86e33":[8,0,6,0,0,14,0,1],
 "df/dcb/ResamplingMethod_8h.html#ac9d829a5933316d55f7f267a17474dd9aaa020331bb30d2fa2ecf7c3a0777823f":[8,0,6,0,0,14,0,0],
 "df/dcb/ResamplingMethod_8h_source.html":[8,0,6,0,0,14],
-"df/dcb/direct3d9_2states_2SamplerStateImpl_8h.html":[8,0,6,0,1,1,2,11],
-"df/dcb/direct3d9_2states_2SamplerStateImpl_8h_source.html":[8,0,6,0,1,1,2,11],
-"df/dd2/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1PixelShaderImpl_1_1Attorney.html":[7,0,7,0,1,0,1,3,0]
+"df/dcb/direct3d9_2states_2SamplerStateImpl_8h.html":[8,0,6,0,1,1,2,11]
 };

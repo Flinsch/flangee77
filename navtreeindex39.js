@@ -1,5 +1,7 @@
 var NAVTREEINDEX39 =
 {
+"dd/d69/VertexDataProvider_8h.html":[8,0,6,0,2,14],
+"dd/d69/VertexDataProvider_8h_source.html":[8,0,6,0,2,14],
 "dd/d69/direct3d11_2states_2RasterizerStateImpl_8h.html":[8,0,6,0,1,0,2,5],
 "dd/d69/direct3d11_2states_2RasterizerStateImpl_8h_source.html":[8,0,6,0,1,0,2,5],
 "dd/d6b/XiaoLabs_2graphics_2impl_2direct3d11_2errors_8cpp.html":[8,0,6,0,1,0,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX39 =
 "dd/da6/matchers_8h.html#a3febb873cf18a10edb53d4037dcfe997a31e24c61a3f599160cb0310084649493":[8,0,1,3,21,9,1],
 "dd/da6/matchers_8h.html#a3febb873cf18a10edb53d4037dcfe997aa1a914735b205424ba6c40b85528d78a":[8,0,1,3,21,9,0],
 "dd/da6/matchers_8h.html#a52fc665d8a9a783b2d6454378201ea24":[8,0,1,3,21,8],
-"dd/da6/matchers_8h.html#a52fc665d8a9a783b2d6454378201ea24a89fadab93cff77afedbf025863b09916":[8,0,1,3,21,8,0],
-"dd/da6/matchers_8h.html#a52fc665d8a9a783b2d6454378201ea24ad15d935a85ee59f25c66b4b54e04162a":[8,0,1,3,21,8,1],
-"dd/da6/matchers_8h_source.html":[8,0,1,3,21]
+"dd/da6/matchers_8h.html#a52fc665d8a9a783b2d6454378201ea24a89fadab93cff77afedbf025863b09916":[8,0,1,3,21,8,0]
 };

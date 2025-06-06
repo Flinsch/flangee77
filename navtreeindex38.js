@@ -1,5 +1,7 @@
 var NAVTREEINDEX38 =
 {
+"dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#a63d8462753952b803a7a2027f9a9c192":[5,0,0,8,10,2],
+"dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#a969b3c6ee82afca6186dea5ea5123143":[5,0,0,8,10,3],
 "dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#a969b3c6ee82afca6186dea5ea5123143":[7,0,0,5,10,3],
 "dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#aa1d87aaca7175a856536d9722826b130":[7,0,0,5,10,4],
 "dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#aa1d87aaca7175a856536d9722826b130":[5,0,0,8,10,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX38 =
 "dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html#ae1a093e7443025b8575ac0747fda8599":[5,0,7,1,1,1,5,0,1],
 "dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html#ae1a093e7443025b8575ac0747fda8599":[7,0,7,0,1,1,3,0,1],
 "dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html#aed3d43cc8b4f5085f49739fa2f78741c":[5,0,7,1,1,1,5,0,8],
-"dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html#aed3d43cc8b4f5085f49739fa2f78741c":[7,0,7,0,1,1,3,0,8],
-"dd/d69/VertexDataProvider_8h.html":[8,0,6,0,2,14],
-"dd/d69/VertexDataProvider_8h_source.html":[8,0,6,0,2,14]
+"dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html#aed3d43cc8b4f5085f49739fa2f78741c":[7,0,7,0,1,1,3,0,8]
 };

@@ -1,5 +1,7 @@
 var NAVTREEINDEX45 =
 {
+"df/dcb/direct3d9_2states_2SamplerStateImpl_8h_source.html":[8,0,6,0,1,1,2,11],
+"df/dd2/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1PixelShaderImpl_1_1Attorney.html":[7,0,7,0,1,0,1,3,0],
 "df/dd2/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1PixelShaderImpl_1_1Attorney.html":[5,0,7,1,1,0,3,3,0],
 "df/dd2/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1PixelShaderImpl_1_1Attorney.html#a0168addd5a64695d17d76f34b3d3b3e1":[5,0,7,1,1,0,3,3,0,1],
 "df/dd2/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1PixelShaderImpl_1_1Attorney.html#a0168addd5a64695d17d76f34b3d3b3e1":[7,0,7,0,1,0,1,3,0,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX45 =
 "functions_x.html":[7,3,0,24],
 "functions_y.html":[7,3,0,25],
 "functions_z.html":[7,3,0,26],
-"functions_~.html":[7,3,0,27],
-"globals.html":[8,1,0],
-"globals_defs.html":[8,1,2]
+"functions_~.html":[7,3,0,27]
 };

@@ -1,5 +1,7 @@
 var NAVTREEINDEX37 =
 {
+"dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html#a46b7ca2b62a6967664d75b76cf71cba3":[7,0,7,0,1,0,0,1,5],
+"dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html#a46b7ca2b62a6967664d75b76cf71cba3":[5,0,7,1,1,0,2,1,5],
 "dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html#a5c14b042d439e5932f9e4f6148a81652":[5,0,7,1,1,0,2,1,13],
 "dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html#a5c14b042d439e5932f9e4f6148a81652":[7,0,7,0,1,0,0,1,13],
 "dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html#a5efcac475a694fc9f5c1ca48275c4ca1":[5,0,7,1,1,0,2,1,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX37 =
 "dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#a2ae82228238813029cd21fa99f7d2511":[5,0,0,8,10,5],
 "dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#a59db1325f0f32b36a2f96f0a7ed5609c":[7,0,0,5,10,1],
 "dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#a59db1325f0f32b36a2f96f0a7ed5609c":[5,0,0,8,10,1],
-"dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#a63d8462753952b803a7a2027f9a9c192":[7,0,0,5,10,2],
-"dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#a63d8462753952b803a7a2027f9a9c192":[5,0,0,8,10,2],
-"dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#a969b3c6ee82afca6186dea5ea5123143":[5,0,0,8,10,3]
+"dd/d0d/structcl7_1_1strings_1_1ErrorStatus.html#a63d8462753952b803a7a2027f9a9c192":[7,0,0,5,10,2]
 };

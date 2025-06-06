@@ -1,5 +1,7 @@
 var NAVTREEINDEX43 =
 {
+"de/df3/structxl7_1_1graphics_1_1Color.html#a2a32ff7eea3791331919f6a3721da8b4":[5,0,7,1,8,59],
+"de/df3/structxl7_1_1graphics_1_1Color.html#a2a32ff7eea3791331919f6a3721da8b4":[7,0,7,0,8,59],
 "de/df3/structxl7_1_1graphics_1_1Color.html#a2a86f4c5ba18b0e08e092501a12c1373":[7,0,7,0,8,14],
 "de/df3/structxl7_1_1graphics_1_1Color.html#a2a86f4c5ba18b0e08e092501a12c1373":[5,0,7,1,8,14],
 "de/df3/structxl7_1_1graphics_1_1Color.html#a2e67f0c2d5713943dac7f8736f56279d":[5,0,7,1,8,13],
@@ -247,7 +249,5 @@ var NAVTREEINDEX43 =
 "df/d6a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1ConstantBufferImpl_1_1Attorney.html#a0168addd5a64695d17d76f34b3d3b3e1":[5,0,7,1,1,0,3,0,0,1],
 "df/d6a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1ConstantBufferImpl_1_1Attorney.html#abef2a07497b631b3eb79797b96d17d54":[7,0,7,0,1,0,1,0,0,0],
 "df/d6a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1ConstantBufferImpl_1_1Attorney.html#abef2a07497b631b3eb79797b96d17d54":[5,0,7,1,1,0,3,0,0,0],
-"df/d6d/namespacexl7_1_1input.html":[5,0,7,2],
-"df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html":[7,0,7,7,0],
-"df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html":[5,0,7,9,0]
+"df/d6d/namespacexl7_1_1input.html":[5,0,7,2]
 };

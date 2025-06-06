@@ -1,5 +1,7 @@
 var NAVTREEINDEX35 =
 {
+"dc/d17/namespacecl7_1_1strings.html#a4e638f7196332648649074faa0c6d0cc":[5,0,0,8,63],
+"dc/d17/namespacecl7_1_1strings.html#a4e6a277780eac818c471bb74dbb6dd68":[5,0,0,8,95],
 "dc/d17/namespacecl7_1_1strings.html#a5302ff1a609e3769781fe79e8c3741c1":[5,0,0,8,32],
 "dc/d17/namespacecl7_1_1strings.html#a53b1c1fdb520927d5991797a2149dfc1":[5,0,0,8,50],
 "dc/d17/namespacecl7_1_1strings.html#a559a64aab7ed89c9dceb3c40e448b875":[5,0,0,8,30],
@@ -247,7 +249,5 @@ var NAVTREEINDEX35 =
 "dc/d49/structcl7_1_1strings_1_1codepoint.html#acd7c872912a84a0f49827d188f5e8daa":[7,0,0,5,2,7],
 "dc/d49/structcl7_1_1strings_1_1codepoint.html#acd7c872912a84a0f49827d188f5e8daa":[5,0,0,8,2,7],
 "dc/d49/structcl7_1_1strings_1_1codepoint.html#ace52a6250b212eee35142d91dfd34115":[7,0,0,5,2,3],
-"dc/d49/structcl7_1_1strings_1_1codepoint.html#ace52a6250b212eee35142d91dfd34115":[5,0,0,8,2,3],
-"dc/d4e/classcl7_1_1strings_1_1Encoder.html":[7,0,0,5,7],
-"dc/d4e/classcl7_1_1strings_1_1Encoder.html":[5,0,0,8,7]
+"dc/d49/structcl7_1_1strings_1_1codepoint.html#ace52a6250b212eee35142d91dfd34115":[5,0,0,8,2,3]
 };

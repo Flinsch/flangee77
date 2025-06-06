@@ -4,6 +4,7 @@ var classfl7_1_1fonts_1_1FontLoader =
     [ "~FontLoader", "da/d82/classfl7_1_1fonts_1_1FontLoader.html#adf14ee46b0c9a79feb9c08c080e3d275", null ],
     [ "_close", "da/d82/classfl7_1_1fonts_1_1FontLoader.html#ad6895c14223243f4f5d721b054a420d0", null ],
     [ "_open", "da/d82/classfl7_1_1fonts_1_1FontLoader.html#ab6a1e6e91199850c0f699d1a457f0dd3", null ],
+    [ "get_fallback_name", "da/d82/classfl7_1_1fonts_1_1FontLoader.html#a63a026317485a4edd9de85f6cde55077", null ],
     [ "get_file_path", "da/d82/classfl7_1_1fonts_1_1FontLoader.html#a4a2a4f3225a057775979dde2403d3f0b", null ],
     [ "has_glyph", "da/d82/classfl7_1_1fonts_1_1FontLoader.html#a789cbef3267896e8484655af2076a35d", null ],
     [ "load_glyph", "da/d82/classfl7_1_1fonts_1_1FontLoader.html#a1a6bc39829b4d2b5d1e0e61a96608586", null ],
