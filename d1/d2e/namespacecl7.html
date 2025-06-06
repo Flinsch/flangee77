@@ -293,9 +293,10 @@ requires (is_any_string_or_span_v&lt;Tstring_or_span&gt;)</td></tr>
 requires (is_any_string_v&lt;Tstring&gt;)</td></tr>
 <tr class="memitem:aec5079e80a1cda9251e43a64d5994f7a"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#aec5079e80a1cda9251e43a64d5994f7a">make_string_span</a> (Tstring &amp;s)</td></tr>
 <tr class="separator:aec5079e80a1cda9251e43a64d5994f7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf9e2ee59c7295af0a0a72d8b399f477" id="r_acf9e2ee59c7295af0a0a72d8b399f477"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:acf9e2ee59c7295af0a0a72d8b399f477"><td class="memTemplItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#acf9e2ee59c7295af0a0a72d8b399f477">coalesce</a> (const T &amp;a, const T &amp;b)</td></tr>
-<tr class="separator:acf9e2ee59c7295af0a0a72d8b399f477"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab6e46849480d689944a5e209fa10d7e" id="r_aab6e46849480d689944a5e209fa10d7e"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 &gt; <br />
+requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt; &amp;&amp; std::is_convertible_v&lt;T1, bool&gt;)</td></tr>
+<tr class="memitem:aab6e46849480d689944a5e209fa10d7e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#aab6e46849480d689944a5e209fa10d7e">coalesce</a> (T1 &amp;&amp;a, T2 &amp;&amp;b)</td></tr>
+<tr class="separator:aab6e46849480d689944a5e209fa10d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fcbab39a4e69f5e398b9d2191758031" id="r_a4fcbab39a4e69f5e398b9d2191758031"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a4fcbab39a4e69f5e398b9d2191758031">to_string</a> (<a class="el" href="../../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2">xl7::graphics::ChannelOrder</a> channel_order)</td></tr>
 <tr class="separator:a4fcbab39a4e69f5e398b9d2191758031"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6b061e30669a70d570698ceeb7472e7" id="r_af6b061e30669a70d570698ceeb7472e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#af6b061e30669a70d570698ceeb7472e7">to_string</a> (<a class="el" href="../../d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082d">xl7::graphics::PixelFormat</a> pixel_format)</td></tr>
@@ -795,24 +796,25 @@ requires (std::is_arithmetic_v&lt;T&gt; &amp;&amp; std::is_floating_point_v&lt;T
 
 </div>
 </div>
-<a id="acf9e2ee59c7295af0a0a72d8b399f477" name="acf9e2ee59c7295af0a0a72d8b399f477"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf9e2ee59c7295af0a0a72d8b399f477">&#9670;&#160;</a></span>coalesce()</h2>
+<a id="aab6e46849480d689944a5e209fa10d7e" name="aab6e46849480d689944a5e209fa10d7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab6e46849480d689944a5e209fa10d7e">&#9670;&#160;</a></span>coalesce()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T1 , typename T2 &gt; <br />
+requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt; &amp;&amp; std::is_convertible_v&lt;T1, bool&gt;)</div>
       <table class="memname">
         <tr>
-          <td class="memname">const T &amp; cl7::coalesce </td>
+          <td class="memname">auto cl7::coalesce </td>
           <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramtype">T1 &amp;&amp;&#160;</td>
           <td class="paramname"><em>a</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramtype">T2 &amp;&amp;&#160;</td>
           <td class="paramname"><em>b</em>&#160;</td>
         </tr>
         <tr>

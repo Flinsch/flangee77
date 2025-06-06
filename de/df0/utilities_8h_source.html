@@ -110,21 +110,23 @@ $(document).ready(function(){initNavTree('de/df0/utilities_8h_source.html','../.
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="../../d1/d2e/namespacecl7.html#acf9e2ee59c7295af0a0a72d8b399f477">   17</a></span>    <span class="keyword">const</span> T&amp; <a class="code hl_function" href="../../d1/d2e/namespacecl7.html#acf9e2ee59c7295af0a0a72d8b399f477">coalesce</a>(<span class="keyword">const</span> T&amp; a, <span class="keyword">const</span> T&amp; b)</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordflow">return</span> a ? a : b;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    }</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keyword">requires</span>(std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt; &amp;&amp; std::is_convertible_v&lt;T1, bool&gt;)</div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="../../d1/d2e/namespacecl7.html#aab6e46849480d689944a5e209fa10d7e">   18</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="../../d1/d2e/namespacecl7.html#aab6e46849480d689944a5e209fa10d7e">coalesce</a>(T1&amp;&amp; a, T2&amp;&amp; b)</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keyword">using </span>T = std::decay_t&lt;T1&gt;;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span><span class="keyword">&gt;</span>(a) ? <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(std::forward&lt;T1&gt;(a)) : <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(std::forward&lt;T2&gt;(b));</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    }</div>
 </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>} <span class="comment">// namespace cl7</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#endif </span><span class="comment">// CL7_UTILITIES_H</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>} <span class="comment">// namespace cl7</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif </span><span class="comment">// CL7_UTILITIES_H</span></div>
 <div class="ttc" id="anamespacecl7_html"><div class="ttname"><a href="../../d1/d2e/namespacecl7.html">cl7</a></div><div class="ttdef"><b>Definition</b> auto_invoke.h:10</div></div>
-<div class="ttc" id="anamespacecl7_html_acf9e2ee59c7295af0a0a72d8b399f477"><div class="ttname"><a href="../../d1/d2e/namespacecl7.html#acf9e2ee59c7295af0a0a72d8b399f477">cl7::coalesce</a></div><div class="ttdeci">const T &amp; coalesce(const T &amp;a, const T &amp;b)</div><div class="ttdef"><b>Definition</b> utilities.h:17</div></div>
+<div class="ttc" id="anamespacecl7_html_aab6e46849480d689944a5e209fa10d7e"><div class="ttname"><a href="../../d1/d2e/namespacecl7.html#aab6e46849480d689944a5e209fa10d7e">cl7::coalesce</a></div><div class="ttdeci">auto coalesce(T1 &amp;&amp;a, T2 &amp;&amp;b)</div><div class="ttdef"><b>Definition</b> utilities.h:18</div></div>
 <div class="ttc" id="aroot_8h_html"><div class="ttname"><a href="../../de/d99/root_8h.html">root.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

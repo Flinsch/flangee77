@@ -71,7 +71,7 @@ var namespacecl7 =
     [ "wosstream", "d1/d2e/namespacecl7.html#a88069306694d6b5b47cf47582b4d597e", null ],
     [ "_to_string", "d1/d2e/namespacecl7.html#aebe9841fb66068b2872904fc695c0cc6", null ],
     [ "_to_string", "d1/d2e/namespacecl7.html#a7916f97b3323ae86892fdd0547cabbf5", null ],
-    [ "coalesce", "d1/d2e/namespacecl7.html#acf9e2ee59c7295af0a0a72d8b399f477", null ],
+    [ "coalesce", "d1/d2e/namespacecl7.html#aab6e46849480d689944a5e209fa10d7e", null ],
     [ "finally", "d1/d2e/namespacecl7.html#a8927ccd85e32974e15e3c21c560e5758", null ],
     [ "make_byte_span", "d1/d2e/namespacecl7.html#a2553b68df24c678e5f1b3ed9dfb87433", null ],
     [ "make_byte_span", "d1/d2e/namespacecl7.html#aa2e588df60b6e290d30d679ef6277a7a", null ],

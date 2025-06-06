@@ -78,7 +78,7 @@ var searchData=
   ['clockwise_75',['Clockwise',['../d2/df3/classxl7_1_1graphics_1_1states_1_1RasterizerState.html#a5c81d60f396fe305d6b404a4c9b846e8aba360a794737bcc8657a5b6e870d7ba8',1,'xl7::graphics::states::RasterizerState']]],
   ['close_76',['close',['../d2/d67/classcl7_1_1io_1_1File.html#a2cb3ad0cefb1fa25f744121919ae7290',1,'cl7::io::File::close()'],['../d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html#aa65e8e0cb8becbf96ffaad2f11e2eac7',1,'dl7::syntax::matchers::BlockCommentMatcher::close'],['../da/df2/classxl7_1_1MainWindow.html#a70dde3fad362e591eee7b760a2d4f20f',1,'xl7::MainWindow::close()']]],
   ['close_5fsample_77',['close_sample',['../d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#a5e7d397932c61e2d15afdd55e2980ec7',1,'cl7::profiling::SampleHandler']]],
-  ['coalesce_78',['coalesce',['../d1/d2e/namespacecl7.html#acf9e2ee59c7295af0a0a72d8b399f477',1,'cl7']]],
+  ['coalesce_78',['coalesce',['../d1/d2e/namespacecl7.html#aab6e46849480d689944a5e209fa10d7e',1,'cl7']]],
   ['code_79',['code',['../index.html#autotoc_md3',1,'API Reference and Source Code'],['../dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html#aa9c19b3482e3a24bf5bfa791c0f3b326',1,'xl7::graphics::impl::shared::shaders::Include::ParentEntry::code'],['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3aca0dbad92a874b2f69b549293387925e',1,'cl7::logging::Code'],['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740ab18bc032aedfc8dfd749bd82f2025dff',1,'tl7::reporting::Code']]],
   ['code_20style_20guide_80',['Code Style Guide',['../de/d95/md_code-style-guide.html',1,'']]],
   ['code_2dstyle_2dguide_2emd_81',['code-style-guide.md',['../d8/d6d/code-style-guide_8md.html',1,'']]],

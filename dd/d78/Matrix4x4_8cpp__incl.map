@@ -1,36 +1,40 @@
 <map id="MathLabs/Matrix4x4.cpp" name="MathLabs/Matrix4x4.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="68,5,251,31"/>
-<area shape="rect" id="Node000002" href="$dc/df1/Matrix4x4_8h.html" title=" " alt="" coords="109,79,209,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,31,162,65,157,65,157,31"/>
-<area shape="rect" id="Node000003" href="$d6/d44/Matrix3x4_8h.html" title=" " alt="" coords="60,152,168,177"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="154,106,131,142,126,139,150,103"/>
-<area shape="rect" id="Node000004" href="$d7/dec/Matrix3x3_8h.html" title=" " alt="" coords="9,225,117,251"/>
-<area shape="poly" id="edge16_Node000002_Node000004" title=" " alt="" coords="116,106,79,124,62,137,50,153,45,167,44,182,53,212,48,213,39,183,39,166,45,151,59,134,76,120,114,102"/>
-<area shape="rect" id="Node000005" href="$dd/d8c/Vector3_8h.html" title=" " alt="" coords="135,299,226,324"/>
-<area shape="poly" id="edge19_Node000002_Node000005" title=" " alt="" coords="167,103,182,151,188,224,186,285,180,285,182,224,177,153,162,105"/>
-<area shape="rect" id="Node000015" href="$d7/d36/Vector4_8h.html" title=" " alt="" coords="243,225,334,251"/>
-<area shape="poly" id="edge17_Node000002_Node000015" title=" " alt="" coords="175,102,227,150,275,212,271,215,223,154,172,106"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="108,179,82,216,77,213,103,176"/>
-<area shape="poly" id="edge15_Node000003_Node000005" title=" " alt="" coords="122,177,172,285,167,287,117,179"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="84,248,151,289,148,294,81,253"/>
-<area shape="rect" id="Node000006" href="$df/db1/math_8h.html" title=" " alt="" coords="113,372,248,397"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="183,324,183,358,178,358,178,324"/>
-<area shape="rect" id="Node000007" href="$d2/d6f/constants_8h.html" title=" " alt="" coords="5,445,169,471"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="167,399,115,439,112,435,164,395"/>
-<area shape="rect" id="Node000013" href="$d8/d5c/functions_8h.html" title=" " alt="" coords="193,445,355,471"/>
-<area shape="poly" id="edge12_Node000006_Node000013" title=" " alt="" coords="197,395,250,435,246,439,194,399"/>
-<area shape="rect" id="Node000008" href="$de/d99/root_8h.html" title=" " alt="" coords="123,519,247,544"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="105,469,159,508,156,512,101,473"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="20,519,99,544"/>
-<area shape="poly" id="edge11_Node000007_Node000012" title=" " alt="" coords="85,472,71,507,66,505,80,470"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="25,592,126,617"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="169,546,106,587,103,582,166,542"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="150,592,219,617"/>
-<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="187,544,187,578,182,578,182,544"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="243,592,321,617"/>
-<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="202,542,256,581,253,586,199,546"/>
-<area shape="poly" id="edge13_Node000013_Node000008" title=" " alt="" coords="261,473,212,512,208,508,258,469"/>
-<area shape="rect" id="Node000014" title=" " alt="" coords="271,519,333,544"/>
-<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="281,470,295,505,290,507,276,472"/>
-<area shape="poly" id="edge18_Node000015_Node000005" title=" " alt="" coords="273,253,211,293,208,289,270,248"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="164,5,347,31"/>
+<area shape="rect" id="Node000002" href="$dc/df1/Matrix4x4_8h.html" title=" " alt="" coords="205,79,305,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="258,31,258,65,253,65,253,31"/>
+<area shape="rect" id="Node000003" href="$d6/d44/Matrix3x4_8h.html" title=" " alt="" coords="201,152,309,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="258,104,258,138,253,138,253,104"/>
+<area shape="rect" id="Node000004" href="$d7/dec/Matrix3x3_8h.html" title=" " alt="" coords="293,225,401,251"/>
+<area shape="poly" id="edge18_Node000002_Node000004" title=" " alt="" coords="275,102,300,123,324,151,338,181,346,211,341,212,333,183,320,153,297,127,271,106"/>
+<area shape="rect" id="Node000005" href="$dd/d8c/Vector3_8h.html" title=" " alt="" coords="134,299,225,324"/>
+<area shape="poly" id="edge21_Node000002_Node000005" title=" " alt="" coords="237,106,212,126,191,153,180,187,175,223,178,285,173,285,170,223,175,186,186,151,208,122,234,102"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="321,299,374,324"/>
+<area shape="poly" id="edge22_Node000002_Node000015" title=" " alt="" coords="283,102,316,120,355,147,391,182,405,202,417,225,418,245,411,263,397,280,380,293,377,289,393,276,406,260,413,244,411,226,401,205,387,185,352,151,314,125,280,107"/>
+<area shape="rect" id="Node000016" href="$d7/d36/Vector4_8h.html" title=" " alt="" coords="26,225,117,251"/>
+<area shape="poly" id="edge19_Node000002_Node000016" title=" " alt="" coords="223,107,180,126,137,154,109,184,87,215,83,212,104,181,134,150,178,121,221,102"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="272,175,323,215,320,219,268,179"/>
+<area shape="poly" id="edge16_Node000003_Node000005" title=" " alt="" coords="251,179,194,288,189,285,247,177"/>
+<area shape="poly" id="edge17_Node000003_Node000015" title=" " alt="" coords="260,177,268,211,284,249,301,270,321,288,317,292,297,274,280,252,262,213,254,178"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="321,253,220,296,218,291,319,248"/>
+<area shape="poly" id="edge15_Node000004_Node000015" title=" " alt="" coords="350,251,350,285,345,285,345,251"/>
+<area shape="rect" id="Node000006" href="$df/db1/math_8h.html" title=" " alt="" coords="112,372,247,397"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="182,324,182,358,177,358,177,324"/>
+<area shape="rect" id="Node000007" href="$d2/d6f/constants_8h.html" title=" " alt="" coords="191,445,355,471"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="196,395,248,435,245,439,193,399"/>
+<area shape="rect" id="Node000013" href="$d8/d5c/functions_8h.html" title=" " alt="" coords="5,445,167,471"/>
+<area shape="poly" id="edge12_Node000006_Node000013" title=" " alt="" coords="166,399,114,439,110,435,163,395"/>
+<area shape="rect" id="Node000008" href="$de/d99/root_8h.html" title=" " alt="" coords="113,519,237,544"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="259,473,204,512,201,508,255,469"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="261,519,340,544"/>
+<area shape="poly" id="edge11_Node000007_Node000012" title=" " alt="" coords="280,470,294,505,289,507,275,472"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="15,592,117,617"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="159,546,97,587,94,582,156,542"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="141,592,210,617"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="178,544,178,578,173,578,173,544"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="234,592,311,617"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="193,542,247,581,244,586,189,546"/>
+<area shape="poly" id="edge13_Node000013_Node000008" title=" " alt="" coords="102,469,152,508,148,512,99,473"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="27,519,89,544"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="84,472,70,507,65,505,79,470"/>
+<area shape="poly" id="edge20_Node000016_Node000005" title=" " alt="" coords="90,248,152,289,149,293,87,253"/>
 </map>

@@ -182,10 +182,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1b0a8aff7a089bc3b47291aa085b1df8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78b61e66546e050b8195dab8afbd0738" id="r_a78b61e66546e050b8195dab8afbd0738"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d6/d14/structml7_1_1Matrix3x3.html">Matrix3x3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d14/structml7_1_1Matrix3x3.html#a78b61e66546e050b8195dab8afbd0738">operator/=</a> (float s)</td></tr>
 <tr class="separator:a78b61e66546e050b8195dab8afbd0738"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a445346bc94b317b89793c310ed7fd9e2" id="r_a445346bc94b317b89793c310ed7fd9e2"><td class="memItemLeft" align="right" valign="top">const float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d14/structml7_1_1Matrix3x3.html#a445346bc94b317b89793c310ed7fd9e2">operator[]</a> (unsigned <a class="el" href="../../d6/d14/structml7_1_1Matrix3x3.html#af19c8703d90f34e3478a713daebfe47b">i</a>) const</td></tr>
-<tr class="separator:a445346bc94b317b89793c310ed7fd9e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91f8cffb2081def027085ef29b33d5a0" id="r_a91f8cffb2081def027085ef29b33d5a0"><td class="memItemLeft" align="right" valign="top">float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d14/structml7_1_1Matrix3x3.html#a91f8cffb2081def027085ef29b33d5a0">operator[]</a> (unsigned <a class="el" href="../../d6/d14/structml7_1_1Matrix3x3.html#af19c8703d90f34e3478a713daebfe47b">i</a>)</td></tr>
-<tr class="separator:a91f8cffb2081def027085ef29b33d5a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a744dc6cce988b04589db8b99e5de15d3" id="r_a744dc6cce988b04589db8b99e5de15d3"><td class="memItemLeft" align="right" valign="top">std::span&lt; const float, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d14/structml7_1_1Matrix3x3.html#a744dc6cce988b04589db8b99e5de15d3">operator[]</a> (unsigned <a class="el" href="../../d6/d14/structml7_1_1Matrix3x3.html#af19c8703d90f34e3478a713daebfe47b">i</a>) const</td></tr>
+<tr class="separator:a744dc6cce988b04589db8b99e5de15d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1450c41a674256651dc2679d33d17a49" id="r_a1450c41a674256651dc2679d33d17a49"><td class="memItemLeft" align="right" valign="top">std::span&lt; float, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d14/structml7_1_1Matrix3x3.html#a1450c41a674256651dc2679d33d17a49">operator[]</a> (unsigned <a class="el" href="../../d6/d14/structml7_1_1Matrix3x3.html#af19c8703d90f34e3478a713daebfe47b">i</a>)</td></tr>
+<tr class="separator:a1450c41a674256651dc2679d33d17a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -1211,8 +1211,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a91f8cffb2081def027085ef29b33d5a0" name="a91f8cffb2081def027085ef29b33d5a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91f8cffb2081def027085ef29b33d5a0">&#9670;&#160;</a></span>operator[]() <span class="overload">[1/2]</span></h2>
+<a id="a1450c41a674256651dc2679d33d17a49" name="a1450c41a674256651dc2679d33d17a49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1450c41a674256651dc2679d33d17a49">&#9670;&#160;</a></span>operator[]() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1221,7 +1221,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float * ml7::Matrix3x3::operator[] </td>
+          <td class="memname">std::span&lt; float, 3 &gt; ml7::Matrix3x3::operator[] </td>
           <td>(</td>
           <td class="paramtype">unsigned&#160;</td>
           <td class="paramname"><em>i</em></td><td>)</td>
@@ -1237,8 +1237,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a445346bc94b317b89793c310ed7fd9e2" name="a445346bc94b317b89793c310ed7fd9e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a445346bc94b317b89793c310ed7fd9e2">&#9670;&#160;</a></span>operator[]() <span class="overload">[2/2]</span></h2>
+<a id="a744dc6cce988b04589db8b99e5de15d3" name="a744dc6cce988b04589db8b99e5de15d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a744dc6cce988b04589db8b99e5de15d3">&#9670;&#160;</a></span>operator[]() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1247,7 +1247,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const float * ml7::Matrix3x3::operator[] </td>
+          <td class="memname">std::span&lt; const float, 3 &gt; ml7::Matrix3x3::operator[] </td>
           <td>(</td>
           <td class="paramtype">unsigned&#160;</td>
           <td class="paramname"><em>i</em></td><td>)</td>
