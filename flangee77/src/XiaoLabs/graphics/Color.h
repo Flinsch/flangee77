@@ -3,6 +3,8 @@
 
 #include "./ChannelOrder.h"
 
+#include <span>
+
 
 
 namespace xl7::graphics {
@@ -132,8 +134,8 @@ struct Color
     constexpr uint32_t to_abgr32() const { return to_uint32(ChannelOrder::ABGR); }
     constexpr uint32_t to_bgra32() const { return to_uint32(ChannelOrder::BGRA); } // Corresponds to D3DCOLOR of Direct3D 9.
 
-    const float* get_rgba_ptr() const { return &r; }
-    float* get_rgba_ptr() { return &r; }
+    std::span<const float, 4> get_rgba() const { return std::span<const float, 4>{&r, 4}; }
+    std::span<float, 4> get_rgba() { return std::span<float, 4>{&r, 4}; }
 
 
 
@@ -238,8 +240,8 @@ struct Color
     // Access Operators
     // #############################################################################
 
-    float operator[](unsigned i) const { assert(i < 4); return get_rgba_ptr()[i]; }
-    float& operator[](unsigned i) { assert(i < 4); return get_rgba_ptr()[i]; }
+    float operator[](unsigned i) const { return get_rgba()[i]; }
+    float& operator[](unsigned i) { return get_rgba()[i]; }
 
 
 

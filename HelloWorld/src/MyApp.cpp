@@ -68,9 +68,9 @@ namespace helloworld {
         };
 
         xl7::graphics::meshes::VertexLayout vertex_layout;
-        vertex_layout.elements.push_back({xl7::graphics::meshes::VertexLayout::Semantic::POSITION,  0,  xl7::graphics::meshes::VertexLayout::DataType::FLOAT3});
-        vertex_layout.elements.push_back({xl7::graphics::meshes::VertexLayout::Semantic::COLOR,     0,  xl7::graphics::meshes::VertexLayout::DataType::COLOR});
-        vertex_layout.elements.push_back({xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD,  0,  xl7::graphics::meshes::VertexLayout::DataType::FLOAT2});
+        vertex_layout.elements.push_back({.semantic = xl7::graphics::meshes::VertexLayout::Semantic::POSITION,  .semantic_index = 0,  .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT3});
+        vertex_layout.elements.push_back({.semantic = xl7::graphics::meshes::VertexLayout::Semantic::COLOR,     .semantic_index = 0,  .data_type = xl7::graphics::meshes::VertexLayout::DataType::COLOR});
+        vertex_layout.elements.push_back({.semantic = xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD,  .semantic_index = 0,  .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT2});
         assert(vertex_layout.calculate_size() == sizeof(Vertex));
 
         xl7::graphics::meshes::VertexBuffer::Desc vertex_buffer_desc{
@@ -105,7 +105,7 @@ namespace helloworld {
         _index_buffer_id = xl7::graphics::mesh_manager()->create_index_buffer(u8"My Index Buffer", index_buffer_desc, index_data_provider);
 
 
-        std::ifstream ifs(cl7::strings::reinterpret_utf8(cl7::filesystem::get_working_directory() + u8"assets/shaders/shader.hlsl").data());
+        std::ifstream ifs(std::filesystem::path(cl7::strings::reinterpret_utf8(cl7::filesystem::get_working_directory() + u8"assets/shaders/shader.hlsl")));
         assert(ifs);
         assert(ifs.is_open());
         cl7::u8osstream oss;

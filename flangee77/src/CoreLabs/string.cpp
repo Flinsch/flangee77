@@ -30,8 +30,8 @@ namespace cl7 {
         T frac_part = std::modf(val, &int_part);
         if (frac_part == T{0.0})
         {
-            constexpr T min_int = std::numeric_limits<signed long>::min();
-            constexpr T max_int = std::numeric_limits<signed long>::max();
+            static constexpr auto min_int = static_cast<T>(std::numeric_limits<signed long>::min() + 1);
+            static constexpr auto max_int = static_cast<T>(std::numeric_limits<signed long>::max() - 1);
             if (int_part >= min_int && int_part <= max_int)
             {
                 oss << static_cast<signed long>(int_part) << u8".0";

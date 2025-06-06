@@ -420,7 +420,7 @@ namespace xl7::graphics::images {
             for (size_t i = 0; i < pixel_count; ++i)
             {
                 Color color = _unpack_color({src_ptr, source_stride}, source_pbk);
-                color.get_rgba_ptr()[target_channel_index] = color.get_rgba_ptr()[source_channel_index];
+                color.get_rgba()[target_channel_index] = color.get_rgba()[source_channel_index];
                 _pack_color(color, target_pbk, {dst_ptr, target_stride});
                 src_ptr += source_stride;
                 dst_ptr += target_stride;
@@ -456,7 +456,7 @@ namespace xl7::graphics::images {
             for (size_t i = 0; i < pixel_count; ++i)
             {
                 Color color = _unpack_color({src_ptr, source_stride}, source_pbk);
-                color.get_rgba_ptr()[target_channel_index] = color.get_rgba_ptr()[source_channel_index];
+                color.get_rgba()[target_channel_index] = color.get_rgba()[source_channel_index];
                 _pack_color(color, target_pbk, {dst_ptr, target_stride});
                 src_ptr += source_stride;
                 dst_ptr += target_stride;

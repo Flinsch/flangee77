@@ -4,6 +4,8 @@
 #include "./Matrix2x2.h"
 #include "./Vector2.h"
 
+#include <span>
+
 
 
 namespace ml7 {
@@ -332,8 +334,8 @@ struct Matrix2x3
     // Access Operators
     // #############################################################################
 
-    const float* operator[](unsigned i) const { assert(i < 2); return m[i]; }
-    float* operator[](unsigned i) { assert(i < 2); return m[i]; }
+    std::span<const float, 3> operator[](unsigned i) const { assert(i < 2); return std::span<const float, 3>{m[i], 3}; }
+    std::span<float, 3> operator[](unsigned i) { assert(i < 2); return std::span<float, 3>{m[i], 3}; }
 
 
 

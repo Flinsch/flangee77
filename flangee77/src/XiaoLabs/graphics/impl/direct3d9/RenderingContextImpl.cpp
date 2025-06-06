@@ -24,13 +24,6 @@ namespace xl7::graphics::impl::direct3d9 {
 
 
 
-    RenderingContextImpl::HardwareStates::HardwareStates()
-    {
-        memset(this, 0, sizeof(HardwareStates)); // NOLINT(bugprone-undefined-memory-manipulation)
-    }
-
-
-
     static DWORD _d3d_clear_flags_from(ClearFlags clear_flags)
     {
         static_assert(static_cast<unsigned>(ClearFlags::ColorBuffer) == static_cast<unsigned>(D3DCLEAR_TARGET));

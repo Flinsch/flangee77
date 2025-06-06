@@ -81,7 +81,7 @@ namespace xl7::graphics::impl::shared::shaders {
 
         static cl7::u8string read_source_code(const cl7::u8string& file_path)
         {
-            std::ifstream file(cl7::strings::reinterpret_utf8(file_path).data(), std::ios::in | std::ios::binary | std::ios::ate);
+            std::ifstream file(std::filesystem::path(cl7::strings::reinterpret_utf8(file_path)), std::ios::in | std::ios::binary | std::ios::ate);
             if (!file.is_open())
             {
                 LOG_ERROR(u8"Shader file \"" + Include::filename(file_path) + u8"\" could not be opened. Does it exist?");
@@ -186,8 +186,8 @@ namespace xl7::graphics::impl::shared::shaders {
         std::vector<D3D_SHADER_MACRO> macros;
         macros.reserve(compile_options.macro_definitions.size() + 1);
         for (const auto& [name, definition] : compile_options.macro_definitions)
-            macros.push_back({reinterpret_cast<const char*>(name.c_str()), reinterpret_cast<const char*>(definition.c_str())});
-        macros.push_back({nullptr, nullptr});
+            macros.push_back({.Name = reinterpret_cast<const char*>(name.c_str()), .Definition = reinterpret_cast<const char*>(definition.c_str())});
+        macros.push_back({.Name = nullptr, .Definition = nullptr});
 
         unsigned flags = D3DCOMPILE_ENABLE_BACKWARDS_COMPATIBILITY;
 #ifdef _DEBUG

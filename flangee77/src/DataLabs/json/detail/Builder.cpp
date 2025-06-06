@@ -151,7 +151,7 @@ namespace dl7::json::detail {
         assert(lexeme.starts_with(quote_char));
         assert(lexeme.ends_with(quote_char));
 
-        UnescaperErrorHandler unescaper_error_handler{get_diagnostics(), token};
+        UnescaperErrorHandler unescaper_error_handler{get_diagnostics(), &token};
         util::Unescaper unescaper{&unescaper_error_handler};
 
         return unescaper.unescape_string(lexeme.substr(1, lexeme.size() - 2));

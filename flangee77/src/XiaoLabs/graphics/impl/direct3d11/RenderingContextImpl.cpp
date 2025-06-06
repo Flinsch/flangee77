@@ -16,16 +16,11 @@
 
 #include <CoreLabs/logging.h>
 
+#include <algorithm>
+
 
 
 namespace xl7::graphics::impl::direct3d11 {
-
-
-
-    RenderingContextImpl::HardwareStates::HardwareStates()
-    {
-        memset(this, 0, sizeof(HardwareStates));
-    }
 
 
 
@@ -112,7 +107,7 @@ namespace xl7::graphics::impl::direct3d11 {
         _d3d_device_context->RSSetState(hardware_states.rasterizer_state);
 
         _d3d_device_context->OMSetDepthStencilState(hardware_states.depth_stencil_state, hardware_states.stencil_reference_value);
-        _d3d_device_context->OMSetBlendState(hardware_states.blend_state, hardware_states.blend_factor.get_rgba_ptr(), 0xffffffff);
+        _d3d_device_context->OMSetBlendState(hardware_states.blend_state, hardware_states.blend_factor.get_rgba().data(), 0xffffffff);
         _d3d_device_context->OMSetRenderTargets(get_rendering_device()->get_capabilities().max_simultaneous_render_target_count, &hardware_states.render_target_views[0], hardware_states.depth_stencil_view);
 
         return true;
@@ -140,7 +135,7 @@ namespace xl7::graphics::impl::direct3d11 {
         // But since they belong together, it is good practice to freshly set them
         // anyway, so we make this quite explicit here for the sake of completeness.
         hardware_states.depth_stencil_view = nullptr;
-        hardware_states.viewport = {0};
+        hardware_states.viewport = {};
 
         // Reset temporary constant buffers since they are ... temporary.
         _temp_d3d_constant_buffer_wrappers.clear();
@@ -171,7 +166,7 @@ namespace xl7::graphics::impl::direct3d11 {
             for (auto& d3d_render_target_view : hardware_states.render_target_views)
             {
                 if (d3d_render_target_view)
-                    _d3d_device_context->ClearRenderTargetView(d3d_render_target_view, color.get_rgba_ptr());
+                    _d3d_device_context->ClearRenderTargetView(d3d_render_target_view, color.get_rgba().data());
             }
         }
 
@@ -435,7 +430,7 @@ namespace xl7::graphics::impl::direct3d11 {
 
         if (d3d_blend_state != hardware_states.blend_state || resolved_draw_states.blend_factor != hardware_states.blend_factor)
         {
-            _d3d_device_context->OMSetBlendState(d3d_blend_state, resolved_draw_states.blend_factor.get_rgba_ptr(), 0xffffffff);
+            _d3d_device_context->OMSetBlendState(d3d_blend_state, resolved_draw_states.blend_factor.get_rgba().data(), 0xffffffff);
             hardware_states.blend_state = d3d_blend_state;
             hardware_states.blend_factor = resolved_draw_states.blend_factor;
         }
@@ -450,7 +445,7 @@ namespace xl7::graphics::impl::direct3d11 {
      */
     bool RenderingContextImpl::_prepare_shader_constant_states(const ResolvedAbstractShaderStates& resolved_shader_states, HardwareStates::AbstractShaderStates& hardware_shader_states)
     {
-        std::fill(std::begin(hardware_shader_states.constant_buffer_wrappers), std::end(hardware_shader_states.constant_buffer_wrappers), nullptr);
+        std::ranges::fill(hardware_shader_states.constant_buffer_wrappers, nullptr);
         if (!resolved_shader_states.abstract_shader)
             return true;
 

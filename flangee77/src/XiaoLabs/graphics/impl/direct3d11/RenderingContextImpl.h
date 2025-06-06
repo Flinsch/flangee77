@@ -53,49 +53,49 @@ private:
 
     struct HardwareStates
     {
-        ID3D11RenderTargetView* render_target_views[pipeline::OutputMergerStage::MAX_RENDER_TARGETS];
-        ID3D11DepthStencilView* depth_stencil_view;
+        ID3D11RenderTargetView* render_target_views[pipeline::OutputMergerStage::MAX_RENDER_TARGETS] = {};
+        ID3D11DepthStencilView* depth_stencil_view = nullptr;
 
-        ID3D11Buffer* vertex_buffers[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];
-        ID3D11Buffer* index_buffer;
+        ID3D11Buffer* vertex_buffers[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS] = {};
+        ID3D11Buffer* index_buffer = nullptr;
 
-        D3D11_PRIMITIVE_TOPOLOGY primitive_topology;
+        D3D11_PRIMITIVE_TOPOLOGY primitive_topology = static_cast<D3D11_PRIMITIVE_TOPOLOGY>(0);
 
-        ID3D11InputLayout* input_layout;
+        ID3D11InputLayout* input_layout = nullptr;
 
         struct TextureSamplerStates
         {
-            ID3D11ShaderResourceView* shader_resource_views[pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS];
-            ID3D11SamplerState* sampler_states[pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS];
+            ID3D11ShaderResourceView* shader_resource_views[pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS] = {};
+            ID3D11SamplerState* sampler_states[pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS] = {};
         };
 
         struct AbstractShaderStates
             : public TextureSamplerStates
         {
-            shaders::D3DConstantBufferWrapper* constant_buffer_wrappers[pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS];
-            ID3D11Buffer* constant_buffers[pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS];
+            shaders::D3DConstantBufferWrapper* constant_buffer_wrappers[pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS] = {};
+            ID3D11Buffer* constant_buffers[pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS] = {};
         };
 
         template <class TD3D11Shader>
         struct ShaderStates
             : public AbstractShaderStates
         {
-            TD3D11Shader* shader;
+            TD3D11Shader* shader = nullptr;
         };
 
         ShaderStates<ID3D11VertexShader> vs;
         ShaderStates<ID3D11PixelShader> ps;
 
-        D3D11_VIEWPORT viewport;
+        D3D11_VIEWPORT viewport = {};
 
-        ID3D11RasterizerState* rasterizer_state;
-        ID3D11DepthStencilState* depth_stencil_state;
-        ID3D11BlendState* blend_state;
+        ID3D11RasterizerState* rasterizer_state = nullptr;
+        ID3D11DepthStencilState* depth_stencil_state = nullptr;
+        ID3D11BlendState* blend_state = nullptr;
 
-        unsigned stencil_reference_value;
+        unsigned stencil_reference_value = 0;
         Color blend_factor;
 
-        HardwareStates();
+        HardwareStates() = default;
     };
 
 

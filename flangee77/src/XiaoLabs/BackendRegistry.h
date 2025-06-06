@@ -52,7 +52,7 @@ public:
         DriverResolver::DriverEntries driver_entries;
         for (const auto& entry : _entries)
         {
-            driver_entries.push_back({cl7::u8string{entry.driver_name}, {}});
+            driver_entries.push_back({.name = cl7::u8string{entry.driver_name}, .aliases = {}});
             for (const auto& alias : entry.aliases)
                 driver_entries.back().aliases.push_back(cl7::u8string{alias});
         }

@@ -9,6 +9,7 @@ target_sources(flangee77-tests
     CoreLabs/ordered_map.h
     CoreLabs/static_vector.h
     CoreLabs/strings.h
+    CoreLabs/utilities.h
     CoreLabs/Version.h
 
     DataLabs/Base64.h

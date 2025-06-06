@@ -6,6 +6,8 @@
 #include "./Vector4.h"
 #include "./Vector3.h"
 
+#include <span>
+
 
 
 namespace ml7 {
@@ -567,8 +569,8 @@ struct Matrix4x4
     // Access Operators
     // #############################################################################
 
-    const float* operator[](unsigned i) const { assert(i < 4); return m[i]; }
-    float* operator[](unsigned i) { assert(i < 4); return m[i]; }
+    std::span<const float, 4> operator[](unsigned i) const { assert(i < 4); return std::span<const float, 4>{m[i], 4}; }
+    std::span<float, 4> operator[](unsigned i) { assert(i < 4); return std::span<float, 4>{m[i], 4}; }
 
 
 

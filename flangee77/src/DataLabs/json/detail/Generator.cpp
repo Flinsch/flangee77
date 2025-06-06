@@ -128,10 +128,9 @@ namespace dl7::json::detail {
             case Format::FloatPolicy::ReplaceWithZero:
                 return oss << u8"0.0";
             case Format::FloatPolicy::EncodeAsString:
-                return oss << (
-                    std::isnan(decimal) ? u8"\"NaN\"" :
-                    std::signbit(decimal) ? u8"\"-Infinity\"" : u8"\"Infinity\""
-                );
+                if (std::isnan(decimal))
+                    return oss << u8"\"NaN\"";
+                return oss << (std::signbit(decimal) ? u8"\"-Infinity\"" : u8"\"Infinity\"");
             }
         }
 
