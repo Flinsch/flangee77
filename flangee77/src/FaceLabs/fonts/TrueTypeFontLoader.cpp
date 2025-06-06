@@ -218,8 +218,10 @@ namespace fl7::fonts {
 
         auto string_offset = static_cast<size_t>(reader.read_scalar<uint16_t>());
 
-        cl7::u16string best_utf16;
-        cl7::astring best_assumed_ascii;
+        cl7::u16string best_utf16_en_us;
+        cl7::u16string best_utf16_any;
+        cl7::astring best_assumed_ascii_en_us;
+        cl7::astring best_assumed_ascii_any;
 
         for (uint16_t i = 0; i < _offset_subtable.num_tables; ++i)
         {
@@ -246,6 +248,8 @@ namespace fl7::fonts {
             is_utf16 |= platform_id == 0 && (platform_specific_id == 3 || platform_specific_id == 4); // Unicode (0): BMP only (3) or full repertoire (4)
             is_utf16 |= platform_id == 3 && (platform_specific_id == 1 || platform_specific_id == 10); // Microsoft Windows (3): BMP only (1) or full repertoire (10)
 
+            bool is_en_us = platform_id == 3 && language_id == 0x0409; // Microsoft Windows (3): en-US (0x0409)
+
             auto position = readable.get_read_position();
             readable.set_read_position(string_offset + static_cast<size_t>(offset));
 
@@ -256,29 +260,51 @@ namespace fl7::fonts {
                 bytes[0] = std::byte{0xfe};
                 bytes[1] = std::byte{0xff};
                 reader.read_bytes(cl7::make_byte_span(bytes.data() + 2, bytes.size() - 2));
-                best_utf16 = cl7::strings::to_utf16_unchecked(bytes);
-                break;
-            }
 
-            if (best_assumed_ascii.empty())
+                if (is_en_us)
+                {
+                    best_utf16_en_us = cl7::strings::to_utf16_unchecked(bytes);
+                    break; // early out
+                }
+
+                if (best_utf16_any.empty())
+                    best_utf16_any = cl7::strings::to_utf16_unchecked(bytes);
+            }
+            else
             {
                 cl7::byte_vector bytes(static_cast<size_t>(length));
                 reader.read_bytes(cl7::make_byte_span(bytes));
-                best_assumed_ascii = cl7::strings::to_ascii_unchecked(bytes);
+
+                if (is_en_us)
+                    best_assumed_ascii_en_us = cl7::strings::to_ascii_unchecked(bytes);
+                else if (best_assumed_ascii_any.empty())
+                    best_assumed_ascii_any = cl7::strings::to_ascii_unchecked(bytes);
             }
 
             readable.set_read_position(position);
         } // for each name record
 
-        if (!best_utf16.empty())
+        if (!best_utf16_en_us.empty())
         {
-            _font_name = cl7::strings::to_utf8(best_utf16);
+            _font_name = cl7::strings::to_utf8(best_utf16_en_us);
             return true;
         }
 
-        if (!best_assumed_ascii.empty())
+        if (!best_utf16_any.empty())
         {
-            _font_name = cl7::strings::to_utf8(best_assumed_ascii);
+            _font_name = cl7::strings::to_utf8(best_utf16_any);
+            return true;
+        }
+
+        if (!best_assumed_ascii_en_us.empty())
+        {
+            _font_name = cl7::strings::to_utf8(best_assumed_ascii_en_us);
+            return true;
+        }
+
+        if (!best_assumed_ascii_any.empty())
+        {
+            _font_name = cl7::strings::to_utf8(best_assumed_ascii_any);
             return true;
         }
 
