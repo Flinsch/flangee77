@@ -139,7 +139,7 @@ struct Vector2
     // #############################################################################
 
     /**
-     * Returns a copy of this vector normalized.
+     * Returns a copy of this vector normalized such that it has a magnitude of 1.
      */
     Vector2 normalized() const
     {
@@ -191,6 +191,17 @@ struct Vector2
      * So, a.perpdot(b) is the same as a.perp().dot(b).
      */
     float perpdot(const Vector2& v) const
+    {
+        return x*v.y - y*v.x;
+    }
+
+    /**
+     * Returns the 2D version of a cross product of this vector and a given vector v.
+     * This is the same as the so-called perp-dot product in which this vector is
+     * replaced by the perpendicular rotated 90 degrees to the left (counter-clockwise).
+     * So, a.cross(b) is the same as a.perp().dot(b).
+     */
+    float cross(const Vector2& v) const
     {
         return x*v.y - y*v.x;
     }
@@ -297,13 +308,13 @@ struct Vector2
     // Comparison Operators
     // #############################################################################
 
-    bool operator==(const Vector2& v) const { return (x == v.x) && (y == v.y); }
-    bool operator!=(const Vector2& v) const { return (x != v.x) || (y != v.y); }
+    bool operator==(const Vector2& v) const noexcept { return (x == v.x) && (y == v.y); }
+    bool operator!=(const Vector2& v) const noexcept { return (x != v.x) || (y != v.y); }
 
     /**
      * Checks if this vector is component-by-component less than a given vector v.
      */
-    bool operator<(const Vector2& v) const
+    bool operator<(const Vector2& v) const noexcept
     {
         return (x < v.x) && (y < v.y);
     }
@@ -311,7 +322,7 @@ struct Vector2
     /**
      * Checks if this vector is component-by-component greater than a given vector v.
      */
-    bool operator>(const Vector2& v) const
+    bool operator>(const Vector2& v) const noexcept
     {
         return (x > v.x) && (y > v.y);
     }
@@ -320,7 +331,7 @@ struct Vector2
      * Checks if this vector is component-by-component less than or equal to a given
      * vector v.
      */
-    bool operator<=(const Vector2& v) const
+    bool operator<=(const Vector2& v) const noexcept
     {
         return (x <= v.x) && (y <= v.y);
     }
@@ -329,7 +340,7 @@ struct Vector2
      * Checks if this vector is component-by-component greater than or equal to a
      * given vector v.
      */
-    bool operator>=(const Vector2& v) const
+    bool operator>=(const Vector2& v) const noexcept
     {
         return (x >= v.x) && (y >= v.y);
     }

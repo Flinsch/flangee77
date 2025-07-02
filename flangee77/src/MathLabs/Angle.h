@@ -101,14 +101,14 @@ struct Angle
     // Comparison Operators
     // #############################################################################
 
-    bool operator==(Angle a) const { return radians == a.radians; }
-    bool operator!=(Angle a) const { return radians != a.radians; }
+    bool operator==(Angle a) const noexcept { return radians == a.radians; }
+    bool operator!=(Angle a) const noexcept { return radians != a.radians; }
 
-    bool operator<(Angle a) const { return radians < a.radians; }
-    bool operator>(Angle a) const { return radians > a.radians; }
+    bool operator<(Angle a) const noexcept { return radians < a.radians; }
+    bool operator>(Angle a) const noexcept { return radians > a.radians; }
 
-    bool operator<=(Angle a) const { return radians <= a.radians; }
-    bool operator>=(Angle a) const { return radians >= a.radians; }
+    bool operator<=(Angle a) const noexcept { return radians <= a.radians; }
+    bool operator>=(Angle a) const noexcept { return radians >= a.radians; }
 
 
 

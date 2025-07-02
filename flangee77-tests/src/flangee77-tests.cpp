@@ -16,6 +16,7 @@
 #include "./DataLabs/json.h"
 
 #include "./MathLabs/functions.h"
+#include "./MathLabs/Angle.h"
 #include "./MathLabs/Vector2.h"
 #include "./MathLabs/Vector3.h"
 #include "./MathLabs/Vector4.h"
@@ -25,7 +26,10 @@
 #include "./MathLabs/Matrix3x4.h"
 #include "./MathLabs/Matrix4x4.h"
 #include "./MathLabs/Quaternion.h"
-#include "./MathLabs/Angle.h"
+#include "./MathLabs/Ray2.h"
+#include "./MathLabs/Ray3.h"
+#include "./MathLabs/distance2.h"
+#include "./MathLabs/distance3.h"
 
 #include "./ProgLabs/ArgumentBag.h"
 

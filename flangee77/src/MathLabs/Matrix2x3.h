@@ -276,8 +276,8 @@ struct Matrix2x3
     // Comparison Operators
     // #############################################################################
 
-    bool operator==(const Matrix2x3& m) const { for (unsigned k = 0; k < 6; ++k) if (data[k] != m.data[k]) return false; return true; }
-    bool operator!=(const Matrix2x3& m) const { for (unsigned k = 0; k < 6; ++k) if (data[k] != m.data[k]) return true; return false; }
+    bool operator==(const Matrix2x3& m) const noexcept { for (unsigned k = 0; k < 6; ++k) if (data[k] != m.data[k]) return false; return true; }
+    bool operator!=(const Matrix2x3& m) const noexcept { for (unsigned k = 0; k < 6; ++k) if (data[k] != m.data[k]) return true; return false; }
 
 
 

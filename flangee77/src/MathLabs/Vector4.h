@@ -162,7 +162,7 @@ struct Vector4
     }
 
     /**
-     * Returns a copy of this vector normalized.
+     * Returns a copy of this vector normalized such that it has a magnitude of 1.
      */
     Vector4 normalized() const
     {
@@ -262,13 +262,13 @@ struct Vector4
     // Comparison Operators
     // #############################################################################
 
-    bool operator==(const Vector4& v) const { return (x == v.x) && (y == v.y) && (z == v.z) && (w == v.w); }
-    bool operator!=(const Vector4& v) const { return (x != v.x) || (y != v.y) || (z != v.z) || (w != v.w); }
+    bool operator==(const Vector4& v) const noexcept { return (x == v.x) && (y == v.y) && (z == v.z) && (w == v.w); }
+    bool operator!=(const Vector4& v) const noexcept { return (x != v.x) || (y != v.y) || (z != v.z) || (w != v.w); }
 
     /**
      * Checks if this vector is component-by-component less than a given vector v.
      */
-    bool operator<(const Vector4& v) const
+    bool operator<(const Vector4& v) const noexcept
     {
         return (x < v.x) && (y < v.y) && (z < v.z) && (w < v.w);
     }
@@ -276,7 +276,7 @@ struct Vector4
     /**
      * Checks if this vector is component-by-component greater than a given vector v.
      */
-    bool operator>(const Vector4& v) const
+    bool operator>(const Vector4& v) const noexcept
     {
         return (x > v.x) && (y > v.y) && (z > v.z) && (w > v.w);
     }
@@ -285,7 +285,7 @@ struct Vector4
      * Checks if this vector is component-by-component less than or equal to a given
      * vector v.
      */
-    bool operator<=(const Vector4& v) const
+    bool operator<=(const Vector4& v) const noexcept
     {
         return (x <= v.x) && (y <= v.y) && (z <= v.z) && (w <= v.w);
     }
@@ -294,7 +294,7 @@ struct Vector4
      * Checks if this vector is component-by-component greater than or equal to a
      * given vector v.
      */
-    bool operator>=(const Vector4& v) const
+    bool operator>=(const Vector4& v) const noexcept
     {
         return (x >= v.x) && (y >= v.y) && (z >= v.z) && (w >= v.w);
     }

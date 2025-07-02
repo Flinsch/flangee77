@@ -18,6 +18,8 @@ target_sources(flangee77-tests
     DataLabs/syntax.h
 
     MathLabs/Angle.h
+    MathLabs/distance2.h
+    MathLabs/distance3.h
     MathLabs/functions.h
     MathLabs/Matrix2x2.h
     MathLabs/Matrix2x3.h
@@ -25,6 +27,8 @@ target_sources(flangee77-tests
     MathLabs/Matrix3x4.h
     MathLabs/Matrix4x4.h
     MathLabs/Quaternion.h
+    MathLabs/Ray2.h
+    MathLabs/Ray3.h
     MathLabs/shared.h
     MathLabs/Vector2.h
     MathLabs/Vector3.h

@@ -12,6 +12,73 @@ namespace ml7 {
 
 
     /**
+     * Returns the value of base raised to the power of exp.
+     */
+    template <typename T>
+        requires(std::is_floating_point_v<T>)
+    constexpr T pow(T base, T exp)
+    {
+        return std::pow(base, exp);
+    }
+
+    /**
+     * Returns the value of base raised to the power of exp.
+     */
+    template <typename T>
+        requires(std::is_floating_point_v<T>)
+    constexpr T pow(T base, int exp)
+    {
+        return std::pow(base, exp);
+    }
+
+    /**
+     * Returns the value of base raised to the power of exp.
+     */
+    template <unsigned exp, typename T>
+        requires(std::is_floating_point_v<T>)
+    constexpr T pow(T base)
+    {
+        if constexpr (exp == 0)
+            return T(1);
+        else
+            return base * pow<exp - 1, T>(base);
+    }
+
+    /**
+     * Returns the given value squared.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T sqr(T x)
+    {
+        return x * x;
+    }
+
+    /**
+     * Returns the square root of the given value.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T sqrt(T x)
+    {
+        return std::sqrt(x);
+    }
+
+    /**
+     * Returns the signed square root of the given value.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T ssqrt(T x)
+    {
+        if (x < T(0))
+            return -std::sqrt(-x);
+        return std::sqrt(x);
+    }
+
+
+
+    /**
      * Returns the absolute amount of the given value.
      */
     template <typename T>

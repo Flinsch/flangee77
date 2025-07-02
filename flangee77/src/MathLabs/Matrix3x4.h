@@ -313,8 +313,8 @@ struct Matrix3x4
     // Comparison Operators
     // #############################################################################
 
-    bool operator==(const Matrix3x4& m) const { for (unsigned k = 0; k < 12; ++k) if (data[k] != m.data[k]) return false; return true; }
-    bool operator!=(const Matrix3x4& m) const { for (unsigned k = 0; k < 12; ++k) if (data[k] != m.data[k]) return true; return false; }
+    bool operator==(const Matrix3x4& m) const noexcept { for (unsigned k = 0; k < 12; ++k) if (data[k] != m.data[k]) return false; return true; }
+    bool operator!=(const Matrix3x4& m) const noexcept { for (unsigned k = 0; k < 12; ++k) if (data[k] != m.data[k]) return true; return false; }
 
 
 

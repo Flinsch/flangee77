@@ -55,6 +55,7 @@ TESTLABS_CASE( u8"CoreLabs:  Vector2:  " )
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, -2.0f ).dotsqr( ml7::Vector2( -1.0f, 2.0f ) ), 25.0f );
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, 2.0f ).perp(), ml7::Vector2( -2.0f, 1.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, -2.0f ).perpdot( ml7::Vector2( -1.0f, 2.0f ) ), ml7::Vector2( 1.0f, -2.0f ).perp().dot( ml7::Vector2( -1.0f, 2.0f ) ) );
+    TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, -2.0f ).cross( ml7::Vector2( -1.0f, 2.0f ) ), ml7::Vector2( 1.0f, -2.0f ).perp().dot( ml7::Vector2( -1.0f, 2.0f ) ) );
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, -2.0f ).reflected( ml7::Vector2( 1.0f, 1.0f ) ), ml7::Vector2( 3.0f, 0.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, -2.0f ).refracted( ml7::Vector2( 1.0f, 1.0f ), 0.0f ), ml7::Vector2( -1.0f, -1.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, -2.0f ).refracted( ml7::Vector2( 1.0f, 1.0f ), 0.5f ), ml7::Vector2( 0.0f, -1.5f ) );

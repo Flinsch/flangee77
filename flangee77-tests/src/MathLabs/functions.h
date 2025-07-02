@@ -9,6 +9,84 @@
 
 
 
+TESTLABS_CASE( u8"MathLabs:  functions:  pow(T, T)" )
+{
+    TESTLABS_CHECK_EQ( ml7::pow( 0.0f, 0.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 5.5f, 0.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 3.0f, 1.0f ), 3.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 2.0f, 2.0f ), 4.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 2.0f, 3.0f ), 8.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 1.5f, 4.0f ), 5.0625f );
+    TESTLABS_CHECK_EQ( ml7::pow( -1.0f, 5.0f ), -1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( -1.0f, 4.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 0.0f, 3.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 1.0f, 0.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 2.0f, -1.0f ), 0.5f );
+    TESTLABS_CHECK_EQ( ml7::pow( 4.0f, 0.5f ), 2.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 4.0f, -0.5f ), 0.5f );
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  pow(T, int)" )
+{
+    TESTLABS_CHECK_EQ( ml7::pow( 0.0f, 0 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 5.5f, 0 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 3.0f, 1 ), 3.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 2.0f, 2 ), 4.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 2.0f, 3 ), 8.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 1.5f, 4 ), 5.0625f );
+    TESTLABS_CHECK_EQ( ml7::pow( -1.0f, 5 ), -1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( -1.0f, 4 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 0.0f, 3 ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 1.0f, 0 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 2.0f, -1 ), 0.5f );
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  pow<unsigned>(T)" )
+{
+    TESTLABS_CHECK_EQ( ml7::pow<0>( 0.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<0>( 5.5f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<1>( 3.0f ), 3.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<2>( 2.0f ), 4.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<3>( 2.0f ), 8.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<4>( 1.5f ), 5.0625f );
+    TESTLABS_CHECK_EQ( ml7::pow<5>( -1.0f ), -1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<4>( -1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<3>( 0.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<0>( 1.0f ), 1.0f );
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  sqr" )
+{
+    TESTLABS_CHECK_EQ( ml7::sqr( 0.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::sqr( 1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::sqr( 2.0f ), 4.0f );
+    TESTLABS_CHECK_EQ( ml7::sqr( 3.0f ), 9.0f );
+    TESTLABS_CHECK_EQ( ml7::sqr( -1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::sqr( -2.0f ), 4.0f );
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  sqrt" )
+{
+    TESTLABS_CHECK_EQ( ml7::sqrt( 0.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::sqrt( 1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::sqrt( 4.0f ), 2.0f );
+    TESTLABS_CHECK_EQ( ml7::sqrt( 9.0f ), 3.0f );
+    TESTLABS_CHECK( std::isnan( ml7::sqrt( -1.0f ) ) );
+    TESTLABS_CHECK( std::isnan( ml7::sqrt( -2.0f ) ) );
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  ssqrt" )
+{
+    TESTLABS_CHECK_EQ( ml7::sqrt( 0.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::sqrt( 1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::sqrt( 4.0f ), 2.0f );
+    TESTLABS_CHECK_EQ( ml7::sqrt( 9.0f ), 3.0f );
+    TESTLABS_CHECK_EQ( ml7::ssqrt( -1.0f ), -1.0f );
+    TESTLABS_CHECK_EQ( ml7::ssqrt( -4.0f ), -2.0f );
+}
+
+
+
 TESTLABS_CASE( u8"MathLabs:  functions:  abs" )
 {
     struct Entry

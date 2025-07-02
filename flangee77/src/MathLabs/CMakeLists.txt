@@ -4,6 +4,10 @@ target_sources(flangee77
     Angle.cpp
     Angle.h
     constants.h
+    distance2.cpp
+    distance2.h
+    distance3.cpp
+    distance3.h
     functions.cpp
     functions.h
     math.h
@@ -19,6 +23,10 @@ target_sources(flangee77
     Matrix4x4.h
     Quaternion.cpp
     Quaternion.h
+    Ray2.cpp
+    Ray2.h
+    Ray3.cpp
+    Ray3.h
     Vector2.cpp
     Vector2.h
     Vector3.cpp
