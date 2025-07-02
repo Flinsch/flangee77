@@ -1,5 +1,7 @@
 var namespaceml7 =
 [
+    [ "distance2", "db/d4f/namespaceml7_1_1distance2.html", "db/d4f/namespaceml7_1_1distance2" ],
+    [ "distance3", "df/d0a/namespaceml7_1_1distance3.html", "df/d0a/namespaceml7_1_1distance3" ],
     [ "Angle", "d4/d9d/structml7_1_1Angle.html", "d4/d9d/structml7_1_1Angle" ],
     [ "constants_", "da/df2/structml7_1_1constants__.html", "da/df2/structml7_1_1constants__" ],
     [ "Matrix2x2", "db/d6e/structml7_1_1Matrix2x2.html", "db/d6e/structml7_1_1Matrix2x2" ],
@@ -8,6 +10,8 @@ var namespaceml7 =
     [ "Matrix3x4", "d8/dd9/structml7_1_1Matrix3x4.html", "d8/dd9/structml7_1_1Matrix3x4" ],
     [ "Matrix4x4", "d7/dea/structml7_1_1Matrix4x4.html", "d7/dea/structml7_1_1Matrix4x4" ],
     [ "Quaternion", "d8/d1f/structml7_1_1Quaternion.html", "d8/d1f/structml7_1_1Quaternion" ],
+    [ "Ray2", "dc/def/structml7_1_1Ray2.html", "dc/def/structml7_1_1Ray2" ],
+    [ "Ray3", "d3/d71/structml7_1_1Ray3.html", "d3/d71/structml7_1_1Ray3" ],
     [ "Vector2", "d7/db1/structml7_1_1Vector2.html", "d7/db1/structml7_1_1Vector2" ],
     [ "Vector3", "d6/d64/structml7_1_1Vector3.html", "d6/d64/structml7_1_1Vector3" ],
     [ "Vector4", "db/dad/structml7_1_1Vector4.html", "db/dad/structml7_1_1Vector4" ],
@@ -45,6 +49,9 @@ var namespaceml7 =
     [ "operator*", "d3/d53/namespaceml7.html#afc8a1d439c0767d654e00555ff6f870b", null ],
     [ "operator*", "d3/d53/namespaceml7.html#afa0cff733a1910a7715343023f9b5177", null ],
     [ "operator*", "d3/d53/namespaceml7.html#a75e5fb267a254c4f1cf67711e56db40a", null ],
+    [ "pow", "d3/d53/namespaceml7.html#a2a4e4a74b900eb420e6524d2e2e7a429", null ],
+    [ "pow", "d3/d53/namespaceml7.html#a60ef6642133ef49137896eafcfc17313", null ],
+    [ "pow", "d3/d53/namespaceml7.html#ada9cb35c5cd930539cdcc5fdd7ad1a6c", null ],
     [ "prev_power_of_2", "d3/d53/namespaceml7.html#aebf7e35e42759a81cfc8b99922f381f0", null ],
     [ "rad_to_deg", "d3/d53/namespaceml7.html#a13681f5a049da268d7fbda4cd33b3325", null ],
     [ "round", "d3/d53/namespaceml7.html#a915f4f2349c662c97769262876fe48eb", null ],
@@ -52,5 +59,8 @@ var namespaceml7 =
     [ "round", "d3/d53/namespaceml7.html#a45622c5ad5606329465c12d43a0bd5b7", null ],
     [ "sgn", "d3/d53/namespaceml7.html#a7fae2f87604d633d159b6b9fecf10cb5", null ],
     [ "smoothstep", "d3/d53/namespaceml7.html#a91c74ecedb753dee221882b32a5df669", null ],
+    [ "sqr", "d3/d53/namespaceml7.html#a4968b7fb0ba929246826a5d749f2b05c", null ],
+    [ "sqrt", "d3/d53/namespaceml7.html#a8391a3126ee29ea3a2b9abd9c51e2e4d", null ],
+    [ "ssqrt", "d3/d53/namespaceml7.html#a12b91cd5cb066256749237af028fae62", null ],
     [ "step", "d3/d53/namespaceml7.html#ad1222bb10c51f6ab14dcc4a8c4e38539", null ]
 ];

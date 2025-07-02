@@ -25,7 +25,7 @@ var searchData=
   ['depthstencilstate_2ecpp_22',['DepthStencilState.cpp',['../d1/d85/DepthStencilState_8cpp.html',1,'']]],
   ['depthstencilstate_2eh_23',['DepthStencilState.h',['../da/d41/DepthStencilState_8h.html',1,'']]],
   ['depthstencilstateimpl_2ecpp_24',['depthstencilstateimpl.cpp',['../d9/dd4/direct3d11_2states_2DepthStencilStateImpl_8cpp.html',1,'(Global Namespace)'],['../d7/dbf/direct3d9_2states_2DepthStencilStateImpl_8cpp.html',1,'(Global Namespace)']]],
-  ['depthstencilstateimpl_2eh_25',['depthstencilstateimpl.h',['../d3/d5f/direct3d9_2states_2DepthStencilStateImpl_8h.html',1,'(Global Namespace)'],['../dc/d14/direct3d11_2states_2DepthStencilStateImpl_8h.html',1,'(Global Namespace)']]],
+  ['depthstencilstateimpl_2eh_25',['depthstencilstateimpl.h',['../dc/d14/direct3d11_2states_2DepthStencilStateImpl_8h.html',1,'(Global Namespace)'],['../d3/d5f/direct3d9_2states_2DepthStencilStateImpl_8h.html',1,'(Global Namespace)']]],
   ['depthstencilsurface_2ecpp_26',['DepthStencilSurface.cpp',['../d4/d16/DepthStencilSurface_8cpp.html',1,'']]],
   ['depthstencilsurface_2eh_27',['DepthStencilSurface.h',['../d2/d08/DepthStencilSurface_8h.html',1,'']]],
   ['diagnostic_2ecpp_28',['Diagnostic.cpp',['../d2/df4/Diagnostic_8cpp.html',1,'']]],
@@ -33,7 +33,11 @@ var searchData=
   ['diagnostics_2ecpp_30',['Diagnostics.cpp',['../de/d66/Diagnostics_8cpp.html',1,'']]],
   ['diagnostics_2eh_31',['Diagnostics.h',['../d9/d08/Diagnostics_8h.html',1,'']]],
   ['directastbuilder_2eh_32',['DirectAstBuilder.h',['../d5/d44/DirectAstBuilder_8h.html',1,'']]],
-  ['driverbasedcomponent_2eh_33',['DriverBasedComponent.h',['../d9/d26/DriverBasedComponent_8h.html',1,'']]],
-  ['driverresolver_2ecpp_34',['DriverResolver.cpp',['../d6/db0/DriverResolver_8cpp.html',1,'']]],
-  ['driverresolver_2eh_35',['DriverResolver.h',['../da/d9d/DriverResolver_8h.html',1,'']]]
+  ['distance2_2ecpp_33',['distance2.cpp',['../d6/d49/distance2_8cpp.html',1,'']]],
+  ['distance2_2eh_34',['distance2.h',['../d0/d51/distance2_8h.html',1,'']]],
+  ['distance3_2ecpp_35',['distance3.cpp',['../df/dc0/distance3_8cpp.html',1,'']]],
+  ['distance3_2eh_36',['distance3.h',['../db/d2d/distance3_8h.html',1,'']]],
+  ['driverbasedcomponent_2eh_37',['DriverBasedComponent.h',['../d9/d26/DriverBasedComponent_8h.html',1,'']]],
+  ['driverresolver_2ecpp_38',['DriverResolver.cpp',['../d6/db0/DriverResolver_8cpp.html',1,'']]],
+  ['driverresolver_2eh_39',['DriverResolver.h',['../da/d9d/DriverResolver_8h.html',1,'']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['language_0',['language',['../db/d7e/structxl7_1_1graphics_1_1shaders_1_1Shader_1_1Desc.html#ac10054ab3bfd90e03b41751e10f81009',1,'xl7::graphics::shaders::Shader::Desc::language'],['../d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html#a67a32fc444b59dd218cbcacc4cb8b2e1',1,'xl7::graphics::shaders::ShaderCode::Language']]],
+  ['language_0',['language',['../d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html#a67a32fc444b59dd218cbcacc4cb8b2e1',1,'xl7::graphics::shaders::ShaderCode::Language'],['../db/d7e/structxl7_1_1graphics_1_1shaders_1_1Shader_1_1Desc.html#ac10054ab3bfd90e03b41751e10f81009',1,'xl7::graphics::shaders::Shader::Desc::language']]],
   ['layout_1',['layout',['../d4/d9e/structxl7_1_1graphics_1_1shaders_1_1ConstantBuffer_1_1Desc.html#aca60d580f4040c77533300b9f2460709',1,'xl7::graphics::shaders::ConstantBuffer::Desc::layout'],['../dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html#af3ddf62deb3fd0f5d099cb11d6aec724',1,'xl7::graphics::shaders::ConstantBufferDeclaration::layout']]],
   ['left_5fcurly_5fbracket_2',['LEFT_CURLY_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989aa57529caab966ddb18bbdc45d97438f9',1,'dl7::json::detail']]],
   ['left_5fside_5fbearing_3',['left_side_bearing',['../d2/d26/structfl7_1_1fonts_1_1Glyph.html#a15f9324f0197f01c74397f82db8b6e0e',1,'fl7::fonts::Glyph']]],
@@ -65,7 +65,7 @@ var searchData=
   ['logcontext_2eh_62',['LogContext.h',['../df/d15/LogContext_8h.html',1,'']]],
   ['logentry_63',['LogEntry',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html',1,'cl7::logging']]],
   ['logentry_2eh_64',['LogEntry.h',['../d4/d8d/LogEntry_8h.html',1,'']]],
-  ['logger_65',['logger',['../df/dc2/classcl7_1_1logging_1_1Logger.html#a9184bacc8747c6f28a4f29971f99cb89',1,'cl7::logging::Logger::Logger(Logger &amp;&amp;)=delete'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#aedaabe4a04737734002c9bdf6f0f1892',1,'cl7::logging::Logger::Logger(const Logger &amp;)=delete'],['../df/dc2/classcl7_1_1logging_1_1Logger.html',1,'cl7::logging::Logger'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#a8c10e2cf2a9aa0149283f7651cb4460d',1,'cl7::logging::Logger::Logger()'],['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a7f8bb9e9cf3071b88972022362521bcd',1,'cl7::logging::LogContext::logger']]],
+  ['logger_65',['logger',['../df/dc2/classcl7_1_1logging_1_1Logger.html#aedaabe4a04737734002c9bdf6f0f1892',1,'cl7::logging::Logger::Logger(const Logger &amp;)=delete'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#a8c10e2cf2a9aa0149283f7651cb4460d',1,'cl7::logging::Logger::Logger()=default'],['../df/dc2/classcl7_1_1logging_1_1Logger.html',1,'cl7::logging::Logger'],['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a7f8bb9e9cf3071b88972022362521bcd',1,'cl7::logging::LogContext::logger'],['../df/dc2/classcl7_1_1logging_1_1Logger.html#a9184bacc8747c6f28a4f29971f99cb89',1,'cl7::logging::Logger::Logger()']]],
   ['logger_2ecpp_66',['Logger.cpp',['../d9/df5/Logger_8cpp.html',1,'']]],
   ['logger_2eh_67',['Logger.h',['../dd/da4/Logger_8h.html',1,'']]],
   ['logging_2ecpp_68',['logging.cpp',['../dd/daf/logging_8cpp.html',1,'']]],

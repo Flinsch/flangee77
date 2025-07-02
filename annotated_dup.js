@@ -164,6 +164,14 @@ var annotated_dup =
       ] ]
     ] ],
     [ "ml7", "d3/d53/namespaceml7.html", [
+      [ "distance2", "db/d4f/namespaceml7_1_1distance2.html", [
+        [ "PointResult", "d6/df6/structml7_1_1distance2_1_1PointResult.html", "d6/df6/structml7_1_1distance2_1_1PointResult" ],
+        [ "ResultBase", "de/d3e/structml7_1_1distance2_1_1ResultBase.html", "de/d3e/structml7_1_1distance2_1_1ResultBase" ]
+      ] ],
+      [ "distance3", "df/d0a/namespaceml7_1_1distance3.html", [
+        [ "PointResult", "d2/d68/structml7_1_1distance3_1_1PointResult.html", "d2/d68/structml7_1_1distance3_1_1PointResult" ],
+        [ "ResultBase", "da/db7/structml7_1_1distance3_1_1ResultBase.html", "da/db7/structml7_1_1distance3_1_1ResultBase" ]
+      ] ],
       [ "Angle", "d4/d9d/structml7_1_1Angle.html", "d4/d9d/structml7_1_1Angle" ],
       [ "constants_", "da/df2/structml7_1_1constants__.html", "da/df2/structml7_1_1constants__" ],
       [ "Matrix2x2", "db/d6e/structml7_1_1Matrix2x2.html", "db/d6e/structml7_1_1Matrix2x2" ],
@@ -172,6 +180,8 @@ var annotated_dup =
       [ "Matrix3x4", "d8/dd9/structml7_1_1Matrix3x4.html", "d8/dd9/structml7_1_1Matrix3x4" ],
       [ "Matrix4x4", "d7/dea/structml7_1_1Matrix4x4.html", "d7/dea/structml7_1_1Matrix4x4" ],
       [ "Quaternion", "d8/d1f/structml7_1_1Quaternion.html", "d8/d1f/structml7_1_1Quaternion" ],
+      [ "Ray2", "dc/def/structml7_1_1Ray2.html", "dc/def/structml7_1_1Ray2" ],
+      [ "Ray3", "d3/d71/structml7_1_1Ray3.html", "d3/d71/structml7_1_1Ray3" ],
       [ "Vector2", "d7/db1/structml7_1_1Vector2.html", "d7/db1/structml7_1_1Vector2" ],
       [ "Vector3", "d6/d64/structml7_1_1Vector3.html", "d6/d64/structml7_1_1Vector3" ],
       [ "Vector4", "db/dad/structml7_1_1Vector4.html", "db/dad/structml7_1_1Vector4" ]

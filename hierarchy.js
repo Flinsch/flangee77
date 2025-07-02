@@ -270,6 +270,8 @@ var hierarchy =
     [ "dl7::syntax::ProductionRuleCollection", "dd/d0c/classdl7_1_1syntax_1_1ProductionRuleCollection.html", null ],
     [ "cl7::profiling::Profiler", "d8/dd2/classcl7_1_1profiling_1_1Profiler.html", null ],
     [ "ml7::Quaternion", "d8/d1f/structml7_1_1Quaternion.html", null ],
+    [ "ml7::Ray2", "dc/def/structml7_1_1Ray2.html", null ],
+    [ "ml7::Ray3", "d3/d71/structml7_1_1Ray3.html", null ],
     [ "xl7::graphics::shaders::ReflectionResult", "d2/d19/structxl7_1_1graphics_1_1shaders_1_1ReflectionResult.html", null ],
     [ "xl7::graphics::impl::direct3d11::GraphicsSystemImpl::Registrar", "dc/d25/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl_1_1Registrar.html", null ],
     [ "xl7::graphics::impl::direct3d9::GraphicsSystemImpl::Registrar", "d5/d15/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl_1_1Registrar.html", null ],
@@ -364,6 +366,12 @@ var hierarchy =
       [ "xl7::graphics::textures::TextureManager", "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html", null ]
     ] ],
     [ "tl7::Result", "da/d3a/structtl7_1_1Result.html", null ],
+    [ "ml7::distance2::ResultBase", "de/d3e/structml7_1_1distance2_1_1ResultBase.html", [
+      [ "ml7::distance2::PointResult", "d6/df6/structml7_1_1distance2_1_1PointResult.html", null ]
+    ] ],
+    [ "ml7::distance3::ResultBase", "da/db7/structml7_1_1distance3_1_1ResultBase.html", [
+      [ "ml7::distance3::PointResult", "d2/d68/structml7_1_1distance3_1_1PointResult.html", null ]
+    ] ],
     [ "tl7::ResultBuilder", "db/d89/classtl7_1_1ResultBuilder.html", null ],
     [ "cl7::profiling::Sample", "d6/d1f/structcl7_1_1profiling_1_1Sample.html", null ],
     [ "cl7::profiling::SampleHandler", "d3/dea/structcl7_1_1profiling_1_1SampleHandler.html", null ],
