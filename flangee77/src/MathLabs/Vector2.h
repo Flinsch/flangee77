@@ -371,6 +371,9 @@ struct Vector2
     /** Returns a copy of this vector inversely scaled by the specified factor (scalar division). */
     constexpr Vector2 operator/(float s) const { return {x / s, y / s}; }
 
+    /** Scales a vector by the specified factor (scalar multiplication). */
+    friend constexpr Vector2 operator*(float s, const Vector2& v) { return v * s; }
+
 
 
     // #############################################################################
@@ -455,15 +458,6 @@ struct Vector2
     }; // struct less
 
 }; // struct Vector2
-
-
-
-    // #############################################################################
-    // Additional Operators
-    // #############################################################################
-
-    /** Scales a vector by the specified factor (scalar multiplication). */
-    constexpr Vector2 operator*(float s, const Vector2& v) { return v * s; }
 
 
 

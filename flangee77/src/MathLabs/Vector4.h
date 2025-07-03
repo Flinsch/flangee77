@@ -325,6 +325,9 @@ struct Vector4
     /** Returns a copy of this vector inversely scaled by the specified factor (scalar division). */
     constexpr Vector4 operator/(float s) const { return {x / s, y / s, z / s, w / s}; }
 
+    /** Scales a vector by the specified factor (scalar multiplication). */
+    friend constexpr Vector4 operator*(float s, const Vector4& v) { return v * s; }
+
 
 
     // #############################################################################
@@ -406,15 +409,6 @@ struct Vector4
     }; // struct less
 
 }; // struct Vector4
-
-
-
-    // #############################################################################
-    // Additional Operators
-    // #############################################################################
-
-    /** Scales a vector by the specified factor (scalar multiplication). */
-    constexpr Vector4 operator*(float s, const Vector4& v) { return v * s; }
 
 
 

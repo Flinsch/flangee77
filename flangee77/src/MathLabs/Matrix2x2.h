@@ -276,6 +276,9 @@ struct Matrix2x2
     /** Returns a copy of the given (column) vector transformed by this matrix. */
     constexpr Vector2 operator*(const Vector2& v) const { return transform(v); }
 
+    /** "Scales" a matrix by the specified factor (scalar multiplication). */
+    friend constexpr Matrix2x2 operator*(float s, const Matrix2x2& m) { return m * s; }
+
 
 
     // #############################################################################
@@ -371,15 +374,6 @@ struct Matrix2x2
     static Matrix2x2 compose(const ml7::Vector2& scaling, float angle);
 
 }; // struct Matrix2x2
-
-
-
-    // #############################################################################
-    // Additional Operators
-    // #############################################################################
-
-    /** "Scales" a matrix by the specified factor (scalar multiplication). */
-    constexpr Matrix2x2 operator*(float s, const Matrix2x2& m) { return m * s; }
 
 
 

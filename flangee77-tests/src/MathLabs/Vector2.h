@@ -86,6 +86,7 @@ TESTLABS_CASE( u8"CoreLabs:  Vector2:  " )
     TESTLABS_CHECK_EQ( ml7::Vector2( -3.0f, -8.0f ) / ml7::Vector2( -3.0f, 4.0f ), ml7::Vector2( 1.0f, -2.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, -2.0f ) * 3.0f, ml7::Vector2( 3.0f, -6.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector2( 3.0f, -6.0f ) / 3.0f, ml7::Vector2( 1.0f, -2.0f ) );
+    TESTLABS_CHECK_EQ( 5.0f * ml7::Vector2( 1.0f, -2.0f ), ml7::Vector2( 5.0f, -10.0f ) );
 
     TESTLABS_CHECK_EQ( ml7::Vector2( 5.0f, -8.0f ) += ml7::Vector2( -6.0f, 9.0f ), ml7::Vector2( -1.0f, 1.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector2( 5.0f, -8.0f ) -= ml7::Vector2( -6.0f, 9.0f ), ml7::Vector2( 11.0f, -17.0f ) );
@@ -118,8 +119,6 @@ TESTLABS_CASE( u8"CoreLabs:  Vector2:  " )
     TESTLABS_CHECK( ml7::Vector2::ccw( ml7::Vector2( 1.0f, 0.0f ), ml7::Vector2( 2.0f, 0.0f ), ml7::Vector2( 3.0f, 0.0f ) ) == 0.0f );
     TESTLABS_CHECK( ml7::Vector2::ccw( ml7::Vector2( 1.0f, 0.0f ), ml7::Vector2( 2.0f, 0.0f ), ml7::Vector2( 3.0f, -1.0f ) ) < 0.0f );
     TESTLABS_CHECK( ml7::Vector2::ccw( ml7::Vector2( 1.0f, 0.0f ), ml7::Vector2( 2.0f, 0.0f ), ml7::Vector2( 3.0f, +1.0f ) ) > 0.0f );
-
-    TESTLABS_CHECK_EQ( 5.0f * ml7::Vector2( 1.0f, -2.0f ), ml7::Vector2( 5.0f, -10.0f ) );
 }
 
 

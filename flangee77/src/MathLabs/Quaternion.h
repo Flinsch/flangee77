@@ -287,6 +287,9 @@ struct Quaternion
     /** Returns a copy of the given vector transformed by this quaternion. */
     Vector3 operator*(const Vector3& v) const { return transform(v); }
 
+    /** "Scales" a quaternion by the specified factor (scalar multiplication). */
+    friend constexpr Quaternion operator*(float s, const Quaternion& q) { return q * s; }
+
 
 
     // #############################################################################
@@ -441,15 +444,6 @@ struct Quaternion
     }
 
 }; // struct Quaternion
-
-
-
-    // #############################################################################
-    // Additional Operators
-    // #############################################################################
-
-    /** "Scales" a quaternion by the specified factor (scalar multiplication). */
-    constexpr Quaternion operator*(float s, const Quaternion& q) { return q * s; }
 
 
 

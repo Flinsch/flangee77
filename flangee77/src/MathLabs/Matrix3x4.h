@@ -350,6 +350,9 @@ struct Matrix3x4
     /** Returns a copy of the given (column vector) transformed by this matrix. */
     constexpr Vector3 operator*(const Vector3& v) const { return transform(v); }
 
+    /** "Scales" a matrix by the specified factor (scalar multiplication). */
+    friend constexpr Matrix3x4 operator*(float s, const Matrix3x4& m) { return m * s; }
+
 
 
     // #############################################################################
@@ -571,15 +574,6 @@ struct Matrix3x4
     static Matrix3x4 look_to_rh(const Vector3& position, const Vector3& look, const Vector3& up);
 
 }; // struct Matrix3x4
-
-
-
-    // #############################################################################
-    // Additional Operators
-    // #############################################################################
-
-    /** "Scales" a matrix by the specified factor (scalar multiplication). */
-    constexpr Matrix3x4 operator*(float s, const Matrix3x4& m) { return m * s; }
 
 
 

@@ -547,6 +547,9 @@ struct Matrix4x4
     /** Returns a copy of the given (column vector) transformed by this matrix. */
     constexpr Vector3 operator*(const Vector3& v) const { return transform(v); }
 
+    /** "Scales" a matrix by the specified factor (scalar multiplication). */
+    friend constexpr Matrix4x4 operator*(float s, const Matrix4x4& m) { return m * s; }
+
 
 
     // #############################################################################
@@ -885,15 +888,6 @@ struct Matrix4x4
     static Matrix4x4 hue(float r, const ml7::Vector3& l);
 
 }; // struct Matrix4x4
-
-
-
-    // #############################################################################
-    // Additional Operators
-    // #############################################################################
-
-    /** "Scales" a matrix by the specified factor (scalar multiplication). */
-    constexpr Matrix4x4 operator*(float s, const Matrix4x4& m) { return m * s; }
 
 
 
