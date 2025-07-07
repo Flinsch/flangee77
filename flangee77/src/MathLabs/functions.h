@@ -149,8 +149,8 @@ namespace ml7 {
     }
 
     /**
-    * Returns the smallest value of three given values.
-    */
+     * Returns the smallest value of three given values.
+     */
     template <typename T>
         requires(std::is_arithmetic_v<T>)
     constexpr T min3(T a, T b, T c)
@@ -162,8 +162,8 @@ namespace ml7 {
     }
 
     /**
-    * Returns the greatest value of three given values.
-    */
+     * Returns the greatest value of three given values.
+     */
     template <typename T>
         requires(std::is_arithmetic_v<T>)
     constexpr T max3(T a, T b, T c)

@@ -13,9 +13,9 @@ namespace xl7::graphics::impl::direct3d9::shaders {
     // #############################################################################
 
     /**
-    * Performs a "reflection" on the (compiled) shader bytecode to determine
-    * parameter declarations etc.
-    */
+     * Performs a "reflection" on the (compiled) shader bytecode to determine
+     * parameter declarations etc.
+     */
     bool D3DShaderReflection::reflect(const xl7::graphics::shaders::ShaderCode& bytecode, xl7::graphics::shaders::ReflectionResult& reflection_result_out)
     {
         if (bytecode.get_language() != xl7::graphics::shaders::ShaderCode::Language::Bytecode)
