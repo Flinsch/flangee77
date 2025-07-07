@@ -139,7 +139,7 @@ TESTLABS_CASE( u8"MathLabs:  functions:  sgn" )
     }
 }
 
-TESTLABS_CASE( u8"MathLabs:  functions:  step" )
+TESTLABS_CASE( u8"MathLabs:  functions:  step(x, edge)" )
 {
     struct Entry
     {
@@ -166,7 +166,7 @@ TESTLABS_CASE( u8"MathLabs:  functions:  step" )
         { -2.0f, 0.5f, 0.0f },
     };
 
-    TESTLABS_SUBCASE_BATCH( u8"step<float>", container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"step<float>(x, edge)", container, entry )
     {
         auto x = entry.x;
         auto edge = entry.edge;
@@ -175,7 +175,33 @@ TESTLABS_CASE( u8"MathLabs:  functions:  step" )
     }
 }
 
-TESTLABS_CASE( u8"MathLabs:  functions:  smoothstep" )
+TESTLABS_CASE( u8"MathLabs:  functions:  step(x)" )
+{
+    struct Entry
+    {
+        float x;
+        float expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 1.0f },
+        { 1.0f, 1.0f },
+        { -1.0f, 0.0f },
+        { 0.5f, 1.0f },
+        { -0.5f, 0.0f },
+        { 2.0f, 1.0f },
+        { -2.0f, 0.0f },
+    };
+
+    TESTLABS_SUBCASE_BATCH( u8"step<float>(x)", container, entry )
+    {
+        auto x = entry.x;
+        auto expected = entry.expected;
+        TESTLABS_CHECK_EQ( ml7::step( x ), expected );
+    }
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  smoothstep(x, min, max)" )
 {
     struct Entry
     {
@@ -201,13 +227,39 @@ TESTLABS_CASE( u8"MathLabs:  functions:  smoothstep" )
         { -2.0f, -1.0f, +1.0f, 0.0f },
     };
 
-    TESTLABS_SUBCASE_BATCH( u8"smoothstep<float>", container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"smoothstep<float>(x, min, max)", container, entry )
     {
         auto x = entry.x;
         auto min = entry.min;
         auto max = entry.max;
         auto expected = entry.expected;
         TESTLABS_CHECK_EQ( ml7::smoothstep( x, min, max ), expected );
+    }
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  smoothstep(x)" )
+{
+    struct Entry
+    {
+        float x;
+        float expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f },
+        { 1.0f, 1.0f },
+        { -1.0f, 0.0f },
+        { 0.5f, 0.5f },
+        { -0.5f, 0.0f },
+        { 2.0f, 1.0f },
+        { -2.0f, 0.0f },
+    };
+
+    TESTLABS_SUBCASE_BATCH( u8"smoothstep<float>(x)", container, entry )
+    {
+        auto x = entry.x;
+        auto expected = entry.expected;
+        TESTLABS_CHECK_EQ( ml7::smoothstep( x ), expected );
     }
 }
 

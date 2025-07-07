@@ -106,9 +106,19 @@ namespace ml7 {
      */
     template <typename T>
         requires(std::is_arithmetic_v<T>)
-    constexpr T step(T x, T edge = T(0))
+    constexpr T step(T x, T edge)
     {
         return x >= edge ? T(1) : T(0);
+    }
+
+    /**
+     * Returns 1 if x >= 0, 0 otherwise.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T step(T x)
+    {
+        return x >= T(0) ? T(1) : T(0);
     }
 
     /**
@@ -124,6 +134,19 @@ namespace ml7 {
         if (x <= min) return T(0);
         if (x >= max) return T(1);
         x = (x - min) / (max - min);
+        return x * x * (3.0f - 2.0f * x);
+    }
+
+    /**
+     * Returns 0 if x is less than 0, 1 if x is greater than 1, and a value between
+     * 0 and 1 otherwise using a Hermite polynomial.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T smoothstep(T x)
+    {
+        if (x <= T(0)) return T(0);
+        if (x >= T(1)) return T(1);
         return x * x * (3.0f - 2.0f * x);
     }
 
