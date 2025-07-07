@@ -387,6 +387,40 @@ TESTLABS_CASE( u8"MathLabs:  functions:  clamp01" )
 
 
 
+TESTLABS_CASE( u8"MathLabs:  functions:  ramp" )
+{
+    TESTLABS_CHECK_EQ( ml7::ramp( 2.0f, 1.0f, 1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 1.0f, 1.0f, 1.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 0.5f, 1.0f, 1.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 3.0f, 1.0f, 2.0f ), 4.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 1.5f, 1.0f, 0.5f ), 0.25f );
+    TESTLABS_CHECK_EQ( ml7::ramp( -1.0f, -2.0f, 1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( -3.0f, -2.0f, 1.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 2.0f, 1.0f, -1.0f ), -1.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 0.5f, 1.0f, -2.0f ), 0.0f );
+
+    TESTLABS_CHECK_EQ( (ml7::ramp<1.0f, 1.0f>( 2.0f )), 1.0f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<1.0f, 1.0f>( 1.0f )), 0.0f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<1.0f, 1.0f>( 0.5f )), 0.0f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<1.0f, 2.0f>( 3.0f )), 4.0f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<1.0f, 0.5f>( 1.5f )), 0.25f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<-2.0f, 1.0f>( -1.0f )), 1.0f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<-2.0f, 1.0f>( -3.0f )), 0.0f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<1.0f, -1.0f>( 2.0f )), -1.0f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<1.0f, -2.0f>( 0.5f )), 0.0f );
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  unit ramp" )
+{
+    TESTLABS_CHECK_EQ( ml7::ramp( -0.5f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 0.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 0.5f ), 0.5f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 1.5f ), 1.5f );
+}
+
+
+
 TESTLABS_CASE( u8"MathLabs:  functions:  round" )
 {
     TESTLABS_SUBCASE( u8"round<float>" )

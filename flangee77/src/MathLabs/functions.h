@@ -236,6 +236,43 @@ namespace ml7 {
 
 
     /**
+     * General ramp function: customizable slope and starting point.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T ramp(T x, T start, T slope = T(1))
+    {
+        if (x <= start)
+            return T(0);
+        return (x - start) * slope;
+    }
+
+    /**
+     * General ramp function: customizable slope and starting point.
+     */
+    template <auto start, auto slope = 1, typename T>
+        requires(std::is_arithmetic_v<T> && std::is_convertible_v<decltype(start), T> && std::is_convertible_v<decltype(slope), T>)
+    constexpr T ramp(T x)
+    {
+        if (x <= start)
+            return T(0);
+        return (x - start) * slope;
+    }
+
+    /**
+     * Unit ramp function: returns x if x >= 0, 0 otherwise.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T ramp(T x)
+    {
+        if (x <= T(0))
+            return T(0);
+        return x;
+    }
+
+
+    /**
      * Rounds the given value to the closest "integer" value.
      */
     template <typename T>
