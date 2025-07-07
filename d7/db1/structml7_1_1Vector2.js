@@ -59,6 +59,7 @@ var structml7_1_1Vector2 =
     [ "x_", "d7/db1/structml7_1_1Vector2.html#aaeeb8128f43a27a50a0f6d5968c007d0", null ],
     [ "xx", "d7/db1/structml7_1_1Vector2.html#a7d13b5b00f18b87035e887651b2432a9", null ],
     [ "yy", "d7/db1/structml7_1_1Vector2.html#abfc2b12614d9200c8df61f36bf3659c1", null ],
+    [ "operator*", "d7/db1/structml7_1_1Vector2.html#a642a5b885fdd84f120d5f9b242b994f6", null ],
     [ "data", "d7/db1/structml7_1_1Vector2.html#a303ec42a68a6ffe7af9cd8be1a3b6f81", null ],
     [ "s", "d7/db1/structml7_1_1Vector2.html#a471f6f48d79e9b8e06f0398b71d634c9", null ],
     [ "t", "d7/db1/structml7_1_1Vector2.html#af6cfcba96c3f149fd76f8f8c41afd7b2", null ],

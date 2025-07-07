@@ -31,5 +31,6 @@ var structml7_1_1Angle =
     [ "to_degrees", "d4/d9d/structml7_1_1Angle.html#acae12ba81673123cf0dbf4405e77e030", null ],
     [ "to_half_cycle", "d4/d9d/structml7_1_1Angle.html#a1eca0e898c50d926015c83f6f4c8aa17", null ],
     [ "to_radians", "d4/d9d/structml7_1_1Angle.html#a13126a0d76a07706734addb5fcd60306", null ],
+    [ "operator*", "d4/d9d/structml7_1_1Angle.html#af0423c25f810b13ca83949675e53f532", null ],
     [ "radians", "d4/d9d/structml7_1_1Angle.html#a9e43c5068493cc6cdb6727a4e288333e", null ]
 ];

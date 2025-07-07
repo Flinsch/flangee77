@@ -47,6 +47,7 @@ var structml7_1_1Vector4 =
     [ "swap", "db/dad/structml7_1_1Vector4.html#ad49bef6316697b30a73bf8bfd5b1f0a6", null ],
     [ "terp", "db/dad/structml7_1_1Vector4.html#a630eff81554f3a98ae117b03d43720d0", null ],
     [ "to_vector3", "db/dad/structml7_1_1Vector4.html#ae7f87501ef026ef9eba2a9a48a6a6a26", null ],
+    [ "operator*", "db/dad/structml7_1_1Vector4.html#a84e779ff22fa545e994c116b0fda82da", null ],
     [ "data", "db/dad/structml7_1_1Vector4.html#ada1a2e110f0166365f62833c59bac133", null ],
     [ "w", "db/dad/structml7_1_1Vector4.html#a62cb80326055d31df02de2e6f77053f1", null ],
     [ "X", "db/dad/structml7_1_1Vector4.html#aafb8b5baf48d4caf94ffe3c22576a141", null ],

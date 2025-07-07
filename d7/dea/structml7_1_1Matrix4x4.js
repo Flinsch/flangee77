@@ -88,6 +88,7 @@ var structml7_1_1Matrix4x4 =
     [ "translation", "d7/dea/structml7_1_1Matrix4x4.html#a6d71d3c4b84d22fe6312c46a15896090", null ],
     [ "transpose", "d7/dea/structml7_1_1Matrix4x4.html#a68748cacfbe8deadc9a9c63b36f5a609", null ],
     [ "transposed", "d7/dea/structml7_1_1Matrix4x4.html#a3fba07196c629d988a1a518ef1c49d54", null ],
+    [ "operator*", "d7/dea/structml7_1_1Matrix4x4.html#aef00e240f627ccc8a0103608eab24635", null ],
     [ "_11", "d7/dea/structml7_1_1Matrix4x4.html#aacec404a3edd0e6b93db3400ebcb6a3a", null ],
     [ "_12", "d7/dea/structml7_1_1Matrix4x4.html#adb455a574113cd37c8cce5f5913c5302", null ],
     [ "_13", "d7/dea/structml7_1_1Matrix4x4.html#a3a146e787718525aea6b269c747a3892", null ],

@@ -59,6 +59,7 @@ var structml7_1_1Matrix3x4 =
     [ "transform3x3_inverted", "d8/dd9/structml7_1_1Matrix3x4.html#a52e4b12c2b46fea66dd71efe7e5db6e5", null ],
     [ "transform_inverted", "d8/dd9/structml7_1_1Matrix3x4.html#a59e89967d94b378d73536f2f7482a1f9", null ],
     [ "translation", "d8/dd9/structml7_1_1Matrix3x4.html#a3d8a16844090bdde49d81dd04075f16a", null ],
+    [ "operator*", "d8/dd9/structml7_1_1Matrix3x4.html#a9edf5d6bb526d76d35fe538b292e2775", null ],
     [ "_11", "d8/dd9/structml7_1_1Matrix3x4.html#a074c1f83f2d0e1ff661b3db77287d4a7", null ],
     [ "_12", "d8/dd9/structml7_1_1Matrix3x4.html#a04fe0f2526908139e77dd82e427673f5", null ],
     [ "_13", "d8/dd9/structml7_1_1Matrix3x4.html#a186a49be7f5d41bf656a81f5b756832f", null ],

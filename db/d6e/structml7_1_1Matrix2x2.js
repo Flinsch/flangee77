@@ -39,6 +39,7 @@ var structml7_1_1Matrix2x2 =
     [ "transform_inverted", "db/d6e/structml7_1_1Matrix2x2.html#ae8d4cb103fdf4b14a6dc2bceaddd0900", null ],
     [ "transpose", "db/d6e/structml7_1_1Matrix2x2.html#a6042144ba702224b1b972a09f94d8fad", null ],
     [ "transposed", "db/d6e/structml7_1_1Matrix2x2.html#aed5de7273777f01a4a7ef237cf01c9d1", null ],
+    [ "operator*", "db/d6e/structml7_1_1Matrix2x2.html#a6d7378d5a69c7e2043bf5ecc6bf8f5f1", null ],
     [ "_11", "db/d6e/structml7_1_1Matrix2x2.html#a3a0637220aa0abcf1c0a3906c3d12df9", null ],
     [ "_12", "db/d6e/structml7_1_1Matrix2x2.html#a6db493722679a1b2f7bffabc0d3dc9fa", null ],
     [ "_21", "db/d6e/structml7_1_1Matrix2x2.html#a068f3205b5caca2552e54b1eeb9b7a7b", null ],

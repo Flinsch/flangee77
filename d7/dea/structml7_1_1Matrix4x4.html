@@ -96,6 +96,7 @@ $(document).ready(function(){initNavTree('d7/dea/structml7_1_1Matrix4x4.html','.
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="../../d7/db1/structml7_1_1Matrix4x4-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">ml7::Matrix4x4 Struct Reference</div></div>
 </div><!--header-->
@@ -347,6 +348,11 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:ab659af9cd0bd64585d938cdcf1930687"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7c0ae4753a4bd7a9048b444c7b09274" id="r_ac7c0ae4753a4bd7a9048b444c7b09274"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dea/structml7_1_1Matrix4x4.html#ac7c0ae4753a4bd7a9048b444c7b09274">IDENTITY</a> = {1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f}</td></tr>
 <tr class="separator:ac7c0ae4753a4bd7a9048b444c7b09274"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:aef00e240f627ccc8a0103608eab24635" id="r_aef00e240f627ccc8a0103608eab24635"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dea/structml7_1_1Matrix4x4.html#aef00e240f627ccc8a0103608eab24635">operator*</a> (float s, const <a class="el" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a> &amp;<a class="el" href="../../d7/dea/structml7_1_1Matrix4x4.html#a341fc392444adfadb22fe01a85d0b73d">m</a>)</td></tr>
+<tr class="separator:aef00e240f627ccc8a0103608eab24635"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a65054f41ae4012ace3a2783ec45befba" name="a65054f41ae4012ace3a2783ec45befba"></a>
@@ -3306,6 +3312,44 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Returns a copy of this matrix transposed. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Symbol Documentation</h2>
+<a id="aef00e240f627ccc8a0103608eab24635" name="aef00e240f627ccc8a0103608eab24635"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef00e240f627ccc8a0103608eab24635">&#9670;&#160;</a></span>operator*</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>"Scales" a matrix by the specified factor (scalar multiplication). </p>
 
 </div>
 </div>

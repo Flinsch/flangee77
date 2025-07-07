@@ -143,8 +143,6 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aad58e2c42e8b616024cb177ef5691bff" id="r_aad58e2c42e8b616024cb177ef5691bff"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d4/d9d/structml7_1_1Angle.html">Angle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#aad58e2c42e8b616024cb177ef5691bff">operator*</a> (float s, <a class="el" href="../../d4/d9d/structml7_1_1Angle.html">Angle</a> a)</td></tr>
-<tr class="separator:aad58e2c42e8b616024cb177ef5691bff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e141d6c6fbb0729e4b833a6c36a2220" id="r_a9e141d6c6fbb0729e4b833a6c36a2220"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a9e141d6c6fbb0729e4b833a6c36a2220">is_equal_ulps</a> (float a, float b, int ulps)</td></tr>
 <tr class="separator:a9e141d6c6fbb0729e4b833a6c36a2220"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5cbb09c5acce2bb210eaecc8b96b2f7a" id="r_a5cbb09c5acce2bb210eaecc8b96b2f7a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a5cbb09c5acce2bb210eaecc8b96b2f7a">is_less_ulps</a> (float a, float b, int ulps)</td></tr>
@@ -211,6 +209,14 @@ requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
 requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
 <tr class="memitem:ab8ac9fb2e8cc324b0ee8651186b5710f"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#ab8ac9fb2e8cc324b0ee8651186b5710f">clamp</a> (T x, T min, T max)</td></tr>
 <tr class="separator:ab8ac9fb2e8cc324b0ee8651186b5710f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf3a202b9d7e1501b41d7510f61795ea" id="r_adf3a202b9d7e1501b41d7510f61795ea"><td class="memTemplParams" colspan="2">template&lt;auto min, auto max, typename T &gt; <br />
+requires (std::is_arithmetic_v&lt;T&gt; &amp;&amp; std::is_convertible_v&lt;decltype(min), T&gt; &amp;&amp; std::is_convertible_v&lt;decltype(max), T&gt;)</td></tr>
+<tr class="memitem:adf3a202b9d7e1501b41d7510f61795ea"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#adf3a202b9d7e1501b41d7510f61795ea">clamp</a> (T x)</td></tr>
+<tr class="separator:adf3a202b9d7e1501b41d7510f61795ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a733037a23b3a42547c432bd6d358a68f" id="r_a733037a23b3a42547c432bd6d358a68f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
+requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
+<tr class="memitem:a733037a23b3a42547c432bd6d358a68f"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a733037a23b3a42547c432bd6d358a68f">clamp01</a> (T x)</td></tr>
+<tr class="separator:a733037a23b3a42547c432bd6d358a68f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a915f4f2349c662c97769262876fe48eb" id="r_a915f4f2349c662c97769262876fe48eb"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
 requires (std::is_floating_point_v&lt;T&gt;)</td></tr>
 <tr class="memitem:a915f4f2349c662c97769262876fe48eb"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a915f4f2349c662c97769262876fe48eb">round</a> (T x)</td></tr>
@@ -283,24 +289,6 @@ requires (std::is_integral_v&lt;T&gt; &amp;&amp; std::is_unsigned_v&lt;T&gt;)</t
 requires (std::is_integral_v&lt;T&gt; &amp;&amp; std::is_unsigned_v&lt;T&gt;)</td></tr>
 <tr class="memitem:a3da2a0406c282813cb323934efcd53ef"><td class="memTemplItemLeft" align="right" valign="top">constexpr U&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a3da2a0406c282813cb323934efcd53ef">decimal_digits</a> (T x)</td></tr>
 <tr class="separator:a3da2a0406c282813cb323934efcd53ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52f7197338c45408b74b9df938b75ae7" id="r_a52f7197338c45408b74b9df938b75ae7"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../db/d6e/structml7_1_1Matrix2x2.html">Matrix2x2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a52f7197338c45408b74b9df938b75ae7">operator*</a> (float s, const <a class="el" href="../../db/d6e/structml7_1_1Matrix2x2.html">Matrix2x2</a> &amp;m)</td></tr>
-<tr class="separator:a52f7197338c45408b74b9df938b75ae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab72c2990aee201a8a374db930bad31a7" id="r_ab72c2990aee201a8a374db930bad31a7"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../da/d4c/structml7_1_1Matrix2x3.html">Matrix2x3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#ab72c2990aee201a8a374db930bad31a7">operator*</a> (float s, const <a class="el" href="../../da/d4c/structml7_1_1Matrix2x3.html">Matrix2x3</a> &amp;m)</td></tr>
-<tr class="separator:ab72c2990aee201a8a374db930bad31a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e3201f86d0b9271006941480fdef7ed" id="r_a5e3201f86d0b9271006941480fdef7ed"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d6/d14/structml7_1_1Matrix3x3.html">Matrix3x3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a5e3201f86d0b9271006941480fdef7ed">operator*</a> (float s, const <a class="el" href="../../d6/d14/structml7_1_1Matrix3x3.html">Matrix3x3</a> &amp;m)</td></tr>
-<tr class="separator:a5e3201f86d0b9271006941480fdef7ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7183e84bd82cd7666408fa59fa38a5bd" id="r_a7183e84bd82cd7666408fa59fa38a5bd"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d8/dd9/structml7_1_1Matrix3x4.html">Matrix3x4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a7183e84bd82cd7666408fa59fa38a5bd">operator*</a> (float s, const <a class="el" href="../../d8/dd9/structml7_1_1Matrix3x4.html">Matrix3x4</a> &amp;m)</td></tr>
-<tr class="separator:a7183e84bd82cd7666408fa59fa38a5bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a266eb43223f2dea8b1e21355c78906f0" id="r_a266eb43223f2dea8b1e21355c78906f0"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a266eb43223f2dea8b1e21355c78906f0">operator*</a> (float s, const <a class="el" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a> &amp;m)</td></tr>
-<tr class="separator:a266eb43223f2dea8b1e21355c78906f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac469980f40e7859366b456b5b23c3f36" id="r_ac469980f40e7859366b456b5b23c3f36"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d8/d1f/structml7_1_1Quaternion.html">Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#ac469980f40e7859366b456b5b23c3f36">operator*</a> (float s, const <a class="el" href="../../d8/d1f/structml7_1_1Quaternion.html">Quaternion</a> &amp;q)</td></tr>
-<tr class="separator:ac469980f40e7859366b456b5b23c3f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc8a1d439c0767d654e00555ff6f870b" id="r_afc8a1d439c0767d654e00555ff6f870b"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d7/db1/structml7_1_1Vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#afc8a1d439c0767d654e00555ff6f870b">operator*</a> (float s, const <a class="el" href="../../d7/db1/structml7_1_1Vector2.html">Vector2</a> &amp;v)</td></tr>
-<tr class="separator:afc8a1d439c0767d654e00555ff6f870b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa0cff733a1910a7715343023f9b5177" id="r_afa0cff733a1910a7715343023f9b5177"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d6/d64/structml7_1_1Vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#afa0cff733a1910a7715343023f9b5177">operator*</a> (float s, const <a class="el" href="../../d6/d64/structml7_1_1Vector3.html">Vector3</a> &amp;v)</td></tr>
-<tr class="separator:afa0cff733a1910a7715343023f9b5177"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75e5fb267a254c4f1cf67711e56db40a" id="r_a75e5fb267a254c4f1cf67711e56db40a"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../db/dad/structml7_1_1Vector4.html">Vector4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a75e5fb267a254c4f1cf67711e56db40a">operator*</a> (float s, const <a class="el" href="../../db/dad/structml7_1_1Vector4.html">Vector4</a> &amp;v)</td></tr>
-<tr class="separator:a75e5fb267a254c4f1cf67711e56db40a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a14a8466ef534c7f5ce9246620e54c8b1" name="a14a8466ef534c7f5ce9246620e54c8b1"></a>
@@ -348,8 +336,38 @@ requires (std::is_arithmetic_v&lt;T&gt;)</div>
 
 </div>
 </div>
+<a id="adf3a202b9d7e1501b41d7510f61795ea" name="adf3a202b9d7e1501b41d7510f61795ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf3a202b9d7e1501b41d7510f61795ea">&#9670;&#160;</a></span>clamp() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;auto min, auto max, typename T &gt; <br />
+requires (std::is_arithmetic_v&lt;T&gt; &amp;&amp; std::is_convertible_v&lt;decltype(min), T&gt; &amp;&amp; std::is_convertible_v&lt;decltype(max), T&gt;)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr T ml7::clamp </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Clamps the given value to lie within the range [min; max]. </p>
+
+</div>
+</div>
 <a id="ab8ac9fb2e8cc324b0ee8651186b5710f" name="ab8ac9fb2e8cc324b0ee8651186b5710f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8ac9fb2e8cc324b0ee8651186b5710f">&#9670;&#160;</a></span>clamp()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8ac9fb2e8cc324b0ee8651186b5710f">&#9670;&#160;</a></span>clamp() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -391,6 +409,36 @@ requires (std::is_arithmetic_v&lt;T&gt;)</div>
 </table>
 </div><div class="memdoc">
 <p>Clamps the given value to lie within the range [min; max]. </p>
+
+</div>
+</div>
+<a id="a733037a23b3a42547c432bd6d358a68f" name="a733037a23b3a42547c432bd6d358a68f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a733037a23b3a42547c432bd6d358a68f">&#9670;&#160;</a></span>clamp01()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; <br />
+requires (std::is_arithmetic_v&lt;T&gt;)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr T ml7::clamp01 </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Clamps the given value to lie within the range [0; 1]. </p>
 
 </div>
 </div>
@@ -1224,376 +1272,6 @@ requires (std::is_integral_v&lt;T&gt; &amp;&amp; std::is_unsigned_v&lt;T&gt;)</d
 </table>
 </div><div class="memdoc">
 <p>Returns the lowest power of two value that is greater than or equal to the specified value. If such a value does not exist (regarding integer overflow), 0 is returned. </p>
-
-</div>
-</div>
-<a id="aad58e2c42e8b616024cb177ef5691bff" name="aad58e2c42e8b616024cb177ef5691bff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad58e2c42e8b616024cb177ef5691bff">&#9670;&#160;</a></span>operator*() <span class="overload">[1/10]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="../../d4/d9d/structml7_1_1Angle.html">Angle</a> ml7::operator* </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d4/d9d/structml7_1_1Angle.html">Angle</a>&#160;</td>
-          <td class="paramname"><em>a</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Scales a given angle by the specified scalar. </p>
-
-</div>
-</div>
-<a id="a52f7197338c45408b74b9df938b75ae7" name="a52f7197338c45408b74b9df938b75ae7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52f7197338c45408b74b9df938b75ae7">&#9670;&#160;</a></span>operator*() <span class="overload">[2/10]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="../../db/d6e/structml7_1_1Matrix2x2.html">Matrix2x2</a> ml7::operator* </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="../../db/d6e/structml7_1_1Matrix2x2.html">Matrix2x2</a> &amp;&#160;</td>
-          <td class="paramname"><em>m</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>"Scales" a matrix by the specified factor (scalar multiplication). </p>
-
-</div>
-</div>
-<a id="ab72c2990aee201a8a374db930bad31a7" name="ab72c2990aee201a8a374db930bad31a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab72c2990aee201a8a374db930bad31a7">&#9670;&#160;</a></span>operator*() <span class="overload">[3/10]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="../../da/d4c/structml7_1_1Matrix2x3.html">Matrix2x3</a> ml7::operator* </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="../../da/d4c/structml7_1_1Matrix2x3.html">Matrix2x3</a> &amp;&#160;</td>
-          <td class="paramname"><em>m</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>"Scales" a matrix by the specified factor (scalar multiplication). </p>
-
-</div>
-</div>
-<a id="a5e3201f86d0b9271006941480fdef7ed" name="a5e3201f86d0b9271006941480fdef7ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e3201f86d0b9271006941480fdef7ed">&#9670;&#160;</a></span>operator*() <span class="overload">[4/10]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="../../d6/d14/structml7_1_1Matrix3x3.html">Matrix3x3</a> ml7::operator* </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="../../d6/d14/structml7_1_1Matrix3x3.html">Matrix3x3</a> &amp;&#160;</td>
-          <td class="paramname"><em>m</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>"Scales" a matrix by the specified factor (scalar multiplication). </p>
-
-</div>
-</div>
-<a id="a7183e84bd82cd7666408fa59fa38a5bd" name="a7183e84bd82cd7666408fa59fa38a5bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7183e84bd82cd7666408fa59fa38a5bd">&#9670;&#160;</a></span>operator*() <span class="overload">[5/10]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="../../d8/dd9/structml7_1_1Matrix3x4.html">Matrix3x4</a> ml7::operator* </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="../../d8/dd9/structml7_1_1Matrix3x4.html">Matrix3x4</a> &amp;&#160;</td>
-          <td class="paramname"><em>m</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>"Scales" a matrix by the specified factor (scalar multiplication). </p>
-
-</div>
-</div>
-<a id="a266eb43223f2dea8b1e21355c78906f0" name="a266eb43223f2dea8b1e21355c78906f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a266eb43223f2dea8b1e21355c78906f0">&#9670;&#160;</a></span>operator*() <span class="overload">[6/10]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a> ml7::operator* </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a> &amp;&#160;</td>
-          <td class="paramname"><em>m</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>"Scales" a matrix by the specified factor (scalar multiplication). </p>
-
-</div>
-</div>
-<a id="ac469980f40e7859366b456b5b23c3f36" name="ac469980f40e7859366b456b5b23c3f36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac469980f40e7859366b456b5b23c3f36">&#9670;&#160;</a></span>operator*() <span class="overload">[7/10]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="../../d8/d1f/structml7_1_1Quaternion.html">Quaternion</a> ml7::operator* </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="../../d8/d1f/structml7_1_1Quaternion.html">Quaternion</a> &amp;&#160;</td>
-          <td class="paramname"><em>q</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>"Scales" a quaternion by the specified factor (scalar multiplication). </p>
-
-</div>
-</div>
-<a id="afc8a1d439c0767d654e00555ff6f870b" name="afc8a1d439c0767d654e00555ff6f870b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc8a1d439c0767d654e00555ff6f870b">&#9670;&#160;</a></span>operator*() <span class="overload">[8/10]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="../../d7/db1/structml7_1_1Vector2.html">Vector2</a> ml7::operator* </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="../../d7/db1/structml7_1_1Vector2.html">Vector2</a> &amp;&#160;</td>
-          <td class="paramname"><em>v</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Scales a vector by the specified factor (scalar multiplication). </p>
-
-</div>
-</div>
-<a id="afa0cff733a1910a7715343023f9b5177" name="afa0cff733a1910a7715343023f9b5177"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afa0cff733a1910a7715343023f9b5177">&#9670;&#160;</a></span>operator*() <span class="overload">[9/10]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="../../d6/d64/structml7_1_1Vector3.html">Vector3</a> ml7::operator* </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="../../d6/d64/structml7_1_1Vector3.html">Vector3</a> &amp;&#160;</td>
-          <td class="paramname"><em>v</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Scales a vector by the specified factor (scalar multiplication). </p>
-
-</div>
-</div>
-<a id="a75e5fb267a254c4f1cf67711e56db40a" name="a75e5fb267a254c4f1cf67711e56db40a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75e5fb267a254c4f1cf67711e56db40a">&#9670;&#160;</a></span>operator*() <span class="overload">[10/10]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="../../db/dad/structml7_1_1Vector4.html">Vector4</a> ml7::operator* </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="../../db/dad/structml7_1_1Vector4.html">Vector4</a> &amp;&#160;</td>
-          <td class="paramname"><em>v</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Scales a vector by the specified factor (scalar multiplication). </p>
 
 </div>
 </div>

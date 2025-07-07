@@ -47,6 +47,7 @@ var structml7_1_1Quaternion =
     [ "to_matrix3x3", "d8/d1f/structml7_1_1Quaternion.html#a5a2a275a2477583baca2cb2b50b79647", null ],
     [ "transform", "d8/d1f/structml7_1_1Quaternion.html#a52f5b8071bd159bd85bc00b8e22977b9", null ],
     [ "transform_inverted", "d8/d1f/structml7_1_1Quaternion.html#a33df27514e9800851d7f2d08fcbd064d", null ],
+    [ "operator*", "d8/d1f/structml7_1_1Quaternion.html#a4fe97b50f2e2562e4434ca4851747e03", null ],
     [ "data", "d8/d1f/structml7_1_1Quaternion.html#a679cc284ea953576507d694b47b94959", null ],
     [ "IDENTITY", "d8/d1f/structml7_1_1Quaternion.html#aad8ff7177891b7f56ff2328d90272bf5", null ],
     [ "w", "d8/d1f/structml7_1_1Quaternion.html#aa5632d0e4c41e16d2124f336811446e1", null ],

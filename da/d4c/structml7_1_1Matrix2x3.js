@@ -44,6 +44,7 @@ var structml7_1_1Matrix2x3 =
     [ "transform2x2_inverted", "da/d4c/structml7_1_1Matrix2x3.html#a5b31654caea3d6f797f87b8aa37c1be9", null ],
     [ "transform_inverted", "da/d4c/structml7_1_1Matrix2x3.html#af823847a4f8ee24ec0851936bbb0ab00", null ],
     [ "translation", "da/d4c/structml7_1_1Matrix2x3.html#a29c00e083cadc1361fa710e64bcaa560", null ],
+    [ "operator*", "da/d4c/structml7_1_1Matrix2x3.html#a2cbd5f77c40261af625bea81f46cb09e", null ],
     [ "_11", "da/d4c/structml7_1_1Matrix2x3.html#a057cf9c0cc438eeecd853b41806815e1", null ],
     [ "_12", "da/d4c/structml7_1_1Matrix2x3.html#adcadae467b847ed129a430fec4dd306d", null ],
     [ "_13", "da/d4c/structml7_1_1Matrix2x3.html#a1e43d012840881e91afa72aeee5a38f9", null ],

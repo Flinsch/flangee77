@@ -61,6 +61,7 @@ var structml7_1_1Vector3 =
     [ "xy_", "d6/d64/structml7_1_1Vector3.html#a172a5f9ba1041f9bc86844f308c61e4a", null ],
     [ "yyy", "d6/d64/structml7_1_1Vector3.html#a6039bddaf63489e62755887f6beaa68b", null ],
     [ "zzz", "d6/d64/structml7_1_1Vector3.html#a5f2baab3b2ae68e8d3facd46039d6be6", null ],
+    [ "operator*", "d6/d64/structml7_1_1Vector3.html#a2a11fd9fae6d5395e9caff83dff818b0", null ],
     [ "data", "d6/d64/structml7_1_1Vector3.html#a83a4c0a89f2ef9f89128840cd295b954", null ],
     [ "X", "d6/d64/structml7_1_1Vector3.html#ad421be73b62fa8ad200e846d0fc91523", null ],
     [ "x", "d6/d64/structml7_1_1Vector3.html#a8fc41ff3847e08c87e2326b93303b025", null ],

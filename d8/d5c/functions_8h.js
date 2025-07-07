@@ -1,7 +1,9 @@
 var functions_8h =
 [
     [ "abs", "d8/d5c/functions_8h.html#a021888e3d10a77b5b744268f4f205a22", null ],
+    [ "clamp", "d8/d5c/functions_8h.html#adf3a202b9d7e1501b41d7510f61795ea", null ],
     [ "clamp", "d8/d5c/functions_8h.html#ab8ac9fb2e8cc324b0ee8651186b5710f", null ],
+    [ "clamp01", "d8/d5c/functions_8h.html#a733037a23b3a42547c432bd6d358a68f", null ],
     [ "decimal_digits", "d8/d5c/functions_8h.html#a3da2a0406c282813cb323934efcd53ef", null ],
     [ "deg_to_rad", "d8/d5c/functions_8h.html#ac318c8f3b4422def1e614d6c8d31aded", null ],
     [ "is_equal", "d8/d5c/functions_8h.html#a10f5d010c7da6992fc96a0b524661de2", null ],
