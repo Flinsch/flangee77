@@ -30,13 +30,18 @@ var functions_8h =
     [ "pow", "d8/d5c/functions_8h.html#ada9cb35c5cd930539cdcc5fdd7ad1a6c", null ],
     [ "prev_power_of_2", "d8/d5c/functions_8h.html#aebf7e35e42759a81cfc8b99922f381f0", null ],
     [ "rad_to_deg", "d8/d5c/functions_8h.html#a13681f5a049da268d7fbda4cd33b3325", null ],
+    [ "ramp", "d8/d5c/functions_8h.html#a40637e3ba033a728f1563c3bc4c74beb", null ],
+    [ "ramp", "d8/d5c/functions_8h.html#ad2c75459ca4dbdafca224feceaf4ef98", null ],
+    [ "ramp", "d8/d5c/functions_8h.html#aad3b2fc927f12bbf3132e837eee0e261", null ],
     [ "round", "d8/d5c/functions_8h.html#a915f4f2349c662c97769262876fe48eb", null ],
     [ "round", "d8/d5c/functions_8h.html#af5f0a3d3e519dc75a159ec74a5eee82e", null ],
     [ "round", "d8/d5c/functions_8h.html#a45622c5ad5606329465c12d43a0bd5b7", null ],
     [ "sgn", "d8/d5c/functions_8h.html#a7fae2f87604d633d159b6b9fecf10cb5", null ],
+    [ "smoothstep", "d8/d5c/functions_8h.html#aabcac774b8e8962eb04d5b31d9446168", null ],
     [ "smoothstep", "d8/d5c/functions_8h.html#a91c74ecedb753dee221882b32a5df669", null ],
     [ "sqr", "d8/d5c/functions_8h.html#a4968b7fb0ba929246826a5d749f2b05c", null ],
     [ "sqrt", "d8/d5c/functions_8h.html#a8391a3126ee29ea3a2b9abd9c51e2e4d", null ],
     [ "ssqrt", "d8/d5c/functions_8h.html#a12b91cd5cb066256749237af028fae62", null ],
-    [ "step", "d8/d5c/functions_8h.html#ad1222bb10c51f6ab14dcc4a8c4e38539", null ]
+    [ "step", "d8/d5c/functions_8h.html#aebee3cfa41cd350c5bacc46200037eb6", null ],
+    [ "step", "d8/d5c/functions_8h.html#aba991d5201624ca3766135e88f9847f2", null ]
 ];
