@@ -313,28 +313,27 @@ TESTLABS_CASE( u8"MathLabs:  functions:  max3" )
 
 TESTLABS_CASE( u8"MathLabs:  functions:  clamp" )
 {
-    struct Entry
-    {
-        float x, min, max;
-        float expected;
-    } entry;
+    TESTLABS_CHECK_EQ( ml7::clamp( 0.0f, 0.0f, 0.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::clamp( 1.0f, 2.0f, 3.0f ), 2.0f );
+    TESTLABS_CHECK_EQ( ml7::clamp( 1.0f, -1.0f, 0.5f ), 0.5f );
+    TESTLABS_CHECK_EQ( ml7::clamp( 1.0f, 1.5f, -1.0f ), 1.5f );
 
-    const std::vector<Entry> container {
-        { 0.0f, 0.0f, 0.0f, 0.0f },
-        { 1.0f, 2.0f, 3.0f, 2.0f },
-        { 1.0f, -1.0f, 0.5f, 0.5f },
-        { 1.0f, 1.5f, -1.0f, 1.5f },
-    };
-
-    TESTLABS_SUBCASE_BATCH( u8"clamp<float>", container, entry )
-    {
-        auto x = entry.x;
-        auto min = entry.min;
-        auto max = entry.max;
-        auto expected = entry.expected;
-        TESTLABS_CHECK_EQ( ml7::clamp( x, min, max ), expected );
-    }
+    TESTLABS_CHECK_EQ( (ml7::clamp<0.0f, 0.0f>( 0.0f )), 0.0f );
+    TESTLABS_CHECK_EQ( (ml7::clamp<2.0f, 3.0f>( 1.0f )), 2.0f );
+    TESTLABS_CHECK_EQ( (ml7::clamp<-1.0f, 0.5f>( 1.0f )), 0.5f );
+    TESTLABS_CHECK_EQ( (ml7::clamp<1.5f, -1.0f>( 1.0f )), 1.5f );
 }
+
+TESTLABS_CASE( u8"MathLabs:  functions:  clamp01" )
+{
+    TESTLABS_CHECK_EQ( ml7::clamp01( -0.5f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::clamp01( 0.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::clamp01( 0.5f ), 0.5f );
+    TESTLABS_CHECK_EQ( ml7::clamp01( 1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::clamp01( 1.5f ), 1.0f );
+}
+
+
 
 TESTLABS_CASE( u8"MathLabs:  functions:  round" )
 {

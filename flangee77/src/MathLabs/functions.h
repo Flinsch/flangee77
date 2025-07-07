@@ -187,6 +187,30 @@ namespace ml7 {
         return x;
     }
 
+    /**
+     * Clamps the given value to lie within the range [min; max].
+     */
+    template <auto min, auto max, typename T>
+        requires(std::is_arithmetic_v<T> && std::is_convertible_v<decltype(min), T> && std::is_convertible_v<decltype(max), T>)
+    constexpr T clamp(T x)
+    {
+        if (x <= static_cast<T>(min)) return static_cast<T>(min);
+        if (x >= static_cast<T>(max)) return static_cast<T>(max);
+        return x;
+    }
+
+    /**
+     * Clamps the given value to lie within the range [0; 1].
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T clamp01(T x)
+    {
+        if (x <= T(0)) return T(0);
+        if (x >= T(1)) return T(1);
+        return x;
+    }
+
 
     /**
      * Rounds the given value to the closest "integer" value.
