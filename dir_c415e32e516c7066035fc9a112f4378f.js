@@ -1,5 +1,6 @@
 var dir_c415e32e516c7066035fc9a112f4378f =
 [
+    [ "detail", "dir_4a09a306997223c6be01d0fb8f511332.html", "dir_4a09a306997223c6be01d0fb8f511332" ],
     [ "Angle.cpp", "d2/d24/Angle_8cpp.html", null ],
     [ "Angle.h", "d0/d53/Angle_8h.html", "d0/d53/Angle_8h" ],
     [ "constants.h", "d2/d6f/constants_8h.html", "d2/d6f/constants_8h" ],

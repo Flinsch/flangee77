@@ -1,6 +1,7 @@
 var concepts =
 [
     [ "cl7", "d1/d2e/namespacecl7.html", [
+      [ "unary_function", "df/d86/conceptcl7_1_1unary__function.html", null ],
       [ "is_any_string_v", "da/d97/conceptcl7_1_1is__any__string__v.html", null ],
       [ "is_any_string_view_v", "da/d0e/conceptcl7_1_1is__any__string__view__v.html", null ],
       [ "is_any_string_span_v", "d7/dfd/conceptcl7_1_1is__any__string__span__v.html", null ],

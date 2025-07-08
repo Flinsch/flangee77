@@ -1,5 +1,6 @@
 var namespaceml7 =
 [
+    [ "detail", "df/d63/namespaceml7_1_1detail.html", "df/d63/namespaceml7_1_1detail" ],
     [ "distance2", "db/d4f/namespaceml7_1_1distance2.html", "db/d4f/namespaceml7_1_1distance2" ],
     [ "distance3", "df/d0a/namespaceml7_1_1distance3.html", "df/d0a/namespaceml7_1_1distance3" ],
     [ "Angle", "d4/d9d/structml7_1_1Angle.html", "d4/d9d/structml7_1_1Angle" ],

@@ -13,6 +13,7 @@ var searchData=
   ['format_2eh_10',['Format.h',['../db/ddb/Format_8h.html',1,'']]],
   ['framebuffersurface_2ecpp_11',['FramebufferSurface.cpp',['../de/de2/FramebufferSurface_8cpp.html',1,'']]],
   ['framebuffersurface_2eh_12',['FramebufferSurface.h',['../d8/ddb/FramebufferSurface_8h.html',1,'']]],
-  ['functions_2ecpp_13',['functions.cpp',['../d3/d36/functions_8cpp.html',1,'']]],
-  ['functions_2eh_14',['functions.h',['../d8/d5c/functions_8h.html',1,'']]]
+  ['functional_2eh_13',['functional.h',['../d8/dea/functional_8h.html',1,'']]],
+  ['functions_2ecpp_14',['functions.cpp',['../d3/d36/functions_8cpp.html',1,'']]],
+  ['functions_2eh_15',['functions.h',['../d8/d5c/functions_8h.html',1,'']]]
 ];
