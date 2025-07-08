@@ -33,4 +33,6 @@ target_sources(flangee77
     Vector3.h
     Vector4.cpp
     Vector4.h
+
+    detail/distance.h
 )

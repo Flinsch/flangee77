@@ -11,6 +11,7 @@ target_sources(flangee77
     errors.h
     filesystem.cpp
     filesystem.h
+    functional.h
     Guid.cpp
     Guid.h
     io.h
