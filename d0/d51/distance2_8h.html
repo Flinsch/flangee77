@@ -99,6 +99,8 @@ $(document).ready(function(){initNavTree('d0/d51/distance2_8h.html','../../'); i
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d0/df7/Vector2_8h_source.html">./Vector2.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d1/d95/Line2_8h_source.html">./Line2.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../de/d31/LineSegment2_8h_source.html">./LineSegment2.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d3/d16/Ray2_8h_source.html">./Ray2.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for distance2.h:</div>
@@ -107,9 +109,13 @@ Include dependency graph for distance2.h:</div>
 <map name="aMathLabs_2distance2_8h" id="aMathLabs_2distance2_8h">
 <area shape="rect" title=" " alt="" coords="99,5,263,31"/>
 <area shape="rect" href="../../d0/df7/Vector2_8h.html" title=" " alt="" coords="135,152,226,177"/>
-<area shape="poly" title=" " alt="" coords="180,31,173,64,171,104,177,138,172,139,166,104,168,63,175,30"/>
-<area shape="rect" href="../../d3/d16/Ray2_8h.html" title=" " alt="" coords="181,79,255,104"/>
-<area shape="poly" title=" " alt="" coords="189,30,208,65,203,68,184,32"/>
+<area shape="poly" title=" " alt="" coords="135,33,97,51,80,64,67,80,63,90,63,100,75,118,98,133,126,145,124,150,96,137,71,121,58,101,58,90,62,77,76,60,94,46,132,28"/>
+<area shape="rect" href="../../d1/d95/Line2_8h.html" title=" " alt="" coords="77,79,154,104"/>
+<area shape="poly" title=" " alt="" coords="172,33,137,70,133,67,168,29"/>
+<area shape="rect" href="../../de/d31/LineSegment2_8h.html" title=" " alt="" coords="179,79,313,104"/>
+<area shape="poly" title=" " alt="" coords="193,29,228,67,224,70,189,33"/>
+<area shape="rect" href="../../d3/d16/Ray2_8h.html" title=" " alt="" coords="338,79,413,104"/>
+<area shape="poly" title=" " alt="" coords="213,28,332,71,330,76,211,33"/>
 <area shape="rect" href="../../df/db1/math_8h.html" title=" " alt="" coords="113,225,248,251"/>
 <area shape="poly" title=" " alt="" coords="183,178,183,212,178,212,178,178"/>
 <area shape="rect" href="../../d2/d6f/constants_8h.html" title=" " alt="" coords="5,299,169,324"/>
@@ -129,7 +135,9 @@ Include dependency graph for distance2.h:</div>
 <area shape="poly" title=" " alt="" coords="261,326,212,365,208,361,258,322"/>
 <area shape="rect" title=" " alt="" coords="271,372,333,397"/>
 <area shape="poly" title=" " alt="" coords="281,323,295,358,290,360,276,325"/>
-<area shape="poly" title=" " alt="" coords="214,106,195,141,191,139,209,103"/>
+<area shape="poly" title=" " alt="" coords="128,103,163,140,159,144,124,106"/>
+<area shape="poly" title=" " alt="" coords="237,106,202,144,199,140,233,103"/>
+<area shape="poly" title=" " alt="" coords="345,107,226,150,224,145,343,102"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -137,11 +145,15 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d9/d96/distance2_8h__dep__incl.png" border="0" usemap="#aMathLabs_2distance2_8hdep" alt=""/></div>
 <map name="aMathLabs_2distance2_8hdep" id="aMathLabs_2distance2_8hdep">
-<area shape="rect" title=" " alt="" coords="91,5,255,31"/>
-<area shape="rect" href="../../d9/d58/Ray2_8cpp.html" title=" " alt="" coords="5,79,155,104"/>
-<area shape="poly" title=" " alt="" coords="149,41,97,81,94,76,146,37"/>
-<area shape="rect" href="../../d6/d49/distance2_8cpp.html" title=" " alt="" coords="179,79,357,104"/>
-<area shape="poly" title=" " alt="" coords="201,37,254,76,251,81,198,41"/>
+<area shape="rect" title=" " alt="" coords="304,5,468,31"/>
+<area shape="rect" href="../../d3/d84/Line2_8cpp.html" title=" " alt="" coords="5,79,156,104"/>
+<area shape="poly" title=" " alt="" coords="324,36,131,81,130,76,323,31"/>
+<area shape="rect" href="../../d6/d3f/LineSegment2_8cpp.html" title=" " alt="" coords="180,79,389,104"/>
+<area shape="poly" title=" " alt="" coords="360,41,303,81,300,76,357,36"/>
+<area shape="rect" href="../../d9/d58/Ray2_8cpp.html" title=" " alt="" coords="414,79,563,104"/>
+<area shape="poly" title=" " alt="" coords="415,36,473,76,470,81,412,41"/>
+<area shape="rect" href="../../d6/d49/distance2_8cpp.html" title=" " alt="" coords="587,79,766,104"/>
+<area shape="poly" title=" " alt="" coords="447,31,630,76,629,81,445,37"/>
 </map>
 </div>
 </div>
@@ -163,6 +175,10 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a9609ba5120f9b27fe9e5236858cee963" id="r_a9609ba5120f9b27fe9e5236858cee963"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/df6/structml7_1_1distance2_1_1PointResult.html">PointResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d4f/namespaceml7_1_1distance2.html#a9609ba5120f9b27fe9e5236858cee963">ml7::distance2::point_line</a> (const <a class="el" href="../../d7/db1/structml7_1_1Vector2.html">ml7::Vector2</a> &amp;point, const <a class="el" href="../../d1/dfc/structml7_1_1Line2.html">ml7::Line2</a> &amp;line)</td></tr>
+<tr class="separator:a9609ba5120f9b27fe9e5236858cee963"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d0d13679ed2c1664c9a37b7950336ed" id="r_a7d0d13679ed2c1664c9a37b7950336ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/df6/structml7_1_1distance2_1_1PointResult.html">PointResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d4f/namespaceml7_1_1distance2.html#a7d0d13679ed2c1664c9a37b7950336ed">ml7::distance2::point_line_segment</a> (const <a class="el" href="../../d7/db1/structml7_1_1Vector2.html">ml7::Vector2</a> &amp;point, const <a class="el" href="../../d8/d86/structml7_1_1LineSegment2.html">ml7::LineSegment2</a> &amp;line_segment)</td></tr>
+<tr class="separator:a7d0d13679ed2c1664c9a37b7950336ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b25df75d106d809af696f248fdfd215" id="r_a4b25df75d106d809af696f248fdfd215"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/df6/structml7_1_1distance2_1_1PointResult.html">PointResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d4f/namespaceml7_1_1distance2.html#a4b25df75d106d809af696f248fdfd215">ml7::distance2::point_ray</a> (const <a class="el" href="../../d7/db1/structml7_1_1Vector2.html">ml7::Vector2</a> &amp;point, const <a class="el" href="../../dc/def/structml7_1_1Ray2.html">ml7::Ray2</a> &amp;ray)</td></tr>
 <tr class="separator:a4b25df75d106d809af696f248fdfd215"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>

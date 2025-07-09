@@ -27,8 +27,10 @@ var searchData=
   ['from_5fhsl_24',['from_hsl',['../de/df3/structxl7_1_1graphics_1_1Color.html#abc7da1f4b54dbd3530cb3aaac0bc8546',1,'xl7::graphics::Color']]],
   ['from_5fhsv_25',['from_hsv',['../de/df3/structxl7_1_1graphics_1_1Color.html#a3453cb27ab1a3b21cf5cd23b475758bc',1,'xl7::graphics::Color']]],
   ['from_5fmatrix3x3_26',['from_matrix3x3',['../d8/d1f/structml7_1_1Quaternion.html#a4e685cefbdb87b4e67e166108c1136ae',1,'ml7::Quaternion']]],
-  ['from_5fradians_27',['from_radians',['../d4/d9d/structml7_1_1Angle.html#a9af735bfa0028e587c42a90688899f0f',1,'ml7::Angle']]],
-  ['from_5fsource_5foffset_28',['from_source_offset',['../d7/d8c/structdl7_1_1syntax_1_1SourceContext.html#adb84b79697d573714aea9afcb0e6a88d',1,'dl7::syntax::SourceContext::from_source_offset()'],['../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#af3e9ef8cb9f576cd0697d84a0f0d385d',1,'dl7::syntax::SourceLocation::from_source_offset()']]],
-  ['front_29',['front',['../da/d4e/classcl7_1_1static__vector.html#a662afd944571778368fa5a7303ff57e8',1,'cl7::static_vector::front()'],['../da/d4e/classcl7_1_1static__vector.html#a2283fbf7cd0dfa3f6799b350a1d59d79',1,'cl7::static_vector::front() const']]],
-  ['full_30',['full',['../da/d4e/classcl7_1_1static__vector.html#a873cc8f4098b651026ef3741739c8752',1,'cl7::static_vector']]]
+  ['from_5fpoint_5fand_5fdirection_27',['from_point_and_direction',['../d6/dd2/structml7_1_1Line3.html#a6d267d6ac3958ce448c290db358a3531',1,'ml7::Line3::from_point_and_direction()'],['../d1/dfc/structml7_1_1Line2.html#a9c732a1de6c6e6b44139c04b3abde375',1,'ml7::Line2::from_point_and_direction()']]],
+  ['from_5fradians_28',['from_radians',['../d4/d9d/structml7_1_1Angle.html#a9af735bfa0028e587c42a90688899f0f',1,'ml7::Angle']]],
+  ['from_5fsource_5foffset_29',['from_source_offset',['../d7/d8c/structdl7_1_1syntax_1_1SourceContext.html#adb84b79697d573714aea9afcb0e6a88d',1,'dl7::syntax::SourceContext::from_source_offset()'],['../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#af3e9ef8cb9f576cd0697d84a0f0d385d',1,'dl7::syntax::SourceLocation::from_source_offset()']]],
+  ['from_5ftwo_5fpoints_30',['from_two_points',['../d1/dfc/structml7_1_1Line2.html#a4c428fc7cd23e42ba5aa03ebb7b13c9c',1,'ml7::Line2::from_two_points()'],['../d6/dd2/structml7_1_1Line3.html#afc37363784d127d6e0a5985468c0b0d0',1,'ml7::Line3::from_two_points()']]],
+  ['front_31',['front',['../da/d4e/classcl7_1_1static__vector.html#a662afd944571778368fa5a7303ff57e8',1,'cl7::static_vector::front()'],['../da/d4e/classcl7_1_1static__vector.html#a2283fbf7cd0dfa3f6799b350a1d59d79',1,'cl7::static_vector::front() const']]],
+  ['full_32',['full',['../da/d4e/classcl7_1_1static__vector.html#a873cc8f4098b651026ef3741739c8752',1,'cl7::static_vector']]]
 ];
