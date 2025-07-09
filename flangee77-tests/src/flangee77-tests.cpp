@@ -16,6 +16,7 @@
 #include "./DataLabs/json.h"
 
 #include "./MathLabs/functions.h"
+#include "./MathLabs/ops.h"
 #include "./MathLabs/Angle.h"
 #include "./MathLabs/Vector2.h"
 #include "./MathLabs/Vector3.h"

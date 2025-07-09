@@ -29,6 +29,7 @@ target_sources(flangee77
     Matrix3x4.h
     Matrix4x4.cpp
     Matrix4x4.h
+    ops.h
     Quaternion.cpp
     Quaternion.h
     Ray2.cpp

@@ -9,9 +9,10 @@ namespace ml7::detail::distance {
 
 
 
-    template <auto clamp, class TPointResult, class TVector>
-        requires(cl7::unary_function<decltype(clamp), float> &&
-            requires (TPointResult& result) {
+    template <typename clamp, class TPointResult, class TVector>
+        requires(requires {
+            { clamp{}(float{}) } -> std::convertible_to<float>;
+        } && requires (TPointResult& result) {
             { result.distsqr } -> std::convertible_to<float>;
             { result.point } -> std::convertible_to<TVector>;
             { result.t } -> std::convertible_to<float>;
@@ -36,7 +37,7 @@ namespace ml7::detail::distance {
         }
 
         float t = AP.dot(AB) / len2;
-        t = clamp(t);
+        t = clamp{}(t);
 
         const auto Q = A + t * AB;
         const auto QP = P - Q;

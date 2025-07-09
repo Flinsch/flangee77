@@ -410,7 +410,7 @@ TESTLABS_CASE( u8"MathLabs:  functions:  ramp" )
     TESTLABS_CHECK_EQ( (ml7::ramp<1.0f, -2.0f>( 0.5f )), 0.0f );
 }
 
-TESTLABS_CASE( u8"MathLabs:  functions:  unit ramp" )
+TESTLABS_CASE( u8"MathLabs:  functions:  (unit) ramp" )
 {
     TESTLABS_CHECK_EQ( ml7::ramp( -0.5f ), 0.0f );
     TESTLABS_CHECK_EQ( ml7::ramp( 0.0f ), 0.0f );

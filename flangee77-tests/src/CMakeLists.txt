@@ -30,6 +30,7 @@ target_sources(flangee77-tests
     MathLabs/Matrix3x3.h
     MathLabs/Matrix3x4.h
     MathLabs/Matrix4x4.h
+    MathLabs/ops.h
     MathLabs/Quaternion.h
     MathLabs/Ray2.h
     MathLabs/Ray3.h

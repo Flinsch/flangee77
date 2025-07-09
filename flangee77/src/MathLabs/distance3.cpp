@@ -2,7 +2,7 @@
 
 #include "./detail/distance.h"
 
-#include "./functions.h"
+#include "./ops.h"
 
 
 
@@ -15,7 +15,7 @@ namespace ml7::distance3 {
      */
     PointResult point_line(const ml7::Vector3& point, const ml7::Line3& line)
     {
-        return ml7::detail::distance::point_line<[](float x) { return x; }, PointResult>(point, line.point, line.direction);
+        return ml7::detail::distance::point_line<std::identity, PointResult>(point, line.point, line.direction);
     }
 
     /**
@@ -23,7 +23,7 @@ namespace ml7::distance3 {
      */
     PointResult point_line_segment(const ml7::Vector3& point, const ml7::LineSegment3& line_segment)
     {
-        return ml7::detail::distance::point_line<ml7::clamp01<float>, PointResult>(point, line_segment.start, line_segment.end - line_segment.start);
+        return ml7::detail::distance::point_line<ml7::ops::clamp01, PointResult>(point, line_segment.start, line_segment.end - line_segment.start);
     }
 
     /**
@@ -31,7 +31,7 @@ namespace ml7::distance3 {
      */
     PointResult point_ray(const ml7::Vector3& point, const ml7::Ray3& ray)
     {
-        return ml7::detail::distance::point_line<ml7::ramp<0.0f, 1.0f, float>, PointResult>(point, ray.origin, ray.direction);
+        return ml7::detail::distance::point_line<ml7::ops::ramp<>, PointResult>(point, ray.origin, ray.direction);
     }
 
 
