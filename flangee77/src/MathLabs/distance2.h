@@ -2,6 +2,8 @@
 #define ML7_DISTANCE2_H
 
 #include "./Vector2.h"
+#include "./Line2.h"
+#include "./LineSegment2.h"
 #include "./Ray2.h"
 
 
@@ -28,6 +30,16 @@ struct PointResult
 };
 
 
+
+    /**
+     * Calculates the distance result of a point and a line in 2D.
+     */
+    PointResult point_line(const ml7::Vector2& point, const ml7::Line2& line);
+
+    /**
+     * Calculates the distance result of a point and a line segment in 2D.
+     */
+    PointResult point_line_segment(const ml7::Vector2& point, const ml7::LineSegment2& line_segment);
 
     /**
      * Calculates the distance result of a point and a ray in 2D.

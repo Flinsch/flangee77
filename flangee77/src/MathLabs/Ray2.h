@@ -72,6 +72,7 @@ struct Ray2
 
     /**
      * Calculates the position on this ray at the specified distance/parameter.
+     * The function does not limit the parameter if it is less than 0.
      */
     Vector2 point_at(float t) const;
 

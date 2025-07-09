@@ -10,6 +10,14 @@ target_sources(flangee77
     distance3.h
     functions.cpp
     functions.h
+    Line2.cpp
+    Line2.h
+    Line3.cpp
+    Line3.h
+    LineSegment2.cpp
+    LineSegment2.h
+    LineSegment3.cpp
+    LineSegment3.h
     math.h
     Matrix2x2.cpp
     Matrix2x2.h

@@ -21,6 +21,10 @@ target_sources(flangee77-tests
     MathLabs/distance2.h
     MathLabs/distance3.h
     MathLabs/functions.h
+    MathLabs/Line2.h
+    MathLabs/Line3.h
+    MathLabs/LineSegment2.h
+    MathLabs/LineSegment3.h
     MathLabs/Matrix2x2.h
     MathLabs/Matrix2x3.h
     MathLabs/Matrix3x3.h
