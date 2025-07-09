@@ -3,6 +3,7 @@ var namespaceml7 =
     [ "detail", "df/d63/namespaceml7_1_1detail.html", "df/d63/namespaceml7_1_1detail" ],
     [ "distance2", "db/d4f/namespaceml7_1_1distance2.html", "db/d4f/namespaceml7_1_1distance2" ],
     [ "distance3", "df/d0a/namespaceml7_1_1distance3.html", "df/d0a/namespaceml7_1_1distance3" ],
+    [ "ops", "d9/d38/namespaceml7_1_1ops.html", "d9/d38/namespaceml7_1_1ops" ],
     [ "Angle", "d4/d9d/structml7_1_1Angle.html", "d4/d9d/structml7_1_1Angle" ],
     [ "constants_", "da/df2/structml7_1_1constants__.html", "da/df2/structml7_1_1constants__" ],
     [ "Line2", "d1/dfc/structml7_1_1Line2.html", "d1/dfc/structml7_1_1Line2" ],

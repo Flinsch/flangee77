@@ -172,6 +172,12 @@ var annotated_dup =
         [ "PointResult", "d2/d68/structml7_1_1distance3_1_1PointResult.html", "d2/d68/structml7_1_1distance3_1_1PointResult" ],
         [ "ResultBase", "da/db7/structml7_1_1distance3_1_1ResultBase.html", "da/db7/structml7_1_1distance3_1_1ResultBase" ]
       ] ],
+      [ "ops", "d9/d38/namespaceml7_1_1ops.html", [
+        [ "clamp", "d4/d01/structml7_1_1ops_1_1clamp.html", "d4/d01/structml7_1_1ops_1_1clamp" ],
+        [ "clamp01", "d0/d5c/structml7_1_1ops_1_1clamp01.html", "d0/d5c/structml7_1_1ops_1_1clamp01" ],
+        [ "ramp", "de/dcb/structml7_1_1ops_1_1ramp.html", "de/dcb/structml7_1_1ops_1_1ramp" ],
+        [ "ramp< 0, 1 >", "da/d35/structml7_1_1ops_1_1ramp_3_010_00_011_01_4.html", "da/d35/structml7_1_1ops_1_1ramp_3_010_00_011_01_4" ]
+      ] ],
       [ "Angle", "d4/d9d/structml7_1_1Angle.html", "d4/d9d/structml7_1_1Angle" ],
       [ "constants_", "da/df2/structml7_1_1constants__.html", "da/df2/structml7_1_1constants__" ],
       [ "Line2", "d1/dfc/structml7_1_1Line2.html", "d1/dfc/structml7_1_1Line2" ],

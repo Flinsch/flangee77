@@ -65,6 +65,8 @@ var hierarchy =
     [ "xl7::graphics::RenderingDevice::Capabilities", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html", null ],
     [ "xl7::graphics::PixelBitKit::Channel", "d3/da3/structxl7_1_1graphics_1_1PixelBitKit_1_1Channel.html", null ],
     [ "xl7::graphics::images::PngImageHandler::ChunkInfo", "d9/dc0/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1ChunkInfo.html", null ],
+    [ "ml7::ops::clamp< min, max >", "d4/d01/structml7_1_1ops_1_1clamp.html", null ],
+    [ "ml7::ops::clamp01", "d0/d5c/structml7_1_1ops_1_1clamp01.html", null ],
     [ "cl7::strings::codepoint", "dc/d49/structcl7_1_1strings_1_1codepoint.html", null ],
     [ "cl7::strings::CodepointResult", "de/d47/structcl7_1_1strings_1_1CodepointResult.html", [
       [ "cl7::strings::DecodeResult< Tchar >", "d7/d98/structcl7_1_1strings_1_1DecodeResult.html", null ],
@@ -274,6 +276,8 @@ var hierarchy =
     [ "dl7::syntax::ProductionRuleCollection", "dd/d0c/classdl7_1_1syntax_1_1ProductionRuleCollection.html", null ],
     [ "cl7::profiling::Profiler", "d8/dd2/classcl7_1_1profiling_1_1Profiler.html", null ],
     [ "ml7::Quaternion", "d8/d1f/structml7_1_1Quaternion.html", null ],
+    [ "ml7::ops::ramp< start, slope >", "de/dcb/structml7_1_1ops_1_1ramp.html", null ],
+    [ "ml7::ops::ramp< 0, 1 >", "da/d35/structml7_1_1ops_1_1ramp_3_010_00_011_01_4.html", null ],
     [ "ml7::Ray2", "dc/def/structml7_1_1Ray2.html", null ],
     [ "ml7::Ray3", "d3/d71/structml7_1_1Ray3.html", null ],
     [ "xl7::graphics::shaders::ReflectionResult", "d2/d19/structxl7_1_1graphics_1_1shaders_1_1ReflectionResult.html", null ],

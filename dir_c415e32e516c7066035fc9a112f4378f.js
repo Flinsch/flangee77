@@ -29,6 +29,7 @@ var dir_c415e32e516c7066035fc9a112f4378f =
     [ "Matrix3x4.h", "d6/d44/Matrix3x4_8h.html", "d6/d44/Matrix3x4_8h" ],
     [ "Matrix4x4.cpp", "d1/d6f/Matrix4x4_8cpp.html", null ],
     [ "Matrix4x4.h", "dc/df1/Matrix4x4_8h.html", "dc/df1/Matrix4x4_8h" ],
+    [ "ops.h", "de/d00/ops_8h.html", "de/d00/ops_8h" ],
     [ "Quaternion.cpp", "d4/d11/Quaternion_8cpp.html", null ],
     [ "Quaternion.h", "d1/d4a/Quaternion_8h.html", "d1/d4a/Quaternion_8h" ],
     [ "Ray2.cpp", "d9/d58/Ray2_8cpp.html", null ],
