@@ -9,7 +9,7 @@
 
 
 
-TESTLABS_CASE( u8"MathLabs:  functions:  clamp" )
+TESTLABS_CASE( u8"MathLabs:  ops:  clamp" )
 {
     TESTLABS_CHECK_EQ( (ml7::ops::clamp<0.0f, 0.0f>{}( 0.0f )), 0.0f );
     TESTLABS_CHECK_EQ( (ml7::ops::clamp<2.0f, 3.0f>{}( 1.0f )), 2.0f );
@@ -17,7 +17,7 @@ TESTLABS_CASE( u8"MathLabs:  functions:  clamp" )
     TESTLABS_CHECK_EQ( (ml7::ops::clamp<1.5f, -1.0f>{}( 1.0f )), 1.5f );
 }
 
-TESTLABS_CASE( u8"MathLabs:  functions:  clamp01" )
+TESTLABS_CASE( u8"MathLabs:  ops:  clamp01" )
 {
     TESTLABS_CHECK_EQ( ml7::ops::clamp01{}( -0.5f ), 0.0f );
     TESTLABS_CHECK_EQ( ml7::ops::clamp01{}( 0.0f ), 0.0f );
@@ -28,7 +28,7 @@ TESTLABS_CASE( u8"MathLabs:  functions:  clamp01" )
 
 
 
-TESTLABS_CASE( u8"MathLabs:  functions:  ramp" )
+TESTLABS_CASE( u8"MathLabs:  ops:  ramp" )
 {
     TESTLABS_CHECK_EQ( (ml7::ops::ramp<1.0f, 1.0f>{}( 2.0f )), 1.0f );
     TESTLABS_CHECK_EQ( (ml7::ops::ramp<1.0f, 1.0f>{}( 1.0f )), 0.0f );
@@ -41,7 +41,7 @@ TESTLABS_CASE( u8"MathLabs:  functions:  ramp" )
     TESTLABS_CHECK_EQ( (ml7::ops::ramp<1.0f, -2.0f>{}( 0.5f )), 0.0f );
 }
 
-TESTLABS_CASE( u8"MathLabs:  functions:  (unit) ramp" )
+TESTLABS_CASE( u8"MathLabs:  ops:  (unit) ramp" )
 {
     TESTLABS_CHECK_EQ( ml7::ops::ramp{}( -0.5f ), 0.0f );
     TESTLABS_CHECK_EQ( ml7::ops::ramp{}( 0.0f ), 0.0f );
