@@ -57,13 +57,13 @@ struct Line2
     // #############################################################################
 
     /**
-     * Calculates the position on this line at the specified distance/parameter.
+     * Calculates the position on this line at the specified parameter t.
      */
     Vector2 point_at(float t) const;
 
     /**
-     * Calculate the line parameter (distance from the anchor point to the closest
-     * point) for the specified query point.
+     * Calculates the parameter t such that the corresponding point on this line is
+     * closest to the specified query point.
      */
     float parameter(const Vector2& point) const;
 

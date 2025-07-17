@@ -57,15 +57,15 @@ struct LineSegment3
     // #############################################################################
 
     /**
-     * Calculates the position on this line segment at the specified distance/parameter.
+     * Calculates the position on this line segment at the specified parameter t.
      * The function does not limit the parameter if it is less than 0 or greater
      * than 1.
      */
     Vector3 point_at(float t) const;
 
     /**
-     * Calculate the line segment parameter (distance from the starting point to the
-     * closest point) for the specified query point.
+     * Calculates the parameter 0 <= t <= 1 such that the corresponding point on
+     * this line segment is closest to the specified query point.
      */
     float parameter(const Vector3& point) const;
 

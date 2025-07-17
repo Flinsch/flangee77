@@ -28,7 +28,7 @@ namespace ml7 {
     // #############################################################################
 
     /**
-     * Calculates the position on this line segment at the specified distance parameter.
+     * Calculates the position on this line segment at the specified parameter t.
      * The function does not limit the parameter if it is less than 0 or greater
      * than 1.
      */
@@ -39,8 +39,8 @@ namespace ml7 {
     }
 
     /**
-     * Calculate the line segment parameter (distance from the starting point to the
-     * closest point) for the specified query point.
+     * Calculates the parameter 0 <= t <= 1 such that the corresponding point on
+     * this line segment is closest to the specified query point.
      */
     float LineSegment3::parameter(const Vector3& point) const
     {

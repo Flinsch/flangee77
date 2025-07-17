@@ -71,14 +71,14 @@ struct Ray2
     // #############################################################################
 
     /**
-     * Calculates the position on this ray at the specified distance/parameter.
+     * Calculates the position on this ray at the specified parameter t.
      * The function does not limit the parameter if it is less than 0.
      */
     Vector2 point_at(float t) const;
 
     /**
-     * Calculate the ray parameter (distance from origin to the closest point) for
-     * the specified query point.
+     * Calculates the parameter t >= 0 such that the corresponding point on this ray
+     * is closest to the specified query point.
      */
     float parameter(const Vector2& point) const;
 

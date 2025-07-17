@@ -34,7 +34,7 @@ namespace ml7 {
     // #############################################################################
 
     /**
-     * Calculates the position on this ray at the specified distance parameter.
+     * Calculates the position on this ray at the specified parameter t.
      * The function does not limit the parameter if it is less than 0.
      */
     Vector3 Ray3::point_at(float t) const
@@ -43,8 +43,8 @@ namespace ml7 {
     }
 
     /**
-     * Calculate the ray parameter (distance from origin to the closest point) for
-     * the specified query point.
+     * Calculates the parameter t >= 0 such that the corresponding point on this ray
+     * is closest to the specified query point.
      */
     float Ray3::parameter(const Vector3& point) const
     {
