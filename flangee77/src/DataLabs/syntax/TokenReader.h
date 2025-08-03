@@ -146,7 +146,8 @@ public:
     virtual const Token& next_token() = 0;
 
     /**
-     * Checks if the reader has reached the end of the token stream.
+     * Checks if the reader has reached the end of the token stream
+     * (i.e., there are no more tokens or the "EOF" symbol has been reached).
      */
     virtual bool is_eof() const = 0;
 
