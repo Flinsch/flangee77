@@ -7,6 +7,17 @@ namespace dl7::syntax {
 
 
     /**
+     * Checks whether a valid token is present (i.e., with a positive symbol ID)
+     * and EOF has not yet been reached.
+     */
+    bool TokenReader::is_valid() const
+    {
+        return !is_eof() && peek_token().symbol_id > 0;
+    }
+
+
+
+    /**
      * Returns the ID of the symbol of the current token without advancing the
      * reader.
      */

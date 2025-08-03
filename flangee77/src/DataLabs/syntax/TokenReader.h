@@ -24,6 +24,14 @@ public:
 
 
     /**
+     * Checks whether a valid token is present (i.e., with a positive symbol ID)
+     * and EOF has not yet been reached.
+     */
+    bool is_valid() const;
+
+
+
+    /**
      * Returns the ID of the symbol of the current token without advancing the
      * reader.
      */
