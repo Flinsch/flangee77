@@ -79,7 +79,7 @@ namespace dl7::json::detail {
 
         object_t object;
 
-        while (!token_reader.check_symbol_id(RIGHT_CURLY_BRACKET) && !token_reader.check_symbol_id(syntax::EOF_SYMBOL_ID))
+        while (token_reader.is_valid() && !token_reader.check_symbol_id(RIGHT_CURLY_BRACKET))
         {
             auto member = _parse_object_member(token_reader);
             if (member.second)
@@ -94,7 +94,7 @@ namespace dl7::json::detail {
             _error(u8"',' or '}' expected.", member.second ? token_reader.peek_token() : token_reader.consume_token());
         }
 
-        if (token_reader.check_symbol_id(syntax::EOF_SYMBOL_ID))
+        if (token_reader.is_eof())
             _error(u8"Unexpected end of file.", token_reader.peek_token());
 
         token_reader.next_token();
@@ -112,7 +112,7 @@ namespace dl7::json::detail {
 
         array_t array;
 
-        while (!token_reader.check_symbol_id(RIGHT_SQUARE_BRACKET) && !token_reader.check_symbol_id(syntax::EOF_SYMBOL_ID))
+        while (token_reader.is_valid() && !token_reader.check_symbol_id(RIGHT_SQUARE_BRACKET))
         {
             auto value = _parse_value(token_reader);
             if (value)
@@ -127,7 +127,7 @@ namespace dl7::json::detail {
             _error(u8"',' or ']' expected.", value ? token_reader.peek_token() : token_reader.consume_token());
         }
 
-        if (token_reader.check_symbol_id(syntax::EOF_SYMBOL_ID))
+        if (token_reader.is_eof())
             _error(u8"Unexpected end of file.", token_reader.peek_token());
 
         token_reader.next_token();
