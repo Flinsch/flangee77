@@ -16,15 +16,11 @@ namespace dl7::syntax {
     }
 
     /**
-     * Returns the first character of the current token's lexeme (or '\0' if
-     * unavailable).
+     * Returns the current token's lexeme without advancing the reader.
      */
-    cl7::u8char_t TokenReader::peek_first_char() const
+    cl7::u8string_view TokenReader::peek_lexeme() const
     {
-        assert(!peek_token().lexeme.empty());
-        if (peek_token().lexeme.empty())
-            return u8'\0';
-        return peek_token().lexeme[0];
+        return peek_token().lexeme;
     }
 
     /**
@@ -34,6 +30,18 @@ namespace dl7::syntax {
     cl7::u8string_view TokenReader::peek_prefix(size_t n) const
     {
         return peek_token().lexeme.substr(0, n);
+    }
+
+    /**
+     * Returns the first character of the current token's lexeme (or '\0' if
+     * unavailable).
+     */
+    cl7::u8char_t TokenReader::peek_first_char() const
+    {
+        assert(!peek_token().lexeme.empty());
+        if (peek_token().lexeme.empty())
+            return u8'\0';
+        return peek_token().lexeme[0];
     }
 
 
@@ -47,12 +55,11 @@ namespace dl7::syntax {
     }
 
     /**
-     * Returns true if the first character of the current token's lexeme matches the
-     * given one.
+     * Returns true if the current token's lexeme matches the given one.
      */
-    bool TokenReader::check_first_char(cl7::u8char_t first_char) const
+    bool TokenReader::check_lexeme(cl7::u8string_view lexeme) const
     {
-        return peek_first_char() == first_char;
+        return peek_token().lexeme == lexeme;
     }
 
     /**
@@ -61,6 +68,15 @@ namespace dl7::syntax {
     bool TokenReader::check_prefix(cl7::u8string_view prefix) const
     {
         return peek_token().lexeme.starts_with(prefix);
+    }
+
+    /**
+     * Returns true if the first character of the current token's lexeme matches the
+     * given one.
+     */
+    bool TokenReader::check_first_char(cl7::u8char_t first_char) const
+    {
+        return peek_first_char() == first_char;
     }
 
 
@@ -72,6 +88,34 @@ namespace dl7::syntax {
     bool TokenReader::skip_symbol_id(SymbolID symbol_id)
     {
         if (check_symbol_id(symbol_id))
+        {
+            next_token();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Advances to the next token if the current token's lexeme matches the
+     * given string. Returns true if advanced, false otherwise.
+     */
+    bool TokenReader::skip_lexeme(cl7::u8string_view lexeme)
+    {
+        if (check_lexeme(lexeme))
+        {
+            next_token();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Advances to the next token if the current token's lexeme starts with the
+     * given prefix. Returns true if advanced, false otherwise.
+     */
+    bool TokenReader::skip_prefix(cl7::u8string_view prefix)
+    {
+        if (check_prefix(prefix))
         {
             next_token();
             return true;
@@ -93,18 +137,45 @@ namespace dl7::syntax {
         return false;
     }
 
+
+
     /**
-     * Advances to the next token if the current token's lexeme starts with the
-     * given prefix. Returns true if advanced, false otherwise.
+     * Skips all tokens until a token with the given symbol ID is found, such that
+     * the current token has that symbol ID. If the symbol is not found, stops at
+     * EOF.
+     *
+     * This function is primarily intended to assist with error recovery, allowing
+     * the parser to resynchronize at a known token boundary, but may also be used
+     * in other scenarios where such skipping is required, of course.
+     *
+     * Returns true if a token with the specified symbol ID was found, false
+     * otherwise (i.e., EOF was reached).
      */
-    bool TokenReader::skip_prefix(cl7::u8string_view prefix)
+    bool TokenReader::skip_to_symbol_id(SymbolID symbol_id)
     {
-        if (check_prefix(prefix))
-        {
+        while (!is_eof() && !check_symbol_id(symbol_id))
             next_token();
-            return true;
-        }
-        return false;
+        return !is_eof() && check_symbol_id(symbol_id);
+    }
+
+    /**
+     * Skips all tokens until a token with the given symbol ID is found, and then
+     * advances once more so that the current token is the one immediately following
+     * it. If the symbol is not found, stops at EOF.
+     *
+     * This function is primarily intended to assist with error recovery, allowing
+     * the parser to resynchronize at a known token boundary, but may also be used
+     * in other scenarios where such skipping is required, of course.
+     *
+     * Returns true if a token with the specified symbol ID was found, false
+     * otherwise (i.e., EOF was reached).
+     */
+    bool TokenReader::skip_past_symbol_id(SymbolID symbol_id)
+    {
+        if (!skip_to_symbol_id(symbol_id))
+            return false;
+        next_token();
+        return !is_eof();
     }
 
 
