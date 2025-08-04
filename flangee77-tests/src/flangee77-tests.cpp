@@ -33,6 +33,7 @@
 #include "./MathLabs/LineSegment3.h"
 #include "./MathLabs/Ray2.h"
 #include "./MathLabs/Ray3.h"
+#include "./MathLabs/algorithm.h"
 #include "./MathLabs/distance2.h"
 #include "./MathLabs/distance3.h"
 

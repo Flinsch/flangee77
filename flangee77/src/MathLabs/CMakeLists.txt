@@ -43,5 +43,10 @@ target_sources(flangee77
     Vector4.cpp
     Vector4.h
 
+    algorithm/find_cubic_roots.cpp
+    algorithm/find_cubic_roots.h
+    algorithm/find_quadratic_roots.cpp
+    algorithm/find_quadratic_roots.h
+
     detail/distance.h
 )

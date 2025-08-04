@@ -17,6 +17,7 @@ target_sources(flangee77-tests
     DataLabs/json.h
     DataLabs/syntax.h
 
+    MathLabs/algorithm.h
     MathLabs/Angle.h
     MathLabs/distance2.h
     MathLabs/distance3.h
