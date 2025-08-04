@@ -1,5 +1,9 @@
 var namespaceml7 =
 [
+    [ "algorithm", "dc/dfa/namespaceml7_1_1algorithm.html", [
+      [ "find_cubic_roots", "dc/dfa/namespaceml7_1_1algorithm.html#ac77e7f4ee30043dacc9ea0ac89133468", null ],
+      [ "find_quadratic_roots", "dc/dfa/namespaceml7_1_1algorithm.html#adb371cfa22e5a93b72c9af7e2fc35d9a", null ]
+    ] ],
     [ "detail", "df/d63/namespaceml7_1_1detail.html", "df/d63/namespaceml7_1_1detail" ],
     [ "distance2", "db/d4f/namespaceml7_1_1distance2.html", "db/d4f/namespaceml7_1_1distance2" ],
     [ "distance3", "df/d0a/namespaceml7_1_1distance3.html", "df/d0a/namespaceml7_1_1distance3" ],

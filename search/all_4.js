@@ -44,7 +44,7 @@ var searchData=
   ['datetime_41',['datetime',['../d6/d16/structcl7_1_1system_1_1datetime.html',1,'cl7::system']]],
   ['datetime_2ecpp_42',['datetime.cpp',['../d7/d14/datetime_8cpp.html',1,'']]],
   ['datetime_2eh_43',['datetime.h',['../de/d1b/datetime_8h.html',1,'']]],
-  ['decimal_44',['decimal',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caa937504f318f04eaf0f1d701df4c4d7f3',1,'dl7::json::Json::Decimal'],['../da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18a937504f318f04eaf0f1d701df4c4d7f3',1,'dl7::ini::Value::Decimal']]],
+  ['decimal_44',['decimal',['../da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18a937504f318f04eaf0f1d701df4c4d7f3',1,'dl7::ini::Value::Decimal'],['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caa937504f318f04eaf0f1d701df4c4d7f3',1,'dl7::json::Json::Decimal']]],
   ['decimal_5fdigits_45',['decimal_digits',['../d3/d53/namespaceml7.html#a3da2a0406c282813cb323934efcd53ef',1,'ml7']]],
   ['decimal_5fliteral_46',['DECIMAL_LITERAL',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a01defdf75773e6428d6ab13ce433a4f1',1,'dl7::json::detail']]],
   ['decimal_5ft_47',['decimal_t',['../df/d87/namespacedl7_1_1json.html#ac5c39d4a858f719377eb6f64b31cf5c0',1,'dl7::json::decimal_t'],['../dd/dc6/namespacedl7_1_1ini.html#a1f61c43d0936244881e5e3d4571efc08',1,'dl7::ini::decimal_t']]],
