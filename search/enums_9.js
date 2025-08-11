@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['openmode_0',['OpenMode',['../d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5',1,'cl7::io']]],
-  ['origintype_1',['OriginType',['../da/d3a/structtl7_1_1Result.html#abc74a2ae21cd48cdb73884084ad1d692',1,'tl7::Result']]],
-  ['outcome_2',['Outcome',['../da/d3a/structtl7_1_1Result.html#ad6e0dd3748757a0237c43a26f19bb6eb',1,'tl7::Result']]]
+  ['minmagfiltertype_0',['MinMagFilterType',['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#a5815318bfe88d26ae204eda9596134d8',1,'xl7::graphics::states::SamplerState']]],
+  ['mipfiltertype_1',['MipFilterType',['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#ab84d702ec5c0616ae781e3bd6d3816ef',1,'xl7::graphics::states::SamplerState']]]
 ];

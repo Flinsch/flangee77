@@ -13,6 +13,7 @@ var classdl7_1_1json_1_1Json =
       [ "Boolean", "d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caa27226c864bac7454a8504f8edb15d95b", null ]
     ] ],
     [ "Json", "d7/d95/classdl7_1_1json_1_1Json.html#a6b13aeac94603b6feff51c057faf94e9", null ],
+    [ "Json", "d7/d95/classdl7_1_1json_1_1Json.html#a9abde5a105962e0c10cbea82ab6fc75e", null ],
     [ "Json", "d7/d95/classdl7_1_1json_1_1Json.html#acc19d96692cf7cd7dfe887be3fa69e4b", null ],
     [ "Json", "d7/d95/classdl7_1_1json_1_1Json.html#a3e30e390f07dbc0494b8e679e650e38b", null ],
     [ "Json", "d7/d95/classdl7_1_1json_1_1Json.html#ab96b1d1733416a1efde46e3ac0c21aaf", null ],
@@ -70,8 +71,10 @@ var classdl7_1_1json_1_1Json =
     [ "is_structured", "d7/d95/classdl7_1_1json_1_1Json.html#a13d84922853d04aea9f1d7e8db8e398a", null ],
     [ "is_true", "d7/d95/classdl7_1_1json_1_1Json.html#a4bf1d1d8c4a9d4a856544d65046bddc9", null ],
     [ "is_unsigned", "d7/d95/classdl7_1_1json_1_1Json.html#a4664f96fa5ccc3b16fc2c78518233474", null ],
+    [ "operator!=", "d7/d95/classdl7_1_1json_1_1Json.html#a3e8db65df7b189a34faa5c588c29c735", null ],
     [ "operator=", "d7/d95/classdl7_1_1json_1_1Json.html#a43ce98bfbcee2ca40d7647b7c1c06c5c", null ],
     [ "operator=", "d7/d95/classdl7_1_1json_1_1Json.html#ab051609952e07aebd8400b297794c0f3", null ],
+    [ "operator==", "d7/d95/classdl7_1_1json_1_1Json.html#a3e66af797cce1fa17f20c90ad89df901", null ],
     [ "operator[]", "d7/d95/classdl7_1_1json_1_1Json.html#a8eb4e091c93ead17cdafad3bc943880e", null ],
     [ "operator[]", "d7/d95/classdl7_1_1json_1_1Json.html#a064ee20436132f30a28b8cde0df82141", null ],
     [ "operator[]", "d7/d95/classdl7_1_1json_1_1Json.html#a2587a7aba18c8e6683dda95625a9dfb0", null ],

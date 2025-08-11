@@ -52,6 +52,6 @@ var searchData=
   ['surface_2eh_49',['Surface.h',['../da/d51/Surface_8h.html',1,'']]],
   ['surfacemanager_2ecpp_50',['SurfaceManager.cpp',['../d7/def/SurfaceManager_8cpp.html',1,'']]],
   ['surfacemanager_2eh_51',['SurfaceManager.h',['../dc/d63/SurfaceManager_8h.html',1,'']]],
-  ['symbol_2eh_52',['Symbol.h',['../de/d3c/Symbol_8h.html',1,'']]],
+  ['symbol_2eh_52',['symbol.h',['../d2/d9e/ini_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d7/d02/json_2detail_2Symbol_8h.html',1,'(Global Namespace)']]],
   ['symbolid_2eh_53',['SymbolID.h',['../d7/d05/SymbolID_8h.html',1,'']]]
 ];

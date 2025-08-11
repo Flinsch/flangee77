@@ -19,6 +19,7 @@ var hierarchy =
     ] ],
     [ "cl7::strings::Analyzer< Tchar, TDefaultErrorHandler >", "d7/d68/classcl7_1_1strings_1_1Analyzer.html", null ],
     [ "ml7::Angle", "d4/d9d/structml7_1_1Angle.html", null ],
+    [ "dl7::ini::detail::AnyOtherMatcher", "d4/dc9/structdl7_1_1ini_1_1detail_1_1AnyOtherMatcher.html", null ],
     [ "pl7::Application", "d8/d91/classpl7_1_1Application.html", null ],
     [ "pl7::ArgumentBag", "dd/d75/classpl7_1_1ArgumentBag.html", null ],
     [ "cl7::strings::AsciiCodec", "d1/d63/classcl7_1_1strings_1_1AsciiCodec.html", null ],
@@ -83,6 +84,7 @@ var hierarchy =
     [ "xl7::graphics::shaders::ConstantDeclaration", "d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html", null ],
     [ "xl7::graphics::shaders::ConstantMapping", "d2/d58/structxl7_1_1graphics_1_1shaders_1_1ConstantMapping.html", null ],
     [ "ml7::constants_< T >", "da/df2/structml7_1_1constants__.html", null ],
+    [ "dl7::ini::detail::Builder::Context", "d1/dbe/structdl7_1_1ini_1_1detail_1_1Builder_1_1Context.html", null ],
     [ "cl7::contiguous_iterator< is_const, Titem, Tbase >", "d1/d5d/classcl7_1_1contiguous__iterator.html", null ],
     [ "cl7::system::CPUID", "d5/d80/structcl7_1_1system_1_1CPUID.html", null ],
     [ "xl7::resources::Resource::CreateParams< TDesc >", "db/df9/structxl7_1_1resources_1_1Resource_1_1CreateParams.html", null ],
@@ -152,6 +154,7 @@ var hierarchy =
     [ "fl7::fonts::FontLoader", "da/d82/classfl7_1_1fonts_1_1FontLoader.html", [
       [ "fl7::fonts::TrueTypeFontLoader", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html", null ]
     ] ],
+    [ "dl7::ini::Format", "d9/db3/structdl7_1_1ini_1_1Format.html", null ],
     [ "dl7::json::Format", "df/d52/structdl7_1_1json_1_1Format.html", null ],
     [ "xl7::Config::General", "dd/d38/structxl7_1_1Config_1_1General.html", null ],
     [ "fl7::fonts::Glyph", "d2/d26/structfl7_1_1fonts_1_1Glyph.html", null ],
@@ -193,6 +196,8 @@ var hierarchy =
         [ "xl7::graphics::impl::direct3d9::ResourceFactoryImpl", "de/d84/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl.html", null ]
       ] ]
     ] ],
+    [ "dl7::ini::IniReader", "d0/d99/classdl7_1_1ini_1_1IniReader.html", null ],
+    [ "dl7::ini::IniWriter", "df/d0b/classdl7_1_1ini_1_1IniWriter.html", null ],
     [ "dl7::syntax::matchers::IntegerLiteralMatcher", "d9/d3c/structdl7_1_1syntax_1_1matchers_1_1IntegerLiteralMatcher.html", null ],
     [ "cl7::io::IReadable", "d5/ddf/classcl7_1_1io_1_1IReadable.html", [
       [ "cl7::io::IReadWritable", "db/d48/classcl7_1_1io_1_1IReadWritable.html", [
@@ -254,8 +259,14 @@ var hierarchy =
     [ "xl7::graphics::images::PngImageHandler::PaletteEntry", "d6/d53/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1PaletteEntry.html", null ],
     [ "xl7::graphics::impl::shared::shaders::Include::ParentEntry", "dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html", null ],
     [ "dl7::syntax::ParseStage", "d9/d44/classdl7_1_1syntax_1_1ParseStage.html", [
+      [ "dl7::syntax::AstProcessor< Ini, cl7::u8string >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", [
+        [ "dl7::ini::detail::Generator", "dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator.html", null ]
+      ] ],
       [ "dl7::syntax::AstProcessor< Json, cl7::u8string >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", [
         [ "dl7::json::detail::Generator", "d5/dc2/classdl7_1_1json_1_1detail_1_1Generator.html", null ]
+      ] ],
+      [ "dl7::syntax::DirectAstBuilder< Ini >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", [
+        [ "dl7::ini::detail::Builder", "d2/d8d/classdl7_1_1ini_1_1detail_1_1Builder.html", null ]
       ] ],
       [ "dl7::syntax::DirectAstBuilder< Json >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", [
         [ "dl7::json::detail::Builder", "de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html", null ]
@@ -266,6 +277,7 @@ var hierarchy =
       [ "dl7::syntax::DirectAstBuilder< TAstNode >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", null ],
       [ "dl7::syntax::Lexer", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html", [
         [ "dl7::syntax::GenericLexer", "d5/da3/classdl7_1_1syntax_1_1GenericLexer.html", [
+          [ "dl7::ini::detail::Lexer", "d0/dfd/classdl7_1_1ini_1_1detail_1_1Lexer.html", null ],
           [ "dl7::json::detail::Lexer", "d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer.html", null ]
         ] ]
       ] ]

@@ -5,5 +5,6 @@ var searchData=
   ['quaternion_2eh_2',['Quaternion.h',['../d1/d4a/Quaternion_8h.html',1,'']]],
   ['quit_5fkey_3',['quit_key',['../dd/d38/structxl7_1_1Config_1_1General.html#aed68fdfccb12a185bdf86d6403c86667',1,'xl7::Config::General']]],
   ['quote_5fchar_4',['quote_char',['../d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html#a87b152287f00ff2f50f40f247d03fe09',1,'dl7::json::util::Escaper::Options']]],
-  ['quotechar_5',['QuoteChar',['../d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html#a597cb193de9275b68b56fd9a8a074228',1,'dl7::json::util::Escaper']]]
+  ['quotechar_5',['QuoteChar',['../d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html#a597cb193de9275b68b56fd9a8a074228',1,'dl7::json::util::Escaper']]],
+  ['quoted_5fstring_5fliteral_6',['QUOTED_STRING_LITERAL',['../de/d05/namespacedl7_1_1ini_1_1detail.html#a840033c2b8b2b45076f2800dd65544a1aa2577c7f87e9bf1b3ab79a11a68897d3',1,'dl7::ini::detail']]]
 ];

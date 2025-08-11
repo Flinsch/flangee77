@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['resamplingmethod_0',['ResamplingMethod',['../d8/dd2/namespacexl7_1_1graphics_1_1images.html#ac9d829a5933316d55f7f267a17474dd9',1,'xl7::graphics::images']]],
-  ['resourceusage_1',['ResourceUsage',['../da/d60/namespacexl7_1_1resources.html#acb7b1bb91ccf1f69b4fe83b89d1db5ee',1,'xl7::resources']]]
+  ['pixelformat_0',['PixelFormat',['../d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082d',1,'xl7::graphics']]],
+  ['prereleasetype_1',['PreReleaseType',['../db/ddf/structcl7_1_1Version.html#a890721a856e7cc2fbb0c524521e0b635',1,'cl7::Version']]],
+  ['presentationmode_2',['PresentationMode',['../d2/d33/structxl7_1_1Config_1_1Video.html#ae385a3a6e937c6aef106ebdf94bd0e59',1,'xl7::Config::Video']]]
 ];

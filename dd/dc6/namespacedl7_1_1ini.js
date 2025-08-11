@@ -1,6 +1,10 @@
 var namespacedl7_1_1ini =
 [
+    [ "detail", "de/d05/namespacedl7_1_1ini_1_1detail.html", "de/d05/namespacedl7_1_1ini_1_1detail" ],
+    [ "Format", "d9/db3/structdl7_1_1ini_1_1Format.html", "d9/db3/structdl7_1_1ini_1_1Format" ],
     [ "Ini", "da/d48/classdl7_1_1ini_1_1Ini.html", "da/d48/classdl7_1_1ini_1_1Ini" ],
+    [ "IniReader", "d0/d99/classdl7_1_1ini_1_1IniReader.html", "d0/d99/classdl7_1_1ini_1_1IniReader" ],
+    [ "IniWriter", "df/d0b/classdl7_1_1ini_1_1IniWriter.html", "df/d0b/classdl7_1_1ini_1_1IniWriter" ],
     [ "Section", "dc/d3a/classdl7_1_1ini_1_1Section.html", "dc/d3a/classdl7_1_1ini_1_1Section" ],
     [ "Value", "da/d29/classdl7_1_1ini_1_1Value.html", "da/d29/classdl7_1_1ini_1_1Value" ],
     [ "boolean_t", "dd/dc6/namespacedl7_1_1ini.html#adea5c45d34ed292ba80c46f289547521", null ],

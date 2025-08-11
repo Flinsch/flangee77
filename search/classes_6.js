@@ -1,7 +1,7 @@
 var searchData=
 [
   ['general_0',['General',['../dd/d38/structxl7_1_1Config_1_1General.html',1,'xl7::Config']]],
-  ['generator_1',['Generator',['../d5/dc2/classdl7_1_1json_1_1detail_1_1Generator.html',1,'dl7::json::detail']]],
+  ['generator_1',['generator',['../dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator.html',1,'dl7::ini::detail::Generator'],['../d5/dc2/classdl7_1_1json_1_1detail_1_1Generator.html',1,'dl7::json::detail::Generator']]],
   ['genericlexer_2',['GenericLexer',['../d5/da3/classdl7_1_1syntax_1_1GenericLexer.html',1,'dl7::syntax']]],
   ['glyph_3',['Glyph',['../d2/d26/structfl7_1_1fonts_1_1Glyph.html',1,'fl7::fonts']]],
   ['grammar_4',['Grammar',['../d8/d95/structdl7_1_1syntax_1_1Grammar.html',1,'dl7::syntax']]],

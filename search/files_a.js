@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['lexer_2ecpp_0',['lexer.cpp',['../d8/da4/syntax_2Lexer_8cpp.html',1,'(Global Namespace)'],['../d2/d25/json_2detail_2Lexer_8cpp.html',1,'(Global Namespace)']]],
-  ['lexer_2eh_1',['lexer.h',['../d4/ded/syntax_2Lexer_8h.html',1,'(Global Namespace)'],['../d9/d75/json_2detail_2Lexer_8h.html',1,'(Global Namespace)']]],
+  ['lexer_2ecpp_0',['lexer.cpp',['../d8/da4/syntax_2Lexer_8cpp.html',1,'(Global Namespace)'],['../d2/d25/json_2detail_2Lexer_8cpp.html',1,'(Global Namespace)'],['../da/dc9/ini_2detail_2Lexer_8cpp.html',1,'(Global Namespace)']]],
+  ['lexer_2eh_1',['lexer.h',['../d4/ded/syntax_2Lexer_8h.html',1,'(Global Namespace)'],['../d9/d75/json_2detail_2Lexer_8h.html',1,'(Global Namespace)'],['../db/d9d/ini_2detail_2Lexer_8h.html',1,'(Global Namespace)']]],
   ['lexingtokenreader_2eh_2',['LexingTokenReader.h',['../d7/de1/LexingTokenReader_8h.html',1,'']]],
   ['license_2emd_3',['LICENSE.md',['../d7/dd2/LICENSE_8md.html',1,'']]],
   ['line2_2ecpp_4',['Line2.cpp',['../d3/d84/Line2_8cpp.html',1,'']]],

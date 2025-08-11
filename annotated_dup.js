@@ -89,7 +89,16 @@ var annotated_dup =
         [ "Deflate", "d2/d26/structdl7_1_1compression_1_1Deflate.html", "d2/d26/structdl7_1_1compression_1_1Deflate" ]
       ] ],
       [ "ini", "dd/dc6/namespacedl7_1_1ini.html", [
+        [ "detail", "de/d05/namespacedl7_1_1ini_1_1detail.html", [
+          [ "AnyOtherMatcher", "d4/dc9/structdl7_1_1ini_1_1detail_1_1AnyOtherMatcher.html", "d4/dc9/structdl7_1_1ini_1_1detail_1_1AnyOtherMatcher" ],
+          [ "Builder", "d2/d8d/classdl7_1_1ini_1_1detail_1_1Builder.html", "d2/d8d/classdl7_1_1ini_1_1detail_1_1Builder" ],
+          [ "Generator", "dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator.html", "dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator" ],
+          [ "Lexer", "d0/dfd/classdl7_1_1ini_1_1detail_1_1Lexer.html", "d0/dfd/classdl7_1_1ini_1_1detail_1_1Lexer" ]
+        ] ],
+        [ "Format", "d9/db3/structdl7_1_1ini_1_1Format.html", "d9/db3/structdl7_1_1ini_1_1Format" ],
         [ "Ini", "da/d48/classdl7_1_1ini_1_1Ini.html", "da/d48/classdl7_1_1ini_1_1Ini" ],
+        [ "IniReader", "d0/d99/classdl7_1_1ini_1_1IniReader.html", "d0/d99/classdl7_1_1ini_1_1IniReader" ],
+        [ "IniWriter", "df/d0b/classdl7_1_1ini_1_1IniWriter.html", "df/d0b/classdl7_1_1ini_1_1IniWriter" ],
         [ "Section", "dc/d3a/classdl7_1_1ini_1_1Section.html", "dc/d3a/classdl7_1_1ini_1_1Section" ],
         [ "Value", "da/d29/classdl7_1_1ini_1_1Value.html", "da/d29/classdl7_1_1ini_1_1Value" ]
       ] ],

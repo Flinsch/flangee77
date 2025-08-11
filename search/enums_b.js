@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['quotechar_0',['QuoteChar',['../d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html#a597cb193de9275b68b56fd9a8a074228',1,'dl7::json::util::Escaper']]]
+  ['openmode_0',['OpenMode',['../d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5',1,'cl7::io']]],
+  ['origintype_1',['OriginType',['../da/d3a/structtl7_1_1Result.html#abc74a2ae21cd48cdb73884084ad1d692',1,'tl7::Result']]],
+  ['outcome_2',['Outcome',['../da/d3a/structtl7_1_1Result.html#ad6e0dd3748757a0237c43a26f19bb6eb',1,'tl7::Result']]]
 ];

@@ -8,7 +8,7 @@ var searchData=
   ['d32s8x24_5',['D32S8X24',['../d8/d30/namespacexl7_1_1graphics.html#a43b1458b1fd0bf912e9f69eec93adea5a0ed5381773e6db4448da9d8e74d4e95c',1,'xl7::graphics']]],
   ['darkgray_6',['DarkGray',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740ac414dd0df47b25bc4d5fb9522682bd17',1,'tl7::reporting']]],
   ['decimal_7',['decimal',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caa937504f318f04eaf0f1d701df4c4d7f3',1,'dl7::json::Json::Decimal'],['../da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18a937504f318f04eaf0f1d701df4c4d7f3',1,'dl7::ini::Value::Decimal']]],
-  ['decimal_5fliteral_8',['DECIMAL_LITERAL',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a01defdf75773e6428d6ab13ce433a4f1',1,'dl7::json::detail']]],
+  ['decimal_5fliteral_8',['decimal_literal',['../de/d05/namespacedl7_1_1ini_1_1detail.html#a840033c2b8b2b45076f2800dd65544a1ab44c8e69222ee1008ccf4f62726bd3dc',1,'dl7::ini::detail::DECIMAL_LITERAL'],['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a01defdf75773e6428d6ab13ce433a4f1',1,'dl7::json::detail::DECIMAL_LITERAL']]],
   ['decimalonly_9',['DecimalOnly',['../d3/d6a/namespacedl7_1_1syntax_1_1matchers.html#a52fc665d8a9a783b2d6454378201ea24a89fadab93cff77afedbf025863b09916',1,'dl7::syntax::matchers']]],
   ['decrclamp_10',['DecrClamp',['../db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#a5ea224e29dd36067e266b081eb767292a26e3e085a0f76ba4a9b87cfa74bef0cc',1,'xl7::graphics::states::DepthStencilState']]],
   ['decrwrap_11',['DecrWrap',['../db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#a5ea224e29dd36067e266b081eb767292a705c1791598610083534bb820c98ad4b',1,'xl7::graphics::states::DepthStencilState']]],
@@ -20,6 +20,7 @@ var searchData=
   ['destcolor_17',['DestColor',['../d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#ab8f817106c9cfaac6dc9ebaf63a679b9ab5c77c29513009d6ea5f34de4561bbb2',1,'xl7::graphics::states::BlendState']]],
   ['disallowedunicode_18',['DisallowedUnicode',['../dc/d17/namespacecl7_1_1strings.html#af691638e9c6fbf723b19957270f2c0d2a29e79381f4e76ecd75afbbd48f51b3d3',1,'cl7::strings']]],
   ['discard_19',['Discard',['../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ac4ce5eaf77a0e31efdbbe3df2c3209e6ad94b42030b9785fd754d5c1754961269',1,'dl7::syntax::Lexer']]],
-  ['doublequote_20',['DoubleQuote',['../d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html#a597cb193de9275b68b56fd9a8a074228a312f3eacb3208038b0963fd457c576e8',1,'dl7::json::util::Escaper']]],
-  ['dynamic_21',['Dynamic',['../da/d60/namespacexl7_1_1resources.html#acb7b1bb91ccf1f69b4fe83b89d1db5eea971fd8cc345d8bd9f92e9f7d88fdf20c',1,'xl7::resources']]]
+  ['dot_20',['Dot',['../d9/db3/structdl7_1_1ini_1_1Format.html#af0738a2b310ac38e69274f4e5c5d23e8aaf6c6cf7a454b4ef4a850ac4d960a2cc',1,'dl7::ini::Format']]],
+  ['doublequote_21',['DoubleQuote',['../d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html#a597cb193de9275b68b56fd9a8a074228a312f3eacb3208038b0963fd457c576e8',1,'dl7::json::util::Escaper']]],
+  ['dynamic_22',['Dynamic',['../da/d60/namespacexl7_1_1resources.html#acb7b1bb91ccf1f69b4fe83b89d1db5eea971fd8cc345d8bd9f92e9f7d88fdf20c',1,'xl7::resources']]]
 ];
