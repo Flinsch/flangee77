@@ -36,7 +36,7 @@ namespace xl7 {
             // Direct match
             if (config_lower == driver_lower)
             {
-                candidates.push_back({i, 1000});
+                candidates.push_back({.index = i, .score = 1000});
                 continue;
             }
 
@@ -47,7 +47,7 @@ namespace xl7 {
 
                 if (config_lower == cl7::strings::to_lower_ascii(alias))
                 {
-                    candidates.push_back({i, 900});
+                    candidates.push_back({.index = i, .score = 900});
                     break;
                 }
             } // for each driver alias
@@ -55,7 +55,7 @@ namespace xl7 {
             // Prefix match
             if (driver_lower.starts_with(config_lower))
             {
-                candidates.push_back({i, 800});
+                candidates.push_back({.index = i, .score = 800});
             }
 
             // Fuzzy match
@@ -63,7 +63,7 @@ namespace xl7 {
             const int score = static_cast<int>(similarity * 700.0f);
             if (score >= 350)
             {
-                candidates.push_back({i, score});
+                candidates.push_back({.index = i, .score = score});
             }
         } // for each driver entry
 

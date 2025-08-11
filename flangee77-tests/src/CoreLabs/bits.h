@@ -20,18 +20,22 @@ TESTLABS_CASE( u8"CoreLabs:  bits:  swap_bytes" )
     TESTLABS_CHECK_EQ( cl7::bits::swap_bytes( uint64_t(0x123456789abcdef0) ), uint64_t(0xf0debc9a78563412) );
     TESTLABS_CHECK_EQ( cl7::bits::swap_bytes( -1 ), -1 );
     TESTLABS_CHECK_EQ( cl7::bits::swap_bytes( int32_t(0xff0000ff) ), 0xff0000ff );
-#if ('AB') == 0x4142 // => little endian
-    TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_if_endian<std::endian::little>( 0x12345678 ), 0x78563412 );
-    TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_if_endian<std::endian::big>( 0x12345678 ), 0x12345678 );
-    TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_unless_endian<std::endian::little>( 0x12345678 ), 0x12345678 );
-    TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_unless_endian<std::endian::big>( 0x12345678 ), 0x78563412 );
-#endif
-#if ('AB') == 0x4241 // => big endian
-    TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_if_endian<std::endian::little>( 0x12345678 ), 0x12345678 );
-    TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_if_endian<std::endian::big>( 0x12345678 ), 0x78563412 );
-    TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_unless_endian<std::endian::little>( 0x12345678 ), 0x78563412 );
-    TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_unless_endian<std::endian::big>( 0x12345678 ), 0x12345678 );
-#endif
+
+    if constexpr (std::endian::native == std::endian::little)
+    {
+        TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_if_endian<std::endian::little>( 0x12345678 ), 0x78563412 );
+        TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_if_endian<std::endian::big>( 0x12345678 ), 0x12345678 );
+        TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_unless_endian<std::endian::little>( 0x12345678 ), 0x12345678 );
+        TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_unless_endian<std::endian::big>( 0x12345678 ), 0x78563412 );
+    }
+
+    if constexpr (std::endian::native == std::endian::big)
+    {
+        TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_if_endian<std::endian::little>( 0x12345678 ), 0x12345678 );
+        TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_if_endian<std::endian::big>( 0x12345678 ), 0x78563412 );
+        TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_unless_endian<std::endian::little>( 0x12345678 ), 0x78563412 );
+        TESTLABS_CHECK_EQ( cl7::bits::swap_bytes_unless_endian<std::endian::big>( 0x12345678 ), 0x12345678 );
+    }
 }
 
 

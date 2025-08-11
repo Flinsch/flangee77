@@ -4,8 +4,20 @@ target_sources(flangee77
     Angle.cpp
     Angle.h
     constants.h
+    distance2.cpp
+    distance2.h
+    distance3.cpp
+    distance3.h
     functions.cpp
     functions.h
+    Line2.cpp
+    Line2.h
+    Line3.cpp
+    Line3.h
+    LineSegment2.cpp
+    LineSegment2.h
+    LineSegment3.cpp
+    LineSegment3.h
     math.h
     Matrix2x2.cpp
     Matrix2x2.h
@@ -17,12 +29,24 @@ target_sources(flangee77
     Matrix3x4.h
     Matrix4x4.cpp
     Matrix4x4.h
+    ops.h
     Quaternion.cpp
     Quaternion.h
+    Ray2.cpp
+    Ray2.h
+    Ray3.cpp
+    Ray3.h
     Vector2.cpp
     Vector2.h
     Vector3.cpp
     Vector3.h
     Vector4.cpp
     Vector4.h
+
+    algorithm/find_cubic_roots.cpp
+    algorithm/find_cubic_roots.h
+    algorithm/find_quadratic_roots.cpp
+    algorithm/find_quadratic_roots.h
+
+    detail/distance.h
 )

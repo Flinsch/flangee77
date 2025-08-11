@@ -17,7 +17,7 @@ namespace dl7::json::detail {
             return 0;
 
         // First character must be a letter (A-Z, a-z), underscore (_), or dollar sign ($).
-        if (!(cl7::strings::is_ascii_letter(source[0]) || source[0] == u8'_' || source[0] == u8'$'))
+        if (!cl7::strings::is_ascii_letter(source[0]) && source[0] != u8'_' && source[0] != u8'$')
             return 0;
 
         // Remaining characters can be letters, digits, underscores, or dollar signs.

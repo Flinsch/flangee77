@@ -16,6 +16,15 @@
 
 
 
+#ifndef __BYTE_ORDER__
+#if defined(_MSC_VER)
+#define __ORDER_LITTLE_ENDIAN__ 1234
+#define __BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__
+#endif
+#endif
+
+
+
 // NOLINTBEGIN(*-reserved-identifier)
 #ifndef _WIN32_WINNT
 //#define _WIN32_WINNT _WIN32_WINNT_WIN7

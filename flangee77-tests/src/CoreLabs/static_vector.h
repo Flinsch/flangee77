@@ -20,10 +20,10 @@ TESTLABS_CASE( u8"CoreLabs:  static_vector::static_vector()" )
 TESTLABS_CASE( u8"CoreLabs:  static_vector::static_vector(It first, It last)" )
 {
     std::vector<int> vector = {
-        { 1 },
-        { 2 },
-        { 3 },
-        { 4 },
+        1,
+        2,
+        3,
+        4,
     };
 
     cl7::static_vector<int, 10> static_vector{ vector.begin() + 1, vector.end() - 1 };
@@ -41,10 +41,10 @@ TESTLABS_CASE( u8"CoreLabs:  static_vector::static_vector(It first, It last)" )
 TESTLABS_CASE( u8"CoreLabs:  static_vector::static_vector(const static_vector&)" )
 {
     std::vector<int> vector = {
-        { 1 },
-        { 2 },
-        { 3 },
-        { 4 },
+        1,
+        2,
+        3,
+        4,
     };
 
     cl7::static_vector<int, 10> other{ vector.begin() + 1, vector.end() - 1 };
@@ -63,10 +63,10 @@ TESTLABS_CASE( u8"CoreLabs:  static_vector::static_vector(const static_vector&)"
 TESTLABS_CASE( u8"CoreLabs:  static_vector::static_vector(static_vector&&)" )
 {
     std::vector<int> vector = {
-        { 1 },
-        { 2 },
-        { 3 },
-        { 4 },
+        1,
+        2,
+        3,
+        4,
     };
 
     cl7::static_vector<int, 10> other{ vector.begin() + 1, vector.end() - 1 };
@@ -83,10 +83,10 @@ TESTLABS_CASE( u8"CoreLabs:  static_vector::static_vector(static_vector&&)" )
 TESTLABS_CASE( u8"CoreLabs:  static_vector::static_vector(initializer_list)" )
 {
     cl7::static_vector<int, 10> static_vector{
-        { 1 },
-        { 2 },
-        { 3 },
-        { 4 },
+        1,
+        2,
+        3,
+        4,
     };
 
     TESTLABS_CHECK( !static_vector.empty() );
@@ -101,14 +101,14 @@ TESTLABS_CASE( u8"CoreLabs:  static_vector::static_vector(initializer_list)" )
 TESTLABS_CASE( u8"CoreLabs:  static_vector::operator=(initializer_list)" )
 {
     cl7::static_vector<int, 10> static_vector{
-        { -1 },
-        { -3 },
+        -1,
+        -3,
     };
     static_vector = {
-        { 1 },
-        { 2 },
-        { 3 },
-        { 4 },
+        1,
+        2,
+        3,
+        4,
     };
 
     TESTLABS_CHECK( !static_vector.empty() );
@@ -123,10 +123,10 @@ TESTLABS_CASE( u8"CoreLabs:  static_vector::operator=(initializer_list)" )
 TESTLABS_CASE( u8"CoreLabs:  static_vector::swap(static_vector&)" )
 {
     std::vector<int> vector = {
-        { 1 },
-        { 2 },
-        { 3 },
-        { 4 },
+        1,
+        2,
+        3,
+        4,
     };
 
     cl7::static_vector<int, 10> static_vector{ vector.begin() + 0, vector.begin() + 1 };
@@ -156,10 +156,10 @@ TESTLABS_CASE( u8"CoreLabs:  static_vector::swap(static_vector&)" )
 TESTLABS_CASE( u8"CoreLabs:  static_vector:  clear" )
 {
     cl7::static_vector<int, 10> static_vector{
-        { 1 },
-        { 2 },
-        { 3 },
-        { 4 },
+        1,
+        2,
+        3,
+        4,
     };
 
     TESTLABS_CHECK_EQ( static_vector.size(), 4 );
@@ -212,10 +212,10 @@ TESTLABS_CASE( u8"CoreLabs:  static_vector:  emplace" )
 TESTLABS_CASE( u8"CoreLabs:  static_vector:  erase" )
 {
     cl7::static_vector<int, 10> static_vector{
-        { 1 },
-        { 2 },
-        { 3 },
-        { 4 },
+        1,
+        2,
+        3,
+        4,
     };
 
     TESTLABS_CHECK_EQ( static_vector.size(), 4 );
@@ -241,10 +241,10 @@ TESTLABS_CASE( u8"CoreLabs:  static_vector:  erase" )
 TESTLABS_CASE( u8"CoreLabs:  static_vector:  iterate / \"random\" access" )
 {
     cl7::static_vector<int, 10> static_vector{
-        { 1 },
-        { 2 },
-        { 3 },
-        { 4 },
+        1,
+        2,
+        3,
+        4,
     };
 
     TESTLABS_CHECK_EQ( static_vector.size(), 4 );

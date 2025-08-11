@@ -272,7 +272,8 @@ namespace pl7 {
         {
             std::regex regex{R"(^"[^"\\]*(?:\\.[^"\\]*)*"$)"};
             std::cmatch m;
-            if (std::regex_match(cl7::strings::reinterpret_utf8(option_value).data(), m, regex))
+            std::string s{cl7::strings::reinterpret_utf8(option_value)};
+            if (std::regex_match(s.c_str(), m, regex))
                 _resolve_quotation(option_value, u8'"');
         }
 
@@ -280,7 +281,8 @@ namespace pl7 {
         {
             std::regex regex{R"(^'[^'\\]*(?:\\.[^'\\]*)*'$)"};
             std::cmatch m;
-            if (std::regex_match(cl7::strings::reinterpret_utf8(option_value).data(), m, regex))
+            std::string s{cl7::strings::reinterpret_utf8(option_value)};
+            if (std::regex_match(s.c_str(), m, regex))
                 _resolve_quotation(option_value, u8'\'');
         }
     }

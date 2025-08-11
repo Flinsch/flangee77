@@ -3,6 +3,8 @@
 
 #include "./ChannelOrder.h"
 
+#include <span>
+
 
 
 namespace xl7::graphics {
@@ -26,9 +28,7 @@ struct Color
     static_assert(static_cast<unsigned>(ChannelOrder::ARGB) == 1);
     static_assert(static_cast<unsigned>(ChannelOrder::ABGR) == 2);
     static_assert(static_cast<unsigned>(ChannelOrder::BGRA) == 3);
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmultichar"
-#if ('RGBA') == 0x52474241 // => little endian
+#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
     static constexpr unsigned RGBA_INDICES_BY_CHANNEL_ORDER[4][4] = {
         { 0, 1, 2, 3, }, // RGBA
         { 1, 2, 3, 0, }, // ARGB
@@ -36,7 +36,7 @@ struct Color
         { 2, 1, 0, 3, }, // BGRA
     };
 #endif
-#if ('RGBA') == 0x41424752 // => big endian
+#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
     static constexpr unsigned RGBA_INDICES_BY_CHANNEL_ORDER[4][4] = {
         { 3, 2, 1, 0, }, // RGBA
         { 2, 1, 0, 3, }, // ARGB
@@ -44,7 +44,6 @@ struct Color
         { 1, 2, 3, 0, }, // BGRA
     };
 #endif
-#pragma GCC diagnostic pop
 
 
 
@@ -135,8 +134,8 @@ struct Color
     constexpr uint32_t to_abgr32() const { return to_uint32(ChannelOrder::ABGR); }
     constexpr uint32_t to_bgra32() const { return to_uint32(ChannelOrder::BGRA); } // Corresponds to D3DCOLOR of Direct3D 9.
 
-    const float* get_rgba_ptr() const { return &r; }
-    float* get_rgba_ptr() { return &r; }
+    std::span<const float, 4> get_rgba() const { return std::span<const float, 4>{&r, 4}; }
+    std::span<float, 4> get_rgba() { return std::span<float, 4>{&r, 4}; }
 
 
 
@@ -241,8 +240,8 @@ struct Color
     // Access Operators
     // #############################################################################
 
-    float operator[](unsigned i) const { assert(i < 4); return get_rgba_ptr()[i]; }
-    float& operator[](unsigned i) { assert(i < 4); return get_rgba_ptr()[i]; }
+    float operator[](unsigned i) const { return get_rgba()[i]; }
+    float& operator[](unsigned i) { return get_rgba()[i]; }
 
 
 

@@ -140,7 +140,7 @@ struct Vector3
     // #############################################################################
 
     /**
-     * Returns a copy of this vector normalized.
+     * Returns a copy of this vector normalized such that it has a magnitude of 1.
      */
     Vector3 normalized() const
     {
@@ -292,13 +292,13 @@ struct Vector3
     // Comparison Operators
     // #############################################################################
 
-    bool operator==(const Vector3& v) const { return (x == v.x) && (y == v.y) && (z == v.z); }
-    bool operator!=(const Vector3& v) const { return (x != v.x) || (y != v.y) || (z != v.z); }
+    bool operator==(const Vector3& v) const noexcept { return (x == v.x) && (y == v.y) && (z == v.z); }
+    bool operator!=(const Vector3& v) const noexcept { return (x != v.x) || (y != v.y) || (z != v.z); }
 
     /**
      * Checks if this vector is component-by-component less than a given vector v.
      */
-    bool operator<(const Vector3& v) const
+    bool operator<(const Vector3& v) const noexcept
     {
         return (x < v.x) && (y < v.y) && (z < v.z);
     }
@@ -306,7 +306,7 @@ struct Vector3
     /**
      * Checks if this vector is component-by-component greater than a given vector v.
      */
-    bool operator>(const Vector3& v) const
+    bool operator>(const Vector3& v) const noexcept
     {
         return (x > v.x) && (y > v.y) && (z > v.z);
     }
@@ -315,7 +315,7 @@ struct Vector3
      * Checks if this vector is component-by-component less than or equal to a given
      * vector v.
      */
-    bool operator<=(const Vector3& v) const
+    bool operator<=(const Vector3& v) const noexcept
     {
         return (x <= v.x) && (y <= v.y) && (z <= v.z);
     }
@@ -324,7 +324,7 @@ struct Vector3
      * Checks if this vector is component-by-component greater than or equal to a
      * given vector v.
      */
-    bool operator>=(const Vector3& v) const
+    bool operator>=(const Vector3& v) const noexcept
     {
         return (x >= v.x) && (y >= v.y) && (z >= v.z);
     }
@@ -354,6 +354,9 @@ struct Vector3
     constexpr Vector3 operator*(float s) const { return {x * s, y * s, z * s}; }
     /** Returns a copy of this vector inversely scaled by the specified factor (scalar division). */
     constexpr Vector3 operator/(float s) const { return {x / s, y / s, z / s}; }
+
+    /** Scales a vector by the specified factor (scalar multiplication). */
+    friend constexpr Vector3 operator*(float s, const Vector3& v) { return v * s; }
 
 
 
@@ -434,15 +437,6 @@ struct Vector3
     }; // struct less
 
 }; // struct Vector3
-
-
-
-    // #############################################################################
-    // Additional Operators
-    // #############################################################################
-
-    /** Scales a vector by the specified factor (scalar multiplication). */
-    constexpr Vector3 operator*(float s, const Vector3& v) { return v * s; }
 
 
 

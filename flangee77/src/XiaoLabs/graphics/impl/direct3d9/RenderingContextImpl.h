@@ -61,18 +61,18 @@ private:
 
     struct HardwareStates
     {
-        IDirect3DSurface9* render_targets[pipeline::OutputMergerStage::MAX_RENDER_TARGETS];
-        IDirect3DSurface9* depth_stencil_surface;
+        IDirect3DSurface9* render_targets[pipeline::OutputMergerStage::MAX_RENDER_TARGETS] = {};
+        IDirect3DSurface9* depth_stencil_surface = nullptr;
 
-        IDirect3DVertexBuffer9* vertex_buffers[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];
-        IDirect3DIndexBuffer9* index_buffer;
+        IDirect3DVertexBuffer9* vertex_buffers[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS] = {};
+        IDirect3DIndexBuffer9* index_buffer = nullptr;
 
-        IDirect3DVertexDeclaration9* vertex_declaration;
+        IDirect3DVertexDeclaration9* vertex_declaration = nullptr;
 
         struct TextureSamplerStates
         {
-            IDirect3DBaseTexture9* base_textures[pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS];
-            states::D3DSamplerStateTypeValues sampler_state_type_values[pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS];
+            IDirect3DBaseTexture9* base_textures[pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS] = {};
+            states::D3DSamplerStateTypeValues sampler_state_type_values[pipeline::AbstractShaderStage::MAX_TEXTURE_SAMPLER_SLOTS] = {};
         };
 
         struct AbstractShaderStates
@@ -85,22 +85,22 @@ private:
         struct ShaderStates
             : public AbstractShaderStates
         {
-            TDirect3DShader9* shader;
+            TDirect3DShader9* shader = nullptr;
         };
 
         ShaderStates<IDirect3DVertexShader9> vs;
         ShaderStates<IDirect3DPixelShader9> ps;
 
-        D3DVIEWPORT9 viewport;
+        D3DVIEWPORT9 viewport = {};
 
-        states::D3DRasterizerStateTypeValues rasterizer_state_type_values;
-        states::D3DDepthStencilStateTypeValues depth_stencil_state_type_values;
-        states::D3DBlendStateTypeValues blend_state_type_values;
+        states::D3DRasterizerStateTypeValues rasterizer_state_type_values = {};
+        states::D3DDepthStencilStateTypeValues depth_stencil_state_type_values = {};
+        states::D3DBlendStateTypeValues blend_state_type_values = {};
 
-        unsigned stencil_reference_value;
+        unsigned stencil_reference_value = 0;
         Color blend_factor;
 
-        HardwareStates();
+        HardwareStates() = default;
     };
 
 

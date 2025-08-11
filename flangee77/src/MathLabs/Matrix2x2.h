@@ -3,6 +3,8 @@
 
 #include "./Vector2.h"
 
+#include <span>
+
 
 
 namespace ml7 {
@@ -238,8 +240,8 @@ struct Matrix2x2
     // Comparison Operators
     // #############################################################################
 
-    bool operator==(const Matrix2x2& m) const { for (unsigned k = 0; k < 4; ++k) if (data[k] != m.data[k]) return false; return true; }
-    bool operator!=(const Matrix2x2& m) const { for (unsigned k = 0; k < 4; ++k) if (data[k] != m.data[k]) return true; return false; }
+    bool operator==(const Matrix2x2& m) const noexcept { for (unsigned k = 0; k < 4; ++k) if (data[k] != m.data[k]) return false; return true; }
+    bool operator!=(const Matrix2x2& m) const noexcept { for (unsigned k = 0; k < 4; ++k) if (data[k] != m.data[k]) return true; return false; }
 
 
 
@@ -274,6 +276,9 @@ struct Matrix2x2
     /** Returns a copy of the given (column) vector transformed by this matrix. */
     constexpr Vector2 operator*(const Vector2& v) const { return transform(v); }
 
+    /** "Scales" a matrix by the specified factor (scalar multiplication). */
+    friend constexpr Matrix2x2 operator*(float s, const Matrix2x2& m) { return m * s; }
+
 
 
     // #############################################################################
@@ -296,8 +301,8 @@ struct Matrix2x2
     // Access Operators
     // #############################################################################
 
-    const float* operator[](unsigned i) const { assert(i < 2); return m[i]; }
-    float* operator[](unsigned i) { assert(i < 2); return m[i]; }
+    std::span<const float, 2> operator[](unsigned i) const { assert(i < 2); return std::span<const float, 2>{m[i], 2}; }
+    std::span<float, 2> operator[](unsigned i) { assert(i < 2); return std::span<float, 2>{m[i], 2}; }
 
 
 
@@ -369,15 +374,6 @@ struct Matrix2x2
     static Matrix2x2 compose(const ml7::Vector2& scaling, float angle);
 
 }; // struct Matrix2x2
-
-
-
-    // #############################################################################
-    // Additional Operators
-    // #############################################################################
-
-    /** "Scales" a matrix by the specified factor (scalar multiplication). */
-    constexpr Matrix2x2 operator*(float s, const Matrix2x2& m) { return m * s; }
 
 
 

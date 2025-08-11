@@ -12,6 +12,73 @@ namespace ml7 {
 
 
     /**
+     * Returns the value of base raised to the power of exp.
+     */
+    template <typename T>
+        requires(std::is_floating_point_v<T>)
+    constexpr T pow(T base, T exp)
+    {
+        return std::pow(base, exp);
+    }
+
+    /**
+     * Returns the value of base raised to the power of exp.
+     */
+    template <typename T>
+        requires(std::is_floating_point_v<T>)
+    constexpr T pow(T base, int exp)
+    {
+        return std::pow(base, exp);
+    }
+
+    /**
+     * Returns the value of base raised to the power of exp.
+     */
+    template <unsigned exp, typename T>
+        requires(std::is_floating_point_v<T>)
+    constexpr T pow(T base)
+    {
+        if constexpr (exp == 0)
+            return T(1);
+        else
+            return base * pow<exp - 1, T>(base);
+    }
+
+    /**
+     * Returns the given value squared.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T sqr(T x)
+    {
+        return x * x;
+    }
+
+    /**
+     * Returns the square root of the given value.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T sqrt(T x)
+    {
+        return std::sqrt(x);
+    }
+
+    /**
+     * Returns the signed square root of the given value.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T ssqrt(T x)
+    {
+        if (x < T(0))
+            return -std::sqrt(-x);
+        return std::sqrt(x);
+    }
+
+
+
+    /**
      * Returns the absolute amount of the given value.
      */
     template <typename T>
@@ -39,9 +106,19 @@ namespace ml7 {
      */
     template <typename T>
         requires(std::is_arithmetic_v<T>)
-    constexpr T step(T x, T edge = T(0))
+    constexpr T step(T x, T edge)
     {
         return x >= edge ? T(1) : T(0);
+    }
+
+    /**
+     * Returns 1 if x >= 0, 0 otherwise.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T step(T x)
+    {
+        return x >= T(0) ? T(1) : T(0);
     }
 
     /**
@@ -57,6 +134,19 @@ namespace ml7 {
         if (x <= min) return T(0);
         if (x >= max) return T(1);
         x = (x - min) / (max - min);
+        return x * x * (3.0f - 2.0f * x);
+    }
+
+    /**
+     * Returns 0 if x is less than 0, 1 if x is greater than 1, and a value between
+     * 0 and 1 otherwise using a Hermite polynomial.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T smoothstep(T x)
+    {
+        if (x <= T(0)) return T(0);
+        if (x >= T(1)) return T(1);
         return x * x * (3.0f - 2.0f * x);
     }
 
@@ -82,8 +172,8 @@ namespace ml7 {
     }
 
     /**
-    * Returns the smallest value of three given values.
-    */
+     * Returns the smallest value of three given values.
+     */
     template <typename T>
         requires(std::is_arithmetic_v<T>)
     constexpr T min3(T a, T b, T c)
@@ -95,8 +185,8 @@ namespace ml7 {
     }
 
     /**
-    * Returns the greatest value of three given values.
-    */
+     * Returns the greatest value of three given values.
+     */
     template <typename T>
         requires(std::is_arithmetic_v<T>)
     constexpr T max3(T a, T b, T c)
@@ -117,6 +207,67 @@ namespace ml7 {
     {
         if (x <= min) return min;
         if (x >= max) return max;
+        return x;
+    }
+
+    /**
+     * Clamps the given value to lie within the range [min; max].
+     */
+    template <auto min, auto max, typename T>
+        requires(std::is_arithmetic_v<T> && std::is_convertible_v<decltype(min), T> && std::is_convertible_v<decltype(max), T>)
+    constexpr T clamp(T x)
+    {
+        if (x <= static_cast<T>(min)) return static_cast<T>(min);
+        if (x >= static_cast<T>(max)) return static_cast<T>(max);
+        return x;
+    }
+
+    /**
+     * Clamps the given value to lie within the range [0; 1].
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T clamp01(T x)
+    {
+        if (x <= T(0)) return T(0);
+        if (x >= T(1)) return T(1);
+        return x;
+    }
+
+
+    /**
+     * General ramp function: customizable slope and starting point.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T ramp(T x, T start, T slope = T(1))
+    {
+        if (x <= start)
+            return T(0);
+        return (x - start) * slope;
+    }
+
+    /**
+     * General ramp function: customizable slope and starting point.
+     */
+    template <auto start, auto slope = 1, typename T>
+        requires(std::is_arithmetic_v<T> && std::is_convertible_v<decltype(start), T> && std::is_convertible_v<decltype(slope), T>)
+    constexpr T ramp(T x)
+    {
+        if (x <= start)
+            return T(0);
+        return (x - start) * slope;
+    }
+
+    /**
+     * Unit ramp function: returns x if x >= 0, 0 otherwise.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T ramp(T x)
+    {
+        if (x <= T(0))
+            return T(0);
         return x;
     }
 

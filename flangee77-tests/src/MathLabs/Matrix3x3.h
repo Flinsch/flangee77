@@ -126,6 +126,8 @@ TESTLABS_CASE( u8"CoreLabs:  Matrix3x3:  " )
     TESTLABS_CHECK_EQ( ml7::round( (ml7::Matrix3x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f, 7.0f, -8.0f, 9.0f ) * ml7::Matrix3x3( -10.0f, 11.0f, -12.0f, 13.0f, -14.0f, 15.0f, -16.0f, 17.0f, -18.0f )) * ml7::Vector3( 1.0f, 2.0f, 3.0f ), 3 ), ml7::round( ml7::Vector3( -192.0f, 462.0f, -732.0f ), 3 ) );
     TESTLABS_CHECK_EQ( ml7::round( ml7::Matrix3x3( -84.0f, 90.0f, -96.0f, 201.0f, -216.0f, 231.0f, -318.0f, 342.0f, -366.0f ) * ml7::Vector3( 1.0f, 2.0f, 3.0f ), 3 ), ml7::round( ml7::Vector3( -192.0f, 462.0f, -732.0f ), 3 ) );
 
+    TESTLABS_CHECK_EQ( 10.0f * ml7::Matrix3x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f, 7.0f, -8.0f, 9.0f ), ml7::Matrix3x3( 10.0f, -20.0f, 30.0f, -40.0f, 50.0f, -60.0f, 70.0f, -80.0f, 90.0f ) );
+
     TESTLABS_CHECK_EQ( ml7::Matrix3x3( 5.0f, -8.0f, 12.0f, 7.0f, -9.0f, 15.0f, -1.0f, 8.0f, 4.0f ) += ml7::Matrix3x3( -6.0f, 9.0f, -14.0f, 3.0f, 11.0f, -7.0f, 2.0f, -4.0f, 13.0f ), ml7::Matrix3x3( -1.0f, 1.0f, -2.0f, 10.0f, 2.0f, 8.0f, 1.0f, 4.0f, 17.0f ) );
     TESTLABS_CHECK_EQ( ml7::Matrix3x3( 5.0f, -8.0f, 12.0f, 7.0f, -9.0f, 15.0f, -1.0f, 8.0f, 4.0f ) -= ml7::Matrix3x3( -6.0f, 9.0f, -14.0f, 3.0f, 11.0f, -7.0f, 2.0f, -4.0f, 13.0f ), ml7::Matrix3x3( 11.0f, -17.0f, 26.0f, 4.0f, -20.0f, 22.0f, -3.0f, 12.0f, -9.0f ) );
     TESTLABS_CHECK_EQ( ml7::Matrix3x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f, 7.0f, -8.0f, 9.0f ) *= 10.0f, ml7::Matrix3x3( 10.0f, -20.0f, 30.0f, -40.0f, 50.0f, -60.0f, 70.0f, -80.0f, 90.0f ) );
@@ -136,8 +138,6 @@ TESTLABS_CASE( u8"CoreLabs:  Matrix3x3:  " )
 
     TESTLABS_CHECK( ml7::Matrix3x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f, 7.0f, -8.0f, 9.0f ) != ml7::Matrix3x3( -1.0f, 2.0f, -3.0f, 4.0f, -5.0f, 6.0f, -7.0f, 8.0f, -9.0f ) );
     TESTLABS_CHECK( !(ml7::Matrix3x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f, 7.0f, -8.0f, 9.0f ) != ml7::Matrix3x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f, 7.0f, -8.0f, 9.0f )) );
-
-    TESTLABS_CHECK_EQ( 10.0f * ml7::Matrix3x3( 1.0f, -2.0f, 3.0f, -4.0f, 5.0f, -6.0f, 7.0f, -8.0f, 9.0f ), ml7::Matrix3x3( 10.0f, -20.0f, 30.0f, -40.0f, 50.0f, -60.0f, 70.0f, -80.0f, 90.0f ) );
 }
 
 

@@ -16,12 +16,12 @@ struct UnescaperErrorHandler
     : public util::Unescaper::ErrorHandler
 {
     syntax::Diagnostics* diagnostics;
-    const syntax::Token& token;
+    const syntax::Token* token;
 
-    UnescaperErrorHandler(syntax::Diagnostics* diagnostics, const syntax::Token& _token)
+    UnescaperErrorHandler(syntax::Diagnostics* diagnostics, const syntax::Token* token)
         : util::Unescaper::ErrorHandler(diagnostics->get_log_context())
         , diagnostics(diagnostics)
-        , token(_token)
+        , token(token)
     {
     }
 

@@ -85,10 +85,10 @@ struct LineCommentMatcher
     size_t operator()(cl7::u8string_view source) const;
 };
 
-/**
- * Matches a block comment with configurable start and end delimiters (default: /* ... *\/),
- * with optional support for nesting.
- */
+///
+/// Matches a block comment with configurable start and end delimiters (default: /* ... */),
+/// with optional support for nesting.
+///
 struct BlockCommentMatcher
 {
     cl7::u8string_view open = u8"/*";

@@ -6,6 +6,7 @@
 #include "./CoreLabs/ordered_map.h"
 #include "./CoreLabs/static_vector.h"
 #include "./CoreLabs/strings.h"
+#include "./CoreLabs/utilities.h"
 #include "./CoreLabs/Guid.h"
 #include "./CoreLabs/Version.h"
 
@@ -16,6 +17,8 @@
 #include "./DataLabs/ini.h"
 
 #include "./MathLabs/functions.h"
+#include "./MathLabs/ops.h"
+#include "./MathLabs/Angle.h"
 #include "./MathLabs/Vector2.h"
 #include "./MathLabs/Vector3.h"
 #include "./MathLabs/Vector4.h"
@@ -25,7 +28,15 @@
 #include "./MathLabs/Matrix3x4.h"
 #include "./MathLabs/Matrix4x4.h"
 #include "./MathLabs/Quaternion.h"
-#include "./MathLabs/Angle.h"
+#include "./MathLabs/Line2.h"
+#include "./MathLabs/Line3.h"
+#include "./MathLabs/LineSegment2.h"
+#include "./MathLabs/LineSegment3.h"
+#include "./MathLabs/Ray2.h"
+#include "./MathLabs/Ray3.h"
+#include "./MathLabs/algorithm.h"
+#include "./MathLabs/distance2.h"
+#include "./MathLabs/distance3.h"
 
 #include "./ProgLabs/ArgumentBag.h"
 

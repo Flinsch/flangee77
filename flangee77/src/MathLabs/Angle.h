@@ -101,14 +101,14 @@ struct Angle
     // Comparison Operators
     // #############################################################################
 
-    bool operator==(Angle a) const { return radians == a.radians; }
-    bool operator!=(Angle a) const { return radians != a.radians; }
+    bool operator==(Angle a) const noexcept { return radians == a.radians; }
+    bool operator!=(Angle a) const noexcept { return radians != a.radians; }
 
-    bool operator<(Angle a) const { return radians < a.radians; }
-    bool operator>(Angle a) const { return radians > a.radians; }
+    bool operator<(Angle a) const noexcept { return radians < a.radians; }
+    bool operator>(Angle a) const noexcept { return radians > a.radians; }
 
-    bool operator<=(Angle a) const { return radians <= a.radians; }
-    bool operator>=(Angle a) const { return radians >= a.radians; }
+    bool operator<=(Angle a) const noexcept { return radians <= a.radians; }
+    bool operator>=(Angle a) const noexcept { return radians >= a.radians; }
 
 
 
@@ -130,6 +130,9 @@ struct Angle
     constexpr Angle operator*(float s) const { return {radians * s}; }
     /** Returns a copy of this angle divided by the given scalar. */
     constexpr Angle operator/(float s) const { return {radians / s}; }
+
+    /** Scales a given angle by the specified scalar. */
+    friend constexpr Angle operator*(float s, Angle a) { return a * s; }
 
 
 
@@ -182,17 +185,6 @@ struct Angle
     static Angle from_cycle(float value, float cycle);
 
 }; // struct Angle
-
-
-
-    // #############################################################################
-    // Additional Operators
-    // #############################################################################
-
-    /**
-     * Scales a given angle by the specified scalar.
-     */
-    constexpr Angle operator*(float s, Angle a) { return a * s; }
 
 
 

@@ -11,6 +11,7 @@ target_sources(flangee77
     errors.h
     filesystem.cpp
     filesystem.h
+    functional.h
     Guid.cpp
     Guid.h
     io.h
@@ -50,6 +51,8 @@ target_sources(flangee77
     io/IResizable.h
     io/IWritable.h
     io/OpenMode.h
+    io/ReadableMemory.cpp
+    io/ReadableMemory.h
     io/SeekMode.h
     io/Utf8Reader.cpp
     io/Utf8Reader.h

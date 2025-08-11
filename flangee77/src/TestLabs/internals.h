@@ -51,7 +51,7 @@
     ctx.try_post_result(tl7::ResultBuilder().make_result(ctx, (u8##macro_base "( " #expr1 " " #op " " #expr2 " )"), (u8##macro_base "( ") + tl7::internals::to_string(expr1) + (u8" " #op " ") + tl7::internals::to_string(expr2) + u8" )", __FILE__, __LINE__, tl7::Result::make_outcome(::abs((expr1) - (expr2)) < 2.0f * FLT_EPSILON)))
 
 #define TL7_INTERNAL_TRY_POST_RESULT_EQ_DBL(expr1, expr2, make_result, macro_base, op) \
-    ctx.try_post_result(tl7::ResultBuilder().make_result(ctx, (u8##macro_base "( " #expr1 " " #op " " #expr2 " )"), (u8##macro_base "( ") + tl7::internals::to_string(expr1) + (u8" " #op " ") + tl7::internals::to_string(expr2) + u8" )", __FILE__, __LINE__, tl7::Result::make_outcome(::abs((expr1) - (expr2)) < 2.0*DBL_EPSILON)))
+    ctx.try_post_result(tl7::ResultBuilder().make_result(ctx, (u8##macro_base "( " #expr1 " " #op " " #expr2 " )"), (u8##macro_base "( ") + tl7::internals::to_string(expr1) + (u8" " #op " ") + tl7::internals::to_string(expr2) + u8" )", __FILE__, __LINE__, tl7::Result::make_outcome(::abs((expr1) - (expr2)) < 2.0 * DBL_EPSILON)))
 
 #define TL7_INTERNAL_TRY_POST_RESULT_EQ_STR(expr1, expr2, make_result, macro_base, op) \
     ctx.try_post_result(tl7::ResultBuilder().make_result(ctx, (u8##macro_base "( " #expr1 " " #op " " #expr2 " )"), (u8##macro_base "( ") + tl7::internals::to_string(expr1) + (u8" " #op " ") + tl7::internals::to_string(expr2) + u8" )", __FILE__, __LINE__, tl7::Result::make_outcome(cl7::to_string(expr1) op cl7::to_string(expr2))))

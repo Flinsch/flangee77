@@ -1,5 +1,7 @@
 #include "Stopwatch.h"
 
+#include <utility>
+
 
 
 namespace cl7::profiling {
@@ -58,7 +60,7 @@ namespace cl7::profiling {
     unsigned Stopwatch::calculate_elapsed_msecs()
     {
         auto duration_milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(calculate_elapsed_time()).count();
-        assert(duration_milliseconds <= static_cast<decltype(duration_milliseconds)>(std::numeric_limits<unsigned>::max()));
+        assert(std::cmp_less_equal(duration_milliseconds ,std::numeric_limits<unsigned>::max()));
         return static_cast<unsigned>(duration_milliseconds);
     }
 
@@ -69,7 +71,7 @@ namespace cl7::profiling {
     unsigned Stopwatch::calculate_elapsed_usecs()
     {
         auto duration_microseconds = std::chrono::duration_cast<std::chrono::microseconds>(calculate_elapsed_time()).count();
-        assert(duration_microseconds <= static_cast<decltype(duration_microseconds)>(std::numeric_limits<unsigned>::max()));
+        assert(std::cmp_less_equal(duration_microseconds ,std::numeric_limits<unsigned>::max()));
         return static_cast<unsigned>(duration_microseconds);
     }
 

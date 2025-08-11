@@ -11,7 +11,7 @@ namespace dl7::syntax {
         if (source.length() < literal.length())
             return 0;
 
-        if (literal != source.substr(0, literal.length()))
+        if (!source.starts_with(literal))
             return 0;
 
         return literal.length();

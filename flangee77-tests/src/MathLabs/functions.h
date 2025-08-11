@@ -9,6 +9,84 @@
 
 
 
+TESTLABS_CASE( u8"MathLabs:  functions:  pow(T, T)" )
+{
+    TESTLABS_CHECK_EQ( ml7::pow( 0.0f, 0.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 5.5f, 0.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 3.0f, 1.0f ), 3.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 2.0f, 2.0f ), 4.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 2.0f, 3.0f ), 8.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 1.5f, 4.0f ), 5.0625f );
+    TESTLABS_CHECK_EQ( ml7::pow( -1.0f, 5.0f ), -1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( -1.0f, 4.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 0.0f, 3.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 1.0f, 0.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 2.0f, -1.0f ), 0.5f );
+    TESTLABS_CHECK_EQ( ml7::pow( 4.0f, 0.5f ), 2.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 4.0f, -0.5f ), 0.5f );
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  pow(T, int)" )
+{
+    TESTLABS_CHECK_EQ( ml7::pow( 0.0f, 0 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 5.5f, 0 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 3.0f, 1 ), 3.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 2.0f, 2 ), 4.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 2.0f, 3 ), 8.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 1.5f, 4 ), 5.0625f );
+    TESTLABS_CHECK_EQ( ml7::pow( -1.0f, 5 ), -1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( -1.0f, 4 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 0.0f, 3 ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 1.0f, 0 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow( 2.0f, -1 ), 0.5f );
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  pow<unsigned>(T)" )
+{
+    TESTLABS_CHECK_EQ( ml7::pow<0>( 0.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<0>( 5.5f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<1>( 3.0f ), 3.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<2>( 2.0f ), 4.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<3>( 2.0f ), 8.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<4>( 1.5f ), 5.0625f );
+    TESTLABS_CHECK_EQ( ml7::pow<5>( -1.0f ), -1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<4>( -1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<3>( 0.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::pow<0>( 1.0f ), 1.0f );
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  sqr" )
+{
+    TESTLABS_CHECK_EQ( ml7::sqr( 0.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::sqr( 1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::sqr( 2.0f ), 4.0f );
+    TESTLABS_CHECK_EQ( ml7::sqr( 3.0f ), 9.0f );
+    TESTLABS_CHECK_EQ( ml7::sqr( -1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::sqr( -2.0f ), 4.0f );
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  sqrt" )
+{
+    TESTLABS_CHECK_EQ( ml7::sqrt( 0.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::sqrt( 1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::sqrt( 4.0f ), 2.0f );
+    TESTLABS_CHECK_EQ( ml7::sqrt( 9.0f ), 3.0f );
+    TESTLABS_CHECK( std::isnan( ml7::sqrt( -1.0f ) ) );
+    TESTLABS_CHECK( std::isnan( ml7::sqrt( -2.0f ) ) );
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  ssqrt" )
+{
+    TESTLABS_CHECK_EQ( ml7::sqrt( 0.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::sqrt( 1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::sqrt( 4.0f ), 2.0f );
+    TESTLABS_CHECK_EQ( ml7::sqrt( 9.0f ), 3.0f );
+    TESTLABS_CHECK_EQ( ml7::ssqrt( -1.0f ), -1.0f );
+    TESTLABS_CHECK_EQ( ml7::ssqrt( -4.0f ), -2.0f );
+}
+
+
+
 TESTLABS_CASE( u8"MathLabs:  functions:  abs" )
 {
     struct Entry
@@ -61,7 +139,7 @@ TESTLABS_CASE( u8"MathLabs:  functions:  sgn" )
     }
 }
 
-TESTLABS_CASE( u8"MathLabs:  functions:  step" )
+TESTLABS_CASE( u8"MathLabs:  functions:  step(x, edge)" )
 {
     struct Entry
     {
@@ -88,7 +166,7 @@ TESTLABS_CASE( u8"MathLabs:  functions:  step" )
         { -2.0f, 0.5f, 0.0f },
     };
 
-    TESTLABS_SUBCASE_BATCH( u8"step<float>", container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"step<float>(x, edge)", container, entry )
     {
         auto x = entry.x;
         auto edge = entry.edge;
@@ -97,7 +175,33 @@ TESTLABS_CASE( u8"MathLabs:  functions:  step" )
     }
 }
 
-TESTLABS_CASE( u8"MathLabs:  functions:  smoothstep" )
+TESTLABS_CASE( u8"MathLabs:  functions:  step(x)" )
+{
+    struct Entry
+    {
+        float x;
+        float expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 1.0f },
+        { 1.0f, 1.0f },
+        { -1.0f, 0.0f },
+        { 0.5f, 1.0f },
+        { -0.5f, 0.0f },
+        { 2.0f, 1.0f },
+        { -2.0f, 0.0f },
+    };
+
+    TESTLABS_SUBCASE_BATCH( u8"step<float>(x)", container, entry )
+    {
+        auto x = entry.x;
+        auto expected = entry.expected;
+        TESTLABS_CHECK_EQ( ml7::step( x ), expected );
+    }
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  smoothstep(x, min, max)" )
 {
     struct Entry
     {
@@ -123,13 +227,39 @@ TESTLABS_CASE( u8"MathLabs:  functions:  smoothstep" )
         { -2.0f, -1.0f, +1.0f, 0.0f },
     };
 
-    TESTLABS_SUBCASE_BATCH( u8"smoothstep<float>", container, entry )
+    TESTLABS_SUBCASE_BATCH( u8"smoothstep<float>(x, min, max)", container, entry )
     {
         auto x = entry.x;
         auto min = entry.min;
         auto max = entry.max;
         auto expected = entry.expected;
         TESTLABS_CHECK_EQ( ml7::smoothstep( x, min, max ), expected );
+    }
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  smoothstep(x)" )
+{
+    struct Entry
+    {
+        float x;
+        float expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f },
+        { 1.0f, 1.0f },
+        { -1.0f, 0.0f },
+        { 0.5f, 0.5f },
+        { -0.5f, 0.0f },
+        { 2.0f, 1.0f },
+        { -2.0f, 0.0f },
+    };
+
+    TESTLABS_SUBCASE_BATCH( u8"smoothstep<float>(x)", container, entry )
+    {
+        auto x = entry.x;
+        auto expected = entry.expected;
+        TESTLABS_CHECK_EQ( ml7::smoothstep( x ), expected );
     }
 }
 
@@ -235,28 +365,61 @@ TESTLABS_CASE( u8"MathLabs:  functions:  max3" )
 
 TESTLABS_CASE( u8"MathLabs:  functions:  clamp" )
 {
-    struct Entry
-    {
-        float x, min, max;
-        float expected;
-    } entry;
+    TESTLABS_CHECK_EQ( ml7::clamp( 0.0f, 0.0f, 0.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::clamp( 1.0f, 2.0f, 3.0f ), 2.0f );
+    TESTLABS_CHECK_EQ( ml7::clamp( 1.0f, -1.0f, 0.5f ), 0.5f );
+    TESTLABS_CHECK_EQ( ml7::clamp( 1.0f, 1.5f, -1.0f ), 1.5f );
 
-    const std::vector<Entry> container {
-        { 0.0f, 0.0f, 0.0f, 0.0f },
-        { 1.0f, 2.0f, 3.0f, 2.0f },
-        { 1.0f, -1.0f, 0.5f, 0.5f },
-        { 1.0f, 1.5f, -1.0f, 1.5f },
-    };
-
-    TESTLABS_SUBCASE_BATCH( u8"clamp<float>", container, entry )
-    {
-        auto x = entry.x;
-        auto min = entry.min;
-        auto max = entry.max;
-        auto expected = entry.expected;
-        TESTLABS_CHECK_EQ( ml7::clamp( x, min, max ), expected );
-    }
+    TESTLABS_CHECK_EQ( (ml7::clamp<0.0f, 0.0f>( 0.0f )), 0.0f );
+    TESTLABS_CHECK_EQ( (ml7::clamp<2.0f, 3.0f>( 1.0f )), 2.0f );
+    TESTLABS_CHECK_EQ( (ml7::clamp<-1.0f, 0.5f>( 1.0f )), 0.5f );
+    TESTLABS_CHECK_EQ( (ml7::clamp<1.5f, -1.0f>( 1.0f )), 1.5f );
 }
+
+TESTLABS_CASE( u8"MathLabs:  functions:  clamp01" )
+{
+    TESTLABS_CHECK_EQ( ml7::clamp01( -0.5f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::clamp01( 0.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::clamp01( 0.5f ), 0.5f );
+    TESTLABS_CHECK_EQ( ml7::clamp01( 1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::clamp01( 1.5f ), 1.0f );
+}
+
+
+
+TESTLABS_CASE( u8"MathLabs:  functions:  ramp" )
+{
+    TESTLABS_CHECK_EQ( ml7::ramp( 2.0f, 1.0f, 1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 1.0f, 1.0f, 1.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 0.5f, 1.0f, 1.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 3.0f, 1.0f, 2.0f ), 4.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 1.5f, 1.0f, 0.5f ), 0.25f );
+    TESTLABS_CHECK_EQ( ml7::ramp( -1.0f, -2.0f, 1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( -3.0f, -2.0f, 1.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 2.0f, 1.0f, -1.0f ), -1.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 0.5f, 1.0f, -2.0f ), 0.0f );
+
+    TESTLABS_CHECK_EQ( (ml7::ramp<1.0f, 1.0f>( 2.0f )), 1.0f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<1.0f, 1.0f>( 1.0f )), 0.0f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<1.0f, 1.0f>( 0.5f )), 0.0f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<1.0f, 2.0f>( 3.0f )), 4.0f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<1.0f, 0.5f>( 1.5f )), 0.25f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<-2.0f, 1.0f>( -1.0f )), 1.0f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<-2.0f, 1.0f>( -3.0f )), 0.0f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<1.0f, -1.0f>( 2.0f )), -1.0f );
+    TESTLABS_CHECK_EQ( (ml7::ramp<1.0f, -2.0f>( 0.5f )), 0.0f );
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  (unit) ramp" )
+{
+    TESTLABS_CHECK_EQ( ml7::ramp( -0.5f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 0.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 0.5f ), 0.5f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::ramp( 1.5f ), 1.5f );
+}
+
+
 
 TESTLABS_CASE( u8"MathLabs:  functions:  round" )
 {
