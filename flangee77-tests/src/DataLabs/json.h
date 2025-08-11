@@ -14,6 +14,13 @@
 
 
 
+namespace tl7::internals {
+    inline
+    cl7::u8string to_string(const dl7::json::Json& json) { return json.to_string(); }
+}
+
+
+
 TESTLABS_CASE( u8"DataLabs:  json:  Json:  null" )
 {
     dl7::json::Json json;
@@ -258,6 +265,35 @@ TESTLABS_CASE( u8"DataLabs:  json:  util::Unescaper::unescape_string" )
         TESTLABS_CHECK_EQ( dl7::json::util::Unescaper{}.unescape_string( entry.json_string ), entry.expected_string );
         cl7::u8osstream oss;
         TESTLABS_CHECK_EQ( dl7::json::util::Unescaper{}.unescape_string( oss, entry.json_string ), entry.expected_result );
+    }
+}
+
+
+
+TESTLABS_CASE( u8"DataLabs:  json:  JsonReader:  parse" )
+{
+    struct Entry
+    {
+        cl7::u8string string;
+        dl7::json::Json json;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"null", dl7::json::Json( dl7::json::Json::Type::Null ) },
+        { u8"{}", dl7::json::Json( dl7::json::Json::Type::Object ) },
+        { u8"[]", dl7::json::Json( dl7::json::Json::Type::Array ) },
+        { u8"\"Hello World\"", dl7::json::Json( u8"Hello World" ) },
+        { u8"7.0", dl7::json::Json( 7.0 ) },
+        { u8"-7", dl7::json::Json( -7 ) },
+        { u8"7", dl7::json::Json( 7ul ) },
+        { u8"true", dl7::json::Json( true ) },
+        { u8"false", dl7::json::Json( false ) },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
+    {
+        const auto json = dl7::json::JsonReader::parse( entry.string );
+        TESTLABS_CHECK_EQ( json, entry.json );
     }
 }
 

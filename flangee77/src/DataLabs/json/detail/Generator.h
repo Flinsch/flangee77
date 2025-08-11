@@ -27,17 +27,17 @@ public:
 
 
 private:
-    cl7::u8osstream& _write_json(cl7::u8osstream& oss, const Json& json, size_t depth, const Format& format) const;
+    cl7::u8osstream& _write_json(cl7::u8osstream& oss, const Json& json, size_t depth) const;
 
-    cl7::u8osstream& _write_string(cl7::u8osstream& oss, cl7::u8string_view string, const Format& format) const;
-    cl7::u8osstream& _write_string(cl7::u8osstream& oss, cl7::u8string_view string, cl7::u8char_t quote_char, const Format& format) const;
+    cl7::u8osstream& _write_string(cl7::u8osstream& oss, cl7::u8string_view string) const;
+    cl7::u8osstream& _write_string(cl7::u8osstream& oss, cl7::u8string_view string, cl7::u8char_t quote_char) const;
 
-    static cl7::u8osstream& _write_decimal(cl7::u8osstream& oss, decimal_t decimal, const Format& format);
+    cl7::u8osstream& _write_decimal(cl7::u8osstream& oss, decimal_t decimal) const;
 
-    static void _start_item(cl7::u8osstream& oss, size_t depth, const Format& format);
-    static void _end_item(cl7::u8osstream& oss, size_t index, size_t count, const Format& format);
+    void _start_item(cl7::u8osstream& oss, size_t depth) const;
+    void _end_item(cl7::u8osstream& oss, size_t index, size_t count) const;
 
-    static void _put_line_ending(cl7::u8osstream& oss, const Format& format);
+    void _put_line_ending(cl7::u8osstream& oss) const;
 
     Format _format;
 

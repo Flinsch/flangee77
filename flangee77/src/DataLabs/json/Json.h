@@ -30,11 +30,12 @@ public:
 
 
     Json();
-    Json(object_t object);
-    Json(array_t array);
-    Json(string_t string);
-    Json(std::basic_string_view<string_t::value_type> string);
-    Json(const string_t::value_type* string);
+    explicit Json(null_t);
+    explicit Json(object_t object);
+    explicit Json(array_t array);
+    explicit Json(string_t string);
+    explicit Json(std::basic_string_view<string_t::value_type> string);
+    explicit Json(const string_t::value_type* string);
 
     explicit Json(float number);
     explicit Json(double number);
@@ -161,6 +162,11 @@ public:
 
     Json& operator[](const cl7::u8string& key);
     Json& operator[](cl7::u8string&& key);
+
+
+
+    bool operator==(const Json& other) const;
+    bool operator!=(const Json& other) const { return !(*this == other); }
 
 
 

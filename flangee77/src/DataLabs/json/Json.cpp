@@ -15,6 +15,11 @@ namespace dl7::json {
     {
     }
 
+    Json::Json(null_t)
+        : _value(nullptr)
+    {
+    }
+
     Json::Json(object_t object)
         : _value(std::make_unique<object_t>(std::move(object)))
     {
@@ -311,6 +316,24 @@ namespace dl7::json {
         if (is_null())
             set_object({});
         return as_object()[std::move(key)];
+    }
+
+
+
+    bool Json::operator==(const Json& other) const
+    {
+        if (get_type() != other.get_type())
+            return false;
+
+        switch (get_type())
+        {
+        case Type::Object:
+            return as_object() == other.as_object();
+        case Type::Array:
+            return as_array() == other.as_array();
+        default:
+            return _value == other._value;
+        }
     }
 
 
