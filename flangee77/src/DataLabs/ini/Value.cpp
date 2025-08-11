@@ -205,11 +205,20 @@ namespace dl7::ini {
 
 
     /**
-     * Serializes this INI value into a compact single-line string representation.
+     * Serializes this INI value into a string representation.
      */
     string_t Value::to_string() const
     {
+        if (is_undefined()) return {};
+        if (is_string()) return as_string();
+        if (is_integer()) return cl7::to_string(as_integer());
+        if (is_unsigned()) return cl7::to_string(as_unsigned());
+        if (is_decimal()) return cl7::to_string(as_decimal());
+        if (is_true()) return u8"true";
+        if (is_false()) return u8"false";
+
         //return IniWriter::to_string(*this);
+        assert(false);
         return {};
     }
 

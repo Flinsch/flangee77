@@ -28,9 +28,9 @@ public:
 
 
     Value();
-    Value(string_t string);
-    Value(std::basic_string_view<string_t::value_type> string);
-    Value(const string_t::value_type* string);
+    explicit Value(string_t string);
+    explicit Value(std::basic_string_view<string_t::value_type> string);
+    explicit Value(const string_t::value_type* string);
 
     explicit Value(float number);
     explicit Value(double number);
@@ -127,9 +127,14 @@ public:
 
 
     /**
-     * Serializes this INI value into a compact single-line string representation.
+     * Serializes this INI value into a string representation.
      */
     string_t to_string() const;
+
+
+
+    bool operator==(const Value& other) const = default;
+    bool operator!=(const Value& other) const { return !(*this == other); }
 
 
 

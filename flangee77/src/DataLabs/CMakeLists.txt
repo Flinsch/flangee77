@@ -8,13 +8,28 @@ target_sources(flangee77
     compression/Deflate.cpp
     compression/Deflate.h
 
+    ini/Format.h
     ini/Ini.cpp
     ini/Ini.h
+    ini/IniReader.cpp
+    ini/IniReader.h
+    ini/IniWriter.cpp
+    ini/IniWriter.h
     ini/Section.cpp
     ini/Section.h
     ini/types.h
     ini/Value.cpp
     ini/Value.h
+
+    ini/detail/AnyOtherMatcher.cpp
+    ini/detail/AnyOtherMatcher.h
+    ini/detail/Builder.cpp
+    ini/detail/Builder.h
+    ini/detail/Generator.cpp
+    ini/detail/Generator.h
+    ini/detail/Lexer.cpp
+    ini/detail/Lexer.h
+    ini/detail/Symbol.h
 
     json/Format.h
     json/Json.cpp
