@@ -233,7 +233,7 @@ namespace dl7::ini::detail {
         assert(lexeme.ends_with(quote_char));
 
         // Just use the JSON unescaper for convenience.
-        json::detail::UnescaperErrorHandler unescaper_error_handler{get_diagnostics(), token};
+        json::detail::UnescaperErrorHandler unescaper_error_handler{get_diagnostics(), &token};
         json::util::Unescaper unescaper{&unescaper_error_handler};
 
         return unescaper.unescape_string(lexeme.substr(1, lexeme.size() - 2));
