@@ -170,7 +170,6 @@ namespace dl7::ini::detail {
             }
         }
 
-        std::cmatch m;
         quotes_required = quotes_required ||
             syntax::matchers::IntegerLiteralMatcher{}(string) == string.length() ||
             syntax::matchers::FloatingPointLiteralMatcher{}(string) == string.length() ||
