@@ -44,9 +44,6 @@ private:
     Value _parse_value(syntax::TokenReader& token_reader);
 
     string_t _parse_quoted_string(syntax::TokenReader& token_reader);
-    decimal_t _parse_decimal(syntax::TokenReader& token_reader);
-    integer_t _parse_integer(syntax::TokenReader& token_reader);
-    unsigned_t _parse_unsigned(syntax::TokenReader& token_reader);
     string_t _parse_unquoted_string(syntax::TokenReader& token_reader);
 
     void _error(cl7::u8string_view message, const syntax::Token& token);

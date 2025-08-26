@@ -43,8 +43,6 @@ namespace dl7::ini::detail {
         _terminal_symbols.add_literal( ESCAPED_NEWLINE, u8"\\\n" );
         _terminal_symbols.add_literal( ESCAPED_NEWLINE, u8"\\\r" );
 
-        _terminal_symbols.add_custom( INTEGER_LITERAL, syntax::matchers::IntegerLiteralMatcher{} );
-        _terminal_symbols.add_custom( DECIMAL_LITERAL, syntax::matchers::FloatingPointLiteralMatcher{} );
         _terminal_symbols.add_custom( QUOTED_STRING_LITERAL, syntax::matchers::DoubleQuotedStringMatcher{} );
         _terminal_symbols.add_custom( QUOTED_STRING_LITERAL, syntax::matchers::SingleQuotedStringMatcher{} );
 

@@ -1,5 +1,8 @@
 #include "Generator.h"
 
+#include "./BooleanMatcher.h"
+
+#include <DataLabs/syntax/matchers.h>
 #include <DataLabs/json/util/Escaper.h>
 
 #include <CoreLabs/strings/Encoder.h>
@@ -166,6 +169,12 @@ namespace dl7::ini::detail {
                 break;
             }
         }
+
+        std::cmatch m;
+        quotes_required = quotes_required ||
+            syntax::matchers::IntegerLiteralMatcher{}(string) == string.length() ||
+            syntax::matchers::FloatingPointLiteralMatcher{}(string) == string.length() ||
+            BooleanMatcher{}(string) == string.length();
 
         if (quotes_required)
             return _write_quoted_string(oss, string);

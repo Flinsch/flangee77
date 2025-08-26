@@ -23,6 +23,8 @@ target_sources(flangee77
 
     ini/detail/AnyOtherMatcher.cpp
     ini/detail/AnyOtherMatcher.h
+    ini/detail/BooleanMatcher.cpp
+    ini/detail/BooleanMatcher.h
     ini/detail/Builder.cpp
     ini/detail/Builder.h
     ini/detail/Generator.cpp

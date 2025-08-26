@@ -1,7 +1,9 @@
 #include "Builder.h"
 
 #include "./Symbol.h"
+#include "./BooleanMatcher.h"
 
+#include <DataLabs/syntax/matchers.h>
 #include <DataLabs/json/util/Unescaper.h>
 #include <DataLabs/json/detail/UnescaperErrorHandler.h>
 
@@ -183,32 +185,44 @@ namespace dl7::ini::detail {
 
     Value Builder::_parse_value(syntax::TokenReader& token_reader)
     {
-        switch (token_reader.peek_symbol_id())
-        {
-        case INTEGER_LITERAL:
-            if (token_reader.check_first_char(u8'-') || token_reader.check_first_char(u8'+'))
-                return Value{_parse_integer(token_reader)};
-            return Value{_parse_unsigned(token_reader)};
-        case DECIMAL_LITERAL:
-            return Value{_parse_decimal(token_reader)};
-
-        case QUOTED_STRING_LITERAL:
+        if (token_reader.peek_symbol_id() == QUOTED_STRING_LITERAL)
             return Value{_parse_quoted_string(token_reader)};
-
-        default:
-            break;
-        }
 
         auto string = _parse_unquoted_string(token_reader);
         if (string.empty())
             return {};
 
-        const auto sv = cl7::strings::reinterpret_utf8(string);
+        if (syntax::matchers::IntegerLiteralMatcher{}(string) == string.length())
+        {
+            std::istringstream iss{std::string{cl7::strings::reinterpret_utf8(string)}};
 
-        std::cmatch m;
-        if (std::regex_match(sv.data(), sv.data() + sv.length(), m, std::regex("(y|Y|yes|Yes|YES|true|True|TRUE|on|On|ON)")))
+            if (string[0] == u8'-' || string[0] == u8'+')
+            {
+                integer_t number = {};
+                iss >> number;
+                assert(!iss.bad());
+                return Value{number};
+            }
+
+            unsigned_t number = {};
+            iss >> number;
+            assert(!iss.bad());
+            return Value{number};
+        }
+
+        if (syntax::matchers::FloatingPointLiteralMatcher{}(string) == string.length())
+        {
+            std::istringstream iss{std::string{cl7::strings::reinterpret_utf8(string)}};
+
+            decimal_t number = {};
+            iss >> number;
+            assert(!iss.bad());
+            return Value{number};
+        }
+
+        if (BooleanMatcher{BooleanMatcher::Mode::TruthyOnly}(string) == string.length())
             return Value{true};
-        if (std::regex_match(sv.data(), sv.data() + sv.length(), m, std::regex("(n|N|no|No|NO|false|False|FALSE|off|Off|OFF)")))
+        if (BooleanMatcher{BooleanMatcher::Mode::FalsyOnly}(string) == string.length())
             return Value{false};
 
         return Value{string};
@@ -237,69 +251,6 @@ namespace dl7::ini::detail {
         json::util::Unescaper unescaper{&unescaper_error_handler};
 
         return unescaper.unescape_string(lexeme.substr(1, lexeme.size() - 2));
-    }
-
-    decimal_t Builder::_parse_decimal(syntax::TokenReader& token_reader)
-    {
-        if (!token_reader.check_symbol_id(DECIMAL_LITERAL))
-        {
-            _error(u8"Decimal number expected.", token_reader.peek_token());
-            return {};
-        }
-
-        const auto token = token_reader.consume_token();
-        const auto lexeme = token.lexeme;
-
-        std::istringstream iss{std::string{cl7::strings::reinterpret_utf8(lexeme)}};
-        decimal_t number = {};
-        iss >> number;
-
-        if (iss.bad())
-            _error(u8"Bad decimal literal.", token);
-
-        return number;
-    }
-
-    integer_t Builder::_parse_integer(syntax::TokenReader& token_reader)
-    {
-        if (!token_reader.check_symbol_id(INTEGER_LITERAL))
-        {
-            _error(u8"(Signed) integer number expected.", token_reader.peek_token());
-            return {};
-        }
-
-        const auto token = token_reader.consume_token();
-        const auto lexeme = token.lexeme;
-
-        std::istringstream iss{std::string{cl7::strings::reinterpret_utf8(lexeme)}};
-        integer_t number = {};
-        iss >> number;
-
-        if (iss.bad())
-            _error(u8"Bad (signed) integer literal.", token);
-
-        return number;
-    }
-
-    unsigned_t Builder::_parse_unsigned(syntax::TokenReader& token_reader)
-    {
-        if (!token_reader.check_symbol_id(INTEGER_LITERAL))
-        {
-            _error(u8"Unsigned integer number expected.", token_reader.peek_token());
-            return {};
-        }
-
-        const auto token = token_reader.consume_token();
-        const auto lexeme = token.lexeme;
-
-        std::istringstream iss{std::string{cl7::strings::reinterpret_utf8(lexeme)}};
-        unsigned_t number = {};
-        iss >> number;
-
-        if (iss.bad())
-            _error(u8"Bad unsigned integer literal.", token);
-
-        return number;
     }
 
     string_t Builder::_parse_unquoted_string(syntax::TokenReader& token_reader)
