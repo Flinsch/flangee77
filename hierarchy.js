@@ -61,6 +61,7 @@ var hierarchy =
     [ "xl7::graphics::images::PngImageHandler::BitInfo", "d1/db4/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1BitInfo.html", null ],
     [ "cl7::logging::HtmlLogHandler::Block", "dc/d37/structcl7_1_1logging_1_1HtmlLogHandler_1_1Block.html", null ],
     [ "dl7::syntax::matchers::BlockCommentMatcher", "d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html", null ],
+    [ "dl7::ini::detail::BooleanMatcher", "da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html", null ],
     [ "cl7::io::ByteReader", "d7/df3/classcl7_1_1io_1_1ByteReader.html", null ],
     [ "cl7::io::ByteWriter", "de/d6e/classcl7_1_1io_1_1ByteWriter.html", null ],
     [ "xl7::graphics::RenderingDevice::Capabilities", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html", null ],

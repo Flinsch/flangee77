@@ -17,6 +17,6 @@ var searchData=
   ['border_14',['Border',['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#a4f8492702caa383f50f8ebd226c1ecb4a070554647306343cbea29ebfdd278ba8',1,'xl7::graphics::states::SamplerState']]],
   ['borderless_15',['Borderless',['../da/df2/classxl7_1_1MainWindow.html#a65d67e130764aea53e92a93a196e76e7a78f0192ac55eba33ee88d026452952e5',1,'xl7::MainWindow']]],
   ['borderlessfullscreen_16',['BorderlessFullscreen',['../d2/d33/structxl7_1_1Config_1_1Video.html#ae385a3a6e937c6aef106ebdf94bd0e59ac1999bb36fd75c30832ec398d5b249ea',1,'xl7::Config::Video']]],
-  ['both_17',['Both',['../d9/db3/structdl7_1_1ini_1_1Format.html#a0f762a3d83a823fe830b5091974a75eca130c5b3473c57faa76e2a1c54e26f88e',1,'dl7::ini::Format']]],
+  ['both_17',['both',['../d9/db3/structdl7_1_1ini_1_1Format.html#a0f762a3d83a823fe830b5091974a75eca130c5b3473c57faa76e2a1c54e26f88e',1,'dl7::ini::Format::Both'],['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a7fe905665e8a42ae50081048a7aca951a130c5b3473c57faa76e2a1c54e26f88e',1,'dl7::ini::detail::BooleanMatcher::Both']]],
   ['bytecode_18',['Bytecode',['../d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html#a67a32fc444b59dd218cbcacc4cb8b2e1afc348a9ae898bbbe1406eecc7db967d7',1,'xl7::graphics::shaders::ShaderCode']]]
 ];

@@ -11,5 +11,6 @@ var searchData=
   ['trianglelist_8',['TriangleList',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287faf5beeab7a1f452e5b0e9b03b44f0de92',1,'xl7::graphics::meshes']]],
   ['trianglestrip_9',['TriangleStrip',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287fa1da0b9ead8b051940a89214bae22831c',1,'xl7::graphics::meshes']]],
   ['true_5fconstant_10',['TRUE_CONSTANT',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a7da289c327b2f071a70cb72f06861ebb',1,'dl7::json::detail']]],
-  ['truncate_11',['Truncate',['../d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5aa8156810bfee2bd2b44765b9e91db3bd',1,'cl7::io']]]
+  ['truncate_11',['Truncate',['../d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5aa8156810bfee2bd2b44765b9e91db3bd',1,'cl7::io']]],
+  ['truthyonly_12',['TruthyOnly',['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a7fe905665e8a42ae50081048a7aca951ad04890ff50f5ade32825bb55c1102bf2',1,'dl7::ini::detail::BooleanMatcher']]]
 ];

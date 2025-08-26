@@ -91,6 +91,7 @@ var annotated_dup =
       [ "ini", "dd/dc6/namespacedl7_1_1ini.html", [
         [ "detail", "de/d05/namespacedl7_1_1ini_1_1detail.html", [
           [ "AnyOtherMatcher", "d4/dc9/structdl7_1_1ini_1_1detail_1_1AnyOtherMatcher.html", "d4/dc9/structdl7_1_1ini_1_1detail_1_1AnyOtherMatcher" ],
+          [ "BooleanMatcher", "da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html", "da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher" ],
           [ "Builder", "d2/d8d/classdl7_1_1ini_1_1detail_1_1Builder.html", "d2/d8d/classdl7_1_1ini_1_1detail_1_1Builder" ],
           [ "Generator", "dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator.html", "dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator" ],
           [ "Lexer", "d0/dfd/classdl7_1_1ini_1_1detail_1_1Lexer.html", "d0/dfd/classdl7_1_1ini_1_1detail_1_1Lexer" ]
