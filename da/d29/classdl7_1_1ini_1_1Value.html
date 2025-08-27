@@ -205,6 +205,10 @@ requires (std::is_integral_v&lt;Tinteger&gt; &amp;&amp; std::is_signed_v&lt;Tint
 requires (std::is_integral_v&lt;Tunsigned&gt; &amp;&amp; std::is_unsigned_v&lt;Tunsigned&gt;)</td></tr>
 <tr class="memitem:a2631e4000220c35092b208f8f3c5e99f"><td class="memTemplItemLeft" align="right" valign="top">Tunsigned&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a2631e4000220c35092b208f8f3c5e99f">as_unsigned</a> () const</td></tr>
 <tr class="separator:a2631e4000220c35092b208f8f3c5e99f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a900b332a9921aa45a051c0b3544e7428" id="r_a900b332a9921aa45a051c0b3544e7428"><td class="memTemplParams" colspan="2">template&lt;typename Tnumber &gt; <br />
+requires (std::is_arithmetic_v&lt;Tnumber&gt;)</td></tr>
+<tr class="memitem:a900b332a9921aa45a051c0b3544e7428"><td class="memTemplItemLeft" align="right" valign="top">Tnumber&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a900b332a9921aa45a051c0b3544e7428">as_number</a> () const</td></tr>
+<tr class="separator:a900b332a9921aa45a051c0b3544e7428"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6353bb5c6a67fc3ba29a26ac883498e" id="r_ae6353bb5c6a67fc3ba29a26ac883498e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#adea5c45d34ed292ba80c46f289547521">boolean_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#ae6353bb5c6a67fc3ba29a26ac883498e">as_boolean</a> () const</td></tr>
 <tr class="separator:ae6353bb5c6a67fc3ba29a26ac883498e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25d728843ef81b9a3639f80bfec79549" id="r_a25d728843ef81b9a3639f80bfec79549"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a25d728843ef81b9a3639f80bfec79549">set_undefined</a> ()</td></tr>
@@ -987,6 +991,34 @@ requires (std::is_integral_v&lt;Tinteger&gt; &amp;&amp; std::is_signed_v&lt;Tint
       <table class="memname">
         <tr>
           <td class="memname">Tinteger dl7::ini::Value::as_integer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a900b332a9921aa45a051c0b3544e7428" name="a900b332a9921aa45a051c0b3544e7428"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a900b332a9921aa45a051c0b3544e7428">&#9670;&#160;</a></span>as_number()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tnumber &gt; <br />
+requires (std::is_arithmetic_v&lt;Tnumber&gt;)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Tnumber dl7::ini::Value::as_number </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>

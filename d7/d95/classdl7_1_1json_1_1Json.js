@@ -46,6 +46,7 @@ var classdl7_1_1json_1_1Json =
     [ "as_decimal", "d7/d95/classdl7_1_1json_1_1Json.html#ab5c2befdc9725c40b980fd940df78811", null ],
     [ "as_integer", "d7/d95/classdl7_1_1json_1_1Json.html#a309995336421c07c9da8120227350637", null ],
     [ "as_integer", "d7/d95/classdl7_1_1json_1_1Json.html#ae3ef00e1d8aaf3ce42fafba77419edac", null ],
+    [ "as_number", "d7/d95/classdl7_1_1json_1_1Json.html#a41efdf6b9164ec21b51c6d23fd3ce1dc", null ],
     [ "as_object", "d7/d95/classdl7_1_1json_1_1Json.html#a89efe614312bcec4d520e0280be06a23", null ],
     [ "as_object", "d7/d95/classdl7_1_1json_1_1Json.html#ab8c260b6821e5fd6d6c823f4b380fd06", null ],
     [ "as_string", "d7/d95/classdl7_1_1json_1_1Json.html#a86e3e34065cb2e1c33c524fd96b3c204", null ],

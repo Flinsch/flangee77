@@ -135,7 +135,7 @@ var searchData=
   ['ml7_3a_3adistance2_132',['distance2',['../db/d4f/namespaceml7_1_1distance2.html',1,'ml7']]],
   ['ml7_3a_3adistance3_133',['distance3',['../df/d0a/namespaceml7_1_1distance3.html',1,'ml7']]],
   ['ml7_3a_3aops_134',['ops',['../d9/d38/namespaceml7_1_1ops.html',1,'ml7']]],
-  ['mode_135',['mode',['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a7fe905665e8a42ae50081048a7aca951',1,'dl7::ini::detail::BooleanMatcher::Mode'],['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a67d5d089ba177eff26809dee7a05e8e8',1,'dl7::ini::detail::BooleanMatcher::mode']]],
+  ['mode_135',['mode',['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a67d5d089ba177eff26809dee7a05e8e8',1,'dl7::ini::detail::BooleanMatcher::mode'],['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a7fe905665e8a42ae50081048a7aca951',1,'dl7::ini::detail::BooleanMatcher::Mode']]],
   ['multi_5fline_5foptions_136',['multi_line_options',['../df/d52/structdl7_1_1json_1_1Format.html#a7f251dde405cff77efb2fd272e4b0da0',1,'dl7::json::Format']]],
   ['multiline_137',['MultiLine',['../df/d52/structdl7_1_1json_1_1Format.html#a6a8a994bee9e67bd29d6ff5bd5eb6b64ad16a748b5543974384bc43d392f1e566',1,'dl7::json::Format']]],
   ['multilineoptions_138',['MultiLineOptions',['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html',1,'dl7::json::Format']]],

@@ -1,5 +1,9 @@
 var NAVTREEINDEX44 =
 {
+"de/d3e/structml7_1_1distance2_1_1ResultBase.html#ad4b49269421997ac9c22bc4c9f57fd39":[5,0,3,2,1,0],
+"de/d3e/structml7_1_1distance2_1_1ResultBase.html#aff3b903ab5878f038428a2fc324dfa2d":[7,0,3,0,1,1],
+"de/d3e/structml7_1_1distance2_1_1ResultBase.html#aff3b903ab5878f038428a2fc324dfa2d":[5,0,3,2,1,1],
+"de/d44/TerminalSymbol_8h.html":[8,0,1,3,36],
 "de/d44/TerminalSymbol_8h_source.html":[8,0,1,3,36],
 "de/d47/structcl7_1_1strings_1_1CodepointResult.html":[5,0,0,8,3],
 "de/d47/structcl7_1_1strings_1_1CodepointResult.html":[7,0,0,5,3],
@@ -245,9 +249,5 @@ var NAVTREEINDEX44 =
 "de/dca/classxl7_1_1graphics_1_1RenderingDevice_1_1Attorney.html#aa47b7cb40158e996c7dbf99d8afe0277":[5,0,7,1,13,0,2],
 "de/dca/classxl7_1_1graphics_1_1RenderingDevice_1_1Attorney.html#aa47b7cb40158e996c7dbf99d8afe0277":[7,0,7,0,13,0,2],
 "de/dca/classxl7_1_1graphics_1_1RenderingDevice_1_1Attorney.html#ae446c6fab25a3b56ef700c6ac4162640":[7,0,7,0,13,0,0],
-"de/dca/classxl7_1_1graphics_1_1RenderingDevice_1_1Attorney.html#ae446c6fab25a3b56ef700c6ac4162640":[5,0,7,1,13,0,0],
-"de/dcb/structml7_1_1ops_1_1ramp.html":[5,0,3,4,2],
-"de/dcb/structml7_1_1ops_1_1ramp.html":[7,0,3,2,2],
-"de/dcb/structml7_1_1ops_1_1ramp.html#a88181489e6bb12b4c72dbf2eb0ed432c":[7,0,3,2,2,0],
-"de/dcb/structml7_1_1ops_1_1ramp.html#a88181489e6bb12b4c72dbf2eb0ed432c":[5,0,3,4,2,0]
+"de/dca/classxl7_1_1graphics_1_1RenderingDevice_1_1Attorney.html#ae446c6fab25a3b56ef700c6ac4162640":[5,0,7,1,13,0,0]
 };

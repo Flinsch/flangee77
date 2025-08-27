@@ -189,7 +189,7 @@ var searchData=
   ['resourceptr_186',['ResourcePtr',['../d3/d00/classxl7_1_1resources_1_1ResourceManager.html#aeff5712fa4edcf49d69a95b13c1381d1',1,'xl7::resources::ResourceManager']]],
   ['resourceusage_187',['ResourceUsage',['../da/d60/namespacexl7_1_1resources.html#acb7b1bb91ccf1f69b4fe83b89d1db5ee',1,'xl7::resources']]],
   ['resourceusage_2eh_188',['ResourceUsage.h',['../d3/d93/ResourceUsage_8h.html',1,'']]],
-  ['result_189',['result',['../da/d3a/structtl7_1_1Result.html',1,'tl7::Result'],['../d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#acc5a3938c2ccce4c284c64a159676416',1,'cl7::strings::Decoder::iterator::result()'],['../da/d3a/structtl7_1_1Result.html#a75bb827630a18dc8bdfaf9837cf08564',1,'tl7::Result::Result()']]],
+  ['result_189',['result',['../da/d3a/structtl7_1_1Result.html',1,'tl7::Result'],['../da/d3a/structtl7_1_1Result.html#a75bb827630a18dc8bdfaf9837cf08564',1,'tl7::Result::Result()'],['../d2/d54/classcl7_1_1strings_1_1Decoder_1_1iterator.html#acc5a3938c2ccce4c284c64a159676416',1,'cl7::strings::Decoder::iterator::result()']]],
   ['result_2ecpp_190',['Result.cpp',['../d9/d55/Result_8cpp.html',1,'']]],
   ['result_2eh_191',['Result.h',['../d8/d27/Result_8h.html',1,'']]],
   ['result_5fmeta_192',['result_meta',['../da/d3a/structtl7_1_1Result.html#af0bf36ebe997c76bdb8ca90ce1cde2cd',1,'tl7::Result']]],

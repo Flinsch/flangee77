@@ -1,5 +1,9 @@
 var NAVTREEINDEX33 =
 {
+"da/df2/classxl7_1_1MainWindow.html#a67ebc57435ae99125a3958bac1cedb25":[5,0,7,10,19],
+"da/df2/classxl7_1_1MainWindow.html#a67ebc57435ae99125a3958bac1cedb25":[7,0,7,8,19],
+"da/df2/classxl7_1_1MainWindow.html#a6891e216a2baf340f900958294ce1fdd":[7,0,7,8,29],
+"da/df2/classxl7_1_1MainWindow.html#a6891e216a2baf340f900958294ce1fdd":[5,0,7,10,29],
 "da/df2/classxl7_1_1MainWindow.html#a70dde3fad362e591eee7b760a2d4f20f":[5,0,7,10,11],
 "da/df2/classxl7_1_1MainWindow.html#a70dde3fad362e591eee7b760a2d4f20f":[7,0,7,8,11],
 "da/df2/classxl7_1_1MainWindow.html#a7332a9ed7336df0ade507b6986d31216":[5,0,7,10,10],
@@ -245,9 +249,5 @@ var NAVTREEINDEX33 =
 "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html":[5,0,1,3,0,1],
 "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html#a73dc08b1ab0e2aa8e14073f02d69b7aa":[7,0,1,3,0,1,0],
 "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html#a73dc08b1ab0e2aa8e14073f02d69b7aa":[5,0,1,3,0,1,0],
-"db/d3c/classcl7_1_1io_1_1ReadableMemory.html":[7,0,0,2,9],
-"db/d3c/classcl7_1_1io_1_1ReadableMemory.html":[5,0,0,4,9],
-"db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a06a6b8f0d8c84bfd84367efc5e98a563":[5,0,0,4,9,13],
-"db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a06a6b8f0d8c84bfd84367efc5e98a563":[7,0,0,2,9,13],
-"db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a319126659ba78490c17055f4af8f25b2":[5,0,0,4,9,6]
+"db/d3c/classcl7_1_1io_1_1ReadableMemory.html":[7,0,0,2,9]
 };

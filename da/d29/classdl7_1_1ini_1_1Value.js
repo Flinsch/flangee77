@@ -37,6 +37,7 @@ var classdl7_1_1ini_1_1Value =
     [ "as_decimal", "da/d29/classdl7_1_1ini_1_1Value.html#a83df398f8c0222df1f172a8f4926a976", null ],
     [ "as_integer", "da/d29/classdl7_1_1ini_1_1Value.html#ab8cf903789f3e55e8adbb2f61b30ca99", null ],
     [ "as_integer", "da/d29/classdl7_1_1ini_1_1Value.html#a5a38f80c5706d3a80e5cf9bbca183686", null ],
+    [ "as_number", "da/d29/classdl7_1_1ini_1_1Value.html#a900b332a9921aa45a051c0b3544e7428", null ],
     [ "as_string", "da/d29/classdl7_1_1ini_1_1Value.html#aaa6e162186de92a220c9acd190b9e638", null ],
     [ "as_string", "da/d29/classdl7_1_1ini_1_1Value.html#ae498f060ae04a269a5599441d16ee7ae", null ],
     [ "as_unsigned", "da/d29/classdl7_1_1ini_1_1Value.html#a1567a3d7774ea5a6d3fb463cad290c52", null ],

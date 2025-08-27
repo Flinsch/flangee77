@@ -1,5 +1,9 @@
 var NAVTREEINDEX42 =
 {
+"dd/d8e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl.html#afb79500e73a07d6cb6fa8b984dc0c4f1":[7,0,7,0,1,1,0,0,11],
+"dd/d8e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl.html#afb79500e73a07d6cb6fa8b984dc0c4f1":[5,0,7,1,1,1,2,0,11],
+"dd/d93/structcl7_1_1system_1_1CPUID_1_1regs.html":[5,0,0,9,0,0],
+"dd/d93/structcl7_1_1system_1_1CPUID_1_1regs.html":[7,0,0,6,0,0],
 "dd/d93/structcl7_1_1system_1_1CPUID_1_1regs.html#a179ca954f5f7d4608e85f8d95a402047":[7,0,0,6,0,0,1],
 "dd/d93/structcl7_1_1system_1_1CPUID_1_1regs.html#a179ca954f5f7d4608e85f8d95a402047":[5,0,0,9,0,0,1],
 "dd/d93/structcl7_1_1system_1_1CPUID_1_1regs.html#a1c5fb9899f2ae63fc257db3d1a2de0ca":[7,0,0,6,0,0,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX42 =
 "dd/dff/traits_8h.html":[8,0,0,4,19],
 "dd/dff/traits_8h_source.html":[8,0,0,4,19],
 "de/d00/ops_8h.html":[8,0,3,30],
-"de/d00/ops_8h_source.html":[8,0,3,30],
-"de/d05/namespacedl7_1_1ini_1_1detail.html":[5,0,1,1,0],
-"de/d05/namespacedl7_1_1ini_1_1detail.html#a840033c2b8b2b45076f2800dd65544a1":[5,0,1,1,0,5],
-"de/d05/namespacedl7_1_1ini_1_1detail.html#a840033c2b8b2b45076f2800dd65544a1a07adb69019df06ba7b377961ae3b45d6":[5,0,1,1,0,5,1],
-"de/d05/namespacedl7_1_1ini_1_1detail.html#a840033c2b8b2b45076f2800dd65544a1a3f85ad4cea5bf0c3732fb7e23b813a7b":[5,0,1,1,0,5,4]
+"de/d00/ops_8h_source.html":[8,0,3,30]
 };

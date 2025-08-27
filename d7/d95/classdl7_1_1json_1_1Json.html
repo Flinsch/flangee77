@@ -230,6 +230,10 @@ requires (std::is_integral_v&lt;Tinteger&gt; &amp;&amp; std::is_signed_v&lt;Tint
 requires (std::is_integral_v&lt;Tunsigned&gt; &amp;&amp; std::is_unsigned_v&lt;Tunsigned&gt;)</td></tr>
 <tr class="memitem:a5ca943b5bdc8ff6085a97990a6bfa12a"><td class="memTemplItemLeft" align="right" valign="top">Tunsigned&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d95/classdl7_1_1json_1_1Json.html#a5ca943b5bdc8ff6085a97990a6bfa12a">as_unsigned</a> () const</td></tr>
 <tr class="separator:a5ca943b5bdc8ff6085a97990a6bfa12a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41efdf6b9164ec21b51c6d23fd3ce1dc" id="r_a41efdf6b9164ec21b51c6d23fd3ce1dc"><td class="memTemplParams" colspan="2">template&lt;typename Tnumber &gt; <br />
+requires (std::is_arithmetic_v&lt;Tnumber&gt;)</td></tr>
+<tr class="memitem:a41efdf6b9164ec21b51c6d23fd3ce1dc"><td class="memTemplItemLeft" align="right" valign="top">Tnumber&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d95/classdl7_1_1json_1_1Json.html#a41efdf6b9164ec21b51c6d23fd3ce1dc">as_number</a> () const</td></tr>
+<tr class="separator:a41efdf6b9164ec21b51c6d23fd3ce1dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33a15b52b05075eb57dc71cb97ff1c7a" id="r_a33a15b52b05075eb57dc71cb97ff1c7a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d87/namespacedl7_1_1json.html#a722636711d3c78e2d09b68d2fe7fd639">boolean_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d95/classdl7_1_1json_1_1Json.html#a33a15b52b05075eb57dc71cb97ff1c7a">as_boolean</a> () const</td></tr>
 <tr class="separator:a33a15b52b05075eb57dc71cb97ff1c7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a048f1f2a6137ef70bafca472521f2369" id="r_a048f1f2a6137ef70bafca472521f2369"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d95/classdl7_1_1json_1_1Json.html#a048f1f2a6137ef70bafca472521f2369">set_null</a> ()</td></tr>
@@ -1196,6 +1200,34 @@ requires (std::is_integral_v&lt;Tinteger&gt; &amp;&amp; std::is_signed_v&lt;Tint
       <table class="memname">
         <tr>
           <td class="memname">Tinteger dl7::json::Json::as_integer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a41efdf6b9164ec21b51c6d23fd3ce1dc" name="a41efdf6b9164ec21b51c6d23fd3ce1dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41efdf6b9164ec21b51c6d23fd3ce1dc">&#9670;&#160;</a></span>as_number()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tnumber &gt; <br />
+requires (std::is_arithmetic_v&lt;Tnumber&gt;)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Tnumber dl7::json::Json::as_number </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
