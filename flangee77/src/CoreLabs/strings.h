@@ -471,7 +471,7 @@ namespace cl7::strings {
 
 
 
-    template <class Tstring, typename Tchar = typename Tstring::value_type>
+    template <class Tstring, typename Tchar = Tstring::value_type>
         requires(is_any_string_v<Tstring> && !std::is_const_v<Tstring> && std::is_integral_v<Tchar>)
     void lpad(Tstring& s, size_t min_length, Tchar c)
     {
@@ -479,7 +479,7 @@ namespace cl7::strings {
             s.insert(s.begin(), min_length - s.length(), c);
     }
 
-    template <class Tstring, typename Tchar = typename Tstring::value_type>
+    template <class Tstring, typename Tchar = Tstring::value_type>
         requires(is_any_string_v<Tstring> && !std::is_const_v<Tstring> && std::is_integral_v<Tchar>)
     void rpad(Tstring& s, size_t min_length, Tchar c)
     {
@@ -489,7 +489,7 @@ namespace cl7::strings {
 
 
 
-    template <class Tstring, typename Tchar = typename Tstring::value_type>
+    template <class Tstring, typename Tchar = Tstring::value_type>
         requires(is_any_string_v<Tstring> && std::is_integral_v<Tchar>)
     Tstring lpadded(Tstring s, size_t min_length, Tchar c)
     {
@@ -497,7 +497,7 @@ namespace cl7::strings {
         return s;
     }
 
-    template <class Tstring, typename Tchar = typename Tstring::value_type>
+    template <class Tstring, typename Tchar = Tstring::value_type>
         requires(is_any_string_v<Tstring> && std::is_integral_v<Tchar>)
     Tstring rpadded(Tstring s, size_t min_length, Tchar c)
     {
@@ -573,7 +573,7 @@ namespace cl7::strings {
 
 
 
-    template <class Tstring, typename Tval, typename Tchar = typename Tstring::value_type>
+    template <class Tstring, typename Tval, typename Tchar = Tstring::value_type>
         requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval> && std::is_integral_v<Tchar>)
     Tstring to_hex(Tval val, unsigned pad_zeros = 0, Tchar ca = Tchar{'A'})
     {
@@ -594,7 +594,7 @@ namespace cl7::strings {
         return s;
     }
 
-    template <class Tstring, typename Tval, typename Tchar = typename Tstring::value_type>
+    template <class Tstring, typename Tval, typename Tchar = Tstring::value_type>
         requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval> && std::is_integral_v<Tchar>)
     Tstring to_0xhex(Tval val, unsigned pad_zeros = 0, Tchar ca = Tchar{'A'})
     {
@@ -606,28 +606,28 @@ namespace cl7::strings {
         return s;
     }
 
-    template <class Tstring, typename Tval, typename Tchar = typename Tstring::value_type>
+    template <class Tstring, typename Tval, typename Tchar = Tstring::value_type>
         requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval> && std::is_integral_v<Tchar>)
     Tstring to_hex_lc(Tval val, unsigned pad_zeros = 0)
     {
         return to_hex<Tstring>(val, pad_zeros, Tchar{'a'});
     }
 
-    template <class Tstring, typename Tval, typename Tchar = typename Tstring::value_type>
+    template <class Tstring, typename Tval, typename Tchar = Tstring::value_type>
         requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval> && std::is_integral_v<Tchar>)
     Tstring to_hex_uc(Tval val, unsigned pad_zeros = 0)
     {
         return to_hex<Tstring>(val, pad_zeros, Tchar{'A'});
     }
 
-    template <class Tstring, typename Tval, typename Tchar = typename Tstring::value_type>
+    template <class Tstring, typename Tval, typename Tchar = Tstring::value_type>
         requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval> && std::is_integral_v<Tchar>)
     Tstring to_0xhex_lc(Tval val, unsigned pad_zeros = 0)
     {
         return to_0xhex<Tstring>(val, pad_zeros, Tchar{'a'});
     }
 
-    template <class Tstring, typename Tval, typename Tchar = typename Tstring::value_type>
+    template <class Tstring, typename Tval, typename Tchar = Tstring::value_type>
         requires(is_any_string_v<Tstring> && std::is_unsigned_v<Tval> && std::is_integral_v<Tchar>)
     Tstring to_0xhex_uc(Tval val, unsigned pad_zeros = 0)
     {
@@ -644,7 +644,7 @@ namespace cl7::strings {
 
 
 
-    template <typename Tval = unsigned, class Tstring_or_view, typename Tchar = typename std::remove_cvref_t<Tstring_or_view>::value_type>
+    template <typename Tval = unsigned, class Tstring_or_view, typename Tchar = std::remove_cvref_t<Tstring_or_view>::value_type>
         requires(std::is_integral_v<Tval> && is_any_string_or_view_v<Tstring_or_view>)
     Tval parse_hex(Tstring_or_view&& s)
     {
