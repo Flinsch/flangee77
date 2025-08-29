@@ -13,7 +13,7 @@ var searchData=
   ['logcontext_10',['LogContext',['../d9/d4c/structcl7_1_1logging_1_1LogContext.html',1,'cl7::logging']]],
   ['logentry_11',['LogEntry',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html',1,'cl7::logging']]],
   ['logger_12',['Logger',['../df/dc2/classcl7_1_1logging_1_1Logger.html',1,'cl7::logging']]],
-  ['loggingerrorhandler_13',['LoggingErrorHandler',['../d0/d92/classcl7_1_1strings_1_1LoggingErrorHandler.html',1,'cl7::strings']]],
+  ['loggingerrorhandler_13',['LoggingErrorHandler',['../d4/dd7/classcl7_1_1strings_1_1codec_1_1LoggingErrorHandler.html',1,'cl7::strings::codec']]],
   ['lookup_14',['Lookup',['../d3/dd0/structcl7_1_1ordered__map_1_1Lookup.html',1,'cl7::ordered_map']]],
   ['lookupcompare_15',['LookupCompare',['../d0/dbe/structcl7_1_1ordered__map_1_1LookupCompare.html',1,'cl7::ordered_map']]]
 ];

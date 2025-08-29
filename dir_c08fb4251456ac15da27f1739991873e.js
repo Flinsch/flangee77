@@ -34,8 +34,6 @@ var dir_c08fb4251456ac15da27f1739991873e =
     [ "static_vector.h", "d9/dee/static__vector_8h.html", "d9/dee/static__vector_8h" ],
     [ "string.cpp", "d5/d24/string_8cpp.html", "d5/d24/string_8cpp" ],
     [ "string.h", "da/d66/string_8h.html", "da/d66/string_8h" ],
-    [ "strings.cpp", "d9/d15/strings_8cpp.html", "d9/d15/strings_8cpp" ],
-    [ "strings.h", "d6/d90/strings_8h.html", "d6/d90/strings_8h" ],
     [ "utilities.h", "de/df0/utilities_8h.html", "de/df0/utilities_8h" ],
     [ "Version.cpp", "d3/d7a/Version_8cpp.html", null ],
     [ "Version.h", "de/d3a/Version_8h.html", "de/d3a/Version_8h" ]

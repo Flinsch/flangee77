@@ -80,7 +80,7 @@ var searchData=
   ['get_5flayout_77',['get_layout',['../d6/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1D3DConstantBufferWrapper.html#ae0cd16e8a0eed8d90ad2564746800d9d',1,'xl7::graphics::impl::direct3d11::shaders::D3DConstantBufferWrapper']]],
   ['get_5flightness_78',['get_lightness',['../de/df3/structxl7_1_1graphics_1_1Color.html#a2e67f0c2d5713943dac7f8736f56279d',1,'xl7::graphics::Color']]],
   ['get_5fline_5fpitch_79',['get_line_pitch',['../d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a00c7ab0dc5b16801ad32d05bda2ab404',1,'xl7::graphics::textures::Texture']]],
-  ['get_5flog_5fcontext_80',['get_log_context',['../d0/d92/classcl7_1_1strings_1_1LoggingErrorHandler.html#ad359dcca14f7eb3479c692702bf67d3b',1,'cl7::strings::LoggingErrorHandler::get_log_context()'],['../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#ac40dd352ad87c1aca55470c69ad1c88e',1,'dl7::syntax::Diagnostics::get_log_context()']]],
+  ['get_5flog_5fcontext_80',['get_log_context',['../d4/dd7/classcl7_1_1strings_1_1codec_1_1LoggingErrorHandler.html#a189ce62c79b8bc6a314f689b6a58b442',1,'cl7::strings::codec::LoggingErrorHandler::get_log_context()'],['../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#ac40dd352ad87c1aca55470c69ad1c88e',1,'dl7::syntax::Diagnostics::get_log_context()']]],
   ['get_5fmanager_81',['get_manager',['../d5/d7b/classxl7_1_1resources_1_1Resource.html#a2e787223694259fa6477c0559fe7e647',1,'xl7::resources::Resource']]],
   ['get_5fmesh_5fmanager_82',['get_mesh_manager',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#a531f5bbc5853218e7709bced89a7f910',1,'xl7::graphics::RenderingDevice']]],
   ['get_5fmeta_5fat_83',['get_meta_at',['../d4/dc8/classtl7_1_1SubcaseContext.html#a376a1b7e0a1b94072cf4a89b057eb3cc',1,'tl7::SubcaseContext']]],

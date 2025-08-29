@@ -20,7 +20,7 @@ var searchData=
   ['log_5fcontext_17',['log_context',['../d0/d2a/structdl7_1_1json_1_1util_1_1Unescaper_1_1ErrorHandler.html#ae4b5998172de1e24f9756695565f41a1',1,'dl7::json::util::Unescaper::ErrorHandler']]],
   ['logger_18',['logger',['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a7f8bb9e9cf3071b88972022362521bcd',1,'cl7::logging::LogContext']]],
   ['logging_5fenabled_19',['logging_enabled',['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a76e529536f3bfc42aade1232a223109b',1,'cl7::logging::LogContext']]],
-  ['low_5fsurrogate_5fmax_20',['low_surrogate_max',['../dc/d49/structcl7_1_1strings_1_1codepoint.html#a8a4e70cdf8ab4d56c1ddcd77f615697e',1,'cl7::strings::codepoint']]],
-  ['low_5fsurrogate_5fmin_21',['low_surrogate_min',['../dc/d49/structcl7_1_1strings_1_1codepoint.html#aaa821c647bb4eeb8716ff7aba77420e4',1,'cl7::strings::codepoint']]],
+  ['low_5fsurrogate_5fmax_20',['low_surrogate_max',['../d8/d57/structcl7_1_1strings_1_1codec_1_1codepoint.html#a41665ad20983a712b3e006997b28d8ff',1,'cl7::strings::codec::codepoint']]],
+  ['low_5fsurrogate_5fmin_21',['low_surrogate_min',['../d8/d57/structcl7_1_1strings_1_1codec_1_1codepoint.html#a1634fbe2ff2067cb4294bfe55d3923ac',1,'cl7::strings::codec::codepoint']]],
   ['lowest_5frec_5fppem_22',['lowest_rec_ppem',['../d9/ded/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontHeader.html#a5b8feeb671da95c3066312422b955e08',1,'fl7::fonts::TrueTypeFontLoader::FontHeader']]]
 ];

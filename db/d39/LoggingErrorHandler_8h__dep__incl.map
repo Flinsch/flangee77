@@ -1,32 +1,32 @@
-<map id="CoreLabs/strings/LoggingErrorHandler.h" name="CoreLabs/strings/LoggingErrorHandler.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="591,5,777,45"/>
-<area shape="rect" id="Node000002" href="$df/d29/DefaultErrorHandler_8h.html" title=" " alt="" coords="489,93,671,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="652,56,605,95,601,91,649,52"/>
-<area shape="rect" id="Node000013" href="$d7/d5a/LoggingErrorHandler_8cpp.html" title=" " alt="" coords="695,93,881,133"/>
-<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="719,52,767,91,763,95,716,56"/>
-<area shape="rect" id="Node000003" href="$d6/d69/Analyzer_8h.html" title=" " alt="" coords="409,181,612,207"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="556,146,523,183,519,179,552,142"/>
-<area shape="rect" id="Node000012" href="$db/de4/Encoder_8h.html" title=" " alt="" coords="707,255,904,280"/>
-<area shape="poly" id="edge12_Node000002_Node000012" title=" " alt="" coords="621,139,789,252,786,257,618,143"/>
-<area shape="rect" id="Node000004" href="$d5/db2/Utf8Reader_8cpp.html" title=" " alt="" coords="187,335,389,361"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="489,218,408,282,357,313,312,338,310,333,355,309,405,278,486,214"/>
-<area shape="rect" id="Node000005" href="$d4/d83/Decoder_8h.html" title=" " alt="" coords="483,255,682,280"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="534,215,573,253,569,256,531,219"/>
-<area shape="rect" id="Node000010" href="$d6/db9/Transcoder_8h.html" title=" " alt="" coords="181,255,395,280"/>
-<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="463,213,325,257,323,252,461,208"/>
-<area shape="rect" id="Node000006" href="$d8/da5/ini_2detail_2Builder_8cpp.html" title=" " alt="" coords="739,328,883,368"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="629,282,757,325,755,330,628,287"/>
-<area shape="rect" id="Node000007" href="$dc/d38/ini_2detail_2Generator_8cpp.html" title=" " alt="" coords="907,328,1051,368"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="659,280,895,325,907,328,906,333,894,331,658,285"/>
-<area shape="rect" id="Node000008" href="$de/dd7/Escaper_8cpp.html" title=" " alt="" coords="413,328,552,368"/>
-<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="559,291,508,330,505,326,555,287"/>
-<area shape="rect" id="Node000009" href="$da/d80/Unescaper_8cpp.html" title=" " alt="" coords="576,328,715,368"/>
-<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="603,289,632,326,628,330,598,292"/>
-<area shape="poly" id="edge10_Node000010_Node000004" title=" " alt="" coords="291,294,291,335,285,335,285,294"/>
-<area shape="rect" id="Node000011" href="$d9/d15/strings_8cpp.html" title=" " alt="" coords="5,335,163,361"/>
-<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="247,287,115,338,113,333,245,282"/>
-<area shape="poly" id="edge13_Node000012_Node000006" title=" " alt="" coords="810,294,812,328,807,328,804,294"/>
-<area shape="poly" id="edge14_Node000012_Node000007" title=" " alt="" coords="844,283,938,325,936,330,842,288"/>
-<area shape="poly" id="edge15_Node000012_Node000008" title=" " alt="" coords="746,286,553,332,552,327,745,281"/>
-<area shape="poly" id="edge16_Node000012_Node000009" title=" " alt="" coords="771,288,685,330,683,325,769,283"/>
+<map id="CoreLabs/strings/codec/LoggingErrorHandler.h" name="CoreLabs/strings/codec/LoggingErrorHandler.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="631,5,803,45"/>
+<area shape="rect" id="Node000002" href="$df/d29/DefaultErrorHandler_8h.html" title=" " alt="" coords="529,93,701,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="685,56,639,95,636,91,682,52"/>
+<area shape="rect" id="Node000013" href="$d7/d5a/LoggingErrorHandler_8cpp.html" title=" " alt="" coords="725,93,911,133"/>
+<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="751,52,797,91,794,95,748,56"/>
+<area shape="rect" id="Node000003" href="$d6/d69/Analyzer_8h.html" title=" " alt="" coords="468,181,640,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="596,146,570,183,565,180,592,143"/>
+<area shape="rect" id="Node000012" href="$db/de4/Encoder_8h.html" title=" " alt="" coords="747,269,919,309"/>
+<area shape="poly" id="edge12_Node000002_Node000012" title=" " alt="" coords="651,140,811,267,807,271,648,144"/>
+<area shape="rect" id="Node000004" href="$d5/db2/Utf8Reader_8cpp.html" title=" " alt="" coords="229,365,431,390"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="525,232,429,311,349,367,346,362,426,307,521,228"/>
+<area shape="rect" id="Node000005" href="$d4/d83/Decoder_8h.html" title=" " alt="" coords="551,269,723,309"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="584,230,620,267,616,271,580,233"/>
+<area shape="rect" id="Node000010" href="$d6/db9/Transcoder_8h.html" title=" " alt="" coords="244,269,416,309"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="493,229,380,272,378,267,491,224"/>
+<area shape="rect" id="Node000006" href="$d8/da5/ini_2detail_2Builder_8cpp.html" title=" " alt="" coords="781,357,925,397"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="698,312,806,355,804,360,696,317"/>
+<area shape="rect" id="Node000007" href="$dc/d38/ini_2detail_2Generator_8cpp.html" title=" " alt="" coords="949,357,1093,397"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="735,310,949,357,948,363,733,315"/>
+<area shape="rect" id="Node000008" href="$de/dd7/Escaper_8cpp.html" title=" " alt="" coords="455,357,594,397"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="602,320,551,359,548,355,599,316"/>
+<area shape="rect" id="Node000009" href="$da/d80/Unescaper_8cpp.html" title=" " alt="" coords="618,357,757,397"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="657,320,678,356,674,358,653,323"/>
+<area shape="poly" id="edge10_Node000010_Node000004" title=" " alt="" coords="333,323,333,364,327,364,327,323"/>
+<area shape="rect" id="Node000011" href="$d8/d00/codec_8cpp.html" title=" " alt="" coords="5,365,204,390"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="268,317,136,367,134,362,267,312"/>
+<area shape="poly" id="edge13_Node000012_Node000006" title=" " alt="" coords="843,322,851,357,846,358,838,324"/>
+<area shape="poly" id="edge14_Node000012_Node000007" title=" " alt="" coords="887,313,981,355,978,360,885,317"/>
+<area shape="poly" id="edge15_Node000012_Node000008" title=" " alt="" coords="753,316,593,360,591,355,751,310"/>
+<area shape="poly" id="edge16_Node000012_Node000009" title=" " alt="" coords="790,319,721,360,718,355,787,314"/>
 </map>

@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('d8/dd1/Font_8h_source.html','../../');
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="../../d4/daa/Glyph_8h.html">./Glyph.h</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;<a class="code" href="../../d8/d47/codepoint_8h.html">CoreLabs/strings/codepoint.h</a>&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;<a class="code" href="../../d8/d47/codepoint_8h.html">CoreLabs/strings/codec/codepoint.h</a>&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
@@ -123,12 +123,12 @@ $(document).ready(function(){initNavTree('d8/dd1/Font_8h_source.html','../../');
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">const</span> <a class="code hl_struct" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html">Glyph</a>* <a class="code hl_function" href="../../d3/d00/classfl7_1_1fonts_1_1Font.html#a219d4009553f7cc57209fe006b283792">find_glyph</a>(<a class="code hl_struct" href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">cl7::strings::codepoint</a> codepoint) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">const</span> <a class="code hl_struct" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html">Glyph</a>* <a class="code hl_function" href="../../d3/d00/classfl7_1_1fonts_1_1Font.html#a723ffb926242f3bfe75b13aa714dfbcc">find_glyph</a>(<a class="code hl_struct" href="../../d8/d57/structcl7_1_1strings_1_1codec_1_1codepoint.html">cl7::strings::codec::codepoint</a> codepoint) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="../../d3/d00/classfl7_1_1fonts_1_1Font.html#a7fe56dffd4001ddd5489d23962ad6d41">   38</a></span>    std::unordered_map&lt;cl7::strings::codepoint::value_type, Glyph&gt; <a class="code hl_variable" href="../../d3/d00/classfl7_1_1fonts_1_1Font.html#a7fe56dffd4001ddd5489d23962ad6d41">_glyph_map</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="../../d3/d00/classfl7_1_1fonts_1_1Font.html#ab240614ca246ead6bfa97bb96068013c">   38</a></span>    std::unordered_map&lt;cl7::strings::codec::codepoint::value_type, Glyph&gt; <a class="code hl_variable" href="../../d3/d00/classfl7_1_1fonts_1_1Font.html#ab240614ca246ead6bfa97bb96068013c">_glyph_map</a>;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>}; <span class="comment">// class Font</span></div>
 </div>
@@ -140,12 +140,12 @@ $(document).ready(function(){initNavTree('d8/dd1/Font_8h_source.html','../../');
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif </span><span class="comment">// FL7_FONTS_FONT_H</span></div>
 <div class="ttc" id="aGlyph_8h_html"><div class="ttname"><a href="../../d4/daa/Glyph_8h.html">Glyph.h</a></div></div>
 <div class="ttc" id="aclassfl7_1_1fonts_1_1Font_html"><div class="ttname"><a href="../../d3/d00/classfl7_1_1fonts_1_1Font.html">fl7::fonts::Font</a></div><div class="ttdef"><b>Definition</b> Font.h:21</div></div>
-<div class="ttc" id="aclassfl7_1_1fonts_1_1Font_html_a219d4009553f7cc57209fe006b283792"><div class="ttname"><a href="../../d3/d00/classfl7_1_1fonts_1_1Font.html#a219d4009553f7cc57209fe006b283792">fl7::fonts::Font::find_glyph</a></div><div class="ttdeci">const Glyph * find_glyph(cl7::strings::codepoint codepoint) const</div><div class="ttdef"><b>Definition</b> Font.cpp:13</div></div>
+<div class="ttc" id="aclassfl7_1_1fonts_1_1Font_html_a723ffb926242f3bfe75b13aa714dfbcc"><div class="ttname"><a href="../../d3/d00/classfl7_1_1fonts_1_1Font.html#a723ffb926242f3bfe75b13aa714dfbcc">fl7::fonts::Font::find_glyph</a></div><div class="ttdeci">const Glyph * find_glyph(cl7::strings::codec::codepoint codepoint) const</div><div class="ttdef"><b>Definition</b> Font.cpp:13</div></div>
 <div class="ttc" id="aclassfl7_1_1fonts_1_1Font_html_a79262f93eaabb9bf3085ffa93cc9f06f"><div class="ttname"><a href="../../d3/d00/classfl7_1_1fonts_1_1Font.html#a79262f93eaabb9bf3085ffa93cc9f06f">fl7::fonts::Font::Font</a></div><div class="ttdeci">Font()=default</div></div>
-<div class="ttc" id="aclassfl7_1_1fonts_1_1Font_html_a7fe56dffd4001ddd5489d23962ad6d41"><div class="ttname"><a href="../../d3/d00/classfl7_1_1fonts_1_1Font.html#a7fe56dffd4001ddd5489d23962ad6d41">fl7::fonts::Font::_glyph_map</a></div><div class="ttdeci">std::unordered_map&lt; cl7::strings::codepoint::value_type, Glyph &gt; _glyph_map</div><div class="ttdef"><b>Definition</b> Font.h:38</div></div>
+<div class="ttc" id="aclassfl7_1_1fonts_1_1Font_html_ab240614ca246ead6bfa97bb96068013c"><div class="ttname"><a href="../../d3/d00/classfl7_1_1fonts_1_1Font.html#ab240614ca246ead6bfa97bb96068013c">fl7::fonts::Font::_glyph_map</a></div><div class="ttdeci">std::unordered_map&lt; cl7::strings::codec::codepoint::value_type, Glyph &gt; _glyph_map</div><div class="ttdef"><b>Definition</b> Font.h:38</div></div>
 <div class="ttc" id="acodepoint_8h_html"><div class="ttname"><a href="../../d8/d47/codepoint_8h.html">codepoint.h</a></div></div>
 <div class="ttc" id="anamespacefl7_1_1fonts_html"><div class="ttname"><a href="../../d7/da5/namespacefl7_1_1fonts.html">fl7::fonts</a></div><div class="ttdef"><b>Definition</b> Font.cpp:5</div></div>
-<div class="ttc" id="astructcl7_1_1strings_1_1codepoint_html"><div class="ttname"><a href="../../dc/d49/structcl7_1_1strings_1_1codepoint.html">cl7::strings::codepoint</a></div><div class="ttdef"><b>Definition</b> codepoint.h:13</div></div>
+<div class="ttc" id="astructcl7_1_1strings_1_1codec_1_1codepoint_html"><div class="ttname"><a href="../../d8/d57/structcl7_1_1strings_1_1codec_1_1codepoint.html">cl7::strings::codec::codepoint</a></div><div class="ttdef"><b>Definition</b> codepoint.h:13</div></div>
 <div class="ttc" id="astructfl7_1_1fonts_1_1Glyph_html"><div class="ttname"><a href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html">fl7::fonts::Glyph</a></div><div class="ttdef"><b>Definition</b> Glyph.h:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
