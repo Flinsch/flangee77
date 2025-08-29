@@ -1,5 +1,4 @@
-#include "sstream.h"
-#include "strings.h"
+#include "string.h"
 
 #include <CoreLabs/sstream.h>
 

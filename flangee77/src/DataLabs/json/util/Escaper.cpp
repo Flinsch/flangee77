@@ -1,7 +1,7 @@
 #include "Escaper.h"
 
-#include <CoreLabs/strings/Encoder.h>
-#include <CoreLabs/strings/Decoder.h>
+#include <CoreLabs/strings/codec/Encoder.h>
+#include <CoreLabs/strings/codec/Decoder.h>
 
 #include <format>
 
@@ -38,13 +38,13 @@ namespace dl7::json::util {
 
     void Escaper::_do_escape_utf8_encoded(cl7::u8osstream& out, cl7::u8string_view raw_string, const Options& options) const
     {
-        cl7::strings::DefaultErrorHandler encoding_error_handler{_log_context};
+        cl7::strings::codec::DefaultErrorHandler encoding_error_handler{_log_context};
 
-        cl7::strings::Encoder<cl7::u8char_t> utf8_encoder{&encoding_error_handler};
+        cl7::strings::codec::Encoder<cl7::u8char_t> utf8_encoder{&encoding_error_handler};
         cl7::u8char_t utf8_buffer[4];
 
-        cl7::strings::Decoder<cl7::u8char_t>::iterator it{raw_string, &encoding_error_handler};
-        cl7::strings::Decoder<cl7::u8char_t>::sentinel end;
+        cl7::strings::codec::Decoder<cl7::u8char_t>::iterator it{raw_string, &encoding_error_handler};
+        cl7::strings::codec::Decoder<cl7::u8char_t>::sentinel end;
 
         for (; it != end; ++it)
         {
@@ -62,13 +62,13 @@ namespace dl7::json::util {
 
     void Escaper::_do_escape_utf16_format(cl7::u8osstream& out, cl7::u8string_view raw_string, const Options& options) const
     {
-        cl7::strings::DefaultErrorHandler encoding_error_handler{_log_context};
+        cl7::strings::codec::DefaultErrorHandler encoding_error_handler{_log_context};
 
-        cl7::strings::Encoder<cl7::u16char_t> utf16_encoder{&encoding_error_handler};
+        cl7::strings::codec::Encoder<cl7::u16char_t> utf16_encoder{&encoding_error_handler};
         cl7::u16char_t utf16_buffer[2];
 
-        cl7::strings::Decoder<cl7::u8char_t>::iterator it{raw_string, &encoding_error_handler};
-        cl7::strings::Decoder<cl7::u8char_t>::sentinel end;
+        cl7::strings::codec::Decoder<cl7::u8char_t>::iterator it{raw_string, &encoding_error_handler};
+        cl7::strings::codec::Decoder<cl7::u8char_t>::sentinel end;
 
         for (; it != end; ++it)
         {

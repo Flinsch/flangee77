@@ -5,10 +5,15 @@
 #include "./CoreLabs/bits.h"
 #include "./CoreLabs/ordered_map.h"
 #include "./CoreLabs/static_vector.h"
-#include "./CoreLabs/strings.h"
 #include "./CoreLabs/utilities.h"
 #include "./CoreLabs/Guid.h"
 #include "./CoreLabs/Version.h"
+
+#include "./CoreLabs/strings/codec.h"
+#include "./CoreLabs/strings/inspect.h"
+#include "./CoreLabs/strings/transform.h"
+#include "./CoreLabs/strings/format.h"
+#include "./CoreLabs/strings/metrics.h"
 
 #include "./DataLabs/Base64.h"
 #include "./DataLabs/compression.h"

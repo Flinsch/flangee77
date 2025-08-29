@@ -12,6 +12,7 @@
 #endif
 
 #include <CoreLabs/filesystem.h>
+#include <CoreLabs/strings/format.h>
 
 #include <TestLabs/TestSuite.h>
 
@@ -68,7 +69,7 @@ namespace tl7::internals {
     }
 
     inline
-    cl7::u8string to_string(const xl7::graphics::PixelBitKit::Channel& channel) { return u8"{" + cl7::to_string(channel.index) + u8", " + cl7::to_string(channel.depth) + u8", " + cl7::to_string(channel.offset) + u8", " + (channel.mask ? cl7::strings::to_0xhex_lc(channel.mask) : u8"0") + u8", " + (channel.mask0 ? cl7::strings::to_0xhex_lc(channel.mask0) : u8"0") + u8"}"; }
+    cl7::u8string to_string(const xl7::graphics::PixelBitKit::Channel& channel) { return u8"{" + cl7::to_string(channel.index) + u8", " + cl7::to_string(channel.depth) + u8", " + cl7::to_string(channel.offset) + u8", " + (channel.mask ? cl7::strings::format::to_0xhex_lc(channel.mask) : u8"0") + u8", " + (channel.mask0 ? cl7::strings::format::to_0xhex_lc(channel.mask0) : u8"0") + u8"}"; }
 }
 
 

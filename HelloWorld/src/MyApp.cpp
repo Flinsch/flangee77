@@ -14,7 +14,7 @@
 #include <CoreLabs/logging.h>
 
 #include <CoreLabs/sstream.h>
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/codec.h>
 
 #include <algorithm>
 #include <filesystem>
@@ -105,7 +105,7 @@ namespace helloworld {
         _index_buffer_id = xl7::graphics::mesh_manager()->create_index_buffer(u8"My Index Buffer", index_buffer_desc, index_data_provider);
 
 
-        std::ifstream ifs(std::filesystem::path(cl7::strings::reinterpret_utf8(cl7::filesystem::get_working_directory() + u8"assets/shaders/shader.hlsl")));
+        std::ifstream ifs(std::filesystem::path(cl7::strings::codec::reinterpret_utf8(cl7::filesystem::get_working_directory() + u8"assets/shaders/shader.hlsl")));
         assert(ifs);
         assert(ifs.is_open());
         cl7::u8osstream oss;

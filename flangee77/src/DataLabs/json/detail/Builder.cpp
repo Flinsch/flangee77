@@ -5,7 +5,7 @@
 
 #include "../util/Unescaper.h"
 
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/codec.h>
 
 #include <sstream>
 
@@ -168,7 +168,7 @@ namespace dl7::json::detail {
         const auto token = token_reader.consume_token();
         const auto lexeme = token.lexeme;
 
-        std::istringstream iss{std::string{cl7::strings::reinterpret_utf8(lexeme)}};
+        std::istringstream iss{std::string{cl7::strings::codec::reinterpret_utf8(lexeme)}};
         decimal_t number = {};
         iss >> number;
 
@@ -189,7 +189,7 @@ namespace dl7::json::detail {
         const auto token = token_reader.consume_token();
         const auto lexeme = token.lexeme;
 
-        std::istringstream iss{std::string{cl7::strings::reinterpret_utf8(lexeme)}};
+        std::istringstream iss{std::string{cl7::strings::codec::reinterpret_utf8(lexeme)}};
         integer_t number = {};
         iss >> number;
 
@@ -210,7 +210,7 @@ namespace dl7::json::detail {
         const auto token = token_reader.consume_token();
         const auto lexeme = token.lexeme;
 
-        std::istringstream iss{std::string{cl7::strings::reinterpret_utf8(lexeme)}};
+        std::istringstream iss{std::string{cl7::strings::codec::reinterpret_utf8(lexeme)}};
         unsigned_t number = {};
         iss >> number;
 

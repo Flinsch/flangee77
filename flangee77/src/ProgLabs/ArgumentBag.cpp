@@ -1,6 +1,6 @@
 #include "ArgumentBag.h"
 
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/codec.h>
 
 #include <regex>
 #include <utility>
@@ -20,7 +20,7 @@ namespace pl7 {
     {
         for (int i = 0; i < argc; ++i)
         {
-            _arguments.emplace_back(cl7::strings::reinterpret_utf8(argv[i]));
+            _arguments.emplace_back(cl7::strings::codec::reinterpret_utf8(argv[i]));
             _try_resolve_quotation(_arguments.back());
         }
 
@@ -32,7 +32,7 @@ namespace pl7 {
     {
         for (int i = 0; i < argc; ++i)
         {
-            _arguments.emplace_back(cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(argv[i])));
+            _arguments.emplace_back(cl7::strings::codec::to_utf8(cl7::strings::codec::reinterpret_utfx(argv[i])));
             _try_resolve_quotation(_arguments.back());
         }
 
@@ -272,7 +272,7 @@ namespace pl7 {
         {
             std::regex regex{R"(^"[^"\\]*(?:\\.[^"\\]*)*"$)"};
             std::cmatch m;
-            std::string s{cl7::strings::reinterpret_utf8(option_value)};
+            std::string s{cl7::strings::codec::reinterpret_utf8(option_value)};
             if (std::regex_match(s.c_str(), m, regex))
                 _resolve_quotation(option_value, u8'"');
         }
@@ -281,7 +281,7 @@ namespace pl7 {
         {
             std::regex regex{R"(^'[^'\\]*(?:\\.[^'\\]*)*'$)"};
             std::cmatch m;
-            std::string s{cl7::strings::reinterpret_utf8(option_value)};
+            std::string s{cl7::strings::codec::reinterpret_utf8(option_value)};
             if (std::regex_match(s.c_str(), m, regex))
                 _resolve_quotation(option_value, u8'\'');
         }

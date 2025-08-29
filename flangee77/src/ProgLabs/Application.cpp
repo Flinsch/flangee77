@@ -10,7 +10,6 @@
 //#include <CoreLabs/logging/FileLogHandler.h>
 #include <CoreLabs/logging/HtmlLogHandler.h>
 #include <CoreLabs/logging.h>
-#include <CoreLabs/strings.h>
 #include <CoreLabs/memory.h>
 
 

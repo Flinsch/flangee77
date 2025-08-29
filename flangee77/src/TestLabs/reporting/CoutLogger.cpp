@@ -1,6 +1,7 @@
 #include "CoutLogger.h"
 
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/codec.h>
+#include <CoreLabs/strings/transform.h>
 
 #include <iostream>
 #include <iomanip>
@@ -67,9 +68,9 @@ namespace tl7::reporting {
     static Tcout& operator<<(Tcout& cout, cl7::u8string_view u8s)
     {
         if constexpr (std::is_same_v<typename std::remove_reference_t<decltype(cout)>::char_type, wchar_t>)
-            cout << cl7::strings::to_utfx(u8s);
+            cout << cl7::strings::codec::to_utfx(u8s);
         else
-            cout << cl7::strings::reinterpret_utf8(u8s);
+            cout << cl7::strings::codec::reinterpret_utf8(u8s);
         return cout;
     }
 
@@ -88,9 +89,9 @@ namespace tl7::reporting {
         }
 
         if (sep == cl7::u8string::npos)
-            return cl7::strings::reinterpret_utf8(file_path);
+            return cl7::strings::codec::reinterpret_utf8(file_path);
 
-        return cl7::strings::reinterpret_utf8({file_path + sep + 1});
+        return cl7::strings::codec::reinterpret_utf8({file_path + sep + 1});
     }
 
     static cl7::u8string_view _directory_path(cl7::u8string_view file_path)
@@ -334,17 +335,17 @@ namespace tl7::reporting {
             cout << "\n\n";
 
         auto write_group = [&cout](cl7::u8string_view label, const Stats::Group& group) {
-            cout << cl7::strings::rpadded(cl7::u8string(label), 11, u8' ') << ColorCode::Default;
-            cout << cl7::strings::lpadded(cl7::to_string(group.total_count), 11, u8' ') << " total" << ColorCode::Default;
-            cout << ColorCode::Success << cl7::strings::lpadded(cl7::to_string(group.pass_count), 11, u8' ') << " passed" << ColorCode::Default;
+            cout << cl7::strings::transform::padded_right(cl7::u8string(label), 11, u8' ') << ColorCode::Default;
+            cout << cl7::strings::transform::padded_left(cl7::to_string(group.total_count), 11, u8' ') << " total" << ColorCode::Default;
+            cout << ColorCode::Success << cl7::strings::transform::padded_left(cl7::to_string(group.pass_count), 11, u8' ') << " passed" << ColorCode::Default;
             if (group.fail_count > 0)
-                cout << ColorCode::Error << cl7::strings::lpadded(cl7::to_string(group.fail_count), 11, u8' ') << " failed" << ColorCode::Default;
+                cout << ColorCode::Error << cl7::strings::transform::padded_left(cl7::to_string(group.fail_count), 11, u8' ') << " failed" << ColorCode::Default;
             cout << '\n';
         };
 
         auto write_single = [&cout](cl7::u8string_view label, unsigned count, ColorCode color_code, cl7::u8string_view suffix) {
-            cout << cl7::strings::rpadded(cl7::u8string(label), 11, u8' ') << ColorCode::Default;
-            cout << color_code << cl7::strings::lpadded(cl7::to_string(count), 11, u8' ') << suffix << ColorCode::Default;
+            cout << cl7::strings::transform::padded_right(cl7::u8string(label), 11, u8' ') << ColorCode::Default;
+            cout << color_code << cl7::strings::transform::padded_left(cl7::to_string(count), 11, u8' ') << suffix << ColorCode::Default;
             cout << '\n';
         };
 
@@ -370,7 +371,7 @@ namespace tl7::reporting {
         else if (minutes > 0)
             cout << minutes << " minutes, " << seconds << " seconds";
         else if (seconds > 0)
-            cout << seconds << '.' << cl7::strings::lpadded(cl7::to_string(milliseconds), 3, '0') << " seconds";
+            cout << seconds << '.' << cl7::strings::transform::padded_left(cl7::to_string(milliseconds), 3, '0') << " seconds";
         else
             cout << milliseconds << " milliseconds";
         cout << ".\n";

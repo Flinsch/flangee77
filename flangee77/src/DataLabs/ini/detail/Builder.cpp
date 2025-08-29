@@ -7,10 +7,11 @@
 #include <DataLabs/json/util/Unescaper.h>
 #include <DataLabs/json/detail/UnescaperErrorHandler.h>
 
-#include <CoreLabs/strings/Encoder.h>
-#include <CoreLabs/strings/Decoder.h>
+#include <CoreLabs/strings/codec/Encoder.h>
+#include <CoreLabs/strings/codec/Decoder.h>
 
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/codec.h>
+#include <CoreLabs/strings/transform.h>
 
 #include <sstream>
 
@@ -165,7 +166,7 @@ namespace dl7::ini::detail {
         while (token_reader.peek_lexeme().find_first_of(u8"[]\n\r./#;") == cl7::u8string_view::npos)
             oss << token_reader.consume_token().lexeme;
 
-        return cl7::strings::trimmed(oss.str());
+        return cl7::strings::transform::trimmed(oss.str());
     }
 
 
@@ -180,7 +181,7 @@ namespace dl7::ini::detail {
         while (token_reader.peek_lexeme().find_first_of(u8"=:\n\r#;[]") == cl7::u8string_view::npos)
             oss << token_reader.consume_token().lexeme;
 
-        return cl7::strings::trimmed(oss.str());
+        return cl7::strings::transform::trimmed(oss.str());
     }
 
     Value Builder::_parse_value(syntax::TokenReader& token_reader)
@@ -194,7 +195,7 @@ namespace dl7::ini::detail {
 
         if (syntax::matchers::IntegerLiteralMatcher{}(string) == string.length())
         {
-            std::istringstream iss{std::string{cl7::strings::reinterpret_utf8(string)}};
+            std::istringstream iss{std::string{cl7::strings::codec::reinterpret_utf8(string)}};
 
             if (string[0] == u8'-' || string[0] == u8'+')
             {
@@ -212,7 +213,7 @@ namespace dl7::ini::detail {
 
         if (syntax::matchers::FloatingPointLiteralMatcher{}(string) == string.length())
         {
-            std::istringstream iss{std::string{cl7::strings::reinterpret_utf8(string)}};
+            std::istringstream iss{std::string{cl7::strings::codec::reinterpret_utf8(string)}};
 
             decimal_t number = {};
             iss >> number;
@@ -257,9 +258,9 @@ namespace dl7::ini::detail {
     {
         cl7::u8osstream oss;
 
-        cl7::strings::DefaultErrorHandler encoding_error_handler{get_diagnostics()->get_log_context()};
+        cl7::strings::codec::DefaultErrorHandler encoding_error_handler{get_diagnostics()->get_log_context()};
 
-        cl7::strings::Encoder<cl7::u8char_t> encoder{&encoding_error_handler};
+        cl7::strings::codec::Encoder<cl7::u8char_t> encoder{&encoding_error_handler};
         cl7::u8char_t buffer[4];
 
         bool is_eol = false;
@@ -308,7 +309,7 @@ namespace dl7::ini::detail {
 
             case ESCAPED_NEWLINE:
             {
-                auto tmp = cl7::strings::trimmed(oss.str());
+                auto tmp = cl7::strings::transform::trimmed(oss.str());
                 oss = cl7::u8osstream();
                 oss << tmp;
                 oss << u8" ";
@@ -322,8 +323,8 @@ namespace dl7::ini::detail {
                 break;
 
             default:
-                for (cl7::strings::Decoder<cl7::u8char_t>::iterator it{token_reader.consume_token().lexeme, &encoding_error_handler};
-                    it != cl7::strings::Decoder<cl7::u8char_t>::sentinel{};
+                for (cl7::strings::codec::Decoder<cl7::u8char_t>::iterator it{token_reader.consume_token().lexeme, &encoding_error_handler};
+                    it != cl7::strings::codec::Decoder<cl7::u8char_t>::sentinel{};
                     ++it)
                 {
                     const auto codepoint = *it;
@@ -337,7 +338,7 @@ namespace dl7::ini::detail {
             last_was_whitespace = is_whitespace;
         } // while
 
-        return cl7::strings::trimmed(oss.str());
+        return cl7::strings::transform::trimmed(oss.str());
     }
 
 

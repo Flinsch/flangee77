@@ -5,7 +5,7 @@
 #include "./exceptions/assertion_exception.h"
 
 #include <CoreLabs/system/datetime.h>
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/codec.h>
 
 
 
@@ -146,15 +146,15 @@ namespace tl7 {
         }
         catch (const std::exception& e)
         {
-            _reporter.post_result(ResultBuilder::make_exception_result(ctx, cl7::strings::reinterpret_utf8(e.what())));
+            _reporter.post_result(ResultBuilder::make_exception_result(ctx, cl7::strings::codec::reinterpret_utf8(e.what())));
         }
         catch (const std::string& message)
         {
-            _reporter.post_result(ResultBuilder::make_exception_result(ctx, cl7::strings::reinterpret_utf8(message)));
+            _reporter.post_result(ResultBuilder::make_exception_result(ctx, cl7::strings::codec::reinterpret_utf8(message)));
         }
         catch (const char* message)
         {
-            _reporter.post_result(ResultBuilder::make_exception_result(ctx, cl7::strings::reinterpret_utf8(message)));
+            _reporter.post_result(ResultBuilder::make_exception_result(ctx, cl7::strings::codec::reinterpret_utf8(message)));
         }
         catch (...)
         {

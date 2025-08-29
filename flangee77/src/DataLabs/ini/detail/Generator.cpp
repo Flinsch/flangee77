@@ -5,8 +5,8 @@
 #include <DataLabs/syntax/matchers.h>
 #include <DataLabs/json/util/Escaper.h>
 
-#include <CoreLabs/strings/Encoder.h>
-#include <CoreLabs/strings/Decoder.h>
+#include <CoreLabs/strings/codec/Encoder.h>
+#include <CoreLabs/strings/codec/Decoder.h>
 
 #include <cmath>
 #include <algorithm>
@@ -213,13 +213,13 @@ namespace dl7::ini::detail {
 
     cl7::u8osstream& Generator::_write_unquoted_string(cl7::u8osstream& oss, cl7::u8string_view string) const
     {
-        cl7::strings::DefaultErrorHandler encoding_error_handler{get_diagnostics()->get_log_context()};
+        cl7::strings::codec::DefaultErrorHandler encoding_error_handler{get_diagnostics()->get_log_context()};
 
-        cl7::strings::Encoder<cl7::u8char_t> encoder{&encoding_error_handler};
+        cl7::strings::codec::Encoder<cl7::u8char_t> encoder{&encoding_error_handler};
         cl7::u8char_t buffer[4];
 
-        cl7::strings::Decoder<cl7::u8char_t>::iterator it{string, &encoding_error_handler};
-        cl7::strings::Decoder<cl7::u8char_t>::sentinel end;
+        cl7::strings::codec::Decoder<cl7::u8char_t>::iterator it{string, &encoding_error_handler};
+        cl7::strings::codec::Decoder<cl7::u8char_t>::sentinel end;
 
         for (; it != end; ++it)
         {

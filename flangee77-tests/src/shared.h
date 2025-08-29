@@ -2,7 +2,7 @@
 #define F77_TESTS_SHARED_H
 
 #include <CoreLabs/byte_vector.h>
-#include <CoreLabs/strings.h>
+#include <CoreLabs/string.h>
 
 
 

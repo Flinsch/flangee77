@@ -1,6 +1,6 @@
 #include "filesystem.h"
 
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/codec.h>
 #include <CoreLabs/auto_invoke.h>
 
 #include <windows.h>
@@ -44,7 +44,7 @@ namespace cl7::filesystem {
                 _path[length] = u8'\\';
         }
 
-        return cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(_path));
+        return cl7::strings::codec::to_utf8(cl7::strings::codec::reinterpret_utfx(_path));
     }
 
     /**
@@ -59,7 +59,7 @@ namespace cl7::filesystem {
         if (length == 0 || _path[length - 1] != u8'\\')
             _path[length] = u8'\\';
 
-        return cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(_path));
+        return cl7::strings::codec::to_utf8(cl7::strings::codec::reinterpret_utfx(_path));
     }
 
     /**
@@ -82,7 +82,7 @@ namespace cl7::filesystem {
             if (hresult == S_OK)
             {
                 assert(tmp);
-                cl7::u8string path = cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(tmp));
+                cl7::u8string path = cl7::strings::codec::to_utf8(cl7::strings::codec::reinterpret_utfx(tmp));
                 for (const cl7::u8char_t* p = path.c_str(); *p; ++p)
                     _path[length++] = *p;
             }

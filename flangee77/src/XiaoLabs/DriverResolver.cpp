@@ -1,6 +1,7 @@
 #include "DriverResolver.h"
 
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/metrics.h>
+#include <CoreLabs/strings/transform.h>
 
 
 
@@ -23,7 +24,7 @@ namespace xl7 {
             int score;
         };
 
-        const cl7::u8string config_lower = cl7::strings::to_lower_ascii(config_name);
+        const cl7::u8string config_lower = cl7::strings::transform::to_lower_ascii(config_name);
         std::vector<MatchResult> candidates;
 
         for (size_t i = 0; i < driver_entries.size(); ++i)
@@ -31,7 +32,7 @@ namespace xl7 {
             assert(!driver_entries[i].name.empty());
 
             const cl7::u8string_view driver_name = driver_entries[i].name;
-            const cl7::u8string driver_lower = cl7::strings::to_lower_ascii(driver_name);
+            const cl7::u8string driver_lower = cl7::strings::transform::to_lower_ascii(driver_name);
 
             // Direct match
             if (config_lower == driver_lower)
@@ -45,7 +46,7 @@ namespace xl7 {
             {
                 assert(!alias.empty());
 
-                if (config_lower == cl7::strings::to_lower_ascii(alias))
+                if (config_lower == cl7::strings::transform::to_lower_ascii(alias))
                 {
                     candidates.push_back({.index = i, .score = 900});
                     break;
@@ -59,7 +60,7 @@ namespace xl7 {
             }
 
             // Fuzzy match
-            const float similarity = 1.0f - cl7::strings::levenshtein_normalized(config_lower, driver_lower);
+            const float similarity = 1.0f - cl7::strings::metrics::levenshtein_normalized(config_lower, driver_lower);
             const int score = static_cast<int>(similarity * 700.0f);
             if (score >= 350)
             {

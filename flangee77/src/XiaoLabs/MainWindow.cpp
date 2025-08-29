@@ -2,7 +2,7 @@
 
 #include <CoreLabs/errors.h>
 #include <CoreLabs/logging.h>
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/codec.h>
 
 
 
@@ -236,7 +236,7 @@ namespace xl7 {
             y = (screen_height - height) / 2;
         }
 
-        const std::wstring window_name{cl7::strings::reinterpret_utf16(cl7::strings::to_utf16(_title))};
+        const std::wstring window_name{cl7::strings::codec::reinterpret_utf16(cl7::strings::codec::to_utf16(_title))};
 
         // Create the window.
         _handle = ::CreateWindowExW(

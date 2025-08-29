@@ -34,14 +34,14 @@ public:
      * Checks whether the glyph corresponding to the specified Unicode code point
      * exists and can therefore potentially be loaded.
      */
-    bool has_glyph(cl7::strings::codepoint codepoint) override;
+    bool has_glyph(cl7::strings::codec::codepoint codepoint) override;
 
     /**
      * Attempts to load the glyph corresponding to the specified Unicode code point.
      * If the glyph could not be loaded, an "empty" glyph is returned (in the sense
      * that it contains no contour points, has no advance width, etc.).
      */
-    Glyph load_glyph(cl7::strings::codepoint codepoint) override;
+    Glyph load_glyph(cl7::strings::codec::codepoint codepoint) override;
 
 
 
@@ -135,7 +135,7 @@ private:
     FontHeader _font_header;
     MaximumProfile _maximum_profile;
 
-    std::unordered_map<cl7::strings::codepoint::value_type, uint32_t> _glyph_index_map;
+    std::unordered_map<cl7::strings::codec::codepoint::value_type, uint32_t> _glyph_index_map;
 
 }; // class TrueTypeFontLoader
 
