@@ -379,19 +379,19 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
 requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
 <tr class="memitem:a1d22859e70f098383e22365337b5ed81"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a1d22859e70f098383e22365337b5ed81">trimmed</a> (Tstring_or_view s)</td></tr>
 <tr class="separator:a1d22859e70f098383e22365337b5ed81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3f263beb4bfba9746675eb8c9a3d8f4" id="r_ab3f263beb4bfba9746675eb8c9a3d8f4"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tchar  = typename Tstring::value_type&gt; <br />
+<tr class="memitem:ab3f263beb4bfba9746675eb8c9a3d8f4" id="r_ab3f263beb4bfba9746675eb8c9a3d8f4"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; !std::is_const_v&lt;Tstring&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
 <tr class="memitem:ab3f263beb4bfba9746675eb8c9a3d8f4"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#ab3f263beb4bfba9746675eb8c9a3d8f4">lpad</a> (Tstring &amp;s, size_t min_length, Tchar c)</td></tr>
 <tr class="separator:ab3f263beb4bfba9746675eb8c9a3d8f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2e303ca92399e547a7485fa7c87f8b5" id="r_ac2e303ca92399e547a7485fa7c87f8b5"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tchar  = typename Tstring::value_type&gt; <br />
+<tr class="memitem:ac2e303ca92399e547a7485fa7c87f8b5" id="r_ac2e303ca92399e547a7485fa7c87f8b5"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; !std::is_const_v&lt;Tstring&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
 <tr class="memitem:ac2e303ca92399e547a7485fa7c87f8b5"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#ac2e303ca92399e547a7485fa7c87f8b5">rpad</a> (Tstring &amp;s, size_t min_length, Tchar c)</td></tr>
 <tr class="separator:ac2e303ca92399e547a7485fa7c87f8b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a390243a09088644bebf03ec42d5dbb6a" id="r_a390243a09088644bebf03ec42d5dbb6a"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tchar  = typename Tstring::value_type&gt; <br />
+<tr class="memitem:a390243a09088644bebf03ec42d5dbb6a" id="r_a390243a09088644bebf03ec42d5dbb6a"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
 <tr class="memitem:a390243a09088644bebf03ec42d5dbb6a"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a390243a09088644bebf03ec42d5dbb6a">lpadded</a> (Tstring s, size_t min_length, Tchar c)</td></tr>
 <tr class="separator:a390243a09088644bebf03ec42d5dbb6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab78e41e8ba71e8c83b29c2ee3a2cd81b" id="r_ab78e41e8ba71e8c83b29c2ee3a2cd81b"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tchar  = typename Tstring::value_type&gt; <br />
+<tr class="memitem:ab78e41e8ba71e8c83b29c2ee3a2cd81b" id="r_ab78e41e8ba71e8c83b29c2ee3a2cd81b"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
 <tr class="memitem:ab78e41e8ba71e8c83b29c2ee3a2cd81b"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#ab78e41e8ba71e8c83b29c2ee3a2cd81b">rpadded</a> (Tstring s, size_t min_length, Tchar c)</td></tr>
 <tr class="separator:ab78e41e8ba71e8c83b29c2ee3a2cd81b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -419,27 +419,27 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
 requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
 <tr class="memitem:abd2d36ee7e4135a1dacc85e2a06e107a"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#abd2d36ee7e4135a1dacc85e2a06e107a">to_upper_ascii</a> (Tstring_or_view s)</td></tr>
 <tr class="separator:abd2d36ee7e4135a1dacc85e2a06e107a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f7aff1319572564677b55ef9beaf0ce" id="r_a7f7aff1319572564677b55ef9beaf0ce"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = typename Tstring::value_type&gt; <br />
+<tr class="memitem:a7f7aff1319572564677b55ef9beaf0ce" id="r_a7f7aff1319572564677b55ef9beaf0ce"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
 <tr class="memitem:a7f7aff1319572564677b55ef9beaf0ce"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a7f7aff1319572564677b55ef9beaf0ce">to_hex</a> (Tval val, unsigned pad_zeros=0, Tchar ca=Tchar{ 'A'})</td></tr>
 <tr class="separator:a7f7aff1319572564677b55ef9beaf0ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a619723acc58af9531c618ace5c662898" id="r_a619723acc58af9531c618ace5c662898"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = typename Tstring::value_type&gt; <br />
+<tr class="memitem:a619723acc58af9531c618ace5c662898" id="r_a619723acc58af9531c618ace5c662898"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
 <tr class="memitem:a619723acc58af9531c618ace5c662898"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a619723acc58af9531c618ace5c662898">to_0xhex</a> (Tval val, unsigned pad_zeros=0, Tchar ca=Tchar{ 'A'})</td></tr>
 <tr class="separator:a619723acc58af9531c618ace5c662898"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a061cdb67276443e32b5fab3c94085d29" id="r_a061cdb67276443e32b5fab3c94085d29"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = typename Tstring::value_type&gt; <br />
+<tr class="memitem:a061cdb67276443e32b5fab3c94085d29" id="r_a061cdb67276443e32b5fab3c94085d29"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
 <tr class="memitem:a061cdb67276443e32b5fab3c94085d29"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a061cdb67276443e32b5fab3c94085d29">to_hex_lc</a> (Tval val, unsigned pad_zeros=0)</td></tr>
 <tr class="separator:a061cdb67276443e32b5fab3c94085d29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9211324ee366f7feb26b314654270646" id="r_a9211324ee366f7feb26b314654270646"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = typename Tstring::value_type&gt; <br />
+<tr class="memitem:a9211324ee366f7feb26b314654270646" id="r_a9211324ee366f7feb26b314654270646"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
 <tr class="memitem:a9211324ee366f7feb26b314654270646"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a9211324ee366f7feb26b314654270646">to_hex_uc</a> (Tval val, unsigned pad_zeros=0)</td></tr>
 <tr class="separator:a9211324ee366f7feb26b314654270646"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26d7a2fa6ac399c6351ec399dc13b81e" id="r_a26d7a2fa6ac399c6351ec399dc13b81e"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = typename Tstring::value_type&gt; <br />
+<tr class="memitem:a26d7a2fa6ac399c6351ec399dc13b81e" id="r_a26d7a2fa6ac399c6351ec399dc13b81e"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
 <tr class="memitem:a26d7a2fa6ac399c6351ec399dc13b81e"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a26d7a2fa6ac399c6351ec399dc13b81e">to_0xhex_lc</a> (Tval val, unsigned pad_zeros=0)</td></tr>
 <tr class="separator:a26d7a2fa6ac399c6351ec399dc13b81e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66527a08baabfcedc78a3b0d2b986b5b" id="r_a66527a08baabfcedc78a3b0d2b986b5b"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = typename Tstring::value_type&gt; <br />
+<tr class="memitem:a66527a08baabfcedc78a3b0d2b986b5b" id="r_a66527a08baabfcedc78a3b0d2b986b5b"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
 <tr class="memitem:a66527a08baabfcedc78a3b0d2b986b5b"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#a66527a08baabfcedc78a3b0d2b986b5b">to_0xhex_uc</a> (Tval val, unsigned pad_zeros=0)</td></tr>
 <tr class="separator:a66527a08baabfcedc78a3b0d2b986b5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -451,7 +451,7 @@ requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&g
 <tr class="separator:a7e4e2a4b764561e1680c4808280877a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa77090a7d34da6cbad1c94b463be52c" id="r_afa77090a7d34da6cbad1c94b463be52c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#afa77090a7d34da6cbad1c94b463be52c">to_0xhex_uc</a> (unsigned long long val, unsigned pad_zeros=0)</td></tr>
 <tr class="separator:afa77090a7d34da6cbad1c94b463be52c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac24137b0241a359d094f9549533ed7ac" id="r_ac24137b0241a359d094f9549533ed7ac"><td class="memTemplParams" colspan="2">template&lt;typename Tval  = unsigned, class Tstring_or_view , typename Tchar  = typename std::remove_cvref_t&lt;Tstring_or_view&gt;::value_type&gt; <br />
+<tr class="memitem:ac24137b0241a359d094f9549533ed7ac" id="r_ac24137b0241a359d094f9549533ed7ac"><td class="memTemplParams" colspan="2">template&lt;typename Tval  = unsigned, class Tstring_or_view , typename Tchar  = std::remove_cvref_t&lt;Tstring_or_view&gt;::value_type&gt; <br />
 requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
 <tr class="memitem:ac24137b0241a359d094f9549533ed7ac"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html#ac24137b0241a359d094f9549533ed7ac">parse_hex</a> (Tstring_or_view &amp;&amp;s)</td></tr>
 <tr class="separator:ac24137b0241a359d094f9549533ed7ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1601,7 +1601,7 @@ requires (std::is_floating_point_v&lt;Tfloat&gt; &amp;&amp; is_any_string_or_vie
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring , typename Tchar  = typename Tstring::value_type&gt; <br />
+template&lt;class Tstring , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; !std::is_const_v&lt;Tstring&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</div>
       <table class="memname">
         <tr>
@@ -1638,7 +1638,7 @@ requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; !std::is_const_v&lt;Tstring&
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring , typename Tchar  = typename Tstring::value_type&gt; <br />
+template&lt;class Tstring , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</div>
       <table class="memname">
         <tr>
@@ -1846,7 +1846,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval  = unsigned, class Tstring_or_view , typename Tchar  = typename std::remove_cvref_t&lt;Tstring_or_view&gt;::value_type&gt; <br />
+template&lt;typename Tval  = unsigned, class Tstring_or_view , typename Tchar  = std::remove_cvref_t&lt;Tstring_or_view&gt;::value_type&gt; <br />
 requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
@@ -2106,7 +2106,7 @@ requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;T
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring , typename Tchar  = typename Tstring::value_type&gt; <br />
+template&lt;class Tstring , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; !std::is_const_v&lt;Tstring&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</div>
       <table class="memname">
         <tr>
@@ -2143,7 +2143,7 @@ requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; !std::is_const_v&lt;Tstring&
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring , typename Tchar  = typename Tstring::value_type&gt; <br />
+template&lt;class Tstring , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</div>
       <table class="memname">
         <tr>
@@ -2243,7 +2243,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring , typename Tval , typename Tchar  = typename Tstring::value_type&gt; <br />
+template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</div>
       <table class="memname">
         <tr>
@@ -2314,7 +2314,7 @@ requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&g
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring , typename Tval , typename Tchar  = typename Tstring::value_type&gt; <br />
+template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</div>
       <table class="memname">
         <tr>
@@ -2381,7 +2381,7 @@ requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&g
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring , typename Tval , typename Tchar  = typename Tstring::value_type&gt; <br />
+template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</div>
       <table class="memname">
         <tr>
@@ -2652,7 +2652,7 @@ requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&g
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring , typename Tval , typename Tchar  = typename Tstring::value_type&gt; <br />
+template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</div>
       <table class="memname">
         <tr>
@@ -2723,7 +2723,7 @@ requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&g
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring , typename Tval , typename Tchar  = typename Tstring::value_type&gt; <br />
+template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</div>
       <table class="memname">
         <tr>
@@ -2790,7 +2790,7 @@ requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&g
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring , typename Tval , typename Tchar  = typename Tstring::value_type&gt; <br />
+template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
 requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</div>
       <table class="memname">
         <tr>
