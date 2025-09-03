@@ -47,6 +47,8 @@ target_sources(flangee77
     algorithm/find_cubic_roots.h
     algorithm/find_quadratic_roots.cpp
     algorithm/find_quadratic_roots.h
+    algorithm/find_roots_by_sign_change_and_newton.h
+    algorithm/merge_nearby.h
 
     detail/distance.h
 )

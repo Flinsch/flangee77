@@ -48,7 +48,7 @@ namespace ml7::algorithm {
             }
 
             // Two roots.
-            float u = std::cbrt(R);
+            const float u = std::cbrt(R);
             if (u < 0.0f)
                 return {2.0f * u - b / 3.0f, -u - b / 3.0f};
             return {-u - b / 3.0f, 2.0f * u - b / 3.0f};
