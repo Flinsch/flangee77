@@ -34,9 +34,10 @@
 #define TESTLABS_CHECK_GT(expr1, expr2)      TL7_INTERNAL_TRY_POST_RESULT_2(expr1, expr2, make_check_result, "CHECK", >)
 #define TESTLABS_CHECK_LE(expr1, expr2)      TL7_INTERNAL_TRY_POST_RESULT_2(expr1, expr2, make_check_result, "CHECK", <=)
 #define TESTLABS_CHECK_GE(expr1, expr2)      TL7_INTERNAL_TRY_POST_RESULT_2(expr1, expr2, make_check_result, "CHECK", >=)
+#define TESTLABS_CHECK_EQ_STR(expr1, expr2)  TL7_INTERNAL_TRY_POST_RESULT_EQ_STR(expr1, expr2, make_check_result, "CHECK", ==)
 #define TESTLABS_CHECK_EQ_FLT(expr1, expr2)  TL7_INTERNAL_TRY_POST_RESULT_EQ_FLT(expr1, expr2, make_check_result, "CHECK", ==)
 #define TESTLABS_CHECK_EQ_DBL(expr1, expr2)  TL7_INTERNAL_TRY_POST_RESULT_EQ_DBL(expr1, expr2, make_check_result, "CHECK", ==)
-#define TESTLABS_CHECK_EQ_STR(expr1, expr2)  TL7_INTERNAL_TRY_POST_RESULT_EQ_STR(expr1, expr2, make_check_result, "CHECK", ==)
+#define TESTLABS_CHECK_EQ_ROUND(num_decimals, expr1, expr2) TL7_INTERNAL_TRY_POST_RESULT_EQ_ROUND(num_decimals, expr1, expr2, make_check_result, "CHECK", ==)
 
 #define TESTLABS_PRESUME(expression)           TL7_INTERNAL_TRY_POST_RESULT_1(expression, make_presumption_result, "PRESUME")
 #define TESTLABS_PRESUME_EQ(expr1, expr2)      TL7_INTERNAL_TRY_POST_RESULT_2(expr1, expr2, make_presumption_result, "PRESUME", ==)
@@ -45,9 +46,10 @@
 #define TESTLABS_PRESUME_GT(expr1, expr2)      TL7_INTERNAL_TRY_POST_RESULT_2(expr1, expr2, make_presumption_result, "PRESUME", >)
 #define TESTLABS_PRESUME_LE(expr1, expr2)      TL7_INTERNAL_TRY_POST_RESULT_2(expr1, expr2, make_presumption_result, "PRESUME", <=)
 #define TESTLABS_PRESUME_GE(expr1, expr2)      TL7_INTERNAL_TRY_POST_RESULT_2(expr1, expr2, make_presumption_result, "PRESUME", >=)
+#define TESTLABS_PRESUME_EQ_STR(expr1, expr2)  TL7_INTERNAL_TRY_POST_RESULT_EQ_STR(expr1, expr2, make_presumption_result, "PRESUME", ==)
 #define TESTLABS_PRESUME_EQ_FLT(expr1, expr2)  TL7_INTERNAL_TRY_POST_RESULT_EQ_FLT(expr1, expr2, make_presumption_result, "PRESUME", ==)
 #define TESTLABS_PRESUME_EQ_DBL(expr1, expr2)  TL7_INTERNAL_TRY_POST_RESULT_EQ_DBL(expr1, expr2, make_presumption_result, "PRESUME", ==)
-#define TESTLABS_PRESUME_EQ_STR(expr1, expr2)  TL7_INTERNAL_TRY_POST_RESULT_EQ_STR(expr1, expr2, make_presumption_result, "PRESUME", ==)
+#define TESTLABS_PRESUME_EQ_ROUND(num_decimals, expr1, expr2) TL7_INTERNAL_TRY_POST_RESULT_EQ_ROUND(num_decimals, expr1, expr2, make_presumption_result, "PRESUME", ==)
 
 #define TESTLABS_ASSERT(expression)           TL7_INTERNAL_TRY_POST_RESULT_1(expression, make_assertion_result, "ASSERT")
 #define TESTLABS_ASSERT_EQ(expr1, expr2)      TL7_INTERNAL_TRY_POST_RESULT_2(expr1, expr2, make_assertion_result, "ASSERT", ==)
@@ -56,9 +58,10 @@
 #define TESTLABS_ASSERT_GT(expr1, expr2)      TL7_INTERNAL_TRY_POST_RESULT_2(expr1, expr2, make_assertion_result, "ASSERT", >)
 #define TESTLABS_ASSERT_LE(expr1, expr2)      TL7_INTERNAL_TRY_POST_RESULT_2(expr1, expr2, make_assertion_result, "ASSERT", <=)
 #define TESTLABS_ASSERT_GE(expr1, expr2)      TL7_INTERNAL_TRY_POST_RESULT_2(expr1, expr2, make_assertion_result, "ASSERT", >=)
+#define TESTLABS_ASSERT_EQ_STR(expr1, expr2)  TL7_INTERNAL_TRY_POST_RESULT_EQ_STR(expr1, expr2, make_assertion_result, "ASSERT", ==)
 #define TESTLABS_ASSERT_EQ_FLT(expr1, expr2)  TL7_INTERNAL_TRY_POST_RESULT_EQ_FLT(expr1, expr2, make_assertion_result, "ASSERT", ==)
 #define TESTLABS_ASSERT_EQ_DBL(expr1, expr2)  TL7_INTERNAL_TRY_POST_RESULT_EQ_DBL(expr1, expr2, make_assertion_result, "ASSERT", ==)
-#define TESTLABS_ASSERT_EQ_STR(expr1, expr2)  TL7_INTERNAL_TRY_POST_RESULT_EQ_STR(expr1, expr2, make_assertion_result, "ASSERT", ==)
+#define TESTLABS_ASSERT_EQ_ROUND(num_decimals, expr1, expr2) TL7_INTERNAL_TRY_POST_RESULT_EQ_ROUND(num_decimals, expr1, expr2, make_assertion_result, "ASSERT", ==)
 
 
 
