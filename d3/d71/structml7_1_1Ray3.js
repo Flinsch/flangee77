@@ -5,7 +5,7 @@ var structml7_1_1Ray3 =
     [ "Ray3", "d3/d71/structml7_1_1Ray3.html#aa3c17baf18f98b6dc32ab241a6c5d10a", null ],
     [ "closest_point", "d3/d71/structml7_1_1Ray3.html#aaa99c5a1ff5e13f83fb0cfee2b6b349e", null ],
     [ "distance", "d3/d71/structml7_1_1Ray3.html#af0a3a66cd8defc012cd1ebd37e0087d1", null ],
-    [ "distsqr", "d3/d71/structml7_1_1Ray3.html#a950e45f52d081f6bb563ab764dcbf3ae", null ],
+    [ "distance_squared", "d3/d71/structml7_1_1Ray3.html#a14113afae3f36446b3acf5efca10940d", null ],
     [ "normalize", "d3/d71/structml7_1_1Ray3.html#a91256fed80c5ebcccc3c9969311bf27b", null ],
     [ "normalized", "d3/d71/structml7_1_1Ray3.html#a75e70a40450531a562fb2f639c0b415b", null ],
     [ "operator!=", "d3/d71/structml7_1_1Ray3.html#a712bad24a98c2674ce36fb9a46b0b34b", null ],

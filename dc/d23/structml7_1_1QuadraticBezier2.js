@@ -5,7 +5,7 @@ var structml7_1_1QuadraticBezier2 =
     [ "closest_point", "dc/d23/structml7_1_1QuadraticBezier2.html#a49d2f2482f32013a2b07e78b580416ff", null ],
     [ "control_points", "dc/d23/structml7_1_1QuadraticBezier2.html#a8876c7451ffcf74407a82c5776e06b6f", null ],
     [ "distance", "dc/d23/structml7_1_1QuadraticBezier2.html#a2b2fddf60e948bfff80317e3ead2121d", null ],
-    [ "distsqr", "dc/d23/structml7_1_1QuadraticBezier2.html#a1f472f0e2f4fae06b8c43ad8bebd9390", null ],
+    [ "distance_squared", "dc/d23/structml7_1_1QuadraticBezier2.html#a2f569bd6db30cceafd1db10f18147e3c", null ],
     [ "operator!=", "dc/d23/structml7_1_1QuadraticBezier2.html#a09d632af2abae95654191c9555f07918", null ],
     [ "operator==", "dc/d23/structml7_1_1QuadraticBezier2.html#ab3d4a82c45a8da3677a4476d1ccf6d75", null ],
     [ "parameter", "dc/d23/structml7_1_1QuadraticBezier2.html#ae4ea08d35db408b33a0d29335f5a45c7", null ],

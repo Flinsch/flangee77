@@ -418,8 +418,8 @@ $(document).ready(function(){initNavTree('dd/d83/Matrix2x3_8h_source.html','../.
 <div class="foldopen" id="foldopen00400" data-start="{" data-end="}">
 <div class="line"><a id="l00400" name="l00400"></a><span class="lineno"><a class="line" href="../../da/d4c/structml7_1_1Matrix2x3.html#a603eeebb5fb7ab218c6ead736f8ada18">  400</a></span>    <span class="keyword">static</span> <a class="code hl_struct" href="../../da/d4c/structml7_1_1Matrix2x3.html">Matrix2x3</a> <a class="code hl_function" href="../../da/d4c/structml7_1_1Matrix2x3.html#a603eeebb5fb7ab218c6ead736f8ada18">rotation</a>(<span class="keywordtype">float</span> angle)</div>
 <div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>    {</div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> cs = ::cosf(angle);</div>
-<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> sn = ::sinf(angle);</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> cs = std::cos(angle);</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> sn = std::sin(angle);</div>
 <div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>        <span class="keywordflow">return</span> {</div>
 <div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>            cs, -sn, 0.0f,</div>
 <div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>            sn, cs, 0.0f,</div>

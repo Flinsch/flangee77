@@ -5,7 +5,7 @@ var structml7_1_1CubicBezier3 =
     [ "closest_point", "d1/d7d/structml7_1_1CubicBezier3.html#a15d51fa696c3d037df66917d4cd15902", null ],
     [ "control_points", "d1/d7d/structml7_1_1CubicBezier3.html#a1ba6aa50bebc34831dbb1860c22393d1", null ],
     [ "distance", "d1/d7d/structml7_1_1CubicBezier3.html#a54d76c687e64821cde721e0242e6389b", null ],
-    [ "distsqr", "d1/d7d/structml7_1_1CubicBezier3.html#a4cda365679b64fb3af6c0a629c78d6de", null ],
+    [ "distance_squared", "d1/d7d/structml7_1_1CubicBezier3.html#af2687cd26bdd4d1741404b79954667ae", null ],
     [ "operator!=", "d1/d7d/structml7_1_1CubicBezier3.html#a385d95df39ae9a4eed7ab68c931d837e", null ],
     [ "operator==", "d1/d7d/structml7_1_1CubicBezier3.html#a6ff11c7bd5c3618e970b827906f1653f", null ],
     [ "parameter", "d1/d7d/structml7_1_1CubicBezier3.html#aeced128250725bc5dbfacfc1076e61e1", null ],

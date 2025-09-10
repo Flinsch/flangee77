@@ -4,7 +4,7 @@ var structml7_1_1Line2 =
     [ "Line2", "d1/dfc/structml7_1_1Line2.html#a2ebca5173918f8ea307c26ed93057e1e", null ],
     [ "closest_point", "d1/dfc/structml7_1_1Line2.html#abac035cecc50d73135fd2b5de9272d18", null ],
     [ "distance", "d1/dfc/structml7_1_1Line2.html#a207d148701d46039950e428ec7b607e8", null ],
-    [ "distsqr", "d1/dfc/structml7_1_1Line2.html#a43751b52e28801393cffadf71a6dd0dc", null ],
+    [ "distance_squared", "d1/dfc/structml7_1_1Line2.html#a1a8f94d7e883959941eb7620f4ec1f55", null ],
     [ "from_point_and_direction", "d1/dfc/structml7_1_1Line2.html#a9c732a1de6c6e6b44139c04b3abde375", null ],
     [ "from_two_points", "d1/dfc/structml7_1_1Line2.html#a4c428fc7cd23e42ba5aa03ebb7b13c9c", null ],
     [ "normalize", "d1/dfc/structml7_1_1Line2.html#ad46db56f4f732a33cd930e8449a84b43", null ],

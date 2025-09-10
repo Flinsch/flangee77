@@ -4,7 +4,7 @@ var structml7_1_1LineSegment2 =
     [ "LineSegment2", "d8/d86/structml7_1_1LineSegment2.html#aa951963a58447381d9bb71df5846d67c", null ],
     [ "closest_point", "d8/d86/structml7_1_1LineSegment2.html#a18a6e09f81f5ec502607c9ee10f9247f", null ],
     [ "distance", "d8/d86/structml7_1_1LineSegment2.html#ac3b625beda5ae1bc3bb9e8258e869fa5", null ],
-    [ "distsqr", "d8/d86/structml7_1_1LineSegment2.html#a47091fcb85c488d49d0d64ed62ca7615", null ],
+    [ "distance_squared", "d8/d86/structml7_1_1LineSegment2.html#a7ca223626212e8f07e7f71fabbda504d", null ],
     [ "operator!=", "d8/d86/structml7_1_1LineSegment2.html#affaa5e258755c5c4ae69991246412abd", null ],
     [ "operator==", "d8/d86/structml7_1_1LineSegment2.html#a058a59ad7591ba89258c9613e4b3a254", null ],
     [ "parameter", "d8/d86/structml7_1_1LineSegment2.html#ad02343528f9ef590dd47322b8373b204", null ],

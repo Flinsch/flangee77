@@ -16,7 +16,7 @@ var structml7_1_1Vector4 =
     [ "invert", "db/dad/structml7_1_1Vector4.html#aa27520b8fefed598c244055c20d4a055", null ],
     [ "length", "db/dad/structml7_1_1Vector4.html#ae4c0430934f1fa12eed578684b4b535d", null ],
     [ "length", "db/dad/structml7_1_1Vector4.html#a15e5a503c3601522ce5c4a15bf8fa750", null ],
-    [ "lensqr", "db/dad/structml7_1_1Vector4.html#aa4e2f3fdf654579458baa514903cf47a", null ],
+    [ "length_squared", "db/dad/structml7_1_1Vector4.html#a43320032430454c55cb1e94ec95d62d7", null ],
     [ "lerp", "db/dad/structml7_1_1Vector4.html#aec7c7b53d3751059e39846fd0f3d0d00", null ],
     [ "max2", "db/dad/structml7_1_1Vector4.html#a7a4ae86c8a93cd6396d1c00a718e8492", null ],
     [ "min2", "db/dad/structml7_1_1Vector4.html#a6e1e4ab452c335bfadff1a768b8143ff", null ],
