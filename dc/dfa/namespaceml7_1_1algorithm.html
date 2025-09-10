@@ -103,6 +103,12 @@ Functions</h2></td></tr>
 <tr class="separator:ac77e7f4ee30043dacc9ea0ac89133468"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb371cfa22e5a93b72c9af7e2fc35d9a" id="r_adb371cfa22e5a93b72c9af7e2fc35d9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; float, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#adb371cfa22e5a93b72c9af7e2fc35d9a">find_quadratic_roots</a> (float a, float b, float c)</td></tr>
 <tr class="separator:adb371cfa22e5a93b72c9af7e2fc35d9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed34960cebaa03c099155a971644438a" id="r_aed34960cebaa03c099155a971644438a"><td class="memTemplParams" colspan="2">template&lt;typename Tfunction , typename Tderivative &gt; <br />
+requires (std::invocable&lt;Tfunction, float&gt; &amp;&amp; std::invocable&lt;Tderivative, float&gt; &amp;&amp; requires(const Tfunction&amp; f, const Tderivative&amp; df) { { f(0.0f) } -&gt; std::convertible_to&lt;float&gt;; { df(0.0f) } -&gt; std::convertible_to&lt;float&gt;; })</td></tr>
+<tr class="memitem:aed34960cebaa03c099155a971644438a"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#aed34960cebaa03c099155a971644438a">find_roots_by_sign_change_and_newton</a> (const Tfunction &amp;f, const Tderivative &amp;df, float lower_bound, float upper_bound, unsigned subdivisions=1000, unsigned max_iterations=20, float convergence_tolerance=1e-5f, float merge_tolerance=1e-5f)</td></tr>
+<tr class="separator:aed34960cebaa03c099155a971644438a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad640ff56c52e3320c789b6edc710d31a" id="r_ad640ff56c52e3320c789b6edc710d31a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#ad640ff56c52e3320c789b6edc710d31a">merge_nearby</a> (std::vector&lt; float &gt; &amp;values, float tolerance)</td></tr>
+<tr class="separator:ad640ff56c52e3320c789b6edc710d31a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ac77e7f4ee30043dacc9ea0ac89133468" name="ac77e7f4ee30043dacc9ea0ac89133468"></a>
@@ -178,6 +184,112 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Finds the real roots of a quadratic equation: ax^2 + bx + c = 0 Returns 0, 1, or 2 values in ascending order. </p>
+
+</div>
+</div>
+<a id="aed34960cebaa03c099155a971644438a" name="aed34960cebaa03c099155a971644438a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed34960cebaa03c099155a971644438a">&#9670;&#160;</a></span>find_roots_by_sign_change_and_newton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tfunction , typename Tderivative &gt; <br />
+requires (std::invocable&lt;Tfunction, float&gt; &amp;&amp; std::invocable&lt;Tderivative, float&gt; &amp;&amp; requires(const Tfunction&amp; f, const Tderivative&amp; df) { { f(0.0f) } -&gt; std::convertible_to&lt;float&gt;; { df(0.0f) } -&gt; std::convertible_to&lt;float&gt;; })</div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; float &gt; ml7::algorithm::find_roots_by_sign_change_and_newton </td>
+          <td>(</td>
+          <td class="paramtype">const Tfunction &amp;&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Tderivative &amp;&#160;</td>
+          <td class="paramname"><em>df</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>lower_bound</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>upper_bound</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>subdivisions</em> = <code>1000</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>max_iterations</em> = <code>20</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>convergence_tolerance</em> = <code>1e-5f</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>merge_tolerance</em> = <code>1e-5f</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Finds the real roots of a continuous, differentiable function within a specified range.</p>
+<p>The algorithm first detects sign changes in the function over the given interval by subdividing the range into equal segments. Then, for each subinterval showing a sign change (indicating a likely root), it refines the root estimate using the Newton-Raphson method. </p>
+
+</div>
+</div>
+<a id="ad640ff56c52e3320c789b6edc710d31a" name="ad640ff56c52e3320c789b6edc710d31a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad640ff56c52e3320c789b6edc710d31a">&#9670;&#160;</a></span>merge_nearby()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ml7::algorithm::merge_nearby </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>tolerance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Merges nearby floating-point values in a vector based on a tolerance. The values are successively merged based on the smallest distance between pairs until no pair meets the tolerance criterion. </p>
 
 </div>
 </div>

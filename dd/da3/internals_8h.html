@@ -170,14 +170,16 @@ Macros</h2></td></tr>
 <tr class="separator:a872ad81572c2f69cc472155871ae86b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1fde34aa9a447888df206371c0aaa22" id="r_ac1fde34aa9a447888df206371c0aaa22"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#ac1fde34aa9a447888df206371c0aaa22">TL7_INTERNAL_TRY_POST_RESULT_1</a>(expression,  make_result,  macro_base)&#160;&#160;&#160;    ctx.try_post_result(<a class="el" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base &quot;( &quot; #expression &quot; )&quot;), (u8##macro_base &quot;( &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(!!(expression)) + u8&quot; )&quot;, __FILE__, __LINE__, <a class="el" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(expression)))</td></tr>
 <tr class="separator:ac1fde34aa9a447888df206371c0aaa22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e04667e983743f5dbe4ae98f19b7a99" id="r_a5e04667e983743f5dbe4ae98f19b7a99"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#a5e04667e983743f5dbe4ae98f19b7a99">TL7_INTERNAL_TRY_POST_RESULT_2</a>(expr1,  expr2,  make_result,  macro_base,  op)&#160;&#160;&#160;    ctx.try_post_result(<a class="el" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr1) + (u8&quot; &quot; #op &quot; &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr2) + u8&quot; )&quot;, __FILE__, __LINE__, <a class="el" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>((expr1)op(expr2))))</td></tr>
+<tr class="memitem:a5e04667e983743f5dbe4ae98f19b7a99" id="r_a5e04667e983743f5dbe4ae98f19b7a99"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#a5e04667e983743f5dbe4ae98f19b7a99">TL7_INTERNAL_TRY_POST_RESULT_2</a>(expr1,  expr2,  make_result,  macro_base,  op)&#160;&#160;&#160;    ctx.try_post_result(<a class="el" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr1) + (u8&quot; &quot; #op &quot; &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr2) + u8&quot; )&quot;, __FILE__, __LINE__, <a class="el" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>((expr1) op(expr2))))</td></tr>
 <tr class="separator:a5e04667e983743f5dbe4ae98f19b7a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09406f825a40c7e24aa03abe4805d56e" id="r_a09406f825a40c7e24aa03abe4805d56e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#a09406f825a40c7e24aa03abe4805d56e">TL7_INTERNAL_TRY_POST_RESULT_EQ_STR</a>(expr1,  expr2,  make_result,  macro_base,  op)&#160;&#160;&#160;    ctx.try_post_result(<a class="el" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr1) + (u8&quot; &quot; #op &quot; &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr2) + u8&quot; )&quot;, __FILE__, __LINE__, <a class="el" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(<a class="el" href="../../d1/d2e/namespacecl7.html#a77903d2176b1a6ef2b24bca912ccf1b5">cl7::to_string</a>(expr1) op <a class="el" href="../../d1/d2e/namespacecl7.html#a77903d2176b1a6ef2b24bca912ccf1b5">cl7::to_string</a>(expr2))))</td></tr>
+<tr class="separator:a09406f825a40c7e24aa03abe4805d56e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab42fcc37e5bee3103e1b38b784256580" id="r_ab42fcc37e5bee3103e1b38b784256580"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#ab42fcc37e5bee3103e1b38b784256580">TL7_INTERNAL_TRY_POST_RESULT_EQ_FLT</a>(expr1,  expr2,  make_result,  macro_base,  op)&#160;&#160;&#160;    ctx.try_post_result(<a class="el" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr1) + (u8&quot; &quot; #op &quot; &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr2) + u8&quot; )&quot;, __FILE__, __LINE__, <a class="el" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(::abs((expr1) - (expr2)) &lt; 2.0f * FLT_EPSILON)))</td></tr>
 <tr class="separator:ab42fcc37e5bee3103e1b38b784256580"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9b69e8b7dcf7f5ad7943a41dae62732" id="r_af9b69e8b7dcf7f5ad7943a41dae62732"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#af9b69e8b7dcf7f5ad7943a41dae62732">TL7_INTERNAL_TRY_POST_RESULT_EQ_DBL</a>(expr1,  expr2,  make_result,  macro_base,  op)&#160;&#160;&#160;    ctx.try_post_result(<a class="el" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr1) + (u8&quot; &quot; #op &quot; &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr2) + u8&quot; )&quot;, __FILE__, __LINE__, <a class="el" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(::abs((expr1) - (expr2)) &lt; 2.0 * DBL_EPSILON)))</td></tr>
 <tr class="separator:af9b69e8b7dcf7f5ad7943a41dae62732"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09406f825a40c7e24aa03abe4805d56e" id="r_a09406f825a40c7e24aa03abe4805d56e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#a09406f825a40c7e24aa03abe4805d56e">TL7_INTERNAL_TRY_POST_RESULT_EQ_STR</a>(expr1,  expr2,  make_result,  macro_base,  op)&#160;&#160;&#160;    ctx.try_post_result(<a class="el" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr1) + (u8&quot; &quot; #op &quot; &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr2) + u8&quot; )&quot;, __FILE__, __LINE__, <a class="el" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(<a class="el" href="../../d1/d2e/namespacecl7.html#a77903d2176b1a6ef2b24bca912ccf1b5">cl7::to_string</a>(expr1) op <a class="el" href="../../d1/d2e/namespacecl7.html#a77903d2176b1a6ef2b24bca912ccf1b5">cl7::to_string</a>(expr2))))</td></tr>
-<tr class="separator:a09406f825a40c7e24aa03abe4805d56e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa7ec6904d87e66410619564d8e28dda" id="r_afa7ec6904d87e66410619564d8e28dda"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#afa7ec6904d87e66410619564d8e28dda">TL7_INTERNAL_TRY_POST_RESULT_EQ_ROUND</a>(num_decimals,  expr1,  expr2,  make_result,  macro_base,  op)&#160;&#160;&#160;    ctx.try_post_result(<a class="el" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr1) + (u8&quot; &quot; #op &quot; &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr2) + u8&quot; )&quot;, __FILE__, __LINE__, <a class="el" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(<a class="el" href="../../d3/d53/namespaceml7.html#a915f4f2349c662c97769262876fe48eb">ml7::round</a>(expr1, num_decimals) op <a class="el" href="../../d3/d53/namespaceml7.html#a915f4f2349c662c97769262876fe48eb">ml7::round</a>(expr2, num_decimals))))</td></tr>
+<tr class="separator:afa7ec6904d87e66410619564d8e28dda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -543,7 +545,7 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;    ctx.try_post_result(<a class="el" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr1) + (u8&quot; &quot; #op &quot; &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr2) + u8&quot; )&quot;, __FILE__, __LINE__, <a class="el" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>((expr1)op(expr2))))</td>
+          <td></td><td>&#160;&#160;&#160;    ctx.try_post_result(<a class="el" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr1) + (u8&quot; &quot; #op &quot; &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr2) + u8&quot; )&quot;, __FILE__, __LINE__, <a class="el" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>((expr1) op(expr2))))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -636,6 +638,58 @@ Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td>&#160;&#160;&#160;    ctx.try_post_result(<a class="el" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr1) + (u8&quot; &quot; #op &quot; &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr2) + u8&quot; )&quot;, __FILE__, __LINE__, <a class="el" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(::abs((expr1) - (expr2)) &lt; 2.0f * FLT_EPSILON)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afa7ec6904d87e66410619564d8e28dda" name="afa7ec6904d87e66410619564d8e28dda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa7ec6904d87e66410619564d8e28dda">&#9670;&#160;</a></span>TL7_INTERNAL_TRY_POST_RESULT_EQ_ROUND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TL7_INTERNAL_TRY_POST_RESULT_EQ_ROUND</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">num_decimals, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">expr1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">expr2, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">make_result, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">macro_base, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">op&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    ctx.try_post_result(<a class="el" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr1) + (u8&quot; &quot; #op &quot; &quot;) + <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(expr2) + u8&quot; )&quot;, __FILE__, __LINE__, <a class="el" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(<a class="el" href="../../d3/d53/namespaceml7.html#a915f4f2349c662c97769262876fe48eb">ml7::round</a>(expr1, num_decimals) op <a class="el" href="../../d3/d53/namespaceml7.html#a915f4f2349c662c97769262876fe48eb">ml7::round</a>(expr2, num_decimals))))</td>
         </tr>
       </table>
 </div><div class="memdoc">

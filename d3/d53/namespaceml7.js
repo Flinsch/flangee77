@@ -2,7 +2,9 @@ var namespaceml7 =
 [
     [ "algorithm", "dc/dfa/namespaceml7_1_1algorithm.html", [
       [ "find_cubic_roots", "dc/dfa/namespaceml7_1_1algorithm.html#ac77e7f4ee30043dacc9ea0ac89133468", null ],
-      [ "find_quadratic_roots", "dc/dfa/namespaceml7_1_1algorithm.html#adb371cfa22e5a93b72c9af7e2fc35d9a", null ]
+      [ "find_quadratic_roots", "dc/dfa/namespaceml7_1_1algorithm.html#adb371cfa22e5a93b72c9af7e2fc35d9a", null ],
+      [ "find_roots_by_sign_change_and_newton", "dc/dfa/namespaceml7_1_1algorithm.html#aed34960cebaa03c099155a971644438a", null ],
+      [ "merge_nearby", "dc/dfa/namespaceml7_1_1algorithm.html#ad640ff56c52e3320c789b6edc710d31a", null ]
     ] ],
     [ "detail", "df/d63/namespaceml7_1_1detail.html", "df/d63/namespaceml7_1_1detail" ],
     [ "distance2", "db/d4f/namespaceml7_1_1distance2.html", "db/d4f/namespaceml7_1_1distance2" ],
@@ -10,6 +12,8 @@ var namespaceml7 =
     [ "ops", "d9/d38/namespaceml7_1_1ops.html", "d9/d38/namespaceml7_1_1ops" ],
     [ "Angle", "d4/d9d/structml7_1_1Angle.html", "d4/d9d/structml7_1_1Angle" ],
     [ "constants_", "da/df2/structml7_1_1constants__.html", "da/df2/structml7_1_1constants__" ],
+    [ "CubicBezier2", "db/d5c/structml7_1_1CubicBezier2.html", "db/d5c/structml7_1_1CubicBezier2" ],
+    [ "CubicBezier3", "d1/d7d/structml7_1_1CubicBezier3.html", "d1/d7d/structml7_1_1CubicBezier3" ],
     [ "Line2", "d1/dfc/structml7_1_1Line2.html", "d1/dfc/structml7_1_1Line2" ],
     [ "Line3", "d6/dd2/structml7_1_1Line3.html", "d6/dd2/structml7_1_1Line3" ],
     [ "LineSegment2", "d8/d86/structml7_1_1LineSegment2.html", "d8/d86/structml7_1_1LineSegment2" ],
@@ -19,6 +23,8 @@ var namespaceml7 =
     [ "Matrix3x3", "d6/d14/structml7_1_1Matrix3x3.html", "d6/d14/structml7_1_1Matrix3x3" ],
     [ "Matrix3x4", "d8/dd9/structml7_1_1Matrix3x4.html", "d8/dd9/structml7_1_1Matrix3x4" ],
     [ "Matrix4x4", "d7/dea/structml7_1_1Matrix4x4.html", "d7/dea/structml7_1_1Matrix4x4" ],
+    [ "QuadraticBezier2", "dc/d23/structml7_1_1QuadraticBezier2.html", "dc/d23/structml7_1_1QuadraticBezier2" ],
+    [ "QuadraticBezier3", "db/da4/structml7_1_1QuadraticBezier3.html", "db/da4/structml7_1_1QuadraticBezier3" ],
     [ "Quaternion", "d8/d1f/structml7_1_1Quaternion.html", "d8/d1f/structml7_1_1Quaternion" ],
     [ "Ray2", "dc/def/structml7_1_1Ray2.html", "dc/def/structml7_1_1Ray2" ],
     [ "Ray3", "d3/d71/structml7_1_1Ray3.html", "d3/d71/structml7_1_1Ray3" ],

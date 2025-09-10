@@ -22,13 +22,14 @@ var searchData=
   ['memory_2eh_19',['memory.h',['../dc/d18/memory_8h.html',1,'']]],
   ['memorystatus_2ecpp_20',['MemoryStatus.cpp',['../d6/da8/MemoryStatus_8cpp.html',1,'']]],
   ['memorystatus_2eh_21',['MemoryStatus.h',['../dd/d4c/MemoryStatus_8h.html',1,'']]],
-  ['meshbuffer_2ecpp_22',['MeshBuffer.cpp',['../d2/d67/MeshBuffer_8cpp.html',1,'']]],
-  ['meshbuffer_2eh_23',['MeshBuffer.h',['../d4/d3c/MeshBuffer_8h.html',1,'']]],
-  ['meshmanager_2ecpp_24',['MeshManager.cpp',['../dc/d5c/MeshManager_8cpp.html',1,'']]],
-  ['meshmanager_2eh_25',['MeshManager.h',['../d2/d21/MeshManager_8h.html',1,'']]],
-  ['meshutil_2ecpp_26',['MeshUtil.cpp',['../d0/d20/MeshUtil_8cpp.html',1,'']]],
-  ['meshutil_2eh_27',['MeshUtil.h',['../d4/dfb/MeshUtil_8h.html',1,'']]],
-  ['meta_2eh_28',['Meta.h',['../d8/d85/Meta_8h.html',1,'']]],
-  ['metrics_2ecpp_29',['metrics.cpp',['../dd/da2/metrics_8cpp.html',1,'']]],
-  ['metrics_2eh_30',['metrics.h',['../df/d34/metrics_8h.html',1,'']]]
+  ['merge_5fnearby_2eh_22',['merge_nearby.h',['../de/dbd/merge__nearby_8h.html',1,'']]],
+  ['meshbuffer_2ecpp_23',['MeshBuffer.cpp',['../d2/d67/MeshBuffer_8cpp.html',1,'']]],
+  ['meshbuffer_2eh_24',['MeshBuffer.h',['../d4/d3c/MeshBuffer_8h.html',1,'']]],
+  ['meshmanager_2ecpp_25',['MeshManager.cpp',['../dc/d5c/MeshManager_8cpp.html',1,'']]],
+  ['meshmanager_2eh_26',['MeshManager.h',['../d2/d21/MeshManager_8h.html',1,'']]],
+  ['meshutil_2ecpp_27',['MeshUtil.cpp',['../d0/d20/MeshUtil_8cpp.html',1,'']]],
+  ['meshutil_2eh_28',['MeshUtil.h',['../d4/dfb/MeshUtil_8h.html',1,'']]],
+  ['meta_2eh_29',['Meta.h',['../d8/d85/Meta_8h.html',1,'']]],
+  ['metrics_2ecpp_30',['metrics.cpp',['../dd/da2/metrics_8cpp.html',1,'']]],
+  ['metrics_2eh_31',['metrics.h',['../df/d34/metrics_8h.html',1,'']]]
 ];

@@ -99,20 +99,55 @@ $(document).ready(function(){initNavTree('d0/d69/namespaceml7_1_1detail_1_1dista
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2812c99f5f772864f9b90834e57c798c" id="r_a2812c99f5f772864f9b90834e57c798c"><td class="memTemplParams" colspan="2">template&lt;typename <a class="el" href="../../d3/d53/namespaceml7.html#ab8ac9fb2e8cc324b0ee8651186b5710f">clamp</a> , class TPointResult , class TVector &gt; <br />
-requires (requires { { <a class="el" href="../../d3/d53/namespaceml7.html#ab8ac9fb2e8cc324b0ee8651186b5710f">clamp</a>{}(float{}) } -&gt; std::convertible_to&lt;float&gt;; } &amp;&amp; requires (TPointResult&amp; result) { { result.distsqr } -&gt; std::convertible_to&lt;float&gt;; { result.point } -&gt; std::convertible_to&lt;TVector&gt;; { result.t } -&gt; std::convertible_to&lt;float&gt;; })</td></tr>
-<tr class="memitem:a2812c99f5f772864f9b90834e57c798c"><td class="memTemplItemLeft" align="right" valign="top">TPointResult&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d69/namespaceml7_1_1detail_1_1distance.html#a2812c99f5f772864f9b90834e57c798c">point_line</a> (const TVector &amp;point, const TVector &amp;origin, const TVector &amp;direction)</td></tr>
-<tr class="separator:a2812c99f5f772864f9b90834e57c798c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e84e741a3d30fb042bc680a9671e835" id="r_a1e84e741a3d30fb042bc680a9671e835"><td class="memTemplParams" colspan="2">template&lt;typename <a class="el" href="../../d3/d53/namespaceml7.html#ab8ac9fb2e8cc324b0ee8651186b5710f">clamp</a> , class TPointResult , class TVector &gt; <br />
+requires (requires (TPointResult&amp; result) { { result.distsqr } -&gt; std::convertible_to&lt;float&gt;; { result.point } -&gt; std::convertible_to&lt;TVector&gt;; { result.t } -&gt; std::convertible_to&lt;float&gt;; } &amp;&amp; requires { { <a class="el" href="../../d3/d53/namespaceml7.html#ab8ac9fb2e8cc324b0ee8651186b5710f">clamp</a>{}(float{}) } -&gt; std::convertible_to&lt;float&gt;; })</td></tr>
+<tr class="memitem:a1e84e741a3d30fb042bc680a9671e835"><td class="memTemplItemLeft" align="right" valign="top">TPointResult&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d69/namespaceml7_1_1detail_1_1distance.html#a1e84e741a3d30fb042bc680a9671e835">point_line</a> (const TVector &amp;point, const TVector &amp;origin, const TVector &amp;direction)</td></tr>
+<tr class="separator:a1e84e741a3d30fb042bc680a9671e835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af56419149d9e9372063a8a0d278e89d1" id="r_af56419149d9e9372063a8a0d278e89d1"><td class="memTemplParams" colspan="2">template&lt;class TPointResult , class TVector , class TBezier &gt; <br />
+requires (requires (TPointResult&amp; result) { { result.distsqr } -&gt; std::convertible_to&lt;float&gt;; { result.point } -&gt; std::convertible_to&lt;TVector&gt;; { result.t } -&gt; std::convertible_to&lt;float&gt;; })</td></tr>
+<tr class="memitem:af56419149d9e9372063a8a0d278e89d1"><td class="memTemplItemLeft" align="right" valign="top">TPointResult&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d69/namespaceml7_1_1detail_1_1distance.html#af56419149d9e9372063a8a0d278e89d1">point_bezier</a> (const TVector &amp;point, const TBezier &amp;bezier)</td></tr>
+<tr class="separator:af56419149d9e9372063a8a0d278e89d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a2812c99f5f772864f9b90834e57c798c" name="a2812c99f5f772864f9b90834e57c798c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2812c99f5f772864f9b90834e57c798c">&#9670;&#160;</a></span>point_line()</h2>
+<a id="af56419149d9e9372063a8a0d278e89d1" name="af56419149d9e9372063a8a0d278e89d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af56419149d9e9372063a8a0d278e89d1">&#9670;&#160;</a></span>point_bezier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TPointResult , class TVector , class TBezier &gt; <br />
+requires (requires (TPointResult&amp; result) { { result.distsqr } -&gt; std::convertible_to&lt;float&gt;; { result.point } -&gt; std::convertible_to&lt;TVector&gt;; { result.t } -&gt; std::convertible_to&lt;float&gt;; })</div>
+      <table class="memname">
+        <tr>
+          <td class="memname">TPointResult ml7::detail::distance::point_bezier </td>
+          <td>(</td>
+          <td class="paramtype">const TVector &amp;&#160;</td>
+          <td class="paramname"><em>point</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const TBezier &amp;&#160;</td>
+          <td class="paramname"><em>bezier</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1e84e741a3d30fb042bc680a9671e835" name="a1e84e741a3d30fb042bc680a9671e835"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e84e741a3d30fb042bc680a9671e835">&#9670;&#160;</a></span>point_line()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename <a class="el" href="../../d3/d53/namespaceml7.html#ab8ac9fb2e8cc324b0ee8651186b5710f">clamp</a> , class TPointResult , class TVector &gt; <br />
-requires (requires { { <a class="el" href="../../d3/d53/namespaceml7.html#ab8ac9fb2e8cc324b0ee8651186b5710f">clamp</a>{}(float{}) } -&gt; std::convertible_to&lt;float&gt;; } &amp;&amp; requires (TPointResult&amp; result) { { result.distsqr } -&gt; std::convertible_to&lt;float&gt;; { result.point } -&gt; std::convertible_to&lt;TVector&gt;; { result.t } -&gt; std::convertible_to&lt;float&gt;; })</div>
+requires (requires (TPointResult&amp; result) { { result.distsqr } -&gt; std::convertible_to&lt;float&gt;; { result.point } -&gt; std::convertible_to&lt;TVector&gt;; { result.t } -&gt; std::convertible_to&lt;float&gt;; } &amp;&amp; requires { { <a class="el" href="../../d3/d53/namespaceml7.html#ab8ac9fb2e8cc324b0ee8651186b5710f">clamp</a>{}(float{}) } -&gt; std::convertible_to&lt;float&gt;; })</div>
       <table class="memname">
         <tr>
           <td class="memname">TPointResult ml7::detail::distance::point_line </td>

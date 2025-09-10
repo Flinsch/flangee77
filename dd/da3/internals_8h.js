@@ -11,6 +11,7 @@ var internals_8h =
     [ "TL7_INTERNAL_TRY_POST_RESULT_2", "dd/da3/internals_8h.html#a5e04667e983743f5dbe4ae98f19b7a99", null ],
     [ "TL7_INTERNAL_TRY_POST_RESULT_EQ_DBL", "dd/da3/internals_8h.html#af9b69e8b7dcf7f5ad7943a41dae62732", null ],
     [ "TL7_INTERNAL_TRY_POST_RESULT_EQ_FLT", "dd/da3/internals_8h.html#ab42fcc37e5bee3103e1b38b784256580", null ],
+    [ "TL7_INTERNAL_TRY_POST_RESULT_EQ_ROUND", "dd/da3/internals_8h.html#afa7ec6904d87e66410619564d8e28dda", null ],
     [ "TL7_INTERNAL_TRY_POST_RESULT_EQ_STR", "dd/da3/internals_8h.html#a09406f825a40c7e24aa03abe4805d56e", null ],
     [ "TL7_INTERNAL_TRY_SET_SUBCASE_DATA", "dd/da3/internals_8h.html#a50fb3e5d72bacd5e7109175fa4161e67", null ],
     [ "consume", "dd/da3/internals_8h.html#afb2d5db27cea7e1dc47dfddd55a4dab1", null ],
