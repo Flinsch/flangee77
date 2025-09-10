@@ -1,9 +1,9 @@
 #include "TrueTypeFontLoader.h"
 
-#include "CoreLabs/io/ReadableMemory.h"
-#include "CoreLabs/io/EndianAwareReader.h"
+#include <CoreLabs/io/EndianAwareReader.h>
+#include <CoreLabs/io/ReadableMemory.h>
 #include <CoreLabs/logging.h>
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/codec.h>
 
 
 
@@ -15,7 +15,7 @@ namespace fl7::fonts {
      * Checks whether the glyph corresponding to the specified Unicode code point
      * exists and can therefore potentially be loaded.
      */
-    bool TrueTypeFontLoader::has_glyph(cl7::strings::codepoint codepoint)
+    bool TrueTypeFontLoader::has_glyph(cl7::strings::codec::codepoint codepoint)
     {
         if (!_try_ensure_init())
             return false;
@@ -28,7 +28,7 @@ namespace fl7::fonts {
      * If the glyph could not be loaded, an "empty" glyph is returned (in the sense
      * that it contains no contour points, has no advance width, etc.).
      */
-    Glyph TrueTypeFontLoader::load_glyph(cl7::strings::codepoint codepoint)
+    Glyph TrueTypeFontLoader::load_glyph(cl7::strings::codec::codepoint codepoint)
     {
         if (!_try_ensure_init())
             return {};
@@ -180,7 +180,7 @@ namespace fl7::fonts {
 
         if (checksum != entry.checksum)
         {
-            LOG_ERROR(u8"Checksum verification of table \"" + cl7::u8string(cl7::strings::reinterpret_utf8(tag)) + u8"\" failed.");
+            LOG_ERROR(u8"Checksum verification of table \"" + cl7::u8string(cl7::strings::codec::reinterpret_utf8(tag)) + u8"\" failed.");
             return {};
         }
 
@@ -257,12 +257,12 @@ namespace fl7::fonts {
 
                 if (is_en_us)
                 {
-                    best_utf16_en_us = cl7::strings::to_utf16_unchecked(bytes);
+                    best_utf16_en_us = cl7::strings::codec::to_utf16_unchecked(bytes);
                     break; // early out
                 }
 
                 if (best_utf16_any.empty())
-                    best_utf16_any = cl7::strings::to_utf16_unchecked(bytes);
+                    best_utf16_any = cl7::strings::codec::to_utf16_unchecked(bytes);
             }
             else
             {
@@ -270,9 +270,9 @@ namespace fl7::fonts {
                 reader.read_bytes(cl7::make_byte_span(bytes));
 
                 if (is_en_us)
-                    best_assumed_ascii_en_us = cl7::strings::to_ascii_unchecked(bytes);
+                    best_assumed_ascii_en_us = cl7::strings::codec::to_ascii_unchecked(bytes);
                 else if (best_assumed_ascii_any.empty())
-                    best_assumed_ascii_any = cl7::strings::to_ascii_unchecked(bytes);
+                    best_assumed_ascii_any = cl7::strings::codec::to_ascii_unchecked(bytes);
             }
 
             readable.set_read_position(position);
@@ -280,25 +280,25 @@ namespace fl7::fonts {
 
         if (!best_utf16_en_us.empty())
         {
-            _font_name = cl7::strings::to_utf8(best_utf16_en_us);
+            _font_name = cl7::strings::codec::to_utf8(best_utf16_en_us);
             return true;
         }
 
         if (!best_utf16_any.empty())
         {
-            _font_name = cl7::strings::to_utf8(best_utf16_any);
+            _font_name = cl7::strings::codec::to_utf8(best_utf16_any);
             return true;
         }
 
         if (!best_assumed_ascii_en_us.empty())
         {
-            _font_name = cl7::strings::to_utf8(best_assumed_ascii_en_us);
+            _font_name = cl7::strings::codec::to_utf8(best_assumed_ascii_en_us);
             return true;
         }
 
         if (!best_assumed_ascii_any.empty())
         {
-            _font_name = cl7::strings::to_utf8(best_assumed_ascii_any);
+            _font_name = cl7::strings::codec::to_utf8(best_assumed_ascii_any);
             return true;
         }
 
@@ -528,7 +528,7 @@ namespace fl7::fonts {
                 }
 
                 if (glyph_index != 0)
-                    _glyph_index_map[static_cast<cl7::strings::codepoint::value_type>(start_code + c)] = static_cast<uint32_t>(glyph_index);
+                    _glyph_index_map[static_cast<cl7::strings::codec::codepoint::value_type>(start_code + c)] = static_cast<uint32_t>(glyph_index);
             } // for each char code
         } // for each contiguous range segment
 
@@ -567,7 +567,7 @@ namespace fl7::fonts {
 
             for (uint32_t char_code = start_char_code; char_code <= end_char_code; ++char_code)
             {
-                _glyph_index_map[static_cast<cl7::strings::codepoint::value_type>(char_code)] = start_glyph_id + (char_code - start_char_code);
+                _glyph_index_map[static_cast<cl7::strings::codec::codepoint::value_type>(char_code)] = start_glyph_id + (char_code - start_char_code);
             } // for each char code
         } // for each sequential map group
 

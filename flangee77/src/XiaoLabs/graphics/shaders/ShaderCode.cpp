@@ -1,6 +1,6 @@
 #include "ShaderCode.h"
 
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/codec.h>
 
 
 
@@ -16,7 +16,7 @@ namespace xl7::graphics::shaders {
 
     ShaderCode::ShaderCode(cl7::u8string_view high_level_code)
         : _language(Language::HighLevel)
-        , _code_data(cl7::strings::to_bytes(high_level_code))
+        , _code_data(cl7::strings::codec::to_bytes(high_level_code))
     {
     }
 

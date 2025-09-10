@@ -3,7 +3,7 @@
 #include "./ResourceManager.h"
 
 #include <CoreLabs/logging.h>
-#include <CoreLabs/strings.h>
+#include <CoreLabs/string.h>
 
 
 

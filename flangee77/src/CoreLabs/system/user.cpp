@@ -2,7 +2,7 @@
 
 #include <CoreLabs/errors.h>
 #include <CoreLabs/logging.h>
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/codec.h>
 
 #include <windows.h>
 #define SECURITY_WIN32
@@ -31,7 +31,7 @@ namespace cl7::system {
             LOG_ERROR(cl7::errors::system_result(::GetLastError(), u8"::GetUserNameEx"));
         }
 
-        cl7::u8string user_name = cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(name));
+        cl7::u8string user_name = cl7::strings::codec::to_utf8(cl7::strings::codec::reinterpret_utfx(name));
 
         if (user_name_format == UserNameFormat::PureUserName)
         {

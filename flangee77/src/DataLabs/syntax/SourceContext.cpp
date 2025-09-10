@@ -1,6 +1,6 @@
 #include "SourceContext.h"
 
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/inspect.h>
 
 
 
@@ -18,11 +18,11 @@ namespace dl7::syntax {
             offset = source.size();
 
         size_t begin = offset;
-        while (begin > 0 && !cl7::strings::is_line_break(source[begin - 1]))
+        while (begin > 0 && !cl7::strings::inspect::is_line_break(source[begin - 1]))
             --begin;
 
         size_t end = offset;
-        while (end < source.size() && !cl7::strings::is_line_break(source[end]))
+        while (end < source.size() && !cl7::strings::inspect::is_line_break(source[end]))
             ++end;
 
         return {

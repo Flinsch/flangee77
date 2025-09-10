@@ -2,7 +2,7 @@
 
 #include "../logging/StandardLogger.h"
 
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/codec.h>
 #include <CoreLabs/sstream.h>
 
 
@@ -64,7 +64,7 @@ namespace cl7::profiling {
                 ch = wchar_t{0xa0}; // no-break space
         }
 
-        cl7::u8string utf8 = cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(utfx));
+        cl7::u8string utf8 = cl7::strings::codec::to_utf8(cl7::strings::codec::reinterpret_utfx(utfx));
 
         logger->log(cl7::logging::LogEntry{.message = utf8, .type = cl7::logging::LogType::Code});
         logger->log(cl7::logging::LogEntry{.message = u8"--------------------------------------------------------------------------------", .type = cl7::logging::LogType::Code});
@@ -164,7 +164,7 @@ namespace cl7::profiling {
         unsigned c = indent;
         while (c--)
             woss.put(' ');
-        woss << cl7::strings::reinterpret_utfx(cl7::strings::to_utfx(sample->name));
+        woss << cl7::strings::codec::reinterpret_utfx(cl7::strings::codec::to_utfx(sample->name));
 
         std::wstring utfx = woss.str();
         for (auto& ch : utfx)
@@ -173,7 +173,7 @@ namespace cl7::profiling {
                 ch = wchar_t{0xa0}; // no-break space
         }
 
-        cl7::u8string utf8 = cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(utfx));
+        cl7::u8string utf8 = cl7::strings::codec::to_utf8(cl7::strings::codec::reinterpret_utfx(utfx));
 
         logger->log(cl7::logging::LogEntry{.message = utf8, .type = cl7::logging::LogType::Code});
 

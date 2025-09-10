@@ -1,6 +1,6 @@
 #include "sstream.h"
 
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/codec.h>
 
 
 
@@ -9,18 +9,18 @@ namespace cl7 {
 
 
     u8isstream::u8isstream(u8string_view str)
-        : _iss(std::string(cl7::strings::reinterpret_utf8(str)))
+        : _iss(std::string(cl7::strings::codec::reinterpret_utf8(str)))
     {
     }
 
     void u8isstream::str(const u8string& s)
     {
-        _iss.str(std::string(cl7::strings::reinterpret_utf8(s)));
+        _iss.str(std::string(cl7::strings::codec::reinterpret_utf8(s)));
     }
 
     void u8isstream::str(u8string&& s)
     {
-        _iss.str(std::string(cl7::strings::reinterpret_utf8(std::move(s))));
+        _iss.str(std::string(cl7::strings::codec::reinterpret_utf8(std::move(s))));
     }
 
     unsigned int u8isstream::peek()
@@ -62,22 +62,22 @@ namespace cl7 {
 
     void u8osstream::str(const u8string& s)
     {
-        _oss.str(std::string(cl7::strings::reinterpret_utf8(s)));
+        _oss.str(std::string(cl7::strings::codec::reinterpret_utf8(s)));
     }
 
     void u8osstream::str(u8string&& s)
     {
-        _oss.str(std::string(cl7::strings::reinterpret_utf8(std::move(s))));
+        _oss.str(std::string(cl7::strings::codec::reinterpret_utf8(std::move(s))));
     }
 
     u8string u8osstream::str() const
     {
-        return u8string{cl7::strings::reinterpret_utf8(_oss.view())};
+        return u8string{cl7::strings::codec::reinterpret_utf8(_oss.view())};
     }
 
     u8string_view u8osstream::view() const
     {
-        return cl7::strings::reinterpret_utf8(_oss.view());
+        return cl7::strings::codec::reinterpret_utf8(_oss.view());
     }
 
     u8osstream& u8osstream::put(u8char_t ch)
@@ -94,19 +94,19 @@ namespace cl7 {
 
     u8osstream& u8osstream::operator<<(u8string_view value)
     {
-        _oss << cl7::strings::reinterpret_utf8(value);
+        _oss << cl7::strings::codec::reinterpret_utf8(value);
         return *this;
     }
 
     u8osstream& u8osstream::operator<<(const u8string& value)
     {
-        _oss << cl7::strings::reinterpret_utf8(value);
+        _oss << cl7::strings::codec::reinterpret_utf8(value);
         return *this;
     }
 
     u8osstream& u8osstream::operator<<(const u8char_t* value)
     {
-        _oss << cl7::strings::reinterpret_utf8(value);
+        _oss << cl7::strings::codec::reinterpret_utf8(value);
         return *this;
     }
 

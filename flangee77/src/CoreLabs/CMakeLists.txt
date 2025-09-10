@@ -29,8 +29,6 @@ target_sources(flangee77
     static_vector.h
     string.cpp
     string.h
-    strings.cpp
-    strings.h
     utilities.h
     Version.cpp
     Version.h
@@ -88,33 +86,44 @@ target_sources(flangee77
     profiling/Stopwatch.cpp
     profiling/Stopwatch.h
 
-    strings/Analyzer.h
-    strings/AsciiCodec.cpp
-    strings/AsciiCodec.h
-    strings/codepoint.cpp
-    strings/codepoint.h
-    strings/CodepointResult.h
-    strings/Decoder.h
-    strings/DecodeResult.h
-    strings/DefaultErrorHandler.h
-    strings/EncodeBuffer.h
-    strings/Encoder.h
-    strings/EncodeResult.h
-    strings/Encoding.h
-    strings/EncodingError.h
-    strings/ErrorHandler.cpp
-    strings/ErrorHandler.h
-    strings/ErrorStatus.h
-    strings/LoggingErrorHandler.cpp
-    strings/LoggingErrorHandler.h
-    strings/traits.h
-    strings/Transcoder.h
-    strings/Utf8Codec.cpp
-    strings/Utf8Codec.h
-    strings/Utf16Codec.cpp
-    strings/Utf16Codec.h
-    strings/Utf32Codec.cpp
-    strings/Utf32Codec.h
+    strings/codec.cpp
+    strings/codec.h
+    strings/format.cpp
+    strings/format.h
+    strings/inspect.cpp
+    strings/inspect.h
+    strings/metrics.cpp
+    strings/metrics.h
+    strings/transform.cpp
+    strings/transform.h
+
+    strings/codec/Analyzer.h
+    strings/codec/AsciiCodec.cpp
+    strings/codec/AsciiCodec.h
+    strings/codec/codepoint.cpp
+    strings/codec/codepoint.h
+    strings/codec/CodepointResult.h
+    strings/codec/Decoder.h
+    strings/codec/DecodeResult.h
+    strings/codec/DefaultErrorHandler.h
+    strings/codec/EncodeBuffer.h
+    strings/codec/Encoder.h
+    strings/codec/EncodeResult.h
+    strings/codec/Encoding.h
+    strings/codec/EncodingError.h
+    strings/codec/ErrorHandler.cpp
+    strings/codec/ErrorHandler.h
+    strings/codec/ErrorStatus.h
+    strings/codec/LoggingErrorHandler.cpp
+    strings/codec/LoggingErrorHandler.h
+    strings/codec/traits.h
+    strings/codec/Transcoder.h
+    strings/codec/Utf8Codec.cpp
+    strings/codec/Utf8Codec.h
+    strings/codec/Utf16Codec.cpp
+    strings/codec/Utf16Codec.h
+    strings/codec/Utf32Codec.cpp
+    strings/codec/Utf32Codec.h
 
     system/CPUID.cpp
     system/CPUID.h

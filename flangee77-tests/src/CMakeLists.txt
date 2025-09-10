@@ -8,12 +8,18 @@ target_sources(flangee77-tests
     CoreLabs/Guid.h
     CoreLabs/ordered_map.h
     CoreLabs/static_vector.h
-    CoreLabs/strings.h
     CoreLabs/utilities.h
     CoreLabs/Version.h
 
+    CoreLabs/strings/codec.h
+    CoreLabs/strings/format.h
+    CoreLabs/strings/inspect.h
+    CoreLabs/strings/metrics.h
+    CoreLabs/strings/transform.h
+
     DataLabs/Base64.h
     DataLabs/compression.h
+    DataLabs/ini.h
     DataLabs/json.h
     DataLabs/syntax.h
 

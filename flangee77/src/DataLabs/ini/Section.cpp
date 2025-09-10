@@ -44,4 +44,11 @@ namespace dl7::ini {
 
 
 
+    bool Section::operator==(const Section& other) const
+    {
+        return *_sections == *other._sections && *_properties == *other._properties;
+    }
+
+
+
 } // namespace dl7::ini

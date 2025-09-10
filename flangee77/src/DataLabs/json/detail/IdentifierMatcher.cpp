@@ -1,6 +1,6 @@
 #include "IdentifierMatcher.h"
 
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/inspect.h>
 
 #include <unordered_set>
 
@@ -17,12 +17,12 @@ namespace dl7::json::detail {
             return 0;
 
         // First character must be a letter (A-Z, a-z), underscore (_), or dollar sign ($).
-        if (!cl7::strings::is_ascii_letter(source[0]) && source[0] != u8'_' && source[0] != u8'$')
+        if (!cl7::strings::inspect::is_ascii_letter(source[0]) && source[0] != u8'_' && source[0] != u8'$')
             return 0;
 
         // Remaining characters can be letters, digits, underscores, or dollar signs.
         size_t i = 1;
-        while (i < source.size() && (cl7::strings::is_ascii_letter(source[i]) || cl7::strings::is_digit(source[i]) || source[i] == u8'_' || source[i] == u8'$'))
+        while (i < source.size() && (cl7::strings::inspect::is_ascii_letter(source[i]) || cl7::strings::inspect::is_digit(source[i]) || source[i] == u8'_' || source[i] == u8'$'))
             ++i;
 
         // JavaScript reserved words:

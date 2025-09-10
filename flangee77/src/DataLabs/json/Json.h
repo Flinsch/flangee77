@@ -30,11 +30,12 @@ public:
 
 
     Json();
-    Json(object_t object);
-    Json(array_t array);
-    Json(string_t string);
-    Json(std::basic_string_view<string_t::value_type> string);
-    Json(const string_t::value_type* string);
+    explicit Json(null_t);
+    explicit Json(object_t object);
+    explicit Json(array_t array);
+    explicit Json(string_t string);
+    explicit Json(std::basic_string_view<string_t::value_type> string);
+    explicit Json(const string_t::value_type* string);
 
     explicit Json(float number);
     explicit Json(double number);
@@ -113,6 +114,21 @@ public:
         requires(std::is_integral_v<Tunsigned> && std::is_unsigned_v<Tunsigned>)
     Tunsigned as_unsigned() const { return static_cast<Tunsigned>(_as_unsigned()); }
 
+    template <typename Tnumber>
+        requires(std::is_arithmetic_v<Tnumber>)
+    Tnumber as_number() const
+    {
+        switch (get_type())
+        {
+        case Type::Unsigned:
+            return static_cast<Tnumber>(_as_unsigned());
+        case Type::Integer:
+            return static_cast<Tnumber>(_as_integer());
+        default:
+            return static_cast<Tnumber>(_as_decimal());
+        }
+    }
+
     boolean_t as_boolean() const;
 
 
@@ -161,6 +177,11 @@ public:
 
     Json& operator[](const cl7::u8string& key);
     Json& operator[](cl7::u8string&& key);
+
+
+
+    bool operator==(const Json& other) const;
+    bool operator!=(const Json& other) const { return !(*this == other); }
 
 
 

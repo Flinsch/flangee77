@@ -1,7 +1,7 @@
 #include "FileLogHandler.h"
 
 #include <CoreLabs/sstream.h>
-#include <CoreLabs/strings.h>
+#include <CoreLabs/strings/codec.h>
 
 #include <chrono>
 #include <fstream>
@@ -28,7 +28,7 @@ namespace cl7::logging {
 
         cl7::u8osstream oss;
         oss << flangee77 << u8" \xe2\x80\x94 "; // \u2014 (em dash) as UTF-8
-        oss << cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(ldt_woss.str()));
+        oss << cl7::strings::codec::to_utf8(cl7::strings::codec::reinterpret_utfx(ldt_woss.str()));
 
         _write_line(oss.str(), true);
     }

@@ -22,6 +22,28 @@ public:
 
     Section() = default;
 
+    template <typename Tsections>
+        requires(std::constructible_from<sections_t, Tsections>)
+    Section(Tsections&& sections)
+        : _sections(std::make_unique<sections_t>(std::forward<Tsections>(sections)))
+    {
+    }
+
+    template <typename Tproperties>
+        requires(std::constructible_from<properties_t, Tproperties>)
+    Section(Tproperties&& properties)
+        : _properties(std::make_unique<properties_t>(std::forward<Tproperties>(properties)))
+    {
+    }
+
+    template <typename Tsections, typename Tproperties>
+        requires(std::constructible_from<sections_t, Tsections> && std::constructible_from<properties_t, Tproperties>)
+    Section(Tsections&& sections, Tproperties&& properties)
+        : _sections(std::make_unique<sections_t>(std::forward<Tsections>(sections)))
+        , _properties(std::make_unique<properties_t>(std::forward<Tproperties>(properties)))
+    {
+    }
+
     Section(const Section& other);
     Section& operator=(const Section& other);
     Section(Section&& other) noexcept;
@@ -38,6 +60,11 @@ public:
 
     const properties_t& properties() const { return *_properties; }
     properties_t& properties() { return *_properties; }
+
+
+
+    bool operator==(const Section& other) const;
+    bool operator!=(const Section& other) const { return !(*this == other); }
 
 
 
