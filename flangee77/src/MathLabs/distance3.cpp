@@ -34,6 +34,22 @@ namespace ml7::distance3 {
         return ml7::detail::distance::point_line<ml7::ops::ramp<>, PointResult>(point, ray.origin, ray.direction);
     }
 
+    /**
+     * Calculates the distance result of a point and a quadratic Bézier curve in 3D.
+     */
+    PointResult point_quadratic_bezier(const ml7::Vector3& point, const ml7::QuadraticBezier3& bezier)
+    {
+        return ml7::detail::distance::point_bezier<PointResult>(point, bezier);
+    }
+
+    /**
+     * Calculates the distance result of a point and a cubic Bézier curve in 3D.
+     */
+    PointResult point_cubic_bezier(const ml7::Vector3& point, const ml7::CubicBezier3& bezier)
+    {
+        return ml7::detail::distance::point_bezier<PointResult>(point, bezier);
+    }
+
 
 
 } // namespace ml7::distance3

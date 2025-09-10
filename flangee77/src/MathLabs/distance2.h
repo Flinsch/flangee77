@@ -5,6 +5,8 @@
 #include "./Line2.h"
 #include "./LineSegment2.h"
 #include "./Ray2.h"
+#include "./QuadraticBezier2.h"
+#include "./CubicBezier2.h"
 
 
 
@@ -45,6 +47,16 @@ struct PointResult
      * Calculates the distance result of a point and a ray in 2D.
      */
     PointResult point_ray(const ml7::Vector2& point, const ml7::Ray2& ray);
+
+    /**
+     * Calculates the distance result of a point and a quadratic Bézier curve in 2D.
+     */
+    PointResult point_quadratic_bezier(const ml7::Vector2& point, const ml7::QuadraticBezier2& bezier);
+
+    /**
+     * Calculates the distance result of a point and a cubic Bézier curve in 2D.
+     */
+    PointResult point_cubic_bezier(const ml7::Vector2& point, const ml7::CubicBezier2& bezier);
 
 
 

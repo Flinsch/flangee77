@@ -4,6 +4,10 @@ target_sources(flangee77
     Angle.cpp
     Angle.h
     constants.h
+    CubicBezier2.cpp
+    CubicBezier2.h
+    CubicBezier3.cpp
+    CubicBezier3.h
     distance2.cpp
     distance2.h
     distance3.cpp
@@ -30,6 +34,10 @@ target_sources(flangee77
     Matrix4x4.cpp
     Matrix4x4.h
     ops.h
+    QuadraticBezier2.cpp
+    QuadraticBezier2.h
+    QuadraticBezier3.cpp
+    QuadraticBezier3.h
     Quaternion.cpp
     Quaternion.h
     Ray2.cpp
