@@ -87,10 +87,10 @@ TESTLABS_CASE( u8"MathLabs:  functions:  sqrt" )
 
 TESTLABS_CASE( u8"MathLabs:  functions:  ssqrt" )
 {
-    TESTLABS_CHECK_EQ( ml7::sqrt( 0.0f ), 0.0f );
-    TESTLABS_CHECK_EQ( ml7::sqrt( 1.0f ), 1.0f );
-    TESTLABS_CHECK_EQ( ml7::sqrt( 4.0f ), 2.0f );
-    TESTLABS_CHECK_EQ( ml7::sqrt( 9.0f ), 3.0f );
+    TESTLABS_CHECK_EQ( ml7::ssqrt( 0.0f ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::ssqrt( 1.0f ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::ssqrt( 4.0f ), 2.0f );
+    TESTLABS_CHECK_EQ( ml7::ssqrt( 9.0f ), 3.0f );
     TESTLABS_CHECK_EQ( ml7::ssqrt( -1.0f ), -1.0f );
     TESTLABS_CHECK_EQ( ml7::ssqrt( -4.0f ), -2.0f );
 }
