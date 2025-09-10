@@ -74,21 +74,21 @@ TESTLABS_CASE( u8"CoreLabs:  Line3:  " )
     TESTLABS_CHECK_EQ_FLT( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance( ml7::Vector3( -9.0f, -1.0f, 0.0f ) ), 5.7445626f );
     TESTLABS_CHECK_EQ_FLT( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance( ml7::Vector3( -15.0f, 4.0f, -4.0f ) ), 5.7445626f );
 
-    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distsqr( ml7::Vector3( 7.0f, -7.0f, 7.0f ) ), 0.0f );
-    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distsqr( ml7::Vector3( 1.0f, -2.0f, 3.0f ) ), 0.0f );
-    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distsqr( ml7::Vector3( -2.0f, 0.5f, 1.0f ) ), 0.0f );
-    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distsqr( ml7::Vector3( -5.0f, 3.0f, -1.0f ) ), 0.0f );
-    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distsqr( ml7::Vector3( -11.0f, 8.0f, -5.0f ) ), 0.0f );
-    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distsqr( ml7::Vector3( 11.0f, -3.0f, 6.0f ) ), 33.0f );
-    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distsqr( ml7::Vector3( 5.0f, 2.0f, 2.0f ) ), 33.0f );
-    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distsqr( ml7::Vector3( 2.0f, 4.5f, 0.0f ) ), 33.0f );
-    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distsqr( ml7::Vector3( -1.0f, 7.0f, -2.0f ) ), 33.0f );
-    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distsqr( ml7::Vector3( -7.0f, 12.0f, -6.0f ) ), 33.0f );
-    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distsqr( ml7::Vector3( 3.0f, -11.0f, 8.0f ) ), 33.0f );
-    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distsqr( ml7::Vector3( -3.0f, -6.0f, 4.0f ) ), 33.0f );
-    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distsqr( ml7::Vector3( -6.0f, -3.5f, 2.0f ) ), 33.0f );
-    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distsqr( ml7::Vector3( -9.0f, -1.0f, 0.0f ) ), 33.0f );
-    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distsqr( ml7::Vector3( -15.0f, 4.0f, -4.0f ) ), 33.0f );
+    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance_squared( ml7::Vector3( 7.0f, -7.0f, 7.0f ) ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance_squared( ml7::Vector3( 1.0f, -2.0f, 3.0f ) ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance_squared( ml7::Vector3( -2.0f, 0.5f, 1.0f ) ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance_squared( ml7::Vector3( -5.0f, 3.0f, -1.0f ) ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance_squared( ml7::Vector3( -11.0f, 8.0f, -5.0f ) ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance_squared( ml7::Vector3( 11.0f, -3.0f, 6.0f ) ), 33.0f );
+    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance_squared( ml7::Vector3( 5.0f, 2.0f, 2.0f ) ), 33.0f );
+    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance_squared( ml7::Vector3( 2.0f, 4.5f, 0.0f ) ), 33.0f );
+    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance_squared( ml7::Vector3( -1.0f, 7.0f, -2.0f ) ), 33.0f );
+    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance_squared( ml7::Vector3( -7.0f, 12.0f, -6.0f ) ), 33.0f );
+    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance_squared( ml7::Vector3( 3.0f, -11.0f, 8.0f ) ), 33.0f );
+    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance_squared( ml7::Vector3( -3.0f, -6.0f, 4.0f ) ), 33.0f );
+    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance_squared( ml7::Vector3( -6.0f, -3.5f, 2.0f ) ), 33.0f );
+    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance_squared( ml7::Vector3( -9.0f, -1.0f, 0.0f ) ), 33.0f );
+    TESTLABS_CHECK_EQ( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -6.0f, 5.0f, -4.0f ) ).distance_squared( ml7::Vector3( -15.0f, 4.0f, -4.0f ) ), 33.0f );
 
     TESTLABS_CHECK( ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -4.0f, 5.0f, -6.0f ) ) == ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -4.0f, 5.0f, -6.0f ) ) );
     TESTLABS_CHECK( !(ml7::Line3( ml7::Vector3( 1.0f, -2.0f, 3.0f ), ml7::Vector3( -4.0f, 5.0f, -6.0f ) ) == ml7::Line3( ml7::Vector3( -1.0f, 2.0f, -3.0f ), ml7::Vector3( 4.0f, -5.0f, 6.0f ) )) );

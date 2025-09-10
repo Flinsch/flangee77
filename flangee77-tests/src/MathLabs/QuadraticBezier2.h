@@ -91,21 +91,21 @@ TESTLABS_CASE( u8"CoreLabs:  QuadraticBezier2:  " )
     TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance( ml7::Vector2( 3.0f, 0.0f ) ), 2.236068f );
     TESTLABS_CHECK_EQ_ROUND( 3, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance( ml7::Vector2( 9.0f, 8.0f ) ), 10.63015f );
 
-    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distsqr( ml7::Vector2( -3.0f, 9.0f ) ), 68.0f );
-    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distsqr( ml7::Vector2( -1.0f, 1.0f ) ), 0.0f );
-    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distsqr( ml7::Vector2( 0.0f, 0.0f ) ), 0.0f );
-    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distsqr( ml7::Vector2( 1.0f, 1.0f ) ), 0.0f );
-    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distsqr( ml7::Vector2( 3.0f, 9.0f ) ), 68.0f );
-    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distsqr( ml7::Vector2( -1.0f, 9.333333f ) ), 69.44444f );
-    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distsqr( ml7::Vector2( -0.3333333f, 1.333333f ) ), 0.5555555f );
-    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distsqr( ml7::Vector2( 0.0f, 0.25f ) ), 0.0625f );
-    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distsqr( ml7::Vector2( 0.3333333f, 1.333333f ) ), 0.5555555f );
-    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distsqr( ml7::Vector2( 1.0f, 9.333333f ) ), 69.444444f );
-    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distsqr( ml7::Vector2( -9.0f, 8.0f ) ), 113.0f );
-    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distsqr( ml7::Vector2( -3.0f, 0.0f ) ), 5.0f );
-    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distsqr( ml7::Vector2( 0.0f, -1.0f ) ), 1.0f );
-    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distsqr( ml7::Vector2( 3.0f, 0.0f ) ), 5.0f );
-    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distsqr( ml7::Vector2( 9.0f, 8.0f ) ), 113.0f );
+    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance_squared( ml7::Vector2( -3.0f, 9.0f ) ), 68.0f );
+    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance_squared( ml7::Vector2( -1.0f, 1.0f ) ), 0.0f );
+    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance_squared( ml7::Vector2( 0.0f, 0.0f ) ), 0.0f );
+    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance_squared( ml7::Vector2( 1.0f, 1.0f ) ), 0.0f );
+    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance_squared( ml7::Vector2( 3.0f, 9.0f ) ), 68.0f );
+    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance_squared( ml7::Vector2( -1.0f, 9.333333f ) ), 69.44444f );
+    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance_squared( ml7::Vector2( -0.3333333f, 1.333333f ) ), 0.5555555f );
+    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance_squared( ml7::Vector2( 0.0f, 0.25f ) ), 0.0625f );
+    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance_squared( ml7::Vector2( 0.3333333f, 1.333333f ) ), 0.5555555f );
+    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance_squared( ml7::Vector2( 1.0f, 9.333333f ) ), 69.444444f );
+    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance_squared( ml7::Vector2( -9.0f, 8.0f ) ), 113.0f );
+    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance_squared( ml7::Vector2( -3.0f, 0.0f ) ), 5.0f );
+    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance_squared( ml7::Vector2( 0.0f, -1.0f ) ), 1.0f );
+    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance_squared( ml7::Vector2( 3.0f, 0.0f ) ), 5.0f );
+    TESTLABS_CHECK_EQ_ROUND( 5, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).distance_squared( ml7::Vector2( 9.0f, 8.0f ) ), 113.0f );
 
     TESTLABS_CHECK_EQ( ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).subdivide( 0.0f ).first, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( -1.0f, 1.0f ) ) );
     TESTLABS_CHECK_EQ( ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ).subdivide( 0.0f ).second, ml7::QuadraticBezier2( ml7::Vector2( -1.0f, 1.0f ), ml7::Vector2( 0.0f, -1.0f ), ml7::Vector2( 1.0f, 1.0f ) ) );

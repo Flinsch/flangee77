@@ -96,7 +96,7 @@ struct Ray2
      * Calculates the minimum squared distance from the specified query point to
      * this ray.
      */
-    float distsqr(const Vector2& point) const;
+    float distance_squared(const Vector2& point) const;
 
 
 

@@ -336,7 +336,7 @@ TESTLABS_CASE( u8"CoreLabs:  Matrix3x3:  compose(float, ...) / decompose" )
         ml7::Vector3 axis{ ax, ay, az };
         float angle = float(::rand() % 11) * 0.2f * ml7::constants::pi2 - ml7::constants::pi2;
         assert( scaling > 0.0f );
-        if ( !axis.lensqr() )
+        if ( !axis.length_squared() )
             continue;
         container.push_back( { scaling, axis, angle } );
     }
@@ -381,7 +381,7 @@ TESTLABS_CASE( u8"CoreLabs:  Matrix3x3:  compose(Vector3, ...) / decompose (and 
         ml7::Vector3 axis{ ax, ay, az };
         float angle = float(::rand() % 11) * 0.2f * ml7::constants::pi2 - ml7::constants::pi2;
         assert( scaling.x > 0.0f && scaling.y > 0.0f && scaling.z > 0.0f );
-        if ( !axis.lensqr() )
+        if ( !axis.length_squared() )
             continue;
         container.push_back( { scaling, axis, angle } );
     }

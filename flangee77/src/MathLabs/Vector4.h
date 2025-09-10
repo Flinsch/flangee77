@@ -141,7 +141,7 @@ struct Vector4
     float length() const { return ::sqrtf(x*x + y*y + z*z + w*w); }
 
     /** Returns the squared magnitude of this vector. */
-    float lensqr() const { return x*x + y*y + z*z + w*w; }
+    float length_squared() const { return x*x + y*y + z*z + w*w; }
 
 
 
@@ -166,7 +166,7 @@ struct Vector4
      */
     Vector4 normalized() const
     {
-        float d = lensqr();
+        float d = length_squared();
         if (d == 0.0f)
             return ZERO; // x = y = z = w = 0
         d = 1.0f / ::sqrtf(d);

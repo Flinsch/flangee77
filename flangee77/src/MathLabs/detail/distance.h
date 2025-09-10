@@ -13,7 +13,7 @@ namespace ml7::detail::distance {
 
     template <typename clamp, class TPointResult, class TVector>
         requires(requires (TPointResult& result) {
-            { result.distsqr } -> std::convertible_to<float>;
+            { result.distance_squared } -> std::convertible_to<float>;
             { result.point } -> std::convertible_to<TVector>;
             { result.t } -> std::convertible_to<float>;
         } && requires {
@@ -29,10 +29,10 @@ namespace ml7::detail::distance {
         const auto& AB = direction;
         const auto AP = P - A;
 
-        const float len2 = AB.lensqr();
+        const float len2 = AB.length_squared();
         if (len2 == 0.0f)
         {
-            result.distsqr = AP.lensqr();
+            result.distance_squared = AP.length_squared();
             result.point = A;
             result.t = 0.0f;
             return result;
@@ -44,7 +44,7 @@ namespace ml7::detail::distance {
         const auto Q = A + t * AB;
         const auto QP = P - Q;
 
-        result.distsqr = QP.lensqr();
+        result.distance_squared = QP.length_squared();
         result.point = Q;
         result.t = t;
         return result;
@@ -54,7 +54,7 @@ namespace ml7::detail::distance {
 
     template <class TPointResult, class TVector, class TBezier>
         requires(requires (TPointResult& result) {
-            { result.distsqr } -> std::convertible_to<float>;
+            { result.distance_squared } -> std::convertible_to<float>;
             { result.point } -> std::convertible_to<TVector>;
             { result.t } -> std::convertible_to<float>;
         })
@@ -78,7 +78,7 @@ namespace ml7::detail::distance {
 
                 for (size_t i = 1; i + 1 < bezier.control_points().size(); ++i)
                 {
-                    const float dd = point_line<ml7::ops::clamp01, TPointResult>(bezier.control_points()[i], bezier.control_points().front(), bezier.control_points().back() - bezier.control_points().front()).distsqr;
+                    const float dd = point_line<ml7::ops::clamp01, TPointResult>(bezier.control_points()[i], bezier.control_points().front(), bezier.control_points().back() - bezier.control_points().front()).distance_squared;
                     max_dd = std::max(max_dd, dd);
                 }
 
@@ -99,7 +99,7 @@ namespace ml7::detail::distance {
                 const auto [bezier1, bezier2] = bezier.subdivide(0.5f);
                 auto r1 = recurse(point, bezier1, criteria, t0, t_, depth + 1);
                 auto r2 = recurse(point, bezier2, criteria, t_, t1, depth + 1);
-                return r1.distsqr <= r2.distsqr ? r1 : r2;
+                return r1.distance_squared <= r2.distance_squared ? r1 : r2;
             }
         };
 
@@ -108,19 +108,19 @@ namespace ml7::detail::distance {
 
         float tmp_len2;
 
-        tmp_len2 = (point - bezier.control_points().front()).lensqr();
-        if (result.distsqr > tmp_len2)
+        tmp_len2 = (point - bezier.control_points().front()).length_squared();
+        if (result.distance_squared > tmp_len2)
         {
-            result.distsqr = tmp_len2;
+            result.distance_squared = tmp_len2;
             result.point = bezier.control_points().front();
             result.t = 0.0f;
             return result;
         }
 
-        tmp_len2 = (point - bezier.control_points().back()).lensqr();
-        if (result.distsqr > tmp_len2)
+        tmp_len2 = (point - bezier.control_points().back()).length_squared();
+        if (result.distance_squared > tmp_len2)
         {
-            result.distsqr = tmp_len2;
+            result.distance_squared = tmp_len2;
             result.point = bezier.control_points().back();
             result.t = 1.0f;
             return result;

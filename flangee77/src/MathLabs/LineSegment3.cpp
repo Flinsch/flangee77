@@ -68,9 +68,9 @@ namespace ml7 {
      * Calculates the minimum squared distance from the specified query point to
      * this line segment.
      */
-    float LineSegment3::distsqr(const Vector3& point) const
+    float LineSegment3::distance_squared(const Vector3& point) const
     {
-        return distance3::point_line_segment(point, *this).distsqr;
+        return distance3::point_line_segment(point, *this).distance_squared;
     }
 
 

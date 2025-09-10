@@ -81,7 +81,7 @@ struct Line3
      * Calculates the minimum squared distance from the specified query point to
      * this line.
      */
-    float distsqr(const Vector3& point) const;
+    float distance_squared(const Vector3& point) const;
 
 
 

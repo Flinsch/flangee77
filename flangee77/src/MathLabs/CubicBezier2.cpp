@@ -100,9 +100,9 @@ namespace ml7 {
      * Calculates the minimum squared distance from the specified query point to
      * this Bézier curve.
      */
-    float CubicBezier2::distsqr(const Vector2& point) const
+    float CubicBezier2::distance_squared(const Vector2& point) const
     {
-        return distance2::point_cubic_bezier(point, *this).distsqr;
+        return distance2::point_cubic_bezier(point, *this).distance_squared;
     }
 
 

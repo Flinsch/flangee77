@@ -92,7 +92,7 @@ struct Vector3
     float length() const { return ::sqrtf(x*x + y*y + z*z); }
 
     /** Returns the squared magnitude of this vector. */
-    float lensqr() const { return x*x + y*y + z*z; }
+    float length_squared() const { return x*x + y*y + z*z; }
 
     /**
      * Returns the azimuth angle of this vector in the signed range [-pi;+pi], with
@@ -144,7 +144,7 @@ struct Vector3
      */
     Vector3 normalized() const
     {
-        float d = lensqr();
+        float d = length_squared();
         if (d == 0.0f)
             return ZERO; // x = y = z = 0
         d = 1.0f / ::sqrtf(d);
@@ -170,7 +170,7 @@ struct Vector3
     /**
      * Returns the squared dot/scalar product of this and a given vector v.
      */
-    float dotsqr(const Vector3& v) const
+    float dot_squared(const Vector3& v) const
     {
         const float tmp = dot(v);
         return tmp*tmp;
@@ -217,7 +217,7 @@ struct Vector3
      */
     Vector3 proj(const Vector3& v) const
     {
-        return *this * (dot(v) / lensqr());
+        return *this * (dot(v) / length_squared());
     }
 
 

@@ -19,7 +19,7 @@ TESTLABS_CASE( u8"CoreLabs:  Vector3:  " )
     TESTLABS_CHECK_EQ( ml7::Vector4( ml7::Vector3( 2.0f, 4.0f, 6.0f ), 2.0f ), ml7::Vector4( 2.0f, 4.0f, 6.0f, 2.0f ) );
 
     TESTLABS_CHECK_EQ( ml7::round( ml7::Vector4( 1.0f, 2.0f, 3.0f, 4.0f ).length(), 3 ), ml7::round( 5.477f, 3 ) );
-    TESTLABS_CHECK_EQ( ml7::round( ml7::Vector4( 1.0f, 2.0f, 3.0f, 4.0f ).lensqr(), 3 ), ml7::round( 30.0f, 3 ) );
+    TESTLABS_CHECK_EQ( ml7::round( ml7::Vector4( 1.0f, 2.0f, 3.0f, 4.0f ).length_squared(), 3 ), ml7::round( 30.0f, 3 ) );
 
     TESTLABS_CHECK_EQ( ml7::Vector4( 2.0f, 4.0f, 6.0f, 2.0f ).dehomogenized(), ml7::Vector4( 1.0f, 2.0f, 3.0f, 1.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector4( 2.0f, 0.0f, 0.0f, 0.0f ).normalized(), ml7::Vector4( 1.0f, 0.0f, 0.0f, 0.0f ) );

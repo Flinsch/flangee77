@@ -117,7 +117,7 @@ struct CubicBezier2
      * Calculates the minimum squared distance from the specified query point to
      * this Bézier curve.
      */
-    float distsqr(const Vector2& point) const;
+    float distance_squared(const Vector2& point) const;
 
 
 

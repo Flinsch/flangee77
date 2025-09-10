@@ -17,9 +17,9 @@ namespace ml7::distance3 {
 struct ResultBase
 {
     /** The squared distance between two shapes. */
-    float distsqr;
+    float distance_squared;
     /** Calculates the distance between two shapes by taking the square root of the squared distance. */
-    float distance() const { assert(distsqr >= 0.0f); return std::sqrt(distsqr); }
+    float distance() const { assert(distance_squared >= 0.0f); return std::sqrt(distance_squared); }
 };
 
 struct PointResult

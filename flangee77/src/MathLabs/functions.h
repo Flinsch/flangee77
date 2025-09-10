@@ -49,9 +49,19 @@ namespace ml7 {
      */
     template <typename T>
         requires(std::is_arithmetic_v<T>)
-    constexpr T sqr(T x)
+    constexpr T square(T x)
     {
         return x * x;
+    }
+
+    /**
+     * Returns the given value cubed.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T cube(T x)
+    {
+        return x * x * x;
     }
 
     /**
@@ -74,6 +84,16 @@ namespace ml7 {
         if (x < T(0))
             return -std::sqrt(-x);
         return std::sqrt(x);
+    }
+
+    /**
+     * Returns the cube root of the given value.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T cbrt(T x)
+    {
+        return std::cbrt(x);
     }
 
 
@@ -332,14 +352,14 @@ namespace ml7 {
      */
     template <typename T>
         requires(std::is_floating_point_v<T>)
-    constexpr bool is_one_sqr(T sqr, T epsilon = std::numeric_limits<T>::epsilon())
+    constexpr bool is_one_squared(T x, T epsilon = std::numeric_limits<T>::epsilon())
     {
         //  x  =  1+epsilon
         // x^2 = (1+epsilon)^2
         // x^2 = 1^2 + 2*epsilon + epsilon^2
         // x^2 =  1  + 2*epsilon
         // epsilon^2 is omitted because it is far below floating point precision.
-        return std::abs(sqr - T(1)) <= T(2) * epsilon;
+        return std::abs(x - T(1)) <= T(2) * epsilon;
     }
 
     /**
@@ -452,7 +472,7 @@ namespace ml7 {
      */
     template <typename T>
         requires(std::is_integral_v<T> && std::is_unsigned_v<T>)
-    constexpr bool is_power_of_2(T x)
+    constexpr bool is_power_of_two(T x)
     {
         return x > 0 && (x & (x - 1)) == 0;
     }
@@ -463,7 +483,7 @@ namespace ml7 {
      */
     template <typename T>
         requires(std::is_integral_v<T> && std::is_unsigned_v<T>)
-    constexpr T prev_power_of_2(T x)
+    constexpr T prev_power_of_two(T x)
     {
         constexpr T max = T(1) << (sizeof(T) * 8 - 1);
         if (x >= max)
@@ -481,7 +501,7 @@ namespace ml7 {
      */
     template <typename T>
         requires(std::is_integral_v<T> && std::is_unsigned_v<T>)
-    constexpr T next_power_of_2(T x)
+    constexpr T next_power_of_two(T x)
     {
         constexpr T max = T(1) << (sizeof(T) * 8 - 1);
         if (x > max)

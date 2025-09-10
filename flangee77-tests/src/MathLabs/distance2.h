@@ -45,11 +45,11 @@ TESTLABS_CASE( u8"MathLabs:  distance2:  point_ray" )
         ml7::distance2::PointResult expected;
         expected.t = entry.expected_t;
         expected.point = ray.point_at( expected.t );
-        expected.distsqr = (expected.point - entry.point).lensqr();
+        expected.distance_squared = (expected.point - entry.point).length_squared();
 
         const auto actual = ml7::distance2::point_ray( point, ray );
 
-        TESTLABS_CHECK_EQ( ml7::round( actual.distsqr, 4 ), ml7::round( expected.distsqr, 4 ) );
+        TESTLABS_CHECK_EQ( ml7::round( actual.distance_squared, 4 ), ml7::round( expected.distance_squared, 4 ) );
         TESTLABS_CHECK_EQ( ml7::round( actual.distance(), 4 ), ml7::round( expected.distance(), 4 ) );
         TESTLABS_CHECK_EQ( ml7::round( actual.point, 4 ), ml7::round( expected.point, 4 ) );
         TESTLABS_CHECK_EQ( ml7::round( actual.t, 4 ), ml7::round( expected.t, 4 ) );

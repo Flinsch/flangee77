@@ -64,9 +64,9 @@ namespace ml7 {
      * Calculates the minimum squared distance from the specified query point to
      * this line.
      */
-    float Line2::distsqr(const Vector2& point) const
+    float Line2::distance_squared(const Vector2& point) const
     {
-        return distance2::point_line(point, *this).distsqr;
+        return distance2::point_line(point, *this).distance_squared;
     }
 
 
