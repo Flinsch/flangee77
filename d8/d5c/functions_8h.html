@@ -273,6 +273,10 @@ requires (std::is_floating_point_v&lt;T&gt;)</td></tr>
 requires (std::is_floating_point_v&lt;T&gt;)</td></tr>
 <tr class="memitem:a2a4e4a74b900eb420e6524d2e2e7a429"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a2a4e4a74b900eb420e6524d2e2e7a429">ml7::pow</a> (T base)</td></tr>
 <tr class="separator:a2a4e4a74b900eb420e6524d2e2e7a429"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8390a7eb472e1a801dc9ffa7b78d42cf" id="r_a8390a7eb472e1a801dc9ffa7b78d42cf"><td class="memTemplParams" colspan="2">template&lt;auto base, unsigned exp, typename T  = decltype(base)&gt; <br />
+requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
+<tr class="memitem:a8390a7eb472e1a801dc9ffa7b78d42cf"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a8390a7eb472e1a801dc9ffa7b78d42cf">ml7::pow</a> ()</td></tr>
+<tr class="separator:a8390a7eb472e1a801dc9ffa7b78d42cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79c20b33b1e4d4a375dae0db16f93a8d" id="r_a79c20b33b1e4d4a375dae0db16f93a8d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
 requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
 <tr class="memitem:a79c20b33b1e4d4a375dae0db16f93a8d"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a79c20b33b1e4d4a375dae0db16f93a8d">ml7::square</a> (T x)</td></tr>
@@ -305,6 +309,10 @@ requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
 requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
 <tr class="memitem:aba991d5201624ca3766135e88f9847f2"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#aba991d5201624ca3766135e88f9847f2">ml7::step</a> (T x, T edge)</td></tr>
 <tr class="separator:aba991d5201624ca3766135e88f9847f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30eb2cd089bb5c261511db6609e33302" id="r_a30eb2cd089bb5c261511db6609e33302"><td class="memTemplParams" colspan="2">template&lt;auto edge, typename T &gt; <br />
+requires (std::is_arithmetic_v&lt;T&gt; &amp;&amp; std::is_convertible_v&lt;decltype(edge), T&gt;)</td></tr>
+<tr class="memitem:a30eb2cd089bb5c261511db6609e33302"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a30eb2cd089bb5c261511db6609e33302">ml7::step</a> (T x)</td></tr>
+<tr class="separator:a30eb2cd089bb5c261511db6609e33302"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebee3cfa41cd350c5bacc46200037eb6" id="r_aebee3cfa41cd350c5bacc46200037eb6"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
 requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
 <tr class="memitem:aebee3cfa41cd350c5bacc46200037eb6"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#aebee3cfa41cd350c5bacc46200037eb6">ml7::step</a> (T x)</td></tr>
@@ -313,6 +321,10 @@ requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
 requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
 <tr class="memitem:a91c74ecedb753dee221882b32a5df669"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a91c74ecedb753dee221882b32a5df669">ml7::smoothstep</a> (T x, T min, T max)</td></tr>
 <tr class="separator:a91c74ecedb753dee221882b32a5df669"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a520e21b4ac64af321f9f8c3ed561d971" id="r_a520e21b4ac64af321f9f8c3ed561d971"><td class="memTemplParams" colspan="2">template&lt;auto min, auto max, typename T &gt; <br />
+requires (std::is_arithmetic_v&lt;T&gt; &amp;&amp; std::is_convertible_v&lt;decltype(min), T&gt; &amp;&amp; std::is_convertible_v&lt;decltype(max), T&gt;)</td></tr>
+<tr class="memitem:a520e21b4ac64af321f9f8c3ed561d971"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a520e21b4ac64af321f9f8c3ed561d971">ml7::smoothstep</a> (T x)</td></tr>
+<tr class="separator:a520e21b4ac64af321f9f8c3ed561d971"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabcac774b8e8962eb04d5b31d9446168" id="r_aabcac774b8e8962eb04d5b31d9446168"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
 requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
 <tr class="memitem:aabcac774b8e8962eb04d5b31d9446168"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#aabcac774b8e8962eb04d5b31d9446168">ml7::smoothstep</a> (T x)</td></tr>
@@ -357,18 +369,18 @@ requires (std::is_arithmetic_v&lt;T&gt; &amp;&amp; std::is_convertible_v&lt;decl
 requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
 <tr class="memitem:ad2c75459ca4dbdafca224feceaf4ef98"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#ad2c75459ca4dbdafca224feceaf4ef98">ml7::ramp</a> (T x)</td></tr>
 <tr class="separator:ad2c75459ca4dbdafca224feceaf4ef98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a915f4f2349c662c97769262876fe48eb" id="r_a915f4f2349c662c97769262876fe48eb"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
-requires (std::is_floating_point_v&lt;T&gt;)</td></tr>
-<tr class="memitem:a915f4f2349c662c97769262876fe48eb"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a915f4f2349c662c97769262876fe48eb">ml7::round</a> (T x)</td></tr>
-<tr class="separator:a915f4f2349c662c97769262876fe48eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45622c5ad5606329465c12d43a0bd5b7" id="r_a45622c5ad5606329465c12d43a0bd5b7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
 requires (std::is_floating_point_v&lt;T&gt;)</td></tr>
 <tr class="memitem:a45622c5ad5606329465c12d43a0bd5b7"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a45622c5ad5606329465c12d43a0bd5b7">ml7::round</a> (T x, unsigned num_decimals)</td></tr>
 <tr class="separator:a45622c5ad5606329465c12d43a0bd5b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5f0a3d3e519dc75a159ec74a5eee82e" id="r_af5f0a3d3e519dc75a159ec74a5eee82e"><td class="memTemplParams" colspan="2">template&lt;typename T , unsigned num_decimals&gt; <br />
+<tr class="memitem:af5f0a3d3e519dc75a159ec74a5eee82e" id="r_af5f0a3d3e519dc75a159ec74a5eee82e"><td class="memTemplParams" colspan="2">template&lt;unsigned num_decimals, typename T &gt; <br />
 requires (std::is_floating_point_v&lt;T&gt;)</td></tr>
 <tr class="memitem:af5f0a3d3e519dc75a159ec74a5eee82e"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#af5f0a3d3e519dc75a159ec74a5eee82e">ml7::round</a> (T x)</td></tr>
 <tr class="separator:af5f0a3d3e519dc75a159ec74a5eee82e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a915f4f2349c662c97769262876fe48eb" id="r_a915f4f2349c662c97769262876fe48eb"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
+requires (std::is_floating_point_v&lt;T&gt;)</td></tr>
+<tr class="memitem:a915f4f2349c662c97769262876fe48eb"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a915f4f2349c662c97769262876fe48eb">ml7::round</a> (T x)</td></tr>
+<tr class="separator:a915f4f2349c662c97769262876fe48eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94f12b389ab6122ddbc30dbd2e02b782" id="r_a94f12b389ab6122ddbc30dbd2e02b782"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
 requires (std::is_floating_point_v&lt;T&gt;)</td></tr>
 <tr class="memitem:a94f12b389ab6122ddbc30dbd2e02b782"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a94f12b389ab6122ddbc30dbd2e02b782">ml7::is_zero</a> (T x, T epsilon=std::numeric_limits&lt; T &gt;::epsilon())</td></tr>
