@@ -45,6 +45,19 @@ namespace ml7 {
     }
 
     /**
+     * Returns the value of base raised to the power of exp.
+     */
+    template <auto base, unsigned exp, typename T = decltype(base)>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T pow()
+    {
+        if constexpr (exp == 0)
+            return T(1);
+        else
+            return base * pow<base, exp - 1, T>();
+    }
+
+    /**
      * Returns the given value squared.
      */
     template <typename T>
@@ -132,6 +145,16 @@ namespace ml7 {
     }
 
     /**
+     * Returns 1 if x >= edge, 0 otherwise.
+     */
+    template <auto edge, typename T>
+        requires(std::is_arithmetic_v<T> && std::is_convertible_v<decltype(edge), T>)
+    constexpr T step(T x)
+    {
+        return x >= static_cast<T>(edge) ? T(1) : T(0);
+    }
+
+    /**
      * Returns 1 if x >= 0, 0 otherwise.
      */
     template <typename T>
@@ -154,6 +177,22 @@ namespace ml7 {
         if (x <= min) return T(0);
         if (x >= max) return T(1);
         x = (x - min) / (max - min);
+        return x * x * (3.0f - 2.0f * x);
+    }
+
+    /**
+     * Returns 0 if x is less than min, 1 if x is greater than max, and a value
+     * between 0 and 1 otherwise using a Hermite polynomial.
+     */
+    template <auto min, auto max, typename T>
+        requires(std::is_arithmetic_v<T> && std::is_convertible_v<decltype(min), T> && std::is_convertible_v<decltype(max), T>)
+    constexpr T smoothstep(T x)
+    {
+        if constexpr (static_cast<T>(min) == static_cast<T>(max))
+            return step<min>(x);
+        if (x <= static_cast<T>(min)) return T(0);
+        if (x >= static_cast<T>(max)) return T(1);
+        x = (x - static_cast<T>(min)) / (static_cast<T>(max) - static_cast<T>(min));
         return x * x * (3.0f - 2.0f * x);
     }
 
@@ -293,16 +332,6 @@ namespace ml7 {
 
 
     /**
-     * Rounds the given value to the closest "integer" value.
-     */
-    template <typename T>
-        requires(std::is_floating_point_v<T>)
-    T round(T x)
-    {
-        return std::floor(x + T(0.5));
-    }
-
-    /**
      * Rounds the given value to the specified number of decimal places.
      */
     template <typename T>
@@ -310,19 +339,28 @@ namespace ml7 {
     T round(T x, unsigned num_decimals)
     {
         const T p = std::pow(T(10.0), static_cast<T>(num_decimals));
-        return round(x * p) / p;
+        return std::floor(x * p + T(0.5)) / p;
     }
 
     /**
      * Rounds the given value to the specified number of decimal places.
      */
-    template <typename T, unsigned num_decimals>
+    template <unsigned num_decimals, typename T>
         requires(std::is_floating_point_v<T>)
     T round(T x)
     {
-        constexpr T p = std::pow(T(10.0), static_cast<T>(num_decimals));
-        constexpr T i = T(1.0) / p;
-        return round(x * p) * i;
+        constexpr T p = ml7::pow<T(10.0), num_decimals>();
+        return std::floor(x * p + T(0.5)) / p;
+    }
+
+    /**
+     * Rounds the given value to the closest integer value.
+     */
+    template <typename T>
+        requires(std::is_floating_point_v<T>)
+    T round(T x)
+    {
+        return std::floor(x + T(0.5));
     }
 
 
