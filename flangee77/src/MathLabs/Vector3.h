@@ -89,7 +89,7 @@ struct Vector3
     // #############################################################################
 
     /** Returns the magnitude of this vector. */
-    float length() const { return ::sqrtf(x*x + y*y + z*z); }
+    float length() const { return std::sqrt(x*x + y*y + z*z); }
 
     /** Returns the squared magnitude of this vector. */
     float length_squared() const { return x*x + y*y + z*z; }
@@ -147,7 +147,7 @@ struct Vector3
         float d = length_squared();
         if (d == 0.0f)
             return ZERO; // x = y = z = 0
-        d = 1.0f / ::sqrtf(d);
+        d = 1.0f / std::sqrt(d);
         return {x*d, y*d, z*d};
     }
 
@@ -156,7 +156,7 @@ struct Vector3
      */
     Vector3 abs() const
     {
-        return {::abs(x), ::abs(y), ::abs(z)};
+        return {std::abs(x), std::abs(y), std::abs(z)};
     }
 
     /**

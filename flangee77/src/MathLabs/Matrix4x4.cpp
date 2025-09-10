@@ -259,7 +259,7 @@ namespace ml7 {
         if (_11 == 0.0f || _22 == 0.0f || _33 == 0.0f || _34 == 0.0f)
             return false;
 
-        fov = 2.0f * ::atanf(1.0f / _22);
+        fov = 2.0f * std::atan(1.0f / _22);
         aspect = _22 / _11;
         znear = -_34 / _33;
         zfar = _34 / (1.0f - _33);
@@ -285,7 +285,7 @@ namespace ml7 {
         if (_11 == 0.0f || _22 == 0.0f || _33 == 0.0f || _34 == 0.0f)
             return false;
 
-        fov = 2.0f * ::atanf(1.0f / _22);
+        fov = 2.0f * std::atan(1.0f / _22);
         aspect = _22 / _11;
         znear = _34 / _33;
         zfar = _34 / (1.0f + _33);
@@ -461,7 +461,7 @@ namespace ml7 {
     {
         // https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3dxmatrixperspectivefovlh
         const float rd = zfar / (zfar - znear);
-        const float sy = 1.0f / ::tanf(fov * 0.5f); // cot = 1/tan
+        const float sy = 1.0f / std::tan(fov * 0.5f); // cot = 1/tan
         const float sx = sy / aspect;
         return {
             sx,    0.0f,  0.0f,  0.0f,
@@ -481,7 +481,7 @@ namespace ml7 {
     {
         // https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3dxmatrixperspectivefovrh
         const float rd = zfar / (znear - zfar);
-        const float sy = 1.0f / ::tanf(fov * 0.5f); // cot = 1/tan
+        const float sy = 1.0f / std::tan(fov * 0.5f); // cot = 1/tan
         const float sx = sy / aspect;
         return {
             sx,    0.0f,  0.0f,  0.0f,

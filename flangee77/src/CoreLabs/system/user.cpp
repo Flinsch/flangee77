@@ -20,8 +20,7 @@ namespace cl7::system {
     cl7::u8string user::get_user_name(UserNameFormat user_name_format)
     {
         constexpr unsigned long MAX_NAME_LENGTH = 1024;
-        wchar_t name[MAX_NAME_LENGTH];
-        ::memset(name, 0, MAX_NAME_LENGTH * sizeof(wchar_t));
+        wchar_t name[MAX_NAME_LENGTH] = {};
 
         EXTENDED_NAME_FORMAT extended_name_format = NameSamCompatible;
 

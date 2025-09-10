@@ -57,7 +57,7 @@ namespace ml7 {
     {
         float t = _11 + _22 + _33;
         float cs = 0.5f * (t - 1.0f);
-        angle = ::acosf(cs); // [0;pi]
+        angle = std::acos(cs); // [0;pi]
 
         if (!(angle > 0.0f))
         {
@@ -79,14 +79,14 @@ namespace ml7 {
         {
             if (_11 >= _33) // => _11 is maximum
             {
-                axis.x = 0.5f * ::sqrtf(_11 - _22 - _33 + 1.0f);
+                axis.x = 0.5f * std::sqrt(_11 - _22 - _33 + 1.0f);
                 _05i = 0.5f / axis.x;
                 axis.y = _12 * _05i;
                 axis.z = _13 * _05i;
             }
             else // => _33 > _11 => _33 is maximum
             {
-                axis.z = 0.5f * ::sqrtf(_33 - _11 - _22 + 1.0f);
+                axis.z = 0.5f * std::sqrt(_33 - _11 - _22 + 1.0f);
                 _05i = 0.5f / axis.z;
                 axis.x = _13 * _05i;
                 axis.y = _23 * _05i;
@@ -96,14 +96,14 @@ namespace ml7 {
         {
             if (_22 >= _33) // => _22 is maximum
             {
-                axis.y = 0.5f * ::sqrtf(_22 - _11 - _33 + 1.0f);
+                axis.y = 0.5f * std::sqrt(_22 - _11 - _33 + 1.0f);
                 _05i = 0.5f / axis.y;
                 axis.x = _12 * _05i;
                 axis.z = _23 * _05i;
             }
             else // => _33 > _22 => => _33 is maximum
             {
-                axis.z = 0.5f * ::sqrtf(_33 - _11 - _22 + 1.0f);
+                axis.z = 0.5f * std::sqrt(_33 - _11 - _22 + 1.0f);
                 _05i = 0.5f / axis.z;
                 axis.x = _13 * _05i;
                 axis.y = _23 * _05i;
@@ -199,8 +199,8 @@ namespace ml7 {
         const ml7::Vector3& u = unit_axis;
         if (angle == 0.0f)
             return IDENTITY;
-        const float cs = ::cosf(angle);
-        const float sn = ::sinf(angle);
+        const float cs = std::cos(angle);
+        const float sn = std::sin(angle);
         const float C = 1.0f - cs;
         const float xsn = u.x*sn;
         const float ysn = u.y*sn;
@@ -230,8 +230,8 @@ namespace ml7 {
         const float sy = scaling.y;
         const float sz = scaling.z;
         const ml7::Vector3 u = axis.normalized();
-        const float cs = ::cosf(angle);
-        const float sn = ::sinf(angle);
+        const float cs = std::cos(angle);
+        const float sn = std::sin(angle);
         const float C = 1.0f - cs;
         const float xsn = u.x*sn;
         const float ysn = u.y*sn;

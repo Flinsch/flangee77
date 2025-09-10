@@ -16,9 +16,9 @@ namespace ml7 {
     Angle Angle::normalized_symmetric() const
     {
         if (radians < -ml7::constants::pi)
-            return ml7::constants::pi - ::fmodf(-radians - ml7::constants::pi, ml7::constants::pi2);
+            return ml7::constants::pi - std::fmod(-radians - ml7::constants::pi, ml7::constants::pi2);
         if (radians > ml7::constants::pi)
-            return ::fmodf(radians + ml7::constants::pi, ml7::constants::pi2) - ml7::constants::pi;
+            return std::fmod(radians + ml7::constants::pi, ml7::constants::pi2) - ml7::constants::pi;
         return radians;
     }
 
@@ -28,9 +28,9 @@ namespace ml7 {
     Angle Angle::normalized_asymmetric() const
     {
         if (radians < 0.0f)
-            return ml7::constants::pi2 - ::fmodf(-radians, ml7::constants::pi2);
+            return ml7::constants::pi2 - std::fmod(-radians, ml7::constants::pi2);
         if (radians > ml7::constants::pi2)
-            return ::fmodf(radians, ml7::constants::pi2);
+            return std::fmod(radians, ml7::constants::pi2);
         return radians;
     }
 
@@ -46,9 +46,9 @@ namespace ml7 {
     Angle& Angle::normalize_symmetric()
     {
         if (radians < -ml7::constants::pi)
-            radians = ml7::constants::pi - ::fmodf(-radians - ml7::constants::pi, ml7::constants::pi2);
+            radians = ml7::constants::pi - std::fmod(-radians - ml7::constants::pi, ml7::constants::pi2);
         else if (radians > ml7::constants::pi)
-            radians = ::fmodf(radians + ml7::constants::pi, ml7::constants::pi2) - ml7::constants::pi;
+            radians = std::fmod(radians + ml7::constants::pi, ml7::constants::pi2) - ml7::constants::pi;
         return *this;
     }
 
@@ -58,9 +58,9 @@ namespace ml7 {
     Angle& Angle::normalize_asymmetric()
     {
         if (radians < 0.0f)
-            radians = ml7::constants::pi2 - ::fmodf(-radians, ml7::constants::pi2);
+            radians = ml7::constants::pi2 - std::fmod(-radians, ml7::constants::pi2);
         else if (radians > ml7::constants::pi2)
-            radians = ::fmodf(radians, ml7::constants::pi2);
+            radians = std::fmod(radians, ml7::constants::pi2);
         return *this;
     }
 

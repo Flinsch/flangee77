@@ -1,7 +1,5 @@
 #include "Stats.h"
 
-#include <cstring>
-
 
 
 namespace tl7 {
@@ -41,7 +39,7 @@ namespace tl7 {
 
     void Stats::reset()
     {
-        ::memset(this, 0, sizeof(*this));
+        std::memset(this, 0, sizeof(*this));
     }
 
     void Stats::update(const Result& result)

@@ -17,7 +17,7 @@ namespace cl7::system {
 
     MemoryStatus::MemoryStatus()
     {
-        ::memset(this, 0, sizeof(MemoryStatus));
+        std::memset(this, 0, sizeof(MemoryStatus));
     }
 
     /**
@@ -29,8 +29,7 @@ namespace cl7::system {
         *this = {}; // Reinitialize via default constructor.
 
 #ifdef _WIN32
-        MEMORYSTATUSEX memory_status_ex;
-        ::memset(&memory_status_ex, 0, sizeof(memory_status_ex));
+        MEMORYSTATUSEX memory_status_ex = {};
         memory_status_ex.dwLength = sizeof(memory_status_ex);
         if (!::GlobalMemoryStatusEx(&memory_status_ex))
         {
@@ -63,7 +62,7 @@ namespace cl7::system {
 #endif
 #else // => Unix-like systems (such as Linux)
         struct sysinfo sys_info;
-        ::memset(&sys_info, 0, sizeof(sys_info));
+        std::memset(&sys_info, 0, sizeof(sys_info));
         if (::sysinfo(&sys_info) != 0)
         {
             LOG_WARNING(cl7::errors::system_result(errno, u8"::sysinfo"));
@@ -71,7 +70,7 @@ namespace cl7::system {
         }
 
         struct rlimit r_limit;
-        ::memset(&r_limit, 0, sizeof(r_limit));
+        std::memset(&r_limit, 0, sizeof(r_limit));
         if (::getrlimit(RLIMIT_AS, &r_limit) != 0)
         {
             LOG_WARNING(cl7::errors::system_result(errno, u8"::getrlimit"));

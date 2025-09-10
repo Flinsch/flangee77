@@ -122,10 +122,10 @@ namespace xl7::graphics::impl::direct3d11::shaders {
         assert(data.size() >= static_cast<size_t>(constant_mapping.source_offset + constant_mapping.size));
         assert(_size >= static_cast<size_t>(constant_mapping.shader_offset + constant_mapping.size));
 
-        if (::memcmp(_data + constant_mapping.shader_offset, data.data() + constant_mapping.source_offset, constant_mapping.size) == 0)
+        if (std::memcmp(_data + constant_mapping.shader_offset, data.data() + constant_mapping.source_offset, constant_mapping.size) == 0)
             return true;
 
-        ::memcpy(_data + constant_mapping.shader_offset, data.data() + constant_mapping.source_offset, constant_mapping.size);
+        std::memcpy(_data + constant_mapping.shader_offset, data.data() + constant_mapping.source_offset, constant_mapping.size);
 
         if (_dirty_size == 0)
         {
@@ -170,7 +170,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
             return false;
         }
 
-        ::memcpy(mapped_subresource.pData, _data, _size);
+        std::memcpy(mapped_subresource.pData, _data, _size);
 
         d3d_device_context->Unmap(_d3d_constant_buffer.Get(), 0);
 

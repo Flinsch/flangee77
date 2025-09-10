@@ -118,7 +118,7 @@ namespace xl7::graphics::impl::direct3d11::meshes {
                 return false;
             }
 
-            ::memcpy(mapped_subresource.pData, get_data().data() + data_provider.get_offset(), data_provider.get_size());
+            std::memcpy(mapped_subresource.pData, get_data().data() + data_provider.get_offset(), data_provider.get_size());
 
             d3d_device_context->Unmap(_d3d_vertex_buffer.Get(), 0);
         }

@@ -39,7 +39,7 @@ namespace cl7 {
     bool Guid::is_valid() const
     {
         // Is this ... dirty?
-        return bytes[0] != std::byte{0} || ::memcmp(bytes.data(), bytes.data() + 1, 15) != 0;
+        return bytes[0] != std::byte{0} || std::memcmp(bytes.data(), bytes.data() + 1, 15) != 0;
     }
 
     /**

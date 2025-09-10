@@ -138,7 +138,7 @@ struct Vector4
     // #############################################################################
 
     /** Returns the magnitude of this vector. */
-    float length() const { return ::sqrtf(x*x + y*y + z*z + w*w); }
+    float length() const { return std::sqrt(x*x + y*y + z*z + w*w); }
 
     /** Returns the squared magnitude of this vector. */
     float length_squared() const { return x*x + y*y + z*z + w*w; }
@@ -169,7 +169,7 @@ struct Vector4
         float d = length_squared();
         if (d == 0.0f)
             return ZERO; // x = y = z = w = 0
-        d = 1.0f / ::sqrtf(d);
+        d = 1.0f / std::sqrt(d);
         return {x*d, y*d, z*d, w*d};
     }
 
@@ -178,7 +178,7 @@ struct Vector4
      */
     Vector4 abs() const
     {
-        return {::abs(x), ::abs(y), ::abs(z), ::abs(w)};
+        return {std::abs(x), std::abs(y), std::abs(z), std::abs(w)};
     }
 
     /**

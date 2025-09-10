@@ -60,7 +60,7 @@ namespace ml7 {
      */
     Vector4 Vector4::terp(const Vector4& a, const Vector4& b, float x)
     {
-        x = (1.0f-::cosf(constants::pi*x))*0.5f;
+        x = (1.0f-std::cos(constants::pi*x))*0.5f;
         return a + (b-a)*x;
     }
 

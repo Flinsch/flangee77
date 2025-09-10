@@ -60,9 +60,9 @@ namespace xl7::graphics::images {
             size_t lo = bytes_per_line * i;
             size_t hi = bytes_per_line * (line_count - i - 1);
             assert(lo < hi);
-            ::memcpy(line.data(), &data[lo], bytes_per_line);
-            ::memcpy(&data[lo], &data[hi], bytes_per_line);
-            ::memcpy(&data[hi], line.data(), bytes_per_line);
+            std::memcpy(line.data(), &data[lo], bytes_per_line);
+            std::memcpy(&data[lo], &data[hi], bytes_per_line);
+            std::memcpy(&data[hi], line.data(), bytes_per_line);
         }
 
         return image.init(desc, std::move(data));
@@ -123,7 +123,7 @@ namespace xl7::graphics::images {
                 if (readable.read({cursor, bytes_per_pixel}) != bytes_per_pixel)
                     return _log_bad_format_error(source_name);
                 for (size_t i = 1; i < pixel_count; ++i)
-                    ::memcpy(cursor + i * bytes_per_pixel, cursor, bytes_per_pixel);
+                    std::memcpy(cursor + i * bytes_per_pixel, cursor, bytes_per_pixel);
             }
 
             cursor += chunk_size;

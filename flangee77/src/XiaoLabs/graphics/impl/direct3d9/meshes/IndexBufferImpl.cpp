@@ -124,7 +124,7 @@ namespace xl7::graphics::impl::direct3d9::meshes {
             return false;
         }
 
-        ::memcpy(dst, get_data().data() + data_provider.get_offset(), data_provider.get_size());
+        std::memcpy(dst, get_data().data() + data_provider.get_offset(), data_provider.get_size());
 
         hresult = _d3d_index_buffer->Unlock();
         assert(SUCCEEDED(hresult));

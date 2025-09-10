@@ -5,8 +5,6 @@
 #include <CoreLabs/logging.h>
 #include <CoreLabs/bits.h>
 
-#include <cstring>
-
 
 
 namespace xl7::graphics::images {
@@ -136,22 +134,22 @@ namespace xl7::graphics::images {
 
             chunk_info.length = cl7::bits::swap_bytes_unless_endian<std::endian::big>(chunk_info.length);
 
-            if (::strncmp(chunk_info.type, "IHDR", 4) == 0)
+            if (std::strncmp(chunk_info.type, "IHDR", 4) == 0)
             {
                 if (!_process_IHDR_chunk(readable, source_name, chunk_info.length, bit_info))
                     return false;
             }
-            else if (::strncmp(chunk_info.type, "PLTE", 4) == 0)
+            else if (std::strncmp(chunk_info.type, "PLTE", 4) == 0)
             {
                 if (!_process_PLTE_chunk(readable, source_name, chunk_info.length, palette))
                     return false;
             }
-            else if (::strncmp(chunk_info.type, "IDAT", 4) == 0)
+            else if (std::strncmp(chunk_info.type, "IDAT", 4) == 0)
             {
                 if (!_process_IDAT_chunk(readable, source_name, chunk_info.length, data))
                     return false;
             }
-            else if (::strncmp(chunk_info.type, "IEND", 4) == 0)
+            else if (std::strncmp(chunk_info.type, "IEND", 4) == 0)
             {
                 break;
             }

@@ -15,7 +15,7 @@ namespace cl7::system {
 
     CPUID::CPUID()
     {
-        ::memset(this, 0, sizeof(CPUID));
+        std::memset(this, 0, sizeof(CPUID));
     }
 
     /**
@@ -28,9 +28,9 @@ namespace cl7::system {
         regs regs;
 
         regs = cpuid(0);
-        ::memcpy(&vendor_name[0], &regs.ebx, 4);
-        ::memcpy(&vendor_name[4], &regs.edx, 4);
-        ::memcpy(&vendor_name[8], &regs.ecx, 4);
+        std::memcpy(&vendor_name[0], &regs.ebx, 4);
+        std::memcpy(&vendor_name[4], &regs.edx, 4);
+        std::memcpy(&vendor_name[8], &regs.ecx, 4);
 
         regs = cpuid(0x80000000);
 
@@ -40,16 +40,16 @@ namespace cl7::system {
             bitness = (regs.edx >> 29) & 0x1 ? 64 : 32;
 
             regs = cpuid(0x80000002);
-            ::memcpy(&processor_name[ 0], &regs, 16);
+            std::memcpy(&processor_name[ 0], &regs, 16);
             regs = cpuid(0x80000003);
-            ::memcpy(&processor_name[16], &regs, 16);
+            std::memcpy(&processor_name[16], &regs, 16);
             regs = cpuid(0x80000004);
-            ::memcpy(&processor_name[32], &regs, 16);
+            std::memcpy(&processor_name[32], &regs, 16);
         }
         else // => not extended
         {
             bitness = 0;
-            ::memset(processor_name, 0, sizeof(processor_name));
+            std::memset(processor_name, 0, sizeof(processor_name));
         }
 
         // Extract frequency (in MHz) from the processor name.

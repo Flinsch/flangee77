@@ -60,7 +60,7 @@ namespace ml7 {
         if (sy == 00.f) return false;
         scaling.x = sx;
         scaling.y = sy;
-        angle = ::atan2f(-_12 / sy, _11 / sx);
+        angle = std::atan2(-_12 / sy, _11 / sx);
         return true;
     }
 
@@ -94,8 +94,8 @@ namespace ml7 {
     {
         const float sx = scaling.x;
         const float sy = scaling.y;
-        const float cs = ::cosf(angle);
-        const float sn = ::sinf(angle);
+        const float cs = std::cos(angle);
+        const float sn = std::sin(angle);
         return {
             cs * sx,    -sn * sy,
             sn * sx,    cs * sy,

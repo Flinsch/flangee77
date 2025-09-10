@@ -132,14 +132,14 @@ namespace xl7::graphics {
      */
     Color Color::from_hsv(float hue, float saturation, float brightness)
     {
-        float H = hue < 0.0f ? 360.0f - ::fmodf(-hue, 360.0f) : ::fmodf(hue, 360.0f);
+        float H = hue < 0.0f ? 360.0f - std::fmod(-hue, 360.0f) : std::fmod(hue, 360.0f);
         float S = ml7::clamp(saturation, 0.0f, 1.0f);
         float V = ml7::clamp(brightness, 0.0f, 1.0f);
 
         // https://www.rapidtables.com/convert/color/hsv-to-rgb.html
 
         float C = V * S;
-        float X = C * (1.0f - ::abs(::fmodf(H / 60.0f, 2.0f) - 1.0f)); // https://www.codespeedy.com/hsv-to-rgb-in-cpp/
+        float X = C * (1.0f - std::abs(std::fmod(H / 60.0f, 2.0f) - 1.0f)); // https://www.codespeedy.com/hsv-to-rgb-in-cpp/
         float m = V - C;
 
         Color v;
@@ -172,14 +172,14 @@ namespace xl7::graphics {
      */
     Color Color::from_hsl(float hue, float saturation, float lightness)
     {
-        float H = hue < 0.0f ? 360.0f - ::fmodf(-hue, 360.0f) : ::fmodf(hue, 360.0f);
+        float H = hue < 0.0f ? 360.0f - std::fmod(-hue, 360.0f) : std::fmod(hue, 360.0f);
         float S = ml7::clamp(saturation, 0.0f, 1.0f);
         float L = ml7::clamp(lightness, 0.0f, 1.0f);
 
         // https://www.rapidtables.com/convert/color/hsl-to-rgb.html
 
-        float C = (1.0f - ::abs(2.0f * L - 1.0f)) * S;
-        float X = C * (1.0f - ::abs(::fmodf(H / 60.0f, 2.0f) - 1.0f)); // https://www.codespeedy.com/hsv-to-rgb-in-cpp/
+        float C = (1.0f - std::abs(2.0f * L - 1.0f)) * S;
+        float X = C * (1.0f - std::abs(std::fmod(H / 60.0f, 2.0f) - 1.0f)); // https://www.codespeedy.com/hsv-to-rgb-in-cpp/
         float m = L - C * 0.5f;
 
         Color v;

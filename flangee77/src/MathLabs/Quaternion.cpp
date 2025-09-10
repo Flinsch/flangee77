@@ -104,11 +104,11 @@ namespace ml7 {
             return false;
         }
 
-        const float invlen = 1.0f / ::sqrtf(length_squared);
+        const float invlen = 1.0f / std::sqrt(length_squared);
         axis.x = x * invlen;
         axis.y = y * invlen;
         axis.z = z * invlen;
-        angle = 2.0f * ::acosf(w);
+        angle = 2.0f * std::acos(w);
         return true;
     }
 
