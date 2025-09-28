@@ -350,8 +350,8 @@ struct Matrix2x2
      */
     static Matrix2x2 rotation(float angle)
     {
-        const float cs = ::cosf(angle);
-        const float sn = ::sinf(angle);
+        const float cs = std::cos(angle);
+        const float sn = std::sin(angle);
         return {
             cs, -sn,
             sn, cs,

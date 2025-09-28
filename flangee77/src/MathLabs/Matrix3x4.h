@@ -439,7 +439,7 @@ struct Matrix3x4
      * Initializes a rotation matrix representing a rotation by a certain angle (in
      * radians) around the x-axis.
      */
-    static Matrix3x4 rotx(float angle) { return rotx(::sinf(angle), ::cosf(angle)); }
+    static Matrix3x4 rotx(float angle) { return rotx(std::sin(angle), std::cos(angle)); }
 
     /**
      * Initializes a rotation matrix representing a rotation around the x-axis based
@@ -458,7 +458,7 @@ struct Matrix3x4
      * Initializes a rotation matrix representing a rotation by a certain angle (in
      * radians) around the y-axis.
      */
-    static Matrix3x4 roty(float angle) { return roty(::sinf(angle), ::cosf(angle)); }
+    static Matrix3x4 roty(float angle) { return roty(std::sin(angle), std::cos(angle)); }
 
     /**
      * Initializes a rotation matrix representing a rotation around the y-axis based
@@ -477,7 +477,7 @@ struct Matrix3x4
      * Initializes a rotation matrix representing a rotation by a certain angle (in
      * radians) around the z-axis.
      */
-    static Matrix3x4 rotz(float angle) { return rotz(::sinf(angle), ::cosf(angle)); }
+    static Matrix3x4 rotz(float angle) { return rotz(std::sin(angle), std::cos(angle)); }
 
     /**
      * Initializes a rotation matrix representing a rotation around the z-axis based

@@ -433,7 +433,7 @@ namespace xl7::graphics::impl::direct3d9 {
 
 
         D3DVIEWPORT9 d3d_viewport = _d3d_viewport_from(resolved_draw_states.viewport);
-        if (::memcmp(&d3d_viewport, &hardware_states.viewport, sizeof(D3DVIEWPORT9)) != 0) // NOLINT(bugprone-suspicious-memory-comparison)
+        if (std::memcmp(&d3d_viewport, &hardware_states.viewport, sizeof(D3DVIEWPORT9)) != 0) // NOLINT(bugprone-suspicious-memory-comparison)
         {
             hresult = _d3d_device->SetViewport(&d3d_viewport);
             if (FAILED(hresult))
@@ -588,7 +588,7 @@ namespace xl7::graphics::impl::direct3d9 {
                     size_t min_size = static_cast<size_t>(register_count) * 16;
                     if (_temp_constant_data.size() < min_size)
                         _temp_constant_data.resize(min_size);
-                    ::memcpy(_temp_constant_data.data(), data_ptr, constant_mapping.size); // Yes, size, not padded_size. padded_size wouldn't be wrong either, but copying size bytes is completely sufficient.
+                    std::memcpy(_temp_constant_data.data(), data_ptr, constant_mapping.size); // Yes, size, not padded_size. padded_size wouldn't be wrong either, but copying size bytes is completely sufficient.
                     data_ptr = _temp_constant_data.data();
                 }
 

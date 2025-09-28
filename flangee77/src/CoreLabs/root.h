@@ -35,7 +35,7 @@
 #include <sdkddkver.h>
 
 #include <cassert>
-
+#include <cstring>
 #include <memory>
 
 

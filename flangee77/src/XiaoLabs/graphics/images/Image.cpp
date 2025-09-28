@@ -178,7 +178,7 @@ namespace xl7::graphics::images {
             // to correctly handle the self-assignment case.
             cl7::byte_vector data_buffer{data.size()};
             if (!data.empty())
-                ::memcpy(data_buffer.data(), data.data(), data.size());
+                std::memcpy(data_buffer.data(), data.data(), data.size());
             _data_buffer.swap(data_buffer);
             _data_view = _data_buffer;
         }

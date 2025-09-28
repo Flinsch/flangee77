@@ -93,7 +93,7 @@ struct Quaternion
         const float t = m._11 + m._22 + m._33;
         if (t >= 0.0f)
         {
-            const float r = ::sqrtf(t + 1.0f);
+            const float r = std::sqrt(t + 1.0f);
             const float _05i = 0.5f / r;
             x = (m._32 - m._23) * _05i;
             y = (m._13 - m._31) * _05i;
@@ -108,7 +108,7 @@ struct Quaternion
             unsigned j = (i + 1) % 3;
             unsigned k = (i + 2) % 3;
 
-            const float r = ::sqrtf(m[i][i] - m[j][j] - m[k][k] + 1.0f);
+            const float r = std::sqrt(m[i][i] - m[j][j] - m[k][k] + 1.0f);
             const float _05i = 0.5f / r;
             data[i] = 0.5f * r;
             data[j] = (m[i][j] + m[j][i]) * _05i;
@@ -136,7 +136,7 @@ struct Quaternion
     /**
      * Returns the magnitude of this quaternion.
      */
-    float norm() const { return ::sqrtf(x*x + y*y + z*z + w*w); }
+    float norm() const { return std::sqrt(x*x + y*y + z*z + w*w); }
 
 
 
@@ -344,8 +344,8 @@ struct Quaternion
      */
     static Quaternion rotx(float angle)
     {
-        const float sn05 = ::sinf(angle * 0.5f);
-        const float cs05 = ::cosf(angle * 0.5f);
+        const float sn05 = std::sin(angle * 0.5f);
+        const float cs05 = std::cos(angle * 0.5f);
         return {
             sn05,
             0.0f,
@@ -360,8 +360,8 @@ struct Quaternion
      */
     static Quaternion roty(float angle)
     {
-        const float sn05 = ::sinf(angle * 0.5f);
-        const float cs05 = ::cosf(angle * 0.5f);
+        const float sn05 = std::sin(angle * 0.5f);
+        const float cs05 = std::cos(angle * 0.5f);
         return {
             0.0f,
             sn05,
@@ -376,8 +376,8 @@ struct Quaternion
      */
     static Quaternion rotz(float angle)
     {
-        const float sn05 = ::sinf(angle * 0.5f);
-        const float cs05 = ::cosf(angle * 0.5f);
+        const float sn05 = std::sin(angle * 0.5f);
+        const float cs05 = std::cos(angle * 0.5f);
         return {
             0.0f,
             0.0f,
@@ -415,8 +415,8 @@ struct Quaternion
      */
     static Quaternion rotation_normalized(const ml7::Vector3& unit_axis, float angle)
     {
-        const float sn05 = ::sinf(angle * 0.5f);
-        const float cs05 = ::cosf(angle * 0.5f);
+        const float sn05 = std::sin(angle * 0.5f);
+        const float cs05 = std::cos(angle * 0.5f);
         return {
             unit_axis.x * sn05,
             unit_axis.y * sn05,

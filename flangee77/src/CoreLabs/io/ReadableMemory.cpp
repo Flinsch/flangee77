@@ -1,7 +1,5 @@
 #include "ReadableMemory.h"
 
-#include <cstring>
-
 
 
 namespace cl7::io {

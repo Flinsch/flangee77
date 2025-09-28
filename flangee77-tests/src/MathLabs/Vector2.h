@@ -15,7 +15,7 @@ TESTLABS_CASE( u8"CoreLabs:  Vector2:  " )
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f ), ml7::Vector2( 1.0f, 1.0f ) );
 
     TESTLABS_CHECK_EQ( ml7::Vector2( 3.0f, 4.0f ).length(), 5.0f );
-    TESTLABS_CHECK_EQ( ml7::Vector2( 3.0f, 4.0f ).lensqr(), 25.0f );
+    TESTLABS_CHECK_EQ( ml7::Vector2( 3.0f, 4.0f ).length_squared(), 25.0f );
 
     TESTLABS_CHECK_EQ_FLT( ml7::round( ml7::Vector2(  0.0f, +1.0f ).azimuth_symmetric(), 3 ), ml7::round( +0.0f/8.0f * ml7::constants::pi2, 3 ) );
     TESTLABS_CHECK_EQ_FLT( ml7::round( ml7::Vector2( +1.0f, +1.0f ).azimuth_symmetric(), 3 ), ml7::round( +1.0f/8.0f * ml7::constants::pi2, 3 ) );
@@ -52,7 +52,7 @@ TESTLABS_CASE( u8"CoreLabs:  Vector2:  " )
     TESTLABS_CHECK_EQ( ml7::Vector2( 2.0f, 0.0f ).normalized(), ml7::Vector2( 1.0f, 0.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector2( -1.0f, -2.0f ).abs(), ml7::Vector2( 1.0f, 2.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, -2.0f ).dot( ml7::Vector2( -1.0f, 2.0f ) ), -5.0f );
-    TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, -2.0f ).dotsqr( ml7::Vector2( -1.0f, 2.0f ) ), 25.0f );
+    TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, -2.0f ).dot_squared( ml7::Vector2( -1.0f, 2.0f ) ), 25.0f );
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, 2.0f ).perp(), ml7::Vector2( -2.0f, 1.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, -2.0f ).perpdot( ml7::Vector2( -1.0f, 2.0f ) ), ml7::Vector2( 1.0f, -2.0f ).perp().dot( ml7::Vector2( -1.0f, 2.0f ) ) );
     TESTLABS_CHECK_EQ( ml7::Vector2( 1.0f, -2.0f ).cross( ml7::Vector2( -1.0f, 2.0f ) ), ml7::Vector2( 1.0f, -2.0f ).perp().dot( ml7::Vector2( -1.0f, 2.0f ) ) );

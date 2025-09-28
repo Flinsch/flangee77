@@ -99,10 +99,10 @@ struct Vector2
     // #############################################################################
 
     /** Returns the magnitude of this vector. */
-    float length() const { return ::sqrtf(x*x + y*y); }
+    float length() const { return std::sqrt(x*x + y*y); }
 
     /** Returns the squared magnitude of this vector. */
-    float lensqr() const { return x*x + y*y; }
+    float length_squared() const { return x*x + y*y; }
 
     /**
      * Returns the azimuth angle of this vector in the signed range [-pi;+pi], with
@@ -143,10 +143,10 @@ struct Vector2
      */
     Vector2 normalized() const
     {
-        float d = lensqr();
+        float d = length_squared();
         if (d == 0.0f)
             return ZERO; // x = y = 0
-        d = 1.0f / ::sqrtf(d);
+        d = 1.0f / std::sqrt(d);
         return {x*d, y*d};
     }
 
@@ -155,7 +155,7 @@ struct Vector2
      */
     Vector2 abs() const
     {
-        return {::abs(x), ::abs(y)};
+        return {std::abs(x), std::abs(y)};
     }
 
     /**
@@ -169,7 +169,7 @@ struct Vector2
     /**
      * Returns the squared dot/scalar product of this and a given vector v.
      */
-    float dotsqr(const Vector2& v) const
+    float dot_squared(const Vector2& v) const
     {
         const float tmp = dot(v);
         return tmp*tmp;
@@ -235,7 +235,7 @@ struct Vector2
      */
     Vector2 proj(const Vector2& v) const
     {
-        return *this * (dot(v) / lensqr());
+        return *this * (dot(v) / length_squared());
     }
 
 

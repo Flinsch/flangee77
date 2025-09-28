@@ -94,7 +94,7 @@ namespace ml7 {
         };
         look = {_31, _32, _33};
         up = {_21, _22, _23};
-        return look.lensqr() != 0.0f && up.lensqr() != 0.0f; // Just some bare minimum check.
+        return look.length_squared() != 0.0f && up.length_squared() != 0.0f; // Just some bare minimum check.
     }
 
     /**
@@ -113,7 +113,7 @@ namespace ml7 {
         };
         look = {-_31, -_32, -_33};
         up = {_21, _22, _23};
-        return look.lensqr() != 0.0f && up.lensqr() != 0.0f; // Just some bare minimum check.
+        return look.length_squared() != 0.0f && up.length_squared() != 0.0f; // Just some bare minimum check.
     }
 
     /**

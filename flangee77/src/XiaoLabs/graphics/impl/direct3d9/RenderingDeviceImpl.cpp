@@ -27,9 +27,9 @@ namespace xl7::graphics::impl::direct3d9 {
     RenderingDeviceImpl::RenderingDeviceImpl()
         : RenderingDevice(std::unique_ptr<IResourceFactory>(ResourceFactoryImpl::Attorney::create()))
     {
-        ::memset(&_d3d_adapter_identifier, 0, sizeof(_d3d_adapter_identifier));
-        ::memset(&_d3d_present_parameters, 0, sizeof(_d3d_present_parameters));
-        ::memset(&_d3d_device_caps, 0, sizeof(_d3d_device_caps));
+        std::memset(&_d3d_adapter_identifier, 0, sizeof(_d3d_adapter_identifier));
+        std::memset(&_d3d_present_parameters, 0, sizeof(_d3d_present_parameters));
+        std::memset(&_d3d_device_caps, 0, sizeof(_d3d_device_caps));
     }
 
 
@@ -56,7 +56,7 @@ namespace xl7::graphics::impl::direct3d9 {
         constexpr D3DFORMAT depth_stencil_format = D3DFMT_D24S8;
 
         // Fill the presentation parameters structure.
-        ::memset(&_d3d_present_parameters, 0, sizeof(_d3d_present_parameters));
+        std::memset(&_d3d_present_parameters, 0, sizeof(_d3d_present_parameters));
         _d3d_present_parameters.BackBufferWidth             = get_back_buffer_width();
         _d3d_present_parameters.BackBufferHeight            = get_back_buffer_height();
         _d3d_present_parameters.BackBufferFormat            = back_buffer_format;
@@ -299,7 +299,7 @@ namespace xl7::graphics::impl::direct3d9 {
      */
     bool RenderingDeviceImpl::_determine_video_memory(Capabilities::Memory& memory_capabilities)
     {
-        ::memset(&memory_capabilities, 0, sizeof(memory_capabilities));
+        std::memset(&memory_capabilities, 0, sizeof(memory_capabilities));
 
         const HMODULE hDXGI = ::LoadLibraryW(L"dxgi.dll");
         if (!hDXGI)

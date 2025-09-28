@@ -87,8 +87,8 @@ namespace xl7::graphics::impl::direct3d11 {
 
         unsigned stream_strides[xl7::graphics::pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];
         unsigned stream_offsets[xl7::graphics::pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];
-        ::memset(stream_strides, 0, sizeof(stream_strides));
-        ::memset(stream_offsets, 0, sizeof(stream_offsets));
+        std::memset(stream_strides, 0, sizeof(stream_strides));
+        std::memset(stream_offsets, 0, sizeof(stream_offsets));
         _d3d_device_context->IASetVertexBuffers(0, get_rendering_device()->get_capabilities().max_concurrent_vertex_stream_count, &hardware_states.vertex_buffers[0], stream_strides, stream_offsets);
         _d3d_device_context->IASetIndexBuffer(hardware_states.index_buffer, DXGI_FORMAT_UNKNOWN, 0);
         _d3d_device_context->IASetInputLayout(hardware_states.input_layout);
@@ -366,7 +366,7 @@ namespace xl7::graphics::impl::direct3d11 {
 
 
         D3D11_VIEWPORT d3d_viewport = _d3d_viewport_from(resolved_draw_states.viewport);
-        if (::memcmp(&d3d_viewport, &hardware_states.viewport, sizeof(D3D11_VIEWPORT)) != 0) // NOLINT(bugprone-suspicious-memory-comparison)
+        if (std::memcmp(&d3d_viewport, &hardware_states.viewport, sizeof(D3D11_VIEWPORT)) != 0) // NOLINT(bugprone-suspicious-memory-comparison)
         {
             _d3d_device_context->RSSetViewports(1, &d3d_viewport);
             hardware_states.viewport = d3d_viewport;

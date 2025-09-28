@@ -61,7 +61,7 @@ namespace xl7::graphics::images {
                     const size_t ofs_x = src_x * stride;
 
                     const auto* src_ptr = source_data.data() + (ofs_x + ofs_y + ofs_z);
-                    ::memcpy(dst_ptr, src_ptr, stride);
+                    std::memcpy(dst_ptr, src_ptr, stride);
 
                     dst_ptr += stride;
                 } // dst_x
@@ -270,8 +270,8 @@ namespace xl7::graphics::images {
                 src0 = dst0 * ratio_i;
                 src1 = dst1 * ratio_i;
 
-                map0 = ::floorf(src0);
-                map1 = ::ceilf(src1);
+                map0 = std::floor(src0);
+                map1 = std::ceil(src1);
                 assert(map1 <= old_size_f);
 
                 ofs = static_cast<unsigned>(map0);

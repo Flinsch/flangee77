@@ -25,6 +25,8 @@ target_sources(flangee77-tests
 
     MathLabs/algorithm.h
     MathLabs/Angle.h
+    MathLabs/CubicBezier2.h
+    MathLabs/CubicBezier3.h
     MathLabs/distance2.h
     MathLabs/distance3.h
     MathLabs/functions.h
@@ -38,6 +40,8 @@ target_sources(flangee77-tests
     MathLabs/Matrix3x4.h
     MathLabs/Matrix4x4.h
     MathLabs/ops.h
+    MathLabs/QuadraticBezier2.h
+    MathLabs/QuadraticBezier3.h
     MathLabs/Quaternion.h
     MathLabs/Ray2.h
     MathLabs/Ray3.h

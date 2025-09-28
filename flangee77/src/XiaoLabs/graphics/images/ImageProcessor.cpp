@@ -174,7 +174,7 @@ namespace xl7::graphics::images {
                 ((cl7::bits::norm_to_fixed(color.b, pbk.b.depth) << pbk.b.offset) & pbk.b.mask) |
                 ((cl7::bits::norm_to_fixed(color.a, pbk.a.depth) << pbk.a.offset) & pbk.a.mask);
 #pragma warning(pop)
-            ::memcpy(ptr, &value, static_cast<size_t>(pbk.stride));
+            std::memcpy(ptr, &value, static_cast<size_t>(pbk.stride));
         }
     }
 
@@ -276,7 +276,7 @@ namespace xl7::graphics::images {
         {
             assert(pbk.stride <= 4);
             uint32_t value;
-            ::memcpy(&value, ptr, static_cast<size_t>(pbk.stride));
+            std::memcpy(&value, ptr, static_cast<size_t>(pbk.stride));
             if (pbk.channel_count == 1)
             {
                 if (pbk.a.depth > 0)

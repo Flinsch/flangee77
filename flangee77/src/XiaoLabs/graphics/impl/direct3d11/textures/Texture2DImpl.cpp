@@ -165,7 +165,7 @@ namespace xl7::graphics::impl::direct3d11::textures {
             const std::byte* src = get_data().data();
             for (unsigned y = 0; y < get_desc().height; ++y)
             {
-                ::memcpy(dst, src, get_line_pitch());
+                std::memcpy(dst, src, get_line_pitch());
                 dst += mapped_subresource.RowPitch;
                 src += get_line_pitch();
             }

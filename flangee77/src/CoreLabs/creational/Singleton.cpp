@@ -1,7 +1,6 @@
 #include "Singleton.h"
 
 #include <algorithm>
-#include <memory>
 
 
 

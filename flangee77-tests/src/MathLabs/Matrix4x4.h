@@ -506,7 +506,7 @@ TESTLABS_CASE( u8"CoreLabs:  Matrix4x4:  compose(float, ...) / decompose" )
         float tz = float(::rand() % 31) - 15.0f;
         ml7::Vector3 translation{ tx, ty, tz };
         assert( scaling > 0.0f );
-        if ( !axis.lensqr() )
+        if ( !axis.length_squared() )
             continue;
         container.push_back( { scaling, axis, angle, translation } );
     }
@@ -557,7 +557,7 @@ TESTLABS_CASE( u8"CoreLabs:  Matrix4x4:  compose(Vector3, ...) / decompose (and 
         float tz = float(::rand() % 31) - 15.0f;
         ml7::Vector3 translation{ tx, ty, tz };
         assert( scaling.x > 0.0f && scaling.y > 0.0f && scaling.z > 0.0f );
-        if ( !axis.lensqr() )
+        if ( !axis.length_squared() )
             continue;
         container.push_back( { scaling, axis, angle, translation } );
     }

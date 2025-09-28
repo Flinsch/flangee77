@@ -96,19 +96,19 @@ namespace ml7 {
      */
     bool Quaternion::to_axis_angle(ml7::Vector3& axis, float& angle) const
     {
-        const float lensqr = x*x + y*y + z*z;
-        if (!(lensqr > 0.0f))
+        const float length_squared = x*x + y*y + z*z;
+        if (!(length_squared > 0.0f))
         {
             axis = ml7::Vector3::X; // Any axis would be "correct" here.
             angle = 0.0f;
             return false;
         }
 
-        const float invlen = 1.0f / ::sqrtf(lensqr);
+        const float invlen = 1.0f / std::sqrt(length_squared);
         axis.x = x * invlen;
         axis.y = y * invlen;
         axis.z = z * invlen;
-        angle = 2.0f * ::acosf(w);
+        angle = 2.0f * std::acos(w);
         return true;
     }
 

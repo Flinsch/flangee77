@@ -150,7 +150,7 @@ namespace xl7::graphics::impl::direct3d9::textures {
             unsigned pitch = width * get_stride();
             for (unsigned y = 0; y < height; ++y)
             {
-                ::memcpy(dst, src, pitch);
+                std::memcpy(dst, src, pitch);
                 dst += d3d_locked_rect.Pitch;
                 src += pitch;
             }

@@ -5,6 +5,8 @@
 #include "./Line2.h"
 #include "./LineSegment2.h"
 #include "./Ray2.h"
+#include "./QuadraticBezier2.h"
+#include "./CubicBezier2.h"
 
 
 
@@ -15,9 +17,9 @@ namespace ml7::distance2 {
 struct ResultBase
 {
     /** The squared distance between two shapes. */
-    float distsqr;
+    float distance_squared;
     /** Calculates the distance between two shapes by taking the square root of the squared distance. */
-    float distance() const { assert(distsqr >= 0.0f); return std::sqrt(distsqr); }
+    float distance() const { assert(distance_squared >= 0.0f); return std::sqrt(distance_squared); }
 };
 
 struct PointResult
@@ -45,6 +47,16 @@ struct PointResult
      * Calculates the distance result of a point and a ray in 2D.
      */
     PointResult point_ray(const ml7::Vector2& point, const ml7::Ray2& ray);
+
+    /**
+     * Calculates the distance result of a point and a quadratic Bézier curve in 2D.
+     */
+    PointResult point_quadratic_bezier(const ml7::Vector2& point, const ml7::QuadraticBezier2& bezier);
+
+    /**
+     * Calculates the distance result of a point and a cubic Bézier curve in 2D.
+     */
+    PointResult point_cubic_bezier(const ml7::Vector2& point, const ml7::CubicBezier2& bezier);
 
 
 

@@ -291,8 +291,8 @@ namespace helloworld {
             fps = 60;
         static float a = 0.0f;
         a += ml7::constants::pi2 / static_cast<float>(fps);
-        float sn = ::sinf(a) * 0.01f;
-        float cs = ::cosf(a) * 0.01f;
+        float sn = std::sin(a) * 0.01f;
+        float cs = std::cos(a) * 0.01f;
 
         struct ConstantBufferData
         {

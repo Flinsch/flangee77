@@ -37,7 +37,7 @@ namespace ml7 {
      */
     float Vector2::azimuth_symmetric() const
     {
-        return ::atan2f(x, y);
+        return std::atan2(x, y);
     }
 
     /**
@@ -46,7 +46,7 @@ namespace ml7 {
      */
     float Vector2::azimuth_asymmetric() const
     {
-        float a = ::atan2f(x, y);
+        float a = std::atan2(x, y);
         if (x < 0.0f)
             a += ml7::constants::pi2;
         return a;
@@ -58,7 +58,7 @@ namespace ml7 {
      */
     float Vector2::elevation() const
     {
-        return ::atan2f(y, ::abs(x));
+        return std::atan2(y, std::abs(x));
     }
 
 
@@ -79,7 +79,7 @@ namespace ml7 {
         if (r < 0)
             return {};
 
-        const float s = index*t + ::sqrtf(r);
+        const float s = index*t + std::sqrt(r);
         return index * *this - s * n;
     }
 
@@ -115,7 +115,7 @@ namespace ml7 {
      */
     Vector2 Vector2::terp(const Vector2& a, const Vector2& b, float x)
     {
-        x = (1.0f-::cosf(constants::pi*x))*0.5f;
+        x = (1.0f-std::cos(constants::pi*x))*0.5f;
         return a + (b-a)*x;
     }
 

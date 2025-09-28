@@ -1,7 +1,6 @@
 #include "PixelBitKit.h"
 
 #include <array>
-#include <cstring>
 
 
 
@@ -16,7 +15,7 @@ namespace xl7::graphics {
         , stride(determine_stride(pixel_format))
         , data_type(determine_data_type(pixel_format))
     {
-        ::memset(channels, 0, sizeof(Channel) * 4);
+        std::memset(channels, 0, sizeof(Channel) * 4);
 
         std::array<unsigned, 4> depths;
         std::array<unsigned, 4> rgba;

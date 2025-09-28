@@ -84,7 +84,7 @@ struct LineSegment2
      * Calculates the minimum squared distance from the specified query point to
      * this line segment.
      */
-    float distsqr(const Vector2& point) const;
+    float distance_squared(const Vector2& point) const;
 
 
 
