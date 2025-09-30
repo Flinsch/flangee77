@@ -1,136 +1,56 @@
 
 target_sources(flangee77
     PRIVATE
-    auto_invoke.h
     bits.cpp
-    bits.h
-    byte_span.h
-    byte_vector.h
-    byte_view.h
     errors.cpp
-    errors.h
     filesystem.cpp
-    filesystem.h
-    functional.h
     Guid.cpp
-    Guid.h
-    io.h
-    iterators.h
     logging.cpp
-    logging.h
     memory.cpp
-    memory.h
-    ordered_map.h
-    profiling.h
     root.cpp
-    root.h
     sstream.cpp
-    sstream.h
-    static_vector.h
     string.cpp
-    string.h
-    utilities.h
     Version.cpp
-    Version.h
 
     creational/Singleton.cpp
-    creational/Singleton.h
 
     io/ByteReader.cpp
-    io/ByteReader.h
     io/ByteWriter.cpp
-    io/ByteWriter.h
-    io/EndianAwareReader.h
-    io/EndianAwareWriter.h
     io/File.cpp
-    io/File.h
-    io/IReadable.h
-    io/IReadWritable.h
-    io/IResizable.h
-    io/IWritable.h
-    io/OpenMode.h
     io/ReadableMemory.cpp
-    io/ReadableMemory.h
-    io/SeekMode.h
     io/Utf8Reader.cpp
-    io/Utf8Reader.h
     io/Utf8Writer.cpp
-    io/Utf8Writer.h
 
     logging/AbstractLogHandler.cpp
-    logging/AbstractLogHandler.h
     logging/CoutLogHandler.cpp
-    logging/CoutLogHandler.h
     logging/FileLogHandler.cpp
-    logging/FileLogHandler.h
     logging/HtmlLogHandler.cpp
-    logging/HtmlLogHandler.h
     logging/LogContext.cpp
-    logging/LogContext.h
-    logging/LogEntry.h
     logging/Logger.cpp
-    logging/Logger.h
-    logging/LogType.h
     logging/StandardLogger.cpp
-    logging/StandardLogger.h
 
     profiling/Profiler.cpp
-    profiling/Profiler.h
     profiling/Registry.cpp
-    profiling/Registry.h
-    profiling/Sample.h
     profiling/SampleHandler.cpp
-    profiling/SampleHandler.h
     profiling/StandardRegistry.cpp
-    profiling/StandardRegistry.h
     profiling/Stopwatch.cpp
-    profiling/Stopwatch.h
 
     strings/codec.cpp
-    strings/codec.h
     strings/format.cpp
-    strings/format.h
     strings/inspect.cpp
-    strings/inspect.h
     strings/metrics.cpp
-    strings/metrics.h
     strings/transform.cpp
-    strings/transform.h
 
-    strings/codec/Analyzer.h
     strings/codec/AsciiCodec.cpp
-    strings/codec/AsciiCodec.h
     strings/codec/codepoint.cpp
-    strings/codec/codepoint.h
-    strings/codec/CodepointResult.h
-    strings/codec/Decoder.h
-    strings/codec/DecodeResult.h
-    strings/codec/DefaultErrorHandler.h
-    strings/codec/EncodeBuffer.h
-    strings/codec/Encoder.h
-    strings/codec/EncodeResult.h
-    strings/codec/Encoding.h
-    strings/codec/EncodingError.h
     strings/codec/ErrorHandler.cpp
-    strings/codec/ErrorHandler.h
-    strings/codec/ErrorStatus.h
     strings/codec/LoggingErrorHandler.cpp
-    strings/codec/LoggingErrorHandler.h
-    strings/codec/traits.h
-    strings/codec/Transcoder.h
     strings/codec/Utf8Codec.cpp
-    strings/codec/Utf8Codec.h
     strings/codec/Utf16Codec.cpp
-    strings/codec/Utf16Codec.h
     strings/codec/Utf32Codec.cpp
-    strings/codec/Utf32Codec.h
 
     system/CPUID.cpp
-    system/CPUID.h
     system/datetime.cpp
-    system/datetime.h
     system/MemoryStatus.cpp
-    system/MemoryStatus.h
     system/user.cpp
-    system/user.h
 )
