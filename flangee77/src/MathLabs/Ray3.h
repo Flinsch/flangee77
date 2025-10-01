@@ -1,7 +1,11 @@
 #ifndef ML7_RAY3_H
 #define ML7_RAY3_H
 
-#include <MathLabs/Vector3.h>
+#include "./Vector3.h"
+
+#include "./detail/distance.h"
+
+#include "./ops.h"
 
 
 
@@ -9,8 +13,12 @@ namespace ml7 {
 
 
 
+template <std::floating_point T>
 struct Ray3
 {
+
+    using scalar_type = T;
+    using vector_type = Vector3<T>;
 
     static const Ray3 X;
     static const Ray3 Y;
@@ -23,9 +31,9 @@ struct Ray3
     // #############################################################################
 
     /** The ray origin point. */
-    Vector3 origin;
+    Vector3<T> origin;
     /** The ray direction vector (preferably but not necessarily normalized). */
-    Vector3 direction;
+    Vector3<T> direction;
 
 
 
@@ -37,16 +45,16 @@ struct Ray3
      * Default constructor. Initializes the ray with zero origin and z-axis direction.
      */
     constexpr Ray3() noexcept
-        : origin(0.0f, 0.0f, 0.0f)
-        , direction(0.0f, 0.0f, 1.0f)
+        : origin(T{0}, T{0}, T{0})
+        , direction(T{0}, T{0}, T{1})
     {
     }
 
     /**
      * Explicit constructor with zero origin and a parameter for the direction.
      */
-    explicit constexpr Ray3(const Vector3& direction) noexcept
-        : origin(0.0f, 0.0f, 0.0f)
+    explicit constexpr Ray3(const Vector3<T>& direction) noexcept
+        : origin(T{0}, T{0}, T{0})
         , direction(direction)
     {
     }
@@ -54,7 +62,7 @@ struct Ray3
     /**
      * Explicit constructor with parameters for origin and direction.
      */
-    constexpr Ray3(const Vector3& origin, const Vector3& direction) noexcept
+    constexpr Ray3(const Vector3<T>& origin, const Vector3<T>& direction) noexcept
         : origin(origin)
         , direction(direction)
     {
@@ -63,7 +71,11 @@ struct Ray3
     /**
      * Swap operation.
      */
-    void swap(Ray3& other) noexcept;
+    void swap(Ray3& other) noexcept
+    {
+        origin.swap(other.origin);
+        direction.swap(other.direction);
+    }
 
 
 
@@ -75,29 +87,44 @@ struct Ray3
      * Calculates the position on this ray at the specified parameter t.
      * The function does not limit the parameter if it is less than 0.
      */
-    Vector3 point_at(float t) const;
+    Vector3<T> point_at(T t) const
+    {
+        return origin + t * direction;
+    }
 
     /**
      * Calculates the parameter t >= 0 such that the corresponding point on this ray
      * is closest to the specified query point.
      */
-    float parameter(const Vector3& point) const;
+    T parameter(const Vector3<T>& point) const
+    {
+        return detail::distance::point_line<ops::ramp<>, detail::distance::PointResult_t<scalar_type>>(point, origin, direction).t;
+    }
 
     /**
      * Finds the closest point on this ray to the specified query point.
      */
-    Vector3 closest_point(const Vector3& point) const;
+    Vector3<T> closest_point(const Vector3<T>& point) const
+    {
+        return detail::distance::point_line<ops::ramp<>, detail::distance::PointResult_point<vector_type>>(point, origin, direction).point;
+    }
 
     /**
      * Calculates the minimum distance from the specified query point to this ray.
      */
-    float distance(const Vector3& point) const;
+    T distance(const Vector3<T>& point) const
+    {
+        return std::sqrt(distance_squared(point));
+    }
 
     /**
      * Calculates the minimum squared distance from the specified query point to
      * this ray.
      */
-    float distance_squared(const Vector3& point) const;
+    T distance_squared(const Vector3<T>& point) const
+    {
+        return detail::distance::point_line<ops::ramp<>, detail::distance::PointResult_distance_squared<scalar_type>>(point, origin, direction).distance_squared;
+    }
 
 
 
@@ -139,6 +166,21 @@ struct Ray3
     bool operator!=(const Ray3& other) const noexcept = default;
 
 }; // struct Ray3
+
+
+
+    template <std::floating_point T>
+    const Ray3<T> Ray3<T>::X =    {{T{0}, T{0}, T{0}}, {T{1}, T{0}, T{0}}};
+    template <std::floating_point T>
+    const Ray3<T> Ray3<T>::Y =    {{T{0}, T{0}, T{0}}, {T{0}, T{1}, T{0}}};
+    template <std::floating_point T>
+    const Ray3<T> Ray3<T>::Z =    {{T{0}, T{0}, T{0}}, {T{0}, T{0}, T{1}}};
+
+
+
+using Ray3f = Ray3<float>;
+using Ray3d = Ray3<double>;
+using Ray3ld = Ray3<long double>;
 
 
 

@@ -13,9 +13,9 @@ TESTLABS_CASE( u8"MathLabs:  distance2:  point_ray" )
 {
     struct Entry
     {
-        ml7::Vector2 point;
-        ml7::Vector2 origin;
-        ml7::Vector2 direction;
+        ml7::Vector2f point;
+        ml7::Vector2f origin;
+        ml7::Vector2f direction;
         float expected_t;
     } entry;
 
@@ -42,7 +42,7 @@ TESTLABS_CASE( u8"MathLabs:  distance2:  point_ray" )
         const auto& point = entry.point;
         const auto ray = ml7::Ray2{ entry.origin, entry.direction };
 
-        ml7::distance2::PointResult expected;
+        ml7::distance2::PointResult<float> expected;
         expected.t = entry.expected_t;
         expected.point = ray.point_at( expected.t );
         expected.distance_squared = (expected.point - entry.point).length_squared();

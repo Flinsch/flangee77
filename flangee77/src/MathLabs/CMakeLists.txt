@@ -1,30 +1,13 @@
 
 target_sources(flangee77
     PRIVATE
-    Angle.cpp
-    CubicBezier2.cpp
-    CubicBezier3.cpp
-    distance2.cpp
-    distance3.cpp
     functions.cpp
-    Line2.cpp
-    Line3.cpp
-    LineSegment2.cpp
-    LineSegment3.cpp
-    Matrix2x2.cpp
-    Matrix2x3.cpp
     Matrix3x3.cpp
     Matrix3x4.cpp
     Matrix4x4.cpp
-    QuadraticBezier2.cpp
-    QuadraticBezier3.cpp
     Quaternion.cpp
-    Ray2.cpp
-    Ray3.cpp
-    Vector2.cpp
-    Vector3.cpp
-    Vector4.cpp
 
     algorithm/find_cubic_roots.cpp
     algorithm/find_quadratic_roots.cpp
+    algorithm/merge_nearby.cpp
 )

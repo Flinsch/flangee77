@@ -3,23 +3,31 @@
 
 #include <MathLabs/Vector3.h>
 
+#include "./detail/distance.h"
+
 
 
 namespace ml7 {
 
 
 
+template <std::floating_point T>
 struct Line3
 {
+
+    using scalar_type = T;
+    using vector_type = Vector3<T>;
+
+
 
     // #############################################################################
     // Attributes
     // #############################################################################
 
     /** A point on the line. */
-    Vector3 point;
+    Vector3<T> point;
     /** A direction vector (not necessarily normalized). */
-    Vector3 direction;
+    Vector3<T> direction;
 
 
 
@@ -31,15 +39,15 @@ struct Line3
      * Default constructor. Initializes an "empty" line.
      */
     constexpr Line3() noexcept
-        : point(0.0f, 0.0f, 0.0f)
-        , direction(0.0f, 0.0f, 0.0f)
+        : point(T{0}, T{0}, T{0})
+        , direction(T{0}, T{0}, T{0})
     {
     }
 
     /**
      * Explicit constructor with parameters for a point on the line and a direction.
      */
-    constexpr Line3(const Vector3& point, const Vector3& direction) noexcept
+    constexpr Line3(const Vector3<T>& point, const Vector3<T>& direction) noexcept
         : point(point)
         , direction(direction)
     {
@@ -48,7 +56,11 @@ struct Line3
     /**
      * Swap operation.
      */
-    void swap(Line3& other) noexcept;
+    void swap(Line3& other) noexcept
+    {
+        point.swap(other.point);
+        direction.swap(other.direction);
+    }
 
 
 
@@ -59,29 +71,44 @@ struct Line3
     /**
      * Calculates the position on this line at the specified parameter t.
      */
-    Vector3 point_at(float t) const;
+    Vector3<T> point_at(T t) const
+    {
+        return point + t * direction;
+    }
 
     /**
      * Calculates the parameter t such that the corresponding point on this line is
      * closest to the specified query point.
      */
-    float parameter(const Vector3& point) const;
+    T parameter(const Vector3<T>& point) const
+    {
+        return detail::distance::point_line<std::identity, detail::distance::PointResult_t<scalar_type>>(point, this->point, direction).t;
+    }
 
     /**
      * Finds the closest point on this line to the specified query point.
      */
-    Vector3 closest_point(const Vector3& point) const;
+    Vector3<T> closest_point(const Vector3<T>& point) const
+    {
+        return detail::distance::point_line<std::identity, detail::distance::PointResult_point<vector_type>>(point, this->point, direction).point;
+    }
 
     /**
      * Calculates the minimum distance from the specified query point to this line.
      */
-    float distance(const Vector3& point) const;
+    T distance(const Vector3<T>& point) const
+    {
+        return std::sqrt(distance_squared(point));
+    }
 
     /**
      * Calculates the minimum squared distance from the specified query point to
      * this line.
      */
-    float distance_squared(const Vector3& point) const;
+    T distance_squared(const Vector3<T>& point) const
+    {
+        return detail::distance::point_line<std::identity, detail::distance::PointResult_distance_squared<scalar_type>>(point, this->point, direction).distance_squared;
+    }
 
 
 
@@ -131,7 +158,7 @@ struct Line3
     /**
      * Initializes a line from a point on the line and a direction vector.
      */
-    static constexpr Line3 from_point_and_direction(const Vector3& point, const Vector3& direction)
+    static constexpr Line3 from_point_and_direction(const Vector3<T>& point, const Vector3<T>& direction)
     {
         return {point, direction};
     }
@@ -139,12 +166,18 @@ struct Line3
     /**
      * Initializes a line from two points on the line.
      */
-    static constexpr Line3 from_two_points(const Vector3& point1, const Vector3& point2)
+    static constexpr Line3 from_two_points(const Vector3<T>& point1, const Vector3<T>& point2)
     {
         return {point1, point2 - point1};
     }
 
 }; // struct Line3
+
+
+
+using Line3f = Line3<float>;
+using Line3d = Line3<double>;
+using Line3ld = Line3<long double>;
 
 
 

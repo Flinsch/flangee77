@@ -4,6 +4,7 @@
 #include <CoreLabs/root.h>
 
 #include <cmath>
+#include <numbers>
 
 
 
@@ -39,7 +40,7 @@ namespace ml7 {
     constexpr T pow(T base)
     {
         if constexpr (exp == 0)
-            return T(1);
+            return T{1};
         else
             return base * pow<exp - 1, T>(base);
     }
@@ -48,13 +49,13 @@ namespace ml7 {
      * Returns the value of base raised to the power of exp.
      */
     template <auto base, unsigned exp, typename T = decltype(base)>
-        requires(std::is_arithmetic_v<T>)
+        requires(std::is_arithmetic_v<T> && std::is_convertible_v<decltype(base), T>)
     constexpr T pow()
     {
         if constexpr (exp == 0)
-            return T(1);
+            return T{1};
         else
-            return base * pow<base, exp - 1, T>();
+            return static_cast<T>(base) * pow<base, exp - 1, T>();
     }
 
     /**
@@ -94,7 +95,7 @@ namespace ml7 {
         requires(std::is_arithmetic_v<T>)
     constexpr T ssqrt(T x)
     {
-        if (x < T(0))
+        if (x < T{0})
             return -std::sqrt(-x);
         return std::sqrt(x);
     }
@@ -129,9 +130,9 @@ namespace ml7 {
         requires(std::is_arithmetic_v<T>)
     constexpr T sgn(T x)
     {
-        if (x < T(0)) return T(-1);
-        if (x > T(0)) return T(+1);
-        return T(0);
+        if (x < T{0}) return T{-1};
+        if (x > T{0}) return T{+1};
+        return T{0};
     }
 
     /**
@@ -141,7 +142,7 @@ namespace ml7 {
         requires(std::is_arithmetic_v<T>)
     constexpr T step(T x, T edge)
     {
-        return x >= edge ? T(1) : T(0);
+        return x >= edge ? T{1} : T{0};
     }
 
     /**
@@ -151,7 +152,7 @@ namespace ml7 {
         requires(std::is_arithmetic_v<T> && std::is_convertible_v<decltype(edge), T>)
     constexpr T step(T x)
     {
-        return x >= static_cast<T>(edge) ? T(1) : T(0);
+        return x >= static_cast<T>(edge) ? T{1} : T{0};
     }
 
     /**
@@ -161,7 +162,7 @@ namespace ml7 {
         requires(std::is_arithmetic_v<T>)
     constexpr T step(T x)
     {
-        return x >= T(0) ? T(1) : T(0);
+        return x >= T{0} ? T{1} : T{0};
     }
 
     /**
@@ -174,10 +175,10 @@ namespace ml7 {
     {
         if (min == max)
             return step(x, min);
-        if (x <= min) return T(0);
-        if (x >= max) return T(1);
+        if (x <= min) return T{0};
+        if (x >= max) return T{1};
         x = (x - min) / (max - min);
-        return x * x * (3.0f - 2.0f * x);
+        return x * x * (T{3} - T{2} * x);
     }
 
     /**
@@ -190,10 +191,10 @@ namespace ml7 {
     {
         if constexpr (static_cast<T>(min) == static_cast<T>(max))
             return step<min>(x);
-        if (x <= static_cast<T>(min)) return T(0);
-        if (x >= static_cast<T>(max)) return T(1);
+        if (x <= static_cast<T>(min)) return T{0};
+        if (x >= static_cast<T>(max)) return T{1};
         x = (x - static_cast<T>(min)) / (static_cast<T>(max) - static_cast<T>(min));
-        return x * x * (3.0f - 2.0f * x);
+        return x * x * (T{3} - T{2} * x);
     }
 
     /**
@@ -204,9 +205,9 @@ namespace ml7 {
         requires(std::is_arithmetic_v<T>)
     constexpr T smoothstep(T x)
     {
-        if (x <= T(0)) return T(0);
-        if (x >= T(1)) return T(1);
-        return x * x * (3.0f - 2.0f * x);
+        if (x <= T{0}) return T{0};
+        if (x >= T{1}) return T{1};
+        return x * x * (T{3} - T{2} * x);
     }
 
 
@@ -288,8 +289,8 @@ namespace ml7 {
         requires(std::is_arithmetic_v<T>)
     constexpr T clamp01(T x)
     {
-        if (x <= T(0)) return T(0);
-        if (x >= T(1)) return T(1);
+        if (x <= T{0}) return T{0};
+        if (x >= T{1}) return T{1};
         return x;
     }
 
@@ -299,10 +300,10 @@ namespace ml7 {
      */
     template <typename T>
         requires(std::is_arithmetic_v<T>)
-    constexpr T ramp(T x, T start, T slope = T(1))
+    constexpr T ramp(T x, T start, T slope = T{1})
     {
         if (x <= start)
-            return T(0);
+            return T{0};
         return (x - start) * slope;
     }
 
@@ -314,7 +315,7 @@ namespace ml7 {
     constexpr T ramp(T x)
     {
         if (x <= start)
-            return T(0);
+            return T{0};
         return (x - start) * slope;
     }
 
@@ -325,8 +326,8 @@ namespace ml7 {
         requires(std::is_arithmetic_v<T>)
     constexpr T ramp(T x)
     {
-        if (x <= T(0))
-            return T(0);
+        if (x <= T{0})
+            return T{0};
         return x;
     }
 
@@ -338,8 +339,8 @@ namespace ml7 {
         requires(std::is_floating_point_v<T>)
     T round(T x, unsigned num_decimals)
     {
-        const T p = std::pow(T(10.0), static_cast<T>(num_decimals));
-        return std::floor(x * p + T(0.5)) / p;
+        const T p = std::pow(T{10.0}, static_cast<T>(num_decimals));
+        return std::floor(x * p + T{0.5}) / p;
     }
 
     /**
@@ -349,8 +350,8 @@ namespace ml7 {
         requires(std::is_floating_point_v<T>)
     T round(T x)
     {
-        constexpr T p = ml7::pow<T(10.0), num_decimals>();
-        return std::floor(x * p + T(0.5)) / p;
+        constexpr T p = ml7::pow<T{10.0}, num_decimals>();
+        return std::floor(x * p + T{0.5}) / p;
     }
 
     /**
@@ -360,7 +361,7 @@ namespace ml7 {
         requires(std::is_floating_point_v<T>)
     T round(T x)
     {
-        return std::floor(x + T(0.5));
+        return std::floor(x + T{0.5});
     }
 
 
@@ -381,7 +382,7 @@ namespace ml7 {
         requires(std::is_floating_point_v<T>)
     constexpr bool is_one(T x, T epsilon = std::numeric_limits<T>::epsilon())
     {
-        return std::abs(x - T(1)) <= epsilon;
+        return std::abs(x - T{1}) <= epsilon;
     }
 
     /**
@@ -397,7 +398,7 @@ namespace ml7 {
         // x^2 = 1^2 + 2*epsilon + epsilon^2
         // x^2 =  1  + 2*epsilon
         // epsilon^2 is omitted because it is far below floating point precision.
-        return std::abs(x - T(1)) <= T(2) * epsilon;
+        return std::abs(x - T{1}) <= T{2} * epsilon;
     }
 
     /**
@@ -491,7 +492,8 @@ namespace ml7 {
         requires(std::is_floating_point_v<T>)
     constexpr T deg_to_rad(T degrees)
     {
-        return degrees * T(0.01745329251);
+        constexpr T pi_180 = std::numbers::pi_v<T> / T{180.0};
+        return degrees * pi_180;
     }
 
     /**
@@ -501,7 +503,8 @@ namespace ml7 {
         requires(std::is_floating_point_v<T>)
     constexpr T rad_to_deg(T radians)
     {
-        return radians * T(57.2957795131);
+        constexpr T _180_pi = T{180} / std::numbers::pi_v<T>;
+        return radians * _180_pi;
     }
 
 
@@ -523,10 +526,10 @@ namespace ml7 {
         requires(std::is_integral_v<T> && std::is_unsigned_v<T>)
     constexpr T prev_power_of_two(T x)
     {
-        constexpr T max = T(1) << (sizeof(T) * 8 - 1);
+        constexpr T max = T{1} << (sizeof(T) * 8 - 1);
         if (x >= max)
             return max;
-        T y = T(1);
+        T y = T{1};
         while (y <= x)
             y <<= 1;
         return y >> 1;
@@ -541,10 +544,10 @@ namespace ml7 {
         requires(std::is_integral_v<T> && std::is_unsigned_v<T>)
     constexpr T next_power_of_two(T x)
     {
-        constexpr T max = T(1) << (sizeof(T) * 8 - 1);
+        constexpr T max = T{1} << (sizeof(T) * 8 - 1);
         if (x > max)
             return 0;
-        T y = T(1);
+        T y = T{1};
         while (y < x)
             y <<= 1;
         return y;
@@ -557,7 +560,7 @@ namespace ml7 {
         requires(std::is_integral_v<T> && std::is_unsigned_v<T>)
     constexpr U decimal_digits(T x)
     {
-        constexpr T _10 = T(10);
+        constexpr T _10 = T{10};
         U n = U(1);
         for (; x >= _10; ++n)
             x /= _10;

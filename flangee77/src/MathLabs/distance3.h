@@ -8,27 +8,36 @@
 #include "./QuadraticBezier3.h"
 #include "./CubicBezier3.h"
 
+#include "./detail/distance.h"
+
+#include "./ops.h"
+
 
 
 namespace ml7::distance3 {
 
 
 
+template <std::floating_point T>
 struct ResultBase
 {
     /** The squared distance between two shapes. */
-    float distance_squared;
+    T distance_squared;
     /** Calculates the distance between two shapes by taking the square root of the squared distance. */
-    float distance() const { assert(distance_squared >= 0.0f); return std::sqrt(distance_squared); }
+    T distance() const { assert(distance_squared >= T{0}); return std::sqrt(distance_squared); }
 };
 
+template <std::floating_point T>
 struct PointResult
-    : public ResultBase
+    : public ResultBase<T>
 {
     /** The closest point on the other shape. */
-    ml7::Vector3 point;
+    Vector3<T> point;
     /** The parametric distance along the other shape. */
-    float t;
+    T t;
+
+    PointResult() noexcept = default;
+    PointResult(T distance_squared, const Vector3<T>& point, T t) noexcept : ResultBase<T>(distance_squared), point(point), t(t) {}
 };
 
 
@@ -36,27 +45,47 @@ struct PointResult
     /**
      * Calculates the distance result of a point and a line in 3D.
      */
-    PointResult point_line(const ml7::Vector3& point, const ml7::Line3& line);
+    template <std::floating_point T>
+    PointResult<T> point_line(const Vector3<T>& point, const Line3<T>& line)
+    {
+        return detail::distance::point_line<std::identity, PointResult<T>>(point, line.point, line.direction);
+    }
 
     /**
      * Calculates the distance result of a point and a line segment in 3D.
      */
-    PointResult point_line_segment(const ml7::Vector3& point, const ml7::LineSegment3& line_segment);
+    template <std::floating_point T>
+    PointResult<T> point_line_segment(const Vector3<T>& point, const LineSegment3<T>& line_segment)
+    {
+        return detail::distance::point_line<ops::clamp01, PointResult<T>>(point, line_segment.start, line_segment.end - line_segment.start);
+    }
 
     /**
      * Calculates the distance result of a point and a ray in 3D.
      */
-    PointResult point_ray(const ml7::Vector3& point, const ml7::Ray3& ray);
+    template <std::floating_point T>
+    PointResult<T> point_ray(const Vector3<T>& point, const Ray3<T>& ray)
+    {
+        return detail::distance::point_line<ops::ramp<>, PointResult<T>>(point, ray.origin, ray.direction);
+    }
 
     /**
      * Calculates the distance result of a point and a quadratic Bézier curve in 3D.
      */
-    PointResult point_quadratic_bezier(const ml7::Vector3& point, const ml7::QuadraticBezier3& bezier);
+    template <std::floating_point T>
+    PointResult<T> point_quadratic_bezier(const Vector3<T>& point, const QuadraticBezier3<T>& bezier)
+    {
+        return detail::distance::point_bezier<PointResult<T>>(point, bezier);
+    }
 
     /**
      * Calculates the distance result of a point and a cubic Bézier curve in 3D.
      */
-    PointResult point_cubic_bezier(const ml7::Vector3& point, const ml7::CubicBezier3& bezier);
+    template <std::floating_point T>
+    PointResult<T> point_cubic_bezier(const Vector3<T>& point, const CubicBezier3<T>& bezier)
+    {
+        return detail::distance::point_bezier<PointResult<T>>(point, bezier);
+    }
 
 
 

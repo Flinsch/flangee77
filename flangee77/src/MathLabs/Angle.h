@@ -9,8 +9,13 @@ namespace ml7 {
 
 
 
+template <std::floating_point T>
 struct Angle
 {
+
+    using scalar_type = T;
+
+
 
     // #############################################################################
     // Attributes
@@ -19,7 +24,7 @@ struct Angle
     /**
      * The angle in radians.
      */
-    float radians;
+    T radians;
 
 
 
@@ -27,7 +32,7 @@ struct Angle
     // Construction / Destruction
     // #############################################################################
 
-    constexpr Angle(float radians = 0.0f) noexcept
+    constexpr Angle(T radians = T{0}) noexcept
         : radians(radians)
     {
     }
@@ -46,12 +51,26 @@ struct Angle
     /**
      * Returns a copy of this angle normalized to the range [-pi;+pi].
      */
-    Angle normalized_symmetric() const;
+    Angle normalized_symmetric() const
+    {
+        if (radians < -constants<T>::pi)
+            return constants<T>::pi - std::fmod(-radians - constants<T>::pi, constants<T>::pi2);
+        if (radians > constants<T>::pi)
+            return std::fmod(radians + constants<T>::pi, constants<T>::pi2) - constants<T>::pi;
+        return radians;
+    }
 
     /**
      * Returns a copy of this angle normalized to the range [0;2pi].
      */
-    Angle normalized_asymmetric() const;
+    Angle normalized_asymmetric() const
+    {
+        if (radians < T{0})
+            return constants<T>::pi2 - std::fmod(-radians, constants<T>::pi2);
+        if (radians > constants<T>::pi2)
+            return std::fmod(radians, constants<T>::pi2);
+        return radians;
+    }
 
 
 
@@ -62,12 +81,26 @@ struct Angle
     /**
      * Normalizes this angle to the range [-pi;+pi].
      */
-    Angle& normalize_symmetric();
+    Angle& normalize_symmetric()
+    {
+        if (radians < -constants<T>::pi)
+            radians = constants<T>::pi - std::fmod(-radians - constants<T>::pi, constants<T>::pi2);
+        else if (radians > constants<T>::pi)
+            radians = std::fmod(radians + constants<T>::pi, constants<T>::pi2) - constants<T>::pi;
+        return *this;
+    }
 
     /**
      * Normalizes this angle to the range [0;2pi].
      */
-    Angle& normalize_asymmetric();
+    Angle& normalize_asymmetric()
+    {
+        if (radians < T{0})
+            radians = constants<T>::pi2 - std::fmod(-radians, constants<T>::pi2);
+        else if (radians > constants<T>::pi2)
+            radians = std::fmod(radians, constants<T>::pi2);
+        return *this;
+    }
 
 
 
@@ -78,22 +111,52 @@ struct Angle
     /**
      * Returns the angle value in radians.
      */
-    constexpr float to_radians() const { return radians; }
+    constexpr T to_radians() const
+    {
+        return radians;
+    }
 
     /**
      * Returns the angle value transformed to degrees.
      */
-    float to_degrees() const;
+    T to_degrees() const
+    {
+        return ml7::rad_to_deg(radians);
+    }
 
     /**
      * Returns the angle value transformed to the specified half-cycle.
      */
-    float to_half_cycle(float half_cycle) const;
+    T to_half_cycle(T half_cycle) const
+    {
+        return radians / constants<T>::pi * half_cycle;
+    }
 
     /**
      * Returns the angle value transformed to the specified cycle.
      */
-    float to_cycle(float cycle) const;
+    T to_cycle(T cycle) const
+    {
+        return radians / constants<T>::pi2 * cycle;
+    }
+
+    /**
+     * Returns the angle value transformed to the specified half-cycle.
+     */
+    template <T half_cycle>
+    T to_half_cycle() const
+    {
+        return radians / constants<T>::pi * half_cycle;
+    }
+
+    /**
+     * Returns the angle value transformed to the specified cycle.
+     */
+    template <T cycle>
+    T to_cycle() const
+    {
+        return radians / constants<T>::pi2 * cycle;
+    }
 
 
 
@@ -127,12 +190,12 @@ struct Angle
     constexpr Angle operator-(Angle a) const { return {radians - a.radians}; }
 
     /** Returns a copy of this angle multiplied by the specified scalar. */
-    constexpr Angle operator*(float s) const { return {radians * s}; }
+    constexpr Angle operator*(T s) const { return {radians * s}; }
     /** Returns a copy of this angle divided by the given scalar. */
-    constexpr Angle operator/(float s) const { return {radians / s}; }
+    constexpr Angle operator/(T s) const { return {radians / s}; }
 
     /** Scales a given angle by the specified scalar. */
-    friend constexpr Angle operator*(float s, Angle a) { return a * s; }
+    friend constexpr Angle operator*(T s, Angle a) { return a * s; }
 
 
 
@@ -146,9 +209,9 @@ struct Angle
     constexpr Angle& operator-=(Angle a) { radians -= a.radians; return *this; }
 
     /** Multiplies this angle by the specified scalar. */
-    constexpr Angle& operator*=(float s) { radians *= s; return *this; }
+    constexpr Angle& operator*=(T s) { radians *= s; return *this; }
     /** Divides this angle by the specified scalar. */
-    constexpr Angle& operator/=(float s) { radians /= s; return *this; }
+    constexpr Angle& operator/=(T s) { radians /= s; return *this; }
 
 
 
@@ -156,7 +219,7 @@ struct Angle
     // Conversion Operators
     // #############################################################################
 
-    operator float() const { return radians; }
+    operator T() const { return radians; }
 
 
 
@@ -167,24 +230,60 @@ struct Angle
     /**
      * Initializes an angle in radians.
      */
-    static constexpr Angle from_radians(float radians) { return {radians}; }
+    static constexpr Angle from_radians(T radians)
+    {
+        return {radians};
+    }
 
     /**
      * Initializes an angle in degrees.
      */
-    static Angle from_degrees(float degrees);
+    static Angle from_degrees(T degrees)
+    {
+        return {ml7::deg_to_rad(degrees)};
+    }
 
     /**
      * Initializes an angle from a value with the specified half-cycle.
      */
-    static Angle from_half_cycle(float value, float half_cycle);
+    static Angle from_half_cycle(T value, T half_cycle)
+    {
+        return {value / half_cycle * constantsf::pi};
+    }
 
     /**
      * Initializes an angle from a value with the specified cycle.
      */
-    static Angle from_cycle(float value, float cycle);
+    static Angle from_cycle(T value, T cycle)
+    {
+        return {value / cycle * constantsf::pi2};
+    }
+
+    /**
+     * Initializes an angle from a value with the specified half-cycle.
+     */
+    template <T half_cycle>
+    static Angle from_half_cycle(T value)
+    {
+        return {value / half_cycle * constantsf::pi};
+    }
+
+    /**
+     * Initializes an angle from a value with the specified cycle.
+     */
+    template <T cycle>
+    static Angle from_cycle(T value)
+    {
+        return {value / cycle * constantsf::pi2};
+    }
 
 }; // struct Angle
+
+
+
+using AngleF = Angle<float>;
+using AngleD = Angle<double>;
+using AngleLD = Angle<long double>;
 
 
 
