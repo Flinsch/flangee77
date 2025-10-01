@@ -370,9 +370,13 @@ struct FloatFormatOptions
         assert(len - fix_len >= 4); // e.g., "e+02"
 
         // Turn the 10 into a 1 by removing the 0.
-        std::memmove(buffer + p + 1, buffer + p + 2, len - p - 2);
-        --fix_len;
-        --len;
+        assert(len > p + 2);
+        if (len > p + 2) // always true, but avoids underflow suspicion
+        {
+            std::memmove(buffer + p + 1, buffer + p + 2, len - (p + 2));
+            --fix_len;
+            --len;
+        }
 
         // Update.
         sv = Tstring_view(buffer, len);
