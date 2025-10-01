@@ -11,7 +11,7 @@
 
 
 
-TESTLABS_CASE( u8"CoreLabs:  strings:  transform:  trimming left" )
+TESTLABS_CASE( u8"CoreLabs:  strings:  transform:  trimming left (whitespace)" )
 {
     struct Entry
     {
@@ -54,7 +54,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  transform:  trimming left" )
     }
 }
 
-TESTLABS_CASE( u8"CoreLabs:  strings:  transform:  trimming right" )
+TESTLABS_CASE( u8"CoreLabs:  strings:  transform:  trimming right (whitespace)" )
 {
     struct Entry
     {
@@ -97,7 +97,7 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  transform:  trimming right" )
     }
 }
 
-TESTLABS_CASE( u8"CoreLabs:  strings:  transform:  trimming both" )
+TESTLABS_CASE( u8"CoreLabs:  strings:  transform:  trimming both (whitespace)" )
 {
     struct Entry
     {
@@ -137,6 +137,286 @@ TESTLABS_CASE( u8"CoreLabs:  strings:  transform:  trimming both" )
 
         TESTLABS_CHECK_EQ( actual_view, expected_view );
         TESTLABS_CHECK_EQ( cl7::strings::transform::trimmed( input_view ), expected_view );
+    }
+}
+
+
+
+TESTLABS_CASE( u8"CoreLabs:  strings:  transform:  trimming left (character)" )
+{
+    struct Entry
+    {
+        cl7::u8string input;
+        cl7::u8char_t c;
+        cl7::u8string expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", u8'.', u8"" },
+        { u8" ", u8'.', u8" " },
+        { u8".", u8'.', u8"" },
+        { u8".. x", u8'.', u8" x" },
+        { u8"x ..", u8'.', u8"x .." },
+        { u8".. x ..", u8'.', u8" x .." },
+        { u8".\n\tx\n\t.", u8'.', u8"\n\tx\n\t." },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string>", container, entry, entry.input )
+    {
+        const auto& input = entry.input;
+        const auto c = entry.c;
+        const auto& expected = entry.expected;
+
+        auto actual = entry.input;
+        cl7::strings::transform::trim_left( actual, c );
+
+        TESTLABS_CHECK_EQ( actual, expected );
+        TESTLABS_CHECK_EQ( cl7::strings::transform::trimmed_left( input, c ), expected );
+    }
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string_view>", container, entry, entry.input )
+    {
+        const auto input_view = cl7::make_string_view( entry.input );
+        const auto c = entry.c;
+        const auto expected_view = cl7::make_string_view( entry.expected );
+
+        auto actual_view = cl7::make_string_view( entry.input );
+        cl7::strings::transform::trim_left( actual_view, c );
+
+        TESTLABS_CHECK_EQ( actual_view, expected_view );
+        TESTLABS_CHECK_EQ( cl7::strings::transform::trimmed_left( input_view, c ), expected_view );
+    }
+}
+
+TESTLABS_CASE( u8"CoreLabs:  strings:  transform:  trimming right (character)" )
+{
+    struct Entry
+    {
+        cl7::u8string input;
+        cl7::u8char_t c;
+        cl7::u8string expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", u8'.', u8"" },
+        { u8" ", u8'.', u8" " },
+        { u8".", u8'.', u8"" },
+        { u8".. x", u8'.', u8".. x" },
+        { u8"x ..", u8'.', u8"x " },
+        { u8".. x ..", u8'.', u8".. x " },
+        { u8".\n\tx\n\t.", u8'.', u8".\n\tx\n\t" },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string>", container, entry, entry.input )
+    {
+        const auto& input = entry.input;
+        const auto c = entry.c;
+        const auto& expected = entry.expected;
+
+        auto actual = entry.input;
+        cl7::strings::transform::trim_right( actual, c );
+
+        TESTLABS_CHECK_EQ( actual, expected );
+        TESTLABS_CHECK_EQ( cl7::strings::transform::trimmed_right( input, c ), expected );
+    }
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string_view>", container, entry, entry.input )
+    {
+        const auto input_view = cl7::make_string_view( entry.input );
+        const auto c = entry.c;
+        const auto expected_view = cl7::make_string_view( entry.expected );
+
+        auto actual_view = cl7::make_string_view( entry.input );
+        cl7::strings::transform::trim_right( actual_view, c );
+
+        TESTLABS_CHECK_EQ( actual_view, expected_view );
+        TESTLABS_CHECK_EQ( cl7::strings::transform::trimmed_right( input_view, c ), expected_view );
+    }
+}
+
+TESTLABS_CASE( u8"CoreLabs:  strings:  transform:  trimming both (character)" )
+{
+    struct Entry
+    {
+        cl7::u8string input;
+        cl7::u8char_t c;
+        cl7::u8string expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", u8'.', u8"" },
+        { u8" ", u8'.', u8" " },
+        { u8".", u8'.', u8"" },
+        { u8".. x", u8'.', u8" x" },
+        { u8"x ..", u8'.', u8"x " },
+        { u8".. x ..", u8'.', u8" x " },
+        { u8".\n\tx\n\t.", u8'.', u8"\n\tx\n\t" },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string>", container, entry, entry.input )
+    {
+        const auto& input = entry.input;
+        const auto c = entry.c;
+        const auto& expected = entry.expected;
+
+        auto actual = entry.input;
+        cl7::strings::transform::trim( actual, c );
+
+        TESTLABS_CHECK_EQ( actual, expected );
+        TESTLABS_CHECK_EQ( cl7::strings::transform::trimmed( input, c ), expected );
+    }
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string_view>", container, entry, entry.input )
+    {
+        const auto input_view = cl7::make_string_view( entry.input );
+        const auto c = entry.c;
+        const auto expected_view = cl7::make_string_view( entry.expected );
+
+        auto actual_view = cl7::make_string_view( entry.input );
+        cl7::strings::transform::trim( actual_view, c );
+
+        TESTLABS_CHECK_EQ( actual_view, expected_view );
+        TESTLABS_CHECK_EQ( cl7::strings::transform::trimmed( input_view, c ), expected_view );
+    }
+}
+
+
+
+TESTLABS_CASE( u8"CoreLabs:  strings:  transform:  trimming left (chars)" )
+{
+    struct Entry
+    {
+        cl7::u8string input;
+        cl7::u8string_view chars;
+        cl7::u8string expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", u8"\n\t.", u8"" },
+        { u8" ", u8"\n\t.", u8" " },
+        { u8".", u8"\n\t.", u8"" },
+        { u8".. x", u8"\n\t.", u8" x" },
+        { u8"x ..", u8"\n\t.", u8"x .." },
+        { u8".. x ..", u8"\n\t.", u8" x .." },
+        { u8".\n\tx\n\t.", u8"\n\t.", u8"x\n\t." },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string>", container, entry, entry.input )
+    {
+        const auto& input = entry.input;
+        const auto chars = entry.chars;
+        const auto& expected = entry.expected;
+
+        auto actual = entry.input;
+        cl7::strings::transform::trim_left( actual, chars );
+
+        TESTLABS_CHECK_EQ( actual, expected );
+        TESTLABS_CHECK_EQ( cl7::strings::transform::trimmed_left( input, chars ), expected );
+    }
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string_view>", container, entry, entry.input )
+    {
+        const auto input_view = cl7::make_string_view( entry.input );
+        const auto chars = entry.chars;
+        const auto expected_view = cl7::make_string_view( entry.expected );
+
+        auto actual_view = cl7::make_string_view( entry.input );
+        cl7::strings::transform::trim_left( actual_view, chars );
+
+        TESTLABS_CHECK_EQ( actual_view, expected_view );
+        TESTLABS_CHECK_EQ( cl7::strings::transform::trimmed_left( input_view, chars ), expected_view );
+    }
+}
+
+TESTLABS_CASE( u8"CoreLabs:  strings:  transform:  trimming right (chars)" )
+{
+    struct Entry
+    {
+        cl7::u8string input;
+        cl7::u8string_view chars;
+        cl7::u8string expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", u8"\n\t.", u8"" },
+        { u8" ", u8"\n\t.", u8" " },
+        { u8".", u8"\n\t.", u8"" },
+        { u8".. x", u8"\n\t.", u8".. x" },
+        { u8"x ..", u8"\n\t.", u8"x " },
+        { u8".. x ..", u8"\n\t.", u8".. x " },
+        { u8".\n\tx\n\t.", u8"\n\t.", u8".\n\tx" },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string>", container, entry, entry.input )
+    {
+        const auto& input = entry.input;
+        const auto chars = entry.chars;
+        const auto& expected = entry.expected;
+
+        auto actual = entry.input;
+        cl7::strings::transform::trim_right( actual, chars );
+
+        TESTLABS_CHECK_EQ( actual, expected );
+        TESTLABS_CHECK_EQ( cl7::strings::transform::trimmed_right( input, chars ), expected );
+    }
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string_view>", container, entry, entry.input )
+    {
+        const auto input_view = cl7::make_string_view( entry.input );
+        const auto chars = entry.chars;
+        const auto expected_view = cl7::make_string_view( entry.expected );
+
+        auto actual_view = cl7::make_string_view( entry.input );
+        cl7::strings::transform::trim_right( actual_view, chars );
+
+        TESTLABS_CHECK_EQ( actual_view, expected_view );
+        TESTLABS_CHECK_EQ( cl7::strings::transform::trimmed_right( input_view, chars ), expected_view );
+    }
+}
+
+TESTLABS_CASE( u8"CoreLabs:  strings:  transform:  trimming both (chars)" )
+{
+    struct Entry
+    {
+        cl7::u8string input;
+        cl7::u8string_view chars;
+        cl7::u8string expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", u8"\n\t.", u8"" },
+        { u8" ", u8"\n\t.", u8" " },
+        { u8".", u8"\n\t.", u8"" },
+        { u8".. x", u8"\n\t.", u8" x" },
+        { u8"x ..", u8"\n\t.", u8"x " },
+        { u8".. x ..", u8"\n\t.", u8" x " },
+        { u8".\n\tx\n\t.", u8"\n\t.", u8"x" },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string>", container, entry, entry.input )
+    {
+        const auto& input = entry.input;
+        const auto chars = entry.chars;
+        const auto& expected = entry.expected;
+
+        auto actual = entry.input;
+        cl7::strings::transform::trim( actual, chars );
+
+        TESTLABS_CHECK_EQ( actual, expected );
+        TESTLABS_CHECK_EQ( cl7::strings::transform::trimmed( input, chars ), expected );
+    }
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"<string_view>", container, entry, entry.input )
+    {
+        const auto input_view = cl7::make_string_view( entry.input );
+        const auto chars = entry.chars;
+        const auto expected_view = cl7::make_string_view( entry.expected );
+
+        auto actual_view = cl7::make_string_view( entry.input );
+        cl7::strings::transform::trim( actual_view, chars );
+
+        TESTLABS_CHECK_EQ( actual_view, expected_view );
+        TESTLABS_CHECK_EQ( cl7::strings::transform::trimmed( input_view, chars ), expected_view );
     }
 }
 
