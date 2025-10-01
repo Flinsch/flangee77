@@ -3,19 +3,14 @@ include(../cmake/common.cmake)
 
 add_executable(flangee77-tests)
 
-equip_console_app(flangee77-tests)
-
 add_subdirectory(src)
-
-target_include_directories(flangee77-tests
-    PRIVATE
-    ../flangee77/src
-)
 
 target_link_libraries(flangee77-tests
     PRIVATE
     flangee77
 )
+
+equip_console_app(flangee77-tests)
 
 add_custom_command(TARGET flangee77-tests
     POST_BUILD

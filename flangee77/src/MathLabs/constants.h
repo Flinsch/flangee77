@@ -11,9 +11,8 @@ namespace ml7 {
 
 
 
-template <typename T = float>
-    requires(std::is_floating_point_v<T>)
-struct constants_
+template <std::floating_point T>
+struct constants
 {
 
     /**
@@ -24,12 +23,12 @@ struct constants_
     /**
      * The mathematical constant Pi times 2 (sometimes referred to as Tau).
      */
-    static constexpr T pi2 = T(2.0f) * pi;
+    static constexpr T pi2 = T{2} * pi;
 
     /**
      * The mathematical constant Pi times 0.5.
      */
-    static constexpr T pi05 = T(0.5f) * pi;
+    static constexpr T pi05 = T{0.5} * pi;
 
     /**
      * The mathematical constant e (Euler's number), approximately equal to 2.71828.
@@ -55,7 +54,9 @@ struct constants_
 
 
 
-using constants = constants_<float>;
+using constantsf = constants<float>;
+using constantsd = constants<double>;
+using constantsld = constants<long double>;
 
 
 

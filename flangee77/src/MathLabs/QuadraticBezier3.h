@@ -3,6 +3,9 @@
 
 #include <MathLabs/Vector3.h>
 
+#include "./detail/distance.h"
+#include "./detail/subdivide.h"
+
 #include <span>
 
 
@@ -11,19 +14,25 @@ namespace ml7 {
 
 
 
+template <std::floating_point T>
 struct QuadraticBezier3
 {
+
+    using scalar_type = T;
+    using vector_type = Vector3<T>;
+
+
 
     // #############################################################################
     // Attributes
     // #############################################################################
 
     /** The start point of the quadratic Bézier curve. */
-    Vector3 p0;
+    Vector3<T> p0;
     /** The control point of the quadratic Bézier curve. */
-    Vector3 p1;
+    Vector3<T> p1;
     /** The end point of the quadratic Bézier curve. */
-    Vector3 p2;
+    Vector3<T> p2;
 
 
 
@@ -35,9 +44,9 @@ struct QuadraticBezier3
      * Default constructor. Initializes an "empty" Bézier curve.
      */
     constexpr QuadraticBezier3() noexcept
-        : p0(0.0f, 0.0f, 0.0f)
-        , p1(0.0f, 0.0f, 0.0f)
-        , p2(0.0f, 0.0f, 0.0f)
+        : p0(T{0}, T{0}, T{0})
+        , p1(T{0}, T{0}, T{0})
+        , p2(T{0}, T{0}, T{0})
     {
     }
 
@@ -45,7 +54,7 @@ struct QuadraticBezier3
      * Explicit constructor with parameters for the start point, control point, and
      * end point.
      */
-    constexpr QuadraticBezier3(const Vector3& p0, const Vector3& p1, const Vector3& p2) noexcept
+    constexpr QuadraticBezier3(const Vector3<T>& p0, const Vector3<T>& p1, const Vector3<T>& p2) noexcept
         : p0(p0)
         , p1(p1)
         , p2(p2)
@@ -55,7 +64,12 @@ struct QuadraticBezier3
     /**
      * Swap operation.
      */
-    void swap(QuadraticBezier3& other) noexcept;
+    void swap(QuadraticBezier3& other) noexcept
+    {
+        p0.swap(other.p0);
+        p1.swap(other.p1);
+        p2.swap(other.p2);
+    }
 
 
 
@@ -66,14 +80,19 @@ struct QuadraticBezier3
     /**
      * Returns the control points of this Bézier curve.
      */
-    std::span<const Vector3> control_points() const { return {&p0, 3}; }
+    std::span<const Vector3<T>> control_points() const { return {&p0, 3}; }
 
     /**
      * Calculates the position on this Bézier curve at the specified parameter t.
      * The function does not limit the parameter if it is less than 0 or greater
      * than 1.
      */
-    Vector3 point_at(float t) const;
+    Vector3<T> point_at(T t) const
+    {
+        const T u = T{1} - t;
+
+        return u*u * p0 + T{2} * u*t * p1 + t*t * p2;
+    }
 
     /**
      * Calculates the tangent of this Bézier curve at the specified parameter t.
@@ -81,7 +100,12 @@ struct QuadraticBezier3
      * The function does not limit the parameter if it is less than 0 or greater
      * than 1.
      */
-    Vector3 tangent_at(float t) const;
+    Vector3<T> tangent_at(T t) const
+    {
+        const T u = T{1} - t;
+
+        return T{2} * (u * (p1 - p0) + t * (p2 - p1));
+    }
 
     /**
      * Calculates the second derivative of this Bézier curve at the specified
@@ -90,30 +114,45 @@ struct QuadraticBezier3
      * The function does not limit the parameter if it is less than 0 or greater
      * than 1.
      */
-    Vector3 second_derivative_at(float t) const;
+    Vector3<T> second_derivative_at(T t) const
+    {
+        return T{2} * (p2 - T{2} * p1 + p0);
+    }
 
     /**
      * Calculates the parameter 0 <= t <= 1 such that the corresponding point on
      * this Bézier curve is closest to the specified query point.
      */
-    float parameter(const Vector3& point) const;
+    T parameter(const Vector3<T>& point) const
+    {
+        return detail::distance::point_bezier<detail::distance::PointResult_t<scalar_type>>(point, *this).t;
+    }
 
     /**
      * Finds the closest point on this Bézier curve to the specified query point.
      */
-    Vector3 closest_point(const Vector3& point) const;
+    Vector3<T> closest_point(const Vector3<T>& point) const
+    {
+        return detail::distance::point_bezier<detail::distance::PointResult_point<vector_type>>(point, *this).point;
+    }
 
     /**
      * Calculates the minimum distance from the specified query point to this Bézier
      * curve.
      */
-    float distance(const Vector3& point) const;
+    T distance(const Vector3<T>& point) const
+    {
+        return std::sqrt(distance_squared(point));
+    }
 
     /**
      * Calculates the minimum squared distance from the specified query point to
      * this Bézier curve.
      */
-    float distance_squared(const Vector3& point) const;
+    T distance_squared(const Vector3<T>& point) const
+    {
+        return detail::distance::point_bezier<detail::distance::PointResult_distance_squared<scalar_type>>(point, *this).distance_squared;
+    }
 
 
 
@@ -127,7 +166,10 @@ struct QuadraticBezier3
      * The function does not limit the parameter if it is less than 0 or greater
      * than 1.
      */
-    std::pair<QuadraticBezier3, QuadraticBezier3> subdivide(float t) const;
+    std::pair<QuadraticBezier3, QuadraticBezier3> subdivide(T t) const
+    {
+        return detail::subdivide::subdivide_quadratic_bezier(*this, t);
+    }
 
 
 
@@ -139,6 +181,12 @@ struct QuadraticBezier3
     bool operator!=(const QuadraticBezier3& other) const noexcept = default;
 
 }; // struct QuadraticBezier3
+
+
+
+using QuadraticBezier3f = QuadraticBezier3<float>;
+using QuadraticBezier3d = QuadraticBezier3<double>;
+using QuadraticBezier3ld = QuadraticBezier3<long double>;
 
 
 

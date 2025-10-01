@@ -2,107 +2,50 @@
 target_sources(flangee77
     PRIVATE
     Base64.cpp
-    Base64.h
-    compression.h
 
     compression/Deflate.cpp
-    compression/Deflate.h
 
-    ini/Format.h
     ini/Ini.cpp
-    ini/Ini.h
     ini/IniReader.cpp
-    ini/IniReader.h
     ini/IniWriter.cpp
-    ini/IniWriter.h
     ini/Section.cpp
-    ini/Section.h
-    ini/types.h
     ini/Value.cpp
-    ini/Value.h
 
     ini/detail/AnyOtherMatcher.cpp
-    ini/detail/AnyOtherMatcher.h
     ini/detail/BooleanMatcher.cpp
-    ini/detail/BooleanMatcher.h
     ini/detail/Builder.cpp
-    ini/detail/Builder.h
     ini/detail/Generator.cpp
-    ini/detail/Generator.h
     ini/detail/Lexer.cpp
-    ini/detail/Lexer.h
-    ini/detail/Symbol.h
 
-    json/Format.h
     json/Json.cpp
-    json/Json.h
     json/JsonReader.cpp
-    json/JsonReader.h
     json/JsonWriter.cpp
-    json/JsonWriter.h
-    json/types.h
 
     json/detail/Builder.cpp
-    json/detail/Builder.h
     json/detail/Generator.cpp
-    json/detail/Generator.h
     json/detail/IdentifierMatcher.cpp
-    json/detail/IdentifierMatcher.h
     json/detail/Lexer.cpp
-    json/detail/Lexer.h
-    json/detail/Symbol.h
     json/detail/UnescaperErrorHandler.cpp
-    json/detail/UnescaperErrorHandler.h
 
     json/util/Escaper.cpp
-    json/util/Escaper.h
     json/util/Unescaper.cpp
-    json/util/Unescaper.h
     json/util/Validator.cpp
-    json/util/Validator.h
 
-    syntax/AstNode.h
-    syntax/AstProcessor.h
-    syntax/BufferedTokenReader.h
-    syntax/CstBuilder.h
     syntax/CstNode.cpp
-    syntax/CstNode.h
-    syntax/CstToAstTransformer.h
     syntax/Diagnostic.cpp
-    syntax/Diagnostic.h
     syntax/Diagnostics.cpp
-    syntax/Diagnostics.h
-    syntax/DirectAstBuilder.h
     syntax/GenericLexer.cpp
-    syntax/GenericLexer.h
-    syntax/Grammar.h
     syntax/GrammarAnalyzer.cpp
-    syntax/GrammarAnalyzer.h
     syntax/Lexer.cpp
-    syntax/Lexer.h
-    syntax/LexingTokenReader.h
     syntax/matchers.cpp
-    syntax/matchers.h
     syntax/ParseStage.cpp
-    syntax/ParseStage.h
     syntax/ProductionRule.cpp
-    syntax/ProductionRule.h
     syntax/ProductionRuleCollection.cpp
-    syntax/ProductionRuleCollection.h
     syntax/SourceAwareDiagnostics.cpp
-    syntax/SourceAwareDiagnostics.h
     syntax/SourceContext.cpp
-    syntax/SourceContext.h
     syntax/SourceLocation.cpp
-    syntax/SourceLocation.h
-    syntax/SymbolID.h
     syntax/TerminalSymbol.cpp
-    syntax/TerminalSymbol.h
     syntax/TerminalSymbolCollection.cpp
-    syntax/TerminalSymbolCollection.h
-    syntax/Token.h
     syntax/TokenReader.cpp
-    syntax/TokenReader.h
     syntax/Vocabulary.cpp
-    syntax/Vocabulary.h
 )

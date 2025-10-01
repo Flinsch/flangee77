@@ -12,8 +12,11 @@ namespace ml7 {
 
 
 
+template <std::floating_point T>
 struct Matrix2x3
 {
+
+    using scalar_type = T;
 
     static const Matrix2x3 ZERO;
     static const Matrix2x3 IDENTITY;
@@ -30,41 +33,41 @@ struct Matrix2x3
         {
             // NOLINTBEGIN(*-use-default-member-init)
             /** Element in the 1st row and 1st column. */
-            float _11;
+            T _11;
             /** Element in the 1st row and 2nd column. */
-            float _12;
+            T _12;
             /** Element in the 1st row and 3rd column. */
-            float _13;
+            T _13;
             /** Element in the 2nd row and 1st column. */
-            float _21;
+            T _21;
             /** Element in the 2nd row and 2nd column. */
-            float _22;
+            T _22;
             /** Element in the 2nd row and 3rd column. */
-            float _23;
+            T _23;
             // NOLINTEND(*-use-default-member-init)
         }; // struct
 
         struct
         {
             /** Element in the 1st row and 1st column. */
-            float a;
+            T a;
             /** Element in the 1st row and 2nd column. */
-            float b;
+            T b;
             /** Element in the 1nd row and 3rd column. */
-            float c;
+            T c;
             /** Element in the 2nd row and 1st column. */
-            float d;
+            T d;
             /** Element in the 2nd row and 2nd column. */
-            float e;
+            T e;
             /** Element in the 2nd row and 3rd column. */
-            float f;
+            T f;
         };
 
         /** Array of the elements. */
-        float data[6];
+        T data[6];
 
         /** 2D array of the elements. */
-        float m[2][3];
+        T m[2][3];
     }; // union
 
 
@@ -78,8 +81,8 @@ struct Matrix2x3
      * transformation.
      */
     constexpr Matrix2x3() noexcept
-        : _11(1.0f), _12(0.0f), _13(0.0f)
-        , _21(0.0f), _22(1.0f), _23(0.0f)
+        : _11(T{1}), _12(T{0}), _13(T{0})
+        , _21(T{0}), _22(T{1}), _23(T{0})
     {
     }
 
@@ -87,8 +90,8 @@ struct Matrix2x3
      * Explicit constructor with parameters for each element.
      */
     constexpr Matrix2x3(
-        float _11, float _12, float _13,
-        float _21, float _22, float _23) noexcept
+        T _11, T _12, T _13,
+        T _21, T _22, T _23) noexcept
         : _11(_11), _12(_12), _13(_13)
         , _21(_21), _22(_22), _23(_23)
     {
@@ -97,16 +100,16 @@ struct Matrix2x3
     /**
      * Explicit constructor from a 2x2 matrix.
      */
-    constexpr explicit Matrix2x3(const Matrix2x2& m2x2) noexcept
-        : _11(m2x2._11), _12(m2x2._12), _13(0.0f)
-        , _21(m2x2._21), _22(m2x2._22), _23(0.0f)
+    constexpr explicit Matrix2x3(const Matrix2x2<T>& m2x2) noexcept
+        : _11(m2x2._11), _12(m2x2._12), _13(T{0})
+        , _21(m2x2._21), _22(m2x2._22), _23(T{0})
     {
     }
 
     /**
      * Explicit constructor from a 2x2 matrix and a translation vector.
      */
-    constexpr Matrix2x3(const Matrix2x2& m2x2, const ml7::Vector2& translation) noexcept
+    constexpr Matrix2x3(const Matrix2x2<T>& m2x2, const Vector2<T>& translation) noexcept
         : _11(m2x2._11), _12(m2x2._12), _13(translation.x)
         , _21(m2x2._21), _22(m2x2._22), _23(translation.y)
     {
@@ -115,7 +118,12 @@ struct Matrix2x3
     /**
      * Swap operation.
      */
-    void swap(Matrix2x3& other) noexcept;
+    void swap(Matrix2x3& other) noexcept
+    {
+        Matrix2x3 tmp(other);
+        other = *this;
+        *this = tmp;
+    }
 
 
 
@@ -127,12 +135,12 @@ struct Matrix2x3
      * Tells whether this matrix is invertible (i.e., whether the determinant of its
      * 2x2 part is non-zero).
      */
-    bool is_invertible() const { return determinant() != 0.0f; }
+    bool is_invertible() const { return determinant() != T{0}; }
 
     /**
      * Returns the determinant of the 2x2 part of the matrix.
      */
-    float determinant() const { return _11*_22 - _12*_21; }
+    T determinant() const { return _11*_22 - _12*_21; }
 
 
 
@@ -143,12 +151,22 @@ struct Matrix2x3
     /**
      * Returns a copy of this matrix inverted (if possible).
      */
-    Matrix2x3 inverted() const;
+    Matrix2x3 inverted() const
+    {
+        const T det = determinant();
+        if (det == T{0})
+            return ZERO;
+        const T i = T{1} / det;
+        return {
+            _22 * i, -_12 * i, (_12*_23 - _22*_13) * i,
+            -_21 * i, _11 * i, (_21*_13 - _11*_23) * i,
+        };
+    }
 
     /**
      * Returns the j-th (0-indexed) column vector of this matrix.
      */
-    Vector2 get_column(unsigned j) const
+    Vector2<T> get_column(unsigned j) const
     {
         assert(j < 3);
         return {
@@ -161,7 +179,7 @@ struct Matrix2x3
      * Extracts the basis vectors that define the transformed coordinate system
      * (i.e., the column vectors of the matrix).
      */
-    void to_axes(ml7::Vector2& x, ml7::Vector2& y) const
+    void to_axes(Vector2<T>& x, Vector2<T>& y) const
     {
         x.x = _11;   y.x = _12;
         x.y = _21;   y.y = _22;
@@ -171,7 +189,7 @@ struct Matrix2x3
      * Extracts the basis vectors and origin/translation vector that define the
      * transformed coordinate system (i.e., the column vectors of the matrix).
      */
-    void to_axes(ml7::Vector2& x, ml7::Vector2& y, ml7::Vector2& origin) const
+    void to_axes(Vector2<T>& x, Vector2<T>& y, Vector2<T>& origin) const
     {
         x.x = _11;   y.x = _12;   origin.x = _13;
         x.y = _21;   y.y = _22;   origin.y = _23;
@@ -180,7 +198,7 @@ struct Matrix2x3
     /**
      * Returns the 2x2 part of this matrix.
      */
-    Matrix2x2 to_matrix2x2() const
+    Matrix2x2<T> to_matrix2x2() const
     {
         return {
             _11, _12,
@@ -191,7 +209,7 @@ struct Matrix2x3
     /**
      * Decomposes this matrix into a 2x2 matrix and a translation vector.
      */
-    void decompose(ml7::Matrix2x2& m2x2, ml7::Vector2& translation) const
+    void decompose(Matrix2x2<T>& m2x2, Vector2<T>& translation) const
     {
         m2x2._11 = _11;   m2x2._12 = _12;   translation.x = _13;
         m2x2._21 = _21;   m2x2._22 = _22;   translation.y = _23;
@@ -203,17 +221,29 @@ struct Matrix2x3
      * This only works if the matrix actually consists of translations, rotations and
      * (positive) scalings in the "common" order (no shears, negative scalings, etc.).
      */
-    bool decompose(ml7::Vector2& scaling, float& angle, ml7::Vector2& translation) const;
+    bool decompose(Vector2<T>& scaling, T& angle, Vector2<T>& translation) const
+    {
+        const T sx = Vector2<T>{_11, _21}.length();
+        const T sy = Vector2<T>{_12, _22}.length();
+        if (sx == T{0}) return false;
+        if (sy == T{0}) return false;
+        scaling.x = sx;
+        scaling.y = sy;
+        angle = std::atan2(-_12 / sy, _11 / sx);
+        translation.x = _13;
+        translation.y = _23;
+        return true;
+    }
 
     /**
      * Returns a copy of the given (column) vector transformed by this matrix.
      * Used to transform position vectors rather than direction vectors.
      */
-    constexpr Vector2 transform(const Vector2& v) const
+    constexpr Vector2<T> transform(const Vector2<T>& v) const
     {
         return {
-            _11*v.x + _12*v.y + _13,
-            _21*v.x + _22*v.y + _23,
+            _11 * v.x + _12 * v.y + _13,
+            _21 * v.x + _22 * v.y + _23,
         };
     }
 
@@ -222,11 +252,11 @@ struct Matrix2x3
      * this matrix.
      * Used to transform direction vectors rather than position vectors.
      */
-    constexpr Vector2 transform2x2(const Vector2& v) const
+    constexpr Vector2<T> transform2x2(const Vector2<T>& v) const
     {
         return {
-            _11*v.x + _12*v.y,
-            _21*v.x + _22*v.y,
+            _11 * v.x + _12 * v.y,
+            _21 * v.x + _22 * v.y,
         };
     }
 
@@ -235,14 +265,27 @@ struct Matrix2x3
      * inverted (if possible).
      * Used to transform position vectors rather than direction vectors.
      */
-    Vector2 transform_inverted(const Vector2& v) const;
+    Vector2<T> transform_inverted(const Vector2<T>& v) const
+    {
+        return transform2x2_inverted(v - Vector2<T>{_13, _23});
+    }
 
     /**
      * Returns a copy of the given (column) vector transformed by the 2x2 part of
      * this matrix inverted (if possible).
      * Used to transform direction vectors rather than position vectors.
      */
-    Vector2 transform2x2_inverted(const Vector2& v) const;
+    Vector2<T> transform2x2_inverted(const Vector2<T>& v) const
+    {
+        const T det = determinant();
+        if (det == T{0})
+            return v;
+        const T i = T{1} / det;
+        return {
+            (_22 * v.x + -_12 * v.y) * i,
+            (-_21 * v.x + _11 * v.y) * i,
+        };
+    }
 
 
 
@@ -262,7 +305,7 @@ struct Matrix2x3
     /**
      * Sets the j-th (0-indexed) column vector of this matrix.
      */
-    Matrix2x3& set_column(unsigned j, Vector2 v)
+    Matrix2x3& set_column(unsigned j, Vector2<T> v)
     {
         assert(j < 3);
         m[0][j] = v[0];
@@ -296,9 +339,9 @@ struct Matrix2x3
     constexpr Matrix2x3 operator-(const Matrix2x3& m) const { return {a - m.a, b - m.b, c - m.c, d - m.d, e - m.e, f - m.f}; }
 
     /** Returns a copy of this matrix "scaled" by the specified factor (scalar multiplication). */
-    constexpr Matrix2x3 operator*(float s) const { return {a * s, b * s, c * s, d * s, e * s, f * s}; }
+    constexpr Matrix2x3 operator*(T s) const { return {a * s, b * s, c * s, d * s, e * s, f * s}; }
     /** Returns a copy of this matrix inversely "scaled" by the specified factor (scalar division). */
-    constexpr Matrix2x3 operator/(float s) const { return {a / s, b / s, c / s, d / s, e / s, f / s}; }
+    constexpr Matrix2x3 operator/(T s) const { return {a / s, b / s, c / s, d / s, e / s, f / s}; }
 
     /** Returns the matrix product of two matrices (matrix multiplication). */
     constexpr Matrix2x3 operator*(const Matrix2x3& m) const
@@ -310,10 +353,10 @@ struct Matrix2x3
     }
 
     /** Returns a copy of the given (column vector) transformed by this matrix. */
-    constexpr Vector2 operator*(const Vector2& v) const { return transform(v); }
+    constexpr Vector2<T> operator*(const Vector2<T>& v) const { return transform(v); }
 
     /** "Scales" a matrix by the specified factor (scalar multiplication). */
-    friend constexpr Matrix2x3 operator*(float s, const Matrix2x3& m) { return m * s; }
+    friend constexpr Matrix2x3 operator*(T s, const Matrix2x3& m) { return m * s; }
 
 
 
@@ -327,9 +370,9 @@ struct Matrix2x3
     constexpr Matrix2x3& operator-=(const Matrix2x3& m) { for (unsigned k = 0; k < 6; ++k) data[k] -= m.data[k]; return *this; }
 
     /** "Scales" this matrix by the specified factor (scalar multiplication). */
-    constexpr Matrix2x3& operator*=(float s) { for (float& k : data) k *= s; return *this; }
+    constexpr Matrix2x3& operator*=(T s) { for (T& k : data) k *= s; return *this; }
     /** Inversely "scales" this matrix by the specified factor (scalar division). */
-    constexpr Matrix2x3& operator/=(float s) { for (float& k : data) k /= s; return *this; }
+    constexpr Matrix2x3& operator/=(T s) { for (T& k : data) k /= s; return *this; }
 
 
 
@@ -337,8 +380,8 @@ struct Matrix2x3
     // Access Operators
     // #############################################################################
 
-    std::span<const float, 3> operator[](unsigned i) const { assert(i < 2); return std::span<const float, 3>{m[i], 3}; }
-    std::span<float, 3> operator[](unsigned i) { assert(i < 2); return std::span<float, 3>{m[i], 3}; }
+    std::span<const T, 3> operator[](unsigned i) const { assert(i < 2); return std::span<const T, 3>{m[i], 3}; }
+    std::span<T, 3> operator[](unsigned i) { assert(i < 2); return std::span<T, 3>{m[i], 3}; }
 
 
 
@@ -350,11 +393,11 @@ struct Matrix2x3
      * Initializes a transformation matrix from the specified basis vectors that
      * define the transformed coordinate system (as the column vectors of the matrix).
      */
-    static constexpr Matrix2x3 from_axes(const ml7::Vector2& x, const ml7::Vector2& y)
+    static constexpr Matrix2x3 from_axes(const Vector2<T>& x, const Vector2<T>& y)
     {
         return {
-            x.x, y.x, 0.0f,
-            x.y, y.y, 0.0f,
+            x.x, y.x, T{0},
+            x.y, y.y, T{0},
         };
     }
 
@@ -363,7 +406,7 @@ struct Matrix2x3
      * origin/translation vector that define the transformed coordinate system (as
      * the column vectors of the matrix).
      */
-    static constexpr Matrix2x3 from_axes(const ml7::Vector2& x, const ml7::Vector2& y, const ml7::Vector2& origin)
+    static constexpr Matrix2x3 from_axes(const Vector2<T>& x, const Vector2<T>& y, const Vector2<T>& origin)
     {
         return {
             x.x, y.x, origin.x,
@@ -374,22 +417,22 @@ struct Matrix2x3
     /**
      * Initializes a scaling matrix with scaling factor s.
      */
-    static constexpr Matrix2x3 scaling(float s)
+    static constexpr Matrix2x3 scaling(T s)
     {
         return {
-            s, 0.0f, 0.0f,
-            0.0f, s, 0.0f,
+            s, T{0}, T{0},
+            T{0}, s, T{0},
         };
     }
 
     /**
      * Initializes a scaling matrix with scaling vector s.
      */
-    static constexpr Matrix2x3 scaling(const ml7::Vector2& s)
+    static constexpr Matrix2x3 scaling(const Vector2<T>& s)
     {
         return {
-            s.x, 0.0f, 0.0f,
-            0.0f, s.y, 0.0f,
+            s.x, T{0}, T{0},
+            T{0}, s.y, T{0},
         };
     }
 
@@ -397,24 +440,24 @@ struct Matrix2x3
      * Initializes a rotation matrix representing a counter-clockwise rotation by
      * a certain angle (in radians).
      */
-    static Matrix2x3 rotation(float angle)
+    static Matrix2x3 rotation(T angle)
     {
-        const float cs = std::cos(angle);
-        const float sn = std::sin(angle);
+        const T cs = std::cos(angle);
+        const T sn = std::sin(angle);
         return {
-            cs, -sn, 0.0f,
-            sn, cs, 0.0f,
+            cs, -sn, T{0},
+            sn, cs, T{0},
         };
     }
 
     /**
      * Initializes a translation matrix from the specified translation vector.
      */
-    static Matrix2x3 translation(const ml7::Vector2& translation)
+    static Matrix2x3 translation(const Vector2<T>& translation)
     {
         return {
-            1.0f, 0.0f, translation.x,
-            0.0f, 1.0f, translation.y,
+            T{1}, T{0}, translation.x,
+            T{0}, T{1}, translation.y,
         };
     }
 
@@ -422,7 +465,7 @@ struct Matrix2x3
      * Initializes a transformation matrix from the specified scaling factor, a
      * counter-clockwise rotation angle (in radians), and a translation vector.
      */
-    static Matrix2x3 compose(float scaling, float angle, const ml7::Vector2& translation)
+    static Matrix2x3 compose(T scaling, T angle, const Vector2<T>& translation)
     {
         return compose({scaling, scaling}, angle, translation);
     }
@@ -431,9 +474,32 @@ struct Matrix2x3
      * Initializes a transformation matrix from the specified scaling vector, a
      * counter-clockwise rotation angle (in radians), and a translation vector.
      */
-    static Matrix2x3 compose(const ml7::Vector2& scaling, float angle, const ml7::Vector2& translation);
+    static Matrix2x3 compose(const Vector2<T>& scaling, T angle, const Vector2<T>& translation)
+    {
+        const T sx = scaling.x;
+        const T sy = scaling.y;
+        const T cs = std::cos(angle);
+        const T sn = std::sin(angle);
+        return {
+            cs * sx,    -sn * sy,   translation.x,
+            sn * sx,    cs * sy,    translation.y,
+        };
+    }
 
 }; // struct Matrix2x3
+
+
+
+    template <std::floating_point T>
+    const Matrix2x3<T> Matrix2x3<T>::ZERO =       {T{0}, T{0}, T{0}, T{0}, T{0}, T{0}};
+    template <std::floating_point T>
+    const Matrix2x3<T> Matrix2x3<T>::IDENTITY =   {T{1}, T{0}, T{0}, T{0}, T{1}, T{0}};
+
+
+
+using Matrix2x3f = Matrix2x3<float>;
+using Matrix2x3d = Matrix2x3<double>;
+using Matrix2x3ld = Matrix2x3<long double>;
 
 
 

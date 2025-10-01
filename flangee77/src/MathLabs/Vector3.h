@@ -9,8 +9,11 @@ namespace ml7 {
 
 
 
+template <std::floating_point T>
 struct Vector3
 {
+
+    using scalar_type = T;
 
     static const Vector3 ZERO;
     static const Vector3 X;
@@ -29,16 +32,16 @@ struct Vector3
         {
             // NOLINTBEGIN(*-use-default-member-init)
             /** The vector's x value. */
-            float x;
+            T x;
             /** The vector's y value. */
-            float y;
+            T y;
             /** The vector's z value. */
-            float z;
+            T z;
             // NOLINTEND(*-use-default-member-init)
         }; // struct
 
         /** Array of all three components. */
-        float data[3];
+        T data[3];
     }; // union
 
 
@@ -51,16 +54,16 @@ struct Vector3
      * Default constructor. Initializes the vector with x = y = z = 0.
      */
     constexpr Vector3() noexcept
-        : x(0.0f)
-        , y(0.0f)
-        , z(0.0f)
+        : x(T{0})
+        , y(T{0})
+        , z(T{0})
     {
     }
 
     /**
      * Explicit constructor with parameters for x, y, and z.
      */
-    constexpr Vector3(float x, float y, float z) noexcept
+    constexpr Vector3(T x, T y, T z) noexcept
         : x(x)
         , y(y)
         , z(z)
@@ -70,7 +73,7 @@ struct Vector3
     /**
      * Explicit constructor with one parameter for x, y, and z.
      */
-    constexpr explicit Vector3(float c) noexcept
+    constexpr explicit Vector3(T c) noexcept
         : x(c)
         , y(c)
         , z(c)
@@ -80,7 +83,12 @@ struct Vector3
     /**
      * Swap operation.
      */
-    void swap(Vector3& other) noexcept;
+    void swap(Vector3& other) noexcept
+    {
+        std::swap(x, other.x);
+        std::swap(y, other.y);
+        std::swap(z, other.z);
+    }
 
 
 
@@ -89,42 +97,54 @@ struct Vector3
     // #############################################################################
 
     /** Returns the magnitude of this vector. */
-    float length() const { return std::sqrt(x*x + y*y + z*z); }
+    T length() const { return std::sqrt(x*x + y*y + z*z); }
 
     /** Returns the squared magnitude of this vector. */
-    float length_squared() const { return x*x + y*y + z*z; }
+    T length_squared() const { return x*x + y*y + z*z; }
 
     /**
      * Returns the azimuth angle of this vector in the signed range [-pi;+pi], with
      * the positive x-axis pointing east and the positive z-axis pointing north.
      */
-    float azimuth_symmetric() const;
+    T azimuth_symmetric() const
+    {
+        return std::atan2(x, z);
+    }
 
     /**
      * Returns the azimuth angle of this vector in the positive range [0;2pi], with
      * the positive x-axis pointing east and the positive z-axis pointing north.
      */
-    float azimuth_asymmetric() const;
+    T azimuth_asymmetric() const
+    {
+        T a = std::atan2(x, z);
+        if (x < T{0})
+            a += constants<T>::pi2;
+        return a;
+    }
 
     /**
      * Returns the elevation angle of this vector in the range [-pi/2;+pi/2], with
      * the positive y-axis pointing up.
      */
-    float elevation() const;
+    T elevation() const
+    {
+        return std::atan2(y, std::sqrt(x*x + z*z));
+    }
 
     /** Returns a new vector with the x component of this (y = z = 0). */
-    Vector3 x__() const { return {x, 0.0f, 0.0f}; } // NOLINT
+    Vector3 x__() const { return {x, T{0}, T{0}}; } // NOLINT
     /** Returns a new vector with the y component of this (x = z = 0). */
-    Vector3 _y_() const { return {0.0f, y, 0.0f}; }
+    Vector3 _y_() const { return {T{0}, y, T{0}}; }
     /** Returns a new vector with the y component of this (x = y = 0). */
-    Vector3 __z() const { return {0.0f, 0.0f, z}; } // NOLINT
+    Vector3 __z() const { return {T{0}, T{0}, z}; } // NOLINT
 
     /** Returns a new vector with the x and y components of this (z = 0). */
-    Vector3 xy_() const { return {x, y, 0.0f}; }
+    Vector3 xy_() const { return {x, y, T{0}}; }
     /** Returns a new vector with the x and z components of this (y = 0). */
-    Vector3 x_z() const { return {x, 0.0f, z}; }
+    Vector3 x_z() const { return {x, T{0}, z}; }
     /** Returns a new vector with the y and z components of this (x = 0). */
-    Vector3 _yz() const { return {0.0f, y, z}; }
+    Vector3 _yz() const { return {T{0}, y, z}; }
 
     /** Returns a new vector with all of its components set to the x value of this. */
     Vector3 xxx() const { return {x, x, x}; }
@@ -144,11 +164,11 @@ struct Vector3
      */
     Vector3 normalized() const
     {
-        float d = length_squared();
-        if (d == 0.0f)
+        T d = length_squared();
+        if (d == T{0})
             return ZERO; // x = y = z = 0
-        d = 1.0f / std::sqrt(d);
-        return {x*d, y*d, z*d};
+        d = T{1} / std::sqrt(d);
+        return {x * d, y * d, z * d};
     }
 
     /**
@@ -162,17 +182,17 @@ struct Vector3
     /**
      * Returns the dot/scalar product of this and a given vector v.
      */
-    float dot(const Vector3& v) const
+    T dot(const Vector3& v) const
     {
-        return x*v.x + y*v.y + z*v.z;
+        return x * v.x + y * v.y + z * v.z;
     }
 
     /**
      * Returns the squared dot/scalar product of this and a given vector v.
      */
-    float dot_squared(const Vector3& v) const
+    T dot_squared(const Vector3& v) const
     {
-        const float tmp = dot(v);
+        const T tmp = dot(v);
         return tmp*tmp;
     }
 
@@ -182,9 +202,9 @@ struct Vector3
     Vector3 cross(const Vector3& v) const
     {
         return {
-            y*v.z - z*v.y,
-            z*v.x - x*v.z,
-            x*v.y - y*v.x,
+            y * v.z - z * v.y,
+            z * v.x - x * v.z,
+            x * v.y - y * v.x,
         };
     }
 
@@ -194,7 +214,7 @@ struct Vector3
      */
     Vector3 reflected(const Vector3& n) const
     {
-        const ml7::Vector3 n2dot = n * 2.0f * dot(n);
+        const Vector3 n2dot = n * T{2} * dot(n);
         return *this - n2dot;
     }
 
@@ -202,12 +222,22 @@ struct Vector3
      * Returns this vector refracted across a plane defined by a given normal
      * vector n with respect to the specified refractive index.
      */
-    Vector3 refracted(const Vector3& n, float index) const;
+    Vector3 refracted(const Vector3& n, T index) const
+    {
+        const T t = dot(n);
+        const T r = 1 - index*index * (1 - t*t);
+
+        if (r < T{0})
+            return {};
+
+        const T s = index * t + std::sqrt(r);
+        return index * *this - s * n;
+    }
 
     /**
      * Returns the scalar projection of a given vector v onto this one.
      */
-    float comp(const Vector3& v) const
+    T comp(const Vector3& v) const
     {
         return dot(v) / length();
     }
@@ -231,7 +261,7 @@ struct Vector3
      */
     Vector3& clear()
     {
-        x = y = z = 0.0f;
+        x = y = z = T{0};
         return *this;
     }
 
@@ -258,7 +288,7 @@ struct Vector3
     /**
      * Lets this vector have a magnitude of the given length.
      */
-    Vector3& length(float length)
+    Vector3& length(T length)
     {
         normalize();
         x *= length;
@@ -280,7 +310,7 @@ struct Vector3
      * Refracts this vector across a plane defined by a given normal vector n with
      * respect to the specified refractive index.
      */
-    Vector3& refract(const Vector3& n, float index)
+    Vector3& refract(const Vector3& n, T index)
     {
         *this = refracted(n, index);
         return *this;
@@ -351,12 +381,12 @@ struct Vector3
     constexpr Vector3 operator/(const Vector3& v) const { return {x / v.x, y / v.y, z / v.z}; }
 
     /** Returns a copy of this vector scaled by the specified factor (scalar multiplication). */
-    constexpr Vector3 operator*(float s) const { return {x * s, y * s, z * s}; }
+    constexpr Vector3 operator*(T s) const { return {x * s, y * s, z * s}; }
     /** Returns a copy of this vector inversely scaled by the specified factor (scalar division). */
-    constexpr Vector3 operator/(float s) const { return {x / s, y / s, z / s}; }
+    constexpr Vector3 operator/(T s) const { return {x / s, y / s, z / s}; }
 
     /** Scales a vector by the specified factor (scalar multiplication). */
-    friend constexpr Vector3 operator*(float s, const Vector3& v) { return v * s; }
+    friend constexpr Vector3 operator*(T s, const Vector3& v) { return v * s; }
 
 
 
@@ -375,9 +405,9 @@ struct Vector3
     constexpr Vector3& operator/=(const Vector3& v) { x /= v.x; y /= v.y; z /= v.z; return *this; }
 
     /** Scales this vector by the specified factor (scalar multiplication). */
-    constexpr Vector3& operator*=(float s) { x *= s; y *= s; z *= s; return *this; }
+    constexpr Vector3& operator*=(T s) { x *= s; y *= s; z *= s; return *this; }
     /** Inversely scales this vector by the specified factor (scalar division). */
-    constexpr Vector3& operator/=(float s) { x /= s; y /= s; z /= s; return *this; }
+    constexpr Vector3& operator/=(T s) { x /= s; y /= s; z /= s; return *this; }
 
 
 
@@ -385,8 +415,8 @@ struct Vector3
     // Access Operators
     // #############################################################################
 
-    float operator[](unsigned i) const { assert(i < 3); return data[i]; }
-    float& operator[](unsigned i) { assert(i < 3); return data[i]; }
+    T operator[](unsigned i) const { assert(i < 3); return data[i]; }
+    T& operator[](unsigned i) { assert(i < 3); return data[i]; }
 
 
 
@@ -395,28 +425,49 @@ struct Vector3
     // #############################################################################
 
     /** Returns a vector having the minimum components of two given vectors. */
-    static Vector3 min2(const Vector3& a, const Vector3& b);
+    static Vector3 min2(const Vector3& a, const Vector3& b)
+    {
+        return {ml7::min2(a.x, b.x), ml7::min2(a.y, b.y), ml7::min2(a.z, b.z)};
+    }
 
     /** Returns a vector having the maximum components of two given vectors. */
-    static Vector3 max2(const Vector3& a, const Vector3& b);
+    static Vector3 max2(const Vector3& a, const Vector3& b)
+    {
+        return {ml7::max2(a.x, b.x), ml7::max2(a.y, b.y), ml7::max2(a.z, b.z)};
+    }
 
     /**
      * Performs a linear interpolation between a and b, with y = a + (b-a)x.
      */
-    static Vector3 lerp(const Vector3& a, const Vector3& b, float x);
+    static Vector3 lerp(const Vector3& a, const Vector3& b, T x)
+    {
+        return a + (b - a) * x;
+    }
 
     /**
      * Performs a cosine interpolation between a and b, with y = a + (b-a)z and
      * z = (1-cos(wx))/2, w = pi.
      */
-    static Vector3 terp(const Vector3& a, const Vector3& b, float x);
+    static Vector3 terp(const Vector3& a, const Vector3& b, T x)
+    {
+        x = (T{1} - std::cos(constants<T>::pi * x)) * T{0.5};
+        return a + (b - a) * x;
+    }
 
     /**
      * Performs a cubic interpolation between a and b (affected by a0, the point
      * "before" a, and b1, the point "after" b), with y = Px^3 + Qx^2 + Rx + S and
      * P = (b1-b)-(a0-a), Q = (a0-a)-P, R = b-a0, S = a.
      */
-    static Vector3 cerp(const Vector3& a0, const Vector3& a, const Vector3& b, const Vector3& b1, float x);
+    static Vector3 cerp(const Vector3& a0, const Vector3& a, const Vector3& b, const Vector3& b1, T x)
+    {
+        const Vector3 P = (b1 - b) - (a0 - a);
+        const Vector3 Q = (a0 - a) - P;
+        const Vector3 R = b - a0;
+        const Vector3 S = a;
+        const T x2 = x*x;
+        return P * x2*x + Q * x2 + R * x + S;
+    }
 
 
 
@@ -426,7 +477,7 @@ struct Vector3
 
     struct less
     {
-        bool operator()(const ml7::Vector3& a, const ml7::Vector3& b) const
+        bool operator()(const Vector3& a, const Vector3& b) const
         {
             if (a.x < b.x) return true;
             if (a.x > b.x) return false;
@@ -437,6 +488,23 @@ struct Vector3
     }; // struct less
 
 }; // struct Vector3
+
+
+
+    template <std::floating_point T>
+    const Vector3<T> Vector3<T>::ZERO =   {T{0}, T{0}, T{0}};
+    template <std::floating_point T>
+    const Vector3<T> Vector3<T>::X =      {T{1}, T{0}, T{0}};
+    template <std::floating_point T>
+    const Vector3<T> Vector3<T>::Y =      {T{0}, T{1}, T{0}};
+    template <std::floating_point T>
+    const Vector3<T> Vector3<T>::Z =      {T{0}, T{0}, T{1}};
+
+
+
+using Vector3f = Vector3<float>;
+using Vector3d = Vector3<double>;
+using Vector3ld = Vector3<long double>;
 
 
 

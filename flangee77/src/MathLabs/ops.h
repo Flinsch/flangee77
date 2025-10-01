@@ -36,8 +36,8 @@ namespace ml7::ops {
             requires(std::is_arithmetic_v<T>)
         constexpr T operator()(T x)
         {
-            if (x <= T(0)) return T(0);
-            if (x >= T(1)) return T(1);
+            if (x <= T{0}) return T{0};
+            if (x >= T{1}) return T{1};
             return x;
         }
     };
@@ -54,7 +54,7 @@ namespace ml7::ops {
         constexpr T operator()(T x)
         {
             if (x <= start)
-                return T(0);
+                return T{0};
             return (x - start) * slope;
         }
     };
@@ -69,8 +69,8 @@ namespace ml7::ops {
             requires(std::is_arithmetic_v<T>)
         constexpr T operator()(T x)
         {
-            if (x <= T(0))
-                return T(0);
+            if (x <= T{0})
+                return T{0};
             return x;
         }
     };
