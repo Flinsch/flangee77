@@ -1,8 +1,12 @@
 var searchData=
 [
-  ['reference_0',['reference',['../d1/d5d/classcl7_1_1contiguous__iterator.html#a1908d0928db0232706f43257ef730b29',1,'cl7::contiguous_iterator::reference'],['../d2/d93/classcl7_1_1const__ptr__forward__iterator.html#a6d78f8393b065e6d6f1747b697dc843c',1,'cl7::const_ptr_forward_iterator::reference'],['../dd/d42/classcl7_1_1ordered__map.html#a3abe87ddf42aec389473907ffc16977c',1,'cl7::ordered_map::reference'],['../da/d4e/classcl7_1_1static__vector.html#a4c34476c25eb33074270d0e45e2c24ab',1,'cl7::static_vector::reference'],['../d0/d50/classcl7_1_1strings_1_1codec_1_1Decoder_1_1iterator.html#ad59ff705cfc4ca5fc4448ecf50d07199',1,'cl7::strings::codec::Decoder::iterator::reference']]],
-  ['resourcemanagerptr_1',['ResourceManagerPtr',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#afa984ffd4400e8377079614b55837413',1,'xl7::graphics::RenderingDevice']]],
-  ['resourceptr_2',['ResourcePtr',['../d3/d00/classxl7_1_1resources_1_1ResourceManager.html#aeff5712fa4edcf49d69a95b13c1381d1',1,'xl7::resources::ResourceManager']]],
-  ['result_5ftype_3',['result_type',['../dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html#a8f85c6e3373da491f9f227209adde5f3',1,'dl7::syntax::AstProcessor']]],
-  ['reverse_5fiterator_4',['reverse_iterator',['../dd/d42/classcl7_1_1ordered__map.html#af52625ad1ed955c4ed41a8c6fbf1952a',1,'cl7::ordered_map::reverse_iterator'],['../da/d4e/classcl7_1_1static__vector.html#a08aff61687e6c886fff8c7f816795d24',1,'cl7::static_vector::reverse_iterator']]]
+  ['quadraticbezier2d_0',['QuadraticBezier2d',['../d3/d53/namespaceml7.html#a0a2c6d113e68e06d3edae4c51c16ea91',1,'ml7']]],
+  ['quadraticbezier2f_1',['QuadraticBezier2f',['../d3/d53/namespaceml7.html#a567afb3910c95c1e9525482f478fa043',1,'ml7']]],
+  ['quadraticbezier2ld_2',['QuadraticBezier2ld',['../d3/d53/namespaceml7.html#ad0525c61e338e9f0fe302baa4ac35cbd',1,'ml7']]],
+  ['quadraticbezier3d_3',['QuadraticBezier3d',['../d3/d53/namespaceml7.html#a3b893701560fd8d9f736e77ea579b2f6',1,'ml7']]],
+  ['quadraticbezier3f_4',['QuadraticBezier3f',['../d3/d53/namespaceml7.html#a20bace1d305cc2cdfd4741119ebcbd69',1,'ml7']]],
+  ['quadraticbezier3ld_5',['QuadraticBezier3ld',['../d3/d53/namespaceml7.html#a33102167671aa922e672d62d5384d5a6',1,'ml7']]],
+  ['quaterniond_6',['QuaternionD',['../d3/d53/namespaceml7.html#ad07728c18f654959678fe13335e936a2',1,'ml7']]],
+  ['quaternionf_7',['QuaternionF',['../d3/d53/namespaceml7.html#a3420e619a03ace3e70425f80949b587f',1,'ml7']]],
+  ['quaternionld_8',['QuaternionLD',['../d3/d53/namespaceml7.html#a159766b1e82a3be7a99b69c409e3c268',1,'ml7']]]
 ];

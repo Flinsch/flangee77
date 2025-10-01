@@ -138,8 +138,8 @@ $(document).ready(function(){initNavTree('de/d00/ops_8h_source.html','../../'); 
 <div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="../../d0/d5c/structml7_1_1ops_1_1clamp01.html#a79af689372c5083fc0618ed73e244ee2">   37</a></span>        <span class="keyword">constexpr</span> T <span class="keyword">operator</span>()(T x)</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keywordflow">if</span> (x &lt;= T(0)) <span class="keywordflow">return</span> T(0);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keywordflow">if</span> (x &gt;= T(1)) <span class="keywordflow">return</span> T(1);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keywordflow">if</span> (x &lt;= T{0}) <span class="keywordflow">return</span> T{0};</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keywordflow">if</span> (x &gt;= T{1}) <span class="keywordflow">return</span> T{1};</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="keywordflow">return</span> x;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        }</div>
 </div>
@@ -157,7 +157,7 @@ $(document).ready(function(){initNavTree('de/d00/ops_8h_source.html','../../'); 
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="../../de/dcb/structml7_1_1ops_1_1ramp.html#a88181489e6bb12b4c72dbf2eb0ed432c">   54</a></span>        <span class="keyword">constexpr</span> T <span class="keyword">operator</span>()(T x)</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        {</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">if</span> (x &lt;= start)</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                <span class="keywordflow">return</span> T(0);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                <span class="keywordflow">return</span> T{0};</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keywordflow">return</span> (x - start) * slope;</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        }</div>
 </div>
@@ -173,8 +173,8 @@ $(document).ready(function(){initNavTree('de/d00/ops_8h_source.html','../../'); 
 <div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="../../da/d35/structml7_1_1ops_1_1ramp_3_010_00_011_01_4.html#aa0918285ec7bc2885fa2c0d82d14e854">   70</a></span>        <span class="keyword">constexpr</span> T <span class="keyword">operator</span>()(T x)</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="keywordflow">if</span> (x &lt;= T(0))</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                <span class="keywordflow">return</span> T(0);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="keywordflow">if</span> (x &lt;= T{0})</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                <span class="keywordflow">return</span> T{0};</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="keywordflow">return</span> x;</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        }</div>
 </div>

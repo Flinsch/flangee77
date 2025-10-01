@@ -14,5 +14,5 @@ var searchData=
   ['hash_5fcombine_11',['hash_combine',['../d9/df1/namespacecl7_1_1bits.html#afffbac010a38d5358be891018db0ffc6',1,'cl7::bits']]],
   ['hide_5fwindow_12',['hide_window',['../da/df2/classxl7_1_1MainWindow.html#a67ebc57435ae99125a3958bac1cedb25',1,'xl7::MainWindow']]],
   ['htmlloghandler_13',['htmlloghandler',['../d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html#a4991dc13bda279bfaaaf549f87660eff',1,'cl7::logging::HtmlLogHandler::HtmlLogHandler()'],['../d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html#a718853e52024a19383e2e81dcce7424e',1,'cl7::logging::HtmlLogHandler::HtmlLogHandler(const HtmlLogHandler &amp;)=delete'],['../d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html#ad5e424a7e8a1311a0beb373c95c04c7d',1,'cl7::logging::HtmlLogHandler::HtmlLogHandler(HtmlLogHandler &amp;&amp;)=delete']]],
-  ['hue_14',['hue',['../d7/dea/structml7_1_1Matrix4x4.html#aa908bb073ee448ee37db91f228a1216c',1,'ml7::Matrix4x4::hue(float r)'],['../d7/dea/structml7_1_1Matrix4x4.html#a65e8229a47a034162c9e3947bf79ec36',1,'ml7::Matrix4x4::hue(float r, const ml7::Vector3 &amp;l)']]]
+  ['hue_14',['hue',['../d7/dea/structml7_1_1Matrix4x4.html#af305fdec270c68c3706c0404fa0c8a21',1,'ml7::Matrix4x4::hue(T r)'],['../d7/dea/structml7_1_1Matrix4x4.html#ac5c04477f5e0e9b15dd7be9186108a82',1,'ml7::Matrix4x4::hue(T r, const Vector3&lt; T &gt; &amp;l)']]]
 ];

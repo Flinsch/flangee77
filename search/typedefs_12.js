@@ -1,5 +1,14 @@
 var searchData=
 [
-  ['wisstream_0',['wisstream',['../d1/d2e/namespacecl7.html#a66b3f7e3de4ec23e6f0ea6b9c1b33899',1,'cl7']]],
-  ['wosstream_1',['wosstream',['../d1/d2e/namespacecl7.html#a88069306694d6b5b47cf47582b4d597e',1,'cl7']]]
+  ['value_5ftype_0',['value_type',['../d2/d93/classcl7_1_1const__ptr__forward__iterator.html#a5c733e0b4457cee775cf42ad699c7cd9',1,'cl7::const_ptr_forward_iterator::value_type'],['../dd/d42/classcl7_1_1ordered__map.html#af772f8e01cd55698cdf1fa4d40694985',1,'cl7::ordered_map::value_type'],['../da/d4e/classcl7_1_1static__vector.html#afad42b10299fe1e9f72512ff204e0f81',1,'cl7::static_vector::value_type'],['../d8/d57/structcl7_1_1strings_1_1codec_1_1codepoint.html#a99c8fb9c8e2f721f7165ecbc470f81c3',1,'cl7::strings::codec::codepoint::value_type'],['../d0/d50/classcl7_1_1strings_1_1codec_1_1Decoder_1_1iterator.html#af54378e0a441bd0b46c616d66ff155b7',1,'cl7::strings::codec::Decoder::iterator::value_type'],['../d1/d5d/classcl7_1_1contiguous__iterator.html#ac3852179311a8e02aa40b0746ed7f840',1,'cl7::contiguous_iterator::value_type']]],
+  ['vector2d_1',['Vector2d',['../d3/d53/namespaceml7.html#abad41322b22d8a754ab4e9b04ee57541',1,'ml7']]],
+  ['vector2f_2',['Vector2f',['../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1',1,'ml7']]],
+  ['vector2ld_3',['Vector2ld',['../d3/d53/namespaceml7.html#af5f87163131e4bfbcfaf6d11959c7bf4',1,'ml7']]],
+  ['vector3d_4',['Vector3d',['../d3/d53/namespaceml7.html#af41390ef4a5b92484746dfabb56704ce',1,'ml7']]],
+  ['vector3f_5',['Vector3f',['../d3/d53/namespaceml7.html#a6ba54c1af1c27eee9644d03deed5e6cb',1,'ml7']]],
+  ['vector3ld_6',['Vector3ld',['../d3/d53/namespaceml7.html#ae0102357476dfe01bc3d4d5b3c854d2b',1,'ml7']]],
+  ['vector4d_7',['Vector4d',['../d3/d53/namespaceml7.html#a004bca2c82c0d1c74107e3791a380995',1,'ml7']]],
+  ['vector4f_8',['Vector4f',['../d3/d53/namespaceml7.html#a52bb124380b78caf23fb91f06efe13e0',1,'ml7']]],
+  ['vector4ld_9',['Vector4ld',['../d3/d53/namespaceml7.html#a3e61b2690c6d4c569263cb928f0b3329',1,'ml7']]],
+  ['vector_5ftype_10',['vector_type',['../dc/def/structml7_1_1Ray2.html#ad73a147a88862bd482515125ac27a302',1,'ml7::Ray2::vector_type'],['../d3/d71/structml7_1_1Ray3.html#a093efb5d9cea164ad807a7627c4234ee',1,'ml7::Ray3::vector_type'],['../db/da4/structml7_1_1QuadraticBezier3.html#ad4bbfd19728780ec2619999f39c1e6e9',1,'ml7::QuadraticBezier3::vector_type'],['../dc/d23/structml7_1_1QuadraticBezier2.html#abc76c1cf051937f0c1b8c376652f5e01',1,'ml7::QuadraticBezier2::vector_type'],['../d5/d85/structml7_1_1LineSegment3.html#a49a577f39c43469af99c6f036911fdf4',1,'ml7::LineSegment3::vector_type'],['../d8/d86/structml7_1_1LineSegment2.html#a8cf5bf57c5e705a52e2602a28ad2a90c',1,'ml7::LineSegment2::vector_type'],['../d6/dd2/structml7_1_1Line3.html#a007cbb7146ff58b36e9fa08f43ae41e9',1,'ml7::Line3::vector_type'],['../d1/dfc/structml7_1_1Line2.html#ad1881f8ec8a45075e88c569fc3301ea4',1,'ml7::Line2::vector_type'],['../d1/d7d/structml7_1_1CubicBezier3.html#a06711624c8c3f4b04c37ae4a2df31eb7',1,'ml7::CubicBezier3::vector_type'],['../db/d5c/structml7_1_1CubicBezier2.html#a67d3d3f5b9ad100168b55cd25cc5a9d7',1,'ml7::CubicBezier2::vector_type'],['../dd/d42/classcl7_1_1ordered__map.html#add57afe33e822afebdfcf0103bfd6a38',1,'cl7::ordered_map::vector_type']]]
 ];

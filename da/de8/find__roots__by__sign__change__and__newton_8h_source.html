@@ -113,38 +113,38 @@ $(document).ready(function(){initNavTree('da/de8/find__roots__by__sign__change__
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tfunction, <span class="keyword">typename</span> Tderivative&gt;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">requires</span>(std::invocable&lt;Tfunction, float&gt; &amp;&amp; std::invocable&lt;Tderivative, float&gt; &amp;&amp; <span class="keyword">requires</span>(<span class="keyword">const</span> Tfunction&amp; f, <span class="keyword">const</span> Tderivative&amp; df)</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tfunction, <span class="keyword">typename</span> Tderivative, std::<span class="keywordtype">float</span>ing_po<span class="keywordtype">int</span> T&gt;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">requires</span>(std::invocable&lt;Tfunction, T&gt; &amp;&amp; std::invocable&lt;Tderivative, T&gt; &amp;&amp; <span class="keyword">requires</span>(<span class="keyword">const</span> Tfunction&amp; f, <span class="keyword">const</span> Tderivative&amp; df)</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        { f(0.0f) } -&gt; std::convertible_to&lt;float&gt;;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        { df(0.0f) } -&gt; std::convertible_to&lt;float&gt;;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        { f(T{0}) } -&gt; std::convertible_to&lt;T&gt;;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        { df(T{0}) } -&gt; std::convertible_to&lt;T&gt;;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    })</div>
 <div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="../../dc/dfa/namespaceml7_1_1algorithm.html#aed34960cebaa03c099155a971644438a">   30</a></span>    std::vector&lt;float&gt; <a class="code hl_function" href="../../dc/dfa/namespaceml7_1_1algorithm.html#aed34960cebaa03c099155a971644438a">find_roots_by_sign_change_and_newton</a>(<span class="keyword">const</span> Tfunction&amp; f, <span class="keyword">const</span> Tderivative&amp; df, <span class="keywordtype">float</span> lower_bound, <span class="keywordtype">float</span> upper_bound, <span class="keywordtype">unsigned</span> subdivisions = 1000, <span class="keywordtype">unsigned</span> max_iterations = 20, <span class="keywordtype">float</span> convergence_tolerance = 1e-5f, <span class="keywordtype">float</span> merge_tolerance = 1e-5f)</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="../../dc/dfa/namespaceml7_1_1algorithm.html#af7375afb642afb0c41d18abf3473ec4a">   30</a></span>    std::vector&lt;T&gt; <a class="code hl_function" href="../../dc/dfa/namespaceml7_1_1algorithm.html#af7375afb642afb0c41d18abf3473ec4a">find_roots_by_sign_change_and_newton</a>(<span class="keyword">const</span> Tfunction&amp; f, <span class="keyword">const</span> Tderivative&amp; df, T lower_bound, T upper_bound, <span class="keywordtype">unsigned</span> subdivisions = 1000, <span class="keywordtype">unsigned</span> max_iterations = 20, T convergence_tolerance = T{1e-5}, T merge_tolerance = T{1e-5})</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        std::vector&lt;float&gt; roots;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        std::vector&lt;T&gt; roots;</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordflow">if</span> (upper_bound &lt;= lower_bound || subdivisions == 0)</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <span class="keywordflow">return</span> roots;</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_function" href="../../d3/d53/namespaceml7.html#aba991d5201624ca3766135e88f9847f2">step</a> = (upper_bound - lower_bound) / <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(subdivisions);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">const</span> T <a class="code hl_function" href="../../d3/d53/namespaceml7.html#aba991d5201624ca3766135e88f9847f2">step</a> = (upper_bound - lower_bound) / <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(subdivisions);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="comment">// Step 1: Sign change detection</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> k = 0; k &lt; subdivisions; ++k)</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> x0 = lower_bound + <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(k) * <a class="code hl_function" href="../../d3/d53/namespaceml7.html#aba991d5201624ca3766135e88f9847f2">step</a>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> x1 = x0 + <a class="code hl_function" href="../../d3/d53/namespaceml7.html#aba991d5201624ca3766135e88f9847f2">step</a>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> f0 = f(x0);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> f1 = f(x1);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keyword">const</span> T x0 = lower_bound + <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(k) * <a class="code hl_function" href="../../d3/d53/namespaceml7.html#aba991d5201624ca3766135e88f9847f2">step</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keyword">const</span> T x1 = x0 + <a class="code hl_function" href="../../d3/d53/namespaceml7.html#aba991d5201624ca3766135e88f9847f2">step</a>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keyword">const</span> T f0 = f(x0);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keyword">const</span> T f1 = f(x1);</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordtype">float</span> x; <span class="comment">// This will be our root value, if found, later.</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            T x; <span class="comment">// This will be our root value, if found, later.</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <span class="comment">// Sign change detected?</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keyword">const</span> <span class="keywordtype">bool</span> sign_change = std::signbit(f0) != std::signbit(f1);</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordflow">if</span> (sign_change)</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            {</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                <span class="comment">// Take the midpoint as initial guess.</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                <span class="comment">//x = (x0 + x1) * 0.5f;</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                <span class="comment">//x = (x0 + x1) * T{0.5};</span></div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                <span class="comment">// No, interpret this subdivision as a</span></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                <span class="comment">// straight line and take its 0-intercept.</span></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                <span class="comment">// y = ax + b</span></div>
@@ -159,9 +159,9 @@ $(document).ready(function(){initNavTree('da/de8/find__roots__by__sign__change__
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <span class="comment">// Otherwise, see if either point is close to 0</span></div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="comment">// and then take that one as initial guess.</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (std::abs(f0) &lt; std::numeric_limits&lt;float&gt;::epsilon())</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (std::abs(f0) &lt; std::numeric_limits&lt;T&gt;::epsilon())</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                x = x0;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (std::abs(f1) &lt; std::numeric_limits&lt;float&gt;::epsilon())</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (std::abs(f1) &lt; std::numeric_limits&lt;T&gt;::epsilon())</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                x = x1;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="comment">// No? Then there is no candidate here.</span></div>
@@ -172,23 +172,23 @@ $(document).ready(function(){initNavTree('da/de8/find__roots__by__sign__change__
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordtype">bool</span> converged = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; max_iterations; ++i)</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            {</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                <span class="keyword">const</span> <span class="keywordtype">float</span> fx = f(x);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                <span class="keyword">const</span> <span class="keywordtype">float</span> dfx = df(x);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                <span class="keyword">const</span> T fx = f(x);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                <span class="keyword">const</span> T dfx = df(x);</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                <span class="comment">// Avoid division by near-zero derivative.</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                <span class="keywordflow">if</span> (std::abs(dfx) &lt; std::numeric_limits&lt;float&gt;::epsilon())</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                <span class="keywordflow">if</span> (std::abs(dfx) &lt; std::numeric_limits&lt;T&gt;::epsilon())</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                {</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                    <span class="comment">// But wait! What if we found a root right here?</span></div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                    <span class="comment">// But then we have to make sure that the subdivision is</span></div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                    <span class="comment">// not a straight line that lies &quot;exactly&quot; on the x-axis.</span></div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                    <span class="comment">// Otherwise we might get too many apparent roots</span></div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                    <span class="comment">// for a whole series (possibly all) subdivisions.</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                    <span class="keywordflow">if</span> (std::abs(fx) &lt;= std::numeric_limits&lt;float&gt;::min() &amp;&amp; std::max(std::abs(df(x0)), std::abs(df(x1))) &gt;= std::numeric_limits&lt;float&gt;::min())</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                    <span class="keywordflow">if</span> (std::abs(fx) &lt;= std::numeric_limits&lt;T&gt;::min() &amp;&amp; std::max(std::abs(df(x0)), std::abs(df(x1))) &gt;= std::numeric_limits&lt;T&gt;::min())</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                        converged = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                }</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                <span class="keyword">const</span> <span class="keywordtype">float</span> dx = fx / dfx;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                <span class="keyword">const</span> T dx = fx / dfx;</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                x -= dx;</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                <span class="keywordflow">if</span> (std::abs(dx) &lt;= convergence_tolerance)</div>
@@ -214,7 +214,7 @@ $(document).ready(function(){initNavTree('da/de8/find__roots__by__sign__change__
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        } <span class="comment">// for each subdivision</span></div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="comment">// Merge nearby roots.</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <a class="code hl_function" href="../../dc/dfa/namespaceml7_1_1algorithm.html#ad640ff56c52e3320c789b6edc710d31a">merge_nearby</a>(roots, merge_tolerance);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <a class="code hl_function" href="../../dc/dfa/namespaceml7_1_1algorithm.html#a57832a5eb567e73211df025d28214218">merge_nearby</a>(roots, merge_tolerance);</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordflow">return</span> roots;</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    }</div>
@@ -226,10 +226,10 @@ $(document).ready(function(){initNavTree('da/de8/find__roots__by__sign__change__
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="preprocessor">#endif </span><span class="comment">// ML7_ALGORITHM_FINDROOTSBYSIGNCHANGEANDNEWTON_H</span></div>
 <div class="ttc" id="amerge__nearby_8h_html"><div class="ttname"><a href="../../de/dbd/merge__nearby_8h.html">merge_nearby.h</a></div></div>
-<div class="ttc" id="anamespaceml7_1_1algorithm_html"><div class="ttname"><a href="../../dc/dfa/namespaceml7_1_1algorithm.html">ml7::algorithm</a></div><div class="ttdef"><b>Definition</b> find_cubic_roots.cpp:13</div></div>
-<div class="ttc" id="anamespaceml7_1_1algorithm_html_ad640ff56c52e3320c789b6edc710d31a"><div class="ttname"><a href="../../dc/dfa/namespaceml7_1_1algorithm.html#ad640ff56c52e3320c789b6edc710d31a">ml7::algorithm::merge_nearby</a></div><div class="ttdeci">void merge_nearby(std::vector&lt; float &gt; &amp;values, float tolerance)</div><div class="ttdef"><b>Definition</b> merge_nearby.h:22</div></div>
-<div class="ttc" id="anamespaceml7_1_1algorithm_html_aed34960cebaa03c099155a971644438a"><div class="ttname"><a href="../../dc/dfa/namespaceml7_1_1algorithm.html#aed34960cebaa03c099155a971644438a">ml7::algorithm::find_roots_by_sign_change_and_newton</a></div><div class="ttdeci">std::vector&lt; float &gt; find_roots_by_sign_change_and_newton(const Tfunction &amp;f, const Tderivative &amp;df, float lower_bound, float upper_bound, unsigned subdivisions=1000, unsigned max_iterations=20, float convergence_tolerance=1e-5f, float merge_tolerance=1e-5f)</div><div class="ttdef"><b>Definition</b> find_roots_by_sign_change_and_newton.h:30</div></div>
-<div class="ttc" id="anamespaceml7_html_aba991d5201624ca3766135e88f9847f2"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#aba991d5201624ca3766135e88f9847f2">ml7::step</a></div><div class="ttdeci">constexpr T step(T x, T edge)</div><div class="ttdef"><b>Definition</b> functions.h:142</div></div>
+<div class="ttc" id="anamespaceml7_1_1algorithm_html"><div class="ttname"><a href="../../dc/dfa/namespaceml7_1_1algorithm.html">ml7::algorithm</a></div><div class="ttdef"><b>Definition</b> find_cubic_roots.cpp:5</div></div>
+<div class="ttc" id="anamespaceml7_1_1algorithm_html_a57832a5eb567e73211df025d28214218"><div class="ttname"><a href="../../dc/dfa/namespaceml7_1_1algorithm.html#a57832a5eb567e73211df025d28214218">ml7::algorithm::merge_nearby</a></div><div class="ttdeci">template void merge_nearby(std::vector&lt; float &gt; &amp;values, float tolerance)</div></div>
+<div class="ttc" id="anamespaceml7_1_1algorithm_html_af7375afb642afb0c41d18abf3473ec4a"><div class="ttname"><a href="../../dc/dfa/namespaceml7_1_1algorithm.html#af7375afb642afb0c41d18abf3473ec4a">ml7::algorithm::find_roots_by_sign_change_and_newton</a></div><div class="ttdeci">std::vector&lt; T &gt; find_roots_by_sign_change_and_newton(const Tfunction &amp;f, const Tderivative &amp;df, T lower_bound, T upper_bound, unsigned subdivisions=1000, unsigned max_iterations=20, T convergence_tolerance=T{1e-5}, T merge_tolerance=T{1e-5})</div><div class="ttdef"><b>Definition</b> find_roots_by_sign_change_and_newton.h:30</div></div>
+<div class="ttc" id="anamespaceml7_html_aba991d5201624ca3766135e88f9847f2"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#aba991d5201624ca3766135e88f9847f2">ml7::step</a></div><div class="ttdeci">constexpr T step(T x, T edge)</div><div class="ttdef"><b>Definition</b> functions.h:143</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

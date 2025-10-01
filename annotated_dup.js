@@ -176,6 +176,14 @@ var annotated_dup =
       ] ]
     ] ],
     [ "ml7", "d3/d53/namespaceml7.html", [
+      [ "detail", "df/d63/namespaceml7_1_1detail.html", [
+        [ "distance", "d0/d69/namespaceml7_1_1detail_1_1distance.html", [
+          [ "PointResult", "db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html", "db/de1/structml7_1_1detail_1_1distance_1_1PointResult" ],
+          [ "PointResult_distance_squared", "de/dd3/structml7_1_1detail_1_1distance_1_1PointResult__distance__squared.html", "de/dd3/structml7_1_1detail_1_1distance_1_1PointResult__distance__squared" ],
+          [ "PointResult_point", "d5/d92/structml7_1_1detail_1_1distance_1_1PointResult__point.html", "d5/d92/structml7_1_1detail_1_1distance_1_1PointResult__point" ],
+          [ "PointResult_t", "db/df0/structml7_1_1detail_1_1distance_1_1PointResult__t.html", "db/df0/structml7_1_1detail_1_1distance_1_1PointResult__t" ]
+        ] ]
+      ] ],
       [ "distance2", "db/d4f/namespaceml7_1_1distance2.html", [
         [ "PointResult", "d6/df6/structml7_1_1distance2_1_1PointResult.html", "d6/df6/structml7_1_1distance2_1_1PointResult" ],
         [ "ResultBase", "de/d3e/structml7_1_1distance2_1_1ResultBase.html", "de/d3e/structml7_1_1distance2_1_1ResultBase" ]
@@ -191,7 +199,7 @@ var annotated_dup =
         [ "ramp< 0, 1 >", "da/d35/structml7_1_1ops_1_1ramp_3_010_00_011_01_4.html", "da/d35/structml7_1_1ops_1_1ramp_3_010_00_011_01_4" ]
       ] ],
       [ "Angle", "d4/d9d/structml7_1_1Angle.html", "d4/d9d/structml7_1_1Angle" ],
-      [ "constants_", "da/df2/structml7_1_1constants__.html", "da/df2/structml7_1_1constants__" ],
+      [ "constants", "d6/d9f/structml7_1_1constants.html", "d6/d9f/structml7_1_1constants" ],
       [ "CubicBezier2", "db/d5c/structml7_1_1CubicBezier2.html", "db/d5c/structml7_1_1CubicBezier2" ],
       [ "CubicBezier3", "d1/d7d/structml7_1_1CubicBezier3.html", "d1/d7d/structml7_1_1CubicBezier3" ],
       [ "Line2", "d1/dfc/structml7_1_1Line2.html", "d1/dfc/structml7_1_1Line2" ],

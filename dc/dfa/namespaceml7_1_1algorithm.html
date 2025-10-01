@@ -99,26 +99,81 @@ $(document).ready(function(){initNavTree('dc/dfa/namespaceml7_1_1algorithm.html'
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac77e7f4ee30043dacc9ea0ac89133468" id="r_ac77e7f4ee30043dacc9ea0ac89133468"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; float, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#ac77e7f4ee30043dacc9ea0ac89133468">find_cubic_roots</a> (float a, float b, float c, float d)</td></tr>
-<tr class="separator:ac77e7f4ee30043dacc9ea0ac89133468"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb371cfa22e5a93b72c9af7e2fc35d9a" id="r_adb371cfa22e5a93b72c9af7e2fc35d9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; float, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#adb371cfa22e5a93b72c9af7e2fc35d9a">find_quadratic_roots</a> (float a, float b, float c)</td></tr>
-<tr class="separator:adb371cfa22e5a93b72c9af7e2fc35d9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed34960cebaa03c099155a971644438a" id="r_aed34960cebaa03c099155a971644438a"><td class="memTemplParams" colspan="2">template&lt;typename Tfunction , typename Tderivative &gt; <br />
-requires (std::invocable&lt;Tfunction, float&gt; &amp;&amp; std::invocable&lt;Tderivative, float&gt; &amp;&amp; requires(const Tfunction&amp; f, const Tderivative&amp; df) { { f(0.0f) } -&gt; std::convertible_to&lt;float&gt;; { df(0.0f) } -&gt; std::convertible_to&lt;float&gt;; })</td></tr>
-<tr class="memitem:aed34960cebaa03c099155a971644438a"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#aed34960cebaa03c099155a971644438a">find_roots_by_sign_change_and_newton</a> (const Tfunction &amp;f, const Tderivative &amp;df, float lower_bound, float upper_bound, unsigned subdivisions=1000, unsigned max_iterations=20, float convergence_tolerance=1e-5f, float merge_tolerance=1e-5f)</td></tr>
-<tr class="separator:aed34960cebaa03c099155a971644438a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad640ff56c52e3320c789b6edc710d31a" id="r_ad640ff56c52e3320c789b6edc710d31a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#ad640ff56c52e3320c789b6edc710d31a">merge_nearby</a> (std::vector&lt; float &gt; &amp;values, float tolerance)</td></tr>
-<tr class="separator:ad640ff56c52e3320c789b6edc710d31a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc9b8b0ebcbc11238e452ebf12050833" id="r_acc9b8b0ebcbc11238e452ebf12050833"><td class="memItemLeft" align="right" valign="top">template <a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; float, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#acc9b8b0ebcbc11238e452ebf12050833">find_cubic_roots</a> (float a, float b, float c, float d)</td></tr>
+<tr class="separator:acc9b8b0ebcbc11238e452ebf12050833"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1f86b5ced9c7ec09a20199d34b8d085" id="r_af1f86b5ced9c7ec09a20199d34b8d085"><td class="memItemLeft" align="right" valign="top">template <a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#af1f86b5ced9c7ec09a20199d34b8d085">find_cubic_roots</a> (double a, double b, double c, double d)</td></tr>
+<tr class="separator:af1f86b5ced9c7ec09a20199d34b8d085"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a241596093652a285e9d2b17a93af44cd" id="r_a241596093652a285e9d2b17a93af44cd"><td class="memTemplParams" colspan="2">template&lt;std::floating_point T&gt; </td></tr>
+<tr class="memitem:a241596093652a285e9d2b17a93af44cd"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; T, 3 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#a241596093652a285e9d2b17a93af44cd">find_cubic_roots</a> (T a, T b, T c, T d)</td></tr>
+<tr class="separator:a241596093652a285e9d2b17a93af44cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7df32cacecf06d4d61a3bd22e5c2b02c" id="r_a7df32cacecf06d4d61a3bd22e5c2b02c"><td class="memItemLeft" align="right" valign="top">template <a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; float, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#a7df32cacecf06d4d61a3bd22e5c2b02c">find_quadratic_roots</a> (float a, float b, float c)</td></tr>
+<tr class="separator:a7df32cacecf06d4d61a3bd22e5c2b02c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa06a85536a27b03535957b697b6e27b5" id="r_aa06a85536a27b03535957b697b6e27b5"><td class="memItemLeft" align="right" valign="top">template <a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; double, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#aa06a85536a27b03535957b697b6e27b5">find_quadratic_roots</a> (double a, double b, double c)</td></tr>
+<tr class="separator:aa06a85536a27b03535957b697b6e27b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af427aa6b4b7b8a1af5c206a2e221e5c8" id="r_af427aa6b4b7b8a1af5c206a2e221e5c8"><td class="memTemplParams" colspan="2">template&lt;std::floating_point T&gt; </td></tr>
+<tr class="memitem:af427aa6b4b7b8a1af5c206a2e221e5c8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; T, 2 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#af427aa6b4b7b8a1af5c206a2e221e5c8">find_quadratic_roots</a> (T a, T b, T c)</td></tr>
+<tr class="separator:af427aa6b4b7b8a1af5c206a2e221e5c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7375afb642afb0c41d18abf3473ec4a" id="r_af7375afb642afb0c41d18abf3473ec4a"><td class="memTemplParams" colspan="2">template&lt;typename Tfunction , typename Tderivative , std::floating_point T&gt; <br />
+requires (std::invocable&lt;Tfunction, T&gt; &amp;&amp; std::invocable&lt;Tderivative, T&gt; &amp;&amp; requires(const Tfunction&amp; f, const Tderivative&amp; df) { { f(T{0}) } -&gt; std::convertible_to&lt;T&gt;; { df(T{0}) } -&gt; std::convertible_to&lt;T&gt;; })</td></tr>
+<tr class="memitem:af7375afb642afb0c41d18abf3473ec4a"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#af7375afb642afb0c41d18abf3473ec4a">find_roots_by_sign_change_and_newton</a> (const Tfunction &amp;f, const Tderivative &amp;df, T lower_bound, T upper_bound, unsigned subdivisions=1000, unsigned max_iterations=20, T convergence_tolerance=T{1e-5}, T merge_tolerance=T{1e-5})</td></tr>
+<tr class="separator:af7375afb642afb0c41d18abf3473ec4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57832a5eb567e73211df025d28214218" id="r_a57832a5eb567e73211df025d28214218"><td class="memItemLeft" align="right" valign="top">template void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#a57832a5eb567e73211df025d28214218">merge_nearby</a> (std::vector&lt; float &gt; &amp;values, float tolerance)</td></tr>
+<tr class="separator:a57832a5eb567e73211df025d28214218"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc3d07a05d43fbb492907cfed9f9fc71" id="r_abc3d07a05d43fbb492907cfed9f9fc71"><td class="memItemLeft" align="right" valign="top">template void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#abc3d07a05d43fbb492907cfed9f9fc71">merge_nearby</a> (std::vector&lt; double &gt; &amp;values, double tolerance)</td></tr>
+<tr class="separator:abc3d07a05d43fbb492907cfed9f9fc71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9a47dc47eca878fe99fcec11ba9e3da" id="r_af9a47dc47eca878fe99fcec11ba9e3da"><td class="memTemplParams" colspan="2">template&lt;std::floating_point T&gt; </td></tr>
+<tr class="memitem:af9a47dc47eca878fe99fcec11ba9e3da"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/dfa/namespaceml7_1_1algorithm.html#af9a47dc47eca878fe99fcec11ba9e3da">merge_nearby</a> (std::vector&lt; T &gt; &amp;values, T tolerance)</td></tr>
+<tr class="separator:af9a47dc47eca878fe99fcec11ba9e3da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ac77e7f4ee30043dacc9ea0ac89133468" name="ac77e7f4ee30043dacc9ea0ac89133468"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac77e7f4ee30043dacc9ea0ac89133468">&#9670;&#160;</a></span>find_cubic_roots()</h2>
+<a id="af1f86b5ced9c7ec09a20199d34b8d085" name="af1f86b5ced9c7ec09a20199d34b8d085"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1f86b5ced9c7ec09a20199d34b8d085">&#9670;&#160;</a></span>find_cubic_roots() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; float, 3 &gt; ml7::algorithm::find_cubic_roots </td>
+          <td class="memname">template <a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; double, 3 &gt; ml7::algorithm::find_cubic_roots </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acc9b8b0ebcbc11238e452ebf12050833" name="acc9b8b0ebcbc11238e452ebf12050833"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc9b8b0ebcbc11238e452ebf12050833">&#9670;&#160;</a></span>find_cubic_roots() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template <a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; float, 3 &gt; ml7::algorithm::find_cubic_roots </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>a</em>, </td>
@@ -148,18 +203,94 @@ requires (std::invocable&lt;Tfunction, float&gt; &amp;&amp; std::invocable&lt;Td
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a241596093652a285e9d2b17a93af44cd" name="a241596093652a285e9d2b17a93af44cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a241596093652a285e9d2b17a93af44cd">&#9670;&#160;</a></span>find_cubic_roots() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::floating_point T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; T, 3 &gt; ml7::algorithm::find_cubic_roots </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 <p>Finds the real roots of a cubic equation: ax^3 + bx^2 + cx + d = 0 Uses Cardano's method for depressed cubic. Returns 1, 2, or 3 values in ascending order. </p>
 
 </div>
 </div>
-<a id="adb371cfa22e5a93b72c9af7e2fc35d9a" name="adb371cfa22e5a93b72c9af7e2fc35d9a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb371cfa22e5a93b72c9af7e2fc35d9a">&#9670;&#160;</a></span>find_quadratic_roots()</h2>
+<a id="aa06a85536a27b03535957b697b6e27b5" name="aa06a85536a27b03535957b697b6e27b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa06a85536a27b03535957b697b6e27b5">&#9670;&#160;</a></span>find_quadratic_roots() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; float, 2 &gt; ml7::algorithm::find_quadratic_roots </td>
+          <td class="memname">template <a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; double, 2 &gt; ml7::algorithm::find_quadratic_roots </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7df32cacecf06d4d61a3bd22e5c2b02c" name="a7df32cacecf06d4d61a3bd22e5c2b02c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7df32cacecf06d4d61a3bd22e5c2b02c">&#9670;&#160;</a></span>find_quadratic_roots() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template <a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; float, 2 &gt; ml7::algorithm::find_quadratic_roots </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>a</em>, </td>
@@ -183,21 +314,57 @@ requires (std::invocable&lt;Tfunction, float&gt; &amp;&amp; std::invocable&lt;Td
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Finds the real roots of a quadratic equation: ax^2 + bx + c = 0 Returns 0, 1, or 2 values in ascending order. </p>
 
 </div>
 </div>
-<a id="aed34960cebaa03c099155a971644438a" name="aed34960cebaa03c099155a971644438a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed34960cebaa03c099155a971644438a">&#9670;&#160;</a></span>find_roots_by_sign_change_and_newton()</h2>
+<a id="af427aa6b4b7b8a1af5c206a2e221e5c8" name="af427aa6b4b7b8a1af5c206a2e221e5c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af427aa6b4b7b8a1af5c206a2e221e5c8">&#9670;&#160;</a></span>find_quadratic_roots() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tfunction , typename Tderivative &gt; <br />
-requires (std::invocable&lt;Tfunction, float&gt; &amp;&amp; std::invocable&lt;Tderivative, float&gt; &amp;&amp; requires(const Tfunction&amp; f, const Tderivative&amp; df) { { f(0.0f) } -&gt; std::convertible_to&lt;float&gt;; { df(0.0f) } -&gt; std::convertible_to&lt;float&gt;; })</div>
+template&lt;std::floating_point T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; float &gt; ml7::algorithm::find_roots_by_sign_change_and_newton </td>
+          <td class="memname"><a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">cl7::static_vector</a>&lt; T, 2 &gt; ml7::algorithm::find_quadratic_roots </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Finds the real roots of a quadratic equation: ax^2 + bx + c = 0 Returns 0, 1, or 2 values in ascending order. </p>
+
+</div>
+</div>
+<a id="af7375afb642afb0c41d18abf3473ec4a" name="af7375afb642afb0c41d18abf3473ec4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7375afb642afb0c41d18abf3473ec4a">&#9670;&#160;</a></span>find_roots_by_sign_change_and_newton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tfunction , typename Tderivative , std::floating_point T&gt; <br />
+requires (std::invocable&lt;Tfunction, T&gt; &amp;&amp; std::invocable&lt;Tderivative, T&gt; &amp;&amp; requires(const Tfunction&amp; f, const Tderivative&amp; df) { { f(T{0}) } -&gt; std::convertible_to&lt;T&gt;; { df(T{0}) } -&gt; std::convertible_to&lt;T&gt;; })</div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; T &gt; ml7::algorithm::find_roots_by_sign_change_and_newton </td>
           <td>(</td>
           <td class="paramtype">const Tfunction &amp;&#160;</td>
           <td class="paramname"><em>f</em>, </td>
@@ -211,13 +378,13 @@ requires (std::invocable&lt;Tfunction, float&gt; &amp;&amp; std::invocable&lt;Td
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
+          <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>lower_bound</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
+          <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>upper_bound</em>, </td>
         </tr>
         <tr>
@@ -235,14 +402,14 @@ requires (std::invocable&lt;Tfunction, float&gt; &amp;&amp; std::invocable&lt;Td
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>convergence_tolerance</em> = <code>1e-5f</code>, </td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>convergence_tolerance</em> = <code>T{1e-5}</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>merge_tolerance</em> = <code>1e-5f</code>&#160;</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>merge_tolerance</em> = <code>T{1e-5}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -256,17 +423,42 @@ requires (std::invocable&lt;Tfunction, float&gt; &amp;&amp; std::invocable&lt;Td
 
 </div>
 </div>
-<a id="ad640ff56c52e3320c789b6edc710d31a" name="ad640ff56c52e3320c789b6edc710d31a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad640ff56c52e3320c789b6edc710d31a">&#9670;&#160;</a></span>merge_nearby()</h2>
+<a id="abc3d07a05d43fbb492907cfed9f9fc71" name="abc3d07a05d43fbb492907cfed9f9fc71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc3d07a05d43fbb492907cfed9f9fc71">&#9670;&#160;</a></span>merge_nearby() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ml7::algorithm::merge_nearby </td>
+          <td class="memname">template void ml7::algorithm::merge_nearby </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>tolerance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a57832a5eb567e73211df025d28214218" name="a57832a5eb567e73211df025d28214218"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57832a5eb567e73211df025d28214218">&#9670;&#160;</a></span>merge_nearby() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template void ml7::algorithm::merge_nearby </td>
           <td>(</td>
           <td class="paramtype">std::vector&lt; float &gt; &amp;&#160;</td>
           <td class="paramname"><em>values</em>, </td>
@@ -283,11 +475,36 @@ requires (std::invocable&lt;Tfunction, float&gt; &amp;&amp; std::invocable&lt;Td
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af9a47dc47eca878fe99fcec11ba9e3da" name="af9a47dc47eca878fe99fcec11ba9e3da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9a47dc47eca878fe99fcec11ba9e3da">&#9670;&#160;</a></span>merge_nearby() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::floating_point T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void ml7::algorithm::merge_nearby </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>tolerance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 <p>Merges nearby floating-point values in a vector based on a tolerance. The values are successively merged based on the smallest distance between pairs until no pair meets the tolerance criterion. </p>
 

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['w_0',['w',['../d8/d1f/structml7_1_1Quaternion.html#aa5632d0e4c41e16d2124f336811446e1',1,'ml7::Quaternion::w'],['../db/dad/structml7_1_1Vector4.html#a62cb80326055d31df02de2e6f77053f1',1,'ml7::Vector4::w']]],
+  ['w_0',['w',['../d8/d1f/structml7_1_1Quaternion.html#a0be1f2ec0b9d31a595fcbd787c69ec9d',1,'ml7::Quaternion::w'],['../db/dad/structml7_1_1Vector4.html#a3de05dabe130a359d3e641c7f2a20fad',1,'ml7::Vector4::w']]],
   ['warning_5fcount_1',['warning_count',['../de/d12/structtl7_1_1Stats.html#ab93f1b281d17499e8790031942f0435c',1,'tl7::Stats']]],
   ['white_2',['WHITE',['../de/df3/structxl7_1_1graphics_1_1Color.html#a2a32ff7eea3791331919f6a3721da8b4',1,'xl7::graphics::Color']]],
   ['whitespace_5fhandling_3',['whitespace_handling',['../dd/d72/structdl7_1_1syntax_1_1Lexer_1_1Options.html#a7517f760e67aaa8f8aa3f110fc5d1fb9',1,'dl7::syntax::Lexer::Options']]],

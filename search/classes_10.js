@@ -32,6 +32,6 @@ var searchData=
   ['resourceid_29',['ResourceID',['../d8/d44/classxl7_1_1resources_1_1ResourceID.html',1,'xl7::resources']]],
   ['resourcemanager_30',['ResourceManager',['../d3/d00/classxl7_1_1resources_1_1ResourceManager.html',1,'xl7::resources']]],
   ['result_31',['Result',['../da/d3a/structtl7_1_1Result.html',1,'tl7']]],
-  ['resultbase_32',['resultbase',['../de/d3e/structml7_1_1distance2_1_1ResultBase.html',1,'ml7::distance2::ResultBase'],['../da/db7/structml7_1_1distance3_1_1ResultBase.html',1,'ml7::distance3::ResultBase']]],
+  ['resultbase_32',['resultbase',['../de/d3e/structml7_1_1distance2_1_1ResultBase.html',1,'ml7::distance2::ResultBase&lt; T &gt;'],['../da/db7/structml7_1_1distance3_1_1ResultBase.html',1,'ml7::distance3::ResultBase&lt; T &gt;']]],
   ['resultbuilder_33',['ResultBuilder',['../db/d89/classtl7_1_1ResultBuilder.html',1,'tl7']]]
 ];

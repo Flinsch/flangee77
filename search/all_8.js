@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['h_0',['h',['../d6/d14/structml7_1_1Matrix3x3.html#a341bd8737b351ec7ae3c1687cd412d9e',1,'ml7::Matrix3x3']]],
+  ['h_0',['h',['../d6/d14/structml7_1_1Matrix3x3.html#aadacbc2ec0513ef861d4c68194adcda1',1,'ml7::Matrix3x3']]],
   ['half_5fto_5ffloat_1',['half_to_float',['../d9/df1/namespacecl7_1_1bits.html#a62dd590062fd44bb07fb0ce44f5ebf2c',1,'cl7::bits']]],
   ['handle_5fdevice_5flost_2',['handle_device_lost',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#ab57665adba6e8fa76b151186c6822edd',1,'xl7::graphics::RenderingDevice']]],
   ['handle_5finvalid_5fescape_5fsequence_3',['handle_invalid_escape_sequence',['../d0/d2a/structdl7_1_1json_1_1util_1_1Unescaper_1_1ErrorHandler.html#a31fe734b691d7a3b17fc4d7b7aadf4e7',1,'dl7::json::util::Unescaper::ErrorHandler']]],
@@ -28,5 +28,5 @@ var searchData=
   ['htmlloghandler_25',['htmlloghandler',['../d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html#a4991dc13bda279bfaaaf549f87660eff',1,'cl7::logging::HtmlLogHandler::HtmlLogHandler()'],['../d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html#a718853e52024a19383e2e81dcce7424e',1,'cl7::logging::HtmlLogHandler::HtmlLogHandler(const HtmlLogHandler &amp;)=delete'],['../d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html#ad5e424a7e8a1311a0beb373c95c04c7d',1,'cl7::logging::HtmlLogHandler::HtmlLogHandler(HtmlLogHandler &amp;&amp;)=delete'],['../d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html',1,'cl7::logging::HtmlLogHandler']]],
   ['htmlloghandler_2ecpp_26',['HtmlLogHandler.cpp',['../d9/de4/HtmlLogHandler_8cpp.html',1,'']]],
   ['htmlloghandler_2eh_27',['HtmlLogHandler.h',['../df/d5d/HtmlLogHandler_8h.html',1,'']]],
-  ['hue_28',['hue',['../d7/dea/structml7_1_1Matrix4x4.html#aa908bb073ee448ee37db91f228a1216c',1,'ml7::Matrix4x4::hue(float r)'],['../d7/dea/structml7_1_1Matrix4x4.html#a65e8229a47a034162c9e3947bf79ec36',1,'ml7::Matrix4x4::hue(float r, const ml7::Vector3 &amp;l)']]]
+  ['hue_28',['hue',['../d7/dea/structml7_1_1Matrix4x4.html#af305fdec270c68c3706c0404fa0c8a21',1,'ml7::Matrix4x4::hue(T r)'],['../d7/dea/structml7_1_1Matrix4x4.html#ac5c04477f5e0e9b15dd7be9186108a82',1,'ml7::Matrix4x4::hue(T r, const Vector3&lt; T &gt; &amp;l)']]]
 ];

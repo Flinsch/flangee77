@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['s_0',['s',['../d7/db1/structml7_1_1Vector2.html#a471f6f48d79e9b8e06f0398b71d634c9',1,'ml7::Vector2']]],
+  ['s_0',['s',['../d7/db1/structml7_1_1Vector2.html#af96a4c4a50084626fbd45a24c8510183',1,'ml7::Vector2']]],
   ['sample_1',['sample',['../d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#ad2675a4f2c22ed0bd7d35d1dc9b99d37',1,'cl7::profiling::SampleHandler']]],
   ['sampler_5fstate_5ftype_5fvalues_2',['sampler_state_type_values',['../dc/d09/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html#a1c2792e675c9756a8853a8b552f096ff',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates::TextureSamplerStates']]],
   ['sampler_5fstates_3',['sampler_states',['../dc/db4/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html#a558c2075425a3a40cbdff03c11d93821',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates::TextureSamplerStates::sampler_states'],['../dc/d45/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedTextureSamplerStates.html#a97be60cf65fddd9098a6e3df25d6f77d',1,'xl7::graphics::RenderingContext::ResolvedTextureSamplerStates::sampler_states']]],
@@ -24,12 +24,12 @@ var searchData=
   ['source_5fcontext_21',['source_context',['../d0/d46/structdl7_1_1syntax_1_1Diagnostic.html#ab91a93f8f84e797271ae00ce45be461a',1,'dl7::syntax::Diagnostic']]],
   ['source_5foffset_22',['source_offset',['../dc/d58/structdl7_1_1syntax_1_1Token.html#aea98731c04dc0b4c55b6d14caf04ff8f',1,'dl7::syntax::Token::source_offset'],['../d2/d58/structxl7_1_1graphics_1_1shaders_1_1ConstantMapping.html#a3d37a55debe9f50b8a2af3ba34bfe9e4',1,'xl7::graphics::shaders::ConstantMapping::source_offset']]],
   ['space_5faround_5fdelimiter_23',['space_around_delimiter',['../d9/db3/structdl7_1_1ini_1_1Format.html#abb9ff62d9dcfd635cbe97b0a3e7b276c',1,'dl7::ini::Format']]],
-  ['sqrt2_24',['sqrt2',['../da/df2/structml7_1_1constants__.html#a68b678b033df34fd131f345f3cb36114',1,'ml7::constants_']]],
-  ['sqrt3_25',['sqrt3',['../da/df2/structml7_1_1constants__.html#ae8f8ec49c85f2eab43c801e142377648',1,'ml7::constants_']]],
+  ['sqrt2_24',['sqrt2',['../d6/d9f/structml7_1_1constants.html#a5fadb827f9fe7c4f3f9c441359694d12',1,'ml7::constants']]],
+  ['sqrt3_25',['sqrt3',['../d6/d9f/structml7_1_1constants.html#ae9ef7d4f2515962e96ab9549639e79e5',1,'ml7::constants']]],
   ['square_5fonly_26',['square_only',['../dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a7e8cc6bb982830502e998a28ae21d603',1,'xl7::graphics::RenderingDevice::Capabilities']]],
   ['src_5falpha_5ffactor_27',['src_alpha_factor',['../d1/da4/structxl7_1_1graphics_1_1states_1_1BlendState_1_1Desc.html#a23206c11e0a708a03b5dde791508726d',1,'xl7::graphics::states::BlendState::Desc']]],
   ['src_5fcolor_5ffactor_28',['src_color_factor',['../d1/da4/structxl7_1_1graphics_1_1states_1_1BlendState_1_1Desc.html#a3d9c9a1bc6992e7ed522fee6760b59a8',1,'xl7::graphics::states::BlendState::Desc']]],
-  ['start_29',['start',['../d8/d86/structml7_1_1LineSegment2.html#a56ed2c9c5dcfadd69dc15e2572d59d91',1,'ml7::LineSegment2::start'],['../d5/d85/structml7_1_1LineSegment3.html#a6d445b523423b452587fe961f6b8a969',1,'ml7::LineSegment3::start']]],
+  ['start_29',['start',['../d8/d86/structml7_1_1LineSegment2.html#a6eb1ee39226c810d2228770ed3665ea5',1,'ml7::LineSegment2::start'],['../d5/d85/structml7_1_1LineSegment3.html#a27141431df0fea69520968c1012fef72',1,'ml7::LineSegment3::start']]],
   ['start_5fsymbol_5fid_30',['start_symbol_id',['../d8/d95/structdl7_1_1syntax_1_1Grammar.html#ada579a9bf955092a4ea15a41a9d0fe24',1,'dl7::syntax::Grammar']]],
   ['stats_31',['stats',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#abcdd965061ebfef4f2980a2d04849f9b',1,'cl7::profiling::Sample::stats'],['../d9/d7e/structtl7_1_1Context.html#a50df285ff190ea737bc8cf401a63ac20',1,'tl7::Context::stats']]],
   ['stencil_5ffail_5foperation_32',['stencil_fail_operation',['../d4/d68/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1StencilOperationDesc.html#a41ed477603a2d9f313691a8b29d5c918',1,'xl7::graphics::states::DepthStencilState::StencilOperationDesc']]],

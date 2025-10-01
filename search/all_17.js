@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['w_0',['w',['../db/dad/structml7_1_1Vector4.html#a62cb80326055d31df02de2e6f77053f1',1,'ml7::Vector4::w'],['../d8/d1f/structml7_1_1Quaternion.html#aa5632d0e4c41e16d2124f336811446e1',1,'ml7::Quaternion::w']]],
+  ['w_0',['w',['../db/dad/structml7_1_1Vector4.html#a3de05dabe130a359d3e641c7f2a20fad',1,'ml7::Vector4::w'],['../d8/d1f/structml7_1_1Quaternion.html#a0be1f2ec0b9d31a595fcbd787c69ec9d',1,'ml7::Quaternion::w']]],
   ['warning_1',['warning',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a31033fed038b7a3523d9c5256c5c5e52',1,'tl7::reporting::Warning'],['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a0eaadb4fcb48a0a0ed7bc9868be9fbaa',1,'cl7::logging::Warning'],['../d0/d46/structdl7_1_1syntax_1_1Diagnostic.html#afb8b280322219dfc4a99ec89802c4406a0eaadb4fcb48a0a0ed7bc9868be9fbaa',1,'dl7::syntax::Diagnostic::Warning']]],
   ['warning_5fcount_2',['warning_count',['../de/d12/structtl7_1_1Stats.html#ab93f1b281d17499e8790031942f0435c',1,'tl7::Stats']]],
   ['what_3',['what',['../d6/db9/structtl7_1_1exceptions_1_1assertion__exception.html#ad82d731c4c8e266dc1a2d60f29f0ff6c',1,'tl7::exceptions::assertion_exception']]],
