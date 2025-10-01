@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['minmagfiltertype_0',['MinMagFilterType',['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#a5815318bfe88d26ae204eda9596134d8',1,'xl7::graphics::states::SamplerState']]],
-  ['mipfiltertype_1',['MipFilterType',['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#ab84d702ec5c0616ae781e3bd6d3816ef',1,'xl7::graphics::states::SamplerState']]],
-  ['mode_2',['Mode',['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a7fe905665e8a42ae50081048a7aca951',1,'dl7::ini::detail::BooleanMatcher']]]
+  ['language_0',['Language',['../d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html#a67a32fc444b59dd218cbcacc4cb8b2e1',1,'xl7::graphics::shaders::ShaderCode']]],
+  ['lineending_1',['LineEnding',['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html#af77ef15789b42d037ea54228daa5c1c2',1,'dl7::json::Format::MultiLineOptions']]],
+  ['logtype_2',['LogType',['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3',1,'cl7::logging']]]
 ];

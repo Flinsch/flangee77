@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>flangee77: CoreLabs/strings/format.h File Reference</title>
+<title>flangee77: CoreLabs/text/format.h File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -92,127 +92,306 @@ $(document).ready(function(){initNavTree('d0/d0a/format_8h.html','../../'); init
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">format.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d2/df8/inspect_8h_source.html">./inspect.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d1/d16/codec_8h_source.html">./codec.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/df8/inspect_8h_source.html">./inspect.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d2/d80/transform_8h_source.html">./transform.h</a>&quot;</code><br />
 <code>#include &lt;<a class="el" href="../../da/d66/string_8h_source.html">CoreLabs/string.h</a>&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;charconv&gt;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for format.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../dd/d39/format_8h__incl.png" border="0" usemap="#aCoreLabs_2strings_2format_8h" alt=""/></div>
-<map name="aCoreLabs_2strings_2format_8h" id="aCoreLabs_2strings_2format_8h">
-<area shape="rect" title=" " alt="" coords="361,5,551,31"/>
-<area shape="rect" href="../../d2/df8/inspect_8h.html" title=" " alt="" coords="386,152,475,177"/>
-<area shape="poly" title=" " alt="" coords="454,32,439,79,433,138,428,138,433,78,449,30"/>
-<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="363,225,498,251"/>
-<area shape="poly" title=" " alt="" coords="448,32,410,82,390,116,376,153,373,165,376,176,389,197,406,215,402,219,384,201,371,178,368,165,371,151,386,114,406,79,444,29"/>
-<area shape="rect" href="../../d2/d80/transform_8h.html" title=" " alt="" coords="448,79,555,104"/>
-<area shape="poly" title=" " alt="" coords="466,30,489,66,484,69,461,32"/>
-<area shape="rect" title=" " alt="" coords="579,79,664,104"/>
-<area shape="poly" title=" " alt="" coords="484,28,583,71,581,76,482,33"/>
-<area shape="poly" title=" " alt="" coords="433,178,433,212,428,212,428,178"/>
-<area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="202,299,326,324"/>
-<area shape="poly" title=" " alt="" coords="405,253,305,296,303,291,403,248"/>
-<area shape="rect" title=" " alt="" coords="351,299,409,324"/>
-<area shape="poly" title=" " alt="" coords="424,253,398,289,394,286,420,249"/>
-<area shape="rect" title=" " alt="" coords="434,299,531,324"/>
-<area shape="poly" title=" " alt="" coords="441,249,468,286,464,289,437,253"/>
-<area shape="rect" title=" " alt="" coords="556,299,609,324"/>
-<area shape="poly" title=" " alt="" coords="456,248,547,290,545,295,454,253"/>
-<area shape="rect" title=" " alt="" coords="5,372,107,397"/>
-<area shape="poly" title=" " alt="" coords="231,327,104,370,102,365,230,321"/>
-<area shape="rect" title=" " alt="" coords="131,372,200,397"/>
-<area shape="poly" title=" " alt="" coords="250,326,194,366,191,362,247,322"/>
-<area shape="rect" title=" " alt="" coords="224,372,304,397"/>
-<area shape="poly" title=" " alt="" coords="267,324,267,358,261,358,261,324"/>
-<area shape="rect" title=" " alt="" coords="328,372,395,397"/>
-<area shape="poly" title=" " alt="" coords="281,322,336,361,333,366,278,326"/>
-<area shape="rect" title=" " alt="" coords="419,372,496,397"/>
-<area shape="poly" title=" " alt="" coords="296,322,414,365,412,370,294,327"/>
-<area shape="poly" title=" " alt="" coords="492,106,454,144,450,140,488,102"/>
-<area shape="poly" title=" " alt="" coords="504,104,502,139,490,178,476,200,458,218,455,215,472,197,486,176,497,138,499,104"/>
+<div class="center"><img src="../../dd/d39/format_8h__incl.png" border="0" usemap="#aCoreLabs_2text_2format_8h" alt=""/></div>
+<map name="aCoreLabs_2text_2format_8h" id="aCoreLabs_2text_2format_8h">
+<area shape="rect" title=" " alt="" coords="639,5,811,31"/>
+<area shape="rect" href="../../d1/d16/codec_8h.html" title=" " alt="" coords="419,152,499,177"/>
+<area shape="poly" title=" " alt="" coords="684,33,627,53,566,81,521,112,483,144,480,140,517,108,563,76,625,48,682,28"/>
+<area shape="rect" title=" " alt="" coords="689,372,755,397"/>
+<area shape="poly" title=" " alt="" coords="744,29,769,50,792,77,813,118,818,163,818,239,813,285,792,325,774,348,753,366,749,362,770,344,788,323,808,283,813,239,813,163,808,119,788,80,765,53,740,33"/>
+<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="621,225,756,251"/>
+<area shape="poly" title=" " alt="" coords="708,33,679,53,651,80,626,114,613,153,610,165,612,176,630,199,653,216,650,221,626,203,608,178,604,165,607,151,621,111,647,77,676,49,704,29"/>
+<area shape="rect" href="../../d2/df8/inspect_8h.html" title=" " alt="" coords="621,152,711,177"/>
+<area shape="poly" title=" " alt="" coords="706,33,681,53,662,80,657,109,661,138,655,139,651,109,657,78,678,49,703,29"/>
+<area shape="rect" href="../../d2/d80/transform_8h.html" title=" " alt="" coords="671,79,778,104"/>
+<area shape="poly" title=" " alt="" coords="727,31,727,65,722,65,722,31"/>
+<area shape="rect" title=" " alt="" coords="853,79,938,104"/>
+<area shape="poly" title=" " alt="" coords="753,28,856,71,854,76,751,33"/>
+<area shape="rect" title=" " alt="" coords="963,79,1044,104"/>
+<area shape="poly" title=" " alt="" coords="770,28,950,74,949,79,769,33"/>
+<area shape="rect" href="../../df/d92/Encoding_8h.html" title=" " alt="" coords="204,225,347,251"/>
+<area shape="poly" title=" " alt="" coords="431,180,319,223,317,218,429,175"/>
+<area shape="poly" title=" " alt="" coords="497,175,639,219,637,224,495,180"/>
+<area shape="rect" href="../../dd/d42/byte__vector_8h.html" title=" " alt="" coords="5,225,180,251"/>
+<area shape="poly" title=" " alt="" coords="420,176,165,225,164,220,419,171"/>
+<area shape="rect" href="../../d9/d58/byte__view_8h.html" title=" " alt="" coords="433,225,597,251"/>
+<area shape="poly" title=" " alt="" coords="471,176,500,213,496,216,466,179"/>
+<area shape="rect" title=" " alt="" coords="371,225,409,251"/>
+<area shape="poly" title=" " alt="" coords="450,180,413,217,409,214,446,176"/>
+<area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="371,299,495,324"/>
+<area shape="poly" title=" " alt="" coords="302,248,396,291,394,295,300,253"/>
+<area shape="rect" title=" " alt="" coords="327,372,429,397"/>
+<area shape="poly" title=" " alt="" coords="426,326,397,363,393,360,422,323"/>
+<area shape="rect" title=" " alt="" coords="453,372,522,397"/>
+<area shape="poly" title=" " alt="" coords="444,323,472,360,468,363,440,326"/>
+<area shape="rect" title=" " alt="" coords="546,372,626,397"/>
+<area shape="poly" title=" " alt="" coords="458,322,550,364,548,369,456,326"/>
+<area shape="poly" title=" " alt="" coords="480,321,676,369,674,374,479,327"/>
+<area shape="rect" title=" " alt="" coords="226,372,303,397"/>
+<area shape="poly" title=" " alt="" coords="407,326,306,369,304,364,405,322"/>
+<area shape="poly" title=" " alt="" coords="648,253,488,298,486,292,647,248"/>
+<area shape="rect" title=" " alt="" coords="597,299,655,324"/>
+<area shape="poly" title=" " alt="" coords="680,253,647,290,643,286,676,249"/>
+<area shape="rect" title=" " alt="" coords="680,299,777,324"/>
+<area shape="poly" title=" " alt="" coords="698,250,718,285,713,288,693,252"/>
+<area shape="rect" title=" " alt="" coords="519,299,573,324"/>
+<area shape="poly" title=" " alt="" coords="667,253,583,295,580,290,665,248"/>
+<area shape="poly" title=" " alt="" coords="148,248,365,293,364,298,147,253"/>
+<area shape="rect" title=" " alt="" coords="61,299,124,324"/>
+<area shape="poly" title=" " alt="" coords="95,251,95,285,90,285,90,251"/>
+<area shape="poly" title=" " alt="" coords="504,253,458,292,455,287,500,249"/>
+<area shape="poly" title=" " alt="" coords="523,250,538,285,533,287,518,252"/>
+<area shape="poly" title=" " alt="" coords="672,177,683,211,678,213,667,178"/>
+<area shape="poly" title=" " alt="" coords="729,104,731,138,726,178,708,215,703,213,721,177,726,138,724,105"/>
+<area shape="poly" title=" " alt="" coords="717,106,686,143,682,140,713,103"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d1/d0f/format_8h__dep__incl.png" border="0" usemap="#aCoreLabs_2strings_2format_8hdep" alt=""/></div>
-<map name="aCoreLabs_2strings_2format_8hdep" id="aCoreLabs_2strings_2format_8hdep">
-<area shape="rect" title=" " alt="" coords="223,5,413,31"/>
+<div class="center"><img src="../../d1/d0f/format_8h__dep__incl.png" border="0" usemap="#aCoreLabs_2text_2format_8hdep" alt=""/></div>
+<map name="aCoreLabs_2text_2format_8hdep" id="aCoreLabs_2text_2format_8hdep">
+<area shape="rect" title=" " alt="" coords="223,5,395,31"/>
 <area shape="rect" href="../../d7/d5a/LoggingErrorHandler_8cpp.html" title=" " alt="" coords="5,79,191,119"/>
-<area shape="poly" title=" " alt="" coords="274,38,152,81,150,76,272,33"/>
-<area shape="rect" href="../../d0/dd8/format_8cpp.html" title=" " alt="" coords="215,86,421,111"/>
-<area shape="poly" title=" " alt="" coords="321,44,321,86,315,86,315,44"/>
-<area shape="rect" href="../../da/d80/Unescaper_8cpp.html" title=" " alt="" coords="445,79,583,119"/>
-<area shape="poly" title=" " alt="" coords="360,33,468,76,466,81,358,38"/>
+<area shape="poly" title=" " alt="" coords="266,38,150,81,148,76,264,33"/>
+<area shape="rect" href="../../d0/dd8/format_8cpp.html" title=" " alt="" coords="215,86,402,111"/>
+<area shape="poly" title=" " alt="" coords="311,44,311,86,306,86,306,44"/>
+<area shape="rect" href="../../da/d80/Unescaper_8cpp.html" title=" " alt="" coords="426,79,565,119"/>
+<area shape="poly" title=" " alt="" coords="349,33,451,76,449,81,347,38"/>
 </map>
 </div>
 </div>
 <p><a href="../../d0/d0a/format_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">cl7::text::format::IntFormatOptions</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html">cl7::text::format::FloatFormatOptions</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:d1/d2e/namespacecl7" id="r_d1/d2e/namespacecl7"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html">cl7</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:dc/d17/namespacecl7_1_1strings" id="r_dc/d17/namespacecl7_1_1strings"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html">cl7::strings</a></td></tr>
+<tr class="memitem:d0/d10/namespacecl7_1_1text" id="r_d0/d10/namespacecl7_1_1text"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d10/namespacecl7_1_1text.html">cl7::text</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:d1/d37/namespacecl7_1_1strings_1_1format" id="r_d1/d37/namespacecl7_1_1strings_1_1format"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d37/namespacecl7_1_1strings_1_1format.html">cl7::strings::format</a></td></tr>
+<tr class="memitem:df/d89/namespacecl7_1_1text_1_1format" id="r_df/d89/namespacecl7_1_1text_1_1format"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html">cl7::text::format</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:af6818f5dda3ee9dd0dd31efefcb61f81" id="r_af6818f5dda3ee9dd0dd31efefcb61f81"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#af6818f5dda3ee9dd0dd31efefcb61f81">cl7::text::format::NumberBase</a> : unsigned { <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#af6818f5dda3ee9dd0dd31efefcb61f81a937504f318f04eaf0f1d701df4c4d7f3">cl7::text::format::Decimal</a> = 10
+, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#af6818f5dda3ee9dd0dd31efefcb61f81a3a1733e5ccccdb1b700352409ce97c89">cl7::text::format::Hexadecimal</a> = 16
+, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#af6818f5dda3ee9dd0dd31efefcb61f81a919c181a7c4ea1da2e77d49e3c02d531">cl7::text::format::Octal</a> = 8
+, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#af6818f5dda3ee9dd0dd31efefcb61f81a6ce976e8f061b2b5cfe4d0c50c3405dd">cl7::text::format::Binary</a> = 2
+ }</td></tr>
+<tr class="separator:af6818f5dda3ee9dd0dd31efefcb61f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0397c702edb2cba1e22c3d0b4b1c4a3" id="r_ab0397c702edb2cba1e22c3d0b4b1c4a3"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3">cl7::text::format::HexCase</a> : unsigned { <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3ab75fcdd2d72d9e000beab48622402d93">cl7::text::format::Lower</a> = 0x61
+, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3a19de5b94f7b83900d4b296d9fa491aec">cl7::text::format::Upper</a> = 0x41
+ }</td></tr>
+<tr class="separator:ab0397c702edb2cba1e22c3d0b4b1c4a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a973710ef9236c336f0c987d59833b972" id="r_a973710ef9236c336f0c987d59833b972"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a973710ef9236c336f0c987d59833b972">cl7::text::format::FloatFormat</a> { <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a973710ef9236c336f0c987d59833b972a0db377921f4ce762c62526131097968f">cl7::text::format::General</a>
+, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a973710ef9236c336f0c987d59833b972a4457d440870ad6d42bab9082d9bf9b61">cl7::text::format::Fixed</a>
+, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a973710ef9236c336f0c987d59833b972a21234a0e100d74037a4da2e53f3200d7">cl7::text::format::Scientific</a>
+ }</td></tr>
+<tr class="separator:a973710ef9236c336f0c987d59833b972"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa0d1402d6bfbb4cbd7734a045e7620e7" id="r_aa0d1402d6bfbb4cbd7734a045e7620e7"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
-requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
-<tr class="memitem:aa0d1402d6bfbb4cbd7734a045e7620e7"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d37/namespacecl7_1_1strings_1_1format.html#aa0d1402d6bfbb4cbd7734a045e7620e7">cl7::strings::format::to_hex</a> (Tval val, unsigned pad_zeros=0, Tchar ca=Tchar{ 'A'})</td></tr>
-<tr class="separator:aa0d1402d6bfbb4cbd7734a045e7620e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95271a4f785b0f8b495ba132b9678782" id="r_a95271a4f785b0f8b495ba132b9678782"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
-requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
-<tr class="memitem:a95271a4f785b0f8b495ba132b9678782"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d37/namespacecl7_1_1strings_1_1format.html#a95271a4f785b0f8b495ba132b9678782">cl7::strings::format::to_0xhex</a> (Tval val, unsigned pad_zeros=0, Tchar ca=Tchar{ 'A'})</td></tr>
-<tr class="separator:a95271a4f785b0f8b495ba132b9678782"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35fa50c67188012aa884a37b4e4f56d1" id="r_a35fa50c67188012aa884a37b4e4f56d1"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
-requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
-<tr class="memitem:a35fa50c67188012aa884a37b4e4f56d1"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d37/namespacecl7_1_1strings_1_1format.html#a35fa50c67188012aa884a37b4e4f56d1">cl7::strings::format::to_hex_lc</a> (Tval val, unsigned pad_zeros=0)</td></tr>
-<tr class="separator:a35fa50c67188012aa884a37b4e4f56d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6be945aca6fe5ea54c8f8c4804e098eb" id="r_a6be945aca6fe5ea54c8f8c4804e098eb"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
-requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
-<tr class="memitem:a6be945aca6fe5ea54c8f8c4804e098eb"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d37/namespacecl7_1_1strings_1_1format.html#a6be945aca6fe5ea54c8f8c4804e098eb">cl7::strings::format::to_hex_uc</a> (Tval val, unsigned pad_zeros=0)</td></tr>
-<tr class="separator:a6be945aca6fe5ea54c8f8c4804e098eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2258175bc2526d06eb21bcc6b8001755" id="r_a2258175bc2526d06eb21bcc6b8001755"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
-requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
-<tr class="memitem:a2258175bc2526d06eb21bcc6b8001755"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d37/namespacecl7_1_1strings_1_1format.html#a2258175bc2526d06eb21bcc6b8001755">cl7::strings::format::to_0xhex_lc</a> (Tval val, unsigned pad_zeros=0)</td></tr>
-<tr class="separator:a2258175bc2526d06eb21bcc6b8001755"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7ea0e60e0f8bd47fc6b0b284b6302b3" id="r_af7ea0e60e0f8bd47fc6b0b284b6302b3"><td class="memTemplParams" colspan="2">template&lt;class Tstring , typename Tval , typename Tchar  = Tstring::value_type&gt; <br />
-requires (is_any_string_v&lt;Tstring&gt; &amp;&amp; std::is_unsigned_v&lt;Tval&gt; &amp;&amp; std::is_integral_v&lt;Tchar&gt;)</td></tr>
-<tr class="memitem:af7ea0e60e0f8bd47fc6b0b284b6302b3"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d37/namespacecl7_1_1strings_1_1format.html#af7ea0e60e0f8bd47fc6b0b284b6302b3">cl7::strings::format::to_0xhex_uc</a> (Tval val, unsigned pad_zeros=0)</td></tr>
-<tr class="separator:af7ea0e60e0f8bd47fc6b0b284b6302b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c77136ba6550defa83b411131138629" id="r_a2c77136ba6550defa83b411131138629"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d37/namespacecl7_1_1strings_1_1format.html#a2c77136ba6550defa83b411131138629">cl7::strings::format::to_hex</a> (unsigned long long val, unsigned pad_zeros, <a class="el" href="../../d1/d2e/namespacecl7.html#a0460ea70cccc81840bd000e69ebfa913">u8char_t</a> ca)</td></tr>
-<tr class="separator:a2c77136ba6550defa83b411131138629"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9a12a2150cd428fe84b78a242c441fd" id="r_ac9a12a2150cd428fe84b78a242c441fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d37/namespacecl7_1_1strings_1_1format.html#ac9a12a2150cd428fe84b78a242c441fd">cl7::strings::format::to_0xhex</a> (unsigned long long val, unsigned pad_zeros, <a class="el" href="../../d1/d2e/namespacecl7.html#a0460ea70cccc81840bd000e69ebfa913">u8char_t</a> ca)</td></tr>
-<tr class="separator:ac9a12a2150cd428fe84b78a242c441fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c5b6e782900a773b1aea4667559eba9" id="r_a9c5b6e782900a773b1aea4667559eba9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d37/namespacecl7_1_1strings_1_1format.html#a9c5b6e782900a773b1aea4667559eba9">cl7::strings::format::to_hex_lc</a> (unsigned long long val, unsigned pad_zeros=0)</td></tr>
-<tr class="separator:a9c5b6e782900a773b1aea4667559eba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab37625775d184e80cded55e30d8d038c" id="r_ab37625775d184e80cded55e30d8d038c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d37/namespacecl7_1_1strings_1_1format.html#ab37625775d184e80cded55e30d8d038c">cl7::strings::format::to_hex_uc</a> (unsigned long long val, unsigned pad_zeros=0)</td></tr>
-<tr class="separator:ab37625775d184e80cded55e30d8d038c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1bc841818147b95b7f2b95fd3d487d0" id="r_ab1bc841818147b95b7f2b95fd3d487d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d37/namespacecl7_1_1strings_1_1format.html#ab1bc841818147b95b7f2b95fd3d487d0">cl7::strings::format::to_0xhex_lc</a> (unsigned long long val, unsigned pad_zeros=0)</td></tr>
-<tr class="separator:ab1bc841818147b95b7f2b95fd3d487d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c970dd547c80bd664f7654d47d83b17" id="r_a8c970dd547c80bd664f7654d47d83b17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d37/namespacecl7_1_1strings_1_1format.html#a8c970dd547c80bd664f7654d47d83b17">cl7::strings::format::to_0xhex_uc</a> (unsigned long long val, unsigned pad_zeros=0)</td></tr>
-<tr class="separator:a8c970dd547c80bd664f7654d47d83b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6d17ef4c239b50cc9eef2d1cc420b13" id="r_ad6d17ef4c239b50cc9eef2d1cc420b13"><td class="memTemplParams" colspan="2">template&lt;typename Tval  = unsigned, class Tstring_or_view , typename Tchar  = std::remove_cvref_t&lt;Tstring_or_view&gt;::value_type&gt; <br />
+<tr class="memitem:a2f545dd69e92f9c33cbb652ed0549c2b" id="r_a2f545dd69e92f9c33cbb652ed0549c2b"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:a2f545dd69e92f9c33cbb652ed0549c2b"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a2f545dd69e92f9c33cbb652ed0549c2b">cl7::text::format::to_string</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
+<tr class="separator:a2f545dd69e92f9c33cbb652ed0549c2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abec97d043c7c92516d878120604275df" id="r_abec97d043c7c92516d878120604275df"><td class="memTemplParams" colspan="2">template&lt;typename Tval  = signed, class Tstring_or_view &gt; <br />
 requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
-<tr class="memitem:ad6d17ef4c239b50cc9eef2d1cc420b13"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d37/namespacecl7_1_1strings_1_1format.html#ad6d17ef4c239b50cc9eef2d1cc420b13">cl7::strings::format::parse_hex</a> (Tstring_or_view &amp;&amp;s)</td></tr>
-<tr class="separator:ad6d17ef4c239b50cc9eef2d1cc420b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abec97d043c7c92516d878120604275df"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#abec97d043c7c92516d878120604275df">cl7::text::format::parse_int</a> (Tstring_or_view &amp;&amp;s)</td></tr>
+<tr class="separator:abec97d043c7c92516d878120604275df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94a6ab04395bb12007ee427a6dbbd105" id="r_a94a6ab04395bb12007ee427a6dbbd105"><td class="memTemplParams" colspan="2">template&lt;typename Tval  = unsigned, class Tstring_or_view &gt; <br />
+requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a94a6ab04395bb12007ee427a6dbbd105"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a94a6ab04395bb12007ee427a6dbbd105">cl7::text::format::parse_hex</a> (Tstring_or_view &amp;&amp;s)</td></tr>
+<tr class="separator:a94a6ab04395bb12007ee427a6dbbd105"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a860e9752fd63622c168e0f732e97d6" id="r_a4a860e9752fd63622c168e0f732e97d6"><td class="memTemplParams" colspan="2">template&lt;typename Tval  = unsigned, class Tstring_or_view &gt; <br />
+requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a4a860e9752fd63622c168e0f732e97d6"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a4a860e9752fd63622c168e0f732e97d6">cl7::text::format::parse_octal</a> (Tstring_or_view &amp;&amp;s)</td></tr>
+<tr class="separator:a4a860e9752fd63622c168e0f732e97d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a867f7f1b54e3c53629851df02ce4c8e6" id="r_a867f7f1b54e3c53629851df02ce4c8e6"><td class="memTemplParams" colspan="2">template&lt;typename Tval  = unsigned, class Tstring_or_view &gt; <br />
+requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a867f7f1b54e3c53629851df02ce4c8e6"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a867f7f1b54e3c53629851df02ce4c8e6">cl7::text::format::parse_binary</a> (Tstring_or_view &amp;&amp;s)</td></tr>
+<tr class="separator:a867f7f1b54e3c53629851df02ce4c8e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0f9a0fce5b262ead8b51a08a186f953" id="r_ae0f9a0fce5b262ead8b51a08a186f953"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view_out , class Tstring_or_view_in &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view_out&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view_in&gt; &amp;&amp; std::same_as&lt;typename std::remove_cvref_t&lt;Tstring_or_view_out&gt;::value_type, typename std::remove_cvref_t&lt;Tstring_or_view_in&gt;::value_type&gt;)</td></tr>
+<tr class="memitem:ae0f9a0fce5b262ead8b51a08a186f953"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view_out&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ae0f9a0fce5b262ead8b51a08a186f953">cl7::text::format::adjust_fixed_precision</a> (Tstring_or_view_in &amp;&amp;s, unsigned min_precision, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
+<tr class="separator:ae0f9a0fce5b262ead8b51a08a186f953"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae535cee85e79560bdc66d17aa20a889a" id="r_ae535cee85e79560bdc66d17aa20a889a"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floating_point_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:ae535cee85e79560bdc66d17aa20a889a"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ae535cee85e79560bdc66d17aa20a889a">cl7::text::format::to_string</a> (Tval val, <a class="el" href="../../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html">FloatFormatOptions</a> options)</td></tr>
+<tr class="separator:ae535cee85e79560bdc66d17aa20a889a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25badcf3c3dd147cc98800782d944c6f" id="r_a25badcf3c3dd147cc98800782d944c6f"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:a25badcf3c3dd147cc98800782d944c6f"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a25badcf3c3dd147cc98800782d944c6f">cl7::text::format::to_hex</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
+<tr class="separator:a25badcf3c3dd147cc98800782d944c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8575495ab2f7a24f108209aaf39ae028" id="r_a8575495ab2f7a24f108209aaf39ae028"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:a8575495ab2f7a24f108209aaf39ae028"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a8575495ab2f7a24f108209aaf39ae028">cl7::text::format::to_octal</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
+<tr class="separator:a8575495ab2f7a24f108209aaf39ae028"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9aece9f72d21c9b212ea063511b2a51a" id="r_a9aece9f72d21c9b212ea063511b2a51a"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:a9aece9f72d21c9b212ea063511b2a51a"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a9aece9f72d21c9b212ea063511b2a51a">cl7::text::format::to_binary</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
+<tr class="separator:a9aece9f72d21c9b212ea063511b2a51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a221618bd7fab98bed5fc13ff7a00c091" id="r_a221618bd7fab98bed5fc13ff7a00c091"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floating_point_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:a221618bd7fab98bed5fc13ff7a00c091"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a221618bd7fab98bed5fc13ff7a00c091">cl7::text::format::to_string</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
+<tr class="separator:a221618bd7fab98bed5fc13ff7a00c091"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15c60c1ba22911d841d933f05dfa792b" id="r_a15c60c1ba22911d841d933f05dfa792b"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floating_point_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:a15c60c1ba22911d841d933f05dfa792b"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a15c60c1ba22911d841d933f05dfa792b">cl7::text::format::to_fixed</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
+<tr class="separator:a15c60c1ba22911d841d933f05dfa792b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4eb1542ed1306bceaeca2b8f2e3070ed" id="r_a4eb1542ed1306bceaeca2b8f2e3070ed"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floating_point_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:a4eb1542ed1306bceaeca2b8f2e3070ed"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a4eb1542ed1306bceaeca2b8f2e3070ed">cl7::text::format::to_scientific</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
+<tr class="separator:a4eb1542ed1306bceaeca2b8f2e3070ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18968aee4f97d82e3eed3291bec12bd0" id="r_a18968aee4f97d82e3eed3291bec12bd0"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:a18968aee4f97d82e3eed3291bec12bd0"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a18968aee4f97d82e3eed3291bec12bd0">cl7::text::format::to_string</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a18968aee4f97d82e3eed3291bec12bd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad65e2b8ea4c0dcfc2e330b970490903f" id="r_ad65e2b8ea4c0dcfc2e330b970490903f"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:ad65e2b8ea4c0dcfc2e330b970490903f"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ad65e2b8ea4c0dcfc2e330b970490903f">cl7::text::format::to_hex</a> (Tval val, unsigned zero_pad_width=0, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3">HexCase</a> hex_case=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3a19de5b94f7b83900d4b296d9fa491aec">HexCase::Upper</a>)</td></tr>
+<tr class="separator:ad65e2b8ea4c0dcfc2e330b970490903f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd921e93ef003df881157489c4cdacb7" id="r_abd921e93ef003df881157489c4cdacb7"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:abd921e93ef003df881157489c4cdacb7"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#abd921e93ef003df881157489c4cdacb7">cl7::text::format::to_0x_hex</a> (Tval val, unsigned zero_pad_width=0, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3">HexCase</a> hex_case=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3a19de5b94f7b83900d4b296d9fa491aec">HexCase::Upper</a>)</td></tr>
+<tr class="separator:abd921e93ef003df881157489c4cdacb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a909fc2a9efc7a0e04f4d89b6321d7512" id="r_a909fc2a9efc7a0e04f4d89b6321d7512"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:a909fc2a9efc7a0e04f4d89b6321d7512"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a909fc2a9efc7a0e04f4d89b6321d7512">cl7::text::format::to_hex_lc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a909fc2a9efc7a0e04f4d89b6321d7512"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65b6322f3fa7010bdb3b3669b5e341da" id="r_a65b6322f3fa7010bdb3b3669b5e341da"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:a65b6322f3fa7010bdb3b3669b5e341da"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a65b6322f3fa7010bdb3b3669b5e341da">cl7::text::format::to_hex_uc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a65b6322f3fa7010bdb3b3669b5e341da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11fac1619f4fd6c175af155469e35496" id="r_a11fac1619f4fd6c175af155469e35496"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:a11fac1619f4fd6c175af155469e35496"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a11fac1619f4fd6c175af155469e35496">cl7::text::format::to_0x_hex_lc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a11fac1619f4fd6c175af155469e35496"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b5437a122a127cf3741bba4f4145ee9" id="r_a6b5437a122a127cf3741bba4f4145ee9"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:a6b5437a122a127cf3741bba4f4145ee9"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6b5437a122a127cf3741bba4f4145ee9">cl7::text::format::to_0x_hex_uc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a6b5437a122a127cf3741bba4f4145ee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a394ae6751df348801c89c28740721115" id="r_a394ae6751df348801c89c28740721115"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:a394ae6751df348801c89c28740721115"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a394ae6751df348801c89c28740721115">cl7::text::format::to_octal</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a394ae6751df348801c89c28740721115"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb2b42fdd8bb1f88f6293bd815945043" id="r_adb2b42fdd8bb1f88f6293bd815945043"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:adb2b42fdd8bb1f88f6293bd815945043"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#adb2b42fdd8bb1f88f6293bd815945043">cl7::text::format::to_0o_octal</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:adb2b42fdd8bb1f88f6293bd815945043"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96d2ff902dd81e4d6a45bfcde99ea365" id="r_a96d2ff902dd81e4d6a45bfcde99ea365"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:a96d2ff902dd81e4d6a45bfcde99ea365"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a96d2ff902dd81e4d6a45bfcde99ea365">cl7::text::format::to_binary</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a96d2ff902dd81e4d6a45bfcde99ea365"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec349922a13ae988e9d9223c985caf90" id="r_aec349922a13ae988e9d9223c985caf90"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:aec349922a13ae988e9d9223c985caf90"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#aec349922a13ae988e9d9223c985caf90">cl7::text::format::to_0b_binary</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:aec349922a13ae988e9d9223c985caf90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cbf061650ff8990220ff795c1c43d4e" id="r_a5cbf061650ff8990220ff795c1c43d4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a5cbf061650ff8990220ff795c1c43d4e">cl7::text::format::adjust_fixed_precision</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">u8string_view</a> s, unsigned min_precision, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
+<tr class="separator:a5cbf061650ff8990220ff795c1c43d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4152b7bfa993154762500166b5fb059c" id="r_a4152b7bfa993154762500166b5fb059c"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; <br />
+requires (std::is_floating_point_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:a4152b7bfa993154762500166b5fb059c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a4152b7bfa993154762500166b5fb059c">cl7::text::format::to_string</a> (Tval val, <a class="el" href="../../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html">FloatFormatOptions</a> options)</td></tr>
+<tr class="separator:a4152b7bfa993154762500166b5fb059c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadcf8588ee1396cbac6ef67b5b67aa10" id="r_aadcf8588ee1396cbac6ef67b5b67aa10"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; <br />
+requires (std::is_floating_point_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:aadcf8588ee1396cbac6ef67b5b67aa10"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#aadcf8588ee1396cbac6ef67b5b67aa10">cl7::text::format::to_string</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
+<tr class="separator:aadcf8588ee1396cbac6ef67b5b67aa10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7f062edeb81df0574cdc7bc0f3c7076" id="r_ab7f062edeb81df0574cdc7bc0f3c7076"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:ab7f062edeb81df0574cdc7bc0f3c7076"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab7f062edeb81df0574cdc7bc0f3c7076">cl7::text::format::to_fixed</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
+<tr class="separator:ab7f062edeb81df0574cdc7bc0f3c7076"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1a38e2e9069236909abc17b13abd7b4" id="r_af1a38e2e9069236909abc17b13abd7b4"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:af1a38e2e9069236909abc17b13abd7b4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#af1a38e2e9069236909abc17b13abd7b4">cl7::text::format::to_scientific</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
+<tr class="separator:af1a38e2e9069236909abc17b13abd7b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af400c5904d4bb05e579dd2682fc950ab" id="r_af400c5904d4bb05e579dd2682fc950ab"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; <br />
+requires (std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:af400c5904d4bb05e579dd2682fc950ab"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#af400c5904d4bb05e579dd2682fc950ab">cl7::text::format::to_string</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
+<tr class="separator:af400c5904d4bb05e579dd2682fc950ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae389317ae4ecbcc0eee79c428ecd8e2c" id="r_ae389317ae4ecbcc0eee79c428ecd8e2c"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; <br />
+requires (std::is_integral_v&lt;Tval&gt;)</td></tr>
+<tr class="memitem:ae389317ae4ecbcc0eee79c428ecd8e2c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ae389317ae4ecbcc0eee79c428ecd8e2c">cl7::text::format::to_string</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:ae389317ae4ecbcc0eee79c428ecd8e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ff7e912659c858238b7c61c088cc87c" id="r_a4ff7e912659c858238b7c61c088cc87c"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a4ff7e912659c858238b7c61c088cc87c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a4ff7e912659c858238b7c61c088cc87c">cl7::text::format::to_hex</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
+<tr class="separator:a4ff7e912659c858238b7c61c088cc87c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c475fb9819b9dbbabf95b376559d44b" id="r_a1c475fb9819b9dbbabf95b376559d44b"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a1c475fb9819b9dbbabf95b376559d44b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a1c475fb9819b9dbbabf95b376559d44b">cl7::text::format::to_hex</a> (Tval val, unsigned zero_pad_width=0, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3">HexCase</a> hex_case=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3a19de5b94f7b83900d4b296d9fa491aec">HexCase::Upper</a>)</td></tr>
+<tr class="separator:a1c475fb9819b9dbbabf95b376559d44b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a914613035948d7e7ea9e2b52cbd2c110" id="r_a914613035948d7e7ea9e2b52cbd2c110"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a914613035948d7e7ea9e2b52cbd2c110"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a914613035948d7e7ea9e2b52cbd2c110">cl7::text::format::to_0x_hex</a> (Tval val, unsigned zero_pad_width=0, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3">HexCase</a> hex_case=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3a19de5b94f7b83900d4b296d9fa491aec">HexCase::Upper</a>)</td></tr>
+<tr class="separator:a914613035948d7e7ea9e2b52cbd2c110"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad094f5acad7f551fe02756a221fa88bb" id="r_ad094f5acad7f551fe02756a221fa88bb"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:ad094f5acad7f551fe02756a221fa88bb"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ad094f5acad7f551fe02756a221fa88bb">cl7::text::format::to_hex_lc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:ad094f5acad7f551fe02756a221fa88bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69dfdebd02dee0d5a397800491e4acff" id="r_a69dfdebd02dee0d5a397800491e4acff"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a69dfdebd02dee0d5a397800491e4acff"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a69dfdebd02dee0d5a397800491e4acff">cl7::text::format::to_hex_uc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a69dfdebd02dee0d5a397800491e4acff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b6fb3f0dc8d1870bff7dfaace94feaa" id="r_a9b6fb3f0dc8d1870bff7dfaace94feaa"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a9b6fb3f0dc8d1870bff7dfaace94feaa"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a9b6fb3f0dc8d1870bff7dfaace94feaa">cl7::text::format::to_0x_hex_lc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a9b6fb3f0dc8d1870bff7dfaace94feaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5290666cb0bda20e88495cb89b92e3cc" id="r_a5290666cb0bda20e88495cb89b92e3cc"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a5290666cb0bda20e88495cb89b92e3cc"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a5290666cb0bda20e88495cb89b92e3cc">cl7::text::format::to_0x_hex_uc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a5290666cb0bda20e88495cb89b92e3cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a940ed8b78884dd9a5f77ef63be8434cb" id="r_a940ed8b78884dd9a5f77ef63be8434cb"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a940ed8b78884dd9a5f77ef63be8434cb"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a940ed8b78884dd9a5f77ef63be8434cb">cl7::text::format::to_octal</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
+<tr class="separator:a940ed8b78884dd9a5f77ef63be8434cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3d56ae62a5b7d8b5b4ed648bb74a7b1" id="r_ac3d56ae62a5b7d8b5b4ed648bb74a7b1"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:ac3d56ae62a5b7d8b5b4ed648bb74a7b1"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ac3d56ae62a5b7d8b5b4ed648bb74a7b1">cl7::text::format::to_octal</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:ac3d56ae62a5b7d8b5b4ed648bb74a7b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ac3afe6d3269fca3337e04d13c28b6e" id="r_a2ac3afe6d3269fca3337e04d13c28b6e"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a2ac3afe6d3269fca3337e04d13c28b6e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a2ac3afe6d3269fca3337e04d13c28b6e">cl7::text::format::to_0o_octal</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a2ac3afe6d3269fca3337e04d13c28b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a141902fa26103ca96d9953605f3eb356" id="r_a141902fa26103ca96d9953605f3eb356"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a141902fa26103ca96d9953605f3eb356"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a141902fa26103ca96d9953605f3eb356">cl7::text::format::to_binary</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
+<tr class="separator:a141902fa26103ca96d9953605f3eb356"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9047729a1df181bb7e1d34f212dbb51" id="r_ac9047729a1df181bb7e1d34f212dbb51"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:ac9047729a1df181bb7e1d34f212dbb51"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ac9047729a1df181bb7e1d34f212dbb51">cl7::text::format::to_binary</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:ac9047729a1df181bb7e1d34f212dbb51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec3a063ed351caef57a01111e58b6913" id="r_aec3a063ed351caef57a01111e58b6913"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:aec3a063ed351caef57a01111e58b6913"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#aec3a063ed351caef57a01111e58b6913">cl7::text::format::to_0b_binary</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:aec3a063ed351caef57a01111e58b6913"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36130f6c0538b5663a489d889bb6a618" id="r_a36130f6c0538b5663a489d889bb6a618"><td class="memTemplParams" colspan="2">template&lt;typename Tval  = float, class Tstring_or_view &gt; <br />
+requires (std::is_floating_point_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a36130f6c0538b5663a489d889bb6a618"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a36130f6c0538b5663a489d889bb6a618">cl7::text::format::parse_float</a> (Tstring_or_view &amp;&amp;s)</td></tr>
+<tr class="separator:a36130f6c0538b5663a489d889bb6a618"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5" id="r_a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5"><td class="memItemLeft" align="right" valign="top">constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">cl7::text::format::MAX_FLOAT_PRECISION</a> = 34</td></tr>
+<tr class="separator:a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_c08fb4251456ac15da27f1739991873e.html">CoreLabs</a></li><li class="navelem"><a class="el" href="../../dir_b8fbc5551365e5a6fd254f5bc2b2d9b2.html">strings</a></li><li class="navelem"><a class="el" href="../../d0/d0a/format_8h.html">format.h</a></li>
+    <li class="navelem"><a class="el" href="../../dir_c08fb4251456ac15da27f1739991873e.html">CoreLabs</a></li><li class="navelem"><a class="el" href="../../dir_6b7b80329907c5b12573dfa25d18d120.html">text</a></li><li class="navelem"><a class="el" href="../../d0/d0a/format_8h.html">format.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

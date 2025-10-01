@@ -1,4 +1,4 @@
 var CodepointResult_8h =
 [
-    [ "cl7::strings::codec::CodepointResult", "da/dee/structcl7_1_1strings_1_1codec_1_1CodepointResult.html", "da/dee/structcl7_1_1strings_1_1codec_1_1CodepointResult" ]
+    [ "cl7::text::codec::CodepointResult", "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html", "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult" ]
 ];

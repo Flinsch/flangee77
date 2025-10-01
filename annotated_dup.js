@@ -44,36 +44,40 @@ var annotated_dup =
         [ "StandardRegistry", "d2/da1/classcl7_1_1profiling_1_1StandardRegistry.html", "d2/da1/classcl7_1_1profiling_1_1StandardRegistry" ],
         [ "Stopwatch", "d6/dac/classcl7_1_1profiling_1_1Stopwatch.html", "d6/dac/classcl7_1_1profiling_1_1Stopwatch" ]
       ] ],
-      [ "strings", "dc/d17/namespacecl7_1_1strings.html", [
-        [ "codec", "d2/d97/namespacecl7_1_1strings_1_1codec.html", [
-          [ "Analyzer", "df/d88/classcl7_1_1strings_1_1codec_1_1Analyzer.html", "df/d88/classcl7_1_1strings_1_1codec_1_1Analyzer" ],
-          [ "AsciiCodec", "de/d9e/classcl7_1_1strings_1_1codec_1_1AsciiCodec.html", "de/d9e/classcl7_1_1strings_1_1codec_1_1AsciiCodec" ],
-          [ "codepoint", "d8/d57/structcl7_1_1strings_1_1codec_1_1codepoint.html", "d8/d57/structcl7_1_1strings_1_1codec_1_1codepoint" ],
-          [ "CodepointResult", "da/dee/structcl7_1_1strings_1_1codec_1_1CodepointResult.html", "da/dee/structcl7_1_1strings_1_1codec_1_1CodepointResult" ],
-          [ "Decoder", "d9/d58/classcl7_1_1strings_1_1codec_1_1Decoder.html", "d9/d58/classcl7_1_1strings_1_1codec_1_1Decoder" ],
-          [ "DecodeResult", "d1/d90/structcl7_1_1strings_1_1codec_1_1DecodeResult.html", "d1/d90/structcl7_1_1strings_1_1codec_1_1DecodeResult" ],
-          [ "EncodeBuffer", "d8/d0c/structcl7_1_1strings_1_1codec_1_1EncodeBuffer.html", "d8/d0c/structcl7_1_1strings_1_1codec_1_1EncodeBuffer" ],
-          [ "Encoder", "d6/d29/classcl7_1_1strings_1_1codec_1_1Encoder.html", "d6/d29/classcl7_1_1strings_1_1codec_1_1Encoder" ],
-          [ "EncodeResult", "d9/dc3/structcl7_1_1strings_1_1codec_1_1EncodeResult.html", "d9/dc3/structcl7_1_1strings_1_1codec_1_1EncodeResult" ],
-          [ "ErrorHandler", "d2/d31/classcl7_1_1strings_1_1codec_1_1ErrorHandler.html", "d2/d31/classcl7_1_1strings_1_1codec_1_1ErrorHandler" ],
-          [ "ErrorStatus", "dc/ddb/structcl7_1_1strings_1_1codec_1_1ErrorStatus.html", "dc/ddb/structcl7_1_1strings_1_1codec_1_1ErrorStatus" ],
-          [ "LoggingErrorHandler", "d4/dd7/classcl7_1_1strings_1_1codec_1_1LoggingErrorHandler.html", "d4/dd7/classcl7_1_1strings_1_1codec_1_1LoggingErrorHandler" ],
-          [ "traits", "d0/d86/structcl7_1_1strings_1_1codec_1_1traits.html", "d0/d86/structcl7_1_1strings_1_1codec_1_1traits" ],
-          [ "traits< cl7::achar_t >", "d2/d84/structcl7_1_1strings_1_1codec_1_1traits_3_01cl7_1_1achar__t_01_4.html", "d2/d84/structcl7_1_1strings_1_1codec_1_1traits_3_01cl7_1_1achar__t_01_4" ],
-          [ "traits< cl7::u16char_t >", "db/d34/structcl7_1_1strings_1_1codec_1_1traits_3_01cl7_1_1u16char__t_01_4.html", "db/d34/structcl7_1_1strings_1_1codec_1_1traits_3_01cl7_1_1u16char__t_01_4" ],
-          [ "traits< cl7::u32char_t >", "dd/d36/structcl7_1_1strings_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html", "dd/d36/structcl7_1_1strings_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4" ],
-          [ "traits< cl7::u8char_t >", "d4/d70/structcl7_1_1strings_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4.html", "d4/d70/structcl7_1_1strings_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4" ],
-          [ "Transcoder", "d0/d8b/classcl7_1_1strings_1_1codec_1_1Transcoder.html", "d0/d8b/classcl7_1_1strings_1_1codec_1_1Transcoder" ],
-          [ "Utf16Codec", "d7/d17/classcl7_1_1strings_1_1codec_1_1Utf16Codec.html", "d7/d17/classcl7_1_1strings_1_1codec_1_1Utf16Codec" ],
-          [ "Utf32Codec", "d7/d4b/classcl7_1_1strings_1_1codec_1_1Utf32Codec.html", "d7/d4b/classcl7_1_1strings_1_1codec_1_1Utf32Codec" ],
-          [ "Utf8Codec", "dd/de3/classcl7_1_1strings_1_1codec_1_1Utf8Codec.html", "dd/de3/classcl7_1_1strings_1_1codec_1_1Utf8Codec" ]
-        ] ]
-      ] ],
       [ "system", "dc/df8/namespacecl7_1_1system.html", [
         [ "CPUID", "d5/d80/structcl7_1_1system_1_1CPUID.html", "d5/d80/structcl7_1_1system_1_1CPUID" ],
         [ "datetime", "d6/d16/structcl7_1_1system_1_1datetime.html", "d6/d16/structcl7_1_1system_1_1datetime" ],
         [ "MemoryStatus", "d1/d7a/structcl7_1_1system_1_1MemoryStatus.html", "d1/d7a/structcl7_1_1system_1_1MemoryStatus" ],
         [ "user", "dd/d72/classcl7_1_1system_1_1user.html", "dd/d72/classcl7_1_1system_1_1user" ]
+      ] ],
+      [ "text", "d0/d10/namespacecl7_1_1text.html", [
+        [ "codec", "da/d47/namespacecl7_1_1text_1_1codec.html", [
+          [ "Analyzer", "d8/d02/classcl7_1_1text_1_1codec_1_1Analyzer.html", "d8/d02/classcl7_1_1text_1_1codec_1_1Analyzer" ],
+          [ "AsciiCodec", "d3/df1/classcl7_1_1text_1_1codec_1_1AsciiCodec.html", "d3/df1/classcl7_1_1text_1_1codec_1_1AsciiCodec" ],
+          [ "codepoint", "db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html", "db/d9a/structcl7_1_1text_1_1codec_1_1codepoint" ],
+          [ "CodepointResult", "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html", "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult" ],
+          [ "Decoder", "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html", "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder" ],
+          [ "DecodeResult", "da/d9c/structcl7_1_1text_1_1codec_1_1DecodeResult.html", "da/d9c/structcl7_1_1text_1_1codec_1_1DecodeResult" ],
+          [ "EncodeBuffer", "d0/d4a/structcl7_1_1text_1_1codec_1_1EncodeBuffer.html", "d0/d4a/structcl7_1_1text_1_1codec_1_1EncodeBuffer" ],
+          [ "Encoder", "d6/d1d/classcl7_1_1text_1_1codec_1_1Encoder.html", "d6/d1d/classcl7_1_1text_1_1codec_1_1Encoder" ],
+          [ "EncodeResult", "d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult.html", "d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult" ],
+          [ "ErrorHandler", "d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html", "d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler" ],
+          [ "ErrorStatus", "d3/dea/structcl7_1_1text_1_1codec_1_1ErrorStatus.html", "d3/dea/structcl7_1_1text_1_1codec_1_1ErrorStatus" ],
+          [ "LoggingErrorHandler", "db/d54/classcl7_1_1text_1_1codec_1_1LoggingErrorHandler.html", "db/d54/classcl7_1_1text_1_1codec_1_1LoggingErrorHandler" ],
+          [ "traits", "d7/d07/structcl7_1_1text_1_1codec_1_1traits.html", "d7/d07/structcl7_1_1text_1_1codec_1_1traits" ],
+          [ "traits< cl7::achar_t >", "d7/db1/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1achar__t_01_4.html", "d7/db1/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1achar__t_01_4" ],
+          [ "traits< cl7::u16char_t >", "d2/d25/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u16char__t_01_4.html", "d2/d25/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u16char__t_01_4" ],
+          [ "traits< cl7::u32char_t >", "d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html", "d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4" ],
+          [ "traits< cl7::u8char_t >", "de/db6/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4.html", "de/db6/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4" ],
+          [ "Transcoder", "da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html", "da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder" ],
+          [ "Utf16Codec", "d8/de0/classcl7_1_1text_1_1codec_1_1Utf16Codec.html", "d8/de0/classcl7_1_1text_1_1codec_1_1Utf16Codec" ],
+          [ "Utf32Codec", "db/dd0/classcl7_1_1text_1_1codec_1_1Utf32Codec.html", "db/dd0/classcl7_1_1text_1_1codec_1_1Utf32Codec" ],
+          [ "Utf8Codec", "d2/db1/classcl7_1_1text_1_1codec_1_1Utf8Codec.html", "d2/db1/classcl7_1_1text_1_1codec_1_1Utf8Codec" ]
+        ] ],
+        [ "format", "df/d89/namespacecl7_1_1text_1_1format.html", [
+          [ "FloatFormatOptions", "d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html", "d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions" ],
+          [ "IntFormatOptions", "dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html", "dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions" ]
+        ] ]
       ] ],
       [ "auto_invoke", "de/dbb/classcl7_1_1auto__invoke.html", "de/dbb/classcl7_1_1auto__invoke" ],
       [ "const_ptr_forward_iterator", "d2/d93/classcl7_1_1const__ptr__forward__iterator.html", "d2/d93/classcl7_1_1const__ptr__forward__iterator" ],

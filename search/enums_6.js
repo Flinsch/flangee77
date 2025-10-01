@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['indentation_0',['Indentation',['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html#a80c261a5c91b31831348b344ba3b6dbd',1,'dl7::json::Format::MultiLineOptions']]],
-  ['indextype_1',['IndexType',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#a559f60da7ab95a4fc01880780fbab658',1,'xl7::graphics::meshes']]]
+  ['hexcase_0',['HexCase',['../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3',1,'cl7::text::format']]]
 ];

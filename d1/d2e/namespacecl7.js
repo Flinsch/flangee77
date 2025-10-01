@@ -21,8 +21,8 @@ var namespacecl7 =
       [ "stringify_byte_amount_si", "df/db2/namespacecl7_1_1memory.html#a52ff4ff0cae6b516a3028d74f580cafa", null ]
     ] ],
     [ "profiling", "d8/d9a/namespacecl7_1_1profiling.html", "d8/d9a/namespacecl7_1_1profiling" ],
-    [ "strings", "dc/d17/namespacecl7_1_1strings.html", "dc/d17/namespacecl7_1_1strings" ],
     [ "system", "dc/df8/namespacecl7_1_1system.html", "dc/df8/namespacecl7_1_1system" ],
+    [ "text", "d0/d10/namespacecl7_1_1text.html", "d0/d10/namespacecl7_1_1text" ],
     [ "auto_invoke", "de/dbb/classcl7_1_1auto__invoke.html", "de/dbb/classcl7_1_1auto__invoke" ],
     [ "const_ptr_forward_iterator", "d2/d93/classcl7_1_1const__ptr__forward__iterator.html", "d2/d93/classcl7_1_1const__ptr__forward__iterator" ],
     [ "contiguous_iterator", "d1/d5d/classcl7_1_1contiguous__iterator.html", "d1/d5d/classcl7_1_1contiguous__iterator" ],

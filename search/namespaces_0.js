@@ -10,11 +10,11 @@ var searchData=
   ['cl7_3a_3alogging_7',['logging',['../df/de5/namespacecl7_1_1logging.html',1,'cl7']]],
   ['cl7_3a_3amemory_8',['memory',['../df/db2/namespacecl7_1_1memory.html',1,'cl7']]],
   ['cl7_3a_3aprofiling_9',['profiling',['../d8/d9a/namespacecl7_1_1profiling.html',1,'cl7']]],
-  ['cl7_3a_3astrings_10',['strings',['../dc/d17/namespacecl7_1_1strings.html',1,'cl7']]],
-  ['cl7_3a_3astrings_3a_3acodec_11',['codec',['../d2/d97/namespacecl7_1_1strings_1_1codec.html',1,'cl7::strings']]],
-  ['cl7_3a_3astrings_3a_3aformat_12',['format',['../d1/d37/namespacecl7_1_1strings_1_1format.html',1,'cl7::strings']]],
-  ['cl7_3a_3astrings_3a_3ainspect_13',['inspect',['../db/d9a/namespacecl7_1_1strings_1_1inspect.html',1,'cl7::strings']]],
-  ['cl7_3a_3astrings_3a_3ametrics_14',['metrics',['../d7/d54/namespacecl7_1_1strings_1_1metrics.html',1,'cl7::strings']]],
-  ['cl7_3a_3astrings_3a_3atransform_15',['transform',['../de/da4/namespacecl7_1_1strings_1_1transform.html',1,'cl7::strings']]],
-  ['cl7_3a_3asystem_16',['system',['../dc/df8/namespacecl7_1_1system.html',1,'cl7']]]
+  ['cl7_3a_3asystem_10',['system',['../dc/df8/namespacecl7_1_1system.html',1,'cl7']]],
+  ['cl7_3a_3atext_11',['text',['../d0/d10/namespacecl7_1_1text.html',1,'cl7']]],
+  ['cl7_3a_3atext_3a_3acodec_12',['codec',['../da/d47/namespacecl7_1_1text_1_1codec.html',1,'cl7::text']]],
+  ['cl7_3a_3atext_3a_3aformat_13',['format',['../df/d89/namespacecl7_1_1text_1_1format.html',1,'cl7::text']]],
+  ['cl7_3a_3atext_3a_3ainspect_14',['inspect',['../d5/df5/namespacecl7_1_1text_1_1inspect.html',1,'cl7::text']]],
+  ['cl7_3a_3atext_3a_3ametrics_15',['metrics',['../d5/dcc/namespacecl7_1_1text_1_1metrics.html',1,'cl7::text']]],
+  ['cl7_3a_3atext_3a_3atransform_16',['transform',['../de/d31/namespacecl7_1_1text_1_1transform.html',1,'cl7::text']]]
 ];

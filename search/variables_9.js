@@ -16,7 +16,7 @@ var searchData=
   ['index_5fto_5floc_5fformat_13',['index_to_loc_format',['../d9/ded/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontHeader.html#a729b03aa8c442b1f48015c1847032db6',1,'fl7::fonts::TrueTypeFontLoader::FontHeader']]],
   ['index_5ftype_14',['index_type',['../de/d17/structxl7_1_1graphics_1_1meshes_1_1IndexBuffer_1_1Desc.html#a5306cf20c9467674c23078f68c8dc1d8',1,'xl7::graphics::meshes::IndexBuffer::Desc']]],
   ['input_5flayout_15',['input_layout',['../d7/d0a/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates.html#aa75656cea8689497e342acf03fa59f81',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates']]],
-  ['input_5fread_16',['input_read',['../d1/d90/structcl7_1_1strings_1_1codec_1_1DecodeResult.html#a64557be29eaca175380ce60e8c914021',1,'cl7::strings::codec::DecodeResult']]],
+  ['input_5fread_16',['input_read',['../da/d9c/structcl7_1_1text_1_1codec_1_1DecodeResult.html#a691d1e391b49f52044a32ab10ec21fa9',1,'cl7::text::codec::DecodeResult']]],
   ['insert_5fbreaks_17',['insert_breaks',['../de/d56/structdl7_1_1Base64_1_1Options.html#a832596782bae652044468dab9c37f62b',1,'dl7::Base64::Options']]],
   ['instance_5fdata_5fstep_5frate_18',['instance_data_step_rate',['../d1/d0d/structxl7_1_1graphics_1_1meshes_1_1VertexBuffer_1_1Desc.html#a2746e80399bb7f70389d4becb440cf46',1,'xl7::graphics::meshes::VertexBuffer::Desc']]],
   ['instance_5fdata_5fstep_5frates_19',['instance_data_step_rates',['../d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout.html#a3b05ab900f46a68253a4f48fec48ef4f',1,'xl7::graphics::impl::shared::meshes::ComposedVertexLayout']]],

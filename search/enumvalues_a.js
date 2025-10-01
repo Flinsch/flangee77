@@ -17,5 +17,6 @@ var searchData=
   ['linearinterpolation_14',['LinearInterpolation',['../d8/dd2/namespacexl7_1_1graphics_1_1images.html#ac9d829a5933316d55f7f267a17474dd9a14517b35b26ed67a34ffd446a9b86e33',1,'xl7::graphics::images']]],
   ['linelist_15',['LineList',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287fa596e1b7afe8925f3f578c716d5af8fef',1,'xl7::graphics::meshes']]],
   ['linestrip_16',['LineStrip',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287fae7f9e73b8edd21f420a63b3ace5768a2',1,'xl7::graphics::meshes']]],
-  ['log_17',['Log',['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ace0be71e33226e4c1db2bcea5959f16b',1,'cl7::logging']]]
+  ['log_17',['Log',['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ace0be71e33226e4c1db2bcea5959f16b',1,'cl7::logging']]],
+  ['lower_18',['Lower',['../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3ab75fcdd2d72d9e000beab48622402d93',1,'cl7::text::format']]]
 ];

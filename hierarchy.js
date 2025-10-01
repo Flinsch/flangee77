@@ -17,12 +17,12 @@ var hierarchy =
       ] ],
       [ "xl7::graphics::pipeline::Pipeline", "d6/d62/classxl7_1_1graphics_1_1pipeline_1_1Pipeline.html", null ]
     ] ],
-    [ "cl7::strings::codec::Analyzer< Tchar, TDefaultErrorHandler >", "df/d88/classcl7_1_1strings_1_1codec_1_1Analyzer.html", null ],
+    [ "cl7::text::codec::Analyzer< Tchar, TDefaultErrorHandler >", "d8/d02/classcl7_1_1text_1_1codec_1_1Analyzer.html", null ],
     [ "ml7::Angle< T >", "d4/d9d/structml7_1_1Angle.html", null ],
     [ "dl7::ini::detail::AnyOtherMatcher", "d4/dc9/structdl7_1_1ini_1_1detail_1_1AnyOtherMatcher.html", null ],
     [ "pl7::Application", "d8/d91/classpl7_1_1Application.html", null ],
     [ "pl7::ArgumentBag", "dd/d75/classpl7_1_1ArgumentBag.html", null ],
-    [ "cl7::strings::codec::AsciiCodec", "de/d9e/classcl7_1_1strings_1_1codec_1_1AsciiCodec.html", null ],
+    [ "cl7::text::codec::AsciiCodec", "d3/df1/classcl7_1_1text_1_1codec_1_1AsciiCodec.html", null ],
     [ "dl7::syntax::AstNode< Ttype >", "db/dcc/classdl7_1_1syntax_1_1AstNode.html", null ],
     [ "cl7::profiling::Registry::Attorney", "d6/df3/classcl7_1_1profiling_1_1Registry_1_1Attorney.html", null ],
     [ "xl7::graphics::impl::direct3d11::meshes::IndexBufferImpl::Attorney", "d0/d6a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl_1_1Attorney.html", null ],
@@ -69,10 +69,10 @@ var hierarchy =
     [ "xl7::graphics::images::PngImageHandler::ChunkInfo", "d9/dc0/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1ChunkInfo.html", null ],
     [ "ml7::ops::clamp< min, max >", "d4/d01/structml7_1_1ops_1_1clamp.html", null ],
     [ "ml7::ops::clamp01", "d0/d5c/structml7_1_1ops_1_1clamp01.html", null ],
-    [ "cl7::strings::codec::codepoint", "d8/d57/structcl7_1_1strings_1_1codec_1_1codepoint.html", null ],
-    [ "cl7::strings::codec::CodepointResult", "da/dee/structcl7_1_1strings_1_1codec_1_1CodepointResult.html", [
-      [ "cl7::strings::codec::DecodeResult< Tchar >", "d1/d90/structcl7_1_1strings_1_1codec_1_1DecodeResult.html", null ],
-      [ "cl7::strings::codec::EncodeResult< Tchar >", "d9/dc3/structcl7_1_1strings_1_1codec_1_1EncodeResult.html", null ]
+    [ "cl7::text::codec::codepoint", "db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html", null ],
+    [ "cl7::text::codec::CodepointResult", "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html", [
+      [ "cl7::text::codec::DecodeResult< Tchar >", "da/d9c/structcl7_1_1text_1_1codec_1_1DecodeResult.html", null ],
+      [ "cl7::text::codec::EncodeResult< Tchar >", "d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult.html", null ]
     ] ],
     [ "xl7::graphics::Color", "de/df3/structxl7_1_1graphics_1_1Color.html", null ],
     [ "xl7::graphics::shaders::CompileOptions", "de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html", null ],
@@ -106,7 +106,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "cl7::system::datetime", "d6/d16/structcl7_1_1system_1_1datetime.html", null ],
-    [ "cl7::strings::codec::Decoder< Tchar, TDefaultErrorHandler >", "d9/d58/classcl7_1_1strings_1_1codec_1_1Decoder.html", null ],
+    [ "cl7::text::codec::Decoder< Tchar, TDefaultErrorHandler >", "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html", null ],
     [ "dl7::compression::Deflate", "d2/d26/structdl7_1_1compression_1_1Deflate.html", null ],
     [ "xl7::graphics::images::Image::Desc", "d0/d81/structxl7_1_1graphics_1_1images_1_1Image_1_1Desc.html", null ],
     [ "xl7::graphics::meshes::MeshBuffer::Desc", "d8/df2/structxl7_1_1graphics_1_1meshes_1_1MeshBuffer_1_1Desc.html", [
@@ -134,23 +134,24 @@ var hierarchy =
     [ "xl7::DriverResolver::DriverEntry", "df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html", null ],
     [ "xl7::DriverResolver", "de/d70/structxl7_1_1DriverResolver.html", null ],
     [ "xl7::graphics::meshes::VertexLayout::Element", "d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html", null ],
-    [ "cl7::strings::codec::EncodeBuffer< Tchar >", "d8/d0c/structcl7_1_1strings_1_1codec_1_1EncodeBuffer.html", null ],
-    [ "cl7::strings::codec::Encoder< Tchar, TDefaultErrorHandler >", "d6/d29/classcl7_1_1strings_1_1codec_1_1Encoder.html", null ],
+    [ "cl7::text::codec::EncodeBuffer< Tchar >", "d0/d4a/structcl7_1_1text_1_1codec_1_1EncodeBuffer.html", null ],
+    [ "cl7::text::codec::Encoder< Tchar, TDefaultErrorHandler >", "d6/d1d/classcl7_1_1text_1_1codec_1_1Encoder.html", null ],
     [ "cl7::io::EndianAwareReader< source_endian >", "d9/d5a/classcl7_1_1io_1_1EndianAwareReader.html", null ],
     [ "cl7::io::EndianAwareWriter< target_endian >", "db/d48/classcl7_1_1io_1_1EndianAwareWriter.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::StateArray< TProxy, N >::Entry", "d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html", null ],
     [ "tl7::Signature::equal_to", "da/dc1/structtl7_1_1Signature_1_1equal__to.html", null ],
-    [ "cl7::strings::codec::ErrorHandler", "d2/d31/classcl7_1_1strings_1_1codec_1_1ErrorHandler.html", [
-      [ "cl7::strings::codec::LoggingErrorHandler", "d4/dd7/classcl7_1_1strings_1_1codec_1_1LoggingErrorHandler.html", null ]
+    [ "cl7::text::codec::ErrorHandler", "d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html", [
+      [ "cl7::text::codec::LoggingErrorHandler", "db/d54/classcl7_1_1text_1_1codec_1_1LoggingErrorHandler.html", null ]
     ] ],
     [ "dl7::json::util::Unescaper::ErrorHandler", "d0/d2a/structdl7_1_1json_1_1util_1_1Unescaper_1_1ErrorHandler.html", [
       [ "dl7::json::detail::UnescaperErrorHandler", "dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler.html", null ]
     ] ],
-    [ "cl7::strings::codec::ErrorStatus", "dc/ddb/structcl7_1_1strings_1_1codec_1_1ErrorStatus.html", null ],
+    [ "cl7::text::codec::ErrorStatus", "d3/dea/structcl7_1_1text_1_1codec_1_1ErrorStatus.html", null ],
     [ "dl7::json::util::Escaper", "d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html", null ],
     [ "std::exception", null, [
       [ "tl7::exceptions::assertion_exception", "d6/db9/structtl7_1_1exceptions_1_1assertion__exception.html", null ]
     ] ],
+    [ "cl7::text::format::FloatFormatOptions", "d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html", null ],
     [ "dl7::syntax::matchers::FloatingPointLiteralMatcher", "df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher.html", null ],
     [ "fl7::fonts::Font", "d3/d00/classfl7_1_1fonts_1_1Font.html", null ],
     [ "fl7::fonts::TrueTypeFontLoader::FontHeader", "d9/ded/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontHeader.html", null ],
@@ -202,6 +203,7 @@ var hierarchy =
     [ "dl7::ini::IniReader", "d0/d99/classdl7_1_1ini_1_1IniReader.html", null ],
     [ "dl7::ini::IniWriter", "df/d0b/classdl7_1_1ini_1_1IniWriter.html", null ],
     [ "dl7::syntax::matchers::IntegerLiteralMatcher", "d9/d3c/structdl7_1_1syntax_1_1matchers_1_1IntegerLiteralMatcher.html", null ],
+    [ "cl7::text::format::IntFormatOptions", "dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html", null ],
     [ "cl7::io::IReadable", "d5/ddf/classcl7_1_1io_1_1IReadable.html", [
       [ "cl7::io::IReadWritable", "db/d48/classcl7_1_1io_1_1IReadWritable.html", [
         [ "cl7::io::File", "d2/d67/classcl7_1_1io_1_1File.html", null ]
@@ -220,7 +222,7 @@ var hierarchy =
     [ "xl7::graphics::surfaces::ISurfaceFactory", "dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html", [
       [ "xl7::graphics::IResourceFactory", "d3/daa/classxl7_1_1graphics_1_1IResourceFactory.html", null ]
     ] ],
-    [ "cl7::strings::codec::Decoder< Tchar, TDefaultErrorHandler >::iterator", "d0/d50/classcl7_1_1strings_1_1codec_1_1Decoder_1_1iterator.html", null ],
+    [ "cl7::text::codec::Decoder< Tchar, TDefaultErrorHandler >::iterator", "dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html", null ],
     [ "xl7::graphics::textures::ITextureFactory", "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html", [
       [ "xl7::graphics::IResourceFactory", "d3/daa/classxl7_1_1graphics_1_1IResourceFactory.html", null ]
     ] ],
@@ -407,7 +409,7 @@ var hierarchy =
     [ "dl7::ini::Section", "dc/d3a/classdl7_1_1ini_1_1Section.html", [
       [ "dl7::ini::Ini", "da/d48/classdl7_1_1ini_1_1Ini.html", null ]
     ] ],
-    [ "cl7::strings::codec::Decoder< Tchar, TDefaultErrorHandler >::sentinel", "d7/ddb/classcl7_1_1strings_1_1codec_1_1Decoder_1_1sentinel.html", null ],
+    [ "cl7::text::codec::Decoder< Tchar, TDefaultErrorHandler >::sentinel", "d6/df5/classcl7_1_1text_1_1codec_1_1Decoder_1_1sentinel.html", null ],
     [ "tl7::TestSuite::Settings", "db/dbc/structtl7_1_1TestSuite_1_1Settings.html", null ],
     [ "xl7::graphics::shaders::ShaderCode", "d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html", null ],
     [ "tl7::Signature", "d1/d32/structtl7_1_1Signature.html", [
@@ -491,19 +493,19 @@ var hierarchy =
       [ "dl7::syntax::BufferedTokenReader< Tcontainer >", "d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html", null ],
       [ "dl7::syntax::LexingTokenReader", "dd/ddd/classdl7_1_1syntax_1_1LexingTokenReader.html", null ]
     ] ],
-    [ "cl7::strings::codec::traits< Tchar >", "d0/d86/structcl7_1_1strings_1_1codec_1_1traits.html", null ],
-    [ "cl7::strings::codec::traits< cl7::achar_t >", "d2/d84/structcl7_1_1strings_1_1codec_1_1traits_3_01cl7_1_1achar__t_01_4.html", null ],
-    [ "cl7::strings::codec::traits< cl7::u16char_t >", "db/d34/structcl7_1_1strings_1_1codec_1_1traits_3_01cl7_1_1u16char__t_01_4.html", null ],
-    [ "cl7::strings::codec::traits< cl7::u32char_t >", "dd/d36/structcl7_1_1strings_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html", null ],
-    [ "cl7::strings::codec::traits< cl7::u8char_t >", "d4/d70/structcl7_1_1strings_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4.html", null ],
-    [ "cl7::strings::codec::Transcoder< Tchar_from, Tchar_to, TDefaultErrorHandler >", "d0/d8b/classcl7_1_1strings_1_1codec_1_1Transcoder.html", null ],
+    [ "cl7::text::codec::traits< Tchar >", "d7/d07/structcl7_1_1text_1_1codec_1_1traits.html", null ],
+    [ "cl7::text::codec::traits< cl7::achar_t >", "d7/db1/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1achar__t_01_4.html", null ],
+    [ "cl7::text::codec::traits< cl7::u16char_t >", "d2/d25/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u16char__t_01_4.html", null ],
+    [ "cl7::text::codec::traits< cl7::u32char_t >", "d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html", null ],
+    [ "cl7::text::codec::traits< cl7::u8char_t >", "de/db6/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4.html", null ],
+    [ "cl7::text::codec::Transcoder< Tchar_from, Tchar_to, TDefaultErrorHandler >", "da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html", null ],
     [ "cl7::u8isstream", "d9/d44/classcl7_1_1u8isstream.html", null ],
     [ "cl7::u8osstream", "d3/d63/classcl7_1_1u8osstream.html", null ],
     [ "dl7::json::util::Unescaper", "df/df1/classdl7_1_1json_1_1util_1_1Unescaper.html", null ],
     [ "cl7::system::user", "dd/d72/classcl7_1_1system_1_1user.html", null ],
-    [ "cl7::strings::codec::Utf16Codec", "d7/d17/classcl7_1_1strings_1_1codec_1_1Utf16Codec.html", null ],
-    [ "cl7::strings::codec::Utf32Codec", "d7/d4b/classcl7_1_1strings_1_1codec_1_1Utf32Codec.html", null ],
-    [ "cl7::strings::codec::Utf8Codec", "dd/de3/classcl7_1_1strings_1_1codec_1_1Utf8Codec.html", null ],
+    [ "cl7::text::codec::Utf16Codec", "d8/de0/classcl7_1_1text_1_1codec_1_1Utf16Codec.html", null ],
+    [ "cl7::text::codec::Utf32Codec", "db/dd0/classcl7_1_1text_1_1codec_1_1Utf32Codec.html", null ],
+    [ "cl7::text::codec::Utf8Codec", "d2/db1/classcl7_1_1text_1_1codec_1_1Utf8Codec.html", null ],
     [ "cl7::io::Utf8Reader", "d4/d97/classcl7_1_1io_1_1Utf8Reader.html", null ],
     [ "cl7::io::Utf8Writer", "d6/dba/classcl7_1_1io_1_1Utf8Writer.html", null ],
     [ "dl7::json::util::Validator", "d6/d9c/classdl7_1_1json_1_1util_1_1Validator.html", null ],

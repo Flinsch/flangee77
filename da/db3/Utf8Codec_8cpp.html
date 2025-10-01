@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>flangee77: CoreLabs/strings/codec/Utf8Codec.cpp File Reference</title>
+<title>flangee77: CoreLabs/text/codec/Utf8Codec.cpp File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -98,66 +98,66 @@ $(document).ready(function(){initNavTree('da/db3/Utf8Codec_8cpp.html','../../');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d0/d7f/Utf8Codec_8h_source.html">Utf8Codec.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d9/d52/EncodeBuffer_8h_source.html">CoreLabs/strings/codec/EncodeBuffer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d52/EncodeBuffer_8h_source.html">CoreLabs/text/codec/EncodeBuffer.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Utf8Codec.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../dd/db3/Utf8Codec_8cpp__incl.png" border="0" usemap="#aCoreLabs_2strings_2codec_2Utf8Codec_8cpp" alt=""/></div>
-<map name="aCoreLabs_2strings_2codec_2Utf8Codec_8cpp" id="aCoreLabs_2strings_2codec_2Utf8Codec_8cpp">
-<area shape="rect" title=" " alt="" coords="247,5,419,45"/>
-<area shape="rect" href="../../d0/d7f/Utf8Codec_8h.html" title=" " alt="" coords="419,93,521,119"/>
-<area shape="poly" title=" " alt="" coords="367,43,439,84,436,89,364,48"/>
-<area shape="rect" href="../../d9/d52/EncodeBuffer_8h.html" title=" " alt="" coords="5,167,177,207"/>
-<area shape="poly" title=" " alt="" coords="305,48,133,161,130,157,303,43"/>
-<area shape="rect" href="../../d8/d47/codepoint_8h.html" title=" " alt="" coords="574,401,681,427"/>
-<area shape="poly" title=" " alt="" coords="522,110,591,123,672,148,712,167,750,190,783,219,811,253,820,278,817,301,804,323,784,342,731,375,676,399,674,394,728,370,780,338,800,319,812,299,815,278,806,256,779,222,747,194,709,171,670,153,590,128,521,115"/>
-<area shape="rect" href="../../df/d92/Encoding_8h.html" title=" " alt="" coords="93,255,194,280"/>
-<area shape="poly" title=" " alt="" coords="448,121,180,251,178,246,445,116"/>
-<area shape="rect" href="../../dc/db8/EncodeResult_8h.html" title=" " alt="" coords="666,255,797,280"/>
-<area shape="poly" title=" " alt="" coords="491,117,571,164,703,245,700,250,569,169,488,121"/>
-<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="319,328,453,353"/>
-<area shape="poly" title=" " alt="" coords="449,121,422,140,399,168,386,205,381,245,381,283,384,314,379,314,376,283,375,245,381,204,394,165,418,137,446,117"/>
-<area shape="rect" href="../../d8/d8f/DecodeResult_8h.html" title=" " alt="" coords="509,255,641,280"/>
-<area shape="poly" title=" " alt="" coords="492,117,519,137,546,165,564,203,574,240,569,242,559,205,541,168,516,141,489,121"/>
-<area shape="rect" href="../../dd/d0e/ErrorHandler_8h.html" title=" " alt="" coords="409,174,531,199"/>
-<area shape="poly" title=" " alt="" coords="473,119,473,160,467,160,467,119"/>
-<area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="308,475,432,500"/>
-<area shape="poly" title=" " alt="" coords="587,429,425,474,424,468,585,424"/>
-<area shape="rect" title=" " alt="" coords="111,548,213,573"/>
-<area shape="poly" title=" " alt="" coords="337,503,210,546,208,541,336,497"/>
-<area shape="rect" title=" " alt="" coords="237,548,306,573"/>
-<area shape="poly" title=" " alt="" coords="356,502,300,542,297,538,353,498"/>
-<area shape="rect" title=" " alt="" coords="330,548,410,573"/>
-<area shape="poly" title=" " alt="" coords="373,500,373,534,367,534,367,500"/>
-<area shape="rect" title=" " alt="" coords="434,548,501,573"/>
-<area shape="poly" title=" " alt="" coords="387,498,442,537,439,542,384,502"/>
-<area shape="rect" title=" " alt="" coords="525,548,602,573"/>
-<area shape="poly" title=" " alt="" coords="402,498,520,541,518,546,400,503"/>
-<area shape="poly" title=" " alt="" coords="145,280,145,314,154,352,166,377,178,394,217,424,263,450,311,468,310,473,261,455,214,429,175,397,161,379,149,354,140,314,140,280"/>
-<area shape="rect" href="../../d7/d16/CodepointResult_8h.html" title=" " alt="" coords="553,328,702,353"/>
-<area shape="poly" title=" " alt="" coords="716,282,657,322,654,318,713,278"/>
-<area shape="poly" title=" " alt="" coords="676,283,456,328,455,323,675,277"/>
-<area shape="poly" title=" " alt="" coords="630,354,630,388,625,388,625,354"/>
-<area shape="poly" title=" " alt="" coords="434,351,469,363,500,379,511,390,518,401,519,414,514,428,500,444,483,457,446,475,444,470,481,452,496,440,509,425,514,413,513,403,507,393,496,384,467,368,433,356"/>
-<area shape="rect" title=" " alt="" coords="318,401,377,427"/>
-<area shape="poly" title=" " alt="" coords="382,355,362,391,358,388,377,352"/>
-<area shape="rect" title=" " alt="" coords="401,401,499,427"/>
-<area shape="poly" title=" " alt="" coords="399,352,433,389,429,393,395,355"/>
-<area shape="rect" title=" " alt="" coords="241,401,294,427"/>
-<area shape="poly" title=" " alt="" coords="368,356,300,396,297,392,366,351"/>
-<area shape="poly" title=" " alt="" coords="586,279,613,315,609,318,582,282"/>
-<area shape="poly" title=" " alt="" coords="546,283,431,325,429,320,544,278"/>
-<area shape="poly" title=" " alt="" coords="475,199,495,269,515,312,543,352,568,374,595,392,592,397,565,378,539,355,510,315,490,271,470,200"/>
-<area shape="poly" title=" " alt="" coords="423,202,205,254,204,249,422,197"/>
-<area shape="poly" title=" " alt="" coords="509,197,681,248,680,253,507,202"/>
-<area shape="poly" title=" " alt="" coords="466,201,401,317,397,315,461,198"/>
-<area shape="poly" title=" " alt="" coords="487,197,550,244,547,249,484,202"/>
-<area shape="rect" href="../../dd/d42/ErrorStatus_8h.html" title=" " alt="" coords="218,255,333,280"/>
-<area shape="poly" title=" " alt="" coords="443,202,317,252,315,247,441,197"/>
-<area shape="rect" href="../../d9/d2a/EncodingError_8h.html" title=" " alt="" coords="163,328,294,353"/>
-<area shape="poly" title=" " alt="" coords="270,282,246,318,242,315,265,279"/>
-<area shape="poly" title=" " alt="" coords="228,354,222,388,224,408,231,425,244,440,259,452,296,470,294,475,257,457,240,444,226,428,219,409,217,388,222,353"/>
-<area shape="poly" title=" " alt="" coords="84,208,74,244,75,262,82,278,107,286,163,298,306,324,305,329,162,304,106,291,79,282,70,263,69,243,79,206"/>
+<div class="center"><img src="../../dd/db3/Utf8Codec_8cpp__incl.png" border="0" usemap="#aCoreLabs_2text_2codec_2Utf8Codec_8cpp" alt=""/></div>
+<map name="aCoreLabs_2text_2codec_2Utf8Codec_8cpp" id="aCoreLabs_2text_2codec_2Utf8Codec_8cpp">
+<area shape="rect" title=" " alt="" coords="251,5,405,45"/>
+<area shape="rect" href="../../d0/d7f/Utf8Codec_8h.html" title=" " alt="" coords="409,93,511,119"/>
+<area shape="poly" title=" " alt="" coords="361,43,430,84,427,88,358,48"/>
+<area shape="rect" href="../../d9/d52/EncodeBuffer_8h.html" title=" " alt="" coords="5,167,160,207"/>
+<area shape="poly" title=" " alt="" coords="300,48,124,162,122,157,297,43"/>
+<area shape="rect" href="../../d8/d47/codepoint_8h.html" title=" " alt="" coords="564,401,671,427"/>
+<area shape="poly" title=" " alt="" coords="512,110,581,123,662,148,702,167,740,190,773,219,801,253,810,278,807,301,794,323,774,342,721,375,666,399,664,394,718,370,770,338,790,319,802,299,805,278,796,256,769,222,737,194,699,171,660,153,580,128,511,115"/>
+<area shape="rect" href="../../df/d92/Encoding_8h.html" title=" " alt="" coords="83,255,184,280"/>
+<area shape="poly" title=" " alt="" coords="438,121,170,251,168,246,435,116"/>
+<area shape="rect" href="../../dc/db8/EncodeResult_8h.html" title=" " alt="" coords="656,255,787,280"/>
+<area shape="poly" title=" " alt="" coords="481,117,561,164,693,245,690,250,559,169,478,121"/>
+<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="309,328,443,353"/>
+<area shape="poly" title=" " alt="" coords="439,121,412,140,389,168,376,205,371,245,371,283,374,314,369,314,366,283,365,245,371,204,384,165,408,137,436,117"/>
+<area shape="rect" href="../../d8/d8f/DecodeResult_8h.html" title=" " alt="" coords="499,255,631,280"/>
+<area shape="poly" title=" " alt="" coords="482,117,509,137,536,165,554,203,564,240,559,242,549,205,531,168,506,141,479,121"/>
+<area shape="rect" href="../../dd/d0e/ErrorHandler_8h.html" title=" " alt="" coords="399,174,521,199"/>
+<area shape="poly" title=" " alt="" coords="463,119,463,160,457,160,457,119"/>
+<area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="298,475,422,500"/>
+<area shape="poly" title=" " alt="" coords="577,429,415,474,414,468,575,424"/>
+<area shape="rect" title=" " alt="" coords="101,548,203,573"/>
+<area shape="poly" title=" " alt="" coords="327,503,200,546,198,541,326,497"/>
+<area shape="rect" title=" " alt="" coords="227,548,296,573"/>
+<area shape="poly" title=" " alt="" coords="346,502,290,542,287,538,343,498"/>
+<area shape="rect" title=" " alt="" coords="320,548,400,573"/>
+<area shape="poly" title=" " alt="" coords="363,500,363,534,357,534,357,500"/>
+<area shape="rect" title=" " alt="" coords="424,548,491,573"/>
+<area shape="poly" title=" " alt="" coords="377,498,432,537,429,542,374,502"/>
+<area shape="rect" title=" " alt="" coords="515,548,592,573"/>
+<area shape="poly" title=" " alt="" coords="392,498,510,541,508,546,390,503"/>
+<area shape="poly" title=" " alt="" coords="135,280,135,314,144,352,156,377,168,394,207,424,253,450,301,468,300,473,251,455,204,429,165,397,151,379,139,354,130,314,130,280"/>
+<area shape="rect" href="../../d7/d16/CodepointResult_8h.html" title=" " alt="" coords="543,328,692,353"/>
+<area shape="poly" title=" " alt="" coords="706,282,647,322,644,318,703,278"/>
+<area shape="poly" title=" " alt="" coords="666,283,446,328,445,323,665,277"/>
+<area shape="poly" title=" " alt="" coords="620,354,620,388,615,388,615,354"/>
+<area shape="poly" title=" " alt="" coords="424,351,459,363,490,379,501,390,508,401,509,414,504,428,490,444,473,457,436,475,434,470,471,452,486,440,499,425,504,413,503,403,497,393,486,384,457,368,423,356"/>
+<area shape="rect" title=" " alt="" coords="308,401,367,427"/>
+<area shape="poly" title=" " alt="" coords="372,355,352,391,348,388,367,352"/>
+<area shape="rect" title=" " alt="" coords="391,401,489,427"/>
+<area shape="poly" title=" " alt="" coords="389,352,423,389,419,393,385,355"/>
+<area shape="rect" title=" " alt="" coords="231,401,284,427"/>
+<area shape="poly" title=" " alt="" coords="358,356,290,396,287,392,356,351"/>
+<area shape="poly" title=" " alt="" coords="576,279,603,315,599,318,572,282"/>
+<area shape="poly" title=" " alt="" coords="536,283,421,325,419,320,534,278"/>
+<area shape="poly" title=" " alt="" coords="465,199,485,269,505,312,533,352,558,374,585,392,582,397,555,378,529,355,500,315,480,271,460,200"/>
+<area shape="poly" title=" " alt="" coords="413,202,195,254,194,249,412,197"/>
+<area shape="poly" title=" " alt="" coords="499,197,671,248,670,253,497,202"/>
+<area shape="poly" title=" " alt="" coords="456,201,391,317,387,315,451,198"/>
+<area shape="poly" title=" " alt="" coords="477,197,540,244,537,249,474,202"/>
+<area shape="rect" href="../../dd/d42/ErrorStatus_8h.html" title=" " alt="" coords="208,255,323,280"/>
+<area shape="poly" title=" " alt="" coords="433,202,307,252,305,247,431,197"/>
+<area shape="rect" href="../../d9/d2a/EncodingError_8h.html" title=" " alt="" coords="153,328,284,353"/>
+<area shape="poly" title=" " alt="" coords="260,282,236,318,232,315,255,279"/>
+<area shape="poly" title=" " alt="" coords="218,354,212,388,214,408,221,425,234,440,249,452,286,470,284,475,247,457,230,444,216,428,209,409,207,388,212,353"/>
+<area shape="poly" title=" " alt="" coords="75,208,65,244,65,262,72,278,97,286,153,298,296,324,295,329,152,304,96,291,69,282,60,263,59,243,70,206"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -165,32 +165,32 @@ Include dependency graph for Utf8Codec.cpp:</div>
 Namespaces</h2></td></tr>
 <tr class="memitem:d1/d2e/namespacecl7" id="r_d1/d2e/namespacecl7"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html">cl7</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:dc/d17/namespacecl7_1_1strings" id="r_dc/d17/namespacecl7_1_1strings"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d17/namespacecl7_1_1strings.html">cl7::strings</a></td></tr>
+<tr class="memitem:d0/d10/namespacecl7_1_1text" id="r_d0/d10/namespacecl7_1_1text"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d10/namespacecl7_1_1text.html">cl7::text</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:d2/d97/namespacecl7_1_1strings_1_1codec" id="r_d2/d97/namespacecl7_1_1strings_1_1codec"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d97/namespacecl7_1_1strings_1_1codec.html">cl7::strings::codec</a></td></tr>
+<tr class="memitem:da/d47/namespacecl7_1_1text_1_1codec" id="r_da/d47/namespacecl7_1_1text_1_1codec"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d47/namespacecl7_1_1text_1_1codec.html">cl7::text::codec</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a79c3421b3a26791e9058c76e843d6593" id="r_a79c3421b3a26791e9058c76e843d6593"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d97/namespacecl7_1_1strings_1_1codec.html#a79c3421b3a26791e9058c76e843d6593">cl7::strings::codec::_determine_encode_length</a> (<a class="el" href="../../d8/d57/structcl7_1_1strings_1_1codec_1_1codepoint.html">codepoint</a> <a class="el" href="../../d8/d57/structcl7_1_1strings_1_1codec_1_1codepoint.html">codepoint</a>)</td></tr>
-<tr class="separator:a79c3421b3a26791e9058c76e843d6593"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34b4f66e417d24113a77cca11486c06d" id="r_a34b4f66e417d24113a77cca11486c06d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d97/namespacecl7_1_1strings_1_1codec.html#a34b4f66e417d24113a77cca11486c06d">cl7::strings::codec::_do_encode</a> (<a class="el" href="../../d8/d57/structcl7_1_1strings_1_1codec_1_1codepoint.html">codepoint</a> <a class="el" href="../../d8/d57/structcl7_1_1strings_1_1codec_1_1codepoint.html">codepoint</a>, <a class="el" href="../../dd/de3/classcl7_1_1strings_1_1codec_1_1Utf8Codec.html#a908e2cf1b107f69f217bfc01ad5e9b9f">Utf8Codec::string_span_type</a> output, size_t length)</td></tr>
-<tr class="separator:a34b4f66e417d24113a77cca11486c06d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adff97c56e5515422116fae3912ad6de6" id="r_adff97c56e5515422116fae3912ad6de6"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d97/namespacecl7_1_1strings_1_1codec.html#adff97c56e5515422116fae3912ad6de6">cl7::strings::codec::_determine_decode_length</a> (<a class="el" href="../../dd/de3/classcl7_1_1strings_1_1codec_1_1Utf8Codec.html#ae27b208a2261ec8ca9e0cc4c28382627">Utf8Codec::string_view_type</a> input, size_t max)</td></tr>
-<tr class="separator:adff97c56e5515422116fae3912ad6de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3952bde54f9a40623cd2683941bbe5d7" id="r_a3952bde54f9a40623cd2683941bbe5d7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d8/d57/structcl7_1_1strings_1_1codec_1_1codepoint.html">codepoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d97/namespacecl7_1_1strings_1_1codec.html#a3952bde54f9a40623cd2683941bbe5d7">cl7::strings::codec::_do_decode_2</a> (<a class="el" href="../../dd/de3/classcl7_1_1strings_1_1codec_1_1Utf8Codec.html#ae27b208a2261ec8ca9e0cc4c28382627">Utf8Codec::string_view_type</a> input)</td></tr>
-<tr class="separator:a3952bde54f9a40623cd2683941bbe5d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe71a96924b5aae17e8f2fcd0317824a" id="r_afe71a96924b5aae17e8f2fcd0317824a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d8/d57/structcl7_1_1strings_1_1codec_1_1codepoint.html">codepoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d97/namespacecl7_1_1strings_1_1codec.html#afe71a96924b5aae17e8f2fcd0317824a">cl7::strings::codec::_do_decode_3</a> (<a class="el" href="../../dd/de3/classcl7_1_1strings_1_1codec_1_1Utf8Codec.html#ae27b208a2261ec8ca9e0cc4c28382627">Utf8Codec::string_view_type</a> input)</td></tr>
-<tr class="separator:afe71a96924b5aae17e8f2fcd0317824a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0309a0fdd2367104655cd5c582e1604d" id="r_a0309a0fdd2367104655cd5c582e1604d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d8/d57/structcl7_1_1strings_1_1codec_1_1codepoint.html">codepoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d97/namespacecl7_1_1strings_1_1codec.html#a0309a0fdd2367104655cd5c582e1604d">cl7::strings::codec::_do_decode_4</a> (<a class="el" href="../../dd/de3/classcl7_1_1strings_1_1codec_1_1Utf8Codec.html#ae27b208a2261ec8ca9e0cc4c28382627">Utf8Codec::string_view_type</a> input)</td></tr>
-<tr class="separator:a0309a0fdd2367104655cd5c582e1604d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad89007bfa39d58335bc722b5345b8fe3" id="r_ad89007bfa39d58335bc722b5345b8fe3"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d47/namespacecl7_1_1text_1_1codec.html#ad89007bfa39d58335bc722b5345b8fe3">cl7::text::codec::_determine_encode_length</a> (<a class="el" href="../../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html">codepoint</a> <a class="el" href="../../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html">codepoint</a>)</td></tr>
+<tr class="separator:ad89007bfa39d58335bc722b5345b8fe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb8f955785916ff3872d3731c8b7bcf4" id="r_abb8f955785916ff3872d3731c8b7bcf4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d47/namespacecl7_1_1text_1_1codec.html#abb8f955785916ff3872d3731c8b7bcf4">cl7::text::codec::_do_encode</a> (<a class="el" href="../../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html">codepoint</a> <a class="el" href="../../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html">codepoint</a>, <a class="el" href="../../d2/db1/classcl7_1_1text_1_1codec_1_1Utf8Codec.html#a4b77a3170180c9f8fd4747d3bda7c5ed">Utf8Codec::string_span_type</a> output, size_t length)</td></tr>
+<tr class="separator:abb8f955785916ff3872d3731c8b7bcf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78b013cf92e08d249fa90087ebb8bbe2" id="r_a78b013cf92e08d249fa90087ebb8bbe2"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d47/namespacecl7_1_1text_1_1codec.html#a78b013cf92e08d249fa90087ebb8bbe2">cl7::text::codec::_determine_decode_length</a> (<a class="el" href="../../d2/db1/classcl7_1_1text_1_1codec_1_1Utf8Codec.html#a343991fe8d0d0ebed1ab5a15e9dc16be">Utf8Codec::string_view_type</a> input, size_t max)</td></tr>
+<tr class="separator:a78b013cf92e08d249fa90087ebb8bbe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a472db856e483202e92d451fc21768eea" id="r_a472db856e483202e92d451fc21768eea"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html">codepoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d47/namespacecl7_1_1text_1_1codec.html#a472db856e483202e92d451fc21768eea">cl7::text::codec::_do_decode_2</a> (<a class="el" href="../../d2/db1/classcl7_1_1text_1_1codec_1_1Utf8Codec.html#a343991fe8d0d0ebed1ab5a15e9dc16be">Utf8Codec::string_view_type</a> input)</td></tr>
+<tr class="separator:a472db856e483202e92d451fc21768eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46fd184912a8a822ed1046bb4c688033" id="r_a46fd184912a8a822ed1046bb4c688033"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html">codepoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d47/namespacecl7_1_1text_1_1codec.html#a46fd184912a8a822ed1046bb4c688033">cl7::text::codec::_do_decode_3</a> (<a class="el" href="../../d2/db1/classcl7_1_1text_1_1codec_1_1Utf8Codec.html#a343991fe8d0d0ebed1ab5a15e9dc16be">Utf8Codec::string_view_type</a> input)</td></tr>
+<tr class="separator:a46fd184912a8a822ed1046bb4c688033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad22e454df6678d89c45792c91d5b0566" id="r_ad22e454df6678d89c45792c91d5b0566"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html">codepoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d47/namespacecl7_1_1text_1_1codec.html#ad22e454df6678d89c45792c91d5b0566">cl7::text::codec::_do_decode_4</a> (<a class="el" href="../../d2/db1/classcl7_1_1text_1_1codec_1_1Utf8Codec.html#a343991fe8d0d0ebed1ab5a15e9dc16be">Utf8Codec::string_view_type</a> input)</td></tr>
+<tr class="separator:ad22e454df6678d89c45792c91d5b0566"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_c08fb4251456ac15da27f1739991873e.html">CoreLabs</a></li><li class="navelem"><a class="el" href="../../dir_b8fbc5551365e5a6fd254f5bc2b2d9b2.html">strings</a></li><li class="navelem"><a class="el" href="../../dir_03c0eb2c8f1995d1b269cdafad481b8b.html">codec</a></li><li class="navelem"><a class="el" href="../../da/db3/Utf8Codec_8cpp.html">Utf8Codec.cpp</a></li>
+    <li class="navelem"><a class="el" href="../../dir_c08fb4251456ac15da27f1739991873e.html">CoreLabs</a></li><li class="navelem"><a class="el" href="../../dir_6b7b80329907c5b12573dfa25d18d120.html">text</a></li><li class="navelem"><a class="el" href="../../dir_291274577cfc72429e49d77bdf3c3138.html">codec</a></li><li class="navelem"><a class="el" href="../../da/db3/Utf8Codec_8cpp.html">Utf8Codec.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

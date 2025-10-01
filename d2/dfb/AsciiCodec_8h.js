@@ -1,4 +1,4 @@
 var AsciiCodec_8h =
 [
-    [ "cl7::strings::codec::AsciiCodec", "de/d9e/classcl7_1_1strings_1_1codec_1_1AsciiCodec.html", "de/d9e/classcl7_1_1strings_1_1codec_1_1AsciiCodec" ]
+    [ "cl7::text::codec::AsciiCodec", "d3/df1/classcl7_1_1text_1_1codec_1_1AsciiCodec.html", "d3/df1/classcl7_1_1text_1_1codec_1_1AsciiCodec" ]
 ];

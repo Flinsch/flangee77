@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>flangee77: CoreLabs/strings/metrics.h Source File</title>
+<title>flangee77: CoreLabs/text/metrics.h Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -99,8 +99,8 @@ $(document).ready(function(){initNavTree('df/d34/metrics_8h_source.html','../../
   <div class="headertitle"><div class="title">metrics.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="../../df/d34/metrics_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef CL7_STRINGS_METRICS_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define CL7_STRINGS_METRICS_H</span></div>
+<a href="../../df/d34/metrics_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef CL7_TEXT_METRICS_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define CL7_TEXT_METRICS_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="../../da/d66/string_8h.html">CoreLabs/string.h</a>&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
@@ -108,14 +108,14 @@ $(document).ready(function(){initNavTree('df/d34/metrics_8h_source.html','../../
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d7/d54/namespacecl7_1_1strings_1_1metrics.html">cl7::strings::metrics</a> {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d5/dcc/namespacecl7_1_1text_1_1metrics.html">cl7::text::metrics</a> {</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T<span class="keywordtype">string</span>_or_view1, <span class="keyword">class</span> T<span class="keywordtype">string</span>_or_view2&gt;</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keyword">requires</span>(is_any_string_or_view_v&lt;Tstring_or_view1&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view2&gt;)</div>
 <div class="foldopen" id="foldopen00021" data-start="{" data-end="}">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="../../d7/d54/namespacecl7_1_1strings_1_1metrics.html#a33bc65959af3c4742d0e20f2efa29ea4">   21</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="../../d7/d54/namespacecl7_1_1strings_1_1metrics.html#a33bc65959af3c4742d0e20f2efa29ea4">levenshtein</a>(Tstring_or_view1&amp;&amp; s1, Tstring_or_view2&amp;&amp; s2)</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="../../d5/dcc/namespacecl7_1_1text_1_1metrics.html#a5caf0d52d4b2a2a36c3360b6188b97b0">   21</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="../../d5/dcc/namespacecl7_1_1text_1_1metrics.html#a5caf0d52d4b2a2a36c3360b6188b97b0">levenshtein</a>(Tstring_or_view1&amp;&amp; s1, Tstring_or_view2&amp;&amp; s2)</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        std::basic_string_view&lt;typename std::remove_cvref_t&lt;Tstring_or_view1&gt;::value_type&gt; sv1{std::forward&lt;Tstring_or_view1&gt;(s1)};</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        std::basic_string_view&lt;typename std::remove_cvref_t&lt;Tstring_or_view2&gt;::value_type&gt; sv2{std::forward&lt;Tstring_or_view2&gt;(s2)};</div>
@@ -155,33 +155,33 @@ $(document).ready(function(){initNavTree('df/d34/metrics_8h_source.html','../../
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T<span class="keywordtype">float</span> = <span class="keywordtype">float</span>, <span class="keyword">class</span> T<span class="keywordtype">string</span>_or_view1, <span class="keyword">class</span> T<span class="keywordtype">string</span>_or_view2&gt;</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">requires</span>(std::is_floating_point_v&lt;Tfloat&gt; &amp;&amp; <a class="code hl_concept" href="../../d1/d57/conceptcl7_1_1is__any__string__or__view__v.html">is_any_string_or_view_v&lt;Tstring_or_view1&gt;</a> &amp;&amp; <a class="code hl_concept" href="../../d1/d57/conceptcl7_1_1is__any__string__or__view__v.html">is_any_string_or_view_v&lt;Tstring_or_view2&gt;</a>)</div>
 <div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="../../d7/d54/namespacecl7_1_1strings_1_1metrics.html#a83c5054a0cbdc1177f9b895c1d45b39b">   65</a></span>    Tfloat <a class="code hl_function" href="../../d7/d54/namespacecl7_1_1strings_1_1metrics.html#a83c5054a0cbdc1177f9b895c1d45b39b">levenshtein_normalized</a>(Tstring_or_view1&amp;&amp; s1, Tstring_or_view2&amp;&amp; s2)</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="../../d5/dcc/namespacecl7_1_1text_1_1metrics.html#a980ac8b52a4567aa61d77cc032b14425">   65</a></span>    Tfloat <a class="code hl_function" href="../../d5/dcc/namespacecl7_1_1text_1_1metrics.html#a980ac8b52a4567aa61d77cc032b14425">levenshtein_normalized</a>(Tstring_or_view1&amp;&amp; s1, Tstring_or_view2&amp;&amp; s2)</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    {</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        std::basic_string_view&lt;typename std::remove_cvref_t&lt;Tstring_or_view1&gt;::value_type&gt; sv1{std::forward&lt;Tstring_or_view1&gt;(s1)};</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        std::basic_string_view&lt;typename std::remove_cvref_t&lt;Tstring_or_view2&gt;::value_type&gt; sv2{std::forward&lt;Tstring_or_view2&gt;(s2)};</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keyword">const</span> <span class="keywordtype">size_t</span> size = (std::max)(sv1.size(), sv2.size());</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">if</span> (size == 0) <span class="keywordflow">return</span> 0.0f;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>Tfloat<span class="keyword">&gt;</span>(<a class="code hl_function" href="../../d7/d54/namespacecl7_1_1strings_1_1metrics.html#a33bc65959af3c4742d0e20f2efa29ea4">levenshtein</a>(sv1, sv2)) / <span class="keyword">static_cast&lt;</span>Tfloat<span class="keyword">&gt;</span>(size);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>Tfloat<span class="keyword">&gt;</span>(<a class="code hl_function" href="../../d5/dcc/namespacecl7_1_1text_1_1metrics.html#a5caf0d52d4b2a2a36c3360b6188b97b0">levenshtein</a>(sv1, sv2)) / <span class="keyword">static_cast&lt;</span>Tfloat<span class="keyword">&gt;</span>(size);</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    }</div>
 </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>} <span class="comment">// namespace cl7::strings::metrics</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>} <span class="comment">// namespace cl7::text::metrics</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">#endif </span><span class="comment">// CL7_STRINGS_METRICS_H</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">#endif </span><span class="comment">// CL7_TEXT_METRICS_H</span></div>
 <div class="ttc" id="aconceptcl7_1_1is__any__string__or__view__v_html"><div class="ttname"><a href="../../d1/d57/conceptcl7_1_1is__any__string__or__view__v.html">cl7::is_any_string_or_view_v</a></div><div class="ttdef"><b>Definition</b> string.h:57</div></div>
-<div class="ttc" id="anamespacecl7_1_1strings_1_1metrics_html"><div class="ttname"><a href="../../d7/d54/namespacecl7_1_1strings_1_1metrics.html">cl7::strings::metrics</a></div><div class="ttdef"><b>Definition</b> metrics.cpp:5</div></div>
-<div class="ttc" id="anamespacecl7_1_1strings_1_1metrics_html_a33bc65959af3c4742d0e20f2efa29ea4"><div class="ttname"><a href="../../d7/d54/namespacecl7_1_1strings_1_1metrics.html#a33bc65959af3c4742d0e20f2efa29ea4">cl7::strings::metrics::levenshtein</a></div><div class="ttdeci">size_t levenshtein(Tstring_or_view1 &amp;&amp;s1, Tstring_or_view2 &amp;&amp;s2)</div><div class="ttdef"><b>Definition</b> metrics.h:21</div></div>
-<div class="ttc" id="anamespacecl7_1_1strings_1_1metrics_html_a83c5054a0cbdc1177f9b895c1d45b39b"><div class="ttname"><a href="../../d7/d54/namespacecl7_1_1strings_1_1metrics.html#a83c5054a0cbdc1177f9b895c1d45b39b">cl7::strings::metrics::levenshtein_normalized</a></div><div class="ttdeci">Tfloat levenshtein_normalized(Tstring_or_view1 &amp;&amp;s1, Tstring_or_view2 &amp;&amp;s2)</div><div class="ttdef"><b>Definition</b> metrics.h:65</div></div>
+<div class="ttc" id="anamespacecl7_1_1text_1_1metrics_html"><div class="ttname"><a href="../../d5/dcc/namespacecl7_1_1text_1_1metrics.html">cl7::text::metrics</a></div><div class="ttdef"><b>Definition</b> metrics.cpp:5</div></div>
+<div class="ttc" id="anamespacecl7_1_1text_1_1metrics_html_a5caf0d52d4b2a2a36c3360b6188b97b0"><div class="ttname"><a href="../../d5/dcc/namespacecl7_1_1text_1_1metrics.html#a5caf0d52d4b2a2a36c3360b6188b97b0">cl7::text::metrics::levenshtein</a></div><div class="ttdeci">size_t levenshtein(Tstring_or_view1 &amp;&amp;s1, Tstring_or_view2 &amp;&amp;s2)</div><div class="ttdef"><b>Definition</b> metrics.h:21</div></div>
+<div class="ttc" id="anamespacecl7_1_1text_1_1metrics_html_a980ac8b52a4567aa61d77cc032b14425"><div class="ttname"><a href="../../d5/dcc/namespacecl7_1_1text_1_1metrics.html#a980ac8b52a4567aa61d77cc032b14425">cl7::text::metrics::levenshtein_normalized</a></div><div class="ttdeci">Tfloat levenshtein_normalized(Tstring_or_view1 &amp;&amp;s1, Tstring_or_view2 &amp;&amp;s2)</div><div class="ttdef"><b>Definition</b> metrics.h:65</div></div>
 <div class="ttc" id="astring_8h_html"><div class="ttname"><a href="../../da/d66/string_8h.html">string.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_c08fb4251456ac15da27f1739991873e.html">CoreLabs</a></li><li class="navelem"><a class="el" href="../../dir_b8fbc5551365e5a6fd254f5bc2b2d9b2.html">strings</a></li><li class="navelem"><a class="el" href="../../df/d34/metrics_8h.html">metrics.h</a></li>
+    <li class="navelem"><a class="el" href="../../dir_c08fb4251456ac15da27f1739991873e.html">CoreLabs</a></li><li class="navelem"><a class="el" href="../../dir_6b7b80329907c5b12573dfa25d18d120.html">text</a></li><li class="navelem"><a class="el" href="../../df/d34/metrics_8h.html">metrics.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

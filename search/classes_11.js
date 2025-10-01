@@ -5,7 +5,7 @@ var searchData=
   ['samplerstate_2',['SamplerState',['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html',1,'xl7::graphics::states']]],
   ['samplerstateimpl_3',['samplerstateimpl',['../df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html',1,'xl7::graphics::impl::direct3d11::states::SamplerStateImpl'],['../de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html',1,'xl7::graphics::impl::direct3d9::states::SamplerStateImpl']]],
   ['section_4',['Section',['../dc/d3a/classdl7_1_1ini_1_1Section.html',1,'dl7::ini']]],
-  ['sentinel_5',['sentinel',['../d7/ddb/classcl7_1_1strings_1_1codec_1_1Decoder_1_1sentinel.html',1,'cl7::strings::codec::Decoder']]],
+  ['sentinel_5',['sentinel',['../d6/df5/classcl7_1_1text_1_1codec_1_1Decoder_1_1sentinel.html',1,'cl7::text::codec::Decoder']]],
   ['settings_6',['Settings',['../db/dbc/structtl7_1_1TestSuite_1_1Settings.html',1,'tl7::TestSuite']]],
   ['shader_7',['Shader',['../d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html',1,'xl7::graphics::shaders']]],
   ['shadercode_8',['ShaderCode',['../d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html',1,'xl7::graphics::shaders']]],

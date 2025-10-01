@@ -15,6 +15,6 @@ var searchData=
   ['append_12',['Append',['../d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5a3ac4692f3935a49a0b243eecf529faa9',1,'cl7::io']]],
   ['argb_13',['ARGB',['../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2ae192297ecf3602fabbec5f0a38ede758',1,'xl7::graphics']]],
   ['array_14',['Array',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caa4410ec34d9e6c1a68100ca0ce033fb17',1,'dl7::json::Json']]],
-  ['ascii_15',['ASCII',['../d2/d97/namespacecl7_1_1strings_1_1codec.html#acb9e2a16a8c1af77a2747ea6b6db7a9bad2cd8253361a9c732d21ca1d336599cc',1,'cl7::strings::codec']]],
+  ['ascii_15',['ASCII',['../da/d47/namespacecl7_1_1text_1_1codec.html#a7df790f30da6919a71ae7f2aeda9d0ebad2cd8253361a9c732d21ca1d336599cc',1,'cl7::text::codec']]],
   ['assertion_16',['Assertion',['../da/d3a/structtl7_1_1Result.html#abc74a2ae21cd48cdb73884084ad1d692a33d5079ef27d71f50b0b934dd31c1d81',1,'tl7::Result']]]
 ];
