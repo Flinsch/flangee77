@@ -1,5 +1,5 @@
-#ifndef CL7_STRINGS_FORMAT_H
-#define CL7_STRINGS_FORMAT_H
+#ifndef CL7_TEXT_FORMAT_H
+#define CL7_TEXT_FORMAT_H
 
 #include "./codec.h"
 #include "./inspect.h"
@@ -13,7 +13,7 @@
 
 
 
-namespace cl7::strings::format {
+namespace cl7::text::format {
 
 
 
@@ -1173,6 +1173,6 @@ struct FloatFormatOptions
 
 
 
-} // namespace cl7::strings::format
+} // namespace cl7::text::format
 
-#endif // CL7_STRINGS_FORMAT_H
+#endif // CL7_TEXT_FORMAT_H

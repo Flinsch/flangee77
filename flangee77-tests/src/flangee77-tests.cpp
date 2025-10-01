@@ -9,11 +9,11 @@
 #include "./CoreLabs/Guid.h"
 #include "./CoreLabs/Version.h"
 
-#include "./CoreLabs/strings/codec.h"
-#include "./CoreLabs/strings/inspect.h"
-#include "./CoreLabs/strings/transform.h"
-#include "./CoreLabs/strings/format.h"
-#include "./CoreLabs/strings/metrics.h"
+#include "./CoreLabs/text/codec.h"
+#include "./CoreLabs/text/inspect.h"
+#include "./CoreLabs/text/transform.h"
+#include "./CoreLabs/text/format.h"
+#include "./CoreLabs/text/metrics.h"
 
 #include "./DataLabs/Base64.h"
 #include "./DataLabs/compression.h"

@@ -1,7 +1,7 @@
 #include "errors.h"
 
-#include <CoreLabs/strings/codec.h>
-#include <CoreLabs/strings/transform.h>
+#include <CoreLabs/text/codec.h>
+#include <CoreLabs/text/transform.h>
 #include <CoreLabs/sstream.h>
 
 #include <windows.h>
@@ -40,7 +40,7 @@ namespace cl7::errors {
         oss << std::hex << u8"0x" << error_code;
         oss << u8" ";
         if (length)
-            oss << cl7::strings::codec::to_utf8(cl7::strings::transform::trimmed(cl7::strings::codec::reinterpret_utf16(std::wstring_view(buffer_ptr, length))));
+            oss << cl7::text::codec::to_utf8(cl7::text::transform::trimmed(cl7::text::codec::reinterpret_utf16(std::wstring_view(buffer_ptr, length))));
         else
             oss << u8"An unknown error occurred.";
         return oss.str();

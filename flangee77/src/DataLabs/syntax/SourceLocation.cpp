@@ -1,7 +1,7 @@
 #include "SourceLocation.h"
 
-#include <CoreLabs/strings/codec.h>
-#include <CoreLabs/strings/inspect.h>
+#include <CoreLabs/text/codec.h>
+#include <CoreLabs/text/inspect.h>
 
 
 
@@ -23,7 +23,7 @@ namespace dl7::syntax {
 
         for (size_t i = 0; i < offset; )
         {
-            const size_t line_break = cl7::strings::inspect::is_line_break_prefix(source.substr(i));
+            const size_t line_break = cl7::text::inspect::is_line_break_prefix(source.substr(i));
             if (line_break > 0)
             {
                 // Line break: advance the line.
@@ -44,7 +44,7 @@ namespace dl7::syntax {
             }
         } // for ...
 
-        size_t column = cl7::strings::codec::utf8_length(source.substr(line_offset, offset - line_offset)) + 1;
+        size_t column = cl7::text::codec::utf8_length(source.substr(line_offset, offset - line_offset)) + 1;
 
         return {.line = line, .column = column};
     }

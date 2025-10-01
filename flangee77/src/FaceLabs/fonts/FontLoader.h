@@ -41,14 +41,14 @@ public:
      * Checks whether the glyph corresponding to the specified Unicode code point
      * exists and can therefore potentially be loaded.
      */
-    virtual bool has_glyph(cl7::strings::codec::codepoint codepoint) = 0;
+    virtual bool has_glyph(cl7::text::codec::codepoint codepoint) = 0;
 
     /**
      * Attempts to load the glyph corresponding to the specified Unicode code point.
      * If the glyph could not be loaded, an "empty" glyph is returned (in the sense
      * that it contains no contour points, has no advance width, etc.).
      */
-    virtual Glyph load_glyph(cl7::strings::codec::codepoint codepoint) = 0;
+    virtual Glyph load_glyph(cl7::text::codec::codepoint codepoint) = 0;
 
 
 

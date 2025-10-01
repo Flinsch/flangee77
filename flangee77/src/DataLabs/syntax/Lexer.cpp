@@ -1,6 +1,6 @@
 #include "Lexer.h"
 
-#include <CoreLabs/strings/inspect.h>
+#include <CoreLabs/text/inspect.h>
 
 
 
@@ -91,7 +91,7 @@ namespace dl7::syntax {
      */
     size_t Lexer::_skip_whitespace()
     {
-        const size_t length = cl7::strings::inspect::count_whitespace_prefix(get_remainder());
+        const size_t length = cl7::text::inspect::count_whitespace_prefix(get_remainder());
         assert(length + _source_offset <= _source.length());
         _advance(length);
         return length;

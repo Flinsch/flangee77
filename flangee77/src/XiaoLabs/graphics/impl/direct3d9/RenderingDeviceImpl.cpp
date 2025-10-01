@@ -10,7 +10,7 @@
 #include <XiaoLabs/graphics.h>
 
 #include <CoreLabs/logging.h>
-#include <CoreLabs/strings/codec.h>
+#include <CoreLabs/text/codec.h>
 
 #include <dxgi.h>
 
@@ -328,7 +328,7 @@ namespace xl7::graphics::impl::direct3d9 {
 
         assert(factory);
 
-        const cl7::u8string adapter_name{cl7::strings::codec::reinterpret_utf8(_d3d_adapter_identifier.DeviceName)};
+        const cl7::u8string adapter_name{cl7::text::codec::reinterpret_utf8(_d3d_adapter_identifier.DeviceName)};
         assert(!adapter_name.empty());
 
         for (unsigned i = 0; ; ++i)
@@ -349,7 +349,7 @@ namespace xl7::graphics::impl::direct3d9 {
                 continue;
             }
 
-            if (memory_capabilities.dedicated_video_memory > 0 && cl7::strings::codec::to_utf8(cl7::strings::codec::reinterpret_utf16(adapter_desc.Description)) != adapter_name)
+            if (memory_capabilities.dedicated_video_memory > 0 && cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utf16(adapter_desc.Description)) != adapter_name)
                 continue;
 
             memory_capabilities.dedicated_video_memory = adapter_desc.DedicatedVideoMemory;

@@ -3,7 +3,7 @@
 #include "../errors.h"
 
 #include <CoreLabs/logging.h>
-#include <CoreLabs/strings/codec.h>
+#include <CoreLabs/text/codec.h>
 
 #include <algorithm>
 #include <filesystem>
@@ -81,7 +81,7 @@ namespace xl7::graphics::impl::shared::shaders {
 
         static cl7::u8string read_source_code(const cl7::u8string& file_path)
         {
-            std::ifstream file(std::filesystem::path(cl7::strings::codec::reinterpret_utf8(file_path)), std::ios::in | std::ios::binary | std::ios::ate);
+            std::ifstream file(std::filesystem::path(cl7::text::codec::reinterpret_utf8(file_path)), std::ios::in | std::ios::binary | std::ios::ate);
             if (!file.is_open())
             {
                 LOG_ERROR(u8"Shader file \"" + Include::filename(file_path) + u8"\" could not be opened. Does it exist?");
@@ -109,7 +109,7 @@ namespace xl7::graphics::impl::shared::shaders {
 
             auto it = _parent_entries.find(parent_data);
             const cl7::u8string& directory = it == _parent_entries.end() ? _root_directory : it->second.directory;
-            cl7::u8string file_path = directory + cl7::u8string(cl7::strings::codec::reinterpret_utf8(filename));
+            cl7::u8string file_path = directory + cl7::u8string(cl7::text::codec::reinterpret_utf8(filename));
             std::ranges::replace(file_path, u8'/', u8'\\');
 
             cl7::u8string code = Include::read_source_code(file_path);

@@ -1,6 +1,6 @@
 #include "filesystem.h"
 
-#include <CoreLabs/strings/codec.h>
+#include <CoreLabs/text/codec.h>
 #include <CoreLabs/auto_invoke.h>
 
 #include <windows.h>
@@ -22,7 +22,7 @@ namespace cl7::filesystem {
 
         std::wstring_view full_path{_full_path};
         size_t p = full_path.find_last_of(L'\\');
-        return cl7::strings::to_utf8(cl7::strings::reinterpret_utfx(full_path.substr(0, p + 1)));*/
+        return cl7::text::to_utf8(cl7::text::reinterpret_utfx(full_path.substr(0, p + 1)));*/
         return get_initial_directory();
     }
 
@@ -44,7 +44,7 @@ namespace cl7::filesystem {
                 _path[length] = u8'\\';
         }
 
-        return cl7::strings::codec::to_utf8(cl7::strings::codec::reinterpret_utfx(_path));
+        return cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(_path));
     }
 
     /**
@@ -59,7 +59,7 @@ namespace cl7::filesystem {
         if (length == 0 || _path[length - 1] != u8'\\')
             _path[length] = u8'\\';
 
-        return cl7::strings::codec::to_utf8(cl7::strings::codec::reinterpret_utfx(_path));
+        return cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(_path));
     }
 
     /**
@@ -82,7 +82,7 @@ namespace cl7::filesystem {
             if (hresult == S_OK)
             {
                 assert(tmp);
-                cl7::u8string path = cl7::strings::codec::to_utf8(cl7::strings::codec::reinterpret_utfx(tmp));
+                cl7::u8string path = cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(tmp));
                 for (const cl7::u8char_t* p = path.c_str(); *p; ++p)
                     _path[length++] = *p;
             }

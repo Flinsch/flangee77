@@ -35,19 +35,19 @@ target_sources(flangee77
     profiling/StandardRegistry.cpp
     profiling/Stopwatch.cpp
 
-    strings/codec.cpp
-    strings/format.cpp
-    strings/inspect.cpp
-    strings/metrics.cpp
-    strings/transform.cpp
+    text/codec.cpp
+    text/format.cpp
+    text/inspect.cpp
+    text/metrics.cpp
+    text/transform.cpp
 
-    strings/codec/AsciiCodec.cpp
-    strings/codec/codepoint.cpp
-    strings/codec/ErrorHandler.cpp
-    strings/codec/LoggingErrorHandler.cpp
-    strings/codec/Utf8Codec.cpp
-    strings/codec/Utf16Codec.cpp
-    strings/codec/Utf32Codec.cpp
+    text/codec/AsciiCodec.cpp
+    text/codec/codepoint.cpp
+    text/codec/ErrorHandler.cpp
+    text/codec/LoggingErrorHandler.cpp
+    text/codec/Utf8Codec.cpp
+    text/codec/Utf16Codec.cpp
+    text/codec/Utf32Codec.cpp
 
     system/CPUID.cpp
     system/datetime.cpp

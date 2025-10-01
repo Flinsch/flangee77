@@ -1,9 +1,9 @@
 #include "Unescaper.h"
 
-#include <CoreLabs/strings/codec/Encoder.h>
-#include <CoreLabs/strings/codec/Decoder.h>
-#include <CoreLabs/strings/format.h>
-#include <CoreLabs/strings/inspect.h>
+#include <CoreLabs/text/codec/Encoder.h>
+#include <CoreLabs/text/codec/Decoder.h>
+#include <CoreLabs/text/format.h>
+#include <CoreLabs/text/inspect.h>
 
 #include <format>
 
@@ -37,43 +37,43 @@ namespace dl7::json::util {
         unsigned error_count = 0;
 
         struct EncodingErrorHandler
-            : public cl7::strings::codec::DefaultErrorHandler
+            : public cl7::text::codec::DefaultErrorHandler
         {
             const Unescaper::ErrorHandler* _error_handler;
             unsigned* _error_count;
 
             EncodingErrorHandler(const Unescaper::ErrorHandler* error_handler, unsigned* error_count)
-                : cl7::strings::codec::DefaultErrorHandler(error_handler->log_context)
+                : cl7::text::codec::DefaultErrorHandler(error_handler->log_context)
                 , _error_handler(error_handler)
                 , _error_count(error_count)
             {
             }
 
         protected:
-            void _on_any_error(cl7::strings::codec::EncodingError error) const override
+            void _on_any_error(cl7::text::codec::EncodingError error) const override
             {
                 ++*_error_count;
             }
 
-            void _on_decode_error(cl7::strings::codec::EncodingError error, cl7::u8string_view input_read) const override
+            void _on_decode_error(cl7::text::codec::EncodingError error, cl7::u8string_view input_read) const override
             {
                 _error_handler->on_invalid_utf8_encoding(input_read);
             }
 
-            void _on_decode_error(cl7::strings::codec::EncodingError error, cl7::u16string_view input_read) const override
+            void _on_decode_error(cl7::text::codec::EncodingError error, cl7::u16string_view input_read) const override
             {
                 _error_handler->on_invalid_utf16_encoding(input_read);
             }
         } encoding_error_handler{my_error_handler, &error_count};
 
-        cl7::strings::codec::Encoder<cl7::u8char_t> utf8_encoder{&encoding_error_handler};
+        cl7::text::codec::Encoder<cl7::u8char_t> utf8_encoder{&encoding_error_handler};
         cl7::u8char_t utf8_buffer[4];
 
-        cl7::strings::codec::Decoder<cl7::u16char_t> utf16_decoder{&encoding_error_handler};
+        cl7::text::codec::Decoder<cl7::u16char_t> utf16_decoder{&encoding_error_handler};
         cl7::u16char_t utf16_buffer[2];
 
-        cl7::strings::codec::Decoder<cl7::u8char_t>::iterator it{json_string, &encoding_error_handler};
-        cl7::strings::codec::Decoder<cl7::u8char_t>::sentinel end;
+        cl7::text::codec::Decoder<cl7::u8char_t>::iterator it{json_string, &encoding_error_handler};
+        cl7::text::codec::Decoder<cl7::u8char_t>::sentinel end;
 
         for (; it != end; ++it)
         {
@@ -121,11 +121,11 @@ namespace dl7::json::util {
                 // (Try to) handle `\uXXXX`.
             case u8'u':
             {
-                if (pos + 6 > json_string.size() || !cl7::strings::inspect::is_hex_digit(json_string[pos + 2]) || !cl7::strings::inspect::is_hex_digit(json_string[pos + 3]) || !cl7::strings::inspect::is_hex_digit(json_string[pos + 4]) || !cl7::strings::inspect::is_hex_digit(json_string[pos + 5]))
+                if (pos + 6 > json_string.size() || !cl7::text::inspect::is_hex_digit(json_string[pos + 2]) || !cl7::text::inspect::is_hex_digit(json_string[pos + 3]) || !cl7::text::inspect::is_hex_digit(json_string[pos + 4]) || !cl7::text::inspect::is_hex_digit(json_string[pos + 5]))
                 {
                     // Invalid `\uXXXX` sequence.
                     size_t count = 0;
-                    while (pos + count + 2 < json_string.size() && cl7::strings::inspect::is_hex_digit(json_string[pos + count + 2]))
+                    while (pos + count + 2 < json_string.size() && cl7::text::inspect::is_hex_digit(json_string[pos + count + 2]))
                         ++count;
                     assert(count < 4);
 
@@ -136,13 +136,13 @@ namespace dl7::json::util {
                     break;
                 }
 
-                codepoint.value = cl7::strings::format::parse_hex(json_string.substr(pos + 2, 4));
+                codepoint.value = cl7::text::format::parse_hex(json_string.substr(pos + 2, 4));
                 pos += 6;
 
                 // Check for surrogate pair.
-                if (codepoint.is_high_surrogate() && pos + 6 <= json_string.size() && json_string[pos + 0] == u8'\\' && json_string[pos + 1] == u8'u' && cl7::strings::inspect::is_hex_digit(json_string[pos + 2]) && cl7::strings::inspect::is_hex_digit(json_string[pos + 3]) && cl7::strings::inspect::is_hex_digit(json_string[pos + 4]) && cl7::strings::inspect::is_hex_digit(json_string[pos + 5]))
+                if (codepoint.is_high_surrogate() && pos + 6 <= json_string.size() && json_string[pos + 0] == u8'\\' && json_string[pos + 1] == u8'u' && cl7::text::inspect::is_hex_digit(json_string[pos + 2]) && cl7::text::inspect::is_hex_digit(json_string[pos + 3]) && cl7::text::inspect::is_hex_digit(json_string[pos + 4]) && cl7::text::inspect::is_hex_digit(json_string[pos + 5]))
                 {
-                    auto second_codepoint = cl7::strings::codec::codepoint{cl7::strings::format::parse_hex(json_string.substr(pos + 2, 4))};
+                    auto second_codepoint = cl7::text::codec::codepoint{cl7::text::format::parse_hex(json_string.substr(pos + 2, 4))};
 
                     if (second_codepoint.is_low_surrogate()) // Play it safe!
                     {
@@ -162,11 +162,11 @@ namespace dl7::json::util {
                 // (Try to) be forgiving again: handle `\xXX` as well.
             case u8'x':
             {
-                if (pos + 4 > json_string.size() || !cl7::strings::inspect::is_hex_digit(json_string[pos + 2]) || !cl7::strings::inspect::is_hex_digit(json_string[pos + 3]))
+                if (pos + 4 > json_string.size() || !cl7::text::inspect::is_hex_digit(json_string[pos + 2]) || !cl7::text::inspect::is_hex_digit(json_string[pos + 3]))
                 {
                     // Invalid `\xXX` sequence.
                     size_t count = 0;
-                    while (pos + count + 2 < json_string.size() && cl7::strings::inspect::is_hex_digit(json_string[pos + count + 2]))
+                    while (pos + count + 2 < json_string.size() && cl7::text::inspect::is_hex_digit(json_string[pos + count + 2]))
                         ++count;
                     assert(count < 2);
 
@@ -178,19 +178,19 @@ namespace dl7::json::util {
                 }
 
                 cl7::u8osstream dummy_oss;
-                dummy_oss << cl7::strings::format::parse_hex<cl7::u8char_t>(json_string.substr(pos + 2, 2));
+                dummy_oss << cl7::text::format::parse_hex<cl7::u8char_t>(json_string.substr(pos + 2, 2));
                 pos += 4;
 
                 // Look for more of those `\xXX` and concatenate them all
                 // to capture any UTF-8 sequences encoded in this way.
-                while (pos + 4 <= json_string.size() && json_string[pos + 0] == u8'\\' && json_string[pos + 1] == u8'x' && cl7::strings::inspect::is_hex_digit(json_string[pos + 2]) && cl7::strings::inspect::is_hex_digit(json_string[pos + 3]))
+                while (pos + 4 <= json_string.size() && json_string[pos + 0] == u8'\\' && json_string[pos + 1] == u8'x' && cl7::text::inspect::is_hex_digit(json_string[pos + 2]) && cl7::text::inspect::is_hex_digit(json_string[pos + 3]))
                 {
-                    dummy_oss << cl7::strings::format::parse_hex<cl7::u8char_t>(json_string.substr(pos + 2, 2));
+                    dummy_oss << cl7::text::format::parse_hex<cl7::u8char_t>(json_string.substr(pos + 2, 2));
                     pos += 4;
                 }
 
                 const auto dummy_string = dummy_oss.str();
-                cl7::strings::codec::Decoder<cl7::u8char_t>::iterator dummy_it{dummy_string, &encoding_error_handler};
+                cl7::text::codec::Decoder<cl7::u8char_t>::iterator dummy_it{dummy_string, &encoding_error_handler};
                 for (; dummy_it != end; ++dummy_it)
                 {
                     codepoint = *dummy_it;

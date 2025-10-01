@@ -3,7 +3,7 @@
 
 #include "./Glyph.h"
 
-#include <CoreLabs/strings/codec/codepoint.h>
+#include <CoreLabs/text/codec/codepoint.h>
 
 #include <unordered_map>
 
@@ -29,13 +29,13 @@ public:
      * Retrieves the glyph corresponding to the specified Unicode code point
      * (returns NULL if not found).
      */
-    const Glyph* find_glyph(cl7::strings::codec::codepoint codepoint) const;
+    const Glyph* find_glyph(cl7::text::codec::codepoint codepoint) const;
 
 
 
 private:
     /** Maps Unicode code points to their respective glyphs. */
-    std::unordered_map<cl7::strings::codec::codepoint::value_type, Glyph> _glyph_map;
+    std::unordered_map<cl7::text::codec::codepoint::value_type, Glyph> _glyph_map;
 
 }; // class Font
 

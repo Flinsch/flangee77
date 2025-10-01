@@ -1,6 +1,6 @@
 #include "matchers.h"
 
-#include <CoreLabs/strings/inspect.h>
+#include <CoreLabs/text/inspect.h>
 
 
 
@@ -47,7 +47,7 @@ namespace dl7::syntax::matchers {
             ++i;
 
         const size_t start = i;
-        while (i < source.size() && cl7::strings::inspect::is_digit(source[i]))
+        while (i < source.size() && cl7::text::inspect::is_digit(source[i]))
             ++i;
 
         if (i == start)
@@ -72,7 +72,7 @@ namespace dl7::syntax::matchers {
             ++i;
 
         const size_t start = i;
-        while (i < source.size() && cl7::strings::inspect::is_digit(source[i]))
+        while (i < source.size() && cl7::text::inspect::is_digit(source[i]))
             ++i;
 
         if (i - start > 1 && source[start] == u8'0')
@@ -84,7 +84,7 @@ namespace dl7::syntax::matchers {
             has_dot = true;
 
             ++i;
-            while (i < source.size() && cl7::strings::inspect::is_digit(source[i]))
+            while (i < source.size() && cl7::text::inspect::is_digit(source[i]))
                 ++i;
         }
 
@@ -98,7 +98,7 @@ namespace dl7::syntax::matchers {
                 ++i;
 
             const size_t exp_start = i;
-            while (i < source.size() && cl7::strings::inspect::is_digit(source[i]))
+            while (i < source.size() && cl7::text::inspect::is_digit(source[i]))
                 ++i;
 
             if (i == exp_start)
@@ -114,10 +114,10 @@ namespace dl7::syntax::matchers {
             return 0;
 
         size_t i = prefix.size();
-        if (i >= source.size() || !cl7::strings::inspect::is_hex_digit(source[i]))
+        if (i >= source.size() || !cl7::text::inspect::is_hex_digit(source[i]))
             return 0;
 
-        while (i < source.size() && cl7::strings::inspect::is_hex_digit(source[i]))
+        while (i < source.size() && cl7::text::inspect::is_hex_digit(source[i]))
             ++i;
 
         return i;
@@ -131,12 +131,12 @@ namespace dl7::syntax::matchers {
             return 0;
 
         // First character must be a letter (A-Z, a-z) or underscore (_).
-        if (!cl7::strings::inspect::is_ascii_letter(source[0]) && source[0] != u8'_')
+        if (!cl7::text::inspect::is_ascii_letter(source[0]) && source[0] != u8'_')
             return 0;
 
         // Remaining characters can be letters, digits, or underscores.
         size_t i = 1;
-        while (i < source.size() && (cl7::strings::inspect::is_ascii_letter(source[i]) || cl7::strings::inspect::is_digit(source[i]) || source[i] == u8'_'))
+        while (i < source.size() && (cl7::text::inspect::is_ascii_letter(source[i]) || cl7::text::inspect::is_digit(source[i]) || source[i] == u8'_'))
             ++i;
 
         return i;
