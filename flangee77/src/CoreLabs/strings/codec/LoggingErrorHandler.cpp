@@ -21,19 +21,19 @@ namespace cl7::strings::codec {
     void LoggingErrorHandler::_on_out_of_range_ascii(codepoint codepoint) const
     {
         if (codepoint.value <= 0xff)
-            _try_log_warning(u8"Invalid code point outside ASCII range: " + format::to_0xhex(codepoint.value) + u8" (" + to_string(codepoint.value) + u8")");
+            _try_log_warning(u8"Invalid code point outside ASCII range: " + format::to_0x_hex(codepoint.value) + u8" (" + to_string(codepoint.value) + u8")");
         else
-            _try_log_warning(u8"Invalid code point outside ASCII range: " + format::to_0xhex(codepoint.value));
+            _try_log_warning(u8"Invalid code point outside ASCII range: " + format::to_0x_hex(codepoint.value));
     }
 
     void LoggingErrorHandler::_on_out_of_range_unicode(codepoint codepoint) const
     {
-        _try_log_warning(u8"Invalid Unicode code point (out of range): " + format::to_0xhex(codepoint.value));
+        _try_log_warning(u8"Invalid Unicode code point (out of range): " + format::to_0x_hex(codepoint.value));
     }
 
     void LoggingErrorHandler::_on_disallowed_unicode(codepoint codepoint) const
     {
-        _try_log_warning(u8"Invalid Unicode code point (surrogate): " + format::to_0xhex(codepoint.value));
+        _try_log_warning(u8"Invalid Unicode code point (surrogate): " + format::to_0x_hex(codepoint.value));
     }
 
 
@@ -54,7 +54,7 @@ namespace cl7::strings::codec {
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint8_t>(input_read[0]);
-        _try_log_warning(u8"Invalid ASCII character: " + format::to_0xhex(value) + u8" (" + to_string(value) + u8")");
+        _try_log_warning(u8"Invalid ASCII character: " + format::to_0x_hex(value) + u8" (" + to_string(value) + u8")");
     }
 
     void LoggingErrorHandler::_on_invalid_code_unit(cl7::u8string_view input_read) const
@@ -62,23 +62,23 @@ namespace cl7::strings::codec {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint8_t>(input_read[0]);
         if (value >= 0x80 && value <= 0xbf)
-            _try_log_warning(u8"Unexpected UTF-8 continuation byte: " + format::to_0xhex(value));
+            _try_log_warning(u8"Unexpected UTF-8 continuation byte: " + format::to_0x_hex(value));
         else
-            _try_log_warning(u8"Invalid UTF-8 code unit: " + format::to_0xhex(value));
+            _try_log_warning(u8"Invalid UTF-8 code unit: " + format::to_0x_hex(value));
     }
 
     void LoggingErrorHandler::_on_invalid_code_unit(cl7::u16string_view input_read) const
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint16_t>(input_read[0]);
-        _try_log_warning(u8"Invalid UTF-16 code unit: " + format::to_0xhex(value));
+        _try_log_warning(u8"Invalid UTF-16 code unit: " + format::to_0x_hex(value));
     }
 
     void LoggingErrorHandler::_on_invalid_code_unit(cl7::u32string_view input_read) const
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint32_t>(input_read[0]);
-        _try_log_warning(u8"Invalid UTF-32 code unit: " + format::to_0xhex(value));
+        _try_log_warning(u8"Invalid UTF-32 code unit: " + format::to_0x_hex(value));
     }
 
 
@@ -105,7 +105,7 @@ namespace cl7::strings::codec {
             message = u8"Invalid 6-byte UTF-8 sequence:";
 
         for (auto u8c : input_read)
-            message += u8" " + format::to_0xhex(static_cast<uint8_t>(u8c));
+            message += u8" " + format::to_0x_hex(static_cast<uint8_t>(u8c));
         _try_log_warning(message);
     }
 
@@ -130,7 +130,7 @@ namespace cl7::strings::codec {
         message += to_string(expected_length - input_read.size()) + u8" byte(s) missing:";
 
         for (auto u8c : input_read)
-            message += u8" " + format::to_0xhex(static_cast<uint8_t>(u8c));
+            message += u8" " + format::to_0x_hex(static_cast<uint8_t>(u8c));
         _try_log_warning(message);
     }
 
@@ -138,7 +138,7 @@ namespace cl7::strings::codec {
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint16_t>(input_read[0]);
-        _try_log_warning(u8"Incomplete UTF-16 surrogate pair (unpaired leading/high UTF-16 surrogate): " + format::to_0xhex(value));
+        _try_log_warning(u8"Incomplete UTF-16 surrogate pair (unpaired leading/high UTF-16 surrogate): " + format::to_0x_hex(value));
     }
 
 
@@ -159,7 +159,7 @@ namespace cl7::strings::codec {
             message = u8"Overlong 4-byte UTF-8 encoding representing the code range from 0 to 0xFFFF:";
 
         for (auto u8c : input_read)
-            message += u8" " + format::to_0xhex(static_cast<uint8_t>(u8c));
+            message += u8" " + format::to_0x_hex(static_cast<uint8_t>(u8c));
         _try_log_warning(message);
     }
 
@@ -169,7 +169,7 @@ namespace cl7::strings::codec {
     {
         assert(input_read.size() == 1);
         const auto value = static_cast<uint16_t>(input_read[0]);
-        _try_log_warning(u8"Unpaired trailing/low UTF-16 surrogate: " + format::to_0xhex(value));
+        _try_log_warning(u8"Unpaired trailing/low UTF-16 surrogate: " + format::to_0x_hex(value));
     }
 
 
