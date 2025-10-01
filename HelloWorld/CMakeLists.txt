@@ -3,19 +3,14 @@ include(../cmake/common.cmake)
 
 add_executable(HelloWorld)
 
-equip_windows_app(HelloWorld)
-
 add_subdirectory(src)
-
-target_include_directories(HelloWorld
-    PRIVATE
-    ../flangee77/src
-)
 
 target_link_libraries(HelloWorld
     PRIVATE
     flangee77
 )
+
+equip_windows_app(HelloWorld)
 
 add_custom_command(TARGET HelloWorld
     POST_BUILD
