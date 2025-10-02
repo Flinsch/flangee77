@@ -259,14 +259,9 @@ requires (std::is_same_v&lt;std::remove_cvref_t&lt;T&gt;, T&gt; &amp;&amp; std::
 requires (std::is_same_v&lt;std::remove_cvref_t&lt;T&gt;, T&gt; &amp;&amp; sizeof(T) == sizeof(std::byte))</td></tr>
 <tr class="memitem:ad75b54112b78cca68bcee10b7c37e603"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#ad75b54112b78cca68bcee10b7c37e603">make_byte_view</a> (const T *data, size_t size)</td></tr>
 <tr class="separator:ad75b54112b78cca68bcee10b7c37e603"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebe9841fb66068b2872904fc695c0cc6" id="r_aebe9841fb66068b2872904fc695c0cc6"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
-requires (std::is_arithmetic_v&lt;T&gt; &amp;&amp; !std::is_floating_point_v&lt;T&gt;)</td></tr>
-<tr class="memitem:aebe9841fb66068b2872904fc695c0cc6"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#aebe9841fb66068b2872904fc695c0cc6">_to_string</a> (T val)</td></tr>
-<tr class="separator:aebe9841fb66068b2872904fc695c0cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7916f97b3323ae86892fdd0547cabbf5" id="r_a7916f97b3323ae86892fdd0547cabbf5"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
-requires (std::is_arithmetic_v&lt;T&gt; &amp;&amp; std::is_floating_point_v&lt;T&gt;)</td></tr>
-<tr class="memitem:a7916f97b3323ae86892fdd0547cabbf5"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a7916f97b3323ae86892fdd0547cabbf5">_to_string</a> (T val)</td></tr>
-<tr class="separator:a7916f97b3323ae86892fdd0547cabbf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a538de9442d75303bcd0e9c6ca4c03306" id="r_a538de9442d75303bcd0e9c6ca4c03306"><td class="memTemplParams" colspan="2">template&lt;std::integral T&gt; </td></tr>
+<tr class="memitem:a538de9442d75303bcd0e9c6ca4c03306"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a538de9442d75303bcd0e9c6ca4c03306">_to_string</a> (T val)</td></tr>
+<tr class="separator:a538de9442d75303bcd0e9c6ca4c03306"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77903d2176b1a6ef2b24bca912ccf1b5" id="r_a77903d2176b1a6ef2b24bca912ccf1b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a77903d2176b1a6ef2b24bca912ccf1b5">to_string</a> (bool val)</td></tr>
 <tr class="separator:a77903d2176b1a6ef2b24bca912ccf1b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c641b5801ed965c1374fa6e2e0ca9ac" id="r_a3c641b5801ed965c1374fa6e2e0ca9ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a3c641b5801ed965c1374fa6e2e0ca9ac">to_string</a> (signed val)</td></tr>
@@ -740,43 +735,13 @@ requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt; &am
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="aebe9841fb66068b2872904fc695c0cc6" name="aebe9841fb66068b2872904fc695c0cc6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aebe9841fb66068b2872904fc695c0cc6">&#9670;&#160;</a></span>_to_string() <span class="overload">[1/2]</span></h2>
+<a id="a538de9442d75303bcd0e9c6ca4c03306" name="a538de9442d75303bcd0e9c6ca4c03306"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a538de9442d75303bcd0e9c6ca4c03306">&#9670;&#160;</a></span>_to_string()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; <br />
-requires (std::is_arithmetic_v&lt;T&gt; &amp;&amp; !std::is_floating_point_v&lt;T&gt;)</div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::_to_string </td>
-          <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>val</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7916f97b3323ae86892fdd0547cabbf5" name="a7916f97b3323ae86892fdd0547cabbf5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7916f97b3323ae86892fdd0547cabbf5">&#9670;&#160;</a></span>_to_string() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; <br />
-requires (std::is_arithmetic_v&lt;T&gt; &amp;&amp; std::is_floating_point_v&lt;T&gt;)</div>
+template&lt;std::integral T&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">

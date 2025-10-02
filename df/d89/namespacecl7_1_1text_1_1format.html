@@ -127,169 +127,165 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2f545dd69e92f9c33cbb652ed0549c2b" id="r_a2f545dd69e92f9c33cbb652ed0549c2b"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:a2f545dd69e92f9c33cbb652ed0549c2b"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a2f545dd69e92f9c33cbb652ed0549c2b">to_string</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
-<tr class="separator:a2f545dd69e92f9c33cbb652ed0549c2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abec97d043c7c92516d878120604275df" id="r_abec97d043c7c92516d878120604275df"><td class="memTemplParams" colspan="2">template&lt;typename Tval  = signed, class Tstring_or_view &gt; <br />
-requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
-<tr class="memitem:abec97d043c7c92516d878120604275df"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#abec97d043c7c92516d878120604275df">parse_int</a> (Tstring_or_view &amp;&amp;s)</td></tr>
-<tr class="separator:abec97d043c7c92516d878120604275df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94a6ab04395bb12007ee427a6dbbd105" id="r_a94a6ab04395bb12007ee427a6dbbd105"><td class="memTemplParams" colspan="2">template&lt;typename Tval  = unsigned, class Tstring_or_view &gt; <br />
-requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
-<tr class="memitem:a94a6ab04395bb12007ee427a6dbbd105"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a94a6ab04395bb12007ee427a6dbbd105">parse_hex</a> (Tstring_or_view &amp;&amp;s)</td></tr>
-<tr class="separator:a94a6ab04395bb12007ee427a6dbbd105"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a860e9752fd63622c168e0f732e97d6" id="r_a4a860e9752fd63622c168e0f732e97d6"><td class="memTemplParams" colspan="2">template&lt;typename Tval  = unsigned, class Tstring_or_view &gt; <br />
-requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
-<tr class="memitem:a4a860e9752fd63622c168e0f732e97d6"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a4a860e9752fd63622c168e0f732e97d6">parse_octal</a> (Tstring_or_view &amp;&amp;s)</td></tr>
-<tr class="separator:a4a860e9752fd63622c168e0f732e97d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a867f7f1b54e3c53629851df02ce4c8e6" id="r_a867f7f1b54e3c53629851df02ce4c8e6"><td class="memTemplParams" colspan="2">template&lt;typename Tval  = unsigned, class Tstring_or_view &gt; <br />
-requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
-<tr class="memitem:a867f7f1b54e3c53629851df02ce4c8e6"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a867f7f1b54e3c53629851df02ce4c8e6">parse_binary</a> (Tstring_or_view &amp;&amp;s)</td></tr>
-<tr class="separator:a867f7f1b54e3c53629851df02ce4c8e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9646fa7c7f135cb0e52fdc60f0e4018" id="r_ae9646fa7c7f135cb0e52fdc60f0e4018"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:ae9646fa7c7f135cb0e52fdc60f0e4018"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ae9646fa7c7f135cb0e52fdc60f0e4018">to_string</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
+<tr class="separator:ae9646fa7c7f135cb0e52fdc60f0e4018"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a131b5023613d0a33374dc017df910a48" id="r_a131b5023613d0a33374dc017df910a48"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval = signed, class Tstring_or_view &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a131b5023613d0a33374dc017df910a48"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a131b5023613d0a33374dc017df910a48">parse_int</a> (Tstring_or_view &amp;&amp;s)</td></tr>
+<tr class="separator:a131b5023613d0a33374dc017df910a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4f90239ed8952481df678ad8e24ba3c" id="r_ac4f90239ed8952481df678ad8e24ba3c"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval = unsigned, class Tstring_or_view &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:ac4f90239ed8952481df678ad8e24ba3c"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ac4f90239ed8952481df678ad8e24ba3c">parse_hex</a> (Tstring_or_view &amp;&amp;s)</td></tr>
+<tr class="separator:ac4f90239ed8952481df678ad8e24ba3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e71ee1ac0cbe30f3fe7de8e4b6773e8" id="r_a0e71ee1ac0cbe30f3fe7de8e4b6773e8"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval = unsigned, class Tstring_or_view &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a0e71ee1ac0cbe30f3fe7de8e4b6773e8"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a0e71ee1ac0cbe30f3fe7de8e4b6773e8">parse_octal</a> (Tstring_or_view &amp;&amp;s)</td></tr>
+<tr class="separator:a0e71ee1ac0cbe30f3fe7de8e4b6773e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebb7556d27cb8f51f9f3fc2fce552eda" id="r_aebb7556d27cb8f51f9f3fc2fce552eda"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval = unsigned, class Tstring_or_view &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:aebb7556d27cb8f51f9f3fc2fce552eda"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#aebb7556d27cb8f51f9f3fc2fce552eda">parse_binary</a> (Tstring_or_view &amp;&amp;s)</td></tr>
+<tr class="separator:aebb7556d27cb8f51f9f3fc2fce552eda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0f9a0fce5b262ead8b51a08a186f953" id="r_ae0f9a0fce5b262ead8b51a08a186f953"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view_out , class Tstring_or_view_in &gt; <br />
 requires (is_any_string_or_view_v&lt;Tstring_or_view_out&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view_in&gt; &amp;&amp; std::same_as&lt;typename std::remove_cvref_t&lt;Tstring_or_view_out&gt;::value_type, typename std::remove_cvref_t&lt;Tstring_or_view_in&gt;::value_type&gt;)</td></tr>
 <tr class="memitem:ae0f9a0fce5b262ead8b51a08a186f953"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view_out&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ae0f9a0fce5b262ead8b51a08a186f953">adjust_fixed_precision</a> (Tstring_or_view_in &amp;&amp;s, unsigned min_precision, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
 <tr class="separator:ae0f9a0fce5b262ead8b51a08a186f953"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae535cee85e79560bdc66d17aa20a889a" id="r_ae535cee85e79560bdc66d17aa20a889a"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floating_point_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:ae535cee85e79560bdc66d17aa20a889a"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ae535cee85e79560bdc66d17aa20a889a">to_string</a> (Tval val, <a class="el" href="../../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html">FloatFormatOptions</a> options)</td></tr>
-<tr class="separator:ae535cee85e79560bdc66d17aa20a889a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25badcf3c3dd147cc98800782d944c6f" id="r_a25badcf3c3dd147cc98800782d944c6f"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:a25badcf3c3dd147cc98800782d944c6f"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a25badcf3c3dd147cc98800782d944c6f">to_hex</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
-<tr class="separator:a25badcf3c3dd147cc98800782d944c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8575495ab2f7a24f108209aaf39ae028" id="r_a8575495ab2f7a24f108209aaf39ae028"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:a8575495ab2f7a24f108209aaf39ae028"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a8575495ab2f7a24f108209aaf39ae028">to_octal</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
-<tr class="separator:a8575495ab2f7a24f108209aaf39ae028"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9aece9f72d21c9b212ea063511b2a51a" id="r_a9aece9f72d21c9b212ea063511b2a51a"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:a9aece9f72d21c9b212ea063511b2a51a"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a9aece9f72d21c9b212ea063511b2a51a">to_binary</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
-<tr class="separator:a9aece9f72d21c9b212ea063511b2a51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a221618bd7fab98bed5fc13ff7a00c091" id="r_a221618bd7fab98bed5fc13ff7a00c091"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floating_point_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:a221618bd7fab98bed5fc13ff7a00c091"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a221618bd7fab98bed5fc13ff7a00c091">to_string</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
-<tr class="separator:a221618bd7fab98bed5fc13ff7a00c091"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15c60c1ba22911d841d933f05dfa792b" id="r_a15c60c1ba22911d841d933f05dfa792b"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floating_point_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:a15c60c1ba22911d841d933f05dfa792b"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a15c60c1ba22911d841d933f05dfa792b">to_fixed</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
-<tr class="separator:a15c60c1ba22911d841d933f05dfa792b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4eb1542ed1306bceaeca2b8f2e3070ed" id="r_a4eb1542ed1306bceaeca2b8f2e3070ed"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floating_point_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:a4eb1542ed1306bceaeca2b8f2e3070ed"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a4eb1542ed1306bceaeca2b8f2e3070ed">to_scientific</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
-<tr class="separator:a4eb1542ed1306bceaeca2b8f2e3070ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18968aee4f97d82e3eed3291bec12bd0" id="r_a18968aee4f97d82e3eed3291bec12bd0"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:a18968aee4f97d82e3eed3291bec12bd0"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a18968aee4f97d82e3eed3291bec12bd0">to_string</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
-<tr class="separator:a18968aee4f97d82e3eed3291bec12bd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad65e2b8ea4c0dcfc2e330b970490903f" id="r_ad65e2b8ea4c0dcfc2e330b970490903f"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:ad65e2b8ea4c0dcfc2e330b970490903f"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ad65e2b8ea4c0dcfc2e330b970490903f">to_hex</a> (Tval val, unsigned zero_pad_width=0, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3">HexCase</a> hex_case=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3a19de5b94f7b83900d4b296d9fa491aec">HexCase::Upper</a>)</td></tr>
-<tr class="separator:ad65e2b8ea4c0dcfc2e330b970490903f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd921e93ef003df881157489c4cdacb7" id="r_abd921e93ef003df881157489c4cdacb7"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:abd921e93ef003df881157489c4cdacb7"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#abd921e93ef003df881157489c4cdacb7">to_0x_hex</a> (Tval val, unsigned zero_pad_width=0, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3">HexCase</a> hex_case=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3a19de5b94f7b83900d4b296d9fa491aec">HexCase::Upper</a>)</td></tr>
-<tr class="separator:abd921e93ef003df881157489c4cdacb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a909fc2a9efc7a0e04f4d89b6321d7512" id="r_a909fc2a9efc7a0e04f4d89b6321d7512"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:a909fc2a9efc7a0e04f4d89b6321d7512"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a909fc2a9efc7a0e04f4d89b6321d7512">to_hex_lc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
-<tr class="separator:a909fc2a9efc7a0e04f4d89b6321d7512"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65b6322f3fa7010bdb3b3669b5e341da" id="r_a65b6322f3fa7010bdb3b3669b5e341da"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:a65b6322f3fa7010bdb3b3669b5e341da"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a65b6322f3fa7010bdb3b3669b5e341da">to_hex_uc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
-<tr class="separator:a65b6322f3fa7010bdb3b3669b5e341da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11fac1619f4fd6c175af155469e35496" id="r_a11fac1619f4fd6c175af155469e35496"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:a11fac1619f4fd6c175af155469e35496"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a11fac1619f4fd6c175af155469e35496">to_0x_hex_lc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
-<tr class="separator:a11fac1619f4fd6c175af155469e35496"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b5437a122a127cf3741bba4f4145ee9" id="r_a6b5437a122a127cf3741bba4f4145ee9"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:a6b5437a122a127cf3741bba4f4145ee9"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6b5437a122a127cf3741bba4f4145ee9">to_0x_hex_uc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
-<tr class="separator:a6b5437a122a127cf3741bba4f4145ee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a394ae6751df348801c89c28740721115" id="r_a394ae6751df348801c89c28740721115"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:a394ae6751df348801c89c28740721115"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a394ae6751df348801c89c28740721115">to_octal</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
-<tr class="separator:a394ae6751df348801c89c28740721115"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb2b42fdd8bb1f88f6293bd815945043" id="r_adb2b42fdd8bb1f88f6293bd815945043"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:adb2b42fdd8bb1f88f6293bd815945043"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#adb2b42fdd8bb1f88f6293bd815945043">to_0o_octal</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
-<tr class="separator:adb2b42fdd8bb1f88f6293bd815945043"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96d2ff902dd81e4d6a45bfcde99ea365" id="r_a96d2ff902dd81e4d6a45bfcde99ea365"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:a96d2ff902dd81e4d6a45bfcde99ea365"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a96d2ff902dd81e4d6a45bfcde99ea365">to_binary</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
-<tr class="separator:a96d2ff902dd81e4d6a45bfcde99ea365"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec349922a13ae988e9d9223c985caf90" id="r_aec349922a13ae988e9d9223c985caf90"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:aec349922a13ae988e9d9223c985caf90"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#aec349922a13ae988e9d9223c985caf90">to_0b_binary</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
-<tr class="separator:aec349922a13ae988e9d9223c985caf90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a925f88563217340fd1d382138f1d4435" id="r_a925f88563217340fd1d382138f1d4435"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::floating_point Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a925f88563217340fd1d382138f1d4435"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a925f88563217340fd1d382138f1d4435">to_string</a> (Tval val, <a class="el" href="../../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html">FloatFormatOptions</a> options)</td></tr>
+<tr class="separator:a925f88563217340fd1d382138f1d4435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bdffb29699f9bf1127b8eda9e0fa532" id="r_a1bdffb29699f9bf1127b8eda9e0fa532"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a1bdffb29699f9bf1127b8eda9e0fa532"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a1bdffb29699f9bf1127b8eda9e0fa532">to_hex</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
+<tr class="separator:a1bdffb29699f9bf1127b8eda9e0fa532"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5d16fd2df2fc8c67eb773cea19dac28" id="r_ad5d16fd2df2fc8c67eb773cea19dac28"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:ad5d16fd2df2fc8c67eb773cea19dac28"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ad5d16fd2df2fc8c67eb773cea19dac28">to_octal</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
+<tr class="separator:ad5d16fd2df2fc8c67eb773cea19dac28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a467cde8ab8b76720853332548eddc2b2" id="r_a467cde8ab8b76720853332548eddc2b2"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a467cde8ab8b76720853332548eddc2b2"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a467cde8ab8b76720853332548eddc2b2">to_binary</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
+<tr class="separator:a467cde8ab8b76720853332548eddc2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5c991815b852278f59f29cb0816a2c5" id="r_ab5c991815b852278f59f29cb0816a2c5"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::floating_point Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:ab5c991815b852278f59f29cb0816a2c5"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab5c991815b852278f59f29cb0816a2c5">to_string</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
+<tr class="separator:ab5c991815b852278f59f29cb0816a2c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad37f06c78716aeb78b52290fa1914d5e" id="r_ad37f06c78716aeb78b52290fa1914d5e"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::floating_point Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:ad37f06c78716aeb78b52290fa1914d5e"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ad37f06c78716aeb78b52290fa1914d5e">to_fixed</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
+<tr class="separator:ad37f06c78716aeb78b52290fa1914d5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fb94ed31ccd2c57c194c157e206572a" id="r_a5fb94ed31ccd2c57c194c157e206572a"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::floating_point Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a5fb94ed31ccd2c57c194c157e206572a"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a5fb94ed31ccd2c57c194c157e206572a">to_scientific</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
+<tr class="separator:a5fb94ed31ccd2c57c194c157e206572a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c3fab811b614c58eecc4aa76140b22b" id="r_a9c3fab811b614c58eecc4aa76140b22b"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a9c3fab811b614c58eecc4aa76140b22b"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a9c3fab811b614c58eecc4aa76140b22b">to_string</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a9c3fab811b614c58eecc4aa76140b22b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a707d10a974329eaf3c31bf3536b2b72f" id="r_a707d10a974329eaf3c31bf3536b2b72f"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a707d10a974329eaf3c31bf3536b2b72f"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a707d10a974329eaf3c31bf3536b2b72f">to_hex</a> (Tval val, unsigned zero_pad_width=0, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3">HexCase</a> hex_case=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3a19de5b94f7b83900d4b296d9fa491aec">HexCase::Upper</a>)</td></tr>
+<tr class="separator:a707d10a974329eaf3c31bf3536b2b72f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a848e54997da9b2443524bf2987f8a7a5" id="r_a848e54997da9b2443524bf2987f8a7a5"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a848e54997da9b2443524bf2987f8a7a5"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a848e54997da9b2443524bf2987f8a7a5">to_0x_hex</a> (Tval val, unsigned zero_pad_width=0, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3">HexCase</a> hex_case=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3a19de5b94f7b83900d4b296d9fa491aec">HexCase::Upper</a>)</td></tr>
+<tr class="separator:a848e54997da9b2443524bf2987f8a7a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ee0b93ba57ac7952b9d511cdb9fdcc1" id="r_a6ee0b93ba57ac7952b9d511cdb9fdcc1"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a6ee0b93ba57ac7952b9d511cdb9fdcc1"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6ee0b93ba57ac7952b9d511cdb9fdcc1">to_hex_lc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a6ee0b93ba57ac7952b9d511cdb9fdcc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a462906ef3045348ba2d1b994e99a0cbb" id="r_a462906ef3045348ba2d1b994e99a0cbb"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a462906ef3045348ba2d1b994e99a0cbb"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a462906ef3045348ba2d1b994e99a0cbb">to_hex_uc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a462906ef3045348ba2d1b994e99a0cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ffae6f0f76f7e2a4511cd59f3a951cb" id="r_a5ffae6f0f76f7e2a4511cd59f3a951cb"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a5ffae6f0f76f7e2a4511cd59f3a951cb"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a5ffae6f0f76f7e2a4511cd59f3a951cb">to_0x_hex_lc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a5ffae6f0f76f7e2a4511cd59f3a951cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7cfbbeb72dde63db41f7ec9fde90363" id="r_ad7cfbbeb72dde63db41f7ec9fde90363"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:ad7cfbbeb72dde63db41f7ec9fde90363"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ad7cfbbeb72dde63db41f7ec9fde90363">to_0x_hex_uc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:ad7cfbbeb72dde63db41f7ec9fde90363"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e101cfcbd561974a6e72c8707c74b23" id="r_a9e101cfcbd561974a6e72c8707c74b23"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a9e101cfcbd561974a6e72c8707c74b23"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a9e101cfcbd561974a6e72c8707c74b23">to_octal</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a9e101cfcbd561974a6e72c8707c74b23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28a0159738ade80e3eb514f4c0733220" id="r_a28a0159738ade80e3eb514f4c0733220"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a28a0159738ade80e3eb514f4c0733220"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a28a0159738ade80e3eb514f4c0733220">to_0o_octal</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a28a0159738ade80e3eb514f4c0733220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83dd522b954e7765ae1e7500e3061321" id="r_a83dd522b954e7765ae1e7500e3061321"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a83dd522b954e7765ae1e7500e3061321"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a83dd522b954e7765ae1e7500e3061321">to_binary</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a83dd522b954e7765ae1e7500e3061321"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97c21f519fb21b208c9f8bf78c5bdf3f" id="r_a97c21f519fb21b208c9f8bf78c5bdf3f"><td class="memTemplParams" colspan="2">template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:a97c21f519fb21b208c9f8bf78c5bdf3f"><td class="memTemplItemLeft" align="right" valign="top">Tstring_or_view&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a97c21f519fb21b208c9f8bf78c5bdf3f">to_0b_binary</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:a97c21f519fb21b208c9f8bf78c5bdf3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5cbf061650ff8990220ff795c1c43d4e" id="r_a5cbf061650ff8990220ff795c1c43d4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a5cbf061650ff8990220ff795c1c43d4e">adjust_fixed_precision</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">u8string_view</a> s, unsigned min_precision, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
 <tr class="separator:a5cbf061650ff8990220ff795c1c43d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4152b7bfa993154762500166b5fb059c" id="r_a4152b7bfa993154762500166b5fb059c"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; <br />
-requires (std::is_floating_point_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:a4152b7bfa993154762500166b5fb059c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a4152b7bfa993154762500166b5fb059c">to_string</a> (Tval val, <a class="el" href="../../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html">FloatFormatOptions</a> options)</td></tr>
-<tr class="separator:a4152b7bfa993154762500166b5fb059c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadcf8588ee1396cbac6ef67b5b67aa10" id="r_aadcf8588ee1396cbac6ef67b5b67aa10"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; <br />
-requires (std::is_floating_point_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:aadcf8588ee1396cbac6ef67b5b67aa10"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#aadcf8588ee1396cbac6ef67b5b67aa10">to_string</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
-<tr class="separator:aadcf8588ee1396cbac6ef67b5b67aa10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7f062edeb81df0574cdc7bc0f3c7076" id="r_ab7f062edeb81df0574cdc7bc0f3c7076"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a65cd6a2955cbee7bae5060818ba9d2cf" id="r_a65cd6a2955cbee7bae5060818ba9d2cf"><td class="memTemplParams" colspan="2">template&lt;std::floating_point Tval&gt; </td></tr>
+<tr class="memitem:a65cd6a2955cbee7bae5060818ba9d2cf"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a65cd6a2955cbee7bae5060818ba9d2cf">to_string</a> (Tval val, <a class="el" href="../../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html">FloatFormatOptions</a> options)</td></tr>
+<tr class="separator:a65cd6a2955cbee7bae5060818ba9d2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcdc065831432c933f78415da3d5845c" id="r_adcdc065831432c933f78415da3d5845c"><td class="memTemplParams" colspan="2">template&lt;std::floating_point Tval&gt; </td></tr>
+<tr class="memitem:adcdc065831432c933f78415da3d5845c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#adcdc065831432c933f78415da3d5845c">to_string</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
+<tr class="separator:adcdc065831432c933f78415da3d5845c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7f062edeb81df0574cdc7bc0f3c7076" id="r_ab7f062edeb81df0574cdc7bc0f3c7076"><td class="memTemplParams" colspan="2">template&lt;std::floating_point Tval&gt; </td></tr>
 <tr class="memitem:ab7f062edeb81df0574cdc7bc0f3c7076"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab7f062edeb81df0574cdc7bc0f3c7076">to_fixed</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
 <tr class="separator:ab7f062edeb81df0574cdc7bc0f3c7076"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1a38e2e9069236909abc17b13abd7b4" id="r_af1a38e2e9069236909abc17b13abd7b4"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:af1a38e2e9069236909abc17b13abd7b4" id="r_af1a38e2e9069236909abc17b13abd7b4"><td class="memTemplParams" colspan="2">template&lt;std::floating_point Tval&gt; </td></tr>
 <tr class="memitem:af1a38e2e9069236909abc17b13abd7b4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#af1a38e2e9069236909abc17b13abd7b4">to_scientific</a> (Tval val, unsigned min_precision=0, unsigned max_precision=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">MAX_FLOAT_PRECISION</a>)</td></tr>
 <tr class="separator:af1a38e2e9069236909abc17b13abd7b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af400c5904d4bb05e579dd2682fc950ab" id="r_af400c5904d4bb05e579dd2682fc950ab"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; <br />
-requires (std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:af400c5904d4bb05e579dd2682fc950ab"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#af400c5904d4bb05e579dd2682fc950ab">to_string</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
-<tr class="separator:af400c5904d4bb05e579dd2682fc950ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae389317ae4ecbcc0eee79c428ecd8e2c" id="r_ae389317ae4ecbcc0eee79c428ecd8e2c"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; <br />
-requires (std::is_integral_v&lt;Tval&gt;)</td></tr>
-<tr class="memitem:ae389317ae4ecbcc0eee79c428ecd8e2c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ae389317ae4ecbcc0eee79c428ecd8e2c">to_string</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
-<tr class="separator:ae389317ae4ecbcc0eee79c428ecd8e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ff7e912659c858238b7c61c088cc87c" id="r_a4ff7e912659c858238b7c61c088cc87c"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:add56b2397003dbedaab3f35ae4e297a7" id="r_add56b2397003dbedaab3f35ae4e297a7"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval&gt; </td></tr>
+<tr class="memitem:add56b2397003dbedaab3f35ae4e297a7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#add56b2397003dbedaab3f35ae4e297a7">to_string</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
+<tr class="separator:add56b2397003dbedaab3f35ae4e297a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7d25590cf62dca596b6e026ebe1254d" id="r_af7d25590cf62dca596b6e026ebe1254d"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval&gt; </td></tr>
+<tr class="memitem:af7d25590cf62dca596b6e026ebe1254d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#af7d25590cf62dca596b6e026ebe1254d">to_string</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
+<tr class="separator:af7d25590cf62dca596b6e026ebe1254d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ff7e912659c858238b7c61c088cc87c" id="r_a4ff7e912659c858238b7c61c088cc87c"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval&gt; </td></tr>
 <tr class="memitem:a4ff7e912659c858238b7c61c088cc87c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a4ff7e912659c858238b7c61c088cc87c">to_hex</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
 <tr class="separator:a4ff7e912659c858238b7c61c088cc87c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c475fb9819b9dbbabf95b376559d44b" id="r_a1c475fb9819b9dbbabf95b376559d44b"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a1c475fb9819b9dbbabf95b376559d44b" id="r_a1c475fb9819b9dbbabf95b376559d44b"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval&gt; </td></tr>
 <tr class="memitem:a1c475fb9819b9dbbabf95b376559d44b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a1c475fb9819b9dbbabf95b376559d44b">to_hex</a> (Tval val, unsigned zero_pad_width=0, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3">HexCase</a> hex_case=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3a19de5b94f7b83900d4b296d9fa491aec">HexCase::Upper</a>)</td></tr>
 <tr class="separator:a1c475fb9819b9dbbabf95b376559d44b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a914613035948d7e7ea9e2b52cbd2c110" id="r_a914613035948d7e7ea9e2b52cbd2c110"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a914613035948d7e7ea9e2b52cbd2c110" id="r_a914613035948d7e7ea9e2b52cbd2c110"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval&gt; </td></tr>
 <tr class="memitem:a914613035948d7e7ea9e2b52cbd2c110"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a914613035948d7e7ea9e2b52cbd2c110">to_0x_hex</a> (Tval val, unsigned zero_pad_width=0, <a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3">HexCase</a> hex_case=<a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3a19de5b94f7b83900d4b296d9fa491aec">HexCase::Upper</a>)</td></tr>
 <tr class="separator:a914613035948d7e7ea9e2b52cbd2c110"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad094f5acad7f551fe02756a221fa88bb" id="r_ad094f5acad7f551fe02756a221fa88bb"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:ad094f5acad7f551fe02756a221fa88bb" id="r_ad094f5acad7f551fe02756a221fa88bb"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval&gt; </td></tr>
 <tr class="memitem:ad094f5acad7f551fe02756a221fa88bb"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ad094f5acad7f551fe02756a221fa88bb">to_hex_lc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
 <tr class="separator:ad094f5acad7f551fe02756a221fa88bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69dfdebd02dee0d5a397800491e4acff" id="r_a69dfdebd02dee0d5a397800491e4acff"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a69dfdebd02dee0d5a397800491e4acff" id="r_a69dfdebd02dee0d5a397800491e4acff"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval&gt; </td></tr>
 <tr class="memitem:a69dfdebd02dee0d5a397800491e4acff"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a69dfdebd02dee0d5a397800491e4acff">to_hex_uc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
 <tr class="separator:a69dfdebd02dee0d5a397800491e4acff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b6fb3f0dc8d1870bff7dfaace94feaa" id="r_a9b6fb3f0dc8d1870bff7dfaace94feaa"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a9b6fb3f0dc8d1870bff7dfaace94feaa" id="r_a9b6fb3f0dc8d1870bff7dfaace94feaa"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval&gt; </td></tr>
 <tr class="memitem:a9b6fb3f0dc8d1870bff7dfaace94feaa"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a9b6fb3f0dc8d1870bff7dfaace94feaa">to_0x_hex_lc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
 <tr class="separator:a9b6fb3f0dc8d1870bff7dfaace94feaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5290666cb0bda20e88495cb89b92e3cc" id="r_a5290666cb0bda20e88495cb89b92e3cc"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a5290666cb0bda20e88495cb89b92e3cc" id="r_a5290666cb0bda20e88495cb89b92e3cc"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval&gt; </td></tr>
 <tr class="memitem:a5290666cb0bda20e88495cb89b92e3cc"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a5290666cb0bda20e88495cb89b92e3cc">to_0x_hex_uc</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
 <tr class="separator:a5290666cb0bda20e88495cb89b92e3cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a940ed8b78884dd9a5f77ef63be8434cb" id="r_a940ed8b78884dd9a5f77ef63be8434cb"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a940ed8b78884dd9a5f77ef63be8434cb" id="r_a940ed8b78884dd9a5f77ef63be8434cb"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval&gt; </td></tr>
 <tr class="memitem:a940ed8b78884dd9a5f77ef63be8434cb"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a940ed8b78884dd9a5f77ef63be8434cb">to_octal</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
 <tr class="separator:a940ed8b78884dd9a5f77ef63be8434cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3d56ae62a5b7d8b5b4ed648bb74a7b1" id="r_ac3d56ae62a5b7d8b5b4ed648bb74a7b1"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:ac3d56ae62a5b7d8b5b4ed648bb74a7b1" id="r_ac3d56ae62a5b7d8b5b4ed648bb74a7b1"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval&gt; </td></tr>
 <tr class="memitem:ac3d56ae62a5b7d8b5b4ed648bb74a7b1"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ac3d56ae62a5b7d8b5b4ed648bb74a7b1">to_octal</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
 <tr class="separator:ac3d56ae62a5b7d8b5b4ed648bb74a7b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ac3afe6d3269fca3337e04d13c28b6e" id="r_a2ac3afe6d3269fca3337e04d13c28b6e"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a2ac3afe6d3269fca3337e04d13c28b6e" id="r_a2ac3afe6d3269fca3337e04d13c28b6e"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval&gt; </td></tr>
 <tr class="memitem:a2ac3afe6d3269fca3337e04d13c28b6e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a2ac3afe6d3269fca3337e04d13c28b6e">to_0o_octal</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
 <tr class="separator:a2ac3afe6d3269fca3337e04d13c28b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a141902fa26103ca96d9953605f3eb356" id="r_a141902fa26103ca96d9953605f3eb356"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:a141902fa26103ca96d9953605f3eb356" id="r_a141902fa26103ca96d9953605f3eb356"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval&gt; </td></tr>
 <tr class="memitem:a141902fa26103ca96d9953605f3eb356"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a141902fa26103ca96d9953605f3eb356">to_binary</a> (Tval val, <a class="el" href="../../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html">IntFormatOptions</a> options)</td></tr>
 <tr class="separator:a141902fa26103ca96d9953605f3eb356"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9047729a1df181bb7e1d34f212dbb51" id="r_ac9047729a1df181bb7e1d34f212dbb51"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:ac9047729a1df181bb7e1d34f212dbb51" id="r_ac9047729a1df181bb7e1d34f212dbb51"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval&gt; </td></tr>
 <tr class="memitem:ac9047729a1df181bb7e1d34f212dbb51"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ac9047729a1df181bb7e1d34f212dbb51">to_binary</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
 <tr class="separator:ac9047729a1df181bb7e1d34f212dbb51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec3a063ed351caef57a01111e58b6913" id="r_aec3a063ed351caef57a01111e58b6913"><td class="memTemplParams" colspan="2">template&lt;typename Tval &gt; </td></tr>
+<tr class="memitem:aec3a063ed351caef57a01111e58b6913" id="r_aec3a063ed351caef57a01111e58b6913"><td class="memTemplParams" colspan="2">template&lt;std::integral Tval&gt; </td></tr>
 <tr class="memitem:aec3a063ed351caef57a01111e58b6913"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#aec3a063ed351caef57a01111e58b6913">to_0b_binary</a> (Tval val, unsigned zero_pad_width=0)</td></tr>
 <tr class="separator:aec3a063ed351caef57a01111e58b6913"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36130f6c0538b5663a489d889bb6a618" id="r_a36130f6c0538b5663a489d889bb6a618"><td class="memTemplParams" colspan="2">template&lt;typename Tval  = float, class Tstring_or_view &gt; <br />
-requires (std::is_floating_point_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
-<tr class="memitem:a36130f6c0538b5663a489d889bb6a618"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a36130f6c0538b5663a489d889bb6a618">parse_float</a> (Tstring_or_view &amp;&amp;s)</td></tr>
-<tr class="separator:a36130f6c0538b5663a489d889bb6a618"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae37d4d5779796ee136be4e6d8f30e642" id="r_ae37d4d5779796ee136be4e6d8f30e642"><td class="memTemplParams" colspan="2">template&lt;std::floating_point Tval = float, class Tstring_or_view &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</td></tr>
+<tr class="memitem:ae37d4d5779796ee136be4e6d8f30e642"><td class="memTemplItemLeft" align="right" valign="top">Tval&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d89/namespacecl7_1_1text_1_1format.html#ae37d4d5779796ee136be4e6d8f30e642">parse_float</a> (Tstring_or_view &amp;&amp;s)</td></tr>
+<tr class="separator:ae37d4d5779796ee136be4e6d8f30e642"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -463,14 +459,14 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view_out&gt; &amp;&amp; is_any_s
 
 </div>
 </div>
-<a id="a867f7f1b54e3c53629851df02ce4c8e6" name="a867f7f1b54e3c53629851df02ce4c8e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a867f7f1b54e3c53629851df02ce4c8e6">&#9670;&#160;</a></span>parse_binary()</h2>
+<a id="aebb7556d27cb8f51f9f3fc2fce552eda" name="aebb7556d27cb8f51f9f3fc2fce552eda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebb7556d27cb8f51f9f3fc2fce552eda">&#9670;&#160;</a></span>parse_binary()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval  = unsigned, class Tstring_or_view &gt; <br />
-requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
+template&lt;std::integral Tval = unsigned, class Tstring_or_view &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tval cl7::text::format::parse_binary </td>
@@ -485,14 +481,14 @@ requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;T
 
 </div>
 </div>
-<a id="a36130f6c0538b5663a489d889bb6a618" name="a36130f6c0538b5663a489d889bb6a618"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36130f6c0538b5663a489d889bb6a618">&#9670;&#160;</a></span>parse_float()</h2>
+<a id="ae37d4d5779796ee136be4e6d8f30e642" name="ae37d4d5779796ee136be4e6d8f30e642"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae37d4d5779796ee136be4e6d8f30e642">&#9670;&#160;</a></span>parse_float()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval  = float, class Tstring_or_view &gt; <br />
-requires (std::is_floating_point_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
+template&lt;std::floating_point Tval = float, class Tstring_or_view &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tval cl7::text::format::parse_float </td>
@@ -503,18 +499,18 @@ requires (std::is_floating_point_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Converts a (decimal) string representation (in fixed or scientific notation) to a floating point value. </p>
+<p>Converts a (decimal) string representation (in fixed or scientific notation) to a floating-point value. </p>
 
 </div>
 </div>
-<a id="a94a6ab04395bb12007ee427a6dbbd105" name="a94a6ab04395bb12007ee427a6dbbd105"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94a6ab04395bb12007ee427a6dbbd105">&#9670;&#160;</a></span>parse_hex()</h2>
+<a id="ac4f90239ed8952481df678ad8e24ba3c" name="ac4f90239ed8952481df678ad8e24ba3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4f90239ed8952481df678ad8e24ba3c">&#9670;&#160;</a></span>parse_hex()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval  = unsigned, class Tstring_or_view &gt; <br />
-requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
+template&lt;std::integral Tval = unsigned, class Tstring_or_view &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tval cl7::text::format::parse_hex </td>
@@ -529,14 +525,14 @@ requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;T
 
 </div>
 </div>
-<a id="abec97d043c7c92516d878120604275df" name="abec97d043c7c92516d878120604275df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abec97d043c7c92516d878120604275df">&#9670;&#160;</a></span>parse_int()</h2>
+<a id="a131b5023613d0a33374dc017df910a48" name="a131b5023613d0a33374dc017df910a48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a131b5023613d0a33374dc017df910a48">&#9670;&#160;</a></span>parse_int()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval  = signed, class Tstring_or_view &gt; <br />
-requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
+template&lt;std::integral Tval = signed, class Tstring_or_view &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tval cl7::text::format::parse_int </td>
@@ -551,14 +547,14 @@ requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;T
 
 </div>
 </div>
-<a id="a4a860e9752fd63622c168e0f732e97d6" name="a4a860e9752fd63622c168e0f732e97d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a860e9752fd63622c168e0f732e97d6">&#9670;&#160;</a></span>parse_octal()</h2>
+<a id="a0e71ee1ac0cbe30f3fe7de8e4b6773e8" name="a0e71ee1ac0cbe30f3fe7de8e4b6773e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e71ee1ac0cbe30f3fe7de8e4b6773e8">&#9670;&#160;</a></span>parse_octal()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval  = unsigned, class Tstring_or_view &gt; <br />
-requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
+template&lt;std::integral Tval = unsigned, class Tstring_or_view &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tval cl7::text::format::parse_octal </td>
@@ -573,14 +569,14 @@ requires (std::is_integral_v&lt;Tval&gt; &amp;&amp; is_any_string_or_view_v&lt;T
 
 </div>
 </div>
-<a id="aec349922a13ae988e9d9223c985caf90" name="aec349922a13ae988e9d9223c985caf90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec349922a13ae988e9d9223c985caf90">&#9670;&#160;</a></span>to_0b_binary() <span class="overload">[1/2]</span></h2>
+<a id="a97c21f519fb21b208c9f8bf78c5bdf3f" name="a97c21f519fb21b208c9f8bf78c5bdf3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97c21f519fb21b208c9f8bf78c5bdf3f">&#9670;&#160;</a></span>to_0b_binary() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_0b_binary </td>
@@ -611,7 +607,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_inte
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; </div>
+template&lt;std::integral Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_0b_binary </td>
@@ -637,14 +633,14 @@ template&lt;typename Tval &gt; </div>
 
 </div>
 </div>
-<a id="adb2b42fdd8bb1f88f6293bd815945043" name="adb2b42fdd8bb1f88f6293bd815945043"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb2b42fdd8bb1f88f6293bd815945043">&#9670;&#160;</a></span>to_0o_octal() <span class="overload">[1/2]</span></h2>
+<a id="a28a0159738ade80e3eb514f4c0733220" name="a28a0159738ade80e3eb514f4c0733220"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28a0159738ade80e3eb514f4c0733220">&#9670;&#160;</a></span>to_0o_octal() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_0o_octal </td>
@@ -675,7 +671,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_inte
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; </div>
+template&lt;std::integral Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_0o_octal </td>
@@ -701,14 +697,14 @@ template&lt;typename Tval &gt; </div>
 
 </div>
 </div>
-<a id="abd921e93ef003df881157489c4cdacb7" name="abd921e93ef003df881157489c4cdacb7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd921e93ef003df881157489c4cdacb7">&#9670;&#160;</a></span>to_0x_hex() <span class="overload">[1/2]</span></h2>
+<a id="a848e54997da9b2443524bf2987f8a7a5" name="a848e54997da9b2443524bf2987f8a7a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a848e54997da9b2443524bf2987f8a7a5">&#9670;&#160;</a></span>to_0x_hex() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_0x_hex </td>
@@ -747,7 +743,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_inte
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; </div>
+template&lt;std::integral Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_0x_hex </td>
@@ -780,14 +776,14 @@ template&lt;typename Tval &gt; </div>
 
 </div>
 </div>
-<a id="a11fac1619f4fd6c175af155469e35496" name="a11fac1619f4fd6c175af155469e35496"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11fac1619f4fd6c175af155469e35496">&#9670;&#160;</a></span>to_0x_hex_lc() <span class="overload">[1/2]</span></h2>
+<a id="a5ffae6f0f76f7e2a4511cd59f3a951cb" name="a5ffae6f0f76f7e2a4511cd59f3a951cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ffae6f0f76f7e2a4511cd59f3a951cb">&#9670;&#160;</a></span>to_0x_hex_lc() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_0x_hex_lc </td>
@@ -819,7 +815,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_inte
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; </div>
+template&lt;std::integral Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_0x_hex_lc </td>
@@ -845,14 +841,14 @@ template&lt;typename Tval &gt; </div>
 
 </div>
 </div>
-<a id="a6b5437a122a127cf3741bba4f4145ee9" name="a6b5437a122a127cf3741bba4f4145ee9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b5437a122a127cf3741bba4f4145ee9">&#9670;&#160;</a></span>to_0x_hex_uc() <span class="overload">[1/2]</span></h2>
+<a id="ad7cfbbeb72dde63db41f7ec9fde90363" name="ad7cfbbeb72dde63db41f7ec9fde90363"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7cfbbeb72dde63db41f7ec9fde90363">&#9670;&#160;</a></span>to_0x_hex_uc() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_0x_hex_uc </td>
@@ -884,7 +880,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_inte
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; </div>
+template&lt;std::integral Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_0x_hex_uc </td>
@@ -910,14 +906,14 @@ template&lt;typename Tval &gt; </div>
 
 </div>
 </div>
-<a id="a9aece9f72d21c9b212ea063511b2a51a" name="a9aece9f72d21c9b212ea063511b2a51a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9aece9f72d21c9b212ea063511b2a51a">&#9670;&#160;</a></span>to_binary() <span class="overload">[1/4]</span></h2>
+<a id="a467cde8ab8b76720853332548eddc2b2" name="a467cde8ab8b76720853332548eddc2b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a467cde8ab8b76720853332548eddc2b2">&#9670;&#160;</a></span>to_binary() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_binary </td>
@@ -948,7 +944,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_inte
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; </div>
+template&lt;std::integral Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_binary </td>
@@ -973,14 +969,14 @@ template&lt;typename Tval &gt; </div>
 
 </div>
 </div>
-<a id="a96d2ff902dd81e4d6a45bfcde99ea365" name="a96d2ff902dd81e4d6a45bfcde99ea365"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96d2ff902dd81e4d6a45bfcde99ea365">&#9670;&#160;</a></span>to_binary() <span class="overload">[3/4]</span></h2>
+<a id="a83dd522b954e7765ae1e7500e3061321" name="a83dd522b954e7765ae1e7500e3061321"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83dd522b954e7765ae1e7500e3061321">&#9670;&#160;</a></span>to_binary() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_binary </td>
@@ -1011,7 +1007,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_inte
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; </div>
+template&lt;std::integral Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_binary </td>
@@ -1037,14 +1033,14 @@ template&lt;typename Tval &gt; </div>
 
 </div>
 </div>
-<a id="a15c60c1ba22911d841d933f05dfa792b" name="a15c60c1ba22911d841d933f05dfa792b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15c60c1ba22911d841d933f05dfa792b">&#9670;&#160;</a></span>to_fixed() <span class="overload">[1/2]</span></h2>
+<a id="ad37f06c78716aeb78b52290fa1914d5e" name="ad37f06c78716aeb78b52290fa1914d5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad37f06c78716aeb78b52290fa1914d5e">&#9670;&#160;</a></span>to_fixed() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floating_point_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::floating_point Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_fixed </td>
@@ -1071,7 +1067,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floa
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Converts a floating point value to a (decimal) string representation (in fixed notation).</p>
+<p>Converts a floating-point value to a (decimal) string representation (in fixed notation).</p>
 <p>You can specify the minimum and maximum number of fractional digits. </p>
 
 </div>
@@ -1082,7 +1078,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floa
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; </div>
+template&lt;std::floating_point Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_fixed </td>
@@ -1109,19 +1105,19 @@ template&lt;typename Tval &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Converts a floating point value to a UTF-8 encoded (decimal) string representation (in fixed notation).</p>
+<p>Converts a floating-point value to a UTF-8 encoded (decimal) string representation (in fixed notation).</p>
 <p>You can specify the minimum and maximum number of fractional digits. </p>
 
 </div>
 </div>
-<a id="a25badcf3c3dd147cc98800782d944c6f" name="a25badcf3c3dd147cc98800782d944c6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25badcf3c3dd147cc98800782d944c6f">&#9670;&#160;</a></span>to_hex() <span class="overload">[1/4]</span></h2>
+<a id="a1bdffb29699f9bf1127b8eda9e0fa532" name="a1bdffb29699f9bf1127b8eda9e0fa532"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bdffb29699f9bf1127b8eda9e0fa532">&#9670;&#160;</a></span>to_hex() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_hex </td>
@@ -1152,7 +1148,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_inte
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; </div>
+template&lt;std::integral Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_hex </td>
@@ -1177,14 +1173,14 @@ template&lt;typename Tval &gt; </div>
 
 </div>
 </div>
-<a id="ad65e2b8ea4c0dcfc2e330b970490903f" name="ad65e2b8ea4c0dcfc2e330b970490903f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad65e2b8ea4c0dcfc2e330b970490903f">&#9670;&#160;</a></span>to_hex() <span class="overload">[3/4]</span></h2>
+<a id="a707d10a974329eaf3c31bf3536b2b72f" name="a707d10a974329eaf3c31bf3536b2b72f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a707d10a974329eaf3c31bf3536b2b72f">&#9670;&#160;</a></span>to_hex() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_hex </td>
@@ -1223,7 +1219,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_inte
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; </div>
+template&lt;std::integral Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_hex </td>
@@ -1256,14 +1252,14 @@ template&lt;typename Tval &gt; </div>
 
 </div>
 </div>
-<a id="a909fc2a9efc7a0e04f4d89b6321d7512" name="a909fc2a9efc7a0e04f4d89b6321d7512"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a909fc2a9efc7a0e04f4d89b6321d7512">&#9670;&#160;</a></span>to_hex_lc() <span class="overload">[1/2]</span></h2>
+<a id="a6ee0b93ba57ac7952b9d511cdb9fdcc1" name="a6ee0b93ba57ac7952b9d511cdb9fdcc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ee0b93ba57ac7952b9d511cdb9fdcc1">&#9670;&#160;</a></span>to_hex_lc() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_hex_lc </td>
@@ -1295,7 +1291,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_inte
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; </div>
+template&lt;std::integral Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_hex_lc </td>
@@ -1321,14 +1317,14 @@ template&lt;typename Tval &gt; </div>
 
 </div>
 </div>
-<a id="a65b6322f3fa7010bdb3b3669b5e341da" name="a65b6322f3fa7010bdb3b3669b5e341da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65b6322f3fa7010bdb3b3669b5e341da">&#9670;&#160;</a></span>to_hex_uc() <span class="overload">[1/2]</span></h2>
+<a id="a462906ef3045348ba2d1b994e99a0cbb" name="a462906ef3045348ba2d1b994e99a0cbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a462906ef3045348ba2d1b994e99a0cbb">&#9670;&#160;</a></span>to_hex_uc() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_hex_uc </td>
@@ -1360,7 +1356,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_inte
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; </div>
+template&lt;std::integral Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_hex_uc </td>
@@ -1386,14 +1382,14 @@ template&lt;typename Tval &gt; </div>
 
 </div>
 </div>
-<a id="a8575495ab2f7a24f108209aaf39ae028" name="a8575495ab2f7a24f108209aaf39ae028"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8575495ab2f7a24f108209aaf39ae028">&#9670;&#160;</a></span>to_octal() <span class="overload">[1/4]</span></h2>
+<a id="ad5d16fd2df2fc8c67eb773cea19dac28" name="ad5d16fd2df2fc8c67eb773cea19dac28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5d16fd2df2fc8c67eb773cea19dac28">&#9670;&#160;</a></span>to_octal() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_octal </td>
@@ -1424,7 +1420,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_inte
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; </div>
+template&lt;std::integral Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_octal </td>
@@ -1449,14 +1445,14 @@ template&lt;typename Tval &gt; </div>
 
 </div>
 </div>
-<a id="a394ae6751df348801c89c28740721115" name="a394ae6751df348801c89c28740721115"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a394ae6751df348801c89c28740721115">&#9670;&#160;</a></span>to_octal() <span class="overload">[3/4]</span></h2>
+<a id="a9e101cfcbd561974a6e72c8707c74b23" name="a9e101cfcbd561974a6e72c8707c74b23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e101cfcbd561974a6e72c8707c74b23">&#9670;&#160;</a></span>to_octal() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_octal </td>
@@ -1487,7 +1483,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_inte
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; </div>
+template&lt;std::integral Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_octal </td>
@@ -1513,14 +1509,14 @@ template&lt;typename Tval &gt; </div>
 
 </div>
 </div>
-<a id="a4eb1542ed1306bceaeca2b8f2e3070ed" name="a4eb1542ed1306bceaeca2b8f2e3070ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4eb1542ed1306bceaeca2b8f2e3070ed">&#9670;&#160;</a></span>to_scientific() <span class="overload">[1/2]</span></h2>
+<a id="a5fb94ed31ccd2c57c194c157e206572a" name="a5fb94ed31ccd2c57c194c157e206572a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fb94ed31ccd2c57c194c157e206572a">&#9670;&#160;</a></span>to_scientific() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floating_point_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::floating_point Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_scientific </td>
@@ -1547,7 +1543,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floa
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Converts a floating point value to a (decimal) string representation (in scientific notation).</p>
+<p>Converts a floating-point value to a (decimal) string representation (in scientific notation).</p>
 <p>You can specify the minimum and maximum number of fractional digits. </p>
 
 </div>
@@ -1558,7 +1554,7 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floa
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; </div>
+template&lt;std::floating_point Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_scientific </td>
@@ -1585,19 +1581,19 @@ template&lt;typename Tval &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Converts a floating point value to a UTF-8 encoded (decimal) string representation (in scientific notation).</p>
+<p>Converts a floating-point value to a UTF-8 encoded (decimal) string representation (in scientific notation).</p>
 <p>You can specify the minimum and maximum number of fractional digits. </p>
 
 </div>
 </div>
-<a id="ae535cee85e79560bdc66d17aa20a889a" name="ae535cee85e79560bdc66d17aa20a889a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae535cee85e79560bdc66d17aa20a889a">&#9670;&#160;</a></span>to_string() <span class="overload">[1/8]</span></h2>
+<a id="a925f88563217340fd1d382138f1d4435" name="a925f88563217340fd1d382138f1d4435"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a925f88563217340fd1d382138f1d4435">&#9670;&#160;</a></span>to_string() <span class="overload">[1/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floating_point_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::floating_point Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_string </td>
@@ -1618,18 +1614,17 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floa
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Converts a floating point value to a (decimal) string representation (in fixed or scientific notation). </p>
+<p>Converts a floating-point value to a (decimal) string representation (in fixed or scientific notation). </p>
 
 </div>
 </div>
-<a id="a4152b7bfa993154762500166b5fb059c" name="a4152b7bfa993154762500166b5fb059c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4152b7bfa993154762500166b5fb059c">&#9670;&#160;</a></span>to_string() <span class="overload">[2/8]</span></h2>
+<a id="a65cd6a2955cbee7bae5060818ba9d2cf" name="a65cd6a2955cbee7bae5060818ba9d2cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65cd6a2955cbee7bae5060818ba9d2cf">&#9670;&#160;</a></span>to_string() <span class="overload">[2/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; <br />
-requires (std::is_floating_point_v&lt;Tval&gt;)</div>
+template&lt;std::floating_point Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_string </td>
@@ -1650,18 +1645,18 @@ requires (std::is_floating_point_v&lt;Tval&gt;)</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Converts a floating point value to a UTF-8 encoded (decimal) string representation (in fixed or scientific notation). </p>
+<p>Converts a floating-point value to a UTF-8 encoded (decimal) string representation (in fixed or scientific notation). </p>
 
 </div>
 </div>
-<a id="a2f545dd69e92f9c33cbb652ed0549c2b" name="a2f545dd69e92f9c33cbb652ed0549c2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f545dd69e92f9c33cbb652ed0549c2b">&#9670;&#160;</a></span>to_string() <span class="overload">[3/8]</span></h2>
+<a id="ae9646fa7c7f135cb0e52fdc60f0e4018" name="ae9646fa7c7f135cb0e52fdc60f0e4018"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9646fa7c7f135cb0e52fdc60f0e4018">&#9670;&#160;</a></span>to_string() <span class="overload">[3/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_string </td>
@@ -1686,14 +1681,13 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_inte
 
 </div>
 </div>
-<a id="af400c5904d4bb05e579dd2682fc950ab" name="af400c5904d4bb05e579dd2682fc950ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af400c5904d4bb05e579dd2682fc950ab">&#9670;&#160;</a></span>to_string() <span class="overload">[4/8]</span></h2>
+<a id="add56b2397003dbedaab3f35ae4e297a7" name="add56b2397003dbedaab3f35ae4e297a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add56b2397003dbedaab3f35ae4e297a7">&#9670;&#160;</a></span>to_string() <span class="overload">[4/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; <br />
-requires (std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;std::integral Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_string </td>
@@ -1718,14 +1712,14 @@ requires (std::is_integral_v&lt;Tval&gt;)</div>
 
 </div>
 </div>
-<a id="a221618bd7fab98bed5fc13ff7a00c091" name="a221618bd7fab98bed5fc13ff7a00c091"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a221618bd7fab98bed5fc13ff7a00c091">&#9670;&#160;</a></span>to_string() <span class="overload">[5/8]</span></h2>
+<a id="ab5c991815b852278f59f29cb0816a2c5" name="ab5c991815b852278f59f29cb0816a2c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5c991815b852278f59f29cb0816a2c5">&#9670;&#160;</a></span>to_string() <span class="overload">[5/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floating_point_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::floating_point Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_string </td>
@@ -1752,19 +1746,18 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_floa
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Converts a floating point value to a (decimal) string representation (in fixed or scientific notation).</p>
+<p>Converts a floating-point value to a (decimal) string representation (in fixed or scientific notation).</p>
 <p>You can specify the minimum and maximum number of fractional digits. </p>
 
 </div>
 </div>
-<a id="aadcf8588ee1396cbac6ef67b5b67aa10" name="aadcf8588ee1396cbac6ef67b5b67aa10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aadcf8588ee1396cbac6ef67b5b67aa10">&#9670;&#160;</a></span>to_string() <span class="overload">[6/8]</span></h2>
+<a id="adcdc065831432c933f78415da3d5845c" name="adcdc065831432c933f78415da3d5845c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcdc065831432c933f78415da3d5845c">&#9670;&#160;</a></span>to_string() <span class="overload">[6/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; <br />
-requires (std::is_floating_point_v&lt;Tval&gt;)</div>
+template&lt;std::floating_point Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_string </td>
@@ -1791,19 +1784,19 @@ requires (std::is_floating_point_v&lt;Tval&gt;)</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Converts a floating point value to a UTF-8 encoded (decimal) string representation (in fixed or scientific notation).</p>
+<p>Converts a floating-point value to a UTF-8 encoded (decimal) string representation (in fixed or scientific notation).</p>
 <p>You can specify the minimum and maximum number of fractional digits. </p>
 
 </div>
 </div>
-<a id="a18968aee4f97d82e3eed3291bec12bd0" name="a18968aee4f97d82e3eed3291bec12bd0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18968aee4f97d82e3eed3291bec12bd0">&#9670;&#160;</a></span>to_string() <span class="overload">[7/8]</span></h2>
+<a id="a9c3fab811b614c58eecc4aa76140b22b" name="a9c3fab811b614c58eecc4aa76140b22b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c3fab811b614c58eecc4aa76140b22b">&#9670;&#160;</a></span>to_string() <span class="overload">[7/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Tstring_or_view , typename Tval &gt; <br />
-requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;class Tstring_or_view , std::integral Tval&gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tstring_or_view cl7::text::format::to_string </td>
@@ -1829,14 +1822,13 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view&gt; &amp;&amp; std::is_inte
 
 </div>
 </div>
-<a id="ae389317ae4ecbcc0eee79c428ecd8e2c" name="ae389317ae4ecbcc0eee79c428ecd8e2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae389317ae4ecbcc0eee79c428ecd8e2c">&#9670;&#160;</a></span>to_string() <span class="overload">[8/8]</span></h2>
+<a id="af7d25590cf62dca596b6e026ebe1254d" name="af7d25590cf62dca596b6e026ebe1254d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7d25590cf62dca596b6e026ebe1254d">&#9670;&#160;</a></span>to_string() <span class="overload">[8/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tval &gt; <br />
-requires (std::is_integral_v&lt;Tval&gt;)</div>
+template&lt;std::integral Tval&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::text::format::to_string </td>

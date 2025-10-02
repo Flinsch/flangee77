@@ -445,9 +445,9 @@ var hierarchy =
           ] ],
           [ "xl7::DriverBasedComponent< TSingleton >", "d8/d3d/classxl7_1_1DriverBasedComponent.html", null ]
         ] ]
-      ] ],
-      [ "cl7::creational::SingletonManager", "d7/dba/classcl7_1_1creational_1_1SingletonManager.html", null ]
+      ] ]
     ] ],
+    [ "cl7::creational::SingletonManager", "d7/dba/classcl7_1_1creational_1_1SingletonManager.html", null ],
     [ "dl7::syntax::SourceContext", "d7/d8c/structdl7_1_1syntax_1_1SourceContext.html", null ],
     [ "dl7::syntax::SourceLocation", "d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::StateArray< TProxy, N >", "d7/df7/classxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray.html", null ],

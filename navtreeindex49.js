@@ -1,7 +1,5 @@
 var NAVTREEINDEX49 =
 {
-"df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a1f7d1395a521de43b8ee87a12ffb1691":[5,0,6,2,3,0],
-"df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a22e8f7ac8846e5ba44a95cb0059ae68d":[5,0,6,2,3,3],
 "df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a31033fed038b7a3523d9c5256c5c5e52":[5,0,6,2,3,19],
 "df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a39e617c46612e12d2ef5ac48d760ad20":[5,0,6,2,3,1],
 "df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a3b3ee3fef238e2ac2e478ac84126b985":[5,0,6,2,3,4],
@@ -26,10 +24,10 @@ var NAVTREEINDEX49 =
 "df/d9d/namespacetl7_1_1reporting.html#a6310372464eaa8bff5941152975f2153":[5,0,6,2,4],
 "df/d9d/namespacetl7_1_1reporting.html#ab6a018561df56d013b90907fc8a16b47":[5,0,6,2,6],
 "df/d9d/namespacetl7_1_1reporting.html#ad428c153040247d9372cba06ac2d0ad9":[5,0,6,2,9],
-"df/d9d/structxl7_1_1graphics_1_1textures_1_1Texture2DArray_1_1Desc.html":[7,0,7,0,7,5,0],
 "df/d9d/structxl7_1_1graphics_1_1textures_1_1Texture2DArray_1_1Desc.html":[5,0,7,1,7,5,0],
-"df/d9d/structxl7_1_1graphics_1_1textures_1_1Texture2DArray_1_1Desc.html#a624bd939cb88855ec886e5ca2bb1c678":[7,0,7,0,7,5,0,0],
+"df/d9d/structxl7_1_1graphics_1_1textures_1_1Texture2DArray_1_1Desc.html":[7,0,7,0,7,5,0],
 "df/d9d/structxl7_1_1graphics_1_1textures_1_1Texture2DArray_1_1Desc.html#a624bd939cb88855ec886e5ca2bb1c678":[5,0,7,1,7,5,0,0],
+"df/d9d/structxl7_1_1graphics_1_1textures_1_1Texture2DArray_1_1Desc.html#a624bd939cb88855ec886e5ca2bb1c678":[7,0,7,0,7,5,0,0],
 "df/d9e/PixelBitKit_8cpp.html":[8,0,6,0,19],
 "df/d9f/direct3d9_2RenderingContextImpl_8cpp.html":[8,0,6,0,1,1,11],
 "df/d9f/direct3d9_2RenderingContextImpl_8cpp.html#a070751be12a6af8370789603c950040d":[8,0,6,0,1,1,11,2],
@@ -249,5 +247,7 @@ var NAVTREEINDEX49 =
 "df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ab6755d218d5f4e1cef9cce9cc39aeda9":[5,0,0,5,8,11],
 "df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3aca0dbad92a874b2f69b549293387925e":[5,0,0,5,8,10],
 "df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ace0be71e33226e4c1db2bcea5959f16b":[5,0,0,5,8,0],
-"df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ad2c24d59e0baff4d0155fbdf62590867":[5,0,0,5,8,6]
+"df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ad2c24d59e0baff4d0155fbdf62590867":[5,0,0,5,8,6],
+"df/de5/namespacecl7_1_1logging.html#ada44c64ca361943177c03420c2724251":[5,0,0,5,9],
+"df/de6/RenderingDevice_8cpp.html":[8,0,6,0,25]
 };

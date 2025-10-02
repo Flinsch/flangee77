@@ -1,7 +1,5 @@
 var NAVTREEINDEX50 =
 {
-"df/de5/namespacecl7_1_1logging.html#ada44c64ca361943177c03420c2724251":[5,0,0,5,9],
-"df/de6/RenderingDevice_8cpp.html":[8,0,6,0,25],
 "df/de6/SampleHandler_8cpp.html":[8,0,0,3,5],
 "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html":[7,0,7,0,7,7],
 "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html":[5,0,7,1,7,7],

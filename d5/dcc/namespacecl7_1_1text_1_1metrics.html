@@ -103,10 +103,10 @@ Functions</h2></td></tr>
 requires (is_any_string_or_view_v&lt;Tstring_or_view1&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view2&gt;)</td></tr>
 <tr class="memitem:a5caf0d52d4b2a2a36c3360b6188b97b0"><td class="memTemplItemLeft" align="right" valign="top">size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dcc/namespacecl7_1_1text_1_1metrics.html#a5caf0d52d4b2a2a36c3360b6188b97b0">levenshtein</a> (Tstring_or_view1 &amp;&amp;s1, Tstring_or_view2 &amp;&amp;s2)</td></tr>
 <tr class="separator:a5caf0d52d4b2a2a36c3360b6188b97b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a980ac8b52a4567aa61d77cc032b14425" id="r_a980ac8b52a4567aa61d77cc032b14425"><td class="memTemplParams" colspan="2">template&lt;typename Tfloat  = float, class Tstring_or_view1 , class Tstring_or_view2 &gt; <br />
-requires (std::is_floating_point_v&lt;Tfloat&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view1&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view2&gt;)</td></tr>
-<tr class="memitem:a980ac8b52a4567aa61d77cc032b14425"><td class="memTemplItemLeft" align="right" valign="top">Tfloat&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dcc/namespacecl7_1_1text_1_1metrics.html#a980ac8b52a4567aa61d77cc032b14425">levenshtein_normalized</a> (Tstring_or_view1 &amp;&amp;s1, Tstring_or_view2 &amp;&amp;s2)</td></tr>
-<tr class="separator:a980ac8b52a4567aa61d77cc032b14425"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2f5b7f56a7217931a5d0d1dac86328a" id="r_ac2f5b7f56a7217931a5d0d1dac86328a"><td class="memTemplParams" colspan="2">template&lt;std::floating_point Tfloat = float, class Tstring_or_view1 , class Tstring_or_view2 &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view1&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view2&gt;)</td></tr>
+<tr class="memitem:ac2f5b7f56a7217931a5d0d1dac86328a"><td class="memTemplItemLeft" align="right" valign="top">Tfloat&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dcc/namespacecl7_1_1text_1_1metrics.html#ac2f5b7f56a7217931a5d0d1dac86328a">levenshtein_normalized</a> (Tstring_or_view1 &amp;&amp;s1, Tstring_or_view2 &amp;&amp;s2)</td></tr>
+<tr class="separator:ac2f5b7f56a7217931a5d0d1dac86328a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a5caf0d52d4b2a2a36c3360b6188b97b0" name="a5caf0d52d4b2a2a36c3360b6188b97b0"></a>
@@ -141,14 +141,14 @@ requires (is_any_string_or_view_v&lt;Tstring_or_view1&gt; &amp;&amp; is_any_stri
 
 </div>
 </div>
-<a id="a980ac8b52a4567aa61d77cc032b14425" name="a980ac8b52a4567aa61d77cc032b14425"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a980ac8b52a4567aa61d77cc032b14425">&#9670;&#160;</a></span>levenshtein_normalized()</h2>
+<a id="ac2f5b7f56a7217931a5d0d1dac86328a" name="ac2f5b7f56a7217931a5d0d1dac86328a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2f5b7f56a7217931a5d0d1dac86328a">&#9670;&#160;</a></span>levenshtein_normalized()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tfloat  = float, class Tstring_or_view1 , class Tstring_or_view2 &gt; <br />
-requires (std::is_floating_point_v&lt;Tfloat&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view1&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view2&gt;)</div>
+template&lt;std::floating_point Tfloat = float, class Tstring_or_view1 , class Tstring_or_view2 &gt; <br />
+requires (is_any_string_or_view_v&lt;Tstring_or_view1&gt; &amp;&amp; is_any_string_or_view_v&lt;Tstring_or_view2&gt;)</div>
       <table class="memname">
         <tr>
           <td class="memname">Tfloat cl7::text::metrics::levenshtein_normalized </td>
