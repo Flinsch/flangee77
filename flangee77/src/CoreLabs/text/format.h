@@ -1052,9 +1052,9 @@ struct FloatFormatOptions
         using Tstring_view = std::basic_string_view<Tchar>;
         Tstring_view sv{std::forward<Tstring_or_view>(s)};
 
-        size_t p = inspect::count_whitespace_prefix(sv);
+        transform::trim(sv);
 
-        Tval val = 0;
+        size_t p = 0;
         bool sign = false;
 
         if (p < sv.size() && (sv[p] == Tchar{'-'} || sv[p] == Tchar{'+'}))
@@ -1066,6 +1066,8 @@ struct FloatFormatOptions
             if (sv[p + 1] == Tchar{'o'}) return parse_octal<Tval>(sv);
             if (sv[p + 1] == Tchar{'b'}) return parse_binary<Tval>(sv);
         }
+
+        Tval val = 0;
 
         for (; p < sv.size() && inspect::is_digit(sv[p]); ++p)
         {
@@ -1087,9 +1089,9 @@ struct FloatFormatOptions
         using Tstring_view = std::basic_string_view<Tchar>;
         Tstring_view sv{std::forward<Tstring_or_view>(s)};
 
-        size_t p = inspect::count_whitespace_prefix(sv);
+        transform::trim(sv);
 
-        Tval val = 0;
+        size_t p = 0;
         bool sign = false;
 
         if (p < sv.size() && (sv[p] == Tchar{'-'} || sv[p] == Tchar{'+'}))
@@ -1097,6 +1099,8 @@ struct FloatFormatOptions
 
         if (p + 1 < sv.size() && sv[p] == Tchar{'0'} && (sv[p + 1] == Tchar{'x'} || sv[p + 1] == Tchar{'X'}))
             p += 2;
+
+        Tval val = 0;
 
         for (; p < sv.size() && inspect::is_hex_digit(sv[p]); ++p)
         {
@@ -1120,9 +1124,9 @@ struct FloatFormatOptions
         using Tstring_view = std::basic_string_view<Tchar>;
         Tstring_view sv{std::forward<Tstring_or_view>(s)};
 
-        size_t p = inspect::count_whitespace_prefix(sv);
+        transform::trim(sv);
 
-        Tval val = 0;
+        size_t p = 0;
         bool sign = false;
 
         if (p < sv.size() && (sv[p] == Tchar{'-'} || sv[p] == Tchar{'+'}))
@@ -1130,6 +1134,8 @@ struct FloatFormatOptions
 
         if (p + 1 < sv.size() && sv[p] == Tchar{'0'} && (sv[p + 1] == Tchar{'o'} || sv[p + 1] == Tchar{'O'}))
             p += 2;
+
+        Tval val = 0;
 
         for (; p < sv.size() && sv[p] >= Tchar{'0'} && sv[p] <= Tchar{'7'}; ++p)
         {
@@ -1151,9 +1157,9 @@ struct FloatFormatOptions
         using Tstring_view = std::basic_string_view<Tchar>;
         Tstring_view sv{std::forward<Tstring_or_view>(s)};
 
-        size_t p = inspect::count_whitespace_prefix(sv);
+        transform::trim(sv);
 
-        Tval val = 0;
+        size_t p = 0;
         bool sign = false;
 
         if (p < sv.size() && (sv[p] == Tchar{'-'} || sv[p] == Tchar{'+'}))
@@ -1161,6 +1167,8 @@ struct FloatFormatOptions
 
         if (p + 1 < sv.size() && sv[p] == Tchar{'0'} && (sv[p + 1] == Tchar{'b'} || sv[p + 1] == Tchar{'B'}))
             p += 2;
+
+        Tval val = 0;
 
         for (; p < sv.size() && sv[p] >= Tchar{'0'} && sv[p] <= Tchar{'1'}; ++p)
         {
