@@ -949,9 +949,9 @@ $(document).ready(function(){initNavTree('d0/d0a/format_8h_source.html','../../'
 <div class="line"><a id="l01052" name="l01052"></a><span class="lineno"> 1052</span>        <span class="keyword">using </span>Tstring_view = std::basic_string_view&lt;Tchar&gt;;</div>
 <div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span>        Tstring_view sv{std::forward&lt;Tstring_or_view&gt;(s)};</div>
 <div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span> </div>
-<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span>        <span class="keywordtype">size_t</span> p = <a class="code hl_function" href="../../d5/df5/namespacecl7_1_1text_1_1inspect.html#a865a81296a54c3cfb81da56c4ee67ff6">inspect::count_whitespace_prefix</a>(sv);</div>
+<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span>        <a class="code hl_function" href="../../de/d31/namespacecl7_1_1text_1_1transform.html#ad0819178d91c1aa25e47800a3feedd23">transform::trim</a>(sv);</div>
 <div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span> </div>
-<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span>        Tval val = 0;</div>
+<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span>        <span class="keywordtype">size_t</span> p = 0;</div>
 <div class="line"><a id="l01058" name="l01058"></a><span class="lineno"> 1058</span>        <span class="keywordtype">bool</span> sign = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l01059" name="l01059"></a><span class="lineno"> 1059</span> </div>
 <div class="line"><a id="l01060" name="l01060"></a><span class="lineno"> 1060</span>        <span class="keywordflow">if</span> (p &lt; sv.size() &amp;&amp; (sv[p] == Tchar{<span class="stringliteral">&#39;-&#39;</span>} || sv[p] == Tchar{<span class="stringliteral">&#39;+&#39;</span>}))</div>
@@ -964,113 +964,121 @@ $(document).ready(function(){initNavTree('d0/d0a/format_8h_source.html','../../'
 <div class="line"><a id="l01067" name="l01067"></a><span class="lineno"> 1067</span>            <span class="keywordflow">if</span> (sv[p + 1] == Tchar{<span class="charliteral">&#39;b&#39;</span>}) <span class="keywordflow">return</span> parse_binary&lt;Tval&gt;(sv);</div>
 <div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span>        }</div>
 <div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span> </div>
-<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span>        <span class="keywordflow">for</span> (; p &lt; sv.size() &amp;&amp; <a class="code hl_function" href="../../d5/df5/namespacecl7_1_1text_1_1inspect.html#ace35fae02e8880bc11b4618aa0494d08">inspect::is_digit</a>(sv[p]); ++p)</div>
-<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span>        {</div>
-<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>            val *= 10;</div>
-<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span>            val += <span class="keyword">static_cast&lt;</span>Tval<span class="keyword">&gt;</span>(sv[p]) - 0x30; <span class="comment">// &#39;0&#39; = 48 = 0x30</span></div>
-<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span>        }</div>
-<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span> </div>
-<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>        <span class="keywordflow">return</span> sign ? -val : val;</div>
-<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span>    }</div>
+<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span>        Tval val = 0;</div>
+<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span> </div>
+<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>        <span class="keywordflow">for</span> (; p &lt; sv.size() &amp;&amp; <a class="code hl_function" href="../../d5/df5/namespacecl7_1_1text_1_1inspect.html#ace35fae02e8880bc11b4618aa0494d08">inspect::is_digit</a>(sv[p]); ++p)</div>
+<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span>        {</div>
+<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span>            val *= 10;</div>
+<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span>            val += <span class="keyword">static_cast&lt;</span>Tval<span class="keyword">&gt;</span>(sv[p]) - 0x30; <span class="comment">// &#39;0&#39; = 48 = 0x30</span></div>
+<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>        }</div>
+<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span> </div>
+<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span>        <span class="keywordflow">return</span> sign ? -val : val;</div>
+<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span>    }</div>
 </div>
-<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span> </div>
-<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tval, <span class="keyword">class</span> T<span class="keywordtype">string</span>_or_view&gt;</div>
-<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"> 1083</span>        <span class="keyword">requires</span>(std::is_integral_v&lt;Tval&gt; &amp;&amp; <a class="code hl_concept" href="../../d1/d57/conceptcl7_1_1is__any__string__or__view__v.html">is_any_string_or_view_v&lt;Tstring_or_view&gt;</a>)</div>
-<div class="foldopen" id="foldopen01084" data-start="{" data-end="}">
-<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"><a class="line" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a94a6ab04395bb12007ee427a6dbbd105"> 1084</a></span>    Tval <a class="code hl_function" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a94a6ab04395bb12007ee427a6dbbd105">parse_hex</a>(Tstring_or_view&amp;&amp; s)</div>
-<div class="line"><a id="l01085" name="l01085"></a><span class="lineno"> 1085</span>    {</div>
-<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span>        <span class="keyword">using </span>Tchar = std::remove_cvref_t&lt;Tstring_or_view&gt;::value_type;</div>
-<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span>        <span class="keyword">using </span>Tstring_view = std::basic_string_view&lt;Tchar&gt;;</div>
-<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span>        Tstring_view sv{std::forward&lt;Tstring_or_view&gt;(s)};</div>
-<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span> </div>
-<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span>        <span class="keywordtype">size_t</span> p = <a class="code hl_function" href="../../d5/df5/namespacecl7_1_1text_1_1inspect.html#a865a81296a54c3cfb81da56c4ee67ff6">inspect::count_whitespace_prefix</a>(sv);</div>
+<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span> </div>
+<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tval, <span class="keyword">class</span> T<span class="keywordtype">string</span>_or_view&gt;</div>
+<div class="line"><a id="l01085" name="l01085"></a><span class="lineno"> 1085</span>        <span class="keyword">requires</span>(std::is_integral_v&lt;Tval&gt; &amp;&amp; <a class="code hl_concept" href="../../d1/d57/conceptcl7_1_1is__any__string__or__view__v.html">is_any_string_or_view_v&lt;Tstring_or_view&gt;</a>)</div>
+<div class="foldopen" id="foldopen01086" data-start="{" data-end="}">
+<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"><a class="line" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a94a6ab04395bb12007ee427a6dbbd105"> 1086</a></span>    Tval <a class="code hl_function" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a94a6ab04395bb12007ee427a6dbbd105">parse_hex</a>(Tstring_or_view&amp;&amp; s)</div>
+<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span>    {</div>
+<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span>        <span class="keyword">using </span>Tchar = std::remove_cvref_t&lt;Tstring_or_view&gt;::value_type;</div>
+<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span>        <span class="keyword">using </span>Tstring_view = std::basic_string_view&lt;Tchar&gt;;</div>
+<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span>        Tstring_view sv{std::forward&lt;Tstring_or_view&gt;(s)};</div>
 <div class="line"><a id="l01091" name="l01091"></a><span class="lineno"> 1091</span> </div>
-<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"> 1092</span>        Tval val = 0;</div>
-<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"> 1093</span>        <span class="keywordtype">bool</span> sign = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span> </div>
-<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"> 1095</span>        <span class="keywordflow">if</span> (p &lt; sv.size() &amp;&amp; (sv[p] == Tchar{<span class="stringliteral">&#39;-&#39;</span>} || sv[p] == Tchar{<span class="stringliteral">&#39;+&#39;</span>}))</div>
-<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"> 1096</span>            sign = sv[p++] == Tchar{<span class="charliteral">&#39;-&#39;</span>};</div>
-<div class="line"><a id="l01097" name="l01097"></a><span class="lineno"> 1097</span> </div>
-<div class="line"><a id="l01098" name="l01098"></a><span class="lineno"> 1098</span>        <span class="keywordflow">if</span> (p + 1 &lt; sv.size() &amp;&amp; sv[p] == Tchar{<span class="stringliteral">&#39;0&#39;</span>} &amp;&amp; (sv[p + 1] == Tchar{<span class="stringliteral">&#39;x&#39;</span>} || sv[p + 1] == Tchar{<span class="stringliteral">&#39;X&#39;</span>}))</div>
-<div class="line"><a id="l01099" name="l01099"></a><span class="lineno"> 1099</span>            p += 2;</div>
-<div class="line"><a id="l01100" name="l01100"></a><span class="lineno"> 1100</span> </div>
-<div class="line"><a id="l01101" name="l01101"></a><span class="lineno"> 1101</span>        <span class="keywordflow">for</span> (; p &lt; sv.size() &amp;&amp; <a class="code hl_function" href="../../d5/df5/namespacecl7_1_1text_1_1inspect.html#a2b71f253d17533866b5e2b134da503c2">inspect::is_hex_digit</a>(sv[p]); ++p)</div>
-<div class="line"><a id="l01102" name="l01102"></a><span class="lineno"> 1102</span>        {</div>
-<div class="line"><a id="l01103" name="l01103"></a><span class="lineno"> 1103</span>            val *= 0x10;</div>
-<div class="line"><a id="l01104" name="l01104"></a><span class="lineno"> 1104</span>            val += <a class="code hl_function" href="../../d5/df5/namespacecl7_1_1text_1_1inspect.html#ace35fae02e8880bc11b4618aa0494d08">inspect::is_digit</a>(sv[p])</div>
-<div class="line"><a id="l01105" name="l01105"></a><span class="lineno"> 1105</span>                ? <span class="keyword">static_cast&lt;</span>Tval<span class="keyword">&gt;</span>(sv[p]) - 0x30 <span class="comment">// &#39;0&#39; = 48 = 0x30</span></div>
-<div class="line"><a id="l01106" name="l01106"></a><span class="lineno"> 1106</span>                : (<span class="keyword">static_cast&lt;</span>Tval<span class="keyword">&gt;</span>(sv[p]) | 0x20) - 0x57; <span class="comment">// &#39;a&#39; = 97 = 0x61; set off 10: 87 = 0x57</span></div>
-<div class="line"><a id="l01107" name="l01107"></a><span class="lineno"> 1107</span>        }</div>
-<div class="line"><a id="l01108" name="l01108"></a><span class="lineno"> 1108</span> </div>
-<div class="line"><a id="l01109" name="l01109"></a><span class="lineno"> 1109</span>        <span class="keywordflow">return</span> sign ? -val : val;</div>
-<div class="line"><a id="l01110" name="l01110"></a><span class="lineno"> 1110</span>    }</div>
+<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"> 1092</span>        <a class="code hl_function" href="../../de/d31/namespacecl7_1_1text_1_1transform.html#ad0819178d91c1aa25e47800a3feedd23">transform::trim</a>(sv);</div>
+<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"> 1093</span> </div>
+<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span>        <span class="keywordtype">size_t</span> p = 0;</div>
+<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"> 1095</span>        <span class="keywordtype">bool</span> sign = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"> 1096</span> </div>
+<div class="line"><a id="l01097" name="l01097"></a><span class="lineno"> 1097</span>        <span class="keywordflow">if</span> (p &lt; sv.size() &amp;&amp; (sv[p] == Tchar{<span class="stringliteral">&#39;-&#39;</span>} || sv[p] == Tchar{<span class="stringliteral">&#39;+&#39;</span>}))</div>
+<div class="line"><a id="l01098" name="l01098"></a><span class="lineno"> 1098</span>            sign = sv[p++] == Tchar{<span class="charliteral">&#39;-&#39;</span>};</div>
+<div class="line"><a id="l01099" name="l01099"></a><span class="lineno"> 1099</span> </div>
+<div class="line"><a id="l01100" name="l01100"></a><span class="lineno"> 1100</span>        <span class="keywordflow">if</span> (p + 1 &lt; sv.size() &amp;&amp; sv[p] == Tchar{<span class="stringliteral">&#39;0&#39;</span>} &amp;&amp; (sv[p + 1] == Tchar{<span class="stringliteral">&#39;x&#39;</span>} || sv[p + 1] == Tchar{<span class="stringliteral">&#39;X&#39;</span>}))</div>
+<div class="line"><a id="l01101" name="l01101"></a><span class="lineno"> 1101</span>            p += 2;</div>
+<div class="line"><a id="l01102" name="l01102"></a><span class="lineno"> 1102</span> </div>
+<div class="line"><a id="l01103" name="l01103"></a><span class="lineno"> 1103</span>        Tval val = 0;</div>
+<div class="line"><a id="l01104" name="l01104"></a><span class="lineno"> 1104</span> </div>
+<div class="line"><a id="l01105" name="l01105"></a><span class="lineno"> 1105</span>        <span class="keywordflow">for</span> (; p &lt; sv.size() &amp;&amp; <a class="code hl_function" href="../../d5/df5/namespacecl7_1_1text_1_1inspect.html#a2b71f253d17533866b5e2b134da503c2">inspect::is_hex_digit</a>(sv[p]); ++p)</div>
+<div class="line"><a id="l01106" name="l01106"></a><span class="lineno"> 1106</span>        {</div>
+<div class="line"><a id="l01107" name="l01107"></a><span class="lineno"> 1107</span>            val *= 0x10;</div>
+<div class="line"><a id="l01108" name="l01108"></a><span class="lineno"> 1108</span>            val += <a class="code hl_function" href="../../d5/df5/namespacecl7_1_1text_1_1inspect.html#ace35fae02e8880bc11b4618aa0494d08">inspect::is_digit</a>(sv[p])</div>
+<div class="line"><a id="l01109" name="l01109"></a><span class="lineno"> 1109</span>                ? <span class="keyword">static_cast&lt;</span>Tval<span class="keyword">&gt;</span>(sv[p]) - 0x30 <span class="comment">// &#39;0&#39; = 48 = 0x30</span></div>
+<div class="line"><a id="l01110" name="l01110"></a><span class="lineno"> 1110</span>                : (<span class="keyword">static_cast&lt;</span>Tval<span class="keyword">&gt;</span>(sv[p]) | 0x20) - 0x57; <span class="comment">// &#39;a&#39; = 97 = 0x61; set off 10: 87 = 0x57</span></div>
+<div class="line"><a id="l01111" name="l01111"></a><span class="lineno"> 1111</span>        }</div>
+<div class="line"><a id="l01112" name="l01112"></a><span class="lineno"> 1112</span> </div>
+<div class="line"><a id="l01113" name="l01113"></a><span class="lineno"> 1113</span>        <span class="keywordflow">return</span> sign ? -val : val;</div>
+<div class="line"><a id="l01114" name="l01114"></a><span class="lineno"> 1114</span>    }</div>
 </div>
-<div class="line"><a id="l01111" name="l01111"></a><span class="lineno"> 1111</span> </div>
-<div class="line"><a id="l01115" name="l01115"></a><span class="lineno"> 1115</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tval, <span class="keyword">class</span> T<span class="keywordtype">string</span>_or_view&gt;</div>
-<div class="line"><a id="l01116" name="l01116"></a><span class="lineno"> 1116</span>        <span class="keyword">requires</span>(std::is_integral_v&lt;Tval&gt; &amp;&amp; <a class="code hl_concept" href="../../d1/d57/conceptcl7_1_1is__any__string__or__view__v.html">is_any_string_or_view_v&lt;Tstring_or_view&gt;</a>)</div>
-<div class="foldopen" id="foldopen01117" data-start="{" data-end="}">
-<div class="line"><a id="l01117" name="l01117"></a><span class="lineno"><a class="line" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a4a860e9752fd63622c168e0f732e97d6"> 1117</a></span>    Tval <a class="code hl_function" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a4a860e9752fd63622c168e0f732e97d6">parse_octal</a>(Tstring_or_view&amp;&amp; s)</div>
-<div class="line"><a id="l01118" name="l01118"></a><span class="lineno"> 1118</span>    {</div>
-<div class="line"><a id="l01119" name="l01119"></a><span class="lineno"> 1119</span>        <span class="keyword">using </span>Tchar = std::remove_cvref_t&lt;Tstring_or_view&gt;::value_type;</div>
-<div class="line"><a id="l01120" name="l01120"></a><span class="lineno"> 1120</span>        <span class="keyword">using </span>Tstring_view = std::basic_string_view&lt;Tchar&gt;;</div>
-<div class="line"><a id="l01121" name="l01121"></a><span class="lineno"> 1121</span>        Tstring_view sv{std::forward&lt;Tstring_or_view&gt;(s)};</div>
-<div class="line"><a id="l01122" name="l01122"></a><span class="lineno"> 1122</span> </div>
-<div class="line"><a id="l01123" name="l01123"></a><span class="lineno"> 1123</span>        <span class="keywordtype">size_t</span> p = <a class="code hl_function" href="../../d5/df5/namespacecl7_1_1text_1_1inspect.html#a865a81296a54c3cfb81da56c4ee67ff6">inspect::count_whitespace_prefix</a>(sv);</div>
-<div class="line"><a id="l01124" name="l01124"></a><span class="lineno"> 1124</span> </div>
-<div class="line"><a id="l01125" name="l01125"></a><span class="lineno"> 1125</span>        Tval val = 0;</div>
-<div class="line"><a id="l01126" name="l01126"></a><span class="lineno"> 1126</span>        <span class="keywordtype">bool</span> sign = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l01127" name="l01127"></a><span class="lineno"> 1127</span> </div>
-<div class="line"><a id="l01128" name="l01128"></a><span class="lineno"> 1128</span>        <span class="keywordflow">if</span> (p &lt; sv.size() &amp;&amp; (sv[p] == Tchar{<span class="stringliteral">&#39;-&#39;</span>} || sv[p] == Tchar{<span class="stringliteral">&#39;+&#39;</span>}))</div>
-<div class="line"><a id="l01129" name="l01129"></a><span class="lineno"> 1129</span>            sign = sv[p++] == Tchar{<span class="charliteral">&#39;-&#39;</span>};</div>
-<div class="line"><a id="l01130" name="l01130"></a><span class="lineno"> 1130</span> </div>
-<div class="line"><a id="l01131" name="l01131"></a><span class="lineno"> 1131</span>        <span class="keywordflow">if</span> (p + 1 &lt; sv.size() &amp;&amp; sv[p] == Tchar{<span class="stringliteral">&#39;0&#39;</span>} &amp;&amp; (sv[p + 1] == Tchar{<span class="stringliteral">&#39;o&#39;</span>} || sv[p + 1] == Tchar{<span class="stringliteral">&#39;O&#39;</span>}))</div>
-<div class="line"><a id="l01132" name="l01132"></a><span class="lineno"> 1132</span>            p += 2;</div>
-<div class="line"><a id="l01133" name="l01133"></a><span class="lineno"> 1133</span> </div>
-<div class="line"><a id="l01134" name="l01134"></a><span class="lineno"> 1134</span>        <span class="keywordflow">for</span> (; p &lt; sv.size() &amp;&amp; sv[p] &gt;= Tchar{<span class="charliteral">&#39;0&#39;</span>} &amp;&amp; sv[p] &lt;= Tchar{<span class="charliteral">&#39;7&#39;</span>}; ++p)</div>
-<div class="line"><a id="l01135" name="l01135"></a><span class="lineno"> 1135</span>        {</div>
-<div class="line"><a id="l01136" name="l01136"></a><span class="lineno"> 1136</span>            val *= 010;</div>
-<div class="line"><a id="l01137" name="l01137"></a><span class="lineno"> 1137</span>            val += <span class="keyword">static_cast&lt;</span>Tval<span class="keyword">&gt;</span>(sv[p]) - 0x30; <span class="comment">// &#39;0&#39; = 48 = 0x30</span></div>
-<div class="line"><a id="l01138" name="l01138"></a><span class="lineno"> 1138</span>        }</div>
+<div class="line"><a id="l01115" name="l01115"></a><span class="lineno"> 1115</span> </div>
+<div class="line"><a id="l01119" name="l01119"></a><span class="lineno"> 1119</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tval, <span class="keyword">class</span> T<span class="keywordtype">string</span>_or_view&gt;</div>
+<div class="line"><a id="l01120" name="l01120"></a><span class="lineno"> 1120</span>        <span class="keyword">requires</span>(std::is_integral_v&lt;Tval&gt; &amp;&amp; <a class="code hl_concept" href="../../d1/d57/conceptcl7_1_1is__any__string__or__view__v.html">is_any_string_or_view_v&lt;Tstring_or_view&gt;</a>)</div>
+<div class="foldopen" id="foldopen01121" data-start="{" data-end="}">
+<div class="line"><a id="l01121" name="l01121"></a><span class="lineno"><a class="line" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a4a860e9752fd63622c168e0f732e97d6"> 1121</a></span>    Tval <a class="code hl_function" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a4a860e9752fd63622c168e0f732e97d6">parse_octal</a>(Tstring_or_view&amp;&amp; s)</div>
+<div class="line"><a id="l01122" name="l01122"></a><span class="lineno"> 1122</span>    {</div>
+<div class="line"><a id="l01123" name="l01123"></a><span class="lineno"> 1123</span>        <span class="keyword">using </span>Tchar = std::remove_cvref_t&lt;Tstring_or_view&gt;::value_type;</div>
+<div class="line"><a id="l01124" name="l01124"></a><span class="lineno"> 1124</span>        <span class="keyword">using </span>Tstring_view = std::basic_string_view&lt;Tchar&gt;;</div>
+<div class="line"><a id="l01125" name="l01125"></a><span class="lineno"> 1125</span>        Tstring_view sv{std::forward&lt;Tstring_or_view&gt;(s)};</div>
+<div class="line"><a id="l01126" name="l01126"></a><span class="lineno"> 1126</span> </div>
+<div class="line"><a id="l01127" name="l01127"></a><span class="lineno"> 1127</span>        <a class="code hl_function" href="../../de/d31/namespacecl7_1_1text_1_1transform.html#ad0819178d91c1aa25e47800a3feedd23">transform::trim</a>(sv);</div>
+<div class="line"><a id="l01128" name="l01128"></a><span class="lineno"> 1128</span> </div>
+<div class="line"><a id="l01129" name="l01129"></a><span class="lineno"> 1129</span>        <span class="keywordtype">size_t</span> p = 0;</div>
+<div class="line"><a id="l01130" name="l01130"></a><span class="lineno"> 1130</span>        <span class="keywordtype">bool</span> sign = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l01131" name="l01131"></a><span class="lineno"> 1131</span> </div>
+<div class="line"><a id="l01132" name="l01132"></a><span class="lineno"> 1132</span>        <span class="keywordflow">if</span> (p &lt; sv.size() &amp;&amp; (sv[p] == Tchar{<span class="stringliteral">&#39;-&#39;</span>} || sv[p] == Tchar{<span class="stringliteral">&#39;+&#39;</span>}))</div>
+<div class="line"><a id="l01133" name="l01133"></a><span class="lineno"> 1133</span>            sign = sv[p++] == Tchar{<span class="charliteral">&#39;-&#39;</span>};</div>
+<div class="line"><a id="l01134" name="l01134"></a><span class="lineno"> 1134</span> </div>
+<div class="line"><a id="l01135" name="l01135"></a><span class="lineno"> 1135</span>        <span class="keywordflow">if</span> (p + 1 &lt; sv.size() &amp;&amp; sv[p] == Tchar{<span class="stringliteral">&#39;0&#39;</span>} &amp;&amp; (sv[p + 1] == Tchar{<span class="stringliteral">&#39;o&#39;</span>} || sv[p + 1] == Tchar{<span class="stringliteral">&#39;O&#39;</span>}))</div>
+<div class="line"><a id="l01136" name="l01136"></a><span class="lineno"> 1136</span>            p += 2;</div>
+<div class="line"><a id="l01137" name="l01137"></a><span class="lineno"> 1137</span> </div>
+<div class="line"><a id="l01138" name="l01138"></a><span class="lineno"> 1138</span>        Tval val = 0;</div>
 <div class="line"><a id="l01139" name="l01139"></a><span class="lineno"> 1139</span> </div>
-<div class="line"><a id="l01140" name="l01140"></a><span class="lineno"> 1140</span>        <span class="keywordflow">return</span> sign ? -val : val;</div>
-<div class="line"><a id="l01141" name="l01141"></a><span class="lineno"> 1141</span>    }</div>
+<div class="line"><a id="l01140" name="l01140"></a><span class="lineno"> 1140</span>        <span class="keywordflow">for</span> (; p &lt; sv.size() &amp;&amp; sv[p] &gt;= Tchar{<span class="charliteral">&#39;0&#39;</span>} &amp;&amp; sv[p] &lt;= Tchar{<span class="charliteral">&#39;7&#39;</span>}; ++p)</div>
+<div class="line"><a id="l01141" name="l01141"></a><span class="lineno"> 1141</span>        {</div>
+<div class="line"><a id="l01142" name="l01142"></a><span class="lineno"> 1142</span>            val *= 010;</div>
+<div class="line"><a id="l01143" name="l01143"></a><span class="lineno"> 1143</span>            val += <span class="keyword">static_cast&lt;</span>Tval<span class="keyword">&gt;</span>(sv[p]) - 0x30; <span class="comment">// &#39;0&#39; = 48 = 0x30</span></div>
+<div class="line"><a id="l01144" name="l01144"></a><span class="lineno"> 1144</span>        }</div>
+<div class="line"><a id="l01145" name="l01145"></a><span class="lineno"> 1145</span> </div>
+<div class="line"><a id="l01146" name="l01146"></a><span class="lineno"> 1146</span>        <span class="keywordflow">return</span> sign ? -val : val;</div>
+<div class="line"><a id="l01147" name="l01147"></a><span class="lineno"> 1147</span>    }</div>
 </div>
-<div class="line"><a id="l01142" name="l01142"></a><span class="lineno"> 1142</span> </div>
-<div class="line"><a id="l01146" name="l01146"></a><span class="lineno"> 1146</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tval, <span class="keyword">class</span> T<span class="keywordtype">string</span>_or_view&gt;</div>
-<div class="line"><a id="l01147" name="l01147"></a><span class="lineno"> 1147</span>        <span class="keyword">requires</span>(std::is_integral_v&lt;Tval&gt; &amp;&amp; <a class="code hl_concept" href="../../d1/d57/conceptcl7_1_1is__any__string__or__view__v.html">is_any_string_or_view_v&lt;Tstring_or_view&gt;</a>)</div>
-<div class="foldopen" id="foldopen01148" data-start="{" data-end="}">
-<div class="line"><a id="l01148" name="l01148"></a><span class="lineno"><a class="line" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a867f7f1b54e3c53629851df02ce4c8e6"> 1148</a></span>    Tval <a class="code hl_function" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a867f7f1b54e3c53629851df02ce4c8e6">parse_binary</a>(Tstring_or_view&amp;&amp; s)</div>
-<div class="line"><a id="l01149" name="l01149"></a><span class="lineno"> 1149</span>    {</div>
-<div class="line"><a id="l01150" name="l01150"></a><span class="lineno"> 1150</span>        <span class="keyword">using </span>Tchar = std::remove_cvref_t&lt;Tstring_or_view&gt;::value_type;</div>
-<div class="line"><a id="l01151" name="l01151"></a><span class="lineno"> 1151</span>        <span class="keyword">using </span>Tstring_view = std::basic_string_view&lt;Tchar&gt;;</div>
-<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>        Tstring_view sv{std::forward&lt;Tstring_or_view&gt;(s)};</div>
-<div class="line"><a id="l01153" name="l01153"></a><span class="lineno"> 1153</span> </div>
-<div class="line"><a id="l01154" name="l01154"></a><span class="lineno"> 1154</span>        <span class="keywordtype">size_t</span> p = <a class="code hl_function" href="../../d5/df5/namespacecl7_1_1text_1_1inspect.html#a865a81296a54c3cfb81da56c4ee67ff6">inspect::count_whitespace_prefix</a>(sv);</div>
-<div class="line"><a id="l01155" name="l01155"></a><span class="lineno"> 1155</span> </div>
-<div class="line"><a id="l01156" name="l01156"></a><span class="lineno"> 1156</span>        Tval val = 0;</div>
-<div class="line"><a id="l01157" name="l01157"></a><span class="lineno"> 1157</span>        <span class="keywordtype">bool</span> sign = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l01158" name="l01158"></a><span class="lineno"> 1158</span> </div>
-<div class="line"><a id="l01159" name="l01159"></a><span class="lineno"> 1159</span>        <span class="keywordflow">if</span> (p &lt; sv.size() &amp;&amp; (sv[p] == Tchar{<span class="stringliteral">&#39;-&#39;</span>} || sv[p] == Tchar{<span class="stringliteral">&#39;+&#39;</span>}))</div>
-<div class="line"><a id="l01160" name="l01160"></a><span class="lineno"> 1160</span>            sign = sv[p++] == Tchar{<span class="charliteral">&#39;-&#39;</span>};</div>
+<div class="line"><a id="l01148" name="l01148"></a><span class="lineno"> 1148</span> </div>
+<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tval, <span class="keyword">class</span> T<span class="keywordtype">string</span>_or_view&gt;</div>
+<div class="line"><a id="l01153" name="l01153"></a><span class="lineno"> 1153</span>        <span class="keyword">requires</span>(std::is_integral_v&lt;Tval&gt; &amp;&amp; <a class="code hl_concept" href="../../d1/d57/conceptcl7_1_1is__any__string__or__view__v.html">is_any_string_or_view_v&lt;Tstring_or_view&gt;</a>)</div>
+<div class="foldopen" id="foldopen01154" data-start="{" data-end="}">
+<div class="line"><a id="l01154" name="l01154"></a><span class="lineno"><a class="line" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a867f7f1b54e3c53629851df02ce4c8e6"> 1154</a></span>    Tval <a class="code hl_function" href="../../df/d89/namespacecl7_1_1text_1_1format.html#a867f7f1b54e3c53629851df02ce4c8e6">parse_binary</a>(Tstring_or_view&amp;&amp; s)</div>
+<div class="line"><a id="l01155" name="l01155"></a><span class="lineno"> 1155</span>    {</div>
+<div class="line"><a id="l01156" name="l01156"></a><span class="lineno"> 1156</span>        <span class="keyword">using </span>Tchar = std::remove_cvref_t&lt;Tstring_or_view&gt;::value_type;</div>
+<div class="line"><a id="l01157" name="l01157"></a><span class="lineno"> 1157</span>        <span class="keyword">using </span>Tstring_view = std::basic_string_view&lt;Tchar&gt;;</div>
+<div class="line"><a id="l01158" name="l01158"></a><span class="lineno"> 1158</span>        Tstring_view sv{std::forward&lt;Tstring_or_view&gt;(s)};</div>
+<div class="line"><a id="l01159" name="l01159"></a><span class="lineno"> 1159</span> </div>
+<div class="line"><a id="l01160" name="l01160"></a><span class="lineno"> 1160</span>        <a class="code hl_function" href="../../de/d31/namespacecl7_1_1text_1_1transform.html#ad0819178d91c1aa25e47800a3feedd23">transform::trim</a>(sv);</div>
 <div class="line"><a id="l01161" name="l01161"></a><span class="lineno"> 1161</span> </div>
-<div class="line"><a id="l01162" name="l01162"></a><span class="lineno"> 1162</span>        <span class="keywordflow">if</span> (p + 1 &lt; sv.size() &amp;&amp; sv[p] == Tchar{<span class="stringliteral">&#39;0&#39;</span>} &amp;&amp; (sv[p + 1] == Tchar{<span class="stringliteral">&#39;b&#39;</span>} || sv[p + 1] == Tchar{<span class="stringliteral">&#39;B&#39;</span>}))</div>
-<div class="line"><a id="l01163" name="l01163"></a><span class="lineno"> 1163</span>            p += 2;</div>
+<div class="line"><a id="l01162" name="l01162"></a><span class="lineno"> 1162</span>        <span class="keywordtype">size_t</span> p = 0;</div>
+<div class="line"><a id="l01163" name="l01163"></a><span class="lineno"> 1163</span>        <span class="keywordtype">bool</span> sign = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l01164" name="l01164"></a><span class="lineno"> 1164</span> </div>
-<div class="line"><a id="l01165" name="l01165"></a><span class="lineno"> 1165</span>        <span class="keywordflow">for</span> (; p &lt; sv.size() &amp;&amp; sv[p] &gt;= Tchar{<span class="charliteral">&#39;0&#39;</span>} &amp;&amp; sv[p] &lt;= Tchar{<span class="charliteral">&#39;1&#39;</span>}; ++p)</div>
-<div class="line"><a id="l01166" name="l01166"></a><span class="lineno"> 1166</span>        {</div>
-<div class="line"><a id="l01167" name="l01167"></a><span class="lineno"> 1167</span>            val &lt;&lt;= 1; <span class="comment">// val *= 0b10</span></div>
-<div class="line"><a id="l01168" name="l01168"></a><span class="lineno"> 1168</span>            val += <span class="keyword">static_cast&lt;</span>Tval<span class="keyword">&gt;</span>(sv[p]) - 0x30; <span class="comment">// &#39;0&#39; = 48 = 0x30</span></div>
-<div class="line"><a id="l01169" name="l01169"></a><span class="lineno"> 1169</span>        }</div>
+<div class="line"><a id="l01165" name="l01165"></a><span class="lineno"> 1165</span>        <span class="keywordflow">if</span> (p &lt; sv.size() &amp;&amp; (sv[p] == Tchar{<span class="stringliteral">&#39;-&#39;</span>} || sv[p] == Tchar{<span class="stringliteral">&#39;+&#39;</span>}))</div>
+<div class="line"><a id="l01166" name="l01166"></a><span class="lineno"> 1166</span>            sign = sv[p++] == Tchar{<span class="charliteral">&#39;-&#39;</span>};</div>
+<div class="line"><a id="l01167" name="l01167"></a><span class="lineno"> 1167</span> </div>
+<div class="line"><a id="l01168" name="l01168"></a><span class="lineno"> 1168</span>        <span class="keywordflow">if</span> (p + 1 &lt; sv.size() &amp;&amp; sv[p] == Tchar{<span class="stringliteral">&#39;0&#39;</span>} &amp;&amp; (sv[p + 1] == Tchar{<span class="stringliteral">&#39;b&#39;</span>} || sv[p + 1] == Tchar{<span class="stringliteral">&#39;B&#39;</span>}))</div>
+<div class="line"><a id="l01169" name="l01169"></a><span class="lineno"> 1169</span>            p += 2;</div>
 <div class="line"><a id="l01170" name="l01170"></a><span class="lineno"> 1170</span> </div>
-<div class="line"><a id="l01171" name="l01171"></a><span class="lineno"> 1171</span>        <span class="keywordflow">return</span> sign ? -val : val;</div>
-<div class="line"><a id="l01172" name="l01172"></a><span class="lineno"> 1172</span>    }</div>
+<div class="line"><a id="l01171" name="l01171"></a><span class="lineno"> 1171</span>        Tval val = 0;</div>
+<div class="line"><a id="l01172" name="l01172"></a><span class="lineno"> 1172</span> </div>
+<div class="line"><a id="l01173" name="l01173"></a><span class="lineno"> 1173</span>        <span class="keywordflow">for</span> (; p &lt; sv.size() &amp;&amp; sv[p] &gt;= Tchar{<span class="charliteral">&#39;0&#39;</span>} &amp;&amp; sv[p] &lt;= Tchar{<span class="charliteral">&#39;1&#39;</span>}; ++p)</div>
+<div class="line"><a id="l01174" name="l01174"></a><span class="lineno"> 1174</span>        {</div>
+<div class="line"><a id="l01175" name="l01175"></a><span class="lineno"> 1175</span>            val &lt;&lt;= 1; <span class="comment">// val *= 0b10</span></div>
+<div class="line"><a id="l01176" name="l01176"></a><span class="lineno"> 1176</span>            val += <span class="keyword">static_cast&lt;</span>Tval<span class="keyword">&gt;</span>(sv[p]) - 0x30; <span class="comment">// &#39;0&#39; = 48 = 0x30</span></div>
+<div class="line"><a id="l01177" name="l01177"></a><span class="lineno"> 1177</span>        }</div>
+<div class="line"><a id="l01178" name="l01178"></a><span class="lineno"> 1178</span> </div>
+<div class="line"><a id="l01179" name="l01179"></a><span class="lineno"> 1179</span>        <span class="keywordflow">return</span> sign ? -val : val;</div>
+<div class="line"><a id="l01180" name="l01180"></a><span class="lineno"> 1180</span>    }</div>
 </div>
-<div class="line"><a id="l01173" name="l01173"></a><span class="lineno"> 1173</span> </div>
-<div class="line"><a id="l01174" name="l01174"></a><span class="lineno"> 1174</span> </div>
-<div class="line"><a id="l01175" name="l01175"></a><span class="lineno"> 1175</span> </div>
-<div class="line"><a id="l01176" name="l01176"></a><span class="lineno"> 1176</span>} <span class="comment">// namespace cl7::text::format</span></div>
-<div class="line"><a id="l01177" name="l01177"></a><span class="lineno"> 1177</span> </div>
-<div class="line"><a id="l01178" name="l01178"></a><span class="lineno"> 1178</span><span class="preprocessor">#endif </span><span class="comment">// CL7_TEXT_FORMAT_H</span></div>
+<div class="line"><a id="l01181" name="l01181"></a><span class="lineno"> 1181</span> </div>
+<div class="line"><a id="l01182" name="l01182"></a><span class="lineno"> 1182</span> </div>
+<div class="line"><a id="l01183" name="l01183"></a><span class="lineno"> 1183</span> </div>
+<div class="line"><a id="l01184" name="l01184"></a><span class="lineno"> 1184</span>} <span class="comment">// namespace cl7::text::format</span></div>
+<div class="line"><a id="l01185" name="l01185"></a><span class="lineno"> 1185</span> </div>
+<div class="line"><a id="l01186" name="l01186"></a><span class="lineno"> 1186</span><span class="preprocessor">#endif </span><span class="comment">// CL7_TEXT_FORMAT_H</span></div>
 <div class="ttc" id="acodec_8h_html"><div class="ttname"><a href="../../d1/d16/codec_8h.html">codec.h</a></div></div>
 <div class="ttc" id="aconceptcl7_1_1is__any__string__or__view__v_html"><div class="ttname"><a href="../../d1/d57/conceptcl7_1_1is__any__string__or__view__v.html">cl7::is_any_string_or_view_v</a></div><div class="ttdef"><b>Definition</b> string.h:57</div></div>
 <div class="ttc" id="ainspect_8h_html"><div class="ttname"><a href="../../d2/df8/inspect_8h.html">inspect.h</a></div></div>
@@ -1082,15 +1090,15 @@ $(document).ready(function(){initNavTree('d0/d0a/format_8h_source.html','../../'
 <div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a25badcf3c3dd147cc98800782d944c6f"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a25badcf3c3dd147cc98800782d944c6f">cl7::text::format::to_hex</a></div><div class="ttdeci">Tstring_or_view to_hex(Tval val, IntFormatOptions options)</div><div class="ttdef"><b>Definition</b> format.h:460</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a2f545dd69e92f9c33cbb652ed0549c2b"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a2f545dd69e92f9c33cbb652ed0549c2b">cl7::text::format::to_string</a></div><div class="ttdeci">Tstring_or_view to_string(Tval val, IntFormatOptions options)</div><div class="ttdef"><b>Definition</b> format.h:407</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a36130f6c0538b5663a489d889bb6a618"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a36130f6c0538b5663a489d889bb6a618">cl7::text::format::parse_float</a></div><div class="ttdeci">Tval parse_float(Tstring_or_view &amp;&amp;s)</div><div class="ttdef"><b>Definition</b> format.h:1008</div></div>
-<div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a4a860e9752fd63622c168e0f732e97d6"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a4a860e9752fd63622c168e0f732e97d6">cl7::text::format::parse_octal</a></div><div class="ttdeci">Tval parse_octal(Tstring_or_view &amp;&amp;s)</div><div class="ttdef"><b>Definition</b> format.h:1117</div></div>
+<div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a4a860e9752fd63622c168e0f732e97d6"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a4a860e9752fd63622c168e0f732e97d6">cl7::text::format::parse_octal</a></div><div class="ttdeci">Tval parse_octal(Tstring_or_view &amp;&amp;s)</div><div class="ttdef"><b>Definition</b> format.h:1121</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a4eb1542ed1306bceaeca2b8f2e3070ed"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a4eb1542ed1306bceaeca2b8f2e3070ed">cl7::text::format::to_scientific</a></div><div class="ttdeci">Tstring_or_view to_scientific(Tval val, unsigned min_precision=0, unsigned max_precision=MAX_FLOAT_PRECISION)</div><div class="ttdef"><b>Definition</b> format.h:662</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a65b6322f3fa7010bdb3b3669b5e341da"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a65b6322f3fa7010bdb3b3669b5e341da">cl7::text::format::to_hex_uc</a></div><div class="ttdeci">Tstring_or_view to_hex_uc(Tval val, unsigned zero_pad_width=0)</div><div class="ttdef"><b>Definition</b> format.h:735</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a6b5437a122a127cf3741bba4f4145ee9"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6b5437a122a127cf3741bba4f4145ee9">cl7::text::format::to_0x_hex_uc</a></div><div class="ttdeci">Tstring_or_view to_0x_hex_uc(Tval val, unsigned zero_pad_width=0)</div><div class="ttdef"><b>Definition</b> format.h:763</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a6e07f9905a9ab4bb9cdc7ed4b1a7f5c5">cl7::text::format::MAX_FLOAT_PRECISION</a></div><div class="ttdeci">constexpr unsigned MAX_FLOAT_PRECISION</div><div class="ttdef"><b>Definition</b> format.h:48</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a8575495ab2f7a24f108209aaf39ae028"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a8575495ab2f7a24f108209aaf39ae028">cl7::text::format::to_octal</a></div><div class="ttdeci">Tstring_or_view to_octal(Tval val, IntFormatOptions options)</div><div class="ttdef"><b>Definition</b> format.h:517</div></div>
-<div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a867f7f1b54e3c53629851df02ce4c8e6"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a867f7f1b54e3c53629851df02ce4c8e6">cl7::text::format::parse_binary</a></div><div class="ttdeci">Tval parse_binary(Tstring_or_view &amp;&amp;s)</div><div class="ttdef"><b>Definition</b> format.h:1148</div></div>
+<div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a867f7f1b54e3c53629851df02ce4c8e6"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a867f7f1b54e3c53629851df02ce4c8e6">cl7::text::format::parse_binary</a></div><div class="ttdeci">Tval parse_binary(Tstring_or_view &amp;&amp;s)</div><div class="ttdef"><b>Definition</b> format.h:1154</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a909fc2a9efc7a0e04f4d89b6321d7512"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a909fc2a9efc7a0e04f4d89b6321d7512">cl7::text::format::to_hex_lc</a></div><div class="ttdeci">Tstring_or_view to_hex_lc(Tval val, unsigned zero_pad_width=0)</div><div class="ttdef"><b>Definition</b> format.h:722</div></div>
-<div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a94a6ab04395bb12007ee427a6dbbd105"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a94a6ab04395bb12007ee427a6dbbd105">cl7::text::format::parse_hex</a></div><div class="ttdeci">Tval parse_hex(Tstring_or_view &amp;&amp;s)</div><div class="ttdef"><b>Definition</b> format.h:1084</div></div>
+<div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a94a6ab04395bb12007ee427a6dbbd105"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a94a6ab04395bb12007ee427a6dbbd105">cl7::text::format::parse_hex</a></div><div class="ttdeci">Tval parse_hex(Tstring_or_view &amp;&amp;s)</div><div class="ttdef"><b>Definition</b> format.h:1086</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a973710ef9236c336f0c987d59833b972"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a973710ef9236c336f0c987d59833b972">cl7::text::format::FloatFormat</a></div><div class="ttdeci">FloatFormat</div><div class="ttdef"><b>Definition</b> format.h:39</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a973710ef9236c336f0c987d59833b972a0db377921f4ce762c62526131097968f"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a973710ef9236c336f0c987d59833b972a0db377921f4ce762c62526131097968f">cl7::text::format::FloatFormat::General</a></div><div class="ttdeci">@ General</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1format_html_a973710ef9236c336f0c987d59833b972a21234a0e100d74037a4da2e53f3200d7"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#a973710ef9236c336f0c987d59833b972a21234a0e100d74037a4da2e53f3200d7">cl7::text::format::FloatFormat::Scientific</a></div><div class="ttdeci">@ Scientific</div></div>
@@ -1110,7 +1118,6 @@ $(document).ready(function(){initNavTree('d0/d0a/format_8h_source.html','../../'
 <div class="ttc" id="anamespacecl7_1_1text_1_1format_html_af6818f5dda3ee9dd0dd31efefcb61f81a919c181a7c4ea1da2e77d49e3c02d531"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#af6818f5dda3ee9dd0dd31efefcb61f81a919c181a7c4ea1da2e77d49e3c02d531">cl7::text::format::NumberBase::Octal</a></div><div class="ttdeci">@ Octal</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1format_html_af6818f5dda3ee9dd0dd31efefcb61f81a937504f318f04eaf0f1d701df4c4d7f3"><div class="ttname"><a href="../../df/d89/namespacecl7_1_1text_1_1format.html#af6818f5dda3ee9dd0dd31efefcb61f81a937504f318f04eaf0f1d701df4c4d7f3">cl7::text::format::NumberBase::Decimal</a></div><div class="ttdeci">@ Decimal</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1inspect_html_a2b71f253d17533866b5e2b134da503c2"><div class="ttname"><a href="../../d5/df5/namespacecl7_1_1text_1_1inspect.html#a2b71f253d17533866b5e2b134da503c2">cl7::text::inspect::is_hex_digit</a></div><div class="ttdeci">bool is_hex_digit(Tchar c)</div><div class="ttdef"><b>Definition</b> inspect.h:139</div></div>
-<div class="ttc" id="anamespacecl7_1_1text_1_1inspect_html_a865a81296a54c3cfb81da56c4ee67ff6"><div class="ttname"><a href="../../d5/df5/namespacecl7_1_1text_1_1inspect.html#a865a81296a54c3cfb81da56c4ee67ff6">cl7::text::inspect::count_whitespace_prefix</a></div><div class="ttdeci">size_t count_whitespace_prefix(Tstring_or_view &amp;&amp;s)</div><div class="ttdef"><b>Definition</b> inspect.h:243</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1inspect_html_ace35fae02e8880bc11b4618aa0494d08"><div class="ttname"><a href="../../d5/df5/namespacecl7_1_1text_1_1inspect.html#ace35fae02e8880bc11b4618aa0494d08">cl7::text::inspect::is_digit</a></div><div class="ttdeci">bool is_digit(Tchar c)</div><div class="ttdef"><b>Definition</b> inspect.h:128</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1transform_html_a5d702bdd3639a5447a75811b0021cd9d"><div class="ttname"><a href="../../de/d31/namespacecl7_1_1text_1_1transform.html#a5d702bdd3639a5447a75811b0021cd9d">cl7::text::transform::trim_left</a></div><div class="ttdeci">void trim_left(Tstring &amp;s)</div><div class="ttdef"><b>Definition</b> transform.h:17</div></div>
 <div class="ttc" id="anamespacecl7_1_1text_1_1transform_html_a85c64845f0b9ce639b7f2d60a56681c5"><div class="ttname"><a href="../../de/d31/namespacecl7_1_1text_1_1transform.html#a85c64845f0b9ce639b7f2d60a56681c5">cl7::text::transform::trim_right</a></div><div class="ttdeci">void trim_right(Tstring &amp;s)</div><div class="ttdef"><b>Definition</b> transform.h:37</div></div>
