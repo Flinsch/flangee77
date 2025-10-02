@@ -12,8 +12,7 @@ namespace cl7::text::inspect {
     /**
      * Checks whether the specified character is a whitespace character.
      */
-    template <typename Tchar>
-        requires(std::is_integral_v<Tchar>)
+    template <std::integral Tchar>
     bool is_whitespace(Tchar c)
     {
         // https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt
@@ -71,8 +70,7 @@ namespace cl7::text::inspect {
     /**
      * Checks whether the specified character is a line break character (LF or CR).
      */
-    template <typename Tchar>
-        requires(std::is_integral_v<Tchar>)
+    template <std::integral Tchar>
     bool is_line_break(Tchar c)
     {
         return c == Tchar{'\n'} || c == Tchar{'\r'};
@@ -88,8 +86,7 @@ namespace cl7::text::inspect {
      * This function enforces strict matching rules and requires c1 to be 0 for
      * single-character line breaks (LF or CR).
      */
-    template <typename Tchar>
-        requires(std::is_integral_v<Tchar>)
+    template <std::integral Tchar>
     size_t is_line_break_strict(Tchar c0, Tchar c1 = 0)
     {
         if (c0 == Tchar{'\r'} && c1 == Tchar{'\n'}) return 2;
@@ -108,8 +105,7 @@ namespace cl7::text::inspect {
      * Unlike the strict version, this function does not require c1 to be 0 for
      * single-byte line breaks.
      */
-    template <typename Tchar>
-        requires(std::is_integral_v<Tchar>)
+    template <std::integral Tchar>
     size_t is_line_break_relaxed(Tchar c0, Tchar c1 = 0)
     {
         if (c0 == Tchar{'\r'})
@@ -123,8 +119,7 @@ namespace cl7::text::inspect {
     /**
      * Checks whether the specified character is a (decimal) digit: 0-9.
      */
-    template <typename Tchar>
-        requires(std::is_integral_v<Tchar>)
+    template <std::integral Tchar>
     bool is_digit(Tchar c)
     {
         return c >= Tchar{'0'} && c <= Tchar{'9'};
@@ -134,8 +129,7 @@ namespace cl7::text::inspect {
      * Checks whether the specified character is a hexadecimal numeric character:
      * 0-9, A-F, a-f.
      */
-    template <typename Tchar>
-        requires(std::is_integral_v<Tchar>)
+    template <std::integral Tchar>
     bool is_hex_digit(Tchar c)
     {
         Tchar c_ = c | 0x20; // Force lowercase bit
@@ -146,8 +140,7 @@ namespace cl7::text::inspect {
      * Checks whether the specified character is an ASCII letter (either lowercase
      * or uppercase).
      */
-    template <typename Tchar>
-        requires(std::is_integral_v<Tchar>)
+    template <std::integral Tchar>
     bool is_ascii_letter(Tchar c)
     {
         c |= 0x20; // Force lowercase bit
@@ -157,8 +150,7 @@ namespace cl7::text::inspect {
     /**
      * Checks whether the specified character is a lowercase ASCII letter.
      */
-    template <typename Tchar>
-        requires(std::is_integral_v<Tchar>)
+    template <std::integral Tchar>
     bool is_ascii_lower(Tchar c)
     {
         return c >= Tchar{'a'} && c <= Tchar{'z'};
@@ -167,8 +159,7 @@ namespace cl7::text::inspect {
     /**
      * Checks whether the specified character is an uppercase ASCII letter.
      */
-    template <typename Tchar>
-        requires(std::is_integral_v<Tchar>)
+    template <std::integral Tchar>
     bool is_ascii_upper(Tchar c)
     {
         return c >= Tchar{'A'} && c <= Tchar{'Z'};

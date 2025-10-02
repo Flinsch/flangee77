@@ -102,16 +102,13 @@ public:
     integer_t as_integer() const;
     unsigned_t as_unsigned() const;
 
-    template <typename Tdecimal = float>
-        requires(std::is_floating_point_v<Tdecimal>)
+    template <std::floating_point Tdecimal = float>
     Tdecimal as_decimal() const { return static_cast<Tdecimal>(_as_decimal()); }
 
-    template <typename Tinteger = signed>
-        requires(std::is_integral_v<Tinteger> && std::is_signed_v<Tinteger>)
+    template <std::signed_integral Tinteger = signed>
     Tinteger as_integer() const { return static_cast<Tinteger>(_as_integer()); }
 
-    template <typename Tunsigned = unsigned>
-        requires(std::is_integral_v<Tunsigned> && std::is_unsigned_v<Tunsigned>)
+    template <std::unsigned_integral Tunsigned = unsigned>
     Tunsigned as_unsigned() const { return static_cast<Tunsigned>(_as_unsigned()); }
 
     template <typename Tnumber>

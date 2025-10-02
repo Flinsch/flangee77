@@ -10,8 +10,7 @@ namespace cl7 {
 
 
 
-    template <typename T>
-        requires(std::is_arithmetic_v<T> && !std::is_floating_point_v<T>)
+    template <std::integral T>
     static u8string _to_string(T val)
     {
         cl7::u8osstream oss;
@@ -19,8 +18,7 @@ namespace cl7 {
         return oss.str();
     }
 
-    template <typename T>
-        requires(std::is_arithmetic_v<T> && std::is_floating_point_v<T>)
+    template <std::floating_point T>
     static u8string _to_string(T val)
     {
         cl7::u8osstream oss;

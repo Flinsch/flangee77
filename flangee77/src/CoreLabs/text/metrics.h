@@ -60,8 +60,8 @@ namespace cl7::text::metrics {
      * calculated in terms of characters (code units), not in terms of (Unicode)
      * code points.
      */
-    template <typename Tfloat = float, class Tstring_or_view1, class Tstring_or_view2>
-        requires(std::is_floating_point_v<Tfloat> && is_any_string_or_view_v<Tstring_or_view1> && is_any_string_or_view_v<Tstring_or_view2>)
+    template <std::floating_point Tfloat = float, class Tstring_or_view1, class Tstring_or_view2>
+        requires(is_any_string_or_view_v<Tstring_or_view1> && is_any_string_or_view_v<Tstring_or_view2>)
     Tfloat levenshtein_normalized(Tstring_or_view1&& s1, Tstring_or_view2&& s2)
     {
         std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view1>::value_type> sv1{std::forward<Tstring_or_view1>(s1)};

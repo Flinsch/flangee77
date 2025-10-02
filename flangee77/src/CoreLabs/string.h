@@ -77,8 +77,7 @@ namespace cl7 {
 
 
 
-    template <typename Tchar = cl7::u8char_t>
-        requires(std::is_integral_v<Tchar>)
+    template <std::integral Tchar = cl7::u8char_t>
     struct string_hash
     {
         using is_transparent = void;

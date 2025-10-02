@@ -10,8 +10,7 @@ namespace cl7::text::codec {
 
 
 
-template <typename Tchar>
-    requires(std::is_integral_v<Tchar>)
+template <std::integral Tchar>
 struct DecodeResult
     : CodepointResult
 {

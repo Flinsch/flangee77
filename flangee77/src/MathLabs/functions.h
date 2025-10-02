@@ -15,8 +15,7 @@ namespace ml7 {
     /**
      * Returns the value of base raised to the power of exp.
      */
-    template <typename T>
-        requires(std::is_floating_point_v<T>)
+    template <std::floating_point T>
     constexpr T pow(T base, T exp)
     {
         return std::pow(base, exp);
@@ -25,8 +24,7 @@ namespace ml7 {
     /**
      * Returns the value of base raised to the power of exp.
      */
-    template <typename T>
-        requires(std::is_floating_point_v<T>)
+    template <std::floating_point T>
     constexpr T pow(T base, int exp)
     {
         return std::pow(base, exp);
@@ -35,8 +33,7 @@ namespace ml7 {
     /**
      * Returns the value of base raised to the power of exp.
      */
-    template <unsigned exp, typename T>
-        requires(std::is_floating_point_v<T>)
+    template <unsigned exp, std::floating_point T>
     constexpr T pow(T base)
     {
         if constexpr (exp == 0)
@@ -335,8 +332,7 @@ namespace ml7 {
     /**
      * Rounds the given value to the specified number of decimal places.
      */
-    template <typename T>
-        requires(std::is_floating_point_v<T>)
+    template <std::floating_point T>
     T round(T x, unsigned num_decimals)
     {
         const T p = std::pow(T{10.0}, static_cast<T>(num_decimals));
@@ -346,8 +342,7 @@ namespace ml7 {
     /**
      * Rounds the given value to the specified number of decimal places.
      */
-    template <unsigned num_decimals, typename T>
-        requires(std::is_floating_point_v<T>)
+    template <unsigned num_decimals, std::floating_point T>
     T round(T x)
     {
         constexpr T p = ml7::pow<T{10.0}, num_decimals>();
@@ -357,8 +352,7 @@ namespace ml7 {
     /**
      * Rounds the given value to the closest integer value.
      */
-    template <typename T>
-        requires(std::is_floating_point_v<T>)
+    template <std::floating_point T>
     T round(T x)
     {
         return std::floor(x + T{0.5});
@@ -368,8 +362,7 @@ namespace ml7 {
     /**
      * Checks whether the specified floating-point value is (approximately) zero.
      */
-    template <typename T>
-        requires(std::is_floating_point_v<T>)
+    template <std::floating_point T>
     constexpr bool is_zero(T x, T epsilon = std::numeric_limits<T>::epsilon())
     {
         return std::abs(x) <= epsilon;
@@ -378,8 +371,7 @@ namespace ml7 {
     /**
      * Checks whether the specified floating-point value is (approximately) one.
      */
-    template <typename T>
-        requires(std::is_floating_point_v<T>)
+    template <std::floating_point T>
     constexpr bool is_one(T x, T epsilon = std::numeric_limits<T>::epsilon())
     {
         return std::abs(x - T{1}) <= epsilon;
@@ -389,8 +381,7 @@ namespace ml7 {
      * Checks whether the specified (squared) floating-point value is
      * (approximately) one squared.
      */
-    template <typename T>
-        requires(std::is_floating_point_v<T>)
+    template <std::floating_point T>
     constexpr bool is_one_squared(T x, T epsilon = std::numeric_limits<T>::epsilon())
     {
         //  x  =  1+epsilon
@@ -404,8 +395,7 @@ namespace ml7 {
     /**
      * Checks whether the specified floating-point values are (approximately) equal.
      */
-    template <typename T>
-        requires(std::is_floating_point_v<T>)
+    template <std::floating_point T>
     constexpr bool is_equal(T a, T b, T epsilon = std::numeric_limits<T>::epsilon())
     {
         return std::abs(a - b) <= epsilon;
@@ -414,8 +404,7 @@ namespace ml7 {
     /**
      * Checks whether the value of a is less than the value of b.
      */
-    template <typename T>
-        requires(std::is_floating_point_v<T>)
+    template <std::floating_point T>
     constexpr bool is_less(T a, T b, T epsilon = std::numeric_limits<T>::epsilon())
     {
         return (b - a) > epsilon;
@@ -424,8 +413,7 @@ namespace ml7 {
     /**
      * Checks whether the value of a is less than or equal to the value of b.
      */
-    template <typename T>
-        requires(std::is_floating_point_v<T>)
+    template <std::floating_point T>
     constexpr bool is_less_equal(T a, T b, T epsilon = std::numeric_limits<T>::epsilon())
     {
         if (a < b) return true;
@@ -435,8 +423,7 @@ namespace ml7 {
     /**
      * Checks whether the value of a is greater than the value of b.
      */
-    template <typename T>
-        requires(std::is_floating_point_v<T>)
+    template <std::floating_point T>
     constexpr bool is_greater(T a, T b, T epsilon = std::numeric_limits<T>::epsilon())
     {
         return is_less(b, a, epsilon);
@@ -445,8 +432,7 @@ namespace ml7 {
     /**
      * Checks whether the value of a is greater than or equal to the value of b.
      */
-    template <typename T>
-        requires(std::is_floating_point_v<T>)
+    template <std::floating_point T>
     constexpr bool is_greater_equal(T a, T b, T epsilon = std::numeric_limits<T>::epsilon())
     {
         return is_less_equal(b, a, epsilon);
@@ -488,8 +474,7 @@ namespace ml7 {
     /**
      * Transforms a given angle in degrees to radians.
      */
-    template <typename T>
-        requires(std::is_floating_point_v<T>)
+    template <std::floating_point T>
     constexpr T deg_to_rad(T degrees)
     {
         constexpr T pi_180 = std::numbers::pi_v<T> / T{180.0};
@@ -499,8 +484,7 @@ namespace ml7 {
     /**
      * Transforms a given angle in radians to degrees.
      */
-    template <typename T>
-        requires(std::is_floating_point_v<T>)
+    template <std::floating_point T>
     constexpr T rad_to_deg(T radians)
     {
         constexpr T _180_pi = T{180} / std::numbers::pi_v<T>;
@@ -511,8 +495,7 @@ namespace ml7 {
     /**
      * Checks whether the given value is a power of two.
      */
-    template <typename T>
-        requires(std::is_integral_v<T> && std::is_unsigned_v<T>)
+    template <std::unsigned_integral T>
     constexpr bool is_power_of_two(T x)
     {
         return x > 0 && (x & (x - 1)) == 0;
@@ -522,8 +505,7 @@ namespace ml7 {
      * Returns the highest power of two value that is less than or equal to the
      * specified non-zero value. If the value is 0, 0 is returned.
      */
-    template <typename T>
-        requires(std::is_integral_v<T> && std::is_unsigned_v<T>)
+    template <std::unsigned_integral T>
     constexpr T prev_power_of_two(T x)
     {
         constexpr T max = T{1} << (sizeof(T) * 8 - 1);
@@ -540,8 +522,7 @@ namespace ml7 {
      * specified value. If such a value does not exist (regarding integer overflow),
      * 0 is returned.
      */
-    template <typename T>
-        requires(std::is_integral_v<T> && std::is_unsigned_v<T>)
+    template <std::unsigned_integral T>
     constexpr T next_power_of_two(T x)
     {
         constexpr T max = T{1} << (sizeof(T) * 8 - 1);
@@ -556,8 +537,7 @@ namespace ml7 {
     /**
      * Determines the number of decimal digits of an unsigned integer value.
      */
-    template <typename U = unsigned, typename T>
-        requires(std::is_integral_v<T> && std::is_unsigned_v<T>)
+    template <std::integral U = unsigned, std::unsigned_integral T>
     constexpr U decimal_digits(T x)
     {
         constexpr T _10 = T{10};

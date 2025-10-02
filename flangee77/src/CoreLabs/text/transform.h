@@ -63,8 +63,8 @@ namespace cl7::text::transform {
 
 
     /** Removes leading occurrences of the specified character from the string in-place. */
-    template <class Tstring, typename Tchar = Tstring::value_type>
-        requires(is_any_string_v<Tstring> && !std::is_const_v<Tstring> && std::is_integral_v<Tchar>)
+    template <class Tstring, std::integral Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring> && !std::is_const_v<Tstring>)
     void trim_left(Tstring& s, Tchar c)
     {
         while (!s.empty() && s.front() == c)
@@ -72,8 +72,8 @@ namespace cl7::text::transform {
     }
 
     /** Removes leading occurrences of the specified character from the string in-place. */
-    template <class Tstring_view, typename Tchar = Tstring_view::value_type>
-        requires(is_any_string_view_v<Tstring_view> && !std::is_const_v<Tstring_view> && std::is_integral_v<Tchar>)
+    template <class Tstring_view, std::integral Tchar = typename Tstring_view::value_type>
+        requires(is_any_string_view_v<Tstring_view> && !std::is_const_v<Tstring_view>)
     void trim_left(Tstring_view& s, Tchar c)
     {
         while (!s.empty() && s.front() == c)
@@ -81,8 +81,8 @@ namespace cl7::text::transform {
     }
 
     /** Removes trailing occurrences of the specified character from the string in-place. */
-    template <class Tstring, typename Tchar = Tstring::value_type>
-        requires(is_any_string_v<Tstring> && !std::is_const_v<Tstring> && std::is_integral_v<Tchar>)
+    template <class Tstring, std::integral Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring> && !std::is_const_v<Tstring>)
     void trim_right(Tstring& s, Tchar c)
     {
         while (!s.empty() && s.back() == c)
@@ -90,8 +90,8 @@ namespace cl7::text::transform {
     }
 
     /** Removes trailing occurrences of the specified character from the string in-place. */
-    template <class Tstring_view, typename Tchar = Tstring_view::value_type>
-        requires(is_any_string_view_v<Tstring_view> && !std::is_const_v<Tstring_view> && std::is_integral_v<Tchar>)
+    template <class Tstring_view, std::integral Tchar = typename Tstring_view::value_type>
+        requires(is_any_string_view_v<Tstring_view> && !std::is_const_v<Tstring_view>)
     void trim_right(Tstring_view& s, Tchar c)
     {
         while (!s.empty() && s.back() == c)
@@ -99,8 +99,8 @@ namespace cl7::text::transform {
     }
 
     /** Removes both leading and trailing occurrences of the specified character from the string in-place. */
-    template <class Tstring_or_view, typename Tchar = Tstring_or_view::value_type>
-        requires(is_any_string_or_view_v<Tstring_or_view> && !std::is_const_v<Tstring_or_view> && std::is_integral_v<Tchar>)
+    template <class Tstring_or_view, std::integral Tchar = typename Tstring_or_view::value_type>
+        requires(is_any_string_or_view_v<Tstring_or_view> && !std::is_const_v<Tstring_or_view>)
     void trim(Tstring_or_view& s, Tchar c)
     {
         trim_right(s, c);
@@ -186,8 +186,8 @@ namespace cl7::text::transform {
 
 
     /** Returns (a copy of) the string with leading occurrences of the specified character removed. */
-    template <class Tstring_or_view, typename Tchar = Tstring_or_view::value_type>
-        requires(is_any_string_or_view_v<Tstring_or_view> && std::is_integral_v<Tchar>)
+    template <class Tstring_or_view, std::integral Tchar = typename Tstring_or_view::value_type>
+        requires(is_any_string_or_view_v<Tstring_or_view>)
     Tstring_or_view trimmed_left(Tstring_or_view s, Tchar c)
     {
         trim_left(s, c);
@@ -195,8 +195,8 @@ namespace cl7::text::transform {
     }
 
     /** Returns (a copy of) the string with trailing occurrences of the specified character removed. */
-    template <class Tstring_or_view, typename Tchar = Tstring_or_view::value_type>
-        requires(is_any_string_or_view_v<Tstring_or_view> && std::is_integral_v<Tchar>)
+    template <class Tstring_or_view, std::integral Tchar = typename Tstring_or_view::value_type>
+        requires(is_any_string_or_view_v<Tstring_or_view>)
     Tstring_or_view trimmed_right(Tstring_or_view s, Tchar c)
     {
         trim_right(s, c);
@@ -204,8 +204,8 @@ namespace cl7::text::transform {
     }
 
     /** Returns (a copy of) the string with leading and trailing occurrences of the specified character removed. */
-    template <class Tstring_or_view, typename Tchar = Tstring_or_view::value_type>
-        requires(is_any_string_or_view_v<Tstring_or_view> && std::is_integral_v<Tchar>)
+    template <class Tstring_or_view, std::integral Tchar = typename Tstring_or_view::value_type>
+        requires(is_any_string_or_view_v<Tstring_or_view>)
     Tstring_or_view trimmed(Tstring_or_view s, Tchar c)
     {
         trim(s, c);
@@ -243,8 +243,8 @@ namespace cl7::text::transform {
 
 
     /** Pads the string on the left with the specified character until it has at least the desired length. */
-    template <class Tstring, typename Tchar = Tstring::value_type>
-        requires(is_any_string_v<Tstring> && !std::is_const_v<Tstring> && std::is_integral_v<Tchar>)
+    template <class Tstring, std::integral Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring> && !std::is_const_v<Tstring>)
     void pad_left(Tstring& s, size_t min_length, Tchar c)
     {
         if (min_length > s.length())
@@ -252,8 +252,8 @@ namespace cl7::text::transform {
     }
 
     /** Pads the string on the right with the specified character until it has at least the desired length. */
-    template <class Tstring, typename Tchar = Tstring::value_type>
-        requires(is_any_string_v<Tstring> && !std::is_const_v<Tstring> && std::is_integral_v<Tchar>)
+    template <class Tstring, std::integral Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring> && !std::is_const_v<Tstring>)
     void pad_right(Tstring& s, size_t min_length, Tchar c)
     {
         if (min_length > s.length())
@@ -263,8 +263,8 @@ namespace cl7::text::transform {
 
 
     /** Returns a copy of the string left-padded with the specified character to reach the desired minimum length. */
-    template <class Tstring, typename Tchar = Tstring::value_type>
-        requires(is_any_string_v<Tstring> && std::is_integral_v<Tchar>)
+    template <class Tstring, std::integral Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring>)
     Tstring padded_left(Tstring s, size_t min_length, Tchar c)
     {
         pad_left(s, min_length, c);
@@ -272,8 +272,8 @@ namespace cl7::text::transform {
     }
 
     /** Returns a copy of the string right-padded with the specified character to reach the desired minimum length. */
-    template <class Tstring, typename Tchar = Tstring::value_type>
-        requires(is_any_string_v<Tstring> && std::is_integral_v<Tchar>)
+    template <class Tstring, std::integral Tchar = typename Tstring::value_type>
+        requires(is_any_string_v<Tstring>)
     Tstring padded_right(Tstring s, size_t min_length, Tchar c)
     {
         pad_right(s, min_length, c);
@@ -283,8 +283,7 @@ namespace cl7::text::transform {
 
 
     /** Converts a single ASCII character to lowercase. */
-    template <typename Tchar>
-        requires(std::is_integral_v<Tchar>)
+    template <std::integral Tchar>
     Tchar to_lower_ascii(Tchar c)
     {
         if (c >= Tchar{'A'} && c <= Tchar{'Z'})
@@ -293,8 +292,7 @@ namespace cl7::text::transform {
     }
 
     /** Converts a single ASCII character to uppercase. */
-    template <typename Tchar>
-        requires(std::is_integral_v<Tchar>)
+    template <std::integral Tchar>
     Tchar to_upper_ascii(Tchar c)
     {
         if (c >= Tchar{'a'} && c <= Tchar{'z'})
