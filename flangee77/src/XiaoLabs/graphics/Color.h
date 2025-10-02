@@ -188,14 +188,14 @@ struct Color
     /**
      * Checks whether two colors are equal. The comparison is quite fuzzy:
      * ultimately, it is enough if the colors are the same in terms of their 32-bit
-     * unsigned-integer representation, even if the floating point values should be
+     * unsigned-integer representation, even if the floating-point values should be
      * different.
      */
     constexpr bool operator==(const Color& c) const { return ((r == c.r) && (g == c.g) && (b == c.b) && (a == c.a)) || to_rgba32() == c.to_rgba32(); }
 
     /**
      * Checks whether two colors are unequal. The comparison is quite fuzzy:
-     * Ultimately, it is not enough for the floating point values to be different;
+     * Ultimately, it is not enough for the floating-point values to be different;
      * the colors must also differ in terms of their 32-bit unsigned-integer
      * representation.
      */

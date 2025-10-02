@@ -335,7 +335,7 @@ TESTLABS_CASE( u8"DataLabs:  syntax:  GenericLexer / TokenReader" )
     terminal_symbols.add_pattern( /*u8"identifier",*/ 16, R"([_a-zA-Z][_a-zA-Z0-9]*)" );
     terminal_symbols.add_pattern( /*u8"operator",*/ 17, R"([=!~^&|*/%+-])" );
     terminal_symbols.add_pattern( /*u8"integer number",*/ 18, R"(0|[1-9][0-9]*)" );
-    terminal_symbols.add_pattern( /*u8"floating point number",*/ 19, R"((?:0?|[1-9][0-9]*)\.[0-9]*f?)" );
+    terminal_symbols.add_pattern( /*u8"floating-point number",*/ 19, R"((?:0?|[1-9][0-9]*)\.[0-9]*f?)" );
     terminal_symbols.add_pattern( /*u8"character",*/ 20, u8"'", R"('(?:[^'\\]|\\.)')" );
     terminal_symbols.add_pattern( /*u8"string",*/ 21, u8"\"", R"("[^"\\]*(?:\\.[^"\\]*)*")" );
 
@@ -413,7 +413,7 @@ TESTLABS_CASE( u8"DataLabs:  syntax:  Vocabulary" )
     vocabulary.add_symbol( 16, u8"identifier" );
     vocabulary.add_symbol( 17, u8"operator" );
     vocabulary.add_symbol( 18, u8"integer number" );
-    vocabulary.add_symbol( 19, u8"floating point number" );
+    vocabulary.add_symbol( 19, u8"floating-point number" );
     vocabulary.add_symbol( 20, u8"character" );
     vocabulary.add_symbol( 21, u8"string" );
 
@@ -435,7 +435,7 @@ TESTLABS_CASE( u8"DataLabs:  syntax:  Vocabulary" )
     TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 16 ), u8"identifier" );
     TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 17 ), u8"operator" );
     TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 18 ), u8"integer number" );
-    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 19 ), u8"floating point number" );
+    TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 19 ), u8"floating-point number" );
     TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 20 ), u8"character" );
     TESTLABS_CHECK_EQ( vocabulary.get_symbol_name( 21 ), u8"string" );
 

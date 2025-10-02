@@ -366,7 +366,7 @@ namespace ml7 {
 
 
     /**
-     * Checks whether the specified floating point value is (approximately) zero.
+     * Checks whether the specified floating-point value is (approximately) zero.
      */
     template <typename T>
         requires(std::is_floating_point_v<T>)
@@ -376,7 +376,7 @@ namespace ml7 {
     }
 
     /**
-     * Checks whether the specified floating point value is (approximately) one.
+     * Checks whether the specified floating-point value is (approximately) one.
      */
     template <typename T>
         requires(std::is_floating_point_v<T>)
@@ -386,7 +386,7 @@ namespace ml7 {
     }
 
     /**
-     * Checks whether the specified (squared) floating point value is
+     * Checks whether the specified (squared) floating-point value is
      * (approximately) one squared.
      */
     template <typename T>
@@ -397,12 +397,12 @@ namespace ml7 {
         // x^2 = (1+epsilon)^2
         // x^2 = 1^2 + 2*epsilon + epsilon^2
         // x^2 =  1  + 2*epsilon
-        // epsilon^2 is omitted because it is far below floating point precision.
+        // epsilon^2 is omitted because it is far below floating-point precision.
         return std::abs(x - T{1}) <= T{2} * epsilon;
     }
 
     /**
-     * Checks whether the specified floating point values are (approximately) equal.
+     * Checks whether the specified floating-point values are (approximately) equal.
      */
     template <typename T>
         requires(std::is_floating_point_v<T>)
@@ -454,7 +454,7 @@ namespace ml7 {
 
 
     /**
-     * Checks whether the specified floating point values are (approximately) equal.
+     * Checks whether the specified floating-point values are (approximately) equal.
      */
     bool is_equal_ulps(float a, float b, int ulps);
 

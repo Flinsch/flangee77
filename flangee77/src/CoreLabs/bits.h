@@ -106,21 +106,21 @@ namespace detail {
 
 
     /**
-     * Converts a native 32-bit floating point number to a non-native 16-bit
-     * floating point number.
+     * Converts a native 32-bit floating-point number to a non-native 16-bit
+     * floating-point number.
      */
     int16_t float_to_half(float value);
 
     /**
-     * Converts a non-native 16-bit floating point number to a native 32-bit
-     * floating point number.
+     * Converts a non-native 16-bit floating-point number to a native 32-bit
+     * floating-point number.
      */
     float half_to_float(int16_t value);
 
 
 
     /**
-     * Converts a normalized floating point number in the range [0;1] to an unsigned
+     * Converts a normalized floating-point number in the range [0;1] to an unsigned
      * integer value of a certain bit depth (up to 32 bits), so that 1 is mapped to
      * the highest possible integer value of this bit depth.
      */
@@ -128,7 +128,7 @@ namespace detail {
 
     /**
      * Converts an unsigned integer value of a certain bit depth (up to 32 bits) to
-     * a normalized floating point number in the range [0;1], so that the highest
+     * a normalized floating-point number in the range [0;1], so that the highest
      * possible integer value of this bit depth is mapped to 1.
      */
     float fixed_to_norm(unsigned value, unsigned bit_depth);

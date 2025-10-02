@@ -7,7 +7,7 @@ namespace ml7 {
 
 
     /**
-     * Checks whether the specified floating point values are (approximately) equal.
+     * Checks whether the specified floating-point values are (approximately) equal.
      */
     bool is_equal_ulps(float a, float b, int ulps)
     {

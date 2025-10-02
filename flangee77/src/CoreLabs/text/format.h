@@ -265,7 +265,7 @@ struct FloatFormatOptions
 
 
     /**
-     * Converts a floating point value to a (decimal) string representation
+     * Converts a floating-point value to a (decimal) string representation
      * (in fixed or scientific notation).
      */
     template <class Tstring_or_view, typename Tval>
@@ -626,7 +626,7 @@ struct FloatFormatOptions
 
 
     /**
-     * Converts a floating point value to a (decimal) string representation
+     * Converts a floating-point value to a (decimal) string representation
      * (in fixed or scientific notation).
      *
      * You can specify the minimum and maximum number of fractional digits.
@@ -639,7 +639,7 @@ struct FloatFormatOptions
     }
 
     /**
-     * Converts a floating point value to a (decimal) string representation
+     * Converts a floating-point value to a (decimal) string representation
      * (in fixed notation).
      *
      * You can specify the minimum and maximum number of fractional digits.
@@ -652,7 +652,7 @@ struct FloatFormatOptions
     }
 
     /**
-     * Converts a floating point value to a (decimal) string representation
+     * Converts a floating-point value to a (decimal) string representation
      * (in scientific notation).
      *
      * You can specify the minimum and maximum number of fractional digits.
@@ -819,7 +819,7 @@ struct FloatFormatOptions
 
 
     /**
-     * Converts a floating point value to a UTF-8 encoded (decimal) string
+     * Converts a floating-point value to a UTF-8 encoded (decimal) string
      * representation (in fixed or scientific notation).
      */
     template <typename Tval>
@@ -827,7 +827,7 @@ struct FloatFormatOptions
     u8string to_string(Tval val, FloatFormatOptions options) { return to_string<u8string>(val, options); }
 
     /**
-     * Converts a floating point value to a UTF-8 encoded (decimal) string
+     * Converts a floating-point value to a UTF-8 encoded (decimal) string
      * representation (in fixed or scientific notation).
      *
      * You can specify the minimum and maximum number of fractional digits.
@@ -837,7 +837,7 @@ struct FloatFormatOptions
     u8string to_string(Tval val, unsigned min_precision = 0, unsigned max_precision = MAX_FLOAT_PRECISION) { return to_string<u8string>(val, min_precision, max_precision); }
 
     /**
-     * Converts a floating point value to a UTF-8 encoded (decimal) string
+     * Converts a floating-point value to a UTF-8 encoded (decimal) string
      * representation (in fixed notation).
      *
      * You can specify the minimum and maximum number of fractional digits.
@@ -846,7 +846,7 @@ struct FloatFormatOptions
     u8string to_fixed(Tval val, unsigned min_precision = 0, unsigned max_precision = MAX_FLOAT_PRECISION) { return to_fixed<u8string>(val, min_precision, max_precision); }
 
     /**
-     * Converts a floating point value to a UTF-8 encoded (decimal) string
+     * Converts a floating-point value to a UTF-8 encoded (decimal) string
      * representation (in scientific notation).
      *
      * You can specify the minimum and maximum number of fractional digits.
@@ -1001,7 +1001,7 @@ struct FloatFormatOptions
 
     /**
      * Converts a (decimal) string representation (in fixed or scientific notation)
-     * to a floating point value.
+     * to a floating-point value.
      */
     template <typename Tval = float, class Tstring_or_view>
         requires(std::is_floating_point_v<Tval> && is_any_string_or_view_v<Tstring_or_view>)
