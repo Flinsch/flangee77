@@ -77,7 +77,7 @@ public:
     using pointer = const Titem*;
 
     const_ptr_forward_iterator() = default;
-    const_ptr_forward_iterator(typename Tcontainer::const_iterator it) : _it(it) {}
+    const_ptr_forward_iterator(Tcontainer::const_iterator it) : _it(it) {}
 
     friend void swap(const_ptr_forward_iterator& a, const_ptr_forward_iterator& b) noexcept { a._it.swap(b._it); }
 
@@ -90,7 +90,7 @@ public:
     pointer operator->() const { return _it->get(); }
 
 private:
-    typename Tcontainer::const_iterator _it;
+    Tcontainer::const_iterator _it;
 }; // class const_ptr_forward_iterator
 
 static_assert(std::forward_iterator<const_ptr_forward_iterator<int>>);
