@@ -1,6 +1,8 @@
 #ifndef DL7_INI_FORMAT_H
 #define DL7_INI_FORMAT_H
 
+#include <CoreLabs/string.h>
+
 
 
 namespace dl7::ini {
