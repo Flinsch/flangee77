@@ -56,7 +56,6 @@ private:
 
 
 class SingletonManager final
-    : public SingletonBase
 {
 
 public:
