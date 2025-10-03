@@ -9,7 +9,7 @@ namespace cl7::text::codec {
 
 
 
-template <std::integral Tchar>
+template <any_char Tchar>
 struct EncodeBuffer
 {
     using char_type = Tchar;

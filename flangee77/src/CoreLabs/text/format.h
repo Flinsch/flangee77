@@ -78,8 +78,7 @@ struct FloatFormatOptions
     /**
      * Converts an integer value to a (decimal) string representation.
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_string(Tval val, IntFormatOptions options);
 
 
@@ -89,29 +88,25 @@ struct FloatFormatOptions
      * octal, and binary strings. However, these must be prefixed accordingly
      * ("0x", "0o", or "0b") to be recognized correctly.
      */
-    template <std::integral Tval = signed, class Tstring_or_view>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <std::integral Tval = signed, any_string_or_view Tstring_or_view>
     Tval parse_int(Tstring_or_view&& s);
 
     /**
      * Converts a hexadecimal string representation to an integer value.
      */
-    template <std::integral Tval = unsigned, class Tstring_or_view>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <std::integral Tval = unsigned, any_string_or_view Tstring_or_view>
     Tval parse_hex(Tstring_or_view&& s);
 
     /**
      * Converts an octal string representation to an integer value.
      */
-    template <std::integral Tval = unsigned, class Tstring_or_view>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <std::integral Tval = unsigned, any_string_or_view Tstring_or_view>
     Tval parse_octal(Tstring_or_view&& s);
 
     /**
      * Converts a binary string representation to an integer value.
      */
-    template <std::integral Tval = unsigned, class Tstring_or_view>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <std::integral Tval = unsigned, any_string_or_view Tstring_or_view>
     Tval parse_binary(Tstring_or_view&& s);
 
 
@@ -120,8 +115,8 @@ struct FloatFormatOptions
      * Adjusts a fixed-notation floating-point string to enforce minimum/maximum
      * fractional digits.
      */
-    template <class Tstring_or_view_out, class Tstring_or_view_in>
-        requires(is_any_string_or_view_v<Tstring_or_view_out> && is_any_string_or_view_v<Tstring_or_view_in> && std::same_as<typename std::remove_cvref_t<Tstring_or_view_out>::value_type, typename std::remove_cvref_t<Tstring_or_view_in>::value_type>)
+    template <any_string_or_view Tstring_or_view_out, any_string_or_view Tstring_or_view_in>
+        requires(std::same_as<typename std::remove_cvref_t<Tstring_or_view_out>::value_type, typename std::remove_cvref_t<Tstring_or_view_in>::value_type>)
     Tstring_or_view_out adjust_fixed_precision(Tstring_or_view_in&& s, unsigned min_precision, unsigned max_precision = MAX_FLOAT_PRECISION)
     {
         using Tchar = std::remove_cvref_t<Tstring_or_view_in>::value_type;
@@ -268,8 +263,7 @@ struct FloatFormatOptions
      * Converts a floating-point value to a (decimal) string representation
      * (in fixed or scientific notation).
      */
-    template <class Tstring_or_view, std::floating_point Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::floating_point Tval>
     Tstring_or_view to_string(Tval val, FloatFormatOptions options)
     {
         using Tchar = Tstring_or_view::value_type;
@@ -402,8 +396,7 @@ struct FloatFormatOptions
     /**
      * Converts an integer value to a (decimal) string representation.
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_string(Tval val, IntFormatOptions options)
     {
         using Tchar = Tstring_or_view::value_type;
@@ -455,8 +448,7 @@ struct FloatFormatOptions
     /**
      * Converts an integer value to a hexadecimal string representation.
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_hex(Tval val, IntFormatOptions options)
     {
         using Tchar = Tstring_or_view::value_type;
@@ -512,8 +504,7 @@ struct FloatFormatOptions
     /**
      * Converts an integer value to an octal string representation.
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_octal(Tval val, IntFormatOptions options)
     {
         using Tchar = Tstring_or_view::value_type;
@@ -569,8 +560,7 @@ struct FloatFormatOptions
     /**
      * Converts an integer value to a binary string representation.
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_binary(Tval val, IntFormatOptions options)
     {
         using Tchar = Tstring_or_view::value_type;
@@ -631,8 +621,7 @@ struct FloatFormatOptions
      *
      * You can specify the minimum and maximum number of fractional digits.
      */
-    template <class Tstring_or_view, std::floating_point Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::floating_point Tval>
     Tstring_or_view to_string(Tval val, unsigned min_precision = 0, unsigned max_precision = MAX_FLOAT_PRECISION)
     {
         return to_string<Tstring_or_view>(val, {.format = FloatFormat::General, .min_precision = min_precision, .max_precision = max_precision});
@@ -644,8 +633,7 @@ struct FloatFormatOptions
      *
      * You can specify the minimum and maximum number of fractional digits.
      */
-    template <class Tstring_or_view, std::floating_point Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::floating_point Tval>
     Tstring_or_view to_fixed(Tval val, unsigned min_precision = 0, unsigned max_precision = MAX_FLOAT_PRECISION)
     {
         return to_string<Tstring_or_view>(val, {.format = FloatFormat::Fixed, .min_precision = min_precision, .max_precision = max_precision});
@@ -657,8 +645,7 @@ struct FloatFormatOptions
      *
      * You can specify the minimum and maximum number of fractional digits.
      */
-    template <class Tstring_or_view, std::floating_point Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::floating_point Tval>
     Tstring_or_view to_scientific(Tval val, unsigned min_precision = 0, unsigned max_precision = MAX_FLOAT_PRECISION)
     {
         return to_string<Tstring_or_view>(val, {.format = FloatFormat::Scientific, .min_precision = min_precision, .max_precision = max_precision});
@@ -671,8 +658,7 @@ struct FloatFormatOptions
      * You can specify the minimum width of the output string. If shorter, leading
      * zeros will be added.
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_string(Tval val, unsigned zero_pad_width = 0)
     {
         return to_string<Tstring_or_view>(val, {.zero_pad_width = zero_pad_width});
@@ -687,8 +673,7 @@ struct FloatFormatOptions
      *
      * You can also control the hexadecimal letter case (e.g., "A1B2" vs. "a1b2").
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_hex(Tval val, unsigned zero_pad_width = 0, HexCase hex_case = HexCase::Upper)
     {
         return to_hex<Tstring_or_view>(val, {.with_prefix = false, .zero_pad_width = zero_pad_width, .hex_case = hex_case});
@@ -703,8 +688,7 @@ struct FloatFormatOptions
      *
      * You can also control the hexadecimal letter case (e.g., "A1B2" vs. "a1b2").
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_0x_hex(Tval val, unsigned zero_pad_width = 0, HexCase hex_case = HexCase::Upper)
     {
         return to_hex<Tstring_or_view>(val, {.with_prefix = true, .zero_pad_width = zero_pad_width, .hex_case = hex_case});
@@ -717,8 +701,7 @@ struct FloatFormatOptions
      * You can specify the minimum width of the output string. If shorter, leading
      * zeros will be added.
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_hex_lc(Tval val, unsigned zero_pad_width = 0)
     {
         return to_hex<Tstring_or_view>(val, {.with_prefix = false, .zero_pad_width = zero_pad_width, .hex_case = HexCase::Lower});
@@ -730,8 +713,7 @@ struct FloatFormatOptions
      * You can specify the minimum width of the output string. If shorter, leading
      * zeros will be added.
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_hex_uc(Tval val, unsigned zero_pad_width = 0)
     {
         return to_hex<Tstring_or_view>(val, {.with_prefix = false, .zero_pad_width = zero_pad_width, .hex_case = HexCase::Upper});
@@ -744,8 +726,7 @@ struct FloatFormatOptions
      * You can specify the minimum width of the output string. If shorter, leading
      * zeros will be added.
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_0x_hex_lc(Tval val, unsigned zero_pad_width = 0)
     {
         return to_hex<Tstring_or_view>(val, {.with_prefix = true, .zero_pad_width = zero_pad_width, .hex_case = HexCase::Lower});
@@ -758,8 +739,7 @@ struct FloatFormatOptions
      * You can specify the minimum width of the output string. If shorter, leading
      * zeros will be added.
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_0x_hex_uc(Tval val, unsigned zero_pad_width = 0)
     {
         return to_hex<Tstring_or_view>(val, {.with_prefix = true, .zero_pad_width = zero_pad_width, .hex_case = HexCase::Upper});
@@ -769,8 +749,7 @@ struct FloatFormatOptions
     /**
      * Converts an integer value to an octal string representation.
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_octal(Tval val, unsigned zero_pad_width = 0)
     {
         return to_octal<Tstring_or_view>(val, {.with_prefix = false, .zero_pad_width = zero_pad_width});
@@ -780,8 +759,7 @@ struct FloatFormatOptions
      * Converts an integer value to an octal string representation, prefixed with
      * "0o".
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_0o_octal(Tval val, unsigned zero_pad_width = 0)
     {
         return to_octal<Tstring_or_view>(val, {.with_prefix = true, .zero_pad_width = zero_pad_width});
@@ -791,8 +769,7 @@ struct FloatFormatOptions
     /**
      * Converts an integer value to a binary string representation.
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_binary(Tval val, unsigned zero_pad_width = 0)
     {
         return to_binary<Tstring_or_view>(val, {.with_prefix = false, .zero_pad_width = zero_pad_width});
@@ -802,8 +779,7 @@ struct FloatFormatOptions
      * Converts an integer value to a binary string representation, prefixed with
      * "0b".
      */
-    template <class Tstring_or_view, std::integral Tval>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_0b_binary(Tval val, unsigned zero_pad_width = 0)
     {
         return to_binary<Tstring_or_view>(val, {.with_prefix = true, .zero_pad_width = zero_pad_width});
@@ -999,8 +975,7 @@ struct FloatFormatOptions
      * Converts a (decimal) string representation (in fixed or scientific notation)
      * to a floating-point value.
      */
-    template <std::floating_point Tval = float, class Tstring_or_view>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <std::floating_point Tval = float, any_string_or_view Tstring_or_view>
     Tval parse_float(Tstring_or_view&& s)
     {
         using Tchar = std::remove_cvref_t<Tstring_or_view>::value_type;
@@ -1040,8 +1015,7 @@ struct FloatFormatOptions
      * octal, and binary strings. However, these must be prefixed accordingly
      * ("0x", "0o", or "0b") to be recognized correctly.
      */
-    template <std::integral Tval, class Tstring_or_view>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <std::integral Tval, any_string_or_view Tstring_or_view>
     Tval parse_int(Tstring_or_view&& s)
     {
         using Tchar = std::remove_cvref_t<Tstring_or_view>::value_type;
@@ -1077,8 +1051,7 @@ struct FloatFormatOptions
     /**
      * Converts a hexadecimal string representation to an integer value.
      */
-    template <std::integral Tval, class Tstring_or_view>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <std::integral Tval, any_string_or_view Tstring_or_view>
     Tval parse_hex(Tstring_or_view&& s)
     {
         using Tchar = std::remove_cvref_t<Tstring_or_view>::value_type;
@@ -1112,8 +1085,7 @@ struct FloatFormatOptions
     /**
      * Converts an octal string representation to an integer value.
      */
-    template <std::integral Tval, class Tstring_or_view>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <std::integral Tval, any_string_or_view Tstring_or_view>
     Tval parse_octal(Tstring_or_view&& s)
     {
         using Tchar = std::remove_cvref_t<Tstring_or_view>::value_type;
@@ -1145,8 +1117,7 @@ struct FloatFormatOptions
     /**
      * Converts a binary string representation to an integer value.
      */
-    template <std::integral Tval, class Tstring_or_view>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <std::integral Tval, any_string_or_view Tstring_or_view>
     Tval parse_binary(Tstring_or_view&& s)
     {
         using Tchar = std::remove_cvref_t<Tstring_or_view>::value_type;

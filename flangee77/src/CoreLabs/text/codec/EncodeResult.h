@@ -10,7 +10,7 @@ namespace cl7::text::codec {
 
 
 
-template <std::integral Tchar>
+template <any_char Tchar>
 struct EncodeResult
     : CodepointResult
 {

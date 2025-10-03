@@ -12,7 +12,7 @@ namespace cl7::text::inspect {
     /**
      * Checks whether the specified character is a whitespace character.
      */
-    template <std::integral Tchar>
+    template <any_char Tchar>
     bool is_whitespace(Tchar c)
     {
         // https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt
@@ -70,7 +70,7 @@ namespace cl7::text::inspect {
     /**
      * Checks whether the specified character is a line break character (LF or CR).
      */
-    template <std::integral Tchar>
+    template <any_char Tchar>
     bool is_line_break(Tchar c)
     {
         return c == Tchar{'\n'} || c == Tchar{'\r'};
@@ -86,7 +86,7 @@ namespace cl7::text::inspect {
      * This function enforces strict matching rules and requires c1 to be 0 for
      * single-character line breaks (LF or CR).
      */
-    template <std::integral Tchar>
+    template <any_char Tchar>
     size_t is_line_break_strict(Tchar c0, Tchar c1 = 0)
     {
         if (c0 == Tchar{'\r'} && c1 == Tchar{'\n'}) return 2;
@@ -105,7 +105,7 @@ namespace cl7::text::inspect {
      * Unlike the strict version, this function does not require c1 to be 0 for
      * single-byte line breaks.
      */
-    template <std::integral Tchar>
+    template <any_char Tchar>
     size_t is_line_break_relaxed(Tchar c0, Tchar c1 = 0)
     {
         if (c0 == Tchar{'\r'})
@@ -119,7 +119,7 @@ namespace cl7::text::inspect {
     /**
      * Checks whether the specified character is a (decimal) digit: 0-9.
      */
-    template <std::integral Tchar>
+    template <any_char Tchar>
     bool is_digit(Tchar c)
     {
         return c >= Tchar{'0'} && c <= Tchar{'9'};
@@ -129,7 +129,7 @@ namespace cl7::text::inspect {
      * Checks whether the specified character is a hexadecimal numeric character:
      * 0-9, A-F, a-f.
      */
-    template <std::integral Tchar>
+    template <any_char Tchar>
     bool is_hex_digit(Tchar c)
     {
         Tchar c_ = c | 0x20; // Force lowercase bit
@@ -140,7 +140,7 @@ namespace cl7::text::inspect {
      * Checks whether the specified character is an ASCII letter (either lowercase
      * or uppercase).
      */
-    template <std::integral Tchar>
+    template <any_char Tchar>
     bool is_ascii_letter(Tchar c)
     {
         c |= 0x20; // Force lowercase bit
@@ -150,7 +150,7 @@ namespace cl7::text::inspect {
     /**
      * Checks whether the specified character is a lowercase ASCII letter.
      */
-    template <std::integral Tchar>
+    template <any_char Tchar>
     bool is_ascii_lower(Tchar c)
     {
         return c >= Tchar{'a'} && c <= Tchar{'z'};
@@ -159,7 +159,7 @@ namespace cl7::text::inspect {
     /**
      * Checks whether the specified character is an uppercase ASCII letter.
      */
-    template <std::integral Tchar>
+    template <any_char Tchar>
     bool is_ascii_upper(Tchar c)
     {
         return c >= Tchar{'A'} && c <= Tchar{'Z'};
@@ -191,11 +191,10 @@ namespace cl7::text::inspect {
      * - LF (`\n`): Unix, Linux, macOS, and "modern" line-ending styles in general
      * - CR (`\r`): Legacy Mac
      */
-    template <class Tstring_or_view>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view>
     size_t is_line_break_prefix(Tstring_or_view&& s)
     {
-        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view>::value_type> sv{std::forward<Tstring_or_view>(s)};
+        auto sv = make_string_view(std::forward<Tstring_or_view>(s));
         const size_t n = sv.size();
         if (n >= 2) return is_line_break_relaxed(sv[0], sv[1]);
         if (n >= 1) return is_line_break_relaxed(sv[0]);
@@ -210,11 +209,10 @@ namespace cl7::text::inspect {
      * - LF (`\n`): Unix, Linux, macOS, and "modern" line-ending styles in general
      * - CR (`\r`): Legacy Mac
      */
-    template <class Tstring_or_view>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view>
     size_t is_line_break_suffix(Tstring_or_view&& s)
     {
-        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view>::value_type> sv{std::forward<Tstring_or_view>(s)};
+        auto sv = make_string_view(std::forward<Tstring_or_view>(s));
         const size_t n = sv.size();
         size_t k;
         // NOLINTBEGIN(bugprone-assignment-in-if-condition)
@@ -229,11 +227,10 @@ namespace cl7::text::inspect {
     /**
      * Counts and returns the number of whitespace characters that begin the string.
      */
-    template <class Tstring_or_view>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view>
     size_t count_whitespace_prefix(Tstring_or_view&& s)
     {
-        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view>::value_type> sv{std::forward<Tstring_or_view>(s)};
+        auto sv = make_string_view(std::forward<Tstring_or_view>(s));
         const size_t n = sv.size();
         size_t i = 0;
         while (i < n && is_whitespace(sv[i]))
@@ -261,11 +258,10 @@ namespace cl7::text::inspect {
     /**
      * Counts and returns the number of whitespace characters that end the string.
      */
-    template <class Tstring_or_view>
-        requires(is_any_string_or_view_v<Tstring_or_view>)
+    template <any_string_or_view Tstring_or_view>
     size_t count_whitespace_suffix(Tstring_or_view&& s)
     {
-        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view>::value_type> sv{std::forward<Tstring_or_view>(s)};
+        auto sv = make_string_view(std::forward<Tstring_or_view>(s));
         const size_t n = sv.size();
         size_t i = 0;
         while (i < n && is_whitespace(sv[n - i - 1]))

@@ -16,12 +16,11 @@ namespace cl7::text::metrics {
      * calculated in terms of characters (code units), not in terms of (Unicode)
      * code points.
      */
-    template <class Tstring_or_view1, class Tstring_or_view2>
-        requires(is_any_string_or_view_v<Tstring_or_view1> && is_any_string_or_view_v<Tstring_or_view2>)
+    template <any_string_or_view Tstring_or_view1, any_string_or_view Tstring_or_view2>
     size_t levenshtein(Tstring_or_view1&& s1, Tstring_or_view2&& s2)
     {
-        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view1>::value_type> sv1{std::forward<Tstring_or_view1>(s1)};
-        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view2>::value_type> sv2{std::forward<Tstring_or_view2>(s2)};
+        auto sv1 = make_string_view(std::forward<Tstring_or_view1>(s1));
+        auto sv2 = make_string_view(std::forward<Tstring_or_view2>(s2));
 
         const size_t size1 = sv1.size();
         const size_t size2 = sv2.size();
@@ -60,12 +59,11 @@ namespace cl7::text::metrics {
      * calculated in terms of characters (code units), not in terms of (Unicode)
      * code points.
      */
-    template <std::floating_point Tfloat = float, class Tstring_or_view1, class Tstring_or_view2>
-        requires(is_any_string_or_view_v<Tstring_or_view1> && is_any_string_or_view_v<Tstring_or_view2>)
+    template <std::floating_point Tfloat = float, any_string_or_view Tstring_or_view1, any_string_or_view Tstring_or_view2>
     Tfloat levenshtein_normalized(Tstring_or_view1&& s1, Tstring_or_view2&& s2)
     {
-        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view1>::value_type> sv1{std::forward<Tstring_or_view1>(s1)};
-        std::basic_string_view<typename std::remove_cvref_t<Tstring_or_view2>::value_type> sv2{std::forward<Tstring_or_view2>(s2)};
+        auto sv1 = make_string_view(std::forward<Tstring_or_view1>(s1));
+        auto sv2 = make_string_view(std::forward<Tstring_or_view2>(s2));
 
         const size_t size = (std::max)(sv1.size(), sv2.size());
         if (size == 0) return 0.0f;
