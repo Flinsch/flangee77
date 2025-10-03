@@ -12,6 +12,14 @@ var annotated_dup =
         [ "SingletonBase", "d9/d10/classcl7_1_1creational_1_1SingletonBase.html", "d9/d10/classcl7_1_1creational_1_1SingletonBase" ],
         [ "SingletonManager", "d7/dba/classcl7_1_1creational_1_1SingletonManager.html", "d7/dba/classcl7_1_1creational_1_1SingletonManager" ]
       ] ],
+      [ "detail", "d2/da9/namespacecl7_1_1detail.html", [
+        [ "_is_any_string", "d8/d05/structcl7_1_1detail_1_1__is__any__string.html", null ],
+        [ "_is_any_string< std::basic_string< Tchar, Ttraits, Talloc > >", "d0/d63/structcl7_1_1detail_1_1__is__any__string_3_01std_1_1basic__string_3_01Tchar_00_01Ttraits_00_01Talloc_01_4_01_4.html", null ],
+        [ "_is_any_string_span", "de/d1e/structcl7_1_1detail_1_1__is__any__string__span.html", null ],
+        [ "_is_any_string_span< std::span< Tchar > >", "d0/d3a/structcl7_1_1detail_1_1__is__any__string__span_3_01std_1_1span_3_01Tchar_01_4_01_4.html", null ],
+        [ "_is_any_string_view", "df/d9b/structcl7_1_1detail_1_1__is__any__string__view.html", null ],
+        [ "_is_any_string_view< std::basic_string_view< Tchar, Ttraits > >", "d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html", null ]
+      ] ],
       [ "io", "d6/dc7/namespacecl7_1_1io.html", [
         [ "ByteReader", "d7/df3/classcl7_1_1io_1_1ByteReader.html", "d7/df3/classcl7_1_1io_1_1ByteReader" ],
         [ "ByteWriter", "de/d6e/classcl7_1_1io_1_1ByteWriter.html", "de/d6e/classcl7_1_1io_1_1ByteWriter" ],
@@ -83,6 +91,12 @@ var annotated_dup =
       [ "const_ptr_forward_iterator", "d2/d93/classcl7_1_1const__ptr__forward__iterator.html", "d2/d93/classcl7_1_1const__ptr__forward__iterator" ],
       [ "contiguous_iterator", "d1/d5d/classcl7_1_1contiguous__iterator.html", "d1/d5d/classcl7_1_1contiguous__iterator" ],
       [ "Guid", "dc/dbd/structcl7_1_1Guid.html", "dc/dbd/structcl7_1_1Guid" ],
+      [ "is_any_char", "d2/d08/structcl7_1_1is__any__char.html", null ],
+      [ "is_any_string", "db/daf/structcl7_1_1is__any__string.html", null ],
+      [ "is_any_string_or_span", "d8/db2/structcl7_1_1is__any__string__or__span.html", null ],
+      [ "is_any_string_or_view", "da/d88/structcl7_1_1is__any__string__or__view.html", null ],
+      [ "is_any_string_span", "df/d3e/structcl7_1_1is__any__string__span.html", null ],
+      [ "is_any_string_view", "d9/d41/structcl7_1_1is__any__string__view.html", null ],
       [ "ordered_map", "dd/d42/classcl7_1_1ordered__map.html", "dd/d42/classcl7_1_1ordered__map" ],
       [ "static_vector", "da/d4e/classcl7_1_1static__vector.html", "da/d4e/classcl7_1_1static__vector" ],
       [ "string_hash", "d0/dbc/structcl7_1_1string__hash.html", "d0/dbc/structcl7_1_1string__hash" ],

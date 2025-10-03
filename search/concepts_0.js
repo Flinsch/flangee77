@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['cl7_3a_3ais_5fany_5fstring_5for_5fspan_5fv_0',['is_any_string_or_span_v',['../d7/d27/conceptcl7_1_1is__any__string__or__span__v.html',1,'cl7']]],
-  ['cl7_3a_3ais_5fany_5fstring_5for_5fview_5fv_1',['is_any_string_or_view_v',['../d1/d57/conceptcl7_1_1is__any__string__or__view__v.html',1,'cl7']]],
-  ['cl7_3a_3ais_5fany_5fstring_5fspan_5fv_2',['is_any_string_span_v',['../d7/dfd/conceptcl7_1_1is__any__string__span__v.html',1,'cl7']]],
-  ['cl7_3a_3ais_5fany_5fstring_5fv_3',['is_any_string_v',['../da/d97/conceptcl7_1_1is__any__string__v.html',1,'cl7']]],
-  ['cl7_3a_3ais_5fany_5fstring_5fview_5fv_4',['is_any_string_view_v',['../da/d0e/conceptcl7_1_1is__any__string__view__v.html',1,'cl7']]],
-  ['cl7_3a_3aunary_5ffunction_5',['unary_function',['../df/d86/conceptcl7_1_1unary__function.html',1,'cl7']]]
+  ['cl7_3a_3aany_5fchar_0',['any_char',['../db/d8a/conceptcl7_1_1any__char.html',1,'cl7']]],
+  ['cl7_3a_3aany_5fstring_1',['any_string',['../de/d21/conceptcl7_1_1any__string.html',1,'cl7']]],
+  ['cl7_3a_3aany_5fstring_5for_5fspan_2',['any_string_or_span',['../d4/d46/conceptcl7_1_1any__string__or__span.html',1,'cl7']]],
+  ['cl7_3a_3aany_5fstring_5for_5fview_3',['any_string_or_view',['../d5/d50/conceptcl7_1_1any__string__or__view.html',1,'cl7']]],
+  ['cl7_3a_3aany_5fstring_5fspan_4',['any_string_span',['../d0/d16/conceptcl7_1_1any__string__span.html',1,'cl7']]],
+  ['cl7_3a_3aany_5fstring_5fview_5',['any_string_view',['../d2/d6d/conceptcl7_1_1any__string__view.html',1,'cl7']]],
+  ['cl7_3a_3aunary_5ffunction_6',['unary_function',['../df/d86/conceptcl7_1_1unary__function.html',1,'cl7']]]
 ];

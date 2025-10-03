@@ -1,13 +1,12 @@
 var searchData=
 [
-  ['general_0',['General',['../dd/d38/structxl7_1_1Config_1_1General.html',1,'xl7::Config']]],
-  ['generator_1',['generator',['../dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator.html',1,'dl7::ini::detail::Generator'],['../d5/dc2/classdl7_1_1json_1_1detail_1_1Generator.html',1,'dl7::json::detail::Generator']]],
-  ['genericlexer_2',['GenericLexer',['../d5/da3/classdl7_1_1syntax_1_1GenericLexer.html',1,'dl7::syntax']]],
-  ['glyph_3',['Glyph',['../d2/d26/structfl7_1_1fonts_1_1Glyph.html',1,'fl7::fonts']]],
-  ['grammar_4',['Grammar',['../d8/d95/structdl7_1_1syntax_1_1Grammar.html',1,'dl7::syntax']]],
-  ['grammaranalyzer_5',['GrammarAnalyzer',['../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html',1,'dl7::syntax']]],
-  ['graphicssystem_6',['GraphicsSystem',['../da/d03/classxl7_1_1graphics_1_1GraphicsSystem.html',1,'xl7::graphics']]],
-  ['graphicssystemimpl_7',['graphicssystemimpl',['../d8/d86/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl.html',1,'xl7::graphics::impl::direct3d11::GraphicsSystemImpl'],['../da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html',1,'xl7::graphics::impl::direct3d9::GraphicsSystemImpl']]],
-  ['group_8',['Group',['../da/d74/structtl7_1_1Stats_1_1Group.html',1,'tl7::Stats']]],
-  ['guid_9',['Guid',['../dc/dbd/structcl7_1_1Guid.html',1,'cl7']]]
+  ['file_0',['File',['../d2/d67/classcl7_1_1io_1_1File.html',1,'cl7::io']]],
+  ['fileloghandler_1',['FileLogHandler',['../d3/d69/classcl7_1_1logging_1_1FileLogHandler.html',1,'cl7::logging']]],
+  ['floatformatoptions_2',['FloatFormatOptions',['../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html',1,'cl7::text::format']]],
+  ['floatingpointliteralmatcher_3',['FloatingPointLiteralMatcher',['../df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher.html',1,'dl7::syntax::matchers']]],
+  ['font_4',['Font',['../d3/d00/classfl7_1_1fonts_1_1Font.html',1,'fl7::fonts']]],
+  ['fontheader_5',['FontHeader',['../d9/ded/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontHeader.html',1,'fl7::fonts::TrueTypeFontLoader']]],
+  ['fontloader_6',['FontLoader',['../da/d82/classfl7_1_1fonts_1_1FontLoader.html',1,'fl7::fonts']]],
+  ['format_7',['format',['../d9/db3/structdl7_1_1ini_1_1Format.html',1,'dl7::ini::Format'],['../df/d52/structdl7_1_1json_1_1Format.html',1,'dl7::json::Format']]],
+  ['framebuffersurface_8',['FramebufferSurface',['../d0/d60/classxl7_1_1graphics_1_1surfaces_1_1FramebufferSurface.html',1,'xl7::graphics::surfaces']]]
 ];

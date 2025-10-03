@@ -61,6 +61,11 @@ var hierarchy =
     [ "xl7::graphics::images::PngImageHandler::BitInfo", "d1/db4/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1BitInfo.html", null ],
     [ "cl7::logging::HtmlLogHandler::Block", "dc/d37/structcl7_1_1logging_1_1HtmlLogHandler_1_1Block.html", null ],
     [ "dl7::syntax::matchers::BlockCommentMatcher", "d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html", null ],
+    [ "std::bool_constant", null, [
+      [ "cl7::is_any_char< Tchar >", "d2/d08/structcl7_1_1is__any__char.html", null ],
+      [ "cl7::is_any_string_or_span< Tstring_or_span >", "d8/db2/structcl7_1_1is__any__string__or__span.html", null ],
+      [ "cl7::is_any_string_or_view< Tstring_or_view >", "da/d88/structcl7_1_1is__any__string__or__view.html", null ]
+    ] ],
     [ "dl7::ini::detail::BooleanMatcher", "da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html", null ],
     [ "cl7::io::ByteReader", "d7/df3/classcl7_1_1io_1_1ByteReader.html", null ],
     [ "cl7::io::ByteWriter", "de/d6e/classcl7_1_1io_1_1ByteWriter.html", null ],
@@ -150,6 +155,20 @@ var hierarchy =
     [ "dl7::json::util::Escaper", "d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html", null ],
     [ "std::exception", null, [
       [ "tl7::exceptions::assertion_exception", "d6/db9/structtl7_1_1exceptions_1_1assertion__exception.html", null ]
+    ] ],
+    [ "std::false_type", null, [
+      [ "cl7::detail::_is_any_string< std::remove_cvref_t< Tstring > >", "d8/d05/structcl7_1_1detail_1_1__is__any__string.html", [
+        [ "cl7::is_any_string< Tstring >", "db/daf/structcl7_1_1is__any__string.html", null ]
+      ] ],
+      [ "cl7::detail::_is_any_string_span< std::remove_cvref_t< Tstring_span > >", "de/d1e/structcl7_1_1detail_1_1__is__any__string__span.html", [
+        [ "cl7::is_any_string_span< Tstring_span >", "df/d3e/structcl7_1_1is__any__string__span.html", null ]
+      ] ],
+      [ "cl7::detail::_is_any_string_view< std::remove_cvref_t< Tstring_view > >", "df/d9b/structcl7_1_1detail_1_1__is__any__string__view.html", [
+        [ "cl7::is_any_string_view< Tstring_view >", "d9/d41/structcl7_1_1is__any__string__view.html", null ]
+      ] ],
+      [ "cl7::detail::_is_any_string< T >", "d8/d05/structcl7_1_1detail_1_1__is__any__string.html", null ],
+      [ "cl7::detail::_is_any_string_span< T >", "de/d1e/structcl7_1_1detail_1_1__is__any__string__span.html", null ],
+      [ "cl7::detail::_is_any_string_view< T >", "df/d9b/structcl7_1_1detail_1_1__is__any__string__view.html", null ]
     ] ],
     [ "cl7::text::format::FloatFormatOptions", "d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html", null ],
     [ "dl7::syntax::matchers::FloatingPointLiteralMatcher", "df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher.html", null ],
@@ -499,6 +518,11 @@ var hierarchy =
     [ "cl7::text::codec::traits< cl7::u32char_t >", "d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html", null ],
     [ "cl7::text::codec::traits< cl7::u8char_t >", "de/db6/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4.html", null ],
     [ "cl7::text::codec::Transcoder< Tchar_from, Tchar_to, TDefaultErrorHandler >", "da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html", null ],
+    [ "std::true_type", null, [
+      [ "cl7::detail::_is_any_string< std::basic_string< Tchar, Ttraits, Talloc > >", "d0/d63/structcl7_1_1detail_1_1__is__any__string_3_01std_1_1basic__string_3_01Tchar_00_01Ttraits_00_01Talloc_01_4_01_4.html", null ],
+      [ "cl7::detail::_is_any_string_span< std::span< Tchar > >", "d0/d3a/structcl7_1_1detail_1_1__is__any__string__span_3_01std_1_1span_3_01Tchar_01_4_01_4.html", null ],
+      [ "cl7::detail::_is_any_string_view< std::basic_string_view< Tchar, Ttraits > >", "d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html", null ]
+    ] ],
     [ "cl7::u8isstream", "d9/d44/classcl7_1_1u8isstream.html", null ],
     [ "cl7::u8osstream", "d3/d63/classcl7_1_1u8osstream.html", null ],
     [ "dl7::json::util::Unescaper", "df/df1/classdl7_1_1json_1_1util_1_1Unescaper.html", null ],

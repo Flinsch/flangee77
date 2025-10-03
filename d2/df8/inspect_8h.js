@@ -1,8 +1,8 @@
 var inspect_8h =
 [
-    [ "count_whitespace_prefix", "d2/df8/inspect_8h.html#a865a81296a54c3cfb81da56c4ee67ff6", null ],
+    [ "count_whitespace_prefix", "d2/df8/inspect_8h.html#ad24d2252661a9990e5206ada19242039", null ],
     [ "count_whitespace_prefix", "d2/df8/inspect_8h.html#a5c316217ebcd1bcd227ef6cd5d354e7d", null ],
-    [ "count_whitespace_suffix", "d2/df8/inspect_8h.html#a92cb3a7686474f06a48134eb3cb2e6dd", null ],
+    [ "count_whitespace_suffix", "d2/df8/inspect_8h.html#aad3e66a53c85d0ca098a6fc44d60eadd", null ],
     [ "count_whitespace_suffix", "d2/df8/inspect_8h.html#a743ef3790f0b38b2b46f52acb2b0468e", null ],
     [ "is_ascii_letter", "d2/df8/inspect_8h.html#a4538f54dbe339a0079843c262f08b97f", null ],
     [ "is_ascii_lower", "d2/df8/inspect_8h.html#a106ab0af77048febb87136befc9a757a", null ],
@@ -10,10 +10,10 @@ var inspect_8h =
     [ "is_digit", "d2/df8/inspect_8h.html#aaa194e23265b7027b60ca705bc184e11", null ],
     [ "is_hex_digit", "d2/df8/inspect_8h.html#a0422adf59543add3ce23e46601036b36", null ],
     [ "is_line_break", "d2/df8/inspect_8h.html#a372414b8c95aaeec51a03214b0c9ef80", null ],
-    [ "is_line_break_prefix", "d2/df8/inspect_8h.html#a394f6c8e51d45a16dbdca66d29fe2d77", null ],
+    [ "is_line_break_prefix", "d2/df8/inspect_8h.html#a0fb4c820c4df645c4b350a8f8498ef4b", null ],
     [ "is_line_break_relaxed", "d2/df8/inspect_8h.html#a5da00d37416e0e6c987d13cb914d853a", null ],
     [ "is_line_break_strict", "d2/df8/inspect_8h.html#adf44d95a1728cef04fdc8ab0ee4c9e7e", null ],
-    [ "is_line_break_suffix", "d2/df8/inspect_8h.html#afe5c8abb3355cb03053384ad0d14c8c2", null ],
+    [ "is_line_break_suffix", "d2/df8/inspect_8h.html#ae32bfde347e2c7ed4601310caf368846", null ],
     [ "is_whitespace", "d2/df8/inspect_8h.html#a928eee2026b28c458a781b60e32c479b", null ],
     [ "is_whitespace", "d2/df8/inspect_8h.html#a0c0145c528869c7221745f7b0fea41ed", null ],
     [ "is_whitespace_prefix", "d2/df8/inspect_8h.html#a0e591d06e240e06dbdec16573a9b25db", null ],
