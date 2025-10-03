@@ -13,7 +13,7 @@ namespace cl7 {
 
 
 
-template<typename T, std::size_t N>
+template <typename T, std::size_t N>
 class static_vector
 {
 
@@ -109,7 +109,7 @@ public:
     }
 
     /** Constructs an element in-place at the end. */
-    template<typename... Args>
+    template <typename... Args>
     void emplace_back(Args&&... args)
     {
         if (full())
