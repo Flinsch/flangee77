@@ -3,6 +3,8 @@
 
 #include <DataLabs/Base64.h>
 
+#include <CoreLabs/text/codec.h>
+
 #include <TestLabs/TestSuite.h>
 
 #include "../shared.h"
