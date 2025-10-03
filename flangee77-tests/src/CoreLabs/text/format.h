@@ -421,8 +421,8 @@ TESTLABS_CASE( u8"CoreLabs:  text:  format:  parse hex" )
 
         TESTLABS_CHECK_EQ( cl7::text::format::parse_hex<>( input ), expected );
         TESTLABS_CHECK_EQ( cl7::text::format::parse_hex<>( u8"  " + input ), expected );
-        TESTLABS_CHECK_EQ( cl7::text::format::parse_hex<>( u8"0x" + input ), cl7::text::transform::to_lower_ascii( expected ) );
-        TESTLABS_CHECK_EQ( cl7::text::format::parse_hex<>( u8"  0x" + input ), cl7::text::transform::to_upper_ascii( expected ) );
+        TESTLABS_CHECK_EQ( cl7::text::format::parse_hex<>( u8"0x" + input ), expected );
+        TESTLABS_CHECK_EQ( cl7::text::format::parse_hex<>( u8"  0x" + input ), expected );
         TESTLABS_CHECK_EQ( cl7::text::format::parse_hex<>( input + u8"XX" ), expected );
         TESTLABS_CHECK_EQ( cl7::text::format::parse_hex<>( u8"  0x" + input + u8"  " ), expected );
     }
