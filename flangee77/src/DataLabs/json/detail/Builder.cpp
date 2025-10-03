@@ -47,11 +47,9 @@ namespace dl7::json::detail {
             return std::make_unique<Json>(false);
 
         case INTEGER_LITERAL:
-            if (token_reader.check_first_char(u8'-') || token_reader.check_first_char(u8'+'))
-                return std::make_unique<Json>(_parse_integer(token_reader));
-            return std::make_unique<Json>(_parse_unsigned(token_reader));
-        case DECIMAL_LITERAL:
-            return std::make_unique<Json>(_parse_decimal(token_reader));
+            return std::make_unique<Json>(_parse_integer(token_reader));
+        case FLOAT_LITERAL:
+            return std::make_unique<Json>(_parse_float(token_reader));
 
         case STRING_LITERAL:
             return std::make_unique<Json>(_parse_string(token_reader));
@@ -157,9 +155,9 @@ namespace dl7::json::detail {
         return unescaper.unescape_string(lexeme.substr(1, lexeme.size() - 2));
     }
 
-    decimal_t Builder::_parse_decimal(syntax::TokenReader& token_reader)
+    float_t Builder::_parse_float(syntax::TokenReader& token_reader)
     {
-        if (!token_reader.check_symbol_id(DECIMAL_LITERAL))
+        if (!token_reader.check_symbol_id(FLOAT_LITERAL))
         {
             _error(u8"Decimal number expected.", token_reader.peek_token());
             return {};
@@ -169,7 +167,7 @@ namespace dl7::json::detail {
         const auto lexeme = token.lexeme;
 
         std::istringstream iss{std::string{cl7::text::codec::reinterpret_utf8(lexeme)}};
-        decimal_t number = {};
+        float_t number = {};
         iss >> number;
 
         if (iss.bad())
@@ -195,27 +193,6 @@ namespace dl7::json::detail {
 
         if (iss.bad())
             _error(u8"Bad (signed) integer literal.", token);
-
-        return number;
-    }
-
-    unsigned_t Builder::_parse_unsigned(syntax::TokenReader& token_reader)
-    {
-        if (!token_reader.check_symbol_id(INTEGER_LITERAL))
-        {
-            _error(u8"Unsigned integer number expected.", token_reader.peek_token());
-            return {};
-        }
-
-        const auto token = token_reader.consume_token();
-        const auto lexeme = token.lexeme;
-
-        std::istringstream iss{std::string{cl7::text::codec::reinterpret_utf8(lexeme)}};
-        unsigned_t number = {};
-        iss >> number;
-
-        if (iss.bad())
-            _error(u8"Bad unsigned integer literal.", token);
 
         return number;
     }

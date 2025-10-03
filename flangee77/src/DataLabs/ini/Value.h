@@ -19,9 +19,8 @@ public:
     {
         Undefined,
         String,
-        Decimal,
+        Float,
         Integer,
-        Unsigned,
         Boolean,
     };
 
@@ -63,10 +62,9 @@ public:
 
     bool is_undefined() const noexcept { return std::holds_alternative<undefined_t>(_value); }
     bool is_string() const noexcept { return std::holds_alternative<string_t>(_value); }
-    bool is_decimal() const noexcept { return std::holds_alternative<decimal_t>(_value); }
+    bool is_float() const noexcept { return std::holds_alternative<float_t>(_value); }
     bool is_integer() const noexcept { return std::holds_alternative<integer_t>(_value); }
-    bool is_unsigned() const noexcept { return std::holds_alternative<unsigned_t>(_value); }
-    bool is_number() const noexcept { return is_decimal() || is_integer() || is_unsigned(); }
+    bool is_number() const noexcept { return is_float() || is_integer(); }
     bool is_boolean() const noexcept { return std::holds_alternative<boolean_t>(_value); }
     bool is_true() const noexcept { const boolean_t* b = std::get_if<boolean_t>(&_value); return b ? *b : false; }
     bool is_false() const noexcept { const boolean_t* b = std::get_if<boolean_t>(&_value); return b ? !*b : false; }
@@ -83,18 +81,14 @@ public:
     const string_t& as_string() const;
     string_t& as_string();
 
-    decimal_t as_decimal() const;
+    float_t as_float() const;
     integer_t as_integer() const;
-    unsigned_t as_unsigned() const;
 
-    template <std::floating_point Tdecimal = float>
-    Tdecimal as_decimal() const { return static_cast<Tdecimal>(_as_decimal()); }
+    template <std::floating_point Tfloat = float>
+    Tfloat as_float() const { return static_cast<Tfloat>(_as_float()); }
 
-    template <std::signed_integral Tinteger = signed>
+    template <std::integral Tinteger = signed>
     Tinteger as_integer() const { return static_cast<Tinteger>(_as_integer()); }
-
-    template <std::unsigned_integral Tunsigned = unsigned>
-    Tunsigned as_unsigned() const { return static_cast<Tunsigned>(_as_unsigned()); }
 
     template <typename Tnumber>
         requires(std::is_arithmetic_v<Tnumber>)
@@ -102,12 +96,10 @@ public:
     {
         switch (get_type())
         {
-        case Type::Unsigned:
-            return static_cast<Tnumber>(_as_unsigned());
         case Type::Integer:
             return static_cast<Tnumber>(_as_integer());
         default:
-            return static_cast<Tnumber>(_as_decimal());
+            return static_cast<Tnumber>(_as_float());
         }
     }
 
@@ -120,17 +112,13 @@ public:
     void set_string(std::basic_string_view<string_t::value_type> string);
     void set_string(const string_t::value_type* string);
 
-    template <typename Tdecimal>
-        requires(std::is_nothrow_convertible_v<Tdecimal, decimal_t>)
-    void set_decimal(Tdecimal number) { _set_decimal(static_cast<decimal_t>(number)); }
+    template <typename Tnumber>
+        requires(std::is_nothrow_convertible_v<Tnumber, float_t>)
+    void set_float(Tnumber number) { _set_float(static_cast<float_t>(number)); }
 
-    template <typename Tinteger>
-        requires(std::is_nothrow_convertible_v<Tinteger, integer_t>)
-    void set_integer(Tinteger number) { _set_integer(static_cast<integer_t>(number)); }
-
-    template <typename Tunsigned>
-        requires(std::is_nothrow_convertible_v<Tunsigned, unsigned_t>)
-    void set_unsigned(Tunsigned number) { _set_unsigned(static_cast<unsigned_t>(number)); }
+    template <typename Tnumber>
+        requires(std::is_nothrow_convertible_v<Tnumber, integer_t>)
+    void set_integer(Tnumber number) { _set_integer(static_cast<integer_t>(number)); }
 
     void set_boolean(boolean_t boolean);
 
@@ -151,15 +139,13 @@ public:
 
 
 private:
-    decimal_t _as_decimal() const;
+    float_t _as_float() const;
     integer_t _as_integer() const;
-    unsigned_t _as_unsigned() const;
 
-    void _set_decimal(decimal_t number);
+    void _set_float(float_t number);
     void _set_integer(integer_t number);
-    void _set_unsigned(unsigned_t number);
 
-    std::variant<undefined_t, string_t, decimal_t, integer_t, unsigned_t, boolean_t> _value;
+    std::variant<undefined_t, string_t, float_t, integer_t, boolean_t> _value;
 
 }; // class Value
 

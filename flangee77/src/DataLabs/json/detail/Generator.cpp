@@ -3,6 +3,8 @@
 #include "../util/Validator.h"
 #include "../util/Escaper.h"
 
+#include <CoreLabs/text/format.h>
+
 #include <cmath>
 
 
@@ -39,9 +41,8 @@ namespace dl7::json::detail {
         if (json.is_true()) return oss << u8"true";
         if (json.is_false()) return oss << u8"false";
         if (json.is_string()) return _write_string(oss, json.as_string());
-        if (json.is_integer()) return oss << json.as_integer();
-        if (json.is_unsigned()) return oss << json.as_unsigned();
-        if (json.is_decimal()) return _write_decimal(oss, json.as_decimal());
+        if (json.is_integer()) return oss << cl7::text::format::to_string(json.as_integer());
+        if (json.is_float()) return _write_float(oss, json.as_float());
 
         if (json.is_array())
         {
@@ -117,9 +118,9 @@ namespace dl7::json::detail {
         return oss << quote_char;
     }
 
-    cl7::u8osstream& Generator::_write_decimal(cl7::u8osstream& oss, decimal_t decimal) const
+    cl7::u8osstream& Generator::_write_float(cl7::u8osstream& oss, float_t number) const
     {
-        if (std::isnan(decimal) || std::isinf(decimal))
+        if (std::isnan(number) || std::isinf(number))
         {
             switch (_format.float_policy)
             {
@@ -128,13 +129,13 @@ namespace dl7::json::detail {
             case Format::FloatPolicy::ReplaceWithZero:
                 return oss << u8"0.0";
             case Format::FloatPolicy::EncodeAsString:
-                if (std::isnan(decimal))
+                if (std::isnan(number))
                     return oss << u8"\"NaN\"";
-                return oss << (std::signbit(decimal) ? u8"\"-Infinity\"" : u8"\"Infinity\"");
+                return oss << (std::signbit(number) ? u8"\"-Infinity\"" : u8"\"Infinity\"");
             }
         }
 
-        return oss << cl7::to_string(decimal);
+        return oss << cl7::text::format::to_string(number, 1);
     }
 
     void Generator::_start_item(cl7::u8osstream& oss, size_t depth) const

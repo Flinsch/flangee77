@@ -16,7 +16,7 @@ enum Symbol : syntax::SymbolID
     FALSE_CONSTANT,
 
     INTEGER_LITERAL,
-    DECIMAL_LITERAL,
+    FLOAT_LITERAL,
     STRING_LITERAL,
 
     IDENTIFIER,

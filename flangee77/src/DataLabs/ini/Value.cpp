@@ -2,6 +2,8 @@
 
 //#include "./IniWriter.h"
 
+#include <CoreLabs/text/format.h>
+
 #include <utility>
 
 
@@ -30,17 +32,17 @@ namespace dl7::ini {
     {
     }
 
-    Value::Value(float number) { _set_decimal(number); }
-    Value::Value(double number) { _set_decimal(number); }
-    Value::Value(long double number) { _set_decimal(static_cast<decimal_t>(number)); }
+    Value::Value(float number) { _set_float(static_cast<float_t>(number)); }
+    Value::Value(double number) { _set_float(static_cast<float_t>(number)); }
+    Value::Value(long double number) { _set_float(static_cast<float_t>(number)); }
 
-    Value::Value(signed number) { _set_integer(number); }
-    Value::Value(signed long number) { _set_integer(number); }
-    Value::Value(signed long long number) { _set_integer(number); }
+    Value::Value(signed number) { _set_integer(static_cast<integer_t>(number)); }
+    Value::Value(signed long number) { _set_integer(static_cast<integer_t>(number)); }
+    Value::Value(signed long long number) { _set_integer(static_cast<integer_t>(number)); }
 
-    Value::Value(unsigned number) { _set_unsigned(number); }
-    Value::Value(unsigned long number) { _set_unsigned(number); }
-    Value::Value(unsigned long long number) { _set_unsigned(number); }
+    Value::Value(unsigned number) { _set_integer(static_cast<integer_t>(number)); }
+    Value::Value(unsigned long number) { _set_integer(static_cast<integer_t>(number)); }
+    Value::Value(unsigned long long number) { _set_integer(static_cast<integer_t>(number)); }
 
     Value::Value(boolean_t boolean)
         : _value(boolean)
@@ -64,14 +66,11 @@ namespace dl7::ini {
         case Type::String:
             set_string(other.as_string());
             break;
-        case Type::Decimal:
-            set_decimal(other.as_decimal());
+        case Type::Float:
+            set_float(other.as_float());
             break;
         case Type::Integer:
             set_integer(other.as_integer());
-            break;
-        case Type::Unsigned:
-            set_unsigned(other.as_unsigned());
             break;
         case Type::Boolean:
             set_boolean(other.as_boolean());
@@ -128,19 +127,14 @@ namespace dl7::ini {
         return const_cast<string_t&>(std::as_const(*this).as_string()); // NOLINT(cppcoreguidelines-pro-type-const-cast)
     }
 
-    decimal_t Value::as_decimal() const
+    float_t Value::as_float() const
     {
-        return _as_decimal();
+        return _as_float();
     }
 
     integer_t Value::as_integer() const
     {
         return _as_integer();
-    }
-
-    unsigned_t Value::as_unsigned() const
-    {
-        return _as_unsigned();
     }
 
     boolean_t Value::as_boolean() const
@@ -184,14 +178,11 @@ namespace dl7::ini {
         case Type::String:
             set_string({});
             break;
-        case Type::Decimal:
-            set_decimal(decimal_t{});
+        case Type::Float:
+            set_float(float_t{});
             break;
         case Type::Integer:
             set_integer(integer_t{});
-            break;
-        case Type::Unsigned:
-            set_unsigned(unsigned_t{});
             break;
         case Type::Boolean:
             set_boolean(boolean_t{});
@@ -211,9 +202,8 @@ namespace dl7::ini {
     {
         if (is_undefined()) return {};
         if (is_string()) return as_string();
-        if (is_integer()) return cl7::to_string(as_integer());
-        if (is_unsigned()) return cl7::to_string(as_unsigned());
-        if (is_decimal()) return cl7::to_string(as_decimal());
+        if (is_integer()) return cl7::text::format::to_string<string_t>(as_integer());
+        if (is_float()) return cl7::text::format::to_string<string_t>(as_float(), 1);
         if (is_true()) return u8"true";
         if (is_false()) return u8"false";
 
@@ -224,10 +214,10 @@ namespace dl7::ini {
 
 
 
-    decimal_t Value::_as_decimal() const
+    float_t Value::_as_float() const
     {
-        assert(is_decimal());
-        return std::get<decimal_t>(_value);
+        assert(is_float());
+        return std::get<float_t>(_value);
     }
 
     integer_t Value::_as_integer() const
@@ -236,23 +226,12 @@ namespace dl7::ini {
         return std::get<integer_t>(_value);
     }
 
-    unsigned_t Value::_as_unsigned() const
-    {
-        assert(is_unsigned());
-        return std::get<unsigned_t>(_value);
-    }
-
-    void Value::_set_decimal(decimal_t number)
+    void Value::_set_float(float_t number)
     {
         _value = number;
     }
 
     void Value::_set_integer(integer_t number)
-    {
-        _value = number;
-    }
-
-    void Value::_set_unsigned(unsigned_t number)
     {
         _value = number;
     }

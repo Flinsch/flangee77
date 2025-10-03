@@ -32,7 +32,7 @@ private:
     cl7::u8osstream& _write_string(cl7::u8osstream& oss, cl7::u8string_view string) const;
     cl7::u8osstream& _write_string(cl7::u8osstream& oss, cl7::u8string_view string, cl7::u8char_t quote_char) const;
 
-    cl7::u8osstream& _write_decimal(cl7::u8osstream& oss, decimal_t decimal) const;
+    cl7::u8osstream& _write_float(cl7::u8osstream& oss, float_t number) const;
 
     void _start_item(cl7::u8osstream& oss, size_t depth) const;
     void _end_item(cl7::u8osstream& oss, size_t index, size_t count) const;

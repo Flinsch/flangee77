@@ -7,6 +7,7 @@
 
 #include <CoreLabs/text/codec/Encoder.h>
 #include <CoreLabs/text/codec/Decoder.h>
+#include <CoreLabs/text/format.h>
 
 #include <cmath>
 #include <algorithm>
@@ -120,9 +121,8 @@ namespace dl7::ini::detail {
         if (value.is_true()) return oss << u8"true";
         if (value.is_false()) return oss << u8"false";
         if (value.is_string()) return _write_string_value(oss, value.as_string());
-        if (value.is_integer()) return oss << value.as_integer();
-        if (value.is_unsigned()) return oss << value.as_unsigned();
-        if (value.is_decimal()) return _write_decimal_value(oss, value.as_decimal());
+        if (value.is_integer()) return oss << cl7::text::format::to_string(value.as_integer());
+        if (value.is_float()) return _write_float_value(oss, value.as_float());
 
         return oss;
     }
@@ -134,9 +134,9 @@ namespace dl7::ini::detail {
         return _write_string(oss, string, u8"\n\r\"'#;");
     }
 
-    cl7::u8osstream& Generator::_write_decimal_value(cl7::u8osstream& oss, decimal_t decimal) const
+    cl7::u8osstream& Generator::_write_float_value(cl7::u8osstream& oss, float_t number) const
     {
-        if (std::isnan(decimal) || std::isinf(decimal))
+        if (std::isnan(number) || std::isinf(number))
         {
             switch (_format.float_policy)
             {
@@ -146,13 +146,13 @@ namespace dl7::ini::detail {
                 return oss << u8"0.0";
             case Format::FloatPolicy::EncodeAsString:
                 return oss << (
-                    std::isnan(decimal) ? u8"\"NaN\"" :
-                    std::signbit(decimal) ? u8"\"-Infinity\"" : u8"\"Infinity\""
+                    std::isnan(number) ? u8"\"NaN\"" :
+                    std::signbit(number) ? u8"\"-Infinity\"" : u8"\"Infinity\""
                 );
             }
         }
 
-        return oss << cl7::to_string(decimal);
+        return oss << cl7::text::format::to_string(number, 1);
     }
 
 

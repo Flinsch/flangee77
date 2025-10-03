@@ -26,7 +26,7 @@ namespace dl7::json::detail {
         _terminal_symbols.add_literal( FALSE_CONSTANT, u8"false" );
 
         _terminal_symbols.add_custom( INTEGER_LITERAL, syntax::matchers::IntegerLiteralMatcher{} );
-        _terminal_symbols.add_custom( DECIMAL_LITERAL, syntax::matchers::FloatingPointLiteralMatcher{} );
+        _terminal_symbols.add_custom( FLOAT_LITERAL, syntax::matchers::FloatingPointLiteralMatcher{} );
         _terminal_symbols.add_custom( STRING_LITERAL, syntax::matchers::DoubleQuotedStringMatcher{} );
         _terminal_symbols.add_custom( STRING_LITERAL, syntax::matchers::SingleQuotedStringMatcher{} );
 

@@ -37,7 +37,7 @@ private:
     cl7::u8osstream& _write_value(cl7::u8osstream& oss, const Value& value) const;
 
     cl7::u8osstream& _write_string_value(cl7::u8osstream& oss, cl7::u8string_view string) const;
-    cl7::u8osstream& _write_decimal_value(cl7::u8osstream& oss, decimal_t decimal) const;
+    cl7::u8osstream& _write_float_value(cl7::u8osstream& oss, float_t number) const;
 
     cl7::u8osstream& _write_string(cl7::u8osstream& oss, cl7::u8string_view string, cl7::u8string_view invalid_chars) const;
     cl7::u8osstream& _write_quoted_string(cl7::u8osstream& oss, cl7::u8string_view string) const;

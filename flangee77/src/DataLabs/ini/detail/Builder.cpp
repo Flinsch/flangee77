@@ -197,15 +197,7 @@ namespace dl7::ini::detail {
         {
             std::istringstream iss{std::string{cl7::text::codec::reinterpret_utf8(string)}};
 
-            if (string[0] == u8'-' || string[0] == u8'+')
-            {
-                integer_t number = {};
-                iss >> number;
-                assert(!iss.bad());
-                return Value{number};
-            }
-
-            unsigned_t number = {};
+            integer_t number = {};
             iss >> number;
             assert(!iss.bad());
             return Value{number};
@@ -215,7 +207,7 @@ namespace dl7::ini::detail {
         {
             std::istringstream iss{std::string{cl7::text::codec::reinterpret_utf8(string)}};
 
-            decimal_t number = {};
+            float_t number = {};
             iss >> number;
             assert(!iss.bad());
             return Value{number};

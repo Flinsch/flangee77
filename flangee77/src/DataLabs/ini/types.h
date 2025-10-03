@@ -13,9 +13,8 @@ namespace dl7::ini {
 
 using undefined_t = std::nullptr_t;
 using string_t = cl7::u8string;
-using decimal_t = double;
+using float_t = double;
 using integer_t = int64_t;
-using unsigned_t = uint64_t;
 using boolean_t = bool;
 
 

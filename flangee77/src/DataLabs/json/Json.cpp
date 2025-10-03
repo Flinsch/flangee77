@@ -45,17 +45,17 @@ namespace dl7::json {
     {
     }
 
-    Json::Json(float number) { _set_decimal(number); }
-    Json::Json(double number) { _set_decimal(number); }
-    Json::Json(long double number) { _set_decimal(static_cast<decimal_t>(number)); }
+    Json::Json(float number) { _set_float(static_cast<float_t>(number)); }
+    Json::Json(double number) { _set_float(static_cast<float_t>(number)); }
+    Json::Json(long double number) { _set_float(static_cast<float_t>(number)); }
 
-    Json::Json(signed number) { _set_integer(number); }
-    Json::Json(signed long number) { _set_integer(number); }
-    Json::Json(signed long long number) { _set_integer(number); }
+    Json::Json(signed number) { _set_integer(static_cast<integer_t>(number)); }
+    Json::Json(signed long number) { _set_integer(static_cast<integer_t>(number)); }
+    Json::Json(signed long long number) { _set_integer(static_cast<integer_t>(number)); }
 
-    Json::Json(unsigned number) { _set_unsigned(number); }
-    Json::Json(unsigned long number) { _set_unsigned(number); }
-    Json::Json(unsigned long long number) { _set_unsigned(number); }
+    Json::Json(unsigned number) { _set_integer(static_cast<integer_t>(number)); }
+    Json::Json(unsigned long number) { _set_integer(static_cast<integer_t>(number)); }
+    Json::Json(unsigned long long number) { _set_integer(static_cast<integer_t>(number)); }
 
     Json::Json(boolean_t boolean)
         : _value(boolean)
@@ -85,14 +85,11 @@ namespace dl7::json {
         case Type::String:
             set_string(other.as_string());
             break;
-        case Type::Decimal:
-            set_decimal(other.as_decimal());
+        case Type::Float:
+            set_float(other.as_float());
             break;
         case Type::Integer:
             set_integer(other.as_integer());
-            break;
-        case Type::Unsigned:
-            set_unsigned(other.as_unsigned());
             break;
         case Type::Boolean:
             set_boolean(other.as_boolean());
@@ -173,19 +170,14 @@ namespace dl7::json {
         return const_cast<string_t&>(std::as_const(*this).as_string()); // NOLINT(cppcoreguidelines-pro-type-const-cast)
     }
 
-    decimal_t Json::as_decimal() const
+    float_t Json::as_float() const
     {
-        return _as_decimal();
+        return _as_float();
     }
 
     integer_t Json::as_integer() const
     {
         return _as_integer();
-    }
-
-    unsigned_t Json::as_unsigned() const
-    {
-        return _as_unsigned();
     }
 
     boolean_t Json::as_boolean() const
@@ -245,14 +237,11 @@ namespace dl7::json {
         case Type::String:
             set_string({});
             break;
-        case Type::Decimal:
-            set_decimal(decimal_t{});
+        case Type::Float:
+            set_float(float_t{});
             break;
         case Type::Integer:
             set_integer(integer_t{});
-            break;
-        case Type::Unsigned:
-            set_unsigned(unsigned_t{});
             break;
         case Type::Boolean:
             set_boolean(boolean_t{});
@@ -338,10 +327,10 @@ namespace dl7::json {
 
 
 
-    decimal_t Json::_as_decimal() const
+    float_t Json::_as_float() const
     {
-        assert(is_decimal());
-        return std::get<decimal_t>(_value);
+        assert(is_float());
+        return std::get<float_t>(_value);
     }
 
     integer_t Json::_as_integer() const
@@ -350,23 +339,12 @@ namespace dl7::json {
         return std::get<integer_t>(_value);
     }
 
-    unsigned_t Json::_as_unsigned() const
-    {
-        assert(is_unsigned());
-        return std::get<unsigned_t>(_value);
-    }
-
-    void Json::_set_decimal(decimal_t number)
+    void Json::_set_float(float_t number)
     {
         _value = number;
     }
 
     void Json::_set_integer(integer_t number)
-    {
-        _value = number;
-    }
-
-    void Json::_set_unsigned(unsigned_t number)
     {
         _value = number;
     }

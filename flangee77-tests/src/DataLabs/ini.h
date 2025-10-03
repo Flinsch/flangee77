@@ -40,8 +40,8 @@ TESTLABS_CASE( u8"DataLabs:  ini:  Value:  decimal" )
 {
     dl7::ini::Value value( 7.0 );
 
-    TESTLABS_CHECK( value.get_type() == dl7::ini::Value::Type::Decimal );
-    TESTLABS_CHECK( value.is_decimal() );
+    TESTLABS_CHECK( value.get_type() == dl7::ini::Value::Type::Float );
+    TESTLABS_CHECK( value.is_float() );
     TESTLABS_CHECK( value.is_number() );
     TESTLABS_CHECK_EQ( value.to_string(), u8"7.0" );
 }
@@ -54,16 +54,6 @@ TESTLABS_CASE( u8"DataLabs:  ini:  Value:  integer" )
     TESTLABS_CHECK( value.is_integer() );
     TESTLABS_CHECK( value.is_number() );
     TESTLABS_CHECK_EQ( value.to_string(), u8"-7" );
-}
-
-TESTLABS_CASE( u8"DataLabs:  ini:  Value:  unsigned" )
-{
-    dl7::ini::Value value( 7ul );
-
-    TESTLABS_CHECK( value.get_type() == dl7::ini::Value::Type::Unsigned );
-    TESTLABS_CHECK( value.is_unsigned() );
-    TESTLABS_CHECK( value.is_number() );
-    TESTLABS_CHECK_EQ( value.to_string(), u8"7" );
 }
 
 TESTLABS_CASE( u8"DataLabs:  ini:  Ini:  true" )

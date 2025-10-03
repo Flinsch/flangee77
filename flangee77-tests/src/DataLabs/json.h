@@ -65,8 +65,8 @@ TESTLABS_CASE( u8"DataLabs:  json:  Json:  decimal" )
 {
     dl7::json::Json json( 7.0 );
 
-    TESTLABS_CHECK( json.get_type() == dl7::json::Json::Type::Decimal );
-    TESTLABS_CHECK( json.is_decimal() );
+    TESTLABS_CHECK( json.get_type() == dl7::json::Json::Type::Float );
+    TESTLABS_CHECK( json.is_float() );
     TESTLABS_CHECK( json.is_number() );
     TESTLABS_CHECK( json.is_primitive() );
     TESTLABS_CHECK_EQ( json.to_string(), u8"7.0" );
@@ -81,17 +81,6 @@ TESTLABS_CASE( u8"DataLabs:  json:  Json:  integer" )
     TESTLABS_CHECK( json.is_number() );
     TESTLABS_CHECK( json.is_primitive() );
     TESTLABS_CHECK_EQ( json.to_string(), u8"-7" );
-}
-
-TESTLABS_CASE( u8"DataLabs:  json:  Json:  unsigned" )
-{
-    dl7::json::Json json( 7ul );
-
-    TESTLABS_CHECK( json.get_type() == dl7::json::Json::Type::Unsigned );
-    TESTLABS_CHECK( json.is_unsigned() );
-    TESTLABS_CHECK( json.is_number() );
-    TESTLABS_CHECK( json.is_primitive() );
-    TESTLABS_CHECK_EQ( json.to_string(), u8"7" );
 }
 
 TESTLABS_CASE( u8"DataLabs:  json:  Json:  true" )
@@ -344,7 +333,7 @@ TESTLABS_CASE( u8"DataLabs:  json:  JsonReader / JsonWriter" )
         { u8"-7", dl7::json::JsonWriter::DEFAULT_FORMAT },
         { u8"7", dl7::json::JsonWriter::DEFAULT_FORMAT },
         { u8"7.0", dl7::json::JsonWriter::DEFAULT_FORMAT },
-        { u8"7e+10", dl7::json::JsonWriter::DEFAULT_FORMAT },
+        { u8"7.0e+10", dl7::json::JsonWriter::DEFAULT_FORMAT },
         { u8"\"Hello World\"", dl7::json::JsonWriter::DEFAULT_FORMAT },
         { u8"[]", dl7::json::JsonWriter::DEFAULT_FORMAT },
         { u8"{}", dl7::json::JsonWriter::DEFAULT_FORMAT },
