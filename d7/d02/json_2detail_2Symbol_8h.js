@@ -5,7 +5,7 @@ var json_2detail_2Symbol_8h =
       [ "TRUE_CONSTANT", "d7/d02/json_2detail_2Symbol_8h.html#a2c11d14fb41b8a9aafd23de87817e989a7da289c327b2f071a70cb72f06861ebb", null ],
       [ "FALSE_CONSTANT", "d7/d02/json_2detail_2Symbol_8h.html#a2c11d14fb41b8a9aafd23de87817e989a2bcf3697d022339827c8a144e0377dc8", null ],
       [ "INTEGER_LITERAL", "d7/d02/json_2detail_2Symbol_8h.html#a2c11d14fb41b8a9aafd23de87817e989a77b89817e9fdd11bcdcac65b0f2e89dd", null ],
-      [ "DECIMAL_LITERAL", "d7/d02/json_2detail_2Symbol_8h.html#a2c11d14fb41b8a9aafd23de87817e989a01defdf75773e6428d6ab13ce433a4f1", null ],
+      [ "FLOAT_LITERAL", "d7/d02/json_2detail_2Symbol_8h.html#a2c11d14fb41b8a9aafd23de87817e989af5b8774266acf5dcc1c815daf716b77f", null ],
       [ "STRING_LITERAL", "d7/d02/json_2detail_2Symbol_8h.html#a2c11d14fb41b8a9aafd23de87817e989a980bc0e733ece8d265cae0f1bf9726d4", null ],
       [ "IDENTIFIER", "d7/d02/json_2detail_2Symbol_8h.html#a2c11d14fb41b8a9aafd23de87817e989a078f61d95ec05a0473eab01f674c40e1", null ],
       [ "LEFT_CURLY_BRACKET", "d7/d02/json_2detail_2Symbol_8h.html#a2c11d14fb41b8a9aafd23de87817e989aa57529caab966ddb18bbdc45d97438f9", null ],

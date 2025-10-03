@@ -1,7 +1,7 @@
 var classdl7_1_1ini_1_1detail_1_1Generator =
 [
     [ "Generator", "dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator.html#a5ae1dd3bbe821bad355450908a86ed3b", null ],
-    [ "_write_decimal_value", "dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator.html#aaa2a00678d60e4c9d73bf4cc1a7a9112", null ],
+    [ "_write_float_value", "dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator.html#ad6da446e861bb23a7adfbe98155b619a", null ],
     [ "_write_key", "dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator.html#a5b45c74b92820c5d37a78e7edc090234", null ],
     [ "_write_newline", "dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator.html#aa934a0a0474b61e9be100db2d95e9413", null ],
     [ "_write_properties", "dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator.html#a46c8fddc35e671de1d5d291c048bd09e", null ],
