@@ -791,7 +791,7 @@ struct FloatFormatOptions
      * minimum/maximum fractional digits.
      */
     inline
-    u8string adjust_fixed_precision(u8string_view s, unsigned min_precision, unsigned max_precision = MAX_FLOAT_PRECISION) { return adjust_fixed_precision<u8string>(s, min_precision, max_precision); }
+    u8string_view adjust_fixed_precision(u8string_view s, unsigned min_precision, unsigned max_precision = MAX_FLOAT_PRECISION) { return adjust_fixed_precision<u8string_view>(s, min_precision, max_precision); }
 
 
     /**
@@ -799,7 +799,7 @@ struct FloatFormatOptions
      * representation (in fixed or scientific notation).
      */
     template <std::floating_point Tval>
-    u8string to_string(Tval val, FloatFormatOptions options) { return to_string<u8string>(val, options); }
+    u8string_view to_string(Tval val, FloatFormatOptions options) { return to_string<u8string_view>(val, options); }
 
     /**
      * Converts a floating-point value to a UTF-8 encoded (decimal) string
@@ -808,7 +808,7 @@ struct FloatFormatOptions
      * You can specify the minimum and maximum number of fractional digits.
      */
     template <std::floating_point Tval>
-    u8string to_string(Tval val, unsigned min_precision = 0, unsigned max_precision = MAX_FLOAT_PRECISION) { return to_string<u8string>(val, min_precision, max_precision); }
+    u8string_view to_string(Tval val, unsigned min_precision = 0, unsigned max_precision = MAX_FLOAT_PRECISION) { return to_string<u8string_view>(val, min_precision, max_precision); }
 
     /**
      * Converts a floating-point value to a UTF-8 encoded (decimal) string
@@ -817,7 +817,7 @@ struct FloatFormatOptions
      * You can specify the minimum and maximum number of fractional digits.
      */
     template <std::floating_point Tval>
-    u8string to_fixed(Tval val, unsigned min_precision = 0, unsigned max_precision = MAX_FLOAT_PRECISION) { return to_fixed<u8string>(val, min_precision, max_precision); }
+    u8string_view to_fixed(Tval val, unsigned min_precision = 0, unsigned max_precision = MAX_FLOAT_PRECISION) { return to_fixed<u8string_view>(val, min_precision, max_precision); }
 
     /**
      * Converts a floating-point value to a UTF-8 encoded (decimal) string
@@ -826,14 +826,14 @@ struct FloatFormatOptions
      * You can specify the minimum and maximum number of fractional digits.
      */
     template <std::floating_point Tval>
-    u8string to_scientific(Tval val, unsigned min_precision = 0, unsigned max_precision = MAX_FLOAT_PRECISION) { return to_scientific<u8string>(val, min_precision, max_precision); }
+    u8string_view to_scientific(Tval val, unsigned min_precision = 0, unsigned max_precision = MAX_FLOAT_PRECISION) { return to_scientific<u8string_view>(val, min_precision, max_precision); }
 
 
     /**
      * Converts an integer value to a UTF-8 encoded (decimal) string representation.
      */
     template <std::integral Tval>
-    u8string to_string(Tval val, IntFormatOptions options) { return to_string<u8string>(val, options); }
+    u8string_view to_string(Tval val, IntFormatOptions options) { return to_string<u8string_view>(val, options); }
 
     /**
      * Converts an integer value to a UTF-8 encoded (decimal) string representation.
@@ -842,7 +842,7 @@ struct FloatFormatOptions
      * zeros will be added.
      */
     template <std::integral Tval>
-    u8string to_string(Tval val, unsigned zero_pad_width = 0) { return to_string<u8string>(val, zero_pad_width); }
+    u8string_view to_string(Tval val, unsigned zero_pad_width = 0) { return to_string<u8string_view>(val, zero_pad_width); }
 
 
     /**
@@ -850,7 +850,7 @@ struct FloatFormatOptions
      * representation.
      */
     template <std::integral Tval>
-    u8string to_hex(Tval val, IntFormatOptions options) { return to_hex<u8string>(val, options); }
+    u8string_view to_hex(Tval val, IntFormatOptions options) { return to_hex<u8string_view>(val, options); }
 
     /**
      * Converts an integer value to a UTF-8 encoded hexadecimal string
@@ -862,7 +862,7 @@ struct FloatFormatOptions
      * You can also control the hexadecimal letter case (e.g., "A1B2" vs. "a1b2").
      */
     template <std::integral Tval>
-    u8string to_hex(Tval val, unsigned zero_pad_width = 0, HexCase hex_case = HexCase::Upper) { return to_hex<u8string>(val, zero_pad_width, hex_case); }
+    u8string_view to_hex(Tval val, unsigned zero_pad_width = 0, HexCase hex_case = HexCase::Upper) { return to_hex<u8string_view>(val, zero_pad_width, hex_case); }
 
     /**
      * Converts an integer value to a UTF-8 encoded hexadecimal string
@@ -874,7 +874,7 @@ struct FloatFormatOptions
      * You can also control the hexadecimal letter case (e.g., "A1B2" vs. "a1b2").
      */
     template <std::integral Tval>
-    u8string to_0x_hex(Tval val, unsigned zero_pad_width = 0, HexCase hex_case = HexCase::Upper) { return to_0x_hex<u8string>(val, zero_pad_width, hex_case); }
+    u8string_view to_0x_hex(Tval val, unsigned zero_pad_width = 0, HexCase hex_case = HexCase::Upper) { return to_0x_hex<u8string_view>(val, zero_pad_width, hex_case); }
 
 
     /**
@@ -885,7 +885,7 @@ struct FloatFormatOptions
      * zeros will be added.
      */
     template <std::integral Tval>
-    u8string to_hex_lc(Tval val, unsigned zero_pad_width = 0) { return to_hex(val, zero_pad_width, HexCase::Lower); }
+    u8string_view to_hex_lc(Tval val, unsigned zero_pad_width = 0) { return to_hex(val, zero_pad_width, HexCase::Lower); }
 
     /**
      * Converts an integer value to a UTF-8 encoded uppercase hexadecimal string
@@ -895,7 +895,7 @@ struct FloatFormatOptions
      * zeros will be added.
      */
     template <std::integral Tval>
-    u8string to_hex_uc(Tval val, unsigned zero_pad_width = 0) { return to_hex(val, zero_pad_width, HexCase::Upper); }
+    u8string_view to_hex_uc(Tval val, unsigned zero_pad_width = 0) { return to_hex(val, zero_pad_width, HexCase::Upper); }
 
     /**
      * Converts an integer value to a UTF-8 encoded lowercase hexadecimal string
@@ -905,7 +905,7 @@ struct FloatFormatOptions
      * zeros will be added.
      */
     template <std::integral Tval>
-    u8string to_0x_hex_lc(Tval val, unsigned zero_pad_width = 0) { return to_0x_hex(val, zero_pad_width, HexCase::Lower); }
+    u8string_view to_0x_hex_lc(Tval val, unsigned zero_pad_width = 0) { return to_0x_hex(val, zero_pad_width, HexCase::Lower); }
 
     /**
      * Converts an integer value to a UTF-8 encoded uppercase hexadecimal string
@@ -915,14 +915,14 @@ struct FloatFormatOptions
      * zeros will be added.
      */
     template <std::integral Tval>
-    u8string to_0x_hex_uc(Tval val, unsigned zero_pad_width = 0) { return to_0x_hex(val, zero_pad_width, HexCase::Upper); }
+    u8string_view to_0x_hex_uc(Tval val, unsigned zero_pad_width = 0) { return to_0x_hex(val, zero_pad_width, HexCase::Upper); }
 
 
     /**
      * Converts an integer value to a UTF-8 encoded octal string representation.
      */
     template <std::integral Tval>
-    u8string to_octal(Tval val, IntFormatOptions options) { return to_octal<u8string>(val, options); }
+    u8string_view to_octal(Tval val, IntFormatOptions options) { return to_octal<u8string_view>(val, options); }
 
     /**
      * Converts an integer value to a UTF-8 encoded octal string representation.
@@ -931,7 +931,7 @@ struct FloatFormatOptions
      * zeros will be added.
      */
     template <std::integral Tval>
-    u8string to_octal(Tval val, unsigned zero_pad_width = 0) { return to_octal<u8string>(val, zero_pad_width); }
+    u8string_view to_octal(Tval val, unsigned zero_pad_width = 0) { return to_octal<u8string_view>(val, zero_pad_width); }
 
     /**
      * Converts an integer value to a UTF-8 encoded octal string representation,
@@ -941,14 +941,14 @@ struct FloatFormatOptions
      * zeros will be added.
      */
     template <std::integral Tval>
-    u8string to_0o_octal(Tval val, unsigned zero_pad_width = 0) { return to_0o_octal<u8string>(val, zero_pad_width); }
+    u8string_view to_0o_octal(Tval val, unsigned zero_pad_width = 0) { return to_0o_octal<u8string_view>(val, zero_pad_width); }
 
 
     /**
      * Converts an integer value to a UTF-8 encoded binary string representation.
      */
     template <std::integral Tval>
-    u8string to_binary(Tval val, IntFormatOptions options) { return to_binary<u8string>(val, options); }
+    u8string_view to_binary(Tval val, IntFormatOptions options) { return to_binary<u8string_view>(val, options); }
 
     /**
      * Converts an integer value to a UTF-8 encoded binary string representation.
@@ -957,7 +957,7 @@ struct FloatFormatOptions
      * zeros will be added.
      */
     template <std::integral Tval>
-    u8string to_binary(Tval val, unsigned zero_pad_width = 0) { return to_binary<u8string>(val, zero_pad_width); }
+    u8string_view to_binary(Tval val, unsigned zero_pad_width = 0) { return to_binary<u8string_view>(val, zero_pad_width); }
 
     /**
      * Converts an integer value to a UTF-8 encoded binary string representation,
@@ -967,7 +967,7 @@ struct FloatFormatOptions
      * zeros will be added.
      */
     template <std::integral Tval>
-    u8string to_0b_binary(Tval val, unsigned zero_pad_width = 0) { return to_0b_binary<u8string>(val, zero_pad_width); }
+    u8string_view to_0b_binary(Tval val, unsigned zero_pad_width = 0) { return to_0b_binary<u8string_view>(val, zero_pad_width); }
 
 
 

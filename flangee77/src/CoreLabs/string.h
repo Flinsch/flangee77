@@ -213,6 +213,30 @@ namespace detail {
 
 
 
+    template <any_char Tchar, any_string_view Tstring_view, typename Tstring = std::basic_string<typename std::remove_cvref_t<Tstring_view>::value_type, typename std::remove_cvref_t<Tstring_view>::traits_type>>
+        requires(
+            std::is_same_v<Tchar, typename std::remove_cvref_t<Tstring_view>::value_type> &&
+            std::is_same_v<Tchar, typename std::remove_cvref_t<Tstring>::value_type>)
+    Tstring operator+(const Tchar* s1, Tstring_view s2)
+    {
+        Tstring s{s1};
+        s.append(s2.data(), s2.size());
+        return s;
+    }
+
+    template <any_string_view Tstring_view, any_char Tchar, typename Tstring = std::basic_string<typename std::remove_cvref_t<Tstring_view>::value_type, typename std::remove_cvref_t<Tstring_view>::traits_type>>
+        requires(
+            std::is_same_v<Tchar, typename std::remove_cvref_t<Tstring_view>::value_type> &&
+            std::is_same_v<Tchar, typename std::remove_cvref_t<Tstring>::value_type>)
+    Tstring operator+(Tstring_view s1, const Tchar* s2)
+    {
+        Tstring s{s1};
+        s.append(s2);
+        return s;
+    }
+
+
+
 } // namespace cl7
 
 #endif // CL7_STRING_H
