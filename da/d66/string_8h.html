@@ -230,6 +230,15 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ab2bd81114bf5d2e15ded6359ee96e0bd" id="r_ab2bd81114bf5d2e15ded6359ee96e0bd"><td class="memTemplParams" colspan="2">template&lt;any_string Tstring&gt; </td></tr>
+<tr class="memitem:ab2bd81114bf5d2e15ded6359ee96e0bd"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#ab2bd81114bf5d2e15ded6359ee96e0bd">cl7::make_string</a> (Tstring &amp;&amp;s)</td></tr>
+<tr class="separator:ab2bd81114bf5d2e15ded6359ee96e0bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dfc7bfbf777a66b0ddbf24591ed2dad" id="r_a8dfc7bfbf777a66b0ddbf24591ed2dad"><td class="memTemplParams" colspan="2">template&lt;any_string_view Tstring_view&gt; </td></tr>
+<tr class="memitem:a8dfc7bfbf777a66b0ddbf24591ed2dad"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a8dfc7bfbf777a66b0ddbf24591ed2dad">cl7::make_string</a> (Tstring_view s)</td></tr>
+<tr class="separator:a8dfc7bfbf777a66b0ddbf24591ed2dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e6c59fa6a7b9d7acbb59c8ceebc5593" id="r_a7e6c59fa6a7b9d7acbb59c8ceebc5593"><td class="memTemplParams" colspan="2">template&lt;any_string_span Tstring_span&gt; </td></tr>
+<tr class="memitem:a7e6c59fa6a7b9d7acbb59c8ceebc5593"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a7e6c59fa6a7b9d7acbb59c8ceebc5593">cl7::make_string</a> (const Tstring_span &amp;s)</td></tr>
+<tr class="separator:a7e6c59fa6a7b9d7acbb59c8ceebc5593"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1297ab86ca58d276dfefc1c64d48021" id="r_af1297ab86ca58d276dfefc1c64d48021"><td class="memTemplParams" colspan="2">template&lt;any_string_or_view Tstring_or_view&gt; </td></tr>
 <tr class="memitem:af1297ab86ca58d276dfefc1c64d48021"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#af1297ab86ca58d276dfefc1c64d48021">cl7::make_string_view</a> (const Tstring_or_view &amp;s)</td></tr>
 <tr class="separator:af1297ab86ca58d276dfefc1c64d48021"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -259,6 +268,14 @@ Functions</h2></td></tr>
 <tr class="separator:aabdad3839cb5bf67f0e80d9691970602"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7e901ad619df54fb93a660b2d4d48a2" id="r_aa7e901ad619df54fb93a660b2d4d48a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#aa7e901ad619df54fb93a660b2d4d48a2">cl7::to_string</a> (long double val)</td></tr>
 <tr class="separator:aa7e901ad619df54fb93a660b2d4d48a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0e2146a55fb87ddd7ccd3166341bf39" id="r_ac0e2146a55fb87ddd7ccd3166341bf39"><td class="memTemplParams" colspan="2">template&lt;any_char Tchar, any_string_view Tstring_view, typename Tstring  = std::basic_string&lt;typename std::remove_cvref_t&lt;Tstring_view&gt;::value_type, typename std::remove_cvref_t&lt;Tstring_view&gt;::traits_type&gt;&gt; <br />
+requires ( std::is_same_v&lt;Tchar, typename std::remove_cvref_t&lt;Tstring_view&gt;::value_type&gt; &amp;&amp; std::is_same_v&lt;Tchar, typename std::remove_cvref_t&lt;Tstring&gt;::value_type&gt;)</td></tr>
+<tr class="memitem:ac0e2146a55fb87ddd7ccd3166341bf39"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#ac0e2146a55fb87ddd7ccd3166341bf39">cl7::operator+</a> (const Tchar *s1, Tstring_view s2)</td></tr>
+<tr class="separator:ac0e2146a55fb87ddd7ccd3166341bf39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d2be612ac2224fb419fccf262bcab25" id="r_a8d2be612ac2224fb419fccf262bcab25"><td class="memTemplParams" colspan="2">template&lt;any_string_view Tstring_view, any_char Tchar, typename Tstring  = std::basic_string&lt;typename std::remove_cvref_t&lt;Tstring_view&gt;::value_type, typename std::remove_cvref_t&lt;Tstring_view&gt;::traits_type&gt;&gt; <br />
+requires ( std::is_same_v&lt;Tchar, typename std::remove_cvref_t&lt;Tstring_view&gt;::value_type&gt; &amp;&amp; std::is_same_v&lt;Tchar, typename std::remove_cvref_t&lt;Tstring&gt;::value_type&gt;)</td></tr>
+<tr class="memitem:a8d2be612ac2224fb419fccf262bcab25"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a8d2be612ac2224fb419fccf262bcab25">cl7::operator+</a> (Tstring_view s1, const Tchar *s2)</td></tr>
+<tr class="separator:a8d2be612ac2224fb419fccf262bcab25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
