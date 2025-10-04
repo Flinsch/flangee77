@@ -161,6 +161,24 @@ namespace detail {
 
 
 
+    template <any_string Tstring>
+    auto make_string(Tstring&& s)
+    {
+        return std::forward<Tstring>(s);
+    }
+
+    template <any_string_view Tstring_view>
+    auto make_string(Tstring_view s)
+    {
+        return std::basic_string<typename Tstring_view::value_type, typename Tstring_view::traits_type>(s.data(), s.size());
+    }
+
+    template <any_string_span Tstring_span>
+    auto make_string(const Tstring_span& s)
+    {
+        return std::basic_string<typename Tstring_span::value_type>(s.data(), s.size());
+    }
+
     template <any_string_or_view Tstring_or_view>
     auto make_string_view(const Tstring_or_view& s)
     {
