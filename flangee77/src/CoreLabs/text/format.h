@@ -748,6 +748,9 @@ struct FloatFormatOptions
 
     /**
      * Converts an integer value to an octal string representation.
+     *
+     * You can specify the minimum width of the output string. If shorter, leading
+     * zeros will be added.
      */
     template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_octal(Tval val, unsigned zero_pad_width = 0)
@@ -758,6 +761,9 @@ struct FloatFormatOptions
     /**
      * Converts an integer value to an octal string representation, prefixed with
      * "0o".
+     *
+     * You can specify the minimum width of the output string. If shorter, leading
+     * zeros will be added.
      */
     template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_0o_octal(Tval val, unsigned zero_pad_width = 0)
@@ -768,6 +774,9 @@ struct FloatFormatOptions
 
     /**
      * Converts an integer value to a binary string representation.
+     *
+     * You can specify the minimum width of the output string. If shorter, leading
+     * zeros will be added.
      */
     template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_binary(Tval val, unsigned zero_pad_width = 0)
@@ -778,6 +787,9 @@ struct FloatFormatOptions
     /**
      * Converts an integer value to a binary string representation, prefixed with
      * "0b".
+     *
+     * You can specify the minimum width of the output string. If shorter, leading
+     * zeros will be added.
      */
     template <any_string_or_view Tstring_or_view, std::integral Tval>
     Tstring_or_view to_0b_binary(Tval val, unsigned zero_pad_width = 0)
