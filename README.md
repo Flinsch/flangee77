@@ -15,7 +15,7 @@ I mean, you _can_ use it, of course. It's here, under the [MIT License](https://
 But you would certainly be better off using other frameworks or even game engines, whether they are quadruple-A tier or free to use.
 
 Before we go further, let's get something straight: this isn't a game engine.
-If an engine is like a full-course meal&mdash;prepared, plated, and ready to serve&mdash;this framework is more like a set of some ingredients and a recipe book (a recipe book that is missing a few pages).
+If an engine is like a full-course meal (prepared, plated, and ready to serve), this framework is more like a set of some ingredients and a recipe book (a recipe book that is missing a few pages).
 An engine offers everything you need, often at the cost of flexibility, as you're bound by its design and philosophy.
 For most developers, that's perfectly fine: engines are powerful, polished, and cater to almost any need you'll ever have, at least indirectly via possible workarounds, if not directly.
 
@@ -65,8 +65,8 @@ In this case, yes: Welcome, my friend!
 
 ## API Reference and Source Code
 
-- Documentation &mdash; https://flinsch.github.io/flangee77
-- GitHub &mdash; https://github.com/flinsch/flangee77
+- Documentation: https://flinsch.github.io/flangee77
+- GitHub: https://github.com/flinsch/flangee77
 
 ## License
 
