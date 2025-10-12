@@ -51,7 +51,7 @@ The rules can (and should) be explicitly deviated from if the individual case &l
   - Friend declarations (or optionally at the very beginning of the class)
 
 The same order tends to apply to a `struct` as well, but with one crucial difference:
-variables are all public and come immediately after constants and type definitions&mdash;if there are any, otherwise variables are right at the beginning of the `struct`, in any case before possible constructors etc.
+variables are all public and come immediately after constants and type definitions; if there are any, otherwise variables are right at the beginning of the `struct`, in any case before possible constructors etc.
 
 A concrete example of (possible) exceptions to the above rules:
 Static factory methods should be placed immediately after the default and/or parameterized constructors, rather than grouped later with other &ldquo;regular&rdquo; static functions.
