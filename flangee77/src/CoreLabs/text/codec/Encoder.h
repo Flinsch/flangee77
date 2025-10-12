@@ -18,11 +18,11 @@ class Encoder
 {
 
 public:
-    using Codec = typename traits<Tchar>::codec_type;
-    using EncodeResult = typename Codec::EncodeResult;
+    using Codec = traits<Tchar>::codec_type;
+    using EncodeResult = Codec::EncodeResult;
 
-    using string_span_type = typename traits<Tchar>::string_span_type;
-    using string_type = typename traits<Tchar>::string_type;
+    using string_span_type = traits<Tchar>::string_span_type;
+    using string_type = traits<Tchar>::string_type;
 
 
 

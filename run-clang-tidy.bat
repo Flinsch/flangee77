@@ -36,6 +36,9 @@ if not exist "%BUILD_DIR%" (
 :: Define the output file name, e.g., using a timestamp for uniqueness.
 for /f "delims=" %%a in ('powershell -Command "Get-Date -Format 'yyyy-MM-dd_HH-mm-ss'"') do set "OUTPUT_FILE=clang-tidy-output-%%a.log"
 
+:: Dump configuration in the YAML format.
+clang-tidy --dump-config 2>&1 | powershell -Command "$input | Tee-Object -FilePath '%OUTPUT_FILE%' -Append"
+
 :: Run clang-tidy on all relevant files.
 for /r %%f in (*.cpp *.h) do (
     set "FILE=%%~nxf"
@@ -43,11 +46,11 @@ for /r %%f in (*.cpp *.h) do (
     echo !FILE! | findstr /i "CMakeCXXCompilerId.cpp" >nul
     if not errorlevel 1 (
         :: Skip CMake's generated files.
-        echo Skipping CMake file: %%f
+        ::echo Skipping CMake file: %%f
     ) else (
-        ::echo Running `clang-tidy -p "%BUILD_DIR%" "%%f"` ...
-        clang-tidy -p "%BUILD_DIR%" "%%f" 2>&1 | powershell -Command "$input | Tee-Object -FilePath '%OUTPUT_FILE%' -Append"
-    )
+        echo Running `clang-tidy -p "%BUILD_DIR%" "%%f"` ...
+        clang-tidy -p "%BUILD_DIR%" "%%f" 2>&1
+    ) | powershell -Command "$input | Tee-Object -FilePath '%OUTPUT_FILE%' -Append"
 )
 
 echo.

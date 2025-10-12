@@ -15,10 +15,10 @@ class Decoder
 {
 
 public:
-    using Codec = typename traits<Tchar>::codec_type;
-    using DecodeResult = typename Codec::DecodeResult;
+    using Codec = traits<Tchar>::codec_type;
+    using DecodeResult = Codec::DecodeResult;
 
-    using string_view_type = typename traits<Tchar>::string_view_type;
+    using string_view_type = traits<Tchar>::string_view_type;
 
 
 

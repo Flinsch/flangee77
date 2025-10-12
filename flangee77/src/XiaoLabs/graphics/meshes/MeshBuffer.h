@@ -91,7 +91,7 @@ protected:
     MeshBuffer(Type type, const CreateParams<TDesc>& params, unsigned stride)
         : Resource(params)
         , _type(type)
-        , _desc(params.desc)
+        , _desc(params.desc) // NOLINT(*-slicing)
         , _primitive_count(MeshUtil::calculate_primitive_count(params.desc.topology, params.desc.count))
         , _stride(stride)
         , _size(_stride * _desc.count)

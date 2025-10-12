@@ -22,7 +22,7 @@ class BufferedTokenReader
 
 public:
     using container_type = Tcontainer;
-    using iterator = typename container_type::const_iterator;
+    using iterator = container_type::const_iterator;
 
 
 

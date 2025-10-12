@@ -25,7 +25,7 @@ namespace pl7 {
     /**
      * Explicit constructor.
      */
-    Application::Application(ArgumentBag argument_bag)
+    Application::Application(ArgumentBag argument_bag) noexcept
         : _argument_bag(std::move(argument_bag))
     {
     }

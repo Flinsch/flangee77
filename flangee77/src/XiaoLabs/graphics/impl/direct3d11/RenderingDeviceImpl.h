@@ -161,13 +161,17 @@ private:
     /**
      * The set of features targeted by the Direct3D 11 device.
      */
-    D3D_FEATURE_LEVEL _d3d_feature_level;
+#if defined(_MSC_VER)
+    D3D_FEATURE_LEVEL _d3d_feature_level{D3D_FEATURE_LEVEL_1_0_CORE};
+#else
+    D3D_FEATURE_LEVEL _d3d_feature_level{static_cast<D3D_FEATURE_LEVEL>(0x1000)};
+#endif
 
     /**
      * The flag specifying whether the display supports tearing, a requirement of
      * variable refresh rate displays.
      */
-    bool _allow_tearing;
+    bool _allow_tearing{false};
 
     /**
      * The DXGI swap chain interface.

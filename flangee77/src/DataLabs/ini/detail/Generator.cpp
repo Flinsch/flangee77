@@ -145,10 +145,9 @@ namespace dl7::ini::detail {
             case Format::FloatPolicy::ReplaceWithZero:
                 return oss << u8"0.0";
             case Format::FloatPolicy::EncodeAsString:
-                return oss << (
-                    std::isnan(number) ? u8"\"NaN\"" :
-                    std::signbit(number) ? u8"\"-Infinity\"" : u8"\"Infinity\""
-                );
+                if (std::isnan(number))
+                    return oss << u8"\"NaN\"";
+                return oss << (std::signbit(number) ? u8"\"-Infinity\"" : u8"\"Infinity\"");
             }
         }
 

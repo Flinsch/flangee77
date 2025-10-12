@@ -19,9 +19,9 @@ class Analyzer
 {
 
 public:
-    using Codec = typename traits<Tchar>::codec_type;
+    using Codec = traits<Tchar>::codec_type;
 
-    using string_view_type = typename traits<Tchar>::string_view_type;
+    using string_view_type = traits<Tchar>::string_view_type;
 
 
 
@@ -64,7 +64,7 @@ public:
     template <typename Tchar_target>
     size_t determine_target_length(string_view_type input) const
     {
-        using TargetCodec = typename traits<Tchar_target>::codec_type;
+        using TargetCodec = traits<Tchar_target>::codec_type;
 
         if constexpr (!Codec::variable_length_encoding && !TargetCodec::variable_length_encoding)
         {

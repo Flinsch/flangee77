@@ -11,10 +11,9 @@
 
 TESTLABS_CASE( u8"ProgLabs:  ArgumentBag:  " )
 {
-    pl7::ArgumentBag argument_bag;
-
     std::vector<cl7::u8string_view> arguments = { u8"test", u8"--help", u8"-h", u8"--verbose", u8"-abc", u8"foobar", u8"--output-file=\"result.txt\"", u8"-o", u8"result.txt", u8"--f", u8"foo", u8"-f=bar", u8"-f", u8"\"foo bar\"", u8"\"--key=\\\"value\\\"\"" };
-    argument_bag = pl7::ArgumentBag( arguments );
+    pl7::ArgumentBag argument_bag = pl7::ArgumentBag( arguments );
+
     TESTLABS_CHECK_EQ( argument_bag.get_arguments().size(), 15 );
     TESTLABS_ASSERT_EQ( argument_bag.get_positional_arguments().size(), 2 );
     TESTLABS_CHECK_EQ( argument_bag.get_positional_arguments()[0], u8"test" );

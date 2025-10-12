@@ -22,14 +22,14 @@ public:
 
     Application() = delete;
 
-    Application(ArgumentBag argument_bag);
+    Application(ArgumentBag argument_bag) noexcept;
 
     Application(const Application&) = delete;
     Application& operator=(const Application&) = delete;
     Application(Application&&) = delete;
     Application& operator=(Application&&) = delete;
 
-    virtual ~Application() = default;
+    virtual ~Application() noexcept = default;
 
 
 

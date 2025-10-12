@@ -16,9 +16,9 @@ struct PointResult
 {
     using T = TVector::scalar_type;
 
-    T distance_squared;
-    TVector point;
-    T t;
+    T distance_squared{};
+    TVector point{};
+    T t{};
 
     PointResult(T distance_squared, const TVector& point, T t) noexcept : distance_squared(distance_squared), point(point), t(t) {}
     PointResult() noexcept = default;
@@ -27,7 +27,7 @@ struct PointResult
 template <std::floating_point T>
 struct PointResult_distance_squared
 {
-    T distance_squared;
+    T distance_squared{};
 
     template <class TVector>
         requires(std::same_as<T, typename TVector::scalar_type>)
@@ -38,7 +38,7 @@ struct PointResult_distance_squared
 template <class TVector>
 struct PointResult_point
 {
-    TVector point;
+    TVector point{};
 
     template <std::floating_point T>
         requires(std::same_as<T, typename TVector::scalar_type>)
@@ -49,7 +49,7 @@ struct PointResult_point
 template <std::floating_point T>
 struct PointResult_t
 {
-    T t;
+    T t{};
 
     template <class TVector>
         requires(std::same_as<T, typename TVector::scalar_type>)
@@ -67,8 +67,6 @@ struct PointResult_t
         } && std::same_as<T, typename TVector::scalar_type>)
     TPointResult point_line(const TVector& point, const TVector& origin, const TVector& direction)
     {
-        TPointResult result;
-
         const auto& P = point;
         const auto& A = origin;
 

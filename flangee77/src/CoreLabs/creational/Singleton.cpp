@@ -57,7 +57,7 @@ namespace cl7::creational {
         assert(singleton);
         assert(_stack);
 
-        return std::find(_stack->begin(), _stack->end(), singleton);
+        return std::ranges::find(*_stack, singleton);
     }
 
     void SingletonManager::destroy_all()

@@ -25,13 +25,25 @@ public:
     // Construction / Destruction
     // #############################################################################
 
-    ArgumentBag() = default;
+    // I don't know why, but we seem to have some false positives here.
+    // I added some `static_assert`s (see below), and it compiles perfectly.
+    // NOLINTNEXTLINE(bugprone-exception-escape)
+    ArgumentBag() noexcept = default;
 
     ArgumentBag(int argc, char* argv[]);
     ArgumentBag(int argc, wchar_t* argv[]);
     ArgumentBag(int argc, cl7::u8char_t* argv[]);
     ArgumentBag(const std::vector<cl7::u8string_view>& arguments);
     ArgumentBag(const std::vector<cl7::u8string>& arguments);
+
+    ArgumentBag(const ArgumentBag&) = default;
+    ArgumentBag& operator=(const ArgumentBag&) = default;
+    // NOLINTBEGIN(bugprone-exception-escape)
+    ArgumentBag(ArgumentBag&&) noexcept = default;
+    ArgumentBag& operator=(ArgumentBag&&) noexcept = default;
+    // NOLINTEND(bugprone-exception-escape)
+
+    ~ArgumentBag() noexcept = default;
 
 
 
@@ -144,6 +156,12 @@ private:
     std::unordered_map<cl7::u8string, std::vector<cl7::u8string>, cl7::string_hash<>, std::equal_to<>> _option_values;
 
 }; // class ArgumentBag
+
+
+
+static_assert(std::is_nothrow_default_constructible_v<ArgumentBag>);
+static_assert(std::is_nothrow_move_constructible_v<ArgumentBag>);
+static_assert(std::is_nothrow_move_assignable_v<ArgumentBag>);
 
 
 

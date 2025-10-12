@@ -15,12 +15,12 @@ class Transcoder
 {
 
 public:
-    using InputCodec = typename traits<Tchar_from>::codec_type;
-    using OutputCodec = typename traits<Tchar_to>::codec_type;
+    using InputCodec = traits<Tchar_from>::codec_type;
+    using OutputCodec = traits<Tchar_to>::codec_type;
 
-    using string_view_type = typename traits<Tchar_from>::string_view_type;
-    using string_span_type = typename traits<Tchar_to>::string_span_type;
-    using string_type = typename traits<Tchar_to>::string_type;
+    using string_view_type = traits<Tchar_from>::string_view_type;
+    using string_span_type = traits<Tchar_to>::string_span_type;
+    using string_type = traits<Tchar_to>::string_type;
 
 
 

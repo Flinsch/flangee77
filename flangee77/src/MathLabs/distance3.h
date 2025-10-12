@@ -22,9 +22,12 @@ template <std::floating_point T>
 struct ResultBase
 {
     /** The squared distance between two shapes. */
-    T distance_squared;
+    T distance_squared{};
     /** Calculates the distance between two shapes by taking the square root of the squared distance. */
     T distance() const { assert(distance_squared >= T{0}); return std::sqrt(distance_squared); }
+
+    ResultBase() noexcept = default;
+    ResultBase(T distance_squared) noexcept : distance_squared(distance_squared) {}
 };
 
 template <std::floating_point T>
@@ -32,9 +35,9 @@ struct PointResult
     : public ResultBase<T>
 {
     /** The closest point on the other shape. */
-    Vector3<T> point;
+    Vector3<T> point{};
     /** The parametric distance along the other shape. */
-    T t;
+    T t{};
 
     PointResult() noexcept = default;
     PointResult(T distance_squared, const Vector3<T>& point, T t) noexcept : ResultBase<T>(distance_squared), point(point), t(t) {}

@@ -64,7 +64,7 @@ public:
      * Adds a custom terminal symbol using a user-defined matching function.
      */
     template <PrefixMatcher TPrefixMatcher>
-    void add_custom(SymbolID id, typename CustomSymbol<TPrefixMatcher>::PrefixMatcher matcher)
+    void add_custom(SymbolID id, CustomSymbol<TPrefixMatcher>::PrefixMatcher matcher)
     {
         add(std::make_unique<CustomSymbol<TPrefixMatcher>>(id, matcher));
     }

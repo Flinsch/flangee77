@@ -26,8 +26,8 @@ public:
     using allocator_type = Allocator;
     using reference = value_type&;
     using const_reference = const value_type&;
-    using pointer = typename std::allocator_traits<allocator_type>::pointer;
-    using const_pointer = typename std::allocator_traits<allocator_type>::const_pointer;
+    using pointer = std::allocator_traits<allocator_type>::pointer;
+    using const_pointer = std::allocator_traits<allocator_type>::const_pointer;
 
     using vector_type = std::vector<std::pair<Key, T>, Allocator>;
 
@@ -83,7 +83,7 @@ public:
         _rebuild_lookup_table();
     }
 
-    ordered_map(ordered_map&& other) //  NOLINT(*-noexcept-move-*)
+    ordered_map(ordered_map&& other) noexcept(false) // NOLINT(*-noexcept-move-*)
         : ordered_map(std::move(other), Allocator())
     {}
 
@@ -116,7 +116,7 @@ public:
         return *this;
     }
 
-    ordered_map& operator=(ordered_map&& other) // NOLINT(*-noexcept-move-*)
+    ordered_map& operator=(ordered_map&& other) noexcept(false) // NOLINT(*-noexcept-move-*)
     {
         _vector = std::move(other._vector);
         _compare.comp = other._compare.comp;
@@ -134,7 +134,7 @@ public:
 
     ~ordered_map() noexcept = default;
 
-    void swap(ordered_map& other) // NOLINT(*-noexcept-swap)
+    void swap(ordered_map& other) noexcept(false) // NOLINT(*-noexcept-swap)
     {
         _vector.swap(other._vector);
         std::swap(_compare.comp, other._compare.comp);
@@ -284,7 +284,7 @@ public:
     /** Erases elements. */
     iterator erase(iterator pos)
     {
-        const size_t index = reinterpret_cast<typename vector_type::value_type*>(pos.operator->()) - _vector.data();
+        const size_t index = reinterpret_cast<vector_type::value_type*>(pos.operator->()) - _vector.data();
         if (index >= _vector.size())
             return end();
         _erase(index);
@@ -294,7 +294,7 @@ public:
     /** Erases elements. */
     iterator erase(const_iterator pos)
     {
-        const size_t index = reinterpret_cast<const typename vector_type::value_type*>(pos.operator->()) - _vector.data();
+        const size_t index = reinterpret_cast<const vector_type::value_type*>(pos.operator->()) - _vector.data();
         if (index >= _vector.size())
             return end();
         _erase(index);
@@ -466,27 +466,27 @@ private:
 
 
     template <typename T_>
-    std::pair<iterator, bool> _update_and_return_iterator_false(typename table_type::iterator it, T_&& value)
+    std::pair<iterator, bool> _update_and_return_iterator_false(const table_type::iterator& it, T_&& value)
     {
         _vector[it->index].second = std::forward<T_>(value);
         return {{_vector.data() + it->index}, false};
     }
 
-    std::pair<iterator, bool> _map_after_insert_and_return_iterator_true(typename table_type::iterator it)
+    std::pair<iterator, bool> _map_after_insert_and_return_iterator_true(table_type::iterator it)
     {
-        _map_after_insert(it);
+        _map_after_insert(std::move(it));
         return {{_vector.data() + _vector.size() - 1}, true};
     }
 
-    T& _map_after_insert_and_return_reference(typename table_type::iterator it)
+    T& _map_after_insert_and_return_reference(table_type::iterator it)
     {
-        _map_after_insert(it);
+        _map_after_insert(std::move(it));
         return _vector.back().second;
     }
 
-    void _map_after_insert(typename table_type::iterator it)
+    void _map_after_insert(table_type::iterator it)
     {
-        _table.insert(it, Lookup(0, _vector.size() - 1));
+        _table.insert(std::move(it), Lookup(0, _vector.size() - 1));
         assert(_vector.size() == _table.size());
     }
 

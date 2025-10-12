@@ -33,7 +33,7 @@ public:
         int priority;
     };
 
-    void register_backend(cl7::u8string_view driver_name, std::initializer_list<cl7::u8string_view> aliases, Factory factory, int priority)
+    void register_backend(cl7::u8string_view driver_name, std::initializer_list<cl7::u8string_view> aliases, const Factory& factory, int priority)
     {
         assert(!_resolved);
         assert(!_entries.full());

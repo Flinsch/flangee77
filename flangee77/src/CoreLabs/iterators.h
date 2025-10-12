@@ -77,7 +77,7 @@ public:
     using pointer = const Titem*;
 
     const_ptr_forward_iterator() = default;
-    const_ptr_forward_iterator(Tcontainer::const_iterator it) : _it(it) {}
+    const_ptr_forward_iterator(Tcontainer::const_iterator it) : _it(std::move(it)) {}
 
     friend void swap(const_ptr_forward_iterator& a, const_ptr_forward_iterator& b) noexcept { a._it.swap(b._it); }
 

@@ -377,7 +377,7 @@ struct FloatFormatOptions
 
         // Now parse the exponent, increase it by 1,
         // and write it back to our buffer.
-        signed exp = parse_int<signed>(sv.substr(fix_len + 1));
+        auto exp = parse_int<signed>(sv.substr(fix_len + 1));
         ++exp;
         sv_tmp = to_string<Tstring_view>(exp, {.force_sign = true, .zero_pad_width = 2});
         std::memcpy(buffer + fix_len + 1, sv_tmp.data(), sv_tmp.size());
