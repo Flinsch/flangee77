@@ -125,9 +125,9 @@ requires (std::derived_from&lt;TTerminalSymbol, <a class="el" href="../../d1/d21
 <tr class="separator:adbea3b0d276993cf5a20c952a1b85aa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad84e5bf3ad67662936bf639591458602" id="r_ad84e5bf3ad67662936bf639591458602"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#ad84e5bf3ad67662936bf639591458602">add_pattern</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a> id, <a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> literal_prefix, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options=std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags=std::regex_constants::match_default)</td></tr>
 <tr class="separator:ad84e5bf3ad67662936bf639591458602"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd5f8fe755cf91ee0b6b17fbf73f03f5" id="r_acd5f8fe755cf91ee0b6b17fbf73f03f5"><td class="memTemplParams" colspan="2">template&lt;PrefixMatcher TPrefixMatcher&gt; </td></tr>
-<tr class="memitem:acd5f8fe755cf91ee0b6b17fbf73f03f5"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#acd5f8fe755cf91ee0b6b17fbf73f03f5">add_custom</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a> id, typename <a class="el" href="../../d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html">CustomSymbol</a>&lt; TPrefixMatcher &gt;::PrefixMatcher matcher)</td></tr>
-<tr class="separator:acd5f8fe755cf91ee0b6b17fbf73f03f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbd9c9ec52c7e1958bda24650dad8f16" id="r_acbd9c9ec52c7e1958bda24650dad8f16"><td class="memTemplParams" colspan="2">template&lt;PrefixMatcher TPrefixMatcher&gt; </td></tr>
+<tr class="memitem:acbd9c9ec52c7e1958bda24650dad8f16"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#acbd9c9ec52c7e1958bda24650dad8f16">add_custom</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a> id, <a class="el" href="../../d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html">CustomSymbol</a>&lt; TPrefixMatcher &gt;::PrefixMatcher matcher)</td></tr>
+<tr class="separator:acbd9c9ec52c7e1958bda24650dad8f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7876e482bc24de823857b1f3bce39945" id="r_a7876e482bc24de823857b1f3bce39945"><td class="memTemplParams" colspan="2">template&lt;PrefixMatcher TPrefixMatcher&gt; </td></tr>
 <tr class="memitem:a7876e482bc24de823857b1f3bce39945"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#a7876e482bc24de823857b1f3bce39945">add_custom</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a> id, TPrefixMatcher matcher)</td></tr>
 <tr class="separator:a7876e482bc24de823857b1f3bce39945"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -220,8 +220,47 @@ requires (std::derived_from&lt;TTerminalSymbol, <a class="el" href="../../d1/d21
 
 </div>
 </div>
+<a id="acbd9c9ec52c7e1958bda24650dad8f16" name="acbd9c9ec52c7e1958bda24650dad8f16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbd9c9ec52c7e1958bda24650dad8f16">&#9670;&#160;</a></span>add_custom() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;PrefixMatcher TPrefixMatcher&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dl7::syntax::TerminalSymbolCollection::add_custom </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html">CustomSymbol</a>&lt; TPrefixMatcher &gt;::PrefixMatcher&#160;</td>
+          <td class="paramname"><em>matcher</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Adds a custom terminal symbol using a user-defined matching function. </p>
+
+</div>
+</div>
 <a id="a7876e482bc24de823857b1f3bce39945" name="a7876e482bc24de823857b1f3bce39945"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7876e482bc24de823857b1f3bce39945">&#9670;&#160;</a></span>add_custom() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7876e482bc24de823857b1f3bce39945">&#9670;&#160;</a></span>add_custom() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -241,45 +280,6 @@ template&lt;PrefixMatcher TPrefixMatcher&gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">TPrefixMatcher&#160;</td>
-          <td class="paramname"><em>matcher</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Adds a custom terminal symbol using a user-defined matching function. </p>
-
-</div>
-</div>
-<a id="acd5f8fe755cf91ee0b6b17fbf73f03f5" name="acd5f8fe755cf91ee0b6b17fbf73f03f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd5f8fe755cf91ee0b6b17fbf73f03f5">&#9670;&#160;</a></span>add_custom() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;PrefixMatcher TPrefixMatcher&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void dl7::syntax::TerminalSymbolCollection::add_custom </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a>&#160;</td>
-          <td class="paramname"><em>id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">typename <a class="el" href="../../d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html">CustomSymbol</a>&lt; TPrefixMatcher &gt;::PrefixMatcher&#160;</td>
           <td class="paramname"><em>matcher</em>&#160;</td>
         </tr>
         <tr>

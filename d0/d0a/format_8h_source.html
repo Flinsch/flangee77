@@ -454,7 +454,7 @@ $(document).ready(function(){initNavTree('d0/d0a/format_8h_source.html','../../'
 <div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span> </div>
 <div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>        <span class="comment">// Now parse the exponent, increase it by 1,</span></div>
 <div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>        <span class="comment">// and write it back to our buffer.</span></div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>        <span class="keywordtype">signed</span> exp = parse_int&lt;signed&gt;(sv.substr(fix_len + 1));</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>        <span class="keyword">auto</span> exp = parse_int&lt;signed&gt;(sv.substr(fix_len + 1));</div>
 <div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>        ++exp;</div>
 <div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>        sv_tmp = to_string&lt;Tstring_view&gt;(exp, {.force_sign = <span class="keyword">true</span>, .zero_pad_width = 2});</div>
 <div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>        std::memcpy(buffer + fix_len + 1, sv_tmp.data(), sv_tmp.size());</div>
