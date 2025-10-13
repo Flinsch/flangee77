@@ -428,7 +428,6 @@ var hierarchy =
     [ "dl7::ini::Section", "dc/d3a/classdl7_1_1ini_1_1Section.html", [
       [ "dl7::ini::Ini", "da/d48/classdl7_1_1ini_1_1Ini.html", null ]
     ] ],
-    [ "cl7::text::codec::Decoder< Tchar, TDefaultErrorHandler >::sentinel", "d6/df5/classcl7_1_1text_1_1codec_1_1Decoder_1_1sentinel.html", null ],
     [ "tl7::TestSuite::Settings", "db/dbc/structtl7_1_1TestSuite_1_1Settings.html", null ],
     [ "xl7::graphics::shaders::ShaderCode", "d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html", null ],
     [ "tl7::Signature", "d1/d32/structtl7_1_1Signature.html", [

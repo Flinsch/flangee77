@@ -1,7 +1,6 @@
 var classcl7_1_1text_1_1codec_1_1Decoder =
 [
     [ "iterator", "dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html", "dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator" ],
-    [ "sentinel", "d6/df5/classcl7_1_1text_1_1codec_1_1Decoder_1_1sentinel.html", null ],
     [ "Codec", "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#a3b9709a5130f8af95e2e3373f55b882c", null ],
     [ "DecodeResult", "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#adc0c21b12819af3b78d012a02acc1f47", null ],
     [ "string_view_type", "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#a0410cc7cfd0e143c80d932d0ab8c54c0", null ],
