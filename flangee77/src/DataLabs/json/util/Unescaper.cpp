@@ -73,7 +73,7 @@ namespace dl7::json::util {
         cl7::u16char_t utf16_buffer[2];
 
         cl7::text::codec::Decoder<cl7::u8char_t>::iterator it{json_string, &encoding_error_handler};
-        cl7::text::codec::Decoder<cl7::u8char_t>::sentinel end;
+        cl7::text::codec::Decoder<cl7::u8char_t>::iterator end;
 
         for (; it != end; ++it)
         {

@@ -316,7 +316,7 @@ namespace dl7::ini::detail {
 
             default:
                 for (cl7::text::codec::Decoder<cl7::u8char_t>::iterator it{token_reader.consume_token().lexeme, &encoding_error_handler};
-                    it != cl7::text::codec::Decoder<cl7::u8char_t>::sentinel{};
+                    it != cl7::text::codec::Decoder<cl7::u8char_t>::iterator{};
                     ++it)
                 {
                     const auto codepoint = *it;

@@ -218,7 +218,7 @@ namespace dl7::ini::detail {
         cl7::u8char_t buffer[4];
 
         cl7::text::codec::Decoder<cl7::u8char_t>::iterator it{string, &encoding_error_handler};
-        cl7::text::codec::Decoder<cl7::u8char_t>::sentinel end;
+        cl7::text::codec::Decoder<cl7::u8char_t>::iterator end;
 
         for (; it != end; ++it)
         {

@@ -22,8 +22,6 @@ public:
 
 
 
-    class sentinel {};
-
     class iterator
     {
     public:
@@ -64,8 +62,7 @@ public:
         iterator& operator++() { _advance_and_decode(); return *this; }
         iterator operator++(int) { iterator it = *this; ++(*this); return it; }
 
-        friend bool operator==(const iterator& a, const iterator& b) noexcept { return a._input == b._input && a._pos == b._pos; };
-        friend bool operator==(const iterator& a, sentinel b) noexcept { return a._pos >= a._input.size(); }
+        friend bool operator==(const iterator& a, const iterator& b) noexcept { return (a._input == b._input && a._pos == b._pos) || (a._pos >= a._input.size() && b._pos >= b._input.size()); }
 
         reference operator*() const { return _decode_result.codepoint; }
         pointer operator->() const { return &_decode_result.codepoint; }
