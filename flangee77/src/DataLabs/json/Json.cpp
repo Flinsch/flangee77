@@ -201,21 +201,6 @@ namespace dl7::json {
         _value = std::make_unique<array_t>(std::move(array));
     }
 
-    void Json::set_string(string_t string)
-    {
-        _value = std::move(string);
-    }
-
-    void Json::set_string(std::basic_string_view<string_t::value_type> string)
-    {
-        _value = string_t{string};
-    }
-
-    void Json::set_string(const string_t::value_type* string)
-    {
-        _value = string_t{string};
-    }
-
     void Json::set_boolean(boolean_t boolean)
     {
         _value = boolean;
@@ -235,7 +220,7 @@ namespace dl7::json {
             set_array({});
             break;
         case Type::String:
-            set_string({});
+            set_string(string_t{});
             break;
         case Type::Float:
             set_float(float_t{});
@@ -337,6 +322,11 @@ namespace dl7::json {
     {
         assert(is_integer());
         return std::get<integer_t>(_value);
+    }
+
+    void Json::_set_string(string_t&& string)
+    {
+        _value = std::move(string);
     }
 
     void Json::_set_float(float_t number)

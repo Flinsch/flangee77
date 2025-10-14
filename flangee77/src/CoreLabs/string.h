@@ -161,6 +161,20 @@ namespace detail {
 
 
 
+    template <typename Tstring, typename T>
+    struct is_string_constructible
+        : std::bool_constant<is_any_string<Tstring>::value && std::constructible_from<Tstring, T>>
+    {
+    };
+
+    template <typename Tstring, typename T>
+    inline constexpr bool is_string_constructible_v = is_string_constructible<Tstring, T>::value;
+
+    template <typename Tstring, typename T>
+    concept string_constructible = is_string_constructible_v<Tstring, T>;
+
+
+
     template <any_string Tstring>
     auto make_string(Tstring&& s)
     {

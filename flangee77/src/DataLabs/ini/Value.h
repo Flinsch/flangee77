@@ -108,16 +108,14 @@ public:
 
 
     void set_undefined();
-    void set_string(string_t string);
-    void set_string(std::basic_string_view<string_t::value_type> string);
-    void set_string(const string_t::value_type* string);
 
-    template <typename Tnumber>
-        requires(std::is_nothrow_convertible_v<Tnumber, float_t>)
+    template <cl7::string_constructible<string_t> Tstring>
+    void set_string(Tstring&& string) { _set_string(string_t(std::forward<Tstring>(string))); }
+
+    template <std::convertible_to<float_t> Tnumber>
     void set_float(Tnumber number) { _set_float(static_cast<float_t>(number)); }
 
-    template <typename Tnumber>
-        requires(std::is_nothrow_convertible_v<Tnumber, integer_t>)
+    template <std::convertible_to<integer_t> Tnumber>
     void set_integer(Tnumber number) { _set_integer(static_cast<integer_t>(number)); }
 
     void set_boolean(boolean_t boolean);
@@ -141,6 +139,8 @@ public:
 private:
     float_t _as_float() const;
     integer_t _as_integer() const;
+
+    void _set_string(string_t&& string);
 
     void _set_float(float_t number);
     void _set_integer(integer_t number);

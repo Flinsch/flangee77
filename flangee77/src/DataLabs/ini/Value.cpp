@@ -148,21 +148,6 @@ namespace dl7::ini {
         _value = nullptr;
     }
 
-    void Value::set_string(string_t string)
-    {
-        _value = std::move(string);
-    }
-
-    void Value::set_string(std::basic_string_view<string_t::value_type> string)
-    {
-        _value = string_t{string};
-    }
-
-    void Value::set_string(const string_t::value_type* string)
-    {
-        _value = string_t{string};
-    }
-
     void Value::set_boolean(boolean_t boolean)
     {
         _value = boolean;
@@ -176,7 +161,7 @@ namespace dl7::ini {
             set_undefined();
             break;
         case Type::String:
-            set_string({});
+            set_string(string_t{});
             break;
         case Type::Float:
             set_float(float_t{});
@@ -224,6 +209,11 @@ namespace dl7::ini {
     {
         assert(is_integer());
         return std::get<integer_t>(_value);
+    }
+
+    void Value::_set_string(string_t&& string)
+    {
+        _value = std::move(string);
     }
 
     void Value::_set_float(float_t number)
