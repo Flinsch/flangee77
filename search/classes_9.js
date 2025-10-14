@@ -30,10 +30,11 @@ var searchData=
   ['is_5fany_5fstring_5for_5fview_27',['is_any_string_or_view',['../da/d88/structcl7_1_1is__any__string__or__view.html',1,'cl7']]],
   ['is_5fany_5fstring_5fspan_28',['is_any_string_span',['../df/d3e/structcl7_1_1is__any__string__span.html',1,'cl7']]],
   ['is_5fany_5fstring_5fview_29',['is_any_string_view',['../d9/d41/structcl7_1_1is__any__string__view.html',1,'cl7']]],
-  ['ishaderfactory_30',['IShaderFactory',['../d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory.html',1,'xl7::graphics::shaders']]],
-  ['istatefactory_31',['IStateFactory',['../dc/da2/classxl7_1_1graphics_1_1states_1_1IStateFactory.html',1,'xl7::graphics::states']]],
-  ['isurfacefactory_32',['ISurfaceFactory',['../dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html',1,'xl7::graphics::surfaces']]],
-  ['iterator_33',['iterator',['../dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html',1,'cl7::text::codec::Decoder']]],
-  ['itexturefactory_34',['ITextureFactory',['../d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html',1,'xl7::graphics::textures']]],
-  ['iwritable_35',['IWritable',['../df/db8/classcl7_1_1io_1_1IWritable.html',1,'cl7::io']]]
+  ['is_5fstring_5fconstructible_30',['is_string_constructible',['../d9/d09/structcl7_1_1is__string__constructible.html',1,'cl7']]],
+  ['ishaderfactory_31',['IShaderFactory',['../d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory.html',1,'xl7::graphics::shaders']]],
+  ['istatefactory_32',['IStateFactory',['../dc/da2/classxl7_1_1graphics_1_1states_1_1IStateFactory.html',1,'xl7::graphics::states']]],
+  ['isurfacefactory_33',['ISurfaceFactory',['../dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html',1,'xl7::graphics::surfaces']]],
+  ['iterator_34',['iterator',['../dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html',1,'cl7::text::codec::Decoder']]],
+  ['itexturefactory_35',['ITextureFactory',['../d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html',1,'xl7::graphics::textures']]],
+  ['iwritable_36',['IWritable',['../df/db8/classcl7_1_1io_1_1IWritable.html',1,'cl7::io']]]
 ];

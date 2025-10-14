@@ -97,6 +97,7 @@ var annotated_dup =
       [ "is_any_string_or_view", "da/d88/structcl7_1_1is__any__string__or__view.html", null ],
       [ "is_any_string_span", "df/d3e/structcl7_1_1is__any__string__span.html", null ],
       [ "is_any_string_view", "d9/d41/structcl7_1_1is__any__string__view.html", null ],
+      [ "is_string_constructible", "d9/d09/structcl7_1_1is__string__constructible.html", null ],
       [ "ordered_map", "dd/d42/classcl7_1_1ordered__map.html", "dd/d42/classcl7_1_1ordered__map" ],
       [ "static_vector", "da/d4e/classcl7_1_1static__vector.html", "da/d4e/classcl7_1_1static__vector" ],
       [ "string_hash", "d0/dbc/structcl7_1_1string__hash.html", "d0/dbc/structcl7_1_1string__hash" ],

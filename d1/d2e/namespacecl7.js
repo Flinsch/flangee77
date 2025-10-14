@@ -34,6 +34,7 @@ var namespacecl7 =
     [ "is_any_string_or_view", "da/d88/structcl7_1_1is__any__string__or__view.html", null ],
     [ "is_any_string_span", "df/d3e/structcl7_1_1is__any__string__span.html", null ],
     [ "is_any_string_view", "d9/d41/structcl7_1_1is__any__string__view.html", null ],
+    [ "is_string_constructible", "d9/d09/structcl7_1_1is__string__constructible.html", null ],
     [ "ordered_map", "dd/d42/classcl7_1_1ordered__map.html", "dd/d42/classcl7_1_1ordered__map" ],
     [ "static_vector", "da/d4e/classcl7_1_1static__vector.html", "da/d4e/classcl7_1_1static__vector" ],
     [ "string_hash", "d0/dbc/structcl7_1_1string__hash.html", "d0/dbc/structcl7_1_1string__hash" ],
@@ -47,6 +48,7 @@ var namespacecl7 =
     [ "any_string_span", "d0/d16/conceptcl7_1_1any__string__span.html", null ],
     [ "any_string_or_view", "d5/d50/conceptcl7_1_1any__string__or__view.html", null ],
     [ "any_string_or_span", "d4/d46/conceptcl7_1_1any__string__or__span.html", null ],
+    [ "string_constructible", "d2/d5f/conceptcl7_1_1string__constructible.html", null ],
     [ "achar_t", "d1/d2e/namespacecl7.html#ad1ff9f016a5e9eeaa76b7c7867e41b0b", null ],
     [ "aisstream", "d1/d2e/namespacecl7.html#accaa3db9ac08cc8dee2b7952767d17c6", null ],
     [ "aosstream", "d1/d2e/namespacecl7.html#a0cd64f3ba2501ab9645adea140c8e732", null ],
@@ -113,5 +115,6 @@ var namespacecl7 =
     [ "is_any_string_or_view_v", "d1/d2e/namespacecl7.html#ab13b6fc404191d4eddf7d686d28f2c8a", null ],
     [ "is_any_string_span_v", "d1/d2e/namespacecl7.html#ab61122568c07e473c3f3fdaf86275ef1", null ],
     [ "is_any_string_v", "d1/d2e/namespacecl7.html#a8a0d1f5cadc6e90a26826450cab9d21f", null ],
-    [ "is_any_string_view_v", "d1/d2e/namespacecl7.html#a6310d2a7d8b0d13e7ebc2111c543a080", null ]
+    [ "is_any_string_view_v", "d1/d2e/namespacecl7.html#a6310d2a7d8b0d13e7ebc2111c543a080", null ],
+    [ "is_string_constructible_v", "d1/d2e/namespacecl7.html#a2b7716202f0260d0a155173ff6811aac", null ]
 ];

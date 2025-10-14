@@ -36,5 +36,6 @@ var searchData=
   ['is_5fprofiled_33',['is_profiled',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a4d4b3b9e1e4d0830a36195a05cc78987',1,'cl7::profiling::Sample']]],
   ['is_5fset_34',['is_set',['../d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html#a922843bed671cbf575f97c149a869a13',1,'xl7::graphics::pipeline::AbstractPipelineObject::StateArray::Entry']]],
   ['is_5fstenciling_5fenabled_35',['is_stenciling_enabled',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a85cd1f6eb99b3cd8a4248dd2f2707185',1,'xl7::graphics::states::DepthStencilState::Desc']]],
-  ['iteration_5fnumber_36',['iteration_number',['../d1/d32/structtl7_1_1Signature.html#a42be262107926c787757bf3131f2848e',1,'tl7::Signature']]]
+  ['is_5fstring_5fconstructible_5fv_36',['is_string_constructible_v',['../d1/d2e/namespacecl7.html#a2b7716202f0260d0a155173ff6811aac',1,'cl7']]],
+  ['iteration_5fnumber_37',['iteration_number',['../d1/d32/structtl7_1_1Signature.html#a42be262107926c787757bf3131f2848e',1,'tl7::Signature']]]
 ];

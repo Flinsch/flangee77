@@ -149,6 +149,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d41/structcl7_1_1is__any__string__view.html">is_any_string_view</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d09/structcl7_1_1is__string__constructible.html">is_string_constructible</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d42/classcl7_1_1ordered__map.html">ordered_map</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d4e/classcl7_1_1static__vector.html">static_vector</a></td></tr>
@@ -177,6 +179,8 @@ Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d50/conceptcl7_1_1any__string__or__view.html">any_string_or_view</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d46/conceptcl7_1_1any__string__or__span.html">any_string_or_span</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5f/conceptcl7_1_1string__constructible.html">string_constructible</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -354,6 +358,9 @@ Variables</h2></td></tr>
 <tr class="memitem:a3287811bf63303ef65ea7277f01a032e" id="r_a3287811bf63303ef65ea7277f01a032e"><td class="memTemplParams" colspan="2">template&lt;typename Tstring_or_span &gt; </td></tr>
 <tr class="memitem:a3287811bf63303ef65ea7277f01a032e"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a3287811bf63303ef65ea7277f01a032e">is_any_string_or_span_v</a> = <a class="el" href="../../d8/db2/structcl7_1_1is__any__string__or__span.html">is_any_string_or_span</a>&lt;Tstring_or_span&gt;::value</td></tr>
 <tr class="separator:a3287811bf63303ef65ea7277f01a032e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b7716202f0260d0a155173ff6811aac" id="r_a2b7716202f0260d0a155173ff6811aac"><td class="memTemplParams" colspan="2">template&lt;typename Tstring , typename T &gt; </td></tr>
+<tr class="memitem:a2b7716202f0260d0a155173ff6811aac"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a2b7716202f0260d0a155173ff6811aac">is_string_constructible_v</a> = <a class="el" href="../../d9/d09/structcl7_1_1is__string__constructible.html">is_string_constructible</a>&lt;Tstring, T&gt;::value</td></tr>
+<tr class="separator:a2b7716202f0260d0a155173ff6811aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ad1ff9f016a5e9eeaa76b7c7867e41b0b" name="ad1ff9f016a5e9eeaa76b7c7867e41b0b"></a>
@@ -1585,6 +1592,30 @@ template&lt;typename Tstring_view &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">constexpr bool cl7::is_any_string_view_v = <a class="el" href="../../d9/d41/structcl7_1_1is__any__string__view.html">is_any_string_view</a>&lt;Tstring_view&gt;::value</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b7716202f0260d0a155173ff6811aac" name="a2b7716202f0260d0a155173ff6811aac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b7716202f0260d0a155173ff6811aac">&#9670;&#160;</a></span>is_string_constructible_v</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tstring , typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool cl7::is_string_constructible_v = <a class="el" href="../../d9/d09/structcl7_1_1is__string__constructible.html">is_string_constructible</a>&lt;Tstring, T&gt;::value</td>
         </tr>
       </table>
   </td>

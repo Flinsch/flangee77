@@ -12,6 +12,7 @@ var string_8h =
     [ "cl7::is_any_string_span< Tstring_span >", "df/d3e/structcl7_1_1is__any__string__span.html", null ],
     [ "cl7::is_any_string_or_view< Tstring_or_view >", "da/d88/structcl7_1_1is__any__string__or__view.html", null ],
     [ "cl7::is_any_string_or_span< Tstring_or_span >", "d8/db2/structcl7_1_1is__any__string__or__span.html", null ],
+    [ "cl7::is_string_constructible< Tstring, T >", "d9/d09/structcl7_1_1is__string__constructible.html", null ],
     [ "cl7::string_hash< Tchar >", "d0/dbc/structcl7_1_1string__hash.html", "d0/dbc/structcl7_1_1string__hash" ],
     [ "cl7::any_char", "db/d8a/conceptcl7_1_1any__char.html", null ],
     [ "cl7::any_string", "de/d21/conceptcl7_1_1any__string.html", null ],
@@ -19,6 +20,7 @@ var string_8h =
     [ "cl7::any_string_span", "d0/d16/conceptcl7_1_1any__string__span.html", null ],
     [ "cl7::any_string_or_view", "d5/d50/conceptcl7_1_1any__string__or__view.html", null ],
     [ "cl7::any_string_or_span", "d4/d46/conceptcl7_1_1any__string__or__span.html", null ],
+    [ "cl7::string_constructible", "d2/d5f/conceptcl7_1_1string__constructible.html", null ],
     [ "achar_t", "da/d66/string_8h.html#ad1ff9f016a5e9eeaa76b7c7867e41b0b", null ],
     [ "astring", "da/d66/string_8h.html#acdc93dde8de8e482c955c89f60d9e8c5", null ],
     [ "astring_hash", "da/d66/string_8h.html#ae91915d38a5e556a74fe8a24f3566690", null ],
@@ -62,5 +64,6 @@ var string_8h =
     [ "is_any_string_or_view_v", "da/d66/string_8h.html#ab13b6fc404191d4eddf7d686d28f2c8a", null ],
     [ "is_any_string_span_v", "da/d66/string_8h.html#ab61122568c07e473c3f3fdaf86275ef1", null ],
     [ "is_any_string_v", "da/d66/string_8h.html#a8a0d1f5cadc6e90a26826450cab9d21f", null ],
-    [ "is_any_string_view_v", "da/d66/string_8h.html#a6310d2a7d8b0d13e7ebc2111c543a080", null ]
+    [ "is_any_string_view_v", "da/d66/string_8h.html#a6310d2a7d8b0d13e7ebc2111c543a080", null ],
+    [ "is_string_constructible_v", "da/d66/string_8h.html#a2b7716202f0260d0a155173ff6811aac", null ]
 ];

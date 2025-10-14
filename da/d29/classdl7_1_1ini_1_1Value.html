@@ -202,20 +202,15 @@ requires (std::is_arithmetic_v&lt;Tnumber&gt;)</td></tr>
 <tr class="separator:ae6353bb5c6a67fc3ba29a26ac883498e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25d728843ef81b9a3639f80bfec79549" id="r_a25d728843ef81b9a3639f80bfec79549"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a25d728843ef81b9a3639f80bfec79549">set_undefined</a> ()</td></tr>
 <tr class="separator:a25d728843ef81b9a3639f80bfec79549"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e92b02d1e620c4ad7d5409bece4db22" id="r_a9e92b02d1e620c4ad7d5409bece4db22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a9e92b02d1e620c4ad7d5409bece4db22">set_string</a> (<a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#ad5052816188839ea3d2085d719bdc6f8">string_t</a> string)</td></tr>
-<tr class="separator:a9e92b02d1e620c4ad7d5409bece4db22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf2f44a2b0319fe7b550d899ff5eb5a5" id="r_adf2f44a2b0319fe7b550d899ff5eb5a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#adf2f44a2b0319fe7b550d899ff5eb5a5">set_string</a> (std::basic_string_view&lt; string_t::value_type &gt; string)</td></tr>
-<tr class="separator:adf2f44a2b0319fe7b550d899ff5eb5a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b9e83c2023afec1a3323c7766191517" id="r_a8b9e83c2023afec1a3323c7766191517"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a8b9e83c2023afec1a3323c7766191517">set_string</a> (const string_t::value_type *string)</td></tr>
-<tr class="separator:a8b9e83c2023afec1a3323c7766191517"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42e89381552e2b439965220681156e4a" id="r_a42e89381552e2b439965220681156e4a"><td class="memTemplParams" colspan="2">template&lt;typename Tnumber &gt; <br />
-requires (std::is_nothrow_convertible_v&lt;Tnumber, <a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#ac0f4a639cacdd8a06784cb0841f3b50a">float_t</a>&gt;)</td></tr>
-<tr class="memitem:a42e89381552e2b439965220681156e4a"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a42e89381552e2b439965220681156e4a">set_float</a> (Tnumber number)</td></tr>
-<tr class="separator:a42e89381552e2b439965220681156e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1eaaa510411341e057a87e02bfcad6c7" id="r_a1eaaa510411341e057a87e02bfcad6c7"><td class="memTemplParams" colspan="2">template&lt;typename Tnumber &gt; <br />
-requires (std::is_nothrow_convertible_v&lt;Tnumber, <a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#aff056af80ebfc49389df6324564a1ba2">integer_t</a>&gt;)</td></tr>
-<tr class="memitem:a1eaaa510411341e057a87e02bfcad6c7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a1eaaa510411341e057a87e02bfcad6c7">set_integer</a> (Tnumber number)</td></tr>
-<tr class="separator:a1eaaa510411341e057a87e02bfcad6c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa17bb2ac0ebdcefc17ac7d82bf612fa3" id="r_aa17bb2ac0ebdcefc17ac7d82bf612fa3"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../d2/d5f/conceptcl7_1_1string__constructible.html">cl7::string_constructible</a>&lt; <a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#ad5052816188839ea3d2085d719bdc6f8">string_t</a> &gt; Tstring&gt; </td></tr>
+<tr class="memitem:aa17bb2ac0ebdcefc17ac7d82bf612fa3"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#aa17bb2ac0ebdcefc17ac7d82bf612fa3">set_string</a> (Tstring &amp;&amp;string)</td></tr>
+<tr class="separator:aa17bb2ac0ebdcefc17ac7d82bf612fa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47bdc3abc2ab2202a867b8080c500c84" id="r_a47bdc3abc2ab2202a867b8080c500c84"><td class="memTemplParams" colspan="2">template&lt;std::convertible_to&lt; <a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#ac0f4a639cacdd8a06784cb0841f3b50a">float_t</a> &gt; Tnumber&gt; </td></tr>
+<tr class="memitem:a47bdc3abc2ab2202a867b8080c500c84"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a47bdc3abc2ab2202a867b8080c500c84">set_float</a> (Tnumber number)</td></tr>
+<tr class="separator:a47bdc3abc2ab2202a867b8080c500c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53aef39c6bc4307c255618a70b1eb6c4" id="r_a53aef39c6bc4307c255618a70b1eb6c4"><td class="memTemplParams" colspan="2">template&lt;std::convertible_to&lt; <a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#aff056af80ebfc49389df6324564a1ba2">integer_t</a> &gt; Tnumber&gt; </td></tr>
+<tr class="memitem:a53aef39c6bc4307c255618a70b1eb6c4"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a53aef39c6bc4307c255618a70b1eb6c4">set_integer</a> (Tnumber number)</td></tr>
+<tr class="separator:a53aef39c6bc4307c255618a70b1eb6c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf912438b43d3e3fc89e547fab2c2689" id="r_acf912438b43d3e3fc89e547fab2c2689"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#acf912438b43d3e3fc89e547fab2c2689">set_boolean</a> (<a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#adea5c45d34ed292ba80c46f289547521">boolean_t</a> boolean)</td></tr>
 <tr class="separator:acf912438b43d3e3fc89e547fab2c2689"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ccb3daf4b7712f9486241d3109731a5" id="r_a8ccb3daf4b7712f9486241d3109731a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a8ccb3daf4b7712f9486241d3109731a5">reset_type</a> (<a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18">Type</a> type)</td></tr>
@@ -233,6 +228,8 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a51fc43f322ddcf3d9164b98b2d3013f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a143dd741a3448cb8a20edc581ad7d2d3" id="r_a143dd741a3448cb8a20edc581ad7d2d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#aff056af80ebfc49389df6324564a1ba2">integer_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a143dd741a3448cb8a20edc581ad7d2d3">_as_integer</a> () const</td></tr>
 <tr class="separator:a143dd741a3448cb8a20edc581ad7d2d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad69c45cfaf672c8a09d754f77dabc0a5" id="r_ad69c45cfaf672c8a09d754f77dabc0a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#ad69c45cfaf672c8a09d754f77dabc0a5">_set_string</a> (<a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#ad5052816188839ea3d2085d719bdc6f8">string_t</a> &amp;&amp;string)</td></tr>
+<tr class="separator:ad69c45cfaf672c8a09d754f77dabc0a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fcfb636e134e1c4792936d2e86e8964" id="r_a3fcfb636e134e1c4792936d2e86e8964"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a3fcfb636e134e1c4792936d2e86e8964">_set_float</a> (<a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#ac0f4a639cacdd8a06784cb0841f3b50a">float_t</a> number)</td></tr>
 <tr class="separator:a3fcfb636e134e1c4792936d2e86e8964"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2f8b99fc9497096c978fc4435f773ed" id="r_ac2f8b99fc9497096c978fc4435f773ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#ac2f8b99fc9497096c978fc4435f773ed">_set_integer</a> (<a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#aff056af80ebfc49389df6324564a1ba2">integer_t</a> number)</td></tr>
@@ -827,6 +824,32 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ad69c45cfaf672c8a09d754f77dabc0a5" name="ad69c45cfaf672c8a09d754f77dabc0a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad69c45cfaf672c8a09d754f77dabc0a5">&#9670;&#160;</a></span>_set_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dl7::ini::Value::_set_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#ad5052816188839ea3d2085d719bdc6f8">string_t</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>string</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae6353bb5c6a67fc3ba29a26ac883498e" name="ae6353bb5c6a67fc3ba29a26ac883498e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae6353bb5c6a67fc3ba29a26ac883498e">&#9670;&#160;</a></span>as_boolean()</h2>
 
@@ -1377,14 +1400,13 @@ requires (std::is_arithmetic_v&lt;Tnumber&gt;)</div>
 
 </div>
 </div>
-<a id="a42e89381552e2b439965220681156e4a" name="a42e89381552e2b439965220681156e4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42e89381552e2b439965220681156e4a">&#9670;&#160;</a></span>set_float()</h2>
+<a id="a47bdc3abc2ab2202a867b8080c500c84" name="a47bdc3abc2ab2202a867b8080c500c84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47bdc3abc2ab2202a867b8080c500c84">&#9670;&#160;</a></span>set_float()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tnumber &gt; <br />
-requires (std::is_nothrow_convertible_v&lt;Tnumber, <a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#ac0f4a639cacdd8a06784cb0841f3b50a">float_t</a>&gt;)</div>
+template&lt;std::convertible_to&lt; <a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#ac0f4a639cacdd8a06784cb0841f3b50a">float_t</a> &gt; Tnumber&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1406,14 +1428,13 @@ requires (std::is_nothrow_convertible_v&lt;Tnumber, <a class="el" href="../../dd
 
 </div>
 </div>
-<a id="a1eaaa510411341e057a87e02bfcad6c7" name="a1eaaa510411341e057a87e02bfcad6c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1eaaa510411341e057a87e02bfcad6c7">&#9670;&#160;</a></span>set_integer()</h2>
+<a id="a53aef39c6bc4307c255618a70b1eb6c4" name="a53aef39c6bc4307c255618a70b1eb6c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53aef39c6bc4307c255618a70b1eb6c4">&#9670;&#160;</a></span>set_integer()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tnumber &gt; <br />
-requires (std::is_nothrow_convertible_v&lt;Tnumber, <a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#aff056af80ebfc49389df6324564a1ba2">integer_t</a>&gt;)</div>
+template&lt;std::convertible_to&lt; <a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#aff056af80ebfc49389df6324564a1ba2">integer_t</a> &gt; Tnumber&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1435,56 +1456,30 @@ requires (std::is_nothrow_convertible_v&lt;Tnumber, <a class="el" href="../../dd
 
 </div>
 </div>
-<a id="a8b9e83c2023afec1a3323c7766191517" name="a8b9e83c2023afec1a3323c7766191517"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b9e83c2023afec1a3323c7766191517">&#9670;&#160;</a></span>set_string() <span class="overload">[1/3]</span></h2>
+<a id="aa17bb2ac0ebdcefc17ac7d82bf612fa3" name="aa17bb2ac0ebdcefc17ac7d82bf612fa3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa17bb2ac0ebdcefc17ac7d82bf612fa3">&#9670;&#160;</a></span>set_string()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../d2/d5f/conceptcl7_1_1string__constructible.html">cl7::string_constructible</a>&lt; <a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#ad5052816188839ea3d2085d719bdc6f8">string_t</a> &gt; Tstring&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void dl7::ini::Value::set_string </td>
           <td>(</td>
-          <td class="paramtype">const string_t::value_type *&#160;</td>
+          <td class="paramtype">Tstring &amp;&amp;&#160;</td>
           <td class="paramname"><em>string</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="adf2f44a2b0319fe7b550d899ff5eb5a5" name="adf2f44a2b0319fe7b550d899ff5eb5a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf2f44a2b0319fe7b550d899ff5eb5a5">&#9670;&#160;</a></span>set_string() <span class="overload">[2/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void dl7::ini::Value::set_string </td>
-          <td>(</td>
-          <td class="paramtype">std::basic_string_view&lt; string_t::value_type &gt;&#160;</td>
-          <td class="paramname"><em>string</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9e92b02d1e620c4ad7d5409bece4db22" name="a9e92b02d1e620c4ad7d5409bece4db22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e92b02d1e620c4ad7d5409bece4db22">&#9670;&#160;</a></span>set_string() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void dl7::ini::Value::set_string </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#ad5052816188839ea3d2085d719bdc6f8">string_t</a>&#160;</td>
-          <td class="paramname"><em>string</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
