@@ -733,7 +733,7 @@ TESTLABS_CASE( u8"CoreLabs:  text:  codec:  codepoint_iterator")
     {
         cl7::u8string_view comment;
         std::vector<cl7::u8char_t> input;
-        std::vector<unsigned> codepoints;
+        std::vector<unsigned> codepoint_values;
     } entry;
 
     const std::vector<Entry> container {
@@ -749,13 +749,13 @@ TESTLABS_CASE( u8"CoreLabs:  text:  codec:  codepoint_iterator")
         { u8"invalid sequence: 0xf7 0x80 0x7f 0x80 0x80", { 0xf7, 0x80, 0x7f, 0x80, 0x80 }, { 0xfffd, 0x007f, 0xfffd, 0xfffd } },
         { u8"invalid code unit: 0xfe 0x80", { 0xfe, 0x80 }, { 0xfffd, 0xfffd } },
 
-        { u8"invalid code unit: 0x80", { 0x41, 0x80, 0x5a }, { 0x0041, 0xfffd, 0x005a } },
-        { u8"overlong encoding: 0xe0 0x80 0x80", { 0x41, 0xe0, 0x80, 0x80, 0x5a }, { 0x0041, 0xfffd, 0x005a } },
-        { u8"incomplete sequence: 0xe1 0xa0 0x20", { 0x41, 0xe1, 0xa0, 0x20, 0x5a }, { 0x0041, 0xfffd, 0x0020, 0x005a } },
-        { u8"invalid sequence: 0xed 0xa0 0x80", { 0x41, 0xed, 0xa0, 0x80, 0x5a }, { 0x0041, 0xfffd, 0x005a } },
-        { u8"invalid sequence: 0xf5 0x80 0x80 0x80 0x80", { 0x41, 0xf5, 0x80, 0x80, 0x80, 0x80, 0x5a }, { 0x0041, 0xfffd, 0xfffd, 0x005a } },
-        { u8"invalid sequence: 0xf7 0x80 0x7f 0x80 0x80", { 0x41, 0xf7, 0x80, 0x7f, 0x80, 0x80, 0x5a }, { 0x0041, 0xfffd, 0x007f, 0xfffd, 0xfffd, 0x005a } },
-        { u8"invalid code unit: 0xfe 0x80", { 0x41, 0xfe, 0x80, 0x5a }, { 0x0041, 0xfffd, 0xfffd, 0x005a } },
+        { u8"invalid code unit: A 0x80 Z", { 0x41, 0x80, 0x5a }, { 0x0041, 0xfffd, 0x005a } },
+        { u8"overlong encoding: A 0xe0 0x80 0x80 Z", { 0x41, 0xe0, 0x80, 0x80, 0x5a }, { 0x0041, 0xfffd, 0x005a } },
+        { u8"incomplete sequence: A 0xe1 0xa0 0x20 Z", { 0x41, 0xe1, 0xa0, 0x20, 0x5a }, { 0x0041, 0xfffd, 0x0020, 0x005a } },
+        { u8"invalid sequence: A 0xed 0xa0 0x80 Z", { 0x41, 0xed, 0xa0, 0x80, 0x5a }, { 0x0041, 0xfffd, 0x005a } },
+        { u8"invalid sequence: A 0xf5 0x80 0x80 0x80 0x80 Z", { 0x41, 0xf5, 0x80, 0x80, 0x80, 0x80, 0x5a }, { 0x0041, 0xfffd, 0xfffd, 0x005a } },
+        { u8"invalid sequence: A 0xf7 0x80 0x7f 0x80 0x80 Z", { 0x41, 0xf7, 0x80, 0x7f, 0x80, 0x80, 0x5a }, { 0x0041, 0xfffd, 0x007f, 0xfffd, 0xfffd, 0x005a } },
+        { u8"invalid code unit: A 0xfe 0x80 Z", { 0x41, 0xfe, 0x80, 0x5a }, { 0x0041, 0xfffd, 0xfffd, 0x005a } },
     };
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.comment )
@@ -765,43 +765,48 @@ TESTLABS_CASE( u8"CoreLabs:  text:  codec:  codepoint_iterator")
         MyErrorHandler error_handler;
         cl7::text::codec::codepoint_iterator<cl7::u8char_t> begin( input, &error_handler );
         cl7::text::codec::codepoint_iterator<cl7::u8char_t> it = begin;
+        cl7::text::codec::codepoint_iterator<cl7::u8char_t> end;
 
         TESTLABS_CHECK_EQ( it.input(), input );
         TESTLABS_CHECK_EQ( it.input_length(), input.length() );
-        TESTLABS_CHECK_EQ( it.codepoint_count(), entry.codepoints.size() );
+        TESTLABS_CHECK_EQ( it.codepoint_count(), entry.codepoint_values.size() );
 
-        for ( size_t i = 0; i < entry.codepoints.size(); ++i )
+        for ( size_t i = 0; i < entry.codepoint_values.size(); ++i )
         {
-            TESTLABS_CHECK_EQ( it[ i ].value, entry.codepoints[ i ] );
+            TESTLABS_CHECK_EQ( it[ i ].value, entry.codepoint_values[ i ] );
         }
 
-        for ( size_t i = 0; i < entry.codepoints.size(); ++i )
+        for ( size_t i = 0; i < entry.codepoint_values.size(); ++i )
         {
             TESTLABS_CHECK( i == 0 ? it == begin : it > begin );
             TESTLABS_CHECK_EQ( it - begin, i );
             TESTLABS_CHECK_EQ( it.codepoint_index(), i );
-            TESTLABS_CHECK_EQ( it->value, entry.codepoints[ i ] );
+            TESTLABS_CHECK_EQ( it->value, entry.codepoint_values[ i ] );
             ++it;
         }
 
-        TESTLABS_CHECK_EQ( it.codepoint_index(), entry.codepoints.size() );
+        TESTLABS_CHECK( it == end );
+        TESTLABS_CHECK_EQ( it.codepoint_index(), entry.codepoint_values.size() );
         TESTLABS_CHECK_EQ( it->value, 0 );
 
-        for ( size_t i = 0; i < entry.codepoints.size(); ++i )
+        for ( size_t i = 0; i < entry.codepoint_values.size(); ++i )
         {
-            const size_t j = entry.codepoints.size() - i - 1;
-            TESTLABS_CHECK_EQ( it[ -static_cast<ptrdiff_t>(i) - 1 ].value, entry.codepoints[ j ] );
+            const size_t j = entry.codepoint_values.size() - i - 1;
+            TESTLABS_CHECK_EQ( it[ -static_cast<ptrdiff_t>(i) - 1 ].value, entry.codepoint_values[ j ] );
         }
 
-        for ( size_t i = 0; i < entry.codepoints.size(); ++i )
+        for ( size_t i = 0; i < entry.codepoint_values.size(); ++i )
         {
             --it;
-            const size_t j = entry.codepoints.size() - i - 1;
+            const size_t j = entry.codepoint_values.size() - i - 1;
             TESTLABS_CHECK( j == 0 ? it == begin : it > begin );
             TESTLABS_CHECK_EQ( it - begin, j );
             TESTLABS_CHECK_EQ( it.codepoint_index(), j );
-            TESTLABS_CHECK_EQ( it->value, entry.codepoints[ j ] );
+            TESTLABS_CHECK_EQ( it->value, entry.codepoint_values[ j ] );
         }
+
+        TESTLABS_CHECK( it == begin );
+        TESTLABS_CHECK_EQ( it.codepoint_index(), 0 );
     }
 }
 
