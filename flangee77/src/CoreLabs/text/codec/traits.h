@@ -16,7 +16,7 @@ namespace cl7::text::codec {
 
 
 
-template <typename Tchar>
+template <cl7::any_char Tchar>
 struct traits
 {
     using char_type = Tchar;

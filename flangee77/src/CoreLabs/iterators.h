@@ -51,7 +51,7 @@ public:
     contiguous_iterator& operator+=(difference_type n) noexcept { _ptr += n; return *this; }
     contiguous_iterator& operator-=(difference_type n) noexcept { _ptr -= n; return *this; }
 
-    reference operator[](size_t n) const { return *reinterpret_cast<pointer>(_ptr + n); }
+    reference operator[](difference_type n) const { return *reinterpret_cast<pointer>(_ptr + n); }
     reference operator*() const { return *reinterpret_cast<pointer>(_ptr); }
     pointer operator->() const { return reinterpret_cast<pointer>(_ptr); }
 

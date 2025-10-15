@@ -12,7 +12,11 @@ namespace cl7::text::codec {
 
 
 
-template <typename Tchar, class TDefaultErrorHandler = DefaultErrorHandler>
+/**
+ * Encodes (Unicode) code points into sequences of characters (code units, e.g.,
+ * encoded as ASCII, UTF-8, UTF-16, etc.).
+ */
+template <cl7::any_char Tchar, class TDefaultErrorHandler = DefaultErrorHandler>
     requires(std::is_default_constructible_v<TDefaultErrorHandler>)
 class Encoder
 {

@@ -9,7 +9,11 @@ namespace cl7::text::codec {
 
 
 
-template <typename Tchar, class TDefaultErrorHandler = DefaultErrorHandler>
+/**
+ * Decodes sequences of characters (code units, e.g., encoded as ASCII, UTF-8,
+ * UTF-16, etc.) into (Unicode) code points.
+ */
+template <cl7::any_char Tchar, class TDefaultErrorHandler = DefaultErrorHandler>
     requires(std::is_default_constructible_v<TDefaultErrorHandler>)
 class Decoder
 {
@@ -22,8 +26,14 @@ public:
 
 
 
+    /**
+     * A forward iterator for traversing decoded (Unicode) code points from an
+     * encoded character sequence.
+     */
     class iterator
     {
+        static_assert(std::is_copy_constructible_v<TDefaultErrorHandler> && std::is_copy_assignable_v<TDefaultErrorHandler>);
+
     public:
         using iterator_category = std::forward_iterator_tag;
         using difference_type = std::ptrdiff_t;
@@ -42,13 +52,16 @@ public:
 
         friend void swap(iterator& a, iterator& b) noexcept { std::swap(a, b); }
 
+        /** Returns the input string this iterator traverses. */
+        string_view_type input() const { return _input; }
+
         /**
          * Resets the current offset position of the read cursor.
          * Caution! Since the cursor is measured in code units, you can mess things
          * up if you place it on a code unit that doesn't represent the beginning of
          * a code point.
          */
-        void reset_pos(size_t pos = 0) { _pos = pos; }
+        void reset_pos(size_t pos = 0) { _pos = pos; _decode(); }
         /** Resets the cumulative error status. */
         void reset_status() { _error_status = {}; }
 

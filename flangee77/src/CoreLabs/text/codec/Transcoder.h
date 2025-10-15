@@ -9,7 +9,12 @@ namespace cl7::text::codec {
 
 
 
-template <typename Tchar_from, typename Tchar_to, class TDefaultErrorHandler = DefaultErrorHandler>
+/**
+ * Combines decoding and encoding to convert sequences of characters (code units,
+ * e.g., encoded as ASCII, UTF-8, UTF-16, etc.) from one encoding to another,
+ * handling intermediate (Unicode) code points as needed.
+ */
+template <cl7::any_char Tchar_from, cl7::any_char Tchar_to, class TDefaultErrorHandler = DefaultErrorHandler>
     requires(std::is_default_constructible_v<TDefaultErrorHandler>)
 class Transcoder
 {

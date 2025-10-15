@@ -13,7 +13,7 @@ namespace cl7::text::codec {
 
 
 
-template <typename Tchar, class TDefaultErrorHandler = DefaultErrorHandler>
+template <cl7::any_char Tchar, class TDefaultErrorHandler = DefaultErrorHandler>
     requires(std::is_default_constructible_v<TDefaultErrorHandler>)
 class Analyzer
 {
@@ -61,7 +61,7 @@ public:
      * Returns the number of code units that a given input would have in the target
      * encoding.
      */
-    template <typename Tchar_target>
+    template <cl7::any_char Tchar_target>
     size_t determine_target_length(string_view_type input) const
     {
         using TargetCodec = traits<Tchar_target>::codec_type;
