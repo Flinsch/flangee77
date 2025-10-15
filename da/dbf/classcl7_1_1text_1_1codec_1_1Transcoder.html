@@ -164,14 +164,18 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ae8efffb481251563b9850c8f9e10c7f7" id="r_ae8efffb481251563b9850c8f9e10c7f7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html">ErrorHandler</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html#ae8efffb481251563b9850c8f9e10c7f7">_error_handler</a></td></tr>
 <tr class="separator:ae8efffb481251563b9850c8f9e10c7f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler = DefaultErrorHandler&gt;<br />
+requires (std::is_default_constructible_v&lt;TDefaultErrorHandler&gt;)<br />
+class cl7::text::codec::Transcoder&lt; Tchar_from, Tchar_to, TDefaultErrorHandler &gt;</div><p>Combines decoding and encoding to convert sequences of characters (code units, e.g., encoded as ASCII, UTF-8, UTF-16, etc.) from one encoding to another, handling intermediate (Unicode) code points as needed. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a46618e0dfb0bf28c05651b2e9cbd8460" name="a46618e0dfb0bf28c05651b2e9cbd8460"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a46618e0dfb0bf28c05651b2e9cbd8460">&#9670;&#160;</a></span>InputCodec</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">using <a class="el" href="../../da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html">cl7::text::codec::Transcoder</a>&lt; Tchar_from, Tchar_to, TDefaultErrorHandler &gt;::InputCodec =  <a class="el" href="../../d7/d07/structcl7_1_1text_1_1codec_1_1traits.html">traits</a>&lt;Tchar_from&gt;::codec_type</td>
@@ -187,7 +191,7 @@ template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">using <a class="el" href="../../da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html">cl7::text::codec::Transcoder</a>&lt; Tchar_from, Tchar_to, TDefaultErrorHandler &gt;::OutputCodec =  <a class="el" href="../../d7/d07/structcl7_1_1text_1_1codec_1_1traits.html">traits</a>&lt;Tchar_to&gt;::codec_type</td>
@@ -203,7 +207,7 @@ template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">using <a class="el" href="../../da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html">cl7::text::codec::Transcoder</a>&lt; Tchar_from, Tchar_to, TDefaultErrorHandler &gt;::string_span_type =  <a class="el" href="../../d7/d07/structcl7_1_1text_1_1codec_1_1traits.html">traits</a>&lt;Tchar_to&gt;::string_span_type</td>
@@ -219,7 +223,7 @@ template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">using <a class="el" href="../../da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html">cl7::text::codec::Transcoder</a>&lt; Tchar_from, Tchar_to, TDefaultErrorHandler &gt;::string_type =  <a class="el" href="../../d7/d07/structcl7_1_1text_1_1codec_1_1traits.html">traits</a>&lt;Tchar_to&gt;::string_type</td>
@@ -235,7 +239,7 @@ template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">using <a class="el" href="../../da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html">cl7::text::codec::Transcoder</a>&lt; Tchar_from, Tchar_to, TDefaultErrorHandler &gt;::string_view_type =  <a class="el" href="../../d7/d07/structcl7_1_1text_1_1codec_1_1traits.html">traits</a>&lt;Tchar_from&gt;::string_view_type</td>
@@ -252,7 +256,7 @@ template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -281,7 +285,7 @@ template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -325,7 +329,7 @@ template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -354,7 +358,7 @@ template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -383,7 +387,7 @@ template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -422,7 +426,7 @@ template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -461,7 +465,7 @@ template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -500,7 +504,7 @@ template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -540,7 +544,7 @@ template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -564,7 +568,7 @@ template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Tchar_from , typename Tchar_to , class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
+template&lt;<a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_from, <a class="el" href="../../db/d8a/conceptcl7_1_1any__char.html">cl7::any_char</a> Tchar_to, class TDefaultErrorHandler  = DefaultErrorHandler&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">

@@ -9,6 +9,7 @@ var classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator =
     [ "iterator", "dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html#a02b73d8f31bac1239c1364210f91a372", null ],
     [ "_advance_and_decode", "dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html#a4809871136d31ce1012d5a7eb2a54940", null ],
     [ "_decode", "dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html#a0ae3b0aae1b0f451b877a11f2ced9fb8", null ],
+    [ "input", "dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html#a2010b3564b49d0403b43036878393935", null ],
     [ "operator*", "dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html#a5d91134f7b800a758c5acb1fe0a097ea", null ],
     [ "operator++", "dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html#a0e344b276d1cbd71a72676f59fdcfcfe", null ],
     [ "operator++", "dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html#a395107dedfa2ebe225f5e88d292e7885", null ],

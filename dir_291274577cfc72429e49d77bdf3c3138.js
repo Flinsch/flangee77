@@ -5,6 +5,7 @@ var dir_291274577cfc72429e49d77bdf3c3138 =
     [ "AsciiCodec.h", "d2/dfb/AsciiCodec_8h.html", "d2/dfb/AsciiCodec_8h" ],
     [ "codepoint.cpp", "d2/d7e/codepoint_8cpp.html", null ],
     [ "codepoint.h", "d8/d47/codepoint_8h.html", "d8/d47/codepoint_8h" ],
+    [ "codepoint_iterator.h", "dc/d90/codepoint__iterator_8h.html", "dc/d90/codepoint__iterator_8h" ],
     [ "CodepointResult.h", "d7/d16/CodepointResult_8h.html", "d7/d16/CodepointResult_8h" ],
     [ "Decoder.h", "d4/d83/Decoder_8h.html", "d4/d83/Decoder_8h" ],
     [ "DecodeResult.h", "d8/d8f/DecodeResult_8h.html", "d8/d8f/DecodeResult_8h" ],

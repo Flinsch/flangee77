@@ -76,6 +76,7 @@ var hierarchy =
     [ "ml7::ops::clamp< min, max >", "d4/d01/structml7_1_1ops_1_1clamp.html", null ],
     [ "ml7::ops::clamp01", "d0/d5c/structml7_1_1ops_1_1clamp01.html", null ],
     [ "cl7::text::codec::codepoint", "db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html", null ],
+    [ "cl7::text::codec::codepoint_iterator< Tchar, TDefaultErrorHandler >", "d7/d8a/classcl7_1_1text_1_1codec_1_1codepoint__iterator.html", null ],
     [ "cl7::text::codec::CodepointResult", "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html", [
       [ "cl7::text::codec::DecodeResult< Tchar >", "da/d9c/structcl7_1_1text_1_1codec_1_1DecodeResult.html", null ],
       [ "cl7::text::codec::EncodeResult< Tchar >", "d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult.html", null ]
@@ -113,6 +114,7 @@ var hierarchy =
     ] ],
     [ "cl7::system::datetime", "d6/d16/structcl7_1_1system_1_1datetime.html", null ],
     [ "cl7::text::codec::Decoder< Tchar, TDefaultErrorHandler >", "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html", null ],
+    [ "cl7::text::codec::Decoder< Tchar, DefaultErrorHandler >", "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html", null ],
     [ "dl7::compression::Deflate", "d2/d26/structdl7_1_1compression_1_1Deflate.html", null ],
     [ "xl7::graphics::images::Image::Desc", "d0/d81/structxl7_1_1graphics_1_1images_1_1Image_1_1Desc.html", null ],
     [ "xl7::graphics::meshes::MeshBuffer::Desc", "d8/df2/structxl7_1_1graphics_1_1meshes_1_1MeshBuffer_1_1Desc.html", [

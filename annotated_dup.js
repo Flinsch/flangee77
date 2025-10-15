@@ -63,6 +63,7 @@ var annotated_dup =
           [ "Analyzer", "d8/d02/classcl7_1_1text_1_1codec_1_1Analyzer.html", "d8/d02/classcl7_1_1text_1_1codec_1_1Analyzer" ],
           [ "AsciiCodec", "d3/df1/classcl7_1_1text_1_1codec_1_1AsciiCodec.html", "d3/df1/classcl7_1_1text_1_1codec_1_1AsciiCodec" ],
           [ "codepoint", "db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html", "db/d9a/structcl7_1_1text_1_1codec_1_1codepoint" ],
+          [ "codepoint_iterator", "d7/d8a/classcl7_1_1text_1_1codec_1_1codepoint__iterator.html", "d7/d8a/classcl7_1_1text_1_1codec_1_1codepoint__iterator" ],
           [ "CodepointResult", "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html", "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult" ],
           [ "Decoder", "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html", "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder" ],
           [ "DecodeResult", "da/d9c/structcl7_1_1text_1_1codec_1_1DecodeResult.html", "da/d9c/structcl7_1_1text_1_1codec_1_1DecodeResult" ],
