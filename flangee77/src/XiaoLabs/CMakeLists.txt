@@ -63,6 +63,7 @@ target_sources(flangee77
 
     resources/DataProvider.cpp
     resources/DefaultDataProvider.cpp
+    resources/FakeDataProvider.cpp
     resources/Resource.cpp
     resources/ResourceID.cpp
     resources/ResourceManager.cpp
