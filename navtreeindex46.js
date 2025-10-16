@@ -1,5 +1,13 @@
 var NAVTREEINDEX46 =
 {
+"de/d17/structxl7_1_1graphics_1_1meshes_1_1IndexBuffer_1_1Desc.html":[5,0,7,1,2,1,0],
+"de/d17/structxl7_1_1graphics_1_1meshes_1_1IndexBuffer_1_1Desc.html":[7,0,7,0,2,1,0],
+"de/d17/structxl7_1_1graphics_1_1meshes_1_1IndexBuffer_1_1Desc.html#a5306cf20c9467674c23078f68c8dc1d8":[5,0,7,1,2,1,0,0],
+"de/d17/structxl7_1_1graphics_1_1meshes_1_1IndexBuffer_1_1Desc.html#a5306cf20c9467674c23078f68c8dc1d8":[7,0,7,0,2,1,0,0],
+"de/d1b/datetime_8h.html":[8,0,0,4,3],
+"de/d1b/datetime_8h_source.html":[8,0,0,4,3],
+"de/d1e/structcl7_1_1detail_1_1__is__any__string__span.html":[7,0,0,2,2],
+"de/d1e/structcl7_1_1detail_1_1__is__any__string__span.html":[5,0,0,2,2],
 "de/d21/conceptcl7_1_1any__string.html":[6,0,3],
 "de/d21/conceptcl7_1_1any__string.html":[5,0,0,36],
 "de/d22/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl.html":[5,0,7,1,1,0,3,4],
@@ -241,13 +249,5 @@ var NAVTREEINDEX46 =
 "de/d6e/classcl7_1_1io_1_1ByteWriter.html#a7f58365755f5b942b4575041dfad6f70":[5,0,0,5,1,3],
 "de/d6e/classcl7_1_1io_1_1ByteWriter.html#a7f58365755f5b942b4575041dfad6f70":[7,0,0,3,1,3],
 "de/d6e/classcl7_1_1io_1_1ByteWriter.html#a8fe54f4749a6ed90ff5c7c2a4da4fc32":[5,0,0,5,1,4],
-"de/d6e/classcl7_1_1io_1_1ByteWriter.html#a8fe54f4749a6ed90ff5c7c2a4da4fc32":[7,0,0,3,1,4],
-"de/d6e/classcl7_1_1io_1_1ByteWriter.html#ac7fbf64b830ca33e3d5aa66fa55a3131":[5,0,0,5,1,1],
-"de/d6e/classcl7_1_1io_1_1ByteWriter.html#ac7fbf64b830ca33e3d5aa66fa55a3131":[7,0,0,3,1,1],
-"de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html":[5,0,1,3,0,7],
-"de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html":[7,0,1,3,0,7],
-"de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html#a7905b81d6b0dc4fcd5794b7187ee11ca":[7,0,1,3,0,7,0],
-"de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html#a7905b81d6b0dc4fcd5794b7187ee11ca":[5,0,1,3,0,7,0],
-"de/d70/structxl7_1_1DriverResolver.html":[7,0,7,7],
-"de/d70/structxl7_1_1DriverResolver.html":[5,0,7,9]
+"de/d6e/classcl7_1_1io_1_1ByteWriter.html#a8fe54f4749a6ed90ff5c7c2a4da4fc32":[7,0,0,3,1,4]
 };

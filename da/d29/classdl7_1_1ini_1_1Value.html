@@ -211,6 +211,12 @@ requires (std::is_arithmetic_v&lt;Tnumber&gt;)</td></tr>
 <tr class="memitem:a53aef39c6bc4307c255618a70b1eb6c4" id="r_a53aef39c6bc4307c255618a70b1eb6c4"><td class="memTemplParams" colspan="2">template&lt;std::convertible_to&lt; <a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#aff056af80ebfc49389df6324564a1ba2">integer_t</a> &gt; Tnumber&gt; </td></tr>
 <tr class="memitem:a53aef39c6bc4307c255618a70b1eb6c4"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a53aef39c6bc4307c255618a70b1eb6c4">set_integer</a> (Tnumber number)</td></tr>
 <tr class="separator:a53aef39c6bc4307c255618a70b1eb6c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b2db7e4665abad8d24471867308ca32" id="r_a0b2db7e4665abad8d24471867308ca32"><td class="memTemplParams" colspan="2">template&lt;std::floating_point Tnumber&gt; </td></tr>
+<tr class="memitem:a0b2db7e4665abad8d24471867308ca32"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a0b2db7e4665abad8d24471867308ca32">set_number</a> (Tnumber number)</td></tr>
+<tr class="separator:a0b2db7e4665abad8d24471867308ca32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b2db7e4665abad8d24471867308ca32" id="r_a0b2db7e4665abad8d24471867308ca32"><td class="memTemplParams" colspan="2">template&lt;std::integral Tnumber&gt; </td></tr>
+<tr class="memitem:a0b2db7e4665abad8d24471867308ca32"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a0b2db7e4665abad8d24471867308ca32">set_number</a> (Tnumber number)</td></tr>
+<tr class="separator:a0b2db7e4665abad8d24471867308ca32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf912438b43d3e3fc89e547fab2c2689" id="r_acf912438b43d3e3fc89e547fab2c2689"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#acf912438b43d3e3fc89e547fab2c2689">set_boolean</a> (<a class="el" href="../../dd/dc6/namespacedl7_1_1ini.html#adea5c45d34ed292ba80c46f289547521">boolean_t</a> boolean)</td></tr>
 <tr class="separator:acf912438b43d3e3fc89e547fab2c2689"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ccb3daf4b7712f9486241d3109731a5" id="r_a8ccb3daf4b7712f9486241d3109731a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a8ccb3daf4b7712f9486241d3109731a5">reset_type</a> (<a class="el" href="../../da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18">Type</a> type)</td></tr>
@@ -1441,6 +1447,62 @@ template&lt;std::convertible_to&lt; <a class="el" href="../../dd/dc6/namespacedl
       <table class="memname">
         <tr>
           <td class="memname">void dl7::ini::Value::set_integer </td>
+          <td>(</td>
+          <td class="paramtype">Tnumber&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0b2db7e4665abad8d24471867308ca32" name="a0b2db7e4665abad8d24471867308ca32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b2db7e4665abad8d24471867308ca32">&#9670;&#160;</a></span>set_number() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::floating_point Tnumber&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dl7::ini::Value::set_number </td>
+          <td>(</td>
+          <td class="paramtype">Tnumber&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0b2db7e4665abad8d24471867308ca32" name="a0b2db7e4665abad8d24471867308ca32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b2db7e4665abad8d24471867308ca32">&#9670;&#160;</a></span>set_number() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::integral Tnumber&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dl7::ini::Value::set_number </td>
           <td>(</td>
           <td class="paramtype">Tnumber&#160;</td>
           <td class="paramname"><em>number</em></td><td>)</td>

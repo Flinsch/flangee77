@@ -80,6 +80,8 @@ var classdl7_1_1json_1_1Json =
     [ "set_float", "d7/d95/classdl7_1_1json_1_1Json.html#aa643fb74cd2a2ebac5108aca6562b506", null ],
     [ "set_integer", "d7/d95/classdl7_1_1json_1_1Json.html#a069c893fcf54d20d1675356c35a251fb", null ],
     [ "set_null", "d7/d95/classdl7_1_1json_1_1Json.html#a048f1f2a6137ef70bafca472521f2369", null ],
+    [ "set_number", "d7/d95/classdl7_1_1json_1_1Json.html#a86ab42c6b54cbed392b93f045d2fc6d6", null ],
+    [ "set_number", "d7/d95/classdl7_1_1json_1_1Json.html#a86ab42c6b54cbed392b93f045d2fc6d6", null ],
     [ "set_object", "d7/d95/classdl7_1_1json_1_1Json.html#ad38fff39396e5d8b77f5d7bca94ac5d5", null ],
     [ "set_string", "d7/d95/classdl7_1_1json_1_1Json.html#a9bb3d1f70b965a4e87a5de2efc5836aa", null ],
     [ "swap", "d7/d95/classdl7_1_1json_1_1Json.html#afd26d3b13280c78d3668766380abde1b", null ],

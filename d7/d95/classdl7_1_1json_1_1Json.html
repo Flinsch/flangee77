@@ -240,6 +240,12 @@ requires (std::is_arithmetic_v&lt;Tnumber&gt;)</td></tr>
 <tr class="memitem:a069c893fcf54d20d1675356c35a251fb" id="r_a069c893fcf54d20d1675356c35a251fb"><td class="memTemplParams" colspan="2">template&lt;std::convertible_to&lt; <a class="el" href="../../df/d87/namespacedl7_1_1json.html#a522cfa0841bdb6b7c463b3545d635db0">integer_t</a> &gt; Tnumber&gt; </td></tr>
 <tr class="memitem:a069c893fcf54d20d1675356c35a251fb"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d95/classdl7_1_1json_1_1Json.html#a069c893fcf54d20d1675356c35a251fb">set_integer</a> (Tnumber number)</td></tr>
 <tr class="separator:a069c893fcf54d20d1675356c35a251fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86ab42c6b54cbed392b93f045d2fc6d6" id="r_a86ab42c6b54cbed392b93f045d2fc6d6"><td class="memTemplParams" colspan="2">template&lt;std::floating_point Tnumber&gt; </td></tr>
+<tr class="memitem:a86ab42c6b54cbed392b93f045d2fc6d6"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d95/classdl7_1_1json_1_1Json.html#a86ab42c6b54cbed392b93f045d2fc6d6">set_number</a> (Tnumber number)</td></tr>
+<tr class="separator:a86ab42c6b54cbed392b93f045d2fc6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86ab42c6b54cbed392b93f045d2fc6d6" id="r_a86ab42c6b54cbed392b93f045d2fc6d6"><td class="memTemplParams" colspan="2">template&lt;std::integral Tnumber&gt; </td></tr>
+<tr class="memitem:a86ab42c6b54cbed392b93f045d2fc6d6"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d95/classdl7_1_1json_1_1Json.html#a86ab42c6b54cbed392b93f045d2fc6d6">set_number</a> (Tnumber number)</td></tr>
+<tr class="separator:a86ab42c6b54cbed392b93f045d2fc6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5576cc7010002a777a564f29834ccb7c" id="r_a5576cc7010002a777a564f29834ccb7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d95/classdl7_1_1json_1_1Json.html#a5576cc7010002a777a564f29834ccb7c">set_boolean</a> (<a class="el" href="../../df/d87/namespacedl7_1_1json.html#a722636711d3c78e2d09b68d2fe7fd639">boolean_t</a> boolean)</td></tr>
 <tr class="separator:a5576cc7010002a777a564f29834ccb7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c491ea307b6d7c5492aa5454a7570e7" id="r_a9c491ea307b6d7c5492aa5454a7570e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d95/classdl7_1_1json_1_1Json.html#a9c491ea307b6d7c5492aa5454a7570e7">reset_type</a> (<a class="el" href="../../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615ca">Type</a> type)</td></tr>
@@ -1948,6 +1954,62 @@ template&lt;std::convertible_to&lt; <a class="el" href="../../df/d87/namespacedl
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a86ab42c6b54cbed392b93f045d2fc6d6" name="a86ab42c6b54cbed392b93f045d2fc6d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86ab42c6b54cbed392b93f045d2fc6d6">&#9670;&#160;</a></span>set_number() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::floating_point Tnumber&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dl7::json::Json::set_number </td>
+          <td>(</td>
+          <td class="paramtype">Tnumber&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a86ab42c6b54cbed392b93f045d2fc6d6" name="a86ab42c6b54cbed392b93f045d2fc6d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86ab42c6b54cbed392b93f045d2fc6d6">&#9670;&#160;</a></span>set_number() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::integral Tnumber&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dl7::json::Json::set_number </td>
+          <td>(</td>
+          <td class="paramtype">Tnumber&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

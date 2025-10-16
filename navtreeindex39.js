@@ -1,5 +1,13 @@
 var NAVTREEINDEX39 =
 {
+"db/ddf/structcl7_1_1Version.html#ac738d896b72cff8fb01206ddd8d7db9f":[5,0,0,32,4],
+"db/ddf/structcl7_1_1Version.html#ad291baee01b537730bb81b35682ad85f":[7,0,0,29,8],
+"db/ddf/structcl7_1_1Version.html#ad291baee01b537730bb81b35682ad85f":[5,0,0,32,8],
+"db/ddf/structcl7_1_1Version.html#ae53075db5b4997eecb7f1a07b8ea9cc4":[7,0,0,29,7],
+"db/ddf/structcl7_1_1Version.html#ae53075db5b4997eecb7f1a07b8ea9cc4":[5,0,0,32,7],
+"db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html":[5,0,3,1,0,0],
+"db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html":[7,0,3,0,0,0],
+"db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html#a02e6bb8ed427fa94e96ad6b8ecc4550e":[5,0,3,1,0,0,4],
 "db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html#a02e6bb8ed427fa94e96ad6b8ecc4550e":[7,0,3,0,0,0,4],
 "db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html#a4a500df0f60f26255d08f2dcc6e0ddff":[5,0,3,1,0,0,2],
 "db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html#a4a500df0f60f26255d08f2dcc6e0ddff":[7,0,3,0,0,0,2],
@@ -241,13 +249,5 @@ var NAVTREEINDEX39 =
 "dc/d3a/classdl7_1_1ini_1_1Section.html#aefd480f43a707a9e8a884d495cb9b2e7":[5,0,1,1,5,6],
 "dc/d3a/classdl7_1_1ini_1_1Section.html#af2756fb80de1ec2f3dbe4bbf3e4848d3":[7,0,1,1,5,1],
 "dc/d3a/classdl7_1_1ini_1_1Section.html#af2756fb80de1ec2f3dbe4bbf3e4848d3":[5,0,1,1,5,1],
-"dc/d3a/classdl7_1_1ini_1_1Section.html#af5e8f3e0bb9522401c7a8026c5a8c777":[5,0,1,1,5,17],
-"dc/d3a/classdl7_1_1ini_1_1Section.html#af5e8f3e0bb9522401c7a8026c5a8c777":[7,0,1,1,5,17],
-"dc/d3b/RenderingContext_8cpp.html":[8,0,6,0,23],
-"dc/d3b/RenderingContext_8cpp.html#a188a58e31596dfda96517c508ca241f6":[8,0,6,0,23,0],
-"dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html":[7,0,0,7,0,4],
-"dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html":[5,0,0,10,0,4],
-"dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html#a38b769eea09e4af3b1c3ec92777351fa":[5,0,0,10,0,4,2],
-"dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html#a38b769eea09e4af3b1c3ec92777351fa":[7,0,0,7,0,4,2],
-"dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html#ac3820690c769dcf85d32aabc0d0890e4":[5,0,0,10,0,4,1]
+"dc/d3a/classdl7_1_1ini_1_1Section.html#af5e8f3e0bb9522401c7a8026c5a8c777":[5,0,1,1,5,17]
 };

@@ -56,6 +56,8 @@ var classdl7_1_1ini_1_1Value =
     [ "set_boolean", "da/d29/classdl7_1_1ini_1_1Value.html#acf912438b43d3e3fc89e547fab2c2689", null ],
     [ "set_float", "da/d29/classdl7_1_1ini_1_1Value.html#a47bdc3abc2ab2202a867b8080c500c84", null ],
     [ "set_integer", "da/d29/classdl7_1_1ini_1_1Value.html#a53aef39c6bc4307c255618a70b1eb6c4", null ],
+    [ "set_number", "da/d29/classdl7_1_1ini_1_1Value.html#a0b2db7e4665abad8d24471867308ca32", null ],
+    [ "set_number", "da/d29/classdl7_1_1ini_1_1Value.html#a0b2db7e4665abad8d24471867308ca32", null ],
     [ "set_string", "da/d29/classdl7_1_1ini_1_1Value.html#aa17bb2ac0ebdcefc17ac7d82bf612fa3", null ],
     [ "set_undefined", "da/d29/classdl7_1_1ini_1_1Value.html#a25d728843ef81b9a3639f80bfec79549", null ],
     [ "swap", "da/d29/classdl7_1_1ini_1_1Value.html#a8b4bb26f22740fe61caf6e20cb873105", null ],

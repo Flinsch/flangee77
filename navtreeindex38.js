@@ -1,5 +1,13 @@
 var NAVTREEINDEX38 =
 {
+"db/da4/structml7_1_1QuadraticBezier3.html#a72f7b238864c693f270451ef7f01aa01":[7,0,3,18,2],
+"db/da4/structml7_1_1QuadraticBezier3.html#a72f7b238864c693f270451ef7f01aa01":[5,0,3,19,2],
+"db/da4/structml7_1_1QuadraticBezier3.html#a8d78f9dea7ce6bcc4a12d5137f20b210":[7,0,3,18,14],
+"db/da4/structml7_1_1QuadraticBezier3.html#a8d78f9dea7ce6bcc4a12d5137f20b210":[5,0,3,19,14],
+"db/da4/structml7_1_1QuadraticBezier3.html#ac1da3ef5a325321dea8c3ab799c26fcb":[7,0,3,18,3],
+"db/da4/structml7_1_1QuadraticBezier3.html#ac1da3ef5a325321dea8c3ab799c26fcb":[5,0,3,19,3],
+"db/da4/structml7_1_1QuadraticBezier3.html#ac34f2c740a5a04753688818fde7b0338":[7,0,3,18,15],
+"db/da4/structml7_1_1QuadraticBezier3.html#ac34f2c740a5a04753688818fde7b0338":[5,0,3,19,15],
 "db/da4/structml7_1_1QuadraticBezier3.html#ac4b487e748273ac235c5648201b414e9":[7,0,3,18,12],
 "db/da4/structml7_1_1QuadraticBezier3.html#ac4b487e748273ac235c5648201b414e9":[5,0,3,19,12],
 "db/da4/structml7_1_1QuadraticBezier3.html#ace7f8281b06ff63ffa3d32997f4f7b5b":[5,0,3,19,8],
@@ -241,13 +249,5 @@ var NAVTREEINDEX38 =
 "db/ddf/structcl7_1_1Version.html#a890721a856e7cc2fbb0c524521e0b635ab8e7b465df7c5979dc731d06e84ce2cf":[7,0,0,29,0,3],
 "db/ddf/structcl7_1_1Version.html#a890721a856e7cc2fbb0c524521e0b635ad51e7d58a0cd2de144621030dcae1337":[5,0,0,32,0,2],
 "db/ddf/structcl7_1_1Version.html#a890721a856e7cc2fbb0c524521e0b635ad51e7d58a0cd2de144621030dcae1337":[7,0,0,29,0,2],
-"db/ddf/structcl7_1_1Version.html#ac738d896b72cff8fb01206ddd8d7db9f":[7,0,0,29,4],
-"db/ddf/structcl7_1_1Version.html#ac738d896b72cff8fb01206ddd8d7db9f":[5,0,0,32,4],
-"db/ddf/structcl7_1_1Version.html#ad291baee01b537730bb81b35682ad85f":[7,0,0,29,8],
-"db/ddf/structcl7_1_1Version.html#ad291baee01b537730bb81b35682ad85f":[5,0,0,32,8],
-"db/ddf/structcl7_1_1Version.html#ae53075db5b4997eecb7f1a07b8ea9cc4":[7,0,0,29,7],
-"db/ddf/structcl7_1_1Version.html#ae53075db5b4997eecb7f1a07b8ea9cc4":[5,0,0,32,7],
-"db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html":[5,0,3,1,0,0],
-"db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html":[7,0,3,0,0,0],
-"db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html#a02e6bb8ed427fa94e96ad6b8ecc4550e":[5,0,3,1,0,0,4]
+"db/ddf/structcl7_1_1Version.html#ac738d896b72cff8fb01206ddd8d7db9f":[7,0,0,29,4]
 };

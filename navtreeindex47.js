@@ -1,5 +1,13 @@
 var NAVTREEINDEX47 =
 {
+"de/d6e/classcl7_1_1io_1_1ByteWriter.html#ac7fbf64b830ca33e3d5aa66fa55a3131":[5,0,0,5,1,1],
+"de/d6e/classcl7_1_1io_1_1ByteWriter.html#ac7fbf64b830ca33e3d5aa66fa55a3131":[7,0,0,3,1,1],
+"de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html":[5,0,1,3,0,7],
+"de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html":[7,0,1,3,0,7],
+"de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html#a7905b81d6b0dc4fcd5794b7187ee11ca":[7,0,1,3,0,7,0],
+"de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html#a7905b81d6b0dc4fcd5794b7187ee11ca":[5,0,1,3,0,7,0],
+"de/d70/structxl7_1_1DriverResolver.html":[7,0,7,7],
+"de/d70/structxl7_1_1DriverResolver.html":[5,0,7,9],
 "de/d70/structxl7_1_1DriverResolver.html#a426830f9dcc4912e1446aa22909c294e":[5,0,7,9,1],
 "de/d70/structxl7_1_1DriverResolver.html#a426830f9dcc4912e1446aa22909c294e":[7,0,7,7,1],
 "de/d70/structxl7_1_1DriverResolver.html#aea816ce14a4e14ddddc4f804213a35cc":[7,0,7,7,2],
@@ -241,13 +249,5 @@ var NAVTREEINDEX47 =
 "de/df3/structxl7_1_1graphics_1_1Color.html#a56dbf81125ccb317a7124d9a64b837f2":[7,0,7,0,8,40],
 "de/df3/structxl7_1_1graphics_1_1Color.html#a56dbf81125ccb317a7124d9a64b837f2":[5,0,7,1,8,40],
 "de/df3/structxl7_1_1graphics_1_1Color.html#a57facdaa37bb0876aaaab10fb8f3268e":[7,0,7,0,8,49],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a57facdaa37bb0876aaaab10fb8f3268e":[5,0,7,1,8,49],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a591898e489d0c1c33679c886a380bba1":[5,0,7,1,8,51],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a591898e489d0c1c33679c886a380bba1":[7,0,7,0,8,51],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a5ac08609fc95be4b3f0bf41f12bebe07":[5,0,7,1,8,11],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a5ac08609fc95be4b3f0bf41f12bebe07":[7,0,7,0,8,11],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a5d46d4d91a8fe1f34ca77f96a37f3141":[5,0,7,1,8,26],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a5d46d4d91a8fe1f34ca77f96a37f3141":[7,0,7,0,8,26],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a63e2a0ba88e99d3955a3effecc6fd682":[7,0,7,0,8,8],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a63e2a0ba88e99d3955a3effecc6fd682":[5,0,7,1,8,8]
+"de/df3/structxl7_1_1graphics_1_1Color.html#a57facdaa37bb0876aaaab10fb8f3268e":[5,0,7,1,8,49]
 };
