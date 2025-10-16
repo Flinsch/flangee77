@@ -135,6 +135,12 @@ public:
     template <std::convertible_to<integer_t> Tnumber>
     void set_integer(Tnumber number) { _set_integer(static_cast<integer_t>(number)); }
 
+    template <std::floating_point Tnumber>
+    void set_number(Tnumber number) { _set_float(static_cast<float_t>(number)); }
+
+    template <std::integral Tnumber>
+    void set_number(Tnumber number) { _set_integer(static_cast<integer_t>(number)); }
+
     void set_boolean(boolean_t boolean);
 
     void reset_type(Type type);
