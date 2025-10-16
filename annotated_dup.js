@@ -89,15 +89,20 @@ var annotated_dup =
         ] ]
       ] ],
       [ "auto_invoke", "de/dbb/classcl7_1_1auto__invoke.html", "de/dbb/classcl7_1_1auto__invoke" ],
+      [ "char_type_of", "d8/dd0/structcl7_1_1char__type__of.html", null ],
+      [ "char_type_of< Tstring_char_ptr >", "d7/dec/structcl7_1_1char__type__of_3_01Tstring__char__ptr_01_4.html", "d7/dec/structcl7_1_1char__type__of_3_01Tstring__char__ptr_01_4" ],
+      [ "char_type_of< Tstring_view_like >", "d1/d85/structcl7_1_1char__type__of_3_01Tstring__view__like_01_4.html", "d1/d85/structcl7_1_1char__type__of_3_01Tstring__view__like_01_4" ],
       [ "const_ptr_forward_iterator", "d2/d93/classcl7_1_1const__ptr__forward__iterator.html", "d2/d93/classcl7_1_1const__ptr__forward__iterator" ],
       [ "contiguous_iterator", "d1/d5d/classcl7_1_1contiguous__iterator.html", "d1/d5d/classcl7_1_1contiguous__iterator" ],
       [ "Guid", "dc/dbd/structcl7_1_1Guid.html", "dc/dbd/structcl7_1_1Guid" ],
       [ "is_any_char", "d2/d08/structcl7_1_1is__any__char.html", null ],
+      [ "is_any_char_ptr", "df/d1c/structcl7_1_1is__any__char__ptr.html", null ],
       [ "is_any_string", "db/daf/structcl7_1_1is__any__string.html", null ],
       [ "is_any_string_or_span", "d8/db2/structcl7_1_1is__any__string__or__span.html", null ],
       [ "is_any_string_or_view", "da/d88/structcl7_1_1is__any__string__or__view.html", null ],
       [ "is_any_string_span", "df/d3e/structcl7_1_1is__any__string__span.html", null ],
       [ "is_any_string_view", "d9/d41/structcl7_1_1is__any__string__view.html", null ],
+      [ "is_any_string_view_like", "df/d9c/structcl7_1_1is__any__string__view__like.html", null ],
       [ "is_string_constructible", "d9/d09/structcl7_1_1is__string__constructible.html", null ],
       [ "ordered_map", "dd/d42/classcl7_1_1ordered__map.html", "dd/d42/classcl7_1_1ordered__map" ],
       [ "static_vector", "da/d4e/classcl7_1_1static__vector.html", "da/d4e/classcl7_1_1static__vector" ],
@@ -423,6 +428,7 @@ var annotated_dup =
       [ "resources", "da/d60/namespacexl7_1_1resources.html", [
         [ "DataProvider", "dd/def/classxl7_1_1resources_1_1DataProvider.html", "dd/def/classxl7_1_1resources_1_1DataProvider" ],
         [ "DefaultDataProvider", "d7/dcd/classxl7_1_1resources_1_1DefaultDataProvider.html", "d7/dcd/classxl7_1_1resources_1_1DefaultDataProvider" ],
+        [ "FakeDataProvider", "dc/d12/classxl7_1_1resources_1_1FakeDataProvider.html", "dc/d12/classxl7_1_1resources_1_1FakeDataProvider" ],
         [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html", "d5/d7b/classxl7_1_1resources_1_1Resource" ],
         [ "ResourceID", "d8/d44/classxl7_1_1resources_1_1ResourceID.html", "d8/d44/classxl7_1_1resources_1_1ResourceID" ],
         [ "ResourceManager", "d3/d00/classxl7_1_1resources_1_1ResourceManager.html", "d3/d00/classxl7_1_1resources_1_1ResourceManager" ]

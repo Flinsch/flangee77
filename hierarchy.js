@@ -63,8 +63,10 @@ var hierarchy =
     [ "dl7::syntax::matchers::BlockCommentMatcher", "d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html", null ],
     [ "std::bool_constant", null, [
       [ "cl7::is_any_char< Tchar >", "d2/d08/structcl7_1_1is__any__char.html", null ],
+      [ "cl7::is_any_char_ptr< Tchar_ptr >", "df/d1c/structcl7_1_1is__any__char__ptr.html", null ],
       [ "cl7::is_any_string_or_span< Tstring_or_span >", "d8/db2/structcl7_1_1is__any__string__or__span.html", null ],
       [ "cl7::is_any_string_or_view< Tstring_or_view >", "da/d88/structcl7_1_1is__any__string__or__view.html", null ],
+      [ "cl7::is_any_string_view_like< Tstring_view_like >", "df/d9c/structcl7_1_1is__any__string__view__like.html", null ],
       [ "cl7::is_string_constructible< Tstring, T >", "d9/d09/structcl7_1_1is__string__constructible.html", null ]
     ] ],
     [ "dl7::ini::detail::BooleanMatcher", "da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html", null ],
@@ -72,6 +74,9 @@ var hierarchy =
     [ "cl7::io::ByteWriter", "de/d6e/classcl7_1_1io_1_1ByteWriter.html", null ],
     [ "xl7::graphics::RenderingDevice::Capabilities", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html", null ],
     [ "xl7::graphics::PixelBitKit::Channel", "d3/da3/structxl7_1_1graphics_1_1PixelBitKit_1_1Channel.html", null ],
+    [ "cl7::char_type_of< T >", "d8/dd0/structcl7_1_1char__type__of.html", null ],
+    [ "cl7::char_type_of< Tstring_char_ptr >", "d7/dec/structcl7_1_1char__type__of_3_01Tstring__char__ptr_01_4.html", null ],
+    [ "cl7::char_type_of< Tstring_view_like >", "d1/d85/structcl7_1_1char__type__of_3_01Tstring__view__like_01_4.html", null ],
     [ "xl7::graphics::images::PngImageHandler::ChunkInfo", "d9/dc0/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1ChunkInfo.html", null ],
     [ "ml7::ops::clamp< min, max >", "d4/d01/structml7_1_1ops_1_1clamp.html", null ],
     [ "ml7::ops::clamp01", "d0/d5c/structml7_1_1ops_1_1clamp01.html", null ],
@@ -110,7 +115,8 @@ var hierarchy =
         [ "xl7::graphics::shaders::CodeDataProvider", "d3/da8/classxl7_1_1graphics_1_1shaders_1_1CodeDataProvider.html", null ],
         [ "xl7::graphics::shaders::ConstantDataProvider", "d1/dc3/classxl7_1_1graphics_1_1shaders_1_1ConstantDataProvider.html", null ],
         [ "xl7::graphics::textures::ImageDataProvider", "da/de6/classxl7_1_1graphics_1_1textures_1_1ImageDataProvider.html", null ]
-      ] ]
+      ] ],
+      [ "xl7::resources::FakeDataProvider", "dc/d12/classxl7_1_1resources_1_1FakeDataProvider.html", null ]
     ] ],
     [ "cl7::system::datetime", "d6/d16/structcl7_1_1system_1_1datetime.html", null ],
     [ "cl7::text::codec::Decoder< Tchar, TDefaultErrorHandler >", "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html", null ],

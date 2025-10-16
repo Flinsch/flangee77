@@ -2,6 +2,7 @@ var namespacexl7_1_1resources =
 [
     [ "DataProvider", "dd/def/classxl7_1_1resources_1_1DataProvider.html", "dd/def/classxl7_1_1resources_1_1DataProvider" ],
     [ "DefaultDataProvider", "d7/dcd/classxl7_1_1resources_1_1DefaultDataProvider.html", "d7/dcd/classxl7_1_1resources_1_1DefaultDataProvider" ],
+    [ "FakeDataProvider", "dc/d12/classxl7_1_1resources_1_1FakeDataProvider.html", "dc/d12/classxl7_1_1resources_1_1FakeDataProvider" ],
     [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html", "d5/d7b/classxl7_1_1resources_1_1Resource" ],
     [ "ResourceID", "d8/d44/classxl7_1_1resources_1_1ResourceID.html", "d8/d44/classxl7_1_1resources_1_1ResourceID" ],
     [ "ResourceManager", "d3/d00/classxl7_1_1resources_1_1ResourceManager.html", "d3/d00/classxl7_1_1resources_1_1ResourceManager" ],

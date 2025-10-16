@@ -4,6 +4,8 @@ var dir_01f95d537d9719603dbf8c75a5eec662 =
     [ "DataProvider.h", "d9/d4f/DataProvider_8h.html", "d9/d4f/DataProvider_8h" ],
     [ "DefaultDataProvider.cpp", "d8/d7f/DefaultDataProvider_8cpp.html", null ],
     [ "DefaultDataProvider.h", "d5/d58/DefaultDataProvider_8h.html", "d5/d58/DefaultDataProvider_8h" ],
+    [ "FakeDataProvider.cpp", "d6/dbc/FakeDataProvider_8cpp.html", null ],
+    [ "FakeDataProvider.h", "d2/d16/FakeDataProvider_8h.html", "d2/d16/FakeDataProvider_8h" ],
     [ "Resource.cpp", "d5/d63/Resource_8cpp.html", null ],
     [ "Resource.h", "da/d1f/Resource_8h.html", "da/d1f/Resource_8h" ],
     [ "ResourceID.cpp", "d5/d51/ResourceID_8cpp.html", null ],
