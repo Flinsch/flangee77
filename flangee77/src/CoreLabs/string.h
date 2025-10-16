@@ -201,6 +201,27 @@ namespace detail {
 
 
 
+    template <typename T>
+    struct char_type_of;
+
+    template <any_string_view_like Tstring_view_like>
+        requires(requires { typename Tstring_view_like::value_type; })
+    struct char_type_of<Tstring_view_like>
+    {
+        using type = Tstring_view_like::value_type;
+    };
+
+    template <any_char_ptr Tstring_char_ptr>
+    struct char_type_of<Tstring_char_ptr>
+    {
+        using type = std::remove_cv_t<std::remove_pointer_t<std::decay_t<Tstring_char_ptr>>>;
+    };
+
+    template <any_string_view_like Tstring_view_like>
+    using char_type_of_t = char_type_of<Tstring_view_like>::type;
+
+
+
     template <any_string Tstring>
     auto make_string(Tstring&& s)
     {
