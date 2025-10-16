@@ -68,6 +68,20 @@ namespace cl7 {
 
 
 
+    template <typename Tchar_ptr>
+    struct is_any_char_ptr
+        : std::bool_constant<std::is_pointer_v<std::decay_t<Tchar_ptr>> && is_any_char_v<std::remove_cv_t<std::remove_pointer_t<std::decay_t<Tchar_ptr>>>>>
+    {
+    };
+
+    template <typename Tchar_ptr>
+    inline constexpr bool is_any_char_ptr_v = is_any_char_ptr<Tchar_ptr>::value;
+
+    template <typename Tchar_ptr>
+    concept any_char_ptr = is_any_char_ptr_v<Tchar_ptr>;
+
+
+
 namespace detail {
     template <typename T>
     struct _is_any_string : std::false_type
@@ -129,6 +143,12 @@ namespace detail {
     {
     };
 
+    template <typename Tstring_view_like>
+    struct is_any_string_view_like
+        : std::bool_constant<is_any_string<Tstring_view_like>::value || is_any_string_view<Tstring_view_like>::value || is_any_string_span<Tstring_view_like>::value || is_any_char_ptr<Tstring_view_like>::value>
+    {
+    };
+
     template <typename Tstring>
     inline constexpr bool is_any_string_v = is_any_string<Tstring>::value;
 
@@ -144,6 +164,9 @@ namespace detail {
     template <typename Tstring_or_span>
     inline constexpr bool is_any_string_or_span_v = is_any_string_or_span<Tstring_or_span>::value;
 
+    template <typename Tstring_view_like>
+    inline constexpr bool is_any_string_view_like_v = is_any_string_view_like<Tstring_view_like>::value;
+
     template <typename Tstring>
     concept any_string = is_any_string_v<Tstring>;
 
@@ -158,6 +181,9 @@ namespace detail {
 
     template <typename Tstring_or_span>
     concept any_string_or_span = is_any_string_or_span_v<Tstring_or_span>;
+
+    template <typename Tstring_view_like>
+    concept any_string_view_like = is_any_string_view_like_v<Tstring_view_like>;
 
 
 
