@@ -240,6 +240,12 @@ namespace detail {
         return std::basic_string<typename Tstring_span::value_type>(s.data(), s.size());
     }
 
+    template <any_char Tchar>
+    auto make_string(const Tchar* s)
+    {
+        return std::basic_string<Tchar>(s);
+    }
+
     template <any_string_or_view Tstring_or_view>
     auto make_string_view(const Tstring_or_view& s)
     {
@@ -252,10 +258,22 @@ namespace detail {
         return std::basic_string_view<typename Tstring_span::value_type>(s.data(), s.size());
     }
 
+    template <any_char Tchar>
+    auto make_string_view(const Tchar* s)
+    {
+        return std::basic_string_view<Tchar>(s);
+    }
+
     template <any_string_or_span Tstring_or_span>
     auto make_string_span(Tstring_or_span& s)
     {
         return std::span<typename Tstring_or_span::value_type>(s.data(), s.size());
+    }
+
+    template <any_char Tchar>
+    auto make_string_span(Tchar* s, size_t size)
+    {
+        return std::span<Tchar>(s, size);
     }
 
 
