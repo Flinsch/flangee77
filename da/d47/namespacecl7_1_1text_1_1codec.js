@@ -13,6 +13,7 @@ var namespacecl7_1_1text_1_1codec =
     [ "ErrorHandler", "d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html", "d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler" ],
     [ "ErrorStatus", "d3/dea/structcl7_1_1text_1_1codec_1_1ErrorStatus.html", "d3/dea/structcl7_1_1text_1_1codec_1_1ErrorStatus" ],
     [ "LoggingErrorHandler", "db/d54/classcl7_1_1text_1_1codec_1_1LoggingErrorHandler.html", "db/d54/classcl7_1_1text_1_1codec_1_1LoggingErrorHandler" ],
+    [ "PlainErrorHandler", "d1/d75/classcl7_1_1text_1_1codec_1_1PlainErrorHandler.html", "d1/d75/classcl7_1_1text_1_1codec_1_1PlainErrorHandler" ],
     [ "traits", "d7/d07/structcl7_1_1text_1_1codec_1_1traits.html", "d7/d07/structcl7_1_1text_1_1codec_1_1traits" ],
     [ "traits< cl7::achar_t >", "d7/db1/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1achar__t_01_4.html", "d7/db1/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1achar__t_01_4" ],
     [ "traits< cl7::u16char_t >", "d2/d25/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u16char__t_01_4.html", "d2/d25/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u16char__t_01_4" ],

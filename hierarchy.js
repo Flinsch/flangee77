@@ -155,7 +155,8 @@ var hierarchy =
     [ "xl7::graphics::pipeline::AbstractPipelineObject::StateArray< TProxy, N >::Entry", "d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html", null ],
     [ "tl7::Signature::equal_to", "da/dc1/structtl7_1_1Signature_1_1equal__to.html", null ],
     [ "cl7::text::codec::ErrorHandler", "d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html", [
-      [ "cl7::text::codec::LoggingErrorHandler", "db/d54/classcl7_1_1text_1_1codec_1_1LoggingErrorHandler.html", null ]
+      [ "cl7::text::codec::LoggingErrorHandler", "db/d54/classcl7_1_1text_1_1codec_1_1LoggingErrorHandler.html", null ],
+      [ "cl7::text::codec::PlainErrorHandler", "d1/d75/classcl7_1_1text_1_1codec_1_1PlainErrorHandler.html", null ]
     ] ],
     [ "dl7::json::util::Unescaper::ErrorHandler", "d0/d2a/structdl7_1_1json_1_1util_1_1Unescaper_1_1ErrorHandler.html", [
       [ "dl7::json::detail::UnescaperErrorHandler", "dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler.html", null ]

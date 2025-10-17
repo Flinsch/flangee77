@@ -20,6 +20,7 @@ var dir_291274577cfc72429e49d77bdf3c3138 =
     [ "ErrorStatus.h", "dd/d42/ErrorStatus_8h.html", "dd/d42/ErrorStatus_8h" ],
     [ "LoggingErrorHandler.cpp", "d7/d5a/LoggingErrorHandler_8cpp.html", null ],
     [ "LoggingErrorHandler.h", "d5/dd6/LoggingErrorHandler_8h.html", "d5/dd6/LoggingErrorHandler_8h" ],
+    [ "PlainErrorHandler.h", "dd/dd0/PlainErrorHandler_8h.html", "dd/dd0/PlainErrorHandler_8h" ],
     [ "traits.h", "dd/dff/traits_8h.html", "dd/dff/traits_8h" ],
     [ "Transcoder.h", "d6/db9/Transcoder_8h.html", "d6/db9/Transcoder_8h" ],
     [ "Utf16Codec.cpp", "d1/d12/Utf16Codec_8cpp.html", "d1/d12/Utf16Codec_8cpp" ],
