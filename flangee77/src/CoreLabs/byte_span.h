@@ -1,7 +1,7 @@
 #ifndef CL7_BYTESPAN_H
 #define CL7_BYTESPAN_H
 
-#include <CoreLabs/root.h>
+#include "./detail/bytes.h"
 
 #include <span>
 
@@ -15,30 +15,27 @@ namespace cl7 {
 
 
 
-    template <class T>
-        requires(requires {
-            typename T::value_type;
-        } && requires (T& v) {
-            { v.data() } -> std::same_as<typename T::value_type*>;
-            { v.size() } -> std::convertible_to<size_t>;
-        } && sizeof(typename T::value_type) == sizeof(std::byte))
-    auto make_byte_span(T& v)
+    template <std::ranges::contiguous_range Tcontainer>
+        requires(std::is_trivially_copyable_v<typename Tcontainer::value_type>)
+    auto make_byte_span(Tcontainer& container)
     {
-        return byte_span(reinterpret_cast<std::byte*>(v.data()), v.size());
+        assert(detail::is_contiguous_without_gaps(container));
+        return byte_span(reinterpret_cast<std::byte*>(container.data()), container.size() * sizeof(typename Tcontainer::value_type));
     }
 
-    template <typename T>
-        requires(std::is_same_v<std::remove_cvref_t<T>, T> && std::is_trivially_copyable_v<T>)
-    auto make_byte_span(T* obj)
+    template <typename Telement>
+        requires(!std::is_reference_v<Telement> && std::is_trivially_copyable_v<Telement>)
+    auto make_byte_span(Telement* array, size_t count)
     {
-        return byte_span(reinterpret_cast<std::byte*>(obj), sizeof(T));
+        assert(detail::is_contiguous_without_gaps(array, count));
+        return byte_span(reinterpret_cast<std::byte*>(array), count * sizeof(Telement));
     }
 
-    template <typename T>
-        requires(std::is_same_v<std::remove_cvref_t<T>, T> && sizeof(T) == sizeof(std::byte))
-    auto make_byte_span(T* data, size_t size)
+    template <typename Tobject>
+        requires(!std::is_reference_v<Tobject> && std::is_trivially_copyable_v<Tobject>)
+    auto make_byte_span(Tobject* object)
     {
-        return byte_span(reinterpret_cast<std::byte*>(data), size);
+        return byte_span(reinterpret_cast<std::byte*>(object), sizeof(Tobject));
     }
 
 

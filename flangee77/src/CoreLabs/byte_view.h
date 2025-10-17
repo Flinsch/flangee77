@@ -1,7 +1,7 @@
 #ifndef CL7_BYTEVIEW_H
 #define CL7_BYTEVIEW_H
 
-#include <CoreLabs/root.h>
+#include "./detail/bytes.h"
 
 #include <span>
 
@@ -15,68 +15,27 @@ namespace cl7 {
 
 
 
-    template <class T>
-        requires(requires {
-            typename T::value_type;
-        } && requires (const T& v) {
-            { v.data() } -> std::same_as<const typename T::value_type*>;
-            { v.size() } -> std::convertible_to<size_t>;
-        } && sizeof(typename T::value_type) == sizeof(std::byte))
-    auto make_byte_view(const T& v)
+    template <std::ranges::contiguous_range Tcontainer>
+        requires(std::is_trivially_copyable_v<typename Tcontainer::value_type>)
+    auto make_byte_view(const Tcontainer& container)
     {
-        return byte_view(reinterpret_cast<const std::byte*>(v.data()), v.size());
+        assert(detail::is_contiguous_without_gaps(container));
+        return byte_view(reinterpret_cast<const std::byte*>(container.data()), container.size() * sizeof(typename Tcontainer::value_type));
     }
 
-    template <typename T>
-        requires(std::is_same_v<std::remove_cvref_t<T>, T> && sizeof(T) == sizeof(std::byte))
-    auto make_byte_view(const T* data, size_t size)
+    template <typename Telement>
+        requires(!std::is_reference_v<Telement> && std::is_trivially_copyable_v<Telement>)
+    auto make_byte_view(const Telement* array, size_t count)
     {
-        return byte_view(reinterpret_cast<const std::byte*>(data), size);
+        assert(detail::is_contiguous_without_gaps(array, count));
+        return byte_view(reinterpret_cast<const std::byte*>(array), count * sizeof(Telement));
     }
 
-    template <typename T>
-        requires(std::is_same_v<std::remove_cvref_t<T>, T> && std::is_trivially_copyable_v<T> && sizeof(T) == sizeof(std::byte))
-    auto make_byte_view(const T* obj)
+    template <typename Tobject>
+        requires(!std::is_reference_v<Tobject> && std::is_trivially_copyable_v<Tobject>)
+    auto make_byte_view(const Tobject* object)
     {
-        return byte_view(reinterpret_cast<const std::byte*>(obj), 1);
-    }
-
-
-
-    template <class T>
-        requires(requires {
-            typename T::value_type;
-        } && requires (const T& v) {
-            { v.data() } -> std::same_as<const typename T::value_type*>;
-            { v.size() } -> std::convertible_to<size_t>;
-        })
-    auto make_byte_view_contiguous(const T& v)
-    {
-        if (v.size() > 1) {
-            const auto* b0 = reinterpret_cast<const std::byte*>(&v[0]);
-            const auto* b1 = reinterpret_cast<const std::byte*>(&v[1]);
-            assert(b1 == b0 + sizeof(T));
-        }
-        return byte_view(reinterpret_cast<const std::byte*>(v.data()), v.size() * sizeof(typename T::value_type));
-    }
-
-    template <typename T>
-        requires(std::is_same_v<std::remove_cvref_t<T>, T>)
-    auto make_byte_view_contiguous(const T* array, size_t count)
-    {
-        if (count > 1) {
-            const auto* b0 = reinterpret_cast<const std::byte*>(&array[0]);
-            const auto* b1 = reinterpret_cast<const std::byte*>(&array[1]);
-            assert(b1 == b0 + sizeof(T));
-        }
-        return byte_view(reinterpret_cast<const std::byte*>(array), count * sizeof(T));
-    }
-
-    template <typename T>
-        requires(std::is_same_v<std::remove_cvref_t<T>, T> && std::is_trivially_copyable_v<T>)
-    auto make_byte_view_contiguous(const T* obj)
-    {
-        return byte_view(reinterpret_cast<const std::byte*>(obj), sizeof(T));
+        return byte_view(reinterpret_cast<const std::byte*>(object), sizeof(Tobject));
     }
 
 

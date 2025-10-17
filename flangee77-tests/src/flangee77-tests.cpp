@@ -3,6 +3,7 @@
 #include <CoreLabs/logging.h>
 
 #include "./CoreLabs/bits.h"
+#include "./CoreLabs/bytes.h"
 #include "./CoreLabs/ordered_map.h"
 #include "./CoreLabs/static_vector.h"
 #include "./CoreLabs/utilities.h"
