@@ -3,6 +3,7 @@
 #include <CoreLabs/byte_vector.h>
 #include <CoreLabs/text/codec.h>
 #include <CoreLabs/text/codec/Analyzer.h>
+#include <CoreLabs/text/codec/PlainErrorHandler.h>
 #include <CoreLabs/text/codec/Transcoder.h>
 #include <CoreLabs/text/inspect.h>
 
@@ -58,7 +59,7 @@ namespace cl7::io {
 
     static cl7::u8string _validate_utf8(cl7::u8string&& utf8_unchecked)
     {
-        if (cl7::text::codec::Analyzer<cl7::u8char_t, cl7::text::codec::ErrorHandler>().validate(utf8_unchecked))
+        if (cl7::text::codec::Analyzer<cl7::u8char_t, cl7::text::codec::PlainErrorHandler>().validate(utf8_unchecked))
             return std::move(utf8_unchecked);
 
         return cl7::text::codec::Transcoder<cl7::u8char_t, cl7::u8char_t>().transcode(utf8_unchecked);

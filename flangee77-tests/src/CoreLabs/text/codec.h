@@ -8,6 +8,7 @@
 #include <CoreLabs/text/codec/Utf32Codec.h>
 #include <CoreLabs/text/codec/EncodeBuffer.h>
 #include <CoreLabs/text/codec/DefaultErrorHandler.h>
+#include <CoreLabs/text/codec/PlainErrorHandler.h>
 #include "CoreLabs/text/codec/codepoint_iterator.h"
 
 #include <TestLabs/TestSuite.h>
@@ -36,7 +37,7 @@ namespace tl7::internals {
 
 
 
-using MyErrorHandler = cl7::text::codec::ErrorHandler;//cl7::text::codec::DefaultErrorHandler;
+using MyErrorHandler = cl7::text::codec::PlainErrorHandler;//cl7::text::codec::DefaultErrorHandler;
 
 
 

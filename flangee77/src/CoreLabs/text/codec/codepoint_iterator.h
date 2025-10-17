@@ -2,6 +2,7 @@
 #define CL7_TEXT_CODEC_CODEPOINTITERATOR_H
 
 #include "./Decoder.h"
+#include "./PlainErrorHandler.h"
 
 
 
@@ -37,7 +38,7 @@ public:
     codepoint_iterator(string_view_type input, const ErrorHandler* error_handler = nullptr)
         : _decoder_iterator(input, error_handler)
     {
-        Decoder<Tchar, TDefaultErrorHandler> decoder(error_handler);
+        Decoder<Tchar, PlainErrorHandler> decoder;
         _codepoint_count = decoder.determine_length(input);
     }
 
