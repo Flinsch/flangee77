@@ -190,6 +190,21 @@ var annotated_dup =
         [ "TokenReader", "db/d76/classdl7_1_1syntax_1_1TokenReader.html", "db/d76/classdl7_1_1syntax_1_1TokenReader" ],
         [ "Vocabulary", "dd/d27/classdl7_1_1syntax_1_1Vocabulary.html", "dd/d27/classdl7_1_1syntax_1_1Vocabulary" ]
       ] ],
+      [ "xml", "da/d33/namespacedl7_1_1xml.html", [
+        [ "detail", "d4/dc2/namespacedl7_1_1xml_1_1detail.html", [
+          [ "Builder", "d3/d69/classdl7_1_1xml_1_1detail_1_1Builder.html", "d3/d69/classdl7_1_1xml_1_1detail_1_1Builder" ],
+          [ "Generator", "d8/d0a/classdl7_1_1xml_1_1detail_1_1Generator.html", "d8/d0a/classdl7_1_1xml_1_1detail_1_1Generator" ],
+          [ "Lexer", "d9/d9c/classdl7_1_1xml_1_1detail_1_1Lexer.html", "d9/d9c/classdl7_1_1xml_1_1detail_1_1Lexer" ]
+        ] ],
+        [ "Attribute", "d5/d23/classdl7_1_1xml_1_1Attribute.html", "d5/d23/classdl7_1_1xml_1_1Attribute" ],
+        [ "Document", "de/dd5/classdl7_1_1xml_1_1Document.html", "de/dd5/classdl7_1_1xml_1_1Document" ],
+        [ "Element", "de/dc8/classdl7_1_1xml_1_1Element.html", "de/dc8/classdl7_1_1xml_1_1Element" ],
+        [ "Format", "db/df3/structdl7_1_1xml_1_1Format.html", "db/df3/structdl7_1_1xml_1_1Format" ],
+        [ "Node", "d2/d24/classdl7_1_1xml_1_1Node.html", "d2/d24/classdl7_1_1xml_1_1Node" ],
+        [ "Text", "df/dd2/classdl7_1_1xml_1_1Text.html", "df/dd2/classdl7_1_1xml_1_1Text" ],
+        [ "XmlReader", "de/d7c/classdl7_1_1xml_1_1XmlReader.html", "de/d7c/classdl7_1_1xml_1_1XmlReader" ],
+        [ "XmlWriter", "d9/dba/classdl7_1_1xml_1_1XmlWriter.html", "d9/dba/classdl7_1_1xml_1_1XmlWriter" ]
+      ] ],
       [ "Base64", "da/d3b/classdl7_1_1Base64.html", "da/d3b/classdl7_1_1Base64" ]
     ] ],
     [ "fl7", "d5/d46/namespacefl7.html", [

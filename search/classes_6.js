@@ -8,6 +8,6 @@ var searchData=
   ['font_5',['Font',['../d3/d00/classfl7_1_1fonts_1_1Font.html',1,'fl7::fonts']]],
   ['fontheader_6',['FontHeader',['../d9/ded/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontHeader.html',1,'fl7::fonts::TrueTypeFontLoader']]],
   ['fontloader_7',['FontLoader',['../da/d82/classfl7_1_1fonts_1_1FontLoader.html',1,'fl7::fonts']]],
-  ['format_8',['format',['../d9/db3/structdl7_1_1ini_1_1Format.html',1,'dl7::ini::Format'],['../df/d52/structdl7_1_1json_1_1Format.html',1,'dl7::json::Format']]],
+  ['format_8',['format',['../d9/db3/structdl7_1_1ini_1_1Format.html',1,'dl7::ini::Format'],['../df/d52/structdl7_1_1json_1_1Format.html',1,'dl7::json::Format'],['../db/df3/structdl7_1_1xml_1_1Format.html',1,'dl7::xml::Format']]],
   ['framebuffersurface_9',['FramebufferSurface',['../d0/d60/classxl7_1_1graphics_1_1surfaces_1_1FramebufferSurface.html',1,'xl7::graphics::surfaces']]]
 ];

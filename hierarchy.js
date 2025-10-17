@@ -55,6 +55,7 @@ var hierarchy =
     [ "xl7::graphics::surfaces::SurfaceManager::Attorney", "d8/d99/classxl7_1_1graphics_1_1surfaces_1_1SurfaceManager_1_1Attorney.html", null ],
     [ "xl7::graphics::textures::TextureManager::Attorney", "d4/ddc/classxl7_1_1graphics_1_1textures_1_1TextureManager_1_1Attorney.html", null ],
     [ "xl7::resources::Resource::Attorney", "d0/d78/classxl7_1_1resources_1_1Resource_1_1Attorney.html", null ],
+    [ "dl7::xml::Attribute", "d5/d23/classdl7_1_1xml_1_1Attribute.html", null ],
     [ "cl7::auto_invoke< Callable >", "de/dbb/classcl7_1_1auto__invoke.html", null ],
     [ "xl7::BackendRegistry< TBackendBase >", "d1/da6/classxl7_1_1BackendRegistry.html", null ],
     [ "dl7::Base64", "da/d3b/classdl7_1_1Base64.html", null ],
@@ -144,6 +145,7 @@ var hierarchy =
     [ "dl7::syntax::Diagnostics", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html", [
       [ "dl7::syntax::SourceAwareDiagnostics", "d2/d51/classdl7_1_1syntax_1_1SourceAwareDiagnostics.html", null ]
     ] ],
+    [ "dl7::xml::Document", "de/dd5/classdl7_1_1xml_1_1Document.html", null ],
     [ "dl7::syntax::matchers::DoubleQuotedStringMatcher", "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html", null ],
     [ "xl7::DriverResolver::DriverEntry", "df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html", null ],
     [ "xl7::DriverResolver", "de/d70/structxl7_1_1DriverResolver.html", null ],
@@ -189,6 +191,7 @@ var hierarchy =
     ] ],
     [ "dl7::ini::Format", "d9/db3/structdl7_1_1ini_1_1Format.html", null ],
     [ "dl7::json::Format", "df/d52/structdl7_1_1json_1_1Format.html", null ],
+    [ "dl7::xml::Format", "db/df3/structdl7_1_1xml_1_1Format.html", null ],
     [ "xl7::Config::General", "dd/d38/structxl7_1_1Config_1_1General.html", null ],
     [ "fl7::fonts::Glyph", "d2/d26/structfl7_1_1fonts_1_1Glyph.html", null ],
     [ "dl7::syntax::Grammar", "d8/d95/structdl7_1_1syntax_1_1Grammar.html", null ],
@@ -285,6 +288,11 @@ var hierarchy =
     [ "cl7::system::MemoryStatus", "d1/d7a/structcl7_1_1system_1_1MemoryStatus.html", null ],
     [ "xl7::graphics::meshes::MeshUtil", "d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil.html", null ],
     [ "dl7::json::Format::MultiLineOptions", "d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html", null ],
+    [ "dl7::xml::Format::MultiLineOptions", "dd/de4/structdl7_1_1xml_1_1Format_1_1MultiLineOptions.html", null ],
+    [ "dl7::xml::Node", "d2/d24/classdl7_1_1xml_1_1Node.html", [
+      [ "dl7::xml::Element", "de/dc8/classdl7_1_1xml_1_1Element.html", null ],
+      [ "dl7::xml::Text", "df/dd2/classdl7_1_1xml_1_1Text.html", null ]
+    ] ],
     [ "fl7::fonts::TrueTypeFontLoader::OffsetSubtable", "d2/d3d/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OffsetSubtable.html", null ],
     [ "dl7::Base64::Options", "de/d56/structdl7_1_1Base64_1_1Options.html", null ],
     [ "dl7::json::util::Escaper::Options", "d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html", null ],
@@ -299,11 +307,17 @@ var hierarchy =
       [ "dl7::syntax::AstProcessor< Json, cl7::u8string >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", [
         [ "dl7::json::detail::Generator", "d5/dc2/classdl7_1_1json_1_1detail_1_1Generator.html", null ]
       ] ],
+      [ "dl7::syntax::AstProcessor< Document, cl7::u8string >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", [
+        [ "dl7::xml::detail::Generator", "d8/d0a/classdl7_1_1xml_1_1detail_1_1Generator.html", null ]
+      ] ],
       [ "dl7::syntax::DirectAstBuilder< Ini >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", [
         [ "dl7::ini::detail::Builder", "d2/d8d/classdl7_1_1ini_1_1detail_1_1Builder.html", null ]
       ] ],
       [ "dl7::syntax::DirectAstBuilder< Json >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", [
         [ "dl7::json::detail::Builder", "de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html", null ]
+      ] ],
+      [ "dl7::syntax::DirectAstBuilder< Document >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", [
+        [ "dl7::xml::detail::Builder", "d3/d69/classdl7_1_1xml_1_1detail_1_1Builder.html", null ]
       ] ],
       [ "dl7::syntax::AstProcessor< TAstNode, Tresult >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", null ],
       [ "dl7::syntax::CstBuilder", "db/dc4/classdl7_1_1syntax_1_1CstBuilder.html", null ],
@@ -312,7 +326,8 @@ var hierarchy =
       [ "dl7::syntax::Lexer", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html", [
         [ "dl7::syntax::GenericLexer", "d5/da3/classdl7_1_1syntax_1_1GenericLexer.html", [
           [ "dl7::ini::detail::Lexer", "d0/dfd/classdl7_1_1ini_1_1detail_1_1Lexer.html", null ],
-          [ "dl7::json::detail::Lexer", "d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer.html", null ]
+          [ "dl7::json::detail::Lexer", "d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer.html", null ],
+          [ "dl7::xml::detail::Lexer", "d9/d9c/classdl7_1_1xml_1_1detail_1_1Lexer.html", null ]
         ] ]
       ] ]
     ] ],
@@ -445,6 +460,7 @@ var hierarchy =
     ] ],
     [ "xl7::graphics::images::PngImageHandler::Signature", "d3/d3e/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Signature.html", null ],
     [ "dl7::json::Format::SingleLineOptions", "df/dd2/structdl7_1_1json_1_1Format_1_1SingleLineOptions.html", null ],
+    [ "dl7::xml::Format::SingleLineOptions", "d0/d12/structdl7_1_1xml_1_1Format_1_1SingleLineOptions.html", null ],
     [ "dl7::syntax::matchers::SingleQuotedStringMatcher", "de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::SingleState< TValue >", "dc/df6/classxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1SingleState.html", null ],
     [ "cl7::creational::SingletonBase", "d9/d10/classcl7_1_1creational_1_1SingletonBase.html", [
@@ -552,5 +568,7 @@ var hierarchy =
     [ "xl7::graphics::meshes::VertexLayout", "d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html", null ],
     [ "xl7::Config::Video", "d2/d33/structxl7_1_1Config_1_1Video.html", null ],
     [ "xl7::graphics::Viewport", "dc/d8f/structxl7_1_1graphics_1_1Viewport.html", null ],
-    [ "dl7::syntax::Vocabulary", "dd/d27/classdl7_1_1syntax_1_1Vocabulary.html", null ]
+    [ "dl7::syntax::Vocabulary", "dd/d27/classdl7_1_1syntax_1_1Vocabulary.html", null ],
+    [ "dl7::xml::XmlReader", "de/d7c/classdl7_1_1xml_1_1XmlReader.html", null ],
+    [ "dl7::xml::XmlWriter", "d9/dba/classdl7_1_1xml_1_1XmlWriter.html", null ]
 ];

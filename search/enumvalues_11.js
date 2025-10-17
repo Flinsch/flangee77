@@ -4,7 +4,7 @@ var searchData=
   ['scientific_1',['Scientific',['../df/d89/namespacecl7_1_1text_1_1format.html#a973710ef9236c336f0c987d59833b972a21234a0e100d74037a4da2e53f3200d7',1,'cl7::text::format']]],
   ['section_2',['Section',['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ad2c24d59e0baff4d0155fbdf62590867',1,'cl7::logging']]],
   ['section_5fname_5fdelimiter_3',['SECTION_NAME_DELIMITER',['../de/d05/namespacedl7_1_1ini_1_1detail.html#a840033c2b8b2b45076f2800dd65544a1a4e49ae7ba5949fc43564cdb2187b50d2',1,'dl7::ini::detail']]],
-  ['singleline_4',['SingleLine',['../df/d52/structdl7_1_1json_1_1Format.html#a6a8a994bee9e67bd29d6ff5bd5eb6b64a3e5c1fb76b6543ac61af54b185f02af9',1,'dl7::json::Format']]],
+  ['singleline_4',['singleline',['../db/df3/structdl7_1_1xml_1_1Format.html#a79cbbb2f423475c561be08709a473cdea3e5c1fb76b6543ac61af54b185f02af9',1,'dl7::xml::Format::SingleLine'],['../df/d52/structdl7_1_1json_1_1Format.html#a6a8a994bee9e67bd29d6ff5bd5eb6b64a3e5c1fb76b6543ac61af54b185f02af9',1,'dl7::json::Format::SingleLine']]],
   ['singlequote_5',['SingleQuote',['../d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html#a597cb193de9275b68b56fd9a8a074228aab6f946be65ae6c2ee9b1131872a4f19',1,'dl7::json::util::Escaper']]],
   ['sint_6',['SINT',['../d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html#a5530d75c6c68fd1245348aa0628097f6a0d6b471a91d4d6f751adbee558004f1f',1,'xl7::graphics::PixelBitKit']]],
   ['slash_7',['Slash',['../d9/db3/structdl7_1_1ini_1_1Format.html#af0738a2b310ac38e69274f4e5c5d23e8a358cfe58715d680d9ab09f82e4010cbc',1,'dl7::ini::Format']]],

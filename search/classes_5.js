@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['element_0',['Element',['../d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html',1,'xl7::graphics::meshes::VertexLayout']]],
+  ['element_0',['element',['../de/dc8/classdl7_1_1xml_1_1Element.html',1,'dl7::xml::Element'],['../d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html',1,'xl7::graphics::meshes::VertexLayout::Element']]],
   ['encodebuffer_1',['EncodeBuffer',['../d0/d4a/structcl7_1_1text_1_1codec_1_1EncodeBuffer.html',1,'cl7::text::codec']]],
   ['encoder_2',['Encoder',['../d6/d1d/classcl7_1_1text_1_1codec_1_1Encoder.html',1,'cl7::text::codec']]],
   ['encoderesult_3',['EncodeResult',['../d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult.html',1,'cl7::text::codec']]],

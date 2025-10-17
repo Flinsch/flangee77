@@ -1,27 +1,34 @@
 <map id="DataLabs/syntax/TokenReader.h" name="DataLabs/syntax/TokenReader.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="441,5,670,31"/>
-<area shape="rect" id="Node000002" href="$d3/dbe/BufferedTokenReader_8h.html" title=" " alt="" coords="5,79,196,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="476,36,209,81,197,83,196,78,208,76,475,30"/>
-<area shape="rect" id="Node000003" href="$d7/d07/CstBuilder_8h.html" title=" " alt="" coords="221,86,434,111"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="510,38,361,89,360,83,508,33"/>
-<area shape="rect" id="Node000004" href="$d5/d44/DirectAstBuilder_8h.html" title=" " alt="" coords="458,79,653,119"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="558,44,558,79,553,79,553,44"/>
-<area shape="rect" id="Node000011" href="$d7/de1/LexingTokenReader_8h.html" title=" " alt="" coords="583,167,797,207"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="607,34,639,52,667,77,679,99,687,123,693,166,687,167,682,124,674,101,663,80,636,56,605,38"/>
-<area shape="rect" id="Node000012" href="$d9/ddb/TokenReader_8cpp.html" title=" " alt="" coords="728,86,972,111"/>
-<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="612,32,808,83,806,89,611,37"/>
-<area shape="rect" id="Node000005" href="$d2/d58/ini_2detail_2Builder_8h.html" title=" " alt="" coords="414,167,558,207"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="533,131,503,168,499,165,529,128"/>
-<area shape="rect" id="Node000008" href="$d8/d7d/json_2detail_2Builder_8h.html" title=" " alt="" coords="822,167,977,207"/>
-<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="645,119,825,164,823,169,643,125"/>
-<area shape="rect" id="Node000006" href="$d2/dea/IniReader_8cpp.html" title=" " alt="" coords="481,262,675,287"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="518,214,567,260,563,263,514,218"/>
-<area shape="rect" id="Node000007" href="$d8/da5/ini_2detail_2Builder_8cpp.html" title=" " alt="" coords="313,255,457,295"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="455,218,409,256,405,252,451,214"/>
-<area shape="rect" id="Node000009" href="$d7/ded/JsonReader_8cpp.html" title=" " alt="" coords="700,262,917,287"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="871,218,823,263,819,260,868,214"/>
-<area shape="rect" id="Node000010" href="$d2/d65/json_2detail_2Builder_8cpp.html" title=" " alt="" coords="942,255,1097,295"/>
-<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="939,213,994,252,991,257,936,217"/>
-<area shape="poly" id="edge11_Node000011_Node000006" title=" " alt="" coords="656,217,595,264,592,259,653,213"/>
-<area shape="poly" id="edge12_Node000011_Node000009" title=" " alt="" coords="729,213,794,260,791,264,726,217"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="411,5,640,31"/>
+<area shape="rect" id="Node000002" href="$d3/dbe/BufferedTokenReader_8h.html" title=" " alt="" coords="59,79,250,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="459,36,244,81,243,76,458,31"/>
+<area shape="rect" id="Node000003" href="$d7/d07/CstBuilder_8h.html" title=" " alt="" coords="275,86,488,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="494,40,404,88,401,83,491,35"/>
+<area shape="rect" id="Node000004" href="$d5/d44/DirectAstBuilder_8h.html" title=" " alt="" coords="563,79,757,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="558,35,629,76,626,81,556,40"/>
+<area shape="rect" id="Node000014" href="$d7/de1/LexingTokenReader_8h.html" title=" " alt="" coords="381,167,595,207"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="522,45,495,167,490,166,517,44"/>
+<area shape="rect" id="Node000015" href="$d9/ddb/TokenReader_8cpp.html" title=" " alt="" coords="782,86,1026,111"/>
+<area shape="poly" id="edge17_Node000001_Node000015" title=" " alt="" coords="594,31,849,83,848,89,593,36"/>
+<area shape="rect" id="Node000005" href="$d2/d58/ini_2detail_2Builder_8h.html" title=" " alt="" coords="199,167,343,207"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="562,124,343,172,342,167,561,119"/>
+<area shape="rect" id="Node000008" href="$d8/d7d/json_2detail_2Builder_8h.html" title=" " alt="" coords="620,167,775,207"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="676,130,692,165,687,168,671,133"/>
+<area shape="rect" id="Node000011" href="$dd/d35/xml_2detail_2Builder_8h.html" title=" " alt="" coords="799,167,953,207"/>
+<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="721,121,830,164,828,169,719,126"/>
+<area shape="rect" id="Node000006" href="$d2/dea/IniReader_8cpp.html" title=" " alt="" coords="173,262,368,287"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="273,221,273,262,268,262,268,221"/>
+<area shape="rect" id="Node000007" href="$d8/da5/ini_2detail_2Builder_8cpp.html" title=" " alt="" coords="5,255,149,295"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="217,215,121,257,119,252,215,210"/>
+<area shape="rect" id="Node000009" href="$d7/ded/JsonReader_8cpp.html" title=" " alt="" coords="393,262,610,287"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="643,215,528,264,526,260,641,210"/>
+<area shape="rect" id="Node000010" href="$d2/d65/json_2detail_2Builder_8cpp.html" title=" " alt="" coords="873,255,1028,295"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="767,209,896,252,894,257,765,214"/>
+<area shape="rect" id="Node000012" href="$d9/dd1/XmlReader_8cpp.html" title=" " alt="" coords="634,262,849,287"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="836,216,761,264,758,260,833,212"/>
+<area shape="rect" id="Node000013" href="$db/d4d/xml_2detail_2Builder_8cpp.html" title=" " alt="" coords="1053,255,1206,295"/>
+<area shape="poly" id="edge12_Node000011_Node000013" title=" " alt="" coords="945,209,1075,252,1073,257,944,214"/>
+<area shape="poly" id="edge14_Node000014_Node000006" title=" " alt="" coords="429,214,301,264,299,259,427,209"/>
+<area shape="poly" id="edge15_Node000014_Node000009" title=" " alt="" coords="496,220,502,261,497,262,490,221"/>
+<area shape="poly" id="edge16_Node000014_Node000012" title=" " alt="" coords="557,208,708,259,707,265,555,214"/>
 </map>
