@@ -20,7 +20,10 @@
 #include "./DataLabs/compression.h"
 #include "./DataLabs/syntax.h"
 #include "./DataLabs/json.h"
+//#include "./DataLabs/yaml.h"
+//#include "./DataLabs/toml.h"
 #include "./DataLabs/ini.h"
+#include "./DataLabs/xml.h"
 
 #include "./MathLabs/functions.h"
 #include "./MathLabs/ops.h"

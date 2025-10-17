@@ -48,4 +48,16 @@ target_sources(flangee77
     syntax/TerminalSymbolCollection.cpp
     syntax/TokenReader.cpp
     syntax/Vocabulary.cpp
+
+    xml/Attribute.cpp
+    xml/Document.cpp
+    xml/Element.cpp
+    xml/Node.cpp
+    xml/Text.cpp
+    xml/XmlReader.cpp
+    xml/XmlWriter.cpp
+
+    xml/detail/Builder.cpp
+    xml/detail/Generator.cpp
+    xml/detail/Lexer.cpp
 )
