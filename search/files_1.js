@@ -19,6 +19,7 @@ var searchData=
   ['byte_5fview_2eh_16',['byte_view.h',['../d9/d58/byte__view_8h.html',1,'']]],
   ['bytereader_2ecpp_17',['ByteReader.cpp',['../d2/d8f/ByteReader_8cpp.html',1,'']]],
   ['bytereader_2eh_18',['ByteReader.h',['../d1/dcd/ByteReader_8h.html',1,'']]],
-  ['bytewriter_2ecpp_19',['ByteWriter.cpp',['../df/db4/ByteWriter_8cpp.html',1,'']]],
-  ['bytewriter_2eh_20',['ByteWriter.h',['../d7/dfc/ByteWriter_8h.html',1,'']]]
+  ['bytes_2eh_19',['bytes.h',['../df/dd9/bytes_8h.html',1,'(Global Namespace)'],['../dd/d26/detail_2bytes_8h.html',1,'(Global Namespace)']]],
+  ['bytewriter_2ecpp_20',['ByteWriter.cpp',['../df/db4/ByteWriter_8cpp.html',1,'']]],
+  ['bytewriter_2eh_21',['ByteWriter.h',['../d7/dfc/ByteWriter_8h.html',1,'']]]
 ];

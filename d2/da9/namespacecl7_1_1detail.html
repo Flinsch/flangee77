@@ -92,7 +92,8 @@ $(document).ready(function(){initNavTree('d2/da9/namespacecl7_1_1detail.html','.
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">cl7::detail Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -111,7 +112,73 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html">_is_any_string_view&lt; std::basic_string_view&lt; Tchar, Ttraits &gt; &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:aee0028a81abaf8a6cc03494d6b571cfb" id="r_aee0028a81abaf8a6cc03494d6b571cfb"><td class="memTemplParams" colspan="2">template&lt;typename Telement &gt; <br />
+requires (!std::is_reference_v&lt;Telement&gt;)</td></tr>
+<tr class="memitem:aee0028a81abaf8a6cc03494d6b571cfb"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d2/da9/namespacecl7_1_1detail.html#aee0028a81abaf8a6cc03494d6b571cfb">is_contiguous_without_gaps</a> (const Telement *array, size_t count)</td></tr>
+<tr class="separator:aee0028a81abaf8a6cc03494d6b571cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3da27246e046c368ca5b08a39c6e42d" id="r_ad3da27246e046c368ca5b08a39c6e42d"><td class="memTemplParams" colspan="2">template&lt;std::ranges::contiguous_range Tcontainer&gt; </td></tr>
+<tr class="memitem:ad3da27246e046c368ca5b08a39c6e42d"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d2/da9/namespacecl7_1_1detail.html#ad3da27246e046c368ca5b08a39c6e42d">is_contiguous_without_gaps</a> (const Tcontainer &amp;container)</td></tr>
+<tr class="separator:ad3da27246e046c368ca5b08a39c6e42d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ad3da27246e046c368ca5b08a39c6e42d" name="ad3da27246e046c368ca5b08a39c6e42d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3da27246e046c368ca5b08a39c6e42d">&#9670;&#160;</a></span>is_contiguous_without_gaps() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::ranges::contiguous_range Tcontainer&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool cl7::detail::is_contiguous_without_gaps </td>
+          <td>(</td>
+          <td class="paramtype">const Tcontainer &amp;&#160;</td>
+          <td class="paramname"><em>container</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Checks whether elements of a standard contiguous container (e.g, vector, array, span, etc.) are laid out contiguously in memory (no gaps between consecutive elements).</p>
+<p>This function is somewhat redundant, since standard containers (like vector) are guaranteed to be contiguous without any padding between elements anyway. It is more useful for custom containers or spans. </p>
+
+</div>
+</div>
+<a id="aee0028a81abaf8a6cc03494d6b571cfb" name="aee0028a81abaf8a6cc03494d6b571cfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee0028a81abaf8a6cc03494d6b571cfb">&#9670;&#160;</a></span>is_contiguous_without_gaps() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Telement &gt; <br />
+requires (!std::is_reference_v&lt;Telement&gt;)</div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool cl7::detail::is_contiguous_without_gaps </td>
+          <td>(</td>
+          <td class="paramtype">const Telement *&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Checks whether elements of a raw C-style array are laid out contiguously in memory (no gaps between consecutive elements).</p>
+<p>This function is somewhat redundant, since traditional C-style arrays are contiguous without any padding between elements in C++ anyway. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

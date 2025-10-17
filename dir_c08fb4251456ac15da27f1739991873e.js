@@ -1,6 +1,7 @@
 var dir_c08fb4251456ac15da27f1739991873e =
 [
     [ "creational", "dir_64e4e24605a1353a6939978aa2004d8c.html", "dir_64e4e24605a1353a6939978aa2004d8c" ],
+    [ "detail", "dir_1379f66c393469df3fcb02ac10ebc5f9.html", "dir_1379f66c393469df3fcb02ac10ebc5f9" ],
     [ "io", "dir_1f313f182193c08b56ad7fac433077e3.html", "dir_1f313f182193c08b56ad7fac433077e3" ],
     [ "logging", "dir_56020a68af3d91f26f50ccf2aa431116.html", "dir_56020a68af3d91f26f50ccf2aa431116" ],
     [ "profiling", "dir_cfa0beef27af155f1d8428f361f8922c.html", "dir_cfa0beef27af155f1d8428f361f8922c" ],
@@ -12,6 +13,7 @@ var dir_c08fb4251456ac15da27f1739991873e =
     [ "byte_span.h", "d7/d56/byte__span_8h.html", "d7/d56/byte__span_8h" ],
     [ "byte_vector.h", "dd/d42/byte__vector_8h.html", "dd/d42/byte__vector_8h" ],
     [ "byte_view.h", "d9/d58/byte__view_8h.html", "d9/d58/byte__view_8h" ],
+    [ "bytes.h", "df/dd9/bytes_8h.html", null ],
     [ "errors.cpp", "d9/db9/CoreLabs_2errors_8cpp.html", "d9/db9/CoreLabs_2errors_8cpp" ],
     [ "errors.h", "d2/de3/CoreLabs_2errors_8h.html", "d2/de3/CoreLabs_2errors_8h" ],
     [ "filesystem.cpp", "d9/d8f/filesystem_8cpp.html", "d9/d8f/filesystem_8cpp" ],
