@@ -19,5 +19,6 @@ var classdl7_1_1syntax_1_1TokenReader =
     [ "skip_past_symbol_id", "db/d76/classdl7_1_1syntax_1_1TokenReader.html#aa729cd23f8423c276b24239952a547d2", null ],
     [ "skip_prefix", "db/d76/classdl7_1_1syntax_1_1TokenReader.html#a9b880b0d0f2741d60ae1c7af414d39b1", null ],
     [ "skip_symbol_id", "db/d76/classdl7_1_1syntax_1_1TokenReader.html#a13e8935186b96c186fd3ae7958351564", null ],
-    [ "skip_to_symbol_id", "db/d76/classdl7_1_1syntax_1_1TokenReader.html#a7a691d14637cc36f1c2e6f6de6834c45", null ]
+    [ "skip_to_symbol_id", "db/d76/classdl7_1_1syntax_1_1TokenReader.html#a7a691d14637cc36f1c2e6f6de6834c45", null ],
+    [ "skip_while_symbol_id", "db/d76/classdl7_1_1syntax_1_1TokenReader.html#a133b48198f2e6caf601ad6580f0b9db2", null ]
 ];
