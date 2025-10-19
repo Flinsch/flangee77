@@ -86,6 +86,12 @@ public:
     bool skip_symbol_id(SymbolID symbol_id);
 
     /**
+     * Advances past all consecutive tokens whose symbol ID matches the given one.
+     * Returns true if at least one token was skipped, false otherwise.
+     */
+    bool skip_while_symbol_id(SymbolID symbol_id);
+
+    /**
      * Advances to the next token if the current token's lexeme matches the
      * given string. Returns true if advanced, false otherwise.
      */

@@ -107,6 +107,21 @@ namespace dl7::syntax {
     }
 
     /**
+     * Advances past all consecutive tokens whose symbol ID matches the given one.
+     * Returns true if at least one token was skipped, false otherwise.
+     */
+    bool TokenReader::skip_while_symbol_id(SymbolID symbol_id)
+    {
+        bool skipped = false;
+        while (check_symbol_id(symbol_id))
+        {
+            next_token();
+            skipped = true;
+        }
+        return skipped;
+    }
+
+    /**
      * Advances to the next token if the current token's lexeme matches the
      * given string. Returns true if advanced, false otherwise.
      */

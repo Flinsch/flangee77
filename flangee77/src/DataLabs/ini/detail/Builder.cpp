@@ -306,7 +306,7 @@ namespace dl7::ini::detail {
                 oss << tmp;
                 oss << u8" ";
                 token_reader.next_token();
-                while (token_reader.skip_symbol_id(WHITESPACE)) { /* Ignore leading whitespace. */ }
+                token_reader.skip_while_symbol_id(WHITESPACE); // Ignore leading whitespace.
                 break;
             }
 
