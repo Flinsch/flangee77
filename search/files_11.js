@@ -6,7 +6,7 @@ var searchData=
   ['samplerstate_2ecpp_3',['SamplerState.cpp',['../dc/d74/SamplerState_8cpp.html',1,'']]],
   ['samplerstate_2eh_4',['SamplerState.h',['../da/d48/SamplerState_8h.html',1,'']]],
   ['samplerstateimpl_2ecpp_5',['samplerstateimpl.cpp',['../dd/dc5/direct3d11_2states_2SamplerStateImpl_8cpp.html',1,'(Global Namespace)'],['../d6/d1c/direct3d9_2states_2SamplerStateImpl_8cpp.html',1,'(Global Namespace)']]],
-  ['samplerstateimpl_2eh_6',['samplerstateimpl.h',['../df/dcb/direct3d9_2states_2SamplerStateImpl_8h.html',1,'(Global Namespace)'],['../d1/d7c/direct3d11_2states_2SamplerStateImpl_8h.html',1,'(Global Namespace)']]],
+  ['samplerstateimpl_2eh_6',['samplerstateimpl.h',['../d1/d7c/direct3d11_2states_2SamplerStateImpl_8h.html',1,'(Global Namespace)'],['../df/dcb/direct3d9_2states_2SamplerStateImpl_8h.html',1,'(Global Namespace)']]],
   ['section_2ecpp_7',['Section.cpp',['../de/dc4/Section_8cpp.html',1,'']]],
   ['section_2eh_8',['Section.h',['../d0/db4/Section_8h.html',1,'']]],
   ['seekmode_2eh_9',['SeekMode.h',['../d2/da2/SeekMode_8h.html',1,'']]],
@@ -51,6 +51,6 @@ var searchData=
   ['surface_2eh_48',['Surface.h',['../da/d51/Surface_8h.html',1,'']]],
   ['surfacemanager_2ecpp_49',['SurfaceManager.cpp',['../d7/def/SurfaceManager_8cpp.html',1,'']]],
   ['surfacemanager_2eh_50',['SurfaceManager.h',['../dc/d63/SurfaceManager_8h.html',1,'']]],
-  ['symbol_2eh_51',['symbol.h',['../d2/d9e/ini_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d7/d02/json_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../da/d2c/xml_2detail_2Symbol_8h.html',1,'(Global Namespace)']]],
+  ['symbol_2eh_51',['symbol.h',['../da/d2c/xml_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d7/d02/json_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d2/d9e/ini_2detail_2Symbol_8h.html',1,'(Global Namespace)']]],
   ['symbolid_2eh_52',['SymbolID.h',['../d7/d05/SymbolID_8h.html',1,'']]]
 ];

@@ -13,7 +13,7 @@ var searchData=
   ['booleanmatcher_2eh_10',['BooleanMatcher.h',['../d4/db0/BooleanMatcher_8h.html',1,'']]],
   ['bufferedtokenreader_2eh_11',['BufferedTokenReader.h',['../d3/dbe/BufferedTokenReader_8h.html',1,'']]],
   ['builder_2ecpp_12',['builder.cpp',['../d8/da5/ini_2detail_2Builder_8cpp.html',1,'(Global Namespace)'],['../d2/d65/json_2detail_2Builder_8cpp.html',1,'(Global Namespace)'],['../db/d4d/xml_2detail_2Builder_8cpp.html',1,'(Global Namespace)']]],
-  ['builder_2eh_13',['builder.h',['../d2/d58/ini_2detail_2Builder_8h.html',1,'(Global Namespace)'],['../d8/d7d/json_2detail_2Builder_8h.html',1,'(Global Namespace)'],['../dd/d35/xml_2detail_2Builder_8h.html',1,'(Global Namespace)']]],
+  ['builder_2eh_13',['builder.h',['../dd/d35/xml_2detail_2Builder_8h.html',1,'(Global Namespace)'],['../d2/d58/ini_2detail_2Builder_8h.html',1,'(Global Namespace)'],['../d8/d7d/json_2detail_2Builder_8h.html',1,'(Global Namespace)']]],
   ['byte_5fspan_2eh_14',['byte_span.h',['../d7/d56/byte__span_8h.html',1,'']]],
   ['byte_5fvector_2eh_15',['byte_vector.h',['../dd/d42/byte__vector_8h.html',1,'']]],
   ['byte_5fview_2eh_16',['byte_view.h',['../d9/d58/byte__view_8h.html',1,'']]],
