@@ -56,7 +56,7 @@ namespace xl7::resources {
      */
     unsigned ResourceID::version() const noexcept
     {
-        return static_cast<unsigned>((_id & VERSION_MASK) >> VERSION_SHIFT);
+        return static_cast<unsigned>((_id >> VERSION_SHIFT) & VERSION_MASK);
     }
 
 
