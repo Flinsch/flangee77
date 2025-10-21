@@ -15,19 +15,17 @@ enum Symbol : syntax::SymbolID
 
     EQUAL_SIGN,
 
+    PI_START,
+    PI_END,
+
     START_TAG_START,
     END_TAG_START,
     TAG_END,
     EMPTY_TAG_END,
 
-    CDATA_START,
-    CDATA_END,
+    CDATA,
 
-    COMMENT_START,
-    COMMENT_END,
-
-    PI_START,
-    PI_END,
+    COMMENT,
 
     NAME,
 
