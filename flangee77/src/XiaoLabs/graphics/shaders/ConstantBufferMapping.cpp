@@ -17,6 +17,9 @@ namespace xl7::graphics::shaders {
      */
     void ConstantBufferMapping::try_merge_constant_mappings()
     {
+        if (constant_mappings.size() <= 1)
+            return;
+
         std::ranges::sort(constant_mappings, [](const auto& a, const auto& b) {
             if (a.slot_index < b.slot_index) return true;
             if (a.slot_index > b.slot_index) return false;
