@@ -37,6 +37,7 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 endif ()
 
 function(equip_windows_app target)
+    add_dependencies(${target} flangee77)
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
         target_link_options(${target} PRIVATE -mwindows)
         target_link_options(${target} PRIVATE -municode)
@@ -46,4 +47,5 @@ function(equip_windows_app target)
 endfunction()
 
 function(equip_console_app target)
+    add_dependencies(${target} flangee77)
 endfunction()
