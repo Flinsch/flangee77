@@ -187,16 +187,16 @@ namespace detail {
 
 
 
-    template <typename Tstring, typename T>
+    template <typename T, typename Tstring>
     struct is_string_constructible
         : std::bool_constant<is_any_string<Tstring>::value && std::constructible_from<Tstring, T>>
     {
     };
 
-    template <typename Tstring, typename T>
+    template <typename T, typename Tstring>
     inline constexpr bool is_string_constructible_v = is_string_constructible<Tstring, T>::value;
 
-    template <typename Tstring, typename T>
+    template <typename T, typename Tstring>
     concept string_constructible = is_string_constructible_v<Tstring, T>;
 
 
