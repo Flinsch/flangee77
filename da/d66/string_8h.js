@@ -14,7 +14,7 @@ var string_8h =
     [ "cl7::is_any_string_or_view< Tstring_or_view >", "da/d88/structcl7_1_1is__any__string__or__view.html", null ],
     [ "cl7::is_any_string_or_span< Tstring_or_span >", "d8/db2/structcl7_1_1is__any__string__or__span.html", null ],
     [ "cl7::is_any_string_view_like< Tstring_view_like >", "df/d9c/structcl7_1_1is__any__string__view__like.html", null ],
-    [ "cl7::is_string_constructible< Tstring, T >", "d9/d09/structcl7_1_1is__string__constructible.html", null ],
+    [ "cl7::is_string_constructible< T, Tstring >", "d9/d09/structcl7_1_1is__string__constructible.html", null ],
     [ "cl7::char_type_of< Tstring_view_like >", "d1/d85/structcl7_1_1char__type__of_3_01Tstring__view__like_01_4.html", "d1/d85/structcl7_1_1char__type__of_3_01Tstring__view__like_01_4" ],
     [ "cl7::char_type_of< Tstring_char_ptr >", "d7/dec/structcl7_1_1char__type__of_3_01Tstring__char__ptr_01_4.html", "d7/dec/structcl7_1_1char__type__of_3_01Tstring__char__ptr_01_4" ],
     [ "cl7::string_hash< Tchar >", "d0/dbc/structcl7_1_1string__hash.html", "d0/dbc/structcl7_1_1string__hash" ],

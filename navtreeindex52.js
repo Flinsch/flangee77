@@ -1,9 +1,5 @@
 var NAVTREEINDEX52 =
 {
-"df/df1/classdl7_1_1json_1_1util_1_1Unescaper.html#aef711802129036863fab72013bb30265":[5,0,1,2,1,1,2],
-"df/df2/Utf8Reader_8h.html":[8,0,0,2,17],
-"df/df2/Utf8Reader_8h_source.html":[8,0,0,2,17],
-"df/df3/Reporter_8cpp.html":[8,0,5,1,3],
 "df/dfe/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1errors.html":[5,0,7,1,1,0,0],
 "df/dfe/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1errors.html#a4b55cbe7c68a52c1b7c476cd47d339be":[5,0,7,1,1,0,0,1],
 "df/dfe/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1errors.html#ad8aa78fd641c8c4eb6e170df3c8543da":[5,0,7,1,1,0,0,0],

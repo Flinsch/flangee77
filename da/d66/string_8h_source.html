@@ -316,7 +316,7 @@ $(document).ready(function(){initNavTree('da/d66/string_8h_source.html','../../'
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T<span class="keywordtype">string</span>, <span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> T<span class="keywordtype">string</span>&gt;</div>
 <div class="foldopen" id="foldopen00191" data-start="{" data-end="};">
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno"><a class="line" href="../../d9/d09/structcl7_1_1is__string__constructible.html">  191</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="../../d9/d09/structcl7_1_1is__string__constructible.html">is_string_constructible</a></div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        : std::bool_constant&lt;is_any_string&lt;Tstring&gt;::value &amp;&amp; std::constructible_from&lt;Tstring, T&gt;&gt;</div>
@@ -324,10 +324,10 @@ $(document).ready(function(){initNavTree('da/d66/string_8h_source.html','../../'
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    };</div>
 </div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T<span class="keywordtype">string</span>, <span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> T<span class="keywordtype">string</span>&gt;</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno"><a class="line" href="../../d1/d2e/namespacecl7.html#a2b7716202f0260d0a155173ff6811aac">  197</a></span>    <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="../../d1/d2e/namespacecl7.html#a2b7716202f0260d0a155173ff6811aac">is_string_constructible_v</a> = <a class="code hl_struct" href="../../d9/d09/structcl7_1_1is__string__constructible.html">is_string_constructible&lt;Tstring, T&gt;::value</a>;</div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T<span class="keywordtype">string</span>, <span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> T<span class="keywordtype">string</span>&gt;</div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno"><a class="line" href="../../d2/d5f/conceptcl7_1_1string__constructible.html">  200</a></span>    <span class="keyword">concept </span><a class="code hl_concept" href="../../d2/d5f/conceptcl7_1_1string__constructible.html">string_constructible</a> = is_string_constructible_v&lt;Tstring, T&gt;;</div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>

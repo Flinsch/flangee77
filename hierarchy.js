@@ -68,7 +68,7 @@ var hierarchy =
       [ "cl7::is_any_string_or_span< Tstring_or_span >", "d8/db2/structcl7_1_1is__any__string__or__span.html", null ],
       [ "cl7::is_any_string_or_view< Tstring_or_view >", "da/d88/structcl7_1_1is__any__string__or__view.html", null ],
       [ "cl7::is_any_string_view_like< Tstring_view_like >", "df/d9c/structcl7_1_1is__any__string__view__like.html", null ],
-      [ "cl7::is_string_constructible< Tstring, T >", "d9/d09/structcl7_1_1is__string__constructible.html", null ]
+      [ "cl7::is_string_constructible< T, Tstring >", "d9/d09/structcl7_1_1is__string__constructible.html", null ]
     ] ],
     [ "dl7::ini::detail::BooleanMatcher", "da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html", null ],
     [ "cl7::io::ByteReader", "d7/df3/classcl7_1_1io_1_1ByteReader.html", null ],
