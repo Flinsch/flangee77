@@ -15,6 +15,8 @@ enum Symbol : syntax::SymbolID
 
     EQUAL_SIGN,
 
+    DOCTYPE,
+
     PI_START,
     PI_END,
 
