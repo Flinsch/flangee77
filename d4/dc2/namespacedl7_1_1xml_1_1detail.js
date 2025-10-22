@@ -6,6 +6,7 @@ var namespacedl7_1_1xml_1_1detail =
     [ "Symbol", "d4/dc2/namespacedl7_1_1xml_1_1detail.html#a754be953cfc420594a99dca33e3e0851", [
       [ "WHITESPACE", "d4/dc2/namespacedl7_1_1xml_1_1detail.html#a754be953cfc420594a99dca33e3e0851a15380b23bc8724cd8f5fba124f535f8f", null ],
       [ "EQUAL_SIGN", "d4/dc2/namespacedl7_1_1xml_1_1detail.html#a754be953cfc420594a99dca33e3e0851a005834dc4e1d088b789d48855a1272e9", null ],
+      [ "DOCTYPE", "d4/dc2/namespacedl7_1_1xml_1_1detail.html#a754be953cfc420594a99dca33e3e0851a5cfb8928d9329fb5b1a8812dddfaaeb8", null ],
       [ "PI_START", "d4/dc2/namespacedl7_1_1xml_1_1detail.html#a754be953cfc420594a99dca33e3e0851a3c74c900d4cdcaeeca9384905e31271d", null ],
       [ "PI_END", "d4/dc2/namespacedl7_1_1xml_1_1detail.html#a754be953cfc420594a99dca33e3e0851af854e7a47c2b0e0393dff2d84b2ee492", null ],
       [ "START_TAG_START", "d4/dc2/namespacedl7_1_1xml_1_1detail.html#a754be953cfc420594a99dca33e3e0851aeecc47197a13d5eedaa8353a8d115bfb", null ],
