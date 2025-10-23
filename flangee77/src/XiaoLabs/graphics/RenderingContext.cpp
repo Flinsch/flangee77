@@ -16,6 +16,28 @@ namespace xl7::graphics {
     // #############################################################################
 
     /**
+     * Returns the effective viewport based on the current pipeline states, starting
+     * with any explicitly set viewport and then depending on the bound (primary)
+     * render target or bound depth/stencil buffer. Otherwise, the default viewport
+     * of the (default) back buffer is returned.
+     */
+    Viewport RenderingContext::resolve_effective_viewport() const
+    {
+        if (pipeline.rs.is_viewport_set())
+            return pipeline.rs.get_viewport();
+
+        const auto* render_target_surface = _rendering_device->get_surface_manager()->find_resource<surfaces::RenderTargetSurface>(pipeline.om.get_render_target_surface_id());
+        if (render_target_surface)
+            return render_target_surface->get_default_viewport();
+
+        const auto* depth_stencil_surface = _rendering_device->get_surface_manager()->find_resource<surfaces::DepthStencilSurface>(pipeline.om.get_depth_stencil_surface_id());
+        if (depth_stencil_surface)
+            return depth_stencil_surface->get_default_viewport();
+
+        return _rendering_device->get_default_viewport();
+    }
+
+    /**
      * Performs a forced synchronization with the hardware state.
      * This function is called automatically after the rendering context has been
      * created and does not actually need to be used any further, perhaps after

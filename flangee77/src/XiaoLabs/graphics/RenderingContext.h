@@ -84,6 +84,14 @@ public:
     // #############################################################################
 
     /**
+     * Returns the effective viewport based on the current pipeline states, starting
+     * with any explicitly set viewport and then depending on the bound (primary)
+     * render target or bound depth/stencil buffer. Otherwise, the default viewport
+     * of the (default) back buffer is returned.
+     */
+    Viewport resolve_effective_viewport() const;
+
+    /**
      * Performs a forced synchronization with the hardware state.
      * This function is called automatically after the rendering context has been
      * created and does not actually need to be used any further, perhaps after
