@@ -353,6 +353,8 @@ namespace xl7::graphics::impl::direct3d11 {
         }
 
 
+        _resolve_temp_constant_buffer_references();
+
         _prepare_shader_constant_states(resolved_draw_states.vs, hardware_states.vs);
         _prepare_shader_constant_states(resolved_draw_states.ps, hardware_states.ps);
 
@@ -435,6 +437,25 @@ namespace xl7::graphics::impl::direct3d11 {
             hardware_states.blend_factor = resolved_draw_states.blend_factor;
         }
 
+
+        return true;
+    }
+
+    /**
+     * Resolves temporary constant buffer references and deletes those that are not
+     * valid anymore.
+     */
+    bool RenderingContextImpl::_resolve_temp_constant_buffer_references()
+    {
+        for (auto it = _temp_d3d_constant_buffer_wrappers.begin(); it != _temp_d3d_constant_buffer_wrappers.end(); )
+        {
+            const auto* d3d_constant_buffer_wrapper = get_rendering_device_impl<RenderingDeviceImpl>()->_find_d3d_constant_buffer(*it);
+
+            if (!d3d_constant_buffer_wrapper)
+                it = _temp_d3d_constant_buffer_wrappers.erase(it);
+            else
+                ++it;
+        }
 
         return true;
     }

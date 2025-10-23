@@ -129,6 +129,19 @@ namespace xl7::graphics::impl::direct3d11 {
     }
 
     /**
+     * Tries to find the specified Direct3D 11 constant buffer to determine whether
+     * the reference is still valid.
+     */
+    shaders::D3DConstantBufferWrapper* RenderingDeviceImpl::_find_d3d_constant_buffer(const shaders::D3DConstantBufferWrapper* d3d_constant_buffer_wrapper)
+    {
+        for (const auto& entry_ptr : _d3d_constant_buffer_registry)
+            if (entry_ptr.get() == d3d_constant_buffer_wrapper)
+                return entry_ptr.get();
+
+        return nullptr;
+    }
+
+    /**
      * Tries to find actual Direct3D 11 constant buffers for the specified shader,
      * and otherwise creates some.
      */

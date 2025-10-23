@@ -60,6 +60,12 @@ public:
     ID3D11InputLayout* _find_or_create_d3d_input_layout(const shared::meshes::VertexBufferBinding& vertex_buffer_binding, const void* shader_bytecode_with_input_signature, size_t bytecode_length);
 
     /**
+     * Tries to find the specified Direct3D 11 constant buffer to determine whether
+     * the given reference is still valid.
+     */
+    shaders::D3DConstantBufferWrapper* _find_d3d_constant_buffer(const shaders::D3DConstantBufferWrapper* d3d_constant_buffer_wrapper);
+
+    /**
      * Tries to find actual Direct3D 11 constant buffers for the specified shader,
      * and otherwise creates some.
      */

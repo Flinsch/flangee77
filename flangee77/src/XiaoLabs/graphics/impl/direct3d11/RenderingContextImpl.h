@@ -151,6 +151,12 @@ private:
     bool _flush_draw_states(const ResolvedDrawStates& resolved_draw_states);
 
     /**
+     * Resolves temporary constant buffer references and deletes those that are not
+     * valid anymore.
+     */
+    bool _resolve_temp_constant_buffer_references();
+
+    /**
      * Gathers/prepares the current states for the indirectly/implicitly
      * specified shader.
      */
