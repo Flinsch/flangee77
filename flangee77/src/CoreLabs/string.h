@@ -194,10 +194,10 @@ namespace detail {
     };
 
     template <typename T, typename Tstring>
-    inline constexpr bool is_string_constructible_v = is_string_constructible<Tstring, T>::value;
+    inline constexpr bool is_string_constructible_v = is_string_constructible<T, Tstring>::value;
 
     template <typename T, typename Tstring>
-    concept string_constructible = is_string_constructible_v<Tstring, T>;
+    concept string_constructible = is_string_constructible_v<T, Tstring>;
 
 
 
