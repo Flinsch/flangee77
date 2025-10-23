@@ -198,6 +198,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5fd27ead2f44e2b5df19109cdbd692a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f5b465bb28606cc3158073e81933793" id="r_a1f5b465bb28606cc3158073e81933793"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#a1f5b465bb28606cc3158073e81933793">is_scene_on</a> () const</td></tr>
 <tr class="separator:a1f5b465bb28606cc3158073e81933793"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf22567195182ed2b294bde2035f47cd" id="r_acf22567195182ed2b294bde2035f47cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d8f/structxl7_1_1graphics_1_1Viewport.html">Viewport</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#acf22567195182ed2b294bde2035f47cd">resolve_effective_viewport</a> () const</td></tr>
+<tr class="separator:acf22567195182ed2b294bde2035f47cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0aef0f9e9e347b76158bf6bdea920f85" id="r_a0aef0f9e9e347b76158bf6bdea920f85"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#a0aef0f9e9e347b76158bf6bdea920f85">synchronize_hardware_state</a> ()</td></tr>
 <tr class="separator:a0aef0f9e9e347b76158bf6bdea920f85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d6cfa44363d6df2b8aedb628aa5175a" id="r_a9d6cfa44363d6df2b8aedb628aa5175a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#a9d6cfa44363d6df2b8aedb628aa5175a">begin_scene</a> ()</td></tr>
@@ -1127,6 +1129,24 @@ template&lt;class TRenderingDeviceImpl &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf22567195182ed2b294bde2035f47cd" name="acf22567195182ed2b294bde2035f47cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf22567195182ed2b294bde2035f47cd">&#9670;&#160;</a></span>resolve_effective_viewport()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/d8f/structxl7_1_1graphics_1_1Viewport.html">Viewport</a> xl7::graphics::RenderingContext::resolve_effective_viewport </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the effective viewport based on the current pipeline states, starting with any explicitly set viewport and then depending on the bound (primary) render target or bound depth/stencil buffer. Otherwise, the default viewport of the (default) back buffer is returned. </p>
 
 </div>
 </div>

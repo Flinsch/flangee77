@@ -443,6 +443,9 @@ requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
 <tr class="memitem:ab933156c3e698fbbfab8a4dbeb70f347" id="r_ab933156c3e698fbbfab8a4dbeb70f347"><td class="memTemplParams" colspan="2">template&lt;std::floating_point T&gt; </td></tr>
 <tr class="memitem:ab933156c3e698fbbfab8a4dbeb70f347"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#ab933156c3e698fbbfab8a4dbeb70f347">rad_to_deg</a> (T radians)</td></tr>
 <tr class="separator:ab933156c3e698fbbfab8a4dbeb70f347"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86fb0474dfaebe3cdbb29b120b369922" id="r_a86fb0474dfaebe3cdbb29b120b369922"><td class="memTemplParams" colspan="2">template&lt;std::floating_point U = float, std::integral T&gt; </td></tr>
+<tr class="memitem:a86fb0474dfaebe3cdbb29b120b369922"><td class="memTemplItemLeft" align="right" valign="top">constexpr U&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a86fb0474dfaebe3cdbb29b120b369922">precise_divide</a> (T numerator, T denominator)</td></tr>
+<tr class="separator:a86fb0474dfaebe3cdbb29b120b369922"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86c7113f29ff13804f2006024172ffd2" id="r_a86c7113f29ff13804f2006024172ffd2"><td class="memTemplParams" colspan="2">template&lt;std::unsigned_integral T&gt; </td></tr>
 <tr class="memitem:a86c7113f29ff13804f2006024172ffd2"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#a86c7113f29ff13804f2006024172ffd2">is_power_of_two</a> (T x)</td></tr>
 <tr class="separator:a86c7113f29ff13804f2006024172ffd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2490,6 +2493,45 @@ template&lt;std::floating_point T&gt; </div>
 </table>
 </div><div class="memdoc">
 <p>Returns the value of base raised to the power of exp. </p>
+
+</div>
+</div>
+<a id="a86fb0474dfaebe3cdbb29b120b369922" name="a86fb0474dfaebe3cdbb29b120b369922"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86fb0474dfaebe3cdbb29b120b369922">&#9670;&#160;</a></span>precise_divide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::floating_point U = float, std::integral T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr U ml7::precise_divide </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>numerator</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>denominator</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Performs a precise division of two integers using integer arithmetic, returning the result as a floating-point number. </p>
 
 </div>
 </div>

@@ -537,59 +537,88 @@ $(document).ready(function(){initNavTree('d8/d5c/functions_8h_source.html','../.
 </div>
 <div class="line"><a id="l00493" name="l00493"></a><span class="lineno">  493</span> </div>
 <div class="line"><a id="l00494" name="l00494"></a><span class="lineno">  494</span> </div>
-<div class="line"><a id="l00498" name="l00498"></a><span class="lineno">  498</span>    <span class="keyword">template</span> &lt;std::<span class="keywordtype">unsigned</span>_<span class="keywordtype">int</span>egral T&gt;</div>
-<div class="foldopen" id="foldopen00499" data-start="{" data-end="}">
-<div class="line"><a id="l00499" name="l00499"></a><span class="lineno"><a class="line" href="../../d3/d53/namespaceml7.html#a86c7113f29ff13804f2006024172ffd2">  499</a></span>    <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="../../d3/d53/namespaceml7.html#a86c7113f29ff13804f2006024172ffd2">is_power_of_two</a>(T x)</div>
-<div class="line"><a id="l00500" name="l00500"></a><span class="lineno">  500</span>    {</div>
-<div class="line"><a id="l00501" name="l00501"></a><span class="lineno">  501</span>        <span class="keywordflow">return</span> x &gt; 0 &amp;&amp; (x &amp; (x - 1)) == 0;</div>
-<div class="line"><a id="l00502" name="l00502"></a><span class="lineno">  502</span>    }</div>
+<div class="line"><a id="l00499" name="l00499"></a><span class="lineno">  499</span>    <span class="keyword">template</span> &lt;std::<span class="keywordtype">float</span>ing_po<span class="keywordtype">int</span> U = <span class="keywordtype">float</span>, std::<span class="keywordtype">int</span>egral T&gt;</div>
+<div class="foldopen" id="foldopen00500" data-start="{" data-end="}">
+<div class="line"><a id="l00500" name="l00500"></a><span class="lineno"><a class="line" href="../../d3/d53/namespaceml7.html#a86fb0474dfaebe3cdbb29b120b369922">  500</a></span>    <span class="keyword">constexpr</span> U <a class="code hl_function" href="../../d3/d53/namespaceml7.html#a86fb0474dfaebe3cdbb29b120b369922">precise_divide</a>(T numerator, T denominator)</div>
+<div class="line"><a id="l00501" name="l00501"></a><span class="lineno">  501</span>    {</div>
+<div class="line"><a id="l00502" name="l00502"></a><span class="lineno">  502</span>        <span class="keywordflow">if</span> (denominator == 0)</div>
+<div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span>        {</div>
+<div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span>            <span class="keywordflow">if</span> (numerator &lt; 0)</div>
+<div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span>                <span class="keywordflow">return</span> -std::numeric_limits&lt;U&gt;::infinity();</div>
+<div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span>            <span class="keywordflow">return</span> std::numeric_limits&lt;U&gt;::infinity();</div>
+<div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span>        }</div>
+<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span> </div>
+<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span>        <span class="keywordflow">if</span> (numerator == 0)</div>
+<div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>            <span class="keywordflow">return</span> U{0};</div>
+<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span> </div>
+<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>        U sign = U{1};</div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>        <span class="keywordflow">if</span> (denominator &lt; 0)</div>
+<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span>        {</div>
+<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span>            sign = -sign;</div>
+<div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span>            denominator = -denominator;</div>
+<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span>        }</div>
+<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span> </div>
+<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>        T quotient = numerator / denominator;</div>
+<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>        T remainder = numerator % denominator;</div>
+<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span> </div>
+<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span>        <span class="keywordflow">return</span> sign * (<span class="keyword">static_cast&lt;</span>U<span class="keyword">&gt;</span>(quotient) + <span class="keyword">static_cast&lt;</span>U<span class="keyword">&gt;</span>(remainder) / <span class="keyword">static_cast&lt;</span>U<span class="keyword">&gt;</span>(denominator));</div>
+<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>    }</div>
 </div>
-<div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span> </div>
-<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span>    <span class="keyword">template</span> &lt;std::<span class="keywordtype">unsigned</span>_<span class="keywordtype">int</span>egral T&gt;</div>
-<div class="foldopen" id="foldopen00509" data-start="{" data-end="}">
-<div class="line"><a id="l00509" name="l00509"></a><span class="lineno"><a class="line" href="../../d3/d53/namespaceml7.html#a5e9ddb8c818cc7cc63b66bcb5134677b">  509</a></span>    <span class="keyword">constexpr</span> T <a class="code hl_function" href="../../d3/d53/namespaceml7.html#a5e9ddb8c818cc7cc63b66bcb5134677b">prev_power_of_two</a>(T x)</div>
-<div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>    {</div>
-<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>        <span class="keyword">constexpr</span> T max = T{1} &lt;&lt; (<span class="keyword">sizeof</span>(T) * 8 - 1);</div>
-<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>        <span class="keywordflow">if</span> (x &gt;= max)</div>
-<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>            <span class="keywordflow">return</span> max;</div>
-<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span>        T y = T{1};</div>
-<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span>        <span class="keywordflow">while</span> (y &lt;= x)</div>
-<div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span>            y &lt;&lt;= 1;</div>
-<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span>        <span class="keywordflow">return</span> y &gt;&gt; 1;</div>
-<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span>    }</div>
+<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span> </div>
+<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span> </div>
+<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>    <span class="keyword">template</span> &lt;std::<span class="keywordtype">unsigned</span>_<span class="keywordtype">int</span>egral T&gt;</div>
+<div class="foldopen" id="foldopen00530" data-start="{" data-end="}">
+<div class="line"><a id="l00530" name="l00530"></a><span class="lineno"><a class="line" href="../../d3/d53/namespaceml7.html#a86c7113f29ff13804f2006024172ffd2">  530</a></span>    <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="../../d3/d53/namespaceml7.html#a86c7113f29ff13804f2006024172ffd2">is_power_of_two</a>(T x)</div>
+<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>    {</div>
+<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>        <span class="keywordflow">return</span> x &gt; 0 &amp;&amp; (x &amp; (x - 1)) == 0;</div>
+<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span>    }</div>
 </div>
-<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span> </div>
-<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span>    <span class="keyword">template</span> &lt;std::<span class="keywordtype">unsigned</span>_<span class="keywordtype">int</span>egral T&gt;</div>
-<div class="foldopen" id="foldopen00526" data-start="{" data-end="}">
-<div class="line"><a id="l00526" name="l00526"></a><span class="lineno"><a class="line" href="../../d3/d53/namespaceml7.html#a7018fe591690c3efdb3323f4f9fa08ba">  526</a></span>    <span class="keyword">constexpr</span> T <a class="code hl_function" href="../../d3/d53/namespaceml7.html#a7018fe591690c3efdb3323f4f9fa08ba">next_power_of_two</a>(T x)</div>
-<div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span>    {</div>
-<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span>        <span class="keyword">constexpr</span> T max = T{1} &lt;&lt; (<span class="keyword">sizeof</span>(T) * 8 - 1);</div>
-<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>        <span class="keywordflow">if</span> (x &gt; max)</div>
-<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>            <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>        T y = T{1};</div>
-<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>        <span class="keywordflow">while</span> (y &lt; x)</div>
-<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span>            y &lt;&lt;= 1;</div>
-<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>        <span class="keywordflow">return</span> y;</div>
-<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>    }</div>
+<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span> </div>
+<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>    <span class="keyword">template</span> &lt;std::<span class="keywordtype">unsigned</span>_<span class="keywordtype">int</span>egral T&gt;</div>
+<div class="foldopen" id="foldopen00540" data-start="{" data-end="}">
+<div class="line"><a id="l00540" name="l00540"></a><span class="lineno"><a class="line" href="../../d3/d53/namespaceml7.html#a5e9ddb8c818cc7cc63b66bcb5134677b">  540</a></span>    <span class="keyword">constexpr</span> T <a class="code hl_function" href="../../d3/d53/namespaceml7.html#a5e9ddb8c818cc7cc63b66bcb5134677b">prev_power_of_two</a>(T x)</div>
+<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span>    {</div>
+<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>        <span class="keyword">constexpr</span> T max = T{1} &lt;&lt; (<span class="keyword">sizeof</span>(T) * 8 - 1);</div>
+<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span>        <span class="keywordflow">if</span> (x &gt;= max)</div>
+<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span>            <span class="keywordflow">return</span> max;</div>
+<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span>        T y = T{1};</div>
+<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span>        <span class="keywordflow">while</span> (y &lt;= x)</div>
+<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span>            y &lt;&lt;= 1;</div>
+<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span>        <span class="keywordflow">return</span> y &gt;&gt; 1;</div>
+<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span>    }</div>
 </div>
-<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span> </div>
-<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>    <span class="keyword">template</span> &lt;std::<span class="keywordtype">int</span>egral U = <span class="keywordtype">unsigned</span>, std::<span class="keywordtype">unsigned</span>_<span class="keywordtype">int</span>egral T&gt;</div>
-<div class="foldopen" id="foldopen00541" data-start="{" data-end="}">
-<div class="line"><a id="l00541" name="l00541"></a><span class="lineno"><a class="line" href="../../d3/d53/namespaceml7.html#af8725c5420af7a9ae9ef1ae6b44dac0f">  541</a></span>    <span class="keyword">constexpr</span> U <a class="code hl_function" href="../../d3/d53/namespaceml7.html#af8725c5420af7a9ae9ef1ae6b44dac0f">decimal_digits</a>(T x)</div>
-<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>    {</div>
-<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span>        <span class="keyword">constexpr</span> T _10 = T{10};</div>
-<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span>        U n = U(1);</div>
-<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span>        <span class="keywordflow">for</span> (; x &gt;= _10; ++n)</div>
-<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span>            x /= _10;</div>
-<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span>        <span class="keywordflow">return</span> n;</div>
-<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span>    }</div>
-</div>
-<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span> </div>
 <div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span> </div>
-<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span> </div>
-<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span>} <span class="comment">// namespace ml7</span></div>
-<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span> </div>
-<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span><span class="preprocessor">#endif </span><span class="comment">// ML7_FUNCTIONS_H</span></div>
+<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span>    <span class="keyword">template</span> &lt;std::<span class="keywordtype">unsigned</span>_<span class="keywordtype">int</span>egral T&gt;</div>
+<div class="foldopen" id="foldopen00557" data-start="{" data-end="}">
+<div class="line"><a id="l00557" name="l00557"></a><span class="lineno"><a class="line" href="../../d3/d53/namespaceml7.html#a7018fe591690c3efdb3323f4f9fa08ba">  557</a></span>    <span class="keyword">constexpr</span> T <a class="code hl_function" href="../../d3/d53/namespaceml7.html#a7018fe591690c3efdb3323f4f9fa08ba">next_power_of_two</a>(T x)</div>
+<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span>    {</div>
+<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>        <span class="keyword">constexpr</span> T max = T{1} &lt;&lt; (<span class="keyword">sizeof</span>(T) * 8 - 1);</div>
+<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>        <span class="keywordflow">if</span> (x &gt; max)</div>
+<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span>            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span>        T y = T{1};</div>
+<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>        <span class="keywordflow">while</span> (y &lt; x)</div>
+<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>            y &lt;&lt;= 1;</div>
+<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span>        <span class="keywordflow">return</span> y;</div>
+<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span>    }</div>
+</div>
+<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span> </div>
+<div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span>    <span class="keyword">template</span> &lt;std::<span class="keywordtype">int</span>egral U = <span class="keywordtype">unsigned</span>, std::<span class="keywordtype">unsigned</span>_<span class="keywordtype">int</span>egral T&gt;</div>
+<div class="foldopen" id="foldopen00572" data-start="{" data-end="}">
+<div class="line"><a id="l00572" name="l00572"></a><span class="lineno"><a class="line" href="../../d3/d53/namespaceml7.html#af8725c5420af7a9ae9ef1ae6b44dac0f">  572</a></span>    <span class="keyword">constexpr</span> U <a class="code hl_function" href="../../d3/d53/namespaceml7.html#af8725c5420af7a9ae9ef1ae6b44dac0f">decimal_digits</a>(T x)</div>
+<div class="line"><a id="l00573" name="l00573"></a><span class="lineno">  573</span>    {</div>
+<div class="line"><a id="l00574" name="l00574"></a><span class="lineno">  574</span>        <span class="keyword">constexpr</span> T _10 = T{10};</div>
+<div class="line"><a id="l00575" name="l00575"></a><span class="lineno">  575</span>        U n = U(1);</div>
+<div class="line"><a id="l00576" name="l00576"></a><span class="lineno">  576</span>        <span class="keywordflow">for</span> (; x &gt;= _10; ++n)</div>
+<div class="line"><a id="l00577" name="l00577"></a><span class="lineno">  577</span>            x /= _10;</div>
+<div class="line"><a id="l00578" name="l00578"></a><span class="lineno">  578</span>        <span class="keywordflow">return</span> n;</div>
+<div class="line"><a id="l00579" name="l00579"></a><span class="lineno">  579</span>    }</div>
+</div>
+<div class="line"><a id="l00580" name="l00580"></a><span class="lineno">  580</span> </div>
+<div class="line"><a id="l00581" name="l00581"></a><span class="lineno">  581</span> </div>
+<div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span> </div>
+<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span>} <span class="comment">// namespace ml7</span></div>
+<div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span> </div>
+<div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span><span class="preprocessor">#endif </span><span class="comment">// ML7_FUNCTIONS_H</span></div>
 <div class="ttc" id="anamespaceml7_html"><div class="ttname"><a href="../../d3/d53/namespaceml7.html">ml7</a></div><div class="ttdef"><b>Definition</b> find_cubic_roots.cpp:5</div></div>
 <div class="ttc" id="anamespaceml7_html_a021888e3d10a77b5b744268f4f205a22"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a021888e3d10a77b5b744268f4f205a22">ml7::abs</a></div><div class="ttdeci">constexpr T abs(T x)</div><div class="ttdef"><b>Definition</b> functions.h:117</div></div>
 <div class="ttc" id="anamespaceml7_html_a0ac569bcc256b318c459318e50213134"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a0ac569bcc256b318c459318e50213134">ml7::min3</a></div><div class="ttdeci">constexpr T min3(T a, T b, T c)</div><div class="ttdef"><b>Definition</b> functions.h:236</div></div>
@@ -599,16 +628,17 @@ $(document).ready(function(){initNavTree('d8/d5c/functions_8h_source.html','../.
 <div class="ttc" id="anamespaceml7_html_a24e97448ce4232646c8d65c52d6f1561"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a24e97448ce4232646c8d65c52d6f1561">ml7::is_greater_equal_ulps</a></div><div class="ttdeci">bool is_greater_equal_ulps(float a, float b, int ulps)</div><div class="ttdef"><b>Definition</b> functions.h:468</div></div>
 <div class="ttc" id="anamespaceml7_html_a5815d163ecad0594d802cee310319986"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a5815d163ecad0594d802cee310319986">ml7::is_less</a></div><div class="ttdeci">constexpr bool is_less(T a, T b, T epsilon=std::numeric_limits&lt; T &gt;::epsilon())</div><div class="ttdef"><b>Definition</b> functions.h:408</div></div>
 <div class="ttc" id="anamespaceml7_html_a5cbb09c5acce2bb210eaecc8b96b2f7a"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a5cbb09c5acce2bb210eaecc8b96b2f7a">ml7::is_less_ulps</a></div><div class="ttdeci">bool is_less_ulps(float a, float b, int ulps)</div><div class="ttdef"><b>Definition</b> functions.cpp:29</div></div>
-<div class="ttc" id="anamespaceml7_html_a5e9ddb8c818cc7cc63b66bcb5134677b"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a5e9ddb8c818cc7cc63b66bcb5134677b">ml7::prev_power_of_two</a></div><div class="ttdeci">constexpr T prev_power_of_two(T x)</div><div class="ttdef"><b>Definition</b> functions.h:509</div></div>
+<div class="ttc" id="anamespaceml7_html_a5e9ddb8c818cc7cc63b66bcb5134677b"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a5e9ddb8c818cc7cc63b66bcb5134677b">ml7::prev_power_of_two</a></div><div class="ttdeci">constexpr T prev_power_of_two(T x)</div><div class="ttdef"><b>Definition</b> functions.h:540</div></div>
 <div class="ttc" id="anamespaceml7_html_a6071b4d0dc8fae2d5467e01cf22e893c"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a6071b4d0dc8fae2d5467e01cf22e893c">ml7::is_greater</a></div><div class="ttdeci">constexpr bool is_greater(T a, T b, T epsilon=std::numeric_limits&lt; T &gt;::epsilon())</div><div class="ttdef"><b>Definition</b> functions.h:427</div></div>
-<div class="ttc" id="anamespaceml7_html_a7018fe591690c3efdb3323f4f9fa08ba"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a7018fe591690c3efdb3323f4f9fa08ba">ml7::next_power_of_two</a></div><div class="ttdeci">constexpr T next_power_of_two(T x)</div><div class="ttdef"><b>Definition</b> functions.h:526</div></div>
+<div class="ttc" id="anamespaceml7_html_a7018fe591690c3efdb3323f4f9fa08ba"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a7018fe591690c3efdb3323f4f9fa08ba">ml7::next_power_of_two</a></div><div class="ttdeci">constexpr T next_power_of_two(T x)</div><div class="ttdef"><b>Definition</b> functions.h:557</div></div>
 <div class="ttc" id="anamespaceml7_html_a733037a23b3a42547c432bd6d358a68f"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a733037a23b3a42547c432bd6d358a68f">ml7::clamp01</a></div><div class="ttdeci">constexpr T clamp01(T x)</div><div class="ttdef"><b>Definition</b> functions.h:287</div></div>
 <div class="ttc" id="anamespaceml7_html_a781cbaff988d597191cf0d4dfc56c89f"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a781cbaff988d597191cf0d4dfc56c89f">ml7::max2</a></div><div class="ttdeci">constexpr T max2(T a, T b)</div><div class="ttdef"><b>Definition</b> functions.h:226</div></div>
 <div class="ttc" id="anamespaceml7_html_a79c20b33b1e4d4a375dae0db16f93a8d"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a79c20b33b1e4d4a375dae0db16f93a8d">ml7::square</a></div><div class="ttdeci">constexpr T square(T x)</div><div class="ttdef"><b>Definition</b> functions.h:63</div></div>
 <div class="ttc" id="anamespaceml7_html_a7fae2f87604d633d159b6b9fecf10cb5"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a7fae2f87604d633d159b6b9fecf10cb5">ml7::sgn</a></div><div class="ttdeci">constexpr T sgn(T x)</div><div class="ttdef"><b>Definition</b> functions.h:128</div></div>
 <div class="ttc" id="anamespaceml7_html_a815eafcdd171e5bbdab1da6729c29d15"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a815eafcdd171e5bbdab1da6729c29d15">ml7::ramp</a></div><div class="ttdeci">constexpr T ramp(T x, T start, T slope=T{1})</div><div class="ttdef"><b>Definition</b> functions.h:300</div></div>
 <div class="ttc" id="anamespaceml7_html_a8391a3126ee29ea3a2b9abd9c51e2e4d"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a8391a3126ee29ea3a2b9abd9c51e2e4d">ml7::sqrt</a></div><div class="ttdeci">constexpr T sqrt(T x)</div><div class="ttdef"><b>Definition</b> functions.h:83</div></div>
-<div class="ttc" id="anamespaceml7_html_a86c7113f29ff13804f2006024172ffd2"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a86c7113f29ff13804f2006024172ffd2">ml7::is_power_of_two</a></div><div class="ttdeci">constexpr bool is_power_of_two(T x)</div><div class="ttdef"><b>Definition</b> functions.h:499</div></div>
+<div class="ttc" id="anamespaceml7_html_a86c7113f29ff13804f2006024172ffd2"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a86c7113f29ff13804f2006024172ffd2">ml7::is_power_of_two</a></div><div class="ttdeci">constexpr bool is_power_of_two(T x)</div><div class="ttdef"><b>Definition</b> functions.h:530</div></div>
+<div class="ttc" id="anamespaceml7_html_a86fb0474dfaebe3cdbb29b120b369922"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a86fb0474dfaebe3cdbb29b120b369922">ml7::precise_divide</a></div><div class="ttdeci">constexpr U precise_divide(T numerator, T denominator)</div><div class="ttdef"><b>Definition</b> functions.h:500</div></div>
 <div class="ttc" id="anamespaceml7_html_a91c74ecedb753dee221882b32a5df669"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a91c74ecedb753dee221882b32a5df669">ml7::smoothstep</a></div><div class="ttdeci">constexpr T smoothstep(T x, T min, T max)</div><div class="ttdef"><b>Definition</b> functions.h:171</div></div>
 <div class="ttc" id="anamespaceml7_html_a9920b0beb9374af04a27547994877893"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a9920b0beb9374af04a27547994877893">ml7::is_greater_ulps</a></div><div class="ttdeci">bool is_greater_ulps(float a, float b, int ulps)</div><div class="ttdef"><b>Definition</b> functions.h:460</div></div>
 <div class="ttc" id="anamespaceml7_html_a9e141d6c6fbb0729e4b833a6c36a2220"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#a9e141d6c6fbb0729e4b833a6c36a2220">ml7::is_equal_ulps</a></div><div class="ttdeci">bool is_equal_ulps(float a, float b, int ulps)</div><div class="ttdef"><b>Definition</b> functions.cpp:12</div></div>
@@ -626,7 +656,7 @@ $(document).ready(function(){initNavTree('d8/d5c/functions_8h_source.html','../.
 <div class="ttc" id="anamespaceml7_html_af325e3b4ea239b8bd7bbf7334a9fb0da"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#af325e3b4ea239b8bd7bbf7334a9fb0da">ml7::max3</a></div><div class="ttdeci">constexpr T max3(T a, T b, T c)</div><div class="ttdef"><b>Definition</b> functions.h:249</div></div>
 <div class="ttc" id="anamespaceml7_html_af47e21fcf85abaf828fdc7fd76ce8775"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#af47e21fcf85abaf828fdc7fd76ce8775">ml7::min2</a></div><div class="ttdeci">constexpr T min2(T a, T b)</div><div class="ttdef"><b>Definition</b> functions.h:216</div></div>
 <div class="ttc" id="anamespaceml7_html_af80e1b978c2714eeb869d71c6ae593c0"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#af80e1b978c2714eeb869d71c6ae593c0">ml7::cbrt</a></div><div class="ttdeci">constexpr T cbrt(T x)</div><div class="ttdef"><b>Definition</b> functions.h:105</div></div>
-<div class="ttc" id="anamespaceml7_html_af8725c5420af7a9ae9ef1ae6b44dac0f"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#af8725c5420af7a9ae9ef1ae6b44dac0f">ml7::decimal_digits</a></div><div class="ttdeci">constexpr U decimal_digits(T x)</div><div class="ttdef"><b>Definition</b> functions.h:541</div></div>
+<div class="ttc" id="anamespaceml7_html_af8725c5420af7a9ae9ef1ae6b44dac0f"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#af8725c5420af7a9ae9ef1ae6b44dac0f">ml7::decimal_digits</a></div><div class="ttdeci">constexpr U decimal_digits(T x)</div><div class="ttdef"><b>Definition</b> functions.h:572</div></div>
 <div class="ttc" id="anamespaceml7_html_afa470bfdc2f4580f6a3397a7bb2e581a"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#afa470bfdc2f4580f6a3397a7bb2e581a">ml7::is_zero</a></div><div class="ttdeci">constexpr bool is_zero(T x, T epsilon=std::numeric_limits&lt; T &gt;::epsilon())</div><div class="ttdef"><b>Definition</b> functions.h:366</div></div>
 <div class="ttc" id="aroot_8h_html"><div class="ttname"><a href="../../de/d99/root_8h.html">root.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

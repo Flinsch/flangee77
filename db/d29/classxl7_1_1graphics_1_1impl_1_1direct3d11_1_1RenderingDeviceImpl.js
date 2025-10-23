@@ -7,6 +7,7 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl =
     [ "_check_device_lost_impl", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#ad4892fc67b7ed2ecb85e08acbb476853", null ],
     [ "_check_texture_format_impl", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a020929ed2204f219bf925d4ee5e03027", null ],
     [ "_create_rendering_context_impl", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a077d67ecac20bf54f1200c3e09b8b9e8", null ],
+    [ "_find_d3d_constant_buffer", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#adfbdf653703d1982a6586622eb989567", null ],
     [ "_find_d3d_constant_buffer", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#aafa0dacb17b76b0960b2cf991a8790ec", null ],
     [ "_find_d3d_input_layout", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#aedc1bcf8bc196d2c99097755bc0ce3e2", null ],
     [ "_find_or_create_d3d_constant_buffer", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#ad8fbf8bd78bcd9dcb181c3279e19b6e7", null ],

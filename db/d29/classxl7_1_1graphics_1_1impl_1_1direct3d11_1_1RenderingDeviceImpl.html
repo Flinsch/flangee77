@@ -150,6 +150,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aedc1bcf8bc196d2c99097755bc0ce3e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8401eddb5a0a59bd7284b930047001b2" id="r_a8401eddb5a0a59bd7284b930047001b2"><td class="memItemLeft" align="right" valign="top">ID3D11InputLayout *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a8401eddb5a0a59bd7284b930047001b2">_find_or_create_d3d_input_layout</a> (const <a class="el" href="../../d8/de4/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding.html">shared::meshes::VertexBufferBinding</a> &amp;vertex_buffer_binding, const void *shader_bytecode_with_input_signature, size_t bytecode_length)</td></tr>
 <tr class="separator:a8401eddb5a0a59bd7284b930047001b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfbdf653703d1982a6586622eb989567" id="r_adfbdf653703d1982a6586622eb989567"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1D3DConstantBufferWrapper.html">shaders::D3DConstantBufferWrapper</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#adfbdf653703d1982a6586622eb989567">_find_d3d_constant_buffer</a> (const <a class="el" href="../../d6/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1D3DConstantBufferWrapper.html">shaders::D3DConstantBufferWrapper</a> *d3d_constant_buffer_wrapper)</td></tr>
+<tr class="separator:adfbdf653703d1982a6586622eb989567"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acca71bab39b99a84f87f985a47e38752" id="r_acca71bab39b99a84f87f985a47e38752"><td class="memItemLeft" align="right" valign="top">std::span&lt; <a class="el" href="../../d6/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1D3DConstantBufferWrapper.html">shaders::D3DConstantBufferWrapper</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#acca71bab39b99a84f87f985a47e38752">_find_or_create_d3d_constant_buffers</a> (<a class="el" href="../../d8/d44/classxl7_1_1resources_1_1ResourceID.html">resources::ResourceID</a> shader_id)</td></tr>
 <tr class="separator:acca71bab39b99a84f87f985a47e38752"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf47b583fc5617e912432fe457beb9d7" id="r_abf47b583fc5617e912432fe457beb9d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#abf47b583fc5617e912432fe457beb9d7">_release_d3d_constant_buffers</a> (<a class="el" href="../../d8/d44/classxl7_1_1resources_1_1ResourceID.html">resources::ResourceID</a> shader_id)</td></tr>
@@ -492,8 +494,28 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="adfbdf653703d1982a6586622eb989567" name="adfbdf653703d1982a6586622eb989567"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfbdf653703d1982a6586622eb989567">&#9670;&#160;</a></span>_find_d3d_constant_buffer() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1D3DConstantBufferWrapper.html">shaders::D3DConstantBufferWrapper</a> * xl7::graphics::impl::direct3d11::RenderingDeviceImpl::_find_d3d_constant_buffer </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d6/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1D3DConstantBufferWrapper.html">shaders::D3DConstantBufferWrapper</a> *&#160;</td>
+          <td class="paramname"><em>d3d_constant_buffer_wrapper</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Tries to find the specified Direct3D 11 constant buffer to determine whether the given reference is still valid.</p>
+<p>Tries to find the specified Direct3D 11 constant buffer to determine whether the reference is still valid. </p>
+
+</div>
+</div>
 <a id="aafa0dacb17b76b0960b2cf991a8790ec" name="aafa0dacb17b76b0960b2cf991a8790ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aafa0dacb17b76b0960b2cf991a8790ec">&#9670;&#160;</a></span>_find_d3d_constant_buffer()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aafa0dacb17b76b0960b2cf991a8790ec">&#9670;&#160;</a></span>_find_d3d_constant_buffer() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">

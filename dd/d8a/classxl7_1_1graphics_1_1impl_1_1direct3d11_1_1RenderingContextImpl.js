@@ -17,6 +17,7 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl =
     [ "_flush_temp_constant_buffer_data", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#a581294542cd0413a6ee9540b26a79efb", null ],
     [ "_flush_texture_sampler_states", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#a82635bdc0e8cf3933a9d98ae17150449", null ],
     [ "_prepare_shader_constant_states", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#ac5cc5322e94547e3a109fe5132efb6fd", null ],
+    [ "_resolve_temp_constant_buffer_references", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#abfffcf80101c7ad531acb9daf078d316", null ],
     [ "_synchronize_hardware_state_impl", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#a5a8b0b2eea8ed4c0fb42ea16912b516c", null ],
     [ "get_raw_d3d_device_context", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#af09f0c404b78d6c6da5d926281aa483f", null ],
     [ "operator=", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#a4818d4efcd8d1c5e0e956129f834a6a7", null ],

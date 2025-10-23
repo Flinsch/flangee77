@@ -34,6 +34,7 @@ var classxl7_1_1graphics_1_1RenderingContext =
     [ "is_scene_on", "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#a1f5b465bb28606cc3158073e81933793", null ],
     [ "operator=", "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#a4c02872b5f63de62c87aa93020296de5", null ],
     [ "operator=", "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#a9a8c2cab8160e1fef2a6449c7cd55dae", null ],
+    [ "resolve_effective_viewport", "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#acf22567195182ed2b294bde2035f47cd", null ],
     [ "synchronize_hardware_state", "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#a0aef0f9e9e347b76158bf6bdea920f85", null ],
     [ "_resolve_shader_states", "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#aff76d27b5f6abe0a5772c5dfc2a6f1b3", null ],
     [ "_index", "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#ad2bdc9c5ef66054bdbf49483dd882082", null ],

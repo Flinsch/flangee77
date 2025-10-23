@@ -31,6 +31,7 @@ var functions_8h =
     [ "pow", "d8/d5c/functions_8h.html#a388e59a523742b5d1ec472e60b6e7416", null ],
     [ "pow", "d8/d5c/functions_8h.html#abe2c8754579cfaf623aae3ab70c7d722", null ],
     [ "pow", "d8/d5c/functions_8h.html#a3c21d0f2d1052d973f18d356231a2a97", null ],
+    [ "precise_divide", "d8/d5c/functions_8h.html#a86fb0474dfaebe3cdbb29b120b369922", null ],
     [ "prev_power_of_two", "d8/d5c/functions_8h.html#a5e9ddb8c818cc7cc63b66bcb5134677b", null ],
     [ "rad_to_deg", "d8/d5c/functions_8h.html#ab933156c3e698fbbfab8a4dbeb70f347", null ],
     [ "ramp", "d8/d5c/functions_8h.html#a40637e3ba033a728f1563c3bc4c74beb", null ],
