@@ -1027,6 +1027,29 @@ TESTLABS_CASE( u8"MathLabs:  functions:  rad_to_deg" )
 
 
 
+TESTLABS_CASE( u8"MathLabs:  functions:  precise_divide" )
+{
+    TESTLABS_CHECK_EQ( ml7::precise_divide<>( 0, 0 ), std::numeric_limits<float>::infinity() );
+    TESTLABS_CHECK_EQ( ml7::precise_divide<>( 0, 1 ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::precise_divide<>( 0, -1 ), 0.0f );
+    TESTLABS_CHECK_EQ( ml7::precise_divide<>( 1, 0 ), std::numeric_limits<float>::infinity() );
+    TESTLABS_CHECK_EQ( ml7::precise_divide<>( -1, 0 ), -std::numeric_limits<float>::infinity() );
+    TESTLABS_CHECK_EQ( ml7::precise_divide<>( 1, 1 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::precise_divide<>( 1, -1 ), -1.0f );
+    TESTLABS_CHECK_EQ( ml7::precise_divide<>( -1, 1 ), -1.0f );
+    TESTLABS_CHECK_EQ( ml7::precise_divide<>( -1, -1 ), 1.0f );
+    TESTLABS_CHECK_EQ( ml7::precise_divide<>( 3, 10 ), 0.3f );
+    TESTLABS_CHECK_EQ( ml7::precise_divide<>( 3, -10 ), -0.3f );
+    TESTLABS_CHECK_EQ( ml7::precise_divide<>( -3, 10 ), -0.3f );
+    TESTLABS_CHECK_EQ( ml7::precise_divide<>( -3, -10 ), 0.3f );
+    TESTLABS_CHECK_EQ_FLT( ml7::precise_divide<>( 10, 3 ), 3.3333333f );
+    TESTLABS_CHECK_EQ_FLT( ml7::precise_divide<>( 10, -3 ), -3.3333333f );
+    TESTLABS_CHECK_EQ_FLT( ml7::precise_divide<>( -10, 3 ), -3.3333333f );
+    TESTLABS_CHECK_EQ_FLT( ml7::precise_divide<>( -10, -3 ), 3.3333333f );
+}
+
+
+
 TESTLABS_CASE( u8"MathLabs:  functions:  is_power_of_two" )
 {
     for ( unsigned x = 0; x < 9999; ++x )

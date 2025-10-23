@@ -493,6 +493,37 @@ namespace ml7 {
 
 
     /**
+     * Performs a precise division of two integers using integer arithmetic,
+     * returning the result as a floating-point number.
+     */
+    template <std::floating_point U = float, std::integral T>
+    constexpr U precise_divide(T numerator, T denominator)
+    {
+        if (denominator == 0)
+        {
+            if (numerator < 0)
+                return -std::numeric_limits<U>::infinity();
+            return std::numeric_limits<U>::infinity();
+        }
+
+        if (numerator == 0)
+            return U{0};
+
+        U sign = U{1};
+        if (denominator < 0)
+        {
+            sign = -sign;
+            denominator = -denominator;
+        }
+
+        T quotient = numerator / denominator;
+        T remainder = numerator % denominator;
+
+        return sign * (static_cast<U>(quotient) + static_cast<U>(remainder) / static_cast<U>(denominator));
+    }
+
+
+    /**
      * Checks whether the given value is a power of two.
      */
     template <std::unsigned_integral T>
