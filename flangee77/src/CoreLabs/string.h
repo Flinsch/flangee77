@@ -205,10 +205,10 @@ namespace detail {
     struct char_type_of;
 
     template <any_string_view_like Tstring_view_like>
-        requires(requires { typename Tstring_view_like::value_type; })
+        requires(requires { typename std::remove_cvref_t<Tstring_view_like>::value_type; })
     struct char_type_of<Tstring_view_like>
     {
-        using type = Tstring_view_like::value_type;
+        using type = std::remove_cvref_t<Tstring_view_like>::value_type;
     };
 
     template <any_char_ptr Tstring_char_ptr>
