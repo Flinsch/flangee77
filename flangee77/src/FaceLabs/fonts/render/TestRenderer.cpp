@@ -21,10 +21,12 @@ namespace fl7::fonts::render {
         struct Vertex
         {
             ml7::Vector2f pos;
+            ml7::Vector2f pad;
         };
 
         xl7::graphics::meshes::VertexLayout vertex_layout;
         vertex_layout.elements.push_back({.semantic = xl7::graphics::meshes::VertexLayout::Semantic::POSITION, .semantic_index = 0, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT2});
+        vertex_layout.elements.push_back({.semantic = xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD, .semantic_index = 0, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT2});
         assert(vertex_layout.calculate_size() == sizeof(Vertex));
 
         std::vector<Vertex> vertices;

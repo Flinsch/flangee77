@@ -9,6 +9,8 @@ namespace xl7::graphics::meshes {
     /** Returns the size of the given data type, in bytes. */
     unsigned VertexLayout::Element::get_size(DataType data_type)
     {
+        static_assert(sizeof(float) == 4);
+
         switch (data_type)
         {
         case DataType::FLOAT1:

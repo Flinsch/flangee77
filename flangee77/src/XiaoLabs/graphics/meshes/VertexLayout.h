@@ -11,6 +11,12 @@ namespace xl7::graphics::meshes {
 
 
 
+/**
+ * Always ensure your vertex stride is a multiple of 4 bytes. A vertex layout should
+ * comprise at least 12 bytes (preferably 16 bytes) to avoid issues due to hardware
+ * alignment/padding expectations. For optimal performance, align your vertex
+ * structure to (a multiple of) 16 bytes (or even 32 bytes for some modern GPUs).
+ */
 struct VertexLayout
 {
 
