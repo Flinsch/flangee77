@@ -17,11 +17,12 @@ var searchData=
   ['font_2eh_14',['Font.h',['../d8/dd1/Font_8h.html',1,'']]],
   ['fontloader_2ecpp_15',['FontLoader.cpp',['../d1/de7/FontLoader_8cpp.html',1,'']]],
   ['fontloader_2eh_16',['FontLoader.h',['../d9/db3/FontLoader_8h.html',1,'']]],
-  ['format_2ecpp_17',['format.cpp',['../d0/dd8/format_8cpp.html',1,'']]],
-  ['format_2eh_18',['format.h',['../d3/d6a/ini_2Format_8h.html',1,'(Global Namespace)'],['../d2/d93/xml_2Format_8h.html',1,'(Global Namespace)'],['../d1/db7/json_2Format_8h.html',1,'(Global Namespace)'],['../d0/d0a/format_8h.html',1,'(Global Namespace)']]],
-  ['framebuffersurface_2ecpp_19',['FramebufferSurface.cpp',['../de/de2/FramebufferSurface_8cpp.html',1,'']]],
-  ['framebuffersurface_2eh_20',['FramebufferSurface.h',['../d8/ddb/FramebufferSurface_8h.html',1,'']]],
-  ['functional_2eh_21',['functional.h',['../d8/dea/functional_8h.html',1,'']]],
-  ['functions_2ecpp_22',['functions.cpp',['../d3/d36/functions_8cpp.html',1,'']]],
-  ['functions_2eh_23',['functions.h',['../d8/d5c/functions_8h.html',1,'']]]
+  ['fontmetrics_2eh_17',['FontMetrics.h',['../d8/df8/FontMetrics_8h.html',1,'']]],
+  ['format_2ecpp_18',['format.cpp',['../d0/dd8/format_8cpp.html',1,'']]],
+  ['format_2eh_19',['format.h',['../d3/d6a/ini_2Format_8h.html',1,'(Global Namespace)'],['../d2/d93/xml_2Format_8h.html',1,'(Global Namespace)'],['../d1/db7/json_2Format_8h.html',1,'(Global Namespace)'],['../d0/d0a/format_8h.html',1,'(Global Namespace)']]],
+  ['framebuffersurface_2ecpp_20',['FramebufferSurface.cpp',['../de/de2/FramebufferSurface_8cpp.html',1,'']]],
+  ['framebuffersurface_2eh_21',['FramebufferSurface.h',['../d8/ddb/FramebufferSurface_8h.html',1,'']]],
+  ['functional_2eh_22',['functional.h',['../d8/dea/functional_8h.html',1,'']]],
+  ['functions_2ecpp_23',['functions.cpp',['../d3/d36/functions_8cpp.html',1,'']]],
+  ['functions_2eh_24',['functions.h',['../d8/d5c/functions_8h.html',1,'']]]
 ];

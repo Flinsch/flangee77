@@ -34,10 +34,12 @@ var searchData=
   ['is_5fblending_5fenabled_31',['is_blending_enabled',['../d1/da4/structxl7_1_1graphics_1_1states_1_1BlendState_1_1Desc.html#a483582447edbede4e3c0f74585d119e5',1,'xl7::graphics::states::BlendState::Desc']]],
   ['is_5fdepth_5ftesting_5fenabled_32',['is_depth_testing_enabled',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a9da1b0cb074ae58261d55b07d672406d',1,'xl7::graphics::states::DepthStencilState::Desc']]],
   ['is_5fdepth_5fwriting_5fenabled_33',['is_depth_writing_enabled',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#ad22d620c75e85cc7478b671ad7c702ff',1,'xl7::graphics::states::DepthStencilState::Desc']]],
-  ['is_5fopen_34',['is_open',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#ac2da4aa3ded5846b22c0e865601f6e2b',1,'cl7::profiling::Sample']]],
-  ['is_5fprofiled_35',['is_profiled',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a4d4b3b9e1e4d0830a36195a05cc78987',1,'cl7::profiling::Sample']]],
-  ['is_5fset_36',['is_set',['../d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html#a922843bed671cbf575f97c149a869a13',1,'xl7::graphics::pipeline::AbstractPipelineObject::StateArray::Entry']]],
-  ['is_5fstenciling_5fenabled_37',['is_stenciling_enabled',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a85cd1f6eb99b3cd8a4248dd2f2707185',1,'xl7::graphics::states::DepthStencilState::Desc']]],
-  ['is_5fstring_5fconstructible_5fv_38',['is_string_constructible_v',['../d1/d2e/namespacecl7.html#a2b7716202f0260d0a155173ff6811aac',1,'cl7']]],
-  ['iteration_5fnumber_39',['iteration_number',['../d1/d32/structtl7_1_1Signature.html#a42be262107926c787757bf3131f2848e',1,'tl7::Signature']]]
+  ['is_5floaded_34',['is_loaded',['../db/d25/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1GlyphEntry.html#a41f4b388bc74b629d5ae9d5fbee067f1',1,'fl7::fonts::TrueTypeFontLoader::GlyphEntry']]],
+  ['is_5fopen_35',['is_open',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#ac2da4aa3ded5846b22c0e865601f6e2b',1,'cl7::profiling::Sample']]],
+  ['is_5fprofiled_36',['is_profiled',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a4d4b3b9e1e4d0830a36195a05cc78987',1,'cl7::profiling::Sample']]],
+  ['is_5fset_37',['is_set',['../d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html#a922843bed671cbf575f97c149a869a13',1,'xl7::graphics::pipeline::AbstractPipelineObject::StateArray::Entry']]],
+  ['is_5fstenciling_5fenabled_38',['is_stenciling_enabled',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a85cd1f6eb99b3cd8a4248dd2f2707185',1,'xl7::graphics::states::DepthStencilState::Desc']]],
+  ['is_5fstring_5fconstructible_5fv_39',['is_string_constructible_v',['../d1/d2e/namespacecl7.html#a2b7716202f0260d0a155173ff6811aac',1,'cl7']]],
+  ['italic_5fintensity_40',['italic_intensity',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a0b571a2d895b3b30a5926210f22f85f7',1,'fl7::fonts::TextStyle']]],
+  ['iteration_5fnumber_41',['iteration_number',['../d1/d32/structtl7_1_1Signature.html#a42be262107926c787757bf3131f2848e',1,'tl7::Signature']]]
 ];

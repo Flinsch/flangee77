@@ -1,12 +1,23 @@
 var searchData=
 [
-  ['magenta_0',['Magenta',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a0f62bd7bdea7467a7f1e8ba33c7a4e67',1,'tl7::reporting']]],
-  ['matrixcolumns_1',['MatrixColumns',['../d7/db8/namespacexl7_1_1graphics_1_1shaders.html#af7157c0f2dc7ba0469861feb648fdb14a89a786f66915a15b42514278dcf6527b',1,'xl7::graphics::shaders']]],
-  ['matrixrows_2',['MatrixRows',['../d7/db8/namespacexl7_1_1graphics_1_1shaders.html#af7157c0f2dc7ba0469861feb648fdb14aa93fb626a9de373a643f6fd2cbe89007',1,'xl7::graphics::shaders']]],
-  ['max_3',['Max',['../d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#a40e09472faa3fca650e6204e40010175a6a061313d22e51e0f25b7cd4dc065233',1,'xl7::graphics::states::BlendState']]],
-  ['meta_4',['Meta',['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ab6755d218d5f4e1cef9cce9cc39aeda9',1,'cl7::logging']]],
-  ['min_5',['Min',['../d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#a40e09472faa3fca650e6204e40010175a78d811e98514cd165dda532286610fd2',1,'xl7::graphics::states::BlendState']]],
-  ['mirror_6',['Mirror',['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#a4f8492702caa383f50f8ebd226c1ecb4a2403def5083f02105e7802b3b315681e',1,'xl7::graphics::states::SamplerState']]],
-  ['mirroronce_7',['MirrorOnce',['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#a4f8492702caa383f50f8ebd226c1ecb4abbfe58735042c726d2d04562ea4e265a',1,'xl7::graphics::states::SamplerState']]],
-  ['multiline_8',['multiline',['../df/d52/structdl7_1_1json_1_1Format.html#a6a8a994bee9e67bd29d6ff5bd5eb6b64ad16a748b5543974384bc43d392f1e566',1,'dl7::json::Format::MultiLine'],['../db/df3/structdl7_1_1xml_1_1Format.html#a79cbbb2f423475c561be08709a473cdead16a748b5543974384bc43d392f1e566',1,'dl7::xml::Format::MultiLine']]]
+  ['left_0',['Left',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a9b2204dc71a9a9abc3f43b0be847bcf5a945d5e233cf7d6240f6b783b36a374ff',1,'fl7::fonts::TextStyle']]],
+  ['left_5fcurly_5fbracket_1',['LEFT_CURLY_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989aa57529caab966ddb18bbdc45d97438f9',1,'dl7::json::detail']]],
+  ['left_5fsquare_5fbracket_2',['LEFT_SQUARE_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989ae7401bd44c58fa0eb237be3d1ce7c426',1,'dl7::json::detail']]],
+  ['less_3',['Less',['../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa1cfdf0e8d0c87a228c1f40d9bee7888b',1,'xl7::graphics']]],
+  ['lessequal_4',['LessEqual',['../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fad3e6fdac55bb7b0edd7834c968ba1f38',1,'xl7::graphics']]],
+  ['lf_5',['lf',['../d9/db3/structdl7_1_1ini_1_1Format.html#a24269faed2dc6dd3ec5b3146f37bd85ea618441d41cce47dbcfd9bed6e5ff64e6',1,'dl7::ini::Format::LF'],['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html#af77ef15789b42d037ea54228daa5c1c2a618441d41cce47dbcfd9bed6e5ff64e6',1,'dl7::json::Format::MultiLineOptions::LF'],['../dd/de4/structdl7_1_1xml_1_1Format_1_1MultiLineOptions.html#a32b1af22f6aa954ebf7a72465e6ecb54a618441d41cce47dbcfd9bed6e5ff64e6',1,'dl7::xml::Format::MultiLineOptions::LF']]],
+  ['lightblue_6',['LightBlue',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a6b0fc8cfa1abd676a44659ea403e2e8a',1,'tl7::reporting']]],
+  ['lightcyan_7',['LightCyan',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740af87b47dfa0b4291fa349313dc391bc3f',1,'tl7::reporting']]],
+  ['lightgray_8',['LightGray',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a578823fad1ce706f964aed3d8a81aa4a',1,'tl7::reporting']]],
+  ['lightgreen_9',['LightGreen',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a6caf486422347d11598c066a6fbe310c',1,'tl7::reporting']]],
+  ['lightmagenta_10',['LightMagenta',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a3b9182ee3017c90c47d6349a5160e152',1,'tl7::reporting']]],
+  ['lightred_11',['LightRed',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a7bff6b523f60766a982ac232a74f2bcc',1,'tl7::reporting']]],
+  ['lightyellow_12',['LightYellow',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a9360ca27e9e06ef112c2cf93765e8cca',1,'tl7::reporting']]],
+  ['line_5fcomment_13',['LINE_COMMENT',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989afaae99a68e9c8134443a770fcbc635fd',1,'dl7::json::detail']]],
+  ['linear_14',['linear',['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#ab84d702ec5c0616ae781e3bd6d3816efa32a843da6ea40ab3b17a3421ccdf671b',1,'xl7::graphics::states::SamplerState::Linear'],['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#a5815318bfe88d26ae204eda9596134d8a32a843da6ea40ab3b17a3421ccdf671b',1,'xl7::graphics::states::SamplerState::Linear']]],
+  ['linearinterpolation_15',['LinearInterpolation',['../d8/dd2/namespacexl7_1_1graphics_1_1images.html#ac9d829a5933316d55f7f267a17474dd9a14517b35b26ed67a34ffd446a9b86e33',1,'xl7::graphics::images']]],
+  ['linelist_16',['LineList',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287fa596e1b7afe8925f3f578c716d5af8fef',1,'xl7::graphics::meshes']]],
+  ['linestrip_17',['LineStrip',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287fae7f9e73b8edd21f420a63b3ace5768a2',1,'xl7::graphics::meshes']]],
+  ['log_18',['Log',['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ace0be71e33226e4c1db2bcea5959f16b',1,'cl7::logging']]],
+  ['lower_19',['Lower',['../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3ab75fcdd2d72d9e000beab48622402d93',1,'cl7::text::format']]]
 ];

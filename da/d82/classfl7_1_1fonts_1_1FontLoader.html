@@ -144,6 +144,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:afe6c2559bccff8fbf2bfa8b624205a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc375f3b96cd554af2f8b8552866ce5f" id="r_adc375f3b96cd554af2f8b8552866ce5f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html">Glyph</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d82/classfl7_1_1fonts_1_1FontLoader.html#adc375f3b96cd554af2f8b8552866ce5f">load_glyph</a> (<a class="el" href="../../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html">cl7::text::codec::codepoint</a> codepoint)=0</td></tr>
 <tr class="separator:adc375f3b96cd554af2f8b8552866ce5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96e577ae2b853d52e7ff50b3c6c17b4b" id="r_a96e577ae2b853d52e7ff50b3c6c17b4b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../df/d82/structfl7_1_1fonts_1_1FontMetrics.html">FontMetrics</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d82/classfl7_1_1fonts_1_1FontLoader.html#a96e577ae2b853d52e7ff50b3c6c17b4b">load_metrics</a> ()=0</td></tr>
+<tr class="separator:a96e577ae2b853d52e7ff50b3c6c17b4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -365,6 +367,34 @@ Private Attributes</h2></td></tr>
 <p>Attempts to load the glyph corresponding to the specified Unicode code point. If the glyph could not be loaded, an "empty" glyph is returned (in the sense that it contains no contour points, has no advance width, etc.). </p>
 
 <p>Implemented in <a class="el" href="../../d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a27764a597254d7d0b2872c35d2799e43">fl7::fonts::TrueTypeFontLoader</a>.</p>
+
+</div>
+</div>
+<a id="a96e577ae2b853d52e7ff50b3c6c17b4b" name="a96e577ae2b853d52e7ff50b3c6c17b4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96e577ae2b853d52e7ff50b3c6c17b4b">&#9670;&#160;</a></span>load_metrics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="../../df/d82/structfl7_1_1fonts_1_1FontMetrics.html">FontMetrics</a> fl7::fonts::FontLoader::load_metrics </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Loads the general typographic properties of the font. </p>
+
+<p>Implemented in <a class="el" href="../../d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#aac0f9932e4f0ded3e5d1b868e5c4a05b">fl7::fonts::TrueTypeFontLoader</a>.</p>
 
 </div>
 </div>

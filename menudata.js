@@ -227,6 +227,7 @@ var menudata={children:[
 {text:"c",url:"functions_enum.html#index_c"},
 {text:"d",url:"functions_enum.html#index_d"},
 {text:"f",url:"functions_enum.html#index_f"},
+{text:"h",url:"functions_enum.html#index_h"},
 {text:"i",url:"functions_enum.html#index_i"},
 {text:"k",url:"functions_enum.html#index_k"},
 {text:"l",url:"functions_enum.html#index_l"},
@@ -238,6 +239,7 @@ var menudata={children:[
 {text:"s",url:"functions_enum.html#index_s"},
 {text:"t",url:"functions_enum.html#index_t"},
 {text:"u",url:"functions_enum.html#index_u"},
+{text:"v",url:"functions_enum.html#index_v"},
 {text:"w",url:"functions_enum.html#index_w"}]},
 {text:"Related Symbols",url:"functions_rela.html",children:[
 {text:"_",url:"functions_rela.html#index__5F"},

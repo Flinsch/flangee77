@@ -1,15 +1,36 @@
 <map id="FaceLabs/fonts/Glyph.h" name="FaceLabs/fonts/Glyph.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="116,5,288,31"/>
-<area shape="rect" id="Node000002" href="$d8/dd1/Font_8h.html" title=" " alt="" coords="121,79,283,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,44,205,79,199,79,199,44"/>
-<area shape="rect" id="Node000003" href="$d8/d0c/Font_8cpp.html" title=" " alt="" coords="5,152,183,177"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="175,114,113,154,110,150,172,109"/>
-<area shape="rect" id="Node000004" href="$d9/db3/FontLoader_8h.html" title=" " alt="" coords="207,152,413,177"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="232,109,294,150,291,154,229,114"/>
-<area shape="rect" id="Node000005" href="$d1/de7/FontLoader_8cpp.html" title=" " alt="" coords="81,233,301,258"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="282,187,210,235,207,230,279,183"/>
-<area shape="rect" id="Node000006" href="$d2/de5/TrueTypeFontLoader_8h.html" title=" " alt="" coords="325,225,532,265"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="340,183,402,223,399,227,337,187"/>
-<area shape="rect" id="Node000007" href="$db/d10/TrueTypeFontLoader_8cpp.html" title=" " alt="" coords="325,313,532,353"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="431,279,431,313,426,313,426,279"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="531,5,703,31"/>
+<area shape="rect" id="Node000002" href="$d8/dd1/Font_8h.html" title=" " alt="" coords="230,174,393,199"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="518,34,454,51,423,64,394,81,369,103,347,129,319,175,315,172,343,126,365,99,391,76,421,60,452,46,516,29"/>
+<area shape="rect" id="Node000010" href="$d9/db3/FontLoader_8h.html" title=" " alt="" coords="405,86,610,111"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="591,41,525,88,522,84,588,37"/>
+<area shape="rect" id="Node000014" href="$dc/dcb/Glyph_8cpp.html" title=" " alt="" coords="634,86,821,111"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="646,37,712,84,709,88,643,41"/>
+<area shape="rect" id="Node000015" href="$d0/d51/RawGlyph_8h.html" title=" " alt="" coords="845,79,1004,119"/>
+<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="676,31,851,76,850,81,674,37"/>
+<area shape="rect" id="Node000003" href="$d8/d0c/Font_8cpp.html" title=" " alt="" coords="5,262,183,287"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="270,207,124,264,122,259,269,202"/>
+<area shape="rect" id="Node000004" href="$d8/d48/TextMetrics_8h.html" title=" " alt="" coords="207,262,416,287"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="314,213,314,261,309,261,309,213"/>
+<area shape="rect" id="Node000006" href="$d8/df8/AbstractRenderer_8h.html" title=" " alt="" coords="372,343,536,383"/>
+<area shape="poly" id="edge9_Node000002_Node000006" title=" " alt="" coords="360,202,397,223,429,253,442,275,450,299,456,342,451,343,445,300,437,277,425,256,394,227,357,207"/>
+<area shape="rect" id="Node000005" href="$da/dad/TextMetrics_8cpp.html" title=" " alt="" coords="123,350,347,375"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="294,300,248,351,244,348,290,296"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="343,292,424,340,421,345,341,297"/>
+<area shape="rect" id="Node000007" href="$de/d1f/AbstractRenderer_8cpp.html" title=" " alt="" coords="277,431,442,471"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="425,394,382,432,378,428,421,390"/>
+<area shape="rect" id="Node000008" href="$d6/ded/TestRenderer_8h.html" title=" " alt="" coords="467,431,631,471"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="487,390,530,428,526,432,483,394"/>
+<area shape="rect" id="Node000009" href="$d2/d72/TestRenderer_8cpp.html" title=" " alt="" coords="467,519,631,559"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="551,485,551,518,546,518,546,485"/>
+<area shape="poly" id="edge11_Node000010_Node000002" title=" " alt="" coords="470,119,339,176,337,171,468,114"/>
+<area shape="rect" id="Node000011" href="$d1/de7/FontLoader_8cpp.html" title=" " alt="" coords="417,174,637,199"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="516,124,527,173,522,174,511,125"/>
+<area shape="rect" id="Node000012" href="$d2/de5/TrueTypeFontLoader_8h.html" title=" " alt="" coords="661,167,868,207"/>
+<area shape="poly" id="edge13_Node000010_Node000012" title=" " alt="" coords="556,113,709,164,707,169,554,118"/>
+<area shape="rect" id="Node000013" href="$db/d10/TrueTypeFontLoader_8cpp.html" title=" " alt="" coords="661,255,868,295"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="767,221,767,254,762,254,762,221"/>
+<area shape="poly" id="edge17_Node000015_Node000012" title=" " alt="" coords="879,127,801,169,798,164,877,123"/>
+<area shape="rect" id="Node000016" href="$df/dbf/RawGlyph_8cpp.html" title=" " alt="" coords="892,167,1051,207"/>
+<area shape="poly" id="edge18_Node000015_Node000016" title=" " alt="" coords="944,129,963,165,959,168,939,132"/>
 </map>

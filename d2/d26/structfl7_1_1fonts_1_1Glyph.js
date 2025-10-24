@@ -1,7 +1,9 @@
 var structfl7_1_1fonts_1_1Glyph =
 [
-    [ "advance_width", "d2/d26/structfl7_1_1fonts_1_1Glyph.html#af9f319b6c712b0c79fb9da1a917c5ed1", null ],
-    [ "contour_points", "d2/d26/structfl7_1_1fonts_1_1Glyph.html#aed50f156d50c6865dc30df18fb39be20", null ],
-    [ "end_point_indices", "d2/d26/structfl7_1_1fonts_1_1Glyph.html#ab5ccfc90c26ee6f7dc0276a3a8f86076", null ],
-    [ "left_side_bearing", "d2/d26/structfl7_1_1fonts_1_1Glyph.html#a15f9324f0197f01c74397f82db8b6e0e", null ]
+    [ "advance_width", "d2/d26/structfl7_1_1fonts_1_1Glyph.html#a9ae31a5a457f7e2411bf3b7e2bc5c570", null ],
+    [ "contours", "d2/d26/structfl7_1_1fonts_1_1Glyph.html#a146733e7e430d7c5d57c1fd4fd97a588", null ],
+    [ "left_side_bearing", "d2/d26/structfl7_1_1fonts_1_1Glyph.html#aa6dd14b8c384ced1dc874866733183ec", null ],
+    [ "lower_left", "d2/d26/structfl7_1_1fonts_1_1Glyph.html#a8b0f46a9990be93334f28921bed079c1", null ],
+    [ "size", "d2/d26/structfl7_1_1fonts_1_1Glyph.html#a8f94de50a1efd28dd27df045078bf7ee", null ],
+    [ "upper_right", "d2/d26/structfl7_1_1fonts_1_1Glyph.html#a2c74f2e7f82e3d83ab2fe52c0255e58a", null ]
 ];

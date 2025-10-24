@@ -1,12 +1,14 @@
 var searchData=
 [
-  ['object_0',['Object',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caa497031794414a552435f90151ac3b54b',1,'dl7::json::Json']]],
-  ['octal_1',['Octal',['../df/d89/namespacecl7_1_1text_1_1format.html#af6818f5dda3ee9dd0dd31efefcb61f81a919c181a7c4ea1da2e77d49e3c02d531',1,'cl7::text::format']]],
-  ['offscreensurface_2',['OffScreenSurface',['../d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53ae56eb71b289d562b969cd0bc12db7f8b',1,'xl7::graphics::surfaces::Surface']]],
-  ['one_3',['One',['../d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#ab8f817106c9cfaac6dc9ebaf63a679b9a06c2cea18679d64399783748fa367bdd',1,'xl7::graphics::states::BlendState']]],
-  ['opening_5fbracket_4',['OPENING_BRACKET',['../de/d05/namespacedl7_1_1ini_1_1detail.html#a840033c2b8b2b45076f2800dd65544a1af81d10576aa269e67e74bca67b6a56a4',1,'dl7::ini::detail']]],
-  ['other_5',['Other',['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a6311ae17c1ee52b36e68aaf4ad066387',1,'cl7::logging']]],
-  ['outofrangeascii_6',['OutOfRangeAscii',['../da/d47/namespacecl7_1_1text_1_1codec.html#aab042571c0cfb310ad0152768b2c8ac9ac4899c5e1062865b1e92f133ac1a4cda',1,'cl7::text::codec']]],
-  ['outofrangeunicode_7',['OutOfRangeUnicode',['../da/d47/namespacecl7_1_1text_1_1codec.html#aab042571c0cfb310ad0152768b2c8ac9a08e574442871c42b8ae836886301f64c',1,'cl7::text::codec']]],
-  ['overlongencoding_8',['OverlongEncoding',['../da/d47/namespacecl7_1_1text_1_1codec.html#aab042571c0cfb310ad0152768b2c8ac9a60eb458e335e22953749121d8e4ec18c',1,'cl7::text::codec']]]
+  ['name_0',['NAME',['../d4/dc2/namespacedl7_1_1xml_1_1detail.html#a754be953cfc420594a99dca33e3e0851a4351c041a50b71d1f39f48d794988fa3',1,'dl7::xml::detail']]],
+  ['nearestneighbor_1',['NearestNeighbor',['../d8/dd2/namespacexl7_1_1graphics_1_1images.html#ac9d829a5933316d55f7f267a17474dd9aaa020331bb30d2fa2ecf7c3a0777823f',1,'xl7::graphics::images']]],
+  ['never_2',['Never',['../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa6e7b34fa59e1bd229b207892956dc41c',1,'xl7::graphics']]],
+  ['newline_3',['NEWLINE',['../de/d05/namespacedl7_1_1ini_1_1detail.html#a840033c2b8b2b45076f2800dd65544a1a07adb69019df06ba7b377961ae3b45d6',1,'dl7::ini::detail']]],
+  ['none_4',['none',['../d9/db3/structdl7_1_1ini_1_1Format.html#a0f762a3d83a823fe830b5091974a75eca6adf97f83acf6453d4a6a4b1070f3754',1,'dl7::ini::Format::None'],['../d2/df3/classxl7_1_1graphics_1_1states_1_1RasterizerState.html#aaaed7ddce36aaa810837c85e4e6df713a6adf97f83acf6453d4a6a4b1070f3754',1,'xl7::graphics::states::RasterizerState::None'],['../d2/df3/classxl7_1_1graphics_1_1states_1_1RasterizerState.html#a0bec4701af47bd83d6bc5bfd9a2d3f5ea6adf97f83acf6453d4a6a4b1070f3754',1,'xl7::graphics::states::RasterizerState::None'],['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#ab84d702ec5c0616ae781e3bd6d3816efa6adf97f83acf6453d4a6a4b1070f3754',1,'xl7::graphics::states::SamplerState::None'],['../db/ddf/structcl7_1_1Version.html#a890721a856e7cc2fbb0c524521e0b635a6adf97f83acf6453d4a6a4b1070f3754',1,'cl7::Version::None'],['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740adf2d68764ba475309a48eca258e3dbf1',1,'tl7::reporting::None'],['../da/d47/namespacecl7_1_1text_1_1codec.html#aab042571c0cfb310ad0152768b2c8ac9a6adf97f83acf6453d4a6a4b1070f3754',1,'cl7::text::codec::None']]],
+  ['normal_5',['NORMAL',['../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html#a8ba8f7d466c9fa95934c53f04900c01ba1e23852820b9154316c7c06e2b7ba051',1,'xl7::graphics::meshes::VertexLayout']]],
+  ['notequal_6',['NotEqual',['../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa19bb0af2c3c530538cb41aff7f235b96',1,'xl7::graphics']]],
+  ['notice_7',['Notice',['../d0/d46/structdl7_1_1syntax_1_1Diagnostic.html#afb8b280322219dfc4a99ec89802c4406a24efa7ee4511563b16144f39706d594f',1,'dl7::syntax::Diagnostic']]],
+  ['notinitialized_8',['NotInitialized',['../db/d24/classxl7_1_1Component.html#aea3f7614470b769182fb5b6a016e40b6a9646ad3a1c3e708b4fa8b4b4270fbab6',1,'xl7::Component']]],
+  ['null_9',['Null',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caabbb93ef26e3c101ff11cdd21cab08a94',1,'dl7::json::Json']]],
+  ['null_5fconstant_10',['NULL_CONSTANT',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989abef43e7f7b5a0e0b62c55906ca91740f',1,'dl7::json::detail']]]
 ];

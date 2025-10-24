@@ -8,11 +8,14 @@ var searchData=
   ['fill_5fmode_5',['fill_mode',['../d7/d93/structxl7_1_1graphics_1_1states_1_1RasterizerState_1_1Desc.html#afab96ec0636c6b627f73d5b94cfff376',1,'xl7::graphics::states::RasterizerState::Desc']]],
   ['filter_5fmethod_6',['filter_method',['../d4/de1/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Header.html#ae1c02b4bbc3be900df4f38583e69e67d',1,'xl7::graphics::images::PngImageHandler::Header']]],
   ['float_5fpolicy_7',['float_policy',['../d9/db3/structdl7_1_1ini_1_1Format.html#a2df46c43e64292434f581cb03838aaa7',1,'dl7::ini::Format::float_policy'],['../df/d52/structdl7_1_1json_1_1Format.html#ab963d3ef9a119f1a850b38ec9d2f43fe',1,'dl7::json::Format::float_policy']]],
-  ['force_5fsign_8',['force_sign',['../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html#a169a7c56adcbebf0a8bc3cc43eb7989b',1,'cl7::text::format::IntFormatOptions::force_sign'],['../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html#a9b574666994f94890b8349e83d84db37',1,'cl7::text::format::FloatFormatOptions::force_sign']]],
-  ['format_9',['format',['../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html#a134612333e367f39fc3bf2d275f8b8a3',1,'cl7::text::format::FloatFormatOptions']]],
-  ['frame_10',['frame',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a949e376a57252396a57a3a1c9ae4db09',1,'cl7::profiling::Sample']]],
-  ['frame_5fusecs_11',['frame_usecs',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a916a33e56ad76b2e7995749c8a25647c',1,'cl7::profiling::Sample']]],
-  ['frequency_12',['frequency',['../d5/d80/structcl7_1_1system_1_1CPUID.html#a8168bb8a104eee4f315567c62693095a',1,'cl7::system::CPUID']]],
-  ['front_5fface_5fstenciling_13',['front_face_stenciling',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a855e90a7a23ab304acd97d23d52bf16d',1,'xl7::graphics::states::DepthStencilState::Desc']]],
-  ['function_5fname_14',['function_name',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html#a48bbea20cb7ae5c7a1c00b529ff9a7d8',1,'cl7::logging::LogEntry']]]
+  ['font_8',['font',['../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#a8484779f34285e1c5528d8a416d5361a',1,'fl7::fonts::render::AbstractRenderer::State']]],
+  ['font_5fmetrics_9',['font_metrics',['../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#a7f9a8f31da01426cab3f7691eb167cd4',1,'fl7::fonts::render::AbstractRenderer::State']]],
+  ['font_5fsize_10',['font_size',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a335b86fcd1d24c073d40d33f0b0d669d',1,'fl7::fonts::TextStyle']]],
+  ['force_5fsign_11',['force_sign',['../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html#a169a7c56adcbebf0a8bc3cc43eb7989b',1,'cl7::text::format::IntFormatOptions::force_sign'],['../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html#a9b574666994f94890b8349e83d84db37',1,'cl7::text::format::FloatFormatOptions::force_sign']]],
+  ['format_12',['format',['../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html#a134612333e367f39fc3bf2d275f8b8a3',1,'cl7::text::format::FloatFormatOptions']]],
+  ['frame_13',['frame',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a949e376a57252396a57a3a1c9ae4db09',1,'cl7::profiling::Sample']]],
+  ['frame_5fusecs_14',['frame_usecs',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a916a33e56ad76b2e7995749c8a25647c',1,'cl7::profiling::Sample']]],
+  ['frequency_15',['frequency',['../d5/d80/structcl7_1_1system_1_1CPUID.html#a8168bb8a104eee4f315567c62693095a',1,'cl7::system::CPUID']]],
+  ['front_5fface_5fstenciling_16',['front_face_stenciling',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a855e90a7a23ab304acd97d23d52bf16d',1,'xl7::graphics::states::DepthStencilState::Desc']]],
+  ['function_5fname_17',['function_name',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html#a48bbea20cb7ae5c7a1c00b529ff9a7d8',1,'cl7::logging::LogEntry']]]
 ];

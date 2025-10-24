@@ -9,5 +9,6 @@ var searchData=
   ['jsonreader_2eh_6',['JsonReader.h',['../d1/d57/JsonReader_8h.html',1,'']]],
   ['jsonwriter_7',['JsonWriter',['../df/d83/classdl7_1_1json_1_1JsonWriter.html',1,'dl7::json']]],
   ['jsonwriter_2ecpp_8',['JsonWriter.cpp',['../d9/dac/JsonWriter_8cpp.html',1,'']]],
-  ['jsonwriter_2eh_9',['JsonWriter.h',['../d2/daf/JsonWriter_8h.html',1,'']]]
+  ['jsonwriter_2eh_9',['JsonWriter.h',['../d2/daf/JsonWriter_8h.html',1,'']]],
+  ['justify_10',['Justify',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a9b2204dc71a9a9abc3f43b0be847bcf5a4b425d212a2e7b36c38703bfdcd57823',1,'fl7::fonts::TextStyle']]]
 ];

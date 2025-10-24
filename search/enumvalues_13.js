@@ -1,17 +1,19 @@
 var searchData=
 [
-  ['ubyte4_0',['UBYTE4',['../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html#aa550322d966456e97be39059227544e9aa061360f8e01902202f21849c40a1105',1,'xl7::graphics::meshes::VertexLayout']]],
-  ['uint_1',['UINT',['../d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html#a5530d75c6c68fd1245348aa0628097f6a3351504090a741e69da641a42e00da80',1,'xl7::graphics::PixelBitKit']]],
-  ['uint16_2',['UINT16',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#a559f60da7ab95a4fc01880780fbab658a48d8f1a723d44ff4a87db1bb6c551c62',1,'xl7::graphics::meshes']]],
-  ['uint32_3',['UINT32',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#a559f60da7ab95a4fc01880780fbab658a17266551181f69a1b4a3ad5c9e270afc',1,'xl7::graphics::meshes']]],
-  ['undefined_4',['undefined',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287faec0fc0100c4fc1ce4eea230c3dc10360',1,'xl7::graphics::meshes::Undefined'],['../da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18aec0fc0100c4fc1ce4eea230c3dc10360',1,'dl7::ini::Value::Undefined']]],
-  ['unknown_5',['unknown',['../d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html#a67a32fc444b59dd218cbcacc4cb8b2e1a88183b946cc5f0e8c96b2e66e1c74a7e',1,'xl7::graphics::shaders::ShaderCode::Unknown'],['../da/df2/classxl7_1_1MainWindow.html#a65d67e130764aea53e92a93a196e76e7a88183b946cc5f0e8c96b2e66e1c74a7e',1,'xl7::MainWindow::Unknown'],['../da/d3a/structtl7_1_1Result.html#abc74a2ae21cd48cdb73884084ad1d692a88183b946cc5f0e8c96b2e66e1c74a7e',1,'tl7::Result::Unknown'],['../d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html#a5530d75c6c68fd1245348aa0628097f6a696b031073e74bf2cb98e5ef201d4aa3',1,'xl7::graphics::PixelBitKit::UNKNOWN'],['../d8/d30/namespacexl7_1_1graphics.html#a43b1458b1fd0bf912e9f69eec93adea5a696b031073e74bf2cb98e5ef201d4aa3',1,'xl7::graphics::UNKNOWN'],['../d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082da696b031073e74bf2cb98e5ef201d4aa3',1,'xl7::graphics::UNKNOWN'],['../da/d47/namespacecl7_1_1text_1_1codec.html#a7df790f30da6919a71ae7f2aeda9d0eba88183b946cc5f0e8c96b2e66e1c74a7e',1,'cl7::text::codec::Unknown']]],
-  ['unorm_6',['UNORM',['../d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html#a5530d75c6c68fd1245348aa0628097f6a5bb95a4e899b4551b04a48066588d0e5',1,'xl7::graphics::PixelBitKit']]],
-  ['unpairedsurrogate_7',['UnpairedSurrogate',['../da/d47/namespacecl7_1_1text_1_1codec.html#aab042571c0cfb310ad0152768b2c8ac9a90ede45c5db434f01ca0e067daf5b5fe',1,'cl7::text::codec']]],
-  ['unsigned_8',['Unsigned',['../d3/d6a/namespacedl7_1_1syntax_1_1matchers.html#a3febb873cf18a10edb53d4037dcfe997aa1a914735b205424ba6c40b85528d78a',1,'dl7::syntax::matchers']]],
-  ['upper_9',['Upper',['../df/d89/namespacecl7_1_1text_1_1format.html#ab0397c702edb2cba1e22c3d0b4b1c4a3a19de5b94f7b83900d4b296d9fa491aec',1,'cl7::text::format']]],
-  ['utf16_10',['UTF16',['../da/d47/namespacecl7_1_1text_1_1codec.html#a7df790f30da6919a71ae7f2aeda9d0ebaf023832671d1cf95ebe4934d58722a14',1,'cl7::text::codec']]],
-  ['utf32_11',['UTF32',['../da/d47/namespacecl7_1_1text_1_1codec.html#a7df790f30da6919a71ae7f2aeda9d0eba92dca193c750fb95044806ff8f00db6c',1,'cl7::text::codec']]],
-  ['utf8_12',['UTF8',['../da/d47/namespacecl7_1_1text_1_1codec.html#a7df790f30da6919a71ae7f2aeda9d0ebaeb7ee0fb585e2ac64fdc086466c474b1',1,'cl7::text::codec']]],
-  ['utfx_13',['UTFx',['../da/d47/namespacecl7_1_1text_1_1codec.html#a7df790f30da6919a71ae7f2aeda9d0eba48e281ccf8618c5d930b7c62d9d7bb1b',1,'cl7::text::codec']]]
+  ['tabs_0',['Tabs',['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html#a80c261a5c91b31831348b344ba3b6dbda7015777bcc86cd0c5e4819310d62b040',1,'dl7::json::Format::MultiLineOptions']]],
+  ['tag_5fend_1',['TAG_END',['../d4/dc2/namespacedl7_1_1xml_1_1detail.html#a754be953cfc420594a99dca33e3e0851a5d1b5e7a98c54408c8487bf3b4d3a883',1,'dl7::xml::detail']]],
+  ['tangent_2',['TANGENT',['../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html#a8ba8f7d466c9fa95934c53f04900c01ba4da56c3c2d4ee59a3461da5b2ad1a25d',1,'xl7::graphics::meshes::VertexLayout']]],
+  ['testcase_3',['TestCase',['../da/d3a/structtl7_1_1Result.html#abc74a2ae21cd48cdb73884084ad1d692ac9aba2c3e60126169e80e9a26ba273c1',1,'tl7::Result']]],
+  ['texcoord_4',['TEXCOORD',['../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html#a8ba8f7d466c9fa95934c53f04900c01bae406d3f48e0ec122e180637b66787651',1,'xl7::graphics::meshes::VertexLayout']]],
+  ['text_5',['Text',['../d2/d24/classdl7_1_1xml_1_1Node.html#a528f38d7a7d914db25c3cfdc05a790d2a9dffbf69ffba8bc38bc4e01abf4b1675',1,'dl7::xml::Node']]],
+  ['texture2d_6',['Texture2D',['../d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#aec19ff6b1326410f7415a57864356402aa6e2bae752d3bf4e34cb392bca789995',1,'xl7::graphics::textures::Texture']]],
+  ['texture2darray_7',['Texture2DArray',['../d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#aec19ff6b1326410f7415a57864356402a5452f0008bbc07c796bb4ac7d284928d',1,'xl7::graphics::textures::Texture']]],
+  ['texture3d_8',['Texture3D',['../d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#aec19ff6b1326410f7415a57864356402a89c915587e16bcf8963be7cf41a0d9fd',1,'xl7::graphics::textures::Texture']]],
+  ['texturesurface_9',['TextureSurface',['../d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53a1412f4ac0af027752228f6c03e01e6e0',1,'xl7::graphics::surfaces::Surface']]],
+  ['top_10',['Top',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4ffdcf0dc1f31b9acaf295d75b51d00',1,'fl7::fonts::TextStyle']]],
+  ['trianglelist_11',['TriangleList',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287faf5beeab7a1f452e5b0e9b03b44f0de92',1,'xl7::graphics::meshes']]],
+  ['trianglestrip_12',['TriangleStrip',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287fa1da0b9ead8b051940a89214bae22831c',1,'xl7::graphics::meshes']]],
+  ['true_5fconstant_13',['TRUE_CONSTANT',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a7da289c327b2f071a70cb72f06861ebb',1,'dl7::json::detail']]],
+  ['truncate_14',['Truncate',['../d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5aa8156810bfee2bd2b44765b9e91db3bd',1,'cl7::io']]],
+  ['truthyonly_15',['TruthyOnly',['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a7fe905665e8a42ae50081048a7aca951ad04890ff50f5ade32825bb55c1102bf2',1,'dl7::ini::detail::BooleanMatcher']]]
 ];

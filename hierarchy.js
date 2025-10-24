@@ -17,6 +17,9 @@ var hierarchy =
       ] ],
       [ "xl7::graphics::pipeline::Pipeline", "d6/d62/classxl7_1_1graphics_1_1pipeline_1_1Pipeline.html", null ]
     ] ],
+    [ "fl7::fonts::render::AbstractRenderer", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html", [
+      [ "fl7::fonts::render::TestRenderer", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html", null ]
+    ] ],
     [ "cl7::text::codec::Analyzer< Tchar, TDefaultErrorHandler >", "d8/d02/classcl7_1_1text_1_1codec_1_1Analyzer.html", null ],
     [ "ml7::Angle< T >", "d4/d9d/structml7_1_1Angle.html", null ],
     [ "dl7::ini::detail::AnyOtherMatcher", "d4/dc9/structdl7_1_1ini_1_1detail_1_1AnyOtherMatcher.html", null ],
@@ -57,6 +60,7 @@ var hierarchy =
     [ "xl7::resources::Resource::Attorney", "d0/d78/classxl7_1_1resources_1_1Resource_1_1Attorney.html", null ],
     [ "dl7::xml::Attribute", "d5/d23/classdl7_1_1xml_1_1Attribute.html", null ],
     [ "cl7::auto_invoke< Callable >", "de/dbb/classcl7_1_1auto__invoke.html", null ],
+    [ "fl7::fonts::render::AbstractRenderer::AutoBeginEnd", "dd/d8e/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1AutoBeginEnd.html", null ],
     [ "xl7::BackendRegistry< TBackendBase >", "d1/da6/classxl7_1_1BackendRegistry.html", null ],
     [ "dl7::Base64", "da/d3b/classdl7_1_1Base64.html", null ],
     [ "xl7::graphics::images::PngImageHandler::BitInfo", "d1/db4/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1BitInfo.html", null ],
@@ -100,6 +104,7 @@ var hierarchy =
     [ "ml7::constants< T >", "d6/d9f/structml7_1_1constants.html", null ],
     [ "dl7::ini::detail::Builder::Context", "d1/dbe/structdl7_1_1ini_1_1detail_1_1Builder_1_1Context.html", null ],
     [ "cl7::contiguous_iterator< is_const, Titem, Tbase >", "d1/d5d/classcl7_1_1contiguous__iterator.html", null ],
+    [ "fl7::fonts::Contour", "dc/d41/structfl7_1_1fonts_1_1Contour.html", null ],
     [ "cl7::system::CPUID", "d5/d80/structcl7_1_1system_1_1CPUID.html", null ],
     [ "xl7::resources::Resource::CreateParams< TDesc >", "db/df9/structxl7_1_1resources_1_1Resource_1_1CreateParams.html", null ],
     [ "dl7::syntax::CstNode", "d0/df6/classdl7_1_1syntax_1_1CstNode.html", null ],
@@ -189,11 +194,15 @@ var hierarchy =
     [ "fl7::fonts::FontLoader", "da/d82/classfl7_1_1fonts_1_1FontLoader.html", [
       [ "fl7::fonts::TrueTypeFontLoader", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html", null ]
     ] ],
+    [ "fl7::fonts::TrueTypeFontLoader::FontMetric", "d4/d0b/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontMetric.html", null ],
+    [ "fl7::fonts::FontMetrics", "df/d82/structfl7_1_1fonts_1_1FontMetrics.html", null ],
     [ "dl7::ini::Format", "d9/db3/structdl7_1_1ini_1_1Format.html", null ],
     [ "dl7::json::Format", "df/d52/structdl7_1_1json_1_1Format.html", null ],
     [ "dl7::xml::Format", "db/df3/structdl7_1_1xml_1_1Format.html", null ],
     [ "xl7::Config::General", "dd/d38/structxl7_1_1Config_1_1General.html", null ],
     [ "fl7::fonts::Glyph", "d2/d26/structfl7_1_1fonts_1_1Glyph.html", null ],
+    [ "fl7::fonts::TrueTypeFontLoader::GlyphEntry", "db/d25/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1GlyphEntry.html", null ],
+    [ "fl7::fonts::TrueTypeFontLoader::GlyphMetric", "de/da0/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1GlyphMetric.html", null ],
     [ "dl7::syntax::Grammar", "d8/d95/structdl7_1_1syntax_1_1Grammar.html", null ],
     [ "dl7::syntax::GrammarAnalyzer", "dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html", null ],
     [ "tl7::Stats::Group", "da/d74/structtl7_1_1Stats_1_1Group.html", null ],
@@ -332,7 +341,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "xl7::graphics::PixelBitKit", "d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html", null ],
-    [ "fl7::fonts::Point", "d7/d7b/structfl7_1_1fonts_1_1Point.html", null ],
+    [ "fl7::fonts::detail::RawGlyph::Point", "d0/d35/structfl7_1_1fonts_1_1detail_1_1RawGlyph_1_1Point.html", null ],
     [ "ml7::detail::distance::PointResult< TVector >", "db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html", null ],
     [ "ml7::detail::distance::PointResult_distance_squared< T >", "de/dd3/structml7_1_1detail_1_1distance_1_1PointResult__distance__squared.html", null ],
     [ "ml7::detail::distance::PointResult_point< TVector >", "d5/d92/structml7_1_1detail_1_1distance_1_1PointResult__point.html", null ],
@@ -345,6 +354,7 @@ var hierarchy =
     [ "ml7::Quaternion< T >", "d8/d1f/structml7_1_1Quaternion.html", null ],
     [ "ml7::ops::ramp< start, slope >", "de/dcb/structml7_1_1ops_1_1ramp.html", null ],
     [ "ml7::ops::ramp< 0, 1 >", "da/d35/structml7_1_1ops_1_1ramp_3_010_00_011_01_4.html", null ],
+    [ "fl7::fonts::detail::RawGlyph", "d8/d51/structfl7_1_1fonts_1_1detail_1_1RawGlyph.html", null ],
     [ "ml7::Ray2< T >", "dc/def/structml7_1_1Ray2.html", null ],
     [ "ml7::Ray3< T >", "d3/d71/structml7_1_1Ray3.html", null ],
     [ "xl7::graphics::shaders::ReflectionResult", "d2/d19/structxl7_1_1graphics_1_1shaders_1_1ReflectionResult.html", null ],
@@ -494,6 +504,7 @@ var hierarchy =
     [ "cl7::creational::SingletonManager", "d7/dba/classcl7_1_1creational_1_1SingletonManager.html", null ],
     [ "dl7::syntax::SourceContext", "d7/d8c/structdl7_1_1syntax_1_1SourceContext.html", null ],
     [ "dl7::syntax::SourceLocation", "d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html", null ],
+    [ "fl7::fonts::render::AbstractRenderer::State", "d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::StateArray< TProxy, N >", "d7/df7/classxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray.html", null ],
     [ "cl7::static_vector< T, N >", "da/d4e/classcl7_1_1static__vector.html", null ],
     [ "cl7::static_vector< cl7::u8string_view, MAX_ALIASES_PER_ENTRY >", "da/d4e/classcl7_1_1static__vector.html", null ],
@@ -517,6 +528,8 @@ var hierarchy =
     [ "dl7::syntax::TerminalSymbolCollection", "dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html", null ],
     [ "tl7::TestCase", "dd/de5/classtl7_1_1TestCase.html", null ],
     [ "tl7::TestSuite", "db/d53/classtl7_1_1TestSuite.html", null ],
+    [ "fl7::fonts::TextMetrics", "d2/dc2/structfl7_1_1fonts_1_1TextMetrics.html", null ],
+    [ "fl7::fonts::TextStyle", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html", null ],
     [ "xl7::graphics::shaders::TextureSamplerDeclaration", "d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html", null ],
     [ "xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates::TextureSamplerStates", "dc/db4/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html", [
       [ "xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates::AbstractShaderStates", "dc/d8f/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates_1_1AbstractShaderStates.html", [
