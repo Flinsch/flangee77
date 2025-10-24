@@ -1,7 +1,7 @@
 #ifndef FL7_FONTS_GLYPH_H
 #define FL7_FONTS_GLYPH_H
 
-#include "./Point.h"
+#include "./Contour.h"
 
 #include <vector>
 
@@ -17,14 +17,30 @@ namespace fl7::fonts {
  */
 struct Glyph
 {
-    /** All points defining the glyph's shape. */
-    std::vector<Point> contour_points;
-    /** Each entry marks the last point of a contour, separating the glyph into subpaths. */
-    std::vector<unsigned> end_point_indices;
-    /** The horizontal advance after rendering this glyph (in font units). */
-    int advance_width;
-    /** The horizontal offset from the glyph origin to its left edge (in font units). */
-    int left_side_bearing;
+    /**
+     * All contours defining the glyph's outline/shape.
+     *
+     * If the points are arranged clockwise, the contour is filled. If the points
+     * are arranged counter-clockwise, they describe a "hole".
+     */
+    std::vector<Contour> contours;
+
+    /** The lower left corner of the bounding rectangle. */
+    ml7::Vector2f lower_left;
+    /** The upper right corner of the bounding rectangle. */
+    ml7::Vector2f upper_right;
+    /** The size (width and height) of the bounding rectangle. */
+    ml7::Vector2f size;
+
+    /** The horizontal advance after rendering this glyph. */
+    float advance_width = 0.0f;
+    /** The horizontal offset from the glyph origin to its left edge. */
+    float left_side_bearing = 0.0f;
+
+    // There is no `right_side_bearing` here because it would be redundant
+    // information. That alone is not a valid argument, but the value is rarely
+    // used anyway. If you need it, for whatever reason/purpose, it's easy to
+    // calculate: RSB = AW - LSB - width (because AW = LSB + width + RSB).
 };
 
 

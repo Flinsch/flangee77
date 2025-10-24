@@ -2,9 +2,12 @@
 #define FL7_FONTS_TRUETYPEFONTLOADER_H
 #include "./FontLoader.h"
 
+#include "./detail/RawGlyph.h"
+
 #include <CoreLabs/io/ReadableMemory.h>
 
 #include <optional>
+#include <span>
 #include <unordered_map>
 
 
@@ -43,6 +46,11 @@ public:
      */
     Glyph load_glyph(cl7::text::codec::codepoint codepoint) override;
 
+    /**
+     * Loads the general typographic properties of the font.
+     */
+    FontMetrics load_metrics() override;
+
 
 
 private:
@@ -78,16 +86,16 @@ private:
     {
         // We skip a lot of information here that doesn't really interest us.
 
-        /** Used to scale glyph coordinates to pixels. Typically ranges from 64 to 16384. */
+        /** Used to scale glyph coordinates (in font units) to pixels. Typically ranges from 64 to 16384. */
         uint16_t units_per_em = 0;
 
-        /** For all glyph bounding boxes. */
+        /** For all glyph bounding boxes (in font units). */
         int16_t x_min = 0;
-        /** For all glyph bounding boxes. */
+        /** For all glyph bounding boxes (in font units). */
         int16_t y_min = 0;
-        /** For all glyph bounding boxes. */
+        /** For all glyph bounding boxes (in font units). */
         int16_t x_max = 0;
-        /** For all glyph bounding boxes. */
+        /** For all glyph bounding boxes (in font units). */
         int16_t y_max = 0;
 
         /** Smallest readable size in pixels. */
@@ -103,6 +111,40 @@ private:
 
         /** The number of glyphs in the font. */
         uint16_t num_glyphs = 0;
+    };
+
+    struct FontMetric
+    {
+        // We skip a lot of information here that doesn't really interest us.
+
+        /** The typographic ascent, in font units. */
+        int16_t ascender = 0;
+        /** The typographic descent, in font units. */
+        int16_t descender = 0;
+        /** The typographic line gap (leading), in font units. */
+        int16_t line_gap = 0;
+        /** The maximum advance width value of glyphs, in font units. */
+        uint16_t advance_width_max = 0;
+        /** The minimum left-side bearing for glyphs with contours, in font units. */
+        int16_t min_left_side_bearing = 0;
+        /** The minimum right-side bearing for glyphs with contours, in font units. */
+        int16_t min_right_side_bearing = 0;
+        /** `max(lsb + (x_max - x_min))` */
+        int16_t x_max_extent = 0;
+    };
+
+    struct GlyphMetric
+    {
+        /** The advance width, in font units. */
+        uint16_t advance_width = 0;
+        /** The left-side bearing, in font units. */
+        int16_t left_side_bearing = 0;
+    };
+
+    struct GlyphEntry
+    {
+        Glyph glyph = {};
+        bool is_loaded = false;
     };
 
 
@@ -121,6 +163,19 @@ private:
     bool _read_character_code_mapping();
     bool _read_character_code_mapping_format_4(cl7::io::ReadableMemory& readable);
     bool _read_character_code_mapping_format_12(cl7::io::ReadableMemory& readable);
+    bool _read_glyph_offsets();
+
+    bool _read_font_and_glyph_metrics();
+
+    bool _read_glyph_data(std::span<const uint32_t> indices);
+    bool _read_glyph_data(cl7::io::ReadableMemory& readable, uint32_t index);
+    std::pair<Glyph, bool> _read_simple_glyph_description(cl7::io::ReadableMemory& readable, size_t number_of_contours);
+    static std::pair<Glyph, bool> _read_composite_glyph_description(cl7::io::ReadableMemory& readable);
+    static std::vector<int16_t> _read_glyph_coordinates(cl7::io::ReadableMemory& readable, const std::vector<uint8_t>& point_flags, uint8_t short_vector_flag, uint8_t is_same_or_positive_short_vector_flag);
+
+    void _insert_loaded_glyph(uint32_t index, Glyph&& glyph);
+
+    uint32_t _get_glyph_index(cl7::text::codec::codepoint codepoint) const;
 
     static uint32_t _calculate_checksum(cl7::byte_span data);
 
@@ -136,6 +191,13 @@ private:
     MaximumProfile _maximum_profile;
 
     std::unordered_map<cl7::text::codec::codepoint::value_type, uint32_t> _glyph_index_map;
+    std::vector<uint32_t> _glyph_offsets;
+
+    FontMetric _font_metric;
+    std::vector<GlyphMetric> _glyph_metrics;
+
+    std::vector<GlyphEntry> _glyph_entries;
+    FontMetrics _font_metrics;
 
 }; // class TrueTypeFontLoader
 

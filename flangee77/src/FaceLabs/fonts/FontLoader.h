@@ -1,7 +1,10 @@
 #ifndef FL7_FONTS_FONTLOADER_H
 #define FL7_FONTS_FONTLOADER_H
 
-#include "./Font.h"
+#include "./FontMetrics.h"
+#include "./Glyph.h"
+
+#include <CoreLabs/text/codec/codepoint.h>
 
 #include <CoreLabs/io/File.h>
 
@@ -49,6 +52,11 @@ public:
      * that it contains no contour points, has no advance width, etc.).
      */
     virtual Glyph load_glyph(cl7::text::codec::codepoint codepoint) = 0;
+
+    /**
+     * Loads the general typographic properties of the font.
+     */
+    virtual FontMetrics load_metrics() = 0;
 
 
 

@@ -2,6 +2,8 @@
 #define HELLOWORLD_MYAPP_H
 #include <ProgLabs/Application.h>
 
+#include <FaceLabs/fonts/Font.h>
+
 #include <XiaoLabs/graphics/meshes/VertexBuffer.h>
 #include <XiaoLabs/graphics/meshes/IndexBuffer.h>
 
@@ -89,6 +91,8 @@ private:
     // #############################################################################
     // Attributes
     // #############################################################################
+
+    std::shared_ptr<fl7::fonts::Font> _font;
 
     xl7::graphics::meshes::VertexBuffer::ID _vertex_buffer_id;
     xl7::graphics::meshes::IndexBuffer::ID _index_buffer_id;

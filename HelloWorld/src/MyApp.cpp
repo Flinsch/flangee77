@@ -1,6 +1,7 @@
 #include "MyApp.h"
 
     #include <FaceLabs/fonts/TrueTypeFontLoader.h>
+    #include <FaceLabs/fonts/render/TestRenderer.h>
 
 #include <XiaoLabs/graphics.h>
     #include <XiaoLabs/graphics/images/TargaImageHandler.h>
@@ -9,12 +10,11 @@
 #include <MathLabs/math.h>
 
 #include <CoreLabs/filesystem.h>
+#include <CoreLabs/io/File.h>
+#include <CoreLabs/io/Utf8Reader.h>
 
 #include <CoreLabs/profiling.h>
 #include <CoreLabs/logging.h>
-
-#include <CoreLabs/sstream.h>
-#include <CoreLabs/text/codec.h>
 
 #include <algorithm>
 #include <filesystem>
@@ -105,12 +105,9 @@ namespace helloworld {
         _index_buffer_id = xl7::graphics::mesh_manager()->create_index_buffer(u8"My Index Buffer", index_buffer_desc, index_data_provider);
 
 
-        std::ifstream ifs(std::filesystem::path(cl7::text::codec::reinterpret_utf8(cl7::filesystem::get_working_directory() + u8"assets/shaders/shader.hlsl")));
-        assert(ifs);
-        assert(ifs.is_open());
-        cl7::u8osstream oss;
-        oss << ifs.rdbuf();
-        cl7::u8string high_level_code = oss.str();
+        cl7::io::File file(cl7::filesystem::get_working_directory() + u8"assets/shaders/shader.hlsl");
+        cl7::io::Utf8Reader utf8_reader(&file);
+        cl7::u8string high_level_code = utf8_reader.read();
         xl7::graphics::shaders::ShaderCode shader_code{high_level_code};
         xl7::graphics::shaders::CompileOptions compile_options;
         xl7::graphics::shaders::CodeDataProvider code_data_provider{&shader_code, &compile_options};
@@ -230,8 +227,8 @@ namespace helloworld {
         }
 
 
-        fl7::fonts::TrueTypeFontLoader font_loader(cl7::filesystem::get_working_directory() + u8"assets/fonts/NotoSans-VariableFont_wdth,wght.ttf");
-        font_loader.load_glyph({0x41});
+        auto font_loader = std::make_unique<fl7::fonts::TrueTypeFontLoader>(cl7::filesystem::get_working_directory() + u8"assets/fonts/NotoSans-VariableFont_wdth,wght.ttf");
+        _font = std::make_unique<fl7::fonts::Font>(std::move(font_loader));
 
 
 
@@ -261,6 +258,9 @@ namespace helloworld {
      */
     bool MyApp::_shutdown_impl()
     {
+        _font.reset();
+
+
         xl7::graphics::state_manager()->release_resource_and_invalidate(_blend_state_id);
         xl7::graphics::state_manager()->release_resource_and_invalidate(_depth_stencil_state_id);
         xl7::graphics::state_manager()->release_resource_and_invalidate(_rasterizer_state_id);
@@ -328,6 +328,18 @@ namespace helloworld {
         rendering_context->pipeline.om.set_blend_state_id(_blend_state_id);
 
         rendering_context->draw_indexed();
+
+
+        fl7::fonts::render::TestRenderer font_renderer;
+        fl7::fonts::TextStyle text_style;
+        text_style.font_size = 16.0f;
+        text_style.scaling = {2.5f, 2.5f};
+        //font_renderer.draw_text(u8"Hello, World!", _font.get(), &text_style);
+        cl7::u8string text = u8"Hello, World!";
+        text.reserve(text.size() + (0x7e - 0x20) + 1);
+        for (cl7::u8char_t c = 0x20; c <= 0x7e; ++c)
+            text.append(1, c);
+        font_renderer.draw_text(text, _font.get(), &text_style);
     }
 
     /**
