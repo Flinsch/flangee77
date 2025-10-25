@@ -28,7 +28,7 @@ namespace dl7::xml::detail {
 
         _terminal_symbols.add_literal(EQUAL_SIGN, u8"=");
 
-        _terminal_symbols.add_pattern(DOCTYPE, R"(<!(DOCTYPE|doctype)[^>[]*(\[[^]]*\])?>)");
+        _terminal_symbols.add_pattern(DOCTYPE, R"(<!(DOCTYPE|doctype)[^>\[]*(\[[^\]]*\])?>)");
 
         _terminal_symbols.add_literal(PI_START, u8"<?");
         _terminal_symbols.add_literal(PI_END, u8"?>");
