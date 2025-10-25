@@ -11,7 +11,7 @@ namespace dl7::xml::detail {
 
 
     Lexer::Lexer(syntax::Diagnostics* diagnostics)
-        : GenericLexer(diagnostics, &_terminal_symbols, {WhitespaceHandling::Discard})
+        : GenericLexer(diagnostics, &_terminal_symbols, {WhitespaceHandling::Preserve})
     {
         _init_symbols();
     }
@@ -42,12 +42,12 @@ namespace dl7::xml::detail {
 
         _terminal_symbols.add_custom(COMMENT, syntax::matchers::BlockCommentMatcher{.open = u8"<!--", .close = u8"-->"});
 
-        _terminal_symbols.add_pattern(NAME, R"([A-Za-z_:][A-Za-z0-9_:\-\.])");
+        _terminal_symbols.add_pattern(NAME, R"([A-Za-z_:][A-Za-z0-9_:\-\.]*)");
 
         _terminal_symbols.add_custom(STRING, syntax::matchers::DoubleQuotedStringMatcher{});
         _terminal_symbols.add_custom(STRING, syntax::matchers::SingleQuotedStringMatcher{});
 
-        _terminal_symbols.add_pattern(CHAR_DATA, R"([^<&]+)");
+        _terminal_symbols.add_pattern(CHAR_DATA, R"([^<&])");
 
         _terminal_symbols.add_pattern(REF, R"(&[^;]+;)");
     }
