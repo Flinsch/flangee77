@@ -1,5 +1,7 @@
 var NAVTREEINDEX51 =
 {
+"df/d5f/sstream_8cpp.html#a9a1e9f11987c7329826476c661b0e4c9":[8,0,0,31,0],
+"df/d63/namespaceml7_1_1detail.html":[5,0,3,1],
 "df/d64/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures.html":[5,0,7,1,1,0,5],
 "df/d69/Profiler_8h.html":[8,0,0,4,1],
 "df/d69/Profiler_8h_source.html":[8,0,0,4,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX51 =
 "df/db4/ByteWriter_8cpp.html":[8,0,0,2,2],
 "df/db5/RasterizerState_8h.html":[8,0,6,0,5,8],
 "df/db5/RasterizerState_8h_source.html":[8,0,6,0,5,8],
-"df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html":[5,0,7,1,1,2,2,1],
-"df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html":[7,0,7,0,1,2,1,1],
-"df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html#a0334f6974d6c0610295313e395cf58ef":[5,0,7,1,1,2,2,1,6]
+"df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html":[5,0,7,1,1,2,2,1]
 };

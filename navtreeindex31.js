@@ -1,5 +1,6 @@
 var NAVTREEINDEX31 =
 {
+"d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html#a9fd4436381aa9033959ce7fd6c514dd4":[5,0,0,6,3,7],
 "d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html#abb320027fb11ca3e86ee93bb25512070":[7,0,0,4,3,8],
 "d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html#abb320027fb11ca3e86ee93bb25512070":[5,0,0,6,3,8],
 "d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html#ad17c977a8b25ee55b403e0ee63dd23d7":[5,0,0,6,3,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX31 =
 "da/d03/classxl7_1_1graphics_1_1GraphicsSystem.html#aed4e2e7108269380d0ffa3460753264e":[5,0,7,1,9,1],
 "da/d03/classxl7_1_1graphics_1_1GraphicsSystem.html#af9c7861d1f65f38f456026b9f033b885":[5,0,7,1,9,6],
 "da/d03/classxl7_1_1graphics_1_1GraphicsSystem.html#af9c7861d1f65f38f456026b9f033b885":[7,0,7,0,9,6],
-"da/d05/namespacetl7_1_1exceptions.html":[5,0,6,0],
-"da/d06/classxl7_1_1graphics_1_1surfaces_1_1RenderTargetSurface.html":[7,0,7,0,6,3]
+"da/d05/namespacetl7_1_1exceptions.html":[5,0,6,0]
 };

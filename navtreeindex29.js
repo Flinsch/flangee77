@@ -1,5 +1,6 @@
 var NAVTREEINDEX29 =
 {
+"d9/d10/classcl7_1_1creational_1_1SingletonBase.html#a4ec4ef814d2b0a2e9daaebe3e2926c1b":[5,0,0,1,1,11],
 "d9/d10/classcl7_1_1creational_1_1SingletonBase.html#a4ec4ef814d2b0a2e9daaebe3e2926c1b":[7,0,0,1,1,11],
 "d9/d10/classcl7_1_1creational_1_1SingletonBase.html#a564837ae4e2aebd25414385c4002faf3":[7,0,0,1,1,10],
 "d9/d10/classcl7_1_1creational_1_1SingletonBase.html#a564837ae4e2aebd25414385c4002faf3":[5,0,0,1,1,10],
@@ -248,6 +249,5 @@ var NAVTREEINDEX29 =
 "d9/d7c/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders.html":[5,0,7,1,1,0,3],
 "d9/d7e/structtl7_1_1Context.html":[5,0,6,3],
 "d9/d7e/structtl7_1_1Context.html":[7,0,6,2],
-"d9/d7e/structtl7_1_1Context.html#a001388eec126ff768f2ae3530396fd6b":[7,0,6,2,2],
-"d9/d7e/structtl7_1_1Context.html#a001388eec126ff768f2ae3530396fd6b":[5,0,6,3,2]
+"d9/d7e/structtl7_1_1Context.html#a001388eec126ff768f2ae3530396fd6b":[7,0,6,2,2]
 };

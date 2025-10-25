@@ -359,6 +359,10 @@ requires ( std::is_same_v&lt;Tchar, typename std::remove_cvref_t&lt;Tstring_view
 requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt; &amp;&amp; std::is_convertible_v&lt;T1, bool&gt;)</td></tr>
 <tr class="memitem:aab6e46849480d689944a5e209fa10d7e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#aab6e46849480d689944a5e209fa10d7e">coalesce</a> (T1 &amp;&amp;a, T2 &amp;&amp;b)</td></tr>
 <tr class="separator:aab6e46849480d689944a5e209fa10d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85462c9bac4dc92bd878c0ccea9f587f" id="r_a85462c9bac4dc92bd878c0ccea9f587f"><td class="memTemplParams" colspan="2">template&lt;std::ranges::range R1, std::ranges::range R2, typename Tpred  = std::ranges::equal_to, typename Tproj1  = std::identity, typename Tproj2  = std::identity&gt; <br />
+requires (std::indirectly_comparable&lt;std::ranges::iterator_t&lt;R1&gt;, std::ranges::iterator_t&lt;R2&gt;, Tpred, Tproj1, Tproj2&gt;)</td></tr>
+<tr class="memitem:a85462c9bac4dc92bd878c0ccea9f587f"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a85462c9bac4dc92bd878c0ccea9f587f">unordered_equal</a> (const R1 &amp;a, const R2 &amp;b, Tpred pred={}, Tproj1 proj1={}, Tproj2 proj2={})</td></tr>
+<tr class="separator:a85462c9bac4dc92bd878c0ccea9f587f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fcbab39a4e69f5e398b9d2191758031" id="r_a4fcbab39a4e69f5e398b9d2191758031"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a4fcbab39a4e69f5e398b9d2191758031">to_string</a> (<a class="el" href="../../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2">xl7::graphics::ChannelOrder</a> channel_order)</td></tr>
 <tr class="separator:a4fcbab39a4e69f5e398b9d2191758031"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6b061e30669a70d570698ceeb7472e7" id="r_af6b061e30669a70d570698ceeb7472e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#af6b061e30669a70d570698ceeb7472e7">to_string</a> (<a class="el" href="../../d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082d">xl7::graphics::PixelFormat</a> pixel_format)</td></tr>
@@ -1573,6 +1577,56 @@ requires ( std::is_same_v&lt;Tchar, typename std::remove_cvref_t&lt;Tstring_view
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a85462c9bac4dc92bd878c0ccea9f587f" name="a85462c9bac4dc92bd878c0ccea9f587f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85462c9bac4dc92bd878c0ccea9f587f">&#9670;&#160;</a></span>unordered_equal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::ranges::range R1, std::ranges::range R2, typename Tpred  = std::ranges::equal_to, typename Tproj1  = std::identity, typename Tproj2  = std::identity&gt; <br />
+requires (std::indirectly_comparable&lt;std::ranges::iterator_t&lt;R1&gt;, std::ranges::iterator_t&lt;R2&gt;, Tpred, Tproj1, Tproj2&gt;)</div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool cl7::unordered_equal </td>
+          <td>(</td>
+          <td class="paramtype">const R1 &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const R2 &amp;&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Tpred&#160;</td>
+          <td class="paramname"><em>pred</em> = <code>{}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Tproj1&#160;</td>
+          <td class="paramname"><em>proj1</em> = <code>{}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Tproj2&#160;</td>
+          <td class="paramname"><em>proj2</em> = <code>{}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Checks whether two containers contain equal elements, regardless of order. Runs in O(N²) time and uses O(N) auxiliary memory (as a dynamic bitset, so the memory footprint is kept within limits). </p>
 
 </div>
 </div>

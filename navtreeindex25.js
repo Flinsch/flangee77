@@ -1,5 +1,6 @@
 var NAVTREEINDEX25 =
 {
+"d8/d1f/structml7_1_1Quaternion.html":[7,0,3,19],
 "d8/d1f/structml7_1_1Quaternion.html":[5,0,3,20],
 "d8/d1f/structml7_1_1Quaternion.html#a0502851d85c50e9dd1d77d0ebce9a816":[7,0,3,19,40],
 "d8/d1f/structml7_1_1Quaternion.html#a0502851d85c50e9dd1d77d0ebce9a816":[5,0,3,20,40],
@@ -248,6 +249,5 @@ var NAVTREEINDEX25 =
 "d8/d42/direct3d11_2prerequisites_8h.html#a3c1322b2bdacf028c24ebfb733bb5e57":[8,0,6,0,1,0,10,6],
 "d8/d42/direct3d11_2prerequisites_8h.html#a3d166b3e2d4feeefeb91ed2cbbb380b4":[8,0,6,0,1,0,10,2],
 "d8/d42/direct3d11_2prerequisites_8h.html#a46720562cc0adfa4fe1322061ec6d1ee":[8,0,6,0,1,0,10,0],
-"d8/d42/direct3d11_2prerequisites_8h.html#a5e4ecd36372dce7a3eaebde5eafc31b4":[8,0,6,0,1,0,10,1],
-"d8/d42/direct3d11_2prerequisites_8h.html#ab6d06dd3d988fe354b25e7a31b38cd0c":[8,0,6,0,1,0,10,4]
+"d8/d42/direct3d11_2prerequisites_8h.html#a5e4ecd36372dce7a3eaebde5eafc31b4":[8,0,6,0,1,0,10,1]
 };

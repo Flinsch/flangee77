@@ -98,14 +98,23 @@ $(document).ready(function(){initNavTree('de/df0/utilities_8h.html','../../'); i
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="../../de/d99/root_8h_source.html">CoreLabs/root.h</a>&gt;</code><br />
+<code>#include &lt;functional&gt;</code><br />
+<code>#include &lt;ranges&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for utilities.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/dfc/utilities_8h__incl.png" border="0" usemap="#aCoreLabs_2utilities_8h" alt=""/></div>
 <map name="aCoreLabs_2utilities_8h" id="aCoreLabs_2utilities_8h">
-<area shape="rect" title=" " alt="" coords="191,5,337,31"/>
+<area shape="rect" title=" " alt="" coords="371,5,517,31"/>
 <area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="202,79,326,104"/>
-<area shape="poly" title=" " alt="" coords="267,31,267,65,261,65,261,31"/>
+<area shape="poly" title=" " alt="" coords="416,33,307,76,305,71,414,28"/>
+<area shape="rect" title=" " alt="" coords="350,79,437,104"/>
+<area shape="poly" title=" " alt="" coords="438,33,412,69,407,66,433,29"/>
+<area shape="rect" title=" " alt="" coords="461,79,528,104"/>
+<area shape="poly" title=" " alt="" coords="455,29,481,66,476,69,450,33"/>
+<area shape="rect" title=" " alt="" coords="553,79,615,104"/>
+<area shape="poly" title=" " alt="" coords="468,28,550,70,548,75,465,33"/>
 <area shape="rect" title=" " alt="" coords="5,152,107,177"/>
 <area shape="poly" title=" " alt="" coords="231,107,104,150,102,145,230,101"/>
 <area shape="rect" title=" " alt="" coords="131,152,200,177"/>
@@ -142,6 +151,10 @@ Functions</h2></td></tr>
 requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt; &amp;&amp; std::is_convertible_v&lt;T1, bool&gt;)</td></tr>
 <tr class="memitem:aab6e46849480d689944a5e209fa10d7e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#aab6e46849480d689944a5e209fa10d7e">cl7::coalesce</a> (T1 &amp;&amp;a, T2 &amp;&amp;b)</td></tr>
 <tr class="separator:aab6e46849480d689944a5e209fa10d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85462c9bac4dc92bd878c0ccea9f587f" id="r_a85462c9bac4dc92bd878c0ccea9f587f"><td class="memTemplParams" colspan="2">template&lt;std::ranges::range R1, std::ranges::range R2, typename Tpred  = std::ranges::equal_to, typename Tproj1  = std::identity, typename Tproj2  = std::identity&gt; <br />
+requires (std::indirectly_comparable&lt;std::ranges::iterator_t&lt;R1&gt;, std::ranges::iterator_t&lt;R2&gt;, Tpred, Tproj1, Tproj2&gt;)</td></tr>
+<tr class="memitem:a85462c9bac4dc92bd878c0ccea9f587f"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a85462c9bac4dc92bd878c0ccea9f587f">cl7::unordered_equal</a> (const R1 &amp;a, const R2 &amp;b, Tpred pred={}, Tproj1 proj1={}, Tproj2 proj2={})</td></tr>
+<tr class="separator:a85462c9bac4dc92bd878c0ccea9f587f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

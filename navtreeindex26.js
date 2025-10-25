@@ -1,5 +1,6 @@
 var NAVTREEINDEX26 =
 {
+"d8/d42/direct3d11_2prerequisites_8h.html#ab6d06dd3d988fe354b25e7a31b38cd0c":[8,0,6,0,1,0,10,4],
 "d8/d42/direct3d11_2prerequisites_8h.html#ae3917bce07306946a1e6a7567fc07dbb":[8,0,6,0,1,0,10,3],
 "d8/d42/direct3d11_2prerequisites_8h_source.html":[8,0,6,0,1,0,10],
 "d8/d44/ResourceManager_8cpp.html":[8,0,6,1,10],
@@ -248,6 +249,5 @@ var NAVTREEINDEX26 =
 "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4a32c4764653e50488bff6ce2eb815b":[7,0,2,0,8,1,3],
 "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4ffdcf0dc1f31b9acaf295d75b51d00":[7,0,2,0,8,1,0],
 "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4ffdcf0dc1f31b9acaf295d75b51d00":[5,0,2,0,8,1,0],
-"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458bab1ca34f82e83c52b010f86955f264e05":[5,0,2,0,8,1,1],
-"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458bab1ca34f82e83c52b010f86955f264e05":[7,0,2,0,8,1,1]
+"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458bab1ca34f82e83c52b010f86955f264e05":[5,0,2,0,8,1,1]
 };
