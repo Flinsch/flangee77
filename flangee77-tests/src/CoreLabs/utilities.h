@@ -30,8 +30,11 @@ TESTLABS_CASE( u8"CoreLabs:  utilities:  unordered_equal" )
     TESTLABS_ASSERT_EQ( cl7::unordered_equal( std::vector<int>{ 1, 2, 3, 2 }, std::vector<int>{ 1, 2, 3 } ), false );
     TESTLABS_ASSERT_EQ( cl7::unordered_equal( std::vector<int>{ 1, 2, 3 }, std::vector<int>{ 1, 2, 3, 2 } ), false );
 
-    TESTLABS_ASSERT_EQ( cl7::unordered_equal( std::vector<std::shared_ptr<int>>{ std::make_shared<int>(1), std::make_shared<int>(2), std::make_shared<int>(2), std::make_shared<int>(3) }, std::vector<std::shared_ptr<int>>{ std::make_shared<int>(3), std::make_shared<int>(2), std::make_shared<int>(1), std::make_shared<int>(2) }, [](const auto& p) { return *p; } ), true );
-    TESTLABS_ASSERT_EQ( cl7::unordered_equal( std::vector<std::shared_ptr<int>>{ std::make_shared<int>(1), std::make_shared<int>(2), std::make_shared<int>(2), std::make_shared<int>(3) }, std::vector<std::shared_ptr<int>>{ std::make_shared<int>(1), std::make_shared<int>(2), std::make_shared<int>(3), std::make_shared<int>(3) }, [](const auto& p) { return *p; } ), false );
+    TESTLABS_ASSERT_EQ( cl7::unordered_equal( std::vector<std::shared_ptr<int>>{ std::make_shared<int>(1), std::make_shared<int>(2), std::make_shared<int>(2), std::make_shared<int>(3) }, std::vector<std::shared_ptr<int>>{ std::make_shared<int>(3), std::make_shared<int>(2), std::make_shared<int>(1), std::make_shared<int>(2) }, [](const auto& a, const auto& b) { return *a == *b; } ), true );
+    TESTLABS_ASSERT_EQ( cl7::unordered_equal( std::vector<std::shared_ptr<int>>{ std::make_shared<int>(1), std::make_shared<int>(2), std::make_shared<int>(2), std::make_shared<int>(3) }, std::vector<std::shared_ptr<int>>{ std::make_shared<int>(1), std::make_shared<int>(2), std::make_shared<int>(3), std::make_shared<int>(3) }, [](const auto& a, const auto& b) { return *a == *b; } ), false );
+
+    TESTLABS_ASSERT_EQ( cl7::unordered_equal( std::vector<std::shared_ptr<int>>{ std::make_shared<int>(1), std::make_shared<int>(2), std::make_shared<int>(2), std::make_shared<int>(3) }, std::vector<std::shared_ptr<int>>{ std::make_shared<int>(3), std::make_shared<int>(2), std::make_shared<int>(1), std::make_shared<int>(2) }, {}, [](const auto& p) { return *p; }, [](const auto& p) { return *p; } ), true );
+    TESTLABS_ASSERT_EQ( cl7::unordered_equal( std::vector<std::shared_ptr<int>>{ std::make_shared<int>(1), std::make_shared<int>(2), std::make_shared<int>(2), std::make_shared<int>(3) }, std::vector<std::shared_ptr<int>>{ std::make_shared<int>(1), std::make_shared<int>(2), std::make_shared<int>(3), std::make_shared<int>(3) }, {}, [](const auto& p) { return *p; }, [](const auto& p) { return *p; } ), false );
 }
 
 

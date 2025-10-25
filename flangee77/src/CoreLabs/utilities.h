@@ -31,14 +31,9 @@ namespace cl7 {
      * Runs in O(N²) time and uses O(N) auxiliary memory (as a dynamic bitset, so
      * the memory footprint is kept within limits).
      */
-    template <std::ranges::range R1, std::ranges::range R2, typename Tproj = std::identity>
-        requires(
-            std::same_as<
-                std::invoke_result_t<Tproj&, std::ranges::range_value_t<R1>>,
-                std::invoke_result_t<Tproj&, std::ranges::range_value_t<R2>>> &&
-            std::equality_comparable<
-                std::invoke_result_t<Tproj&, std::ranges::range_value_t<R1>>>)
-    bool unordered_equal(const R1& a, const R2& b, Tproj proj = {})
+    template <std::ranges::range R1, std::ranges::range R2, typename Tpred = std::ranges::equal_to, typename Tproj1 = std::identity, typename Tproj2 = std::identity>
+        requires(std::indirectly_comparable<std::ranges::iterator_t<R1>, std::ranges::iterator_t<R2>, Tpred, Tproj1, Tproj2>)
+    bool unordered_equal(const R1& a, const R2& b, Tpred pred = {}, Tproj1 proj1 = {}, Tproj2 proj2 = {})
     {
         if (std::ranges::size(a) != std::ranges::size(b))
             return false;
@@ -54,11 +49,11 @@ namespace cl7 {
             bool found = false;
             size_t i = 0;
 
-            const auto proj_x = std::invoke(proj, x);
+            const auto proj_x = std::invoke(proj1, x);
 
             for (auto it_b = it_b_begin; it_b != it_b_end; ++it_b, ++i)
             {
-                if (!matched[i] && proj_x == std::invoke(proj, *it_b))
+                if (!matched[i] && std::invoke(pred, proj_x, std::invoke(proj2, *it_b)))
                 {
                     matched[i] = true;
                     found = true;
