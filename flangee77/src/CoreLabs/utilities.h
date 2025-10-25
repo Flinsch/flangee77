@@ -3,6 +3,9 @@
 
 #include <CoreLabs/root.h>
 
+#include <ranges>
+#include <vector>
+
 
 
 namespace cl7 {
@@ -19,6 +22,47 @@ namespace cl7 {
     {
         using T = std::decay_t<T1>;
         return static_cast<bool>(a) ? static_cast<T>(std::forward<T1>(a)) : static_cast<T>(std::forward<T2>(b));
+    }
+
+
+    /**
+     * Checks whether two containers contain equal elements, regardless of order.
+     * Runs in O(N²) time and uses O(N) auxiliary memory (as a dynamic bitset, so
+     * the memory footprint is kept within limits).
+     */
+    template <std::ranges::range R1, std::ranges::range R2>
+        requires(std::same_as<std::ranges::range_value_t<R1>, std::ranges::range_value_t<R2>> && std::equality_comparable<std::ranges::range_value_t<R1>>)
+    bool unordered_equal(const R1& a, const R2& b)
+    {
+        if (std::ranges::size(a) != std::ranges::size(b))
+            return false;
+
+        const auto size = std::ranges::size(b);
+        std::vector<bool> matched(size, false);
+
+        const auto it_b_begin = std::ranges::begin(b);
+        const auto it_b_end = std::ranges::end(b);
+
+        for (const auto& x : a)
+        {
+            bool found = false;
+            size_t i = 0;
+
+            for (auto it_b = it_b_begin; it_b != it_b_end; ++it_b, ++i)
+            {
+                if (!matched[i] && x == *it_b)
+                {
+                    matched[i] = true;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+                return false;
+        }
+
+        return true;
     }
 
 

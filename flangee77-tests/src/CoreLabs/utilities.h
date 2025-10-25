@@ -22,4 +22,15 @@ TESTLABS_CASE( u8"CoreLabs:  utilities:  coalesce" )
 
 
 
+TESTLABS_CASE( u8"CoreLabs:  utilities:  unordered_equal" )
+{
+    TESTLABS_ASSERT_EQ( cl7::unordered_equal( std::vector<int>{}, std::vector<int>{} ), true );
+    TESTLABS_ASSERT_EQ( cl7::unordered_equal( std::vector<int>{1, 2, 2, 3}, std::vector<int>{3, 2, 1, 2} ), true );
+    TESTLABS_ASSERT_EQ( cl7::unordered_equal( std::vector<int>{1, 2, 2, 3}, std::vector<int>{1, 2, 3, 3} ), false );
+    TESTLABS_ASSERT_EQ( cl7::unordered_equal( std::vector<int>{1, 2, 3, 2}, std::vector<int>{1, 2, 3} ), false );
+    TESTLABS_ASSERT_EQ( cl7::unordered_equal( std::vector<int>{1, 2, 3}, std::vector<int>{1, 2, 3, 2} ), false );
+}
+
+
+
 #endif // F77_TESTS_CL7_UTILITIES_H
