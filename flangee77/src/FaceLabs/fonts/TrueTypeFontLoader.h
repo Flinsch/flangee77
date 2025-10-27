@@ -113,7 +113,7 @@ private:
         uint16_t num_glyphs = 0;
     };
 
-    struct FontMetric
+    struct TrueTypeFontMetric
     {
         // We skip a lot of information here that doesn't really interest us.
 
@@ -131,6 +131,28 @@ private:
         int16_t min_right_side_bearing = 0;
         /** `max(lsb + (x_max - x_min))` */
         int16_t x_max_extent = 0;
+    };
+
+    struct OpenTypeFontMetric
+    {
+        // We skip a lot of information here that doesn't really interest us.
+
+        /** The version number for the OS/2 table: 0x0000 to 0x0005. */
+        uint16_t version = 0xffff;
+        /** The arithmetic average of the escapement (width) of all non-zero width glyphs in the font. */
+        int16_t avg_char_width = 0;
+
+        /** The typographic ascender, in font units. */
+        int16_t typo_ascender = 0;
+        /** The typographic descender, in font units. */
+        int16_t typo_descender = 0;
+        /** The typographic line gap, in font units. */
+        int16_t typo_line_gap = 0;
+
+        /** The distance between the baseline and the approximate height of non-ascending lowercase letters (e.g., lowercase 'x'), in font units. */
+        int16_t x_height = 0;
+        /** The distance between the baseline and the approximate height of uppercase letters (e.g., uppercase 'H'), in font units. */
+        int16_t cap_height = 0;
     };
 
     struct GlyphMetric
@@ -166,6 +188,7 @@ private:
     bool _read_glyph_offsets();
 
     bool _read_font_and_glyph_metrics();
+    bool _try_read_os2_metrics();
 
     bool _read_glyph_data(std::span<const uint32_t> indices);
     bool _read_glyph_data(cl7::io::ReadableMemory& readable, uint32_t index);
@@ -193,7 +216,8 @@ private:
     std::unordered_map<cl7::text::codec::codepoint::value_type, uint32_t> _glyph_index_map;
     std::vector<uint32_t> _glyph_offsets;
 
-    FontMetric _font_metric;
+    TrueTypeFontMetric _true_type_font_metric;
+    OpenTypeFontMetric _open_type_font_metric;
     std::vector<GlyphMetric> _glyph_metrics;
 
     std::vector<GlyphEntry> _glyph_entries;

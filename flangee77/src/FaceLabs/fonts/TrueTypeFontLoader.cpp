@@ -424,13 +424,13 @@ namespace fl7::fonts {
 
         readable.seek_read(4); // Skip major version and minor version
 
-        if (reader.read_scalar(_font_metric.ascender) != sizeof(_font_metric.ascender)) return false;
-        if (reader.read_scalar(_font_metric.descender) != sizeof(_font_metric.descender)) return false;
-        if (reader.read_scalar(_font_metric.line_gap) != sizeof(_font_metric.line_gap)) return false;
-        if (reader.read_scalar(_font_metric.advance_width_max) != sizeof(_font_metric.advance_width_max)) return false;
-        if (reader.read_scalar(_font_metric.min_left_side_bearing) != sizeof(_font_metric.min_left_side_bearing)) return false;
-        if (reader.read_scalar(_font_metric.min_right_side_bearing) != sizeof(_font_metric.min_right_side_bearing)) return false;
-        if (reader.read_scalar(_font_metric.x_max_extent) != sizeof(_font_metric.x_max_extent)) return false;
+        if (reader.read_scalar(_true_type_font_metric.ascender) != sizeof(_true_type_font_metric.ascender)) return false;
+        if (reader.read_scalar(_true_type_font_metric.descender) != sizeof(_true_type_font_metric.descender)) return false;
+        if (reader.read_scalar(_true_type_font_metric.line_gap) != sizeof(_true_type_font_metric.line_gap)) return false;
+        if (reader.read_scalar(_true_type_font_metric.advance_width_max) != sizeof(_true_type_font_metric.advance_width_max)) return false;
+        if (reader.read_scalar(_true_type_font_metric.min_left_side_bearing) != sizeof(_true_type_font_metric.min_left_side_bearing)) return false;
+        if (reader.read_scalar(_true_type_font_metric.min_right_side_bearing) != sizeof(_true_type_font_metric.min_right_side_bearing)) return false;
+        if (reader.read_scalar(_true_type_font_metric.x_max_extent) != sizeof(_true_type_font_metric.x_max_extent)) return false;
 
         readable.seek_read(14); // Skip caret slope rise, caret slope run, caret offset, and four reserved words
 
@@ -472,21 +472,42 @@ namespace fl7::fonts {
 
         const float em_per_unit = 1.0f / static_cast<float>(_font_header.units_per_em);
 
-        _font_metrics.ascent = static_cast<float>(_font_metric.ascender) * em_per_unit;
-        _font_metrics.descent = static_cast<float>(_font_metric.descender) * em_per_unit;
-        _font_metrics.leading = static_cast<float>(_font_metric.line_gap) * em_per_unit;
-        _font_metrics.line_height = _font_metrics.ascent - _font_metrics.descent + _font_metrics.leading;
-        _font_metrics.cap_height = 0.0f;
-        _font_metrics.x_height = 0.0f;
+        if (_try_read_os2_metrics())
+        {
+            _font_metrics.ascent = static_cast<float>(_open_type_font_metric.typo_ascender) * em_per_unit;
+            _font_metrics.descent = static_cast<float>(_open_type_font_metric.typo_descender) * em_per_unit;
+            _font_metrics.leading = static_cast<float>(_open_type_font_metric.typo_line_gap) * em_per_unit;
 
-        _font_metrics.min_left_bearing = static_cast<float>(_font_metric.min_left_side_bearing) * em_per_unit;
-        _font_metrics.min_right_bearing = static_cast<float>(_font_metric.min_right_side_bearing) * em_per_unit;
-        _font_metrics.max_width = static_cast<float>(_font_metric.x_max_extent - _font_metric.min_left_side_bearing) * em_per_unit;
-        _font_metrics.max_advance_width = static_cast<float>(_font_metric.advance_width_max) * em_per_unit;
-        _font_metrics.average_width = 0.0f;
+            _font_metrics.cap_height = static_cast<float>(_open_type_font_metric.cap_height) * em_per_unit;
+            _font_metrics.x_height = static_cast<float>(_open_type_font_metric.x_height) * em_per_unit;
+
+            _font_metrics.average_width = static_cast<float>(_open_type_font_metric.avg_char_width) * em_per_unit;
+        }
+        else
+        {
+            _open_type_font_metric = OpenTypeFontMetric{}; // Reset it to "invalid" values as a precaution.
+
+            _font_metrics.ascent = static_cast<float>(_true_type_font_metric.ascender) * em_per_unit;
+            _font_metrics.descent = static_cast<float>(_true_type_font_metric.descender) * em_per_unit;
+            _font_metrics.leading = static_cast<float>(_true_type_font_metric.line_gap) * em_per_unit;
+
+            _font_metrics.cap_height = 0.0f;
+            _font_metrics.x_height = 0.0f;
+
+            _font_metrics.average_width = 0.0f;
+        }
+
+        _font_metrics.line_height = _font_metrics.ascent - _font_metrics.descent + _font_metrics.leading;
+
+        _font_metrics.min_left_bearing = static_cast<float>(_true_type_font_metric.min_left_side_bearing) * em_per_unit;
+        _font_metrics.min_right_bearing = static_cast<float>(_true_type_font_metric.min_right_side_bearing) * em_per_unit;
+        _font_metrics.max_advance_width = static_cast<float>(_true_type_font_metric.advance_width_max) * em_per_unit;
+
+        _font_metrics.max_width = 0.0f;
 
         const size_t upper_H_index = _get_glyph_index({static_cast<cl7::text::codec::codepoint::value_type>('H')});
         const size_t lower_x_index = _get_glyph_index({static_cast<cl7::text::codec::codepoint::value_type>('x')});
+        int max_width = 0;
         size_t total_width = 0;
         size_t non_empty_glyph_count = 0;
 
@@ -521,16 +542,55 @@ namespace fl7::fonts {
             assert(x_max > x_min);
             assert(y_max > y_min);
 
-            if (index == upper_H_index)
+            if (_font_metrics.cap_height == 0.0f && index == upper_H_index)
                 _font_metrics.cap_height = static_cast<float>(y_max - y_min) * em_per_unit;
-            if (index == lower_x_index)
+            if (_font_metrics.x_height == 0.0f && index == lower_x_index)
                 _font_metrics.x_height = static_cast<float>(y_max - y_min) * em_per_unit;
 
+            max_width = std::max(max_width, x_max - x_min);
             total_width += static_cast<size_t>(x_max - x_min);
             ++non_empty_glyph_count;
         }
 
-        _font_metrics.average_width = ml7::precise_divide<float>(total_width, non_empty_glyph_count) * em_per_unit;
+        _font_metrics.max_width = static_cast<float>(max_width) * em_per_unit;
+        if (_font_metrics.average_width == 0.0f)
+            _font_metrics.average_width = ml7::precise_divide<float>(total_width, non_empty_glyph_count) * em_per_unit;
+
+        return true;
+    }
+
+    bool TrueTypeFontLoader::_try_read_os2_metrics()
+    {
+        auto readable = _read_table("OS/2");
+        if (readable.is_eof())
+        {
+            LOG_WARNING(u8"Could not read \"OS/2\" table from TrueType font source.");
+            return false;
+        }
+
+        cl7::io::EndianAwareReader<std::endian::big> reader{&readable};
+
+        if (reader.read_scalar(_open_type_font_metric.version) != sizeof(_open_type_font_metric.version)) return false;
+        if (reader.read_scalar(_open_type_font_metric.avg_char_width) != sizeof(_open_type_font_metric.avg_char_width)) return false;
+
+        readable.seek_read(28); // Skip weight class, width class, type, subscript/superscript offsets, strikeout size/position, and family class
+        readable.seek_read(10); // Skip panose
+        readable.seek_read(16); // Skip Unicode ranges
+        readable.seek_read(4); // Skip vendor identification
+        readable.seek_read(6); // Skip selection, first char index, last char index
+
+        if (reader.read_scalar(_open_type_font_metric.typo_ascender) != sizeof(_open_type_font_metric.typo_ascender)) return false;
+        if (reader.read_scalar(_open_type_font_metric.typo_descender) != sizeof(_open_type_font_metric.typo_descender)) return false;
+        if (reader.read_scalar(_open_type_font_metric.typo_line_gap) != sizeof(_open_type_font_metric.typo_line_gap)) return false;
+
+        if (_open_type_font_metric.version >= 0x002)
+        {
+            readable.seek_read(4); // Skip win ascent, win descent
+            readable.seek_read(8); // Skip code page ranges
+
+            if (reader.read_scalar(_open_type_font_metric.x_height) != sizeof(_open_type_font_metric.x_height)) return false;
+            if (reader.read_scalar(_open_type_font_metric.cap_height) != sizeof(_open_type_font_metric.cap_height)) return false;
+        }
 
         return true;
     }
