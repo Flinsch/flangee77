@@ -479,10 +479,10 @@ namespace fl7::fonts {
         _font_metrics.cap_height = 0.0f;
         _font_metrics.x_height = 0.0f;
 
-        _font_metrics.min_left_bearing = static_cast<float>(_font_metric.min_left_side_bearing);
-        _font_metrics.min_right_bearing = static_cast<float>(_font_metric.min_right_side_bearing);
-        _font_metrics.max_width = static_cast<float>(_font_metric.x_max_extent - _font_metric.min_left_side_bearing);
-        _font_metrics.max_advance_width = static_cast<float>(_font_metric.advance_width_max);
+        _font_metrics.min_left_bearing = static_cast<float>(_font_metric.min_left_side_bearing) * em_per_unit;
+        _font_metrics.min_right_bearing = static_cast<float>(_font_metric.min_right_side_bearing) * em_per_unit;
+        _font_metrics.max_width = static_cast<float>(_font_metric.x_max_extent - _font_metric.min_left_side_bearing) * em_per_unit;
+        _font_metrics.max_advance_width = static_cast<float>(_font_metric.advance_width_max) * em_per_unit;
         _font_metrics.average_width = 0.0f;
 
         const size_t upper_H_index = _get_glyph_index({static_cast<cl7::text::codec::codepoint::value_type>('H')});
@@ -522,15 +522,15 @@ namespace fl7::fonts {
             assert(y_max > y_min);
 
             if (index == upper_H_index)
-                _font_metrics.cap_height = static_cast<float>(x_max - x_min);
+                _font_metrics.cap_height = static_cast<float>(x_max - x_min) * em_per_unit;
             if (index == lower_x_index)
-                _font_metrics.x_height = static_cast<float>(x_max - x_min);
+                _font_metrics.x_height = static_cast<float>(x_max - x_min) * em_per_unit;
 
             total_width += static_cast<size_t>(x_max - x_min);
             ++non_empty_glyph_count;
         }
 
-        _font_metrics.average_width = ml7::precise_divide<float>(total_width, non_empty_glyph_count);
+        _font_metrics.average_width = ml7::precise_divide<float>(total_width, non_empty_glyph_count) * em_per_unit;
 
         return true;
     }
