@@ -23,9 +23,9 @@ struct FontMetrics
     float leading;
     /** The line height of the font (ascent + descent + leading). */
     float line_height;
-    /** The height of a capital letter above the baseline (a flat letter such as 'H' or 'I'; not round or pointed letters like 'O' or 'A', which may overshoot). */
-    float capital_height;
-    /** The height of the main body of the lowercase letter 'x' in the font, which measures from the baseline up to the meanline/median. */
+    /** The cap height: the height of a capital letter above the baseline (a flat letter such as 'H' or 'I'; not round or pointed letters like 'O' or 'A', which may overshoot). */
+    float cap_height;
+    /** The x-height (corpus size): the height of the main body of the lowercase letter 'x' in the font, which measures from the baseline up to the meanline/median. */
     float x_height;
 
     /** The minimum left-side bearing for (non-empty) glyphs in the font. */

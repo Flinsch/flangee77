@@ -476,7 +476,7 @@ namespace fl7::fonts {
         _font_metrics.descent = static_cast<float>(_font_metric.descender) * em_per_unit;
         _font_metrics.leading = static_cast<float>(_font_metric.line_gap) * em_per_unit;
         _font_metrics.line_height = _font_metrics.ascent + _font_metrics.descent + _font_metrics.leading;
-        _font_metrics.capital_height = 0.0f;
+        _font_metrics.cap_height = 0.0f;
         _font_metrics.x_height = 0.0f;
 
         _font_metrics.min_left_bearing = static_cast<float>(_font_metric.min_left_side_bearing);
@@ -522,7 +522,7 @@ namespace fl7::fonts {
             assert(y_max > y_min);
 
             if (index == upper_X_index)
-                _font_metrics.capital_height = static_cast<float>(x_max - x_min);
+                _font_metrics.cap_height = static_cast<float>(x_max - x_min);
             if (index == lower_x_index)
                 _font_metrics.x_height = static_cast<float>(x_max - x_min);
 
