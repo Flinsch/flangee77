@@ -475,7 +475,7 @@ namespace fl7::fonts {
         _font_metrics.ascent = static_cast<float>(_font_metric.ascender) * em_per_unit;
         _font_metrics.descent = static_cast<float>(_font_metric.descender) * em_per_unit;
         _font_metrics.leading = static_cast<float>(_font_metric.line_gap) * em_per_unit;
-        _font_metrics.line_height = _font_metrics.ascent + _font_metrics.descent + _font_metrics.leading;
+        _font_metrics.line_height = _font_metrics.ascent - _font_metrics.descent + _font_metrics.leading;
         _font_metrics.cap_height = 0.0f;
         _font_metrics.x_height = 0.0f;
 
