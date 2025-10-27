@@ -35,7 +35,7 @@ public:
 
         /** The topology of the primitives that the buffer represents. */
         Topology topology;
-        /** The number of elements within the buffer. */
+        /** The number of elements within the buffer, regardless of the topology (i.e., vertices or indices, not primitives). */
         unsigned count;
     };
 
