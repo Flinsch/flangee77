@@ -485,7 +485,7 @@ namespace fl7::fonts {
         _font_metrics.max_advance_width = static_cast<float>(_font_metric.advance_width_max);
         _font_metrics.average_width = 0.0f;
 
-        const size_t upper_X_index = _get_glyph_index({static_cast<cl7::text::codec::codepoint::value_type>('X')});
+        const size_t upper_H_index = _get_glyph_index({static_cast<cl7::text::codec::codepoint::value_type>('H')});
         const size_t lower_x_index = _get_glyph_index({static_cast<cl7::text::codec::codepoint::value_type>('x')});
         size_t total_width = 0;
         size_t non_empty_glyph_count = 0;
@@ -521,7 +521,7 @@ namespace fl7::fonts {
             assert(x_max > x_min);
             assert(y_max > y_min);
 
-            if (index == upper_X_index)
+            if (index == upper_H_index)
                 _font_metrics.cap_height = static_cast<float>(x_max - x_min);
             if (index == lower_x_index)
                 _font_metrics.x_height = static_cast<float>(x_max - x_min);
