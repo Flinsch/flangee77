@@ -522,9 +522,9 @@ namespace fl7::fonts {
             assert(y_max > y_min);
 
             if (index == upper_H_index)
-                _font_metrics.cap_height = static_cast<float>(x_max - x_min) * em_per_unit;
+                _font_metrics.cap_height = static_cast<float>(y_max - y_min) * em_per_unit;
             if (index == lower_x_index)
-                _font_metrics.x_height = static_cast<float>(x_max - x_min) * em_per_unit;
+                _font_metrics.x_height = static_cast<float>(y_max - y_min) * em_per_unit;
 
             total_width += static_cast<size_t>(x_max - x_min);
             ++non_empty_glyph_count;
