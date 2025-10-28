@@ -194,7 +194,6 @@ var hierarchy =
     [ "fl7::fonts::FontLoader", "da/d82/classfl7_1_1fonts_1_1FontLoader.html", [
       [ "fl7::fonts::TrueTypeFontLoader", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html", null ]
     ] ],
-    [ "fl7::fonts::TrueTypeFontLoader::FontMetric", "d4/d0b/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontMetric.html", null ],
     [ "fl7::fonts::FontMetrics", "df/d82/structfl7_1_1fonts_1_1FontMetrics.html", null ],
     [ "dl7::ini::Format", "d9/db3/structdl7_1_1ini_1_1Format.html", null ],
     [ "dl7::json::Format", "df/d52/structdl7_1_1json_1_1Format.html", null ],
@@ -303,6 +302,7 @@ var hierarchy =
       [ "dl7::xml::Text", "df/dd2/classdl7_1_1xml_1_1Text.html", null ]
     ] ],
     [ "fl7::fonts::TrueTypeFontLoader::OffsetSubtable", "d2/d3d/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OffsetSubtable.html", null ],
+    [ "fl7::fonts::TrueTypeFontLoader::OpenTypeFontMetric", "d3/d24/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html", null ],
     [ "dl7::Base64::Options", "de/d56/structdl7_1_1Base64_1_1Options.html", null ],
     [ "dl7::json::util::Escaper::Options", "d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html", null ],
     [ "dl7::syntax::Lexer::Options", "dd/d72/structdl7_1_1syntax_1_1Lexer_1_1Options.html", null ],
@@ -561,6 +561,7 @@ var hierarchy =
       [ "cl7::detail::_is_any_string_span< std::span< Tchar > >", "d0/d3a/structcl7_1_1detail_1_1__is__any__string__span_3_01std_1_1span_3_01Tchar_01_4_01_4.html", null ],
       [ "cl7::detail::_is_any_string_view< std::basic_string_view< Tchar, Ttraits > >", "d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html", null ]
     ] ],
+    [ "fl7::fonts::TrueTypeFontLoader::TrueTypeFontMetric", "df/da1/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html", null ],
     [ "cl7::u8isstream", "d9/d44/classcl7_1_1u8isstream.html", null ],
     [ "cl7::u8osstream", "d3/d63/classcl7_1_1u8osstream.html", null ],
     [ "dl7::json::util::Unescaper", "df/df1/classdl7_1_1json_1_1util_1_1Unescaper.html", null ],

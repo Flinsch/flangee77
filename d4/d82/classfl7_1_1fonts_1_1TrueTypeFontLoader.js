@@ -1,12 +1,13 @@
 var classfl7_1_1fonts_1_1TrueTypeFontLoader =
 [
     [ "FontHeader", "d9/ded/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontHeader.html", "d9/ded/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontHeader" ],
-    [ "FontMetric", "d4/d0b/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontMetric.html", "d4/d0b/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontMetric" ],
     [ "GlyphEntry", "db/d25/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1GlyphEntry.html", "db/d25/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1GlyphEntry" ],
     [ "GlyphMetric", "de/da0/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1GlyphMetric.html", "de/da0/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1GlyphMetric" ],
     [ "MaximumProfile", "d1/d29/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1MaximumProfile.html", "d1/d29/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1MaximumProfile" ],
     [ "OffsetSubtable", "d2/d3d/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OffsetSubtable.html", "d2/d3d/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OffsetSubtable" ],
+    [ "OpenTypeFontMetric", "d3/d24/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html", "d3/d24/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric" ],
     [ "TableDirectoryEntry", "de/d13/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TableDirectoryEntry.html", "de/d13/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TableDirectoryEntry" ],
+    [ "TrueTypeFontMetric", "df/da1/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html", "df/da1/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric" ],
     [ "TrueTypeFontLoader", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a520b784dab00bc2f200f29270f687656", null ],
     [ "~TrueTypeFontLoader", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#ad2ae12375c5215cdee8b2707cba72025", null ],
     [ "_calculate_checksum", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#afc957e059b373db0a3b61db70ff8bee4", null ],
@@ -30,11 +31,11 @@ var classfl7_1_1fonts_1_1TrueTypeFontLoader =
     [ "_read_table_directory_entry", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a01575e4085734c529951f7b204c6e3a3", null ],
     [ "_try_ensure_init", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a49f4fa92d32289f8c6f0277438d37680", null ],
     [ "_try_read_font_name", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a05a27eac15e6260a7af19481d5140c07", null ],
+    [ "_try_read_os2_metrics", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a5d97dd43953d6726f72bce991e1c06d4", null ],
     [ "has_glyph", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a2e4da0f774d5fb456f69d298b9645cf5", null ],
     [ "load_glyph", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a27764a597254d7d0b2872c35d2799e43", null ],
     [ "load_metrics", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#aac0f9932e4f0ded3e5d1b868e5c4a05b", null ],
     [ "_font_header", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a16f366cf3a736e4bab0658c41760e3d7", null ],
-    [ "_font_metric", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a9417a04600e7155e7fc488bf7e3f87d6", null ],
     [ "_font_metrics", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a5ce4022f736051b2a77dc87a8cdca4a2", null ],
     [ "_font_name", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#afb0b054f8f348427ad027ae5270977a4", null ],
     [ "_glyph_entries", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#aff63908c02af6de54ef386b21fa4e1ae", null ],
@@ -44,5 +45,7 @@ var classfl7_1_1fonts_1_1TrueTypeFontLoader =
     [ "_init_state", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#ab2379cc9db629df0ec06322e321ecf44", null ],
     [ "_maximum_profile", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a5ec1712113e2ba49bdc5e530bcff8c1e", null ],
     [ "_offset_subtable", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a549faa76a5eedfd09d2afcfbc8129bd5", null ],
-    [ "_table_directory", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a38f52b37cc2f297cbb4f318457b260dc", null ]
+    [ "_open_type_font_metric", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a8ed9278bc17d116add05c374c26d7793", null ],
+    [ "_table_directory", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a38f52b37cc2f297cbb4f318457b260dc", null ],
+    [ "_true_type_font_metric", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html#a12a6a881f9aa08fb7e22ac6a18052f4e", null ]
 ];

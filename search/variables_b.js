@@ -11,7 +11,7 @@ var searchData=
   ['line_8',['line',['../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#ad9d9387d6b6d1d81316cd74002803234',1,'dl7::syntax::SourceLocation']]],
   ['line_5fending_9',['line_ending',['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html#aca183b0f163bda76dd357ee8c5702141',1,'dl7::json::Format::MultiLineOptions::line_ending'],['../dd/de4/structdl7_1_1xml_1_1Format_1_1MultiLineOptions.html#abd092c333b368246afd3e0978f7c7218',1,'dl7::xml::Format::MultiLineOptions::line_ending']]],
   ['line_5fextract_10',['line_extract',['../d7/d8c/structdl7_1_1syntax_1_1SourceContext.html#ac5443823368756b090fc0e2731a26fcf',1,'dl7::syntax::SourceContext']]],
-  ['line_5fgap_11',['line_gap',['../d4/d0b/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontMetric.html#aae443212c0e652c482acec77f663c7ce',1,'fl7::fonts::TrueTypeFontLoader::FontMetric']]],
+  ['line_5fgap_11',['line_gap',['../df/da1/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html#aec781d34fad6d3dd4ff08bb08aaed3c0',1,'fl7::fonts::TrueTypeFontLoader::TrueTypeFontMetric']]],
   ['line_5fheight_12',['line_height',['../df/d82/structfl7_1_1fonts_1_1FontMetrics.html#a1aad0f14f054d18eba2c90015d16eaa7',1,'fl7::fonts::FontMetrics']]],
   ['line_5flength_13',['line_length',['../de/d56/structdl7_1_1Base64_1_1Options.html#a8fadae0ba0ba58e8ba2e6efd34a4557f',1,'dl7::Base64::Options']]],
   ['line_5fnumber_14',['line_number',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html#a1927025ae20ee3145488e44c4545c3dd',1,'cl7::logging::LogEntry::line_number'],['../d1/d32/structtl7_1_1Signature.html#a9bf99b8f83ae2dab740f2827027f0c27',1,'tl7::Signature::line_number']]],

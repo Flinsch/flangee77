@@ -1,9 +1,9 @@
 <map id="fl7::fonts::TrueTypeFontLoader" name="fl7::fonts::TrueTypeFontLoader">
-<area shape="rect" id="Node000001" title=" " alt="" coords="928,209,1100,249"/>
-<area shape="rect" id="Node000002" href="$da/d82/classfl7_1_1fonts_1_1FontLoader.html" title=" " alt="" coords="583,63,742,88"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="756,87,831,106,905,136,956,170,996,206,992,210,953,174,903,140,829,111,755,92"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="988,241,1160,281"/>
+<area shape="rect" id="Node000002" href="$da/d82/classfl7_1_1fonts_1_1FontLoader.html" title=" " alt="" coords="596,63,755,88"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="769,76,816,82,867,92,918,108,965,130,998,155,1025,184,1064,239,1059,242,1021,187,994,159,963,135,916,113,865,97,815,87,768,81"/>
 <area shape="rect" id="Node000003" href="$d2/d67/classcl7_1_1io_1_1File.html" title=" " alt="" coords="400,63,492,88"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="506,73,583,73,583,78,506,78"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="506,73,596,73,596,78,506,78"/>
 <area shape="rect" id="Node000004" href="$db/d48/classcl7_1_1io_1_1IReadWritable.html" title=" " alt="" coords="189,29,351,55"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="351,55,400,64,399,69,350,60"/>
 <area shape="rect" id="Node000005" href="$d5/ddf/classcl7_1_1io_1_1IReadable.html" title=" " alt="" coords="5,5,140,31"/>
@@ -12,14 +12,16 @@
 <area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="150,55,189,50,189,55,151,60"/>
 <area shape="rect" id="Node000007" href="$d0/d1b/classcl7_1_1io_1_1IResizable.html" title=" " alt="" coords="202,79,338,104"/>
 <area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="352,81,400,77,400,82,352,87"/>
-<area shape="rect" id="Node000008" href="$d2/d3d/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OffsetSubtable.html" title=" " alt="" coords="577,113,749,153"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="763,150,905,186,963,206,961,211,903,191,762,155"/>
-<area shape="rect" id="Node000009" href="$d9/ded/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontHeader.html" title=" " alt="" coords="577,177,749,217"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="763,203,928,218,927,224,762,208"/>
-<area shape="rect" id="Node000010" href="$d1/d29/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1MaximumProfile.html" title=" " alt="" coords="572,241,753,281"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="767,249,904,237,928,234,928,240,904,242,767,254"/>
-<area shape="rect" id="Node000011" href="$d4/d0b/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontMetric.html" title=" " alt="" coords="577,305,749,345"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="761,304,903,269,965,246,967,251,905,274,763,309"/>
-<area shape="rect" id="Node000012" href="$df/d82/structfl7_1_1fonts_1_1FontMetrics.html" title=" " alt="" coords="581,369,744,395"/>
-<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="757,367,830,350,903,321,929,305,954,285,993,247,997,251,958,289,932,309,905,326,832,355,758,372"/>
+<area shape="rect" id="Node000008" href="$d2/d3d/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OffsetSubtable.html" title=" " alt="" coords="589,113,761,153"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="776,144,869,164,965,194,1008,215,1045,238,1043,243,1006,220,963,199,867,169,774,149"/>
+<area shape="rect" id="Node000009" href="$d9/ded/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontHeader.html" title=" " alt="" coords="589,177,761,217"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="775,208,964,238,988,242,987,247,964,243,775,214"/>
+<area shape="rect" id="Node000010" href="$d1/d29/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1MaximumProfile.html" title=" " alt="" coords="585,241,766,281"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="780,258,988,258,988,263,780,263"/>
+<area shape="rect" id="Node000011" href="$df/da1/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html" title=" " alt="" coords="575,305,775,345"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="789,306,964,278,987,274,988,279,964,283,790,311"/>
+<area shape="rect" id="Node000012" href="$d3/d24/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html" title=" " alt="" coords="572,369,779,409"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="792,370,877,351,963,324,1006,302,1044,279,1046,283,1009,307,965,328,878,356,793,375"/>
+<area shape="rect" id="Node000013" href="$df/d82/structfl7_1_1fonts_1_1FontMetrics.html" title=" " alt="" coords="594,433,757,459"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="770,441,817,436,867,426,916,411,963,389,995,365,1022,335,1060,279,1064,282,1026,339,998,369,965,394,918,416,868,431,818,441,771,447"/>
 </map>

@@ -13,7 +13,7 @@ var searchData=
   ['texture_10',['Texture',['../d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html',1,'xl7::graphics::textures']]],
   ['texture2d_11',['Texture2D',['../d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html',1,'xl7::graphics::textures']]],
   ['texture2darray_12',['Texture2DArray',['../d3/dc5/classxl7_1_1graphics_1_1textures_1_1Texture2DArray.html',1,'xl7::graphics::textures']]],
-  ['texture2dimpl_13',['texture2dimpl',['../dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html',1,'xl7::graphics::impl::direct3d9::textures::Texture2DImpl'],['../d8/d11/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures_1_1Texture2DImpl.html',1,'xl7::graphics::impl::direct3d11::textures::Texture2DImpl']]],
+  ['texture2dimpl_13',['texture2dimpl',['../d8/d11/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures_1_1Texture2DImpl.html',1,'xl7::graphics::impl::direct3d11::textures::Texture2DImpl'],['../dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html',1,'xl7::graphics::impl::direct3d9::textures::Texture2DImpl']]],
   ['texture3d_14',['Texture3D',['../de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html',1,'xl7::graphics::textures']]],
   ['texturemanager_15',['TextureManager',['../df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html',1,'xl7::graphics::textures']]],
   ['texturesamplerdeclaration_16',['TextureSamplerDeclaration',['../d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html',1,'xl7::graphics::shaders']]],
@@ -26,5 +26,6 @@ var searchData=
   ['traits_3c_20cl7_3a_3au32char_5ft_20_3e_23',['traits&lt; cl7::u32char_t &gt;',['../d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html',1,'cl7::text::codec']]],
   ['traits_3c_20cl7_3a_3au8char_5ft_20_3e_24',['traits&lt; cl7::u8char_t &gt;',['../de/db6/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4.html',1,'cl7::text::codec']]],
   ['transcoder_25',['Transcoder',['../da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html',1,'cl7::text::codec']]],
-  ['truetypefontloader_26',['TrueTypeFontLoader',['../d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html',1,'fl7::fonts']]]
+  ['truetypefontloader_26',['TrueTypeFontLoader',['../d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html',1,'fl7::fonts']]],
+  ['truetypefontmetric_27',['TrueTypeFontMetric',['../df/da1/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html',1,'fl7::fonts::TrueTypeFontLoader']]]
 ];
