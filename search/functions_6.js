@@ -38,6 +38,7 @@ var searchData=
   ['from_5fradians_35',['from_radians',['../d4/d9d/structml7_1_1Angle.html#a377bfdf70909b8af66793391cd423699',1,'ml7::Angle']]],
   ['from_5fsource_5foffset_36',['from_source_offset',['../d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html#af3e9ef8cb9f576cd0697d84a0f0d385d',1,'dl7::syntax::SourceLocation::from_source_offset()'],['../d7/d8c/structdl7_1_1syntax_1_1SourceContext.html#adb84b79697d573714aea9afcb0e6a88d',1,'dl7::syntax::SourceContext::from_source_offset()']]],
   ['from_5ftwo_5fpoints_37',['from_two_points',['../d6/dd2/structml7_1_1Line3.html#a4bbbefc5e7655309bea7ba7fe1defbff',1,'ml7::Line3::from_two_points()'],['../d1/dfc/structml7_1_1Line2.html#af63a6b017e27e397f79b60a0e4dd659b',1,'ml7::Line2::from_two_points()']]],
-  ['front_38',['front',['../da/d4e/classcl7_1_1static__vector.html#a2283fbf7cd0dfa3f6799b350a1d59d79',1,'cl7::static_vector::front() const'],['../da/d4e/classcl7_1_1static__vector.html#a662afd944571778368fa5a7303ff57e8',1,'cl7::static_vector::front()']]],
-  ['full_39',['full',['../da/d4e/classcl7_1_1static__vector.html#a873cc8f4098b651026ef3741739c8752',1,'cl7::static_vector']]]
+  ['from_5fvector_38',['from_vector',['../d0/d35/structfl7_1_1fonts_1_1detail_1_1RawGlyph_1_1Point.html#a14247916f76bac2614dcd7bbf71e2280',1,'fl7::fonts::detail::RawGlyph::Point']]],
+  ['front_39',['front',['../da/d4e/classcl7_1_1static__vector.html#a2283fbf7cd0dfa3f6799b350a1d59d79',1,'cl7::static_vector::front() const'],['../da/d4e/classcl7_1_1static__vector.html#a662afd944571778368fa5a7303ff57e8',1,'cl7::static_vector::front()']]],
+  ['full_40',['full',['../da/d4e/classcl7_1_1static__vector.html#a873cc8f4098b651026ef3741739c8752',1,'cl7::static_vector']]]
 ];

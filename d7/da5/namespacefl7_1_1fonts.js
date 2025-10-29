@@ -2,6 +2,7 @@ var namespacefl7_1_1fonts =
 [
     [ "detail", "db/dce/namespacefl7_1_1fonts_1_1detail.html", "db/dce/namespacefl7_1_1fonts_1_1detail" ],
     [ "render", "dd/d80/namespacefl7_1_1fonts_1_1render.html", "dd/d80/namespacefl7_1_1fonts_1_1render" ],
+    [ "BoundingBox", "dc/d05/structfl7_1_1fonts_1_1BoundingBox.html", "dc/d05/structfl7_1_1fonts_1_1BoundingBox" ],
     [ "Contour", "dc/d41/structfl7_1_1fonts_1_1Contour.html", "dc/d41/structfl7_1_1fonts_1_1Contour" ],
     [ "Font", "d3/d00/classfl7_1_1fonts_1_1Font.html", "d3/d00/classfl7_1_1fonts_1_1Font" ],
     [ "FontLoader", "da/d82/classfl7_1_1fonts_1_1FontLoader.html", "da/d82/classfl7_1_1fonts_1_1FontLoader" ],

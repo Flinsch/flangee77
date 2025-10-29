@@ -75,6 +75,7 @@ var hierarchy =
       [ "cl7::is_string_constructible< T, Tstring >", "d9/d09/structcl7_1_1is__string__constructible.html", null ]
     ] ],
     [ "dl7::ini::detail::BooleanMatcher", "da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html", null ],
+    [ "fl7::fonts::BoundingBox", "dc/d05/structfl7_1_1fonts_1_1BoundingBox.html", null ],
     [ "cl7::io::ByteReader", "d7/df3/classcl7_1_1io_1_1ByteReader.html", null ],
     [ "cl7::io::ByteWriter", "de/d6e/classcl7_1_1io_1_1ByteWriter.html", null ],
     [ "xl7::graphics::RenderingDevice::Capabilities", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html", null ],

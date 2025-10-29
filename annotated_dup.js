@@ -216,6 +216,7 @@ var annotated_dup =
           [ "AbstractRenderer", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer" ],
           [ "TestRenderer", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer" ]
         ] ],
+        [ "BoundingBox", "dc/d05/structfl7_1_1fonts_1_1BoundingBox.html", "dc/d05/structfl7_1_1fonts_1_1BoundingBox" ],
         [ "Contour", "dc/d41/structfl7_1_1fonts_1_1Contour.html", "dc/d41/structfl7_1_1fonts_1_1Contour" ],
         [ "Font", "d3/d00/classfl7_1_1fonts_1_1Font.html", "d3/d00/classfl7_1_1fonts_1_1Font" ],
         [ "FontLoader", "da/d82/classfl7_1_1fonts_1_1FontLoader.html", "da/d82/classfl7_1_1fonts_1_1FontLoader" ],

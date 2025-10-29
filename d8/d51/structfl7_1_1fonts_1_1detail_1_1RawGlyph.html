@@ -118,6 +118,18 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ae942959db85cef77ef21def16fa5a209"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae36d658d4004cec1bba0d81713fb085c" id="r_ae36d658d4004cec1bba0d81713fb085c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint16_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d51/structfl7_1_1fonts_1_1detail_1_1RawGlyph.html#ae36d658d4004cec1bba0d81713fb085c">end_point_indices</a></td></tr>
 <tr class="separator:ae36d658d4004cec1bba0d81713fb085c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59c0c6bb45fbbb128257b1bb8fc080a4" id="r_a59c0c6bb45fbbb128257b1bb8fc080a4"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d51/structfl7_1_1fonts_1_1detail_1_1RawGlyph.html#a59c0c6bb45fbbb128257b1bb8fc080a4">x_min</a> = 0</td></tr>
+<tr class="separator:a59c0c6bb45fbbb128257b1bb8fc080a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51c5a70083161b9161f638e018489411" id="r_a51c5a70083161b9161f638e018489411"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d51/structfl7_1_1fonts_1_1detail_1_1RawGlyph.html#a51c5a70083161b9161f638e018489411">y_min</a> = 0</td></tr>
+<tr class="separator:a51c5a70083161b9161f638e018489411"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a625d5d00899b459a2d3b5fbb8cbce71b" id="r_a625d5d00899b459a2d3b5fbb8cbce71b"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d51/structfl7_1_1fonts_1_1detail_1_1RawGlyph.html#a625d5d00899b459a2d3b5fbb8cbce71b">x_max</a> = 0</td></tr>
+<tr class="separator:a625d5d00899b459a2d3b5fbb8cbce71b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefd75475e87ccb09be9b816ce3a8db25" id="r_aefd75475e87ccb09be9b816ce3a8db25"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d51/structfl7_1_1fonts_1_1detail_1_1RawGlyph.html#aefd75475e87ccb09be9b816ce3a8db25">y_max</a> = 0</td></tr>
+<tr class="separator:aefd75475e87ccb09be9b816ce3a8db25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae710e66b8a07fadae0b0382f65d0d475" id="r_ae710e66b8a07fadae0b0382f65d0d475"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d51/structfl7_1_1fonts_1_1detail_1_1RawGlyph.html#ae710e66b8a07fadae0b0382f65d0d475">advance_width</a> = 0</td></tr>
+<tr class="separator:ae710e66b8a07fadae0b0382f65d0d475"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44e2cacb46ae104f1659786814cacb47" id="r_a44e2cacb46ae104f1659786814cacb47"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d51/structfl7_1_1fonts_1_1detail_1_1RawGlyph.html#a44e2cacb46ae104f1659786814cacb47">left_side_bearing</a> = 0</td></tr>
+<tr class="separator:a44e2cacb46ae104f1659786814cacb47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains the outline (described as quadratic Bézier curves) and metrics for a single glyph character. The structure corresponds to the "raw" file format, e.g. of a TrueType font (TTF). </p>
@@ -141,6 +153,21 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae710e66b8a07fadae0b0382f65d0d475" name="ae710e66b8a07fadae0b0382f65d0d475"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae710e66b8a07fadae0b0382f65d0d475">&#9670;&#160;</a></span>advance_width</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t fl7::fonts::detail::RawGlyph::advance_width = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The advance width (in font units). </p>
+
+</div>
+</div>
 <a id="ae942959db85cef77ef21def16fa5a209" name="ae942959db85cef77ef21def16fa5a209"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae942959db85cef77ef21def16fa5a209">&#9670;&#160;</a></span>contour_points</h2>
 
@@ -168,6 +195,81 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Each entry marks the last point of a contour, separating the glyph into subpaths. </p>
+
+</div>
+</div>
+<a id="a44e2cacb46ae104f1659786814cacb47" name="a44e2cacb46ae104f1659786814cacb47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44e2cacb46ae104f1659786814cacb47">&#9670;&#160;</a></span>left_side_bearing</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t fl7::fonts::detail::RawGlyph::left_side_bearing = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The left-side bearing (in font units). </p>
+
+</div>
+</div>
+<a id="a625d5d00899b459a2d3b5fbb8cbce71b" name="a625d5d00899b459a2d3b5fbb8cbce71b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a625d5d00899b459a2d3b5fbb8cbce71b">&#9670;&#160;</a></span>x_max</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t fl7::fonts::detail::RawGlyph::x_max = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The maximum x for coordinate data (in font units). </p>
+
+</div>
+</div>
+<a id="a59c0c6bb45fbbb128257b1bb8fc080a4" name="a59c0c6bb45fbbb128257b1bb8fc080a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59c0c6bb45fbbb128257b1bb8fc080a4">&#9670;&#160;</a></span>x_min</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t fl7::fonts::detail::RawGlyph::x_min = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The minimum x for coordinate data (in font units). </p>
+
+</div>
+</div>
+<a id="aefd75475e87ccb09be9b816ce3a8db25" name="aefd75475e87ccb09be9b816ce3a8db25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefd75475e87ccb09be9b816ce3a8db25">&#9670;&#160;</a></span>y_max</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t fl7::fonts::detail::RawGlyph::y_max = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The maximum y for coordinate data (in font units). </p>
+
+</div>
+</div>
+<a id="a51c5a70083161b9161f638e018489411" name="a51c5a70083161b9161f638e018489411"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51c5a70083161b9161f638e018489411">&#9670;&#160;</a></span>y_min</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t fl7::fonts::detail::RawGlyph::y_min = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The minimum y for coordinate data (in font units). </p>
 
 </div>
 </div>

@@ -17,7 +17,8 @@ var searchData=
   ['block_5fclass_14',['block_class',['../dc/d37/structcl7_1_1logging_1_1HtmlLogHandler_1_1Block.html#aa2228d83c66cca2308726000647df5ab',1,'cl7::logging::HtmlLogHandler::Block']]],
   ['blue_15',['BLUE',['../de/df3/structxl7_1_1graphics_1_1Color.html#a6bfc213f61c4fcbc53188f989a08b6bb',1,'xl7::graphics::Color']]],
   ['border_5fcolor_16',['border_color',['../d2/dcd/structxl7_1_1graphics_1_1states_1_1SamplerState_1_1Desc.html#afd5e8238ba253b85d8d2950e669d38bf',1,'xl7::graphics::states::SamplerState::Desc']]],
-  ['build_17',['build',['../db/ddf/structcl7_1_1Version.html#ac738d896b72cff8fb01206ddd8d7db9f',1,'cl7::Version']]],
-  ['bytes_18',['bytes',['../dc/dbd/structcl7_1_1Guid.html#a1f27f226157d2905af8342816eff5478',1,'cl7::Guid']]],
-  ['bytes_5fper_5fscanline_19',['bytes_per_scanline',['../d1/db4/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1BitInfo.html#af686c995b05f854a6660e03d950331ed',1,'xl7::graphics::images::PngImageHandler::BitInfo']]]
+  ['bounding_5fbox_17',['bounding_box',['../d2/d26/structfl7_1_1fonts_1_1Glyph.html#aec86644167babae0019e996e819d6bfc',1,'fl7::fonts::Glyph']]],
+  ['build_18',['build',['../db/ddf/structcl7_1_1Version.html#ac738d896b72cff8fb01206ddd8d7db9f',1,'cl7::Version']]],
+  ['bytes_19',['bytes',['../dc/dbd/structcl7_1_1Guid.html#a1f27f226157d2905af8342816eff5478',1,'cl7::Guid']]],
+  ['bytes_5fper_5fscanline_20',['bytes_per_scanline',['../d1/db4/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1BitInfo.html#af686c995b05f854a6660e03d950331ed',1,'xl7::graphics::images::PngImageHandler::BitInfo']]]
 ];
