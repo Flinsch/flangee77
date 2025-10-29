@@ -110,45 +110,53 @@ namespace cl7::text::transform {
 
 
     /** Removes leading occurrences of the specified characters from the string in-place. */
-    template <any_string Tstring, any_string_view Tstring_view>
-        requires(!std::is_const_v<Tstring> && std::same_as<typename Tstring::value_type, typename Tstring_view::value_type>)
-    void trim_left(Tstring& s, Tstring_view chars)
+    template <any_string Tstring, any_string_view_like Tstring_view_like>
+        requires(!std::is_const_v<Tstring> && std::same_as<typename Tstring::value_type, char_type_of_t<Tstring_view_like>>)
+    void trim_left(Tstring& s, Tstring_view_like chars)
     {
-        while (!s.empty() && chars.find(s.front()) != Tstring_view::npos)
+        using Tchar = char_type_of_t<Tstring_view_like>;
+        using Tstring_view = std::basic_string_view<Tchar>;
+        Tstring_view sv{chars};
+        while (!s.empty() && sv.find(s.front()) != Tstring_view::npos)
             s.erase(0, 1);
     }
 
     /** Removes leading occurrences of the specified characters from the string in-place. */
-    template <any_string_view Tstring_view>
-        requires(!std::is_const_v<Tstring_view>)
-    void trim_left(Tstring_view& s, Tstring_view chars)
+    template <any_string_view Tstring_view, any_string_view_like Tstring_view_like>
+        requires(!std::is_const_v<Tstring_view> && std::same_as<typename Tstring_view::value_type, char_type_of_t<Tstring_view_like>>)
+    void trim_left(Tstring_view& s, Tstring_view_like chars)
     {
-        while (!s.empty() && chars.find(s.front()) != Tstring_view::npos)
+        Tstring_view sv{chars};
+        while (!s.empty() && sv.find(s.front()) != Tstring_view::npos)
             s.remove_prefix(1);
     }
 
     /** Removes trailing occurrences of the specified characters from the string in-place. */
-    template <any_string Tstring, any_string_view Tstring_view>
-        requires(!std::is_const_v<Tstring> && std::same_as<typename Tstring::value_type, typename Tstring_view::value_type>)
-    void trim_right(Tstring& s, Tstring_view chars)
+    template <any_string Tstring, any_string_view_like Tstring_view_like>
+        requires(!std::is_const_v<Tstring> && std::same_as<typename Tstring::value_type, char_type_of_t<Tstring_view_like>>)
+    void trim_right(Tstring& s, Tstring_view_like chars)
     {
-        while (!s.empty() && chars.find(s.back()) != Tstring_view::npos)
+        using Tchar = char_type_of_t<Tstring_view_like>;
+        using Tstring_view = std::basic_string_view<Tchar>;
+        Tstring_view sv{chars};
+        while (!s.empty() && sv.find(s.back()) != Tstring_view::npos)
             s.erase(s.size() - 1, 1);
     }
 
     /** Removes trailing occurrences of the specified characters from the string in-place. */
-    template <any_string_view Tstring_view>
-        requires(!std::is_const_v<Tstring_view>)
-    void trim_right(Tstring_view& s, Tstring_view chars)
+    template <any_string_view Tstring_view, any_string_view_like Tstring_view_like>
+        requires(!std::is_const_v<Tstring_view> && std::same_as<typename Tstring_view::value_type, char_type_of_t<Tstring_view_like>>)
+    void trim_right(Tstring_view& s, Tstring_view_like chars)
     {
-        while (!s.empty() && chars.find(s.back()) != Tstring_view::npos)
+        Tstring_view sv{chars};
+        while (!s.empty() && sv.find(s.back()) != Tstring_view::npos)
             s.remove_suffix(1);
     }
 
     /** Removes both leading and trailing occurrences of the specified characters from the string in-place. */
-    template <any_string_or_view Tstring_or_view, any_string_view Tstring_view>
-        requires(!std::is_const_v<Tstring_or_view> && std::same_as<typename Tstring_or_view::value_type, typename Tstring_view::value_type>)
-    void trim(Tstring_or_view& s, Tstring_view chars)
+    template <any_string_or_view Tstring_or_view, any_string_view_like Tstring_view_like>
+        requires(!std::is_const_v<Tstring_or_view> && std::same_as<typename Tstring_or_view::value_type, char_type_of_t<Tstring_view_like>>)
+    void trim(Tstring_or_view& s, Tstring_view_like chars)
     {
         trim_right(s, chars);
         trim_left(s, chars);
@@ -209,27 +217,27 @@ namespace cl7::text::transform {
 
 
     /** Returns (a copy of) the string with leading occurrences of the specified characters removed. */
-    template <any_string_or_view Tstring_or_view, any_string_view Tstring_view>
-        requires(std::same_as<typename Tstring_or_view::value_type, typename Tstring_view::value_type>)
-    Tstring_or_view trimmed_left(Tstring_or_view s, Tstring_view chars)
+    template <any_string_or_view Tstring_or_view, any_string_view_like Tstring_view_like>
+        requires(std::same_as<typename Tstring_or_view::value_type, char_type_of_t<Tstring_view_like>>)
+    Tstring_or_view trimmed_left(Tstring_or_view s, Tstring_view_like chars)
     {
         trim_left(s, chars);
         return s;
     }
 
     /** Returns (a copy of) the string with trailing occurrences of the specified characters removed. */
-    template <any_string_or_view Tstring_or_view, any_string_view Tstring_view>
-        requires(std::same_as<typename Tstring_or_view::value_type, typename Tstring_view::value_type>)
-    Tstring_or_view trimmed_right(Tstring_or_view s, Tstring_view chars)
+    template <any_string_or_view Tstring_or_view, any_string_view_like Tstring_view_like>
+        requires(std::same_as<typename Tstring_or_view::value_type, char_type_of_t<Tstring_view_like>>)
+    Tstring_or_view trimmed_right(Tstring_or_view s, Tstring_view_like chars)
     {
         trim_right(s, chars);
         return s;
     }
 
     /** Returns (a copy of) the string with leading and trailing occurrences of the specified characters removed. */
-    template <any_string_or_view Tstring_or_view, any_string_view Tstring_view>
-        requires(std::same_as<typename Tstring_or_view::value_type, typename Tstring_view::value_type>)
-    Tstring_or_view trimmed(Tstring_or_view s, Tstring_view chars)
+    template <any_string_or_view Tstring_or_view, any_string_view_like Tstring_view_like>
+        requires(std::same_as<typename Tstring_or_view::value_type, char_type_of_t<Tstring_view_like>>)
+    Tstring_or_view trimmed(Tstring_or_view s, Tstring_view_like chars)
     {
         trim(s, chars);
         return s;
