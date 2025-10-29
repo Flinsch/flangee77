@@ -1,6 +1,7 @@
 #include "TrueTypeFontLoader.h"
 
 #include <MathLabs/functions.h>
+#include <MathLabs/Matrix2x2.h>
 
 #include <CoreLabs/io/EndianAwareReader.h>
 #include <CoreLabs/io/ReadableMemory.h>
@@ -35,19 +36,19 @@ namespace fl7::fonts {
         if (!_try_ensure_init())
             return {};
 
-        auto index = _get_glyph_index(codepoint);
+        auto glyph_index = _get_glyph_index(codepoint);
 
         // Glyph not loaded yet?
-        if (static_cast<size_t>(index) >= _glyph_entries.size() || !_glyph_entries[index].is_loaded)
+        if (static_cast<size_t>(glyph_index) >= _glyph_entries.size() || !_glyph_entries[glyph_index].is_loaded)
         {
             // (Try to) load it!
-            if (!_read_glyph_data({&index, 1}))
+            if (!_read_glyph_data({&glyph_index, 1}))
                 return {};
         }
 
-        assert(static_cast<size_t>(index) < _glyph_entries.size());
-        assert(_glyph_entries[index].is_loaded);
-        return _glyph_entries[index].glyph;
+        assert(static_cast<size_t>(glyph_index) < _glyph_entries.size());
+        assert(_glyph_entries[glyph_index].is_loaded);
+        return _glyph_entries[glyph_index].glyph;
     }
 
     /**
@@ -152,14 +153,14 @@ namespace fl7::fonts {
             return false;
         }
 
-        std::vector<uint32_t> indices;
+        std::vector<uint32_t> glyph_indices;
         cl7::text::codec::codepoint::value_type from = 0x20;
         cl7::text::codec::codepoint::value_type to = 0x7e;
-        indices.reserve(to - from + 1);
+        glyph_indices.reserve(to - from + 1);
         for (auto cpv = from; cpv <= to; ++cpv)
-            indices.push_back(_get_glyph_index({cpv}));
+            glyph_indices.push_back(_get_glyph_index({cpv}));
 
-        if (!_read_glyph_data(indices))
+        if (!_read_glyph_data(glyph_indices))
         {
             LOG_ERROR(u8"Error reading TrueType font glyph data.");
             return false;
@@ -184,9 +185,9 @@ namespace fl7::fonts {
         return true;
     }
 
-    bool TrueTypeFontLoader::_read_table_directory_entry(size_t index, TableDirectoryEntry& entry)
+    bool TrueTypeFontLoader::_read_table_directory_entry(size_t table_index, TableDirectoryEntry& entry)
     {
-        auto& file = _open(index * sizeof(TableDirectoryEntry) + sizeof(OffsetSubtable));
+        auto& file = _open(table_index * sizeof(TableDirectoryEntry) + sizeof(OffsetSubtable));
         cl7::io::EndianAwareReader<std::endian::big> reader{&file};
 
         if (reader.read_bytes(cl7::make_byte_span(entry.tag, 4)) != 4)
@@ -294,7 +295,7 @@ namespace fl7::fonts {
 
             bool is_en_us = platform_id == 3 && language_id == 0x0409; // Microsoft Windows (3): en-US (0x0409)
 
-            const auto position = readable.get_read_position();
+            const auto old_read_position = readable.get_read_position();
             readable.set_read_position(string_offset + static_cast<size_t>(offset));
 
             if (is_utf16)
@@ -325,7 +326,7 @@ namespace fl7::fonts {
                     best_assumed_ascii_any = cl7::text::codec::to_ascii_unchecked(bytes);
             }
 
-            readable.set_read_position(position);
+            readable.set_read_position(old_read_position);
         } // for each name record
 
         if (!best_utf16_en_us.empty())
@@ -521,10 +522,10 @@ namespace fl7::fonts {
         reader = cl7::io::EndianAwareReader<std::endian::big>{&readable};
 
         assert(!_glyph_offsets.empty());
-        for (size_t index = 0; index + 1 < _glyph_offsets.size(); ++index)
+        for (size_t glyph_index = 0; glyph_index + 1 < _glyph_offsets.size(); ++glyph_index)
         {
-            const auto offset = _glyph_offsets[index];
-            const auto next_offset = _glyph_offsets[index + 1];
+            const auto offset = _glyph_offsets[glyph_index];
+            const auto next_offset = _glyph_offsets[glyph_index + 1];
 
             if (offset == next_offset)
                 continue;
@@ -542,9 +543,9 @@ namespace fl7::fonts {
             assert(x_max > x_min);
             assert(y_max > y_min);
 
-            if (_font_metrics.cap_height == 0.0f && index == upper_H_index)
+            if (_font_metrics.cap_height == 0.0f && glyph_index == upper_H_index)
                 _font_metrics.cap_height = static_cast<float>(y_max - y_min) * em_per_unit;
-            if (_font_metrics.x_height == 0.0f && index == lower_x_index)
+            if (_font_metrics.x_height == 0.0f && glyph_index == lower_x_index)
                 _font_metrics.x_height = static_cast<float>(y_max - y_min) * em_per_unit;
 
             max_width = std::max(max_width, x_max - x_min);
@@ -635,13 +636,13 @@ namespace fl7::fonts {
             if (reader.read_scalar(platform_specific_id) != sizeof(platform_specific_id)) return false;
             if (reader.read_scalar(offset) != sizeof(offset)) return false;
 
-            const auto position = readable.get_read_position();
+            const auto old_read_position = readable.get_read_position();
             readable.set_read_position(static_cast<size_t>(offset));
 
             uint16_t format = 0;
             const bool format_okay = reader.read_scalar(format) == sizeof(format);
 
-            readable.set_read_position(position);
+            readable.set_read_position(old_read_position);
 
             if (!format_okay)
                 continue;
@@ -858,7 +859,7 @@ namespace fl7::fonts {
         return true;
     }
 
-    bool TrueTypeFontLoader::_read_glyph_data(std::span<const uint32_t> indices)
+    bool TrueTypeFontLoader::_read_glyph_data(std::span<const uint32_t> glyph_indices)
     {
         auto readable = _read_table("glyf");
         if (readable.is_eof())
@@ -867,87 +868,87 @@ namespace fl7::fonts {
             return false;
         }
 
-        for (const auto& index : indices)
+        for (const auto& glyph_index : glyph_indices)
         {
-            if (!_read_glyph_data(readable, index))
+            if (!_read_glyph_data(readable, glyph_index))
                 return false;
-        } // for each index
+        } // for each glyph index
 
         return true;
     }
 
-    bool TrueTypeFontLoader::_read_glyph_data(cl7::io::ReadableMemory& readable, uint32_t index)
+    std::optional<detail::RawGlyph> TrueTypeFontLoader::_read_glyph_data(cl7::io::ReadableMemory& readable, uint32_t glyph_index)
     {
-        const auto offset = _glyph_offsets[index];
-        const auto next_offset = _glyph_offsets[index + 1];
+        if (static_cast<size_t>(glyph_index) < _glyph_entries.size() && _glyph_entries[glyph_index].is_loaded)
+            return _glyph_entries[glyph_index].raw_glyph;
+
+        const auto offset = _glyph_offsets[glyph_index];
+        const auto next_offset = _glyph_offsets[glyph_index + 1];
 
         if (offset == next_offset)
-        {
-            _insert_loaded_glyph(index, {});
-            return true;
-        }
+            return _insert_loaded_glyph(glyph_index, {});
 
         readable.set_read_position(offset);
 
         cl7::io::EndianAwareReader<std::endian::big> reader{&readable};
 
         const auto number_of_contours = reader.read_scalar<int16_t>();
-        const auto x_min = reader.read_scalar<int16_t>();
-        const auto y_min = reader.read_scalar<int16_t>();
-        const auto x_max = reader.read_scalar<int16_t>();
-        const auto y_max = reader.read_scalar<int16_t>();
 
-        std::pair<Glyph, bool> glyph_result;
+        std::optional<detail::RawGlyph> raw_glyph_result;
         if (number_of_contours < 0)
-            glyph_result = _read_composite_glyph_description(readable);
+            raw_glyph_result = _read_composite_glyph_description(readable, glyph_index);
         else
-            glyph_result = _read_simple_glyph_description(readable, static_cast<size_t>(number_of_contours));
-        if (!glyph_result.second)
-            return false;
+            raw_glyph_result = _read_simple_glyph_description(readable, glyph_index);
+        if (!raw_glyph_result.has_value())
+            return {};
 
-        Glyph glyph = std::move(glyph_result.first);
-
-        glyph.lower_left = {static_cast<float>(x_min), static_cast<float>(y_min)};
-        glyph.upper_right = {static_cast<float>(x_max), static_cast<float>(y_max)};
-        glyph.size = glyph.upper_right - glyph.lower_left;
-
-        const float em_per_unit = 1.0f / static_cast<float>(_font_header.units_per_em);
-
-        glyph.advance_width = static_cast<float>(_glyph_metrics[index].advance_width) * em_per_unit;
-        glyph.left_side_bearing = static_cast<float>(_glyph_metrics[index].left_side_bearing) * em_per_unit;
-
-        _insert_loaded_glyph(index, std::move(glyph));
-        return true;
+        return _insert_loaded_glyph(glyph_index, std::move(*raw_glyph_result));
     }
 
-    std::pair<Glyph, bool> TrueTypeFontLoader::_read_simple_glyph_description(cl7::io::ReadableMemory& readable, const size_t number_of_contours)
+    std::optional<detail::RawGlyph> TrueTypeFontLoader::_read_simple_glyph_description(cl7::io::ReadableMemory& readable, uint32_t glyph_index)
     {
+        const auto offset = _glyph_offsets[glyph_index];
+        const auto next_offset = _glyph_offsets[glyph_index + 1];
+        assert(offset < next_offset);
+
+        readable.set_read_position(offset);
+
         cl7::io::EndianAwareReader<std::endian::big> reader{&readable};
 
-        if (number_of_contours == 0)
-            return {{}, true};
+        const auto number_of_contours = reader.read_scalar<int16_t>();
+        assert(number_of_contours > 0);
+        const auto contour_count = static_cast<size_t>(number_of_contours);
 
         detail::RawGlyph raw_glyph;
 
-        raw_glyph.end_point_indices.resize(number_of_contours);
-        for (size_t i = 0; i < number_of_contours; ++i)
+        raw_glyph.x_min = reader.read_scalar<int16_t>();
+        raw_glyph.y_min = reader.read_scalar<int16_t>();
+        raw_glyph.x_max = reader.read_scalar<int16_t>();
+        raw_glyph.y_max = reader.read_scalar<int16_t>();
+
+        raw_glyph.advance_width = _glyph_metrics[glyph_index].advance_width;
+        raw_glyph.left_side_bearing = _glyph_metrics[glyph_index].left_side_bearing;
+
+        raw_glyph.end_point_indices.resize(contour_count);
+        for (size_t i = 0; i < contour_count; ++i)
         {
             raw_glyph.end_point_indices[i] = reader.read_scalar<uint16_t>();
             if (raw_glyph.end_point_indices[i] == 0)
             {
                 LOG_ERROR(u8"Error reading array of end point indices of contours.");
-                return {{}, false};
+                return {};
             }
         }
 
-        const auto number_of_points = static_cast<size_t>(raw_glyph.end_point_indices.back() + 1);
-        raw_glyph.contour_points.resize(number_of_points);
+        const auto number_of_points = raw_glyph.end_point_indices.back();
+        const auto point_count = static_cast<size_t>(number_of_points + 1);
+        raw_glyph.contour_points.resize(point_count);
 
         const auto instruction_length = reader.read_scalar<uint16_t>();
         readable.seek_read(static_cast<ptrdiff_t>(instruction_length * sizeof(uint8_t)));
 
-        std::vector<uint8_t> point_flags(number_of_points, 0x0);
-        for (size_t i = 0; i < number_of_points; ++i)
+        std::vector<uint8_t> point_flags(point_count, 0x0);
+        for (size_t i = 0; i < point_count; ++i)
         {
             const auto flags = reader.read_scalar<uint8_t>();
             assert((flags & 0x80) == 0x0); // Bit 7 is reserved and should be set to zero.
@@ -957,7 +958,7 @@ namespace fl7::fonts {
                 // If bit 3 is set, the next byte (read as unsigned) specifies the number of
                 // additional times this flag byte is to be repeated in the logical flags array.
                 auto repeat_count = reader.read_scalar<uint8_t>();
-                assert(i + static_cast<size_t>(repeat_count) < number_of_points);
+                assert(i + static_cast<size_t>(repeat_count) < point_count);
                 while (repeat_count--)
                     point_flags[++i] = flags;
             }
@@ -966,23 +967,23 @@ namespace fl7::fonts {
         const auto x_coordinates = _read_glyph_coordinates(readable, point_flags, 0x02, 0x10);
         const auto y_coordinates = _read_glyph_coordinates(readable, point_flags, 0x04, 0x20);
 
-        assert(x_coordinates.size() <= number_of_points);
-        assert(y_coordinates.size() <= number_of_points);
+        assert(x_coordinates.size() <= point_count);
+        assert(y_coordinates.size() <= point_count);
 
-        if (x_coordinates.size() < number_of_points)
+        if (x_coordinates.size() < point_count)
         {
             LOG_ERROR(u8"Error reading contour point x-coordinates.");
-            return {{}, false};
+            return {};
         }
 
-        if (y_coordinates.size() < number_of_points)
+        if (y_coordinates.size() < point_count)
         {
             LOG_ERROR(u8"Error reading contour point y-coordinates.");
-            return {{}, false};
+            return {};
         }
 
-        raw_glyph.contour_points.resize(number_of_points);
-        for (size_t i = 0; i < number_of_points; ++i)
+        raw_glyph.contour_points.resize(point_count);
+        for (size_t i = 0; i < point_count; ++i)
         {
             auto& point = raw_glyph.contour_points[i];
             point.x = x_coordinates[i];
@@ -990,19 +991,182 @@ namespace fl7::fonts {
             point.on_curve = (point_flags[i] & 0x01) != 0x0;
         }
 
-        const float em_per_unit = 1.0f / static_cast<float>(_font_header.units_per_em);
-
-        return {raw_glyph.normalize(em_per_unit), true};
+        return raw_glyph;
 
     }
 
-    std::pair<Glyph, bool> TrueTypeFontLoader::_read_composite_glyph_description(cl7::io::ReadableMemory& readable)
+    std::optional<detail::RawGlyph> TrueTypeFontLoader::_read_composite_glyph_description(cl7::io::ReadableMemory& readable, uint32_t glyph_index)
+    {
+        const auto offset = _glyph_offsets[glyph_index];
+        const auto next_offset = _glyph_offsets[glyph_index + 1];
+        assert(offset < next_offset);
+
+        readable.set_read_position(offset);
+
+        cl7::io::EndianAwareReader<std::endian::big> reader{&readable};
+
+        const auto number_of_contours = reader.read_scalar<int16_t>();
+        assert(number_of_contours < 0);
+
+        detail::RawGlyph raw_glyph;
+
+        raw_glyph.x_min = reader.read_scalar<int16_t>();
+        raw_glyph.y_min = reader.read_scalar<int16_t>();
+        raw_glyph.x_max = reader.read_scalar<int16_t>();
+        raw_glyph.y_max = reader.read_scalar<int16_t>();
+
+        raw_glyph.advance_width = _glyph_metrics[glyph_index].advance_width;
+        raw_glyph.left_side_bearing = _glyph_metrics[glyph_index].left_side_bearing;
+
+        while (true)
+        {
+            const auto result = _read_and_apply_next_composite_glyph_component(readable, glyph_index, raw_glyph);
+            if (!result.has_value())
+                return {};
+
+            const bool more_components = *result;
+            if (!more_components)
+                break;
+        } // for each glyph component
+
+        return raw_glyph;
+    }
+
+    std::optional<bool> TrueTypeFontLoader::_read_and_apply_next_composite_glyph_component(cl7::io::ReadableMemory& readable, uint32_t parent_glyph_index, detail::RawGlyph& parent_glyph)
     {
         cl7::io::EndianAwareReader<std::endian::big> reader{&readable};
 
+        const auto flags = reader.read_scalar<uint16_t>();
+        const auto child_glyph_index = reader.read_scalar<uint16_t>();
+        assert(child_glyph_index != parent_glyph_index);
 
+        const bool args_1_and_2_are_words = (flags & 0x0001) != 0x0;
+        const bool args_are_xy_values = (flags & 0x0002) != 0x0;
+        //const bool round_xy_to_grid = (flags & 0x0004) != 0x0;
+        const bool we_have_a_scale = (flags & 0x0008) != 0x0;
+        const bool more_components = (flags & 0x0020) != 0x0;
+        const bool we_have_an_x_and_y_scale = (flags & 0x0040) != 0x0;
+        const bool we_have_a_two_by_two = (flags & 0x0080) != 0x0;
+        //const bool we_have_instructions = (flags & 0x0100) != 0x0;
+        const bool use_my_metrics = (flags & 0x0200) != 0x0;
+        //const bool overlap_compound = (flags & 0x0400) != 0x0;
+        const bool scaled_component_offset = (flags & 0x0800) != 0x0;
+        const bool unscaled_component_offset = (flags & 0x1000) != 0x0;
 
-        return {{}, false};
+        ml7::Matrix2x2f transform;
+        ml7::Vector2f offset;
+
+        // The WE_HAVE_A_SCALE, WE_HAVE_AN_X_AND_Y_SCALE, and WE_HAVE_A_TWO_BY_TWO
+        // flags are mutually exclusive: no more than one of these may be set.
+        assert(!we_have_a_scale || (!we_have_an_x_and_y_scale && !we_have_a_two_by_two));
+        assert(!we_have_an_x_and_y_scale || (!we_have_a_scale && !we_have_a_two_by_two));
+        assert(!we_have_a_two_by_two || (!we_have_a_scale && !we_have_an_x_and_y_scale));
+
+        if (we_have_a_scale)
+        {
+            transform._11 = static_cast<float>(reader.read_scalar<int16_t>()) / 16384.0f;
+            transform._22 = transform._11;
+        }
+        else if (we_have_an_x_and_y_scale)
+        {
+            transform._11 = static_cast<float>(reader.read_scalar<int16_t>()) / 16384.0f;
+            transform._22 = static_cast<float>(reader.read_scalar<int16_t>()) / 16384.0f;
+        }
+        else if (we_have_a_two_by_two)
+        {
+            transform._11 = static_cast<float>(reader.read_scalar<int16_t>()) / 16384.0f;
+            transform._21 = static_cast<float>(reader.read_scalar<int16_t>()) / 16384.0f;
+            transform._12 = static_cast<float>(reader.read_scalar<int16_t>()) / 16384.0f;
+            transform._22 = static_cast<float>(reader.read_scalar<int16_t>()) / 16384.0f;
+        }
+
+        size_t parent_point_index;
+        size_t child_point_index;
+        if (args_are_xy_values)
+        {
+            if (args_1_and_2_are_words)
+            {
+                offset.x = static_cast<float>(reader.read_scalar<int16_t>());
+                offset.y = static_cast<float>(reader.read_scalar<int16_t>());
+            }
+            else
+            {
+                offset.x = static_cast<float>(reader.read_scalar<int8_t>());
+                offset.y = static_cast<float>(reader.read_scalar<int8_t>());
+            }
+        }
+        else
+        {
+            if (args_1_and_2_are_words)
+            {
+                parent_point_index = static_cast<size_t>(reader.read_scalar<uint16_t>());
+                child_point_index = static_cast<size_t>(reader.read_scalar<uint16_t>());
+            }
+            else
+            {
+                parent_point_index = static_cast<size_t>(reader.read_scalar<uint8_t>());
+                child_point_index = static_cast<size_t>(reader.read_scalar<uint8_t>());
+            }
+        }
+
+        const auto old_read_position = readable.get_read_position();
+        auto child_glyph_result = _read_glyph_data(readable, child_glyph_index);
+        readable.set_read_position(old_read_position);
+        if (!child_glyph_result.has_value())
+            return false;
+
+        detail::RawGlyph child_glyph = std::move(*child_glyph_result);
+
+        if (args_are_xy_values)
+        {
+            // If the SCALED_COMPONENT_OFFSET flag is set, then the offset is deemed
+            // to be in the component glyph's coordinate system, and the scaling
+            // matrix is applied. If the UNSCALED_COMPONENT_OFFSET flag is set, then
+            // the offset is deemed to be already in the parent glyph's coordinate
+            // system, and the scaling matrix is not applied. If neither flag is set,
+            // then the default behavior is applied, which is the same as when the
+            // UNSCALED_COMPONENT_OFFSET flag is set. If both flags are set, this is
+            // invalid; a fallback to the default behavior is recommended as well.
+            // So, we apply the scaling matrix if SCALED_COMPONENT_OFFSET is set,
+            // but UNSCALED_COMPONENT_OFFSET is not set.
+
+            assert(!scaled_component_offset || !unscaled_component_offset);
+            if (scaled_component_offset && !unscaled_component_offset)
+            {
+                offset = transform.transform(offset);
+            }
+        }
+        else
+        {
+            // The SCALED_COMPONENT_OFFSET and UNSCALED_COMPONENT_OFFSET flags
+            // are ignored if the ARGS_ARE_XY_VALUES flag is not set.
+
+            assert(parent_point_index < parent_glyph.contour_points.size());
+            assert(child_point_index < child_glyph.contour_points.size());
+
+            ml7::Vector2f parent_vector = parent_glyph.contour_points[parent_point_index].to_vector();
+            ml7::Vector2f child_vector = child_glyph.contour_points[child_point_index].to_vector();
+            child_vector = transform.transform(child_vector);
+            offset = parent_vector - child_vector;
+        }
+
+        const auto end_point_base = static_cast<uint16_t>(parent_glyph.contour_points.size());
+        for (const auto& point : child_glyph.contour_points)
+        {
+            ml7::Vector2f vector = point.to_vector();
+            vector = transform.transform(vector) + offset;
+            parent_glyph.contour_points.push_back(detail::RawGlyph::Point::from_vector(vector, point.on_curve));
+        }
+        for (const auto& end_point_index : child_glyph.end_point_indices)
+            parent_glyph.end_point_indices.push_back(end_point_base + end_point_index);
+
+        if (use_my_metrics)
+        {
+            parent_glyph.advance_width = child_glyph.advance_width;
+            parent_glyph.left_side_bearing = child_glyph.left_side_bearing;
+        }
+
+        return more_components;
     }
 
     std::vector<int16_t> TrueTypeFontLoader::_read_glyph_coordinates(cl7::io::ReadableMemory& readable, const std::vector<uint8_t>& point_flags, const uint8_t short_vector_flag, const uint8_t is_same_or_positive_short_vector_flag)
@@ -1047,14 +1211,21 @@ namespace fl7::fonts {
         return coordinates;
     }
 
-    void TrueTypeFontLoader::_insert_loaded_glyph(uint32_t index, Glyph&& glyph)
+    detail::RawGlyph TrueTypeFontLoader::_insert_loaded_glyph(uint32_t glyph_index, detail::RawGlyph&& raw_glyph)
     {
-        assert(static_cast<size_t>(index) >= _glyph_entries.size() || !_glyph_entries[index].is_loaded);
+        assert(static_cast<size_t>(glyph_index) >= _glyph_entries.size() || !_glyph_entries[glyph_index].is_loaded);
 
-        if (static_cast<size_t>(index) >= _glyph_entries.size())
-            _glyph_entries.resize(static_cast<size_t>(index) + 1, {});
-        _glyph_entries[index].glyph = std::move(glyph);
-        _glyph_entries[index].is_loaded = true;
+        const float em_per_unit = 1.0f / static_cast<float>(_font_header.units_per_em);
+
+        Glyph glyph = raw_glyph.normalize(em_per_unit);
+
+        if (static_cast<size_t>(glyph_index) >= _glyph_entries.size())
+            _glyph_entries.resize(static_cast<size_t>(glyph_index) + 1, {});
+        _glyph_entries[glyph_index].raw_glyph = std::move(raw_glyph);
+        _glyph_entries[glyph_index].glyph = std::move(glyph);
+        _glyph_entries[glyph_index].is_loaded = true;
+
+        return _glyph_entries[glyph_index].raw_glyph;
     }
 
     uint32_t TrueTypeFontLoader::_get_glyph_index(cl7::text::codec::codepoint codepoint) const

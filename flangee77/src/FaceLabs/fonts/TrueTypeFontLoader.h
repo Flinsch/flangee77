@@ -165,6 +165,7 @@ private:
 
     struct GlyphEntry
     {
+        detail::RawGlyph raw_glyph = {};
         Glyph glyph = {};
         bool is_loaded = false;
     };
@@ -175,7 +176,7 @@ private:
     bool _init();
 
     bool _read_offset_subtable();
-    bool _read_table_directory_entry(size_t index, TableDirectoryEntry& entry);
+    bool _read_table_directory_entry(size_t table_index, TableDirectoryEntry& entry);
 
     cl7::io::ReadableMemory _read_table(const std::string& tag);
 
@@ -190,13 +191,14 @@ private:
     bool _read_font_and_glyph_metrics();
     bool _try_read_os2_metrics();
 
-    bool _read_glyph_data(std::span<const uint32_t> indices);
-    bool _read_glyph_data(cl7::io::ReadableMemory& readable, uint32_t index);
-    std::pair<Glyph, bool> _read_simple_glyph_description(cl7::io::ReadableMemory& readable, size_t number_of_contours);
-    static std::pair<Glyph, bool> _read_composite_glyph_description(cl7::io::ReadableMemory& readable);
+    bool _read_glyph_data(std::span<const uint32_t> glyph_indices);
+    std::optional<detail::RawGlyph> _read_glyph_data(cl7::io::ReadableMemory& readable, uint32_t glyph_index);
+    std::optional<detail::RawGlyph> _read_simple_glyph_description(cl7::io::ReadableMemory& readable, uint32_t glyph_index);
+    std::optional<detail::RawGlyph> _read_composite_glyph_description(cl7::io::ReadableMemory& readable, uint32_t glyph_index);
+    std::optional<bool> _read_and_apply_next_composite_glyph_component(cl7::io::ReadableMemory& readable, uint32_t parent_glyph_index, detail::RawGlyph& parent_glyph);
     static std::vector<int16_t> _read_glyph_coordinates(cl7::io::ReadableMemory& readable, const std::vector<uint8_t>& point_flags, uint8_t short_vector_flag, uint8_t is_same_or_positive_short_vector_flag);
 
-    void _insert_loaded_glyph(uint32_t index, Glyph&& glyph);
+    detail::RawGlyph _insert_loaded_glyph(uint32_t glyph_index, detail::RawGlyph&& raw_glyph);
 
     uint32_t _get_glyph_index(cl7::text::codec::codepoint codepoint) const;
 

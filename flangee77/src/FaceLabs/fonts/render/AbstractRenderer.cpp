@@ -81,7 +81,7 @@ namespace fl7::fonts::render {
 
         _emit_glyph(*glyph, state);
 
-        state.cursor.x += glyph->advance_width * state.text_metrics.scaled_font_size.x;
+        state.cursor.x += glyph->typography.advance_width * state.text_metrics.scaled_font_size.x;
     }
 
 

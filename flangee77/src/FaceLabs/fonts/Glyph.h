@@ -1,6 +1,7 @@
 #ifndef FL7_FONTS_GLYPH_H
 #define FL7_FONTS_GLYPH_H
 
+#include "./BoundingBox.h"
 #include "./Contour.h"
 
 #include <vector>
@@ -25,22 +26,21 @@ struct Glyph
      */
     std::vector<Contour> contours;
 
-    /** The lower left corner of the bounding rectangle. */
-    ml7::Vector2f lower_left;
-    /** The upper right corner of the bounding rectangle. */
-    ml7::Vector2f upper_right;
-    /** The size (width and height) of the bounding rectangle. */
-    ml7::Vector2f size;
+    /** The bounding box with lower left corner, upper right corner, and size (width and height) of the glyph. */
+    BoundingBox bounding_box;
 
-    /** The horizontal advance after rendering this glyph. */
-    float advance_width = 0.0f;
-    /** The horizontal offset from the glyph origin to its left edge. */
-    float left_side_bearing = 0.0f;
+    struct
+    {
+        /** The horizontal advance after rendering this glyph. */
+        float advance_width = 0.0f;
+        /** The horizontal offset from the glyph origin to its left edge. */
+        float left_side_bearing = 0.0f;
 
-    // There is no `right_side_bearing` here because it would be redundant
-    // information. That alone is not a valid argument, but the value is rarely
-    // used anyway. If you need it, for whatever reason/purpose, it's easy to
-    // calculate: RSB = AW - LSB - width (because AW = LSB + width + RSB).
+        // There is no `right_side_bearing` here because it would be redundant
+        // information. That alone is not a valid argument, but the value is rarely
+        // used anyway. If you need it, for whatever reason/purpose, it's easy to
+        // calculate: RSB = AW - LSB - width (because AW = LSB + width + RSB).
+    } typography;
 };
 
 

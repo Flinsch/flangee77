@@ -1,10 +1,28 @@
 #include "RawGlyph.h"
 
+#include <MathLabs/functions.h>
+
 #include <span>
 
 
 
 namespace fl7::fonts::detail {
+
+
+
+    ml7::Vector2f RawGlyph::Point::to_vector() const
+    {
+        return {static_cast<float>(x), static_cast<float>(y)};
+    }
+
+    RawGlyph::Point RawGlyph::Point::from_vector(ml7::Vector2f v, bool on_curve)
+    {
+        return {
+            .x = static_cast<int16_t>(ml7::round(v.x)),
+            .y = static_cast<int16_t>(ml7::round(v.y)),
+            .on_curve = on_curve,
+        };
+    }
 
 
 
@@ -45,12 +63,12 @@ namespace fl7::fonts::detail {
             for (size_t i = 0; i < number_of_points; ++i)
             {
                 const auto& p0 = points[i];
-                const ml7::Vector2f v0{static_cast<float>(p0.x), static_cast<float>(p0.y)};
+                const ml7::Vector2f v0 = p0.to_vector();
 
                 assert(p0.on_curve);
 
                 const auto& p1 = points[(i + 1) % number_of_points];
-                const ml7::Vector2f v1{static_cast<float>(p1.x), static_cast<float>(p1.y)};
+                const ml7::Vector2f v1 = p1.to_vector();
 
                 if (p1.on_curve)
                 {
@@ -63,7 +81,7 @@ namespace fl7::fonts::detail {
                 }
 
                 const auto& p2 = points[(i + 2) % number_of_points];
-                const ml7::Vector2f v2{static_cast<float>(p2.x), static_cast<float>(p2.y)};
+                const ml7::Vector2f v2 = p2.to_vector();
 
                 if (p2.on_curve)
                 {
@@ -77,7 +95,7 @@ namespace fl7::fonts::detail {
                 }
 
                 const auto& p3 = points[(i + 3) % number_of_points];
-                //const ml7::Vector2f v3{static_cast<float>(p3.x), static_cast<float>(p3.y)};
+                //const ml7::Vector2f v3 = p3.to_vector();
 
                 if (p3.on_curve)
                 {
@@ -107,7 +125,7 @@ namespace fl7::fonts::detail {
                 assert(bezier_count >= 3);
 
                 const auto& pn = points[(i + n) % number_of_points];
-                //const ml7::Vector2f vn{static_cast<float>(pn.x), static_cast<float>(pn.y)};
+                //const ml7::Vector2f vn = pn.to_vector();
 
                 assert(pn.on_curve);
 
@@ -121,7 +139,7 @@ namespace fl7::fonts::detail {
                 for (size_t k = 0; k < bezier_count - 2; ++k)
                 {
                     const auto& pC = points[(i + k + 3) % number_of_points];
-                    const ml7::Vector2f vC = {static_cast<float>(pC.x), static_cast<float>(pC.y)};
+                    const ml7::Vector2f vC = pC.to_vector();
 
                     const ml7::Vector2f vt_ = (vL + vC) * 0.5f;
                     //contour.bezier_curves.emplace_back(v_, vL, vt_);
@@ -150,6 +168,14 @@ namespace fl7::fonts::detail {
         for (auto& contour : glyph.contours)
             for (auto& point : contour.points)
                 point *= em_per_unit;
+
+        glyph.bounding_box = {
+            ml7::Vector2f{static_cast<float>(x_min), static_cast<float>(y_min)} * em_per_unit,
+            ml7::Vector2f{static_cast<float>(x_max), static_cast<float>(y_max)} * em_per_unit,
+        };
+
+        glyph.typography.advance_width = static_cast<float>(advance_width) * em_per_unit;
+        glyph.typography.left_side_bearing = static_cast<float>(left_side_bearing) * em_per_unit;
 
         return glyph;
     }
