@@ -174,8 +174,9 @@ namespace fl7::fonts::detail {
             ml7::Vector2f{static_cast<float>(x_max), static_cast<float>(y_max)} * em_per_unit,
         };
 
-        glyph.typography.advance_width = static_cast<float>(advance_width) * em_per_unit;
-        glyph.typography.left_side_bearing = static_cast<float>(left_side_bearing) * em_per_unit;
+        glyph.metrics.advance_width = static_cast<float>(advance_width) * em_per_unit;
+        glyph.metrics.left_side_bearing = static_cast<float>(left_side_bearing) * em_per_unit;
+        glyph.metrics.right_side_bearing = glyph.metrics.advance_width - glyph.metrics.left_side_bearing - glyph.bounding_box.size.x;
 
         return glyph;
     }

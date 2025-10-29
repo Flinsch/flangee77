@@ -3,6 +3,7 @@
 
 #include "./BoundingBox.h"
 #include "./Contour.h"
+#include "./GlyphMetrics.h"
 
 #include <vector>
 
@@ -29,18 +30,8 @@ struct Glyph
     /** The bounding box with lower left corner, upper right corner, and size (width and height) of the glyph. */
     BoundingBox bounding_box;
 
-    struct
-    {
-        /** The horizontal advance after rendering this glyph. */
-        float advance_width = 0.0f;
-        /** The horizontal offset from the glyph origin to its left edge. */
-        float left_side_bearing = 0.0f;
-
-        // There is no `right_side_bearing` here because it would be redundant
-        // information. That alone is not a valid argument, but the value is rarely
-        // used anyway. If you need it, for whatever reason/purpose, it's easy to
-        // calculate: RSB = AW - LSB - width (because AW = LSB + width + RSB).
-    } typography;
+    /** The glyph metrics, essentially a glyph's "advance" and its placement relative to the origin. */
+    GlyphMetrics metrics;
 };
 
 
