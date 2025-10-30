@@ -7,7 +7,6 @@
 #include <CoreLabs/io/ReadableMemory.h>
 
 #include <optional>
-#include <span>
 #include <unordered_map>
 
 
@@ -50,6 +49,15 @@ public:
      * Loads the general typographic properties of the font.
      */
     FontMetrics load_metrics() override;
+
+
+
+    /**
+     * Signals that the loading operations are finished for the time being.
+     * Until the next call to whatever function, resources could therefore be
+     * released again in the meantime (depending on the implementation).
+     */
+    void idle() override;
 
 
 
@@ -163,13 +171,6 @@ private:
         int16_t left_side_bearing = 0;
     };
 
-    struct GlyphEntry
-    {
-        RawGlyph raw_glyph = {};
-        Glyph glyph = {};
-        bool is_loaded = false;
-    };
-
 
 
     bool _try_ensure_init();
@@ -191,14 +192,11 @@ private:
     bool _read_font_and_glyph_metrics();
     bool _try_read_os2_metrics();
 
-    bool _read_glyph_data(std::span<const uint32_t> glyph_indices);
-    std::optional<RawGlyph> _read_glyph_data(cl7::io::ReadableMemory& readable, uint32_t glyph_index);
+    std::optional<RawGlyph> _read_glyph_data(uint32_t glyph_index);
     std::optional<RawGlyph> _read_simple_glyph_description(cl7::io::ReadableMemory& readable, uint32_t glyph_index);
     std::optional<RawGlyph> _read_composite_glyph_description(cl7::io::ReadableMemory& readable, uint32_t glyph_index);
     std::optional<bool> _read_and_apply_next_composite_glyph_component(cl7::io::ReadableMemory& readable, uint32_t parent_glyph_index, RawGlyph& parent_glyph);
     static std::vector<int16_t> _read_glyph_coordinates(cl7::io::ReadableMemory& readable, const std::vector<uint8_t>& point_flags, uint8_t short_vector_flag, uint8_t is_same_or_positive_short_vector_flag);
-
-    RawGlyph _insert_loaded_glyph(uint32_t glyph_index, RawGlyph&& raw_glyph);
 
     uint32_t _get_glyph_index(cl7::text::codec::codepoint codepoint) const;
 
@@ -222,7 +220,8 @@ private:
     OpenTypeFontMetric _open_type_font_metric;
     std::vector<GlyphMetric> _glyph_metrics;
 
-    std::vector<GlyphEntry> _glyph_entries;
+    std::optional<cl7::io::ReadableMemory> _cached_glyph_data;
+
     FontMetrics _font_metrics;
 
 }; // class TrueTypeFontLoader

@@ -60,8 +60,17 @@ public:
 
 
 
+    /**
+     * Signals that the loading operations are finished for the time being.
+     * Until the next call to whatever function, resources could therefore be
+     * released again in the meantime (depending on the implementation).
+     */
+    virtual void idle();
+
+
+
 protected:
-    cl7::io::IReadable& _open(size_t byte_offset);
+    cl7::io::IReadable& _ensure_open(size_t byte_offset);
     void _close();
 
 

@@ -38,17 +38,13 @@ namespace fl7::fonts::detail::ttf {
 
         auto glyph_index = _get_glyph_index(codepoint);
 
-        // Glyph not loaded yet?
-        if (static_cast<size_t>(glyph_index) >= _glyph_entries.size() || !_glyph_entries[glyph_index].is_loaded)
-        {
-            // (Try to) load it!
-            if (!_read_glyph_data({&glyph_index, 1}))
-                return {};
-        }
+        auto raw_glyph_result = _read_glyph_data(glyph_index);
+        if (!raw_glyph_result.has_value())
+            return {};
 
-        assert(static_cast<size_t>(glyph_index) < _glyph_entries.size());
-        assert(_glyph_entries[glyph_index].is_loaded);
-        return _glyph_entries[glyph_index].glyph;
+        const float em_per_unit = 1.0f / static_cast<float>(_font_header.units_per_em);
+
+        return raw_glyph_result->normalize(em_per_unit);
     }
 
     /**
@@ -60,6 +56,19 @@ namespace fl7::fonts::detail::ttf {
             return {};
 
         return _font_metrics;
+    }
+
+
+
+    /**
+     * Signals that the loading operations are finished for the time being.
+     * Until the next call to whatever function, resources could therefore be
+     * released again in the meantime (depending on the implementation).
+     */
+    void TrueTypeFontLoader::idle()
+    {
+        FontLoader::idle();
+        _cached_glyph_data.reset();
     }
 
 
@@ -76,7 +85,7 @@ namespace fl7::fonts::detail::ttf {
     {
         assert(!_init_state.has_value());
 
-        auto& file = _open(0);
+        auto& file = _ensure_open(0);
         if (!file.is_readable())
         {
             LOG_ERROR(u8"The TrueType font source cannot be processed.");
@@ -153,27 +162,12 @@ namespace fl7::fonts::detail::ttf {
             return false;
         }
 
-        std::vector<uint32_t> glyph_indices;
-        cl7::text::codec::codepoint::value_type from = 0x20;
-        cl7::text::codec::codepoint::value_type to = 0x7e;
-        glyph_indices.reserve(to - from + 1);
-        for (auto cpv = from; cpv <= to; ++cpv)
-            glyph_indices.push_back(_get_glyph_index({cpv}));
-
-        if (!_read_glyph_data(glyph_indices))
-        {
-            LOG_ERROR(u8"Error reading TrueType font glyph data.");
-            return false;
-        }
-
-        _close();
-
         return true;
     }
 
     bool TrueTypeFontLoader::_read_offset_subtable()
     {
-        auto& file = _open(0);
+        auto& file = _ensure_open(0);
         cl7::io::EndianAwareReader<std::endian::big> reader{&file};
 
         if (reader.read_scalar(_offset_subtable.scaler_type) != sizeof(_offset_subtable.scaler_type)) return false;
@@ -187,7 +181,7 @@ namespace fl7::fonts::detail::ttf {
 
     bool TrueTypeFontLoader::_read_table_directory_entry(size_t table_index, TableDirectoryEntry& entry)
     {
-        auto& file = _open(table_index * sizeof(TableDirectoryEntry) + sizeof(OffsetSubtable));
+        auto& file = _ensure_open(table_index * sizeof(TableDirectoryEntry) + sizeof(OffsetSubtable));
         cl7::io::EndianAwareReader<std::endian::big> reader{&file};
 
         if (reader.read_bytes(cl7::make_byte_span(entry.tag, 4)) != 4)
@@ -212,7 +206,7 @@ namespace fl7::fonts::detail::ttf {
 
         cl7::byte_vector buffer(length);
 
-        auto& file = _open(offset);
+        auto& file = _ensure_open(offset);
         cl7::io::ByteReader reader{&file};
 
         if (reader.read_bytes(cl7::make_byte_span(buffer)) != buffer.size())
@@ -859,34 +853,27 @@ namespace fl7::fonts::detail::ttf {
         return true;
     }
 
-    bool TrueTypeFontLoader::_read_glyph_data(std::span<const uint32_t> glyph_indices)
+    std::optional<RawGlyph> TrueTypeFontLoader::_read_glyph_data(uint32_t glyph_index)
     {
-        auto readable = _read_table("glyf");
-        if (readable.is_eof())
+        if (!_cached_glyph_data.has_value())
         {
-            LOG_ERROR(u8"Could not read \"glyf\" table from TrueType font source.");
-            return false;
+            auto readable = _read_table("glyf");
+            if (readable.is_eof())
+            {
+                LOG_ERROR(u8"Could not read \"glyf\" table from TrueType font source.");
+                return {};
+            }
+
+            _cached_glyph_data = std::move(readable);
         }
 
-        for (const auto& glyph_index : glyph_indices)
-        {
-            if (!_read_glyph_data(readable, glyph_index))
-                return false;
-        } // for each glyph index
-
-        return true;
-    }
-
-    std::optional<RawGlyph> TrueTypeFontLoader::_read_glyph_data(cl7::io::ReadableMemory& readable, uint32_t glyph_index)
-    {
-        if (static_cast<size_t>(glyph_index) < _glyph_entries.size() && _glyph_entries[glyph_index].is_loaded)
-            return _glyph_entries[glyph_index].raw_glyph;
+        auto& readable = *_cached_glyph_data;
 
         const auto offset = _glyph_offsets[glyph_index];
         const auto next_offset = _glyph_offsets[glyph_index + 1];
 
         if (offset == next_offset)
-            return _insert_loaded_glyph(glyph_index, {});
+            return {{}}; // Empty glyph, but "successful".
 
         readable.set_read_position(offset);
 
@@ -894,15 +881,9 @@ namespace fl7::fonts::detail::ttf {
 
         const auto number_of_contours = reader.read_scalar<int16_t>();
 
-        std::optional<RawGlyph> raw_glyph_result;
         if (number_of_contours < 0)
-            raw_glyph_result = _read_composite_glyph_description(readable, glyph_index);
-        else
-            raw_glyph_result = _read_simple_glyph_description(readable, glyph_index);
-        if (!raw_glyph_result.has_value())
-            return {};
-
-        return _insert_loaded_glyph(glyph_index, std::move(*raw_glyph_result));
+            return _read_composite_glyph_description(readable, glyph_index);
+        return _read_simple_glyph_description(readable, glyph_index);
     }
 
     std::optional<RawGlyph> TrueTypeFontLoader::_read_simple_glyph_description(cl7::io::ReadableMemory& readable, uint32_t glyph_index)
@@ -1110,7 +1091,7 @@ namespace fl7::fonts::detail::ttf {
         }
 
         const auto old_read_position = readable.get_read_position();
-        auto child_glyph_result = _read_glyph_data(readable, child_glyph_index);
+        auto child_glyph_result = _read_glyph_data(child_glyph_index);
         readable.set_read_position(old_read_position);
         if (!child_glyph_result.has_value())
             return false;
@@ -1209,23 +1190,6 @@ namespace fl7::fonts::detail::ttf {
         } // for each coordinate
 
         return coordinates;
-    }
-
-    RawGlyph TrueTypeFontLoader::_insert_loaded_glyph(uint32_t glyph_index, RawGlyph&& raw_glyph)
-    {
-        assert(static_cast<size_t>(glyph_index) >= _glyph_entries.size() || !_glyph_entries[glyph_index].is_loaded);
-
-        const float em_per_unit = 1.0f / static_cast<float>(_font_header.units_per_em);
-
-        Glyph glyph = raw_glyph.normalize(em_per_unit);
-
-        if (static_cast<size_t>(glyph_index) >= _glyph_entries.size())
-            _glyph_entries.resize(static_cast<size_t>(glyph_index) + 1, {});
-        _glyph_entries[glyph_index].raw_glyph = std::move(raw_glyph);
-        _glyph_entries[glyph_index].glyph = std::move(glyph);
-        _glyph_entries[glyph_index].is_loaded = true;
-
-        return _glyph_entries[glyph_index].raw_glyph;
     }
 
     uint32_t TrueTypeFontLoader::_get_glyph_index(cl7::text::codec::codepoint codepoint) const

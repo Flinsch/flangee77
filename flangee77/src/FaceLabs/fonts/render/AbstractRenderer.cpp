@@ -57,10 +57,13 @@ namespace fl7::fonts::render {
         if (!font) return;
         if (!text_style) text_style = &_default_text_style;
 
+        Font::Access font_access = font->access();
+        FontMetrics font_metrics = font_access.get_metrics();
+
         State state = {
-            .font = font,
-            .font_metrics = &font->get_metrics(),
-            .text_style = text_style,
+            .font_access = std::move(font_access),
+            .font_metrics = font_metrics,
+            .text_style = *text_style,
             .text_metrics = TextMetrics{codepoints, *font, *text_style},
             .cursor = {0.0f, 0.0f},
         };
@@ -75,7 +78,7 @@ namespace fl7::fonts::render {
 
     void AbstractRenderer::_emit_codepoint(cl7::text::codec::codepoint codepoint, State& state)
     {
-        const Glyph* glyph = state.font->find_glyph(codepoint);
+        const Glyph* glyph = state.font_access.find_glyph(codepoint);
         if (!glyph)
             return;
 

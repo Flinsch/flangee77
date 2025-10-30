@@ -91,11 +91,10 @@ protected:
     /** The state to use for a single drawing invocation. */
     struct State
     {
-        Font* font;
-        const FontMetrics* font_metrics;
+        Font::Access font_access;
+        FontMetrics font_metrics;
 
-        const TextStyle* text_style;
-
+        TextStyle text_style;
         TextMetrics text_metrics;
 
         ml7::Vector2f cursor;

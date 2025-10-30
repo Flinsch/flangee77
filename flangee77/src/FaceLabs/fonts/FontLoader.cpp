@@ -26,7 +26,19 @@ namespace fl7::fonts {
 
 
 
-    cl7::io::IReadable& FontLoader::_open(size_t byte_offset)
+    /**
+     * Signals that the loading operations are finished for the time being.
+     * Until the next call to whatever function, resources could therefore be
+     * released again in the meantime (depending on the implementation).
+     */
+    void FontLoader::idle()
+    {
+        _close();
+    }
+
+
+
+    cl7::io::IReadable& FontLoader::_ensure_open(size_t byte_offset)
     {
         if (!_file.is_readable())
             _file.open(_file_path, cl7::io::OpenMode::Read);

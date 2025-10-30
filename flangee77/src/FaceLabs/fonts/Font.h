@@ -25,22 +25,51 @@ class Font
 {
 
 public:
+    /**
+     * Provides access to retrieve metrics and glyphs of the font.
+     */
+    class Access
+    {
+    public:
+        Access(const Access&) = delete;
+        Access& operator=(const Access&) = delete;
+        Access(Access&& other) noexcept = default;
+        Access& operator=(Access&& other) noexcept = default;
+
+        ~Access() { _release(); }
+
+        /**
+         * Returns the metrics of the font.
+         */
+        const FontMetrics& get_metrics();
+
+        /**
+         * Retrieves the glyph corresponding to the specified Unicode code point
+         * (returns NULL if not found).
+         */
+        const Glyph* find_glyph(cl7::text::codec::codepoint codepoint);
+
+    private:
+        Access(Font& font, FontLoader& font_loader);
+
+        void _release();
+
+        Font* _font;
+        FontLoader* _font_loader;
+
+        friend class Font;
+    };
+
+
+
     Font(std::unique_ptr<FontLoader> font_loader);
 
 
 
-  /**
-     * Returns the metrics of the font.
-     */
-    const FontMetrics& get_metrics();
-
-
-
     /**
-     * Retrieves the glyph corresponding to the specified Unicode code point
-     * (returns NULL if not found).
+     * Gains access to retrieve metrics and glyphs of the font.
      */
-    const Glyph* find_glyph(cl7::text::codec::codepoint codepoint);
+    Access access();
 
 
 
