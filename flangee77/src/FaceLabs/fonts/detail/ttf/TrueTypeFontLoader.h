@@ -1,8 +1,8 @@
-#ifndef FL7_FONTS_TRUETYPEFONTLOADER_H
-#define FL7_FONTS_TRUETYPEFONTLOADER_H
-#include "./FontLoader.h"
+#ifndef FL7_FONTS_DETAIL_TTF_TRUETYPEFONTLOADER_H
+#define FL7_FONTS_DETAIL_TTF_TRUETYPEFONTLOADER_H
+#include "../../FontLoader.h"
 
-#include "./detail/RawGlyph.h"
+#include "RawGlyph.h"
 
 #include <CoreLabs/io/ReadableMemory.h>
 
@@ -12,7 +12,7 @@
 
 
 
-namespace fl7::fonts {
+namespace fl7::fonts::detail::ttf {
 
 
 
@@ -165,7 +165,7 @@ private:
 
     struct GlyphEntry
     {
-        detail::RawGlyph raw_glyph = {};
+        RawGlyph raw_glyph = {};
         Glyph glyph = {};
         bool is_loaded = false;
     };
@@ -192,13 +192,13 @@ private:
     bool _try_read_os2_metrics();
 
     bool _read_glyph_data(std::span<const uint32_t> glyph_indices);
-    std::optional<detail::RawGlyph> _read_glyph_data(cl7::io::ReadableMemory& readable, uint32_t glyph_index);
-    std::optional<detail::RawGlyph> _read_simple_glyph_description(cl7::io::ReadableMemory& readable, uint32_t glyph_index);
-    std::optional<detail::RawGlyph> _read_composite_glyph_description(cl7::io::ReadableMemory& readable, uint32_t glyph_index);
-    std::optional<bool> _read_and_apply_next_composite_glyph_component(cl7::io::ReadableMemory& readable, uint32_t parent_glyph_index, detail::RawGlyph& parent_glyph);
+    std::optional<RawGlyph> _read_glyph_data(cl7::io::ReadableMemory& readable, uint32_t glyph_index);
+    std::optional<RawGlyph> _read_simple_glyph_description(cl7::io::ReadableMemory& readable, uint32_t glyph_index);
+    std::optional<RawGlyph> _read_composite_glyph_description(cl7::io::ReadableMemory& readable, uint32_t glyph_index);
+    std::optional<bool> _read_and_apply_next_composite_glyph_component(cl7::io::ReadableMemory& readable, uint32_t parent_glyph_index, RawGlyph& parent_glyph);
     static std::vector<int16_t> _read_glyph_coordinates(cl7::io::ReadableMemory& readable, const std::vector<uint8_t>& point_flags, uint8_t short_vector_flag, uint8_t is_same_or_positive_short_vector_flag);
 
-    detail::RawGlyph _insert_loaded_glyph(uint32_t glyph_index, detail::RawGlyph&& raw_glyph);
+    RawGlyph _insert_loaded_glyph(uint32_t glyph_index, RawGlyph&& raw_glyph);
 
     uint32_t _get_glyph_index(cl7::text::codec::codepoint codepoint) const;
 
@@ -229,6 +229,6 @@ private:
 
 
 
-} // namespace fl7::fonts
+} // namespace fl7::fonts::detail::ttf
 
-#endif // FL7_FONTS_TRUETYPEFONTLOADER_H
+#endif // FL7_FONTS_DETAIL_TTF_TRUETYPEFONTLOADER_H

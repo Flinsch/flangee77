@@ -1,4 +1,4 @@
-#include "TrueTypeFontLoader.h"
+#include "./TrueTypeFontLoader.h"
 
 #include <MathLabs/functions.h>
 #include <MathLabs/Matrix2x2.h>
@@ -10,7 +10,7 @@
 
 
 
-namespace fl7::fonts {
+namespace fl7::fonts::detail::ttf {
 
 
 
@@ -877,7 +877,7 @@ namespace fl7::fonts {
         return true;
     }
 
-    std::optional<detail::RawGlyph> TrueTypeFontLoader::_read_glyph_data(cl7::io::ReadableMemory& readable, uint32_t glyph_index)
+    std::optional<RawGlyph> TrueTypeFontLoader::_read_glyph_data(cl7::io::ReadableMemory& readable, uint32_t glyph_index)
     {
         if (static_cast<size_t>(glyph_index) < _glyph_entries.size() && _glyph_entries[glyph_index].is_loaded)
             return _glyph_entries[glyph_index].raw_glyph;
@@ -894,7 +894,7 @@ namespace fl7::fonts {
 
         const auto number_of_contours = reader.read_scalar<int16_t>();
 
-        std::optional<detail::RawGlyph> raw_glyph_result;
+        std::optional<RawGlyph> raw_glyph_result;
         if (number_of_contours < 0)
             raw_glyph_result = _read_composite_glyph_description(readable, glyph_index);
         else
@@ -905,7 +905,7 @@ namespace fl7::fonts {
         return _insert_loaded_glyph(glyph_index, std::move(*raw_glyph_result));
     }
 
-    std::optional<detail::RawGlyph> TrueTypeFontLoader::_read_simple_glyph_description(cl7::io::ReadableMemory& readable, uint32_t glyph_index)
+    std::optional<RawGlyph> TrueTypeFontLoader::_read_simple_glyph_description(cl7::io::ReadableMemory& readable, uint32_t glyph_index)
     {
         const auto offset = _glyph_offsets[glyph_index];
         const auto next_offset = _glyph_offsets[glyph_index + 1];
@@ -919,7 +919,7 @@ namespace fl7::fonts {
         assert(number_of_contours > 0);
         const auto contour_count = static_cast<size_t>(number_of_contours);
 
-        detail::RawGlyph raw_glyph;
+        RawGlyph raw_glyph;
 
         raw_glyph.x_min = reader.read_scalar<int16_t>();
         raw_glyph.y_min = reader.read_scalar<int16_t>();
@@ -995,7 +995,7 @@ namespace fl7::fonts {
 
     }
 
-    std::optional<detail::RawGlyph> TrueTypeFontLoader::_read_composite_glyph_description(cl7::io::ReadableMemory& readable, uint32_t glyph_index)
+    std::optional<RawGlyph> TrueTypeFontLoader::_read_composite_glyph_description(cl7::io::ReadableMemory& readable, uint32_t glyph_index)
     {
         const auto offset = _glyph_offsets[glyph_index];
         const auto next_offset = _glyph_offsets[glyph_index + 1];
@@ -1008,7 +1008,7 @@ namespace fl7::fonts {
         const auto number_of_contours = reader.read_scalar<int16_t>();
         assert(number_of_contours < 0);
 
-        detail::RawGlyph raw_glyph;
+        RawGlyph raw_glyph;
 
         raw_glyph.x_min = reader.read_scalar<int16_t>();
         raw_glyph.y_min = reader.read_scalar<int16_t>();
@@ -1032,7 +1032,7 @@ namespace fl7::fonts {
         return raw_glyph;
     }
 
-    std::optional<bool> TrueTypeFontLoader::_read_and_apply_next_composite_glyph_component(cl7::io::ReadableMemory& readable, uint32_t parent_glyph_index, detail::RawGlyph& parent_glyph)
+    std::optional<bool> TrueTypeFontLoader::_read_and_apply_next_composite_glyph_component(cl7::io::ReadableMemory& readable, uint32_t parent_glyph_index, RawGlyph& parent_glyph)
     {
         cl7::io::EndianAwareReader<std::endian::big> reader{&readable};
 
@@ -1115,7 +1115,7 @@ namespace fl7::fonts {
         if (!child_glyph_result.has_value())
             return false;
 
-        detail::RawGlyph child_glyph = std::move(*child_glyph_result);
+        RawGlyph child_glyph = std::move(*child_glyph_result);
 
         if (args_are_xy_values)
         {
@@ -1155,7 +1155,7 @@ namespace fl7::fonts {
         {
             ml7::Vector2f vector = point.to_vector();
             vector = transform.transform(vector) + offset;
-            parent_glyph.contour_points.push_back(detail::RawGlyph::Point::from_vector(vector, point.on_curve));
+            parent_glyph.contour_points.push_back(RawGlyph::Point::from_vector(vector, point.on_curve));
         }
         for (const auto& end_point_index : child_glyph.end_point_indices)
             parent_glyph.end_point_indices.push_back(end_point_base + end_point_index);
@@ -1211,7 +1211,7 @@ namespace fl7::fonts {
         return coordinates;
     }
 
-    detail::RawGlyph TrueTypeFontLoader::_insert_loaded_glyph(uint32_t glyph_index, detail::RawGlyph&& raw_glyph)
+    RawGlyph TrueTypeFontLoader::_insert_loaded_glyph(uint32_t glyph_index, RawGlyph&& raw_glyph)
     {
         assert(static_cast<size_t>(glyph_index) >= _glyph_entries.size() || !_glyph_entries[glyph_index].is_loaded);
 
@@ -1271,4 +1271,4 @@ namespace fl7::fonts {
 
 
 
-} // namespace fl7::fonts
+} // namespace fl7::fonts::detail::ttf

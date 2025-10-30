@@ -1,4 +1,4 @@
-#include "RawGlyph.h"
+#include "./RawGlyph.h"
 
 #include <MathLabs/functions.h>
 
@@ -6,7 +6,7 @@
 
 
 
-namespace fl7::fonts::detail {
+namespace fl7::fonts::detail::ttf {
 
 
 
@@ -183,4 +183,4 @@ namespace fl7::fonts::detail {
 
 
 
-} // namespace fl7::fonts::detail
+} // namespace fl7::fonts::detail::ttf

@@ -7,9 +7,9 @@ target_sources(flangee77
     fonts/FontLoader.cpp
     fonts/Glyph.cpp
     fonts/TextMetrics.cpp
-    fonts/TrueTypeFontLoader.cpp
 
-    fonts/detail/RawGlyph.cpp
+    fonts/detail/ttf/RawGlyph.cpp
+    fonts/detail/ttf/TrueTypeFontLoader.cpp
 
     fonts/render/AbstractRenderer.cpp
     fonts/render/TestRenderer.cpp

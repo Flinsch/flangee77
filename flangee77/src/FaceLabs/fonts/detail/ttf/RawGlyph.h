@@ -1,13 +1,13 @@
-#ifndef FL7_FONTS_DETAIL_RAWGLYPH_H
-#define FL7_FONTS_DETAIL_RAWGLYPH_H
+#ifndef FL7_FONTS_DETAIL_TTF_RAWGLYPH_H
+#define FL7_FONTS_DETAIL_TTF_RAWGLYPH_H
 
-#include "../Glyph.h"
+#include "../../Glyph.h"
 
 #include <vector>
 
 
 
-namespace fl7::fonts::detail {
+namespace fl7::fonts::detail::ttf {
 
 
 
@@ -60,6 +60,6 @@ struct RawGlyph
 
 
 
-} // namespace fl7::fonts::detail
+} // namespace fl7::fonts::detail::ttf
 
-#endif // FL7_FONTS_DETAIL_RAWGLYPH_H
+#endif // FL7_FONTS_DETAIL_TTF_RAWGLYPH_H
