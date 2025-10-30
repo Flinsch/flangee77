@@ -15,10 +15,10 @@ var structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities =
     [ "max_texture_sampler_slot_count", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a0b9dd2b1de93360166103681171c00a5", null ],
     [ "memory", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#afa91d27656ea53c522528f7317ddc6af", null ],
     [ "pixel_shader_version", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a5a508e8f25d998d3f063a48086563402", null ],
-    [ "shaders", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a39270d266276051ae706e60fcda97f5b", null ],
+    [ "shaders", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#ac943de8910435f5ffa2dd4e673ddd8e3", null ],
     [ "square_only", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a7e8cc6bb982830502e998a28ae21d603", null ],
     [ "texture_2d_pow2_only", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#ab8aabe096e85a6eb7f7bc41fcc6ea240", null ],
     [ "texture_3d_pow2_only", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a7d1654f4d063443ec5c6e166d2e62d6a", null ],
-    [ "textures", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#af0d6fe594df493cd6809939692a8fa7d", null ],
+    [ "textures", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#aebd534f15e954b0804c6b23241d00263", null ],
     [ "vertex_shader_version", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#afd3b616e5e799277af13622802434b4a", null ]
 ];

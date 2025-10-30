@@ -203,6 +203,7 @@ var hierarchy =
     [ "fl7::fonts::Glyph", "d2/d26/structfl7_1_1fonts_1_1Glyph.html", null ],
     [ "fl7::fonts::TrueTypeFontLoader::GlyphEntry", "db/d25/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1GlyphEntry.html", null ],
     [ "fl7::fonts::TrueTypeFontLoader::GlyphMetric", "de/da0/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1GlyphMetric.html", null ],
+    [ "fl7::fonts::GlyphMetrics", "d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html", null ],
     [ "dl7::syntax::Grammar", "d8/d95/structdl7_1_1syntax_1_1Grammar.html", null ],
     [ "dl7::syntax::GrammarAnalyzer", "dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html", null ],
     [ "tl7::Stats::Group", "da/d74/structtl7_1_1Stats_1_1Group.html", null ],
