@@ -210,7 +210,10 @@ var annotated_dup =
     [ "fl7", "d5/d46/namespacefl7.html", [
       [ "fonts", "d7/da5/namespacefl7_1_1fonts.html", [
         [ "detail", "db/dce/namespacefl7_1_1fonts_1_1detail.html", [
-          [ "RawGlyph", "d8/d51/structfl7_1_1fonts_1_1detail_1_1RawGlyph.html", "d8/d51/structfl7_1_1fonts_1_1detail_1_1RawGlyph" ]
+          [ "ttf", "d0/d9b/namespacefl7_1_1fonts_1_1detail_1_1ttf.html", [
+            [ "RawGlyph", "d3/d6c/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph.html", "d3/d6c/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph" ],
+            [ "TrueTypeFontLoader", "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html", "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader" ]
+          ] ]
         ] ],
         [ "render", "dd/d80/namespacefl7_1_1fonts_1_1render.html", [
           [ "AbstractRenderer", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer" ],
@@ -224,8 +227,7 @@ var annotated_dup =
         [ "Glyph", "d2/d26/structfl7_1_1fonts_1_1Glyph.html", "d2/d26/structfl7_1_1fonts_1_1Glyph" ],
         [ "GlyphMetrics", "d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html", "d5/d64/structfl7_1_1fonts_1_1GlyphMetrics" ],
         [ "TextMetrics", "d2/dc2/structfl7_1_1fonts_1_1TextMetrics.html", "d2/dc2/structfl7_1_1fonts_1_1TextMetrics" ],
-        [ "TextStyle", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html", "d8/d86/structfl7_1_1fonts_1_1TextStyle" ],
-        [ "TrueTypeFontLoader", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader" ]
+        [ "TextStyle", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html", "d8/d86/structfl7_1_1fonts_1_1TextStyle" ]
       ] ]
     ] ],
     [ "ml7", "d3/d53/namespaceml7.html", [

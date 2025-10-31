@@ -13,7 +13,7 @@ var searchData=
   ['index_5fbuffer_10',['index_buffer',['../d7/d0a/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates.html#a97b452d5b4aa3fbfa2125c3a037f4042',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates::index_buffer'],['../d7/d8c/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates.html#a1ee939b35592f9d3e615ca1c01ca9c37',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates::index_buffer'],['../d9/d2e/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedDrawStates.html#acff365e64e8a89412d1c70d40de15379',1,'xl7::graphics::RenderingContext::ResolvedDrawStates::index_buffer']]],
   ['index_5fmask_11',['INDEX_MASK',['../d8/d44/classxl7_1_1resources_1_1ResourceID.html#a2deaa4a2bc92b8d87fabea8999bb590d',1,'xl7::resources::ResourceID']]],
   ['index_5fsize_5fbits_12',['INDEX_SIZE_BITS',['../d8/d44/classxl7_1_1resources_1_1ResourceID.html#a1076ebddc7a82f99d203b61c1d380306',1,'xl7::resources::ResourceID']]],
-  ['index_5fto_5floc_5fformat_13',['index_to_loc_format',['../d9/ded/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontHeader.html#a729b03aa8c442b1f48015c1847032db6',1,'fl7::fonts::TrueTypeFontLoader::FontHeader']]],
+  ['index_5fto_5floc_5fformat_13',['index_to_loc_format',['../d8/dc0/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1FontHeader.html#ae89d226d1afb6fd94fca6b81869766bf',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::FontHeader']]],
   ['index_5ftype_14',['index_type',['../de/d17/structxl7_1_1graphics_1_1meshes_1_1IndexBuffer_1_1Desc.html#a5306cf20c9467674c23078f68c8dc1d8',1,'xl7::graphics::meshes::IndexBuffer::Desc']]],
   ['input_5flayout_15',['input_layout',['../d7/d0a/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates.html#aa75656cea8689497e342acf03fa59f81',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates']]],
   ['input_5fread_16',['input_read',['../da/d9c/structcl7_1_1text_1_1codec_1_1DecodeResult.html#a691d1e391b49f52044a32ab10ec21fa9',1,'cl7::text::codec::DecodeResult']]],
@@ -34,12 +34,11 @@ var searchData=
   ['is_5fblending_5fenabled_31',['is_blending_enabled',['../d1/da4/structxl7_1_1graphics_1_1states_1_1BlendState_1_1Desc.html#a483582447edbede4e3c0f74585d119e5',1,'xl7::graphics::states::BlendState::Desc']]],
   ['is_5fdepth_5ftesting_5fenabled_32',['is_depth_testing_enabled',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a9da1b0cb074ae58261d55b07d672406d',1,'xl7::graphics::states::DepthStencilState::Desc']]],
   ['is_5fdepth_5fwriting_5fenabled_33',['is_depth_writing_enabled',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#ad22d620c75e85cc7478b671ad7c702ff',1,'xl7::graphics::states::DepthStencilState::Desc']]],
-  ['is_5floaded_34',['is_loaded',['../db/d25/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1GlyphEntry.html#a41f4b388bc74b629d5ae9d5fbee067f1',1,'fl7::fonts::TrueTypeFontLoader::GlyphEntry']]],
-  ['is_5fopen_35',['is_open',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#ac2da4aa3ded5846b22c0e865601f6e2b',1,'cl7::profiling::Sample']]],
-  ['is_5fprofiled_36',['is_profiled',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a4d4b3b9e1e4d0830a36195a05cc78987',1,'cl7::profiling::Sample']]],
-  ['is_5fset_37',['is_set',['../d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html#a922843bed671cbf575f97c149a869a13',1,'xl7::graphics::pipeline::AbstractPipelineObject::StateArray::Entry']]],
-  ['is_5fstenciling_5fenabled_38',['is_stenciling_enabled',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a85cd1f6eb99b3cd8a4248dd2f2707185',1,'xl7::graphics::states::DepthStencilState::Desc']]],
-  ['is_5fstring_5fconstructible_5fv_39',['is_string_constructible_v',['../d1/d2e/namespacecl7.html#a2b7716202f0260d0a155173ff6811aac',1,'cl7']]],
-  ['italic_5fintensity_40',['italic_intensity',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a0b571a2d895b3b30a5926210f22f85f7',1,'fl7::fonts::TextStyle']]],
-  ['iteration_5fnumber_41',['iteration_number',['../d1/d32/structtl7_1_1Signature.html#a42be262107926c787757bf3131f2848e',1,'tl7::Signature']]]
+  ['is_5fopen_34',['is_open',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#ac2da4aa3ded5846b22c0e865601f6e2b',1,'cl7::profiling::Sample']]],
+  ['is_5fprofiled_35',['is_profiled',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a4d4b3b9e1e4d0830a36195a05cc78987',1,'cl7::profiling::Sample']]],
+  ['is_5fset_36',['is_set',['../d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html#a922843bed671cbf575f97c149a869a13',1,'xl7::graphics::pipeline::AbstractPipelineObject::StateArray::Entry']]],
+  ['is_5fstenciling_5fenabled_37',['is_stenciling_enabled',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a85cd1f6eb99b3cd8a4248dd2f2707185',1,'xl7::graphics::states::DepthStencilState::Desc']]],
+  ['is_5fstring_5fconstructible_5fv_38',['is_string_constructible_v',['../d1/d2e/namespacecl7.html#a2b7716202f0260d0a155173ff6811aac',1,'cl7']]],
+  ['italic_5fintensity_39',['italic_intensity',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a0b571a2d895b3b30a5926210f22f85f7',1,'fl7::fonts::TextStyle']]],
+  ['iteration_5fnumber_40',['iteration_number',['../d1/d32/structtl7_1_1Signature.html#a42be262107926c787757bf3131f2848e',1,'tl7::Signature']]]
 ];

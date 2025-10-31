@@ -10,6 +10,5 @@ var namespacefl7_1_1fonts =
     [ "Glyph", "d2/d26/structfl7_1_1fonts_1_1Glyph.html", "d2/d26/structfl7_1_1fonts_1_1Glyph" ],
     [ "GlyphMetrics", "d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html", "d5/d64/structfl7_1_1fonts_1_1GlyphMetrics" ],
     [ "TextMetrics", "d2/dc2/structfl7_1_1fonts_1_1TextMetrics.html", "d2/dc2/structfl7_1_1fonts_1_1TextMetrics" ],
-    [ "TextStyle", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html", "d8/d86/structfl7_1_1fonts_1_1TextStyle" ],
-    [ "TrueTypeFontLoader", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader" ]
+    [ "TextStyle", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html", "d8/d86/structfl7_1_1fonts_1_1TextStyle" ]
 ];

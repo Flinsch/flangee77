@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['tabledirectoryentry_0',['TableDirectoryEntry',['../de/d13/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TableDirectoryEntry.html',1,'fl7::fonts::TrueTypeFontLoader']]],
+  ['tabledirectoryentry_0',['TableDirectoryEntry',['../d7/da1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TableDirectoryEntry.html',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader']]],
   ['targaimagehandler_1',['TargaImageHandler',['../d1/d01/classxl7_1_1graphics_1_1images_1_1TargaImageHandler.html',1,'xl7::graphics::images']]],
   ['terminalsymbol_2',['TerminalSymbol',['../d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html',1,'dl7::syntax']]],
   ['terminalsymbolcollection_3',['TerminalSymbolCollection',['../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html',1,'dl7::syntax']]],
@@ -26,6 +26,6 @@ var searchData=
   ['traits_3c_20cl7_3a_3au32char_5ft_20_3e_23',['traits&lt; cl7::u32char_t &gt;',['../d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html',1,'cl7::text::codec']]],
   ['traits_3c_20cl7_3a_3au8char_5ft_20_3e_24',['traits&lt; cl7::u8char_t &gt;',['../de/db6/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4.html',1,'cl7::text::codec']]],
   ['transcoder_25',['Transcoder',['../da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html',1,'cl7::text::codec']]],
-  ['truetypefontloader_26',['TrueTypeFontLoader',['../d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html',1,'fl7::fonts']]],
-  ['truetypefontmetric_27',['TrueTypeFontMetric',['../df/da1/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html',1,'fl7::fonts::TrueTypeFontLoader']]]
+  ['truetypefontloader_26',['TrueTypeFontLoader',['../dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html',1,'fl7::fonts::detail::ttf']]],
+  ['truetypefontmetric_27',['TrueTypeFontMetric',['../d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader']]]
 ];

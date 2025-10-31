@@ -15,7 +15,5 @@ var dir_08a5606168a6639d21308f080d4b1995 =
     [ "GlyphMetrics.h", "d2/d03/GlyphMetrics_8h.html", "d2/d03/GlyphMetrics_8h" ],
     [ "TextMetrics.cpp", "da/dad/TextMetrics_8cpp.html", null ],
     [ "TextMetrics.h", "d8/d48/TextMetrics_8h.html", "d8/d48/TextMetrics_8h" ],
-    [ "TextStyle.h", "d7/d22/TextStyle_8h.html", "d7/d22/TextStyle_8h" ],
-    [ "TrueTypeFontLoader.cpp", "db/d10/TrueTypeFontLoader_8cpp.html", null ],
-    [ "TrueTypeFontLoader.h", "d2/de5/TrueTypeFontLoader_8h.html", "d2/de5/TrueTypeFontLoader_8h" ]
+    [ "TextStyle.h", "d7/d22/TextStyle_8h.html", "d7/d22/TextStyle_8h" ]
 ];

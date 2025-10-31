@@ -20,6 +20,7 @@ var hierarchy =
     [ "fl7::fonts::render::AbstractRenderer", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html", [
       [ "fl7::fonts::render::TestRenderer", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html", null ]
     ] ],
+    [ "fl7::fonts::Font::Access", "d0/d7e/classfl7_1_1fonts_1_1Font_1_1Access.html", null ],
     [ "cl7::text::codec::Analyzer< Tchar, TDefaultErrorHandler >", "d8/d02/classcl7_1_1text_1_1codec_1_1Analyzer.html", null ],
     [ "ml7::Angle< T >", "d4/d9d/structml7_1_1Angle.html", null ],
     [ "dl7::ini::detail::AnyOtherMatcher", "d4/dc9/structdl7_1_1ini_1_1detail_1_1AnyOtherMatcher.html", null ],
@@ -191,9 +192,9 @@ var hierarchy =
     [ "cl7::text::format::FloatFormatOptions", "d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html", null ],
     [ "dl7::syntax::matchers::FloatingPointLiteralMatcher", "df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher.html", null ],
     [ "fl7::fonts::Font", "d3/d00/classfl7_1_1fonts_1_1Font.html", null ],
-    [ "fl7::fonts::TrueTypeFontLoader::FontHeader", "d9/ded/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1FontHeader.html", null ],
+    [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::FontHeader", "d8/dc0/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1FontHeader.html", null ],
     [ "fl7::fonts::FontLoader", "da/d82/classfl7_1_1fonts_1_1FontLoader.html", [
-      [ "fl7::fonts::TrueTypeFontLoader", "d4/d82/classfl7_1_1fonts_1_1TrueTypeFontLoader.html", null ]
+      [ "fl7::fonts::detail::ttf::TrueTypeFontLoader", "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html", null ]
     ] ],
     [ "fl7::fonts::FontMetrics", "df/d82/structfl7_1_1fonts_1_1FontMetrics.html", null ],
     [ "dl7::ini::Format", "d9/db3/structdl7_1_1ini_1_1Format.html", null ],
@@ -201,8 +202,7 @@ var hierarchy =
     [ "dl7::xml::Format", "db/df3/structdl7_1_1xml_1_1Format.html", null ],
     [ "xl7::Config::General", "dd/d38/structxl7_1_1Config_1_1General.html", null ],
     [ "fl7::fonts::Glyph", "d2/d26/structfl7_1_1fonts_1_1Glyph.html", null ],
-    [ "fl7::fonts::TrueTypeFontLoader::GlyphEntry", "db/d25/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1GlyphEntry.html", null ],
-    [ "fl7::fonts::TrueTypeFontLoader::GlyphMetric", "de/da0/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1GlyphMetric.html", null ],
+    [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::GlyphMetric", "df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric.html", null ],
     [ "fl7::fonts::GlyphMetrics", "d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html", null ],
     [ "dl7::syntax::Grammar", "d8/d95/structdl7_1_1syntax_1_1Grammar.html", null ],
     [ "dl7::syntax::GrammarAnalyzer", "dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html", null ],
@@ -293,7 +293,7 @@ var hierarchy =
     [ "ml7::Matrix3x3< T >", "d6/d14/structml7_1_1Matrix3x3.html", null ],
     [ "ml7::Matrix3x4< T >", "d8/dd9/structml7_1_1Matrix3x4.html", null ],
     [ "ml7::Matrix4x4< T >", "d7/dea/structml7_1_1Matrix4x4.html", null ],
-    [ "fl7::fonts::TrueTypeFontLoader::MaximumProfile", "d1/d29/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1MaximumProfile.html", null ],
+    [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::MaximumProfile", "db/dae/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1MaximumProfile.html", null ],
     [ "xl7::graphics::RenderingDevice::Capabilities::Memory", "da/dd9/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities_1_1Memory.html", null ],
     [ "cl7::system::MemoryStatus", "d1/d7a/structcl7_1_1system_1_1MemoryStatus.html", null ],
     [ "xl7::graphics::meshes::MeshUtil", "d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil.html", null ],
@@ -303,8 +303,8 @@ var hierarchy =
       [ "dl7::xml::Element", "de/dc8/classdl7_1_1xml_1_1Element.html", null ],
       [ "dl7::xml::Text", "df/dd2/classdl7_1_1xml_1_1Text.html", null ]
     ] ],
-    [ "fl7::fonts::TrueTypeFontLoader::OffsetSubtable", "d2/d3d/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OffsetSubtable.html", null ],
-    [ "fl7::fonts::TrueTypeFontLoader::OpenTypeFontMetric", "d3/d24/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html", null ],
+    [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::OffsetSubtable", "d9/db1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OffsetSubtable.html", null ],
+    [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::OpenTypeFontMetric", "d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html", null ],
     [ "dl7::Base64::Options", "de/d56/structdl7_1_1Base64_1_1Options.html", null ],
     [ "dl7::json::util::Escaper::Options", "d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html", null ],
     [ "dl7::syntax::Lexer::Options", "dd/d72/structdl7_1_1syntax_1_1Lexer_1_1Options.html", null ],
@@ -343,7 +343,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "xl7::graphics::PixelBitKit", "d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html", null ],
-    [ "fl7::fonts::detail::RawGlyph::Point", "d0/d35/structfl7_1_1fonts_1_1detail_1_1RawGlyph_1_1Point.html", null ],
+    [ "fl7::fonts::detail::ttf::RawGlyph::Point", "dc/d77/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph_1_1Point.html", null ],
     [ "ml7::detail::distance::PointResult< TVector >", "db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html", null ],
     [ "ml7::detail::distance::PointResult_distance_squared< T >", "de/dd3/structml7_1_1detail_1_1distance_1_1PointResult__distance__squared.html", null ],
     [ "ml7::detail::distance::PointResult_point< TVector >", "d5/d92/structml7_1_1detail_1_1distance_1_1PointResult__point.html", null ],
@@ -356,7 +356,7 @@ var hierarchy =
     [ "ml7::Quaternion< T >", "d8/d1f/structml7_1_1Quaternion.html", null ],
     [ "ml7::ops::ramp< start, slope >", "de/dcb/structml7_1_1ops_1_1ramp.html", null ],
     [ "ml7::ops::ramp< 0, 1 >", "da/d35/structml7_1_1ops_1_1ramp_3_010_00_011_01_4.html", null ],
-    [ "fl7::fonts::detail::RawGlyph", "d8/d51/structfl7_1_1fonts_1_1detail_1_1RawGlyph.html", null ],
+    [ "fl7::fonts::detail::ttf::RawGlyph", "d3/d6c/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph.html", null ],
     [ "ml7::Ray2< T >", "dc/def/structml7_1_1Ray2.html", null ],
     [ "ml7::Ray3< T >", "d3/d71/structml7_1_1Ray3.html", null ],
     [ "xl7::graphics::shaders::ReflectionResult", "d2/d19/structxl7_1_1graphics_1_1shaders_1_1ReflectionResult.html", null ],
@@ -519,7 +519,7 @@ var hierarchy =
     [ "tl7::SubcaseContext", "d4/dc8/classtl7_1_1SubcaseContext.html", null ],
     [ "cl7::bits::detail::SwapBytesImpl< T, size >", "d6/d9e/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl.html", null ],
     [ "cl7::bits::detail::SwapBytesImpl< T, 1 >", "d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4.html", null ],
-    [ "fl7::fonts::TrueTypeFontLoader::TableDirectoryEntry", "de/d13/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TableDirectoryEntry.html", null ],
+    [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::TableDirectoryEntry", "d7/da1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TableDirectoryEntry.html", null ],
     [ "dl7::syntax::TerminalSymbol", "d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html", [
       [ "dl7::syntax::LiteralSymbol", "d7/d6d/structdl7_1_1syntax_1_1LiteralSymbol.html", null ],
       [ "dl7::syntax::NonLiteralSymbol", "d8/d79/structdl7_1_1syntax_1_1NonLiteralSymbol.html", [
@@ -563,7 +563,7 @@ var hierarchy =
       [ "cl7::detail::_is_any_string_span< std::span< Tchar > >", "d0/d3a/structcl7_1_1detail_1_1__is__any__string__span_3_01std_1_1span_3_01Tchar_01_4_01_4.html", null ],
       [ "cl7::detail::_is_any_string_view< std::basic_string_view< Tchar, Ttraits > >", "d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html", null ]
     ] ],
-    [ "fl7::fonts::TrueTypeFontLoader::TrueTypeFontMetric", "df/da1/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html", null ],
+    [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::TrueTypeFontMetric", "d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html", null ],
     [ "cl7::u8isstream", "d9/d44/classcl7_1_1u8isstream.html", null ],
     [ "cl7::u8osstream", "d3/d63/classcl7_1_1u8osstream.html", null ],
     [ "dl7::json::util::Unescaper", "df/df1/classdl7_1_1json_1_1util_1_1Unescaper.html", null ],

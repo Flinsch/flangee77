@@ -78,7 +78,7 @@ var searchData=
   ['get_5fmanager_75',['get_manager',['../d5/d7b/classxl7_1_1resources_1_1Resource.html#a2e787223694259fa6477c0559fe7e647',1,'xl7::resources::Resource']]],
   ['get_5fmesh_5fmanager_76',['get_mesh_manager',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#a531f5bbc5853218e7709bced89a7f910',1,'xl7::graphics::RenderingDevice']]],
   ['get_5fmeta_5fat_77',['get_meta_at',['../d4/dc8/classtl7_1_1SubcaseContext.html#a376a1b7e0a1b94072cf4a89b057eb3cc',1,'tl7::SubcaseContext']]],
-  ['get_5fmetrics_78',['get_metrics',['../d3/d00/classfl7_1_1fonts_1_1Font.html#a2145d069ad009ca6ef691f3e16e1e171',1,'fl7::fonts::Font']]],
+  ['get_5fmetrics_78',['get_metrics',['../d0/d7e/classfl7_1_1fonts_1_1Font_1_1Access.html#a91896d8b0452d895a2910aeb05cbcc08',1,'fl7::fonts::Font::Access']]],
   ['get_5fname_79',['get_name',['../d5/d23/classdl7_1_1xml_1_1Attribute.html#a0a23d348dda9fa27f88cdbb5bbbe2b5b',1,'dl7::xml::Attribute::get_name()'],['../de/dc8/classdl7_1_1xml_1_1Element.html#a8e4ff22724a203f1beee7b74cd8ee641',1,'dl7::xml::Element::get_name()']]],
   ['get_5foffset_80',['get_offset',['../dc/d12/classxl7_1_1resources_1_1FakeDataProvider.html#afb994047eaad02c6d059899a944a70a1',1,'xl7::resources::FakeDataProvider::get_offset()'],['../d7/dcd/classxl7_1_1resources_1_1DefaultDataProvider.html#a701b610be25386e0b71861cb0af6d105',1,'xl7::resources::DefaultDataProvider::get_offset()'],['../dd/def/classxl7_1_1resources_1_1DataProvider.html#a60c303352c70401b147e2a3d577ef465',1,'xl7::resources::DataProvider::get_offset()']]],
   ['get_5foption_5fnames_81',['get_option_names',['../dd/d75/classpl7_1_1ArgumentBag.html#a13badacdf18908fd33ea96f2955cc418',1,'pl7::ArgumentBag']]],

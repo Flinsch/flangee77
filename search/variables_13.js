@@ -1,11 +1,11 @@
 var searchData=
 [
   ['t_0',['t',['../db/df0/structml7_1_1detail_1_1distance_1_1PointResult__t.html#a870628bf2c7cc3afea9993bfc1fdf7ad',1,'ml7::detail::distance::PointResult_t::t'],['../d6/df6/structml7_1_1distance2_1_1PointResult.html#ae561b108f4e1c39dceb8ddf7ed6c6c2c',1,'ml7::distance2::PointResult::t'],['../d2/d68/structml7_1_1distance3_1_1PointResult.html#af30803881c408f9bc0d52476c87dafb2',1,'ml7::distance3::PointResult::t'],['../d7/db1/structml7_1_1Vector2.html#a39c3b438f697bd9c5d9e58f4eb197afb',1,'ml7::Vector2::t'],['../db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html#aad2aab80a427c6be2e66eee6d6969ff7',1,'ml7::detail::distance::PointResult::t']]],
-  ['tag_1',['tag',['../de/d13/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TableDirectoryEntry.html#af543a97f09388983209782777c4f8dfe',1,'fl7::fonts::TrueTypeFontLoader::TableDirectoryEntry']]],
+  ['tag_1',['tag',['../d7/da1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TableDirectoryEntry.html#ab6e228a89e2e7c937c225e61288b29ae',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::TableDirectoryEntry']]],
   ['terminal_5fsymbols_2',['terminal_symbols',['../d8/d95/structdl7_1_1syntax_1_1Grammar.html#ae1f7eeb1aff93a98fef7934d3ba57daf',1,'dl7::syntax::Grammar']]],
   ['text_5fcolor_3',['text_color',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a5603e32fd3aeefb1f7a5e0fe1b8ca0f7',1,'fl7::fonts::TextStyle']]],
   ['text_5fmetrics_4',['text_metrics',['../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#a422ce3beadaa190bce2f6ba824aaa7e6',1,'fl7::fonts::render::AbstractRenderer::State']]],
-  ['text_5fstyle_5',['text_style',['../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#a6963937664b2b2cf8722b16b11dfbd3c',1,'fl7::fonts::render::AbstractRenderer::State']]],
+  ['text_5fstyle_5',['text_style',['../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#a9f6171d26ebadb4522abc86f710ccd76',1,'fl7::fonts::render::AbstractRenderer::State']]],
   ['texture_5f2d_5fpow2_5fonly_6',['texture_2d_pow2_only',['../dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#ab8aabe096e85a6eb7f7bc41fcc6ea240',1,'xl7::graphics::RenderingDevice::Capabilities']]],
   ['texture_5f3d_5fpow2_5fonly_7',['texture_3d_pow2_only',['../dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a7d1654f4d063443ec5c6e166d2e62d6a',1,'xl7::graphics::RenderingDevice::Capabilities']]],
   ['texture_5fsampler_5fcount_8',['texture_sampler_count',['../dc/d45/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedTextureSamplerStates.html#aa313c6da43c4d5a44137367a62b773dc',1,'xl7::graphics::RenderingContext::ResolvedTextureSamplerStates']]],
@@ -18,7 +18,7 @@ var searchData=
   ['total_5fphysical_5fmemory_15',['total_physical_memory',['../d1/d7a/structcl7_1_1system_1_1MemoryStatus.html#a1dcdda397e185f0213662c9eca94634e',1,'cl7::system::MemoryStatus']]],
   ['total_5fsize_5fbits_16',['TOTAL_SIZE_BITS',['../d8/d44/classxl7_1_1resources_1_1ResourceID.html#acb2b1c6c378e758be92a36eae3d0b3cb',1,'xl7::resources::ResourceID']]],
   ['type_17',['type',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html#a96ee0576398e3e780599877034dccedf',1,'cl7::logging::LogEntry::type'],['../d9/dc0/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1ChunkInfo.html#a2484cb7fc63bf23cc2b0da6758266417',1,'xl7::graphics::images::PngImageHandler::ChunkInfo::type']]],
-  ['typo_5fascender_18',['typo_ascender',['../d3/d24/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html#a89bcd1dba8dc31fcd5d2c7e89652474c',1,'fl7::fonts::TrueTypeFontLoader::OpenTypeFontMetric']]],
-  ['typo_5fdescender_19',['typo_descender',['../d3/d24/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html#a034c6f34c124db6fb09eb98bcb848547',1,'fl7::fonts::TrueTypeFontLoader::OpenTypeFontMetric']]],
-  ['typo_5fline_5fgap_20',['typo_line_gap',['../d3/d24/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html#acba0d731b50bad87838e668ca49ad666',1,'fl7::fonts::TrueTypeFontLoader::OpenTypeFontMetric']]]
+  ['typo_5fascender_18',['typo_ascender',['../d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html#a170d99c57f609337c2e3d1ad1d4f3132',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::OpenTypeFontMetric']]],
+  ['typo_5fdescender_19',['typo_descender',['../d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html#a2be70f03624a61f7a6716ca9e7d914ef',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::OpenTypeFontMetric']]],
+  ['typo_5fline_5fgap_20',['typo_line_gap',['../d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html#af28fcb39dc643e68710eb595ab7e7a5f',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::OpenTypeFontMetric']]]
 ];

@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['offset_0',['offset',['../de/d13/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TableDirectoryEntry.html#a5d1b54d5cf97e3d0ee436aa01b720a79',1,'fl7::fonts::TrueTypeFontLoader::TableDirectoryEntry::offset'],['../d3/da3/structxl7_1_1graphics_1_1PixelBitKit_1_1Channel.html#a6a53357f82c6f6107978f92b01dce482',1,'xl7::graphics::PixelBitKit::Channel::offset'],['../d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html#a23b3f9a56d934e1281380a0ec5905153',1,'xl7::graphics::shaders::ConstantDeclaration::offset']]],
+  ['offset_0',['offset',['../d7/da1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TableDirectoryEntry.html#afec0aa7e3017ecf8f6fffd68697d2f2d',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::TableDirectoryEntry::offset'],['../d3/da3/structxl7_1_1graphics_1_1PixelBitKit_1_1Channel.html#a6a53357f82c6f6107978f92b01dce482',1,'xl7::graphics::PixelBitKit::Channel::offset'],['../d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html#a23b3f9a56d934e1281380a0ec5905153',1,'xl7::graphics::shaders::ConstantDeclaration::offset']]],
   ['om_1',['om',['../d6/d62/classxl7_1_1graphics_1_1pipeline_1_1Pipeline.html#afb12d34f048cf0284f49b1a0c8dfce42',1,'xl7::graphics::pipeline::Pipeline']]],
-  ['on_5fcurve_2',['on_curve',['../d0/d35/structfl7_1_1fonts_1_1detail_1_1RawGlyph_1_1Point.html#a75ea0ad32a840313815370f5f7e7b3b5',1,'fl7::fonts::detail::RawGlyph::Point']]],
+  ['on_5fcurve_2',['on_curve',['../dc/d77/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph_1_1Point.html#aaefe24081081307fa1381e1b52e5f6b0',1,'fl7::fonts::detail::ttf::RawGlyph::Point']]],
   ['open_3',['open',['../d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html#a6d3d6560b89cb781099fb77a983029c4',1,'dl7::syntax::matchers::BlockCommentMatcher']]],
   ['origin_4',['origin',['../dc/def/structml7_1_1Ray2.html#aaefe7f392f17d7eb4841a7af7364d73b',1,'ml7::Ray2::origin'],['../d3/d71/structml7_1_1Ray3.html#a0a023fedc84faed436a435a39c5a826e',1,'ml7::Ray3::origin']]],
   ['origin_5ftype_5',['origin_type',['../da/d3a/structtl7_1_1Result.html#afb35bb0b5b924be691f9cd62aa74ad19',1,'tl7::Result']]],

@@ -31,7 +31,7 @@ var searchData=
   ['depth_5fstencil_5fview_28',['depth_stencil_view',['../d7/d0a/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates.html#acfdbaf361617d462e9ec9508aa372cf8',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates']]],
   ['depth_5ftest_5ffunction_29',['depth_test_function',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a884d638f1545f4f790d09463ee342969',1,'xl7::graphics::states::DepthStencilState::Desc']]],
   ['desc_30',['desc',['../db/df9/structxl7_1_1resources_1_1Resource_1_1CreateParams.html#a122a0d840fd3e0859a27ef3469e5e583',1,'xl7::resources::Resource::CreateParams']]],
-  ['descender_31',['descender',['../df/da1/structfl7_1_1fonts_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html#ac31d04e84dd1538ebaba4beb35c7ce1c',1,'fl7::fonts::TrueTypeFontLoader::TrueTypeFontMetric']]],
+  ['descender_31',['descender',['../d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html#a74bccdfe55710bbb666422f01c037902',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::TrueTypeFontMetric']]],
   ['descent_32',['descent',['../df/d82/structfl7_1_1fonts_1_1FontMetrics.html#adae6bcbaaf87c20a72736c9b07c19e40',1,'fl7::fonts::FontMetrics']]],
   ['dest_5falpha_5ffactor_33',['dest_alpha_factor',['../d1/da4/structxl7_1_1graphics_1_1states_1_1BlendState_1_1Desc.html#a9a39f44ba1f88711abcc304e632ca2ae',1,'xl7::graphics::states::BlendState::Desc']]],
   ['dest_5fcolor_5ffactor_34',['dest_color_factor',['../d1/da4/structxl7_1_1graphics_1_1states_1_1BlendState_1_1Desc.html#a663965050eacc919e76080271ad01b18',1,'xl7::graphics::states::BlendState::Desc']]],
