@@ -94,7 +94,7 @@ namespace xl7::graphics::shaders {
      * Searches for the specified constant buffer declaration and returns it if
      * found, NULL otherwise.
      */
-    const ConstantBufferDeclaration* Shader::find_constant_buffer_declaration(cl7::u8string_view constant_buffer_name) const
+    const ConstantBufferDeclaration* Shader::find_constant_buffer_declaration(cl7::astring_view constant_buffer_name) const
     {
         for (const auto& constant_buffer_declaration : _reflection_result.constant_buffer_declarations)
         {
@@ -109,7 +109,7 @@ namespace xl7::graphics::shaders {
      * Searches for the specified constant declaration and returns it along with the
      * associated constant buffer declaration if found, NULL twice otherwise.
      */
-    std::pair<const ConstantBufferDeclaration*, const ConstantDeclaration*> Shader::find_constant_buffer_and_constant_declaration(cl7::u8string_view constant_name) const
+    std::pair<const ConstantBufferDeclaration*, const ConstantDeclaration*> Shader::find_constant_buffer_and_constant_declaration(cl7::astring_view constant_name) const
     {
         for (const auto& constant_buffer_declaration : _reflection_result.constant_buffer_declarations)
         {
@@ -127,7 +127,7 @@ namespace xl7::graphics::shaders {
      * Searches for the specified texture/sampler declaration and returns it if
      * found, NULL otherwise.
      */
-    const TextureSamplerDeclaration* Shader::find_texture_sampler_declaration(cl7::u8string_view texture_sampler_name) const
+    const TextureSamplerDeclaration* Shader::find_texture_sampler_declaration(cl7::astring_view texture_sampler_name) const
     {
         for (const auto& texture_sampler_declaration : _reflection_result.texture_sampler_declarations)
         {
@@ -155,7 +155,7 @@ namespace xl7::graphics::shaders {
     /**
      * Returns the effective name of the entry point for (re)compiling the shader.
      */
-    cl7::u8string Shader::_cascade_entry_point(const CompileOptions& compile_options) const
+    cl7::astring Shader::_cascade_entry_point(const CompileOptions& compile_options) const
     {
         if (!_desc.entry_point.empty())
             return _desc.entry_point;

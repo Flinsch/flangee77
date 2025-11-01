@@ -15,6 +15,7 @@
 
 #include <CoreLabs/profiling.h>
 #include <CoreLabs/logging.h>
+#include <CoreLabs/text/codec.h>
 
 #include <algorithm>
 #include <filesystem>
@@ -119,8 +120,8 @@ namespace helloworld {
         xl7::graphics::shaders::ConstantBuffer::Desc constant_buffer_desc;
         // NOLINTBEGIN(*-use-designated-initializers)
         constant_buffer_desc.layout.constant_declarations = {
-            {u8"VertexOffset", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 3, 1, 0, 12, 12},
-            {u8"PixelBaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 12, 16, 16},
+            {"VertexOffset", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 3, 1, 0, 12, 12},
+            {"PixelBaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 12, 16, 16},
         };
         // NOLINTEND(*-use-designated-initializers)
         
@@ -193,7 +194,7 @@ namespace helloworld {
             for (const auto* cb : constant_buffer_declarations)
             {
                 if (!cb->name.empty())
-                    LOG_TYPE(cb->name + u8"\tcb" + cl7::to_string(cb->index) + u8" (" + cl7::to_string(cb->layout.calculate_size()) + u8")", cl7::logging::LogType::Item);
+                    LOG_TYPE(cl7::text::codec::to_utf8(cb->name) + u8"\tcb" + cl7::to_string(cb->index) + u8" (" + cl7::to_string(cb->layout.calculate_size()) + u8")", cl7::logging::LogType::Item);
 
                 std::vector<const xl7::graphics::shaders::ConstantDeclaration*> constant_declarations;
                 constant_declarations.reserve(cb->layout.constant_declarations.size());
@@ -207,9 +208,9 @@ namespace helloworld {
                 {
                     assert(c->offset % 16 == 0);
                     if (cb->name.empty())
-                        LOG_TYPE(c->name + u8"\tc" + cl7::to_string(c->offset / 16) + u8" (" + cl7::to_string((c->size + 15) / 16) + u8")", cl7::logging::LogType::Item);
+                        LOG_TYPE(cl7::text::codec::to_utf8(c->name) + u8"\tc" + cl7::to_string(c->offset / 16) + u8" (" + cl7::to_string((c->size + 15) / 16) + u8")", cl7::logging::LogType::Item);
                     else
-                        LOG_TYPE(u8"." + c->name + u8"\tc" + cl7::to_string(c->offset / 16) + u8" (" + cl7::to_string((c->size + 15) / 16) + u8")", cl7::logging::LogType::Item);
+                        LOG_TYPE(u8"." + cl7::text::codec::to_utf8(c->name) + u8"\tc" + cl7::to_string(c->offset / 16) + u8" (" + cl7::to_string((c->size + 15) / 16) + u8")", cl7::logging::LogType::Item);
                 } // for each constant "variable"
             } // for each cbuffer
 
@@ -222,7 +223,7 @@ namespace helloworld {
 
             for (const auto* s : texture_sampler_declarations)
             {
-                LOG_TYPE(s->name + u8"\ts" + cl7::to_string(s->index), cl7::logging::LogType::Item);
+                LOG_TYPE(cl7::text::codec::to_utf8(s->name) + u8"\ts" + cl7::to_string(s->index), cl7::logging::LogType::Item);
             } // for each texture/sampler
         }
 

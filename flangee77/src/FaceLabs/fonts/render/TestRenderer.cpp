@@ -69,10 +69,10 @@ namespace fl7::fonts::render {
 
         xl7::graphics::shaders::ConstantBuffer::Desc constant_buffer_desc;
         constant_buffer_desc.layout.constant_declarations = {
-            {.name = u8"ScaledFontSize", .constant_type = xl7::graphics::shaders::ConstantType::Float, .constant_class = xl7::graphics::shaders::ConstantClass::Vector, .row_count = 1, .column_count = 2, .element_count = 1, .offset = 0, .size = 8, .padded_size = 8},
-            {.name = u8"PixelPosition", .constant_type = xl7::graphics::shaders::ConstantType::Float, .constant_class = xl7::graphics::shaders::ConstantClass::Vector, .row_count = 1, .column_count = 2, .element_count = 1, .offset = 8, .size = 8, .padded_size = 8},
-            {.name = u8"InvTargetSize", .constant_type = xl7::graphics::shaders::ConstantType::Float, .constant_class = xl7::graphics::shaders::ConstantClass::Vector, .row_count = 1, .column_count = 2, .element_count = 1, .offset = 16, .size = 8, .padded_size = 8},
-            {.name = u8"Color", .constant_type = xl7::graphics::shaders::ConstantType::Float, .constant_class = xl7::graphics::shaders::ConstantClass::Vector, .row_count = 1, .column_count = 4, .element_count = 1, .offset = 24, .size = 16, .padded_size = 16},
+            {.name = "ScaledFontSize", .constant_type = xl7::graphics::shaders::ConstantType::Float, .constant_class = xl7::graphics::shaders::ConstantClass::Vector, .row_count = 1, .column_count = 2, .element_count = 1, .offset = 0, .size = 8, .padded_size = 8},
+            {.name = "PixelPosition", .constant_type = xl7::graphics::shaders::ConstantType::Float, .constant_class = xl7::graphics::shaders::ConstantClass::Vector, .row_count = 1, .column_count = 2, .element_count = 1, .offset = 8, .size = 8, .padded_size = 8},
+            {.name = "InvTargetSize", .constant_type = xl7::graphics::shaders::ConstantType::Float, .constant_class = xl7::graphics::shaders::ConstantClass::Vector, .row_count = 1, .column_count = 2, .element_count = 1, .offset = 16, .size = 8, .padded_size = 8},
+            {.name = "Color", .constant_type = xl7::graphics::shaders::ConstantType::Float, .constant_class = xl7::graphics::shaders::ConstantClass::Vector, .row_count = 1, .column_count = 4, .element_count = 1, .offset = 24, .size = 16, .padded_size = 16},
         };
 
         auto constant_buffer_id = xl7::graphics::shader_manager()->create_constant_buffer(u8"Test Renderer Constant Buffer", constant_buffer_desc);

@@ -873,17 +873,17 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  compile shaders" )
     {
         ImplType impl_type;
         cl7::u8string filename;
-        cl7::u8string entry_point;
-        cl7::u8string target;
+        cl7::astring entry_point;
+        cl7::astring target;
         xl7::graphics::shaders::ReflectionResult reflection_result;
     } entry;
 
     const std::vector<Entry> container {
-        { ImplType::Direct3D9, u8"shader.hlsl", u8"mainVS", u8"vs_3_0", { { { u8"", 0, { { { u8"WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
-        { ImplType::Direct3D9, u8"shader.hlsl", u8"mainPS", u8"ps_3_0", { { { u8"", 0, { { { u8"BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
+        { ImplType::Direct3D9, u8"shader.hlsl", "mainVS", "vs_3_0", { { { "", 0, { { { "WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
+        { ImplType::Direct3D9, u8"shader.hlsl", "mainPS", "ps_3_0", { { { "", 0, { { { "BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
 #if defined(_MSC_VER)
-        { ImplType::Direct3D11, u8"shader.hlsl", u8"mainVS", u8"vs_5_0", { { { u8"VertexConstants", 0, { { { u8"WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
-        { ImplType::Direct3D11, u8"shader.hlsl", u8"mainPS", u8"ps_5_0", { { { u8"PixelConstants", 0, { { { u8"BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
+        { ImplType::Direct3D11, u8"shader.hlsl", "mainVS", "vs_5_0", { { { "VertexConstants", 0, { { { "WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
+        { ImplType::Direct3D11, u8"shader.hlsl", "mainPS", "ps_5_0", { { { "PixelConstants", 0, { { { "BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
 #endif
     };
 

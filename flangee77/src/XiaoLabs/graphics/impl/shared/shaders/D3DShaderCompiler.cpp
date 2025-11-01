@@ -143,7 +143,7 @@ namespace xl7::graphics::impl::shared::shaders {
      * The file path is also used to resolve any #include directives. If an error
      * occurs, an object with an "unknown" language and empty data is returned.
      */
-    xl7::graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const cl7::u8string& file_path, const xl7::graphics::shaders::CompileOptions& compile_options, const cl7::u8string& entry_point, const cl7::u8string& target)
+    xl7::graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const cl7::u8string& file_path, const xl7::graphics::shaders::CompileOptions& compile_options, const cl7::astring& entry_point, const cl7::astring& target)
     {
         cl7::u8string source_code = Include::read_source_code(file_path);
 
@@ -155,7 +155,7 @@ namespace xl7::graphics::impl::shared::shaders {
      * path is used to resolve any #include directives. If an error occurs, an
      * object with an "unknown" language and empty data is returned.
      */
-    xl7::graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const xl7::graphics::shaders::ShaderCode& hlsl_code, const cl7::u8string& include_path, const xl7::graphics::shaders::CompileOptions& compile_options, const cl7::u8string& entry_point, const cl7::u8string& target)
+    xl7::graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const xl7::graphics::shaders::ShaderCode& hlsl_code, const cl7::u8string& include_path, const xl7::graphics::shaders::CompileOptions& compile_options, const cl7::astring& entry_point, const cl7::astring& target)
     {
         if (hlsl_code.get_language() != xl7::graphics::shaders::ShaderCode::Language::HighLevel)
         {

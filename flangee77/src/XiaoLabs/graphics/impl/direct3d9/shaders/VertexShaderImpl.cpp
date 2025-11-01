@@ -85,8 +85,8 @@ namespace xl7::graphics::impl::direct3d9::shaders {
     bool VertexShaderImpl::_acquire_recompilable_impl(const xl7::graphics::shaders::CodeDataProvider& code_data_provider, xl7::graphics::shaders::ShaderCode& bytecode_out)
     {
         const cl7::Version& version = GraphicsSystem::instance().get_rendering_device()->get_capabilities().shaders.vertex_shader_version;
-        const cl7::u8string target = u8"vs_" + cl7::to_string(version.major) + u8"_" + cl7::to_string(version.minor);
-        const cl7::u8string entry_point = _cascade_entry_point(code_data_provider.get_compile_options());
+        const cl7::astring target = "vs_" + std::to_string(version.major) + "_" + std::to_string(version.minor);
+        const cl7::astring entry_point = _cascade_entry_point(code_data_provider.get_compile_options());
 
         const xl7::graphics::shaders::ShaderCode& hlsl_code = code_data_provider.get_shader_code();
         assert(hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel);

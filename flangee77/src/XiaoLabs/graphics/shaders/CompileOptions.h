@@ -14,15 +14,15 @@ namespace xl7::graphics::shaders {
 struct CompileOptions
 {
 
-    using MacroDefinitions = std::map<cl7::u8string, cl7::u8string>;
+    using MacroDefinitions = std::map<cl7::astring, cl7::astring>;
 
     /** The macro definitions for (re)compiling shaders. */
     MacroDefinitions macro_definitions;
 
     /** The default entry point for (re)compiling vertex shaders. */
-    cl7::u8string default_vertex_entry_point = u8"mainVertex";
+    cl7::astring default_vertex_entry_point = "mainVertex";
     /** The default entry point for (re)compiling pixel shaders. */
-    cl7::u8string default_pixel_entry_point = u8"mainPixel";
+    cl7::astring default_pixel_entry_point = "mainPixel";
 
 }; // struct CompileOptions
 

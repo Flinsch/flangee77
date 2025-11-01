@@ -40,7 +40,7 @@ public:
         /** The language of the (source) code on which the shader is based. */
         ShaderCode::Language language;
         /** The name of the shader entry point (can be empty, especially for precompiled shaders). */
-        cl7::u8string entry_point;
+        cl7::astring entry_point;
     };
 
 
@@ -111,19 +111,19 @@ public:
      * Searches for the specified constant buffer declaration and returns it if
      * found, NULL otherwise.
      */
-    const ConstantBufferDeclaration* find_constant_buffer_declaration(cl7::u8string_view constant_buffer_name) const;
+    const ConstantBufferDeclaration* find_constant_buffer_declaration(cl7::astring_view constant_buffer_name) const;
 
     /**
      * Searches for the specified constant declaration and returns it along with the
      * associated constant buffer declaration if found, NULL twice otherwise.
      */
-    std::pair<const ConstantBufferDeclaration*, const ConstantDeclaration*> find_constant_buffer_and_constant_declaration(cl7::u8string_view constant_name) const;
+    std::pair<const ConstantBufferDeclaration*, const ConstantDeclaration*> find_constant_buffer_and_constant_declaration(cl7::astring_view constant_name) const;
 
     /**
      * Searches for the specified texture/sampler declaration and returns it if
      * found, NULL otherwise.
      */
-    const TextureSamplerDeclaration* find_texture_sampler_declaration(cl7::u8string_view texture_sampler_name) const;
+    const TextureSamplerDeclaration* find_texture_sampler_declaration(cl7::astring_view texture_sampler_name) const;
 
 
 
@@ -136,7 +136,7 @@ protected:
     /**
      * Returns the effective name of the entry point for (re)compiling the shader.
      */
-    cl7::u8string _cascade_entry_point(const CompileOptions& compile_options) const;
+    cl7::astring _cascade_entry_point(const CompileOptions& compile_options) const;
 
     /**
      * Performs a "reflection" on the (compiled) shader bytecode to determine

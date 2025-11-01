@@ -16,7 +16,7 @@ struct ConstantDeclaration
 {
 
     /** The name of the constant. */
-    cl7::u8string name;
+    cl7::astring name;
 
     /** The constant type (bool, int, float). */
     ConstantType constant_type;

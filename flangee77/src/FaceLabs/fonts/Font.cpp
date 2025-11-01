@@ -19,7 +19,6 @@ namespace fl7::fonts {
 
 
 
-
     /**
      * Returns the metrics of the font.
      */

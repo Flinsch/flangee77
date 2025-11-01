@@ -873,7 +873,7 @@ namespace fl7::fonts::detail::ttf {
         const auto next_offset = _glyph_offsets[glyph_index + 1];
 
         if (offset == next_offset)
-            return {{}}; // Empty glyph, but "successful".
+            return {RawGlyph{}}; // Empty glyph, but "successful".
 
         readable.set_read_position(offset);
 
