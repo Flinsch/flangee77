@@ -77,7 +77,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
             if (d3d_shader_buffer_desc.Type != D3D_CT_CBUFFER)
                 continue;
 
-            constant_buffer_declarations_out.emplace_back(xl7::graphics::shaders::ConstantBufferDeclaration{.name = reinterpret_cast<const cl7::achar_t*>(d3d_shader_buffer_desc.Name), .index = cbuffer_index, .layout = {}});
+            constant_buffer_declarations_out.emplace_back(xl7::graphics::shaders::ConstantBufferDeclaration{.name = cl7::astring{d3d_shader_buffer_desc.Name}, .index = cbuffer_index, .layout = {}});
             auto& constant_declarations_out = constant_buffer_declarations_out.back().layout.constant_declarations;
 
             for (unsigned variable_index = 0; variable_index < d3d_shader_buffer_desc.Variables; ++variable_index)
@@ -145,7 +145,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
                 } // switch parameter type
 
                 xl7::graphics::shaders::ConstantDeclaration constant_declaration;
-                constant_declaration.name = reinterpret_cast<const cl7::achar_t*>(d3d_shader_variable_desc.Name);
+                constant_declaration.name = cl7::astring{d3d_shader_variable_desc.Name};
                 constant_declaration.constant_type = constant_type;
                 constant_declaration.constant_class = constant_class;
                 constant_declaration.row_count = d3d_shader_type_desc.Rows;
@@ -175,7 +175,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
                 continue;
 
             xl7::graphics::shaders::TextureSamplerDeclaration texture_sampler_declaration;
-            texture_sampler_declaration.name = reinterpret_cast<const cl7::achar_t*>(d3d_shader_input_bind_desc.Name);
+            texture_sampler_declaration.name = cl7::astring{d3d_shader_input_bind_desc.Name};
             texture_sampler_declaration.index = d3d_shader_input_bind_desc.BindPoint;
             texture_sampler_declaration.element_count = d3d_shader_input_bind_desc.BindCount;
 
