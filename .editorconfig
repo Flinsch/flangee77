@@ -1,7 +1,47 @@
+# This is the top-most EditorConfig file
 root = true
 
+# Global defaults for all files
 [*]
 charset = utf-8
+end_of_line = lf
 indent_style = space
-trim_trailing_whitespace = true
+indent_size = 4
 insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Dotfiles and general config
+[.*]
+indent_size = 2
+
+# CMake files
+[{*.cmake,CMakeLists.txt}]
+indent_size = 2
+
+# C++ source and header files
+[*.{cpp,h}]
+indent_size = 4
+
+# HLSL shader files
+[*.{hlsl,hlsli}]
+indent_size = 4
+
+# Ini, JSON, TOML, XML, YAML, etc. configuration files
+[*.{ini,json,toml,xml,yaml,yml}]
+indent_size = 2
+
+# Markdown files (preserve trailing whitespace, used for line breaks)
+[*.md]
+trim_trailing_whitespace = false
+indent_size = 2
+
+# Shell scripts
+[*.sh]
+end_of_line = lf
+indent_size = 2
+
+# Windows batch files
+[*.bat]
+end_of_line = crlf
+#indent_style = tab
+indent_size = 4

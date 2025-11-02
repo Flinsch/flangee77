@@ -1,19 +1,33 @@
-# Autodetect text files ...
+# Autodetect and normalize line endings for text files
 * text=auto
 
-# ... unless the name matches the following overriding patterns
+# Explicit text files
+*.cmake text eol=lf
+*.cpp text eol=lf
+*.h text eol=lf
+*.hlsl text eol=lf
+*.hlsli text eol=lf
+*.ini text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.txt text eol=lf
+*.xml text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
 
-# Definitively text files
-*.cpp text
-*.h text
-*.hlsl text
-*.hlsli text
-*.json text
-*.md text
-*.txt text
+# Dotfiles and general config
+.* text eol=lf
 
-# Definitively binary files
+# Force LF for Linux-specific scripts etc.
+*.sh text eol=lf
+
+# Force CRLF for Windows-specific scripts etc.
+*.bat text eol=crlf
+
+# Explicit binary files
 *.dll binary
 *.jpg binary
 *.png binary
 *.tga binary
+*.ttf binary
