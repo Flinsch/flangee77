@@ -2,8 +2,8 @@ var searchData=
 [
   ['u8isstream_0',['u8isstream',['../d9/d44/classcl7_1_1u8isstream.html',1,'cl7']]],
   ['u8osstream_1',['u8osstream',['../d3/d63/classcl7_1_1u8osstream.html',1,'cl7']]],
-  ['unescaper_2',['Unescaper',['../df/df1/classdl7_1_1json_1_1util_1_1Unescaper.html',1,'dl7::json::util']]],
-  ['unescapererrorhandler_3',['UnescaperErrorHandler',['../dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler.html',1,'dl7::json::detail']]],
+  ['unescaper_2',['unescaper',['../df/df1/classdl7_1_1json_1_1util_1_1Unescaper.html',1,'dl7::json::util::Unescaper'],['../d1/db6/classdl7_1_1xml_1_1util_1_1Unescaper.html',1,'dl7::xml::util::Unescaper']]],
+  ['unescapererrorhandler_3',['unescapererrorhandler',['../dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler.html',1,'dl7::json::detail::UnescaperErrorHandler'],['../dd/d3a/structdl7_1_1xml_1_1detail_1_1UnescaperErrorHandler.html',1,'dl7::xml::detail::UnescaperErrorHandler']]],
   ['user_4',['user',['../dd/d72/classcl7_1_1system_1_1user.html',1,'cl7::system']]],
   ['utf16codec_5',['Utf16Codec',['../d8/de0/classcl7_1_1text_1_1codec_1_1Utf16Codec.html',1,'cl7::text::codec']]],
   ['utf32codec_6',['Utf32Codec',['../db/dd0/classcl7_1_1text_1_1codec_1_1Utf32Codec.html',1,'cl7::text::codec']]],

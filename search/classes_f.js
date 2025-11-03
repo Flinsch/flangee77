@@ -16,7 +16,8 @@ var searchData=
   ['pointresult_5fdistance_5fsquared_13',['PointResult_distance_squared',['../de/dd3/structml7_1_1detail_1_1distance_1_1PointResult__distance__squared.html',1,'ml7::detail::distance']]],
   ['pointresult_5fpoint_14',['PointResult_point',['../d5/d92/structml7_1_1detail_1_1distance_1_1PointResult__point.html',1,'ml7::detail::distance']]],
   ['pointresult_5ft_15',['PointResult_t',['../db/df0/structml7_1_1detail_1_1distance_1_1PointResult__t.html',1,'ml7::detail::distance']]],
-  ['productionrule_16',['ProductionRule',['../d1/d16/structdl7_1_1syntax_1_1ProductionRule.html',1,'dl7::syntax']]],
-  ['productionrulecollection_17',['ProductionRuleCollection',['../dd/d0c/classdl7_1_1syntax_1_1ProductionRuleCollection.html',1,'dl7::syntax']]],
-  ['profiler_18',['Profiler',['../d8/dd2/classcl7_1_1profiling_1_1Profiler.html',1,'cl7::profiling']]]
+  ['prettyoptions_16',['PrettyOptions',['../de/dfe/structdl7_1_1xml_1_1Format_1_1PrettyOptions.html',1,'dl7::xml::Format']]],
+  ['productionrule_17',['ProductionRule',['../d1/d16/structdl7_1_1syntax_1_1ProductionRule.html',1,'dl7::syntax']]],
+  ['productionrulecollection_18',['ProductionRuleCollection',['../dd/d0c/classdl7_1_1syntax_1_1ProductionRuleCollection.html',1,'dl7::syntax']]],
+  ['profiler_19',['Profiler',['../d8/dd2/classcl7_1_1profiling_1_1Profiler.html',1,'cl7::profiling']]]
 ];

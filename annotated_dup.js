@@ -194,7 +194,12 @@ var annotated_dup =
         [ "detail", "d4/dc2/namespacedl7_1_1xml_1_1detail.html", [
           [ "Builder", "d3/d69/classdl7_1_1xml_1_1detail_1_1Builder.html", "d3/d69/classdl7_1_1xml_1_1detail_1_1Builder" ],
           [ "Generator", "d8/d0a/classdl7_1_1xml_1_1detail_1_1Generator.html", "d8/d0a/classdl7_1_1xml_1_1detail_1_1Generator" ],
-          [ "Lexer", "d9/d9c/classdl7_1_1xml_1_1detail_1_1Lexer.html", "d9/d9c/classdl7_1_1xml_1_1detail_1_1Lexer" ]
+          [ "Lexer", "d9/d9c/classdl7_1_1xml_1_1detail_1_1Lexer.html", "d9/d9c/classdl7_1_1xml_1_1detail_1_1Lexer" ],
+          [ "UnescaperErrorHandler", "dd/d3a/structdl7_1_1xml_1_1detail_1_1UnescaperErrorHandler.html", "dd/d3a/structdl7_1_1xml_1_1detail_1_1UnescaperErrorHandler" ]
+        ] ],
+        [ "util", "d1/d34/namespacedl7_1_1xml_1_1util.html", [
+          [ "Escaper", "dc/dfe/classdl7_1_1xml_1_1util_1_1Escaper.html", "dc/dfe/classdl7_1_1xml_1_1util_1_1Escaper" ],
+          [ "Unescaper", "d1/db6/classdl7_1_1xml_1_1util_1_1Unescaper.html", "d1/db6/classdl7_1_1xml_1_1util_1_1Unescaper" ]
         ] ],
         [ "Attribute", "d5/d23/classdl7_1_1xml_1_1Attribute.html", "d5/d23/classdl7_1_1xml_1_1Attribute" ],
         [ "Document", "de/dd5/classdl7_1_1xml_1_1Document.html", "de/dd5/classdl7_1_1xml_1_1Document" ],

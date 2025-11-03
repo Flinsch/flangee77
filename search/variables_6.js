@@ -11,11 +11,12 @@ var searchData=
   ['font_5faccess_8',['font_access',['../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#a10e6110426cc4cc5eaa25f67dfa0319d',1,'fl7::fonts::render::AbstractRenderer::State']]],
   ['font_5fmetrics_9',['font_metrics',['../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#ae02f6970936d62cacd84731144470e21',1,'fl7::fonts::render::AbstractRenderer::State']]],
   ['font_5fsize_10',['font_size',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a335b86fcd1d24c073d40d33f0b0d669d',1,'fl7::fonts::TextStyle']]],
-  ['force_5fsign_11',['force_sign',['../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html#a169a7c56adcbebf0a8bc3cc43eb7989b',1,'cl7::text::format::IntFormatOptions::force_sign'],['../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html#a9b574666994f94890b8349e83d84db37',1,'cl7::text::format::FloatFormatOptions::force_sign']]],
-  ['format_12',['format',['../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html#a134612333e367f39fc3bf2d275f8b8a3',1,'cl7::text::format::FloatFormatOptions']]],
-  ['frame_13',['frame',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a949e376a57252396a57a3a1c9ae4db09',1,'cl7::profiling::Sample']]],
-  ['frame_5fusecs_14',['frame_usecs',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a916a33e56ad76b2e7995749c8a25647c',1,'cl7::profiling::Sample']]],
-  ['frequency_15',['frequency',['../d5/d80/structcl7_1_1system_1_1CPUID.html#a8168bb8a104eee4f315567c62693095a',1,'cl7::system::CPUID']]],
-  ['front_5fface_5fstenciling_16',['front_face_stenciling',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a855e90a7a23ab304acd97d23d52bf16d',1,'xl7::graphics::states::DepthStencilState::Desc']]],
-  ['function_5fname_17',['function_name',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html#a48bbea20cb7ae5c7a1c00b529ff9a7d8',1,'cl7::logging::LogEntry']]]
+  ['force_5fescape_11',['force_escape',['../db/df3/structdl7_1_1xml_1_1Format.html#a5ac5b916825792080234e9f65391bbfb',1,'dl7::xml::Format::force_escape'],['../d3/d88/structdl7_1_1xml_1_1util_1_1Escaper_1_1Options.html#a2cb6d2fa8386971183203d2455670ca3',1,'dl7::xml::util::Escaper::Options::force_escape']]],
+  ['force_5fsign_12',['force_sign',['../dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html#a169a7c56adcbebf0a8bc3cc43eb7989b',1,'cl7::text::format::IntFormatOptions::force_sign'],['../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html#a9b574666994f94890b8349e83d84db37',1,'cl7::text::format::FloatFormatOptions::force_sign']]],
+  ['format_13',['format',['../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html#a134612333e367f39fc3bf2d275f8b8a3',1,'cl7::text::format::FloatFormatOptions']]],
+  ['frame_14',['frame',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a949e376a57252396a57a3a1c9ae4db09',1,'cl7::profiling::Sample']]],
+  ['frame_5fusecs_15',['frame_usecs',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a916a33e56ad76b2e7995749c8a25647c',1,'cl7::profiling::Sample']]],
+  ['frequency_16',['frequency',['../d5/d80/structcl7_1_1system_1_1CPUID.html#a8168bb8a104eee4f315567c62693095a',1,'cl7::system::CPUID']]],
+  ['front_5fface_5fstenciling_17',['front_face_stenciling',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a855e90a7a23ab304acd97d23d52bf16d',1,'xl7::graphics::states::DepthStencilState::Desc']]],
+  ['function_5fname_18',['function_name',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html#a48bbea20cb7ae5c7a1c00b529ff9a7d8',1,'cl7::logging::LogEntry']]]
 ];

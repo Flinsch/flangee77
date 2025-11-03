@@ -94,6 +94,7 @@ var hierarchy =
       [ "cl7::text::codec::EncodeResult< Tchar >", "d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult.html", null ]
     ] ],
     [ "xl7::graphics::Color", "de/df3/structxl7_1_1graphics_1_1Color.html", null ],
+    [ "dl7::xml::Format::CompactOptions", "d5/de1/structdl7_1_1xml_1_1Format_1_1CompactOptions.html", null ],
     [ "xl7::graphics::shaders::CompileOptions", "de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html", null ],
     [ "xl7::graphics::impl::shared::meshes::ComposedVertexLayout", "d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout.html", null ],
     [ "xl7::Config", "d9/dfb/structxl7_1_1Config.html", null ],
@@ -170,8 +171,12 @@ var hierarchy =
     [ "dl7::json::util::Unescaper::ErrorHandler", "d0/d2a/structdl7_1_1json_1_1util_1_1Unescaper_1_1ErrorHandler.html", [
       [ "dl7::json::detail::UnescaperErrorHandler", "dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler.html", null ]
     ] ],
+    [ "dl7::xml::util::Unescaper::ErrorHandler", "d9/dfd/structdl7_1_1xml_1_1util_1_1Unescaper_1_1ErrorHandler.html", [
+      [ "dl7::xml::detail::UnescaperErrorHandler", "dd/d3a/structdl7_1_1xml_1_1detail_1_1UnescaperErrorHandler.html", null ]
+    ] ],
     [ "cl7::text::codec::ErrorStatus", "d3/dea/structcl7_1_1text_1_1codec_1_1ErrorStatus.html", null ],
     [ "dl7::json::util::Escaper", "d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html", null ],
+    [ "dl7::xml::util::Escaper", "dc/dfe/classdl7_1_1xml_1_1util_1_1Escaper.html", null ],
     [ "std::exception", null, [
       [ "tl7::exceptions::assertion_exception", "d6/db9/structtl7_1_1exceptions_1_1assertion__exception.html", null ]
     ] ],
@@ -298,7 +303,6 @@ var hierarchy =
     [ "cl7::system::MemoryStatus", "d1/d7a/structcl7_1_1system_1_1MemoryStatus.html", null ],
     [ "xl7::graphics::meshes::MeshUtil", "d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil.html", null ],
     [ "dl7::json::Format::MultiLineOptions", "d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html", null ],
-    [ "dl7::xml::Format::MultiLineOptions", "dd/de4/structdl7_1_1xml_1_1Format_1_1MultiLineOptions.html", null ],
     [ "dl7::xml::Node", "d2/d24/classdl7_1_1xml_1_1Node.html", [
       [ "dl7::xml::Element", "de/dc8/classdl7_1_1xml_1_1Element.html", null ],
       [ "dl7::xml::Text", "df/dd2/classdl7_1_1xml_1_1Text.html", null ]
@@ -308,6 +312,7 @@ var hierarchy =
     [ "dl7::Base64::Options", "de/d56/structdl7_1_1Base64_1_1Options.html", null ],
     [ "dl7::json::util::Escaper::Options", "d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html", null ],
     [ "dl7::syntax::Lexer::Options", "dd/d72/structdl7_1_1syntax_1_1Lexer_1_1Options.html", null ],
+    [ "dl7::xml::util::Escaper::Options", "d3/d88/structdl7_1_1xml_1_1util_1_1Escaper_1_1Options.html", null ],
     [ "cl7::ordered_map< Key, T, KeyView, Compare, Allocator >", "dd/d42/classcl7_1_1ordered__map.html", null ],
     [ "xl7::graphics::images::PngImageHandler::PaletteEntry", "d6/d53/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1PaletteEntry.html", null ],
     [ "xl7::graphics::impl::shared::shaders::Include::ParentEntry", "dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html", null ],
@@ -348,6 +353,7 @@ var hierarchy =
     [ "ml7::detail::distance::PointResult_distance_squared< T >", "de/dd3/structml7_1_1detail_1_1distance_1_1PointResult__distance__squared.html", null ],
     [ "ml7::detail::distance::PointResult_point< TVector >", "d5/d92/structml7_1_1detail_1_1distance_1_1PointResult__point.html", null ],
     [ "ml7::detail::distance::PointResult_t< T >", "db/df0/structml7_1_1detail_1_1distance_1_1PointResult__t.html", null ],
+    [ "dl7::xml::Format::PrettyOptions", "de/dfe/structdl7_1_1xml_1_1Format_1_1PrettyOptions.html", null ],
     [ "dl7::syntax::ProductionRule", "d1/d16/structdl7_1_1syntax_1_1ProductionRule.html", null ],
     [ "dl7::syntax::ProductionRuleCollection", "dd/d0c/classdl7_1_1syntax_1_1ProductionRuleCollection.html", null ],
     [ "cl7::profiling::Profiler", "d8/dd2/classcl7_1_1profiling_1_1Profiler.html", null ],
@@ -472,7 +478,6 @@ var hierarchy =
     ] ],
     [ "xl7::graphics::images::PngImageHandler::Signature", "d3/d3e/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Signature.html", null ],
     [ "dl7::json::Format::SingleLineOptions", "df/dd2/structdl7_1_1json_1_1Format_1_1SingleLineOptions.html", null ],
-    [ "dl7::xml::Format::SingleLineOptions", "d0/d12/structdl7_1_1xml_1_1Format_1_1SingleLineOptions.html", null ],
     [ "dl7::syntax::matchers::SingleQuotedStringMatcher", "de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::SingleState< TValue >", "dc/df6/classxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1SingleState.html", null ],
     [ "cl7::creational::SingletonBase", "d9/d10/classcl7_1_1creational_1_1SingletonBase.html", [
@@ -567,6 +572,7 @@ var hierarchy =
     [ "cl7::u8isstream", "d9/d44/classcl7_1_1u8isstream.html", null ],
     [ "cl7::u8osstream", "d3/d63/classcl7_1_1u8osstream.html", null ],
     [ "dl7::json::util::Unescaper", "df/df1/classdl7_1_1json_1_1util_1_1Unescaper.html", null ],
+    [ "dl7::xml::util::Unescaper", "d1/db6/classdl7_1_1xml_1_1util_1_1Unescaper.html", null ],
     [ "cl7::system::user", "dd/d72/classcl7_1_1system_1_1user.html", null ],
     [ "cl7::text::codec::Utf16Codec", "d8/de0/classcl7_1_1text_1_1codec_1_1Utf16Codec.html", null ],
     [ "cl7::text::codec::Utf32Codec", "db/dd0/classcl7_1_1text_1_1codec_1_1Utf32Codec.html", null ],

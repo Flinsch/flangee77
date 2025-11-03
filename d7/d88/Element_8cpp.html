@@ -92,50 +92,72 @@ $(document).ready(function(){initNavTree('d7/d88/Element_8cpp.html','../../'); i
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">Element.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d5/d76/Element_8h_source.html">Element.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d6/d35/Text_8h_source.html">Text.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="../../da/da4/sstream_8h_source.html">CoreLabs/sstream.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../de/df0/utilities_8h_source.html">CoreLabs/utilities.h</a>&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;utility&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Element.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/dc4/Element_8cpp__incl.png" border="0" usemap="#aDataLabs_2xml_2Element_8cpp" alt=""/></div>
 <map name="aDataLabs_2xml_2Element_8cpp" id="aDataLabs_2xml_2Element_8cpp">
-<area shape="rect" title=" " alt="" coords="332,5,529,31"/>
-<area shape="rect" href="../../d5/d76/Element_8h.html" title=" " alt="" coords="439,79,527,104"/>
-<area shape="poly" title=" " alt="" coords="441,29,468,66,464,69,437,33"/>
-<area shape="rect" href="../../d6/d35/Text_8h.html" title=" " alt="" coords="351,79,412,104"/>
-<area shape="poly" title=" " alt="" coords="425,33,399,69,395,66,420,29"/>
-<area shape="rect" href="../../db/d92/Node_8h.html" title=" " alt="" coords="337,152,413,177"/>
-<area shape="poly" title=" " alt="" coords="467,106,405,147,402,142,464,102"/>
-<area shape="rect" href="../../d4/d08/Attribute_8h.html" title=" " alt="" coords="437,152,536,177"/>
-<area shape="poly" title=" " alt="" coords="486,104,488,138,483,139,481,104"/>
-<area shape="rect" title=" " alt="" coords="561,152,623,177"/>
-<area shape="poly" title=" " alt="" coords="502,102,564,142,561,147,499,106"/>
-<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="363,225,498,251"/>
-<area shape="poly" title=" " alt="" coords="386,176,415,213,411,216,382,179"/>
-<area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="202,299,326,324"/>
-<area shape="poly" title=" " alt="" coords="405,253,305,296,303,291,403,248"/>
-<area shape="rect" title=" " alt="" coords="351,299,409,324"/>
-<area shape="poly" title=" " alt="" coords="424,253,398,289,394,286,420,249"/>
-<area shape="rect" title=" " alt="" coords="434,299,531,324"/>
-<area shape="poly" title=" " alt="" coords="441,249,468,286,464,289,437,253"/>
-<area shape="rect" title=" " alt="" coords="556,299,609,324"/>
-<area shape="poly" title=" " alt="" coords="456,248,547,290,545,295,454,253"/>
-<area shape="rect" title=" " alt="" coords="5,372,107,397"/>
-<area shape="poly" title=" " alt="" coords="231,327,104,370,102,365,230,321"/>
-<area shape="rect" title=" " alt="" coords="131,372,200,397"/>
-<area shape="poly" title=" " alt="" coords="250,326,194,366,191,362,247,322"/>
-<area shape="rect" title=" " alt="" coords="224,372,304,397"/>
-<area shape="poly" title=" " alt="" coords="267,324,267,358,261,358,261,324"/>
-<area shape="rect" title=" " alt="" coords="328,372,395,397"/>
-<area shape="poly" title=" " alt="" coords="281,322,336,361,333,366,278,326"/>
-<area shape="rect" title=" " alt="" coords="419,372,496,397"/>
-<area shape="poly" title=" " alt="" coords="296,322,414,365,412,370,294,327"/>
-<area shape="poly" title=" " alt="" coords="480,179,450,216,446,213,475,176"/>
-<area shape="poly" title=" " alt="" coords="383,105,380,139,374,138,378,104"/>
+<area shape="rect" title=" " alt="" coords="282,5,479,31"/>
+<area shape="rect" href="../../d5/d76/Element_8h.html" title=" " alt="" coords="266,79,354,104"/>
+<area shape="poly" title=" " alt="" coords="371,33,333,71,329,67,367,29"/>
+<area shape="rect" href="../../d6/d35/Text_8h.html" title=" " alt="" coords="181,79,242,104"/>
+<area shape="poly" title=" " alt="" coords="354,33,253,76,251,71,352,28"/>
+<area shape="rect" href="../../da/da4/sstream_8h.html" title=" " alt="" coords="5,79,156,104"/>
+<area shape="poly" title=" " alt="" coords="333,33,143,78,142,73,332,28"/>
+<area shape="rect" href="../../de/df0/utilities_8h.html" title=" " alt="" coords="378,79,525,104"/>
+<area shape="poly" title=" " alt="" coords="394,29,432,67,428,71,390,33"/>
+<area shape="rect" title=" " alt="" coords="549,79,634,104"/>
+<area shape="poly" title=" " alt="" coords="415,28,545,72,544,77,414,33"/>
+<area shape="rect" title=" " alt="" coords="659,79,719,104"/>
+<area shape="poly" title=" " alt="" coords="435,28,646,76,645,81,434,33"/>
+<area shape="rect" href="../../db/d92/Node_8h.html" title=" " alt="" coords="152,152,228,177"/>
+<area shape="poly" title=" " alt="" coords="292,106,223,147,220,142,289,102"/>
+<area shape="rect" href="../../d4/d08/Attribute_8h.html" title=" " alt="" coords="253,152,351,177"/>
+<area shape="poly" title=" " alt="" coords="311,105,307,139,302,138,306,104"/>
+<area shape="rect" title=" " alt="" coords="376,152,439,177"/>
+<area shape="poly" title=" " alt="" coords="327,102,382,141,379,146,324,106"/>
+<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="179,225,313,251"/>
+<area shape="poly" title=" " alt="" coords="201,176,231,213,226,216,197,179"/>
+<area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="443,299,567,324"/>
+<area shape="poly" title=" " alt="" coords="288,248,450,292,449,298,287,253"/>
+<area shape="rect" title=" " alt="" coords="297,299,355,324"/>
+<area shape="poly" title=" " alt="" coords="261,249,305,288,301,292,257,253"/>
+<area shape="rect" title=" " alt="" coords="97,299,195,324"/>
+<area shape="poly" title=" " alt="" coords="231,253,175,293,172,288,228,249"/>
+<area shape="rect" title=" " alt="" coords="219,299,273,324"/>
+<area shape="poly" title=" " alt="" coords="249,251,249,285,243,285,243,251"/>
+<area shape="rect" title=" " alt="" coords="246,372,347,397"/>
+<area shape="poly" title=" " alt="" coords="472,327,344,370,343,365,470,321"/>
+<area shape="rect" title=" " alt="" coords="371,372,441,397"/>
+<area shape="poly" title=" " alt="" coords="490,326,435,366,432,362,487,322"/>
+<area shape="rect" title=" " alt="" coords="465,372,545,397"/>
+<area shape="poly" title=" " alt="" coords="507,324,507,358,502,358,502,324"/>
+<area shape="rect" title=" " alt="" coords="569,372,635,397"/>
+<area shape="poly" title=" " alt="" coords="522,322,576,361,573,366,519,326"/>
+<area shape="rect" title=" " alt="" coords="659,372,737,397"/>
+<area shape="poly" title=" " alt="" coords="537,322,655,365,653,370,535,327"/>
+<area shape="poly" title=" " alt="" coords="295,179,266,216,261,213,291,176"/>
+<area shape="poly" title=" " alt="" coords="210,105,200,140,195,138,205,104"/>
+<area shape="poly" title=" " alt="" coords="69,106,56,121,43,140,38,158,43,176,61,189,90,202,165,221,164,226,89,207,58,194,38,179,32,158,39,137,51,118,66,103"/>
+<area shape="rect" title=" " alt="" coords="53,152,127,177"/>
+<area shape="poly" title=" " alt="" coords="85,104,89,138,84,139,80,105"/>
+<area shape="poly" title=" " alt="" coords="484,102,517,121,532,134,544,151,551,168,554,187,549,225,537,260,522,288,517,286,532,258,544,223,549,187,546,170,540,153,528,138,514,125,482,106"/>
+<area shape="poly" title=" " alt="" coords="446,106,424,142,419,139,442,103"/>
+<area shape="rect" title=" " alt="" coords="605,152,692,177"/>
+<area shape="poly" title=" " alt="" coords="484,102,604,145,603,150,482,107"/>
+<area shape="rect" title=" " alt="" coords="463,152,530,177"/>
+<area shape="poly" title=" " alt="" coords="461,103,484,139,480,142,457,106"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -145,6 +167,21 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:da/d33/namespacedl7_1_1xml" id="r_da/d33/namespacedl7_1_1xml"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d33/namespacedl7_1_1xml.html">dl7::xml</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ad36cf15bf3a3efc75fd42b4829ec3585" id="r_ad36cf15bf3a3efc75fd42b4829ec3585"><td class="memTemplParams" colspan="2">template&lt;class Tvector , typename Tnode  = std::conditional_t&lt;std::is_const_v&lt;Tvector&gt;, const Node, Node&gt;&gt; </td></tr>
+<tr class="memitem:ad36cf15bf3a3efc75fd42b4829ec3585"><td class="memTemplItemLeft" align="right" valign="top">static std::vector&lt; Tnode * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d33/namespacedl7_1_1xml.html#ad36cf15bf3a3efc75fd42b4829ec3585">dl7::xml::_find_child_nodes</a> (Tvector &amp;child_nodes)</td></tr>
+<tr class="separator:ad36cf15bf3a3efc75fd42b4829ec3585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ef24c9a8dce0bcca48a994838e27ea2" id="r_a6ef24c9a8dce0bcca48a994838e27ea2"><td class="memTemplParams" colspan="2">template&lt;class Tvector , typename Tnode  = std::conditional_t&lt;std::is_const_v&lt;Tvector&gt;, const Node, Node&gt;&gt; </td></tr>
+<tr class="memitem:a6ef24c9a8dce0bcca48a994838e27ea2"><td class="memTemplItemLeft" align="right" valign="top">static std::vector&lt; Tnode * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d33/namespacedl7_1_1xml.html#a6ef24c9a8dce0bcca48a994838e27ea2">dl7::xml::_find_child_nodes</a> (Tvector &amp;child_nodes, <a class="el" href="../../d2/d24/classdl7_1_1xml_1_1Node.html#a528f38d7a7d914db25c3cfdc05a790d2">Node::Type</a> type)</td></tr>
+<tr class="separator:a6ef24c9a8dce0bcca48a994838e27ea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfb7045709298ec804beb4859badc619" id="r_acfb7045709298ec804beb4859badc619"><td class="memTemplParams" colspan="2">template&lt;class Tvector , typename Telement  = std::conditional_t&lt;std::is_const_v&lt;Tvector&gt;, const Element, Element&gt;&gt; </td></tr>
+<tr class="memitem:acfb7045709298ec804beb4859badc619"><td class="memTemplItemLeft" align="right" valign="top">static std::vector&lt; Telement * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d33/namespacedl7_1_1xml.html#acfb7045709298ec804beb4859badc619">dl7::xml::_find_child_elements</a> (Tvector &amp;child_nodes)</td></tr>
+<tr class="separator:acfb7045709298ec804beb4859badc619"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a149cce4820d61891f1853cbd7f240666" id="r_a149cce4820d61891f1853cbd7f240666"><td class="memTemplParams" colspan="2">template&lt;class Tvector , typename Ttext  = std::conditional_t&lt;std::is_const_v&lt;Tvector&gt;, const Text, Text&gt;&gt; </td></tr>
+<tr class="memitem:a149cce4820d61891f1853cbd7f240666"><td class="memTemplItemLeft" align="right" valign="top">static std::vector&lt; Ttext * &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d33/namespacedl7_1_1xml.html#a149cce4820d61891f1853cbd7f240666">dl7::xml::_find_text_nodes</a> (Tvector &amp;child_nodes)</td></tr>
+<tr class="separator:a149cce4820d61891f1853cbd7f240666"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

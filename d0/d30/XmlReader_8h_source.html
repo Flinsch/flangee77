@@ -103,34 +103,38 @@ $(document).ready(function(){initNavTree('d0/d30/XmlReader_8h_source.html','../.
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define DL7_XML_XMLREADER_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="../../df/def/Document_8h.html">./Document.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="../../da/d5f/WhitespaceHandling_8h.html">./WhitespaceHandling.h</a>&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../da/d33/namespacedl7_1_1xml.html">dl7::xml</a> {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../da/d33/namespacedl7_1_1xml.html">dl7::xml</a> {</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="../../de/d7c/classdl7_1_1xml_1_1XmlReader.html">   15</a></span><span class="keyword">class </span><a class="code hl_class" href="../../de/d7c/classdl7_1_1xml_1_1XmlReader.html">XmlReader</a></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">static</span> <a class="code hl_class" href="../../de/dd5/classdl7_1_1xml_1_1Document.html">Document</a> <a class="code hl_function" href="../../de/d7c/classdl7_1_1xml_1_1XmlReader.html#a0bc278a5835393adbe82fa65d4ea371c">parse</a>(<a class="code hl_typedef" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> source);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}; <span class="comment">// class XmlReader</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../de/d7c/classdl7_1_1xml_1_1XmlReader.html">   16</a></span><span class="keyword">class </span><a class="code hl_class" href="../../de/d7c/classdl7_1_1xml_1_1XmlReader.html">XmlReader</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">static</span> <a class="code hl_class" href="../../de/dd5/classdl7_1_1xml_1_1Document.html">Document</a> <a class="code hl_function" href="../../de/d7c/classdl7_1_1xml_1_1XmlReader.html#a6812343ccb4986dde7b5d9842c7eae4f">parse</a>(<a class="code hl_typedef" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> source, <a class="code hl_enumeration" href="../../da/d33/namespacedl7_1_1xml.html#ab615a53723d3d2f7fbacc39f1eb35d17">WhitespaceHandling</a> whitespace_handling = <a class="code hl_enumvalue" href="../../da/d33/namespacedl7_1_1xml.html#ab615a53723d3d2f7fbacc39f1eb35d17a7a1920d61156abc05a60135aefe8bc67">WhitespaceHandling::Default</a>);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>}; <span class="comment">// class XmlReader</span></div>
 </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>} <span class="comment">// namespace dl7::xml</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#endif </span><span class="comment">// DL7_XML_XMLREADER_H</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>} <span class="comment">// namespace dl7::xml</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif </span><span class="comment">// DL7_XML_XMLREADER_H</span></div>
 <div class="ttc" id="aDocument_8h_html"><div class="ttname"><a href="../../df/def/Document_8h.html">Document.h</a></div></div>
-<div class="ttc" id="aclassdl7_1_1xml_1_1Document_html"><div class="ttname"><a href="../../de/dd5/classdl7_1_1xml_1_1Document.html">dl7::xml::Document</a></div><div class="ttdef"><b>Definition</b> Document.h:13</div></div>
-<div class="ttc" id="aclassdl7_1_1xml_1_1XmlReader_html"><div class="ttname"><a href="../../de/d7c/classdl7_1_1xml_1_1XmlReader.html">dl7::xml::XmlReader</a></div><div class="ttdef"><b>Definition</b> XmlReader.h:16</div></div>
-<div class="ttc" id="aclassdl7_1_1xml_1_1XmlReader_html_a0bc278a5835393adbe82fa65d4ea371c"><div class="ttname"><a href="../../de/d7c/classdl7_1_1xml_1_1XmlReader.html#a0bc278a5835393adbe82fa65d4ea371c">dl7::xml::XmlReader::parse</a></div><div class="ttdeci">static Document parse(cl7::u8string_view source)</div><div class="ttdef"><b>Definition</b> XmlReader.cpp:18</div></div>
+<div class="ttc" id="aWhitespaceHandling_8h_html"><div class="ttname"><a href="../../da/d5f/WhitespaceHandling_8h.html">WhitespaceHandling.h</a></div></div>
+<div class="ttc" id="aclassdl7_1_1xml_1_1Document_html"><div class="ttname"><a href="../../de/dd5/classdl7_1_1xml_1_1Document.html">dl7::xml::Document</a></div><div class="ttdef"><b>Definition</b> Document.h:14</div></div>
+<div class="ttc" id="aclassdl7_1_1xml_1_1XmlReader_html"><div class="ttname"><a href="../../de/d7c/classdl7_1_1xml_1_1XmlReader.html">dl7::xml::XmlReader</a></div><div class="ttdef"><b>Definition</b> XmlReader.h:17</div></div>
+<div class="ttc" id="aclassdl7_1_1xml_1_1XmlReader_html_a6812343ccb4986dde7b5d9842c7eae4f"><div class="ttname"><a href="../../de/d7c/classdl7_1_1xml_1_1XmlReader.html#a6812343ccb4986dde7b5d9842c7eae4f">dl7::xml::XmlReader::parse</a></div><div class="ttdeci">static Document parse(cl7::u8string_view source, WhitespaceHandling whitespace_handling=WhitespaceHandling::Default)</div><div class="ttdef"><b>Definition</b> XmlReader.cpp:18</div></div>
 <div class="ttc" id="anamespacecl7_html_a3f50fdc015f0eb140ce63df6b8a954ec"><div class="ttname"><a href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a></div><div class="ttdeci">std::basic_string_view&lt; u8char_t &gt; u8string_view</div><div class="ttdef"><b>Definition</b> string.h:36</div></div>
 <div class="ttc" id="anamespacedl7_1_1xml_html"><div class="ttname"><a href="../../da/d33/namespacedl7_1_1xml.html">dl7::xml</a></div><div class="ttdef"><b>Definition</b> Attribute.cpp:5</div></div>
+<div class="ttc" id="anamespacedl7_1_1xml_html_ab615a53723d3d2f7fbacc39f1eb35d17"><div class="ttname"><a href="../../da/d33/namespacedl7_1_1xml.html#ab615a53723d3d2f7fbacc39f1eb35d17">dl7::xml::WhitespaceHandling</a></div><div class="ttdeci">WhitespaceHandling</div><div class="ttdef"><b>Definition</b> WhitespaceHandling.h:16</div></div>
+<div class="ttc" id="anamespacedl7_1_1xml_html_ab615a53723d3d2f7fbacc39f1eb35d17a7a1920d61156abc05a60135aefe8bc67"><div class="ttname"><a href="../../da/d33/namespacedl7_1_1xml.html#ab615a53723d3d2f7fbacc39f1eb35d17a7a1920d61156abc05a60135aefe8bc67">dl7::xml::WhitespaceHandling::Default</a></div><div class="ttdeci">@ Default</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

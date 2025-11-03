@@ -8,8 +8,9 @@ var searchData=
   ['pointlist_5',['PointList',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287fa1a18ff71b3df3e362a2489eef4b30003',1,'xl7::graphics::meshes']]],
   ['position_6',['POSITION',['../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html#a8ba8f7d466c9fa95934c53f04900c01ba90b4ba73224408e82ade8a072a3712c1',1,'xl7::graphics::meshes::VertexLayout']]],
   ['positiont_7',['POSITIONT',['../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html#a8ba8f7d466c9fa95934c53f04900c01baedc7618e9d7ae6df09db2be0c125b555',1,'xl7::graphics::meshes::VertexLayout']]],
-  ['preserve_8',['Preserve',['../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ac4ce5eaf77a0e31efdbbe3df2c3209e6a6d2a1af98f2cad1e5ec2dd0a75953919',1,'dl7::syntax::Lexer']]],
+  ['preserve_8',['preserve',['../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ac4ce5eaf77a0e31efdbbe3df2c3209e6a6d2a1af98f2cad1e5ec2dd0a75953919',1,'dl7::syntax::Lexer::Preserve'],['../da/d33/namespacedl7_1_1xml.html#ab615a53723d3d2f7fbacc39f1eb35d17a6d2a1af98f2cad1e5ec2dd0a75953919',1,'dl7::xml::Preserve']]],
   ['presumption_9',['Presumption',['../da/d3a/structtl7_1_1Result.html#abc74a2ae21cd48cdb73884084ad1d692a4823ceacc145cd9d551aeb94aa8435d7',1,'tl7::Result']]],
-  ['psize_10',['PSIZE',['../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html#a8ba8f7d466c9fa95934c53f04900c01bae6bc2366a454188af30c429aec7ccfe3',1,'xl7::graphics::meshes::VertexLayout']]],
-  ['pureusername_11',['PureUserName',['../dd/d72/classcl7_1_1system_1_1user.html#ad7b5e16a9d30b5d8186d896be4abd1f3ac52ba0110d5e37e36d1eab4ab20ba83b',1,'cl7::system::user']]]
+  ['pretty_10',['Pretty',['../db/df3/structdl7_1_1xml_1_1Format.html#a79cbbb2f423475c561be08709a473cdea46f93f25d0dbb9ada04ac822ba055e8c',1,'dl7::xml::Format']]],
+  ['psize_11',['PSIZE',['../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html#a8ba8f7d466c9fa95934c53f04900c01bae6bc2366a454188af30c429aec7ccfe3',1,'xl7::graphics::meshes::VertexLayout']]],
+  ['pureusername_12',['PureUserName',['../dd/d72/classcl7_1_1system_1_1user.html#ad7b5e16a9d30b5d8186d896be4abd1f3ac52ba0110d5e37e36d1eab4ab20ba83b',1,'cl7::system::user']]]
 ];
