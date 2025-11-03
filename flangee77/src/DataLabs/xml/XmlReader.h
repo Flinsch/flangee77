@@ -2,6 +2,7 @@
 #define DL7_XML_XMLREADER_H
 
 #include "./Document.h"
+#include "./WhitespaceHandling.h"
 
 
 
@@ -19,7 +20,7 @@ public:
     /**
      * Parses a UTF-8 encoded XML string and returns a `Document` object.
      */
-    static Document parse(cl7::u8string_view source);
+    static Document parse(cl7::u8string_view source, WhitespaceHandling whitespace_handling = WhitespaceHandling::Default);
 
 }; // class XmlReader
 

@@ -14,7 +14,10 @@ class Text
 
 public:
     Text() noexcept : Node(Type::Text) {}
-    Text(cl7::u8string value, Node* parent_node = nullptr) noexcept : Node(Type::Text, parent_node), _value(std::move(value)) {}
+    Text(cl7::u8string content, Element* parent_element = nullptr) noexcept : Node(Type::Text, parent_element), _content(std::move(content)) {}
+
+    Text(const Text& other, Element* parent_element);
+    Text(Text&& other, Element* parent_element) noexcept;
 
     Text(const Text&) = delete;
     Text& operator=(const Text&) = delete;
@@ -25,15 +28,22 @@ public:
 
 
 
-    const cl7::u8string& get_value() const { return _value; }
+    const cl7::u8string& get_content() const { return _content; }
 
     template <cl7::string_constructible<cl7::u8string> Tstring>
-    void set_value(Tstring&& value) { _value = cl7::u8string(std::forward<Tstring>(value)); }
+    void set_content(Tstring&& content) { _content = cl7::u8string(std::forward<Tstring>(content)); }
+
+
+
+    bool operator==(const Text& other) const noexcept { return _is_equal(other); }
+    bool operator!=(const Text& other) const noexcept = default;
 
 
 
 private:
-    cl7::u8string _value;
+    bool _is_equal(const Text& other) const noexcept { return _content == other._content; }
+
+    cl7::u8string _content;
 
 }; // class Text
 

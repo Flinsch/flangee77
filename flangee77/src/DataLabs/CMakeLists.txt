@@ -60,4 +60,8 @@ target_sources(flangee77
     xml/detail/Builder.cpp
     xml/detail/Generator.cpp
     xml/detail/Lexer.cpp
+    xml/detail/UnescaperErrorHandler.cpp
+
+    xml/util/Escaper.cpp
+    xml/util/Unescaper.cpp
 )

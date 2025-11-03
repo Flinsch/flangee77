@@ -18,29 +18,31 @@ class XmlWriter
 {
 
 public:
-    static constexpr Format::SingleLineOptions DEFAULT_SINGLE_LINE_OPTIONS = {
+    static constexpr Format::CompactOptions DEFAULT_COMPACT_OPTIONS = {
     };
-    static constexpr Format::MultiLineOptions DEFAULT_MULTI_LINE_OPTIONS = {
+    static constexpr Format::PrettyOptions DEFAULT_PRETTY_OPTIONS = {
         .indentation = 2,
-        .line_ending = Format::MultiLineOptions::LineEnding::LF,
-        .add_empty_line = false,
+        .line_ending = Format::PrettyOptions::LineEnding::LF,
+        .add_empty_line = true,
     };
 
-    static constexpr Format DEFAULT_MULTI_LINE_FORMAT = {
-        .style = Format::Style::MultiLine,
-        .single_line_options = DEFAULT_SINGLE_LINE_OPTIONS,
-        .multi_line_options = DEFAULT_MULTI_LINE_OPTIONS,
+    static constexpr Format DEFAULT_PRETTY_FORMAT = {
+        .style = Format::Style::Pretty,
+        .compact_options = DEFAULT_COMPACT_OPTIONS,
+        .pretty_options = DEFAULT_PRETTY_OPTIONS,
+        .force_escape = false,
         .escape_unicode = false,
-        .escape_html = false,
+        .insert_doctype = false,
     };
-    static constexpr Format DEFAULT_SINGLE_LINE_FORMAT = {
-        .style = Format::Style::SingleLine,
-        .single_line_options = DEFAULT_SINGLE_LINE_OPTIONS,
-        .multi_line_options = DEFAULT_MULTI_LINE_OPTIONS,
+    static constexpr Format DEFAULT_COMPACT_FORMAT = {
+        .style = Format::Style::Compact,
+        .compact_options = DEFAULT_COMPACT_OPTIONS,
+        .pretty_options = DEFAULT_PRETTY_OPTIONS,
+        .force_escape = false,
         .escape_unicode = false,
-        .escape_html = false,
+        .insert_doctype = false,
     };
-    static constexpr Format DEFAULT_FORMAT = DEFAULT_MULTI_LINE_FORMAT;
+    static constexpr Format DEFAULT_FORMAT = DEFAULT_PRETTY_FORMAT;
 
 
 

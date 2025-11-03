@@ -9,6 +9,10 @@ namespace dl7::xml {
 
 
 
+class Element;
+
+
+
 class Node
 {
 
@@ -33,17 +37,27 @@ public:
 
 
     Type get_type() const noexcept { return _type; }
+    bool is_element() const noexcept { return _type == Type::Element; }
+    bool is_text() const noexcept { return _type == Type::Text; }
+
+    const Element* get_parent_element() const noexcept { return _parent_element; }
+    Element* get_parent_element() noexcept { return _parent_element; }
+
+
+
+    bool operator==(const Node& other) const noexcept;
+    bool operator!=(const Node& other) const noexcept = default;
 
 
 
 protected:
-    Node(Type type, Node* parent_node = nullptr) noexcept : _type(type), _parent_node(parent_node) {}
+    Node(Type type, Element* parent_element = nullptr) noexcept : _type(type), _parent_element(parent_element) {}
 
 
 
 private:
     Type _type;
-    Node* _parent_node = nullptr;
+    Element* _parent_element = nullptr;
 
 }; // class Node
 

@@ -22,7 +22,10 @@ class Element
 
 public:
     Element() noexcept : Node(Type::Element) {}
-    Element(cl7::u8string name, Node* parent_node = nullptr) noexcept : Node(Type::Element, parent_node), _name(std::move(name)) {}
+    Element(cl7::u8string name, Element* parent_element = nullptr) noexcept : Node(Type::Element, parent_element), _name(std::move(name)) {}
+
+    Element(const Element& other, Element* parent_element);
+    Element(Element&& other, Element* parent_element) noexcept;
 
     Element(const Element&) = delete;
     Element& operator=(const Element&) = delete;
@@ -47,14 +50,85 @@ public:
 
 
 
+    /**
+     * Checks whether an attribute with the specified name exists.
+     */
+    bool has_attribute(cl7::u8string_view name) const;
+
+    /**
+     * Searches for an attribute with the specified name and returns it if found,
+     * otherwise returns NULL. If there are multiple attributes with that name, the
+     * first one is returned.
+     */
+    const Attribute* find_attribute(cl7::u8string_view name) const;
+
+    /**
+     * Searches for an attribute with the specified name and returns it if found,
+     * otherwise returns NULL. If there are multiple attributes with that name, the
+     * first one is returned.
+     */
+    Attribute* find_attribute(cl7::u8string_view name);
+
+    /**
+     * Ensures that an attribute with the specified name is defined and returns it,
+     * after creating it if not found.
+     */
+    Attribute* ensure_attribute(cl7::u8string_view name);
+
+    /**
+     * Ensures that an attribute with the specified name and value is defined and
+     * returns it, after creating it if not found.
+     */
+    Attribute* ensure_attribute(cl7::u8string_view name, cl7::u8string value);
+
+
+
+    /**
+     * Checks whether a child element with the specified name exists.
+     */
+    bool has_child_element(cl7::u8string_view name) const;
+
+    /**
+     * Searches for a child element with the specified name and returns it if found,
+     * otherwise returns NULL. If there are multiple elements with that name, the
+     * first one is returned.
+     */
+    const Element* find_child_element(cl7::u8string_view name) const;
+
+    /**
+     * Searches for a child element with the specified name and returns it if found,
+     * otherwise returns NULL. If there are multiple elements with that name, the
+     * first one is returned.
+     */
+    Element* find_child_element(cl7::u8string_view name);
+
+
+
     /** Returns a "list" of all child nodes. */
-    std::vector<Node*> find_child_nodes() const;
+    std::vector<const Node*> find_child_nodes() const;
     /** Returns a "list" of all child nodes of the specified type. */
-    std::vector<Node*> find_child_nodes(Type type) const;
+    std::vector<const Node*> find_child_nodes(Type type) const;
     /** Returns a "list" of all child elements. */
-    std::vector<Element*> find_child_elements() const;
+    std::vector<const Element*> find_child_elements() const;
     /** Returns a "list" of all text nodes. */
-    std::vector<Text*> find_text_nodes() const;
+    std::vector<const Text*> find_text_nodes() const;
+
+    /** Returns a "list" of all child nodes. */
+    std::vector<Node*> find_child_nodes();
+    /** Returns a "list" of all child nodes of the specified type. */
+    std::vector<Node*> find_child_nodes(Type type);
+    /** Returns a "list" of all child elements. */
+    std::vector<Element*> find_child_elements();
+    /** Returns a "list" of all text nodes. */
+    std::vector<Text*> find_text_nodes();
+
+
+
+    /**
+     * Returns true if this element has no child elements and no textual content;
+     * returns false otherwise.
+     */
+    bool is_empty() const noexcept { return _child_nodes.empty(); }
 
 
 
@@ -83,57 +157,64 @@ public:
 
 
     /**
-     * Appends a new text node with the given value. The new text node is inserted
+     * Appends a new text node with the given content. The new text node is inserted
      * after the specified node (if provided). If no node is specified, the new text
      * node is added as the last child. Returns a pointer to the new text node.
      */
     template <cl7::string_constructible<cl7::u8string> Tstring>
-    Text* append_text(Tstring&& value, const Node* insert_after = nullptr)
+    Text* append_text(Tstring&& content, const Node* insert_after = nullptr)
     {
-        return _append_text(cl7::u8string(std::forward<Tstring>(value)), insert_after);
+        return _append_text(cl7::u8string(std::forward<Tstring>(content)), insert_after);
     }
 
     /**
-     * Prepends a new text node with the given value. The new text node is inserted
+     * Prepends a new text node with the given content. The new text node is inserted
      * before the specified node (if provided). If no node is specified, the new text
      * node is added as the first child. Returns a pointer to the new text node.
      */
     template <cl7::string_constructible<cl7::u8string> Tstring>
-    Text* prepend_text(Tstring&& value, const Node* insert_before = nullptr)
+    Text* prepend_text(Tstring&& content, const Node* insert_before = nullptr)
     {
-        return _prepend_text(cl7::u8string(std::forward<Tstring>(value)), insert_before);
+        return _prepend_text(cl7::u8string(std::forward<Tstring>(content)), insert_before);
     }
 
 
 
     /**
-     * Returns the contained text of this element: the values of all text nodes
-     * concatenated with a space between each.
+     * Computes and returns the textual content of this element: all text node
+     * contents concatenated without any whitespace between each.
      */
-    cl7::u8string get_value() const;
+    cl7::u8string concatenate_text_content() const;
 
     /**
-     * Sets the textual value of this element. This removes all existing text nodes
-     * and appends a new text node to the child nodes.
+     * Sets the textual content of this element. This removes all existing text
+     * nodes and appends a new text node with the specified content.
      */
     template <cl7::string_constructible<cl7::u8string> Tstring>
-    void set_value(Tstring&& value) { _set_value(cl7::u8string(std::forward<Tstring>(value))); }
+    void set_text_content(Tstring&& content) { _set_text_content(cl7::u8string(std::forward<Tstring>(content))); }
+
+
+
+    bool operator==(const Element& other) const noexcept { return _is_equal(other); }
+    bool operator!=(const Element& other) const noexcept = default;
 
 
 
 private:
-    void _set_value(cl7::u8string&& value);
+    void _set_text_content(cl7::u8string&& content);
 
     Element* _append_element(cl7::u8string&& name, const Node* insert_after);
     Element* _prepend_element(cl7::u8string&& name, const Node* insert_before);
 
-    Text* _append_text(cl7::u8string&& value, const Node* insert_after);
-    Text* _prepend_text(cl7::u8string&& value, const Node* insert_before);
+    Text* _append_text(cl7::u8string&& content, const Node* insert_after);
+    Text* _prepend_text(cl7::u8string&& content, const Node* insert_before);
 
     void _append_node(std::unique_ptr<Node>&& node_ptr, const Node* insert_after);
     void _prepend_node(std::unique_ptr<Node>&& node_ptr, const Node* insert_before);
 
     std::vector<std::unique_ptr<Node>>::iterator _find_node(const Node* node);
+
+    bool _is_equal(const Element& other) const noexcept;
 
     cl7::u8string _name;
     std::vector<Attribute> _attributes;

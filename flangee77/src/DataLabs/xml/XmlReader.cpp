@@ -15,7 +15,7 @@ namespace dl7::xml {
     /**
      * Parses a UTF-8 encoded XML string and returns a `Document` object.
      */
-    Document XmlReader::parse(cl7::u8string_view source)
+    Document XmlReader::parse(cl7::u8string_view source, WhitespaceHandling whitespace_handling)
     {
         syntax::SourceAwareDiagnostics diagnostics{source};
 
@@ -24,7 +24,7 @@ namespace dl7::xml {
 
         syntax::LexingTokenReader token_reader{&lexer};
 
-        detail::Builder builder{&diagnostics};
+        detail::Builder builder{&diagnostics, whitespace_handling};
         auto document = builder.build(token_reader);
 
         if (!document)

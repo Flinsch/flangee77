@@ -15,6 +15,7 @@ Checks: >
   -bugprone-crtp-constructor-accessibility,
   -bugprone-easily-swappable-parameters,
   -bugprone-empty-catch,
+  -bugprone-inc-dec-in-conditions,
   -bugprone-macro-parentheses,
   -bugprone-switch-missing-default-case,
 

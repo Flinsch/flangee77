@@ -11,17 +11,17 @@ struct Format
 {
     enum struct Style : unsigned
     {
-        /** Force single-line output. */
-        SingleLine = 0,
+        /** Force compact (ideally single-line) output. */
+        Compact = 0,
         /** Whether to pretty-print the output (multi-line, indented). */
-        MultiLine = 1,
+        Pretty = 1,
     };
 
-    struct SingleLineOptions
+    struct CompactOptions
     {
     };
 
-    struct MultiLineOptions
+    struct PrettyOptions
     {
         enum struct LineEnding
         {
@@ -41,16 +41,18 @@ struct Format
         bool add_empty_line = false;
     };
 
-    /** Single-line or multi-line style? */
-    Style style = Style::MultiLine;
+    /** Compact (ideally single-line) or "pretty" multi-line style? */
+    Style style = Style::Pretty;
     /** The specific options for the single-line style. */
-    SingleLineOptions single_line_options;
+    CompactOptions compact_options;
     /** The specific options for the multi-line style. */
-    MultiLineOptions multi_line_options;
-    /** Whether to escape non-ASCII characters as hexadecimal UTF-16 code units and/or surrogate pairs (`\uXXXX` format). */
+    PrettyOptions pretty_options;
+    /** Whether to always escape all offending characters (i.e., `&`, `<`, `>`, `"`, `'`), even if not strictly necessary in a given context. */
+    bool force_escape = false;
+    /** Whether to escape non-ASCII characters as character references (`&#[0-9]+;` or `&#x[0-9a-fA-F]+;` format). */
     bool escape_unicode = false;
-    /** Whether to additionally escape HTML-specific special characters (e.g., ``, ``, ``, ``, etc.) in text and attributes beyond standard XML escaping. */
-    bool escape_html = false;
+    /** Whether to insert a DOCTYPE declaration. */
+    bool insert_doctype = false;
 }; // struct Format
 
 

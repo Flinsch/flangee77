@@ -14,7 +14,7 @@ class Attribute
 
 public:
     Attribute() noexcept = default;
-    explicit Attribute(cl7::u8string name, cl7::u8string string);
+    explicit Attribute(cl7::u8string name, cl7::u8string value);
 
     void swap(Attribute& other) noexcept;
 
@@ -43,6 +43,11 @@ public:
     /** Sets the string value of this attribute. */
     template <cl7::string_constructible<cl7::u8string> Tstring>
     void set_value(Tstring&& value) { _value = cl7::u8string(std::forward<Tstring>(value)); }
+
+
+
+    bool operator==(const Attribute& other) const noexcept = default;
+    bool operator!=(const Attribute& other) const noexcept = default;
 
 
 
