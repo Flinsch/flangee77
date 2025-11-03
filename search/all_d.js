@@ -2,7 +2,7 @@ var searchData=
 [
   ['m_0',['m',['../d7/dea/structml7_1_1Matrix4x4.html#aa75fc3332036085a9e2871e9299cff34',1,'ml7::Matrix4x4::m'],['../d8/dd9/structml7_1_1Matrix3x4.html#a3159f37abf903895daccc3954d9324be',1,'ml7::Matrix3x4::m'],['../d6/d14/structml7_1_1Matrix3x3.html#a285f3d0e25f9c9f4711bfad26198ac28',1,'ml7::Matrix3x3::m'],['../da/d4c/structml7_1_1Matrix2x3.html#af880dc0fc6fee25d6066e188c2f96f02',1,'ml7::Matrix2x3::m'],['../db/d6e/structml7_1_1Matrix2x2.html#adbb02b8a3da32f54cb2c68cd8fd73267',1,'ml7::Matrix2x2::m']]],
   ['macro_5fdefinitions_1',['macro_definitions',['../de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html#a748c1a5ea6d3a2edc20789a1533a4b5a',1,'xl7::graphics::shaders::CompileOptions']]],
-  ['macrodefinitions_2',['MacroDefinitions',['../de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html#a18c67957f513807f22cb5151f9d95cc8',1,'xl7::graphics::shaders::CompileOptions']]],
+  ['macrodefinitions_2',['MacroDefinitions',['../de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html#a25d4987b93fa73f531c8c72d0afd649a',1,'xl7::graphics::shaders::CompileOptions']]],
   ['macros_2eh_3',['macros.h',['../de/d3c/macros_8h.html',1,'']]],
   ['mag_5ffilter_5ftype_4',['mag_filter_type',['../d2/dcd/structxl7_1_1graphics_1_1states_1_1SamplerState_1_1Desc.html#a79d234061ed64b53e72de43397fe53ed',1,'xl7::graphics::states::SamplerState::Desc']]],
   ['magenta_5',['magenta',['../de/df3/structxl7_1_1graphics_1_1Color.html#abb2fb37f664edc844cf05eba11c7f9fe',1,'xl7::graphics::Color::MAGENTA'],['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a0f62bd7bdea7467a7f1e8ba33c7a4e67',1,'tl7::reporting::Magenta']]],
