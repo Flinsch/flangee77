@@ -111,7 +111,7 @@ private:
      * symbol ID and the character length of the recognized lexeme of the first/next
      * token at the very beginning of the source text.
      */
-    virtual std::pair<SymbolID, size_t> _recognize(cl7::u8string_view source) = 0;
+    virtual std::pair<SymbolId, size_t> _recognize(cl7::u8string_view source) = 0;
 
 
 

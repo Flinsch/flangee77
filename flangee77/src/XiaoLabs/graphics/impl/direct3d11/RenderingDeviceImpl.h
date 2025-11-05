@@ -69,13 +69,13 @@ public:
      * Tries to find actual Direct3D 11 constant buffers for the specified shader,
      * and otherwise creates some.
      */
-    std::span<shaders::D3DConstantBufferWrapper*> _find_or_create_d3d_constant_buffers(resources::ResourceID shader_id);
+    std::span<shaders::D3DConstantBufferWrapper*> _find_or_create_d3d_constant_buffers(resources::ResourceId shader_id);
 
     /**
      * Releases the actual Direct3D 11 constant buffers associated with the
      * specified shader.
      */
-    void _release_d3d_constant_buffers(resources::ResourceID shader_id);
+    void _release_d3d_constant_buffers(resources::ResourceId shader_id);
 
 
 
@@ -204,7 +204,7 @@ private:
     std::unordered_map<shared::meshes::ComposedVertexLayout, wrl::ComPtr<ID3D11InputLayout>> _d3d_input_layouts_by_layout;
 
     std::vector<std::unique_ptr<shaders::D3DConstantBufferWrapper>> _d3d_constant_buffer_registry;
-    std::unordered_map<resources::ResourceID, std::vector<shaders::D3DConstantBufferWrapper*>> _d3d_constant_buffers_by_shader_id;
+    std::unordered_map<resources::ResourceId, std::vector<shaders::D3DConstantBufferWrapper*>> _d3d_constant_buffers_by_shader_id;
 
 }; // class RenderingDeviceImpl
 

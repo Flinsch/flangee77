@@ -42,7 +42,7 @@ public:
      * resource manager.
      * Time complexity: constant.
      */
-    bool contains_resource(ResourceID id) const;
+    bool contains_resource(ResourceId id) const;
 
     /**
      * Checks whether a resource with the given identifier is contained in this
@@ -63,7 +63,7 @@ public:
      * Returns the resource of the given ID.
      * Time complexity: constant.
      */
-    Resource* find_resource(ResourceID id) const;
+    Resource* find_resource(ResourceId id) const;
 
     /**
      * Returns the resource of the given identifier.
@@ -92,7 +92,7 @@ public:
      */
     template <class TResource>
         requires(std::is_base_of_v<Resource, TResource>)
-    TResource* find_resource(ResourceID id) const
+    TResource* find_resource(ResourceId id) const
     {
         Resource* resource = find_resource(id);
         assert(static_cast<TResource*>(resource) == dynamic_cast<TResource*>(resource));
@@ -127,7 +127,7 @@ public:
      * manager).
      * Time complexity: constant.
      */
-    bool release_resource(ResourceID id);
+    bool release_resource(ResourceId id);
 
     /**
      * Releases the specified resource and invalidates the given ID. If the
@@ -135,7 +135,7 @@ public:
      * (and removed from this resource manager).
      * Time complexity: constant.
      */
-    bool release_resource_and_invalidate(ResourceID& id);
+    bool release_resource_and_invalidate(ResourceId& id);
 
     /**
      * Releases the specified resource. If its reference count reaches zero, the
@@ -168,25 +168,25 @@ protected:
     /**
      * Generates and returns the next resource ID to use when adding a new resource.
      */
-    ResourceID _next_id() const;
+    ResourceId _next_id() const;
 
     /**
      * Adds the given resource to this resource manager (and returns the ID of the
      * resource), but only if it can be acquired in this process. Returns an invalid
      * ID otherwise.
      */
-    ResourceID _try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider);
+    ResourceId _try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider);
 
     /**
      * Adds the given resource to this resource manager (and returns the ID of the
      * resource), but only if it can be acquired in this process. Returns an invalid
      * ID otherwise.
      */
-    template <class TResourceID>
-        requires(std::is_base_of_v<ResourceID, TResourceID>)
-    TResourceID _try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider)
+    template <class TResourceId>
+        requires(std::is_base_of_v<ResourceId, TResourceId>)
+    TResourceId _try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider)
     {
-        return id_cast<TResourceID>(_try_acquire_and_add_resource(std::move(resource_ptr), data_provider));
+        return id_cast<TResourceId>(_try_acquire_and_add_resource(std::move(resource_ptr), data_provider));
     }
 
 
@@ -201,7 +201,7 @@ protected:
 private:
     struct ResourceEntry
     {
-        ResourceID id;
+        ResourceId id;
         ResourcePtr ptr;
     };
 
@@ -212,7 +212,7 @@ private:
      * request/acquire the resource. This must have happened successfully before.
      * Returns the ID of the resource.
      */
-    ResourceID _add_resource(ResourcePtr resource_ptr);
+    ResourceId _add_resource(ResourcePtr resource_ptr);
 
 
 
@@ -225,7 +225,7 @@ private:
      * A lookup table that maps a given resource identifier to the corresponding
      * resource ID.
      */
-    std::unordered_map<cl7::u8string_view, ResourceID> _resource_lookup;
+    std::unordered_map<cl7::u8string_view, ResourceId> _resource_lookup;
 
     /**
      * A "list" of indices that mark free entries in the "linear list".

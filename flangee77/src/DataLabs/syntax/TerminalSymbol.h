@@ -1,7 +1,7 @@
 #ifndef DL7_SYNTAX_TERMINALSYMBOL_H
 #define DL7_SYNTAX_TERMINALSYMBOL_H
 
-#include "./SymbolID.h"
+#include "./SymbolId.h"
 
 #include <CoreLabs/string.h>
 
@@ -20,9 +20,9 @@ struct TerminalSymbol
 {
 
     /** The terminal symbol ID. */
-    SymbolID id;
+    SymbolId id;
 
-    TerminalSymbol(SymbolID id);
+    TerminalSymbol(SymbolId id);
     virtual ~TerminalSymbol() = default;
 
     /** Returns true if the symbol corresponds to a fixed string, false otherwise. */
@@ -45,7 +45,7 @@ struct LiteralSymbol
     /** The static string literal of the symbol. */
     cl7::u8string literal;
 
-    LiteralSymbol(SymbolID id, cl7::u8string_view literal);
+    LiteralSymbol(SymbolId id, cl7::u8string_view literal);
     ~LiteralSymbol() override = default;
 
     /** Always returns true since this is a literal symbol. */
@@ -66,7 +66,7 @@ struct NonLiteralSymbol
     : public TerminalSymbol
 {
 
-    NonLiteralSymbol(SymbolID id);
+    NonLiteralSymbol(SymbolId id);
     ~NonLiteralSymbol() override = default;
 
     /** Always returns false since this is a non-literal symbol. */
@@ -95,8 +95,8 @@ struct PatternSymbol
     /** The regular expression object to be used for matching. */
     std::regex regex;
 
-    PatternSymbol(SymbolID id, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
-    PatternSymbol(SymbolID id, cl7::u8string_view literal_prefix, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
+    PatternSymbol(SymbolId id, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
+    PatternSymbol(SymbolId id, cl7::u8string_view literal_prefix, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
     ~PatternSymbol() override = default;
 
     /** Attempts to match the pattern against the beginning of the source text. */
@@ -133,7 +133,7 @@ struct CustomSymbol
     /** A user-defined function or object that performs the custom matching logic. */
     PrefixMatcher matcher;
 
-    CustomSymbol(SymbolID id, PrefixMatcher matcher)
+    CustomSymbol(SymbolId id, PrefixMatcher matcher)
         : NonLiteralSymbol(id)
         , matcher(matcher)
     {}

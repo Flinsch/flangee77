@@ -40,7 +40,7 @@ public:
      */
     template <class TTerminalSymbol, class... Args>
         requires(std::derived_from<TTerminalSymbol, TerminalSymbol>)
-    void add(SymbolID id, Args&&... args)
+    void add(SymbolId id, Args&&... args)
     {
         add(std::make_unique<TTerminalSymbol>(id, std::forward<Args>(args)...));
     }
@@ -48,23 +48,23 @@ public:
     /**
      * Adds a literal terminal symbol to the collection.
      */
-    void add_literal(SymbolID id, cl7::u8string_view literal);
+    void add_literal(SymbolId id, cl7::u8string_view literal);
 
     /**
      * Adds a pattern-based terminal symbol to the collection.
      */
-    void add_pattern(SymbolID id, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
+    void add_pattern(SymbolId id, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
 
     /**
      * Adds a pattern-based terminal symbol with a literal prefix for optimization.
      */
-    void add_pattern(SymbolID id, cl7::u8string_view literal_prefix, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
+    void add_pattern(SymbolId id, cl7::u8string_view literal_prefix, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options = std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags = std::regex_constants::match_default);
 
     /**
      * Adds a custom terminal symbol using a user-defined matching function.
      */
     template <PrefixMatcher TPrefixMatcher>
-    void add_custom(SymbolID id, CustomSymbol<TPrefixMatcher>::PrefixMatcher matcher)
+    void add_custom(SymbolId id, CustomSymbol<TPrefixMatcher>::PrefixMatcher matcher)
     {
         add(std::make_unique<CustomSymbol<TPrefixMatcher>>(id, matcher));
     }
@@ -73,7 +73,7 @@ public:
      * Adds a custom terminal symbol using a user-defined matching function.
      */
     template <PrefixMatcher TPrefixMatcher>
-    void add_custom(SymbolID id, TPrefixMatcher matcher)
+    void add_custom(SymbolId id, TPrefixMatcher matcher)
     {
         add(std::make_unique<CustomSymbol<TPrefixMatcher>>(id, matcher));
     }
@@ -91,7 +91,7 @@ public:
     /**
      * Checks whether a terminal symbol with the given ID is defined in the collection.
      */
-    bool is_defined(SymbolID id) const;
+    bool is_defined(SymbolId id) const;
 
 
 

@@ -223,7 +223,7 @@ private:
     /**
      * The constant buffer mappings cached so far by constant buffer ID.
      */
-    mutable std::unordered_map<resources::ResourceID, ConstantBufferMapping> _constant_buffer_mappings_by_constant_buffer_id;
+    mutable std::unordered_map<resources::ResourceId, ConstantBufferMapping> _constant_buffer_mappings_by_constant_buffer_id;
 
 }; // class Shader
 

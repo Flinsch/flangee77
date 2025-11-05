@@ -1,7 +1,7 @@
 #ifndef XL7_RESOURCES_RESOURCE_H
 #define XL7_RESOURCES_RESOURCE_H
 
-#include "./ResourceID.h"
+#include "./ResourceId.h"
 #include "./ResourceUsage.h"
 #include "./DefaultDataProvider.h"
 
@@ -38,7 +38,7 @@ public:
         /** The owning manager of the resource to create (the manager that creates the resource). */
         ResourceManager* manager;
         /** The (new) ID of the resource to create. */
-        ResourceID id;
+        ResourceId id;
         /** The textual identifier of the resource to create (can be empty). */
         cl7::u8string_view identifier;
         /** The descriptor of the resource to create. */
@@ -117,13 +117,13 @@ public:
     /**
      * Returns the ID of this resource.
      */
-    ResourceID get_id() const { return _id; }
+    ResourceId get_id() const { return _id; }
 
     /**
      * Returns the ID of this resource.
      */
-    template <class TResourceID>
-    TResourceID get_id() const { return id_cast<TResourceID>(_id); }
+    template <class TResourceId>
+    TResourceId get_id() const { return id_cast<TResourceId>(_id); }
 
     /**
      * Returns the identifier of this resource (if specified, empty otherwise).
@@ -155,7 +155,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    Resource(ResourceManager* manager, ResourceID id, cl7::u8string_view identifier);
+    Resource(ResourceManager* manager, ResourceId id, cl7::u8string_view identifier);
 
     template <class TDesc>
     Resource(const CreateParams<TDesc>& params)
@@ -279,7 +279,7 @@ private:
     /**
      * The ID of this resource.
      */
-    const ResourceID _id;
+    const ResourceId _id;
 
     /**
      * The textual identifier of this resource (if specified, empty otherwise).

@@ -13,12 +13,12 @@ namespace dl7::syntax {
  * 0 is reserved for the "EOF" symbol. Any negative value indicates an unrecognized
  * character or an invalid token. Regular custom IDs can have any positive value.
  */
-using SymbolID = signed;
+using SymbolId = signed;
 
 
 
-static constexpr SymbolID EOF_SYMBOL_ID = static_cast<SymbolID>(0);
-//static constexpr SymbolID INVALID_SYMBOL_ID = static_cast<SymbolID>(-1);
+static constexpr SymbolId EOF_SYMBOL_ID = static_cast<SymbolId>(0);
+//static constexpr SymbolId INVALID_SYMBOL_ID = static_cast<SymbolId>(-1);
 
 
 

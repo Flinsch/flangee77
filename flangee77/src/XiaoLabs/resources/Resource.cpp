@@ -67,7 +67,7 @@ namespace xl7::resources {
     /**
      * Explicit constructor.
      */
-    Resource::Resource(ResourceManager* manager, ResourceID id, cl7::u8string_view identifier)
+    Resource::Resource(ResourceManager* manager, ResourceId id, cl7::u8string_view identifier)
         : _manager(manager)
         , _id(id)
         , _identifier(identifier)

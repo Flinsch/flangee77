@@ -35,7 +35,7 @@ public:
      * Returns the ID of the symbol of the current token without advancing the
      * reader.
      */
-    SymbolID peek_symbol_id() const;
+    SymbolId peek_symbol_id() const;
 
     /**
      * Returns the current token's lexeme without advancing the reader.
@@ -59,7 +59,7 @@ public:
     /**
      * Returns true if the current token's symbol ID matches the given one.
      */
-    bool check_symbol_id(SymbolID symbol_id) const;
+    bool check_symbol_id(SymbolId symbol_id) const;
 
     /**
      * Returns true if the current token's lexeme matches the given one.
@@ -83,13 +83,13 @@ public:
      * Advances to the next token if the current token's symbol ID matches the given
      * one. Returns true if advanced, false otherwise.
      */
-    bool skip_symbol_id(SymbolID symbol_id);
+    bool skip_symbol_id(SymbolId symbol_id);
 
     /**
      * Advances past all consecutive tokens whose symbol ID matches the given one.
      * Returns true if at least one token was skipped, false otherwise.
      */
-    bool skip_while_symbol_id(SymbolID symbol_id);
+    bool skip_while_symbol_id(SymbolId symbol_id);
 
     /**
      * Advances to the next token if the current token's lexeme matches the
@@ -123,7 +123,7 @@ public:
      * Returns true if a token with the specified symbol ID was found, false
      * otherwise (i.e., EOF was reached).
      */
-    bool skip_to_symbol_id(SymbolID symbol_id);
+    bool skip_to_symbol_id(SymbolId symbol_id);
 
     /**
      * Skips all tokens until a token with the given symbol ID is found, and then
@@ -137,7 +137,7 @@ public:
      * Returns true if a token with the specified symbol ID was found, false
      * otherwise (i.e., EOF was reached).
      */
-    bool skip_past_symbol_id(SymbolID symbol_id);
+    bool skip_past_symbol_id(SymbolId symbol_id);
 
 
 

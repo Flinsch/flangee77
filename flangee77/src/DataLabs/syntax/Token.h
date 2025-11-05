@@ -18,7 +18,7 @@ struct Token
 {
 
     /** The terminal symbol ID of the token. */
-    SymbolID symbol_id;
+    SymbolId symbol_id;
 
     /** The piece of the source text that matches the terminal symbol definition. */
     cl7::u8string_view lexeme;

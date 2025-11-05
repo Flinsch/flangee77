@@ -145,7 +145,7 @@ namespace xl7::graphics::impl::direct3d11 {
      * Tries to find actual Direct3D 11 constant buffers for the specified shader,
      * and otherwise creates some.
      */
-    std::span<shaders::D3DConstantBufferWrapper*> RenderingDeviceImpl::_find_or_create_d3d_constant_buffers(resources::ResourceID shader_id)
+    std::span<shaders::D3DConstantBufferWrapper*> RenderingDeviceImpl::_find_or_create_d3d_constant_buffers(resources::ResourceId shader_id)
     {
         auto it = _d3d_constant_buffers_by_shader_id.find(shader_id);
         if (it != _d3d_constant_buffers_by_shader_id.end())
@@ -180,7 +180,7 @@ namespace xl7::graphics::impl::direct3d11 {
      * Releases the actual Direct3D 11 constant buffers associated with the
      * specified shader.
      */
-    void RenderingDeviceImpl::_release_d3d_constant_buffers(resources::ResourceID shader_id)
+    void RenderingDeviceImpl::_release_d3d_constant_buffers(resources::ResourceId shader_id)
     {
         auto it = _d3d_constant_buffers_by_shader_id.find(shader_id);
         if (it == _d3d_constant_buffers_by_shader_id.end())
@@ -569,7 +569,7 @@ namespace xl7::graphics::impl::direct3d11 {
      */
     bool RenderingDeviceImpl::_check_device_lost_impl()
     {
-        
+
 
         return false;
     }
@@ -580,7 +580,7 @@ namespace xl7::graphics::impl::direct3d11 {
      */
     bool RenderingDeviceImpl::_handle_device_lost_impl()
     {
-        
+
 
         return true;
     }

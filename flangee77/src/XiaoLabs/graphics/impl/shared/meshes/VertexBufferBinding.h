@@ -12,7 +12,7 @@ namespace xl7::graphics::impl::shared::meshes {
 struct VertexBufferBinding
 {
 
-    resources::ResourceID vertex_buffer_ids[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS] = {};
+    resources::ResourceId vertex_buffer_ids[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS] = {};
     unsigned stream_count = 0;
 
 

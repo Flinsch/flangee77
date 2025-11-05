@@ -1,7 +1,7 @@
 #ifndef DL7_SYNTAX_VOCABULARY_H
 #define DL7_SYNTAX_VOCABULARY_H
 
-#include "./SymbolID.h"
+#include "./SymbolId.h"
 
 #include <CoreLabs/string.h>
 
@@ -24,16 +24,16 @@ public:
     /**
      * Adds the name of a symbol to the vocabulary.
      */
-    void add_symbol(SymbolID symbol_id, cl7::u8string_view symbol_name);
+    void add_symbol(SymbolId symbol_id, cl7::u8string_view symbol_name);
 
     /**
      * Searches for the associated name of the specified symbol and returns it
      * (or an empty string if not found).
      */
-    cl7::u8string_view get_symbol_name(SymbolID symbol_id) const;
+    cl7::u8string_view get_symbol_name(SymbolId symbol_id) const;
 
 private:
-    std::unordered_map<SymbolID, cl7::u8string> _names_by_id;
+    std::unordered_map<SymbolId, cl7::u8string> _names_by_id;
 
 }; // class Vocabulary
 

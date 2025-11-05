@@ -9,15 +9,15 @@ namespace xl7::resources {
 
 
 
-class ResourceID;
+class ResourceId;
 
-#define XL7_DECLARE_RESOURCE_ID()           class ID : public xl7::resources::ResourceID    { using TBaseID = xl7::resources::ResourceID; using TBaseID::TBaseID; }; ID get_id() const { return xl7::resources::Resource::get_id<ID>(); }
-#define XL7_DERIVE_RESOURCE_ID(TBase)       class ID : public TBase::ID                     { using TBaseID = TBase::ID;                  using TBaseID::TBaseID; }; ID get_id() const { return xl7::resources::Resource::get_id<ID>(); }
+#define XL7_DECLARE_RESOURCE_ID()           class Id : public xl7::resources::ResourceId    { using TBaseId = xl7::resources::ResourceId; using TBaseId::TBaseId; }; Id get_id() const { return xl7::resources::Resource::get_id<Id>(); }
+#define XL7_DERIVE_RESOURCE_ID(TBase)       class Id : public TBase::Id                     { using TBaseId = TBase::Id;                  using TBaseId::TBaseId; }; Id get_id() const { return xl7::resources::Resource::get_id<Id>(); }
 
 
 
-class ResourceID
-    : public cl7::VersionedId<size_t, 32, ResourceID>
+class ResourceId
+    : public cl7::VersionedId<size_t, 32, ResourceId>
 {
 
 public:
@@ -32,7 +32,7 @@ private:
     static_assert(INDEX_SIZE_BITS <= 32);
     static_assert(VERSION_SIZE_BITS > 0);
 
-}; // class ResourceID
+}; // class ResourceId
 
 
 
@@ -41,7 +41,7 @@ private:
     // #############################################################################
 
     template <class T1, class T2>
-        requires(std::is_base_of_v<ResourceID, T1> && std::is_base_of_v<ResourceID, T2>)
+        requires(std::is_base_of_v<ResourceId, T1> && std::is_base_of_v<ResourceId, T2>)
     auto operator==(T1 a, T2 b) noexcept
     {
         if (!std::is_base_of_v<T1, T2> && !std::is_base_of_v<T2, T1>)
@@ -50,7 +50,7 @@ private:
     }
 
     template <class T1, class T2>
-        requires(std::is_base_of_v<ResourceID, T1> && std::is_base_of_v<ResourceID, T2>)
+        requires(std::is_base_of_v<ResourceId, T1> && std::is_base_of_v<ResourceId, T2>)
     auto operator!=(T1 a, T2 b) noexcept
     {
         return !(a == b);
@@ -63,7 +63,7 @@ private:
     // #############################################################################
 
     template <class T1, class T2>
-        requires(std::is_base_of_v<ResourceID, T1> && std::is_base_of_v<ResourceID, T2>)
+        requires(std::is_base_of_v<ResourceId, T1> && std::is_base_of_v<ResourceId, T2>)
     T1 id_cast(T2 other)
     {
         static_assert(std::is_base_of_v<T1, T2> || std::is_base_of_v<T2, T1>, "invalid id_cast");
@@ -77,9 +77,9 @@ private:
 
 
 template <>
-struct std::hash<xl7::resources::ResourceID>
+struct std::hash<xl7::resources::ResourceId>
 {
-    size_t operator()(const xl7::resources::ResourceID& resource_id) const noexcept
+    size_t operator()(const xl7::resources::ResourceId& resource_id) const noexcept
     {
         return resource_id.hash();
     }

@@ -23,7 +23,7 @@ struct Grammar
     /** The collection of production rules that define non-terminal symbols. */
     ProductionRuleCollection production_rules;
     /** The start symbol ID, representing the entry point of the grammar (defaults to -1, indicating an uninitialized or undefined start symbol). */
-    SymbolID start_symbol_id = -1;
+    SymbolId start_symbol_id = -1;
 
 }; // struct Grammar
 

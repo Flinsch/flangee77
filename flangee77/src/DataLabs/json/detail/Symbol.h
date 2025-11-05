@@ -1,7 +1,7 @@
 #ifndef DL7_JSON_DETAIL_SYMBOL_H
 #define DL7_JSON_DETAIL_SYMBOL_H
 
-#include <DataLabs/syntax/SymbolID.h>
+#include <DataLabs/syntax/SymbolId.h>
 
 
 
@@ -9,7 +9,7 @@ namespace dl7::json::detail {
 
 
 
-enum Symbol : syntax::SymbolID
+enum Symbol : syntax::SymbolId
 {
     NULL_CONSTANT = 1,
     TRUE_CONSTANT,

@@ -9,13 +9,13 @@ namespace xl7::graphics::shaders {
     /**
      * Creates and acquires the specified constant buffer.
      */
-    ConstantBuffer::ID ShaderManager::create_constant_buffer(cl7::u8string_view identifier, const ConstantBuffer::Desc& desc, const ConstantDataProvider& constant_data_provider)
+    ConstantBuffer::Id ShaderManager::create_constant_buffer(cl7::u8string_view identifier, const ConstantBuffer::Desc& desc, const ConstantDataProvider& constant_data_provider)
     {
         resources::Resource::CreateParams<ConstantBuffer::Desc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
 
         ResourcePtr constant_buffer(_factory->create_constant_buffer(params), _destroy_resource);
 
-        return _try_acquire_and_add_resource<ConstantBuffer::ID>(std::move(constant_buffer), constant_data_provider);
+        return _try_acquire_and_add_resource<ConstantBuffer::Id>(std::move(constant_buffer), constant_data_provider);
     }
 
     /**
@@ -23,14 +23,14 @@ namespace xl7::graphics::shaders {
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    VertexShader::ID ShaderManager::create_vertex_shader(cl7::u8string_view identifier, const CodeDataProvider& code_data_provider, cl7::astring_view entry_point)
+    VertexShader::Id ShaderManager::create_vertex_shader(cl7::u8string_view identifier, const CodeDataProvider& code_data_provider, cl7::astring_view entry_point)
     {
         Shader::Desc desc{.language = code_data_provider.get_language(), .entry_point = cl7::astring(entry_point)};
         resources::Resource::CreateParams<Shader::Desc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
 
         ResourcePtr vertex_shader(_factory->create_vertex_shader(params), _destroy_resource);
 
-        return _try_acquire_and_add_resource<VertexShader::ID>(std::move(vertex_shader), code_data_provider);
+        return _try_acquire_and_add_resource<VertexShader::Id>(std::move(vertex_shader), code_data_provider);
     }
 
     /**
@@ -38,14 +38,14 @@ namespace xl7::graphics::shaders {
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    PixelShader::ID ShaderManager::create_pixel_shader(cl7::u8string_view identifier, const CodeDataProvider& code_data_provider, cl7::astring_view entry_point)
+    PixelShader::Id ShaderManager::create_pixel_shader(cl7::u8string_view identifier, const CodeDataProvider& code_data_provider, cl7::astring_view entry_point)
     {
         Shader::Desc desc{.language = code_data_provider.get_language(), .entry_point = cl7::astring(entry_point)};
         resources::Resource::CreateParams<Shader::Desc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
 
         ResourcePtr pixel_shader(_factory->create_pixel_shader(params), _destroy_resource);
 
-        return _try_acquire_and_add_resource<PixelShader::ID>(std::move(pixel_shader), code_data_provider);
+        return _try_acquire_and_add_resource<PixelShader::Id>(std::move(pixel_shader), code_data_provider);
     }
 
 

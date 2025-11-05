@@ -29,8 +29,8 @@ private:
 
 
 
-    XL7_GRAPHICS_PIPELINE_STATE_ARRAY_DEFAULT0(vertex_buffer_id, MAX_VERTEX_STREAMS, meshes::VertexBuffer::ID, meshes::VertexBuffer::ID(), DIRTY_VERTEX_BUFFER_FLAG_BASE);
-    XL7_GRAPHICS_PIPELINE_SINGLE_STATE(index_buffer_id, meshes::IndexBuffer::ID, meshes::IndexBuffer::ID(), DIRTY_INDEX_BUFFER_FLAG);
+    XL7_GRAPHICS_PIPELINE_STATE_ARRAY_DEFAULT0(vertex_buffer_id, MAX_VERTEX_STREAMS, meshes::VertexBuffer::Id, meshes::VertexBuffer::Id(), DIRTY_VERTEX_BUFFER_FLAG_BASE);
+    XL7_GRAPHICS_PIPELINE_SINGLE_STATE(index_buffer_id, meshes::IndexBuffer::Id, meshes::IndexBuffer::Id(), DIRTY_INDEX_BUFFER_FLAG);
     XL7_GRAPHICS_PIPELINE_SINGLE_STATE(topology, meshes::Topology, meshes::Topology::Undefined, DIRTY_TOPOLOGY_FLAG);
 
     meshes::Topology get_topology(meshes::Topology default_topology = meshes::Topology::Undefined) const { return _topology.get_value(default_topology); }

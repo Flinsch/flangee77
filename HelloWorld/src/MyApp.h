@@ -94,20 +94,20 @@ private:
 
     std::shared_ptr<fl7::fonts::Font> _font;
 
-    xl7::graphics::meshes::VertexBuffer::ID _vertex_buffer_id;
-    xl7::graphics::meshes::IndexBuffer::ID _index_buffer_id;
+    xl7::graphics::meshes::VertexBuffer::Id _vertex_buffer_id;
+    xl7::graphics::meshes::IndexBuffer::Id _index_buffer_id;
 
-    xl7::graphics::shaders::VertexShader::ID _vertex_shader_id;
-    xl7::graphics::shaders::PixelShader::ID _pixel_shader_id;
+    xl7::graphics::shaders::VertexShader::Id _vertex_shader_id;
+    xl7::graphics::shaders::PixelShader::Id _pixel_shader_id;
 
-    xl7::graphics::shaders::ConstantBuffer::ID _constant_buffer_id;
+    xl7::graphics::shaders::ConstantBuffer::Id _constant_buffer_id;
 
-    xl7::graphics::textures::Texture::ID _texture_id;
-    xl7::graphics::states::SamplerState::ID _sampler_state_id;
+    xl7::graphics::textures::Texture::Id _texture_id;
+    xl7::graphics::states::SamplerState::Id _sampler_state_id;
 
-    xl7::graphics::states::RasterizerState::ID _rasterizer_state_id;
-    xl7::graphics::states::DepthStencilState::ID _depth_stencil_state_id;
-    xl7::graphics::states::BlendState::ID _blend_state_id;
+    xl7::graphics::states::RasterizerState::Id _rasterizer_state_id;
+    xl7::graphics::states::DepthStencilState::Id _depth_stencil_state_id;
+    xl7::graphics::states::BlendState::Id _blend_state_id;
 
 }; // class MyApp
 

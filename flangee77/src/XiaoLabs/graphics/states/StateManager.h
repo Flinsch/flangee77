@@ -70,22 +70,22 @@ public:
     /**
      * Creates and acquires the specified sampler state if not already done.
      */
-    SamplerState::ID ensure_sampler_state(const SamplerState::Desc& desc);
+    SamplerState::Id ensure_sampler_state(const SamplerState::Desc& desc);
 
     /**
      * Creates and acquires the specified rasterizer state if not already done.
      */
-    RasterizerState::ID ensure_rasterizer_state(const RasterizerState::Desc& desc);
+    RasterizerState::Id ensure_rasterizer_state(const RasterizerState::Desc& desc);
 
     /**
      * Creates and acquires the specified depth/stencil state if not already done.
      */
-    DepthStencilState::ID ensure_depth_stencil_state(const DepthStencilState::Desc& desc);
+    DepthStencilState::Id ensure_depth_stencil_state(const DepthStencilState::Desc& desc);
 
     /**
      * Creates and acquires the specified blend state if not already done.
      */
-    BlendState::ID ensure_blend_state(const BlendState::Desc& desc);
+    BlendState::Id ensure_blend_state(const BlendState::Desc& desc);
 
 
 

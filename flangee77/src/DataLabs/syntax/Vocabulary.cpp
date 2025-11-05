@@ -9,7 +9,7 @@ namespace dl7::syntax {
     /**
      * Adds the name of a symbol to the vocabulary.
      */
-    void Vocabulary::add_symbol(SymbolID symbol_id, cl7::u8string_view symbol_name)
+    void Vocabulary::add_symbol(SymbolId symbol_id, cl7::u8string_view symbol_name)
     {
         assert(symbol_id > 0);
         assert(!symbol_name.empty());
@@ -22,7 +22,7 @@ namespace dl7::syntax {
      * Searches for the associated name of the specified symbol and returns it
      * (or an empty string if not found).
      */
-    cl7::u8string_view Vocabulary::get_symbol_name(SymbolID symbol_id) const
+    cl7::u8string_view Vocabulary::get_symbol_name(SymbolId symbol_id) const
     {
         auto it = _names_by_id.find(symbol_id);
         if (it == _names_by_id.end())

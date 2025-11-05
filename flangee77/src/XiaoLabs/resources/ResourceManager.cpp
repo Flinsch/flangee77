@@ -32,7 +32,7 @@ namespace xl7::resources {
      * resource manager.
      * Time complexity: constant.
      */
-    bool ResourceManager::contains_resource(ResourceID id) const
+    bool ResourceManager::contains_resource(ResourceId id) const
     {
         return find_resource(id) != nullptr;
     }
@@ -77,7 +77,7 @@ namespace xl7::resources {
      * Returns the resource of the given ID.
      * Time complexity: constant.
      */
-    Resource* ResourceManager::find_resource(ResourceID id) const
+    Resource* ResourceManager::find_resource(ResourceId id) const
     {
         size_t index = id.index();
         if (index >= _resources.size())
@@ -129,7 +129,7 @@ namespace xl7::resources {
      * manager).
      * Time complexity: constant.
      */
-    bool ResourceManager::release_resource(ResourceID id)
+    bool ResourceManager::release_resource(ResourceId id)
     {
         size_t index = id.index();
         if (index >= _resources.size())
@@ -167,7 +167,7 @@ namespace xl7::resources {
      * (and removed from this resource manager).
      * Time complexity: constant.
      */
-    bool ResourceManager::release_resource_and_invalidate(ResourceID& id)
+    bool ResourceManager::release_resource_and_invalidate(ResourceId& id)
     {
         if (!release_resource(id))
             return false;
@@ -216,7 +216,7 @@ namespace xl7::resources {
     /**
      * Generates and returns the next resource ID to use when adding a new resource.
      */
-    ResourceID ResourceManager::_next_id() const
+    ResourceId ResourceManager::_next_id() const
     {
         if (_free_indices.empty())
             return {_resources.size(), 0};
@@ -231,7 +231,7 @@ namespace xl7::resources {
      * resource), but only if it can be acquired in this process. Returns an invalid
      * ID otherwise.
      */
-    ResourceID ResourceManager::_try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider)
+    ResourceId ResourceManager::_try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider)
     {
         assert(resource_ptr);
         if (!resource_ptr)
@@ -261,13 +261,13 @@ namespace xl7::resources {
      * request/acquire the resource. This must have happened successfully before.
      * Returns the ID of the resource.
      */
-    ResourceID ResourceManager::_add_resource(ResourcePtr resource_ptr)
+    ResourceId ResourceManager::_add_resource(ResourcePtr resource_ptr)
     {
         assert(resource_ptr);
         assert(resource_ptr->is_usable());
         assert(!_resource_lookup.contains(resource_ptr->get_identifier()));
 
-        ResourceID id = resource_ptr->get_id();
+        ResourceId id = resource_ptr->get_id();
         size_t index = id.index();
         assert(index <= _resources.size());
 

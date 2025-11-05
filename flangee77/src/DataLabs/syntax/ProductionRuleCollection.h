@@ -35,12 +35,12 @@ public:
     /**
      * Adds the specified production rule the collection.
      */
-    void add(SymbolID symbol_id, const std::vector<SymbolID>& sequence);
+    void add(SymbolId symbol_id, const std::vector<SymbolId>& sequence);
 
     /**
      * Adds the specified production rule the collection.
      */
-    void add(SymbolID symbol_id, std::vector<SymbolID>&& sequence);
+    void add(SymbolId symbol_id, std::vector<SymbolId>&& sequence);
 
     /**
      * Returns the number of production rules in the collection.
@@ -56,12 +56,12 @@ public:
      * Checks whether the assumed non-terminal symbol is defined by any production
      * rule in the collection.
      */
-    bool is_defined(SymbolID symbol_id) const;
+    bool is_defined(SymbolId symbol_id) const;
 
     /**
      * Checks whether the specified symbol is used in any production rule.
      */
-    bool is_used(SymbolID symbol_id) const;
+    bool is_used(SymbolId symbol_id) const;
 
 
 

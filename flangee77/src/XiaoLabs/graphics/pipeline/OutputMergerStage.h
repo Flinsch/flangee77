@@ -37,11 +37,11 @@ private:
 
 
 
-    XL7_GRAPHICS_PIPELINE_STATE_ARRAY_DEFAULT0(render_target_surface_id, MAX_RENDER_TARGETS, surfaces::RenderTargetSurface::ID, surfaces::RenderTargetSurface::ID(), DIRTY_RENDER_TARGET_SURFACE_FLAG_BASE);
-    XL7_GRAPHICS_PIPELINE_SINGLE_STATE(depth_stencil_surface_id, surfaces::DepthStencilSurface::ID, surfaces::DepthStencilSurface::ID(), DIRTY_DEPTH_STENCIL_SURFACE_FLAG);
-    XL7_GRAPHICS_PIPELINE_SINGLE_STATE(depth_stencil_state_id, states::DepthStencilState::ID, states::DepthStencilState::ID(), DIRTY_DEPTH_STENCIL_STATE_FLAG);
+    XL7_GRAPHICS_PIPELINE_STATE_ARRAY_DEFAULT0(render_target_surface_id, MAX_RENDER_TARGETS, surfaces::RenderTargetSurface::Id, surfaces::RenderTargetSurface::Id(), DIRTY_RENDER_TARGET_SURFACE_FLAG_BASE);
+    XL7_GRAPHICS_PIPELINE_SINGLE_STATE(depth_stencil_surface_id, surfaces::DepthStencilSurface::Id, surfaces::DepthStencilSurface::Id(), DIRTY_DEPTH_STENCIL_SURFACE_FLAG);
+    XL7_GRAPHICS_PIPELINE_SINGLE_STATE(depth_stencil_state_id, states::DepthStencilState::Id, states::DepthStencilState::Id(), DIRTY_DEPTH_STENCIL_STATE_FLAG);
     XL7_GRAPHICS_PIPELINE_SINGLE_STATE(stencil_reference_value, unsigned, 0x00000000, DIRTY_STENCIL_REFERENCE_VALUE_FLAG);
-    XL7_GRAPHICS_PIPELINE_SINGLE_STATE(blend_state_id, states::BlendState::ID, states::BlendState::ID(), DIRTY_BLEND_STATE_FLAG);
+    XL7_GRAPHICS_PIPELINE_SINGLE_STATE(blend_state_id, states::BlendState::Id, states::BlendState::Id(), DIRTY_BLEND_STATE_FLAG);
     XL7_GRAPHICS_PIPELINE_SINGLE_STATE(blend_factor, Color, Color(1.0f, 1.0f, 1.0f, 1.0f), DIRTY_BLEND_FACTOR_FLAG);
 
 }; // class OutputMergerStage

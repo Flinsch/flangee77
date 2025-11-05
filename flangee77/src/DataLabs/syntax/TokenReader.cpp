@@ -21,7 +21,7 @@ namespace dl7::syntax {
      * Returns the ID of the symbol of the current token without advancing the
      * reader.
      */
-    SymbolID TokenReader::peek_symbol_id() const
+    SymbolId TokenReader::peek_symbol_id() const
     {
         return peek_token().symbol_id;
     }
@@ -60,7 +60,7 @@ namespace dl7::syntax {
     /**
      * Returns true if the current token's symbol ID matches the given one.
      */
-    bool TokenReader::check_symbol_id(SymbolID symbol_id) const
+    bool TokenReader::check_symbol_id(SymbolId symbol_id) const
     {
         return peek_symbol_id() == symbol_id;
     }
@@ -96,7 +96,7 @@ namespace dl7::syntax {
      * Advances to the next token if the current token's symbol ID matches the given
      * one. Returns true if advanced, false otherwise.
      */
-    bool TokenReader::skip_symbol_id(SymbolID symbol_id)
+    bool TokenReader::skip_symbol_id(SymbolId symbol_id)
     {
         if (check_symbol_id(symbol_id))
         {
@@ -110,7 +110,7 @@ namespace dl7::syntax {
      * Advances past all consecutive tokens whose symbol ID matches the given one.
      * Returns true if at least one token was skipped, false otherwise.
      */
-    bool TokenReader::skip_while_symbol_id(SymbolID symbol_id)
+    bool TokenReader::skip_while_symbol_id(SymbolId symbol_id)
     {
         bool skipped = false;
         while (check_symbol_id(symbol_id))
@@ -177,7 +177,7 @@ namespace dl7::syntax {
      * Returns true if a token with the specified symbol ID was found, false
      * otherwise (i.e., EOF was reached).
      */
-    bool TokenReader::skip_to_symbol_id(SymbolID symbol_id)
+    bool TokenReader::skip_to_symbol_id(SymbolId symbol_id)
     {
         while (!is_eof() && !check_symbol_id(symbol_id))
             next_token();
@@ -196,7 +196,7 @@ namespace dl7::syntax {
      * Returns true if a token with the specified symbol ID was found, false
      * otherwise (i.e., EOF was reached).
      */
-    bool TokenReader::skip_past_symbol_id(SymbolID symbol_id)
+    bool TokenReader::skip_past_symbol_id(SymbolId symbol_id)
     {
         if (!skip_to_symbol_id(symbol_id))
             return false;

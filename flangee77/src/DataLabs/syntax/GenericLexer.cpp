@@ -20,11 +20,11 @@ namespace dl7::syntax {
      * symbol ID and the character length of the recognized lexeme of the first/next
      * token at the very beginning of the source text.
      */
-    std::pair<SymbolID, size_t> GenericLexer::_recognize(cl7::u8string_view source)
+    std::pair<SymbolId, size_t> GenericLexer::_recognize(cl7::u8string_view source)
     {
         assert(!source.empty());
 
-        std::pair<SymbolID, size_t> best_match = {-1, 1};
+        std::pair<SymbolId, size_t> best_match = {-1, 1};
         bool best_is_literal = false;
 
         assert(_terminal_symbols->get_count() > 0);
