@@ -3,6 +3,7 @@
 #ifdef _WIN32
 #include <intrin.h>
 #else // => Unix-like systems (such as Linux)
+#include <cpuid.h>
 #endif
 
 #include <thread>

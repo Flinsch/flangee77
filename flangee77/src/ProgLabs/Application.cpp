@@ -4,13 +4,14 @@
 #include <XiaoLabs/graphics.h>
 
 #include <CoreLabs/creational/Singleton.h>
-#include <CoreLabs/system/CPUID.h>
-#include <CoreLabs/system/MemoryStatus.h>
-#include <CoreLabs/profiling.h>
+#include <CoreLabs/logging.h>
 //#include <CoreLabs/logging/FileLogHandler.h>
 #include <CoreLabs/logging/HtmlLogHandler.h>
-#include <CoreLabs/logging.h>
 #include <CoreLabs/memory.h>
+#include <CoreLabs/profiling.h>
+#include <CoreLabs/system/CPUID.h>
+#include <CoreLabs/system/MemoryStatus.h>
+#include <CoreLabs/text/codec.h>
 
 
 
@@ -94,8 +95,8 @@ namespace pl7 {
         cl7::system::CPUID cpuid;
         if (!cpuid.capture())
             LOG_WARNING(u8"Unable to retrieve CPU identification/information.");
-        LOG_TYPE(u8"Vendor name\t" + cl7::u8string{cpuid.vendor_name}, cl7::logging::LogType::Item);
-        LOG_TYPE(u8"Processor name\t" + cl7::u8string{cpuid.processor_name}, cl7::logging::LogType::Item);
+        LOG_TYPE(u8"Vendor name\t" + cl7::text::codec::to_utf8(cpuid.vendor_name), cl7::logging::LogType::Item);
+        LOG_TYPE(u8"Processor name\t" + cl7::text::codec::to_utf8(cpuid.processor_name), cl7::logging::LogType::Item);
         if constexpr (std::endian::native == std::endian::little)
             LOG_TYPE(u8"Endianness\tlittle endian", cl7::logging::LogType::Item);
         if constexpr (std::endian::native == std::endian::big)
