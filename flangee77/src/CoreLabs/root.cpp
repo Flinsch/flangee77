@@ -29,7 +29,7 @@
 #elif defined(_WIN32) || defined(__i386__) || defined(__ppc__)
 #pragma message("32-bit system")
 #else
-#error Unknown bitness
+#error Unknown architecture bitness
 #endif
 
 #if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__

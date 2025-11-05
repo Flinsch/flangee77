@@ -25,6 +25,52 @@
 
 
 
+#if defined(_MSC_VER)
+#define F77_COMPILER_MSVC 1
+#elif defined(__clang__)
+// Be mindful that __GNUC__ is also defined for Clang to ensure compatibility with GCC,
+// so always check for __clang__ first if detecting Clang specifically.
+#define F77_COMPILER_CLANG 1
+#elif defined(__GNUC__)
+#define F77_COMPILER_GCC 1
+#endif
+
+#if defined(_WIN32)
+#define F77_PLATFORM_WINDOWS 1
+#elif defined(__linux__)
+#define F77_PLATFORM_LINUX 1
+#elif defined(__APPLE__) && defined(__MACH__)
+#define F77_PLATFORM_MACOS 1
+#endif
+
+#if defined(_WIN64) || defined(__x86_64__) || defined(__ppc64__)
+#define F77_ARCH_64BIT 1
+#elif defined(_WIN32) || defined(__i386__) || defined(__ppc__)
+#define F77_ARCH_32BIT 1
+#endif
+
+#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+#define F77_ENDIAN_LITTLE 1
+#elif defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+#define F77_ENDIAN_BIG 1
+#endif
+
+#define F77_IS_MSVC     (defined(F77_COMPILER_MSVC))
+#define F77_IS_CLANG    (defined(F77_COMPILER_CLANG))
+#define F77_IS_GCC      (defined(F77_COMPILER_GCC))
+
+#define F77_IS_WINDOWS  (defined(F77_PLATFORM_WINDOWS))
+#define F77_IS_LINUX    (defined(F77_PLATFORM_LINUX))
+#define F77_IS_MACOS    (defined(F77_PLATFORM_MACOS))
+
+#define F77_IS_64BIT    (defined(F77_ARCH_64BIT))
+#define F77_IS_32BIT    (defined(F77_ARCH_32BIT))
+
+#define F77_IS_LITTLE_ENDIAN    (defined(F77_ENDIAN_LITTLE))
+#define F77_IS_BIG_ENDIAN       (defined(F77_ENDIAN_BIG))
+
+
+
 // NOLINTBEGIN(*-reserved-identifier)
 #ifndef _WIN32_WINNT
 //#define _WIN32_WINNT _WIN32_WINNT_WIN7
@@ -61,6 +107,7 @@ static_assert(sizeof(long) == 4);
 static_assert(sizeof(long long) == 8);
 static_assert(sizeof(float) == 4);
 static_assert(sizeof(double) == 8);
+static_assert(sizeof(long double) >= 8);
 
 
 
