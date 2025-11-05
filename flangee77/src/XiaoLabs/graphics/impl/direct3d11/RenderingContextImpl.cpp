@@ -279,7 +279,7 @@ namespace xl7::graphics::impl::direct3d11 {
                 stream_strides[stream_index] = vertex_buffer->get_stride();
                 stream_offsets[stream_index] = 0;
             } else {
-                vertex_buffer_binding.vertex_buffer_ids[stream_index] = resources::ResourceID::INVALID_ID;
+                vertex_buffer_binding.vertex_buffer_ids[stream_index].invalidate();
                 d3d_vertex_buffer = nullptr;
                 stream_strides[stream_index] = 0;
                 stream_offsets[stream_index] = 0;

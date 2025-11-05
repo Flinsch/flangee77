@@ -336,7 +336,7 @@ namespace xl7::graphics::impl::direct3d9 {
                 d3d_vertex_buffer = vertex_buffer->get_raw_d3d_vertex_buffer();
                 stride = vertex_buffer->get_stride();
             } else {
-                vertex_buffer_binding.vertex_buffer_ids[stream_index] = resources::ResourceID::INVALID_ID;
+                vertex_buffer_binding.vertex_buffer_ids[stream_index].invalidate();
                 d3d_vertex_buffer = nullptr;
                 stride = 0;
             }
