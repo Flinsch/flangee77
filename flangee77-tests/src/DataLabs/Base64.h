@@ -1,5 +1,5 @@
-#ifndef F77_TESTS_CL7_BASE64_H
-#define F77_TESTS_CL7_BASE64_H
+#ifndef F77_TESTS_DL7_BASE64_H
+#define F77_TESTS_DL7_BASE64_H
 
 #include <DataLabs/Base64.h>
 
@@ -13,7 +13,7 @@
 
 
 
-TESTLABS_CASE( u8"CoreLabs:  Base64:  encode/decode" )
+TESTLABS_CASE( u8"DataLabs:  Base64:  encode/decode" )
 {
     struct Entry
     {
@@ -87,7 +87,7 @@ TESTLABS_CASE( u8"CoreLabs:  Base64:  encode/decode" )
     }
 }
 
-TESTLABS_CASE( u8"CoreLabs:  Base64:  decoding bad strings" )
+TESTLABS_CASE( u8"DataLabs:  Base64:  decoding bad strings" )
 {
     struct Entry
     {
@@ -115,4 +115,4 @@ TESTLABS_CASE( u8"CoreLabs:  Base64:  decoding bad strings" )
 
 
 
-#endif // F77_TESTS_CL7_BASE64_H
+#endif // F77_TESTS_DL7_BASE64_H
