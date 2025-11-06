@@ -11,7 +11,7 @@ namespace dl7::ini {
 
 struct Format
 {
-    enum struct Newline
+    enum struct LineEnding
     {
         /** CRLF (`\r\n`): Windows, DOS */
         CRLF,
@@ -60,7 +60,7 @@ struct Format
     };
 
     /** The line-ending format to use (CRLF, LF, or CR). */
-    Newline newline = Newline::LF;
+    LineEnding line_ending = LineEnding::LF;
     /** The section name delimiter to use (a dot or a slash). */
     SectionNameDelimiter section_name_delimiter = SectionNameDelimiter::Dot;
     /** The key-value delimiter to use (an equals sign or a colon). */

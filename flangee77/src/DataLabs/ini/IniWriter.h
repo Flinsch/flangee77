@@ -19,7 +19,7 @@ class IniWriter
 
 public:
     static constexpr Format DEFAULT_PRETTY_PRINT_FORMAT = {
-        .newline = Format::Newline::LF,
+        .line_ending = Format::LineEnding::LF,
         .section_name_delimiter = Format::SectionNameDelimiter::Dot,
         .key_value_delimiter = Format::KeyValueDelimiter::Equals,
         .space_around_delimiter = Format::SpaceAroundKeyValueDelimiter::Both,
@@ -30,7 +30,7 @@ public:
         .empty_line_after_section_header = false,
     };
     static constexpr Format DEFAULT_COMPACT_FORMAT = {
-        .newline = Format::Newline::LF,
+        .line_ending = Format::LineEnding::LF,
         .section_name_delimiter = Format::SectionNameDelimiter::Dot,
         .key_value_delimiter = Format::KeyValueDelimiter::Equals,
         .space_around_delimiter = Format::SpaceAroundKeyValueDelimiter::None,

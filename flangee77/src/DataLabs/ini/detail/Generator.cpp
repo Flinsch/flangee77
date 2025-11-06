@@ -246,15 +246,15 @@ namespace dl7::ini::detail {
 
     cl7::u8osstream& Generator::_write_newline(cl7::u8osstream& oss) const
     {
-        switch (_format.newline)
+        switch (_format.line_ending)
         {
-        case Format::Newline::CRLF:
+        case Format::LineEnding::CRLF:
             oss << "\r\n";
             break;
-        case Format::Newline::LF:
+        case Format::LineEnding::LF:
             oss << '\n';
             break;
-        case Format::Newline::CR:
+        case Format::LineEnding::CR:
             oss << '\r';
             break;
         }

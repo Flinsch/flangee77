@@ -26,7 +26,7 @@ indent_size = 4
 [*.{hlsl,hlsli}]
 indent_size = 4
 
-# Ini, JSON, TOML, XML, YAML, etc. configuration files
+# INI, JSON, TOML, XML, YAML, etc. configuration files
 [*.{ini,json,toml,xml,yaml,yml}]
 indent_size = 2
 
