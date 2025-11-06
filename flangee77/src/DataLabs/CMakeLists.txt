@@ -49,6 +49,14 @@ target_sources(flangee77
     syntax/TokenReader.cpp
     syntax/Vocabulary.cpp
 
+    toml/Toml.cpp
+    toml/TomlReader.cpp
+    toml/TomlWriter.cpp
+
+    toml/detail/Builder.cpp
+    toml/detail/Generator.cpp
+    toml/detail/Lexer.cpp
+
     xml/Attribute.cpp
     xml/Document.cpp
     xml/Element.cpp
