@@ -1,18 +1,21 @@
 <map id="xl7::graphics::impl::direct3d11::states::DepthStencilStateImpl" name="xl7::graphics::impl::direct3d11::states::DepthStencilStateImpl">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1167,65,1343,119"/>
-<area shape="rect" id="Node000002" href="$db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html" title=" " alt="" coords="964,72,1117,112"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1131,89,1167,89,1167,95,1131,95"/>
-<area shape="rect" id="Node000003" href="$de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState.html" title=" " alt="" coords="705,40,858,80"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="872,68,964,80,963,85,871,74"/>
-<area shape="rect" id="Node000004" href="$d5/d7b/classxl7_1_1resources_1_1Resource.html" title=" " alt="" coords="317,47,499,73"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="513,57,704,57,704,63,513,63"/>
-<area shape="rect" id="Node000005" href="$d3/d00/classxl7_1_1resources_1_1ResourceManager.html" title=" " alt="" coords="12,5,193,45"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="207,34,318,47,317,52,207,40"/>
-<area shape="rect" id="Node000006" href="$d8/d44/classxl7_1_1resources_1_1ResourceID.html" title=" " alt="" coords="5,109,200,134"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="179,103,344,70,345,75,180,109"/>
-<area shape="poly" id="edge6_Node000006_Node000006" title=" " alt="" coords="72,94,81,85,103,82,120,84,131,91,134,100,129,110,124,107,129,100,127,94,119,89,103,87,84,90,76,98"/>
-<area shape="rect" id="Node000007" href="$d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html" title=" " alt="" coords="688,104,875,144"/>
-<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="888,108,964,99,964,104,889,113"/>
-<area shape="rect" id="Node000008" href="$d4/d68/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1StencilOperationDesc.html" title=" " alt="" coords="327,97,489,151"/>
-<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="503,121,688,121,688,127,503,127"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1492,55,1668,110"/>
+<area shape="rect" id="Node000002" href="$db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html" title=" " alt="" coords="1289,63,1443,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1457,80,1492,80,1492,85,1457,85"/>
+<area shape="rect" id="Node000003" href="$de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState.html" title=" " alt="" coords="1030,31,1183,71"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1197,59,1289,71,1289,76,1197,64"/>
+<area shape="rect" id="Node000004" href="$d5/d7b/classxl7_1_1resources_1_1Resource.html" title=" " alt="" coords="643,38,824,63"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="838,48,1030,48,1030,53,838,53"/>
+<area shape="rect" id="Node000005" href="$d3/d00/classxl7_1_1resources_1_1ResourceManager.html" title=" " alt="" coords="338,5,519,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="533,31,643,40,642,46,533,37"/>
+<area shape="rect" id="Node000006" href="$db/d1e/classxl7_1_1resources_1_1ResourceId.html" title=" " alt="" coords="332,70,525,95"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="539,68,642,58,642,63,539,74"/>
+<area shape="rect" id="Node000007" href="$dc/d7b/classcl7_1_1VersionedId.html" title=" " alt="" coords="116,63,283,103"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="297,80,332,80,332,85,297,85"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,70,44,95"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="58,80,116,80,116,85,58,85"/>
+<area shape="rect" id="Node000009" href="$d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html" title=" " alt="" coords="1013,95,1200,135"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="1213,99,1289,89,1290,95,1214,104"/>
+<area shape="rect" id="Node000010" href="$d4/d68/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1StencilOperationDesc.html" title=" " alt="" coords="652,87,815,142"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="829,112,1013,112,1013,117,829,117"/>
 </map>

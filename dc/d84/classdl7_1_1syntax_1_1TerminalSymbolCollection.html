@@ -115,28 +115,28 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3d304f22655071dfec7426cf66890430"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45d84416150547cfabf14f1eb80f3aa0" id="r_a45d84416150547cfabf14f1eb80f3aa0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#a45d84416150547cfabf14f1eb80f3aa0">add</a> (std::unique_ptr&lt; <a class="el" href="../../d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html">TerminalSymbol</a> &gt; terminal_symbol)</td></tr>
 <tr class="separator:a45d84416150547cfabf14f1eb80f3aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc061805ab4a9c82fca3ca075f96b5c6" id="r_afc061805ab4a9c82fca3ca075f96b5c6"><td class="memTemplParams" colspan="2">template&lt;class TTerminalSymbol , class... Args&gt; <br />
+<tr class="memitem:ae5563a0a5c7db7c17fde5571f36e5b19" id="r_ae5563a0a5c7db7c17fde5571f36e5b19"><td class="memTemplParams" colspan="2">template&lt;class TTerminalSymbol , class... Args&gt; <br />
 requires (std::derived_from&lt;TTerminalSymbol, <a class="el" href="../../d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html">TerminalSymbol</a>&gt;)</td></tr>
-<tr class="memitem:afc061805ab4a9c82fca3ca075f96b5c6"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#afc061805ab4a9c82fca3ca075f96b5c6">add</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a> id, Args &amp;&amp;... args)</td></tr>
-<tr class="separator:afc061805ab4a9c82fca3ca075f96b5c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8992221b4b074862e210c41869ca253" id="r_af8992221b4b074862e210c41869ca253"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#af8992221b4b074862e210c41869ca253">add_literal</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a> id, <a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> literal)</td></tr>
-<tr class="separator:af8992221b4b074862e210c41869ca253"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbea3b0d276993cf5a20c952a1b85aa5" id="r_adbea3b0d276993cf5a20c952a1b85aa5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#adbea3b0d276993cf5a20c952a1b85aa5">add_pattern</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a> id, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options=std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags=std::regex_constants::match_default)</td></tr>
-<tr class="separator:adbea3b0d276993cf5a20c952a1b85aa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad84e5bf3ad67662936bf639591458602" id="r_ad84e5bf3ad67662936bf639591458602"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#ad84e5bf3ad67662936bf639591458602">add_pattern</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a> id, <a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> literal_prefix, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options=std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags=std::regex_constants::match_default)</td></tr>
-<tr class="separator:ad84e5bf3ad67662936bf639591458602"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbd9c9ec52c7e1958bda24650dad8f16" id="r_acbd9c9ec52c7e1958bda24650dad8f16"><td class="memTemplParams" colspan="2">template&lt;PrefixMatcher TPrefixMatcher&gt; </td></tr>
-<tr class="memitem:acbd9c9ec52c7e1958bda24650dad8f16"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#acbd9c9ec52c7e1958bda24650dad8f16">add_custom</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a> id, <a class="el" href="../../d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html">CustomSymbol</a>&lt; TPrefixMatcher &gt;::PrefixMatcher matcher)</td></tr>
-<tr class="separator:acbd9c9ec52c7e1958bda24650dad8f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7876e482bc24de823857b1f3bce39945" id="r_a7876e482bc24de823857b1f3bce39945"><td class="memTemplParams" colspan="2">template&lt;PrefixMatcher TPrefixMatcher&gt; </td></tr>
-<tr class="memitem:a7876e482bc24de823857b1f3bce39945"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#a7876e482bc24de823857b1f3bce39945">add_custom</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a> id, TPrefixMatcher matcher)</td></tr>
-<tr class="separator:a7876e482bc24de823857b1f3bce39945"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5563a0a5c7db7c17fde5571f36e5b19"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#ae5563a0a5c7db7c17fde5571f36e5b19">add</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823">SymbolId</a> id, Args &amp;&amp;... args)</td></tr>
+<tr class="separator:ae5563a0a5c7db7c17fde5571f36e5b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb4c23e0093c4920169c030d7362f983" id="r_aeb4c23e0093c4920169c030d7362f983"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#aeb4c23e0093c4920169c030d7362f983">add_literal</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823">SymbolId</a> id, <a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> literal)</td></tr>
+<tr class="separator:aeb4c23e0093c4920169c030d7362f983"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae461ee221fba7dc169c4609c31a1abe3" id="r_ae461ee221fba7dc169c4609c31a1abe3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#ae461ee221fba7dc169c4609c31a1abe3">add_pattern</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823">SymbolId</a> id, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options=std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags=std::regex_constants::match_default)</td></tr>
+<tr class="separator:ae461ee221fba7dc169c4609c31a1abe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f2b3fcdc20ce8a0eee73c51d79807ca" id="r_a9f2b3fcdc20ce8a0eee73c51d79807ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#a9f2b3fcdc20ce8a0eee73c51d79807ca">add_pattern</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823">SymbolId</a> id, <a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> literal_prefix, std::string_view pattern, std::regex_constants::syntax_option_type syntax_options=std::regex_constants::ECMAScript, std::regex_constants::match_flag_type match_flags=std::regex_constants::match_default)</td></tr>
+<tr class="separator:a9f2b3fcdc20ce8a0eee73c51d79807ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9820278253172ab7af5172cecb1f9004" id="r_a9820278253172ab7af5172cecb1f9004"><td class="memTemplParams" colspan="2">template&lt;PrefixMatcher TPrefixMatcher&gt; </td></tr>
+<tr class="memitem:a9820278253172ab7af5172cecb1f9004"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#a9820278253172ab7af5172cecb1f9004">add_custom</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823">SymbolId</a> id, <a class="el" href="../../d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html">CustomSymbol</a>&lt; TPrefixMatcher &gt;::PrefixMatcher matcher)</td></tr>
+<tr class="separator:a9820278253172ab7af5172cecb1f9004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0a1408ac4bbcc021311403d3274d7d2" id="r_ad0a1408ac4bbcc021311403d3274d7d2"><td class="memTemplParams" colspan="2">template&lt;PrefixMatcher TPrefixMatcher&gt; </td></tr>
+<tr class="memitem:ad0a1408ac4bbcc021311403d3274d7d2"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#ad0a1408ac4bbcc021311403d3274d7d2">add_custom</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823">SymbolId</a> id, TPrefixMatcher matcher)</td></tr>
+<tr class="separator:ad0a1408ac4bbcc021311403d3274d7d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64a76f928edde9aa2477a34d9e9bc301" id="r_a64a76f928edde9aa2477a34d9e9bc301"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#a64a76f928edde9aa2477a34d9e9bc301">get_count</a> () const</td></tr>
 <tr class="separator:a64a76f928edde9aa2477a34d9e9bc301"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21cefebfeccbb9cb38364b01eab3b092" id="r_a21cefebfeccbb9cb38364b01eab3b092"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html">TerminalSymbol</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#a21cefebfeccbb9cb38364b01eab3b092">get</a> (size_t index) const</td></tr>
 <tr class="separator:a21cefebfeccbb9cb38364b01eab3b092"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85a7fae34cd73f2c1da6aba9a4aa676d" id="r_a85a7fae34cd73f2c1da6aba9a4aa676d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#a85a7fae34cd73f2c1da6aba9a4aa676d">is_defined</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a> id) const</td></tr>
-<tr class="separator:a85a7fae34cd73f2c1da6aba9a4aa676d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a598eecfacb120a5560f2b5af8780c854" id="r_a598eecfacb120a5560f2b5af8780c854"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#a598eecfacb120a5560f2b5af8780c854">is_defined</a> (<a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823">SymbolId</a> id) const</td></tr>
+<tr class="separator:a598eecfacb120a5560f2b5af8780c854"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -180,8 +180,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="afc061805ab4a9c82fca3ca075f96b5c6" name="afc061805ab4a9c82fca3ca075f96b5c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc061805ab4a9c82fca3ca075f96b5c6">&#9670;&#160;</a></span>add() <span class="overload">[2/2]</span></h2>
+<a id="ae5563a0a5c7db7c17fde5571f36e5b19" name="ae5563a0a5c7db7c17fde5571f36e5b19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5563a0a5c7db7c17fde5571f36e5b19">&#9670;&#160;</a></span>add() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -195,7 +195,7 @@ requires (std::derived_from&lt;TTerminalSymbol, <a class="el" href="../../d1/d21
         <tr>
           <td class="memname">void dl7::syntax::TerminalSymbolCollection::add </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823">SymbolId</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -220,8 +220,8 @@ requires (std::derived_from&lt;TTerminalSymbol, <a class="el" href="../../d1/d21
 
 </div>
 </div>
-<a id="acbd9c9ec52c7e1958bda24650dad8f16" name="acbd9c9ec52c7e1958bda24650dad8f16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acbd9c9ec52c7e1958bda24650dad8f16">&#9670;&#160;</a></span>add_custom() <span class="overload">[1/2]</span></h2>
+<a id="a9820278253172ab7af5172cecb1f9004" name="a9820278253172ab7af5172cecb1f9004"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9820278253172ab7af5172cecb1f9004">&#9670;&#160;</a></span>add_custom() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -234,7 +234,7 @@ template&lt;PrefixMatcher TPrefixMatcher&gt; </div>
         <tr>
           <td class="memname">void dl7::syntax::TerminalSymbolCollection::add_custom </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823">SymbolId</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -259,8 +259,8 @@ template&lt;PrefixMatcher TPrefixMatcher&gt; </div>
 
 </div>
 </div>
-<a id="a7876e482bc24de823857b1f3bce39945" name="a7876e482bc24de823857b1f3bce39945"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7876e482bc24de823857b1f3bce39945">&#9670;&#160;</a></span>add_custom() <span class="overload">[2/2]</span></h2>
+<a id="ad0a1408ac4bbcc021311403d3274d7d2" name="ad0a1408ac4bbcc021311403d3274d7d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0a1408ac4bbcc021311403d3274d7d2">&#9670;&#160;</a></span>add_custom() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -273,7 +273,7 @@ template&lt;PrefixMatcher TPrefixMatcher&gt; </div>
         <tr>
           <td class="memname">void dl7::syntax::TerminalSymbolCollection::add_custom </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823">SymbolId</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -298,8 +298,8 @@ template&lt;PrefixMatcher TPrefixMatcher&gt; </div>
 
 </div>
 </div>
-<a id="af8992221b4b074862e210c41869ca253" name="af8992221b4b074862e210c41869ca253"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8992221b4b074862e210c41869ca253">&#9670;&#160;</a></span>add_literal()</h2>
+<a id="aeb4c23e0093c4920169c030d7362f983" name="aeb4c23e0093c4920169c030d7362f983"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb4c23e0093c4920169c030d7362f983">&#9670;&#160;</a></span>add_literal()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -307,7 +307,7 @@ template&lt;PrefixMatcher TPrefixMatcher&gt; </div>
         <tr>
           <td class="memname">void dl7::syntax::TerminalSymbolCollection::add_literal </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823">SymbolId</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -327,8 +327,8 @@ template&lt;PrefixMatcher TPrefixMatcher&gt; </div>
 
 </div>
 </div>
-<a id="ad84e5bf3ad67662936bf639591458602" name="ad84e5bf3ad67662936bf639591458602"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad84e5bf3ad67662936bf639591458602">&#9670;&#160;</a></span>add_pattern() <span class="overload">[1/2]</span></h2>
+<a id="a9f2b3fcdc20ce8a0eee73c51d79807ca" name="a9f2b3fcdc20ce8a0eee73c51d79807ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f2b3fcdc20ce8a0eee73c51d79807ca">&#9670;&#160;</a></span>add_pattern() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -336,7 +336,7 @@ template&lt;PrefixMatcher TPrefixMatcher&gt; </div>
         <tr>
           <td class="memname">void dl7::syntax::TerminalSymbolCollection::add_pattern </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823">SymbolId</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -374,8 +374,8 @@ template&lt;PrefixMatcher TPrefixMatcher&gt; </div>
 
 </div>
 </div>
-<a id="adbea3b0d276993cf5a20c952a1b85aa5" name="adbea3b0d276993cf5a20c952a1b85aa5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adbea3b0d276993cf5a20c952a1b85aa5">&#9670;&#160;</a></span>add_pattern() <span class="overload">[2/2]</span></h2>
+<a id="ae461ee221fba7dc169c4609c31a1abe3" name="ae461ee221fba7dc169c4609c31a1abe3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae461ee221fba7dc169c4609c31a1abe3">&#9670;&#160;</a></span>add_pattern() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -383,7 +383,7 @@ template&lt;PrefixMatcher TPrefixMatcher&gt; </div>
         <tr>
           <td class="memname">void dl7::syntax::TerminalSymbolCollection::add_pattern </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823">SymbolId</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -518,8 +518,8 @@ template&lt;PrefixMatcher TPrefixMatcher&gt; </div>
 
 </div>
 </div>
-<a id="a85a7fae34cd73f2c1da6aba9a4aa676d" name="a85a7fae34cd73f2c1da6aba9a4aa676d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85a7fae34cd73f2c1da6aba9a4aa676d">&#9670;&#160;</a></span>is_defined()</h2>
+<a id="a598eecfacb120a5560f2b5af8780c854" name="a598eecfacb120a5560f2b5af8780c854"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a598eecfacb120a5560f2b5af8780c854">&#9670;&#160;</a></span>is_defined()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -527,7 +527,7 @@ template&lt;PrefixMatcher TPrefixMatcher&gt; </div>
         <tr>
           <td class="memname">bool dl7::syntax::TerminalSymbolCollection::is_defined </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3">SymbolID</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823">SymbolId</a>&#160;</td>
           <td class="paramname"><em>id</em></td><td>)</td>
           <td> const</td>
         </tr>

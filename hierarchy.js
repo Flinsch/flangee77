@@ -218,7 +218,7 @@ var hierarchy =
     [ "tl7::Signature::hash", "dd/dc0/structtl7_1_1Signature_1_1hash.html", null ],
     [ "std::hash< xl7::graphics::impl::shared::meshes::ComposedVertexLayout >", "db/de3/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout_01_4.html", null ],
     [ "std::hash< xl7::graphics::impl::shared::meshes::VertexBufferBinding >", "dc/d08/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding_01_4.html", null ],
-    [ "std::hash< xl7::resources::ResourceID >", "d8/d59/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceID_01_4.html", null ],
+    [ "std::hash< xl7::resources::ResourceId >", "dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4.html", null ],
     [ "xl7::graphics::images::PngImageHandler::Header", "d4/de1/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Header.html", null ],
     [ "xl7::graphics::images::TargaImageHandler::Header", "d7/de1/structxl7_1_1graphics_1_1images_1_1TargaImageHandler_1_1Header.html", null ],
     [ "dl7::syntax::matchers::HexadecimalLiteralMatcher", "d9/d44/structdl7_1_1syntax_1_1matchers_1_1HexadecimalLiteralMatcher.html", null ],
@@ -450,7 +450,6 @@ var hierarchy =
       ] ]
     ] ],
     [ "xl7::resources::ResourceManager::ResourceEntry", "d8/d89/structxl7_1_1resources_1_1ResourceManager_1_1ResourceEntry.html", null ],
-    [ "xl7::resources::ResourceID", "d8/d44/classxl7_1_1resources_1_1ResourceID.html", null ],
     [ "xl7::resources::ResourceManager", "d3/d00/classxl7_1_1resources_1_1ResourceManager.html", [
       [ "xl7::graphics::meshes::MeshManager", "d3/d9b/classxl7_1_1graphics_1_1meshes_1_1MeshManager.html", null ],
       [ "xl7::graphics::shaders::ShaderManager", "d4/d43/classxl7_1_1graphics_1_1shaders_1_1ShaderManager.html", null ],
@@ -586,6 +585,10 @@ var hierarchy =
     [ "ml7::Vector3< T >", "d6/d64/structml7_1_1Vector3.html", null ],
     [ "ml7::Vector4< T >", "db/dad/structml7_1_1Vector4.html", null ],
     [ "cl7::Version", "db/ddf/structcl7_1_1Version.html", null ],
+    [ "cl7::VersionedId< T, VersionSizeBits, TagT >", "dc/d7b/classcl7_1_1VersionedId.html", null ],
+    [ "cl7::VersionedId< size_t, 32, ResourceId >", "dc/d7b/classcl7_1_1VersionedId.html", [
+      [ "xl7::resources::ResourceId", "db/d1e/classxl7_1_1resources_1_1ResourceId.html", null ]
+    ] ],
     [ "xl7::graphics::impl::shared::meshes::VertexBufferBinding", "d8/de4/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding.html", null ],
     [ "xl7::graphics::meshes::VertexLayout", "d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html", null ],
     [ "xl7::Config::Video", "d2/d33/structxl7_1_1Config_1_1Video.html", null ],

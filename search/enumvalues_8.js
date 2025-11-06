@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['identifier_0',['IDENTIFIER',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a078f61d95ec05a0473eab01f674c40e1',1,'dl7::json::detail']]],
+  ['identifier_0',['IDENTIFIER',['../db/dcc/namespacedl7_1_1json_1_1detail.html#aefd1a930e6928f0b5231c01b74806e05a078f61d95ec05a0473eab01f674c40e1',1,'dl7::json::detail']]],
   ['immutable_1',['Immutable',['../da/d60/namespacexl7_1_1resources.html#acb7b1bb91ccf1f69b4fe83b89d1db5eea11efd9ae6f76e706e3f1b34d97584ebc',1,'xl7::resources']]],
   ['incompletesequence_2',['IncompleteSequence',['../da/d47/namespacecl7_1_1text_1_1codec.html#aab042571c0cfb310ad0152768b2c8ac9a049817bfb09d6c24d671963ae8d02691',1,'cl7::text::codec']]],
   ['incrclamp_3',['IncrClamp',['../db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#a5ea224e29dd36067e266b081eb767292a4ea9324e777598fd8aaf8480353108f1',1,'xl7::graphics::states::DepthStencilState']]],
@@ -10,7 +10,7 @@ var searchData=
   ['insufficientoutputspace_7',['InsufficientOutputSpace',['../da/d47/namespacecl7_1_1text_1_1codec.html#aab042571c0cfb310ad0152768b2c8ac9ae49a033b028684cbd39180d4a9bebfeb',1,'cl7::text::codec']]],
   ['int_8',['Int',['../d7/db8/namespacexl7_1_1graphics_1_1shaders.html#a085c34184496b18274daf7e0044b82e8a1686a6c336b71b36d77354cea19a8b52',1,'xl7::graphics::shaders']]],
   ['integer_9',['integer',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caaa0faef0851b4294c06f2b94bb1cb2044',1,'dl7::json::Json::Integer'],['../da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18aa0faef0851b4294c06f2b94bb1cb2044',1,'dl7::ini::Value::Integer']]],
-  ['integer_5fliteral_10',['INTEGER_LITERAL',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989a77b89817e9fdd11bcdcac65b0f2e89dd',1,'dl7::json::detail']]],
+  ['integer_5fliteral_10',['INTEGER_LITERAL',['../db/dcc/namespacedl7_1_1json_1_1detail.html#aefd1a930e6928f0b5231c01b74806e05a77b89817e9fdd11bcdcac65b0f2e89dd',1,'dl7::json::detail']]],
   ['invalidcodeunit_11',['InvalidCodeUnit',['../da/d47/namespacecl7_1_1text_1_1codec.html#aab042571c0cfb310ad0152768b2c8ac9a03ab58dec6991b8b352e04bd55c4d6cf',1,'cl7::text::codec']]],
   ['invalidsequence_12',['InvalidSequence',['../da/d47/namespacecl7_1_1text_1_1codec.html#aab042571c0cfb310ad0152768b2c8ac9aff5c3eeddd1c7a19875b5686efd52fdb',1,'cl7::text::codec']]],
   ['invblendfactor_13',['InvBlendFactor',['../d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#ab8f817106c9cfaac6dc9ebaf63a679b9ad9f0b01e7996710789dc4196af52355c',1,'xl7::graphics::states::BlendState']]],

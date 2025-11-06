@@ -9,5 +9,5 @@ var searchData=
   ['state_6',['State',['../db/d24/classxl7_1_1Component.html#aea3f7614470b769182fb5b6a016e40b6',1,'xl7::Component']]],
   ['stenciloperation_7',['StencilOperation',['../db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#a5ea224e29dd36067e266b081eb767292',1,'xl7::graphics::states::DepthStencilState']]],
   ['style_8',['style',['../df/d52/structdl7_1_1json_1_1Format.html#a6a8a994bee9e67bd29d6ff5bd5eb6b64',1,'dl7::json::Format::Style'],['../db/df3/structdl7_1_1xml_1_1Format.html#a79cbbb2f423475c561be08709a473cde',1,'dl7::xml::Format::Style']]],
-  ['symbol_9',['symbol',['../de/d05/namespacedl7_1_1ini_1_1detail.html#a840033c2b8b2b45076f2800dd65544a1',1,'dl7::ini::detail::Symbol'],['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989',1,'dl7::json::detail::Symbol'],['../d4/dc2/namespacedl7_1_1xml_1_1detail.html#a754be953cfc420594a99dca33e3e0851',1,'dl7::xml::detail::Symbol']]]
+  ['symbol_9',['symbol',['../de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2',1,'dl7::ini::detail::Symbol'],['../db/dcc/namespacedl7_1_1json_1_1detail.html#aefd1a930e6928f0b5231c01b74806e05',1,'dl7::json::detail::Symbol'],['../d4/dc2/namespacedl7_1_1xml_1_1detail.html#a763cf7809cd96b73b261448238faf1f7',1,'dl7::xml::detail::Symbol']]]
 ];

@@ -31,7 +31,7 @@ var namespacedl7_1_1syntax =
     [ "TokenReader", "db/d76/classdl7_1_1syntax_1_1TokenReader.html", "db/d76/classdl7_1_1syntax_1_1TokenReader" ],
     [ "Vocabulary", "dd/d27/classdl7_1_1syntax_1_1Vocabulary.html", "dd/d27/classdl7_1_1syntax_1_1Vocabulary" ],
     [ "PrefixMatcher", "d7/d2b/conceptdl7_1_1syntax_1_1PrefixMatcher.html", null ],
-    [ "SymbolID", "db/d34/namespacedl7_1_1syntax.html#afc6bb2d6b0b21943ba7057252bbcb5b3", null ],
+    [ "SymbolId", "db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823", null ],
     [ "_try_match_next", "db/d34/namespacedl7_1_1syntax.html#a0e6e84cecfd1dabb925e9011c028144d", null ],
-    [ "EOF_SYMBOL_ID", "db/d34/namespacedl7_1_1syntax.html#a97e0694c1566845acf277eff7fa1b38f", null ]
+    [ "EOF_SYMBOL_ID", "db/d34/namespacedl7_1_1syntax.html#ab1b57a9e4c1d182fe54892446379cb35", null ]
 ];

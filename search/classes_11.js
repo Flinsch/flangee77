@@ -30,7 +30,7 @@ var searchData=
   ['resource_27',['Resource',['../d5/d7b/classxl7_1_1resources_1_1Resource.html',1,'xl7::resources']]],
   ['resourceentry_28',['ResourceEntry',['../d8/d89/structxl7_1_1resources_1_1ResourceManager_1_1ResourceEntry.html',1,'xl7::resources::ResourceManager']]],
   ['resourcefactoryimpl_29',['resourcefactoryimpl',['../df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html',1,'xl7::graphics::impl::direct3d11::ResourceFactoryImpl'],['../de/d84/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl.html',1,'xl7::graphics::impl::direct3d9::ResourceFactoryImpl']]],
-  ['resourceid_30',['ResourceID',['../d8/d44/classxl7_1_1resources_1_1ResourceID.html',1,'xl7::resources']]],
+  ['resourceid_30',['ResourceId',['../db/d1e/classxl7_1_1resources_1_1ResourceId.html',1,'xl7::resources']]],
   ['resourcemanager_31',['ResourceManager',['../d3/d00/classxl7_1_1resources_1_1ResourceManager.html',1,'xl7::resources']]],
   ['result_32',['Result',['../da/d3a/structtl7_1_1Result.html',1,'tl7']]],
   ['resultbase_33',['resultbase',['../de/d3e/structml7_1_1distance2_1_1ResultBase.html',1,'ml7::distance2::ResultBase&lt; T &gt;'],['../da/db7/structml7_1_1distance3_1_1ResultBase.html',1,'ml7::distance3::ResultBase&lt; T &gt;']]],

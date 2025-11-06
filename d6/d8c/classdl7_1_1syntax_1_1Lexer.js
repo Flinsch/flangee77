@@ -7,7 +7,7 @@ var classdl7_1_1syntax_1_1Lexer =
     ] ],
     [ "Lexer", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#acfe84b5a3760c5339d35e4f7aa0570b9", null ],
     [ "_advance", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#acc709ad81e240e15c7414e4674e3d7bc", null ],
-    [ "_recognize", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a70aacde56da7eb50c9aedd8b14468bcc", null ],
+    [ "_recognize", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ab611ef66271df135e522a5baf7d873f4", null ],
     [ "_skip_whitespace", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#a8d92396b348c8eb21bcccd22280ab25e", null ],
     [ "get_options", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#aa51c5a61a4cb4e76045c08fcbd550dd4", null ],
     [ "get_remainder", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ae85bc4550386ceb0c02bde967118dab5", null ],

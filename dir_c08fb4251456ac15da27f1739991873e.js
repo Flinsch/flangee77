@@ -38,5 +38,6 @@ var dir_c08fb4251456ac15da27f1739991873e =
     [ "string.h", "da/d66/string_8h.html", "da/d66/string_8h" ],
     [ "utilities.h", "de/df0/utilities_8h.html", "de/df0/utilities_8h" ],
     [ "Version.cpp", "d3/d7a/Version_8cpp.html", null ],
-    [ "Version.h", "de/d3a/Version_8h.html", "de/d3a/Version_8h" ]
+    [ "Version.h", "de/d3a/Version_8h.html", "de/d3a/Version_8h" ],
+    [ "VersionedId.h", "dc/d64/VersionedId_8h.html", "dc/d64/VersionedId_8h" ]
 ];

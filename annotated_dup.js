@@ -110,7 +110,8 @@ var annotated_dup =
       [ "string_hash", "d0/dbc/structcl7_1_1string__hash.html", "d0/dbc/structcl7_1_1string__hash" ],
       [ "u8isstream", "d9/d44/classcl7_1_1u8isstream.html", "d9/d44/classcl7_1_1u8isstream" ],
       [ "u8osstream", "d3/d63/classcl7_1_1u8osstream.html", "d3/d63/classcl7_1_1u8osstream" ],
-      [ "Version", "db/ddf/structcl7_1_1Version.html", "db/ddf/structcl7_1_1Version" ]
+      [ "Version", "db/ddf/structcl7_1_1Version.html", "db/ddf/structcl7_1_1Version" ],
+      [ "VersionedId", "dc/d7b/classcl7_1_1VersionedId.html", "dc/d7b/classcl7_1_1VersionedId" ]
     ] ],
     [ "dl7", "d2/d5d/namespacedl7.html", [
       [ "compression", "db/dee/namespacedl7_1_1compression.html", [
@@ -287,7 +288,7 @@ var annotated_dup =
     [ "std", "d8/dcc/namespacestd.html", [
       [ "hash< xl7::graphics::impl::shared::meshes::ComposedVertexLayout >", "db/de3/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout_01_4.html", "db/de3/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout_01_4" ],
       [ "hash< xl7::graphics::impl::shared::meshes::VertexBufferBinding >", "dc/d08/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding_01_4.html", "dc/d08/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding_01_4" ],
-      [ "hash< xl7::resources::ResourceID >", "d8/d59/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceID_01_4.html", "d8/d59/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceID_01_4" ]
+      [ "hash< xl7::resources::ResourceId >", "dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4.html", "dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4" ]
     ] ],
     [ "tl7", "d1/dce/namespacetl7.html", [
       [ "exceptions", "da/d05/namespacetl7_1_1exceptions.html", [
@@ -465,7 +466,7 @@ var annotated_dup =
         [ "DefaultDataProvider", "d7/dcd/classxl7_1_1resources_1_1DefaultDataProvider.html", "d7/dcd/classxl7_1_1resources_1_1DefaultDataProvider" ],
         [ "FakeDataProvider", "dc/d12/classxl7_1_1resources_1_1FakeDataProvider.html", "dc/d12/classxl7_1_1resources_1_1FakeDataProvider" ],
         [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html", "d5/d7b/classxl7_1_1resources_1_1Resource" ],
-        [ "ResourceID", "d8/d44/classxl7_1_1resources_1_1ResourceID.html", "d8/d44/classxl7_1_1resources_1_1ResourceID" ],
+        [ "ResourceId", "db/d1e/classxl7_1_1resources_1_1ResourceId.html", null ],
         [ "ResourceManager", "d3/d00/classxl7_1_1resources_1_1ResourceManager.html", "d3/d00/classxl7_1_1resources_1_1ResourceManager" ]
       ] ],
       [ "BackendRegistry", "d1/da6/classxl7_1_1BackendRegistry.html", "d1/da6/classxl7_1_1BackendRegistry" ],

@@ -19,7 +19,7 @@ var searchData=
   ['destcolor_16',['DestColor',['../d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#ab8f817106c9cfaac6dc9ebaf63a679b9ab5c77c29513009d6ea5f34de4561bbb2',1,'xl7::graphics::states::BlendState']]],
   ['disallowedunicode_17',['DisallowedUnicode',['../da/d47/namespacecl7_1_1text_1_1codec.html#aab042571c0cfb310ad0152768b2c8ac9a29e79381f4e76ecd75afbbd48f51b3d3',1,'cl7::text::codec']]],
   ['discard_18',['Discard',['../d6/d8c/classdl7_1_1syntax_1_1Lexer.html#ac4ce5eaf77a0e31efdbbe3df2c3209e6ad94b42030b9785fd754d5c1754961269',1,'dl7::syntax::Lexer']]],
-  ['doctype_19',['DOCTYPE',['../d4/dc2/namespacedl7_1_1xml_1_1detail.html#a754be953cfc420594a99dca33e3e0851a5cfb8928d9329fb5b1a8812dddfaaeb8',1,'dl7::xml::detail']]],
+  ['doctype_19',['DOCTYPE',['../d4/dc2/namespacedl7_1_1xml_1_1detail.html#a763cf7809cd96b73b261448238faf1f7a5cfb8928d9329fb5b1a8812dddfaaeb8',1,'dl7::xml::detail']]],
   ['dot_20',['Dot',['../d9/db3/structdl7_1_1ini_1_1Format.html#af0738a2b310ac38e69274f4e5c5d23e8aaf6c6cf7a454b4ef4a850ac4d960a2cc',1,'dl7::ini::Format']]],
   ['doublequote_21',['DoubleQuote',['../d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html#a597cb193de9275b68b56fd9a8a074228a312f3eacb3208038b0963fd457c576e8',1,'dl7::json::util::Escaper']]],
   ['doublequotedattributevalue_22',['DoubleQuotedAttributeValue',['../dc/dfe/classdl7_1_1xml_1_1util_1_1Escaper.html#aa281d968081ca9caa9f23bd1171a369da16760a05f60cfc161743c1c3e9513110',1,'dl7::xml::util::Escaper']]],

@@ -1,8 +1,8 @@
 var searchData=
 [
   ['left_0',['Left',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a9b2204dc71a9a9abc3f43b0be847bcf5a945d5e233cf7d6240f6b783b36a374ff',1,'fl7::fonts::TextStyle']]],
-  ['left_5fcurly_5fbracket_1',['LEFT_CURLY_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989aa57529caab966ddb18bbdc45d97438f9',1,'dl7::json::detail']]],
-  ['left_5fsquare_5fbracket_2',['LEFT_SQUARE_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989ae7401bd44c58fa0eb237be3d1ce7c426',1,'dl7::json::detail']]],
+  ['left_5fcurly_5fbracket_1',['LEFT_CURLY_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#aefd1a930e6928f0b5231c01b74806e05aa57529caab966ddb18bbdc45d97438f9',1,'dl7::json::detail']]],
+  ['left_5fsquare_5fbracket_2',['LEFT_SQUARE_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#aefd1a930e6928f0b5231c01b74806e05ae7401bd44c58fa0eb237be3d1ce7c426',1,'dl7::json::detail']]],
   ['less_3',['Less',['../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa1cfdf0e8d0c87a228c1f40d9bee7888b',1,'xl7::graphics']]],
   ['lessequal_4',['LessEqual',['../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fad3e6fdac55bb7b0edd7834c968ba1f38',1,'xl7::graphics']]],
   ['lf_5',['lf',['../d9/db3/structdl7_1_1ini_1_1Format.html#a24269faed2dc6dd3ec5b3146f37bd85ea618441d41cce47dbcfd9bed6e5ff64e6',1,'dl7::ini::Format::LF'],['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html#af77ef15789b42d037ea54228daa5c1c2a618441d41cce47dbcfd9bed6e5ff64e6',1,'dl7::json::Format::MultiLineOptions::LF'],['../de/dfe/structdl7_1_1xml_1_1Format_1_1PrettyOptions.html#ae9dd6fca25333a5b75155c6ac832ef7ca618441d41cce47dbcfd9bed6e5ff64e6',1,'dl7::xml::Format::PrettyOptions::LF']]],
@@ -13,7 +13,7 @@ var searchData=
   ['lightmagenta_10',['LightMagenta',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a3b9182ee3017c90c47d6349a5160e152',1,'tl7::reporting']]],
   ['lightred_11',['LightRed',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a7bff6b523f60766a982ac232a74f2bcc',1,'tl7::reporting']]],
   ['lightyellow_12',['LightYellow',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a9360ca27e9e06ef112c2cf93765e8cca',1,'tl7::reporting']]],
-  ['line_5fcomment_13',['LINE_COMMENT',['../db/dcc/namespacedl7_1_1json_1_1detail.html#a2c11d14fb41b8a9aafd23de87817e989afaae99a68e9c8134443a770fcbc635fd',1,'dl7::json::detail']]],
+  ['line_5fcomment_13',['LINE_COMMENT',['../db/dcc/namespacedl7_1_1json_1_1detail.html#aefd1a930e6928f0b5231c01b74806e05afaae99a68e9c8134443a770fcbc635fd',1,'dl7::json::detail']]],
   ['linear_14',['linear',['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#ab84d702ec5c0616ae781e3bd6d3816efa32a843da6ea40ab3b17a3421ccdf671b',1,'xl7::graphics::states::SamplerState::Linear'],['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#a5815318bfe88d26ae204eda9596134d8a32a843da6ea40ab3b17a3421ccdf671b',1,'xl7::graphics::states::SamplerState::Linear']]],
   ['linearinterpolation_15',['LinearInterpolation',['../d8/dd2/namespacexl7_1_1graphics_1_1images.html#ac9d829a5933316d55f7f267a17474dd9a14517b35b26ed67a34ffd446a9b86e33',1,'xl7::graphics::images']]],
   ['linelist_16',['LineList',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287fa596e1b7afe8925f3f578c716d5af8fef',1,'xl7::graphics::meshes']]],

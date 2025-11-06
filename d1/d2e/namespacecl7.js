@@ -46,6 +46,7 @@ var namespacecl7 =
     [ "u8isstream", "d9/d44/classcl7_1_1u8isstream.html", "d9/d44/classcl7_1_1u8isstream" ],
     [ "u8osstream", "d3/d63/classcl7_1_1u8osstream.html", "d3/d63/classcl7_1_1u8osstream" ],
     [ "Version", "db/ddf/structcl7_1_1Version.html", "db/ddf/structcl7_1_1Version" ],
+    [ "VersionedId", "dc/d7b/classcl7_1_1VersionedId.html", "dc/d7b/classcl7_1_1VersionedId" ],
     [ "unary_function", "df/d86/conceptcl7_1_1unary__function.html", null ],
     [ "any_char", "db/d8a/conceptcl7_1_1any__char.html", null ],
     [ "any_char_ptr", "de/d15/conceptcl7_1_1any__char__ptr.html", null ],

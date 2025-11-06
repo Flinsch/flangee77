@@ -19,5 +19,5 @@ var searchData=
   ['quit_5fkey_16',['quit_key',['../dd/d38/structxl7_1_1Config_1_1General.html#aed68fdfccb12a185bdf86d6403c86667',1,'xl7::Config::General']]],
   ['quote_5fchar_17',['quote_char',['../d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html#a87b152287f00ff2f50f40f247d03fe09',1,'dl7::json::util::Escaper::Options']]],
   ['quotechar_18',['QuoteChar',['../d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html#a597cb193de9275b68b56fd9a8a074228',1,'dl7::json::util::Escaper']]],
-  ['quoted_5fstring_5fliteral_19',['QUOTED_STRING_LITERAL',['../de/d05/namespacedl7_1_1ini_1_1detail.html#a840033c2b8b2b45076f2800dd65544a1aa2577c7f87e9bf1b3ab79a11a68897d3',1,'dl7::ini::detail']]]
+  ['quoted_5fstring_5fliteral_19',['QUOTED_STRING_LITERAL',['../de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2aa2577c7f87e9bf1b3ab79a11a68897d3',1,'dl7::ini::detail']]]
 ];

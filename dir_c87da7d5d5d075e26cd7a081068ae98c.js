@@ -34,7 +34,7 @@ var dir_c87da7d5d5d075e26cd7a081068ae98c =
     [ "SourceContext.h", "d6/d94/SourceContext_8h.html", "d6/d94/SourceContext_8h" ],
     [ "SourceLocation.cpp", "d2/d87/SourceLocation_8cpp.html", null ],
     [ "SourceLocation.h", "d3/d9a/SourceLocation_8h.html", "d3/d9a/SourceLocation_8h" ],
-    [ "SymbolID.h", "d7/d05/SymbolID_8h.html", "d7/d05/SymbolID_8h" ],
+    [ "SymbolId.h", "db/de3/SymbolId_8h.html", "db/de3/SymbolId_8h" ],
     [ "TerminalSymbol.cpp", "d7/d97/TerminalSymbol_8cpp.html", "d7/d97/TerminalSymbol_8cpp" ],
     [ "TerminalSymbol.h", "de/d44/TerminalSymbol_8h.html", "de/d44/TerminalSymbol_8h" ],
     [ "TerminalSymbolCollection.cpp", "da/db2/TerminalSymbolCollection_8cpp.html", null ],
