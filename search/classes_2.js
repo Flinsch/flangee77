@@ -9,8 +9,11 @@ var searchData=
   ['blockcommentmatcher_6',['BlockCommentMatcher',['../d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html',1,'dl7::syntax::matchers']]],
   ['booleanmatcher_7',['BooleanMatcher',['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html',1,'dl7::ini::detail']]],
   ['boundingbox_8',['BoundingBox',['../dc/d05/structfl7_1_1fonts_1_1BoundingBox.html',1,'fl7::fonts']]],
-  ['bufferedtokenreader_9',['BufferedTokenReader',['../d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html',1,'dl7::syntax']]],
-  ['builder_10',['builder',['../d2/d8d/classdl7_1_1ini_1_1detail_1_1Builder.html',1,'dl7::ini::detail::Builder'],['../de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html',1,'dl7::json::detail::Builder'],['../d3/d69/classdl7_1_1xml_1_1detail_1_1Builder.html',1,'dl7::xml::detail::Builder']]],
-  ['bytereader_11',['ByteReader',['../d7/df3/classcl7_1_1io_1_1ByteReader.html',1,'cl7::io']]],
-  ['bytewriter_12',['ByteWriter',['../de/d6e/classcl7_1_1io_1_1ByteWriter.html',1,'cl7::io']]]
+  ['buffer1d_9',['Buffer1D',['../d5/d06/structdl7_1_1Buffer1D.html',1,'dl7']]],
+  ['buffer2d_10',['Buffer2D',['../d4/d7f/structdl7_1_1Buffer2D.html',1,'dl7']]],
+  ['buffer3d_11',['Buffer3D',['../dc/dfd/structdl7_1_1Buffer3D.html',1,'dl7']]],
+  ['bufferedtokenreader_12',['BufferedTokenReader',['../d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html',1,'dl7::syntax']]],
+  ['builder_13',['builder',['../d2/d8d/classdl7_1_1ini_1_1detail_1_1Builder.html',1,'dl7::ini::detail::Builder'],['../de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html',1,'dl7::json::detail::Builder'],['../d3/d69/classdl7_1_1xml_1_1detail_1_1Builder.html',1,'dl7::xml::detail::Builder']]],
+  ['bytereader_14',['ByteReader',['../d7/df3/classcl7_1_1io_1_1ByteReader.html',1,'cl7::io']]],
+  ['bytewriter_15',['ByteWriter',['../de/d6e/classcl7_1_1io_1_1ByteWriter.html',1,'cl7::io']]]
 ];

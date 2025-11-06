@@ -69,7 +69,7 @@ var searchData=
   ['other_66',['Other',['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a6311ae17c1ee52b36e68aaf4ad066387',1,'cl7::logging']]],
   ['other_20default_20operations_67',['Other Default Operations',['../de/d95/md_code-style-guide.html#autotoc_md10',1,'']]],
   ['other_20stuff_68',['Other Stuff',['../de/d95/md_code-style-guide.html#autotoc_md20',1,'']]],
-  ['outcome_69',['outcome',['../da/d3a/structtl7_1_1Result.html#ad6e0dd3748757a0237c43a26f19bb6eb',1,'tl7::Result::Outcome'],['../da/d3a/structtl7_1_1Result.html#aaec2741a52824282bfa51c26af18bc59',1,'tl7::Result::outcome']]],
+  ['outcome_69',['outcome',['../da/d3a/structtl7_1_1Result.html#aaec2741a52824282bfa51c26af18bc59',1,'tl7::Result::outcome'],['../da/d3a/structtl7_1_1Result.html#ad6e0dd3748757a0237c43a26f19bb6eb',1,'tl7::Result::Outcome']]],
   ['outline_5fcolor_70',['outline_color',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac23d4376a1af309268a7d58011f6a322',1,'fl7::fonts::TextStyle']]],
   ['outline_5fwidth_71',['outline_width',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a9c7a800268ed22ca245c6838e8189ea6',1,'fl7::fonts::TextStyle']]],
   ['outofrangeascii_72',['OutOfRangeAscii',['../da/d47/namespacecl7_1_1text_1_1codec.html#aab042571c0cfb310ad0152768b2c8ac9ac4899c5e1062865b1e92f133ac1a4cda',1,'cl7::text::codec']]],

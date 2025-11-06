@@ -20,5 +20,6 @@ var searchData=
   ['right_5fside_5fbearing_17',['right_side_bearing',['../d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html#a078d132ca9e0072b9820b325768725ca',1,'fl7::fonts::GlyphMetrics']]],
   ['root_5fmeta_18',['root_meta',['../d9/d7e/structtl7_1_1Context.html#a97196caec0950fa40298140f6179113a',1,'tl7::Context']]],
   ['row_5fcount_19',['row_count',['../d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html#a4a5cdcb79665795e3c3f6892eef2b3c0',1,'xl7::graphics::shaders::ConstantDeclaration']]],
-  ['rs_20',['rs',['../d6/d62/classxl7_1_1graphics_1_1pipeline_1_1Pipeline.html#a6350be75a595f446d6b7127e1b3e70a3',1,'xl7::graphics::pipeline::Pipeline']]]
+  ['row_5fpitch_20',['row_pitch',['../d4/d7f/structdl7_1_1Buffer2D.html#a8c20fb9f837905d7879fb86d9ea7c45c',1,'dl7::Buffer2D::row_pitch'],['../dc/dfd/structdl7_1_1Buffer3D.html#a0ac4648859c14e7c7cb4d257af0539d4',1,'dl7::Buffer3D::row_pitch']]],
+  ['rs_21',['rs',['../d6/d62/classxl7_1_1graphics_1_1pipeline_1_1Pipeline.html#a6350be75a595f446d6b7127e1b3e70a3',1,'xl7::graphics::pipeline::Pipeline']]]
 ];
