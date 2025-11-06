@@ -9,10 +9,10 @@ var structdl7_1_1ini_1_1Format =
       [ "Equals", "d9/db3/structdl7_1_1ini_1_1Format.html#ab9e5b6793db53090c91cfd11eaf9afe7a0ccb67e7eaae09d9e4078d161eeca100", null ],
       [ "Colon", "d9/db3/structdl7_1_1ini_1_1Format.html#ab9e5b6793db53090c91cfd11eaf9afe7a3ccf74d463f8895cef06727cb9709d83", null ]
     ] ],
-    [ "Newline", "d9/db3/structdl7_1_1ini_1_1Format.html#a24269faed2dc6dd3ec5b3146f37bd85e", [
-      [ "CRLF", "d9/db3/structdl7_1_1ini_1_1Format.html#a24269faed2dc6dd3ec5b3146f37bd85ea50d5a4893c775dd805a095efef17ef3d", null ],
-      [ "LF", "d9/db3/structdl7_1_1ini_1_1Format.html#a24269faed2dc6dd3ec5b3146f37bd85ea618441d41cce47dbcfd9bed6e5ff64e6", null ],
-      [ "CR", "d9/db3/structdl7_1_1ini_1_1Format.html#a24269faed2dc6dd3ec5b3146f37bd85ea1d7b33fc26ca22c2011aaa97fecc43d8", null ]
+    [ "LineEnding", "d9/db3/structdl7_1_1ini_1_1Format.html#a5c32048a4c6a6ff36addda2a72b8a196", [
+      [ "CRLF", "d9/db3/structdl7_1_1ini_1_1Format.html#a5c32048a4c6a6ff36addda2a72b8a196a50d5a4893c775dd805a095efef17ef3d", null ],
+      [ "LF", "d9/db3/structdl7_1_1ini_1_1Format.html#a5c32048a4c6a6ff36addda2a72b8a196a618441d41cce47dbcfd9bed6e5ff64e6", null ],
+      [ "CR", "d9/db3/structdl7_1_1ini_1_1Format.html#a5c32048a4c6a6ff36addda2a72b8a196a1d7b33fc26ca22c2011aaa97fecc43d8", null ]
     ] ],
     [ "SectionNameDelimiter", "d9/db3/structdl7_1_1ini_1_1Format.html#af0738a2b310ac38e69274f4e5c5d23e8", [
       [ "Dot", "d9/db3/structdl7_1_1ini_1_1Format.html#af0738a2b310ac38e69274f4e5c5d23e8aaf6c6cf7a454b4ef4a850ac4d960a2cc", null ],
@@ -30,7 +30,7 @@ var structdl7_1_1ini_1_1Format =
     [ "empty_line_before_section_header", "d9/db3/structdl7_1_1ini_1_1Format.html#a3bfc1cb2c67b0a6990ed46629bfa2cce", null ],
     [ "float_policy", "d9/db3/structdl7_1_1ini_1_1Format.html#a2df46c43e64292434f581cb03838aaa7", null ],
     [ "key_value_delimiter", "d9/db3/structdl7_1_1ini_1_1Format.html#a0db163c1c8213b94190cc6c6b9d38bc2", null ],
-    [ "newline", "d9/db3/structdl7_1_1ini_1_1Format.html#a7eb101fbc7eed00a070043eeeb9e1073", null ],
+    [ "line_ending", "d9/db3/structdl7_1_1ini_1_1Format.html#a5ba1d9ca9985825cd72df00a6badfc60", null ],
     [ "section_name_delimiter", "d9/db3/structdl7_1_1ini_1_1Format.html#a95cf5a00bcab5ddba69344de55e1fa3d", null ],
     [ "space_around_delimiter", "d9/db3/structdl7_1_1ini_1_1Format.html#abb9ff62d9dcfd635cbe97b0a3e7b276c", null ]
 ];

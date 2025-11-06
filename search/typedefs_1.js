@@ -2,7 +2,7 @@ var searchData=
 [
   ['backendregistry_0',['BackendRegistry',['../d8/d3d/classxl7_1_1DriverBasedComponent.html#a0e81040146f233dd4eb75d03348816b9',1,'xl7::DriverBasedComponent']]],
   ['blockptr_1',['BlockPtr',['../d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html#ad17c977a8b25ee55b403e0ee63dd23d7',1,'cl7::logging::HtmlLogHandler']]],
-  ['boolean_5ft_2',['boolean_t',['../df/d87/namespacedl7_1_1json.html#a722636711d3c78e2d09b68d2fe7fd639',1,'dl7::json::boolean_t'],['../dd/dc6/namespacedl7_1_1ini.html#adea5c45d34ed292ba80c46f289547521',1,'dl7::ini::boolean_t']]],
+  ['boolean_5ft_2',['boolean_t',['../d9/dcb/namespacedl7_1_1toml.html#a9dd5611907eb91ac27cab9f863482e61',1,'dl7::toml::boolean_t'],['../df/d87/namespacedl7_1_1json.html#a722636711d3c78e2d09b68d2fe7fd639',1,'dl7::json::boolean_t'],['../dd/dc6/namespacedl7_1_1ini.html#adea5c45d34ed292ba80c46f289547521',1,'dl7::ini::boolean_t']]],
   ['buffer1dspan_3',['Buffer1DSpan',['../d2/d5d/namespacedl7.html#a9edc1390a8c2e44777d9a4abca53289d',1,'dl7']]],
   ['buffer1dview_4',['Buffer1DView',['../d2/d5d/namespacedl7.html#a9e07aa255088231253655c88ffc244c5',1,'dl7']]],
   ['buffer2dspan_5',['Buffer2DSpan',['../d2/d5d/namespacedl7.html#adc6d31aa9f36c4f682b7f08c1399d142',1,'dl7']]],

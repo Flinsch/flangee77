@@ -13,7 +13,7 @@ var searchData=
   ['buffer2d_10',['Buffer2D',['../d4/d7f/structdl7_1_1Buffer2D.html',1,'dl7']]],
   ['buffer3d_11',['Buffer3D',['../dc/dfd/structdl7_1_1Buffer3D.html',1,'dl7']]],
   ['bufferedtokenreader_12',['BufferedTokenReader',['../d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html',1,'dl7::syntax']]],
-  ['builder_13',['builder',['../d2/d8d/classdl7_1_1ini_1_1detail_1_1Builder.html',1,'dl7::ini::detail::Builder'],['../de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html',1,'dl7::json::detail::Builder'],['../d3/d69/classdl7_1_1xml_1_1detail_1_1Builder.html',1,'dl7::xml::detail::Builder']]],
+  ['builder_13',['builder',['../d2/d8d/classdl7_1_1ini_1_1detail_1_1Builder.html',1,'dl7::ini::detail::Builder'],['../de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html',1,'dl7::json::detail::Builder'],['../dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html',1,'dl7::toml::detail::Builder'],['../d3/d69/classdl7_1_1xml_1_1detail_1_1Builder.html',1,'dl7::xml::detail::Builder']]],
   ['bytereader_14',['ByteReader',['../d7/df3/classcl7_1_1io_1_1ByteReader.html',1,'cl7::io']]],
   ['bytewriter_15',['ByteWriter',['../de/d6e/classcl7_1_1io_1_1ByteWriter.html',1,'cl7::io']]]
 ];

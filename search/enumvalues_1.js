@@ -2,7 +2,7 @@ var searchData=
 [
   ['back_0',['Back',['../d2/df3/classxl7_1_1graphics_1_1states_1_1RasterizerState.html#a0bec4701af47bd83d6bc5bfd9a2d3f5ea0557fa923dcee4d0f86b1409f5c2167f',1,'xl7::graphics::states::RasterizerState']]],
   ['baseline_1',['Baseline',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4a32c4764653e50488bff6ce2eb815b',1,'fl7::fonts::TextStyle']]],
-  ['before_2',['Before',['../d9/db3/structdl7_1_1ini_1_1Format.html#a0f762a3d83a823fe830b5091974a75eca9060587edeb01a63e3d3edc959678d1e',1,'dl7::ini::Format']]],
+  ['before_2',['before',['../d9/db3/structdl7_1_1ini_1_1Format.html#a0f762a3d83a823fe830b5091974a75eca9060587edeb01a63e3d3edc959678d1e',1,'dl7::ini::Format::Before'],['../dc/d02/structdl7_1_1toml_1_1Format.html#a4922f2ca6f970d58e49024f770d5a438a9060587edeb01a63e3d3edc959678d1e',1,'dl7::toml::Format::Before']]],
   ['begin_3',['Begin',['../d6/dc7/namespacecl7_1_1io.html#a4ff74034025df11666f80f69b9069053a1a06729125544cab7cee73195fc044f0',1,'cl7::io']]],
   ['beta_4',['Beta',['../db/ddf/structcl7_1_1Version.html#a890721a856e7cc2fbb0c524521e0b635a0b87d66b88c72957dfea8c9605016442',1,'cl7::Version']]],
   ['bgra_5',['BGRA',['../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2a5a1fe3c61c9e2fd6dbbc823589f6e697',1,'xl7::graphics']]],
@@ -19,7 +19,7 @@ var searchData=
   ['border_16',['Border',['../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#a4f8492702caa383f50f8ebd226c1ecb4a070554647306343cbea29ebfdd278ba8',1,'xl7::graphics::states::SamplerState']]],
   ['borderless_17',['Borderless',['../da/df2/classxl7_1_1MainWindow.html#a65d67e130764aea53e92a93a196e76e7a78f0192ac55eba33ee88d026452952e5',1,'xl7::MainWindow']]],
   ['borderlessfullscreen_18',['BorderlessFullscreen',['../d2/d33/structxl7_1_1Config_1_1Video.html#ae385a3a6e937c6aef106ebdf94bd0e59ac1999bb36fd75c30832ec398d5b249ea',1,'xl7::Config::Video']]],
-  ['both_19',['both',['../d9/db3/structdl7_1_1ini_1_1Format.html#a0f762a3d83a823fe830b5091974a75eca130c5b3473c57faa76e2a1c54e26f88e',1,'dl7::ini::Format::Both'],['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a7fe905665e8a42ae50081048a7aca951a130c5b3473c57faa76e2a1c54e26f88e',1,'dl7::ini::detail::BooleanMatcher::Both']]],
+  ['both_19',['both',['../dc/d02/structdl7_1_1toml_1_1Format.html#a4922f2ca6f970d58e49024f770d5a438a130c5b3473c57faa76e2a1c54e26f88e',1,'dl7::toml::Format::Both'],['../d9/db3/structdl7_1_1ini_1_1Format.html#a0f762a3d83a823fe830b5091974a75eca130c5b3473c57faa76e2a1c54e26f88e',1,'dl7::ini::Format::Both'],['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a7fe905665e8a42ae50081048a7aca951a130c5b3473c57faa76e2a1c54e26f88e',1,'dl7::ini::detail::BooleanMatcher::Both']]],
   ['bottom_20',['Bottom',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458ba2ad9d63b69c4a10a5cc9cad923133bc4',1,'fl7::fonts::TextStyle']]],
   ['bytecode_21',['Bytecode',['../d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html#a67a32fc444b59dd218cbcacc4cb8b2e1afc348a9ae898bbbe1406eecc7db967d7',1,'xl7::graphics::shaders::ShaderCode']]]
 ];

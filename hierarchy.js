@@ -207,6 +207,7 @@ var hierarchy =
     [ "fl7::fonts::FontMetrics", "df/d82/structfl7_1_1fonts_1_1FontMetrics.html", null ],
     [ "dl7::ini::Format", "d9/db3/structdl7_1_1ini_1_1Format.html", null ],
     [ "dl7::json::Format", "df/d52/structdl7_1_1json_1_1Format.html", null ],
+    [ "dl7::toml::Format", "dc/d02/structdl7_1_1toml_1_1Format.html", null ],
     [ "dl7::xml::Format", "db/df3/structdl7_1_1xml_1_1Format.html", null ],
     [ "xl7::Config::General", "dd/d38/structxl7_1_1Config_1_1General.html", null ],
     [ "fl7::fonts::Glyph", "d2/d26/structfl7_1_1fonts_1_1Glyph.html", null ],
@@ -326,6 +327,9 @@ var hierarchy =
       [ "dl7::syntax::AstProcessor< Json, cl7::u8string >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", [
         [ "dl7::json::detail::Generator", "d5/dc2/classdl7_1_1json_1_1detail_1_1Generator.html", null ]
       ] ],
+      [ "dl7::syntax::AstProcessor< Toml, cl7::u8string >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", [
+        [ "dl7::toml::detail::Generator", "db/dd1/classdl7_1_1toml_1_1detail_1_1Generator.html", null ]
+      ] ],
       [ "dl7::syntax::AstProcessor< Document, cl7::u8string >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", [
         [ "dl7::xml::detail::Generator", "d8/d0a/classdl7_1_1xml_1_1detail_1_1Generator.html", null ]
       ] ],
@@ -334,6 +338,9 @@ var hierarchy =
       ] ],
       [ "dl7::syntax::DirectAstBuilder< Json >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", [
         [ "dl7::json::detail::Builder", "de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html", null ]
+      ] ],
+      [ "dl7::syntax::DirectAstBuilder< Toml >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", [
+        [ "dl7::toml::detail::Builder", "dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html", null ]
       ] ],
       [ "dl7::syntax::DirectAstBuilder< Document >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", [
         [ "dl7::xml::detail::Builder", "d3/d69/classdl7_1_1xml_1_1detail_1_1Builder.html", null ]
@@ -346,6 +353,7 @@ var hierarchy =
         [ "dl7::syntax::GenericLexer", "d5/da3/classdl7_1_1syntax_1_1GenericLexer.html", [
           [ "dl7::ini::detail::Lexer", "d0/dfd/classdl7_1_1ini_1_1detail_1_1Lexer.html", null ],
           [ "dl7::json::detail::Lexer", "d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer.html", null ],
+          [ "dl7::toml::detail::Lexer", "d8/d9d/classdl7_1_1toml_1_1detail_1_1Lexer.html", null ],
           [ "dl7::xml::detail::Lexer", "d9/d9c/classdl7_1_1xml_1_1detail_1_1Lexer.html", null ]
         ] ]
       ] ]
@@ -559,6 +567,9 @@ var hierarchy =
       [ "dl7::syntax::BufferedTokenReader< Tcontainer >", "d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html", null ],
       [ "dl7::syntax::LexingTokenReader", "dd/ddd/classdl7_1_1syntax_1_1LexingTokenReader.html", null ]
     ] ],
+    [ "dl7::toml::Toml", "d0/d49/classdl7_1_1toml_1_1Toml.html", null ],
+    [ "dl7::toml::TomlReader", "d3/d18/classdl7_1_1toml_1_1TomlReader.html", null ],
+    [ "dl7::toml::TomlWriter", "d2/dfe/classdl7_1_1toml_1_1TomlWriter.html", null ],
     [ "cl7::text::codec::traits< Tchar >", "d7/d07/structcl7_1_1text_1_1codec_1_1traits.html", null ],
     [ "cl7::text::codec::traits< cl7::achar_t >", "d7/db1/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1achar__t_01_4.html", null ],
     [ "cl7::text::codec::traits< cl7::u16char_t >", "d2/d25/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u16char__t_01_4.html", null ],

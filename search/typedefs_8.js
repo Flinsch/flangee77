@@ -12,6 +12,9 @@ var searchData=
   ['linesegment3d_9',['LineSegment3d',['../d3/d53/namespaceml7.html#a1c8f31a0f7da1e0c496fa36d486bfa9e',1,'ml7']]],
   ['linesegment3f_10',['LineSegment3f',['../d3/d53/namespaceml7.html#a8f84fa810794df73dfa61841c74f3841',1,'ml7']]],
   ['linesegment3ld_11',['LineSegment3ld',['../d3/d53/namespaceml7.html#a0c585be7d0340ba31c8fdc56b2095213',1,'ml7']]],
-  ['loghandler_12',['LogHandler',['../df/dc2/classcl7_1_1logging_1_1Logger.html#a2075b25a0203d68d7e79a2bfc46ba59d',1,'cl7::logging::Logger']]],
-  ['loghandlerptr_13',['LogHandlerPtr',['../df/dc2/classcl7_1_1logging_1_1Logger.html#a56c7419e45e6d75ea629d7823cc2d02f',1,'cl7::logging::Logger']]]
+  ['local_5fdate_5ft_12',['local_date_t',['../d9/dcb/namespacedl7_1_1toml.html#ae90264040766dde7f7898913dd4c3eef',1,'dl7::toml']]],
+  ['local_5fdate_5ftime_5ft_13',['local_date_time_t',['../d9/dcb/namespacedl7_1_1toml.html#a51320e8bb5020be6cd4a48e181da51df',1,'dl7::toml']]],
+  ['local_5ftime_5ft_14',['local_time_t',['../d9/dcb/namespacedl7_1_1toml.html#a192d05a86cd4219dad2c68e6ec3c249b',1,'dl7::toml']]],
+  ['loghandler_15',['LogHandler',['../df/dc2/classcl7_1_1logging_1_1Logger.html#a2075b25a0203d68d7e79a2bfc46ba59d',1,'cl7::logging::Logger']]],
+  ['loghandlerptr_16',['LogHandlerPtr',['../df/dc2/classcl7_1_1logging_1_1Logger.html#a56c7419e45e6d75ea629d7823cc2d02f',1,'cl7::logging::Logger']]]
 ];

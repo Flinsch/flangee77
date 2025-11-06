@@ -3,7 +3,7 @@ var searchData=
   ['a8_5funorm_0',['A8_UNORM',['../d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082daa46933e0c897349b8e07ceb64387e66d',1,'xl7::graphics']]],
   ['abgr_1',['ABGR',['../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2adce7d10c2f9ffc8ed9e7b6a3f7d8ba6c',1,'xl7::graphics']]],
   ['add_2',['Add',['../d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#a40e09472faa3fca650e6204e40010175aec211f7c20af43e742bf2570c3cb84f9',1,'xl7::graphics::states::BlendState']]],
-  ['after_3',['After',['../d9/db3/structdl7_1_1ini_1_1Format.html#a0f762a3d83a823fe830b5091974a75eca7bfcadb5535fe8aad5032762b7bfe159',1,'dl7::ini::Format']]],
+  ['after_3',['after',['../d9/db3/structdl7_1_1ini_1_1Format.html#a0f762a3d83a823fe830b5091974a75eca7bfcadb5535fe8aad5032762b7bfe159',1,'dl7::ini::Format::After'],['../dc/d02/structdl7_1_1toml_1_1Format.html#a4922f2ca6f970d58e49024f770d5a438a7bfcadb5535fe8aad5032762b7bfe159',1,'dl7::toml::Format::After']]],
   ['all_4',['all',['../d8/d30/namespacexl7_1_1graphics.html#a7f932a51645d57b7b508969692d213deab1c94ca2fbc3e78fc30069c8d0f01680',1,'xl7::graphics::All'],['../d8/d30/namespacexl7_1_1graphics.html#ae25f36aae299cdb990d6a03f90d44642ab1c94ca2fbc3e78fc30069c8d0f01680',1,'xl7::graphics::All']]],
   ['allowminus_5',['AllowMinus',['../d3/d6a/namespacedl7_1_1syntax_1_1matchers.html#a3febb873cf18a10edb53d4037dcfe997a31e24c61a3f599160cb0310084649493',1,'dl7::syntax::matchers']]],
   ['allowplusminus_6',['AllowPlusMinus',['../d3/d6a/namespacedl7_1_1syntax_1_1matchers.html#a3febb873cf18a10edb53d4037dcfe997a18bd78d52f3a9693f59c738d71893529',1,'dl7::syntax::matchers']]],

@@ -19,7 +19,7 @@ var searchData=
   ['fontloader_2eh_16',['FontLoader.h',['../d9/db3/FontLoader_8h.html',1,'']]],
   ['fontmetrics_2eh_17',['FontMetrics.h',['../d8/df8/FontMetrics_8h.html',1,'']]],
   ['format_2ecpp_18',['format.cpp',['../d0/dd8/format_8cpp.html',1,'']]],
-  ['format_2eh_19',['format.h',['../d3/d6a/ini_2Format_8h.html',1,'(Global Namespace)'],['../d2/d93/xml_2Format_8h.html',1,'(Global Namespace)'],['../d1/db7/json_2Format_8h.html',1,'(Global Namespace)'],['../d0/d0a/format_8h.html',1,'(Global Namespace)']]],
+  ['format_2eh_19',['format.h',['../d3/d6a/ini_2Format_8h.html',1,'(Global Namespace)'],['../d2/d93/xml_2Format_8h.html',1,'(Global Namespace)'],['../d9/d33/toml_2Format_8h.html',1,'(Global Namespace)'],['../d1/db7/json_2Format_8h.html',1,'(Global Namespace)'],['../d0/d0a/format_8h.html',1,'(Global Namespace)']]],
   ['framebuffersurface_2ecpp_20',['FramebufferSurface.cpp',['../de/de2/FramebufferSurface_8cpp.html',1,'']]],
   ['framebuffersurface_2eh_21',['FramebufferSurface.h',['../d8/ddb/FramebufferSurface_8h.html',1,'']]],
   ['functional_2eh_22',['functional.h',['../d8/dea/functional_8h.html',1,'']]],

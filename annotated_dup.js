@@ -191,6 +191,17 @@ var annotated_dup =
         [ "TokenReader", "db/d76/classdl7_1_1syntax_1_1TokenReader.html", "db/d76/classdl7_1_1syntax_1_1TokenReader" ],
         [ "Vocabulary", "dd/d27/classdl7_1_1syntax_1_1Vocabulary.html", "dd/d27/classdl7_1_1syntax_1_1Vocabulary" ]
       ] ],
+      [ "toml", "d9/dcb/namespacedl7_1_1toml.html", [
+        [ "detail", "d9/d58/namespacedl7_1_1toml_1_1detail.html", [
+          [ "Builder", "dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html", "dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder" ],
+          [ "Generator", "db/dd1/classdl7_1_1toml_1_1detail_1_1Generator.html", "db/dd1/classdl7_1_1toml_1_1detail_1_1Generator" ],
+          [ "Lexer", "d8/d9d/classdl7_1_1toml_1_1detail_1_1Lexer.html", "d8/d9d/classdl7_1_1toml_1_1detail_1_1Lexer" ]
+        ] ],
+        [ "Format", "dc/d02/structdl7_1_1toml_1_1Format.html", "dc/d02/structdl7_1_1toml_1_1Format" ],
+        [ "Toml", "d0/d49/classdl7_1_1toml_1_1Toml.html", null ],
+        [ "TomlReader", "d3/d18/classdl7_1_1toml_1_1TomlReader.html", "d3/d18/classdl7_1_1toml_1_1TomlReader" ],
+        [ "TomlWriter", "d2/dfe/classdl7_1_1toml_1_1TomlWriter.html", "d2/dfe/classdl7_1_1toml_1_1TomlWriter" ]
+      ] ],
       [ "xml", "da/d33/namespacedl7_1_1xml.html", [
         [ "detail", "d4/dc2/namespacedl7_1_1xml_1_1detail.html", [
           [ "Builder", "d3/d69/classdl7_1_1xml_1_1detail_1_1Builder.html", "d3/d69/classdl7_1_1xml_1_1detail_1_1Builder" ],

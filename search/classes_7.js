@@ -1,7 +1,7 @@
 var searchData=
 [
   ['general_0',['General',['../dd/d38/structxl7_1_1Config_1_1General.html',1,'xl7::Config']]],
-  ['generator_1',['generator',['../dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator.html',1,'dl7::ini::detail::Generator'],['../d5/dc2/classdl7_1_1json_1_1detail_1_1Generator.html',1,'dl7::json::detail::Generator'],['../d8/d0a/classdl7_1_1xml_1_1detail_1_1Generator.html',1,'dl7::xml::detail::Generator']]],
+  ['generator_1',['generator',['../dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator.html',1,'dl7::ini::detail::Generator'],['../d5/dc2/classdl7_1_1json_1_1detail_1_1Generator.html',1,'dl7::json::detail::Generator'],['../db/dd1/classdl7_1_1toml_1_1detail_1_1Generator.html',1,'dl7::toml::detail::Generator'],['../d8/d0a/classdl7_1_1xml_1_1detail_1_1Generator.html',1,'dl7::xml::detail::Generator']]],
   ['genericlexer_2',['GenericLexer',['../d5/da3/classdl7_1_1syntax_1_1GenericLexer.html',1,'dl7::syntax']]],
   ['glyph_3',['Glyph',['../d2/d26/structfl7_1_1fonts_1_1Glyph.html',1,'fl7::fonts']]],
   ['glyphmetric_4',['GlyphMetric',['../df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric.html',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader']]],

@@ -4,6 +4,7 @@ var namespacedl7 =
     [ "ini", "dd/dc6/namespacedl7_1_1ini.html", "dd/dc6/namespacedl7_1_1ini" ],
     [ "json", "df/d87/namespacedl7_1_1json.html", "df/d87/namespacedl7_1_1json" ],
     [ "syntax", "db/d34/namespacedl7_1_1syntax.html", "db/d34/namespacedl7_1_1syntax" ],
+    [ "toml", "d9/dcb/namespacedl7_1_1toml.html", "d9/dcb/namespacedl7_1_1toml" ],
     [ "xml", "da/d33/namespacedl7_1_1xml.html", "da/d33/namespacedl7_1_1xml" ],
     [ "Base64", "da/d3b/classdl7_1_1Base64.html", "da/d3b/classdl7_1_1Base64" ],
     [ "Buffer1D", "d5/d06/structdl7_1_1Buffer1D.html", "d5/d06/structdl7_1_1Buffer1D" ],
