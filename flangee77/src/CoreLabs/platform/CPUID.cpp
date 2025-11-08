@@ -10,7 +10,7 @@
 
 
 
-namespace cl7::system {
+namespace cl7::platform {
 
 
 
@@ -128,4 +128,4 @@ namespace cl7::system {
 
 
 
-} // namespace cl7::system
+} // namespace cl7::platform

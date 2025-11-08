@@ -29,6 +29,8 @@ target_sources(flangee77
     logging/Logger.cpp
     logging/StandardLogger.cpp
 
+    platform/CPUID.cpp
+
     profiling/Profiler.cpp
     profiling/Registry.cpp
     profiling/SampleHandler.cpp
@@ -49,7 +51,6 @@ target_sources(flangee77
     text/codec/Utf16Codec.cpp
     text/codec/Utf32Codec.cpp
 
-    system/CPUID.cpp
     system/datetime.cpp
     system/MemoryStatus.cpp
     system/user.cpp

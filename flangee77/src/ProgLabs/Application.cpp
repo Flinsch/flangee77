@@ -9,7 +9,7 @@
 #include <CoreLabs/logging/HtmlLogHandler.h>
 #include <CoreLabs/memory.h>
 #include <CoreLabs/profiling.h>
-#include <CoreLabs/system/CPUID.h>
+#include <CoreLabs/platform/CPUID.h>
 #include <CoreLabs/system/MemoryStatus.h>
 #include <CoreLabs/text/codec.h>
 
@@ -92,7 +92,7 @@ namespace pl7 {
 
         // Print out CPU identification/information.
         LOG_TYPE(u8"CPU identification/information:", cl7::logging::LogType::Caption);
-        cl7::system::CPUID cpuid;
+        cl7::platform::CPUID cpuid;
         if (!cpuid.capture())
             LOG_WARNING(u8"Unable to retrieve CPU identification/information.");
         LOG_TYPE(u8"Vendor name\t" + cl7::text::codec::to_utf8(cpuid.vendor_name), cl7::logging::LogType::Item);
@@ -116,7 +116,7 @@ namespace pl7 {
         LOG_TYPE(u8"Total physical memory\t" + cl7::memory::stringify_byte_amount_si(memory_status.total_physical_memory), cl7::logging::LogType::Item);
         LOG_TYPE(u8"Available physical memory\t" + cl7::memory::stringify_byte_amount_si(memory_status.available_physical_memory), cl7::logging::LogType::Item);
 
-        // 
+        //
         if constexpr (sizeof(size_t) == 4)
             LOG_TYPE(u8"Apologies for sticking to 32-bit and thus limiting usable memory. But this software doesn't need more either. \U0001f618", cl7::logging::LogType::Comment);
 
@@ -175,7 +175,7 @@ namespace pl7 {
             if (_quit_flag || _restart_flag)
                 break;
 
-            
+
 
             // Pause the application logic while the
             // rendering device is lost and not reset.
@@ -185,7 +185,7 @@ namespace pl7 {
                     continue;
             }
 
-            
+
 
             // Start the stopwatch.
             cl7::profiling::Stopwatch stopwatch{true};

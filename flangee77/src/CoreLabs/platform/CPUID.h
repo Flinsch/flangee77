@@ -1,11 +1,11 @@
-#ifndef CL7_SYSTEM_CPUID_H
-#define CL7_SYSTEM_CPUID_H
+#ifndef CL7_PLATFORM_CPUID_H
+#define CL7_PLATFORM_CPUID_H
 
 #include <CoreLabs/string.h>
 
 
 
-namespace cl7::system {
+namespace cl7::platform {
 
 
 
@@ -58,6 +58,6 @@ struct CPUID
 
 
 
-} // namespace cl7::system
+} // namespace cl7::platform
 
-#endif // CL7_SYSTEM_CPUID_H
+#endif // CL7_PLATFORM_CPUID_H
