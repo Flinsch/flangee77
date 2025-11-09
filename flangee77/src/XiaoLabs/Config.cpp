@@ -1,7 +1,5 @@
 #include "Config.h"
 
-#include <windows.h>
-
 
 
 namespace xl7 {
@@ -12,9 +10,9 @@ namespace xl7 {
     {
         general.title = u8"flangee77";
 
-        //general.console_key = VK_OEM_5;
-        general.console_key = VK_F1;
-        general.quit_key = VK_F10;
+        //general.console_key = 0xDC;//VK_OEM_5;
+        general.console_key = 0x70;//VK_F1;
+        general.quit_key = 0x79;//VK_F10;
         general.use_hardware_cursor = false;
 
         video.driver_name = u8"Direct3D";

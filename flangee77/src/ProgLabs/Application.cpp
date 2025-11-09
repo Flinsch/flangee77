@@ -10,7 +10,7 @@
 #include <CoreLabs/memory.h>
 #include <CoreLabs/profiling.h>
 #include <CoreLabs/platform/CPUID.h>
-#include <CoreLabs/system/MemoryStatus.h>
+#include <CoreLabs/platform/memory.h>
 #include <CoreLabs/text/codec.h>
 
 
@@ -110,7 +110,7 @@ namespace pl7 {
 
         // Print out the system memory status.
         LOG_TYPE(u8"System memory status:", cl7::logging::LogType::Caption);
-        cl7::system::MemoryStatus memory_status;
+        cl7::platform::memory::MemoryStatus memory_status;
         if (!memory_status.capture())
             LOG_WARNING(u8"Unable to retrieve system memory status.");
         LOG_TYPE(u8"Total physical memory\t" + cl7::memory::stringify_byte_amount_si(memory_status.total_physical_memory), cl7::logging::LogType::Item);
@@ -148,7 +148,7 @@ namespace pl7 {
         bool ok = _shutdown_impl();
 
         // Close the main window.
-        xl7::main_window().close();
+        xl7::main_window().close_window();
 
         // Destroy all singleton objects
         // (also shutting down all "X" components).
@@ -164,7 +164,7 @@ namespace pl7 {
     {
         while (true)
         {
-            const auto [quit_flag, exit_code] = xl7::MainWindow::process_window_messages();
+            const auto [quit_flag, exit_code] = xl7::MainWindow::instance().process_window_events();
 
             if (quit_flag)
             {

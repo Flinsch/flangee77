@@ -6,6 +6,8 @@ target_sources(flangee77
     DriverResolver.cpp
     MainWindow.cpp
 
+    detail/windows/WindowImpl.cpp
+
     graphics/ChannelOrder.cpp
     graphics/Color.cpp
     graphics/GraphicsSystem.cpp

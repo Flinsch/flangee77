@@ -9,7 +9,7 @@
 
 #include <MathLabs/math.h>
 
-#include <CoreLabs/filesystem.h>
+#include <CoreLabs/platform/filesystem.h>
 #include <CoreLabs/io/File.h>
 #include <CoreLabs/io/Utf8Reader.h>
 
@@ -106,7 +106,7 @@ namespace helloworld {
         _index_buffer_id = xl7::graphics::mesh_manager()->create_index_buffer(u8"My Index Buffer", index_buffer_desc, index_data_provider);
 
 
-        cl7::io::File file(cl7::filesystem::get_working_directory() + u8"assets/shaders/shader.hlsl");
+        cl7::io::File file(cl7::platform::filesystem::get_working_directory() + u8"assets/shaders/shader.hlsl");
         cl7::io::Utf8Reader utf8_reader(&file);
         cl7::u8string high_level_code = utf8_reader.read();
         xl7::graphics::shaders::ShaderCode shader_code{high_level_code};
@@ -124,14 +124,14 @@ namespace helloworld {
             {"PixelBaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 12, 16, 16},
         };
         // NOLINTEND(*-use-designated-initializers)
-        
+
         _constant_buffer_id = xl7::graphics::shader_manager()->create_constant_buffer(u8"My Constant Buffer", constant_buffer_desc);
 
 
         xl7::graphics::images::Image image;
         xl7::graphics::images::TargaImageHandler targa_image_handler;
         xl7::graphics::images::PngImageHandler png_image_handler;
-        targa_image_handler.load_from_file(cl7::filesystem::get_working_directory() + u8"assets/gfx/dummy.tga", image);
+        targa_image_handler.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy.tga", image);
         //targa_image_handler.load_from_file(cl7::filesystem::get_working_directory() + u8"assets/gfx/dummy-compressed.tga", image);
         //png_image_handler.load_from_file(cl7::filesystem::get_working_directory() + u8"assets/gfx/dummy.png", image);
         //png_image_handler.load_from_file(cl7::filesystem::get_working_directory() + u8"assets/gfx/dummy-indexed.png", image);
@@ -229,7 +229,7 @@ namespace helloworld {
 
 
         //auto font_loader = std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(cl7::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSans-Regular.ttf");
-        auto font_loader = std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(cl7::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSerif-Regular.ttf");
+        auto font_loader = std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(cl7::platform::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSerif-Regular.ttf");
         _font = std::make_unique<fl7::fonts::Font>(std::move(font_loader));
 
 

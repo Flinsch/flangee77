@@ -129,7 +129,7 @@ namespace xl7::graphics::impl::direct3d9::errors {
         } // switch error code
 
         if (!message)
-            return cl7::errors::system_result(static_cast<unsigned long>(error_code));
+            return cl7::platform::errors::system_result(static_cast<int>(error_code));
 
         cl7::u8osstream oss;
         oss << std::hex << u8"0x" << error_code;
@@ -141,7 +141,7 @@ namespace xl7::graphics::impl::direct3d9::errors {
 
     cl7::u8string d3d9_result(long error_code, cl7::u8string_view context)
     {
-        return cl7::errors::with_context(d3d9_result(error_code), context);
+        return cl7::platform::errors::with_context(d3d9_result(error_code), context);
     }
 
 

@@ -25,49 +25,69 @@
 
 
 
+#define F77_IS_MSVC     0
+#define F77_IS_CLANG    0
+#define F77_IS_GCC      0
+
+#define F77_IS_WINDOWS  0
+#define F77_IS_LINUX    0
+#define F77_IS_MACOS    0
+
+#define F77_IS_64BIT    0
+#define F77_IS_32BIT    0
+
+#define F77_IS_LITTLE_ENDIAN    0
+#define F77_IS_BIG_ENDIAN       0
+
 #if defined(_MSC_VER)
+#undef F77_IS_MSVC
+#define F77_IS_MSVC 1
 #define F77_COMPILER_MSVC 1
 #elif defined(__clang__)
 // Be mindful that __GNUC__ is also defined for Clang to ensure compatibility with GCC,
 // so always check for __clang__ first if detecting Clang specifically.
+#undef F77_IS_CLANG
+#define F77_IS_CLANG 1
 #define F77_COMPILER_CLANG 1
 #elif defined(__GNUC__)
+#undef F77_IS_GCC
+#define F77_IS_GCC 1
 #define F77_COMPILER_GCC 1
 #endif
 
 #if defined(_WIN32)
+#undef F77_IS_WINDOWS
+#define F77_IS_WINDOWS 1
 #define F77_PLATFORM_WINDOWS 1
 #elif defined(__linux__)
+#undef F77_IS_LINUX
+#define F77_IS_LINUX 1
 #define F77_PLATFORM_LINUX 1
 #elif defined(__APPLE__) && defined(__MACH__)
+#undef F77_IS_MACOS
+#define F77_IS_MACOS 1
 #define F77_PLATFORM_MACOS 1
 #endif
 
 #if defined(_WIN64) || defined(__x86_64__) || defined(__ppc64__)
+#undef F77_IS_64BIT
+#define F77_IS_64BIT 1
 #define F77_ARCH_64BIT 1
 #elif defined(_WIN32) || defined(__i386__) || defined(__ppc__)
+#undef F77_IS_32BIT
+#define F77_IS_32BIT 1
 #define F77_ARCH_32BIT 1
 #endif
 
 #if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+#undef F77_IS_LITTLE_ENDIAN
+#define F77_IS_LITTLE_ENDIAN 1
 #define F77_ENDIAN_LITTLE 1
 #elif defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+#undef F77_IS_BIG_ENDIAN
+#define F77_IS_BIG_ENDIAN 1
 #define F77_ENDIAN_BIG 1
 #endif
-
-#define F77_IS_MSVC     (defined(F77_COMPILER_MSVC))
-#define F77_IS_CLANG    (defined(F77_COMPILER_CLANG))
-#define F77_IS_GCC      (defined(F77_COMPILER_GCC))
-
-#define F77_IS_WINDOWS  (defined(F77_PLATFORM_WINDOWS))
-#define F77_IS_LINUX    (defined(F77_PLATFORM_LINUX))
-#define F77_IS_MACOS    (defined(F77_PLATFORM_MACOS))
-
-#define F77_IS_64BIT    (defined(F77_ARCH_64BIT))
-#define F77_IS_32BIT    (defined(F77_ARCH_32BIT))
-
-#define F77_IS_LITTLE_ENDIAN    (defined(F77_ENDIAN_LITTLE))
-#define F77_IS_BIG_ENDIAN       (defined(F77_ENDIAN_BIG))
 
 
 

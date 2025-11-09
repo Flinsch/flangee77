@@ -1,4 +1,5 @@
 #include "filesystem.h"
+#if F77_IS_WINDOWS
 
 #include <CoreLabs/text/codec.h>
 #include <CoreLabs/auto_invoke.h>
@@ -8,27 +9,26 @@
 
 
 
-namespace cl7::filesystem {
+namespace cl7::platform::detail::windows::filesystem {
 
 
 
-    /**
-     * Returns the working directory of the module instance.
-     */
-    cl7::u8string get_working_directory()
+    cl7::u8string get_module_directory()
     {
-        /*wchar_t _full_path[MAX_PATH + 1];
+        wchar_t _full_path[MAX_PATH + 1];
         ::GetModuleFileNameW(nullptr, _full_path, MAX_PATH);
 
         std::wstring_view full_path{_full_path};
         size_t p = full_path.find_last_of(L'\\');
-        return cl7::text::to_utf8(cl7::text::reinterpret_utfx(full_path.substr(0, p + 1)));*/
+        return cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(full_path.substr(0, p + 1)));
+    }
+
+    cl7::u8string get_working_directory()
+    {
+        //return get_module_directory();
         return get_initial_directory();
     }
 
-    /**
-     * Returns the initial directory (where the execution started).
-     */
     cl7::u8string get_initial_directory()
     {
         static wchar_t _path[MAX_PATH + 2] = {0};
@@ -47,9 +47,6 @@ namespace cl7::filesystem {
         return cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(_path));
     }
 
-    /**
-     * Returns the current directory.
-     */
     cl7::u8string get_current_directory()
     {
         wchar_t _path[MAX_PATH + 2] = {0};
@@ -62,9 +59,6 @@ namespace cl7::filesystem {
         return cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(_path));
     }
 
-    /**
-     * Returns the user directory.
-     */
     cl7::u8string get_user_directory()
     {
         static cl7::u8char_t _path[MAX_PATH + 2] = {0};
@@ -96,4 +90,6 @@ namespace cl7::filesystem {
 
 
 
-} // namespace cl7::filesystem
+} // namespace cl7::platform::detail::windows::filesystem
+
+#endif // F77_IS_WINDOWS

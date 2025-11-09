@@ -79,7 +79,7 @@ namespace xl7::graphics::impl::direct3d11 {
             hresult = dxgi_adapter->GetDesc(&dxgi_adapter_desc);
             if (FAILED(hresult))
             {
-                LOG_WARNING(cl7::errors::system_result(hresult, u8"IDXGIAdapter::GetDesc"));
+                LOG_WARNING(cl7::platform::errors::system_result(hresult, u8"IDXGIAdapter::GetDesc"));
                 continue;
             }
 

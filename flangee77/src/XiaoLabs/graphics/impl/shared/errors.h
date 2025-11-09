@@ -1,7 +1,7 @@
 #ifndef XL7_GRAPHICS_IMPL_SHARED_ERRORS_H
 #define XL7_GRAPHICS_IMPL_SHARED_ERRORS_H
 
-#include <CoreLabs/errors.h>
+#include <CoreLabs/platform/errors.h>
 
 
 

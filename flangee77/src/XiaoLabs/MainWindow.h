@@ -2,9 +2,9 @@
 #define XL7_MAINWINDOW_H
 #include "./Component.h"
 
-#include <CoreLabs/string.h>
+#include "./detail/IWindowImpl.h"
 
-#include <windows.h>
+#include <CoreLabs/string.h>
 
 
 
@@ -20,16 +20,6 @@ class MainWindow final
 
 
 public:
-    enum struct DisplayMode
-    {
-        Unknown,
-        Fullscreen,
-        Borderless,
-        Windowed,
-    };
-
-
-
     MainWindow(const MainWindow&) = delete;
     MainWindow& operator=(const MainWindow&) = delete;
     MainWindow(MainWindow&&) = delete;
@@ -42,9 +32,9 @@ public:
     // #############################################################################
 
     /**
-     * Returns the handle of the window.
+     * Returns the raw handle of the window.
      */
-    HWND get_handle() const { return _handle; }
+    void* get_handle() const { assert(_pimpl); if (!_pimpl) return nullptr; return _pimpl->get_handle(); }
 
     /**
      * Returns the display mode.
@@ -67,16 +57,6 @@ public:
     const cl7::u8string& get_title() const { return _title; }
 
     /**
-     * Returns the handle of the icon (or NULL).
-     */
-    HICON get_icon_handle() const { return _icon_handle; }
-
-    /**
-     * Returns the handle of the small icon (or NULL).
-     */
-    HICON get_small_icon_handle() const { return _small_icon_handle; }
-
-    /**
      * Returns the flag indicating whether the window is currently active.
      */
     bool is_active() const { return _active; }
@@ -89,27 +69,35 @@ public:
 
     /**
      * Shows the window (makes the window visible).
-     * The function returns true, if the window was visible before.
      */
-    bool show_window();
+    void show_window();
 
     /**
-     * Hides the window (makes the window unvisible).
-     * The function returns true, if the window was visible before.
+     * Hides the window (makes the window invisible).
      */
-    bool hide_window();
+    void hide_window();
 
     /**
-     * Closes the window (and destroys it).
+     * Activates the windows.
      */
-    bool close();
+    void activate_window();
 
     /**
-     * Processes incoming window messages.
-     * Returns a flag indicating a request to terminate the application (WM_QUIT
-     * message) and, if so, the exit code (0 otherwise).
+     * Deactivates the windows.
      */
-    static std::pair<bool, int> process_window_messages();
+    void deactivate_window();
+
+    /**
+     * Closes the (main) window, after which the application will then terminate.
+     */
+    void close_window();
+
+    /**
+     * Processes incoming window messages/events.
+     * Returns a flag indicating a request to terminate the application and, if so,
+     * the (suggested) exit code (0 otherwise).
+     */
+    std::pair<bool, int> process_window_events();
 
 
 
@@ -152,11 +140,6 @@ private:
     // #############################################################################
 
     /**
-     * Registers the window class.
-     */
-    bool _register_window_class();
-
-    /**
      * Creates the window.
      */
     bool _create_window();
@@ -166,36 +149,11 @@ private:
      */
     bool _destroy_window();
 
-    /**
-     * Unregisters the window class.
-     */
-    static bool _unregister_window_class();
-
-
-
-    // #############################################################################
-    // Window Proc Callback
-    // #############################################################################
-
-    /**
-     * The callback function processing incoming window messages.
-     */
-    static LRESULT CALLBACK wnd_proc(
-        HWND hwnd,
-        UINT msg,
-        WPARAM wparam,
-        LPARAM lparam);
-
 
 
     // #############################################################################
     // Attributes
     // #############################################################################
-
-    /**
-     * The handle of the window.
-     */
-    HWND _handle = nullptr;
 
     /**
      * The display mode (fullscreen, borderless, or windowed).
@@ -218,19 +176,14 @@ private:
     cl7::u8string _title;
 
     /**
-     * The handle of the icon (or NULL).
-     */
-    HICON _icon_handle = nullptr;
-
-    /**
-     * The handle of the small icon (or NULL).
-     */
-    HICON _small_icon_handle = nullptr;
-
-    /**
      * The flag indicating whether the window is currently active.
      */
     bool _active = false;
+
+    /**
+     * Our "pointer to implementation" of the platform-dependent operations.
+     */
+    std::unique_ptr<detail::IWindowImpl> _pimpl;
 
 }; // class MainWindow
 

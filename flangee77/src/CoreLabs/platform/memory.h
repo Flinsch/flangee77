@@ -1,11 +1,11 @@
-#ifndef CL7_SYSTEM_MEMORYSTATUS_H
-#define CL7_SYSTEM_MEMORYSTATUS_H
+#ifndef CL7_PLATFORM_MEMORY_H
+#define CL7_PLATFORM_MEMORY_H
 
 #include <CoreLabs/root.h>
 
 
 
-namespace cl7::system {
+namespace cl7::platform::memory {
 
 
 
@@ -55,6 +55,6 @@ struct MemoryStatus
 
 
 
-} // namespace cl7::system
+} // namespace cl7::platform::memory
 
-#endif // CL7_SYSTEM_MEMORYSTATUS_H
+#endif // CL7_PLATFORM_MEMORY_H

@@ -47,8 +47,8 @@ namespace xl7::graphics::impl::direct3d9 {
         auto* const d3d_main = static_cast<GraphicsSystemImpl*>(&GraphicsSystem::instance())->get_raw_d3d_main(); // NOLINT(*-pro-type-static-cast-downcast)
 
         // Cache the main window's display mode.
-        const MainWindow::DisplayMode window_display_mode = MainWindow::instance().get_display_mode();
-        const bool fullscreen = window_display_mode == MainWindow::DisplayMode::Fullscreen;
+        const DisplayMode window_display_mode = MainWindow::instance().get_display_mode();
+        const bool fullscreen = window_display_mode == DisplayMode::Fullscreen;
 
         // Set the format of the back buffer
         // and the depth/stencil surface.
@@ -64,7 +64,7 @@ namespace xl7::graphics::impl::direct3d9 {
         _d3d_present_parameters.MultiSampleType             = D3DMULTISAMPLE_NONE;
         _d3d_present_parameters.MultiSampleQuality          = 0;
         _d3d_present_parameters.SwapEffect                  = D3DSWAPEFFECT_DISCARD;
-        _d3d_present_parameters.hDeviceWindow               = MainWindow::instance().get_handle();
+        _d3d_present_parameters.hDeviceWindow               = static_cast<HWND>(MainWindow::instance().get_handle());
         _d3d_present_parameters.Windowed                    = fullscreen ? FALSE : TRUE;
         _d3d_present_parameters.EnableAutoDepthStencil      = TRUE;
         _d3d_present_parameters.AutoDepthStencilFormat      = depth_stencil_format;
@@ -77,7 +77,7 @@ namespace xl7::graphics::impl::direct3d9 {
         HRESULT hresult = d3d_main->CreateDevice(
             D3DADAPTER_DEFAULT,
             D3DDEVTYPE_HAL,
-            MainWindow::instance().get_handle(),
+            static_cast<HWND>(MainWindow::instance().get_handle()),
             D3DCREATE_HARDWARE_VERTEXPROCESSING,
             &_d3d_present_parameters,
             &_d3d_device);
@@ -209,7 +209,7 @@ namespace xl7::graphics::impl::direct3d9 {
      */
     bool RenderingDeviceImpl::_check_device_lost_impl()
     {
-        
+
 
         return false;
     }
@@ -220,7 +220,7 @@ namespace xl7::graphics::impl::direct3d9 {
      */
     bool RenderingDeviceImpl::_handle_device_lost_impl()
     {
-        
+
 
         return true;
     }
@@ -304,7 +304,7 @@ namespace xl7::graphics::impl::direct3d9 {
         const HMODULE hDXGI = ::LoadLibraryW(L"dxgi.dll");
         if (!hDXGI)
         {
-            LOG_WARNING(cl7::errors::system_result(::GetLastError(), u8"::LoadLibrary"));
+            LOG_WARNING(cl7::platform::errors::system_result(::GetLastError(), u8"::LoadLibrary"));
             return false;
         }
 
@@ -312,7 +312,7 @@ namespace xl7::graphics::impl::direct3d9 {
         auto CreateDXGIFactoryProc = reinterpret_cast<CREATEDXGIFACTORYPROC>(::GetProcAddress(hDXGI, "CreateDXGIFactory1"));
         if (!CreateDXGIFactoryProc)
         {
-            LOG_WARNING(cl7::errors::system_result(::GetLastError(), u8"::GetProcAddress"));
+            LOG_WARNING(cl7::platform::errors::system_result(::GetLastError(), u8"::GetProcAddress"));
             ::FreeLibrary(hDXGI);
             return false;
         }
@@ -321,7 +321,7 @@ namespace xl7::graphics::impl::direct3d9 {
         HRESULT hresult = CreateDXGIFactoryProc(__uuidof(IDXGIFactory), reinterpret_cast<void**>(&factory));
         if (FAILED(hresult))
         {
-            LOG_WARNING(cl7::errors::system_result(hresult, u8"::CreateDXGIFactory1"));
+            LOG_WARNING(cl7::platform::errors::system_result(hresult, u8"::CreateDXGIFactory1"));
             ::FreeLibrary(hDXGI);
             return false;
         }
@@ -345,7 +345,7 @@ namespace xl7::graphics::impl::direct3d9 {
             adapter->Release();
             if (FAILED(hresult))
             {
-                LOG_WARNING(cl7::errors::system_result(hresult, u8"IDXGIAdapter::GetDesc"));
+                LOG_WARNING(cl7::platform::errors::system_result(hresult, u8"IDXGIAdapter::GetDesc"));
                 continue;
             }
 

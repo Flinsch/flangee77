@@ -11,7 +11,7 @@
 #include <XiaoLabs/graphics/impl/direct3d11/shaders/D3DShaderReflection.h>
 #endif
 
-#include <CoreLabs/filesystem.h>
+#include <CoreLabs/platform/filesystem.h>
 #include <CoreLabs/text/format.h>
 
 #include <TestLabs/TestSuite.h>
@@ -891,7 +891,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  compile shaders" )
     {
         const Entry& entry = container[ i ];
 
-        const cl7::u8string file_path = cl7::filesystem::get_working_directory() + u8"assets/shaders/" + entry.filename;
+        const cl7::u8string file_path = cl7::platform::filesystem::get_working_directory() + u8"assets/shaders/" + entry.filename;
 
         xl7::graphics::shaders::ShaderCode bytecode = xl7::graphics::impl::shared::shaders::D3DShaderCompiler::compile_hlsl_code( file_path, {}, entry.entry_point, entry.target );
         xl7::graphics::shaders::ReflectionResult reflection_result;

@@ -2,8 +2,6 @@
 target_sources(flangee77
     PRIVATE
     bits.cpp
-    errors.cpp
-    filesystem.cpp
     Guid.cpp
     logging.cpp
     memory.cpp
@@ -30,6 +28,17 @@ target_sources(flangee77
     logging/StandardLogger.cpp
 
     platform/CPUID.cpp
+    platform/errors.cpp
+    platform/filesystem.cpp
+    platform/memory.cpp
+    platform/user.cpp
+
+    platform/detail/linux/memory.cpp
+
+    platform/detail/windows/errors.cpp
+    platform/detail/windows/filesystem.cpp
+    platform/detail/windows/memory.cpp
+    platform/detail/windows/user.cpp
 
     profiling/Profiler.cpp
     profiling/Registry.cpp
@@ -52,6 +61,4 @@ target_sources(flangee77
     text/codec/Utf32Codec.cpp
 
     system/datetime.cpp
-    system/MemoryStatus.cpp
-    system/user.cpp
 )

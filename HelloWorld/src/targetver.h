@@ -1,6 +1,11 @@
 #ifndef HELLOWORLD_TARGETVER_H
 #define HELLOWORLD_TARGETVER_H
 
+#include <CoreLabs/root.h>
+
+
+
+#if F77_IS_WINDOWS
 // Including "SDKDDKVer.h" defines the highest available Windows platform.
 // If you want to build your application for an earlier Windows platform, include "WinSDKVer.h", and
 // before including "SDKDDKVer.h", set the _WIN32_WINNT macro to the platform you want to support.
@@ -13,5 +18,10 @@
 #endif // !_WIN32_WINNT
 // NOLINTEND(*-reserved-identifier)
 #include <SDKDDKVer.h>
+
+#include <windows.h>
+#endif
+
+
 
 #endif // HELLOWORLD_TARGETVER_H

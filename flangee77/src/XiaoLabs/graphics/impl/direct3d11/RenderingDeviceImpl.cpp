@@ -373,9 +373,9 @@ namespace xl7::graphics::impl::direct3d11 {
         }
 
         // Cache the main window's display mode.
-        const MainWindow::DisplayMode window_display_mode = MainWindow::instance().get_display_mode();
-        const bool fullscreen = window_display_mode == MainWindow::DisplayMode::Fullscreen;
-        const bool borderless = window_display_mode == MainWindow::DisplayMode::Borderless;
+        const DisplayMode window_display_mode = MainWindow::instance().get_display_mode();
+        const bool fullscreen = window_display_mode == DisplayMode::Fullscreen;
+        const bool borderless = window_display_mode == DisplayMode::Borderless;
         const bool flip_model = !fullscreen;
 
         // Fill the swap chain description structure.
@@ -419,7 +419,7 @@ namespace xl7::graphics::impl::direct3d11 {
         wrl::ComPtr<IDXGISwapChain1> dxgi_swap_chain;
         hresult = dxgi_factory->CreateSwapChainForHwnd(
             _d3d_device.Get(),
-            MainWindow::instance().get_handle(),
+            static_cast<HWND>(MainWindow::instance().get_handle()),
             &dxgi_swap_chain_desc,
             flip_model && borderless ? nullptr : &dxgi_swap_chain_fullscreen_desc,
             nullptr,
@@ -436,7 +436,7 @@ namespace xl7::graphics::impl::direct3d11 {
         dxgi_swap_chain.As(&_dxgi_swap_chain);
 
         // Optional: disable Alt+Enter.
-        dxgi_factory->MakeWindowAssociation(MainWindow::instance().get_handle(), DXGI_MWA_NO_ALT_ENTER);
+        dxgi_factory->MakeWindowAssociation(static_cast<HWND>(MainWindow::instance().get_handle()), DXGI_MWA_NO_ALT_ENTER);
 
         // Ask for the adapter description.
         DXGI_ADAPTER_DESC dxgi_adapter_desc = {};

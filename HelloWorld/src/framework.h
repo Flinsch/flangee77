@@ -3,8 +3,8 @@
 
 #include "./targetver.h"
 
-#include <windows.h>
-
 #include <CoreLabs/root.h>
+
+
 
 #endif // HELLOWORLD_FRAMEWORK_H
