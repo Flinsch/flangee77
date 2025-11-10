@@ -192,7 +192,7 @@ var searchData=
   ['topology_189',['topology',['../d9/d2e/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedDrawStates.html#afecb903f73ebaa27e21997adf5769786',1,'xl7::graphics::RenderingContext::ResolvedDrawStates::topology'],['../d8/df2/structxl7_1_1graphics_1_1meshes_1_1MeshBuffer_1_1Desc.html#a609b093af89465cf114cd9b6b3bda662',1,'xl7::graphics::meshes::MeshBuffer::Desc::topology'],['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287f',1,'xl7::graphics::meshes::Topology']]],
   ['topology_2eh_190',['Topology.h',['../d9/d93/Topology_8h.html',1,'']]],
   ['total_5fcount_191',['total_count',['../da/d74/structtl7_1_1Stats_1_1Group.html#a73e6dcac97d1ef17470caeca7cb4ae5f',1,'tl7::Stats::Group']]],
-  ['total_5fphysical_5fmemory_192',['total_physical_memory',['../d1/d7a/structcl7_1_1system_1_1MemoryStatus.html#a1dcdda397e185f0213662c9eca94634e',1,'cl7::system::MemoryStatus']]],
+  ['total_5fphysical_5fmemory_192',['total_physical_memory',['../d2/dea/structcl7_1_1platform_1_1memory_1_1MemoryStatus.html#acbfd65a420b65d9bcf7e26c4709fbfb4',1,'cl7::platform::memory::MemoryStatus']]],
   ['total_5fsize_5fbits_193',['TOTAL_SIZE_BITS',['../dc/d7b/classcl7_1_1VersionedId.html#a409c262f12ea5fbd4fba300a014d1cbc',1,'cl7::VersionedId']]],
   ['tptr_194',['Tptr',['../d1/d5d/classcl7_1_1contiguous__iterator.html#adbfdf9c273cbc35556e2a9a9b20dd84b',1,'cl7::contiguous_iterator']]],
   ['traits_195',['traits',['../d7/d07/structcl7_1_1text_1_1codec_1_1traits.html',1,'cl7::text::codec']]],

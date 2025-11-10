@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>flangee77: CoreLabs/system/user.h Source File</title>
+<title>flangee77: CoreLabs/platform/user.h Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -99,48 +99,55 @@ $(document).ready(function(){initNavTree('d8/ddb/user_8h_source.html','../../');
   <div class="headertitle"><div class="title">user.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="../../d8/ddb/user_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef CL7_SYSTEM_SECURITY_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define CL7_SYSTEM_SECURITY_H</span></div>
+<a href="../../d8/ddb/user_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef CL7_PLATFORM_USER_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define CL7_PLATFORM_USER_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="../../da/d66/string_8h.html">CoreLabs/string.h</a>&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../dc/df8/namespacecl7_1_1system.html">cl7::system</a> {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../da/dfc/namespacecl7_1_1platform_1_1user.html">cl7::platform::user</a> {</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../dd/d72/classcl7_1_1system_1_1user.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="../../dd/d72/classcl7_1_1system_1_1user.html">user</a></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../dd/d72/classcl7_1_1system_1_1user.html#ad7b5e16a9d30b5d8186d896be4abd1f3">   16</a></span>    <span class="keyword">enum struct</span> <a class="code hl_enumeration" href="../../dd/d72/classcl7_1_1system_1_1user.html#ad7b5e16a9d30b5d8186d896be4abd1f3">UserNameFormat</a></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <a class="code hl_enumvalue" href="../../dd/d72/classcl7_1_1system_1_1user.html#ad7b5e16a9d30b5d8186d896be4abd1f3a2c7f8c53ce28a0f9a4dd6c55e7127a5e">FullUserName</a>,</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_enumvalue" href="../../dd/d72/classcl7_1_1system_1_1user.html#ad7b5e16a9d30b5d8186d896be4abd1f3ac52ba0110d5e37e36d1eab4ab20ba83b">PureUserName</a>,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    };</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#a5b965b6e5507bba786f6626ef6a1b9fc">   12</a></span>    <span class="keyword">enum struct</span> <a class="code hl_enumeration" href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#a5b965b6e5507bba786f6626ef6a1b9fc">UserNameFormat</a></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <a class="code hl_enumvalue" href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#a5b965b6e5507bba786f6626ef6a1b9fca2c7f8c53ce28a0f9a4dd6c55e7127a5e">FullUserName</a>,</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <a class="code hl_enumvalue" href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#a5b965b6e5507bba786f6626ef6a1b9fcac52ba0110d5e37e36d1eab4ab20ba83b">PureUserName</a>,</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    };</div>
 </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> <a class="code hl_function" href="../../dd/d72/classcl7_1_1system_1_1user.html#a6d1d9fceb1ecbb5ed46fb0ea1c3cb8ce">get_user_name</a>(<a class="code hl_enumeration" href="../../dd/d72/classcl7_1_1system_1_1user.html#ad7b5e16a9d30b5d8186d896be4abd1f3">UserNameFormat</a> user_name_format);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}; <span class="comment">// class user</span></div>
-</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_typedef" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> <a class="code hl_function" href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#a9a93576d02b2999c81f1d8f72ac85028">get_user_name</a>(<a class="code hl_enumeration" href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#a5b965b6e5507bba786f6626ef6a1b9fc">UserNameFormat</a> user_name_format);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#a3dce62c669f78bfb95aac03ea43ca17b">get_screen_width</a>();</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>} <span class="comment">// namespace cl7::system</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif </span><span class="comment">// CL7_SYSTEM_SECURITY_H</span></div>
-<div class="ttc" id="aclasscl7_1_1system_1_1user_html"><div class="ttname"><a href="../../dd/d72/classcl7_1_1system_1_1user.html">cl7::system::user</a></div><div class="ttdef"><b>Definition</b> user.h:13</div></div>
-<div class="ttc" id="aclasscl7_1_1system_1_1user_html_a6d1d9fceb1ecbb5ed46fb0ea1c3cb8ce"><div class="ttname"><a href="../../dd/d72/classcl7_1_1system_1_1user.html#a6d1d9fceb1ecbb5ed46fb0ea1c3cb8ce">cl7::system::user::get_user_name</a></div><div class="ttdeci">static cl7::u8string get_user_name(UserNameFormat user_name_format)</div><div class="ttdef"><b>Definition</b> user.cpp:20</div></div>
-<div class="ttc" id="aclasscl7_1_1system_1_1user_html_ad7b5e16a9d30b5d8186d896be4abd1f3"><div class="ttname"><a href="../../dd/d72/classcl7_1_1system_1_1user.html#ad7b5e16a9d30b5d8186d896be4abd1f3">cl7::system::user::UserNameFormat</a></div><div class="ttdeci">UserNameFormat</div><div class="ttdef"><b>Definition</b> user.h:17</div></div>
-<div class="ttc" id="aclasscl7_1_1system_1_1user_html_ad7b5e16a9d30b5d8186d896be4abd1f3a2c7f8c53ce28a0f9a4dd6c55e7127a5e"><div class="ttname"><a href="../../dd/d72/classcl7_1_1system_1_1user.html#ad7b5e16a9d30b5d8186d896be4abd1f3a2c7f8c53ce28a0f9a4dd6c55e7127a5e">cl7::system::user::UserNameFormat::FullUserName</a></div><div class="ttdeci">@ FullUserName</div></div>
-<div class="ttc" id="aclasscl7_1_1system_1_1user_html_ad7b5e16a9d30b5d8186d896be4abd1f3ac52ba0110d5e37e36d1eab4ab20ba83b"><div class="ttname"><a href="../../dd/d72/classcl7_1_1system_1_1user.html#ad7b5e16a9d30b5d8186d896be4abd1f3ac52ba0110d5e37e36d1eab4ab20ba83b">cl7::system::user::UserNameFormat::PureUserName</a></div><div class="ttdeci">@ PureUserName</div></div>
-<div class="ttc" id="anamespacecl7_1_1system_html"><div class="ttname"><a href="../../dc/df8/namespacecl7_1_1system.html">cl7::system</a></div><div class="ttdef"><b>Definition</b> CPUID.cpp:13</div></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#aeae7889ae5aa833fbb330f7c570720d1">get_screen_height</a>();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#ad2709d84fa17aab1e90040a5be0523e3">show_cursor</a>();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#a0984f7bd2060126cc70c88d7ecd0908d">hide_cursor</a>();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>} <span class="comment">// namespace cl7::platform::user</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#endif </span><span class="comment">// CL7_PLATFORM_USER_H</span></div>
+<div class="ttc" id="anamespacecl7_1_1platform_1_1user_html"><div class="ttname"><a href="../../da/dfc/namespacecl7_1_1platform_1_1user.html">cl7::platform::user</a></div><div class="ttdef"><b>Definition</b> user.cpp:12</div></div>
+<div class="ttc" id="anamespacecl7_1_1platform_1_1user_html_a0984f7bd2060126cc70c88d7ecd0908d"><div class="ttname"><a href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#a0984f7bd2060126cc70c88d7ecd0908d">cl7::platform::user::hide_cursor</a></div><div class="ttdeci">int hide_cursor()</div><div class="ttdef"><b>Definition</b> user.cpp:63</div></div>
+<div class="ttc" id="anamespacecl7_1_1platform_1_1user_html_a3dce62c669f78bfb95aac03ea43ca17b"><div class="ttname"><a href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#a3dce62c669f78bfb95aac03ea43ca17b">cl7::platform::user::get_screen_width</a></div><div class="ttdeci">int get_screen_width()</div><div class="ttdef"><b>Definition</b> user.cpp:29</div></div>
+<div class="ttc" id="anamespacecl7_1_1platform_1_1user_html_a5b965b6e5507bba786f6626ef6a1b9fc"><div class="ttname"><a href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#a5b965b6e5507bba786f6626ef6a1b9fc">cl7::platform::user::UserNameFormat</a></div><div class="ttdeci">UserNameFormat</div><div class="ttdef"><b>Definition</b> user.h:13</div></div>
+<div class="ttc" id="anamespacecl7_1_1platform_1_1user_html_a5b965b6e5507bba786f6626ef6a1b9fca2c7f8c53ce28a0f9a4dd6c55e7127a5e"><div class="ttname"><a href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#a5b965b6e5507bba786f6626ef6a1b9fca2c7f8c53ce28a0f9a4dd6c55e7127a5e">cl7::platform::user::UserNameFormat::FullUserName</a></div><div class="ttdeci">@ FullUserName</div></div>
+<div class="ttc" id="anamespacecl7_1_1platform_1_1user_html_a5b965b6e5507bba786f6626ef6a1b9fcac52ba0110d5e37e36d1eab4ab20ba83b"><div class="ttname"><a href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#a5b965b6e5507bba786f6626ef6a1b9fcac52ba0110d5e37e36d1eab4ab20ba83b">cl7::platform::user::UserNameFormat::PureUserName</a></div><div class="ttdeci">@ PureUserName</div></div>
+<div class="ttc" id="anamespacecl7_1_1platform_1_1user_html_a9a93576d02b2999c81f1d8f72ac85028"><div class="ttname"><a href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#a9a93576d02b2999c81f1d8f72ac85028">cl7::platform::user::get_user_name</a></div><div class="ttdeci">cl7::u8string get_user_name(UserNameFormat user_name_format)</div><div class="ttdef"><b>Definition</b> user.cpp:19</div></div>
+<div class="ttc" id="anamespacecl7_1_1platform_1_1user_html_ad2709d84fa17aab1e90040a5be0523e3"><div class="ttname"><a href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#ad2709d84fa17aab1e90040a5be0523e3">cl7::platform::user::show_cursor</a></div><div class="ttdeci">int show_cursor()</div><div class="ttdef"><b>Definition</b> user.cpp:51</div></div>
+<div class="ttc" id="anamespacecl7_1_1platform_1_1user_html_aeae7889ae5aa833fbb330f7c570720d1"><div class="ttname"><a href="../../da/dfc/namespacecl7_1_1platform_1_1user.html#aeae7889ae5aa833fbb330f7c570720d1">cl7::platform::user::get_screen_height</a></div><div class="ttdeci">int get_screen_height()</div><div class="ttdef"><b>Definition</b> user.cpp:37</div></div>
 <div class="ttc" id="anamespacecl7_html_a56c82ebac73d775d95e0932d54ff12c3"><div class="ttname"><a href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a></div><div class="ttdeci">std::basic_string&lt; u8char_t &gt; u8string</div><div class="ttdef"><b>Definition</b> string.h:31</div></div>
 <div class="ttc" id="astring_8h_html"><div class="ttname"><a href="../../da/d66/string_8h.html">string.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -148,7 +155,7 @@ $(document).ready(function(){initNavTree('d8/ddb/user_8h_source.html','../../');
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_c08fb4251456ac15da27f1739991873e.html">CoreLabs</a></li><li class="navelem"><a class="el" href="../../dir_53d57ae03bb144a91c45cd8081679432.html">system</a></li><li class="navelem"><a class="el" href="../../d8/ddb/user_8h.html">user.h</a></li>
+    <li class="navelem"><a class="el" href="../../dir_c08fb4251456ac15da27f1739991873e.html">CoreLabs</a></li><li class="navelem"><a class="el" href="../../dir_55faf46c0b0ddd1e170108297dfbb1f6.html">platform</a></li><li class="navelem"><a class="el" href="../../d8/ddb/user_8h.html">user.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

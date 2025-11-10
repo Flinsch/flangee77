@@ -13,7 +13,7 @@ var searchData=
   ['registrar_10',['registrar',['../dc/d25/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl_1_1Registrar.html',1,'xl7::graphics::impl::direct3d11::GraphicsSystemImpl::Registrar'],['../d5/d15/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl_1_1Registrar.html',1,'xl7::graphics::impl::direct3d9::GraphicsSystemImpl::Registrar']]],
   ['registry_11',['Registry',['../d5/d99/classcl7_1_1profiling_1_1Registry.html',1,'cl7::profiling']]],
   ['registryentry_12',['RegistryEntry',['../d6/d6b/structxl7_1_1BackendRegistry_1_1RegistryEntry.html',1,'xl7::BackendRegistry']]],
-  ['regs_13',['regs',['../dd/d93/structcl7_1_1system_1_1CPUID_1_1regs.html',1,'cl7::system::CPUID']]],
+  ['regs_13',['regs',['../de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html',1,'cl7::platform::CPUID']]],
   ['renderingcontext_14',['RenderingContext',['../de/d0a/classxl7_1_1graphics_1_1RenderingContext.html',1,'xl7::graphics']]],
   ['renderingcontextimpl_15',['renderingcontextimpl',['../dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl'],['../d9/dfb/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl.html',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl']]],
   ['renderingdevice_16',['RenderingDevice',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html',1,'xl7::graphics']]],

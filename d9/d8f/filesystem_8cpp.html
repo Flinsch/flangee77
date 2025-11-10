@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>flangee77: CoreLabs/filesystem.cpp File Reference</title>
+<title>flangee77: CoreLabs/platform/filesystem.cpp File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -98,66 +98,34 @@ $(document).ready(function(){initNavTree('d9/d8f/filesystem_8cpp.html','../../')
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="../../dd/dd8/filesystem_8h_source.html">filesystem.h</a>&quot;</code><br />
-<code>#include &lt;<a class="el" href="../../d1/d16/codec_8h_source.html">CoreLabs/text/codec.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../db/d02/auto__invoke_8h_source.html">CoreLabs/auto_invoke.h</a>&gt;</code><br />
-<code>#include &lt;windows.h&gt;</code><br />
-<code>#include &lt;shlobj.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for filesystem.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../df/dcf/filesystem_8cpp__incl.png" border="0" usemap="#aCoreLabs_2filesystem_8cpp" alt=""/></div>
-<map name="aCoreLabs_2filesystem_8cpp" id="aCoreLabs_2filesystem_8cpp">
-<area shape="rect" title=" " alt="" coords="326,5,507,31"/>
-<area shape="rect" href="../../dd/dd8/filesystem_8h.html" title=" " alt="" coords="207,79,309,104"/>
-<area shape="poly" title=" " alt="" coords="392,33,297,75,295,71,390,28"/>
-<area shape="rect" href="../../d1/d16/codec_8h.html" title=" " alt="" coords="333,79,500,104"/>
-<area shape="poly" title=" " alt="" coords="419,31,419,65,414,65,414,31"/>
-<area shape="rect" href="../../db/d02/auto__invoke_8h.html" title=" " alt="" coords="5,79,183,104"/>
-<area shape="poly" title=" " alt="" coords="365,33,160,78,159,73,364,28"/>
-<area shape="rect" title=" " alt="" coords="525,79,615,104"/>
-<area shape="poly" title=" " alt="" coords="442,28,534,70,532,75,440,33"/>
-<area shape="rect" title=" " alt="" coords="640,79,713,104"/>
-<area shape="poly" title=" " alt="" coords="459,28,627,74,626,79,458,33"/>
-<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="169,152,304,177"/>
-<area shape="poly" title=" " alt="" coords="257,105,247,140,241,138,252,104"/>
-<area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="424,299,548,324"/>
-<area shape="poly" title=" " alt="" coords="250,176,287,211,338,248,387,273,436,292,434,297,385,278,335,253,284,215,246,180"/>
-<area shape="rect" title=" " alt="" coords="93,225,151,251"/>
-<area shape="poly" title=" " alt="" coords="220,180,154,220,151,216,217,175"/>
-<area shape="rect" title=" " alt="" coords="176,225,273,251"/>
-<area shape="poly" title=" " alt="" coords="237,178,232,212,226,211,232,177"/>
-<area shape="rect" title=" " alt="" coords="349,225,402,251"/>
-<area shape="poly" title=" " alt="" coords="260,175,342,217,339,221,258,180"/>
-<area shape="rect" title=" " alt="" coords="227,372,329,397"/>
-<area shape="poly" title=" " alt="" coords="453,327,326,370,324,365,452,321"/>
-<area shape="rect" title=" " alt="" coords="353,372,422,397"/>
-<area shape="poly" title=" " alt="" coords="472,326,416,366,413,362,469,322"/>
-<area shape="rect" title=" " alt="" coords="446,372,526,397"/>
-<area shape="poly" title=" " alt="" coords="489,324,489,358,483,358,483,324"/>
-<area shape="rect" title=" " alt="" coords="550,372,617,397"/>
-<area shape="poly" title=" " alt="" coords="503,322,558,361,555,366,500,326"/>
-<area shape="rect" title=" " alt="" coords="641,372,718,397"/>
-<area shape="poly" title=" " alt="" coords="518,322,636,365,634,370,516,327"/>
-<area shape="poly" title=" " alt="" coords="389,107,280,149,278,144,387,102"/>
-<area shape="rect" href="../../df/d92/Encoding_8h.html" title=" " alt="" coords="716,225,859,251"/>
-<area shape="poly" title=" " alt="" coords="497,101,666,127,734,140,767,150,778,164,785,179,791,211,785,212,780,181,774,166,765,154,733,145,665,133,497,107"/>
-<area shape="rect" href="../../dd/d42/byte__vector_8h.html" title=" " alt="" coords="579,152,753,177"/>
-<area shape="poly" title=" " alt="" coords="457,101,613,146,612,151,456,107"/>
-<area shape="rect" href="../../d9/d58/byte__view_8h.html" title=" " alt="" coords="391,152,555,177"/>
-<area shape="poly" title=" " alt="" coords="428,103,457,140,453,143,424,106"/>
-<area shape="rect" title=" " alt="" coords="328,152,367,177"/>
-<area shape="poly" title=" " alt="" coords="407,106,370,144,366,140,403,102"/>
-<area shape="poly" title=" " alt="" coords="740,253,548,298,547,293,738,248"/>
-<area shape="poly" title=" " alt="" coords="669,178,665,213,658,234,647,252,628,269,607,282,562,300,560,295,605,278,625,265,643,249,653,232,660,212,664,177"/>
-<area shape="rect" title=" " alt="" coords="569,225,632,251"/>
-<area shape="poly" title=" " alt="" coords="657,179,622,217,619,213,653,176"/>
-<area shape="poly" title=" " alt="" coords="459,180,404,219,401,215,455,175"/>
-<area shape="rect" href="../../dd/d26/detail_2bytes_8h.html" title=" " alt="" coords="427,225,545,251"/>
-<area shape="poly" title=" " alt="" coords="477,177,484,211,479,212,472,178"/>
-<area shape="poly" title=" " alt="" coords="489,251,489,285,483,285,483,251"/>
-<area shape="poly" title=" " alt="" coords="90,105,78,134,67,173,66,214,72,233,83,249,104,264,137,276,223,294,321,303,410,307,410,312,320,308,222,299,135,281,102,269,79,253,67,235,61,215,62,173,73,133,86,103"/>
-<area shape="rect" title=" " alt="" coords="85,152,145,177"/>
-<area shape="poly" title=" " alt="" coords="100,104,111,138,105,140,95,105"/>
+<div class="center"><img src="../../df/dcf/filesystem_8cpp__incl.png" border="0" usemap="#aCoreLabs_2platform_2filesystem_8cpp" alt=""/></div>
+<map name="aCoreLabs_2platform_2filesystem_8cpp" id="aCoreLabs_2platform_2filesystem_8cpp">
+<area shape="rect" title=" " alt="" coords="310,5,551,31"/>
+<area shape="rect" href="../../dd/dd8/filesystem_8h.html" title=" " alt="" coords="379,79,482,104"/>
+<area shape="poly" title=" " alt="" coords="433,31,433,65,428,65,428,31"/>
+<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="363,152,498,177"/>
+<area shape="poly" title=" " alt="" coords="433,104,433,138,428,138,428,104"/>
+<area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="202,225,326,251"/>
+<area shape="poly" title=" " alt="" coords="405,180,305,222,303,217,403,175"/>
+<area shape="rect" title=" " alt="" coords="351,225,409,251"/>
+<area shape="poly" title=" " alt="" coords="424,179,398,216,394,213,420,176"/>
+<area shape="rect" title=" " alt="" coords="434,225,531,251"/>
+<area shape="poly" title=" " alt="" coords="441,176,468,213,464,216,437,179"/>
+<area shape="rect" title=" " alt="" coords="556,225,609,251"/>
+<area shape="poly" title=" " alt="" coords="456,175,547,217,545,222,454,180"/>
+<area shape="rect" title=" " alt="" coords="5,299,107,324"/>
+<area shape="poly" title=" " alt="" coords="231,253,104,297,102,292,230,248"/>
+<area shape="rect" title=" " alt="" coords="131,299,200,324"/>
+<area shape="poly" title=" " alt="" coords="250,253,194,293,191,288,247,249"/>
+<area shape="rect" title=" " alt="" coords="224,299,304,324"/>
+<area shape="poly" title=" " alt="" coords="267,251,267,285,261,285,261,251"/>
+<area shape="rect" title=" " alt="" coords="328,299,395,324"/>
+<area shape="poly" title=" " alt="" coords="281,249,336,288,333,292,278,253"/>
+<area shape="rect" title=" " alt="" coords="419,299,496,324"/>
+<area shape="poly" title=" " alt="" coords="296,248,414,291,412,296,294,253"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -165,26 +133,30 @@ Include dependency graph for filesystem.cpp:</div>
 Namespaces</h2></td></tr>
 <tr class="memitem:d1/d2e/namespacecl7" id="r_d1/d2e/namespacecl7"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html">cl7</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:d0/d42/namespacecl7_1_1filesystem" id="r_d0/d42/namespacecl7_1_1filesystem"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/namespacecl7_1_1filesystem.html">cl7::filesystem</a></td></tr>
+<tr class="memitem:dd/d60/namespacecl7_1_1platform" id="r_dd/d60/namespacecl7_1_1platform"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d60/namespacecl7_1_1platform.html">cl7::platform</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:d4/dc0/namespacecl7_1_1platform_1_1filesystem" id="r_d4/dc0/namespacecl7_1_1platform_1_1filesystem"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dc0/namespacecl7_1_1platform_1_1filesystem.html">cl7::platform::filesystem</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae648a0df3b069e6fc6b9aeb571cf9d4e" id="r_ae648a0df3b069e6fc6b9aeb571cf9d4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/namespacecl7_1_1filesystem.html#ae648a0df3b069e6fc6b9aeb571cf9d4e">cl7::filesystem::get_working_directory</a> ()</td></tr>
-<tr class="separator:ae648a0df3b069e6fc6b9aeb571cf9d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec8623427dd48d59be5a21e002d9bfa0" id="r_aec8623427dd48d59be5a21e002d9bfa0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/namespacecl7_1_1filesystem.html#aec8623427dd48d59be5a21e002d9bfa0">cl7::filesystem::get_initial_directory</a> ()</td></tr>
-<tr class="separator:aec8623427dd48d59be5a21e002d9bfa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99700473db2f1dc18dccdf24626cbf77" id="r_a99700473db2f1dc18dccdf24626cbf77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/namespacecl7_1_1filesystem.html#a99700473db2f1dc18dccdf24626cbf77">cl7::filesystem::get_current_directory</a> ()</td></tr>
-<tr class="separator:a99700473db2f1dc18dccdf24626cbf77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8d7856580510507383cd6c0d3bebcb2" id="r_af8d7856580510507383cd6c0d3bebcb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/namespacecl7_1_1filesystem.html#af8d7856580510507383cd6c0d3bebcb2">cl7::filesystem::get_user_directory</a> ()</td></tr>
-<tr class="separator:af8d7856580510507383cd6c0d3bebcb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ee8772a15e88a73cf092a6d294e7bc2" id="r_a2ee8772a15e88a73cf092a6d294e7bc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dc0/namespacecl7_1_1platform_1_1filesystem.html#a2ee8772a15e88a73cf092a6d294e7bc2">cl7::platform::filesystem::get_module_directory</a> ()</td></tr>
+<tr class="separator:a2ee8772a15e88a73cf092a6d294e7bc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52919916f0e128e6202607989206b93e" id="r_a52919916f0e128e6202607989206b93e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dc0/namespacecl7_1_1platform_1_1filesystem.html#a52919916f0e128e6202607989206b93e">cl7::platform::filesystem::get_working_directory</a> ()</td></tr>
+<tr class="separator:a52919916f0e128e6202607989206b93e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b8f757042ba8357bb37d16e25f2003e" id="r_a5b8f757042ba8357bb37d16e25f2003e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dc0/namespacecl7_1_1platform_1_1filesystem.html#a5b8f757042ba8357bb37d16e25f2003e">cl7::platform::filesystem::get_initial_directory</a> ()</td></tr>
+<tr class="separator:a5b8f757042ba8357bb37d16e25f2003e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4d4d847d2885658c91d2ad6ed8c8c21" id="r_ae4d4d847d2885658c91d2ad6ed8c8c21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dc0/namespacecl7_1_1platform_1_1filesystem.html#ae4d4d847d2885658c91d2ad6ed8c8c21">cl7::platform::filesystem::get_current_directory</a> ()</td></tr>
+<tr class="separator:ae4d4d847d2885658c91d2ad6ed8c8c21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41b578cf95a0e1e4525a5ffe222d5da3" id="r_a41b578cf95a0e1e4525a5ffe222d5da3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dc0/namespacecl7_1_1platform_1_1filesystem.html#a41b578cf95a0e1e4525a5ffe222d5da3">cl7::platform::filesystem::get_user_directory</a> ()</td></tr>
+<tr class="separator:a41b578cf95a0e1e4525a5ffe222d5da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_c08fb4251456ac15da27f1739991873e.html">CoreLabs</a></li><li class="navelem"><a class="el" href="../../d9/d8f/filesystem_8cpp.html">filesystem.cpp</a></li>
+    <li class="navelem"><a class="el" href="../../dir_c08fb4251456ac15da27f1739991873e.html">CoreLabs</a></li><li class="navelem"><a class="el" href="../../dir_55faf46c0b0ddd1e170108297dfbb1f6.html">platform</a></li><li class="navelem"><a class="el" href="../../d9/d8f/filesystem_8cpp.html">filesystem.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

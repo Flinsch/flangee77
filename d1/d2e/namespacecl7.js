@@ -3,17 +3,6 @@ var namespacecl7 =
     [ "bits", "d9/df1/namespacecl7_1_1bits.html", "d9/df1/namespacecl7_1_1bits" ],
     [ "creational", "da/df3/namespacecl7_1_1creational.html", "da/df3/namespacecl7_1_1creational" ],
     [ "detail", "d2/da9/namespacecl7_1_1detail.html", "d2/da9/namespacecl7_1_1detail" ],
-    [ "errors", "dc/d05/namespacecl7_1_1errors.html", [
-      [ "system_result", "dc/d05/namespacecl7_1_1errors.html#a4c6a30a909043f3588425134ea4ecd33", null ],
-      [ "system_result", "dc/d05/namespacecl7_1_1errors.html#a5f8b4472380083f8edbfa3abc6af05fe", null ],
-      [ "with_context", "dc/d05/namespacecl7_1_1errors.html#acf87fea226215fe8905d45b6f44a5610", null ]
-    ] ],
-    [ "filesystem", "d0/d42/namespacecl7_1_1filesystem.html", [
-      [ "get_current_directory", "d0/d42/namespacecl7_1_1filesystem.html#a99700473db2f1dc18dccdf24626cbf77", null ],
-      [ "get_initial_directory", "d0/d42/namespacecl7_1_1filesystem.html#aec8623427dd48d59be5a21e002d9bfa0", null ],
-      [ "get_user_directory", "d0/d42/namespacecl7_1_1filesystem.html#af8d7856580510507383cd6c0d3bebcb2", null ],
-      [ "get_working_directory", "d0/d42/namespacecl7_1_1filesystem.html#ae648a0df3b069e6fc6b9aeb571cf9d4e", null ]
-    ] ],
     [ "io", "d6/dc7/namespacecl7_1_1io.html", "d6/dc7/namespacecl7_1_1io" ],
     [ "logging", "df/de5/namespacecl7_1_1logging.html", "df/de5/namespacecl7_1_1logging" ],
     [ "memory", "df/db2/namespacecl7_1_1memory.html", [
@@ -21,6 +10,7 @@ var namespacecl7 =
       [ "stringify_byte_amount_binary", "df/db2/namespacecl7_1_1memory.html#aae47b18df11532ce5a5d88198fb9e8d2", null ],
       [ "stringify_byte_amount_si", "df/db2/namespacecl7_1_1memory.html#a52ff4ff0cae6b516a3028d74f580cafa", null ]
     ] ],
+    [ "platform", "dd/d60/namespacecl7_1_1platform.html", "dd/d60/namespacecl7_1_1platform" ],
     [ "profiling", "d8/d9a/namespacecl7_1_1profiling.html", "d8/d9a/namespacecl7_1_1profiling" ],
     [ "system", "dc/df8/namespacecl7_1_1system.html", "dc/df8/namespacecl7_1_1system" ],
     [ "text", "d0/d10/namespacecl7_1_1text.html", "d0/d10/namespacecl7_1_1text" ],

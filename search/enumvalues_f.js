@@ -12,5 +12,5 @@ var searchData=
   ['presumption_9',['Presumption',['../da/d3a/structtl7_1_1Result.html#abc74a2ae21cd48cdb73884084ad1d692a4823ceacc145cd9d551aeb94aa8435d7',1,'tl7::Result']]],
   ['pretty_10',['Pretty',['../db/df3/structdl7_1_1xml_1_1Format.html#a79cbbb2f423475c561be08709a473cdea46f93f25d0dbb9ada04ac822ba055e8c',1,'dl7::xml::Format']]],
   ['psize_11',['PSIZE',['../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html#a8ba8f7d466c9fa95934c53f04900c01bae6bc2366a454188af30c429aec7ccfe3',1,'xl7::graphics::meshes::VertexLayout']]],
-  ['pureusername_12',['PureUserName',['../dd/d72/classcl7_1_1system_1_1user.html#ad7b5e16a9d30b5d8186d896be4abd1f3ac52ba0110d5e37e36d1eab4ab20ba83b',1,'cl7::system::user']]]
+  ['pureusername_12',['PureUserName',['../da/dfc/namespacecl7_1_1platform_1_1user.html#a5b965b6e5507bba786f6626ef6a1b9fcac52ba0110d5e37e36d1eab4ab20ba83b',1,'cl7::platform::user']]]
 ];

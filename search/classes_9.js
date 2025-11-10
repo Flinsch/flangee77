@@ -38,5 +38,6 @@ var searchData=
   ['isurfacefactory_35',['ISurfaceFactory',['../dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html',1,'xl7::graphics::surfaces']]],
   ['iterator_36',['iterator',['../dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html',1,'cl7::text::codec::Decoder']]],
   ['itexturefactory_37',['ITextureFactory',['../d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html',1,'xl7::graphics::textures']]],
-  ['iwritable_38',['IWritable',['../df/db8/classcl7_1_1io_1_1IWritable.html',1,'cl7::io']]]
+  ['iwindowimpl_38',['IWindowImpl',['../de/d9e/classxl7_1_1detail_1_1IWindowImpl.html',1,'xl7::detail']]],
+  ['iwritable_39',['IWritable',['../df/db8/classcl7_1_1io_1_1IWritable.html',1,'cl7::io']]]
 ];

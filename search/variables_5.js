@@ -1,10 +1,10 @@
 var searchData=
 [
   ['e_0',['e',['../da/d4c/structml7_1_1Matrix2x3.html#a9f716683d5324faef8a84e44a1855329',1,'ml7::Matrix2x3::e'],['../d6/d9f/structml7_1_1constants.html#a2d82950290fb21722407fdb4e24ce4ac',1,'ml7::constants::e'],['../d6/d14/structml7_1_1Matrix3x3.html#a58ebb7a8cc9552f02259e2eba320253c',1,'ml7::Matrix3x3::e']]],
-  ['eax_1',['eax',['../dd/d93/structcl7_1_1system_1_1CPUID_1_1regs.html#a1c5fb9899f2ae63fc257db3d1a2de0ca',1,'cl7::system::CPUID::regs']]],
-  ['ebx_2',['ebx',['../dd/d93/structcl7_1_1system_1_1CPUID_1_1regs.html#a179ca954f5f7d4608e85f8d95a402047',1,'cl7::system::CPUID::regs']]],
-  ['ecx_3',['ecx',['../dd/d93/structcl7_1_1system_1_1CPUID_1_1regs.html#a8aab15a5523884df015616c1089366f8',1,'cl7::system::CPUID::regs']]],
-  ['edx_4',['edx',['../dd/d93/structcl7_1_1system_1_1CPUID_1_1regs.html#a46c1b4a696241702c8cae3b7bf2748d2',1,'cl7::system::CPUID::regs']]],
+  ['eax_1',['eax',['../de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html#a2dc7443e45be937e4cdcfafb85ce7de5',1,'cl7::platform::CPUID::regs']]],
+  ['ebx_2',['ebx',['../de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html#af6b9d56d6826ded4b088eed471a5120e',1,'cl7::platform::CPUID::regs']]],
+  ['ecx_3',['ecx',['../de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html#a0fa3fd610108139bc661f10a6d228ce4',1,'cl7::platform::CPUID::regs']]],
+  ['edx_4',['edx',['../de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html#aeee69c0e921c6854943b790fabe6a088',1,'cl7::platform::CPUID::regs']]],
   ['element_5fcount_5',['element_count',['../d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html#a5e0f7704c8635f4bfb0875781df6578f',1,'xl7::graphics::shaders::ConstantDeclaration::element_count'],['../d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html#a4b24620bbc95f9b427696d2c4d63422f',1,'xl7::graphics::shaders::TextureSamplerDeclaration::element_count']]],
   ['element_5fstride_6',['element_stride',['../dc/dfd/structdl7_1_1Buffer3D.html#a5894af59e9ed0b72f19464b261c4c6cf',1,'dl7::Buffer3D::element_stride'],['../d4/d7f/structdl7_1_1Buffer2D.html#af11a5af757f05f69753019d554e83dc4',1,'dl7::Buffer2D::element_stride'],['../d5/d06/structdl7_1_1Buffer1D.html#a3ed1e28651732ed5b1a3bb3b5f1839fe',1,'dl7::Buffer1D::element_stride']]],
   ['elements_7',['elements',['../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html#a001a6f43c0902f343eca9c201c95ce68',1,'xl7::graphics::meshes::VertexLayout']]],

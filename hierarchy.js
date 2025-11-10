@@ -111,7 +111,7 @@ var hierarchy =
     [ "dl7::ini::detail::Builder::Context", "d1/dbe/structdl7_1_1ini_1_1detail_1_1Builder_1_1Context.html", null ],
     [ "cl7::contiguous_iterator< is_const, Titem, Tbase >", "d1/d5d/classcl7_1_1contiguous__iterator.html", null ],
     [ "fl7::fonts::Contour", "dc/d41/structfl7_1_1fonts_1_1Contour.html", null ],
-    [ "cl7::system::CPUID", "d5/d80/structcl7_1_1system_1_1CPUID.html", null ],
+    [ "cl7::platform::CPUID", "d6/d24/structcl7_1_1platform_1_1CPUID.html", null ],
     [ "xl7::resources::Resource::CreateParams< TDesc >", "db/df9/structxl7_1_1resources_1_1Resource_1_1CreateParams.html", null ],
     [ "dl7::syntax::CstNode", "d0/df6/classdl7_1_1syntax_1_1CstNode.html", null ],
     [ "ml7::CubicBezier2< T >", "db/d5c/structml7_1_1CubicBezier2.html", null ],
@@ -277,6 +277,7 @@ var hierarchy =
     [ "xl7::graphics::textures::ITextureFactory", "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html", [
       [ "xl7::graphics::IResourceFactory", "d3/daa/classxl7_1_1graphics_1_1IResourceFactory.html", null ]
     ] ],
+    [ "xl7::detail::IWindowImpl", "de/d9e/classxl7_1_1detail_1_1IWindowImpl.html", null ],
     [ "cl7::io::IWritable", "df/db8/classcl7_1_1io_1_1IWritable.html", [
       [ "cl7::io::IReadWritable", "db/d48/classcl7_1_1io_1_1IReadWritable.html", null ]
     ] ],
@@ -304,7 +305,7 @@ var hierarchy =
     [ "ml7::Matrix4x4< T >", "d7/dea/structml7_1_1Matrix4x4.html", null ],
     [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::MaximumProfile", "db/dae/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1MaximumProfile.html", null ],
     [ "xl7::graphics::RenderingDevice::Capabilities::Memory", "da/dd9/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities_1_1Memory.html", null ],
-    [ "cl7::system::MemoryStatus", "d1/d7a/structcl7_1_1system_1_1MemoryStatus.html", null ],
+    [ "cl7::platform::memory::MemoryStatus", "d2/dea/structcl7_1_1platform_1_1memory_1_1MemoryStatus.html", null ],
     [ "xl7::graphics::meshes::MeshUtil", "d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil.html", null ],
     [ "dl7::json::Format::MultiLineOptions", "d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html", null ],
     [ "dl7::xml::Node", "d2/d24/classdl7_1_1xml_1_1Node.html", [
@@ -381,7 +382,7 @@ var hierarchy =
     [ "xl7::graphics::impl::direct3d9::GraphicsSystemImpl::Registrar", "d5/d15/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl_1_1Registrar.html", null ],
     [ "cl7::profiling::Registry", "d5/d99/classcl7_1_1profiling_1_1Registry.html", null ],
     [ "xl7::BackendRegistry< TBackendBase >::RegistryEntry", "d6/d6b/structxl7_1_1BackendRegistry_1_1RegistryEntry.html", null ],
-    [ "cl7::system::CPUID::regs", "dd/d93/structcl7_1_1system_1_1CPUID_1_1regs.html", null ],
+    [ "cl7::platform::CPUID::regs", "de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html", null ],
     [ "xl7::graphics::RenderingContext", "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html", [
       [ "xl7::graphics::impl::direct3d11::RenderingContextImpl", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html", null ],
       [ "xl7::graphics::impl::direct3d9::RenderingContextImpl", "d9/dfb/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl.html", null ]
@@ -586,7 +587,6 @@ var hierarchy =
     [ "cl7::u8osstream", "d3/d63/classcl7_1_1u8osstream.html", null ],
     [ "dl7::json::util::Unescaper", "df/df1/classdl7_1_1json_1_1util_1_1Unescaper.html", null ],
     [ "dl7::xml::util::Unescaper", "d1/db6/classdl7_1_1xml_1_1util_1_1Unescaper.html", null ],
-    [ "cl7::system::user", "dd/d72/classcl7_1_1system_1_1user.html", null ],
     [ "cl7::text::codec::Utf16Codec", "d8/de0/classcl7_1_1text_1_1codec_1_1Utf16Codec.html", null ],
     [ "cl7::text::codec::Utf32Codec", "db/dd0/classcl7_1_1text_1_1codec_1_1Utf32Codec.html", null ],
     [ "cl7::text::codec::Utf8Codec", "d2/db1/classcl7_1_1text_1_1codec_1_1Utf8Codec.html", null ],

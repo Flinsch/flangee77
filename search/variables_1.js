@@ -18,7 +18,7 @@ var searchData=
   ['ascender_15',['ascender',['../d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html#a52eeb8f285719118e975051901a50b54',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::TrueTypeFontMetric']]],
   ['ascent_16',['ascent',['../df/d82/structfl7_1_1fonts_1_1FontMetrics.html#adbb1f47f7a3948af3b8b38f56ae71381',1,'fl7::fonts::FontMetrics']]],
   ['assertions_17',['assertions',['../de/d12/structtl7_1_1Stats.html#a855fa55d101adcdefde55c431ba18ab1',1,'tl7::Stats']]],
-  ['available_5fphysical_5fmemory_18',['available_physical_memory',['../d1/d7a/structcl7_1_1system_1_1MemoryStatus.html#a4e09c6f6c358c2392469d6f82e74a944',1,'cl7::system::MemoryStatus']]],
+  ['available_5fphysical_5fmemory_18',['available_physical_memory',['../d2/dea/structcl7_1_1platform_1_1memory_1_1MemoryStatus.html#a4c6307868bd7a74d7bd8926340626109',1,'cl7::platform::memory::MemoryStatus']]],
   ['average_5fwidth_19',['average_width',['../df/d82/structfl7_1_1fonts_1_1FontMetrics.html#ae7cc37071a6249cc67ee65542f975990',1,'fl7::fonts::FontMetrics']]],
   ['avg_5fchar_5fwidth_20',['avg_char_width',['../d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html#a646a4dde7deb37b8fb508fa2960b3ce4',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::OpenTypeFontMetric']]],
   ['avg_5fpct_21',['avg_pct',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a4e78bb0152f00bcbe2f76570167d85b5',1,'cl7::profiling::Sample']]],

@@ -44,6 +44,12 @@ var annotated_dup =
         [ "Logger", "df/dc2/classcl7_1_1logging_1_1Logger.html", "df/dc2/classcl7_1_1logging_1_1Logger" ],
         [ "StandardLogger", "d2/df3/classcl7_1_1logging_1_1StandardLogger.html", "d2/df3/classcl7_1_1logging_1_1StandardLogger" ]
       ] ],
+      [ "platform", "dd/d60/namespacecl7_1_1platform.html", [
+        [ "memory", "d2/dba/namespacecl7_1_1platform_1_1memory.html", [
+          [ "MemoryStatus", "d2/dea/structcl7_1_1platform_1_1memory_1_1MemoryStatus.html", "d2/dea/structcl7_1_1platform_1_1memory_1_1MemoryStatus" ]
+        ] ],
+        [ "CPUID", "d6/d24/structcl7_1_1platform_1_1CPUID.html", "d6/d24/structcl7_1_1platform_1_1CPUID" ]
+      ] ],
       [ "profiling", "d8/d9a/namespacecl7_1_1profiling.html", [
         [ "Profiler", "d8/dd2/classcl7_1_1profiling_1_1Profiler.html", "d8/dd2/classcl7_1_1profiling_1_1Profiler" ],
         [ "Registry", "d5/d99/classcl7_1_1profiling_1_1Registry.html", "d5/d99/classcl7_1_1profiling_1_1Registry" ],
@@ -53,10 +59,7 @@ var annotated_dup =
         [ "Stopwatch", "d6/dac/classcl7_1_1profiling_1_1Stopwatch.html", "d6/dac/classcl7_1_1profiling_1_1Stopwatch" ]
       ] ],
       [ "system", "dc/df8/namespacecl7_1_1system.html", [
-        [ "CPUID", "d5/d80/structcl7_1_1system_1_1CPUID.html", "d5/d80/structcl7_1_1system_1_1CPUID" ],
-        [ "datetime", "d6/d16/structcl7_1_1system_1_1datetime.html", "d6/d16/structcl7_1_1system_1_1datetime" ],
-        [ "MemoryStatus", "d1/d7a/structcl7_1_1system_1_1MemoryStatus.html", "d1/d7a/structcl7_1_1system_1_1MemoryStatus" ],
-        [ "user", "dd/d72/classcl7_1_1system_1_1user.html", "dd/d72/classcl7_1_1system_1_1user" ]
+        [ "datetime", "d6/d16/structcl7_1_1system_1_1datetime.html", "d6/d16/structcl7_1_1system_1_1datetime" ]
       ] ],
       [ "text", "d0/d10/namespacecl7_1_1text.html", [
         [ "codec", "da/d47/namespacecl7_1_1text_1_1codec.html", [
@@ -325,6 +328,9 @@ var annotated_dup =
       [ "TestSuite", "db/d53/classtl7_1_1TestSuite.html", "db/d53/classtl7_1_1TestSuite" ]
     ] ],
     [ "xl7", "dc/d6e/namespacexl7.html", [
+      [ "detail", "d6/dcf/namespacexl7_1_1detail.html", [
+        [ "IWindowImpl", "de/d9e/classxl7_1_1detail_1_1IWindowImpl.html", "de/d9e/classxl7_1_1detail_1_1IWindowImpl" ]
+      ] ],
       [ "graphics", "d8/d30/namespacexl7_1_1graphics.html", [
         [ "images", "d8/dd2/namespacexl7_1_1graphics_1_1images.html", [
           [ "Image", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image" ],

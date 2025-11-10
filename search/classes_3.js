@@ -36,7 +36,7 @@ var searchData=
   ['contour_33',['Contour',['../dc/d41/structfl7_1_1fonts_1_1Contour.html',1,'fl7::fonts']]],
   ['coutlogger_34',['CoutLogger',['../db/d02/classtl7_1_1reporting_1_1CoutLogger.html',1,'tl7::reporting']]],
   ['coutloghandler_35',['CoutLogHandler',['../d9/d31/classcl7_1_1logging_1_1CoutLogHandler.html',1,'cl7::logging']]],
-  ['cpuid_36',['CPUID',['../d5/d80/structcl7_1_1system_1_1CPUID.html',1,'cl7::system']]],
+  ['cpuid_36',['CPUID',['../d6/d24/structcl7_1_1platform_1_1CPUID.html',1,'cl7::platform']]],
   ['createparams_37',['CreateParams',['../db/df9/structxl7_1_1resources_1_1Resource_1_1CreateParams.html',1,'xl7::resources::Resource']]],
   ['cstbuilder_38',['CstBuilder',['../db/dc4/classdl7_1_1syntax_1_1CstBuilder.html',1,'dl7::syntax']]],
   ['cstnode_39',['CstNode',['../d0/df6/classdl7_1_1syntax_1_1CstNode.html',1,'dl7::syntax']]],
