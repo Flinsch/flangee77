@@ -279,7 +279,8 @@ var hierarchy =
     ] ],
     [ "xl7::detail::IWindowImpl", "de/d9e/classxl7_1_1detail_1_1IWindowImpl.html", null ],
     [ "cl7::io::IWritable", "df/db8/classcl7_1_1io_1_1IWritable.html", [
-      [ "cl7::io::IReadWritable", "db/d48/classcl7_1_1io_1_1IReadWritable.html", null ]
+      [ "cl7::io::IReadWritable", "db/d48/classcl7_1_1io_1_1IReadWritable.html", null ],
+      [ "cl7::io::WritableMemory", "d9/d32/classcl7_1_1io_1_1WritableMemory.html", null ]
     ] ],
     [ "dl7::json::Json", "d7/d95/classdl7_1_1json_1_1Json.html", null ],
     [ "dl7::json::JsonReader", "de/da5/classdl7_1_1json_1_1JsonReader.html", null ],

@@ -19,5 +19,7 @@ var dir_1f313f182193c08b56ad7fac433077e3 =
     [ "Utf8Reader.cpp", "d5/db2/Utf8Reader_8cpp.html", "d5/db2/Utf8Reader_8cpp" ],
     [ "Utf8Reader.h", "df/df2/Utf8Reader_8h.html", "df/df2/Utf8Reader_8h" ],
     [ "Utf8Writer.cpp", "d3/de5/Utf8Writer_8cpp.html", null ],
-    [ "Utf8Writer.h", "da/df2/Utf8Writer_8h.html", "da/df2/Utf8Writer_8h" ]
+    [ "Utf8Writer.h", "da/df2/Utf8Writer_8h.html", "da/df2/Utf8Writer_8h" ],
+    [ "WritableMemory.cpp", "db/db5/WritableMemory_8cpp.html", null ],
+    [ "WritableMemory.h", "db/d27/WritableMemory_8h.html", "db/d27/WritableMemory_8h" ]
 ];

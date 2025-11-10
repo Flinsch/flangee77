@@ -32,7 +32,8 @@ var annotated_dup =
         [ "IWritable", "df/db8/classcl7_1_1io_1_1IWritable.html", "df/db8/classcl7_1_1io_1_1IWritable" ],
         [ "ReadableMemory", "db/d3c/classcl7_1_1io_1_1ReadableMemory.html", "db/d3c/classcl7_1_1io_1_1ReadableMemory" ],
         [ "Utf8Reader", "d4/d97/classcl7_1_1io_1_1Utf8Reader.html", "d4/d97/classcl7_1_1io_1_1Utf8Reader" ],
-        [ "Utf8Writer", "d6/dba/classcl7_1_1io_1_1Utf8Writer.html", "d6/dba/classcl7_1_1io_1_1Utf8Writer" ]
+        [ "Utf8Writer", "d6/dba/classcl7_1_1io_1_1Utf8Writer.html", "d6/dba/classcl7_1_1io_1_1Utf8Writer" ],
+        [ "WritableMemory", "d9/d32/classcl7_1_1io_1_1WritableMemory.html", "d9/d32/classcl7_1_1io_1_1WritableMemory" ]
       ] ],
       [ "logging", "df/de5/namespacecl7_1_1logging.html", [
         [ "AbstractLogHandler", "d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html", "d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler" ],

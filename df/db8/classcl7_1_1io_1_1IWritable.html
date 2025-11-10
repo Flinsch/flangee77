@@ -104,9 +104,11 @@ Inheritance diagram for cl7::io::IWritable:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d5/dc5/classcl7_1_1io_1_1IWritable__inherit__graph.png" border="0" usemap="#acl7_1_1io_1_1IWritable_inherit__map" alt="Inheritance graph"/></div>
 <map name="acl7_1_1io_1_1IWritable_inherit__map" id="acl7_1_1io_1_1IWritable_inherit__map">
-<area shape="rect" title=" " alt="" coords="22,5,150,31"/>
+<area shape="rect" title=" " alt="" coords="119,5,247,31"/>
 <area shape="rect" href="../../db/d48/classcl7_1_1io_1_1IReadWritable.html" title=" " alt="" coords="5,79,167,104"/>
-<area shape="poly" title=" " alt="" coords="89,44,89,79,83,79,83,44"/>
+<area shape="poly" title=" " alt="" coords="158,41,103,81,100,76,155,37"/>
+<area shape="rect" href="../../d9/d32/classcl7_1_1io_1_1WritableMemory.html" title=" " alt="" coords="191,79,370,104"/>
+<area shape="poly" title=" " alt="" coords="212,37,266,76,263,81,209,41"/>
 <area shape="rect" href="../../d2/d67/classcl7_1_1io_1_1File.html" title=" " alt="" coords="40,152,132,177"/>
 <area shape="poly" title=" " alt="" coords="89,118,89,152,83,152,83,118"/>
 </map>
@@ -184,7 +186,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns the total writable size of the target, in bytes. </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a3f1f86deeaaae1ea0a7db7f271583fbd">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a3f1f86deeaaae1ea0a7db7f271583fbd">cl7::io::File</a>, and <a class="el" href="../../d9/d32/classcl7_1_1io_1_1WritableMemory.html#a2555174064570c9962163acb6984f4cc">cl7::io::WritableMemory</a>.</p>
 
 </div>
 </div>
@@ -212,7 +214,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns the number of bytes that can be written to the target at the current write position. </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a67f43f998960f211810657a78c611e5b">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a67f43f998960f211810657a78c611e5b">cl7::io::File</a>, and <a class="el" href="../../d9/d32/classcl7_1_1io_1_1WritableMemory.html#ad0b1e1d6918d7a07841632d2961c6a7c">cl7::io::WritableMemory</a>.</p>
 
 </div>
 </div>
@@ -240,7 +242,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns the current write position within the target (in bytes, relative to the beginning). </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#aff870bce7338c95c4bab82373baea115">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#aff870bce7338c95c4bab82373baea115">cl7::io::File</a>, and <a class="el" href="../../d9/d32/classcl7_1_1io_1_1WritableMemory.html#ad7b299ecbdfb333e71d0b091c93efffc">cl7::io::WritableMemory</a>.</p>
 
 </div>
 </div>
@@ -268,7 +270,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Checks whether the target is writable, i.e. whether the device is open or whatever. </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a80a3c96bfe81efff326d91e9b79c65c1">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a80a3c96bfe81efff326d91e9b79c65c1">cl7::io::File</a>, and <a class="el" href="../../d9/d32/classcl7_1_1io_1_1WritableMemory.html#a495396195b2e8eb19c657d4244d581fd">cl7::io::WritableMemory</a>.</p>
 
 </div>
 </div>
@@ -307,7 +309,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>(Re)sets the current write position within the target by moving it by the specified bytes relative to the beginning, end, or current position, as specified. Returns the new/current byte position. </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#af14142ca233aef5113aa07c82052c1ed">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#af14142ca233aef5113aa07c82052c1ed">cl7::io::File</a>, and <a class="el" href="../../d9/d32/classcl7_1_1io_1_1WritableMemory.html#a4f42cf9c7e81a0478a60f9dc91a1020a">cl7::io::WritableMemory</a>.</p>
 
 </div>
 </div>
@@ -336,7 +338,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>(Re)sets the current write position within the target (in bytes, relative to the beginning). Returns the new/current byte position. </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#aa96807a2a942248db1ce9ca9e8459a36">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#aa96807a2a942248db1ce9ca9e8459a36">cl7::io::File</a>, and <a class="el" href="../../d9/d32/classcl7_1_1io_1_1WritableMemory.html#ac8aa979ef3ebfe0d4cbc6531f85e96c0">cl7::io::WritableMemory</a>.</p>
 
 </div>
 </div>
@@ -365,7 +367,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Writes data to the target (at the current position) from the specified buffer and returns the number of bytes actually written. </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#aeb45ed8c27c58bdbc7e4080cec849ea9">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#aeb45ed8c27c58bdbc7e4080cec849ea9">cl7::io::File</a>, and <a class="el" href="../../d9/d32/classcl7_1_1io_1_1WritableMemory.html#a94073b89ffe9162dcbd3d4edd91f3111">cl7::io::WritableMemory</a>.</p>
 
 </div>
 </div>
@@ -394,7 +396,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Writes a single byte to the target (at the current position) and returns the number of bytes actually written (i.e. 0 or 1). </p>
 
-<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a262baf24cf61193e6ad84fd9730dca6e">cl7::io::File</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/d67/classcl7_1_1io_1_1File.html#a262baf24cf61193e6ad84fd9730dca6e">cl7::io::File</a>, and <a class="el" href="../../d9/d32/classcl7_1_1io_1_1WritableMemory.html#a0f1f61d5f6a1927c2a90468cf69b7971">cl7::io::WritableMemory</a>.</p>
 
 </div>
 </div>

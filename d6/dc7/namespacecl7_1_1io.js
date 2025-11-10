@@ -12,6 +12,7 @@ var namespacecl7_1_1io =
     [ "ReadableMemory", "db/d3c/classcl7_1_1io_1_1ReadableMemory.html", "db/d3c/classcl7_1_1io_1_1ReadableMemory" ],
     [ "Utf8Reader", "d4/d97/classcl7_1_1io_1_1Utf8Reader.html", "d4/d97/classcl7_1_1io_1_1Utf8Reader" ],
     [ "Utf8Writer", "d6/dba/classcl7_1_1io_1_1Utf8Writer.html", "d6/dba/classcl7_1_1io_1_1Utf8Writer" ],
+    [ "WritableMemory", "d9/d32/classcl7_1_1io_1_1WritableMemory.html", "d9/d32/classcl7_1_1io_1_1WritableMemory" ],
     [ "OpenMode", "d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5", [
       [ "Read", "d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5a7a1a5f3e79fdc91edf2f5ead9d66abb4", null ],
       [ "Write", "d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5a1129c0e4d43f2d121652a7302712cff6", null ],

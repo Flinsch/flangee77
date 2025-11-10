@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['xmlreader_0',['XmlReader',['../de/d7c/classdl7_1_1xml_1_1XmlReader.html',1,'dl7::xml']]],
-  ['xmlwriter_1',['XmlWriter',['../d9/dba/classdl7_1_1xml_1_1XmlWriter.html',1,'dl7::xml']]]
+  ['writablememory_0',['WritableMemory',['../d9/d32/classcl7_1_1io_1_1WritableMemory.html',1,'cl7::io']]]
 ];
