@@ -3,7 +3,7 @@
 
 Since I was a young teenager, I've always wanted to be a video game developer.
 Unfortunately, I never managed to turn that into a career.
-However, maybe that's for the best, because I think the day-to-day of video game development, with its economic pressures, can be pretty tough.
+But perhaps that's for the best, because I think the daily grind of video game development, with its economic pressures, release dates, and occasional &ldquo;crunch times&rdquo;, can be quite tough.
 What I have managed to do, though, is become a professional software developer in general.
 Video game development has since remained one of my hobbies.
 And since it's not a professional thing, it stays a hobby, one that I can enjoy with all the facets that interest me, and without the aspects that I don't feel like doing anyway.
@@ -17,8 +17,8 @@ I usually keep experimenting with tricky things as prototypes rather than actual
 And at the end of the day, I'm a programmer, not a game designer, a realization I've come to more than once.
 
 Added to this is a mix of curiosity, stubbornness, and the sheer joy of solving problems in unconventional ways.
-While most developers might choose polished, off-the-shelf, battle-tested tools,
-this framework stands apart as a deeply personal experiment: a modular, multi-faceted toolset for creating (prototypical aspects of) games in ways you might not expect.
+While most developers would (and should) choose off-the-shelf tools,
+this framework stands apart as a deeply personal experiment: a modular, multi-faceted toolset for creating games (or rather prototypical aspects of those) in ways you might consider cumbersome or even foolish.
 
 ## The Journey of (Re)building My Framework
 

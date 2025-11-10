@@ -17,7 +17,7 @@ But you would certainly be better off using other frameworks or even game engine
 Before we go further, let's get something straight: this isn't a game engine.
 If an engine is like a full-course meal (prepared, plated, and ready to serve), this framework is more like a set of some ingredients and a recipe book (a recipe book that is missing a few pages).
 An engine offers everything you need, often at the cost of flexibility, as you're bound by its design and philosophy.
-For most developers, that's perfectly fine: engines are powerful, polished, and cater to almost any need you'll ever have, at least indirectly via possible workarounds, if not directly.
+For most developers, that's perfectly fine: engines are powerful, mature, and cover almost any need you'll ever have, at least indirectly via possible workarounds, if not directly.
 
 A framework, on the other hand, offers more freedom, but also requires more responsibility.
 It's a structured set of tools that you can use, but you'll still need to roll up your sleeves and cook up your own solutions.
@@ -36,7 +36,7 @@ And to answer the question of who might use this framework now, I will try to ma
 - Are you a **professional** video game developer? <br>
   Then you should definitely not use this framework and instead go for something really professional:
   robust, industry-standard tools that are tested, maintained, and supported by large teams, an off-the-shelf engine, or an in-house engine from your company.
-  Compared to those, this framework is like an oddball: unlikely to fit into your pipelines unless you're unusually adventurous.
+  Compared to those, this framework is an absolute joke: it's highly unlikely to fit into your existing processes unless you want to ruin your company.
 - Are you an **indie** video game developer? <br>
   Then you are likely focused on speed, polish, and tools that &ldquo;just work&rdquo;.
   You are interested in getting a finished game pretty soon and should use tools that help you with &ldquo;everything&rdquo; and not just an unusual framework where you still have to build a lot of things yourself.
@@ -53,7 +53,7 @@ And to answer the question of who might use this framework now, I will try to ma
   Let's be honest:
   This framework was made for my own &ldquo;creative&rdquo; needs, challenges, and ideas.
   It reflects my journey and priorities (see my [Personal Background and Intention](docs/personal-intention.md) again), and while it may not suit everyone, it's &ldquo;exactly&rdquo; what I wanted to build.
-  (Well, not quite. This may sound familiar to you: when you look at your own code after a few months, you want to throw parts of it out and do it again in a new and better way. So this will never be &ldquo;finished&rdquo; anyway.)
+  (Well, not quite. This may sound familiar to you: when you look at your own code after a few months, you want to throw parts of it out and do it again in a new and better way. So this will never be &ldquo;stable&rdquo; or &ldquo;finished&rdquo; anyway.)
 
 Now, I'm not here to start a big discussion about whether and when you should use which framework/engine or even build your own, but you see: there are &ldquo;not many&rdquo; reasons to use _this_ framework.
 I've probably done a better job of convincing you to _not_ use it than the other way around.
