@@ -129,7 +129,7 @@ namespace cl7::io {
         if (get_readable_bytes_remaining() == 0)
             return 0;
 
-        byte = _data[_read_position++];
+        byte = _data[_read_position];
         return 1;
     }
 
