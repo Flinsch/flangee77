@@ -26,16 +26,16 @@ public:
      */
     explicit ByteWriter(IWritable* writable) noexcept;
 
-  /**
-     * Attempts to write a single byte. Returns 1 on success, 0 on failure.
-     */
-    size_t write_byte(std::byte byte) const;
-
     /**
      * Attempts to write multiple bytes from a buffer. Returns the number of bytes
      * actually written.
      */
     size_t write_bytes(cl7::byte_view data) const;
+
+    /**
+     * Attempts to write a single byte. Returns 1 on success, 0 on failure.
+     */
+    size_t write_byte(std::byte byte) const;
 
     /**
      * Attempts to write a trivially copyable scalar value (e.g., integer, float)
@@ -60,4 +60,4 @@ private:
 
 } // namespace cl7::io
 
-#endif //CL7_IO_BYTEWRITER_H
+#endif // CL7_IO_BYTEWRITER_H

@@ -8,6 +8,19 @@
 
 namespace tl7::internals {
     inline
+    cl7::u8string to_string(std::byte byte)
+    {
+        cl7::u8string s(4, u8' ');
+        const cl7::u8char_t lo = static_cast<cl7::u8char_t>(byte) & 0xf;
+        const cl7::u8char_t hi = (static_cast<cl7::u8char_t>(byte) >> 4) & 0xf;
+        s[0] = u8'\\';
+        s[1] = u8'x';
+        s[2] = hi < 10 ? u8'0' + hi : u8'a' + hi - 10;
+        s[3] = lo < 10 ? u8'0' + lo : u8'a' + lo - 10;
+        return s;
+    }
+
+    inline
     cl7::u8string to_string(const cl7::byte_vector& bytes)
     {
         cl7::u8string s(bytes.size() * 4 + 2, u8' ');

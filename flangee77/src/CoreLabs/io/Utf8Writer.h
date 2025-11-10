@@ -43,4 +43,4 @@ private:
 
 } // namespace cl7::io
 
-#endif //CL7_IO_UTF8WRITER_H
+#endif // CL7_IO_UTF8WRITER_H

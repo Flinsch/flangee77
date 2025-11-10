@@ -94,7 +94,10 @@ namespace cl7::io {
             break;
         }
 
-        _read_position = base_position + relative;
+        if (relative < 0 && base_position + relative > base_position) // Underflow?
+            _read_position = 0;
+        else
+            _read_position = base_position + relative;
         return _read_position;
     }
 

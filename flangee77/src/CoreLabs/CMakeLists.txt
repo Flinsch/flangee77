@@ -18,6 +18,7 @@ target_sources(flangee77
     io/ReadableMemory.cpp
     io/Utf8Reader.cpp
     io/Utf8Writer.cpp
+    io/WritableMemory.cpp
 
     logging/AbstractLogHandler.cpp
     logging/CoutLogHandler.cpp

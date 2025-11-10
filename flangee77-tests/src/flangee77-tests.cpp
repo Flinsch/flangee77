@@ -10,6 +10,8 @@
 #include "./CoreLabs/Guid.h"
 #include "./CoreLabs/Version.h"
 
+#include "./CoreLabs/io/ByteReader.h"
+#include "./CoreLabs/io/ByteWriter.h"
 #include "./CoreLabs/text/codec.h"
 #include "./CoreLabs/text/inspect.h"
 #include "./CoreLabs/text/transform.h"

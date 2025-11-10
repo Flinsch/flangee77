@@ -15,15 +15,15 @@ namespace cl7::io {
     }
 
     /**
-     * Reads and returns a single byte. There is no guarantee that the operation was
-     * successful. In case of an error or out-of-bounds, 0 is returned. However, a
-     * value other than 0 is not a reliable indicator of success.
+     * Reads and returns all available/remaining bytes until EOF or failure.
      */
-    std::byte ByteReader::read_byte() const
+    cl7::byte_vector ByteReader::read_all() const
     {
-        std::byte byte{0};
-        _readable->read(cl7::make_byte_span(&byte));
-        return byte;
+        const auto remaining = _readable->get_readable_bytes_remaining();
+        cl7::byte_vector data{remaining};
+        const auto read = _readable->read(data);
+        assert(read == remaining);
+        return data;
     }
 
     /**
@@ -40,15 +40,45 @@ namespace cl7::io {
     }
 
     /**
-     * Reads and returns all available/remaining bytes until EOF or failure.
+     * Attempts to read a single byte into the given reference. Returns the number
+     * of bytes actually read (i.e. 0 or 1).
      */
-    cl7::byte_vector ByteReader::read_all() const
+    size_t ByteReader::read_byte(std::byte& byte) const
     {
-        const auto remaining = _readable->get_readable_bytes_remaining();
-        cl7::byte_vector data{remaining};
-        const auto read = _readable->read(data);
-        assert(read == remaining);
-        return data;
+        return _readable->read(cl7::make_byte_span(&byte));
+    }
+
+    /**
+     * Reads and returns a single byte. There is no guarantee that the operation was
+     * successful. In case of an error or out-of-bounds, 0 is returned. However, a
+     * value other than 0 is not a reliable indicator of success.
+     */
+    std::byte ByteReader::read_byte() const
+    {
+        std::byte byte{0};
+        _readable->read(cl7::make_byte_span(&byte));
+        return byte;
+    }
+
+    /**
+     * Attempts to "peek" a single byte without extracting it. Returns the number
+     * of bytes that would have been extracted if actually read (i.e. 0 or 1).
+     */
+    size_t ByteReader::peek_byte(std::byte& byte) const
+    {
+        return _readable->peek(byte);
+    }
+
+    /**
+     * "Peeks" and returns a single byte. There is no guarantee that the operation
+     * was successful. In case of an error or out-of-bounds, 0 is returned. However,
+     * a value other than 0 is not a reliable indicator of success.
+     */
+    std::byte ByteReader::peek_byte() const
+    {
+        std::byte byte{0};
+        _readable->peek(byte);
+        return byte;
     }
 
 

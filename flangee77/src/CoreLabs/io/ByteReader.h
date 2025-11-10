@@ -28,11 +28,9 @@ public:
     explicit ByteReader(IReadable* readable) noexcept;
 
     /**
-     * Reads and returns a single byte. There is no guarantee that the operation was
-     * successful. In case of an error or out-of-bounds, 0 is returned. However, a
-     * value other than 0 is not a reliable indicator of success.
+     * Reads and returns all available/remaining bytes until EOF or failure.
      */
-    std::byte read_byte() const;
+    cl7::byte_vector read_all() const;
 
     /**
      * Attempts to fill the given buffer with bytes. Returns the number of bytes
@@ -41,9 +39,17 @@ public:
     size_t read_bytes(cl7::byte_span buffer) const;
 
     /**
-     * Reads and returns all available/remaining bytes until EOF or failure.
+     * Attempts to read a single byte into the given reference. Returns the number
+     * of bytes actually read (i.e. 0 or 1).
      */
-    cl7::byte_vector read_all() const;
+    size_t read_byte(std::byte& byte) const;
+
+    /**
+     * Reads and returns a single byte. There is no guarantee that the operation was
+     * successful. In case of an error or out-of-bounds, 0 is returned. However, a
+     * value other than 0 is not a reliable indicator of success.
+     */
+    std::byte read_byte() const;
 
     /**
      * Reads and returns a trivially copyable scalar value (e.g., integer, float)
@@ -74,6 +80,19 @@ public:
         return read;
     }
 
+    /**
+     * Attempts to "peek" a single byte without extracting it. Returns the number
+     * of bytes that would have been extracted if actually read (i.e. 0 or 1).
+     */
+    size_t peek_byte(std::byte& byte) const;
+
+    /**
+     * "Peeks" and returns a single byte. There is no guarantee that the operation
+     * was successful. In case of an error or out-of-bounds, 0 is returned. However,
+     * a value other than 0 is not a reliable indicator of success.
+     */
+    std::byte peek_byte() const;
+
 private:
     /** The readable source object. */
     IReadable* _readable;
@@ -84,4 +103,4 @@ private:
 
 } // namespace cl7::io
 
-#endif //CL7_IO_BYTEREADER_H
+#endif // CL7_IO_BYTEREADER_H
