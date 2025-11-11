@@ -7,13 +7,13 @@ var namespacedl7 =
     [ "toml", "d9/dcb/namespacedl7_1_1toml.html", "d9/dcb/namespacedl7_1_1toml" ],
     [ "xml", "da/d33/namespacedl7_1_1xml.html", "da/d33/namespacedl7_1_1xml" ],
     [ "Base64", "da/d3b/classdl7_1_1Base64.html", "da/d3b/classdl7_1_1Base64" ],
-    [ "Buffer1D", "d5/d06/structdl7_1_1Buffer1D.html", "d5/d06/structdl7_1_1Buffer1D" ],
-    [ "Buffer2D", "d4/d7f/structdl7_1_1Buffer2D.html", "d4/d7f/structdl7_1_1Buffer2D" ],
-    [ "Buffer3D", "dc/dfd/structdl7_1_1Buffer3D.html", "dc/dfd/structdl7_1_1Buffer3D" ],
-    [ "Buffer1DSpan", "d2/d5d/namespacedl7.html#a9edc1390a8c2e44777d9a4abca53289d", null ],
-    [ "Buffer1DView", "d2/d5d/namespacedl7.html#a9e07aa255088231253655c88ffc244c5", null ],
-    [ "Buffer2DSpan", "d2/d5d/namespacedl7.html#adc6d31aa9f36c4f682b7f08c1399d142", null ],
-    [ "Buffer2DView", "d2/d5d/namespacedl7.html#aa1026d47f1642c71a54ed8bfa6fb5b1c", null ],
-    [ "Buffer3DSpan", "d2/d5d/namespacedl7.html#a6d7c2b41ede2aa1c551eb5a7dc7aa234", null ],
-    [ "Buffer3DView", "d2/d5d/namespacedl7.html#a0910c02d595c9eaa7ce9a35e84503c7c", null ]
+    [ "Buffer1d", "d0/df0/structdl7_1_1Buffer1d.html", "d0/df0/structdl7_1_1Buffer1d" ],
+    [ "Buffer2d", "d6/dca/structdl7_1_1Buffer2d.html", "d6/dca/structdl7_1_1Buffer2d" ],
+    [ "Buffer3d", "de/d0b/structdl7_1_1Buffer3d.html", "de/d0b/structdl7_1_1Buffer3d" ],
+    [ "Buffer1dSpan", "d2/d5d/namespacedl7.html#a95b52e0a7ab2f5515c7b1580a6e7be69", null ],
+    [ "Buffer1dView", "d2/d5d/namespacedl7.html#a4c50691682396554283ee7b239eba59b", null ],
+    [ "Buffer2dSpan", "d2/d5d/namespacedl7.html#a6a5b2cdd6f991f6a3f162701d534387d", null ],
+    [ "Buffer2dView", "d2/d5d/namespacedl7.html#a4a60d931759a2e2c2cc0d36c65cdef86", null ],
+    [ "Buffer3dSpan", "d2/d5d/namespacedl7.html#a4ff9aa4574d01cee28f07e922fa2e419", null ],
+    [ "Buffer3dView", "d2/d5d/namespacedl7.html#a6b908eb70e55616350a280d585aa1c5f", null ]
 ];

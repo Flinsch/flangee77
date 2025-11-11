@@ -227,9 +227,9 @@ var annotated_dup =
         [ "XmlWriter", "d9/dba/classdl7_1_1xml_1_1XmlWriter.html", "d9/dba/classdl7_1_1xml_1_1XmlWriter" ]
       ] ],
       [ "Base64", "da/d3b/classdl7_1_1Base64.html", "da/d3b/classdl7_1_1Base64" ],
-      [ "Buffer1D", "d5/d06/structdl7_1_1Buffer1D.html", "d5/d06/structdl7_1_1Buffer1D" ],
-      [ "Buffer2D", "d4/d7f/structdl7_1_1Buffer2D.html", "d4/d7f/structdl7_1_1Buffer2D" ],
-      [ "Buffer3D", "dc/dfd/structdl7_1_1Buffer3D.html", "dc/dfd/structdl7_1_1Buffer3D" ]
+      [ "Buffer1d", "d0/df0/structdl7_1_1Buffer1d.html", "d0/df0/structdl7_1_1Buffer1d" ],
+      [ "Buffer2d", "d6/dca/structdl7_1_1Buffer2d.html", "d6/dca/structdl7_1_1Buffer2d" ],
+      [ "Buffer3d", "de/d0b/structdl7_1_1Buffer3d.html", "de/d0b/structdl7_1_1Buffer3d" ]
     ] ],
     [ "fl7", "d5/d46/namespacefl7.html", [
       [ "fonts", "d7/da5/namespacefl7_1_1fonts.html", [

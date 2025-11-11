@@ -8,8 +8,8 @@ var dir_779d08fee714fafabe694a8f28adb1d4 =
     [ "xml", "dir_4fe7e6067f04f2d67b41fd37493fbd29.html", "dir_4fe7e6067f04f2d67b41fd37493fbd29" ],
     [ "Base64.cpp", "d4/de5/Base64_8cpp.html", null ],
     [ "Base64.h", "d1/dbd/Base64_8h.html", "d1/dbd/Base64_8h" ],
-    [ "Buffer1D.h", "d0/d0c/Buffer1D_8h.html", "d0/d0c/Buffer1D_8h" ],
-    [ "Buffer2D.h", "d2/dce/Buffer2D_8h.html", "d2/dce/Buffer2D_8h" ],
-    [ "Buffer3D.h", "da/d6f/Buffer3D_8h.html", "da/d6f/Buffer3D_8h" ],
+    [ "Buffer1d.h", "de/d4e/Buffer1d_8h.html", "de/d4e/Buffer1d_8h" ],
+    [ "Buffer2d.h", "d6/dd6/Buffer2d_8h.html", "d6/dd6/Buffer2d_8h" ],
+    [ "Buffer3d.h", "d0/df2/Buffer3d_8h.html", "d0/df2/Buffer3d_8h" ],
     [ "compression.h", "d1/daf/compression_8h.html", null ]
 ];
