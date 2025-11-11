@@ -19,9 +19,9 @@
 #include "./CoreLabs/text/metrics.h"
 
 #include "./DataLabs/Base64.h"
-#include "./DataLabs/Buffer1D.h"
-#include "./DataLabs/Buffer2D.h"
-#include "./DataLabs/Buffer3D.h"
+#include "./DataLabs/Buffer1d.h"
+#include "./DataLabs/Buffer2d.h"
+#include "./DataLabs/Buffer3d.h"
 #include "./DataLabs/compression.h"
 #include "./DataLabs/syntax.h"
 #include "./DataLabs/json.h"

@@ -18,7 +18,7 @@ namespace dl7 {
  */
 template <typename Telement = std::byte>
     requires(!std::is_reference_v<Telement> && std::is_trivially_copyable_v<Telement>)
-struct Buffer1D
+struct Buffer1d
 {
     using element_type = Telement;
     using byte_type = std::conditional_t<std::is_const_v<element_type>, const std::byte, std::byte>;
@@ -31,20 +31,20 @@ struct Buffer1D
     /** The distance between offsets of consecutive elements, in bytes. */
     size_t element_stride = 0;
 
-    constexpr Buffer1D() noexcept = default;
+    constexpr Buffer1d() noexcept = default;
 
-    constexpr Buffer1D(std::span<element_type> data)
+    constexpr Buffer1d(std::span<element_type> data)
         requires(!std::is_same_v<std::remove_cv_t<element_type>, std::byte>)
-        : Buffer1D({reinterpret_cast<byte_pointer>(data.data()), data.size_bytes()}, data.size())
+        : Buffer1d({reinterpret_cast<byte_pointer>(data.data()), data.size_bytes()}, data.size())
     {
     }
 
-    constexpr Buffer1D(std::span<byte_type> data)
-        : Buffer1D(data, data.size_bytes() / sizeof(element_type))
+    constexpr Buffer1d(std::span<byte_type> data)
+        : Buffer1d(data, data.size_bytes() / sizeof(element_type))
     {
     }
 
-    constexpr Buffer1D(std::span<byte_type> data, size_t length, size_t element_stride = sizeof(element_type))
+    constexpr Buffer1d(std::span<byte_type> data, size_t length, size_t element_stride = sizeof(element_type))
         : data(data)
         , length(length)
         , element_stride(element_stride)
@@ -86,8 +86,8 @@ struct Buffer1D
 
 
 
-using Buffer1DView = Buffer1D<const std::byte>;
-using Buffer1DSpan = Buffer1D<std::byte>;
+using Buffer1dView = Buffer1d<const std::byte>;
+using Buffer1dSpan = Buffer1d<std::byte>;
 
 
 

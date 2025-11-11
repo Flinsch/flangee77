@@ -1,8 +1,8 @@
 #ifndef DL7_BUFFER3D_H
 #define DL7_BUFFER3D_H
 
-#include "./Buffer1D.h"
-#include "./Buffer2D.h"
+#include "./Buffer1d.h"
+#include "./Buffer2d.h"
 
 
 
@@ -17,7 +17,7 @@ namespace dl7 {
  */
 template <typename Telement = std::byte>
     requires(!std::is_reference_v<Telement> && std::is_trivially_copyable_v<Telement>)
-struct Buffer3D
+struct Buffer3d
 {
     using element_type = Telement;
     using byte_type = std::conditional_t<std::is_const_v<element_type>, const std::byte, std::byte>;
@@ -38,15 +38,15 @@ struct Buffer3D
     /** The distance between offsets of the first elements of consecutive 2D slices, in bytes. */
     size_t slice_pitch = 0;
 
-    constexpr Buffer3D() noexcept = default;
+    constexpr Buffer3d() noexcept = default;
 
-    constexpr Buffer3D(std::span<element_type> data, size_t width, size_t height, size_t depth)
+    constexpr Buffer3d(std::span<element_type> data, size_t width, size_t height, size_t depth)
         requires(!std::is_same_v<std::remove_cv_t<element_type>, std::byte>)
-        : Buffer3D({reinterpret_cast<byte_pointer>(data.data()), data.size_bytes()}, width, height, depth)
+        : Buffer3d({reinterpret_cast<byte_pointer>(data.data()), data.size_bytes()}, width, height, depth)
     {
     }
 
-    constexpr Buffer3D(std::span<byte_type> data, size_t width, size_t height, size_t depth, size_t element_stride = sizeof(element_type), size_t row_pitch = 0, size_t slice_pitch = 0)
+    constexpr Buffer3d(std::span<byte_type> data, size_t width, size_t height, size_t depth, size_t element_stride = sizeof(element_type), size_t row_pitch = 0, size_t slice_pitch = 0)
         : data(data)
         , width(width)
         , height(height)
@@ -68,7 +68,7 @@ struct Buffer3D
     constexpr size_t length() const noexcept { return width * height * depth; }
 
     /** Creates a 2D slice subview. */
-    constexpr Buffer2D<element_type> slice(size_t slice) const
+    constexpr Buffer2d<element_type> slice(size_t slice) const
     {
         assert(slice < depth);
         const size_t offset = slice * slice_pitch;
@@ -81,7 +81,7 @@ struct Buffer3D
     }
 
     /** Creates a 1D row subview. */
-    constexpr Buffer1D<element_type> row(size_t slice, size_t row) const
+    constexpr Buffer1d<element_type> row(size_t slice, size_t row) const
     {
         assert(slice < depth);
         assert(row < height);
@@ -141,8 +141,8 @@ struct Buffer3D
 
 
 
-using Buffer3DView = Buffer3D<const std::byte>;
-using Buffer3DSpan = Buffer3D<std::byte>;
+using Buffer3dView = Buffer3d<const std::byte>;
+using Buffer3dSpan = Buffer3d<std::byte>;
 
 
 

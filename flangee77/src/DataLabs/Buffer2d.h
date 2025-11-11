@@ -1,7 +1,7 @@
 #ifndef DL7_BUFFER2D_H
 #define DL7_BUFFER2D_H
 
-#include "./Buffer1D.h"
+#include "./Buffer1d.h"
 
 
 
@@ -16,7 +16,7 @@ namespace dl7 {
  */
 template <typename Telement = std::byte>
     requires(!std::is_reference_v<Telement> && std::is_trivially_copyable_v<Telement>)
-struct Buffer2D
+struct Buffer2d
 {
     using element_type = Telement;
     using byte_type = std::conditional_t<std::is_const_v<element_type>, const std::byte, std::byte>;
@@ -33,15 +33,15 @@ struct Buffer2D
     /** The distance between offsets of the first elements of consecutive rows, in bytes. */
     size_t row_pitch = 0;
 
-    constexpr Buffer2D() noexcept = default;
+    constexpr Buffer2d() noexcept = default;
 
-    constexpr Buffer2D(std::span<element_type> data, size_t width, size_t height)
+    constexpr Buffer2d(std::span<element_type> data, size_t width, size_t height)
         requires(!std::is_same_v<std::remove_cv_t<element_type>, std::byte>)
-        : Buffer2D({reinterpret_cast<byte_pointer>(data.data()), data.size_bytes()}, width, height)
+        : Buffer2d({reinterpret_cast<byte_pointer>(data.data()), data.size_bytes()}, width, height)
     {
     }
 
-    constexpr Buffer2D(std::span<byte_type> data, size_t width, size_t height, size_t element_stride = sizeof(element_type), size_t row_pitch = 0)
+    constexpr Buffer2d(std::span<byte_type> data, size_t width, size_t height, size_t element_stride = sizeof(element_type), size_t row_pitch = 0)
         : data(data)
         , width(width)
         , height(height)
@@ -61,7 +61,7 @@ struct Buffer2D
     constexpr size_t length() const noexcept { return width * height; }
 
     /** Creates a 1D row subview. */
-    constexpr Buffer1D<element_type> row(size_t row) const
+    constexpr Buffer1d<element_type> row(size_t row) const
     {
         assert(row < height);
         const size_t offset = row * row_pitch;
@@ -118,8 +118,8 @@ struct Buffer2D
 
 
 
-using Buffer2DView = Buffer2D<const std::byte>;
-using Buffer2DSpan = Buffer2D<std::byte>;
+using Buffer2dView = Buffer2d<const std::byte>;
+using Buffer2dSpan = Buffer2d<std::byte>;
 
 
 

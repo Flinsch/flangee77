@@ -1,7 +1,7 @@
 #ifndef F77_TESTS_DL7_BUFFER2D_H
 #define F77_TESTS_DL7_BUFFER2D_H
 
-#include <DataLabs/Buffer2D.h>
+#include <DataLabs/Buffer2d.h>
 
 #include <TestLabs/TestSuite.h>
 
@@ -11,21 +11,21 @@
 
 
 
-TESTLABS_CASE( u8"DataLabs:  Buffer2D:  zero-length buffers" )
+TESTLABS_CASE( u8"DataLabs:  Buffer2d:  zero-length buffers" )
 {
     std::vector<float> data;
 
-    TESTLABS_CHECK_EQ( dl7::Buffer2D<float>().length(), 0 );
-    TESTLABS_CHECK_EQ( dl7::Buffer2D<float>( data, 0, 0 ).length(), 0 );
+    TESTLABS_CHECK_EQ( dl7::Buffer2d<float>().length(), 0 );
+    TESTLABS_CHECK_EQ( dl7::Buffer2d<float>( data, 0, 0 ).length(), 0 );
 }
 
-TESTLABS_CASE( u8"DataLabs:  Buffer2D:  basic usage" )
+TESTLABS_CASE( u8"DataLabs:  Buffer2d:  basic usage" )
 {
     std::vector<float> data( 12 ); // 3x4 matrix
     for (size_t i = 0; i < 12; ++i)
         data[ i ] = i + 1;
 
-    dl7::Buffer2D<float> buffer( data, 4, 3 );
+    dl7::Buffer2d<float> buffer( data, 4, 3 );
 
     TESTLABS_CHECK_EQ( buffer.width, 4 );
     TESTLABS_CHECK_EQ( buffer.height, 3 );
@@ -39,7 +39,7 @@ TESTLABS_CASE( u8"DataLabs:  Buffer2D:  basic usage" )
     TESTLABS_CHECK_EQ( buffer.map_element<long>( 2, 3 ), std::bit_cast<long>(12.0f) );
 }
 
-TESTLABS_CASE( u8"DataLabs:  Buffer2D:  strided access" )
+TESTLABS_CASE( u8"DataLabs:  Buffer2d:  strided access" )
 {
     std::vector<std::byte> data( 108 ); // 3x4 matrix, each element 4 bytes, stride 8, row pitch 40
     float* fdata = reinterpret_cast<float*>(data.data());
@@ -51,7 +51,7 @@ TESTLABS_CASE( u8"DataLabs:  Buffer2D:  strided access" )
         fdata[ j ] = i + 1;
     }
 
-    dl7::Buffer2D<float> buffer( data, 4, 3, 8, 40 );
+    dl7::Buffer2d<float> buffer( data, 4, 3, 8, 40 );
 
     TESTLABS_CHECK_EQ( buffer.width, 4 );
     TESTLABS_CHECK_EQ( buffer.height, 3 );
@@ -65,13 +65,13 @@ TESTLABS_CASE( u8"DataLabs:  Buffer2D:  strided access" )
     TESTLABS_CHECK_EQ( buffer.map_element<long>( 2, 3 ), std::bit_cast<long>(12.0f) );
 }
 
-TESTLABS_CASE( u8"DataLabs:  Buffer2D:  row access" )
+TESTLABS_CASE( u8"DataLabs:  Buffer2d:  row access" )
 {
     std::vector<float> data( 12 ); // 3x4 matrix
     for (size_t i = 0; i < 12; ++i)
         data[ i ] = i + 1;
 
-    dl7::Buffer2D<float> buffer( data, 4, 3 );
+    dl7::Buffer2d<float> buffer( data, 4, 3 );
 
     TESTLABS_CHECK_EQ( buffer.row( 0 ).element( 0 ), 1.0f );
     TESTLABS_CHECK_EQ( buffer.row( 1 ).element( 1 ), 6.0f );
