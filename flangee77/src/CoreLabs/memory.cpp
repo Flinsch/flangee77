@@ -11,7 +11,9 @@ namespace cl7::memory {
 
 
     /**
-     * 
+     * Converts a byte count to a human-readable string using decimal SI units
+     * (e.g., "kB", "MB", etc.). If the byte count is zero, the provided string is
+     * returned instead.
      */
     cl7::u8string stringify_byte_amount_si(unsigned long long bytes, cl7::u8string_view zero_string)
     {
@@ -21,8 +23,7 @@ namespace cl7::memory {
         constexpr unsigned base_factor = 1000;
 
         constexpr cl7::u8string_view units[] = {
-            //u8"B", u8"kB", u8"MB", u8"GB", u8"TB", u8"PB", u8"EB", u8"ZB", u8"YB",
-            u8"B", u8"KB", u8"MB", u8"GB", u8"TB", u8"PB", u8"EB", u8"ZB", u8"YB",
+            u8"B", u8"kB", u8"MB", u8"GB", u8"TB", u8"PB", u8"EB", u8"ZB", u8"YB",
         };
         constexpr unsigned unit_count = std::size(units);
         constexpr unsigned max_orders_of_magnitude = unit_count - 1;
@@ -39,9 +40,11 @@ namespace cl7::memory {
     }
 
     /**
-     * 
+     * Converts a byte count to a human-readable string using binary IEC units
+     * (e.g., "KiB", "MiB", etc.). If the byte count is zero, the provided string is
+     * returned instead.
      */
-    cl7::u8string stringify_byte_amount_binary(unsigned long long bytes, cl7::u8string_view zero_string)
+    cl7::u8string stringify_byte_amount_iec(unsigned long long bytes, cl7::u8string_view zero_string)
     {
         if (!bytes)
             return cl7::u8string(zero_string);
@@ -66,7 +69,11 @@ namespace cl7::memory {
     }
 
     /**
-     * 
+     * Calculates the largest reasonable unit for a byte count and scales the value
+     * accordingly. You can specify the base factor for scaling (e.g., 1000 for
+     * decimal SI, 1024 for binary IEC) and the maximum number of orders of
+     * magnitude to consider. The actual number of orders of magnitude is optionally
+     * stored via the corresponding output parameter.
      */
     unsigned get_reasonable_byte_amount(unsigned long long bytes, unsigned base_factor, unsigned max_orders_of_magnitude, unsigned* orders_of_magnitude_out)
     {
