@@ -108,7 +108,8 @@ namespace xl7::graphics::images {
 
     /**
      * Special swap operation. The image's data is essentially "exported" and then
-     * remains undefined.
+     * remains undefined (in terms of content; structurally, a suitably sized buffer
+     * remains).
      */
     void Image::swap_data(cl7::byte_vector& data)
     {

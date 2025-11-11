@@ -91,7 +91,7 @@ public:
     /**
      * Move assignment operator.
      */
-    Image &operator=(Image &&other) noexcept = default;
+    Image& operator=(Image&& other) noexcept = default;
 
     /**
      * Destructor.
@@ -105,7 +105,8 @@ public:
 
     /**
      * Special swap operation. The image's data is essentially "exported" and then
-     * remains undefined.
+     * remains undefined (in terms of content; structurally, a suitably sized buffer
+     * remains).
      */
     void swap_data(cl7::byte_vector& data);
 
