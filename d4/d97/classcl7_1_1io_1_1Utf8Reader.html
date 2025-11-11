@@ -121,6 +121,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab6ca641255268304ca3ef150785d831b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22fc9a84ba0f543a0dc8ac8ee451104b" id="r_a22fc9a84ba0f543a0dc8ac8ee451104b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d97/classcl7_1_1io_1_1Utf8Reader.html#a22fc9a84ba0f543a0dc8ac8ee451104b">read_token</a> () const</td></tr>
 <tr class="separator:a22fc9a84ba0f543a0dc8ac8ee451104b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a6a77f3bb4ae16ab615eeef8ac4d3be" id="r_a8a6a77f3bb4ae16ab615eeef8ac4d3be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d97/classcl7_1_1io_1_1Utf8Reader.html#a8a6a77f3bb4ae16ab615eeef8ac4d3be">read_codepoint</a> () const</td></tr>
+<tr class="separator:a8a6a77f3bb4ae16ab615eeef8ac4d3be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1bd01818280615e83ab27e819bf98f3" id="r_aa1bd01818280615e83ab27e819bf98f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a0460ea70cccc81840bd000e69ebfa913">cl7::u8char_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d97/classcl7_1_1io_1_1Utf8Reader.html#aa1bd01818280615e83ab27e819bf98f3">read_char</a> () const</td></tr>
+<tr class="separator:aa1bd01818280615e83ab27e819bf98f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9576715f0f8f3f93fa44fcc420dbe74a" id="r_a9576715f0f8f3f93fa44fcc420dbe74a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d97/classcl7_1_1io_1_1Utf8Reader.html#a9576715f0f8f3f93fa44fcc420dbe74a">read_all_validated</a> () const</td></tr>
 <tr class="separator:a9576715f0f8f3f93fa44fcc420dbe74a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad88587e48508cdf58addd0542b2f080f" id="r_ad88587e48508cdf58addd0542b2f080f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d97/classcl7_1_1io_1_1Utf8Reader.html#ad88587e48508cdf58addd0542b2f080f">read_line_validated</a> () const</td></tr>
@@ -235,6 +239,42 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Reads all available/remaining data with UTF-8 validation/"correction". </p>
+
+</div>
+</div>
+<a id="aa1bd01818280615e83ab27e819bf98f3" name="aa1bd01818280615e83ab27e819bf98f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1bd01818280615e83ab27e819bf98f3">&#9670;&#160;</a></span>read_char()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a0460ea70cccc81840bd000e69ebfa913">cl7::u8char_t</a> cl7::io::Utf8Reader::read_char </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Attempts to read a single character. Returns 0 if not possible. </p>
+
+</div>
+</div>
+<a id="a8a6a77f3bb4ae16ab615eeef8ac4d3be" name="a8a6a77f3bb4ae16ab615eeef8ac4d3be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a6a77f3bb4ae16ab615eeef8ac4d3be">&#9670;&#160;</a></span>read_codepoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> cl7::io::Utf8Reader::read_codepoint </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Attempts to read a single Unicode codepoint. </p>
 
 </div>
 </div>

@@ -1,5 +1,7 @@
 var namespacecl7_1_1io =
 [
+    [ "AsciiReader", "df/d84/classcl7_1_1io_1_1AsciiReader.html", "df/d84/classcl7_1_1io_1_1AsciiReader" ],
+    [ "AsciiWriter", "d2/d78/classcl7_1_1io_1_1AsciiWriter.html", "d2/d78/classcl7_1_1io_1_1AsciiWriter" ],
     [ "ByteReader", "d7/df3/classcl7_1_1io_1_1ByteReader.html", "d7/df3/classcl7_1_1io_1_1ByteReader" ],
     [ "ByteWriter", "de/d6e/classcl7_1_1io_1_1ByteWriter.html", "de/d6e/classcl7_1_1io_1_1ByteWriter" ],
     [ "EndianAwareReader", "d9/d5a/classcl7_1_1io_1_1EndianAwareReader.html", "d9/d5a/classcl7_1_1io_1_1EndianAwareReader" ],
@@ -24,6 +26,7 @@ var namespacecl7_1_1io =
       [ "Current", "d6/dc7/namespacecl7_1_1io.html#a4ff74034025df11666f80f69b9069053a222a267cc5778206b253be35ee3ddab5", null ],
       [ "End", "d6/dc7/namespacecl7_1_1io.html#a4ff74034025df11666f80f69b9069053a87557f11575c0ad78e4e28abedc13b6e", null ]
     ] ],
+    [ "_validate_ascii", "d6/dc7/namespacecl7_1_1io.html#aa127f7f1f7f3e32171cbe0931498f0b4", null ],
     [ "_validate_utf8", "d6/dc7/namespacecl7_1_1io.html#a8aee6d57ad8594a51525b03453f928d7", null ],
     [ "operator&", "d6/dc7/namespacecl7_1_1io.html#a7a24e4fc86e70a9509de499fb0dfc2f5", null ],
     [ "operator|", "d6/dc7/namespacecl7_1_1io.html#ada86219d2dda97504b23408fd189a30f", null ]

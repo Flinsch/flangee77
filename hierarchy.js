@@ -27,6 +27,8 @@ var hierarchy =
     [ "pl7::Application", "d8/d91/classpl7_1_1Application.html", null ],
     [ "pl7::ArgumentBag", "dd/d75/classpl7_1_1ArgumentBag.html", null ],
     [ "cl7::text::codec::AsciiCodec", "d3/df1/classcl7_1_1text_1_1codec_1_1AsciiCodec.html", null ],
+    [ "cl7::io::AsciiReader", "df/d84/classcl7_1_1io_1_1AsciiReader.html", null ],
+    [ "cl7::io::AsciiWriter", "d2/d78/classcl7_1_1io_1_1AsciiWriter.html", null ],
     [ "dl7::syntax::AstNode< Ttype >", "db/dcc/classdl7_1_1syntax_1_1AstNode.html", null ],
     [ "cl7::profiling::Registry::Attorney", "d6/df3/classcl7_1_1profiling_1_1Registry_1_1Attorney.html", null ],
     [ "xl7::graphics::impl::direct3d11::meshes::IndexBufferImpl::Attorney", "d0/d6a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl_1_1Attorney.html", null ],

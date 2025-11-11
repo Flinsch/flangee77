@@ -21,6 +21,8 @@ var annotated_dup =
         [ "_is_any_string_view< std::basic_string_view< Tchar, Ttraits > >", "d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html", null ]
       ] ],
       [ "io", "d6/dc7/namespacecl7_1_1io.html", [
+        [ "AsciiReader", "df/d84/classcl7_1_1io_1_1AsciiReader.html", "df/d84/classcl7_1_1io_1_1AsciiReader" ],
+        [ "AsciiWriter", "d2/d78/classcl7_1_1io_1_1AsciiWriter.html", "d2/d78/classcl7_1_1io_1_1AsciiWriter" ],
         [ "ByteReader", "d7/df3/classcl7_1_1io_1_1ByteReader.html", "d7/df3/classcl7_1_1io_1_1ByteReader" ],
         [ "ByteWriter", "de/d6e/classcl7_1_1io_1_1ByteWriter.html", "de/d6e/classcl7_1_1io_1_1ByteWriter" ],
         [ "EndianAwareReader", "d9/d5a/classcl7_1_1io_1_1EndianAwareReader.html", "d9/d5a/classcl7_1_1io_1_1EndianAwareReader" ],

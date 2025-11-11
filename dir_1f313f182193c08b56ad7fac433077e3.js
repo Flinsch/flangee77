@@ -1,5 +1,9 @@
 var dir_1f313f182193c08b56ad7fac433077e3 =
 [
+    [ "AsciiReader.cpp", "d6/d94/AsciiReader_8cpp.html", "d6/d94/AsciiReader_8cpp" ],
+    [ "AsciiReader.h", "d8/dd7/AsciiReader_8h.html", "d8/dd7/AsciiReader_8h" ],
+    [ "AsciiWriter.cpp", "d9/d35/AsciiWriter_8cpp.html", null ],
+    [ "AsciiWriter.h", "da/da0/AsciiWriter_8h.html", "da/da0/AsciiWriter_8h" ],
     [ "ByteReader.cpp", "d2/d8f/ByteReader_8cpp.html", null ],
     [ "ByteReader.h", "d1/dcd/ByteReader_8h.html", "d1/dcd/ByteReader_8h" ],
     [ "ByteWriter.cpp", "df/db4/ByteWriter_8cpp.html", null ],
