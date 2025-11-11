@@ -11,12 +11,12 @@
 
 
 
-TESTLABS_CASE( u8"DataLabs:  Buffer3d:  zero-length buffers" )
+TESTLABS_CASE( u8"DataLabs:  Buffer3d:  empty buffers" )
 {
     std::vector<float> data;
 
-    TESTLABS_CHECK_EQ( dl7::Buffer3d<float>().length(), 0 );
-    TESTLABS_CHECK_EQ( dl7::Buffer3d<float>( data, 0, 0, 0 ).length(), 0 );
+    TESTLABS_CHECK_EQ( dl7::Buffer3d<float>().size(), 0 );
+    TESTLABS_CHECK_EQ( dl7::Buffer3d<float>( data, 0, 0, 0 ).size(), 0 );
 }
 
 TESTLABS_CASE( u8"DataLabs:  Buffer3d:  basic usage" )
@@ -27,9 +27,14 @@ TESTLABS_CASE( u8"DataLabs:  Buffer3d:  basic usage" )
 
     dl7::Buffer3d<float> buffer( data, 4, 3, 2 );
 
-    TESTLABS_CHECK_EQ( buffer.width, 4 );
-    TESTLABS_CHECK_EQ( buffer.height, 3 );
-    TESTLABS_CHECK_EQ( buffer.depth, 2 );
+    TESTLABS_CHECK_EQ( buffer.width(), 4 );
+    TESTLABS_CHECK_EQ( buffer.height(), 3 );
+    TESTLABS_CHECK_EQ( buffer.depth(), 2 );
+    TESTLABS_CHECK_EQ( buffer.element_stride(), 4 );
+    TESTLABS_CHECK_EQ( buffer.row_pitch(), 16 );
+    TESTLABS_CHECK_EQ( buffer.slice_pitch(), 48 );
+    TESTLABS_CHECK_EQ( buffer.size_bytes(), 96 );
+    TESTLABS_CHECK_EQ( buffer.size(), 24 );
     TESTLABS_CHECK_EQ( buffer.element( 0, 0, 0 ), 1.0f );
     TESTLABS_CHECK_EQ( buffer.element( 1, 2, 3 ), 24.0f );
     TESTLABS_CHECK_EQ( buffer.map_element<long>( 0, 0, 0 ), std::bit_cast<long>(1.0f) );
@@ -52,9 +57,14 @@ TESTLABS_CASE( u8"DataLabs:  Buffer3d:  strided access" )
 
     dl7::Buffer3d<float> buffer( data, 4, 3, 2, 8, 40, 128 );
 
-    TESTLABS_CHECK_EQ( buffer.width, 4 );
-    TESTLABS_CHECK_EQ( buffer.height, 3 );
-    TESTLABS_CHECK_EQ( buffer.depth, 2 );
+    TESTLABS_CHECK_EQ( buffer.width(), 4 );
+    TESTLABS_CHECK_EQ( buffer.height(), 3 );
+    TESTLABS_CHECK_EQ( buffer.depth(), 2 );
+    TESTLABS_CHECK_EQ( buffer.element_stride(), 8 );
+    TESTLABS_CHECK_EQ( buffer.row_pitch(), 40 );
+    TESTLABS_CHECK_EQ( buffer.slice_pitch(), 128 );
+    TESTLABS_CHECK_EQ( buffer.size_bytes(), 236 );
+    TESTLABS_CHECK_EQ( buffer.size(), 24 );
     TESTLABS_CHECK_EQ( buffer.element( 0, 0, 0 ), 1.0f );
     TESTLABS_CHECK_EQ( buffer.element( 1, 2, 3 ), 24.0f );
     TESTLABS_CHECK_EQ( buffer.map_element<long>( 0, 0, 0 ), std::bit_cast<long>(1.0f) );

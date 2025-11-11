@@ -11,12 +11,12 @@
 
 
 
-TESTLABS_CASE( u8"DataLabs:  Buffer2d:  zero-length buffers" )
+TESTLABS_CASE( u8"DataLabs:  Buffer2d:  empty buffers" )
 {
     std::vector<float> data;
 
-    TESTLABS_CHECK_EQ( dl7::Buffer2d<float>().length(), 0 );
-    TESTLABS_CHECK_EQ( dl7::Buffer2d<float>( data, 0, 0 ).length(), 0 );
+    TESTLABS_CHECK_EQ( dl7::Buffer2d<float>().size(), 0 );
+    TESTLABS_CHECK_EQ( dl7::Buffer2d<float>( data, 0, 0 ).size(), 0 );
 }
 
 TESTLABS_CASE( u8"DataLabs:  Buffer2d:  basic usage" )
@@ -27,8 +27,12 @@ TESTLABS_CASE( u8"DataLabs:  Buffer2d:  basic usage" )
 
     dl7::Buffer2d<float> buffer( data, 4, 3 );
 
-    TESTLABS_CHECK_EQ( buffer.width, 4 );
-    TESTLABS_CHECK_EQ( buffer.height, 3 );
+    TESTLABS_CHECK_EQ( buffer.width(), 4 );
+    TESTLABS_CHECK_EQ( buffer.height(), 3 );
+    TESTLABS_CHECK_EQ( buffer.element_stride(), 4 );
+    TESTLABS_CHECK_EQ( buffer.row_pitch(), 16 );
+    TESTLABS_CHECK_EQ( buffer.size_bytes(), 48 );
+    TESTLABS_CHECK_EQ( buffer.size(), 12 );
     TESTLABS_CHECK_EQ( buffer.element( 0, 0 ), 1.0f );
     TESTLABS_CHECK_EQ( buffer.element( 1, 1 ), 6.0f );
     TESTLABS_CHECK_EQ( buffer.element( 1, 2 ), 7.0f );
@@ -53,8 +57,12 @@ TESTLABS_CASE( u8"DataLabs:  Buffer2d:  strided access" )
 
     dl7::Buffer2d<float> buffer( data, 4, 3, 8, 40 );
 
-    TESTLABS_CHECK_EQ( buffer.width, 4 );
-    TESTLABS_CHECK_EQ( buffer.height, 3 );
+    TESTLABS_CHECK_EQ( buffer.width(), 4 );
+    TESTLABS_CHECK_EQ( buffer.height(), 3 );
+    TESTLABS_CHECK_EQ( buffer.element_stride(), 8 );
+    TESTLABS_CHECK_EQ( buffer.row_pitch(), 40 );
+    TESTLABS_CHECK_EQ( buffer.size_bytes(), 108 );
+    TESTLABS_CHECK_EQ( buffer.size(), 12 );
     TESTLABS_CHECK_EQ( buffer.element( 0, 0 ), 1.0f );
     TESTLABS_CHECK_EQ( buffer.element( 1, 1 ), 6.0f );
     TESTLABS_CHECK_EQ( buffer.element( 1, 2 ), 7.0f );

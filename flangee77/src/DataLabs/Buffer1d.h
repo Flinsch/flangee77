@@ -18,18 +18,14 @@ namespace dl7 {
  */
 template <typename Telement = std::byte>
     requires(!std::is_reference_v<Telement> && std::is_trivially_copyable_v<Telement>)
-struct Buffer1d
+class Buffer1d
 {
+
+public:
     using element_type = Telement;
     using byte_type = std::conditional_t<std::is_const_v<element_type>, const std::byte, std::byte>;
     using byte_pointer = std::conditional_t<std::is_const_v<element_type>, const std::byte*, std::byte*>;
 
-    /** The actual non-owning data buffer. */
-    std::span<byte_type> data;
-    /** The number of logical elements. */
-    size_t length = 0;
-    /** The distance between offsets of consecutive elements, in bytes. */
-    size_t element_stride = 0;
 
     constexpr Buffer1d() noexcept = default;
 
@@ -45,25 +41,38 @@ struct Buffer1d
     }
 
     constexpr Buffer1d(std::span<byte_type> data, size_t length, size_t element_stride = sizeof(element_type))
-        : data(data)
-        , length(length)
-        , element_stride(element_stride)
+        : _data(data)
+        , _length(length)
+        , _element_stride(element_stride)
     {
-        assert(element_stride >= sizeof(element_type));
-        assert(element_stride % alignof(element_type) == 0);
-        assert(length == 0 || data.size_bytes() >= (length - 1) * element_stride + sizeof(element_type));
+        assert(_element_stride >= sizeof(element_type));
+        assert(_element_stride % alignof(element_type) == 0);
+        assert(size() == 0 || size_bytes() >= (_length - 1) * _element_stride + sizeof(element_type));
     }
 
+
+    /** Returns the actual non-owning data buffer. */
+    constexpr std::span<byte_type> data() const { return _data; }
+    /** Returns the number of logical elements. */
+    constexpr size_t length() const { return _length; }
+    /** Returns the distance between offsets of consecutive elements, in bytes. */
+    constexpr size_t element_stride() const { return _element_stride; }
+
+
     /** Returns the buffer size, in bytes. */
-    constexpr size_t size_bytes() const noexcept { return data.size_bytes(); }
+    constexpr size_t size_bytes() const noexcept { return _data.size_bytes(); }
+
+    /** Returns the total number of elements (simply the 1-dimensional length). */
+    constexpr size_t size() const noexcept { return _length; }
+
 
     /** Gains access to the specified element. */
     constexpr element_type& element(size_t index) const
     {
-        assert(index < length);
-        const size_t offset = index * element_stride;
-        assert(offset + sizeof(element_type) <= data.size_bytes());
-        byte_pointer const ptr = data.data() + offset;
+        assert(index < size());
+        const size_t offset = index * _element_stride;
+        assert(offset + sizeof(element_type) <= _data.size_bytes());
+        byte_pointer const ptr = _data.data() + offset;
         assert(reinterpret_cast<uintptr_t>(ptr) % alignof(element_type) == 0);
         return *reinterpret_cast<element_type*>(ptr);
     }
@@ -74,15 +83,25 @@ struct Buffer1d
             (std::is_const_v<Tother> || !std::is_const_v<element_type>))
     constexpr Tother& map_element(size_t index) const
     {
-        assert(sizeof(Tother) <= element_stride);
-        assert(index < length);
-        const size_t offset = index * element_stride;
-        assert(offset + sizeof(Tother) <= data.size_bytes());
-        byte_pointer const ptr = data.data() + offset;
+        assert(sizeof(Tother) <= _element_stride);
+        assert(index < size());
+        const size_t offset = index * _element_stride;
+        assert(offset + sizeof(Tother) <= _data.size_bytes());
+        byte_pointer const ptr = _data.data() + offset;
         assert(reinterpret_cast<uintptr_t>(ptr) % alignof(Tother) == 0);
         return *reinterpret_cast<Tother*>(ptr);
     }
-};
+
+
+private:
+    /** The actual non-owning data buffer. */
+    std::span<byte_type> _data;
+    /** The number of logical elements. */
+    size_t _length = 0;
+    /** The distance between offsets of consecutive elements, in bytes. */
+    size_t _element_stride = 0;
+
+}; // class Buffer1d
 
 
 
