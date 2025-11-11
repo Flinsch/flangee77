@@ -39,6 +39,16 @@ public:
     cl7::u8string read_token() const;
 
     /**
+     * Attempts to read a single Unicode codepoint.
+     */
+    cl7::u8string_view read_codepoint() const;
+
+    /**
+     * Attempts to read a single character. Returns 0 if not possible.
+     */
+    cl7::u8char_t read_char() const;
+
+    /**
      * Reads all available/remaining data with UTF-8 validation/"correction".
      */
     cl7::u8string read_all_validated() const;

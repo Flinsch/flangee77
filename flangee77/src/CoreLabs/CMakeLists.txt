@@ -12,6 +12,8 @@ target_sources(flangee77
 
     creational/Singleton.cpp
 
+    io/AsciiReader.cpp
+    io/AsciiWriter.cpp
     io/ByteReader.cpp
     io/ByteWriter.cpp
     io/File.cpp

@@ -12,6 +12,10 @@
 
 #include "./CoreLabs/io/ByteReader.h"
 #include "./CoreLabs/io/ByteWriter.h"
+#include "./CoreLabs/io/AsciiReader.h"
+#include "./CoreLabs/io/AsciiWriter.h"
+#include "./CoreLabs/io/Utf8Reader.h"
+#include "./CoreLabs/io/Utf8Writer.h"
 #include "./CoreLabs/text/codec.h"
 #include "./CoreLabs/text/inspect.h"
 #include "./CoreLabs/text/transform.h"

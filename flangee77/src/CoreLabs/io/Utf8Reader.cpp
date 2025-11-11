@@ -7,6 +7,8 @@
 #include <CoreLabs/text/codec/Transcoder.h>
 #include <CoreLabs/text/inspect.h>
 
+#include <array>
+
 
 
 namespace cl7::io {
@@ -81,6 +83,44 @@ namespace cl7::io {
         return result;
     }
 
+    /**
+     * Attempts to read a single Unicode codepoint.
+     */
+    cl7::u8string_view Utf8Reader::read_codepoint() const
+    {
+        static std::array<cl7::u8char_t, 6> buffer;
+
+        const auto read_position = _readable->get_read_position();
+
+        const size_t max_count = _readable->read(cl7::make_byte_span(buffer));
+
+        size_t count = 0;
+        for (size_t i = 0; i < max_count; ++i)
+        {
+            if (cl7::text::codec::Analyzer<cl7::u8char_t, cl7::text::codec::PlainErrorHandler>().validate(cl7::u8string_view{buffer.data(), i + 1}))
+            {
+                count = i + 1;
+                break;
+            }
+        }
+
+        _readable->set_read_position(read_position + count);
+
+        return {buffer.data(), count};
+    }
+
+    /**
+     * Attempts to read a single character. Returns 0 if not possible.
+     */
+    cl7::u8char_t Utf8Reader::read_char() const
+    {
+        std::byte byte;
+        if (_readable->read(byte) != 1)
+            return 0;
+
+        return static_cast<cl7::u8char_t>(byte);
+    }
+
     static cl7::u8string _validate_utf8(cl7::u8string&& utf8_unchecked)
     {
         if (cl7::text::codec::Analyzer<cl7::u8char_t, cl7::text::codec::PlainErrorHandler>().validate(utf8_unchecked))
@@ -119,27 +159,13 @@ namespace cl7::io {
      */
     cl7::u8string_view Utf8Reader::peek_codepoint() const
     {
-        static cl7::u8char_t buffer[6];
-
         const auto read_position = _readable->get_read_position();
 
-        cl7::byte_vector data(6);
-        const size_t max_count = _readable->read(data);
-
-        size_t count = 0;
-        for (size_t i = 0; i < max_count; ++i)
-        {
-            cl7::u8string_view sv{reinterpret_cast<const cl7::u8char_t*>(data.data()), i + 1};
-            if (cl7::text::codec::Analyzer<cl7::u8char_t, cl7::text::codec::PlainErrorHandler>().validate(sv))
-            {
-                buffer[i] = *reinterpret_cast<const cl7::u8char_t*>(&data[i]);
-                break;
-            }
-        }
+        const auto result = read_codepoint();
 
         _readable->set_read_position(read_position);
 
-        return {buffer, count};
+        return result;
     }
 
     /**
