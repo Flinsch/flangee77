@@ -7,7 +7,7 @@ var namespacecl7 =
     [ "logging", "df/de5/namespacecl7_1_1logging.html", "df/de5/namespacecl7_1_1logging" ],
     [ "memory", "df/db2/namespacecl7_1_1memory.html", [
       [ "get_reasonable_byte_amount", "df/db2/namespacecl7_1_1memory.html#a6c396ea26cdb8106e06b70208f03c202", null ],
-      [ "stringify_byte_amount_binary", "df/db2/namespacecl7_1_1memory.html#aae47b18df11532ce5a5d88198fb9e8d2", null ],
+      [ "stringify_byte_amount_iec", "df/db2/namespacecl7_1_1memory.html#ae7f0acb86ccc919f73ecbe25d4e45105", null ],
       [ "stringify_byte_amount_si", "df/db2/namespacecl7_1_1memory.html#a52ff4ff0cae6b516a3028d74f580cafa", null ]
     ] ],
     [ "platform", "dd/d60/namespacecl7_1_1platform.html", "dd/d60/namespacecl7_1_1platform" ],
