@@ -254,6 +254,34 @@ namespace ml7 {
         return m;
     }
 
+    /**
+     * Returns the smallest value of four given values.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T min4(T a, T b, T c, T d)
+    {
+        T m = a;
+        if (b < m) m = b;
+        if (c < m) m = c;
+        if (d < m) m = d;
+        return m;
+    }
+
+    /**
+     * Returns the greatest value of four given values.
+     */
+    template <typename T>
+        requires(std::is_arithmetic_v<T>)
+    constexpr T max4(T a, T b, T c, T d)
+    {
+        T m = a;
+        if (b > m) m = b;
+        if (c > m) m = c;
+        if (d > m) m = d;
+        return m;
+    }
+
 
     /**
      * Clamps the given value to lie within the range [min; max].

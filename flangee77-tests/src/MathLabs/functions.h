@@ -356,6 +356,61 @@ TESTLABS_CASE( u8"MathLabs:  functions:  max3" )
 }
 
 
+TESTLABS_CASE( u8"MathLabs:  functions:  min4" )
+{
+    struct Entry
+    {
+        float a, b, c, d;
+        float expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
+        { 1.0f, 2.0f, 3.0f, 4.0f, 1.0f },
+        { 1.0f, -1.0f, 0.5f, -0.5f, -1.0f },
+        { 1.0f, 1.5f, -1.0f, 0.5f, -1.0f },
+        { 0.0f, 0.5f, 1.0f, -0.5f, -0.5f },
+    };
+
+    TESTLABS_SUBCASE_BATCH( u8"min4<float>", container, entry )
+    {
+        auto a = entry.a;
+        auto b = entry.b;
+        auto c = entry.c;
+        auto d = entry.d;
+        auto expected = entry.expected;
+        TESTLABS_CHECK_EQ( ml7::min4( a, b, c, d ), expected );
+    }
+}
+
+TESTLABS_CASE( u8"MathLabs:  functions:  max4" )
+{
+    struct Entry
+    {
+        float a, b, c, d;
+        float expected;
+    } entry;
+
+    const std::vector<Entry> container {
+        { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
+        { 1.0f, 2.0f, 3.0f, 4.0f, 4.0f },
+        { 1.0f, -1.0f, 0.5f, -0.5f, 1.0f },
+        { 1.0f, 1.5f, -1.0f, 0.5f, 1.5f },
+        { 0.0f, 0.5f, 1.0f, -0.5f, 1.0f },
+    };
+
+    TESTLABS_SUBCASE_BATCH( u8"max4<float>", container, entry )
+    {
+        auto a = entry.a;
+        auto b = entry.b;
+        auto c = entry.c;
+        auto d = entry.d;
+        auto expected = entry.expected;
+        TESTLABS_CHECK_EQ( ml7::max4( a, b, c, d ), expected );
+    }
+}
+
+
 
 TESTLABS_CASE( u8"MathLabs:  functions:  clamp" )
 {
