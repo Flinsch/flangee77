@@ -208,6 +208,9 @@ struct Vector2
      * dot/scalar product of both vectors in which this vector is replaced by the
      * perpendicular rotated 90 degrees to the left (counter-clockwise).
      * So, a.perpdot(b) is the same as a.perp().dot(b).
+     * In other words, a.perpdot(b) yields a positive value if b is to the left of a,
+     * a negative value if b is to the right of a, and 0 if the two vectors are
+     * collinear.
      */
     T perpdot(const Vector2& v) const
     {
@@ -219,6 +222,9 @@ struct Vector2
      * This is the same as the so-called perp-dot product in which this vector is
      * replaced by the perpendicular rotated 90 degrees to the left (counter-clockwise).
      * So, a.cross(b) is the same as a.perp().dot(b).
+     * In other words, a.cross(b) yields a positive value if b is to the left of a,
+     * a negative value if b is to the right of a, and 0 if the two vectors are
+     * collinear.
      */
     T cross(const Vector2& v) const
     {
