@@ -267,6 +267,17 @@ struct Vector2
         return *this * (dot(v) / length_squared());
     }
 
+    /**
+     * Checks whether the given vector represents a counter-clockwise turn with
+     * respect to this vector. In that case, the function returns a value greater
+     * than 0. A value less than 0 indicates a clockwise turn. 0 indicates that the
+     * vectors are collinear.
+     */
+    T ccw(const Vector2& v) const
+    {
+        return x * (v.y - y) - (v.x - x) * y;
+    }
+
 
 
     // #############################################################################

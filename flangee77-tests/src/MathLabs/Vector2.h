@@ -63,6 +63,10 @@ TESTLABS_CASE( u8"CoreLabs:  Vector2:  " )
     TESTLABS_CHECK_EQ( ml7::Vector2f( 1.0f, 0.0f ).comp( ml7::Vector2f( 2.0f, -2.0f ) ), 2.0f );
     TESTLABS_CHECK_EQ( ml7::Vector2f( 1.0f, 0.0f ).proj( ml7::Vector2f( 2.0f, -2.0f ) ), ml7::Vector2f( 2.0f, 0.0f ) );
 
+    TESTLABS_CHECK( ml7::Vector2f( 1.0f, 0.0f ).ccw( ml7::Vector2f( 2.0f, 0.0f ) ) == 0.0f );
+    TESTLABS_CHECK( ml7::Vector2f( 1.0f, 0.0f ).ccw( ml7::Vector2f( 2.0f, -1.0f ) ) < 0.0f );
+    TESTLABS_CHECK( ml7::Vector2f( 1.0f, 0.0f ).ccw( ml7::Vector2f( 2.0f, +1.0f ) ) > 0.0f );
+
     TESTLABS_CHECK_EQ( ml7::Vector2f( 1.0f, 2.0f ).clear(), ml7::Vector2f( 0.0f, 0.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector2f( 1.0f, 2.0f ).invert(), ml7::Vector2f( -1.0f, -2.0f ) );
     TESTLABS_CHECK_EQ( ml7::Vector2f( 2.0f, 0.0f ).normalize(), ml7::Vector2f( 1.0f, 0.0f ) );
