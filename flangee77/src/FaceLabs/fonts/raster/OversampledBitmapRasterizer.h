@@ -43,9 +43,9 @@ public:
 
 
 private:
-    void _rasterize_glyph_into(const Glyph& glyph, float font_size, unsigned padding, const Offset& offset, dl7::Buffer2dSpan canvas) override;
+    void _rasterize_glyph_into(const Glyph& glyph, const RasterSizeConfig& size_config, const PixelOffset& pixel_offset, dl7::Buffer2dSpan canvas) override;
 
-    void _do_rasterize_glyph_into(const Glyph& glyph, float font_size, unsigned padding, const Offset& offset, const dl7::Buffer2dSpan& canvas);
+    void _do_rasterize_glyph_into(const Glyph& glyph, const RasterSizeConfig& size_config, const PixelOffset& pixel_offset, const dl7::Buffer2dSpan& canvas);
 
     unsigned _oversampling;
     unsigned _basic_aa_quality;

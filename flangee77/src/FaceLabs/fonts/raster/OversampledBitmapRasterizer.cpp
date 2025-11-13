@@ -25,11 +25,11 @@ namespace fl7::fonts::raster {
 
 
 
-    void OversampledBitmapRasterizer::_rasterize_glyph_into(const Glyph& glyph, float font_size, unsigned padding, const Offset& offset, dl7::Buffer2dSpan canvas)
+    void OversampledBitmapRasterizer::_rasterize_glyph_into(const Glyph& glyph, const RasterSizeConfig& size_config, const PixelOffset& pixel_offset, dl7::Buffer2dSpan canvas)
     {
         if (_oversampling < 2)
         {
-            _do_rasterize_glyph_into(glyph, font_size, padding, offset, canvas);
+            _do_rasterize_glyph_into(glyph, size_config, pixel_offset, canvas);
             return;
         }
 
@@ -38,15 +38,17 @@ namespace fl7::fonts::raster {
         cl7::byte_vector oversampled_data(canvas.size() * samples_per_pixel);
         dl7::Buffer2dSpan oversampled_canvas(oversampled_data, canvas.width() * _oversampling, canvas.height() * _oversampling);
 
-        const Offset oversampled_offset = {
-            .left = offset.left * static_cast<int>(_oversampling),
-            .top = offset.top * static_cast<int>(_oversampling),
+        const PixelOffset oversampled_pixel_offset = {
+            .left = pixel_offset.left * static_cast<int>(_oversampling),
+            .top = pixel_offset.top * static_cast<int>(_oversampling),
         };
 
-        const unsigned oversampled_padding = padding * _oversampling;
-        const float oversampled_font_size = font_size * static_cast<float>(_oversampling);
+        const RasterSizeConfig oversampled_size_config = {
+            .font_size = size_config.font_size * static_cast<float>(_oversampling),
+            .padding = size_config.padding * _oversampling,
+        };
 
-        _do_rasterize_glyph_into(glyph, oversampled_font_size, oversampled_padding, oversampled_offset, oversampled_canvas);
+        _do_rasterize_glyph_into(glyph, oversampled_size_config, oversampled_pixel_offset, oversampled_canvas);
 
         for (size_t row = 0; row < canvas.height(); ++row)
         {
@@ -69,14 +71,14 @@ namespace fl7::fonts::raster {
 
 
 
-    void OversampledBitmapRasterizer::_do_rasterize_glyph_into(const Glyph& glyph, float font_size, unsigned padding, const Offset& offset, const dl7::Buffer2dSpan& canvas)
+    void OversampledBitmapRasterizer::_do_rasterize_glyph_into(const Glyph& glyph, const RasterSizeConfig& size_config, const PixelOffset& pixel_offset, const dl7::Buffer2dSpan& canvas)
     {
         SimpleBitmapRasterizer simple_bitmap_rasterizer{_basic_aa_quality, false};
 
         assert(simple_bitmap_rasterizer.get_pixel_format() == get_pixel_format());
         assert(simple_bitmap_rasterizer.get_channel_order() == get_channel_order());
 
-        simple_bitmap_rasterizer.rasterize_glyph_into(glyph, font_size, padding, offset, canvas);
+        simple_bitmap_rasterizer.rasterize_glyph_into(glyph, size_config, pixel_offset, canvas);
     }
 
 

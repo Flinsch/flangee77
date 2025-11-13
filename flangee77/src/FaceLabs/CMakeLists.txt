@@ -12,6 +12,7 @@ target_sources(flangee77
     fonts/detail/ttf/TrueTypeFontLoader.cpp
 
     fonts/raster/AbstractRasterizer.cpp
+    fonts/raster/AnalyticalCoverageRasterizer.cpp
     fonts/raster/OversampledBitmapRasterizer.cpp
     fonts/raster/SimpleBitmapRasterizer.cpp
 

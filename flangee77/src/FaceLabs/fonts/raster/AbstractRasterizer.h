@@ -1,9 +1,10 @@
 #ifndef FL7_FONTS_RASTER_ABSTRACTRASTERIZER_H
 #define FL7_FONTS_RASTER_ABSTRACTRASTERIZER_H
 
-#include "../Glyph.h"
+#include "./RasterResult.h"
+#include "./RasterSizeConfig.h"
 
-#include <XiaoLabs/graphics/images/Image.h>
+#include "../Glyph.h"
 
 #include <DataLabs/Buffer2d.h>
 
@@ -17,60 +18,20 @@ class AbstractRasterizer
 {
 
 public:
-    /**
-     * Represents the positioning offset of a glyph's pixel grid relative to its
-     * typographic origin, in pixel space.
-     */
-    struct Offset
-    {
-        /**
-         * The horizontal offset of the glyph's pixel grid relative to the left edge
-         * of its advance width (typographic origin), in pixel space. This can be
-         * negative, depending on the padding used for rasterization or overshoots
-         * of the glyph's outline.
-         */
-        int left;
-
-        /**
-         * The vertical offset of the glyph's pixel grid relative to the typographic
-         * baseline, in pixel space. This is typically negative, as most glyphs
-         * extend above the baseline (e.g., ascenders). The value may also be
-         * influenced by rasterization padding or overshoots of the glyph's outline.
-         */
-        int top;
-    };
-
-    /**
-     * Encapsulates the output of a glyph rasterization operation.
-     */
-    struct Result
-    {
-        /** The rasterized image of the glyph. */
-        xl7::graphics::images::Image image;
-        /** The positioning offset of the glyph's pixel grid relative to its typographic origin, in pixel space. */
-        Offset offset;
-    };
-
-
-
     virtual ~AbstractRasterizer() noexcept = default;
 
 
 
     /**
-     * Rasterizes a glyph into an image and calculates its positioning offset. The
-     * font size to be used for rasterization is specified in pixels. Additional
-     * padding (in pixels) can be applied around the glyph during rasterization.
+     * Rasterizes a glyph into an image and calculates its positioning offset.
      */
-    Result rasterize_glyph(const Glyph& glyph, float font_size, unsigned padding);
+    RasterResult rasterize_glyph(const Glyph& glyph, const RasterSizeConfig& size_config);
 
     /**
      * Rasterizes a glyph directly into a pre-allocated canvas (buffer) at a
-     * specified offset. The font size to be used for rasterization is specified in
-     * pixels. Additional padding (in pixels) can be applied around the glyph during
-     * rasterization.
+     * specified offset.
      */
-    void rasterize_glyph_into(const Glyph& glyph, float font_size, unsigned padding, const Offset& offset, dl7::Buffer2dSpan canvas);
+    void rasterize_glyph_into(const Glyph& glyph, const RasterSizeConfig& size_config, const PixelOffset& pixel_offset, dl7::Buffer2dSpan canvas);
 
 
 
@@ -87,7 +48,7 @@ public:
 
 
 private:
-    virtual void _rasterize_glyph_into(const Glyph& glyph, float font_size, unsigned padding, const Offset& offset, dl7::Buffer2dSpan canvas) = 0;
+    virtual void _rasterize_glyph_into(const Glyph& glyph, const RasterSizeConfig& size_config, const PixelOffset& pixel_offset, dl7::Buffer2dSpan canvas) = 0;
 
 }; // class AbstractRasterizer
 

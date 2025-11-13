@@ -24,7 +24,7 @@ namespace fl7::fonts::raster {
 
 
 
-    void SimpleBitmapRasterizer::_rasterize_glyph_into(const Glyph& glyph, float font_size, unsigned padding, const Offset& offset, dl7::Buffer2dSpan canvas)
+    void SimpleBitmapRasterizer::_rasterize_glyph_into(const Glyph& glyph, const RasterSizeConfig& size_config, const PixelOffset& pixel_offset, dl7::Buffer2dSpan canvas)
     {
         size_t number_of_segments = 0;
         for (const auto& contour : glyph.contours)
@@ -36,7 +36,7 @@ namespace fl7::fonts::raster {
             for (size_t i = 0; i < contour.segment_count(); ++i)
                 segments.push_back(contour.segment_at(i));
 
-        const ml7::Vector2f transform{font_size, -font_size};
+        const ml7::Vector2f transform{size_config.font_size, -size_config.font_size};
 
         for (auto& bezier : segments)
         {
@@ -46,8 +46,8 @@ namespace fl7::fonts::raster {
         }
 
         const ml7::Vector2f origin_center{
-            0.5f + static_cast<float>(offset.left),
-            0.5f + static_cast<float>(offset.top),
+            0.5f + static_cast<float>(pixel_offset.left),
+            0.5f + static_cast<float>(pixel_offset.top),
         };
 
         // Always at least one sample,
