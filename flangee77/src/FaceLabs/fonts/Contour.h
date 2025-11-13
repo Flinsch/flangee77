@@ -36,10 +36,10 @@ struct Contour
     std::vector<ml7::Vector2f> points;
 
     /** Returns the effective number of Bézier curves. */
-    size_t get_segment_count() const;
+    size_t segment_count() const;
 
     /** Returns the quadratic Bézier curve identified by the given index. */
-    const ml7::QuadraticBezier2f& get_segment(size_t index) const;
+    const ml7::QuadraticBezier2f& segment_at(size_t index) const;
 };
 
 

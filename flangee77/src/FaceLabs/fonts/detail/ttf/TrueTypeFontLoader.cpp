@@ -44,7 +44,9 @@ namespace fl7::fonts::detail::ttf {
 
         const float em_per_unit = 1.0f / static_cast<float>(_font_header.units_per_em);
 
-        return raw_glyph_result->normalize(em_per_unit);
+        Glyph glyph = raw_glyph_result->normalize(em_per_unit);
+        glyph.codepoint = codepoint;
+        return glyph;
     }
 
     /**

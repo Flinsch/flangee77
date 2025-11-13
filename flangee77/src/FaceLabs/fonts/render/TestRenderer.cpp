@@ -32,9 +32,9 @@ namespace fl7::fonts::render {
         std::vector<Vertex> vertices;
         for (const auto& contour : glyph.contours)
         {
-            for (size_t i = 0; i < contour.get_segment_count(); ++i)
+            for (size_t i = 0; i < contour.segment_count(); ++i)
             {
-                const auto& segment = contour.get_segment(i);
+                const auto& segment = contour.segment_at(i);
                 vertices.push_back({.pos = segment.p0});
                 vertices.push_back({.pos = segment.p1});
                 vertices.push_back({.pos = segment.p1});

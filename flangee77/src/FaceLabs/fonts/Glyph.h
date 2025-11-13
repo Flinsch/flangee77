@@ -5,6 +5,8 @@
 #include "./Contour.h"
 #include "./GlyphMetrics.h"
 
+#include <CoreLabs/text/codec/codepoint.h>
+
 #include <vector>
 
 
@@ -19,6 +21,11 @@ namespace fl7::fonts {
  */
 struct Glyph
 {
+    /**
+     * The (Unicode) code point whose visual shape this glyph represents.
+     */
+    cl7::text::codec::codepoint codepoint = {0};
+
     /**
      * All contours defining the glyph's outline/shape.
      *

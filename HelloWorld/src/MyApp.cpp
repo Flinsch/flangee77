@@ -228,8 +228,8 @@ namespace helloworld {
         }
 
 
-        //auto font_loader = std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(cl7::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSans-Regular.ttf");
-        auto font_loader = std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(cl7::platform::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSerif-Regular.ttf");
+        auto font_loader = std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(cl7::platform::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSans-Regular.ttf");
+        //auto font_loader = std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(cl7::platform::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSerif-Regular.ttf");
         _font = std::make_unique<fl7::fonts::Font>(std::move(font_loader));
 
 
