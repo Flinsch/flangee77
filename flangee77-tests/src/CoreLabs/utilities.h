@@ -22,10 +22,16 @@ TESTLABS_CASE( u8"CoreLabs:  utilities:  coalesce" )
 
 
 
-TESTLABS_CASE( u8"CoreLabs:  utilities:  conditional_pair" )
+TESTLABS_CASE( u8"CoreLabs:  utilities:  flip_if" )
 {
-    TESTLABS_ASSERT( cl7::conditional_pair( false, 1.0f, 2.5f ) == std::make_pair( 1.0f, 2.5f ) );
-    TESTLABS_ASSERT( cl7::conditional_pair( true, 1.0f, 2.5f ) == std::make_pair( 2.5f, 1.0f ) );
+    TESTLABS_ASSERT( cl7::flip_if( false, 1.0f, 2.5f ) == std::make_pair( 1.0f, 2.5f ) );
+    TESTLABS_ASSERT( cl7::flip_if( true, 1.0f, 2.5f ) == std::make_pair( 2.5f, 1.0f ) );
+}
+
+TESTLABS_CASE( u8"CoreLabs:  utilities:  flip_unless" )
+{
+    TESTLABS_ASSERT( cl7::flip_unless( true, 1.0f, 2.5f ) == std::make_pair( 1.0f, 2.5f ) );
+    TESTLABS_ASSERT( cl7::flip_unless( false, 1.0f, 2.5f ) == std::make_pair( 2.5f, 1.0f ) );
 }
 
 

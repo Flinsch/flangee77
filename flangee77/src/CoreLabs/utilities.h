@@ -26,19 +26,35 @@ namespace cl7 {
     }
 
 
+
     /**
-     * Returns a pair of values, optionally flipping their order based on the
-     * specified boolean flag.
+     * Returns a pair of values, flipping their order if the boolean flag is true.
+     * This is the logical inverse of `flip_unless`.
      */
     template <typename T1, typename T2>
         requires(std::same_as<std::decay_t<T1>, std::decay_t<T2>>)
-    constexpr auto conditional_pair(bool flip, T1&& a, T2&& b)
+    constexpr auto flip_if(bool flip_if, T1&& a, T2&& b)
     {
-        return flip
+        return flip_if
             ? std::pair<std::decay_t<T2>, std::decay_t<T1>>(std::forward<T2>(b), std::forward<T1>(a))
             : std::pair<std::decay_t<T1>, std::decay_t<T2>>(std::forward<T1>(a), std::forward<T2>(b))
         ;
     }
+
+    /**
+     * Returns a pair of values, flipping their order if the boolean flag is false.
+     * This is the logical inverse of `flip_if`.
+     */
+    template <typename T1, typename T2>
+        requires(std::same_as<std::decay_t<T1>, std::decay_t<T2>>)
+    constexpr auto flip_unless(bool flip_unless, T1&& a, T2&& b)
+    {
+        return flip_unless
+            ? std::pair<std::decay_t<T1>, std::decay_t<T2>>(std::forward<T1>(a), std::forward<T2>(b))
+            : std::pair<std::decay_t<T2>, std::decay_t<T1>>(std::forward<T2>(b), std::forward<T1>(a))
+        ;
+    }
+
 
 
     /**
