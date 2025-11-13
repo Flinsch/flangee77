@@ -1,5 +1,7 @@
 var NAVTREEINDEX42 =
 {
+"db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html":[7,0,3,0,0,0],
+"db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html":[5,0,3,1,0,0],
 "db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html#a02e6bb8ed427fa94e96ad6b8ecc4550e":[5,0,3,1,0,0,4],
 "db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html#a02e6bb8ed427fa94e96ad6b8ecc4550e":[7,0,3,0,0,0,4],
 "db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html#a4a500df0f60f26255d08f2dcc6e0ddff":[7,0,3,0,0,0,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX42 =
 "dc/d25/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl_1_1Registrar.html":[5,0,7,2,1,0,6,0],
 "dc/d25/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl_1_1Registrar.html":[7,0,7,1,1,0,4,0],
 "dc/d25/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl_1_1Registrar.html#a7603bfbfd9337293544df0d7eeef5cf0":[7,0,7,1,1,0,4,0,0],
-"dc/d25/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl_1_1Registrar.html#a7603bfbfd9337293544df0d7eeef5cf0":[5,0,7,2,1,0,6,0,0],
-"dc/d25/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl_1_1Registrar.html#acdde26102ff3daa335ac6b28d2053d41":[5,0,7,2,1,0,6,0,1],
-"dc/d25/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl_1_1Registrar.html#acdde26102ff3daa335ac6b28d2053d41":[7,0,7,1,1,0,4,0,1]
+"dc/d25/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl_1_1Registrar.html#a7603bfbfd9337293544df0d7eeef5cf0":[5,0,7,2,1,0,6,0,0]
 };

@@ -1,5 +1,7 @@
 var NAVTREEINDEX53 =
 {
+"de/df3/structxl7_1_1graphics_1_1Color.html#ac21fb6947db03d89469687190ed22de8":[5,0,7,2,8,44],
+"de/df3/structxl7_1_1graphics_1_1Color.html#ad48424929fb2546103e91b8f2ee14e8c":[7,0,7,1,8,48],
 "de/df3/structxl7_1_1graphics_1_1Color.html#ad48424929fb2546103e91b8f2ee14e8c":[5,0,7,2,8,48],
 "de/df3/structxl7_1_1graphics_1_1Color.html#ad5f483d2cd18594925821e0b64620ee2":[5,0,7,2,8,21],
 "de/df3/structxl7_1_1graphics_1_1Color.html#ad5f483d2cd18594925821e0b64620ee2":[7,0,7,1,8,21],
@@ -247,7 +249,5 @@ var NAVTREEINDEX53 =
 "df/d82/structfl7_1_1fonts_1_1FontMetrics.html#a2d9b9216742bf8a90ae04c7996c831de":[7,0,2,0,6,6],
 "df/d82/structfl7_1_1fonts_1_1FontMetrics.html#a2d9b9216742bf8a90ae04c7996c831de":[5,0,2,0,6,6],
 "df/d82/structfl7_1_1fonts_1_1FontMetrics.html#a9d43383e3a8b6710f2533fec0163f943":[7,0,2,0,6,4],
-"df/d82/structfl7_1_1fonts_1_1FontMetrics.html#a9d43383e3a8b6710f2533fec0163f943":[5,0,2,0,6,4],
-"df/d82/structfl7_1_1fonts_1_1FontMetrics.html#acd4265ec1c202c08af918538fd7dea62":[5,0,2,0,6,7],
-"df/d82/structfl7_1_1fonts_1_1FontMetrics.html#acd4265ec1c202c08af918538fd7dea62":[7,0,2,0,6,7]
+"df/d82/structfl7_1_1fonts_1_1FontMetrics.html#a9d43383e3a8b6710f2533fec0163f943":[5,0,2,0,6,4]
 };

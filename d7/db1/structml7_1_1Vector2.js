@@ -10,6 +10,7 @@ var structml7_1_1Vector2 =
     [ "azimuth_asymmetric", "d7/db1/structml7_1_1Vector2.html#a5653a1ead8c77104639917f550c224b3", null ],
     [ "azimuth_symmetric", "d7/db1/structml7_1_1Vector2.html#ae92f4372971451dbccb78190f1749db4", null ],
     [ "ccw", "d7/db1/structml7_1_1Vector2.html#ab73312e0dfe411ad416185e7adc4f94d", null ],
+    [ "ccw", "d7/db1/structml7_1_1Vector2.html#abaf9d549af076d62da8d36b1068215ea", null ],
     [ "cerp", "d7/db1/structml7_1_1Vector2.html#aaf4b21cfbfabab26312559043c24a754", null ],
     [ "clear", "d7/db1/structml7_1_1Vector2.html#a15f61f9796db23a5fb937d75bb8528c0", null ],
     [ "comp", "d7/db1/structml7_1_1Vector2.html#a9e99708bcd5fde353966b7e884fad97b", null ],

@@ -1,5 +1,7 @@
 var NAVTREEINDEX47 =
 {
+"dd/d5a/ArgumentBag_8h.html":[8,0,4,3],
+"dd/d5a/ArgumentBag_8h_source.html":[8,0,4,3],
 "dd/d5d/json_2util_2Unescaper_8h.html":[8,0,1,2,1,3],
 "dd/d5d/json_2util_2Unescaper_8h_source.html":[8,0,1,2,1,3],
 "dd/d60/namespacecl7_1_1platform.html":[5,0,0,6],
@@ -247,7 +249,5 @@ var NAVTREEINDEX47 =
 "dd/d8e/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1AutoBeginEnd.html#aec46f498a1181da5f6b4dfdc4b66f368":[5,0,2,0,1,0,0,1],
 "dd/d8e/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1AutoBeginEnd.html#aec46f498a1181da5f6b4dfdc4b66f368":[7,0,2,0,1,0,0,1],
 "dd/d8e/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1AutoBeginEnd.html#af0ba2f889a84f2f642273920816e38ce":[7,0,2,0,1,0,0,0],
-"dd/d8e/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1AutoBeginEnd.html#af0ba2f889a84f2f642273920816e38ce":[5,0,2,0,1,0,0,0],
-"dd/da2/metrics_8cpp.html":[8,0,0,7,7],
-"dd/da3/internals_8h.html":[8,0,5,5]
+"dd/d8e/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1AutoBeginEnd.html#af0ba2f889a84f2f642273920816e38ce":[5,0,2,0,1,0,0,0]
 };

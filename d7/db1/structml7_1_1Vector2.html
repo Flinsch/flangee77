@@ -180,6 +180,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9e99708bcd5fde353966b7e884fad97b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6ce66118fac9d7ebc47faee15a1689b" id="r_ac6ce66118fac9d7ebc47faee15a1689b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/db1/structml7_1_1Vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/db1/structml7_1_1Vector2.html#ac6ce66118fac9d7ebc47faee15a1689b">proj</a> (const <a class="el" href="../../d7/db1/structml7_1_1Vector2.html">Vector2</a> &amp;<a class="el" href="../../d7/db1/structml7_1_1Vector2.html#a34c71e0743eed12f91ceb17ed9655b83">v</a>) const</td></tr>
 <tr class="separator:ac6ce66118fac9d7ebc47faee15a1689b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaf9d549af076d62da8d36b1068215ea" id="r_abaf9d549af076d62da8d36b1068215ea"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/db1/structml7_1_1Vector2.html#abaf9d549af076d62da8d36b1068215ea">ccw</a> (const <a class="el" href="../../d7/db1/structml7_1_1Vector2.html">Vector2</a> &amp;<a class="el" href="../../d7/db1/structml7_1_1Vector2.html#a34c71e0743eed12f91ceb17ed9655b83">v</a>) const</td></tr>
+<tr class="separator:abaf9d549af076d62da8d36b1068215ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15f61f9796db23a5fb937d75bb8528c0" id="r_a15f61f9796db23a5fb937d75bb8528c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/db1/structml7_1_1Vector2.html">Vector2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/db1/structml7_1_1Vector2.html#a15f61f9796db23a5fb937d75bb8528c0">clear</a> ()</td></tr>
 <tr class="separator:a15f61f9796db23a5fb937d75bb8528c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad127577457fc0d3003d95995d18238b2" id="r_ad127577457fc0d3003d95995d18238b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/db1/structml7_1_1Vector2.html">Vector2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/db1/structml7_1_1Vector2.html#ad127577457fc0d3003d95995d18238b2">invert</a> ()</td></tr>
@@ -527,7 +529,7 @@ template&lt;std::floating_point T&gt; </div>
 </div>
 </div>
 <a id="ab73312e0dfe411ad416185e7adc4f94d" name="ab73312e0dfe411ad416185e7adc4f94d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab73312e0dfe411ad416185e7adc4f94d">&#9670;&#160;</a></span>ccw()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab73312e0dfe411ad416185e7adc4f94d">&#9670;&#160;</a></span>ccw() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -568,6 +570,35 @@ template&lt;std::floating_point T&gt; </div>
 </table>
 </div><div class="memdoc">
 <p>Checks whether the three given points are a counter-clockwise turn. In that case, the function returns a value greater than 0. A value less than 0 indicates a clockwise turn. 0 indicates that the points are collinear. </p>
+
+</div>
+</div>
+<a id="abaf9d549af076d62da8d36b1068215ea" name="abaf9d549af076d62da8d36b1068215ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaf9d549af076d62da8d36b1068215ea">&#9670;&#160;</a></span>ccw() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::floating_point T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="../../d7/db1/structml7_1_1Vector2.html">ml7::Vector2</a>&lt; T &gt;::ccw </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d7/db1/structml7_1_1Vector2.html">Vector2</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks whether the given vector represents a counter-clockwise turn with respect to this vector. In that case, the function returns a value greater than 0. A value less than 0 indicates a clockwise turn. 0 indicates that the vectors are collinear. </p>
 
 </div>
 </div>

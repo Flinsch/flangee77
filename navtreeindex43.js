@@ -1,5 +1,7 @@
 var NAVTREEINDEX43 =
 {
+"dc/d25/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl_1_1Registrar.html#acdde26102ff3daa335ac6b28d2053d41":[5,0,7,2,1,0,6,0,1],
+"dc/d25/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl_1_1Registrar.html#acdde26102ff3daa335ac6b28d2053d41":[7,0,7,1,1,0,4,0,1],
 "dc/d33/Token_8h.html":[8,0,1,3,39],
 "dc/d33/Token_8h_source.html":[8,0,1,3,39],
 "dc/d37/Signature_8h.html":[8,0,5,13],
@@ -247,7 +249,5 @@ var NAVTREEINDEX43 =
 "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#a8116e355325e2a5345c2ba7a1b26a8ad":[7,0,7,1,13,40],
 "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#a83728451f60fa0d1ff594c5cf8cb9652":[5,0,7,2,13,21],
 "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#a83728451f60fa0d1ff594c5cf8cb9652":[7,0,7,1,13,21],
-"dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#a90a26cd2c63babfac6f3af165a0613f1":[7,0,7,1,13,10],
-"dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#a90a26cd2c63babfac6f3af165a0613f1":[5,0,7,2,13,10],
-"dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#a96f1cd4a72a32a84ae6f3c7ae769683f":[5,0,7,2,13,26]
+"dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#a90a26cd2c63babfac6f3af165a0613f1":[7,0,7,1,13,10]
 };
