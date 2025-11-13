@@ -13,7 +13,8 @@ namespace fl7::fonts::raster {
      * anti-aliasing quality of 0 disables edge smoothing, and rasterization results
      * include only pixels that are either fully lit or not lit at all. (To speak of
      * "quality" here can actually be considered an outrage.) The final pixel output
-     * can be forced to binary values despite any anti-aliasing.
+     * can be forced to binary values despite any anti-aliasing (to use edge
+     * smoothing only internally for intermediate results).
      */
     SimpleBitmapRasterizer::SimpleBitmapRasterizer(unsigned aa_quality, bool force_binary) noexcept
         : _aa_quality(aa_quality)
@@ -49,7 +50,8 @@ namespace fl7::fonts::raster {
             0.5f + static_cast<float>(offset.top),
         };
 
-        // Always at least one sample.
+        // Always at least one sample,
+        // even in the binary case, of course.
         const bool binary_output = _aa_quality == 0 || _force_binary;
         const size_t sample_count = _aa_quality ? _aa_quality : 1;
         // Distribute the samples evenly around
@@ -107,20 +109,22 @@ namespace fl7::fonts::raster {
                             continue;
 
                         const float sign = is_filled ? +1.0f : -1.0f;
-                        constexpr float epsilon = 1e-4;
-                        constexpr float root_min = 0.0f - epsilon;
-                        constexpr float root_max = 1.0f + epsilon;
+                        constexpr float t_epsilon = 1e-4;
+                        constexpr float t_min = 0.0f - t_epsilon;
+                        constexpr float t_max = 1.0f + t_epsilon;
 
-                        for (auto root : roots)
+                        for (auto t : roots)
                         {
-                            if (root < root_min || root > root_max)
+                            if (t < t_min || t > t_max)
                                 continue;
+                            t = ml7::clamp01(t); // Remove any epsilon.
+
                             // How much of the pixel is covered?
                             // Far left: not at all (0), far right: fully covered (1),
                             // exactly in the middle: half covered (0.5).
-                            // Move the threshold of the "ramp-like" test to the
-                            // (horizontal) center of the pixel by adding 0.5.
-                            const float intersect = a.x * root*root + b.x * root + c.x;
+                            // The intersection point should lie between -0.5 and +0.5;
+                            // therefore, the value to be saturated must be shifted accordingly.
+                            const float intersect = a.x * t*t + b.x * t + c.x;
                             coverage += ml7::clamp01(intersect + 0.5f) * sign;
                         }
                     } // for each segment

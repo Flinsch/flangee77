@@ -24,7 +24,8 @@ public:
      * anti-aliasing quality of 0 disables edge smoothing, and rasterization results
      * include only pixels that are either fully lit or not lit at all. (To speak of
      * "quality" here can actually be considered an outrage.) The final pixel output
-     * can be forced to binary values despite any anti-aliasing.
+     * can be forced to binary values despite any anti-aliasing (to use edge
+     * smoothing only internally for intermediate results).
      */
     SimpleBitmapRasterizer(unsigned aa_quality = 0, bool force_binary = false) noexcept;
 
