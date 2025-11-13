@@ -376,6 +376,14 @@ requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
 requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
 <tr class="memitem:af325e3b4ea239b8bd7bbf7334a9fb0da"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#af325e3b4ea239b8bd7bbf7334a9fb0da">max3</a> (T a, T b, T c)</td></tr>
 <tr class="separator:af325e3b4ea239b8bd7bbf7334a9fb0da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae163913ce204b81f98f982d2f9ba95bd" id="r_ae163913ce204b81f98f982d2f9ba95bd"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
+requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
+<tr class="memitem:ae163913ce204b81f98f982d2f9ba95bd"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#ae163913ce204b81f98f982d2f9ba95bd">min4</a> (T a, T b, T c, T d)</td></tr>
+<tr class="separator:ae163913ce204b81f98f982d2f9ba95bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb9194f73687964a057c48f1a90ac867" id="r_afb9194f73687964a057c48f1a90ac867"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
+requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
+<tr class="memitem:afb9194f73687964a057c48f1a90ac867"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#afb9194f73687964a057c48f1a90ac867">max4</a> (T a, T b, T c, T d)</td></tr>
+<tr class="separator:afb9194f73687964a057c48f1a90ac867"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8ac9fb2e8cc324b0ee8651186b5710f" id="r_ab8ac9fb2e8cc324b0ee8651186b5710f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
 requires (std::is_arithmetic_v&lt;T&gt;)</td></tr>
 <tr class="memitem:ab8ac9fb2e8cc324b0ee8651186b5710f"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d53/namespaceml7.html#ab8ac9fb2e8cc324b0ee8651186b5710f">clamp</a> (T x, T min, T max)</td></tr>
@@ -2245,6 +2253,58 @@ requires (std::is_arithmetic_v&lt;T&gt;)</div>
 
 </div>
 </div>
+<a id="afb9194f73687964a057c48f1a90ac867" name="afb9194f73687964a057c48f1a90ac867"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb9194f73687964a057c48f1a90ac867">&#9670;&#160;</a></span>max4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; <br />
+requires (std::is_arithmetic_v&lt;T&gt;)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr T ml7::max4 </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the greatest value of four given values. </p>
+
+</div>
+</div>
 <a id="af47e21fcf85abaf828fdc7fd76ce8775" name="af47e21fcf85abaf828fdc7fd76ce8775"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af47e21fcf85abaf828fdc7fd76ce8775">&#9670;&#160;</a></span>min2()</h2>
 
@@ -2328,6 +2388,58 @@ requires (std::is_arithmetic_v&lt;T&gt;)</div>
 </table>
 </div><div class="memdoc">
 <p>Returns the smallest value of three given values. </p>
+
+</div>
+</div>
+<a id="ae163913ce204b81f98f982d2f9ba95bd" name="ae163913ce204b81f98f982d2f9ba95bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae163913ce204b81f98f982d2f9ba95bd">&#9670;&#160;</a></span>min4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; <br />
+requires (std::is_arithmetic_v&lt;T&gt;)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr T ml7::min4 </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the smallest value of four given values. </p>
 
 </div>
 </div>
