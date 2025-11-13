@@ -17,7 +17,7 @@ var searchData=
   ['renderingcontext_14',['RenderingContext',['../de/d0a/classxl7_1_1graphics_1_1RenderingContext.html',1,'xl7::graphics']]],
   ['renderingcontextimpl_15',['renderingcontextimpl',['../dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl'],['../d9/dfb/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl.html',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl']]],
   ['renderingdevice_16',['RenderingDevice',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html',1,'xl7::graphics']]],
-  ['renderingdeviceimpl_17',['renderingdeviceimpl',['../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html',1,'xl7::graphics::impl::direct3d11::RenderingDeviceImpl'],['../d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html',1,'xl7::graphics::impl::direct3d9::RenderingDeviceImpl']]],
+  ['renderingdeviceimpl_17',['renderingdeviceimpl',['../d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html',1,'xl7::graphics::impl::direct3d9::RenderingDeviceImpl'],['../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html',1,'xl7::graphics::impl::direct3d11::RenderingDeviceImpl']]],
   ['rendertargetsurface_18',['RenderTargetSurface',['../da/d06/classxl7_1_1graphics_1_1surfaces_1_1RenderTargetSurface.html',1,'xl7::graphics::surfaces']]],
   ['reporter_19',['Reporter',['../d1/de4/classtl7_1_1reporting_1_1Reporter.html',1,'tl7::reporting']]],
   ['resolvedabstractshaderstates_20',['ResolvedAbstractShaderStates',['../d1/dbc/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedAbstractShaderStates.html',1,'xl7::graphics::RenderingContext']]],
@@ -32,7 +32,7 @@ var searchData=
   ['resourcefactoryimpl_29',['resourcefactoryimpl',['../df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html',1,'xl7::graphics::impl::direct3d11::ResourceFactoryImpl'],['../de/d84/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl.html',1,'xl7::graphics::impl::direct3d9::ResourceFactoryImpl']]],
   ['resourceid_30',['ResourceId',['../db/d1e/classxl7_1_1resources_1_1ResourceId.html',1,'xl7::resources']]],
   ['resourcemanager_31',['ResourceManager',['../d3/d00/classxl7_1_1resources_1_1ResourceManager.html',1,'xl7::resources']]],
-  ['result_32',['Result',['../da/d3a/structtl7_1_1Result.html',1,'tl7']]],
+  ['result_32',['result',['../d0/db5/structfl7_1_1fonts_1_1raster_1_1AbstractRasterizer_1_1Result.html',1,'fl7::fonts::raster::AbstractRasterizer::Result'],['../da/d3a/structtl7_1_1Result.html',1,'tl7::Result']]],
   ['resultbase_33',['resultbase',['../de/d3e/structml7_1_1distance2_1_1ResultBase.html',1,'ml7::distance2::ResultBase&lt; T &gt;'],['../da/db7/structml7_1_1distance3_1_1ResultBase.html',1,'ml7::distance3::ResultBase&lt; T &gt;']]],
   ['resultbuilder_34',['ResultBuilder',['../db/d89/classtl7_1_1ResultBuilder.html',1,'tl7']]]
 ];

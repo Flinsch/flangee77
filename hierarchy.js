@@ -17,6 +17,10 @@ var hierarchy =
       ] ],
       [ "xl7::graphics::pipeline::Pipeline", "d6/d62/classxl7_1_1graphics_1_1pipeline_1_1Pipeline.html", null ]
     ] ],
+    [ "fl7::fonts::raster::AbstractRasterizer", "d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html", [
+      [ "fl7::fonts::raster::OversampledBitmapRasterizer", "dd/d48/classfl7_1_1fonts_1_1raster_1_1OversampledBitmapRasterizer.html", null ],
+      [ "fl7::fonts::raster::SimpleBitmapRasterizer", "d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html", null ]
+    ] ],
     [ "fl7::fonts::render::AbstractRenderer", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html", [
       [ "fl7::fonts::render::TestRenderer", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html", null ]
     ] ],
@@ -315,6 +319,7 @@ var hierarchy =
       [ "dl7::xml::Element", "de/dc8/classdl7_1_1xml_1_1Element.html", null ],
       [ "dl7::xml::Text", "df/dd2/classdl7_1_1xml_1_1Text.html", null ]
     ] ],
+    [ "fl7::fonts::raster::AbstractRasterizer::Offset", "d8/df6/structfl7_1_1fonts_1_1raster_1_1AbstractRasterizer_1_1Offset.html", null ],
     [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::OffsetSubtable", "d9/db1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OffsetSubtable.html", null ],
     [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::OpenTypeFontMetric", "d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html", null ],
     [ "dl7::Base64::Options", "de/d56/structdl7_1_1Base64_1_1Options.html", null ],
@@ -472,6 +477,7 @@ var hierarchy =
       [ "xl7::graphics::surfaces::SurfaceManager", "d9/dc4/classxl7_1_1graphics_1_1surfaces_1_1SurfaceManager.html", null ],
       [ "xl7::graphics::textures::TextureManager", "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html", null ]
     ] ],
+    [ "fl7::fonts::raster::AbstractRasterizer::Result", "d0/db5/structfl7_1_1fonts_1_1raster_1_1AbstractRasterizer_1_1Result.html", null ],
     [ "tl7::Result", "da/d3a/structtl7_1_1Result.html", null ],
     [ "ml7::distance2::ResultBase< T >", "de/d3e/structml7_1_1distance2_1_1ResultBase.html", [
       [ "ml7::distance2::PointResult< T >", "d6/df6/structml7_1_1distance2_1_1PointResult.html", null ]

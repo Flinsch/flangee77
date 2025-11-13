@@ -106,40 +106,47 @@ $(document).ready(function(){initNavTree('d4/daa/Glyph_8h_source.html','../../')
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="../../db/d08/Contour_8h.html">./Contour.h</a>&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="../../d2/d03/GlyphMetrics_8h.html">./GlyphMetrics.h</a>&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="../../d8/d47/codepoint_8h.html">CoreLabs/text/codec/codepoint.h</a>&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d7/da5/namespacefl7_1_1fonts.html">fl7::fonts</a> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d7/da5/namespacefl7_1_1fonts.html">fl7::fonts</a> {</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="foldopen" id="foldopen00020" data-start="{" data-end="};">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html">   20</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html">Glyph</a></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#a146733e7e430d7c5d57c1fd4fd97a588">   28</a></span>    std::vector&lt;Contour&gt; <a class="code hl_variable" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#a146733e7e430d7c5d57c1fd4fd97a588">contours</a>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#aec86644167babae0019e996e819d6bfc">   31</a></span>    <a class="code hl_struct" href="../../dc/d05/structfl7_1_1fonts_1_1BoundingBox.html">BoundingBox</a> <a class="code hl_variable" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#aec86644167babae0019e996e819d6bfc">bounding_box</a>;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#a950a5a444c8738d96b0b503187dea9dd">   34</a></span>    <a class="code hl_struct" href="../../d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html">GlyphMetrics</a> <a class="code hl_variable" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#a950a5a444c8738d96b0b503187dea9dd">metrics</a>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>};</div>
-</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html">   22</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html">Glyph</a></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#ae62ae2e98a1ec7073a0dace7b878f9c9">   27</a></span>    <a class="code hl_struct" href="../../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html">cl7::text::codec::codepoint</a> <a class="code hl_variable" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#ae62ae2e98a1ec7073a0dace7b878f9c9">codepoint</a> = {0};</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#a146733e7e430d7c5d57c1fd4fd97a588">   35</a></span>    std::vector&lt;Contour&gt; <a class="code hl_variable" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#a146733e7e430d7c5d57c1fd4fd97a588">contours</a>;</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>} <span class="comment">// namespace fl7::fonts</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif </span><span class="comment">// FL7_FONTS_GLYPH_H</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#aec86644167babae0019e996e819d6bfc">   38</a></span>    <a class="code hl_struct" href="../../dc/d05/structfl7_1_1fonts_1_1BoundingBox.html">BoundingBox</a> <a class="code hl_variable" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#aec86644167babae0019e996e819d6bfc">bounding_box</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#a950a5a444c8738d96b0b503187dea9dd">   41</a></span>    <a class="code hl_struct" href="../../d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html">GlyphMetrics</a> <a class="code hl_variable" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#a950a5a444c8738d96b0b503187dea9dd">metrics</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>};</div>
+</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>} <span class="comment">// namespace fl7::fonts</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif </span><span class="comment">// FL7_FONTS_GLYPH_H</span></div>
 <div class="ttc" id="aBoundingBox_8h_html"><div class="ttname"><a href="../../d4/d41/BoundingBox_8h.html">BoundingBox.h</a></div></div>
 <div class="ttc" id="aContour_8h_html"><div class="ttname"><a href="../../db/d08/Contour_8h.html">Contour.h</a></div></div>
 <div class="ttc" id="aGlyphMetrics_8h_html"><div class="ttname"><a href="../../d2/d03/GlyphMetrics_8h.html">GlyphMetrics.h</a></div></div>
+<div class="ttc" id="acodepoint_8h_html"><div class="ttname"><a href="../../d8/d47/codepoint_8h.html">codepoint.h</a></div></div>
 <div class="ttc" id="anamespacefl7_1_1fonts_html"><div class="ttname"><a href="../../d7/da5/namespacefl7_1_1fonts.html">fl7::fonts</a></div><div class="ttdef"><b>Definition</b> BoundingBox.h:8</div></div>
+<div class="ttc" id="astructcl7_1_1text_1_1codec_1_1codepoint_html"><div class="ttname"><a href="../../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html">cl7::text::codec::codepoint</a></div><div class="ttdef"><b>Definition</b> codepoint.h:13</div></div>
 <div class="ttc" id="astructfl7_1_1fonts_1_1BoundingBox_html"><div class="ttname"><a href="../../dc/d05/structfl7_1_1fonts_1_1BoundingBox.html">fl7::fonts::BoundingBox</a></div><div class="ttdef"><b>Definition</b> BoundingBox.h:18</div></div>
 <div class="ttc" id="astructfl7_1_1fonts_1_1GlyphMetrics_html"><div class="ttname"><a href="../../d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html">fl7::fonts::GlyphMetrics</a></div><div class="ttdef"><b>Definition</b> GlyphMetrics.h:17</div></div>
-<div class="ttc" id="astructfl7_1_1fonts_1_1Glyph_html"><div class="ttname"><a href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html">fl7::fonts::Glyph</a></div><div class="ttdef"><b>Definition</b> Glyph.h:21</div></div>
-<div class="ttc" id="astructfl7_1_1fonts_1_1Glyph_html_a146733e7e430d7c5d57c1fd4fd97a588"><div class="ttname"><a href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#a146733e7e430d7c5d57c1fd4fd97a588">fl7::fonts::Glyph::contours</a></div><div class="ttdeci">std::vector&lt; Contour &gt; contours</div><div class="ttdef"><b>Definition</b> Glyph.h:28</div></div>
-<div class="ttc" id="astructfl7_1_1fonts_1_1Glyph_html_a950a5a444c8738d96b0b503187dea9dd"><div class="ttname"><a href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#a950a5a444c8738d96b0b503187dea9dd">fl7::fonts::Glyph::metrics</a></div><div class="ttdeci">GlyphMetrics metrics</div><div class="ttdef"><b>Definition</b> Glyph.h:34</div></div>
-<div class="ttc" id="astructfl7_1_1fonts_1_1Glyph_html_aec86644167babae0019e996e819d6bfc"><div class="ttname"><a href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#aec86644167babae0019e996e819d6bfc">fl7::fonts::Glyph::bounding_box</a></div><div class="ttdeci">BoundingBox bounding_box</div><div class="ttdef"><b>Definition</b> Glyph.h:31</div></div>
+<div class="ttc" id="astructfl7_1_1fonts_1_1Glyph_html"><div class="ttname"><a href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html">fl7::fonts::Glyph</a></div><div class="ttdef"><b>Definition</b> Glyph.h:23</div></div>
+<div class="ttc" id="astructfl7_1_1fonts_1_1Glyph_html_a146733e7e430d7c5d57c1fd4fd97a588"><div class="ttname"><a href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#a146733e7e430d7c5d57c1fd4fd97a588">fl7::fonts::Glyph::contours</a></div><div class="ttdeci">std::vector&lt; Contour &gt; contours</div><div class="ttdef"><b>Definition</b> Glyph.h:35</div></div>
+<div class="ttc" id="astructfl7_1_1fonts_1_1Glyph_html_a950a5a444c8738d96b0b503187dea9dd"><div class="ttname"><a href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#a950a5a444c8738d96b0b503187dea9dd">fl7::fonts::Glyph::metrics</a></div><div class="ttdeci">GlyphMetrics metrics</div><div class="ttdef"><b>Definition</b> Glyph.h:41</div></div>
+<div class="ttc" id="astructfl7_1_1fonts_1_1Glyph_html_ae62ae2e98a1ec7073a0dace7b878f9c9"><div class="ttname"><a href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#ae62ae2e98a1ec7073a0dace7b878f9c9">fl7::fonts::Glyph::codepoint</a></div><div class="ttdeci">cl7::text::codec::codepoint codepoint</div><div class="ttdef"><b>Definition</b> Glyph.h:27</div></div>
+<div class="ttc" id="astructfl7_1_1fonts_1_1Glyph_html_aec86644167babae0019e996e819d6bfc"><div class="ttname"><a href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html#aec86644167babae0019e996e819d6bfc">fl7::fonts::Glyph::bounding_box</a></div><div class="ttdeci">BoundingBox bounding_box</div><div class="ttdef"><b>Definition</b> Glyph.h:38</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

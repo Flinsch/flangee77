@@ -1,6 +1,7 @@
 var dir_08a5606168a6639d21308f080d4b1995 =
 [
     [ "detail", "dir_a902ab2d6ae07a47bb33e0fc70eccabf.html", "dir_a902ab2d6ae07a47bb33e0fc70eccabf" ],
+    [ "raster", "dir_8cfac9e1fef9b7187e17e75ff50b2f0a.html", "dir_8cfac9e1fef9b7187e17e75ff50b2f0a" ],
     [ "render", "dir_e32cf352326e06de150659197e062a8b.html", "dir_e32cf352326e06de150659197e062a8b" ],
     [ "BoundingBox.h", "d4/d41/BoundingBox_8h.html", "d4/d41/BoundingBox_8h" ],
     [ "Contour.cpp", "de/dc0/Contour_8cpp.html", null ],

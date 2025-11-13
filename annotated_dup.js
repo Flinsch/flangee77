@@ -241,6 +241,11 @@ var annotated_dup =
             [ "TrueTypeFontLoader", "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html", "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader" ]
           ] ]
         ] ],
+        [ "raster", "d2/d92/namespacefl7_1_1fonts_1_1raster.html", [
+          [ "AbstractRasterizer", "d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html", "d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer" ],
+          [ "OversampledBitmapRasterizer", "dd/d48/classfl7_1_1fonts_1_1raster_1_1OversampledBitmapRasterizer.html", "dd/d48/classfl7_1_1fonts_1_1raster_1_1OversampledBitmapRasterizer" ],
+          [ "SimpleBitmapRasterizer", "d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html", "d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer" ]
+        ] ],
         [ "render", "dd/d80/namespacefl7_1_1fonts_1_1render.html", [
           [ "AbstractRenderer", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer" ],
           [ "TestRenderer", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer" ]
