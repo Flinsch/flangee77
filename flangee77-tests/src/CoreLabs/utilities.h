@@ -22,6 +22,14 @@ TESTLABS_CASE( u8"CoreLabs:  utilities:  coalesce" )
 
 
 
+TESTLABS_CASE( u8"CoreLabs:  utilities:  conditional_pair" )
+{
+    TESTLABS_ASSERT( cl7::conditional_pair( false, 1.0f, 2.5f ) == std::make_pair( 1.0f, 2.5f ) );
+    TESTLABS_ASSERT( cl7::conditional_pair( true, 1.0f, 2.5f ) == std::make_pair( 2.5f, 1.0f ) );
+}
+
+
+
 TESTLABS_CASE( u8"CoreLabs:  utilities:  unordered_equal" )
 {
     TESTLABS_ASSERT_EQ( cl7::unordered_equal( std::vector<int>{}, std::vector<int>{} ), true );

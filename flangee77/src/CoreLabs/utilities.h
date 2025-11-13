@@ -14,15 +14,30 @@ namespace cl7 {
 
 
     /**
-     * Returns the first parameter that, when interpreted as a Boolean, evaluates to
+     * Returns the first parameter that, when interpreted as a boolean, evaluates to
      * a "true-ish" value. Otherwise, the last value is returned.
      */
     template <typename T1, typename T2>
         requires(std::same_as<std::decay_t<T1>, std::decay_t<T2>> && std::is_convertible_v<T1, bool>)
-    auto coalesce(T1&& a, T2&& b)
+    constexpr auto coalesce(T1&& a, T2&& b)
     {
         using T = std::decay_t<T1>;
         return static_cast<bool>(a) ? static_cast<T>(std::forward<T1>(a)) : static_cast<T>(std::forward<T2>(b));
+    }
+
+
+    /**
+     * Returns a pair of values, optionally flipping their order based on the
+     * specified boolean flag.
+     */
+    template <typename T1, typename T2>
+        requires(std::same_as<std::decay_t<T1>, std::decay_t<T2>>)
+    constexpr auto conditional_pair(bool flip, T1&& a, T2&& b)
+    {
+        return flip
+            ? std::pair<std::decay_t<T2>, std::decay_t<T1>>(std::forward<T2>(b), std::forward<T1>(a))
+            : std::pair<std::decay_t<T1>, std::decay_t<T2>>(std::forward<T1>(a), std::forward<T2>(b))
+        ;
     }
 
 

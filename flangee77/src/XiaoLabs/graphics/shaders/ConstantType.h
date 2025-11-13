@@ -11,7 +11,7 @@ namespace xl7::graphics::shaders {
 
 enum struct ConstantType
 {
-    /** The constant is a Boolean. */
+    /** The constant is a boolean. */
     Bool = 1, // Increase immediate compatibility with Direct3D.
     /** The constant is an integer. */
     Int,
