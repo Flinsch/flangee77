@@ -355,10 +355,14 @@ requires ( std::is_same_v&lt;Tchar, typename std::remove_cvref_t&lt;Tstring_view
 requires ( std::is_same_v&lt;Tchar, typename std::remove_cvref_t&lt;Tstring_view&gt;::value_type&gt; &amp;&amp; std::is_same_v&lt;Tchar, typename std::remove_cvref_t&lt;Tstring&gt;::value_type&gt;)</td></tr>
 <tr class="memitem:a8d2be612ac2224fb419fccf262bcab25"><td class="memTemplItemLeft" align="right" valign="top">Tstring&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a8d2be612ac2224fb419fccf262bcab25">operator+</a> (Tstring_view s1, const Tchar *s2)</td></tr>
 <tr class="separator:a8d2be612ac2224fb419fccf262bcab25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab6e46849480d689944a5e209fa10d7e" id="r_aab6e46849480d689944a5e209fa10d7e"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 &gt; <br />
+<tr class="memitem:a37dee267464d4f5f4bb0aabe534a9d0f" id="r_a37dee267464d4f5f4bb0aabe534a9d0f"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 &gt; <br />
 requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt; &amp;&amp; std::is_convertible_v&lt;T1, bool&gt;)</td></tr>
-<tr class="memitem:aab6e46849480d689944a5e209fa10d7e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#aab6e46849480d689944a5e209fa10d7e">coalesce</a> (T1 &amp;&amp;a, T2 &amp;&amp;b)</td></tr>
-<tr class="separator:aab6e46849480d689944a5e209fa10d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37dee267464d4f5f4bb0aabe534a9d0f"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a37dee267464d4f5f4bb0aabe534a9d0f">coalesce</a> (T1 &amp;&amp;a, T2 &amp;&amp;b)</td></tr>
+<tr class="separator:a37dee267464d4f5f4bb0aabe534a9d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f4113ca3013181c64b495b16509cedc" id="r_a3f4113ca3013181c64b495b16509cedc"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 &gt; <br />
+requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt;)</td></tr>
+<tr class="memitem:a3f4113ca3013181c64b495b16509cedc"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a3f4113ca3013181c64b495b16509cedc">conditional_pair</a> (bool flip, T1 &amp;&amp;a, T2 &amp;&amp;b)</td></tr>
+<tr class="separator:a3f4113ca3013181c64b495b16509cedc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85462c9bac4dc92bd878c0ccea9f587f" id="r_a85462c9bac4dc92bd878c0ccea9f587f"><td class="memTemplParams" colspan="2">template&lt;std::ranges::range R1, std::ranges::range R2, typename Tpred  = std::ranges::equal_to, typename Tproj1  = std::identity, typename Tproj2  = std::identity&gt; <br />
 requires (std::indirectly_comparable&lt;std::ranges::iterator_t&lt;R1&gt;, std::ranges::iterator_t&lt;R2&gt;, Tpred, Tproj1, Tproj2&gt;)</td></tr>
 <tr class="memitem:a85462c9bac4dc92bd878c0ccea9f587f"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a85462c9bac4dc92bd878c0ccea9f587f">unordered_equal</a> (const R1 &amp;a, const R2 &amp;b, Tpred pred={}, Tproj1 proj1={}, Tproj2 proj2={})</td></tr>
@@ -878,17 +882,20 @@ template&lt;std::integral T&gt; </div>
 
 </div>
 </div>
-<a id="aab6e46849480d689944a5e209fa10d7e" name="aab6e46849480d689944a5e209fa10d7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab6e46849480d689944a5e209fa10d7e">&#9670;&#160;</a></span>coalesce()</h2>
+<a id="a37dee267464d4f5f4bb0aabe534a9d0f" name="a37dee267464d4f5f4bb0aabe534a9d0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37dee267464d4f5f4bb0aabe534a9d0f">&#9670;&#160;</a></span>coalesce()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T1 , typename T2 &gt; <br />
 requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt; &amp;&amp; std::is_convertible_v&lt;T1, bool&gt;)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto cl7::coalesce </td>
+          <td class="memname">constexpr auto cl7::coalesce </td>
           <td>(</td>
           <td class="paramtype">T1 &amp;&amp;&#160;</td>
           <td class="paramname"><em>a</em>, </td>
@@ -905,8 +912,59 @@ requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt; &am
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Returns the first parameter that, when interpreted as a Boolean, evaluates to a "true-ish" value. Otherwise, the last value is returned. </p>
+<p>Returns the first parameter that, when interpreted as a boolean, evaluates to a "true-ish" value. Otherwise, the last value is returned. </p>
+
+</div>
+</div>
+<a id="a3f4113ca3013181c64b495b16509cedc" name="a3f4113ca3013181c64b495b16509cedc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f4113ca3013181c64b495b16509cedc">&#9670;&#160;</a></span>conditional_pair()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T1 , typename T2 &gt; <br />
+requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt;)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto cl7::conditional_pair </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>flip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T1 &amp;&amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T2 &amp;&amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns a pair of values, optionally flipping their order based on the specified boolean flag. </p>
 
 </div>
 </div>

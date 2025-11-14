@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"d1/dbc/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedAbstractShaderStates.html":[5,0,7,2,12,1],
 "d1/dbc/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedAbstractShaderStates.html#a5bfecae973d049397b8563e0bf5a0ba2":[7,0,7,1,12,1,2],
 "d1/dbc/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedAbstractShaderStates.html#a5bfecae973d049397b8563e0bf5a0ba2":[5,0,7,2,12,1,2],
 "d1/dbc/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedAbstractShaderStates.html#a99036693eb7f0b9ab7d4f30b4d32c09b":[5,0,7,2,12,1,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout.html#a243f7f085031138b513511aa9c0cbac0":[7,0,7,1,1,2,0,0,6],
 "d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout.html#a243f7f085031138b513511aa9c0cbac0":[5,0,7,2,1,2,1,0,6],
 "d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout.html#a3b05ab900f46a68253a4f48fec48ef4f":[7,0,7,1,1,2,0,0,4],
-"d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout.html#a3b05ab900f46a68253a4f48fec48ef4f":[5,0,7,2,1,2,1,0,4],
-"d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout.html#a4bce3040a053e6df042615a8f65b5a3a":[7,0,7,1,1,2,0,0,5]
+"d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout.html#a3b05ab900f46a68253a4f48fec48ef4f":[5,0,7,2,1,2,1,0,4]
 };
