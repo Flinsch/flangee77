@@ -1,5 +1,6 @@
 var NAVTREEINDEX43 =
 {
+"dc/d18/memory_8h.html#ae7f0acb86ccc919f73ecbe25d4e45105":[8,0,0,23,1],
 "dc/d18/memory_8h_source.html":[8,0,0,23],
 "dc/d19/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1states.html":[5,0,7,2,1,0,4],
 "dc/d19/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1states.html#a1099c5e6514eaad84ea79a8244d519dd":[5,0,7,2,1,0,4,9],
@@ -248,6 +249,5 @@ var NAVTREEINDEX43 =
 "dc/d6e/direct3d11_2RenderingDeviceImpl_8cpp.html#a7309ac5f0d2ea40cf4b5330c8303748d":[8,0,6,1,1,0,13,0],
 "dc/d6e/namespacexl7.html":[5,0,7],
 "dc/d6e/namespacexl7.html#a018bc5fef57fb363489373f35b5fe4ff":[5,0,7,14],
-"dc/d6e/namespacexl7.html#a58605100da8a99eeb6cb70292761c4be":[5,0,7,13],
-"dc/d6e/namespacexl7.html#a5e0f436814da1bf500ed4637f8ad723d":[5,0,7,12]
+"dc/d6e/namespacexl7.html#a58605100da8a99eeb6cb70292761c4be":[5,0,7,13]
 };

@@ -153,10 +153,14 @@ Functions</h2></td></tr>
 requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt; &amp;&amp; std::is_convertible_v&lt;T1, bool&gt;)</td></tr>
 <tr class="memitem:a37dee267464d4f5f4bb0aabe534a9d0f"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a37dee267464d4f5f4bb0aabe534a9d0f">cl7::coalesce</a> (T1 &amp;&amp;a, T2 &amp;&amp;b)</td></tr>
 <tr class="separator:a37dee267464d4f5f4bb0aabe534a9d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f4113ca3013181c64b495b16509cedc" id="r_a3f4113ca3013181c64b495b16509cedc"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 &gt; <br />
+<tr class="memitem:a95dce5131ec23d1f3f2f7559715ce4ab" id="r_a95dce5131ec23d1f3f2f7559715ce4ab"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 &gt; <br />
 requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt;)</td></tr>
-<tr class="memitem:a3f4113ca3013181c64b495b16509cedc"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a3f4113ca3013181c64b495b16509cedc">cl7::conditional_pair</a> (bool flip, T1 &amp;&amp;a, T2 &amp;&amp;b)</td></tr>
-<tr class="separator:a3f4113ca3013181c64b495b16509cedc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95dce5131ec23d1f3f2f7559715ce4ab"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a95dce5131ec23d1f3f2f7559715ce4ab">cl7::flip_if</a> (bool flip_if, T1 &amp;&amp;a, T2 &amp;&amp;b)</td></tr>
+<tr class="separator:a95dce5131ec23d1f3f2f7559715ce4ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade90db04d06440c85d818d7a57d9f6f8" id="r_ade90db04d06440c85d818d7a57d9f6f8"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 &gt; <br />
+requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt;)</td></tr>
+<tr class="memitem:ade90db04d06440c85d818d7a57d9f6f8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#ade90db04d06440c85d818d7a57d9f6f8">cl7::flip_unless</a> (bool flip_unless, T1 &amp;&amp;a, T2 &amp;&amp;b)</td></tr>
+<tr class="separator:ade90db04d06440c85d818d7a57d9f6f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85462c9bac4dc92bd878c0ccea9f587f" id="r_a85462c9bac4dc92bd878c0ccea9f587f"><td class="memTemplParams" colspan="2">template&lt;std::ranges::range R1, std::ranges::range R2, typename Tpred  = std::ranges::equal_to, typename Tproj1  = std::identity, typename Tproj2  = std::identity&gt; <br />
 requires (std::indirectly_comparable&lt;std::ranges::iterator_t&lt;R1&gt;, std::ranges::iterator_t&lt;R2&gt;, Tpred, Tproj1, Tproj2&gt;)</td></tr>
 <tr class="memitem:a85462c9bac4dc92bd878c0ccea9f587f"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a85462c9bac4dc92bd878c0ccea9f587f">cl7::unordered_equal</a> (const R1 &amp;a, const R2 &amp;b, Tpred pred={}, Tproj1 proj1={}, Tproj2 proj2={})</td></tr>

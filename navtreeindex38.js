@@ -1,5 +1,6 @@
 var NAVTREEINDEX38 =
 {
+"da/df2/classxl7_1_1MainWindow.html#a00e4eb762646cfa12434c86a916bc631":[5,0,7,11,17],
 "da/df2/classxl7_1_1MainWindow.html#a079587f8d348ed2c9ec988e57a56e9c6":[7,0,7,9,3],
 "da/df2/classxl7_1_1MainWindow.html#a079587f8d348ed2c9ec988e57a56e9c6":[5,0,7,11,3],
 "da/df2/classxl7_1_1MainWindow.html#a07c727ac91c9c00a0ae8a6ede0fe0461":[5,0,7,11,7],
@@ -248,6 +249,5 @@ var NAVTREEINDEX38 =
 "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#aedc1bcf8bc196d2c99097755bc0ce3e2":[7,0,7,1,1,0,6,9],
 "db/d29/namespacexl7_1_1graphics_1_1impl.html":[5,0,7,2,1],
 "db/d2d/distance3_8h.html":[8,0,3,7],
-"db/d2d/distance3_8h.html#a0ab2108c265812774cada330dcc59e0c":[8,0,3,7,3],
-"db/d2d/distance3_8h.html#a0e9a7b790844042710dc9d9ef7913676":[8,0,3,7,6]
+"db/d2d/distance3_8h.html#a0ab2108c265812774cada330dcc59e0c":[8,0,3,7,3]
 };

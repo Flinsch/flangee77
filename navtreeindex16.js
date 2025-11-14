@@ -1,5 +1,6 @@
 var NAVTREEINDEX16 =
 {
+"d5/d7b/classxl7_1_1resources_1_1Resource.html#ac15fb31dda6c8ffc5d42418b665ba2c3":[7,0,7,2,3,28],
 "d5/d7b/classxl7_1_1resources_1_1Resource.html#ac15fb31dda6c8ffc5d42418b665ba2c3":[5,0,7,4,3,28],
 "d5/d7b/classxl7_1_1resources_1_1Resource.html#accf15fe3047abc1f8d44da3754eeb59e":[5,0,7,4,3,18],
 "d5/d7b/classxl7_1_1resources_1_1Resource.html#accf15fe3047abc1f8d44da3754eeb59e":[7,0,7,2,3,18],
@@ -248,6 +249,5 @@ var NAVTREEINDEX16 =
 "d5/df5/namespacecl7_1_1text_1_1inspect.html":[5,0,0,9,2],
 "d5/df5/namespacecl7_1_1text_1_1inspect.html#a0422adf59543add3ce23e46601036b36":[5,0,0,9,2,8],
 "d5/df5/namespacecl7_1_1text_1_1inspect.html#a0c0145c528869c7221745f7b0fea41ed":[5,0,0,9,2,15],
-"d5/df5/namespacecl7_1_1text_1_1inspect.html#a0e591d06e240e06dbdec16573a9b25db":[5,0,0,9,2,16],
-"d5/df5/namespacecl7_1_1text_1_1inspect.html#a0fb4c820c4df645c4b350a8f8498ef4b":[5,0,0,9,2,10]
+"d5/df5/namespacecl7_1_1text_1_1inspect.html#a0e591d06e240e06dbdec16573a9b25db":[5,0,0,9,2,16]
 };

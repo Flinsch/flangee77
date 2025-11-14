@@ -1,5 +1,6 @@
 var NAVTREEINDEX44 =
 {
+"dc/d6e/namespacexl7.html#a5e0f436814da1bf500ed4637f8ad723d":[5,0,7,12],
 "dc/d6e/namespacexl7.html#a5e0f436814da1bf500ed4637f8ad723da0829ea6734059d66e6bf87096b215dc1":[5,0,7,12,1],
 "dc/d6e/namespacexl7.html#a5e0f436814da1bf500ed4637f8ad723da78f0192ac55eba33ee88d026452952e5":[5,0,7,12,2],
 "dc/d6e/namespacexl7.html#a5e0f436814da1bf500ed4637f8ad723da88183b946cc5f0e8c96b2e66e1c74a7e":[5,0,7,12,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX44 =
 "dc/d92/ReadableMemory_8cpp.html":[8,0,0,2,17],
 "dc/d93/GrammarAnalyzer_8cpp.html":[8,0,1,3,15],
 "dc/d98/TargaImageHandler_8h.html":[8,0,6,1,0,16],
-"dc/d98/TargaImageHandler_8h_source.html":[8,0,6,1,0,16],
-"dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html":[5,0,7,2,1,0,2,1]
+"dc/d98/TargaImageHandler_8h_source.html":[8,0,6,1,0,16]
 };

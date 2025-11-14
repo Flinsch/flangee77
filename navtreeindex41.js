@@ -1,5 +1,6 @@
 var NAVTREEINDEX41 =
 {
+"db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html#a768e66bb671718189e53d14d7dae287a":[7,0,0,8,0,2,3],
 "db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html#a782457e62a7e4e5fb21b30fe77856c54":[5,0,0,9,0,2,2],
 "db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html#a782457e62a7e4e5fb21b30fe77856c54":[7,0,0,8,0,2,2],
 "db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html#a8942e41d410f95456ca395af93bc81ca":[5,0,0,9,0,2,11],
@@ -248,6 +249,5 @@ var NAVTREEINDEX41 =
 "db/dcc/namespacedl7_1_1json_1_1detail.html#aefd1a930e6928f0b5231c01b74806e05afaae99a68e9c8134443a770fcbc635fd":[5,0,1,2,0,5,13],
 "db/dce/namespacefl7_1_1fonts_1_1detail.html":[5,0,2,0,0],
 "db/dd0/classcl7_1_1text_1_1codec_1_1Utf32Codec.html":[5,0,0,9,0,21],
-"db/dd0/classcl7_1_1text_1_1codec_1_1Utf32Codec.html":[7,0,0,8,0,21],
-"db/dd0/classcl7_1_1text_1_1codec_1_1Utf32Codec.html#a1923a2a896407f35d1c4fa1d1e1bfcfa":[5,0,0,9,0,21,10]
+"db/dd0/classcl7_1_1text_1_1codec_1_1Utf32Codec.html":[7,0,0,8,0,21]
 };
