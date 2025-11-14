@@ -18,6 +18,7 @@ var hierarchy =
       [ "xl7::graphics::pipeline::Pipeline", "d6/d62/classxl7_1_1graphics_1_1pipeline_1_1Pipeline.html", null ]
     ] ],
     [ "fl7::fonts::raster::AbstractRasterizer", "d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html", [
+      [ "fl7::fonts::raster::AnalyticalCoverageRasterizer", "df/d68/classfl7_1_1fonts_1_1raster_1_1AnalyticalCoverageRasterizer.html", null ],
       [ "fl7::fonts::raster::OversampledBitmapRasterizer", "dd/d48/classfl7_1_1fonts_1_1raster_1_1OversampledBitmapRasterizer.html", null ],
       [ "fl7::fonts::raster::SimpleBitmapRasterizer", "d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html", null ]
     ] ],
@@ -319,7 +320,6 @@ var hierarchy =
       [ "dl7::xml::Element", "de/dc8/classdl7_1_1xml_1_1Element.html", null ],
       [ "dl7::xml::Text", "df/dd2/classdl7_1_1xml_1_1Text.html", null ]
     ] ],
-    [ "fl7::fonts::raster::AbstractRasterizer::Offset", "d8/df6/structfl7_1_1fonts_1_1raster_1_1AbstractRasterizer_1_1Offset.html", null ],
     [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::OffsetSubtable", "d9/db1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OffsetSubtable.html", null ],
     [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::OpenTypeFontMetric", "d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html", null ],
     [ "dl7::Base64::Options", "de/d56/structdl7_1_1Base64_1_1Options.html", null ],
@@ -368,6 +368,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "xl7::graphics::PixelBitKit", "d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html", null ],
+    [ "fl7::fonts::raster::PixelOffset", "d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html", null ],
     [ "fl7::fonts::detail::ttf::RawGlyph::Point", "dc/d77/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph_1_1Point.html", null ],
     [ "ml7::detail::distance::PointResult< TVector >", "db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html", null ],
     [ "ml7::detail::distance::PointResult_distance_squared< T >", "de/dd3/structml7_1_1detail_1_1distance_1_1PointResult__distance__squared.html", null ],
@@ -382,6 +383,8 @@ var hierarchy =
     [ "ml7::Quaternion< T >", "d8/d1f/structml7_1_1Quaternion.html", null ],
     [ "ml7::ops::ramp< start, slope >", "de/dcb/structml7_1_1ops_1_1ramp.html", null ],
     [ "ml7::ops::ramp< 0, 1 >", "da/d35/structml7_1_1ops_1_1ramp_3_010_00_011_01_4.html", null ],
+    [ "fl7::fonts::raster::RasterResult", "d6/dfb/structfl7_1_1fonts_1_1raster_1_1RasterResult.html", null ],
+    [ "fl7::fonts::raster::RasterSizeConfig", "d0/dcb/structfl7_1_1fonts_1_1raster_1_1RasterSizeConfig.html", null ],
     [ "fl7::fonts::detail::ttf::RawGlyph", "d3/d6c/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph.html", null ],
     [ "ml7::Ray2< T >", "dc/def/structml7_1_1Ray2.html", null ],
     [ "ml7::Ray3< T >", "d3/d71/structml7_1_1Ray3.html", null ],
@@ -477,7 +480,6 @@ var hierarchy =
       [ "xl7::graphics::surfaces::SurfaceManager", "d9/dc4/classxl7_1_1graphics_1_1surfaces_1_1SurfaceManager.html", null ],
       [ "xl7::graphics::textures::TextureManager", "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html", null ]
     ] ],
-    [ "fl7::fonts::raster::AbstractRasterizer::Result", "d0/db5/structfl7_1_1fonts_1_1raster_1_1AbstractRasterizer_1_1Result.html", null ],
     [ "tl7::Result", "da/d3a/structtl7_1_1Result.html", null ],
     [ "ml7::distance2::ResultBase< T >", "de/d3e/structml7_1_1distance2_1_1ResultBase.html", [
       [ "ml7::distance2::PointResult< T >", "d6/df6/structml7_1_1distance2_1_1PointResult.html", null ]
