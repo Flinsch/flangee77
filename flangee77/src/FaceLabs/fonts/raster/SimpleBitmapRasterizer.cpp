@@ -109,9 +109,12 @@ namespace fl7::fonts::raster {
                             continue;
 
                         const float sign = is_filled ? +1.0f : -1.0f;
-                        constexpr float t_epsilon = 1e-4;
+                        constexpr float t_epsilon = 1e-4f;
                         constexpr float t_min = 0.0f - t_epsilon;
                         constexpr float t_max = 1.0f + t_epsilon;
+
+                        float sample_coverage = 0.0f;
+                        float signed_count = 0.0f;
 
                         for (auto t : roots)
                         {
@@ -125,8 +128,12 @@ namespace fl7::fonts::raster {
                             // The intersection point should lie between -0.5 and +0.5;
                             // therefore, the value to be saturated must be shifted accordingly.
                             const float intersect = a.x * t*t + b.x * t + c.x;
-                            coverage += ml7::clamp01(intersect + 0.5f) * sign;
+                            sample_coverage += ml7::clamp01(intersect + 0.5f);
+                            signed_count += sign;
                         }
+
+                        if (signed_count != 0.0f)
+                            coverage += sample_coverage / signed_count;
                     } // for each segment
                 } // for each pixel sample
 

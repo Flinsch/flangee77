@@ -17,11 +17,6 @@ class AnalyticalCoverageRasterizer
 {
 
 public:
-    /**
-     *
-     */
-    AnalyticalCoverageRasterizer() noexcept;
-
     ~AnalyticalCoverageRasterizer() noexcept override = default;
 
 

@@ -64,9 +64,12 @@ namespace fl7::fonts::raster {
                     }
                 }
 
-                canvas.map_element<uint8_t>(row, col) = accumulated_value / samples_per_pixel;
-            }
-        }
+                unsigned average_value = (accumulated_value + samples_per_pixel / 2) / samples_per_pixel;
+                assert(average_value <= 0xff);
+
+                canvas.map_element<uint8_t>(row, col) = average_value;
+            } // for each pixel column
+        } // for each pixel row
     }
 
 
