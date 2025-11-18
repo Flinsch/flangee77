@@ -92,7 +92,8 @@ $(document).ready(function(){initNavTree('d2/d92/namespacefl7_1_1fonts_1_1raster
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">fl7::fonts::raster Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -113,7 +114,177 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html">SimpleBitmapRasterizer</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a0453643df8f24f7462618d8ac7f60806" id="r_a0453643df8f24f7462618d8ac7f60806"><td class="memItemLeft" align="right" valign="top">static std::pair&lt; <a class="el" href="../../d3/d53/namespaceml7.html#a8a2c953f53671757c16f86c62ae10d65">ml7::LineSegment2f</a>, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d92/namespacefl7_1_1fonts_1_1raster.html#a0453643df8f24f7462618d8ac7f60806">_normalize_line_segment</a> (const <a class="el" href="../../d3/d53/namespaceml7.html#a8a2c953f53671757c16f86c62ae10d65">ml7::LineSegment2f</a> &amp;line_segment)</td></tr>
+<tr class="separator:a0453643df8f24f7462618d8ac7f60806"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a638de85bc9334ac4d1c20404c8d370d1" id="r_a638de85bc9334ac4d1c20404c8d370d1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d92/namespacefl7_1_1fonts_1_1raster.html#a638de85bc9334ac4d1c20404c8d370d1">_process_scaled_and_flattened_segment</a> (const <a class="el" href="../../d3/d53/namespaceml7.html#a8a2c953f53671757c16f86c62ae10d65">ml7::LineSegment2f</a> &amp;line_segment, <a class="el" href="../../d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html">PixelOffset</a> pixel_offset, <a class="el" href="../../d9/dc3/classdl7_1_1Buffer2d.html">dl7::Buffer2d</a>&lt; float &gt; coverage_canvas)</td></tr>
+<tr class="separator:a638de85bc9334ac4d1c20404c8d370d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3279eaa8ccdd211f132fcd3c78ce9ed" id="r_af3279eaa8ccdd211f132fcd3c78ce9ed"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d92/namespacefl7_1_1fonts_1_1raster.html#af3279eaa8ccdd211f132fcd3c78ce9ed">_process_scaled_bezier</a> (<a class="el" href="../../d3/d53/namespaceml7.html#a567afb3910c95c1e9525482f478fa043">ml7::QuadraticBezier2f</a> bezier, const <a class="el" href="../../d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html">PixelOffset</a> &amp;pixel_offset, const <a class="el" href="../../d9/dc3/classdl7_1_1Buffer2d.html">dl7::Buffer2d</a>&lt; float &gt; &amp;coverage_canvas)</td></tr>
+<tr class="separator:af3279eaa8ccdd211f132fcd3c78ce9ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbe38880087eba1aa75140974bf14247" id="r_acbe38880087eba1aa75140974bf14247"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d92/namespacefl7_1_1fonts_1_1raster.html#acbe38880087eba1aa75140974bf14247">_process_glyph</a> (const <a class="el" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html">Glyph</a> &amp;glyph, float font_size, const <a class="el" href="../../d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html">PixelOffset</a> &amp;pixel_offset, const <a class="el" href="../../d9/dc3/classdl7_1_1Buffer2d.html">dl7::Buffer2d</a>&lt; float &gt; &amp;coverage_canvas)</td></tr>
+<tr class="separator:acbe38880087eba1aa75140974bf14247"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a0453643df8f24f7462618d8ac7f60806" name="a0453643df8f24f7462618d8ac7f60806"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0453643df8f24f7462618d8ac7f60806">&#9670;&#160;</a></span>_normalize_line_segment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::pair&lt; <a class="el" href="../../d3/d53/namespaceml7.html#a8a2c953f53671757c16f86c62ae10d65">ml7::LineSegment2f</a>, float &gt; fl7::fonts::raster::_normalize_line_segment </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d3/d53/namespaceml7.html#a8a2c953f53671757c16f86c62ae10d65">ml7::LineSegment2f</a> &amp;&#160;</td>
+          <td class="paramname"><em>line_segment</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acbe38880087eba1aa75140974bf14247" name="acbe38880087eba1aa75140974bf14247"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbe38880087eba1aa75140974bf14247">&#9670;&#160;</a></span>_process_glyph()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void fl7::fonts::raster::_process_glyph </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html">Glyph</a> &amp;&#160;</td>
+          <td class="paramname"><em>glyph</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>font_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html">PixelOffset</a> &amp;&#160;</td>
+          <td class="paramname"><em>pixel_offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d9/dc3/classdl7_1_1Buffer2d.html">dl7::Buffer2d</a>&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>coverage_canvas</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a638de85bc9334ac4d1c20404c8d370d1" name="a638de85bc9334ac4d1c20404c8d370d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a638de85bc9334ac4d1c20404c8d370d1">&#9670;&#160;</a></span>_process_scaled_and_flattened_segment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void fl7::fonts::raster::_process_scaled_and_flattened_segment </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d3/d53/namespaceml7.html#a8a2c953f53671757c16f86c62ae10d65">ml7::LineSegment2f</a> &amp;&#160;</td>
+          <td class="paramname"><em>line_segment</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html">PixelOffset</a>&#160;</td>
+          <td class="paramname"><em>pixel_offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d9/dc3/classdl7_1_1Buffer2d.html">dl7::Buffer2d</a>&lt; float &gt;&#160;</td>
+          <td class="paramname"><em>coverage_canvas</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af3279eaa8ccdd211f132fcd3c78ce9ed" name="af3279eaa8ccdd211f132fcd3c78ce9ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3279eaa8ccdd211f132fcd3c78ce9ed">&#9670;&#160;</a></span>_process_scaled_bezier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void fl7::fonts::raster::_process_scaled_bezier </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#a567afb3910c95c1e9525482f478fa043">ml7::QuadraticBezier2f</a>&#160;</td>
+          <td class="paramname"><em>bezier</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html">PixelOffset</a> &amp;&#160;</td>
+          <td class="paramname"><em>pixel_offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d9/dc3/classdl7_1_1Buffer2d.html">dl7::Buffer2d</a>&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>coverage_canvas</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
