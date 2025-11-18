@@ -1,6 +1,6 @@
 #ifndef FL7_FONTS_RASTER_OVERSAMPLEDBITMAPRASTERIZER_H
 #define FL7_FONTS_RASTER_OVERSAMPLEDBITMAPRASTERIZER_H
-#include "./AbstractRasterizer.h"
+#include "./AbstractBitmapRasterizer.h"
 
 
 
@@ -15,7 +15,7 @@ namespace fl7::fonts::raster {
  * it might be better to use an analytical coverage rasterizer instead.
  */
 class OversampledBitmapRasterizer
-    : public AbstractRasterizer
+    : public AbstractBitmapRasterizer
 {
 
 public:
@@ -30,15 +30,16 @@ public:
      */
     OversampledBitmapRasterizer(unsigned oversampling, unsigned basic_aa_quality = 0) noexcept;
 
-    ~OversampledBitmapRasterizer() noexcept override = default;
-
-
-
-
-    /**
-     * Returns the pixel format of this rasterizer's output images.
+  /**
+     * Constructs a bitmap rasterizer with the specified oversampling factor (e.g.,
+     * (a factor of 4 effectively means 16 samples per pixel). A factor less than 2
+     * disables oversampling and therefore also the actual anti-aliasing effect of
+     * this rasterizer. Either way, the specified bitmap rasterizer is used
+     * internally to generate the potentially oversampled intermediate result.
      */
-    xl7::graphics::PixelFormat get_pixel_format() const override { return xl7::graphics::PixelFormat::A8_UNORM; }
+    OversampledBitmapRasterizer(unsigned oversampling, AbstractBitmapRasterizer* bitmap_rasterizer) noexcept;
+
+    ~OversampledBitmapRasterizer() noexcept override = default;
 
 
 
@@ -48,7 +49,9 @@ private:
     void _do_rasterize_glyph_into(const Glyph& glyph, const RasterSizeConfig& size_config, const PixelOffset& pixel_offset, const dl7::Buffer2dSpan& canvas);
 
     unsigned _oversampling;
-    unsigned _basic_aa_quality;
+    unsigned _basic_aa_quality = 0;
+
+    AbstractBitmapRasterizer* _bitmap_rasterizer = nullptr;
 
 }; // class OversampledBitmapRasterizer
 

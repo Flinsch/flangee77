@@ -23,6 +23,19 @@ namespace fl7::fonts::raster {
     {
     }
 
+    /**
+     * Constructs a bitmap rasterizer with the specified oversampling factor (e.g.,
+     * (a factor of 4 effectively means 16 samples per pixel). A factor less than 2
+     * disables oversampling and therefore also the actual anti-aliasing effect of
+     * this rasterizer. Either way, the specified bitmap rasterizer is used
+     * internally to generate the potentially oversampled intermediate result.
+     */
+    OversampledBitmapRasterizer::OversampledBitmapRasterizer(unsigned oversampling, AbstractBitmapRasterizer* bitmap_rasterizer) noexcept
+        : _oversampling(oversampling >= 2 ? oversampling : 1)
+        , _bitmap_rasterizer(bitmap_rasterizer)
+    {
+    }
+
 
 
     void OversampledBitmapRasterizer::_rasterize_glyph_into(const Glyph& glyph, const RasterSizeConfig& size_config, const PixelOffset& pixel_offset, dl7::Buffer2dSpan canvas)
@@ -76,12 +89,18 @@ namespace fl7::fonts::raster {
 
     void OversampledBitmapRasterizer::_do_rasterize_glyph_into(const Glyph& glyph, const RasterSizeConfig& size_config, const PixelOffset& pixel_offset, const dl7::Buffer2dSpan& canvas)
     {
-        SimpleBitmapRasterizer simple_bitmap_rasterizer{_basic_aa_quality, false};
+        std::unique_ptr<SimpleBitmapRasterizer> simple_bitmap_rasterizer;
+        AbstractBitmapRasterizer* bitmap_rasterizer = _bitmap_rasterizer;
+        if (!bitmap_rasterizer)
+        {
+            simple_bitmap_rasterizer = std::make_unique<SimpleBitmapRasterizer>(_basic_aa_quality, false);
+            bitmap_rasterizer = simple_bitmap_rasterizer.get();
+        }
 
-        assert(simple_bitmap_rasterizer.get_pixel_format() == get_pixel_format());
-        assert(simple_bitmap_rasterizer.get_channel_order() == get_channel_order());
+        assert(bitmap_rasterizer->get_pixel_format() == get_pixel_format());
+        assert(bitmap_rasterizer->get_channel_order() == get_channel_order());
 
-        simple_bitmap_rasterizer.rasterize_glyph_into(glyph, size_config, pixel_offset, canvas);
+        bitmap_rasterizer->rasterize_glyph_into(glyph, size_config, pixel_offset, canvas);
     }
 
 

@@ -1,6 +1,6 @@
 #ifndef FL7_FONTS_RASTER_SIMPLEBITMAPRASTERIZER_H
 #define FL7_FONTS_RASTER_SIMPLEBITMAPRASTERIZER_H
-#include "./AbstractRasterizer.h"
+#include "./AbstractBitmapRasterizer.h"
 
 
 
@@ -15,7 +15,7 @@ namespace fl7::fonts::raster {
  * should be used.
  */
 class SimpleBitmapRasterizer
-    : public AbstractRasterizer
+    : public AbstractBitmapRasterizer
 {
 
 public:
@@ -30,14 +30,6 @@ public:
     SimpleBitmapRasterizer(unsigned aa_quality = 0, bool force_binary = false) noexcept;
 
     ~SimpleBitmapRasterizer() noexcept override = default;
-
-
-
-
-    /**
-     * Returns the pixel format of this rasterizer's output images.
-     */
-    xl7::graphics::PixelFormat get_pixel_format() const override { return xl7::graphics::PixelFormat::A8_UNORM; }
 
 
 

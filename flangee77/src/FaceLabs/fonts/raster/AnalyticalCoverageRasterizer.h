@@ -1,6 +1,6 @@
 #ifndef FL7_FONTS_RASTER_ANALYTICALCOVERAGERASTERIZER_H
 #define FL7_FONTS_RASTER_ANALYTICALCOVERAGERASTERIZER_H
-#include "./AbstractRasterizer.h"
+#include "./AbstractBitmapRasterizer.h"
 
 
 
@@ -9,23 +9,15 @@ namespace fl7::fonts::raster {
 
 
 /**
- * This rasterizer computes the "exact" pixel coverage analytically by integrating
- * the intersection area of a glyph's curve geometry and the pixel cells.
+ * A bitmap rasterizer that computes the "exact" pixel coverage analytically by
+ * integrating the intersection area of a glyph's geometry and the pixel cells.
  */
 class AnalyticalCoverageRasterizer
-    : public AbstractRasterizer
+    : public AbstractBitmapRasterizer
 {
 
 public:
     ~AnalyticalCoverageRasterizer() noexcept override = default;
-
-
-
-
-    /**
-     * Returns the pixel format of this rasterizer's output images.
-     */
-    xl7::graphics::PixelFormat get_pixel_format() const override { return xl7::graphics::PixelFormat::A8_UNORM; }
 
 
 
