@@ -7,34 +7,49 @@ namespace fl7::fonts::render {
 
 
     /**
+     * Creates a new `ScopedBatch` object to manage a text rendering batch.
+     *
+     * Use this function to start a new batch. The returned `ScopedBatch` object
+     * will automatically call `end` when it goes out of scope, unless `end` is
+     * called explicitly beforehand.
+     */
+    AbstractRenderer::ScopedBatch AbstractRenderer::begin_batch()
+    {
+        return ScopedBatch{this};
+    }
+
+
+
+    /**
      * Begins a new text rendering batch. Must be balled before issuing any draw
      * commands if batching manually. Typically followed by multiple calls to
      * `draw_text`, and then a final call to `end`. If you only call `draw_text`
      * occasionally, it is not necessary to call `begin` or `end` manually; the
      * renderer will manage batching internally.
+     *
+     * For greater convenience, the RAII helper `ScopedBatch` should be used via
+     * `begin_batch`.
      */
     void AbstractRenderer::begin()
     {
-        if (_is_batching)
-            return;
-
-        _before_begin();
-        _is_batching = true;
+        if (_batch_depth++ == 0)
+            _before_begin();
     }
 
     /**
      * Submits any queued geometry and finalizes the current text rendering batch.
      * This implicitly calls `flush`.
+     *
+     * For greater convenience, the RAII helper `ScopedBatch` should be used via
+     * `begin_batch`, which ultimately calls `end` automatically.
      */
     void AbstractRenderer::end()
     {
-        if (!_is_batching)
-            return;
-
+        assert(_batch_depth > 0);
         flush();
 
-        _is_batching = false;
-        _after_end();
+        if (_batch_depth > 0 && --_batch_depth == 0)
+            _after_end();
     }
 
     /**
@@ -44,9 +59,7 @@ namespace fl7::fonts::render {
      */
     void AbstractRenderer::flush()
     {
-        if (!_is_batching)
-            return;
-
+        assert(_batch_depth > 0);
         _do_flush();
     }
 
@@ -68,7 +81,7 @@ namespace fl7::fonts::render {
             .cursor = {0.0f, 0.0f},
         };
 
-        AutoBeginEnd auto_begin_end(_is_batching ? nullptr : this);
+        ScopedBatch auto_batch(_batch_depth > 0 ? nullptr : this);
 
         for (auto codepoint : codepoints)
         {
