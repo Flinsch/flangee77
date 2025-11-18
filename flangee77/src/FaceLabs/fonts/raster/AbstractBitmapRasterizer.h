@@ -19,8 +19,9 @@ public:
 
     /**
      * Returns the pixel format of this rasterizer's output images.
+     * A bitmap rasterizer always has a pixel format of `A8_UNORM`.
      */
-    xl7::graphics::PixelFormat get_pixel_format() const override { return xl7::graphics::PixelFormat::A8_UNORM; }
+    xl7::graphics::PixelFormat get_pixel_format() const final { return xl7::graphics::PixelFormat::A8_UNORM; }
 
 }; // class AbstractBitmapRasterizer
 
