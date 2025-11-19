@@ -319,7 +319,7 @@ var NAVTREEINDEX =
 "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a367e88b8a94aa2b5f891be70cfcf5b64",
 "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#a3ba836655ee2407b27edbd066a7c156c",
 "de/d3c/macros_8h.html#aae8b60439f5dfb42f145d207f5421d59",
-"de/da1/classfl7_1_1fonts_1_1raster_1_1AbstractBitmapRasterizer.html#a4d5813280ae31d67182d3aefc36070f7",
+"de/da1/classfl7_1_1fonts_1_1raster_1_1AbstractBitmapRasterizer.html#ac570e94eea3217b47db55fd82dedcd36",
 "de/df3/structxl7_1_1graphics_1_1Color.html#a00538dcdca13734bbeb15661ea8af854",
 "df/d35/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1shaders_1_1VertexShaderImpl.html#afc5fc1ad4ce1c00587f342d0e83a99d6",
 "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html#aa715a13644ab9d2c488d83b3a7f8e00c",
