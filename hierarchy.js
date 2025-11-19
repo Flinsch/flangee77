@@ -70,7 +70,6 @@ var hierarchy =
     [ "xl7::resources::Resource::Attorney", "d0/d78/classxl7_1_1resources_1_1Resource_1_1Attorney.html", null ],
     [ "dl7::xml::Attribute", "d5/d23/classdl7_1_1xml_1_1Attribute.html", null ],
     [ "cl7::auto_invoke< Callable >", "de/dbb/classcl7_1_1auto__invoke.html", null ],
-    [ "fl7::fonts::render::AbstractRenderer::AutoBeginEnd", "dd/d8e/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1AutoBeginEnd.html", null ],
     [ "xl7::BackendRegistry< TBackendBase >", "d1/da6/classxl7_1_1BackendRegistry.html", null ],
     [ "dl7::Base64", "da/d3b/classdl7_1_1Base64.html", null ],
     [ "xl7::graphics::images::PngImageHandler::BitInfo", "d1/db4/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1BitInfo.html", null ],
@@ -492,6 +491,7 @@ var hierarchy =
     [ "tl7::ResultBuilder", "db/d89/classtl7_1_1ResultBuilder.html", null ],
     [ "cl7::profiling::Sample", "d6/d1f/structcl7_1_1profiling_1_1Sample.html", null ],
     [ "cl7::profiling::SampleHandler", "d3/dea/structcl7_1_1profiling_1_1SampleHandler.html", null ],
+    [ "fl7::fonts::render::AbstractRenderer::ScopedBatch", "d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html", null ],
     [ "dl7::ini::Section", "dc/d3a/classdl7_1_1ini_1_1Section.html", [
       [ "dl7::ini::Ini", "da/d48/classdl7_1_1ini_1_1Ini.html", null ]
     ] ],

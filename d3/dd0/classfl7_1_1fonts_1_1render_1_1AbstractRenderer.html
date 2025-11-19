@@ -128,7 +128,7 @@ Collaboration diagram for fl7::fonts::render::AbstractRenderer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d8e/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1AutoBeginEnd.html">AutoBeginEnd</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html">ScopedBatch</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html">State</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,6 +137,8 @@ Classes</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a899e032254ce236ead248d65607d6e7e" id="r_a899e032254ce236ead248d65607d6e7e"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a899e032254ce236ead248d65607d6e7e">~AbstractRenderer</a> () noexcept=default</td></tr>
 <tr class="separator:a899e032254ce236ead248d65607d6e7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e289271cdb4338e8e4ad31873bf84fa" id="r_a6e289271cdb4338e8e4ad31873bf84fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html">ScopedBatch</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a6e289271cdb4338e8e4ad31873bf84fa">begin_batch</a> ()</td></tr>
+<tr class="separator:a6e289271cdb4338e8e4ad31873bf84fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf86dbe5e0a897e16e99d83caa49fc3a" id="r_abf86dbe5e0a897e16e99d83caa49fc3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#abf86dbe5e0a897e16e99d83caa49fc3a">begin</a> ()</td></tr>
 <tr class="separator:abf86dbe5e0a897e16e99d83caa49fc3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92b6b4f92a86517877edcc2848d9e7dd" id="r_a92b6b4f92a86517877edcc2848d9e7dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a92b6b4f92a86517877edcc2848d9e7dd">end</a> ()</td></tr>
@@ -166,8 +168,8 @@ Private Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a7b2381194d7a09f13d8ae70ca9c1f2dc" id="r_a7b2381194d7a09f13d8ae70ca9c1f2dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html">TextStyle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a7b2381194d7a09f13d8ae70ca9c1f2dc">_default_text_style</a> = {}</td></tr>
 <tr class="separator:a7b2381194d7a09f13d8ae70ca9c1f2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a791d59ecbc95f3c6d6510bffe424262a" id="r_a791d59ecbc95f3c6d6510bffe424262a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a791d59ecbc95f3c6d6510bffe424262a">_is_batching</a> = false</td></tr>
-<tr class="separator:a791d59ecbc95f3c6d6510bffe424262a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcee0a3deca5f598203f6ac76c506549" id="r_adcee0a3deca5f598203f6ac76c506549"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#adcee0a3deca5f598203f6ac76c506549">_batch_depth</a> = 0</td></tr>
+<tr class="separator:adcee0a3deca5f598203f6ac76c506549"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3137aa0fe5b53ca35c84e35a8a89de8" id="r_af3137aa0fe5b53ca35c84e35a8a89de8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html">cl7::text::codec::codepoint</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#af3137aa0fe5b53ca35c84e35a8a89de8">_codepoints</a></td></tr>
 <tr class="separator:af3137aa0fe5b53ca35c84e35a8a89de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -403,7 +405,27 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Begins a new text rendering batch. Must be balled before issuing any draw commands if batching manually. Typically followed by multiple calls to <code>draw_text</code>, and then a final call to <code>end</code>. If you only call <code>draw_text</code> occasionally, it is not necessary to call <code>begin</code> or <code>end</code> manually; the renderer will manage batching internally. </p>
+<p>Begins a new text rendering batch. Must be balled before issuing any draw commands if batching manually. Typically followed by multiple calls to <code>draw_text</code>, and then a final call to <code>end</code>. If you only call <code>draw_text</code> occasionally, it is not necessary to call <code>begin</code> or <code>end</code> manually; the renderer will manage batching internally.</p>
+<p>For greater convenience, the RAII helper <code><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html">ScopedBatch</a></code> should be used via <code>begin_batch</code>. </p>
+
+</div>
+</div>
+<a id="a6e289271cdb4338e8e4ad31873bf84fa" name="a6e289271cdb4338e8e4ad31873bf84fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e289271cdb4338e8e4ad31873bf84fa">&#9670;&#160;</a></span>begin_batch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html">AbstractRenderer::ScopedBatch</a> fl7::fonts::render::AbstractRenderer::begin_batch </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a new <code><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html">ScopedBatch</a></code> object to manage a text rendering batch.</p>
+<p>Use this function to start a new batch. The returned <code><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html">ScopedBatch</a></code> object will automatically call <code>end</code> when it goes out of scope, unless <code>end</code> is called explicitly beforehand. </p>
 
 </div>
 </div>
@@ -467,7 +489,8 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Submits any queued geometry and finalizes the current text rendering batch. This implicitly calls <code>flush</code>. </p>
+<p>Submits any queued geometry and finalizes the current text rendering batch. This implicitly calls <code>flush</code>.</p>
+<p>For greater convenience, the RAII helper <code><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html">ScopedBatch</a></code> should be used via <code>begin_batch</code>, which ultimately calls <code>end</code> automatically. </p>
 
 </div>
 </div>
@@ -490,6 +513,29 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="adcee0a3deca5f598203f6ac76c506549" name="adcee0a3deca5f598203f6ac76c506549"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcee0a3deca5f598203f6ac76c506549">&#9670;&#160;</a></span>_batch_depth</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned fl7::fonts::render::AbstractRenderer::_batch_depth = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The "flag"/counter specifying whether an active text rendering batch is open. </p>
+
+</div>
+</div>
 <a id="af3137aa0fe5b53ca35c84e35a8a89de8" name="af3137aa0fe5b53ca35c84e35a8a89de8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af3137aa0fe5b53ca35c84e35a8a89de8">&#9670;&#160;</a></span>_codepoints</h2>
 
@@ -533,29 +579,6 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
 </table>
 </div><div class="memdoc">
 <p>The default text style to use when no other text style is specified. </p>
-
-</div>
-</div>
-<a id="a791d59ecbc95f3c6d6510bffe424262a" name="a791d59ecbc95f3c6d6510bffe424262a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a791d59ecbc95f3c6d6510bffe424262a">&#9670;&#160;</a></span>_is_batching</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool fl7::fonts::render::AbstractRenderer::_is_batching = false</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>The flag specifying whether an active text rendering batch is open. </p>
 
 </div>
 </div>
