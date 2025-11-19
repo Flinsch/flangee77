@@ -18,5 +18,6 @@ target_sources(flangee77
     fonts/raster/SimpleBitmapRasterizer.cpp
 
     fonts/render/AbstractRenderer.cpp
+    fonts/render/AbstractTextureAtlasBasedRenderer.cpp
     fonts/render/TestRenderer.cpp
 )

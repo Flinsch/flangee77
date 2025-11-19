@@ -16,6 +16,9 @@ namespace fl7::fonts::render {
 
 
 
+/**
+ * Abstract class for rendering text.
+ */
 class AbstractRenderer
 {
 
