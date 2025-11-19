@@ -18,9 +18,11 @@ var hierarchy =
       [ "xl7::graphics::pipeline::Pipeline", "d6/d62/classxl7_1_1graphics_1_1pipeline_1_1Pipeline.html", null ]
     ] ],
     [ "fl7::fonts::raster::AbstractRasterizer", "d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html", [
-      [ "fl7::fonts::raster::AnalyticalCoverageRasterizer", "df/d68/classfl7_1_1fonts_1_1raster_1_1AnalyticalCoverageRasterizer.html", null ],
-      [ "fl7::fonts::raster::OversampledBitmapRasterizer", "dd/d48/classfl7_1_1fonts_1_1raster_1_1OversampledBitmapRasterizer.html", null ],
-      [ "fl7::fonts::raster::SimpleBitmapRasterizer", "d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html", null ]
+      [ "fl7::fonts::raster::AbstractBitmapRasterizer", "de/da1/classfl7_1_1fonts_1_1raster_1_1AbstractBitmapRasterizer.html", [
+        [ "fl7::fonts::raster::AnalyticalCoverageRasterizer", "df/d68/classfl7_1_1fonts_1_1raster_1_1AnalyticalCoverageRasterizer.html", null ],
+        [ "fl7::fonts::raster::OversampledBitmapRasterizer", "dd/d48/classfl7_1_1fonts_1_1raster_1_1OversampledBitmapRasterizer.html", null ],
+        [ "fl7::fonts::raster::SimpleBitmapRasterizer", "d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html", null ]
+      ] ]
     ] ],
     [ "fl7::fonts::render::AbstractRenderer", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html", [
       [ "fl7::fonts::render::TestRenderer", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html", null ]
