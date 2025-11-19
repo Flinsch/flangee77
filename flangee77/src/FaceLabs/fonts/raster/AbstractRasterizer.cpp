@@ -6,6 +6,18 @@ namespace fl7::fonts::raster {
 
 
 
+/**
+     * Constructs an abstract rasterizer with the specified pixel format for the
+     * output images and an (optional) channel order (which defaults to RGBA).
+     */
+    AbstractRasterizer::AbstractRasterizer(xl7::graphics::PixelFormat pixel_format, xl7::graphics::ChannelOrder channel_order) noexcept
+        : _pixel_format(pixel_format)
+        , _channel_order(channel_order)
+    {
+    }
+
+
+
     /**
      * Rasterizes a glyph into an image and calculates its positioning offset.
      */

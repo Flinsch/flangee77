@@ -11,6 +11,7 @@ target_sources(flangee77
     fonts/detail/ttf/RawGlyph.cpp
     fonts/detail/ttf/TrueTypeFontLoader.cpp
 
+    fonts/raster/AbstractBitmapRasterizer.cpp
     fonts/raster/AbstractRasterizer.cpp
     fonts/raster/AnalyticalCoverageRasterizer.cpp
     fonts/raster/OversampledBitmapRasterizer.cpp

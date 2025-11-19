@@ -8,20 +8,21 @@ namespace fl7::fonts::raster {
 
 
 
+/**
+ * Abstract class for rasterizing glyphs into "classic" (grayscale) bitmap images.
+ * The pixel format is set to `A8_UNORM` for this.
+ */
 class AbstractBitmapRasterizer
     : public AbstractRasterizer
 {
 
 public:
-    ~AbstractBitmapRasterizer() noexcept override = default;
-
-
-
     /**
-     * Returns the pixel format of this rasterizer's output images.
-     * A bitmap rasterizer always has a pixel format of `A8_UNORM`.
+     * Constructs an abstract bitmap rasterizer with a pixel format of `A8_UNORM`.
      */
-    xl7::graphics::PixelFormat get_pixel_format() const final { return xl7::graphics::PixelFormat::A8_UNORM; }
+    AbstractBitmapRasterizer() noexcept;
+
+    ~AbstractBitmapRasterizer() noexcept override = default;
 
 }; // class AbstractBitmapRasterizer
 
