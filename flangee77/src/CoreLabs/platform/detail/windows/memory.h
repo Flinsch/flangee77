@@ -3,8 +3,6 @@
 #include <CoreLabs/platform/memory.h>
 #if F77_IS_WINDOWS
 
-#include <optional>
-
 
 
 namespace cl7::platform::detail::windows::memory {

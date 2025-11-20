@@ -7,7 +7,6 @@
 
 #include <CoreLabs/text/codec/codepoint.h>
 
-#include <optional>
 #include <array>
 #include <unordered_map>
 

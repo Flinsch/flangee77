@@ -6,7 +6,6 @@
 
 #include <CoreLabs/io/ReadableMemory.h>
 
-#include <optional>
 #include <unordered_map>
 
 
