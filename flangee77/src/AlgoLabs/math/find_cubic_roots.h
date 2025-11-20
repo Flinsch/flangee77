@@ -1,19 +1,18 @@
-#ifndef ML7_ALGORITHM_FINDCUBICROOTS_H
-#define ML7_ALGORITHM_FINDCUBICROOTS_H
+#ifndef AL7_MATH_FINDCUBICROOTS_H
+#define AL7_MATH_FINDCUBICROOTS_H
 
 #include "./find_quadratic_roots.h"
-
-#include <MathLabs/constants.h>
 
 #include <CoreLabs/static_vector.h>
 
 #include <cmath>
 #include <limits>
+#include <numbers>
 #include <algorithm>
 
 
 
-namespace ml7::algorithm {
+namespace al7::math {
 
 
 
@@ -73,8 +72,8 @@ namespace ml7::algorithm {
         const T u = T{2} * std::sqrt(-Q);
         cl7::static_vector<T, 3> roots = {
             u * std::cos(theta / T{3}) - b / T{3},
-            u * std::cos((theta + constants<T>::pi2) / T{3}) - b / T{3},
-            u * std::cos((theta + T{2} * constants<T>::pi2) / T{3}) - b / T{3},
+            u * std::cos((theta + T{2} * std::numbers::pi_v<T>) / T{3}) - b / T{3},
+            u * std::cos((theta + T{4} * std::numbers::pi_v<T>) / T{3}) - b / T{3},
         };
         std::ranges::sort(roots);
         return roots;
@@ -87,6 +86,6 @@ namespace ml7::algorithm {
 
 
 
-} // namespace ml7::algorithm
+} // namespace al7::math
 
-#endif // ML7_ALGORITHM_FINDQUADRATICROOTS_H
+#endif // AL7_MATH_FINDQUADRATICROOTS_H

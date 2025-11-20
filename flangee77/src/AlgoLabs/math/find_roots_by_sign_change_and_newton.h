@@ -1,5 +1,5 @@
-#ifndef ML7_ALGORITHM_FINDROOTSBYSIGNCHANGEANDNEWTON_H
-#define ML7_ALGORITHM_FINDROOTSBYSIGNCHANGEANDNEWTON_H
+#ifndef AL7_MATH_FINDROOTSBYSIGNCHANGEANDNEWTON_H
+#define AL7_MATH_FINDROOTSBYSIGNCHANGEANDNEWTON_H
 
 #include "./merge_nearby.h"
 
@@ -8,7 +8,7 @@
 
 
 
-namespace ml7::algorithm {
+namespace al7::math {
 
 
 
@@ -128,6 +128,6 @@ namespace ml7::algorithm {
 
 
 
-} // namespace ml7::algorithm
+} // namespace al7::math
 
-#endif // ML7_ALGORITHM_FINDROOTSBYSIGNCHANGEANDNEWTON_H
+#endif // AL7_MATH_FINDROOTSBYSIGNCHANGEANDNEWTON_H

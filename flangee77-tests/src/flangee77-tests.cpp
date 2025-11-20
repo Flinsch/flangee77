@@ -2,6 +2,8 @@
 #include <TestLabs/TestSuite.h>
 #include <CoreLabs/logging.h>
 
+#include "./AlgoLabs/math.h"
+
 #include "./CoreLabs/bits.h"
 #include "./CoreLabs/bytes.h"
 #include "./CoreLabs/memory.h"
@@ -57,7 +59,6 @@
 #include "./MathLabs/QuadraticBezier3.h"
 #include "./MathLabs/CubicBezier2.h"
 #include "./MathLabs/CubicBezier3.h"
-#include "./MathLabs/algorithm.h"
 #include "./MathLabs/distance2.h"
 #include "./MathLabs/distance3.h"
 

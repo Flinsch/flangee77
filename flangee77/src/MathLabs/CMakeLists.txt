@@ -6,8 +6,4 @@ target_sources(flangee77
     Matrix3x4.cpp
     Matrix4x4.cpp
     Quaternion.cpp
-
-    algorithm/find_cubic_roots.cpp
-    algorithm/find_quadratic_roots.cpp
-    algorithm/merge_nearby.cpp
 )

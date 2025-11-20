@@ -1,5 +1,5 @@
-#ifndef ML7_ALGORITHM_FINDQUADRATICROOTS_H
-#define ML7_ALGORITHM_FINDQUADRATICROOTS_H
+#ifndef AL7_MATH_FINDQUADRATICROOTS_H
+#define AL7_MATH_FINDQUADRATICROOTS_H
 
 #include <CoreLabs/static_vector.h>
 
@@ -8,7 +8,7 @@
 
 
 
-namespace ml7::algorithm {
+namespace al7::math {
 
 
 
@@ -60,6 +60,6 @@ namespace ml7::algorithm {
 
 
 
-} // namespace ml7::algorithm
+} // namespace al7::math
 
-#endif // ML7_ALGORITHM_FINDQUADRATICROOTS_H
+#endif // AL7_MATH_FINDQUADRATICROOTS_H

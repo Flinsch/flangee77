@@ -1,4 +1,5 @@
 
+add_subdirectory(AlgoLabs)
 add_subdirectory(CoreLabs)
 add_subdirectory(DataLabs)
 add_subdirectory(FaceLabs)

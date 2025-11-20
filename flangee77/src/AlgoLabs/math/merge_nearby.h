@@ -1,5 +1,5 @@
-#ifndef ML7_ALGORITHM_MERGENEARBY_H
-#define ML7_ALGORITHM_MERGENEARBY_H
+#ifndef AL7_MATH_MERGENEARBY_H
+#define AL7_MATH_MERGENEARBY_H
 
 #include <CoreLabs/root.h>
 
@@ -9,7 +9,7 @@
 
 
 
-namespace ml7::algorithm {
+namespace al7::math {
 
 
 
@@ -60,6 +60,6 @@ namespace ml7::algorithm {
 
 
 
-} // namespace ml7::algorithm
+} // namespace al7::math
 
-#endif // ML7_ALGORITHM_MERGENEARBY_H
+#endif // AL7_MATH_MERGENEARBY_H

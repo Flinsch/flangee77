@@ -1,18 +1,20 @@
 #ifndef F77_TESTS_ML7_ALGORITHM_H
 #define F77_TESTS_ML7_ALGORITHM_H
 
-#include <MathLabs/algorithm/find_quadratic_roots.h>
-#include <MathLabs/algorithm/find_cubic_roots.h>
-#include <MathLabs/algorithm/find_roots_by_sign_change_and_newton.h>
-#include <MathLabs/algorithm/merge_nearby.h>
+#include <AlgoLabs/math/find_quadratic_roots.h>
+#include <AlgoLabs/math/find_cubic_roots.h>
+#include <AlgoLabs/math/find_roots_by_sign_change_and_newton.h>
+#include <AlgoLabs/math/merge_nearby.h>
+
+#include <MathLabs/functions.h>
 
 #include <TestLabs/TestSuite.h>
 
-#include "./shared.h"
+#include "../shared.h"
 
 
 
-TESTLABS_CASE( u8"MathLabs:  algorithm:  find_quadratic_roots" )
+TESTLABS_CASE( u8"AlgoLabs:  math:  find_quadratic_roots" )
 {
     struct Entry
     {
@@ -39,7 +41,7 @@ TESTLABS_CASE( u8"MathLabs:  algorithm:  find_quadratic_roots" )
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
-        const auto actual = ml7::algorithm::find_quadratic_roots( entry.a, entry.b, entry.c );
+        const auto actual = al7::math::find_quadratic_roots( entry.a, entry.b, entry.c );
 
         TESTLABS_CHECK_EQ( actual.size(), entry.expected.size() );
         for ( size_t i = 0; i < (std::min)(actual.size(), entry.expected.size()); ++i )
@@ -52,7 +54,7 @@ TESTLABS_CASE( u8"MathLabs:  algorithm:  find_quadratic_roots" )
 
 
 
-TESTLABS_CASE( u8"MathLabs:  algorithm:  find_cubic_roots" )
+TESTLABS_CASE( u8"AlgoLabs:  math:  find_cubic_roots" )
 {
     struct Entry
     {
@@ -79,7 +81,7 @@ TESTLABS_CASE( u8"MathLabs:  algorithm:  find_cubic_roots" )
 
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
-        const auto actual = ml7::algorithm::find_cubic_roots( entry.a, entry.b, entry.c, entry.d );
+        const auto actual = al7::math::find_cubic_roots( entry.a, entry.b, entry.c, entry.d );
 
         TESTLABS_CHECK_EQ( actual.size(), entry.expected.size() );
         for ( size_t i = 0; i < (std::min)(actual.size(), entry.expected.size()); ++i )
@@ -92,7 +94,7 @@ TESTLABS_CASE( u8"MathLabs:  algorithm:  find_cubic_roots" )
 
 
 
-TESTLABS_CASE( u8"MathLabs:  algorithm:  find_roots_by_sign_change_and_newton" )
+TESTLABS_CASE( u8"AlgoLabs:  math:  find_roots_by_sign_change_and_newton" )
 {
     struct Entry
     {
@@ -146,7 +148,7 @@ TESTLABS_CASE( u8"MathLabs:  algorithm:  find_roots_by_sign_change_and_newton" )
         CubicFunc f{ entry.a, entry.b, entry.c, entry.d };
         CubicFunc df{ 0.0f, 3.0f * entry.a, 2.0f * entry.b, entry.c };
 
-        const auto actual = ml7::algorithm::find_roots_by_sign_change_and_newton( f, df, -10.0f, +10.0f );
+        const auto actual = al7::math::find_roots_by_sign_change_and_newton( f, df, -10.0f, +10.0f );
 
         TESTLABS_CHECK_EQ( actual.size(), entry.expected.size() );
         for ( size_t i = 0; i < (std::min)(actual.size(), entry.expected.size()); ++i )
@@ -159,7 +161,7 @@ TESTLABS_CASE( u8"MathLabs:  algorithm:  find_roots_by_sign_change_and_newton" )
 
 
 
-TESTLABS_CASE( u8"MathLabs:  algorithm:  merge_nearby" )
+TESTLABS_CASE( u8"AlgoLabs:  math:  merge_nearby" )
 {
     struct Entry
     {
@@ -185,7 +187,7 @@ TESTLABS_CASE( u8"MathLabs:  algorithm:  merge_nearby" )
     TESTLABS_SUBCASE_BATCH( u8"", container, entry )
     {
         auto actual = entry.values;
-        ml7::algorithm::merge_nearby( actual, entry.tolerance );
+        al7::math::merge_nearby( actual, entry.tolerance );
 
         TESTLABS_CHECK( actual == entry.expected );
     }

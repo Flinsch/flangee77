@@ -2,7 +2,7 @@
 
 
 
-namespace ml7::algorithm {
+namespace al7::math {
 
 
 
@@ -11,4 +11,4 @@ namespace ml7::algorithm {
 
 
 
-} // namespace ml7::algorithm
+} // namespace al7::math

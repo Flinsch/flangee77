@@ -1,6 +1,6 @@
 #include "SimpleBitmapRasterizer.h"
 
-#include <MathLabs/algorithm/find_quadratic_roots.h>
+#include <AlgoLabs/math/find_quadratic_roots.h>
 
 
 
@@ -104,7 +104,7 @@ namespace fl7::fonts::raster {
                         const ml7::Vector2f b = 2.0f * (p1 - p0);
                         const ml7::Vector2f c = p0;
 
-                        const auto roots = ml7::algorithm::find_quadratic_roots(a.y, b.y, c.y);
+                        const auto roots = al7::math::find_quadratic_roots(a.y, b.y, c.y);
                         if (roots.empty())
                             continue;
 
