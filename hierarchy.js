@@ -25,6 +25,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "fl7::fonts::render::AbstractRenderer", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html", [
+      [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html", null ],
       [ "fl7::fonts::render::TestRenderer", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html", null ]
     ] ],
     [ "fl7::fonts::Font::Access", "d0/d7e/classfl7_1_1fonts_1_1Font_1_1Access.html", null ],

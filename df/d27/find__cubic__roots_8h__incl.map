@@ -1,43 +1,42 @@
-<map id="MathLabs/algorithm/find_cubic_roots.h" name="MathLabs/algorithm/find_cubic_roots.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="477,5,629,45"/>
-<area shape="rect" id="Node000002" href="$d2/de0/find__quadratic__roots_8h.html" title=" " alt="" coords="403,93,578,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="540,47,511,84,507,81,536,44"/>
-<area shape="rect" id="Node000003" href="$d9/dee/static__vector_8h.html" title=" " alt="" coords="344,167,525,192"/>
-<area shape="poly" id="edge19_Node000001_Node000003" title=" " alt="" coords="478,41,430,61,410,76,393,95,388,110,392,125,413,156,409,159,387,128,383,109,388,92,406,72,428,56,476,36"/>
-<area shape="rect" id="Node000015" title=" " alt="" coords="550,167,613,192"/>
-<area shape="poly" id="edge20_Node000001_Node000015" title=" " alt="" coords="569,44,582,67,592,93,595,124,591,153,585,153,589,124,587,94,577,69,564,47"/>
-<area shape="rect" id="Node000016" title=" " alt="" coords="637,167,696,192"/>
-<area shape="poly" id="edge21_Node000001_Node000016" title=" " alt="" coords="573,44,613,92,654,153,650,156,609,95,569,47"/>
-<area shape="rect" id="Node000017" href="$d2/d6f/constants_8h.html" title=" " alt="" coords="127,93,291,119"/>
-<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="478,47,273,93,272,88,476,41"/>
-<area shape="rect" id="Node000019" title=" " alt="" coords="704,93,789,119"/>
-<area shape="poly" id="edge22_Node000001_Node000019" title=" " alt="" coords="601,43,707,86,705,91,599,48"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="484,121,454,157,450,154,479,117"/>
-<area shape="poly" id="edge14_Node000002_Node000015" title=" " alt="" coords="507,117,557,156,554,160,504,121"/>
-<area shape="poly" id="edge15_Node000002_Node000016" title=" " alt="" coords="520,116,626,159,624,164,518,121"/>
-<area shape="rect" id="Node000004" href="$da/d59/iterators_8h.html" title=" " alt="" coords="358,240,511,265"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="437,192,437,226,432,226,432,192"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="536,240,592,265"/>
-<area shape="poly" id="edge11_Node000003_Node000012" title=" " alt="" coords="457,190,532,231,529,235,454,194"/>
-<area shape="rect" id="Node000013" title=" " alt="" coords="617,240,727,265"/>
-<area shape="poly" id="edge12_Node000003_Node000013" title=" " alt="" coords="474,189,621,233,620,239,472,195"/>
-<area shape="rect" id="Node000014" title=" " alt="" coords="247,240,334,265"/>
-<area shape="poly" id="edge13_Node000003_Node000014" title=" " alt="" coords="413,194,328,236,325,231,410,190"/>
-<area shape="rect" id="Node000005" href="$de/d99/root_8h.html" title=" " alt="" coords="202,313,326,339"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="408,268,305,310,303,306,406,263"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="403,313,466,339"/>
-<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="437,266,437,300,432,300,432,266"/>
+<map id="AlgoLabs/math/find_cubic_roots.h" name="AlgoLabs/math/find_cubic_roots.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="721,5,868,45"/>
+<area shape="rect" id="Node000002" href="$d2/de0/find__quadratic__roots_8h.html" title=" " alt="" coords="557,93,731,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="760,48,680,89,677,84,757,43"/>
+<area shape="rect" id="Node000003" href="$d9/dee/static__vector_8h.html" title=" " alt="" coords="463,167,644,192"/>
+<area shape="poly" id="edge17_Node000001_Node000003" title=" " alt="" coords="721,39,617,61,573,76,546,95,540,108,538,123,545,153,540,154,533,123,535,107,542,92,570,72,615,56,720,34"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="686,167,749,192"/>
+<area shape="poly" id="edge18_Node000001_Node000016" title=" " alt="" coords="787,47,732,155,727,153,782,45"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="781,167,840,192"/>
+<area shape="poly" id="edge19_Node000001_Node000017" title=" " alt="" coords="799,46,811,153,805,153,794,46"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="858,93,937,119"/>
+<area shape="poly" id="edge20_Node000001_Node000018" title=" " alt="" coords="821,43,873,83,870,87,818,48"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="961,93,1047,119"/>
+<area shape="poly" id="edge21_Node000001_Node000019" title=" " alt="" coords="846,43,961,86,959,91,844,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="631,121,581,160,577,156,628,117"/>
+<area shape="poly" id="edge15_Node000002_Node000016" title=" " alt="" coords="658,117,697,155,694,159,654,121"/>
+<area shape="poly" id="edge16_Node000002_Node000017" title=" " alt="" coords="672,116,772,159,770,164,670,121"/>
+<area shape="rect" id="Node000004" href="$da/d59/iterators_8h.html" title=" " alt="" coords="294,240,447,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="525,195,414,237,412,232,523,190"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="472,240,528,265"/>
+<area shape="poly" id="edge12_Node000003_Node000013" title=" " alt="" coords="547,194,519,231,515,228,542,191"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="553,240,663,265"/>
+<area shape="poly" id="edge13_Node000003_Node000014" title=" " alt="" coords="564,191,593,228,589,231,560,194"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="687,240,774,265"/>
+<area shape="poly" id="edge14_Node000003_Node000015" title=" " alt="" coords="583,190,690,232,688,237,581,194"/>
+<area shape="rect" id="Node000005" href="$de/d99/root_8h.html" title=" " alt="" coords="250,313,374,339"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="363,267,332,305,328,301,359,264"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="398,313,461,339"/>
+<area shape="poly" id="edge11_Node000004_Node000012" title=" " alt="" coords="382,264,413,301,409,305,378,267"/>
 <area shape="rect" id="Node000006" title=" " alt="" coords="5,387,107,412"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="231,341,104,385,102,380,230,336"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="272,341,111,386,110,380,270,336"/>
 <area shape="rect" id="Node000007" title=" " alt="" coords="131,387,200,412"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="250,341,194,381,191,376,247,337"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="290,341,203,383,200,378,287,336"/>
 <area shape="rect" id="Node000008" title=" " alt="" coords="224,387,304,412"/>
-<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="267,339,267,373,261,373,261,339"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="306,341,282,377,277,374,302,338"/>
 <area shape="rect" id="Node000009" title=" " alt="" coords="328,387,395,412"/>
-<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="281,337,336,376,333,380,278,341"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="322,337,348,374,343,377,318,341"/>
 <area shape="rect" id="Node000010" title=" " alt="" coords="419,387,496,412"/>
-<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="296,336,414,379,412,384,294,341"/>
-<area shape="poly" id="edge17_Node000017_Node000005" title=" " alt="" coords="213,118,219,182,226,223,237,264,253,301,248,303,232,266,221,224,214,182,207,119"/>
-<area shape="rect" id="Node000018" title=" " alt="" coords="93,167,171,192"/>
-<area shape="poly" id="edge18_Node000017_Node000018" title=" " alt="" coords="199,121,157,159,153,155,195,117"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="337,336,423,378,420,383,334,341"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="520,387,595,412"/>
+<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="352,336,507,381,506,386,351,341"/>
 </map>

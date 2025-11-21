@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>flangee77: MathLabs/algorithm/find_roots_by_sign_change_and_newton.h Source File</title>
+<title>flangee77: AlgoLabs/math/find_roots_by_sign_change_and_newton.h Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -99,8 +99,8 @@ $(document).ready(function(){initNavTree('da/de8/find__roots__by__sign__change__
   <div class="headertitle"><div class="title">find_roots_by_sign_change_and_newton.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="../../da/de8/find__roots__by__sign__change__and__newton_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef ML7_ALGORITHM_FINDROOTSBYSIGNCHANGEANDNEWTON_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define ML7_ALGORITHM_FINDROOTSBYSIGNCHANGEANDNEWTON_H</span></div>
+<a href="../../da/de8/find__roots__by__sign__change__and__newton_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef AL7_MATH_FINDROOTSBYSIGNCHANGEANDNEWTON_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define AL7_MATH_FINDROOTSBYSIGNCHANGEANDNEWTON_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="../../de/dbd/merge__nearby_8h.html">./merge_nearby.h</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
@@ -109,7 +109,7 @@ $(document).ready(function(){initNavTree('da/de8/find__roots__by__sign__change__
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../dc/dfa/namespaceml7_1_1algorithm.html">ml7::algorithm</a> {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../da/dc0/namespaceal7_1_1math.html">al7::math</a> {</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
@@ -120,20 +120,20 @@ $(document).ready(function(){initNavTree('da/de8/find__roots__by__sign__change__
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        { df(T{0}) } -&gt; std::convertible_to&lt;T&gt;;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    })</div>
 <div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="../../dc/dfa/namespaceml7_1_1algorithm.html#af7375afb642afb0c41d18abf3473ec4a">   30</a></span>    std::vector&lt;T&gt; <a class="code hl_function" href="../../dc/dfa/namespaceml7_1_1algorithm.html#af7375afb642afb0c41d18abf3473ec4a">find_roots_by_sign_change_and_newton</a>(<span class="keyword">const</span> Tfunction&amp; f, <span class="keyword">const</span> Tderivative&amp; df, T lower_bound, T upper_bound, <span class="keywordtype">unsigned</span> subdivisions = 1000, <span class="keywordtype">unsigned</span> max_iterations = 20, T convergence_tolerance = T{1e-5}, T merge_tolerance = T{1e-5})</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="../../da/dc0/namespaceal7_1_1math.html#a93b56df78d760219aeb4886ff7f1468c">   30</a></span>    std::vector&lt;T&gt; <a class="code hl_function" href="../../da/dc0/namespaceal7_1_1math.html#a93b56df78d760219aeb4886ff7f1468c">find_roots_by_sign_change_and_newton</a>(<span class="keyword">const</span> Tfunction&amp; f, <span class="keyword">const</span> Tderivative&amp; df, T lower_bound, T upper_bound, <span class="keywordtype">unsigned</span> subdivisions = 1000, <span class="keywordtype">unsigned</span> max_iterations = 20, T convergence_tolerance = T{1e-5}, T merge_tolerance = T{1e-5})</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        std::vector&lt;T&gt; roots;</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordflow">if</span> (upper_bound &lt;= lower_bound || subdivisions == 0)</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <span class="keywordflow">return</span> roots;</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">const</span> T <a class="code hl_function" href="../../d3/d53/namespaceml7.html#aba991d5201624ca3766135e88f9847f2">step</a> = (upper_bound - lower_bound) / <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(subdivisions);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">const</span> T step = (upper_bound - lower_bound) / <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(subdivisions);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="comment">// Step 1: Sign change detection</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> k = 0; k &lt; subdivisions; ++k)</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keyword">const</span> T x0 = lower_bound + <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(k) * <a class="code hl_function" href="../../d3/d53/namespaceml7.html#aba991d5201624ca3766135e88f9847f2">step</a>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keyword">const</span> T x1 = x0 + <a class="code hl_function" href="../../d3/d53/namespaceml7.html#aba991d5201624ca3766135e88f9847f2">step</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keyword">const</span> T x0 = lower_bound + <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(k) * step;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keyword">const</span> T x1 = x0 + step;</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keyword">const</span> T f0 = f(x0);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keyword">const</span> T f1 = f(x1);</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
@@ -152,7 +152,7 @@ $(document).ready(function(){initNavTree('da/de8/find__roots__by__sign__change__
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                <span class="comment">// b = y1 - a * x1</span></div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <span class="comment">// x = -b / a</span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                <span class="comment">//   = x1 - y1 * (x2 - x1) / (y2 - y1)</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                x = x0 - f0 * <a class="code hl_function" href="../../d3/d53/namespaceml7.html#aba991d5201624ca3766135e88f9847f2">step</a> / (f1 - f0);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                x = x0 - f0 * step / (f1 - f0);</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                <span class="comment">// It&#39;s actually not that much more expensive and is definitely</span></div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                <span class="comment">// worth the increased (starting) precision we get from it.</span></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            }</div>
@@ -214,7 +214,7 @@ $(document).ready(function(){initNavTree('da/de8/find__roots__by__sign__change__
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        } <span class="comment">// for each subdivision</span></div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="comment">// Merge nearby roots.</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <a class="code hl_function" href="../../dc/dfa/namespaceml7_1_1algorithm.html#a57832a5eb567e73211df025d28214218">merge_nearby</a>(roots, merge_tolerance);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <a class="code hl_function" href="../../da/dc0/namespaceal7_1_1math.html#aa381080d5eb53b71206076e7fdc024f8">merge_nearby</a>(roots, merge_tolerance);</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordflow">return</span> roots;</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    }</div>
@@ -222,20 +222,19 @@ $(document).ready(function(){initNavTree('da/de8/find__roots__by__sign__change__
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>} <span class="comment">// namespace ml7::algorithm</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>} <span class="comment">// namespace al7::math</span></div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="preprocessor">#endif </span><span class="comment">// ML7_ALGORITHM_FINDROOTSBYSIGNCHANGEANDNEWTON_H</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="preprocessor">#endif </span><span class="comment">// AL7_MATH_FINDROOTSBYSIGNCHANGEANDNEWTON_H</span></div>
 <div class="ttc" id="amerge__nearby_8h_html"><div class="ttname"><a href="../../de/dbd/merge__nearby_8h.html">merge_nearby.h</a></div></div>
-<div class="ttc" id="anamespaceml7_1_1algorithm_html"><div class="ttname"><a href="../../dc/dfa/namespaceml7_1_1algorithm.html">ml7::algorithm</a></div><div class="ttdef"><b>Definition</b> find_cubic_roots.cpp:5</div></div>
-<div class="ttc" id="anamespaceml7_1_1algorithm_html_a57832a5eb567e73211df025d28214218"><div class="ttname"><a href="../../dc/dfa/namespaceml7_1_1algorithm.html#a57832a5eb567e73211df025d28214218">ml7::algorithm::merge_nearby</a></div><div class="ttdeci">template void merge_nearby(std::vector&lt; float &gt; &amp;values, float tolerance)</div></div>
-<div class="ttc" id="anamespaceml7_1_1algorithm_html_af7375afb642afb0c41d18abf3473ec4a"><div class="ttname"><a href="../../dc/dfa/namespaceml7_1_1algorithm.html#af7375afb642afb0c41d18abf3473ec4a">ml7::algorithm::find_roots_by_sign_change_and_newton</a></div><div class="ttdeci">std::vector&lt; T &gt; find_roots_by_sign_change_and_newton(const Tfunction &amp;f, const Tderivative &amp;df, T lower_bound, T upper_bound, unsigned subdivisions=1000, unsigned max_iterations=20, T convergence_tolerance=T{1e-5}, T merge_tolerance=T{1e-5})</div><div class="ttdef"><b>Definition</b> find_roots_by_sign_change_and_newton.h:30</div></div>
-<div class="ttc" id="anamespaceml7_html_aba991d5201624ca3766135e88f9847f2"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#aba991d5201624ca3766135e88f9847f2">ml7::step</a></div><div class="ttdeci">constexpr T step(T x, T edge)</div><div class="ttdef"><b>Definition</b> functions.h:140</div></div>
+<div class="ttc" id="anamespaceal7_1_1math_html"><div class="ttname"><a href="../../da/dc0/namespaceal7_1_1math.html">al7::math</a></div><div class="ttdef"><b>Definition</b> find_cubic_roots.cpp:5</div></div>
+<div class="ttc" id="anamespaceal7_1_1math_html_a93b56df78d760219aeb4886ff7f1468c"><div class="ttname"><a href="../../da/dc0/namespaceal7_1_1math.html#a93b56df78d760219aeb4886ff7f1468c">al7::math::find_roots_by_sign_change_and_newton</a></div><div class="ttdeci">std::vector&lt; T &gt; find_roots_by_sign_change_and_newton(const Tfunction &amp;f, const Tderivative &amp;df, T lower_bound, T upper_bound, unsigned subdivisions=1000, unsigned max_iterations=20, T convergence_tolerance=T{1e-5}, T merge_tolerance=T{1e-5})</div><div class="ttdef"><b>Definition</b> find_roots_by_sign_change_and_newton.h:30</div></div>
+<div class="ttc" id="anamespaceal7_1_1math_html_aa381080d5eb53b71206076e7fdc024f8"><div class="ttname"><a href="../../da/dc0/namespaceal7_1_1math.html#aa381080d5eb53b71206076e7fdc024f8">al7::math::merge_nearby</a></div><div class="ttdeci">template void merge_nearby(std::vector&lt; float &gt; &amp;values, float tolerance)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_c415e32e516c7066035fc9a112f4378f.html">MathLabs</a></li><li class="navelem"><a class="el" href="../../dir_f75bf94728de0ecc25de706e4c2477f5.html">algorithm</a></li><li class="navelem"><a class="el" href="../../da/de8/find__roots__by__sign__change__and__newton_8h.html">find_roots_by_sign_change_and_newton.h</a></li>
+    <li class="navelem"><a class="el" href="../../dir_2f9802c791ddce92bf7c8467964f7bb7.html">AlgoLabs</a></li><li class="navelem"><a class="el" href="../../dir_bda1bb2a975872a50e47a03fc3d6132c.html">math</a></li><li class="navelem"><a class="el" href="../../da/de8/find__roots__by__sign__change__and__newton_8h.html">find_roots_by_sign_change_and_newton.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

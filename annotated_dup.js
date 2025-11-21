@@ -253,6 +253,7 @@ var annotated_dup =
         ] ],
         [ "render", "dd/d80/namespacefl7_1_1fonts_1_1render.html", [
           [ "AbstractRenderer", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer" ],
+          [ "AbstractTextureAtlasBasedRenderer", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer" ],
           [ "TestRenderer", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer" ]
         ] ],
         [ "BoundingBox", "dc/d05/structfl7_1_1fonts_1_1BoundingBox.html", "dc/d05/structfl7_1_1fonts_1_1BoundingBox" ],

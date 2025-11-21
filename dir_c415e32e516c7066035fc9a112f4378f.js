@@ -1,6 +1,5 @@
 var dir_c415e32e516c7066035fc9a112f4378f =
 [
-    [ "algorithm", "dir_f75bf94728de0ecc25de706e4c2477f5.html", "dir_f75bf94728de0ecc25de706e4c2477f5" ],
     [ "detail", "dir_4a09a306997223c6be01d0fb8f511332.html", "dir_4a09a306997223c6be01d0fb8f511332" ],
     [ "Angle.h", "d0/d53/Angle_8h.html", "d0/d53/Angle_8h" ],
     [ "constants.h", "d2/d6f/constants_8h.html", "d2/d6f/constants_8h" ],

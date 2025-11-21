@@ -1,31 +1,33 @@
-<map id="MathLabs/algorithm/find_quadratic_roots.h" name="MathLabs/algorithm/find_quadratic_roots.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="567,5,737,45"/>
-<area shape="rect" id="Node000002" href="$d9/dee/static__vector_8h.html" title=" " alt="" coords="415,93,596,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="618,48,540,89,538,84,616,43"/>
-<area shape="rect" id="Node000014" title=" " alt="" coords="621,93,683,119"/>
-<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="655,46,655,79,649,79,649,46"/>
-<area shape="rect" id="Node000015" title=" " alt="" coords="708,93,767,119"/>
-<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="674,44,716,82,713,86,671,48"/>
-<area shape="rect" id="Node000003" href="$da/d59/iterators_8h.html" title=" " alt="" coords="246,167,399,192"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="477,121,366,164,364,159,475,116"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="424,167,480,192"/>
-<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="499,121,471,157,467,154,494,117"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="505,167,615,192"/>
-<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="516,117,545,154,541,157,512,121"/>
-<area shape="rect" id="Node000013" title=" " alt="" coords="639,167,726,192"/>
-<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="535,116,642,159,640,164,533,121"/>
-<area shape="rect" id="Node000004" href="$de/d99/root_8h.html" title=" " alt="" coords="202,240,326,265"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="315,194,284,231,280,228,311,191"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="350,240,413,265"/>
-<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="334,191,365,228,361,231,330,194"/>
+<map id="AlgoLabs/math/find_quadratic_roots.h" name="AlgoLabs/math/find_quadratic_roots.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="627,5,773,45"/>
+<area shape="rect" id="Node000002" href="$d9/dee/static__vector_8h.html" title=" " alt="" coords="463,93,644,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="666,48,588,89,586,84,664,43"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="669,93,731,119"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="703,46,703,79,697,79,697,46"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="756,93,815,119"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="722,44,764,82,761,86,719,48"/>
+<area shape="rect" id="Node000003" href="$da/d59/iterators_8h.html" title=" " alt="" coords="294,167,447,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="525,121,414,164,412,159,523,116"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="472,167,528,192"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="547,121,519,157,515,154,542,117"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="553,167,663,192"/>
+<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="564,117,593,154,589,157,560,121"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="687,167,774,192"/>
+<area shape="poly" id="edge13_Node000002_Node000014" title=" " alt="" coords="583,116,690,159,688,164,581,121"/>
+<area shape="rect" id="Node000004" href="$de/d99/root_8h.html" title=" " alt="" coords="250,240,374,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="363,194,332,231,328,228,359,191"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="398,240,461,265"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="382,191,413,228,409,231,378,194"/>
 <area shape="rect" id="Node000005" title=" " alt="" coords="5,313,107,339"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="231,268,104,311,102,306,230,263"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="272,268,111,312,110,307,270,263"/>
 <area shape="rect" id="Node000006" title=" " alt="" coords="131,313,200,339"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="250,268,194,307,191,303,247,263"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="290,268,203,310,200,305,287,263"/>
 <area shape="rect" id="Node000007" title=" " alt="" coords="224,313,304,339"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="267,266,267,300,261,300,261,266"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="306,267,282,304,277,301,302,264"/>
 <area shape="rect" id="Node000008" title=" " alt="" coords="328,313,395,339"/>
-<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="281,263,336,303,333,307,278,268"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="322,264,348,301,343,304,318,267"/>
 <area shape="rect" id="Node000009" title=" " alt="" coords="419,313,496,339"/>
-<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="296,263,414,306,412,311,294,268"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="337,263,423,305,420,310,334,268"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="520,313,595,339"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="352,263,507,308,506,313,351,268"/>
 </map>

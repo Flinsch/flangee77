@@ -1,5 +1,6 @@
 var files_dup =
 [
+    [ "AlgoLabs", "dir_2f9802c791ddce92bf7c8467964f7bb7.html", "dir_2f9802c791ddce92bf7c8467964f7bb7" ],
     [ "CoreLabs", "dir_c08fb4251456ac15da27f1739991873e.html", "dir_c08fb4251456ac15da27f1739991873e" ],
     [ "DataLabs", "dir_779d08fee714fafabe694a8f28adb1d4.html", "dir_779d08fee714fafabe694a8f28adb1d4" ],
     [ "FaceLabs", "dir_d8747eaf6add0c9297678076dcff858d.html", "dir_d8747eaf6add0c9297678076dcff858d" ],

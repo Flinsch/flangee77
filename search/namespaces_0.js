@@ -1,24 +1,5 @@
 var searchData=
 [
-  ['cl7_0',['cl7',['../d1/d2e/namespacecl7.html',1,'']]],
-  ['cl7_3a_3abits_1',['bits',['../d9/df1/namespacecl7_1_1bits.html',1,'cl7']]],
-  ['cl7_3a_3abits_3a_3adetail_2',['detail',['../d5/d0f/namespacecl7_1_1bits_1_1detail.html',1,'cl7::bits']]],
-  ['cl7_3a_3acreational_3',['creational',['../da/df3/namespacecl7_1_1creational.html',1,'cl7']]],
-  ['cl7_3a_3adetail_4',['detail',['../d2/da9/namespacecl7_1_1detail.html',1,'cl7']]],
-  ['cl7_3a_3aio_5',['io',['../d6/dc7/namespacecl7_1_1io.html',1,'cl7']]],
-  ['cl7_3a_3alogging_6',['logging',['../df/de5/namespacecl7_1_1logging.html',1,'cl7']]],
-  ['cl7_3a_3amemory_7',['memory',['../df/db2/namespacecl7_1_1memory.html',1,'cl7']]],
-  ['cl7_3a_3aplatform_8',['platform',['../dd/d60/namespacecl7_1_1platform.html',1,'cl7']]],
-  ['cl7_3a_3aplatform_3a_3aerrors_9',['errors',['../d4/d9d/namespacecl7_1_1platform_1_1errors.html',1,'cl7::platform']]],
-  ['cl7_3a_3aplatform_3a_3afilesystem_10',['filesystem',['../d4/dc0/namespacecl7_1_1platform_1_1filesystem.html',1,'cl7::platform']]],
-  ['cl7_3a_3aplatform_3a_3amemory_11',['memory',['../d2/dba/namespacecl7_1_1platform_1_1memory.html',1,'cl7::platform']]],
-  ['cl7_3a_3aplatform_3a_3auser_12',['user',['../da/dfc/namespacecl7_1_1platform_1_1user.html',1,'cl7::platform']]],
-  ['cl7_3a_3aprofiling_13',['profiling',['../d8/d9a/namespacecl7_1_1profiling.html',1,'cl7']]],
-  ['cl7_3a_3asystem_14',['system',['../dc/df8/namespacecl7_1_1system.html',1,'cl7']]],
-  ['cl7_3a_3atext_15',['text',['../d0/d10/namespacecl7_1_1text.html',1,'cl7']]],
-  ['cl7_3a_3atext_3a_3acodec_16',['codec',['../da/d47/namespacecl7_1_1text_1_1codec.html',1,'cl7::text']]],
-  ['cl7_3a_3atext_3a_3aformat_17',['format',['../df/d89/namespacecl7_1_1text_1_1format.html',1,'cl7::text']]],
-  ['cl7_3a_3atext_3a_3ainspect_18',['inspect',['../d5/df5/namespacecl7_1_1text_1_1inspect.html',1,'cl7::text']]],
-  ['cl7_3a_3atext_3a_3ametrics_19',['metrics',['../d5/dcc/namespacecl7_1_1text_1_1metrics.html',1,'cl7::text']]],
-  ['cl7_3a_3atext_3a_3atransform_20',['transform',['../de/d31/namespacecl7_1_1text_1_1transform.html',1,'cl7::text']]]
+  ['al7_0',['al7',['../d0/d95/namespaceal7.html',1,'']]],
+  ['al7_3a_3amath_1',['math',['../da/dc0/namespaceal7_1_1math.html',1,'al7']]]
 ];

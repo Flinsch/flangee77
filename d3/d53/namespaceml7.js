@@ -1,17 +1,5 @@
 var namespaceml7 =
 [
-    [ "algorithm", "dc/dfa/namespaceml7_1_1algorithm.html", [
-      [ "find_cubic_roots", "dc/dfa/namespaceml7_1_1algorithm.html#af1f86b5ced9c7ec09a20199d34b8d085", null ],
-      [ "find_cubic_roots", "dc/dfa/namespaceml7_1_1algorithm.html#acc9b8b0ebcbc11238e452ebf12050833", null ],
-      [ "find_cubic_roots", "dc/dfa/namespaceml7_1_1algorithm.html#a241596093652a285e9d2b17a93af44cd", null ],
-      [ "find_quadratic_roots", "dc/dfa/namespaceml7_1_1algorithm.html#aa06a85536a27b03535957b697b6e27b5", null ],
-      [ "find_quadratic_roots", "dc/dfa/namespaceml7_1_1algorithm.html#a7df32cacecf06d4d61a3bd22e5c2b02c", null ],
-      [ "find_quadratic_roots", "dc/dfa/namespaceml7_1_1algorithm.html#af427aa6b4b7b8a1af5c206a2e221e5c8", null ],
-      [ "find_roots_by_sign_change_and_newton", "dc/dfa/namespaceml7_1_1algorithm.html#af7375afb642afb0c41d18abf3473ec4a", null ],
-      [ "merge_nearby", "dc/dfa/namespaceml7_1_1algorithm.html#abc3d07a05d43fbb492907cfed9f9fc71", null ],
-      [ "merge_nearby", "dc/dfa/namespaceml7_1_1algorithm.html#a57832a5eb567e73211df025d28214218", null ],
-      [ "merge_nearby", "dc/dfa/namespaceml7_1_1algorithm.html#af9a47dc47eca878fe99fcec11ba9e3da", null ]
-    ] ],
     [ "detail", "df/d63/namespaceml7_1_1detail.html", "df/d63/namespaceml7_1_1detail" ],
     [ "distance2", "db/d4f/namespaceml7_1_1distance2.html", "db/d4f/namespaceml7_1_1distance2" ],
     [ "distance3", "df/d0a/namespaceml7_1_1distance3.html", "df/d0a/namespaceml7_1_1distance3" ],
