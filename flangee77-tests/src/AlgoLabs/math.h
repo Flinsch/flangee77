@@ -1,5 +1,5 @@
-#ifndef F77_TESTS_ML7_ALGORITHM_H
-#define F77_TESTS_ML7_ALGORITHM_H
+#ifndef F77_TESTS_AL7_MATH_H
+#define F77_TESTS_AL7_MATH_H
 
 #include <AlgoLabs/math/find_quadratic_roots.h>
 #include <AlgoLabs/math/find_cubic_roots.h>
@@ -195,4 +195,4 @@ TESTLABS_CASE( u8"AlgoLabs:  math:  merge_nearby" )
 
 
 
-#endif // F77_TESTS_ML7_ALGORITHM_H
+#endif // F77_TESTS_AL7_MATH_H
