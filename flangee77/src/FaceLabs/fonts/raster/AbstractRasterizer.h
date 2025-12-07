@@ -50,7 +50,7 @@ public:
     /**
      * Returns the pixel format of this rasterizer's output images.
      */
-    xl7::graphics::PixelFormat get_pixel_format() const { return _pixel_format; };
+    xl7::graphics::PixelFormat get_pixel_format() const { return _pixel_format; }
 
     /**
      * Returns the channel order of this rasterizer's output images (defaults to RGBA).

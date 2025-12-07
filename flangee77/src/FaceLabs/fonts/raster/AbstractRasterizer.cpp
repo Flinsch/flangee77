@@ -6,7 +6,7 @@ namespace fl7::fonts::raster {
 
 
 
-/**
+    /**
      * Constructs an abstract rasterizer with the specified pixel format for the
      * output images and an (optional) channel order (which defaults to RGBA).
      */
