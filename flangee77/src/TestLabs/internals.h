@@ -1,6 +1,8 @@
 #ifndef TL7_INTERNALS_H
 #define TL7_INTERNALS_H
 
+#include <MathLabs/functions.h>
+
 #include <CoreLabs/string.h>
 
 #include <cfloat>
