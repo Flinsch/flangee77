@@ -3,6 +3,13 @@
 #include <CoreLabs/logging.h>
 
 #include "./AlgoLabs/math.h"
+#include "./AlgoLabs/packing/Rect.h"
+#include "./AlgoLabs/packing/AbstractRectPacker.h"
+#include "./AlgoLabs/packing/NaiveRowPacker.h"
+#include "./AlgoLabs/packing/MaxRectsPacker.h"
+#include "./AlgoLabs/packing/ShelfPacker.h"
+#include "./AlgoLabs/packing/SkylinePacker.h"
+#include "./AlgoLabs/packing/GuillotinePacker.h"
 
 #include "./CoreLabs/bits.h"
 #include "./CoreLabs/bytes.h"
