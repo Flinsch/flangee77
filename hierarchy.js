@@ -255,6 +255,7 @@ var hierarchy =
     ] ],
     [ "xl7::graphics::images::Image", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html", null ],
     [ "xl7::graphics::images::ImageHandler", "df/d4a/classxl7_1_1graphics_1_1images_1_1ImageHandler.html", [
+      [ "xl7::graphics::images::NetpbmImageHandler", "de/d6b/classxl7_1_1graphics_1_1images_1_1NetpbmImageHandler.html", null ],
       [ "xl7::graphics::images::PngImageHandler", "da/d30/classxl7_1_1graphics_1_1images_1_1PngImageHandler.html", null ],
       [ "xl7::graphics::images::TargaImageHandler", "d1/d01/classxl7_1_1graphics_1_1images_1_1TargaImageHandler.html", null ]
     ] ],

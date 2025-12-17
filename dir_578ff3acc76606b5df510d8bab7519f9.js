@@ -12,6 +12,8 @@ var dir_578ff3acc76606b5df510d8bab7519f9 =
     [ "ImageResizer.h", "d6/d1f/ImageResizer_8h.html", "d6/d1f/ImageResizer_8h" ],
     [ "ImageStack.cpp", "d8/d4c/ImageStack_8cpp.html", null ],
     [ "ImageStack.h", "d0/d8f/ImageStack_8h.html", "d0/d8f/ImageStack_8h" ],
+    [ "NetpbmImageHandler.cpp", "dd/d65/NetpbmImageHandler_8cpp.html", null ],
+    [ "NetpbmImageHandler.h", "d3/dd4/NetpbmImageHandler_8h.html", "d3/dd4/NetpbmImageHandler_8h" ],
     [ "PngImageHandler.cpp", "d3/d14/PngImageHandler_8cpp.html", null ],
     [ "PngImageHandler.h", "d9/d64/PngImageHandler_8h.html", "d9/d64/PngImageHandler_8h" ],
     [ "ResamplingMethod.h", "df/dcb/ResamplingMethod_8h.html", "df/dcb/ResamplingMethod_8h" ],

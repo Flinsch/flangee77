@@ -368,6 +368,7 @@ var annotated_dup =
           [ "ImageProcessor", "d1/d92/structxl7_1_1graphics_1_1images_1_1ImageProcessor.html", "d1/d92/structxl7_1_1graphics_1_1images_1_1ImageProcessor" ],
           [ "ImageResizer", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer.html", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer" ],
           [ "ImageStack", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack.html", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack" ],
+          [ "NetpbmImageHandler", "de/d6b/classxl7_1_1graphics_1_1images_1_1NetpbmImageHandler.html", "de/d6b/classxl7_1_1graphics_1_1images_1_1NetpbmImageHandler" ],
           [ "PngImageHandler", "da/d30/classxl7_1_1graphics_1_1images_1_1PngImageHandler.html", "da/d30/classxl7_1_1graphics_1_1images_1_1PngImageHandler" ],
           [ "TargaImageHandler", "d1/d01/classxl7_1_1graphics_1_1images_1_1TargaImageHandler.html", "d1/d01/classxl7_1_1graphics_1_1images_1_1TargaImageHandler" ]
         ] ],
