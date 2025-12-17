@@ -79,6 +79,7 @@ namespace xl7::graphics::images {
      */
     bool TargaImageHandler::_load_uncompressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
     {
+        assert(header.image_type == 2);
         assert(data.size() == desc.calculate_data_size());
 
         if (readable.read(data) != data.size())
@@ -92,6 +93,7 @@ namespace xl7::graphics::images {
      */
     bool TargaImageHandler::_load_compressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
     {
+        assert(header.image_type == 10);
         assert(data.size() == desc.calculate_data_size());
 
         const auto bytes_per_pixel = static_cast<size_t>(desc.determine_pixel_stride());

@@ -6,6 +6,8 @@
 #include <XiaoLabs/graphics.h>
     #include <XiaoLabs/graphics/images/TargaImageHandler.h>
     #include <XiaoLabs/graphics/images/PngImageHandler.h>
+    #include <XiaoLabs/graphics/images/NetpbmImageHandler.h>
+    #include <XiaoLabs/graphics/images/ImageConverter.h>
 
 #include <MathLabs/math.h>
 
@@ -131,10 +133,18 @@ namespace helloworld {
         xl7::graphics::images::Image image;
         xl7::graphics::images::TargaImageHandler targa_image_handler;
         xl7::graphics::images::PngImageHandler png_image_handler;
+        xl7::graphics::images::NetpbmImageHandler netpbm_image_handler;
         targa_image_handler.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy.tga", image);
-        //targa_image_handler.load_from_file(cl7::filesystem::get_working_directory() + u8"assets/gfx/dummy-compressed.tga", image);
-        //png_image_handler.load_from_file(cl7::filesystem::get_working_directory() + u8"assets/gfx/dummy.png", image);
-        //png_image_handler.load_from_file(cl7::filesystem::get_working_directory() + u8"assets/gfx/dummy-indexed.png", image);
+        //targa_image_handler.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy-compressed.tga", image);
+        //png_image_handler.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy.png", image);
+        //png_image_handler.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy-indexed.png", image);
+        //netpbm_image_handler.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy-p1.pbm", image);
+        //netpbm_image_handler.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy-p2.pgm", image);
+        //netpbm_image_handler.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy-p3.ppm", image);
+        //netpbm_image_handler.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy-p4.pbm", image);
+        //netpbm_image_handler.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy-p5.pgm", image);
+        //netpbm_image_handler.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy-p6.ppm", image);
+        //netpbm_image_handler.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy-p7.pam", image);
 
         xl7::graphics::textures::Texture2D::Desc texture_desc{
             xl7::resources::ResourceUsage::Immutable,
@@ -147,7 +157,8 @@ namespace helloworld {
 
         xl7::graphics::states::SamplerState::Desc sampler_desc;
 
-        xl7::graphics::textures::ImageDataProvider image_data_provider{&image};
+        auto texture_image = xl7::graphics::images::ImageConverter::convert_image(image, texture_desc.pixel_format, texture_desc.preferred_channel_order);
+        xl7::graphics::textures::ImageDataProvider image_data_provider{&texture_image};
 
         _texture_id = xl7::graphics::texture_manager()->create_texture_2d(u8"My Texture", texture_desc, image_data_provider);
         _sampler_state_id = xl7::graphics::state_manager()->ensure_sampler_state(sampler_desc);
