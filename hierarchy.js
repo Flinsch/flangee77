@@ -24,6 +24,15 @@ var hierarchy =
         [ "fl7::fonts::raster::SimpleBitmapRasterizer", "d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html", null ]
       ] ]
     ] ],
+    [ "al7::packing::AbstractRectPacker", "d2/d09/classal7_1_1packing_1_1AbstractRectPacker.html", [
+      [ "al7::packing::AbstractFreeRectPacker", "da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html", [
+        [ "al7::packing::GuillotinePacker", "de/da8/classal7_1_1packing_1_1GuillotinePacker.html", null ],
+        [ "al7::packing::MaxRectsPacker", "de/d15/classal7_1_1packing_1_1MaxRectsPacker.html", null ]
+      ] ],
+      [ "al7::packing::NaiveRowPacker", "d7/d31/classal7_1_1packing_1_1NaiveRowPacker.html", null ],
+      [ "al7::packing::ShelfPacker", "d4/d8c/classal7_1_1packing_1_1ShelfPacker.html", null ],
+      [ "al7::packing::SkylinePacker", "d5/db1/classal7_1_1packing_1_1SkylinePacker.html", null ]
+    ] ],
     [ "fl7::fonts::render::AbstractRenderer", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html", [
       [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html", null ],
       [ "fl7::fonts::render::TestRenderer", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html", null ]
@@ -371,11 +380,13 @@ var hierarchy =
     ] ],
     [ "xl7::graphics::PixelBitKit", "d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html", null ],
     [ "fl7::fonts::raster::PixelOffset", "d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html", null ],
+    [ "al7::packing::SkylinePacker::PlacementRange", "d3/dae/structal7_1_1packing_1_1SkylinePacker_1_1PlacementRange.html", null ],
     [ "fl7::fonts::detail::ttf::RawGlyph::Point", "dc/d77/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph_1_1Point.html", null ],
     [ "ml7::detail::distance::PointResult< TVector >", "db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html", null ],
     [ "ml7::detail::distance::PointResult_distance_squared< T >", "de/dd3/structml7_1_1detail_1_1distance_1_1PointResult__distance__squared.html", null ],
     [ "ml7::detail::distance::PointResult_point< TVector >", "d5/d92/structml7_1_1detail_1_1distance_1_1PointResult__point.html", null ],
     [ "ml7::detail::distance::PointResult_t< T >", "db/df0/structml7_1_1detail_1_1distance_1_1PointResult__t.html", null ],
+    [ "al7::packing::Position", "d3/dda/structal7_1_1packing_1_1Position.html", null ],
     [ "dl7::xml::Format::PrettyOptions", "de/dfe/structdl7_1_1xml_1_1Format_1_1PrettyOptions.html", null ],
     [ "dl7::syntax::ProductionRule", "d1/d16/structdl7_1_1syntax_1_1ProductionRule.html", null ],
     [ "dl7::syntax::ProductionRuleCollection", "dd/d0c/classdl7_1_1syntax_1_1ProductionRuleCollection.html", null ],
@@ -390,6 +401,8 @@ var hierarchy =
     [ "fl7::fonts::detail::ttf::RawGlyph", "d3/d6c/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph.html", null ],
     [ "ml7::Ray2< T >", "dc/def/structml7_1_1Ray2.html", null ],
     [ "ml7::Ray3< T >", "d3/d71/structml7_1_1Ray3.html", null ],
+    [ "al7::packing::Rect", "df/dd8/structal7_1_1packing_1_1Rect.html", null ],
+    [ "al7::packing::RectOptions", "d3/d71/structal7_1_1packing_1_1RectOptions.html", null ],
     [ "xl7::graphics::shaders::ReflectionResult", "d2/d19/structxl7_1_1graphics_1_1shaders_1_1ReflectionResult.html", null ],
     [ "xl7::graphics::impl::direct3d11::GraphicsSystemImpl::Registrar", "dc/d25/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl_1_1Registrar.html", null ],
     [ "xl7::graphics::impl::direct3d9::GraphicsSystemImpl::Registrar", "d5/d15/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl_1_1Registrar.html", null ],
@@ -493,11 +506,16 @@ var hierarchy =
     [ "cl7::profiling::Sample", "d6/d1f/structcl7_1_1profiling_1_1Sample.html", null ],
     [ "cl7::profiling::SampleHandler", "d3/dea/structcl7_1_1profiling_1_1SampleHandler.html", null ],
     [ "fl7::fonts::render::AbstractRenderer::ScopedBatch", "d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html", null ],
+    [ "al7::packing::AbstractFreeRectPacker::ScoredRect", "df/d29/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScoredRect.html", null ],
+    [ "al7::packing::SkylinePacker::ScoredRect", "d5/dc8/structal7_1_1packing_1_1SkylinePacker_1_1ScoredRect.html", null ],
+    [ "al7::packing::AbstractFreeRectPacker::ScorePair", "d4/d33/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScorePair.html", null ],
+    [ "al7::packing::SkylinePacker::ScorePair", "de/da9/structal7_1_1packing_1_1SkylinePacker_1_1ScorePair.html", null ],
     [ "dl7::ini::Section", "dc/d3a/classdl7_1_1ini_1_1Section.html", [
       [ "dl7::ini::Ini", "da/d48/classdl7_1_1ini_1_1Ini.html", null ]
     ] ],
     [ "tl7::TestSuite::Settings", "db/dbc/structtl7_1_1TestSuite_1_1Settings.html", null ],
     [ "xl7::graphics::shaders::ShaderCode", "d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html", null ],
+    [ "al7::packing::ShelfPacker::Shelf", "d5/d56/structal7_1_1packing_1_1ShelfPacker_1_1Shelf.html", null ],
     [ "tl7::Signature", "d1/d32/structtl7_1_1Signature.html", [
       [ "tl7::Meta", "dd/d81/structtl7_1_1Meta.html", null ]
     ] ],
@@ -534,6 +552,8 @@ var hierarchy =
       ] ]
     ] ],
     [ "cl7::creational::SingletonManager", "d7/dba/classcl7_1_1creational_1_1SingletonManager.html", null ],
+    [ "al7::packing::Size", "d8/d08/structal7_1_1packing_1_1Size.html", null ],
+    [ "al7::packing::SkylinePacker::SkylineLevel", "d1/da1/structal7_1_1packing_1_1SkylinePacker_1_1SkylineLevel.html", null ],
     [ "dl7::syntax::SourceContext", "d7/d8c/structdl7_1_1syntax_1_1SourceContext.html", null ],
     [ "dl7::syntax::SourceLocation", "d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html", null ],
     [ "fl7::fonts::render::AbstractRenderer::State", "d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html", null ],

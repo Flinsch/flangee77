@@ -16,7 +16,8 @@ var searchData=
   ['format_13',['format',['../d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html#a134612333e367f39fc3bf2d275f8b8a3',1,'cl7::text::format::FloatFormatOptions']]],
   ['frame_14',['frame',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a949e376a57252396a57a3a1c9ae4db09',1,'cl7::profiling::Sample']]],
   ['frame_5fusecs_15',['frame_usecs',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a916a33e56ad76b2e7995749c8a25647c',1,'cl7::profiling::Sample']]],
-  ['frequency_16',['frequency',['../d6/d24/structcl7_1_1platform_1_1CPUID.html#a2ce6bc7b3ebb36438d1b866605fc99c4',1,'cl7::platform::CPUID']]],
-  ['front_5fface_5fstenciling_17',['front_face_stenciling',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a855e90a7a23ab304acd97d23d52bf16d',1,'xl7::graphics::states::DepthStencilState::Desc']]],
-  ['function_5fname_18',['function_name',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html#a48bbea20cb7ae5c7a1c00b529ff9a7d8',1,'cl7::logging::LogEntry']]]
+  ['free_5frect_5findex_16',['free_rect_index',['../df/d29/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScoredRect.html#ab2003175483b087da4429fc8d7b9856f',1,'al7::packing::AbstractFreeRectPacker::ScoredRect']]],
+  ['frequency_17',['frequency',['../d6/d24/structcl7_1_1platform_1_1CPUID.html#a2ce6bc7b3ebb36438d1b866605fc99c4',1,'cl7::platform::CPUID']]],
+  ['front_5fface_5fstenciling_18',['front_face_stenciling',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a855e90a7a23ab304acd97d23d52bf16d',1,'xl7::graphics::states::DepthStencilState::Desc']]],
+  ['function_5fname_19',['function_name',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html#a48bbea20cb7ae5c7a1c00b529ff9a7d8',1,'cl7::logging::LogEntry']]]
 ];

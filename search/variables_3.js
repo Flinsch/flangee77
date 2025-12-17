@@ -45,6 +45,7 @@ var searchData=
   ['ct_5fpalette_5fused_42',['CT_PALETTE_USED',['../da/d30/classxl7_1_1graphics_1_1images_1_1PngImageHandler.html#a480c835a9f79b054fbcf92b25cb2e267',1,'xl7::graphics::images::PngImageHandler']]],
   ['cubemap_5fpow2_5fonly_43',['cubemap_pow2_only',['../dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a8f6a111fc0420c50a723cde76d0a9686',1,'xl7::graphics::RenderingDevice::Capabilities']]],
   ['cull_5fmode_44',['cull_mode',['../d7/d93/structxl7_1_1graphics_1_1states_1_1RasterizerState_1_1Desc.html#a4047fa725289af92a3126507bd353d1b',1,'xl7::graphics::states::RasterizerState::Desc']]],
-  ['cursor_45',['cursor',['../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#aee8119603cf3b7fb007e3067cc7e04f8',1,'fl7::fonts::render::AbstractRenderer::State']]],
-  ['cyan_46',['CYAN',['../de/df3/structxl7_1_1graphics_1_1Color.html#a65222e76b6136661008f5dd301aa51cf',1,'xl7::graphics::Color']]]
+  ['current_5fx_45',['current_x',['../d5/d56/structal7_1_1packing_1_1ShelfPacker_1_1Shelf.html#ab54e6697d56989bce56fe8fd72bad9d2',1,'al7::packing::ShelfPacker::Shelf']]],
+  ['cursor_46',['cursor',['../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#aee8119603cf3b7fb007e3067cc7e04f8',1,'fl7::fonts::render::AbstractRenderer::State']]],
+  ['cyan_47',['CYAN',['../de/df3/structxl7_1_1graphics_1_1Color.html#a65222e76b6136661008f5dd301aa51cf',1,'xl7::graphics::Color']]]
 ];

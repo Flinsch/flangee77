@@ -98,26 +98,27 @@ $(document).ready(function(){initNavTree('dd/da3/internals_8h.html','../../'); i
   <div class="headertitle"><div class="title">internals.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="../../da/d66/string_8h_source.html">CoreLabs/string.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="../../d8/d5c/functions_8h_source.html">MathLabs/functions.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../da/d66/string_8h_source.html">CoreLabs/string.h</a>&gt;</code><br />
 <code>#include &lt;cfloat&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for internals.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d95/internals_8h__incl.png" border="0" usemap="#aTestLabs_2internals_8h" alt=""/></div>
 <map name="aTestLabs_2internals_8h" id="aTestLabs_2internals_8h">
-<area shape="rect" title=" " alt="" coords="463,5,614,31"/>
-<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="411,79,546,104"/>
-<area shape="poly" title=" " alt="" coords="531,33,499,70,495,66,527,29"/>
-<area shape="rect" title=" " alt="" coords="571,79,629,104"/>
-<area shape="poly" title=" " alt="" coords="551,29,583,66,579,70,547,33"/>
+<area shape="rect" title=" " alt="" coords="353,5,503,31"/>
+<area shape="rect" href="../../d8/d5c/functions_8h.html" title=" " alt="" coords="141,79,302,104"/>
+<area shape="poly" title=" " alt="" coords="396,33,269,77,267,72,394,28"/>
+<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="361,79,495,104"/>
+<area shape="poly" title=" " alt="" coords="431,31,431,65,425,65,425,31"/>
+<area shape="rect" title=" " alt="" coords="520,79,579,104"/>
+<area shape="poly" title=" " alt="" coords="449,28,519,69,517,74,446,33"/>
 <area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="250,152,374,177"/>
-<area shape="poly" title=" " alt="" coords="453,106,353,149,351,144,451,102"/>
-<area shape="rect" title=" " alt="" coords="399,152,457,177"/>
-<area shape="poly" title=" " alt="" coords="472,106,446,142,442,139,468,103"/>
-<area shape="rect" title=" " alt="" coords="482,152,579,177"/>
-<area shape="poly" title=" " alt="" coords="489,103,516,139,512,142,485,106"/>
-<area shape="rect" title=" " alt="" coords="604,152,657,177"/>
-<area shape="poly" title=" " alt="" coords="504,102,595,144,593,149,502,106"/>
+<area shape="poly" title=" " alt="" coords="238,102,288,141,285,145,234,106"/>
+<area shape="rect" title=" " alt="" coords="61,152,123,177"/>
+<area shape="poly" title=" " alt="" coords="202,106,127,147,124,143,199,102"/>
+<area shape="rect" title=" " alt="" coords="147,152,226,177"/>
+<area shape="poly" title=" " alt="" coords="218,106,201,141,196,138,213,103"/>
 <area shape="rect" title=" " alt="" coords="5,225,107,251"/>
 <area shape="poly" title=" " alt="" coords="272,180,111,224,110,219,270,175"/>
 <area shape="rect" title=" " alt="" coords="131,225,200,251"/>
@@ -130,6 +131,13 @@ Include dependency graph for internals.h:</div>
 <area shape="poly" title=" " alt="" coords="337,175,423,217,420,222,334,180"/>
 <area shape="rect" title=" " alt="" coords="520,225,595,251"/>
 <area shape="poly" title=" " alt="" coords="352,175,507,220,506,225,351,180"/>
+<area shape="poly" title=" " alt="" coords="411,106,344,147,341,142,408,102"/>
+<area shape="rect" title=" " alt="" coords="399,152,457,177"/>
+<area shape="poly" title=" " alt="" coords="431,104,431,138,425,138,425,104"/>
+<area shape="rect" title=" " alt="" coords="482,152,579,177"/>
+<area shape="poly" title=" " alt="" coords="446,102,504,142,501,146,443,106"/>
+<area shape="rect" title=" " alt="" coords="604,152,657,177"/>
+<area shape="poly" title=" " alt="" coords="461,102,592,147,590,152,460,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -364,7 +372,7 @@ Functions</h2></td></tr>
 <div class="line">    for (<span class="keyword">auto</span> tmp = std::begin(iterable_data_container); tmp != std::end(iterable_data_container); ++tmp, ++iteration_number) \</div>
 <div class="line">        <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_class" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>&amp; subcase = <a class="code hl_class" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>(ctx, name + <a class="code hl_typedef" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>(u8<span class="stringliteral">&quot; [&quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(iteration_number) + <a class="code hl_typedef" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>(u8<span class="stringliteral">&quot;]&quot;</span>), __FILE__, __LINE__, (data = *tmp, <a class="code hl_define" href="../../dd/da3/internals_8h.html#a50fb3e5d72bacd5e7109175fa4161e67">TL7_INTERNAL_TRY_SET_SUBCASE_DATA</a>(stringifiable), iteration_number)))</div>
 <div class="ttc" id="aclasstl7_1_1SubcaseBranchSwitch_html"><div class="ttname"><a href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a></div><div class="ttdef"><b>Definition</b> SubcaseBranchSwitch.h:13</div></div>
-<div class="ttc" id="ainternals_8h_html_a50fb3e5d72bacd5e7109175fa4161e67"><div class="ttname"><a href="../../dd/da3/internals_8h.html#a50fb3e5d72bacd5e7109175fa4161e67">TL7_INTERNAL_TRY_SET_SUBCASE_DATA</a></div><div class="ttdeci">#define TL7_INTERNAL_TRY_SET_SUBCASE_DATA(stringifiable)</div><div class="ttdef"><b>Definition</b> internals.h:36</div></div>
+<div class="ttc" id="ainternals_8h_html_a50fb3e5d72bacd5e7109175fa4161e67"><div class="ttname"><a href="../../dd/da3/internals_8h.html#a50fb3e5d72bacd5e7109175fa4161e67">TL7_INTERNAL_TRY_SET_SUBCASE_DATA</a></div><div class="ttdeci">#define TL7_INTERNAL_TRY_SET_SUBCASE_DATA(stringifiable)</div><div class="ttdef"><b>Definition</b> internals.h:38</div></div>
 <div class="ttc" id="anamespacecl7_html_a56c82ebac73d775d95e0932d54ff12c3"><div class="ttname"><a href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a></div><div class="ttdeci">std::basic_string&lt; u8char_t &gt; u8string</div><div class="ttdef"><b>Definition</b> string.h:31</div></div>
 <div class="ttc" id="anamespacetl7_1_1internals_html_ac0044d195479eda0dce5ff1921ea0f38"><div class="ttname"><a href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a></div><div class="ttdeci">cl7::u8string to_string(const std::nullptr_t &amp;null)</div><div class="ttdef"><b>Definition</b> internals.cpp:13</div></div>
 </div><!-- fragment -->

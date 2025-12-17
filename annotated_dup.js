@@ -1,5 +1,20 @@
 var annotated_dup =
 [
+    [ "al7", "d0/d95/namespaceal7.html", [
+      [ "packing", "d0/d9f/namespaceal7_1_1packing.html", [
+        [ "AbstractFreeRectPacker", "da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html", "da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker" ],
+        [ "AbstractRectPacker", "d2/d09/classal7_1_1packing_1_1AbstractRectPacker.html", "d2/d09/classal7_1_1packing_1_1AbstractRectPacker" ],
+        [ "GuillotinePacker", "de/da8/classal7_1_1packing_1_1GuillotinePacker.html", "de/da8/classal7_1_1packing_1_1GuillotinePacker" ],
+        [ "MaxRectsPacker", "de/d15/classal7_1_1packing_1_1MaxRectsPacker.html", "de/d15/classal7_1_1packing_1_1MaxRectsPacker" ],
+        [ "NaiveRowPacker", "d7/d31/classal7_1_1packing_1_1NaiveRowPacker.html", "d7/d31/classal7_1_1packing_1_1NaiveRowPacker" ],
+        [ "Position", "d3/dda/structal7_1_1packing_1_1Position.html", "d3/dda/structal7_1_1packing_1_1Position" ],
+        [ "Rect", "df/dd8/structal7_1_1packing_1_1Rect.html", "df/dd8/structal7_1_1packing_1_1Rect" ],
+        [ "RectOptions", "d3/d71/structal7_1_1packing_1_1RectOptions.html", "d3/d71/structal7_1_1packing_1_1RectOptions" ],
+        [ "ShelfPacker", "d4/d8c/classal7_1_1packing_1_1ShelfPacker.html", "d4/d8c/classal7_1_1packing_1_1ShelfPacker" ],
+        [ "Size", "d8/d08/structal7_1_1packing_1_1Size.html", "d8/d08/structal7_1_1packing_1_1Size" ],
+        [ "SkylinePacker", "d5/db1/classal7_1_1packing_1_1SkylinePacker.html", "d5/db1/classal7_1_1packing_1_1SkylinePacker" ]
+      ] ]
+    ] ],
     [ "cl7", "d1/d2e/namespacecl7.html", [
       [ "bits", "d9/df1/namespacecl7_1_1bits.html", [
         [ "detail", "d5/d0f/namespacecl7_1_1bits_1_1detail.html", [

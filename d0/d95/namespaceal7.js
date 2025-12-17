@@ -11,5 +11,6 @@ var namespaceal7 =
       [ "merge_nearby", "da/dc0/namespaceal7_1_1math.html#a5fb65d03567559756d610f2334d003bb", null ],
       [ "merge_nearby", "da/dc0/namespaceal7_1_1math.html#aa381080d5eb53b71206076e7fdc024f8", null ],
       [ "merge_nearby", "da/dc0/namespaceal7_1_1math.html#a0c5bc523dc41b05100cb850e1efd39e1", null ]
-    ] ]
+    ] ],
+    [ "packing", "d0/d9f/namespaceal7_1_1packing.html", "d0/d9f/namespaceal7_1_1packing" ]
 ];

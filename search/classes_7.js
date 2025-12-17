@@ -11,5 +11,6 @@ var searchData=
   ['graphicssystem_8',['GraphicsSystem',['../da/d03/classxl7_1_1graphics_1_1GraphicsSystem.html',1,'xl7::graphics']]],
   ['graphicssystemimpl_9',['graphicssystemimpl',['../d8/d86/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl.html',1,'xl7::graphics::impl::direct3d11::GraphicsSystemImpl'],['../da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html',1,'xl7::graphics::impl::direct3d9::GraphicsSystemImpl']]],
   ['group_10',['Group',['../da/d74/structtl7_1_1Stats_1_1Group.html',1,'tl7::Stats']]],
-  ['guid_11',['Guid',['../dc/dbd/structcl7_1_1Guid.html',1,'cl7']]]
+  ['guid_11',['Guid',['../dc/dbd/structcl7_1_1Guid.html',1,'cl7']]],
+  ['guillotinepacker_12',['GuillotinePacker',['../de/da8/classal7_1_1packing_1_1GuillotinePacker.html',1,'al7::packing']]]
 ];
