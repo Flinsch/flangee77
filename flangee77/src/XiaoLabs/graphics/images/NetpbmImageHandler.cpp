@@ -65,7 +65,7 @@ namespace xl7::graphics::images {
         assert((is_ascii || is_binary) && !(is_ascii && is_binary));
 
         Image::Desc desc;
-        desc.pixel_format = channel_count == 1 ? PixelFormat::A8_UNORM : PixelFormat::R8G8B8_UNORM;
+        desc.pixel_format = channel_count == 1 ? PixelFormat::R8_UNORM : PixelFormat::R8G8B8_UNORM;
         desc.channel_order = ChannelOrder::RGBA;
         desc.width = 0;
         desc.height = 0;
@@ -166,14 +166,14 @@ namespace xl7::graphics::images {
                 return _log_bad_header_error(source_name);
             if (channel_count < 1)
                 return _log_bad_header_error(source_name);
-            desc.pixel_format = PixelFormat::A8_UNORM;
+            desc.pixel_format = PixelFormat::R8_UNORM;
             data = _read_1bit_binary(readable, source_name, desc, false);
         }
         else if (tuple_type == "GRAYSCALE")
         {
             if (channel_count < 1)
                 return _log_bad_header_error(source_name);
-            desc.pixel_format = PixelFormat::A8_UNORM;
+            desc.pixel_format = PixelFormat::R8_UNORM;
             data = _read_binary(readable, source_name, desc);
         }
         else if (tuple_type == "RGB")
@@ -193,17 +193,7 @@ namespace xl7::graphics::images {
             if (channel_count < 2)
                 return _log_bad_header_error(source_name);
             desc.pixel_format = PixelFormat::R8G8_UNORM;
-            auto rg_data = _read_binary(readable, source_name, desc);
-            // Manually convert/expand data to RGBA.
-            desc.pixel_format = PixelFormat::R8G8B8A8_UNORM;
-            data.resize(rg_data.size() * 2);
-            for (unsigned i = 0; i < rg_data.size() / 2; ++i)
-            {
-                data[i * 4 + 0] = rg_data[i * 2 + 0];
-                data[i * 4 + 1] = rg_data[i * 2 + 0];
-                data[i * 4 + 2] = rg_data[i * 2 + 0];
-                data[i * 4 + 3] = rg_data[i * 2 + 1];
-            }
+            data = _read_binary(readable, source_name, desc);
         }
         else if (tuple_type == "RGB_ALPHA")
         {
