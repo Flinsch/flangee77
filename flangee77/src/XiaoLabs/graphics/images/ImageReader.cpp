@@ -46,16 +46,33 @@ namespace xl7::graphics::images {
 
 
 
-    bool ImageReader::_log_bad_format_error(const cl7::u8string& source_name)
+    static bool _log_error(const cl7::u8string& base_message, const cl7::u8string& description)
     {
-        LOG_ERROR(u8"The format of image \"" + source_name + u8"\" is invalid.");
+        if (description.empty())
+            LOG_ERROR(base_message + u8".");
+        else
+            LOG_ERROR(base_message + u8": " + description);
         return false;
     }
 
-    bool ImageReader::_log_bad_header_error(const cl7::u8string& source_name)
+    bool ImageReader::_log_unknown_format_error(const cl7::u8string& source_name, const cl7::u8string& description)
     {
-        LOG_ERROR(u8"Bad header of image \"" + source_name + u8"\" is damaged.");
-        return false;
+        return _log_error(u8"The format of image \"" + source_name + u8"\" is invalid/unknown", description);
+    }
+
+    bool ImageReader::_log_unsupported_format_error(const cl7::u8string& source_name, const cl7::u8string& description)
+    {
+        return _log_error(u8"The specific (sub)format of image \"" + source_name + u8"\" is not supported", description);
+    }
+
+    bool ImageReader::_log_bad_header_error(const cl7::u8string& source_name, const cl7::u8string& description)
+    {
+        return _log_error(u8"Bad header of image \"" + source_name + u8"\" is damaged", description);
+    }
+
+    bool ImageReader::_log_bad_data_error(const cl7::u8string& source_name, const cl7::u8string& description)
+    {
+        return _log_error(u8"Bad data of image \"" + source_name + u8"\" is damaged", description);
     }
 
 

@@ -32,8 +32,10 @@ public:
 
 
 protected:
-    static bool _log_bad_format_error(const cl7::u8string& source_name);
-    static bool _log_bad_header_error(const cl7::u8string& source_name);
+    static bool _log_unknown_format_error(const cl7::u8string& source_name, const cl7::u8string& description = u8"");
+    static bool _log_unsupported_format_error(const cl7::u8string& source_name, const cl7::u8string& description = u8"");
+    static bool _log_bad_header_error(const cl7::u8string& source_name, const cl7::u8string& description = u8"");
+    static bool _log_bad_data_error(const cl7::u8string& source_name, const cl7::u8string& description = u8"");
 
 
 

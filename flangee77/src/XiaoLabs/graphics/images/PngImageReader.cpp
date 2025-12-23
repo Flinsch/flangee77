@@ -22,18 +22,18 @@ namespace xl7::graphics::images {
     {
         Signature signature;
         if (readable.read({reinterpret_cast<std::byte*>(&signature), sizeof(Signature)}) != sizeof(Signature))
-            return _log_bad_format_error(source_name);
+            return _log_bad_header_error(source_name, u8"bad signature length");
 
         if (signature._x89 != 0x89)
-            return _log_bad_format_error(source_name);
+            return _log_bad_header_error(source_name, u8"bad signature");
         if (signature.png[0] != 'P' || signature.png[1] != 'N' || signature.png[2] != 'G')
-            return _log_bad_format_error(source_name);
+            return _log_bad_header_error(source_name, u8"bad signature");
         if (signature.crlf[0] != 0x0d || signature.crlf[1] != 0x0a)
-            return _log_bad_format_error(source_name);
+            return _log_bad_header_error(source_name, u8"bad signature");
         if (signature.eof != 0x1a)
-            return _log_bad_format_error(source_name);
+            return _log_bad_header_error(source_name, u8"bad signature");
         if (signature.lf != 0x0a)
-            return _log_bad_format_error(source_name);
+            return _log_bad_header_error(source_name, u8"bad signature");
 
         BitInfo bit_info = {};
         std::vector<PaletteEntry> palette;
@@ -47,9 +47,9 @@ namespace xl7::graphics::images {
         cl7::byte_vector temp;
 
         if (!_decompress(data, temp))
-            return _log_bad_format_error(source_name);
+            return _log_bad_data_error(source_name, u8"decompression error");
         if (!_reconstruct(temp, buffer, bit_info))
-            return _log_bad_format_error(source_name);
+            return _log_bad_data_error(source_name, u8"reconstruction error");
 
         Image::Desc desc;
         if (bit_info.color_type & CT_ALPHA_USED)
@@ -130,7 +130,7 @@ namespace xl7::graphics::images {
         {
             ChunkInfo chunk_info;
             if (readable.read({reinterpret_cast<std::byte*>(&chunk_info), sizeof(ChunkInfo)}) != sizeof(ChunkInfo))
-                return _log_bad_format_error(source_name);
+                return _log_bad_header_error(source_name, u8"unable to read chunk info");
 
             chunk_info.length = cl7::bits::swap_bytes_unless_endian<std::endian::big>(chunk_info.length);
 
@@ -162,7 +162,7 @@ namespace xl7::graphics::images {
 
             uint32_t crc;
             if (readable.read({reinterpret_cast<std::byte*>(&crc), 4}) != 4)
-                return _log_bad_format_error(source_name);
+                return _log_bad_data_error(source_name, u8"CRC mismatch");
             // Should we also specifically verify
             // the content of the check value?
         } // for each chunk
@@ -176,30 +176,47 @@ namespace xl7::graphics::images {
     bool PngImageReader::_process_IHDR_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, BitInfo& bit_info)
     {
         if (chunk_length != sizeof(Header))
-            return _log_bad_format_error(source_name);
+            return _log_bad_header_error(source_name, u8"bad IHDR chunk length");
 
         Header header;
         if (readable.read({reinterpret_cast<std::byte*>(&header), sizeof(Header)}) != sizeof(Header))
-            return _log_bad_format_error(source_name);
+            return _log_bad_data_error(source_name, u8"bad IHDR chunk data");
 
         header.width = cl7::bits::swap_bytes_unless_endian<std::endian::big>(header.width);
         header.height = cl7::bits::swap_bytes_unless_endian<std::endian::big>(header.height);
 
         if (header.width == 0 || header.height == 0)
-            return _log_bad_header_error(source_name);
+            return _log_bad_header_error(source_name, u8"valid width and height greater than 0 expected");
         if (std::popcount(header.bit_depth) != 1 || header.bit_depth > 16)
-            return _log_bad_header_error(source_name);
+            return _log_bad_header_error(source_name, u8"invalid bit depth: " + cl7::to_string(header.bit_depth));
         if (header.color_type == 1 || header.color_type == 5 || header.color_type >= 7)
-            return _log_bad_header_error(source_name);
+            return _log_bad_header_error(source_name, u8"invalid color type: " + cl7::to_string(header.color_type));
         if (header.compression_method != 0)
-            return _log_bad_header_error(source_name);
+            return _log_unsupported_format_error(source_name, u8"unsupported compression method: " + cl7::to_string(header.compression_method));
         if (header.filter_method != 0)
-            return _log_bad_header_error(source_name);
+            return _log_unsupported_format_error(source_name, u8"unsupported filter method: " + cl7::to_string(header.filter_method));
         if (header.interlace_method > 1)
-            return _log_bad_header_error(source_name);
+            return _log_unsupported_format_error(source_name, u8"unsupported interlace method: " + cl7::to_string(header.interlace_method));
+
+        if (header.color_type == 0)
+        {
+            // Allowed bit depths: 1, 2, 4, 8, 16 (already checked, see above)
+        }
+        else if (header.color_type == 3)
+        {
+            // Allowed bit depths: 1, 2, 4, 8
+            if (header.bit_depth > 8)
+                return _log_unsupported_format_error(source_name, u8"invalid bit depth of " + cl7::to_string(header.bit_depth) + u8" for color type " + cl7::to_string(header.color_type));
+        }
+        else
+        {
+            // Allowed bit depths: 8, 16
+            if (header.bit_depth != 8 && header.bit_depth != 16)
+                return _log_unsupported_format_error(source_name, u8"invalid bit depth of " + cl7::to_string(header.bit_depth) + u8" for color type " + cl7::to_string(header.color_type));
+        }
 
         // 
-        static constexpr unsigned CHANNEL_COUNT[7] = {
+        static constexpr unsigned CHANNEL_COUNTS_BY_COLOR_TYPE[7] = {
             1, // CT 0: Grayscale
             0, // CT 1: (invalid)
             3, // CT 2: Truecolor
@@ -210,12 +227,14 @@ namespace xl7::graphics::images {
         };
 
         bit_info.color_type = static_cast<unsigned>(header.color_type);
-        bit_info.channel_count = CHANNEL_COUNT[header.color_type];
+        bit_info.channel_count = CHANNEL_COUNTS_BY_COLOR_TYPE[header.color_type];
         bit_info.bits_per_pixel = header.bit_depth * bit_info.channel_count;
         bit_info.max_bytes_per_pixel = (bit_info.bits_per_pixel + 7) / 8;
         bit_info.bytes_per_scanline = (header.width * bit_info.bits_per_pixel + 7) / 8;
         bit_info.width = header.width;
         bit_info.height = header.height;
+
+        assert(bit_info.channel_count > 0);
 
         return true;
     }
@@ -226,7 +245,7 @@ namespace xl7::graphics::images {
     bool PngImageReader::_process_PLTE_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, std::vector<PaletteEntry>& palette)
     {
         if (chunk_length % 3 != 0)
-            return _log_bad_format_error(source_name);
+            return _log_bad_header_error(source_name, u8"bad PLTE chunk length");
 
         static_assert(sizeof(PaletteEntry) == 3);
         const size_t number_of_entries = chunk_length / 3;
@@ -234,7 +253,7 @@ namespace xl7::graphics::images {
         palette.resize(number_of_entries);
 
         if (readable.read({reinterpret_cast<std::byte*>(palette.data()), number_of_entries * 3}) != static_cast<size_t>(chunk_length))
-            return _log_bad_format_error(source_name);
+            return _log_bad_data_error(source_name, u8"bad PLTE chunk data");
 
         return true;
     }
@@ -252,8 +271,8 @@ namespace xl7::graphics::images {
 
         data.resize(data_offset + data_length);
 
-        if (readable.read({&data[data_offset], data_length}) != data_length)
-            return _log_bad_format_error(source_name);
+        if (readable.read(cl7::make_byte_span(data.data() + data_offset, data_length)) != data_length)
+            return _log_bad_data_error(source_name, u8"bad IDAT chunk data");
 
         return true;
     }

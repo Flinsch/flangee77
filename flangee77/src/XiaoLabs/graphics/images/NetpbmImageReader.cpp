@@ -24,9 +24,12 @@ namespace xl7::graphics::images {
         cl7::io::AsciiReader ascii_reader{&readable};
 
         if (ascii_reader.read_char() != 'P')
-            return _log_bad_format_error(source_name);
+            return _log_bad_header_error(source_name, u8"'P' expected");
 
         const auto magic2 = ascii_reader.read_char();
+        if (!std::isdigit(magic2))
+            return _log_bad_header_error(source_name, u8"digit 1-7 expected");
+
         if (magic2 >= '1' && magic2 <= '6')
         {
             if (!_load_pnm(readable, source_name, image))
@@ -38,7 +41,7 @@ namespace xl7::graphics::images {
                 return false;
         }
         else
-            return _log_bad_format_error(source_name);
+            return _log_unknown_format_error(source_name, u8"bad magic number: P" + magic2);
 
         return true;
     }
@@ -86,13 +89,15 @@ namespace xl7::graphics::images {
         }
 
         if (!std::isspace(ascii_reader.read_char()))
-            return _log_bad_header_error(source_name);
+            return _log_bad_header_error(source_name, u8"space character expected");
 
         if (!desc.width || !desc.height)
-            return _log_bad_header_error(source_name);
+            return _log_bad_header_error(source_name, u8"valid width and height greater than 0 expected");
 
-        if (max_val == 0 || max_val > 255)
-            return _log_bad_header_error(source_name);
+        if (max_val == 0 || max_val > 65535)
+            return _log_bad_header_error(source_name, u8"valid bit depth greater than 0 expected");
+        if (max_val > 255)
+            return _log_unsupported_format_error(source_name, u8"bit depths greater than 8 bits (and therefore maximum values greater than 255) are not supported.");
 
         cl7::byte_vector data;
 
@@ -106,7 +111,7 @@ namespace xl7::graphics::images {
             data = _read_binary(readable, source_name, desc);
 
         if (data.size() != desc.calculate_data_size())
-            return _log_bad_header_error(source_name);
+            return _log_bad_data_error(source_name);
 
         return image.init(desc, std::move(data));
     }
@@ -150,63 +155,65 @@ namespace xl7::graphics::images {
         } // for each header line
 
         if (ascii_reader.read_char() != '\n')
-            return _log_bad_header_error(source_name);
+            return _log_bad_header_error(source_name, u8"newline character \\n expected");
 
         if (!desc.width || !desc.height)
-            return _log_bad_header_error(source_name);
+            return _log_bad_header_error(source_name, u8"valid width and height greater than 0 expected");
 
-        if (max_val == 0 || max_val > 255)
-            return _log_bad_header_error(source_name);
+        if (max_val == 0 || max_val > 65535)
+            return _log_bad_header_error(source_name, u8"valid bit depth greater than 0 expected");
+        if (max_val > 255)
+            return _log_unsupported_format_error(source_name, u8"bit depths greater than 8 bits (and therefore maximum values greater than 255) are not supported.");
 
         cl7::byte_vector data;
 
         if (tuple_type == "BLACKANDWHITE")
         {
             if (max_val != 1)
-                return _log_bad_header_error(source_name);
+                return _log_bad_header_error(source_name, u8"BLACKANDWHITE requires a maximum value of 1");
             if (channel_count < 1)
-                return _log_bad_header_error(source_name);
+                return _log_bad_header_error(source_name, u8"BLACKANDWHITE requires a channel count/depth of 1");
             desc.pixel_format = PixelFormat::R8_UNORM;
             data = _read_1bit_binary(readable, source_name, desc, false);
         }
         else if (tuple_type == "GRAYSCALE")
         {
             if (channel_count < 1)
-                return _log_bad_header_error(source_name);
+                return _log_bad_header_error(source_name, u8"GRAYSCALE requires a channel count/depth of 1");
             desc.pixel_format = PixelFormat::R8_UNORM;
             data = _read_binary(readable, source_name, desc);
         }
         else if (tuple_type == "RGB")
         {
             if (channel_count < 3)
-                return _log_bad_header_error(source_name);
+                return _log_bad_header_error(source_name, u8"RGB requires a channel count/depth of 3");
             desc.pixel_format = PixelFormat::R8G8B8_UNORM;
             data = _read_binary(readable, source_name, desc);
         }
         else if (tuple_type == "BLACKANDWHITE_ALPHA")
         {
             // We deliberately do not support this.
-            return _log_bad_header_error(source_name);
+            return _log_unsupported_format_error(source_name, u8"BLACKANDWHITE_ALPHA not supported");
         }
         else if (tuple_type == "GRAYSCALE_ALPHA")
         {
             if (channel_count < 2)
-                return _log_bad_header_error(source_name);
+                return _log_bad_header_error(source_name, u8"GRAYSCALE_ALPHA requires a channel count/depth of 2");
             desc.pixel_format = PixelFormat::R8G8_UNORM;
             data = _read_binary(readable, source_name, desc);
         }
         else if (tuple_type == "RGB_ALPHA")
         {
             if (channel_count < 4)
-                return _log_bad_header_error(source_name);
+                return _log_bad_header_error(source_name, u8"RGB_ALPHA requires a channel count/depth of 4");
             desc.pixel_format = PixelFormat::R8G8B8A8_UNORM;
             data = _read_binary(readable, source_name, desc);
         }
         else
-            return _log_bad_header_error(source_name);
+            return _log_unknown_format_error(source_name, cl7::text::codec::to_utf8(tuple_type));
 
         if (data.size() != desc.calculate_data_size())
-            return _log_bad_header_error(source_name);
+            return _log_bad_data_error(source_name);
 
         return image.init(desc, std::move(data));
     }

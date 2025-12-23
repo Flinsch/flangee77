@@ -20,16 +20,23 @@ namespace xl7::graphics::images {
     {
         Header header;
         if (readable.read({reinterpret_cast<std::byte*>(&header), sizeof(Header)}) != sizeof(Header))
-            return _log_bad_format_error(source_name);
+            return _log_bad_header_error(source_name, u8"bad header length");
 
-        if (header.id_length || header.color_map_type)
-            return _log_bad_header_error(source_name);
+        if (header.color_map_type > 1)
+            return _log_bad_header_error(source_name, u8"invalid color map type: " + cl7::to_string(header.color_map_type));
+        if ((header.image_type < 1 || header.image_type > 3) && (header.image_type < 9 || header.image_type > 11) && (header.image_type < 32 || header.image_type > 33))
+            return _log_bad_header_error(source_name, u8"invalid image type: " + cl7::to_string(header.image_type));
+        if (header.width == 0 || header.height == 0)
+            return _log_bad_header_error(source_name, u8"valid width and height greater than 0 expected");
+        if (header.pixel_depth != 16 && header.pixel_depth != 24 && header.pixel_depth != 32)
+            return _log_bad_header_error(source_name, u8"invalid pixel depth: " + cl7::to_string(header.pixel_depth));
+
+        if (header.color_map_type != 0)
+            return _log_unsupported_format_error(source_name, u8"only unmapped images supported");
         if (header.image_type != 2 && header.image_type != 10)
-            return _log_bad_header_error(source_name);
-        if (header.map_start || header.map_length || header.map_depth)
-            return _log_bad_header_error(source_name);
+            return _log_unsupported_format_error(source_name, u8"only unmapped RGB images supported (uncompressed or runlength encoded)");
         if (header.pixel_depth != 24 && header.pixel_depth != 32)
-            return _log_bad_header_error(source_name);
+            return _log_unsupported_format_error(source_name, u8"only 24 or 32 bit images supported");
 
         Image::Desc desc;
         desc.pixel_format = PixelFormat::UNKNOWN;
@@ -83,7 +90,7 @@ namespace xl7::graphics::images {
         assert(data.size() == desc.calculate_data_size());
 
         if (readable.read(data) != data.size())
-            return _log_bad_format_error(source_name);
+            return _log_bad_data_error(source_name, u8"bad uncompressed data length");
 
         return true;
     }
@@ -108,7 +115,7 @@ namespace xl7::graphics::images {
         {
             unsigned char chunk_header;
             if (readable.read({reinterpret_cast<std::byte*>(&chunk_header), 1}) != 1)
-                return _log_bad_format_error(source_name);
+                return _log_bad_header_error(source_name, u8"bad chunk header length");
 
             const size_t pixel_count = static_cast<size_t>(chunk_header & 0x7f) + 1;
             const size_t chunk_size = pixel_count * bytes_per_pixel;
@@ -117,13 +124,13 @@ namespace xl7::graphics::images {
             {
                 // Chunk is a "raw" packet.
                 if (readable.read({cursor, chunk_size}) != chunk_size)
-                    return _log_bad_format_error(source_name);
+                    return _log_bad_data_error(source_name, u8"bad \"raw\"-packet chunk data length");
             }
             else
             {
                 // Chunk is an RLE packet.
                 if (readable.read({cursor, bytes_per_pixel}) != bytes_per_pixel)
-                    return _log_bad_format_error(source_name);
+                    return _log_bad_data_error(source_name, u8"bad RLE-packet chunk data length");
                 for (size_t i = 1; i < pixel_count; ++i)
                     std::memcpy(cursor + i * bytes_per_pixel, cursor, bytes_per_pixel);
             }
@@ -133,7 +140,7 @@ namespace xl7::graphics::images {
         } // for each chunk of pixels
 
         if (pixel_index != total_pixel_count)
-            return _log_bad_format_error(source_name);
+            return _log_bad_data_error(source_name, u8"bad compressed data length");
 
         return true;
     }
