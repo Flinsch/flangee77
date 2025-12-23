@@ -1,5 +1,5 @@
-#ifndef XL7_GRAPHICS_IMAGES_IMAGEHANDLER_H
-#define XL7_GRAPHICS_IMAGES_IMAGEHANDLER_H
+#ifndef XL7_GRAPHICS_IMAGES_IMAGEREADER_H
+#define XL7_GRAPHICS_IMAGES_IMAGEREADER_H
 
 #include "./Image.h"
 
@@ -12,10 +12,10 @@ namespace xl7::graphics::images {
 
 
 
-class ImageHandler
+class ImageReader
 {
 public:
-    virtual ~ImageHandler() = default;
+    virtual ~ImageReader() = default;
 
 
 
@@ -43,10 +43,10 @@ private:
      */
     virtual bool _load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image) = 0;
 
-}; // class ImageHandler
+}; // class ImageReader
 
 
 
 } // namespace xl7::graphics::images
 
-#endif // XL7_GRAPHICS_IMAGES_IMAGEHANDLER_H
+#endif // XL7_GRAPHICS_IMAGES_IMAGEREADER_H

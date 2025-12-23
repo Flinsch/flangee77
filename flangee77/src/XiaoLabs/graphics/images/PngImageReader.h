@@ -1,6 +1,6 @@
-#ifndef XL7_GRAPHICS_IMAGES_PNGIMAGEHANDLER_H
-#define XL7_GRAPHICS_IMAGES_PNGIMAGEHANDLER_H
-#include "./ImageHandler.h"
+#ifndef XL7_GRAPHICS_IMAGES_PNGIMAGEREADER_H
+#define XL7_GRAPHICS_IMAGES_PNGIMAGEREADER_H
+#include "./ImageReader.h"
 
 
 
@@ -8,12 +8,12 @@ namespace xl7::graphics::images {
 
 
 
-class PngImageHandler
-    : public ImageHandler
+class PngImageReader
+    : public ImageReader
 {
 
 public:
-    ~PngImageHandler() override = default;
+    ~PngImageReader() override = default;
 
 
 
@@ -150,10 +150,10 @@ private:
      */
     static bool _reconstruct_scanline_filter4_paeth(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di);
 
-}; // class PngImageHandler
+}; // class PngImageReader
 
 
 
 } // namespace xl7::graphics::images
 
-#endif // XL7_GRAPHICS_IMAGES_PNGIMAGEHANDLER_H
+#endif // XL7_GRAPHICS_IMAGES_PNGIMAGEREADER_H

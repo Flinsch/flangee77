@@ -1,6 +1,6 @@
-#ifndef XL7_GRAPHICS_IMAGES_TARGAIMAGEHANDLER_H
-#define XL7_GRAPHICS_IMAGES_TARGAIMAGEHANDLER_H
-#include "./ImageHandler.h"
+#ifndef XL7_GRAPHICS_IMAGES_TARGAIMAGEREADER_H
+#define XL7_GRAPHICS_IMAGES_TARGAIMAGEREADER_H
+#include "./ImageReader.h"
 
 
 
@@ -8,12 +8,12 @@ namespace xl7::graphics::images {
 
 
 
-class TargaImageHandler
-    : public ImageHandler
+class TargaImageReader
+    : public ImageReader
 {
 
 public:
-    ~TargaImageHandler() override = default;
+    ~TargaImageReader() override = default;
 
 
 
@@ -65,10 +65,10 @@ private:
      */
     static bool _load_compressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Header& header, const Image::Desc& desc, cl7::byte_span data);
 
-}; // class TargaImageHandler
+}; // class TargaImageReader
 
 
 
 } // namespace xl7::graphics::images
 
-#endif // XL7_GRAPHICS_IMAGES_TARGAIMAGEHANDLER_H
+#endif // XL7_GRAPHICS_IMAGES_TARGAIMAGEREADER_H

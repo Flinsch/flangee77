@@ -1,4 +1,4 @@
-#include "NetpbmImageHandler.h"
+#include "NetpbmImageReader.h"
 
 #include <CoreLabs/io/AsciiReader.h>
 #include <CoreLabs/io/ByteReader.h>
@@ -19,7 +19,7 @@ namespace xl7::graphics::images {
     /**
      * Loads an image from any readable object.
      */
-    bool NetpbmImageHandler::_load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
+    bool NetpbmImageReader::_load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
     {
         cl7::io::AsciiReader ascii_reader{&readable};
 
@@ -52,7 +52,7 @@ namespace xl7::graphics::images {
     /**
      * Parses any PBM, PGM, or PPM format.
      */
-    bool NetpbmImageHandler::_load_pnm(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
+    bool NetpbmImageReader::_load_pnm(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
     {
         cl7::io::AsciiReader ascii_reader{&readable};
 
@@ -114,7 +114,7 @@ namespace xl7::graphics::images {
     /**
      * Parses the PAM format.
      */
-    bool NetpbmImageHandler::_load_pam(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
+    bool NetpbmImageReader::_load_pam(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
     {
         cl7::io::AsciiReader ascii_reader{&readable};
 
@@ -213,7 +213,7 @@ namespace xl7::graphics::images {
 
 
 
-    cl7::byte_vector NetpbmImageHandler::_read_1bit_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc)
+    cl7::byte_vector NetpbmImageReader::_read_1bit_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc)
     {
         cl7::io::AsciiReader ascii_reader{&readable};
 
@@ -239,7 +239,7 @@ namespace xl7::graphics::images {
         return data;
     }
 
-    cl7::byte_vector NetpbmImageHandler::_read_1bit_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc, bool zero_is_white)
+    cl7::byte_vector NetpbmImageReader::_read_1bit_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc, bool zero_is_white)
     {
         cl7::io::ByteReader byte_reader{&readable};
 
@@ -266,7 +266,7 @@ namespace xl7::graphics::images {
         return data;
     }
 
-    cl7::byte_vector NetpbmImageHandler::_read_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc)
+    cl7::byte_vector NetpbmImageReader::_read_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc)
     {
         cl7::io::AsciiReader ascii_reader{&readable};
 
@@ -304,7 +304,7 @@ namespace xl7::graphics::images {
         return data;
     }
 
-    cl7::byte_vector NetpbmImageHandler::_read_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc)
+    cl7::byte_vector NetpbmImageReader::_read_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc)
     {
         cl7::io::ByteReader byte_reader{&readable};
 
@@ -322,7 +322,7 @@ namespace xl7::graphics::images {
 
 
 
-    void NetpbmImageHandler::_skip_comments(cl7::io::IReadable& readable)
+    void NetpbmImageReader::_skip_comments(cl7::io::IReadable& readable)
     {
         cl7::io::AsciiReader ascii_reader{&readable};
 

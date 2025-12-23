@@ -18,13 +18,13 @@ target_sources(flangee77
 
     graphics/images/Image.cpp
     graphics/images/ImageConverter.cpp
-    graphics/images/ImageHandler.cpp
+    graphics/images/ImageReader.cpp
     graphics/images/ImageProcessor.cpp
     graphics/images/ImageResizer.cpp
     graphics/images/ImageStack.cpp
-    graphics/images/NetpbmImageHandler.cpp
-    graphics/images/PngImageHandler.cpp
-    graphics/images/TargaImageHandler.cpp
+    graphics/images/NetpbmImageReader.cpp
+    graphics/images/PngImageReader.cpp
+    graphics/images/TargaImageReader.cpp
 
     graphics/meshes/IndexBuffer.cpp
     graphics/meshes/MeshBuffer.cpp

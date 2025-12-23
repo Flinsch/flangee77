@@ -1,4 +1,4 @@
-#include "PngImageHandler.h"
+#include "PngImageReader.h"
 
 #include <DataLabs/compression.h>
 
@@ -18,7 +18,7 @@ namespace xl7::graphics::images {
     /**
      * Loads an image from any readable object.
      */
-    bool PngImageHandler::_load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
+    bool PngImageReader::_load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
     {
         Signature signature;
         if (readable.read({reinterpret_cast<std::byte*>(&signature), sizeof(Signature)}) != sizeof(Signature))
@@ -124,7 +124,7 @@ namespace xl7::graphics::images {
     /**
      * Processes the PNG chunks.
      */
-    bool PngImageHandler::_process_chunks(cl7::io::IReadable& readable, const cl7::u8string& source_name, BitInfo& bit_info, std::vector<PaletteEntry>& palette, cl7::byte_vector& data)
+    bool PngImageReader::_process_chunks(cl7::io::IReadable& readable, const cl7::u8string& source_name, BitInfo& bit_info, std::vector<PaletteEntry>& palette, cl7::byte_vector& data)
     {
         while (true)
         {
@@ -173,7 +173,7 @@ namespace xl7::graphics::images {
     /**
      * Processes the image header chunk, "IHDR".
      */
-    bool PngImageHandler::_process_IHDR_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, BitInfo& bit_info)
+    bool PngImageReader::_process_IHDR_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, BitInfo& bit_info)
     {
         if (chunk_length != sizeof(Header))
             return _log_bad_format_error(source_name);
@@ -223,7 +223,7 @@ namespace xl7::graphics::images {
     /**
      * Processes the palette chunk, "PLTE".
      */
-    bool PngImageHandler::_process_PLTE_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, std::vector<PaletteEntry>& palette)
+    bool PngImageReader::_process_PLTE_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, std::vector<PaletteEntry>& palette)
     {
         if (chunk_length % 3 != 0)
             return _log_bad_format_error(source_name);
@@ -242,7 +242,7 @@ namespace xl7::graphics::images {
     /**
      * Processes the image data chunk, "IDAT".
      */
-    bool PngImageHandler::_process_IDAT_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, cl7::byte_vector& data)
+    bool PngImageReader::_process_IDAT_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, cl7::byte_vector& data)
     {
         if (chunk_length == 0)
             return true;
@@ -261,7 +261,7 @@ namespace xl7::graphics::images {
     /**
      * Decompresses the given source data.
      */
-    bool PngImageHandler::_decompress(cl7::byte_view src, cl7::byte_vector& dst)
+    bool PngImageReader::_decompress(cl7::byte_view src, cl7::byte_vector& dst)
     {
         dst.clear();
 
@@ -271,7 +271,7 @@ namespace xl7::graphics::images {
     /**
      * Reconstructs the target data from the given filtered source data.
      */
-    bool PngImageHandler::_reconstruct(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info)
+    bool PngImageReader::_reconstruct(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info)
     {
         dst.clear();
 
@@ -306,7 +306,7 @@ namespace xl7::graphics::images {
     /**
      * Filter type "None" (0): the scanline is transmitted unmodified.
      */
-    bool PngImageHandler::_reconstruct_scanline_filter0_none(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di)
+    bool PngImageReader::_reconstruct_scanline_filter0_none(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di)
     {
         assert(di == dst.size());
 
@@ -322,7 +322,7 @@ namespace xl7::graphics::images {
      * Filter type "Sub" (1): the Sub filter transmits the difference between each
      * byte and the value of the corresponding byte of the prior pixel.
      */
-    bool PngImageHandler::_reconstruct_scanline_filter1_sub(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di)
+    bool PngImageReader::_reconstruct_scanline_filter1_sub(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di)
     {
         // Run through the all
         // bytes (not pixels).
@@ -344,7 +344,7 @@ namespace xl7::graphics::images {
      * Filter type "Up" (2): the Up filter transmits the difference between each
      * byte and the value of the corresponding byte of the prior scanline.
      */
-    bool PngImageHandler::_reconstruct_scanline_filter2_up(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di)
+    bool PngImageReader::_reconstruct_scanline_filter2_up(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di)
     {
         const unsigned v = di / bit_info.bytes_per_scanline;
 
@@ -368,7 +368,7 @@ namespace xl7::graphics::images {
      * Filter type "Average" (3): the Average filter uses the average of the two
      * neighboring pixels (left and above) to predict the value of a pixel.
      */
-    bool PngImageHandler::_reconstruct_scanline_filter3_average(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di)
+    bool PngImageReader::_reconstruct_scanline_filter3_average(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di)
     {
         const unsigned v = di / bit_info.bytes_per_scanline;
 
@@ -397,7 +397,7 @@ namespace xl7::graphics::images {
      * of the three neighboring pixel (left, above, upper left), then chooses as
      * predictor the neighboring pixel closest to the computed value.
      */
-    bool PngImageHandler::_reconstruct_scanline_filter4_paeth(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di)
+    bool PngImageReader::_reconstruct_scanline_filter4_paeth(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di)
     {
         const unsigned v = di / bit_info.bytes_per_scanline;
 

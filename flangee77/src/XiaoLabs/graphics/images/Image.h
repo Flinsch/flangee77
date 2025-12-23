@@ -13,10 +13,6 @@ namespace xl7::graphics::images {
 
 
 
-class ImageHandler;
-
-
-
 class Image
 {
 

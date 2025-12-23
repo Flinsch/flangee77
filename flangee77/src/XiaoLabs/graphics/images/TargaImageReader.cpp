@@ -1,4 +1,4 @@
-#include "TargaImageHandler.h"
+#include "TargaImageReader.h"
 
 #include <CoreLabs/logging.h>
 #include <CoreLabs/bits.h>
@@ -16,7 +16,7 @@ namespace xl7::graphics::images {
     /**
      * Loads an image from any readable object.
      */
-    bool TargaImageHandler::_load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
+    bool TargaImageReader::_load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
     {
         Header header;
         if (readable.read({reinterpret_cast<std::byte*>(&header), sizeof(Header)}) != sizeof(Header))
@@ -77,7 +77,7 @@ namespace xl7::graphics::images {
     /**
      * Loads an uncompressed TGA.
      */
-    bool TargaImageHandler::_load_uncompressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
+    bool TargaImageReader::_load_uncompressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
     {
         assert(header.image_type == 2);
         assert(data.size() == desc.calculate_data_size());
@@ -91,7 +91,7 @@ namespace xl7::graphics::images {
     /**
      * Loads a compressed TGA.
      */
-    bool TargaImageHandler::_load_compressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
+    bool TargaImageReader::_load_compressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Header& header, const Image::Desc& desc, cl7::byte_span data)
     {
         assert(header.image_type == 10);
         assert(data.size() == desc.calculate_data_size());
