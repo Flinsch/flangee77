@@ -14,6 +14,7 @@ var namespacexl7_1_1graphics_1_1images =
       [ "LinearInterpolation", "d8/dd2/namespacexl7_1_1graphics_1_1images.html#ac9d829a5933316d55f7f267a17474dd9a14517b35b26ed67a34ffd446a9b86e33", null ]
     ] ],
     [ "_linear_interpolation", "d8/dd2/namespacexl7_1_1graphics_1_1images.html#ad5547d2f6c7b530ae3b76632456d665b", null ],
+    [ "_log_error", "d8/dd2/namespacexl7_1_1graphics_1_1images.html#a6cd551e3a249ac715d09510b324ef82a", null ],
     [ "_mipmap1_u8", "d8/dd2/namespacexl7_1_1graphics_1_1images.html#aa00eeebdd5b0b3d24786797285f31256", null ],
     [ "_mipmap2_u8", "d8/dd2/namespacexl7_1_1graphics_1_1images.html#a47a0aa0608a09e7efcf7a988d8bf6f16", null ],
     [ "_mipmap3_u8", "d8/dd2/namespacexl7_1_1graphics_1_1images.html#a9b108c9f6ac7e16e0b37042bad1a827f", null ],

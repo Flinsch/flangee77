@@ -6,7 +6,7 @@ var dir_578ff3acc76606b5df510d8bab7519f9 =
     [ "ImageConverter.h", "d7/d2c/ImageConverter_8h.html", "d7/d2c/ImageConverter_8h" ],
     [ "ImageProcessor.cpp", "d1/dbc/ImageProcessor_8cpp.html", null ],
     [ "ImageProcessor.h", "d2/d47/ImageProcessor_8h.html", "d2/d47/ImageProcessor_8h" ],
-    [ "ImageReader.cpp", "df/dcc/ImageReader_8cpp.html", null ],
+    [ "ImageReader.cpp", "df/dcc/ImageReader_8cpp.html", "df/dcc/ImageReader_8cpp" ],
     [ "ImageReader.h", "dc/d4c/ImageReader_8h.html", "dc/d4c/ImageReader_8h" ],
     [ "ImageResizer.cpp", "d4/d85/ImageResizer_8cpp.html", "d4/d85/ImageResizer_8cpp" ],
     [ "ImageResizer.h", "d6/d1f/ImageResizer_8h.html", "d6/d1f/ImageResizer_8h" ],
