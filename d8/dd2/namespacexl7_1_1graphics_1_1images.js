@@ -2,13 +2,13 @@ var namespacexl7_1_1graphics_1_1images =
 [
     [ "Image", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image" ],
     [ "ImageConverter", "d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter.html", "d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter" ],
-    [ "ImageHandler", "df/d4a/classxl7_1_1graphics_1_1images_1_1ImageHandler.html", "df/d4a/classxl7_1_1graphics_1_1images_1_1ImageHandler" ],
     [ "ImageProcessor", "d1/d92/structxl7_1_1graphics_1_1images_1_1ImageProcessor.html", "d1/d92/structxl7_1_1graphics_1_1images_1_1ImageProcessor" ],
+    [ "ImageReader", "d1/d72/classxl7_1_1graphics_1_1images_1_1ImageReader.html", "d1/d72/classxl7_1_1graphics_1_1images_1_1ImageReader" ],
     [ "ImageResizer", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer.html", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer" ],
     [ "ImageStack", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack.html", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack" ],
-    [ "NetpbmImageHandler", "de/d6b/classxl7_1_1graphics_1_1images_1_1NetpbmImageHandler.html", "de/d6b/classxl7_1_1graphics_1_1images_1_1NetpbmImageHandler" ],
-    [ "PngImageHandler", "da/d30/classxl7_1_1graphics_1_1images_1_1PngImageHandler.html", "da/d30/classxl7_1_1graphics_1_1images_1_1PngImageHandler" ],
-    [ "TargaImageHandler", "d1/d01/classxl7_1_1graphics_1_1images_1_1TargaImageHandler.html", "d1/d01/classxl7_1_1graphics_1_1images_1_1TargaImageHandler" ],
+    [ "NetpbmImageReader", "de/db6/classxl7_1_1graphics_1_1images_1_1NetpbmImageReader.html", "de/db6/classxl7_1_1graphics_1_1images_1_1NetpbmImageReader" ],
+    [ "PngImageReader", "d3/d05/classxl7_1_1graphics_1_1images_1_1PngImageReader.html", "d3/d05/classxl7_1_1graphics_1_1images_1_1PngImageReader" ],
+    [ "TargaImageReader", "d5/d60/classxl7_1_1graphics_1_1images_1_1TargaImageReader.html", "d5/d60/classxl7_1_1graphics_1_1images_1_1TargaImageReader" ],
     [ "ResamplingMethod", "d8/dd2/namespacexl7_1_1graphics_1_1images.html#ac9d829a5933316d55f7f267a17474dd9", [
       [ "NearestNeighbor", "d8/dd2/namespacexl7_1_1graphics_1_1images.html#ac9d829a5933316d55f7f267a17474dd9aaa020331bb30d2fa2ecf7c3a0777823f", null ],
       [ "LinearInterpolation", "d8/dd2/namespacexl7_1_1graphics_1_1images.html#ac9d829a5933316d55f7f267a17474dd9a14517b35b26ed67a34ffd446a9b86e33", null ]

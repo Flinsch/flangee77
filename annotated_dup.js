@@ -364,13 +364,13 @@ var annotated_dup =
         [ "images", "d8/dd2/namespacexl7_1_1graphics_1_1images.html", [
           [ "Image", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image" ],
           [ "ImageConverter", "d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter.html", "d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter" ],
-          [ "ImageHandler", "df/d4a/classxl7_1_1graphics_1_1images_1_1ImageHandler.html", "df/d4a/classxl7_1_1graphics_1_1images_1_1ImageHandler" ],
           [ "ImageProcessor", "d1/d92/structxl7_1_1graphics_1_1images_1_1ImageProcessor.html", "d1/d92/structxl7_1_1graphics_1_1images_1_1ImageProcessor" ],
+          [ "ImageReader", "d1/d72/classxl7_1_1graphics_1_1images_1_1ImageReader.html", "d1/d72/classxl7_1_1graphics_1_1images_1_1ImageReader" ],
           [ "ImageResizer", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer.html", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer" ],
           [ "ImageStack", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack.html", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack" ],
-          [ "NetpbmImageHandler", "de/d6b/classxl7_1_1graphics_1_1images_1_1NetpbmImageHandler.html", "de/d6b/classxl7_1_1graphics_1_1images_1_1NetpbmImageHandler" ],
-          [ "PngImageHandler", "da/d30/classxl7_1_1graphics_1_1images_1_1PngImageHandler.html", "da/d30/classxl7_1_1graphics_1_1images_1_1PngImageHandler" ],
-          [ "TargaImageHandler", "d1/d01/classxl7_1_1graphics_1_1images_1_1TargaImageHandler.html", "d1/d01/classxl7_1_1graphics_1_1images_1_1TargaImageHandler" ]
+          [ "NetpbmImageReader", "de/db6/classxl7_1_1graphics_1_1images_1_1NetpbmImageReader.html", "de/db6/classxl7_1_1graphics_1_1images_1_1NetpbmImageReader" ],
+          [ "PngImageReader", "d3/d05/classxl7_1_1graphics_1_1images_1_1PngImageReader.html", "d3/d05/classxl7_1_1graphics_1_1images_1_1PngImageReader" ],
+          [ "TargaImageReader", "d5/d60/classxl7_1_1graphics_1_1images_1_1TargaImageReader.html", "d5/d60/classxl7_1_1graphics_1_1images_1_1TargaImageReader" ]
         ] ],
         [ "impl", "db/d29/namespacexl7_1_1graphics_1_1impl.html", [
           [ "direct3d11", "d4/d6d/namespacexl7_1_1graphics_1_1impl_1_1direct3d11.html", [

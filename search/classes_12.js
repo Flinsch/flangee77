@@ -19,7 +19,7 @@ var searchData=
   ['shaderstates_3c_20idirect3dvertexshader9_20_3e_16',['ShaderStates&lt; IDirect3DVertexShader9 &gt;',['../df/d3c/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates_1_1ShaderStates.html',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates']]],
   ['shelf_17',['Shelf',['../d5/d56/structal7_1_1packing_1_1ShelfPacker_1_1Shelf.html',1,'al7::packing::ShelfPacker']]],
   ['shelfpacker_18',['ShelfPacker',['../d4/d8c/classal7_1_1packing_1_1ShelfPacker.html',1,'al7::packing']]],
-  ['signature_19',['signature',['../d1/d32/structtl7_1_1Signature.html',1,'tl7::Signature'],['../d3/d3e/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1Signature.html',1,'xl7::graphics::images::PngImageHandler::Signature']]],
+  ['signature_19',['signature',['../d1/d32/structtl7_1_1Signature.html',1,'tl7::Signature'],['../d6/d62/structxl7_1_1graphics_1_1images_1_1PngImageReader_1_1Signature.html',1,'xl7::graphics::images::PngImageReader::Signature']]],
   ['simplebitmaprasterizer_20',['SimpleBitmapRasterizer',['../d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html',1,'fl7::fonts::raster']]],
   ['singlelineoptions_21',['SingleLineOptions',['../df/dd2/structdl7_1_1json_1_1Format_1_1SingleLineOptions.html',1,'dl7::json::Format']]],
   ['singlequotedstringmatcher_22',['SingleQuotedStringMatcher',['../de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html',1,'dl7::syntax::matchers']]],

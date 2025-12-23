@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['paletteentry_0',['PaletteEntry',['../d6/d53/structxl7_1_1graphics_1_1images_1_1PngImageHandler_1_1PaletteEntry.html',1,'xl7::graphics::images::PngImageHandler']]],
+  ['paletteentry_0',['PaletteEntry',['../d8/d8e/structxl7_1_1graphics_1_1images_1_1PngImageReader_1_1PaletteEntry.html',1,'xl7::graphics::images::PngImageReader']]],
   ['parententry_1',['ParentEntry',['../dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html',1,'xl7::graphics::impl::shared::shaders::Include']]],
   ['parsestage_2',['ParseStage',['../d9/d44/classdl7_1_1syntax_1_1ParseStage.html',1,'dl7::syntax']]],
   ['patternsymbol_3',['PatternSymbol',['../d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html',1,'dl7::syntax']]],
@@ -12,7 +12,7 @@ var searchData=
   ['pixelshaderstage_9',['PixelShaderStage',['../dc/dba/classxl7_1_1graphics_1_1pipeline_1_1PixelShaderStage.html',1,'xl7::graphics::pipeline']]],
   ['placementrange_10',['PlacementRange',['../d3/dae/structal7_1_1packing_1_1SkylinePacker_1_1PlacementRange.html',1,'al7::packing::SkylinePacker']]],
   ['plainerrorhandler_11',['PlainErrorHandler',['../d1/d75/classcl7_1_1text_1_1codec_1_1PlainErrorHandler.html',1,'cl7::text::codec']]],
-  ['pngimagehandler_12',['PngImageHandler',['../da/d30/classxl7_1_1graphics_1_1images_1_1PngImageHandler.html',1,'xl7::graphics::images']]],
+  ['pngimagereader_12',['PngImageReader',['../d3/d05/classxl7_1_1graphics_1_1images_1_1PngImageReader.html',1,'xl7::graphics::images']]],
   ['point_13',['Point',['../dc/d77/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph_1_1Point.html',1,'fl7::fonts::detail::ttf::RawGlyph']]],
   ['pointresult_14',['pointresult',['../db/de1/structml7_1_1detail_1_1distance_1_1PointResult.html',1,'ml7::detail::distance::PointResult&lt; TVector &gt;'],['../d6/df6/structml7_1_1distance2_1_1PointResult.html',1,'ml7::distance2::PointResult&lt; T &gt;'],['../d2/d68/structml7_1_1distance3_1_1PointResult.html',1,'ml7::distance3::PointResult&lt; T &gt;']]],
   ['pointresult_5fdistance_5fsquared_15',['PointResult_distance_squared',['../de/dd3/structml7_1_1detail_1_1distance_1_1PointResult__distance__squared.html',1,'ml7::detail::distance']]],

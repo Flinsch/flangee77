@@ -1,7 +1,7 @@
 var searchData=
 [
   ['tabledirectoryentry_0',['TableDirectoryEntry',['../d7/da1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TableDirectoryEntry.html',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader']]],
-  ['targaimagehandler_1',['TargaImageHandler',['../d1/d01/classxl7_1_1graphics_1_1images_1_1TargaImageHandler.html',1,'xl7::graphics::images']]],
+  ['targaimagereader_1',['TargaImageReader',['../d5/d60/classxl7_1_1graphics_1_1images_1_1TargaImageReader.html',1,'xl7::graphics::images']]],
   ['terminalsymbol_2',['TerminalSymbol',['../d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html',1,'dl7::syntax']]],
   ['terminalsymbolcollection_3',['TerminalSymbolCollection',['../dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html',1,'dl7::syntax']]],
   ['testcase_4',['TestCase',['../dd/de5/classtl7_1_1TestCase.html',1,'tl7']]],

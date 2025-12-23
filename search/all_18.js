@@ -7,7 +7,7 @@ var searchData=
   ['x_5fmax_4',['x_max',['../d8/dc0/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1FontHeader.html#ae31e8b594da1239af010c35d86f0615a',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::FontHeader::x_max'],['../d3/d6c/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph.html#a930c72eab854194f39e22a2502867c44',1,'fl7::fonts::detail::ttf::RawGlyph::x_max']]],
   ['x_5fmax_5fextent_5',['x_max_extent',['../d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html#aa2cdc28944fb53761d0fe4fa94002114',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::TrueTypeFontMetric']]],
   ['x_5fmin_6',['x_min',['../d8/dc0/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1FontHeader.html#ad110051462c21927352be6d1170b9394',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::FontHeader::x_min'],['../d3/d6c/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph.html#a55dc1c5b2b80d2bbf35ac67fafc8cee0',1,'fl7::fonts::detail::ttf::RawGlyph::x_min']]],
-  ['x_5forigin_7',['x_origin',['../d7/de1/structxl7_1_1graphics_1_1images_1_1TargaImageHandler_1_1Header.html#a4915ba4cf025d1f41f2a4c57b7a1a33e',1,'xl7::graphics::images::TargaImageHandler::Header']]],
+  ['x_5forigin_7',['x_origin',['../d0/d9a/structxl7_1_1graphics_1_1images_1_1TargaImageReader_1_1Header.html#a15f182e26916f6e87e259c7f4011f1b7',1,'xl7::graphics::images::TargaImageReader::Header']]],
   ['x_5fz_8',['x_z',['../d6/d64/structml7_1_1Vector3.html#a4b63698135eb9fcc81cfb3e62327cc89',1,'ml7::Vector3']]],
   ['xl7_9',['xl7',['../dc/d6e/namespacexl7.html',1,'']]],
   ['xl7_3a_3aaudio_10',['audio',['../d1/daf/namespacexl7_1_1audio.html',1,'xl7']]],

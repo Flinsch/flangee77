@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['targaimagehandler_2ecpp_0',['TargaImageHandler.cpp',['../d6/d5f/TargaImageHandler_8cpp.html',1,'']]],
-  ['targaimagehandler_2eh_1',['TargaImageHandler.h',['../dc/d98/TargaImageHandler_8h.html',1,'']]],
+  ['targaimagereader_2ecpp_0',['TargaImageReader.cpp',['../d4/db6/TargaImageReader_8cpp.html',1,'']]],
+  ['targaimagereader_2eh_1',['TargaImageReader.h',['../d0/d63/TargaImageReader_8h.html',1,'']]],
   ['terminalsymbol_2ecpp_2',['TerminalSymbol.cpp',['../d7/d97/TerminalSymbol_8cpp.html',1,'']]],
   ['terminalsymbol_2eh_3',['TerminalSymbol.h',['../de/d44/TerminalSymbol_8h.html',1,'']]],
   ['terminalsymbolcollection_2ecpp_4',['TerminalSymbolCollection.cpp',['../da/db2/TerminalSymbolCollection_8cpp.html',1,'']]],
