@@ -22,6 +22,7 @@ target_sources(flangee77
     graphics/images/ImageProcessor.cpp
     graphics/images/ImageResizer.cpp
     graphics/images/ImageStack.cpp
+    graphics/images/ImageWriter.cpp
     graphics/images/NetpbmImageReader.cpp
     graphics/images/PngImageReader.cpp
     graphics/images/TargaImageReader.cpp
