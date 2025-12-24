@@ -12,6 +12,8 @@ var dir_578ff3acc76606b5df510d8bab7519f9 =
     [ "ImageResizer.h", "d6/d1f/ImageResizer_8h.html", "d6/d1f/ImageResizer_8h" ],
     [ "ImageStack.cpp", "d8/d4c/ImageStack_8cpp.html", null ],
     [ "ImageStack.h", "d0/d8f/ImageStack_8h.html", "d0/d8f/ImageStack_8h" ],
+    [ "ImageWriter.cpp", "df/d8e/ImageWriter_8cpp.html", null ],
+    [ "ImageWriter.h", "d6/d5d/ImageWriter_8h.html", "d6/d5d/ImageWriter_8h" ],
     [ "NetpbmImageReader.cpp", "da/d50/NetpbmImageReader_8cpp.html", null ],
     [ "NetpbmImageReader.h", "da/d38/NetpbmImageReader_8h.html", "da/d38/NetpbmImageReader_8h" ],
     [ "PngImageReader.cpp", "d5/d67/PngImageReader_8cpp.html", null ],

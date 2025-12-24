@@ -1,3 +1,19 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$dc/df6/classxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1SingleState.html" title=" " alt="" coords="5,5,184,60"/>
+<area shape="rect" id="Node000000" href="$d9/df9/classxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject.html" title=" " alt="" coords="5,165,184,205"/>
+<area shape="rect" id="Node000001" href="$d6/d2d/classxl7_1_1graphics_1_1pipeline_1_1AbstractStage.html" title=" " alt="" coords="232,133,397,173"/>
+<area shape="poly" id="edge131_Node000000_Node000001" title=" " alt="" coords="197,168,231,163,232,168,198,173"/>
+<area shape="rect" id="Node000008" href="$d6/d62/classxl7_1_1graphics_1_1pipeline_1_1Pipeline.html" title=" " alt="" coords="232,197,397,237"/>
+<area shape="poly" id="edge138_Node000000_Node000008" title=" " alt="" coords="198,198,232,203,231,208,197,203"/>
+<area shape="rect" id="Node000002" href="$d1/d95/classxl7_1_1graphics_1_1pipeline_1_1AbstractShaderStage.html" title=" " alt="" coords="447,37,613,77"/>
+<area shape="poly" id="edge132_Node000001_Node000002" title=" " alt="" coords="365,125,444,87,473,75,475,80,446,92,368,129"/>
+<area shape="rect" id="Node000005" href="$d8/d9d/classxl7_1_1graphics_1_1pipeline_1_1InputAssemblerStage.html" title=" " alt="" coords="445,101,615,141"/>
+<area shape="poly" id="edge135_Node000001_Node000005" title=" " alt="" coords="411,136,445,131,446,137,411,142"/>
+<area shape="rect" id="Node000006" href="$d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html" title=" " alt="" coords="447,165,613,205"/>
+<area shape="poly" id="edge136_Node000001_Node000006" title=" " alt="" coords="412,165,448,170,447,176,411,170"/>
+<area shape="rect" id="Node000007" href="$d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html" title=" " alt="" coords="447,229,613,269"/>
+<area shape="poly" id="edge137_Node000001_Node000007" title=" " alt="" coords="386,177,399,183,423,199,447,215,473,227,470,232,444,220,420,204,396,188,383,181"/>
+<area shape="rect" id="Node000003" href="$dc/dba/classxl7_1_1graphics_1_1pipeline_1_1PixelShaderStage.html" title=" " alt="" coords="663,5,828,45"/>
+<area shape="poly" id="edge133_Node000002_Node000003" title=" " alt="" coords="626,40,662,35,663,40,627,46"/>
+<area shape="rect" id="Node000004" href="$d6/d69/classxl7_1_1graphics_1_1pipeline_1_1VertexShaderStage.html" title=" " alt="" coords="663,69,828,109"/>
+<area shape="poly" id="edge134_Node000002_Node000004" title=" " alt="" coords="627,69,663,74,662,80,626,74"/>
 </map>

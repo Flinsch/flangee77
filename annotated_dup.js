@@ -368,6 +368,7 @@ var annotated_dup =
           [ "ImageReader", "d1/d72/classxl7_1_1graphics_1_1images_1_1ImageReader.html", "d1/d72/classxl7_1_1graphics_1_1images_1_1ImageReader" ],
           [ "ImageResizer", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer.html", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer" ],
           [ "ImageStack", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack.html", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack" ],
+          [ "ImageWriter", "de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter.html", "de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter" ],
           [ "NetpbmImageReader", "de/db6/classxl7_1_1graphics_1_1images_1_1NetpbmImageReader.html", "de/db6/classxl7_1_1graphics_1_1images_1_1NetpbmImageReader" ],
           [ "PngImageReader", "d3/d05/classxl7_1_1graphics_1_1images_1_1PngImageReader.html", "d3/d05/classxl7_1_1graphics_1_1images_1_1PngImageReader" ],
           [ "TargaImageReader", "d5/d60/classxl7_1_1graphics_1_1images_1_1TargaImageReader.html", "d5/d60/classxl7_1_1graphics_1_1images_1_1TargaImageReader" ]

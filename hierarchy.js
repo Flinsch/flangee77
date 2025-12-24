@@ -264,6 +264,7 @@ var hierarchy =
       [ "xl7::graphics::images::TargaImageReader", "d5/d60/classxl7_1_1graphics_1_1images_1_1TargaImageReader.html", null ]
     ] ],
     [ "xl7::graphics::images::ImageStack", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack.html", null ],
+    [ "xl7::graphics::images::ImageWriter", "de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter.html", null ],
     [ "xl7::graphics::meshes::IMeshFactory", "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory.html", [
       [ "xl7::graphics::IResourceFactory", "d3/daa/classxl7_1_1graphics_1_1IResourceFactory.html", [
         [ "xl7::graphics::impl::direct3d11::ResourceFactoryImpl", "df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html", null ],
