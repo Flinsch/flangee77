@@ -119,6 +119,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a177c8ca0742a7c71b72361c7940b2308"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0a7ef9399e39e38e726a5901c460424" id="r_ab0a7ef9399e39e38e726a5901c460424"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d78/classcl7_1_1io_1_1AsciiWriter.html#ab0a7ef9399e39e38e726a5901c460424">write_line</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a9bb1332450f33b65853f2c93084c7d7c">cl7::astring_view</a> line, <a class="el" href="../../d1/d2e/namespacecl7.html#a9bb1332450f33b65853f2c93084c7d7c">cl7::astring_view</a> line_break=&quot;\n&quot;) const</td></tr>
 <tr class="separator:ab0a7ef9399e39e38e726a5901c460424"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1731a69fc424f74eda03a8edc266fe66" id="r_a1731a69fc424f74eda03a8edc266fe66"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d78/classcl7_1_1io_1_1AsciiWriter.html#a1731a69fc424f74eda03a8edc266fe66">write_char</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#ad1ff9f016a5e9eeaa76b7c7867e41b0b">cl7::achar_t</a> chr) const</td></tr>
+<tr class="separator:a1731a69fc424f74eda03a8edc266fe66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -149,8 +151,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Prepares an ASCII writer for writing to the specified writable object.</p>
-<p>Prepares a ASCII writer for writing to the specified writable object. </p>
+<p>Prepares an ASCII writer for writing to the specified writable object. </p>
 
 </div>
 </div>
@@ -171,6 +172,25 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Attempts to write the given ASCII string and returns the number of ASCII characters/bytes actually transferred. </p>
+
+</div>
+</div>
+<a id="a1731a69fc424f74eda03a8edc266fe66" name="a1731a69fc424f74eda03a8edc266fe66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1731a69fc424f74eda03a8edc266fe66">&#9670;&#160;</a></span>write_char()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t cl7::io::AsciiWriter::write_char </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d1/d2e/namespacecl7.html#ad1ff9f016a5e9eeaa76b7c7867e41b0b">cl7::achar_t</a>&#160;</td>
+          <td class="paramname"><em>chr</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Attempts to write a single character. Returns 1 on success, 0 on failure. </p>
 
 </div>
 </div>
