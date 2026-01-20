@@ -16,7 +16,7 @@ class AsciiReader
 
 public:
     /**
-     * Prepares a ASCII reader for reading from the specified readable object.
+     * Prepares an ASCII reader for reading from the specified readable object.
      */
     explicit AsciiReader(IReadable* readable) noexcept;
 

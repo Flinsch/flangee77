@@ -7,7 +7,7 @@ namespace cl7::io {
 
 
     /**
-     * Prepares a ASCII writer for writing to the specified writable object.
+     * Prepares an ASCII writer for writing to the specified writable object.
      */
     AsciiWriter::AsciiWriter(IWritable* writable) noexcept
         : _writable(writable)
@@ -34,6 +34,14 @@ namespace cl7::io {
         if (!line_break.empty())
             _writable->write(cl7::make_byte_view(line_break));
         return written;
+    }
+
+    /**
+     * Attempts to write a single character. Returns 1 on success, 0 on failure.
+     */
+    size_t AsciiWriter::write_char(cl7::achar_t chr) const
+    {
+        return _writable->write(static_cast<std::byte>(chr));
     }
 
 

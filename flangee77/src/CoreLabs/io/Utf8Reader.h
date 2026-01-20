@@ -44,7 +44,7 @@ public:
     cl7::u8string_view read_codepoint() const;
 
     /**
-     * Attempts to read a single character. Returns 0 if not possible.
+     * Attempts to read a single character (code unit). Returns 0 if not possible.
      */
     cl7::u8char_t read_char() const;
 

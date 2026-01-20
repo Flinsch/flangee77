@@ -33,6 +33,11 @@ public:
      */
     size_t write_line(cl7::u8string_view line, cl7::u8string_view line_break = u8"\n") const;
 
+    /**
+     * Attempts to write a single character (code unit). Returns 1 on success, 0 on failure.
+     */
+    size_t write_char(cl7::u8char_t chr) const;
+
 private:
     /** The writable target object. */
     IWritable* _writable;

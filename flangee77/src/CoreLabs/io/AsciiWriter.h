@@ -33,6 +33,11 @@ public:
      */
     size_t write_line(cl7::astring_view line, cl7::astring_view line_break = "\n") const;
 
+    /**
+     * Attempts to write a single character. Returns 1 on success, 0 on failure.
+     */
+    size_t write_char(cl7::achar_t chr) const;
+
 private:
     /** The writable target object. */
     IWritable* _writable;

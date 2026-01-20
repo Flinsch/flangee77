@@ -36,6 +36,14 @@ namespace cl7::io {
         return written;
     }
 
+    /**
+     * Attempts to write a single character (code unit). Returns 1 on success, 0 on failure.
+     */
+    size_t Utf8Writer::write_char(cl7::u8char_t chr) const
+    {
+        return _writable->write(static_cast<std::byte>(chr));
+    }
+
 
 
 } // namespace cl7::io

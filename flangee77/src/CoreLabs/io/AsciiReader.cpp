@@ -14,7 +14,7 @@ namespace cl7::io {
 
 
     /**
-     * Prepares a ASCII reader for reading from the specified readable object.
+     * Prepares an ASCII reader for reading from the specified readable object.
      */
     AsciiReader::AsciiReader(IReadable* readable) noexcept
         : _readable(readable)
