@@ -346,11 +346,17 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Describes the logical ordering of color channels within a pixel or texel. The channel order affects how component data in memory is mapped to semantic color channels (R, G, B, A).</p>
+<p>PixelFormat and ChannelOrder together fully describe the in-memory layout. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae277203cd02d27d7cc9fe2f265338be2aea3495a278957dc58165e48a8945469f" name="ae277203cd02d27d7cc9fe2f265338be2aea3495a278957dc58165e48a8945469f"></a>RGBA&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ae277203cd02d27d7cc9fe2f265338be2ae192297ecf3602fabbec5f0a38ede758" name="ae277203cd02d27d7cc9fe2f265338be2ae192297ecf3602fabbec5f0a38ede758"></a>ARGB&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ae277203cd02d27d7cc9fe2f265338be2adce7d10c2f9ffc8ed9e7b6a3f7d8ba6c" name="ae277203cd02d27d7cc9fe2f265338be2adce7d10c2f9ffc8ed9e7b6a3f7d8ba6c"></a>ABGR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ae277203cd02d27d7cc9fe2f265338be2a5a1fe3c61c9e2fd6dbbc823589f6e697" name="ae277203cd02d27d7cc9fe2f265338be2a5a1fe3c61c9e2fd6dbbc823589f6e697"></a>BGRA&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae277203cd02d27d7cc9fe2f265338be2aea3495a278957dc58165e48a8945469f" name="ae277203cd02d27d7cc9fe2f265338be2aea3495a278957dc58165e48a8945469f"></a>RGBA&#160;</td><td class="fielddoc"><p>RGBA: Most common modern graphics API convention. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae277203cd02d27d7cc9fe2f265338be2ae192297ecf3602fabbec5f0a38ede758" name="ae277203cd02d27d7cc9fe2f265338be2ae192297ecf3602fabbec5f0a38ede758"></a>ARGB&#160;</td><td class="fielddoc"><p>ARGB: Common in legacy APIs and some image file formats. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae277203cd02d27d7cc9fe2f265338be2adce7d10c2f9ffc8ed9e7b6a3f7d8ba6c" name="ae277203cd02d27d7cc9fe2f265338be2adce7d10c2f9ffc8ed9e7b6a3f7d8ba6c"></a>ABGR&#160;</td><td class="fielddoc"><p>ABGR: Used by certain platforms and CPU-side pixel buffers. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae277203cd02d27d7cc9fe2f265338be2a5a1fe3c61c9e2fd6dbbc823589f6e697" name="ae277203cd02d27d7cc9fe2f265338be2a5a1fe3c61c9e2fd6dbbc823589f6e697"></a>BGRA&#160;</td><td class="fielddoc"><p>BGRA: Common Windows-native format and Direct3D interoperability. Corresponds to D3DCOLOR in Direct3D 9. </p>
+</td></tr>
 </table>
 
 </div>
@@ -466,6 +472,34 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Describes the component structure, bit depth, and numeric interpretation of a pixel or texel, independent of the semantic channel ordering. It defines:</p><ul>
+<li>The number of components (e.g., R, RG, RGB, RGBA, A-only)</li>
+<li>Bit per component (e.g., 1, 4, 5, 6, 8, 10, 11, 16, 32) and packing scheme for tightly packed formats (e.g., 5:6:5, 10:10:10:2)</li>
+<li>Numeric representation (UNORM, SNORM, UINT, SINT, FLOAT)</li>
+</ul>
+<p>The logical ordering of those components is defined separately by ChannelOrder. PixelFormat and ChannelOrder together fully describe the in-memory layout.</p>
+<p>Naming conventions:</p><ul>
+<li>Components are listed in canonical order (R, G, B, A, X) to describe presence, not memory byte order.</li>
+<li>Numbers indicate the bit widths per component.</li>
+<li>A suffix indicates the numeric data type.</li>
+</ul>
+<p>Numeric data types:</p><ul>
+<li>UNORM: Unsigned normalized integer, mapped to [0.0, 1.0]. Common for color channels, masks, and general-purpose textures.</li>
+<li>SNORM: Signed normalized integer, mapped to [-1.0, +1.0]. Common for direction vectors such as normals and other signed data.</li>
+<li>UINT: Unsigned integer, stored and read as-is. Used for IDs, bitmasks, counters, and unsigned discrete data.</li>
+<li>SINT: Signed integer, stored and read as-is. Used for signed discrete data, indices, and packed metadata.</li>
+<li>FLOAT: IEEE-754 floating point, stored and read as-is. Used for high-precision data such as depths, HDR colors, and simulation values.</li>
+</ul>
+<p>Channel layouts and special cases:</p><ul>
+<li>X components (e.g., R8G8B8X8_UNORM): Padding or unused bits without semantic meaning.</li>
+<li>Single-channel formats (e.g., R8_*, R16_*, R32_*): Used for grayscale textures, masks, depth-like data, or scalar fields.</li>
+<li>Two-channel formats (e.g., R8G8_*, R16G16_*, R32G32_*): Common for vector fields, UV maps, and other two-component data.</li>
+<li>Three-channel formats (e.g., R8G8B8_*, R32G32B32_*): Used for RGB color or 3D vector data. Note: R16G16B16 formats are explicitly omitted because of poor hardware support due to inefficient alignment.</li>
+<li>Four-channel formats (e.g., R8G8B8A8_*, R16G16B16A16_*, R32G32B32A32_*): Standard RGBA formats for color, HDR, and general-purpose textures.</li>
+<li>Packed low-bit formats (e.g., R5G6B5_UNORM, R4G4B4A4_UNORM): Memory-efficient legacy formats with reduced precision.</li>
+<li>R11G11B10_FLOAT: Compact HDR format using shared exponent-style encoding with a higher dynamic range than UNORM formats at similar memory cost.</li>
+<li>A8_UNORM: Alpha-only format, commonly used for masks, opacity textures, and font atlases. </li>
+</ul>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a87b0232522b5f61ad70e5451fdd7082da696b031073e74bf2cb98e5ef201d4aa3" name="a87b0232522b5f61ad70e5451fdd7082da696b031073e74bf2cb98e5ef201d4aa3"></a>UNKNOWN&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a87b0232522b5f61ad70e5451fdd7082da6ee77dd485809c93542e95acf222420c" name="a87b0232522b5f61ad70e5451fdd7082da6ee77dd485809c93542e95acf222420c"></a>R8_UNORM&#160;</td><td class="fielddoc"></td></tr>

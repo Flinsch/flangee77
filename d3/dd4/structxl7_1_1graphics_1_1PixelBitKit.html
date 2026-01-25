@@ -180,7 +180,20 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a551e09aff26610b2a0f939301aa3ea1c" id="r_a551e09aff26610b2a0f939301aa3ea1c"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html#a551e09aff26610b2a0f939301aa3ea1c">uniform_depth</a> = 0</td></tr>
 <tr class="separator:a551e09aff26610b2a0f939301aa3ea1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Utility describing the bit-level structure and channel metadata of a pixel format in a concrete, machine-usable form. It bridges the gap between the abstract format descriptors (PixelFormat and ChannelOrder) and practical bit manipulation by:</p><ul>
+<li>Resolving per-channel bit depths and offsets</li>
+<li>Computing per-channel bit masks</li>
+<li>Determining channel count and pixel stride</li>
+<li>Exposing a uniform interface for channel access and packing/unpacking</li>
+</ul>
+<p>PixelFormat defines which components exists and how many bits they use, while ChannelOrder defines how those components map to semantic channels (R, G, B, A) in memory. <a class="el" href="../../d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html">PixelBitKit</a> combines both to fully describe the concrete memory layout of a single pixel.</p>
+<p>Notes:</p><ul>
+<li>This utility does not perform color space conversion or numeric normalization; it only describes the bit-level layout.</li>
+<li>Integers vs. normalized vs. floating-point interpretation is conveyed via the data type and must be handled by higher-level code.</li>
+<li>Some formats (e.g., R11G11B10_FLOAT) may require special handling beyond simple bit masking due to non-IEEE packing. </li>
+</ul>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a5530d75c6c68fd1245348aa0628097f6" name="a5530d75c6c68fd1245348aa0628097f6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5530d75c6c68fd1245348aa0628097f6">&#9670;&#160;</a></span>DataType</h2>
 

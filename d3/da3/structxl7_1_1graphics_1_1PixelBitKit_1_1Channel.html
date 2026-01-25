@@ -125,7 +125,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The bit depth of the channel (the size of the channel, in bits). This is also the main indicator of whether the channel is involved at all. </p>
+<p>The bit depth of the channel (the size of the channel, in bits) and main indicator of whether the channel is involved at all (0: absent). </p>
 
 </div>
 </div>
@@ -140,7 +140,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The 0-based index of the channel within a pixel. </p>
+<p>The 0-based logical index of the channel within a pixel. </p>
 
 </div>
 </div>
@@ -155,7 +155,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The mask of the channel within a pixel (bit-depth 1s shifted by offset bits). </p>
+<p>The bit mask positioned at the channel's offset within a pixel (bit-depth 1s shifted by offset bits). </p>
 
 </div>
 </div>
@@ -170,7 +170,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The "standalone" mask of the channel (bit-depth 1s shifted by 0 bits). </p>
+<p>The "standalone" bit mask of the channel positioned at bit 0 (bit-depth 1s shifted by 0 bits). </p>
 
 </div>
 </div>
@@ -185,7 +185,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The offset/shift of the channel, in bits. </p>
+<p>The offset/shift of the channel within a pixel, in bits. </p>
 
 </div>
 </div>
