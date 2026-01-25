@@ -9,12 +9,23 @@ namespace xl7::graphics {
 
 
 
+/**
+ * Describes the logical ordering of color channels within a pixel or texel. The
+ * channel order affects how component data in memory is mapped to semantic color
+ * channels (R, G, B, A).
+ *
+ * PixelFormat and ChannelOrder together fully describe the in-memory layout.
+ */
 enum struct ChannelOrder
 {
+    /** RGBA: Most common modern graphics API convention. */
     RGBA,
+    /** ARGB: Common in legacy APIs and some image file formats. */
     ARGB,
+    /** ABGR: Used by certain platforms and CPU-side pixel buffers. */
     ABGR,
-    BGRA, // Corresponds to D3DCOLOR of Direct3D 9.
+    /** BGRA: Common Windows-native format and Direct3D interoperability. Corresponds to D3DCOLOR in Direct3D 9. */
+    BGRA,
 };
 
 
