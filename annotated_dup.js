@@ -507,7 +507,7 @@ var annotated_dup =
         [ "Color", "de/df3/structxl7_1_1graphics_1_1Color.html", "de/df3/structxl7_1_1graphics_1_1Color" ],
         [ "GraphicsSystem", "da/d03/classxl7_1_1graphics_1_1GraphicsSystem.html", "da/d03/classxl7_1_1graphics_1_1GraphicsSystem" ],
         [ "IResourceFactory", "d3/daa/classxl7_1_1graphics_1_1IResourceFactory.html", "d3/daa/classxl7_1_1graphics_1_1IResourceFactory" ],
-        [ "PixelBitKit", "d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html", "d3/dd4/structxl7_1_1graphics_1_1PixelBitKit" ],
+        [ "PixelLayout", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout" ],
         [ "RenderingContext", "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html", "de/d0a/classxl7_1_1graphics_1_1RenderingContext" ],
         [ "RenderingDevice", "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html", "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice" ],
         [ "Viewport", "dc/d8f/structxl7_1_1graphics_1_1Viewport.html", "dc/d8f/structxl7_1_1graphics_1_1Viewport" ]

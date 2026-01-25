@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['r_0',['r',['../de/df3/structxl7_1_1graphics_1_1Color.html#aaed5742d2ee703938969f235c948a11f',1,'xl7::graphics::Color::r'],['../d8/d8e/structxl7_1_1graphics_1_1images_1_1PngImageReader_1_1PaletteEntry.html#ab419941bfadb2973aa3b92bbc67d6c9a',1,'xl7::graphics::images::PngImageReader::PaletteEntry::r'],['../d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html#a0695602cabbef2e76e41cd00f5cc182e',1,'xl7::graphics::PixelBitKit::r']]],
+  ['r_0',['r',['../de/df3/structxl7_1_1graphics_1_1Color.html#aaed5742d2ee703938969f235c948a11f',1,'xl7::graphics::Color::r'],['../d8/d8e/structxl7_1_1graphics_1_1images_1_1PngImageReader_1_1PaletteEntry.html#ab419941bfadb2973aa3b92bbc67d6c9a',1,'xl7::graphics::images::PngImageReader::PaletteEntry::r'],['../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#a389fb476fc0aeb4417d22687d318056e',1,'xl7::graphics::PixelLayout::r']]],
   ['r10g10b10a2_5fuint_1',['R10G10B10A2_UINT',['../d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082daf3748f42b5cc8bc07da32114bf541df5',1,'xl7::graphics']]],
   ['r10g10b10a2_5funorm_2',['R10G10B10A2_UNORM',['../d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082da0b98d86112a7d1c13253a54dc368826f',1,'xl7::graphics']]],
   ['r11g11b10_5ffloat_3',['R11G11B10_FLOAT',['../d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082da7551860e61046d5fb270dd52e1a4b187',1,'xl7::graphics']]],

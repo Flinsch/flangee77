@@ -101,7 +101,7 @@ var hierarchy =
     [ "cl7::io::ByteReader", "d7/df3/classcl7_1_1io_1_1ByteReader.html", null ],
     [ "cl7::io::ByteWriter", "de/d6e/classcl7_1_1io_1_1ByteWriter.html", null ],
     [ "xl7::graphics::RenderingDevice::Capabilities", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html", null ],
-    [ "xl7::graphics::PixelBitKit::Channel", "d3/da3/structxl7_1_1graphics_1_1PixelBitKit_1_1Channel.html", null ],
+    [ "xl7::graphics::PixelLayout::Channel", "d7/d9b/structxl7_1_1graphics_1_1PixelLayout_1_1Channel.html", null ],
     [ "cl7::char_type_of< T >", "d8/dd0/structcl7_1_1char__type__of.html", null ],
     [ "cl7::char_type_of< Tstring_char_ptr >", "d7/dec/structcl7_1_1char__type__of_3_01Tstring__char__ptr_01_4.html", null ],
     [ "cl7::char_type_of< Tstring_view_like >", "d1/d85/structcl7_1_1char__type__of_3_01Tstring__view__like_01_4.html", null ],
@@ -380,7 +380,7 @@ var hierarchy =
         ] ]
       ] ]
     ] ],
-    [ "xl7::graphics::PixelBitKit", "d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html", null ],
+    [ "xl7::graphics::PixelLayout", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html", null ],
     [ "fl7::fonts::raster::PixelOffset", "d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html", null ],
     [ "al7::packing::SkylinePacker::PlacementRange", "d3/dae/structal7_1_1packing_1_1SkylinePacker_1_1PlacementRange.html", null ],
     [ "fl7::fonts::detail::ttf::RawGlyph::Point", "dc/d77/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph_1_1Point.html", null ],

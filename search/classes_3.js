@@ -1,7 +1,7 @@
 var searchData=
 [
   ['capabilities_0',['Capabilities',['../dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html',1,'xl7::graphics::RenderingDevice']]],
-  ['channel_1',['Channel',['../d3/da3/structxl7_1_1graphics_1_1PixelBitKit_1_1Channel.html',1,'xl7::graphics::PixelBitKit']]],
+  ['channel_1',['Channel',['../d7/d9b/structxl7_1_1graphics_1_1PixelLayout_1_1Channel.html',1,'xl7::graphics::PixelLayout']]],
   ['char_5ftype_5fof_2',['char_type_of',['../d8/dd0/structcl7_1_1char__type__of.html',1,'cl7']]],
   ['char_5ftype_5fof_3c_20tstring_5fchar_5fptr_20_3e_3',['char_type_of&lt; Tstring_char_ptr &gt;',['../d7/dec/structcl7_1_1char__type__of_3_01Tstring__char__ptr_01_4.html',1,'cl7']]],
   ['char_5ftype_5fof_3c_20tstring_5fview_5flike_20_3e_4',['char_type_of&lt; Tstring_view_like &gt;',['../d1/d85/structcl7_1_1char__type__of_3_01Tstring__view__like_01_4.html',1,'cl7']]],

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['u_0',['u',['../d7/db1/structml7_1_1Vector2.html#a0edb9f220f0a2f9e41d1bba3f0ebdd00',1,'ml7::Vector2']]],
-  ['uniform_5fdepth_1',['uniform_depth',['../d3/dd4/structxl7_1_1graphics_1_1PixelBitKit.html#a551e09aff26610b2a0f939301aa3ea1c',1,'xl7::graphics::PixelBitKit']]],
+  ['uniform_5fdepth_1',['uniform_depth',['../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#afebfe2c410a802a154fc191860685490',1,'xl7::graphics::PixelLayout']]],
   ['units_5fper_5fem_2',['units_per_em',['../d8/dc0/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1FontHeader.html#a8c5b3e83715046cc9124bb43d1290964',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::FontHeader']]],
   ['upper_5fright_3',['upper_right',['../dc/d05/structfl7_1_1fonts_1_1BoundingBox.html#a13bb8a3d5fddc63cd3cb445b115afe7c',1,'fl7::fonts::BoundingBox']]],
   ['usage_4',['usage',['../d8/df2/structxl7_1_1graphics_1_1meshes_1_1MeshBuffer_1_1Desc.html#a94bc1fde697bb1979fa1a5068be80933',1,'xl7::graphics::meshes::MeshBuffer::Desc::usage'],['../da/d78/structxl7_1_1graphics_1_1textures_1_1Texture_1_1Desc.html#a269524abe84de36fcbd2e484c7db39a1',1,'xl7::graphics::textures::Texture::Desc::usage']]],
