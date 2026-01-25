@@ -2,7 +2,7 @@
 #define F77_TESTS_XL7_GRAPHICS_H
 
 #include <XiaoLabs/graphics/Color.h>
-#include <XiaoLabs/graphics/PixelBitKit.h>
+#include <XiaoLabs/graphics/PixelLayout.h>
 #include <XiaoLabs/graphics/images/ImageConverter.h>
 #include <XiaoLabs/graphics/images/ImageResizer.h>
 #include <XiaoLabs/graphics/impl/shared/shaders/D3DShaderCompiler.h>
@@ -20,7 +20,7 @@
 
 
 
-inline bool operator==(const xl7::graphics::PixelBitKit::Channel& lhs, const xl7::graphics::PixelBitKit::Channel& rhs)
+inline bool operator==(const xl7::graphics::PixelLayout::Channel& lhs, const xl7::graphics::PixelLayout::Channel& rhs)
 {
     return
         lhs.index == rhs.index &&
@@ -52,16 +52,16 @@ namespace tl7::internals {
     cl7::u8string to_string(const xl7::graphics::Color& color) { return u8"rgba(" + cl7::to_string(color.get_r()) + u8", " + cl7::to_string(color.get_g()) + u8", " + cl7::to_string(color.get_b()) + u8", " + cl7::to_string(color.get_a()) + u8")"; }
 
     inline
-    cl7::u8string to_string(const xl7::graphics::PixelBitKit::DataType& data_type)
+    cl7::u8string to_string(const xl7::graphics::PixelLayout::DataType& data_type)
     {
         switch ( data_type )
         {
-        case xl7::graphics::PixelBitKit::DataType::UNKNOWN: return u8"#UNKNOWN";
-        case xl7::graphics::PixelBitKit::DataType::UNORM: return u8"#UNORM";
-        case xl7::graphics::PixelBitKit::DataType::SNORM: return u8"#SNORM";
-        case xl7::graphics::PixelBitKit::DataType::UINT: return u8"#UINT";
-        case xl7::graphics::PixelBitKit::DataType::SINT: return u8"#SINT";
-        case xl7::graphics::PixelBitKit::DataType::FLOAT: return u8"#FLOAT";
+        case xl7::graphics::PixelLayout::DataType::UNKNOWN: return u8"#UNKNOWN";
+        case xl7::graphics::PixelLayout::DataType::UNORM: return u8"#UNORM";
+        case xl7::graphics::PixelLayout::DataType::SNORM: return u8"#SNORM";
+        case xl7::graphics::PixelLayout::DataType::UINT: return u8"#UINT";
+        case xl7::graphics::PixelLayout::DataType::SINT: return u8"#SINT";
+        case xl7::graphics::PixelLayout::DataType::FLOAT: return u8"#FLOAT";
         default:
             assert( false );
         }
@@ -69,7 +69,7 @@ namespace tl7::internals {
     }
 
     inline
-    cl7::u8string to_string(const xl7::graphics::PixelBitKit::Channel& channel) { return u8"{" + cl7::to_string(channel.index) + u8", " + cl7::to_string(channel.depth) + u8", " + cl7::to_string(channel.offset) + u8", " + cl7::u8string(channel.mask ? cl7::text::format::to_0x_hex_lc(channel.mask) : u8"0") + u8", " + cl7::u8string(channel.mask0 ? cl7::text::format::to_0x_hex_lc(channel.mask0) : u8"0") + u8"}"; }
+    cl7::u8string to_string(const xl7::graphics::PixelLayout::Channel& channel) { return u8"{" + cl7::to_string(channel.index) + u8", " + cl7::to_string(channel.depth) + u8", " + cl7::to_string(channel.offset) + u8", " + cl7::u8string(channel.mask ? cl7::text::format::to_0x_hex_lc(channel.mask) : u8"0") + u8", " + cl7::u8string(channel.mask0 ? cl7::text::format::to_0x_hex_lc(channel.mask0) : u8"0") + u8"}"; }
 }
 
 
@@ -172,7 +172,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  Color" )
 
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  PixelBitKit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  PixelLayout" )
 {
     // This is just so that we notice when a value is inserted or removed
     // and then we should also adjust the tests accordingly.
@@ -181,141 +181,141 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  PixelBitKit" )
 
     TESTLABS_SUBCASE( u8"data type" )
     {
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R4G4B4X4_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R5G5B5X1_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R5G6B5_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8X8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R4G4B4A4_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R5G5B5A1_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8A8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R10G10B10A2_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16B16A16_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::A8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R4G4B4X4_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R5G5B5X1_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R5G6B5_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8X8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R4G4B4A4_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R5G5B5A1_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8A8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R10G10B10A2_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16B16A16_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::A8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
 
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8_SNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16_SNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8_SNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16_SNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8_SNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8A8_SNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SNORM );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16B16A16_SNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8_SNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16_SNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8_SNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16_SNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8_SNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8A8_SNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16B16A16_SNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SNORM );
 
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32B32_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8A8_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R10G10B10A2_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16B16A16_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32B32A32_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::UINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8A8_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R10G10B10A2_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16B16A16_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32A32_UINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UINT );
 
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32B32_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8A8_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16B16A16_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SINT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32B32A32_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::SINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8A8_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16B16A16_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SINT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32A32_SINT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::SINT );
 
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::FLOAT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::FLOAT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::FLOAT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::FLOAT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R11G11B10_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::FLOAT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32B32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::FLOAT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16B16A16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::FLOAT );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32B32A32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelBitKit::DataType::FLOAT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::FLOAT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::FLOAT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::FLOAT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::FLOAT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R11G11B10_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::FLOAT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::FLOAT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16B16A16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::FLOAT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32A32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::FLOAT );
     }
 
 
     TESTLABS_SUBCASE( u8"channel count" )
     {
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8_SNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8_SNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
 
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16_SNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16_SNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
 
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
-
-
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8_SNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
-
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16_SNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
-
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
 
 
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R4G4B4X4_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R5G5B5X1_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R5G6B5_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8_SNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
 
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8_SNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16_SNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
 
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8X8_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
-
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R11G11B10_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
-
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32B32_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32B32_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32B32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 2 );
 
 
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R4G4B4A4_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R5G5B5A1_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R4G4B4X4_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R5G5B5X1_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R5G6B5_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
 
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8A8_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8A8_SNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8A8_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R8G8B8A8_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8_SNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
 
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R10G10B10A2_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R10G10B10A2_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8X8_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
 
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16B16A16_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16B16A16_SNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16B16A16_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16B16A16_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R16G16B16A16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R11G11B10_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
 
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32B32A32_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32B32A32_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::R32G32B32A32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
 
 
-        TESTLABS_CHECK_EQ( xl7::graphics::PixelBitKit( xl7::graphics::PixelFormat::A8_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R4G4B4A4_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R5G5B5A1_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8A8_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8A8_SNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8A8_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8A8_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R10G10B10A2_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R10G10B10A2_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16B16A16_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16B16A16_SNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16B16A16_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16B16A16_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16B16A16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32A32_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32A32_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32A32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 4 );
+
+
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::A8_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 1 );
     }
 
 
@@ -324,7 +324,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  PixelBitKit" )
         {
             xl7::graphics::PixelFormat pixel_format;
             unsigned stride;
-            xl7::graphics::PixelBitKit::Channel r, g, b, a;
+            xl7::graphics::PixelLayout::Channel r, g, b, a;
         };
 
         const std::vector<Entry> container {
@@ -403,14 +403,14 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  PixelBitKit" )
         {
             const Entry& entry = container[ i ];
 
-            xl7::graphics::PixelBitKit pbk{ entry.pixel_format, xl7::graphics::ChannelOrder::RGBA };
+            xl7::graphics::PixelLayout pixel_layout{ entry.pixel_format, xl7::graphics::ChannelOrder::RGBA };
 
-            TESTLABS_CHECK_EQ( pbk.stride, entry.stride );
+            TESTLABS_CHECK_EQ( pixel_layout.stride, entry.stride );
 
-            TESTLABS_CHECK_EQ( pbk.r, entry.r );
-            TESTLABS_CHECK_EQ( pbk.g, entry.g );
-            TESTLABS_CHECK_EQ( pbk.b, entry.b );
-            TESTLABS_CHECK_EQ( pbk.a, entry.a );
+            TESTLABS_CHECK_EQ( pixel_layout.r, entry.r );
+            TESTLABS_CHECK_EQ( pixel_layout.g, entry.g );
+            TESTLABS_CHECK_EQ( pixel_layout.b, entry.b );
+            TESTLABS_CHECK_EQ( pixel_layout.a, entry.a );
         }
     }
 }
@@ -575,8 +575,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageProcessor" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"pack_color/unpack_color", container, entry, cl7::to_string( entry.pixel_format ) + u8" " + cl7::to_string( entry.channel_order ) )
     {
-        xl7::graphics::PixelBitKit pbk{ entry.pixel_format, entry.channel_order };
-        size_t stride = static_cast<size_t>( pbk.stride );
+        xl7::graphics::PixelLayout pixel_layout{ entry.pixel_format, entry.channel_order };
+        size_t stride = static_cast<size_t>( pixel_layout.stride );
 
         cl7::byte_vector packed_data{ stride };
         xl7::graphics::images::ImageProcessor::pack_color( entry_color, entry.pixel_format, entry.channel_order, packed_data );
@@ -584,16 +584,16 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageProcessor" )
 
         TESTLABS_CHECK_EQ( packed_data, entry.packed_data );
 
-        if ( pbk.uniform_depth == 8 && pbk.channel_count == 4 ) // R8G8B8A8_UNORM
+        if ( pixel_layout.uniform_depth == 8 && pixel_layout.channel_count == 4 ) // R8G8B8A8_UNORM
         {
             uint32_t packed_uint32 = *((const uint32_t*)(const uint8_t*)packed_data.data());
-            xl7::graphics::Color color{ uint8_t(entry.packed_data[pbk.r.index]), uint8_t(entry.packed_data[pbk.g.index]), uint8_t(entry.packed_data[pbk.b.index]), uint8_t(entry.packed_data[pbk.a.index]) };
+            xl7::graphics::Color color{ uint8_t(entry.packed_data[pixel_layout.r.index]), uint8_t(entry.packed_data[pixel_layout.g.index]), uint8_t(entry.packed_data[pixel_layout.b.index]), uint8_t(entry.packed_data[pixel_layout.a.index]) };
             TESTLABS_CHECK_EQ( packed_uint32, color.to_uint32( entry.channel_order ) );
         }
 
         for ( unsigned rgba = 0; rgba < 4; ++rgba )
         {
-            unsigned depth = pbk.channels[ rgba ].depth;
+            unsigned depth = pixel_layout.channels[ rgba ].depth;
             if ( !depth )
                 continue;
 
@@ -652,8 +652,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageConverter" )
 
     TESTLABS_SUBCASE_BATCH( u8"convert_image", container, entry1 )
     {
-        xl7::graphics::PixelBitKit pbk1{ entry1.pixel_format, entry1.channel_order };
-        size_t stride1 = static_cast<size_t>( pbk1.stride );
+        xl7::graphics::PixelLayout pixel_layout1{ entry1.pixel_format, entry1.channel_order };
+        size_t stride1 = static_cast<size_t>( pixel_layout1.stride );
 
         cl7::byte_vector source_data{ stride1 * 4 };
         xl7::graphics::images::ImageConverter::pack_color( image_colors[0], entry1.pixel_format, entry1.channel_order, { source_data.data() + stride1 * 0, stride1 } );
@@ -667,8 +667,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageConverter" )
 
         TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"convert_image", container, entry2, cl7::to_string( entry1.pixel_format ) + u8" " + cl7::to_string( entry1.channel_order ) + u8" -> " + cl7::to_string( entry2.pixel_format ) + u8" " + cl7::to_string( entry2.channel_order ) )
         {
-            xl7::graphics::PixelBitKit pbk2{ entry2.pixel_format, entry2.channel_order };
-            size_t stride2 = static_cast<size_t>( pbk2.stride );
+            xl7::graphics::PixelLayout pixel_layout2{ entry2.pixel_format, entry2.channel_order };
+            size_t stride2 = static_cast<size_t>( pixel_layout2.stride );
 
             xl7::graphics::images::Image target_image = xl7::graphics::images::ImageConverter::convert_image( source_image, entry2.pixel_format, entry2.channel_order );
 
@@ -732,13 +732,13 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageConverter" )
                     },
                 };
 
-                auto _from_to = [](const xl7::graphics::PixelBitKit& pbk) -> unsigned {
-                    if ( pbk.channel_count == 1 && pbk.a.depth )
+                auto _from_to = [](const xl7::graphics::PixelLayout& pixel_layout) -> unsigned {
+                    if ( pixel_layout.channel_count == 1 && pixel_layout.a.depth )
                         return 0;
-                    return pbk.channel_count;
+                    return pixel_layout.channel_count;
                 };
 
-                signed mapped_rgba = rgba_map[ _from_to(pbk1) ][ _from_to(pbk2) ][ rgba ];
+                signed mapped_rgba = rgba_map[ _from_to(pixel_layout1) ][ _from_to(pixel_layout2) ][ rgba ];
                 if ( mapped_rgba < 0 )
                 {
                     TESTLABS_CHECK_EQ( colors[0][rgba], xl7::graphics::Color::BLACK[rgba] );
@@ -754,9 +754,9 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageConverter" )
                     if ( rgba_ != rgba )
                         TESTLABS_SUBCASE_DATA_STRING( cl7::to_string( entry1.pixel_format ) + u8" " + cl7::to_string( entry1.channel_order ) + u8" -> " + cl7::to_string( entry2.pixel_format ) + u8" " + cl7::to_string( entry2.channel_order ) + u8"  (" + rgbakeys[rgba_] + u8" -> " + rgbakeys[rgba] + u8")" );
 
-                    unsigned depth1 = pbk1.channels[ rgba_ ].depth;
+                    unsigned depth1 = pixel_layout1.channels[ rgba_ ].depth;
                     assert( depth1 );
-                    unsigned depth2 = pbk2.channels[ rgba ].depth;
+                    unsigned depth2 = pixel_layout2.channels[ rgba ].depth;
 
                     unsigned prec = ml7::min2( _precision( depth1 ), _precision( depth2 ) );
 
@@ -820,8 +820,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageResizer" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"resize_image", container, entry, cl7::to_string( entry.pixel_format ) + u8" " + cl7::to_string(entry.source_width) + u8"x" + cl7::to_string(entry.source_height) + u8"x" + cl7::to_string(entry.source_depth) + u8" -> " + cl7::to_string(entry.target_width) + u8"x" + cl7::to_string(entry.target_height) + u8"x" + cl7::to_string(entry.target_depth) )
     {
-        xl7::graphics::PixelBitKit pbk{ entry.pixel_format, xl7::graphics::ChannelOrder::RGBA };
-        size_t stride = static_cast<size_t>( pbk.stride );
+        xl7::graphics::PixelLayout pixel_layout{ entry.pixel_format, xl7::graphics::ChannelOrder::RGBA };
+        size_t stride = static_cast<size_t>( pixel_layout.stride );
 
         xl7::graphics::images::Image source_image{ { entry.pixel_format, xl7::graphics::ChannelOrder::RGBA, entry.source_width, entry.source_height, entry.source_depth }, entry.source_data, true };
 
@@ -841,7 +841,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  ImageResizer" )
 
         TESTLABS_ASSERT_EQ( target_image.get_data().size(), entry.target_data.size() );
 
-        if ( pbk.data_type == xl7::graphics::PixelBitKit::DataType::FLOAT )
+        if ( pixel_layout.data_type == xl7::graphics::PixelLayout::DataType::FLOAT )
         {
             for ( size_t i = 0; i < target_image.get_data().size(); i += stride )
             {

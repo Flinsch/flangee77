@@ -1,4 +1,4 @@
-#include "PixelBitKit.h"
+#include "PixelLayout.h"
 
 #include <array>
 
@@ -8,7 +8,7 @@ namespace xl7::graphics {
 
 
 
-    PixelBitKit::PixelBitKit(PixelFormat pixel_format, ChannelOrder channel_order)
+    PixelLayout::PixelLayout(PixelFormat pixel_format, ChannelOrder channel_order)
         : pixel_format(pixel_format)
         , channel_order(channel_order)
         , channel_count(determine_channel_count(pixel_format))
@@ -229,7 +229,7 @@ namespace xl7::graphics {
     /**
      * Returns the channel count of the specified pixel format.
      */
-    unsigned PixelBitKit::determine_channel_count(PixelFormat pixel_format)
+    unsigned PixelLayout::determine_channel_count(PixelFormat pixel_format)
     {
         unsigned channel_count = 0;
 
@@ -358,7 +358,7 @@ namespace xl7::graphics {
     /**
      * Returns the number of bytes of one pixel of the specified format.
      */
-    unsigned PixelBitKit::determine_stride(PixelFormat pixel_format)
+    unsigned PixelLayout::determine_stride(PixelFormat pixel_format)
     {
         unsigned stride = 0;
 
@@ -487,7 +487,7 @@ namespace xl7::graphics {
     /**
      * Returns the data type of the specified pixel format.
      */
-    PixelBitKit::DataType PixelBitKit::determine_data_type(PixelFormat pixel_format)
+    PixelLayout::DataType PixelLayout::determine_data_type(PixelFormat pixel_format)
     {
         DataType data_type = DataType::UNKNOWN;
 

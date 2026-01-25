@@ -11,8 +11,8 @@ target_sources(flangee77
     graphics/ChannelOrder.cpp
     graphics/Color.cpp
     graphics/GraphicsSystem.cpp
-    graphics/PixelBitKit.cpp
     graphics/PixelFormat.cpp
+    graphics/PixelLayout.cpp
     graphics/RenderingContext.cpp
     graphics/RenderingDevice.cpp
 

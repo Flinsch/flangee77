@@ -4,7 +4,7 @@
 #include "./Image.h"
 
 #include "../Color.h"
-#include "../PixelBitKit.h"
+#include "../PixelLayout.h"
 
 #include <CoreLabs/byte_span.h>
 #include <CoreLabs/byte_view.h>
@@ -39,14 +39,14 @@ struct ImageProcessor
      * The receiving data buffer is required to have at least the corresponding byte
      * size.
      */
-    static void _pack_color(const Color& color, const PixelBitKit& pbk, cl7::byte_span packed_data);
+    static void _pack_color(const Color& color, const PixelLayout& pixel_layout, cl7::byte_span packed_data);
 
     /**
      * Extracts a color that is in the specified pixel format and channel order.
      * The source data buffer is required to have at least the corresponding byte
      * size.
      */
-    static Color _unpack_color(cl7::byte_view packed_data, const PixelBitKit& pbk);
+    static Color _unpack_color(cl7::byte_view packed_data, const PixelLayout& pixel_layout);
 
 }; // struct ImageProcessor
 

@@ -217,8 +217,8 @@ namespace xl7::graphics::images {
     {
         const Image::Desc source_desc = source_image.get_desc();
 
-        const PixelBitKit pbk{source_desc.pixel_format, source_desc.channel_order};
-        const size_t stride = pbk.stride;
+        const PixelLayout pixel_layout{source_desc.pixel_format, source_desc.channel_order};
+        const size_t stride = pixel_layout.stride;
 
         const size_t source_width = source_image.get_width();
         const size_t source_height = source_image.get_height();
@@ -324,7 +324,7 @@ namespace xl7::graphics::images {
                                 const float w = wx * wy * wz;
 
                                 const auto* src_ptr = source_data.data() + static_cast<size_t>(dim_z.ofs + zi) * src_slice_pitch + static_cast<size_t>(dim_y.ofs + yi) * src_line_pitch + static_cast<size_t>(dim_x.ofs + xi) * stride;
-                                Color tmp = ImageProcessor::_unpack_color({src_ptr, stride}, pbk);
+                                Color tmp = ImageProcessor::_unpack_color({src_ptr, stride}, pixel_layout);
 
                                 color += w * tmp;
                                 W += w;
@@ -334,7 +334,7 @@ namespace xl7::graphics::images {
 
                     assert(W > 0.0f);
                     color /= W;
-                    ImageProcessor::_pack_color(color, pbk, {dst_ptr, stride});
+                    ImageProcessor::_pack_color(color, pixel_layout, {dst_ptr, stride});
 
                     dst_ptr += stride;
                 } // dst_x
@@ -383,12 +383,12 @@ namespace xl7::graphics::images {
             return source_image;
         }
 
-        const PixelBitKit pbk{source_desc.pixel_format, source_desc.channel_order};
+        const PixelLayout pixel_layout{source_desc.pixel_format, source_desc.channel_order};
 
         // Fast nearest-neighbor.
         if (resampling_method == ResamplingMethod::NearestNeighbor)
         {
-            switch (pbk.stride)
+            switch (pixel_layout.stride)
             {
             case 1: return {target_desc, std::move(_nearest_neighbor<1>(source_image, width, height, depth))};
             case 2: return {target_desc, std::move(_nearest_neighbor<2>(source_image, width, height, depth))};
@@ -406,9 +406,9 @@ namespace xl7::graphics::images {
         assert(resampling_method == ResamplingMethod::LinearInterpolation);
 
         // 1D mipmap with typical format of 8 bits per channel.
-        if (pbk.uniform_depth == 8 && source_desc.width == target_desc.width * 2 && source_desc.height == 1 && target_desc.height == 1 && source_desc.depth == 1 && target_desc.depth == 1)
+        if (pixel_layout.uniform_depth == 8 && source_desc.width == target_desc.width * 2 && source_desc.height == 1 && target_desc.height == 1 && source_desc.depth == 1 && target_desc.depth == 1)
         {
-            switch (pbk.stride)
+            switch (pixel_layout.stride)
             {
             case 1: return {target_desc, std::move(_mipmap1_u8<1>(source_image))};
             case 2: return {target_desc, std::move(_mipmap1_u8<2>(source_image))};
@@ -420,9 +420,9 @@ namespace xl7::graphics::images {
         }
 
         // 2D mipmap with typical format of 8 bits per channel.
-        if (pbk.uniform_depth == 8 && source_desc.width == target_desc.width * 2 && source_desc.height == target_desc.height * 2 && source_desc.depth == 1 && target_desc.depth == 1)
+        if (pixel_layout.uniform_depth == 8 && source_desc.width == target_desc.width * 2 && source_desc.height == target_desc.height * 2 && source_desc.depth == 1 && target_desc.depth == 1)
         {
-            switch (pbk.stride)
+            switch (pixel_layout.stride)
             {
             case 1: return {target_desc, std::move(_mipmap2_u8<1>(source_image))};
             case 2: return {target_desc, std::move(_mipmap2_u8<2>(source_image))};
@@ -434,9 +434,9 @@ namespace xl7::graphics::images {
         }
 
         // 3D mipmap with typical format of 8 bits per channel.
-        if (pbk.uniform_depth == 8 && source_desc.width == target_desc.width * 2 && source_desc.height == target_desc.height * 2 && source_desc.depth == target_desc.depth * 2)
+        if (pixel_layout.uniform_depth == 8 && source_desc.width == target_desc.width * 2 && source_desc.height == target_desc.height * 2 && source_desc.depth == target_desc.depth * 2)
         {
-            switch (pbk.stride)
+            switch (pixel_layout.stride)
             {
             case 1: return {target_desc, std::move(_mipmap3_u8<1>(source_image))};
             case 2: return {target_desc, std::move(_mipmap3_u8<2>(source_image))};

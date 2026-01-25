@@ -1,6 +1,6 @@
 #include "Image.h"
 
-#include "../PixelBitKit.h"
+#include "../PixelLayout.h"
 
 
 
@@ -11,7 +11,7 @@ namespace xl7::graphics::images {
     /** Returns the size of one pixel, in bytes. */
     unsigned Image::Desc::determine_pixel_stride() const
     {
-        return PixelBitKit::determine_stride(pixel_format);
+        return PixelLayout::determine_stride(pixel_format);
     }
 
     /** Calculates the number of pixels of the image. */

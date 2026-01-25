@@ -1,5 +1,5 @@
-#ifndef XL7_GRAPHICS_PIXELBITKIT_H
-#define XL7_GRAPHICS_PIXELBITKIT_H
+#ifndef XL7_GRAPHICS_PIXELLAYOUT_H
+#define XL7_GRAPHICS_PIXELLAYOUT_H
 
 #include "./PixelFormat.h"
 #include "./ChannelOrder.h"
@@ -25,7 +25,7 @@ namespace xl7::graphics {
  *
  * PixelFormat defines which components exists and how many bits they use, while
  * ChannelOrder defines how those components map to semantic channels (R, G, B, A)
- * in memory. PixelBitKit combines both to fully describe the concrete memory layout
+ * in memory. PixelLayout combines both to fully describe the concrete memory layout
  * of a single pixel.
  *
  * Notes:
@@ -36,7 +36,7 @@ namespace xl7::graphics {
  * - Some formats (e.g., R11G11B10_FLOAT) may require special handling beyond simple
  *   bit masking due to non-IEEE packing.
  */
-struct PixelBitKit
+struct PixelLayout
 {
 
     enum struct DataType
@@ -102,7 +102,7 @@ struct PixelBitKit
 
 
 
-    PixelBitKit(PixelFormat pixel_format, ChannelOrder channel_order);
+    PixelLayout(PixelFormat pixel_format, ChannelOrder channel_order);
 
 
 
@@ -115,10 +115,10 @@ struct PixelBitKit
     /** Returns the data type of the specified pixel format. */
     static DataType determine_data_type(PixelFormat pixel_format);
 
-}; // struct PixelBitKit
+}; // struct PixelLayout
 
 
 
 } // namespace xl7::graphics
 
-#endif // XL7_GRAPHICS_PIXELBITKIT_H
+#endif // XL7_GRAPHICS_PIXELLAYOUT_H

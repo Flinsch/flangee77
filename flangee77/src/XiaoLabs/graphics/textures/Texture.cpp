@@ -2,7 +2,7 @@
 
 #include "../GraphicsSystem.h"
 #include "../RenderingDevice.h"
-#include "../PixelBitKit.h"
+#include "../PixelLayout.h"
 
 #include "../images/ImageConverter.h"
 #include "../images/ImageResizer.h"
@@ -23,7 +23,7 @@ namespace xl7::graphics::textures {
         , _desc(params.desc)
         , _channel_order(GraphicsSystem::instance().get_rendering_device()->recommend_channel_order(type, params.desc.pixel_format, params.desc.preferred_channel_order).first)
         , _depth(depth)
-        , _stride(PixelBitKit::determine_stride(params.desc.pixel_format))
+        , _stride(PixelLayout::determine_stride(params.desc.pixel_format))
         , _line_pitch(_stride * params.desc.width)
         , _slice_pitch(_line_pitch * params.desc.height)
         , _data_size(_slice_pitch * depth * image_count)
