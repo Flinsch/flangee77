@@ -19,12 +19,20 @@ struct PixelBitKit
 
     enum struct DataType
     {
+        /** Unspecified or invalid data type. */
         UNKNOWN,
 
+        /** Unsigned normalized integer, mapped to [0.0, 1.0]. */
         UNORM,
+        /** Signed normalized integer, mapped to [-1.0, +1.0]. */
         SNORM,
+
+        /** Unsigned integer, stored and read as-is. */
         UINT,
+        /** Signed integer, stored and read as-is. */
         SINT,
+
+        /** IEEE-754 floating point, stored and read as-is. */
         FLOAT,
     };
 
