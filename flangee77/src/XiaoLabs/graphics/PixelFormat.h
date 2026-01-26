@@ -13,7 +13,7 @@ namespace xl7::graphics {
  * Describes the component structure, bit depth, and numeric interpretation of a
  * pixel or texel, independent of the semantic channel ordering. It defines:
  * - The number of components (e.g., R, RG, RGB, RGBA, A-only)
- * - Bit per component (e.g., 1, 4, 5, 6, 8, 10, 11, 16, 32)
+ * - Bits per component (e.g., 1, 4, 5, 6, 8, 10, 11, 16, 32)
  *   and packing scheme for tightly packed formats (e.g., 5:6:5, 10:10:10:2)
  * - Numeric representation (UNORM, SNORM, UINT, SINT, FLOAT)
  *
@@ -42,11 +42,11 @@ namespace xl7::graphics {
  * - X components (e.g., R8G8B8X8_UNORM):
  *   Padding or unused bits without semantic meaning.
  * - Single-channel formats (e.g., R8_*, R16_*, R32_*):
- *   Used for grayscale textures, masks, depth-like data, or scalar fields.
+ *   Used for grayscale textures, masks, depth-like data, and scalar fields.
  * - Two-channel formats (e.g., R8G8_*, R16G16_*, R32G32_*):
  *   Common for vector fields, UV maps, and other two-component data.
  * - Three-channel formats (e.g., R8G8B8_*, R32G32B32_*):
- *   Used for RGB color or 3D vector data.
+ *   Used for RGB color and 3D vector data.
  *   Note: R16G16B16 formats are explicitly omitted because of poor hardware support
  *   due to inefficient alignment.
  * - Four-channel formats (e.g., R8G8B8A8_*, R16G16B16A16_*, R32G32B32A32_*):
