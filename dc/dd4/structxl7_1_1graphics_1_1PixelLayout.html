@@ -187,10 +187,10 @@ Public Attributes</h2></td></tr>
 <li>Determining channel count and pixel stride</li>
 <li>Exposing a uniform interface for channel access and packing/unpacking</li>
 </ul>
-<p>PixelFormat defines which components exists and how many bits they use, while ChannelOrder defines how those components map to semantic channels (R, G, B, A) in memory. <a class="el" href="../../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html">PixelLayout</a> combines both to fully describe the concrete memory layout of a single pixel.</p>
+<p>PixelFormat defines which components exist and how many bits they use, while ChannelOrder defines how those components map to semantic channels (R, G, B, A) in memory. <a class="el" href="../../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html">PixelLayout</a> combines both to fully describe the concrete memory layout of a single pixel.</p>
 <p>Notes:</p><ul>
 <li>This utility does not perform color space conversion or numeric normalization; it only describes the bit-level layout.</li>
-<li>Integers vs. normalized vs. floating-point interpretation is conveyed via the data type and must be handled by higher-level code.</li>
+<li>Integer vs. normalized vs. floating-point interpretation is conveyed via the data type and must be handled by higher-level code.</li>
 <li>Some formats (e.g., R11G11B10_FLOAT) may require special handling beyond simple bit masking due to non-IEEE packing. </li>
 </ul>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
