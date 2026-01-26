@@ -6,6 +6,7 @@ var classcl7_1_1io_1_1ReadableMemory =
     [ "ReadableMemory", "db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a469f9e6c37423f32a968afdfd16a8ac3", null ],
     [ "ReadableMemory", "db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a9eac12ea7aa8eba5b00589ca266da269", null ],
     [ "~ReadableMemory", "db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a770710f55efe717d271424fbfad8dd2e", null ],
+    [ "get_data", "db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a69bf5ecb5e55f4099bbfaa043d5508ff", null ],
     [ "get_read_position", "db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a319126659ba78490c17055f4af8f25b2", null ],
     [ "get_readable_bytes_remaining", "db/d3c/classcl7_1_1io_1_1ReadableMemory.html#aaf2c72b35583db3d404579ac8a8ddc56", null ],
     [ "get_total_readable_bytes", "db/d3c/classcl7_1_1io_1_1ReadableMemory.html#a998f44a901246a04715e1e1c13bf266c", null ],

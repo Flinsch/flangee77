@@ -4,7 +4,7 @@ var classcl7_1_1io_1_1WritableMemory =
     [ "WritableMemory", "d9/d32/classcl7_1_1io_1_1WritableMemory.html#ac05c2c11df83305ce45d692293d3727c", null ],
     [ "WritableMemory", "d9/d32/classcl7_1_1io_1_1WritableMemory.html#a1d4a3dd5cc955b0bfff4cead27e4bcd6", null ],
     [ "~WritableMemory", "d9/d32/classcl7_1_1io_1_1WritableMemory.html#aad21c8d85ba394aafd3ca59904cd30ae", null ],
-    [ "get_data", "d9/d32/classcl7_1_1io_1_1WritableMemory.html#a1740447dbf27dc387570d9be2f74923b", null ],
+    [ "get_data", "d9/d32/classcl7_1_1io_1_1WritableMemory.html#a09616291b1a5d94c31b277f503f70230", null ],
     [ "get_total_writable_bytes", "d9/d32/classcl7_1_1io_1_1WritableMemory.html#a2555174064570c9962163acb6984f4cc", null ],
     [ "get_writable_bytes_remaining", "d9/d32/classcl7_1_1io_1_1WritableMemory.html#ad0b1e1d6918d7a07841632d2961c6a7c", null ],
     [ "get_write_position", "d9/d32/classcl7_1_1io_1_1WritableMemory.html#ad7b299ecbdfb333e71d0b091c93efffc", null ],

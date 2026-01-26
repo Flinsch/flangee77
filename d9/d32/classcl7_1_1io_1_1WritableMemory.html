@@ -155,8 +155,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a94073b89ffe9162dcbd3d4edd91f3111"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f1f61d5f6a1927c2a90468cf69b7971" id="r_a0f1f61d5f6a1927c2a90468cf69b7971"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d32/classcl7_1_1io_1_1WritableMemory.html#a0f1f61d5f6a1927c2a90468cf69b7971">write</a> (std::byte byte) override</td></tr>
 <tr class="separator:a0f1f61d5f6a1927c2a90468cf69b7971"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1740447dbf27dc387570d9be2f74923b" id="r_a1740447dbf27dc387570d9be2f74923b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">cl7::byte_vector</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d32/classcl7_1_1io_1_1WritableMemory.html#a1740447dbf27dc387570d9be2f74923b">get_data</a> () const</td></tr>
-<tr class="separator:a1740447dbf27dc387570d9be2f74923b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09616291b1a5d94c31b277f503f70230" id="r_a09616291b1a5d94c31b277f503f70230"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a392a212050307677351feba78ccf36e6">cl7::byte_view</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d32/classcl7_1_1io_1_1WritableMemory.html#a09616291b1a5d94c31b277f503f70230">get_data</a> () const</td></tr>
+<tr class="separator:a09616291b1a5d94c31b277f503f70230"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classcl7_1_1io_1_1IWritable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classcl7_1_1io_1_1IWritable')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../df/db8/classcl7_1_1io_1_1IWritable.html">cl7::io::IWritable</a></td></tr>
 <tr class="memitem:a573d54764abef1d438d4fdb8a3a00e64 inherit pub_methods_classcl7_1_1io_1_1IWritable" id="r_a573d54764abef1d438d4fdb8a3a00e64"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/db8/classcl7_1_1io_1_1IWritable.html#a573d54764abef1d438d4fdb8a3a00e64">~IWritable</a> ()=default</td></tr>
 <tr class="separator:a573d54764abef1d438d4fdb8a3a00e64 inherit pub_methods_classcl7_1_1io_1_1IWritable"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -272,8 +272,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1740447dbf27dc387570d9be2f74923b" name="a1740447dbf27dc387570d9be2f74923b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1740447dbf27dc387570d9be2f74923b">&#9670;&#160;</a></span>get_data()</h2>
+<a id="a09616291b1a5d94c31b277f503f70230" name="a09616291b1a5d94c31b277f503f70230"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09616291b1a5d94c31b277f503f70230">&#9670;&#160;</a></span>get_data()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -282,7 +282,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">cl7::byte_vector</a> &amp; cl7::io::WritableMemory::get_data </td>
+          <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a392a212050307677351feba78ccf36e6">cl7::byte_view</a> cl7::io::WritableMemory::get_data </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -294,7 +294,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the buffer containing the data written so far. </p>
+<p>Returns a random-access view over the data written so far. </p>
 
 </div>
 </div>
