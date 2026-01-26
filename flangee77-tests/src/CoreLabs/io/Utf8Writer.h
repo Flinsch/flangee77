@@ -23,7 +23,7 @@ TESTLABS_CASE( u8"CoreLabs:  io:  Utf8Writer" )
     TESTLABS_CHECK_EQ( utf8_writer.write( u8"Hello World" ), 11 );
     TESTLABS_CHECK_EQ( utf8_writer.write_char( u8'!' ), 1 );
 
-    TESTLABS_CHECK_EQ( writable_memory.get_data(), cl7::text::codec::to_bytes(u8"Line 1\r\nLine 2\nLine 3\rHello World!") );
+    TESTLABS_CHECK( std::ranges::equal( writable_memory.get_data(), cl7::text::codec::to_bytes(u8"Line 1\r\nLine 2\nLine 3\rHello World!") ) );
 }
 
 

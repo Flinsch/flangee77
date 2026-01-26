@@ -24,7 +24,7 @@ namespace cl7::io {
     /**
      * Reads all available/remaining data without checking for valid ASCII.
      */
-    cl7::astring AsciiReader::read_all() const
+    cl7::astring AsciiReader::read_all()
     {
         const auto remaining = _readable->get_readable_bytes_remaining();
         cl7::byte_vector data{remaining};
@@ -36,7 +36,7 @@ namespace cl7::io {
     /**
      * Attempts to read the next line without checking for valid ASCII.
      */
-    cl7::astring AsciiReader::read_line() const
+    cl7::astring AsciiReader::read_line()
     {
         cl7::byte_vector data;
         std::byte byte;
@@ -61,7 +61,7 @@ namespace cl7::io {
      * Attempts to read a single non-whitespace token/word (potentially skipping
      * preceding whitespace) without checking for valid ASCII.
      */
-    cl7::astring AsciiReader::read_token() const
+    cl7::astring AsciiReader::read_token()
     {
         std::byte byte;
         while (_readable->peek(byte) && cl7::text::inspect::is_whitespace(static_cast<cl7::achar_t>(byte)))
@@ -82,7 +82,7 @@ namespace cl7::io {
     /**
      * Attempts to read a single character. Returns 0 if not possible.
      */
-    cl7::achar_t AsciiReader::read_char() const
+    cl7::achar_t AsciiReader::read_char()
     {
         std::byte byte;
         if (_readable->read(byte) != 1)
@@ -102,7 +102,7 @@ namespace cl7::io {
     /**
      * Reads all available/remaining data with ASCII validation/"correction".
      */
-    cl7::astring AsciiReader::read_all_validated() const
+    cl7::astring AsciiReader::read_all_validated()
     {
         return _validate_ascii(read_all());
     }
@@ -110,7 +110,7 @@ namespace cl7::io {
     /**
      * Attempts to read the next line with ASCII validation/"correction".
      */
-    cl7::astring AsciiReader::read_line_validated() const
+    cl7::astring AsciiReader::read_line_validated()
     {
         return _validate_ascii(read_line());
     }
@@ -119,7 +119,7 @@ namespace cl7::io {
      * Attempts to read a single non-whitespace token/word (potentially skipping
      * preceding whitespace) with ASCII validation/"correction".
      */
-    cl7::astring AsciiReader::read_token_validated() const
+    cl7::astring AsciiReader::read_token_validated()
     {
         return _validate_ascii(read_token());
     }
@@ -127,7 +127,7 @@ namespace cl7::io {
     /**
      * "Peeks" a single character without extracting it. Returns 0 if not possible.
      */
-    cl7::achar_t AsciiReader::peek_char() const
+    cl7::achar_t AsciiReader::peek_char()
     {
         std::byte byte;
         if (_readable->peek(byte) != 1)

@@ -23,44 +23,44 @@ public:
     /**
      * Reads all available/remaining data without checking for valid ASCII.
      */
-    cl7::astring read_all() const;
+    cl7::astring read_all();
 
     /**
      * Attempts to read the next line without checking for valid ASCII.
      */
-    cl7::astring read_line() const;
+    cl7::astring read_line();
 
     /**
      * Attempts to read a single non-whitespace token/word (potentially skipping
      * preceding whitespace) without checking for valid ASCII.
      */
-    cl7::astring read_token() const;
+    cl7::astring read_token();
 
     /**
      * Attempts to read a single character. Returns 0 if not possible.
      */
-    cl7::achar_t read_char() const;
+    cl7::achar_t read_char();
 
     /**
      * Reads all available/remaining data with ASCII validation/"correction".
      */
-    cl7::astring read_all_validated() const;
+    cl7::astring read_all_validated();
 
     /**
      * Attempts to read the next line with ASCII validation/"correction".
      */
-    cl7::astring read_line_validated() const;
+    cl7::astring read_line_validated();
 
     /**
      * Attempts to read a single non-whitespace token/word (potentially skipping
      * preceding whitespace) with ASCII validation/"correction".
      */
-    cl7::astring read_token_validated() const;
+    cl7::astring read_token_validated();
 
     /**
      * "Peeks" a single character without extracting it. Returns 0 if not possible.
      */
-    cl7::achar_t peek_char() const;
+    cl7::achar_t peek_char();
 
 private:
     /** The readable source object. */

@@ -30,12 +30,12 @@ public:
      * Attempts to write multiple bytes from a buffer. Returns the number of bytes
      * actually written.
      */
-    size_t write_bytes(cl7::byte_view data) const;
+    size_t write_bytes(cl7::byte_view data);
 
     /**
      * Attempts to write a single byte. Returns 1 on success, 0 on failure.
      */
-    size_t write_byte(std::byte byte) const;
+    size_t write_byte(std::byte byte);
 
     /**
      * Attempts to write a trivially copyable scalar value (e.g., integer, float)
@@ -43,7 +43,7 @@ public:
      * written.
      */
     template <std::endian target_endian = std::endian::native, typename T>
-    size_t write_scalar(T value) const
+    size_t write_scalar(T value)
     {
         static_assert(std::is_trivially_copyable_v<T>);
         value = cl7::bits::swap_bytes_unless_endian<target_endian>(value);

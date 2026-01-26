@@ -24,19 +24,19 @@ public:
      * Attempts to write the given ASCII string and returns the number of ASCII
      * characters/bytes actually transferred.
      */
-    size_t write(cl7::astring_view text) const;
+    size_t write(cl7::astring_view text);
 
     /**
      * Attempts to write the given ASCII string followed by a line break (`\n`, or
      * whatever you specify). The number of ASCII characters/bytes actually
      * transferred is then returned, without the appended line break.
      */
-    size_t write_line(cl7::astring_view line, cl7::astring_view line_break = "\n") const;
+    size_t write_line(cl7::astring_view line, cl7::astring_view line_break = "\n");
 
     /**
      * Attempts to write a single character. Returns 1 on success, 0 on failure.
      */
-    size_t write_char(cl7::achar_t chr) const;
+    size_t write_char(cl7::achar_t chr);
 
 private:
     /** The writable target object. */

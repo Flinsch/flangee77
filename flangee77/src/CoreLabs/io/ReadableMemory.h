@@ -91,6 +91,12 @@ public:
     size_t peek(std::byte& byte) override;
 
 
+    /**
+     * Returns a random-access view over the available data.
+     */
+    cl7::byte_view get_data() const { return _data; }
+
+
 
 private:
     cl7::byte_vector _data;

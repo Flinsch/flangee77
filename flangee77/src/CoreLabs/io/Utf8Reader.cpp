@@ -26,7 +26,7 @@ namespace cl7::io {
     /**
      * Reads all available/remaining data without checking for valid UTF-8.
      */
-    cl7::u8string Utf8Reader::read_all() const
+    cl7::u8string Utf8Reader::read_all()
     {
         const auto remaining = _readable->get_readable_bytes_remaining();
         cl7::byte_vector data{remaining};
@@ -38,7 +38,7 @@ namespace cl7::io {
     /**
      * Attempts to read the next line without checking for valid UTF-8.
      */
-    cl7::u8string Utf8Reader::read_line() const
+    cl7::u8string Utf8Reader::read_line()
     {
         cl7::byte_vector data;
         std::byte byte;
@@ -65,7 +65,7 @@ namespace cl7::io {
      * However, due to the logic used to check for whitespace, it is practically
      * guaranteed that only valid UTF-8 code points will be processed.
      */
-    cl7::u8string Utf8Reader::read_token() const
+    cl7::u8string Utf8Reader::read_token()
     {
         cl7::u8string tmp;
         while (!(tmp = peek_codepoint()).empty() && cl7::text::inspect::is_whitespace_prefix(tmp) == tmp.length())
@@ -86,7 +86,7 @@ namespace cl7::io {
     /**
      * Attempts to read a single Unicode codepoint.
      */
-    cl7::u8string_view Utf8Reader::read_codepoint() const
+    cl7::u8string_view Utf8Reader::read_codepoint()
     {
         static std::array<cl7::u8char_t, 6> buffer;
 
@@ -112,7 +112,7 @@ namespace cl7::io {
     /**
      * Attempts to read a single character (code unit). Returns 0 if not possible.
      */
-    cl7::u8char_t Utf8Reader::read_char() const
+    cl7::u8char_t Utf8Reader::read_char()
     {
         std::byte byte;
         if (_readable->read(byte) != 1)
@@ -132,7 +132,7 @@ namespace cl7::io {
     /**
      * Reads all available/remaining data with UTF-8 validation/"correction".
      */
-    cl7::u8string Utf8Reader::read_all_validated() const
+    cl7::u8string Utf8Reader::read_all_validated()
     {
         return _validate_utf8(read_all());
     }
@@ -140,7 +140,7 @@ namespace cl7::io {
     /**
      * Attempts to read the next line with UTF-8 validation/"correction".
      */
-    cl7::u8string Utf8Reader::read_line_validated() const
+    cl7::u8string Utf8Reader::read_line_validated()
     {
         return _validate_utf8(read_line());
     }
@@ -149,7 +149,7 @@ namespace cl7::io {
      * Attempts to read a single non-whitespace token/word (potentially skipping
      * preceding whitespace) with UTF-8 validation/"correction".
      */
-    cl7::u8string Utf8Reader::read_token_validated() const
+    cl7::u8string Utf8Reader::read_token_validated()
     {
         return _validate_utf8(read_token());
     }
@@ -157,7 +157,7 @@ namespace cl7::io {
     /**
      * Attempts to "peek" a single Unicode codepoint without extracting it.
      */
-    cl7::u8string_view Utf8Reader::peek_codepoint() const
+    cl7::u8string_view Utf8Reader::peek_codepoint()
     {
         const auto read_position = _readable->get_read_position();
 
@@ -171,7 +171,7 @@ namespace cl7::io {
     /**
      * "Peeks" a single character without extracting it. Returns 0 if not possible.
      */
-    cl7::u8char_t Utf8Reader::peek_char() const
+    cl7::u8char_t Utf8Reader::peek_char()
     {
         std::byte byte;
         if (_readable->peek(byte) != 1)

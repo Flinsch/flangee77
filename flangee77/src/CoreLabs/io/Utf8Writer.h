@@ -24,19 +24,19 @@ public:
      * Attempts to write the given UTF-8 string and returns the number of UTF-8
      * characters/bytes actually transferred.
      */
-    size_t write(cl7::u8string_view text) const;
+    size_t write(cl7::u8string_view text);
 
     /**
      * Attempts to write the given UTF-8 string followed by a line break (`\n`, or
      * whatever you specify). The number of UTF-8 characters/bytes actually
      * transferred is then returned, without the appended line break.
      */
-    size_t write_line(cl7::u8string_view line, cl7::u8string_view line_break = u8"\n") const;
+    size_t write_line(cl7::u8string_view line, cl7::u8string_view line_break = u8"\n");
 
     /**
      * Attempts to write a single character (code unit). Returns 1 on success, 0 on failure.
      */
-    size_t write_char(cl7::u8char_t chr) const;
+    size_t write_char(cl7::u8char_t chr);
 
 private:
     /** The writable target object. */

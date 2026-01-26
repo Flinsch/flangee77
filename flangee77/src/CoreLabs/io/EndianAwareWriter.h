@@ -26,13 +26,13 @@ public:
     /**
      * Attempts to write a single byte. Returns 1 on success, 0 on failure.
      */
-    size_t write_byte(std::byte byte) const { return _byte_writer.write_byte(byte); }
+    size_t write_byte(std::byte byte) { return _byte_writer.write_byte(byte); }
 
     /**
      * Attempts to write multiple bytes from a buffer. Returns the number of bytes
      * actually written.
      */
-    size_t write_bytes(cl7::byte_view data) const { return _byte_writer.write_bytes(data); }
+    size_t write_bytes(cl7::byte_view data) { return _byte_writer.write_bytes(data); }
 
     /**
      * Attempts to write a trivially copyable scalar value (e.g., integer, float)
@@ -40,7 +40,7 @@ public:
      * written.
      */
     template <typename T>
-    size_t write_scalar(T value) const { return _byte_writer.write_scalar<target_endian>(value); }
+    size_t write_scalar(T value) { return _byte_writer.write_scalar<target_endian>(value); }
 
 private:
     /** The wrapped byte writer. */

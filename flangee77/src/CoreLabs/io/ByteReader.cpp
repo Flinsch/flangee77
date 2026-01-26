@@ -17,7 +17,7 @@ namespace cl7::io {
     /**
      * Reads and returns all available/remaining bytes until EOF or failure.
      */
-    cl7::byte_vector ByteReader::read_all() const
+    cl7::byte_vector ByteReader::read_all()
     {
         const auto remaining = _readable->get_readable_bytes_remaining();
         cl7::byte_vector data{remaining};
@@ -30,7 +30,7 @@ namespace cl7::io {
      * Attempts to fill the given buffer with bytes. Returns the number of bytes
      * actually read.
      */
-    size_t ByteReader::read_bytes(cl7::byte_span buffer) const
+    size_t ByteReader::read_bytes(cl7::byte_span buffer)
     {
         const auto remaining = _readable->get_readable_bytes_remaining();
         const auto possible = (std::min)(remaining, buffer.size());
@@ -43,7 +43,7 @@ namespace cl7::io {
      * Attempts to read a single byte into the given reference. Returns the number
      * of bytes actually read (i.e. 0 or 1).
      */
-    size_t ByteReader::read_byte(std::byte& byte) const
+    size_t ByteReader::read_byte(std::byte& byte)
     {
         return _readable->read(cl7::make_byte_span(&byte));
     }
@@ -53,7 +53,7 @@ namespace cl7::io {
      * successful. In case of an error or out-of-bounds, 0 is returned. However, a
      * value other than 0 is not a reliable indicator of success.
      */
-    std::byte ByteReader::read_byte() const
+    std::byte ByteReader::read_byte()
     {
         std::byte byte{0};
         _readable->read(cl7::make_byte_span(&byte));
@@ -64,7 +64,7 @@ namespace cl7::io {
      * Attempts to "peek" a single byte without extracting it. Returns the number
      * of bytes that would have been extracted if actually read (i.e. 0 or 1).
      */
-    size_t ByteReader::peek_byte(std::byte& byte) const
+    size_t ByteReader::peek_byte(std::byte& byte)
     {
         return _readable->peek(byte);
     }
@@ -74,7 +74,7 @@ namespace cl7::io {
      * was successful. In case of an error or out-of-bounds, 0 is returned. However,
      * a value other than 0 is not a reliable indicator of success.
      */
-    std::byte ByteReader::peek_byte() const
+    std::byte ByteReader::peek_byte()
     {
         std::byte byte{0};
         _readable->peek(byte);

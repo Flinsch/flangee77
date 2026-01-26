@@ -3,6 +3,7 @@
 #include "./IWritable.h"
 
 #include <CoreLabs/byte_vector.h>
+#include <CoreLabs/byte_view.h>
 
 
 
@@ -83,9 +84,9 @@ public:
 
 
     /**
-     * Returns the buffer containing the data written so far.
+     * Returns a random-access view over the data written so far.
      */
-    const cl7::byte_vector& get_data() const { return _data; }
+    cl7::byte_view get_data() const { return _data; }
 
 
 

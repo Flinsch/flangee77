@@ -1,7 +1,7 @@
 #ifndef F77_TESTS_SHARED_H
 #define F77_TESTS_SHARED_H
 
-#include <CoreLabs/byte_vector.h>
+#include <CoreLabs/byte_view.h>
 #include <CoreLabs/string.h>
 
 
@@ -21,7 +21,7 @@ namespace tl7::internals {
     }
 
     inline
-    cl7::u8string to_string(const cl7::byte_vector& bytes)
+    cl7::u8string to_string(cl7::byte_view bytes)
     {
         cl7::u8string s(bytes.size() * 4 + 2, u8' ');
         s[0] = u8'{';
