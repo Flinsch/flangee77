@@ -23,7 +23,7 @@ namespace xl7::graphics {
  * - Determining channel count and pixel stride
  * - Exposing a uniform interface for channel access and packing/unpacking
  *
- * PixelFormat defines which components exists and how many bits they use, while
+ * PixelFormat defines which components exist and how many bits they use, while
  * ChannelOrder defines how those components map to semantic channels (R, G, B, A)
  * in memory. PixelLayout combines both to fully describe the concrete memory layout
  * of a single pixel.
@@ -31,7 +31,7 @@ namespace xl7::graphics {
  * Notes:
  * - This utility does not perform color space conversion or numeric normalization;
  *   it only describes the bit-level layout.
- * - Integers vs. normalized vs. floating-point interpretation is conveyed via the
+ * - Integer vs. normalized vs. floating-point interpretation is conveyed via the
  *   data type and must be handled by higher-level code.
  * - Some formats (e.g., R11G11B10_FLOAT) may require special handling beyond simple
  *   bit masking due to non-IEEE packing.
