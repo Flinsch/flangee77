@@ -1,5 +1,5 @@
 
-[![License](https://img.shields.io/github/license/Flinsch/flangee77)](https://github.com/Flinsch/flangee77/blob/main/LICENSE.md)
+[![License](https://img.shields.io/github/license/Flinsch/flangee77?label=License)](https://github.com/Flinsch/flangee77/blob/main/LICENSE.md)
 [![C++](https://img.shields.io/badge/C%2B%2B-20-blue?logo=C%2B%2B)](https://en.cppreference.com/w/cpp/20)
 [![Build & Test](https://github.com/Flinsch/flangee77/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/Flinsch/flangee77/actions/workflows/cmake-multi-platform.yml)
 [![Documentation](https://github.com/Flinsch/flangee77/actions/workflows/documentation.yml/badge.svg)](https://github.com/Flinsch/flangee77/actions/workflows/documentation.yml)
