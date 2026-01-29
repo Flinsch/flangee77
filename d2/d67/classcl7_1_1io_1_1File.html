@@ -617,7 +617,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Checks whether the file is readable, i.e. whether it has been (successfully) opened for reading. </p>
+<p>Checks whether the file is readable, i.e. whether it has been (successfully) opened for reading and no previous read operation caused an error, e.g., due to I/O failures at the OS level or loss of stream buffer integrity. </p>
 
 <p>Implements <a class="el" href="../../d5/ddf/classcl7_1_1io_1_1IReadable.html#a80ab6eedd09ba17fec3d7efd6a41b6e3">cl7::io::IReadable</a>.</p>
 
@@ -645,7 +645,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Checks whether the file is writable, i.e. whether it has been (successfully) opened for writing. </p>
+<p>Checks whether the file is writable, i.e. whether it has been (successfully) opened for writing and no previous read operation caused an error, e.g., due to I/O failures at the OS level or loss of stream buffer integrity. </p>
 
 <p>Implements <a class="el" href="../../df/db8/classcl7_1_1io_1_1IWritable.html#a12c593f71601bd4c690d86fc85cacfdd">cl7::io::IWritable</a>.</p>
 
