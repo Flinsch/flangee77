@@ -80,11 +80,12 @@ namespace cl7::io {
 
     /**
      * Checks whether the file is readable, i.e. whether it has been (successfully)
-     * opened for reading.
+     * opened for reading and no previous read operation caused an error, e.g., due
+     * to I/O failures at the OS level or loss of stream buffer integrity.
      */
     bool File::is_readable() const
     {
-        return (_open_mode & OpenMode::Read) == OpenMode::Read && _fstream.is_open();
+        return (_open_mode & OpenMode::Read) == OpenMode::Read && _fstream.is_open() && !_fstream.bad();
     }
 
     /**
@@ -204,11 +205,12 @@ namespace cl7::io {
 
     /**
      * Checks whether the file is writable, i.e. whether it has been (successfully)
-     * opened for writing.
+     * opened for writing and no previous read operation caused an error, e.g., due
+     * to I/O failures at the OS level or loss of stream buffer integrity.
      */
     bool File::is_writable() const
     {
-        return (_open_mode & OpenMode::Write) == OpenMode::Write && _fstream.is_open();
+        return (_open_mode & OpenMode::Write) == OpenMode::Write && _fstream.is_open() && !_fstream.bad();
     }
 
     /**

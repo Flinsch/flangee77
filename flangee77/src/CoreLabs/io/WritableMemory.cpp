@@ -24,15 +24,6 @@ namespace cl7::io {
 
 
     /**
-     * Checks whether the target is writable, i.e. whether the device is open or
-     * whatever.
-     */
-    bool WritableMemory::is_writable() const
-    {
-        return true;
-    }
-
-    /**
      * Returns the total writable size of the target, in bytes.
      */
     size_t WritableMemory::get_total_writable_bytes() const

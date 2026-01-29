@@ -44,7 +44,8 @@ public:
 
     /**
      * Checks whether the file is readable, i.e. whether it has been (successfully)
-     * opened for reading.
+     * opened for reading and no previous read operation caused an error, e.g., due
+     * to I/O failures at the OS level or loss of stream buffer integrity.
      */
     bool is_readable() const override;
 
@@ -106,7 +107,8 @@ public:
 
     /**
      * Checks whether the file is writable, i.e. whether it has been (successfully)
-     * opened for writing.
+     * opened for writing and no previous read operation caused an error, e.g., due
+     * to I/O failures at the OS level or loss of stream buffer integrity.
      */
     bool is_writable() const override;
 

@@ -35,10 +35,9 @@ public:
 
 
     /**
-     * Checks whether the target is writable, i.e. whether the device is open or
-     * whatever.
+     * Checks whether the target is writable. Always returns true.
      */
-    bool is_writable() const override;
+    bool is_writable() const override { return true; }
 
     /**
      * Returns the total writable size of the target, in bytes.
