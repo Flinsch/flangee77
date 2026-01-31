@@ -60,7 +60,7 @@ struct PixelLayout
 
     struct Channel
     {
-        /** The 0-based logical index of the channel within a pixel. */
+        /** The 0-based logical (memory-order) index of the channel within a pixel. */
         unsigned index;
         /** The bit depth of the channel (the size of the channel, in bits) and main indicator of whether the channel is involved at all (0: absent). */
         unsigned depth;
@@ -95,6 +95,9 @@ struct PixelLayout
         /** The semantic channels in canonical order (R, G, B, A). */
         Channel channels[4];
     };
+
+    /** Maps the 0-based logical channel indices (0 .. channel_count-1, in pixel memory order) to semantic channel indices (R=0, G=1, B=2, A=3). */
+    unsigned index_map[4];
 
     /** The data type of each channel. */
     DataType data_type;

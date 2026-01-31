@@ -403,15 +403,35 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  PixelLayout" )
         {
             const Entry& entry = container[ i ];
 
-            xl7::graphics::PixelLayout pixel_layout{ entry.pixel_format, xl7::graphics::ChannelOrder::RGBA };
+            for ( unsigned j = 0; j < 4; ++j )
+            {
+                auto channel_order = static_cast<xl7::graphics::ChannelOrder>(j);
 
-            TESTLABS_CHECK_EQ( pixel_layout.stride, entry.stride );
+                xl7::graphics::PixelLayout pixel_layout{ entry.pixel_format, channel_order };
 
-            TESTLABS_CHECK_EQ( pixel_layout.r, entry.r );
-            TESTLABS_CHECK_EQ( pixel_layout.g, entry.g );
-            TESTLABS_CHECK_EQ( pixel_layout.b, entry.b );
-            TESTLABS_CHECK_EQ( pixel_layout.a, entry.a );
-        }
+                TESTLABS_CHECK_EQ( pixel_layout.stride, entry.stride );
+
+                if ( channel_order == xl7::graphics::ChannelOrder::RGBA )
+                {
+                    TESTLABS_CHECK_EQ( pixel_layout.r, entry.r );
+                    TESTLABS_CHECK_EQ( pixel_layout.g, entry.g );
+                    TESTLABS_CHECK_EQ( pixel_layout.b, entry.b );
+                    TESTLABS_CHECK_EQ( pixel_layout.a, entry.a );
+                }
+
+                for ( unsigned k = 0; k < 4; ++k )
+                {
+                    const xl7::graphics::PixelLayout::Channel& entry_channel = *((&entry.r) + k);
+                    TESTLABS_CHECK_EQ( pixel_layout.channels[k].depth, entry_channel.depth );
+                    TESTLABS_CHECK_EQ( pixel_layout.channels[k].mask0, entry_channel.mask0 );
+                }
+
+                for ( unsigned k = 0; k < pixel_layout.channel_count; ++k )
+                {
+                    TESTLABS_CHECK_EQ( pixel_layout.channels[pixel_layout.index_map[k]].index, k );
+                }
+            } // for each channel order
+        } // for each entry
     }
 }
 

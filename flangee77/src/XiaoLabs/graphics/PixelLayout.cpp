@@ -212,6 +212,8 @@ namespace xl7::graphics {
             channel.mask = stride > 8 ? 0ULL : (((1ULL << channel.depth) - 1ULL) << channel.offset);
             channel.mask0 = (1ULL << channel.depth) - 1ULL;
 
+            index_map[index] = i;
+
             if (index == 0)
                 // The first channel specifies the supposedly uniform bit depth.
                 uniform_depth = channel.depth;
