@@ -91,6 +91,8 @@ struct PixelLayout
         {
             Channel r, g, b, a;
         };
+
+        /** The semantic channels in canonical order (R, G, B, A). */
         Channel channels[4];
     };
 
