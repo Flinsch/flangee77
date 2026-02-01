@@ -428,8 +428,22 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  PixelLayout" )
 
                 for ( unsigned k = 0; k < pixel_layout.channel_count; ++k )
                 {
-                    TESTLABS_CHECK_EQ( pixel_layout.channels[pixel_layout.index_map[k]].index, k );
+                    TESTLABS_CHECK_EQ( pixel_layout.channels[pixel_layout.logical_to_semantic[k]].index, k );
                 }
+
+                unsigned channel_index = 0;
+
+                for ( unsigned k = 0; k < 4; ++k )
+                {
+                    if ( pixel_layout.channels[k].depth == 0 )
+                        continue;
+
+                    TESTLABS_CHECK_EQ( pixel_layout.semantic_involved[channel_index], k );
+
+                    ++channel_index;
+                }
+
+                TESTLABS_CHECK_EQ( channel_index, pixel_layout.channel_count );
             } // for each channel order
         } // for each entry
     }

@@ -197,33 +197,48 @@ namespace xl7::graphics {
             assert(false);
         } // switch channel order
 
-        unsigned index = 0;
-        unsigned offset = 0;
-        for (unsigned i : rgba)
+        // Iterate over the channels in canonical order.
+        // Check each channel if it is involved (depth > 0).
+        // If yes, add its index to the "list" of semantic channels involved.
+        for (unsigned i = 0, semantic_index = 0; semantic_index < 4; ++semantic_index)
         {
-            if (depths[i] == 0)
+            if (depths[semantic_index] == 0)
                 continue;
 
-            Channel& channel = channels[i];
+            semantic_involved[i++] = semantic_index;
+        } // for each channel (canonical order)
 
-            channel.index = index;
-            channel.depth = depths[i];
+        // Iterate over the channels in logical order.
+        // Check each channel if it is involved (depth > 0).
+        // If yes, map the logical index to its semantic index
+        // and fill in the channel layout configuration accordingly.
+        unsigned logical_index = 0;
+        unsigned offset = 0;
+        for (unsigned semantic_index : rgba)
+        {
+            if (depths[semantic_index] == 0)
+                continue;
+
+            logical_to_semantic[logical_index] = semantic_index;
+
+            Channel& channel = channels[semantic_index];
+
+            channel.index = logical_index;
+            channel.depth = depths[semantic_index];
             channel.offset = offset;
             channel.mask = stride > 8 ? 0ULL : (((1ULL << channel.depth) - 1ULL) << channel.offset);
             channel.mask0 = (1ULL << channel.depth) - 1ULL;
 
-            index_map[index] = i;
-
-            if (index == 0)
+            if (logical_index == 0)
                 // The first channel specifies the supposedly uniform bit depth.
                 uniform_depth = channel.depth;
             else if (channel.depth != uniform_depth)
                 // If a channel deviates, there is no uniform bit depth.
                 uniform_depth = 0;
 
-            ++index;
+            ++logical_index;
             offset += channel.depth;
-        } // for each channel
+        } // for each channel (logical order)
     }
 
 

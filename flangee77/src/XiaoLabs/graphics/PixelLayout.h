@@ -96,8 +96,11 @@ struct PixelLayout
         Channel channels[4];
     };
 
-    /** Maps the 0-based logical channel indices (0 .. channel_count-1, in pixel memory order) to semantic channel indices (R=0, G=1, B=2, A=3). */
-    unsigned index_map[4];
+    /** Maps the 0-based logical channel indices in pixel memory order to semantic channel indices (R=0, G=1, B=2, A=3). Only the first channel_count entries are valid. */
+    unsigned logical_to_semantic[4];
+
+    /** Lists the semantic channel indices (R=0, G=1, B=2, A=3) that are present in this format, in canonical semantic order. Only the first channel_count entries are valid. */
+    unsigned semantic_involved[4];
 
     /** The data type of each channel. */
     DataType data_type;
