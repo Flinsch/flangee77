@@ -1,5 +1,9 @@
 #include "TestRenderer.h"
 
+#include "../raster/SimpleBitmapRasterizer.h"
+#include "../raster/OversampledBitmapRasterizer.h"
+#include "../raster/AnalyticalCoverageRasterizer.h"
+
 #include <XiaoLabs/graphics.h>
 
 #include <MathLabs/Vector2.h>
@@ -18,6 +22,15 @@ namespace fl7::fonts::render {
 
     void TestRenderer::_emit_glyph(const Glyph& glyph, const State& state)
     {
+        /*raster::SimpleBitmapRasterizer simple_bitmap_rasterizer{0, true};
+        //raster::OversampledBitmapRasterizer oversampled_bitmap_rasterizer{2, 3};
+        raster::OversampledBitmapRasterizer oversampled_bitmap_rasterizer{2, &simple_bitmap_rasterizer};
+        raster::AnalyticalCoverageRasterizer analytical_coverage_rasterizer;
+        //raster::AbstractBitmapRasterizer* bitmap_rasterizer = &simple_bitmap_rasterizer;
+        raster::AbstractBitmapRasterizer* bitmap_rasterizer = &oversampled_bitmap_rasterizer;
+        //raster::AbstractBitmapRasterizer* bitmap_rasterizer = &analytical_coverage_rasterizer;
+        auto raster_result = bitmap_rasterizer->rasterize_glyph(glyph, {.font_size = state.text_style.font_size, .padding = 1});*/
+
         struct Vertex
         {
             ml7::Vector2f pos;
