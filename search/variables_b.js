@@ -27,8 +27,9 @@ var searchData=
   ['log_5fcontext_24',['log_context',['../d0/d2a/structdl7_1_1json_1_1util_1_1Unescaper_1_1ErrorHandler.html#ae4b5998172de1e24f9756695565f41a1',1,'dl7::json::util::Unescaper::ErrorHandler::log_context'],['../d9/dfd/structdl7_1_1xml_1_1util_1_1Unescaper_1_1ErrorHandler.html#a6ae36079afa6ea6a523882ad7f92a172',1,'dl7::xml::util::Unescaper::ErrorHandler::log_context']]],
   ['logger_25',['logger',['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a7f8bb9e9cf3071b88972022362521bcd',1,'cl7::logging::LogContext']]],
   ['logging_5fenabled_26',['logging_enabled',['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a76e529536f3bfc42aade1232a223109b',1,'cl7::logging::LogContext']]],
-  ['low_5fsurrogate_5fmax_27',['low_surrogate_max',['../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html#aceaa2e57c6ed275c556646c930ead547',1,'cl7::text::codec::codepoint']]],
-  ['low_5fsurrogate_5fmin_28',['low_surrogate_min',['../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html#aed5251e6e0d4257849df717893e4596f',1,'cl7::text::codec::codepoint']]],
-  ['lower_5fleft_29',['lower_left',['../dc/d05/structfl7_1_1fonts_1_1BoundingBox.html#ace730eeac6c897341a8ae3281dc2382b',1,'fl7::fonts::BoundingBox']]],
-  ['lowest_5frec_5fppem_30',['lowest_rec_ppem',['../d8/dc0/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1FontHeader.html#affca90e758af010ce8016b6eb4bdfda1',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::FontHeader']]]
+  ['logical_5fto_5fsemantic_27',['logical_to_semantic',['../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#a030f74677bdd20172b95797d45ee49ef',1,'xl7::graphics::PixelLayout']]],
+  ['low_5fsurrogate_5fmax_28',['low_surrogate_max',['../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html#aceaa2e57c6ed275c556646c930ead547',1,'cl7::text::codec::codepoint']]],
+  ['low_5fsurrogate_5fmin_29',['low_surrogate_min',['../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html#aed5251e6e0d4257849df717893e4596f',1,'cl7::text::codec::codepoint']]],
+  ['lower_5fleft_30',['lower_left',['../dc/d05/structfl7_1_1fonts_1_1BoundingBox.html#ace730eeac6c897341a8ae3281dc2382b',1,'fl7::fonts::BoundingBox']]],
+  ['lowest_5frec_5fppem_31',['lowest_rec_ppem',['../d8/dc0/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1FontHeader.html#affca90e758af010ce8016b6eb4bdfda1',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::FontHeader']]]
 ];

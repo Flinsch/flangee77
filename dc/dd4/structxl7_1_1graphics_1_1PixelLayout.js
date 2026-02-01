@@ -20,9 +20,10 @@ var structxl7_1_1graphics_1_1PixelLayout =
     [ "channels", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#a53f47deab7f3a6116419d53855dce2b8", null ],
     [ "data_type", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#aae691e410e689af309a736c8f13a8492", null ],
     [ "g", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#a89ea99a4f1e03898664bb442490b6279", null ],
-    [ "index_map", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#aedbf2fe1438dc7834b65f35d96f375ee", null ],
+    [ "logical_to_semantic", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#a030f74677bdd20172b95797d45ee49ef", null ],
     [ "pixel_format", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#a424fbacad33756b0f60c0f4318d2848a", null ],
     [ "r", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#a389fb476fc0aeb4417d22687d318056e", null ],
+    [ "semantic_involved", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#a5237ace301cb04d9814688972fa24463", null ],
     [ "stride", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#ab7422d9644fd97f832faa77b23f645a2", null ],
     [ "uniform_depth", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#afebfe2c410a802a154fc191860685490", null ]
 ];

@@ -175,8 +175,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a734de91b77e4dbc2b09566f6f6ee29cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5911a7eec5af84c447db06be4ff86116" id="r_a5911a7eec5af84c447db06be4ff86116"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom">&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
 <tr class="separator:a5911a7eec5af84c447db06be4ff86116"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedbf2fe1438dc7834b65f35d96f375ee" id="r_aedbf2fe1438dc7834b65f35d96f375ee"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#aedbf2fe1438dc7834b65f35d96f375ee">index_map</a> [4]</td></tr>
-<tr class="separator:aedbf2fe1438dc7834b65f35d96f375ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a030f74677bdd20172b95797d45ee49ef" id="r_a030f74677bdd20172b95797d45ee49ef"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#a030f74677bdd20172b95797d45ee49ef">logical_to_semantic</a> [4]</td></tr>
+<tr class="separator:a030f74677bdd20172b95797d45ee49ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5237ace301cb04d9814688972fa24463" id="r_a5237ace301cb04d9814688972fa24463"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#a5237ace301cb04d9814688972fa24463">semantic_involved</a> [4]</td></tr>
+<tr class="separator:a5237ace301cb04d9814688972fa24463"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae691e410e689af309a736c8f13a8492" id="r_aae691e410e689af309a736c8f13a8492"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#ae44172ca898d119023f9b86ccc012c9a">DataType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#aae691e410e689af309a736c8f13a8492">data_type</a></td></tr>
 <tr class="separator:aae691e410e689af309a736c8f13a8492"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afebfe2c410a802a154fc191860685490" id="r_afebfe2c410a802a154fc191860685490"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#afebfe2c410a802a154fc191860685490">uniform_depth</a> = 0</td></tr>
@@ -460,18 +462,18 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aedbf2fe1438dc7834b65f35d96f375ee" name="aedbf2fe1438dc7834b65f35d96f375ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aedbf2fe1438dc7834b65f35d96f375ee">&#9670;&#160;</a></span>index_map</h2>
+<a id="a030f74677bdd20172b95797d45ee49ef" name="a030f74677bdd20172b95797d45ee49ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a030f74677bdd20172b95797d45ee49ef">&#9670;&#160;</a></span>logical_to_semantic</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned xl7::graphics::PixelLayout::index_map[4]</td>
+          <td class="memname">unsigned xl7::graphics::PixelLayout::logical_to_semantic[4]</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Maps the 0-based logical channel indices (0 .. channel_count-1, in pixel memory order) to semantic channel indices (R=0, G=1, B=2, A=3). </p>
+<p>Maps the 0-based logical channel indices in pixel memory order to semantic channel indices (R=0, G=1, B=2, A=3). Only the first channel_count entries are valid. </p>
 
 </div>
 </div>
@@ -501,6 +503,21 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5237ace301cb04d9814688972fa24463" name="a5237ace301cb04d9814688972fa24463"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5237ace301cb04d9814688972fa24463">&#9670;&#160;</a></span>semantic_involved</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned xl7::graphics::PixelLayout::semantic_involved[4]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Lists the semantic channel indices (R=0, G=1, B=2, A=3) that are present in this format, in canonical semantic order. Only the first channel_count entries are valid. </p>
 
 </div>
 </div>
