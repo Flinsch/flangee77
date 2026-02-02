@@ -6,7 +6,7 @@ namespace xl7::graphics::impl::direct3d9::mappings {
 
 
 
-    DWORD _d3d_usage_from(resources::ResourceUsage resource_usage)
+    DWORD _d3d_usage_from(graphics::meshes::MeshBufferUsage mesh_buffer_usage)
     {
         // Compare if necessary:
         // https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3dusage
@@ -16,13 +16,14 @@ namespace xl7::graphics::impl::direct3d9::mappings {
         // So "default" should not be interpreted as "dynamic" here,
         // because "static" does not mean "immutable".
 
-        switch (resource_usage)
+        switch (mesh_buffer_usage)
         {
-        case resources::ResourceUsage::Default:
+        case graphics::meshes::MeshBufferUsage::Immutable:
             return D3DUSAGE_WRITEONLY;
-        case resources::ResourceUsage::Immutable:
+        case graphics::meshes::MeshBufferUsage::Default:
             return D3DUSAGE_WRITEONLY;
-        case resources::ResourceUsage::Dynamic:
+        case graphics::meshes::MeshBufferUsage::Dynamic:
+        case graphics::meshes::MeshBufferUsage::Transient:
             return D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC;
         default:
             assert(false);
@@ -30,7 +31,7 @@ namespace xl7::graphics::impl::direct3d9::mappings {
         }
     }
 
-    DWORD _d3d_usage_from(resources::ResourceUsage resource_usage, unsigned mip_levels)
+    DWORD _d3d_usage_from(graphics::textures::TextureUsage texture_usage, unsigned mip_levels)
     {
         DWORD d3d_usage = 0;
 
@@ -42,15 +43,15 @@ namespace xl7::graphics::impl::direct3d9::mappings {
 
         // And "default" usage should not be interpreted as "dynamic" here (see above again).
 
-        switch (resource_usage)
+        switch (texture_usage)
         {
-        case resources::ResourceUsage::Default:
+        case graphics::textures::TextureUsage::Immutable:
             //d3d_usage |= 0;
             break;
-        case resources::ResourceUsage::Immutable:
+        case graphics::textures::TextureUsage::Default:
             //d3d_usage |= 0;
             break;
-        case resources::ResourceUsage::Dynamic:
+        case graphics::textures::TextureUsage::Dynamic:
             d3d_usage |= D3DUSAGE_DYNAMIC;
             break;
         default:
@@ -69,9 +70,17 @@ namespace xl7::graphics::impl::direct3d9::mappings {
         return d3d_usage;
     }
 
-    D3DPOOL _d3d_pool_from(resources::ResourceUsage resource_usage)
+    D3DPOOL _d3d_pool_from(graphics::meshes::MeshBufferUsage mesh_buffer_usage)
     {
-        if (resource_usage == resources::ResourceUsage::Dynamic)
+        if (mesh_buffer_usage >= graphics::meshes::MeshBufferUsage::Dynamic)
+            return D3DPOOL_DEFAULT;
+
+        return D3DPOOL_MANAGED;
+    }
+
+    D3DPOOL _d3d_pool_from(graphics::textures::TextureUsage texture_usage)
+    {
+        if (texture_usage >= graphics::textures::TextureUsage::Dynamic)
             return D3DPOOL_DEFAULT;
 
         return D3DPOOL_MANAGED;

@@ -6,15 +6,32 @@ namespace xl7::graphics::impl::direct3d11::mappings {
 
 
 
-    D3D11_USAGE _d3d_usage_from(resources::ResourceUsage resource_usage)
+    D3D11_USAGE _d3d_usage_from(graphics::meshes::MeshBufferUsage mesh_buffer_usage)
     {
-        switch (resource_usage)
+        switch (mesh_buffer_usage)
         {
-        case resources::ResourceUsage::Default:
-            return D3D11_USAGE_DEFAULT;
-        case resources::ResourceUsage::Immutable:
+        case graphics::meshes::MeshBufferUsage::Immutable:
             return D3D11_USAGE_IMMUTABLE;
-        case resources::ResourceUsage::Dynamic:
+        case graphics::meshes::MeshBufferUsage::Default:
+            return D3D11_USAGE_DEFAULT;
+        case graphics::meshes::MeshBufferUsage::Dynamic:
+        case graphics::meshes::MeshBufferUsage::Transient:
+            return D3D11_USAGE_DYNAMIC;
+        default:
+            assert(false);
+            return D3D11_USAGE_DEFAULT;
+        }
+    }
+
+    D3D11_USAGE _d3d_usage_from(graphics::textures::TextureUsage texture_usage)
+    {
+        switch (texture_usage)
+        {
+        case graphics::textures::TextureUsage::Immutable:
+            return D3D11_USAGE_IMMUTABLE;
+        case graphics::textures::TextureUsage::Default:
+            return D3D11_USAGE_DEFAULT;
+        case graphics::textures::TextureUsage::Dynamic:
             return D3D11_USAGE_DYNAMIC;
         default:
             assert(false);

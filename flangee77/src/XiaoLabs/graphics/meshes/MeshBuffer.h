@@ -2,6 +2,7 @@
 #define XL7_GRAPHICS_MESHES_MESHBUFFER_H
 #include "../../resources/Resource.h"
 
+#include "./MeshBufferUsage.h"
 #include "./Topology.h"
 #include "./MeshUtil.h"
 
@@ -31,7 +32,7 @@ public:
     struct Desc
     {
         /** Identifies how the buffer is expected to be updated (frequency of update is a key factor). */
-        resources::ResourceUsage usage;
+        MeshBufferUsage usage;
 
         /** The topology of the primitives that the buffer represents. */
         Topology topology;

@@ -59,7 +59,7 @@ namespace fl7::fonts::render {
             return;
 
         xl7::graphics::meshes::VertexBuffer::Desc vertex_buffer_desc{
-            xl7::resources::ResourceUsage::Immutable,
+            xl7::graphics::meshes::MeshBufferUsage::Immutable,
             xl7::graphics::meshes::Topology::LineList,
             static_cast<unsigned>(vertices.size()),
             sizeof(Vertex),

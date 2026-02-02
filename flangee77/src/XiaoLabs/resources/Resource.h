@@ -2,7 +2,6 @@
 #define XL7_RESOURCES_RESOURCE_H
 
 #include "./ResourceId.h"
-#include "./ResourceUsage.h"
 #include "./DefaultDataProvider.h"
 
 #include <CoreLabs/byte_view.h>

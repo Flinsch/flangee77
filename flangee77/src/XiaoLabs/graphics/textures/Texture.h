@@ -2,6 +2,8 @@
 #define XL7_GRAPHICS_TEXTURES_TEXTURE_H
 #include "../../resources/Resource.h"
 
+#include "./TextureUsage.h"
+
 #include "../PixelFormat.h"
 #include "../ChannelOrder.h"
 
@@ -37,7 +39,7 @@ public:
     struct Desc
     {
         /** Identifies how the texture is expected to be updated (frequency of update is a key factor). */
-        resources::ResourceUsage usage;
+        TextureUsage usage;
 
         /** The pixel format. */
         PixelFormat pixel_format;

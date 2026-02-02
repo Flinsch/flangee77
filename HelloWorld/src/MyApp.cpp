@@ -77,7 +77,7 @@ namespace helloworld {
         assert(vertex_layout.calculate_size() == sizeof(Vertex));
 
         xl7::graphics::meshes::VertexBuffer::Desc vertex_buffer_desc{
-            xl7::resources::ResourceUsage::Immutable,
+            xl7::graphics::meshes::MeshBufferUsage::Immutable,
             xl7::graphics::meshes::Topology::PointList,
             4,
             sizeof(Vertex),
@@ -85,7 +85,7 @@ namespace helloworld {
         };
 
         xl7::graphics::meshes::IndexBuffer::Desc index_buffer_desc{
-            xl7::resources::ResourceUsage::Immutable,
+            xl7::graphics::meshes::MeshBufferUsage::Immutable,
             xl7::graphics::meshes::Topology::TriangleStrip,
             4,
             xl7::graphics::meshes::IndexType::UINT16,
@@ -147,7 +147,7 @@ namespace helloworld {
         //netpbm_image_reader.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy-p7.pam", image);
 
         xl7::graphics::textures::Texture2D::Desc texture_desc{
-            xl7::resources::ResourceUsage::Immutable,
+            xl7::graphics::textures::TextureUsage::Immutable,
             xl7::graphics::PixelFormat::R8G8B8A8_UNORM,
             xl7::graphics::ChannelOrder::RGBA,
             0, // mip_levels

@@ -46,7 +46,7 @@ namespace xl7::graphics::impl::direct3d11::meshes {
         buffer_desc.ByteWidth = get_size();
         buffer_desc.Usage = mappings::_d3d_usage_from(get_desc().usage);
         buffer_desc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-        buffer_desc.CPUAccessFlags = get_desc().usage == resources::ResourceUsage::Dynamic ? D3D11_CPU_ACCESS_WRITE : 0;
+        buffer_desc.CPUAccessFlags = get_desc().usage >= graphics::meshes::MeshBufferUsage::Dynamic ? D3D11_CPU_ACCESS_WRITE : 0;
         buffer_desc.MiscFlags = 0;
         buffer_desc.StructureByteStride = get_desc().stride;
 
@@ -98,7 +98,7 @@ namespace xl7::graphics::impl::direct3d11::meshes {
         auto* d3d_device_context = GraphicsSystem::instance().get_rendering_device()->get_primary_context_impl<RenderingContextImpl>()->get_raw_d3d_device_context();
         assert(d3d_device_context);
 
-        if (get_desc().usage == resources::ResourceUsage::Dynamic)
+        if (get_desc().usage >= graphics::meshes::MeshBufferUsage::Dynamic)
         {
             D3D11_MAP map_type;
             if (discard)
@@ -122,7 +122,7 @@ namespace xl7::graphics::impl::direct3d11::meshes {
 
             d3d_device_context->Unmap(_d3d_vertex_buffer.Get(), 0);
         }
-        else // => _desc.usage == ResourceUsage::Default
+        else // => _desc.usage == graphics::meshes::MeshBufferUsage::Default
         {
             unsigned copy_flags = 0;
             if (discard)

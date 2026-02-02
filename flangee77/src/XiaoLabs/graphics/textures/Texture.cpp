@@ -206,7 +206,7 @@ namespace xl7::graphics::textures {
      */
     bool Texture::_update(const ImageDataProvider& image_data_provider)
     {
-        if (_desc.usage == resources::ResourceUsage::Immutable)
+        if (_desc.usage == TextureUsage::Immutable)
         {
             LOG_ERROR(u8"The immutable " + get_typed_identifier_string() + u8" cannot be updated.");
             return false;

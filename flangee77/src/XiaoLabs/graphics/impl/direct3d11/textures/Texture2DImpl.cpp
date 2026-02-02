@@ -65,7 +65,7 @@ namespace xl7::graphics::impl::direct3d11::textures {
         assert(get_data().empty() || get_data().size() == static_cast<size_t>(get_data_size()));
 
         unsigned mip_levels = get_desc().mip_levels;
-        if (get_desc().usage == resources::ResourceUsage::Dynamic && mip_levels != 1)
+        if (get_desc().usage >= graphics::textures::TextureUsage::Dynamic && mip_levels != 1)
         {
             mip_levels = 1;
             LOG_WARNING(u8"A dynamic texture cannot have mipmaps, so the number of mipmap levels is set to 1.");
@@ -81,7 +81,7 @@ namespace xl7::graphics::impl::direct3d11::textures {
         texture_desc.SampleDesc.Quality = 0;
         texture_desc.Usage = mappings::_d3d_usage_from(get_desc().usage);
         texture_desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
-        texture_desc.CPUAccessFlags = get_desc().usage == resources::ResourceUsage::Dynamic ? D3D11_CPU_ACCESS_WRITE : 0;
+        texture_desc.CPUAccessFlags = get_desc().usage >= graphics::textures::TextureUsage::Dynamic ? D3D11_CPU_ACCESS_WRITE : 0;
         texture_desc.MiscFlags = 0;
 
         constexpr unsigned MAX_LEVELS = 16; // Just some value big enough.
@@ -147,7 +147,7 @@ namespace xl7::graphics::impl::direct3d11::textures {
         auto* d3d_device_context = GraphicsSystem::instance().get_rendering_device()->get_primary_context_impl<RenderingContextImpl>()->get_raw_d3d_device_context();
         assert(d3d_device_context);
 
-        if (get_desc().usage == resources::ResourceUsage::Dynamic)
+        if (get_desc().usage >= graphics::textures::TextureUsage::Dynamic)
         {
             D3D11_MAP map_type = D3D11_MAP_WRITE_DISCARD;
 
@@ -172,7 +172,7 @@ namespace xl7::graphics::impl::direct3d11::textures {
 
             d3d_device_context->Unmap(_d3d_texture.Get(), 0);
         }
-        else // => _desc.usage == ResourceUsage::Default
+        else // => _desc.usage == graphics::textures::TextureUsage::Default
         {
             unsigned copy_flags = D3D11_COPY_DISCARD;
 

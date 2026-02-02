@@ -1,7 +1,8 @@
 #ifndef XL7_GRAPHICS_IMPL_D3D11_MAPPINGS_H
 #define XL7_GRAPHICS_IMPL_D3D11_MAPPINGS_H
 
-#include "../../../resources/ResourceUsage.h"
+#include "../../meshes/MeshBufferUsage.h"
+#include "../../textures/TextureUsage.h"
 
 #include "../../PixelFormat.h"
 #include "../../ChannelOrder.h"
@@ -16,7 +17,8 @@ namespace xl7::graphics::impl::direct3d11::mappings {
 
 
 
-    D3D11_USAGE _d3d_usage_from(resources::ResourceUsage resource_usage);
+    D3D11_USAGE _d3d_usage_from(graphics::meshes::MeshBufferUsage mesh_buffer_usage);
+    D3D11_USAGE _d3d_usage_from(graphics::textures::TextureUsage texture_usage);
 
     DXGI_FORMAT _dxgi_format_from(PixelFormat pixel_format, ChannelOrder channel_order);
 
