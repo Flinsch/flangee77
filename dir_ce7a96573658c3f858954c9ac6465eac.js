@@ -14,5 +14,6 @@ var dir_ce7a96573658c3f858954c9ac6465eac =
     [ "Texture3D.cpp", "d3/d13/Texture3D_8cpp.html", null ],
     [ "Texture3D.h", "d3/dac/Texture3D_8h.html", "d3/dac/Texture3D_8h" ],
     [ "TextureManager.cpp", "db/dbe/TextureManager_8cpp.html", null ],
-    [ "TextureManager.h", "db/d72/TextureManager_8h.html", "db/d72/TextureManager_8h" ]
+    [ "TextureManager.h", "db/d72/TextureManager_8h.html", "db/d72/TextureManager_8h" ],
+    [ "TextureUsage.h", "dd/d12/TextureUsage_8h.html", "dd/d12/TextureUsage_8h" ]
 ];

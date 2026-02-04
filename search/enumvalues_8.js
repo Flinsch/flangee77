@@ -1,7 +1,7 @@
 var searchData=
 [
   ['identifier_0',['IDENTIFIER',['../db/dcc/namespacedl7_1_1json_1_1detail.html#aefd1a930e6928f0b5231c01b74806e05a078f61d95ec05a0473eab01f674c40e1',1,'dl7::json::detail']]],
-  ['immutable_1',['Immutable',['../da/d60/namespacexl7_1_1resources.html#acb7b1bb91ccf1f69b4fe83b89d1db5eea11efd9ae6f76e706e3f1b34d97584ebc',1,'xl7::resources']]],
+  ['immutable_1',['immutable',['../dd/d18/namespacexl7_1_1graphics_1_1textures.html#a6728aacd7202ce122be2f26cd85065d9a11efd9ae6f76e706e3f1b34d97584ebc',1,'xl7::graphics::textures::Immutable'],['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#a3a1892de938ee9b2619ad78bdf99951da11efd9ae6f76e706e3f1b34d97584ebc',1,'xl7::graphics::meshes::Immutable']]],
   ['incompletesequence_2',['IncompleteSequence',['../da/d47/namespacecl7_1_1text_1_1codec.html#aab042571c0cfb310ad0152768b2c8ac9a049817bfb09d6c24d671963ae8d02691',1,'cl7::text::codec']]],
   ['incrclamp_3',['IncrClamp',['../db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#a5ea224e29dd36067e266b081eb767292a4ea9324e777598fd8aaf8480353108f1',1,'xl7::graphics::states::DepthStencilState']]],
   ['incrwrap_4',['IncrWrap',['../db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#a5ea224e29dd36067e266b081eb767292a893d5395c39e90eca72ccb89e2e90312',1,'xl7::graphics::states::DepthStencilState']]],

@@ -40,11 +40,10 @@ var searchData=
   ['resourceid_2eh_37',['ResourceId.h',['../df/d57/ResourceId_8h.html',1,'']]],
   ['resourcemanager_2ecpp_38',['ResourceManager.cpp',['../d8/d44/ResourceManager_8cpp.html',1,'']]],
   ['resourcemanager_2eh_39',['ResourceManager.h',['../de/d51/ResourceManager_8h.html',1,'']]],
-  ['resourceusage_2eh_40',['ResourceUsage.h',['../d3/d93/ResourceUsage_8h.html',1,'']]],
-  ['result_2ecpp_41',['Result.cpp',['../d9/d55/Result_8cpp.html',1,'']]],
-  ['result_2eh_42',['Result.h',['../d8/d27/Result_8h.html',1,'']]],
-  ['resultbuilder_2ecpp_43',['ResultBuilder.cpp',['../dd/db6/ResultBuilder_8cpp.html',1,'']]],
-  ['resultbuilder_2eh_44',['ResultBuilder.h',['../d5/d8a/ResultBuilder_8h.html',1,'']]],
-  ['root_2ecpp_45',['root.cpp',['../d2/d19/root_8cpp.html',1,'']]],
-  ['root_2eh_46',['root.h',['../de/d99/root_8h.html',1,'']]]
+  ['result_2ecpp_40',['Result.cpp',['../d9/d55/Result_8cpp.html',1,'']]],
+  ['result_2eh_41',['Result.h',['../d8/d27/Result_8h.html',1,'']]],
+  ['resultbuilder_2ecpp_42',['ResultBuilder.cpp',['../dd/db6/ResultBuilder_8cpp.html',1,'']]],
+  ['resultbuilder_2eh_43',['ResultBuilder.h',['../d5/d8a/ResultBuilder_8h.html',1,'']]],
+  ['root_2ecpp_44',['root.cpp',['../d2/d19/root_8cpp.html',1,'']]],
+  ['root_2eh_45',['root.h',['../de/d99/root_8h.html',1,'']]]
 ];

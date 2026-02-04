@@ -93,7 +93,6 @@ $(document).ready(function(){initNavTree('da/d60/namespacexl7_1_1resources.html'
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">xl7::resources Namespace Reference</div></div>
 </div><!--header-->
@@ -114,14 +113,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d00/classxl7_1_1resources_1_1ResourceManager.html">ResourceManager</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:acb7b1bb91ccf1f69b4fe83b89d1db5ee" id="r_acb7b1bb91ccf1f69b4fe83b89d1db5ee"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d60/namespacexl7_1_1resources.html#acb7b1bb91ccf1f69b4fe83b89d1db5ee">ResourceUsage</a> { <a class="el" href="../../da/d60/namespacexl7_1_1resources.html#acb7b1bb91ccf1f69b4fe83b89d1db5eea7a1920d61156abc05a60135aefe8bc67">Default</a>
-, <a class="el" href="../../da/d60/namespacexl7_1_1resources.html#acb7b1bb91ccf1f69b4fe83b89d1db5eea11efd9ae6f76e706e3f1b34d97584ebc">Immutable</a>
-, <a class="el" href="../../da/d60/namespacexl7_1_1resources.html#acb7b1bb91ccf1f69b4fe83b89d1db5eea971fd8cc345d8bd9f92e9f7d88fdf20c">Dynamic</a>
- }</td></tr>
-<tr class="separator:acb7b1bb91ccf1f69b4fe83b89d1db5ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:afe05d0b0063761050c3e7e19bb54839d" id="r_afe05d0b0063761050c3e7e19bb54839d"><td class="memTemplParams" colspan="2">template&lt;class T1 , class T2 &gt; <br />
@@ -137,38 +128,6 @@ requires (std::is_base_of_v&lt;<a class="el" href="../../db/d1e/classxl7_1_1reso
 <tr class="memitem:aba7a66b01356b8d80d0c065290a65dcc"><td class="memTemplItemLeft" align="right" valign="top">T1&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d60/namespacexl7_1_1resources.html#aba7a66b01356b8d80d0c065290a65dcc">id_cast</a> (T2 other)</td></tr>
 <tr class="separator:aba7a66b01356b8d80d0c065290a65dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="acb7b1bb91ccf1f69b4fe83b89d1db5ee" name="acb7b1bb91ccf1f69b4fe83b89d1db5ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb7b1bb91ccf1f69b4fe83b89d1db5ee">&#9670;&#160;</a></span>ResourceUsage</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum struct <a class="el" href="../../da/d60/namespacexl7_1_1resources.html#acb7b1bb91ccf1f69b4fe83b89d1db5ee">xl7::resources::ResourceUsage</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>A good read for this: <a href="https://developer.nvidia.com/sites/default/files/akamai/gamedev/files/gdc12/Efficient_Buffer_Management_McDonald.pdf">https://developer.nvidia.com/sites/default/files/akamai/gamedev/files/gdc12/Efficient_Buffer_Management_McDonald.pdf</a> </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="acb7b1bb91ccf1f69b4fe83b89d1db5eea7a1920d61156abc05a60135aefe8bc67" name="acb7b1bb91ccf1f69b4fe83b89d1db5eea7a1920d61156abc05a60135aefe8bc67"></a>Default&#160;</td><td class="fielddoc"><p>A non-static/"reusable" resource that is expected to last for "a while". </p>
-</td></tr>
-<tr><td class="fieldname"><a id="acb7b1bb91ccf1f69b4fe83b89d1db5eea11efd9ae6f76e706e3f1b34d97584ebc" name="acb7b1bb91ccf1f69b4fe83b89d1db5eea11efd9ae6f76e706e3f1b34d97584ebc"></a>Immutable&#160;</td><td class="fielddoc"><p>A static resource whose data cannot be changed once it has been acquired. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="acb7b1bb91ccf1f69b4fe83b89d1db5eea971fd8cc345d8bd9f92e9f7d88fdf20c" name="acb7b1bb91ccf1f69b4fe83b89d1db5eea971fd8cc345d8bd9f92e9f7d88fdf20c"></a>Dynamic&#160;</td><td class="fielddoc"><p>A dynamic/volatile resource that will be updated very frequently (e.g., once per frame). </p>
-</td></tr>
-</table>
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="aba7a66b01356b8d80d0c065290a65dcc" name="aba7a66b01356b8d80d0c065290a65dcc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aba7a66b01356b8d80d0c065290a65dcc">&#9670;&#160;</a></span>id_cast()</h2>

@@ -92,7 +92,8 @@ $(document).ready(function(){initNavTree('dd/d18/namespacexl7_1_1graphics_1_1tex
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle"><div class="title">xl7::graphics::textures Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -115,7 +116,51 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html">TextureManager</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a6728aacd7202ce122be2f26cd85065d9" id="r_a6728aacd7202ce122be2f26cd85065d9"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d18/namespacexl7_1_1graphics_1_1textures.html#a6728aacd7202ce122be2f26cd85065d9">TextureUsage</a> { <a class="el" href="../../dd/d18/namespacexl7_1_1graphics_1_1textures.html#a6728aacd7202ce122be2f26cd85065d9a11efd9ae6f76e706e3f1b34d97584ebc">Immutable</a>
+, <a class="el" href="../../dd/d18/namespacexl7_1_1graphics_1_1textures.html#a6728aacd7202ce122be2f26cd85065d9a7a1920d61156abc05a60135aefe8bc67">Default</a>
+, <a class="el" href="../../dd/d18/namespacexl7_1_1graphics_1_1textures.html#a6728aacd7202ce122be2f26cd85065d9a971fd8cc345d8bd9f92e9f7d88fdf20c">Dynamic</a>
+ }</td></tr>
+<tr class="separator:a6728aacd7202ce122be2f26cd85065d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a6728aacd7202ce122be2f26cd85065d9" name="a6728aacd7202ce122be2f26cd85065d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6728aacd7202ce122be2f26cd85065d9">&#9670;&#160;</a></span>TextureUsage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum struct <a class="el" href="../../dd/d18/namespacexl7_1_1graphics_1_1textures.html#a6728aacd7202ce122be2f26cd85065d9">xl7::graphics::textures::TextureUsage</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Describes the expected lifetime and update frequency of a texture resource.</p>
+<p>The selected usage guides how the backend manages memory placement, update paths, and synchronization. Choosing a usage that does not match the actual update behavior may result in reduced performance. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a6728aacd7202ce122be2f26cd85065d9a11efd9ae6f76e706e3f1b34d97584ebc" name="a6728aacd7202ce122be2f26cd85065d9a11efd9ae6f76e706e3f1b34d97584ebc"></a>Immutable&#160;</td><td class="fielddoc"><p>The texture is initialized once and never modified afterward.</p>
+<p>Intended for fully static textures (e.g., material properties loaded from disk, precomputed cubemaps, etc.). Provides the strongest guarantee and allows maximum optimization. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6728aacd7202ce122be2f26cd85065d9a7a1920d61156abc05a60135aefe8bc67" name="a6728aacd7202ce122be2f26cd85065d9a7a1920d61156abc05a60135aefe8bc67"></a>Default&#160;</td><td class="fielddoc"><p>The texture is long-lived and usually static, but its contents may be replaced or refreshed occasionally.</p>
+<p>This is the default choice for most textures that are not strictly immutable (e.g., texture atlases, UI sprites, etc.). Compared to immutable, this usage sacrifices some optimization potential in exchange for (limited) mutability. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6728aacd7202ce122be2f26cd85065d9a971fd8cc345d8bd9f92e9f7d88fdf20c" name="a6728aacd7202ce122be2f26cd85065d9a971fd8cc345d8bd9f92e9f7d88fdf20c"></a>Dynamic&#160;</td><td class="fielddoc"><p>The texture contents are updated frequently (e.g., once per frame) while the texture object itself remains stable.</p>
+<p>Intended for per-frame or near-per-frame updates of texture data (e.g., render targets, dynamic shadows, procedural textures, video playback, etc.). Dynamic textures favor update efficiency over maximal GPU locality. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

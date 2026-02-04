@@ -11,9 +11,10 @@ var searchData=
   ['texture3d_8',['Texture3D',['../d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#aec19ff6b1326410f7415a57864356402a89c915587e16bcf8963be7cf41a0d9fd',1,'xl7::graphics::textures::Texture']]],
   ['texturesurface_9',['TextureSurface',['../d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53a1412f4ac0af027752228f6c03e01e6e0',1,'xl7::graphics::surfaces::Surface']]],
   ['top_10',['Top',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4ffdcf0dc1f31b9acaf295d75b51d00',1,'fl7::fonts::TextStyle']]],
-  ['trianglelist_11',['TriangleList',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287faf5beeab7a1f452e5b0e9b03b44f0de92',1,'xl7::graphics::meshes']]],
-  ['trianglestrip_12',['TriangleStrip',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287fa1da0b9ead8b051940a89214bae22831c',1,'xl7::graphics::meshes']]],
-  ['true_5fconstant_13',['TRUE_CONSTANT',['../db/dcc/namespacedl7_1_1json_1_1detail.html#aefd1a930e6928f0b5231c01b74806e05a7da289c327b2f071a70cb72f06861ebb',1,'dl7::json::detail']]],
-  ['truncate_14',['Truncate',['../d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5aa8156810bfee2bd2b44765b9e91db3bd',1,'cl7::io']]],
-  ['truthyonly_15',['TruthyOnly',['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a7fe905665e8a42ae50081048a7aca951ad04890ff50f5ade32825bb55c1102bf2',1,'dl7::ini::detail::BooleanMatcher']]]
+  ['transient_11',['Transient',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#a3a1892de938ee9b2619ad78bdf99951dab1f023eff9a6b5308d6024e4c6b3d475',1,'xl7::graphics::meshes']]],
+  ['trianglelist_12',['TriangleList',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287faf5beeab7a1f452e5b0e9b03b44f0de92',1,'xl7::graphics::meshes']]],
+  ['trianglestrip_13',['TriangleStrip',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287fa1da0b9ead8b051940a89214bae22831c',1,'xl7::graphics::meshes']]],
+  ['true_5fconstant_14',['TRUE_CONSTANT',['../db/dcc/namespacedl7_1_1json_1_1detail.html#aefd1a930e6928f0b5231c01b74806e05a7da289c327b2f071a70cb72f06861ebb',1,'dl7::json::detail']]],
+  ['truncate_15',['Truncate',['../d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5aa8156810bfee2bd2b44765b9e91db3bd',1,'cl7::io']]],
+  ['truthyonly_16',['TruthyOnly',['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a7fe905665e8a42ae50081048a7aca951ad04890ff50f5ade32825bb55c1102bf2',1,'dl7::ini::detail::BooleanMatcher']]]
 ];

@@ -4,7 +4,7 @@ var searchData=
   ['uniform_5fdepth_1',['uniform_depth',['../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#afebfe2c410a802a154fc191860685490',1,'xl7::graphics::PixelLayout']]],
   ['units_5fper_5fem_2',['units_per_em',['../d8/dc0/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1FontHeader.html#a8c5b3e83715046cc9124bb43d1290964',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::FontHeader']]],
   ['upper_5fright_3',['upper_right',['../dc/d05/structfl7_1_1fonts_1_1BoundingBox.html#a13bb8a3d5fddc63cd3cb445b115afe7c',1,'fl7::fonts::BoundingBox']]],
-  ['usage_4',['usage',['../d8/df2/structxl7_1_1graphics_1_1meshes_1_1MeshBuffer_1_1Desc.html#a94bc1fde697bb1979fa1a5068be80933',1,'xl7::graphics::meshes::MeshBuffer::Desc::usage'],['../da/d78/structxl7_1_1graphics_1_1textures_1_1Texture_1_1Desc.html#a269524abe84de36fcbd2e484c7db39a1',1,'xl7::graphics::textures::Texture::Desc::usage']]],
+  ['usage_4',['usage',['../d8/df2/structxl7_1_1graphics_1_1meshes_1_1MeshBuffer_1_1Desc.html#a54eef4da80b1287782ab0c1b8ed1ef9d',1,'xl7::graphics::meshes::MeshBuffer::Desc::usage'],['../da/d78/structxl7_1_1graphics_1_1textures_1_1Texture_1_1Desc.html#ae27e15b636cac67e07821009adcf791a',1,'xl7::graphics::textures::Texture::Desc::usage']]],
   ['use_5fhardware_5fcursor_5',['use_hardware_cursor',['../dd/d38/structxl7_1_1Config_1_1General.html#a1b54f1d2666977afd5763d025ec6f1c8',1,'xl7::Config::General']]],
   ['used_5fphysical_5fmemory_6',['used_physical_memory',['../d2/dea/structcl7_1_1platform_1_1memory_1_1MemoryStatus.html#a03813a15d2d8c0cd04f0938cf260c8c8',1,'cl7::platform::memory::MemoryStatus']]]
 ];
