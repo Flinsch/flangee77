@@ -22,12 +22,10 @@ class TextureManager;
 
 
 class Texture
-    : public resources::Resource
+    : public resources::detail::ResourceBase<Texture>
 {
 
 public:
-    XL7_DECLARE_RESOURCE_ID();
-
     enum struct Type
     {
         Texture2D,
@@ -112,6 +110,7 @@ public:
 
 
 protected:
+
     Texture(Type type, const CreateParams<Desc>& params, unsigned depth, unsigned image_count);
 
     ~Texture() override = default;
@@ -224,6 +223,28 @@ private:
     const unsigned _data_size;
 
 }; // class Texture
+
+
+
+namespace detail {
+
+template <class TTexture>
+class TextureBase
+    : public Texture
+{
+public:
+    using Texture::Texture;
+
+    class Id :
+        public Texture::Id
+    {
+        using Texture::Id::Id;
+    };
+
+    Id get_id() const { return Resource::get_id<Id>(); }
+}; // class TextureBase
+
+} // namespace detail
 
 
 

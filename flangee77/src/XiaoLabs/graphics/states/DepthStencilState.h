@@ -11,12 +11,10 @@ namespace xl7::graphics::states {
 
 
 class DepthStencilState
-    : public AbstractState
+    : public detail::AbstractStateBase<DepthStencilState>
 {
 
 public:
-    XL7_DERIVE_RESOURCE_ID(AbstractState);
-
     enum struct StencilOperation
     {
         /** Keep the existing stencil value. */
@@ -95,8 +93,9 @@ public:
 
 
 protected:
+
     DepthStencilState(const CreateParams<Desc>& params)
-        : AbstractState(params)
+        : AbstractStateBase(params)
         , _desc(params.desc)
     {
     }

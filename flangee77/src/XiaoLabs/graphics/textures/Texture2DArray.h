@@ -9,12 +9,10 @@ namespace xl7::graphics::textures {
 
 
 class Texture2DArray
-    : public Texture
+    : public detail::TextureBase<Texture2DArray>
 {
 
 public:
-    XL7_DERIVE_RESOURCE_ID(Texture);
-
     struct Desc
         : public Texture::Desc
     {
@@ -58,6 +56,7 @@ public:
 
 
 protected:
+
     Texture2DArray(const CreateParams<Desc>& params);
 
     ~Texture2DArray() override = default;

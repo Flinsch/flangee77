@@ -9,12 +9,10 @@ namespace xl7::graphics::shaders {
 
 
 class PixelShader
-    : public Shader
+    : public detail::ShaderBase<PixelShader>
 {
 
 public:
-    XL7_DERIVE_RESOURCE_ID(Shader);
-
     PixelShader() = delete;
 
     PixelShader(const PixelShader&) = delete;
@@ -32,7 +30,12 @@ public:
 
 
 protected:
-    PixelShader(const CreateParams<Desc>& params);
+
+    PixelShader(const CreateParams<Desc>& params)
+        : ShaderBase(Type::PixelShader, params)
+    {
+    }
+
     ~PixelShader() override = default;
 
 }; // class PixelShader

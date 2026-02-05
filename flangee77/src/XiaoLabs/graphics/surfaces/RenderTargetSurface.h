@@ -9,12 +9,10 @@ namespace xl7::graphics::surfaces {
 
 
 class RenderTargetSurface
-    : public FramebufferSurface
+    : public detail::FramebufferSurfaceBase<RenderTargetSurface>
 {
 
 public:
-    XL7_DERIVE_RESOURCE_ID(FramebufferSurface);
-
     RenderTargetSurface() = delete;
 
     RenderTargetSurface(const RenderTargetSurface&) = delete;
@@ -32,8 +30,9 @@ public:
 
 
 protected:
+
     RenderTargetSurface(const CreateParams<Desc>& params)
-        : FramebufferSurface(Type::RenderTargetSurface, params)
+        : FramebufferSurfaceBase(Type::RenderTargetSurface, params)
     {
     }
 

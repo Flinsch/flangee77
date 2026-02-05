@@ -24,14 +24,6 @@ namespace xl7::graphics::shaders {
 
 
 
-    ConstantBuffer::ConstantBuffer(const CreateParams<Desc>& params)
-        : Resource(params)
-        , _desc(params.desc)
-    {
-    }
-
-
-
     /**
      * Checks whether the given data provider complies with the specific properties
      * of the resource to (re)populate it, taking into account the current state of
@@ -39,7 +31,7 @@ namespace xl7::graphics::shaders {
      */
     bool ConstantBuffer::_check_data_impl(const resources::DataProvider& data_provider)
     {
-        
+
 
         return true;
     }

@@ -9,12 +9,10 @@ namespace xl7::graphics::states {
 
 
 class RasterizerState
-    : public AbstractState
+    : public detail::AbstractStateBase<RasterizerState>
 {
 
 public:
-    XL7_DERIVE_RESOURCE_ID(AbstractState);
-
     /** Determines the fill mode to use when rendering. */
     enum struct FillMode
     {
@@ -82,8 +80,9 @@ public:
 
 
 protected:
+
     RasterizerState(const CreateParams<Desc>& params)
-        : AbstractState(params)
+        : AbstractStateBase(params)
         , _desc(params.desc)
     {
     }

@@ -9,16 +9,14 @@ namespace xl7::graphics::textures {
 
 
 class Cubemap
-    : public Texture
+    : public detail::TextureBase<Cubemap>
 {
 
 public:
-    XL7_DERIVE_RESOURCE_ID(Texture);
-
     struct Desc
         : public Texture::Desc
     {
-        
+
     };
 
 
@@ -55,6 +53,7 @@ public:
 
 
 protected:
+
     Cubemap(const CreateParams<Desc>& params);
 
     ~Cubemap() override = default;

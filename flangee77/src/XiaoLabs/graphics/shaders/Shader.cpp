@@ -141,18 +141,6 @@ namespace xl7::graphics::shaders {
 
 
     /**
-     * Explicit constructor.
-     */
-    Shader::Shader(Type type, const CreateParams<Desc>& params)
-        : Resource(params)
-        , _type(type)
-        , _desc(params.desc)
-    {
-    }
-
-
-
-    /**
      * Returns the effective name of the entry point for (re)compiling the shader.
      */
     cl7::astring Shader::_cascade_entry_point(const CompileOptions& compile_options) const

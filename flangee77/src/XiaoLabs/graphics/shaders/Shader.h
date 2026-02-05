@@ -23,12 +23,10 @@ class ConstantBuffer;
 
 
 class Shader
-    : public resources::Resource
+    : public resources::detail::ResourceBase<Shader>
 {
 
 public:
-    XL7_DECLARE_RESOURCE_ID();
-
     enum struct Type
     {
         VertexShader,
@@ -128,7 +126,14 @@ public:
 
 
 protected:
-    Shader(Type type, const CreateParams<Desc>& params);
+
+    Shader(Type type, const CreateParams<Desc>& params)
+        : ResourceBase(params)
+        , _type(type)
+        , _desc(params.desc)
+    {
+    }
+
     ~Shader() override = default;
 
 
@@ -226,6 +231,28 @@ private:
     mutable std::unordered_map<resources::ResourceId, ConstantBufferMapping> _constant_buffer_mappings_by_constant_buffer_id;
 
 }; // class Shader
+
+
+
+namespace detail {
+
+template <class TShader>
+class ShaderBase
+    : public Shader
+{
+public:
+    using Shader::Shader;
+
+    class Id :
+        public Shader::Id
+    {
+        using Shader::Id::Id;
+    };
+
+    Id get_id() const { return Resource::get_id<Id>(); }
+}; // class ShaderBase
+
+} // namespace detail
 
 
 

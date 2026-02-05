@@ -12,12 +12,10 @@ namespace xl7::graphics::meshes {
 
 
 class VertexBuffer
-    : public MeshBuffer
+    : public detail::MeshBufferBase<VertexBuffer>
 {
 
 public:
-    XL7_DERIVE_RESOURCE_ID(MeshBuffer);
-
     struct Desc
         : public MeshBuffer::Desc
     {
@@ -54,7 +52,9 @@ public:
 
 
 protected:
+
     VertexBuffer(const CreateParams<Desc>& params);
+
     ~VertexBuffer() override = default;
 
 

@@ -16,12 +16,10 @@ class ShaderManager;
 
 
 class ConstantBuffer
-    : public resources::Resource
+    : public resources::detail::ResourceBase<ConstantBuffer>
 {
 
 public:
-    XL7_DECLARE_RESOURCE_ID();
-
     struct Desc
     {
         /** The layout specification of the constant buffer. */
@@ -57,7 +55,13 @@ public:
 
 
 protected:
-    ConstantBuffer(const CreateParams<Desc>& params);
+
+    ConstantBuffer(const CreateParams<Desc>& params)
+        : ResourceBase(params)
+        , _desc(params.desc)
+    {
+    }
+
     ~ConstantBuffer() override = default;
 
 

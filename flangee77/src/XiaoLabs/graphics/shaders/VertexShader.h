@@ -9,12 +9,10 @@ namespace xl7::graphics::shaders {
 
 
 class VertexShader
-    : public Shader
+    : public detail::ShaderBase<VertexShader>
 {
 
 public:
-    XL7_DERIVE_RESOURCE_ID(Shader);
-
     VertexShader() = delete;
 
     VertexShader(const VertexShader&) = delete;
@@ -32,7 +30,12 @@ public:
 
 
 protected:
-    VertexShader(const CreateParams<Desc>& params);
+
+    VertexShader(const CreateParams<Desc>& params)
+        : ShaderBase(Type::VertexShader, params)
+    {
+    }
+
     ~VertexShader() override = default;
 
 }; // class VertexShader

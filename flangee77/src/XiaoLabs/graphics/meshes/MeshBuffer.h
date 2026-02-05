@@ -17,12 +17,10 @@ class MeshManager;
 
 
 class MeshBuffer
-    : public resources::Resource
+    : public resources::detail::ResourceBase<MeshBuffer>
 {
 
 public:
-    XL7_DECLARE_RESOURCE_ID();
-
     enum struct Type
     {
         VertexBuffer,
@@ -90,7 +88,7 @@ protected:
     template <class TDesc>
         requires(std::derived_from<TDesc, Desc>)
     MeshBuffer(Type type, const CreateParams<TDesc>& params, unsigned stride)
-        : Resource(params)
+        : ResourceBase(params)
         , _type(type)
         , _desc(params.desc) // NOLINT(*-slicing)
         , _primitive_count(MeshUtil::calculate_primitive_count(params.desc.topology, params.desc.count))
@@ -150,6 +148,28 @@ private:
     const unsigned _size;
 
 }; // class MeshBuffer
+
+
+
+namespace detail {
+
+template <class TMeshBuffer>
+class MeshBufferBase
+    : public MeshBuffer
+{
+public:
+    using MeshBuffer::MeshBuffer;
+
+    class Id :
+        public MeshBuffer::Id
+    {
+        using MeshBuffer::Id::Id;
+    };
+
+    Id get_id() const { return Resource::get_id<Id>(); }
+}; // class MeshBufferBase
+
+} // namespace detail
 
 
 

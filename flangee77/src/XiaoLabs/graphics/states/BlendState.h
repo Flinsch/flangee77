@@ -11,12 +11,10 @@ namespace xl7::graphics::states {
 
 
 class BlendState
-    : public AbstractState
+    : public detail::AbstractStateBase<BlendState>
 {
 
 public:
-    XL7_DERIVE_RESOURCE_ID(AbstractState);
-
     enum struct BlendFactor
     {
         Zero = 1,
@@ -87,8 +85,9 @@ public:
 
 
 protected:
+
     BlendState(const CreateParams<Desc>& params)
-        : AbstractState(params)
+        : AbstractStateBase(params)
         , _desc(params.desc)
     {
     }

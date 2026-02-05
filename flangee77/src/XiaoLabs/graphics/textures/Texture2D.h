@@ -9,16 +9,14 @@ namespace xl7::graphics::textures {
 
 
 class Texture2D
-    : public Texture
+    : public detail::TextureBase<Texture2D>
 {
 
 public:
-    XL7_DERIVE_RESOURCE_ID(Texture);
-
     struct Desc
         : public Texture::Desc
     {
-        
+
     };
 
 
@@ -62,6 +60,7 @@ public:
 
 
 protected:
+
     Texture2D(const CreateParams<Desc>& params);
 
     ~Texture2D() override = default;

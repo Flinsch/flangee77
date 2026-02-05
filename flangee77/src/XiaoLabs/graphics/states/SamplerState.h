@@ -13,12 +13,10 @@ namespace xl7::graphics::states {
 
 
 class SamplerState
-    : public AbstractState
+    : public detail::AbstractStateBase<SamplerState>
 {
 
 public:
-    XL7_DERIVE_RESOURCE_ID(AbstractState);
-
     /** The filtering method to use when sampling for minification and magnification. */
     enum struct MinMagFilterType
     {
@@ -112,8 +110,9 @@ public:
 
 
 protected:
+
     SamplerState(const CreateParams<Desc>& params)
-        : AbstractState(params)
+        : AbstractStateBase(params)
         , _desc(params.desc)
     {
     }

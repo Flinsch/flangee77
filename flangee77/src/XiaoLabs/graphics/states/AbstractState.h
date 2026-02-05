@@ -13,12 +13,10 @@ class StateManager;
 
 
 class AbstractState
-    : public resources::Resource
+    : public resources::detail::ResourceBase<AbstractState>
 {
 
 public:
-    XL7_DECLARE_RESOURCE_ID();
-
     AbstractState() = delete;
 
     AbstractState(const AbstractState&) = delete;
@@ -29,9 +27,10 @@ public:
 
 
 protected:
+
     template <class TDesc>
     AbstractState(const CreateParams<TDesc>& params)
-        : resources::Resource(params)
+        : ResourceBase(params)
     {
     }
 
@@ -48,6 +47,28 @@ private:
     bool _check_data_impl(const resources::DataProvider& data_provider) override;
 
 }; // class AbstractState
+
+
+
+namespace detail {
+
+template <class TAbstractState>
+class AbstractStateBase
+    : public AbstractState
+{
+public:
+    using AbstractState::AbstractState;
+
+    class Id :
+        public AbstractState::Id
+    {
+        using AbstractState::Id::Id;
+    };
+
+    Id get_id() const { return Resource::get_id<Id>(); }
+}; // class AbstractStateBase
+
+} // namespace detail
 
 
 

@@ -13,12 +13,10 @@ class SurfaceManager;
 
 
 class Surface
-    : public resources::Resource
+    : public resources::detail::ResourceBase<Surface>
 {
 
 public:
-    XL7_DECLARE_RESOURCE_ID();
-
     enum struct Type
     {
         OffScreenSurface,
@@ -64,8 +62,9 @@ public:
 
 
 protected:
+
     Surface(Type type, const CreateParams<Desc>& params)
-        : Resource(params)
+        : ResourceBase(params)
         , _type(type)
         , _desc(params.desc)
     {
@@ -105,6 +104,28 @@ private:
     const Desc _desc;
 
 }; // class Surface
+
+
+
+namespace detail {
+
+template <class TSurface>
+class SurfaceBase
+    : public Surface
+{
+public:
+    using Surface::Surface;
+
+    class Id :
+        public Surface::Id
+    {
+        using Surface::Id::Id;
+    };
+
+    Id get_id() const { return Resource::get_id<Id>(); }
+}; // class SurfaceBase
+
+} // namespace detail
 
 
 

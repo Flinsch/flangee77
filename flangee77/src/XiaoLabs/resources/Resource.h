@@ -306,6 +306,28 @@ private:
 
 
 
+namespace detail {
+
+template <class TResource>
+class ResourceBase
+    : public Resource
+{
+public:
+    using Resource::Resource;
+
+    class Id :
+        public ResourceId
+    {
+        using ResourceId::ResourceId;
+    };
+
+    Id get_id() const { return Resource::get_id<Id>(); }
+}; // class ResourceBase
+
+} // namespace detail
+
+
+
 } // namespace xl7::resources
 
 #endif // XL7_RESOURCES_RESOURCE_H

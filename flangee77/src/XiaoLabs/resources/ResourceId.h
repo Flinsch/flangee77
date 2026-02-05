@@ -9,13 +9,6 @@ namespace xl7::resources {
 
 
 
-class ResourceId;
-
-#define XL7_DECLARE_RESOURCE_ID()           class Id : public xl7::resources::ResourceId    { using TBaseId = xl7::resources::ResourceId; using TBaseId::TBaseId; }; Id get_id() const { return xl7::resources::Resource::get_id<Id>(); }
-#define XL7_DERIVE_RESOURCE_ID(TBase)       class Id : public TBase::Id                     { using TBaseId = TBase::Id;                  using TBaseId::TBaseId; }; Id get_id() const { return xl7::resources::Resource::get_id<Id>(); }
-
-
-
 class ResourceId
     : public cl7::VersionedId<size_t, 32, ResourceId>
 {

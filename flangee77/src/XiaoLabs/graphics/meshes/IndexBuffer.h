@@ -12,12 +12,10 @@ namespace xl7::graphics::meshes {
 
 
 class IndexBuffer
-    : public MeshBuffer
+    : public detail::MeshBufferBase<IndexBuffer>
 {
 
 public:
-    XL7_DERIVE_RESOURCE_ID(MeshBuffer);
-
     struct Desc
         : public MeshBuffer::Desc
     {
@@ -49,7 +47,9 @@ public:
 
 
 protected:
+
     IndexBuffer(const CreateParams<Desc>& params);
+
     ~IndexBuffer() override = default;
 
 
