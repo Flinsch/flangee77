@@ -21,6 +21,5 @@ var classxl7_1_1graphics_1_1states_1_1DepthStencilState =
     [ "get_type_string", "db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#a6a810ff6d578a1418423c9d10ed3b120", null ],
     [ "operator=", "db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#abb97c63aead1ab708209debeb30a1936", null ],
     [ "operator=", "db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#ad60873ea9df722c42f107e7657c2c3b5", null ],
-    [ "XL7_DERIVE_RESOURCE_ID", "db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#abe19f7c32f8a19ddcffc7ee961956e51", null ],
     [ "_desc", "db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html#a941aa45f3d0042188f2c4c83f126955b", null ]
 ];

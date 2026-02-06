@@ -7,6 +7,5 @@ var classxl7_1_1graphics_1_1shaders_1_1VertexShader =
     [ "~VertexShader", "dd/dae/classxl7_1_1graphics_1_1shaders_1_1VertexShader.html#afaec4821367d34b93f38715ed7c5e712", null ],
     [ "get_type_string", "dd/dae/classxl7_1_1graphics_1_1shaders_1_1VertexShader.html#a8b1dae6417b35c2afac7bfa0b02444e3", null ],
     [ "operator=", "dd/dae/classxl7_1_1graphics_1_1shaders_1_1VertexShader.html#a88b306247e970d947d52eef8a0d8b6d3", null ],
-    [ "operator=", "dd/dae/classxl7_1_1graphics_1_1shaders_1_1VertexShader.html#a81ea90a0dc65bcd913dc9baebcc60824", null ],
-    [ "XL7_DERIVE_RESOURCE_ID", "dd/dae/classxl7_1_1graphics_1_1shaders_1_1VertexShader.html#aa3e75a033bd95a283db007d039739da5", null ]
+    [ "operator=", "dd/dae/classxl7_1_1graphics_1_1shaders_1_1VertexShader.html#a81ea90a0dc65bcd913dc9baebcc60824", null ]
 ];

@@ -19,7 +19,6 @@ var classxl7_1_1graphics_1_1surfaces_1_1Surface =
     [ "get_type_string", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a51001898fc85e285734c6964ebeb4d12", null ],
     [ "operator=", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a38e8ab3b27dda03552fa93f315f07e7f", null ],
     [ "operator=", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a82ee007846912a6372c2f3382702f20d", null ],
-    [ "XL7_DECLARE_RESOURCE_ID", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a9eb6feb50e530bbe6aeebf92b61e0129", null ],
     [ "_desc", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a260bc58e25039187d7f921eca91b603c", null ],
     [ "_type", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a3eca4956ac937a443c9563a4af0582f3", null ]
 ];

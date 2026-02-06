@@ -33,7 +33,6 @@ var classxl7_1_1graphics_1_1shaders_1_1Shader =
     [ "operator=", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a38211185d19eb06681d23708dd5841a8", null ],
     [ "operator=", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a21952a0a2a2066274e4b89478db2ce99", null ],
     [ "recompile", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a2e484853e6f9babb805c00853f97599f", null ],
-    [ "XL7_DECLARE_RESOURCE_ID", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a0682c7c52f092d77d9df9ba0f8e73371", null ],
     [ "_bytecode", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a5833b34b5bdf2f5755ca8be8b672adbc", null ],
     [ "_constant_buffer_mappings_by_constant_buffer_id", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a4ad375fce55626a9cc83b22d7c9f25ac", null ],
     [ "_desc", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#abe83aadb96393a64ff3020c5f595a7f5", null ],

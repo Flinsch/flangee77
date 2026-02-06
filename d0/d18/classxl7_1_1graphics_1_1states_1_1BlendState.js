@@ -32,6 +32,5 @@ var classxl7_1_1graphics_1_1states_1_1BlendState =
     [ "get_type_string", "d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#ac4235cf84c73144b728fcc582a7b8259", null ],
     [ "operator=", "d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#a5f40895adffd78155c023d330e111e9c", null ],
     [ "operator=", "d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#aa01cc9b49484e1a35befb98d07fe0f4c", null ],
-    [ "XL7_DERIVE_RESOURCE_ID", "d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#a9433d47ad91d06d79b8bc0818806c45e", null ],
     [ "_desc", "d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html#a37b3ff6b4d239aca28e9153ba4ac7d73", null ]
 ];

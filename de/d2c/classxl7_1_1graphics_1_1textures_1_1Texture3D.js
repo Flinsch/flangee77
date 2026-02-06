@@ -12,6 +12,5 @@ var classxl7_1_1graphics_1_1textures_1_1Texture3D =
     [ "get_type_string", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#ab8da7a9189142b9669ca337ca41c1a83", null ],
     [ "operator=", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#ae0275bc9f6442350e2245f16ad4cc2a1", null ],
     [ "operator=", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a93568dc415db668e882c6633a0cecb91", null ],
-    [ "XL7_DERIVE_RESOURCE_ID", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#ab297c3fedc7357fb8ee2731637bd3d39", null ],
     [ "_desc", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#abf79c00c5212d3f72860804a61e0ddda", null ]
 ];

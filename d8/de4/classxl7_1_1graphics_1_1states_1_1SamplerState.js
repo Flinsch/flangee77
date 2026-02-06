@@ -28,6 +28,5 @@ var classxl7_1_1graphics_1_1states_1_1SamplerState =
     [ "get_type_string", "d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#abde039f19a544fe445be541c09dbb220", null ],
     [ "operator=", "d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#a633b57c2f294670f06f6da2de41d2437", null ],
     [ "operator=", "d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#a159b9e3183f337e9d5ae2cf5535dbadf", null ],
-    [ "XL7_DERIVE_RESOURCE_ID", "d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#a1e0e3b2c3cee99320f99dce6bdd0e52f", null ],
     [ "_desc", "d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#abdf842fd737aad4e89c47ec8d3eb56ed", null ]
 ];

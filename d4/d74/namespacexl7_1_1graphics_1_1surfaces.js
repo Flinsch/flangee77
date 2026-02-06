@@ -1,5 +1,6 @@
 var namespacexl7_1_1graphics_1_1surfaces =
 [
+    [ "detail", "dc/d6d/namespacexl7_1_1graphics_1_1surfaces_1_1detail.html", "dc/d6d/namespacexl7_1_1graphics_1_1surfaces_1_1detail" ],
     [ "DepthStencilSurface", "d8/d6c/classxl7_1_1graphics_1_1surfaces_1_1DepthStencilSurface.html", "d8/d6c/classxl7_1_1graphics_1_1surfaces_1_1DepthStencilSurface" ],
     [ "FramebufferSurface", "d0/d60/classxl7_1_1graphics_1_1surfaces_1_1FramebufferSurface.html", "d0/d60/classxl7_1_1graphics_1_1surfaces_1_1FramebufferSurface" ],
     [ "ISurfaceFactory", "dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html", "dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory" ],

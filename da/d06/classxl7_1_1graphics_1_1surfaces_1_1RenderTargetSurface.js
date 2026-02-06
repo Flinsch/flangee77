@@ -7,6 +7,5 @@ var classxl7_1_1graphics_1_1surfaces_1_1RenderTargetSurface =
     [ "~RenderTargetSurface", "da/d06/classxl7_1_1graphics_1_1surfaces_1_1RenderTargetSurface.html#af5fc90077c69356e3aaf92e3609c796e", null ],
     [ "get_type_string", "da/d06/classxl7_1_1graphics_1_1surfaces_1_1RenderTargetSurface.html#ae3048a30e9566bdf4590b5832f19de38", null ],
     [ "operator=", "da/d06/classxl7_1_1graphics_1_1surfaces_1_1RenderTargetSurface.html#a3ab3160dd7d445e97af788b7cccb6d5e", null ],
-    [ "operator=", "da/d06/classxl7_1_1graphics_1_1surfaces_1_1RenderTargetSurface.html#a27c7d2029b7342e6e4129c4488c52081", null ],
-    [ "XL7_DERIVE_RESOURCE_ID", "da/d06/classxl7_1_1graphics_1_1surfaces_1_1RenderTargetSurface.html#a0c1670756f614db6181bd6696a0ba085", null ]
+    [ "operator=", "da/d06/classxl7_1_1graphics_1_1surfaces_1_1RenderTargetSurface.html#a27c7d2029b7342e6e4129c4488c52081", null ]
 ];

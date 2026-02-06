@@ -7,6 +7,5 @@ var classxl7_1_1graphics_1_1surfaces_1_1DepthStencilSurface =
     [ "~DepthStencilSurface", "d8/d6c/classxl7_1_1graphics_1_1surfaces_1_1DepthStencilSurface.html#ad4d18e4ddb852eb073343f34a324c7cd", null ],
     [ "get_type_string", "d8/d6c/classxl7_1_1graphics_1_1surfaces_1_1DepthStencilSurface.html#ace76612e0666db8952fa94db250880f3", null ],
     [ "operator=", "d8/d6c/classxl7_1_1graphics_1_1surfaces_1_1DepthStencilSurface.html#a7b83a2540d6ec529a6116a619c4a0671", null ],
-    [ "operator=", "d8/d6c/classxl7_1_1graphics_1_1surfaces_1_1DepthStencilSurface.html#a95f754778f2c6767f0c362d961d1d666", null ],
-    [ "XL7_DERIVE_RESOURCE_ID", "d8/d6c/classxl7_1_1graphics_1_1surfaces_1_1DepthStencilSurface.html#af8493a290d5c3cb6c4cb1894881bad3e", null ]
+    [ "operator=", "d8/d6c/classxl7_1_1graphics_1_1surfaces_1_1DepthStencilSurface.html#a95f754778f2c6767f0c362d961d1d666", null ]
 ];

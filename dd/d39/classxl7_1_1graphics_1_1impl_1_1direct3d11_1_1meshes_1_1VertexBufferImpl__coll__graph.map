@@ -1,24 +1,28 @@
 <map id="xl7::graphics::impl::direct3d11::meshes::VertexBufferImpl" name="xl7::graphics::impl::direct3d11::meshes::VertexBufferImpl">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1433,83,1592,138"/>
-<area shape="rect" id="Node000002" href="$d0/d66/classxl7_1_1graphics_1_1meshes_1_1VertexBuffer.html" title=" " alt="" coords="1220,91,1384,131"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1398,108,1433,108,1433,113,1398,113"/>
-<area shape="rect" id="Node000003" href="$dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html" title=" " alt="" coords="967,59,1131,99"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1144,88,1220,98,1219,103,1144,93"/>
-<area shape="rect" id="Node000004" href="$d5/d7b/classxl7_1_1resources_1_1Resource.html" title=" " alt="" coords="643,38,824,63"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="838,57,967,69,966,74,837,63"/>
-<area shape="rect" id="Node000005" href="$d3/d00/classxl7_1_1resources_1_1ResourceManager.html" title=" " alt="" coords="338,5,519,45"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="533,31,643,40,642,46,533,37"/>
-<area shape="rect" id="Node000006" href="$db/d1e/classxl7_1_1resources_1_1ResourceId.html" title=" " alt="" coords="332,70,525,95"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="539,68,642,58,642,63,539,74"/>
-<area shape="rect" id="Node000007" href="$dc/d7b/classcl7_1_1VersionedId.html" title=" " alt="" coords="116,63,283,103"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="297,80,332,80,332,85,297,85"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="5,70,44,95"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="58,80,116,80,116,85,58,85"/>
-<area shape="rect" id="Node000009" href="$d8/df2/structxl7_1_1graphics_1_1meshes_1_1MeshBuffer_1_1Desc.html" title=" " alt="" coords="651,88,815,128"/>
-<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="829,97,942,87,966,84,966,90,943,92,829,102"/>
-<area shape="rect" id="Node000010" href="$d1/d0d/structxl7_1_1graphics_1_1meshes_1_1VertexBuffer_1_1Desc.html" title=" " alt="" coords="967,123,1131,163"/>
-<area shape="poly" id="edge10_Node000010_Node000009" title=" " alt="" coords="829,116,966,131,966,136,829,121"/>
-<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="1144,128,1219,118,1220,124,1144,133"/>
-<area shape="rect" id="Node000011" href="$d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html" title=" " alt="" coords="651,152,815,192"/>
-<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="829,171,942,164,967,160,968,165,943,169,829,176"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1900,106,2059,161"/>
+<area shape="rect" id="Node000002" href="$d0/d66/classxl7_1_1graphics_1_1meshes_1_1VertexBuffer.html" title=" " alt="" coords="1687,113,1851,153"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1865,131,1900,131,1900,136,1865,136"/>
+<area shape="rect" id="Node000003" href="$de/d8a/classxl7_1_1graphics_1_1meshes_1_1detail_1_1MeshBufferBase.html" title=" " alt="" coords="1456,55,1637,110"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1652,104,1687,112,1686,117,1651,109"/>
+<area shape="rect" id="Node000004" href="$dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html" title=" " alt="" coords="1243,63,1407,103"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1421,80,1456,80,1456,85,1421,85"/>
+<area shape="rect" id="Node000005" href="$d2/d0d/classxl7_1_1resources_1_1detail_1_1ResourceBase.html" title=" " alt="" coords="873,33,1100,73"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1114,62,1243,73,1242,78,1114,67"/>
+<area shape="rect" id="Node000006" href="$d5/d7b/classxl7_1_1resources_1_1Resource.html" title=" " alt="" coords="643,41,824,66"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="838,51,873,51,873,56,838,56"/>
+<area shape="rect" id="Node000007" href="$d3/d00/classxl7_1_1resources_1_1ResourceManager.html" title=" " alt="" coords="338,5,519,45"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="533,32,643,42,642,48,533,38"/>
+<area shape="rect" id="Node000008" href="$db/d1e/classxl7_1_1resources_1_1ResourceId.html" title=" " alt="" coords="332,70,525,95"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="539,69,642,59,642,65,539,75"/>
+<area shape="rect" id="Node000009" href="$dc/d7b/classcl7_1_1VersionedId.html" title=" " alt="" coords="116,63,283,103"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="297,80,332,80,332,85,297,85"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="5,70,44,95"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="58,80,116,80,116,85,58,85"/>
+<area shape="rect" id="Node000011" href="$d8/df2/structxl7_1_1graphics_1_1meshes_1_1MeshBuffer_1_1Desc.html" title=" " alt="" coords="905,97,1069,137"/>
+<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="1082,105,1242,88,1242,94,1083,110"/>
+<area shape="rect" id="Node000012" href="$d1/d0d/structxl7_1_1graphics_1_1meshes_1_1VertexBuffer_1_1Desc.html" title=" " alt="" coords="1243,129,1407,169"/>
+<area shape="poly" id="edge12_Node000012_Node000011" title=" " alt="" coords="1083,124,1242,139,1242,144,1082,129"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="1420,143,1686,134,1687,139,1420,149"/>
+<area shape="rect" id="Node000013" href="$d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html" title=" " alt="" coords="905,161,1069,201"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="1083,170,1218,157,1242,155,1242,160,1219,163,1083,175"/>
 </map>

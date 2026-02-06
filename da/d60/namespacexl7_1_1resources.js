@@ -1,5 +1,6 @@
 var namespacexl7_1_1resources =
 [
+    [ "detail", "db/dd8/namespacexl7_1_1resources_1_1detail.html", "db/dd8/namespacexl7_1_1resources_1_1detail" ],
     [ "DataProvider", "dd/def/classxl7_1_1resources_1_1DataProvider.html", "dd/def/classxl7_1_1resources_1_1DataProvider" ],
     [ "DefaultDataProvider", "d7/dcd/classxl7_1_1resources_1_1DefaultDataProvider.html", "d7/dcd/classxl7_1_1resources_1_1DefaultDataProvider" ],
     [ "FakeDataProvider", "dc/d12/classxl7_1_1resources_1_1FakeDataProvider.html", "dc/d12/classxl7_1_1resources_1_1FakeDataProvider" ],

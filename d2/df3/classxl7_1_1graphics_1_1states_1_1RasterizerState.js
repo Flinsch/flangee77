@@ -25,6 +25,5 @@ var classxl7_1_1graphics_1_1states_1_1RasterizerState =
     [ "get_type_string", "d2/df3/classxl7_1_1graphics_1_1states_1_1RasterizerState.html#a2ca11b2f289a4e1a326b183929ec5728", null ],
     [ "operator=", "d2/df3/classxl7_1_1graphics_1_1states_1_1RasterizerState.html#a58d1282ecdd3164962a6c4cfffa353f6", null ],
     [ "operator=", "d2/df3/classxl7_1_1graphics_1_1states_1_1RasterizerState.html#a777ab08ad09aa93cd0791553d21af805", null ],
-    [ "XL7_DERIVE_RESOURCE_ID", "d2/df3/classxl7_1_1graphics_1_1states_1_1RasterizerState.html#a75c6aa9b01345bb5d2cca633a644de24", null ],
     [ "_desc", "d2/df3/classxl7_1_1graphics_1_1states_1_1RasterizerState.html#ac52e2a32d4516085e67a26380516ac28", null ]
 ];

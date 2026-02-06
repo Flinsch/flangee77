@@ -7,6 +7,5 @@ var classxl7_1_1graphics_1_1states_1_1AbstractState =
     [ "~AbstractState", "de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState.html#aa20a48f686511fb9fb5f4ad472f6e7e7", null ],
     [ "_check_data_impl", "de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState.html#a7f1a2865b45613bc40f5e44347984273", null ],
     [ "operator=", "de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState.html#a6bb42f73874038d5594eb041013eea8d", null ],
-    [ "operator=", "de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState.html#af9f39a8884e9d6a757065f837138fcad", null ],
-    [ "XL7_DECLARE_RESOURCE_ID", "de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState.html#aaa33842ce953b55dccac3bd3c8a0d9c6", null ]
+    [ "operator=", "de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState.html#af9f39a8884e9d6a757065f837138fcad", null ]
 ];

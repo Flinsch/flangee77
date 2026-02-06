@@ -94,7 +94,6 @@ $(document).ready(function(){initNavTree('df/d57/ResourceId_8h.html','../../'); 
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">ResourceId.h File Reference</div></div>
 </div><!--header-->
@@ -262,13 +261,6 @@ Namespaces</h2></td></tr>
 <tr class="memitem:da/d60/namespacexl7_1_1resources" id="r_da/d60/namespacexl7_1_1resources"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d60/namespacexl7_1_1resources.html">xl7::resources</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a9b3471446922c6ecc369471d327bf982" id="r_a9b3471446922c6ecc369471d327bf982"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d57/ResourceId_8h.html#a9b3471446922c6ecc369471d327bf982">XL7_DECLARE_RESOURCE_ID</a>()&#160;&#160;&#160;class Id : public <a class="el" href="../../db/d1e/classxl7_1_1resources_1_1ResourceId.html">xl7::resources::ResourceId</a>    { using TBaseId = <a class="el" href="../../db/d1e/classxl7_1_1resources_1_1ResourceId.html">xl7::resources::ResourceId</a>; using TBaseId::TBaseId; }; Id get_id() const { return <a class="el" href="../../d5/d7b/classxl7_1_1resources_1_1Resource.html#aee23574cfd790b968c6e35e5d82e7569">xl7::resources::Resource::get_id</a>&lt;Id&gt;(); }</td></tr>
-<tr class="separator:a9b3471446922c6ecc369471d327bf982"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c62a9b90c44d27e2afc10c46fb124d0" id="r_a7c62a9b90c44d27e2afc10c46fb124d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d57/ResourceId_8h.html#a7c62a9b90c44d27e2afc10c46fb124d0">XL7_DERIVE_RESOURCE_ID</a>(TBase)&#160;&#160;&#160;class Id : public TBase::Id                     { using TBaseId = TBase::Id;                  using TBaseId::TBaseId; }; Id get_id() const { return <a class="el" href="../../d5/d7b/classxl7_1_1resources_1_1Resource.html#aee23574cfd790b968c6e35e5d82e7569">xl7::resources::Resource::get_id</a>&lt;Id&gt;(); }</td></tr>
-<tr class="separator:a7c62a9b90c44d27e2afc10c46fb124d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:afe05d0b0063761050c3e7e19bb54839d" id="r_afe05d0b0063761050c3e7e19bb54839d"><td class="memTemplParams" colspan="2">template&lt;class T1 , class T2 &gt; <br />
@@ -284,42 +276,6 @@ requires (std::is_base_of_v&lt;<a class="el" href="../../db/d1e/classxl7_1_1reso
 <tr class="memitem:aba7a66b01356b8d80d0c065290a65dcc"><td class="memTemplItemLeft" align="right" valign="top">T1&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d60/namespacexl7_1_1resources.html#aba7a66b01356b8d80d0c065290a65dcc">xl7::resources::id_cast</a> (T2 other)</td></tr>
 <tr class="separator:aba7a66b01356b8d80d0c065290a65dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a9b3471446922c6ecc369471d327bf982" name="a9b3471446922c6ecc369471d327bf982"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b3471446922c6ecc369471d327bf982">&#9670;&#160;</a></span>XL7_DECLARE_RESOURCE_ID</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define XL7_DECLARE_RESOURCE_ID</td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td>&#160;&#160;&#160;class Id : public <a class="el" href="../../db/d1e/classxl7_1_1resources_1_1ResourceId.html">xl7::resources::ResourceId</a>    { using TBaseId = <a class="el" href="../../db/d1e/classxl7_1_1resources_1_1ResourceId.html">xl7::resources::ResourceId</a>; using TBaseId::TBaseId; }; Id get_id() const { return <a class="el" href="../../d5/d7b/classxl7_1_1resources_1_1Resource.html#aee23574cfd790b968c6e35e5d82e7569">xl7::resources::Resource::get_id</a>&lt;Id&gt;(); }</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7c62a9b90c44d27e2afc10c46fb124d0" name="a7c62a9b90c44d27e2afc10c46fb124d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c62a9b90c44d27e2afc10c46fb124d0">&#9670;&#160;</a></span>XL7_DERIVE_RESOURCE_ID</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define XL7_DERIVE_RESOURCE_ID</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">TBase</td><td>)</td>
-          <td>&#160;&#160;&#160;class Id : public TBase::Id                     { using TBaseId = TBase::Id;                  using TBaseId::TBaseId; }; Id get_id() const { return <a class="el" href="../../d5/d7b/classxl7_1_1resources_1_1Resource.html#aee23574cfd790b968c6e35e5d82e7569">xl7::resources::Resource::get_id</a>&lt;Id&gt;(); }</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

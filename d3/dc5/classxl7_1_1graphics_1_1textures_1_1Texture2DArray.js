@@ -12,6 +12,5 @@ var classxl7_1_1graphics_1_1textures_1_1Texture2DArray =
     [ "get_type_string", "d3/dc5/classxl7_1_1graphics_1_1textures_1_1Texture2DArray.html#a0fa2593868bcc4fd3079f6b317ddb98d", null ],
     [ "operator=", "d3/dc5/classxl7_1_1graphics_1_1textures_1_1Texture2DArray.html#a31e5e40204338a519d23535c058fb5f3", null ],
     [ "operator=", "d3/dc5/classxl7_1_1graphics_1_1textures_1_1Texture2DArray.html#afb9a35e0de8c2ef8600b293928b6b30d", null ],
-    [ "XL7_DERIVE_RESOURCE_ID", "d3/dc5/classxl7_1_1graphics_1_1textures_1_1Texture2DArray.html#a63149b49d20e6d5888a54d0c9270a21b", null ],
     [ "_desc", "d3/dc5/classxl7_1_1graphics_1_1textures_1_1Texture2DArray.html#a672ecf15112e587bd2352f1daee3db2e", null ]
 ];

@@ -20,7 +20,6 @@ var classxl7_1_1graphics_1_1meshes_1_1MeshBuffer =
     [ "operator=", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#afc8c646253ab383a75275de4bad5a850", null ],
     [ "operator=", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#a9adf2f82b7791ebcd3c74c41bb01a939", null ],
     [ "update", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#ac2c40fafa1eed837f06f2db8f6d8940a", null ],
-    [ "XL7_DECLARE_RESOURCE_ID", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#a7192fe302839b770d2f5476a0404fe7d", null ],
     [ "_desc", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#af2e9f530b5651cf3cd68878faf1c16bc", null ],
     [ "_primitive_count", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#a7996fc695a3d8fd36d54a887369cab6e", null ],
     [ "_size", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#a9a2e372386cf365e155fb76003844521", null ],

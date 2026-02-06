@@ -30,7 +30,6 @@ var classxl7_1_1graphics_1_1textures_1_1Texture =
     [ "get_type_string", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a2935563d6e28991f4f51f4b06d12c960", null ],
     [ "operator=", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#adf2d8ccce6b3f90dd54c75ae48069f90", null ],
     [ "operator=", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#afcecfbc7677eba8e5c4e55f09e23a823", null ],
-    [ "XL7_DECLARE_RESOURCE_ID", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#acc1bd422b859241b605b52be66804a58", null ],
     [ "_channel_order", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a7b4bcb59a1bc10eb6903370e8f6a1859", null ],
     [ "_data_size", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a7f8d3a2029296ce1d1a2de5e35ad284f", null ],
     [ "_depth", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#ab577f9cb2dbc175073de831b472ffdef", null ],

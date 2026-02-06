@@ -15,6 +15,5 @@ var classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer =
     [ "operator=", "da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer.html#a8c41c1eab84ef1676d724b343da1f674", null ],
     [ "operator=", "da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer.html#a04c7d63c2e80d8426d29cb4eae4c25af", null ],
     [ "update", "da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer.html#a65671d0162bf19265a55ed8070adc425", null ],
-    [ "XL7_DECLARE_RESOURCE_ID", "da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer.html#a9faa3967933a0521db0b2bfe35fb294c", null ],
     [ "_desc", "da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer.html#a5874726de0666579a140f0d5089b2be5", null ]
 ];

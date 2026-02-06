@@ -1,5 +1,6 @@
 var namespacexl7_1_1graphics_1_1states =
 [
+    [ "detail", "d7/d25/namespacexl7_1_1graphics_1_1states_1_1detail.html", "d7/d25/namespacexl7_1_1graphics_1_1states_1_1detail" ],
     [ "AbstractState", "de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState.html", "de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState" ],
     [ "BlendState", "d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html", "d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState" ],
     [ "DepthStencilState", "db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html", "db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState" ],

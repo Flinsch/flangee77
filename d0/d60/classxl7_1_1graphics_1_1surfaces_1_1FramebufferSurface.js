@@ -9,6 +9,5 @@ var classxl7_1_1graphics_1_1surfaces_1_1FramebufferSurface =
     [ "get_type_string", "d0/d60/classxl7_1_1graphics_1_1surfaces_1_1FramebufferSurface.html#a9dd10b5b5e8c1291202fc27da2745bf3", null ],
     [ "operator=", "d0/d60/classxl7_1_1graphics_1_1surfaces_1_1FramebufferSurface.html#aa661ec9e162315ba781b0fde28fec572", null ],
     [ "operator=", "d0/d60/classxl7_1_1graphics_1_1surfaces_1_1FramebufferSurface.html#a5b0a068da841c2cdf81cd55734b9be2b", null ],
-    [ "XL7_DERIVE_RESOURCE_ID", "d0/d60/classxl7_1_1graphics_1_1surfaces_1_1FramebufferSurface.html#ae1546f8aaa57fe73865d4c9129f9ce50", null ],
     [ "_default_viewport", "d0/d60/classxl7_1_1graphics_1_1surfaces_1_1FramebufferSurface.html#a6a66ad39f5a9f6f554165e6e3c4618c7", null ]
 ];

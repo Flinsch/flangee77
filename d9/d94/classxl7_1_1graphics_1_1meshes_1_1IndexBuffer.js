@@ -10,6 +10,5 @@ var classxl7_1_1graphics_1_1meshes_1_1IndexBuffer =
     [ "get_type_string", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html#a1915ebe0b6ba463da522ec48032601ac", null ],
     [ "operator=", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html#a352d9a61390bff3a8a4c6a458b1d8948", null ],
     [ "operator=", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html#abc2b85361cd358d94079d28352d7ea8f", null ],
-    [ "XL7_DERIVE_RESOURCE_ID", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html#aed9e83249b5acbd97d96bc5988cce6d4", null ],
     [ "_desc", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html#a52aa18e2ad0ce4c27e64ddf7622cf2b8", null ]
 ];

@@ -12,6 +12,5 @@ var classxl7_1_1graphics_1_1textures_1_1Cubemap =
     [ "get_type_string", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html#a166bf7e11a31a939274909417cd06f10", null ],
     [ "operator=", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html#ab175743fec9eef97cb1061088f1c9939", null ],
     [ "operator=", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html#ae6d6e1427052f9b4ee792837fdef0550", null ],
-    [ "XL7_DERIVE_RESOURCE_ID", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html#a85a694b6ce496db044d354b59a6e4ddc", null ],
     [ "_desc", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html#a4cacd4ee6755f3c10f56a4cc25f02483", null ]
 ];
