@@ -72,7 +72,13 @@
 #include "./ProgLabs/ArgumentBag.h"
 
 #include "./XiaoLabs/general.h"
-#include "./XiaoLabs/graphics.h"
+
+#include "./XiaoLabs/graphics/Color.h"
+#include "./XiaoLabs/graphics/PixelLayout.h"
+#include "./XiaoLabs/graphics/images/ImageProcessor.h"
+#include "./XiaoLabs/graphics/images/ImageConverter.h"
+#include "./XiaoLabs/graphics/images/ImageResizer.h"
+#include "./XiaoLabs/graphics/shaders/reflection.h"
 
 
 
