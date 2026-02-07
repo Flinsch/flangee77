@@ -64,7 +64,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  shaders:  reflection" )
     {
         const Entry& entry = container[ i ];
 
-        const cl7::u8string file_path = cl7::platform::filesystem::get_working_directory() + u8"assets/shaders/" + entry.filename;
+        const cl7::u8string file_path = cl7::platform::filesystem::get_working_directory() + u8"assets/XiaoLabs/graphics/shaders/" + entry.filename;
 
         xl7::graphics::shaders::ShaderCode bytecode = xl7::graphics::impl::shared::shaders::D3DShaderCompiler::compile_hlsl_code( file_path, {}, entry.entry_point, entry.target );
         xl7::graphics::shaders::ReflectionResult reflection_result;
