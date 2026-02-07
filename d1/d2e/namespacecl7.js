@@ -102,6 +102,7 @@ var namespacecl7 =
     [ "make_string_view", "d1/d2e/namespacecl7.html#a069650d268f823fea9d9b3c9698c88d9", null ],
     [ "operator+", "d1/d2e/namespacecl7.html#ac0e2146a55fb87ddd7ccd3166341bf39", null ],
     [ "operator+", "d1/d2e/namespacecl7.html#a8d2be612ac2224fb419fccf262bcab25", null ],
+    [ "to_bytes", "d1/d2e/namespacecl7.html#a37df45da06b1d84cb21abffcae22676c", null ],
     [ "to_string", "d1/d2e/namespacecl7.html#a77903d2176b1a6ef2b24bca912ccf1b5", null ],
     [ "to_string", "d1/d2e/namespacecl7.html#aabdad3839cb5bf67f0e80d9691970602", null ],
     [ "to_string", "d1/d2e/namespacecl7.html#a2f6c6aa108b1295bb0cbff7fafde3a8f", null ],

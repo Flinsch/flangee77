@@ -1,5 +1,6 @@
 var NAVTREEINDEX32 =
 {
+"d9/d32/classcl7_1_1io_1_1WritableMemory.html#a09616291b1a5d94c31b277f503f70230":[5,0,1,3,14,4],
 "d9/d32/classcl7_1_1io_1_1WritableMemory.html#a0f1f61d5f6a1927c2a90468cf69b7971":[7,0,1,3,14,16],
 "d9/d32/classcl7_1_1io_1_1WritableMemory.html#a0f1f61d5f6a1927c2a90468cf69b7971":[5,0,1,3,14,16],
 "d9/d32/classcl7_1_1io_1_1WritableMemory.html#a16a989e767160ac53f582546ef794a00":[7,0,1,3,14,13],
@@ -248,6 +249,5 @@ var NAVTREEINDEX32 =
 "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html":[7,0,8,1,2,2],
 "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html":[5,0,8,2,2,2],
 "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html#a094c22b9daca1921ccbae2d02019e4fb":[5,0,8,2,2,2,1],
-"d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html#a094c22b9daca1921ccbae2d02019e4fb":[7,0,8,1,2,2,1],
-"d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html#a1915ebe0b6ba463da522ec48032601ac":[7,0,8,1,2,2,7]
+"d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html#a094c22b9daca1921ccbae2d02019e4fb":[7,0,8,1,2,2,1]
 };

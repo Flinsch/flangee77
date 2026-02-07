@@ -258,6 +258,10 @@ Functions</h2></td></tr>
 <tr class="memitem:ae16401c485ca640130b71d70aa9d8fe2" id="r_ae16401c485ca640130b71d70aa9d8fe2"><td class="memTemplParams" colspan="2">template&lt;typename... T&gt; </td></tr>
 <tr class="memitem:ae16401c485ca640130b71d70aa9d8fe2"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">byte_vector</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#ae16401c485ca640130b71d70aa9d8fe2">cl7::make_bytes</a> (T &amp;&amp;... args) noexcept</td></tr>
 <tr class="separator:ae16401c485ca640130b71d70aa9d8fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37df45da06b1d84cb21abffcae22676c" id="r_a37df45da06b1d84cb21abffcae22676c"><td class="memTemplParams" colspan="2">template&lt;std::ranges::contiguous_range Tcontainer&gt; <br />
+requires (std::is_trivially_copyable_v&lt;typename Tcontainer::value_type&gt; &amp;&amp; sizeof(typename Tcontainer::value_type) == sizeof(std::byte))</td></tr>
+<tr class="memitem:a37df45da06b1d84cb21abffcae22676c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">byte_vector</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a37df45da06b1d84cb21abffcae22676c">cl7::to_bytes</a> (const Tcontainer &amp;container)</td></tr>
+<tr class="separator:a37df45da06b1d84cb21abffcae22676c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

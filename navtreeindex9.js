@@ -1,5 +1,6 @@
 var NAVTREEINDEX9 =
 {
+"d3/d00/classxl7_1_1resources_1_1ResourceManager.html#ad7c050e62985dbab1f8ad6ef44b34437":[7,0,8,2,6,26],
 "d3/d00/classxl7_1_1resources_1_1ResourceManager.html#ad7c050e62985dbab1f8ad6ef44b34437":[5,0,8,4,6,26],
 "d3/d00/classxl7_1_1resources_1_1ResourceManager.html#ae1dd4f6eea757afeba8525aa3c7d7547":[7,0,8,2,6,22],
 "d3/d00/classxl7_1_1resources_1_1ResourceManager.html#ae1dd4f6eea757afeba8525aa3c7d7547":[5,0,8,4,6,22],
@@ -248,6 +249,5 @@ var NAVTREEINDEX9 =
 "d3/d5f/direct3d9_2states_2DepthStencilStateImpl_8h_source.html":[8,0,7,1,1,1,2,7],
 "d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html":[5,0,2,3,19],
 "d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html":[7,0,2,3,19],
-"d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a2824b3b93557fb174eb606a73ff6a161":[7,0,2,3,19,3],
-"d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a2824b3b93557fb174eb606a73ff6a161":[5,0,2,3,19,3]
+"d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a2824b3b93557fb174eb606a73ff6a161":[7,0,2,3,19,3]
 };

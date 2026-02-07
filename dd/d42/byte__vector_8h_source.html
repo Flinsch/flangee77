@@ -124,13 +124,23 @@ $(document).ready(function(){initNavTree('dd/d42/byte__vector_8h_source.html','.
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    }</div>
 </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>} <span class="comment">// namespace cl7</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif </span><span class="comment">// CL7_BYTEVECTOR_H</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">template</span> &lt;std::ranges::contiguous_range Tcontainer&gt;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">requires</span>(std::is_trivially_copyable_v&lt;typename Tcontainer::value_type&gt; &amp;&amp; <span class="keyword">sizeof</span>(<span class="keyword">typename</span> Tcontainer::value_type) == <span class="keyword">sizeof</span>(std::byte))</div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="../../d1/d2e/namespacecl7.html#a37df45da06b1d84cb21abffcae22676c">   26</a></span>    <a class="code hl_typedef" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">byte_vector</a> <a class="code hl_function" href="../../d1/d2e/namespacecl7.html#a37df45da06b1d84cb21abffcae22676c">to_bytes</a>(<span class="keyword">const</span> Tcontainer&amp; container)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordflow">return</span> <a class="code hl_typedef" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">byte_vector</a>(container.begin(), container.end());</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    }</div>
+</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>} <span class="comment">// namespace cl7</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif </span><span class="comment">// CL7_BYTEVECTOR_H</span></div>
 <div class="ttc" id="anamespacecl7_html"><div class="ttname"><a href="../../d1/d2e/namespacecl7.html">cl7</a></div><div class="ttdef"><b>Definition</b> auto_invoke.h:10</div></div>
 <div class="ttc" id="anamespacecl7_html_a2780184f886dedd7487698bda1efd38a"><div class="ttname"><a href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">cl7::byte_vector</a></div><div class="ttdeci">std::vector&lt; std::byte &gt; byte_vector</div><div class="ttdef"><b>Definition</b> byte_vector.h:14</div></div>
+<div class="ttc" id="anamespacecl7_html_a37df45da06b1d84cb21abffcae22676c"><div class="ttname"><a href="../../d1/d2e/namespacecl7.html#a37df45da06b1d84cb21abffcae22676c">cl7::to_bytes</a></div><div class="ttdeci">byte_vector to_bytes(const Tcontainer &amp;container)</div><div class="ttdef"><b>Definition</b> byte_vector.h:26</div></div>
 <div class="ttc" id="anamespacecl7_html_ae16401c485ca640130b71d70aa9d8fe2"><div class="ttname"><a href="../../d1/d2e/namespacecl7.html#ae16401c485ca640130b71d70aa9d8fe2">cl7::make_bytes</a></div><div class="ttdeci">byte_vector make_bytes(T &amp;&amp;... args) noexcept</div><div class="ttdef"><b>Definition</b> byte_vector.h:19</div></div>
 <div class="ttc" id="aroot_8h_html"><div class="ttname"><a href="../../de/d99/root_8h.html">root.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

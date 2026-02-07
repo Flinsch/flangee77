@@ -285,6 +285,10 @@ requires (!std::is_reference_v&lt;Tobject&gt; &amp;&amp; std::is_trivially_copya
 <tr class="memitem:ae16401c485ca640130b71d70aa9d8fe2" id="r_ae16401c485ca640130b71d70aa9d8fe2"><td class="memTemplParams" colspan="2">template&lt;typename... T&gt; </td></tr>
 <tr class="memitem:ae16401c485ca640130b71d70aa9d8fe2"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">byte_vector</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#ae16401c485ca640130b71d70aa9d8fe2">make_bytes</a> (T &amp;&amp;... args) noexcept</td></tr>
 <tr class="separator:ae16401c485ca640130b71d70aa9d8fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37df45da06b1d84cb21abffcae22676c" id="r_a37df45da06b1d84cb21abffcae22676c"><td class="memTemplParams" colspan="2">template&lt;std::ranges::contiguous_range Tcontainer&gt; <br />
+requires (std::is_trivially_copyable_v&lt;typename Tcontainer::value_type&gt; &amp;&amp; sizeof(typename Tcontainer::value_type) == sizeof(std::byte))</td></tr>
+<tr class="memitem:a37df45da06b1d84cb21abffcae22676c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">byte_vector</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a37df45da06b1d84cb21abffcae22676c">to_bytes</a> (const Tcontainer &amp;container)</td></tr>
+<tr class="separator:a37df45da06b1d84cb21abffcae22676c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b7e06efb4050b9bdea3f8c723deff7b" id="r_a0b7e06efb4050b9bdea3f8c723deff7b"><td class="memTemplParams" colspan="2">template&lt;std::ranges::contiguous_range Tcontainer&gt; <br />
 requires (std::is_trivially_copyable_v&lt;typename Tcontainer::value_type&gt;)</td></tr>
 <tr class="memitem:a0b7e06efb4050b9bdea3f8c723deff7b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a0b7e06efb4050b9bdea3f8c723deff7b">make_byte_view</a> (const Tcontainer &amp;container)</td></tr>
@@ -1466,6 +1470,27 @@ requires ( std::is_same_v&lt;Tchar, typename std::remove_cvref_t&lt;Tstring_view
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a37df45da06b1d84cb21abffcae22676c" name="a37df45da06b1d84cb21abffcae22676c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37df45da06b1d84cb21abffcae22676c">&#9670;&#160;</a></span>to_bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::ranges::contiguous_range Tcontainer&gt; <br />
+requires (std::is_trivially_copyable_v&lt;typename Tcontainer::value_type&gt; &amp;&amp; sizeof(typename Tcontainer::value_type) == sizeof(std::byte))</div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">byte_vector</a> cl7::to_bytes </td>
+          <td>(</td>
+          <td class="paramtype">const Tcontainer &amp;&#160;</td>
+          <td class="paramname"><em>container</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
