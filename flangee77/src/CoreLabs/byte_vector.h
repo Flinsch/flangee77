@@ -21,6 +21,13 @@ namespace cl7 {
         return {static_cast<std::byte>(std::forward<T>(args))...};
     }
 
+    template <std::ranges::contiguous_range Tcontainer>
+        requires(std::is_trivially_copyable_v<typename Tcontainer::value_type> && sizeof(typename Tcontainer::value_type) == sizeof(std::byte))
+    byte_vector to_bytes(const Tcontainer& container)
+    {
+        return byte_vector(container.begin(), container.end());
+    }
+
 
 
 } // namespace cl7

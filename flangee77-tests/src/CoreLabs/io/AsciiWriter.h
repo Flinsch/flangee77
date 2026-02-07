@@ -23,7 +23,7 @@ TESTLABS_CASE( u8"CoreLabs:  io:  AsciiWriter" )
     TESTLABS_CHECK_EQ( ascii_writer.write( "Hello World" ), 11 );
     TESTLABS_CHECK_EQ( ascii_writer.write_char( '!' ), 1 );
 
-    TESTLABS_CHECK( std::ranges::equal( writable_memory.get_data(), cl7::text::codec::to_bytes("Line 1\r\nLine 2\nLine 3\rHello World!") ) );
+    TESTLABS_CHECK_EQ( cl7::to_bytes(writable_memory.get_data()), cl7::text::codec::to_bytes("Line 1\r\nLine 2\nLine 3\rHello World!") );
 }
 
 
