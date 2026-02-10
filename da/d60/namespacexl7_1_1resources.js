@@ -7,7 +7,7 @@ var namespacexl7_1_1resources =
     [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html", "d5/d7b/classxl7_1_1resources_1_1Resource" ],
     [ "ResourceId", "db/d1e/classxl7_1_1resources_1_1ResourceId.html", null ],
     [ "ResourceManager", "d3/d00/classxl7_1_1resources_1_1ResourceManager.html", "d3/d00/classxl7_1_1resources_1_1ResourceManager" ],
-    [ "id_cast", "da/d60/namespacexl7_1_1resources.html#aba7a66b01356b8d80d0c065290a65dcc", null ],
-    [ "operator!=", "da/d60/namespacexl7_1_1resources.html#ae2b845a5c73ee492f0dfa9e32ce2dc1d", null ],
-    [ "operator==", "da/d60/namespacexl7_1_1resources.html#afe05d0b0063761050c3e7e19bb54839d", null ]
+    [ "id_cast", "da/d60/namespacexl7_1_1resources.html#a2a82b69f0c85cc06fac456015704059f", null ],
+    [ "operator!=", "da/d60/namespacexl7_1_1resources.html#a89e3c351433cf920159891a761e0ece0", null ],
+    [ "operator==", "da/d60/namespacexl7_1_1resources.html#ad6a5b0064fd8b4430d4a4b2135f3f432", null ]
 ];

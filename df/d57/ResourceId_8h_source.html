@@ -137,20 +137,20 @@ $(document).ready(function(){initNavTree('df/d57/ResourceId_8h_source.html','../
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment">// #############################################################################</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T1, <span class="keyword">class</span> T2&gt;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">requires</span>(std::is_base_of_v&lt;ResourceId, T1&gt; &amp;&amp; std::is_base_of_v&lt;ResourceId, T2&gt;)</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">requires</span>(std::derived_from&lt;T1, ResourceId&gt; &amp;&amp; std::derived_from&lt;T2, ResourceId&gt;)</div>
 <div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="../../da/d60/namespacexl7_1_1resources.html#afe05d0b0063761050c3e7e19bb54839d">   38</a></span>    <span class="keyword">auto</span> <span class="keyword">operator</span>==(T1 a, T2 b) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="../../da/d60/namespacexl7_1_1resources.html#ad6a5b0064fd8b4430d4a4b2135f3f432">   38</a></span>    <span class="keyword">auto</span> <span class="keyword">operator</span>==(T1 a, T2 b) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">if</span> (!std::is_base_of_v&lt;T1, T2&gt; &amp;&amp; !std::is_base_of_v&lt;T2, T1&gt;)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">if</span> (!std::derived_from&lt;T1, T2&gt; &amp;&amp; !std::derived_from&lt;T2, T1&gt;)</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">return</span> a.<a class="code hl_function" href="../../dc/d7b/classcl7_1_1VersionedId.html#a58dc2e19bf68ef044e108185dda2e60c">value</a>() == b.value();</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
 </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T1, <span class="keyword">class</span> T2&gt;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">requires</span>(std::is_base_of_v&lt;ResourceId, T1&gt; &amp;&amp; std::is_base_of_v&lt;ResourceId, T2&gt;)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">requires</span>(std::derived_from&lt;T1, ResourceId&gt; &amp;&amp; std::derived_from&lt;T2, ResourceId&gt;)</div>
 <div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="../../da/d60/namespacexl7_1_1resources.html#ae2b845a5c73ee492f0dfa9e32ce2dc1d">   47</a></span>    <span class="keyword">auto</span> <span class="keyword">operator</span>!=(T1 a, T2 b) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="../../da/d60/namespacexl7_1_1resources.html#a89e3c351433cf920159891a761e0ece0">   47</a></span>    <span class="keyword">auto</span> <span class="keyword">operator</span>!=(T1 a, T2 b) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    {</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">return</span> !(a == b);</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
@@ -163,11 +163,11 @@ $(document).ready(function(){initNavTree('df/d57/ResourceId_8h_source.html','../
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// #############################################################################</span></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T1, <span class="keyword">class</span> T2&gt;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">requires</span>(std::is_base_of_v&lt;ResourceId, T1&gt; &amp;&amp; std::is_base_of_v&lt;ResourceId, T2&gt;)</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">requires</span>(std::derived_from&lt;T1, ResourceId&gt; &amp;&amp; std::derived_from&lt;T2, ResourceId&gt;)</div>
 <div class="foldopen" id="foldopen00060" data-start="{" data-end="}">
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="../../da/d60/namespacexl7_1_1resources.html#aba7a66b01356b8d80d0c065290a65dcc">   60</a></span>    T1 <a class="code hl_function" href="../../da/d60/namespacexl7_1_1resources.html#aba7a66b01356b8d80d0c065290a65dcc">id_cast</a>(T2 other)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="../../da/d60/namespacexl7_1_1resources.html#a2a82b69f0c85cc06fac456015704059f">   60</a></span>    T1 <a class="code hl_function" href="../../da/d60/namespacexl7_1_1resources.html#a2a82b69f0c85cc06fac456015704059f">id_cast</a>(T2 other)</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keyword">static_assert</span>(std::is_base_of_v&lt;T1, T2&gt; || std::is_base_of_v&lt;T2, T1&gt;, <span class="stringliteral">&quot;invalid id_cast&quot;</span>);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keyword">static_assert</span>(std::derived_from&lt;T1, T2&gt; || std::derived_from&lt;T2, T1&gt;, <span class="stringliteral">&quot;invalid id_cast&quot;</span>);</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordflow">return</span> T1(other.index(), other.version());</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
 </div>
@@ -203,7 +203,7 @@ $(document).ready(function(){initNavTree('df/d57/ResourceId_8h_source.html','../
 <div class="ttc" id="aclasscl7_1_1VersionedId_html_ad87ebad66177bbb69420d34961be9e96"><div class="ttname"><a href="../../dc/d7b/classcl7_1_1VersionedId.html#ad87ebad66177bbb69420d34961be9e96">cl7::VersionedId&lt; size_t, 32, ResourceId &gt;::INDEX_SIZE_BITS</a></div><div class="ttdeci">static constexpr auto INDEX_SIZE_BITS</div><div class="ttdef"><b>Definition</b> VersionedId.h:119</div></div>
 <div class="ttc" id="aclassxl7_1_1resources_1_1ResourceId_html"><div class="ttname"><a href="../../db/d1e/classxl7_1_1resources_1_1ResourceId.html">xl7::resources::ResourceId</a></div><div class="ttdef"><b>Definition</b> ResourceId.h:14</div></div>
 <div class="ttc" id="anamespacexl7_1_1resources_html"><div class="ttname"><a href="../../da/d60/namespacexl7_1_1resources.html">xl7::resources</a></div><div class="ttdef"><b>Definition</b> DataProvider.cpp:5</div></div>
-<div class="ttc" id="anamespacexl7_1_1resources_html_aba7a66b01356b8d80d0c065290a65dcc"><div class="ttname"><a href="../../da/d60/namespacexl7_1_1resources.html#aba7a66b01356b8d80d0c065290a65dcc">xl7::resources::id_cast</a></div><div class="ttdeci">T1 id_cast(T2 other)</div><div class="ttdef"><b>Definition</b> ResourceId.h:60</div></div>
+<div class="ttc" id="anamespacexl7_1_1resources_html_a2a82b69f0c85cc06fac456015704059f"><div class="ttname"><a href="../../da/d60/namespacexl7_1_1resources.html#a2a82b69f0c85cc06fac456015704059f">xl7::resources::id_cast</a></div><div class="ttdeci">T1 id_cast(T2 other)</div><div class="ttdef"><b>Definition</b> ResourceId.h:60</div></div>
 <div class="ttc" id="anamespacexl7_html"><div class="ttname"><a href="../../dc/d6e/namespacexl7.html">xl7</a></div><div class="ttdef"><b>Definition</b> audio.h:8</div></div>
 <div class="ttc" id="astructstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4_html_a0b6fcc8815e3124c1d741b8f1acefa8d"><div class="ttname"><a href="../../dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4.html#a0b6fcc8815e3124c1d741b8f1acefa8d">std::hash&lt; xl7::resources::ResourceId &gt;::operator()</a></div><div class="ttdeci">size_t operator()(const xl7::resources::ResourceId &amp;resource_id) const noexcept</div><div class="ttdef"><b>Definition</b> ResourceId.h:75</div></div>
 </div><!-- fragment --></div><!-- contents -->
