@@ -11,7 +11,7 @@ namespace xl7::graphics::surfaces {
 
 
 class FramebufferSurface
-    : public detail::SurfaceBase<FramebufferSurface>
+    : public resources::detail::ResourceBase<FramebufferSurface, Surface>
 {
 
 public:
@@ -39,7 +39,7 @@ public:
 protected:
 
     FramebufferSurface(Type type, const CreateParams<Desc>& params)
-        : SurfaceBase(Type::RenderTargetSurface, params)
+        : ResourceBase(Type::RenderTargetSurface, params)
         , _default_viewport{.x = 0, .y = 0, .width = params.desc.width, .height = params.desc.height, .min_z = 0.0f, .max_z = 1.0f}
     {
     }
@@ -55,28 +55,6 @@ private:
     const Viewport _default_viewport;
 
 }; // class FramebufferSurface
-
-
-
-namespace detail {
-
-template <class TFramebufferSurface>
-class FramebufferSurfaceBase
-    : public FramebufferSurface
-{
-public:
-    using FramebufferSurface::FramebufferSurface;
-
-    class Id :
-        public FramebufferSurface::Id
-    {
-        using FramebufferSurface::Id::Id;
-    };
-
-    Id get_id() const { return Resource::get_id<Id>(); }
-}; // class FramebufferSurfaceBase
-
-} // namespace detail
 
 
 

@@ -9,7 +9,7 @@ namespace xl7::graphics::states {
 
 
 class RasterizerState
-    : public detail::AbstractStateBase<RasterizerState>
+    : public resources::detail::ResourceBase<RasterizerState, AbstractState>
 {
 
 public:
@@ -82,7 +82,7 @@ public:
 protected:
 
     RasterizerState(const CreateParams<Desc>& params)
-        : AbstractStateBase(params)
+        : ResourceBase(params)
         , _desc(params.desc)
     {
     }

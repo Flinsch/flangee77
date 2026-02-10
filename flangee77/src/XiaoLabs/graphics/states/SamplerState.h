@@ -13,7 +13,7 @@ namespace xl7::graphics::states {
 
 
 class SamplerState
-    : public detail::AbstractStateBase<SamplerState>
+    : public resources::detail::ResourceBase<SamplerState, AbstractState>
 {
 
 public:
@@ -112,7 +112,7 @@ public:
 protected:
 
     SamplerState(const CreateParams<Desc>& params)
-        : AbstractStateBase(params)
+        : ResourceBase(params)
         , _desc(params.desc)
     {
     }

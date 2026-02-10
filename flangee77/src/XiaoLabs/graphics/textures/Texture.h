@@ -226,28 +226,6 @@ private:
 
 
 
-namespace detail {
-
-template <class TTexture>
-class TextureBase
-    : public Texture
-{
-public:
-    using Texture::Texture;
-
-    class Id :
-        public Texture::Id
-    {
-        using Texture::Id::Id;
-    };
-
-    Id get_id() const { return Resource::get_id<Id>(); }
-}; // class TextureBase
-
-} // namespace detail
-
-
-
 } // namespace xl7::graphics::textures
 
 #endif // XL7_GRAPHICS_TEXTURES_TEXTURE_H

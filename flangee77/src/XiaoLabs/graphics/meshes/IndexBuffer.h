@@ -12,7 +12,7 @@ namespace xl7::graphics::meshes {
 
 
 class IndexBuffer
-    : public detail::MeshBufferBase<IndexBuffer>
+    : public resources::detail::ResourceBase<IndexBuffer, MeshBuffer>
 {
 
 public:

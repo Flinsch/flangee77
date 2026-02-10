@@ -234,28 +234,6 @@ private:
 
 
 
-namespace detail {
-
-template <class TShader>
-class ShaderBase
-    : public Shader
-{
-public:
-    using Shader::Shader;
-
-    class Id :
-        public Shader::Id
-    {
-        using Shader::Id::Id;
-    };
-
-    Id get_id() const { return Resource::get_id<Id>(); }
-}; // class ShaderBase
-
-} // namespace detail
-
-
-
 } // namespace xl7::graphics::shaders
 
 #endif // XL7_GRAPHICS_SHADERS_SHADER_H

@@ -9,7 +9,7 @@ namespace xl7::graphics::shaders {
 
 
 class PixelShader
-    : public detail::ShaderBase<PixelShader>
+    : public resources::detail::ResourceBase<PixelShader, Shader>
 {
 
 public:
@@ -32,7 +32,7 @@ public:
 protected:
 
     PixelShader(const CreateParams<Desc>& params)
-        : ShaderBase(Type::PixelShader, params)
+        : ResourceBase(Type::PixelShader, params)
     {
     }
 

@@ -9,7 +9,7 @@ namespace xl7::graphics::textures {
 
 
 class Cubemap
-    : public detail::TextureBase<Cubemap>
+    : public resources::detail::ResourceBase<Cubemap, Texture>
 {
 
 public:

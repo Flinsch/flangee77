@@ -12,7 +12,7 @@ namespace xl7::graphics::meshes {
 
 
 class VertexBuffer
-    : public detail::MeshBufferBase<VertexBuffer>
+    : public resources::detail::ResourceBase<VertexBuffer, MeshBuffer>
 {
 
 public:

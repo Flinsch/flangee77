@@ -9,7 +9,7 @@ namespace xl7::graphics::textures {
 
 
 class Texture3D
-    : public detail::TextureBase<Texture3D>
+    : public resources::detail::ResourceBase<Texture3D, Texture>
 {
 
 public:

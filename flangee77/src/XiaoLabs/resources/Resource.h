@@ -22,6 +22,8 @@ class Resource
 {
 
 public:
+    using Id = ResourceId;
+
     class Attorney
     {
         static bool acquire(Resource* resource, const DataProvider& data_provider) { return resource->_acquire(data_provider); }
@@ -308,17 +310,18 @@ private:
 
 namespace detail {
 
-template <class TResource>
+template <class TDerived, class TBase = Resource>
+    requires(std::derived_from<TBase, Resource>)
 class ResourceBase
-    : public Resource
+    : public TBase
 {
 public:
-    using Resource::Resource;
+    using TBase::TBase;
 
     class Id :
-        public ResourceId
+        public TBase::Id
     {
-        using ResourceId::ResourceId;
+        using TBase::Id::Id;
     };
 
     Id get_id() const { return Resource::get_id<Id>(); }

@@ -9,7 +9,7 @@ namespace xl7::graphics::shaders {
 
 
 class VertexShader
-    : public detail::ShaderBase<VertexShader>
+    : public resources::detail::ResourceBase<VertexShader, Shader>
 {
 
 public:
@@ -32,7 +32,7 @@ public:
 protected:
 
     VertexShader(const CreateParams<Desc>& params)
-        : ShaderBase(Type::VertexShader, params)
+        : ResourceBase(Type::VertexShader, params)
     {
     }
 

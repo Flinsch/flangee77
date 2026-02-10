@@ -11,7 +11,7 @@ namespace xl7::graphics::states {
 
 
 class BlendState
-    : public detail::AbstractStateBase<BlendState>
+    : public resources::detail::ResourceBase<BlendState, AbstractState>
 {
 
 public:
@@ -87,7 +87,7 @@ public:
 protected:
 
     BlendState(const CreateParams<Desc>& params)
-        : AbstractStateBase(params)
+        : ResourceBase(params)
         , _desc(params.desc)
     {
     }

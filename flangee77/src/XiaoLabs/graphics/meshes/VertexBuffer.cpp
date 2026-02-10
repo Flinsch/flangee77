@@ -9,7 +9,7 @@ namespace xl7::graphics::meshes {
 
 
     VertexBuffer::VertexBuffer(const CreateParams<Desc>& params)
-        : MeshBufferBase(Type::VertexBuffer, params, params.desc.stride)
+        : ResourceBase(Type::VertexBuffer, params, params.desc.stride)
         , _desc(params.desc)
     {
         assert(get_stride() > 0 && get_stride() >= _desc.vertex_layout.calculate_size());

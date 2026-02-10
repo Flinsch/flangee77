@@ -12,7 +12,7 @@ namespace xl7::graphics::textures {
 
 
     Texture2DArray::Texture2DArray(const CreateParams<Desc>& params)
-        : TextureBase(Type::Texture2DArray, {.manager = params.manager, .id = params.id, .identifier = params.identifier, .desc = params.desc}, 1, params.desc.count) // NOLINT(*-slicing)
+        : ResourceBase(Type::Texture2DArray, {.manager = params.manager, .id = params.id, .identifier = params.identifier, .desc = params.desc}, 1, params.desc.count) // NOLINT(*-slicing)
         , _desc(params.desc)
     {
         const RenderingDevice::Capabilities& capabilities = GraphicsSystem::instance().get_rendering_device()->get_capabilities();

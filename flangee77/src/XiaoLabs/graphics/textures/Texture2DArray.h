@@ -9,7 +9,7 @@ namespace xl7::graphics::textures {
 
 
 class Texture2DArray
-    : public detail::TextureBase<Texture2DArray>
+    : public resources::detail::ResourceBase<Texture2DArray, Texture>
 {
 
 public:

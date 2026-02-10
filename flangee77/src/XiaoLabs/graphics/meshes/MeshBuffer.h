@@ -151,28 +151,6 @@ private:
 
 
 
-namespace detail {
-
-template <class TMeshBuffer>
-class MeshBufferBase
-    : public MeshBuffer
-{
-public:
-    using MeshBuffer::MeshBuffer;
-
-    class Id :
-        public MeshBuffer::Id
-    {
-        using MeshBuffer::Id::Id;
-    };
-
-    Id get_id() const { return Resource::get_id<Id>(); }
-}; // class MeshBufferBase
-
-} // namespace detail
-
-
-
 } // namespace xl7::graphics::meshes
 
 #endif // XL7_GRAPHICS_MESHES_MESHBUFFER_H

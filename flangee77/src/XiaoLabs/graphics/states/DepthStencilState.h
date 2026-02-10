@@ -11,7 +11,7 @@ namespace xl7::graphics::states {
 
 
 class DepthStencilState
-    : public detail::AbstractStateBase<DepthStencilState>
+    : public resources::detail::ResourceBase<DepthStencilState, AbstractState>
 {
 
 public:
@@ -95,7 +95,7 @@ public:
 protected:
 
     DepthStencilState(const CreateParams<Desc>& params)
-        : AbstractStateBase(params)
+        : ResourceBase(params)
         , _desc(params.desc)
     {
     }

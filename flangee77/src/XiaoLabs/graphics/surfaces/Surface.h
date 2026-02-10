@@ -107,28 +107,6 @@ private:
 
 
 
-namespace detail {
-
-template <class TSurface>
-class SurfaceBase
-    : public Surface
-{
-public:
-    using Surface::Surface;
-
-    class Id :
-        public Surface::Id
-    {
-        using Surface::Id::Id;
-    };
-
-    Id get_id() const { return Resource::get_id<Id>(); }
-}; // class SurfaceBase
-
-} // namespace detail
-
-
-
 } // namespace xl7::graphics::surfaces
 
 #endif // XL7_GRAPHICS_SURFACES_SURFACE_H

@@ -50,28 +50,6 @@ private:
 
 
 
-namespace detail {
-
-template <class TAbstractState>
-class AbstractStateBase
-    : public AbstractState
-{
-public:
-    using AbstractState::AbstractState;
-
-    class Id :
-        public AbstractState::Id
-    {
-        using AbstractState::Id::Id;
-    };
-
-    Id get_id() const { return Resource::get_id<Id>(); }
-}; // class AbstractStateBase
-
-} // namespace detail
-
-
-
 } // namespace xl7::graphics::states
 
 #endif // XL7_GRAPHICS_STATES_ABSTRACTSTATE_H
