@@ -34,16 +34,16 @@ private:
     // #############################################################################
 
     template <class T1, class T2>
-        requires(std::is_base_of_v<ResourceId, T1> && std::is_base_of_v<ResourceId, T2>)
+        requires(std::derived_from<T1, ResourceId> && std::derived_from<T2, ResourceId>)
     auto operator==(T1 a, T2 b) noexcept
     {
-        if (!std::is_base_of_v<T1, T2> && !std::is_base_of_v<T2, T1>)
+        if (!std::derived_from<T1, T2> && !std::derived_from<T2, T1>)
             return false;
         return a.value() == b.value();
     }
 
     template <class T1, class T2>
-        requires(std::is_base_of_v<ResourceId, T1> && std::is_base_of_v<ResourceId, T2>)
+        requires(std::derived_from<T1, ResourceId> && std::derived_from<T2, ResourceId>)
     auto operator!=(T1 a, T2 b) noexcept
     {
         return !(a == b);
@@ -56,10 +56,10 @@ private:
     // #############################################################################
 
     template <class T1, class T2>
-        requires(std::is_base_of_v<ResourceId, T1> && std::is_base_of_v<ResourceId, T2>)
+        requires(std::derived_from<T1, ResourceId> && std::derived_from<T2, ResourceId>)
     T1 id_cast(T2 other)
     {
-        static_assert(std::is_base_of_v<T1, T2> || std::is_base_of_v<T2, T1>, "invalid id_cast");
+        static_assert(std::derived_from<T1, T2> || std::derived_from<T2, T1>, "invalid id_cast");
         return T1(other.index(), other.version());
     }
 

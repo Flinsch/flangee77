@@ -78,7 +78,7 @@ public:
      * contained resources.
      */
     template <class TResource>
-        requires(std::is_base_of_v<Resource, TResource>)
+        requires(std::derived_from<TResource, Resource>)
     TResource* get_resource(size_t index) const
     {
         Resource* resource = get_resource(index);
@@ -91,7 +91,7 @@ public:
      * Time complexity: constant.
      */
     template <class TResource>
-        requires(std::is_base_of_v<Resource, TResource>)
+        requires(std::derived_from<TResource, Resource>)
     TResource* find_resource(ResourceId id) const
     {
         Resource* resource = find_resource(id);
@@ -105,7 +105,7 @@ public:
      * contained resources.
      */
     template <class TResource>
-        requires(std::is_base_of_v<Resource, TResource>)
+        requires(std::derived_from<TResource, Resource>)
     TResource* find_resource(cl7::u8string_view identifier) const
     {
         Resource* resource = find_resource(identifier);
@@ -183,7 +183,7 @@ protected:
      * ID otherwise.
      */
     template <class TResourceId>
-        requires(std::is_base_of_v<ResourceId, TResourceId>)
+        requires(std::derived_from<TResourceId, ResourceId>)
     TResourceId _try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider)
     {
         return id_cast<TResourceId>(_try_acquire_and_add_resource(std::move(resource_ptr), data_provider));
