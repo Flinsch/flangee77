@@ -437,9 +437,6 @@ var annotated_dup =
           ] ]
         ] ],
         [ "meshes", "d0/d08/namespacexl7_1_1graphics_1_1meshes.html", [
-          [ "detail", "d7/d99/namespacexl7_1_1graphics_1_1meshes_1_1detail.html", [
-            [ "MeshBufferBase", "de/d8a/classxl7_1_1graphics_1_1meshes_1_1detail_1_1MeshBufferBase.html", "de/d8a/classxl7_1_1graphics_1_1meshes_1_1detail_1_1MeshBufferBase" ]
-          ] ],
           [ "IMeshFactory", "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory.html", "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory" ],
           [ "IndexBuffer", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer" ],
           [ "IndexDataProvider", "d3/d72/classxl7_1_1graphics_1_1meshes_1_1IndexDataProvider.html", "d3/d72/classxl7_1_1graphics_1_1meshes_1_1IndexDataProvider" ],
@@ -462,9 +459,6 @@ var annotated_dup =
           [ "VertexShaderStage", "d6/d69/classxl7_1_1graphics_1_1pipeline_1_1VertexShaderStage.html", "d6/d69/classxl7_1_1graphics_1_1pipeline_1_1VertexShaderStage" ]
         ] ],
         [ "shaders", "d7/db8/namespacexl7_1_1graphics_1_1shaders.html", [
-          [ "detail", "de/d53/namespacexl7_1_1graphics_1_1shaders_1_1detail.html", [
-            [ "ShaderBase", "d8/d93/classxl7_1_1graphics_1_1shaders_1_1detail_1_1ShaderBase.html", "d8/d93/classxl7_1_1graphics_1_1shaders_1_1detail_1_1ShaderBase" ]
-          ] ],
           [ "CodeDataProvider", "d3/da8/classxl7_1_1graphics_1_1shaders_1_1CodeDataProvider.html", "d3/da8/classxl7_1_1graphics_1_1shaders_1_1CodeDataProvider" ],
           [ "CompileOptions", "de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html", "de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions" ],
           [ "ConstantBuffer", "da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer.html", "da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer" ],
@@ -484,9 +478,6 @@ var annotated_dup =
           [ "VertexShader", "dd/dae/classxl7_1_1graphics_1_1shaders_1_1VertexShader.html", "dd/dae/classxl7_1_1graphics_1_1shaders_1_1VertexShader" ]
         ] ],
         [ "states", "dc/d8d/namespacexl7_1_1graphics_1_1states.html", [
-          [ "detail", "d7/d25/namespacexl7_1_1graphics_1_1states_1_1detail.html", [
-            [ "AbstractStateBase", "da/d02/classxl7_1_1graphics_1_1states_1_1detail_1_1AbstractStateBase.html", "da/d02/classxl7_1_1graphics_1_1states_1_1detail_1_1AbstractStateBase" ]
-          ] ],
           [ "AbstractState", "de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState.html", "de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState" ],
           [ "BlendState", "d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html", "d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState" ],
           [ "DepthStencilState", "db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html", "db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState" ],
@@ -496,10 +487,6 @@ var annotated_dup =
           [ "StateManager", "d2/d7e/classxl7_1_1graphics_1_1states_1_1StateManager.html", "d2/d7e/classxl7_1_1graphics_1_1states_1_1StateManager" ]
         ] ],
         [ "surfaces", "d4/d74/namespacexl7_1_1graphics_1_1surfaces.html", [
-          [ "detail", "dc/d6d/namespacexl7_1_1graphics_1_1surfaces_1_1detail.html", [
-            [ "FramebufferSurfaceBase", "de/d4c/classxl7_1_1graphics_1_1surfaces_1_1detail_1_1FramebufferSurfaceBase.html", "de/d4c/classxl7_1_1graphics_1_1surfaces_1_1detail_1_1FramebufferSurfaceBase" ],
-            [ "SurfaceBase", "d3/d0f/classxl7_1_1graphics_1_1surfaces_1_1detail_1_1SurfaceBase.html", "d3/d0f/classxl7_1_1graphics_1_1surfaces_1_1detail_1_1SurfaceBase" ]
-          ] ],
           [ "DepthStencilSurface", "d8/d6c/classxl7_1_1graphics_1_1surfaces_1_1DepthStencilSurface.html", "d8/d6c/classxl7_1_1graphics_1_1surfaces_1_1DepthStencilSurface" ],
           [ "FramebufferSurface", "d0/d60/classxl7_1_1graphics_1_1surfaces_1_1FramebufferSurface.html", "d0/d60/classxl7_1_1graphics_1_1surfaces_1_1FramebufferSurface" ],
           [ "ISurfaceFactory", "dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html", "dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory" ],
@@ -508,9 +495,6 @@ var annotated_dup =
           [ "SurfaceManager", "d9/dc4/classxl7_1_1graphics_1_1surfaces_1_1SurfaceManager.html", "d9/dc4/classxl7_1_1graphics_1_1surfaces_1_1SurfaceManager" ]
         ] ],
         [ "textures", "dd/d18/namespacexl7_1_1graphics_1_1textures.html", [
-          [ "detail", "d5/d6a/namespacexl7_1_1graphics_1_1textures_1_1detail.html", [
-            [ "TextureBase", "dd/d60/classxl7_1_1graphics_1_1textures_1_1detail_1_1TextureBase.html", "dd/d60/classxl7_1_1graphics_1_1textures_1_1detail_1_1TextureBase" ]
-          ] ],
           [ "Cubemap", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap" ],
           [ "ImageDataProvider", "da/de6/classxl7_1_1graphics_1_1textures_1_1ImageDataProvider.html", "da/de6/classxl7_1_1graphics_1_1textures_1_1ImageDataProvider" ],
           [ "ITextureFactory", "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html", "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory" ],

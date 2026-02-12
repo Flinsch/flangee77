@@ -1,6 +1,5 @@
 var namespacexl7_1_1graphics_1_1shaders =
 [
-    [ "detail", "de/d53/namespacexl7_1_1graphics_1_1shaders_1_1detail.html", "de/d53/namespacexl7_1_1graphics_1_1shaders_1_1detail" ],
     [ "CodeDataProvider", "d3/da8/classxl7_1_1graphics_1_1shaders_1_1CodeDataProvider.html", "d3/da8/classxl7_1_1graphics_1_1shaders_1_1CodeDataProvider" ],
     [ "CompileOptions", "de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html", "de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions" ],
     [ "ConstantBuffer", "da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer.html", "da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer" ],

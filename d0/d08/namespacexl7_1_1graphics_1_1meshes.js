@@ -1,6 +1,5 @@
 var namespacexl7_1_1graphics_1_1meshes =
 [
-    [ "detail", "d7/d99/namespacexl7_1_1graphics_1_1meshes_1_1detail.html", "d7/d99/namespacexl7_1_1graphics_1_1meshes_1_1detail" ],
     [ "IMeshFactory", "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory.html", "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory" ],
     [ "IndexBuffer", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer" ],
     [ "IndexDataProvider", "d3/d72/classxl7_1_1graphics_1_1meshes_1_1IndexDataProvider.html", "d3/d72/classxl7_1_1graphics_1_1meshes_1_1IndexDataProvider" ],

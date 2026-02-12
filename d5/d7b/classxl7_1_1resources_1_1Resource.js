@@ -2,6 +2,7 @@ var classxl7_1_1resources_1_1Resource =
 [
     [ "Attorney", "d0/d78/classxl7_1_1resources_1_1Resource_1_1Attorney.html", "d0/d78/classxl7_1_1resources_1_1Resource_1_1Attorney" ],
     [ "CreateParams", "db/df9/structxl7_1_1resources_1_1Resource_1_1CreateParams.html", "db/df9/structxl7_1_1resources_1_1Resource_1_1CreateParams" ],
+    [ "Id", "d5/d7b/classxl7_1_1resources_1_1Resource.html#ab9ca19e7ae0f354cd41192dd52cf024d", null ],
     [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html#aeb9d43f803b628716c843ca032c252c9", null ],
     [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html#a29f406faea45758b330fc67ae7186e99", null ],
     [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html#a647f6d695e1c60f21ebc89aeef050b3e", null ],

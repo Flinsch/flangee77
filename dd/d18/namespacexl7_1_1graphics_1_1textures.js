@@ -1,6 +1,5 @@
 var namespacexl7_1_1graphics_1_1textures =
 [
-    [ "detail", "d5/d6a/namespacexl7_1_1graphics_1_1textures_1_1detail.html", "d5/d6a/namespacexl7_1_1graphics_1_1textures_1_1detail" ],
     [ "Cubemap", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap" ],
     [ "ImageDataProvider", "da/de6/classxl7_1_1graphics_1_1textures_1_1ImageDataProvider.html", "da/de6/classxl7_1_1graphics_1_1textures_1_1ImageDataProvider" ],
     [ "ITextureFactory", "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html", "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory" ],

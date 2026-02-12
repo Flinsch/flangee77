@@ -1,5 +1,35 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,20,136,45"/>
-<area shape="rect" id="Node000001" href="$d1/d63/classxl7_1_1graphics_1_1states_1_1detail_1_1AbstractStateBase_1_1Id.html" title=" " alt="" coords="184,5,379,60"/>
-<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="150,30,184,30,184,35,150,35"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,296,116,321"/>
+<area shape="rect" id="Node000001" href="$d2/d0d/classxl7_1_1resources_1_1detail_1_1ResourceBase.html" title=" " alt="" coords="179,123,391,177"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="87,285,162,227,238,175,241,180,166,231,90,289"/>
+<area shape="rect" id="Node000005" href="$d2/d0d/classxl7_1_1resources_1_1detail_1_1ResourceBase.html" title=" " alt="" coords="175,241,395,296"/>
+<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="129,294,174,286,175,291,130,299"/>
+<area shape="rect" id="Node000009" href="$d2/d0d/classxl7_1_1resources_1_1detail_1_1ResourceBase.html" title=" " alt="" coords="164,320,405,375"/>
+<area shape="poly" id="edge9_Node000000_Node000009" title=" " alt="" coords="130,318,164,324,163,329,129,323"/>
+<area shape="rect" id="Node000013" href="$d2/d0d/classxl7_1_1resources_1_1detail_1_1ResourceBase.html" title=" " alt="" coords="170,437,399,492"/>
+<area shape="poly" id="edge13_Node000000_Node000013" title=" " alt="" coords="91,328,166,384,242,435,239,440,162,388,88,332"/>
+<area shape="rect" id="Node000002" href="$d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html" title=" " alt="" coords="453,91,607,131"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="404,129,453,121,454,126,404,134"/>
+<area shape="rect" id="Node000003" href="$d2/d6e/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1BlendStateImpl.html" title=" " alt="" coords="669,5,816,60"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="597,84,668,57,670,62,599,89"/>
+<area shape="rect" id="Node000004" href="$d6/d41/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1BlendStateImpl.html" title=" " alt="" coords="671,84,814,139"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="621,109,671,109,671,114,621,114"/>
+<area shape="rect" id="Node000006" href="$db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html" title=" " alt="" coords="453,249,607,289"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="408,266,453,266,453,271,408,271"/>
+<area shape="rect" id="Node000007" href="$d7/d65/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1DepthStencilStateImpl.html" title=" " alt="" coords="655,163,831,217"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="597,241,667,215,669,220,599,246"/>
+<area shape="rect" id="Node000008" href="$db/de3/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1DepthStencilStateImpl.html" title=" " alt="" coords="655,241,831,296"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="621,266,655,266,655,271,621,271"/>
+<area shape="rect" id="Node000010" href="$d2/df3/classxl7_1_1graphics_1_1states_1_1RasterizerState.html" title=" " alt="" coords="453,327,607,367"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="419,345,453,345,453,350,419,350"/>
+<area shape="rect" id="Node000011" href="$d7/d46/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1RasterizerStateImpl.html" title=" " alt="" coords="663,320,822,375"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="621,345,663,345,663,350,621,350"/>
+<area shape="rect" id="Node000012" href="$d3/dd8/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl.html" title=" " alt="" coords="663,399,822,453"/>
+<area shape="poly" id="edge12_Node000010_Node000012" title=" " alt="" coords="599,370,669,396,667,401,597,375"/>
+<area shape="rect" id="Node000014" href="$d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html" title=" " alt="" coords="453,485,607,525"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="413,483,453,490,453,495,412,488"/>
+<area shape="rect" id="Node000015" href="$df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html" title=" " alt="" coords="669,477,816,532"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="621,502,669,502,669,507,621,507"/>
+<area shape="rect" id="Node000016" href="$de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html" title=" " alt="" coords="669,556,816,611"/>
+<area shape="poly" id="edge16_Node000014_Node000016" title=" " alt="" coords="599,527,670,554,668,559,597,532"/>
 </map>
