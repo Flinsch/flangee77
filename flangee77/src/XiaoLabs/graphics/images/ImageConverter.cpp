@@ -353,6 +353,19 @@ namespace xl7::graphics::images {
                     dst_ptr += stride;
                 }
             }
+            else if (stride == 6 && channel_count == 3) // R16G16B16
+            {
+                assert(source_layout.uniform_depth == 16);
+                assert(target_layout.uniform_depth == 16);
+                for (size_t i = 0; i < pixel_count; ++i)
+                {
+                    reinterpret_cast<uint16_t*>(dst_ptr)[target_layout.r.index] = reinterpret_cast<const uint16_t*>(src_ptr)[source_layout.r.index];
+                    reinterpret_cast<uint16_t*>(dst_ptr)[target_layout.g.index] = reinterpret_cast<const uint16_t*>(src_ptr)[source_layout.g.index];
+                    reinterpret_cast<uint16_t*>(dst_ptr)[target_layout.b.index] = reinterpret_cast<const uint16_t*>(src_ptr)[source_layout.b.index];
+                    src_ptr += stride;
+                    dst_ptr += stride;
+                }
+            }
             else if (stride == 4 && channel_count == 4) // R10G10B10A2
             {
                 assert(source_layout.uniform_depth == 0);
