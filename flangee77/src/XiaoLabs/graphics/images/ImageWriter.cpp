@@ -1,6 +1,7 @@
 #include "ImageWriter.h"
 
 #include <CoreLabs/io/File.h>
+#include <CoreLabs/io/WritableMemory.h>
 #include <CoreLabs/logging.h>
 
 
@@ -21,7 +22,12 @@ namespace xl7::graphics::images {
             return false;
         }
 
-        return dump_to(image, file, file_path);
+        cl7::io::WritableMemory writable_memory;
+
+        if (!dump_to(image, writable_memory, file_path))
+            return false;
+
+        return file.write(writable_memory.get_data()) == writable_memory.get_data().size();
     }
 
     /**

@@ -1,6 +1,8 @@
 #include "ImageReader.h"
 
 #include <CoreLabs/io/File.h>
+#include <CoreLabs/io/ByteReader.h>
+#include <CoreLabs/io/ReadableMemory.h>
 #include <CoreLabs/logging.h>
 
 
@@ -21,7 +23,11 @@ namespace xl7::graphics::images {
             return false;
         }
 
-        return load_from(file, file_path, image);
+        cl7::io::ByteReader byte_reader{&file};
+        auto data = byte_reader.read_all();
+        cl7::io::ReadableMemory readable_memory{std::move(data)};
+
+        return load_from(readable_memory, file_path, image);
     }
 
     /**
