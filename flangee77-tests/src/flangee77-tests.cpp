@@ -78,6 +78,7 @@
 #include "./XiaoLabs/graphics/images/ImageProcessor.h"
 #include "./XiaoLabs/graphics/images/ImageConverter.h"
 #include "./XiaoLabs/graphics/images/ImageResizer.h"
+#include "./XiaoLabs/graphics/images/NetpbmImageReader.h"
 #include "./XiaoLabs/graphics/shaders/reflection.h"
 
 
