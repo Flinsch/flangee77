@@ -90,6 +90,8 @@ var namespacexl7_1_1graphics =
       [ "R8G8B8_SINT", "d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082daa0203efb56d9533eb903960af0f91e96", null ],
       [ "R8G8B8X8_UNORM", "d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082da85e5f8f16c9aadfb6de4c7973574e199", null ],
       [ "R11G11B10_FLOAT", "d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082da7551860e61046d5fb270dd52e1a4b187", null ],
+      [ "R16G16B16_UNORM", "d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082da2a66345b0486275a7ebf225544eade17", null ],
+      [ "R16G16B16_FLOAT", "d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082da420c8ad2ed26c21719e5889928c0622c", null ],
       [ "R32G32B32_UINT", "d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082da8a0c94872edade84a5320f3cb31ac6a8", null ],
       [ "R32G32B32_SINT", "d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082dae53d190f1e9fa67fb47bc8c053b53278", null ],
       [ "R32G32B32_FLOAT", "d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082dad05d603c5884ae9ccc392513becba305", null ],
