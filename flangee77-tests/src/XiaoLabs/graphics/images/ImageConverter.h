@@ -13,7 +13,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  ImageConverter" )
 {
     // This is just so that we notice when a value is inserted or removed
     // and then we should also adjust the tests accordingly.
-    TESTLABS_ASSERT_EQ( static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ), 53 );
+    TESTLABS_ASSERT_EQ( static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ), 55 );
 
 
     struct Entry

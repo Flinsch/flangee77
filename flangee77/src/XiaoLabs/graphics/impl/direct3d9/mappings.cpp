@@ -173,6 +173,10 @@ namespace xl7::graphics::impl::direct3d9::mappings {
         case PixelFormat::R11G11B10_FLOAT:
             return D3DFMT_UNKNOWN;
 
+        case PixelFormat::R16G16B16_UNORM:
+        case PixelFormat::R16G16B16_FLOAT:
+            return D3DFMT_UNKNOWN;
+
         case PixelFormat::R32G32B32_UINT:
         case PixelFormat::R32G32B32_SINT:
         case PixelFormat::R32G32B32_FLOAT:

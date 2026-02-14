@@ -51,7 +51,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  PixelLayout" )
 {
     // This is just so that we notice when a value is inserted or removed
     // and then we should also adjust the tests accordingly.
-    TESTLABS_ASSERT_EQ( static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ), 53 );
+    TESTLABS_ASSERT_EQ( static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ), 55 );
 
 
     TESTLABS_SUBCASE( u8"data type" )
@@ -65,6 +65,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  PixelLayout" )
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R5G6B5_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8X8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16B16_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R4G4B4A4_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R5G5B5A1_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8A8_UNORM, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::UNORM );
@@ -110,6 +111,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  PixelLayout" )
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::FLOAT );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::FLOAT );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R11G11B10_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::FLOAT );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16B16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::FLOAT );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::FLOAT );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16B16A16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::FLOAT );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32A32_FLOAT, xl7::graphics::ChannelOrder::RGBA ).data_type, xl7::graphics::PixelLayout::DataType::FLOAT );
@@ -162,6 +164,9 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  PixelLayout" )
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R8G8B8X8_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
 
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R11G11B10_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
+
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16B16_UNORM, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
+        TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R16G16B16_FLOAT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
 
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32_UINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
         TESTLABS_CHECK_EQ( xl7::graphics::PixelLayout( xl7::graphics::PixelFormat::R32G32B32_SINT, xl7::graphics::ChannelOrder::RGBA ).channel_count, 3 );
@@ -245,6 +250,9 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  PixelLayout" )
             { xl7::graphics::PixelFormat::R8G8B8X8_UNORM,   4, { 0, 8, 0, 0x0000ff, 0x0000ff }, { 1, 8, 8, 0x00ff00, 0x0000ff }, { 2, 8, 16, 0xff0000, 0x0000ff }, {} },
 
             { xl7::graphics::PixelFormat::R11G11B10_FLOAT,  4, { 0, 11, 0, 0x000007ff, 0x000007ff }, { 1, 11, 11, 0x003ff800, 0x000007ff }, { 2, 10, 22, 0xffc00000, 0x000003ff }, {} },
+
+            { xl7::graphics::PixelFormat::R16G16B16_UNORM,  6, { 0, 16, 0, 0x000000000000ffff, 0x000000000000ffff }, { 1, 16, 16, 0x00000000ffff0000, 0x000000000000ffff }, { 2, 16, 32, 0x0000ffff00000000, 0x000000000000ffff }, {} },
+            { xl7::graphics::PixelFormat::R16G16B16_FLOAT,  6, { 0, 16, 0, 0x000000000000ffff, 0x000000000000ffff }, { 1, 16, 16, 0x00000000ffff0000, 0x000000000000ffff }, { 2, 16, 32, 0x0000ffff00000000, 0x000000000000ffff }, {} },
 
             { xl7::graphics::PixelFormat::R32G32B32_UINT,   12, { 0, 32, 0, 0, 0xffffffff }, { 1, 32, 32, 0, 0xffffffff }, { 2, 32, 64, 0, 0xffffffff }, {} },
             { xl7::graphics::PixelFormat::R32G32B32_SINT,   12, { 0, 32, 0, 0, 0xffffffff }, { 1, 32, 32, 0, 0xffffffff }, { 2, 32, 64, 0, 0xffffffff }, {} },

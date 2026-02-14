@@ -7,6 +7,8 @@
 #include "../images/ImageConverter.h"
 #include "../images/ImageResizer.h"
 
+#include <MathLabs/functions.h>
+
 #include <CoreLabs/logging.h>
 
 
@@ -35,6 +37,9 @@ namespace xl7::graphics::textures {
             LOG_WARNING(u8"The " + get_typed_identifier_string() + u8" to be created has an width/height aspect ratio of " + cl7::to_string(_desc.width / _desc.height) + u8", but a maximum of " + cl7::to_string(capabilities.textures.max_aspect_ratio) + u8" is supported.");
         if (capabilities.textures.max_aspect_ratio && _desc.width && _desc.height / _desc.width > capabilities.textures.max_aspect_ratio)
             LOG_WARNING(u8"The " + get_typed_identifier_string() + u8" to be created has an height/width aspect ratio of " + cl7::to_string(_desc.height / _desc.width) + u8", but a maximum of " + cl7::to_string(capabilities.textures.max_aspect_ratio) + u8" is supported.");
+
+        if (!ml7::is_power_of_two(_stride))
+            LOG_WARNING(u8"The " + get_typed_identifier_string() + u8" to be created has a pixel stride of " + cl7::to_string(_stride) + u8" bytes (" + cl7::to_string(_stride * 8) + u8" bits). Even if this were supported by the API, it should be avoided and an alternative, power-of-two format should be explicitly used (e.g., " + cl7::to_string(ml7::next_power_of_two(_stride) * 8) + u8" bits).");
     }
 
 

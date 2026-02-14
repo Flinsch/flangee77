@@ -13,7 +13,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  ImageProcessor" )
 {
     // This is just so that we notice when a value is inserted or removed
     // and then we should also adjust the tests accordingly.
-    TESTLABS_ASSERT_EQ( static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ), 53 );
+    TESTLABS_ASSERT_EQ( static_cast<unsigned>( xl7::graphics::PixelFormat::A8_UNORM ), 55 );
 
 
     struct Entry
@@ -94,6 +94,15 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  ImageProcessor" )
         { xl7::graphics::PixelFormat::R8G8B8X8_UNORM, xl7::graphics::ChannelOrder::ARGB, cl7::make_bytes( 0x33, 0x66, 0x99, 0x00 ) },
         { xl7::graphics::PixelFormat::R8G8B8X8_UNORM, xl7::graphics::ChannelOrder::ABGR, cl7::make_bytes( 0x99, 0x66, 0x33, 0x00 ) },
         { xl7::graphics::PixelFormat::R8G8B8X8_UNORM, xl7::graphics::ChannelOrder::BGRA, cl7::make_bytes( 0x99, 0x66, 0x33, 0x00 ) },
+
+        { xl7::graphics::PixelFormat::R16G16B16_UNORM, xl7::graphics::ChannelOrder::RGBA, cl7::make_bytes( 0x33,0x33, 0x66,0x66, 0x99,0x99 ) },
+        { xl7::graphics::PixelFormat::R16G16B16_UNORM, xl7::graphics::ChannelOrder::ARGB, cl7::make_bytes( 0x33,0x33, 0x66,0x66, 0x99,0x99 ) },
+        { xl7::graphics::PixelFormat::R16G16B16_UNORM, xl7::graphics::ChannelOrder::ABGR, cl7::make_bytes( 0x99,0x99, 0x66,0x66, 0x33,0x33 ) },
+        { xl7::graphics::PixelFormat::R16G16B16_UNORM, xl7::graphics::ChannelOrder::BGRA, cl7::make_bytes( 0x99,0x99, 0x66,0x66, 0x33,0x33 ) },
+        { xl7::graphics::PixelFormat::R16G16B16_FLOAT, xl7::graphics::ChannelOrder::RGBA, cl7::make_bytes( 0x66,0x32, 0x66,0x36, 0xcc,0x38 ) },
+        { xl7::graphics::PixelFormat::R16G16B16_FLOAT, xl7::graphics::ChannelOrder::ARGB, cl7::make_bytes( 0x66,0x32, 0x66,0x36, 0xcc,0x38 ) },
+        { xl7::graphics::PixelFormat::R16G16B16_FLOAT, xl7::graphics::ChannelOrder::ABGR, cl7::make_bytes( 0xcc,0x38, 0x66,0x36, 0x66,0x32 ) },
+        { xl7::graphics::PixelFormat::R16G16B16_FLOAT, xl7::graphics::ChannelOrder::BGRA, cl7::make_bytes( 0xcc,0x38, 0x66,0x36, 0x66,0x32 ) },
 
         { xl7::graphics::PixelFormat::R32G32B32_UINT, xl7::graphics::ChannelOrder::RGBA, cl7::make_bytes( 0x40,0x33,0x33,0x33, 0x80,0x66,0x66,0x66, 0x00,0x9a,0x99,0x99 ) },
         { xl7::graphics::PixelFormat::R32G32B32_UINT, xl7::graphics::ChannelOrder::ARGB, cl7::make_bytes( 0x40,0x33,0x33,0x33, 0x80,0x66,0x66,0x66, 0x00,0x9a,0x99,0x99 ) },

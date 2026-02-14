@@ -47,8 +47,6 @@ namespace xl7::graphics {
  *   Common for vector fields, UV maps, and other two-component data.
  * - Three-channel formats (e.g., R8G8B8_*, R32G32B32_*):
  *   Used for RGB color and 3D vector data.
- *   Note: R16G16B16 formats are explicitly omitted because of poor hardware support
- *   due to inefficient alignment.
  * - Four-channel formats (e.g., R8G8B8A8_*, R16G16B16A16_*, R32G32B32A32_*):
  *   Standard RGBA formats for color, HDR, and general-purpose textures.
  * - Packed low-bit formats (e.g., R5G6B5_UNORM, R4G4B4A4_UNORM):
@@ -56,6 +54,11 @@ namespace xl7::graphics {
  * - R11G11B10_FLOAT:
  *   Compact HDR format using shared exponent-style encoding with a higher dynamic
  *   range than UNORM formats at similar memory cost.
+ * - R16G16B16_*:
+ *   Three-channel 16-bit formats are included for "completeness" and for use in
+ *   image I/O (e.g., 16-bit PNG or high-precision RGB assets).
+ *   These formats are typically not natively supported as GPU texture formats by
+ *   modern graphics APIs due to inefficient 48-bit alignment.
  * - A8_UNORM:
  *   Alpha-only format, commonly used for masks, opacity textures, and font atlases.
  */
@@ -106,7 +109,8 @@ enum struct PixelFormat
 
     R11G11B10_FLOAT,
 
-    // R16G16B16 explicitly not
+    R16G16B16_UNORM,
+    R16G16B16_FLOAT,
 
     R32G32B32_UINT,
     R32G32B32_SINT,

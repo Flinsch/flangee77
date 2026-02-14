@@ -126,6 +126,10 @@ namespace xl7::graphics::impl::direct3d11::mappings {
         case PixelFormat::R11G11B10_FLOAT:
             return DXGI_FORMAT_R11G11B10_FLOAT;
 
+        case PixelFormat::R16G16B16_UNORM:
+        case PixelFormat::R16G16B16_FLOAT:
+            return DXGI_FORMAT_UNKNOWN;
+
         case PixelFormat::R32G32B32_UINT:
             return DXGI_FORMAT_R32G32B32_UINT;
         case PixelFormat::R32G32B32_SINT:

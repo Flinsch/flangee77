@@ -87,14 +87,14 @@ namespace xl7::graphics::images {
             switch (pixel_layout.pixel_format)
             {
             case PixelFormat::R16_FLOAT:
-                static_cast<uint16_t*>(ptr)[0] = cl7::bits::float_to_half(color.r);
+                static_cast<int16_t*>(ptr)[0] = cl7::bits::float_to_half(color.r);
                 break;
             case PixelFormat::R32_FLOAT:
                 static_cast<float*>(ptr)[0] = color.r;
                 break;
             case PixelFormat::R16G16_FLOAT:
-                static_cast<uint16_t*>(ptr)[pixel_layout.r.index] = cl7::bits::float_to_half(color.r);
-                static_cast<uint16_t*>(ptr)[pixel_layout.g.index] = cl7::bits::float_to_half(color.g);
+                static_cast<int16_t*>(ptr)[pixel_layout.r.index] = cl7::bits::float_to_half(color.r);
+                static_cast<int16_t*>(ptr)[pixel_layout.g.index] = cl7::bits::float_to_half(color.g);
                 break;
             case PixelFormat::R32G32_FLOAT:
                 static_cast<float*>(ptr)[pixel_layout.r.index] = color.r;
@@ -103,16 +103,21 @@ namespace xl7::graphics::images {
             case PixelFormat::R11G11B10_FLOAT:
                 assert(false);
                 break;
+            case PixelFormat::R16G16B16_FLOAT:
+                static_cast<int16_t*>(ptr)[pixel_layout.r.index] = cl7::bits::float_to_half(color.r);
+                static_cast<int16_t*>(ptr)[pixel_layout.g.index] = cl7::bits::float_to_half(color.g);
+                static_cast<int16_t*>(ptr)[pixel_layout.b.index] = cl7::bits::float_to_half(color.b);
+                break;
             case PixelFormat::R32G32B32_FLOAT:
                 static_cast<float*>(ptr)[pixel_layout.r.index] = color.r;
                 static_cast<float*>(ptr)[pixel_layout.g.index] = color.g;
                 static_cast<float*>(ptr)[pixel_layout.b.index] = color.b;
                 break;
             case PixelFormat::R16G16B16A16_FLOAT:
-                static_cast<uint16_t*>(ptr)[pixel_layout.r.index] = cl7::bits::float_to_half(color.r);
-                static_cast<uint16_t*>(ptr)[pixel_layout.g.index] = cl7::bits::float_to_half(color.g);
-                static_cast<uint16_t*>(ptr)[pixel_layout.b.index] = cl7::bits::float_to_half(color.b);
-                static_cast<uint16_t*>(ptr)[pixel_layout.a.index] = cl7::bits::float_to_half(color.a);
+                static_cast<int16_t*>(ptr)[pixel_layout.r.index] = cl7::bits::float_to_half(color.r);
+                static_cast<int16_t*>(ptr)[pixel_layout.g.index] = cl7::bits::float_to_half(color.g);
+                static_cast<int16_t*>(ptr)[pixel_layout.b.index] = cl7::bits::float_to_half(color.b);
+                static_cast<int16_t*>(ptr)[pixel_layout.a.index] = cl7::bits::float_to_half(color.a);
                 break;
             case PixelFormat::R32G32B32A32_FLOAT:
                 static_cast<float*>(ptr)[pixel_layout.r.index] = color.r;
@@ -132,6 +137,12 @@ namespace xl7::graphics::images {
             case PixelFormat::R32G32_SINT:
                 static_cast<uint32_t*>(ptr)[pixel_layout.r.index] = cl7::bits::norm_to_fixed(color.r, 32);
                 static_cast<uint32_t*>(ptr)[pixel_layout.g.index] = cl7::bits::norm_to_fixed(color.g, 32);
+                break;
+
+            case PixelFormat::R16G16B16_UNORM:
+                static_cast<uint16_t*>(ptr)[pixel_layout.r.index] = cl7::bits::norm_to_fixed(color.r, 16);
+                static_cast<uint16_t*>(ptr)[pixel_layout.g.index] = cl7::bits::norm_to_fixed(color.g, 16);
+                static_cast<uint16_t*>(ptr)[pixel_layout.b.index] = cl7::bits::norm_to_fixed(color.b, 16);
                 break;
 
             case PixelFormat::R32G32B32_UINT:
@@ -212,6 +223,11 @@ namespace xl7::graphics::images {
             case PixelFormat::R11G11B10_FLOAT:
                 assert(false);
                 break;
+            case PixelFormat::R16G16B16_FLOAT:
+                color.r = cl7::bits::half_to_float(static_cast<const int16_t*>(ptr)[pixel_layout.r.index]);
+                color.g = cl7::bits::half_to_float(static_cast<const int16_t*>(ptr)[pixel_layout.g.index]);
+                color.b = cl7::bits::half_to_float(static_cast<const int16_t*>(ptr)[pixel_layout.b.index]);
+                break;
             case PixelFormat::R32G32B32_FLOAT:
                 color.r = static_cast<const float*>(ptr)[pixel_layout.r.index];
                 color.g = static_cast<const float*>(ptr)[pixel_layout.g.index];
@@ -241,6 +257,12 @@ namespace xl7::graphics::images {
             case PixelFormat::R32G32_SINT:
                 color.r = cl7::bits::fixed_to_norm(static_cast<const uint32_t*>(ptr)[pixel_layout.r.index], 32);
                 color.g = cl7::bits::fixed_to_norm(static_cast<const uint32_t*>(ptr)[pixel_layout.g.index], 32);
+                break;
+
+            case PixelFormat::R16G16B16_UNORM:
+                color.r = cl7::bits::fixed_to_norm(static_cast<const uint16_t*>(ptr)[pixel_layout.r.index], 16);
+                color.g = cl7::bits::fixed_to_norm(static_cast<const uint16_t*>(ptr)[pixel_layout.g.index], 16);
+                color.b = cl7::bits::fixed_to_norm(static_cast<const uint16_t*>(ptr)[pixel_layout.b.index], 16);
                 break;
 
             case PixelFormat::R32G32B32_UINT:

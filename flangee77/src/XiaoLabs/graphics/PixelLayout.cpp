@@ -116,6 +116,13 @@ namespace xl7::graphics {
             depths = {11, 11, 10, 0};
             break;
 
+        case PixelFormat::R16G16B16_UNORM:
+        case PixelFormat::R16G16B16_FLOAT:
+            assert(channel_count == 3);
+            assert(stride == 6);
+            depths = {16, 16, 16, 0};
+            break;
+
         case PixelFormat::R32G32B32_UINT:
         case PixelFormat::R32G32B32_SINT:
         case PixelFormat::R32G32B32_FLOAT:
@@ -322,6 +329,11 @@ namespace xl7::graphics {
             channel_count = 3;
             break;
 
+        case PixelFormat::R16G16B16_UNORM:
+        case PixelFormat::R16G16B16_FLOAT:
+            channel_count = 3;
+            break;
+
         case PixelFormat::R32G32B32_UINT:
         case PixelFormat::R32G32B32_SINT:
         case PixelFormat::R32G32B32_FLOAT:
@@ -451,6 +463,11 @@ namespace xl7::graphics {
             stride = 4;
             break;
 
+        case PixelFormat::R16G16B16_UNORM:
+        case PixelFormat::R16G16B16_FLOAT:
+            stride = 6;
+            break;
+
         case PixelFormat::R32G32B32_UINT:
         case PixelFormat::R32G32B32_SINT:
         case PixelFormat::R32G32B32_FLOAT:
@@ -522,6 +539,7 @@ namespace xl7::graphics {
             case PixelFormat::R5G6B5_UNORM:
             case PixelFormat::R8G8B8_UNORM:
             case PixelFormat::R8G8B8X8_UNORM:
+            case PixelFormat::R16G16B16_UNORM:
             case PixelFormat::R4G4B4A4_UNORM:
             case PixelFormat::R5G5B5A1_UNORM:
             case PixelFormat::R8G8B8A8_UNORM:
@@ -575,6 +593,7 @@ namespace xl7::graphics {
             case PixelFormat::R16G16_FLOAT:
             case PixelFormat::R32G32_FLOAT:
             case PixelFormat::R11G11B10_FLOAT:
+            case PixelFormat::R16G16B16_FLOAT:
             case PixelFormat::R32G32B32_FLOAT:
             case PixelFormat::R16G16B16A16_FLOAT:
             case PixelFormat::R32G32B32A32_FLOAT:
