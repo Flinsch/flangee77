@@ -287,7 +287,7 @@ namespace cl7::io {
         auto position = _write_position;
         _fstream.write(reinterpret_cast<const char*>(buffer.data()), static_cast<std::streamsize>(buffer.size()));
         _write_position = _fstream.tellp();
-        return _write_position = position;
+        return _write_position - position;
     }
 
     /**
