@@ -49,10 +49,20 @@ namespace cl7::platform::filesystem {
 
     /**
      * Returns the user directory.
+     * This is not necessarily the user's home directory, but some file system
+     * directory that serves as a common repository for application-specific data.
      */
     cl7::u8string get_user_directory()
     {
         return impl::get_user_directory();
+    }
+
+    /**
+     * Returns the system temp directory.
+     */
+    cl7::u8string get_temp_directory()
+    {
+        return impl::get_temp_directory();
     }
 
 

@@ -16,10 +16,13 @@ namespace cl7::platform::detail::windows::filesystem {
     cl7::u8string get_module_directory()
     {
         wchar_t _full_path[MAX_PATH + 1];
+
         ::GetModuleFileNameW(nullptr, _full_path, MAX_PATH);
 
         std::wstring_view full_path{_full_path};
         size_t p = full_path.find_last_of(L'\\');
+        assert(p != std::wstring_view::npos);
+
         return cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(full_path.substr(0, p + 1)));
     }
 
@@ -32,19 +35,20 @@ namespace cl7::platform::detail::windows::filesystem {
     cl7::u8string get_initial_directory()
     {
         static wchar_t _path[MAX_PATH + 2] = {0};
+        static DWORD length = 0;
         static bool first_call = true;
 
         if (first_call)
         {
             first_call = false;
 
-            DWORD length = ::GetCurrentDirectoryW(MAX_PATH, _path);
+            length = ::GetCurrentDirectoryW(MAX_PATH, _path);
 
-            if (length == 0 || _path[length - 1] != u8'\\')
-                _path[length] = u8'\\';
+            if (length == 0 || _path[length - 1] != L'\\')
+                _path[length++] = L'\\';
         }
 
-        return cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(_path));
+        return cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(std::wstring_view{_path, length}));
     }
 
     cl7::u8string get_current_directory()
@@ -53,22 +57,22 @@ namespace cl7::platform::detail::windows::filesystem {
 
         DWORD length = ::GetCurrentDirectoryW(MAX_PATH, _path);
 
-        if (length == 0 || _path[length - 1] != u8'\\')
-            _path[length] = u8'\\';
+        if (length == 0 || _path[length - 1] != L'\\')
+            _path[length++] = L'\\';
 
-        return cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(_path));
+        return cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(std::wstring_view{_path, length}));
     }
 
     cl7::u8string get_user_directory()
     {
-        static cl7::u8char_t _path[MAX_PATH + 2] = {0};
+        static wchar_t _path[MAX_PATH + 2] = {0};
+        static DWORD length = 0;
         static bool first_call = true;
 
         if (first_call)
         {
             first_call = false;
 
-            DWORD length = 0;
             wchar_t* tmp = nullptr;
             auto auto_free_tmp = cl7::finally([&tmp] { if (tmp) ::CoTaskMemFree(tmp); tmp = nullptr; });
             HRESULT hresult = ::SHGetKnownFolderPath(FOLDERID_RoamingAppData, KF_FLAG_CREATE, nullptr, &tmp);
@@ -76,16 +80,28 @@ namespace cl7::platform::detail::windows::filesystem {
             if (hresult == S_OK)
             {
                 assert(tmp);
-                cl7::u8string path = cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(tmp));
-                for (const cl7::u8char_t* p = path.c_str(); *p; ++p)
+                std::wstring_view path{tmp}; // SHGetKnownFolderPath stores a null-terminated Unicode string.
+                for (const wchar_t* p = path.data(); *p; ++p)
                     _path[length++] = *p;
             }
 
-            if (length == 0 || _path[length - 1] != u8'\\')
-                _path[length] = u8'\\';
+            if (length == 0 || _path[length - 1] != L'\\')
+                _path[length++] = L'\\';
         }
 
-        return {_path};
+        return cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(std::wstring_view{_path, length}));
+    }
+
+    cl7::u8string get_temp_directory()
+    {
+        wchar_t _path[MAX_PATH + 2] = {0};
+
+        DWORD length = ::GetTempPathW(MAX_PATH, _path);
+
+        if (length == 0 || _path[length - 1] != L'\\')
+            _path[length++] = L'\\';
+
+        return cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(std::wstring_view{_path, length}));
     }
 
 
