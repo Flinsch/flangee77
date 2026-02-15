@@ -52,4 +52,25 @@ namespace xl7::graphics::images {
 
 
 
+    static bool _log_error(const cl7::u8string& base_message, const cl7::u8string& description)
+    {
+        if (description.empty())
+            LOG_ERROR(base_message + u8".");
+        else
+            LOG_ERROR(base_message + u8": " + description);
+        return false;
+    }
+
+    bool ImageWriter::_log_unsupported_format_error(const cl7::u8string& target_name, const cl7::u8string& description)
+    {
+        return _log_error(u8"The specific (sub)format of image \"" + target_name + u8"\" is not supported", description);
+    }
+
+    bool ImageWriter::_log_bad_data_error(const cl7::u8string& target_name, const cl7::u8string& description)
+    {
+        return _log_error(u8"Bad data of image \"" + target_name + u8"\" is damaged", description);
+    }
+
+
+
 } // namespace xl7::graphics::images

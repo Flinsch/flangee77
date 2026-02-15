@@ -31,6 +31,12 @@ public:
 
 
 
+protected:
+    static bool _log_unsupported_format_error(const cl7::u8string& target_name, const cl7::u8string& description = u8"");
+    static bool _log_bad_data_error(const cl7::u8string& target_name, const cl7::u8string& description = u8"");
+
+
+
 private:
     /**
      * "Dumps" an image to any writable object.

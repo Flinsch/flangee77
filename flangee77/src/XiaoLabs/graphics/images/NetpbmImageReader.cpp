@@ -283,9 +283,10 @@ namespace xl7::graphics::images {
             const size_t row = i / width;
 
             const std::byte byte = bits[row * bytes_per_row + col / 8];
-            const uint8_t bit = (static_cast<uint8_t>(byte) >> (7 - (col % 8))) & 0x1;
-            const bool is_zero = bit == 0;
-            data[i] = is_zero == zero_is_white ? std::byte{1} : std::byte{0};
+            uint8_t bit = (static_cast<uint8_t>(byte) >> (7 - (col % 8))) & 0x1;
+            if constexpr (zero_is_white)
+                bit = 1 - bit;
+            data[i] = std::byte{bit};
         } // for each pixel
 
         return data;
