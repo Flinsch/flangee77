@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('de/d30/classxl7_1_1graphics_1_1images_
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="../../d2/d77/classxl7_1_1graphics_1_1images_1_1ImageWriter-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">xl7::graphics::images::ImageWriter Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
@@ -100,6 +101,16 @@ $(document).ready(function(){initNavTree('de/d30/classxl7_1_1graphics_1_1images_
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="../../d6/d5d/ImageWriter_8h_source.html">ImageWriter.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for xl7::graphics::images::ImageWriter:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/d22/classxl7_1_1graphics_1_1images_1_1ImageWriter__inherit__graph.png" border="0" usemap="#axl7_1_1graphics_1_1images_1_1ImageWriter_inherit__map" alt="Inheritance graph"/></div>
+<map name="axl7_1_1graphics_1_1images_1_1ImageWriter_inherit__map" id="axl7_1_1graphics_1_1images_1_1ImageWriter_inherit__map">
+<area shape="rect" title=" " alt="" coords="6,5,167,45"/>
+<area shape="rect" href="../../d9/d80/classxl7_1_1graphics_1_1images_1_1NetpbmImageWriter.html" title=" " alt="" coords="5,93,168,133"/>
+<area shape="poly" title=" " alt="" coords="89,59,89,93,84,93,84,59"/>
+</map>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -109,6 +120,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7b19aaa7bdc20ec5e43ed27ece215fd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab19c45c9a95e161260bf113ba2900589" id="r_ab19c45c9a95e161260bf113ba2900589"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter.html#ab19c45c9a95e161260bf113ba2900589">dump_to</a> (const <a class="el" href="../../d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html">Image</a> &amp;image, <a class="el" href="../../df/db8/classcl7_1_1io_1_1IWritable.html">cl7::io::IWritable</a> &amp;writable, const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;target_name)</td></tr>
 <tr class="separator:ab19c45c9a95e161260bf113ba2900589"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
+Static Protected Member Functions</h2></td></tr>
+<tr class="memitem:ad2e591e33f9ad53221b4cd1801cf71fc" id="r_ad2e591e33f9ad53221b4cd1801cf71fc"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter.html#ad2e591e33f9ad53221b4cd1801cf71fc">_log_unsupported_format_error</a> (const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;target_name, const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;description=u8&quot;&quot;)</td></tr>
+<tr class="separator:ad2e591e33f9ad53221b4cd1801cf71fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae039540acdc7d13e47612a95a2ddc022" id="r_ae039540acdc7d13e47612a95a2ddc022"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter.html#ae039540acdc7d13e47612a95a2ddc022">_log_bad_data_error</a> (const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;target_name, const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;description=u8&quot;&quot;)</td></tr>
+<tr class="separator:ae039540acdc7d13e47612a95a2ddc022"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -182,6 +200,80 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>"Dumps" an image to any writable object. </p>
+
+<p>Implemented in <a class="el" href="../../d9/d80/classxl7_1_1graphics_1_1images_1_1NetpbmImageWriter.html#aac008b82515355ec9dd835f1591ba843">xl7::graphics::images::NetpbmImageWriter</a>.</p>
+
+</div>
+</div>
+<a id="ae039540acdc7d13e47612a95a2ddc022" name="ae039540acdc7d13e47612a95a2ddc022"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae039540acdc7d13e47612a95a2ddc022">&#9670;&#160;</a></span>_log_bad_data_error()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool xl7::graphics::images::ImageWriter::_log_bad_data_error </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;&#160;</td>
+          <td class="paramname"><em>target_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;&#160;</td>
+          <td class="paramname"><em>description</em> = <code>u8&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad2e591e33f9ad53221b4cd1801cf71fc" name="ad2e591e33f9ad53221b4cd1801cf71fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2e591e33f9ad53221b4cd1801cf71fc">&#9670;&#160;</a></span>_log_unsupported_format_error()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool xl7::graphics::images::ImageWriter::_log_unsupported_format_error </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;&#160;</td>
+          <td class="paramname"><em>target_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;&#160;</td>
+          <td class="paramname"><em>description</em> = <code>u8&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
