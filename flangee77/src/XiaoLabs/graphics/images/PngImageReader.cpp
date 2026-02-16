@@ -66,6 +66,7 @@ namespace xl7::graphics::images {
         unsigned src_bytes_per_pixel = bit_info.max_bytes_per_pixel;
         unsigned dst_bytes_per_pixel = desc.determine_pixel_stride();
         size_t N = desc.calculate_pixel_count();
+        assert(N * src_bytes_per_pixel == buffer.size());
 
         // If Indexed-color ...
         if (bit_info.color_type & CT_PALETTE_USED)
@@ -76,7 +77,7 @@ namespace xl7::graphics::images {
             assert(dst_bytes_per_pixel == 3);
             for (size_t i = 0; i < N; ++i)
             {
-                const size_t si = i;
+                const size_t si = static_cast<uint8_t>(buffer[i]);
                 const size_t di = i * dst_bytes_per_pixel;
                 data[di + 0] = palette[si].r;
                 data[di + 1] = palette[si].g;
