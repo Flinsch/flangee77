@@ -121,24 +121,24 @@ namespace detail {
 
     /**
      * Converts a normalized floating-point number in the range [0;1] to an unsigned
-     * integer value of a certain bit depth (up to 32 bits), so that 1 is mapped to
-     * the highest possible integer value of this bit depth.
+     * integer value of a certain bit width (up to 32 bits), so that 1 is mapped to
+     * the highest possible integer value of this bit width.
      */
-    unsigned norm_to_fixed(float value, unsigned bit_depth);
+    unsigned norm_to_fixed(float value, unsigned bit_width);
 
     /**
-     * Converts an unsigned integer value of a certain bit depth (up to 32 bits) to
+     * Converts an unsigned integer value of a certain bit width (up to 32 bits) to
      * a normalized floating-point number in the range [0;1], so that the highest
-     * possible integer value of this bit depth is mapped to 1.
+     * possible integer value of this bit width is mapped to 1.
      */
-    float fixed_to_norm(unsigned value, unsigned bit_depth);
+    float fixed_to_norm(unsigned value, unsigned bit_width);
 
     /**
-     * Converts between two unsigned integer values of certain bit depths (up to 32
+     * Converts between two unsigned integer values of certain bit widths (up to 32
      * bits each). The value ranges are mapped in such a way that the highest values
      * correspond to each other.
      */
-    unsigned fixed_to_fixed(unsigned value, unsigned src_bit_depth, unsigned dst_bit_depth);
+    unsigned fixed_to_fixed(unsigned value, unsigned src_bit_width, unsigned dst_bit_width);
 
 
 

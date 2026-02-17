@@ -97,49 +97,49 @@ namespace cl7::bits {
 
     /**
      * Converts a normalized floating-point number in the range [0;1] to an unsigned
-     * integer value of a certain bit depth (up to 32 bits), so that 1 is mapped to
-     * the highest possible integer value of this bit depth.
+     * integer value of a certain bit width (up to 32 bits), so that 1 is mapped to
+     * the highest possible integer value of this bit width.
      */
-    unsigned norm_to_fixed(float value, unsigned bit_depth)
+    unsigned norm_to_fixed(float value, unsigned bit_width)
     {
-        assert(bit_depth <= 32);
-        //return static_cast<unsigned>(value * static_cast<float>((1ULL << bit_depth) - 1));
+        assert(bit_width <= 32);
+        //return static_cast<unsigned>(value * static_cast<float>((1ULL << bit_width) - 1));
         if (value <= 0.0f) return 0;
-        if (value >= 1.0f) return static_cast<unsigned>((1ULL << bit_depth) - 1);
-        return static_cast<unsigned>(value * static_cast<float>(1ULL << bit_depth));
+        if (value >= 1.0f) return static_cast<unsigned>((1ULL << bit_width) - 1);
+        return static_cast<unsigned>(value * static_cast<float>(1ULL << bit_width));
     }
 
     /**
-     * Converts an unsigned integer value of a certain bit depth (up to 32 bits) to
+     * Converts an unsigned integer value of a certain bit width (up to 32 bits) to
      * a normalized floating-point number in the range [0;1], so that the highest
-     * possible integer value of this bit depth is mapped to 1.
+     * possible integer value of this bit width is mapped to 1.
      */
-    float fixed_to_norm(unsigned value, unsigned bit_depth)
+    float fixed_to_norm(unsigned value, unsigned bit_width)
     {
-        assert(bit_depth <= 32);
-        return static_cast<float>(value) / static_cast<float>((1ULL << bit_depth) - 1);
+        assert(bit_width <= 32);
+        return static_cast<float>(value) / static_cast<float>((1ULL << bit_width) - 1);
     }
 
     /**
-     * Converts between two unsigned integer values of certain bit depths (up to 32
+     * Converts between two unsigned integer values of certain bit widths (up to 32
      * bits each). The value ranges are mapped in such a way that the highest values
      * correspond to each other.
      */
-    unsigned fixed_to_fixed(unsigned value, unsigned src_bit_depth, unsigned dst_bit_depth)
+    unsigned fixed_to_fixed(unsigned value, unsigned src_bit_width, unsigned dst_bit_width)
     {
-        assert(src_bit_depth <= 32);
-        assert(dst_bit_depth <= 32);
+        assert(src_bit_width <= 32);
+        assert(dst_bit_width <= 32);
 
-        if (src_bit_depth > dst_bit_depth)
+        if (src_bit_width > dst_bit_width)
         {
-            value >>= src_bit_depth - dst_bit_depth;
+            value >>= src_bit_width - dst_bit_width;
         }
-        else if (src_bit_depth < dst_bit_depth)
+        else if (src_bit_width < dst_bit_width)
         {
-            if (value >= static_cast<unsigned>((1ULL << src_bit_depth) - 1))
-                value = static_cast<unsigned>((1ULL << dst_bit_depth) - 1);
+            if (value >= static_cast<unsigned>((1ULL << src_bit_width) - 1))
+                value = static_cast<unsigned>((1ULL << dst_bit_width) - 1);
             else if (value > 0)
-                value = static_cast<unsigned>(static_cast<uint64_t>(value) * (1ULL << dst_bit_depth) / ((1ULL << src_bit_depth) - 1));
+                value = static_cast<unsigned>(static_cast<uint64_t>(value) * (1ULL << dst_bit_width) / ((1ULL << src_bit_width) - 1));
         }
 
         return value;
