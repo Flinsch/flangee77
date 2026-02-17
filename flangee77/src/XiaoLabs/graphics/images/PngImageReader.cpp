@@ -38,44 +38,79 @@ namespace xl7::graphics::images {
         BitInfo bit_info = {};
         std::vector<PaletteEntry> palette;
 
-        cl7::byte_vector data;
+        cl7::byte_vector temp;
+        cl7::byte_vector temp2;
 
-        if (!_process_chunks(readable, source_name, bit_info, palette, data))
+        if (!_process_chunks(readable, source_name, bit_info, palette, temp))
             return false; // An error message has already been logged.
 
-        cl7::byte_vector buffer;
-        cl7::byte_vector temp;
-
-        if (!_decompress(data, temp))
+        if (!_decompress(temp, temp2))
             return _log_bad_data_error(source_name, u8"decompression error");
-        if (!_reconstruct(temp, buffer, bit_info))
+        if (!_reconstruct(temp2, temp, bit_info))
             return _log_bad_data_error(source_name, u8"reconstruction error");
 
+        const unsigned bits_per_channel = bit_info.bits_per_pixel / bit_info.channel_count;
+        assert(bit_info.bits_per_pixel % bit_info.channel_count == 0);
+
+        if (bits_per_channel != 8)
+        {
+            temp2.swap(temp);
+            if (!_decode(std::move(temp2), temp, bit_info))
+                return _log_bad_data_error(source_name, u8"decoding error");
+        }
+
+        cl7::byte_vector buffer = std::move(temp);
+
+        //
+        static constexpr PixelFormat _8BIT_PIXEL_FORMATS_BY_COLOR_TYPE[7] = {
+            PixelFormat::R8_UNORM,          // CT 0: Grayscale
+            PixelFormat::UNKNOWN,           // CT 1: (invalid)
+            PixelFormat::R8G8B8_UNORM,      // CT 2: Truecolor
+            PixelFormat::R8G8B8_UNORM,      // CT 3: Indexed-color
+            PixelFormat::R8G8_UNORM,        // CT 4: Grayscale with Alpha
+            PixelFormat::UNKNOWN,           // CT 5: (invalid)
+            PixelFormat::R8G8B8A8_UNORM,    // CT 6: Truecolor with Alpha
+        };
+
+        //
+        static constexpr PixelFormat _16BIT_PIXEL_FORMATS_BY_COLOR_TYPE[7] = {
+            PixelFormat::R16_UNORM,         // CT 0: Grayscale
+            PixelFormat::UNKNOWN,           // CT 1: (invalid)
+            PixelFormat::R16G16B16_UNORM,   // CT 2: Truecolor
+            PixelFormat::R16G16B16_UNORM,   // CT 3: Indexed-color
+            PixelFormat::R16G16_UNORM,      // CT 4: Grayscale with Alpha
+            PixelFormat::UNKNOWN,           // CT 5: (invalid)
+            PixelFormat::R16G16B16A16_UNORM,// CT 6: Truecolor with Alpha
+        };
+
+        const auto* pixel_formats_by_color_type = bits_per_channel > 8
+            ? _16BIT_PIXEL_FORMATS_BY_COLOR_TYPE
+            : _8BIT_PIXEL_FORMATS_BY_COLOR_TYPE;
+
         Image::Desc desc;
-        if (bit_info.color_type & CT_ALPHA_USED)
-            desc.pixel_format = PixelFormat::R8G8B8A8_UNORM;
-        else
-            desc.pixel_format = PixelFormat::R8G8B8_UNORM;
+        desc.pixel_format = pixel_formats_by_color_type[bit_info.color_type];
         desc.channel_order = ChannelOrder::RGBA;
         desc.width = bit_info.width;
         desc.height = bit_info.height;
         desc.depth = 1;
 
-        data.resize(desc.calculate_data_size());
+        cl7::byte_vector data(desc.calculate_data_size());
 
-        unsigned src_bytes_per_pixel = bit_info.max_bytes_per_pixel;
-        unsigned dst_bytes_per_pixel = desc.determine_pixel_stride();
-        size_t N = desc.calculate_pixel_count();
-        assert(N * src_bytes_per_pixel == buffer.size());
+        const unsigned src_bytes_per_pixel = bit_info.ceil_bytes_per_pixel;
+        const unsigned dst_bytes_per_pixel = desc.determine_pixel_stride();
+        const size_t pixel_count = desc.calculate_pixel_count();
+        assert(pixel_count * src_bytes_per_pixel == buffer.size());
 
-        // If Indexed-color ...
-        if (bit_info.color_type & CT_PALETTE_USED)
+        if (pixel_count * src_bytes_per_pixel != buffer.size())
+            return _log_bad_data_error(source_name, u8"");
+
+        if (bit_info.color_type == 3) // CT 3: Indexed-color
         {
-            // ... iterate through pixels and get
-            // the RGB values from the palette.
+            // If Indexed-color, iterate through the pixels
+            // and get the color values from the palette.
             assert(src_bytes_per_pixel == 1);
             assert(dst_bytes_per_pixel == 3);
-            for (size_t i = 0; i < N; ++i)
+            for (size_t i = 0; i < pixel_count; ++i)
             {
                 const size_t si = static_cast<uint8_t>(buffer[i]);
                 const size_t di = i * dst_bytes_per_pixel;
@@ -84,33 +119,12 @@ namespace xl7::graphics::images {
                 data[di + 2] = palette[si].b;
             }
         }
-        // If "true" Truecolor (with or w/o Alpha) ...
-        else if (bit_info.color_type & CT_COLOR_USED)
+        else
         {
-            // ... just "copy" the raw data.
-            assert(src_bytes_per_pixel == 3 || src_bytes_per_pixel == 4);
-            assert(dst_bytes_per_pixel == 3 || dst_bytes_per_pixel == 4);
+            // Otherwise, just "copy" the raw data.
             assert(dst_bytes_per_pixel == src_bytes_per_pixel);
             assert(data.size() == buffer.size());
             data.swap(buffer);
-        }
-        // If 8-bit Grayscale (with or w/o Alpha) ...
-        else // => !(bit_info.color_type & CT_PALETTE_USED) && !(bit_info.color_type & CT_COLOR_USED)
-        {
-            // ... iterate through pixels and set the RGB
-            // values to the source grayscale value.
-            assert(src_bytes_per_pixel == 1 || src_bytes_per_pixel == 2);
-            assert(dst_bytes_per_pixel == 3 || dst_bytes_per_pixel == 4);
-            for (size_t i = 0; i < N; ++i)
-            {
-                const size_t si = i * src_bytes_per_pixel;
-                const size_t di = i * dst_bytes_per_pixel;
-                data[di + 0] = data[di + 1] = data[di + 2] = buffer[si];
-                // If alpha channel given, copy the alpha
-                // value to the corresponding slot.
-                if (bit_info.color_type & CT_ALPHA_USED)
-                    data[di + 3] = buffer[si + 1];
-            }
         }
 
         return image.init(desc, std::move(data));
@@ -199,21 +213,22 @@ namespace xl7::graphics::images {
         if (header.interlace_method > 1)
             return _log_unsupported_format_error(source_name, u8"unsupported interlace method: " + cl7::to_string(header.interlace_method));
 
-        if (header.color_type == 0)
+        if (header.color_type == 0) // CT 0: Grayscale
         {
             // Allowed bit depths: 1, 2, 4, 8, 16 (already checked, see above)
         }
-        else if (header.color_type == 3)
+        else if (header.color_type == 3) // CT 3: Indexed-color
         {
             // Allowed bit depths: 1, 2, 4, 8
             if (header.bit_depth > 8)
-                return _log_unsupported_format_error(source_name, u8"invalid bit depth of " + cl7::to_string(header.bit_depth) + u8" for color type " + cl7::to_string(header.color_type));
+                return _log_bad_header_error(source_name, u8"invalid bit depth of " + cl7::to_string(header.bit_depth) + u8" for color type " + cl7::to_string(header.color_type));
         }
-        else
+        else // CT 2: Truecolor, CT 4: Grayscale with Alpha, or CT 6: Truecolor with Alpha
         {
+            assert(header.color_type == 2 || header.color_type == 4 || header.color_type == 6);
             // Allowed bit depths: 8, 16
             if (header.bit_depth != 8 && header.bit_depth != 16)
-                return _log_unsupported_format_error(source_name, u8"invalid bit depth of " + cl7::to_string(header.bit_depth) + u8" for color type " + cl7::to_string(header.color_type));
+                return _log_bad_header_error(source_name, u8"invalid bit depth of " + cl7::to_string(header.bit_depth) + u8" for color type " + cl7::to_string(header.color_type));
         }
 
         // 
@@ -230,7 +245,7 @@ namespace xl7::graphics::images {
         bit_info.color_type = static_cast<unsigned>(header.color_type);
         bit_info.channel_count = CHANNEL_COUNTS_BY_COLOR_TYPE[header.color_type];
         bit_info.bits_per_pixel = header.bit_depth * bit_info.channel_count;
-        bit_info.max_bytes_per_pixel = (bit_info.bits_per_pixel + 7) / 8;
+        bit_info.ceil_bytes_per_pixel = (bit_info.bits_per_pixel + 7) / 8;
         bit_info.bytes_per_scanline = (header.width * bit_info.bits_per_pixel + 7) / 8;
         bit_info.width = header.width;
         bit_info.height = header.height;
@@ -293,28 +308,86 @@ namespace xl7::graphics::images {
      */
     bool PngImageReader::_reconstruct(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info)
     {
+        const auto bytes_per_pixel = static_cast<size_t>(bit_info.ceil_bytes_per_pixel);
+        const auto bytes_per_scanline = static_cast<size_t>(bit_info.bytes_per_scanline);
+        const auto height = static_cast<size_t>(bit_info.height);
+
+        const size_t expected_src_size = height * (bytes_per_scanline + 1);
+        assert(src.size() == expected_src_size);
+        if (src.size() != expected_src_size)
+            return false;
+
+        const size_t dst_size = height * bytes_per_scanline;
         dst.clear();
+        dst.resize(dst_size);
 
-        unsigned si = 0;
-        unsigned di = 0;
+        size_t si = 0;
+        size_t di = 0;
 
-        for (unsigned v = 0; v < bit_info.height; ++v)
+        for (size_t row = 0; row < height; ++row)
         {
-            assert(si == di + v);
-            assert(di % bit_info.bytes_per_scanline == 0);
-            assert(si % (bit_info.bytes_per_scanline+1) == 0);
+            assert(si < src.size());
 
-            const auto filter_type = static_cast<unsigned char>(src[si++]); // Advance source index by one byte.
+            // Read and "skip" filter type byte.
+            const auto filter_type = static_cast<uint8_t>(src[si++]);
 
-            switch (filter_type)
+            assert(si + bytes_per_scanline <= src.size());
+
+            for (size_t col = 0; col < bytes_per_scanline; ++col)
             {
-            case 0: if (!_reconstruct_scanline_filter0_none(src, dst, bit_info, si, di)) return false; break;
-            case 1: if (!_reconstruct_scanline_filter1_sub(src, dst, bit_info, si, di)) return false; break;
-            case 2: if (!_reconstruct_scanline_filter2_up(src, dst, bit_info, si, di)) return false; break;
-            case 3: if (!_reconstruct_scanline_filter3_average(src, dst, bit_info, si, di)) return false; break;
-            case 4: if (!_reconstruct_scanline_filter4_paeth(src, dst, bit_info, si, di)) return false; break;
-            default: return false;
-            };
+                const auto fx = static_cast<uint8_t>(src[si + col]);
+
+                uint8_t a = 0; // sub/left
+                uint8_t b = 0; // up
+                uint8_t c = 0; // average up-left
+
+                if (col >= bytes_per_pixel)
+                    a = static_cast<uint8_t>(dst[di + col - bytes_per_pixel]);
+
+                if (row > 0)
+                    b = static_cast<uint8_t>(dst[di + col - bytes_per_scanline]);
+
+                if (row > 0 && col >= bytes_per_pixel)
+                    c = static_cast<uint8_t>(dst[di + col - bytes_per_scanline - bytes_per_pixel]);
+
+                uint8_t result = fx;
+
+                switch (filter_type)
+                {
+                case 1:
+                    // Filter type "Sub" (1): the Sub filter transmits the difference between each
+                    // byte and the value of the corresponding byte of the prior pixel.
+                    result += a; // = fx + a
+                    break;
+                case 2:
+                    // Filter type "Up" (2): the Up filter transmits the difference between each
+                    // byte and the value of the corresponding byte of the prior scanline.
+                    result += b; // = fx + b
+                    break;
+                case 3:
+                {
+                    // Filter type "Average" (3): the Average filter uses the average of the two
+                    // neighboring pixels (left and above) to predict the value of a pixel.
+                    // The sum shall be performed without overflow (using at least nine-bit arithmetic).
+                    const unsigned sum = static_cast<unsigned>(a) + static_cast<unsigned>(b);
+                    const unsigned average = sum >> 1;
+                    result += static_cast<uint8_t>(average); // = fx + (a+b)/2
+                    break;
+                }
+                case 4:
+                    // Filter type "Paeth" (4): the Paeth filter computes a simple linear function
+                    // of the three neighboring pixels (left, above, upper left), then chooses as
+                    // predictor the neighboring pixel closest to the computed value.
+                    result += _paeth(a, b, c); // = fx + PaethPredictor(a, b, c)
+                    break;
+                default:
+                    // Filter type "None" (0): the scanline is transmitted unmodified.
+                    // Nothing to do here.
+                    break;
+                } // switch filter type
+
+                dst[di + col] = std::byte{result};
+            } // for each byte in scanline
 
             si += bit_info.bytes_per_scanline;
             di += bit_info.bytes_per_scanline;
@@ -324,137 +397,112 @@ namespace xl7::graphics::images {
     }
 
     /**
-     * Filter type "None" (0): the scanline is transmitted unmodified.
+     * Decodes the "normalized" data from the given reconstructed data.
+     * No decoding/normalization is required for data with a bit depth of 8 bits per
+     * channel.
      */
-    bool PngImageReader::_reconstruct_scanline_filter0_none(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di)
+    bool PngImageReader::_decode(cl7::byte_vector&& src, cl7::byte_vector& dst, const BitInfo& bit_info)
     {
-        assert(di == dst.size());
+        const size_t pixel_count = static_cast<size_t>(bit_info.width) * static_cast<size_t>(bit_info.height);
+        const size_t element_count = pixel_count * bit_info.channel_count;
 
-        dst.insert(
-            dst.end(),
-            src.begin() + si,
-            src.begin() + si + bit_info.bytes_per_scanline);
+        assert(bit_info.bits_per_pixel % bit_info.channel_count == 0);
+        const unsigned bits_per_channel = bit_info.bits_per_pixel / bit_info.channel_count;
+
+        const size_t bytes_per_row = (static_cast<size_t>(bit_info.width) * bit_info.bits_per_pixel + 7) / 8;
+
+        const size_t src_byte_count = bytes_per_row * static_cast<size_t>(bit_info.height);
+        if (src.size() != src_byte_count)
+            return false;
+
+        if (bits_per_channel == 8)
+        {
+            assert(src.size() == element_count);
+            dst = std::move(src);
+            return true;
+        }
+
+        if (bits_per_channel == 16)
+        {
+            assert(src.size() == element_count * 2);
+            dst = std::move(src);
+            for (size_t i = 0; i < element_count; ++i)
+            {
+                uint16_t value = reinterpret_cast<uint16_t*>(dst.data())[i];
+                value = cl7::bits::swap_bytes_unless_endian<std::endian::big>(value);
+                reinterpret_cast<uint16_t*>(dst.data())[i] = value;
+            }
+            return true;
+        }
+
+        assert(bits_per_channel == 1 || bits_per_channel == 2 || bits_per_channel == 4);
+        assert(bit_info.color_type == 0 || bit_info.color_type == 3); // CT 0: Grayscale or CT 3: Indexed-color
+        assert(bits_per_channel == bit_info.bits_per_pixel);
+        assert(element_count == pixel_count);
+
+        assert(8 % bits_per_channel == 0);
+        const unsigned elements_per_pixel = 8 / bits_per_channel;
+        const unsigned bit_mask = (1ul << bits_per_channel) - 1;
+
+        dst.clear();
+        dst.resize(element_count);
+
+        size_t i = 0;
+        for (unsigned y = 0; y < bit_info.height; ++y)
+        {
+            for (unsigned x = 0; x < bit_info.width; ++x)
+            {
+                const std::byte byte = src[y * bytes_per_row + x / elements_per_pixel];
+                const unsigned bit_offset = (x % elements_per_pixel) * bits_per_channel;
+                const unsigned bit_shift = 8 - bits_per_channel - bit_offset;
+                uint8_t value = (static_cast<uint8_t>(byte) >> bit_shift) & bit_mask;
+                dst[i] = std::byte{value};
+                ++i;
+            }
+        }
+        assert(i == element_count);
+
+        if (bit_info.color_type == 0) // CT 0: Grayscale
+        {
+            const unsigned max_val = (1ul << bits_per_channel) - 1;
+            for (i = 0; i < element_count; ++i)
+            {
+                auto value = static_cast<unsigned>(static_cast<uint8_t>(dst[i]));
+                value *= 255;
+                value /= max_val;
+                dst[i] = std::byte{static_cast<uint8_t>(value)};
+            }
+        }
 
         return true;
     }
 
     /**
-     * Filter type "Sub" (1): the Sub filter transmits the difference between each
-     * byte and the value of the corresponding byte of the prior pixel.
+     * The Paeth filter function computes a simple linear function of the three
+     * neighboring pixels (left, above, upper left), then chooses as predictor the
+     * neighboring pixel closest to the computed value.
      */
-    bool PngImageReader::_reconstruct_scanline_filter1_sub(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di)
+    uint8_t PngImageReader::_paeth(uint8_t a, uint8_t b, uint8_t c)
     {
-        // Run through the all
-        // bytes (not pixels).
-        for (unsigned h = 0; h < bit_info.bytes_per_scanline; ++h)
-        {
-            const auto fx = static_cast<unsigned char>(src[si++]);
+        const auto A = static_cast<signed>(a);
+        const auto B = static_cast<signed>(b);
+        const auto C = static_cast<signed>(c);
 
-            unsigned char a = 0;
-            if (h >= bit_info.max_bytes_per_pixel)
-                a = static_cast<unsigned char>(dst[di + h - bit_info.max_bytes_per_pixel]);
+        const signed p = A + B - C;
+        const signed pA = std::abs(p - A);
+        const signed pB = std::abs(p - B);
+        const signed pC = std::abs(p - C);
 
-            dst.push_back(static_cast<std::byte>(fx + a));
-        } // for each byte
+        uint8_t pr;
 
-        return true;
-    }
+        if (pA <= pB && pA <= pC)
+            pr = a;
+        else if (pB <= pC)
+            pr = b;
+        else
+            pr = c;
 
-    /**
-     * Filter type "Up" (2): the Up filter transmits the difference between each
-     * byte and the value of the corresponding byte of the prior scanline.
-     */
-    bool PngImageReader::_reconstruct_scanline_filter2_up(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di)
-    {
-        const unsigned v = di / bit_info.bytes_per_scanline;
-
-        // Run through the all
-        // bytes (not pixels).
-        for (unsigned h = 0; h < bit_info.bytes_per_scanline; ++h)
-        {
-            const auto fx = static_cast<unsigned char>(src[si++]);
-
-            unsigned char b = 0;
-            if (v >= 1)
-                b = static_cast<unsigned char>(dst[di + h - bit_info.bytes_per_scanline]);
-
-            dst.push_back(static_cast<std::byte>(fx + b));
-        } // for each byte
-
-        return true;
-    }
-
-    /**
-     * Filter type "Average" (3): the Average filter uses the average of the two
-     * neighboring pixels (left and above) to predict the value of a pixel.
-     */
-    bool PngImageReader::_reconstruct_scanline_filter3_average(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di)
-    {
-        const unsigned v = di / bit_info.bytes_per_scanline;
-
-        // Run through the all
-        // bytes (not pixels).
-        for (unsigned h = 0; h < bit_info.bytes_per_scanline; ++h)
-        {
-            const auto fx = static_cast<unsigned char>(src[si++]);
-
-            unsigned char a = 0;
-            if (h >= bit_info.max_bytes_per_pixel)
-                a = static_cast<unsigned char>(dst[di + h - bit_info.max_bytes_per_pixel]);
-
-            unsigned char b = 0;
-            if (v >= 1)
-                b = static_cast<unsigned char>(dst[di + h - bit_info.bytes_per_scanline]);
-
-            dst.push_back(static_cast<std::byte>(fx + (a+b)/2));
-        } // for each byte
-
-        return true;
-    }
-
-    /**
-     * Filter type "Paeth" (4): the Paeth filter computes a single linear function
-     * of the three neighboring pixel (left, above, upper left), then chooses as
-     * predictor the neighboring pixel closest to the computed value.
-     */
-    bool PngImageReader::_reconstruct_scanline_filter4_paeth(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info, unsigned si, unsigned di)
-    {
-        const unsigned v = di / bit_info.bytes_per_scanline;
-
-        // Run through the all
-        // bytes (not pixels).
-        for (unsigned h = 0; h < bit_info.bytes_per_scanline; ++h)
-        {
-            const auto fx = static_cast<unsigned char>(src[si++]);
-
-            unsigned char a = 0;
-            if (h >= bit_info.max_bytes_per_pixel)
-                a = static_cast<unsigned char>(dst[di + h - bit_info.max_bytes_per_pixel]);
-
-            unsigned char b = 0;
-            if (v >= 1)
-                b = static_cast<unsigned char>(dst[di + h - bit_info.bytes_per_scanline]);
-
-            unsigned char c = 0;
-            if (v >= 1 && h >= bit_info.max_bytes_per_pixel)
-                c = static_cast<unsigned char>(dst[di + h - bit_info.bytes_per_scanline - bit_info.max_bytes_per_pixel]);
-
-            const auto A = static_cast<signed>(a);
-            const auto B = static_cast<signed>(b);
-            const auto C = static_cast<signed>(c);
-            signed p = A+B-C;
-            signed pa = p - A; if (pa < 0) pa = -pa;
-            signed pb = p - B; if (pb < 0) pb = -pb;
-            signed pc = p - C; if (pc < 0) pc = -pc;
-            if (pa <= pb && pa <= pc)   p = a;
-            else if (pb <= pc)          p = b;
-            else                        p = c;
-            const auto paeth = static_cast<unsigned char>(static_cast<unsigned>(p) & 0xff);
-
-            dst.push_back(static_cast<std::byte>(fx + paeth));
-        } // for each byte
-
-        return true;
+        return pr;
     }
 
 
