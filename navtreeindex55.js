@@ -1,17 +1,5 @@
 var NAVTREEINDEX55 =
 {
-"de/df3/structxl7_1_1graphics_1_1Color.html#a2941484ca888ba606dacfdd7d0d696bc":[7,0,8,1,8,19],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a2941484ca888ba606dacfdd7d0d696bc":[5,0,8,2,8,19],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a2a32ff7eea3791331919f6a3721da8b4":[5,0,8,2,8,59],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a2a32ff7eea3791331919f6a3721da8b4":[7,0,8,1,8,59],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a2a86f4c5ba18b0e08e092501a12c1373":[5,0,8,2,8,14],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a2a86f4c5ba18b0e08e092501a12c1373":[7,0,8,1,8,14],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a2e67f0c2d5713943dac7f8736f56279d":[7,0,8,1,8,13],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a2e67f0c2d5713943dac7f8736f56279d":[5,0,8,2,8,13],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a32d067132bae9f65631865bb175cac21":[5,0,8,2,8,12],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a32d067132bae9f65631865bb175cac21":[7,0,8,1,8,12],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a3453cb27ab1a3b21cf5cd23b475758bc":[7,0,8,1,8,7],
-"de/df3/structxl7_1_1graphics_1_1Color.html#a3453cb27ab1a3b21cf5cd23b475758bc":[5,0,8,2,8,7],
 "de/df3/structxl7_1_1graphics_1_1Color.html#a39dc69ad3bc26b7967ba8d2e0ab9d808":[7,0,8,1,8,42],
 "de/df3/structxl7_1_1graphics_1_1Color.html#a39dc69ad3bc26b7967ba8d2e0ab9d808":[5,0,8,2,8,42],
 "de/df3/structxl7_1_1graphics_1_1Color.html#a3a89a873308c488dc1a0c7e67b45a975":[5,0,8,2,8,50],
@@ -249,5 +237,17 @@ var NAVTREEINDEX55 =
 "df/d3c/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates_1_1ShaderStates.html#a621aa01279aad204a91ea789f50c6890":[5,0,8,2,1,1,7,0,1,0],
 "df/d3d/Document_8cpp.html":[8,0,2,5,4],
 "df/d3d/direct3d11_2shaders_2VertexShaderImpl_8h.html":[8,0,7,1,1,0,1,9],
-"df/d3d/direct3d11_2shaders_2VertexShaderImpl_8h_source.html":[8,0,7,1,1,0,1,9]
+"df/d3d/direct3d11_2shaders_2VertexShaderImpl_8h_source.html":[8,0,7,1,1,0,1,9],
+"df/d3e/structcl7_1_1is__any__string__span.html":[7,0,1,21],
+"df/d3e/structcl7_1_1is__any__string__span.html":[5,0,1,22],
+"df/d52/structdl7_1_1json_1_1Format.html":[7,0,2,2,2],
+"df/d52/structdl7_1_1json_1_1Format.html":[5,0,2,2,2],
+"df/d52/structdl7_1_1json_1_1Format.html#a0be86fe44d6aff88749ec868ff1e2dbf":[5,0,2,2,2,4],
+"df/d52/structdl7_1_1json_1_1Format.html#a0be86fe44d6aff88749ec868ff1e2dbf":[7,0,2,2,2,4],
+"df/d52/structdl7_1_1json_1_1Format.html#a348a92d2f139586fb18e2b21b264fe28":[7,0,2,2,2,10],
+"df/d52/structdl7_1_1json_1_1Format.html#a348a92d2f139586fb18e2b21b264fe28":[5,0,2,2,2,10],
+"df/d52/structdl7_1_1json_1_1Format.html#a49160a3419321b34533f45dab42b2101":[5,0,2,2,2,5],
+"df/d52/structdl7_1_1json_1_1Format.html#a49160a3419321b34533f45dab42b2101":[7,0,2,2,2,5],
+"df/d52/structdl7_1_1json_1_1Format.html#a6a8a994bee9e67bd29d6ff5bd5eb6b64":[5,0,2,2,2,3],
+"df/d52/structdl7_1_1json_1_1Format.html#a6a8a994bee9e67bd29d6ff5bd5eb6b64":[7,0,2,2,2,3]
 };
