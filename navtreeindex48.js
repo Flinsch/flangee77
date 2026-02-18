@@ -1,5 +1,7 @@
 var NAVTREEINDEX48 =
 {
+"dd/d3a/structdl7_1_1xml_1_1detail_1_1UnescaperErrorHandler.html#a9424d68a9e98802fbdcbe4477f2de75b":[5,0,2,5,0,3,0],
+"dd/d3a/structdl7_1_1xml_1_1detail_1_1UnescaperErrorHandler.html#a9424d68a9e98802fbdcbe4477f2de75b":[7,0,2,5,0,3,0],
 "dd/d3a/structdl7_1_1xml_1_1detail_1_1UnescaperErrorHandler.html#af3fbd98169c4e8e8aa9efbcdf052493a":[5,0,2,5,0,3,2],
 "dd/d3a/structdl7_1_1xml_1_1detail_1_1UnescaperErrorHandler.html#af3fbd98169c4e8e8aa9efbcdf052493a":[7,0,2,5,0,3,2],
 "dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html":[5,0,1,9,1,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX48 =
 "dd/d6b/XiaoLabs_2graphics_2impl_2direct3d11_2errors_8cpp.html":[8,0,7,1,1,0,4],
 "dd/d6b/XiaoLabs_2graphics_2impl_2direct3d11_2errors_8cpp.html#a4b55cbe7c68a52c1b7c476cd47d339be":[8,0,7,1,1,0,4,1],
 "dd/d6b/XiaoLabs_2graphics_2impl_2direct3d11_2errors_8cpp.html#ad8aa78fd641c8c4eb6e170df3c8543da":[8,0,7,1,1,0,4,0],
-"dd/d6b/XiaoLabs_2graphics_2impl_2direct3d11_2errors_8cpp.html#ade0c6e5c5ae54849224d4afcf3f65cbe":[8,0,7,1,1,0,4,2],
-"dd/d6b/XiaoLabs_2graphics_2impl_2direct3d11_2errors_8cpp.html#ae63785f72c1aa35000f93449023176ee":[8,0,7,1,1,0,4,3],
-"dd/d6f/XmlWriter_8h.html":[8,0,2,5,17]
+"dd/d6b/XiaoLabs_2graphics_2impl_2direct3d11_2errors_8cpp.html#ade0c6e5c5ae54849224d4afcf3f65cbe":[8,0,7,1,1,0,4,2]
 };

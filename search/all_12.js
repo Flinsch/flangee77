@@ -235,7 +235,7 @@ var searchData=
   ['resourcemanager_2eh_232',['ResourceManager.h',['../de/d51/ResourceManager_8h.html',1,'']]],
   ['resourcemanagerptr_233',['ResourceManagerPtr',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#afa984ffd4400e8377079614b55837413',1,'xl7::graphics::RenderingDevice']]],
   ['resourceptr_234',['ResourcePtr',['../d3/d00/classxl7_1_1resources_1_1ResourceManager.html#aeff5712fa4edcf49d69a95b13c1381d1',1,'xl7::resources::ResourceManager']]],
-  ['result_235',['result',['../da/d3a/structtl7_1_1Result.html',1,'tl7::Result'],['../da/d3a/structtl7_1_1Result.html#a75bb827630a18dc8bdfaf9837cf08564',1,'tl7::Result::Result()'],['../dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html#a806e3683a8f54412f1958f20966c7d58',1,'cl7::text::codec::Decoder::iterator::result()']]],
+  ['result_235',['result',['../da/d3a/structtl7_1_1Result.html',1,'tl7::Result'],['../dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html#a806e3683a8f54412f1958f20966c7d58',1,'cl7::text::codec::Decoder::iterator::result()'],['../da/d3a/structtl7_1_1Result.html#a75bb827630a18dc8bdfaf9837cf08564',1,'tl7::Result::Result()']]],
   ['result_2ecpp_236',['Result.cpp',['../d9/d55/Result_8cpp.html',1,'']]],
   ['result_2eh_237',['Result.h',['../d8/d27/Result_8h.html',1,'']]],
   ['result_5fmeta_238',['result_meta',['../da/d3a/structtl7_1_1Result.html#af0bf36ebe997c76bdb8ca90ce1cde2cd',1,'tl7::Result']]],

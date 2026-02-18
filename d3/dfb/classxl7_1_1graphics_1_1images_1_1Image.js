@@ -25,5 +25,6 @@ var classxl7_1_1graphics_1_1images_1_1Image =
     [ "swap_data", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html#a34080888fe61c803a3bff3b4fbbf5180", null ],
     [ "_data_buffer", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html#abc3b95a44482abffaf33d4501203e79c", null ],
     [ "_data_view", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html#a8d3b1687518ab298e4b5e5eb5a69627b", null ],
-    [ "_desc", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html#a3631977b226b7d3ce4dadfd48835397e", null ]
+    [ "_desc", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html#a3631977b226b7d3ce4dadfd48835397e", null ],
+    [ "MAX_SIZE", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html#a72f168c538bea3cf548dc2b7c5343035", null ]
 ];

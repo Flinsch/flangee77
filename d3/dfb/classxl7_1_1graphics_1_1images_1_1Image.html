@@ -94,6 +94,7 @@ $(document).ready(function(){initNavTree('d3/dfb/classxl7_1_1graphics_1_1images_
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../d3/da7/classxl7_1_1graphics_1_1images_1_1Image-members.html">List of all members</a>  </div>
@@ -162,6 +163,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a20973268f3f90c09cc6678cb97c5b4bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7767fdd6ba7e2afa1996913bbe5e036" id="r_aa7767fdd6ba7e2afa1996913bbe5e036"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html#aa7767fdd6ba7e2afa1996913bbe5e036">init</a> (const <a class="el" href="../../d0/d81/structxl7_1_1graphics_1_1images_1_1Image_1_1Desc.html">Desc</a> &amp;desc, <a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">cl7::byte_vector</a> &amp;&amp;data)</td></tr>
 <tr class="separator:aa7767fdd6ba7e2afa1996913bbe5e036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a72f168c538bea3cf548dc2b7c5343035" id="r_a72f168c538bea3cf548dc2b7c5343035"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html#a72f168c538bea3cf548dc2b7c5343035">MAX_SIZE</a> = 16384</td></tr>
+<tr class="separator:a72f168c538bea3cf548dc2b7c5343035"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
@@ -821,6 +827,31 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>The descriptor of the image. </p>
+
+</div>
+</div>
+<a id="a72f168c538bea3cf548dc2b7c5343035" name="a72f168c538bea3cf548dc2b7c5343035"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72f168c538bea3cf548dc2b7c5343035">&#9670;&#160;</a></span>MAX_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned xl7::graphics::images::Image::MAX_SIZE = 16384</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Maximum texture sizes typically range from 2048x2048 to 16384x16384 pixels, depending on GPU capabilities, VRAM, and platform. While modern desktop GPUs often handle 16384x16384, common high-end standards usually do not go beyond 8192x8192 pixels.</p>
+<p>Maximum 3D texture dimensions, including depth, are typically 2048x2048x2048 on most modern GPUs. While high-end cards can support up to 16384x16384x16384, practical limits are constrained by available GPU memory, as a 2048^3 32-bit texture, for example, requires 32 GB of VRAM.</p>
+<p>Regardless of hardware capabilities, a maximum size of 16384 should therefore be sufficient to perform certain plausibility checks when creating textures, loading images, etc. </p>
 
 </div>
 </div>

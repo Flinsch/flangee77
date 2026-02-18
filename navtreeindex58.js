@@ -1,5 +1,7 @@
 var NAVTREEINDEX58 =
 {
+"df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#a5bb623c487120e3385bd3d70c2249d20":[7,0,1,8,0,5,5],
+"df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#a6d2e4ce5174ba34ea60c7258152ae6c8":[7,0,1,8,0,5,8],
 "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#a6d2e4ce5174ba34ea60c7258152ae6c8":[5,0,1,9,0,5,8],
 "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#a7a62faaa5dde55fea95117eb559a288a":[7,0,1,8,0,5,9],
 "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#a7a62faaa5dde55fea95117eb559a288a":[5,0,1,9,0,5,9],
@@ -247,7 +249,5 @@ var NAVTREEINDEX58 =
 "functions_vars_b.html":[7,3,2,2],
 "functions_vars_c.html":[7,3,2,3],
 "functions_vars_d.html":[7,3,2,4],
-"functions_vars_e.html":[7,3,2,5],
-"functions_vars_f.html":[7,3,2,6],
-"functions_vars_g.html":[7,3,2,7]
+"functions_vars_e.html":[7,3,2,5]
 };
