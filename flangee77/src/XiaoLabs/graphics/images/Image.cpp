@@ -2,6 +2,8 @@
 
 #include "../PixelLayout.h"
 
+#include <CoreLabs/logging.h>
+
 
 
 namespace xl7::graphics::images {
@@ -141,6 +143,29 @@ namespace xl7::graphics::images {
      */
     bool Image::init(const Desc& desc)
     {
+        bool okay = true;
+
+        if (desc.width > MAX_SIZE)
+        {
+            LOG_ERROR(u8"The requested image width exceeds the plausibly maximum size of " + cl7::to_string(MAX_SIZE) + u8" pixels.");
+            okay = false;
+        }
+
+        if (desc.height > MAX_SIZE)
+        {
+            LOG_ERROR(u8"The requested image height exceeds the plausibly maximum size of " + cl7::to_string(MAX_SIZE) + u8" pixels.");
+            okay = false;
+        }
+
+        if (desc.depth > MAX_SIZE)
+        {
+            LOG_ERROR(u8"The requested image depth exceeds the plausibly maximum size of " + cl7::to_string(MAX_SIZE) + u8" pixels.");
+            okay = false;
+        }
+
+        if (!okay)
+            return false;
+
         _desc = desc;
 
         _data_view = {};
@@ -160,7 +185,8 @@ namespace xl7::graphics::images {
         if (!_validate(desc, data))
             return false;
 
-        _desc = desc;
+        if (!init(desc))
+            return false;
 
         if (view_only)
         {
@@ -195,7 +221,8 @@ namespace xl7::graphics::images {
         if (!_validate(desc, data))
             return false;
 
-        _desc = desc;
+        if (!init(desc))
+            return false;
 
         // "Move" data buffer and
         // "view" our new buffer.
@@ -223,7 +250,7 @@ namespace xl7::graphics::images {
 
         if (desc.calculate_data_size() != data.size())
         {
-            // Should we log an error message or something?
+            LOG_ERROR(u8"The provided data does not match the size and/or format of the image.");
             return false;
         }
 

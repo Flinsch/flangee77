@@ -17,7 +17,7 @@ namespace xl7::graphics::meshes {
  * and synchronization. Choosing a usage that does not match the actual update
  * behavior may result in reduced performance.
  *
- * A good read for this: John McDonald, "Don’t Throw it all Away: Efficient Buffer Management", 2012.
+ * A good read for this: John McDonald, "Don't Throw it all Away: Efficient Buffer Management", 2012.
  * https://developer.nvidia.com/sites/default/files/akamai/gamedev/files/gdc12/Efficient_Buffer_Management_McDonald.pdf
  */
 enum struct MeshBufferUsage

@@ -97,6 +97,8 @@ namespace xl7::graphics::images {
 
         if (!desc.width || !desc.height)
             return _log_bad_header_error(source_name, u8"valid width and height greater than 0 expected");
+        if (desc.width > Image::MAX_SIZE || desc.height > Image::MAX_SIZE)
+            return _log_bad_header_error(source_name, u8"valid width and height not greater than " + cl7::to_string(Image::MAX_SIZE) + u8" expected");
 
         if (max_val == 0 || max_val > 65535)
             return _log_bad_header_error(source_name, u8"valid bit depth of 8 or 16 expected (maximum value greater than 0 and less than 65536)");
@@ -168,6 +170,8 @@ namespace xl7::graphics::images {
 
         if (!desc.width || !desc.height)
             return _log_bad_header_error(source_name, u8"valid width and height greater than 0 expected");
+        if (desc.width > Image::MAX_SIZE || desc.height > Image::MAX_SIZE)
+            return _log_bad_header_error(source_name, u8"valid width and height not greater than " + cl7::to_string(Image::MAX_SIZE) + u8" expected");
 
         if (max_val == 0 || max_val > 65535)
             return _log_bad_header_error(source_name, u8"valid bit depth of 8 or 16 expected (maximum value greater than 0 and less than 65536)");

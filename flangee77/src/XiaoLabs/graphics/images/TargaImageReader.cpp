@@ -28,6 +28,8 @@ namespace xl7::graphics::images {
             return _log_bad_header_error(source_name, u8"invalid image type: " + cl7::to_string(header.image_type));
         if (header.width == 0 || header.height == 0)
             return _log_bad_header_error(source_name, u8"valid width and height greater than 0 expected");
+        if (header.width > Image::MAX_SIZE || header.height > Image::MAX_SIZE)
+            return _log_bad_header_error(source_name, u8"valid width and height not greater than " + cl7::to_string(Image::MAX_SIZE) + u8" expected");
         if (header.pixel_depth != 16 && header.pixel_depth != 24 && header.pixel_depth != 32)
             return _log_bad_header_error(source_name, u8"invalid pixel depth: " + cl7::to_string(header.pixel_depth));
 

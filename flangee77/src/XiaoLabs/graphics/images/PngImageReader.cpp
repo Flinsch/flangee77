@@ -202,6 +202,8 @@ namespace xl7::graphics::images {
 
         if (header.width == 0 || header.height == 0)
             return _log_bad_header_error(source_name, u8"valid width and height greater than 0 expected");
+        if (header.width > Image::MAX_SIZE || header.height > Image::MAX_SIZE)
+            return _log_bad_header_error(source_name, u8"valid width and height not greater than " + cl7::to_string(Image::MAX_SIZE) + u8" expected");
         if (std::popcount(header.bit_depth) != 1 || header.bit_depth > 16)
             return _log_bad_header_error(source_name, u8"invalid bit depth: " + cl7::to_string(header.bit_depth));
         if (header.color_type == 1 || header.color_type == 5 || header.color_type >= 7)
@@ -231,7 +233,7 @@ namespace xl7::graphics::images {
                 return _log_bad_header_error(source_name, u8"invalid bit depth of " + cl7::to_string(header.bit_depth) + u8" for color type " + cl7::to_string(header.color_type));
         }
 
-        // 
+        //
         static constexpr unsigned CHANNEL_COUNTS_BY_COLOR_TYPE[7] = {
             1, // CT 0: Grayscale
             0, // CT 1: (invalid)

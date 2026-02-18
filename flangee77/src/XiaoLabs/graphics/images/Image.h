@@ -17,6 +17,23 @@ class Image
 {
 
 public:
+    /**
+     * Maximum texture sizes typically range from 2048x2048 to 16384x16384 pixels,
+     * depending on GPU capabilities, VRAM, and platform. While modern desktop GPUs
+     * often handle 16384x16384, common high-end standards usually do not go beyond
+     * 8192x8192 pixels.
+     *
+     * Maximum 3D texture dimensions, including depth, are typically 2048x2048x2048
+     * on most modern GPUs. While high-end cards can support up to 16384x16384x16384,
+     * practical limits are constrained by available GPU memory, as a 2048^3 32-bit
+     * texture, for example, requires 32 GB of VRAM.
+     *
+     * Regardless of hardware capabilities, a maximum size of 16384 should therefore
+     * be sufficient to perform certain plausibility checks when creating textures,
+     * loading images, etc.
+     */
+    static constexpr unsigned MAX_SIZE = 16384;
+
     struct Desc
     {
         /** The pixel format. */
