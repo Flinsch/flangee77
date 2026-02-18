@@ -64,7 +64,7 @@ jobs:
     - name: Install zlib on Windows
       if: runner.os == 'Windows'
       run: |
-        curl -L -o zlib.zip https://zlib.net/zlib131.zip
+        curl -L -o zlib.zip https://github.com/madler/zlib/releases/download/v1.3.1/zlib131.zip
         mkdir zlib-zip
         tar -xf zlib.zip -C zlib-zip --strip-components=1
         mkdir zlib-build
