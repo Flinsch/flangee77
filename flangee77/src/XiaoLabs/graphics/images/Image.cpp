@@ -143,28 +143,11 @@ namespace xl7::graphics::images {
      */
     bool Image::init(const Desc& desc)
     {
-        bool okay = true;
-
-        if (desc.width > MAX_SIZE)
+        if (desc.width > MAX_SIZE || desc.height > MAX_SIZE || desc.depth > MAX_SIZE)
         {
-            LOG_ERROR(u8"The requested image width exceeds the plausibly maximum size of " + cl7::to_string(MAX_SIZE) + u8" pixels.");
-            okay = false;
-        }
-
-        if (desc.height > MAX_SIZE)
-        {
-            LOG_ERROR(u8"The requested image height exceeds the plausibly maximum size of " + cl7::to_string(MAX_SIZE) + u8" pixels.");
-            okay = false;
-        }
-
-        if (desc.depth > MAX_SIZE)
-        {
-            LOG_ERROR(u8"The requested image depth exceeds the plausibly maximum size of " + cl7::to_string(MAX_SIZE) + u8" pixels.");
-            okay = false;
-        }
-
-        if (!okay)
+            LOG_ERROR(u8"The requested image size exceeds the plausibly maximum width, height, and/or depth of " + cl7::to_string(MAX_SIZE) + u8" pixels.");
             return false;
+        }
 
         _desc = desc;
 
