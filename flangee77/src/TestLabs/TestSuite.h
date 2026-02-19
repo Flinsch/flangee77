@@ -69,7 +69,7 @@ public:
     /**
      * Registers the specified test case.
      */
-    int register_test_case(TestCase::FuncType func, cl7::u8string_view name, const char* file_path, unsigned line_number);
+    int register_test_case(TestCase::FuncType func, cl7::u8string_view name, const char* file_path, unsigned line_number, const char* function_name);
 
     /**
      * Runs the registered test cases.

@@ -8,7 +8,7 @@ namespace tl7 {
 
     bool Signature::operator==(const Signature& rhs) const
     {
-        assert(file_path == rhs.file_path || std::string_view(file_path) == std::string_view(rhs.file_path));
+        assert(function_name == rhs.function_name || std::string_view(function_name) == std::string_view(rhs.function_name));
         return line_number == rhs.line_number && iteration_number == rhs.iteration_number;
     }
 

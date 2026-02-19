@@ -20,14 +20,17 @@ struct Signature
     const char* file_path;
     /** The line number where the test incident occurred. */
     unsigned line_number;
+    /** The function name of the test case. */
+    const char* function_name;
     /** The iteration number/index (or -1 if not applicable). */
     signed iteration_number;
 
 
 
-    Signature(const char* file_path, unsigned line_number, signed iteration_number = -1)
+    Signature(const char* file_path, unsigned line_number, const char* function_name, signed iteration_number = -1)
         : file_path(file_path)
         , line_number(line_number)
+        , function_name(function_name)
         , iteration_number(iteration_number)
     {}
 

@@ -59,13 +59,13 @@ struct Result
     /**
      * The meta description of the respective test case/subcase branch.
      */
-    Meta context_meta{{}, "", 0};
+    Meta context_meta{{}, "", 0, ""};
 
     /**
      * The meta description of what the result is about and where it has been
      * generated.
      */
-    Meta result_meta{{}, "", 0};
+    Meta result_meta{{}, "", 0, ""};
 
 
 

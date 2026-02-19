@@ -24,8 +24,8 @@ struct Meta
 
 
 
-    Meta(cl7::u8string_view stringification, const char* file_path, unsigned line_number, signed iteration_number = -1)
-        : Signature{file_path, line_number, iteration_number}
+    Meta(cl7::u8string_view stringification, const char* file_path, unsigned line_number, const char* function_name, signed iteration_number = -1)
+        : Signature{file_path, line_number, function_name, iteration_number}
         , stringification(stringification)
     {}
 

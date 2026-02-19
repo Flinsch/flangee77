@@ -20,11 +20,11 @@ namespace tl7 {
     /**
      * Registers the specified test case.
      */
-    int TestSuite::register_test_case(TestCase::FuncType func, cl7::u8string_view name, const char* file_path, unsigned line_number)
+    int TestSuite::register_test_case(TestCase::FuncType func, cl7::u8string_view name, const char* file_path, unsigned line_number, const char* function_name)
     {
         if (!_registered_test_cases)
             _registered_test_cases = std::make_unique<std::vector<TestCasePtr>>();
-        _registered_test_cases->emplace_back(std::make_unique<TestCase>(func, name, file_path, line_number));
+        _registered_test_cases->emplace_back(std::make_unique<TestCase>(func, name, file_path, line_number, function_name));
 
         return 0;
     }
@@ -142,7 +142,7 @@ namespace tl7 {
         }
         catch (const exceptions::assertion_exception& e)
         {
-            _reporter.post_result(ResultBuilder::make_assertion_result(ctx, e.original_expression, e.evaluated_expression, e.meta.file_path, e.meta.line_number, Result::Outcome::Failure));
+            _reporter.post_result(ResultBuilder::make_assertion_result(ctx, e.original_expression, e.evaluated_expression, e.meta.file_path, e.meta.line_number, e.meta.function_name, Result::Outcome::Failure));
         }
         catch (const std::exception& e)
         {
