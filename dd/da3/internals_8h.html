@@ -166,15 +166,19 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:acaba94f2df557058bf8868777facb2f4" id="r_acaba94f2df557058bf8868777facb2f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#acaba94f2df557058bf8868777facb2f4">TL7_INTERNAL_DEFINE_AND_REGISTER_GLOBAL_FUNC</a>(func,  name)</td></tr>
-<tr class="separator:acaba94f2df557058bf8868777facb2f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73167b15f1378bcf0a53a7adf9600ea8" id="r_a73167b15f1378bcf0a53a7adf9600ea8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#a73167b15f1378bcf0a53a7adf9600ea8">TL7_INTERNAL_REGISTER_GLOBAL_FUNC</a>(func,  name)&#160;&#160;&#160;    <a class="el" href="../../dd/da3/internals_8h.html#a4077611dac4d27d21c5d117fbcb5bc00">TL7_INTERNAL_CONSUME_REGISTRATION</a>(<a class="el" href="../../de/d99/root_8h.html#a458aa886688ee82825409e855d418840">PPCAT</a>(_tl7_foo_, __COUNTER__), <a class="el" href="../../db/d53/classtl7_1_1TestSuite.html#ac306ec16e5bdc944a682334562347001">tl7::TestSuite::instance</a>().register_test_case(func, name, __FILE__, __LINE__))</td></tr>
+<tr class="memitem:a406637501b61a2e8af7e788fa63620a4" id="r_a406637501b61a2e8af7e788fa63620a4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#a406637501b61a2e8af7e788fa63620a4">TL7_INTERNAL_DECLARE_AND_REGISTER_GLOBAL_FUNC</a>(func,  name)</td></tr>
+<tr class="separator:a406637501b61a2e8af7e788fa63620a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e2cc8095e7640dc4139e49ac59da23a" id="r_a2e2cc8095e7640dc4139e49ac59da23a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#a2e2cc8095e7640dc4139e49ac59da23a">TL7_INTERNAL_DEFINE_GLOBAL_FUNC</a>(func)&#160;&#160;&#160;    void func(<a class="el" href="../../d9/d7e/structtl7_1_1Context.html">tl7::Context</a>&amp; ctx)</td></tr>
+<tr class="separator:a2e2cc8095e7640dc4139e49ac59da23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f1c6938549a6fae0dfdc75873ae3777" id="r_a5f1c6938549a6fae0dfdc75873ae3777"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#a5f1c6938549a6fae0dfdc75873ae3777">TL7_INTERNAL_DECLARE_AND_REGISTER_AND_DEFINE_GLOBAL_FUNC</a>(func,  name)</td></tr>
+<tr class="separator:a5f1c6938549a6fae0dfdc75873ae3777"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73167b15f1378bcf0a53a7adf9600ea8" id="r_a73167b15f1378bcf0a53a7adf9600ea8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#a73167b15f1378bcf0a53a7adf9600ea8">TL7_INTERNAL_REGISTER_GLOBAL_FUNC</a>(func,  name)&#160;&#160;&#160;    <a class="el" href="../../dd/da3/internals_8h.html#a4077611dac4d27d21c5d117fbcb5bc00">TL7_INTERNAL_CONSUME_REGISTRATION</a>(<a class="el" href="../../de/d99/root_8h.html#a458aa886688ee82825409e855d418840">PPCAT</a>(_tl7_foo_, __COUNTER__), <a class="el" href="../../db/d53/classtl7_1_1TestSuite.html#ac306ec16e5bdc944a682334562347001">tl7::TestSuite::instance</a>().register_test_case(func, name, __FILE__, __LINE__, <a class="el" href="../../de/d99/root_8h.html#a9301916f6c8ae438b0cf7c6769b34128">STRINGIZE</a>(func)))</td></tr>
 <tr class="separator:a73167b15f1378bcf0a53a7adf9600ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4077611dac4d27d21c5d117fbcb5bc00" id="r_a4077611dac4d27d21c5d117fbcb5bc00"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#a4077611dac4d27d21c5d117fbcb5bc00">TL7_INTERNAL_CONSUME_REGISTRATION</a>(foo,  reg)&#160;&#160;&#160;    static const int foo = <a class="el" href="../../d2/d23/namespacetl7_1_1internals.html#afb2d5db27cea7e1dc47dfddd55a4dab1">tl7::internals::consume</a>(&amp;foo, reg);</td></tr>
 <tr class="separator:a4077611dac4d27d21c5d117fbcb5bc00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affbeb97c87bccdea8c879e6e5c43742d" id="r_affbeb97c87bccdea8c879e6e5c43742d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#affbeb97c87bccdea8c879e6e5c43742d">TL7_INTERNAL_DEFINE_AND_SWITCH_SUBCASE_BRANCH</a>(subcase,  name)&#160;&#160;&#160;    if (const <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>&amp; subcase = <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>(ctx, name, __FILE__, __LINE__))</td></tr>
+<tr class="memitem:affbeb97c87bccdea8c879e6e5c43742d" id="r_affbeb97c87bccdea8c879e6e5c43742d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#affbeb97c87bccdea8c879e6e5c43742d">TL7_INTERNAL_DEFINE_AND_SWITCH_SUBCASE_BRANCH</a>(subcase,  name)&#160;&#160;&#160;    if (const <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>&amp; subcase = <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>(ctx, name, __FILE__, __LINE__, __FUNCTION__))</td></tr>
 <tr class="separator:affbeb97c87bccdea8c879e6e5c43742d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70fac37a74a5eb8f3d6988aa4592e4b8" id="r_a70fac37a74a5eb8f3d6988aa4592e4b8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#a70fac37a74a5eb8f3d6988aa4592e4b8">TL7_INTERNAL_DEFINE_AND_SWITCH_SUBCASE_ITERATION_BRANCH</a>(subcase,  name,  iteration_number)&#160;&#160;&#160;    if (const <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>&amp; subcase = <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>(ctx, name + <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>(u8&quot; [&quot;) + tl7::internals::to_string(iteration_number) + <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>(u8&quot;]&quot;), __FILE__, __LINE__, iteration_number))</td></tr>
+<tr class="memitem:a70fac37a74a5eb8f3d6988aa4592e4b8" id="r_a70fac37a74a5eb8f3d6988aa4592e4b8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#a70fac37a74a5eb8f3d6988aa4592e4b8">TL7_INTERNAL_DEFINE_AND_SWITCH_SUBCASE_ITERATION_BRANCH</a>(subcase,  name,  iteration_number)&#160;&#160;&#160;    if (const <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>&amp; subcase = <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>(ctx, name + <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>(u8&quot; [&quot;) + tl7::internals::to_string(iteration_number) + <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>(u8&quot;]&quot;), __FILE__, __LINE__, __FUNCTION__, iteration_number))</td></tr>
 <tr class="separator:a70fac37a74a5eb8f3d6988aa4592e4b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c1973c49bf0d79d3fd3b52d758e5523" id="r_a6c1973c49bf0d79d3fd3b52d758e5523"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da3/internals_8h.html#a6c1973c49bf0d79d3fd3b52d758e5523">TL7_INTERNAL_DEFINE_AND_SWITCH_SUBCASE_BATCH_ITERATION_BRANCH</a>(subcase,  name,  iteration_number,  iterable_data_container,  data,  tmp,  stringifiable)</td></tr>
 <tr class="separator:a6c1973c49bf0d79d3fd3b52d758e5523"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -281,14 +285,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="acaba94f2df557058bf8868777facb2f4" name="acaba94f2df557058bf8868777facb2f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acaba94f2df557058bf8868777facb2f4">&#9670;&#160;</a></span>TL7_INTERNAL_DEFINE_AND_REGISTER_GLOBAL_FUNC</h2>
+<a id="a5f1c6938549a6fae0dfdc75873ae3777" name="a5f1c6938549a6fae0dfdc75873ae3777"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f1c6938549a6fae0dfdc75873ae3777">&#9670;&#160;</a></span>TL7_INTERNAL_DECLARE_AND_REGISTER_AND_DEFINE_GLOBAL_FUNC</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define TL7_INTERNAL_DEFINE_AND_REGISTER_GLOBAL_FUNC</td>
+          <td class="memname">#define TL7_INTERNAL_DECLARE_AND_REGISTER_AND_DEFINE_GLOBAL_FUNC</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">func, </td>
@@ -310,6 +314,36 @@ Functions</h2></td></tr>
 <div class="line">    TL7_INTERNAL_REGISTER_GLOBAL_FUNC(func, name) \</div>
 <div class="line">    <span class="keyword">static</span> <span class="keywordtype">void</span> func(<a class="code hl_struct" href="../../d9/d7e/structtl7_1_1Context.html">tl7::Context</a>&amp; ctx)</div>
 <div class="ttc" id="astructtl7_1_1Context_html"><div class="ttname"><a href="../../d9/d7e/structtl7_1_1Context.html">tl7::Context</a></div><div class="ttdef"><b>Definition</b> Context.h:20</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a406637501b61a2e8af7e788fa63620a4" name="a406637501b61a2e8af7e788fa63620a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a406637501b61a2e8af7e788fa63620a4">&#9670;&#160;</a></span>TL7_INTERNAL_DECLARE_AND_REGISTER_GLOBAL_FUNC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TL7_INTERNAL_DECLARE_AND_REGISTER_GLOBAL_FUNC</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">func, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">name&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordtype">void</span> func(<a class="code hl_struct" href="../../d9/d7e/structtl7_1_1Context.html">tl7::Context</a>&amp;); \</div>
+<div class="line">    TL7_INTERNAL_REGISTER_GLOBAL_FUNC(func, name)</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -370,9 +404,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordtype">signed</span> iteration_number = 0; \</div>
 <div class="line">    for (<span class="keyword">auto</span> tmp = std::begin(iterable_data_container); tmp != std::end(iterable_data_container); ++tmp, ++iteration_number) \</div>
-<div class="line">        <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_class" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>&amp; subcase = <a class="code hl_class" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>(ctx, name + <a class="code hl_typedef" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>(u8<span class="stringliteral">&quot; [&quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(iteration_number) + <a class="code hl_typedef" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>(u8<span class="stringliteral">&quot;]&quot;</span>), __FILE__, __LINE__, (data = *tmp, <a class="code hl_define" href="../../dd/da3/internals_8h.html#a50fb3e5d72bacd5e7109175fa4161e67">TL7_INTERNAL_TRY_SET_SUBCASE_DATA</a>(stringifiable), iteration_number)))</div>
+<div class="line">        <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_class" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>&amp; subcase = <a class="code hl_class" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>(ctx, name + <a class="code hl_typedef" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>(u8<span class="stringliteral">&quot; [&quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(iteration_number) + <a class="code hl_typedef" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>(u8<span class="stringliteral">&quot;]&quot;</span>), __FILE__, __LINE__, __FUNCTION__, (data = *tmp, <a class="code hl_define" href="../../dd/da3/internals_8h.html#a50fb3e5d72bacd5e7109175fa4161e67">TL7_INTERNAL_TRY_SET_SUBCASE_DATA</a>(stringifiable), iteration_number)))</div>
 <div class="ttc" id="aclasstl7_1_1SubcaseBranchSwitch_html"><div class="ttname"><a href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a></div><div class="ttdef"><b>Definition</b> SubcaseBranchSwitch.h:13</div></div>
-<div class="ttc" id="ainternals_8h_html_a50fb3e5d72bacd5e7109175fa4161e67"><div class="ttname"><a href="../../dd/da3/internals_8h.html#a50fb3e5d72bacd5e7109175fa4161e67">TL7_INTERNAL_TRY_SET_SUBCASE_DATA</a></div><div class="ttdeci">#define TL7_INTERNAL_TRY_SET_SUBCASE_DATA(stringifiable)</div><div class="ttdef"><b>Definition</b> internals.h:38</div></div>
+<div class="ttc" id="ainternals_8h_html_a50fb3e5d72bacd5e7109175fa4161e67"><div class="ttname"><a href="../../dd/da3/internals_8h.html#a50fb3e5d72bacd5e7109175fa4161e67">TL7_INTERNAL_TRY_SET_SUBCASE_DATA</a></div><div class="ttdeci">#define TL7_INTERNAL_TRY_SET_SUBCASE_DATA(stringifiable)</div><div class="ttdef"><b>Definition</b> internals.h:45</div></div>
 <div class="ttc" id="anamespacecl7_html_a56c82ebac73d775d95e0932d54ff12c3"><div class="ttname"><a href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a></div><div class="ttdeci">std::basic_string&lt; u8char_t &gt; u8string</div><div class="ttdef"><b>Definition</b> string.h:31</div></div>
 <div class="ttc" id="anamespacetl7_1_1internals_html_ac0044d195479eda0dce5ff1921ea0f38"><div class="ttname"><a href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a></div><div class="ttdeci">cl7::u8string to_string(const std::nullptr_t &amp;null)</div><div class="ttdef"><b>Definition</b> internals.cpp:13</div></div>
 </div><!-- fragment -->
@@ -399,7 +433,7 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;    if (const <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>&amp; subcase = <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>(ctx, name, __FILE__, __LINE__))</td>
+          <td></td><td>&#160;&#160;&#160;    if (const <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>&amp; subcase = <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>(ctx, name, __FILE__, __LINE__, __FUNCTION__))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -433,7 +467,25 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;    if (const <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>&amp; subcase = <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>(ctx, name + <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>(u8&quot; [&quot;) + tl7::internals::to_string(iteration_number) + <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>(u8&quot;]&quot;), __FILE__, __LINE__, iteration_number))</td>
+          <td></td><td>&#160;&#160;&#160;    if (const <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>&amp; subcase = <a class="el" href="../../d3/d95/classtl7_1_1SubcaseBranchSwitch.html">tl7::SubcaseBranchSwitch</a>(ctx, name + <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>(u8&quot; [&quot;) + tl7::internals::to_string(iteration_number) + <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>(u8&quot;]&quot;), __FILE__, __LINE__, __FUNCTION__, iteration_number))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2e2cc8095e7640dc4139e49ac59da23a" name="a2e2cc8095e7640dc4139e49ac59da23a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e2cc8095e7640dc4139e49ac59da23a">&#9670;&#160;</a></span>TL7_INTERNAL_DEFINE_GLOBAL_FUNC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TL7_INTERNAL_DEFINE_GLOBAL_FUNC</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">func</td><td>)</td>
+          <td>&#160;&#160;&#160;    void func(<a class="el" href="../../d9/d7e/structtl7_1_1Context.html">tl7::Context</a>&amp; ctx)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -461,7 +513,7 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;    <a class="el" href="../../dd/da3/internals_8h.html#a4077611dac4d27d21c5d117fbcb5bc00">TL7_INTERNAL_CONSUME_REGISTRATION</a>(<a class="el" href="../../de/d99/root_8h.html#a458aa886688ee82825409e855d418840">PPCAT</a>(_tl7_foo_, __COUNTER__), <a class="el" href="../../db/d53/classtl7_1_1TestSuite.html#ac306ec16e5bdc944a682334562347001">tl7::TestSuite::instance</a>().register_test_case(func, name, __FILE__, __LINE__))</td>
+          <td></td><td>&#160;&#160;&#160;    <a class="el" href="../../dd/da3/internals_8h.html#a4077611dac4d27d21c5d117fbcb5bc00">TL7_INTERNAL_CONSUME_REGISTRATION</a>(<a class="el" href="../../de/d99/root_8h.html#a458aa886688ee82825409e855d418840">PPCAT</a>(_tl7_foo_, __COUNTER__), <a class="el" href="../../db/d53/classtl7_1_1TestSuite.html#ac306ec16e5bdc944a682334562347001">tl7::TestSuite::instance</a>().register_test_case(func, name, __FILE__, __LINE__, <a class="el" href="../../de/d99/root_8h.html#a9301916f6c8ae438b0cf7c6769b34128">STRINGIZE</a>(func)))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -519,7 +571,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { \</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> eval = expression; \</div>
-<div class="line">        ctx.try_post_result(<a class="code hl_class" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base <span class="stringliteral">&quot;( &quot;</span> #expression <span class="stringliteral">&quot; )&quot;</span>), (u8##macro_base <span class="stringliteral">&quot;( &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(!!(eval)) + u8<span class="stringliteral">&quot; )&quot;</span>, __FILE__, __LINE__, <a class="code hl_function" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(eval))); \</div>
+<div class="line">        ctx.try_post_result(<a class="code hl_class" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base <span class="stringliteral">&quot;( &quot;</span> #expression <span class="stringliteral">&quot; )&quot;</span>), (u8##macro_base <span class="stringliteral">&quot;( &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(!!(eval)) + u8<span class="stringliteral">&quot; )&quot;</span>, __FILE__, __LINE__, __FUNCTION__, <a class="code hl_function" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(eval))); \</div>
 <div class="line">    } <span class="keywordflow">while</span>(<span class="keyword">false</span>)</div>
 <div class="ttc" id="aclasstl7_1_1ResultBuilder_html"><div class="ttname"><a href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a></div><div class="ttdef"><b>Definition</b> ResultBuilder.h:14</div></div>
 <div class="ttc" id="astructtl7_1_1Result_html_a0c6589ca4ec7ed08a712fe8a583aa56e"><div class="ttname"><a href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a></div><div class="ttdeci">static Outcome make_outcome(bool success)</div><div class="ttdef"><b>Definition</b> Result.h:79</div></div>
@@ -572,7 +624,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { \</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> eval1 = expr1; \</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> eval2 = expr2; \</div>
-<div class="line">        ctx.try_post_result(<a class="code hl_class" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base <span class="stringliteral">&quot;( &quot;</span> #expr1 <span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span> #expr2 <span class="stringliteral">&quot; )&quot;</span>), (u8##macro_base <span class="stringliteral">&quot;( &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval1) + (u8<span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval2) + u8<span class="stringliteral">&quot; )&quot;</span>, __FILE__, __LINE__, <a class="code hl_function" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(eval1 op eval2))); \</div>
+<div class="line">        ctx.try_post_result(<a class="code hl_class" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base <span class="stringliteral">&quot;( &quot;</span> #expr1 <span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span> #expr2 <span class="stringliteral">&quot; )&quot;</span>), (u8##macro_base <span class="stringliteral">&quot;( &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval1) + (u8<span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval2) + u8<span class="stringliteral">&quot; )&quot;</span>, __FILE__, __LINE__, __FUNCTION__, <a class="code hl_function" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(eval1 op eval2))); \</div>
 <div class="line">    } <span class="keywordflow">while</span>(<span class="keyword">false</span>)</div>
 </div><!-- fragment -->
 </div>
@@ -623,7 +675,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { \</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> eval1 = expr1; \</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> eval2 = expr2; \</div>
-<div class="line">        ctx.try_post_result(<a class="code hl_class" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base <span class="stringliteral">&quot;( &quot;</span> #expr1 <span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span> #expr2 <span class="stringliteral">&quot; )&quot;</span>), (u8##macro_base <span class="stringliteral">&quot;( &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval1) + (u8<span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval2) + u8<span class="stringliteral">&quot; )&quot;</span>, __FILE__, __LINE__, <a class="code hl_function" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(std::abs(eval1 - eval2) &lt; 2.0 * DBL_EPSILON))); \</div>
+<div class="line">        ctx.try_post_result(<a class="code hl_class" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base <span class="stringliteral">&quot;( &quot;</span> #expr1 <span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span> #expr2 <span class="stringliteral">&quot; )&quot;</span>), (u8##macro_base <span class="stringliteral">&quot;( &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval1) + (u8<span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval2) + u8<span class="stringliteral">&quot; )&quot;</span>, __FILE__, __LINE__, __FUNCTION__, <a class="code hl_function" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(std::abs(eval1 - eval2) &lt; 2.0 * DBL_EPSILON))); \</div>
 <div class="line">    } <span class="keywordflow">while</span>(<span class="keyword">false</span>)</div>
 </div><!-- fragment -->
 </div>
@@ -674,7 +726,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { \</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> eval1 = expr1; \</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> eval2 = expr2; \</div>
-<div class="line">        ctx.try_post_result(<a class="code hl_class" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base <span class="stringliteral">&quot;( &quot;</span> #expr1 <span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span> #expr2 <span class="stringliteral">&quot; )&quot;</span>), (u8##macro_base <span class="stringliteral">&quot;( &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval1) + (u8<span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval2) + u8<span class="stringliteral">&quot; )&quot;</span>, __FILE__, __LINE__, <a class="code hl_function" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(std::abs(eval1 - eval2) &lt; 2.0f * FLT_EPSILON))); \</div>
+<div class="line">        ctx.try_post_result(<a class="code hl_class" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base <span class="stringliteral">&quot;( &quot;</span> #expr1 <span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span> #expr2 <span class="stringliteral">&quot; )&quot;</span>), (u8##macro_base <span class="stringliteral">&quot;( &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval1) + (u8<span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval2) + u8<span class="stringliteral">&quot; )&quot;</span>, __FILE__, __LINE__, __FUNCTION__, <a class="code hl_function" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(std::abs(eval1 - eval2) &lt; 2.0f * FLT_EPSILON))); \</div>
 <div class="line">    } <span class="keywordflow">while</span>(<span class="keyword">false</span>)</div>
 </div><!-- fragment -->
 </div>
@@ -731,7 +783,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { \</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> eval1 = expr1; \</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> eval2 = expr2; \</div>
-<div class="line">        ctx.try_post_result(<a class="code hl_class" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base <span class="stringliteral">&quot;( &quot;</span> #expr1 <span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span> #expr2 <span class="stringliteral">&quot; )&quot;</span>), (u8##macro_base <span class="stringliteral">&quot;( &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval1) + (u8<span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval2) + u8<span class="stringliteral">&quot; )&quot;</span>, __FILE__, __LINE__, <a class="code hl_function" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(<a class="code hl_function" href="../../d3/d53/namespaceml7.html#adfa5471d024114973a4763819874b5bc">ml7::round</a>(eval1, num_decimals) op <a class="code hl_function" href="../../d3/d53/namespaceml7.html#adfa5471d024114973a4763819874b5bc">ml7::round</a>(eval2, num_decimals)))); \</div>
+<div class="line">        ctx.try_post_result(<a class="code hl_class" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base <span class="stringliteral">&quot;( &quot;</span> #expr1 <span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span> #expr2 <span class="stringliteral">&quot; )&quot;</span>), (u8##macro_base <span class="stringliteral">&quot;( &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval1) + (u8<span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval2) + u8<span class="stringliteral">&quot; )&quot;</span>, __FILE__, __LINE__, __FUNCTION__, <a class="code hl_function" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(<a class="code hl_function" href="../../d3/d53/namespaceml7.html#adfa5471d024114973a4763819874b5bc">ml7::round</a>(eval1, num_decimals) op <a class="code hl_function" href="../../d3/d53/namespaceml7.html#adfa5471d024114973a4763819874b5bc">ml7::round</a>(eval2, num_decimals)))); \</div>
 <div class="line">    } <span class="keywordflow">while</span>(<span class="keyword">false</span>)</div>
 <div class="ttc" id="anamespaceml7_html_adfa5471d024114973a4763819874b5bc"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#adfa5471d024114973a4763819874b5bc">ml7::round</a></div><div class="ttdeci">T round(T x, unsigned num_decimals)</div><div class="ttdef"><b>Definition</b> functions.h:364</div></div>
 </div><!-- fragment -->
@@ -783,7 +835,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { \</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> eval1 = expr1; \</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> eval2 = expr2; \</div>
-<div class="line">        ctx.try_post_result(<a class="code hl_class" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base <span class="stringliteral">&quot;( &quot;</span> #expr1 <span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span> #expr2 <span class="stringliteral">&quot; )&quot;</span>), (u8##macro_base <span class="stringliteral">&quot;( &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval1) + (u8<span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval2) + u8<span class="stringliteral">&quot; )&quot;</span>, __FILE__, __LINE__, <a class="code hl_function" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(<a class="code hl_function" href="../../d1/d2e/namespacecl7.html#a77903d2176b1a6ef2b24bca912ccf1b5">cl7::to_string</a>(eval1) op <a class="code hl_function" href="../../d1/d2e/namespacecl7.html#a77903d2176b1a6ef2b24bca912ccf1b5">cl7::to_string</a>(eval2)))); \</div>
+<div class="line">        ctx.try_post_result(<a class="code hl_class" href="../../db/d89/classtl7_1_1ResultBuilder.html">tl7::ResultBuilder</a>().make_result(ctx, (u8##macro_base <span class="stringliteral">&quot;( &quot;</span> #expr1 <span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span> #expr2 <span class="stringliteral">&quot; )&quot;</span>), (u8##macro_base <span class="stringliteral">&quot;( &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval1) + (u8<span class="stringliteral">&quot; &quot;</span> #op <span class="stringliteral">&quot; &quot;</span>) + <a class="code hl_function" href="../../d2/d23/namespacetl7_1_1internals.html#ac0044d195479eda0dce5ff1921ea0f38">tl7::internals::to_string</a>(eval2) + u8<span class="stringliteral">&quot; )&quot;</span>, __FILE__, __LINE__, __FUNCTION__, <a class="code hl_function" href="../../da/d3a/structtl7_1_1Result.html#a0c6589ca4ec7ed08a712fe8a583aa56e">tl7::Result::make_outcome</a>(<a class="code hl_function" href="../../d1/d2e/namespacecl7.html#a77903d2176b1a6ef2b24bca912ccf1b5">cl7::to_string</a>(eval1) op <a class="code hl_function" href="../../d1/d2e/namespacecl7.html#a77903d2176b1a6ef2b24bca912ccf1b5">cl7::to_string</a>(eval2)))); \</div>
 <div class="line">    } <span class="keywordflow">while</span>(<span class="keyword">false</span>)</div>
 <div class="ttc" id="anamespacecl7_html_a77903d2176b1a6ef2b24bca912ccf1b5"><div class="ttname"><a href="../../d1/d2e/namespacecl7.html#a77903d2176b1a6ef2b24bca912ccf1b5">cl7::to_string</a></div><div class="ttdeci">u8string to_string(bool val)</div><div class="ttdef"><b>Definition</b> string.cpp:65</div></div>
 </div><!-- fragment -->

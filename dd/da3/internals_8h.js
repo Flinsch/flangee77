@@ -1,10 +1,12 @@
 var internals_8h =
 [
     [ "TL7_INTERNAL_CONSUME_REGISTRATION", "dd/da3/internals_8h.html#a4077611dac4d27d21c5d117fbcb5bc00", null ],
-    [ "TL7_INTERNAL_DEFINE_AND_REGISTER_GLOBAL_FUNC", "dd/da3/internals_8h.html#acaba94f2df557058bf8868777facb2f4", null ],
+    [ "TL7_INTERNAL_DECLARE_AND_REGISTER_AND_DEFINE_GLOBAL_FUNC", "dd/da3/internals_8h.html#a5f1c6938549a6fae0dfdc75873ae3777", null ],
+    [ "TL7_INTERNAL_DECLARE_AND_REGISTER_GLOBAL_FUNC", "dd/da3/internals_8h.html#a406637501b61a2e8af7e788fa63620a4", null ],
     [ "TL7_INTERNAL_DEFINE_AND_SWITCH_SUBCASE_BATCH_ITERATION_BRANCH", "dd/da3/internals_8h.html#a6c1973c49bf0d79d3fd3b52d758e5523", null ],
     [ "TL7_INTERNAL_DEFINE_AND_SWITCH_SUBCASE_BRANCH", "dd/da3/internals_8h.html#affbeb97c87bccdea8c879e6e5c43742d", null ],
     [ "TL7_INTERNAL_DEFINE_AND_SWITCH_SUBCASE_ITERATION_BRANCH", "dd/da3/internals_8h.html#a70fac37a74a5eb8f3d6988aa4592e4b8", null ],
+    [ "TL7_INTERNAL_DEFINE_GLOBAL_FUNC", "dd/da3/internals_8h.html#a2e2cc8095e7640dc4139e49ac59da23a", null ],
     [ "TL7_INTERNAL_REGISTER_GLOBAL_FUNC", "dd/da3/internals_8h.html#a73167b15f1378bcf0a53a7adf9600ea8", null ],
     [ "TL7_INTERNAL_SET_SUBCASE_DATA", "dd/da3/internals_8h.html#a872ad81572c2f69cc472155871ae86b4", null ],
     [ "TL7_INTERNAL_TRY_POST_RESULT_1", "dd/da3/internals_8h.html#ac1fde34aa9a447888df206371c0aaa22", null ],

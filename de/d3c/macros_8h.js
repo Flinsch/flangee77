@@ -23,6 +23,8 @@ var macros_8h =
     [ "TESTLABS_CHECK_LE", "de/d3c/macros_8h.html#a3f36f726e7f49a210bdfe927655de2ec", null ],
     [ "TESTLABS_CHECK_LT", "de/d3c/macros_8h.html#a6be253ec6b1910512a2aa9dda8284c01", null ],
     [ "TESTLABS_CHECK_NE", "de/d3c/macros_8h.html#a108bf0c5e8f97a5d92114d87e132779a", null ],
+    [ "TESTLABS_DECLARE_CASE", "de/d3c/macros_8h.html#a3867e7912aa26dcf5aa6f851c9801178", null ],
+    [ "TESTLABS_DEFINE_CASE", "de/d3c/macros_8h.html#ab358142ee7531bfc667456831e757f05", null ],
     [ "TESTLABS_PRESUME", "de/d3c/macros_8h.html#ae14736a7a41e51b6b4c39c5fb68b3063", null ],
     [ "TESTLABS_PRESUME_EQ", "de/d3c/macros_8h.html#aa6e3b8c3d8c6134ea59670b40fdd82c9", null ],
     [ "TESTLABS_PRESUME_EQ_DBL", "de/d3c/macros_8h.html#a08dc200f332cd9c12949f3230c1dcda6", null ],

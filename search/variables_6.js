@@ -19,5 +19,5 @@ var searchData=
   ['free_5frect_5findex_16',['free_rect_index',['../df/d29/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScoredRect.html#ab2003175483b087da4429fc8d7b9856f',1,'al7::packing::AbstractFreeRectPacker::ScoredRect']]],
   ['frequency_17',['frequency',['../d6/d24/structcl7_1_1platform_1_1CPUID.html#a2ce6bc7b3ebb36438d1b866605fc99c4',1,'cl7::platform::CPUID']]],
   ['front_5fface_5fstenciling_18',['front_face_stenciling',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a855e90a7a23ab304acd97d23d52bf16d',1,'xl7::graphics::states::DepthStencilState::Desc']]],
-  ['function_5fname_19',['function_name',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html#a48bbea20cb7ae5c7a1c00b529ff9a7d8',1,'cl7::logging::LogEntry']]]
+  ['function_5fname_19',['function_name',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html#a48bbea20cb7ae5c7a1c00b529ff9a7d8',1,'cl7::logging::LogEntry::function_name'],['../d1/d32/structtl7_1_1Signature.html#a91867e19e72fcc42fccca648acac972f',1,'tl7::Signature::function_name']]]
 ];

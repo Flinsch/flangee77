@@ -135,8 +135,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2d5b10e47889dae2e2f2c38e95906f20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc135d9b8c87f316465484ff99ebc32a" id="r_adc135d9b8c87f316465484ff99ebc32a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d53/classtl7_1_1TestSuite.html">TestSuite</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classtl7_1_1TestSuite.html#adc135d9b8c87f316465484ff99ebc32a">operator=</a> (<a class="el" href="../../db/d53/classtl7_1_1TestSuite.html">TestSuite</a> &amp;&amp;)=delete</td></tr>
 <tr class="separator:adc135d9b8c87f316465484ff99ebc32a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9c85e60c126d6106a927ae314e0715f" id="r_ae9c85e60c126d6106a927ae314e0715f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classtl7_1_1TestSuite.html#ae9c85e60c126d6106a927ae314e0715f">register_test_case</a> (<a class="el" href="../../dd/de5/classtl7_1_1TestCase.html#a1a79b93a57e63031fe6e5c23c44fc9e9">TestCase::FuncType</a> func, <a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> name, const char *file_path, unsigned line_number)</td></tr>
-<tr class="separator:ae9c85e60c126d6106a927ae314e0715f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67e8ef02d3a9f3fdedbd4201d5f61cf4" id="r_a67e8ef02d3a9f3fdedbd4201d5f61cf4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classtl7_1_1TestSuite.html#a67e8ef02d3a9f3fdedbd4201d5f61cf4">register_test_case</a> (<a class="el" href="../../dd/de5/classtl7_1_1TestCase.html#a1a79b93a57e63031fe6e5c23c44fc9e9">TestCase::FuncType</a> func, <a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> name, const char *file_path, unsigned line_number, const char *function_name)</td></tr>
+<tr class="separator:a67e8ef02d3a9f3fdedbd4201d5f61cf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3da21430dc76534efc2f9c297a9cfbcf" id="r_a3da21430dc76534efc2f9c297a9cfbcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classtl7_1_1TestSuite.html#a3da21430dc76534efc2f9c297a9cfbcf">run_tests</a> ()</td></tr>
 <tr class="separator:a3da21430dc76534efc2f9c297a9cfbcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8f9a8d792a8d04fe7ade548bdbadd54" id="r_ad8f9a8d792a8d04fe7ade548bdbadd54"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../db/dbc/structtl7_1_1TestSuite_1_1Settings.html">Settings</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classtl7_1_1TestSuite.html#ad8f9a8d792a8d04fe7ade548bdbadd54">get_settings</a> () const</td></tr>
@@ -504,8 +504,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae9c85e60c126d6106a927ae314e0715f" name="ae9c85e60c126d6106a927ae314e0715f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9c85e60c126d6106a927ae314e0715f">&#9670;&#160;</a></span>register_test_case()</h2>
+<a id="a67e8ef02d3a9f3fdedbd4201d5f61cf4" name="a67e8ef02d3a9f3fdedbd4201d5f61cf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67e8ef02d3a9f3fdedbd4201d5f61cf4">&#9670;&#160;</a></span>register_test_case()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -532,7 +532,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>line_number</em>&#160;</td>
+          <td class="paramname"><em>line_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>function_name</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

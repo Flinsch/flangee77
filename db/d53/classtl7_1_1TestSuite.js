@@ -13,7 +13,7 @@ var classtl7_1_1TestSuite =
     [ "instance", "db/d53/classtl7_1_1TestSuite.html#ac306ec16e5bdc944a682334562347001", null ],
     [ "operator=", "db/d53/classtl7_1_1TestSuite.html#ab35163ecb142827f94384e9698ce45e1", null ],
     [ "operator=", "db/d53/classtl7_1_1TestSuite.html#adc135d9b8c87f316465484ff99ebc32a", null ],
-    [ "register_test_case", "db/d53/classtl7_1_1TestSuite.html#ae9c85e60c126d6106a927ae314e0715f", null ],
+    [ "register_test_case", "db/d53/classtl7_1_1TestSuite.html#a67e8ef02d3a9f3fdedbd4201d5f61cf4", null ],
     [ "reset_stats", "db/d53/classtl7_1_1TestSuite.html#a8251c402e463efb9f8330dfa8c771086", null ],
     [ "run_tests", "db/d53/classtl7_1_1TestSuite.html#a3da21430dc76534efc2f9c297a9cfbcf", null ],
     [ "set_settings", "db/d53/classtl7_1_1TestSuite.html#aa62e066ddeb55ba94b4b04475effa09a", null ],
