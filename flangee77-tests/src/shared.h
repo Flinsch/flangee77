@@ -1,6 +1,7 @@
 #ifndef F77_TESTS_SHARED_H
 #define F77_TESTS_SHARED_H
 
+#include <CoreLabs/byte_vector.h>
 #include <CoreLabs/byte_view.h>
 #include <CoreLabs/string.h>
 
