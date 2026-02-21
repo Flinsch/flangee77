@@ -88,5 +88,6 @@ target_sources(flangee77-tests
     XiaoLabs/graphics/images/NetpbmImageReader.cpp
     XiaoLabs/graphics/images/NetpbmImageWriter.cpp
     XiaoLabs/graphics/images/PngImageReader.cpp
+    XiaoLabs/graphics/images/TargaImageReader.cpp
     XiaoLabs/graphics/shaders/reflection.cpp
 )

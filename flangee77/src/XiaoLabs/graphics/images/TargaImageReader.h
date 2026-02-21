@@ -25,9 +25,9 @@ private:
         uint8_t     id_length;
         uint8_t     color_map_type;
         uint8_t     image_type;
-        uint16_t    map_start;
-        uint16_t    map_length;
-        uint8_t     map_depth;
+        uint16_t    color_map_start;
+        uint16_t    color_map_length;
+        uint8_t     color_map_depth;
         uint16_t    x_origin;
         uint16_t    y_origin;
         uint16_t    width;
@@ -56,14 +56,34 @@ private:
     // #############################################################################
 
     /**
-     * Loads an uncompressed TGA.
+     * Reads (and validates) the Targa header.
      */
-    static bool _load_uncompressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Header& header, const Image::Desc& desc, cl7::byte_span data);
+    static bool _read_header(cl7::io::IReadable& readable, const cl7::u8string& source_name, Header& header);
 
     /**
-     * Loads a compressed TGA.
+     * Reads the color map.
      */
-    static bool _load_compressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Header& header, const Image::Desc& desc, cl7::byte_span data);
+    static bool _read_color_map(cl7::io::IReadable& readable, const cl7::u8string& source_name, cl7::byte_span color_map);
+
+    /**
+     * Reads uncompressed image data.
+     */
+    static bool _read_uncompressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, cl7::byte_span image_data);
+
+    /**
+     * Reads RLE-compressed image data.
+     */
+    static bool _read_compressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, unsigned pixel_depth, cl7::byte_span image_data);
+
+    /**
+     * Translates the color indices to actual color values from the color map.
+     */
+    static bool _map_color_data(const cl7::u8string& source_name, cl7::byte_view color_map, cl7::byte_view index_data, cl7::byte_span color_data);
+
+    /**
+     * Flips the image vertically.
+     */
+    static void _flip_vertically(cl7::byte_span image_data, unsigned width, unsigned height);
 
 }; // class TargaImageReader
 
