@@ -15,5 +15,5 @@ int main()
 
     tl7::TestSuite::instance().run_tests();
 
-    return 0;
+    return tl7::TestSuite::instance().get_stats().cases.fail_count > 0 ? 1 : 0;
 }
