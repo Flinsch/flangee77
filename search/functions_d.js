@@ -27,7 +27,7 @@ var searchData=
   ['max3_24',['max3',['../d3/d53/namespaceml7.html#af325e3b4ea239b8bd7bbf7334a9fb0da',1,'ml7']]],
   ['max4_25',['max4',['../d3/d53/namespaceml7.html#afb9194f73687964a057c48f1a90ac867',1,'ml7']]],
   ['max_5fsize_26',['max_size',['../da/d4e/classcl7_1_1static__vector.html#aff43ff722bbd908cc6ff11f0a911795a',1,'cl7::static_vector::max_size()'],['../dd/d42/classcl7_1_1ordered__map.html#a93b60dd739d85dbb87a3d5c3dee558ce',1,'cl7::ordered_map::max_size()']]],
-  ['maxrectspacker_27',['MaxRectsPacker',['../de/d15/classal7_1_1packing_1_1MaxRectsPacker.html#a66c4a7e27a533814164859ebb8e6d8a0',1,'al7::packing::MaxRectsPacker']]],
+  ['maxrectspacker_27',['MaxRectsPacker',['../de/d15/classal7_1_1packing_1_1MaxRectsPacker.html#abcb902b95520b4a4c5f9e03ea846a9fa',1,'al7::packing::MaxRectsPacker']]],
   ['memorystatus_28',['MemoryStatus',['../d2/dea/structcl7_1_1platform_1_1memory_1_1MemoryStatus.html#ad510b2dba72354a0213b8ddc654c335f',1,'cl7::platform::memory::MemoryStatus']]],
   ['merge_5ferror_29',['merge_error',['../d3/dea/structcl7_1_1text_1_1codec_1_1ErrorStatus.html#a0b48d08b14df174a0c7423817aeb1511',1,'cl7::text::codec::ErrorStatus']]],
   ['merge_5fnearby_30',['merge_nearby',['../da/dc0/namespaceal7_1_1math.html#a0c5bc523dc41b05100cb850e1efd39e1',1,'al7::math::merge_nearby(std::vector&lt; T &gt; &amp;values, T tolerance)'],['../da/dc0/namespaceal7_1_1math.html#a5fb65d03567559756d610f2334d003bb',1,'al7::math::merge_nearby(std::vector&lt; double &gt; &amp;values, double tolerance)'],['../da/dc0/namespaceal7_1_1math.html#aa381080d5eb53b71206076e7fdc024f8',1,'al7::math::merge_nearby(std::vector&lt; float &gt; &amp;values, float tolerance)']]],

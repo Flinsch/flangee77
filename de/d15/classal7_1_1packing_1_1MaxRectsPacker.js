@@ -4,7 +4,7 @@ var classal7_1_1packing_1_1MaxRectsPacker =
       [ "BestShortSideFit", "de/d15/classal7_1_1packing_1_1MaxRectsPacker.html#ae2fd35d84cd0b1ff76aaced4d491a04ca1b8a0d4b93b8335b3cf810df788e52d9", null ],
       [ "BestAreaFit", "de/d15/classal7_1_1packing_1_1MaxRectsPacker.html#ae2fd35d84cd0b1ff76aaced4d491a04ca31eec20780375c5a318fc9ab96e0f950", null ]
     ] ],
-    [ "MaxRectsPacker", "de/d15/classal7_1_1packing_1_1MaxRectsPacker.html#a66c4a7e27a533814164859ebb8e6d8a0", null ],
+    [ "MaxRectsPacker", "de/d15/classal7_1_1packing_1_1MaxRectsPacker.html#abcb902b95520b4a4c5f9e03ea846a9fa", null ],
     [ "~MaxRectsPacker", "de/d15/classal7_1_1packing_1_1MaxRectsPacker.html#aadf8114ef93bdd7d7fabe9dcdc68117c", null ],
     [ "_merge_free_rects_helper", "de/d15/classal7_1_1packing_1_1MaxRectsPacker.html#aa5c4e94b65b81bae7b365f42f8c39425", null ],
     [ "_score_free_rect", "de/d15/classal7_1_1packing_1_1MaxRectsPacker.html#ac193c9b0601f6f84f45aefaf286a8597", null ],

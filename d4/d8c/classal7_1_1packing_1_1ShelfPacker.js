@@ -5,7 +5,7 @@ var classal7_1_1packing_1_1ShelfPacker =
       [ "FirstFit", "d4/d8c/classal7_1_1packing_1_1ShelfPacker.html#a66455f0b0fa31e68cf3ff6f4211db318ac7f39b24722abe0c524d1459c74ba4ff", null ],
       [ "BestHeightFit", "d4/d8c/classal7_1_1packing_1_1ShelfPacker.html#a66455f0b0fa31e68cf3ff6f4211db318ab6869f8f9987a0f9927dc7730db6f19f", null ]
     ] ],
-    [ "ShelfPacker", "d4/d8c/classal7_1_1packing_1_1ShelfPacker.html#ab2cf4f903384baae4ae85260e6593820", null ],
+    [ "ShelfPacker", "d4/d8c/classal7_1_1packing_1_1ShelfPacker.html#a8ca76a0d0854ea17d550b40b75a0289e", null ],
     [ "~ShelfPacker", "d4/d8c/classal7_1_1packing_1_1ShelfPacker.html#a3eceeaf4300cb119d3bf4c1b4f46df21", null ],
     [ "_add_to_shelf", "d4/d8c/classal7_1_1packing_1_1ShelfPacker.html#a26e6becfd0f1cc3d1d0e50644a4d7829", null ],
     [ "_can_insert", "d4/d8c/classal7_1_1packing_1_1ShelfPacker.html#a32352f7f2c4488c8567ba39f24fc6cd5", null ],

@@ -8,7 +8,7 @@ var classal7_1_1packing_1_1SkylinePacker =
       [ "BottomLeft", "d5/db1/classal7_1_1packing_1_1SkylinePacker.html#ac69490f888fa72c4a4abcb750e195182a98e5a1c44509157ebcaf46c515c78875", null ],
       [ "BestFit", "d5/db1/classal7_1_1packing_1_1SkylinePacker.html#ac69490f888fa72c4a4abcb750e195182a3be09308e76c7409a4e21584527d7f6e", null ]
     ] ],
-    [ "SkylinePacker", "d5/db1/classal7_1_1packing_1_1SkylinePacker.html#afe9ba6a5b15e53202dbcaf323bea4dd4", null ],
+    [ "SkylinePacker", "d5/db1/classal7_1_1packing_1_1SkylinePacker.html#adb98ad70df06131772abd4733bce28d9", null ],
     [ "~SkylinePacker", "d5/db1/classal7_1_1packing_1_1SkylinePacker.html#aeb495645735687116be587eb6fb091ec", null ],
     [ "_calculate_waste_area", "d5/db1/classal7_1_1packing_1_1SkylinePacker.html#a57049fa3a9885f732482dfc0dc3bec99", null ],
     [ "_can_insert", "d5/db1/classal7_1_1packing_1_1SkylinePacker.html#a5fefa2a9f10a694d84d1168811107ab9", null ],

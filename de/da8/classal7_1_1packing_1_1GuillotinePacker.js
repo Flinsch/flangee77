@@ -12,7 +12,7 @@ var classal7_1_1packing_1_1GuillotinePacker =
       [ "ShorterLeftoverAxis", "de/da8/classal7_1_1packing_1_1GuillotinePacker.html#ab6c59091ed685ae93304fed66250755ca45c1dfbbe174867c58b5a86bf09ee426", null ],
       [ "MinimizeArea", "de/da8/classal7_1_1packing_1_1GuillotinePacker.html#ab6c59091ed685ae93304fed66250755ca77495002dee41d0abde03d8dd853f300", null ]
     ] ],
-    [ "GuillotinePacker", "de/da8/classal7_1_1packing_1_1GuillotinePacker.html#a9e8a0d452d3e07a93f45955e5330693e", null ],
+    [ "GuillotinePacker", "de/da8/classal7_1_1packing_1_1GuillotinePacker.html#a06888879690d430a8d4fa98cb466cea4", null ],
     [ "~GuillotinePacker", "de/da8/classal7_1_1packing_1_1GuillotinePacker.html#aeb1b3fb4f063b328abeb9c500f4e10b5", null ],
     [ "_cut_orientation", "de/da8/classal7_1_1packing_1_1GuillotinePacker.html#ab15a69f4ce7f8bfccee8261c02edcfe5", null ],
     [ "_score_free_rect", "de/da8/classal7_1_1packing_1_1GuillotinePacker.html#a0518f3117f81bbd73e666d24dfe81079", null ],
