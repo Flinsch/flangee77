@@ -360,6 +360,9 @@ namespace tl7::reporting {
         if (stats.warning_count > 0)
             write_single(u8"Warnings:", stats.warning_count, ColorCode::Warning, u8" warnings");
 
+        if (stats.cases.fail_count == 0)
+            cout << ColorCode::Success << "All tests passed." << ColorCode::Default << '\n';
+
         const unsigned hours = stats.execution_time_msecs / (1000 * 60 * 60);
         const unsigned minutes = (stats.execution_time_msecs % (1000 * 60 * 60)) / (1000 * 60);
         const unsigned seconds = (stats.execution_time_msecs % (1000 * 60)) / 1000;
@@ -395,7 +398,7 @@ namespace tl7::reporting {
     }
 
     /**
-     * 
+     *
      */
     void CoutLogger::_log_signature(const Signature& signature)
     {
