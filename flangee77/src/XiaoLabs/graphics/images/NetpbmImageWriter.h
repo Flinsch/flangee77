@@ -40,7 +40,7 @@ public:
 
 
 
-    NetpbmImageWriter(Format format = Format::Pam) : _format(format) {}
+    explicit NetpbmImageWriter(Format format = Format::Pam) : _format(format) {}
 
     ~NetpbmImageWriter() override = default;
 

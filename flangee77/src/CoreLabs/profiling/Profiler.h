@@ -19,7 +19,7 @@ class Profiler
 public:
     Profiler() = delete;
 
-    Profiler(const cl7::u8string& sample_name);
+    explicit Profiler(const cl7::u8string& sample_name);
     Profiler(const cl7::u8string& sample_name, Registry* registry);
 
     Profiler(const Profiler&) = delete;

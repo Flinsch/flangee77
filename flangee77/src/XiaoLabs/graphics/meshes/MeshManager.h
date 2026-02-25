@@ -56,7 +56,7 @@ public:
 
 
 protected:
-    MeshManager(IMeshFactory* factory) : _factory(factory) {}
+    explicit MeshManager(IMeshFactory* factory) : _factory(factory) {}
     ~MeshManager() override = default;
 
 

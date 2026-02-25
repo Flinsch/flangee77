@@ -8,7 +8,7 @@ namespace al7::packing {
 
 
 
-    SkylinePacker::SkylinePacker(Size bin_size, Heuristic heuristic, bool use_waste_map) noexcept
+    SkylinePacker::SkylinePacker(Size bin_size, Heuristic heuristic, bool use_waste_map)
         : AbstractRectPacker(bin_size)
         , _heuristic(heuristic)
         , _use_waste_map(use_waste_map)

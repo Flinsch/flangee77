@@ -23,7 +23,7 @@ public:
      * Constructs an abstract free rect packer with the specified initially available
      * total size of the rectangular bin.
      */
-    AbstractFreeRectPacker(Size bin_size) noexcept;
+    explicit AbstractFreeRectPacker(Size bin_size);
 
     ~AbstractFreeRectPacker() noexcept override = default;
 

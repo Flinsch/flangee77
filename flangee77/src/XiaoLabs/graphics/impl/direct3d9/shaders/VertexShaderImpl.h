@@ -51,7 +51,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    VertexShaderImpl(const CreateParams<Desc>& params);
+    explicit VertexShaderImpl(const CreateParams<Desc>& params);
     ~VertexShaderImpl() override = default;
 
 

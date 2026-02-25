@@ -15,7 +15,7 @@ class FakeDataProvider
 public:
     FakeDataProvider() = default;
 
-    FakeDataProvider(size_t capacity);
+    explicit FakeDataProvider(size_t capacity);
 
     ~FakeDataProvider() override = default;
 

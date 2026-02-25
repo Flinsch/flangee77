@@ -55,7 +55,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    RasterizerStateImpl(const CreateParams<Desc>& params);
+    explicit RasterizerStateImpl(const CreateParams<Desc>& params);
     ~RasterizerStateImpl() override = default;
 
 

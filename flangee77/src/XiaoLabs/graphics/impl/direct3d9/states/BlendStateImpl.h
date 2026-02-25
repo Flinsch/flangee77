@@ -55,7 +55,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    BlendStateImpl(const CreateParams<Desc>& params);
+    explicit BlendStateImpl(const CreateParams<Desc>& params);
     ~BlendStateImpl() override = default;
 
 

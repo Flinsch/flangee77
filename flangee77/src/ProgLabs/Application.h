@@ -22,7 +22,7 @@ public:
 
     Application() = delete;
 
-    Application(ArgumentBag argument_bag) noexcept;
+    explicit Application(ArgumentBag argument_bag) noexcept;
 
     Application(const Application&) = delete;
     Application& operator=(const Application&) = delete;

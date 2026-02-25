@@ -43,7 +43,7 @@ namespace xl7::graphics::images {
                 return false;
         }
         else
-            return _log_unknown_format_error(source_name, u8"bad magic number: P" + magic2);
+            return _log_unknown_format_error(source_name, u8"bad magic number: P" + cl7::u8string(cl7::u8string_view(reinterpret_cast<const cl7::u8char_t*>(&magic2), 1)));
 
         return true;
     }

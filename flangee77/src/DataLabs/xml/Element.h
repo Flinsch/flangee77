@@ -25,7 +25,7 @@ public:
     Element(cl7::u8string name, Element* parent_element = nullptr) noexcept : Node(Type::Element, parent_element), _name(std::move(name)) {}
 
     Element(const Element& other, Element* parent_element);
-    Element(Element&& other, Element* parent_element) noexcept;
+    Element(Element&& other, Element* parent_element);
 
     Element(const Element&) = delete;
     Element& operator=(const Element&) = delete;
@@ -195,8 +195,8 @@ public:
 
 
 
-    bool operator==(const Element& other) const noexcept { return _is_equal(other); }
-    bool operator!=(const Element& other) const noexcept = default;
+    bool operator==(const Element& other) const { return _is_equal(other); }
+    bool operator!=(const Element& other) const = default;
 
 
 
@@ -214,7 +214,7 @@ private:
 
     std::vector<std::unique_ptr<Node>>::iterator _find_node(const Node* node);
 
-    bool _is_equal(const Element& other) const noexcept;
+    bool _is_equal(const Element& other) const;
 
     cl7::u8string _name;
     std::vector<Attribute> _attributes;

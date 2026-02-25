@@ -110,7 +110,7 @@ public:
 
 
 
-    Decoder(const ErrorHandler* error_handler = nullptr)
+    explicit Decoder(const ErrorHandler* error_handler = nullptr)
         : _default_error_handler()
         , _error_handler(error_handler ? error_handler : &_default_error_handler)
     {

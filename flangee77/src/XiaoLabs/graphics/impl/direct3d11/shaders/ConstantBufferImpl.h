@@ -40,7 +40,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    ConstantBufferImpl(const CreateParams<Desc>& params);
+    explicit ConstantBufferImpl(const CreateParams<Desc>& params);
     ~ConstantBufferImpl() override = default;
 
 

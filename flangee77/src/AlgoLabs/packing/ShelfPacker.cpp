@@ -9,7 +9,7 @@ namespace al7::packing {
 
 
 
-    ShelfPacker::ShelfPacker(Size bin_size, Heuristic heuristic) noexcept
+    ShelfPacker::ShelfPacker(Size bin_size, Heuristic heuristic)
         : AbstractRectPacker(bin_size)
         , _heuristic(heuristic)
     {

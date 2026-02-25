@@ -21,8 +21,8 @@ public:
     // #############################################################################
 
     ImageStack();
-    ImageStack(const Image::Desc& desc);
-    ImageStack(const Image& image);
+    explicit ImageStack(const Image::Desc& desc);
+    explicit ImageStack(const Image& image);
 
 
 

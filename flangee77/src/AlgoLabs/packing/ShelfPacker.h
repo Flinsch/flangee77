@@ -47,7 +47,7 @@ public:
      * Constructs a Shelf packer with the specified initially available total size
      * of the rectangular bin and a heuristic for inserting new items.
      */
-    ShelfPacker(Size bin_size, Heuristic heuristic = Heuristic::BestHeightFit) noexcept;
+    explicit ShelfPacker(Size bin_size, Heuristic heuristic = Heuristic::BestHeightFit);
 
     ~ShelfPacker() noexcept override = default;
 

@@ -20,7 +20,7 @@ struct ComposedVertexLayout
 
 
     ComposedVertexLayout() = default;
-    ComposedVertexLayout(const VertexBufferBinding& vertex_buffer_binding);
+    explicit ComposedVertexLayout(const VertexBufferBinding& vertex_buffer_binding);
 
     bool operator==(const ComposedVertexLayout& rhs) const noexcept;
 

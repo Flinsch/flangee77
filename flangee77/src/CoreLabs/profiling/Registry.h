@@ -67,7 +67,7 @@ public:
 
 private:
 
-    using SampleKey = std::pair<cl7::u8string, Sample *>;
+    using SampleKey = std::pair<cl7::u8string, Sample*>;
 
 
 

@@ -86,7 +86,7 @@ public:
 
 protected:
 
-    BlendState(const CreateParams<Desc>& params)
+    explicit BlendState(const CreateParams<Desc>& params)
         : ResourceBase(params)
         , _desc(params.desc)
     {

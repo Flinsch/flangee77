@@ -47,7 +47,7 @@ public:
      * Constructs a Maximal Rectangles packer with the specified initially available
      * total size of the rectangular bin and a heuristic for inserting new items.
      */
-    MaxRectsPacker(Size bin_size, Heuristic heuristic = Heuristic::BestShortSideFit) noexcept;
+    explicit MaxRectsPacker(Size bin_size, Heuristic heuristic = Heuristic::BestShortSideFit);
 
     ~MaxRectsPacker() noexcept override = default;
 

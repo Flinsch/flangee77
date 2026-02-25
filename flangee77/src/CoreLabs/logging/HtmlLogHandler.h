@@ -35,7 +35,7 @@ private:
     {
         cl7::u8string block_class;
 
-        Block(cl7::u8string_view block_class);
+        explicit Block(cl7::u8string_view block_class);
         ~Block() noexcept;
     };
 

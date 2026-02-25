@@ -254,7 +254,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    RenderingDevice(std::unique_ptr<IResourceFactory> resource_factory);
+    explicit RenderingDevice(std::unique_ptr<IResourceFactory> resource_factory);
 
     virtual ~RenderingDevice() = default;
 

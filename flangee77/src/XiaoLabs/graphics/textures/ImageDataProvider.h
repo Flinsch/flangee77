@@ -18,8 +18,8 @@ class ImageDataProvider
 public:
     ImageDataProvider();
 
-    ImageDataProvider(const images::Image* image);
-    ImageDataProvider(const images::ImageStack* image_stack);
+    explicit ImageDataProvider(const images::Image* image);
+    explicit ImageDataProvider(const images::ImageStack* image_stack);
 
     ~ImageDataProvider() override = default;
 

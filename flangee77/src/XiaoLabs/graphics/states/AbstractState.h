@@ -29,7 +29,7 @@ public:
 protected:
 
     template <class TDesc>
-    AbstractState(const CreateParams<TDesc>& params)
+    explicit AbstractState(const CreateParams<TDesc>& params)
         : ResourceBase(params)
     {
     }

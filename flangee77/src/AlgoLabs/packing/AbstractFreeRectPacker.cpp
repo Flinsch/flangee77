@@ -8,7 +8,7 @@ namespace al7::packing {
 
 
 
-    AbstractFreeRectPacker::AbstractFreeRectPacker(Size bin_size) noexcept
+    AbstractFreeRectPacker::AbstractFreeRectPacker(Size bin_size)
         : AbstractRectPacker(bin_size)
     {
         _free_rects.emplace_back(0, 0, bin_size);

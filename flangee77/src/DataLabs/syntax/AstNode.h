@@ -26,7 +26,7 @@ public:
 
     AstNode() = delete;
 
-    AstNode(Type type) : _type(type) {}
+    explicit AstNode(Type type) : _type(type) {}
 
     virtual ~AstNode() = default;
 

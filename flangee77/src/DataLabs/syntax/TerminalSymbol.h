@@ -22,7 +22,7 @@ struct TerminalSymbol
     /** The terminal symbol ID. */
     SymbolId id;
 
-    TerminalSymbol(SymbolId id);
+    explicit TerminalSymbol(SymbolId id);
     virtual ~TerminalSymbol() = default;
 
     /** Returns true if the symbol corresponds to a fixed string, false otherwise. */
@@ -66,7 +66,7 @@ struct NonLiteralSymbol
     : public TerminalSymbol
 {
 
-    NonLiteralSymbol(SymbolId id);
+    explicit NonLiteralSymbol(SymbolId id);
     ~NonLiteralSymbol() override = default;
 
     /** Always returns false since this is a non-literal symbol. */

@@ -27,7 +27,7 @@ struct ResultBase
     T distance() const { assert(distance_squared >= T{0}); return std::sqrt(distance_squared); }
 
     ResultBase() noexcept = default;
-    ResultBase(T distance_squared) noexcept : distance_squared(distance_squared) {}
+    explicit ResultBase(T distance_squared) noexcept : distance_squared(distance_squared) {}
 };
 
 template <std::floating_point T>

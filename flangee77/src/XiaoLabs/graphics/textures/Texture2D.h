@@ -61,7 +61,7 @@ public:
 
 protected:
 
-    Texture2D(const CreateParams<Desc>& params);
+    explicit Texture2D(const CreateParams<Desc>& params);
 
     ~Texture2D() override = default;
 

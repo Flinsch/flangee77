@@ -47,7 +47,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    IndexBufferImpl(const CreateParams<Desc>& params);
+    explicit IndexBufferImpl(const CreateParams<Desc>& params);
     ~IndexBufferImpl() override = default;
 
 

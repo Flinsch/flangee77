@@ -38,7 +38,7 @@ public:
 
 
 protected:
-    ParseStage(Diagnostics* diagnostics);
+    explicit ParseStage(Diagnostics* diagnostics);
 
 
 

@@ -56,7 +56,7 @@ public:
 
 protected:
 
-    ConstantBuffer(const CreateParams<Desc>& params)
+    explicit ConstantBuffer(const CreateParams<Desc>& params)
         : ResourceBase(params)
         , _desc(params.desc)
     {

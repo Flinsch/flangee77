@@ -36,7 +36,7 @@ public:
 
 
 protected:
-    SurfaceManager(ISurfaceFactory* factory) : _factory(factory) {}
+    explicit SurfaceManager(ISurfaceFactory* factory) : _factory(factory) {}
     ~SurfaceManager() override = default;
 
 

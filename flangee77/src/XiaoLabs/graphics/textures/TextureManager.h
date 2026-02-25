@@ -43,7 +43,7 @@ public:
 
 
 protected:
-    TextureManager(ITextureFactory* factory) : _factory(factory) {}
+    explicit TextureManager(ITextureFactory* factory) : _factory(factory) {}
     ~TextureManager() override = default;
 
 

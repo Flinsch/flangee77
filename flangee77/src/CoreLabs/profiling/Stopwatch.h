@@ -15,7 +15,7 @@ class Stopwatch
 {
 
 public:
-    Stopwatch(bool start = true);
+    explicit Stopwatch(bool start = true);
 
 
 

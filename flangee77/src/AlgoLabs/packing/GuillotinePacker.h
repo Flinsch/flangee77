@@ -58,7 +58,7 @@ public:
      * Constructs a Guillotine packer with the specified initially available total size
      * of the rectangular bin and selection/split heuristics for inserting new items.
      */
-    GuillotinePacker(Size bin_size, SelectionHeuristic selection_heuristic = SelectionHeuristic::BestAreaFit, SplitHeuristic split_heuristic = SplitHeuristic::ShorterLeftoverAxis) noexcept;
+    explicit GuillotinePacker(Size bin_size, SelectionHeuristic selection_heuristic = SelectionHeuristic::BestAreaFit, SplitHeuristic split_heuristic = SplitHeuristic::ShorterLeftoverAxis);
 
     ~GuillotinePacker() noexcept override = default;
 

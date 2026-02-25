@@ -16,7 +16,7 @@ public:
     ConstantDataProvider() = default;
 
     template <class TData>
-    ConstantDataProvider(const TData* data)
+    explicit ConstantDataProvider(const TData* data)
          : resources::DefaultDataProvider(cl7::byte_view(reinterpret_cast<const std::byte*>(data), sizeof(TData)), 0)
     {
     }

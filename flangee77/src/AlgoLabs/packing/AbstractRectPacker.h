@@ -33,7 +33,7 @@ public:
      * Constructs an abstract rect packer with the specified initially available
      * total size of the rectangular bin.
      */
-    AbstractRectPacker(Size bin_size) noexcept;
+    explicit AbstractRectPacker(Size bin_size) noexcept;
 
     virtual ~AbstractRectPacker() noexcept = default;
 

@@ -6,7 +6,7 @@ namespace al7::packing {
 
 
 
-    MaxRectsPacker::MaxRectsPacker(Size bin_size, Heuristic heuristic) noexcept
+    MaxRectsPacker::MaxRectsPacker(Size bin_size, Heuristic heuristic)
         : AbstractFreeRectPacker(bin_size)
         , _heuristic(heuristic)
     {

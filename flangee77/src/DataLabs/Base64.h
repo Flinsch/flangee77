@@ -46,7 +46,7 @@ public:
     // Construction / Destruction
     // #############################################################################
 
-    Base64(const Options& options = default_options);
+    explicit Base64(const Options& options = default_options);
 
 
 

@@ -55,7 +55,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    DepthStencilStateImpl(const CreateParams<Desc>& params);
+    explicit DepthStencilStateImpl(const CreateParams<Desc>& params);
     ~DepthStencilStateImpl() override = default;
 
 

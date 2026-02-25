@@ -53,7 +53,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    SamplerStateImpl(const CreateParams<Desc>& params);
+    explicit SamplerStateImpl(const CreateParams<Desc>& params);
     ~SamplerStateImpl() override = default;
 
 

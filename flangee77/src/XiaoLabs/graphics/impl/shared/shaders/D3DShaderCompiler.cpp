@@ -34,7 +34,7 @@ namespace xl7::graphics::impl::shared::shaders {
         cl7::u8string _root_directory;
         std::unordered_map<const void*, ParentEntry> _parent_entries;
 
-        Include(const cl7::u8string& path)
+        explicit Include(const cl7::u8string& path)
             : _root_directory(Include::directory(path))
         {
         }

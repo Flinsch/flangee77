@@ -31,7 +31,7 @@ public:
 
 protected:
 
-    VertexShader(const CreateParams<Desc>& params)
+    explicit VertexShader(const CreateParams<Desc>& params)
         : ResourceBase(Type::VertexShader, params)
     {
     }

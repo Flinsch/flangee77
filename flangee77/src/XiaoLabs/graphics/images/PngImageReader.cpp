@@ -49,8 +49,9 @@ namespace xl7::graphics::images {
         if (!_reconstruct(temp2, temp, bit_info))
             return _log_bad_data_error(source_name, u8"reconstruction error");
 
-        const unsigned bits_per_channel = bit_info.bits_per_pixel / bit_info.channel_count;
+        assert(bit_info.channel_count > 0);
         assert(bit_info.bits_per_pixel % bit_info.channel_count == 0);
+        const unsigned bits_per_channel = bit_info.bits_per_pixel / bit_info.channel_count;
 
         if (bits_per_channel != 8)
         {
@@ -408,6 +409,7 @@ namespace xl7::graphics::images {
         const size_t pixel_count = static_cast<size_t>(bit_info.width) * static_cast<size_t>(bit_info.height);
         const size_t element_count = pixel_count * bit_info.channel_count;
 
+        assert(bit_info.channel_count > 0);
         assert(bit_info.bits_per_pixel % bit_info.channel_count == 0);
         const unsigned bits_per_channel = bit_info.bits_per_pixel / bit_info.channel_count;
 

@@ -48,7 +48,7 @@ public:
 
 protected:
 
-    IndexBuffer(const CreateParams<Desc>& params);
+    explicit IndexBuffer(const CreateParams<Desc>& params);
 
     ~IndexBuffer() override = default;
 

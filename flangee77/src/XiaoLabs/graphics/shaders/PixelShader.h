@@ -31,7 +31,7 @@ public:
 
 protected:
 
-    PixelShader(const CreateParams<Desc>& params)
+    explicit PixelShader(const CreateParams<Desc>& params)
         : ResourceBase(Type::PixelShader, params)
     {
     }

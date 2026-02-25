@@ -44,7 +44,7 @@ public:
      * Constructs a Skyline packer with the specified initially available total size
      * of the rectangular bin and a heuristic for inserting new items.
      */
-    SkylinePacker(Size bin_size, Heuristic heuristic = Heuristic::BestFit, bool use_waste_map = false) noexcept;
+    explicit SkylinePacker(Size bin_size, Heuristic heuristic = Heuristic::BestFit, bool use_waste_map = false);
 
     ~SkylinePacker() noexcept override = default;
 

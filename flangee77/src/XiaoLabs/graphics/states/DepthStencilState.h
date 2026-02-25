@@ -94,7 +94,7 @@ public:
 
 protected:
 
-    DepthStencilState(const CreateParams<Desc>& params)
+    explicit DepthStencilState(const CreateParams<Desc>& params)
         : ResourceBase(params)
         , _desc(params.desc)
     {

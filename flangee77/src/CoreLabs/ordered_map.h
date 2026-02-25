@@ -407,7 +407,7 @@ private:
         size_t index;
 
         Lookup(int dummy, size_t index) : index(index) {}
-        Lookup(KeyView key) : index(invalid_index) { Lookup::key = key; }
+        explicit Lookup(KeyView key) : index(invalid_index) { Lookup::key = key; }
     };
 
     struct LookupCompare

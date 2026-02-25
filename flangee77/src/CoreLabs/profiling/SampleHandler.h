@@ -15,7 +15,7 @@ struct SampleHandler
 
     Sample* sample;
 
-    Stopwatch stopwatch;
+    Stopwatch stopwatch{};
 
 
 

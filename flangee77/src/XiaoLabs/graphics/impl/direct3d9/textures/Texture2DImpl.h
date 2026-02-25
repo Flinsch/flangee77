@@ -47,7 +47,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    Texture2DImpl(const CreateParams<Desc>& params);
+    explicit Texture2DImpl(const CreateParams<Desc>& params);
     ~Texture2DImpl() override = default;
 
 

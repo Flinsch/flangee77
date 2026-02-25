@@ -30,7 +30,7 @@ public:
      * Constructs a naive row packer with the specified initially available total
      * size of the rectangular bin.
      */
-    NaiveRowPacker(Size bin_size) noexcept;
+    explicit NaiveRowPacker(Size bin_size) noexcept;
 
     ~NaiveRowPacker() noexcept override = default;
 

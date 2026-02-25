@@ -47,7 +47,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    PixelShaderImpl(const CreateParams<Desc>& params);
+    explicit PixelShaderImpl(const CreateParams<Desc>& params);
     ~PixelShaderImpl() override = default;
 
 

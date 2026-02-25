@@ -35,7 +35,7 @@ public:
         cl7::logging::LogContext log_context = {};
 
         ErrorHandler() = default;
-        ErrorHandler(cl7::logging::LogContext log_context) : log_context(log_context) {}
+        explicit ErrorHandler(cl7::logging::LogContext log_context) : log_context(log_context) {}
 
         /**
          * Handles an invalid escape sequence by returning a string to be used

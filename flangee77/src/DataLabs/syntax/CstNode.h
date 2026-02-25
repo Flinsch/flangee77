@@ -57,7 +57,7 @@ public:
 
 
 private:
-    CstNode(const Token& token) : _token(token) {}
+    explicit CstNode(const Token& token) : _token(token) {}
 
     /** The token associated with this node. */
     Token _token;

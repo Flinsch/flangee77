@@ -90,7 +90,7 @@ public:
 
 
 protected:
-    StateManager(IStateFactory* factory)
+    explicit StateManager(IStateFactory* factory)
         : _factory(factory)
         , _default_sampler_state(nullptr)
         , _default_rasterizer_state(nullptr)

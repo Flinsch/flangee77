@@ -33,8 +33,8 @@ public:
     ArgumentBag(int argc, char* argv[]);
     ArgumentBag(int argc, wchar_t* argv[]);
     ArgumentBag(int argc, cl7::u8char_t* argv[]);
-    ArgumentBag(const std::vector<cl7::u8string_view>& arguments);
-    ArgumentBag(const std::vector<cl7::u8string>& arguments);
+    explicit ArgumentBag(const std::vector<cl7::u8string_view>& arguments);
+    explicit ArgumentBag(const std::vector<cl7::u8string>& arguments);
 
     ArgumentBag(const ArgumentBag&) = default;
     ArgumentBag& operator=(const ArgumentBag&) = default;

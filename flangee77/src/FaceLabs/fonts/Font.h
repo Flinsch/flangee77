@@ -61,7 +61,7 @@ public:
 
 
 
-    Font(std::unique_ptr<FontLoader> font_loader);
+    explicit Font(std::unique_ptr<FontLoader> font_loader);
 
 
 

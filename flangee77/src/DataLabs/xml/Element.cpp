@@ -19,6 +19,8 @@ namespace dl7::xml {
     {
         _attributes = other._attributes;
 
+        _child_nodes.reserve(other._child_nodes.size());
+
         for (const auto& node_ptr : other._child_nodes)
         {
             switch (node_ptr->get_type())
@@ -41,10 +43,12 @@ namespace dl7::xml {
         }
     }
 
-    Element::Element(Element&& other, Element* parent_element) noexcept
+    Element::Element(Element&& other, Element* parent_element)
         : Element(std::move(other._name), parent_element)
     {
         _attributes = std::move(other._attributes);
+
+        _child_nodes.reserve(other._child_nodes.size());
 
         for (auto& node_ptr : other._child_nodes)
             _child_nodes.push_back(std::move(node_ptr));
@@ -164,6 +168,7 @@ namespace dl7::xml {
     static std::vector<Tnode*> _find_child_nodes(Tvector& child_nodes)
     {
         std::vector<Tnode*> result;
+        result.reserve(child_nodes.size());
 
         for (const auto& node_ptr : child_nodes)
         {
@@ -177,13 +182,12 @@ namespace dl7::xml {
     static std::vector<Tnode*> _find_child_nodes(Tvector& child_nodes, Node::Type type)
     {
         std::vector<Tnode*> result;
+        result.reserve(child_nodes.size());
 
         for (const auto& node_ptr : child_nodes)
         {
-            if (node_ptr->get_type() != type)
-                continue;
-
-            result.push_back(node_ptr.get());
+            if (node_ptr->get_type() == type)
+                result.push_back(node_ptr.get());
         }
 
         return result;
@@ -193,6 +197,7 @@ namespace dl7::xml {
     static std::vector<Telement*> _find_child_elements(Tvector& child_nodes)
     {
         std::vector<Telement*> result;
+        result.reserve(child_nodes.size());
 
         for (const auto& node_ptr : child_nodes)
         {
@@ -207,6 +212,7 @@ namespace dl7::xml {
     static std::vector<Ttext*> _find_text_nodes(Tvector& child_nodes)
     {
         std::vector<Ttext*> result;
+        result.reserve(child_nodes.size());
 
         for (const auto& node_ptr : child_nodes)
         {
@@ -340,7 +346,7 @@ namespace dl7::xml {
 
 
 
-    bool Element::_is_equal(const Element& other) const noexcept
+    bool Element::_is_equal(const Element& other) const
     {
         if (_name != other._name)
             return false;

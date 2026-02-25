@@ -18,7 +18,7 @@ public:
 
 
 
-    LoggingErrorHandler(cl7::logging::LogContext log_context = {});
+    explicit LoggingErrorHandler(cl7::logging::LogContext log_context = {});
 
 
 

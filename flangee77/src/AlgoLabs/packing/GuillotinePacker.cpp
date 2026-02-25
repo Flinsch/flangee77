@@ -6,7 +6,7 @@ namespace al7::packing {
 
 
 
-    GuillotinePacker::GuillotinePacker(Size bin_size, SelectionHeuristic selection_heuristic, SplitHeuristic split_heuristic) noexcept
+    GuillotinePacker::GuillotinePacker(Size bin_size, SelectionHeuristic selection_heuristic, SplitHeuristic split_heuristic)
         : AbstractFreeRectPacker(bin_size)
         , _selection_heuristic(selection_heuristic)
         , _split_heuristic(split_heuristic)

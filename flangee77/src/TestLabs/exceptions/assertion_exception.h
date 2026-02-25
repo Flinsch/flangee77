@@ -22,7 +22,7 @@ struct assertion_exception
     assertion_exception(cl7::u8string_view original_expression, cl7::u8string_view evaluated_expression, cl7::u8string_view stringification, const char* file_path, unsigned line_number)
         : original_expression(original_expression)
         , evaluated_expression(evaluated_expression)
-        , meta{cl7::u8string(stringification), file_path, line_number, 0}
+        , meta{cl7::u8string(stringification), file_path, line_number, nullptr, 0}
     {}
 
     char const* what() const noexcept override

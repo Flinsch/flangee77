@@ -159,7 +159,7 @@ protected:
     Resource(ResourceManager* manager, ResourceId id, cl7::u8string_view identifier);
 
     template <class TDesc>
-    Resource(const CreateParams<TDesc>& params)
+    explicit Resource(const CreateParams<TDesc>& params)
         : Resource(params.manager, params.id, params.identifier)
     {
     }

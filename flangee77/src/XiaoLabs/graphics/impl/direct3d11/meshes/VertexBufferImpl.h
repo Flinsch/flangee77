@@ -47,7 +47,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    VertexBufferImpl(const CreateParams<Desc>& params);
+    explicit VertexBufferImpl(const CreateParams<Desc>& params);
     ~VertexBufferImpl() override = default;
 
 
