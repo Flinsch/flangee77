@@ -5,6 +5,7 @@
 #include <CoreLabs/io/AsciiReader.h>
 #include <CoreLabs/io/ByteReader.h>
 
+#include <CoreLabs/text/codec.h>
 #include <CoreLabs/text/format.h>
 #include <CoreLabs/logging.h>
 
@@ -43,7 +44,7 @@ namespace xl7::graphics::images {
                 return false;
         }
         else
-            return _log_unknown_format_error(source_name, u8"bad magic number: P" + cl7::u8string(cl7::u8string_view(reinterpret_cast<const cl7::u8char_t*>(&magic2), 1)));
+            return _log_unknown_format_error(source_name, u8"bad magic number: P" + cl7::text::codec::to_utf8(cl7::astring_view(&magic2, 1)));
 
         return true;
     }
