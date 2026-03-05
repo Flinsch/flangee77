@@ -215,7 +215,7 @@ namespace xl7::graphics::images {
 
     static cl7::byte_vector _linear_interpolation(const Image& source_image, unsigned width, unsigned height, unsigned depth)
     {
-        const Image::Desc source_desc = source_image.get_desc();
+        const ImageDesc source_desc = source_image.get_desc();
 
         const PixelLayout pixel_layout{source_desc.pixel_format, source_desc.channel_order};
         const size_t stride = pixel_layout.stride;
@@ -355,8 +355,8 @@ namespace xl7::graphics::images {
      */
     Image ImageResizer::resize_image(const Image& source_image, unsigned width, unsigned height, unsigned depth, ResamplingMethod resampling_method)
     {
-        const Image::Desc source_desc = source_image.get_desc();
-        const Image::Desc target_desc = {
+        const ImageDesc source_desc = source_image.get_desc();
+        const ImageDesc target_desc = {
             .pixel_format = source_image.get_desc().pixel_format,
             .channel_order = source_image.get_desc().channel_order,
             .width = width,

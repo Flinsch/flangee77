@@ -26,7 +26,7 @@ public:
 
 
     /** Returns the descriptor of the image(s). */
-    const images::Image::Desc& get_image_desc() const { return _image_desc; }
+    const images::ImageDesc& get_image_desc() const { return _image_desc; }
     /** Returns the number of provided images. */
     unsigned get_image_count() const { return _image_count; }
 
@@ -34,7 +34,7 @@ public:
 
 private:
     /** The descriptor of the image(s). */
-    images::Image::Desc _image_desc;
+    images::ImageDesc _image_desc;
     /** The number of provided images. */
     unsigned _image_count;
 

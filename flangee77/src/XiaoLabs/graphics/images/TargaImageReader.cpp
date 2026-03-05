@@ -68,7 +68,7 @@ namespace xl7::graphics::images {
         if (vertical_origin == 0)
             _flip_vertically(image_data, header.width, header.height);
 
-        Image::Desc desc;
+        ImageDesc desc;
         desc.pixel_format = PixelFormat::UNKNOWN;
         if (effective_depth == 8)
             desc.pixel_format = PixelFormat::R8_UNORM;

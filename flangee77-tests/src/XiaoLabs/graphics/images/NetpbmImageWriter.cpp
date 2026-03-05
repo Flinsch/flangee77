@@ -41,7 +41,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  BLACKANDWHI
         0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00
     );
 
-    xl7::graphics::images::Image::Desc source_desc{ xl7::graphics::PixelFormat::R8_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
+    xl7::graphics::images::ImageDesc source_desc{ xl7::graphics::PixelFormat::R8_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
     xl7::graphics::images::Image source_image{ source_desc, data };
 
     const auto file_path = cl7::platform::filesystem::get_temp_directory() + u8"netpbm.tmp";
@@ -98,7 +98,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE 8
         0x82, 0xdc, 0x46, 0x82, 0xdc, 0x46, 0xe4
     );
 
-    xl7::graphics::images::Image::Desc source_desc{ xl7::graphics::PixelFormat::R8_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
+    xl7::graphics::images::ImageDesc source_desc{ xl7::graphics::PixelFormat::R8_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
     xl7::graphics::images::Image source_image{ source_desc, data };
 
     const auto file_path = cl7::platform::filesystem::get_temp_directory() + u8"netpbm.tmp";
@@ -153,7 +153,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE_A
         0x82,0x7f, 0xdc,0x7f, 0x46,0x7f, 0x82,0x3f, 0xdc,0x3f, 0x46,0x3f, 0xe4,0x00
     );
 
-    xl7::graphics::images::Image::Desc source_desc{ xl7::graphics::PixelFormat::R8G8_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
+    xl7::graphics::images::ImageDesc source_desc{ xl7::graphics::PixelFormat::R8G8_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
     xl7::graphics::images::Image source_image{ source_desc, data };
 
     const auto file_path = cl7::platform::filesystem::get_temp_directory() + u8"netpbm.tmp";
@@ -209,7 +209,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB 8-bit" 
         0xff,0x00,0x00, 0x00,0xff,0x00, 0x00,0x00,0xff, 0xff,0x00,0x00, 0x00,0xff,0x00, 0x00,0x00,0xff, 0x00,0xff,0xff
     );
 
-    xl7::graphics::images::Image::Desc source_desc{ xl7::graphics::PixelFormat::R8G8B8_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
+    xl7::graphics::images::ImageDesc source_desc{ xl7::graphics::PixelFormat::R8G8B8_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
     xl7::graphics::images::Image source_image{ source_desc, data };
 
     const auto file_path = cl7::platform::filesystem::get_temp_directory() + u8"netpbm.tmp";
@@ -264,7 +264,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB_ALPHA 8
         0xff,0x00,0x00,0x7f, 0x00,0xff,0x00,0x7f, 0x00,0x00,0xff,0x7f, 0xff,0x00,0x00,0x3f, 0x00,0xff,0x00,0x3f, 0x00,0x00,0xff,0x3f, 0x00,0xff,0xff,0x00
     );
 
-    xl7::graphics::images::Image::Desc source_desc{ xl7::graphics::PixelFormat::R8G8B8A8_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
+    xl7::graphics::images::ImageDesc source_desc{ xl7::graphics::PixelFormat::R8G8B8A8_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
     xl7::graphics::images::Image source_image{ source_desc, data };
 
     const auto file_path = cl7::platform::filesystem::get_temp_directory() + u8"netpbm.tmp";
@@ -321,7 +321,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE 1
         0x82ff, 0xdcff, 0x46ff, 0x82ff, 0xdcff, 0x46ff, 0xe4ff
     }));
 
-    xl7::graphics::images::Image::Desc source_desc{ xl7::graphics::PixelFormat::R16_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
+    xl7::graphics::images::ImageDesc source_desc{ xl7::graphics::PixelFormat::R16_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
     xl7::graphics::images::Image source_image{ source_desc, data };
 
     const auto file_path = cl7::platform::filesystem::get_temp_directory() + u8"netpbm.tmp";
@@ -376,7 +376,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE_A
         0x82ff,0x7fff, 0xdcff,0x7fff, 0x46ff,0x7fff, 0x82ff,0x3fff, 0xdcff,0x3fff, 0x46ff,0x3fff, 0xe4ff,0x0000
     }));
 
-    xl7::graphics::images::Image::Desc source_desc{ xl7::graphics::PixelFormat::R16G16_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
+    xl7::graphics::images::ImageDesc source_desc{ xl7::graphics::PixelFormat::R16G16_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
     xl7::graphics::images::Image source_image{ source_desc, data };
 
     const auto file_path = cl7::platform::filesystem::get_temp_directory() + u8"netpbm.tmp";
@@ -432,7 +432,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB 16-bit"
         0xffff,0x0000,0x0000, 0x0000,0xffff,0x0000, 0x0000,0x0000,0xffff, 0xffff,0x0000,0x0000, 0x0000,0xffff,0x0000, 0x0000,0x0000,0xffff, 0x0000,0xffff,0xffff
     }));
 
-    xl7::graphics::images::Image::Desc source_desc{ xl7::graphics::PixelFormat::R16G16B16_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
+    xl7::graphics::images::ImageDesc source_desc{ xl7::graphics::PixelFormat::R16G16B16_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
     xl7::graphics::images::Image source_image{ source_desc, data };
 
     const auto file_path = cl7::platform::filesystem::get_temp_directory() + u8"netpbm.tmp";
@@ -487,7 +487,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB_ALPHA 1
         0xffff,0x0000,0x0000,0x7fff, 0x0000,0xffff,0x0000,0x7fff, 0x0000,0x0000,0xffff,0x7fff, 0xffff,0x0000,0x0000,0x3fff, 0x0000,0xffff,0x0000,0x3fff, 0x0000,0x0000,0xffff,0x3fff, 0x0000,0xffff,0xffff,0x0000
     }));
 
-    xl7::graphics::images::Image::Desc source_desc{ xl7::graphics::PixelFormat::R16G16B16A16_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
+    xl7::graphics::images::ImageDesc source_desc{ xl7::graphics::PixelFormat::R16G16B16A16_UNORM, xl7::graphics::ChannelOrder::RGBA, 7, 5, 1 };
     xl7::graphics::images::Image source_image{ source_desc, data };
 
     const auto file_path = cl7::platform::filesystem::get_temp_directory() + u8"netpbm.tmp";

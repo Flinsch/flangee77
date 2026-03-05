@@ -88,7 +88,7 @@ namespace xl7::graphics::images {
             ? _16BIT_PIXEL_FORMATS_BY_COLOR_TYPE
             : _8BIT_PIXEL_FORMATS_BY_COLOR_TYPE;
 
-        Image::Desc desc;
+        ImageDesc desc;
         desc.pixel_format = pixel_formats_by_color_type[bit_info.color_type];
         desc.channel_order = ChannelOrder::RGBA;
         desc.width = bit_info.width;

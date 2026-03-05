@@ -18,6 +18,7 @@ target_sources(flangee77
 
     graphics/images/Image.cpp
     graphics/images/ImageConverter.cpp
+    graphics/images/ImageDesc.cpp
     graphics/images/ImageReader.cpp
     graphics/images/ImageProcessor.cpp
     graphics/images/ImageResizer.cpp

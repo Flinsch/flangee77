@@ -15,7 +15,7 @@ namespace xl7::graphics::images {
     {
     }
 
-    ImageStack::ImageStack(const Image::Desc& desc)
+    ImageStack::ImageStack(const ImageDesc& desc)
         : ImageStack()
     {
         init(desc);
@@ -57,7 +57,7 @@ namespace xl7::graphics::images {
     /**
      * (Re)initializes the image stack.
      */
-    bool ImageStack::init(const Image::Desc& desc)
+    bool ImageStack::init(const ImageDesc& desc)
     {
         _desc = desc;
         _data.clear();
@@ -77,7 +77,7 @@ namespace xl7::graphics::images {
      */
     bool ImageStack::add_image(const Image& image)
     {
-        const Image::Desc& desc = image.get_desc();
+        const ImageDesc& desc = image.get_desc();
         if (desc.width != _desc.width || desc.height != _desc.height || desc.depth != _desc.depth)
         {
             // Should we log an error message or something?

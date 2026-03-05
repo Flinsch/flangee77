@@ -21,7 +21,7 @@ public:
     // #############################################################################
 
     ImageStack();
-    explicit ImageStack(const Image::Desc& desc);
+    explicit ImageStack(const ImageDesc& desc);
     explicit ImageStack(const Image& image);
 
 
@@ -33,7 +33,7 @@ public:
     /**
      * Returns the descriptor of the images.
      */
-    const Image::Desc& get_image_desc() const { return _desc; }
+    const ImageDesc& get_image_desc() const { return _desc; }
 
     /**
      * Returns the pixel format.
@@ -79,7 +79,7 @@ public:
     /**
      * (Re)initializes the image stack.
      */
-    bool init(const Image::Desc& desc);
+    bool init(const ImageDesc& desc);
 
     /**
      * (Re)initializes the image stack.
@@ -102,7 +102,7 @@ private:
     /**
      * The descriptor of the images.
      */
-    Image::Desc _desc;
+    ImageDesc _desc;
 
     /**
      * The consecutive data of the contained images.

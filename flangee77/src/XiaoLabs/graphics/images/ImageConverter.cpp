@@ -17,8 +17,8 @@ namespace xl7::graphics::images {
      */
     Image ImageConverter::convert_image(const Image& source_image, PixelFormat pixel_format, ChannelOrder channel_order)
     {
-        const Image::Desc source_desc = source_image.get_desc();
-        const Image::Desc target_desc = {
+        const ImageDesc source_desc = source_image.get_desc();
+        const ImageDesc target_desc = {
             .pixel_format = pixel_format,
             .channel_order = channel_order,
             .width = source_image.get_desc().width,

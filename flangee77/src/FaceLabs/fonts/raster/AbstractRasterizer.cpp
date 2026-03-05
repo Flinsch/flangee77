@@ -46,7 +46,7 @@ namespace fl7::fonts::raster {
             .top = min_y_px,
         };
 
-        xl7::graphics::images::Image::Desc desc;
+        xl7::graphics::images::ImageDesc desc;
         desc.pixel_format = get_pixel_format();
         desc.channel_order = get_channel_order();
         desc.width = width_px;

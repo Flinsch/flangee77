@@ -46,12 +46,12 @@ private:
 
 
 
-    static cl7::byte_vector _read_1bit_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc);
-    static cl7::byte_vector _read_1bit_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc);
-    static cl7::byte_vector _read_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc);
-    static cl7::byte_vector _read_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc);
+    static cl7::byte_vector _read_1bit_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc);
+    static cl7::byte_vector _read_1bit_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc);
+    static cl7::byte_vector _read_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc);
+    static cl7::byte_vector _read_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc);
 
-    static void _apply_max_val(const Image::Desc& desc, cl7::byte_vector& data, unsigned max_val);
+    static void _apply_max_val(const ImageDesc& desc, cl7::byte_vector& data, unsigned max_val);
 
 
 

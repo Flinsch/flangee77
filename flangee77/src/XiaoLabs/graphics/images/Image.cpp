@@ -10,31 +10,6 @@ namespace xl7::graphics::images {
 
 
 
-    /** Returns the size of one pixel, in bytes. */
-    unsigned Image::Desc::determine_pixel_stride() const
-    {
-        return PixelLayout::determine_stride(pixel_format);
-    }
-
-    /** Calculates the number of pixels of the image. */
-    size_t Image::Desc::calculate_pixel_count() const
-    {
-        return
-            static_cast<size_t>(width) *
-            static_cast<size_t>(height) *
-            static_cast<size_t>(depth);
-    }
-
-    /** Calculates the total size of the image data, in bytes. */
-    size_t Image::Desc::calculate_data_size() const
-    {
-        return
-            calculate_pixel_count() *
-            determine_pixel_stride();
-    }
-
-
-
     // #############################################################################
     // Construction / Destruction
     // #############################################################################
@@ -50,7 +25,7 @@ namespace xl7::graphics::images {
     /**
      * Explicit constructor. Initializes an "empty" image.
      */
-    Image::Image(const Desc& desc)
+    Image::Image(const ImageDesc& desc)
         : Image()
     {
         init(desc);
@@ -61,7 +36,7 @@ namespace xl7::graphics::images {
      * duplicated; instead, the image's data view will point to the specified data
      * view, which accordingly should persist beyond the lifetime of the image.
      */
-    Image::Image(const Desc& desc, cl7::byte_view data, bool view_only)
+    Image::Image(const ImageDesc& desc, cl7::byte_view data, bool view_only)
         : Image()
     {
         init(desc, data, view_only);
@@ -70,7 +45,7 @@ namespace xl7::graphics::images {
     /**
      * Explicit constructor.
      */
-    Image::Image(const Desc& desc, cl7::byte_vector&& data)
+    Image::Image(const ImageDesc& desc, cl7::byte_vector&& data)
         : Image()
     {
         init(desc, std::move(data));
@@ -141,7 +116,7 @@ namespace xl7::graphics::images {
     /**
      * (Re)initializes an "empty" image.
      */
-    bool Image::init(const Desc& desc)
+    bool Image::init(const ImageDesc& desc)
     {
         if (desc.width > MAX_SIZE || desc.height > MAX_SIZE || desc.depth > MAX_SIZE)
         {
@@ -163,7 +138,7 @@ namespace xl7::graphics::images {
      * to the specified data view, which accordingly should persist beyond the
      * lifetime of the image.
      */
-    bool Image::init(const Desc& desc, cl7::byte_view data, bool view_only)
+    bool Image::init(const ImageDesc& desc, cl7::byte_view data, bool view_only)
     {
         if (!_validate(desc, data))
             return false;
@@ -199,7 +174,7 @@ namespace xl7::graphics::images {
     /**
      * (Re)initializes the image based on the given data.
      */
-    bool Image::init(const Desc& desc, cl7::byte_vector&& data)
+    bool Image::init(const ImageDesc& desc, cl7::byte_vector&& data)
     {
         if (!_validate(desc, data))
             return false;
@@ -225,7 +200,7 @@ namespace xl7::graphics::images {
      * Validates the initialization data (not in terms of content, but only roughly
      * with regard to technical aspects).
      */
-    bool Image::_validate(const Desc& desc, cl7::byte_view data)
+    bool Image::_validate(const ImageDesc& desc, cl7::byte_view data)
     {
         // No data means an empty image: everything is fine.
         if (data.empty())

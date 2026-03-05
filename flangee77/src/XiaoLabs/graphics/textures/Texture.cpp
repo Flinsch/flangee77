@@ -131,7 +131,7 @@ namespace xl7::graphics::textures {
 
         assert(offset + size <= _data_size);
 
-        images::Image::Desc desc;
+        images::ImageDesc desc;
         desc.pixel_format = _desc.pixel_format;
         desc.channel_order = _channel_order;
         desc.width = _desc.width;

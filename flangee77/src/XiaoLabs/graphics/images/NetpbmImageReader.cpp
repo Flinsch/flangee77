@@ -72,7 +72,7 @@ namespace xl7::graphics::images {
         const unsigned channel_count = magic2 == '3' || magic2 == '6' ? 3 : 1;
         assert((is_ascii || is_binary) && !(is_ascii && is_binary));
 
-        Image::Desc desc;
+        ImageDesc desc;
         desc.pixel_format = PixelFormat::UNKNOWN;
         desc.channel_order = ChannelOrder::RGBA;
         desc.width = 0;
@@ -135,7 +135,7 @@ namespace xl7::graphics::images {
     {
         cl7::io::AsciiReader ascii_reader{&readable};
 
-        Image::Desc desc;
+        ImageDesc desc;
         desc.pixel_format = PixelFormat::UNKNOWN;
         desc.channel_order = ChannelOrder::RGBA;
         desc.width = 0;
@@ -234,7 +234,7 @@ namespace xl7::graphics::images {
 
 
 
-    cl7::byte_vector NetpbmImageReader::_read_1bit_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc)
+    cl7::byte_vector NetpbmImageReader::_read_1bit_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc)
     {
         const size_t pixel_count = static_cast<size_t>(desc.width) * static_cast<size_t>(desc.height);
         cl7::byte_vector data(pixel_count);
@@ -261,7 +261,7 @@ namespace xl7::graphics::images {
         return data;
     }
 
-    cl7::byte_vector NetpbmImageReader::_read_1bit_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc)
+    cl7::byte_vector NetpbmImageReader::_read_1bit_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc)
     {
         static constexpr bool zero_is_white = true;
 
@@ -297,7 +297,7 @@ namespace xl7::graphics::images {
         return data;
     }
 
-    cl7::byte_vector NetpbmImageReader::_read_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc)
+    cl7::byte_vector NetpbmImageReader::_read_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc)
     {
         PixelLayout pixel_layout{desc.pixel_format, desc.channel_order};
         const unsigned channel_count = pixel_layout.channel_count;
@@ -358,7 +358,7 @@ namespace xl7::graphics::images {
         return data;
     }
 
-    cl7::byte_vector NetpbmImageReader::_read_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const Image::Desc& desc)
+    cl7::byte_vector NetpbmImageReader::_read_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc)
     {
         PixelLayout pixel_layout{desc.pixel_format, desc.channel_order};
         const unsigned channel_count = pixel_layout.channel_count;
@@ -405,7 +405,7 @@ namespace xl7::graphics::images {
 
 
 
-    void NetpbmImageReader::_apply_max_val(const Image::Desc& desc, cl7::byte_vector& data, unsigned max_val)
+    void NetpbmImageReader::_apply_max_val(const ImageDesc& desc, cl7::byte_vector& data, unsigned max_val)
     {
         PixelLayout pixel_layout{desc.pixel_format, desc.channel_order};
         const unsigned channel_count = pixel_layout.channel_count;
