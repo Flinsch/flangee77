@@ -39,7 +39,7 @@ struct TerminalSymbol
  * Represents a terminal symbol that is a fixed string literal.
  */
 struct LiteralSymbol
-    : public TerminalSymbol
+    : TerminalSymbol
 {
 
     /** The static string literal of the symbol. */
@@ -63,7 +63,7 @@ struct LiteralSymbol
  * dynamically-matched symbols such as regular expressions or custom matchers).
  */
 struct NonLiteralSymbol
-    : public TerminalSymbol
+    : TerminalSymbol
 {
 
     explicit NonLiteralSymbol(SymbolId id);
@@ -80,7 +80,7 @@ struct NonLiteralSymbol
  * Represents a terminal symbol that is matched using a regular expression.
  */
 struct PatternSymbol
-    : public NonLiteralSymbol
+    : NonLiteralSymbol
 {
 
     /** The (optional) literal prefix of the symbol. */
@@ -125,7 +125,7 @@ concept PrefixMatcher = requires(TPrefixMatcher matcher)
  */
 template <PrefixMatcher TPrefixMatcher>
 struct CustomSymbol
-    : public NonLiteralSymbol
+    : NonLiteralSymbol
 {
 
     using PrefixMatcher = TPrefixMatcher;

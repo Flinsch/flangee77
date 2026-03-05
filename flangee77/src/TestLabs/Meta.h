@@ -16,7 +16,7 @@ namespace tl7 {
  * warning, exception, etc.).
  */
 struct Meta
-    : public Signature
+    : Signature
 {
 
     /** The textual description of the test incident. */

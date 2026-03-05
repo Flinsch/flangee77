@@ -13,7 +13,7 @@ namespace dl7::xml::detail {
 
 
 struct UnescaperErrorHandler
-    : public util::Unescaper::ErrorHandler
+    : util::Unescaper::ErrorHandler
 {
     syntax::Diagnostics* diagnostics;
     const syntax::Token* token;

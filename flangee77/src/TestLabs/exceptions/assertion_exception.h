@@ -10,7 +10,7 @@ namespace tl7::exceptions {
 
 
 struct assertion_exception
-    : public std::exception
+    : std::exception
 {
 
     cl7::u8string original_expression;

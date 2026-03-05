@@ -70,7 +70,7 @@ private:
         };
 
         struct AbstractShaderStates
-            : public TextureSamplerStates
+            : TextureSamplerStates
         {
             shaders::D3DConstantBufferWrapper* constant_buffer_wrappers[pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS] = {};
             ID3D11Buffer* constant_buffers[pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS] = {};
@@ -78,7 +78,7 @@ private:
 
         template <class TD3D11Shader>
         struct ShaderStates
-            : public AbstractShaderStates
+            : AbstractShaderStates
         {
             TD3D11Shader* shader = nullptr;
         };

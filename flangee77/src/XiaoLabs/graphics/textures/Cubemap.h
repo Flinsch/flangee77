@@ -14,7 +14,7 @@ class Cubemap
 
 public:
     struct Desc
-        : public Texture::Desc
+        : Texture::Desc
     {
 
     };

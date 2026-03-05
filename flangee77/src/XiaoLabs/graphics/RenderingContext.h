@@ -162,7 +162,7 @@ protected:
     };
 
     struct ResolvedAbstractShaderStates
-        : public ResolvedTextureSamplerStates
+        : ResolvedTextureSamplerStates
     {
         unsigned constant_buffer_count;
         const shaders::ConstantBuffer* constant_buffers[pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS];
@@ -172,13 +172,13 @@ protected:
 
     template <class TShader>
     struct ResolvedShaderStates
-        : public ResolvedAbstractShaderStates
+        : ResolvedAbstractShaderStates
     {
         const TShader* shader;
     };
 
     struct ResolvedDrawStates
-        : public ResolvedTargetStates
+        : ResolvedTargetStates
     {
         unsigned stream_count;
         const meshes::VertexBuffer* vertex_buffers[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];

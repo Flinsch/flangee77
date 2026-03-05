@@ -17,7 +17,7 @@ class VertexBuffer
 
 public:
     struct Desc
-        : public MeshBuffer::Desc
+        : MeshBuffer::Desc
     {
         /** The size of each vertex, in bytes. */
         unsigned stride;

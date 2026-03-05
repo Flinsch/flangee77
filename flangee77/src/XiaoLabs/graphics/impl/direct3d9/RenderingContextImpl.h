@@ -76,14 +76,14 @@ private:
         };
 
         struct AbstractShaderStates
-            : public TextureSamplerStates
+            : TextureSamplerStates
         {
-            
+
         };
 
         template <class TDirect3DShader9>
         struct ShaderStates
-            : public AbstractShaderStates
+            : AbstractShaderStates
         {
             TDirect3DShader9* shader = nullptr;
         };

@@ -17,7 +17,7 @@ class IndexBuffer
 
 public:
     struct Desc
-        : public MeshBuffer::Desc
+        : MeshBuffer::Desc
     {
         /** The type/format (16 or 32 bits) of the index buffer. */
         IndexType index_type;

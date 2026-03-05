@@ -9,7 +9,7 @@ namespace xl7::graphics::images {
 
 
 struct ImageConverter
-    : public ImageProcessor
+    : ImageProcessor
 {
 
     /**

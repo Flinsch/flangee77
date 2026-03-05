@@ -35,7 +35,7 @@ namespace dl7::xml::util {
         unsigned error_count = 0;
 
         struct EncodingErrorHandler
-            : public cl7::text::codec::DefaultErrorHandler
+            : cl7::text::codec::DefaultErrorHandler
         {
             const Unescaper::ErrorHandler* _error_handler;
             unsigned* _error_count;

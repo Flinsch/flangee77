@@ -14,7 +14,7 @@ class Texture2DArray
 
 public:
     struct Desc
-        : public Texture::Desc
+        : Texture::Desc
     {
         /** The number of textures in the texture array. */
         unsigned count;

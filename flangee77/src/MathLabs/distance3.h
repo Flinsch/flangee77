@@ -32,7 +32,7 @@ struct ResultBase
 
 template <std::floating_point T>
 struct PointResult
-    : public ResultBase<T>
+    : ResultBase<T>
 {
     /** The closest point on the other shape. */
     Vector3<T> point{};

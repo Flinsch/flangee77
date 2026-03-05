@@ -11,7 +11,7 @@ namespace xl7::graphics::images {
 
 
 struct ImageResizer
-    : public ImageProcessor
+    : ImageProcessor
 {
 
     /**

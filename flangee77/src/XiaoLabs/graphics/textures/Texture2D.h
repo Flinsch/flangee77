@@ -14,7 +14,7 @@ class Texture2D
 
 public:
     struct Desc
-        : public Texture::Desc
+        : Texture::Desc
     {
 
     };

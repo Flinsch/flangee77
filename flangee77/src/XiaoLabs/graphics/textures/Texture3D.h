@@ -14,7 +14,7 @@ class Texture3D
 
 public:
     struct Desc
-        : public Texture::Desc
+        : Texture::Desc
     {
         /** The depth of the texture, in pixels (or the number of 2D image slices, if you like). */
         unsigned depth;

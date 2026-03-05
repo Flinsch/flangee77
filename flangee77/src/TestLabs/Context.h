@@ -16,7 +16,7 @@ namespace tl7 {
 
 
 struct Context
-    : public reporting::IListener
+    : reporting::IListener
 {
 
     // #############################################################################
