@@ -20,7 +20,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
     // Construction / Destruction
     // #############################################################################
 
-    PixelShaderImpl::PixelShaderImpl(const CreateParams<Desc>& params)
+    PixelShaderImpl::PixelShaderImpl(const CreateParams<xl7::graphics::shaders::ShaderDesc>& params)
         : PixelShader(params)
     {
     }

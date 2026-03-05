@@ -21,7 +21,7 @@ class RasterizerStateImpl final
 public:
     class Attorney
     {
-        static RasterizerStateImpl* create(const CreateParams<Desc>& params) { return new RasterizerStateImpl(params); }
+        static RasterizerStateImpl* create(const CreateParams<xl7::graphics::states::RasterizerStateDesc>& params) { return new RasterizerStateImpl(params); }
         friend class xl7::graphics::impl::direct3d9::ResourceFactoryImpl;
     };
 
@@ -45,7 +45,7 @@ public:
      * Maps the specified rasterizer state descriptor to corresponding Direct3D 9
      * values and fills the given structure accordingly.
      */
-    static void map_d3d_values(const Desc& desc, D3DRasterizerStateTypeValues& d3d_rasterizer_state_type_values);
+    static void map_d3d_values(const xl7::graphics::states::RasterizerStateDesc& desc, D3DRasterizerStateTypeValues& d3d_rasterizer_state_type_values);
 
 
 
@@ -55,7 +55,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit RasterizerStateImpl(const CreateParams<Desc>& params);
+    explicit RasterizerStateImpl(const CreateParams<xl7::graphics::states::RasterizerStateDesc>& params);
     ~RasterizerStateImpl() override = default;
 
 

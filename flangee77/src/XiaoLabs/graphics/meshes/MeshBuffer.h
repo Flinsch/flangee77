@@ -2,8 +2,7 @@
 #define XL7_GRAPHICS_MESHES_MESHBUFFER_H
 #include "../../resources/Resource.h"
 
-#include "./MeshBufferUsage.h"
-#include "./Topology.h"
+#include "./MeshBufferDesc.h"
 #include "./MeshUtil.h"
 
 
@@ -27,17 +26,6 @@ public:
         IndexBuffer,
     };
 
-    struct Desc
-    {
-        /** Identifies how the buffer is expected to be updated (frequency of update is a key factor). */
-        MeshBufferUsage usage;
-
-        /** The topology of the primitives that the buffer represents. */
-        Topology topology;
-        /** The number of elements within the buffer, regardless of the topology (i.e., vertices or indices, not primitives). */
-        unsigned count;
-    };
-
 
 
     MeshBuffer() = delete;
@@ -57,7 +45,7 @@ public:
     /**
      * Returns the descriptor of the buffer.
      */
-    const Desc& get_desc() const { return _desc; }
+    const MeshBufferDesc& get_desc() const { return _desc; }
 
     /**
      * Returns the number of primitives represented by this buffer.
@@ -86,7 +74,7 @@ public:
 protected:
 
     template <class TDesc>
-        requires(std::derived_from<TDesc, Desc>)
+        requires(std::derived_from<TDesc, MeshBufferDesc>)
     MeshBuffer(Type type, const CreateParams<TDesc>& params, unsigned stride)
         : ResourceBase(params)
         , _type(type)
@@ -130,7 +118,7 @@ private:
     /**
      * The descriptor of the buffer.
      */
-    const Desc _desc;
+    const MeshBufferDesc _desc;
 
     /**
      * The number of primitives represented by this buffer.

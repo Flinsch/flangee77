@@ -35,7 +35,7 @@ namespace xl7::graphics::impl::direct3d11::meshes {
     // Construction / Destruction
     // #############################################################################
 
-    IndexBufferImpl::IndexBufferImpl(const CreateParams<Desc>& params)
+    IndexBufferImpl::IndexBufferImpl(const CreateParams<xl7::graphics::meshes::IndexBufferDesc>& params)
         : IndexBuffer(params)
         , _dxgi_format(_dxgi_format_from(get_desc().index_type))
     {

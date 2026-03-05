@@ -2,7 +2,7 @@
 #define XL7_GRAPHICS_SHADERS_SHADER_H
 #include "../../resources/Resource.h"
 
-#include "./ShaderCode.h"
+#include "./ShaderDesc.h"
 #include "./CodeDataProvider.h"
 #include "./CompileOptions.h"
 #include "./ReflectionResult.h"
@@ -33,14 +33,6 @@ public:
         PixelShader,
     };
 
-    struct Desc
-    {
-        /** The language of the (source) code on which the shader is based. */
-        ShaderCode::Language language;
-        /** The name of the shader entry point (can be empty, especially for precompiled shaders). */
-        cl7::astring entry_point;
-    };
-
 
 
     Shader() = delete;
@@ -65,7 +57,7 @@ public:
     /**
      * Returns the descriptor of the shader.
      */
-    const Desc& get_desc() const { return _desc; }
+    const ShaderDesc& get_desc() const { return _desc; }
 
     /**
      * Indicates whether the shader is precompiled (based on bytecode).
@@ -127,7 +119,7 @@ public:
 
 protected:
 
-    Shader(Type type, const CreateParams<Desc>& params)
+    Shader(Type type, const CreateParams<ShaderDesc>& params)
         : ResourceBase(params)
         , _type(type)
         , _desc(params.desc)
@@ -213,7 +205,7 @@ private:
     /**
      * The descriptor of the shader.
      */
-    const Desc _desc;
+    const ShaderDesc _desc;
 
     /**
      * The compiled bytecode.

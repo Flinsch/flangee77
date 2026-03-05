@@ -21,75 +21,75 @@ namespace xl7::graphics::impl::direct3d11 {
 
 
 
-    xl7::graphics::textures::Texture2D* ResourceFactoryImpl::create_texture_2d(const resources::Resource::CreateParams<xl7::graphics::textures::Texture2D::Desc>& params)
+    xl7::graphics::textures::Texture2D* ResourceFactoryImpl::create_texture_2d(const resources::Resource::CreateParams<xl7::graphics::textures::Texture2DDesc>& params)
     {
         return textures::Texture2DImpl::Attorney::create(params);
     }
 
-    xl7::graphics::textures::Texture3D* ResourceFactoryImpl::create_texture_3d(const resources::Resource::CreateParams<xl7::graphics::textures::Texture3D::Desc>& params)
+    xl7::graphics::textures::Texture3D* ResourceFactoryImpl::create_texture_3d(const resources::Resource::CreateParams<xl7::graphics::textures::Texture3DDesc>& params)
     {
         return nullptr;
     }
 
-    xl7::graphics::textures::Texture2DArray* ResourceFactoryImpl::create_texture_2d_array(const resources::Resource::CreateParams<xl7::graphics::textures::Texture2DArray::Desc>& params)
+    xl7::graphics::textures::Texture2DArray* ResourceFactoryImpl::create_texture_2d_array(const resources::Resource::CreateParams<xl7::graphics::textures::Texture2DArrayDesc>& params)
     {
         return nullptr;
     }
 
-    xl7::graphics::textures::Cubemap* ResourceFactoryImpl::create_cubemap(const resources::Resource::CreateParams<xl7::graphics::textures::Cubemap::Desc>& params)
+    xl7::graphics::textures::Cubemap* ResourceFactoryImpl::create_cubemap(const resources::Resource::CreateParams<xl7::graphics::textures::CubemapDesc>& params)
     {
         return nullptr;
     }
 
 
 
-    xl7::graphics::meshes::VertexBuffer* ResourceFactoryImpl::create_vertex_buffer(const resources::Resource::CreateParams<xl7::graphics::meshes::VertexBuffer::Desc>& params)
+    xl7::graphics::meshes::VertexBuffer* ResourceFactoryImpl::create_vertex_buffer(const resources::Resource::CreateParams<xl7::graphics::meshes::VertexBufferDesc>& params)
     {
         return meshes::VertexBufferImpl::Attorney::create(params);
     }
 
-    xl7::graphics::meshes::IndexBuffer* ResourceFactoryImpl::create_index_buffer(const resources::Resource::CreateParams<xl7::graphics::meshes::IndexBuffer::Desc>& params)
+    xl7::graphics::meshes::IndexBuffer* ResourceFactoryImpl::create_index_buffer(const resources::Resource::CreateParams<xl7::graphics::meshes::IndexBufferDesc>& params)
     {
         return meshes::IndexBufferImpl::Attorney::create(params);
     }
 
 
 
-    xl7::graphics::shaders::ConstantBuffer* ResourceFactoryImpl::create_constant_buffer(const resources::Resource::CreateParams<xl7::graphics::shaders::ConstantBuffer::Desc>& params)
+    xl7::graphics::shaders::ConstantBuffer* ResourceFactoryImpl::create_constant_buffer(const resources::Resource::CreateParams<xl7::graphics::shaders::ConstantBufferDesc>& params)
     {
         return shaders::ConstantBufferImpl::Attorney::create(params);
     }
 
 
 
-    xl7::graphics::shaders::VertexShader* ResourceFactoryImpl::create_vertex_shader(const resources::Resource::CreateParams<xl7::graphics::shaders::VertexShader::Desc>& params)
+    xl7::graphics::shaders::VertexShader* ResourceFactoryImpl::create_vertex_shader(const resources::Resource::CreateParams<xl7::graphics::shaders::ShaderDesc>& params)
     {
         return shaders::VertexShaderImpl::Attorney::create(params);
     }
 
-    xl7::graphics::shaders::PixelShader* ResourceFactoryImpl::create_pixel_shader(const resources::Resource::CreateParams<xl7::graphics::shaders::PixelShader::Desc>& params)
+    xl7::graphics::shaders::PixelShader* ResourceFactoryImpl::create_pixel_shader(const resources::Resource::CreateParams<xl7::graphics::shaders::ShaderDesc>& params)
     {
         return shaders::PixelShaderImpl::Attorney::create(params);
     }
 
 
 
-    xl7::graphics::states::SamplerState* ResourceFactoryImpl::create_sampler_state(const resources::Resource::CreateParams<xl7::graphics::states::SamplerState::Desc>& params)
+    xl7::graphics::states::SamplerState* ResourceFactoryImpl::create_sampler_state(const resources::Resource::CreateParams<xl7::graphics::states::SamplerStateDesc>& params)
     {
         return states::SamplerStateImpl::Attorney::create(params);
     }
 
-    xl7::graphics::states::RasterizerState* ResourceFactoryImpl::create_rasterizer_state(const resources::Resource::CreateParams<xl7::graphics::states::RasterizerState::Desc>& params)
+    xl7::graphics::states::RasterizerState* ResourceFactoryImpl::create_rasterizer_state(const resources::Resource::CreateParams<xl7::graphics::states::RasterizerStateDesc>& params)
     {
         return states::RasterizerStateImpl::Attorney::create(params);
     }
 
-    xl7::graphics::states::DepthStencilState* ResourceFactoryImpl::create_depth_stencil_state(const resources::Resource::CreateParams<xl7::graphics::states::DepthStencilState::Desc>& params)
+    xl7::graphics::states::DepthStencilState* ResourceFactoryImpl::create_depth_stencil_state(const resources::Resource::CreateParams<xl7::graphics::states::DepthStencilStateDesc>& params)
     {
         return states::DepthStencilStateImpl::Attorney::create(params);
     }
 
-    xl7::graphics::states::BlendState* ResourceFactoryImpl::create_blend_state(const resources::Resource::CreateParams<xl7::graphics::states::BlendState::Desc>& params)
+    xl7::graphics::states::BlendState* ResourceFactoryImpl::create_blend_state(const resources::Resource::CreateParams<xl7::graphics::states::BlendStateDesc>& params)
     {
         return states::BlendStateImpl::Attorney::create(params);
     }

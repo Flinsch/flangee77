@@ -2,7 +2,7 @@
 #define XL7_GRAPHICS_MESHES_VERTEXBUFFER_H
 #include "./MeshBuffer.h"
 
-#include "./VertexLayout.h"
+#include "./VertexBufferDesc.h"
 #include "./VertexDataProvider.h"
 
 
@@ -16,20 +16,6 @@ class VertexBuffer
 {
 
 public:
-    struct Desc
-        : MeshBuffer::Desc
-    {
-        /** The size of each vertex, in bytes. */
-        unsigned stride;
-        /** The layout specification of the vertices. */
-        VertexLayout vertex_layout;
-
-        /** The number of instances to draw using the same per-instance data before advancing in the buffer by one element, or simply 0 if the buffer contains "regular" per-vertex data. */
-        unsigned instance_data_step_rate;
-    };
-
-
-
     VertexBuffer() = delete;
 
     VertexBuffer(const VertexBuffer&) = delete;
@@ -47,13 +33,13 @@ public:
     /**
      * Returns the descriptor of the vertex buffer.
      */
-    const Desc& get_desc() const { return _desc; }
+    const VertexBufferDesc& get_desc() const { return _desc; }
 
 
 
 protected:
 
-    explicit VertexBuffer(const CreateParams<Desc>& params);
+    explicit VertexBuffer(const CreateParams<VertexBufferDesc>& params);
 
     ~VertexBuffer() override = default;
 
@@ -63,7 +49,7 @@ private:
     /**
      * The descriptor of the vertex buffer.
      */
-    const Desc _desc;
+    const VertexBufferDesc _desc;
 
 }; // class VertexBuffer
 

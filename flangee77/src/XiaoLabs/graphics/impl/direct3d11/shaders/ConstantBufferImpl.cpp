@@ -10,7 +10,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
     // Construction / Destruction
     // #############################################################################
 
-    ConstantBufferImpl::ConstantBufferImpl(const CreateParams<Desc>& params)
+    ConstantBufferImpl::ConstantBufferImpl(const CreateParams<xl7::graphics::shaders::ConstantBufferDesc>& params)
         : ConstantBuffer(params)
     {
     }

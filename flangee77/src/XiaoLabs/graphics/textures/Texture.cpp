@@ -17,7 +17,7 @@ namespace xl7::graphics::textures {
 
 
 
-    Texture::Texture(Type type, const CreateParams<Desc>& params, unsigned depth, unsigned image_count)
+    Texture::Texture(Type type, const CreateParams<TextureDesc>& params, unsigned depth, unsigned image_count)
         : ResourceBase(params)
         , _type(type)
         , _desc(params.desc)

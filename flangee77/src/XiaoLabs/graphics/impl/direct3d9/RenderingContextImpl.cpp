@@ -482,7 +482,7 @@ namespace xl7::graphics::impl::direct3d9 {
             d3d_depth_stencil_state_type_values = &default_depth_stencil_state_type_values;
         }
 
-        bool swapped_winding_order = resolved_draw_states.rasterizer_state != nullptr && resolved_draw_states.rasterizer_state->get_desc().winding_order == xl7::graphics::states::RasterizerState::WindingOrder::CounterClockwise;
+        bool swapped_winding_order = resolved_draw_states.rasterizer_state != nullptr && resolved_draw_states.rasterizer_state->get_desc().winding_order == xl7::graphics::states::WindingOrder::CounterClockwise;
         for (size_t k = 0; k < states::D3D_DEPTH_STENCIL_STATE_TYPE_COUNT; ++k)
         {
             size_t ks = k;

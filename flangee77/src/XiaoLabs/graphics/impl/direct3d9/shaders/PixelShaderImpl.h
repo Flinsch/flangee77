@@ -19,7 +19,7 @@ class PixelShaderImpl final
 public:
     class Attorney
     {
-        static PixelShaderImpl* create(const CreateParams<Desc>& params) { return new PixelShaderImpl(params); }
+        static PixelShaderImpl* create(const CreateParams<xl7::graphics::shaders::ShaderDesc>& params) { return new PixelShaderImpl(params); }
         friend class xl7::graphics::impl::direct3d9::ResourceFactoryImpl;
     };
 
@@ -47,7 +47,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit PixelShaderImpl(const CreateParams<Desc>& params);
+    explicit PixelShaderImpl(const CreateParams<xl7::graphics::shaders::ShaderDesc>& params);
     ~PixelShaderImpl() override = default;
 
 

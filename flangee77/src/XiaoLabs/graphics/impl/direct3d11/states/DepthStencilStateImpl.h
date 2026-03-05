@@ -19,7 +19,7 @@ class DepthStencilStateImpl final
 public:
     class Attorney
     {
-        static DepthStencilStateImpl* create(const CreateParams<Desc>& params) { return new DepthStencilStateImpl(params); }
+        static DepthStencilStateImpl* create(const CreateParams<xl7::graphics::states::DepthStencilStateDesc>& params) { return new DepthStencilStateImpl(params); }
         friend class xl7::graphics::impl::direct3d11::ResourceFactoryImpl;
     };
 
@@ -43,7 +43,7 @@ public:
      * Maps the specified depth/stencil state descriptor to corresponding Direct3D 11
      * values and fills the given structure accordingly.
      */
-    static void map_d3d_values(const Desc& desc, D3D11_DEPTH_STENCIL_DESC& d3d_depth_stencil_desc);
+    static void map_d3d_values(const xl7::graphics::states::DepthStencilStateDesc& desc, D3D11_DEPTH_STENCIL_DESC& d3d_depth_stencil_desc);
 
 
 
@@ -53,7 +53,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit DepthStencilStateImpl(const CreateParams<Desc>& params);
+    explicit DepthStencilStateImpl(const CreateParams<xl7::graphics::states::DepthStencilStateDesc>& params);
     ~DepthStencilStateImpl() override = default;
 
 

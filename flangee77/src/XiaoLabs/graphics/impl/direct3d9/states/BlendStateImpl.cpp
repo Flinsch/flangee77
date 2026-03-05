@@ -6,32 +6,32 @@ namespace xl7::graphics::impl::direct3d9::states {
 
 
 
-    static D3DBLEND _d3d_blend_from(xl7::graphics::states::BlendState::BlendFactor blend_factor)
+    static D3DBLEND _d3d_blend_from(xl7::graphics::states::BlendFactor blend_factor)
     {
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendFactor::Zero) == static_cast<unsigned>(D3DBLEND_ZERO));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendFactor::One) == static_cast<unsigned>(D3DBLEND_ONE));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendFactor::SrcColor) == static_cast<unsigned>(D3DBLEND_SRCCOLOR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendFactor::InvSrcColor) == static_cast<unsigned>(D3DBLEND_INVSRCCOLOR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendFactor::SrcAlpha) == static_cast<unsigned>(D3DBLEND_SRCALPHA));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendFactor::InvSrcAlpha) == static_cast<unsigned>(D3DBLEND_INVSRCALPHA));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendFactor::DestAlpha) == static_cast<unsigned>(D3DBLEND_DESTALPHA));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendFactor::InvDestAlpha) == static_cast<unsigned>(D3DBLEND_INVDESTALPHA));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendFactor::DestColor) == static_cast<unsigned>(D3DBLEND_DESTCOLOR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendFactor::InvDestColor) == static_cast<unsigned>(D3DBLEND_INVDESTCOLOR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendFactor::SrcAlphaSat) == static_cast<unsigned>(D3DBLEND_SRCALPHASAT));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendFactor::BlendFactor) == static_cast<unsigned>(D3DBLEND_BLENDFACTOR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendFactor::InvBlendFactor) == static_cast<unsigned>(D3DBLEND_INVBLENDFACTOR));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::Zero) == static_cast<unsigned>(D3DBLEND_ZERO));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::One) == static_cast<unsigned>(D3DBLEND_ONE));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::SrcColor) == static_cast<unsigned>(D3DBLEND_SRCCOLOR));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::InvSrcColor) == static_cast<unsigned>(D3DBLEND_INVSRCCOLOR));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::SrcAlpha) == static_cast<unsigned>(D3DBLEND_SRCALPHA));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::InvSrcAlpha) == static_cast<unsigned>(D3DBLEND_INVSRCALPHA));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::DestAlpha) == static_cast<unsigned>(D3DBLEND_DESTALPHA));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::InvDestAlpha) == static_cast<unsigned>(D3DBLEND_INVDESTALPHA));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::DestColor) == static_cast<unsigned>(D3DBLEND_DESTCOLOR));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::InvDestColor) == static_cast<unsigned>(D3DBLEND_INVDESTCOLOR));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::SrcAlphaSat) == static_cast<unsigned>(D3DBLEND_SRCALPHASAT));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::BlendFactor) == static_cast<unsigned>(D3DBLEND_BLENDFACTOR));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::InvBlendFactor) == static_cast<unsigned>(D3DBLEND_INVBLENDFACTOR));
 
         return static_cast<D3DBLEND>(blend_factor);
     }
 
-    static D3DBLENDOP _d3d_blend_op_from(xl7::graphics::states::BlendState::BlendOperation blend_operation)
+    static D3DBLENDOP _d3d_blend_op_from(xl7::graphics::states::BlendOperation blend_operation)
     {
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendOperation::Add) == static_cast<unsigned>(D3DBLENDOP_ADD));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendOperation::Subtract) == static_cast<unsigned>(D3DBLENDOP_SUBTRACT));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendOperation::RevSubtract) == static_cast<unsigned>(D3DBLENDOP_REVSUBTRACT));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendOperation::Min) == static_cast<unsigned>(D3DBLENDOP_MIN));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendState::BlendOperation::Max) == static_cast<unsigned>(D3DBLENDOP_MAX));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendOperation::Add) == static_cast<unsigned>(D3DBLENDOP_ADD));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendOperation::Subtract) == static_cast<unsigned>(D3DBLENDOP_SUBTRACT));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendOperation::RevSubtract) == static_cast<unsigned>(D3DBLENDOP_REVSUBTRACT));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendOperation::Min) == static_cast<unsigned>(D3DBLENDOP_MIN));
+        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendOperation::Max) == static_cast<unsigned>(D3DBLENDOP_MAX));
 
         return static_cast<D3DBLENDOP>(blend_operation);
     }
@@ -52,7 +52,7 @@ namespace xl7::graphics::impl::direct3d9::states {
      * Maps the specified blend state descriptor to corresponding Direct3D 9
      * values and fills the given structure accordingly.
      */
-    void BlendStateImpl::map_d3d_values(const Desc& desc, D3DBlendStateTypeValues& d3d_blend_state_type_values)
+    void BlendStateImpl::map_d3d_values(const xl7::graphics::states::BlendStateDesc& desc, D3DBlendStateTypeValues& d3d_blend_state_type_values)
     {
         d3d_blend_state_type_values = D3DBlendStateTypeValues({
             {D3DRS_ALPHABLENDENABLE, desc.is_blending_enabled ? TRUE : FALSE},
@@ -73,7 +73,7 @@ namespace xl7::graphics::impl::direct3d9::states {
     // Construction / Destruction
     // #############################################################################
 
-    BlendStateImpl::BlendStateImpl(const CreateParams<Desc>& params)
+    BlendStateImpl::BlendStateImpl(const CreateParams<xl7::graphics::states::BlendStateDesc>& params)
         : BlendState(params)
         , _d3d_blend_state_type_values()
     {

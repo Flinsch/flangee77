@@ -58,7 +58,7 @@ namespace fl7::fonts::render {
         if (vertices.empty())
             return;
 
-        xl7::graphics::meshes::VertexBuffer::Desc vertex_buffer_desc{
+        xl7::graphics::meshes::VertexBufferDesc vertex_buffer_desc{
             xl7::graphics::meshes::MeshBufferUsage::Immutable,
             xl7::graphics::meshes::Topology::LineList,
             static_cast<unsigned>(vertices.size()),
@@ -80,7 +80,7 @@ namespace fl7::fonts::render {
         auto vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader(u8"Test Renderer Vertex Shader", code_data_provider);
         auto pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader(u8"Test Renderer Pixel Shader", code_data_provider);
 
-        xl7::graphics::shaders::ConstantBuffer::Desc constant_buffer_desc;
+        xl7::graphics::shaders::ConstantBufferDesc constant_buffer_desc;
         constant_buffer_desc.layout.constant_declarations = {
             {.name = "ScaledFontSize", .constant_type = xl7::graphics::shaders::ConstantType::Float, .constant_class = xl7::graphics::shaders::ConstantClass::Vector, .row_count = 1, .column_count = 2, .element_count = 1, .offset = 0, .size = 8, .padded_size = 8},
             {.name = "PixelPosition", .constant_type = xl7::graphics::shaders::ConstantType::Float, .constant_class = xl7::graphics::shaders::ConstantClass::Vector, .row_count = 1, .column_count = 2, .element_count = 1, .offset = 8, .size = 8, .padded_size = 8},

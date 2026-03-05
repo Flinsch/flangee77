@@ -2,6 +2,8 @@
 #define XL7_GRAPHICS_TEXTURES_TEXTURE3D_H
 #include "./Texture.h"
 
+#include "./Texture3DDesc.h"
+
 
 
 namespace xl7::graphics::textures {
@@ -13,15 +15,6 @@ class Texture3D
 {
 
 public:
-    struct Desc
-        : Texture::Desc
-    {
-        /** The depth of the texture, in pixels (or the number of 2D image slices, if you like). */
-        unsigned depth;
-    };
-
-
-
     Texture3D() = delete;
 
     Texture3D(const Texture3D&) = delete;
@@ -39,7 +32,7 @@ public:
     /**
      * Returns the descriptor of the 3D texture.
      */
-    const Desc& get_desc() const { return _desc; }
+    const Texture3DDesc& get_desc() const { return _desc; }
 
 
 
@@ -57,7 +50,7 @@ public:
 
 protected:
 
-    explicit Texture3D(const CreateParams<Desc>& params);
+    explicit Texture3D(const CreateParams<Texture3DDesc>& params);
 
     ~Texture3D() override = default;
 
@@ -67,7 +60,7 @@ private:
     /**
      * The descriptor of the 3D texture.
      */
-    const Desc _desc;
+    const Texture3DDesc _desc;
 
 }; // class Texture3D
 

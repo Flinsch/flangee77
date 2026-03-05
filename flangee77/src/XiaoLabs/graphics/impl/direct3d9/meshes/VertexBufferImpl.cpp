@@ -26,7 +26,7 @@ namespace xl7::graphics::impl::direct3d9::meshes {
     // Construction / Destruction
     // #############################################################################
 
-    VertexBufferImpl::VertexBufferImpl(const CreateParams<Desc>& params)
+    VertexBufferImpl::VertexBufferImpl(const CreateParams<xl7::graphics::meshes::VertexBufferDesc>& params)
         : VertexBuffer(params)
         , _d3d_fvf(_d3d_fvf_from(get_desc().vertex_layout))
     {

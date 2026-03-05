@@ -23,7 +23,7 @@ namespace xl7::graphics::textures {
 
 
 
-    Texture2D::Texture2D(const CreateParams<Desc>& params)
+    Texture2D::Texture2D(const CreateParams<Texture2DDesc>& params)
         : ResourceBase(Type::Texture2D, {.manager = params.manager, .id = params.id, .identifier = params.identifier, .desc = params.desc}, 1, 1) // NOLINT(*-slicing)
         , _desc(params.desc)
     {

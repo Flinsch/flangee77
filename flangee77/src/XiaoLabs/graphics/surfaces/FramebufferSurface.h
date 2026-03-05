@@ -38,7 +38,7 @@ public:
 
 protected:
 
-    FramebufferSurface(Type type, const CreateParams<Desc>& params)
+    FramebufferSurface(Type type, const CreateParams<SurfaceDesc>& params)
         : ResourceBase(Type::RenderTargetSurface, params)
         , _default_viewport{.x = 0, .y = 0, .width = params.desc.width, .height = params.desc.height, .min_z = 0.0f, .max_z = 1.0f}
     {

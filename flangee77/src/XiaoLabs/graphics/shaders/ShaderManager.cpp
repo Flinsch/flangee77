@@ -9,9 +9,9 @@ namespace xl7::graphics::shaders {
     /**
      * Creates and acquires the specified constant buffer.
      */
-    ConstantBuffer::Id ShaderManager::create_constant_buffer(cl7::u8string_view identifier, const ConstantBuffer::Desc& desc, const ConstantDataProvider& constant_data_provider)
+    ConstantBuffer::Id ShaderManager::create_constant_buffer(cl7::u8string_view identifier, const ConstantBufferDesc& desc, const ConstantDataProvider& constant_data_provider)
     {
-        resources::Resource::CreateParams<ConstantBuffer::Desc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
+        resources::Resource::CreateParams<ConstantBufferDesc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
 
         ResourcePtr constant_buffer(_factory->create_constant_buffer(params), _destroy_resource);
 
@@ -25,8 +25,8 @@ namespace xl7::graphics::shaders {
      */
     VertexShader::Id ShaderManager::create_vertex_shader(cl7::u8string_view identifier, const CodeDataProvider& code_data_provider, cl7::astring_view entry_point)
     {
-        Shader::Desc desc{.language = code_data_provider.get_language(), .entry_point = cl7::astring(entry_point)};
-        resources::Resource::CreateParams<Shader::Desc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
+        ShaderDesc desc{.language = code_data_provider.get_language(), .entry_point = cl7::astring(entry_point)};
+        resources::Resource::CreateParams<ShaderDesc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
 
         ResourcePtr vertex_shader(_factory->create_vertex_shader(params), _destroy_resource);
 
@@ -40,8 +40,8 @@ namespace xl7::graphics::shaders {
      */
     PixelShader::Id ShaderManager::create_pixel_shader(cl7::u8string_view identifier, const CodeDataProvider& code_data_provider, cl7::astring_view entry_point)
     {
-        Shader::Desc desc{.language = code_data_provider.get_language(), .entry_point = cl7::astring(entry_point)};
-        resources::Resource::CreateParams<Shader::Desc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
+        ShaderDesc desc{.language = code_data_provider.get_language(), .entry_point = cl7::astring(entry_point)};
+        resources::Resource::CreateParams<ShaderDesc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
 
         ResourcePtr pixel_shader(_factory->create_pixel_shader(params), _destroy_resource);
 

@@ -2,6 +2,8 @@
 #define XL7_GRAPHICS_TEXTURES_TEXTURE2DARRAY_H
 #include "./Texture.h"
 
+#include "./Texture2DArrayDesc.h"
+
 
 
 namespace xl7::graphics::textures {
@@ -13,15 +15,6 @@ class Texture2DArray
 {
 
 public:
-    struct Desc
-        : Texture::Desc
-    {
-        /** The number of textures in the texture array. */
-        unsigned count;
-    };
-
-
-
     Texture2DArray() = delete;
 
     Texture2DArray(const Texture2DArray&) = delete;
@@ -39,7 +32,7 @@ public:
     /**
      * Returns the descriptor of the 2D array texture.
      */
-    const Desc& get_desc() const { return _desc; }
+    const Texture2DArrayDesc& get_desc() const { return _desc; }
 
 
 
@@ -57,7 +50,7 @@ public:
 
 protected:
 
-    explicit Texture2DArray(const CreateParams<Desc>& params);
+    explicit Texture2DArray(const CreateParams<Texture2DArrayDesc>& params);
 
     ~Texture2DArray() override = default;
 
@@ -67,7 +60,7 @@ private:
     /**
      * The descriptor of the 2D array texture.
      */
-    const Desc _desc;
+    const Texture2DArrayDesc _desc;
 
 }; // class Texture2DArray
 

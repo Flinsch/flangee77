@@ -2,6 +2,8 @@
 #define XL7_GRAPHICS_TEXTURES_TEXTURE2D_H
 #include "./Texture.h"
 
+#include "./Texture2DDesc.h"
+
 
 
 namespace xl7::graphics::textures {
@@ -13,14 +15,6 @@ class Texture2D
 {
 
 public:
-    struct Desc
-        : Texture::Desc
-    {
-
-    };
-
-
-
     Texture2D() = delete;
 
     Texture2D(const Texture2D&) = delete;
@@ -38,7 +32,7 @@ public:
     /**
      * Returns the descriptor of the 2D texture.
      */
-    const Desc& get_desc() const { return _desc; }
+    const Texture2DDesc& get_desc() const { return _desc; }
 
 
 
@@ -61,7 +55,7 @@ public:
 
 protected:
 
-    explicit Texture2D(const CreateParams<Desc>& params);
+    explicit Texture2D(const CreateParams<Texture2DDesc>& params);
 
     ~Texture2D() override = default;
 
@@ -71,7 +65,7 @@ private:
     /**
      * The descriptor of the 2D texture.
      */
-    const Desc _desc;
+    const Texture2DDesc _desc;
 
 }; // class Texture2D
 

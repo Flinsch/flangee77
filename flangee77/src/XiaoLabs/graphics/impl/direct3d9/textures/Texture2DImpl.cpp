@@ -17,7 +17,7 @@ namespace xl7::graphics::impl::direct3d9::textures {
     // Construction / Destruction
     // #############################################################################
 
-    Texture2DImpl::Texture2DImpl(const CreateParams<Desc>& params)
+    Texture2DImpl::Texture2DImpl(const CreateParams<xl7::graphics::textures::Texture2DDesc>& params)
         : Texture2D(params)
         , _d3d_format(mappings::_d3d_format_from(params.desc.pixel_format, get_channel_order()))
     {

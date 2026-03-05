@@ -2,10 +2,7 @@
 #define XL7_GRAPHICS_TEXTURES_TEXTURE_H
 #include "../../resources/Resource.h"
 
-#include "./TextureUsage.h"
-
-#include "../PixelFormat.h"
-#include "../ChannelOrder.h"
+#include "./TextureDesc.h"
 
 #include "../images/ResamplingMethod.h"
 
@@ -34,25 +31,6 @@ public:
         Cubemap,
     };
 
-    struct Desc
-    {
-        /** Identifies how the texture is expected to be updated (frequency of update is a key factor). */
-        TextureUsage usage;
-
-        /** The pixel format. */
-        PixelFormat pixel_format;
-        /** The preferred channel order. (The actual channel order may vary depending on hardware capabilities.) */
-        ChannelOrder preferred_channel_order;
-
-        /** The maximum number of mipmap levels in the texture. (Use 1 for a multisampled texture; or 0 to generate a full set of subtextures, down to 1 by 1). */
-        unsigned mip_levels;
-
-        /** The width of the texture, in pixels. */
-        unsigned width;
-        /** The height of the texture, in pixels. */
-        unsigned height;
-    };
-
 
 
     Texture() = delete;
@@ -77,7 +55,7 @@ public:
     /**
      * Returns the descriptor of the texture.
      */
-    const Desc& get_desc() const { return _desc; }
+    const TextureDesc& get_desc() const { return _desc; }
 
     /**
      * Returns the actual channel order. This may differ from the preferred channel
@@ -111,7 +89,7 @@ public:
 
 protected:
 
-    Texture(Type type, const CreateParams<Desc>& params, unsigned depth, unsigned image_count);
+    Texture(Type type, const CreateParams<TextureDesc>& params, unsigned depth, unsigned image_count);
 
     ~Texture() override = default;
 
@@ -187,7 +165,7 @@ private:
     /**
      * The descriptor of the texture.
      */
-    const Desc _desc;
+    const TextureDesc _desc;
 
     /**
      * The actual channel order. This may differ from the preferred channel order,

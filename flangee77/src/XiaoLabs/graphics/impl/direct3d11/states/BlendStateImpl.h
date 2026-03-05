@@ -19,7 +19,7 @@ class BlendStateImpl final
 public:
     class Attorney
     {
-        static BlendStateImpl* create(const CreateParams<Desc>& params) { return new BlendStateImpl(params); }
+        static BlendStateImpl* create(const CreateParams<xl7::graphics::states::BlendStateDesc>& params) { return new BlendStateImpl(params); }
         friend class xl7::graphics::impl::direct3d11::ResourceFactoryImpl;
     };
 
@@ -43,7 +43,7 @@ public:
      * Maps the specified blend state descriptor to corresponding Direct3D 11
      * values and fills the given structure accordingly.
      */
-    static void map_d3d_values(const Desc& desc, D3D11_BLEND_DESC& d3d_blend_desc);
+    static void map_d3d_values(const xl7::graphics::states::BlendStateDesc& desc, D3D11_BLEND_DESC& d3d_blend_desc);
 
 
 
@@ -53,7 +53,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit BlendStateImpl(const CreateParams<Desc>& params);
+    explicit BlendStateImpl(const CreateParams<xl7::graphics::states::BlendStateDesc>& params);
     ~BlendStateImpl() override = default;
 
 

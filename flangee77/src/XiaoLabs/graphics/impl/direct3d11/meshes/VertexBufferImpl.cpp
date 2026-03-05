@@ -18,7 +18,7 @@ namespace xl7::graphics::impl::direct3d11::meshes {
     // Construction / Destruction
     // #############################################################################
 
-    VertexBufferImpl::VertexBufferImpl(const CreateParams<Desc>& params)
+    VertexBufferImpl::VertexBufferImpl(const CreateParams<xl7::graphics::meshes::VertexBufferDesc>& params)
         : VertexBuffer(params)
     {
     }

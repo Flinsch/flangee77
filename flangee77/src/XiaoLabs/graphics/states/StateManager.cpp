@@ -25,16 +25,16 @@ namespace xl7::graphics::states {
     {
         release_default_states();
 
-        _default_sampler_state = find_resource<states::SamplerState>(ensure_sampler_state(states::SamplerState::Desc()));
+        _default_sampler_state = find_resource<states::SamplerState>(ensure_sampler_state(states::SamplerStateDesc()));
         assert(_default_sampler_state);
 
-        _default_rasterizer_state = find_resource<states::RasterizerState>(ensure_rasterizer_state(states::RasterizerState::Desc()));
+        _default_rasterizer_state = find_resource<states::RasterizerState>(ensure_rasterizer_state(states::RasterizerStateDesc()));
         assert(_default_rasterizer_state);
 
-        _default_depth_stencil_state = find_resource<states::DepthStencilState>(ensure_depth_stencil_state(states::DepthStencilState::Desc()));
+        _default_depth_stencil_state = find_resource<states::DepthStencilState>(ensure_depth_stencil_state(states::DepthStencilStateDesc()));
         assert(_default_depth_stencil_state);
 
-        _default_blend_state = find_resource<states::BlendState>(ensure_blend_state(states::BlendState::Desc()));
+        _default_blend_state = find_resource<states::BlendState>(ensure_blend_state(states::BlendStateDesc()));
         assert(_default_blend_state);
 
         return _default_sampler_state && _default_rasterizer_state && _default_depth_stencil_state && _default_blend_state; // NOLINT(*-implicit-bool-conversion)
@@ -63,7 +63,7 @@ namespace xl7::graphics::states {
     /**
      * Creates and acquires the specified sampler state if not already done.
      */
-    SamplerState::Id StateManager::ensure_sampler_state(const SamplerState::Desc& desc)
+    SamplerState::Id StateManager::ensure_sampler_state(const SamplerStateDesc& desc)
     {
         const cl7::u8string identifier = _identifier(u8"sampler state", desc);
         auto* resource = find_resource<SamplerState>(identifier);
@@ -73,7 +73,7 @@ namespace xl7::graphics::states {
             return resource->get_id();
         }
 
-        resources::Resource::CreateParams<SamplerState::Desc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
+        resources::Resource::CreateParams<SamplerStateDesc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
 
         ResourcePtr sampler_state(_factory->create_sampler_state(params), _destroy_resource);
 
@@ -83,7 +83,7 @@ namespace xl7::graphics::states {
     /**
      * Creates and acquires the specified rasterizer state if not already done.
      */
-    RasterizerState::Id StateManager::ensure_rasterizer_state(const RasterizerState::Desc& desc)
+    RasterizerState::Id StateManager::ensure_rasterizer_state(const RasterizerStateDesc& desc)
     {
         const cl7::u8string identifier = _identifier(u8"rasterizer state", desc);
         auto* resource = find_resource<RasterizerState>(identifier);
@@ -93,7 +93,7 @@ namespace xl7::graphics::states {
             return resource->get_id();
         }
 
-        resources::Resource::CreateParams<RasterizerState::Desc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
+        resources::Resource::CreateParams<RasterizerStateDesc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
 
         ResourcePtr rasterizer_state(_factory->create_rasterizer_state(params), _destroy_resource);
 
@@ -103,7 +103,7 @@ namespace xl7::graphics::states {
     /**
      * Creates and acquires the specified depth/stencil state if not already done.
      */
-    DepthStencilState::Id StateManager::ensure_depth_stencil_state(const DepthStencilState::Desc& desc)
+    DepthStencilState::Id StateManager::ensure_depth_stencil_state(const DepthStencilStateDesc& desc)
     {
         const cl7::u8string identifier = _identifier(u8"depth/stencil state", desc);
         auto* resource = find_resource<DepthStencilState>(identifier);
@@ -113,7 +113,7 @@ namespace xl7::graphics::states {
             return resource->get_id();
         }
 
-        resources::Resource::CreateParams<DepthStencilState::Desc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
+        resources::Resource::CreateParams<DepthStencilStateDesc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
 
         ResourcePtr depth_stencil_state(_factory->create_depth_stencil_state(params), _destroy_resource);
 
@@ -123,7 +123,7 @@ namespace xl7::graphics::states {
     /**
      * Creates and acquires the specified blend state if not already done.
      */
-    BlendState::Id StateManager::ensure_blend_state(const BlendState::Desc& desc)
+    BlendState::Id StateManager::ensure_blend_state(const BlendStateDesc& desc)
     {
         const cl7::u8string identifier = _identifier(u8"blend state", desc);
         auto* resource = find_resource<BlendState>(identifier);
@@ -133,7 +133,7 @@ namespace xl7::graphics::states {
             return resource->get_id();
         }
 
-        resources::Resource::CreateParams<BlendState::Desc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
+        resources::Resource::CreateParams<BlendStateDesc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
 
         ResourcePtr blend_state(_factory->create_blend_state(params), _destroy_resource);
 

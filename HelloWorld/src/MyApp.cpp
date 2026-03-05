@@ -76,7 +76,7 @@ namespace helloworld {
         vertex_layout.elements.push_back({.semantic = xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD,  .semantic_index = 0,  .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT2});
         assert(vertex_layout.calculate_size() == sizeof(Vertex));
 
-        xl7::graphics::meshes::VertexBuffer::Desc vertex_buffer_desc{
+        xl7::graphics::meshes::VertexBufferDesc vertex_buffer_desc{
             xl7::graphics::meshes::MeshBufferUsage::Immutable,
             xl7::graphics::meshes::Topology::PointList,
             4,
@@ -84,7 +84,7 @@ namespace helloworld {
             vertex_layout,
         };
 
-        xl7::graphics::meshes::IndexBuffer::Desc index_buffer_desc{
+        xl7::graphics::meshes::IndexBufferDesc index_buffer_desc{
             xl7::graphics::meshes::MeshBufferUsage::Immutable,
             xl7::graphics::meshes::Topology::TriangleStrip,
             4,
@@ -119,7 +119,7 @@ namespace helloworld {
         _pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader(u8"My Pixel Shader", code_data_provider);
 
 
-        xl7::graphics::shaders::ConstantBuffer::Desc constant_buffer_desc;
+        xl7::graphics::shaders::ConstantBufferDesc constant_buffer_desc;
         // NOLINTBEGIN(*-use-designated-initializers)
         constant_buffer_desc.layout.constant_declarations = {
             {"VertexOffset", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 3, 1, 0, 12, 12},
@@ -146,7 +146,7 @@ namespace helloworld {
         //netpbm_image_reader.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy-p6.ppm", image);
         //netpbm_image_reader.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy-p7.pam", image);
 
-        xl7::graphics::textures::Texture2D::Desc texture_desc{
+        xl7::graphics::textures::Texture2DDesc texture_desc{
             xl7::graphics::textures::TextureUsage::Immutable,
             xl7::graphics::PixelFormat::R8G8B8A8_UNORM,
             xl7::graphics::ChannelOrder::RGBA,
@@ -155,7 +155,7 @@ namespace helloworld {
             image.get_height(),
         };
 
-        xl7::graphics::states::SamplerState::Desc sampler_desc;
+        xl7::graphics::states::SamplerStateDesc sampler_desc;
 
         auto texture_image = xl7::graphics::images::ImageConverter::convert_image(image, texture_desc.pixel_format, texture_desc.preferred_channel_order);
         xl7::graphics::textures::ImageDataProvider image_data_provider{&texture_image};
@@ -164,23 +164,23 @@ namespace helloworld {
         _sampler_state_id = xl7::graphics::state_manager()->ensure_sampler_state(sampler_desc);
 
 
-        xl7::graphics::states::RasterizerState::Desc rasterizer_desc;
-        rasterizer_desc.cull_mode = xl7::graphics::states::RasterizerState::CullMode::None;
+        xl7::graphics::states::RasterizerStateDesc rasterizer_desc;
+        rasterizer_desc.cull_mode = xl7::graphics::states::CullMode::None;
 
         _rasterizer_state_id = xl7::graphics::state_manager()->ensure_rasterizer_state(rasterizer_desc);
 
 
-        xl7::graphics::states::DepthStencilState::Desc depth_stencil_desc;
+        xl7::graphics::states::DepthStencilStateDesc depth_stencil_desc;
         depth_stencil_desc.is_depth_testing_enabled = true;
         depth_stencil_desc.is_depth_writing_enabled = true;
 
         _depth_stencil_state_id = xl7::graphics::state_manager()->ensure_depth_stencil_state(depth_stencil_desc);
 
 
-        xl7::graphics::states::BlendState::Desc blend_desc;
+        xl7::graphics::states::BlendStateDesc blend_desc;
         blend_desc.is_blending_enabled = true;
-        blend_desc.src_color_factor = blend_desc.src_alpha_factor = xl7::graphics::states::BlendState::BlendFactor::SrcAlpha;
-        blend_desc.dest_color_factor = blend_desc.dest_alpha_factor = xl7::graphics::states::BlendState::BlendFactor::InvSrcAlpha;
+        blend_desc.src_color_factor = blend_desc.src_alpha_factor = xl7::graphics::states::BlendFactor::SrcAlpha;
+        blend_desc.dest_color_factor = blend_desc.dest_alpha_factor = xl7::graphics::states::BlendFactor::InvSrcAlpha;
 
         _blend_state_id = xl7::graphics::state_manager()->ensure_blend_state(blend_desc);
 

@@ -8,7 +8,7 @@ namespace xl7::graphics::meshes {
 
 
 
-    VertexBuffer::VertexBuffer(const CreateParams<Desc>& params)
+    VertexBuffer::VertexBuffer(const CreateParams<VertexBufferDesc>& params)
         : ResourceBase(Type::VertexBuffer, params, params.desc.stride)
         , _desc(params.desc)
     {

@@ -34,7 +34,7 @@ namespace xl7::graphics::impl::direct3d9::meshes {
     // Construction / Destruction
     // #############################################################################
 
-    IndexBufferImpl::IndexBufferImpl(const CreateParams<Desc>& params)
+    IndexBufferImpl::IndexBufferImpl(const CreateParams<xl7::graphics::meshes::IndexBufferDesc>& params)
         : IndexBuffer(params)
         , _d3d_format(_d3d_format_from(get_desc().index_type))
     {

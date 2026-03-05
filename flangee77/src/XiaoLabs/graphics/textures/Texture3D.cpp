@@ -13,7 +13,7 @@ namespace xl7::graphics::textures {
 
 
 
-    Texture3D::Texture3D(const CreateParams<Desc>& params)
+    Texture3D::Texture3D(const CreateParams<Texture3DDesc>& params)
         : ResourceBase(Type::Texture3D, {.manager = params.manager, .id = params.id, .identifier = params.identifier, .desc = params.desc}, params.desc.depth, 1) // NOLINT(*-slicing)
         , _desc(params.desc)
     {

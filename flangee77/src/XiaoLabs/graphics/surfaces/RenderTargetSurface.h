@@ -31,7 +31,7 @@ public:
 
 protected:
 
-    explicit RenderTargetSurface(const CreateParams<Desc>& params)
+    explicit RenderTargetSurface(const CreateParams<SurfaceDesc>& params)
         : ResourceBase(Type::RenderTargetSurface, params)
     {
     }

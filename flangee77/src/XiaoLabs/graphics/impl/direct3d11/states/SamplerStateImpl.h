@@ -19,7 +19,7 @@ class SamplerStateImpl final
 public:
     class Attorney
     {
-        static SamplerStateImpl* create(const CreateParams<Desc>& params) { return new SamplerStateImpl(params); }
+        static SamplerStateImpl* create(const CreateParams<xl7::graphics::states::SamplerStateDesc>& params) { return new SamplerStateImpl(params); }
         friend class xl7::graphics::impl::direct3d11::ResourceFactoryImpl;
     };
 
@@ -43,7 +43,7 @@ public:
      * Maps the specified sampler state descriptor to corresponding Direct3D 11
      * values and fills the given structure accordingly.
      */
-    static void map_d3d_values(const Desc& desc, D3D11_SAMPLER_DESC& d3d_sampler_desc);
+    static void map_d3d_values(const xl7::graphics::states::SamplerStateDesc& desc, D3D11_SAMPLER_DESC& d3d_sampler_desc);
 
 
 
@@ -53,7 +53,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit SamplerStateImpl(const CreateParams<Desc>& params);
+    explicit SamplerStateImpl(const CreateParams<xl7::graphics::states::SamplerStateDesc>& params);
     ~SamplerStateImpl() override = default;
 
 

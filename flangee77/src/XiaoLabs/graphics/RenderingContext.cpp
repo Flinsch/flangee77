@@ -208,7 +208,7 @@ namespace xl7::graphics {
     }
 
     /**
-     * 
+     *
      */
     template <class TShader>
     static void _resolve_shader_states(RenderingDevice* _rendering_device, RenderingContext::ResolvedShaderStates<TShader>& resolved_shader_states, pipeline::AbstractShaderStage& pipeline_as)
@@ -342,7 +342,7 @@ namespace xl7::graphics {
             return false;
         }
 
-        if (resolved_draw_states.rasterizer_state && resolved_draw_states.rasterizer_state->get_desc().fill_mode == states::RasterizerState::FillMode::None)
+        if (resolved_draw_states.rasterizer_state && resolved_draw_states.rasterizer_state->get_desc().fill_mode == states::FillMode::None)
         {
             // Just return false without issuing an error message.
             // Because it's not an error in the actual sense;

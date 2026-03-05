@@ -19,7 +19,7 @@ class VertexShaderImpl final
 public:
     class Attorney
     {
-        static VertexShaderImpl* create(const CreateParams<Desc>& params) { return new VertexShaderImpl(params); }
+        static VertexShaderImpl* create(const CreateParams<xl7::graphics::shaders::ShaderDesc>& params) { return new VertexShaderImpl(params); }
         friend class xl7::graphics::impl::direct3d11::ResourceFactoryImpl;
     };
 
@@ -47,7 +47,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit VertexShaderImpl(const CreateParams<Desc>& params);
+    explicit VertexShaderImpl(const CreateParams<xl7::graphics::shaders::ShaderDesc>& params);
     ~VertexShaderImpl() override = default;
 
 

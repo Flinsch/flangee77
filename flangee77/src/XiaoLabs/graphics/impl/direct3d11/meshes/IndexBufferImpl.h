@@ -19,7 +19,7 @@ class IndexBufferImpl final
 public:
     class Attorney
     {
-        static IndexBufferImpl* create(const CreateParams<Desc>& params) { return new IndexBufferImpl(params); }
+        static IndexBufferImpl* create(const CreateParams<xl7::graphics::meshes::IndexBufferDesc>& params) { return new IndexBufferImpl(params); }
         friend class xl7::graphics::impl::direct3d11::ResourceFactoryImpl;
     };
 
@@ -49,7 +49,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit IndexBufferImpl(const CreateParams<Desc>& params);
+    explicit IndexBufferImpl(const CreateParams<xl7::graphics::meshes::IndexBufferDesc>& params);
     ~IndexBufferImpl() override = default;
 
 

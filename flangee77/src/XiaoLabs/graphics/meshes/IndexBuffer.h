@@ -2,7 +2,7 @@
 #define XL7_GRAPHICS_MESHES_INDEXBUFFER_H
 #include "./MeshBuffer.h"
 
-#include "./IndexType.h"
+#include "./IndexBufferDesc.h"
 #include "./IndexDataProvider.h"
 
 
@@ -16,15 +16,6 @@ class IndexBuffer
 {
 
 public:
-    struct Desc
-        : MeshBuffer::Desc
-    {
-        /** The type/format (16 or 32 bits) of the index buffer. */
-        IndexType index_type;
-    };
-
-
-
     IndexBuffer() = delete;
 
     IndexBuffer(const IndexBuffer&) = delete;
@@ -42,13 +33,13 @@ public:
     /**
      * Returns the descriptor of the index buffer.
      */
-    const Desc& get_desc() const { return _desc; }
+    const IndexBufferDesc& get_desc() const { return _desc; }
 
 
 
 protected:
 
-    explicit IndexBuffer(const CreateParams<Desc>& params);
+    explicit IndexBuffer(const CreateParams<IndexBufferDesc>& params);
 
     ~IndexBuffer() override = default;
 
@@ -58,7 +49,7 @@ private:
     /**
      * The descriptor of the index buffer.
      */
-    const Desc _desc;
+    const IndexBufferDesc _desc;
 
 }; // class IndexBuffer
 

@@ -19,7 +19,7 @@ class VertexBufferImpl final
 public:
     class Attorney
     {
-        static VertexBufferImpl* create(const CreateParams<Desc>& params) { return new VertexBufferImpl(params); }
+        static VertexBufferImpl* create(const CreateParams<xl7::graphics::meshes::VertexBufferDesc>& params) { return new VertexBufferImpl(params); }
         friend class xl7::graphics::impl::direct3d9::ResourceFactoryImpl;
     };
 
@@ -47,7 +47,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit VertexBufferImpl(const CreateParams<Desc>& params);
+    explicit VertexBufferImpl(const CreateParams<xl7::graphics::meshes::VertexBufferDesc>& params);
     ~VertexBufferImpl() override = default;
 
 

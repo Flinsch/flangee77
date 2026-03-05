@@ -2,6 +2,8 @@
 #define XL7_GRAPHICS_TEXTURES_CUBEMAP_H
 #include "./Texture.h"
 
+#include "./CubemapDesc.h"
+
 
 
 namespace xl7::graphics::textures {
@@ -13,14 +15,6 @@ class Cubemap
 {
 
 public:
-    struct Desc
-        : Texture::Desc
-    {
-
-    };
-
-
-
     Cubemap() = delete;
 
     Cubemap(const Cubemap&) = delete;
@@ -38,7 +32,7 @@ public:
     /**
      * Returns the descriptor of the cubemap.
      */
-    const Desc& get_desc() const { return _desc; }
+    const CubemapDesc& get_desc() const { return _desc; }
 
     /**
      * Returns an "image view" of the specified texture face data.
@@ -54,7 +48,7 @@ public:
 
 protected:
 
-    explicit Cubemap(const CreateParams<Desc>& params);
+    explicit Cubemap(const CreateParams<CubemapDesc>& params);
 
     ~Cubemap() override = default;
 
@@ -64,7 +58,7 @@ private:
     /**
      * The descriptor of the cubemap.
      */
-    const Desc _desc;
+    const CubemapDesc _desc;
 
 }; // class Cubemap
 

@@ -2,7 +2,7 @@
 #define XL7_GRAPHICS_SHADERS_CONSTANTBUFFER_H
 #include "../../resources/Resource.h"
 
-#include "./ConstantBufferLayout.h"
+#include "./ConstantBufferDesc.h"
 #include "./ConstantDataProvider.h"
 
 
@@ -20,14 +20,6 @@ class ConstantBuffer
 {
 
 public:
-    struct Desc
-    {
-        /** The layout specification of the constant buffer. */
-        ConstantBufferLayout layout;
-    };
-
-
-
     ConstantBuffer() = delete;
 
     ConstantBuffer(const ConstantBuffer&) = delete;
@@ -45,7 +37,7 @@ public:
     /**
      * Returns the descriptor of the constant buffer.
      */
-    const Desc& get_desc() const { return _desc; }
+    const ConstantBufferDesc& get_desc() const { return _desc; }
 
     /**
      * Updates the contents of this constant buffer.
@@ -56,7 +48,7 @@ public:
 
 protected:
 
-    explicit ConstantBuffer(const CreateParams<Desc>& params)
+    explicit ConstantBuffer(const CreateParams<ConstantBufferDesc>& params)
         : ResourceBase(params)
         , _desc(params.desc)
     {
@@ -106,7 +98,7 @@ private:
     /**
      * The descriptor of the constant buffer.
      */
-    const Desc _desc;
+    const ConstantBufferDesc _desc;
 
 }; // class ConstantBuffer
 

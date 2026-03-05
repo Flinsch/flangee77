@@ -19,7 +19,7 @@ class ConstantBufferImpl final
 public:
     class Attorney
     {
-        static ConstantBufferImpl* create(const CreateParams<Desc>& params) { return new ConstantBufferImpl(params); }
+        static ConstantBufferImpl* create(const CreateParams<xl7::graphics::shaders::ConstantBufferDesc>& params) { return new ConstantBufferImpl(params); }
         friend class xl7::graphics::impl::direct3d11::ResourceFactoryImpl;
     };
 
@@ -40,7 +40,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit ConstantBufferImpl(const CreateParams<Desc>& params);
+    explicit ConstantBufferImpl(const CreateParams<xl7::graphics::shaders::ConstantBufferDesc>& params);
     ~ConstantBufferImpl() override = default;
 
 

@@ -20,7 +20,7 @@ namespace xl7::graphics::impl::direct3d9::shaders {
     // Construction / Destruction
     // #############################################################################
 
-    VertexShaderImpl::VertexShaderImpl(const CreateParams<Desc>& params)
+    VertexShaderImpl::VertexShaderImpl(const CreateParams<xl7::graphics::shaders::ShaderDesc>& params)
         : VertexShader(params)
     {
     }

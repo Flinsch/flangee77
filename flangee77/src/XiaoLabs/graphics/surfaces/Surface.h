@@ -2,6 +2,8 @@
 #define XL7_GRAPHICS_SURFACES_SURFACE_H
 #include "../../resources/Resource.h"
 
+#include "./SurfaceDesc.h"
+
 
 
 namespace xl7::graphics::surfaces {
@@ -23,14 +25,6 @@ public:
         RenderTargetSurface,
         DepthStencilSurface,
         TextureSurface,
-    };
-
-    struct Desc
-    {
-        /** The width of the surface, in pixels. */
-        unsigned width;
-        /** The height of the surface, in pixels. */
-        unsigned height;
     };
 
 
@@ -57,13 +51,13 @@ public:
     /**
      * Returns the descriptor of the surface.
      */
-    const Desc& get_desc() const { return _desc; }
+    const SurfaceDesc& get_desc() const { return _desc; }
 
 
 
 protected:
 
-    Surface(Type type, const CreateParams<Desc>& params)
+    Surface(Type type, const CreateParams<SurfaceDesc>& params)
         : ResourceBase(params)
         , _type(type)
         , _desc(params.desc)
@@ -101,7 +95,7 @@ private:
     /**
      * The descriptor of the surface.
      */
-    const Desc _desc;
+    const SurfaceDesc _desc;
 
 }; // class Surface
 

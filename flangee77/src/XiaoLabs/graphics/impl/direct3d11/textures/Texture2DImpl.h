@@ -19,7 +19,7 @@ class Texture2DImpl final
 public:
     class Attorney
     {
-        static Texture2DImpl* create(const CreateParams<Desc>& params) { return new Texture2DImpl(params); }
+        static Texture2DImpl* create(const CreateParams<xl7::graphics::textures::Texture2DDesc>& params) { return new Texture2DImpl(params); }
         friend class xl7::graphics::impl::direct3d11::ResourceFactoryImpl;
     };
 
@@ -52,7 +52,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit Texture2DImpl(const CreateParams<Desc>& params);
+    explicit Texture2DImpl(const CreateParams<xl7::graphics::textures::Texture2DDesc>& params);
     ~Texture2DImpl() override = default;
 
 

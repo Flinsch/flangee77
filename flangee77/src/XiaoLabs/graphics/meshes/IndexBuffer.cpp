@@ -8,7 +8,7 @@ namespace xl7::graphics::meshes {
 
 
 
-    IndexBuffer::IndexBuffer(const CreateParams<Desc>& params)
+    IndexBuffer::IndexBuffer(const CreateParams<IndexBufferDesc>& params)
         : ResourceBase(Type::IndexBuffer, params, MeshUtil::get_index_stride(params.desc.index_type))
         , _desc(params.desc)
     {
