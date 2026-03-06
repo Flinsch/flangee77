@@ -5,7 +5,7 @@ var searchData=
   ['fail_5fcount_2',['fail_count',['../da/d74/structtl7_1_1Stats_1_1Group.html#a4f13f3afcac4021c2b2cb41c9ffc2f1a',1,'tl7::Stats::Group']]],
   ['file_5fpath_3',['file_path',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html#afb63f77e4e07426f344e7817b75381d6',1,'cl7::logging::LogEntry::file_path'],['../d1/d32/structtl7_1_1Signature.html#abc614e05f1ba4ee41b3131230b49dc80',1,'tl7::Signature::file_path']]],
   ['filename_4',['filename',['../df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html#a0334f6974d6c0610295313e395cf58ef',1,'xl7::graphics::impl::shared::shaders::Include']]],
-  ['fill_5fmode_5',['fill_mode',['../d7/d93/structxl7_1_1graphics_1_1states_1_1RasterizerState_1_1Desc.html#afab96ec0636c6b627f73d5b94cfff376',1,'xl7::graphics::states::RasterizerState::Desc']]],
+  ['fill_5fmode_5',['fill_mode',['../d7/d7a/structxl7_1_1graphics_1_1states_1_1RasterizerStateDesc.html#aec8cc2ec8251c1145bb4bc325dfc51c7',1,'xl7::graphics::states::RasterizerStateDesc']]],
   ['filter_5fmethod_6',['filter_method',['../d3/db7/structxl7_1_1graphics_1_1images_1_1PngImageReader_1_1Header.html#adda6ba0e06241049248c1e6e0649fe92',1,'xl7::graphics::images::PngImageReader::Header']]],
   ['float_5fpolicy_7',['float_policy',['../d9/db3/structdl7_1_1ini_1_1Format.html#a2df46c43e64292434f581cb03838aaa7',1,'dl7::ini::Format::float_policy'],['../df/d52/structdl7_1_1json_1_1Format.html#ab963d3ef9a119f1a850b38ec9d2f43fe',1,'dl7::json::Format::float_policy']]],
   ['font_5faccess_8',['font_access',['../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#a10e6110426cc4cc5eaa25f67dfa0319d',1,'fl7::fonts::render::AbstractRenderer::State']]],
@@ -18,6 +18,6 @@ var searchData=
   ['frame_5fusecs_15',['frame_usecs',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a916a33e56ad76b2e7995749c8a25647c',1,'cl7::profiling::Sample']]],
   ['free_5frect_5findex_16',['free_rect_index',['../df/d29/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScoredRect.html#ab2003175483b087da4429fc8d7b9856f',1,'al7::packing::AbstractFreeRectPacker::ScoredRect']]],
   ['frequency_17',['frequency',['../d6/d24/structcl7_1_1platform_1_1CPUID.html#a2ce6bc7b3ebb36438d1b866605fc99c4',1,'cl7::platform::CPUID']]],
-  ['front_5fface_5fstenciling_18',['front_face_stenciling',['../d3/dc2/structxl7_1_1graphics_1_1states_1_1DepthStencilState_1_1Desc.html#a855e90a7a23ab304acd97d23d52bf16d',1,'xl7::graphics::states::DepthStencilState::Desc']]],
+  ['front_5fface_5fstenciling_18',['front_face_stenciling',['../df/d10/structxl7_1_1graphics_1_1states_1_1DepthStencilStateDesc.html#ae920b4f7d1a9fcb5cb05db4dda8e4b82',1,'xl7::graphics::states::DepthStencilStateDesc']]],
   ['function_5fname_19',['function_name',['../d6/d58/structcl7_1_1logging_1_1LogEntry.html#a48bbea20cb7ae5c7a1c00b529ff9a7d8',1,'cl7::logging::LogEntry::function_name'],['../d1/d32/structtl7_1_1Signature.html#a91867e19e72fcc42fccca648acac972f',1,'tl7::Signature::function_name']]]
 ];

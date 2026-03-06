@@ -364,6 +364,7 @@ var annotated_dup =
         [ "images", "d8/dd2/namespacexl7_1_1graphics_1_1images.html", [
           [ "Image", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image" ],
           [ "ImageConverter", "d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter.html", "d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter" ],
+          [ "ImageDesc", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc.html", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc" ],
           [ "ImageProcessor", "d1/d92/structxl7_1_1graphics_1_1images_1_1ImageProcessor.html", "d1/d92/structxl7_1_1graphics_1_1images_1_1ImageProcessor" ],
           [ "ImageReader", "d1/d72/classxl7_1_1graphics_1_1images_1_1ImageReader.html", "d1/d72/classxl7_1_1graphics_1_1images_1_1ImageReader" ],
           [ "ImageResizer", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer.html", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer" ],
@@ -440,11 +441,14 @@ var annotated_dup =
         [ "meshes", "d0/d08/namespacexl7_1_1graphics_1_1meshes.html", [
           [ "IMeshFactory", "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory.html", "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory" ],
           [ "IndexBuffer", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer" ],
+          [ "IndexBufferDesc", "dd/d06/structxl7_1_1graphics_1_1meshes_1_1IndexBufferDesc.html", "dd/d06/structxl7_1_1graphics_1_1meshes_1_1IndexBufferDesc" ],
           [ "IndexDataProvider", "d3/d72/classxl7_1_1graphics_1_1meshes_1_1IndexDataProvider.html", "d3/d72/classxl7_1_1graphics_1_1meshes_1_1IndexDataProvider" ],
           [ "MeshBuffer", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer" ],
+          [ "MeshBufferDesc", "db/dbb/structxl7_1_1graphics_1_1meshes_1_1MeshBufferDesc.html", "db/dbb/structxl7_1_1graphics_1_1meshes_1_1MeshBufferDesc" ],
           [ "MeshManager", "d3/d9b/classxl7_1_1graphics_1_1meshes_1_1MeshManager.html", "d3/d9b/classxl7_1_1graphics_1_1meshes_1_1MeshManager" ],
           [ "MeshUtil", "d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil.html", "d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil" ],
           [ "VertexBuffer", "d0/d66/classxl7_1_1graphics_1_1meshes_1_1VertexBuffer.html", "d0/d66/classxl7_1_1graphics_1_1meshes_1_1VertexBuffer" ],
+          [ "VertexBufferDesc", "d9/df5/structxl7_1_1graphics_1_1meshes_1_1VertexBufferDesc.html", "d9/df5/structxl7_1_1graphics_1_1meshes_1_1VertexBufferDesc" ],
           [ "VertexDataProvider", "d9/dec/classxl7_1_1graphics_1_1meshes_1_1VertexDataProvider.html", "d9/dec/classxl7_1_1graphics_1_1meshes_1_1VertexDataProvider" ],
           [ "VertexLayout", "d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html", "d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout" ]
         ] ],
@@ -464,6 +468,7 @@ var annotated_dup =
           [ "CompileOptions", "de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html", "de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions" ],
           [ "ConstantBuffer", "da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer.html", "da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer" ],
           [ "ConstantBufferDeclaration", "dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html", "dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration" ],
+          [ "ConstantBufferDesc", "d2/d57/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDesc.html", "d2/d57/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDesc" ],
           [ "ConstantBufferLayout", "d8/d12/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferLayout.html", "d8/d12/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferLayout" ],
           [ "ConstantBufferMapping", "df/de3/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferMapping.html", "df/de3/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferMapping" ],
           [ "ConstantDataProvider", "d1/dc3/classxl7_1_1graphics_1_1shaders_1_1ConstantDataProvider.html", "d1/dc3/classxl7_1_1graphics_1_1shaders_1_1ConstantDataProvider" ],
@@ -474,6 +479,7 @@ var annotated_dup =
           [ "ReflectionResult", "d2/d19/structxl7_1_1graphics_1_1shaders_1_1ReflectionResult.html", "d2/d19/structxl7_1_1graphics_1_1shaders_1_1ReflectionResult" ],
           [ "Shader", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader" ],
           [ "ShaderCode", "d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html", "d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode" ],
+          [ "ShaderDesc", "d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc.html", "d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc" ],
           [ "ShaderManager", "d4/d43/classxl7_1_1graphics_1_1shaders_1_1ShaderManager.html", "d4/d43/classxl7_1_1graphics_1_1shaders_1_1ShaderManager" ],
           [ "TextureSamplerDeclaration", "d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html", "d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration" ],
           [ "VertexShader", "dd/dae/classxl7_1_1graphics_1_1shaders_1_1VertexShader.html", "dd/dae/classxl7_1_1graphics_1_1shaders_1_1VertexShader" ]
@@ -481,11 +487,16 @@ var annotated_dup =
         [ "states", "dc/d8d/namespacexl7_1_1graphics_1_1states.html", [
           [ "AbstractState", "de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState.html", "de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState" ],
           [ "BlendState", "d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html", "d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState" ],
+          [ "BlendStateDesc", "df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc.html", "df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc" ],
           [ "DepthStencilState", "db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html", "db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState" ],
+          [ "DepthStencilStateDesc", "df/d10/structxl7_1_1graphics_1_1states_1_1DepthStencilStateDesc.html", "df/d10/structxl7_1_1graphics_1_1states_1_1DepthStencilStateDesc" ],
           [ "IStateFactory", "dc/da2/classxl7_1_1graphics_1_1states_1_1IStateFactory.html", "dc/da2/classxl7_1_1graphics_1_1states_1_1IStateFactory" ],
           [ "RasterizerState", "d2/df3/classxl7_1_1graphics_1_1states_1_1RasterizerState.html", "d2/df3/classxl7_1_1graphics_1_1states_1_1RasterizerState" ],
+          [ "RasterizerStateDesc", "d7/d7a/structxl7_1_1graphics_1_1states_1_1RasterizerStateDesc.html", "d7/d7a/structxl7_1_1graphics_1_1states_1_1RasterizerStateDesc" ],
           [ "SamplerState", "d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html", "d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState" ],
-          [ "StateManager", "d2/d7e/classxl7_1_1graphics_1_1states_1_1StateManager.html", "d2/d7e/classxl7_1_1graphics_1_1states_1_1StateManager" ]
+          [ "SamplerStateDesc", "d4/d56/structxl7_1_1graphics_1_1states_1_1SamplerStateDesc.html", "d4/d56/structxl7_1_1graphics_1_1states_1_1SamplerStateDesc" ],
+          [ "StateManager", "d2/d7e/classxl7_1_1graphics_1_1states_1_1StateManager.html", "d2/d7e/classxl7_1_1graphics_1_1states_1_1StateManager" ],
+          [ "StencilOperationDesc", "d3/dac/structxl7_1_1graphics_1_1states_1_1StencilOperationDesc.html", "d3/dac/structxl7_1_1graphics_1_1states_1_1StencilOperationDesc" ]
         ] ],
         [ "surfaces", "d4/d74/namespacexl7_1_1graphics_1_1surfaces.html", [
           [ "DepthStencilSurface", "d8/d6c/classxl7_1_1graphics_1_1surfaces_1_1DepthStencilSurface.html", "d8/d6c/classxl7_1_1graphics_1_1surfaces_1_1DepthStencilSurface" ],
@@ -493,16 +504,22 @@ var annotated_dup =
           [ "ISurfaceFactory", "dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html", "dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory" ],
           [ "RenderTargetSurface", "da/d06/classxl7_1_1graphics_1_1surfaces_1_1RenderTargetSurface.html", "da/d06/classxl7_1_1graphics_1_1surfaces_1_1RenderTargetSurface" ],
           [ "Surface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface" ],
+          [ "SurfaceDesc", "dc/dfc/structxl7_1_1graphics_1_1surfaces_1_1SurfaceDesc.html", "dc/dfc/structxl7_1_1graphics_1_1surfaces_1_1SurfaceDesc" ],
           [ "SurfaceManager", "d9/dc4/classxl7_1_1graphics_1_1surfaces_1_1SurfaceManager.html", "d9/dc4/classxl7_1_1graphics_1_1surfaces_1_1SurfaceManager" ]
         ] ],
         [ "textures", "dd/d18/namespacexl7_1_1graphics_1_1textures.html", [
           [ "Cubemap", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap" ],
+          [ "CubemapDesc", "d7/df8/structxl7_1_1graphics_1_1textures_1_1CubemapDesc.html", null ],
           [ "ImageDataProvider", "da/de6/classxl7_1_1graphics_1_1textures_1_1ImageDataProvider.html", "da/de6/classxl7_1_1graphics_1_1textures_1_1ImageDataProvider" ],
           [ "ITextureFactory", "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html", "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory" ],
           [ "Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture" ],
           [ "Texture2D", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D" ],
           [ "Texture2DArray", "d3/dc5/classxl7_1_1graphics_1_1textures_1_1Texture2DArray.html", "d3/dc5/classxl7_1_1graphics_1_1textures_1_1Texture2DArray" ],
+          [ "Texture2DArrayDesc", "de/d51/structxl7_1_1graphics_1_1textures_1_1Texture2DArrayDesc.html", "de/d51/structxl7_1_1graphics_1_1textures_1_1Texture2DArrayDesc" ],
+          [ "Texture2DDesc", "db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html", null ],
           [ "Texture3D", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D" ],
+          [ "Texture3DDesc", "d8/d25/structxl7_1_1graphics_1_1textures_1_1Texture3DDesc.html", "d8/d25/structxl7_1_1graphics_1_1textures_1_1Texture3DDesc" ],
+          [ "TextureDesc", "d2/d7e/structxl7_1_1graphics_1_1textures_1_1TextureDesc.html", "d2/d7e/structxl7_1_1graphics_1_1textures_1_1TextureDesc" ],
           [ "TextureManager", "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html", "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager" ]
         ] ],
         [ "Color", "de/df3/structxl7_1_1graphics_1_1Color.html", "de/df3/structxl7_1_1graphics_1_1Color" ],

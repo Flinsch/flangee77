@@ -1,6 +1,5 @@
 var classxl7_1_1graphics_1_1shaders_1_1Shader =
 [
-    [ "Desc", "db/d7e/structxl7_1_1graphics_1_1shaders_1_1Shader_1_1Desc.html", "db/d7e/structxl7_1_1graphics_1_1shaders_1_1Shader_1_1Desc" ],
     [ "Type", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#abb42284bf893f561e35443a0a0985703", [
       [ "VertexShader", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#abb42284bf893f561e35443a0a0985703aeb3ca4dac3e206977e0b7d998eefcc33", null ],
       [ "PixelShader", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#abb42284bf893f561e35443a0a0985703a54d3d36aabc3abac323576e3d22a3d2c", null ]
@@ -8,7 +7,7 @@ var classxl7_1_1graphics_1_1shaders_1_1Shader =
     [ "Shader", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a48ef501819c5dd6149a8f5372a74efff", null ],
     [ "Shader", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a430bf52f8020da52627939768e9efd68", null ],
     [ "Shader", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#ae165854df6e333f12cddc1caa621416d", null ],
-    [ "Shader", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#acdbed9b7bb6e1846121896ac627d8956", null ],
+    [ "Shader", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#acedfe243f522d101f323f4c053ec3e74", null ],
     [ "~Shader", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#ad2803a04d3a17093df6e6d28e62e61b3", null ],
     [ "_acquire_impl", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a739c91bcc6ce577cad91974454167ee2", null ],
     [ "_acquire_precompiled_impl", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a638cb784be7bfb6460bc1849ff8460de", null ],
@@ -24,7 +23,7 @@ var classxl7_1_1graphics_1_1shaders_1_1Shader =
     [ "find_or_create_constant_buffer_mapping", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#ab608c196fa30de915705c29407232434", null ],
     [ "find_texture_sampler_declaration", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a26445fe7595a6d8d90bfe0dbb76ff474", null ],
     [ "get_bytecode", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#ad609785a147b8d5591354e1b94725edc", null ],
-    [ "get_desc", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a0cdd5b179eb0d4c993f7a6fa3bf47a41", null ],
+    [ "get_desc", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a8a62103b4807ed0a35732d8b7cab10cf", null ],
     [ "get_reflection_result", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a1e4d0ebb1fa83883fade2e0d764a94f4", null ],
     [ "get_type", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a0bf86ef797f1ed405bc0733cdf80f910", null ],
     [ "get_type_string", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a30daf699f5304a889476908d77fd2f6c", null ],
@@ -35,7 +34,7 @@ var classxl7_1_1graphics_1_1shaders_1_1Shader =
     [ "recompile", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a3f814ea9f58ee618c5b999a3d9407a57", null ],
     [ "_bytecode", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a5833b34b5bdf2f5755ca8be8b672adbc", null ],
     [ "_constant_buffer_mappings_by_constant_buffer_id", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a4ad375fce55626a9cc83b22d7c9f25ac", null ],
-    [ "_desc", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#abe83aadb96393a64ff3020c5f595a7f5", null ],
+    [ "_desc", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#ab838208082c15f9fe6f29c0a94c2018e", null ],
     [ "_reflection_result", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a3a1ff712f3f9e380fa9fc42ef7b9b86d", null ],
     [ "_type", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a06f939e3deaf26d41ed5312ba05a1a2b", null ]
 ];

@@ -4,7 +4,7 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures_1_1Texture2DImpl =
     [ "Texture2DImpl", "d8/d11/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures_1_1Texture2DImpl.html#a0185001a3020235d6df3b464b1389f90", null ],
     [ "Texture2DImpl", "d8/d11/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures_1_1Texture2DImpl.html#adc92d434ef34b50c1f70b8f10e1d7d56", null ],
     [ "Texture2DImpl", "d8/d11/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures_1_1Texture2DImpl.html#a9144b2ca5666e9aecc11ea7d8ab86790", null ],
-    [ "Texture2DImpl", "d8/d11/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures_1_1Texture2DImpl.html#ab173ee8945328fab7755254a996e0fd8", null ],
+    [ "Texture2DImpl", "d8/d11/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures_1_1Texture2DImpl.html#a7acf2e1eb67f3872c80e6c3a232d48f7", null ],
     [ "~Texture2DImpl", "d8/d11/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures_1_1Texture2DImpl.html#a97f66a72328641ca5ab79b394808e214", null ],
     [ "_acquire_impl", "d8/d11/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures_1_1Texture2DImpl.html#ae6adf3f273ab74065fc93badac38525f", null ],
     [ "_dispose_impl", "d8/d11/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures_1_1Texture2DImpl.html#a239d0ba68e60d13de0dcc97c7a1ede09", null ],

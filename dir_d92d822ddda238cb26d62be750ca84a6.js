@@ -9,6 +9,7 @@ var dir_d92d822ddda238cb26d62be750ca84a6 =
     [ "RenderTargetSurface.h", "d5/d6e/RenderTargetSurface_8h.html", "d5/d6e/RenderTargetSurface_8h" ],
     [ "Surface.cpp", "d5/d24/Surface_8cpp.html", null ],
     [ "Surface.h", "da/d51/Surface_8h.html", "da/d51/Surface_8h" ],
+    [ "SurfaceDesc.h", "d7/d4b/SurfaceDesc_8h.html", "d7/d4b/SurfaceDesc_8h" ],
     [ "SurfaceManager.cpp", "d7/def/SurfaceManager_8cpp.html", null ],
     [ "SurfaceManager.h", "dc/d63/SurfaceManager_8h.html", "dc/d63/SurfaceManager_8h" ]
 ];

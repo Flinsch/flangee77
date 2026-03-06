@@ -4,7 +4,7 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl =
     [ "Texture2DImpl", "dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html#ae1a093e7443025b8575ac0747fda8599", null ],
     [ "Texture2DImpl", "dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html#a6a814e9b8375207341c92ea0e586be8a", null ],
     [ "Texture2DImpl", "dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html#a57e78c5fe2e2e9ad309bb0ec3614093d", null ],
-    [ "Texture2DImpl", "dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html#a297b2ca7a6cb12edc0a16a043e072384", null ],
+    [ "Texture2DImpl", "dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html#adb1f3c6096d539fb43d14b5acb2a96bd", null ],
     [ "~Texture2DImpl", "dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html#a9f78b851fc8851f70574dad3f30053d4", null ],
     [ "_acquire_impl", "dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html#ad5cb60babba3a17d3d63c12edb91389c", null ],
     [ "_dispose_impl", "dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html#a67f21be1a8d74973b6616f669d1340d7", null ],

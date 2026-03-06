@@ -1,6 +1,5 @@
 var classxl7_1_1graphics_1_1textures_1_1Texture =
 [
-    [ "Desc", "da/d78/structxl7_1_1graphics_1_1textures_1_1Texture_1_1Desc.html", "da/d78/structxl7_1_1graphics_1_1textures_1_1Texture_1_1Desc" ],
     [ "Type", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#aec19ff6b1326410f7415a57864356402", [
       [ "Texture2D", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#aec19ff6b1326410f7415a57864356402aa6e2bae752d3bf4e34cb392bca789995", null ],
       [ "Texture3D", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#aec19ff6b1326410f7415a57864356402a89c915587e16bcf8963be7cf41a0d9fd", null ],
@@ -10,7 +9,7 @@ var classxl7_1_1graphics_1_1textures_1_1Texture =
     [ "Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#aad2f4c27bbc2811a6b32b8acda0c8e95", null ],
     [ "Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#af4dbdc6b501edbdf3068f8c679973502", null ],
     [ "Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a04bb02657c43b37b2ebdb27a2b2516d1", null ],
-    [ "Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#ac234e194e7189c612a5f2f84a58b5bf1", null ],
+    [ "Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a9ef935db9797d2641e20ebc316ee5590", null ],
     [ "~Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a02c61efbb59da4e6816dca49b990be13", null ],
     [ "_acquire_impl", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a6a25ec4db48f4273db7a896a8c52270a", null ],
     [ "_acquire_impl", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#abbe6e8ca6563edc88ed9d1e4337fcb8c", null ],
@@ -22,7 +21,7 @@ var classxl7_1_1graphics_1_1textures_1_1Texture =
     [ "_update_impl", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a3376632c313b9bc510a7d438c5a09274", null ],
     [ "get_channel_order", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a048b3d7fcb9a88b0880bcf68cf91d98f", null ],
     [ "get_data_size", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#aca2626ceff3a1e3be3c44cdfe75aaba0", null ],
-    [ "get_desc", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#abc4e80dc455978f4132fffa03cfb8d43", null ],
+    [ "get_desc", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a57e645adecbd1cfd09bce3f266fc1c33", null ],
     [ "get_line_pitch", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a00c7ab0dc5b16801ad32d05bda2ab404", null ],
     [ "get_slice_pitch", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a19fdcf6e3bde4e39dd2ce8920554196d", null ],
     [ "get_stride", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a465bb981f324ba456df068373499c349", null ],
@@ -33,7 +32,7 @@ var classxl7_1_1graphics_1_1textures_1_1Texture =
     [ "_channel_order", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a7b4bcb59a1bc10eb6903370e8f6a1859", null ],
     [ "_data_size", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a7f8d3a2029296ce1d1a2de5e35ad284f", null ],
     [ "_depth", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#ab577f9cb2dbc175073de831b472ffdef", null ],
-    [ "_desc", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#aaa1604ecd01a205092d78a5fa588d222", null ],
+    [ "_desc", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a32b03f331f3746855d2c43a91b1160d4", null ],
     [ "_line_pitch", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a913f591ed5980aae01848b10457d490c", null ],
     [ "_slice_pitch", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a5ce138d274d5a1a10ad0f3a799a5212d", null ],
     [ "_stride", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a5475b169f03b2c7003fca79f883da409", null ],

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['language_0',['language',['../db/d7e/structxl7_1_1graphics_1_1shaders_1_1Shader_1_1Desc.html#ac10054ab3bfd90e03b41751e10f81009',1,'xl7::graphics::shaders::Shader::Desc']]],
-  ['layout_1',['layout',['../d4/d9e/structxl7_1_1graphics_1_1shaders_1_1ConstantBuffer_1_1Desc.html#aca60d580f4040c77533300b9f2460709',1,'xl7::graphics::shaders::ConstantBuffer::Desc::layout'],['../dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html#af3ddf62deb3fd0f5d099cb11d6aec724',1,'xl7::graphics::shaders::ConstantBufferDeclaration::layout']]],
+  ['language_0',['language',['../d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc.html#ae40ef38f1d0b3c8e4f7c0a7a92a5951b',1,'xl7::graphics::shaders::ShaderDesc']]],
+  ['layout_1',['layout',['../dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html#af3ddf62deb3fd0f5d099cb11d6aec724',1,'xl7::graphics::shaders::ConstantBufferDeclaration::layout'],['../d2/d57/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDesc.html#a20a5f406c9f84a1956ab7e46f8a4c08c',1,'xl7::graphics::shaders::ConstantBufferDesc::layout']]],
   ['leading_2',['leading',['../df/d82/structfl7_1_1fonts_1_1FontMetrics.html#a9d43383e3a8b6710f2533fec0163f943',1,'fl7::fonts::FontMetrics']]],
   ['left_3',['left',['../d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html#ab3ff32bb644386ffd0f87218f5a6bcab',1,'fl7::fonts::raster::PixelOffset']]],
   ['left_5fside_5fbearing_4',['left_side_bearing',['../d3/d6c/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph.html#a801103c4cba754367eeaa4d9e5802258',1,'fl7::fonts::detail::ttf::RawGlyph::left_side_bearing'],['../df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric.html#ab880d33c2fa72294ae41e49dcd152be4',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::GlyphMetric::left_side_bearing'],['../d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html#acf5a0b14d4d4346d98b64fb2acf06af8',1,'fl7::fonts::GlyphMetrics::left_side_bearing']]],
@@ -23,7 +23,7 @@ var searchData=
   ['literal_5fprefix_20',['literal_prefix',['../d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#ab65f0050f2ad84d5b6ccfd4338b0aef8',1,'dl7::syntax::PatternSymbol']]],
   ['ln2_21',['ln2',['../d6/d9f/structml7_1_1constants.html#a6db3c88cc282d5188dd590ec7f07e6e7',1,'ml7::constants']]],
   ['location_22',['location',['../d7/d8c/structdl7_1_1syntax_1_1SourceContext.html#ae91703df47b3c83dca8040ea048360ce',1,'dl7::syntax::SourceContext']]],
-  ['lod_5fbias_23',['lod_bias',['../d2/dcd/structxl7_1_1graphics_1_1states_1_1SamplerState_1_1Desc.html#aaf83f296b03c5c5b0572245803ef642e',1,'xl7::graphics::states::SamplerState::Desc']]],
+  ['lod_5fbias_23',['lod_bias',['../d4/d56/structxl7_1_1graphics_1_1states_1_1SamplerStateDesc.html#a5dcc92c30cfcbc953106e397f185c3e8',1,'xl7::graphics::states::SamplerStateDesc']]],
   ['log_5fcontext_24',['log_context',['../d0/d2a/structdl7_1_1json_1_1util_1_1Unescaper_1_1ErrorHandler.html#ae4b5998172de1e24f9756695565f41a1',1,'dl7::json::util::Unescaper::ErrorHandler::log_context'],['../d9/dfd/structdl7_1_1xml_1_1util_1_1Unescaper_1_1ErrorHandler.html#a6ae36079afa6ea6a523882ad7f92a172',1,'dl7::xml::util::Unescaper::ErrorHandler::log_context']]],
   ['logger_25',['logger',['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a7f8bb9e9cf3071b88972022362521bcd',1,'cl7::logging::LogContext']]],
   ['logging_5fenabled_26',['logging_enabled',['../d9/d4c/structcl7_1_1logging_1_1LogContext.html#a76e529536f3bfc42aade1232a223109b',1,'cl7::logging::LogContext']]],

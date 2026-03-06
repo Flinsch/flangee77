@@ -4,7 +4,7 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl =
     [ "VertexBufferImpl", "dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html#a6b4ab9df57daf1d9a71e04704e56f84b", null ],
     [ "VertexBufferImpl", "dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html#a5efcac475a694fc9f5c1ca48275c4ca1", null ],
     [ "VertexBufferImpl", "dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html#ade60d6cd6c08e10274261ebb668f4b3b", null ],
-    [ "VertexBufferImpl", "dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html#af9e4980874f765e9764e43d5b4ca0792", null ],
+    [ "VertexBufferImpl", "dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html#a521788f837aef05171dde2ed9881c20e", null ],
     [ "~VertexBufferImpl", "dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html#a46b7ca2b62a6967664d75b76cf71cba3", null ],
     [ "_acquire_impl", "dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html#a739c1c286f395e8cbc6157f4e1375ed9", null ],
     [ "_dispose_impl", "dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html#af4d4e68d92197da4e3521ce82b861d1f", null ],
