@@ -22,7 +22,7 @@ struct ImageDesc
     /** The height of the image, in pixels. */
     unsigned height;
     /** The depth of the image, in pixels (if 3D image, otherwise trivially 1). */
-    unsigned depth;
+    unsigned depth = 1;
 
     /** Returns the size of one pixel, in bytes. */
     unsigned determine_pixel_stride() const;
