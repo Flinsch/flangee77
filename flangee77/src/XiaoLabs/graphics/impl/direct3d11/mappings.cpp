@@ -319,16 +319,16 @@ namespace xl7::graphics::impl::direct3d11::mappings {
         }
     }
 
-    D3D11_COMPARISON_FUNC _d3d_comparison_func_from(ComparisonFunction comparison_function)
+    D3D11_COMPARISON_FUNC _d3d_comparison_func_from(graphics::states::ComparisonFunction comparison_function)
     {
-        static_assert(static_cast<unsigned>(ComparisonFunction::Never) == static_cast<unsigned>(D3D11_COMPARISON_NEVER));
-        static_assert(static_cast<unsigned>(ComparisonFunction::Less) == static_cast<unsigned>(D3D11_COMPARISON_LESS));
-        static_assert(static_cast<unsigned>(ComparisonFunction::Equal) == static_cast<unsigned>(D3D11_COMPARISON_EQUAL));
-        static_assert(static_cast<unsigned>(ComparisonFunction::LessEqual) == static_cast<unsigned>(D3D11_COMPARISON_LESS_EQUAL));
-        static_assert(static_cast<unsigned>(ComparisonFunction::Greater) == static_cast<unsigned>(D3D11_COMPARISON_GREATER));
-        static_assert(static_cast<unsigned>(ComparisonFunction::NotEqual) == static_cast<unsigned>(D3D11_COMPARISON_NOT_EQUAL));
-        static_assert(static_cast<unsigned>(ComparisonFunction::GreaterEqual) == static_cast<unsigned>(D3D11_COMPARISON_GREATER_EQUAL));
-        static_assert(static_cast<unsigned>(ComparisonFunction::Always) == static_cast<unsigned>(D3D11_COMPARISON_ALWAYS));
+        static_assert(static_cast<unsigned>(graphics::states::ComparisonFunction::Never) == static_cast<unsigned>(D3D11_COMPARISON_NEVER));
+        static_assert(static_cast<unsigned>(graphics::states::ComparisonFunction::Less) == static_cast<unsigned>(D3D11_COMPARISON_LESS));
+        static_assert(static_cast<unsigned>(graphics::states::ComparisonFunction::Equal) == static_cast<unsigned>(D3D11_COMPARISON_EQUAL));
+        static_assert(static_cast<unsigned>(graphics::states::ComparisonFunction::LessEqual) == static_cast<unsigned>(D3D11_COMPARISON_LESS_EQUAL));
+        static_assert(static_cast<unsigned>(graphics::states::ComparisonFunction::Greater) == static_cast<unsigned>(D3D11_COMPARISON_GREATER));
+        static_assert(static_cast<unsigned>(graphics::states::ComparisonFunction::NotEqual) == static_cast<unsigned>(D3D11_COMPARISON_NOT_EQUAL));
+        static_assert(static_cast<unsigned>(graphics::states::ComparisonFunction::GreaterEqual) == static_cast<unsigned>(D3D11_COMPARISON_GREATER_EQUAL));
+        static_assert(static_cast<unsigned>(graphics::states::ComparisonFunction::Always) == static_cast<unsigned>(D3D11_COMPARISON_ALWAYS));
 
         return static_cast<D3D11_COMPARISON_FUNC>(comparison_function);
     }

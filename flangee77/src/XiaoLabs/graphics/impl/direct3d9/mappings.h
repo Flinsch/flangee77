@@ -7,7 +7,7 @@
 #include "../../PixelFormat.h"
 #include "../../ChannelOrder.h"
 
-#include "../../ComparisonFunction.h"
+#include "../../states/ComparisonFunction.h"
 
 #include "./prerequisites.h"
 
@@ -27,7 +27,7 @@ namespace xl7::graphics::impl::direct3d9::mappings {
 
     std::pair<PixelFormat, ChannelOrder> _map_d3d_format(D3DFORMAT d3d_format, ChannelOrder preferred_channel_order);
 
-    D3DCMPFUNC _d3d_cmp_func_from(ComparisonFunction comparison_function);
+    D3DCMPFUNC _d3d_cmp_func_from(graphics::states::ComparisonFunction comparison_function);
 
 
 

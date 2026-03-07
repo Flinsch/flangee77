@@ -3,7 +3,7 @@
 
 #include "./StencilOperation.h"
 
-#include "../ComparisonFunction.h"
+#include "./ComparisonFunction.h"
 
 
 
