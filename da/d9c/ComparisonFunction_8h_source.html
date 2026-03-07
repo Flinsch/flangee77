@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>flangee77: XiaoLabs/graphics/ComparisonFunction.h Source File</title>
+<title>flangee77: XiaoLabs/graphics/states/ComparisonFunction.h Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -99,53 +99,53 @@ $(document).ready(function(){initNavTree('da/d9c/ComparisonFunction_8h_source.ht
   <div class="headertitle"><div class="title">ComparisonFunction.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="../../da/d9c/ComparisonFunction_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef XL7_GRAPHICS_COMPARISONFUNCTION_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define XL7_GRAPHICS_COMPARISONFUNCTION_H</span></div>
+<a href="../../da/d9c/ComparisonFunction_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef XL7_GRAPHICS_STATES_COMPARISONFUNCTION_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define XL7_GRAPHICS_STATES_COMPARISONFUNCTION_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="../../de/d99/root_8h.html">CoreLabs/root.h</a>&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d8/d30/namespacexl7_1_1graphics.html">xl7::graphics</a> {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html">xl7::graphics::states</a> {</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40f">   12</a></span><span class="keyword">enum struct</span> <a class="code hl_enumeration" href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40f">ComparisonFunction</a></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <a class="code hl_enumvalue" href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa6e7b34fa59e1bd229b207892956dc41c">Never</a> = 1,</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_enumvalue" href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa1cfdf0e8d0c87a228c1f40d9bee7888b">Less</a>,</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_enumvalue" href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40faf5f286e73bda105e538310b3190f75c5">Equal</a>,</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_enumvalue" href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fad3e6fdac55bb7b0edd7834c968ba1f38">LessEqual</a>,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_enumvalue" href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa8768a6821cd735aea4f5b0df88c1fc6a">Greater</a>,</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_enumvalue" href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa19bb0af2c3c530538cb41aff7f235b96">NotEqual</a>,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_enumvalue" href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa758b05d899def79c9eb864ad4f96be1f">GreaterEqual</a>,</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_enumvalue" href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa68eec46437c384d8dad18d5464ebc35c">Always</a>,</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086">   13</a></span><span class="keyword">enum struct</span> <a class="code hl_enumeration" href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086">ComparisonFunction</a></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_enumvalue" href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086a6e7b34fa59e1bd229b207892956dc41c">Never</a> = 1,</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_enumvalue" href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086a1cfdf0e8d0c87a228c1f40d9bee7888b">Less</a>,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_enumvalue" href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086af5f286e73bda105e538310b3190f75c5">Equal</a>,</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_enumvalue" href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086ad3e6fdac55bb7b0edd7834c968ba1f38">LessEqual</a>,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_enumvalue" href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086a8768a6821cd735aea4f5b0df88c1fc6a">Greater</a>,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_enumvalue" href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086a19bb0af2c3c530538cb41aff7f235b96">NotEqual</a>,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_enumvalue" href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086a758b05d899def79c9eb864ad4f96be1f">GreaterEqual</a>,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_enumvalue" href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086a68eec46437c384d8dad18d5464ebc35c">Always</a>,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>};</div>
 </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>} <span class="comment">// namespace xl7::graphics</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif </span><span class="comment">// XL7_GRAPHICS_COMPARISONFUNCTION_H</span></div>
-<div class="ttc" id="anamespacexl7_1_1graphics_html"><div class="ttname"><a href="../../d8/d30/namespacexl7_1_1graphics.html">xl7::graphics</a></div><div class="ttdef"><b>Definition</b> graphics.h:10</div></div>
-<div class="ttc" id="anamespacexl7_1_1graphics_html_ab4d162e3f15792721b760d2fd436d40f"><div class="ttname"><a href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40f">xl7::graphics::ComparisonFunction</a></div><div class="ttdeci">ComparisonFunction</div><div class="ttdef"><b>Definition</b> ComparisonFunction.h:13</div></div>
-<div class="ttc" id="anamespacexl7_1_1graphics_html_ab4d162e3f15792721b760d2fd436d40fa19bb0af2c3c530538cb41aff7f235b96"><div class="ttname"><a href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa19bb0af2c3c530538cb41aff7f235b96">xl7::graphics::ComparisonFunction::NotEqual</a></div><div class="ttdeci">@ NotEqual</div></div>
-<div class="ttc" id="anamespacexl7_1_1graphics_html_ab4d162e3f15792721b760d2fd436d40fa1cfdf0e8d0c87a228c1f40d9bee7888b"><div class="ttname"><a href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa1cfdf0e8d0c87a228c1f40d9bee7888b">xl7::graphics::ComparisonFunction::Less</a></div><div class="ttdeci">@ Less</div></div>
-<div class="ttc" id="anamespacexl7_1_1graphics_html_ab4d162e3f15792721b760d2fd436d40fa68eec46437c384d8dad18d5464ebc35c"><div class="ttname"><a href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa68eec46437c384d8dad18d5464ebc35c">xl7::graphics::ComparisonFunction::Always</a></div><div class="ttdeci">@ Always</div></div>
-<div class="ttc" id="anamespacexl7_1_1graphics_html_ab4d162e3f15792721b760d2fd436d40fa6e7b34fa59e1bd229b207892956dc41c"><div class="ttname"><a href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa6e7b34fa59e1bd229b207892956dc41c">xl7::graphics::ComparisonFunction::Never</a></div><div class="ttdeci">@ Never</div></div>
-<div class="ttc" id="anamespacexl7_1_1graphics_html_ab4d162e3f15792721b760d2fd436d40fa758b05d899def79c9eb864ad4f96be1f"><div class="ttname"><a href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa758b05d899def79c9eb864ad4f96be1f">xl7::graphics::ComparisonFunction::GreaterEqual</a></div><div class="ttdeci">@ GreaterEqual</div></div>
-<div class="ttc" id="anamespacexl7_1_1graphics_html_ab4d162e3f15792721b760d2fd436d40fa8768a6821cd735aea4f5b0df88c1fc6a"><div class="ttname"><a href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa8768a6821cd735aea4f5b0df88c1fc6a">xl7::graphics::ComparisonFunction::Greater</a></div><div class="ttdeci">@ Greater</div></div>
-<div class="ttc" id="anamespacexl7_1_1graphics_html_ab4d162e3f15792721b760d2fd436d40fad3e6fdac55bb7b0edd7834c968ba1f38"><div class="ttname"><a href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fad3e6fdac55bb7b0edd7834c968ba1f38">xl7::graphics::ComparisonFunction::LessEqual</a></div><div class="ttdeci">@ LessEqual</div></div>
-<div class="ttc" id="anamespacexl7_1_1graphics_html_ab4d162e3f15792721b760d2fd436d40faf5f286e73bda105e538310b3190f75c5"><div class="ttname"><a href="../../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40faf5f286e73bda105e538310b3190f75c5">xl7::graphics::ComparisonFunction::Equal</a></div><div class="ttdeci">@ Equal</div></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>} <span class="comment">// namespace xl7::graphics::states</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif </span><span class="comment">// XL7_GRAPHICS_STATES_COMPARISONFUNCTION_H</span></div>
+<div class="ttc" id="anamespacexl7_1_1graphics_1_1states_html"><div class="ttname"><a href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html">xl7::graphics::states</a></div><div class="ttdef"><b>Definition</b> AbstractState.cpp:7</div></div>
+<div class="ttc" id="anamespacexl7_1_1graphics_1_1states_html_a871048e956c024f62d483062a44e7086"><div class="ttname"><a href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086">xl7::graphics::states::ComparisonFunction</a></div><div class="ttdeci">ComparisonFunction</div><div class="ttdef"><b>Definition</b> ComparisonFunction.h:14</div></div>
+<div class="ttc" id="anamespacexl7_1_1graphics_1_1states_html_a871048e956c024f62d483062a44e7086a19bb0af2c3c530538cb41aff7f235b96"><div class="ttname"><a href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086a19bb0af2c3c530538cb41aff7f235b96">xl7::graphics::states::ComparisonFunction::NotEqual</a></div><div class="ttdeci">@ NotEqual</div></div>
+<div class="ttc" id="anamespacexl7_1_1graphics_1_1states_html_a871048e956c024f62d483062a44e7086a1cfdf0e8d0c87a228c1f40d9bee7888b"><div class="ttname"><a href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086a1cfdf0e8d0c87a228c1f40d9bee7888b">xl7::graphics::states::ComparisonFunction::Less</a></div><div class="ttdeci">@ Less</div></div>
+<div class="ttc" id="anamespacexl7_1_1graphics_1_1states_html_a871048e956c024f62d483062a44e7086a68eec46437c384d8dad18d5464ebc35c"><div class="ttname"><a href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086a68eec46437c384d8dad18d5464ebc35c">xl7::graphics::states::ComparisonFunction::Always</a></div><div class="ttdeci">@ Always</div></div>
+<div class="ttc" id="anamespacexl7_1_1graphics_1_1states_html_a871048e956c024f62d483062a44e7086a6e7b34fa59e1bd229b207892956dc41c"><div class="ttname"><a href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086a6e7b34fa59e1bd229b207892956dc41c">xl7::graphics::states::ComparisonFunction::Never</a></div><div class="ttdeci">@ Never</div></div>
+<div class="ttc" id="anamespacexl7_1_1graphics_1_1states_html_a871048e956c024f62d483062a44e7086a758b05d899def79c9eb864ad4f96be1f"><div class="ttname"><a href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086a758b05d899def79c9eb864ad4f96be1f">xl7::graphics::states::ComparisonFunction::GreaterEqual</a></div><div class="ttdeci">@ GreaterEqual</div></div>
+<div class="ttc" id="anamespacexl7_1_1graphics_1_1states_html_a871048e956c024f62d483062a44e7086a8768a6821cd735aea4f5b0df88c1fc6a"><div class="ttname"><a href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086a8768a6821cd735aea4f5b0df88c1fc6a">xl7::graphics::states::ComparisonFunction::Greater</a></div><div class="ttdeci">@ Greater</div></div>
+<div class="ttc" id="anamespacexl7_1_1graphics_1_1states_html_a871048e956c024f62d483062a44e7086ad3e6fdac55bb7b0edd7834c968ba1f38"><div class="ttname"><a href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086ad3e6fdac55bb7b0edd7834c968ba1f38">xl7::graphics::states::ComparisonFunction::LessEqual</a></div><div class="ttdeci">@ LessEqual</div></div>
+<div class="ttc" id="anamespacexl7_1_1graphics_1_1states_html_a871048e956c024f62d483062a44e7086af5f286e73bda105e538310b3190f75c5"><div class="ttname"><a href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086af5f286e73bda105e538310b3190f75c5">xl7::graphics::states::ComparisonFunction::Equal</a></div><div class="ttdeci">@ Equal</div></div>
 <div class="ttc" id="aroot_8h_html"><div class="ttname"><a href="../../de/d99/root_8h.html">root.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_c6577470624d31d942303d1fd375dcdc.html">XiaoLabs</a></li><li class="navelem"><a class="el" href="../../dir_2d98337101d11b4d611e16394214b2cb.html">graphics</a></li><li class="navelem"><a class="el" href="../../da/d9c/ComparisonFunction_8h.html">ComparisonFunction.h</a></li>
+    <li class="navelem"><a class="el" href="../../dir_c6577470624d31d942303d1fd375dcdc.html">XiaoLabs</a></li><li class="navelem"><a class="el" href="../../dir_2d98337101d11b4d611e16394214b2cb.html">graphics</a></li><li class="navelem"><a class="el" href="../../dir_fe650b0e797e8ef6e4ca9eab5dd5720b.html">states</a></li><li class="navelem"><a class="el" href="../../da/d9c/ComparisonFunction_8h.html">ComparisonFunction.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

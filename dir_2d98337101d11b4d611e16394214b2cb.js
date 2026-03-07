@@ -14,7 +14,6 @@ var dir_2d98337101d11b4d611e16394214b2cb =
     [ "ClearFlags.h", "d9/d9e/ClearFlags_8h.html", "d9/d9e/ClearFlags_8h" ],
     [ "Color.cpp", "d5/d5f/Color_8cpp.html", null ],
     [ "Color.h", "dd/dac/Color_8h.html", "dd/dac/Color_8h" ],
-    [ "ComparisonFunction.h", "da/d9c/ComparisonFunction_8h.html", "da/d9c/ComparisonFunction_8h" ],
     [ "DepthStencilFormat.h", "d0/d78/DepthStencilFormat_8h.html", "d0/d78/DepthStencilFormat_8h" ],
     [ "GraphicsSystem.cpp", "d0/dc4/GraphicsSystem_8cpp.html", "d0/dc4/GraphicsSystem_8cpp" ],
     [ "GraphicsSystem.h", "d3/d1e/GraphicsSystem_8h.html", "d3/d1e/GraphicsSystem_8h" ],

@@ -36,16 +36,6 @@ var namespacexl7_1_1graphics =
       [ "DepthStencilBuffer", "d8/d30/namespacexl7_1_1graphics.html#ae25f36aae299cdb990d6a03f90d44642a232807645bb96f3e6d17c43b1b9cd666", null ],
       [ "All", "d8/d30/namespacexl7_1_1graphics.html#ae25f36aae299cdb990d6a03f90d44642ab1c94ca2fbc3e78fc30069c8d0f01680", null ]
     ] ],
-    [ "ComparisonFunction", "d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40f", [
-      [ "Never", "d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa6e7b34fa59e1bd229b207892956dc41c", null ],
-      [ "Less", "d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa1cfdf0e8d0c87a228c1f40d9bee7888b", null ],
-      [ "Equal", "d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40faf5f286e73bda105e538310b3190f75c5", null ],
-      [ "LessEqual", "d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fad3e6fdac55bb7b0edd7834c968ba1f38", null ],
-      [ "Greater", "d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa8768a6821cd735aea4f5b0df88c1fc6a", null ],
-      [ "NotEqual", "d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa19bb0af2c3c530538cb41aff7f235b96", null ],
-      [ "GreaterEqual", "d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa758b05d899def79c9eb864ad4f96be1f", null ],
-      [ "Always", "d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa68eec46437c384d8dad18d5464ebc35c", null ]
-    ] ],
     [ "DepthStencilFormat", "d8/d30/namespacexl7_1_1graphics.html#a43b1458b1fd0bf912e9f69eec93adea5", [
       [ "UNKNOWN", "d8/d30/namespacexl7_1_1graphics.html#a43b1458b1fd0bf912e9f69eec93adea5a696b031073e74bf2cb98e5ef201d4aa3", null ],
       [ "D16", "d8/d30/namespacexl7_1_1graphics.html#a43b1458b1fd0bf912e9f69eec93adea5a6fd9ec81643ee5a57f85a71951bfe13d", null ],

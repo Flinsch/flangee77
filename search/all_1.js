@@ -79,7 +79,7 @@ var searchData=
   ['allowscientific_76',['AllowScientific',['../d3/d6a/namespacedl7_1_1syntax_1_1matchers.html#a52fc665d8a9a783b2d6454378201ea24ad15d935a85ee59f25c66b4b54e04162a',1,'dl7::syntax::matchers']]],
   ['alpha_77',['alpha',['../db/ddf/structcl7_1_1Version.html#a890721a856e7cc2fbb0c524521e0b635a6132295fcf5570fb8b0a944ef322a598',1,'cl7::Version::Alpha'],['../d8/d30/namespacexl7_1_1graphics.html#a7f932a51645d57b7b508969692d213dea6132295fcf5570fb8b0a944ef322a598',1,'xl7::graphics::Alpha']]],
   ['alpha_5foperation_78',['alpha_operation',['../df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc.html#ae442c84254022fcb77645521b0344c8b',1,'xl7::graphics::states::BlendStateDesc']]],
-  ['always_79',['Always',['../d8/d30/namespacexl7_1_1graphics.html#ab4d162e3f15792721b760d2fd436d40fa68eec46437c384d8dad18d5464ebc35c',1,'xl7::graphics']]],
+  ['always_79',['Always',['../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086a68eec46437c384d8dad18d5464ebc35c',1,'xl7::graphics::states']]],
   ['analyticalcoveragerasterizer_80',['AnalyticalCoverageRasterizer',['../df/d68/classfl7_1_1fonts_1_1raster_1_1AnalyticalCoverageRasterizer.html',1,'fl7::fonts::raster']]],
   ['analyticalcoveragerasterizer_2ecpp_81',['AnalyticalCoverageRasterizer.cpp',['../d7/df3/AnalyticalCoverageRasterizer_8cpp.html',1,'']]],
   ['analyticalcoveragerasterizer_2eh_82',['AnalyticalCoverageRasterizer.h',['../df/d5a/AnalyticalCoverageRasterizer_8h.html',1,'']]],

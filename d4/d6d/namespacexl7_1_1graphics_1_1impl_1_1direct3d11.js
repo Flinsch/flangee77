@@ -7,7 +7,7 @@ var namespacexl7_1_1graphics_1_1impl_1_1direct3d11 =
       [ "dxgi_result", "df/dfe/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1errors.html#ae63785f72c1aa35000f93449023176ee", null ]
     ] ],
     [ "mappings", "db/d05/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1mappings.html", [
-      [ "_d3d_comparison_func_from", "db/d05/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1mappings.html#a450f1cbff4876b98dcb6f2b7b7dac350", null ],
+      [ "_d3d_comparison_func_from", "db/d05/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1mappings.html#a4430c0bd7b534409a83c8738429ad412", null ],
       [ "_d3d_usage_from", "db/d05/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1mappings.html#a8668fde202a0d400396ea77af249d793", null ],
       [ "_d3d_usage_from", "db/d05/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1mappings.html#aad7b6cc6b65affb1b37f4df339e207aa", null ],
       [ "_dxgi_format_from", "db/d05/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1mappings.html#a62f256053a0dd28386e2e3c6f035b9c5", null ],
