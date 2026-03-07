@@ -14,11 +14,11 @@ enum struct MipFilterType
 {
     /** Disables mipmapping. */
     None,
-    /** Use point sampling. */
+    /** Use point sampling between mip levels. */
     Point = 1,
-    /** Use linear interpolation. */
+    /** Use linear interpolation between mip levels. */
     Linear,
-    /** Use anisotropic interpolation. */
+    /** Use anisotropic filtering for mip-level sampling (if supported). */
     Anisotropic,
 };
 

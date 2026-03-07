@@ -9,6 +9,7 @@ namespace xl7::graphics::states {
 
 
 
+/** Specifies the stencil buffer operation to perform depending on the result of the stencil and depth tests. */
 enum struct StencilOperation
 {
     /** Keep the existing stencil value. */

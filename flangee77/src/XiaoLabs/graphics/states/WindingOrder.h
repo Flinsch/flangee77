@@ -9,7 +9,7 @@ namespace xl7::graphics::states {
 
 
 
-/** Determines the orientation of the triangles. */
+/** Determines the orientation used to classify triangles as front-facing or back-facing. */
 enum struct WindingOrder
 {
     /** Consider a triangle front-facing if its vertices are clockwise on the render target (consider back-facing if they are counter-clockwise). */
