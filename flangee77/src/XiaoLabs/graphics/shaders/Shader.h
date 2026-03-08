@@ -119,10 +119,10 @@ public:
 
 protected:
 
-    Shader(Type type, const CreateParams<ShaderDesc>& params)
-        : ResourceBase(params)
+    Shader(Type type, const CreateContext& ctx, const ShaderDesc& desc)
+        : ResourceBase(ctx, desc)
         , _type(type)
-        , _desc(params.desc)
+        , _desc(desc)
     {
     }
 

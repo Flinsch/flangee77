@@ -33,8 +33,7 @@ public:
         friend class ResourceManager;
     };
 
-    template <class TDesc>
-    struct CreateParams
+    struct CreateContext
     {
         /** The owning manager of the resource to create (the manager that creates the resource). */
         ResourceManager* manager;
@@ -42,8 +41,6 @@ public:
         ResourceId id;
         /** The textual identifier of the resource to create (can be empty). */
         cl7::u8string_view identifier;
-        /** The descriptor of the resource to create. */
-        TDesc desc;
     };
 
 
@@ -158,9 +155,14 @@ protected:
 
     Resource(ResourceManager* manager, ResourceId id, cl7::u8string_view identifier);
 
-    template <class TDesc>
-    explicit Resource(const CreateParams<TDesc>& params)
-        : Resource(params.manager, params.id, params.identifier)
+    explicit Resource(const CreateContext& ctx)
+        : Resource(ctx.manager, ctx.id, ctx.identifier)
+    {
+    }
+
+    template <class TResourceDesc>
+    Resource(const CreateContext& ctx, const TResourceDesc& desc)
+        : Resource(ctx)
     {
     }
 

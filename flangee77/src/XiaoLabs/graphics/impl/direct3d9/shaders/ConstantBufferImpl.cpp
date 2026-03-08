@@ -10,8 +10,8 @@ namespace xl7::graphics::impl::direct3d9::shaders {
     // Construction / Destruction
     // #############################################################################
 
-    ConstantBufferImpl::ConstantBufferImpl(const CreateParams<xl7::graphics::shaders::ConstantBufferDesc>& params)
-        : ConstantBuffer(params)
+    ConstantBufferImpl::ConstantBufferImpl(const CreateContext& ctx, const graphics::shaders::ConstantBufferDesc& desc)
+        : ConstantBuffer(ctx, desc)
     {
     }
 
@@ -43,7 +43,7 @@ namespace xl7::graphics::impl::direct3d9::shaders {
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool ConstantBufferImpl::_acquire_impl(const xl7::graphics::shaders::ConstantDataProvider& constant_data_provider)
+    bool ConstantBufferImpl::_acquire_impl(const graphics::shaders::ConstantDataProvider& constant_data_provider)
     {
         return true;
     }
@@ -54,7 +54,7 @@ namespace xl7::graphics::impl::direct3d9::shaders {
      * has already been updated based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool ConstantBufferImpl::_update_impl(const xl7::graphics::shaders::ConstantDataProvider& constant_data_provider, bool discard, bool no_overwrite)
+    bool ConstantBufferImpl::_update_impl(const graphics::shaders::ConstantDataProvider& constant_data_provider, bool discard, bool no_overwrite)
     {
         return true;
     }

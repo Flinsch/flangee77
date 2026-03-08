@@ -13,14 +13,14 @@ namespace states {
 
 
 class RasterizerStateImpl final
-    : public xl7::graphics::states::RasterizerState
+    : public graphics::states::RasterizerState
 {
 
 public:
     class Attorney
     {
-        static RasterizerStateImpl* create(const CreateParams<xl7::graphics::states::RasterizerStateDesc>& params) { return new RasterizerStateImpl(params); }
-        friend class xl7::graphics::impl::direct3d11::ResourceFactoryImpl;
+        static RasterizerStateImpl* create(const CreateContext& ctx, const graphics::states::RasterizerStateDesc& desc) { return new RasterizerStateImpl(ctx, desc); }
+        friend class direct3d11::ResourceFactoryImpl;
     };
 
 
@@ -43,7 +43,7 @@ public:
      * Maps the specified rasterizer state descriptor to corresponding Direct3D 11
      * values and fills the given structure accordingly.
      */
-    static void map_d3d_values(const xl7::graphics::states::RasterizerStateDesc& desc, D3D11_RASTERIZER_DESC& d3d_rasterizer_desc);
+    static void map_d3d_values(const graphics::states::RasterizerStateDesc& desc, D3D11_RASTERIZER_DESC& d3d_rasterizer_desc);
 
 
 
@@ -53,7 +53,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit RasterizerStateImpl(const CreateParams<xl7::graphics::states::RasterizerStateDesc>& params);
+    explicit RasterizerStateImpl(const CreateContext& ctx, const graphics::states::RasterizerStateDesc& desc);
     ~RasterizerStateImpl() override = default;
 
 
@@ -75,7 +75,7 @@ private:
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool _acquire_impl(const xl7::resources::DataProvider& data_provider) override;
+    bool _acquire_impl(const resources::DataProvider& data_provider) override;
 
     /**
      * Disposes/"unacquires" the resource.

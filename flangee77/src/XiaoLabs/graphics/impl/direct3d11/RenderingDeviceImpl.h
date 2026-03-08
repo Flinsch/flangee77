@@ -133,7 +133,7 @@ private:
      * Checks whether the device (generally) supports the specified combination of
      * pixel format and channel order for the specified texture type.
      */
-    bool _check_texture_format_impl(xl7::graphics::textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder channel_order) override;
+    bool _check_texture_format_impl(graphics::textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder channel_order) override;
 
 
 
@@ -145,13 +145,13 @@ private:
      * Tries to find an actual Direct3D 11 constant buffer that matches the
      * specified layout.
      */
-    shaders::D3DConstantBufferWrapper* _find_d3d_constant_buffer(const xl7::graphics::shaders::ConstantBufferLayout& constant_buffer_layout);
+    shaders::D3DConstantBufferWrapper* _find_d3d_constant_buffer(const graphics::shaders::ConstantBufferLayout& constant_buffer_layout);
 
     /**
      * Tries to find an actual Direct3D 11 constant buffer that matches the
      * specified layout, otherwise creates a new one based on said layout.
      */
-    shaders::D3DConstantBufferWrapper* _find_or_create_d3d_constant_buffer(const xl7::graphics::shaders::ConstantBufferLayout& constant_buffer_layout);
+    shaders::D3DConstantBufferWrapper* _find_or_create_d3d_constant_buffer(const graphics::shaders::ConstantBufferLayout& constant_buffer_layout);
 
 
 

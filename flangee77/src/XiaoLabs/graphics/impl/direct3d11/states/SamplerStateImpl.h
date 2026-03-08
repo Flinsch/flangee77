@@ -13,14 +13,14 @@ namespace states {
 
 
 class SamplerStateImpl final
-    : public xl7::graphics::states::SamplerState
+    : public graphics::states::SamplerState
 {
 
 public:
     class Attorney
     {
-        static SamplerStateImpl* create(const CreateParams<xl7::graphics::states::SamplerStateDesc>& params) { return new SamplerStateImpl(params); }
-        friend class xl7::graphics::impl::direct3d11::ResourceFactoryImpl;
+        static SamplerStateImpl* create(const CreateContext& ctx, const graphics::states::SamplerStateDesc& desc) { return new SamplerStateImpl(ctx, desc); }
+        friend class direct3d11::ResourceFactoryImpl;
     };
 
 
@@ -43,7 +43,7 @@ public:
      * Maps the specified sampler state descriptor to corresponding Direct3D 11
      * values and fills the given structure accordingly.
      */
-    static void map_d3d_values(const xl7::graphics::states::SamplerStateDesc& desc, D3D11_SAMPLER_DESC& d3d_sampler_desc);
+    static void map_d3d_values(const graphics::states::SamplerStateDesc& desc, D3D11_SAMPLER_DESC& d3d_sampler_desc);
 
 
 
@@ -53,7 +53,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit SamplerStateImpl(const CreateParams<xl7::graphics::states::SamplerStateDesc>& params);
+    explicit SamplerStateImpl(const CreateContext& ctx, const graphics::states::SamplerStateDesc& desc);
     ~SamplerStateImpl() override = default;
 
 
@@ -75,7 +75,7 @@ private:
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool _acquire_impl(const xl7::resources::DataProvider& data_provider) override;
+    bool _acquire_impl(const resources::DataProvider& data_provider) override;
 
     /**
      * Disposes/"unacquires" the resource.

@@ -89,7 +89,7 @@ public:
 
 protected:
 
-    Texture(Type type, const CreateParams<TextureDesc>& params, unsigned depth, unsigned image_count);
+    Texture(Type type, const CreateContext& ctx, const TextureDesc& desc, unsigned depth, unsigned image_count);
 
     ~Texture() override = default;
 

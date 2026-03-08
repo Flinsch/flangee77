@@ -13,9 +13,9 @@ namespace xl7::graphics::textures {
 
 
 
-    Cubemap::Cubemap(const CreateParams<CubemapDesc>& params)
-        : ResourceBase(Type::Cubemap, {.manager = params.manager, .id = params.id, .identifier = params.identifier, .desc = params.desc}, 1, 6) // NOLINT(*-slicing)
-        , _desc(params.desc)
+    Cubemap::Cubemap(const CreateContext& ctx, const CubemapDesc& desc)
+        : ResourceBase(Type::Cubemap, ctx, desc, 1, 6) // NOLINT(*-slicing)
+        , _desc(desc)
     {
         const RenderingDevice::Capabilities& capabilities = GraphicsSystem::instance().get_rendering_device()->get_capabilities();
 

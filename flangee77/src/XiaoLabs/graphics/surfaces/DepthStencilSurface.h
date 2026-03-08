@@ -31,8 +31,8 @@ public:
 
 protected:
 
-    explicit DepthStencilSurface(const CreateParams<SurfaceDesc>& params)
-        : ResourceBase(Type::DepthStencilSurface, params)
+    explicit DepthStencilSurface(const CreateContext& ctx, const SurfaceDesc& desc)
+        : ResourceBase(Type::DepthStencilSurface, ctx, desc)
     {
     }
 

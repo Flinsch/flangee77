@@ -26,7 +26,7 @@ public:
 
     D3DConstantBufferWrapper() = delete;
 
-    D3DConstantBufferWrapper(xl7::graphics::shaders::ConstantBufferLayout layout);
+    D3DConstantBufferWrapper(graphics::shaders::ConstantBufferLayout layout);
 
     D3DConstantBufferWrapper(const D3DConstantBufferWrapper&) = delete;
     D3DConstantBufferWrapper& operator=(const D3DConstantBufferWrapper&) = delete;
@@ -45,7 +45,7 @@ public:
     /**
      * Returns the layout specification of the constant buffer.
      */
-    const xl7::graphics::shaders::ConstantBufferLayout& get_layout() const { return _layout; }
+    const graphics::shaders::ConstantBufferLayout& get_layout() const { return _layout; }
 
     /**
      * Returns the size of the constant buffer, in bytes.
@@ -81,13 +81,13 @@ public:
     /**
      * Returns true if the constant buffer matches the given layout specification.
      */
-    bool matches(const xl7::graphics::shaders::ConstantBufferLayout& layout) const;
+    bool matches(const graphics::shaders::ConstantBufferLayout& layout) const;
 
     /**
      * Updates the local copy of the constant buffer data based on the given source
      * data and the specified constant mapping.
      */
-    bool update(cl7::byte_view data, const xl7::graphics::shaders::ConstantMapping& constant_mapping);
+    bool update(cl7::byte_view data, const graphics::shaders::ConstantMapping& constant_mapping);
 
     /**
      * Flushes any changes to the local copy of the constant buffer data to the
@@ -118,7 +118,7 @@ private:
     /**
      * The layout specification of the constant buffer.
      */
-    xl7::graphics::shaders::ConstantBufferLayout _layout;
+    graphics::shaders::ConstantBufferLayout _layout;
 
     /**
      * The size of the constant buffer, in bytes.

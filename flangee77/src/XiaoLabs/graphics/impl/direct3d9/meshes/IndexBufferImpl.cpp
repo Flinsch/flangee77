@@ -13,13 +13,13 @@ namespace xl7::graphics::impl::direct3d9::meshes {
 
 
 
-    static D3DFORMAT _d3d_format_from(xl7::graphics::meshes::IndexType index_type)
+    static D3DFORMAT _d3d_format_from(graphics::meshes::IndexType index_type)
     {
         switch (index_type)
         {
-        case xl7::graphics::meshes::IndexType::UINT16:
+        case graphics::meshes::IndexType::UINT16:
             return D3DFMT_INDEX16;
-        case xl7::graphics::meshes::IndexType::UINT32:
+        case graphics::meshes::IndexType::UINT32:
             return D3DFMT_INDEX32;
         default:
             assert(false);
@@ -34,9 +34,9 @@ namespace xl7::graphics::impl::direct3d9::meshes {
     // Construction / Destruction
     // #############################################################################
 
-    IndexBufferImpl::IndexBufferImpl(const CreateParams<xl7::graphics::meshes::IndexBufferDesc>& params)
-        : IndexBuffer(params)
-        , _d3d_format(_d3d_format_from(get_desc().index_type))
+    IndexBufferImpl::IndexBufferImpl(const CreateContext& ctx, const graphics::meshes::IndexBufferDesc& desc)
+        : IndexBuffer(ctx, desc)
+        , _d3d_format(_d3d_format_from(desc.index_type))
     {
     }
 

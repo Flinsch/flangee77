@@ -29,8 +29,8 @@ public:
 protected:
 
     template <class TDesc>
-    explicit AbstractState(const CreateParams<TDesc>& params)
-        : ResourceBase(params)
+    explicit AbstractState(const CreateContext& ctx, const TDesc& desc)
+        : ResourceBase(ctx, desc)
     {
     }
 

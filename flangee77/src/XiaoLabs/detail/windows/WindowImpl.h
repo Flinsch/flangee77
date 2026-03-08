@@ -12,7 +12,7 @@ namespace xl7::detail::windows {
 
 
 class WindowImpl
-    : public xl7::detail::IWindowImpl
+    : public IWindowImpl
 {
 public:
     ~WindowImpl() override = default;

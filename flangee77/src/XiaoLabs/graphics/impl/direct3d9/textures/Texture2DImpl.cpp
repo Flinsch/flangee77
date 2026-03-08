@@ -17,9 +17,9 @@ namespace xl7::graphics::impl::direct3d9::textures {
     // Construction / Destruction
     // #############################################################################
 
-    Texture2DImpl::Texture2DImpl(const CreateParams<xl7::graphics::textures::Texture2DDesc>& params)
-        : Texture2D(params)
-        , _d3d_format(mappings::_d3d_format_from(params.desc.pixel_format, get_channel_order()))
+    Texture2DImpl::Texture2DImpl(const CreateContext& ctx, const graphics::textures::Texture2DDesc& desc)
+        : Texture2D(ctx, desc)
+        , _d3d_format(mappings::_d3d_format_from(desc.pixel_format, get_channel_order()))
     {
     }
 
@@ -53,7 +53,7 @@ namespace xl7::graphics::impl::direct3d9::textures {
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool Texture2DImpl::_acquire_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider)
+    bool Texture2DImpl::_acquire_impl(const graphics::textures::ImageDataProvider& image_data_provider)
     {
         auto* d3d_device = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_d3d_device();
         assert(d3d_device);
@@ -92,7 +92,7 @@ namespace xl7::graphics::impl::direct3d9::textures {
      * has already been updated based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool Texture2DImpl::_update_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider, bool discard, bool no_overwrite)
+    bool Texture2DImpl::_update_impl(const graphics::textures::ImageDataProvider& image_data_provider, bool discard, bool no_overwrite)
     {
         DWORD flags = D3DLOCK_DISCARD;
 
@@ -110,7 +110,7 @@ namespace xl7::graphics::impl::direct3d9::textures {
         update_desc[0].rect.bottom = static_cast<LONG>(get_desc().height);
         unsigned mip_level = 1;
 
-        /*std::vector<xl7::graphics::images::Image> mipmaps;
+        /*std::vector<images::Image> mipmaps;
         if (get_desc().mip_levels != 1)
         {
             mipmaps = create_mipmaps();

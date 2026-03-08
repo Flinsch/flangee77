@@ -13,14 +13,14 @@ namespace meshes {
 
 
 class VertexBufferImpl final
-    : public xl7::graphics::meshes::VertexBuffer
+    : public graphics::meshes::VertexBuffer
 {
 
 public:
     class Attorney
     {
-        static VertexBufferImpl* create(const CreateParams<xl7::graphics::meshes::VertexBufferDesc>& params) { return new VertexBufferImpl(params); }
-        friend class xl7::graphics::impl::direct3d9::ResourceFactoryImpl;
+        static VertexBufferImpl* create(const CreateContext& ctx, const graphics::meshes::VertexBufferDesc& desc) { return new VertexBufferImpl(ctx, desc); }
+        friend class direct3d9::ResourceFactoryImpl;
     };
 
 
@@ -47,7 +47,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit VertexBufferImpl(const CreateParams<xl7::graphics::meshes::VertexBufferDesc>& params);
+    explicit VertexBufferImpl(const CreateContext& ctx, const graphics::meshes::VertexBufferDesc& desc);
     ~VertexBufferImpl() override = default;
 
 

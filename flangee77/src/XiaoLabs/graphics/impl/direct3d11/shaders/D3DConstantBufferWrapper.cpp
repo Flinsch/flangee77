@@ -17,7 +17,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
     // Construction / Destruction
     // #############################################################################
 
-    D3DConstantBufferWrapper::D3DConstantBufferWrapper(xl7::graphics::shaders::ConstantBufferLayout layout)
+    D3DConstantBufferWrapper::D3DConstantBufferWrapper(graphics::shaders::ConstantBufferLayout layout)
         : _layout(std::move(layout))
         , _size((_layout.calculate_size() + 15) / 16 * 16) // Ensure a multiple of 16.
         , _d3d_constant_buffer(nullptr)
@@ -68,7 +68,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
     /**
      * Returns true if the constant buffer matches the given layout specification.
      */
-    bool D3DConstantBufferWrapper::matches(const xl7::graphics::shaders::ConstantBufferLayout& layout) const
+    bool D3DConstantBufferWrapper::matches(const graphics::shaders::ConstantBufferLayout& layout) const
     {
         // Should we force a 1-to-1 correspondence, or is it enough if
         // this constant buffer at least covers the requested layout?
@@ -113,7 +113,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
      * Updates the local copy of the constant buffer data based on the given source
      * data and the specified constant mapping.
      */
-    bool D3DConstantBufferWrapper::update(cl7::byte_view data, const xl7::graphics::shaders::ConstantMapping& constant_mapping)
+    bool D3DConstantBufferWrapper::update(cl7::byte_view data, const graphics::shaders::ConstantMapping& constant_mapping)
     {
         assert(constant_mapping.size > 0);
         if (constant_mapping.size == 0)

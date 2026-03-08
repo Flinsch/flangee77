@@ -13,9 +13,9 @@ namespace xl7::graphics::impl::direct3d9::meshes {
 
 
 
-    static DWORD _d3d_fvf_from(const xl7::graphics::meshes::VertexLayout& vertex_layout)
+    static DWORD _d3d_fvf_from(const graphics::meshes::VertexLayout& vertex_layout)
     {
-        
+
 
         return D3DFMT_UNKNOWN;
     }
@@ -26,8 +26,8 @@ namespace xl7::graphics::impl::direct3d9::meshes {
     // Construction / Destruction
     // #############################################################################
 
-    VertexBufferImpl::VertexBufferImpl(const CreateParams<xl7::graphics::meshes::VertexBufferDesc>& params)
-        : VertexBuffer(params)
+    VertexBufferImpl::VertexBufferImpl(const CreateContext& ctx, const graphics::meshes::VertexBufferDesc& desc)
+        : VertexBuffer(ctx, desc)
         , _d3d_fvf(_d3d_fvf_from(get_desc().vertex_layout))
     {
     }

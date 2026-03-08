@@ -32,13 +32,13 @@ namespace xl7::graphics::impl::direct3d11 {
         return static_cast<UINT>(clear_flags) >> 1;
     }
 
-    static D3D11_PRIMITIVE_TOPOLOGY _d3d_primitive_topology_from(xl7::graphics::meshes::Topology topology)
+    static D3D11_PRIMITIVE_TOPOLOGY _d3d_primitive_topology_from(graphics::meshes::Topology topology)
     {
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::Topology::PointList) == static_cast<unsigned>(D3D11_PRIMITIVE_TOPOLOGY_POINTLIST));
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::Topology::LineList) == static_cast<unsigned>(D3D11_PRIMITIVE_TOPOLOGY_LINELIST));
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::Topology::LineStrip) == static_cast<unsigned>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::Topology::TriangleList) == static_cast<unsigned>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::Topology::TriangleStrip) == static_cast<unsigned>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP));
+        static_assert(static_cast<unsigned>(graphics::meshes::Topology::PointList) == static_cast<unsigned>(D3D11_PRIMITIVE_TOPOLOGY_POINTLIST));
+        static_assert(static_cast<unsigned>(graphics::meshes::Topology::LineList) == static_cast<unsigned>(D3D11_PRIMITIVE_TOPOLOGY_LINELIST));
+        static_assert(static_cast<unsigned>(graphics::meshes::Topology::LineStrip) == static_cast<unsigned>(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP));
+        static_assert(static_cast<unsigned>(graphics::meshes::Topology::TriangleList) == static_cast<unsigned>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
+        static_assert(static_cast<unsigned>(graphics::meshes::Topology::TriangleStrip) == static_cast<unsigned>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP));
 
         return static_cast<D3D11_PRIMITIVE_TOPOLOGY>(topology);
     }
@@ -85,8 +85,8 @@ namespace xl7::graphics::impl::direct3d11 {
         hardware_states.primitive_topology = D3D11_PRIMITIVE_TOPOLOGY_POINTLIST;
         hardware_states.viewport = _d3d_viewport_from(get_rendering_device()->get_default_viewport());
 
-        unsigned stream_strides[xl7::graphics::pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];
-        unsigned stream_offsets[xl7::graphics::pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];
+        unsigned stream_strides[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];
+        unsigned stream_offsets[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS];
         std::memset(stream_strides, 0, sizeof(stream_strides));
         std::memset(stream_offsets, 0, sizeof(stream_offsets));
         _d3d_device_context->IASetVertexBuffers(0, get_rendering_device()->get_capabilities().max_concurrent_vertex_stream_count, &hardware_states.vertex_buffers[0], stream_strides, stream_offsets);
@@ -188,7 +188,7 @@ namespace xl7::graphics::impl::direct3d11 {
         if (!_flush_draw_states(resolved_draw_states))
             return false;
 
-        unsigned vertex_count = xl7::graphics::meshes::MeshUtil::calculate_vertex_index_count(resolved_draw_states.topology, primitive_count);
+        unsigned vertex_count = graphics::meshes::MeshUtil::calculate_vertex_index_count(resolved_draw_states.topology, primitive_count);
 
         _d3d_device_context->Draw(vertex_count, start_vertex);
 
@@ -203,7 +203,7 @@ namespace xl7::graphics::impl::direct3d11 {
         if (!_flush_draw_states(resolved_draw_states))
             return false;
 
-        unsigned index_count = xl7::graphics::meshes::MeshUtil::calculate_vertex_index_count(resolved_draw_states.topology, primitive_count);
+        unsigned index_count = graphics::meshes::MeshUtil::calculate_vertex_index_count(resolved_draw_states.topology, primitive_count);
 
         _d3d_device_context->DrawIndexed(index_count, start_index, base_vertex);
 

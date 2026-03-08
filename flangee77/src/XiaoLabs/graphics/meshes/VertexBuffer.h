@@ -39,7 +39,7 @@ public:
 
 protected:
 
-    explicit VertexBuffer(const CreateParams<VertexBufferDesc>& params);
+    explicit VertexBuffer(const CreateContext& ctx, const VertexBufferDesc& desc);
 
     ~VertexBuffer() override = default;
 

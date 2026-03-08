@@ -143,11 +143,11 @@ namespace xl7::graphics::impl::shared::shaders {
      * The file path is also used to resolve any #include directives. If an error
      * occurs, an object with an "unknown" language and empty data is returned.
      */
-    xl7::graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const cl7::u8string& file_path, const xl7::graphics::shaders::CompileOptions& compile_options, const cl7::astring& entry_point, const cl7::astring& target)
+    graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const cl7::u8string& file_path, const graphics::shaders::CompileOptions& compile_options, const cl7::astring& entry_point, const cl7::astring& target)
     {
         cl7::u8string source_code = Include::read_source_code(file_path);
 
-        return compile_hlsl_code({xl7::graphics::shaders::ShaderCode::Language::HighLevel, cl7::make_byte_view(source_code)}, Include::directory(file_path), compile_options, entry_point, target);
+        return compile_hlsl_code({graphics::shaders::ShaderCode::Language::HighLevel, cl7::make_byte_view(source_code)}, Include::directory(file_path), compile_options, entry_point, target);
     }
 
     /**
@@ -155,9 +155,9 @@ namespace xl7::graphics::impl::shared::shaders {
      * path is used to resolve any #include directives. If an error occurs, an
      * object with an "unknown" language and empty data is returned.
      */
-    xl7::graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const xl7::graphics::shaders::ShaderCode& hlsl_code, const cl7::u8string& include_path, const xl7::graphics::shaders::CompileOptions& compile_options, const cl7::astring& entry_point, const cl7::astring& target)
+    graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const graphics::shaders::ShaderCode& hlsl_code, const cl7::u8string& include_path, const graphics::shaders::CompileOptions& compile_options, const cl7::astring& entry_point, const cl7::astring& target)
     {
-        if (hlsl_code.get_language() != xl7::graphics::shaders::ShaderCode::Language::HighLevel)
+        if (hlsl_code.get_language() != graphics::shaders::ShaderCode::Language::HighLevel)
         {
             LOG_ERROR(u8"The given code does not appear to be in HLSL.");
             return {};
@@ -231,7 +231,7 @@ namespace xl7::graphics::impl::shared::shaders {
             return {};
         }
 
-        return {xl7::graphics::shaders::ShaderCode::Language::Bytecode, cl7::byte_view(static_cast<std::byte*>(bytecode_blob->GetBufferPointer()), bytecode_blob->GetBufferSize())};
+        return {graphics::shaders::ShaderCode::Language::Bytecode, cl7::byte_view(static_cast<std::byte*>(bytecode_blob->GetBufferPointer()), bytecode_blob->GetBufferSize())};
     }
 
 

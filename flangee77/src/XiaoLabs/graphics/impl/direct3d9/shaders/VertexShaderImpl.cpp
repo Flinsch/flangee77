@@ -20,8 +20,8 @@ namespace xl7::graphics::impl::direct3d9::shaders {
     // Construction / Destruction
     // #############################################################################
 
-    VertexShaderImpl::VertexShaderImpl(const CreateParams<xl7::graphics::shaders::ShaderDesc>& params)
-        : VertexShader(params)
+    VertexShaderImpl::VertexShaderImpl(const CreateContext& ctx, const graphics::shaders::ShaderDesc& desc)
+        : VertexShader(ctx, desc)
     {
     }
 
@@ -55,13 +55,13 @@ namespace xl7::graphics::impl::direct3d9::shaders {
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    bool VertexShaderImpl::_acquire_precompiled_impl(const xl7::graphics::shaders::CodeDataProvider& code_data_provider)
+    bool VertexShaderImpl::_acquire_precompiled_impl(const graphics::shaders::CodeDataProvider& code_data_provider)
     {
         auto* d3d_device = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_d3d_device();
         assert(d3d_device);
 
-        const xl7::graphics::shaders::ShaderCode& bytecode = code_data_provider.get_shader_code();
-        assert(bytecode.get_language() == xl7::graphics::shaders::ShaderCode::Language::Bytecode);
+        const graphics::shaders::ShaderCode& bytecode = code_data_provider.get_shader_code();
+        assert(bytecode.get_language() == graphics::shaders::ShaderCode::Language::Bytecode);
 
         HRESULT hresult = d3d_device->CreateVertexShader(
             reinterpret_cast<const DWORD*>(bytecode.get_code_data().data()),
@@ -82,14 +82,14 @@ namespace xl7::graphics::impl::direct3d9::shaders {
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    bool VertexShaderImpl::_acquire_recompilable_impl(const xl7::graphics::shaders::CodeDataProvider& code_data_provider, xl7::graphics::shaders::ShaderCode& bytecode_out)
+    bool VertexShaderImpl::_acquire_recompilable_impl(const graphics::shaders::CodeDataProvider& code_data_provider, graphics::shaders::ShaderCode& bytecode_out)
     {
         const cl7::Version& version = GraphicsSystem::instance().get_rendering_device()->get_capabilities().shaders.vertex_shader_version;
         const cl7::astring target = "vs_" + std::to_string(version.major) + "_" + std::to_string(version.minor);
         const cl7::astring entry_point = _cascade_entry_point(code_data_provider.get_compile_options());
 
-        const xl7::graphics::shaders::ShaderCode& hlsl_code = code_data_provider.get_shader_code();
-        assert(hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel);
+        const graphics::shaders::ShaderCode& hlsl_code = code_data_provider.get_shader_code();
+        assert(hlsl_code.get_language() == graphics::shaders::ShaderCode::Language::HighLevel);
 
         bytecode_out = shared::shaders::D3DShaderCompiler::compile_hlsl_code(hlsl_code, u8"", code_data_provider.get_compile_options(), entry_point, target);
         if (bytecode_out.get_code_data().empty())
@@ -98,26 +98,26 @@ namespace xl7::graphics::impl::direct3d9::shaders {
             return false;
         }
 
-        return _acquire_precompiled_impl(xl7::graphics::shaders::CodeDataProvider(&bytecode_out, &code_data_provider.get_compile_options()));
+        return _acquire_precompiled_impl(graphics::shaders::CodeDataProvider(&bytecode_out, &code_data_provider.get_compile_options()));
     }
 
     /**
      * Recompiles the shader code. This tends to result in the resource having to be
      * completely recreated in the background.
      */
-    bool VertexShaderImpl::_recompile_impl(const xl7::graphics::shaders::CompileOptions& compile_options, xl7::graphics::shaders::ShaderCode& bytecode_out)
+    bool VertexShaderImpl::_recompile_impl(const graphics::shaders::CompileOptions& compile_options, graphics::shaders::ShaderCode& bytecode_out)
     {
-        xl7::graphics::shaders::ShaderCode hlsl_code(get_desc().language, get_data());
-        assert(hlsl_code.get_language() == xl7::graphics::shaders::ShaderCode::Language::HighLevel);
+        graphics::shaders::ShaderCode hlsl_code(get_desc().language, get_data());
+        assert(hlsl_code.get_language() == graphics::shaders::ShaderCode::Language::HighLevel);
 
-        return _acquire_recompilable_impl(xl7::graphics::shaders::CodeDataProvider(&hlsl_code, &compile_options), bytecode_out);
+        return _acquire_recompilable_impl(graphics::shaders::CodeDataProvider(&hlsl_code, &compile_options), bytecode_out);
     }
 
     /**
      * Performs a "reflection" on the (compiled) shader bytecode to determine
      * parameter declarations etc.
      */
-    bool VertexShaderImpl::_reflect_impl(const xl7::graphics::shaders::ShaderCode& bytecode, xl7::graphics::shaders::ReflectionResult& reflection_result_out)
+    bool VertexShaderImpl::_reflect_impl(const graphics::shaders::ShaderCode& bytecode, graphics::shaders::ReflectionResult& reflection_result_out)
     {
         return D3DShaderReflection::reflect(bytecode, reflection_result_out);
     }

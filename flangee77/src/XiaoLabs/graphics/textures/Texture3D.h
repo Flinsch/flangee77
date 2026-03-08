@@ -50,7 +50,7 @@ public:
 
 protected:
 
-    explicit Texture3D(const CreateParams<Texture3DDesc>& params);
+    explicit Texture3D(const CreateContext& ctx, const Texture3DDesc& desc);
 
     ~Texture3D() override = default;
 

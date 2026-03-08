@@ -8,9 +8,9 @@ namespace xl7::graphics::meshes {
 
 
 
-    VertexBuffer::VertexBuffer(const CreateParams<VertexBufferDesc>& params)
-        : ResourceBase(Type::VertexBuffer, params, params.desc.stride)
-        , _desc(params.desc)
+    VertexBuffer::VertexBuffer(const CreateContext& ctx, const VertexBufferDesc& desc)
+        : ResourceBase(Type::VertexBuffer, ctx, desc, desc.stride)
+        , _desc(desc)
     {
         assert(get_stride() > 0 && get_stride() >= _desc.vertex_layout.calculate_size());
         assert(get_stride() >= 12 && get_stride() % 4 == 0);

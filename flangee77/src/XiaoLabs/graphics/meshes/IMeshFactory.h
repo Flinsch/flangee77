@@ -19,8 +19,8 @@ class IMeshFactory
 public:
     virtual ~IMeshFactory() = default;
 
-    virtual xl7::graphics::meshes::VertexBuffer* create_vertex_buffer(const resources::Resource::CreateParams<xl7::graphics::meshes::VertexBufferDesc>& params) = 0;
-    virtual xl7::graphics::meshes::IndexBuffer* create_index_buffer(const resources::Resource::CreateParams<xl7::graphics::meshes::IndexBufferDesc>& params) = 0;
+    virtual VertexBuffer* create_vertex_buffer(const resources::Resource::CreateContext& ctx, const VertexBufferDesc& desc) = 0;
+    virtual IndexBuffer* create_index_buffer(const resources::Resource::CreateContext& ctx, const IndexBufferDesc& desc) = 0;
 
 }; // class IMeshFactory
 

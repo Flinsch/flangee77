@@ -39,7 +39,7 @@ public:
 
 protected:
 
-    explicit IndexBuffer(const CreateParams<IndexBufferDesc>& params);
+    explicit IndexBuffer(const CreateContext& ctx, const IndexBufferDesc& desc);
 
     ~IndexBuffer() override = default;
 

@@ -21,10 +21,10 @@ class IShaderFactory
 public:
     virtual ~IShaderFactory() = default;
 
-    virtual xl7::graphics::shaders::ConstantBuffer* create_constant_buffer(const resources::Resource::CreateParams<xl7::graphics::shaders::ConstantBufferDesc>& params) = 0;
+    virtual ConstantBuffer* create_constant_buffer(const resources::Resource::CreateContext& ctx, const ConstantBufferDesc& desc) = 0;
 
-    virtual xl7::graphics::shaders::VertexShader* create_vertex_shader(const resources::Resource::CreateParams<xl7::graphics::shaders::ShaderDesc>& params) = 0;
-    virtual xl7::graphics::shaders::PixelShader* create_pixel_shader(const resources::Resource::CreateParams<xl7::graphics::shaders::ShaderDesc>& params) = 0;
+    virtual VertexShader* create_vertex_shader(const resources::Resource::CreateContext& ctx, const ShaderDesc& desc) = 0;
+    virtual PixelShader* create_pixel_shader(const resources::Resource::CreateContext& ctx, const ShaderDesc& desc) = 0;
 
 }; // class IShaderFactory
 

@@ -13,14 +13,14 @@ namespace textures {
 
 
 class Texture2DImpl final
-    : public xl7::graphics::textures::Texture2D
+    : public graphics::textures::Texture2D
 {
 
 public:
     class Attorney
     {
-        static Texture2DImpl* create(const CreateParams<xl7::graphics::textures::Texture2DDesc>& params) { return new Texture2DImpl(params); }
-        friend class xl7::graphics::impl::direct3d9::ResourceFactoryImpl;
+        static Texture2DImpl* create(const CreateContext& ctx, const graphics::textures::Texture2DDesc& desc) { return new Texture2DImpl(ctx, desc); }
+        friend class direct3d9::ResourceFactoryImpl;
     };
 
 
@@ -47,7 +47,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit Texture2DImpl(const CreateParams<xl7::graphics::textures::Texture2DDesc>& params);
+    explicit Texture2DImpl(const CreateContext& ctx, const graphics::textures::Texture2DDesc& desc);
     ~Texture2DImpl() override = default;
 
 
@@ -82,7 +82,7 @@ private:
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool _acquire_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider) override;
+    bool _acquire_impl(const graphics::textures::ImageDataProvider& image_data_provider) override;
 
     /**
      * Updates the contents of this texture (unless it is immutable).
@@ -90,7 +90,7 @@ private:
      * has already been updated based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool _update_impl(const xl7::graphics::textures::ImageDataProvider& image_data_provider, bool discard, bool no_overwrite) override;
+    bool _update_impl(const graphics::textures::ImageDataProvider& image_data_provider, bool discard, bool no_overwrite) override;
 
 
 

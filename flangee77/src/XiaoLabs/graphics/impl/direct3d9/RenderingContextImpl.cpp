@@ -33,31 +33,31 @@ namespace xl7::graphics::impl::direct3d9 {
         return static_cast<DWORD>(clear_flags);
     }
 
-    static D3DPRIMITIVETYPE _d3d_primitive_type_from(xl7::graphics::meshes::Topology topology)
+    static D3DPRIMITIVETYPE _d3d_primitive_type_from(graphics::meshes::Topology topology)
     {
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::Topology::PointList) == static_cast<unsigned>(D3DPT_POINTLIST));
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::Topology::LineList) == static_cast<unsigned>(D3DPT_LINELIST));
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::Topology::LineStrip) == static_cast<unsigned>(D3DPT_LINESTRIP));
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::Topology::TriangleList) == static_cast<unsigned>(D3DPT_TRIANGLELIST));
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::Topology::TriangleStrip) == static_cast<unsigned>(D3DPT_TRIANGLESTRIP));
+        static_assert(static_cast<unsigned>(graphics::meshes::Topology::PointList) == static_cast<unsigned>(D3DPT_POINTLIST));
+        static_assert(static_cast<unsigned>(graphics::meshes::Topology::LineList) == static_cast<unsigned>(D3DPT_LINELIST));
+        static_assert(static_cast<unsigned>(graphics::meshes::Topology::LineStrip) == static_cast<unsigned>(D3DPT_LINESTRIP));
+        static_assert(static_cast<unsigned>(graphics::meshes::Topology::TriangleList) == static_cast<unsigned>(D3DPT_TRIANGLELIST));
+        static_assert(static_cast<unsigned>(graphics::meshes::Topology::TriangleStrip) == static_cast<unsigned>(D3DPT_TRIANGLESTRIP));
 
         return static_cast<D3DPRIMITIVETYPE>(topology);
     }
 
-    static BYTE _d3d_vertex_element_usage_from(xl7::graphics::meshes::VertexLayout::Semantic semantic)
+    static BYTE _d3d_vertex_element_usage_from(graphics::meshes::VertexLayout::Semantic semantic)
     {
         switch (semantic)
         {
-        case xl7::graphics::meshes::VertexLayout::Semantic::POSITION:       return D3DDECLUSAGE_POSITION;
-        case xl7::graphics::meshes::VertexLayout::Semantic::POSITIONT:      return D3DDECLUSAGE_POSITIONT;
-        case xl7::graphics::meshes::VertexLayout::Semantic::NORMAL:         return D3DDECLUSAGE_NORMAL;
-        case xl7::graphics::meshes::VertexLayout::Semantic::TANGENT:        return D3DDECLUSAGE_TANGENT;
-        case xl7::graphics::meshes::VertexLayout::Semantic::BINORMAL:       return D3DDECLUSAGE_BINORMAL;
-        case xl7::graphics::meshes::VertexLayout::Semantic::COLOR:          return D3DDECLUSAGE_COLOR;
-        case xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD:       return D3DDECLUSAGE_TEXCOORD;
-        case xl7::graphics::meshes::VertexLayout::Semantic::BLENDINDICES:   return D3DDECLUSAGE_BLENDINDICES;
-        case xl7::graphics::meshes::VertexLayout::Semantic::BLENDWEIGHT:    return D3DDECLUSAGE_BLENDWEIGHT;
-        case xl7::graphics::meshes::VertexLayout::Semantic::PSIZE:          return D3DDECLUSAGE_PSIZE;
+        case graphics::meshes::VertexLayout::Semantic::POSITION:       return D3DDECLUSAGE_POSITION;
+        case graphics::meshes::VertexLayout::Semantic::POSITIONT:      return D3DDECLUSAGE_POSITIONT;
+        case graphics::meshes::VertexLayout::Semantic::NORMAL:         return D3DDECLUSAGE_NORMAL;
+        case graphics::meshes::VertexLayout::Semantic::TANGENT:        return D3DDECLUSAGE_TANGENT;
+        case graphics::meshes::VertexLayout::Semantic::BINORMAL:       return D3DDECLUSAGE_BINORMAL;
+        case graphics::meshes::VertexLayout::Semantic::COLOR:          return D3DDECLUSAGE_COLOR;
+        case graphics::meshes::VertexLayout::Semantic::TEXCOORD:       return D3DDECLUSAGE_TEXCOORD;
+        case graphics::meshes::VertexLayout::Semantic::BLENDINDICES:   return D3DDECLUSAGE_BLENDINDICES;
+        case graphics::meshes::VertexLayout::Semantic::BLENDWEIGHT:    return D3DDECLUSAGE_BLENDWEIGHT;
+        case graphics::meshes::VertexLayout::Semantic::PSIZE:          return D3DDECLUSAGE_PSIZE;
         default:
             assert(false);
         }
@@ -65,14 +65,14 @@ namespace xl7::graphics::impl::direct3d9 {
         return 0;
     }
 
-    static BYTE _d3d_vertex_element_type_from(xl7::graphics::meshes::VertexLayout::DataType data_type)
+    static BYTE _d3d_vertex_element_type_from(graphics::meshes::VertexLayout::DataType data_type)
     {
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::VertexLayout::DataType::FLOAT1) == static_cast<unsigned>(D3DDECLTYPE_FLOAT1));
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::VertexLayout::DataType::FLOAT2) == static_cast<unsigned>(D3DDECLTYPE_FLOAT2));
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::VertexLayout::DataType::FLOAT3) == static_cast<unsigned>(D3DDECLTYPE_FLOAT3));
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::VertexLayout::DataType::FLOAT4) == static_cast<unsigned>(D3DDECLTYPE_FLOAT4));
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::VertexLayout::DataType::COLOR) == static_cast<unsigned>(D3DDECLTYPE_D3DCOLOR));
-        static_assert(static_cast<unsigned>(xl7::graphics::meshes::VertexLayout::DataType::UBYTE4) == static_cast<unsigned>(D3DDECLTYPE_UBYTE4));
+        static_assert(static_cast<unsigned>(graphics::meshes::VertexLayout::DataType::FLOAT1) == static_cast<unsigned>(D3DDECLTYPE_FLOAT1));
+        static_assert(static_cast<unsigned>(graphics::meshes::VertexLayout::DataType::FLOAT2) == static_cast<unsigned>(D3DDECLTYPE_FLOAT2));
+        static_assert(static_cast<unsigned>(graphics::meshes::VertexLayout::DataType::FLOAT3) == static_cast<unsigned>(D3DDECLTYPE_FLOAT3));
+        static_assert(static_cast<unsigned>(graphics::meshes::VertexLayout::DataType::FLOAT4) == static_cast<unsigned>(D3DDECLTYPE_FLOAT4));
+        static_assert(static_cast<unsigned>(graphics::meshes::VertexLayout::DataType::COLOR) == static_cast<unsigned>(D3DDECLTYPE_D3DCOLOR));
+        static_assert(static_cast<unsigned>(graphics::meshes::VertexLayout::DataType::UBYTE4) == static_cast<unsigned>(D3DDECLTYPE_UBYTE4));
 
         return static_cast<BYTE>(data_type);
     }
@@ -482,7 +482,7 @@ namespace xl7::graphics::impl::direct3d9 {
             d3d_depth_stencil_state_type_values = &default_depth_stencil_state_type_values;
         }
 
-        bool swapped_winding_order = resolved_draw_states.rasterizer_state != nullptr && resolved_draw_states.rasterizer_state->get_desc().winding_order == xl7::graphics::states::WindingOrder::CounterClockwise;
+        bool swapped_winding_order = resolved_draw_states.rasterizer_state != nullptr && resolved_draw_states.rasterizer_state->get_desc().winding_order == graphics::states::WindingOrder::CounterClockwise;
         for (size_t k = 0; k < states::D3D_DEPTH_STENCIL_STATE_TYPE_COUNT; ++k)
         {
             size_t ks = k;
@@ -594,17 +594,17 @@ namespace xl7::graphics::impl::direct3d9 {
 
                 switch (constant_mapping.constant_type)
                 {
-                case xl7::graphics::shaders::ConstantType::Float:
+                case graphics::shaders::ConstantType::Float:
                     static_assert(sizeof(float) == 4);
                     hresult = (_d3d_device.Get()->*SetShaderConstantF)(start_register, static_cast<const float*>(data_ptr), register_count);
                     break;
-                case xl7::graphics::shaders::ConstantType::Int:
+                case graphics::shaders::ConstantType::Int:
                     static_assert(sizeof(int) == 4);
                     assert(constant_mapping.shader_offset % 16 == 0);
                     assert(constant_mapping.padded_size % 4 == 0);
                     hresult = (_d3d_device.Get()->*SetShaderConstantI)(start_register, static_cast<const int*>(data_ptr), register_count);
                     break;
-                case xl7::graphics::shaders::ConstantType::Bool:
+                case graphics::shaders::ConstantType::Bool:
                     static_assert(sizeof(BOOL) == 4);
                     assert(constant_mapping.shader_offset % 16 == 0);
                     assert(constant_mapping.padded_size % 4 == 0);
@@ -728,7 +728,7 @@ namespace xl7::graphics::impl::direct3d9 {
 
             WORD offset = 0;
 
-            for (const xl7::graphics::meshes::VertexLayout::Element& element : composed_vertex_layout.vertex_layouts[stream_index].elements)
+            for (const graphics::meshes::VertexLayout::Element& element : composed_vertex_layout.vertex_layouts[stream_index].elements)
             {
                 D3DVERTEXELEMENT9 d3d_vertex_element;
                 d3d_vertex_element.Stream = static_cast<WORD>(stream_index);

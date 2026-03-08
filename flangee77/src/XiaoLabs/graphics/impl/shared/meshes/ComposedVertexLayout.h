@@ -14,7 +14,7 @@ namespace xl7::graphics::impl::shared::meshes {
 struct ComposedVertexLayout
 {
 
-    xl7::graphics::meshes::VertexLayout vertex_layouts[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS] = {};
+    graphics::meshes::VertexLayout vertex_layouts[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS] = {};
     unsigned instance_data_step_rates[pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS] = {};
     unsigned stream_count = 0;
 

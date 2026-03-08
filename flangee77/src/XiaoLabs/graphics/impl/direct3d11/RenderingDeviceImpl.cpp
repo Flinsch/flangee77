@@ -17,20 +17,20 @@ namespace xl7::graphics::impl::direct3d11 {
 
 
 
-    static LPCSTR _d3d_semantic_name_from(xl7::graphics::meshes::VertexLayout::Semantic semantic)
+    static LPCSTR _d3d_semantic_name_from(meshes::VertexLayout::Semantic semantic)
     {
         switch (semantic)
         {
-        case xl7::graphics::meshes::VertexLayout::Semantic::POSITION:       return "POSITION";
-        case xl7::graphics::meshes::VertexLayout::Semantic::POSITIONT:      return "POSITIONT";
-        case xl7::graphics::meshes::VertexLayout::Semantic::NORMAL:         return "NORMAL";
-        case xl7::graphics::meshes::VertexLayout::Semantic::TANGENT:        return "TANGENT";
-        case xl7::graphics::meshes::VertexLayout::Semantic::BINORMAL:       return "BINORMAL";
-        case xl7::graphics::meshes::VertexLayout::Semantic::COLOR:          return "COLOR";
-        case xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD:       return "TEXCOORD";
-        case xl7::graphics::meshes::VertexLayout::Semantic::BLENDINDICES:   return "BLENDINDICES";
-        case xl7::graphics::meshes::VertexLayout::Semantic::BLENDWEIGHT:    return "BLENDWEIGHT";
-        case xl7::graphics::meshes::VertexLayout::Semantic::PSIZE:          return "PSIZE";
+        case meshes::VertexLayout::Semantic::POSITION:       return "POSITION";
+        case meshes::VertexLayout::Semantic::POSITIONT:      return "POSITIONT";
+        case meshes::VertexLayout::Semantic::NORMAL:         return "NORMAL";
+        case meshes::VertexLayout::Semantic::TANGENT:        return "TANGENT";
+        case meshes::VertexLayout::Semantic::BINORMAL:       return "BINORMAL";
+        case meshes::VertexLayout::Semantic::COLOR:          return "COLOR";
+        case meshes::VertexLayout::Semantic::TEXCOORD:       return "TEXCOORD";
+        case meshes::VertexLayout::Semantic::BLENDINDICES:   return "BLENDINDICES";
+        case meshes::VertexLayout::Semantic::BLENDWEIGHT:    return "BLENDWEIGHT";
+        case meshes::VertexLayout::Semantic::PSIZE:          return "PSIZE";
         default:
             assert(false);
         }
@@ -38,16 +38,16 @@ namespace xl7::graphics::impl::direct3d11 {
         return "";
     }
 
-    static DXGI_FORMAT _dxgi_format_from(xl7::graphics::meshes::VertexLayout::DataType data_type)
+    static DXGI_FORMAT _dxgi_format_from(meshes::VertexLayout::DataType data_type)
     {
         switch (data_type)
         {
-        case xl7::graphics::meshes::VertexLayout::DataType::FLOAT1:     return DXGI_FORMAT_R32_FLOAT;
-        case xl7::graphics::meshes::VertexLayout::DataType::FLOAT2:     return DXGI_FORMAT_R32G32_FLOAT;
-        case xl7::graphics::meshes::VertexLayout::DataType::FLOAT3:     return DXGI_FORMAT_R32G32B32_FLOAT;
-        case xl7::graphics::meshes::VertexLayout::DataType::FLOAT4:     return DXGI_FORMAT_R32G32B32A32_FLOAT;
-        case xl7::graphics::meshes::VertexLayout::DataType::COLOR:      return DXGI_FORMAT_B8G8R8A8_UNORM; // Corresponds to D3DCOLOR/D3DFMT_A8R8G8B8 of Direct3D 9.
-        case xl7::graphics::meshes::VertexLayout::DataType::UBYTE4:     return DXGI_FORMAT_R8G8B8A8_UINT;
+        case meshes::VertexLayout::DataType::FLOAT1:     return DXGI_FORMAT_R32_FLOAT;
+        case meshes::VertexLayout::DataType::FLOAT2:     return DXGI_FORMAT_R32G32_FLOAT;
+        case meshes::VertexLayout::DataType::FLOAT3:     return DXGI_FORMAT_R32G32B32_FLOAT;
+        case meshes::VertexLayout::DataType::FLOAT4:     return DXGI_FORMAT_R32G32B32A32_FLOAT;
+        case meshes::VertexLayout::DataType::COLOR:      return DXGI_FORMAT_B8G8R8A8_UNORM; // Corresponds to D3DCOLOR/D3DFMT_A8R8G8B8 of Direct3D 9.
+        case meshes::VertexLayout::DataType::UBYTE4:     return DXGI_FORMAT_R8G8B8A8_UINT;
         default:
             assert(false);
         }
@@ -95,7 +95,7 @@ namespace xl7::graphics::impl::direct3d11 {
 
             unsigned offset = 0;
 
-            for (const xl7::graphics::meshes::VertexLayout::Element& element : composed_vertex_layout.vertex_layouts[stream_index].elements)
+            for (const meshes::VertexLayout::Element& element : composed_vertex_layout.vertex_layouts[stream_index].elements)
             {
                 D3D11_INPUT_ELEMENT_DESC d3d_input_element_desc;
                 d3d_input_element_desc.SemanticName = _d3d_semantic_name_from(element.semantic);
@@ -151,7 +151,7 @@ namespace xl7::graphics::impl::direct3d11 {
         if (it != _d3d_constant_buffers_by_shader_id.end())
             return it->second;
 
-        auto* shader = get_shader_manager()->find_resource<xl7::graphics::shaders::Shader>(shader_id);
+        auto* shader = get_shader_manager()->find_resource<graphics::shaders::Shader>(shader_id);
         assert(shader);
         if (!shader)
             return {};
@@ -653,7 +653,7 @@ namespace xl7::graphics::impl::direct3d11 {
      * Tries to find an actual Direct3D 11 constant buffer that matches the
      * specified layout.
      */
-    shaders::D3DConstantBufferWrapper* RenderingDeviceImpl::_find_d3d_constant_buffer(const xl7::graphics::shaders::ConstantBufferLayout& constant_buffer_layout)
+    shaders::D3DConstantBufferWrapper* RenderingDeviceImpl::_find_d3d_constant_buffer(const graphics::shaders::ConstantBufferLayout& constant_buffer_layout)
     {
         for (const auto& entry_ptr : _d3d_constant_buffer_registry)
         {
@@ -668,7 +668,7 @@ namespace xl7::graphics::impl::direct3d11 {
      * Tries to find an actual Direct3D 11 constant buffer that matches the
      * specified layout, otherwise creates a new one based on said layout.
      */
-    shaders::D3DConstantBufferWrapper* RenderingDeviceImpl::_find_or_create_d3d_constant_buffer(const xl7::graphics::shaders::ConstantBufferLayout& constant_buffer_layout)
+    shaders::D3DConstantBufferWrapper* RenderingDeviceImpl::_find_or_create_d3d_constant_buffer(const graphics::shaders::ConstantBufferLayout& constant_buffer_layout)
     {
         shaders::D3DConstantBufferWrapper* d3d_constant_buffer_wrapper = _find_d3d_constant_buffer(constant_buffer_layout);
         if (d3d_constant_buffer_wrapper)

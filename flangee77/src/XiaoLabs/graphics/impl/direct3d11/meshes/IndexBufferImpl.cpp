@@ -14,13 +14,13 @@ namespace xl7::graphics::impl::direct3d11::meshes {
 
 
 
-    static DXGI_FORMAT _dxgi_format_from(xl7::graphics::meshes::IndexType index_type)
+    static DXGI_FORMAT _dxgi_format_from(graphics::meshes::IndexType index_type)
     {
         switch (index_type)
         {
-        case xl7::graphics::meshes::IndexType::UINT16:
+        case graphics::meshes::IndexType::UINT16:
             return DXGI_FORMAT_R16_UINT;
-        case xl7::graphics::meshes::IndexType::UINT32:
+        case graphics::meshes::IndexType::UINT32:
             return DXGI_FORMAT_R32_UINT;
         default:
             assert(false);
@@ -35,9 +35,9 @@ namespace xl7::graphics::impl::direct3d11::meshes {
     // Construction / Destruction
     // #############################################################################
 
-    IndexBufferImpl::IndexBufferImpl(const CreateParams<xl7::graphics::meshes::IndexBufferDesc>& params)
-        : IndexBuffer(params)
-        , _dxgi_format(_dxgi_format_from(get_desc().index_type))
+    IndexBufferImpl::IndexBufferImpl(const CreateContext& ctx, const graphics::meshes::IndexBufferDesc& desc)
+        : IndexBuffer(ctx, desc)
+        , _dxgi_format(_dxgi_format_from(desc.index_type))
     {
     }
 

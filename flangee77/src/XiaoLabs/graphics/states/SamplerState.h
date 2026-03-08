@@ -38,9 +38,9 @@ public:
 
 protected:
 
-    explicit SamplerState(const CreateParams<SamplerStateDesc>& params)
-        : ResourceBase(params)
-        , _desc(params.desc)
+    explicit SamplerState(const CreateContext& ctx, const SamplerStateDesc& desc)
+        : ResourceBase(ctx, desc)
+        , _desc(desc)
     {
     }
 

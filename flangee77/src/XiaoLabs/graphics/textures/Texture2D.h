@@ -55,7 +55,7 @@ public:
 
 protected:
 
-    explicit Texture2D(const CreateParams<Texture2DDesc>& params);
+    explicit Texture2D(const CreateContext& ctx, const Texture2DDesc& desc);
 
     ~Texture2D() override = default;
 

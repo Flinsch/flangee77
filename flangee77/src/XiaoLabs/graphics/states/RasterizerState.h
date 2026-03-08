@@ -38,9 +38,9 @@ public:
 
 protected:
 
-    explicit RasterizerState(const CreateParams<RasterizerStateDesc>& params)
-        : ResourceBase(params)
-        , _desc(params.desc)
+    explicit RasterizerState(const CreateContext& ctx, const RasterizerStateDesc& desc)
+        : ResourceBase(ctx, desc)
+        , _desc(desc)
     {
     }
 

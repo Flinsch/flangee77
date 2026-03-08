@@ -11,13 +11,13 @@ namespace xl7::graphics::impl::shared::meshes {
     ComposedVertexLayout::ComposedVertexLayout(const VertexBufferBinding& vertex_buffer_binding)
         : ComposedVertexLayout()
     {
-        auto* mesh_manager = xl7::graphics::GraphicsSystem::instance().get_rendering_device()->get_mesh_manager();
+        auto* mesh_manager = GraphicsSystem::instance().get_rendering_device()->get_mesh_manager();
 
         for (unsigned stream_index = 0; stream_index < pipeline::InputAssemblerStage::MAX_VERTEX_STREAMS; ++stream_index)
         {
-            xl7::graphics::meshes::VertexBuffer* vertex_buffer;
+            graphics::meshes::VertexBuffer* vertex_buffer;
             if (vertex_buffer_binding.vertex_buffer_ids[stream_index].is_valid())
-                vertex_buffer = mesh_manager->find_resource<xl7::graphics::meshes::VertexBuffer>(vertex_buffer_binding.vertex_buffer_ids[stream_index]);
+                vertex_buffer = mesh_manager->find_resource<graphics::meshes::VertexBuffer>(vertex_buffer_binding.vertex_buffer_ids[stream_index]);
             else
                 vertex_buffer = nullptr;
 
@@ -83,7 +83,7 @@ namespace xl7::graphics::impl::shared::meshes {
                 const auto& element = elements[j];
 
                 size_t h_ = 0;
-                
+
                 h_ ^= static_cast<size_t>(element.semantic);
                 h_ ^= static_cast<size_t>(element.semantic_index) << 1;
                 h_ ^= static_cast<size_t>(element.data_type) << 2;

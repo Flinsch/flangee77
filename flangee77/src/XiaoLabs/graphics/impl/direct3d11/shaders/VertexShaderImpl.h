@@ -13,14 +13,14 @@ namespace shaders {
 
 
 class VertexShaderImpl final
-    : public xl7::graphics::shaders::VertexShader
+    : public graphics::shaders::VertexShader
 {
 
 public:
     class Attorney
     {
-        static VertexShaderImpl* create(const CreateParams<xl7::graphics::shaders::ShaderDesc>& params) { return new VertexShaderImpl(params); }
-        friend class xl7::graphics::impl::direct3d11::ResourceFactoryImpl;
+        static VertexShaderImpl* create(const CreateContext& ctx, const graphics::shaders::ShaderDesc& desc) { return new VertexShaderImpl(ctx, desc); }
+        friend class direct3d11::ResourceFactoryImpl;
     };
 
 
@@ -47,7 +47,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit VertexShaderImpl(const CreateParams<xl7::graphics::shaders::ShaderDesc>& params);
+    explicit VertexShaderImpl(const CreateContext& ctx, const graphics::shaders::ShaderDesc& desc);
     ~VertexShaderImpl() override = default;
 
 
@@ -83,7 +83,7 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    bool _acquire_precompiled_impl(const xl7::graphics::shaders::CodeDataProvider& code_data_provider) override;
+    bool _acquire_precompiled_impl(const graphics::shaders::CodeDataProvider& code_data_provider) override;
 
     /**
      * Requests/acquires a recompilable shader resource.
@@ -91,19 +91,19 @@ private:
      * local data buffer has already been filled based on it. It is still included as
      * it contains additional implementation-specific information.
      */
-    bool _acquire_recompilable_impl(const xl7::graphics::shaders::CodeDataProvider& code_data_provider, xl7::graphics::shaders::ShaderCode& bytecode_out) override;
+    bool _acquire_recompilable_impl(const graphics::shaders::CodeDataProvider& code_data_provider, graphics::shaders::ShaderCode& bytecode_out) override;
 
     /**
      * Recompiles the shader code. This tends to result in the resource having to be
      * completely recreated in the background.
      */
-    bool _recompile_impl(const xl7::graphics::shaders::CompileOptions& compile_options, xl7::graphics::shaders::ShaderCode& bytecode_out) override;
+    bool _recompile_impl(const graphics::shaders::CompileOptions& compile_options, graphics::shaders::ShaderCode& bytecode_out) override;
 
     /**
      * Performs a "reflection" on the (compiled) shader bytecode to determine
      * parameter declarations etc.
      */
-    bool _reflect_impl(const xl7::graphics::shaders::ShaderCode& bytecode, xl7::graphics::shaders::ReflectionResult& reflection_result_out) override;
+    bool _reflect_impl(const graphics::shaders::ShaderCode& bytecode, graphics::shaders::ReflectionResult& reflection_result_out) override;
 
 
 

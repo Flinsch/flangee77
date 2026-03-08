@@ -38,9 +38,9 @@ public:
 
 protected:
 
-    explicit BlendState(const CreateParams<BlendStateDesc>& params)
-        : ResourceBase(params)
-        , _desc(params.desc)
+    explicit BlendState(const CreateContext& ctx, const BlendStateDesc& desc)
+        : ResourceBase(ctx, desc)
+        , _desc(desc)
     {
     }
 

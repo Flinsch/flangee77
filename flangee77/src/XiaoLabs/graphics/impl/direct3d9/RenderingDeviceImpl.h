@@ -99,7 +99,7 @@ private:
      * Checks whether the device (generally) supports the specified combination of
      * pixel format and channel order for the specified texture type.
      */
-    bool _check_texture_format_impl(xl7::graphics::textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder channel_order) override;
+    bool _check_texture_format_impl(graphics::textures::Texture::Type texture_type, PixelFormat pixel_format, ChannelOrder channel_order) override;
 
 
 

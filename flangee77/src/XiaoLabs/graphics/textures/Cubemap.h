@@ -48,7 +48,7 @@ public:
 
 protected:
 
-    explicit Cubemap(const CreateParams<CubemapDesc>& params);
+    explicit Cubemap(const CreateContext& ctx, const CubemapDesc& desc);
 
     ~Cubemap() override = default;
 

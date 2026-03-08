@@ -50,7 +50,7 @@ public:
 
 protected:
 
-    explicit Texture2DArray(const CreateParams<Texture2DArrayDesc>& params);
+    explicit Texture2DArray(const CreateContext& ctx, const Texture2DArrayDesc& desc);
 
     ~Texture2DArray() override = default;
 

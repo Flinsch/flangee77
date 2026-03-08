@@ -11,9 +11,9 @@ namespace xl7::graphics::textures {
      */
     Texture2D::Id TextureManager::create_texture_2d(cl7::u8string_view identifier, const Texture2DDesc& desc, const ImageDataProvider& image_data_provider)
     {
-        resources::Resource::CreateParams<Texture2DDesc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
+        resources::Resource::CreateContext ctx{.manager = this, .id = _next_id(), .identifier = identifier};
 
-        ResourcePtr vertex_buffer(_factory->create_texture_2d(params), _destroy_resource);
+        ResourcePtr vertex_buffer(_factory->create_texture_2d(ctx, desc), _destroy_resource);
 
         return _try_acquire_and_add_resource<Texture2D::Id>(std::move(vertex_buffer), image_data_provider);
     }

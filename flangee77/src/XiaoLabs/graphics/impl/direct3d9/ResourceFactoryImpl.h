@@ -19,25 +19,25 @@ public:
         friend class RenderingDeviceImpl;
     };
 
-    //xl7::graphics::surfaces::
+    //graphics::surfaces::
 
-    xl7::graphics::textures::Texture2D* create_texture_2d(const resources::Resource::CreateParams<xl7::graphics::textures::Texture2DDesc>& params) override;
-    xl7::graphics::textures::Texture3D* create_texture_3d(const resources::Resource::CreateParams<xl7::graphics::textures::Texture3DDesc>& params) override;
-    xl7::graphics::textures::Texture2DArray* create_texture_2d_array(const resources::Resource::CreateParams<xl7::graphics::textures::Texture2DArrayDesc>& params) override;
-    xl7::graphics::textures::Cubemap* create_cubemap(const resources::Resource::CreateParams<xl7::graphics::textures::CubemapDesc>& params) override;
+    graphics::textures::Texture2D* create_texture_2d(const resources::Resource::CreateContext& ctx, const graphics::textures::Texture2DDesc& desc) override;
+    graphics::textures::Texture3D* create_texture_3d(const resources::Resource::CreateContext& ctx, const graphics::textures::Texture3DDesc& desc) override;
+    graphics::textures::Texture2DArray* create_texture_2d_array(const resources::Resource::CreateContext& ctx, const graphics::textures::Texture2DArrayDesc& desc) override;
+    graphics::textures::Cubemap* create_cubemap(const resources::Resource::CreateContext& ctx, const graphics::textures::CubemapDesc& desc) override;
 
-    xl7::graphics::meshes::VertexBuffer* create_vertex_buffer(const resources::Resource::CreateParams<xl7::graphics::meshes::VertexBufferDesc>& params) override;
-    xl7::graphics::meshes::IndexBuffer* create_index_buffer(const resources::Resource::CreateParams<xl7::graphics::meshes::IndexBufferDesc>& params) override;
+    graphics::meshes::VertexBuffer* create_vertex_buffer(const resources::Resource::CreateContext& ctx, const graphics::meshes::VertexBufferDesc& desc) override;
+    graphics::meshes::IndexBuffer* create_index_buffer(const resources::Resource::CreateContext& ctx, const graphics::meshes::IndexBufferDesc& desc) override;
 
-    xl7::graphics::shaders::ConstantBuffer* create_constant_buffer(const resources::Resource::CreateParams<xl7::graphics::shaders::ConstantBufferDesc>& params) override;
+    graphics::shaders::ConstantBuffer* create_constant_buffer(const resources::Resource::CreateContext& ctx, const graphics::shaders::ConstantBufferDesc& desc) override;
 
-    xl7::graphics::shaders::VertexShader* create_vertex_shader(const resources::Resource::CreateParams<xl7::graphics::shaders::ShaderDesc>& params) override;
-    xl7::graphics::shaders::PixelShader* create_pixel_shader(const resources::Resource::CreateParams<xl7::graphics::shaders::ShaderDesc>& params) override;
+    graphics::shaders::VertexShader* create_vertex_shader(const resources::Resource::CreateContext& ctx, const graphics::shaders::ShaderDesc& desc) override;
+    graphics::shaders::PixelShader* create_pixel_shader(const resources::Resource::CreateContext& ctx, const graphics::shaders::ShaderDesc& desc) override;
 
-    xl7::graphics::states::SamplerState* create_sampler_state(const resources::Resource::CreateParams<xl7::graphics::states::SamplerStateDesc>& params) override;
-    xl7::graphics::states::RasterizerState* create_rasterizer_state(const resources::Resource::CreateParams<xl7::graphics::states::RasterizerStateDesc>& params) override;
-    xl7::graphics::states::DepthStencilState* create_depth_stencil_state(const resources::Resource::CreateParams<xl7::graphics::states::DepthStencilStateDesc>& params) override;
-    xl7::graphics::states::BlendState* create_blend_state(const resources::Resource::CreateParams<xl7::graphics::states::BlendStateDesc>& params) override;
+    graphics::states::SamplerState* create_sampler_state(const resources::Resource::CreateContext& ctx, const graphics::states::SamplerStateDesc& desc) override;
+    graphics::states::RasterizerState* create_rasterizer_state(const resources::Resource::CreateContext& ctx, const graphics::states::RasterizerStateDesc& desc) override;
+    graphics::states::DepthStencilState* create_depth_stencil_state(const resources::Resource::CreateContext& ctx, const graphics::states::DepthStencilStateDesc& desc) override;
+    graphics::states::BlendState* create_blend_state(const resources::Resource::CreateContext& ctx, const graphics::states::BlendStateDesc& desc) override;
 
 }; // class ResourceFactoryImpl
 

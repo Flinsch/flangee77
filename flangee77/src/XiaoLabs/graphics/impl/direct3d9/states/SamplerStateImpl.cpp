@@ -8,32 +8,32 @@ namespace xl7::graphics::impl::direct3d9::states {
 
 
 
-    static D3DTEXTUREADDRESS _d3d_texture_address_from(xl7::graphics::states::AddressMode address_mode)
+    static D3DTEXTUREADDRESS _d3d_texture_address_from(graphics::states::AddressMode address_mode)
     {
-        static_assert(static_cast<unsigned>(xl7::graphics::states::AddressMode::Wrap) == static_cast<unsigned>(D3DTADDRESS_WRAP));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::AddressMode::Mirror) == static_cast<unsigned>(D3DTADDRESS_MIRROR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::AddressMode::Clamp) == static_cast<unsigned>(D3DTADDRESS_CLAMP));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::AddressMode::Border) == static_cast<unsigned>(D3DTADDRESS_BORDER));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::AddressMode::MirrorOnce) == static_cast<unsigned>(D3DTADDRESS_MIRRORONCE));
+        static_assert(static_cast<unsigned>(graphics::states::AddressMode::Wrap) == static_cast<unsigned>(D3DTADDRESS_WRAP));
+        static_assert(static_cast<unsigned>(graphics::states::AddressMode::Mirror) == static_cast<unsigned>(D3DTADDRESS_MIRROR));
+        static_assert(static_cast<unsigned>(graphics::states::AddressMode::Clamp) == static_cast<unsigned>(D3DTADDRESS_CLAMP));
+        static_assert(static_cast<unsigned>(graphics::states::AddressMode::Border) == static_cast<unsigned>(D3DTADDRESS_BORDER));
+        static_assert(static_cast<unsigned>(graphics::states::AddressMode::MirrorOnce) == static_cast<unsigned>(D3DTADDRESS_MIRRORONCE));
 
         return static_cast<D3DTEXTUREADDRESS>(address_mode);
     }
 
-    static D3DTEXTUREFILTERTYPE _d3d_texture_filter_type_from(xl7::graphics::states::MinMagFilterType filter_type)
+    static D3DTEXTUREFILTERTYPE _d3d_texture_filter_type_from(graphics::states::MinMagFilterType filter_type)
     {
-        static_assert(static_cast<unsigned>(xl7::graphics::states::MinMagFilterType::Point) == static_cast<unsigned>(D3DTEXF_POINT));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::MinMagFilterType::Linear) == static_cast<unsigned>(D3DTEXF_LINEAR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::MinMagFilterType::Anisotropic) == static_cast<unsigned>(D3DTEXF_ANISOTROPIC));
+        static_assert(static_cast<unsigned>(graphics::states::MinMagFilterType::Point) == static_cast<unsigned>(D3DTEXF_POINT));
+        static_assert(static_cast<unsigned>(graphics::states::MinMagFilterType::Linear) == static_cast<unsigned>(D3DTEXF_LINEAR));
+        static_assert(static_cast<unsigned>(graphics::states::MinMagFilterType::Anisotropic) == static_cast<unsigned>(D3DTEXF_ANISOTROPIC));
 
         return static_cast<D3DTEXTUREFILTERTYPE>(filter_type);
     }
 
-    static D3DTEXTUREFILTERTYPE _d3d_texture_filter_type_from(xl7::graphics::states::MipFilterType filter_type)
+    static D3DTEXTUREFILTERTYPE _d3d_texture_filter_type_from(graphics::states::MipFilterType filter_type)
     {
-        static_assert(static_cast<unsigned>(xl7::graphics::states::MipFilterType::None) == static_cast<unsigned>(D3DTEXF_NONE));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::MipFilterType::Point) == static_cast<unsigned>(D3DTEXF_POINT));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::MipFilterType::Linear) == static_cast<unsigned>(D3DTEXF_LINEAR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::MipFilterType::Anisotropic) == static_cast<unsigned>(D3DTEXF_ANISOTROPIC));
+        static_assert(static_cast<unsigned>(graphics::states::MipFilterType::None) == static_cast<unsigned>(D3DTEXF_NONE));
+        static_assert(static_cast<unsigned>(graphics::states::MipFilterType::Point) == static_cast<unsigned>(D3DTEXF_POINT));
+        static_assert(static_cast<unsigned>(graphics::states::MipFilterType::Linear) == static_cast<unsigned>(D3DTEXF_LINEAR));
+        static_assert(static_cast<unsigned>(graphics::states::MipFilterType::Anisotropic) == static_cast<unsigned>(D3DTEXF_ANISOTROPIC));
 
         return static_cast<D3DTEXTUREFILTERTYPE>(filter_type);
     }
@@ -44,13 +44,13 @@ namespace xl7::graphics::impl::direct3d9::states {
      * Maps the specified sampler state descriptor to corresponding Direct3D 9
      * values and fills the given structure accordingly.
      */
-    void SamplerStateImpl::map_d3d_values(const xl7::graphics::states::SamplerStateDesc& desc, D3DSamplerStateTypeValues& d3d_sampler_state_type_values)
+    void SamplerStateImpl::map_d3d_values(const graphics::states::SamplerStateDesc& desc, D3DSamplerStateTypeValues& d3d_sampler_state_type_values)
     {
         d3d_sampler_state_type_values = D3DSamplerStateTypeValues({
             {D3DSAMP_ADDRESSU, _d3d_texture_address_from(desc.address_u)},
             {D3DSAMP_ADDRESSV, _d3d_texture_address_from(desc.address_v)},
             {D3DSAMP_ADDRESSW, _d3d_texture_address_from(desc.address_w)},
-            {D3DSAMP_BORDERCOLOR, desc.border_color.to_uint32(xl7::graphics::ChannelOrder::BGRA)},
+            {D3DSAMP_BORDERCOLOR, desc.border_color.to_uint32(ChannelOrder::BGRA)},
             {D3DSAMP_MAGFILTER, _d3d_texture_filter_type_from(desc.mag_filter_type)},
             {D3DSAMP_MINFILTER, _d3d_texture_filter_type_from(desc.min_filter_type)},
             {D3DSAMP_MIPFILTER, _d3d_texture_filter_type_from(desc.mip_filter_type)},
@@ -72,8 +72,8 @@ namespace xl7::graphics::impl::direct3d9::states {
     /**
      * Explicit constructor.
      */
-    SamplerStateImpl::SamplerStateImpl(const CreateParams<xl7::graphics::states::SamplerStateDesc>& params)
-        : SamplerState(params)
+    SamplerStateImpl::SamplerStateImpl(const CreateContext& ctx, const graphics::states::SamplerStateDesc& desc)
+        : SamplerState(ctx, desc)
         , _d3d_sampler_state_type_values()
     {
     }
@@ -90,7 +90,7 @@ namespace xl7::graphics::impl::direct3d9::states {
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool SamplerStateImpl::_acquire_impl(const xl7::resources::DataProvider& data_provider)
+    bool SamplerStateImpl::_acquire_impl(const resources::DataProvider& data_provider)
     {
         map_d3d_values(get_desc(), _d3d_sampler_state_type_values);
 

@@ -21,10 +21,10 @@ class IStateFactory
 public:
     virtual ~IStateFactory() = default;
 
-    virtual xl7::graphics::states::SamplerState* create_sampler_state(const resources::Resource::CreateParams<xl7::graphics::states::SamplerStateDesc>& params) = 0;
-    virtual xl7::graphics::states::RasterizerState* create_rasterizer_state(const resources::Resource::CreateParams<xl7::graphics::states::RasterizerStateDesc>& params) = 0;
-    virtual xl7::graphics::states::DepthStencilState* create_depth_stencil_state(const resources::Resource::CreateParams<xl7::graphics::states::DepthStencilStateDesc>& params) = 0;
-    virtual xl7::graphics::states::BlendState* create_blend_state(const resources::Resource::CreateParams<xl7::graphics::states::BlendStateDesc>& params) = 0;
+    virtual SamplerState* create_sampler_state(const resources::Resource::CreateContext& ctx, const SamplerStateDesc& desc) = 0;
+    virtual RasterizerState* create_rasterizer_state(const resources::Resource::CreateContext& ctx, const RasterizerStateDesc& desc) = 0;
+    virtual DepthStencilState* create_depth_stencil_state(const resources::Resource::CreateContext& ctx, const DepthStencilStateDesc& desc) = 0;
+    virtual BlendState* create_blend_state(const resources::Resource::CreateContext& ctx, const BlendStateDesc& desc) = 0;
 
 }; // class IStateFactory
 

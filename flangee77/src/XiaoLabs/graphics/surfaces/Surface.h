@@ -57,10 +57,10 @@ public:
 
 protected:
 
-    Surface(Type type, const CreateParams<SurfaceDesc>& params)
-        : ResourceBase(params)
+    Surface(Type type, const CreateContext& ctx, const SurfaceDesc& desc)
+        : ResourceBase(ctx, desc)
         , _type(type)
-        , _desc(params.desc)
+        , _desc(desc)
     {
     }
 

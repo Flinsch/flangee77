@@ -17,15 +17,15 @@ namespace xl7::graphics::textures {
 
 
 
-    Texture::Texture(Type type, const CreateParams<TextureDesc>& params, unsigned depth, unsigned image_count)
-        : ResourceBase(params)
+    Texture::Texture(Type type, const CreateContext& ctx, const TextureDesc& desc, unsigned depth, unsigned image_count)
+        : ResourceBase(ctx, desc)
         , _type(type)
-        , _desc(params.desc)
-        , _channel_order(GraphicsSystem::instance().get_rendering_device()->recommend_channel_order(type, params.desc.pixel_format, params.desc.preferred_channel_order).first)
+        , _desc(desc)
+        , _channel_order(GraphicsSystem::instance().get_rendering_device()->recommend_channel_order(type, desc.pixel_format, desc.preferred_channel_order).first)
         , _depth(depth)
-        , _stride(PixelLayout::determine_stride(params.desc.pixel_format))
-        , _line_pitch(_stride * params.desc.width)
-        , _slice_pitch(_line_pitch * params.desc.height)
+        , _stride(PixelLayout::determine_stride(desc.pixel_format))
+        , _line_pitch(_stride * desc.width)
+        , _slice_pitch(_line_pitch * desc.height)
         , _data_size(_slice_pitch * depth * image_count)
     {
         const RenderingDevice::Capabilities& capabilities = GraphicsSystem::instance().get_rendering_device()->get_capabilities();

@@ -8,16 +8,16 @@ namespace xl7::graphics::impl::direct3d9::states {
 
 
 
-    static D3DSTENCILOP _d3d_stencil_op_from(xl7::graphics::states::StencilOperation stencil_operation)
+    static D3DSTENCILOP _d3d_stencil_op_from(graphics::states::StencilOperation stencil_operation)
     {
-        static_assert(static_cast<unsigned>(xl7::graphics::states::StencilOperation::Keep) == static_cast<unsigned>(D3DSTENCILOP_KEEP));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::StencilOperation::Zero) == static_cast<unsigned>(D3DSTENCILOP_ZERO));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::StencilOperation::Replace) == static_cast<unsigned>(D3DSTENCILOP_REPLACE));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::StencilOperation::IncrClamp) == static_cast<unsigned>(D3DSTENCILOP_INCRSAT));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::StencilOperation::DecrClamp) == static_cast<unsigned>(D3DSTENCILOP_DECRSAT));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::StencilOperation::Invert) == static_cast<unsigned>(D3DSTENCILOP_INVERT));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::StencilOperation::IncrWrap) == static_cast<unsigned>(D3DSTENCILOP_INCR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::StencilOperation::DecrWrap) == static_cast<unsigned>(D3DSTENCILOP_DECR));
+        static_assert(static_cast<unsigned>(graphics::states::StencilOperation::Keep) == static_cast<unsigned>(D3DSTENCILOP_KEEP));
+        static_assert(static_cast<unsigned>(graphics::states::StencilOperation::Zero) == static_cast<unsigned>(D3DSTENCILOP_ZERO));
+        static_assert(static_cast<unsigned>(graphics::states::StencilOperation::Replace) == static_cast<unsigned>(D3DSTENCILOP_REPLACE));
+        static_assert(static_cast<unsigned>(graphics::states::StencilOperation::IncrClamp) == static_cast<unsigned>(D3DSTENCILOP_INCRSAT));
+        static_assert(static_cast<unsigned>(graphics::states::StencilOperation::DecrClamp) == static_cast<unsigned>(D3DSTENCILOP_DECRSAT));
+        static_assert(static_cast<unsigned>(graphics::states::StencilOperation::Invert) == static_cast<unsigned>(D3DSTENCILOP_INVERT));
+        static_assert(static_cast<unsigned>(graphics::states::StencilOperation::IncrWrap) == static_cast<unsigned>(D3DSTENCILOP_INCR));
+        static_assert(static_cast<unsigned>(graphics::states::StencilOperation::DecrWrap) == static_cast<unsigned>(D3DSTENCILOP_DECR));
 
         return static_cast<D3DSTENCILOP>(stencil_operation);
     }
@@ -28,7 +28,7 @@ namespace xl7::graphics::impl::direct3d9::states {
      * Maps the specified depth/stencil state descriptor to corresponding Direct3D 9
      * values and fills the given structure accordingly.
      */
-    void DepthStencilStateImpl::map_d3d_values(const xl7::graphics::states::DepthStencilStateDesc& desc, D3DDepthStencilStateTypeValues& d3d_depth_stencil_state_type_values)
+    void DepthStencilStateImpl::map_d3d_values(const graphics::states::DepthStencilStateDesc& desc, D3DDepthStencilStateTypeValues& d3d_depth_stencil_state_type_values)
     {
         d3d_depth_stencil_state_type_values = D3DDepthStencilStateTypeValues({
             {D3DRS_ZENABLE, desc.is_depth_testing_enabled ? D3DZB_TRUE : D3DZB_FALSE},
@@ -60,8 +60,8 @@ namespace xl7::graphics::impl::direct3d9::states {
     // Construction / Destruction
     // #############################################################################
 
-    DepthStencilStateImpl::DepthStencilStateImpl(const CreateParams<xl7::graphics::states::DepthStencilStateDesc>& params)
-        : DepthStencilState(params)
+    DepthStencilStateImpl::DepthStencilStateImpl(const CreateContext& ctx, const graphics::states::DepthStencilStateDesc& desc)
+        : DepthStencilState(ctx, desc)
         , _d3d_depth_stencil_state_type_values()
     {
     }
@@ -78,7 +78,7 @@ namespace xl7::graphics::impl::direct3d9::states {
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool DepthStencilStateImpl::_acquire_impl(const xl7::resources::DataProvider& data_provider)
+    bool DepthStencilStateImpl::_acquire_impl(const resources::DataProvider& data_provider)
     {
         map_d3d_values(get_desc(), _d3d_depth_stencil_state_type_values);
 

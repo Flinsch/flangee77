@@ -16,9 +16,9 @@ namespace xl7::graphics::impl::direct3d9::shaders {
      * Performs a "reflection" on the (compiled) shader bytecode to determine
      * parameter declarations etc.
      */
-    bool D3DShaderReflection::reflect(const xl7::graphics::shaders::ShaderCode& bytecode, xl7::graphics::shaders::ReflectionResult& reflection_result_out)
+    bool D3DShaderReflection::reflect(const graphics::shaders::ShaderCode& bytecode, graphics::shaders::ReflectionResult& reflection_result_out)
     {
-        if (bytecode.get_language() != xl7::graphics::shaders::ShaderCode::Language::Bytecode)
+        if (bytecode.get_language() != graphics::shaders::ShaderCode::Language::Bytecode)
         {
             LOG_ERROR(u8"The given code does not appear to be bytecode.");
             return false;
@@ -109,23 +109,23 @@ namespace xl7::graphics::impl::direct3d9::shaders {
 
             const auto* const cinfo = reinterpret_cast<const Info*>(ctab_ptr + cheader->ConstantInfo);
 
-            constant_buffer_declarations_out.emplace_back(xl7::graphics::shaders::ConstantBufferDeclaration{.name = "", .index = 0, .layout = {}});
+            constant_buffer_declarations_out.emplace_back(graphics::shaders::ConstantBufferDeclaration{.name = "", .index = 0, .layout = {}});
             auto& constant_declarations_out = constant_buffer_declarations_out.back().layout.constant_declarations;
 
             for (uint32_t i = 0; i < cheader->Constants; ++i)
             {
                 const auto* const ctype = reinterpret_cast<const Type*>(ctab_ptr + cinfo[i].TypeInfo);
 
-                xl7::graphics::shaders::ConstantType constant_type;
+                graphics::shaders::ConstantType constant_type;
                 switch (ctype->Type)
                 {
                     case 1: // D3DXPT_BOOL
                     case 2: // D3DXPT_INT
                     case 3: // D3DXPT_FLOAT
-                        static_assert(static_cast<unsigned>(xl7::graphics::shaders::ConstantType::Bool) == 1);
-                        static_assert(static_cast<unsigned>(xl7::graphics::shaders::ConstantType::Int) == 2);
-                        static_assert(static_cast<unsigned>(xl7::graphics::shaders::ConstantType::Float) == 3);
-                        constant_type = static_cast<xl7::graphics::shaders::ConstantType>(ctype->Type);
+                        static_assert(static_cast<unsigned>(graphics::shaders::ConstantType::Bool) == 1);
+                        static_assert(static_cast<unsigned>(graphics::shaders::ConstantType::Int) == 2);
+                        static_assert(static_cast<unsigned>(graphics::shaders::ConstantType::Float) == 3);
+                        constant_type = static_cast<graphics::shaders::ConstantType>(ctype->Type);
                         break;
                     case 10: // D3DXPT_SAMPLER
                     case 11: // D3DXPT_SAMPLER1D
@@ -138,25 +138,25 @@ namespace xl7::graphics::impl::direct3d9::shaders {
                         continue;
                 } // switch parameter type
 
-                xl7::graphics::shaders::ConstantClass constant_class;
+                graphics::shaders::ConstantClass constant_class;
                 switch (ctype->Class)
                 {
                     case 0: // D3DXPC_SCALAR
                     case 1: // D3DXPC_VECTOR
                     case 2: // D3DXPC_MATRIX_ROWS
                     case 3: // D3DXPC_MATRIX_COLUMNS
-                        static_assert(static_cast<unsigned>(xl7::graphics::shaders::ConstantClass::Scalar) == 0);
-                        static_assert(static_cast<unsigned>(xl7::graphics::shaders::ConstantClass::Vector) == 1);
-                        static_assert(static_cast<unsigned>(xl7::graphics::shaders::ConstantClass::MatrixRows) == 2);
-                        static_assert(static_cast<unsigned>(xl7::graphics::shaders::ConstantClass::MatrixColumns) == 3);
-                        constant_class = static_cast<xl7::graphics::shaders::ConstantClass>(ctype->Class);
+                        static_assert(static_cast<unsigned>(graphics::shaders::ConstantClass::Scalar) == 0);
+                        static_assert(static_cast<unsigned>(graphics::shaders::ConstantClass::Vector) == 1);
+                        static_assert(static_cast<unsigned>(graphics::shaders::ConstantClass::MatrixRows) == 2);
+                        static_assert(static_cast<unsigned>(graphics::shaders::ConstantClass::MatrixColumns) == 3);
+                        constant_class = static_cast<graphics::shaders::ConstantClass>(ctype->Class);
                         break;
                     default:
                         assert(false);
                         continue;
                 } // switch parameter class
 
-                xl7::graphics::shaders::ConstantDeclaration constant_declaration;
+                graphics::shaders::ConstantDeclaration constant_declaration;
                 constant_declaration.name = cl7::astring{ctab_ptr + cinfo[i].Name};
                 constant_declaration.constant_type = constant_type;
                 constant_declaration.constant_class = constant_class;
@@ -191,7 +191,7 @@ namespace xl7::graphics::impl::direct3d9::shaders {
                         assert(false);
                 } // switch parameter type
 
-                xl7::graphics::shaders::TextureSamplerDeclaration texture_sampler_declaration;
+                graphics::shaders::TextureSamplerDeclaration texture_sampler_declaration;
                 texture_sampler_declaration.name = cl7::astring{ctab_ptr + cinfo[i].Name};
                 texture_sampler_declaration.index = static_cast<unsigned>(cinfo[i].RegisterIndex);
                 texture_sampler_declaration.element_count = static_cast<unsigned>(ctype->Elements);

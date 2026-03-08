@@ -73,13 +73,13 @@ public:
 
 protected:
 
-    template <class TDesc>
-        requires(std::derived_from<TDesc, MeshBufferDesc>)
-    MeshBuffer(Type type, const CreateParams<TDesc>& params, unsigned stride)
-        : ResourceBase(params)
+    template <class TMeshBufferDesc>
+        requires(std::derived_from<TMeshBufferDesc, MeshBufferDesc>)
+    MeshBuffer(Type type, const CreateContext& ctx, const TMeshBufferDesc& desc, unsigned stride)
+        : ResourceBase(ctx, desc)
         , _type(type)
-        , _desc(params.desc) // NOLINT(*-slicing)
-        , _primitive_count(MeshUtil::calculate_primitive_count(params.desc.topology, params.desc.count))
+        , _desc(desc) // NOLINT(*-slicing)
+        , _primitive_count(MeshUtil::calculate_primitive_count(desc.topology, desc.count))
         , _stride(stride)
         , _size(_stride * _desc.count)
     {

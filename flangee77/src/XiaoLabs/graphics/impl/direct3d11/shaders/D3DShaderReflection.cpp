@@ -19,9 +19,9 @@ namespace xl7::graphics::impl::direct3d11::shaders {
      * Performs a "reflection" on the (compiled) shader bytecode to determine
      * parameter declarations etc.
      */
-    bool D3DShaderReflection::reflect(const xl7::graphics::shaders::ShaderCode& bytecode, xl7::graphics::shaders::ReflectionResult& reflection_result_out)
+    bool D3DShaderReflection::reflect(const graphics::shaders::ShaderCode& bytecode, graphics::shaders::ReflectionResult& reflection_result_out)
     {
-        if (bytecode.get_language() != xl7::graphics::shaders::ShaderCode::Language::Bytecode)
+        if (bytecode.get_language() != graphics::shaders::ShaderCode::Language::Bytecode)
         {
             LOG_ERROR(u8"The given code does not appear to be bytecode.");
             return false;
@@ -77,7 +77,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
             if (d3d_shader_buffer_desc.Type != D3D_CT_CBUFFER)
                 continue;
 
-            constant_buffer_declarations_out.emplace_back(xl7::graphics::shaders::ConstantBufferDeclaration{.name = cl7::astring{d3d_shader_buffer_desc.Name}, .index = cbuffer_index, .layout = {}});
+            constant_buffer_declarations_out.emplace_back(graphics::shaders::ConstantBufferDeclaration{.name = cl7::astring{d3d_shader_buffer_desc.Name}, .index = cbuffer_index, .layout = {}});
             auto& constant_declarations_out = constant_buffer_declarations_out.back().layout.constant_declarations;
 
             for (unsigned variable_index = 0; variable_index < d3d_shader_buffer_desc.Variables; ++variable_index)
@@ -110,41 +110,41 @@ namespace xl7::graphics::impl::direct3d11::shaders {
                     continue;
                 }
 
-                xl7::graphics::shaders::ConstantType constant_type;
+                graphics::shaders::ConstantType constant_type;
                 switch (d3d_shader_type_desc.Type)
                 {
                     case D3D_SVT_BOOL:
                     case D3D_SVT_INT:
                     case D3D_SVT_FLOAT:
-                        static_assert(static_cast<unsigned>(xl7::graphics::shaders::ConstantType::Bool) == D3D_SVT_BOOL);
-                        static_assert(static_cast<unsigned>(xl7::graphics::shaders::ConstantType::Int) == D3D_SVT_INT);
-                        static_assert(static_cast<unsigned>(xl7::graphics::shaders::ConstantType::Float) == D3D_SVT_FLOAT);
-                        constant_type = static_cast<xl7::graphics::shaders::ConstantType>(d3d_shader_type_desc.Type);
+                        static_assert(static_cast<unsigned>(graphics::shaders::ConstantType::Bool) == D3D_SVT_BOOL);
+                        static_assert(static_cast<unsigned>(graphics::shaders::ConstantType::Int) == D3D_SVT_INT);
+                        static_assert(static_cast<unsigned>(graphics::shaders::ConstantType::Float) == D3D_SVT_FLOAT);
+                        constant_type = static_cast<graphics::shaders::ConstantType>(d3d_shader_type_desc.Type);
                         break;
                     default:
                         assert(false);
                         continue;
                 } // switch parameter type
 
-                xl7::graphics::shaders::ConstantClass constant_class;
+                graphics::shaders::ConstantClass constant_class;
                 switch (d3d_shader_type_desc.Class)
                 {
                     case D3D_SVC_SCALAR:
                     case D3D_SVC_VECTOR:
                     case D3D_SVC_MATRIX_ROWS:
                     case D3D_SVC_MATRIX_COLUMNS:
-                        static_assert(static_cast<unsigned>(xl7::graphics::shaders::ConstantClass::Scalar) == D3D_SVC_SCALAR);
-                        static_assert(static_cast<unsigned>(xl7::graphics::shaders::ConstantClass::Vector) == D3D_SVC_VECTOR);
-                        static_assert(static_cast<unsigned>(xl7::graphics::shaders::ConstantClass::MatrixRows) == D3D_SVC_MATRIX_ROWS);
-                        static_assert(static_cast<unsigned>(xl7::graphics::shaders::ConstantClass::MatrixColumns) == D3D_SVC_MATRIX_COLUMNS);
-                        constant_class = static_cast<xl7::graphics::shaders::ConstantClass>(d3d_shader_type_desc.Class);
+                        static_assert(static_cast<unsigned>(graphics::shaders::ConstantClass::Scalar) == D3D_SVC_SCALAR);
+                        static_assert(static_cast<unsigned>(graphics::shaders::ConstantClass::Vector) == D3D_SVC_VECTOR);
+                        static_assert(static_cast<unsigned>(graphics::shaders::ConstantClass::MatrixRows) == D3D_SVC_MATRIX_ROWS);
+                        static_assert(static_cast<unsigned>(graphics::shaders::ConstantClass::MatrixColumns) == D3D_SVC_MATRIX_COLUMNS);
+                        constant_class = static_cast<graphics::shaders::ConstantClass>(d3d_shader_type_desc.Class);
                         break;
                     default:
                         assert(false);
                         continue;
                 } // switch parameter type
 
-                xl7::graphics::shaders::ConstantDeclaration constant_declaration;
+                graphics::shaders::ConstantDeclaration constant_declaration;
                 constant_declaration.name = cl7::astring{d3d_shader_variable_desc.Name};
                 constant_declaration.constant_type = constant_type;
                 constant_declaration.constant_class = constant_class;
@@ -174,7 +174,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
             if (d3d_shader_input_bind_desc.Type != D3D_SIT_SAMPLER)
                 continue;
 
-            xl7::graphics::shaders::TextureSamplerDeclaration texture_sampler_declaration;
+            graphics::shaders::TextureSamplerDeclaration texture_sampler_declaration;
             texture_sampler_declaration.name = cl7::astring{d3d_shader_input_bind_desc.Name};
             texture_sampler_declaration.index = d3d_shader_input_bind_desc.BindPoint;
             texture_sampler_declaration.element_count = d3d_shader_input_bind_desc.BindCount;

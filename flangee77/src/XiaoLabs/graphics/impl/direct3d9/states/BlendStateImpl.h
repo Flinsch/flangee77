@@ -15,14 +15,14 @@ namespace states {
 
 
 class BlendStateImpl final
-    : public xl7::graphics::states::BlendState
+    : public graphics::states::BlendState
 {
 
 public:
     class Attorney
     {
-        static BlendStateImpl* create(const CreateParams<xl7::graphics::states::BlendStateDesc>& params) { return new BlendStateImpl(params); }
-        friend class xl7::graphics::impl::direct3d9::ResourceFactoryImpl;
+        static BlendStateImpl* create(const CreateContext& ctx, const graphics::states::BlendStateDesc& desc) { return new BlendStateImpl(ctx, desc); }
+        friend class direct3d9::ResourceFactoryImpl;
     };
 
 
@@ -45,7 +45,7 @@ public:
      * Maps the specified blend state descriptor to corresponding Direct3D 9
      * values and fills the given structure accordingly.
      */
-    static void map_d3d_values(const xl7::graphics::states::BlendStateDesc& desc, D3DBlendStateTypeValues& d3d_blend_state_type_values);
+    static void map_d3d_values(const graphics::states::BlendStateDesc& desc, D3DBlendStateTypeValues& d3d_blend_state_type_values);
 
 
 
@@ -55,7 +55,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit BlendStateImpl(const CreateParams<xl7::graphics::states::BlendStateDesc>& params);
+    explicit BlendStateImpl(const CreateContext& ctx, const graphics::states::BlendStateDesc& desc);
     ~BlendStateImpl() override = default;
 
 
@@ -77,7 +77,7 @@ private:
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool _acquire_impl(const xl7::resources::DataProvider& data_provider) override;
+    bool _acquire_impl(const resources::DataProvider& data_provider) override;
 
     /**
      * Disposes/"unacquires" the resource.

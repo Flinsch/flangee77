@@ -13,14 +13,14 @@ namespace states {
 
 
 class DepthStencilStateImpl final
-    : public xl7::graphics::states::DepthStencilState
+    : public graphics::states::DepthStencilState
 {
 
 public:
     class Attorney
     {
-        static DepthStencilStateImpl* create(const CreateParams<xl7::graphics::states::DepthStencilStateDesc>& params) { return new DepthStencilStateImpl(params); }
-        friend class xl7::graphics::impl::direct3d11::ResourceFactoryImpl;
+        static DepthStencilStateImpl* create(const CreateContext& ctx, const graphics::states::DepthStencilStateDesc& desc) { return new DepthStencilStateImpl(ctx, desc); }
+        friend class direct3d11::ResourceFactoryImpl;
     };
 
 
@@ -43,7 +43,7 @@ public:
      * Maps the specified depth/stencil state descriptor to corresponding Direct3D 11
      * values and fills the given structure accordingly.
      */
-    static void map_d3d_values(const xl7::graphics::states::DepthStencilStateDesc& desc, D3D11_DEPTH_STENCIL_DESC& d3d_depth_stencil_desc);
+    static void map_d3d_values(const graphics::states::DepthStencilStateDesc& desc, D3D11_DEPTH_STENCIL_DESC& d3d_depth_stencil_desc);
 
 
 
@@ -53,7 +53,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit DepthStencilStateImpl(const CreateParams<xl7::graphics::states::DepthStencilStateDesc>& params);
+    explicit DepthStencilStateImpl(const CreateContext& ctx, const graphics::states::DepthStencilStateDesc& desc);
     ~DepthStencilStateImpl() override = default;
 
 
@@ -75,7 +75,7 @@ private:
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool _acquire_impl(const xl7::resources::DataProvider& data_provider) override;
+    bool _acquire_impl(const resources::DataProvider& data_provider) override;
 
     /**
      * Disposes/"unacquires" the resource.

@@ -12,11 +12,11 @@ namespace xl7::graphics::impl::direct3d11::states {
 
 
 
-    static D3D11_FILTER _d3d_filter_from(xl7::graphics::states::MinMagFilterType min_filter_type, xl7::graphics::states::MinMagFilterType mag_filter_type, xl7::graphics::states::MipFilterType mip_filter_type)
+    static D3D11_FILTER _d3d_filter_from(graphics::states::MinMagFilterType min_filter_type, graphics::states::MinMagFilterType mag_filter_type, graphics::states::MipFilterType mip_filter_type)
     {
-        bool min_anisotropic = min_filter_type == xl7::graphics::states::MinMagFilterType::Anisotropic;
-        bool mag_anisotropic = mag_filter_type == xl7::graphics::states::MinMagFilterType::Anisotropic;
-        bool mip_anisotropic = mip_filter_type == xl7::graphics::states::MipFilterType::Anisotropic;
+        bool min_anisotropic = min_filter_type == graphics::states::MinMagFilterType::Anisotropic;
+        bool mag_anisotropic = mag_filter_type == graphics::states::MinMagFilterType::Anisotropic;
+        bool mip_anisotropic = mip_filter_type == graphics::states::MipFilterType::Anisotropic;
         bool all_anisotropic =
             min_anisotropic &&
             mag_anisotropic &&
@@ -31,19 +31,19 @@ namespace xl7::graphics::impl::direct3d11::states {
         if (all_anisotropic)
             return D3D11_ENCODE_ANISOTROPIC_FILTER(default_value);
 
-        if (min_anisotropic) min_filter_type = xl7::graphics::states::MinMagFilterType::Linear;
-        if (mag_anisotropic) mag_filter_type = xl7::graphics::states::MinMagFilterType::Linear;
-        if (mip_anisotropic) mip_filter_type = xl7::graphics::states::MipFilterType::Linear;
+        if (min_anisotropic) min_filter_type = graphics::states::MinMagFilterType::Linear;
+        if (mag_anisotropic) mag_filter_type = graphics::states::MinMagFilterType::Linear;
+        if (mip_anisotropic) mip_filter_type = graphics::states::MipFilterType::Linear;
 
         // Mip-level sampling "None" to disable mipmapping is specifically covered elsewhere.
         // Direct3D 11 doesn't have a corresponding filter type, so we just take the "simplest" here: "Point".
-        if (mip_filter_type == xl7::graphics::states::MipFilterType::None)
-            mip_filter_type = xl7::graphics::states::MipFilterType::Point;
+        if (mip_filter_type == graphics::states::MipFilterType::None)
+            mip_filter_type = graphics::states::MipFilterType::Point;
 
-        static_assert(static_cast<unsigned>(xl7::graphics::states::MinMagFilterType::Point) - 1 == static_cast<unsigned>(D3D11_FILTER_TYPE_POINT));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::MinMagFilterType::Linear) - 1 == static_cast<unsigned>(D3D11_FILTER_TYPE_LINEAR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::MipFilterType::Point) - 1 == static_cast<unsigned>(D3D11_FILTER_TYPE_POINT));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::MipFilterType::Linear) - 1 == static_cast<unsigned>(D3D11_FILTER_TYPE_LINEAR));
+        static_assert(static_cast<unsigned>(graphics::states::MinMagFilterType::Point) - 1 == static_cast<unsigned>(D3D11_FILTER_TYPE_POINT));
+        static_assert(static_cast<unsigned>(graphics::states::MinMagFilterType::Linear) - 1 == static_cast<unsigned>(D3D11_FILTER_TYPE_LINEAR));
+        static_assert(static_cast<unsigned>(graphics::states::MipFilterType::Point) - 1 == static_cast<unsigned>(D3D11_FILTER_TYPE_POINT));
+        static_assert(static_cast<unsigned>(graphics::states::MipFilterType::Linear) - 1 == static_cast<unsigned>(D3D11_FILTER_TYPE_LINEAR));
 
         return D3D11_ENCODE_BASIC_FILTER(
             static_cast<D3D11_FILTER_TYPE>(static_cast<unsigned>(min_filter_type) - 1),
@@ -52,13 +52,13 @@ namespace xl7::graphics::impl::direct3d11::states {
             default_value);
     }
 
-    static D3D11_TEXTURE_ADDRESS_MODE _d3d_texture_address_mode_from(xl7::graphics::states::AddressMode address_mode)
+    static D3D11_TEXTURE_ADDRESS_MODE _d3d_texture_address_mode_from(graphics::states::AddressMode address_mode)
     {
-        static_assert(static_cast<unsigned>(xl7::graphics::states::AddressMode::Wrap) == static_cast<unsigned>(D3D11_TEXTURE_ADDRESS_WRAP));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::AddressMode::Mirror) == static_cast<unsigned>(D3D11_TEXTURE_ADDRESS_MIRROR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::AddressMode::Clamp) == static_cast<unsigned>(D3D11_TEXTURE_ADDRESS_CLAMP));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::AddressMode::Border) == static_cast<unsigned>(D3D11_TEXTURE_ADDRESS_BORDER));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::AddressMode::MirrorOnce) == static_cast<unsigned>(D3D11_TEXTURE_ADDRESS_MIRROR_ONCE));
+        static_assert(static_cast<unsigned>(graphics::states::AddressMode::Wrap) == static_cast<unsigned>(D3D11_TEXTURE_ADDRESS_WRAP));
+        static_assert(static_cast<unsigned>(graphics::states::AddressMode::Mirror) == static_cast<unsigned>(D3D11_TEXTURE_ADDRESS_MIRROR));
+        static_assert(static_cast<unsigned>(graphics::states::AddressMode::Clamp) == static_cast<unsigned>(D3D11_TEXTURE_ADDRESS_CLAMP));
+        static_assert(static_cast<unsigned>(graphics::states::AddressMode::Border) == static_cast<unsigned>(D3D11_TEXTURE_ADDRESS_BORDER));
+        static_assert(static_cast<unsigned>(graphics::states::AddressMode::MirrorOnce) == static_cast<unsigned>(D3D11_TEXTURE_ADDRESS_MIRROR_ONCE));
 
         return static_cast<D3D11_TEXTURE_ADDRESS_MODE>(address_mode);
     }
@@ -69,7 +69,7 @@ namespace xl7::graphics::impl::direct3d11::states {
      * Maps the specified sampler state descriptor to corresponding Direct3D 11
      * values and fills the given structure accordingly.
      */
-    void SamplerStateImpl::map_d3d_values(const xl7::graphics::states::SamplerStateDesc& desc, D3D11_SAMPLER_DESC& d3d_sampler_desc)
+    void SamplerStateImpl::map_d3d_values(const graphics::states::SamplerStateDesc& desc, D3D11_SAMPLER_DESC& d3d_sampler_desc)
     {
         d3d_sampler_desc.Filter = _d3d_filter_from(desc.min_filter_type, desc.mag_filter_type, desc.mip_filter_type);
         d3d_sampler_desc.AddressU = _d3d_texture_address_mode_from(desc.address_u);
@@ -83,7 +83,7 @@ namespace xl7::graphics::impl::direct3d11::states {
         d3d_sampler_desc.BorderColor[2] = desc.border_color.b;
         d3d_sampler_desc.BorderColor[3] = desc.border_color.a;
         d3d_sampler_desc.MinLOD = desc.min_lod;
-        d3d_sampler_desc.MaxLOD = desc.mip_filter_type == xl7::graphics::states::MipFilterType::None ? 0.0f : desc.max_lod; // Is this sufficient, correct, and sensible?
+        d3d_sampler_desc.MaxLOD = desc.mip_filter_type == graphics::states::MipFilterType::None ? 0.0f : desc.max_lod; // Is this sufficient, correct, and sensible?
     }
 
 
@@ -92,8 +92,8 @@ namespace xl7::graphics::impl::direct3d11::states {
     // Construction / Destruction
     // #############################################################################
 
-    SamplerStateImpl::SamplerStateImpl(const CreateParams<xl7::graphics::states::SamplerStateDesc>& params)
-        : SamplerState(params)
+    SamplerStateImpl::SamplerStateImpl(const CreateContext& ctx, const graphics::states::SamplerStateDesc& desc)
+        : SamplerState(ctx, desc)
     {
     }
 
@@ -109,7 +109,7 @@ namespace xl7::graphics::impl::direct3d11::states {
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool SamplerStateImpl::_acquire_impl(const xl7::resources::DataProvider& data_provider)
+    bool SamplerStateImpl::_acquire_impl(const resources::DataProvider& data_provider)
     {
         auto* d3d_device = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_d3d_device();
         assert(d3d_device);

@@ -73,9 +73,9 @@ namespace xl7::graphics::states {
             return resource->get_id();
         }
 
-        resources::Resource::CreateParams<SamplerStateDesc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
+        resources::Resource::CreateContext ctx{.manager = this, .id = _next_id(), .identifier = identifier};
 
-        ResourcePtr sampler_state(_factory->create_sampler_state(params), _destroy_resource);
+        ResourcePtr sampler_state(_factory->create_sampler_state(ctx, desc), _destroy_resource);
 
         return _try_acquire_and_add_resource<SamplerState::Id>(std::move(sampler_state), resources::DefaultDataProvider());
     }
@@ -93,9 +93,9 @@ namespace xl7::graphics::states {
             return resource->get_id();
         }
 
-        resources::Resource::CreateParams<RasterizerStateDesc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
+        resources::Resource::CreateContext ctx{.manager = this, .id = _next_id(), .identifier = identifier};
 
-        ResourcePtr rasterizer_state(_factory->create_rasterizer_state(params), _destroy_resource);
+        ResourcePtr rasterizer_state(_factory->create_rasterizer_state(ctx, desc), _destroy_resource);
 
         return _try_acquire_and_add_resource<RasterizerState::Id>(std::move(rasterizer_state), resources::DefaultDataProvider());
     }
@@ -113,9 +113,9 @@ namespace xl7::graphics::states {
             return resource->get_id();
         }
 
-        resources::Resource::CreateParams<DepthStencilStateDesc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
+        resources::Resource::CreateContext ctx{.manager = this, .id = _next_id(), .identifier = identifier};
 
-        ResourcePtr depth_stencil_state(_factory->create_depth_stencil_state(params), _destroy_resource);
+        ResourcePtr depth_stencil_state(_factory->create_depth_stencil_state(ctx, desc), _destroy_resource);
 
         return _try_acquire_and_add_resource<DepthStencilState::Id>(std::move(depth_stencil_state), resources::DefaultDataProvider());
     }
@@ -133,9 +133,9 @@ namespace xl7::graphics::states {
             return resource->get_id();
         }
 
-        resources::Resource::CreateParams<BlendStateDesc> params{.manager = this, .id = _next_id(), .identifier = identifier, .desc = desc};
+        resources::Resource::CreateContext ctx{.manager = this, .id = _next_id(), .identifier = identifier};
 
-        ResourcePtr blend_state(_factory->create_blend_state(params), _destroy_resource);
+        ResourcePtr blend_state(_factory->create_blend_state(ctx, desc), _destroy_resource);
 
         return _try_acquire_and_add_resource<BlendState::Id>(std::move(blend_state), resources::DefaultDataProvider());
     }

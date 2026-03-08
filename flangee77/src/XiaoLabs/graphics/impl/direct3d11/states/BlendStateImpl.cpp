@@ -12,42 +12,42 @@ namespace xl7::graphics::impl::direct3d11::states {
 
 
 
-    static D3D11_BLEND _d3d_blend_from(xl7::graphics::states::BlendFactor blend_factor)
+    static D3D11_BLEND _d3d_blend_from(graphics::states::BlendFactor blend_factor)
     {
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::Zero) == static_cast<unsigned>(D3D11_BLEND_ZERO));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::One) == static_cast<unsigned>(D3D11_BLEND_ONE));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::SrcColor) == static_cast<unsigned>(D3D11_BLEND_SRC_COLOR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::InvSrcColor) == static_cast<unsigned>(D3D11_BLEND_INV_SRC_COLOR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::SrcAlpha) == static_cast<unsigned>(D3D11_BLEND_SRC_ALPHA));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::InvSrcAlpha) == static_cast<unsigned>(D3D11_BLEND_INV_SRC_ALPHA));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::DestAlpha) == static_cast<unsigned>(D3D11_BLEND_DEST_ALPHA));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::InvDestAlpha) == static_cast<unsigned>(D3D11_BLEND_INV_DEST_ALPHA));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::DestColor) == static_cast<unsigned>(D3D11_BLEND_DEST_COLOR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::InvDestColor) == static_cast<unsigned>(D3D11_BLEND_INV_DEST_COLOR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::SrcAlphaSat) == static_cast<unsigned>(D3D11_BLEND_SRC_ALPHA_SAT));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::BlendFactor) == static_cast<unsigned>(D3D11_BLEND_BLEND_FACTOR));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendFactor::InvBlendFactor) == static_cast<unsigned>(D3D11_BLEND_INV_BLEND_FACTOR));
+        static_assert(static_cast<unsigned>(graphics::states::BlendFactor::Zero) == static_cast<unsigned>(D3D11_BLEND_ZERO));
+        static_assert(static_cast<unsigned>(graphics::states::BlendFactor::One) == static_cast<unsigned>(D3D11_BLEND_ONE));
+        static_assert(static_cast<unsigned>(graphics::states::BlendFactor::SrcColor) == static_cast<unsigned>(D3D11_BLEND_SRC_COLOR));
+        static_assert(static_cast<unsigned>(graphics::states::BlendFactor::InvSrcColor) == static_cast<unsigned>(D3D11_BLEND_INV_SRC_COLOR));
+        static_assert(static_cast<unsigned>(graphics::states::BlendFactor::SrcAlpha) == static_cast<unsigned>(D3D11_BLEND_SRC_ALPHA));
+        static_assert(static_cast<unsigned>(graphics::states::BlendFactor::InvSrcAlpha) == static_cast<unsigned>(D3D11_BLEND_INV_SRC_ALPHA));
+        static_assert(static_cast<unsigned>(graphics::states::BlendFactor::DestAlpha) == static_cast<unsigned>(D3D11_BLEND_DEST_ALPHA));
+        static_assert(static_cast<unsigned>(graphics::states::BlendFactor::InvDestAlpha) == static_cast<unsigned>(D3D11_BLEND_INV_DEST_ALPHA));
+        static_assert(static_cast<unsigned>(graphics::states::BlendFactor::DestColor) == static_cast<unsigned>(D3D11_BLEND_DEST_COLOR));
+        static_assert(static_cast<unsigned>(graphics::states::BlendFactor::InvDestColor) == static_cast<unsigned>(D3D11_BLEND_INV_DEST_COLOR));
+        static_assert(static_cast<unsigned>(graphics::states::BlendFactor::SrcAlphaSat) == static_cast<unsigned>(D3D11_BLEND_SRC_ALPHA_SAT));
+        static_assert(static_cast<unsigned>(graphics::states::BlendFactor::BlendFactor) == static_cast<unsigned>(D3D11_BLEND_BLEND_FACTOR));
+        static_assert(static_cast<unsigned>(graphics::states::BlendFactor::InvBlendFactor) == static_cast<unsigned>(D3D11_BLEND_INV_BLEND_FACTOR));
 
         return static_cast<D3D11_BLEND>(blend_factor);
     }
 
-    static D3D11_BLEND_OP _d3d_blend_op_from(xl7::graphics::states::BlendOperation blend_operation)
+    static D3D11_BLEND_OP _d3d_blend_op_from(graphics::states::BlendOperation blend_operation)
     {
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendOperation::Add) == static_cast<unsigned>(D3D11_BLEND_OP_ADD));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendOperation::Subtract) == static_cast<unsigned>(D3D11_BLEND_OP_SUBTRACT));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendOperation::RevSubtract) == static_cast<unsigned>(D3D11_BLEND_OP_REV_SUBTRACT));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendOperation::Min) == static_cast<unsigned>(D3D11_BLEND_OP_MIN));
-        static_assert(static_cast<unsigned>(xl7::graphics::states::BlendOperation::Max) == static_cast<unsigned>(D3D11_BLEND_OP_MAX));
+        static_assert(static_cast<unsigned>(graphics::states::BlendOperation::Add) == static_cast<unsigned>(D3D11_BLEND_OP_ADD));
+        static_assert(static_cast<unsigned>(graphics::states::BlendOperation::Subtract) == static_cast<unsigned>(D3D11_BLEND_OP_SUBTRACT));
+        static_assert(static_cast<unsigned>(graphics::states::BlendOperation::RevSubtract) == static_cast<unsigned>(D3D11_BLEND_OP_REV_SUBTRACT));
+        static_assert(static_cast<unsigned>(graphics::states::BlendOperation::Min) == static_cast<unsigned>(D3D11_BLEND_OP_MIN));
+        static_assert(static_cast<unsigned>(graphics::states::BlendOperation::Max) == static_cast<unsigned>(D3D11_BLEND_OP_MAX));
 
         return static_cast<D3D11_BLEND_OP>(blend_operation);
     }
 
-    static UINT8 _d3d_render_target_write_mask_from(xl7::graphics::ChannelFlags channel_write_flags)
+    static UINT8 _d3d_render_target_write_mask_from(ChannelFlags channel_write_flags)
     {
-        static_assert(static_cast<unsigned>(xl7::graphics::ChannelFlags::Red) == static_cast<unsigned>(D3D11_COLOR_WRITE_ENABLE_RED));
-        static_assert(static_cast<unsigned>(xl7::graphics::ChannelFlags::Green) == static_cast<unsigned>(D3D11_COLOR_WRITE_ENABLE_GREEN));
-        static_assert(static_cast<unsigned>(xl7::graphics::ChannelFlags::Blue) == static_cast<unsigned>(D3D11_COLOR_WRITE_ENABLE_BLUE));
-        static_assert(static_cast<unsigned>(xl7::graphics::ChannelFlags::Alpha) == static_cast<unsigned>(D3D11_COLOR_WRITE_ENABLE_ALPHA));
+        static_assert(static_cast<unsigned>(ChannelFlags::Red) == static_cast<unsigned>(D3D11_COLOR_WRITE_ENABLE_RED));
+        static_assert(static_cast<unsigned>(ChannelFlags::Green) == static_cast<unsigned>(D3D11_COLOR_WRITE_ENABLE_GREEN));
+        static_assert(static_cast<unsigned>(ChannelFlags::Blue) == static_cast<unsigned>(D3D11_COLOR_WRITE_ENABLE_BLUE));
+        static_assert(static_cast<unsigned>(ChannelFlags::Alpha) == static_cast<unsigned>(D3D11_COLOR_WRITE_ENABLE_ALPHA));
 
         return static_cast<UINT8>(channel_write_flags);
     }
@@ -58,7 +58,7 @@ namespace xl7::graphics::impl::direct3d11::states {
      * Maps the specified blend state descriptor to corresponding Direct3D 11
      * values and fills the given structure accordingly.
      */
-    void BlendStateImpl::map_d3d_values(const xl7::graphics::states::BlendStateDesc& desc, D3D11_BLEND_DESC& d3d_blend_desc)
+    void BlendStateImpl::map_d3d_values(const graphics::states::BlendStateDesc& desc, D3D11_BLEND_DESC& d3d_blend_desc)
     {
         d3d_blend_desc.AlphaToCoverageEnable = FALSE;
         d3d_blend_desc.IndependentBlendEnable = FALSE;
@@ -78,8 +78,8 @@ namespace xl7::graphics::impl::direct3d11::states {
     // Construction / Destruction
     // #############################################################################
 
-    BlendStateImpl::BlendStateImpl(const CreateParams<xl7::graphics::states::BlendStateDesc>& params)
-        : BlendState(params)
+    BlendStateImpl::BlendStateImpl(const CreateContext& ctx, const graphics::states::BlendStateDesc& desc)
+        : BlendState(ctx, desc)
     {
     }
 
@@ -95,7 +95,7 @@ namespace xl7::graphics::impl::direct3d11::states {
      * has already been filled based on it. It is still included in the event that
      * it contains additional implementation-specific information.
      */
-    bool BlendStateImpl::_acquire_impl(const xl7::resources::DataProvider& data_provider)
+    bool BlendStateImpl::_acquire_impl(const resources::DataProvider& data_provider)
     {
         auto* d3d_device = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_d3d_device();
         assert(d3d_device);

@@ -13,14 +13,14 @@ namespace meshes {
 
 
 class IndexBufferImpl final
-    : public xl7::graphics::meshes::IndexBuffer
+    : public graphics::meshes::IndexBuffer
 {
 
 public:
     class Attorney
     {
-        static IndexBufferImpl* create(const CreateParams<xl7::graphics::meshes::IndexBufferDesc>& params) { return new IndexBufferImpl(params); }
-        friend class xl7::graphics::impl::direct3d11::ResourceFactoryImpl;
+        static IndexBufferImpl* create(const CreateContext& ctx, const graphics::meshes::IndexBufferDesc& desc) { return new IndexBufferImpl(ctx, desc); }
+        friend class direct3d11::ResourceFactoryImpl;
     };
 
 
@@ -49,7 +49,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    explicit IndexBufferImpl(const CreateParams<xl7::graphics::meshes::IndexBufferDesc>& params);
+    explicit IndexBufferImpl(const CreateContext& ctx, const graphics::meshes::IndexBufferDesc& desc);
     ~IndexBufferImpl() override = default;
 
 
