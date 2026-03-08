@@ -23,9 +23,9 @@ struct DepthStencilStateDesc
     /** Enables (true) or disables (false) stenciling. */
     bool is_stenciling_enabled                  = false;
     /** The bitmask applied to the reference value and each stencil value to determine the significant bits for the stencil test. */
-    unsigned stencil_test_mask                  = 0xffffffff;
+    unsigned stencil_test_mask                  = ~0u; // all bits set by default
     /** The bitmask applied to values written into the stencil buffer. */
-    unsigned stencil_write_mask                 = 0xffffffff;
+    unsigned stencil_write_mask                 = ~0u; // all bits set by default
 
     /** Identifies how to use the results of the depth/stencil tests for pixels whose surface normal is facing towards the camera. */
     StencilOperationDesc front_face_stenciling;
