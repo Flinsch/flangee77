@@ -5,7 +5,7 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl =
     [ "RenderingDeviceImpl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a6abfff71f11a7df403b4ddbc36d9448d", null ],
     [ "~RenderingDeviceImpl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#ad0ad0017231ae70ac21591b6d6b006c7", null ],
     [ "_check_device_lost_impl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#ac8760fc6a9cf210831b91f2c3429e48f", null ],
-    [ "_check_texture_format_impl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a0838b7472f68c13c47a78b9d51fa9e0b", null ],
+    [ "_check_texture_format_impl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#a89cc320e79bbc4a85bab062140944d46", null ],
     [ "_create_rendering_context_impl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#abc7cbce1fd5ad813650cb301cb13b3e3", null ],
     [ "_determine_video_memory", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#ad80a16a32e37502bc8663f2c524da037", null ],
     [ "_handle_device_lost_impl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html#ad4bbf5ac55943d2f81e2c0de247e5d97", null ],

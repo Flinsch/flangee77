@@ -4,7 +4,7 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl =
     [ "IndexBufferImpl", "dd/d8e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl.html#abf11de051eed23bd92fa3fb0b9f69e85", null ],
     [ "IndexBufferImpl", "dd/d8e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl.html#aa2de9b0232fa2245d95647e1a7fb549c", null ],
     [ "IndexBufferImpl", "dd/d8e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl.html#a9c146562047aea34153380938fae1041", null ],
-    [ "IndexBufferImpl", "dd/d8e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl.html#ae9c4eea091acf998ccc7ce0d21a185ee", null ],
+    [ "IndexBufferImpl", "dd/d8e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl.html#a1708fb1e54d763b6541fad45c70f4bdc", null ],
     [ "~IndexBufferImpl", "dd/d8e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl.html#af774ad28f8a1564d8ff1bd960314d73b", null ],
     [ "_acquire_impl", "dd/d8e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl.html#aa1ca56dcc2fef17bbdfd5180ebeb633c", null ],
     [ "_dispose_impl", "dd/d8e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl.html#a3a6c0ee764baf3dbc8deb28682b56e0f", null ],

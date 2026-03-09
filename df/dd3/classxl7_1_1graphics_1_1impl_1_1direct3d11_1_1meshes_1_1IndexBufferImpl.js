@@ -4,7 +4,7 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl =
     [ "IndexBufferImpl", "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#aca77a612202cb905207a2c36f8863fb7", null ],
     [ "IndexBufferImpl", "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#a43873bcb0178a07dea436315a9e5b6ea", null ],
     [ "IndexBufferImpl", "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#aeb01af1ca6d235c28a5ea4c73d4ecc16", null ],
-    [ "IndexBufferImpl", "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#ac41705beb1e49156effb2780e4b17384", null ],
+    [ "IndexBufferImpl", "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#a017d37c3eb52a763474823ab90b269c2", null ],
     [ "~IndexBufferImpl", "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#a5cc29bd9c92a787f2c1de23d35c32372", null ],
     [ "_acquire_impl", "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#a938b74668d3ac71b809f4e01e9eb42d8", null ],
     [ "_dispose_impl", "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#a174969c6ed094cca6be82f6e7b3f63bd", null ],

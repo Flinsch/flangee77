@@ -1,13 +1,14 @@
 var classxl7_1_1resources_1_1Resource =
 [
     [ "Attorney", "d0/d78/classxl7_1_1resources_1_1Resource_1_1Attorney.html", "d0/d78/classxl7_1_1resources_1_1Resource_1_1Attorney" ],
-    [ "CreateParams", "db/df9/structxl7_1_1resources_1_1Resource_1_1CreateParams.html", "db/df9/structxl7_1_1resources_1_1Resource_1_1CreateParams" ],
+    [ "CreateContext", "df/d78/structxl7_1_1resources_1_1Resource_1_1CreateContext.html", "df/d78/structxl7_1_1resources_1_1Resource_1_1CreateContext" ],
     [ "Id", "d5/d7b/classxl7_1_1resources_1_1Resource.html#ab9ca19e7ae0f354cd41192dd52cf024d", null ],
     [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html#aeb9d43f803b628716c843ca032c252c9", null ],
     [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html#a29f406faea45758b330fc67ae7186e99", null ],
     [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html#a647f6d695e1c60f21ebc89aeef050b3e", null ],
     [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html#a4a88610846ebec52d69c75870720f622", null ],
-    [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html#a584ff59e1132fc345bacb2c10e222302", null ],
+    [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html#a0fcd87b652565594817fef34b6c37f32", null ],
+    [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html#a3dd0bdf49659f5fcca26599552b34162", null ],
     [ "~Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html#ae38af8299222a70c4fd46ac28b11eb6b", null ],
     [ "_access_data", "d5/d7b/classxl7_1_1resources_1_1Resource.html#a0bedb8c8761ae61e061e0c49dee48fd8", null ],
     [ "_acquire", "d5/d7b/classxl7_1_1resources_1_1Resource.html#a785112510a1e3ed239a14f662b7411a9", null ],

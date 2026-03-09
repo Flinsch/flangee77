@@ -5,7 +5,7 @@ var searchData=
   ['mag_5ffilter_5ftype_2',['mag_filter_type',['../d4/d56/structxl7_1_1graphics_1_1states_1_1SamplerStateDesc.html#a6fe78792045d648a913576f62fa3fac0',1,'xl7::graphics::states::SamplerStateDesc']]],
   ['magenta_3',['MAGENTA',['../de/df3/structxl7_1_1graphics_1_1Color.html#abb2fb37f664edc844cf05eba11c7f9fe',1,'xl7::graphics::Color']]],
   ['major_4',['major',['../db/ddf/structcl7_1_1Version.html#a55a5c9accab51febd48b2f6974c443f4',1,'cl7::Version']]],
-  ['manager_5',['manager',['../db/df9/structxl7_1_1resources_1_1Resource_1_1CreateParams.html#a6562275607fe3e378f1e5a2c15624f53',1,'xl7::resources::Resource::CreateParams']]],
+  ['manager_5',['manager',['../df/d78/structxl7_1_1resources_1_1Resource_1_1CreateContext.html#ab45ff693ab38232937049526907ca484',1,'xl7::resources::Resource::CreateContext']]],
   ['mask_6',['mask',['../d7/d9b/structxl7_1_1graphics_1_1PixelLayout_1_1Channel.html#a235a08b724f497ceff123a8b6acf93f4',1,'xl7::graphics::PixelLayout::Channel']]],
   ['mask0_7',['mask0',['../d7/d9b/structxl7_1_1graphics_1_1PixelLayout_1_1Channel.html#a43d6a9b6b546d7ef54475a68b14a1582',1,'xl7::graphics::PixelLayout::Channel']]],
   ['match_5fflags_8',['match_flags',['../d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a8187a5c0e6414a9cdc5aa42a94283f78',1,'dl7::syntax::PatternSymbol']]],

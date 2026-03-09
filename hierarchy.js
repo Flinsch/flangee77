@@ -158,7 +158,7 @@ var hierarchy =
     [ "cl7::contiguous_iterator< is_const, Titem, Tbase >", "d1/d5d/classcl7_1_1contiguous__iterator.html", null ],
     [ "fl7::fonts::Contour", "dc/d41/structfl7_1_1fonts_1_1Contour.html", null ],
     [ "cl7::platform::CPUID", "d6/d24/structcl7_1_1platform_1_1CPUID.html", null ],
-    [ "xl7::resources::Resource::CreateParams< TDesc >", "db/df9/structxl7_1_1resources_1_1Resource_1_1CreateParams.html", null ],
+    [ "xl7::resources::Resource::CreateContext", "df/d78/structxl7_1_1resources_1_1Resource_1_1CreateContext.html", null ],
     [ "dl7::syntax::CstNode", "d0/df6/classdl7_1_1syntax_1_1CstNode.html", null ],
     [ "ml7::CubicBezier2< T >", "db/d5c/structml7_1_1CubicBezier2.html", null ],
     [ "ml7::CubicBezier3< T >", "d1/d7d/structml7_1_1CubicBezier3.html", null ],

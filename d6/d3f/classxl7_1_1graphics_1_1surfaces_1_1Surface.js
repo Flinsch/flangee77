@@ -9,7 +9,7 @@ var classxl7_1_1graphics_1_1surfaces_1_1Surface =
     [ "Surface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#af45273c061db16580b8af287e63841ee", null ],
     [ "Surface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#afdb71a7efeebcd5990801488a8e683d5", null ],
     [ "Surface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a88d78b9f085db301151ff5e991bdafb5", null ],
-    [ "Surface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a24362e0f92a30ba79ed4f93df85ac098", null ],
+    [ "Surface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#acf04f835d6ffa99f127fd565b6341521", null ],
     [ "~Surface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#ac311ba6c0cd348dfcd46b9ae3dd9683c", null ],
     [ "_acquire_impl", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#aa8b703fba3afa009e4f756e3a8a51761", null ],
     [ "_check_data_impl", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a68c1c44229ea329c8bb79d4254b73e5b", null ],

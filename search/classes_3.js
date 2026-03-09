@@ -38,7 +38,7 @@ var searchData=
   ['coutlogger_35',['CoutLogger',['../db/d02/classtl7_1_1reporting_1_1CoutLogger.html',1,'tl7::reporting']]],
   ['coutloghandler_36',['CoutLogHandler',['../d9/d31/classcl7_1_1logging_1_1CoutLogHandler.html',1,'cl7::logging']]],
   ['cpuid_37',['CPUID',['../d6/d24/structcl7_1_1platform_1_1CPUID.html',1,'cl7::platform']]],
-  ['createparams_38',['CreateParams',['../db/df9/structxl7_1_1resources_1_1Resource_1_1CreateParams.html',1,'xl7::resources::Resource']]],
+  ['createcontext_38',['CreateContext',['../df/d78/structxl7_1_1resources_1_1Resource_1_1CreateContext.html',1,'xl7::resources::Resource']]],
   ['cstbuilder_39',['CstBuilder',['../db/dc4/classdl7_1_1syntax_1_1CstBuilder.html',1,'dl7::syntax']]],
   ['cstnode_40',['CstNode',['../d0/df6/classdl7_1_1syntax_1_1CstNode.html',1,'dl7::syntax']]],
   ['csttoasttransformer_41',['CstToAstTransformer',['../d2/d8a/classdl7_1_1syntax_1_1CstToAstTransformer.html',1,'dl7::syntax']]],
