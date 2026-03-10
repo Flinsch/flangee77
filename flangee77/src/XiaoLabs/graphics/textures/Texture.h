@@ -69,10 +69,10 @@ public:
     unsigned get_stride() const { return _stride; }
 
     /**
-     * Returns the size of a line (the offset between the start of one line and the
-     * start of the next line), in bytes.
+     * Returns the size of a pixel row (the offset between the start of one row and
+     * the start of the next row), in bytes.
      */
-    unsigned get_line_pitch() const { return _line_pitch; }
+    unsigned get_row_pitch() const { return _row_pitch; }
 
     /**
      * Returns the size of a 2D image slice (the offset between the start of one 2D
@@ -184,10 +184,10 @@ private:
     const unsigned _stride;
 
     /**
-     * The size of a line (the offset between the start of one line and the start of
-     * the next line), in bytes.
+     * The size of a pixel row (the offset between the start of one row and the
+     * start of the next row), in bytes.
      */
-    const unsigned _line_pitch;
+    const unsigned _row_pitch;
 
     /**
      * The size of a 2D image slice (the offset between the start of one 2D image

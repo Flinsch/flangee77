@@ -24,8 +24,8 @@ namespace xl7::graphics::textures {
         , _channel_order(GraphicsSystem::instance().get_rendering_device()->recommend_channel_order(type, desc.pixel_format, desc.preferred_channel_order).first)
         , _depth(depth)
         , _stride(PixelLayout::determine_stride(desc.pixel_format))
-        , _line_pitch(_stride * desc.width)
-        , _slice_pitch(_line_pitch * desc.height)
+        , _row_pitch(_stride * desc.width)
+        , _slice_pitch(_row_pitch * desc.height)
         , _data_size(_slice_pitch * depth * image_count)
     {
         const RenderingDevice::Capabilities& capabilities = GraphicsSystem::instance().get_rendering_device()->get_capabilities();

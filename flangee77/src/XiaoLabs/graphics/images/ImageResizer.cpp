@@ -29,8 +29,8 @@ namespace xl7::graphics::images {
 
         auto* dst_ptr = target_data.data();
 
-        const size_t src_line_pitch = source_width * stride;
-        const size_t src_slice_pitch = source_height * src_line_pitch;
+        const size_t src_row_pitch = source_width * stride;
+        const size_t src_slice_pitch = source_height * src_row_pitch;
 
         constexpr unsigned shift = 32;
 
@@ -51,7 +51,7 @@ namespace xl7::graphics::images {
             {
                 //const size_t src_y = dst_y * source_height / target_height;
                 const size_t src_y = src_y64 >> shift;
-                const size_t ofs_y = src_y * src_line_pitch;
+                const size_t ofs_y = src_y * src_row_pitch;
 
                 uint64_t src_x64 = (step_x64 >> 1) - 1;
                 for (size_t dst_x = 0; dst_x < target_width; ++dst_x, src_x64 += step_x64)
@@ -132,7 +132,7 @@ namespace xl7::graphics::images {
         const auto* src_ptr = reinterpret_cast<const uint8_t*>(source_data.data());
         auto* dst_ptr = reinterpret_cast<uint8_t*>(target_data.data());
 
-        const size_t src_line_pitch = source_width * stride;
+        const size_t src_row_pitch = source_width * stride;
 
         for (size_t dst_y = 0; dst_y < target_height; ++dst_y)
         {
@@ -143,15 +143,15 @@ namespace xl7::graphics::images {
                     dst_ptr[k] = (
                         src_ptr[k] +
                         src_ptr[k + stride] +
-                        src_ptr[k + src_line_pitch] +
-                        src_ptr[k + src_line_pitch + stride] +
+                        src_ptr[k + src_row_pitch] +
+                        src_ptr[k + src_row_pitch + stride] +
                         2) / 4;
                 }
 
                 dst_ptr += stride;
                 src_ptr += 2 * stride; // Skip one pixel
             } // dst_x
-            src_ptr += src_line_pitch; // Skip one line
+            src_ptr += src_row_pitch; // Skip one line
         } // dst_y
 
         return std::move(target_data);
@@ -179,8 +179,8 @@ namespace xl7::graphics::images {
         const auto* src_ptr = reinterpret_cast<const uint8_t*>(source_data.data());
         auto* dst_ptr = reinterpret_cast<uint8_t*>(target_data.data());
 
-        const size_t src_line_pitch = source_width * stride;
-        const size_t src_slice_pitch = source_height * src_line_pitch;
+        const size_t src_row_pitch = source_width * stride;
+        const size_t src_slice_pitch = source_height * src_row_pitch;
 
         for (size_t dst_z = 0; dst_z < target_depth; ++dst_z)
         {
@@ -193,19 +193,19 @@ namespace xl7::graphics::images {
                         dst_ptr[k] = (
                             src_ptr[k] +
                             src_ptr[k + stride] +
-                            src_ptr[k + src_line_pitch] +
-                            src_ptr[k + src_line_pitch + stride] +
+                            src_ptr[k + src_row_pitch] +
+                            src_ptr[k + src_row_pitch + stride] +
                             src_ptr[k + src_slice_pitch] +
                             src_ptr[k + src_slice_pitch + stride] +
-                            src_ptr[k + src_slice_pitch + src_line_pitch] +
-                            src_ptr[k + src_slice_pitch + src_line_pitch + stride] +
+                            src_ptr[k + src_slice_pitch + src_row_pitch] +
+                            src_ptr[k + src_slice_pitch + src_row_pitch + stride] +
                             4) / 8;
                     }
 
                     dst_ptr += stride;
                     src_ptr += 2 * stride; // Skip one pixel
                 } // dst_x
-                src_ptr += src_line_pitch; // Skip one line
+                src_ptr += src_row_pitch; // Skip one line
             } // dst_y
             src_ptr += src_slice_pitch; // Skip one slice
         } // dst_z
@@ -234,8 +234,8 @@ namespace xl7::graphics::images {
 
         auto* dst_ptr = target_data.data();
 
-        const size_t src_line_pitch = source_width * stride;
-        const size_t src_slice_pitch = source_height * src_line_pitch;
+        const size_t src_row_pitch = source_width * stride;
+        const size_t src_slice_pitch = source_height * src_row_pitch;
 
         const auto old_width_f = static_cast<float>(source_width);
         const auto old_height_f = static_cast<float>(source_height);
@@ -323,7 +323,7 @@ namespace xl7::graphics::images {
 
                                 const float w = wx * wy * wz;
 
-                                const auto* src_ptr = source_data.data() + static_cast<size_t>(dim_z.ofs + zi) * src_slice_pitch + static_cast<size_t>(dim_y.ofs + yi) * src_line_pitch + static_cast<size_t>(dim_x.ofs + xi) * stride;
+                                const auto* src_ptr = source_data.data() + static_cast<size_t>(dim_z.ofs + zi) * src_slice_pitch + static_cast<size_t>(dim_y.ofs + yi) * src_row_pitch + static_cast<size_t>(dim_x.ofs + xi) * stride;
                                 Color tmp = ImageProcessor::_unpack_color({src_ptr, stride}, pixel_layout);
 
                                 color += w * tmp;

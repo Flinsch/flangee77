@@ -87,7 +87,7 @@ namespace xl7::graphics::impl::direct3d11::textures {
         constexpr unsigned MAX_LEVELS = 16; // Just some value big enough.
         D3D11_SUBRESOURCE_DATA subresource_data[MAX_LEVELS];
         subresource_data[0].pSysMem = get_data().data();
-        subresource_data[0].SysMemPitch = get_line_pitch();
+        subresource_data[0].SysMemPitch = get_row_pitch();
         subresource_data[0].SysMemSlicePitch = 0;
 
         std::vector<images::Image> mipmaps;
@@ -165,9 +165,9 @@ namespace xl7::graphics::impl::direct3d11::textures {
             const std::byte* src = get_data().data();
             for (unsigned y = 0; y < get_desc().height; ++y)
             {
-                std::memcpy(dst, src, get_line_pitch());
+                std::memcpy(dst, src, get_row_pitch());
                 dst += mapped_subresource.RowPitch;
-                src += get_line_pitch();
+                src += get_row_pitch();
             }
 
             d3d_device_context->Unmap(_d3d_texture.Get(), 0);
@@ -184,7 +184,7 @@ namespace xl7::graphics::impl::direct3d11::textures {
             box.bottom = get_desc().height;
             box.back = 1;
 
-            d3d_device_context->UpdateSubresource1(_d3d_texture.Get(), 0, &box, get_data().data(), get_line_pitch(), 0, copy_flags);
+            d3d_device_context->UpdateSubresource1(_d3d_texture.Get(), 0, &box, get_data().data(), get_row_pitch(), 0, copy_flags);
 
             if (get_desc().mip_levels != 1)
             {
