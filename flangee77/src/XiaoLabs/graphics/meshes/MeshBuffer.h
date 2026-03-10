@@ -3,6 +3,7 @@
 #include "../../resources/Resource.h"
 
 #include "./MeshBufferDesc.h"
+#include "./DirtyRange.h"
 #include "./MeshUtil.h"
 
 
@@ -16,7 +17,7 @@ class MeshManager;
 
 
 class MeshBuffer
-    : public resources::detail::ResourceBase<MeshBuffer>
+    : public resources::detail::ResourceBaseDirty<MeshBuffer, DirtyRange>
 {
 
 public:
@@ -76,7 +77,7 @@ protected:
     template <class TMeshBufferDesc>
         requires(std::derived_from<TMeshBufferDesc, MeshBufferDesc>)
     MeshBuffer(Type type, const CreateContext& ctx, const TMeshBufferDesc& desc, unsigned stride)
-        : ResourceBase(ctx, desc)
+        : ResourceBaseDirty(ctx, desc)
         , _type(type)
         , _desc(desc) // NOLINT(*-slicing)
         , _primitive_count(MeshUtil::calculate_primitive_count(desc.topology, desc.count))

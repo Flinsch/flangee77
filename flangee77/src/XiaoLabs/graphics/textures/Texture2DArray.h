@@ -3,6 +3,7 @@
 #include "./Texture.h"
 
 #include "./Texture2DArrayDesc.h"
+#include "./DirtyLayerRects.h"
 
 
 
@@ -11,7 +12,7 @@ namespace xl7::graphics::textures {
 
 
 class Texture2DArray
-    : public resources::detail::ResourceBase<Texture2DArray, Texture>
+    : public resources::detail::ResourceBaseDirty<Texture2DArray, DirtyLayerRects, Texture>
 {
 
 public:

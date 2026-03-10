@@ -14,7 +14,7 @@ namespace xl7::graphics::textures {
 
 
     Texture3D::Texture3D(const CreateContext& ctx, const Texture3DDesc& desc)
-        : ResourceBase(Type::Texture3D, ctx, desc, desc.depth, 1) // NOLINT(*-slicing)
+        : ResourceBaseDirty(Type::Texture3D, ctx, desc, desc.depth, 1) // NOLINT(*-slicing)
         , _desc(desc)
     {
         const RenderingDevice::Capabilities& capabilities = GraphicsSystem::instance().get_rendering_device()->get_capabilities();

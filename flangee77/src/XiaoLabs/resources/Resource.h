@@ -326,8 +326,39 @@ public:
         using TBase::Id::Id;
     };
 
+    /** Returns the ID of this resource. */
     Id get_id() const { return Resource::get_id<Id>(); }
 }; // class ResourceBase
+
+template <class TDerived, class TDirtyState, class TBase = Resource>
+    requires(requires {
+        { TDirtyState{}.is_dirty() } -> std::convertible_to<bool>;
+        TDirtyState{}.clear();
+    } && std::derived_from<TBase, Resource>)
+class ResourceBaseDirty
+    : public ResourceBase<TDerived, TBase>
+{
+public:
+    using ResourceBase<TDerived, TBase>::ResourceBase;
+
+    /** Returns the "dirty" state of the local data copy of this updatable resource. */
+    const TDirtyState& get_dirty_state() const { return _dirty_state; }
+
+    /** Returns true if the local data copy of this updatable resource is "dirty". */
+    bool is_dirty() const { return _dirty_state.is_dirty(); }
+
+protected:
+    void _clear_dirty_state() { _dirty_state.clear(); }
+
+    template <typename ...Args>
+        requires(requires (Args&&... args) {
+            TDirtyState{}.update(std::forward<Args>(args)...);
+        })
+    void _update_dirty_state(Args&&... args) { _dirty_state.update(std::forward<Args>(args)...); }
+
+private:
+    TDirtyState _dirty_state;
+}; // class ResourceBaseDirty
 
 } // namespace detail
 

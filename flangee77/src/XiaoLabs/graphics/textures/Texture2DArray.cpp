@@ -12,7 +12,7 @@ namespace xl7::graphics::textures {
 
 
     Texture2DArray::Texture2DArray(const CreateContext& ctx, const Texture2DArrayDesc& desc)
-        : ResourceBase(Type::Texture2DArray, ctx, desc, 1, desc.count) // NOLINT(*-slicing)
+        : ResourceBaseDirty(Type::Texture2DArray, ctx, desc, 1, desc.count) // NOLINT(*-slicing)
         , _desc(desc)
     {
         const RenderingDevice::Capabilities& capabilities = GraphicsSystem::instance().get_rendering_device()->get_capabilities();

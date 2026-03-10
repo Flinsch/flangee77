@@ -3,6 +3,7 @@
 #include "./Texture.h"
 
 #include "./CubemapDesc.h"
+#include "./DirtyLayerRects.h"
 
 
 
@@ -11,7 +12,7 @@ namespace xl7::graphics::textures {
 
 
 class Cubemap
-    : public resources::detail::ResourceBase<Cubemap, Texture>
+    : public resources::detail::ResourceBaseDirty<Cubemap, DirtyLayerRects, Texture>
 {
 
 public:

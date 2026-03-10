@@ -24,7 +24,7 @@ namespace xl7::graphics::textures {
 
 
     Texture2D::Texture2D(const CreateContext& ctx, const Texture2DDesc& desc)
-        : ResourceBase(Type::Texture2D, ctx, desc, 1, 1) // NOLINT(*-slicing)
+        : ResourceBaseDirty(Type::Texture2D, ctx, desc, 1, 1) // NOLINT(*-slicing)
         , _desc(desc)
     {
         const RenderingDevice::Capabilities& capabilities = GraphicsSystem::instance().get_rendering_device()->get_capabilities();

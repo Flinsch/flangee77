@@ -3,6 +3,7 @@
 #include "./Texture.h"
 
 #include "./Texture3DDesc.h"
+#include "./DirtyBox.h"
 
 
 
@@ -11,7 +12,7 @@ namespace xl7::graphics::textures {
 
 
 class Texture3D
-    : public resources::detail::ResourceBase<Texture3D, Texture>
+    : public resources::detail::ResourceBaseDirty<Texture3D, DirtyBox, Texture>
 {
 
 public:

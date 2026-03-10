@@ -4,6 +4,7 @@
 
 #include "./ConstantBufferDesc.h"
 #include "./ConstantDataProvider.h"
+#include "./DirtyFlag.h"
 
 
 
@@ -16,7 +17,7 @@ class ShaderManager;
 
 
 class ConstantBuffer
-    : public resources::detail::ResourceBase<ConstantBuffer>
+    : public resources::detail::ResourceBaseDirty<ConstantBuffer, DirtyFlag>
 {
 
 public:
@@ -49,7 +50,7 @@ public:
 protected:
 
     explicit ConstantBuffer(const CreateContext& ctx, const ConstantBufferDesc& desc)
-        : ResourceBase(ctx, desc)
+        : ResourceBaseDirty(ctx, desc)
         , _desc(desc)
     {
     }
