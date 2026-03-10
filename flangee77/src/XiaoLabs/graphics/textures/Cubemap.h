@@ -3,6 +3,7 @@
 #include "./Texture.h"
 
 #include "./CubemapDesc.h"
+#include "./CubemapFace.h"
 #include "./DirtyLayerRects.h"
 
 
@@ -38,12 +39,12 @@ public:
     /**
      * Returns an "image view" of the specified texture face data.
      */
-    images::Image as_image(unsigned face_index) const { return _as_image(face_index); }
+    images::Image as_image(CubemapFace face) const { return _as_image(static_cast<unsigned>(face)); }
 
     /**
      * Creates and returns mipmaps of the specified texture face "image".
      */
-    std::vector<images::Image> create_mipmaps(unsigned face_index, images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const { return _create_mipmaps(face_index, resampling_method); }
+    std::vector<images::Image> create_mipmaps(CubemapFace face, images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const { return _create_mipmaps(static_cast<unsigned>(face), resampling_method); }
 
 
 
