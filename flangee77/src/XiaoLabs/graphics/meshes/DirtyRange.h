@@ -24,6 +24,9 @@ public:
         _count = end - begin;
     }
 
+    unsigned first() const { return _first; }
+    unsigned count() const { return _count; }
+
 private:
     unsigned _first = 0;
     unsigned _count = 0;

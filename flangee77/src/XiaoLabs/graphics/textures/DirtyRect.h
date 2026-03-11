@@ -41,6 +41,11 @@ public:
         _height = y1 - y0;
     }
 
+    unsigned x() const { return _x; }
+    unsigned y() const { return _y; }
+    unsigned width() const { return _width; }
+    unsigned height() const { return _height; }
+
 private:
     unsigned _x = 0;
     unsigned _y = 0;

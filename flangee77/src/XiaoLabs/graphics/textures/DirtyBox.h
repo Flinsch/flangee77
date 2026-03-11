@@ -50,6 +50,14 @@ public:
         _depth = z1 - z0;
     }
 
+    unsigned x() const { return _x; }
+    unsigned y() const { return _y; }
+    unsigned z() const { return _z; }
+
+    unsigned width() const { return _width; }
+    unsigned height() const { return _height; }
+    unsigned depth() const { return _depth; }
+
 private:
     unsigned _x = 0;
     unsigned _y = 0;
