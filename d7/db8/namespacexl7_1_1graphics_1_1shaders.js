@@ -10,6 +10,7 @@ var namespacexl7_1_1graphics_1_1shaders =
     [ "ConstantDataProvider", "d1/dc3/classxl7_1_1graphics_1_1shaders_1_1ConstantDataProvider.html", "d1/dc3/classxl7_1_1graphics_1_1shaders_1_1ConstantDataProvider" ],
     [ "ConstantDeclaration", "d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html", "d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration" ],
     [ "ConstantMapping", "d2/d58/structxl7_1_1graphics_1_1shaders_1_1ConstantMapping.html", "d2/d58/structxl7_1_1graphics_1_1shaders_1_1ConstantMapping" ],
+    [ "DirtyFlag", "de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html", "de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag" ],
     [ "IShaderFactory", "d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory.html", "d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory" ],
     [ "PixelShader", "db/d6b/classxl7_1_1graphics_1_1shaders_1_1PixelShader.html", "db/d6b/classxl7_1_1graphics_1_1shaders_1_1PixelShader" ],
     [ "ReflectionResult", "d2/d19/structxl7_1_1graphics_1_1shaders_1_1ReflectionResult.html", "d2/d19/structxl7_1_1graphics_1_1shaders_1_1ReflectionResult" ],

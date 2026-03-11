@@ -16,6 +16,7 @@ var dir_7d167ec5b86c07c1c90e846ad85f9bd8 =
     [ "ConstantDeclaration.h", "d4/db5/ConstantDeclaration_8h.html", "d4/db5/ConstantDeclaration_8h" ],
     [ "ConstantMapping.h", "db/dad/ConstantMapping_8h.html", "db/dad/ConstantMapping_8h" ],
     [ "ConstantType.h", "d4/dbd/ConstantType_8h.html", "d4/dbd/ConstantType_8h" ],
+    [ "DirtyFlag.h", "d2/d94/DirtyFlag_8h.html", "d2/d94/DirtyFlag_8h" ],
     [ "IShaderFactory.h", "db/d9e/IShaderFactory_8h.html", "db/d9e/IShaderFactory_8h" ],
     [ "PixelShader.cpp", "d1/df7/PixelShader_8cpp.html", null ],
     [ "PixelShader.h", "d6/d11/PixelShader_8h.html", "d6/d11/PixelShader_8h" ],

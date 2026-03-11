@@ -439,6 +439,7 @@ var annotated_dup =
           ] ]
         ] ],
         [ "meshes", "d0/d08/namespacexl7_1_1graphics_1_1meshes.html", [
+          [ "DirtyRange", "dc/d1a/classxl7_1_1graphics_1_1meshes_1_1DirtyRange.html", "dc/d1a/classxl7_1_1graphics_1_1meshes_1_1DirtyRange" ],
           [ "IMeshFactory", "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory.html", "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory" ],
           [ "IndexBuffer", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer" ],
           [ "IndexBufferDesc", "dd/d06/structxl7_1_1graphics_1_1meshes_1_1IndexBufferDesc.html", "dd/d06/structxl7_1_1graphics_1_1meshes_1_1IndexBufferDesc" ],
@@ -474,6 +475,7 @@ var annotated_dup =
           [ "ConstantDataProvider", "d1/dc3/classxl7_1_1graphics_1_1shaders_1_1ConstantDataProvider.html", "d1/dc3/classxl7_1_1graphics_1_1shaders_1_1ConstantDataProvider" ],
           [ "ConstantDeclaration", "d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html", "d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration" ],
           [ "ConstantMapping", "d2/d58/structxl7_1_1graphics_1_1shaders_1_1ConstantMapping.html", "d2/d58/structxl7_1_1graphics_1_1shaders_1_1ConstantMapping" ],
+          [ "DirtyFlag", "de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html", "de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag" ],
           [ "IShaderFactory", "d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory.html", "d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory" ],
           [ "PixelShader", "db/d6b/classxl7_1_1graphics_1_1shaders_1_1PixelShader.html", "db/d6b/classxl7_1_1graphics_1_1shaders_1_1PixelShader" ],
           [ "ReflectionResult", "d2/d19/structxl7_1_1graphics_1_1shaders_1_1ReflectionResult.html", "d2/d19/structxl7_1_1graphics_1_1shaders_1_1ReflectionResult" ],
@@ -510,6 +512,9 @@ var annotated_dup =
         [ "textures", "dd/d18/namespacexl7_1_1graphics_1_1textures.html", [
           [ "Cubemap", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap" ],
           [ "CubemapDesc", "d7/df8/structxl7_1_1graphics_1_1textures_1_1CubemapDesc.html", null ],
+          [ "DirtyBox", "d9/dfa/classxl7_1_1graphics_1_1textures_1_1DirtyBox.html", "d9/dfa/classxl7_1_1graphics_1_1textures_1_1DirtyBox" ],
+          [ "DirtyLayerRects", "dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects.html", "dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects" ],
+          [ "DirtyRect", "d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect.html", "d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect" ],
           [ "ImageDataProvider", "da/de6/classxl7_1_1graphics_1_1textures_1_1ImageDataProvider.html", "da/de6/classxl7_1_1graphics_1_1textures_1_1ImageDataProvider" ],
           [ "ITextureFactory", "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html", "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory" ],
           [ "Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture" ],
@@ -532,7 +537,8 @@ var annotated_dup =
       ] ],
       [ "resources", "da/d60/namespacexl7_1_1resources.html", [
         [ "detail", "db/dd8/namespacexl7_1_1resources_1_1detail.html", [
-          [ "ResourceBase", "d2/d0d/classxl7_1_1resources_1_1detail_1_1ResourceBase.html", "d2/d0d/classxl7_1_1resources_1_1detail_1_1ResourceBase" ]
+          [ "ResourceBase", "d2/d0d/classxl7_1_1resources_1_1detail_1_1ResourceBase.html", "d2/d0d/classxl7_1_1resources_1_1detail_1_1ResourceBase" ],
+          [ "ResourceBaseDirty", "d3/df1/classxl7_1_1resources_1_1detail_1_1ResourceBaseDirty.html", "d3/df1/classxl7_1_1resources_1_1detail_1_1ResourceBaseDirty" ]
         ] ],
         [ "DataProvider", "dd/def/classxl7_1_1resources_1_1DataProvider.html", "dd/def/classxl7_1_1resources_1_1DataProvider" ],
         [ "DefaultDataProvider", "d7/dcd/classxl7_1_1resources_1_1DefaultDataProvider.html", "d7/dcd/classxl7_1_1resources_1_1DefaultDataProvider" ],
