@@ -11,7 +11,7 @@ namespace xl7::graphics::textures {
 struct Texture2DArrayDesc
     : TextureDesc
 {
-    /** The number of textures in the texture array. */
+    /** The number of textures/layers in the texture array. */
     unsigned count;
 };
 

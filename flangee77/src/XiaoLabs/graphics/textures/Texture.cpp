@@ -17,7 +17,7 @@ namespace xl7::graphics::textures {
 
 
 
-    Texture::Texture(Type type, const CreateContext& ctx, const TextureDesc& desc, unsigned depth, unsigned image_count)
+    Texture::Texture(Type type, const CreateContext& ctx, const TextureDesc& desc, unsigned depth, unsigned layer_count)
         : ResourceBase(ctx, desc)
         , _type(type)
         , _desc(desc)
@@ -26,7 +26,7 @@ namespace xl7::graphics::textures {
         , _stride(PixelLayout::determine_stride(desc.pixel_format))
         , _row_pitch(_stride * desc.width)
         , _slice_pitch(_row_pitch * desc.height)
-        , _data_size(_slice_pitch * depth * image_count)
+        , _data_size(_slice_pitch * depth * layer_count)
     {
         const RenderingDevice::Capabilities& capabilities = GraphicsSystem::instance().get_rendering_device()->get_capabilities();
 
@@ -124,10 +124,10 @@ namespace xl7::graphics::textures {
     /**
      * Returns the specified "image view" of the texture data.
      */
-    images::Image Texture::_as_image(unsigned image_index) const
+    images::Image Texture::_as_image(unsigned layer) const
     {
         const auto size = static_cast<size_t>(_slice_pitch);
-        const auto offset = static_cast<size_t>(image_index) * size;
+        const auto offset = static_cast<size_t>(layer) * size;
 
         assert(offset + size <= _data_size);
 
@@ -149,11 +149,11 @@ namespace xl7::graphics::textures {
     /**
      * Creates and returns mipmaps of the specified texture "image".
      */
-    std::vector<images::Image> Texture::_create_mipmaps(unsigned image_index, images::ResamplingMethod resampling_method) const
+    std::vector<images::Image> Texture::_create_mipmaps(unsigned layer, images::ResamplingMethod resampling_method) const
     {
         std::vector<images::Image> mipmaps;
 
-        images::Image image = _as_image(image_index);
+        images::Image image = _as_image(layer);
         while (image.get_width() > 1 || image.get_height() > 1 || image.get_depth() > 1)
         {
             images::Image mipmap = images::ImageResizer::create_mipmap(image, resampling_method);

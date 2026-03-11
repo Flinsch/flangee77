@@ -89,7 +89,7 @@ public:
 
 protected:
 
-    Texture(Type type, const CreateContext& ctx, const TextureDesc& desc, unsigned depth, unsigned image_count);
+    Texture(Type type, const CreateContext& ctx, const TextureDesc& desc, unsigned depth, unsigned layer_count);
 
     ~Texture() override = default;
 
@@ -98,12 +98,12 @@ protected:
     /**
      * Returns the specified "image view" of the texture data.
      */
-    images::Image _as_image(unsigned image_index) const;
+    images::Image _as_image(unsigned layer) const;
 
     /**
      * Creates and returns mipmaps of the specified texture "image".
      */
-    std::vector<images::Image> _create_mipmaps(unsigned image_index, images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const;
+    std::vector<images::Image> _create_mipmaps(unsigned layer, images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const;
 
     /**
      * Updates the contents of this texture (unless it is immutable).

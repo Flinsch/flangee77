@@ -38,14 +38,14 @@ public:
 
 
     /**
-     * Returns an "image view" of the specified texture slice data.
+     * Returns an "image view" of the specified texture layer data.
      */
-    images::Image as_image(unsigned slice_index) const { return _as_image(slice_index); }
+    images::Image as_image(unsigned layer) const { return _as_image(layer); }
 
     /**
-     * Creates and returns mipmaps of the specified texture slice "image".
+     * Creates and returns mipmaps of the specified texture layer "image".
      */
-    std::vector<images::Image> create_mipmaps(unsigned slice_index, images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const { return _create_mipmaps(slice_index, resampling_method); }
+    std::vector<images::Image> create_mipmaps(unsigned layer, images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const { return _create_mipmaps(layer, resampling_method); }
 
 
 
