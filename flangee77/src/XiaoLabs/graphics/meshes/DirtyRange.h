@@ -18,6 +18,13 @@ public:
 
     void update(unsigned first, unsigned count)
     {
+        if (!is_dirty())
+        {
+            _first = first;
+            _count = count;
+            return;
+        }
+
         unsigned begin = std::min(_first, first);
         unsigned end = std::max(_first + _count, first + count);
         _first = begin;

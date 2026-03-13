@@ -89,5 +89,10 @@ target_sources(flangee77-tests
     XiaoLabs/graphics/images/NetpbmImageWriter.cpp
     XiaoLabs/graphics/images/PngImageReader.cpp
     XiaoLabs/graphics/images/TargaImageReader.cpp
+    XiaoLabs/graphics/meshes/DirtyRange.cpp
+    XiaoLabs/graphics/shaders/DirtyFlag.cpp
     XiaoLabs/graphics/shaders/reflection.cpp
+    XiaoLabs/graphics/textures/DirtyBox.cpp
+    XiaoLabs/graphics/textures/DirtyLayerRects.cpp
+    XiaoLabs/graphics/textures/DirtyRect.cpp
 )
