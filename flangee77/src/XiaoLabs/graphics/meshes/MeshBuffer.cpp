@@ -8,6 +8,18 @@ namespace xl7::graphics::meshes {
 
 
 
+    MeshBuffer::MeshBuffer(Type type, const CreateContext& ctx, const MeshBufferDesc& desc, unsigned stride)
+        : ResourceBaseDirty(ctx, desc)
+        , _type(type)
+        , _desc(desc)
+        , _primitive_count(MeshUtil::calculate_primitive_count(desc.topology, desc.count))
+        , _stride(stride)
+        , _size(_stride * _desc.count)
+    {
+    }
+
+
+
     /**
      * Updates the contents of this buffer (unless it is immutable).
      */

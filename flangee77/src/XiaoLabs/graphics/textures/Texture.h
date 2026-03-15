@@ -89,7 +89,7 @@ public:
 
 protected:
 
-    Texture(Type type, const CreateContext& ctx, const TextureDesc& desc, unsigned depth, unsigned layer_count);
+    Texture(Type type, const CreateContext& ctx, const TextureDesc& desc, unsigned width, unsigned height, unsigned depth, unsigned layer_count);
 
     ~Texture() override = default;
 
@@ -172,6 +172,16 @@ private:
      * depending on hardware capabilities.
      */
     const ChannelOrder _channel_order;
+
+    /**
+     * The width of the texture, in pixels.
+     */
+    const unsigned _width;
+
+    /**
+     * The height of the texture, in pixels.
+     */
+    const unsigned _height;
 
     /**
      * The depth of the texture, in pixels (if 3D texture, otherwise trivially 1).

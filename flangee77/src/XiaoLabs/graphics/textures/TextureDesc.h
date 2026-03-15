@@ -22,13 +22,8 @@ struct TextureDesc
     /** The preferred channel order. (The actual channel order may vary depending on hardware capabilities.) */
     ChannelOrder preferred_channel_order;
 
-    /** The maximum number of mipmap levels in the texture. (Use 1 for a multisampled texture; or 0 to generate a full set of subtextures, down to 1 by 1). */
+    /** The maximum number of mipmap levels. (Use 1 for a multisampled texture; or 0 to generate a full set of subtextures, down to 1 by 1). */
     unsigned mip_levels;
-
-    /** The width of the texture, in pixels. */
-    unsigned width;
-    /** The height of the texture, in pixels. */
-    unsigned height;
 };
 
 

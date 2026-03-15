@@ -74,17 +74,7 @@ public:
 
 protected:
 
-    template <class TMeshBufferDesc>
-        requires(std::derived_from<TMeshBufferDesc, MeshBufferDesc>)
-    MeshBuffer(Type type, const CreateContext& ctx, const TMeshBufferDesc& desc, unsigned stride)
-        : ResourceBaseDirty(ctx, desc)
-        , _type(type)
-        , _desc(desc) // NOLINT(*-slicing)
-        , _primitive_count(MeshUtil::calculate_primitive_count(desc.topology, desc.count))
-        , _stride(stride)
-        , _size(_stride * _desc.count)
-    {
-    }
+    MeshBuffer(Type type, const CreateContext& ctx, const MeshBufferDesc& desc, unsigned stride);
 
     ~MeshBuffer() override = default;
 

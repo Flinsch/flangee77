@@ -9,9 +9,16 @@ namespace xl7::graphics::meshes {
 
 
     VertexBuffer::VertexBuffer(const CreateContext& ctx, const VertexBufferDesc& desc)
-        : ResourceBase(Type::VertexBuffer, ctx, desc, desc.stride)
+        : ResourceBase(Type::VertexBuffer, ctx, {
+            .usage = desc.usage,
+            .topology = desc.topology,
+            .count = desc.count,
+        }, desc.stride)
         , _desc(desc)
     {
+        assert(static_cast<const void*>(&MeshBuffer::get_desc()) != static_cast<const void*>(&get_desc()));
+        assert(::memcmp(&MeshBuffer::get_desc(), &get_desc(), sizeof(MeshBufferDesc)) == 0);
+
         assert(get_stride() > 0 && get_stride() >= _desc.vertex_layout.calculate_size());
         assert(get_stride() >= 12 && get_stride() % 4 == 0);
 

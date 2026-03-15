@@ -11,8 +11,15 @@ namespace xl7::graphics::meshes {
 
 
 struct VertexBufferDesc
-    : MeshBufferDesc
 {
+    /** Identifies how the buffer is expected to be updated (frequency of update is a key factor). */
+    MeshBufferUsage usage;
+
+    /** The topology of the primitives that the buffer represents. */
+    Topology topology;
+    /** The number of elements within the buffer, regardless of the topology (i.e., vertices, not primitives). */
+    unsigned count;
+
     /** The size of each vertex, in bytes. */
     unsigned stride;
     /** The layout specification of the vertices. */

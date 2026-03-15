@@ -77,18 +77,18 @@ namespace helloworld {
         assert(vertex_layout.calculate_size() == sizeof(Vertex));
 
         xl7::graphics::meshes::VertexBufferDesc vertex_buffer_desc{
-            xl7::graphics::meshes::MeshBufferUsage::Immutable,
-            xl7::graphics::meshes::Topology::PointList,
-            4,
-            sizeof(Vertex),
-            vertex_layout,
+            .usage = xl7::graphics::meshes::MeshBufferUsage::Immutable,
+            .topology = xl7::graphics::meshes::Topology::PointList,
+            .count = 4,
+            .stride = sizeof(Vertex),
+            .vertex_layout = vertex_layout,
         };
 
         xl7::graphics::meshes::IndexBufferDesc index_buffer_desc{
-            xl7::graphics::meshes::MeshBufferUsage::Immutable,
-            xl7::graphics::meshes::Topology::TriangleStrip,
-            4,
-            xl7::graphics::meshes::IndexType::UINT16,
+            .usage = xl7::graphics::meshes::MeshBufferUsage::Immutable,
+            .topology = xl7::graphics::meshes::Topology::TriangleStrip,
+            .count = 4,
+            .index_type = xl7::graphics::meshes::IndexType::UINT16,
         };
 
         // NOLINTBEGIN(*-use-designated-initializers)
@@ -147,12 +147,12 @@ namespace helloworld {
         //netpbm_image_reader.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy-p7.pam", image);
 
         xl7::graphics::textures::Texture2DDesc texture_desc{
-            xl7::graphics::textures::TextureUsage::Immutable,
-            xl7::graphics::PixelFormat::R8G8B8A8_UNORM,
-            xl7::graphics::ChannelOrder::RGBA,
-            0, // mip_levels
-            image.get_width(),
-            image.get_height(),
+            .usage = xl7::graphics::textures::TextureUsage::Immutable,
+            .pixel_format = xl7::graphics::PixelFormat::R8G8B8A8_UNORM,
+            .preferred_channel_order = xl7::graphics::ChannelOrder::RGBA,
+            .mip_levels = 0,
+            .width = image.get_width(),
+            .height = image.get_height(),
         };
 
         xl7::graphics::states::SamplerStateDesc sampler_desc;

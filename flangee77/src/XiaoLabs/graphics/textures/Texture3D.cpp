@@ -14,9 +14,17 @@ namespace xl7::graphics::textures {
 
 
     Texture3D::Texture3D(const CreateContext& ctx, const Texture3DDesc& desc)
-        : ResourceBaseDirty(Type::Texture3D, ctx, desc, desc.depth, 1) // NOLINT(*-slicing)
+        : ResourceBaseDirty(Type::Texture3D, ctx, {
+            .usage = desc.usage,
+            .pixel_format = desc.pixel_format,
+            .preferred_channel_order = desc.preferred_channel_order,
+            .mip_levels = desc.mip_levels,
+        }, desc.width, desc.height, desc.depth, 1)
         , _desc(desc)
     {
+        assert(static_cast<const void*>(&Texture::get_desc()) != static_cast<const void*>(&get_desc()));
+        assert(::memcmp(&Texture::get_desc(), &get_desc(), sizeof(TextureDesc)) == 0);
+
         const RenderingDevice::Capabilities& capabilities = GraphicsSystem::instance().get_rendering_device()->get_capabilities();
 
         if (capabilities.textures.max_texture_3d_size && _desc.width > capabilities.textures.max_texture_3d_size)
