@@ -1,7 +1,7 @@
 var namespacexl7_1_1graphics_1_1textures =
 [
     [ "Cubemap", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap" ],
-    [ "CubemapDesc", "d7/df8/structxl7_1_1graphics_1_1textures_1_1CubemapDesc.html", null ],
+    [ "CubemapDesc", "d7/df8/structxl7_1_1graphics_1_1textures_1_1CubemapDesc.html", "d7/df8/structxl7_1_1graphics_1_1textures_1_1CubemapDesc" ],
     [ "DirtyBox", "d9/dfa/classxl7_1_1graphics_1_1textures_1_1DirtyBox.html", "d9/dfa/classxl7_1_1graphics_1_1textures_1_1DirtyBox" ],
     [ "DirtyLayerRects", "dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects.html", "dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects" ],
     [ "DirtyRect", "d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect.html", "d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect" ],
@@ -11,7 +11,7 @@ var namespacexl7_1_1graphics_1_1textures =
     [ "Texture2D", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D" ],
     [ "Texture2DArray", "d3/dc5/classxl7_1_1graphics_1_1textures_1_1Texture2DArray.html", "d3/dc5/classxl7_1_1graphics_1_1textures_1_1Texture2DArray" ],
     [ "Texture2DArrayDesc", "de/d51/structxl7_1_1graphics_1_1textures_1_1Texture2DArrayDesc.html", "de/d51/structxl7_1_1graphics_1_1textures_1_1Texture2DArrayDesc" ],
-    [ "Texture2DDesc", "db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html", null ],
+    [ "Texture2DDesc", "db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html", "db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc" ],
     [ "Texture3D", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D" ],
     [ "Texture3DDesc", "d8/d25/structxl7_1_1graphics_1_1textures_1_1Texture3DDesc.html", "d8/d25/structxl7_1_1graphics_1_1textures_1_1Texture3DDesc" ],
     [ "TextureDesc", "d2/d7e/structxl7_1_1graphics_1_1textures_1_1TextureDesc.html", "d2/d7e/structxl7_1_1graphics_1_1textures_1_1TextureDesc" ],

@@ -9,7 +9,7 @@ var classxl7_1_1graphics_1_1textures_1_1Texture =
     [ "Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#aad2f4c27bbc2811a6b32b8acda0c8e95", null ],
     [ "Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#af4dbdc6b501edbdf3068f8c679973502", null ],
     [ "Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a04bb02657c43b37b2ebdb27a2b2516d1", null ],
-    [ "Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a944402631ef1ce5efd573960e69890dc", null ],
+    [ "Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a97c331133f86f07e255f31667a20d6f4", null ],
     [ "~Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a02c61efbb59da4e6816dca49b990be13", null ],
     [ "_acquire_impl", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a6a25ec4db48f4273db7a896a8c52270a", null ],
     [ "_acquire_impl", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#abbe6e8ca6563edc88ed9d1e4337fcb8c", null ],
@@ -33,8 +33,10 @@ var classxl7_1_1graphics_1_1textures_1_1Texture =
     [ "_data_size", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a7f8d3a2029296ce1d1a2de5e35ad284f", null ],
     [ "_depth", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#ab577f9cb2dbc175073de831b472ffdef", null ],
     [ "_desc", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a32b03f331f3746855d2c43a91b1160d4", null ],
+    [ "_height", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#adf0c1b14743e29fae0e9dbf10b3b3e5e", null ],
     [ "_row_pitch", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a6cc14768130f2e4921b7e8b30c2e9289", null ],
     [ "_slice_pitch", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a5ce138d274d5a1a10ad0f3a799a5212d", null ],
     [ "_stride", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a5475b169f03b2c7003fca79f883da409", null ],
-    [ "_type", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a17312d567481c504939791001faea196", null ]
+    [ "_type", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a17312d567481c504939791001faea196", null ],
+    [ "_width", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a4e8b37ab0d62e210678f8e5af01d7feb", null ]
 ];
