@@ -21,7 +21,7 @@ var searchData=
   ['find_5froots_5fby_5fsign_5fchange_5fand_5fnewton_18',['find_roots_by_sign_change_and_newton',['../da/dc0/namespaceal7_1_1math.html#a93b56df78d760219aeb4886ff7f1468c',1,'al7::math']]],
   ['find_5ftext_5fnodes_19',['find_text_nodes',['../de/dc8/classdl7_1_1xml_1_1Element.html#a6e962998f572bebf112cdff979cbea62',1,'dl7::xml::Element::find_text_nodes()'],['../de/dc8/classdl7_1_1xml_1_1Element.html#ababd118f18e92065bb789355ac9e43ff',1,'dl7::xml::Element::find_text_nodes() const']]],
   ['find_5ftexture_5fsampler_5fdeclaration_20',['find_texture_sampler_declaration',['../d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html#a26445fe7595a6d8d90bfe0dbb76ff474',1,'xl7::graphics::shaders::Shader']]],
-  ['first_21',['first',['../dc/d1a/classxl7_1_1graphics_1_1meshes_1_1DirtyRange.html#a0cbaff06fa1b7184a854a4b74dfd55ae',1,'xl7::graphics::meshes::DirtyRange']]],
+  ['first_5felement_21',['first_element',['../dc/d1a/classxl7_1_1graphics_1_1meshes_1_1DirtyRange.html#a2d509b011f941cde9a02f90378b1c5f4',1,'xl7::graphics::meshes::DirtyRange']]],
   ['fixed_5fto_5ffixed_22',['fixed_to_fixed',['../d9/df1/namespacecl7_1_1bits.html#ac9a1fbefdf35f8dbd72edfec66226995',1,'cl7::bits']]],
   ['fixed_5fto_5fnorm_23',['fixed_to_norm',['../d9/df1/namespacecl7_1_1bits.html#a02c04cb8a39a15316ea1b82656f020c8',1,'cl7::bits']]],
   ['flip_5fif_24',['flip_if',['../d1/d2e/namespacecl7.html#a95dce5131ec23d1f3f2f7559715ce4ab',1,'cl7']]],

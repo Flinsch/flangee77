@@ -1,10 +1,10 @@
 var structxl7_1_1graphics_1_1textures_1_1Texture2DArrayDesc =
 [
-    [ "count", "de/d51/structxl7_1_1graphics_1_1textures_1_1Texture2DArrayDesc.html#a25c50a1f24025629d902e5c8327d4ee9", null ],
     [ "height", "de/d51/structxl7_1_1graphics_1_1textures_1_1Texture2DArrayDesc.html#ab9c3797eccd755dfe2850429ec7171b5", null ],
     [ "mip_levels", "de/d51/structxl7_1_1graphics_1_1textures_1_1Texture2DArrayDesc.html#afd83edb805e5ec28488b6278e8bf3424", null ],
     [ "pixel_format", "de/d51/structxl7_1_1graphics_1_1textures_1_1Texture2DArrayDesc.html#a2da559bed38d9376ae5382caee47b022", null ],
     [ "preferred_channel_order", "de/d51/structxl7_1_1graphics_1_1textures_1_1Texture2DArrayDesc.html#ac99c72a617dff5c33ba70a532207dc53", null ],
+    [ "texture_count", "de/d51/structxl7_1_1graphics_1_1textures_1_1Texture2DArrayDesc.html#a8a5e0a5a6fe75cb95d343e486c5feaa6", null ],
     [ "usage", "de/d51/structxl7_1_1graphics_1_1textures_1_1Texture2DArrayDesc.html#aa7399e66dedf28fd42e78560d5fb314c", null ],
     [ "width", "de/d51/structxl7_1_1graphics_1_1textures_1_1Texture2DArrayDesc.html#ab6f3d855297d676ea12689973ac1c7b0", null ]
 ];

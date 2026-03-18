@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['e_0',['e',['../da/d4c/structml7_1_1Matrix2x3.html#a9f716683d5324faef8a84e44a1855329',1,'ml7::Matrix2x3::e'],['../d6/d14/structml7_1_1Matrix3x3.html#a58ebb7a8cc9552f02259e2eba320253c',1,'ml7::Matrix3x3::e'],['../d6/d9f/structml7_1_1constants.html#a2d82950290fb21722407fdb4e24ce4ac',1,'ml7::constants::e']]],
+  ['e_0',['e',['../da/d4c/structml7_1_1Matrix2x3.html#a9f716683d5324faef8a84e44a1855329',1,'ml7::Matrix2x3::e'],['../d6/d9f/structml7_1_1constants.html#a2d82950290fb21722407fdb4e24ce4ac',1,'ml7::constants::e'],['../d6/d14/structml7_1_1Matrix3x3.html#a58ebb7a8cc9552f02259e2eba320253c',1,'ml7::Matrix3x3::e']]],
   ['eax_1',['eax',['../de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html#a2dc7443e45be937e4cdcfafb85ce7de5',1,'cl7::platform::CPUID::regs']]],
   ['ebx_2',['ebx',['../de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html#af6b9d56d6826ded4b088eed471a5120e',1,'cl7::platform::CPUID::regs']]],
   ['ecx_3',['ecx',['../de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html#a0fa3fd610108139bc661f10a6d228ce4',1,'cl7::platform::CPUID::regs']]],
   ['edx_4',['edx',['../de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html#aeee69c0e921c6854943b790fabe6a088',1,'cl7::platform::CPUID::regs']]],
-  ['element_5fcount_5',['element_count',['../d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html#a5e0f7704c8635f4bfb0875781df6578f',1,'xl7::graphics::shaders::ConstantDeclaration::element_count'],['../d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html#a4b24620bbc95f9b427696d2c4d63422f',1,'xl7::graphics::shaders::TextureSamplerDeclaration::element_count']]],
+  ['element_5fcount_5',['element_count',['../db/dbb/structxl7_1_1graphics_1_1meshes_1_1MeshBufferDesc.html#a049ca1d2acca40e391a17e9808c2b0d2',1,'xl7::graphics::meshes::MeshBufferDesc::element_count'],['../d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html#a5e0f7704c8635f4bfb0875781df6578f',1,'xl7::graphics::shaders::ConstantDeclaration::element_count'],['../d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html#a4b24620bbc95f9b427696d2c4d63422f',1,'xl7::graphics::shaders::TextureSamplerDeclaration::element_count']]],
   ['elements_6',['elements',['../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html#a001a6f43c0902f343eca9c201c95ce68',1,'xl7::graphics::meshes::VertexLayout']]],
   ['empty_5fline_5fafter_5fsection_5fheader_7',['empty_line_after_section_header',['../d9/db3/structdl7_1_1ini_1_1Format.html#a72e38c2ec2b52882695c46ef5e1362a5',1,'dl7::ini::Format']]],
   ['empty_5fline_5fafter_5ftable_5fheader_8',['empty_line_after_table_header',['../dc/d02/structdl7_1_1toml_1_1Format.html#a19abe8055d368a2974e76a5c67a0afea',1,'dl7::toml::Format']]],

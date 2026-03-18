@@ -2,7 +2,7 @@ var structxl7_1_1graphics_1_1images_1_1ImageDesc =
 [
     [ "calculate_data_size", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc.html#acc1ca7f4b916d8918ceddae62dc49be4", null ],
     [ "calculate_pixel_count", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc.html#aec8200f5f4babdb0f40d0796c9cdcefc", null ],
-    [ "determine_pixel_stride", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc.html#afbd6528df7d28c0bd0e985e64d77ca9c", null ],
+    [ "determine_bytes_per_pixel", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc.html#abaf937d9661dff0e7c1212e42a921868", null ],
     [ "channel_order", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc.html#acedd07e5f84ff6250fde37e00eb5a22c", null ],
     [ "depth", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc.html#a9e3225f9fe88b83e4c73547536cf2e25", null ],
     [ "height", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc.html#af9910448c415924fa4174cd9affe7aa7", null ],
