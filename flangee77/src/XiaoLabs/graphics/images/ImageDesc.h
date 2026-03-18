@@ -25,7 +25,7 @@ struct ImageDesc
     unsigned depth = 1;
 
     /** Returns the size of one pixel, in bytes. */
-    unsigned determine_pixel_stride() const;
+    unsigned determine_bytes_per_pixel() const;
     /** Calculates the number of pixels of the image. */
     size_t calculate_pixel_count() const;
     /** Calculates the total size of the image data, in bytes. */

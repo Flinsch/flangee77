@@ -60,15 +60,15 @@ namespace xl7::graphics::images {
             // even if the two channels don't overlap (e.g., if it's Red and Alpha
             // or vice versa). We then assume that this is the intended behavior.
             // Why else would you want to do such a conversion anyway?
-            assert(source_layout.stride == target_layout.stride);
+            assert(source_layout.bytes_per_pixel == target_layout.bytes_per_pixel);
             return {target_desc, source_image.get_data()};
         }
 
         cl7::byte_view source_data = source_image.get_data();
         cl7::byte_vector target_data;
 
-        const auto source_stride = static_cast<size_t>(source_layout.stride);
-        const auto target_stride = static_cast<size_t>(target_layout.stride);
+        const auto source_stride = static_cast<size_t>(source_layout.bytes_per_pixel);
+        const auto target_stride = static_cast<size_t>(target_layout.bytes_per_pixel);
 
         assert(source_stride > 0);
         assert(target_stride > 0);
@@ -107,8 +107,8 @@ namespace xl7::graphics::images {
                 assert(false);
                 break;
             case FORMAT_HASH(1, 2): // R8/A8 to R8G8
-                assert(source_layout.stride == 1);
-                assert(target_layout.stride == 2);
+                assert(source_layout.bytes_per_pixel == 1);
+                assert(target_layout.bytes_per_pixel == 2);
                 for (size_t i = 0; i < pixel_count; ++i)
                 {
                     reinterpret_cast<uint8_t*>(dst_ptr)[target_layout.r.index] = reinterpret_cast<const uint8_t*>(src_ptr)[0];
@@ -118,8 +118,8 @@ namespace xl7::graphics::images {
                 }
                 break;
             case FORMAT_HASH(1, 3): // R8/A8 to R8G8B8/R8G8B8X8
-                assert(source_layout.stride == 1);
-                assert(target_layout.stride == 3 || target_layout.stride == 4);
+                assert(source_layout.bytes_per_pixel == 1);
+                assert(target_layout.bytes_per_pixel == 3 || target_layout.bytes_per_pixel == 4);
                 for (size_t i = 0; i < pixel_count; ++i)
                 {
                     reinterpret_cast<uint8_t*>(dst_ptr)[target_layout.r.index] = reinterpret_cast<const uint8_t*>(src_ptr)[0];
@@ -130,8 +130,8 @@ namespace xl7::graphics::images {
                 }
                 break;
             case FORMAT_HASH(1, 4): // R8/A8 to R8G8B8A8
-                assert(source_layout.stride == 1);
-                assert(target_layout.stride == 4);
+                assert(source_layout.bytes_per_pixel == 1);
+                assert(target_layout.bytes_per_pixel == 4);
                 {
                     const uint8_t a_mask = source_layout.a.depth > 0 ? 0xff : 0x00;
                     const uint8_t rgb_mask = ~a_mask;
@@ -147,8 +147,8 @@ namespace xl7::graphics::images {
                 }
                 break;
             case FORMAT_HASH(2, 1): // R8G8 to R8/A8
-                assert(source_layout.stride == 2);
-                assert(target_layout.stride == 1);
+                assert(source_layout.bytes_per_pixel == 2);
+                assert(target_layout.bytes_per_pixel == 1);
                 for (size_t i = 0; i < pixel_count; ++i)
                 {
                     reinterpret_cast<uint8_t*>(dst_ptr)[0] = reinterpret_cast<const uint8_t*>(src_ptr)[source_layout.r.index];
@@ -157,8 +157,8 @@ namespace xl7::graphics::images {
                 }
                 break;
             case FORMAT_HASH(2, 2): // R8G8
-                assert(source_layout.stride == 2);
-                assert(target_layout.stride == 2);
+                assert(source_layout.bytes_per_pixel == 2);
+                assert(target_layout.bytes_per_pixel == 2);
                 for (size_t i = 0; i < pixel_count; ++i)
                 {
                     reinterpret_cast<uint8_t*>(dst_ptr)[target_layout.r.index] = reinterpret_cast<const uint8_t*>(src_ptr)[source_layout.r.index];
@@ -168,8 +168,8 @@ namespace xl7::graphics::images {
                 }
                 break;
             case FORMAT_HASH(2, 3): // R8G8 to R8G8B8/R8G8B8X8
-                assert(source_layout.stride == 2);
-                assert(target_layout.stride == 3 || target_layout.stride == 4);
+                assert(source_layout.bytes_per_pixel == 2);
+                assert(target_layout.bytes_per_pixel == 3 || target_layout.bytes_per_pixel == 4);
                 for (size_t i = 0; i < pixel_count; ++i)
                 {
                     reinterpret_cast<uint8_t*>(dst_ptr)[target_layout.r.index] = reinterpret_cast<const uint8_t*>(src_ptr)[source_layout.r.index];
@@ -180,8 +180,8 @@ namespace xl7::graphics::images {
                 }
                 break;
             case FORMAT_HASH(2, 4): // R8G8 to R8G8B8A8
-                assert(source_layout.stride == 2);
-                assert(target_layout.stride == 4);
+                assert(source_layout.bytes_per_pixel == 2);
+                assert(target_layout.bytes_per_pixel == 4);
                 for (size_t i = 0; i < pixel_count; ++i)
                 {
                     reinterpret_cast<uint8_t*>(dst_ptr)[target_layout.r.index] = reinterpret_cast<const uint8_t*>(src_ptr)[source_layout.r.index];
@@ -193,8 +193,8 @@ namespace xl7::graphics::images {
                 }
                 break;
             case FORMAT_HASH(3, 1): // R8G8B8/R8G8B8X8 to R8/A8
-                assert(source_layout.stride == 3 || source_layout.stride == 4);
-                assert(target_layout.stride == 1);
+                assert(source_layout.bytes_per_pixel == 3 || source_layout.bytes_per_pixel == 4);
+                assert(target_layout.bytes_per_pixel == 1);
                 for (size_t i = 0; i < pixel_count; ++i)
                 {
                     reinterpret_cast<uint8_t*>(dst_ptr)[0] = reinterpret_cast<const uint8_t*>(src_ptr)[source_layout.r.index];
@@ -203,8 +203,8 @@ namespace xl7::graphics::images {
                 }
                 break;
             case FORMAT_HASH(3, 2): // R8G8B8/R8G8B8X8 to R8G8
-                assert(source_layout.stride == 3 || source_layout.stride == 4);
-                assert(target_layout.stride == 2);
+                assert(source_layout.bytes_per_pixel == 3 || source_layout.bytes_per_pixel == 4);
+                assert(target_layout.bytes_per_pixel == 2);
                 for (size_t i = 0; i < pixel_count; ++i)
                 {
                     reinterpret_cast<uint8_t*>(dst_ptr)[target_layout.r.index] = reinterpret_cast<const uint8_t*>(src_ptr)[source_layout.r.index];
@@ -214,8 +214,8 @@ namespace xl7::graphics::images {
                 }
                 break;
             case FORMAT_HASH(3, 3): // R8G8B8/R8G8B8X8
-                assert(source_layout.stride == 3 || source_layout.stride == 4);
-                assert(target_layout.stride == 3 || target_layout.stride == 4);
+                assert(source_layout.bytes_per_pixel == 3 || source_layout.bytes_per_pixel == 4);
+                assert(target_layout.bytes_per_pixel == 3 || target_layout.bytes_per_pixel == 4);
                 for (size_t i = 0; i < pixel_count; ++i)
                 {
                     reinterpret_cast<uint8_t*>(dst_ptr)[target_layout.r.index] = reinterpret_cast<const uint8_t*>(src_ptr)[source_layout.r.index];
@@ -226,8 +226,8 @@ namespace xl7::graphics::images {
                 }
                 break;
             case FORMAT_HASH(3, 4): // R8G8B8/R8G8B8X8 to R8G8B8A8
-                assert(source_layout.stride == 3 || source_layout.stride == 4);
-                assert(target_layout.stride == 4);
+                assert(source_layout.bytes_per_pixel == 3 || source_layout.bytes_per_pixel == 4);
+                assert(target_layout.bytes_per_pixel == 4);
                 for (size_t i = 0; i < pixel_count; ++i)
                 {
                     reinterpret_cast<uint8_t*>(dst_ptr)[target_layout.r.index] = reinterpret_cast<const uint8_t*>(src_ptr)[source_layout.r.index];
@@ -239,8 +239,8 @@ namespace xl7::graphics::images {
                 }
                 break;
             case FORMAT_HASH(4, 1): // R8G8B8A8 to R8/A8
-                assert(source_layout.stride == 4);
-                assert(target_layout.stride == 1);
+                assert(source_layout.bytes_per_pixel == 4);
+                assert(target_layout.bytes_per_pixel == 1);
                 {
                     const unsigned source_channel_index = target_layout.a.depth > 0 ? 3 : 0;
                     for (size_t i = 0; i < pixel_count; ++i)
@@ -252,8 +252,8 @@ namespace xl7::graphics::images {
                 }
                 break;
             case FORMAT_HASH(4, 2): // R8G8B8A8 to R8G8
-                assert(source_layout.stride == 4);
-                assert(target_layout.stride == 2);
+                assert(source_layout.bytes_per_pixel == 4);
+                assert(target_layout.bytes_per_pixel == 2);
                 for (size_t i = 0; i < pixel_count; ++i)
                 {
                     reinterpret_cast<uint8_t*>(dst_ptr)[target_layout.r.index] = reinterpret_cast<const uint8_t*>(src_ptr)[source_layout.r.index];
@@ -263,8 +263,8 @@ namespace xl7::graphics::images {
                 }
                 break;
             case FORMAT_HASH(4, 3): // R8G8B8A8 to R8G8B8/R8G8B8X8
-                assert(source_layout.stride == 4);
-                assert(target_layout.stride == 3 || target_layout.stride == 4);
+                assert(source_layout.bytes_per_pixel == 4);
+                assert(target_layout.bytes_per_pixel == 3 || target_layout.bytes_per_pixel == 4);
                 for (size_t i = 0; i < pixel_count; ++i)
                 {
                     reinterpret_cast<uint8_t*>(dst_ptr)[target_layout.r.index] = reinterpret_cast<const uint8_t*>(src_ptr)[source_layout.r.index];
@@ -275,8 +275,8 @@ namespace xl7::graphics::images {
                 }
                 break;
             case FORMAT_HASH(4, 4): // R8G8B8A8
-                assert(source_layout.stride == 4);
-                assert(target_layout.stride == 4);
+                assert(source_layout.bytes_per_pixel == 4);
+                assert(target_layout.bytes_per_pixel == 4);
                 for (size_t i = 0; i < pixel_count; ++i)
                 {
                     reinterpret_cast<uint8_t*>(dst_ptr)[target_layout.r.index] = reinterpret_cast<const uint8_t*>(src_ptr)[source_layout.r.index];

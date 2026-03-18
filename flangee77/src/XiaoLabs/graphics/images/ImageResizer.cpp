@@ -218,7 +218,7 @@ namespace xl7::graphics::images {
         const ImageDesc source_desc = source_image.get_desc();
 
         const PixelLayout pixel_layout{source_desc.pixel_format, source_desc.channel_order};
-        const size_t stride = pixel_layout.stride;
+        const size_t stride = pixel_layout.bytes_per_pixel;
 
         const size_t source_width = source_image.get_width();
         const size_t source_height = source_image.get_height();
@@ -388,7 +388,7 @@ namespace xl7::graphics::images {
         // Fast nearest-neighbor.
         if (resampling_method == ResamplingMethod::NearestNeighbor)
         {
-            switch (pixel_layout.stride)
+            switch (pixel_layout.bytes_per_pixel)
             {
             case 1: return {target_desc, std::move(_nearest_neighbor<1>(source_image, width, height, depth))};
             case 2: return {target_desc, std::move(_nearest_neighbor<2>(source_image, width, height, depth))};
@@ -408,7 +408,7 @@ namespace xl7::graphics::images {
         // 1D mipmap with typical format of 8 bits per channel.
         if (pixel_layout.uniform_depth == 8 && source_desc.width == target_desc.width * 2 && source_desc.height == 1 && target_desc.height == 1 && source_desc.depth == 1 && target_desc.depth == 1)
         {
-            switch (pixel_layout.stride)
+            switch (pixel_layout.bytes_per_pixel)
             {
             case 1: return {target_desc, std::move(_mipmap1_u8<1>(source_image))};
             case 2: return {target_desc, std::move(_mipmap1_u8<2>(source_image))};
@@ -422,7 +422,7 @@ namespace xl7::graphics::images {
         // 2D mipmap with typical format of 8 bits per channel.
         if (pixel_layout.uniform_depth == 8 && source_desc.width == target_desc.width * 2 && source_desc.height == target_desc.height * 2 && source_desc.depth == 1 && target_desc.depth == 1)
         {
-            switch (pixel_layout.stride)
+            switch (pixel_layout.bytes_per_pixel)
             {
             case 1: return {target_desc, std::move(_mipmap2_u8<1>(source_image))};
             case 2: return {target_desc, std::move(_mipmap2_u8<2>(source_image))};
@@ -436,7 +436,7 @@ namespace xl7::graphics::images {
         // 3D mipmap with typical format of 8 bits per channel.
         if (pixel_layout.uniform_depth == 8 && source_desc.width == target_desc.width * 2 && source_desc.height == target_desc.height * 2 && source_desc.depth == target_desc.depth * 2)
         {
-            switch (pixel_layout.stride)
+            switch (pixel_layout.bytes_per_pixel)
             {
             case 1: return {target_desc, std::move(_mipmap3_u8<1>(source_image))};
             case 2: return {target_desc, std::move(_mipmap3_u8<2>(source_image))};

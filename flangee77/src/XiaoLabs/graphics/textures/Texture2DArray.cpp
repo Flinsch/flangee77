@@ -17,7 +17,7 @@ namespace xl7::graphics::textures {
             .pixel_format = desc.pixel_format,
             .preferred_channel_order = desc.preferred_channel_order,
             .mip_levels = desc.mip_levels,
-        }, desc.width, desc.height, 1, desc.count)
+        }, desc.width, desc.height, 1, desc.texture_count)
         , _desc(desc)
     {
         assert(static_cast<const void*>(&Texture::get_desc()) != static_cast<const void*>(&get_desc()));
@@ -25,8 +25,8 @@ namespace xl7::graphics::textures {
 
         const RenderingDevice::Capabilities& capabilities = GraphicsSystem::instance().get_rendering_device()->get_capabilities();
 
-        if (capabilities.textures.max_texture_array_size && desc.count > capabilities.textures.max_texture_array_size)
-            LOG_WARNING(u8"The " + get_typed_identifier_string() + u8" to be created should have " + cl7::to_string(desc.count) + u8" layers, but a maximum of " + cl7::to_string(capabilities.textures.max_texture_array_size) + u8" is supported.");
+        if (capabilities.textures.max_texture_array_size && desc.texture_count > capabilities.textures.max_texture_array_size)
+            LOG_WARNING(u8"The " + get_typed_identifier_string() + u8" to be created should have " + cl7::to_string(desc.texture_count) + u8" textures/layers, but a maximum of " + cl7::to_string(capabilities.textures.max_texture_array_size) + u8" is supported.");
     }
 
 

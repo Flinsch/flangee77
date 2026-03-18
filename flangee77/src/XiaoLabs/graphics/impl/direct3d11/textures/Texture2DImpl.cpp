@@ -101,7 +101,7 @@ namespace xl7::graphics::impl::direct3d11::textures {
                     break;
                 assert(mip_level < MAX_LEVELS);
                 subresource_data[mip_level].pSysMem = mipmap.get_data().data();
-                subresource_data[mip_level].SysMemPitch = get_stride() * mipmap.get_width();
+                subresource_data[mip_level].SysMemPitch = get_bytes_per_pixel() * mipmap.get_width();
                 subresource_data[mip_level].SysMemSlicePitch = 0;
                 ++mip_level;
             } // for each mip level
@@ -202,7 +202,7 @@ namespace xl7::graphics::impl::direct3d11::textures {
                     box.bottom = mipmap.get_height();
                     box.back = 1;
 
-                    d3d_device_context->UpdateSubresource1(_d3d_texture.Get(), mip_level, &box, mipmap.get_data().data(), mipmap.get_width() * get_stride(), 0, D3D11_COPY_DISCARD);
+                    d3d_device_context->UpdateSubresource1(_d3d_texture.Get(), mip_level, &box, mipmap.get_data().data(), mipmap.get_width() * get_bytes_per_pixel(), 0, D3D11_COPY_DISCARD);
 
                     ++mip_level;
                 } // for each mip level

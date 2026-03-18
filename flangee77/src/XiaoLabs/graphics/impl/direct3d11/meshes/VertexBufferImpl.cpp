@@ -40,15 +40,15 @@ namespace xl7::graphics::impl::direct3d11::meshes {
         auto* d3d_device = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_d3d_device();
         assert(d3d_device);
 
-        assert(get_data().empty() || get_data().size() == static_cast<size_t>(get_size()));
+        assert(get_data().empty() || get_data().size() == static_cast<size_t>(get_data_size()));
 
         D3D11_BUFFER_DESC buffer_desc;
-        buffer_desc.ByteWidth = get_size();
+        buffer_desc.ByteWidth = get_data_size();
         buffer_desc.Usage = mappings::_d3d_usage_from(get_desc().usage);
         buffer_desc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
         buffer_desc.CPUAccessFlags = get_desc().usage >= graphics::meshes::MeshBufferUsage::Dynamic ? D3D11_CPU_ACCESS_WRITE : 0;
         buffer_desc.MiscFlags = 0;
-        buffer_desc.StructureByteStride = get_desc().stride;
+        buffer_desc.StructureByteStride = get_element_stride();
 
         D3D11_SUBRESOURCE_DATA subresource_data;
         subresource_data.pSysMem = get_data().data();

@@ -12,7 +12,7 @@ namespace xl7::graphics {
         : pixel_format(pixel_format)
         , channel_order(channel_order)
         , channel_count(determine_channel_count(pixel_format))
-        , stride(determine_stride(pixel_format))
+        , bytes_per_pixel(determine_bytes_per_pixel(pixel_format))
         , data_type(determine_data_type(pixel_format))
     {
         std::memset(channels, 0, sizeof(Channel) * 4);
@@ -30,7 +30,7 @@ namespace xl7::graphics {
         case PixelFormat::R8_UINT:
         case PixelFormat::R8_SINT:
             assert(channel_count == 1);
-            assert(stride == 1);
+            assert(bytes_per_pixel == 1);
             depths = {8, 0, 0, 0};
             break;
 
@@ -40,7 +40,7 @@ namespace xl7::graphics {
         case PixelFormat::R16_SINT:
         case PixelFormat::R16_FLOAT:
             assert(channel_count == 1);
-            assert(stride == 2);
+            assert(bytes_per_pixel == 2);
             depths = {16, 0, 0, 0};
             break;
 
@@ -48,7 +48,7 @@ namespace xl7::graphics {
         case PixelFormat::R32_SINT:
         case PixelFormat::R32_FLOAT:
             assert(channel_count == 1);
-            assert(stride == 4);
+            assert(bytes_per_pixel == 4);
             depths = {32, 0, 0, 0};
             break;
 
@@ -57,7 +57,7 @@ namespace xl7::graphics {
         case PixelFormat::R8G8_UINT:
         case PixelFormat::R8G8_SINT:
             assert(channel_count == 2);
-            assert(stride == 2);
+            assert(bytes_per_pixel == 2);
             depths = {8, 8, 0, 0};
             break;
 
@@ -67,7 +67,7 @@ namespace xl7::graphics {
         case PixelFormat::R16G16_SINT:
         case PixelFormat::R16G16_FLOAT:
             assert(channel_count == 2);
-            assert(stride == 4);
+            assert(bytes_per_pixel == 4);
             depths = {16, 16, 0, 0};
             break;
 
@@ -75,23 +75,23 @@ namespace xl7::graphics {
         case PixelFormat::R32G32_SINT:
         case PixelFormat::R32G32_FLOAT:
             assert(channel_count == 2);
-            assert(stride == 8);
+            assert(bytes_per_pixel == 8);
             depths = {32, 32, 0, 0};
             break;
 
         case PixelFormat::R4G4B4X4_UNORM:
             assert(channel_count == 3);
-            assert(stride == 2);
+            assert(bytes_per_pixel == 2);
             depths = {4, 4, 4, 0};
             break;
         case PixelFormat::R5G5B5X1_UNORM:
             assert(channel_count == 3);
-            assert(stride == 2);
+            assert(bytes_per_pixel == 2);
             depths = {5, 5, 5, 0};
             break;
         case PixelFormat::R5G6B5_UNORM:
             assert(channel_count == 3);
-            assert(stride == 2);
+            assert(bytes_per_pixel == 2);
             depths = {5, 6, 5, 0};
             break;
 
@@ -100,26 +100,26 @@ namespace xl7::graphics {
         case PixelFormat::R8G8B8_UINT:
         case PixelFormat::R8G8B8_SINT:
             assert(channel_count == 3);
-            assert(stride == 3);
+            assert(bytes_per_pixel == 3);
             depths = {8, 8, 8, 0};
             break;
 
         case PixelFormat::R8G8B8X8_UNORM:
             assert(channel_count == 3);
-            assert(stride == 4);
+            assert(bytes_per_pixel == 4);
             depths = {8, 8, 8, 0};
             break;
 
         case PixelFormat::R11G11B10_FLOAT:
             assert(channel_count == 3);
-            assert(stride == 4);
+            assert(bytes_per_pixel == 4);
             depths = {11, 11, 10, 0};
             break;
 
         case PixelFormat::R16G16B16_UNORM:
         case PixelFormat::R16G16B16_FLOAT:
             assert(channel_count == 3);
-            assert(stride == 6);
+            assert(bytes_per_pixel == 6);
             depths = {16, 16, 16, 0};
             break;
 
@@ -127,18 +127,18 @@ namespace xl7::graphics {
         case PixelFormat::R32G32B32_SINT:
         case PixelFormat::R32G32B32_FLOAT:
             assert(channel_count == 3);
-            assert(stride == 12);
+            assert(bytes_per_pixel == 12);
             depths = {32, 32, 32, 0};
             break;
 
         case PixelFormat::R4G4B4A4_UNORM:
             assert(channel_count == 4);
-            assert(stride == 2);
+            assert(bytes_per_pixel == 2);
             depths = {4, 4, 4, 4};
             break;
         case PixelFormat::R5G5B5A1_UNORM:
             assert(channel_count == 4);
-            assert(stride == 2);
+            assert(bytes_per_pixel == 2);
             depths = {5, 5, 5, 1};
             break;
 
@@ -147,14 +147,14 @@ namespace xl7::graphics {
         case PixelFormat::R8G8B8A8_UINT:
         case PixelFormat::R8G8B8A8_SINT:
             assert(channel_count == 4);
-            assert(stride == 4);
+            assert(bytes_per_pixel == 4);
             depths = {8, 8, 8, 8};
             break;
 
         case PixelFormat::R10G10B10A2_UNORM:
         case PixelFormat::R10G10B10A2_UINT:
             assert(channel_count == 4);
-            assert(stride == 4);
+            assert(bytes_per_pixel == 4);
             depths = {10, 10, 10, 2};
             break;
 
@@ -164,7 +164,7 @@ namespace xl7::graphics {
         case PixelFormat::R16G16B16A16_SINT:
         case PixelFormat::R16G16B16A16_FLOAT:
             assert(channel_count == 4);
-            assert(stride == 8);
+            assert(bytes_per_pixel == 8);
             depths = {16, 16, 16, 16};
             break;
 
@@ -172,13 +172,13 @@ namespace xl7::graphics {
         case PixelFormat::R32G32B32A32_SINT:
         case PixelFormat::R32G32B32A32_FLOAT:
             assert(channel_count == 4);
-            assert(stride == 16);
+            assert(bytes_per_pixel == 16);
             depths = {32, 32, 32, 32};
             break;
 
         case PixelFormat::A8_UNORM:
             assert(channel_count == 1);
-            assert(stride == 1);
+            assert(bytes_per_pixel == 1);
             depths = {0, 0, 0, 8};
             break;
 
@@ -233,7 +233,7 @@ namespace xl7::graphics {
             channel.index = logical_index;
             channel.depth = depths[semantic_index];
             channel.offset = offset;
-            channel.mask = stride > 8 ? 0ULL : (((1ULL << channel.depth) - 1ULL) << channel.offset);
+            channel.mask = bytes_per_pixel > 8 ? 0ULL : (((1ULL << channel.depth) - 1ULL) << channel.offset);
             channel.mask0 = (1ULL << channel.depth) - 1ULL;
 
             if (logical_index == 0)
@@ -387,9 +387,9 @@ namespace xl7::graphics {
     /**
      * Returns the number of bytes of one pixel of the specified format.
      */
-    unsigned PixelLayout::determine_stride(PixelFormat pixel_format)
+    unsigned PixelLayout::determine_bytes_per_pixel(PixelFormat pixel_format)
     {
-        unsigned stride = 0;
+        unsigned bytes_per_pixel = 0;
 
         switch (pixel_format)
         {
@@ -400,7 +400,7 @@ namespace xl7::graphics {
         case PixelFormat::R8_SNORM:
         case PixelFormat::R8_UINT:
         case PixelFormat::R8_SINT:
-            stride = 1;
+            bytes_per_pixel = 1;
             break;
 
         case PixelFormat::R16_UNORM:
@@ -408,20 +408,20 @@ namespace xl7::graphics {
         case PixelFormat::R16_UINT:
         case PixelFormat::R16_SINT:
         case PixelFormat::R16_FLOAT:
-            stride = 2;
+            bytes_per_pixel = 2;
             break;
 
         case PixelFormat::R32_UINT:
         case PixelFormat::R32_SINT:
         case PixelFormat::R32_FLOAT:
-            stride = 4;
+            bytes_per_pixel = 4;
             break;
 
         case PixelFormat::R8G8_UNORM:
         case PixelFormat::R8G8_SNORM:
         case PixelFormat::R8G8_UINT:
         case PixelFormat::R8G8_SINT:
-            stride = 2;
+            bytes_per_pixel = 2;
             break;
 
         case PixelFormat::R16G16_UNORM:
@@ -429,68 +429,68 @@ namespace xl7::graphics {
         case PixelFormat::R16G16_UINT:
         case PixelFormat::R16G16_SINT:
         case PixelFormat::R16G16_FLOAT:
-            stride = 4;
+            bytes_per_pixel = 4;
             break;
 
         case PixelFormat::R32G32_UINT:
         case PixelFormat::R32G32_SINT:
         case PixelFormat::R32G32_FLOAT:
-            stride = 8;
+            bytes_per_pixel = 8;
             break;
 
         case PixelFormat::R4G4B4X4_UNORM:
-            stride = 2;
+            bytes_per_pixel = 2;
             break;
         case PixelFormat::R5G5B5X1_UNORM:
-            stride = 2;
+            bytes_per_pixel = 2;
             break;
         case PixelFormat::R5G6B5_UNORM:
-            stride = 2;
+            bytes_per_pixel = 2;
             break;
 
         case PixelFormat::R8G8B8_UNORM:
         case PixelFormat::R8G8B8_SNORM:
         case PixelFormat::R8G8B8_UINT:
         case PixelFormat::R8G8B8_SINT:
-            stride = 3;
+            bytes_per_pixel = 3;
             break;
 
         case PixelFormat::R8G8B8X8_UNORM:
-            stride = 4;
+            bytes_per_pixel = 4;
             break;
 
         case PixelFormat::R11G11B10_FLOAT:
-            stride = 4;
+            bytes_per_pixel = 4;
             break;
 
         case PixelFormat::R16G16B16_UNORM:
         case PixelFormat::R16G16B16_FLOAT:
-            stride = 6;
+            bytes_per_pixel = 6;
             break;
 
         case PixelFormat::R32G32B32_UINT:
         case PixelFormat::R32G32B32_SINT:
         case PixelFormat::R32G32B32_FLOAT:
-            stride = 12;
+            bytes_per_pixel = 12;
             break;
 
         case PixelFormat::R4G4B4A4_UNORM:
-            stride = 2;
+            bytes_per_pixel = 2;
             break;
         case PixelFormat::R5G5B5A1_UNORM:
-            stride = 2;
+            bytes_per_pixel = 2;
             break;
 
         case PixelFormat::R8G8B8A8_UNORM:
         case PixelFormat::R8G8B8A8_SNORM:
         case PixelFormat::R8G8B8A8_UINT:
         case PixelFormat::R8G8B8A8_SINT:
-            stride = 4;
+            bytes_per_pixel = 4;
             break;
 
         case PixelFormat::R10G10B10A2_UNORM:
         case PixelFormat::R10G10B10A2_UINT:
-            stride = 4;
+            bytes_per_pixel = 4;
             break;
 
         case PixelFormat::R16G16B16A16_UNORM:
@@ -498,24 +498,24 @@ namespace xl7::graphics {
         case PixelFormat::R16G16B16A16_UINT:
         case PixelFormat::R16G16B16A16_SINT:
         case PixelFormat::R16G16B16A16_FLOAT:
-            stride = 8;
+            bytes_per_pixel = 8;
             break;
 
         case PixelFormat::R32G32B32A32_UINT:
         case PixelFormat::R32G32B32A32_SINT:
         case PixelFormat::R32G32B32A32_FLOAT:
-            stride = 16;
+            bytes_per_pixel = 16;
             break;
 
         case PixelFormat::A8_UNORM:
-            stride = 1;
+            bytes_per_pixel = 1;
             break;
 
         default:
             assert(false);
         } // switch pixel format
 
-        return stride;
+        return bytes_per_pixel;
     }
 
     /**

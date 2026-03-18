@@ -53,12 +53,12 @@ namespace fl7::fonts::raster {
         desc.height = height_px;
         desc.depth = 1;
 
-        const unsigned pixel_stride = desc.determine_pixel_stride();
+        const unsigned bytes_per_pixel = desc.determine_bytes_per_pixel();
         const size_t data_size = desc.calculate_data_size();
 
         cl7::byte_vector data{data_size};
 
-        dl7::Buffer2dSpan canvas{data, width_px, height_px, pixel_stride, 0};
+        dl7::Buffer2dSpan canvas{data, width_px, height_px, bytes_per_pixel, 0};
 
         _rasterize_glyph_into(glyph, size_config, pixel_offset, canvas);
 

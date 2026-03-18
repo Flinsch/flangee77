@@ -12,31 +12,31 @@ namespace xl7::graphics::meshes {
 class DirtyRange
 {
 public:
-    bool is_dirty() const { return _count > 0; }
+    bool is_dirty() const { return _element_count > 0; }
 
-    void clear() { _first = _count = 0; }
+    void clear() { _first_element = _element_count = 0; }
 
-    void update(unsigned first, unsigned count)
+    void update(unsigned first_element, unsigned element_count)
     {
         if (!is_dirty())
         {
-            _first = first;
-            _count = count;
+            _first_element = first_element;
+            _element_count = element_count;
             return;
         }
 
-        unsigned begin = std::min(_first, first);
-        unsigned end = std::max(_first + _count, first + count);
-        _first = begin;
-        _count = end - begin;
+        unsigned begin = std::min(_first_element, first_element);
+        unsigned end = std::max(_first_element + _element_count, first_element + element_count);
+        _first_element = begin;
+        _element_count = end - begin;
     }
 
-    unsigned first() const { return _first; }
-    unsigned count() const { return _count; }
+    unsigned first_element() const { return _first_element; }
+    unsigned element_count() const { return _element_count; }
 
 private:
-    unsigned _first = 0;
-    unsigned _count = 0;
+    unsigned _first_element = 0;
+    unsigned _element_count = 0;
 };
 
 

@@ -276,7 +276,7 @@ namespace xl7::graphics::impl::direct3d11 {
                 vertex_buffer_binding.stream_count = stream_index = stream_index + 1;
                 vertex_buffer_binding.vertex_buffer_ids[stream_index] = vertex_buffer->get_id();
                 d3d_vertex_buffer = vertex_buffer->get_raw_d3d_vertex_buffer();
-                stream_strides[stream_index] = vertex_buffer->get_stride();
+                stream_strides[stream_index] = vertex_buffer->get_element_stride();
                 stream_offsets[stream_index] = 0;
             } else {
                 vertex_buffer_binding.vertex_buffer_ids[stream_index].invalidate();

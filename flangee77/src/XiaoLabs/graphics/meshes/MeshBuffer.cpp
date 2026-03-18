@@ -8,13 +8,13 @@ namespace xl7::graphics::meshes {
 
 
 
-    MeshBuffer::MeshBuffer(Type type, const CreateContext& ctx, const MeshBufferDesc& desc, unsigned stride)
+    MeshBuffer::MeshBuffer(Type type, const CreateContext& ctx, const MeshBufferDesc& desc, unsigned element_stride)
         : ResourceBaseDirty(ctx, desc)
         , _type(type)
         , _desc(desc)
-        , _primitive_count(MeshUtil::calculate_primitive_count(desc.topology, desc.count))
-        , _stride(stride)
-        , _size(_stride * _desc.count)
+        , _primitive_count(MeshUtil::calculate_primitive_count(desc.topology, desc.element_count))
+        , _element_stride(element_stride)
+        , _data_size(_element_stride * _desc.element_count)
     {
     }
 
@@ -34,7 +34,7 @@ namespace xl7::graphics::meshes {
         if (!_try_fill_data(data_provider))
             return false;
 
-        bool discard = data_provider.get_offset() == 0 && data_provider.get_size() == static_cast<size_t>(_size);
+        bool discard = data_provider.get_offset() == 0 && data_provider.get_size() == static_cast<size_t>(_data_size);
         bool no_overwrite = false;
 
         return _update_impl(data_provider, discard, no_overwrite);
@@ -49,9 +49,9 @@ namespace xl7::graphics::meshes {
      */
     bool MeshBuffer::_check_data_impl(const resources::DataProvider& data_provider)
     {
-        if (!_check_against_size(data_provider, _size))
+        if (!_check_against_size(data_provider, _data_size))
             return false;
-        if (!_check_against_stride(data_provider, _stride))
+        if (!_check_against_stride(data_provider, _element_stride))
             return false;
 
         return true;

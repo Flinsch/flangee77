@@ -49,10 +49,10 @@ namespace xl7::graphics::impl::direct3d9::meshes {
         auto* d3d_device = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_d3d_device();
         assert(d3d_device);
 
-        assert(get_data().empty() || get_data().size() == static_cast<size_t>(get_size()));
+        assert(get_data().empty() || get_data().size() == static_cast<size_t>(get_data_size()));
 
         HRESULT hresult = d3d_device->CreateVertexBuffer(
-            get_size(),
+            get_data_size(),
             mappings::_d3d_usage_from(get_desc().usage),
             _d3d_fvf,
             mappings::_d3d_pool_from(get_desc().usage),

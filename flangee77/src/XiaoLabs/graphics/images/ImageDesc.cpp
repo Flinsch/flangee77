@@ -9,9 +9,9 @@ namespace xl7::graphics::images {
 
 
     /** Returns the size of one pixel, in bytes. */
-    unsigned ImageDesc::determine_pixel_stride() const
+    unsigned ImageDesc::determine_bytes_per_pixel() const
     {
-        return PixelLayout::determine_stride(pixel_format);
+        return PixelLayout::determine_bytes_per_pixel(pixel_format);
     }
 
     /** Calculates the number of pixels of the image. */
@@ -28,7 +28,7 @@ namespace xl7::graphics::images {
     {
         return
             calculate_pixel_count() *
-            determine_pixel_stride();
+            determine_bytes_per_pixel();
     }
 
 

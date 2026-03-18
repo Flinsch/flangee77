@@ -175,7 +175,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  ImageProcessor" )
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"pack_color/unpack_color", container, entry, cl7::to_string( entry.pixel_format ) + u8" " + cl7::to_string( entry.channel_order ) )
     {
         xl7::graphics::PixelLayout pixel_layout{ entry.pixel_format, entry.channel_order };
-        size_t stride = static_cast<size_t>( pixel_layout.stride );
+        size_t stride = static_cast<size_t>( pixel_layout.bytes_per_pixel );
 
         cl7::byte_vector packed_data{ stride };
         xl7::graphics::images::ImageProcessor::pack_color( entry_color, entry.pixel_format, entry.channel_order, packed_data );

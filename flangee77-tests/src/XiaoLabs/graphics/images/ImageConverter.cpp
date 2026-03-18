@@ -56,7 +56,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  ImageConverter" )
     TESTLABS_SUBCASE_BATCH( u8"convert_image", container, entry1 )
     {
         xl7::graphics::PixelLayout pixel_layout1{ entry1.pixel_format, entry1.channel_order };
-        size_t stride1 = static_cast<size_t>( pixel_layout1.stride );
+        size_t stride1 = static_cast<size_t>( pixel_layout1.bytes_per_pixel );
 
         cl7::byte_vector source_data{ stride1 * 4 };
         xl7::graphics::images::ImageConverter::pack_color( image_colors[0], entry1.pixel_format, entry1.channel_order, { source_data.data() + stride1 * 0, stride1 } );
@@ -71,7 +71,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  ImageConverter" )
         TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"convert_image", container, entry2, cl7::to_string( entry1.pixel_format ) + u8" " + cl7::to_string( entry1.channel_order ) + u8" -> " + cl7::to_string( entry2.pixel_format ) + u8" " + cl7::to_string( entry2.channel_order ) )
         {
             xl7::graphics::PixelLayout pixel_layout2{ entry2.pixel_format, entry2.channel_order };
-            size_t stride2 = static_cast<size_t>( pixel_layout2.stride );
+            size_t stride2 = static_cast<size_t>( pixel_layout2.bytes_per_pixel );
 
             xl7::graphics::images::Image target_image = xl7::graphics::images::ImageConverter::convert_image( source_image, entry2.pixel_format, entry2.channel_order );
 

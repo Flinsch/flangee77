@@ -98,7 +98,7 @@ namespace xl7::graphics::images {
         cl7::byte_vector data(desc.calculate_data_size());
 
         const unsigned src_bytes_per_pixel = bit_info.ceil_bytes_per_pixel;
-        const unsigned dst_bytes_per_pixel = desc.determine_pixel_stride();
+        const unsigned dst_bytes_per_pixel = desc.determine_bytes_per_pixel();
         const size_t pixel_count = desc.calculate_pixel_count();
         assert(pixel_count * src_bytes_per_pixel == buffer.size());
 

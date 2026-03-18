@@ -17,11 +17,11 @@ struct VertexBufferDesc
 
     /** The topology of the primitives that the buffer represents. */
     Topology topology;
-    /** The number of elements within the buffer, regardless of the topology (i.e., vertices, not primitives). */
-    unsigned count;
+    /** The number of vertices within the buffer, regardless of the topology. */
+    unsigned vertex_count;
 
     /** The size of each vertex, in bytes. */
-    unsigned stride;
+    unsigned vertex_stride;
     /** The layout specification of the vertices. */
     VertexLayout vertex_layout;
 

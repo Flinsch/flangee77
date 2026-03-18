@@ -82,7 +82,7 @@ struct PixelLayout
     /** The number of channels in a pixel. */
     unsigned channel_count;
     /** The size of one pixel, in bytes. */
-    unsigned stride;
+    unsigned bytes_per_pixel;
 
     /** */
     union
@@ -118,7 +118,7 @@ struct PixelLayout
     static unsigned determine_channel_count(PixelFormat pixel_format);
 
     /** Returns the number of bytes of one pixel of the specified format. */
-    static unsigned determine_stride(PixelFormat pixel_format);
+    static unsigned determine_bytes_per_pixel(PixelFormat pixel_format);
 
     /** Returns the data type of the specified pixel format. */
     static DataType determine_data_type(PixelFormat pixel_format);

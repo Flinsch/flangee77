@@ -247,7 +247,7 @@ namespace xl7::graphics::impl::direct3d9 {
         // Should we optimize for these two values?
         unsigned min_vertex_index = 0;
         assert(resolved_draw_states.vertex_buffers[0]);
-        unsigned vertex_count = resolved_draw_states.vertex_buffers[0]->get_desc().count;
+        unsigned vertex_count = resolved_draw_states.vertex_buffers[0]->get_desc().vertex_count;
 
         HRESULT hresult = _d3d_device->DrawIndexedPrimitive(d3d_primitive_type, base_vertex, min_vertex_index, vertex_count, start_index, primitive_count);
         if (FAILED(hresult))
@@ -329,21 +329,21 @@ namespace xl7::graphics::impl::direct3d9 {
         {
             const auto* vertex_buffer = static_cast<const meshes::VertexBufferImpl*>(resolved_draw_states.vertex_buffers[stream_index]); // NOLINT(*-pro-type-static-cast-downcast)
             IDirect3DVertexBuffer9* d3d_vertex_buffer;
-            unsigned stride;
+            unsigned element_stride;
             if (vertex_buffer) {
                 vertex_buffer_binding.stream_count = stream_index = stream_index + 1;
                 vertex_buffer_binding.vertex_buffer_ids[stream_index] = vertex_buffer->get_id();
                 d3d_vertex_buffer = vertex_buffer->get_raw_d3d_vertex_buffer();
-                stride = vertex_buffer->get_stride();
+                element_stride = vertex_buffer->get_element_stride();
             } else {
                 vertex_buffer_binding.vertex_buffer_ids[stream_index].invalidate();
                 d3d_vertex_buffer = nullptr;
-                stride = 0;
+                element_stride = 0;
             }
 
             if (d3d_vertex_buffer != hardware_states.vertex_buffers[stream_index])
             {
-                hresult = _d3d_device->SetStreamSource(stream_index, d3d_vertex_buffer, 0, stride);
+                hresult = _d3d_device->SetStreamSource(stream_index, d3d_vertex_buffer, 0, element_stride);
                 if (FAILED(hresult))
                 {
                     LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::SetStreamSource"));

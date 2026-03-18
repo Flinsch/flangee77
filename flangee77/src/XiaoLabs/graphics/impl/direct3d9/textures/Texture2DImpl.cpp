@@ -147,7 +147,7 @@ namespace xl7::graphics::impl::direct3d9::textures {
             const std::byte* src = update_desc[i].data;
             auto width = static_cast<unsigned>(update_desc[i].rect.right - update_desc[i].rect.left);
             auto height = static_cast<unsigned>(update_desc[i].rect.bottom - update_desc[i].rect.top);
-            unsigned pitch = width * get_stride();
+            unsigned pitch = width * get_bytes_per_pixel();
             for (unsigned y = 0; y < height; ++y)
             {
                 std::memcpy(dst, src, pitch);

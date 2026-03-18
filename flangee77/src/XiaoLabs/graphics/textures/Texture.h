@@ -66,7 +66,7 @@ public:
     /**
      * Returns the size of each pixel, in bytes.
      */
-    unsigned get_stride() const { return _stride; }
+    unsigned get_bytes_per_pixel() const { return _bytes_per_pixel; }
 
     /**
      * Returns the size of a pixel row (the offset between the start of one row and
@@ -191,7 +191,7 @@ private:
     /**
      * The size of each pixel, in bytes.
      */
-    const unsigned _stride;
+    const unsigned _bytes_per_pixel;
 
     /**
      * The size of a pixel row (the offset between the start of one row and the

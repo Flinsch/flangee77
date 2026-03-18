@@ -17,8 +17,8 @@ struct IndexBufferDesc
 
     /** The topology of the primitives that the buffer represents. */
     Topology topology;
-    /** The number of elements within the buffer, regardless of the topology (i.e., indices, not primitives). */
-    unsigned count;
+    /** The number of indices within the buffer, regardless of the topology. */
+    unsigned index_count;
 
     /** The type/format (16 or 32 bits) of the index buffer. */
     IndexType index_type;

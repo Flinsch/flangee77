@@ -30,7 +30,7 @@ namespace xl7::graphics::images {
 
         const PixelLayout pixel_layout{pixel_format, channel_order};
 
-        if (packed_data.size() < static_cast<size_t>(pixel_layout.stride))
+        if (packed_data.size() < static_cast<size_t>(pixel_layout.bytes_per_pixel))
         {
             LOG_WARNING(u8"The receiving data buffer does not have the minimum required size.");
             return;
@@ -59,7 +59,7 @@ namespace xl7::graphics::images {
 
         const PixelLayout pixel_layout{pixel_format, channel_order};
 
-        if (packed_data.size() < static_cast<size_t>(pixel_layout.stride))
+        if (packed_data.size() < static_cast<size_t>(pixel_layout.bytes_per_pixel))
         {
             LOG_WARNING(u8"The source data buffer does not have the expected minimum size.");
             return Color::ZERO;
@@ -78,7 +78,7 @@ namespace xl7::graphics::images {
     void ImageProcessor::_pack_color(const Color& color, const PixelLayout& pixel_layout, cl7::byte_span packed_data)
     {
         assert(pixel_layout.data_type != PixelLayout::DataType::UNKNOWN);
-        assert(packed_data.size() >= static_cast<size_t>(pixel_layout.stride));
+        assert(packed_data.size() >= static_cast<size_t>(pixel_layout.bytes_per_pixel));
 
         void* ptr = packed_data.data();
 
@@ -129,7 +129,7 @@ namespace xl7::graphics::images {
                 assert(false);
             }
         }
-        else if (pixel_layout.stride > 4)
+        else if (pixel_layout.bytes_per_pixel > 4)
         {
             switch (pixel_layout.pixel_format)
             {
@@ -176,7 +176,7 @@ namespace xl7::graphics::images {
         }
         else
         {
-            assert(pixel_layout.stride <= 4);
+            assert(pixel_layout.bytes_per_pixel <= 4);
 #pragma warning(push)
 #pragma warning(disable: 6297) // Temporarily disable "arithmetic overflow" warning.
             uint32_t value = 
@@ -185,7 +185,7 @@ namespace xl7::graphics::images {
                 ((cl7::bits::norm_to_fixed(color.b, pixel_layout.b.depth) << pixel_layout.b.offset) & pixel_layout.b.mask) |
                 ((cl7::bits::norm_to_fixed(color.a, pixel_layout.a.depth) << pixel_layout.a.offset) & pixel_layout.a.mask);
 #pragma warning(pop)
-            std::memcpy(ptr, &value, static_cast<size_t>(pixel_layout.stride));
+            std::memcpy(ptr, &value, static_cast<size_t>(pixel_layout.bytes_per_pixel));
         }
     }
 
@@ -197,7 +197,7 @@ namespace xl7::graphics::images {
     Color ImageProcessor::_unpack_color(cl7::byte_view packed_data, const PixelLayout& pixel_layout)
     {
         assert(pixel_layout.data_type != PixelLayout::DataType::UNKNOWN);
-        assert(packed_data.size() >= static_cast<size_t>(pixel_layout.stride));
+        assert(packed_data.size() >= static_cast<size_t>(pixel_layout.bytes_per_pixel));
 
         const void* ptr = packed_data.data();
         Color color{0.0f, 0.0f, 0.0f, 1.0f};
@@ -249,7 +249,7 @@ namespace xl7::graphics::images {
                 assert(false);
             }
         }
-        else if (pixel_layout.stride > 4)
+        else if (pixel_layout.bytes_per_pixel > 4)
         {
             switch (pixel_layout.pixel_format)
             {
@@ -296,9 +296,9 @@ namespace xl7::graphics::images {
         }
         else
         {
-            assert(pixel_layout.stride <= 4);
+            assert(pixel_layout.bytes_per_pixel <= 4);
             uint32_t value;
-            std::memcpy(&value, ptr, static_cast<size_t>(pixel_layout.stride));
+            std::memcpy(&value, ptr, static_cast<size_t>(pixel_layout.bytes_per_pixel));
             if (pixel_layout.channel_count == 1)
             {
                 if (pixel_layout.a.depth > 0)

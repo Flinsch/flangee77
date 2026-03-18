@@ -79,15 +79,15 @@ namespace helloworld {
         xl7::graphics::meshes::VertexBufferDesc vertex_buffer_desc{
             .usage = xl7::graphics::meshes::MeshBufferUsage::Immutable,
             .topology = xl7::graphics::meshes::Topology::PointList,
-            .count = 4,
-            .stride = sizeof(Vertex),
+            .vertex_count = 4,
+            .vertex_stride = sizeof(Vertex),
             .vertex_layout = vertex_layout,
         };
 
         xl7::graphics::meshes::IndexBufferDesc index_buffer_desc{
             .usage = xl7::graphics::meshes::MeshBufferUsage::Immutable,
             .topology = xl7::graphics::meshes::Topology::TriangleStrip,
-            .count = 4,
+            .index_count = 4,
             .index_type = xl7::graphics::meshes::IndexType::UINT16,
         };
 

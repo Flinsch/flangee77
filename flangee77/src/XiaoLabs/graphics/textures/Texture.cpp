@@ -25,8 +25,8 @@ namespace xl7::graphics::textures {
         , _width(width)
         , _height(height)
         , _depth(depth)
-        , _stride(PixelLayout::determine_stride(desc.pixel_format))
-        , _row_pitch(_stride * width)
+        , _bytes_per_pixel(PixelLayout::determine_bytes_per_pixel(desc.pixel_format))
+        , _row_pitch(_bytes_per_pixel * width)
         , _slice_pitch(_row_pitch * height)
         , _data_size(_slice_pitch * depth * layer_count)
     {
@@ -40,8 +40,8 @@ namespace xl7::graphics::textures {
         if (capabilities.textures.max_aspect_ratio && _width && _height / _width > capabilities.textures.max_aspect_ratio)
             LOG_WARNING(u8"The " + get_typed_identifier_string() + u8" to be created has an height/width aspect ratio of " + cl7::to_string(_height / _width) + u8", but a maximum of " + cl7::to_string(capabilities.textures.max_aspect_ratio) + u8" is supported.");
 
-        if (!ml7::is_power_of_two(_stride))
-            LOG_WARNING(u8"The " + get_typed_identifier_string() + u8" to be created has a pixel stride of " + cl7::to_string(_stride) + u8" bytes (" + cl7::to_string(_stride * 8) + u8" bits). Even if this were supported by the API, it should be avoided and an alternative, power-of-two format should be explicitly used (e.g., " + cl7::to_string(ml7::next_power_of_two(_stride) * 8) + u8" bits).");
+        if (!ml7::is_power_of_two(_bytes_per_pixel))
+            LOG_WARNING(u8"The " + get_typed_identifier_string() + u8" to be created has a pixel stride of " + cl7::to_string(_bytes_per_pixel) + u8" bytes (" + cl7::to_string(_bytes_per_pixel * 8) + u8" bits). Even if this were supported by the API, it should be avoided and an alternative, power-of-two format should be explicitly used (e.g., " + cl7::to_string(ml7::next_power_of_two(_bytes_per_pixel) * 8) + u8" bits).");
     }
 
 
@@ -74,7 +74,7 @@ namespace xl7::graphics::textures {
 
         if (!_check_against_size(data_provider, image_data_provider.get_image_desc().calculate_data_size() * image_data_provider.get_image_count()))
             return false;
-        if (!_check_against_stride(data_provider, image_data_provider.get_image_desc().determine_pixel_stride()))
+        if (!_check_against_stride(data_provider, image_data_provider.get_image_desc().determine_bytes_per_pixel()))
             return false;
 
         return true;

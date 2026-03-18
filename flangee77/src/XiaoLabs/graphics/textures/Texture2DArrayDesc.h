@@ -27,7 +27,7 @@ struct Texture2DArrayDesc
     unsigned height;
 
     /** The number of textures/layers in the texture array. */
-    unsigned count;
+    unsigned texture_count;
 };
 
 

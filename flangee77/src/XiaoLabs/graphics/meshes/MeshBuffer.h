@@ -56,12 +56,12 @@ public:
     /**
      * Returns the size of each buffer element, in bytes.
      */
-    unsigned get_stride() const { return _stride; }
+    unsigned get_element_stride() const { return _element_stride; }
 
     /**
      * Returns the size of this buffer, in bytes.
      */
-    unsigned get_size() const { return _size; }
+    unsigned get_data_size() const { return _data_size; }
 
 
 
@@ -74,7 +74,7 @@ public:
 
 protected:
 
-    MeshBuffer(Type type, const CreateContext& ctx, const MeshBufferDesc& desc, unsigned stride);
+    MeshBuffer(Type type, const CreateContext& ctx, const MeshBufferDesc& desc, unsigned element_stride);
 
     ~MeshBuffer() override = default;
 
@@ -119,12 +119,12 @@ private:
     /**
      * The size of each buffer element, in bytes.
      */
-    const unsigned _stride;
+    const unsigned _element_stride;
 
     /**
      * The size of this buffer, in bytes.
      */
-    const unsigned _size;
+    const unsigned _data_size;
 
 }; // class MeshBuffer
 

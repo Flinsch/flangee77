@@ -290,7 +290,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  PixelLayout" )
 
                 xl7::graphics::PixelLayout pixel_layout{ entry.pixel_format, channel_order };
 
-                TESTLABS_CHECK_EQ( pixel_layout.stride, entry.stride );
+                TESTLABS_CHECK_EQ( pixel_layout.bytes_per_pixel, entry.stride );
 
                 if ( channel_order == xl7::graphics::ChannelOrder::RGBA )
                 {

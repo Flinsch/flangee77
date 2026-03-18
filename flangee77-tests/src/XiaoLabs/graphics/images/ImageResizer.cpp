@@ -58,7 +58,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  ImageResizer" )
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"resize_image", container, entry, cl7::to_string( entry.pixel_format ) + u8" " + cl7::to_string(entry.source_width) + u8"x" + cl7::to_string(entry.source_height) + u8"x" + cl7::to_string(entry.source_depth) + u8" -> " + cl7::to_string(entry.target_width) + u8"x" + cl7::to_string(entry.target_height) + u8"x" + cl7::to_string(entry.target_depth) )
     {
         xl7::graphics::PixelLayout pixel_layout{ entry.pixel_format, xl7::graphics::ChannelOrder::RGBA };
-        size_t stride = static_cast<size_t>( pixel_layout.stride );
+        size_t stride = static_cast<size_t>( pixel_layout.bytes_per_pixel );
 
         xl7::graphics::images::Image source_image{ { entry.pixel_format, xl7::graphics::ChannelOrder::RGBA, entry.source_width, entry.source_height, entry.source_depth }, entry.source_data, true };
 
