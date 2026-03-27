@@ -49,7 +49,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  BLACKANDWHI
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ entry.netpbm_format };
+        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
         xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -106,7 +106,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE 8
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ entry.netpbm_format };
+        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
         xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -161,7 +161,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE_A
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ entry.netpbm_format };
+        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
         xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -217,7 +217,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB 8-bit" 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ entry.netpbm_format };
+        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
         xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -272,7 +272,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB_ALPHA 8
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ entry.netpbm_format };
+        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
         xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -329,7 +329,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE 1
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ entry.netpbm_format };
+        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
         xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -384,7 +384,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE_A
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ entry.netpbm_format };
+        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
         xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -440,7 +440,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB 16-bit"
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ entry.netpbm_format };
+        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
         xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -495,7 +495,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB_ALPHA 1
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ entry.netpbm_format };
+        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
         xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );

@@ -22,9 +22,9 @@ namespace xl7::graphics::images {
      */
     bool NetpbmImageWriter::_dump_to(const Image& image, cl7::io::IWritable& writable, const cl7::u8string& target_name)
     {
-        if (_format == Format::Pam)
+        if (_options.format == Format::Pam)
             return _write_pam(image, writable, target_name);
-        return _write_pnm(image, writable, target_name, _format);
+        return _write_pnm(image, writable, target_name, _options.format);
     }
 
 

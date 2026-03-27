@@ -38,9 +38,25 @@ public:
         Pam = 7,
     };
 
+    /**
+     * Options to control the behavior of the Netpbm image writer.
+     *
+     * Most image characteristics (such as color model, bit depth, and presence of
+     * alpha) are derived automatically from the source image. These options only
+     * influence container/encoding details that cannot be inferred.
+     */
+    struct Options
+    {
+        /** The (more or less) specific Netpbm image file format to write. */
+        Format format = Format::Pam;
+    };
+
+    /** Default options with PAM as the output format. */
+    static constexpr Options DEFAULT_OPTIONS = {.format = Format::Pam};
 
 
-    explicit NetpbmImageWriter(Format format = Format::Pam) : _format(format) {}
+
+    explicit NetpbmImageWriter(Options options = DEFAULT_OPTIONS) : _options(options) {}
 
     ~NetpbmImageWriter() override = default;
 
@@ -86,8 +102,8 @@ private:
     // Attributes
     // #############################################################################
 
-    /** The (more or less) specific Netpbm image file format to write. */
-    Format _format;
+    /** The options to control the behavior of the Netpbm image writer. */
+    Options _options;
 
 }; // class NetpbmImageWriter
 
