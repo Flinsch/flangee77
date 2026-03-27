@@ -1,5 +1,11 @@
 var NAVTREEINDEX53 =
 {
+"de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter.html#ae039540acdc7d13e47612a95a2ddc022":[5,0,8,2,0,7,2],
+"de/d31/LineSegment2_8h.html":[8,0,4,11],
+"de/d31/LineSegment2_8h.html#a6c16cfb71f6dd1b9d5c9ca245e0bd0ec":[8,0,4,11,3],
+"de/d31/LineSegment2_8h.html#a8510c78dd69e5274314041882f7b1df0":[8,0,4,11,1],
+"de/d31/LineSegment2_8h.html#a8a2c953f53671757c16f86c62ae10d65":[8,0,4,11,2],
+"de/d31/LineSegment2_8h_source.html":[8,0,4,11],
 "de/d31/namespacecl7_1_1text_1_1transform.html":[5,0,1,9,4],
 "de/d31/namespacecl7_1_1text_1_1transform.html#a0e9488e9f37146f005ab5e90852635e8":[5,0,1,9,4,23],
 "de/d31/namespacecl7_1_1text_1_1transform.html#a136d80b190444887359f4a6aca8ee280":[5,0,1,9,4,5],
@@ -188,8 +194,8 @@ var NAVTREEINDEX53 =
 "de/d66/Diagnostics_8cpp.html":[8,0,2,3,9],
 "de/d66/TerminalSymbolCollection_8h.html":[8,0,2,3,38],
 "de/d66/TerminalSymbolCollection_8h_source.html":[8,0,2,3,38],
-"de/d6e/classcl7_1_1io_1_1ByteWriter.html":[5,0,1,3,3],
 "de/d6e/classcl7_1_1io_1_1ByteWriter.html":[7,0,1,3,3],
+"de/d6e/classcl7_1_1io_1_1ByteWriter.html":[5,0,1,3,3],
 "de/d6e/classcl7_1_1io_1_1ByteWriter.html#a2ecb041b39326cc6f1867c9938aab3ac":[7,0,1,3,3,3],
 "de/d6e/classcl7_1_1io_1_1ByteWriter.html#a2ecb041b39326cc6f1867c9938aab3ac":[5,0,1,3,3,3],
 "de/d6e/classcl7_1_1io_1_1ByteWriter.html#a5204677d34b59cee7a24deb7d4b1e876":[7,0,1,3,3,0],
@@ -243,11 +249,5 @@ var NAVTREEINDEX53 =
 "de/d7c/classdl7_1_1xml_1_1XmlReader.html":[5,0,2,5,8],
 "de/d7c/classdl7_1_1xml_1_1XmlReader.html":[7,0,2,5,8],
 "de/d7c/classdl7_1_1xml_1_1XmlReader.html#a6812343ccb4986dde7b5d9842c7eae4f":[5,0,2,5,8,0],
-"de/d7c/classdl7_1_1xml_1_1XmlReader.html#a6812343ccb4986dde7b5d9842c7eae4f":[7,0,2,5,8,0],
-"de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html":[7,0,1,5,1,0],
-"de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html":[5,0,1,6,4,0],
-"de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html#a0fa3fd610108139bc661f10a6d228ce4":[7,0,1,5,1,0,2],
-"de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html#a0fa3fd610108139bc661f10a6d228ce4":[5,0,1,6,4,0,2],
-"de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html#a2dc7443e45be937e4cdcfafb85ce7de5":[5,0,1,6,4,0,0],
-"de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html#a2dc7443e45be937e4cdcfafb85ce7de5":[7,0,1,5,1,0,0]
+"de/d7c/classdl7_1_1xml_1_1XmlReader.html#a6812343ccb4986dde7b5d9842c7eae4f":[7,0,2,5,8,0]
 };

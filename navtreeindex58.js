@@ -1,5 +1,11 @@
 var NAVTREEINDEX58 =
 {
+"df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#a3887b0ec24d71167e44b064bbd46bbc0":[5,0,8,2,1,0,9,4],
+"df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#a3887b0ec24d71167e44b064bbd46bbc0":[7,0,8,1,1,0,7,4],
+"df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#a3a790c3d01e551fe7d96ac0f783f31fb":[5,0,8,2,1,0,9,12],
+"df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#a3a790c3d01e551fe7d96ac0f783f31fb":[7,0,8,1,1,0,7,12],
+"df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#a49e1b732d96c0e331dde6867f2ce0ff1":[5,0,8,2,1,0,9,11],
+"df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#a49e1b732d96c0e331dde6867f2ce0ff1":[7,0,8,1,1,0,7,11],
 "df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#a99a02a81f8b184137fd5e905be96c58a":[7,0,8,1,1,0,7,1],
 "df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#a99a02a81f8b184137fd5e905be96c58a":[5,0,8,2,1,0,9,1],
 "df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#ab2a772a8ab4900ccd72ee5b5c366ab65":[5,0,8,2,1,0,9,2],
@@ -243,11 +249,5 @@ var NAVTREEINDEX58 =
 "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#aebe881d82c00ad3e27f68e532074478f":[5,0,8,2,1,0,2,0,9],
 "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html":[5,0,1,9,0,5],
 "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html":[7,0,1,8,0,5],
-"df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#a0410cc7cfd0e143c80d932d0ab8c54c0":[7,0,1,8,0,5,3],
-"df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#a0410cc7cfd0e143c80d932d0ab8c54c0":[5,0,1,9,0,5,3],
-"df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#a20d73f9d1c665111db5eba3bdc9bf712":[7,0,1,8,0,5,7],
-"df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#a20d73f9d1c665111db5eba3bdc9bf712":[5,0,1,9,0,5,7],
-"df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#a2735c08ae7a70f284d1fb7359f35cb35":[7,0,1,8,0,5,6],
-"df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#a2735c08ae7a70f284d1fb7359f35cb35":[5,0,1,9,0,5,6],
-"df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#a3b9709a5130f8af95e2e3373f55b882c":[5,0,1,9,0,5,1]
+"df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#a0410cc7cfd0e143c80d932d0ab8c54c0":[7,0,1,8,0,5,3]
 };

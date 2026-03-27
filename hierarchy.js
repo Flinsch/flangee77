@@ -386,6 +386,7 @@ var hierarchy =
     [ "dl7::json::util::Escaper::Options", "d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html", null ],
     [ "dl7::syntax::Lexer::Options", "dd/d72/structdl7_1_1syntax_1_1Lexer_1_1Options.html", null ],
     [ "dl7::xml::util::Escaper::Options", "d3/d88/structdl7_1_1xml_1_1util_1_1Escaper_1_1Options.html", null ],
+    [ "xl7::graphics::images::NetpbmImageWriter::Options", "d0/d1b/structxl7_1_1graphics_1_1images_1_1NetpbmImageWriter_1_1Options.html", null ],
     [ "cl7::ordered_map< Key, T, KeyView, Compare, Allocator >", "dd/d42/classcl7_1_1ordered__map.html", null ],
     [ "xl7::graphics::images::PngImageReader::PaletteEntry", "d8/d8e/structxl7_1_1graphics_1_1images_1_1PngImageReader_1_1PaletteEntry.html", null ],
     [ "xl7::graphics::impl::shared::shaders::Include::ParentEntry", "dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html", null ],
