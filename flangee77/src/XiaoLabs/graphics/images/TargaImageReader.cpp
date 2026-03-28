@@ -152,9 +152,9 @@ namespace xl7::graphics::images {
         if (horizontal_origin != 0)
             return _log_unsupported_format_error(source_name, u8"horizontal flip not supported");
 
-        // Interleaving means scan lines are stored in separated groups.
-        // This was designed for very old video hardware and frame grabbers.
-        // Modern software almost never uses any scan-line interleaving,
+        // Interleaving means scanlines are stored in separate groups.
+        // This was intended for very old video hardware and frame grabbers.
+        // Modern software almost never uses any scanline interleaving,
         // and many TGA loaders ignore it completely, and so do we.
         const auto interleaving = (header.image_descriptor >> 6) & 0x3;
         if (interleaving != 0)

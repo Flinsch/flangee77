@@ -53,16 +53,16 @@ namespace xl7::graphics::images {
         if (pixel_layout.channel_count != channel_count)
         {
             _log_unsupported_format_error(target_name, u8"The desired PNM format does not support the image's channel count of " + cl7::text::format::to_string<cl7::u8string>(pixel_layout.channel_count) + u8".");
-            return _log_unsupported_format_error(target_name, u8"The PNM format only supports channel counts of 1 (PBM, PGM) or 3 (PPM).");
+            return _log_unsupported_format_error(target_name, u8"The PNM format supports only channel counts of 1 (PBM, PGM) or 3 (PPM).");
         }
 
         if (pixel_layout.data_type != PixelLayout::DataType::UNORM && pixel_layout.data_type != PixelLayout::DataType::UINT)
-            return _log_unsupported_format_error(target_name, u8"The Netpbm/PNM format only supports unsigned integer data types (UNORM or UINT).");
+            return _log_unsupported_format_error(target_name, u8"The Netpbm/PNM format supports only unsigned integer data types (UNORM or UINT).");
 
         if (is_1bit && bit_depth != 8)
-            return _log_unsupported_format_error(target_name, u8"The PBM format only supports a bit depth of 8.");
+            return _log_unsupported_format_error(target_name, u8"The PBM format supports only a bit depth of 8.");
         if (bit_depth != 8 && bit_depth != 16)
-            return _log_unsupported_format_error(target_name, u8"The Netpbm/PNM format only supports uniform bit depths of 8 or 16 (PGM/PPM).");
+            return _log_unsupported_format_error(target_name, u8"The Netpbm/PNM format supports only uniform bit depths of 8 or 16 (PGM/PPM).");
 
         cl7::io::AsciiWriter ascii_writer{&writable};
 
@@ -110,10 +110,10 @@ namespace xl7::graphics::images {
         assert(channel_count >= 1 && channel_count <= 4);
 
         if (pixel_layout.data_type != PixelLayout::DataType::UNORM && pixel_layout.data_type != PixelLayout::DataType::UINT)
-            return _log_unsupported_format_error(target_name, u8"The Netpbm/PAM format only supports unsigned integer data types (UNORM or UINT).");
+            return _log_unsupported_format_error(target_name, u8"The Netpbm/PAM format supports only unsigned integer data types (UNORM or UINT).");
 
         if (bit_depth != 8 && bit_depth != 16)
-            return _log_unsupported_format_error(target_name, u8"The Netpbm/PAM format only supports uniform bit depths of 8 or 16.");
+            return _log_unsupported_format_error(target_name, u8"The Netpbm/PAM format supports only uniform bit depths of 8 or 16.");
 
         cl7::io::AsciiWriter ascii_writer{&writable};
 
