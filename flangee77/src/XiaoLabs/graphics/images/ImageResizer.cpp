@@ -324,7 +324,7 @@ namespace xl7::graphics::images {
                                 const float w = wx * wy * wz;
 
                                 const auto* src_ptr = source_data.data() + static_cast<size_t>(dim_z.ofs + zi) * src_slice_pitch + static_cast<size_t>(dim_y.ofs + yi) * src_row_pitch + static_cast<size_t>(dim_x.ofs + xi) * stride;
-                                Color tmp = ImageProcessor::_unpack_color({src_ptr, stride}, pixel_layout);
+                                Color tmp = ImageProcessor::unpack_color({src_ptr, stride}, pixel_layout);
 
                                 color += w * tmp;
                                 W += w;
@@ -334,7 +334,7 @@ namespace xl7::graphics::images {
 
                     assert(W > 0.0f);
                     color /= W;
-                    ImageProcessor::_pack_color(color, pixel_layout, {dst_ptr, stride});
+                    ImageProcessor::pack_color(color, pixel_layout, {dst_ptr, stride});
 
                     dst_ptr += stride;
                 } // dst_x

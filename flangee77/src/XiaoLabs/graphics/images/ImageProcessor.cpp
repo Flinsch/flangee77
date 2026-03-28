@@ -36,7 +36,7 @@ namespace xl7::graphics::images {
             return;
         }
 
-        _pack_color(color, pixel_layout, packed_data);
+        pack_color(color, pixel_layout, packed_data);
     }
 
     /**
@@ -65,7 +65,7 @@ namespace xl7::graphics::images {
             return Color::ZERO;
         }
 
-        return _unpack_color(packed_data, pixel_layout);
+        return unpack_color(packed_data, pixel_layout);
     }
 
 
@@ -75,7 +75,7 @@ namespace xl7::graphics::images {
      * The receiving data buffer is required to have at least the corresponding byte
      * size.
      */
-    void ImageProcessor::_pack_color(const Color& color, const PixelLayout& pixel_layout, cl7::byte_span packed_data)
+    void ImageProcessor::pack_color(const Color& color, const PixelLayout& pixel_layout, cl7::byte_span packed_data)
     {
         assert(pixel_layout.data_type != PixelLayout::DataType::UNKNOWN);
         assert(packed_data.size() >= static_cast<size_t>(pixel_layout.bytes_per_pixel));
@@ -194,7 +194,7 @@ namespace xl7::graphics::images {
      * The source data buffer is required to have at least the corresponding byte
      * size.
      */
-    Color ImageProcessor::_unpack_color(cl7::byte_view packed_data, const PixelLayout& pixel_layout)
+    Color ImageProcessor::unpack_color(cl7::byte_view packed_data, const PixelLayout& pixel_layout)
     {
         assert(pixel_layout.data_type != PixelLayout::DataType::UNKNOWN);
         assert(packed_data.size() >= static_cast<size_t>(pixel_layout.bytes_per_pixel));

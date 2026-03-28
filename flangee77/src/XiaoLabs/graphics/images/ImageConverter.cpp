@@ -432,9 +432,9 @@ namespace xl7::graphics::images {
             const unsigned target_channel_index = target_layout.a.depth > 0 ? 3 : 0;
             for (size_t i = 0; i < pixel_count; ++i)
             {
-                Color color = _unpack_color({src_ptr, source_stride}, source_layout);
+                Color color = unpack_color({src_ptr, source_stride}, source_layout);
                 color.get_rgba()[target_channel_index] = color.get_rgba()[source_channel_index];
-                _pack_color(color, target_layout, {dst_ptr, target_stride});
+                pack_color(color, target_layout, {dst_ptr, target_stride});
                 src_ptr += source_stride;
                 dst_ptr += target_stride;
             }
@@ -448,13 +448,13 @@ namespace xl7::graphics::images {
             const float rgb_factor = 1.0f - a_factor;
             for (size_t i = 0; i < pixel_count; ++i)
             {
-                Color color = _unpack_color({src_ptr, source_stride}, source_layout);
+                Color color = unpack_color({src_ptr, source_stride}, source_layout);
                 color.r *= rgb_factor;
                 color.g *= rgb_factor;
                 color.b *= rgb_factor;
                 color.a *= a_factor;
                 color.a += rgb_factor;
-                _pack_color(color, target_layout, {dst_ptr, target_stride});
+                pack_color(color, target_layout, {dst_ptr, target_stride});
                 src_ptr += source_stride;
                 dst_ptr += target_stride;
             }
@@ -468,9 +468,9 @@ namespace xl7::graphics::images {
             const unsigned target_channel_index = target_layout.a.depth > 0 ? 3 : 0;
             for (size_t i = 0; i < pixel_count; ++i)
             {
-                Color color = _unpack_color({src_ptr, source_stride}, source_layout);
+                Color color = unpack_color({src_ptr, source_stride}, source_layout);
                 color.get_rgba()[target_channel_index] = color.get_rgba()[source_channel_index];
-                _pack_color(color, target_layout, {dst_ptr, target_stride});
+                pack_color(color, target_layout, {dst_ptr, target_stride});
                 src_ptr += source_stride;
                 dst_ptr += target_stride;
             }
@@ -481,8 +481,8 @@ namespace xl7::graphics::images {
             assert(source_layout.channel_count > 1 && target_layout.channel_count > 1);
             for (size_t i = 0; i < pixel_count; ++i)
             {
-                Color color = _unpack_color({src_ptr, source_stride}, source_layout);
-                _pack_color(color, target_layout, {dst_ptr, target_stride});
+                Color color = unpack_color({src_ptr, source_stride}, source_layout);
+                pack_color(color, target_layout, {dst_ptr, target_stride});
                 src_ptr += source_stride;
                 dst_ptr += target_stride;
             }
