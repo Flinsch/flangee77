@@ -325,4 +325,42 @@ namespace xl7::graphics::images {
 
 
 
+    /**
+     * Flips the image data vertically by reversing the order of its scanlines.
+     */
+    void ImageProcessor::flip_vertically(cl7::byte_span image_data, unsigned width, unsigned height)
+    {
+        const size_t pixel_count = static_cast<size_t>(width) * static_cast<size_t>(height);
+        if (pixel_count == 0)
+        {
+            if (!image_data.empty())
+                LOG_ERROR(u8"Cannot flip image data vertically: the image data is not empty, but the number of pixels (width * height) is zero.");
+            return;
+        }
+
+        if (image_data.size() % pixel_count != 0)
+        {
+            LOG_ERROR(u8"Cannot flip image data vertically: the image data size is not divisible by the number of pixels.");
+            return;
+        }
+
+        const size_t bytes_per_pixel = image_data.size() / pixel_count;
+        const size_t bytes_per_line = width * bytes_per_pixel;
+        const size_t line_count = height;
+
+        cl7::byte_vector line(bytes_per_line);
+        for (size_t i = 0; i < line_count / 2; ++i)
+        {
+            const size_t lo = bytes_per_line * i;
+            const size_t hi = bytes_per_line * (line_count - i - 1);
+            assert(lo < hi);
+            assert(hi + bytes_per_line <= image_data.size());
+            std::memcpy(line.data(), &image_data[lo], bytes_per_line);
+            std::memcpy(&image_data[lo], &image_data[hi], bytes_per_line);
+            std::memcpy(&image_data[hi], line.data(), bytes_per_line);
+        }
+    }
+
+
+
 } // namespace xl7::graphics::images

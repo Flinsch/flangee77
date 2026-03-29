@@ -7,7 +7,7 @@
 
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  ImageProcessor" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  ImageProcessor:  pack_color/unpack_color" )
 {
     // This is just so that we notice when a value is inserted or removed
     // and then we should also adjust the tests accordingly.
@@ -200,5 +200,44 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  ImageProcessor" )
 
             TESTLABS_CHECK_EQ( ml7::round( color[rgba], prec ), ml7::round( entry_color[rgba], prec ) );
         }
+    }
+}
+
+
+
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  ImageProcessor:  flip_vertically" )
+{
+    struct Entry
+    {
+        cl7::byte_vector image_data;
+        unsigned width;
+        unsigned height;
+        cl7::byte_vector flipped_data;
+    } entry;
+
+    const std::vector<Entry> container {
+        { {}, 0, 0, {} },
+        { cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8 ), 2, 4, cl7::make_bytes( 7, 8, 5, 6, 3, 4, 1, 2 ) },
+        { cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8 ), 4, 2, cl7::make_bytes( 5, 6, 7, 8, 1, 2, 3, 4 ) },
+        { cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8 ), 1, 8, cl7::make_bytes( 8, 7, 6, 5, 4, 3, 2, 1 ) },
+        { cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8 ), 8, 1, cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8 ) },
+        { cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8 ), 0, 8, cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8 ) },
+        { cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8 ), 8, 0, cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8 ) },
+        { cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8 ), 1, 7, cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8 ) },
+        { cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8 ), 7, 1, cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8 ) },
+        { cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8, 9 ), 3, 3, cl7::make_bytes( 7, 8, 9, 4, 5, 6, 1, 2, 3 ) },
+        { cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8, 9 ), 1, 9, cl7::make_bytes( 9, 8, 7, 6, 5, 4, 3, 2, 1 ) },
+        { cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8, 9 ), 9, 1, cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8, 9 ) },
+        { cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8, 9 ), 0, 0, cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8, 9 ) },
+        { cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8, 9 ), 9, 9, cl7::make_bytes( 1, 2, 3, 4, 5, 6, 7, 8, 9 ) },
+        { cl7::make_bytes( 7 ), 1, 1, cl7::make_bytes( 7 ) },
+        { {}, 1, 1, {} },
+    };
+
+    TESTLABS_SUBCASE_BATCH( u8"flip_vertically", container, entry )
+    {
+        auto actual_data = entry.image_data;
+        xl7::graphics::images::ImageProcessor::flip_vertically( actual_data, entry.width, entry.height );
+        TESTLABS_CHECK_EQ( actual_data, entry.flipped_data );
     }
 }

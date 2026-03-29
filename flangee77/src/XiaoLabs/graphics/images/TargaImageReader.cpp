@@ -1,5 +1,7 @@
 #include "TargaImageReader.h"
 
+#include "./ImageProcessor.h"
+
 #include <CoreLabs/logging.h>
 #include <CoreLabs/bits.h>
 
@@ -66,7 +68,7 @@ namespace xl7::graphics::images {
         // If bottom-left origin (default), flip vertically.
         const auto vertical_origin = (header.image_descriptor >> 5) & 0x1;
         if (vertical_origin == 0)
-            _flip_vertically(image_data, header.width, header.height);
+            ImageProcessor::flip_vertically(image_data, header.width, header.height);
 
         ImageDesc desc;
         desc.pixel_format = PixelFormat::UNKNOWN;
@@ -254,32 +256,6 @@ namespace xl7::graphics::images {
         }
 
         return true;
-    }
-
-    /**
-     * Flips the image vertically.
-     */
-    void TargaImageReader::_flip_vertically(cl7::byte_span image_data, unsigned width, unsigned height)
-    {
-        const size_t pixel_count = static_cast<size_t>(width) * static_cast<size_t>(height);
-        assert(pixel_count > 0);
-        assert(image_data.size() % pixel_count == 0);
-        const size_t bytes_per_pixel = image_data.size() / pixel_count;
-        assert(bytes_per_pixel > 0);
-
-        const auto line_count = static_cast<size_t>(height);
-        const size_t bytes_per_line = static_cast<size_t>(width) * bytes_per_pixel;
-
-        cl7::byte_vector line(bytes_per_line);
-        for (size_t i = 0; i < line_count / 2; ++i)
-        {
-            const size_t lo = bytes_per_line * i;
-            const size_t hi = bytes_per_line * (line_count - i - 1);
-            assert(lo < hi);
-            std::memcpy(line.data(), &image_data[lo], bytes_per_line);
-            std::memcpy(&image_data[lo], &image_data[hi], bytes_per_line);
-            std::memcpy(&image_data[hi], line.data(), bytes_per_line);
-        }
     }
 
 

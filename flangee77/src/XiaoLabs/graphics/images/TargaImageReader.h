@@ -80,11 +80,6 @@ private:
      */
     static bool _map_color_data(const cl7::u8string& source_name, cl7::byte_view color_map, cl7::byte_view index_data, cl7::byte_span color_data);
 
-    /**
-     * Flips the image vertically.
-     */
-    static void _flip_vertically(cl7::byte_span image_data, unsigned width, unsigned height);
-
 }; // class TargaImageReader
 
 

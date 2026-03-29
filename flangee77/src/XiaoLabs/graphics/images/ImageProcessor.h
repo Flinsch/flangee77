@@ -48,6 +48,13 @@ struct ImageProcessor
      */
     static Color unpack_color(cl7::byte_view packed_data, const PixelLayout& pixel_layout);
 
+
+
+    /**
+     * Flips the image data vertically by reversing the order of its scanlines.
+     */
+    static void flip_vertically(cl7::byte_span image_data, unsigned width, unsigned height);
+
 }; // struct ImageProcessor
 
 
