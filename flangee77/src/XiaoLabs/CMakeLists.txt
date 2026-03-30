@@ -24,10 +24,10 @@ target_sources(flangee77
     graphics/images/ImageResizer.cpp
     graphics/images/ImageStack.cpp
     graphics/images/ImageWriter.cpp
-    graphics/images/NetpbmImageReader.cpp
-    graphics/images/NetpbmImageWriter.cpp
-    graphics/images/PngImageReader.cpp
-    graphics/images/TargaImageReader.cpp
+    graphics/images/codecs/netpbm/Reader.cpp
+    graphics/images/codecs/netpbm/Writer.cpp
+    graphics/images/codecs/png/Reader.cpp
+    graphics/images/codecs/targa/Reader.cpp
 
     graphics/meshes/IndexBuffer.cpp
     graphics/meshes/MeshBuffer.cpp

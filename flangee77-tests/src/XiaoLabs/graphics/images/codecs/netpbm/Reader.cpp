@@ -1,15 +1,15 @@
 
 #include <TestLabs/TestSuite.h>
 
-#include <XiaoLabs/graphics/images/NetpbmImageReader.h>
+#include <XiaoLabs/graphics/images/codecs/netpbm/Reader.h>
 
 #include <CoreLabs/platform/filesystem.h>
 
-#include "../../shared.h"
+#include "../../../../shared.h"
 
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  BLACKANDWHITE bitmap" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Reader:  BLACKANDWHITE bitmap" )
 {
     struct Entry
     {
@@ -33,7 +33,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  BLACKANDWHI
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_reader.load_from_file( entry.file_path, image );
 
@@ -49,7 +49,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  BLACKANDWHI
 
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  GRAYSCALE 8-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Reader:  GRAYSCALE 8-bit" )
 {
     struct Entry
     {
@@ -73,7 +73,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  GRAYSCALE 8
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_reader.load_from_file( entry.file_path, image );
 
@@ -87,7 +87,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  GRAYSCALE 8
     }
 }
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  GRAYSCALE_ALPHA 8-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Reader:  GRAYSCALE_ALPHA 8-bit" )
 {
     struct Entry
     {
@@ -109,7 +109,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  GRAYSCALE_A
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_reader.load_from_file( entry.file_path, image );
 
@@ -124,7 +124,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  GRAYSCALE_A
 }
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  RGB 8-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Reader:  RGB 8-bit" )
 {
     struct Entry
     {
@@ -148,7 +148,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  RGB 8-bit" 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_reader.load_from_file( entry.file_path, image );
 
@@ -162,7 +162,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  RGB 8-bit" 
     }
 }
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  RGB_ALPHA 8-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Reader:  RGB_ALPHA 8-bit" )
 {
     struct Entry
     {
@@ -184,7 +184,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  RGB_ALPHA 8
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_reader.load_from_file( entry.file_path, image );
 
@@ -200,7 +200,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  RGB_ALPHA 8
 
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  GRAYSCALE 16-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Reader:  GRAYSCALE 16-bit" )
 {
     struct Entry
     {
@@ -224,7 +224,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  GRAYSCALE 1
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_reader.load_from_file( entry.file_path, image );
 
@@ -238,7 +238,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  GRAYSCALE 1
     }
 }
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  GRAYSCALE_ALPHA 16-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Reader:  GRAYSCALE_ALPHA 16-bit" )
 {
     struct Entry
     {
@@ -260,7 +260,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  GRAYSCALE_A
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_reader.load_from_file( entry.file_path, image );
 
@@ -275,7 +275,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  GRAYSCALE_A
 }
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  RGB 16-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Reader:  RGB 16-bit" )
 {
     struct Entry
     {
@@ -299,7 +299,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  RGB 16-bit"
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_reader.load_from_file( entry.file_path, image );
 
@@ -313,7 +313,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  RGB 16-bit"
     }
 }
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  RGB_ALPHA 16-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Reader:  RGB_ALPHA 16-bit" )
 {
     struct Entry
     {
@@ -335,7 +335,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageReader:  RGB_ALPHA 1
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_reader.load_from_file( entry.file_path, image );
 

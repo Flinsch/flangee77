@@ -1,19 +1,19 @@
-#ifndef XL7_GRAPHICS_IMAGES_PNGIMAGEREADER_H
-#define XL7_GRAPHICS_IMAGES_PNGIMAGEREADER_H
-#include "./ImageReader.h"
+#ifndef XL7_GRAPHICS_IMAGES_CODECS_PNG_READER_H
+#define XL7_GRAPHICS_IMAGES_CODECS_PNG_READER_H
+#include "../../ImageReader.h"
 
 
 
-namespace xl7::graphics::images {
+namespace xl7::graphics::images::codecs::png {
 
 
 
-class PngImageReader
+class Reader
     : public ImageReader
 {
 
 public:
-    ~PngImageReader() override = default;
+    ~Reader() override = default;
 
 
 
@@ -130,10 +130,10 @@ private:
      */
     static uint8_t _paeth(uint8_t a, uint8_t b, uint8_t c);
 
-}; // class PngImageReader
+}; // class Reader
 
 
 
-} // namespace xl7::graphics::images
+} // namespace xl7::graphics::images::codecs::png
 
-#endif // XL7_GRAPHICS_IMAGES_PNGIMAGEREADER_H
+#endif // XL7_GRAPHICS_IMAGES_CODECS_PNG_READER_H

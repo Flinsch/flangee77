@@ -1,6 +1,6 @@
-#include "NetpbmImageReader.h"
+#include "Reader.h"
 
-#include "../PixelLayout.h"
+#include "../../../PixelLayout.h"
 
 #include <CoreLabs/io/AsciiReader.h>
 #include <CoreLabs/io/ByteReader.h>
@@ -11,7 +11,7 @@
 
 
 
-namespace xl7::graphics::images {
+namespace xl7::graphics::images::codecs::netpbm {
 
 
 
@@ -22,7 +22,7 @@ namespace xl7::graphics::images {
     /**
      * Loads an image from any readable object.
      */
-    bool NetpbmImageReader::_load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
+    bool Reader::_load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
     {
         cl7::io::AsciiReader ascii_reader{&readable};
 
@@ -58,7 +58,7 @@ namespace xl7::graphics::images {
     /**
      * Parses any PBM, PGM, or PPM format.
      */
-    bool NetpbmImageReader::_load_pnm(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
+    bool Reader::_load_pnm(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
     {
         cl7::io::AsciiReader ascii_reader{&readable};
 
@@ -131,7 +131,7 @@ namespace xl7::graphics::images {
     /**
      * Parses the PAM format.
      */
-    bool NetpbmImageReader::_load_pam(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
+    bool Reader::_load_pam(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
     {
         cl7::io::AsciiReader ascii_reader{&readable};
 
@@ -234,7 +234,7 @@ namespace xl7::graphics::images {
 
 
 
-    cl7::byte_vector NetpbmImageReader::_read_1bit_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc)
+    cl7::byte_vector Reader::_read_1bit_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc)
     {
         const size_t pixel_count = static_cast<size_t>(desc.width) * static_cast<size_t>(desc.height);
         cl7::byte_vector data(pixel_count);
@@ -261,7 +261,7 @@ namespace xl7::graphics::images {
         return data;
     }
 
-    cl7::byte_vector NetpbmImageReader::_read_1bit_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc)
+    cl7::byte_vector Reader::_read_1bit_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc)
     {
         static constexpr bool zero_is_white = true;
 
@@ -297,7 +297,7 @@ namespace xl7::graphics::images {
         return data;
     }
 
-    cl7::byte_vector NetpbmImageReader::_read_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc)
+    cl7::byte_vector Reader::_read_ascii(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc)
     {
         PixelLayout pixel_layout{desc.pixel_format, desc.channel_order};
         const unsigned channel_count = pixel_layout.channel_count;
@@ -358,7 +358,7 @@ namespace xl7::graphics::images {
         return data;
     }
 
-    cl7::byte_vector NetpbmImageReader::_read_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc)
+    cl7::byte_vector Reader::_read_binary(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ImageDesc& desc)
     {
         PixelLayout pixel_layout{desc.pixel_format, desc.channel_order};
         const unsigned channel_count = pixel_layout.channel_count;
@@ -405,7 +405,7 @@ namespace xl7::graphics::images {
 
 
 
-    void NetpbmImageReader::_apply_max_val(const ImageDesc& desc, cl7::byte_vector& data, unsigned max_val)
+    void Reader::_apply_max_val(const ImageDesc& desc, cl7::byte_vector& data, unsigned max_val)
     {
         PixelLayout pixel_layout{desc.pixel_format, desc.channel_order};
         const unsigned channel_count = pixel_layout.channel_count;
@@ -446,7 +446,7 @@ namespace xl7::graphics::images {
 
 
 
-    void NetpbmImageReader::_skip_comments(cl7::io::IReadable& readable)
+    void Reader::_skip_comments(cl7::io::IReadable& readable)
     {
         cl7::io::AsciiReader ascii_reader{&readable};
 
@@ -465,4 +465,4 @@ namespace xl7::graphics::images {
 
 
 
-} // namespace xl7::graphics::images
+} // namespace xl7::graphics::images::codecs::netpbm

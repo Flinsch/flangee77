@@ -1,19 +1,19 @@
-#ifndef XL7_GRAPHICS_IMAGES_NETPBMIMAGEREADER_H
-#define XL7_GRAPHICS_IMAGES_NETPBMIMAGEREADER_H
-#include "./ImageReader.h"
+#ifndef XL7_GRAPHICS_IMAGES_CODECS_NETPBM_READER_H
+#define XL7_GRAPHICS_IMAGES_CODECS_NETPBM_READER_H
+#include "../../ImageReader.h"
 
 
 
-namespace xl7::graphics::images {
+namespace xl7::graphics::images::codecs::netpbm {
 
 
 
-class NetpbmImageReader
+class Reader
     : public ImageReader
 {
 
 public:
-    ~NetpbmImageReader() override = default;
+    ~Reader() override = default;
 
 
 
@@ -57,10 +57,10 @@ private:
 
     static void _skip_comments(cl7::io::IReadable& readable);
 
-}; // class NetpbmImageReader
+}; // class Reader
 
 
 
-} // namespace xl7::graphics::images
+} // namespace xl7::graphics::images::codecs::netpbm
 
-#endif // XL7_GRAPHICS_IMAGES_NETPBMIMAGEREADER_H
+#endif // XL7_GRAPHICS_IMAGES_CODECS_NETPBM_READER_H

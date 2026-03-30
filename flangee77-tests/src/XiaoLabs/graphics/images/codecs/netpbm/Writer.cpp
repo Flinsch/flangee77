@@ -1,22 +1,22 @@
 
 #include <TestLabs/TestSuite.h>
 
-#include <XiaoLabs/graphics/images/NetpbmImageWriter.h>
+#include <XiaoLabs/graphics/images/codecs/netpbm/Writer.h>
+#include <XiaoLabs/graphics/images/codecs/netpbm/Reader.h>
 #include <XiaoLabs/graphics/images/ImageConverter.h>
-#include <XiaoLabs/graphics/images/NetpbmImageReader.h>
 
 #include <CoreLabs/platform/filesystem.h>
 
-#include "../../shared.h"
+#include "../../../../shared.h"
 
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  BLACKANDWHITE bitmap" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  BLACKANDWHITE bitmap" )
 {
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::NetpbmImageWriter::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
         cl7::u8string string;
     } entry;
 
@@ -27,7 +27,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  BLACKANDWHI
         for ( unsigned k = 0; k < 4; ++k )
         {
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
-            auto netpbm_format = static_cast<xl7::graphics::images::NetpbmImageWriter::Format>( p );
+            auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
             container.push_back( { channel_order, netpbm_format, string } );
         }
@@ -49,8 +49,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  BLACKANDWHI
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
         image = {};
@@ -68,12 +68,12 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  BLACKANDWHI
 
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE 8-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAYSCALE 8-bit" )
 {
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::NetpbmImageWriter::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
         cl7::u8string string;
     } entry;
 
@@ -84,7 +84,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE 8
         for ( unsigned k = 0; k < 4; ++k )
         {
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
-            auto netpbm_format = static_cast<xl7::graphics::images::NetpbmImageWriter::Format>( p );
+            auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
             container.push_back( { channel_order, netpbm_format, string } );
         }
@@ -106,8 +106,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE 8
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
         image = {};
@@ -123,12 +123,12 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE 8
     }
 }
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE_ALPHA 8-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAYSCALE_ALPHA 8-bit" )
 {
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::NetpbmImageWriter::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
         cl7::u8string string;
     } entry;
 
@@ -139,7 +139,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE_A
         for ( unsigned k = 0; k < 4; ++k )
         {
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
-            auto netpbm_format = static_cast<xl7::graphics::images::NetpbmImageWriter::Format>( p );
+            auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
             container.push_back( { channel_order, netpbm_format, string } );
         }
@@ -161,8 +161,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE_A
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
         image = {};
@@ -179,12 +179,12 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE_A
 }
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB 8-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB 8-bit" )
 {
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::NetpbmImageWriter::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
         cl7::u8string string;
     } entry;
 
@@ -195,7 +195,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB 8-bit" 
         for ( unsigned k = 0; k < 4; ++k )
         {
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
-            auto netpbm_format = static_cast<xl7::graphics::images::NetpbmImageWriter::Format>( p );
+            auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
             container.push_back( { channel_order, netpbm_format, string } );
         }
@@ -217,8 +217,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB 8-bit" 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
         image = {};
@@ -234,12 +234,12 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB 8-bit" 
     }
 }
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB_ALPHA 8-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB_ALPHA 8-bit" )
 {
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::NetpbmImageWriter::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
         cl7::u8string string;
     } entry;
 
@@ -250,7 +250,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB_ALPHA 8
         for ( unsigned k = 0; k < 4; ++k )
         {
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
-            auto netpbm_format = static_cast<xl7::graphics::images::NetpbmImageWriter::Format>( p );
+            auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
             container.push_back( { channel_order, netpbm_format, string } );
         }
@@ -272,8 +272,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB_ALPHA 8
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
         image = {};
@@ -291,12 +291,12 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB_ALPHA 8
 
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE 16-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAYSCALE 16-bit" )
 {
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::NetpbmImageWriter::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
         cl7::u8string string;
     } entry;
 
@@ -307,7 +307,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE 1
         for ( unsigned k = 0; k < 4; ++k )
         {
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
-            auto netpbm_format = static_cast<xl7::graphics::images::NetpbmImageWriter::Format>( p );
+            auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
             container.push_back( { channel_order, netpbm_format, string } );
         }
@@ -329,8 +329,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE 1
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
         image = {};
@@ -346,12 +346,12 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE 1
     }
 }
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE_ALPHA 16-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAYSCALE_ALPHA 16-bit" )
 {
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::NetpbmImageWriter::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
         cl7::u8string string;
     } entry;
 
@@ -362,7 +362,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE_A
         for ( unsigned k = 0; k < 4; ++k )
         {
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
-            auto netpbm_format = static_cast<xl7::graphics::images::NetpbmImageWriter::Format>( p );
+            auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
             container.push_back( { channel_order, netpbm_format, string } );
         }
@@ -384,8 +384,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE_A
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
         image = {};
@@ -402,12 +402,12 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  GRAYSCALE_A
 }
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB 16-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB 16-bit" )
 {
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::NetpbmImageWriter::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
         cl7::u8string string;
     } entry;
 
@@ -418,7 +418,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB 16-bit"
         for ( unsigned k = 0; k < 4; ++k )
         {
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
-            auto netpbm_format = static_cast<xl7::graphics::images::NetpbmImageWriter::Format>( p );
+            auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
             container.push_back( { channel_order, netpbm_format, string } );
         }
@@ -440,8 +440,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB 16-bit"
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
         image = {};
@@ -457,12 +457,12 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB 16-bit"
     }
 }
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB_ALPHA 16-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB_ALPHA 16-bit" )
 {
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::NetpbmImageWriter::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
         cl7::u8string string;
     } entry;
 
@@ -473,7 +473,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB_ALPHA 1
         for ( unsigned k = 0; k < 4; ++k )
         {
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
-            auto netpbm_format = static_cast<xl7::graphics::images::NetpbmImageWriter::Format>( p );
+            auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
             container.push_back( { channel_order, netpbm_format, string } );
         }
@@ -495,8 +495,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  NetpbmImageWriter:  RGB_ALPHA 1
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::NetpbmImageWriter netpbm_image_writer{ { .format = entry.netpbm_format } };
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
         image = {};

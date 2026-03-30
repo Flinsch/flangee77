@@ -1,15 +1,15 @@
 
 #include <TestLabs/TestSuite.h>
 
-#include <XiaoLabs/graphics/images/TargaImageReader.h>
+#include <XiaoLabs/graphics/images/codecs/targa/Reader.h>
 
 #include <CoreLabs/platform/filesystem.h>
 
-#include "../../shared.h"
+#include "../../../../shared.h"
 
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  TargaImageReader:  Grayscale 8-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Reader:  Grayscale 8-bit" )
 {
     struct Entry
     {
@@ -31,7 +31,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  TargaImageReader:  Grayscale 8-
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::TargaImageReader targa_image_reader;
+        xl7::graphics::images::codecs::targa::Reader targa_image_reader;
 
         bool result = targa_image_reader.load_from_file( entry.file_path, image );
 
@@ -46,7 +46,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  TargaImageReader:  Grayscale 8-
 }
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  TargaImageReader:  Pseudo-Truecolor 555x (15-bit)" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Reader:  Pseudo-Truecolor 555x (15-bit)" )
 {
     struct Entry
     {
@@ -69,7 +69,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  TargaImageReader:  Pseudo-Truec
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::TargaImageReader targa_image_reader;
+        xl7::graphics::images::codecs::targa::Reader targa_image_reader;
 
         bool result = targa_image_reader.load_from_file( entry.file_path, image );
 
@@ -83,7 +83,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  TargaImageReader:  Pseudo-Truec
     }
 }
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  TargaImageReader:  Pseudo-Truecolor with Alpha 5551 (16-bit)" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Reader:  Pseudo-Truecolor with Alpha 5551 (16-bit)" )
 {
     struct Entry
     {
@@ -105,7 +105,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  TargaImageReader:  Pseudo-Truec
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::TargaImageReader targa_image_reader;
+        xl7::graphics::images::codecs::targa::Reader targa_image_reader;
 
         bool result = targa_image_reader.load_from_file( entry.file_path, image );
 
@@ -120,7 +120,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  TargaImageReader:  Pseudo-Truec
 }
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  TargaImageReader:  Truecolor 8-bit (24-bit)" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Reader:  Truecolor 8-bit (24-bit)" )
 {
     struct Entry
     {
@@ -144,7 +144,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  TargaImageReader:  Truecolor 8-
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::TargaImageReader targa_image_reader;
+        xl7::graphics::images::codecs::targa::Reader targa_image_reader;
 
         bool result = targa_image_reader.load_from_file( entry.file_path, image );
 
@@ -158,7 +158,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  TargaImageReader:  Truecolor 8-
     }
 }
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  TargaImageReader:  Truecolor with Alpha 8-bit (32-bit)" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Reader:  Truecolor with Alpha 8-bit (32-bit)" )
 {
     struct Entry
     {
@@ -181,7 +181,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  TargaImageReader:  Truecolor wi
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::TargaImageReader targa_image_reader;
+        xl7::graphics::images::codecs::targa::Reader targa_image_reader;
 
         bool result = targa_image_reader.load_from_file( entry.file_path, image );
 

@@ -1,6 +1,6 @@
-#include "NetpbmImageWriter.h"
+#include "Writer.h"
 
-#include "../PixelLayout.h"
+#include "../../../PixelLayout.h"
 
 #include <CoreLabs/io/AsciiWriter.h>
 #include <CoreLabs/io/ByteWriter.h>
@@ -9,7 +9,7 @@
 
 
 
-namespace xl7::graphics::images {
+namespace xl7::graphics::images::codecs::netpbm {
 
 
 
@@ -20,7 +20,7 @@ namespace xl7::graphics::images {
     /**
      * "Dumps" an image to any writable object.
      */
-    bool NetpbmImageWriter::_dump_to(const Image& image, cl7::io::IWritable& writable, const cl7::u8string& target_name)
+    bool Writer::_dump_to(const Image& image, cl7::io::IWritable& writable, const cl7::u8string& target_name)
     {
         if (_options.format == Format::Pam)
             return _write_pam(image, writable, target_name);
@@ -36,7 +36,7 @@ namespace xl7::graphics::images {
     /**
      * Writes any PBM, PGM, or PPM format.
      */
-    bool NetpbmImageWriter::_write_pnm(const Image& image, cl7::io::IWritable& writable, const cl7::u8string& target_name, Format format)
+    bool Writer::_write_pnm(const Image& image, cl7::io::IWritable& writable, const cl7::u8string& target_name, Format format)
     {
         const auto magic2 = static_cast<cl7::achar_t>('0' + static_cast<int>(format));
         assert(magic2 >= '1' && magic2 <= '6');
@@ -101,7 +101,7 @@ namespace xl7::graphics::images {
     /**
      * Writes the PAM format.
      */
-    bool NetpbmImageWriter::_write_pam(const Image& image, cl7::io::IWritable& writable, const cl7::u8string& target_name)
+    bool Writer::_write_pam(const Image& image, cl7::io::IWritable& writable, const cl7::u8string& target_name)
     {
         PixelLayout pixel_layout{image.get_pixel_format(), image.get_channel_order()};
         const unsigned channel_count = pixel_layout.channel_count;
@@ -164,7 +164,7 @@ namespace xl7::graphics::images {
 
 
 
-    size_t NetpbmImageWriter::_write_1bit_ascii(cl7::io::IWritable& writable, const cl7::u8string& target_name, const Image& image)
+    size_t Writer::_write_1bit_ascii(cl7::io::IWritable& writable, const cl7::u8string& target_name, const Image& image)
     {
         const size_t pixel_count = static_cast<size_t>(image.get_width()) * static_cast<size_t>(image.get_height());
         cl7::byte_view data = image.get_data();
@@ -197,7 +197,7 @@ namespace xl7::graphics::images {
         return written_count;
     }
 
-    size_t NetpbmImageWriter::_write_1bit_binary(cl7::io::IWritable& writable, const cl7::u8string& target_name, const Image& image)
+    size_t Writer::_write_1bit_binary(cl7::io::IWritable& writable, const cl7::u8string& target_name, const Image& image)
     {
         static constexpr bool zero_is_white = true;
 
@@ -238,7 +238,7 @@ namespace xl7::graphics::images {
         return written_count == byte_count ? pixel_count : written_count * 8;
     }
 
-    size_t NetpbmImageWriter::_write_ascii(cl7::io::IWritable& writable, const cl7::u8string& target_name, const Image& image)
+    size_t Writer::_write_ascii(cl7::io::IWritable& writable, const cl7::u8string& target_name, const Image& image)
     {
         PixelLayout pixel_layout{image.get_pixel_format(), image.get_channel_order()};
         const unsigned channel_count = pixel_layout.channel_count;
@@ -282,7 +282,7 @@ namespace xl7::graphics::images {
         return (written_count / digit_count) * (bit_depth / 8);
     }
 
-    size_t NetpbmImageWriter::_write_binary(cl7::io::IWritable& writable, const cl7::u8string& target_name, const Image& image)
+    size_t Writer::_write_binary(cl7::io::IWritable& writable, const cl7::u8string& target_name, const Image& image)
     {
         PixelLayout pixel_layout{image.get_pixel_format(), image.get_channel_order()};
         const unsigned channel_count = pixel_layout.channel_count;
@@ -325,4 +325,4 @@ namespace xl7::graphics::images {
 
 
 
-} // namespace xl7::graphics::images
+} // namespace xl7::graphics::images::codecs::netpbm

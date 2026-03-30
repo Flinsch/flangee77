@@ -1,13 +1,13 @@
-#include "TargaImageReader.h"
+#include "Reader.h"
 
-#include "./ImageProcessor.h"
+#include "../../ImageProcessor.h"
 
 #include <CoreLabs/logging.h>
 #include <CoreLabs/bits.h>
 
 
 
-namespace xl7::graphics::images {
+namespace xl7::graphics::images::codecs::targa {
 
 
 
@@ -18,7 +18,7 @@ namespace xl7::graphics::images {
     /**
      * Loads an image from any readable object.
      */
-    bool TargaImageReader::_load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
+    bool Reader::_load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
     {
         Header header;
         if (!_read_header(readable, source_name, header))
@@ -98,7 +98,7 @@ namespace xl7::graphics::images {
     /**
      * Reads and validates the Targa header.
      */
-    bool TargaImageReader::_read_header(cl7::io::IReadable& readable, const cl7::u8string& source_name, Header& header)
+    bool Reader::_read_header(cl7::io::IReadable& readable, const cl7::u8string& source_name, Header& header)
     {
         if (readable.read({reinterpret_cast<std::byte*>(&header), sizeof(Header)}) != sizeof(Header))
             return _log_bad_header_error(source_name, u8"bad header length");
@@ -168,7 +168,7 @@ namespace xl7::graphics::images {
     /**
      * Reads the color map.
      */
-    bool TargaImageReader::_read_color_map(cl7::io::IReadable& readable, const cl7::u8string& source_name, cl7::byte_span color_map)
+    bool Reader::_read_color_map(cl7::io::IReadable& readable, const cl7::u8string& source_name, cl7::byte_span color_map)
     {
         if (readable.read(color_map) != color_map.size())
             return _log_bad_data_error(source_name, u8"bad color map data length");
@@ -179,7 +179,7 @@ namespace xl7::graphics::images {
     /**
      * Reads uncompressed image data.
      */
-    bool TargaImageReader::_read_uncompressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, cl7::byte_span image_data)
+    bool Reader::_read_uncompressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, cl7::byte_span image_data)
     {
         if (readable.read(image_data) != image_data.size())
             return _log_bad_data_error(source_name, u8"bad uncompressed image data length");
@@ -190,7 +190,7 @@ namespace xl7::graphics::images {
     /**
      * Reads RLE-decoded compressed image data.
      */
-    bool TargaImageReader::_read_compressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, unsigned pixel_depth, cl7::byte_span image_data)
+    bool Reader::_read_compressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, unsigned pixel_depth, cl7::byte_span image_data)
     {
         assert(pixel_depth % 8 == 0);
         const auto bytes_per_pixel = static_cast<size_t>(pixel_depth / 8);
@@ -238,7 +238,7 @@ namespace xl7::graphics::images {
     /**
      * Translates the color indices to actual color values from the color map.
      */
-    bool TargaImageReader::_map_color_data(const cl7::u8string& source_name, cl7::byte_view color_map, cl7::byte_view index_data, cl7::byte_span color_data)
+    bool Reader::_map_color_data(const cl7::u8string& source_name, cl7::byte_view color_map, cl7::byte_view index_data, cl7::byte_span color_data)
     {
         const auto pixel_count = index_data.size(); // 8 bits per pixel
         assert(pixel_count > 0);
@@ -260,4 +260,4 @@ namespace xl7::graphics::images {
 
 
 
-} // namespace xl7::graphics::images
+} // namespace xl7::graphics::images::codecs::targa

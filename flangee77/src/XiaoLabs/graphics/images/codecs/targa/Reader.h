@@ -1,19 +1,19 @@
-#ifndef XL7_GRAPHICS_IMAGES_TARGAIMAGEREADER_H
-#define XL7_GRAPHICS_IMAGES_TARGAIMAGEREADER_H
-#include "./ImageReader.h"
+#ifndef XL7_GRAPHICS_IMAGES_CODECS_TARGA_READER_H
+#define XL7_GRAPHICS_IMAGES_CODECS_TARGA_READER_H
+#include "../../ImageReader.h"
 
 
 
-namespace xl7::graphics::images {
+namespace xl7::graphics::images::codecs::targa {
 
 
 
-class TargaImageReader
+class Reader
     : public ImageReader
 {
 
 public:
-    ~TargaImageReader() override = default;
+    ~Reader() override = default;
 
 
 
@@ -80,10 +80,10 @@ private:
      */
     static bool _map_color_data(const cl7::u8string& source_name, cl7::byte_view color_map, cl7::byte_view index_data, cl7::byte_span color_data);
 
-}; // class TargaImageReader
+}; // class Reader
 
 
 
-} // namespace xl7::graphics::images
+} // namespace xl7::graphics::images::codecs::targa
 
-#endif // XL7_GRAPHICS_IMAGES_TARGAIMAGEREADER_H
+#endif // XL7_GRAPHICS_IMAGES_CODECS_TARGA_READER_H

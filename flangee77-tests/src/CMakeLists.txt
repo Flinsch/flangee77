@@ -85,10 +85,10 @@ target_sources(flangee77-tests
     XiaoLabs/graphics/images/ImageProcessor.cpp
     XiaoLabs/graphics/images/ImageConverter.cpp
     XiaoLabs/graphics/images/ImageResizer.cpp
-    XiaoLabs/graphics/images/NetpbmImageReader.cpp
-    XiaoLabs/graphics/images/NetpbmImageWriter.cpp
-    XiaoLabs/graphics/images/PngImageReader.cpp
-    XiaoLabs/graphics/images/TargaImageReader.cpp
+    XiaoLabs/graphics/images/codecs/netpbm/Reader.cpp
+    XiaoLabs/graphics/images/codecs/netpbm/Writer.cpp
+    XiaoLabs/graphics/images/codecs/png/Reader.cpp
+    XiaoLabs/graphics/images/codecs/targa/Reader.cpp
     XiaoLabs/graphics/meshes/DirtyRange.cpp
     XiaoLabs/graphics/shaders/DirtyFlag.cpp
     XiaoLabs/graphics/shaders/reflection.cpp

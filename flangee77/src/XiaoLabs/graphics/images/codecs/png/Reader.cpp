@@ -1,4 +1,4 @@
-#include "PngImageReader.h"
+#include "Reader.h"
 
 #include <DataLabs/compression.h>
 
@@ -7,7 +7,7 @@
 
 
 
-namespace xl7::graphics::images {
+namespace xl7::graphics::images::codecs::png {
 
 
 
@@ -18,7 +18,7 @@ namespace xl7::graphics::images {
     /**
      * Loads an image from any readable object.
      */
-    bool PngImageReader::_load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
+    bool Reader::_load_from(cl7::io::IReadable& readable, const cl7::u8string& source_name, Image& image)
     {
         Signature signature;
         if (readable.read({reinterpret_cast<std::byte*>(&signature), sizeof(Signature)}) != sizeof(Signature))
@@ -140,7 +140,7 @@ namespace xl7::graphics::images {
     /**
      * Processes the PNG chunks.
      */
-    bool PngImageReader::_process_chunks(cl7::io::IReadable& readable, const cl7::u8string& source_name, BitInfo& bit_info, std::vector<PaletteEntry>& palette, cl7::byte_vector& data)
+    bool Reader::_process_chunks(cl7::io::IReadable& readable, const cl7::u8string& source_name, BitInfo& bit_info, std::vector<PaletteEntry>& palette, cl7::byte_vector& data)
     {
         while (true)
         {
@@ -189,7 +189,7 @@ namespace xl7::graphics::images {
     /**
      * Processes the image header chunk, "IHDR".
      */
-    bool PngImageReader::_process_IHDR_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, BitInfo& bit_info)
+    bool Reader::_process_IHDR_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, BitInfo& bit_info)
     {
         if (chunk_length != sizeof(Header))
             return _log_bad_header_error(source_name, u8"bad IHDR chunk length");
@@ -261,7 +261,7 @@ namespace xl7::graphics::images {
     /**
      * Processes the palette chunk, "PLTE".
      */
-    bool PngImageReader::_process_PLTE_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, std::vector<PaletteEntry>& palette)
+    bool Reader::_process_PLTE_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, std::vector<PaletteEntry>& palette)
     {
         if (chunk_length % 3 != 0)
             return _log_bad_header_error(source_name, u8"bad PLTE chunk length");
@@ -280,7 +280,7 @@ namespace xl7::graphics::images {
     /**
      * Processes the image data chunk, "IDAT".
      */
-    bool PngImageReader::_process_IDAT_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, cl7::byte_vector& data)
+    bool Reader::_process_IDAT_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, cl7::byte_vector& data)
     {
         if (chunk_length == 0)
             return true;
@@ -299,7 +299,7 @@ namespace xl7::graphics::images {
     /**
      * Decompresses the given source data.
      */
-    bool PngImageReader::_decompress(cl7::byte_view src, cl7::byte_vector& dst)
+    bool Reader::_decompress(cl7::byte_view src, cl7::byte_vector& dst)
     {
         dst.clear();
 
@@ -309,7 +309,7 @@ namespace xl7::graphics::images {
     /**
      * Reconstructs the target data from the given filtered source data.
      */
-    bool PngImageReader::_reconstruct(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info)
+    bool Reader::_reconstruct(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info)
     {
         const auto bytes_per_pixel = static_cast<size_t>(bit_info.ceil_bytes_per_pixel);
         const auto bytes_per_scanline = static_cast<size_t>(bit_info.bytes_per_scanline);
@@ -404,7 +404,7 @@ namespace xl7::graphics::images {
      * No decoding/normalization is required for data with a bit depth of 8 bits per
      * channel.
      */
-    bool PngImageReader::_decode(cl7::byte_vector&& src, cl7::byte_vector& dst, const BitInfo& bit_info)
+    bool Reader::_decode(cl7::byte_vector&& src, cl7::byte_vector& dst, const BitInfo& bit_info)
     {
         const size_t pixel_count = static_cast<size_t>(bit_info.width) * static_cast<size_t>(bit_info.height);
         const size_t element_count = pixel_count * bit_info.channel_count;
@@ -486,7 +486,7 @@ namespace xl7::graphics::images {
      * neighboring pixels (left, above, upper left), then chooses as predictor the
      * neighboring pixel closest to the computed value.
      */
-    uint8_t PngImageReader::_paeth(uint8_t a, uint8_t b, uint8_t c)
+    uint8_t Reader::_paeth(uint8_t a, uint8_t b, uint8_t c)
     {
         const auto A = static_cast<signed>(a);
         const auto B = static_cast<signed>(b);
@@ -511,4 +511,4 @@ namespace xl7::graphics::images {
 
 
 
-} // namespace xl7::graphics::images
+} // namespace xl7::graphics::images::codecs::png

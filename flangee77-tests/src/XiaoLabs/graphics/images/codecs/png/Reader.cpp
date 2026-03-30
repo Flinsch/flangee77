@@ -1,15 +1,15 @@
 
 #include <TestLabs/TestSuite.h>
 
-#include <XiaoLabs/graphics/images/PngImageReader.h>
+#include <XiaoLabs/graphics/images/codecs/png/Reader.h>
 
 #include <CoreLabs/platform/filesystem.h>
 
-#include "../../shared.h"
+#include "../../../../shared.h"
 
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Grayscale 8-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  png:  Reader:  Grayscale 8-bit" )
 {
     struct Entry
     {
@@ -31,7 +31,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Grayscale 8-bi
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::PngImageReader png_image_reader;
+        xl7::graphics::images::codecs::png::Reader png_image_reader;
 
         bool result = png_image_reader.load_from_file( entry.file_path, image );
 
@@ -45,7 +45,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Grayscale 8-bi
     }
 }
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Grayscale with Alpha 8-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  png:  Reader:  Grayscale with Alpha 8-bit" )
 {
     struct Entry
     {
@@ -67,7 +67,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Grayscale with
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::PngImageReader png_image_reader;
+        xl7::graphics::images::codecs::png::Reader png_image_reader;
 
         bool result = png_image_reader.load_from_file( entry.file_path, image );
 
@@ -82,7 +82,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Grayscale with
 }
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Truecolor 8-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  png:  Reader:  Truecolor 8-bit" )
 {
     struct Entry
     {
@@ -105,7 +105,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Truecolor 8-bi
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::PngImageReader png_image_reader;
+        xl7::graphics::images::codecs::png::Reader png_image_reader;
 
         bool result = png_image_reader.load_from_file( entry.file_path, image );
 
@@ -119,7 +119,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Truecolor 8-bi
     }
 }
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Truecolor with Alpha 8-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  png:  Reader:  Truecolor with Alpha 8-bit" )
 {
     struct Entry
     {
@@ -141,7 +141,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Truecolor with
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::PngImageReader png_image_reader;
+        xl7::graphics::images::codecs::png::Reader png_image_reader;
 
         bool result = png_image_reader.load_from_file( entry.file_path, image );
 
@@ -157,7 +157,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Truecolor with
 
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Grayscale 16-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  png:  Reader:  Grayscale 16-bit" )
 {
     struct Entry
     {
@@ -179,7 +179,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Grayscale 16-b
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::PngImageReader png_image_reader;
+        xl7::graphics::images::codecs::png::Reader png_image_reader;
 
         bool result = png_image_reader.load_from_file( entry.file_path, image );
 
@@ -193,7 +193,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Grayscale 16-b
     }
 }
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Grayscale with Alpha 16-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  png:  Reader:  Grayscale with Alpha 16-bit" )
 {
     struct Entry
     {
@@ -215,7 +215,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Grayscale with
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::PngImageReader png_image_reader;
+        xl7::graphics::images::codecs::png::Reader png_image_reader;
 
         bool result = png_image_reader.load_from_file( entry.file_path, image );
 
@@ -230,7 +230,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Grayscale with
 }
 
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Truecolor 16-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  png:  Reader:  Truecolor 16-bit" )
 {
     struct Entry
     {
@@ -252,7 +252,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Truecolor 16-b
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::PngImageReader png_image_reader;
+        xl7::graphics::images::codecs::png::Reader png_image_reader;
 
         bool result = png_image_reader.load_from_file( entry.file_path, image );
 
@@ -266,7 +266,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Truecolor 16-b
     }
 }
 
-TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Truecolor with Alpha 16-bit" )
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  png:  Reader:  Truecolor with Alpha 16-bit" )
 {
     struct Entry
     {
@@ -288,7 +288,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  PngImageReader:  Truecolor with
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"load_from_file", container, entry, entry.file_path )
     {
         xl7::graphics::images::Image image;
-        xl7::graphics::images::PngImageReader png_image_reader;
+        xl7::graphics::images::codecs::png::Reader png_image_reader;
 
         bool result = png_image_reader.load_from_file( entry.file_path, image );
 

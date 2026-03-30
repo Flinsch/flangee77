@@ -1,14 +1,14 @@
-#ifndef XL7_GRAPHICS_IMAGES_NETPBMIMAGEWRITER_H
-#define XL7_GRAPHICS_IMAGES_NETPBMIMAGEWRITER_H
-#include "./ImageWriter.h"
+#ifndef XL7_GRAPHICS_IMAGES_CODECS_NETPBM_WRITER_H
+#define XL7_GRAPHICS_IMAGES_CODECS_NETPBM_WRITER_H
+#include "../../ImageWriter.h"
 
 
 
-namespace xl7::graphics::images {
+namespace xl7::graphics::images::codecs::netpbm {
 
 
 
-class NetpbmImageWriter
+class Writer
     : public ImageWriter
 {
 
@@ -56,9 +56,9 @@ public:
 
 
 
-    explicit NetpbmImageWriter(Options options = DEFAULT_OPTIONS) : _options(options) {}
+    explicit Writer(Options options = DEFAULT_OPTIONS) : _options(options) {}
 
-    ~NetpbmImageWriter() override = default;
+    ~Writer() override = default;
 
 
 
@@ -105,10 +105,10 @@ private:
     /** The options to control the behavior of the Netpbm image writer. */
     Options _options;
 
-}; // class NetpbmImageWriter
+}; // class Writer
 
 
 
-} // namespace xl7::graphics::images
+} // namespace xl7::graphics::images::codecs::netpbm
 
-#endif // XL7_GRAPHICS_IMAGES_NETPBMIMAGEWRITER_H
+#endif // XL7_GRAPHICS_IMAGES_CODECS_NETPBM_WRITER_H

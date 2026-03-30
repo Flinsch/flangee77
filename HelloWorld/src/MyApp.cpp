@@ -4,9 +4,9 @@
     #include <FaceLabs/fonts/render/TestRenderer.h>
 
 #include <XiaoLabs/graphics.h>
-    #include <XiaoLabs/graphics/images/TargaImageReader.h>
-#include <XiaoLabs/graphics/images/PngImageReader.h>
-#include <XiaoLabs/graphics/images/NetpbmImageReader.h>
+    #include <XiaoLabs/graphics/images/codecs/targa/Reader.h>
+    #include <XiaoLabs/graphics/images/codecs/png/Reader.h>
+    #include <XiaoLabs/graphics/images/codecs/netpbm/Reader.h>
 #include <XiaoLabs/graphics/images/ImageConverter.h>
 
 #include <MathLabs/math.h>
@@ -131,9 +131,9 @@ namespace helloworld {
 
 
         xl7::graphics::images::Image image;
-        xl7::graphics::images::TargaImageReader targa_image_reader;
-        xl7::graphics::images::PngImageReader png_image_reader;
-        xl7::graphics::images::NetpbmImageReader netpbm_image_reader;
+        xl7::graphics::images::codecs::targa::Reader targa_image_reader;
+        xl7::graphics::images::codecs::png::Reader png_image_reader;
+        xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
         targa_image_reader.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy.tga", image);
         //targa_image_reader.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy-compressed.tga", image);
         //png_image_reader.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/dummy.png", image);
