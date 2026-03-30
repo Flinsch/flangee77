@@ -5,5 +5,7 @@ var searchData=
   ['windowimpl_2ecpp_2',['WindowImpl.cpp',['../db/d41/WindowImpl_8cpp.html',1,'']]],
   ['windowimpl_2eh_3',['WindowImpl.h',['../d9/d40/WindowImpl_8h.html',1,'']]],
   ['writablememory_2ecpp_4',['WritableMemory.cpp',['../db/db5/WritableMemory_8cpp.html',1,'']]],
-  ['writablememory_2eh_5',['WritableMemory.h',['../db/d27/WritableMemory_8h.html',1,'']]]
+  ['writablememory_2eh_5',['WritableMemory.h',['../db/d27/WritableMemory_8h.html',1,'']]],
+  ['writer_2ecpp_6',['Writer.cpp',['../de/d3a/Writer_8cpp.html',1,'']]],
+  ['writer_2eh_7',['Writer.h',['../dd/df5/Writer_8h.html',1,'']]]
 ];

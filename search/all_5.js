@@ -57,7 +57,7 @@ var searchData=
   ['entry_54',['Entry',['../d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html',1,'xl7::graphics::pipeline::AbstractPipelineObject::StateArray']]],
   ['entry_5fpoint_55',['entry_point',['../d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc.html#ab2196a233765d13392725e20c6f4a1ec',1,'xl7::graphics::shaders::ShaderDesc']]],
   ['entry_5fselector_56',['entry_selector',['../d9/db1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OffsetSubtable.html#a6d6fed5cfbbc024f638b370847fcffcf',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::OffsetSubtable']]],
-  ['eof_57',['eof',['../d6/d62/structxl7_1_1graphics_1_1images_1_1PngImageReader_1_1Signature.html#a5acc4f5e232e4b14c8094317160a8761',1,'xl7::graphics::images::PngImageReader::Signature']]],
+  ['eof_57',['eof',['../d5/d4f/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Signature.html#a74cae993f07ce08c3f548ea1fc247d00',1,'xl7::graphics::images::codecs::png::Reader::Signature']]],
   ['eof_5fsymbol_5fid_58',['EOF_SYMBOL_ID',['../db/d34/namespacedl7_1_1syntax.html#ab1b57a9e4c1d182fe54892446379cb35',1,'dl7::syntax']]],
   ['equal_59',['Equal',['../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a871048e956c024f62d483062a44e7086af5f286e73bda105e538310b3190f75c5',1,'xl7::graphics::states']]],
   ['equal_5fsign_60',['EQUAL_SIGN',['../d4/dc2/namespacedl7_1_1xml_1_1detail.html#a763cf7809cd96b73b261448238faf1f7a005834dc4e1d088b789d48855a1272e9',1,'dl7::xml::detail']]],

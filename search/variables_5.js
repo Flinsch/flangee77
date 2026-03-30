@@ -17,7 +17,7 @@ var searchData=
   ['end_5fpoint_5findices_14',['end_point_indices',['../d3/d6c/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph.html#abae1e1904e3bf0a58431a00dae34f4c8',1,'fl7::fonts::detail::ttf::RawGlyph']]],
   ['entry_5fpoint_15',['entry_point',['../d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc.html#ab2196a233765d13392725e20c6f4a1ec',1,'xl7::graphics::shaders::ShaderDesc']]],
   ['entry_5fselector_16',['entry_selector',['../d9/db1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OffsetSubtable.html#a6d6fed5cfbbc024f638b370847fcffcf',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::OffsetSubtable']]],
-  ['eof_17',['eof',['../d6/d62/structxl7_1_1graphics_1_1images_1_1PngImageReader_1_1Signature.html#a5acc4f5e232e4b14c8094317160a8761',1,'xl7::graphics::images::PngImageReader::Signature']]],
+  ['eof_17',['eof',['../d5/d4f/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Signature.html#a74cae993f07ce08c3f548ea1fc247d00',1,'xl7::graphics::images::codecs::png::Reader::Signature']]],
   ['eof_5fsymbol_5fid_18',['EOF_SYMBOL_ID',['../db/d34/namespacedl7_1_1syntax.html#ab1b57a9e4c1d182fe54892446379cb35',1,'dl7::syntax']]],
   ['error_19',['error',['../d3/dea/structcl7_1_1text_1_1codec_1_1ErrorStatus.html#a5fcd3b8f4c100b1b22890cae36342046',1,'cl7::text::codec::ErrorStatus']]],
   ['error_5fcount_20',['error_count',['../d3/dea/structcl7_1_1text_1_1codec_1_1ErrorStatus.html#ae7c74fa3cb05d89e140adc615cb1bbb9',1,'cl7::text::codec::ErrorStatus']]],

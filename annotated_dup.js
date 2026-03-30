@@ -362,6 +362,18 @@ var annotated_dup =
       ] ],
       [ "graphics", "d8/d30/namespacexl7_1_1graphics.html", [
         [ "images", "d8/dd2/namespacexl7_1_1graphics_1_1images.html", [
+          [ "codecs", "de/d0d/namespacexl7_1_1graphics_1_1images_1_1codecs.html", [
+            [ "netpbm", "dc/d72/namespacexl7_1_1graphics_1_1images_1_1codecs_1_1netpbm.html", [
+              [ "Reader", "d1/d62/classxl7_1_1graphics_1_1images_1_1codecs_1_1netpbm_1_1Reader.html", "d1/d62/classxl7_1_1graphics_1_1images_1_1codecs_1_1netpbm_1_1Reader" ],
+              [ "Writer", "d0/d4d/classxl7_1_1graphics_1_1images_1_1codecs_1_1netpbm_1_1Writer.html", "d0/d4d/classxl7_1_1graphics_1_1images_1_1codecs_1_1netpbm_1_1Writer" ]
+            ] ],
+            [ "png", "d8/dca/namespacexl7_1_1graphics_1_1images_1_1codecs_1_1png.html", [
+              [ "Reader", "d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html", "d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader" ]
+            ] ],
+            [ "targa", "dd/d9f/namespacexl7_1_1graphics_1_1images_1_1codecs_1_1targa.html", [
+              [ "Reader", "da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html", "da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader" ]
+            ] ]
+          ] ],
           [ "Image", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image" ],
           [ "ImageConverter", "d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter.html", "d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter" ],
           [ "ImageDesc", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc.html", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc" ],
@@ -369,11 +381,7 @@ var annotated_dup =
           [ "ImageReader", "d1/d72/classxl7_1_1graphics_1_1images_1_1ImageReader.html", "d1/d72/classxl7_1_1graphics_1_1images_1_1ImageReader" ],
           [ "ImageResizer", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer.html", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer" ],
           [ "ImageStack", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack.html", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack" ],
-          [ "ImageWriter", "de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter.html", "de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter" ],
-          [ "NetpbmImageReader", "de/db6/classxl7_1_1graphics_1_1images_1_1NetpbmImageReader.html", "de/db6/classxl7_1_1graphics_1_1images_1_1NetpbmImageReader" ],
-          [ "NetpbmImageWriter", "d9/d80/classxl7_1_1graphics_1_1images_1_1NetpbmImageWriter.html", "d9/d80/classxl7_1_1graphics_1_1images_1_1NetpbmImageWriter" ],
-          [ "PngImageReader", "d3/d05/classxl7_1_1graphics_1_1images_1_1PngImageReader.html", "d3/d05/classxl7_1_1graphics_1_1images_1_1PngImageReader" ],
-          [ "TargaImageReader", "d5/d60/classxl7_1_1graphics_1_1images_1_1TargaImageReader.html", "d5/d60/classxl7_1_1graphics_1_1images_1_1TargaImageReader" ]
+          [ "ImageWriter", "de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter.html", "de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter" ]
         ] ],
         [ "impl", "db/d29/namespacexl7_1_1graphics_1_1impl.html", [
           [ "direct3d11", "d4/d6d/namespacexl7_1_1graphics_1_1impl_1_1direct3d11.html", [

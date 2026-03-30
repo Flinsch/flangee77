@@ -1,5 +1,6 @@
 var namespacexl7_1_1graphics_1_1images =
 [
+    [ "codecs", "de/d0d/namespacexl7_1_1graphics_1_1images_1_1codecs.html", "de/d0d/namespacexl7_1_1graphics_1_1images_1_1codecs" ],
     [ "Image", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image" ],
     [ "ImageConverter", "d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter.html", "d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter" ],
     [ "ImageDesc", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc.html", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc" ],
@@ -8,10 +9,6 @@ var namespacexl7_1_1graphics_1_1images =
     [ "ImageResizer", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer.html", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer" ],
     [ "ImageStack", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack.html", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack" ],
     [ "ImageWriter", "de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter.html", "de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter" ],
-    [ "NetpbmImageReader", "de/db6/classxl7_1_1graphics_1_1images_1_1NetpbmImageReader.html", "de/db6/classxl7_1_1graphics_1_1images_1_1NetpbmImageReader" ],
-    [ "NetpbmImageWriter", "d9/d80/classxl7_1_1graphics_1_1images_1_1NetpbmImageWriter.html", "d9/d80/classxl7_1_1graphics_1_1images_1_1NetpbmImageWriter" ],
-    [ "PngImageReader", "d3/d05/classxl7_1_1graphics_1_1images_1_1PngImageReader.html", "d3/d05/classxl7_1_1graphics_1_1images_1_1PngImageReader" ],
-    [ "TargaImageReader", "d5/d60/classxl7_1_1graphics_1_1images_1_1TargaImageReader.html", "d5/d60/classxl7_1_1graphics_1_1images_1_1TargaImageReader" ],
     [ "ResamplingMethod", "d8/dd2/namespacexl7_1_1graphics_1_1images.html#ac9d829a5933316d55f7f267a17474dd9", [
       [ "NearestNeighbor", "d8/dd2/namespacexl7_1_1graphics_1_1images.html#ac9d829a5933316d55f7f267a17474dd9aaa020331bb30d2fa2ecf7c3a0777823f", null ],
       [ "LinearInterpolation", "d8/dd2/namespacexl7_1_1graphics_1_1images.html#ac9d829a5933316d55f7f267a17474dd9a14517b35b26ed67a34ffd446a9b86e33", null ]
