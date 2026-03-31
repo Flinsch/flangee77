@@ -11,6 +11,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  new object, not d
 {
     xl7::graphics::textures::DirtyRect dirty_rect;
     TESTLABS_CHECK( !dirty_rect.is_dirty() );
+    TESTLABS_CHECK( !dirty_rect.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  init empty, not dirty" )
@@ -18,6 +19,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  init empty, not d
     xl7::graphics::textures::DirtyRect dirty_rect;
     dirty_rect.update( 0, 0, 0, 0 );
     TESTLABS_CHECK( !dirty_rect.is_dirty() );
+    TESTLABS_CHECK( !dirty_rect.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  init empty width, not dirty" )
@@ -25,6 +27,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  init empty width,
     xl7::graphics::textures::DirtyRect dirty_rect;
     dirty_rect.update( 0, 0, 0, 1 );
     TESTLABS_CHECK( !dirty_rect.is_dirty() );
+    TESTLABS_CHECK( !dirty_rect.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  init empty height, not dirty" )
@@ -32,6 +35,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  init empty height
     xl7::graphics::textures::DirtyRect dirty_rect;
     dirty_rect.update( 0, 0, 1, 0 );
     TESTLABS_CHECK( !dirty_rect.is_dirty() );
+    TESTLABS_CHECK( !dirty_rect.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  init non-empty, is dirty" )
@@ -39,6 +43,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  init non-empty, i
     xl7::graphics::textures::DirtyRect dirty_rect;
     dirty_rect.update( 0, 0, 1, 1 );
     TESTLABS_CHECK( dirty_rect.is_dirty() );
+    TESTLABS_CHECK( !dirty_rect.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  init non-empty, update empty, still dirty" )
@@ -47,6 +52,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  init non-empty, u
     dirty_rect.update( 0, 0, 1, 1 );
     dirty_rect.update( 0, 0, 0, 0 );
     TESTLABS_CHECK( dirty_rect.is_dirty() );
+    TESTLABS_CHECK( !dirty_rect.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  init non-empty, clear, not dirty" )
@@ -55,6 +61,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  init non-empty, c
     dirty_rect.update( 0, 0, 1, 1 );
     dirty_rect.clear();
     TESTLABS_CHECK( !dirty_rect.is_dirty() );
+    TESTLABS_CHECK( !dirty_rect.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  update without effect" )
@@ -63,6 +70,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  update without ef
     dirty_rect.update( 20, 20, 20, 20 );
     dirty_rect.update( 25, 25, 10, 10 );
     TESTLABS_CHECK( dirty_rect.is_dirty() );
+    TESTLABS_CHECK( !dirty_rect.is_all_dirty() );
     TESTLABS_CHECK_EQ( dirty_rect.x(), 20 );
     TESTLABS_CHECK_EQ( dirty_rect.y(), 20 );
     TESTLABS_CHECK_EQ( dirty_rect.width(), 20 );
@@ -75,6 +83,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  update with expan
     dirty_rect.update( 20, 20, 20, 20 );
     dirty_rect.update( 5, 10, 10, 20 );
     TESTLABS_CHECK( dirty_rect.is_dirty() );
+    TESTLABS_CHECK( !dirty_rect.is_all_dirty() );
     TESTLABS_CHECK_EQ( dirty_rect.x(), 5 );
     TESTLABS_CHECK_EQ( dirty_rect.y(), 10 );
     TESTLABS_CHECK_EQ( dirty_rect.width(), 35 );
@@ -89,4 +98,25 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  init, update, cle
     dirty_rect.update( 5, 10, 10, 20 );
     dirty_rect.clear();
     TESTLABS_CHECK( !dirty_rect.is_dirty() );
+    TESTLABS_CHECK( !dirty_rect.is_all_dirty() );
+}
+
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  set dirty, all dirty" )
+{
+    xl7::graphics::textures::DirtyRect dirty_rect;
+    dirty_rect.set_dirty();
+    TESTLABS_CHECK( dirty_rect.is_dirty() );
+    TESTLABS_CHECK( dirty_rect.is_all_dirty() );
+}
+
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyRect:  init, set dirty, all dirty, clear, not dirty" )
+{
+    xl7::graphics::textures::DirtyRect dirty_rect;
+    dirty_rect.update( 20, 20, 20, 20 );
+    dirty_rect.set_dirty();
+    TESTLABS_CHECK( dirty_rect.is_dirty() );
+    TESTLABS_CHECK( dirty_rect.is_all_dirty() );
+    dirty_rect.clear();
+    TESTLABS_CHECK( !dirty_rect.is_dirty() );
+    TESTLABS_CHECK( !dirty_rect.is_all_dirty() );
 }

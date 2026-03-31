@@ -11,6 +11,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  meshes:  DirtyRange:  new object, not di
 {
     xl7::graphics::meshes::DirtyRange dirty_range;
     TESTLABS_CHECK( !dirty_range.is_dirty() );
+    TESTLABS_CHECK( !dirty_range.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  meshes:  DirtyRange:  init empty, not dirty" )
@@ -18,6 +19,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  meshes:  DirtyRange:  init empty, not di
     xl7::graphics::meshes::DirtyRange dirty_range;
     dirty_range.update( 0, 0 );
     TESTLABS_CHECK( !dirty_range.is_dirty() );
+    TESTLABS_CHECK( !dirty_range.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  meshes:  DirtyRange:  init non-empty, is dirty" )
@@ -25,6 +27,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  meshes:  DirtyRange:  init non-empty, is
     xl7::graphics::meshes::DirtyRange dirty_range;
     dirty_range.update( 0, 1 );
     TESTLABS_CHECK( dirty_range.is_dirty() );
+    TESTLABS_CHECK( !dirty_range.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  meshes:  DirtyRange:  init non-empty, update empty, still dirty" )
@@ -33,6 +36,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  meshes:  DirtyRange:  init non-empty, up
     dirty_range.update( 0, 1 );
     dirty_range.update( 0, 0 );
     TESTLABS_CHECK( dirty_range.is_dirty() );
+    TESTLABS_CHECK( !dirty_range.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  meshes:  DirtyRange:  init non-empty, clear, not dirty" )
@@ -41,6 +45,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  meshes:  DirtyRange:  init non-empty, cl
     dirty_range.update( 0, 1 );
     dirty_range.clear();
     TESTLABS_CHECK( !dirty_range.is_dirty() );
+    TESTLABS_CHECK( !dirty_range.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  meshes:  DirtyRange:  update without effect" )
@@ -49,6 +54,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  meshes:  DirtyRange:  update without eff
     dirty_range.update( 20, 20 );
     dirty_range.update( 25, 10 );
     TESTLABS_CHECK( dirty_range.is_dirty() );
+    TESTLABS_CHECK( !dirty_range.is_all_dirty() );
     TESTLABS_CHECK_EQ( dirty_range.first_element(), 20 );
     TESTLABS_CHECK_EQ( dirty_range.element_count(), 20 );
 }
@@ -59,6 +65,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  meshes:  DirtyRange:  update with expans
     dirty_range.update( 20, 20 );
     dirty_range.update( 5, 10 );
     TESTLABS_CHECK( dirty_range.is_dirty() );
+    TESTLABS_CHECK( !dirty_range.is_all_dirty() );
     TESTLABS_CHECK_EQ( dirty_range.first_element(), 5 );
     TESTLABS_CHECK_EQ( dirty_range.element_count(), 35 );
 }
@@ -71,4 +78,25 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  meshes:  DirtyRange:  init, update, clea
     dirty_range.update( 5, 10 );
     dirty_range.clear();
     TESTLABS_CHECK( !dirty_range.is_dirty() );
+    TESTLABS_CHECK( !dirty_range.is_all_dirty() );
+}
+
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  meshes:  DirtyRange:  set dirty, all dirty" )
+{
+    xl7::graphics::meshes::DirtyRange dirty_range;
+    dirty_range.set_dirty();
+    TESTLABS_CHECK( dirty_range.is_dirty() );
+    TESTLABS_CHECK( dirty_range.is_all_dirty() );
+}
+
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  meshes:  DirtyRange:  init, set dirty, all dirty, clear, not dirty" )
+{
+    xl7::graphics::meshes::DirtyRange dirty_range;
+    dirty_range.update( 20, 20 );
+    dirty_range.set_dirty();
+    TESTLABS_CHECK( dirty_range.is_dirty() );
+    TESTLABS_CHECK( dirty_range.is_all_dirty() );
+    dirty_range.clear();
+    TESTLABS_CHECK( !dirty_range.is_dirty() );
+    TESTLABS_CHECK( !dirty_range.is_all_dirty() );
 }

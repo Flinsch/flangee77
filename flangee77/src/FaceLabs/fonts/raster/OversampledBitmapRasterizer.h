@@ -30,7 +30,7 @@ public:
      */
     OversampledBitmapRasterizer(unsigned oversampling, unsigned basic_aa_quality = 0) noexcept;
 
-  /**
+    /**
      * Constructs a bitmap rasterizer with the specified oversampling factor (e.g.,
      * (a factor of 4 effectively means 16 samples per pixel). A factor less than 2
      * disables oversampling and therefore also the actual anti-aliasing effect of

@@ -24,6 +24,15 @@ namespace xl7::graphics::shaders {
 
 
 
+    ConstantBuffer::ConstantBuffer(const CreateContext& ctx, const ConstantBufferDesc& desc)
+        : ResourceBase(ctx)
+        , _desc(desc)
+    {
+        assert(desc.layout.calculate_size() > 0);
+    }
+
+
+
     /**
      * Checks whether the given data provider complies with the specific properties
      * of the resource to (re)populate it, taking into account the current state of

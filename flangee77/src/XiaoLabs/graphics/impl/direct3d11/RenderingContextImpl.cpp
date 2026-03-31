@@ -14,6 +14,8 @@
 #include "./RenderingDeviceImpl.h"
 #include "./errors.h"
 
+#include "../../meshes/MeshUtil.h"
+
 #include <CoreLabs/logging.h>
 
 #include <algorithm>

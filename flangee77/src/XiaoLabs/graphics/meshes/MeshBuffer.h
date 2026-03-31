@@ -1,10 +1,11 @@
 #ifndef XL7_GRAPHICS_MESHES_MESHBUFFER_H
 #define XL7_GRAPHICS_MESHES_MESHBUFFER_H
-#include "../../resources/Resource.h"
+#include "../../resources/ResourceBase.h"
+#include "../../resources/ResourceDataMixin.h"
+#include "../../resources/ResourceUpdateMixin.h"
 
 #include "./MeshBufferDesc.h"
-#include "./DirtyRange.h"
-#include "./MeshUtil.h"
+#include "./MeshBufferUpdater.h"
 
 
 
@@ -17,7 +18,7 @@ class MeshManager;
 
 
 class MeshBuffer
-    : public resources::detail::ResourceBaseDirty<MeshBuffer, DirtyRange>
+    : public resources::ResourceBase<MeshBuffer>
 {
 
 public:
@@ -49,14 +50,14 @@ public:
     const MeshBufferDesc& get_desc() const { return _desc; }
 
     /**
+     * Returns the size of each buffer element, in bytes.
+     */
+    unsigned get_element_stride() const { return _desc.element_stride; }
+
+    /**
      * Returns the number of primitives represented by this buffer.
      */
     unsigned get_primitive_count() const { return _primitive_count; }
-
-    /**
-     * Returns the size of each buffer element, in bytes.
-     */
-    unsigned get_element_stride() const { return _element_stride; }
 
     /**
      * Returns the size of this buffer, in bytes.
@@ -74,7 +75,7 @@ public:
 
 protected:
 
-    MeshBuffer(Type type, const CreateContext& ctx, const MeshBufferDesc& desc, unsigned element_stride);
+    MeshBuffer(const CreateContext& ctx, Type type, const MeshBufferDesc& desc);
 
     ~MeshBuffer() override = default;
 
@@ -115,11 +116,6 @@ private:
      * The number of primitives represented by this buffer.
      */
     const unsigned _primitive_count;
-
-    /**
-     * The size of each buffer element, in bytes.
-     */
-    const unsigned _element_stride;
 
     /**
      * The size of this buffer, in bytes.

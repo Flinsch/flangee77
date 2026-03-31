@@ -9,7 +9,7 @@ namespace xl7::graphics::shaders {
 
 
 class VertexShader
-    : public resources::detail::ResourceBase<VertexShader, Shader>
+    : public resources::ResourceBase<VertexShader, Shader>
 {
 
 public:
@@ -31,10 +31,7 @@ public:
 
 protected:
 
-    explicit VertexShader(const CreateContext& ctx, const ShaderDesc& desc)
-        : ResourceBase(Type::VertexShader, ctx, desc)
-    {
-    }
+    VertexShader(const CreateContext& ctx, const ShaderDesc& desc);
 
     ~VertexShader() override = default;
 

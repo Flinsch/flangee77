@@ -3,7 +3,7 @@
 #include "./Texture.h"
 
 #include "./Texture2DDesc.h"
-#include "./DirtyRect.h"
+#include "./Texture2DUpdater.h"
 
 
 
@@ -12,7 +12,7 @@ namespace xl7::graphics::textures {
 
 
 class Texture2D
-    : public resources::detail::ResourceBaseDirty<Texture2D, DirtyRect, Texture>
+    : public resources::ResourceBase<Texture2D, Texture>
 {
 
 public:
@@ -56,7 +56,7 @@ public:
 
 protected:
 
-    explicit Texture2D(const CreateContext& ctx, const Texture2DDesc& desc);
+    Texture2D(const CreateContext& ctx, const Texture2DDesc& desc);
 
     ~Texture2D() override = default;
 

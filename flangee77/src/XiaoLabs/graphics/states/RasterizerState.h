@@ -11,7 +11,7 @@ namespace xl7::graphics::states {
 
 
 class RasterizerState
-    : public resources::detail::ResourceBase<RasterizerState, AbstractState>
+    : public resources::ResourceBase<RasterizerState, AbstractState>
 {
 
 public:
@@ -38,11 +38,7 @@ public:
 
 protected:
 
-    explicit RasterizerState(const CreateContext& ctx, const RasterizerStateDesc& desc)
-        : ResourceBase(ctx, desc)
-        , _desc(desc)
-    {
-    }
+    RasterizerState(const CreateContext& ctx, const RasterizerStateDesc& desc);
 
     ~RasterizerState() override = default;
 

@@ -1,6 +1,6 @@
 #ifndef XL7_GRAPHICS_SHADERS_SHADER_H
 #define XL7_GRAPHICS_SHADERS_SHADER_H
-#include "../../resources/Resource.h"
+#include "../../resources/ResourceBase.h"
 
 #include "./ShaderDesc.h"
 #include "./CodeDataProvider.h"
@@ -23,7 +23,7 @@ class ConstantBuffer;
 
 
 class Shader
-    : public resources::detail::ResourceBase<Shader>
+    : public resources::ResourceBase<Shader>
 {
 
 public:
@@ -119,12 +119,7 @@ public:
 
 protected:
 
-    Shader(Type type, const CreateContext& ctx, const ShaderDesc& desc)
-        : ResourceBase(ctx, desc)
-        , _type(type)
-        , _desc(desc)
-    {
-    }
+    Shader(const CreateContext& ctx, Type type, const ShaderDesc& desc);
 
     ~Shader() override = default;
 

@@ -12,16 +12,27 @@ namespace xl7::graphics::textures {
 class DirtyBox
 {
 public:
-    bool is_dirty() const { return _width > 0 && _height > 0 && _depth > 0; }
+    bool is_dirty() const { return _all_dirty || (_width > 0 && _height > 0 && _depth > 0); }
+
+    bool is_all_dirty() const { return _all_dirty; }
 
     void clear()
     {
+        _all_dirty = false;
         _x = _y = _z = 0;
         _width = _height = _depth = 0;
     }
 
+    void set_dirty()
+    {
+        _all_dirty = true;
+    }
+
     void update(unsigned x, unsigned y, unsigned z, unsigned width, unsigned height, unsigned depth)
     {
+        if (is_all_dirty())
+            return;
+
         if (!is_dirty())
         {
             _x = x;
@@ -59,6 +70,8 @@ public:
     unsigned depth() const { return _depth; }
 
 private:
+    bool _all_dirty = false;
+
     unsigned _x = 0;
     unsigned _y = 0;
     unsigned _z = 0;

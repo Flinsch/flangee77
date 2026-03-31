@@ -1,6 +1,6 @@
 #ifndef XL7_GRAPHICS_SURFACES_SURFACE_H
 #define XL7_GRAPHICS_SURFACES_SURFACE_H
-#include "../../resources/Resource.h"
+#include "../../resources/ResourceBase.h"
 
 #include "./SurfaceDesc.h"
 
@@ -15,7 +15,7 @@ class SurfaceManager;
 
 
 class Surface
-    : public resources::detail::ResourceBase<Surface>
+    : public resources::ResourceBase<Surface>
 {
 
 public:
@@ -57,12 +57,7 @@ public:
 
 protected:
 
-    Surface(Type type, const CreateContext& ctx, const SurfaceDesc& desc)
-        : ResourceBase(ctx, desc)
-        , _type(type)
-        , _desc(desc)
-    {
-    }
+    Surface(const CreateContext& ctx, Type type, const SurfaceDesc& desc);
 
     ~Surface() override = default;
 

@@ -9,7 +9,7 @@ namespace xl7::graphics::surfaces {
 
 
 class DepthStencilSurface
-    : public resources::detail::ResourceBase<DepthStencilSurface, FramebufferSurface>
+    : public resources::ResourceBase<DepthStencilSurface, FramebufferSurface>
 {
 
 public:
@@ -31,10 +31,7 @@ public:
 
 protected:
 
-    explicit DepthStencilSurface(const CreateContext& ctx, const SurfaceDesc& desc)
-        : ResourceBase(Type::DepthStencilSurface, ctx, desc)
-    {
-    }
+    DepthStencilSurface(const CreateContext& ctx, const SurfaceDesc& desc);
 
     ~DepthStencilSurface() override = default;
 

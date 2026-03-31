@@ -10,7 +10,7 @@ namespace xl7::graphics::textures {
 
 struct Texture2DDesc
 {
-    /** Identifies how the texture is expected to be updated (frequency of update is a key factor). */
+    /** Identifies how the texture is expected to be updated. */
     TextureUsage usage;
 
     /** The pixel format. */

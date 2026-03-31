@@ -10,7 +10,7 @@ namespace xl7::graphics::textures {
 
 struct Texture2DArrayDesc
 {
-    /** Identifies how the texture is expected to be updated (frequency of update is a key factor). */
+    /** Identifies how the texture is expected to be updated. */
     TextureUsage usage;
 
     /** The pixel format. */
@@ -26,8 +26,8 @@ struct Texture2DArrayDesc
     /** The height of each texture, in pixels. */
     unsigned height;
 
-    /** The number of textures/layers in the texture array. */
-    unsigned texture_count;
+    /** The number of texture layers in the texture array. */
+    unsigned layer_count;
 };
 
 

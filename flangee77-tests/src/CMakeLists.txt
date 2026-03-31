@@ -93,6 +93,7 @@ target_sources(flangee77-tests
     XiaoLabs/graphics/shaders/DirtyFlag.cpp
     XiaoLabs/graphics/shaders/reflection.cpp
     XiaoLabs/graphics/textures/DirtyBox.cpp
+    XiaoLabs/graphics/textures/DirtyLayerBoxes.cpp
     XiaoLabs/graphics/textures/DirtyLayerRects.cpp
     XiaoLabs/graphics/textures/DirtyRect.cpp
 )

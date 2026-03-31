@@ -9,7 +9,7 @@ namespace xl7::graphics::shaders {
 
 
 class PixelShader
-    : public resources::detail::ResourceBase<PixelShader, Shader>
+    : public resources::ResourceBase<PixelShader, Shader>
 {
 
 public:
@@ -31,10 +31,7 @@ public:
 
 protected:
 
-    explicit PixelShader(const CreateContext& ctx, const ShaderDesc& desc)
-        : ResourceBase(Type::PixelShader, ctx, desc)
-    {
-    }
+    PixelShader(const CreateContext& ctx, const ShaderDesc& desc);
 
     ~PixelShader() override = default;
 

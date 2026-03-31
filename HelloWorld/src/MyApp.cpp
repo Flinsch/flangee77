@@ -193,7 +193,7 @@ namespace helloworld {
             if (!shader)
                 continue;
 
-            LOG_TYPE(u8"Parameters of " + shader->get_typed_identifier_string() + u8':', cl7::logging::LogType::Caption);
+            LOG_TYPE(u8"Parameters of " + shader->get_qualified_identifier() + u8':', cl7::logging::LogType::Caption);
 
             std::vector<const xl7::graphics::shaders::ConstantBufferDeclaration*> constant_buffer_declarations;
             for (const auto& constant_buffer_declaration : shader->get_reflection_result().constant_buffer_declarations)

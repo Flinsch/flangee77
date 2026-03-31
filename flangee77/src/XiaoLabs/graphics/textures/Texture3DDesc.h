@@ -10,7 +10,7 @@ namespace xl7::graphics::textures {
 
 struct Texture3DDesc
 {
-    /** Identifies how the texture is expected to be updated (frequency of update is a key factor). */
+    /** Identifies how the texture is expected to be updated. */
     TextureUsage usage;
 
     /** The pixel format. */
@@ -25,7 +25,7 @@ struct Texture3DDesc
     unsigned width;
     /** The height of the texture, in pixels. */
     unsigned height;
-    /** The depth of the texture, in pixels (or the number of 2D image slices, if you like). */
+    /** The depth of the texture, in pixels (i.e., the number of 2D image slices). */
     unsigned depth;
 };
 

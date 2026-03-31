@@ -11,7 +11,7 @@ namespace xl7::graphics::states {
 
 
 class BlendState
-    : public resources::detail::ResourceBase<BlendState, AbstractState>
+    : public resources::ResourceBase<BlendState, AbstractState>
 {
 
 public:
@@ -38,11 +38,7 @@ public:
 
 protected:
 
-    explicit BlendState(const CreateContext& ctx, const BlendStateDesc& desc)
-        : ResourceBase(ctx, desc)
-        , _desc(desc)
-    {
-    }
+    BlendState(const CreateContext& ctx, const BlendStateDesc& desc);
 
     ~BlendState() override = default;
 

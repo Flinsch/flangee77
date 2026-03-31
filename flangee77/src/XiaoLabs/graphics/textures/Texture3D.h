@@ -3,7 +3,7 @@
 #include "./Texture.h"
 
 #include "./Texture3DDesc.h"
-#include "./DirtyBox.h"
+#include "./Texture3DUpdater.h"
 
 
 
@@ -12,7 +12,7 @@ namespace xl7::graphics::textures {
 
 
 class Texture3D
-    : public resources::detail::ResourceBaseDirty<Texture3D, DirtyBox, Texture>
+    : public resources::ResourceBase<Texture3D, Texture>
 {
 
 public:
@@ -51,7 +51,7 @@ public:
 
 protected:
 
-    explicit Texture3D(const CreateContext& ctx, const Texture3DDesc& desc);
+    Texture3D(const CreateContext& ctx, const Texture3DDesc& desc);
 
     ~Texture3D() override = default;
 

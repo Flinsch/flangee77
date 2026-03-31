@@ -12,17 +12,27 @@ namespace xl7::graphics::shaders {
 class DirtyFlag
 {
 public:
-    bool is_dirty() const { return _dirty; }
+    bool is_dirty() const { return _all_dirty; }
 
-    void clear() { _dirty = false; }
+    bool is_all_dirty() const { return _all_dirty; }
+
+    void clear()
+    {
+        _all_dirty = false;
+    }
+
+    void set_dirty()
+    {
+        _all_dirty = true;
+    }
 
     void update(bool dirty)
     {
-        _dirty |= dirty;
+        _all_dirty |= dirty;
     }
 
 private:
-    bool _dirty = false;
+    bool _all_dirty = false;
 };
 
 

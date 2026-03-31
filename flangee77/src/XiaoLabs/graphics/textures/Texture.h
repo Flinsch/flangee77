@@ -1,12 +1,14 @@
 #ifndef XL7_GRAPHICS_TEXTURES_TEXTURE_H
 #define XL7_GRAPHICS_TEXTURES_TEXTURE_H
-#include "../../resources/Resource.h"
+#include "../../resources/ResourceBase.h"
+#include "../../resources/ResourceDataMixin.h"
+#include "../../resources/ResourceUpdateMixin.h"
 
 #include "./TextureDesc.h"
+#include "./TextureUpdater.h"
+#include "./ImageDataProvider.h"
 
 #include "../images/ResamplingMethod.h"
-
-#include "./ImageDataProvider.h"
 
 
 
@@ -19,7 +21,7 @@ class TextureManager;
 
 
 class Texture
-    : public resources::detail::ResourceBase<Texture>
+    : public resources::ResourceBase<Texture>
 {
 
 public:
@@ -58,6 +60,26 @@ public:
     const TextureDesc& get_desc() const { return _desc; }
 
     /**
+     * Returns the width of the texture, in pixels.
+     */
+    unsigned get_width() const { return _desc.width; }
+
+    /**
+     * The height of the texture, in pixels.
+     */
+    unsigned get_height() const { return _desc.height; }
+
+    /**
+     * The depth of the texture, in pixels (i.e., the number of 2D image slices, if 3D texture, otherwise trivially 1).
+     */
+    unsigned get_depth() const { return _desc.depth; }
+
+    /**
+     * The number of texture layers (if texture array or cubemap, otherwise trivially 1).
+     */
+    unsigned get_layer_count() const { return _desc.layer_count; }
+
+    /**
      * Returns the actual channel order. This may differ from the preferred channel
      * order, depending on hardware capabilities.
      */
@@ -69,16 +91,19 @@ public:
     unsigned get_bytes_per_pixel() const { return _bytes_per_pixel; }
 
     /**
-     * Returns the size of a pixel row (the offset between the start of one row and
-     * the start of the next row), in bytes.
+     * Returns the size of a pixel row, in bytes.
      */
     unsigned get_row_pitch() const { return _row_pitch; }
 
     /**
-     * Returns the size of a 2D image slice (the offset between the start of one 2D
-     * image slice and the start of the next 2D image slice if applicable), in bytes.
+     * Returns the size of a 2D image slice, in bytes.
      */
     unsigned get_slice_pitch() const { return _slice_pitch; }
+
+    /**
+     * Returns the size of a 2D image slice or a 3D volume, in bytes.
+     */
+    unsigned get_layer_pitch() const { return _layer_pitch; }
 
     /**
      * Returns the total data size of this texture, in bytes.
@@ -89,7 +114,7 @@ public:
 
 protected:
 
-    Texture(Type type, const CreateContext& ctx, const TextureDesc& desc, unsigned width, unsigned height, unsigned depth, unsigned layer_count);
+    Texture(const CreateContext& ctx, Type type, const TextureDesc& desc);
 
     ~Texture() override = default;
 
@@ -174,36 +199,24 @@ private:
     const ChannelOrder _channel_order;
 
     /**
-     * The width of the texture, in pixels.
-     */
-    const unsigned _width;
-
-    /**
-     * The height of the texture, in pixels.
-     */
-    const unsigned _height;
-
-    /**
-     * The depth of the texture, in pixels (if 3D texture, otherwise trivially 1).
-     */
-    const unsigned _depth;
-
-    /**
      * The size of each pixel, in bytes.
      */
     const unsigned _bytes_per_pixel;
 
     /**
-     * The size of a pixel row (the offset between the start of one row and the
-     * start of the next row), in bytes.
+     * The size of a pixel row, in bytes.
      */
     const unsigned _row_pitch;
 
     /**
-     * The size of a 2D image slice (the offset between the start of one 2D image
-     * slice and the start of the next 2D image slice if applicable), in bytes.
+     * The size of a 2D image slice, in bytes.
      */
     const unsigned _slice_pitch;
+
+    /**
+     * The size of a 2D image slice or a 3D volume, in bytes.
+     */
+    const unsigned _layer_pitch;
 
     /**
      * The total data size of this texture, in bytes.

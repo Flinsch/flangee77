@@ -157,7 +157,7 @@ namespace xl7::graphics::impl::direct3d11::textures {
             if (FAILED(hresult))
             {
                 LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11DeviceContext::Map"));
-                LOG_ERROR(u8"The " + get_typed_identifier_string() + u8" could not be mapped for writing.");
+                LOG_ERROR(u8"The " + get_qualified_identifier() + u8" could not be mapped for writing.");
                 return false;
             }
 

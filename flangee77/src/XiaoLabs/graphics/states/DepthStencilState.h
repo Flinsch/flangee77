@@ -11,7 +11,7 @@ namespace xl7::graphics::states {
 
 
 class DepthStencilState
-    : public resources::detail::ResourceBase<DepthStencilState, AbstractState>
+    : public resources::ResourceBase<DepthStencilState, AbstractState>
 {
 
 public:
@@ -38,11 +38,7 @@ public:
 
 protected:
 
-    explicit DepthStencilState(const CreateContext& ctx, const DepthStencilStateDesc& desc)
-        : ResourceBase(ctx, desc)
-        , _desc(desc)
-    {
-    }
+    DepthStencilState(const CreateContext& ctx, const DepthStencilStateDesc& desc);
 
     ~DepthStencilState() override = default;
 

@@ -30,16 +30,20 @@ target_sources(flangee77
     graphics/images/codecs/targa/Reader.cpp
 
     graphics/meshes/IndexBuffer.cpp
+    graphics/meshes/IndexBufferUpdater.cpp
     graphics/meshes/MeshBuffer.cpp
+    graphics/meshes/MeshBufferUpdater.cpp
     graphics/meshes/MeshManager.cpp
     graphics/meshes/MeshUtil.cpp
     graphics/meshes/VertexBuffer.cpp
+    graphics/meshes/VertexBufferUpdater.cpp
     graphics/meshes/VertexLayout.cpp
 
     graphics/shaders/CodeDataProvider.cpp
     graphics/shaders/ConstantBuffer.cpp
     graphics/shaders/ConstantBufferLayout.cpp
     graphics/shaders/ConstantBufferMapping.cpp
+    graphics/shaders/ConstantBufferUpdater.cpp
     graphics/shaders/PixelShader.cpp
     graphics/shaders/Shader.cpp
     graphics/shaders/ShaderCode.cpp
@@ -60,13 +64,19 @@ target_sources(flangee77
     graphics/surfaces/SurfaceManager.cpp
 
     graphics/textures/Cubemap.cpp
+    graphics/textures/CubemapUpdater.cpp
     graphics/textures/ImageDataProvider.cpp
     graphics/textures/Texture.cpp
     graphics/textures/Texture2D.cpp
     graphics/textures/Texture2DArray.cpp
+    graphics/textures/Texture2DArrayUpdater.cpp
+    graphics/textures/Texture2DUpdater.cpp
     graphics/textures/Texture3D.cpp
+    graphics/textures/Texture3DUpdater.cpp
     graphics/textures/TextureManager.cpp
+    graphics/textures/TextureUpdater.cpp
 
+    resources/AbstractResourceUpdater.cpp
     resources/DataProvider.cpp
     resources/DefaultDataProvider.cpp
     resources/FakeDataProvider.cpp

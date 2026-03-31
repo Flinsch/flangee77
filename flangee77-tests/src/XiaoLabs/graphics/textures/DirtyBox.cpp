@@ -11,6 +11,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  new object, not di
 {
     xl7::graphics::textures::DirtyBox dirty_box;
     TESTLABS_CHECK( !dirty_box.is_dirty() );
+    TESTLABS_CHECK( !dirty_box.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init empty, not dirty" )
@@ -18,6 +19,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init empty, not di
     xl7::graphics::textures::DirtyBox dirty_box;
     dirty_box.update( 0, 0, 0, 0, 0, 0 );
     TESTLABS_CHECK( !dirty_box.is_dirty() );
+    TESTLABS_CHECK( !dirty_box.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init empty width, not dirty" )
@@ -25,6 +27,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init empty width, 
     xl7::graphics::textures::DirtyBox dirty_box;
     dirty_box.update( 0, 0, 0, 0, 1, 1 );
     TESTLABS_CHECK( !dirty_box.is_dirty() );
+    TESTLABS_CHECK( !dirty_box.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init empty height, not dirty" )
@@ -32,6 +35,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init empty height,
     xl7::graphics::textures::DirtyBox dirty_box;
     dirty_box.update( 0, 0, 0, 1, 0, 1 );
     TESTLABS_CHECK( !dirty_box.is_dirty() );
+    TESTLABS_CHECK( !dirty_box.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init empty depth, not dirty" )
@@ -39,6 +43,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init empty depth, 
     xl7::graphics::textures::DirtyBox dirty_box;
     dirty_box.update( 0, 0, 0, 1, 1, 0 );
     TESTLABS_CHECK( !dirty_box.is_dirty() );
+    TESTLABS_CHECK( !dirty_box.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init non-empty, is dirty" )
@@ -46,6 +51,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init non-empty, is
     xl7::graphics::textures::DirtyBox dirty_box;
     dirty_box.update( 0, 0, 0, 1, 1, 1 );
     TESTLABS_CHECK( dirty_box.is_dirty() );
+    TESTLABS_CHECK( !dirty_box.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init non-empty, update empty, still dirty" )
@@ -54,6 +60,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init non-empty, up
     dirty_box.update( 0, 0, 0, 1, 1, 1 );
     dirty_box.update( 0, 0, 0, 0, 0, 0 );
     TESTLABS_CHECK( dirty_box.is_dirty() );
+    TESTLABS_CHECK( !dirty_box.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init non-empty, clear, not dirty" )
@@ -62,6 +69,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init non-empty, cl
     dirty_box.update( 0, 0, 0, 1, 1, 1 );
     dirty_box.clear();
     TESTLABS_CHECK( !dirty_box.is_dirty() );
+    TESTLABS_CHECK( !dirty_box.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  update without effect" )
@@ -70,6 +78,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  update without eff
     dirty_box.update( 20, 20, 20, 20, 20, 20 );
     dirty_box.update( 25, 25, 25, 10, 10, 10 );
     TESTLABS_CHECK( dirty_box.is_dirty() );
+    TESTLABS_CHECK( !dirty_box.is_all_dirty() );
     TESTLABS_CHECK_EQ( dirty_box.x(), 20 );
     TESTLABS_CHECK_EQ( dirty_box.y(), 20 );
     TESTLABS_CHECK_EQ( dirty_box.z(), 20 );
@@ -84,6 +93,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  update with expans
     dirty_box.update( 20, 20, 20, 20, 20, 20 );
     dirty_box.update( 5, 10, 0, 10, 20, 50 );
     TESTLABS_CHECK( dirty_box.is_dirty() );
+    TESTLABS_CHECK( !dirty_box.is_all_dirty() );
     TESTLABS_CHECK_EQ( dirty_box.x(), 5 );
     TESTLABS_CHECK_EQ( dirty_box.y(), 10 );
     TESTLABS_CHECK_EQ( dirty_box.z(), 0 );
@@ -100,4 +110,25 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init, update, clea
     dirty_box.update( 5, 10, 0, 10, 20, 50 );
     dirty_box.clear();
     TESTLABS_CHECK( !dirty_box.is_dirty() );
+    TESTLABS_CHECK( !dirty_box.is_all_dirty() );
+}
+
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  set dirty, all dirty" )
+{
+    xl7::graphics::textures::DirtyBox dirty_box;
+    dirty_box.set_dirty();
+    TESTLABS_CHECK( dirty_box.is_dirty() );
+    TESTLABS_CHECK( dirty_box.is_all_dirty() );
+}
+
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  textures:  DirtyBox:  init, set dirty, all dirty, clear, not dirty" )
+{
+    xl7::graphics::textures::DirtyBox dirty_box;
+    dirty_box.update( 20, 20, 20, 20, 20, 20 );
+    dirty_box.set_dirty();
+    TESTLABS_CHECK( dirty_box.is_dirty() );
+    TESTLABS_CHECK( dirty_box.is_all_dirty() );
+    dirty_box.clear();
+    TESTLABS_CHECK( !dirty_box.is_dirty() );
+    TESTLABS_CHECK( !dirty_box.is_all_dirty() );
 }

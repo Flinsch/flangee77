@@ -12,15 +12,26 @@ namespace xl7::graphics::textures {
 class DirtyRect
 {
 public:
-    bool is_dirty() const { return _width > 0 && _height > 0; }
+    bool is_dirty() const { return _all_dirty || (_width > 0 && _height > 0); }
+
+    bool is_all_dirty() const { return _all_dirty; }
 
     void clear()
     {
+        _all_dirty = false;
         _x = _y = _width = _height = 0;
+    }
+
+    void set_dirty()
+    {
+        _all_dirty = true;
     }
 
     void update(unsigned x, unsigned y, unsigned width, unsigned height)
     {
+        if (is_all_dirty())
+            return;
+
         if (!is_dirty())
         {
             _x = x;
@@ -47,6 +58,7 @@ public:
     unsigned height() const { return _height; }
 
 private:
+    bool _all_dirty = false;
     unsigned _x = 0;
     unsigned _y = 0;
     unsigned _width = 0;

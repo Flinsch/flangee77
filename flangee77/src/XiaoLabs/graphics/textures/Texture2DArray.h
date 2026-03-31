@@ -3,7 +3,7 @@
 #include "./Texture.h"
 
 #include "./Texture2DArrayDesc.h"
-#include "./DirtyLayerRects.h"
+#include "./Texture2DArrayUpdater.h"
 
 
 
@@ -12,7 +12,7 @@ namespace xl7::graphics::textures {
 
 
 class Texture2DArray
-    : public resources::detail::ResourceBaseDirty<Texture2DArray, DirtyLayerRects, Texture>
+    : public resources::ResourceBase<Texture2DArray, Texture>
 {
 
 public:
@@ -51,7 +51,7 @@ public:
 
 protected:
 
-    explicit Texture2DArray(const CreateContext& ctx, const Texture2DArrayDesc& desc);
+    Texture2DArray(const CreateContext& ctx, const Texture2DArrayDesc& desc);
 
     ~Texture2DArray() override = default;
 

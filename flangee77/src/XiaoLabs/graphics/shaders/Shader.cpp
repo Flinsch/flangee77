@@ -24,7 +24,7 @@ namespace xl7::graphics::shaders {
         if (!is_recompilable())
         {
             assert(is_precompiled());
-            LOG_ERROR(u8"The (precompiled) " + get_typed_identifier_string() + u8" is not recompilable.");
+            LOG_ERROR(u8"The (precompiled) " + get_qualified_identifier() + u8" is not recompilable.");
             return false;
         }
 
@@ -35,7 +35,7 @@ namespace xl7::graphics::shaders {
 
         if (!_recompile_impl(compile_options, _bytecode))
         {
-            LOG_ERROR(u8"The " + get_typed_identifier_string() + u8" could not be recompiled.");
+            LOG_ERROR(u8"The " + get_qualified_identifier() + u8" could not be recompiled.");
             return false;
         }
 
@@ -140,6 +140,15 @@ namespace xl7::graphics::shaders {
 
 
 
+    Shader::Shader(const CreateContext& ctx, Type type, const ShaderDesc& desc)
+        : ResourceBase(ctx)
+        , _type(type)
+        , _desc(desc)
+    {
+    }
+
+
+
     /**
      * Returns the effective name of the entry point for (re)compiling the shader.
      */
@@ -220,31 +229,31 @@ namespace xl7::graphics::shaders {
 
         if (code_data_provider.get_language() == ShaderCode::Language::Unknown)
         {
-            LOG_ERROR(u8"The language of the provided code for " + get_typed_identifier_string() + u8" is unknown.");
+            LOG_ERROR(u8"The language of the provided code for " + get_qualified_identifier() + u8" is unknown.");
             return false;
         }
 
         if (is_precompiled() && code_data_provider.get_language() != ShaderCode::Language::Bytecode)
         {
-            LOG_ERROR(u8"The provided code for the precompiled " + get_typed_identifier_string() + u8" has to be in bytecode.");
+            LOG_ERROR(u8"The provided code for the precompiled " + get_qualified_identifier() + u8" has to be in bytecode.");
             return false;
         }
 
         if (is_recompilable() && code_data_provider.get_language() != ShaderCode::Language::HighLevel)
         {
-            LOG_ERROR(u8"The provided code for the recompilable " + get_typed_identifier_string() + u8" has to be in high-level language.");
+            LOG_ERROR(u8"The provided code for the recompilable " + get_qualified_identifier() + u8" has to be in high-level language.");
             return false;
         }
 
         if (code_data_provider.get_code_data().empty())
         {
-            LOG_ERROR(u8"The provided code for " + get_typed_identifier_string() + u8" is empty.");
+            LOG_ERROR(u8"The provided code for " + get_qualified_identifier() + u8" is empty.");
             return false;
         }
 
         if (is_recompilable() && _cascade_entry_point(code_data_provider.get_compile_options()).empty())
         {
-            LOG_ERROR(u8"The entry point for the recompilable " + get_typed_identifier_string() + u8" was not specified.");
+            LOG_ERROR(u8"The entry point for the recompilable " + get_qualified_identifier() + u8" was not specified.");
             return false;
         }
 

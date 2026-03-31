@@ -11,7 +11,7 @@ namespace xl7::graphics::states {
 
 
 class SamplerState
-    : public resources::detail::ResourceBase<SamplerState, AbstractState>
+    : public resources::ResourceBase<SamplerState, AbstractState>
 {
 
 public:
@@ -38,11 +38,7 @@ public:
 
 protected:
 
-    explicit SamplerState(const CreateContext& ctx, const SamplerStateDesc& desc)
-        : ResourceBase(ctx, desc)
-        , _desc(desc)
-    {
-    }
+    SamplerState(const CreateContext& ctx, const SamplerStateDesc& desc);
 
     ~SamplerState() override = default;
 

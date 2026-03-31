@@ -9,7 +9,7 @@ namespace xl7::graphics::surfaces {
 
 
 class RenderTargetSurface
-    : public resources::detail::ResourceBase<RenderTargetSurface, FramebufferSurface>
+    : public resources::ResourceBase<RenderTargetSurface, FramebufferSurface>
 {
 
 public:
@@ -31,10 +31,7 @@ public:
 
 protected:
 
-    explicit RenderTargetSurface(const CreateContext& ctx, const SurfaceDesc& desc)
-        : ResourceBase(Type::RenderTargetSurface, ctx, desc)
-    {
-    }
+    RenderTargetSurface(const CreateContext& ctx, const SurfaceDesc& desc);
 
     ~RenderTargetSurface() override = default;
 

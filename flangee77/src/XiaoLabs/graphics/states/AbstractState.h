@@ -1,6 +1,6 @@
 #ifndef XL7_GRAPHICS_STATES_ABSTRACTSTATE_H
 #define XL7_GRAPHICS_STATES_ABSTRACTSTATE_H
-#include "../../resources/Resource.h"
+#include "../../resources/ResourceBase.h"
 
 
 
@@ -13,7 +13,7 @@ class StateManager;
 
 
 class AbstractState
-    : public resources::detail::ResourceBase<AbstractState>
+    : public resources::ResourceBase<AbstractState>
 {
 
 public:
@@ -28,11 +28,7 @@ public:
 
 protected:
 
-    template <class TDesc>
-    explicit AbstractState(const CreateContext& ctx, const TDesc& desc)
-        : ResourceBase(ctx, desc)
-    {
-    }
+    explicit AbstractState(const CreateContext& ctx);
 
     ~AbstractState() override = default;
 

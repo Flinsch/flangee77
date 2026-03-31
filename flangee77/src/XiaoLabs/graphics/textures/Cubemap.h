@@ -3,8 +3,7 @@
 #include "./Texture.h"
 
 #include "./CubemapDesc.h"
-#include "./CubemapFace.h"
-#include "./DirtyLayerRects.h"
+#include "./CubemapUpdater.h"
 
 
 
@@ -13,7 +12,7 @@ namespace xl7::graphics::textures {
 
 
 class Cubemap
-    : public resources::detail::ResourceBaseDirty<Cubemap, DirtyLayerRects, Texture>
+    : public resources::ResourceBase<Cubemap, Texture>
 {
 
 public:
@@ -50,7 +49,7 @@ public:
 
 protected:
 
-    explicit Cubemap(const CreateContext& ctx, const CubemapDesc& desc);
+    Cubemap(const CreateContext& ctx, const CubemapDesc& desc);
 
     ~Cubemap() override = default;
 

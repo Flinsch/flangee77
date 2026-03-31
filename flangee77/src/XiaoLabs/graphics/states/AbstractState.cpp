@@ -8,6 +8,13 @@ namespace xl7::graphics::states {
 
 
 
+    AbstractState::AbstractState(const CreateContext& ctx)
+        : ResourceBase(ctx)
+    {
+    }
+
+
+
     /**
      * Checks whether the given data provider complies with the specific properties
      * of the resource to (re)populate it, taking into account the current state of

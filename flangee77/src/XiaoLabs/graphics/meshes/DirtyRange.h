@@ -12,12 +12,26 @@ namespace xl7::graphics::meshes {
 class DirtyRange
 {
 public:
-    bool is_dirty() const { return _element_count > 0; }
+    bool is_dirty() const { return _all_dirty || _element_count > 0; }
 
-    void clear() { _first_element = _element_count = 0; }
+    bool is_all_dirty() const { return _all_dirty; }
+
+    void clear()
+    {
+        _all_dirty = false;
+        _first_element = _element_count = 0;
+    }
+
+    void set_dirty()
+    {
+        _all_dirty = true;
+    }
 
     void update(unsigned first_element, unsigned element_count)
     {
+        if (is_all_dirty())
+            return;
+
         if (!is_dirty())
         {
             _first_element = first_element;
@@ -35,6 +49,7 @@ public:
     unsigned element_count() const { return _element_count; }
 
 private:
+    bool _all_dirty = false;
     unsigned _first_element = 0;
     unsigned _element_count = 0;
 };

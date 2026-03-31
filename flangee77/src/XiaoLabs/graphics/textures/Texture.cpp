@@ -17,31 +17,31 @@ namespace xl7::graphics::textures {
 
 
 
-    Texture::Texture(Type type, const CreateContext& ctx, const TextureDesc& desc, unsigned width, unsigned height, unsigned depth, unsigned layer_count)
-        : ResourceBase(ctx, desc)
+    Texture::Texture(const CreateContext& ctx, Type type, const TextureDesc& desc)
+        : ResourceBase(ctx)
         , _type(type)
         , _desc(desc)
         , _channel_order(GraphicsSystem::instance().get_rendering_device()->recommend_channel_order(type, desc.pixel_format, desc.preferred_channel_order).first)
-        , _width(width)
-        , _height(height)
-        , _depth(depth)
         , _bytes_per_pixel(PixelLayout::determine_bytes_per_pixel(desc.pixel_format))
-        , _row_pitch(_bytes_per_pixel * width)
-        , _slice_pitch(_row_pitch * height)
-        , _data_size(_slice_pitch * depth * layer_count)
+        , _row_pitch(desc.width * _bytes_per_pixel)
+        , _slice_pitch(desc.height * _row_pitch)
+        , _layer_pitch(desc.depth * _slice_pitch)
+        , _data_size(desc.layer_count * _layer_pitch)
     {
+        assert(_data_size > 0);
+
         const RenderingDevice::Capabilities& capabilities = GraphicsSystem::instance().get_rendering_device()->get_capabilities();
 
-        if (capabilities.textures.square_only && _width != _height)
-            LOG_WARNING(u8"A non-square " + get_typed_identifier_string() + u8" is supposed to be created, but only square textures are supported.");
+        if (capabilities.textures.square_only && _desc.width != _desc.height)
+            LOG_WARNING(u8"A non-square " + get_qualified_identifier() + u8" is supposed to be created, but only square textures are supported.");
 
-        if (capabilities.textures.max_aspect_ratio && _height && _width / _height > capabilities.textures.max_aspect_ratio)
-            LOG_WARNING(u8"The " + get_typed_identifier_string() + u8" to be created has an width/height aspect ratio of " + cl7::to_string(_width / _height) + u8", but a maximum of " + cl7::to_string(capabilities.textures.max_aspect_ratio) + u8" is supported.");
-        if (capabilities.textures.max_aspect_ratio && _width && _height / _width > capabilities.textures.max_aspect_ratio)
-            LOG_WARNING(u8"The " + get_typed_identifier_string() + u8" to be created has an height/width aspect ratio of " + cl7::to_string(_height / _width) + u8", but a maximum of " + cl7::to_string(capabilities.textures.max_aspect_ratio) + u8" is supported.");
+        if (capabilities.textures.max_aspect_ratio && _desc.height && _desc.width / _desc.height > capabilities.textures.max_aspect_ratio)
+            LOG_WARNING(u8"The " + get_qualified_identifier() + u8" to be created has an width/height aspect ratio of " + cl7::to_string(_desc.width / _desc.height) + u8", but a maximum of " + cl7::to_string(capabilities.textures.max_aspect_ratio) + u8" is supported.");
+        if (capabilities.textures.max_aspect_ratio && _desc.width && _desc.height / _desc.width > capabilities.textures.max_aspect_ratio)
+            LOG_WARNING(u8"The " + get_qualified_identifier() + u8" to be created has an height/width aspect ratio of " + cl7::to_string(_desc.height / _desc.width) + u8", but a maximum of " + cl7::to_string(capabilities.textures.max_aspect_ratio) + u8" is supported.");
 
         if (!ml7::is_power_of_two(_bytes_per_pixel))
-            LOG_WARNING(u8"The " + get_typed_identifier_string() + u8" to be created has a pixel stride of " + cl7::to_string(_bytes_per_pixel) + u8" bytes (" + cl7::to_string(_bytes_per_pixel * 8) + u8" bits). Even if this were supported by the API, it should be avoided and an alternative, power-of-two format should be explicitly used (e.g., " + cl7::to_string(ml7::next_power_of_two(_bytes_per_pixel) * 8) + u8" bits).");
+            LOG_WARNING(u8"The " + get_qualified_identifier() + u8" to be created has a pixel stride of " + cl7::to_string(_bytes_per_pixel) + u8" bytes (" + cl7::to_string(_bytes_per_pixel * 8) + u8" bits). Even if this were supported by the API, it should be avoided and an alternative, power-of-two format should be explicitly used (e.g., " + cl7::to_string(ml7::next_power_of_two(_bytes_per_pixel) * 8) + u8" bits).");
     }
 
 
@@ -56,19 +56,19 @@ namespace xl7::graphics::textures {
         assert(typeid(data_provider) == typeid(const ImageDataProvider&));
         auto image_data_provider = static_cast<const ImageDataProvider&>(data_provider); // NOLINT(*-pro-type-static-cast-downcast)
 
-        if (image_data_provider.get_image_desc().width != _width)
+        if (image_data_provider.get_image_desc().width != _desc.width)
         {
-            LOG_ERROR(u8"The image width provided for " + get_typed_identifier_string() + u8" does not match the width of the " + cl7::u8string(get_type_string()) + u8".");
+            LOG_ERROR(u8"The image width provided for " + get_qualified_identifier() + u8" does not match the width of the " + cl7::u8string(get_type_string()) + u8".");
             return false;
         }
-        if (image_data_provider.get_image_desc().height != _height)
+        if (image_data_provider.get_image_desc().height != _desc.height)
         {
-            LOG_ERROR(u8"The image height provided for " + get_typed_identifier_string() + u8" does not match the height of the " + cl7::u8string(get_type_string()) + u8".");
+            LOG_ERROR(u8"The image height provided for " + get_qualified_identifier() + u8" does not match the height of the " + cl7::u8string(get_type_string()) + u8".");
             return false;
         }
-        if (image_data_provider.get_image_desc().depth != _depth)
+        if (image_data_provider.get_image_desc().depth != _desc.depth)
         {
-            LOG_ERROR(u8"The image depth provided for " + get_typed_identifier_string() + u8" does not match the depth of the " + cl7::u8string(get_type_string()) + u8".");
+            LOG_ERROR(u8"The image depth provided for " + get_qualified_identifier() + u8" does not match the depth of the " + cl7::u8string(get_type_string()) + u8".");
             return false;
         }
 
@@ -136,9 +136,9 @@ namespace xl7::graphics::textures {
         images::ImageDesc desc;
         desc.pixel_format = _desc.pixel_format;
         desc.channel_order = _channel_order;
-        desc.width = _width;
-        desc.height = _height;
-        desc.depth = _depth;
+        desc.width = _desc.width;
+        desc.height = _desc.height;
+        desc.depth = _desc.depth;
         assert(size == desc.calculate_data_size());
 
         cl7::byte_view data;
@@ -176,7 +176,7 @@ namespace xl7::graphics::textures {
     {
         if (_desc.usage == TextureUsage::Immutable)
         {
-            LOG_ERROR(u8"The immutable " + get_typed_identifier_string() + u8" cannot be updated.");
+            LOG_ERROR(u8"The immutable " + get_qualified_identifier() + u8" cannot be updated.");
             return false;
         }
 

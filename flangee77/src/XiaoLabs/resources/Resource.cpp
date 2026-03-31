@@ -16,11 +16,26 @@ namespace xl7::resources {
     // #############################################################################
 
     /**
-     * Returns the identifier of this resource (if specified, empty otherwise).
+     * Returns a "human-friendly" string that combines the resource type with the
+     * identifier of this resource. If the resource has no identifier, only the type
+     * is returned.
      */
-    cl7::u8string Resource::get_identifier_string() const
+    cl7::u8string Resource::get_qualified_identifier() const
     {
-        return get_identifier();
+        auto type_string = get_type_string();
+        auto identifier = get_identifier();
+
+        if (identifier.empty())
+            return cl7::u8string(type_string);
+
+        cl7::u8string result;
+        result.reserve(type_string.size() + identifier.size() + 3); // 1 space + 2 quotes
+        result.append(type_string);
+        result.append(u8" \"");
+        result.append(identifier);
+        result.append(u8"\"");
+
+        return result;
     }
 
     /**
@@ -31,7 +46,7 @@ namespace xl7::resources {
     {
         if (!_is_usable)
         {
-            LOG_WARNING(u8"The " + get_typed_identifier_string() + u8" appears to have already been released.");
+            LOG_WARNING(u8"The " + get_qualified_identifier() + u8" appears to have already been released.");
             return;
         }
 
@@ -50,7 +65,7 @@ namespace xl7::resources {
     {
         if (!_is_usable)
         {
-            LOG_WARNING(u8"The " + get_typed_identifier_string() + u8" appears to have already been released.");
+            LOG_WARNING(u8"The " + get_qualified_identifier() + u8" appears to have already been released.");
             return;
         }
 
@@ -64,22 +79,16 @@ namespace xl7::resources {
     // Construction / Destruction
     // #############################################################################
 
-    /**
-     * Explicit constructor.
-     */
-    Resource::Resource(ResourceManager* manager, ResourceId id, cl7::u8string_view identifier)
-        : _manager(manager)
-        , _id(id)
-        , _identifier(identifier)
+    Resource::Resource(const CreateContext& ctx)
+        : _manager(ctx.manager)
+        , _id(ctx.id)
+        , _identifier(ctx.identifier)
         , _reference_count(1)
         , _is_usable(false)
     {
         assert(_manager);
     }
 
-    /**
-     * Destructor.
-     */
     Resource::~Resource()
     {
         assert(_reference_count <= 1);
@@ -102,7 +111,7 @@ namespace xl7::resources {
         if (_is_usable)
             return true;
 
-        LOG_ERROR(u8"The " + get_typed_identifier_string() + u8" is not usable anymore.");
+        LOG_ERROR(u8"The " + get_qualified_identifier() + u8" is not usable anymore.");
         return false;
     }
 
@@ -128,7 +137,7 @@ namespace xl7::resources {
     {
         if (data_provider.get_offset() + data_provider.get_size() > size)
         {
-            LOG_ERROR(u8"The data offset and size provided for " + get_typed_identifier_string() + u8" would exceed the total size of the " + cl7::u8string(get_type_string()) + u8".");
+            LOG_ERROR(u8"The data offset and size provided for " + get_qualified_identifier() + u8" would exceed the total size of the " + cl7::u8string(get_type_string()) + u8".");
             return false;
         }
 
@@ -147,13 +156,13 @@ namespace xl7::resources {
 
         if (data_provider.get_offset() % stride != 0)
         {
-            LOG_ERROR(u8"The data offset provided for " + get_typed_identifier_string() + u8" does not match the element size of the " + cl7::u8string(get_type_string()) + u8".");
+            LOG_ERROR(u8"The data offset provided for " + get_qualified_identifier() + u8" does not match the element size of the " + cl7::u8string(get_type_string()) + u8".");
             is_valid = false;
         }
 
         if (data_provider.get_size() % stride != 0)
         {
-            LOG_ERROR(u8"The data size provided for " + get_typed_identifier_string() + u8" does not match the element size of the " + cl7::u8string(get_type_string()) + u8".");
+            LOG_ERROR(u8"The data size provided for " + get_qualified_identifier() + u8" does not match the element size of the " + cl7::u8string(get_type_string()) + u8".");
             is_valid = false;
         }
 
@@ -190,7 +199,7 @@ namespace xl7::resources {
         assert(!_is_usable);
         if (_is_usable)
         {
-            LOG_WARNING(u8"The " + get_typed_identifier_string() + u8" appears to have already been acquired.");
+            LOG_WARNING(u8"The " + get_qualified_identifier() + u8" appears to have already been acquired.");
             return false;
         }
 
@@ -201,7 +210,7 @@ namespace xl7::resources {
 
         if (!_acquire_impl(data_provider))
         {
-            LOG_ERROR(u8"The " + get_typed_identifier_string() + u8" could not be acquired.");
+            LOG_ERROR(u8"The " + get_qualified_identifier() + u8" could not be acquired.");
             _dispose();
             return false;
         }
@@ -218,7 +227,7 @@ namespace xl7::resources {
     {
         if (!_dispose_impl())
         {
-            LOG_WARNING(u8"The " + get_typed_identifier_string() + u8" could not be released without problems.");
+            LOG_WARNING(u8"The " + get_qualified_identifier() + u8" could not be released without problems.");
         }
 
         _is_usable = false;

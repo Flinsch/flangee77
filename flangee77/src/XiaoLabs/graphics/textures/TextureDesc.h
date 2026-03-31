@@ -14,7 +14,7 @@ namespace xl7::graphics::textures {
 
 struct TextureDesc
 {
-    /** Identifies how the texture is expected to be updated (frequency of update is a key factor). */
+    /** Identifies how the texture is expected to be updated. */
     TextureUsage usage;
 
     /** The pixel format. */
@@ -24,6 +24,16 @@ struct TextureDesc
 
     /** The maximum number of mipmap levels. (Use 1 for a multisampled texture; or 0 to generate a full set of subtextures, down to 1 by 1). */
     unsigned mip_levels;
+
+    /** The width of the texture, in pixels. */
+    unsigned width;
+    /** The height of the texture, in pixels. */
+    unsigned height;
+    /** The depth of the texture, in pixels (i.e., the number of 2D image slices, if 3D texture, otherwise trivially 1). */
+    unsigned depth;
+
+    /** The number of texture layers (if texture array or cubemap, otherwise trivially 1). */
+    unsigned layer_count;
 };
 
 

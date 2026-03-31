@@ -8,6 +8,16 @@ namespace xl7::graphics::surfaces {
 
 
 
+    Surface::Surface(const CreateContext& ctx, Type type, const SurfaceDesc& desc)
+        : ResourceBase(ctx)
+        , _type(type)
+        , _desc(desc)
+    {
+        assert(desc.width > 0 && desc.height > 0);
+    }
+
+
+
     /**
      * Checks whether the given data provider complies with the specific properties
      * of the resource to (re)populate it, taking into account the current state of
@@ -33,7 +43,7 @@ namespace xl7::graphics::surfaces {
      */
     bool Surface::_acquire_impl(const resources::DataProvider& data_provider)
     {
-        
+
 
         assert(false);
         return false;

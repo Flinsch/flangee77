@@ -11,6 +11,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  shaders:  DirtyFlag:  new object, not di
 {
     xl7::graphics::shaders::DirtyFlag dirty_flag;
     TESTLABS_CHECK( !dirty_flag.is_dirty() );
+    TESTLABS_CHECK( !dirty_flag.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  shaders:  DirtyFlag:  init false, not dirty" )
@@ -18,6 +19,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  shaders:  DirtyFlag:  init false, not di
     xl7::graphics::shaders::DirtyFlag dirty_flag;
     dirty_flag.update( false );
     TESTLABS_CHECK( !dirty_flag.is_dirty() );
+    TESTLABS_CHECK( !dirty_flag.is_all_dirty() );
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  shaders:  DirtyFlag:  init true, is dirty" )
@@ -25,6 +27,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  shaders:  DirtyFlag:  init true, is dirt
     xl7::graphics::shaders::DirtyFlag dirty_flag;
     dirty_flag.update( true );
     TESTLABS_CHECK( dirty_flag.is_dirty() );
+    TESTLABS_CHECK( dirty_flag.is_all_dirty() ); // "is dirty" = "all dirty"
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  shaders:  DirtyFlag:  init true, update false, still dirty" )
@@ -33,6 +36,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  shaders:  DirtyFlag:  init true, update 
     dirty_flag.update( true );
     dirty_flag.update( false );
     TESTLABS_CHECK( dirty_flag.is_dirty() );
+    TESTLABS_CHECK( dirty_flag.is_all_dirty() ); // "is dirty" = "all dirty"
 }
 
 TESTLABS_CASE( u8"XiaoLabs:  graphics:  shaders:  DirtyFlag:  init true, clear, not dirty" )
@@ -41,4 +45,22 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  shaders:  DirtyFlag:  init true, clear, 
     dirty_flag.update( true );
     dirty_flag.clear();
     TESTLABS_CHECK( !dirty_flag.is_dirty() );
+    TESTLABS_CHECK( !dirty_flag.is_all_dirty() );
+}
+
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  shaders:  DirtyFlag:  set dirty, all dirty" )
+{
+    xl7::graphics::shaders::DirtyFlag dirty_flag;
+    dirty_flag.set_dirty();
+    TESTLABS_CHECK( dirty_flag.is_dirty() );
+    TESTLABS_CHECK( dirty_flag.is_all_dirty() );
+}
+
+TESTLABS_CASE( u8"XiaoLabs:  graphics:  shaders:  DirtyFlag:  set dirty, clear, not dirty" )
+{
+    xl7::graphics::shaders::DirtyFlag dirty_flag;
+    dirty_flag.set_dirty();
+    dirty_flag.clear();
+    TESTLABS_CHECK( !dirty_flag.is_dirty() );
+    TESTLABS_CHECK( !dirty_flag.is_all_dirty() );
 }

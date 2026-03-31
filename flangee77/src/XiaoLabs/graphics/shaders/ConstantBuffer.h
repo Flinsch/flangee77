@@ -1,10 +1,12 @@
 #ifndef XL7_GRAPHICS_SHADERS_CONSTANTBUFFER_H
 #define XL7_GRAPHICS_SHADERS_CONSTANTBUFFER_H
-#include "../../resources/Resource.h"
+#include "../../resources/ResourceBase.h"
+#include "../../resources/ResourceDataMixin.h"
+#include "../../resources/ResourceUpdateMixin.h"
 
 #include "./ConstantBufferDesc.h"
+#include "./ConstantBufferUpdater.h"
 #include "./ConstantDataProvider.h"
-#include "./DirtyFlag.h"
 
 
 
@@ -17,7 +19,7 @@ class ShaderManager;
 
 
 class ConstantBuffer
-    : public resources::detail::ResourceBaseDirty<ConstantBuffer, DirtyFlag>
+    : public resources::ResourceBase<ConstantBuffer>
 {
 
 public:
@@ -49,11 +51,7 @@ public:
 
 protected:
 
-    explicit ConstantBuffer(const CreateContext& ctx, const ConstantBufferDesc& desc)
-        : ResourceBaseDirty(ctx, desc)
-        , _desc(desc)
-    {
-    }
+    ConstantBuffer(const CreateContext& ctx, const ConstantBufferDesc& desc);
 
     ~ConstantBuffer() override = default;
 

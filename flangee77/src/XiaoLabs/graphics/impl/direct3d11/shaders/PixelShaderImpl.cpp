@@ -98,7 +98,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
         bytecode_out = shared::shaders::D3DShaderCompiler::compile_hlsl_code(hlsl_code, u8"", code_data_provider.get_compile_options(), entry_point, target);
         if (bytecode_out.get_code_data().empty())
         {
-            LOG_ERROR(u8"The " + get_typed_identifier_string() + u8" could not be compiled.");
+            LOG_ERROR(u8"The " + get_qualified_identifier() + u8" could not be compiled.");
             return false;
         }
 

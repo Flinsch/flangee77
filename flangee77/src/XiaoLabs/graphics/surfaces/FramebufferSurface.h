@@ -11,7 +11,7 @@ namespace xl7::graphics::surfaces {
 
 
 class FramebufferSurface
-    : public resources::detail::ResourceBase<FramebufferSurface, Surface>
+    : public resources::ResourceBase<FramebufferSurface, Surface>
 {
 
 public:
@@ -38,11 +38,7 @@ public:
 
 protected:
 
-    FramebufferSurface(Type type, const CreateContext& ctx, const SurfaceDesc& desc)
-        : ResourceBase(Type::RenderTargetSurface, ctx, desc)
-        , _default_viewport{.x = 0, .y = 0, .width = desc.width, .height = desc.height, .min_z = 0.0f, .max_z = 1.0f}
-    {
-    }
+    FramebufferSurface(const CreateContext& ctx, Type type, const SurfaceDesc& desc);
 
     ~FramebufferSurface() override = default;
 
