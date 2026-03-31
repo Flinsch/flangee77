@@ -318,6 +318,11 @@ namespace xl7::graphics::impl::direct3d11 {
         }
         // NOLINTEND(*-use-designated-initializers)
 
+        // Adopt buffer capabilities.
+        capabilities.buffers.max_constant_buffer_size = D3D11_REQ_CONSTANT_BUFFER_ELEMENT_COUNT * 16; // Each element is a 16-byte constant register (float4).
+        capabilities.buffers.max_vertex_buffer_size = 0x7fffffff;
+        capabilities.buffers.max_index_buffer_size = 0x7fffffff;
+
         // Adopt the supported texture capabilities.
         capabilities.textures.max_texture_2d_width = D3D11_REQ_TEXTURE2D_U_OR_V_DIMENSION;
         capabilities.textures.max_texture_2d_height = D3D11_REQ_TEXTURE2D_U_OR_V_DIMENSION;
@@ -334,13 +339,13 @@ namespace xl7::graphics::impl::direct3d11 {
         capabilities.textures.max_aspect_ratio = 0;
 
         // Adopt other capabilities.
+        capabilities.max_anisotropy = D3D11_REQ_MAXANISOTROPY;
+
+        // And more.
         capabilities.max_simultaneous_render_target_count = D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT;
         capabilities.max_concurrent_vertex_stream_count = D3D11_IA_VERTEX_INPUT_RESOURCE_SLOT_COUNT;
         capabilities.max_constant_buffer_slot_count = D3D11_COMMONSHADER_CONSTANT_BUFFER_API_SLOT_COUNT;
         capabilities.max_texture_sampler_slot_count = D3D11_COMMONSHADER_SAMPLER_SLOT_COUNT;
-
-        // And more.
-        capabilities.max_anisotropy = D3D11_REQ_MAXANISOTROPY;
 
         // Query the DXGI device interface.
         wrl::ComPtr<IDXGIDeviceN> dxgi_device;

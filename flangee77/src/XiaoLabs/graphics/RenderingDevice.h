@@ -47,14 +47,24 @@ public:
             size_t shared_system_memory = 0;
         } memory;
 
-        /** The maximum number of simultaneous (color) render targets. */
-        unsigned max_simultaneous_render_target_count;
-        /** The maximum number of concurrent vertex data streams. */
-        unsigned max_concurrent_vertex_stream_count;
-        /** The maximum number of constant buffer slots for any shader. */
-        unsigned max_constant_buffer_slot_count;
-        /** The maximum number of texture/sampler slots for any shader. */
-        unsigned max_texture_sampler_slot_count;
+        struct
+        {
+            /** The maximum supported vertex shader version. */
+            cl7::Version vertex_shader_version;
+            /** The maximum supported pixel shader version. */
+            cl7::Version pixel_shader_version;
+        } shaders;
+
+        struct
+        {
+            /** The maximum size of a constant buffer, in bytes. */
+            unsigned max_constant_buffer_size;
+
+            /** The maximum size of a vertex buffer, in bytes. */
+            unsigned max_vertex_buffer_size;
+            /** The maximum size of an index buffer, in bytes. */
+            unsigned max_index_buffer_size;
+        } buffers;
 
         struct
         {
@@ -84,13 +94,14 @@ public:
         /** The maximum supported anisotropy to use when sampling a texture for minification, magnification, or mip-level sampling. */
         unsigned max_anisotropy;
 
-        struct
-        {
-            /** The maximum supported vertex shader version. */
-            cl7::Version vertex_shader_version;
-            /** The maximum supported pixel shader version. */
-            cl7::Version pixel_shader_version;
-        } shaders;
+        /** The maximum number of simultaneous (color) render targets. */
+        unsigned max_simultaneous_render_target_count;
+        /** The maximum number of concurrent vertex data streams. */
+        unsigned max_concurrent_vertex_stream_count;
+        /** The maximum number of constant buffer slots for any shader. */
+        unsigned max_constant_buffer_slot_count;
+        /** The maximum number of texture/sampler slots for any shader. */
+        unsigned max_texture_sampler_slot_count;
 
     }; // struct Capabilities
 

@@ -113,6 +113,11 @@ namespace xl7::graphics::impl::direct3d9 {
             .minor = static_cast<unsigned>(D3DSHADER_VERSION_MINOR(_d3d_device_caps.PixelShaderVersion)),
         };
 
+        // Adopt buffer capabilities.
+        capabilities.buffers.max_constant_buffer_size = 4096 * 16; // There are no actual constant buffers in Direct3D 9. Just take a "reasonable" size from Direct3D 11.
+        capabilities.buffers.max_vertex_buffer_size = 0x7fffffff;
+        capabilities.buffers.max_index_buffer_size = 0x7fffffff;
+
         // Adopt the supported texture capabilities.
         capabilities.textures.max_texture_2d_width = _d3d_device_caps.MaxTextureWidth;
         capabilities.textures.max_texture_2d_height = _d3d_device_caps.MaxTextureHeight;
@@ -126,13 +131,13 @@ namespace xl7::graphics::impl::direct3d9 {
         capabilities.textures.max_aspect_ratio = _d3d_device_caps.MaxTextureAspectRatio;
 
         // Adopt other capabilities.
+        capabilities.max_anisotropy = _d3d_device_caps.MaxAnisotropy;
+
+        // And more.
         capabilities.max_simultaneous_render_target_count = _d3d_device_caps.NumSimultaneousRTs;
         capabilities.max_concurrent_vertex_stream_count = _d3d_device_caps.MaxStreams;
         capabilities.max_constant_buffer_slot_count = pipeline::AbstractShaderStage::MAX_CONSTANT_BUFFER_SLOTS; // There are no actual constant buffers in Direct3D 9. Just take the framework limit.
         capabilities.max_texture_sampler_slot_count = _d3d_device_caps.MaxSimultaneousTextures;
-
-        // And more.
-        capabilities.max_anisotropy = _d3d_device_caps.MaxAnisotropy;
 
         // (Try to) determine the available
         // video memory composition.
