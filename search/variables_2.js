@@ -18,8 +18,9 @@ var searchData=
   ['blue_15',['BLUE',['../de/df3/structxl7_1_1graphics_1_1Color.html#a6bfc213f61c4fcbc53188f989a08b6bb',1,'xl7::graphics::Color']]],
   ['border_5fcolor_16',['border_color',['../d4/d56/structxl7_1_1graphics_1_1states_1_1SamplerStateDesc.html#a1a0c53da47b9b8b51c34e2aac8d10f61',1,'xl7::graphics::states::SamplerStateDesc']]],
   ['bounding_5fbox_17',['bounding_box',['../d2/d26/structfl7_1_1fonts_1_1Glyph.html#aec86644167babae0019e996e819d6bfc',1,'fl7::fonts::Glyph']]],
-  ['build_18',['build',['../db/ddf/structcl7_1_1Version.html#ac738d896b72cff8fb01206ddd8d7db9f',1,'cl7::Version']]],
-  ['bytes_19',['bytes',['../dc/dbd/structcl7_1_1Guid.html#a1f27f226157d2905af8342816eff5478',1,'cl7::Guid']]],
-  ['bytes_5fper_5fpixel_20',['bytes_per_pixel',['../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#a559ac42410ac3b61e0a9c69d892b5257',1,'xl7::graphics::PixelLayout']]],
-  ['bytes_5fper_5fscanline_21',['bytes_per_scanline',['../de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html#ad3a16b510c1a03528bb9bbf0f24b5270',1,'xl7::graphics::images::codecs::png::Reader::BitInfo']]]
+  ['buffers_18',['buffers',['../dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#ac1bd4a904f83d255053d1cfb34b06f7a',1,'xl7::graphics::RenderingDevice::Capabilities']]],
+  ['build_19',['build',['../db/ddf/structcl7_1_1Version.html#ac738d896b72cff8fb01206ddd8d7db9f',1,'cl7::Version']]],
+  ['bytes_20',['bytes',['../dc/dbd/structcl7_1_1Guid.html#a1f27f226157d2905af8342816eff5478',1,'cl7::Guid']]],
+  ['bytes_5fper_5fpixel_21',['bytes_per_pixel',['../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#a559ac42410ac3b61e0a9c69d892b5257',1,'xl7::graphics::PixelLayout']]],
+  ['bytes_5fper_5fscanline_22',['bytes_per_scanline',['../de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html#ad3a16b510c1a03528bb9bbf0f24b5270',1,'xl7::graphics::images::codecs::png::Reader::BitInfo']]]
 ];
