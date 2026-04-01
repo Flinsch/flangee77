@@ -7,7 +7,7 @@ var classxl7_1_1graphics_1_1meshes_1_1MeshBuffer =
     [ "MeshBuffer", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#a8589440cbb56a478555164f05e389192", null ],
     [ "MeshBuffer", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#a2fed64a5f2200cdc8e1916751a30e228", null ],
     [ "MeshBuffer", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#a361772d0e07f8b012b122cdf8a35922c", null ],
-    [ "MeshBuffer", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#ae5289d1356ee194f374f80a4e7865ab8", null ],
+    [ "MeshBuffer", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#adfa083ce99004c2c464ff2c8f861f686", null ],
     [ "~MeshBuffer", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#a94d021f40d2ba04c074039a4a9286cc7", null ],
     [ "_check_data_impl", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#ac45c044dae877726e13a55b4ad1b9694", null ],
     [ "_update_impl", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#af3b77fdc766d7e0f16d9eb2dbbdcb0e7", null ],
@@ -21,7 +21,6 @@ var classxl7_1_1graphics_1_1meshes_1_1MeshBuffer =
     [ "update", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#a241ed0ddf0153663828c25ffa05a6040", null ],
     [ "_data_size", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#a6cc52376681b468f4db876d47ec9e7b2", null ],
     [ "_desc", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#a150b77f03d0c67d69ea7f9e5785e39b4", null ],
-    [ "_element_stride", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#a1b014e5aa68307e39aa0602150a1adb3", null ],
     [ "_primitive_count", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#a7996fc695a3d8fd36d54a887369cab6e", null ],
     [ "_type", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html#a8940587bed124b5f283bcf0d67234b91", null ]
 ];

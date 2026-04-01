@@ -23,13 +23,14 @@ var searchData=
   ['directastbuilder_3c_20toml_20_3e_20',['DirectAstBuilder&lt; Toml &gt;',['../df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html',1,'dl7::syntax']]],
   ['dirtybox_21',['DirtyBox',['../d9/dfa/classxl7_1_1graphics_1_1textures_1_1DirtyBox.html',1,'xl7::graphics::textures']]],
   ['dirtyflag_22',['DirtyFlag',['../de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html',1,'xl7::graphics::shaders']]],
-  ['dirtylayerrects_23',['DirtyLayerRects',['../dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects.html',1,'xl7::graphics::textures']]],
-  ['dirtyrange_24',['DirtyRange',['../dc/d1a/classxl7_1_1graphics_1_1meshes_1_1DirtyRange.html',1,'xl7::graphics::meshes']]],
-  ['dirtyrect_25',['DirtyRect',['../d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect.html',1,'xl7::graphics::textures']]],
-  ['document_26',['Document',['../de/dd5/classdl7_1_1xml_1_1Document.html',1,'dl7::xml']]],
-  ['doublequotedstringmatcher_27',['DoubleQuotedStringMatcher',['../db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html',1,'dl7::syntax::matchers']]],
-  ['driverbasedcomponent_28',['DriverBasedComponent',['../d8/d3d/classxl7_1_1DriverBasedComponent.html',1,'xl7']]],
-  ['driverbasedcomponent_3c_20graphicssystem_20_3e_29',['DriverBasedComponent&lt; GraphicsSystem &gt;',['../d8/d3d/classxl7_1_1DriverBasedComponent.html',1,'xl7']]],
-  ['driverentry_30',['DriverEntry',['../df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html',1,'xl7::DriverResolver']]],
-  ['driverresolver_31',['DriverResolver',['../de/d70/structxl7_1_1DriverResolver.html',1,'xl7']]]
+  ['dirtylayerboxes_23',['DirtyLayerBoxes',['../d3/d50/classxl7_1_1graphics_1_1textures_1_1DirtyLayerBoxes.html',1,'xl7::graphics::textures']]],
+  ['dirtylayerrects_24',['DirtyLayerRects',['../dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects.html',1,'xl7::graphics::textures']]],
+  ['dirtyrange_25',['DirtyRange',['../dc/d1a/classxl7_1_1graphics_1_1meshes_1_1DirtyRange.html',1,'xl7::graphics::meshes']]],
+  ['dirtyrect_26',['DirtyRect',['../d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect.html',1,'xl7::graphics::textures']]],
+  ['document_27',['Document',['../de/dd5/classdl7_1_1xml_1_1Document.html',1,'dl7::xml']]],
+  ['doublequotedstringmatcher_28',['DoubleQuotedStringMatcher',['../db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html',1,'dl7::syntax::matchers']]],
+  ['driverbasedcomponent_29',['DriverBasedComponent',['../d8/d3d/classxl7_1_1DriverBasedComponent.html',1,'xl7']]],
+  ['driverbasedcomponent_3c_20graphicssystem_20_3e_30',['DriverBasedComponent&lt; GraphicsSystem &gt;',['../d8/d3d/classxl7_1_1DriverBasedComponent.html',1,'xl7']]],
+  ['driverentry_31',['DriverEntry',['../df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html',1,'xl7::DriverResolver']]],
+  ['driverresolver_32',['DriverResolver',['../de/d70/structxl7_1_1DriverResolver.html',1,'xl7']]]
 ];

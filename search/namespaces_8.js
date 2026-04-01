@@ -35,6 +35,5 @@ var searchData=
   ['xl7_3a_3agraphics_3a_3asurfaces_32',['surfaces',['../d4/d74/namespacexl7_1_1graphics_1_1surfaces.html',1,'xl7::graphics']]],
   ['xl7_3a_3agraphics_3a_3atextures_33',['textures',['../dd/d18/namespacexl7_1_1graphics_1_1textures.html',1,'xl7::graphics']]],
   ['xl7_3a_3ainput_34',['input',['../df/d6d/namespacexl7_1_1input.html',1,'xl7']]],
-  ['xl7_3a_3aresources_35',['resources',['../da/d60/namespacexl7_1_1resources.html',1,'xl7']]],
-  ['xl7_3a_3aresources_3a_3adetail_36',['detail',['../db/dd8/namespacexl7_1_1resources_1_1detail.html',1,'xl7::resources']]]
+  ['xl7_3a_3aresources_35',['resources',['../da/d60/namespacexl7_1_1resources.html',1,'xl7']]]
 ];

@@ -108,6 +108,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a3c7563dd5251e1922aa6233cbf8aa016"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a049ca1d2acca40e391a17e9808c2b0d2" id="r_a049ca1d2acca40e391a17e9808c2b0d2"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dbb/structxl7_1_1graphics_1_1meshes_1_1MeshBufferDesc.html#a049ca1d2acca40e391a17e9808c2b0d2">element_count</a></td></tr>
 <tr class="separator:a049ca1d2acca40e391a17e9808c2b0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63fff1804eaea7005f1ed6becb494e0d" id="r_a63fff1804eaea7005f1ed6becb494e0d"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dbb/structxl7_1_1graphics_1_1meshes_1_1MeshBufferDesc.html#a63fff1804eaea7005f1ed6becb494e0d">element_stride</a></td></tr>
+<tr class="separator:a63fff1804eaea7005f1ed6becb494e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a049ca1d2acca40e391a17e9808c2b0d2" name="a049ca1d2acca40e391a17e9808c2b0d2"></a>
@@ -121,7 +123,22 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The number of elements within the buffer, regardless of the topology (i.e., vertices or indices, not primitives). </p>
+<p>The number of elements within the buffer, regardless of the topology (not bytes, not primitives). </p>
+
+</div>
+</div>
+<a id="a63fff1804eaea7005f1ed6becb494e0d" name="a63fff1804eaea7005f1ed6becb494e0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63fff1804eaea7005f1ed6becb494e0d">&#9670;&#160;</a></span>element_stride</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned xl7::graphics::meshes::MeshBufferDesc::element_stride</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The size of each buffer element, in bytes. </p>
 
 </div>
 </div>
@@ -151,7 +168,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Identifies how the buffer is expected to be updated (frequency of update is a key factor). </p>
+<p>Identifies how the buffer is expected to be updated. </p>
 
 </div>
 </div>

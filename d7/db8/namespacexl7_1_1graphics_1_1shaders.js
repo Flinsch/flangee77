@@ -7,6 +7,8 @@ var namespacexl7_1_1graphics_1_1shaders =
     [ "ConstantBufferDesc", "d2/d57/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDesc.html", "d2/d57/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDesc" ],
     [ "ConstantBufferLayout", "d8/d12/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferLayout.html", "d8/d12/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferLayout" ],
     [ "ConstantBufferMapping", "df/de3/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferMapping.html", "df/de3/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferMapping" ],
+    [ "ConstantBufferUpdater", "db/de4/classxl7_1_1graphics_1_1shaders_1_1ConstantBufferUpdater.html", "db/de4/classxl7_1_1graphics_1_1shaders_1_1ConstantBufferUpdater" ],
+    [ "ConstantBufferWrite", "d3/d68/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferWrite.html", "d3/d68/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferWrite" ],
     [ "ConstantDataProvider", "d1/dc3/classxl7_1_1graphics_1_1shaders_1_1ConstantDataProvider.html", "d1/dc3/classxl7_1_1graphics_1_1shaders_1_1ConstantDataProvider" ],
     [ "ConstantDeclaration", "d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html", "d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration" ],
     [ "ConstantMapping", "d2/d58/structxl7_1_1graphics_1_1shaders_1_1ConstantMapping.html", "d2/d58/structxl7_1_1graphics_1_1shaders_1_1ConstantMapping" ],

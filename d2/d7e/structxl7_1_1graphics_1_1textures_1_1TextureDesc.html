@@ -110,8 +110,61 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a991fd104f64a001912b4a0ae64aad5af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae30c039d7396e4d4931ec90c3dbe23b0" id="r_ae30c039d7396e4d4931ec90c3dbe23b0"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d7e/structxl7_1_1graphics_1_1textures_1_1TextureDesc.html#ae30c039d7396e4d4931ec90c3dbe23b0">mip_levels</a></td></tr>
 <tr class="separator:ae30c039d7396e4d4931ec90c3dbe23b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7564a6b051195f6e17d957992efe435e" id="r_a7564a6b051195f6e17d957992efe435e"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d7e/structxl7_1_1graphics_1_1textures_1_1TextureDesc.html#a7564a6b051195f6e17d957992efe435e">width</a></td></tr>
+<tr class="separator:a7564a6b051195f6e17d957992efe435e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2964a8d6d1a295b096474fdce97bc27f" id="r_a2964a8d6d1a295b096474fdce97bc27f"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d7e/structxl7_1_1graphics_1_1textures_1_1TextureDesc.html#a2964a8d6d1a295b096474fdce97bc27f">height</a></td></tr>
+<tr class="separator:a2964a8d6d1a295b096474fdce97bc27f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad14704a7e76d4ad71e356a91182aebff" id="r_ad14704a7e76d4ad71e356a91182aebff"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d7e/structxl7_1_1graphics_1_1textures_1_1TextureDesc.html#ad14704a7e76d4ad71e356a91182aebff">depth</a></td></tr>
+<tr class="separator:ad14704a7e76d4ad71e356a91182aebff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05b1dd0f191119ed305db707a4825f97" id="r_a05b1dd0f191119ed305db707a4825f97"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d7e/structxl7_1_1graphics_1_1textures_1_1TextureDesc.html#a05b1dd0f191119ed305db707a4825f97">layer_count</a></td></tr>
+<tr class="separator:a05b1dd0f191119ed305db707a4825f97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad14704a7e76d4ad71e356a91182aebff" name="ad14704a7e76d4ad71e356a91182aebff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad14704a7e76d4ad71e356a91182aebff">&#9670;&#160;</a></span>depth</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned xl7::graphics::textures::TextureDesc::depth</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The depth of the texture, in pixels (i.e., the number of 2D image slices, if 3D texture, otherwise trivially 1). </p>
+
+</div>
+</div>
+<a id="a2964a8d6d1a295b096474fdce97bc27f" name="a2964a8d6d1a295b096474fdce97bc27f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2964a8d6d1a295b096474fdce97bc27f">&#9670;&#160;</a></span>height</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned xl7::graphics::textures::TextureDesc::height</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The height of the texture, in pixels. </p>
+
+</div>
+</div>
+<a id="a05b1dd0f191119ed305db707a4825f97" name="a05b1dd0f191119ed305db707a4825f97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05b1dd0f191119ed305db707a4825f97">&#9670;&#160;</a></span>layer_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned xl7::graphics::textures::TextureDesc::layer_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The number of texture layers (if texture array or cubemap, otherwise trivially 1). </p>
+
+</div>
+</div>
 <a id="ae30c039d7396e4d4931ec90c3dbe23b0" name="ae30c039d7396e4d4931ec90c3dbe23b0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae30c039d7396e4d4931ec90c3dbe23b0">&#9670;&#160;</a></span>mip_levels</h2>
 
@@ -168,7 +221,22 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Identifies how the texture is expected to be updated (frequency of update is a key factor). </p>
+<p>Identifies how the texture is expected to be updated. </p>
+
+</div>
+</div>
+<a id="a7564a6b051195f6e17d957992efe435e" name="a7564a6b051195f6e17d957992efe435e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7564a6b051195f6e17d957992efe435e">&#9670;&#160;</a></span>width</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned xl7::graphics::textures::TextureDesc::width</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The width of the texture, in pixels. </p>
 
 </div>
 </div>

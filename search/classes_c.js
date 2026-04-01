@@ -12,8 +12,10 @@ var searchData=
   ['memorystatus_9',['MemoryStatus',['../d2/dea/structcl7_1_1platform_1_1memory_1_1MemoryStatus.html',1,'cl7::platform::memory']]],
   ['meshbuffer_10',['MeshBuffer',['../dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html',1,'xl7::graphics::meshes']]],
   ['meshbufferdesc_11',['MeshBufferDesc',['../db/dbb/structxl7_1_1graphics_1_1meshes_1_1MeshBufferDesc.html',1,'xl7::graphics::meshes']]],
-  ['meshmanager_12',['MeshManager',['../d3/d9b/classxl7_1_1graphics_1_1meshes_1_1MeshManager.html',1,'xl7::graphics::meshes']]],
-  ['meshutil_13',['MeshUtil',['../d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil.html',1,'xl7::graphics::meshes']]],
-  ['meta_14',['Meta',['../dd/d81/structtl7_1_1Meta.html',1,'tl7']]],
-  ['multilineoptions_15',['MultiLineOptions',['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html',1,'dl7::json::Format']]]
+  ['meshbufferupdater_12',['MeshBufferUpdater',['../d7/dcf/classxl7_1_1graphics_1_1meshes_1_1MeshBufferUpdater.html',1,'xl7::graphics::meshes']]],
+  ['meshbufferwrite_13',['MeshBufferWrite',['../df/d19/structxl7_1_1graphics_1_1meshes_1_1MeshBufferWrite.html',1,'xl7::graphics::meshes']]],
+  ['meshmanager_14',['MeshManager',['../d3/d9b/classxl7_1_1graphics_1_1meshes_1_1MeshManager.html',1,'xl7::graphics::meshes']]],
+  ['meshutil_15',['MeshUtil',['../d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil.html',1,'xl7::graphics::meshes']]],
+  ['meta_16',['Meta',['../dd/d81/structtl7_1_1Meta.html',1,'tl7']]],
+  ['multilineoptions_17',['MultiLineOptions',['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html',1,'dl7::json::Format']]]
 ];
