@@ -124,6 +124,8 @@ Collaboration diagram for xl7::graphics::images::ImageConverter:</div>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a1f2d74338d063b81d630fdbfce213d4b" id="r_a1f2d74338d063b81d630fdbfce213d4b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html">Image</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter.html#a1f2d74338d063b81d630fdbfce213d4b">convert_image</a> (const <a class="el" href="../../d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html">Image</a> &amp;source_image, <a class="el" href="../../d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082d">PixelFormat</a> pixel_format, <a class="el" href="../../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2">ChannelOrder</a> channel_order)</td></tr>
 <tr class="separator:a1f2d74338d063b81d630fdbfce213d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7572d1a5245c80ff4c633ca7dd9818b4" id="r_a7572d1a5245c80ff4c633ca7dd9818b4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">cl7::byte_vector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter.html#a7572d1a5245c80ff4c633ca7dd9818b4">convert_image_data</a> (const <a class="el" href="../../d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc.html">ImageDesc</a> &amp;source_desc, <a class="el" href="../../d1/d2e/namespacecl7.html#a392a212050307677351feba78ccf36e6">cl7::byte_view</a> source_data, <a class="el" href="../../d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082d">PixelFormat</a> pixel_format, <a class="el" href="../../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2">ChannelOrder</a> channel_order)</td></tr>
+<tr class="separator:a7572d1a5245c80ff4c633ca7dd9818b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_structxl7_1_1graphics_1_1images_1_1ImageProcessor"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_structxl7_1_1graphics_1_1images_1_1ImageProcessor')"><img src="../../closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="../../d1/d92/structxl7_1_1graphics_1_1images_1_1ImageProcessor.html">xl7::graphics::images::ImageProcessor</a></td></tr>
 <tr class="memitem:a2f51289e6d523e8a408990bf9e2e23a9 inherit pub_static_methods_structxl7_1_1graphics_1_1images_1_1ImageProcessor" id="r_a2f51289e6d523e8a408990bf9e2e23a9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d92/structxl7_1_1graphics_1_1images_1_1ImageProcessor.html#a2f51289e6d523e8a408990bf9e2e23a9">pack_color</a> (const <a class="el" href="../../de/df3/structxl7_1_1graphics_1_1Color.html">Color</a> &amp;color, <a class="el" href="../../d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082d">PixelFormat</a> pixel_format, <a class="el" href="../../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2">ChannelOrder</a> channel_order, <a class="el" href="../../d1/d2e/namespacecl7.html#acdad82ceadf0df7bee113b825df98a5d">cl7::byte_span</a> packed_data)</td></tr>
 <tr class="separator:a2f51289e6d523e8a408990bf9e2e23a9 inherit pub_static_methods_structxl7_1_1graphics_1_1images_1_1ImageProcessor"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -176,7 +178,56 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Copies pixel data from one image to another, possibly converting the data to the specified pixel format and/or channel order. The image size does not change. </p>
+<p>Copies pixel data from one image to another, possibly converting the data to the specified pixel format and/or channel order. The image size (width and height) does not change. </p>
+
+</div>
+</div>
+<a id="a7572d1a5245c80ff4c633ca7dd9818b4" name="a7572d1a5245c80ff4c633ca7dd9818b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7572d1a5245c80ff4c633ca7dd9818b4">&#9670;&#160;</a></span>convert_image_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">cl7::byte_vector</a> xl7::graphics::images::ImageConverter::convert_image_data </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc.html">ImageDesc</a> &amp;&#160;</td>
+          <td class="paramname"><em>source_desc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d1/d2e/namespacecl7.html#a392a212050307677351feba78ccf36e6">cl7::byte_view</a>&#160;</td>
+          <td class="paramname"><em>source_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082d">PixelFormat</a>&#160;</td>
+          <td class="paramname"><em>pixel_format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2">ChannelOrder</a>&#160;</td>
+          <td class="paramname"><em>channel_order</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Copies pixel data from one buffer to another, possibly converting the data to the specified pixel format and/or channel order. The image size (width and height) does not change. </p>
 
 </div>
 </div>

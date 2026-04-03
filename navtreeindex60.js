@@ -1,5 +1,7 @@
 var NAVTREEINDEX60 =
 {
+"df/db8/classcl7_1_1io_1_1IWritable.html#aee1e3e184ea94778d45c9cdf63266e17":[7,0,1,3,10,1],
+"df/db8/classcl7_1_1io_1_1IWritable.html#aee1e3e184ea94778d45c9cdf63266e17":[5,0,1,3,10,1],
 "df/db9/bits_8h.html":[8,0,1,10],
 "df/db9/bits_8h.html#a02c04cb8a39a15316ea1b82656f020c8":[8,0,1,10,3],
 "df/db9/bits_8h.html#a167cb3659d07c546f0bf4de525dc92e2":[8,0,1,10,9],
@@ -247,7 +249,5 @@ var NAVTREEINDEX60 =
 "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html":[5,0,8,2,7,24],
 "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html":[7,0,8,1,7,24],
 "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#a17d957d6a255911b00e8d2db5226df90":[5,0,8,2,7,24,2],
-"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#a17d957d6a255911b00e8d2db5226df90":[7,0,8,1,7,24,2],
-"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#a31790d71495ced3a9b5d3e3708a6d2b1":[5,0,8,2,7,24,3],
-"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#a31790d71495ced3a9b5d3e3708a6d2b1":[7,0,8,1,7,24,3]
+"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#a17d957d6a255911b00e8d2db5226df90":[7,0,8,1,7,24,2]
 };

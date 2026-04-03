@@ -256,7 +256,7 @@ var searchData=
   ['resourceupdaterbase_3c_20texture3ddesc_2c_20dirtybox_20_3e_253',['ResourceUpdaterBase&lt; Texture3DDesc, DirtyBox &gt;',['../d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html',1,'xl7::resources']]],
   ['resourceupdaterbase_3c_20texturedesc_2c_20dirtylayerboxes_20_3e_254',['ResourceUpdaterBase&lt; TextureDesc, DirtyLayerBoxes &gt;',['../d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html',1,'xl7::resources']]],
   ['resourceupdaterbase_3c_20vertexbufferdesc_2c_20dirtyrange_20_3e_255',['ResourceUpdaterBase&lt; VertexBufferDesc, DirtyRange &gt;',['../d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html',1,'xl7::resources']]],
-  ['result_256',['result',['../da/d3a/structtl7_1_1Result.html',1,'tl7::Result'],['../dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html#a806e3683a8f54412f1958f20966c7d58',1,'cl7::text::codec::Decoder::iterator::result()'],['../da/d3a/structtl7_1_1Result.html#a75bb827630a18dc8bdfaf9837cf08564',1,'tl7::Result::Result()']]],
+  ['result_256',['result',['../da/d3a/structtl7_1_1Result.html',1,'tl7::Result'],['../da/d3a/structtl7_1_1Result.html#a75bb827630a18dc8bdfaf9837cf08564',1,'tl7::Result::Result()'],['../dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html#a806e3683a8f54412f1958f20966c7d58',1,'cl7::text::codec::Decoder::iterator::result()']]],
   ['result_2ecpp_257',['Result.cpp',['../d9/d55/Result_8cpp.html',1,'']]],
   ['result_2eh_258',['Result.h',['../d8/d27/Result_8h.html',1,'']]],
   ['result_5fmeta_259',['result_meta',['../da/d3a/structtl7_1_1Result.html#af0bf36ebe997c76bdb8ca90ce1cde2cd',1,'tl7::Result']]],
