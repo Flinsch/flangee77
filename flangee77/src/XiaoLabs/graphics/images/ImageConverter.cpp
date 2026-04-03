@@ -12,12 +12,11 @@ namespace xl7::graphics::images {
 
     /**
      * Copies pixel data from one image to another, possibly converting the data to
-     * the specified pixel format and/or channel order. The image size does not
-     * change.
+     * the specified pixel format and/or channel order. The image size (width and
+     * height) does not change.
      */
     Image ImageConverter::convert_image(const Image& source_image, PixelFormat pixel_format, ChannelOrder channel_order)
     {
-        const ImageDesc source_desc = source_image.get_desc();
         const ImageDesc target_desc = {
             .pixel_format = pixel_format,
             .channel_order = channel_order,
@@ -26,12 +25,24 @@ namespace xl7::graphics::images {
             .depth = source_image.get_desc().depth,
         };
 
-        if (source_desc.pixel_format == PixelFormat::UNKNOWN || target_desc.pixel_format == PixelFormat::UNKNOWN)
+        auto target_data = convert_image_data(source_image.get_desc(), source_image.get_data(), pixel_format, channel_order);
+
+        return {target_desc, std::move(target_data)};
+    }
+
+    /**
+     * Copies pixel data from one buffer to another, possibly converting the data to
+     * the specified pixel format and/or channel order. The image size (width and
+     * height) does not change.
+     */
+    cl7::byte_vector ImageConverter::convert_image_data(const ImageDesc& source_desc, cl7::byte_view source_data, PixelFormat pixel_format, ChannelOrder channel_order)
+    {
+        if (source_desc.pixel_format == PixelFormat::UNKNOWN || pixel_format == PixelFormat::UNKNOWN)
         {
             LOG_WARNING(u8"Cannot convert from/to an unknown format.");
             return {};
         }
-        if (source_desc.pixel_format == PixelFormat::R11G11B10_FLOAT || target_desc.pixel_format == PixelFormat::R11G11B10_FLOAT)
+        if (source_desc.pixel_format == PixelFormat::R11G11B10_FLOAT || pixel_format == PixelFormat::R11G11B10_FLOAT)
         {
             LOG_WARNING(u8"Cannot convert from/to R11G11B10_FLOAT.");
             return {};
@@ -39,14 +50,14 @@ namespace xl7::graphics::images {
 
         // If pixel format and channel order are identical,
         // then no conversion is required at all.
-        if (source_desc.pixel_format == target_desc.pixel_format && source_desc.channel_order == target_desc.channel_order)
+        if (source_desc.pixel_format == pixel_format && source_desc.channel_order == channel_order)
         {
-            // Just copy the data/image.
-            return source_image;
+            // Just copy the image data.
+            return cl7::to_bytes(source_data);
         }
 
         const PixelLayout source_layout{source_desc.pixel_format, source_desc.channel_order};
-        const PixelLayout target_layout{target_desc.pixel_format, target_desc.channel_order};
+        const PixelLayout target_layout{pixel_format, channel_order};
 
         // Another special case is when there is only one channel with identical
         // bit depths and "coding" (i.e., either float or any fixed/integer format),
@@ -56,15 +67,14 @@ namespace xl7::graphics::images {
         const bool single_similar_channel = (both_fixed || both_float) && source_layout.channel_count == 1 && target_layout.channel_count == 1 && source_layout.uniform_depth == target_layout.uniform_depth;
         if (single_similar_channel)
         {
-            // In this special case, at least the data can simply be copied 1-to-1,
+            // Also in this special case, the image data can simply be copied 1-to-1,
             // even if the two channels don't overlap (e.g., if it's Red and Alpha
             // or vice versa). We then assume that this is the intended behavior.
             // Why else would you want to do such a conversion anyway?
             assert(source_layout.bytes_per_pixel == target_layout.bytes_per_pixel);
-            return {target_desc, source_image.get_data()};
+            return cl7::to_bytes(source_data);
         }
 
-        cl7::byte_view source_data = source_image.get_data();
         cl7::byte_vector target_data;
 
         const auto source_stride = static_cast<size_t>(source_layout.bytes_per_pixel);
@@ -488,7 +498,7 @@ namespace xl7::graphics::images {
             }
         }
 
-        return {target_desc, std::move(target_data)};
+        return std::move(target_data);
     }
 
 
