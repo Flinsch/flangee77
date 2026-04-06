@@ -9,7 +9,7 @@ namespace xl7::resources {
 
 
 template <class TDerived, class TUpdater>
-    requires(requires (TDerived* resource, cl7::byte_span data, typename TUpdater::DirtyState dirty_state) {
+    requires(requires (TDerived* resource, cl7::byte_span data, TUpdater::DirtyState dirty_state) {
         { TUpdater{{}, data, &dirty_state} };
     } && requires {
         { typename TUpdater::DirtyState{}.is_dirty() } -> std::convertible_to<bool>;
