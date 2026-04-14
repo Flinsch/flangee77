@@ -231,14 +231,14 @@ namespace xl7::resources {
      * resource), but only if it can be acquired in this process. Returns an invalid
      * ID otherwise.
      */
-    ResourceId ResourceManager::_try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider)
+    ResourceId ResourceManager::_try_acquire_and_add_resource(ResourcePtr resource_ptr)
     {
         assert(resource_ptr);
         if (!resource_ptr)
             return {};
 
         assert(!resource_ptr->is_usable());
-        if (!Resource::Attorney::acquire(resource_ptr.get(), data_provider))
+        if (!Resource::Attorney::acquire(resource_ptr.get()))
             return {};
 
         return _add_resource(std::move(resource_ptr));

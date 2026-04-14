@@ -2,6 +2,8 @@
 #define XL7_GRAPHICS_TEXTURES_TEXTURE3DDESC_H
 #include "./TextureDesc.h"
 
+#include "./TextureExtent3D.h"
+
 
 
 namespace xl7::graphics::textures {
@@ -21,12 +23,8 @@ struct Texture3DDesc
     /** The maximum number of mipmap levels. (Use 1 for a multisampled texture; or 0 to generate a full set of subtextures, down to 1 by 1). */
     unsigned mip_levels;
 
-    /** The width of the texture, in pixels. */
-    unsigned width;
-    /** The height of the texture, in pixels. */
-    unsigned height;
-    /** The depth of the texture, in pixels (i.e., the number of 2D image slices). */
-    unsigned depth;
+    /** The extent of the texture, in pixels. */
+    TextureExtent3D extent;
 };
 
 

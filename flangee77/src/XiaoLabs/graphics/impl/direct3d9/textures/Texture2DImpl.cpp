@@ -5,6 +5,8 @@
 #include "../mappings.h"
 #include "../errors.h"
 
+#include "../../shared/textures//TextureDiscardPolicy.h"
+
 #include <CoreLabs/logging.h>
 
 
@@ -30,39 +32,16 @@ namespace xl7::graphics::impl::direct3d9::textures {
     // #############################################################################
 
     /**
-     * Disposes/"unacquires" the resource.
-     * The resource may be in an incompletely acquired state when this function is
-     * called. Any cleanup work that is necessary should still be carried out.
+     * Requests/acquires the resource, bringing it into a usable state.
      */
-    bool Texture2DImpl::_dispose_impl()
-    {
-        _d3d_texture.Reset();
-
-        return true;
-    }
-
-
-
-    // #############################################################################
-    // Texture2D Implementations
-    // #############################################################################
-
-    /**
-     * Requests/acquires the texture resource.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
-     */
-    bool Texture2DImpl::_acquire_impl(const graphics::textures::ImageDataProvider& image_data_provider)
+    bool Texture2DImpl::_acquire_impl()
     {
         auto* d3d_device = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_d3d_device();
         assert(d3d_device);
 
-        assert(get_data().empty() || get_data().size() == static_cast<size_t>(get_data_size()));
-
         HRESULT hresult = d3d_device->CreateTexture(
-            get_desc().width,
-            get_desc().height,
+            get_width(),
+            get_height(),
             get_desc().mip_levels,
             mappings::_d3d_usage_from(get_desc().usage, get_desc().mip_levels),
             _d3d_format,
@@ -80,34 +59,56 @@ namespace xl7::graphics::impl::direct3d9::textures {
         assert(pair.first == get_desc().pixel_format);
         assert(pair.second == get_channel_order());
 
-        if (get_data().empty())
-            return true;
-
-        return _update_impl(image_data_provider, true, true);
+        return _flush_data();
     }
 
     /**
-     * Updates the contents of this texture (unless it is immutable).
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been updated based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
+     * Disposes/"unacquires" the resource.
+     * The resource may be in an incompletely acquired state before this function is
+     * called. Any cleanup work that is necessary should still be carried out.
      */
-    bool Texture2DImpl::_update_impl(const graphics::textures::ImageDataProvider& image_data_provider, bool discard, bool no_overwrite)
+    bool Texture2DImpl::_dispose_impl()
     {
-        DWORD flags = D3DLOCK_DISCARD;
+        _d3d_texture.Reset();
+
+        return true;
+    }
+
+    /**
+     * Flushes recent changes made to the local data copy by transferring them
+     * "dirty" parts to the hardware and returns true after a successful transfer.
+     */
+    bool Texture2DImpl::_flush_data_impl()
+    {
+        static constexpr shared::textures::TextureDiscardPolicy<graphics::textures::TextureExtent2D, graphics::textures::TextureRect> discard_policy;
+
+        const auto& dirty_state = get_dirty_state();
+
+        const auto update = discard_policy.recommend(
+            dirty_state.is_all_dirty(),
+            dirty_state.region(),
+            get_desc().extent,
+            get_bytes_per_pixel(),
+            get_desc().usage);
+
+        DWORD flags = 0;
+        if (update.discard)
+            flags |= D3DLOCK_DISCARD;
 
         constexpr unsigned MAX_LEVELS = 16; // Just some value big enough.
         struct UpdateDesc
         {
             const std::byte* data;
             RECT rect;
+            unsigned row_pitch;
         };
         UpdateDesc update_desc[MAX_LEVELS];
-        update_desc[0].data = get_data().data();
-        update_desc[0].rect.left = 0;
-        update_desc[0].rect.top = 0;
-        update_desc[0].rect.right = static_cast<LONG>(get_desc().width);
-        update_desc[0].rect.bottom = static_cast<LONG>(get_desc().height);
+        update_desc[0].data = get_data().data() + static_cast<ptrdiff_t>((update.region.y * get_width() + update.region.x) * get_bytes_per_pixel());
+        update_desc[0].rect.left = static_cast<LONG>(update.region.x);
+        update_desc[0].rect.top = static_cast<LONG>(update.region.y);
+        update_desc[0].rect.right = static_cast<LONG>(update.region.x) + static_cast<LONG>(update.region.width);
+        update_desc[0].rect.bottom = static_cast<LONG>(update.region.y) + static_cast<LONG>(update.region.height);
+        update_desc[0].row_pitch = get_width() * get_bytes_per_pixel();
         unsigned mip_level = 1;
 
         /*std::vector<images::Image> mipmaps;
@@ -147,12 +148,13 @@ namespace xl7::graphics::impl::direct3d9::textures {
             const std::byte* src = update_desc[i].data;
             auto width = static_cast<unsigned>(update_desc[i].rect.right - update_desc[i].rect.left);
             auto height = static_cast<unsigned>(update_desc[i].rect.bottom - update_desc[i].rect.top);
-            unsigned pitch = width * get_bytes_per_pixel();
+            unsigned row_pitch = update_desc[i].row_pitch;
+            unsigned row_bytes = width * get_bytes_per_pixel();
             for (unsigned y = 0; y < height; ++y)
             {
-                std::memcpy(dst, src, pitch);
+                std::memcpy(dst, src, row_bytes);
                 dst += d3d_locked_rect.Pitch;
-                src += pitch;
+                src += row_pitch;
             }
 
             hresult = _d3d_texture->UnlockRect(i);

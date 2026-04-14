@@ -64,8 +64,13 @@ private:
     void* _get_raw_resource_impl() const override { return _d3d_pixel_shader.Get(); }
 
     /**
+     * Requests/acquires the resource, bringing it into a usable state.
+     */
+    bool _acquire_impl() override;
+
+    /**
      * Disposes/"unacquires" the resource.
-     * The resource may be in an incompletely acquired state when this function is
+     * The resource may be in an incompletely acquired state before this function is
      * called. Any cleanup work that is necessary should still be carried out.
      */
     bool _dispose_impl() override;
@@ -77,32 +82,22 @@ private:
     // #############################################################################
 
     /**
-     * Requests/acquires a precompiled shader resource.
-     * The actual code of the given code provider can possibly be ignored because the
-     * local data buffer has already been filled based on it. It is still included as
-     * it contains additional implementation-specific information.
+     * (Re)compiles the given high-level shader code and returns the compiled
+     * bytecode (or empty data on failure).
      */
-    bool _acquire_precompiled_impl(const graphics::shaders::CodeDataProvider& code_data_provider) override;
+    cl7::byte_vector _compile_impl(cl7::byte_view code_data, const graphics::shaders::CompileOptions& compile_options) override;
 
     /**
-     * Requests/acquires a recompilable shader resource.
-     * The actual code of the given code provider can possibly be ignored because the
-     * local data buffer has already been filled based on it. It is still included as
-     * it contains additional implementation-specific information.
-     */
-    bool _acquire_recompilable_impl(const graphics::shaders::CodeDataProvider& code_data_provider, graphics::shaders::ShaderCode& bytecode_out) override;
-
-    /**
-     * Recompiles the shader code. This tends to result in the resource having to be
-     * completely recreated in the background.
-     */
-    bool _recompile_impl(const graphics::shaders::CompileOptions& compile_options, graphics::shaders::ShaderCode& bytecode_out) override;
-
-    /**
-     * Performs a "reflection" on the (compiled) shader bytecode to determine
+     * Performs a "reflection" on the given (compiled) shader bytecode to determine
      * parameter declarations etc.
      */
-    bool _reflect_impl(const graphics::shaders::ShaderCode& bytecode, graphics::shaders::ReflectionResult& reflection_result_out) override;
+    graphics::shaders::ReflectionResult _reflect_impl(cl7::byte_view bytecode) override;
+
+    /**
+     * Recreates the shader resource after recompiling the high-level code, or
+     * whatever is necessary to effectively incorporate the newly compiled bytecode.
+     */
+    bool _on_recompile_impl(cl7::byte_view bytecode) override;
 
 
 

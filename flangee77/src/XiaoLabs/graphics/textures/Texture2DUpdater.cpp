@@ -20,6 +20,7 @@ namespace xl7::graphics::textures {
      */
     bool Texture2DUpdater::write(const Texture2DWrite& write)
     {
+        const auto& region = write.region;
         const auto& desc = get_desc();
 
         TextureUpdater(dynamic_cast<const Texture*>(get_resource()), {
@@ -27,24 +28,17 @@ namespace xl7::graphics::textures {
             .pixel_format = desc.pixel_format,
             .preferred_channel_order = desc.preferred_channel_order,
             .mip_levels = desc.mip_levels,
-            .width = desc.width,
-            .height = desc.height,
-            .depth = 1,
+            .extent = desc.extent.generalize(),
             .layer_count = 1,
         }, _access_data(), nullptr).write({
             .data = write.data,
-            .x = write.x,
-            .y = write.y,
-            .z = 0,
-            .width = write.width,
-            .height = write.height,
-            .depth = 1,
+            .region = region.generalize(),
             .layer = 0,
             .row_pitch = write.row_pitch,
-            .slice_pitch = write.height * write.row_pitch,
+            .slice_pitch = region.height * write.row_pitch,
         });
 
-        _update_dirty_state(write.x, write.y, write.width, write.height);
+        _update_dirty_state(region);
         return true;
     }
 

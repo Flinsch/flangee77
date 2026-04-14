@@ -49,10 +49,10 @@ public:
 
         struct
         {
-            /** The maximum supported vertex shader version. */
-            cl7::Version vertex_shader_version;
-            /** The maximum supported pixel shader version. */
-            cl7::Version pixel_shader_version;
+            /** The maximum supported vertex shader profile. */
+            cl7::Version max_vertex_shader_profile;
+            /** The maximum supported pixel shader profile. */
+            cl7::Version max_pixel_shader_profile;
         } shaders;
 
         struct

@@ -38,21 +38,21 @@ public:
     /**
      * Creates and acquires the specified constant buffer.
      */
-    ConstantBuffer::Id create_constant_buffer(cl7::u8string_view identifier, const ConstantBufferDesc& desc, const ConstantDataProvider& constant_data_provider = {});
+    ConstantBuffer::Id create_constant_buffer(cl7::u8string_view identifier, const ConstantBufferDesc& desc, const ConstantBufferWrite* initial_write = nullptr);
 
     /**
      * Creates and acquires the specified vertex shader.
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    VertexShader::Id create_vertex_shader(cl7::u8string_view identifier, const CodeDataProvider& code_data_provider, cl7::astring_view entry_point = "");
+    VertexShader::Id create_vertex_shader(cl7::u8string_view identifier, const ShaderDesc& desc, const ShaderWrite& write);
 
     /**
      * Creates and acquires the specified pixel shader.
      * The name of the shader entry point can be empty, especially for precompiled
      * shaders; a standard name is then used for (re)compilable shaders.
      */
-    PixelShader::Id create_pixel_shader(cl7::u8string_view identifier, const CodeDataProvider& code_data_provider, cl7::astring_view entry_point = "");
+    PixelShader::Id create_pixel_shader(cl7::u8string_view identifier, const ShaderDesc& desc, const ShaderWrite& write);
 
 
 

@@ -111,78 +111,21 @@ namespace xl7::resources {
         if (_is_usable)
             return true;
 
-        LOG_ERROR(u8"The " + get_qualified_identifier() + u8" is not usable anymore.");
+        LOG_ERROR(u8"The " + get_qualified_identifier() + u8" is not in a usable state.");
         return false;
     }
 
     /**
-     * Checks whether the given data provider complies with the specific properties
-     * of the resource and, if so, (re)populates the local data buffer.
+     * Checks whether the specified flag indicates that this supposedly updatable
+     * resource is actually mutable and fires an error message if not.
      */
-    bool Resource::_try_fill_data(const DataProvider& data_provider)
+    bool Resource::_check_is_mutable(bool is_mutable) const
     {
-        if (!_check_data_impl(data_provider))
-        {
-            return false;
-        }
+        if (is_mutable)
+            return true;
 
-        return _fill_data_impl(data_provider);
-    }
-
-    /**
-     * Checks whether the given data provider complies with the specified total data
-     * size and fires an error message if not.
-     */
-    bool Resource::_check_against_size(const DataProvider& data_provider, size_t size) const
-    {
-        if (data_provider.get_offset() + data_provider.get_size() > size)
-        {
-            LOG_ERROR(u8"The data offset and size provided for " + get_qualified_identifier() + u8" would exceed the total size of the " + cl7::u8string(get_type_string()) + u8".");
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Checks whether the given data provider complies with the specified data
-     * element/chunk size and fires an error message if not.
-     */
-    bool Resource::_check_against_stride(const DataProvider& data_provider, size_t stride) const
-    {
-        assert(stride != 0);
-
-        bool is_valid = true;
-
-        if (data_provider.get_offset() % stride != 0)
-        {
-            LOG_ERROR(u8"The data offset provided for " + get_qualified_identifier() + u8" does not match the element size of the " + cl7::u8string(get_type_string()) + u8".");
-            is_valid = false;
-        }
-
-        if (data_provider.get_size() % stride != 0)
-        {
-            LOG_ERROR(u8"The data size provided for " + get_qualified_identifier() + u8" does not match the element size of the " + cl7::u8string(get_type_string()) + u8".");
-            is_valid = false;
-        }
-
-        return is_valid;
-    }
-
-
-
-    // #############################################################################
-    // Prototypes
-    // #############################################################################
-
-    /**
-     * (Re)populates the local data buffer based on the given data provider.
-     */
-    bool Resource::_fill_data_impl(const DataProvider& data_provider)
-    {
-        data_provider.fill(_data);
-
-        return true;
+        LOG_ERROR(u8"The supposedly updatable " + get_qualified_identifier() + u8" is immutable and therefore cannot be updated.");
+        return false;
     }
 
 
@@ -194,7 +137,7 @@ namespace xl7::resources {
     /**
      * Requests/acquires the resource, bringing it into a usable state (or not).
      */
-    bool Resource::_acquire(const DataProvider& data_provider)
+    bool Resource::_acquire()
     {
         assert(!_is_usable);
         if (_is_usable)
@@ -203,12 +146,7 @@ namespace xl7::resources {
             return false;
         }
 
-        if (data_provider.get_size() > 0 && !_try_fill_data(data_provider))
-        {
-            return false;
-        }
-
-        if (!_acquire_impl(data_provider))
+        if (!_acquire_impl())
         {
             LOG_ERROR(u8"The " + get_qualified_identifier() + u8" could not be acquired.");
             _dispose();

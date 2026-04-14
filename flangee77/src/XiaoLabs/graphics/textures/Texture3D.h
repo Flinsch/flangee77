@@ -35,6 +35,11 @@ public:
      */
     const Texture3DDesc& get_desc() const { return _desc; }
 
+    /**
+     * Returns the extent of the texture, in pixels.
+     */
+    const TextureExtent3D& get_extent() const { return _desc.extent; }
+
 
 
     /**

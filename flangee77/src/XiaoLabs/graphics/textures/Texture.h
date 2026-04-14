@@ -1,13 +1,11 @@
 #ifndef XL7_GRAPHICS_TEXTURES_TEXTURE_H
 #define XL7_GRAPHICS_TEXTURES_TEXTURE_H
-#include "../../resources/ResourceBase.h"
-#include "../../resources/ResourceDataMixin.h"
-#include "../../resources/ResourceUpdateMixin.h"
+#include "../../resources/UpdatableResource.h"
 
 #include "./TextureDesc.h"
 #include "./TextureUpdater.h"
-#include "./ImageDataProvider.h"
 
+#include "../images/Image.h"
 #include "../images/ResamplingMethod.h"
 
 
@@ -21,7 +19,7 @@ class TextureManager;
 
 
 class Texture
-    : public resources::ResourceBase<Texture>
+    : public resources::ResourceWithData<Texture>
 {
 
 public:
@@ -60,19 +58,24 @@ public:
     const TextureDesc& get_desc() const { return _desc; }
 
     /**
+     * Returns the extent of the texture, in pixels.
+     */
+    const TextureExtent& get_extent() const { return _desc.extent; }
+
+    /**
      * Returns the width of the texture, in pixels.
      */
-    unsigned get_width() const { return _desc.width; }
+    unsigned get_width() const { return _desc.extent.width; }
 
     /**
      * The height of the texture, in pixels.
      */
-    unsigned get_height() const { return _desc.height; }
+    unsigned get_height() const { return _desc.extent.height; }
 
     /**
      * The depth of the texture, in pixels (i.e., the number of 2D image slices, if 3D texture, otherwise trivially 1).
      */
-    unsigned get_depth() const { return _desc.depth; }
+    unsigned get_depth() const { return _desc.extent.depth; }
 
     /**
      * The number of texture layers (if texture array or cubemap, otherwise trivially 1).
@@ -105,11 +108,6 @@ public:
      */
     unsigned get_layer_pitch() const { return _layer_pitch; }
 
-    /**
-     * Returns the total data size of this texture, in bytes.
-     */
-    unsigned get_data_size() const { return _data_size; }
-
 
 
 protected:
@@ -130,57 +128,9 @@ protected:
      */
     std::vector<images::Image> _create_mipmaps(unsigned layer, images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const;
 
-    /**
-     * Updates the contents of this texture (unless it is immutable).
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been updated based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
-     */
-    bool _update(const ImageDataProvider& image_data_provider);
-
 
 
 private:
-
-    /**
-     * Requests/acquires the texture resource.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
-     */
-    virtual bool _acquire_impl(const ImageDataProvider& image_data_provider) = 0;
-
-    /**
-     * Updates the contents of this texture (unless it is immutable).
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been updated based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
-     */
-    virtual bool _update_impl(const ImageDataProvider& image_data_provider, bool discard, bool no_overwrite) = 0;
-
-
-
-    /**
-     * Checks whether the given data provider complies with the specific properties
-     * of the resource to (re)populate it, taking into account the current state of
-     * the resource if necessary.
-     */
-    bool _check_data_impl(const resources::DataProvider& data_provider) override;
-
-    /**
-     * (Re)populates the local data buffer based on the given data provider.
-     */
-    bool _fill_data_impl(const resources::DataProvider& data_provider) override;
-
-    /**
-     * Requests/acquires the resource, bringing it into a usable state.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
-     */
-    bool _acquire_impl(const resources::DataProvider& data_provider) override;
-
-
 
     /**
      * The type of the texture.
@@ -217,11 +167,6 @@ private:
      * The size of a 2D image slice or a 3D volume, in bytes.
      */
     const unsigned _layer_pitch;
-
-    /**
-     * The total data size of this texture, in bytes.
-     */
-    const unsigned _data_size;
 
 }; // class Texture
 

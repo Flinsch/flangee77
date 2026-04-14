@@ -42,10 +42,22 @@ public:
 
     void update(unsigned layer, unsigned x, unsigned y, unsigned z, unsigned width, unsigned height, unsigned depth)
     {
+        update(layer, {
+            .x = x,
+            .y = y,
+            .z = z,
+            .width = width,
+            .height = height,
+            .depth = depth,
+        });
+    }
+
+    void update(unsigned layer, const TextureBox& region)
+    {
         if (is_all_dirty())
             return;
 
-        if (width == 0 || height == 0 || depth == 0)
+        if (region.width == 0 || region.height == 0 || region.depth == 0)
             return;
 
         // Just a quick plausibility check,
@@ -56,7 +68,7 @@ public:
         if (layer >= _layer_boxes.size())
             _layer_boxes.resize(layer + 1);
 
-        _layer_boxes[layer].update(x, y, z, width, height, depth);
+        _layer_boxes[layer].update(region);
     }
 
     const auto& layer_boxes() const { return _layer_boxes; }

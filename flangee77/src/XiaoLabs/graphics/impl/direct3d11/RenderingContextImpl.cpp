@@ -379,13 +379,13 @@ namespace xl7::graphics::impl::direct3d11 {
         ID3D11InputLayout* d3d_input_layout = get_rendering_device_impl<RenderingDeviceImpl>()->_find_d3d_input_layout(vertex_buffer_binding);
         if (!d3d_input_layout)
         {
-            if (!vertex_shader || vertex_shader->get_bytecode().get_code_data().empty())
+            if (!vertex_shader || vertex_shader->get_bytecode().empty())
             {
                 LOG_ERROR(u8"No compiled vertex shader bytecode provided to validate against the input layout being created.");
                 return false;
             }
 
-            const cl7::byte_vector& code_data = vertex_shader->get_bytecode().get_code_data();
+            cl7::byte_view code_data = vertex_shader->get_bytecode();
             d3d_input_layout = get_rendering_device_impl<RenderingDeviceImpl>()->_find_or_create_d3d_input_layout(vertex_buffer_binding, code_data.data(), code_data.size());
         }
 

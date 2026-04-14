@@ -36,6 +36,11 @@ public:
     const CubemapDesc& get_desc() const { return _desc; }
 
     /**
+     * Returns the extent of each face, in pixels.
+     */
+    const TextureExtent2D& get_extent() const { return _desc.extent; }
+
+    /**
      * Returns an "image view" of the specified texture face data.
      */
     images::Image as_image(CubemapFace face) const { return _as_image(static_cast<unsigned>(face)); }

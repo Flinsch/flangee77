@@ -2,10 +2,7 @@
 #define XL7_RESOURCES_RESOURCE_H
 
 #include "./ResourceId.h"
-#include "./DefaultDataProvider.h"
 
-#include <CoreLabs/byte_view.h>
-#include <CoreLabs/byte_vector.h>
 #include <CoreLabs/string.h>
 
 
@@ -26,7 +23,7 @@ public:
 
     class Attorney
     {
-        static bool acquire(Resource* resource, const DataProvider& data_provider) { return resource->_acquire(data_provider); }
+        static bool acquire(Resource* resource) { return resource->_acquire(); }
         static void dispose(Resource* resource) { resource->_dispose(); }
         static void release(Resource* resource) { resource->_release(); }
         static void destroy(Resource* resource) { delete resource; }
@@ -137,11 +134,6 @@ public:
      */
     bool is_usable() const { return _is_usable; }
 
-    /**
-     * Returns the (optional) local copy of the resource data.
-     */
-    cl7::byte_view get_data() const { return _data; }
-
 
 
 protected:
@@ -161,11 +153,6 @@ protected:
     // #############################################################################
 
     /**
-     * Provides mutable access to the (optional) local copy of the resource data.
-     */
-    cl7::byte_vector& _access_data() { return _data; }
-
-    /**
      * Checks whether this resource is ready for use (i.e., it is managed by its
      * owning manager and has been successfully acquired) and fires an error message
      * if not.
@@ -173,22 +160,10 @@ protected:
     bool _check_is_usable() const;
 
     /**
-     * Checks whether the given data provider complies with the specific properties
-     * of the resource and, if so, (re)populates the local data buffer.
+     * Checks whether the specified flag indicates that this supposedly updatable
+     * resource is actually mutable and fires an error message if not.
      */
-    bool _try_fill_data(const DataProvider& data_provider);
-
-    /**
-     * Checks whether the given data provider complies with the specified total data
-     * size and fires an error message if not.
-     */
-    bool _check_against_size(const DataProvider& data_provider, size_t size) const;
-
-    /**
-     * Checks whether the given data provider complies with the specified data
-     * element/chunk size and fires an error message if not.
-     */
-    bool _check_against_stride(const DataProvider& data_provider, size_t stride) const;
+    bool _check_is_mutable(bool is_mutable) const;
 
 
 
@@ -204,28 +179,13 @@ private:
     virtual void* _get_raw_resource_impl() const { return nullptr; }
 
     /**
-     * Checks whether the given data provider complies with the specific properties
-     * of the resource to (re)populate it, taking into account the current state of
-     * the resource if necessary.
-     */
-    virtual bool _check_data_impl(const DataProvider& data_provider) = 0;
-
-    /**
-     * (Re)populates the local data buffer based on the given data provider.
-     */
-    virtual bool _fill_data_impl(const DataProvider& data_provider);
-
-    /**
      * Requests/acquires the resource, bringing it into a usable state.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
      */
-    virtual bool _acquire_impl(const DataProvider& data_provider) = 0;
+    virtual bool _acquire_impl() = 0;
 
     /**
      * Disposes/"unacquires" the resource.
-     * The resource may be in an incompletely acquired state when this function is
+     * The resource may be in an incompletely acquired state before this function is
      * called. Any cleanup work that is necessary should still be carried out.
      */
     virtual bool _dispose_impl() = 0;
@@ -239,7 +199,7 @@ private:
     /**
      * Requests/acquires the resource, bringing it into a usable state (or not).
      */
-    bool _acquire(const DataProvider& data_provider);
+    bool _acquire();
 
     /**
      * Disposes/"unacquires" the resource, thereby rendering it unusable, indicating
@@ -286,11 +246,6 @@ private:
      * managed by its owning manager and has been successfully acquired).
      */
     bool _is_usable;
-
-    /**
-     * The (optional) local copy of the resource data.
-     */
-    cl7::byte_vector _data;
 
 }; // class Resource
 

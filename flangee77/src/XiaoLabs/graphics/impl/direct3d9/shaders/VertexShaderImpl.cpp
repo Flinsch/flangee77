@@ -6,9 +6,12 @@
 
 #include "../../shared/shaders/D3DShaderCompiler.h"
 
+#include "../../../shaders/FileIncludeHandler.h"
+
 #include "./D3DShaderReflection.h"
 
 #include <CoreLabs/logging.h>
+#include <CoreLabs/text/codec.h>
 
 
 
@@ -32,8 +35,29 @@ namespace xl7::graphics::impl::direct3d9::shaders {
     // #############################################################################
 
     /**
+     * Requests/acquires the resource, bringing it into a usable state.
+     */
+    bool VertexShaderImpl::_acquire_impl()
+    {
+        auto* d3d_device = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_d3d_device();
+        assert(d3d_device);
+
+        HRESULT hresult = d3d_device->CreateVertexShader(
+            reinterpret_cast<const DWORD*>(get_bytecode().data()),
+            &_d3d_vertex_shader);
+
+        if (FAILED(hresult))
+        {
+            LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::CreateVertexShader"));
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Disposes/"unacquires" the resource.
-     * The resource may be in an incompletely acquired state when this function is
+     * The resource may be in an incompletely acquired state before this function is
      * called. Any cleanup work that is necessary should still be carried out.
      */
     bool VertexShaderImpl::_dispose_impl()
@@ -50,76 +74,36 @@ namespace xl7::graphics::impl::direct3d9::shaders {
     // #############################################################################
 
     /**
-     * Requests/acquires a precompiled shader resource.
-     * The actual code of the given code provider can possibly be ignored because the
-     * local data buffer has already been filled based on it. It is still included as
-     * it contains additional implementation-specific information.
+     * (Re)compiles the given high-level shader code and returns the compiled
+     * bytecode (or empty data on failure).
      */
-    bool VertexShaderImpl::_acquire_precompiled_impl(const graphics::shaders::CodeDataProvider& code_data_provider)
+    cl7::byte_vector VertexShaderImpl::_compile_impl(cl7::byte_view code_data, const graphics::shaders::CompileOptions& compile_options)
     {
-        auto* d3d_device = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_d3d_device();
-        assert(d3d_device);
+        const cl7::Version& version = GraphicsSystem::instance().get_rendering_device()->get_capabilities().shaders.max_vertex_shader_profile;
+        const cl7::astring entry_point = _cascade_entry_point(compile_options);
 
-        const graphics::shaders::ShaderCode& bytecode = code_data_provider.get_shader_code();
-        assert(bytecode.get_language() == graphics::shaders::ShaderCode::Language::Bytecode);
+        graphics::shaders::FileIncludeHandler include_handler;
+        shared::shaders::D3DShaderCompiler shader_compiler(get_type(), version, &include_handler);
 
-        HRESULT hresult = d3d_device->CreateVertexShader(
-            reinterpret_cast<const DWORD*>(bytecode.get_code_data().data()),
-            &_d3d_vertex_shader);
-
-        if (FAILED(hresult))
-        {
-            LOG_ERROR(errors::d3d9_result(hresult, u8"IDirect3DDevice9::CreateVertexShader"));
-            return false;
-        }
-
-        return true;
+        return shader_compiler.compile_source_code(cl7::text::codec::to_utf8_unchecked(code_data), u8"", compile_options, entry_point);
     }
 
     /**
-     * Requests/acquires a recompilable shader resource.
-     * The actual code of the given code provider can possibly be ignored because the
-     * local data buffer has already been filled based on it. It is still included as
-     * it contains additional implementation-specific information.
-     */
-    bool VertexShaderImpl::_acquire_recompilable_impl(const graphics::shaders::CodeDataProvider& code_data_provider, graphics::shaders::ShaderCode& bytecode_out)
-    {
-        const cl7::Version& version = GraphicsSystem::instance().get_rendering_device()->get_capabilities().shaders.vertex_shader_version;
-        const cl7::astring target = "vs_" + std::to_string(version.major) + "_" + std::to_string(version.minor);
-        const cl7::astring entry_point = _cascade_entry_point(code_data_provider.get_compile_options());
-
-        const graphics::shaders::ShaderCode& hlsl_code = code_data_provider.get_shader_code();
-        assert(hlsl_code.get_language() == graphics::shaders::ShaderCode::Language::HighLevel);
-
-        bytecode_out = shared::shaders::D3DShaderCompiler::compile_hlsl_code(hlsl_code, u8"", code_data_provider.get_compile_options(), entry_point, target);
-        if (bytecode_out.get_code_data().empty())
-        {
-            LOG_ERROR(u8"The " + get_qualified_identifier() + u8" could not be compiled.");
-            return false;
-        }
-
-        return _acquire_precompiled_impl(graphics::shaders::CodeDataProvider(&bytecode_out, &code_data_provider.get_compile_options()));
-    }
-
-    /**
-     * Recompiles the shader code. This tends to result in the resource having to be
-     * completely recreated in the background.
-     */
-    bool VertexShaderImpl::_recompile_impl(const graphics::shaders::CompileOptions& compile_options, graphics::shaders::ShaderCode& bytecode_out)
-    {
-        graphics::shaders::ShaderCode hlsl_code(get_desc().language, get_data());
-        assert(hlsl_code.get_language() == graphics::shaders::ShaderCode::Language::HighLevel);
-
-        return _acquire_recompilable_impl(graphics::shaders::CodeDataProvider(&hlsl_code, &compile_options), bytecode_out);
-    }
-
-    /**
-     * Performs a "reflection" on the (compiled) shader bytecode to determine
+     * Performs a "reflection" on the given (compiled) shader bytecode to determine
      * parameter declarations etc.
      */
-    bool VertexShaderImpl::_reflect_impl(const graphics::shaders::ShaderCode& bytecode, graphics::shaders::ReflectionResult& reflection_result_out)
+    graphics::shaders::ReflectionResult VertexShaderImpl::_reflect_impl(cl7::byte_view bytecode)
     {
-        return D3DShaderReflection::reflect(bytecode, reflection_result_out);
+        return D3DShaderReflection::reflect(bytecode);
+    }
+
+    /**
+     * Recreates the shader resource after recompiling the high-level code, or
+     * whatever is necessary to effectively incorporate the newly compiled bytecode.
+     */
+    bool VertexShaderImpl::_on_recompile_impl(cl7::byte_view bytecode)
+    {
+        return _acquire_impl();
     }
 
 

@@ -1,4 +1,7 @@
 
+#include "XiaoLabs/graphics/shaders/FileIncludeHandler.h"
+
+
 #include <TestLabs/TestSuite.h>
 
 #include <XiaoLabs/graphics/impl/shared/shaders/D3DShaderCompiler.h>
@@ -45,16 +48,17 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  shaders:  reflection" )
         ImplType impl_type;
         cl7::u8string filename;
         cl7::astring entry_point;
-        cl7::astring target;
+        xl7::graphics::shaders::Shader::Type shader_type;
+        cl7::Version shader_profile;
         xl7::graphics::shaders::ReflectionResult reflection_result;
     } entry;
 
     const std::vector<Entry> container {
-        { ImplType::Direct3D9, u8"shader.hlsl", "mainVS", "vs_3_0", { { { "", 0, { { { "WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
-        { ImplType::Direct3D9, u8"shader.hlsl", "mainPS", "ps_3_0", { { { "", 0, { { { "BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
+        { ImplType::Direct3D9, u8"shader.hlsl", "mainVS", xl7::graphics::shaders::Shader::Type::VertexShader, {3, 0}, { true, { { "", 0, { { { "WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
+        { ImplType::Direct3D9, u8"shader.hlsl", "mainPS", xl7::graphics::shaders::Shader::Type::PixelShader, {3, 0}, { true, { { "", 0, { { { "BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
 #if defined(_MSC_VER)
-        { ImplType::Direct3D11, u8"shader.hlsl", "mainVS", "vs_5_0", { { { "VertexConstants", 0, { { { "WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
-        { ImplType::Direct3D11, u8"shader.hlsl", "mainPS", "ps_5_0", { { { "PixelConstants", 0, { { { "BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
+        { ImplType::Direct3D11, u8"shader.hlsl", "mainVS", xl7::graphics::shaders::Shader::Type::VertexShader, {5, 0}, { true, { { "VertexConstants", 0, { { { "WorldViewProjection", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::MatrixColumns, 4, 4, 1, 0, 64, 64 } } } } }, {} } },
+        { ImplType::Direct3D11, u8"shader.hlsl", "mainPS", xl7::graphics::shaders::Shader::Type::PixelShader, {5, 0}, { true, { { "PixelConstants", 0, { { { "BaseColor", xl7::graphics::shaders::ConstantType::Float, xl7::graphics::shaders::ConstantClass::Vector, 1, 4, 1, 0, 16, 16 } } } } }, {} } },
 #endif
     };
 
@@ -64,17 +68,19 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  shaders:  reflection" )
 
         const cl7::u8string file_path = cl7::platform::filesystem::get_working_directory() + u8"assets/XiaoLabs/graphics/shaders/" + entry.filename;
 
-        xl7::graphics::shaders::ShaderCode bytecode = xl7::graphics::impl::shared::shaders::D3DShaderCompiler::compile_hlsl_code( file_path, {}, entry.entry_point, entry.target );
+        xl7::graphics::shaders::FileIncludeHandler include_handler;
+        xl7::graphics::impl::shared::shaders::D3DShaderCompiler shader_compiler(entry.shader_type, entry.shader_profile, &include_handler);
+
+        cl7::byte_vector bytecode = shader_compiler.compile_source_code( file_path, {}, entry.entry_point );
         xl7::graphics::shaders::ReflectionResult reflection_result;
-        bool reflection_success;
         switch ( entry.impl_type )
         {
         case ImplType::Direct3D9:
-            reflection_success = xl7::graphics::impl::direct3d9::shaders::D3DShaderReflection::reflect( bytecode, reflection_result );
+            reflection_result = xl7::graphics::impl::direct3d9::shaders::D3DShaderReflection::reflect( bytecode );
             break;
 #if defined(_MSC_VER)
         case ImplType::Direct3D11:
-            reflection_success = xl7::graphics::impl::direct3d11::shaders::D3DShaderReflection::reflect( bytecode, reflection_result );
+            reflection_result = xl7::graphics::impl::direct3d11::shaders::D3DShaderReflection::reflect( bytecode );
             break;
 #endif
         default:
@@ -84,8 +90,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  shaders:  reflection" )
         auto& constant_buffer_declarations = reflection_result.constant_buffer_declarations;
         auto& texture_sampler_declarations = reflection_result.texture_sampler_declarations;
 
-        TESTLABS_CHECK_EQ( bytecode.get_language(), xl7::graphics::shaders::ShaderCode::Language::Bytecode );
-        TESTLABS_CHECK( reflection_success );
+        TESTLABS_CHECK( reflection_result.success );
         TESTLABS_ASSERT_EQ( constant_buffer_declarations.size(), entry.reflection_result.constant_buffer_declarations.size() );
         TESTLABS_ASSERT_EQ( texture_sampler_declarations.size(), entry.reflection_result.texture_sampler_declarations.size() );
 

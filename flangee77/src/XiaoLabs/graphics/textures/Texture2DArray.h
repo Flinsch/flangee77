@@ -35,6 +35,11 @@ public:
      */
     const Texture2DArrayDesc& get_desc() const { return _desc; }
 
+    /**
+     * Returns the extent of each texture, in pixels.
+     */
+    const TextureExtent2D& get_extent() const { return _desc.extent; }
+
 
 
     /**

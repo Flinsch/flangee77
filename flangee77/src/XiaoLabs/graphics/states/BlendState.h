@@ -1,6 +1,6 @@
 #ifndef XL7_GRAPHICS_STATES_BLENDSTATE_H
 #define XL7_GRAPHICS_STATES_BLENDSTATE_H
-#include "./AbstractState.h"
+#include "../../resources/ResourceBase.h"
 
 #include "./BlendStateDesc.h"
 
@@ -11,7 +11,7 @@ namespace xl7::graphics::states {
 
 
 class BlendState
-    : public resources::ResourceBase<BlendState, AbstractState>
+    : public resources::ResourceBase<BlendState>
 {
 
 public:

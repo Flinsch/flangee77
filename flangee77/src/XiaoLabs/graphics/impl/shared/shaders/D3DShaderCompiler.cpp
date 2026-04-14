@@ -23,7 +23,7 @@ namespace xl7::graphics::impl::shared::shaders {
 
 
     struct Include final
-        : public ID3DInclude
+        : ID3DInclude
     {
         struct ParentEntry
         {
@@ -34,9 +34,12 @@ namespace xl7::graphics::impl::shared::shaders {
         cl7::u8string _root_directory;
         std::unordered_map<const void*, ParentEntry> _parent_entries;
 
-        explicit Include(const cl7::u8string& path)
-            : _root_directory(Include::directory(path))
+        graphics::shaders::IncludeHandler* _include_handler;
+
+        explicit Include(const cl7::u8string& path, graphics::shaders::IncludeHandler* include_handler)
+            : _include_handler(include_handler)
         {
+            _root_directory = this->directory(path);
         }
 
         __declspec(nothrow) HRESULT __stdcall Open(D3D_INCLUDE_TYPE include_type, const char* filename, const void* parent_data, const void** data_out, unsigned* bytes_out) override
@@ -56,49 +59,23 @@ namespace xl7::graphics::impl::shared::shaders {
             return _close_impl(data);
         }
 
-        static cl7::u8string directory(const cl7::u8string& path)
+        cl7::u8string directory(const cl7::u8string& path) const
         {
             if (std::filesystem::is_directory(path))
                 return path;
-            const size_t pos = path.find_last_of(u8"/\\");
-            if (pos != cl7::u8string::npos)
-                return path.substr(0, pos + 1);
-            return {};
+
+            return _include_handler->directory(path);
         }
 
-        static cl7::u8string filename(const cl7::u8string& path)
+        cl7::u8string filename(const cl7::u8string& path) const
         {
             if (!std::filesystem::is_regular_file(path))
             {
                 LOG_ERROR(path + u8" does not refer to a regular file.");
                 return {};
             }
-            const size_t pos = path.find_last_of(u8"/\\");
-            if (pos != cl7::u8string::npos)
-                return path.substr(pos + 1);
-            return path;
-        }
 
-        static cl7::u8string read_source_code(const cl7::u8string& file_path)
-        {
-            std::ifstream file(std::filesystem::path(cl7::text::codec::reinterpret_utf8(file_path)), std::ios::in | std::ios::binary | std::ios::ate);
-            if (!file.is_open())
-            {
-                LOG_ERROR(u8"Shader file \"" + Include::filename(file_path) + u8"\" could not be opened. Does it exist?");
-                return {};
-            }
-
-            const auto size = static_cast<size_t>(file.tellg());
-            file.seekg(0, std::ios::beg);
-
-            cl7::u8string code(size, 0);
-            if (!file.read(reinterpret_cast<char*>(code.data()), static_cast<std::streamsize>(size)))
-            {
-                LOG_ERROR(u8"Shader file \"" + Include::filename(file_path) + u8"\" could not be read.");
-                return {};
-            }
-
-            return code;
+            return _include_handler->filename(path);
         }
 
     private:
@@ -112,16 +89,26 @@ namespace xl7::graphics::impl::shared::shaders {
             cl7::u8string file_path = directory + cl7::u8string(cl7::text::codec::reinterpret_utf8(filename));
             std::ranges::replace(file_path, u8'/', u8'\\');
 
-            cl7::u8string code = Include::read_source_code(file_path);
+            if (!std::filesystem::is_regular_file(file_path))
+            {
+                LOG_ERROR(u8"\"" + this->filename(file_path) + u8"\" does not refer to a regular file.");
+                return {};
+            }
+
+            cl7::u8string code = _include_handler->read_source_code(file_path);
             if (code.empty())
                 return E_FAIL;
 
-            *data_out = static_cast<const void*>(code.data());
-            *bytes_out = static_cast<unsigned>(code.size());
+            const void* data = code.data();
 
-            _parent_entries.emplace(*data_out, ParentEntry{.directory = Include::directory(file_path), .code = std::move(code)});
+            _parent_entries.emplace(data, ParentEntry{.directory = this->directory(file_path), .code = std::move(code)});
 
-            assert(*data_out == _parent_entries[*data_out].code.data());
+            const auto& parent_entry = _parent_entries[data];
+
+            assert(data == parent_entry.code.data());
+
+            *data_out = parent_entry.code.data();
+            *bytes_out = static_cast<unsigned>(parent_entry.code.size());
 
             return S_OK;
         }
@@ -139,31 +126,13 @@ namespace xl7::graphics::impl::shared::shaders {
 
 
     /**
-     * Compiles HLSL code from the specified file into bytecode for a given target.
-     * The file path is also used to resolve any #include directives. If an error
-     * occurs, an object with an "unknown" language and empty data is returned.
-     */
-    graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const cl7::u8string& file_path, const graphics::shaders::CompileOptions& compile_options, const cl7::astring& entry_point, const cl7::astring& target)
-    {
-        cl7::u8string source_code = Include::read_source_code(file_path);
-
-        return compile_hlsl_code({graphics::shaders::ShaderCode::Language::HighLevel, cl7::make_byte_view(source_code)}, Include::directory(file_path), compile_options, entry_point, target);
-    }
-
-    /**
-     * Compiles the given HLSL code into bytecode for a given target. The include
-     * path is used to resolve any #include directives. If an error occurs, an
+     * Compiles the given high-level code into bytecode. The specified include path
+     * is used to resolve any (local) #include directives. If an error occurs, an
      * object with an "unknown" language and empty data is returned.
      */
-    graphics::shaders::ShaderCode D3DShaderCompiler::compile_hlsl_code(const graphics::shaders::ShaderCode& hlsl_code, const cl7::u8string& include_path, const graphics::shaders::CompileOptions& compile_options, const cl7::astring& entry_point, const cl7::astring& target)
+    cl7::byte_vector D3DShaderCompiler::_compile_source_code(const cl7::u8string& hlsl_code, const cl7::u8string& include_path, const graphics::shaders::CompileOptions& compile_options, const cl7::astring& entry_point)
     {
-        if (hlsl_code.get_language() != graphics::shaders::ShaderCode::Language::HighLevel)
-        {
-            LOG_ERROR(u8"The given code does not appear to be in HLSL.");
-            return {};
-        }
-
-        if (hlsl_code.get_code_data().empty())
+        if (hlsl_code.empty())
         {
             LOG_ERROR(u8"The given HLSL code is empty.");
             return {};
@@ -175,18 +144,25 @@ namespace xl7::graphics::impl::shared::shaders {
             return {};
         }
 
-        if (target.empty())
+        cl7::astring target;
+        switch (get_shader_type())
         {
-            LOG_ERROR(u8"No shader target specified.");
-            return {};
+        case graphics::shaders::Shader::Type::VertexShader:
+            target = "vs_" + std::to_string(get_shader_profile().major) + "_" + std::to_string(get_shader_profile().minor);
+            break;
+        case graphics::shaders::Shader::Type::PixelShader:
+            target = "ps_" + std::to_string(get_shader_profile().major) + "_" + std::to_string(get_shader_profile().minor);
+            break;
+        default:
+            assert(false);
         }
 
-        Include include(include_path);
+        Include include(include_path, get_include_handler());
 
         std::vector<D3D_SHADER_MACRO> macros;
         macros.reserve(compile_options.macro_definitions.size() + 1);
         for (const auto& [name, definition] : compile_options.macro_definitions)
-            macros.push_back({.Name = reinterpret_cast<const char*>(name.c_str()), .Definition = reinterpret_cast<const char*>(definition.c_str())});
+            macros.push_back({.Name = name.c_str(), .Definition = definition.c_str()});
         macros.push_back({.Name = nullptr, .Definition = nullptr});
 
         unsigned flags = D3DCOMPILE_ENABLE_BACKWARDS_COMPATIBILITY;
@@ -200,13 +176,13 @@ namespace xl7::graphics::impl::shared::shaders {
         wrl::ComPtr<ID3DBlob> error_blob;
 
         HRESULT hresult = ::D3DCompile(
-            hlsl_code.get_code_data().data(),
-            hlsl_code.get_code_data().size(),
+            hlsl_code.data(),
+            hlsl_code.size(),
             nullptr,
             macros.data(),
             &include,
-            reinterpret_cast<const char*>(entry_point.c_str()),
-            reinterpret_cast<const char*>(target.c_str()),
+            entry_point.c_str(),
+            target.c_str(),
             flags,
             0,
             &bytecode_blob,
@@ -231,7 +207,7 @@ namespace xl7::graphics::impl::shared::shaders {
             return {};
         }
 
-        return {graphics::shaders::ShaderCode::Language::Bytecode, cl7::byte_view(static_cast<std::byte*>(bytecode_blob->GetBufferPointer()), bytecode_blob->GetBufferSize())};
+        return cl7::to_bytes(cl7::byte_view(static_cast<std::byte*>(bytecode_blob->GetBufferPointer()), bytecode_blob->GetBufferSize()));
     }
 
 

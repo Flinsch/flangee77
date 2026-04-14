@@ -249,10 +249,10 @@ namespace xl7::graphics {
         if (get_rendering_context() == nullptr)
             return false;
 
-        // Print out the supported shader versions.
-        LOG_TYPE(u8"Shader model versions:", cl7::logging::LogType::Caption);
-        LOG_TYPE(u8"Vertex shader\t" + _capabilities.shaders.vertex_shader_version.to_string(true), cl7::logging::LogType::Item);
-        LOG_TYPE(u8"Pixel shader\t" + _capabilities.shaders.pixel_shader_version.to_string(true), cl7::logging::LogType::Item);
+        // Print out the supported shader profiles.
+        LOG_TYPE(u8"Shader profiles:", cl7::logging::LogType::Caption);
+        LOG_TYPE(u8"Vertex shader\t" + _capabilities.shaders.max_vertex_shader_profile.to_string(true), cl7::logging::LogType::Item);
+        LOG_TYPE(u8"Pixel shader\t" + _capabilities.shaders.max_pixel_shader_profile.to_string(true), cl7::logging::LogType::Item);
 
         // Print out the available video memory.
         LOG_TYPE(u8"Usable video memory:", cl7::logging::LogType::Caption);

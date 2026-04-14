@@ -2,6 +2,8 @@
 #define XL7_GRAPHICS_TEXTURES_CUBEMAPDESC_H
 #include "./TextureDesc.h"
 
+#include "./TextureExtent2D.h"
+
 
 
 namespace xl7::graphics::textures {
@@ -21,10 +23,8 @@ struct CubemapDesc
     /** The maximum number of mipmap levels. (Use 1 for a multisampled texture; or 0 to generate a full set of subtextures, down to 1 by 1). */
     unsigned mip_levels;
 
-    /** The width of each face, in pixels. */
-    unsigned width;
-    /** The height of each face, in pixels. */
-    unsigned height;
+    /** The extent of each face, in pixels. */
+    TextureExtent2D extent;
 };
 
 

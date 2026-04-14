@@ -11,9 +11,9 @@ namespace xl7::graphics::shaders {
 
 struct ShaderDesc
 {
-    /** The language of the (source) code on which the shader is based. */
+    /** The language of the (source) code of the shader program. */
     ShaderCode::Language language;
-    /** The name of the shader entry point (can be empty, especially for precompiled shaders). */
+    /** The name of the entry point of the shader program (can be empty, especially for precompiled shaders). */
     cl7::astring entry_point;
 };
 

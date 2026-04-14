@@ -39,18 +39,19 @@ target_sources(flangee77
     graphics/meshes/VertexBufferUpdater.cpp
     graphics/meshes/VertexLayout.cpp
 
-    graphics/shaders/CodeDataProvider.cpp
     graphics/shaders/ConstantBuffer.cpp
     graphics/shaders/ConstantBufferLayout.cpp
     graphics/shaders/ConstantBufferMapping.cpp
     graphics/shaders/ConstantBufferUpdater.cpp
+    graphics/shaders/FileIncludeHandler.cpp
+    graphics/shaders/IncludeHandler.cpp
     graphics/shaders/PixelShader.cpp
     graphics/shaders/Shader.cpp
     graphics/shaders/ShaderCode.cpp
+    graphics/shaders/ShaderCompiler.cpp
     graphics/shaders/ShaderManager.cpp
     graphics/shaders/VertexShader.cpp
 
-    graphics/states/AbstractState.cpp
     graphics/states/BlendState.cpp
     graphics/states/DepthStencilState.cpp
     graphics/states/RasterizerState.cpp
@@ -65,7 +66,6 @@ target_sources(flangee77
 
     graphics/textures/Cubemap.cpp
     graphics/textures/CubemapUpdater.cpp
-    graphics/textures/ImageDataProvider.cpp
     graphics/textures/Texture.cpp
     graphics/textures/Texture2D.cpp
     graphics/textures/Texture2DArray.cpp
@@ -77,9 +77,6 @@ target_sources(flangee77
     graphics/textures/TextureUpdater.cpp
 
     resources/AbstractResourceUpdater.cpp
-    resources/DataProvider.cpp
-    resources/DefaultDataProvider.cpp
-    resources/FakeDataProvider.cpp
     resources/Resource.cpp
     resources/ResourceManager.cpp
 )
@@ -89,6 +86,7 @@ target_sources(flangee77
     graphics/impl/shared/errors.cpp
 
     graphics/impl/shared/meshes/ComposedVertexLayout.cpp
+    graphics/impl/shared/meshes/MeshBufferDiscardPolicy.cpp
     graphics/impl/shared/meshes/VertexBufferBinding.cpp
 
     graphics/impl/shared/shaders/D3DShaderCompiler.cpp

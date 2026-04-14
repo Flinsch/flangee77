@@ -12,7 +12,7 @@ namespace xl7::graphics::textures {
 
 
 class Texture2D
-    : public resources::ResourceBase<Texture2D, Texture>
+    : public resources::UpdatableResource<Texture2D, Texture2DUpdater, Texture>
 {
 
 public:
@@ -35,6 +35,11 @@ public:
      */
     const Texture2DDesc& get_desc() const { return _desc; }
 
+    /**
+     * Returns the extent of the texture, in pixels.
+     */
+    const TextureExtent2D& get_extent() const { return _desc.extent; }
+
 
 
     /**
@@ -46,11 +51,6 @@ public:
      * Creates and returns mipmaps of the texture "image".
      */
     std::vector<images::Image> create_mipmaps(images::ResamplingMethod resampling_method = images::ResamplingMethod::LinearInterpolation) const { return _create_mipmaps(0, resampling_method); }
-
-    /**
-     * Updates the contents of this texture (unless it is immutable).
-     */
-    bool update(const ImageDataProvider& image_data_provider);
 
 
 

@@ -39,7 +39,7 @@ public:
 
 protected:
     template <typename ...Args>
-    ResourceBase(const Resource::CreateContext& ctx, Args&&... args)
+    explicit ResourceBase(const Resource::CreateContext& ctx, Args&&... args)
         : TBase(ctx, std::forward<Args>(args)...)
     {
     }

@@ -87,11 +87,8 @@ namespace xl7::graphics::impl::direct3d9::states {
 
     /**
      * Requests/acquires the resource, bringing it into a usable state.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
      */
-    bool BlendStateImpl::_acquire_impl(const resources::DataProvider& data_provider)
+    bool BlendStateImpl::_acquire_impl()
     {
         map_d3d_values(get_desc(), _d3d_blend_state_type_values);
 
@@ -100,7 +97,7 @@ namespace xl7::graphics::impl::direct3d9::states {
 
     /**
      * Disposes/"unacquires" the resource.
-     * The resource may be in an incompletely acquired state when this function is
+     * The resource may be in an incompletely acquired state before this function is
      * called. Any cleanup work that is necessary should still be carried out.
      */
     bool BlendStateImpl::_dispose_impl()

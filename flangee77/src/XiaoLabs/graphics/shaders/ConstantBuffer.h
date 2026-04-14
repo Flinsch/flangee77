@@ -1,12 +1,9 @@
 #ifndef XL7_GRAPHICS_SHADERS_CONSTANTBUFFER_H
 #define XL7_GRAPHICS_SHADERS_CONSTANTBUFFER_H
-#include "../../resources/ResourceBase.h"
-#include "../../resources/ResourceDataMixin.h"
-#include "../../resources/ResourceUpdateMixin.h"
+#include "../../resources/UpdatableResource.h"
 
 #include "./ConstantBufferDesc.h"
 #include "./ConstantBufferUpdater.h"
-#include "./ConstantDataProvider.h"
 
 
 
@@ -19,7 +16,7 @@ class ShaderManager;
 
 
 class ConstantBuffer
-    : public resources::ResourceBase<ConstantBuffer>
+    : public resources::UpdatableResource<ConstantBuffer, ConstantBufferUpdater, resources::ResourceWithData<ConstantBuffer>>
 {
 
 public:
@@ -42,11 +39,6 @@ public:
      */
     const ConstantBufferDesc& get_desc() const { return _desc; }
 
-    /**
-     * Updates the contents of this constant buffer.
-     */
-    bool update(const ConstantDataProvider& constant_data_provider);
-
 
 
 protected:
@@ -58,41 +50,6 @@ protected:
 
 
 private:
-
-    /**
-     * Requests/acquires the constant buffer resource.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
-     */
-    virtual bool _acquire_impl(const ConstantDataProvider& constant_data_provider) = 0;
-
-    /**
-     * Updates the contents of this constant buffer.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been updated based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
-     */
-    virtual bool _update_impl(const ConstantDataProvider& constant_data_provider, bool discard, bool no_overwrite) = 0;
-
-
-
-    /**
-     * Checks whether the given data provider complies with the specific properties
-     * of the resource to (re)populate it, taking into account the current state of
-     * the resource if necessary.
-     */
-    bool _check_data_impl(const resources::DataProvider& data_provider) override;
-
-    /**
-     * Requests/acquires the resource, bringing it into a usable state.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
-     */
-    bool _acquire_impl(const resources::DataProvider& data_provider) override;
-
-
 
     /**
      * The descriptor of the constant buffer.

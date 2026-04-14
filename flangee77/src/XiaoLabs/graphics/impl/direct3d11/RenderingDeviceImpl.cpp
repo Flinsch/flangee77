@@ -272,7 +272,7 @@ namespace xl7::graphics::impl::direct3d11 {
         d3d_device.As(&_d3d_device);
         d3d_immediate_context.As(&_d3d_immediate_context);
 
-        // Determine the supported shader versions
+        // Determine the supported shader profiles
         // based on a hard-coded feature level mapping.
         // NOLINTBEGIN(*-use-designated-initializers)
         switch (_d3d_feature_level)
@@ -282,36 +282,36 @@ namespace xl7::graphics::impl::direct3d11 {
 #else
         case static_cast<D3D_FEATURE_LEVEL>(0x1000):
 #endif
-            capabilities.shaders.vertex_shader_version = {0, 0};
-            capabilities.shaders.pixel_shader_version = {0, 0};
+            capabilities.shaders.max_vertex_shader_profile = {0, 0};
+            capabilities.shaders.max_pixel_shader_profile = {0, 0};
             break;
         case D3D_FEATURE_LEVEL_9_1:
-            capabilities.shaders.vertex_shader_version = {2, 0, 1};
-            capabilities.shaders.pixel_shader_version = {2, 0, 1};
+            capabilities.shaders.max_vertex_shader_profile = {2, 0, 1};
+            capabilities.shaders.max_pixel_shader_profile = {2, 0, 1};
             break;
         case D3D_FEATURE_LEVEL_9_2:
-            capabilities.shaders.vertex_shader_version = {2, 0, 2};
-            capabilities.shaders.pixel_shader_version = {2, 0, 2};
+            capabilities.shaders.max_vertex_shader_profile = {2, 0, 2};
+            capabilities.shaders.max_pixel_shader_profile = {2, 0, 2};
             break;
         case D3D_FEATURE_LEVEL_9_3:
-            capabilities.shaders.vertex_shader_version = {3, 0};
-            capabilities.shaders.pixel_shader_version = {3, 0};
+            capabilities.shaders.max_vertex_shader_profile = {3, 0};
+            capabilities.shaders.max_pixel_shader_profile = {3, 0};
             break;
         case D3D_FEATURE_LEVEL_10_0:
-            capabilities.shaders.vertex_shader_version = {4, 0};
-            capabilities.shaders.pixel_shader_version = {4, 0};
+            capabilities.shaders.max_vertex_shader_profile = {4, 0};
+            capabilities.shaders.max_pixel_shader_profile = {4, 0};
             break;
         case D3D_FEATURE_LEVEL_10_1:
-            capabilities.shaders.vertex_shader_version = {4, 1};
-            capabilities.shaders.pixel_shader_version = {4, 1};
+            capabilities.shaders.max_vertex_shader_profile = {4, 1};
+            capabilities.shaders.max_pixel_shader_profile = {4, 1};
             break;
         case D3D_FEATURE_LEVEL_11_0:
-            capabilities.shaders.vertex_shader_version = {5, 0};
-            capabilities.shaders.pixel_shader_version = {5, 0};
+            capabilities.shaders.max_vertex_shader_profile = {5, 0};
+            capabilities.shaders.max_pixel_shader_profile = {5, 0};
             break;
         case D3D_FEATURE_LEVEL_11_1:
-            capabilities.shaders.vertex_shader_version = {5, 0};
-            capabilities.shaders.pixel_shader_version = {5, 0};
+            capabilities.shaders.max_vertex_shader_profile = {5, 0};
+            capabilities.shaders.max_pixel_shader_profile = {5, 0};
             break;
         default:
             assert(false);

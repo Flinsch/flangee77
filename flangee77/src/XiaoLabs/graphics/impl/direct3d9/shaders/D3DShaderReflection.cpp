@@ -16,22 +16,19 @@ namespace xl7::graphics::impl::direct3d9::shaders {
      * Performs a "reflection" on the (compiled) shader bytecode to determine
      * parameter declarations etc.
      */
-    bool D3DShaderReflection::reflect(const graphics::shaders::ShaderCode& bytecode, graphics::shaders::ReflectionResult& reflection_result_out)
+    graphics::shaders::ReflectionResult D3DShaderReflection::reflect(cl7::byte_view bytecode)
     {
-        if (bytecode.get_language() != graphics::shaders::ShaderCode::Language::Bytecode)
-        {
-            LOG_ERROR(u8"The given code does not appear to be bytecode.");
-            return false;
-        }
+        graphics::shaders::ReflectionResult reflection_result;
+        reflection_result.success = false;
 
-        if (bytecode.get_code_data().empty())
+        if (bytecode.empty())
         {
             LOG_ERROR(u8"The given bytecode is empty.");
-            return false;
+            return reflection_result;
         }
 
-        auto& constant_buffer_declarations_out = reflection_result_out.constant_buffer_declarations;
-        auto& texture_sampler_declarations_out = reflection_result_out.texture_sampler_declarations;
+        auto& constant_buffer_declarations = reflection_result.constant_buffer_declarations;
+        auto& texture_sampler_declarations = reflection_result.texture_sampler_declarations;
 
         // Inspired by:
         // https://www.gamedev.net/forums/topic/648016-replacement-for-id3dxconstanttable/
@@ -75,9 +72,9 @@ namespace xl7::graphics::impl::direct3d9::shaders {
         constexpr uint32_t SI_COMMENTSIZE_MASK = 0x7fff0000;
         constexpr uint32_t CTAB_CONSTANT = 0x42415443;
 
-        assert(bytecode.get_code_data().size() % 4 == 0);
-        const auto* const base_ptr = reinterpret_cast<const uint32_t*>(bytecode.get_code_data().data());
-        for (size_t ofs = 0; ofs < bytecode.get_code_data().size(); ++ofs)
+        assert(bytecode.size() % 4 == 0);
+        const auto* const base_ptr = reinterpret_cast<const uint32_t*>(bytecode.data());
+        for (size_t ofs = 0; ofs < bytecode.size(); ++ofs)
         {
             const uint32_t* const ptr = base_ptr + ofs;
 
@@ -104,13 +101,13 @@ namespace xl7::graphics::impl::direct3d9::shaders {
             if (ctab_size < sizeof(Header) || cheader->Size != sizeof(Header))
             {
                 LOG_ERROR(u8"Bad shader constant/parameter table header size.");
-                return false;
+                return reflection_result;
             }
 
             const auto* const cinfo = reinterpret_cast<const Info*>(ctab_ptr + cheader->ConstantInfo);
 
-            constant_buffer_declarations_out.emplace_back(graphics::shaders::ConstantBufferDeclaration{.name = "", .index = 0, .layout = {}});
-            auto& constant_declarations_out = constant_buffer_declarations_out.back().layout.constant_declarations;
+            constant_buffer_declarations.emplace_back(graphics::shaders::ConstantBufferDeclaration{.name = "", .index = 0, .layout = {}});
+            auto& constant_declarations = constant_buffer_declarations.back().layout.constant_declarations;
 
             for (uint32_t i = 0; i < cheader->Constants; ++i)
             {
@@ -166,10 +163,10 @@ namespace xl7::graphics::impl::direct3d9::shaders {
                 constant_declaration.offset = static_cast<unsigned>(cinfo[i].RegisterIndex) * 16;
                 constant_declaration.size = static_cast<unsigned>(cinfo[i].RegisterCount) * 16;
 
-                constant_declarations_out.emplace_back(std::move(constant_declaration));
+                constant_declarations.emplace_back(std::move(constant_declaration));
             } // for each "real" constant
 
-            constant_buffer_declarations_out.back().layout.sort_and_adjust_padded_sizes();
+            constant_buffer_declarations.back().layout.sort_and_adjust_padded_sizes();
 
             for (uint32_t i = 0; i < cheader->Constants; ++i)
             {
@@ -196,17 +193,18 @@ namespace xl7::graphics::impl::direct3d9::shaders {
                 texture_sampler_declaration.index = static_cast<unsigned>(cinfo[i].RegisterIndex);
                 texture_sampler_declaration.element_count = static_cast<unsigned>(ctype->Elements);
 
-                texture_sampler_declarations_out.emplace_back(std::move(texture_sampler_declaration));
+                texture_sampler_declarations.emplace_back(std::move(texture_sampler_declaration));
             } // for each texture/sampler "constant"
 
-            return true;
+            reflection_result.success = true;
+            return reflection_result;
         } // for ...
 
         // End of code reached without hitting comments sections.
         // This should be considered an error (or at least a warning).
         //LOG_ERROR(u8"The shader parameter table could not be created.");
         LOG_WARNING(u8"The shader parameter table could not be created.");
-        return false;
+        return reflection_result;
     }
 
 

@@ -175,7 +175,7 @@ protected:
      * resource), but only if it can be acquired in this process. Returns an invalid
      * ID otherwise.
      */
-    ResourceId _try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider);
+    ResourceId _try_acquire_and_add_resource(ResourcePtr resource_ptr);
 
     /**
      * Adds the given resource to this resource manager (and returns the ID of the
@@ -184,9 +184,9 @@ protected:
      */
     template <class TResourceId>
         requires(std::derived_from<TResourceId, ResourceId>)
-    TResourceId _try_acquire_and_add_resource(ResourcePtr resource_ptr, const DataProvider& data_provider)
+    TResourceId _try_acquire_and_add_resource(ResourcePtr resource_ptr)
     {
-        return id_cast<TResourceId>(_try_acquire_and_add_resource(std::move(resource_ptr), data_provider));
+        return id_cast<TResourceId>(_try_acquire_and_add_resource(std::move(resource_ptr)));
     }
 
 

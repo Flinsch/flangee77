@@ -77,7 +77,7 @@ namespace xl7::graphics::states {
 
         ResourcePtr sampler_state(_factory->create_sampler_state(ctx, desc), _destroy_resource);
 
-        return _try_acquire_and_add_resource<SamplerState::Id>(std::move(sampler_state), resources::DefaultDataProvider());
+        return _try_acquire_and_add_resource<SamplerState::Id>(std::move(sampler_state));
     }
 
     /**
@@ -97,7 +97,7 @@ namespace xl7::graphics::states {
 
         ResourcePtr rasterizer_state(_factory->create_rasterizer_state(ctx, desc), _destroy_resource);
 
-        return _try_acquire_and_add_resource<RasterizerState::Id>(std::move(rasterizer_state), resources::DefaultDataProvider());
+        return _try_acquire_and_add_resource<RasterizerState::Id>(std::move(rasterizer_state));
     }
 
     /**
@@ -117,7 +117,7 @@ namespace xl7::graphics::states {
 
         ResourcePtr depth_stencil_state(_factory->create_depth_stencil_state(ctx, desc), _destroy_resource);
 
-        return _try_acquire_and_add_resource<DepthStencilState::Id>(std::move(depth_stencil_state), resources::DefaultDataProvider());
+        return _try_acquire_and_add_resource<DepthStencilState::Id>(std::move(depth_stencil_state));
     }
 
     /**
@@ -137,7 +137,7 @@ namespace xl7::graphics::states {
 
         ResourcePtr blend_state(_factory->create_blend_state(ctx, desc), _destroy_resource);
 
-        return _try_acquire_and_add_resource<BlendState::Id>(std::move(blend_state), resources::DefaultDataProvider());
+        return _try_acquire_and_add_resource<BlendState::Id>(std::move(blend_state));
     }
 
 

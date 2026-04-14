@@ -20,6 +20,7 @@ namespace xl7::graphics::textures {
      */
     bool CubemapUpdater::write(const CubemapWrite& write)
     {
+        const auto& region = write.region;
         const auto& desc = get_desc();
 
         const auto layer = static_cast<unsigned>(write.face);
@@ -30,24 +31,17 @@ namespace xl7::graphics::textures {
             .pixel_format = desc.pixel_format,
             .preferred_channel_order = desc.preferred_channel_order,
             .mip_levels = desc.mip_levels,
-            .width = desc.width,
-            .height = desc.height,
-            .depth = 1,
+            .extent = desc.extent.generalize(),
             .layer_count = 6,
         }, _access_data(), nullptr).write({
             .data = write.data,
-            .x = write.x,
-            .y = write.y,
-            .z = 0,
-            .width = write.width,
-            .height = write.height,
-            .depth = 1,
+            .region = region.generalize(),
             .layer = layer,
             .row_pitch = write.row_pitch,
-            .slice_pitch = write.height * write.row_pitch,
+            .slice_pitch = region.height * write.row_pitch,
         });
 
-        _update_dirty_state(layer, write.x, write.y, write.width, write.height);
+        _update_dirty_state(layer, region);
         return true;
     }
 

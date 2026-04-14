@@ -65,32 +65,21 @@ private:
 
     /**
      * Requests/acquires the resource, bringing it into a usable state.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
      */
-    bool _acquire_impl(const resources::DataProvider& data_provider) override;
+    bool _acquire_impl() override;
 
     /**
      * Disposes/"unacquires" the resource.
-     * The resource may be in an incompletely acquired state when this function is
+     * The resource may be in an incompletely acquired state before this function is
      * called. Any cleanup work that is necessary should still be carried out.
      */
     bool _dispose_impl() override;
 
-
-
-    // #############################################################################
-    // VertexBuffer Implementations
-    // #############################################################################
-
     /**
-     * Updates the contents of this vertex buffer (unless it is immutable).
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been updated based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
+     * Flushes recent changes made to the local data copy by transferring them
+     * "dirty" parts to the hardware and returns true after a successful transfer.
      */
-    bool _update_impl(const resources::DataProvider& data_provider, bool discard, bool no_overwrite) override;
+    bool _flush_data_impl() override;
 
 
 

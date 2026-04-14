@@ -101,22 +101,31 @@ namespace helloworld {
         // NOLINTEND(*-use-designated-initializers)
         constexpr unsigned short indices[]{0, 1, 2, 3};
 
-        xl7::graphics::meshes::VertexDataProvider<Vertex> vertex_data_provider{vertices};
-        xl7::graphics::meshes::IndexDataProvider<unsigned short> index_data_provider{indices};
+        auto vertex_buffer_write = xl7::graphics::meshes::VertexBufferWrite::from_vertices<Vertex>(vertices);
+        auto index_buffer_write = xl7::graphics::meshes::IndexBufferWrite::from_indices<unsigned short>(indices);
 
-        _vertex_buffer_id = xl7::graphics::mesh_manager()->create_vertex_buffer(u8"My Vertex Buffer", vertex_buffer_desc, vertex_data_provider);
-        _index_buffer_id = xl7::graphics::mesh_manager()->create_index_buffer(u8"My Index Buffer", index_buffer_desc, index_data_provider);
+        _vertex_buffer_id = xl7::graphics::mesh_manager()->create_vertex_buffer(u8"My Vertex Buffer", vertex_buffer_desc, &vertex_buffer_write);
+        _index_buffer_id = xl7::graphics::mesh_manager()->create_index_buffer(u8"My Index Buffer", index_buffer_desc, &index_buffer_write);
 
+
+        xl7::graphics::shaders::ShaderDesc vertex_shader_desc{
+            .language = xl7::graphics::shaders::ShaderCode::Language::HighLevel,
+            .entry_point = "",
+        };
+        xl7::graphics::shaders::ShaderDesc pixel_shader_desc{
+            .language = xl7::graphics::shaders::ShaderCode::Language::HighLevel,
+            .entry_point = "",
+        };
 
         cl7::io::File file(cl7::platform::filesystem::get_working_directory() + u8"assets/shaders/shader.hlsl");
         cl7::io::Utf8Reader utf8_reader(&file);
         cl7::u8string high_level_code = utf8_reader.read_all();
         xl7::graphics::shaders::ShaderCode shader_code{high_level_code};
         xl7::graphics::shaders::CompileOptions compile_options;
-        xl7::graphics::shaders::CodeDataProvider code_data_provider{&shader_code, &compile_options};
+        xl7::graphics::shaders::ShaderWrite shader_write{.shader_code = &shader_code, .compile_options = &compile_options};
 
-        _vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader(u8"My Vertex Shader", code_data_provider);
-        _pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader(u8"My Pixel Shader", code_data_provider);
+        _vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader(u8"My Vertex Shader", vertex_shader_desc, shader_write);
+        _pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader(u8"My Pixel Shader", pixel_shader_desc, shader_write);
 
 
         xl7::graphics::shaders::ConstantBufferDesc constant_buffer_desc;
@@ -151,16 +160,18 @@ namespace helloworld {
             .pixel_format = xl7::graphics::PixelFormat::R8G8B8A8_UNORM,
             .preferred_channel_order = xl7::graphics::ChannelOrder::RGBA,
             .mip_levels = 0,
-            .width = image.get_width(),
-            .height = image.get_height(),
+            .extent = {
+                .width = image.get_width(),
+                .height = image.get_height(),
+            },
         };
 
         xl7::graphics::states::SamplerStateDesc sampler_desc;
 
         auto texture_image = xl7::graphics::images::ImageConverter::convert_image(image, texture_desc.pixel_format, texture_desc.preferred_channel_order);
-        xl7::graphics::textures::ImageDataProvider image_data_provider{&texture_image};
+        auto texture_write = xl7::graphics::textures::Texture2DWrite::from_image(texture_image);
 
-        _texture_id = xl7::graphics::texture_manager()->create_texture_2d(u8"My Texture", texture_desc, image_data_provider);
+        _texture_id = xl7::graphics::texture_manager()->create_texture_2d(u8"My Texture", texture_desc, &texture_write);
         _sampler_state_id = xl7::graphics::state_manager()->ensure_sampler_state(sampler_desc);
 
 
@@ -313,11 +324,11 @@ namespace helloworld {
             xl7::graphics::Color color;
         } constant_buffer_data = {cs, sn, 0.0f, {1.0f, 1.0f, 1.0f, 1.0f}}; // NOLINT(*-use-designated-initializers)
 
-        xl7::graphics::shaders::ConstantDataProvider constant_data_provider(&constant_buffer_data);
+        auto constant_buffer_write = xl7::graphics::shaders::ConstantBufferWrite::from_data_ptr(&constant_buffer_data);
 
         auto* constant_buffer = xl7::graphics::shader_manager()->find_resource<xl7::graphics::shaders::ConstantBuffer>(_constant_buffer_id);
         assert(constant_buffer);
-        constant_buffer->update(constant_data_provider);
+        constant_buffer->edit().write(constant_buffer_write);
 
 
         auto* rendering_context = xl7::graphics::primary_context();

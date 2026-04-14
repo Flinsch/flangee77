@@ -59,26 +59,35 @@ namespace fl7::fonts::render {
             return;
 
         xl7::graphics::meshes::VertexBufferDesc vertex_buffer_desc{
-            xl7::graphics::meshes::MeshBufferUsage::Immutable,
-            xl7::graphics::meshes::Topology::LineList,
-            static_cast<unsigned>(vertices.size()),
-            sizeof(Vertex),
-            vertex_layout,
+            .usage = xl7::graphics::meshes::MeshBufferUsage::Immutable,
+            .topology = xl7::graphics::meshes::Topology::LineList,
+            .vertex_count = static_cast<unsigned>(vertices.size()),
+            .vertex_stride = sizeof(Vertex),
+            .vertex_layout = vertex_layout,
         };
 
-        xl7::graphics::meshes::VertexDataProvider<Vertex> vertex_data_provider{vertices};
+        auto vertex_buffer_write = xl7::graphics::meshes::VertexBufferWrite::from_vertices<Vertex>(vertices);
 
-        auto vertex_buffer_id = xl7::graphics::mesh_manager()->create_vertex_buffer(u8"Test Renderer Vertex Buffer", vertex_buffer_desc, vertex_data_provider);
+        auto vertex_buffer_id = xl7::graphics::mesh_manager()->create_vertex_buffer(u8"Test Renderer Vertex Buffer", vertex_buffer_desc, &vertex_buffer_write);
+
+        xl7::graphics::shaders::ShaderDesc vertex_shader_desc{
+            .language = xl7::graphics::shaders::ShaderCode::Language::HighLevel,
+            .entry_point = "",
+        };
+        xl7::graphics::shaders::ShaderDesc pixel_shader_desc{
+            .language = xl7::graphics::shaders::ShaderCode::Language::HighLevel,
+            .entry_point = "",
+        };
 
         cl7::io::File file(cl7::platform::filesystem::get_working_directory() + u8"assets/shaders/fonts/test-shader.hlsl");
         cl7::io::Utf8Reader utf8_reader(&file);
         cl7::u8string high_level_code = utf8_reader.read_all();
         xl7::graphics::shaders::ShaderCode shader_code{high_level_code};
         xl7::graphics::shaders::CompileOptions compile_options;
-        xl7::graphics::shaders::CodeDataProvider code_data_provider{&shader_code, &compile_options};
+        xl7::graphics::shaders::ShaderWrite shader_write{.shader_code = &shader_code, .compile_options = &compile_options};
 
-        auto vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader(u8"Test Renderer Vertex Shader", code_data_provider);
-        auto pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader(u8"Test Renderer Pixel Shader", code_data_provider);
+        auto vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader(u8"Test Renderer Vertex Shader", vertex_shader_desc, shader_write);
+        auto pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader(u8"Test Renderer Pixel Shader", pixel_shader_desc, shader_write);
 
         xl7::graphics::shaders::ConstantBufferDesc constant_buffer_desc;
         constant_buffer_desc.layout.constant_declarations = {
@@ -104,11 +113,11 @@ namespace fl7::fonts::render {
         constant_buffer_data.inv_target_size = {1.0f / static_cast<float>(rendering_context->resolve_effective_viewport().width), 1.0f / static_cast<float>(rendering_context->resolve_effective_viewport().height)};
         constant_buffer_data.color = {1.0f, 1.0f, 0.1f, 1.0f};
 
-        xl7::graphics::shaders::ConstantDataProvider constant_data_provider(&constant_buffer_data);
+        auto constant_buffer_write = xl7::graphics::shaders::ConstantBufferWrite::from_data_ptr(&constant_buffer_data);
 
         auto* constant_buffer = xl7::graphics::shader_manager()->find_resource<xl7::graphics::shaders::ConstantBuffer>(constant_buffer_id);
         assert(constant_buffer);
-        constant_buffer->update(constant_data_provider);
+        constant_buffer->edit().write(constant_buffer_write);
 
         rendering_context->pipeline.ia.set_vertex_buffer_id(vertex_buffer_id);
         rendering_context->pipeline.ia.set_index_buffer_id({});

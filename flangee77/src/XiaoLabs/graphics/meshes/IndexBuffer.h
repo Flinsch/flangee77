@@ -4,7 +4,6 @@
 
 #include "./IndexBufferDesc.h"
 #include "./IndexBufferUpdater.h"
-#include "./IndexDataProvider.h"
 
 
 
@@ -13,7 +12,7 @@ namespace xl7::graphics::meshes {
 
 
 class IndexBuffer
-    : public resources::ResourceBase<IndexBuffer, MeshBuffer>
+    : public resources::UpdatableResource<IndexBuffer, IndexBufferUpdater, MeshBuffer>
 {
 
 public:

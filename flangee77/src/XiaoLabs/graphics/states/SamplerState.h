@@ -1,6 +1,6 @@
 #ifndef XL7_GRAPHICS_STATES_SAMPLERSTATE_H
 #define XL7_GRAPHICS_STATES_SAMPLERSTATE_H
-#include "./AbstractState.h"
+#include "../../resources/ResourceBase.h"
 
 #include "./SamplerStateDesc.h"
 
@@ -11,7 +11,7 @@ namespace xl7::graphics::states {
 
 
 class SamplerState
-    : public resources::ResourceBase<SamplerState, AbstractState>
+    : public resources::ResourceBase<SamplerState>
 {
 
 public:

@@ -12,7 +12,7 @@ namespace xl7::graphics::meshes {
 
 
     VertexBuffer::VertexBuffer(const CreateContext& ctx, const VertexBufferDesc& desc)
-        : ResourceBase(ctx, Type::VertexBuffer, MeshBufferDesc{
+        : UpdatableResource(ctx, desc.usage == MeshBufferUsage::Immutable, Type::VertexBuffer, MeshBufferDesc{
             .usage = desc.usage,
             .topology = desc.topology,
             .element_count = desc.vertex_count,

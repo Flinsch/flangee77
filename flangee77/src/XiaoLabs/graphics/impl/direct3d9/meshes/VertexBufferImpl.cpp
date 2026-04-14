@@ -5,6 +5,8 @@
 #include "../mappings.h"
 #include "../errors.h"
 
+#include "../../shared/meshes/MeshBufferDiscardPolicy.h"
+
 #include <CoreLabs/logging.h>
 
 
@@ -40,16 +42,11 @@ namespace xl7::graphics::impl::direct3d9::meshes {
 
     /**
      * Requests/acquires the resource, bringing it into a usable state.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
      */
-    bool VertexBufferImpl::_acquire_impl(const resources::DataProvider& data_provider)
+    bool VertexBufferImpl::_acquire_impl()
     {
         auto* d3d_device = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_d3d_device();
         assert(d3d_device);
-
-        assert(get_data().empty() || get_data().size() == static_cast<size_t>(get_data_size()));
 
         HRESULT hresult = d3d_device->CreateVertexBuffer(
             get_data_size(),
@@ -65,15 +62,12 @@ namespace xl7::graphics::impl::direct3d9::meshes {
             return false;
         }
 
-        if (get_data().empty())
-            return true;
-
-        return _update_impl(data_provider, true, true);
+        return _flush_data();
     }
 
     /**
      * Disposes/"unacquires" the resource.
-     * The resource may be in an incompletely acquired state when this function is
+     * The resource may be in an incompletely acquired state before this function is
      * called. Any cleanup work that is necessary should still be carried out.
      */
     bool VertexBufferImpl::_dispose_impl()
@@ -83,30 +77,33 @@ namespace xl7::graphics::impl::direct3d9::meshes {
         return true;
     }
 
-
-
-    // #############################################################################
-    // VertexBuffer Implementations
-    // #############################################################################
-
     /**
-     * Updates the contents of this vertex buffer (unless it is immutable).
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been updated based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
+     * Flushes recent changes made to the local data copy by transferring them
+     * "dirty" parts to the hardware and returns true after a successful transfer.
      */
-    bool VertexBufferImpl::_update_impl(const resources::DataProvider& data_provider, bool discard, bool no_overwrite)
+    bool VertexBufferImpl::_flush_data_impl()
     {
+        static constexpr shared::meshes::MeshBufferDiscardPolicy discard_policy;
+
+        const auto& dirty_state = get_dirty_state();
+
+        const auto update = discard_policy.recommend(
+            dirty_state.is_all_dirty(),
+            dirty_state.first_element() * get_element_stride(),
+            dirty_state.element_count() * get_element_stride(),
+            get_data_size(),
+            get_desc().usage);
+
         DWORD flags = 0;
-        if (discard)
+        if (update.discard)
             flags |= D3DLOCK_DISCARD;
-        else if (no_overwrite)
+        else if (get_desc().usage == graphics::meshes::MeshBufferUsage::Transient)
             flags |= D3DLOCK_NOOVERWRITE;
 
         void* dst;
         HRESULT hresult = _d3d_vertex_buffer->Lock(
-            static_cast<unsigned>(data_provider.get_offset()),
-            static_cast<unsigned>(data_provider.get_size()),
+            update.offset,
+            update.size,
             &dst,
             flags);
 
@@ -116,7 +113,7 @@ namespace xl7::graphics::impl::direct3d9::meshes {
             return false;
         }
 
-        std::memcpy(dst, get_data().data() + data_provider.get_offset(), data_provider.get_size());
+        std::memcpy(dst, get_data().data() + update.offset, update.size);
 
         hresult = _d3d_vertex_buffer->Unlock();
         assert(SUCCEEDED(hresult));

@@ -103,12 +103,12 @@ namespace xl7::graphics::impl::direct3d9 {
         if (FAILED(hresult))
             LOG_WARNING(errors::d3d9_result(hresult, u8"IDirect3DDevice9::GetDeviceCaps"));
 
-        // Adopt the supported shader versions.
-        capabilities.shaders.vertex_shader_version = {
+        // Adopt the supported shader profiles.
+        capabilities.shaders.max_vertex_shader_profile = {
             .major = static_cast<unsigned>(D3DSHADER_VERSION_MAJOR(_d3d_device_caps.VertexShaderVersion)),
             .minor = static_cast<unsigned>(D3DSHADER_VERSION_MINOR(_d3d_device_caps.VertexShaderVersion)),
         };
-        capabilities.shaders.pixel_shader_version = {
+        capabilities.shaders.max_pixel_shader_profile = {
             .major = static_cast<unsigned>(D3DSHADER_VERSION_MAJOR(_d3d_device_caps.PixelShaderVersion)),
             .minor = static_cast<unsigned>(D3DSHADER_VERSION_MINOR(_d3d_device_caps.PixelShaderVersion)),
         };

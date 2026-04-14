@@ -1,10 +1,6 @@
 #ifndef XL7_GRAPHICS_IMPL_SHARED_SHADERS_D3DSHADERCOMPILER_H
 #define XL7_GRAPHICS_IMPL_SHARED_SHADERS_D3DSHADERCOMPILER_H
-
-#include "../../../shaders/ShaderCode.h"
-#include "../../../shaders/CompileOptions.h"
-
-#include <CoreLabs/string.h>
+#include "../../../shaders/ShaderCompiler.h"
 
 
 
@@ -12,24 +8,26 @@ namespace xl7::graphics::impl::shared::shaders {
 
 
 
-struct D3DShaderCompiler
+class D3DShaderCompiler
+    : public graphics::shaders::ShaderCompiler
 {
 
-    /**
-     * Compiles HLSL code from the specified file into bytecode for a given target.
-     * The file path is also used to resolve any #include directives. If an error
-     * occurs, an object with an "unknown" language and empty data is returned.
-     */
-    static graphics::shaders::ShaderCode compile_hlsl_code(const cl7::u8string& file_path, const graphics::shaders::CompileOptions& compile_options, const cl7::astring& entry_point, const cl7::astring& target);
+public:
+    using ShaderCompiler::ShaderCompiler;
 
+    ~D3DShaderCompiler() override = default;
+
+
+
+private:
     /**
-     * Compiles the given HLSL code into bytecode for a given target. The include
-     * path is used to resolve any #include directives. If an error occurs, an
+     * Compiles the given high-level code into bytecode. The specified include path
+     * is used to resolve any (local) #include directives. If an error occurs, an
      * object with an "unknown" language and empty data is returned.
      */
-    static graphics::shaders::ShaderCode compile_hlsl_code(const graphics::shaders::ShaderCode& hlsl_code, const cl7::u8string& include_path, const graphics::shaders::CompileOptions& compile_options, const cl7::astring& entry_point, const cl7::astring& target);
+    cl7::byte_vector _compile_source_code(const cl7::u8string& hlsl_code, const cl7::u8string& include_path, const graphics::shaders::CompileOptions& compile_options, const cl7::astring& entry_point) override;
 
-}; // struct D3DShaderCompiler
+}; // class D3DShaderCompiler
 
 
 

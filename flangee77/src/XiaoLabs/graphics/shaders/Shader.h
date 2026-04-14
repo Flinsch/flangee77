@@ -1,9 +1,9 @@
 #ifndef XL7_GRAPHICS_SHADERS_SHADER_H
 #define XL7_GRAPHICS_SHADERS_SHADER_H
-#include "../../resources/ResourceBase.h"
+#include "../../resources/ResourceWithData.h"
 
 #include "./ShaderDesc.h"
-#include "./CodeDataProvider.h"
+#include "./ShaderWrite.h"
 #include "./CompileOptions.h"
 #include "./ReflectionResult.h"
 #include "./ConstantBufferMapping.h"
@@ -23,10 +23,18 @@ class ConstantBuffer;
 
 
 class Shader
-    : public resources::ResourceBase<Shader>
+    : public resources::ResourceWithData<Shader, resources::Resource, true>
 {
 
 public:
+    class Attorney
+    {
+        static void build(Shader* shader, const ShaderCode& shader_code, const CompileOptions& compile_options) { shader->_build(shader_code, compile_options); }
+        friend class ShaderManager;
+    };
+
+
+
     enum struct Type
     {
         VertexShader,
@@ -65,14 +73,14 @@ public:
     bool is_precompiled() const { return _desc.language == ShaderCode::Language::Bytecode; }
 
     /**
-     * Indicates whether the shader is precompiled (based on high-level code).
+     * Indicates whether the shader is recompilable (based on high-level code).
      */
     bool is_recompilable() const { return _desc.language == ShaderCode::Language::HighLevel; }
 
     /**
      * Returns the compiled bytecode.
      */
-    const ShaderCode& get_bytecode() const { return _bytecode; }
+    cl7::byte_view get_bytecode() const { return _bytecode; }
 
     /**
      * Returns the reflection result, which includes parameter declarations etc.
@@ -119,7 +127,7 @@ public:
 
 protected:
 
-    Shader(const CreateContext& ctx, Type type, const ShaderDesc& desc);
+    Shader(const CreateContext& ctx, Type type, ShaderDesc desc);
 
     ~Shader() override = default;
 
@@ -134,7 +142,7 @@ protected:
      * Performs a "reflection" on the (compiled) shader bytecode to determine
      * parameter declarations etc. and validates the result.
      */
-    bool _reflect_and_validate(const ShaderCode& bytecode, ReflectionResult& reflection_result_out);
+    ReflectionResult _reflect_and_validate(cl7::byte_view bytecode);
 
     /**
      * Validates the given reflection result.
@@ -146,49 +154,36 @@ protected:
 private:
 
     /**
-     * Requests/acquires a precompiled shader resource.
-     * The actual code of the given code provider can possibly be ignored because the
-     * local data buffer has already been filled based on it. It is still included as
-     * it contains additional implementation-specific information.
+     * (Re)compiles the given high-level shader code and returns the compiled
+     * bytecode (or empty data on failure).
      */
-    virtual bool _acquire_precompiled_impl(const CodeDataProvider& code_data_provider) = 0;
+    virtual cl7::byte_vector _compile_impl(cl7::byte_view code_data, const CompileOptions& compile_options) = 0;
 
     /**
-     * Requests/acquires a recompilable shader resource.
-     * The actual code of the given code provider can possibly be ignored because the
-     * local data buffer has already been filled based on it. It is still included as
-     * it contains additional implementation-specific information.
-     */
-    virtual bool _acquire_recompilable_impl(const CodeDataProvider& code_data_provider, ShaderCode& bytecode_out) = 0;
-
-    /**
-     * Recompiles the shader code. This tends to result in the resource having to be
-     * completely recreated in the background.
-     */
-    virtual bool _recompile_impl(const CompileOptions& compile_options, ShaderCode& bytecode_out) = 0;
-
-    /**
-     * Performs a "reflection" on the (compiled) shader bytecode to determine
+     * Performs a "reflection" on the given (compiled) shader bytecode to determine
      * parameter declarations etc.
      */
-    virtual bool _reflect_impl(const ShaderCode& bytecode, ReflectionResult& reflection_result_out) = 0;
+    virtual ReflectionResult _reflect_impl(cl7::byte_view bytecode) = 0;
+
+    /**
+     * Recreates the shader resource after recompiling the high-level code, or
+     * whatever is necessary to effectively incorporate the newly compiled bytecode.
+     */
+    virtual bool _on_recompile_impl(cl7::byte_view bytecode) = 0;
 
 
 
     /**
-     * Checks whether the given data provider complies with the specific properties
-     * of the resource to (re)populate it, taking into account the current state of
-     * the resource if necessary.
+     * Takes the given shader code and compiles it if necessary, so that bytecode is
+     * available for further processing.
      */
-    bool _check_data_impl(const resources::DataProvider& data_provider) override;
+    void _build(const ShaderCode& shader_code, const CompileOptions& compile_options);
 
     /**
-     * Requests/acquires the resource, bringing it into a usable state.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
+     * Compiles the high-level shader code (taken from the shader's data) and
+     * returns the resulting bytecode.
      */
-    bool _acquire_impl(const resources::DataProvider& data_provider) override;
+    cl7::byte_vector _compile(const CompileOptions& compile_options);
 
 
 
@@ -205,7 +200,7 @@ private:
     /**
      * The compiled bytecode.
      */
-    ShaderCode _bytecode;
+    cl7::byte_vector _bytecode;
 
     /**
      * The reflection result, which includes parameter declarations etc.

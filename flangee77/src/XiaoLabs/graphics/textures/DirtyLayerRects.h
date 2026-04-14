@@ -42,10 +42,20 @@ public:
 
     void update(unsigned layer, unsigned x, unsigned y, unsigned width, unsigned height)
     {
+        update(layer, {
+            .x = x,
+            .y = y,
+            .width = width,
+            .height = height,
+        });
+    }
+
+    void update(unsigned layer, const TextureRect& region)
+    {
         if (is_all_dirty())
             return;
 
-        if (width == 0 || height == 0)
+        if (region.width == 0 || region.height == 0)
             return;
 
         // Just a quick plausibility check,
@@ -56,7 +66,7 @@ public:
         if (layer >= _layer_rects.size())
             _layer_rects.resize(layer + 1);
 
-        _layer_rects[layer].update(x, y, width, height);
+        _layer_rects[layer].update(region);
     }
 
     const auto& layer_rects() const { return _layer_rects; }

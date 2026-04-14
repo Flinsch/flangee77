@@ -1,6 +1,6 @@
 #ifndef XL7_GRAPHICS_STATES_DEPTHSTENCILSTATE_H
 #define XL7_GRAPHICS_STATES_DEPTHSTENCILSTATE_H
-#include "./AbstractState.h"
+#include "../../resources/ResourceBase.h"
 
 #include "./DepthStencilStateDesc.h"
 
@@ -11,7 +11,7 @@ namespace xl7::graphics::states {
 
 
 class DepthStencilState
-    : public resources::ResourceBase<DepthStencilState, AbstractState>
+    : public resources::ResourceBase<DepthStencilState>
 {
 
 public:

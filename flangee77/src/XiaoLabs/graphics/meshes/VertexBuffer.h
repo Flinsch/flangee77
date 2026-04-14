@@ -4,7 +4,6 @@
 
 #include "./VertexBufferDesc.h"
 #include "./VertexBufferUpdater.h"
-#include "./VertexDataProvider.h"
 
 
 
@@ -13,7 +12,7 @@ namespace xl7::graphics::meshes {
 
 
 class VertexBuffer
-    : public resources::ResourceBase<VertexBuffer, MeshBuffer>
+    : public resources::UpdatableResource<VertexBuffer, VertexBufferUpdater, MeshBuffer>
 {
 
 public:

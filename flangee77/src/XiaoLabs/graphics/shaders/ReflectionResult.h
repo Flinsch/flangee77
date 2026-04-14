@@ -15,6 +15,7 @@ namespace xl7::graphics::shaders {
 struct ReflectionResult
 {
 
+    bool success = false;
     std::vector<ConstantBufferDeclaration> constant_buffer_declarations;
     std::vector<TextureSamplerDeclaration> texture_sampler_declarations;
 

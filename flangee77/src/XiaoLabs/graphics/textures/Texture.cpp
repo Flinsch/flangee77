@@ -4,7 +4,6 @@
 #include "../RenderingDevice.h"
 #include "../PixelLayout.h"
 
-#include "../images/ImageConverter.h"
 #include "../images/ImageResizer.h"
 
 #include <MathLabs/functions.h>
@@ -18,107 +17,29 @@ namespace xl7::graphics::textures {
 
 
     Texture::Texture(const CreateContext& ctx, Type type, const TextureDesc& desc)
-        : ResourceBase(ctx)
+        : ResourceWithData(ctx, static_cast<size_t>(desc.layer_count * desc.extent.volume() * PixelLayout::determine_bytes_per_pixel(desc.pixel_format)))
         , _type(type)
         , _desc(desc)
         , _channel_order(GraphicsSystem::instance().get_rendering_device()->recommend_channel_order(type, desc.pixel_format, desc.preferred_channel_order).first)
         , _bytes_per_pixel(PixelLayout::determine_bytes_per_pixel(desc.pixel_format))
-        , _row_pitch(desc.width * _bytes_per_pixel)
-        , _slice_pitch(desc.height * _row_pitch)
-        , _layer_pitch(desc.depth * _slice_pitch)
-        , _data_size(desc.layer_count * _layer_pitch)
+        , _row_pitch(desc.extent.width * _bytes_per_pixel)
+        , _slice_pitch(desc.extent.height * _row_pitch)
+        , _layer_pitch(desc.extent.depth * _slice_pitch)
     {
-        assert(_data_size > 0);
+        assert(get_data_size() > 0);
 
         const RenderingDevice::Capabilities& capabilities = GraphicsSystem::instance().get_rendering_device()->get_capabilities();
 
-        if (capabilities.textures.square_only && _desc.width != _desc.height)
+        if (capabilities.textures.square_only && _desc.extent.width != _desc.extent.height)
             LOG_WARNING(u8"A non-square " + get_qualified_identifier() + u8" is supposed to be created, but only square textures are supported.");
 
-        if (capabilities.textures.max_aspect_ratio && _desc.height && _desc.width / _desc.height > capabilities.textures.max_aspect_ratio)
-            LOG_WARNING(u8"The " + get_qualified_identifier() + u8" to be created has an width/height aspect ratio of " + cl7::to_string(_desc.width / _desc.height) + u8", but a maximum of " + cl7::to_string(capabilities.textures.max_aspect_ratio) + u8" is supported.");
-        if (capabilities.textures.max_aspect_ratio && _desc.width && _desc.height / _desc.width > capabilities.textures.max_aspect_ratio)
-            LOG_WARNING(u8"The " + get_qualified_identifier() + u8" to be created has an height/width aspect ratio of " + cl7::to_string(_desc.height / _desc.width) + u8", but a maximum of " + cl7::to_string(capabilities.textures.max_aspect_ratio) + u8" is supported.");
+        if (capabilities.textures.max_aspect_ratio && _desc.extent.height && _desc.extent.width / _desc.extent.height > capabilities.textures.max_aspect_ratio)
+            LOG_WARNING(u8"The " + get_qualified_identifier() + u8" to be created has an width/height aspect ratio of " + cl7::to_string(_desc.extent.width / _desc.extent.height) + u8", but a maximum of " + cl7::to_string(capabilities.textures.max_aspect_ratio) + u8" is supported.");
+        if (capabilities.textures.max_aspect_ratio && _desc.extent.width && _desc.extent.height / _desc.extent.width > capabilities.textures.max_aspect_ratio)
+            LOG_WARNING(u8"The " + get_qualified_identifier() + u8" to be created has an height/width aspect ratio of " + cl7::to_string(_desc.extent.height / _desc.extent.width) + u8", but a maximum of " + cl7::to_string(capabilities.textures.max_aspect_ratio) + u8" is supported.");
 
         if (!ml7::is_power_of_two(_bytes_per_pixel))
             LOG_WARNING(u8"The " + get_qualified_identifier() + u8" to be created has a pixel stride of " + cl7::to_string(_bytes_per_pixel) + u8" bytes (" + cl7::to_string(_bytes_per_pixel * 8) + u8" bits). Even if this were supported by the API, it should be avoided and an alternative, power-of-two format should be explicitly used (e.g., " + cl7::to_string(ml7::next_power_of_two(_bytes_per_pixel) * 8) + u8" bits).");
-    }
-
-
-
-    /**
-     * Checks whether the given data provider complies with the specific properties
-     * of the resource to (re)populate it, taking into account the current state of
-     * the resource if necessary.
-     */
-    bool Texture::_check_data_impl(const resources::DataProvider& data_provider)
-    {
-        assert(typeid(data_provider) == typeid(const ImageDataProvider&));
-        auto image_data_provider = static_cast<const ImageDataProvider&>(data_provider); // NOLINT(*-pro-type-static-cast-downcast)
-
-        if (image_data_provider.get_image_desc().width != _desc.width)
-        {
-            LOG_ERROR(u8"The image width provided for " + get_qualified_identifier() + u8" does not match the width of the " + cl7::u8string(get_type_string()) + u8".");
-            return false;
-        }
-        if (image_data_provider.get_image_desc().height != _desc.height)
-        {
-            LOG_ERROR(u8"The image height provided for " + get_qualified_identifier() + u8" does not match the height of the " + cl7::u8string(get_type_string()) + u8".");
-            return false;
-        }
-        if (image_data_provider.get_image_desc().depth != _desc.depth)
-        {
-            LOG_ERROR(u8"The image depth provided for " + get_qualified_identifier() + u8" does not match the depth of the " + cl7::u8string(get_type_string()) + u8".");
-            return false;
-        }
-
-        if (!_check_against_size(data_provider, image_data_provider.get_image_desc().calculate_data_size() * image_data_provider.get_image_count()))
-            return false;
-        if (!_check_against_stride(data_provider, image_data_provider.get_image_desc().determine_bytes_per_pixel()))
-            return false;
-
-        return true;
-    }
-
-    /**
-     * (Re)populates the local data buffer based on the given data provider.
-     */
-    bool Texture::_fill_data_impl(const resources::DataProvider& data_provider)
-    {
-        assert(typeid(data_provider) == typeid(const ImageDataProvider&));
-        auto image_data_provider = static_cast<const ImageDataProvider&>(data_provider); // NOLINT(*-pro-type-static-cast-downcast)
-
-        cl7::byte_vector image_data;
-        data_provider.fill(image_data);
-
-        if (image_data_provider.get_image_desc().pixel_format == _desc.pixel_format && image_data_provider.get_image_desc().channel_order == _channel_order)
-        {
-            // No conversion required at all.
-            image_data.swap(_access_data());
-        }
-        else
-        {
-            // Perform image format conversion.
-            images::Image source_image(image_data_provider.get_image_desc(), std::move(image_data));
-            images::Image target_image = images::ImageConverter::convert_image(source_image, _desc.pixel_format, _channel_order);
-            target_image.swap_data(_access_data());
-        }
-
-        return true;
-    }
-
-    /**
-     * Requests/acquires the resource, bringing it into a usable state.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
-     */
-    bool Texture::_acquire_impl(const resources::DataProvider& data_provider)
-    {
-        assert(typeid(data_provider) == typeid(const ImageDataProvider&));
-        auto image_data_provider = static_cast<const ImageDataProvider&>(data_provider); // NOLINT(*-pro-type-static-cast-downcast)
-
-        return _acquire_impl(image_data_provider);
     }
 
 
@@ -131,14 +52,14 @@ namespace xl7::graphics::textures {
         const auto size = static_cast<size_t>(_slice_pitch);
         const auto offset = static_cast<size_t>(layer) * size;
 
-        assert(offset + size <= _data_size);
+        assert(offset + size <= get_data_size());
 
         images::ImageDesc desc;
         desc.pixel_format = _desc.pixel_format;
         desc.channel_order = _channel_order;
-        desc.width = _desc.width;
-        desc.height = _desc.height;
-        desc.depth = _desc.depth;
+        desc.width = _desc.extent.width;
+        desc.height = _desc.extent.height;
+        desc.depth = _desc.extent.depth;
         assert(size == desc.calculate_data_size());
 
         cl7::byte_view data;
@@ -164,30 +85,6 @@ namespace xl7::graphics::textures {
         }
 
         return mipmaps;
-    }
-
-    /**
-     * Updates the contents of this texture (unless it is immutable).
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been updated based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
-     */
-    bool Texture::_update(const ImageDataProvider& image_data_provider)
-    {
-        if (_desc.usage == TextureUsage::Immutable)
-        {
-            LOG_ERROR(u8"The immutable " + get_qualified_identifier() + u8" cannot be updated.");
-            return false;
-        }
-
-        if (!_try_fill_data(image_data_provider))
-            return false;
-
-        assert(image_data_provider.get_offset() == 0 && get_data().size() == _data_size);
-        bool discard = true;
-        bool no_overwrite = false;
-
-        return _update_impl(image_data_provider, discard, no_overwrite);
     }
 
 

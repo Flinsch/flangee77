@@ -6,6 +6,8 @@
 #include "../mappings.h"
 #include "../errors.h"
 
+#include "../../shared/textures/TextureDiscardPolicy.h"
+
 #include "../../../images/ImageResizer.h"
 
 #include <CoreLabs/logging.h>
@@ -33,36 +35,12 @@ namespace xl7::graphics::impl::direct3d11::textures {
     // #############################################################################
 
     /**
-     * Disposes/"unacquires" the resource.
-     * The resource may be in an incompletely acquired state when this function is
-     * called. Any cleanup work that is necessary should still be carried out.
+     * Requests/acquires the resource, bringing it into a usable state.
      */
-    bool Texture2DImpl::_dispose_impl()
-    {
-        _d3d_shader_resource_view.Reset();
-        _d3d_texture.Reset();
-
-        return true;
-    }
-
-
-
-    // #############################################################################
-    // Texture2D Implementations
-    // #############################################################################
-
-    /**
-     * Requests/acquires the texture resource.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
-     */
-    bool Texture2DImpl::_acquire_impl(const graphics::textures::ImageDataProvider& image_data_provider)
+    bool Texture2DImpl::_acquire_impl()
     {
         auto* d3d_device = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_d3d_device();
         assert(d3d_device);
-
-        assert(get_data().empty() || get_data().size() == static_cast<size_t>(get_data_size()));
 
         unsigned mip_levels = get_desc().mip_levels;
         if (get_desc().usage >= graphics::textures::TextureUsage::Dynamic && mip_levels != 1)
@@ -72,8 +50,8 @@ namespace xl7::graphics::impl::direct3d11::textures {
         }
 
         D3D11_TEXTURE2D_DESC texture_desc;
-        texture_desc.Width = get_desc().width;
-        texture_desc.Height = get_desc().height;
+        texture_desc.Width = get_width();
+        texture_desc.Height = get_height();
         texture_desc.MipLevels = mip_levels;
         texture_desc.ArraySize = 1;
         texture_desc.Format = _dxgi_format;
@@ -91,7 +69,7 @@ namespace xl7::graphics::impl::direct3d11::textures {
         subresource_data[0].SysMemSlicePitch = 0;
 
         std::vector<images::Image> mipmaps;
-        if (!get_data().empty() && mip_levels != 1)
+        if (get_dirty_state().is_dirty() && mip_levels != 1)
         {
             mipmaps = create_mipmaps();
             unsigned mip_level = 1;
@@ -109,7 +87,7 @@ namespace xl7::graphics::impl::direct3d11::textures {
 
         HRESULT hresult = d3d_device->CreateTexture2D(
             &texture_desc,
-            get_data().empty() ? nullptr : subresource_data,
+            get_dirty_state().is_dirty() ? subresource_data : nullptr,
             &_d3d_texture);
 
         if (FAILED(hresult))
@@ -137,19 +115,45 @@ namespace xl7::graphics::impl::direct3d11::textures {
     }
 
     /**
-     * Updates the contents of this texture (unless it is immutable).
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been updated based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
+     * Disposes/"unacquires" the resource.
+     * The resource may be in an incompletely acquired state before this function is
+     * called. Any cleanup work that is necessary should still be carried out.
      */
-    bool Texture2DImpl::_update_impl(const graphics::textures::ImageDataProvider& image_data_provider, bool discard, bool no_overwrite)
+    bool Texture2DImpl::_dispose_impl()
     {
+        _d3d_shader_resource_view.Reset();
+        _d3d_texture.Reset();
+
+        return true;
+    }
+
+    /**
+     * Flushes recent changes made to the local data copy by transferring them
+     * "dirty" parts to the hardware and returns true after a successful transfer.
+     */
+    bool Texture2DImpl::_flush_data_impl()
+    {
+        static constexpr shared::textures::TextureDiscardPolicy discard_policy;
+
         auto* d3d_device_context = GraphicsSystem::instance().get_rendering_device()->get_primary_context_impl<RenderingContextImpl>()->get_raw_d3d_device_context();
         assert(d3d_device_context);
 
+        const auto& dirty_state = get_dirty_state();
+
+        const auto update = discard_policy.recommend(
+            dirty_state.is_all_dirty(),
+            dirty_state.region().generalize(),
+            get_desc().extent.generalize(),
+            get_bytes_per_pixel(),
+            get_desc().usage);
+
         if (get_desc().usage >= graphics::textures::TextureUsage::Dynamic)
         {
-            D3D11_MAP map_type = D3D11_MAP_WRITE_DISCARD;
+            D3D11_MAP map_type;
+            if (update.discard)
+                map_type = D3D11_MAP_WRITE_DISCARD;
+            else
+                map_type = D3D11_MAP_WRITE;
 
             D3D11_MAPPED_SUBRESOURCE mapped_subresource;
             HRESULT hresult = d3d_device_context->Map(_d3d_texture.Get(), 0, map_type, 0, &mapped_subresource);
@@ -162,26 +166,30 @@ namespace xl7::graphics::impl::direct3d11::textures {
             }
 
             auto* dst = static_cast<std::byte*>(mapped_subresource.pData);
-            const std::byte* src = get_data().data();
-            for (unsigned y = 0; y < get_desc().height; ++y)
+            const std::byte* src = get_data().data() + static_cast<ptrdiff_t>((update.region.y * get_width() + update.region.x) * get_bytes_per_pixel());
+            unsigned row_pitch = get_row_pitch();
+            unsigned row_bytes = update.region.width * get_bytes_per_pixel();
+            for (unsigned y = 0; y < update.region.height; ++y)
             {
-                std::memcpy(dst, src, get_row_pitch());
+                std::memcpy(dst, src, row_bytes);
                 dst += mapped_subresource.RowPitch;
-                src += get_row_pitch();
+                src += row_pitch;
             }
 
             d3d_device_context->Unmap(_d3d_texture.Get(), 0);
         }
         else // => _desc.usage == graphics::textures::TextureUsage::Default
         {
-            unsigned copy_flags = D3D11_COPY_DISCARD;
+            unsigned copy_flags = 0;
+            if (update.discard)
+                copy_flags |= D3D11_COPY_DISCARD;
 
             D3D11_BOX box;
-            box.left = 0;
-            box.top = 0;
+            box.left = update.region.x;
+            box.top = update.region.y;
             box.front = 0;
-            box.right = get_desc().width;
-            box.bottom = get_desc().height;
+            box.right = update.region.width;
+            box.bottom = update.region.height;
             box.back = 1;
 
             d3d_device_context->UpdateSubresource1(_d3d_texture.Get(), 0, &box, get_data().data(), get_row_pitch(), 0, copy_flags);

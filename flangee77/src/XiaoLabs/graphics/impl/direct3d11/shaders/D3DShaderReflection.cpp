@@ -19,35 +19,32 @@ namespace xl7::graphics::impl::direct3d11::shaders {
      * Performs a "reflection" on the (compiled) shader bytecode to determine
      * parameter declarations etc.
      */
-    bool D3DShaderReflection::reflect(const graphics::shaders::ShaderCode& bytecode, graphics::shaders::ReflectionResult& reflection_result_out)
+    graphics::shaders::ReflectionResult D3DShaderReflection::reflect(cl7::byte_view bytecode)
     {
-        if (bytecode.get_language() != graphics::shaders::ShaderCode::Language::Bytecode)
-        {
-            LOG_ERROR(u8"The given code does not appear to be bytecode.");
-            return false;
-        }
+        graphics::shaders::ReflectionResult reflection_result;
+        reflection_result.success = false;
 
-        if (bytecode.get_code_data().empty())
+        if (bytecode.empty())
         {
             LOG_ERROR(u8"The given bytecode is empty.");
-            return false;
+            return reflection_result;
         }
 
         wrl::ComPtr<ID3D11ShaderReflection> d3d_shader_reflection;
         HRESULT hresult = ::D3DReflect(
-            bytecode.get_code_data().data(),
-            bytecode.get_code_data().size(),
+            bytecode.data(),
+            bytecode.size(),
             ::IID_ID3D11ShaderReflection,
             &d3d_shader_reflection);
 
         if (FAILED(hresult))
         {
             LOG_ERROR(errors::d3d11_result(hresult, u8"::D3DReflect"));
-            return false;
+            return reflection_result;
         }
 
-        auto& constant_buffer_declarations_out = reflection_result_out.constant_buffer_declarations;
-        auto& texture_sampler_declarations_out = reflection_result_out.texture_sampler_declarations;
+        auto& constant_buffer_declarations = reflection_result.constant_buffer_declarations;
+        auto& texture_sampler_declarations = reflection_result.texture_sampler_declarations;
 
         D3D11_SHADER_DESC d3d_shader_desc;
         hresult = d3d_shader_reflection->GetDesc(&d3d_shader_desc);
@@ -55,7 +52,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
         if (FAILED(hresult))
         {
             LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11ShaderReflection::GetDesc"));
-            return false;
+            return reflection_result;
         }
 
         for (unsigned cbuffer_index = 0; cbuffer_index < d3d_shader_desc.ConstantBuffers; ++cbuffer_index)
@@ -77,8 +74,8 @@ namespace xl7::graphics::impl::direct3d11::shaders {
             if (d3d_shader_buffer_desc.Type != D3D_CT_CBUFFER)
                 continue;
 
-            constant_buffer_declarations_out.emplace_back(graphics::shaders::ConstantBufferDeclaration{.name = cl7::astring{d3d_shader_buffer_desc.Name}, .index = cbuffer_index, .layout = {}});
-            auto& constant_declarations_out = constant_buffer_declarations_out.back().layout.constant_declarations;
+            constant_buffer_declarations.emplace_back(graphics::shaders::ConstantBufferDeclaration{.name = cl7::astring{d3d_shader_buffer_desc.Name}, .index = cbuffer_index, .layout = {}});
+            auto& constant_declarations = constant_buffer_declarations.back().layout.constant_declarations;
 
             for (unsigned variable_index = 0; variable_index < d3d_shader_buffer_desc.Variables; ++variable_index)
             {
@@ -154,10 +151,10 @@ namespace xl7::graphics::impl::direct3d11::shaders {
                 constant_declaration.offset = d3d_shader_variable_desc.StartOffset;
                 constant_declaration.size = d3d_shader_variable_desc.Size;
 
-                constant_declarations_out.emplace_back(std::move(constant_declaration));
+                constant_declarations.emplace_back(std::move(constant_declaration));
             } // for each variable
 
-            constant_buffer_declarations_out.back().layout.sort_and_adjust_padded_sizes();
+            constant_buffer_declarations.back().layout.sort_and_adjust_padded_sizes();
         } // for each cbuffer
 
         for (unsigned resource_index = 0; resource_index < d3d_shader_desc.BoundResources; ++resource_index)
@@ -179,10 +176,11 @@ namespace xl7::graphics::impl::direct3d11::shaders {
             texture_sampler_declaration.index = d3d_shader_input_bind_desc.BindPoint;
             texture_sampler_declaration.element_count = d3d_shader_input_bind_desc.BindCount;
 
-            texture_sampler_declarations_out.emplace_back(std::move(texture_sampler_declaration));
+            texture_sampler_declarations.emplace_back(std::move(texture_sampler_declaration));
         } // for each (sampler) resource
 
-        return true;
+        reflection_result.success = true;
+        return reflection_result;
     }
 
 

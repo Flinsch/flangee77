@@ -1,8 +1,9 @@
 #ifndef XL7_GRAPHICS_IMPL_D3D11_SHADERS_D3DSHADERREFLECTION_H
 #define XL7_GRAPHICS_IMPL_D3D11_SHADERS_D3DSHADERREFLECTION_H
 
-#include "../../../shaders/ShaderCode.h"
 #include "../../../shaders/ReflectionResult.h"
+
+#include <CoreLabs/byte_view.h>
 
 
 
@@ -19,7 +20,7 @@ public:
      * Performs a "reflection" on the (compiled) shader bytecode to determine
      * parameter declarations etc.
      */
-    static bool reflect(const graphics::shaders::ShaderCode& bytecode, graphics::shaders::ReflectionResult& reflection_result_out);
+    static graphics::shaders::ReflectionResult reflect(cl7::byte_view bytecode);
 
 }; // class D3DShaderReflection
 

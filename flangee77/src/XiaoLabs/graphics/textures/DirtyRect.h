@@ -1,7 +1,7 @@
 #ifndef XL7_GRAPHICS_TEXTURES_DIRTYRECT_H
 #define XL7_GRAPHICS_TEXTURES_DIRTYRECT_H
 
-#include <CoreLabs/root.h>
+#include "./TextureRect.h"
 
 
 
@@ -12,14 +12,14 @@ namespace xl7::graphics::textures {
 class DirtyRect
 {
 public:
-    bool is_dirty() const { return _all_dirty || (_width > 0 && _height > 0); }
+    bool is_dirty() const { return _all_dirty || (_region.width > 0 && _region.height > 0); }
 
     bool is_all_dirty() const { return _all_dirty; }
 
     void clear()
     {
         _all_dirty = false;
-        _x = _y = _width = _height = 0;
+        _region = TextureRect::zero();
     }
 
     void set_dirty()
@@ -29,40 +29,46 @@ public:
 
     void update(unsigned x, unsigned y, unsigned width, unsigned height)
     {
+        update({
+            .x = x,
+            .y = y,
+            .width = width,
+            .height = height,
+        });
+    }
+
+    void update(const TextureRect& region)
+    {
         if (is_all_dirty())
             return;
 
         if (!is_dirty())
         {
-            _x = x;
-            _y = y;
-            _width = width;
-            _height = height;
+            _region = region;
             return;
         }
 
-        unsigned x0 = std::min(_x, x);
-        unsigned y0 = std::min(_y, y);
-        unsigned x1 = std::max(_x + _width, x + width);
-        unsigned y1 = std::max(_y + _height, y + height);
+        const unsigned x0 = std::min(_region.x, region.x);
+        const unsigned y0 = std::min(_region.y, region.y);
+        const unsigned x1 = std::max(_region.x + _region.width, region.x + region.width);
+        const unsigned y1 = std::max(_region.y + _region.height, region.y + region.height);
 
-        _x = x0;
-        _y = y0;
-        _width = x1 - x0;
-        _height = y1 - y0;
+        _region.x = x0;
+        _region.y = y0;
+        _region.width = x1 - x0;
+        _region.height = y1 - y0;
     }
 
-    unsigned x() const { return _x; }
-    unsigned y() const { return _y; }
-    unsigned width() const { return _width; }
-    unsigned height() const { return _height; }
+    const TextureRect& region() const { return _region; }
+
+    unsigned x() const { return _region.x; }
+    unsigned y() const { return _region.y; }
+    unsigned width() const { return _region.width; }
+    unsigned height() const { return _region.height; }
 
 private:
     bool _all_dirty = false;
-    unsigned _x = 0;
-    unsigned _y = 0;
-    unsigned _width = 0;
-    unsigned _height = 0;
+    TextureRect _region = TextureRect::zero();
 };
 
 

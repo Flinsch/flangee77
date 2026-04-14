@@ -18,9 +18,6 @@ namespace xl7::graphics::shaders {
      */
     bool Shader::recompile(const CompileOptions& compile_options)
     {
-        if (!_check_is_usable())
-            return false;
-
         if (!is_recompilable())
         {
             assert(is_precompiled());
@@ -33,13 +30,18 @@ namespace xl7::graphics::shaders {
         // so we'll just delete them all "across the board".
         _constant_buffer_mappings_by_constant_buffer_id.clear();
 
-        if (!_recompile_impl(compile_options, _bytecode))
+        auto bytecode = _compile(compile_options);
+        auto reflection_result = _reflect_and_validate(bytecode);
+
+        if (!_on_recompile_impl(bytecode))
         {
             LOG_ERROR(u8"The " + get_qualified_identifier() + u8" could not be recompiled.");
             return false;
         }
 
-        return _reflect_and_validate(_bytecode, _reflection_result);
+        _bytecode = std::move(bytecode);
+        _reflection_result = std::move(reflection_result);
+        return true;
     }
 
     /**
@@ -59,13 +61,14 @@ namespace xl7::graphics::shaders {
         if (it != _constant_buffer_mappings_by_constant_buffer_id.end())
             return &it->second;
 
-        auto p = _constant_buffer_mappings_by_constant_buffer_id.emplace(constant_buffer->get_id(), ConstantBufferMapping{});
-        it = p.first;
+        auto tmp = _constant_buffer_mappings_by_constant_buffer_id.emplace(constant_buffer->get_id(), ConstantBufferMapping{});
+        it = tmp.first;
         ConstantBufferMapping& constant_buffer_mapping = it->second;
 
         for (const auto& source_constant_declaration : constant_buffer->get_desc().layout.constant_declarations)
         {
             const auto p = find_constant_buffer_and_constant_declaration(source_constant_declaration.name);
+            assert(p.first && p.second || !p.first && !p.second);
             if (!p.first /*|| !p.second*/) // Either both are NULL or both are not NULL, so one check is enough.
                 continue;
 
@@ -140,10 +143,10 @@ namespace xl7::graphics::shaders {
 
 
 
-    Shader::Shader(const CreateContext& ctx, Type type, const ShaderDesc& desc)
-        : ResourceBase(ctx)
+    Shader::Shader(const CreateContext& ctx, Type type, ShaderDesc desc)
+        : ResourceWithData(ctx, 0)
         , _type(type)
-        , _desc(desc)
+        , _desc(std::move(desc))
     {
     }
 
@@ -174,15 +177,17 @@ namespace xl7::graphics::shaders {
      * Performs a "reflection" on the (compiled) shader bytecode to determine
      * parameter declarations etc. and validates the result.
      */
-    bool Shader::_reflect_and_validate(const ShaderCode& bytecode, ReflectionResult& reflection_result_out)
+    ReflectionResult Shader::_reflect_and_validate(cl7::byte_view bytecode)
     {
-        if (!_reflect_impl(bytecode, reflection_result_out))
-            return false;
+        ReflectionResult reflection_result = _reflect_impl(bytecode);
 
-        for (auto& constant_buffer_declaration : reflection_result_out.constant_buffer_declarations)
+        for (auto& constant_buffer_declaration : reflection_result.constant_buffer_declarations)
             constant_buffer_declaration.layout.sort_and_adjust_padded_sizes();
 
-        return _validate_reflection_result(reflection_result_out);
+        if (!_validate_reflection_result(reflection_result))
+            reflection_result.success = false;
+
+        return reflection_result;
     }
 
     /**
@@ -218,75 +223,38 @@ namespace xl7::graphics::shaders {
 
 
     /**
-     * Checks whether the given data provider complies with the specific properties
-     * of the resource to (re)populate it, taking into account the current state of
-     * the resource if necessary.
+     * Takes the given shader code and compiles it if necessary, so that bytecode is
+     * available for further processing.
      */
-    bool Shader::_check_data_impl(const resources::DataProvider& data_provider)
+    void Shader::_build(const ShaderCode& shader_code, const CompileOptions& compile_options)
     {
-        assert(typeid(data_provider) == typeid(const CodeDataProvider&));
-        auto code_data_provider = static_cast<const CodeDataProvider&>(data_provider); // NOLINT(*-pro-type-static-cast-downcast)
+        _access_data() = shader_code.get_code_data();
 
-        if (code_data_provider.get_language() == ShaderCode::Language::Unknown)
+        switch (shader_code.get_language())
         {
-            LOG_ERROR(u8"The language of the provided code for " + get_qualified_identifier() + u8" is unknown.");
-            return false;
+        case ShaderCode::Language::Bytecode:
+            _bytecode = shader_code.get_code_data();
+            break;
+        case ShaderCode::Language::HighLevel:
+            _bytecode = _compile(compile_options);
+            break;
+        default:
+            assert(false);
         }
 
-        if (is_precompiled() && code_data_provider.get_language() != ShaderCode::Language::Bytecode)
-        {
-            LOG_ERROR(u8"The provided code for the precompiled " + get_qualified_identifier() + u8" has to be in bytecode.");
-            return false;
-        }
-
-        if (is_recompilable() && code_data_provider.get_language() != ShaderCode::Language::HighLevel)
-        {
-            LOG_ERROR(u8"The provided code for the recompilable " + get_qualified_identifier() + u8" has to be in high-level language.");
-            return false;
-        }
-
-        if (code_data_provider.get_code_data().empty())
-        {
-            LOG_ERROR(u8"The provided code for " + get_qualified_identifier() + u8" is empty.");
-            return false;
-        }
-
-        if (is_recompilable() && _cascade_entry_point(code_data_provider.get_compile_options()).empty())
-        {
-            LOG_ERROR(u8"The entry point for the recompilable " + get_qualified_identifier() + u8" was not specified.");
-            return false;
-        }
-
-        return true;
+        _reflection_result = _reflect_and_validate(_bytecode);
     }
 
     /**
-     * Requests/acquires the resource, bringing it into a usable state.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
+     * Compiles the high-level shader code (taken from the shader's data) and
+     * returns the resulting bytecode.
      */
-    bool Shader::_acquire_impl(const resources::DataProvider& data_provider)
+    cl7::byte_vector Shader::_compile(const CompileOptions& compile_options)
     {
-        assert(typeid(data_provider) == typeid(const CodeDataProvider&));
-        auto code_data_provider = static_cast<const CodeDataProvider&>(data_provider); // NOLINT(*-pro-type-static-cast-downcast)
-
-        if (is_precompiled())
-        {
-            assert(code_data_provider.get_shader_code().get_language() == ShaderCode::Language::Bytecode);
-            _bytecode = code_data_provider.get_shader_code();
-
-            return _acquire_precompiled_impl(code_data_provider) &&
-                _reflect_and_validate(_bytecode, _reflection_result);
-        }
-        if (is_recompilable())
-        {
-            return _acquire_recompilable_impl(code_data_provider, _bytecode) &&
-                _reflect_and_validate(_bytecode, _reflection_result);
-        }
-
-        assert(false);
-        return false;
+        auto bytecode = _compile_impl(get_data(), compile_options);
+        if (bytecode.empty())
+            LOG_ERROR(u8"The " + get_qualified_identifier() + u8" could not be compiled.");
+        return std::move(bytecode);
     }
 
 

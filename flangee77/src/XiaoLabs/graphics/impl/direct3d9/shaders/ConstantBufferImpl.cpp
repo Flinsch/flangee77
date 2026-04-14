@@ -22,8 +22,16 @@ namespace xl7::graphics::impl::direct3d9::shaders {
     // #############################################################################
 
     /**
+     * Requests/acquires the resource, bringing it into a usable state.
+     */
+    bool ConstantBufferImpl::_acquire_impl()
+    {
+        return true;
+    }
+
+    /**
      * Disposes/"unacquires" the resource.
-     * The resource may be in an incompletely acquired state when this function is
+     * The resource may be in an incompletely acquired state before this function is
      * called. Any cleanup work that is necessary should still be carried out.
      */
     bool ConstantBufferImpl::_dispose_impl()
@@ -31,30 +39,11 @@ namespace xl7::graphics::impl::direct3d9::shaders {
         return true;
     }
 
-
-
-    // #############################################################################
-    // ConstantBuffer Implementations
-    // #############################################################################
-
     /**
-     * Requests/acquires the constant buffer resource.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
+     * Flushes recent changes made to the local data copy by transferring them
+     * "dirty" parts to the hardware and returns true after a successful transfer.
      */
-    bool ConstantBufferImpl::_acquire_impl(const graphics::shaders::ConstantDataProvider& constant_data_provider)
-    {
-        return true;
-    }
-
-    /**
-     * Updates the contents of this constant buffer.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been updated based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
-     */
-    bool ConstantBufferImpl::_update_impl(const graphics::shaders::ConstantDataProvider& constant_data_provider, bool discard, bool no_overwrite)
+    bool ConstantBufferImpl::_flush_data_impl()
     {
         return true;
     }

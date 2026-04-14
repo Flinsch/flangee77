@@ -6,6 +6,8 @@
 #include "../mappings.h"
 #include "../errors.h"
 
+#include "../../shared/meshes/MeshBufferDiscardPolicy.h"
+
 #include <CoreLabs/logging.h>
 
 
@@ -49,16 +51,11 @@ namespace xl7::graphics::impl::direct3d11::meshes {
 
     /**
      * Requests/acquires the resource, bringing it into a usable state.
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been filled based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
      */
-    bool IndexBufferImpl::_acquire_impl(const resources::DataProvider& data_provider)
+    bool IndexBufferImpl::_acquire_impl()
     {
         auto* d3d_device = GraphicsSystem::instance().get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_d3d_device();
         assert(d3d_device);
-
-        assert(get_data().empty() || get_data().size() == static_cast<size_t>(get_data_size()));
 
         D3D11_BUFFER_DESC buffer_desc;
         buffer_desc.ByteWidth = get_data_size();
@@ -75,7 +72,7 @@ namespace xl7::graphics::impl::direct3d11::meshes {
 
         HRESULT hresult = d3d_device->CreateBuffer(
             &buffer_desc,
-            get_data().empty() ? nullptr : &subresource_data,
+            get_dirty_state().is_dirty() ? &subresource_data : nullptr,
             &_d3d_index_buffer);
 
         if (FAILED(hresult))
@@ -89,7 +86,7 @@ namespace xl7::graphics::impl::direct3d11::meshes {
 
     /**
      * Disposes/"unacquires" the resource.
-     * The resource may be in an incompletely acquired state when this function is
+     * The resource may be in an incompletely acquired state before this function is
      * called. Any cleanup work that is necessary should still be carried out.
      */
     bool IndexBufferImpl::_dispose_impl()
@@ -99,29 +96,32 @@ namespace xl7::graphics::impl::direct3d11::meshes {
         return true;
     }
 
-
-
-    // #############################################################################
-    // IndexBuffer Implementations
-    // #############################################################################
-
     /**
-     * Updates the contents of this vertex buffer (unless it is immutable).
-     * The given data provider can possibly be ignored because the local data buffer
-     * has already been updated based on it. It is still included in the event that
-     * it contains additional implementation-specific information.
+     * Flushes recent changes made to the local data copy by transferring them
+     * "dirty" parts to the hardware and returns true after a successful transfer.
      */
-    bool IndexBufferImpl::_update_impl(const resources::DataProvider& data_provider, bool discard, bool no_overwrite)
+    bool IndexBufferImpl::_flush_data_impl()
     {
+        static constexpr shared::meshes::MeshBufferDiscardPolicy discard_policy;
+
         auto* d3d_device_context = GraphicsSystem::instance().get_rendering_device()->get_primary_context_impl<RenderingContextImpl>()->get_raw_d3d_device_context();
         assert(d3d_device_context);
+
+        const auto& dirty_state = get_dirty_state();
+
+        const auto update = discard_policy.recommend(
+            dirty_state.is_all_dirty(),
+            dirty_state.first_element() * get_element_stride(),
+            dirty_state.element_count() * get_element_stride(),
+            get_data_size(),
+            get_desc().usage);
 
         if (get_desc().usage >= graphics::meshes::MeshBufferUsage::Dynamic)
         {
             D3D11_MAP map_type;
-            if (discard)
+            if (update.discard)
                 map_type = D3D11_MAP_WRITE_DISCARD;
-            else if (no_overwrite)
+            else if (get_desc().usage == graphics::meshes::MeshBufferUsage::Transient)
                 map_type = D3D11_MAP_WRITE_NO_OVERWRITE;
             else
                 map_type = D3D11_MAP_WRITE;
@@ -136,27 +136,27 @@ namespace xl7::graphics::impl::direct3d11::meshes {
                 return false;
             }
 
-            std::memcpy(mapped_subresource.pData, get_data().data() + data_provider.get_offset(), data_provider.get_size());
+            std::memcpy(mapped_subresource.pData, get_data().data() + update.offset, update.size);
 
             d3d_device_context->Unmap(_d3d_index_buffer.Get(), 0);
         }
         else // => _desc.usage == graphics::meshes::MeshBufferUsage::Default
         {
             unsigned copy_flags = 0;
-            if (discard)
+            if (update.discard)
                 copy_flags |= D3D11_COPY_DISCARD;
-            else if (no_overwrite)
+            else if (get_desc().usage == graphics::meshes::MeshBufferUsage::Transient)
                 copy_flags |= D3D11_COPY_NO_OVERWRITE;
 
             D3D11_BOX box;
-            box.left = static_cast<unsigned>(data_provider.get_offset());
+            box.left = update.offset;
             box.top = 0;
             box.front = 0;
-            box.right = static_cast<unsigned>(data_provider.get_offset() + data_provider.get_size());
+            box.right = update.offset + update.size;
             box.bottom = 1;
             box.back = 1;
 
-            d3d_device_context->UpdateSubresource1(_d3d_index_buffer.Get(), 0, &box, get_data().data() + data_provider.get_offset(), 0, 0, copy_flags);
+            d3d_device_context->UpdateSubresource1(_d3d_index_buffer.Get(), 0, &box, get_data().data() + update.offset, 0, 0, copy_flags);
         }
 
         return true;

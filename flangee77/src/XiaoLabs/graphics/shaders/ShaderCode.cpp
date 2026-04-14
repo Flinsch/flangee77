@@ -14,6 +14,12 @@ namespace xl7::graphics::shaders {
     {
     }
 
+    ShaderCode::ShaderCode(Language language, cl7::byte_vector&& code_data)
+        : _language(language)
+        , _code_data(std::move(code_data))
+    {
+    }
+
     ShaderCode::ShaderCode(cl7::u8string_view high_level_code)
         : _language(Language::HighLevel)
         , _code_data(cl7::text::codec::to_bytes(high_level_code))

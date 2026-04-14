@@ -2,6 +2,7 @@
 #define XL7_GRAPHICS_TEXTURES_CUBEMAPWRITE_H
 
 #include "./CubemapFace.h"
+#include "./TextureRect.h"
 
 #include <CoreLabs/byte_view.h>
 
@@ -16,15 +17,8 @@ struct CubemapWrite
     /** The provided source pixel data to write. */
     cl7::byte_view data;
 
-    /** The destination x-offset, in pixels. */
-    unsigned x = 0;
-    /** The destination y-offset, in pixels. */
-    unsigned y = 0;
-
-    /** The width of the region to update, in pixels. */
-    unsigned width;
-    /** The height of the region to update, in pixels. */
-    unsigned height;
+    /** The destination region to update, in pixels. */
+    TextureRect region;
 
     /** The cubemap face to update. */
     CubemapFace face;

@@ -14,7 +14,7 @@ namespace xl7::graphics::meshes {
 
 
     IndexBuffer::IndexBuffer(const CreateContext& ctx, const IndexBufferDesc& desc)
-        : ResourceBase(ctx, Type::IndexBuffer, MeshBufferDesc{
+        : UpdatableResource(ctx, desc.usage == MeshBufferUsage::Immutable, Type::IndexBuffer, MeshBufferDesc{
             .usage = desc.usage,
             .topology = desc.topology,
             .element_count = desc.index_count,

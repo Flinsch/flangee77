@@ -36,22 +36,14 @@ public:
 
 
     /**
-     * Creates and acquires the specified vertex shader.
+     * Creates and acquires the specified vertex buffer.
      */
-    template <class TVertex>
-    VertexBuffer::Id create_vertex_buffer(cl7::u8string_view identifier, const VertexBufferDesc& desc, const VertexDataProvider<TVertex>& vertex_data_provider)
-    {
-        return _create_vertex_buffer(identifier, desc, vertex_data_provider);
-    }
+    VertexBuffer::Id create_vertex_buffer(cl7::u8string_view identifier, const VertexBufferDesc& desc, const VertexBufferWrite* initial_write = nullptr);
 
     /**
      * Creates and acquires the specified index buffer.
      */
-    template <class TIndex>
-    IndexBuffer::Id create_index_buffer(cl7::u8string_view identifier, const IndexBufferDesc& desc, const IndexDataProvider<TIndex>& index_data_provider)
-    {
-        return _create_index_buffer(identifier, desc, index_data_provider);
-    }
+    IndexBuffer::Id create_index_buffer(cl7::u8string_view identifier, const IndexBufferDesc& desc, const IndexBufferWrite* initial_write = nullptr);
 
 
 
@@ -62,19 +54,6 @@ protected:
 
 
 private:
-
-    /**
-     * Creates and acquires the specified vertex shader.
-     */
-    VertexBuffer::Id _create_vertex_buffer(cl7::u8string_view identifier, const VertexBufferDesc& desc, const resources::DataProvider& data_provider);
-
-    /**
-     * Creates and acquires the specified index buffer.
-     */
-    IndexBuffer::Id _create_index_buffer(cl7::u8string_view identifier, const IndexBufferDesc& desc, const resources::DataProvider& data_provider);
-
-
-
     /**
      * The mesh factory.
      */

@@ -17,9 +17,7 @@ namespace xl7::graphics::textures {
             .pixel_format = desc.pixel_format,
             .preferred_channel_order = desc.preferred_channel_order,
             .mip_levels = desc.mip_levels,
-            .width = desc.width,
-            .height = desc.height,
-            .depth = 1,
+            .extent = desc.extent.generalize(),
             .layer_count = desc.layer_count,
         })
         , _desc(desc)

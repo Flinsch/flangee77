@@ -13,6 +13,7 @@ namespace xl7::resources {
 
 template <class TResourceDesc, class TDirtyState>
     requires(requires {
+        { TDirtyState{}.clear() };
         { TDirtyState{}.set_dirty() };
     })
 class ResourceUpdaterBase
@@ -61,12 +62,7 @@ public:
     ResourceUpdaterBase(ResourceUpdaterBase&&) = delete;
     ResourceUpdaterBase& operator=(ResourceUpdaterBase&&) = delete;
 
-    ~ResourceUpdaterBase() noexcept override
-    {
-        // If necessary, clear up the dummy state object.
-        if (!has_custom_dirty_state())
-            _dirty_state->clear();
-    }
+    ~ResourceUpdaterBase() noexcept override = default;
 
 
 
@@ -115,12 +111,12 @@ protected:
 
 
 private:
-    static DirtyState _dummy_state;
-
     /** The descriptor of the supposedly updatable resource. */
     TResourceDesc _desc;
     /** The "dirty" state of the data to be updated. */
     DirtyState* _dirty_state = &_dummy_state;
+
+    DirtyState _dummy_state = {};
 
 }; // class ResourceUpdaterBase
 

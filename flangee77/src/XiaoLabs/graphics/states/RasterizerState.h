@@ -1,6 +1,6 @@
 #ifndef XL7_GRAPHICS_STATES_RASTERIZERSTATE_H
 #define XL7_GRAPHICS_STATES_RASTERIZERSTATE_H
-#include "./AbstractState.h"
+#include "../../resources/ResourceBase.h"
 
 #include "./RasterizerStateDesc.h"
 
@@ -11,7 +11,7 @@ namespace xl7::graphics::states {
 
 
 class RasterizerState
-    : public resources::ResourceBase<RasterizerState, AbstractState>
+    : public resources::ResourceBase<RasterizerState>
 {
 
 public:
