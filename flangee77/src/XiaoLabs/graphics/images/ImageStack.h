@@ -102,6 +102,11 @@ public:
      */
     bool add_image_data(cl7::byte_view image_data);
 
+    /**
+     * Extracts the specified image by creating a new one and copying the data.
+     */
+    Image extract_image(unsigned image_index) const;
+
 
 
 private:

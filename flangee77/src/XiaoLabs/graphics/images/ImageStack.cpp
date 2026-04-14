@@ -134,6 +134,14 @@ namespace xl7::graphics::images {
         return true;
     }
 
+    /**
+     * Extracts the specified image by creating a new one and copying the data.
+     */
+    Image ImageStack::extract_image(unsigned image_index) const
+    {
+        return {_desc, get_image_data(image_index)};
+    }
+
 
 
 } // namespace xl7::graphics::images
