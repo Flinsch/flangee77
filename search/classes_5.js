@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['edit_0',['Edit',['../d9/ddc/classxl7_1_1resources_1_1ResourceUpdateMixin_1_1Edit.html',1,'xl7::resources::ResourceUpdateMixin']]],
+  ['edit_0',['Edit',['../db/dbe/classxl7_1_1resources_1_1UpdatableResource_1_1Edit.html',1,'xl7::resources::UpdatableResource']]],
   ['element_1',['element',['../de/dc8/classdl7_1_1xml_1_1Element.html',1,'dl7::xml::Element'],['../d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html',1,'xl7::graphics::meshes::VertexLayout::Element']]],
   ['encodebuffer_2',['EncodeBuffer',['../d0/d4a/structcl7_1_1text_1_1codec_1_1EncodeBuffer.html',1,'cl7::text::codec']]],
   ['encoder_3',['Encoder',['../d6/d1d/classcl7_1_1text_1_1codec_1_1Encoder.html',1,'cl7::text::codec']]],

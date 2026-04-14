@@ -8,6 +8,7 @@ var classxl7_1_1graphics_1_1textures_1_1Cubemap =
     [ "as_image", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html#aac975882915c2623a84cbf979c320096", null ],
     [ "create_mipmaps", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html#af0d17c86d6da9325d7d6a666e4bf5cd5", null ],
     [ "get_desc", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html#a23428808420f4af80478b2d25942e199", null ],
+    [ "get_extent", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html#aab92ff7c7dba4b0413bc90e536be2d92", null ],
     [ "get_type_string", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html#a166bf7e11a31a939274909417cd06f10", null ],
     [ "operator=", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html#ab175743fec9eef97cb1061088f1c9939", null ],
     [ "operator=", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html#ae6d6e1427052f9b4ee792837fdef0550", null ],

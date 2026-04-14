@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['fakedataprovider_2ecpp_0',['FakeDataProvider.cpp',['../d6/dbc/FakeDataProvider_8cpp.html',1,'']]],
-  ['fakedataprovider_2eh_1',['FakeDataProvider.h',['../d2/d16/FakeDataProvider_8h.html',1,'']]],
-  ['file_2ecpp_2',['File.cpp',['../d9/d63/File_8cpp.html',1,'']]],
-  ['file_2eh_3',['File.h',['../d6/db7/File_8h.html',1,'']]],
+  ['file_2ecpp_0',['File.cpp',['../d9/d63/File_8cpp.html',1,'']]],
+  ['file_2eh_1',['File.h',['../d6/db7/File_8h.html',1,'']]],
+  ['fileincludehandler_2ecpp_2',['FileIncludeHandler.cpp',['../de/dae/FileIncludeHandler_8cpp.html',1,'']]],
+  ['fileincludehandler_2eh_3',['FileIncludeHandler.h',['../d3/d80/FileIncludeHandler_8h.html',1,'']]],
   ['fileloghandler_2ecpp_4',['FileLogHandler.cpp',['../d5/d84/FileLogHandler_8cpp.html',1,'']]],
   ['fileloghandler_2eh_5',['FileLogHandler.h',['../d7/d8b/FileLogHandler_8h.html',1,'']]],
   ['filesystem_2ecpp_6',['filesystem.cpp',['../dc/d69/detail_2windows_2filesystem_8cpp.html',1,'(Global Namespace)'],['../d9/d8f/filesystem_8cpp.html',1,'(Global Namespace)']]],
@@ -20,7 +20,7 @@ var searchData=
   ['fontloader_2eh_17',['FontLoader.h',['../d9/db3/FontLoader_8h.html',1,'']]],
   ['fontmetrics_2eh_18',['FontMetrics.h',['../d8/df8/FontMetrics_8h.html',1,'']]],
   ['format_2ecpp_19',['format.cpp',['../d0/dd8/format_8cpp.html',1,'']]],
-  ['format_2eh_20',['format.h',['../d2/d93/xml_2Format_8h.html',1,'(Global Namespace)'],['../d9/d33/toml_2Format_8h.html',1,'(Global Namespace)'],['../d1/db7/json_2Format_8h.html',1,'(Global Namespace)'],['../d3/d6a/ini_2Format_8h.html',1,'(Global Namespace)'],['../d0/d0a/format_8h.html',1,'(Global Namespace)']]],
+  ['format_2eh_20',['format.h',['../d3/d6a/ini_2Format_8h.html',1,'(Global Namespace)'],['../d2/d93/xml_2Format_8h.html',1,'(Global Namespace)'],['../d9/d33/toml_2Format_8h.html',1,'(Global Namespace)'],['../d1/db7/json_2Format_8h.html',1,'(Global Namespace)'],['../d0/d0a/format_8h.html',1,'(Global Namespace)']]],
   ['framebuffersurface_2ecpp_21',['FramebufferSurface.cpp',['../de/de2/FramebufferSurface_8cpp.html',1,'']]],
   ['framebuffersurface_2eh_22',['FramebufferSurface.h',['../d8/ddb/FramebufferSurface_8h.html',1,'']]],
   ['functional_2eh_23',['functional.h',['../d8/dea/functional_8h.html',1,'']]],

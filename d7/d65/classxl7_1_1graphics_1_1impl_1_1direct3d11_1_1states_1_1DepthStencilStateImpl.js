@@ -6,7 +6,7 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1DepthStencilStateImp
     [ "DepthStencilStateImpl", "d7/d65/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1DepthStencilStateImpl.html#a11516426b4b0664e062d20776647364b", null ],
     [ "DepthStencilStateImpl", "d7/d65/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1DepthStencilStateImpl.html#a89d89ad4dcfcf37146a58e139c2b9d0b", null ],
     [ "~DepthStencilStateImpl", "d7/d65/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1DepthStencilStateImpl.html#a6c896723e0497238489e959066497445", null ],
-    [ "_acquire_impl", "d7/d65/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1DepthStencilStateImpl.html#a83d29de1c13bfeb90d9f9c0523729bb7", null ],
+    [ "_acquire_impl", "d7/d65/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1DepthStencilStateImpl.html#a0ee1d59518bef7bc2c7169f928c202af", null ],
     [ "_dispose_impl", "d7/d65/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1DepthStencilStateImpl.html#ae7257ce03742b14035a2c41f5013f03a", null ],
     [ "_get_raw_resource_impl", "d7/d65/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1DepthStencilStateImpl.html#a3a6916fb4ac5e4a4a0ff403b125f5d37", null ],
     [ "get_raw_d3d_depth_stencil_state", "d7/d65/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1DepthStencilStateImpl.html#aec07cb1ef352886fb0269d66f438026c", null ],

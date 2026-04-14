@@ -8,7 +8,6 @@ var dir_5e3ab3d1af9f3ff1abd3ff57b8e30e4c =
     [ "IndexBufferUpdater.cpp", "dc/d8b/IndexBufferUpdater_8cpp.html", null ],
     [ "IndexBufferUpdater.h", "d6/df1/IndexBufferUpdater_8h.html", "d6/df1/IndexBufferUpdater_8h" ],
     [ "IndexBufferWrite.h", "d0/d95/IndexBufferWrite_8h.html", "d0/d95/IndexBufferWrite_8h" ],
-    [ "IndexDataProvider.h", "dd/d44/IndexDataProvider_8h.html", "dd/d44/IndexDataProvider_8h" ],
     [ "IndexType.h", "d9/db6/IndexType_8h.html", "d9/db6/IndexType_8h" ],
     [ "MeshBuffer.cpp", "d2/d67/MeshBuffer_8cpp.html", null ],
     [ "MeshBuffer.h", "d4/d3c/MeshBuffer_8h.html", "d4/d3c/MeshBuffer_8h" ],
@@ -28,7 +27,6 @@ var dir_5e3ab3d1af9f3ff1abd3ff57b8e30e4c =
     [ "VertexBufferUpdater.cpp", "dc/dc6/VertexBufferUpdater_8cpp.html", null ],
     [ "VertexBufferUpdater.h", "dd/d1c/VertexBufferUpdater_8h.html", "dd/d1c/VertexBufferUpdater_8h" ],
     [ "VertexBufferWrite.h", "d4/ddd/VertexBufferWrite_8h.html", "d4/ddd/VertexBufferWrite_8h" ],
-    [ "VertexDataProvider.h", "dd/d69/VertexDataProvider_8h.html", "dd/d69/VertexDataProvider_8h" ],
     [ "VertexLayout.cpp", "dd/d55/VertexLayout_8cpp.html", null ],
     [ "VertexLayout.h", "d0/dbb/VertexLayout_8h.html", "d0/dbb/VertexLayout_8h" ]
 ];

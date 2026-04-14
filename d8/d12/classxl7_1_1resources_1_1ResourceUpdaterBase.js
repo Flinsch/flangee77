@@ -7,7 +7,7 @@ var classxl7_1_1resources_1_1ResourceUpdaterBase =
     [ "ResourceUpdaterBase", "d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html#a566c874e4f26b9a5f7ba2c476692a559", null ],
     [ "ResourceUpdaterBase", "d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html#af2d2eb667f023e7fac676e056ec7401c", null ],
     [ "ResourceUpdaterBase", "d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html#af01d607ad4027b1ff325d99339af5864", null ],
-    [ "~ResourceUpdaterBase", "d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html#a28f66e8a9d6686f413847d003883b340", null ],
+    [ "~ResourceUpdaterBase", "d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html#a0069a83a6dd811f4dacf4006f39fcfda", null ],
     [ "_access_dirty_state", "d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html#a97d21e61ab0f0dbe4eafd8f3c4967eea", null ],
     [ "_update_dirty_state", "d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html#a94d17f5e1d601d6bbcb5077a2008486d", null ],
     [ "get_desc", "d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html#abbaa4f0b56eaedfeb8205b5a674e5275", null ],

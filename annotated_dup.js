@@ -438,11 +438,15 @@ var annotated_dup =
           [ "shared", "d1/d8f/namespacexl7_1_1graphics_1_1impl_1_1shared.html", [
             [ "meshes", "d5/de8/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1meshes.html", [
               [ "ComposedVertexLayout", "d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout.html", "d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout" ],
+              [ "MeshBufferDiscardPolicy", "d2/d06/classxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1MeshBufferDiscardPolicy.html", "d2/d06/classxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1MeshBufferDiscardPolicy" ],
               [ "VertexBufferBinding", "d8/de4/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding.html", "d8/de4/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding" ]
             ] ],
             [ "shaders", "df/daa/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1shaders.html", [
-              [ "D3DShaderCompiler", "d0/db2/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1D3DShaderCompiler.html", "d0/db2/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1D3DShaderCompiler" ],
+              [ "D3DShaderCompiler", "d3/db5/classxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1D3DShaderCompiler.html", "d3/db5/classxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1D3DShaderCompiler" ],
               [ "Include", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include" ]
+            ] ],
+            [ "textures", "de/d0a/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1textures.html", [
+              [ "TextureDiscardPolicy", "d1/d4d/classxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy.html", "d1/d4d/classxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy" ]
             ] ]
           ] ]
         ] ],
@@ -453,7 +457,6 @@ var annotated_dup =
           [ "IndexBufferDesc", "dd/d06/structxl7_1_1graphics_1_1meshes_1_1IndexBufferDesc.html", "dd/d06/structxl7_1_1graphics_1_1meshes_1_1IndexBufferDesc" ],
           [ "IndexBufferUpdater", "d4/d42/classxl7_1_1graphics_1_1meshes_1_1IndexBufferUpdater.html", "d4/d42/classxl7_1_1graphics_1_1meshes_1_1IndexBufferUpdater" ],
           [ "IndexBufferWrite", "de/d03/structxl7_1_1graphics_1_1meshes_1_1IndexBufferWrite.html", "de/d03/structxl7_1_1graphics_1_1meshes_1_1IndexBufferWrite" ],
-          [ "IndexDataProvider", "d3/d72/classxl7_1_1graphics_1_1meshes_1_1IndexDataProvider.html", "d3/d72/classxl7_1_1graphics_1_1meshes_1_1IndexDataProvider" ],
           [ "MeshBuffer", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer" ],
           [ "MeshBufferDesc", "db/dbb/structxl7_1_1graphics_1_1meshes_1_1MeshBufferDesc.html", "db/dbb/structxl7_1_1graphics_1_1meshes_1_1MeshBufferDesc" ],
           [ "MeshBufferUpdater", "d7/dcf/classxl7_1_1graphics_1_1meshes_1_1MeshBufferUpdater.html", "d7/dcf/classxl7_1_1graphics_1_1meshes_1_1MeshBufferUpdater" ],
@@ -464,7 +467,6 @@ var annotated_dup =
           [ "VertexBufferDesc", "d9/df5/structxl7_1_1graphics_1_1meshes_1_1VertexBufferDesc.html", "d9/df5/structxl7_1_1graphics_1_1meshes_1_1VertexBufferDesc" ],
           [ "VertexBufferUpdater", "d9/d5a/classxl7_1_1graphics_1_1meshes_1_1VertexBufferUpdater.html", "d9/d5a/classxl7_1_1graphics_1_1meshes_1_1VertexBufferUpdater" ],
           [ "VertexBufferWrite", "d6/d1a/structxl7_1_1graphics_1_1meshes_1_1VertexBufferWrite.html", "d6/d1a/structxl7_1_1graphics_1_1meshes_1_1VertexBufferWrite" ],
-          [ "VertexDataProvider", "d9/dec/classxl7_1_1graphics_1_1meshes_1_1VertexDataProvider.html", "d9/dec/classxl7_1_1graphics_1_1meshes_1_1VertexDataProvider" ],
           [ "VertexLayout", "d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html", "d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout" ]
         ] ],
         [ "pipeline", "d5/dd3/namespacexl7_1_1graphics_1_1pipeline.html", [
@@ -479,7 +481,6 @@ var annotated_dup =
           [ "VertexShaderStage", "d6/d69/classxl7_1_1graphics_1_1pipeline_1_1VertexShaderStage.html", "d6/d69/classxl7_1_1graphics_1_1pipeline_1_1VertexShaderStage" ]
         ] ],
         [ "shaders", "d7/db8/namespacexl7_1_1graphics_1_1shaders.html", [
-          [ "CodeDataProvider", "d3/da8/classxl7_1_1graphics_1_1shaders_1_1CodeDataProvider.html", "d3/da8/classxl7_1_1graphics_1_1shaders_1_1CodeDataProvider" ],
           [ "CompileOptions", "de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html", "de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions" ],
           [ "ConstantBuffer", "da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer.html", "da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer" ],
           [ "ConstantBufferDeclaration", "dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html", "dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration" ],
@@ -488,22 +489,24 @@ var annotated_dup =
           [ "ConstantBufferMapping", "df/de3/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferMapping.html", "df/de3/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferMapping" ],
           [ "ConstantBufferUpdater", "db/de4/classxl7_1_1graphics_1_1shaders_1_1ConstantBufferUpdater.html", "db/de4/classxl7_1_1graphics_1_1shaders_1_1ConstantBufferUpdater" ],
           [ "ConstantBufferWrite", "d3/d68/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferWrite.html", "d3/d68/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferWrite" ],
-          [ "ConstantDataProvider", "d1/dc3/classxl7_1_1graphics_1_1shaders_1_1ConstantDataProvider.html", "d1/dc3/classxl7_1_1graphics_1_1shaders_1_1ConstantDataProvider" ],
           [ "ConstantDeclaration", "d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html", "d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration" ],
           [ "ConstantMapping", "d2/d58/structxl7_1_1graphics_1_1shaders_1_1ConstantMapping.html", "d2/d58/structxl7_1_1graphics_1_1shaders_1_1ConstantMapping" ],
           [ "DirtyFlag", "de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html", "de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag" ],
+          [ "FileIncludeHandler", "dc/da3/classxl7_1_1graphics_1_1shaders_1_1FileIncludeHandler.html", "dc/da3/classxl7_1_1graphics_1_1shaders_1_1FileIncludeHandler" ],
+          [ "IncludeHandler", "d8/d16/classxl7_1_1graphics_1_1shaders_1_1IncludeHandler.html", "d8/d16/classxl7_1_1graphics_1_1shaders_1_1IncludeHandler" ],
           [ "IShaderFactory", "d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory.html", "d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory" ],
           [ "PixelShader", "db/d6b/classxl7_1_1graphics_1_1shaders_1_1PixelShader.html", "db/d6b/classxl7_1_1graphics_1_1shaders_1_1PixelShader" ],
           [ "ReflectionResult", "d2/d19/structxl7_1_1graphics_1_1shaders_1_1ReflectionResult.html", "d2/d19/structxl7_1_1graphics_1_1shaders_1_1ReflectionResult" ],
           [ "Shader", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader" ],
           [ "ShaderCode", "d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html", "d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode" ],
+          [ "ShaderCompiler", "d6/d8e/classxl7_1_1graphics_1_1shaders_1_1ShaderCompiler.html", "d6/d8e/classxl7_1_1graphics_1_1shaders_1_1ShaderCompiler" ],
           [ "ShaderDesc", "d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc.html", "d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc" ],
           [ "ShaderManager", "d4/d43/classxl7_1_1graphics_1_1shaders_1_1ShaderManager.html", "d4/d43/classxl7_1_1graphics_1_1shaders_1_1ShaderManager" ],
+          [ "ShaderWrite", "de/d22/structxl7_1_1graphics_1_1shaders_1_1ShaderWrite.html", "de/d22/structxl7_1_1graphics_1_1shaders_1_1ShaderWrite" ],
           [ "TextureSamplerDeclaration", "d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html", "d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration" ],
           [ "VertexShader", "dd/dae/classxl7_1_1graphics_1_1shaders_1_1VertexShader.html", "dd/dae/classxl7_1_1graphics_1_1shaders_1_1VertexShader" ]
         ] ],
         [ "states", "dc/d8d/namespacexl7_1_1graphics_1_1states.html", [
-          [ "AbstractState", "de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState.html", "de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState" ],
           [ "BlendState", "d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html", "d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState" ],
           [ "BlendStateDesc", "df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc.html", "df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc" ],
           [ "DepthStencilState", "db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html", "db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState" ],
@@ -534,7 +537,6 @@ var annotated_dup =
           [ "DirtyLayerBoxes", "d3/d50/classxl7_1_1graphics_1_1textures_1_1DirtyLayerBoxes.html", "d3/d50/classxl7_1_1graphics_1_1textures_1_1DirtyLayerBoxes" ],
           [ "DirtyLayerRects", "dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects.html", "dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects" ],
           [ "DirtyRect", "d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect.html", "d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect" ],
-          [ "ImageDataProvider", "da/de6/classxl7_1_1graphics_1_1textures_1_1ImageDataProvider.html", "da/de6/classxl7_1_1graphics_1_1textures_1_1ImageDataProvider" ],
           [ "ITextureFactory", "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html", "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory" ],
           [ "Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture" ],
           [ "Texture2D", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D" ],
@@ -549,8 +551,14 @@ var annotated_dup =
           [ "Texture3DDesc", "d8/d25/structxl7_1_1graphics_1_1textures_1_1Texture3DDesc.html", "d8/d25/structxl7_1_1graphics_1_1textures_1_1Texture3DDesc" ],
           [ "Texture3DUpdater", "d2/dcd/classxl7_1_1graphics_1_1textures_1_1Texture3DUpdater.html", "d2/dcd/classxl7_1_1graphics_1_1textures_1_1Texture3DUpdater" ],
           [ "Texture3DWrite", "d8/d00/structxl7_1_1graphics_1_1textures_1_1Texture3DWrite.html", "d8/d00/structxl7_1_1graphics_1_1textures_1_1Texture3DWrite" ],
+          [ "TextureBox", "d6/d78/structxl7_1_1graphics_1_1textures_1_1TextureBox.html", "d6/d78/structxl7_1_1graphics_1_1textures_1_1TextureBox" ],
           [ "TextureDesc", "d2/d7e/structxl7_1_1graphics_1_1textures_1_1TextureDesc.html", "d2/d7e/structxl7_1_1graphics_1_1textures_1_1TextureDesc" ],
+          [ "TextureExtent", "d7/d9d/structxl7_1_1graphics_1_1textures_1_1TextureExtent.html", "d7/d9d/structxl7_1_1graphics_1_1textures_1_1TextureExtent" ],
+          [ "TextureExtent2D", "d3/d2a/structxl7_1_1graphics_1_1textures_1_1TextureExtent2D.html", "d3/d2a/structxl7_1_1graphics_1_1textures_1_1TextureExtent2D" ],
+          [ "TextureExtent3D", "de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html", "de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D" ],
           [ "TextureManager", "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html", "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager" ],
+          [ "TextureRect", "db/dc4/structxl7_1_1graphics_1_1textures_1_1TextureRect.html", "db/dc4/structxl7_1_1graphics_1_1textures_1_1TextureRect" ],
+          [ "TextureRegion", "d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html", "d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion" ],
           [ "TextureUpdater", "d5/db6/classxl7_1_1graphics_1_1textures_1_1TextureUpdater.html", "d5/db6/classxl7_1_1graphics_1_1textures_1_1TextureUpdater" ],
           [ "TextureWrite", "d5/d33/structxl7_1_1graphics_1_1textures_1_1TextureWrite.html", "d5/d33/structxl7_1_1graphics_1_1textures_1_1TextureWrite" ]
         ] ],
@@ -564,16 +572,13 @@ var annotated_dup =
       ] ],
       [ "resources", "da/d60/namespacexl7_1_1resources.html", [
         [ "AbstractResourceUpdater", "d9/d70/classxl7_1_1resources_1_1AbstractResourceUpdater.html", "d9/d70/classxl7_1_1resources_1_1AbstractResourceUpdater" ],
-        [ "DataProvider", "dd/def/classxl7_1_1resources_1_1DataProvider.html", "dd/def/classxl7_1_1resources_1_1DataProvider" ],
-        [ "DefaultDataProvider", "d7/dcd/classxl7_1_1resources_1_1DefaultDataProvider.html", "d7/dcd/classxl7_1_1resources_1_1DefaultDataProvider" ],
-        [ "FakeDataProvider", "dc/d12/classxl7_1_1resources_1_1FakeDataProvider.html", "dc/d12/classxl7_1_1resources_1_1FakeDataProvider" ],
         [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html", "d5/d7b/classxl7_1_1resources_1_1Resource" ],
         [ "ResourceBase", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", "d5/d18/classxl7_1_1resources_1_1ResourceBase" ],
-        [ "ResourceDataMixin", "df/de5/classxl7_1_1resources_1_1ResourceDataMixin.html", "df/de5/classxl7_1_1resources_1_1ResourceDataMixin" ],
         [ "ResourceId", "db/d1e/classxl7_1_1resources_1_1ResourceId.html", null ],
         [ "ResourceManager", "d3/d00/classxl7_1_1resources_1_1ResourceManager.html", "d3/d00/classxl7_1_1resources_1_1ResourceManager" ],
-        [ "ResourceUpdateMixin", "d5/d5b/classxl7_1_1resources_1_1ResourceUpdateMixin.html", "d5/d5b/classxl7_1_1resources_1_1ResourceUpdateMixin" ],
-        [ "ResourceUpdaterBase", "d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html", "d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase" ]
+        [ "ResourceUpdaterBase", "d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html", "d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase" ],
+        [ "ResourceWithData", "dc/ddf/classxl7_1_1resources_1_1ResourceWithData.html", "dc/ddf/classxl7_1_1resources_1_1ResourceWithData" ],
+        [ "UpdatableResource", "d5/d87/classxl7_1_1resources_1_1UpdatableResource.html", "d5/d87/classxl7_1_1resources_1_1UpdatableResource" ]
       ] ],
       [ "BackendRegistry", "d1/da6/classxl7_1_1BackendRegistry.html", "d1/da6/classxl7_1_1BackendRegistry" ],
       [ "Component", "db/d24/classxl7_1_1Component.html", "db/d24/classxl7_1_1Component" ],

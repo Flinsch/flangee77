@@ -8,9 +8,9 @@ var classxl7_1_1graphics_1_1textures_1_1Texture2D =
     [ "as_image", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html#a8e6fb843ff411c0faede51e695afa458", null ],
     [ "create_mipmaps", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html#a096c5d13e8d547c5346e4005866a7e90", null ],
     [ "get_desc", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html#a9c9cf7ae19879c856be5924009d9cb73", null ],
+    [ "get_extent", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html#a731def5903acb5d0a5799db59e820dcb", null ],
     [ "get_type_string", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html#a76be3c45258c250563a5c146b70f0e27", null ],
     [ "operator=", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html#a65129304dc9b80af2bee73c6c16d773f", null ],
     [ "operator=", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html#ad4cd7e480db3b8d0133fc096d5c7d300", null ],
-    [ "update", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html#aec39b3c38a80fe1fabd75e1cad04f647", null ],
     [ "_desc", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html#abefc923cd23ffcade97a8fa8d64dd911", null ]
 ];

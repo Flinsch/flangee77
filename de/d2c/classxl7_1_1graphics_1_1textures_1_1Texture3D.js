@@ -8,6 +8,7 @@ var classxl7_1_1graphics_1_1textures_1_1Texture3D =
     [ "as_image", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a79067f8b5d8601677ef219fa1982ab7b", null ],
     [ "create_mipmaps", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#ab29ce89274d03bdc1ae4857bd2066928", null ],
     [ "get_desc", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a60b212516ce8d6bd293a3fd5ad5c0528", null ],
+    [ "get_extent", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a5037a7c9f2f94898f73dcf121eb3ff34", null ],
     [ "get_type_string", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#ab8da7a9189142b9669ca337ca41c1a83", null ],
     [ "operator=", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#ae0275bc9f6442350e2245f16ad4cc2a1", null ],
     [ "operator=", "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a93568dc415db668e882c6633a0cecb91", null ],

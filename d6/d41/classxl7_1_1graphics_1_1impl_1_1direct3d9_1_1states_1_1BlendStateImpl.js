@@ -6,7 +6,7 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1BlendStateImpl =
     [ "BlendStateImpl", "d6/d41/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1BlendStateImpl.html#a91d382b315b444f2714ca7d77b071a05", null ],
     [ "BlendStateImpl", "d6/d41/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1BlendStateImpl.html#a5e6e33d537e6da0319bed13ec1b34957", null ],
     [ "~BlendStateImpl", "d6/d41/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1BlendStateImpl.html#a8fee4fff853984d35bb716c5a0fc69d1", null ],
-    [ "_acquire_impl", "d6/d41/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1BlendStateImpl.html#aaed151c6dbabd385a05e3e4846e7ec48", null ],
+    [ "_acquire_impl", "d6/d41/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1BlendStateImpl.html#a63d03ad3762c68402f73a44154a9251c", null ],
     [ "_dispose_impl", "d6/d41/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1BlendStateImpl.html#a735e5f39bae25110b9926063fe6ab0ef", null ],
     [ "_get_raw_resource_impl", "d6/d41/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1BlendStateImpl.html#a865b26d56afc83a1f3ba0234aef5c8e9", null ],
     [ "get_d3d_blend_state_type_values", "d6/d41/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1BlendStateImpl.html#a0e890496a71cb8cf85efffd74dc664f1", null ],

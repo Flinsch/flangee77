@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('da/d48/SamplerState_8h_source.html','.
 <div class="contents">
 <a href="../../da/d48/SamplerState_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef XL7_GRAPHICS_STATES_SAMPLERSTATE_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define XL7_GRAPHICS_STATES_SAMPLERSTATE_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="../../de/de6/AbstractState_8h.html">./AbstractState.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;../../resources/ResourceBase.h&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="../../d5/d72/SamplerStateDesc_8h.html">./SamplerStateDesc.h</a>&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('da/d48/SamplerState_8h_source.html','.
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="../../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html">SamplerState</a></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    : <span class="keyword">public</span> <a class="code hl_class" href="../../d5/d18/classxl7_1_1resources_1_1ResourceBase.html">resources::ResourceBase</a>&lt;SamplerState, AbstractState&gt;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    : <span class="keyword">public</span> <a class="code hl_class" href="../../d5/d18/classxl7_1_1resources_1_1ResourceBase.html">resources::ResourceBase</a>&lt;SamplerState&gt;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
@@ -151,7 +151,6 @@ $(document).ready(function(){initNavTree('da/d48/SamplerState_8h_source.html','.
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>} <span class="comment">// namespace xl7::graphics::states</span></div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#endif </span><span class="comment">// XL7_GRAPHICS_STATES_SAMPLERSTATE_H</span></div>
-<div class="ttc" id="aAbstractState_8h_html"><div class="ttname"><a href="../../de/de6/AbstractState_8h.html">AbstractState.h</a></div></div>
 <div class="ttc" id="aSamplerStateDesc_8h_html"><div class="ttname"><a href="../../d5/d72/SamplerStateDesc_8h.html">SamplerStateDesc.h</a></div></div>
 <div class="ttc" id="aclassxl7_1_1graphics_1_1states_1_1SamplerState_html"><div class="ttname"><a href="../../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html">xl7::graphics::states::SamplerState</a></div><div class="ttdef"><b>Definition</b> SamplerState.h:15</div></div>
 <div class="ttc" id="aclassxl7_1_1graphics_1_1states_1_1SamplerState_html_a0153dcba58c274002548706e9bfc74dc"><div class="ttname"><a href="../../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#a0153dcba58c274002548706e9bfc74dc">xl7::graphics::states::SamplerState::~SamplerState</a></div><div class="ttdeci">~SamplerState() override=default</div></div>
@@ -165,7 +164,7 @@ $(document).ready(function(){initNavTree('da/d48/SamplerState_8h_source.html','.
 <div class="ttc" id="aclassxl7_1_1graphics_1_1states_1_1SamplerState_html_ae3d728050281689ae519edc2a32ee95d"><div class="ttname"><a href="../../d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html#ae3d728050281689ae519edc2a32ee95d">xl7::graphics::states::SamplerState::get_desc</a></div><div class="ttdeci">const SamplerStateDesc &amp; get_desc() const</div><div class="ttdef"><b>Definition</b> SamplerState.h:35</div></div>
 <div class="ttc" id="aclassxl7_1_1resources_1_1ResourceBase_html"><div class="ttname"><a href="../../d5/d18/classxl7_1_1resources_1_1ResourceBase.html">xl7::resources::ResourceBase</a></div><div class="ttdef"><b>Definition</b> ResourceBase.h:15</div></div>
 <div class="ttc" id="anamespacecl7_html_a3f50fdc015f0eb140ce63df6b8a954ec"><div class="ttname"><a href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a></div><div class="ttdeci">std::basic_string_view&lt; u8char_t &gt; u8string_view</div><div class="ttdef"><b>Definition</b> string.h:36</div></div>
-<div class="ttc" id="anamespacexl7_1_1graphics_1_1states_html"><div class="ttname"><a href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html">xl7::graphics::states</a></div><div class="ttdef"><b>Definition</b> AbstractState.cpp:7</div></div>
+<div class="ttc" id="anamespacexl7_1_1graphics_1_1states_html"><div class="ttname"><a href="../../dc/d8d/namespacexl7_1_1graphics_1_1states.html">xl7::graphics::states</a></div><div class="ttdef"><b>Definition</b> AddressMode.h:8</div></div>
 <div class="ttc" id="astructxl7_1_1graphics_1_1states_1_1SamplerStateDesc_html"><div class="ttname"><a href="../../d4/d56/structxl7_1_1graphics_1_1states_1_1SamplerStateDesc.html">xl7::graphics::states::SamplerStateDesc</a></div><div class="ttdef"><b>Definition</b> SamplerStateDesc.h:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

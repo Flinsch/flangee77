@@ -6,7 +6,7 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl =
     [ "SamplerStateImpl", "df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#a4f03835a39b82170f4f98de12370882d", null ],
     [ "SamplerStateImpl", "df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#a4daa77d9db4749ec174d17aa5bb0ef8d", null ],
     [ "~SamplerStateImpl", "df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#acb0ccdae7352c2b4ae5a51e26daa521d", null ],
-    [ "_acquire_impl", "df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#a40dd7cc4c16ddaa5efe06859825ff8e0", null ],
+    [ "_acquire_impl", "df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#a3a8c4d86afdc39cc087769ab24f3eadc", null ],
     [ "_dispose_impl", "df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#a0a44bdc16a4afa908eb860d4cee1832f", null ],
     [ "_get_raw_resource_impl", "df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#ac3880c434ce40087502fc8efecec2ba6", null ],
     [ "get_raw_d3d_sampler_state", "df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#accf50ad9fda2abeeb32b0957963df404", null ],

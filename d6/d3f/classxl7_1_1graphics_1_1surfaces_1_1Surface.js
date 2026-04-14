@@ -11,8 +11,6 @@ var classxl7_1_1graphics_1_1surfaces_1_1Surface =
     [ "Surface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a88d78b9f085db301151ff5e991bdafb5", null ],
     [ "Surface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a7d54b4123e1b820312f3583b27f2783b", null ],
     [ "~Surface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#ac311ba6c0cd348dfcd46b9ae3dd9683c", null ],
-    [ "_acquire_impl", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#aa8b703fba3afa009e4f756e3a8a51761", null ],
-    [ "_check_data_impl", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a68c1c44229ea329c8bb79d4254b73e5b", null ],
     [ "get_desc", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a3a0a596922b70ef3a1bcca61e5e7a2c9", null ],
     [ "get_type", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a2488594019252ac84bb8c55cc9be8ae5", null ],
     [ "get_type_string", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a51001898fc85e285734c6964ebeb4d12", null ],

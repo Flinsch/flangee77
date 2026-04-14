@@ -67,32 +67,6 @@ var hierarchy =
       ] ],
       [ "xl7::resources::ResourceUpdaterBase< TResourceDesc, TDirtyState >", "d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html", null ]
     ] ],
-    [ "AbstractState", null, [
-      [ "xl7::resources::ResourceBase< BlendState, AbstractState >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
-        [ "xl7::graphics::states::BlendState", "d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html", [
-          [ "xl7::graphics::impl::direct3d11::states::BlendStateImpl", "d2/d6e/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1BlendStateImpl.html", null ],
-          [ "xl7::graphics::impl::direct3d9::states::BlendStateImpl", "d6/d41/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1BlendStateImpl.html", null ]
-        ] ]
-      ] ],
-      [ "xl7::resources::ResourceBase< DepthStencilState, AbstractState >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
-        [ "xl7::graphics::states::DepthStencilState", "db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html", [
-          [ "xl7::graphics::impl::direct3d11::states::DepthStencilStateImpl", "d7/d65/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1DepthStencilStateImpl.html", null ],
-          [ "xl7::graphics::impl::direct3d9::states::DepthStencilStateImpl", "db/de3/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1DepthStencilStateImpl.html", null ]
-        ] ]
-      ] ],
-      [ "xl7::resources::ResourceBase< RasterizerState, AbstractState >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
-        [ "xl7::graphics::states::RasterizerState", "d2/df3/classxl7_1_1graphics_1_1states_1_1RasterizerState.html", [
-          [ "xl7::graphics::impl::direct3d11::states::RasterizerStateImpl", "d7/d46/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1RasterizerStateImpl.html", null ],
-          [ "xl7::graphics::impl::direct3d9::states::RasterizerStateImpl", "d3/dd8/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl.html", null ]
-        ] ]
-      ] ],
-      [ "xl7::resources::ResourceBase< SamplerState, AbstractState >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
-        [ "xl7::graphics::states::SamplerState", "d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html", [
-          [ "xl7::graphics::impl::direct3d11::states::SamplerStateImpl", "df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html", null ],
-          [ "xl7::graphics::impl::direct3d9::states::SamplerStateImpl", "de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html", null ]
-        ] ]
-      ] ]
-    ] ],
     [ "fl7::fonts::Font::Access", "d0/d7e/classfl7_1_1fonts_1_1Font_1_1Access.html", null ],
     [ "cl7::text::codec::Analyzer< Tchar, TDefaultErrorHandler >", "d8/d02/classcl7_1_1text_1_1codec_1_1Analyzer.html", null ],
     [ "ml7::Angle< T >", "d4/d9d/structml7_1_1Angle.html", null ],
@@ -129,6 +103,7 @@ var hierarchy =
     [ "xl7::graphics::meshes::MeshManager::Attorney", "dc/df9/classxl7_1_1graphics_1_1meshes_1_1MeshManager_1_1Attorney.html", null ],
     [ "xl7::graphics::RenderingContext::Attorney", "da/d08/classxl7_1_1graphics_1_1RenderingContext_1_1Attorney.html", null ],
     [ "xl7::graphics::RenderingDevice::Attorney", "de/dca/classxl7_1_1graphics_1_1RenderingDevice_1_1Attorney.html", null ],
+    [ "xl7::graphics::shaders::Shader::Attorney", "dd/d23/classxl7_1_1graphics_1_1shaders_1_1Shader_1_1Attorney.html", null ],
     [ "xl7::graphics::shaders::ShaderManager::Attorney", "d8/dfa/classxl7_1_1graphics_1_1shaders_1_1ShaderManager_1_1Attorney.html", null ],
     [ "xl7::graphics::states::StateManager::Attorney", "d8/d6b/classxl7_1_1graphics_1_1states_1_1StateManager_1_1Attorney.html", null ],
     [ "xl7::graphics::surfaces::SurfaceManager::Attorney", "d8/d99/classxl7_1_1graphics_1_1surfaces_1_1SurfaceManager_1_1Attorney.html", null ],
@@ -196,19 +171,8 @@ var hierarchy =
     [ "ml7::CubicBezier2< T >", "db/d5c/structml7_1_1CubicBezier2.html", null ],
     [ "ml7::CubicBezier3< T >", "d1/d7d/structml7_1_1CubicBezier3.html", null ],
     [ "xl7::graphics::impl::direct3d11::shaders::D3DConstantBufferWrapper", "d6/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1D3DConstantBufferWrapper.html", null ],
-    [ "xl7::graphics::impl::shared::shaders::D3DShaderCompiler", "d0/db2/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1D3DShaderCompiler.html", null ],
     [ "xl7::graphics::impl::direct3d11::shaders::D3DShaderReflection", "db/d71/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1D3DShaderReflection.html", null ],
     [ "xl7::graphics::impl::direct3d9::shaders::D3DShaderReflection", "d9/db5/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1shaders_1_1D3DShaderReflection.html", null ],
-    [ "xl7::resources::DataProvider", "dd/def/classxl7_1_1resources_1_1DataProvider.html", [
-      [ "xl7::resources::DefaultDataProvider", "d7/dcd/classxl7_1_1resources_1_1DefaultDataProvider.html", [
-        [ "xl7::graphics::meshes::IndexDataProvider< TIndex >", "d3/d72/classxl7_1_1graphics_1_1meshes_1_1IndexDataProvider.html", null ],
-        [ "xl7::graphics::meshes::VertexDataProvider< TVertex >", "d9/dec/classxl7_1_1graphics_1_1meshes_1_1VertexDataProvider.html", null ],
-        [ "xl7::graphics::shaders::CodeDataProvider", "d3/da8/classxl7_1_1graphics_1_1shaders_1_1CodeDataProvider.html", null ],
-        [ "xl7::graphics::shaders::ConstantDataProvider", "d1/dc3/classxl7_1_1graphics_1_1shaders_1_1ConstantDataProvider.html", null ],
-        [ "xl7::graphics::textures::ImageDataProvider", "da/de6/classxl7_1_1graphics_1_1textures_1_1ImageDataProvider.html", null ]
-      ] ],
-      [ "xl7::resources::FakeDataProvider", "dc/d12/classxl7_1_1resources_1_1FakeDataProvider.html", null ]
-    ] ],
     [ "cl7::system::datetime", "d6/d16/structcl7_1_1system_1_1datetime.html", null ],
     [ "cl7::text::codec::Decoder< Tchar, TDefaultErrorHandler >", "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html", null ],
     [ "cl7::text::codec::Decoder< Tchar, DefaultErrorHandler >", "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html", null ],
@@ -224,6 +188,8 @@ var hierarchy =
     [ "xl7::graphics::textures::DirtyLayerRects", "dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects.html", null ],
     [ "xl7::graphics::meshes::DirtyRange", "dc/d1a/classxl7_1_1graphics_1_1meshes_1_1DirtyRange.html", null ],
     [ "xl7::graphics::textures::DirtyRect", "d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect.html", null ],
+    [ "xl7::graphics::impl::shared::meshes::MeshBufferDiscardPolicy::DiscardThresholds", "db/dba/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1MeshBufferDiscardPolicy_1_1DiscardThresholds.html", null ],
+    [ "xl7::graphics::impl::shared::textures::TextureDiscardPolicy< TExtent, TRegion >::DiscardThresholds", "df/d84/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1DiscardThresholds.html", null ],
     [ "dl7::xml::Document", "de/dd5/classdl7_1_1xml_1_1Document.html", null ],
     [ "dl7::syntax::matchers::DoubleQuotedStringMatcher", "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html", null ],
     [ "xl7::DriverResolver::DriverEntry", "df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html", null ],
@@ -335,6 +301,9 @@ var hierarchy =
         [ "xl7::graphics::impl::direct3d9::ResourceFactoryImpl", "de/d84/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl.html", null ]
       ] ]
     ] ],
+    [ "xl7::graphics::shaders::IncludeHandler", "d8/d16/classxl7_1_1graphics_1_1shaders_1_1IncludeHandler.html", [
+      [ "xl7::graphics::shaders::FileIncludeHandler", "dc/da3/classxl7_1_1graphics_1_1shaders_1_1FileIncludeHandler.html", null ]
+    ] ],
     [ "xl7::graphics::meshes::IndexBufferDesc", "dd/d06/structxl7_1_1graphics_1_1meshes_1_1IndexBufferDesc.html", null ],
     [ "xl7::graphics::meshes::IndexBufferWrite", "de/d03/structxl7_1_1graphics_1_1meshes_1_1IndexBufferWrite.html", null ],
     [ "dl7::ini::IniReader", "d0/d99/classdl7_1_1ini_1_1IniReader.html", null ],
@@ -394,20 +363,11 @@ var hierarchy =
     [ "xl7::graphics::RenderingDevice::Capabilities::Memory", "da/dd9/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities_1_1Memory.html", null ],
     [ "cl7::platform::memory::MemoryStatus", "d2/dea/structcl7_1_1platform_1_1memory_1_1MemoryStatus.html", null ],
     [ "MeshBuffer", null, [
-      [ "xl7::resources::ResourceBase< IndexBuffer, MeshBuffer >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
-        [ "xl7::graphics::meshes::IndexBuffer", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html", [
-          [ "xl7::graphics::impl::direct3d11::meshes::IndexBufferImpl", "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html", null ],
-          [ "xl7::graphics::impl::direct3d9::meshes::IndexBufferImpl", "dd/d8e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl.html", null ]
-        ] ]
-      ] ],
-      [ "xl7::resources::ResourceBase< VertexBuffer, MeshBuffer >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
-        [ "xl7::graphics::meshes::VertexBuffer", "d0/d66/classxl7_1_1graphics_1_1meshes_1_1VertexBuffer.html", [
-          [ "xl7::graphics::impl::direct3d11::meshes::VertexBufferImpl", "dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html", null ],
-          [ "xl7::graphics::impl::direct3d9::meshes::VertexBufferImpl", "d9/d15/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1VertexBufferImpl.html", null ]
-        ] ]
-      ] ]
+      [ "xl7::resources::ResourceBase< IndexBuffer, MeshBuffer >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", null ],
+      [ "xl7::resources::ResourceBase< VertexBuffer, MeshBuffer >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", null ]
     ] ],
     [ "xl7::graphics::meshes::MeshBufferDesc", "db/dbb/structxl7_1_1graphics_1_1meshes_1_1MeshBufferDesc.html", null ],
+    [ "xl7::graphics::impl::shared::meshes::MeshBufferDiscardPolicy", "d2/d06/classxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1MeshBufferDiscardPolicy.html", null ],
     [ "xl7::graphics::meshes::MeshBufferWrite", "df/d19/structxl7_1_1graphics_1_1meshes_1_1MeshBufferWrite.html", null ],
     [ "xl7::graphics::meshes::MeshUtil", "d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil.html", null ],
     [ "dl7::json::Format::MultiLineOptions", "d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html", null ],
@@ -515,30 +475,78 @@ var hierarchy =
       ] ]
     ] ],
     [ "xl7::resources::Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html", [
-      [ "xl7::resources::ResourceBase< MeshBuffer >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
-        [ "xl7::graphics::meshes::MeshBuffer", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html", null ]
-      ] ],
-      [ "xl7::resources::ResourceBase< ConstantBuffer >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
-        [ "xl7::graphics::shaders::ConstantBuffer", "da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer.html", [
-          [ "xl7::graphics::impl::direct3d11::shaders::ConstantBufferImpl", "d3/dfb/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1ConstantBufferImpl.html", null ],
-          [ "xl7::graphics::impl::direct3d9::shaders::ConstantBufferImpl", "d9/dd5/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1shaders_1_1ConstantBufferImpl.html", null ]
+      [ "xl7::resources::ResourceBase< MeshBuffer, Resource >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", null ],
+      [ "xl7::resources::ResourceBase< ConstantBuffer, Resource >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", null ],
+      [ "xl7::resources::ResourceBase< Shader, resources::Resource >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", null ],
+      [ "xl7::resources::ResourceBase< BlendState >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
+        [ "xl7::graphics::states::BlendState", "d0/d18/classxl7_1_1graphics_1_1states_1_1BlendState.html", [
+          [ "xl7::graphics::impl::direct3d11::states::BlendStateImpl", "d2/d6e/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1BlendStateImpl.html", null ],
+          [ "xl7::graphics::impl::direct3d9::states::BlendStateImpl", "d6/d41/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1BlendStateImpl.html", null ]
         ] ]
       ] ],
-      [ "xl7::resources::ResourceBase< Shader >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
-        [ "xl7::graphics::shaders::Shader", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html", null ]
+      [ "xl7::resources::ResourceBase< DepthStencilState >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
+        [ "xl7::graphics::states::DepthStencilState", "db/d91/classxl7_1_1graphics_1_1states_1_1DepthStencilState.html", [
+          [ "xl7::graphics::impl::direct3d11::states::DepthStencilStateImpl", "d7/d65/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1DepthStencilStateImpl.html", null ],
+          [ "xl7::graphics::impl::direct3d9::states::DepthStencilStateImpl", "db/de3/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1DepthStencilStateImpl.html", null ]
+        ] ]
       ] ],
-      [ "xl7::resources::ResourceBase< AbstractState >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
-        [ "xl7::graphics::states::AbstractState", "de/d5f/classxl7_1_1graphics_1_1states_1_1AbstractState.html", null ]
+      [ "xl7::resources::ResourceBase< RasterizerState >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
+        [ "xl7::graphics::states::RasterizerState", "d2/df3/classxl7_1_1graphics_1_1states_1_1RasterizerState.html", [
+          [ "xl7::graphics::impl::direct3d11::states::RasterizerStateImpl", "d7/d46/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1RasterizerStateImpl.html", null ],
+          [ "xl7::graphics::impl::direct3d9::states::RasterizerStateImpl", "d3/dd8/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl.html", null ]
+        ] ]
+      ] ],
+      [ "xl7::resources::ResourceBase< SamplerState >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
+        [ "xl7::graphics::states::SamplerState", "d8/de4/classxl7_1_1graphics_1_1states_1_1SamplerState.html", [
+          [ "xl7::graphics::impl::direct3d11::states::SamplerStateImpl", "df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html", null ],
+          [ "xl7::graphics::impl::direct3d9::states::SamplerStateImpl", "de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html", null ]
+        ] ]
       ] ],
       [ "xl7::resources::ResourceBase< Surface >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
         [ "xl7::graphics::surfaces::Surface", "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html", null ]
       ] ],
-      [ "xl7::resources::ResourceBase< Texture >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
-        [ "xl7::graphics::textures::Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html", null ]
-      ] ],
-      [ "xl7::resources::ResourceBase< TDerived, TBase >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", null ]
+      [ "xl7::resources::ResourceBase< Texture, Resource >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", null ],
+      [ "xl7::resources::ResourceBase< TDerived, Resource >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", null ],
+      [ "xl7::resources::ResourceBase< TDerived, TBase >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
+        [ "xl7::resources::ResourceWithData< MeshBuffer >", "dc/ddf/classxl7_1_1resources_1_1ResourceWithData.html", [
+          [ "xl7::graphics::meshes::MeshBuffer", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html", null ]
+        ] ],
+        [ "xl7::resources::ResourceWithData< ConstantBuffer >", "dc/ddf/classxl7_1_1resources_1_1ResourceWithData.html", [
+          [ "xl7::resources::ResourceBase< ConstantBuffer, resources::ResourceWithData< ConstantBuffer > >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", null ]
+        ] ],
+        [ "xl7::resources::ResourceWithData< Shader, resources::Resource, true >", "dc/ddf/classxl7_1_1resources_1_1ResourceWithData.html", [
+          [ "xl7::graphics::shaders::Shader", "d5/d4a/classxl7_1_1graphics_1_1shaders_1_1Shader.html", null ]
+        ] ],
+        [ "xl7::resources::ResourceWithData< Texture >", "dc/ddf/classxl7_1_1resources_1_1ResourceWithData.html", [
+          [ "xl7::graphics::textures::Texture", "d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html", null ]
+        ] ],
+        [ "xl7::resources::UpdatableResource< IndexBuffer, IndexBufferUpdater, MeshBuffer >", "d5/d87/classxl7_1_1resources_1_1UpdatableResource.html", [
+          [ "xl7::graphics::meshes::IndexBuffer", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html", [
+            [ "xl7::graphics::impl::direct3d11::meshes::IndexBufferImpl", "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html", null ],
+            [ "xl7::graphics::impl::direct3d9::meshes::IndexBufferImpl", "dd/d8e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl.html", null ]
+          ] ]
+        ] ],
+        [ "xl7::resources::UpdatableResource< VertexBuffer, VertexBufferUpdater, MeshBuffer >", "d5/d87/classxl7_1_1resources_1_1UpdatableResource.html", [
+          [ "xl7::graphics::meshes::VertexBuffer", "d0/d66/classxl7_1_1graphics_1_1meshes_1_1VertexBuffer.html", [
+            [ "xl7::graphics::impl::direct3d11::meshes::VertexBufferImpl", "dc/d98/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl.html", null ],
+            [ "xl7::graphics::impl::direct3d9::meshes::VertexBufferImpl", "d9/d15/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1VertexBufferImpl.html", null ]
+          ] ]
+        ] ],
+        [ "xl7::resources::UpdatableResource< ConstantBuffer, ConstantBufferUpdater, resources::ResourceWithData< ConstantBuffer > >", "d5/d87/classxl7_1_1resources_1_1UpdatableResource.html", [
+          [ "xl7::graphics::shaders::ConstantBuffer", "da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer.html", [
+            [ "xl7::graphics::impl::direct3d11::shaders::ConstantBufferImpl", "d3/dfb/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1ConstantBufferImpl.html", null ],
+            [ "xl7::graphics::impl::direct3d9::shaders::ConstantBufferImpl", "d9/dd5/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1shaders_1_1ConstantBufferImpl.html", null ]
+          ] ]
+        ] ],
+        [ "xl7::resources::UpdatableResource< Texture2D, Texture2DUpdater, Texture >", "d5/d87/classxl7_1_1resources_1_1UpdatableResource.html", [
+          [ "xl7::graphics::textures::Texture2D", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html", [
+            [ "xl7::graphics::impl::direct3d11::textures::Texture2DImpl", "d8/d11/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures_1_1Texture2DImpl.html", null ],
+            [ "xl7::graphics::impl::direct3d9::textures::Texture2DImpl", "dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html", null ]
+          ] ]
+        ] ],
+        [ "xl7::resources::ResourceWithData< TDerived, TBase, resizable >", "dc/ddf/classxl7_1_1resources_1_1ResourceWithData.html", null ]
+      ] ]
     ] ],
-    [ "xl7::resources::ResourceDataMixin< TDerived >", "df/de5/classxl7_1_1resources_1_1ResourceDataMixin.html", null ],
     [ "xl7::resources::ResourceManager::ResourceEntry", "d8/d89/structxl7_1_1resources_1_1ResourceManager_1_1ResourceEntry.html", null ],
     [ "xl7::resources::ResourceManager", "d3/d00/classxl7_1_1resources_1_1ResourceManager.html", [
       [ "xl7::graphics::meshes::MeshManager", "d3/d9b/classxl7_1_1graphics_1_1meshes_1_1MeshManager.html", null ],
@@ -547,7 +555,6 @@ var hierarchy =
       [ "xl7::graphics::surfaces::SurfaceManager", "d9/dc4/classxl7_1_1graphics_1_1surfaces_1_1SurfaceManager.html", null ],
       [ "xl7::graphics::textures::TextureManager", "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html", null ]
     ] ],
-    [ "xl7::resources::ResourceUpdateMixin< TDerived, TUpdater >", "d5/d5b/classxl7_1_1resources_1_1ResourceUpdateMixin.html", null ],
     [ "tl7::Result", "da/d3a/structtl7_1_1Result.html", null ],
     [ "ml7::distance2::ResultBase< T >", "de/d3e/structml7_1_1distance2_1_1ResultBase.html", [
       [ "ml7::distance2::PointResult< T >", "d6/df6/structml7_1_1distance2_1_1PointResult.html", null ]
@@ -583,7 +590,11 @@ var hierarchy =
       ] ]
     ] ],
     [ "xl7::graphics::shaders::ShaderCode", "d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html", null ],
+    [ "xl7::graphics::shaders::ShaderCompiler", "d6/d8e/classxl7_1_1graphics_1_1shaders_1_1ShaderCompiler.html", [
+      [ "xl7::graphics::impl::shared::shaders::D3DShaderCompiler", "d3/db5/classxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1D3DShaderCompiler.html", null ]
+    ] ],
     [ "xl7::graphics::shaders::ShaderDesc", "d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc.html", null ],
+    [ "xl7::graphics::shaders::ShaderWrite", "de/d22/structxl7_1_1graphics_1_1shaders_1_1ShaderWrite.html", null ],
     [ "al7::packing::ShelfPacker::Shelf", "d5/d56/structal7_1_1packing_1_1ShelfPacker_1_1Shelf.html", null ],
     [ "tl7::Signature", "d1/d32/structtl7_1_1Signature.html", [
       [ "tl7::Meta", "dd/d81/structtl7_1_1Meta.html", null ]
@@ -645,6 +656,11 @@ var hierarchy =
     [ "cl7::bits::detail::SwapBytesImpl< T, size >", "d6/d9e/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl.html", null ],
     [ "cl7::bits::detail::SwapBytesImpl< T, 1 >", "d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4.html", null ],
     [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::TableDirectoryEntry", "d7/da1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TableDirectoryEntry.html", null ],
+    [ "TBase", null, [
+      [ "xl7::resources::ResourceBase< TDerived, TBase >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
+        [ "xl7::resources::UpdatableResource< TDerived, TUpdater, TBase >", "d5/d87/classxl7_1_1resources_1_1UpdatableResource.html", null ]
+      ] ]
+    ] ],
     [ "dl7::syntax::TerminalSymbol", "d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html", [
       [ "dl7::syntax::LiteralSymbol", "d7/d6d/structdl7_1_1syntax_1_1LiteralSymbol.html", null ],
       [ "dl7::syntax::NonLiteralSymbol", "d8/d79/structdl7_1_1syntax_1_1NonLiteralSymbol.html", [
@@ -661,12 +677,7 @@ var hierarchy =
       [ "xl7::resources::ResourceBase< Cubemap, Texture >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
         [ "xl7::graphics::textures::Cubemap", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html", null ]
       ] ],
-      [ "xl7::resources::ResourceBase< Texture2D, Texture >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
-        [ "xl7::graphics::textures::Texture2D", "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html", [
-          [ "xl7::graphics::impl::direct3d11::textures::Texture2DImpl", "d8/d11/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures_1_1Texture2DImpl.html", null ],
-          [ "xl7::graphics::impl::direct3d9::textures::Texture2DImpl", "dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html", null ]
-        ] ]
-      ] ],
+      [ "xl7::resources::ResourceBase< Texture2D, Texture >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", null ],
       [ "xl7::resources::ResourceBase< Texture2DArray, Texture >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
         [ "xl7::graphics::textures::Texture2DArray", "d3/dc5/classxl7_1_1graphics_1_1textures_1_1Texture2DArray.html", null ]
       ] ],
@@ -680,7 +691,14 @@ var hierarchy =
     [ "xl7::graphics::textures::Texture2DWrite", "da/d17/structxl7_1_1graphics_1_1textures_1_1Texture2DWrite.html", null ],
     [ "xl7::graphics::textures::Texture3DDesc", "d8/d25/structxl7_1_1graphics_1_1textures_1_1Texture3DDesc.html", null ],
     [ "xl7::graphics::textures::Texture3DWrite", "d8/d00/structxl7_1_1graphics_1_1textures_1_1Texture3DWrite.html", null ],
+    [ "xl7::graphics::textures::TextureBox", "d6/d78/structxl7_1_1graphics_1_1textures_1_1TextureBox.html", null ],
     [ "xl7::graphics::textures::TextureDesc", "d2/d7e/structxl7_1_1graphics_1_1textures_1_1TextureDesc.html", null ],
+    [ "xl7::graphics::impl::shared::textures::TextureDiscardPolicy< TExtent, TRegion >", "d1/d4d/classxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy.html", null ],
+    [ "xl7::graphics::textures::TextureExtent", "d7/d9d/structxl7_1_1graphics_1_1textures_1_1TextureExtent.html", null ],
+    [ "xl7::graphics::textures::TextureExtent2D", "d3/d2a/structxl7_1_1graphics_1_1textures_1_1TextureExtent2D.html", null ],
+    [ "xl7::graphics::textures::TextureExtent3D", "de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html", null ],
+    [ "xl7::graphics::textures::TextureRect", "db/dc4/structxl7_1_1graphics_1_1textures_1_1TextureRect.html", null ],
+    [ "xl7::graphics::textures::TextureRegion", "d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html", null ],
     [ "xl7::graphics::shaders::TextureSamplerDeclaration", "d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html", null ],
     [ "xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates::TextureSamplerStates", "dc/db4/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html", [
       [ "xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates::AbstractShaderStates", "dc/d8f/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates_1_1AbstractShaderStates.html", [
@@ -718,12 +736,14 @@ var hierarchy =
     ] ],
     [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::TrueTypeFontMetric", "d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html", null ],
     [ "TUpdater", null, [
-      [ "xl7::resources::ResourceUpdateMixin< TDerived, TUpdater >::Edit", "d9/ddc/classxl7_1_1resources_1_1ResourceUpdateMixin_1_1Edit.html", null ]
+      [ "xl7::resources::UpdatableResource< TDerived, TUpdater, TBase >::Edit", "db/dbe/classxl7_1_1resources_1_1UpdatableResource_1_1Edit.html", null ]
     ] ],
     [ "cl7::u8isstream", "d9/d44/classcl7_1_1u8isstream.html", null ],
     [ "cl7::u8osstream", "d3/d63/classcl7_1_1u8osstream.html", null ],
     [ "dl7::json::util::Unescaper", "df/df1/classdl7_1_1json_1_1util_1_1Unescaper.html", null ],
     [ "dl7::xml::util::Unescaper", "d1/db6/classdl7_1_1xml_1_1util_1_1Unescaper.html", null ],
+    [ "xl7::graphics::impl::shared::meshes::MeshBufferDiscardPolicy::UpdateRecommendation", "dc/de3/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1MeshBufferDiscardPolicy_1_1UpdateRecommendation.html", null ],
+    [ "xl7::graphics::impl::shared::textures::TextureDiscardPolicy< TExtent, TRegion >::UpdateRecommendation", "d3/dcb/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1UpdateRecommendation.html", null ],
     [ "cl7::text::codec::Utf16Codec", "d8/de0/classcl7_1_1text_1_1codec_1_1Utf16Codec.html", null ],
     [ "cl7::text::codec::Utf32Codec", "db/dd0/classcl7_1_1text_1_1codec_1_1Utf32Codec.html", null ],
     [ "cl7::text::codec::Utf8Codec", "d2/db1/classcl7_1_1text_1_1codec_1_1Utf8Codec.html", null ],

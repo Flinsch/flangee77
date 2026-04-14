@@ -7,5 +7,6 @@ var namespacexl7_1_1graphics_1_1impl_1_1shared =
       [ "dxgi_result", "dc/d38/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1errors.html#aac7d03c1e330c4cbd9865360f02bd38a", null ]
     ] ],
     [ "meshes", "d5/de8/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1meshes.html", "d5/de8/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1meshes" ],
-    [ "shaders", "df/daa/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1shaders.html", "df/daa/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1shaders" ]
+    [ "shaders", "df/daa/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1shaders.html", "df/daa/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1shaders" ],
+    [ "textures", "de/d0a/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1textures.html", "de/d0a/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1textures" ]
 ];

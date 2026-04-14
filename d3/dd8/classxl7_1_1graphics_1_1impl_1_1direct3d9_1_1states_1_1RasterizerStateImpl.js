@@ -6,7 +6,7 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl =
     [ "RasterizerStateImpl", "d3/dd8/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl.html#a3ef98f3a604c4805ff35a70933eaaa0c", null ],
     [ "RasterizerStateImpl", "d3/dd8/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl.html#a61fbe50472dd8059d9066acbdc3818ac", null ],
     [ "~RasterizerStateImpl", "d3/dd8/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl.html#afc95b2d980025baecb64ffbe73b680ea", null ],
-    [ "_acquire_impl", "d3/dd8/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl.html#a3cf3ac3b7d628faa35437c5d70fb86b4", null ],
+    [ "_acquire_impl", "d3/dd8/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl.html#af908444f0a64716f8290072f8c89aa8f", null ],
     [ "_dispose_impl", "d3/dd8/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl.html#aa73696d48324e9feb63c755bb54f500d", null ],
     [ "_get_raw_resource_impl", "d3/dd8/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl.html#a162d88b1c2f0eed20d1652c31203b1d8", null ],
     [ "get_d3d_rasterizer_state_type_values", "d3/dd8/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl.html#a0e712a6e0585f9f92090cf48fb0b81ab", null ],

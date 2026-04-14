@@ -6,7 +6,7 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl =
     [ "SamplerStateImpl", "de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html#aa10c730ab9e5fbdb56080b6fc6466a4a", null ],
     [ "SamplerStateImpl", "de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html#af5598b5ed5c9499bb51c7a95447a5ea1", null ],
     [ "~SamplerStateImpl", "de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html#a6f356633702e4e0cc509f3babd3f7538", null ],
-    [ "_acquire_impl", "de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html#ab95443841c2c26d20150137426b7ae36", null ],
+    [ "_acquire_impl", "de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html#aea4cfe2873bfa49e72c6f10fe61d9d9f", null ],
     [ "_dispose_impl", "de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html#a8394804c46a36a5024a78cfe4f842337", null ],
     [ "_get_raw_resource_impl", "de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html#a08f1565d319bdfc2f945ec222c3d5b75", null ],
     [ "get_d3d_sampler_state_type_values", "de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html#a078214b0a916d1f57c78dbbdfbeedf9a", null ],

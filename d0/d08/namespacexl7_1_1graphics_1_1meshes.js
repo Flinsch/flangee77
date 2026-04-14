@@ -6,7 +6,6 @@ var namespacexl7_1_1graphics_1_1meshes =
     [ "IndexBufferDesc", "dd/d06/structxl7_1_1graphics_1_1meshes_1_1IndexBufferDesc.html", "dd/d06/structxl7_1_1graphics_1_1meshes_1_1IndexBufferDesc" ],
     [ "IndexBufferUpdater", "d4/d42/classxl7_1_1graphics_1_1meshes_1_1IndexBufferUpdater.html", "d4/d42/classxl7_1_1graphics_1_1meshes_1_1IndexBufferUpdater" ],
     [ "IndexBufferWrite", "de/d03/structxl7_1_1graphics_1_1meshes_1_1IndexBufferWrite.html", "de/d03/structxl7_1_1graphics_1_1meshes_1_1IndexBufferWrite" ],
-    [ "IndexDataProvider", "d3/d72/classxl7_1_1graphics_1_1meshes_1_1IndexDataProvider.html", "d3/d72/classxl7_1_1graphics_1_1meshes_1_1IndexDataProvider" ],
     [ "MeshBuffer", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer.html", "dd/da8/classxl7_1_1graphics_1_1meshes_1_1MeshBuffer" ],
     [ "MeshBufferDesc", "db/dbb/structxl7_1_1graphics_1_1meshes_1_1MeshBufferDesc.html", "db/dbb/structxl7_1_1graphics_1_1meshes_1_1MeshBufferDesc" ],
     [ "MeshBufferUpdater", "d7/dcf/classxl7_1_1graphics_1_1meshes_1_1MeshBufferUpdater.html", "d7/dcf/classxl7_1_1graphics_1_1meshes_1_1MeshBufferUpdater" ],
@@ -17,7 +16,6 @@ var namespacexl7_1_1graphics_1_1meshes =
     [ "VertexBufferDesc", "d9/df5/structxl7_1_1graphics_1_1meshes_1_1VertexBufferDesc.html", "d9/df5/structxl7_1_1graphics_1_1meshes_1_1VertexBufferDesc" ],
     [ "VertexBufferUpdater", "d9/d5a/classxl7_1_1graphics_1_1meshes_1_1VertexBufferUpdater.html", "d9/d5a/classxl7_1_1graphics_1_1meshes_1_1VertexBufferUpdater" ],
     [ "VertexBufferWrite", "d6/d1a/structxl7_1_1graphics_1_1meshes_1_1VertexBufferWrite.html", "d6/d1a/structxl7_1_1graphics_1_1meshes_1_1VertexBufferWrite" ],
-    [ "VertexDataProvider", "d9/dec/classxl7_1_1graphics_1_1meshes_1_1VertexDataProvider.html", "d9/dec/classxl7_1_1graphics_1_1meshes_1_1VertexDataProvider" ],
     [ "VertexLayout", "d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html", "d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout" ],
     [ "IndexType", "d0/d08/namespacexl7_1_1graphics_1_1meshes.html#a559f60da7ab95a4fc01880780fbab658", [
       [ "UINT16", "d0/d08/namespacexl7_1_1graphics_1_1meshes.html#a559f60da7ab95a4fc01880780fbab658a48d8f1a723d44ff4a87db1bb6c551c62", null ],
