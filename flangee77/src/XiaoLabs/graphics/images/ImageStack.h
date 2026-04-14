@@ -4,6 +4,7 @@
 #include "./Image.h"
 
 #include <CoreLabs/byte_vector.h>
+#include <CoreLabs/byte_view.h>
 
 
 
@@ -66,9 +67,14 @@ public:
     unsigned get_image_count() const;
 
     /**
+     * Returns the data of the specified image.
+     */
+    cl7::byte_view get_image_data(unsigned image_index) const;
+
+    /**
      * Returns the consecutive data of the contained images.
      */
-    const cl7::byte_vector& get_data() const { return _data; }
+    cl7::byte_view get_data() const { return _data; }
 
 
 

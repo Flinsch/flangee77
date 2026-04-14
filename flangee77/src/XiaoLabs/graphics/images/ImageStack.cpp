@@ -41,11 +41,34 @@ namespace xl7::graphics::images {
         if (_data.empty())
             return 0;
 
-        size_t image_size = _desc.calculate_data_size();
+        const size_t image_size = _desc.calculate_data_size();
         assert(image_size > 0);
         assert(_data.size() % image_size == 0);
 
         return static_cast<unsigned>(_data.size() / image_size);
+    }
+
+    /**
+     * Returns the data of the specified image.
+     */
+    cl7::byte_view ImageStack::get_image_data(unsigned image_index) const
+    {
+        const unsigned image_count = get_image_count();
+        assert(image_index < image_count);
+        if (image_index >= image_count)
+        {
+            // Should we log an error message or something?
+            return {};
+        }
+
+        const size_t image_size = _desc.calculate_data_size();
+        assert(image_size > 0);
+        assert(_data.size() % image_size == 0);
+
+        const size_t offset = image_index * image_size;
+        assert(offset + image_size <= _data.size());
+
+        return cl7::byte_view{_data}.subspan(offset, image_size);
     }
 
 
