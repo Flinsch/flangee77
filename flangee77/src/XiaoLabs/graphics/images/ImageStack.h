@@ -97,6 +97,11 @@ public:
      */
     bool add_image(const Image& image);
 
+    /**
+     * Adds the specified image data to this image stack by copying the data.
+     */
+    bool add_image_data(cl7::byte_view image_data);
+
 
 
 private:

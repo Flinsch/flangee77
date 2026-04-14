@@ -107,10 +107,29 @@ namespace xl7::graphics::images {
             return false;
         }
 
-        assert(desc.pixel_format == _desc.pixel_format);
-        assert(desc.channel_order == _desc.channel_order);
+        if (desc.pixel_format != _desc.pixel_format || desc.channel_order != _desc.channel_order)
+        {
+            // Should we log an error message or something?
+            return false;
+        }
 
-        _data.insert(_data.end(), image.get_data().begin(), image.get_data().end());
+        return add_image_data(image.get_data());
+    }
+
+    /**
+     * Adds the specified image data to this image stack by copying the data.
+     */
+    bool ImageStack::add_image_data(cl7::byte_view image_data)
+    {
+        const size_t image_size = _desc.calculate_data_size();
+        assert(image_data.size() == image_size);
+        if (image_data.size() != image_size)
+        {
+            // Should we log an error message or something?
+            return false;
+        }
+
+        _data.insert(_data.end(), image_data.begin(), image_data.end());
 
         return true;
     }
