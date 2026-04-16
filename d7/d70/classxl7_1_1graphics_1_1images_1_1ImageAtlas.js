@@ -1,0 +1,27 @@
+var classxl7_1_1graphics_1_1images_1_1ImageAtlas =
+[
+    [ "Entry", "d0/d12/structxl7_1_1graphics_1_1images_1_1ImageAtlas_1_1Entry.html", "d0/d12/structxl7_1_1graphics_1_1images_1_1ImageAtlas_1_1Entry" ],
+    [ "ImageAtlas", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#afd097841b60acb51dce92158f58f959b", null ],
+    [ "ImageAtlas", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#afc3f7ae599021819e2f9ced38bf28063", null ],
+    [ "_try_update_entry", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#a0209c7ad42d7e1fec139585517b219ff", null ],
+    [ "add_image", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#a192e056d78fe9b91c2ef65a36f206920", null ],
+    [ "add_image_data", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#a1e15f01d91722dfac2af979c31d9aa4c", null ],
+    [ "estimate_size", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#aa6b6c75d3fe325b5aaa9435a3db86322", null ],
+    [ "extract_image", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#a828f29f9c1f2e1441fd86fc007f7e033", null ],
+    [ "get_channel_order", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#accc6fc236a7310955ef940b5d38822f6", null ],
+    [ "get_default_rect_packer", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#aa8799764b9d73dfda5bc2d749339125e", null ],
+    [ "get_entries", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#afaa066e2a2187915b1178dd9650a50f0", null ],
+    [ "get_image", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#a85d1a9606576aed67a7e2f9c4425b028", null ],
+    [ "get_image_count", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#a8f7c0693ac7256b72b326a5bc6f6d6cb", null ],
+    [ "get_image_data", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#a5418a3e666edb9983a3965d34e2962d4", null ],
+    [ "get_image_desc", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#a3379cd40697a67762dc04131688855e3", null ],
+    [ "get_pixel_format", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#ae40b8d726e822fef4fbd61cb1158f7fa", null ],
+    [ "init", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#a634e3d774f62b54157675118e218fba1", null ],
+    [ "is_valid", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#a2763c70aedc5d15272bfa7a1c5bf18cb", null ],
+    [ "rearrange_images", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#a310ad25a4c795f7b6d158901381b2ed2", null ],
+    [ "set_default_rect_packer", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#aa1bf16d2af88a86d0e1858ea0d465d71", null ],
+    [ "_channel_order", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#ac31b5981eb203e2892b085e5ea9c413c", null ],
+    [ "_default_rect_packer", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#a5695ca878c42b30386c2049600f4e5eb", null ],
+    [ "_entries", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#ac68709beed6c95e2d97ba990c9f2a8e1", null ],
+    [ "_pixel_format", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html#a9c39b99646feb45d1820da6cc8b100f8", null ]
+];

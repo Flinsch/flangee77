@@ -199,6 +199,7 @@ var hierarchy =
     [ "cl7::text::codec::Encoder< Tchar, TDefaultErrorHandler >", "d6/d1d/classcl7_1_1text_1_1codec_1_1Encoder.html", null ],
     [ "cl7::io::EndianAwareReader< source_endian >", "d9/d5a/classcl7_1_1io_1_1EndianAwareReader.html", null ],
     [ "cl7::io::EndianAwareWriter< target_endian >", "db/d48/classcl7_1_1io_1_1EndianAwareWriter.html", null ],
+    [ "xl7::graphics::images::ImageAtlas::Entry", "d0/d12/structxl7_1_1graphics_1_1images_1_1ImageAtlas_1_1Entry.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::StateArray< TProxy, N >::Entry", "d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html", null ],
     [ "tl7::Signature::equal_to", "da/dc1/structtl7_1_1Signature_1_1equal__to.html", null ],
     [ "cl7::text::codec::ErrorHandler", "d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html", [
@@ -281,6 +282,8 @@ var hierarchy =
       [ "tl7::reporting::CoutLogger", "db/d02/classtl7_1_1reporting_1_1CoutLogger.html", null ]
     ] ],
     [ "xl7::graphics::images::Image", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html", null ],
+    [ "xl7::graphics::images::ImageArray", "df/d00/classxl7_1_1graphics_1_1images_1_1ImageArray.html", null ],
+    [ "xl7::graphics::images::ImageAtlas", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html", null ],
     [ "xl7::graphics::images::ImageDesc", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc.html", null ],
     [ "xl7::graphics::images::ImageProcessor", "d1/d92/structxl7_1_1graphics_1_1images_1_1ImageProcessor.html", [
       [ "xl7::graphics::images::ImageConverter", "d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter.html", null ],
@@ -291,7 +294,6 @@ var hierarchy =
       [ "xl7::graphics::images::codecs::png::Reader", "d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html", null ],
       [ "xl7::graphics::images::codecs::targa::Reader", "da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html", null ]
     ] ],
-    [ "xl7::graphics::images::ImageStack", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack.html", null ],
     [ "xl7::graphics::images::ImageWriter", "de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter.html", [
       [ "xl7::graphics::images::codecs::netpbm::Writer", "d0/d4d/classxl7_1_1graphics_1_1images_1_1codecs_1_1netpbm_1_1Writer.html", null ]
     ] ],

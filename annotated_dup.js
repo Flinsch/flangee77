@@ -375,12 +375,13 @@ var annotated_dup =
             ] ]
           ] ],
           [ "Image", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image" ],
+          [ "ImageArray", "df/d00/classxl7_1_1graphics_1_1images_1_1ImageArray.html", "df/d00/classxl7_1_1graphics_1_1images_1_1ImageArray" ],
+          [ "ImageAtlas", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas" ],
           [ "ImageConverter", "d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter.html", "d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter" ],
           [ "ImageDesc", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc.html", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc" ],
           [ "ImageProcessor", "d1/d92/structxl7_1_1graphics_1_1images_1_1ImageProcessor.html", "d1/d92/structxl7_1_1graphics_1_1images_1_1ImageProcessor" ],
           [ "ImageReader", "d1/d72/classxl7_1_1graphics_1_1images_1_1ImageReader.html", "d1/d72/classxl7_1_1graphics_1_1images_1_1ImageReader" ],
           [ "ImageResizer", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer.html", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer" ],
-          [ "ImageStack", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack.html", "dc/d41/classxl7_1_1graphics_1_1images_1_1ImageStack" ],
           [ "ImageWriter", "de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter.html", "de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter" ]
         ] ],
         [ "impl", "db/d29/namespacexl7_1_1graphics_1_1impl.html", [
