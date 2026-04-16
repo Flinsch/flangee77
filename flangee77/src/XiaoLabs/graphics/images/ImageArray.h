@@ -1,5 +1,5 @@
-#ifndef XL7_GRAPHICS_IMAGES_IMAGESTACK_H
-#define XL7_GRAPHICS_IMAGES_IMAGESTACK_H
+#ifndef XL7_GRAPHICS_IMAGES_IMAGEARRAY_H
+#define XL7_GRAPHICS_IMAGES_IMAGEARRAY_H
 
 #include "./Image.h"
 
@@ -12,7 +12,11 @@ namespace xl7::graphics::images {
 
 
 
-class ImageStack
+/**
+ * Represents an ordered array of equally sized and equally formatted images.
+ * Suitable for texture arrays, frame sequences, or layered image data.
+ */
+class ImageArray
 {
 
 public:
@@ -21,9 +25,9 @@ public:
     // Construction / Destruction
     // #############################################################################
 
-    ImageStack();
-    explicit ImageStack(const ImageDesc& desc);
-    explicit ImageStack(const Image& image);
+    ImageArray();
+    explicit ImageArray(const ImageDesc& desc);
+    explicit ImageArray(const Image& image);
 
 
 
@@ -67,12 +71,7 @@ public:
     unsigned get_image_count() const;
 
     /**
-     * Returns the data of the specified image.
-     */
-    cl7::byte_view get_image_data(unsigned image_index) const;
-
-    /**
-     * Returns the consecutive data of the contained images.
+     * Returns the consecutive data of all contained images.
      */
     cl7::byte_view get_data() const { return _data; }
 
@@ -83,24 +82,34 @@ public:
     // #############################################################################
 
     /**
-     * (Re)initializes the image stack.
+     * (Re)initializes the image array.
      */
-    bool init(const ImageDesc& desc);
+    void init(const ImageDesc& desc);
 
     /**
-     * (Re)initializes the image stack.
+     * (Re)initializes the image array.
      */
-    bool init(const Image& image);
+    void init(const Image& image);
 
     /**
-     * Adds the specified image to this image stack by copying its data.
+     * Adds the specified image to this image array by copying its data.
      */
     bool add_image(const Image& image);
 
     /**
-     * Adds the specified image data to this image stack by copying the data.
+     * Adds the specified image data to this image array by copying the data.
      */
     bool add_image_data(cl7::byte_view image_data);
+
+    /**
+     * Returns the data of the specified image.
+     */
+    cl7::byte_view get_image_data(unsigned image_index) const;
+
+    /**
+     * Returns the specified image as a "view" of the image data.
+     */
+    Image get_image(unsigned image_index) const;
 
     /**
      * Extracts the specified image by creating a new one and copying the data.
@@ -125,10 +134,10 @@ private:
      */
     cl7::byte_vector _data;
 
-}; // class ImageStack
+}; // class ImageArray
 
 
 
 } // namespace xl7::graphics::images
 
-#endif // XL7_GRAPHICS_IMAGES_IMAGESTACK_H
+#endif // XL7_GRAPHICS_IMAGES_IMAGEARRAY_H

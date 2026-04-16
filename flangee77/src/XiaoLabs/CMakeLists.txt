@@ -17,12 +17,13 @@ target_sources(flangee77
     graphics/RenderingDevice.cpp
 
     graphics/images/Image.cpp
+    graphics/images/ImageArray.cpp
+    graphics/images/ImageAtlas.cpp
     graphics/images/ImageConverter.cpp
     graphics/images/ImageDesc.cpp
     graphics/images/ImageReader.cpp
     graphics/images/ImageProcessor.cpp
     graphics/images/ImageResizer.cpp
-    graphics/images/ImageStack.cpp
     graphics/images/ImageWriter.cpp
     graphics/images/codecs/netpbm/Reader.cpp
     graphics/images/codecs/netpbm/Writer.cpp
