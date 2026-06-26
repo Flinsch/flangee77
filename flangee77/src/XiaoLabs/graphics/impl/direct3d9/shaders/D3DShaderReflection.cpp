@@ -124,6 +124,11 @@ namespace xl7::graphics::impl::direct3d9::shaders {
                         static_assert(static_cast<unsigned>(graphics::shaders::ConstantType::Float) == 3);
                         constant_type = static_cast<graphics::shaders::ConstantType>(ctype->Type);
                         break;
+                    case 5: // D3DXPT_TEXTURE
+                    case 6: // D3DXPT_TEXTURE1D
+                    case 7: // D3DXPT_TEXTURE2D
+                    case 8: // D3DXPT_TEXTURE3D
+                    case 9: // D3DXPT_TEXTURECUBE
                     case 10: // D3DXPT_SAMPLER
                     case 11: // D3DXPT_SAMPLER1D
                     case 12: // D3DXPT_SAMPLER2D
@@ -178,6 +183,11 @@ namespace xl7::graphics::impl::direct3d9::shaders {
                     case 2: // D3DXPT_INT
                     case 3: // D3DXPT_FLOAT
                         continue;
+                    case 5: // D3DXPT_TEXTURE
+                    case 6: // D3DXPT_TEXTURE1D
+                    case 7: // D3DXPT_TEXTURE2D
+                    case 8: // D3DXPT_TEXTURE3D
+                    case 9: // D3DXPT_TEXTURECUBE
                     case 10: // D3DXPT_SAMPLER
                     case 11: // D3DXPT_SAMPLER1D
                     case 12: // D3DXPT_SAMPLER2D
