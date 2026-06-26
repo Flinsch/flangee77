@@ -79,7 +79,7 @@ namespace fl7::fonts::render {
             .entry_point = "",
         };
 
-        cl7::io::File file(cl7::platform::filesystem::get_working_directory() + u8"assets/shaders/fonts/test-shader.hlsl");
+        cl7::io::File file(cl7::platform::filesystem::get_working_directory() + u8"assets/shaders/fonts/test-renderer.hlsl");
         cl7::io::Utf8Reader utf8_reader(&file);
         cl7::u8string high_level_code = utf8_reader.read_all();
         xl7::graphics::shaders::ShaderCode shader_code{high_level_code};
