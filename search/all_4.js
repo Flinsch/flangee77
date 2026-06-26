@@ -37,7 +37,7 @@ var searchData=
   ['data_5fcount_34',['data_count',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#af67dda080fdc65bf91b6e458d8b8cfd4',1,'cl7::profiling::Sample']]],
   ['data_5fout_35',['data_out',['../df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html#aa14ad92e5dfc0279c99cc8b968ee11c8',1,'xl7::graphics::impl::shared::shaders::Include']]],
   ['data_5fstring_36',['data_string',['../da/d3a/structtl7_1_1Result.html#acc0839bacf9e0974365566f497b7fb9b',1,'tl7::Result']]],
-  ['data_5ftype_37',['data_type',['../d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html#a966641786b3380d5b050d61bf308e912',1,'xl7::graphics::meshes::VertexLayout::Element::data_type'],['../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#aae691e410e689af309a736c8f13a8492',1,'xl7::graphics::PixelLayout::data_type']]],
+  ['data_5ftype_37',['data_type',['../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#aae691e410e689af309a736c8f13a8492',1,'xl7::graphics::PixelLayout::data_type'],['../d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html#a966641786b3380d5b050d61bf308e912',1,'xl7::graphics::meshes::VertexLayout::Element::data_type']]],
   ['datatype_38',['datatype',['../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html#aa550322d966456e97be39059227544e9',1,'xl7::graphics::meshes::VertexLayout::DataType'],['../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#ae44172ca898d119023f9b86ccc012c9a',1,'xl7::graphics::PixelLayout::DataType']]],
   ['datetime_39',['datetime',['../d6/d16/structcl7_1_1system_1_1datetime.html',1,'cl7::system']]],
   ['datetime_2ecpp_40',['datetime.cpp',['../d7/d14/datetime_8cpp.html',1,'']]],
