@@ -71,6 +71,11 @@ namespace xl7::graphics::images {
         return _log_error(u8"Bad data of image \"" + target_name + u8"\" is damaged", description);
     }
 
+    bool ImageWriter::_log_write_error(const cl7::u8string& target_name, const cl7::u8string& description)
+    {
+        return _log_error(u8"Error writing image \"" + target_name + u8"\"", description);
+    }
+
 
 
 } // namespace xl7::graphics::images

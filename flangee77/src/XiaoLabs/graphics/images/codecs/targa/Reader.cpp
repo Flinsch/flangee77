@@ -1,5 +1,7 @@
 #include "Reader.h"
 
+#include "./RleDecoder.h"
+
 #include "../../ImageProcessor.h"
 
 #include <CoreLabs/logging.h>
@@ -192,47 +194,26 @@ namespace xl7::graphics::images::codecs::targa {
      */
     bool Reader::_read_compressed(cl7::io::IReadable& readable, const cl7::u8string& source_name, unsigned pixel_depth, cl7::byte_span image_data)
     {
-        assert(pixel_depth % 8 == 0);
-        const auto bytes_per_pixel = static_cast<size_t>(pixel_depth / 8);
-        assert(bytes_per_pixel > 0);
-        assert(image_data.size() % bytes_per_pixel == 0);
-        const auto total_pixel_count = image_data.size() / bytes_per_pixel;
+        const auto result = RleDecoder::decode(readable, pixel_depth, image_data);
 
-        size_t pixel_index = 0;
-        std::byte* cursor = image_data.data();
-
-        while (pixel_index < total_pixel_count)
+        switch (result)
         {
-            unsigned char chunk_header;
-            if (readable.read({reinterpret_cast<std::byte*>(&chunk_header), 1}) != 1)
-                return _log_bad_header_error(source_name, u8"bad chunk header length");
+        case RleDecoder::Result::Success:
+            return true;
 
-            const size_t pixel_count = static_cast<size_t>(chunk_header & 0x7f) + 1;
-            const size_t chunk_size = pixel_count * bytes_per_pixel;
-
-            if (chunk_header <= 0x7f)
-            {
-                // Chunk is a "raw" packet.
-                if (readable.read({cursor, chunk_size}) != chunk_size)
-                    return _log_bad_data_error(source_name, u8"bad \"raw\"-packet chunk data length");
-            }
-            else
-            {
-                // Chunk is an RLE packet.
-                if (readable.read({cursor, bytes_per_pixel}) != bytes_per_pixel)
-                    return _log_bad_data_error(source_name, u8"bad RLE-packet chunk data length");
-                for (size_t i = 1; i < pixel_count; ++i)
-                    std::memcpy(cursor + i * bytes_per_pixel, cursor, bytes_per_pixel);
-            }
-
-            cursor += chunk_size;
-            pixel_index += pixel_count;
-        } // for each chunk of pixels
-
-        if (pixel_index != total_pixel_count)
+        case RleDecoder::Result::BadChunkHeaderLength:
+            return _log_bad_header_error(source_name, u8"bad chunk header length");
+        case RleDecoder::Result::BadRawPacketChunkDataLength:
+            return _log_bad_data_error(source_name, u8"bad \"raw\"-packet chunk data length");
+        case RleDecoder::Result::BadRlePacketChunkDataLength:
+            return _log_bad_data_error(source_name, u8"bad RLE-packet chunk data length");
+        case RleDecoder::Result::BadCompressedImageDataLength:
             return _log_bad_data_error(source_name, u8"bad compressed image data length");
 
-        return true;
+        default:
+            assert(false);
+            return _log_bad_data_error(source_name, u8"unknown error reading RLE-encoded image data");
+        }
     }
 
     /**

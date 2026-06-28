@@ -29,6 +29,9 @@ target_sources(flangee77
     graphics/images/codecs/netpbm/Writer.cpp
     graphics/images/codecs/png/Reader.cpp
     graphics/images/codecs/targa/Reader.cpp
+    graphics/images/codecs/targa/RleDecoder.cpp
+    graphics/images/codecs/targa/RleEncoder.cpp
+    graphics/images/codecs/targa/Writer.cpp
 
     graphics/meshes/IndexBuffer.cpp
     graphics/meshes/IndexBufferUpdater.cpp

@@ -2,6 +2,8 @@
 #define XL7_GRAPHICS_IMAGES_CODECS_TARGA_READER_H
 #include "../../ImageReader.h"
 
+#include "./Header.h"
+
 
 
 namespace xl7::graphics::images::codecs::targa {
@@ -18,27 +20,6 @@ public:
 
 
 private:
-
-#pragma pack(push, 1)
-    struct Header
-    {
-        uint8_t     id_length;
-        uint8_t     color_map_type;
-        uint8_t     image_type;
-        uint16_t    color_map_start;
-        uint16_t    color_map_length;
-        uint8_t     color_map_depth;
-        uint16_t    x_origin;
-        uint16_t    y_origin;
-        uint16_t    width;
-        uint16_t    height;
-        uint8_t     pixel_depth;
-        uint8_t     image_descriptor;
-    };
-#pragma pack(pop)
-    static_assert(sizeof(Header) == 18);
-
-
 
     // #############################################################################
     // Implementations
