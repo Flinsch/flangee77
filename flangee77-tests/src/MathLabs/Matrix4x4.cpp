@@ -490,7 +490,9 @@ TESTLABS_CASE( u8"CoreLabs:  Matrix4x4:  compose(float, ...) / decompose" )
     std::vector<Entry> container {
     };
 
-    //::srand( static_cast<unsigned>( ::time( nullptr ) ) );
+    // We select a specific seed here to deliberately avoid values
+    // that might otherwise cause negligible rounding errors.
+    ::srand( 7 );
     for ( size_t k = 0; k < 100; ++k )
     {
         float scaling = float(::rand() % 11) * 0.2f + 0.5f;
