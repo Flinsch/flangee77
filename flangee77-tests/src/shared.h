@@ -39,6 +39,15 @@ namespace tl7::internals {
         s[bytes.size() * 4 + 1] = u8'}';
         return s;
     }
+
+    template <typename T>
+        requires(requires (T value) {
+            { cl7::to_string(value) } -> std::convertible_to<cl7::u8string>;
+        } && !std::is_same_v<std::remove_cvref_t<T>, std::byte> && !std::is_same_v<std::remove_cvref_t<T>, cl7::byte_view>)
+    cl7::u8string to_string(T value)
+    {
+        return cl7::to_string(value);
+    }
 }
 
 

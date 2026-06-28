@@ -39,8 +39,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Reader:  Grays
         TESTLABS_CHECK_EQ( image.get_width(), 7 );
         TESTLABS_CHECK_EQ( image.get_height(), 5 );
         TESTLABS_CHECK_EQ( image.get_depth(), 1 );
-        TESTLABS_CHECK( image.get_pixel_format() == xl7::graphics::PixelFormat::R8_UNORM );
-        TESTLABS_CHECK( image.get_channel_order() == xl7::graphics::ChannelOrder::BGRA );
+        TESTLABS_CHECK_EQ( image.get_pixel_format(), xl7::graphics::PixelFormat::R8_UNORM );
+        TESTLABS_CHECK_EQ( image.get_channel_order(), xl7::graphics::ChannelOrder::BGRA );
         TESTLABS_CHECK_EQ( cl7::to_bytes(image.get_data()), data );
     }
 }
@@ -78,7 +78,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Reader:  Pseud
         TESTLABS_CHECK_EQ( image.get_height(), 5 );
         TESTLABS_CHECK_EQ( image.get_depth(), 1 );
         TESTLABS_CHECK( (image.get_pixel_format() == xl7::graphics::PixelFormat::R5G5B5X1_UNORM) || (image.get_pixel_format() == xl7::graphics::PixelFormat::R5G5B5A1_UNORM) ); // R5G5B5A1 could happen.
-        TESTLABS_CHECK( image.get_channel_order() == xl7::graphics::ChannelOrder::BGRA );
+        TESTLABS_CHECK_EQ( image.get_channel_order(), xl7::graphics::ChannelOrder::BGRA );
         TESTLABS_CHECK_EQ( cl7::to_bytes(image.get_data()), data );
     }
 }
@@ -113,8 +113,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Reader:  Pseud
         TESTLABS_CHECK_EQ( image.get_width(), 7 );
         TESTLABS_CHECK_EQ( image.get_height(), 5 );
         TESTLABS_CHECK_EQ( image.get_depth(), 1 );
-        TESTLABS_CHECK( image.get_pixel_format() == xl7::graphics::PixelFormat::R5G5B5A1_UNORM );
-        TESTLABS_CHECK( image.get_channel_order() == xl7::graphics::ChannelOrder::BGRA );
+        TESTLABS_CHECK_EQ( image.get_pixel_format(), xl7::graphics::PixelFormat::R5G5B5A1_UNORM );
+        TESTLABS_CHECK_EQ( image.get_channel_order(), xl7::graphics::ChannelOrder::BGRA );
         TESTLABS_CHECK_EQ( cl7::to_bytes(image.get_data()), data );
     }
 }
@@ -152,8 +152,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Reader:  Truec
         TESTLABS_CHECK_EQ( image.get_width(), 7 );
         TESTLABS_CHECK_EQ( image.get_height(), 5 );
         TESTLABS_CHECK_EQ( image.get_depth(), 1 );
-        TESTLABS_CHECK( image.get_pixel_format() == xl7::graphics::PixelFormat::R8G8B8_UNORM );
-        TESTLABS_CHECK( image.get_channel_order() == xl7::graphics::ChannelOrder::BGRA );
+        TESTLABS_CHECK_EQ( image.get_pixel_format(), xl7::graphics::PixelFormat::R8G8B8_UNORM );
+        TESTLABS_CHECK_EQ( image.get_channel_order(), xl7::graphics::ChannelOrder::BGRA );
         TESTLABS_CHECK_EQ( cl7::to_bytes(image.get_data()), data );
     }
 }
@@ -189,8 +189,8 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Reader:  Truec
         TESTLABS_CHECK_EQ( image.get_width(), 7 );
         TESTLABS_CHECK_EQ( image.get_height(), 5 );
         TESTLABS_CHECK_EQ( image.get_depth(), 1 );
-        TESTLABS_CHECK( image.get_pixel_format() == xl7::graphics::PixelFormat::R8G8B8A8_UNORM );
-        TESTLABS_CHECK( image.get_channel_order() == xl7::graphics::ChannelOrder::BGRA );
+        TESTLABS_CHECK_EQ( image.get_pixel_format(), xl7::graphics::PixelFormat::R8G8B8A8_UNORM );
+        TESTLABS_CHECK_EQ( image.get_channel_order(), xl7::graphics::ChannelOrder::BGRA );
         TESTLABS_CHECK_EQ( cl7::to_bytes(image.get_data()), data );
     }
 }
