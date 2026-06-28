@@ -25,8 +25,8 @@ var searchData=
   ['registry_2eh_22',['Registry.h',['../da/d66/Registry_8h.html',1,'']]],
   ['renderingcontext_2ecpp_23',['RenderingContext.cpp',['../dc/d3b/RenderingContext_8cpp.html',1,'']]],
   ['renderingcontext_2eh_24',['RenderingContext.h',['../d6/d96/RenderingContext_8h.html',1,'']]],
-  ['renderingcontextimpl_2ecpp_25',['renderingcontextimpl.cpp',['../df/d9f/direct3d9_2RenderingContextImpl_8cpp.html',1,'(Global Namespace)'],['../d3/dec/direct3d11_2RenderingContextImpl_8cpp.html',1,'(Global Namespace)']]],
-  ['renderingcontextimpl_2eh_26',['renderingcontextimpl.h',['../d0/da1/direct3d11_2RenderingContextImpl_8h.html',1,'(Global Namespace)'],['../d3/d63/direct3d9_2RenderingContextImpl_8h.html',1,'(Global Namespace)']]],
+  ['renderingcontextimpl_2ecpp_25',['renderingcontextimpl.cpp',['../d3/dec/direct3d11_2RenderingContextImpl_8cpp.html',1,'(Global Namespace)'],['../df/d9f/direct3d9_2RenderingContextImpl_8cpp.html',1,'(Global Namespace)']]],
+  ['renderingcontextimpl_2eh_26',['renderingcontextimpl.h',['../d3/d63/direct3d9_2RenderingContextImpl_8h.html',1,'(Global Namespace)'],['../d0/da1/direct3d11_2RenderingContextImpl_8h.html',1,'(Global Namespace)']]],
   ['renderingdevice_2ecpp_27',['RenderingDevice.cpp',['../df/de6/RenderingDevice_8cpp.html',1,'']]],
   ['renderingdevice_2eh_28',['RenderingDevice.h',['../d4/d3f/RenderingDevice_8h.html',1,'']]],
   ['renderingdeviceimpl_2ecpp_29',['renderingdeviceimpl.cpp',['../dc/d6e/direct3d11_2RenderingDeviceImpl_8cpp.html',1,'(Global Namespace)'],['../d3/d84/direct3d9_2RenderingDeviceImpl_8cpp.html',1,'(Global Namespace)']]],
@@ -50,6 +50,10 @@ var searchData=
   ['result_2eh_47',['Result.h',['../d8/d27/Result_8h.html',1,'']]],
   ['resultbuilder_2ecpp_48',['ResultBuilder.cpp',['../dd/db6/ResultBuilder_8cpp.html',1,'']]],
   ['resultbuilder_2eh_49',['ResultBuilder.h',['../d5/d8a/ResultBuilder_8h.html',1,'']]],
-  ['root_2ecpp_50',['root.cpp',['../d2/d19/root_8cpp.html',1,'']]],
-  ['root_2eh_51',['root.h',['../de/d99/root_8h.html',1,'']]]
+  ['rledecoder_2ecpp_50',['RleDecoder.cpp',['../da/dae/RleDecoder_8cpp.html',1,'']]],
+  ['rledecoder_2eh_51',['RleDecoder.h',['../d1/d8b/RleDecoder_8h.html',1,'']]],
+  ['rleencoder_2ecpp_52',['RleEncoder.cpp',['../d6/d3b/RleEncoder_8cpp.html',1,'']]],
+  ['rleencoder_2eh_53',['RleEncoder.h',['../d6/d2c/RleEncoder_8h.html',1,'']]],
+  ['root_2ecpp_54',['root.cpp',['../d2/d19/root_8cpp.html',1,'']]],
+  ['root_2eh_55',['root.h',['../de/d99/root_8h.html',1,'']]]
 ];

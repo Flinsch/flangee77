@@ -1,6 +1,5 @@
 var classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader =
 [
-    [ "Header", "d7/d12/structxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader_1_1Header.html", "d7/d12/structxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader_1_1Header" ],
     [ "~Reader", "da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html#ada7473d523dfa3c4f3d311301918fbb3", null ],
     [ "_load_from", "da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html#aa9e03ef5a05f544052f137c6d87396a4", null ],
     [ "_map_color_data", "da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html#a03608e12874a5c31d2fabf33861698f9", null ],

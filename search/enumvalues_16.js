@@ -6,5 +6,6 @@ var searchData=
   ['windowed_3',['windowed',['../d2/d33/structxl7_1_1Config_1_1Video.html#ae385a3a6e937c6aef106ebdf94bd0e59ab13311ab51c4c34757f67f26580018dd',1,'xl7::Config::Video::Windowed'],['../dc/d6e/namespacexl7.html#a5e0f436814da1bf500ed4637f8ad723dab13311ab51c4c34757f67f26580018dd',1,'xl7::Windowed']]],
   ['wireframe_4',['Wireframe',['../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a7f46c6d01e495097a9265668e17da143a33e42d0f3b166a4c405127e4412fbef2',1,'xl7::graphics::states']]],
   ['wrap_5',['Wrap',['../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a98d0b059d0af618a89dda3c2f66f2da5aa212b19ef5f2fb30acf92e6cbccc1f2d',1,'xl7::graphics::states']]],
-  ['write_6',['Write',['../d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5a1129c0e4d43f2d121652a7302712cff6',1,'cl7::io']]]
+  ['write_6',['Write',['../d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5a1129c0e4d43f2d121652a7302712cff6',1,'cl7::io']]],
+  ['writeerror_7',['WriteError',['../da/df4/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1RleEncoder.html#a8457c8e3507702c62e9a19200f514fbda4a02ea49d454392fd1e3426e53f14b58',1,'xl7::graphics::images::codecs::targa::RleEncoder']]]
 ];

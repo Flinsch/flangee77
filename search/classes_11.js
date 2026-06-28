@@ -21,7 +21,7 @@ var searchData=
   ['registryentry_18',['RegistryEntry',['../d6/d6b/structxl7_1_1BackendRegistry_1_1RegistryEntry.html',1,'xl7::BackendRegistry']]],
   ['regs_19',['regs',['../de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html',1,'cl7::platform::CPUID']]],
   ['renderingcontext_20',['RenderingContext',['../de/d0a/classxl7_1_1graphics_1_1RenderingContext.html',1,'xl7::graphics']]],
-  ['renderingcontextimpl_21',['renderingcontextimpl',['../dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl'],['../d9/dfb/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl.html',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl']]],
+  ['renderingcontextimpl_21',['renderingcontextimpl',['../d9/dfb/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl.html',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl'],['../dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl']]],
   ['renderingdevice_22',['RenderingDevice',['../dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html',1,'xl7::graphics']]],
   ['renderingdeviceimpl_23',['renderingdeviceimpl',['../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html',1,'xl7::graphics::impl::direct3d11::RenderingDeviceImpl'],['../d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html',1,'xl7::graphics::impl::direct3d9::RenderingDeviceImpl']]],
   ['rendertargetsurface_24',['RenderTargetSurface',['../da/d06/classxl7_1_1graphics_1_1surfaces_1_1RenderTargetSurface.html',1,'xl7::graphics::surfaces']]],
@@ -59,7 +59,7 @@ var searchData=
   ['resourcebase_3c_20vertexbuffer_2c_20meshbuffer_20_3e_56',['ResourceBase&lt; VertexBuffer, MeshBuffer &gt;',['../d5/d18/classxl7_1_1resources_1_1ResourceBase.html',1,'xl7::resources']]],
   ['resourcebase_3c_20vertexshader_2c_20shader_20_3e_57',['ResourceBase&lt; VertexShader, Shader &gt;',['../d5/d18/classxl7_1_1resources_1_1ResourceBase.html',1,'xl7::resources']]],
   ['resourceentry_58',['ResourceEntry',['../d8/d89/structxl7_1_1resources_1_1ResourceManager_1_1ResourceEntry.html',1,'xl7::resources::ResourceManager']]],
-  ['resourcefactoryimpl_59',['resourcefactoryimpl',['../de/d84/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl.html',1,'xl7::graphics::impl::direct3d9::ResourceFactoryImpl'],['../df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html',1,'xl7::graphics::impl::direct3d11::ResourceFactoryImpl']]],
+  ['resourcefactoryimpl_59',['resourcefactoryimpl',['../df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html',1,'xl7::graphics::impl::direct3d11::ResourceFactoryImpl'],['../de/d84/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl.html',1,'xl7::graphics::impl::direct3d9::ResourceFactoryImpl']]],
   ['resourceid_60',['ResourceId',['../db/d1e/classxl7_1_1resources_1_1ResourceId.html',1,'xl7::resources']]],
   ['resourcemanager_61',['ResourceManager',['../d3/d00/classxl7_1_1resources_1_1ResourceManager.html',1,'xl7::resources']]],
   ['resourceupdaterbase_62',['ResourceUpdaterBase',['../d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html',1,'xl7::resources']]],
@@ -79,5 +79,7 @@ var searchData=
   ['resourcewithdata_3c_20texture_20_3e_76',['ResourceWithData&lt; Texture &gt;',['../dc/ddf/classxl7_1_1resources_1_1ResourceWithData.html',1,'xl7::resources']]],
   ['result_77',['Result',['../da/d3a/structtl7_1_1Result.html',1,'tl7']]],
   ['resultbase_78',['resultbase',['../de/d3e/structml7_1_1distance2_1_1ResultBase.html',1,'ml7::distance2::ResultBase&lt; T &gt;'],['../da/db7/structml7_1_1distance3_1_1ResultBase.html',1,'ml7::distance3::ResultBase&lt; T &gt;']]],
-  ['resultbuilder_79',['ResultBuilder',['../db/d89/classtl7_1_1ResultBuilder.html',1,'tl7']]]
+  ['resultbuilder_79',['ResultBuilder',['../db/d89/classtl7_1_1ResultBuilder.html',1,'tl7']]],
+  ['rledecoder_80',['RleDecoder',['../d4/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1RleDecoder.html',1,'xl7::graphics::images::codecs::targa']]],
+  ['rleencoder_81',['RleEncoder',['../da/df4/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1RleEncoder.html',1,'xl7::graphics::images::codecs::targa']]]
 ];

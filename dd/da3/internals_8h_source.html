@@ -174,7 +174,7 @@ $(document).ready(function(){initNavTree('dd/da3/internals_8h_source.html','../.
 <div class="foldopen" id="foldopen00053" data-start="" data-end="">
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="../../dd/da3/internals_8h.html#ac1fde34aa9a447888df206371c0aaa22">   53</a></span><span class="preprocessor">#define TL7_INTERNAL_TRY_POST_RESULT_1(expression, make_result, macro_base) \</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">    do { \</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">        const auto eval = expression; \</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">        auto&amp;&amp; eval = (expression); \</span></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">        ctx.try_post_result(tl7::ResultBuilder().make_result(ctx, (u8##macro_base &quot;( &quot; #expression &quot; )&quot;), (u8##macro_base &quot;( &quot;) + tl7::internals::to_string(!!(eval)) + u8&quot; )&quot;, __FILE__, __LINE__, __FUNCTION__, tl7::Result::make_outcome(eval))); \</span></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">    } while(false)</span></div>
 </div>
@@ -182,8 +182,8 @@ $(document).ready(function(){initNavTree('dd/da3/internals_8h_source.html','../.
 <div class="foldopen" id="foldopen00059" data-start="" data-end="">
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="../../dd/da3/internals_8h.html#a5e04667e983743f5dbe4ae98f19b7a99">   59</a></span><span class="preprocessor">#define TL7_INTERNAL_TRY_POST_RESULT_2(expr1, expr2, make_result, macro_base, op) \</span></div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">    do { \</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">        const auto eval1 = expr1; \</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">        const auto eval2 = expr2; \</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">        auto&amp;&amp; eval1 = (expr1); \</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">        auto&amp;&amp; eval2 = (expr2); \</span></div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">        ctx.try_post_result(tl7::ResultBuilder().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + tl7::internals::to_string(eval1) + (u8&quot; &quot; #op &quot; &quot;) + tl7::internals::to_string(eval2) + u8&quot; )&quot;, __FILE__, __LINE__, __FUNCTION__, tl7::Result::make_outcome(eval1 op eval2))); \</span></div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">    } while(false)</span></div>
 </div>
@@ -191,8 +191,8 @@ $(document).ready(function(){initNavTree('dd/da3/internals_8h_source.html','../.
 <div class="foldopen" id="foldopen00066" data-start="" data-end="">
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="../../dd/da3/internals_8h.html#a09406f825a40c7e24aa03abe4805d56e">   66</a></span><span class="preprocessor">#define TL7_INTERNAL_TRY_POST_RESULT_EQ_STR(expr1, expr2, make_result, macro_base, op) \</span></div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">    do { \</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">        const auto eval1 = expr1; \</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">        const auto eval2 = expr2; \</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">        auto&amp;&amp; eval1 = (expr1); \</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">        auto&amp;&amp; eval2 = (expr2); \</span></div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">        ctx.try_post_result(tl7::ResultBuilder().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + tl7::internals::to_string(eval1) + (u8&quot; &quot; #op &quot; &quot;) + tl7::internals::to_string(eval2) + u8&quot; )&quot;, __FILE__, __LINE__, __FUNCTION__, tl7::Result::make_outcome(cl7::to_string(eval1) op cl7::to_string(eval2)))); \</span></div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">    } while(false)</span></div>
 </div>
@@ -200,8 +200,8 @@ $(document).ready(function(){initNavTree('dd/da3/internals_8h_source.html','../.
 <div class="foldopen" id="foldopen00073" data-start="" data-end="">
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="../../dd/da3/internals_8h.html#ab42fcc37e5bee3103e1b38b784256580">   73</a></span><span class="preprocessor">#define TL7_INTERNAL_TRY_POST_RESULT_EQ_FLT(expr1, expr2, make_result, macro_base, op) \</span></div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">    do { \</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">        const auto eval1 = expr1; \</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">        const auto eval2 = expr2; \</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">        auto&amp;&amp; eval1 = (expr1); \</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">        auto&amp;&amp; eval2 = (expr2); \</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">        ctx.try_post_result(tl7::ResultBuilder().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + tl7::internals::to_string(eval1) + (u8&quot; &quot; #op &quot; &quot;) + tl7::internals::to_string(eval2) + u8&quot; )&quot;, __FILE__, __LINE__, __FUNCTION__, tl7::Result::make_outcome(std::abs(eval1 - eval2) &lt; 2.0f * FLT_EPSILON))); \</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">    } while(false)</span></div>
 </div>
@@ -209,8 +209,8 @@ $(document).ready(function(){initNavTree('dd/da3/internals_8h_source.html','../.
 <div class="foldopen" id="foldopen00080" data-start="" data-end="">
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="../../dd/da3/internals_8h.html#af9b69e8b7dcf7f5ad7943a41dae62732">   80</a></span><span class="preprocessor">#define TL7_INTERNAL_TRY_POST_RESULT_EQ_DBL(expr1, expr2, make_result, macro_base, op) \</span></div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">    do { \</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">        const auto eval1 = expr1; \</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">        const auto eval2 = expr2; \</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">        auto&amp;&amp; eval1 = (expr1); \</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">        auto&amp;&amp; eval2 = (expr2); \</span></div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">        ctx.try_post_result(tl7::ResultBuilder().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + tl7::internals::to_string(eval1) + (u8&quot; &quot; #op &quot; &quot;) + tl7::internals::to_string(eval2) + u8&quot; )&quot;, __FILE__, __LINE__, __FUNCTION__, tl7::Result::make_outcome(std::abs(eval1 - eval2) &lt; 2.0 * DBL_EPSILON))); \</span></div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">    } while(false)</span></div>
 </div>
@@ -218,8 +218,8 @@ $(document).ready(function(){initNavTree('dd/da3/internals_8h_source.html','../.
 <div class="foldopen" id="foldopen00087" data-start="" data-end="">
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="../../dd/da3/internals_8h.html#afa7ec6904d87e66410619564d8e28dda">   87</a></span><span class="preprocessor">#define TL7_INTERNAL_TRY_POST_RESULT_EQ_ROUND(num_decimals, expr1, expr2, make_result, macro_base, op) \</span></div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">    do { \</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">        const auto eval1 = expr1; \</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">        const auto eval2 = expr2; \</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">        auto&amp;&amp; eval1 = (expr1); \</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">        auto&amp;&amp; eval2 = (expr2); \</span></div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">        ctx.try_post_result(tl7::ResultBuilder().make_result(ctx, (u8##macro_base &quot;( &quot; #expr1 &quot; &quot; #op &quot; &quot; #expr2 &quot; )&quot;), (u8##macro_base &quot;( &quot;) + tl7::internals::to_string(eval1) + (u8&quot; &quot; #op &quot; &quot;) + tl7::internals::to_string(eval2) + u8&quot; )&quot;, __FILE__, __LINE__, __FUNCTION__, tl7::Result::make_outcome(ml7::round(eval1, num_decimals) op ml7::round(eval2, num_decimals)))); \</span></div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">    } while(false)</span></div>
 </div>

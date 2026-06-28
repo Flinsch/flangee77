@@ -267,7 +267,7 @@ var hierarchy =
     [ "std::hash< xl7::graphics::impl::shared::meshes::VertexBufferBinding >", "dc/d08/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding_01_4.html", null ],
     [ "std::hash< xl7::resources::ResourceId >", "dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4.html", null ],
     [ "xl7::graphics::images::codecs::png::Reader::Header", "df/d50/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Header.html", null ],
-    [ "xl7::graphics::images::codecs::targa::Reader::Header", "d7/d12/structxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader_1_1Header.html", null ],
+    [ "xl7::graphics::images::codecs::targa::Header", "d8/dd4/structxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Header.html", null ],
     [ "dl7::syntax::matchers::HexadecimalLiteralMatcher", "d9/d44/structdl7_1_1syntax_1_1matchers_1_1HexadecimalLiteralMatcher.html", null ],
     [ "TBase::Id", null, [
       [ "xl7::resources::ResourceBase< TDerived, TBase >::Id", "dc/df6/classxl7_1_1resources_1_1ResourceBase_1_1Id.html", null ]
@@ -295,7 +295,8 @@ var hierarchy =
       [ "xl7::graphics::images::codecs::targa::Reader", "da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html", null ]
     ] ],
     [ "xl7::graphics::images::ImageWriter", "de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter.html", [
-      [ "xl7::graphics::images::codecs::netpbm::Writer", "d0/d4d/classxl7_1_1graphics_1_1images_1_1codecs_1_1netpbm_1_1Writer.html", null ]
+      [ "xl7::graphics::images::codecs::netpbm::Writer", "d0/d4d/classxl7_1_1graphics_1_1images_1_1codecs_1_1netpbm_1_1Writer.html", null ],
+      [ "xl7::graphics::images::codecs::targa::Writer", "d3/d2d/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Writer.html", null ]
     ] ],
     [ "xl7::graphics::meshes::IMeshFactory", "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory.html", [
       [ "xl7::graphics::IResourceFactory", "d3/daa/classxl7_1_1graphics_1_1IResourceFactory.html", [
@@ -384,6 +385,7 @@ var hierarchy =
     [ "dl7::syntax::Lexer::Options", "dd/d72/structdl7_1_1syntax_1_1Lexer_1_1Options.html", null ],
     [ "dl7::xml::util::Escaper::Options", "d3/d88/structdl7_1_1xml_1_1util_1_1Escaper_1_1Options.html", null ],
     [ "xl7::graphics::images::codecs::netpbm::Writer::Options", "de/d34/structxl7_1_1graphics_1_1images_1_1codecs_1_1netpbm_1_1Writer_1_1Options.html", null ],
+    [ "xl7::graphics::images::codecs::targa::Writer::Options", "d1/d74/structxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Writer_1_1Options.html", null ],
     [ "cl7::ordered_map< Key, T, KeyView, Compare, Allocator >", "dd/d42/classcl7_1_1ordered__map.html", null ],
     [ "xl7::graphics::images::codecs::png::Reader::PaletteEntry", "dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html", null ],
     [ "xl7::graphics::impl::shared::shaders::Include::ParentEntry", "dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html", null ],
@@ -565,6 +567,8 @@ var hierarchy =
       [ "ml7::distance3::PointResult< T >", "d2/d68/structml7_1_1distance3_1_1PointResult.html", null ]
     ] ],
     [ "tl7::ResultBuilder", "db/d89/classtl7_1_1ResultBuilder.html", null ],
+    [ "xl7::graphics::images::codecs::targa::RleDecoder", "d4/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1RleDecoder.html", null ],
+    [ "xl7::graphics::images::codecs::targa::RleEncoder", "da/df4/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1RleEncoder.html", null ],
     [ "cl7::profiling::Sample", "d6/d1f/structcl7_1_1profiling_1_1Sample.html", null ],
     [ "cl7::profiling::SampleHandler", "d3/dea/structcl7_1_1profiling_1_1SampleHandler.html", null ],
     [ "xl7::graphics::states::SamplerStateDesc", "d4/d56/structxl7_1_1graphics_1_1states_1_1SamplerStateDesc.html", null ],
