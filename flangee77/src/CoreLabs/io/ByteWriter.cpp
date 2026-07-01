@@ -28,7 +28,7 @@ namespace cl7::io {
      */
     size_t ByteWriter::write_byte(std::byte byte)
     {
-        return _writable->write(cl7::make_byte_view(&byte));
+        return _writable->write(cl7::make_byte_view(byte));
     }
 
 

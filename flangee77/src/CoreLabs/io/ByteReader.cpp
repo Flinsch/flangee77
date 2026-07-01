@@ -45,7 +45,7 @@ namespace cl7::io {
      */
     size_t ByteReader::read_byte(std::byte& byte)
     {
-        return _readable->read(cl7::make_byte_span(&byte));
+        return _readable->read(cl7::make_byte_span(byte));
     }
 
     /**
@@ -56,7 +56,7 @@ namespace cl7::io {
     std::byte ByteReader::read_byte()
     {
         std::byte byte{0};
-        _readable->read(cl7::make_byte_span(&byte));
+        _readable->read(cl7::make_byte_span(byte));
         return byte;
     }
 

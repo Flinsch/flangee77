@@ -47,7 +47,7 @@ public:
     {
         static_assert(std::is_trivially_copyable_v<T>);
         value = cl7::bits::swap_bytes_unless_endian<target_endian>(value);
-        return _writable->write(cl7::make_byte_view(&value));
+        return _writable->write(cl7::make_byte_view(value));
     }
 
 private:

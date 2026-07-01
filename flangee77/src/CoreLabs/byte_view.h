@@ -31,11 +31,18 @@ namespace cl7 {
         return byte_view(reinterpret_cast<const std::byte*>(array), count * sizeof(Telement));
     }
 
-    template <typename Tobject>
-        requires(!std::is_reference_v<Tobject> && std::is_trivially_copyable_v<Tobject>)
-    auto make_byte_view(const Tobject* object)
+    template <typename Telement, size_t N>
+        requires(!std::is_reference_v<Telement> && std::is_trivially_copyable_v<Telement>)
+    auto make_byte_view(const Telement (&array)[N])
     {
-        return byte_view(reinterpret_cast<const std::byte*>(object), sizeof(Tobject));
+        return byte_view(reinterpret_cast<const std::byte*>(array), N * sizeof(Telement));
+    }
+
+    template <typename Tobject>
+        requires(!std::is_reference_v<Tobject> && !std::is_pointer_v<Tobject> && !std::is_array_v<Tobject> && !std::ranges::contiguous_range<Tobject> && std::is_trivially_copyable_v<Tobject>)
+    auto make_byte_view(const Tobject& object)
+    {
+        return byte_view(reinterpret_cast<const std::byte*>(&object), sizeof(Tobject));
     }
 
 

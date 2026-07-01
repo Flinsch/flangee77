@@ -31,11 +31,18 @@ namespace cl7 {
         return byte_span(reinterpret_cast<std::byte*>(array), count * sizeof(Telement));
     }
 
-    template <typename Tobject>
-        requires(!std::is_reference_v<Tobject> && std::is_trivially_copyable_v<Tobject>)
-    auto make_byte_span(Tobject* object)
+    template <typename Telement, size_t N>
+        requires(!std::is_reference_v<Telement> && std::is_trivially_copyable_v<Telement>)
+    auto make_byte_span(const Telement (&array)[N])
     {
-        return byte_span(reinterpret_cast<std::byte*>(object), sizeof(Tobject));
+        return byte_span(reinterpret_cast<std::byte*>(array), N * sizeof(Telement));
+    }
+
+    template <typename Tobject>
+        requires(!std::is_reference_v<Tobject> && !std::is_pointer_v<Tobject> && !std::is_array_v<Tobject> && !std::ranges::contiguous_range<Tobject> && std::is_trivially_copyable_v<Tobject>)
+    auto make_byte_span(Tobject& object)
+    {
+        return byte_span(reinterpret_cast<std::byte*>(&object), sizeof(Tobject));
     }
 
 

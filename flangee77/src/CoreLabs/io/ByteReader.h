@@ -62,7 +62,7 @@ public:
     {
         static_assert(std::is_trivially_copyable_v<T>);
         T value{0};
-        _readable->read(cl7::make_byte_span(&value));
+        _readable->read(cl7::make_byte_span(value));
         return cl7::bits::swap_bytes_unless_endian<source_endian>(value);
     }
 
@@ -75,7 +75,7 @@ public:
     size_t read_scalar(T& value)
     {
         static_assert(std::is_trivially_copyable_v<T>);
-        const auto read = _readable->read(cl7::make_byte_span(&value));
+        const auto read = _readable->read(cl7::make_byte_span(value));
         value = cl7::bits::swap_bytes_unless_endian<source_endian>(value);
         return read;
     }
