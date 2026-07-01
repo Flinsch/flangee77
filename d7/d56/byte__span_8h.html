@@ -271,10 +271,14 @@ requires (std::is_trivially_copyable_v&lt;typename Tcontainer::value_type&gt;)</
 requires (!std::is_reference_v&lt;Telement&gt; &amp;&amp; std::is_trivially_copyable_v&lt;Telement&gt;)</td></tr>
 <tr class="memitem:a3d2cea74548f9358781dcaa8cf8369f9"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a3d2cea74548f9358781dcaa8cf8369f9">cl7::make_byte_span</a> (Telement *array, size_t count)</td></tr>
 <tr class="separator:a3d2cea74548f9358781dcaa8cf8369f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07af663869f065a2bcfeaa75179cbb49" id="r_a07af663869f065a2bcfeaa75179cbb49"><td class="memTemplParams" colspan="2">template&lt;typename Tobject &gt; <br />
-requires (!std::is_reference_v&lt;Tobject&gt; &amp;&amp; std::is_trivially_copyable_v&lt;Tobject&gt;)</td></tr>
-<tr class="memitem:a07af663869f065a2bcfeaa75179cbb49"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a07af663869f065a2bcfeaa75179cbb49">cl7::make_byte_span</a> (Tobject *object)</td></tr>
-<tr class="separator:a07af663869f065a2bcfeaa75179cbb49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9986e83b86a86e74a523cf1de6456957" id="r_a9986e83b86a86e74a523cf1de6456957"><td class="memTemplParams" colspan="2">template&lt;typename Telement , size_t N&gt; <br />
+requires (!std::is_reference_v&lt;Telement&gt; &amp;&amp; std::is_trivially_copyable_v&lt;Telement&gt;)</td></tr>
+<tr class="memitem:a9986e83b86a86e74a523cf1de6456957"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a9986e83b86a86e74a523cf1de6456957">cl7::make_byte_span</a> (const Telement(&amp;array)[N])</td></tr>
+<tr class="separator:a9986e83b86a86e74a523cf1de6456957"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94728c9d284f5a16b3b0f71ed50a5721" id="r_a94728c9d284f5a16b3b0f71ed50a5721"><td class="memTemplParams" colspan="2">template&lt;typename Tobject &gt; <br />
+requires (!std::is_reference_v&lt;Tobject&gt; &amp;&amp; !std::is_pointer_v&lt;Tobject&gt; &amp;&amp; !std::is_array_v&lt;Tobject&gt; &amp;&amp; !std::ranges::contiguous_range&lt;Tobject&gt; &amp;&amp; std::is_trivially_copyable_v&lt;Tobject&gt;)</td></tr>
+<tr class="memitem:a94728c9d284f5a16b3b0f71ed50a5721"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a94728c9d284f5a16b3b0f71ed50a5721">cl7::make_byte_span</a> (Tobject &amp;object)</td></tr>
+<tr class="separator:a94728c9d284f5a16b3b0f71ed50a5721"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
