@@ -83,7 +83,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
      */
     cl7::byte_vector PixelShaderImpl::_compile_impl(cl7::byte_view code_data, const graphics::shaders::CompileOptions& compile_options)
     {
-        const cl7::Version& version = GraphicsSystem::instance().get_rendering_device()->get_capabilities().shaders.max_vertex_shader_profile;
+        const cl7::Version& version = GraphicsSystem::instance().get_rendering_device()->get_capabilities().shaders.max_pixel_shader_profile;
         const cl7::astring entry_point = _cascade_entry_point(compile_options);
 
         graphics::shaders::FileIncludeHandler include_handler;

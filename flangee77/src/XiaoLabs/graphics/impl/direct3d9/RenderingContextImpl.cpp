@@ -3,8 +3,6 @@
 #include "./meshes/VertexBufferImpl.h"
 #include "./meshes/IndexBufferImpl.h"
 
-#include "./textures/Texture2DImpl.h"
-
 #include "./shaders/VertexShaderImpl.h"
 #include "./shaders/PixelShaderImpl.h"
 
@@ -141,7 +139,7 @@ namespace xl7::graphics::impl::direct3d9 {
         };
 
         for (unsigned i = 0; i < get_rendering_device()->get_capabilities().max_concurrent_vertex_stream_count; ++i)
-            _d3d_device->SetStreamSource(0, hardware_states.vertex_buffers[i], 0, 0);
+            _d3d_device->SetStreamSource(i, hardware_states.vertex_buffers[i], 0, 0);
         _d3d_device->SetIndices(hardware_states.index_buffer);
         _d3d_device->SetVertexDeclaration(hardware_states.vertex_declaration);
 
@@ -331,7 +329,7 @@ namespace xl7::graphics::impl::direct3d9 {
             IDirect3DVertexBuffer9* d3d_vertex_buffer;
             unsigned element_stride;
             if (vertex_buffer) {
-                vertex_buffer_binding.stream_count = stream_index = stream_index + 1;
+                vertex_buffer_binding.stream_count = stream_index + 1;
                 vertex_buffer_binding.vertex_buffer_ids[stream_index] = vertex_buffer->get_id();
                 d3d_vertex_buffer = vertex_buffer->get_raw_d3d_vertex_buffer();
                 element_stride = vertex_buffer->get_element_stride();
