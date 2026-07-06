@@ -9,7 +9,7 @@ var searchData=
   ['address_5fw_6',['address_w',['../d4/d56/structxl7_1_1graphics_1_1states_1_1SamplerStateDesc.html#aa4536c0d366cf4b1a046adf1c1762421',1,'xl7::graphics::states::SamplerStateDesc']]],
   ['advance_5fwidth_7',['advance_width',['../d3/d6c/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph.html#ae6d452d4fad84ff138e8df339a04b5db',1,'fl7::fonts::detail::ttf::RawGlyph::advance_width'],['../df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric.html#aa250c72c60625222cd6f11037ddb8252',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::GlyphMetric::advance_width'],['../d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html#ad25c58ee79d88cfab0c2631549c6ed3c',1,'fl7::fonts::GlyphMetrics::advance_width']]],
   ['advance_5fwidth_5fmax_8',['advance_width_max',['../d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html#ad0c63afc99df2f550a22a74798c793be',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::TrueTypeFontMetric']]],
-  ['aliases_9',['aliases',['../df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html#a93c89b261d11965453de06facb283753',1,'xl7::DriverResolver::DriverEntry::aliases'],['../d6/d6b/structxl7_1_1BackendRegistry_1_1RegistryEntry.html#abbc47cbf3c38c8a241dacadb4d847312',1,'xl7::BackendRegistry::RegistryEntry::aliases']]],
+  ['aliases_9',['aliases',['../d6/d6b/structxl7_1_1BackendRegistry_1_1RegistryEntry.html#abbc47cbf3c38c8a241dacadb4d847312',1,'xl7::BackendRegistry::RegistryEntry::aliases'],['../df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html#a93c89b261d11965453de06facb283753',1,'xl7::DriverResolver::DriverEntry::aliases']]],
   ['allow_5fflip_10',['allow_flip',['../d3/d71/structal7_1_1packing_1_1RectOptions.html#a49ee35e9fb47b945b5484f333973b85d',1,'al7::packing::RectOptions']]],
   ['allow_5fnesting_11',['allow_nesting',['../d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html#ac75bad3071a2fdabad260547e96eb590',1,'dl7::syntax::matchers::BlockCommentMatcher']]],
   ['allow_5fsingle_5fquotes_12',['allow_single_quotes',['../d9/db3/structdl7_1_1ini_1_1Format.html#acf328e2b7e8dd35683953cbd6f6fcc7b',1,'dl7::ini::Format::allow_single_quotes'],['../df/d52/structdl7_1_1json_1_1Format.html#a0be86fe44d6aff88749ec868ff1e2dbf',1,'dl7::json::Format::allow_single_quotes']]],
@@ -19,9 +19,10 @@ var searchData=
   ['ascender_16',['ascender',['../d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html#a52eeb8f285719118e975051901a50b54',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::TrueTypeFontMetric']]],
   ['ascent_17',['ascent',['../df/d82/structfl7_1_1fonts_1_1FontMetrics.html#adbb1f47f7a3948af3b8b38f56ae71381',1,'fl7::fonts::FontMetrics']]],
   ['assertions_18',['assertions',['../de/d12/structtl7_1_1Stats.html#a855fa55d101adcdefde55c431ba18ab1',1,'tl7::Stats']]],
-  ['available_5fphysical_5fmemory_19',['available_physical_memory',['../d2/dea/structcl7_1_1platform_1_1memory_1_1MemoryStatus.html#a4c6307868bd7a74d7bd8926340626109',1,'cl7::platform::memory::MemoryStatus']]],
-  ['average_5fwidth_20',['average_width',['../df/d82/structfl7_1_1fonts_1_1FontMetrics.html#ae7cc37071a6249cc67ee65542f975990',1,'fl7::fonts::FontMetrics']]],
-  ['avg_5fchar_5fwidth_21',['avg_char_width',['../d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html#a646a4dde7deb37b8fb508fa2960b3ce4',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::OpenTypeFontMetric']]],
-  ['avg_5fpct_22',['avg_pct',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a4e78bb0152f00bcbe2f76570167d85b5',1,'cl7::profiling::Sample']]],
-  ['avg_5fusecs_23',['avg_usecs',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a198648d094bcd71fc79dea245d00689b',1,'cl7::profiling::Sample']]]
+  ['atlas_5fsize_19',['atlas_size',['../d2/d0b/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1Config.html#a4b18e77c1a51763b716b4de3c905e589',1,'fl7::fonts::render::AbstractTextureAtlasBasedRenderer::Config']]],
+  ['available_5fphysical_5fmemory_20',['available_physical_memory',['../d2/dea/structcl7_1_1platform_1_1memory_1_1MemoryStatus.html#a4c6307868bd7a74d7bd8926340626109',1,'cl7::platform::memory::MemoryStatus']]],
+  ['average_5fwidth_21',['average_width',['../df/d82/structfl7_1_1fonts_1_1FontMetrics.html#ae7cc37071a6249cc67ee65542f975990',1,'fl7::fonts::FontMetrics']]],
+  ['avg_5fchar_5fwidth_22',['avg_char_width',['../d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html#a646a4dde7deb37b8fb508fa2960b3ce4',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::OpenTypeFontMetric']]],
+  ['avg_5fpct_23',['avg_pct',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a4e78bb0152f00bcbe2f76570167d85b5',1,'cl7::profiling::Sample']]],
+  ['avg_5fusecs_24',['avg_usecs',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a198648d094bcd71fc79dea245d00689b',1,'cl7::profiling::Sample']]]
 ];

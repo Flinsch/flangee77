@@ -34,7 +34,11 @@ var hierarchy =
       [ "al7::packing::SkylinePacker", "d5/db1/classal7_1_1packing_1_1SkylinePacker.html", null ]
     ] ],
     [ "fl7::fonts::render::AbstractRenderer", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html", [
-      [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html", null ],
+      [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html", [
+        [ "fl7::fonts::render::BitmapRenderer", "df/d57/classfl7_1_1fonts_1_1render_1_1BitmapRenderer.html", null ],
+        [ "fl7::fonts::render::MsdfRenderer", "d5/d89/classfl7_1_1fonts_1_1render_1_1MsdfRenderer.html", null ],
+        [ "fl7::fonts::render::SdfRenderer", "d1/dcc/classfl7_1_1fonts_1_1render_1_1SdfRenderer.html", null ]
+      ] ],
       [ "fl7::fonts::render::TestRenderer", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html", null ]
     ] ],
     [ "xl7::resources::AbstractResourceUpdater", "d9/d70/classxl7_1_1resources_1_1AbstractResourceUpdater.html", [
@@ -77,6 +81,7 @@ var hierarchy =
     [ "cl7::io::AsciiReader", "df/d84/classcl7_1_1io_1_1AsciiReader.html", null ],
     [ "cl7::io::AsciiWriter", "d2/d78/classcl7_1_1io_1_1AsciiWriter.html", null ],
     [ "dl7::syntax::AstNode< Ttype >", "db/dcc/classdl7_1_1syntax_1_1AstNode.html", null ],
+    [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::AtlasLayer", "dd/d5d/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1AtlasLayer.html", null ],
     [ "cl7::profiling::Registry::Attorney", "d6/df3/classcl7_1_1profiling_1_1Registry_1_1Attorney.html", null ],
     [ "xl7::graphics::impl::direct3d11::meshes::IndexBufferImpl::Attorney", "d0/d6a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl_1_1Attorney.html", null ],
     [ "xl7::graphics::impl::direct3d11::meshes::VertexBufferImpl::Attorney", "dc/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl_1_1Attorney.html", null ],
@@ -150,6 +155,7 @@ var hierarchy =
     [ "dl7::xml::Format::CompactOptions", "d5/de1/structdl7_1_1xml_1_1Format_1_1CompactOptions.html", null ],
     [ "xl7::graphics::shaders::CompileOptions", "de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html", null ],
     [ "xl7::graphics::impl::shared::meshes::ComposedVertexLayout", "d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout.html", null ],
+    [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::Config", "d2/d0b/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1Config.html", null ],
     [ "xl7::Config", "d9/dfb/structxl7_1_1Config.html", null ],
     [ "cl7::const_ptr_forward_iterator< Titem, Tptr, Tcontainer >", "d2/d93/classcl7_1_1const__ptr__forward__iterator.html", null ],
     [ "xl7::graphics::shaders::ConstantBufferDeclaration", "dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html", null ],
@@ -192,6 +198,7 @@ var hierarchy =
     [ "xl7::graphics::impl::shared::textures::TextureDiscardPolicy< TExtent, TRegion >::DiscardThresholds", "df/d84/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1DiscardThresholds.html", null ],
     [ "dl7::xml::Document", "de/dd5/classdl7_1_1xml_1_1Document.html", null ],
     [ "dl7::syntax::matchers::DoubleQuotedStringMatcher", "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html", null ],
+    [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::DrawBatch", "df/da0/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1DrawBatch.html", null ],
     [ "xl7::DriverResolver::DriverEntry", "df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html", null ],
     [ "xl7::DriverResolver", "de/d70/structxl7_1_1DriverResolver.html", null ],
     [ "xl7::graphics::meshes::VertexLayout::Element", "d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html", null ],
@@ -254,6 +261,8 @@ var hierarchy =
     ] ],
     [ "xl7::Config::General", "dd/d38/structxl7_1_1Config_1_1General.html", null ],
     [ "fl7::fonts::Glyph", "d2/d26/structfl7_1_1fonts_1_1Glyph.html", null ],
+    [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::GlyphCacheEntry", "d2/d81/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1GlyphCacheEntry.html", null ],
+    [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::GlyphCacheKey", "df/dcd/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1GlyphCacheKey.html", null ],
     [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::GlyphMetric", "df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric.html", null ],
     [ "fl7::fonts::GlyphMetrics", "d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html", null ],
     [ "dl7::syntax::Grammar", "d8/d95/structdl7_1_1syntax_1_1Grammar.html", null ],
@@ -766,6 +775,7 @@ var hierarchy =
     [ "cl7::VersionedId< size_t, 32, ResourceId >", "dc/d7b/classcl7_1_1VersionedId.html", [
       [ "xl7::resources::ResourceId", "db/d1e/classxl7_1_1resources_1_1ResourceId.html", null ]
     ] ],
+    [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::Vertex", "d9/d99/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1Vertex.html", null ],
     [ "xl7::graphics::impl::shared::meshes::VertexBufferBinding", "d8/de4/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding.html", null ],
     [ "xl7::graphics::meshes::VertexBufferDesc", "d9/df5/structxl7_1_1graphics_1_1meshes_1_1VertexBufferDesc.html", null ],
     [ "xl7::graphics::meshes::VertexBufferWrite", "d6/d1a/structxl7_1_1graphics_1_1meshes_1_1VertexBufferWrite.html", null ],

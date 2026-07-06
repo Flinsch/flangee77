@@ -19,11 +19,13 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl =
     [ "_release_d3d_constant_buffers", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#ae8c9288ca3071047b1d96d01ff0a9707", null ],
     [ "_shutdown_impl", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a2e24b786106888af99f851def20f8753", null ],
     [ "get_d3d_feature_level", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a3a272c5c2a0236816214ee4e425aa44a", null ],
+    [ "get_raw_current_d3d_render_target_view", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#ad046021da8ff5106d07b52d354234215", null ],
     [ "get_raw_d3d_device", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a4a5a80546bc24f4d6c632397e66a75ff", null ],
     [ "operator=", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#aa432f289ce5d2900697f188531175a6f", null ],
     [ "operator=", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a7d75e71b89a060c420caacd46c2a0404", null ],
     [ "GraphicsSystemImpl", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a3e5523a1f47c452553e338ec03bc48e6", null ],
     [ "_allow_tearing", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#ad910449a9d169746df1e8d9a6c11632f", null ],
+    [ "_d3d_back_buffer_render_target_views", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#ab4098633603fc0ac599d1b2afa83cfa2", null ],
     [ "_d3d_constant_buffer_registry", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#adc15ceb2ac641d8539ffeed9507e6f2e", null ],
     [ "_d3d_constant_buffers_by_shader_id", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a8f4c74578dc3bcf592fae07f6508a6eb", null ],
     [ "_d3d_depth_stencil_view", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a4d81253e217059344a4a298c1121ae24", null ],
@@ -32,6 +34,5 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl =
     [ "_d3d_immediate_context", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a29144eec66c1379fefcf6f1cf04e7f50", null ],
     [ "_d3d_input_layouts_by_binding", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a817c123cde1ec5685438cb2711f0d9ba", null ],
     [ "_d3d_input_layouts_by_layout", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a72f3ae9240f1bb2a7d7c167d3d41a806", null ],
-    [ "_d3d_render_target_view", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#ab5146209effcfa21d1a75b754bc3558e", null ],
     [ "_dxgi_swap_chain", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a065940059283a319bd0c28491e47880d", null ]
 ];

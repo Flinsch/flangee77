@@ -18,7 +18,7 @@ var searchData=
   ['matrix4x4_2eh_15',['Matrix4x4.h',['../dc/df1/Matrix4x4_8h.html',1,'']]],
   ['maxrectspacker_2ecpp_16',['MaxRectsPacker.cpp',['../d1/d28/MaxRectsPacker_8cpp.html',1,'']]],
   ['maxrectspacker_2eh_17',['MaxRectsPacker.h',['../df/dfc/MaxRectsPacker_8h.html',1,'']]],
-  ['memory_2ecpp_18',['memory.cpp',['../da/d8c/platform_2memory_8cpp.html',1,'(Global Namespace)'],['../dd/dfd/platform_2detail_2windows_2memory_8cpp.html',1,'(Global Namespace)'],['../d5/d1f/platform_2detail_2linux_2memory_8cpp.html',1,'(Global Namespace)'],['../d8/d71/memory_8cpp.html',1,'(Global Namespace)']]],
+  ['memory_2ecpp_18',['memory.cpp',['../d8/d71/memory_8cpp.html',1,'(Global Namespace)'],['../da/d8c/platform_2memory_8cpp.html',1,'(Global Namespace)'],['../d5/d1f/platform_2detail_2linux_2memory_8cpp.html',1,'(Global Namespace)'],['../dd/dfd/platform_2detail_2windows_2memory_8cpp.html',1,'(Global Namespace)']]],
   ['memory_2eh_19',['memory.h',['../d0/db0/platform_2memory_8h.html',1,'(Global Namespace)'],['../de/d49/platform_2detail_2windows_2memory_8h.html',1,'(Global Namespace)'],['../d2/d4c/platform_2detail_2linux_2memory_8h.html',1,'(Global Namespace)'],['../dc/d18/memory_8h.html',1,'(Global Namespace)']]],
   ['merge_5fnearby_2ecpp_20',['merge_nearby.cpp',['../db/d31/merge__nearby_8cpp.html',1,'']]],
   ['merge_5fnearby_2eh_21',['merge_nearby.h',['../de/dbd/merge__nearby_8h.html',1,'']]],
@@ -39,5 +39,7 @@ var searchData=
   ['metrics_2ecpp_36',['metrics.cpp',['../dd/da2/metrics_8cpp.html',1,'']]],
   ['metrics_2eh_37',['metrics.h',['../df/d34/metrics_8h.html',1,'']]],
   ['minmagfiltertype_2eh_38',['MinMagFilterType.h',['../d8/d2f/MinMagFilterType_8h.html',1,'']]],
-  ['mipfiltertype_2eh_39',['MipFilterType.h',['../d6/df0/MipFilterType_8h.html',1,'']]]
+  ['mipfiltertype_2eh_39',['MipFilterType.h',['../d6/df0/MipFilterType_8h.html',1,'']]],
+  ['msdfrenderer_2ecpp_40',['MsdfRenderer.cpp',['../d4/d17/MsdfRenderer_8cpp.html',1,'']]],
+  ['msdfrenderer_2eh_41',['MsdfRenderer.h',['../da/d65/MsdfRenderer_8h.html',1,'']]]
 ];

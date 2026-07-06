@@ -2,7 +2,7 @@ var searchData=
 [
   ['d3dconstantbufferwrapper_0',['D3DConstantBufferWrapper',['../d6/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1D3DConstantBufferWrapper.html',1,'xl7::graphics::impl::direct3d11::shaders']]],
   ['d3dshadercompiler_1',['D3DShaderCompiler',['../d3/db5/classxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1D3DShaderCompiler.html',1,'xl7::graphics::impl::shared::shaders']]],
-  ['d3dshaderreflection_2',['d3dshaderreflection',['../db/d71/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1D3DShaderReflection.html',1,'xl7::graphics::impl::direct3d11::shaders::D3DShaderReflection'],['../d9/db5/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1shaders_1_1D3DShaderReflection.html',1,'xl7::graphics::impl::direct3d9::shaders::D3DShaderReflection']]],
+  ['d3dshaderreflection_2',['d3dshaderreflection',['../d9/db5/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1shaders_1_1D3DShaderReflection.html',1,'xl7::graphics::impl::direct3d9::shaders::D3DShaderReflection'],['../db/d71/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1D3DShaderReflection.html',1,'xl7::graphics::impl::direct3d11::shaders::D3DShaderReflection']]],
   ['datetime_3',['datetime',['../d6/d16/structcl7_1_1system_1_1datetime.html',1,'cl7::system']]],
   ['decoder_4',['Decoder',['../df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html',1,'cl7::text::codec']]],
   ['decoder_3c_20tchar_2c_20defaulterrorhandler_20_3e_5',['Decoder&lt; Tchar, DefaultErrorHandler &gt;',['../df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html',1,'cl7::text::codec']]],
@@ -28,8 +28,9 @@ var searchData=
   ['discardthresholds_25',['discardthresholds',['../db/dba/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1MeshBufferDiscardPolicy_1_1DiscardThresholds.html',1,'xl7::graphics::impl::shared::meshes::MeshBufferDiscardPolicy::DiscardThresholds'],['../df/d84/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1DiscardThresholds.html',1,'xl7::graphics::impl::shared::textures::TextureDiscardPolicy&lt; TExtent, TRegion &gt;::DiscardThresholds']]],
   ['document_26',['Document',['../de/dd5/classdl7_1_1xml_1_1Document.html',1,'dl7::xml']]],
   ['doublequotedstringmatcher_27',['DoubleQuotedStringMatcher',['../db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html',1,'dl7::syntax::matchers']]],
-  ['driverbasedcomponent_28',['DriverBasedComponent',['../d8/d3d/classxl7_1_1DriverBasedComponent.html',1,'xl7']]],
-  ['driverbasedcomponent_3c_20graphicssystem_20_3e_29',['DriverBasedComponent&lt; GraphicsSystem &gt;',['../d8/d3d/classxl7_1_1DriverBasedComponent.html',1,'xl7']]],
-  ['driverentry_30',['DriverEntry',['../df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html',1,'xl7::DriverResolver']]],
-  ['driverresolver_31',['DriverResolver',['../de/d70/structxl7_1_1DriverResolver.html',1,'xl7']]]
+  ['drawbatch_28',['DrawBatch',['../df/da0/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1DrawBatch.html',1,'fl7::fonts::render::AbstractTextureAtlasBasedRenderer']]],
+  ['driverbasedcomponent_29',['DriverBasedComponent',['../d8/d3d/classxl7_1_1DriverBasedComponent.html',1,'xl7']]],
+  ['driverbasedcomponent_3c_20graphicssystem_20_3e_30',['DriverBasedComponent&lt; GraphicsSystem &gt;',['../d8/d3d/classxl7_1_1DriverBasedComponent.html',1,'xl7']]],
+  ['driverentry_31',['DriverEntry',['../df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html',1,'xl7::DriverResolver']]],
+  ['driverresolver_32',['DriverResolver',['../de/d70/structxl7_1_1DriverResolver.html',1,'xl7']]]
 ];

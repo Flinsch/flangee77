@@ -2,7 +2,9 @@ var structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include =
 [
     [ "ParentEntry", "dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html", "dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry" ],
     [ "Include", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html#ade8fc04af892c47a93cd252827f2ef6b", null ],
+    [ "Include", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html#aba33431f6bfcdd6c39dc5639ebd4f100", null ],
     [ "__declspec", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html#a1296f9110bf08dbe8ad24e3ca8f063d0", null ],
+    [ "_include_directories", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html#ae7c53f9f2f0de2f69536cb34519baeef", null ],
     [ "_include_handler", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html#a5da549ca26df5b7cf86447543a5839c9", null ],
     [ "_parent_entries", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html#ad2ac2b012ad95e43f5167eb4d98f24c7", null ],
     [ "_root_directory", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html#a58433ab9e13ffd876c62004b87f6150c", null ],

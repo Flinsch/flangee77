@@ -144,6 +144,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7d75e71b89a060c420caacd46c2a0404"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a5a80546bc24f4d6c632397e66a75ff" id="r_a4a5a80546bc24f4d6c632397e66a75ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d42/direct3d11_2prerequisites_8h.html#a3d166b3e2d4feeefeb91ed2cbbb380b4">ID3D11DeviceN</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a4a5a80546bc24f4d6c632397e66a75ff">get_raw_d3d_device</a> () const</td></tr>
 <tr class="separator:a4a5a80546bc24f4d6c632397e66a75ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad046021da8ff5106d07b52d354234215" id="r_ad046021da8ff5106d07b52d354234215"><td class="memItemLeft" align="right" valign="top">ID3D11RenderTargetView *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#ad046021da8ff5106d07b52d354234215">get_raw_current_d3d_render_target_view</a> ()</td></tr>
+<tr class="separator:ad046021da8ff5106d07b52d354234215"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a272c5c2a0236816214ee4e425aa44a" id="r_a3a272c5c2a0236816214ee4e425aa44a"><td class="memItemLeft" align="right" valign="top">const D3D_FEATURE_LEVEL &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a3a272c5c2a0236816214ee4e425aa44a">get_d3d_feature_level</a> () const</td></tr>
 <tr class="separator:a3a272c5c2a0236816214ee4e425aa44a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedc1bcf8bc196d2c99097755bc0ce3e2" id="r_aedc1bcf8bc196d2c99097755bc0ce3e2"><td class="memItemLeft" align="right" valign="top">ID3D11InputLayout *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#aedc1bcf8bc196d2c99097755bc0ce3e2">_find_d3d_input_layout</a> (const <a class="el" href="../../d8/de4/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding.html">shared::meshes::VertexBufferBinding</a> &amp;vertex_buffer_binding)</td></tr>
@@ -253,8 +255,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a065940059283a319bd0c28491e47880d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29144eec66c1379fefcf6f1cf04e7f50" id="r_a29144eec66c1379fefcf6f1cf04e7f50"><td class="memItemLeft" align="right" valign="top">wrl::ComPtr&lt; <a class="el" href="../../d8/d42/direct3d11_2prerequisites_8h.html#a5e4ecd36372dce7a3eaebde5eafc31b4">ID3D11DeviceContextN</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a29144eec66c1379fefcf6f1cf04e7f50">_d3d_immediate_context</a></td></tr>
 <tr class="separator:a29144eec66c1379fefcf6f1cf04e7f50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5146209effcfa21d1a75b754bc3558e" id="r_ab5146209effcfa21d1a75b754bc3558e"><td class="memItemLeft" align="right" valign="top">wrl::ComPtr&lt; ID3D11RenderTargetView &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#ab5146209effcfa21d1a75b754bc3558e">_d3d_render_target_view</a></td></tr>
-<tr class="separator:ab5146209effcfa21d1a75b754bc3558e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4098633603fc0ac599d1b2afa83cfa2" id="r_ab4098633603fc0ac599d1b2afa83cfa2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; wrl::ComPtr&lt; ID3D11RenderTargetView &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#ab4098633603fc0ac599d1b2afa83cfa2">_d3d_back_buffer_render_target_views</a></td></tr>
+<tr class="separator:ab4098633603fc0ac599d1b2afa83cfa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d81253e217059344a4a298c1121ae24" id="r_a4d81253e217059344a4a298c1121ae24"><td class="memItemLeft" align="right" valign="top">wrl::ComPtr&lt; ID3D11DepthStencilView &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a4d81253e217059344a4a298c1121ae24">_d3d_depth_stencil_view</a></td></tr>
 <tr class="separator:a4d81253e217059344a4a298c1121ae24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a817c123cde1ec5685438cb2711f0d9ba" id="r_a817c123cde1ec5685438cb2711f0d9ba"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; <a class="el" href="../../d8/de4/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding.html">shared::meshes::VertexBufferBinding</a>, wrl::ComPtr&lt; ID3D11InputLayout &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a817c123cde1ec5685438cb2711f0d9ba">_d3d_input_layouts_by_binding</a></td></tr>
@@ -799,6 +801,25 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="ad046021da8ff5106d07b52d354234215" name="ad046021da8ff5106d07b52d354234215"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad046021da8ff5106d07b52d354234215">&#9670;&#160;</a></span>get_raw_current_d3d_render_target_view()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ID3D11RenderTargetView * xl7::graphics::impl::direct3d11::RenderingDeviceImpl::get_raw_current_d3d_render_target_view </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the Direct3D 11 render target view interface for the swap chain's current (writable) back buffer, creating and caching it on first use. Flip-model swap chains rotate which physical back buffer is writable each frame, so this must be re-queried rather than cached across frames. Views are created lazily (rather than upfront for all back buffers) because DXGI disallows querying a flip-model swap chain's buffers at an index other than 0 before the first Present.</p>
+<p>Returns the Direct3D 11 render target view interface for the swap chain's current (writable) back buffer, creating and caching it on first use. </p>
+
+</div>
+</div>
 <a id="a4a5a80546bc24f4d6c632397e66a75ff" name="a4a5a80546bc24f4d6c632397e66a75ff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4a5a80546bc24f4d6c632397e66a75ff">&#9670;&#160;</a></span>get_raw_d3d_device()</h2>
 
@@ -921,6 +942,29 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>The flag specifying whether the display supports tearing, a requirement of variable refresh rate displays. </p>
+
+</div>
+</div>
+<a id="ab4098633603fc0ac599d1b2afa83cfa2" name="ab4098633603fc0ac599d1b2afa83cfa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4098633603fc0ac599d1b2afa83cfa2">&#9670;&#160;</a></span>_d3d_back_buffer_render_target_views</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;wrl::ComPtr&lt;ID3D11RenderTargetView&gt; &gt; xl7::graphics::impl::direct3d11::RenderingDeviceImpl::_d3d_back_buffer_render_target_views</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The Direct3D 11 (standard) render target view interfaces, one per swap chain back buffer. </p>
 
 </div>
 </div>
@@ -1101,29 +1145,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab5146209effcfa21d1a75b754bc3558e" name="ab5146209effcfa21d1a75b754bc3558e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5146209effcfa21d1a75b754bc3558e">&#9670;&#160;</a></span>_d3d_render_target_view</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">wrl::ComPtr&lt;ID3D11RenderTargetView&gt; xl7::graphics::impl::direct3d11::RenderingDeviceImpl::_d3d_render_target_view</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>The Direct3D 11 (standard) render target view interface. </p>
 
 </div>
 </div>

@@ -4,7 +4,7 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl =
     [ "RenderingContextImpl", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#afc0352c9536d62c27fcc713f5378e6b7", null ],
     [ "RenderingContextImpl", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#ae03e43dfb0cc27c1e3b7f2f590eb0f38", null ],
     [ "RenderingContextImpl", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#af61fe32f80fda40e289abcc4c379360d", null ],
-    [ "RenderingContextImpl", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#a43779b02e10840c7bd21accc9cd6370d", null ],
+    [ "RenderingContextImpl", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#a939eda63ae91cfb30d8b4a068b9b9b1d", null ],
     [ "~RenderingContextImpl", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#a5d4bee7953deb140e83b07a531e5421e", null ],
     [ "_begin_scene_impl", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#a5f024ec345bba41916e2ae2d2df6609a", null ],
     [ "_clear_impl", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#a77b5b1dd60640ee9d2d880d6d46c0e33", null ],
@@ -25,7 +25,6 @@ var classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl =
     [ "RenderingDeviceImpl", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#a71660db6f5fb63a3baa73c6d3fa72e82", null ],
     [ "_d3d_depth_stencil_view", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#ae6d0e94106d573d3d9e7432a7e746357", null ],
     [ "_d3d_device_context", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#a02841fce087dda35afef10bd145d2572", null ],
-    [ "_d3d_render_target_view", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#a192e56f5fce609fae03fa5efad399a2b", null ],
     [ "_temp_d3d_constant_buffer_wrappers", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#af5562a9eb6291fbe40292309a45136a0", null ],
     [ "hardware_states", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#a0039f384fac3a5776c06bdc88dba99a9", null ]
 ];

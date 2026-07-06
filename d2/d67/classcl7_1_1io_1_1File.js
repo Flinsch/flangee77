@@ -6,6 +6,8 @@ var classcl7_1_1io_1_1File =
     [ "File", "d2/d67/classcl7_1_1io_1_1File.html#a423127052478293c270166bc62461910", null ],
     [ "~File", "d2/d67/classcl7_1_1io_1_1File.html#a77ecc2709f978fa2748b696b4b56d33f", null ],
     [ "close", "d2/d67/classcl7_1_1io_1_1File.html#a2cb3ad0cefb1fa25f744121919ae7290", null ],
+    [ "get_open_mode", "d2/d67/classcl7_1_1io_1_1File.html#a5b3fdc03bc2aabd5dcc74e2b74759609", null ],
+    [ "get_path", "d2/d67/classcl7_1_1io_1_1File.html#aae4c65dc8793ed0f7bc0a8cc0a4d587e", null ],
     [ "get_read_position", "d2/d67/classcl7_1_1io_1_1File.html#a18bf7fe6c433f1eb19a59dbbc8114db1", null ],
     [ "get_readable_bytes_remaining", "d2/d67/classcl7_1_1io_1_1File.html#a3171111a102fec56ced940358c955e3a", null ],
     [ "get_size", "d2/d67/classcl7_1_1io_1_1File.html#ae049030022c680252530954562214f26", null ],

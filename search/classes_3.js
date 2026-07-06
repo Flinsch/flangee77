@@ -18,7 +18,7 @@ var searchData=
   ['component_3c_20graphicssystem_20_3e_15',['Component&lt; GraphicsSystem &gt;',['../db/d24/classxl7_1_1Component.html',1,'xl7']]],
   ['component_3c_20mainwindow_20_3e_16',['Component&lt; MainWindow &gt;',['../db/d24/classxl7_1_1Component.html',1,'xl7']]],
   ['composedvertexlayout_17',['ComposedVertexLayout',['../d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout.html',1,'xl7::graphics::impl::shared::meshes']]],
-  ['config_18',['Config',['../d9/dfb/structxl7_1_1Config.html',1,'xl7']]],
+  ['config_18',['config',['../d2/d0b/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1Config.html',1,'fl7::fonts::render::AbstractTextureAtlasBasedRenderer::Config'],['../d9/dfb/structxl7_1_1Config.html',1,'xl7::Config']]],
   ['configprovider_19',['ConfigProvider',['../d9/d8f/classxl7_1_1ConfigProvider.html',1,'xl7']]],
   ['const_5fptr_5fforward_5fiterator_20',['const_ptr_forward_iterator',['../d2/d93/classcl7_1_1const__ptr__forward__iterator.html',1,'cl7']]],
   ['constantbuffer_21',['ConstantBuffer',['../da/d6d/classxl7_1_1graphics_1_1shaders_1_1ConstantBuffer.html',1,'xl7::graphics::shaders']]],
