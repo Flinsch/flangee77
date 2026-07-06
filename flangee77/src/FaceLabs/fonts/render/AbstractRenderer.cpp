@@ -65,7 +65,7 @@ namespace fl7::fonts::render {
 
 
 
-    void AbstractRenderer::_draw_codepoints(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style)
+    void AbstractRenderer::_draw_codepoints(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style, ml7::Vector2f position)
     {
         if (!font) return;
         if (!text_style) text_style = &_default_text_style;
@@ -78,7 +78,7 @@ namespace fl7::fonts::render {
             .font_metrics = font_metrics,
             .text_style = *text_style,
             .text_metrics = TextMetrics{codepoints, *font, *text_style},
-            .cursor = {0.0f, 0.0f},
+            .cursor = position,
         };
 
         ScopedBatch auto_batch(_batch_depth > 0 ? nullptr : this);

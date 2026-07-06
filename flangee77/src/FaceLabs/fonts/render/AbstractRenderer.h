@@ -60,10 +60,10 @@ public:
          * Draws text at the specified position.
          */
         template <cl7::any_string_view_like Tstring_view_like>
-        void draw_text(Tstring_view_like&& text, Font* font, const TextStyle* text_style = nullptr)
+        void draw_text(Tstring_view_like&& text, Font* font, const TextStyle* text_style = nullptr, ml7::Vector2f position = {})
         {
             if (_renderer)
-                _renderer->draw_text(std::forward<Tstring_view_like>(text), font, text_style);
+                _renderer->draw_text(std::forward<Tstring_view_like>(text), font, text_style, position);
         }
 
         /**
@@ -140,13 +140,12 @@ public:
 
 
     /**
-     * Draws text at the specified position.
-     *
-     * If no active text rendering batch is open, this function automatically calls
-     * `begin` and `end` around the draw operation.
+     * Draws text with the baseline at the specified position (screen pixel space,
+     * y-down). If no active text rendering batch is open, begin/end are called
+     * automatically.
      */
     template <cl7::any_string_view_like Tstring_view_like>
-    void draw_text(Tstring_view_like&& text, Font* font, const TextStyle* text_style = nullptr)
+    void draw_text(Tstring_view_like&& text, Font* font, const TextStyle* text_style = nullptr, ml7::Vector2f position = {})
     {
         auto sv = cl7::make_string_view(std::forward<Tstring_view_like>(text));
         using codepoint_iterator = cl7::text::codec::codepoint_iterator<cl7::char_type_of_t<Tstring_view_like>>;
@@ -155,9 +154,7 @@ public:
         for (codepoint_iterator it(sv); it != codepoint_iterator(); ++it)
             _codepoints.push_back(*it);
 
-        // Tha actual batching is managed in `_draw_codepoints`.
-
-        _draw_codepoints(_codepoints, font, text_style);
+        _draw_codepoints(_codepoints, font, text_style, position);
     }
 
 
@@ -178,7 +175,7 @@ protected:
 
 
 private:
-    void _draw_codepoints(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style);
+    void _draw_codepoints(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style, ml7::Vector2f position);
 
     void _emit_codepoint(cl7::text::codec::codepoint codepoint, State& state);
 
