@@ -127,8 +127,6 @@ Collaboration diagram for xl7::graphics::images::codecs::png::Reader:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html">BitInfo</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d7f/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1ChunkInfo.html">ChunkInfo</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d50/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Header.html">Header</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html">PaletteEntry</a></td></tr>
@@ -157,20 +155,16 @@ Private Member Functions</h2></td></tr>
 Static Private Member Functions</h2></td></tr>
 <tr class="memitem:a4d069452407a1b06560e7108a0ab07b9" id="r_a4d069452407a1b06560e7108a0ab07b9"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html#a4d069452407a1b06560e7108a0ab07b9">_process_chunks</a> (<a class="el" href="../../d5/ddf/classcl7_1_1io_1_1IReadable.html">cl7::io::IReadable</a> &amp;readable, const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;source_name, <a class="el" href="../../de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html">BitInfo</a> &amp;bit_info, std::vector&lt; <a class="el" href="../../dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html">PaletteEntry</a> &gt; &amp;palette, <a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">cl7::byte_vector</a> &amp;data)</td></tr>
 <tr class="separator:a4d069452407a1b06560e7108a0ab07b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20a0bb6b63857de434ba5bb67869f00c" id="r_a20a0bb6b63857de434ba5bb67869f00c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html#a20a0bb6b63857de434ba5bb67869f00c">_process_IHDR_chunk</a> (<a class="el" href="../../d5/ddf/classcl7_1_1io_1_1IReadable.html">cl7::io::IReadable</a> &amp;readable, const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;source_name, uint32_t chunk_length, <a class="el" href="../../de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html">BitInfo</a> &amp;bit_info)</td></tr>
-<tr class="separator:a20a0bb6b63857de434ba5bb67869f00c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1373b48744cc53f88c4e1d9744d7a2d" id="r_ab1373b48744cc53f88c4e1d9744d7a2d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html#ab1373b48744cc53f88c4e1d9744d7a2d">_process_PLTE_chunk</a> (<a class="el" href="../../d5/ddf/classcl7_1_1io_1_1IReadable.html">cl7::io::IReadable</a> &amp;readable, const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;source_name, uint32_t chunk_length, std::vector&lt; <a class="el" href="../../dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html">PaletteEntry</a> &gt; &amp;palette)</td></tr>
-<tr class="separator:ab1373b48744cc53f88c4e1d9744d7a2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad63307e521457d85874fad4c7197fdee" id="r_ad63307e521457d85874fad4c7197fdee"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html#ad63307e521457d85874fad4c7197fdee">_process_IDAT_chunk</a> (<a class="el" href="../../d5/ddf/classcl7_1_1io_1_1IReadable.html">cl7::io::IReadable</a> &amp;readable, const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;source_name, uint32_t chunk_length, <a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">cl7::byte_vector</a> &amp;data)</td></tr>
-<tr class="separator:ad63307e521457d85874fad4c7197fdee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4d9c7750410b94cb391d5c69310574a" id="r_ac4d9c7750410b94cb391d5c69310574a"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html#ac4d9c7750410b94cb391d5c69310574a">_process_IHDR_chunk</a> (<a class="el" href="../../d5/ddf/classcl7_1_1io_1_1IReadable.html">cl7::io::IReadable</a> &amp;readable, const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;source_name, const <a class="el" href="../../d1/d83/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader_1_1ChunkHeader.html">ChunkReader::ChunkHeader</a> &amp;chunk_header, <a class="el" href="../../de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html">BitInfo</a> &amp;bit_info)</td></tr>
+<tr class="separator:ac4d9c7750410b94cb391d5c69310574a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7db43858c8cc262209f6a8bed63a54f8" id="r_a7db43858c8cc262209f6a8bed63a54f8"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html#a7db43858c8cc262209f6a8bed63a54f8">_process_PLTE_chunk</a> (<a class="el" href="../../d5/ddf/classcl7_1_1io_1_1IReadable.html">cl7::io::IReadable</a> &amp;readable, const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;source_name, const <a class="el" href="../../d1/d83/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader_1_1ChunkHeader.html">ChunkReader::ChunkHeader</a> &amp;chunk_header, std::vector&lt; <a class="el" href="../../dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html">PaletteEntry</a> &gt; &amp;palette)</td></tr>
+<tr class="separator:a7db43858c8cc262209f6a8bed63a54f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a466bf357cbb6cf537d3c2df3642d22f9" id="r_a466bf357cbb6cf537d3c2df3642d22f9"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html#a466bf357cbb6cf537d3c2df3642d22f9">_process_IDAT_chunk</a> (<a class="el" href="../../d5/ddf/classcl7_1_1io_1_1IReadable.html">cl7::io::IReadable</a> &amp;readable, const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;source_name, const <a class="el" href="../../d1/d83/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader_1_1ChunkHeader.html">ChunkReader::ChunkHeader</a> &amp;chunk_header, <a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">cl7::byte_vector</a> &amp;data)</td></tr>
+<tr class="separator:a466bf357cbb6cf537d3c2df3642d22f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6466b6a5d22ff516a71166d33f30ef3" id="r_ad6466b6a5d22ff516a71166d33f30ef3"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html#ad6466b6a5d22ff516a71166d33f30ef3">_decompress</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a392a212050307677351feba78ccf36e6">cl7::byte_view</a> src, <a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">cl7::byte_vector</a> &amp;dst)</td></tr>
 <tr class="separator:ad6466b6a5d22ff516a71166d33f30ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f857d072db517e8c124015c25225d3b" id="r_a0f857d072db517e8c124015c25225d3b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html#a0f857d072db517e8c124015c25225d3b">_reconstruct</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a392a212050307677351feba78ccf36e6">cl7::byte_view</a> src, <a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">cl7::byte_vector</a> &amp;dst, const <a class="el" href="../../de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html">BitInfo</a> &amp;bit_info)</td></tr>
-<tr class="separator:a0f857d072db517e8c124015c25225d3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab91f8cfda2f17a57b3df5a9859e34041" id="r_ab91f8cfda2f17a57b3df5a9859e34041"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html#ab91f8cfda2f17a57b3df5a9859e34041">_decode</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">cl7::byte_vector</a> &amp;&amp;src, <a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">cl7::byte_vector</a> &amp;dst, const <a class="el" href="../../de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html">BitInfo</a> &amp;bit_info)</td></tr>
 <tr class="separator:ab91f8cfda2f17a57b3df5a9859e34041"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0d7f7afa1aa5ef9c7387cd7219d42df" id="r_ad0d7f7afa1aa5ef9c7387cd7219d42df"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html#ad0d7f7afa1aa5ef9c7387cd7219d42df">_paeth</a> (uint8_t a, uint8_t b, uint8_t c)</td></tr>
-<tr class="separator:ad0d7f7afa1aa5ef9c7387cd7219d42df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -336,49 +330,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ad0d7f7afa1aa5ef9c7387cd7219d42df" name="ad0d7f7afa1aa5ef9c7387cd7219d42df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0d7f7afa1aa5ef9c7387cd7219d42df">&#9670;&#160;</a></span>_paeth()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t xl7::graphics::images::codecs::png::Reader::_paeth </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>b</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>c</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>The Paeth filter function computes a simple linear function of the three neighboring pixels (left, above, upper left), then chooses as predictor the neighboring pixel closest to the computed value. </p>
-
-</div>
-</div>
 <a id="a4d069452407a1b06560e7108a0ab07b9" name="a4d069452407a1b06560e7108a0ab07b9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4d069452407a1b06560e7108a0ab07b9">&#9670;&#160;</a></span>_process_chunks()</h2>
 
@@ -434,8 +385,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ad63307e521457d85874fad4c7197fdee" name="ad63307e521457d85874fad4c7197fdee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad63307e521457d85874fad4c7197fdee">&#9670;&#160;</a></span>_process_IDAT_chunk()</h2>
+<a id="a466bf357cbb6cf537d3c2df3642d22f9" name="a466bf357cbb6cf537d3c2df3642d22f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a466bf357cbb6cf537d3c2df3642d22f9">&#9670;&#160;</a></span>_process_IDAT_chunk()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -458,8 +409,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>chunk_length</em>, </td>
+          <td class="paramtype">const <a class="el" href="../../d1/d83/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader_1_1ChunkHeader.html">ChunkReader::ChunkHeader</a> &amp;&#160;</td>
+          <td class="paramname"><em>chunk_header</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -483,8 +434,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a20a0bb6b63857de434ba5bb67869f00c" name="a20a0bb6b63857de434ba5bb67869f00c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20a0bb6b63857de434ba5bb67869f00c">&#9670;&#160;</a></span>_process_IHDR_chunk()</h2>
+<a id="ac4d9c7750410b94cb391d5c69310574a" name="ac4d9c7750410b94cb391d5c69310574a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4d9c7750410b94cb391d5c69310574a">&#9670;&#160;</a></span>_process_IHDR_chunk()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -507,8 +458,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>chunk_length</em>, </td>
+          <td class="paramtype">const <a class="el" href="../../d1/d83/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader_1_1ChunkHeader.html">ChunkReader::ChunkHeader</a> &amp;&#160;</td>
+          <td class="paramname"><em>chunk_header</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -532,8 +483,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ab1373b48744cc53f88c4e1d9744d7a2d" name="ab1373b48744cc53f88c4e1d9744d7a2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1373b48744cc53f88c4e1d9744d7a2d">&#9670;&#160;</a></span>_process_PLTE_chunk()</h2>
+<a id="a7db43858c8cc262209f6a8bed63a54f8" name="a7db43858c8cc262209f6a8bed63a54f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7db43858c8cc262209f6a8bed63a54f8">&#9670;&#160;</a></span>_process_PLTE_chunk()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -556,8 +507,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>chunk_length</em>, </td>
+          <td class="paramtype">const <a class="el" href="../../d1/d83/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader_1_1ChunkHeader.html">ChunkReader::ChunkHeader</a> &amp;&#160;</td>
+          <td class="paramname"><em>chunk_header</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -578,49 +529,6 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Processes the palette chunk, "PLTE". </p>
-
-</div>
-</div>
-<a id="a0f857d072db517e8c124015c25225d3b" name="a0f857d072db517e8c124015c25225d3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f857d072db517e8c124015c25225d3b">&#9670;&#160;</a></span>_reconstruct()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool xl7::graphics::images::codecs::png::Reader::_reconstruct </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d1/d2e/namespacecl7.html#a392a212050307677351feba78ccf36e6">cl7::byte_view</a>&#160;</td>
-          <td class="paramname"><em>src</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d1/d2e/namespacecl7.html#a2780184f886dedd7487698bda1efd38a">cl7::byte_vector</a> &amp;&#160;</td>
-          <td class="paramname"><em>dst</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="../../de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html">BitInfo</a> &amp;&#160;</td>
-          <td class="paramname"><em>bit_info</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Reconstructs the target data from the given filtered source data. </p>
 
 </div>
 </div>

@@ -185,7 +185,7 @@ var searchData=
   ['ml7_3a_3adistance2_182',['distance2',['../db/d4f/namespaceml7_1_1distance2.html',1,'ml7']]],
   ['ml7_3a_3adistance3_183',['distance3',['../df/d0a/namespaceml7_1_1distance3.html',1,'ml7']]],
   ['ml7_3a_3aops_184',['ops',['../d9/d38/namespaceml7_1_1ops.html',1,'ml7']]],
-  ['mode_185',['mode',['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a67d5d089ba177eff26809dee7a05e8e8',1,'dl7::ini::detail::BooleanMatcher::mode'],['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a7fe905665e8a42ae50081048a7aca951',1,'dl7::ini::detail::BooleanMatcher::Mode']]],
+  ['mode_185',['mode',['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a7fe905665e8a42ae50081048a7aca951',1,'dl7::ini::detail::BooleanMatcher::Mode'],['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a67d5d089ba177eff26809dee7a05e8e8',1,'dl7::ini::detail::BooleanMatcher::mode']]],
   ['msdfrenderer_186',['msdfrenderer',['../d5/d89/classfl7_1_1fonts_1_1render_1_1MsdfRenderer.html#ad497e126a37580410464562c704b5788',1,'fl7::fonts::render::MsdfRenderer::MsdfRenderer()'],['../d5/d89/classfl7_1_1fonts_1_1render_1_1MsdfRenderer.html',1,'fl7::fonts::render::MsdfRenderer']]],
   ['msdfrenderer_2ecpp_187',['MsdfRenderer.cpp',['../d4/d17/MsdfRenderer_8cpp.html',1,'']]],
   ['msdfrenderer_2eh_188',['MsdfRenderer.h',['../da/d65/MsdfRenderer_8h.html',1,'']]],

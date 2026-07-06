@@ -6,6 +6,6 @@ var searchData=
   ['windowimpl_2eh_3',['WindowImpl.h',['../d9/d40/WindowImpl_8h.html',1,'']]],
   ['writablememory_2ecpp_4',['WritableMemory.cpp',['../db/db5/WritableMemory_8cpp.html',1,'']]],
   ['writablememory_2eh_5',['WritableMemory.h',['../db/d27/WritableMemory_8h.html',1,'']]],
-  ['writer_2ecpp_6',['writer.cpp',['../d6/d23/netpbm_2Writer_8cpp.html',1,'(Global Namespace)'],['../d4/d7a/targa_2Writer_8cpp.html',1,'(Global Namespace)']]],
-  ['writer_2eh_7',['writer.h',['../da/d30/netpbm_2Writer_8h.html',1,'(Global Namespace)'],['../d4/d1f/targa_2Writer_8h.html',1,'(Global Namespace)']]]
+  ['writer_2ecpp_6',['writer.cpp',['../d6/d23/netpbm_2Writer_8cpp.html',1,'(Global Namespace)'],['../dd/d6b/png_2Writer_8cpp.html',1,'(Global Namespace)'],['../d4/d7a/targa_2Writer_8cpp.html',1,'(Global Namespace)']]],
+  ['writer_2eh_7',['writer.h',['../da/d30/netpbm_2Writer_8h.html',1,'(Global Namespace)'],['../d6/d5c/png_2Writer_8h.html',1,'(Global Namespace)'],['../d4/d1f/targa_2Writer_8h.html',1,'(Global Namespace)']]]
 ];

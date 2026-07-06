@@ -26,7 +26,7 @@ var searchData=
   ['insert_5fdoctype_23',['insert_doctype',['../db/df3/structdl7_1_1xml_1_1Format.html#aa0a22c4b8572d187e51135b5c951f1dd',1,'dl7::xml::Format']]],
   ['instance_5fdata_5fstep_5frate_24',['instance_data_step_rate',['../d9/df5/structxl7_1_1graphics_1_1meshes_1_1VertexBufferDesc.html#ab85ede6d4532db41af383bf02ac75b9e',1,'xl7::graphics::meshes::VertexBufferDesc']]],
   ['instance_5fdata_5fstep_5frates_25',['instance_data_step_rates',['../d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout.html#a3b05ab900f46a68253a4f48fec48ef4f',1,'xl7::graphics::impl::shared::meshes::ComposedVertexLayout']]],
-  ['interlace_5fmethod_26',['interlace_method',['../df/d50/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Header.html#ad7572a5b7740356d3eadb674057a6bef',1,'xl7::graphics::images::codecs::png::Reader::Header']]],
+  ['interlace_5fmethod_26',['interlace_method',['../df/d50/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Header.html#ad7572a5b7740356d3eadb674057a6bef',1,'xl7::graphics::images::codecs::png::Reader::Header::interlace_method'],['../db/dda/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Writer_1_1IhdrData.html#a12e5f5159db4af3e319f09c05111d0d1',1,'xl7::graphics::images::codecs::png::Writer::IhdrData::interlace_method']]],
   ['invalid_5fid_5fvalue_27',['INVALID_ID_VALUE',['../dc/d7b/classcl7_1_1VersionedId.html#a6e445f22f375cc1ad920768ee7be5f8c',1,'cl7::VersionedId']]],
   ['invalid_5findex_28',['invalid_index',['../d3/dd0/structcl7_1_1ordered__map_1_1Lookup.html#ac874e0f1cf2e46d4ddcaf1b0291e749b',1,'cl7::ordered_map::Lookup']]],
   ['is_5fany_5fchar_5fptr_5fv_29',['is_any_char_ptr_v',['../d1/d2e/namespacecl7.html#a2692d22782fb060d609ec40797102af5',1,'cl7']]],

@@ -17,5 +17,7 @@ var searchData=
   ['array_14',['Array',['../d7/d95/classdl7_1_1json_1_1Json.html#aaf8dd1e612a8cbf625b867ec222615caa4410ec34d9e6c1a68100ca0ce033fb17',1,'dl7::json::Json']]],
   ['ascii_15',['ASCII',['../da/d47/namespacecl7_1_1text_1_1codec.html#a7df790f30da6919a71ae7f2aeda9d0ebad2cd8253361a9c732d21ca1d336599cc',1,'cl7::text::codec']]],
   ['assertion_16',['Assertion',['../da/d3a/structtl7_1_1Result.html#abc74a2ae21cd48cdb73884084ad1d692a33d5079ef27d71f50b0b934dd31c1d81',1,'tl7::Result']]],
-  ['attributevalue_17',['AttributeValue',['../d1/db6/classdl7_1_1xml_1_1util_1_1Unescaper.html#a43d619fe7540a8294d6682fb9e1f4d5ea7d442b1c42ed58d30444895a45e31c0f',1,'dl7::xml::util::Unescaper']]]
+  ['attributevalue_17',['AttributeValue',['../d1/db6/classdl7_1_1xml_1_1util_1_1Unescaper.html#a43d619fe7540a8294d6682fb9e1f4d5ea7d442b1c42ed58d30444895a45e31c0f',1,'dl7::xml::util::Unescaper']]],
+  ['auto_18',['Auto',['../db/d78/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1FilterEncoder.html#a365717b5325fa6b33576bc9b35266d57a06b9281e396db002010bde1de57262eb',1,'xl7::graphics::images::codecs::png::FilterEncoder']]],
+  ['average_19',['Average',['../db/d78/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1FilterEncoder.html#a365717b5325fa6b33576bc9b35266d57ab1897515d548a960afe49ecf66a29021',1,'xl7::graphics::images::codecs::png::FilterEncoder']]]
 ];

@@ -142,7 +142,9 @@ var hierarchy =
     [ "cl7::char_type_of< T >", "d8/dd0/structcl7_1_1char__type__of.html", null ],
     [ "cl7::char_type_of< Tstring_char_ptr >", "d7/dec/structcl7_1_1char__type__of_3_01Tstring__char__ptr_01_4.html", null ],
     [ "cl7::char_type_of< Tstring_view_like >", "d1/d85/structcl7_1_1char__type__of_3_01Tstring__view__like_01_4.html", null ],
-    [ "xl7::graphics::images::codecs::png::Reader::ChunkInfo", "d2/d7f/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1ChunkInfo.html", null ],
+    [ "xl7::graphics::images::codecs::png::ChunkReader::ChunkHeader", "d1/d83/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader_1_1ChunkHeader.html", null ],
+    [ "xl7::graphics::images::codecs::png::ChunkReader", "db/d48/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader.html", null ],
+    [ "xl7::graphics::images::codecs::png::ChunkWriter", "d9/d3f/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkWriter.html", null ],
     [ "ml7::ops::clamp< min, max >", "d4/d01/structml7_1_1ops_1_1clamp.html", null ],
     [ "ml7::ops::clamp01", "d0/d5c/structml7_1_1ops_1_1clamp01.html", null ],
     [ "cl7::text::codec::codepoint", "db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html", null ],
@@ -239,6 +241,8 @@ var hierarchy =
       [ "cl7::detail::_is_any_string_span< T >", "de/d1e/structcl7_1_1detail_1_1__is__any__string__span.html", null ],
       [ "cl7::detail::_is_any_string_view< T >", "df/d9b/structcl7_1_1detail_1_1__is__any__string__view.html", null ]
     ] ],
+    [ "xl7::graphics::images::codecs::png::FilterEncoder", "db/d78/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1FilterEncoder.html", null ],
+    [ "xl7::graphics::images::codecs::png::FilterReconstructor", "d3/d17/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1FilterReconstructor.html", null ],
     [ "cl7::text::format::FloatFormatOptions", "d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html", null ],
     [ "dl7::syntax::matchers::FloatingPointLiteralMatcher", "df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher.html", null ],
     [ "fl7::fonts::Font", "d3/d00/classfl7_1_1fonts_1_1Font.html", null ],
@@ -286,6 +290,7 @@ var hierarchy =
     ] ],
     [ "dl7::json::detail::IdentifierMatcher", "d0/d21/structdl7_1_1json_1_1detail_1_1IdentifierMatcher.html", null ],
     [ "dl7::syntax::matchers::IdentifierMatcher", "da/d47/structdl7_1_1syntax_1_1matchers_1_1IdentifierMatcher.html", null ],
+    [ "xl7::graphics::images::codecs::png::Writer::IhdrData", "db/dda/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Writer_1_1IhdrData.html", null ],
     [ "tl7::reporting::IListener", "de/d0b/classtl7_1_1reporting_1_1IListener.html", [
       [ "tl7::Context", "d9/d7e/structtl7_1_1Context.html", null ],
       [ "tl7::reporting::CoutLogger", "db/d02/classtl7_1_1reporting_1_1CoutLogger.html", null ]
@@ -305,6 +310,7 @@ var hierarchy =
     ] ],
     [ "xl7::graphics::images::ImageWriter", "de/d30/classxl7_1_1graphics_1_1images_1_1ImageWriter.html", [
       [ "xl7::graphics::images::codecs::netpbm::Writer", "d0/d4d/classxl7_1_1graphics_1_1images_1_1codecs_1_1netpbm_1_1Writer.html", null ],
+      [ "xl7::graphics::images::codecs::png::Writer", "d6/d2f/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Writer.html", null ],
       [ "xl7::graphics::images::codecs::targa::Writer", "d3/d2d/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Writer.html", null ]
     ] ],
     [ "xl7::graphics::meshes::IMeshFactory", "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory.html", [
@@ -394,8 +400,10 @@ var hierarchy =
     [ "dl7::syntax::Lexer::Options", "dd/d72/structdl7_1_1syntax_1_1Lexer_1_1Options.html", null ],
     [ "dl7::xml::util::Escaper::Options", "d3/d88/structdl7_1_1xml_1_1util_1_1Escaper_1_1Options.html", null ],
     [ "xl7::graphics::images::codecs::netpbm::Writer::Options", "de/d34/structxl7_1_1graphics_1_1images_1_1codecs_1_1netpbm_1_1Writer_1_1Options.html", null ],
+    [ "xl7::graphics::images::codecs::png::Writer::Options", "d4/db1/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Writer_1_1Options.html", null ],
     [ "xl7::graphics::images::codecs::targa::Writer::Options", "d1/d74/structxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Writer_1_1Options.html", null ],
     [ "cl7::ordered_map< Key, T, KeyView, Compare, Allocator >", "dd/d42/classcl7_1_1ordered__map.html", null ],
+    [ "xl7::graphics::images::codecs::png::PaethPredictor", "de/d9d/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1PaethPredictor.html", null ],
     [ "xl7::graphics::images::codecs::png::Reader::PaletteEntry", "dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html", null ],
     [ "xl7::graphics::impl::shared::shaders::Include::ParentEntry", "dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html", null ],
     [ "dl7::syntax::ParseStage", "d9/d44/classdl7_1_1syntax_1_1ParseStage.html", [

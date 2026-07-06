@@ -98,66 +98,78 @@ $(document).ready(function(){initNavTree('d4/d4c/png_2Reader_8h.html','../../');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="../../dc/d4c/ImageReader_8h_source.html">../../ImageReader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d7/d03/ChunkReader_8h_source.html">ChunkReader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/ddd/FilterReconstructor_8h_source.html">FilterReconstructor.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Reader.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/d88/png_2Reader_8h__incl.png" border="0" usemap="#aXiaoLabs_2graphics_2images_2codecs_2png_2Reader_8h" alt=""/></div>
 <map name="aXiaoLabs_2graphics_2images_2codecs_2png_2Reader_8h" id="aXiaoLabs_2graphics_2images_2codecs_2png_2Reader_8h">
-<area shape="rect" title=" " alt="" coords="317,5,509,45"/>
-<area shape="rect" href="../../dc/d4c/ImageReader_8h.html" title=" " alt="" coords="341,93,485,119"/>
-<area shape="poly" title=" " alt="" coords="416,46,416,79,410,79,410,46"/>
-<area shape="rect" href="../../d8/d0f/Image_8h.html" title=" " alt="" coords="372,167,454,192"/>
-<area shape="poly" title=" " alt="" coords="416,119,416,153,410,153,410,119"/>
-<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="172,387,307,412"/>
-<area shape="poly" title=" " alt="" coords="351,121,270,143,176,181,129,206,86,237,47,273,15,315,8,334,12,349,24,362,44,372,98,386,159,393,158,398,97,391,42,377,21,366,7,351,3,333,11,312,43,269,82,233,126,202,173,176,268,138,350,116"/>
-<area shape="rect" href="../../d7/dc5/IReadable_8h.html" title=" " alt="" coords="680,240,858,265"/>
-<area shape="poly" title=" " alt="" coords="443,116,729,232,727,237,441,121"/>
-<area shape="rect" href="../../d5/d68/ImageDesc_8h.html" title=" " alt="" coords="182,240,297,265"/>
-<area shape="poly" title=" " alt="" coords="386,194,282,237,280,232,384,190"/>
-<area shape="rect" href="../../dd/d42/byte__vector_8h.html" title=" " alt="" coords="463,240,638,265"/>
-<area shape="poly" title=" " alt="" coords="436,190,517,231,515,236,434,194"/>
-<area shape="rect" href="../../d9/d58/byte__view_8h.html" title=" " alt="" coords="331,313,495,339"/>
-<area shape="poly" title=" " alt="" coords="416,192,416,300,410,300,410,192"/>
-<area shape="rect" href="../../d6/d04/PixelFormat_8h.html" title=" " alt="" coords="25,313,148,339"/>
-<area shape="poly" title=" " alt="" coords="216,268,125,310,123,305,214,263"/>
-<area shape="rect" href="../../d1/dc5/ChannelOrder_8h.html" title=" " alt="" coords="172,313,307,339"/>
-<area shape="poly" title=" " alt="" coords="242,266,242,300,237,300,237,266"/>
-<area shape="poly" title=" " alt="" coords="112,336,203,378,201,383,110,341"/>
-<area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="602,460,726,485"/>
-<area shape="poly" title=" " alt="" coords="308,409,589,456,588,461,307,415"/>
-<area shape="rect" title=" " alt="" coords="257,460,316,485"/>
-<area shape="poly" title=" " alt="" coords="250,411,273,447,269,450,245,414"/>
-<area shape="rect" title=" " alt="" coords="135,460,232,485"/>
-<area shape="poly" title=" " alt="" coords="233,414,203,451,199,448,228,411"/>
-<area shape="rect" title=" " alt="" coords="386,460,440,485"/>
-<area shape="poly" title=" " alt="" coords="269,410,374,453,372,458,267,414"/>
-<area shape="rect" title=" " alt="" coords="356,533,457,559"/>
-<area shape="poly" title=" " alt="" coords="623,488,462,532,460,527,622,483"/>
-<area shape="rect" title=" " alt="" coords="481,533,550,559"/>
-<area shape="poly" title=" " alt="" coords="641,488,553,530,551,525,639,483"/>
-<area shape="rect" title=" " alt="" coords="574,533,654,559"/>
-<area shape="poly" title=" " alt="" coords="658,487,632,524,628,521,653,484"/>
-<area shape="rect" title=" " alt="" coords="678,533,745,559"/>
-<area shape="poly" title=" " alt="" coords="674,484,699,521,694,524,669,487"/>
-<area shape="rect" title=" " alt="" coords="769,533,846,559"/>
-<area shape="poly" title=" " alt="" coords="688,483,773,525,771,529,686,488"/>
-<area shape="rect" title=" " alt="" coords="870,533,945,559"/>
-<area shape="poly" title=" " alt="" coords="704,483,858,528,857,533,702,488"/>
-<area shape="poly" title=" " alt="" coords="242,339,242,373,237,373,237,339"/>
-<area shape="poly" title=" " alt="" coords="562,264,597,312,626,374,656,446,651,448,621,376,592,315,558,267"/>
-<area shape="rect" title=" " alt="" coords="519,313,582,339"/>
-<area shape="poly" title=" " alt="" coords="553,266,553,300,548,300,548,266"/>
-<area shape="poly" title=" " alt="" coords="416,339,416,446,410,446,410,339"/>
-<area shape="rect" href="../../dd/d26/detail_2bytes_8h.html" title=" " alt="" coords="652,387,771,412"/>
-<area shape="poly" title=" " alt="" coords="462,336,651,381,649,386,460,341"/>
-<area shape="poly" title=" " alt="" coords="706,414,681,450,677,447,702,411"/>
-<area shape="rect" href="../../d2/da2/SeekMode_8h.html" title=" " alt="" coords="847,387,958,412"/>
-<area shape="poly" title=" " alt="" coords="797,263,832,283,866,312,885,342,898,372,893,374,881,344,862,315,829,287,794,268"/>
-<area shape="rect" href="../../d7/d56/byte__span_8h.html" title=" " alt="" coords="686,313,852,339"/>
-<area shape="poly" title=" " alt="" coords="772,266,772,300,766,300,766,266"/>
-<area shape="poly" title=" " alt="" coords="865,415,716,459,715,453,863,409"/>
-<area shape="poly" title=" " alt="" coords="779,338,793,374,794,395,786,414,768,424,737,433,646,449,454,470,453,465,645,443,736,427,766,419,782,410,789,394,788,375,774,340"/>
-<area shape="poly" title=" " alt="" coords="762,341,732,378,728,374,758,337"/>
+<area shape="rect" title=" " alt="" coords="412,5,604,45"/>
+<area shape="rect" href="../../dc/d4c/ImageReader_8h.html" title=" " alt="" coords="310,93,454,119"/>
+<area shape="poly" title=" " alt="" coords="479,48,413,88,410,84,476,43"/>
+<area shape="rect" href="../../d7/d03/ChunkReader_8h.html" title=" " alt="" coords="675,167,795,192"/>
+<area shape="poly" title=" " alt="" coords="538,43,708,157,705,161,535,48"/>
+<area shape="rect" href="../../d2/ddd/FilterReconstructor_8h.html" title=" " alt="" coords="430,167,586,192"/>
+<area shape="poly" title=" " alt="" coords="511,46,511,153,506,153,506,46"/>
+<area shape="rect" href="../../d8/d0f/Image_8h.html" title=" " alt="" coords="304,167,387,192"/>
+<area shape="poly" title=" " alt="" coords="378,120,360,156,355,153,373,118"/>
+<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="170,387,305,412"/>
+<area shape="poly" title=" " alt="" coords="324,121,247,143,203,160,158,181,115,207,75,237,40,273,14,314,8,334,12,350,25,363,45,374,98,388,157,394,157,399,97,393,43,379,22,367,8,353,3,334,9,312,36,270,71,233,112,202,156,176,201,155,245,138,323,116"/>
+<area shape="rect" href="../../d7/dc5/IReadable_8h.html" title=" " alt="" coords="648,240,827,265"/>
+<area shape="poly" title=" " alt="" coords="442,116,518,135,600,164,662,197,713,230,710,234,659,201,598,169,517,141,440,121"/>
+<area shape="rect" href="../../d5/d68/ImageDesc_8h.html" title=" " alt="" coords="122,240,236,265"/>
+<area shape="poly" title=" " alt="" coords="320,194,220,237,218,232,318,190"/>
+<area shape="rect" href="../../dd/d42/byte__vector_8h.html" title=" " alt="" coords="449,240,624,265"/>
+<area shape="poly" title=" " alt="" coords="377,190,493,232,491,237,375,195"/>
+<area shape="rect" href="../../d9/d58/byte__view_8h.html" title=" " alt="" coords="261,240,425,265"/>
+<area shape="poly" title=" " alt="" coords="348,192,347,227,341,226,343,192"/>
+<area shape="rect" href="../../d6/d04/PixelFormat_8h.html" title=" " alt="" coords="183,313,306,339"/>
+<area shape="poly" title=" " alt="" coords="192,264,227,301,223,305,188,267"/>
+<area shape="rect" href="../../d1/dc5/ChannelOrder_8h.html" title=" " alt="" coords="24,313,158,339"/>
+<area shape="poly" title=" " alt="" coords="167,267,118,307,114,302,163,263"/>
+<area shape="poly" title=" " alt="" coords="246,339,243,373,237,373,241,339"/>
+<area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="550,460,674,485"/>
+<area shape="poly" title=" " alt="" coords="298,409,539,455,538,460,297,415"/>
+<area shape="rect" title=" " alt="" coords="222,460,280,485"/>
+<area shape="poly" title=" " alt="" coords="243,412,249,446,244,447,237,413"/>
+<area shape="rect" title=" " alt="" coords="100,460,197,485"/>
+<area shape="poly" title=" " alt="" coords="225,414,175,453,172,449,222,410"/>
+<area shape="rect" title=" " alt="" coords="316,460,370,485"/>
+<area shape="poly" title=" " alt="" coords="256,410,316,450,313,455,253,414"/>
+<area shape="rect" title=" " alt="" coords="304,533,406,559"/>
+<area shape="poly" title=" " alt="" coords="572,488,410,532,409,527,570,483"/>
+<area shape="rect" title=" " alt="" coords="430,533,499,559"/>
+<area shape="poly" title=" " alt="" coords="590,488,502,530,500,525,587,483"/>
+<area shape="rect" title=" " alt="" coords="523,533,603,559"/>
+<area shape="poly" title=" " alt="" coords="606,487,581,524,577,521,602,484"/>
+<area shape="rect" title=" " alt="" coords="627,533,694,559"/>
+<area shape="poly" title=" " alt="" coords="623,484,647,521,643,524,618,487"/>
+<area shape="rect" title=" " alt="" coords="718,533,795,559"/>
+<area shape="poly" title=" " alt="" coords="637,483,722,525,719,529,634,488"/>
+<area shape="rect" title=" " alt="" coords="819,533,894,559"/>
+<area shape="poly" title=" " alt="" coords="652,483,807,528,805,533,651,488"/>
+<area shape="poly" title=" " alt="" coords="116,336,203,378,200,383,113,341"/>
+<area shape="poly" title=" " alt="" coords="622,263,664,281,683,294,699,312,707,331,708,350,704,370,695,389,668,424,640,453,636,449,664,421,690,386,699,368,703,350,702,332,694,315,680,298,662,285,620,268"/>
+<area shape="rect" title=" " alt="" coords="432,313,494,339"/>
+<area shape="poly" title=" " alt="" coords="526,268,487,306,483,302,522,264"/>
+<area shape="poly" title=" " alt="" coords="346,266,346,446,340,446,340,266"/>
+<area shape="rect" href="../../dd/d26/detail_2bytes_8h.html" title=" " alt="" coords="445,387,564,412"/>
+<area shape="poly" title=" " alt="" coords="354,264,383,298,422,337,476,377,473,381,419,341,380,301,350,267"/>
+<area shape="poly" title=" " alt="" coords="523,410,585,450,582,455,520,414"/>
+<area shape="rect" href="../../d2/da2/SeekMode_8h.html" title=" " alt="" coords="760,387,870,412"/>
+<area shape="poly" title=" " alt="" coords="746,265,805,373,800,376,742,267"/>
+<area shape="rect" href="../../d7/d56/byte__span_8h.html" title=" " alt="" coords="519,313,684,339"/>
+<area shape="poly" title=" " alt="" coords="717,268,637,309,635,305,715,263"/>
+<area shape="poly" title=" " alt="" coords="783,415,659,458,657,453,782,410"/>
+<area shape="poly" title=" " alt="" coords="604,339,599,376,591,396,578,414,557,431,532,445,480,463,428,472,383,475,383,470,428,467,479,458,530,440,554,427,574,410,587,394,594,374,599,339"/>
+<area shape="poly" title=" " alt="" coords="588,341,533,380,530,376,585,337"/>
+<area shape="poly" title=" " alt="" coords="704,195,583,238,581,233,702,190"/>
+<area shape="poly" title=" " alt="" coords="738,192,739,226,734,227,733,192"/>
+<area shape="rect" title=" " alt="" coords="851,240,918,265"/>
+<area shape="poly" title=" " alt="" coords="760,190,849,232,847,236,758,194"/>
+<area shape="poly" title=" " alt="" coords="516,191,529,226,524,228,511,193"/>
+<area shape="poly" title=" " alt="" coords="483,194,384,237,381,232,481,190"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -178,8 +190,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html">xl7::graphics::images::codecs::png::Reader</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4f/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Signature.html">xl7::graphics::images::codecs::png::Reader::Signature</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d7f/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1ChunkInfo.html">xl7::graphics::images::codecs::png::Reader::ChunkInfo</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d50/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Header.html">xl7::graphics::images::codecs::png::Reader::Header</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
