@@ -47,14 +47,19 @@ namespace xl7::graphics::impl::direct3d11::meshes {
         buffer_desc.MiscFlags = 0;
         buffer_desc.StructureByteStride = get_element_stride();
 
+        const bool is_dynamic = get_desc().usage >= graphics::meshes::MeshBufferUsage::Dynamic;
+
         D3D11_SUBRESOURCE_DATA subresource_data;
         subresource_data.pSysMem = get_data().data();
         subresource_data.SysMemPitch = 0;
         subresource_data.SysMemSlicePitch = 0;
 
+        // Dynamic buffers: don't pass initial data to CreateBuffer; upload via
+        // Map/Unmap through _flush_data() instead. Some drivers ignore pInitialData
+        // for DYNAMIC buffers, so we always use the Map path for correctness.
         HRESULT hresult = d3d_device->CreateBuffer(
             &buffer_desc,
-            get_dirty_state().is_dirty() ? &subresource_data : nullptr,
+            !is_dynamic && get_dirty_state().is_dirty() ? &subresource_data : nullptr,
             &_d3d_vertex_buffer);
 
         if (FAILED(hresult))
@@ -62,6 +67,9 @@ namespace xl7::graphics::impl::direct3d11::meshes {
             LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CreateBuffer"));
             return false;
         }
+
+        if (is_dynamic)
+            return _flush_data();
 
         return true;
     }

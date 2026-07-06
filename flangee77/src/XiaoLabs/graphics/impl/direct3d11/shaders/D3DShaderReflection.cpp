@@ -168,7 +168,7 @@ namespace xl7::graphics::impl::direct3d11::shaders {
                 continue;
             }
 
-            if (d3d_shader_input_bind_desc.Type != D3D_SIT_SAMPLER)
+            if (d3d_shader_input_bind_desc.Type != D3D_SIT_SAMPLER && d3d_shader_input_bind_desc.Type != D3D_SIT_TEXTURE)
                 continue;
 
             graphics::shaders::TextureSamplerDeclaration texture_sampler_declaration;

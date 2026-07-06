@@ -188,11 +188,13 @@ namespace xl7::graphics::impl::direct3d11::textures {
             box.left = update.region.x;
             box.top = update.region.y;
             box.front = 0;
-            box.right = update.region.width;
-            box.bottom = update.region.height;
+            box.right = update.region.x + update.region.width;
+            box.bottom = update.region.y + update.region.height;
             box.back = 1;
 
-            d3d_device_context->UpdateSubresource1(_d3d_texture.Get(), 0, &box, get_data().data(), get_row_pitch(), 0, copy_flags);
+            const std::byte* src = get_data().data() + static_cast<ptrdiff_t>((update.region.y * get_width() + update.region.x) * get_bytes_per_pixel());
+
+            d3d_device_context->UpdateSubresource1(_d3d_texture.Get(), 0, &box, src, get_row_pitch(), 0, copy_flags);
 
             if (get_desc().mip_levels != 1)
             {

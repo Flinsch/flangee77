@@ -92,7 +92,7 @@ namespace xl7::graphics::impl::direct3d9::textures {
             get_desc().usage);
 
         DWORD flags = 0;
-        if (update.discard)
+        if (update.discard && get_desc().usage >= graphics::textures::TextureUsage::Dynamic)
             flags |= D3DLOCK_DISCARD;
 
         constexpr unsigned MAX_LEVELS = 16; // Just some value big enough.
