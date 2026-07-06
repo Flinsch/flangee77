@@ -4,6 +4,10 @@
 
 #include <FaceLabs/fonts/Font.h>
 
+#include <FaceLabs/fonts/raster/SimpleBitmapRasterizer.h>
+#include <FaceLabs/fonts/render/BitmapRenderer.h>
+#include <FaceLabs/fonts/render/TestRenderer.h>
+
 #include <XiaoLabs/graphics/meshes/VertexBuffer.h>
 #include <XiaoLabs/graphics/meshes/IndexBuffer.h>
 
@@ -93,6 +97,10 @@ private:
     // #############################################################################
 
     std::shared_ptr<fl7::fonts::Font> _font;
+
+    fl7::fonts::raster::SimpleBitmapRasterizer _bitmap_rasterizer;
+    std::unique_ptr<fl7::fonts::render::BitmapRenderer> _bitmap_renderer;
+    std::unique_ptr<fl7::fonts::render::TestRenderer> _test_renderer;
 
     xl7::graphics::meshes::VertexBuffer::Id _vertex_buffer_id;
     xl7::graphics::meshes::IndexBuffer::Id _index_buffer_id;

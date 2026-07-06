@@ -1,7 +1,6 @@
 #include "MyApp.h"
 
     #include <FaceLabs/fonts/detail/ttf/TrueTypeFontLoader.h>
-    #include <FaceLabs/fonts/render/TestRenderer.h>
 
 #include <XiaoLabs/graphics.h>
     #include <XiaoLabs/graphics/images/codecs/targa/Reader.h>
@@ -122,6 +121,7 @@ namespace helloworld {
         cl7::u8string high_level_code = utf8_reader.read_all();
         xl7::graphics::shaders::ShaderCode shader_code{high_level_code};
         xl7::graphics::shaders::CompileOptions compile_options;
+        compile_options.include_directories.push_back(file.get_path());
         xl7::graphics::shaders::ShaderWrite shader_write{.shader_code = &shader_code, .compile_options = &compile_options};
 
         _vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader(u8"My Vertex Shader", vertex_shader_desc, shader_write);
@@ -254,6 +254,9 @@ namespace helloworld {
         //auto font_loader = std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(cl7::platform::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSerif-Regular.ttf");
         _font = std::make_unique<fl7::fonts::Font>(std::move(font_loader));
 
+        _bitmap_renderer = std::make_unique<fl7::fonts::render::BitmapRenderer>(&_bitmap_rasterizer);
+        _test_renderer = std::make_unique<fl7::fonts::render::TestRenderer>();
+
 
 
         LOG_INFO(u8"Please note the following: The quick brown fox jumps over the lazy dog.");
@@ -282,6 +285,9 @@ namespace helloworld {
      */
     bool MyApp::_shutdown_impl()
     {
+        _bitmap_renderer.reset();
+        _test_renderer.reset();
+
         _font.reset();
 
 
@@ -354,7 +360,8 @@ namespace helloworld {
         rendering_context->draw_indexed();
 
 
-        fl7::fonts::render::TestRenderer font_renderer;
+        fl7::fonts::render::AbstractRenderer& font_renderer = *_bitmap_renderer;
+        //fl7::fonts::render::AbstractRenderer& font_renderer = *_test_renderer;
         fl7::fonts::TextStyle text_style;
         text_style.font_size = 16.0f;
         text_style.scaling = {2.5f, 2.5f};
@@ -363,7 +370,7 @@ namespace helloworld {
         text.reserve(text.size() + (0x7e - 0x20) + 1);
         for (cl7::u8char_t c = 0x20; c <= 0x7e; ++c)
             text.append(1, c);
-        font_renderer.draw_text(text, _font.get(), &text_style);
+        font_renderer.draw_text(text, _font.get(), &text_style, {10.0f, text_style.font_size * text_style.scaling.y});
     }
 
     /**
