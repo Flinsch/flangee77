@@ -202,6 +202,41 @@ namespace xl7::graphics::impl::direct3d11 {
         _d3d_constant_buffers_by_shader_id.erase(it);
     }
 
+    /**
+     * Returns the Direct3D 11 render target view interface for the swap
+     * chain's current (writable) back buffer, creating and caching it on
+     * first use.
+     */
+    ID3D11RenderTargetView* RenderingDeviceImpl::get_raw_current_d3d_render_target_view()
+    {
+        const unsigned buffer_index = _dxgi_swap_chain->GetCurrentBackBufferIndex();
+        assert(buffer_index < _d3d_back_buffer_render_target_views.size());
+
+        wrl::ComPtr<ID3D11RenderTargetView>& d3d_render_target_view = _d3d_back_buffer_render_target_views[buffer_index];
+
+        if (!d3d_render_target_view)
+        {
+            wrl::ComPtr<ID3D11Texture2D> d3d_back_buffer;
+            HRESULT hresult = _dxgi_swap_chain->GetBuffer(buffer_index, IID_PPV_ARGS(&d3d_back_buffer));
+            if (FAILED(hresult))
+            {
+                LOG_ERROR(errors::dxgi_result(hresult, u8"IDXGISwapChain::GetBuffer"));
+                LOG_ERROR(u8"One of the DXGI swap chain's back buffers could not be accessed.");
+                return nullptr;
+            }
+
+            hresult = _d3d_device->CreateRenderTargetView(d3d_back_buffer.Get(), nullptr, &d3d_render_target_view);
+            if (FAILED(hresult))
+            {
+                LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CreateRenderTargetView"));
+                LOG_ERROR(u8"One of the Direct3D 11 (standard) render target view interfaces could not be created.");
+                return nullptr;
+            }
+        }
+
+        return d3d_render_target_view.Get();
+    }
+
 
 
     // #############################################################################
@@ -455,24 +490,12 @@ namespace xl7::graphics::impl::direct3d11 {
         capabilities.memory.dedicated_system_memory = dxgi_adapter_desc.DedicatedSystemMemory;
         capabilities.memory.shared_system_memory = dxgi_adapter_desc.SharedSystemMemory;
 
-        // Query the (primary) back buffer in order to ...
-        wrl::ComPtr<ID3D11Texture2D> d3d_back_buffer;
-        hresult = _dxgi_swap_chain->GetBuffer(0, IID_PPV_ARGS(&d3d_back_buffer));
-        if (FAILED(hresult))
-        {
-            LOG_ERROR(errors::dxgi_result(hresult, u8"IDXGISwapChain::GetBuffer"));
-            LOG_ERROR(u8"The DXGI swap chain's primary back buffer could not be accessed.");
-            return false;
-        }
-
-        // ... create the (standard) render target view interface, ...
-        hresult = _d3d_device->CreateRenderTargetView(d3d_back_buffer.Get(), nullptr, &_d3d_render_target_view);
-        if (FAILED(hresult))
-        {
-            LOG_ERROR(errors::d3d11_result(hresult, u8"ID3D11Device::CreateRenderTargetView"));
-            LOG_ERROR(u8"The Direct3D 11 (standard) render target view interface could not be created.");
-            return false;
-        }
+        // Render target views for the swap chain's back buffers are created
+        // lazily, on demand, in get_raw_current_d3d_render_target_view().
+        // DXGI disallows querying a flip-model swap chain's buffers at an
+        // index other than 0 before the first Present. Just reserve the slots.
+        _d3d_back_buffer_render_target_views.clear();
+        _d3d_back_buffer_render_target_views.resize(dxgi_swap_chain_desc.BufferCount);
 
         // ... fill the (standard) depth/stencil buffer description structure ...
         D3D11_TEXTURE2D_DESC d3d_z_buffer_desc = {};
@@ -507,7 +530,12 @@ namespace xl7::graphics::impl::direct3d11 {
         }
 
         // Set the (standard) render targets ...
-        auto* d3d_render_target_view = _d3d_render_target_view.Get();
+        auto* d3d_render_target_view = get_raw_current_d3d_render_target_view();
+        if (!d3d_render_target_view)
+        {
+            LOG_ERROR(u8"The Direct3D 11 (standard) render target view interface could not be created.");
+            return false;
+        }
         _d3d_immediate_context->OMSetRenderTargets(1, &d3d_render_target_view, _d3d_depth_stencil_view.Get());
 
         // ... and the (standard) viewport.
@@ -537,7 +565,7 @@ namespace xl7::graphics::impl::direct3d11 {
         _d3d_input_layouts_by_layout.clear();
 
         // Release the (standard) render target view interfaces.
-        _d3d_render_target_view.Reset();
+        _d3d_back_buffer_render_target_views.clear();
         _d3d_depth_stencil_view.Reset();
 
         // Release the (immediate) device context interface.
@@ -556,7 +584,7 @@ namespace xl7::graphics::impl::direct3d11 {
     RenderingContext* RenderingDeviceImpl::_create_rendering_context_impl(unsigned index)
     {
         if (index == 0)
-            return new RenderingContextImpl(this, index, _d3d_immediate_context, _d3d_render_target_view, _d3d_depth_stencil_view);
+            return new RenderingContextImpl(this, index, _d3d_immediate_context, _d3d_depth_stencil_view);
 
         wrl::ComPtr<ID3D11DeviceContextN> d3d_deferred_context;
         HRESULT hresult = _d3d_device->CreateDeferredContext1(0 , &d3d_deferred_context);
@@ -566,7 +594,7 @@ namespace xl7::graphics::impl::direct3d11 {
             return nullptr;
         }
 
-        return new RenderingContextImpl(this, index, d3d_deferred_context, _d3d_render_target_view, _d3d_depth_stencil_view);
+        return new RenderingContextImpl(this, index, d3d_deferred_context, _d3d_depth_stencil_view);
     }
 
     /**

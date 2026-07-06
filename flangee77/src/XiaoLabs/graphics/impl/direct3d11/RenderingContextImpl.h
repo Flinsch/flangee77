@@ -44,7 +44,7 @@ protected:
     // Construction / Destruction
     // #############################################################################
 
-    RenderingContextImpl(RenderingDeviceImpl* rendering_device, unsigned index, wrl::ComPtr<ID3D11DeviceContextN> d3d_device_context, wrl::ComPtr<ID3D11RenderTargetView> d3d_render_target_view, wrl::ComPtr<ID3D11DepthStencilView> d3d_depth_stencil_view);
+    RenderingContextImpl(RenderingDeviceImpl* rendering_device, unsigned index, wrl::ComPtr<ID3D11DeviceContextN> d3d_device_context, wrl::ComPtr<ID3D11DepthStencilView> d3d_depth_stencil_view);
     ~RenderingContextImpl() override = default;
 
 
@@ -189,11 +189,6 @@ private:
      * The Direct3D 11 device context interface.
      */
     wrl::ComPtr<ID3D11DeviceContextN> _d3d_device_context;
-
-    /**
-     * The Direct3D 11 (standard) render target view interface.
-     */
-    wrl::ComPtr<ID3D11RenderTargetView> _d3d_render_target_view;
 
     /**
      * The Direct3D 11 (standard) depth/stencil view interface.

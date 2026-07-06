@@ -63,10 +63,9 @@ namespace xl7::graphics::impl::direct3d11 {
     // Construction / Destruction
     // #############################################################################
 
-    RenderingContextImpl::RenderingContextImpl(RenderingDeviceImpl* rendering_device, unsigned index, wrl::ComPtr<ID3D11DeviceContextN> d3d_device_context, wrl::ComPtr<ID3D11RenderTargetView> d3d_render_target_view, wrl::ComPtr<ID3D11DepthStencilView> d3d_depth_stencil_view)
+    RenderingContextImpl::RenderingContextImpl(RenderingDeviceImpl* rendering_device, unsigned index, wrl::ComPtr<ID3D11DeviceContextN> d3d_device_context, wrl::ComPtr<ID3D11DepthStencilView> d3d_depth_stencil_view)
         : RenderingContext(rendering_device, index)
         , _d3d_device_context(std::move(d3d_device_context))
-        , _d3d_render_target_view(std::move(d3d_render_target_view))
         , _d3d_depth_stencil_view(std::move(d3d_depth_stencil_view))
     {
         assert(_d3d_device_context);
@@ -230,7 +229,11 @@ namespace xl7::graphics::impl::direct3d11 {
         {
             ID3D11RenderTargetView* d3d_render_target_view;
             if (target_index == 0)
-                d3d_render_target_view = _d3d_render_target_view.Get();
+            {
+                d3d_render_target_view = get_rendering_device_impl<RenderingDeviceImpl>()->get_raw_current_d3d_render_target_view();
+                if (!d3d_render_target_view)
+                    return false;
+            }
             else
                 d3d_render_target_view = nullptr;
 

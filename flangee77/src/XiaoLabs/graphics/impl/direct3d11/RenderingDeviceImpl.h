@@ -10,6 +10,7 @@
 #include "../shared/meshes/ComposedVertexLayout.h"
 
 #include <unordered_map>
+#include <vector>
 
 
 
@@ -34,6 +35,17 @@ public:
      * Returns the Direct3D 11 device interface.
      */
     ID3D11DeviceN* get_raw_d3d_device() const { return _d3d_device.Get(); }
+
+    /**
+     * Returns the Direct3D 11 render target view interface for the swap
+     * chain's current (writable) back buffer, creating and caching it on
+     * first use. Flip-model swap chains rotate which physical back buffer is
+     * writable each frame, so this must be re-queried rather than cached
+     * across frames. Views are created lazily (rather than upfront for all
+     * back buffers) because DXGI disallows querying a flip-model swap
+     * chain's buffers at an index other than 0 before the first Present.
+     */
+    ID3D11RenderTargetView* get_raw_current_d3d_render_target_view();
 
     /**
      * Returns the set of features targeted by the Direct3D 11 device.
@@ -190,9 +202,10 @@ private:
     wrl::ComPtr<ID3D11DeviceContextN> _d3d_immediate_context;
 
     /**
-     * The Direct3D 11 (standard) render target view interface.
+     * The Direct3D 11 (standard) render target view interfaces, one per swap
+     * chain back buffer.
      */
-    wrl::ComPtr<ID3D11RenderTargetView> _d3d_render_target_view;
+    std::vector<wrl::ComPtr<ID3D11RenderTargetView>> _d3d_back_buffer_render_target_views;
 
     /**
      * The Direct3D 11 (standard) depth/stencil view interface.
