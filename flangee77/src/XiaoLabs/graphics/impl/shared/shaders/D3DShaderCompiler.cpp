@@ -34,10 +34,17 @@ namespace xl7::graphics::impl::shared::shaders {
         cl7::u8string _root_directory;
         std::unordered_map<const void*, ParentEntry> _parent_entries;
 
+        const std::vector<cl7::u8string>* _include_directories;
         graphics::shaders::IncludeHandler* _include_handler;
 
         explicit Include(const cl7::u8string& path, graphics::shaders::IncludeHandler* include_handler)
-            : _include_handler(include_handler)
+            : Include(path, nullptr, include_handler)
+        {
+        }
+
+        explicit Include(const cl7::u8string& path, const std::vector<cl7::u8string>* include_directories, graphics::shaders::IncludeHandler* include_handler)
+            : _include_directories(include_directories)
+            , _include_handler(include_handler)
         {
             _root_directory = this->directory(path);
         }
@@ -67,32 +74,53 @@ namespace xl7::graphics::impl::shared::shaders {
             return _include_handler->directory(path);
         }
 
-        cl7::u8string filename(const cl7::u8string& path) const
-        {
-            if (!std::filesystem::is_regular_file(path))
-            {
-                LOG_ERROR(path + u8" does not refer to a regular file.");
-                return {};
-            }
-
-            return _include_handler->filename(path);
-        }
-
     private:
+
+        cl7::u8string _try_path(const cl7::u8string& directory, const cl7::u8string& filename) const
+        {
+            if (directory.empty())
+                return {};
+            cl7::u8string path = this->directory(directory);
+            if (path.empty())
+                return {};
+            if (path.back() != u8'\\' && path.back() != u8'/')
+                path += u8'\\';
+            path += filename;
+            std::ranges::replace(path, u8'/', u8'\\');
+            return std::filesystem::is_regular_file(path) ? path : cl7::u8string{};
+        }
 
         HRESULT _open_impl(D3D_INCLUDE_TYPE include_type, const char* filename, const void* parent_data, const void** data_out, unsigned* bytes_out)
         {
             assert(include_type == D3D_INCLUDE_LOCAL);
 
-            auto it = _parent_entries.find(parent_data);
-            const cl7::u8string& directory = it == _parent_entries.end() ? _root_directory : it->second.directory;
-            cl7::u8string file_path = directory + cl7::u8string(cl7::text::codec::reinterpret_utf8(filename));
-            std::ranges::replace(file_path, u8'/', u8'\\');
+            const cl7::u8string fname = cl7::u8string(cl7::text::codec::reinterpret_utf8(filename));
 
-            if (!std::filesystem::is_regular_file(file_path))
+            auto it = _parent_entries.find(parent_data);
+            const cl7::u8string& primary_dir = it == _parent_entries.end() ? _root_directory : it->second.directory;
+
+            // 1. Try relative to current file (or root directory derived from shader file path).
+            cl7::u8string file_path = _try_path(primary_dir, fname);
+
+            // 2. Try per-compilation include directories (CompileOptions::include_directories).
+            if (file_path.empty() && _include_directories)
             {
-                LOG_ERROR(u8"\"" + this->filename(file_path) + u8"\" does not refer to a regular file.");
-                return {};
+                for (const auto& dir : *_include_directories)
+                {
+                    file_path = _try_path(dir, fname);
+                    if (!file_path.empty())
+                        break;
+                }
+            }
+
+            // 3. Try the "global" include root (IncludeHandler::set_include_root).
+            if (file_path.empty())
+                file_path = _try_path(_include_handler->get_include_root(), fname);
+
+            if (file_path.empty())
+            {
+                LOG_ERROR(u8"\"" + fname + u8"\" could not be found in any include search path.");
+                return E_FAIL;
             }
 
             cl7::u8string code = _include_handler->read_source_code(file_path);
@@ -157,15 +185,22 @@ namespace xl7::graphics::impl::shared::shaders {
             assert(false);
         }
 
-        Include include(include_path, get_include_handler());
+        if (include_path.empty() && compile_options.include_directories.empty() && get_include_handler()->get_include_root().empty())
+            LOG_WARNING(u8"No include search path defined; shader #include directives may fail to resolve.");
+
+        Include include(include_path, &compile_options.include_directories, get_include_handler());
+
+        const bool is_legacy = get_shader_profile().major < 4;
 
         std::vector<D3D_SHADER_MACRO> macros;
-        macros.reserve(compile_options.macro_definitions.size() + 1);
+        macros.reserve(compile_options.macro_definitions.size() + 2);
         for (const auto& [name, definition] : compile_options.macro_definitions)
             macros.push_back({.Name = name.c_str(), .Definition = definition.c_str()});
+        if (is_legacy)
+            macros.push_back({.Name = "D3D9_COMPAT", .Definition = "1"});
         macros.push_back({.Name = nullptr, .Definition = nullptr});
 
-        unsigned flags = D3DCOMPILE_ENABLE_BACKWARDS_COMPATIBILITY;
+        unsigned flags = is_legacy ? D3DCOMPILE_ENABLE_BACKWARDS_COMPATIBILITY : 0;
 #ifdef _DEBUG
         flags |= D3DCOMPILE_DEBUG;
 #else

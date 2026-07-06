@@ -167,6 +167,10 @@ public:
     size_t set_size(size_t size) override;
 
 
+    const cl7::u8string& get_path() const { return _path; }
+    OpenMode get_open_mode() const { return _open_mode; }
+
+
 
 private:
     std::fstream _fstream;

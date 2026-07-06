@@ -17,6 +17,11 @@ public:
 
 
 
+    const cl7::u8string& get_include_root() const { return _include_root; }
+    void set_include_root(cl7::u8string include_root) { _include_root = std::move(include_root); }
+
+
+
     /**
      * Extracts the directory part from the specified shader include path,
      * preserving any trailing delimiter. Returns an empty string if a separation
@@ -36,6 +41,11 @@ public:
      * Returns the read source code on success, an empty string on failure.
      */
     virtual cl7::u8string read_source_code(const cl7::u8string& file_path) = 0;
+
+
+
+private:
+    cl7::u8string _include_root;
 
 }; // class IncludeHandler
 

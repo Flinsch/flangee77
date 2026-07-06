@@ -4,6 +4,7 @@
 #include <CoreLabs/string.h>
 
 #include <map>
+#include <vector>
 
 
 
@@ -18,6 +19,9 @@ struct CompileOptions
 
     /** The macro definitions for (re)compiling shaders. */
     MacroDefinitions macro_definitions;
+
+    /** Additional include search directories, tried in order after the shader's own directory. */
+    std::vector<cl7::u8string> include_directories;
 
     /** The default entry point for (re)compiling vertex shaders. */
     cl7::astring default_vertex_entry_point = "mainVertex";
