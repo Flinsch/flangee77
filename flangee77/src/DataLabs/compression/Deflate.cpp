@@ -53,6 +53,9 @@ namespace dl7::compression {
      */
     bool Deflate::compress(cl7::byte_view src, cl7::byte_vector& dst)
     {
+        if (src.empty())
+            return true;
+
         static constexpr size_t BLOCK_SIZE = 262144;
         auto buffer = std::make_unique_for_overwrite<unsigned char[]>(BLOCK_SIZE);
         constexpr int z_level = Z_DEFAULT_COMPRESSION;
@@ -128,6 +131,9 @@ namespace dl7::compression {
      */
     bool Deflate::decompress(cl7::byte_view src, cl7::byte_vector& dst)
     {
+        if (src.empty())
+            return true;
+
         static constexpr size_t BLOCK_SIZE = 262144;
         auto buffer = std::make_unique_for_overwrite<unsigned char[]>(BLOCK_SIZE);
 
