@@ -2,6 +2,9 @@
 #define XL7_GRAPHICS_IMAGES_CODECS_PNG_READER_H
 #include "../../ImageReader.h"
 
+#include "ChunkReader.h"
+#include "FilterReconstructor.h"
+
 
 
 namespace xl7::graphics::images::codecs::png {
@@ -28,13 +31,6 @@ private:
         char        lf;
     };
     static_assert(sizeof(Signature) == 8);
-
-    struct ChunkInfo
-    {
-        uint32_t length;
-        char type[4];
-    };
-    static_assert(sizeof(ChunkInfo) == 8);
 
 #pragma pack(push, 1)
     struct Header
@@ -94,17 +90,17 @@ private:
     /**
      * Processes the image header chunk, "IHDR".
      */
-    static bool _process_IHDR_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, BitInfo& bit_info);
+    static bool _process_IHDR_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ChunkReader::ChunkHeader& chunk_header, BitInfo& bit_info);
 
     /**
      * Processes the palette chunk, "PLTE".
      */
-    static bool _process_PLTE_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, std::vector<PaletteEntry>& palette);
+    static bool _process_PLTE_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ChunkReader::ChunkHeader& chunk_header, std::vector<PaletteEntry>& palette);
 
     /**
      * Processes the image data chunk, "IDAT".
      */
-    static bool _process_IDAT_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, cl7::byte_vector& data);
+    static bool _process_IDAT_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ChunkReader::ChunkHeader& chunk_header, cl7::byte_vector& data);
 
     /**
      * Decompresses the given source data.
@@ -112,23 +108,11 @@ private:
     static bool _decompress(cl7::byte_view src, cl7::byte_vector& dst);
 
     /**
-     * Reconstructs the target data from the given filtered source data.
-     */
-    static bool _reconstruct(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info);
-
-    /**
      * Decodes the "normalized" data from the given reconstructed data.
      * No decoding/normalization is required for data with a bit depth of 8 bits per
      * channel.
      */
     static bool _decode(cl7::byte_vector&& src, cl7::byte_vector& dst, const BitInfo& bit_info);
-
-    /**
-     * The Paeth filter function computes a simple linear function of the three
-     * neighboring pixels (left, above, upper left), then chooses as predictor the
-     * neighboring pixel closest to the computed value.
-     */
-    static uint8_t _paeth(uint8_t a, uint8_t b, uint8_t c);
 
 }; // class Reader
 

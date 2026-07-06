@@ -10,8 +10,6 @@
 #include <CoreLabs/io/AsciiWriter.h>
 #include <CoreLabs/io/ByteWriter.h>
 
-#include <CoreLabs/text/format.h>
-
 
 
 namespace xl7::graphics::images::codecs::targa {

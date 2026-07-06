@@ -16,7 +16,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  BLAC
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Options writer_options;
         cl7::u8string string;
     } entry;
 
@@ -29,7 +29,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  BLAC
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
             auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
-            container.push_back( { channel_order, netpbm_format, string } );
+            container.push_back( { channel_order, { .format = netpbm_format }, string } );
         }
     }
 
@@ -49,7 +49,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  BLAC
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ entry.writer_options };
         xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -73,7 +73,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAY
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Options writer_options;
         cl7::u8string string;
     } entry;
 
@@ -86,7 +86,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAY
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
             auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
-            container.push_back( { channel_order, netpbm_format, string } );
+            container.push_back( { channel_order, { .format = netpbm_format }, string } );
         }
     }
 
@@ -106,7 +106,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAY
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ entry.writer_options };
         xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -128,7 +128,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAY
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Options writer_options;
         cl7::u8string string;
     } entry;
 
@@ -141,7 +141,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAY
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
             auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
-            container.push_back( { channel_order, netpbm_format, string } );
+            container.push_back( { channel_order, { .format = netpbm_format }, string } );
         }
     }
 
@@ -161,7 +161,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAY
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ entry.writer_options };
         xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -184,7 +184,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB 
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Options writer_options;
         cl7::u8string string;
     } entry;
 
@@ -197,7 +197,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB 
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
             auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
-            container.push_back( { channel_order, netpbm_format, string } );
+            container.push_back( { channel_order, { .format = netpbm_format }, string } );
         }
     }
 
@@ -217,7 +217,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ entry.writer_options };
         xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -239,7 +239,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB_
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Options writer_options;
         cl7::u8string string;
     } entry;
 
@@ -252,7 +252,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB_
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
             auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
-            container.push_back( { channel_order, netpbm_format, string } );
+            container.push_back( { channel_order, { .format = netpbm_format }, string } );
         }
     }
 
@@ -272,7 +272,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB_
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ entry.writer_options };
         xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -296,7 +296,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAY
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Options writer_options;
         cl7::u8string string;
     } entry;
 
@@ -309,7 +309,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAY
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
             auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
-            container.push_back( { channel_order, netpbm_format, string } );
+            container.push_back( { channel_order, { .format = netpbm_format }, string } );
         }
     }
 
@@ -329,7 +329,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAY
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ entry.writer_options };
         xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -351,7 +351,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAY
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Options writer_options;
         cl7::u8string string;
     } entry;
 
@@ -364,7 +364,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAY
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
             auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
-            container.push_back( { channel_order, netpbm_format, string } );
+            container.push_back( { channel_order, { .format = netpbm_format }, string } );
         }
     }
 
@@ -384,7 +384,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  GRAY
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ entry.writer_options };
         xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -407,7 +407,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB 
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Options writer_options;
         cl7::u8string string;
     } entry;
 
@@ -420,7 +420,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB 
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
             auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
-            container.push_back( { channel_order, netpbm_format, string } );
+            container.push_back( { channel_order, { .format = netpbm_format }, string } );
         }
     }
 
@@ -440,7 +440,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ entry.writer_options };
         xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );
@@ -462,7 +462,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB_
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        xl7::graphics::images::codecs::netpbm::Writer::Format netpbm_format;
+        xl7::graphics::images::codecs::netpbm::Writer::Options writer_options;
         cl7::u8string string;
     } entry;
 
@@ -475,7 +475,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB_
             auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
             auto netpbm_format = static_cast<xl7::graphics::images::codecs::netpbm::Writer::Format>( p );
             auto string = u8"P" + cl7::to_string( p ) + u8" " + cl7::to_string( channel_order );
-            container.push_back( { channel_order, netpbm_format, string } );
+            container.push_back( { channel_order, { .format = netpbm_format }, string } );
         }
     }
 
@@ -495,7 +495,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  netpbm:  Writer:  RGB_
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ { .format = entry.netpbm_format } };
+        xl7::graphics::images::codecs::netpbm::Writer netpbm_image_writer{ entry.writer_options };
         xl7::graphics::images::codecs::netpbm::Reader netpbm_image_reader;
 
         bool result = netpbm_image_writer.dump_to_file( image, file_path );

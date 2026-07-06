@@ -46,7 +46,7 @@ namespace xl7::graphics::images::codecs::png {
 
         if (!_decompress(temp, temp2))
             return _log_bad_data_error(source_name, u8"decompression error");
-        if (!_reconstruct(temp2, temp, bit_info))
+        if (!FilterReconstructor::reconstruct(temp2, temp, bit_info.ceil_bytes_per_pixel, bit_info.bytes_per_scanline, bit_info.height))
             return _log_bad_data_error(source_name, u8"reconstruction error");
 
         assert(bit_info.channel_count > 0);
@@ -144,43 +144,36 @@ namespace xl7::graphics::images::codecs::png {
     {
         while (true)
         {
-            ChunkInfo chunk_info;
-            if (readable.read({reinterpret_cast<std::byte*>(&chunk_info), sizeof(ChunkInfo)}) != sizeof(ChunkInfo))
-                return _log_bad_header_error(source_name, u8"unable to read chunk info");
+            ChunkReader::ChunkHeader chunk_header;
+            if (!ChunkReader::read_chunk_header(readable, chunk_header))
+                return _log_bad_header_error(source_name, u8"unable to read chunk header");
 
-            chunk_info.length = cl7::bits::swap_bytes_unless_endian<std::endian::big>(chunk_info.length);
-
-            if (std::strncmp(chunk_info.type, "IHDR", 4) == 0)
+            if (std::strncmp(chunk_header.type, "IHDR", 4) == 0)
             {
-                if (!_process_IHDR_chunk(readable, source_name, chunk_info.length, bit_info))
+                if (!_process_IHDR_chunk(readable, source_name, chunk_header, bit_info))
                     return false;
             }
-            else if (std::strncmp(chunk_info.type, "PLTE", 4) == 0)
+            else if (std::strncmp(chunk_header.type, "PLTE", 4) == 0)
             {
-                if (!_process_PLTE_chunk(readable, source_name, chunk_info.length, palette))
+                if (!_process_PLTE_chunk(readable, source_name, chunk_header, palette))
                     return false;
             }
-            else if (std::strncmp(chunk_info.type, "IDAT", 4) == 0)
+            else if (std::strncmp(chunk_header.type, "IDAT", 4) == 0)
             {
-                if (!_process_IDAT_chunk(readable, source_name, chunk_info.length, data))
+                if (!_process_IDAT_chunk(readable, source_name, chunk_header, data))
                     return false;
             }
-            else if (std::strncmp(chunk_info.type, "IEND", 4) == 0)
+            else if (std::strncmp(chunk_header.type, "IEND", 4) == 0)
             {
+                if (!ChunkReader::skip_chunk_data(readable, chunk_header))
+                    return _log_bad_data_error(source_name, u8"unable to read IEND chunk");
                 break;
             }
             else
             {
-                // This is just a (temporary?) workaround:
-                // we skip <chunk_length> bytes of data.
-                readable.seek_read(chunk_info.length);
+                if (!ChunkReader::skip_chunk_data(readable, chunk_header))
+                    return _log_bad_data_error(source_name, u8"unable to skip unknown chunk");
             }
-
-            uint32_t crc;
-            if (readable.read({reinterpret_cast<std::byte*>(&crc), 4}) != 4)
-                return _log_bad_data_error(source_name, u8"CRC mismatch");
-            // Should we also specifically verify
-            // the content of the check value?
         } // for each chunk
 
         return true;
@@ -189,21 +182,22 @@ namespace xl7::graphics::images::codecs::png {
     /**
      * Processes the image header chunk, "IHDR".
      */
-    bool Reader::_process_IHDR_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, BitInfo& bit_info)
+    bool Reader::_process_IHDR_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ChunkReader::ChunkHeader& chunk_header, BitInfo& bit_info)
     {
-        if (chunk_length != sizeof(Header))
-            return _log_bad_header_error(source_name, u8"bad IHDR chunk length");
-
-        Header header;
-        if (readable.read({reinterpret_cast<std::byte*>(&header), sizeof(Header)}) != sizeof(Header))
+        cl7::byte_vector data;
+        if (!ChunkReader::read_chunk_data(readable, chunk_header, data))
             return _log_bad_data_error(source_name, u8"bad IHDR chunk data");
 
-        header.width = cl7::bits::swap_bytes_unless_endian<std::endian::big>(header.width);
-        header.height = cl7::bits::swap_bytes_unless_endian<std::endian::big>(header.height);
+        if (data.size() != sizeof(Header))
+            return _log_bad_header_error(source_name, u8"bad IHDR chunk length");
 
-        if (header.width == 0 || header.height == 0)
+        const auto& header = *reinterpret_cast<const Header*>(data.data());
+        const uint32_t width = cl7::bits::swap_bytes_unless_endian<std::endian::big>(header.width);
+        const uint32_t height = cl7::bits::swap_bytes_unless_endian<std::endian::big>(header.height);
+
+        if (width == 0 || height == 0)
             return _log_bad_header_error(source_name, u8"valid width and height greater than 0 expected");
-        if (header.width > Image::MAX_SIZE || header.height > Image::MAX_SIZE)
+        if (width > Image::MAX_SIZE || height > Image::MAX_SIZE)
             return _log_bad_header_error(source_name, u8"valid width and height not greater than " + cl7::to_string(Image::MAX_SIZE) + u8" expected");
         if (std::popcount(header.bit_depth) != 1 || header.bit_depth > 16)
             return _log_bad_header_error(source_name, u8"invalid bit depth: " + cl7::to_string(header.bit_depth));
@@ -249,9 +243,9 @@ namespace xl7::graphics::images::codecs::png {
         bit_info.channel_count = CHANNEL_COUNTS_BY_COLOR_TYPE[header.color_type];
         bit_info.bits_per_pixel = header.bit_depth * bit_info.channel_count;
         bit_info.ceil_bytes_per_pixel = (bit_info.bits_per_pixel + 7) / 8;
-        bit_info.bytes_per_scanline = (header.width * bit_info.bits_per_pixel + 7) / 8;
-        bit_info.width = header.width;
-        bit_info.height = header.height;
+        bit_info.bytes_per_scanline = (width * bit_info.bits_per_pixel + 7) / 8;
+        bit_info.width = width;
+        bit_info.height = height;
 
         assert(bit_info.channel_count > 0);
 
@@ -261,18 +255,21 @@ namespace xl7::graphics::images::codecs::png {
     /**
      * Processes the palette chunk, "PLTE".
      */
-    bool Reader::_process_PLTE_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, std::vector<PaletteEntry>& palette)
+    bool Reader::_process_PLTE_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ChunkReader::ChunkHeader& chunk_header, std::vector<PaletteEntry>& palette)
     {
-        if (chunk_length % 3 != 0)
+        cl7::byte_vector data;
+        if (!ChunkReader::read_chunk_data(readable, chunk_header, data))
+            return _log_bad_data_error(source_name, u8"bad PLTE chunk data");
+
+        if (data.size() % 3 != 0)
             return _log_bad_header_error(source_name, u8"bad PLTE chunk length");
 
         static_assert(sizeof(PaletteEntry) == 3);
-        const size_t number_of_entries = chunk_length / 3;
+        const size_t number_of_entries = data.size() / 3;
 
-        palette.resize(number_of_entries);
-
-        if (readable.read({reinterpret_cast<std::byte*>(palette.data()), number_of_entries * 3}) != static_cast<size_t>(chunk_length))
-            return _log_bad_data_error(source_name, u8"bad PLTE chunk data");
+        palette.assign(
+            reinterpret_cast<const PaletteEntry*>(data.data()),
+            reinterpret_cast<const PaletteEntry*>(data.data()) + number_of_entries);
 
         return true;
     }
@@ -280,17 +277,9 @@ namespace xl7::graphics::images::codecs::png {
     /**
      * Processes the image data chunk, "IDAT".
      */
-    bool Reader::_process_IDAT_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, uint32_t chunk_length, cl7::byte_vector& data)
+    bool Reader::_process_IDAT_chunk(cl7::io::IReadable& readable, const cl7::u8string& source_name, const ChunkReader::ChunkHeader& chunk_header, cl7::byte_vector& data)
     {
-        if (chunk_length == 0)
-            return true;
-
-        const size_t data_offset = data.size();
-        const size_t data_length = chunk_length;
-
-        data.resize(data_offset + data_length);
-
-        if (readable.read(cl7::make_byte_span(data.data() + data_offset, data_length)) != data_length)
+        if (!ChunkReader::read_chunk_data(readable, chunk_header, data))
             return _log_bad_data_error(source_name, u8"bad IDAT chunk data");
 
         return true;
@@ -304,99 +293,6 @@ namespace xl7::graphics::images::codecs::png {
         dst.clear();
 
         return dl7::compression::Deflate::decompress(src, dst);
-    }
-
-    /**
-     * Reconstructs the target data from the given filtered source data.
-     */
-    bool Reader::_reconstruct(cl7::byte_view src, cl7::byte_vector& dst, const BitInfo& bit_info)
-    {
-        const auto bytes_per_pixel = static_cast<size_t>(bit_info.ceil_bytes_per_pixel);
-        const auto bytes_per_scanline = static_cast<size_t>(bit_info.bytes_per_scanline);
-        const auto height = static_cast<size_t>(bit_info.height);
-
-        const size_t expected_src_size = height * (bytes_per_scanline + 1);
-        assert(src.size() == expected_src_size);
-        if (src.size() != expected_src_size)
-            return false;
-
-        const size_t dst_size = height * bytes_per_scanline;
-        dst.clear();
-        dst.resize(dst_size);
-
-        size_t si = 0;
-        size_t di = 0;
-
-        for (size_t row = 0; row < height; ++row)
-        {
-            assert(si < src.size());
-
-            // Read and "skip" filter type byte.
-            const auto filter_type = static_cast<uint8_t>(src[si++]);
-
-            assert(si + bytes_per_scanline <= src.size());
-
-            for (size_t col = 0; col < bytes_per_scanline; ++col)
-            {
-                const auto fx = static_cast<uint8_t>(src[si + col]);
-
-                uint8_t a = 0; // sub/left
-                uint8_t b = 0; // up
-                uint8_t c = 0; // average up-left
-
-                if (col >= bytes_per_pixel)
-                    a = static_cast<uint8_t>(dst[di + col - bytes_per_pixel]);
-
-                if (row > 0)
-                    b = static_cast<uint8_t>(dst[di + col - bytes_per_scanline]);
-
-                if (row > 0 && col >= bytes_per_pixel)
-                    c = static_cast<uint8_t>(dst[di + col - bytes_per_scanline - bytes_per_pixel]);
-
-                uint8_t result = fx;
-
-                switch (filter_type)
-                {
-                case 1:
-                    // Filter type "Sub" (1): the Sub filter transmits the difference between each
-                    // byte and the value of the corresponding byte of the prior pixel.
-                    result += a; // = fx + a
-                    break;
-                case 2:
-                    // Filter type "Up" (2): the Up filter transmits the difference between each
-                    // byte and the value of the corresponding byte of the prior scanline.
-                    result += b; // = fx + b
-                    break;
-                case 3:
-                {
-                    // Filter type "Average" (3): the Average filter uses the average of the two
-                    // neighboring pixels (left and above) to predict the value of a pixel.
-                    // The sum shall be performed without overflow (using at least nine-bit arithmetic).
-                    const unsigned sum = static_cast<unsigned>(a) + static_cast<unsigned>(b);
-                    const unsigned average = sum >> 1;
-                    result += static_cast<uint8_t>(average); // = fx + (a+b)/2
-                    break;
-                }
-                case 4:
-                    // Filter type "Paeth" (4): the Paeth filter computes a simple linear function
-                    // of the three neighboring pixels (left, above, upper left), then chooses as
-                    // predictor the neighboring pixel closest to the computed value.
-                    result += _paeth(a, b, c); // = fx + PaethPredictor(a, b, c)
-                    break;
-                default:
-                    // Filter type "None" (0): the scanline is transmitted unmodified.
-                    // Nothing to do here.
-                    break;
-                } // switch filter type
-
-                dst[di + col] = std::byte{result};
-            } // for each byte in scanline
-
-            si += bit_info.bytes_per_scanline;
-            di += bit_info.bytes_per_scanline;
-        } // for each scanline
-
-        return true;
     }
 
     /**
@@ -479,34 +375,6 @@ namespace xl7::graphics::images::codecs::png {
         }
 
         return true;
-    }
-
-    /**
-     * The Paeth filter function computes a simple linear function of the three
-     * neighboring pixels (left, above, upper left), then chooses as predictor the
-     * neighboring pixel closest to the computed value.
-     */
-    uint8_t Reader::_paeth(uint8_t a, uint8_t b, uint8_t c)
-    {
-        const auto A = static_cast<signed>(a);
-        const auto B = static_cast<signed>(b);
-        const auto C = static_cast<signed>(c);
-
-        const signed p = A + B - C;
-        const signed pA = std::abs(p - A);
-        const signed pB = std::abs(p - B);
-        const signed pC = std::abs(p - C);
-
-        uint8_t pr;
-
-        if (pA <= pB && pA <= pC)
-            pr = a;
-        else if (pB <= pC)
-            pr = b;
-        else
-            pr = c;
-
-        return pr;
     }
 
 

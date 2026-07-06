@@ -87,7 +87,10 @@ target_sources(flangee77-tests
     XiaoLabs/graphics/images/ImageResizer.cpp
     XiaoLabs/graphics/images/codecs/netpbm/Reader.cpp
     XiaoLabs/graphics/images/codecs/netpbm/Writer.cpp
+    XiaoLabs/graphics/images/codecs/png/FilterReconstructor.cpp
+    XiaoLabs/graphics/images/codecs/png/PaethPredictor.cpp
     XiaoLabs/graphics/images/codecs/png/Reader.cpp
+    XiaoLabs/graphics/images/codecs/png/Writer.cpp
     XiaoLabs/graphics/images/codecs/targa/codec.cpp
     XiaoLabs/graphics/images/codecs/targa/Reader.cpp
     XiaoLabs/graphics/images/codecs/targa/Writer.cpp

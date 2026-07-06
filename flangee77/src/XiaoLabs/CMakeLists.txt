@@ -27,7 +27,13 @@ target_sources(flangee77
     graphics/images/ImageWriter.cpp
     graphics/images/codecs/netpbm/Reader.cpp
     graphics/images/codecs/netpbm/Writer.cpp
+    graphics/images/codecs/png/ChunkReader.cpp
+    graphics/images/codecs/png/ChunkWriter.cpp
+    graphics/images/codecs/png/FilterEncoder.cpp
+    graphics/images/codecs/png/FilterReconstructor.cpp
+    graphics/images/codecs/png/PaethPredictor.cpp
     graphics/images/codecs/png/Reader.cpp
+    graphics/images/codecs/png/Writer.cpp
     graphics/images/codecs/targa/Reader.cpp
     graphics/images/codecs/targa/RleDecoder.cpp
     graphics/images/codecs/targa/RleEncoder.cpp

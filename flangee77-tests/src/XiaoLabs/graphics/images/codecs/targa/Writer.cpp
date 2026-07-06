@@ -33,8 +33,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Writer:  Grays
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        bool compression;
-        xl7::graphics::images::codecs::targa::Writer::Origin origin;
+        xl7::graphics::images::codecs::targa::Writer::Options writer_options;
         cl7::u8string string;
     } entry;
 
@@ -53,7 +52,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Writer:  Grays
             {
                 auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
                 auto string = cl7::to_string( channel_order ) + u8" " + (compression ? u8"compressed" : u8"uncompressed") + u8" " + cl7::to_string( origin );
-                container.push_back( { channel_order, compression, origin, string } );
+                container.push_back( { channel_order, { .compression = compression, .origin = origin }, string } );
             }
         }
     }
@@ -74,7 +73,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Writer:  Grays
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::codecs::targa::Writer targa_image_writer{ { .compression = entry.compression, .origin = entry.origin } };
+        xl7::graphics::images::codecs::targa::Writer targa_image_writer{ entry.writer_options };
         xl7::graphics::images::codecs::targa::Reader targa_image_reader;
 
         bool result = targa_image_writer.dump_to_file( image, file_path );
@@ -97,8 +96,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Writer:  Pseud
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        bool compression;
-        xl7::graphics::images::codecs::targa::Writer::Origin origin;
+        xl7::graphics::images::codecs::targa::Writer::Options writer_options;
         cl7::u8string string;
     } entry;
 
@@ -117,7 +115,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Writer:  Pseud
             {
                 auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
                 auto string = cl7::to_string( channel_order ) + u8" " + (compression ? u8"compressed" : u8"uncompressed") + u8" " + cl7::to_string( origin );
-                container.push_back( { channel_order, compression, origin, string } );
+                container.push_back( { channel_order, { .compression = compression, .origin = origin }, string } );
             }
         }
     }
@@ -138,7 +136,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Writer:  Pseud
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::codecs::targa::Writer targa_image_writer{ { .compression = entry.compression, .origin = entry.origin } };
+        xl7::graphics::images::codecs::targa::Writer targa_image_writer{ entry.writer_options };
         xl7::graphics::images::codecs::targa::Reader targa_image_reader;
 
         bool result = targa_image_writer.dump_to_file( image, file_path );
@@ -160,8 +158,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Writer:  Pseud
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        bool compression;
-        xl7::graphics::images::codecs::targa::Writer::Origin origin;
+        xl7::graphics::images::codecs::targa::Writer::Options writer_options;
         cl7::u8string string;
     } entry;
 
@@ -180,7 +177,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Writer:  Pseud
             {
                 auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
                 auto string = cl7::to_string( channel_order ) + u8" " + (compression ? u8"compressed" : u8"uncompressed") + u8" " + cl7::to_string( origin );
-                container.push_back( { channel_order, compression, origin, string } );
+                container.push_back( { channel_order, { .compression = compression, .origin = origin }, string } );
             }
         }
     }
@@ -201,7 +198,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Writer:  Pseud
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::codecs::targa::Writer targa_image_writer{ { .compression = entry.compression, .origin = entry.origin } };
+        xl7::graphics::images::codecs::targa::Writer targa_image_writer{ entry.writer_options };
         xl7::graphics::images::codecs::targa::Reader targa_image_reader;
 
         bool result = targa_image_writer.dump_to_file( image, file_path );
@@ -224,8 +221,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Writer:  Truec
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        bool compression;
-        xl7::graphics::images::codecs::targa::Writer::Origin origin;
+        xl7::graphics::images::codecs::targa::Writer::Options writer_options;
         cl7::u8string string;
     } entry;
 
@@ -244,7 +240,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Writer:  Truec
             {
                 auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
                 auto string = cl7::to_string( channel_order ) + u8" " + (compression ? u8"compressed" : u8"uncompressed") + u8" " + cl7::to_string( origin );
-                container.push_back( { channel_order, compression, origin, string } );
+                container.push_back( { channel_order, { .compression = compression, .origin = origin }, string } );
             }
         }
     }
@@ -265,7 +261,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Writer:  Truec
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::codecs::targa::Writer targa_image_writer{ { .compression = entry.compression, .origin = entry.origin } };
+        xl7::graphics::images::codecs::targa::Writer targa_image_writer{ entry.writer_options };
         xl7::graphics::images::codecs::targa::Reader targa_image_reader;
 
         bool result = targa_image_writer.dump_to_file( image, file_path );
@@ -287,8 +283,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Writer:  Truec
     struct Entry
     {
         xl7::graphics::ChannelOrder channel_order;
-        bool compression;
-        xl7::graphics::images::codecs::targa::Writer::Origin origin;
+        xl7::graphics::images::codecs::targa::Writer::Options writer_options;
         cl7::u8string string;
     } entry;
 
@@ -307,7 +302,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Writer:  Truec
             {
                 auto channel_order = static_cast<xl7::graphics::ChannelOrder>( k );
                 auto string = cl7::to_string( channel_order ) + u8" " + (compression ? u8"compressed" : u8"uncompressed") + u8" " + cl7::to_string( origin );
-                container.push_back( { channel_order, compression, origin, string } );
+                container.push_back( { channel_order, { .compression = compression, .origin = origin }, string } );
             }
         }
     }
@@ -328,7 +323,7 @@ TESTLABS_CASE( u8"XiaoLabs:  graphics:  images:  codecs:  targa:  Writer:  Truec
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"dump_to_file", container, entry, entry.string )
     {
         xl7::graphics::images::Image image = xl7::graphics::images::ImageConverter::convert_image( source_image, source_desc.pixel_format, entry.channel_order );
-        xl7::graphics::images::codecs::targa::Writer targa_image_writer{ { .compression = entry.compression, .origin = entry.origin } };
+        xl7::graphics::images::codecs::targa::Writer targa_image_writer{ entry.writer_options };
         xl7::graphics::images::codecs::targa::Reader targa_image_reader;
 
         bool result = targa_image_writer.dump_to_file( image, file_path );
