@@ -1,4 +1,6 @@
 
+#include "../include/compat.hlsli"
+
 cbuffer VertexConstants
 {
     float2 ScaledFontSize;
@@ -18,14 +20,12 @@ struct VertexIn
 
 struct VertexOut
 {
-    float4 pos : POSITION;
+    float4 pos : VS_POSITION;
 };
-
-#define PixelIn VertexOut
 
 struct PixelOut
 {
-    float4 color : COLOR0;
+    float4 color : PS_TARGET0;
 };
 
 VertexOut mainVertex(VertexIn i)
@@ -44,7 +44,7 @@ VertexOut mainVertex(VertexIn i)
     return o;
 }
 
-PixelOut mainPixel(PixelIn i)
+PixelOut mainPixel()
 {
     PixelOut o;
 

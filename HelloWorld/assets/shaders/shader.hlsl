@@ -1,4 +1,6 @@
 
+#include "include/compat.hlsli"
+
 cbuffer MyVertexConstants
 {
     float3 VertexOffset;
@@ -9,7 +11,7 @@ cbuffer MyPixelConstants
     float4 PixelBaseColor;
 };
 
-sampler2D TextureSampler;
+DECLARE_TEXTURE2D(TextureMap, TextureSampler, 0, 0);
 
 struct VertexIn
 {
@@ -20,16 +22,21 @@ struct VertexIn
 
 struct VertexOut
 {
-    float4 pos : POSITION;
+    float4 pos : VS_POSITION;
     float4 color : COLOR;
     float2 tex : TEXCOORD0;
 };
 
-#define PixelIn VertexOut
+struct PixelIn
+{
+    float4 pos : VS_POSITION;
+    float4 color : COLOR;
+    float2 tex : TEXCOORD0;
+};
 
 struct PixelOut
 {
-    float4 color : COLOR0;
+    float4 color : PS_TARGET0;
 };
 
 VertexOut mainVertex(VertexIn i)
@@ -47,7 +54,7 @@ PixelOut mainPixel(PixelIn i)
 {
     PixelOut o;
 
-    o.color = i.color * PixelBaseColor * tex2D(TextureSampler, i.tex);
+    o.color = i.color * PixelBaseColor * SAMPLE_TEX2D(TextureMap, TextureSampler, i.tex);
 
     return o;
 }
