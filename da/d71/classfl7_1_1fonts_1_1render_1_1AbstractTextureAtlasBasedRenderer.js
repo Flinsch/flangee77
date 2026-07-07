@@ -31,6 +31,7 @@ var classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer =
     [ "_sampler_state_id", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a8721517d053784b22ac58563ad32b143", null ],
     [ "_vertex_buffer_capacity", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a50b1403fb80305f29dbe2774c9e8ec22", null ],
     [ "_vertex_buffer_id", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a707a73def7c30392584ef25291e4b45e", null ],
+    [ "_vertex_layout", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a3570c908b26b5b9d297b11cfe61a4bee", null ],
     [ "_vertex_shader_id", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#abeb1aaf0b7f3ad679dd7f664c6e614ac", null ],
     [ "_vertices", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a47f76e8c00743f1c3f5ef57924f0cb31", null ]
 ];
