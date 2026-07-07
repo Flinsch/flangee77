@@ -169,7 +169,7 @@ namespace fl7::fonts::render {
         const float right  = left + static_cast<float>(entry->image_width);
         const float bottom = top  + static_cast<float>(entry->image_height);
 
-        const AtlasLayer& layer = _atlas_layers.at(font_size);
+        const AtlasLayer& layer = *entry->layer;
         const float iw = 1.0f / static_cast<float>(layer.width);
         const float ih = 1.0f / static_cast<float>(layer.height);
         const float u0 = static_cast<float>(entry->rect.position.x) * iw;
@@ -198,11 +198,11 @@ namespace fl7::fonts::render {
 
     AbstractTextureAtlasBasedRenderer::AtlasLayer& AbstractTextureAtlasBasedRenderer::_get_or_create_atlas_layer(float font_size)
     {
-        auto it = _atlas_layers.find(font_size);
-        if (it != _atlas_layers.end())
-            return it->second;
+        auto [it, inserted] = _atlas_layers.try_emplace(font_size);
+        AtlasLayer& layer = it->second;
+        if (!inserted)
+            return layer;
 
-        AtlasLayer& layer = _atlas_layers[font_size];
         layer.font_size = font_size;
         layer.width  = _config.atlas_size;
         layer.height = _config.atlas_size;
@@ -224,29 +224,36 @@ namespace fl7::fonts::render {
     {
         GlyphCacheKey key{.codepoint = glyph.codepoint.value, .font_size = font_size};
 
-        auto it = _glyph_cache.find(key);
-        if (it != _glyph_cache.end())
+        auto [it, inserted] = _glyph_cache.try_emplace(key);
+        if (!inserted)
             return &it->second;
 
         raster::RasterResult raster_result = _rasterizer->rasterize_glyph(glyph, raster::RasterSizeConfig{.font_size = font_size, .padding = _config.raster_padding});
 
-        const xl7::graphics::images::Image& img = raster_result.glyph_image;
-        if (img.get_width() == 0 || img.get_height() == 0)
+        const xl7::graphics::images::Image& image = raster_result.glyph_image;
+        if (image.get_width() == 0 || image.get_height() == 0)
+        {
+            _glyph_cache.erase(it);
             return nullptr;
+        }
 
         AtlasLayer& layer = _get_or_create_atlas_layer(font_size);
 
-        auto rect_result = layer.packer->insert(al7::packing::Size{img.get_width(), img.get_height()});
+        auto rect_result = layer.packer->insert(al7::packing::Size{image.get_width(), image.get_height()});
         if (!rect_result)
+        {
+            _glyph_cache.erase(it);
             return nullptr; // atlas full; glyph skipped
+        }
 
-        _blit_into_atlas(layer, *rect_result, img);
+        _blit_into_atlas(layer, *rect_result, image);
 
-        GlyphCacheEntry& entry = _glyph_cache[key];
+        GlyphCacheEntry& entry = it->second;
         entry.rect = *rect_result;
         entry.pixel_offset = raster_result.pixel_offset;
-        entry.image_width = img.get_width();
-        entry.image_height = img.get_height();
+        entry.image_width = image.get_width();
+        entry.image_height = image.get_height();
+        entry.layer = &layer;
 
         return &entry;
     }

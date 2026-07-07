@@ -67,6 +67,15 @@ protected:
 
 
 private:
+    struct AtlasLayer
+    {
+        float font_size = 0.0f;
+        unsigned width = 0;
+        unsigned height = 0;
+        std::unique_ptr<al7::packing::AbstractRectPacker> packer;
+        xl7::graphics::textures::Texture2D::Id texture_id = {};
+    };
+
     struct GlyphCacheKey
     {
         cl7::text::codec::codepoint::value_type codepoint;
@@ -80,15 +89,7 @@ private:
         raster::PixelOffset pixel_offset;
         unsigned image_width;
         unsigned image_height;
-    };
-
-    struct AtlasLayer
-    {
-        float font_size = 0.0f;
-        unsigned width = 0;
-        unsigned height = 0;
-        std::unique_ptr<al7::packing::AbstractRectPacker> packer;
-        xl7::graphics::textures::Texture2D::Id texture_id = {};
+        const AtlasLayer* layer = nullptr;
     };
 
     struct Vertex
@@ -96,6 +97,13 @@ private:
         ml7::Vector2f position;
         ml7::Vector2f texcoord;
         xl7::graphics::Color color;
+    };
+
+    struct DrawBatch
+    {
+        float font_size;
+        unsigned first_vertex;
+        unsigned vertex_count;
     };
 
 
@@ -119,13 +127,6 @@ private:
 
     std::map<float, AtlasLayer> _atlas_layers;
     std::map<GlyphCacheKey, GlyphCacheEntry> _glyph_cache;
-
-    struct DrawBatch
-    {
-        float font_size;
-        unsigned first_vertex;
-        unsigned vertex_count;
-    };
 
     std::vector<Vertex> _vertices;
     std::vector<DrawBatch> _batches;
