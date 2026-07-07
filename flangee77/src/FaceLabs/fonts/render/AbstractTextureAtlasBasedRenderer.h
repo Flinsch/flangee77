@@ -17,7 +17,6 @@
 
 #include <MathLabs/Vector2.h>
 
-#include <CoreLabs/byte_vector.h>
 #include <CoreLabs/string.h>
 
 #include <map>
@@ -85,12 +84,10 @@ private:
     struct AtlasLayer
     {
         float font_size = 0.0f;
-        std::unique_ptr<al7::packing::AbstractRectPacker> packer;
-        cl7::byte_vector canvas;
         unsigned width = 0;
         unsigned height = 0;
+        std::unique_ptr<al7::packing::AbstractRectPacker> packer;
         xl7::graphics::textures::Texture2D::Id texture_id = {};
-        bool dirty = true;
     };
 
     struct Vertex
@@ -110,7 +107,6 @@ private:
     AtlasLayer& _get_or_create_atlas_layer(float font_size);
     const GlyphCacheEntry* _get_or_rasterize_glyph(const Glyph& glyph, float font_size);
     void _blit_into_atlas(AtlasLayer& layer, const al7::packing::Rect& rect, const xl7::graphics::images::Image& image);
-    void _upload_atlas_to_gpu(AtlasLayer& layer);
     void _ensure_gpu_resources();
     void _release_gpu_resources();
 

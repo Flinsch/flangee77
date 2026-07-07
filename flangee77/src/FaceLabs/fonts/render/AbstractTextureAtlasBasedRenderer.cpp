@@ -3,7 +3,6 @@
 #include <AlgoLabs/packing/SkylinePacker.h>
 
 #include <XiaoLabs/graphics.h>
-#include <XiaoLabs/graphics/images/ImageDesc.h>
 #include <XiaoLabs/graphics/textures/Texture2DDesc.h>
 #include <XiaoLabs/graphics/textures/Texture2DWrite.h>
 #include <XiaoLabs/graphics/meshes/VertexBufferDesc.h>
@@ -27,7 +26,6 @@
 
 #include <atomic>
 #include <cassert>
-#include <cstring>
 
 
 
@@ -68,13 +66,6 @@ namespace fl7::fonts::render {
     {
         if (_vertices.empty())
             return;
-
-        // Upload any atlas layers that changed since the last flush.
-        for (auto& [font_size, layer] : _atlas_layers)
-        {
-            if (layer.dirty)
-                _upload_atlas_to_gpu(layer);
-        }
 
         auto* rendering_context = xl7::graphics::primary_context();
 
@@ -210,14 +201,14 @@ namespace fl7::fonts::render {
         layer.height = _config.atlas_size;
         layer.packer = std::make_unique<al7::packing::SkylinePacker>(al7::packing::Size{_config.atlas_size, _config.atlas_size});
 
-        xl7::graphics::images::ImageDesc tmp{
+        const xl7::graphics::textures::Texture2DDesc desc{
+            .usage = xl7::graphics::textures::TextureUsage::Default,
             .pixel_format = _rasterizer->get_pixel_format(),
-            .channel_order = _rasterizer->get_channel_order(),
-            .width = 1,
-            .height = 1,
+            .preferred_channel_order = _rasterizer->get_channel_order(),
+            .mip_levels = 1,
+            .extent = {.width = layer.width, .height = layer.height},
         };
-        const unsigned bytes_per_pixel = tmp.determine_bytes_per_pixel();
-        layer.canvas.assign(static_cast<size_t>(_config.atlas_size) * _config.atlas_size * bytes_per_pixel, std::byte{0});
+        layer.texture_id = xl7::graphics::texture_manager()->create_texture_2d(_resource_prefix + u8"Texture " + cl7::to_string(font_size), desc);
 
         return layer;
     }
@@ -255,52 +246,23 @@ namespace fl7::fonts::render {
 
     void AbstractTextureAtlasBasedRenderer::_blit_into_atlas(AtlasLayer& layer, const al7::packing::Rect& rect, const xl7::graphics::images::Image& image)
     {
+        auto* texture = xl7::graphics::texture_manager()->find_resource<xl7::graphics::textures::Texture2D>(layer.texture_id);
+        assert(texture);
+        if (!texture)
+            return;
+
         const unsigned bytes_per_pixel = image.get_desc().determine_bytes_per_pixel();
-        const unsigned src_stride = image.get_width() * bytes_per_pixel;
-        const unsigned dst_stride = layer.width * bytes_per_pixel;
-        const cl7::byte_view src = image.get_data();
 
-        for (unsigned row = 0; row < image.get_height(); ++row)
-        {
-            const size_t src_offset = static_cast<size_t>(row) * src_stride;
-            const size_t dst_offset = static_cast<size_t>(rect.position.y + row) * dst_stride
-                                    + static_cast<size_t>(rect.position.x) * bytes_per_pixel;
-            std::memcpy(
-                layer.canvas.data() + dst_offset,
-                src.data() + src_offset,
-                src_stride);
-        }
-
-        layer.dirty = true;
-    }
-
-    void AbstractTextureAtlasBasedRenderer::_upload_atlas_to_gpu(AtlasLayer& layer)
-    {
-        if (layer.texture_id)
-        {
-            xl7::graphics::texture_manager()->release_resource_and_invalidate(layer.texture_id);
-            layer.texture_id = {};
-        }
-
-        xl7::graphics::images::ImageDesc atlas_desc{
-            .pixel_format = _rasterizer->get_pixel_format(),
-            .channel_order = _rasterizer->get_channel_order(),
-            .width = layer.width,
-            .height = layer.height,
-        };
-
-        auto write = xl7::graphics::textures::Texture2DWrite::from_image_data(atlas_desc, cl7::byte_view(layer.canvas.data(), layer.canvas.size()));
-
-        xl7::graphics::textures::Texture2DDesc desc{
-            .usage = xl7::graphics::textures::TextureUsage::Default,
-            .pixel_format = _rasterizer->get_pixel_format(),
-            .preferred_channel_order = _rasterizer->get_channel_order(),
-            .mip_levels = 1,
-            .extent = {.width = layer.width, .height = layer.height},
-        };
-
-        layer.texture_id = xl7::graphics::texture_manager()->create_texture_2d(_resource_prefix + u8"Texture " + cl7::to_string(layer.font_size), desc, &write);
-        layer.dirty = false;
+        texture->edit().write({
+            .data = image.get_data(),
+            .region = {
+                .x = static_cast<unsigned>(rect.position.x),
+                .y = static_cast<unsigned>(rect.position.y),
+                .width = image.get_width(),
+                .height = image.get_height(),
+            },
+            .row_pitch = image.get_width() * bytes_per_pixel,
+        });
     }
 
     void AbstractTextureAtlasBasedRenderer::_ensure_gpu_resources()
