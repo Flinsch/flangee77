@@ -2,9 +2,10 @@ var namespacedl7_1_1toml =
 [
     [ "detail", "d9/d58/namespacedl7_1_1toml_1_1detail.html", "d9/d58/namespacedl7_1_1toml_1_1detail" ],
     [ "Format", "dc/d02/structdl7_1_1toml_1_1Format.html", "dc/d02/structdl7_1_1toml_1_1Format" ],
-    [ "Toml", "d0/d49/classdl7_1_1toml_1_1Toml.html", null ],
+    [ "Toml", "d0/d49/classdl7_1_1toml_1_1Toml.html", "d0/d49/classdl7_1_1toml_1_1Toml" ],
     [ "TomlReader", "d3/d18/classdl7_1_1toml_1_1TomlReader.html", "d3/d18/classdl7_1_1toml_1_1TomlReader" ],
     [ "TomlWriter", "d2/dfe/classdl7_1_1toml_1_1TomlWriter.html", "d2/dfe/classdl7_1_1toml_1_1TomlWriter" ],
+    [ "Value", "d7/dbb/classdl7_1_1toml_1_1Value.html", "d7/dbb/classdl7_1_1toml_1_1Value" ],
     [ "array_t", "d9/dcb/namespacedl7_1_1toml.html#aaa0d352f6d69ba223c0d7a53f11b8281", null ],
     [ "boolean_t", "d9/dcb/namespacedl7_1_1toml.html#a9dd5611907eb91ac27cab9f863482e61", null ],
     [ "float_t", "d9/dcb/namespacedl7_1_1toml.html#a15da5b025cb906f5826bef5ed14450ab", null ],
@@ -12,7 +13,11 @@ var namespacedl7_1_1toml =
     [ "local_date_t", "d9/dcb/namespacedl7_1_1toml.html#ae90264040766dde7f7898913dd4c3eef", null ],
     [ "local_date_time_t", "d9/dcb/namespacedl7_1_1toml.html#a51320e8bb5020be6cd4a48e181da51df", null ],
     [ "local_time_t", "d9/dcb/namespacedl7_1_1toml.html#a192d05a86cd4219dad2c68e6ec3c249b", null ],
+    [ "none_t", "d9/dcb/namespacedl7_1_1toml.html#a5f1902dc46792127d3ce5cc180c13df9", null ],
     [ "offset_date_time_t", "d9/dcb/namespacedl7_1_1toml.html#a46a25fdcca58c1b431decf75da74c843", null ],
     [ "string_t", "d9/dcb/namespacedl7_1_1toml.html#a0dd5addd5e238fbcfec51b35efabcde1", null ],
-    [ "table_t", "d9/dcb/namespacedl7_1_1toml.html#a6d5473f1a9352aeffb27238125ff166c", null ]
+    [ "table_t", "d9/dcb/namespacedl7_1_1toml.html#a6d5473f1a9352aeffb27238125ff166c", null ],
+    [ "_append_padded", "d9/dcb/namespacedl7_1_1toml.html#a9a622bcce3db5955dacb50714f010e61", null ],
+    [ "_write_date", "d9/dcb/namespacedl7_1_1toml.html#a355d92956fe6e72eb5c2c1e9d8ffeac7", null ],
+    [ "_write_time", "d9/dcb/namespacedl7_1_1toml.html#af7d692b0c4e61de372b1d0cb144914c8", null ]
 ];

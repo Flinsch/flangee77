@@ -1,7 +1,7 @@
 var searchData=
 [
   ['validator_0',['Validator',['../d6/d9c/classdl7_1_1json_1_1util_1_1Validator.html',1,'dl7::json::util']]],
-  ['value_1',['Value',['../da/d29/classdl7_1_1ini_1_1Value.html',1,'dl7::ini']]],
+  ['value_1',['value',['../da/d29/classdl7_1_1ini_1_1Value.html',1,'dl7::ini::Value'],['../d7/dbb/classdl7_1_1toml_1_1Value.html',1,'dl7::toml::Value']]],
   ['value32_2',['Value32',['../da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html',1,'xl7::graphics::Color']]],
   ['vector2_3',['Vector2',['../d7/db1/structml7_1_1Vector2.html',1,'ml7']]],
   ['vector3_4',['Vector3',['../d6/d64/structml7_1_1Vector3.html',1,'ml7']]],

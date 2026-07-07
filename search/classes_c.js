@@ -19,5 +19,6 @@ var searchData=
   ['meshutil_16',['MeshUtil',['../d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil.html',1,'xl7::graphics::meshes']]],
   ['meta_17',['Meta',['../dd/d81/structtl7_1_1Meta.html',1,'tl7']]],
   ['msdfrenderer_18',['MsdfRenderer',['../d5/d89/classfl7_1_1fonts_1_1render_1_1MsdfRenderer.html',1,'fl7::fonts::render']]],
-  ['multilineoptions_19',['MultiLineOptions',['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html',1,'dl7::json::Format']]]
+  ['multilineoptions_19',['MultiLineOptions',['../d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html',1,'dl7::json::Format']]],
+  ['multilinestringmatcher_20',['MultilineStringMatcher',['../df/d3f/structdl7_1_1toml_1_1detail_1_1MultilineStringMatcher.html',1,'dl7::toml::detail']]]
 ];

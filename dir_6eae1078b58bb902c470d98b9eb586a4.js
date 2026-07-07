@@ -8,5 +8,7 @@ var dir_6eae1078b58bb902c470d98b9eb586a4 =
     [ "TomlReader.h", "da/dd8/TomlReader_8h.html", "da/dd8/TomlReader_8h" ],
     [ "TomlWriter.cpp", "d1/da4/TomlWriter_8cpp.html", null ],
     [ "TomlWriter.h", "d2/d40/TomlWriter_8h.html", "d2/d40/TomlWriter_8h" ],
-    [ "types.h", "d9/d45/toml_2types_8h.html", "d9/d45/toml_2types_8h" ]
+    [ "types.h", "d9/d45/toml_2types_8h.html", "d9/d45/toml_2types_8h" ],
+    [ "Value.cpp", "de/d47/toml_2Value_8cpp.html", "de/d47/toml_2Value_8cpp" ],
+    [ "Value.h", "d6/dd7/toml_2Value_8h.html", "d6/dd7/toml_2Value_8h" ]
 ];

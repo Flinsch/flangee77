@@ -1,25 +1,29 @@
 <map id="DataLabs/toml/types.h" name="DataLabs/toml/types.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="437,5,606,31"/>
-<area shape="rect" id="Node000002" href="$d0/d2e/Toml_8h.html" title=" " alt="" coords="439,79,603,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="524,44,524,79,519,79,519,44"/>
-<area shape="rect" id="Node000003" href="$db/dd6/Toml_8cpp.html" title=" " alt="" coords="5,159,184,185"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="446,109,196,155,157,162,156,157,196,149,445,104"/>
-<area shape="rect" id="Node000004" href="$da/dd8/TomlReader_8h.html" title=" " alt="" coords="209,159,418,185"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="479,111,345,162,343,157,477,106"/>
-<area shape="rect" id="Node000006" href="$d2/d40/TomlWriter_8h.html" title=" " alt="" coords="625,159,828,185"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="565,106,698,157,696,162,563,111"/>
-<area shape="rect" id="Node000008" href="$db/d85/toml_2detail_2Builder_8h.html" title=" " alt="" coords="442,152,601,192"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="524,118,524,152,519,152,519,118"/>
-<area shape="rect" id="Node000010" href="$d6/d3b/toml_2detail_2Generator_8h.html" title=" " alt="" coords="853,152,1011,192"/>
-<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="598,104,841,149,853,152,852,157,839,155,597,109"/>
-<area shape="rect" id="Node000005" href="$d0/d33/TomlReader_8cpp.html" title=" " alt="" coords="197,247,421,273"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="315,199,313,247,307,247,309,198"/>
-<area shape="rect" id="Node000007" href="$d1/da4/TomlWriter_8cpp.html" title=" " alt="" coords="629,247,848,273"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="733,198,740,246,734,247,728,198"/>
-<area shape="poly" id="edge8_Node000008_Node000005" title=" " alt="" coords="463,200,339,250,337,245,461,195"/>
-<area shape="rect" id="Node000009" href="$d8/d16/toml_2detail_2Builder_8cpp.html" title=" " alt="" coords="446,240,605,280"/>
-<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="526,206,527,240,522,240,520,206"/>
-<area shape="poly" id="edge11_Node000010_Node000007" title=" " alt="" coords="878,200,765,250,763,245,876,195"/>
-<area shape="rect" id="Node000011" href="$db/d5c/toml_2detail_2Generator_8cpp.html" title=" " alt="" coords="873,240,1031,280"/>
-<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="942,205,950,239,945,240,937,206"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="535,5,705,31"/>
+<area shape="rect" id="Node000002" href="$d6/dd7/toml_2Value_8h.html" title=" " alt="" coords="535,79,705,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="623,44,623,79,617,79,617,44"/>
+<area shape="rect" id="Node000003" href="$d0/d2e/Toml_8h.html" title=" " alt="" coords="439,152,603,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="595,114,539,154,536,150,592,110"/>
+<area shape="rect" id="Node000013" href="$de/d47/toml_2Value_8cpp.html" title=" " alt="" coords="628,152,812,177"/>
+<area shape="poly" id="edge14_Node000002_Node000013" title=" " alt="" coords="649,110,705,150,702,154,646,114"/>
+<area shape="rect" id="Node000004" href="$db/dd6/Toml_8cpp.html" title=" " alt="" coords="5,233,184,258"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="446,182,196,228,157,235,156,230,196,223,445,177"/>
+<area shape="rect" id="Node000005" href="$da/dd8/TomlReader_8h.html" title=" " alt="" coords="209,233,418,258"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="479,185,345,235,343,230,477,180"/>
+<area shape="rect" id="Node000007" href="$d2/d40/TomlWriter_8h.html" title=" " alt="" coords="625,233,828,258"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="565,180,698,230,696,235,563,185"/>
+<area shape="rect" id="Node000009" href="$db/d85/toml_2detail_2Builder_8h.html" title=" " alt="" coords="442,225,601,265"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="524,191,524,225,519,225,519,191"/>
+<area shape="rect" id="Node000011" href="$d6/d3b/toml_2detail_2Generator_8h.html" title=" " alt="" coords="853,225,1011,265"/>
+<area shape="poly" id="edge11_Node000003_Node000011" title=" " alt="" coords="598,177,841,223,853,225,852,230,839,228,597,182"/>
+<area shape="rect" id="Node000006" href="$d0/d33/TomlReader_8cpp.html" title=" " alt="" coords="197,321,421,346"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="315,272,313,320,307,320,309,272"/>
+<area shape="rect" id="Node000008" href="$d1/da4/TomlWriter_8cpp.html" title=" " alt="" coords="629,321,848,346"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="733,271,740,320,734,320,728,272"/>
+<area shape="poly" id="edge9_Node000009_Node000006" title=" " alt="" coords="463,273,339,323,337,318,461,268"/>
+<area shape="rect" id="Node000010" href="$d8/d16/toml_2detail_2Builder_8cpp.html" title=" " alt="" coords="446,313,605,353"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="526,279,527,313,522,313,520,279"/>
+<area shape="poly" id="edge12_Node000011_Node000008" title=" " alt="" coords="878,273,765,323,763,318,876,269"/>
+<area shape="rect" id="Node000012" href="$db/d5c/toml_2detail_2Generator_8cpp.html" title=" " alt="" coords="873,313,1031,353"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="942,278,950,313,945,314,937,280"/>
 </map>

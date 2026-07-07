@@ -17,7 +17,7 @@ var searchData=
   ['quaternionf_14',['QuaternionF',['../d3/d53/namespaceml7.html#a3420e619a03ace3e70425f80949b587f',1,'ml7']]],
   ['quaternionld_15',['QuaternionLD',['../d3/d53/namespaceml7.html#a159766b1e82a3be7a99b69c409e3c268',1,'ml7']]],
   ['quit_5fkey_16',['quit_key',['../dd/d38/structxl7_1_1Config_1_1General.html#aed68fdfccb12a185bdf86d6403c86667',1,'xl7::Config::General']]],
-  ['quote_5fchar_17',['quote_char',['../d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html#a87b152287f00ff2f50f40f247d03fe09',1,'dl7::json::util::Escaper::Options']]],
+  ['quote_5fchar_17',['quote_char',['../df/d3f/structdl7_1_1toml_1_1detail_1_1MultilineStringMatcher.html#a3d320b8ed8b5cd4719274cabfb6b8dda',1,'dl7::toml::detail::MultilineStringMatcher::quote_char'],['../d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html#a87b152287f00ff2f50f40f247d03fe09',1,'dl7::json::util::Escaper::Options::quote_char']]],
   ['quotechar_18',['QuoteChar',['../d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html#a597cb193de9275b68b56fd9a8a074228',1,'dl7::json::util::Escaper']]],
-  ['quoted_5fstring_5fliteral_19',['QUOTED_STRING_LITERAL',['../de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2aa2577c7f87e9bf1b3ab79a11a68897d3',1,'dl7::ini::detail']]]
+  ['quoted_5fstring_5fliteral_19',['quoted_string_literal',['../de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2aa2577c7f87e9bf1b3ab79a11a68897d3',1,'dl7::ini::detail::QUOTED_STRING_LITERAL'],['../d9/d58/namespacedl7_1_1toml_1_1detail.html#a48f6ae72c9dac29ef592e9169e1f8678a71d19cb386b00d02ec8f3ede042e17c7',1,'dl7::toml::detail::QUOTED_STRING_LITERAL']]]
 ];

@@ -68,6 +68,7 @@ var searchData=
   ['rgb_65',['RGB',['../d8/d30/namespacexl7_1_1graphics.html#a7f932a51645d57b7b508969692d213dea889574aebacda6bfd3e534e2b49b8028',1,'xl7::graphics']]],
   ['rgba_66',['RGBA',['../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2aea3495a278957dc58165e48a8945469f',1,'xl7::graphics']]],
   ['right_67',['Right',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a9b2204dc71a9a9abc3f43b0be847bcf5a92b09c7c48c520c3c55e497875da437c',1,'fl7::fonts::TextStyle']]],
-  ['right_5fcurly_5fbracket_68',['RIGHT_CURLY_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#aefd1a930e6928f0b5231c01b74806e05a3d582a29f62ad189b35f29bd524c36cf',1,'dl7::json::detail']]],
-  ['right_5fsquare_5fbracket_69',['RIGHT_SQUARE_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#aefd1a930e6928f0b5231c01b74806e05aecaf8b60a7c6c308e7ff6211f4587efe',1,'dl7::json::detail']]]
+  ['right_5fbrace_68',['RIGHT_BRACE',['../d9/d58/namespacedl7_1_1toml_1_1detail.html#a48f6ae72c9dac29ef592e9169e1f8678aed3f0008b4b041d00f79b88d9397d8c1',1,'dl7::toml::detail']]],
+  ['right_5fcurly_5fbracket_69',['RIGHT_CURLY_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#aefd1a930e6928f0b5231c01b74806e05a3d582a29f62ad189b35f29bd524c36cf',1,'dl7::json::detail']]],
+  ['right_5fsquare_5fbracket_70',['RIGHT_SQUARE_BRACKET',['../db/dcc/namespacedl7_1_1json_1_1detail.html#aefd1a930e6928f0b5231c01b74806e05aecaf8b60a7c6c308e7ff6211f4587efe',1,'dl7::json::detail']]]
 ];

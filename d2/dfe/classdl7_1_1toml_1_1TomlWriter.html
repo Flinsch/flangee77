@@ -105,9 +105,9 @@ Collaboration diagram for dl7::toml::TomlWriter:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/dce/classdl7_1_1toml_1_1TomlWriter__coll__graph.png" border="0" usemap="#adl7_1_1toml_1_1TomlWriter_coll__map" alt="Collaboration graph"/></div>
 <map name="adl7_1_1toml_1_1TomlWriter_coll__map" id="adl7_1_1toml_1_1TomlWriter_coll__map">
-<area shape="rect" title=" " alt="" coords="5,93,164,119"/>
+<area shape="rect" title=" " alt="" coords="5,137,164,163"/>
 <area shape="rect" href="../../dc/d02/structdl7_1_1toml_1_1Format.html" title=" " alt="" coords="17,5,152,31"/>
-<area shape="poly" title=" " alt="" coords="87,45,87,93,82,93,82,45"/>
+<area shape="poly" title=" " alt="" coords="87,44,87,137,82,137,82,44"/>
 </map>
 <center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -118,7 +118,11 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a46bb3374773220cf4ae671b9b38c715f" id="r_a46bb3374773220cf4ae671b9b38c715f"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="../../dc/d02/structdl7_1_1toml_1_1Format.html">Format</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dfe/classdl7_1_1toml_1_1TomlWriter.html#a46bb3374773220cf4ae671b9b38c715f">DEFAULT_FORMAT</a> = {}</td></tr>
+<tr class="memitem:ad7634b4736f07750c88ae135bc1c62ca" id="r_ad7634b4736f07750c88ae135bc1c62ca"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="../../dc/d02/structdl7_1_1toml_1_1Format.html">Format</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dfe/classdl7_1_1toml_1_1TomlWriter.html#ad7634b4736f07750c88ae135bc1c62ca">DEFAULT_PRETTY_PRINT_FORMAT</a></td></tr>
+<tr class="separator:ad7634b4736f07750c88ae135bc1c62ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe294cd57f42011cb561ade4e535e5fd" id="r_abe294cd57f42011cb561ade4e535e5fd"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="../../dc/d02/structdl7_1_1toml_1_1Format.html">Format</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dfe/classdl7_1_1toml_1_1TomlWriter.html#abe294cd57f42011cb561ade4e535e5fd">DEFAULT_COMPACT_FORMAT</a></td></tr>
+<tr class="separator:abe294cd57f42011cb561ade4e535e5fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46bb3374773220cf4ae671b9b38c715f" id="r_a46bb3374773220cf4ae671b9b38c715f"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="../../dc/d02/structdl7_1_1toml_1_1Format.html">Format</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dfe/classdl7_1_1toml_1_1TomlWriter.html#a46bb3374773220cf4ae671b9b38c715f">DEFAULT_FORMAT</a> = <a class="el" href="../../d2/dfe/classdl7_1_1toml_1_1TomlWriter.html#ad7634b4736f07750c88ae135bc1c62ca">DEFAULT_PRETTY_PRINT_FORMAT</a></td></tr>
 <tr class="separator:a46bb3374773220cf4ae671b9b38c715f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -162,6 +166,39 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="abe294cd57f42011cb561ade4e535e5fd" name="abe294cd57f42011cb561ade4e535e5fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe294cd57f42011cb561ade4e535e5fd">&#9670;&#160;</a></span>DEFAULT_COMPACT_FORMAT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../dc/d02/structdl7_1_1toml_1_1Format.html">Format</a> dl7::toml::TomlWriter::DEFAULT_COMPACT_FORMAT</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">        .line_ending = <a class="code hl_enumvalue" href="../../dc/d02/structdl7_1_1toml_1_1Format.html#a2b0ad9f7e25af95c0011945b8aae389ba618441d41cce47dbcfd9bed6e5ff64e6">Format::LineEnding::LF</a>,</div>
+<div class="line">        .space_around_equals_sign = <a class="code hl_enumvalue" href="../../dc/d02/structdl7_1_1toml_1_1Format.html#a4922f2ca6f970d58e49024f770d5a438a130c5b3473c57faa76e2a1c54e26f88e">Format::SpaceAroundEqualsSign::Both</a>,</div>
+<div class="line">        .empty_line_at_start_of_file = <span class="keyword">false</span>,</div>
+<div class="line">        .empty_line_before_table_header = <span class="keyword">false</span>,</div>
+<div class="line">        .empty_line_after_table_header = <span class="keyword">false</span>,</div>
+<div class="line">        .add_empty_line = <span class="keyword">false</span>,</div>
+<div class="line">        .escape_unicode = <span class="keyword">false</span>,</div>
+<div class="line">    }</div>
+<div class="ttc" id="astructdl7_1_1toml_1_1Format_html_a2b0ad9f7e25af95c0011945b8aae389ba618441d41cce47dbcfd9bed6e5ff64e6"><div class="ttname"><a href="../../dc/d02/structdl7_1_1toml_1_1Format.html#a2b0ad9f7e25af95c0011945b8aae389ba618441d41cce47dbcfd9bed6e5ff64e6">dl7::toml::Format::LineEnding::LF</a></div><div class="ttdeci">@ LF</div></div>
+<div class="ttc" id="astructdl7_1_1toml_1_1Format_html_a4922f2ca6f970d58e49024f770d5a438a130c5b3473c57faa76e2a1c54e26f88e"><div class="ttname"><a href="../../dc/d02/structdl7_1_1toml_1_1Format.html#a4922f2ca6f970d58e49024f770d5a438a130c5b3473c57faa76e2a1c54e26f88e">dl7::toml::Format::SpaceAroundEqualsSign::Both</a></div><div class="ttdeci">@ Both</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a46bb3374773220cf4ae671b9b38c715f" name="a46bb3374773220cf4ae671b9b38c715f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a46bb3374773220cf4ae671b9b38c715f">&#9670;&#160;</a></span>DEFAULT_FORMAT</h2>
 
@@ -172,7 +209,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="../../dc/d02/structdl7_1_1toml_1_1Format.html">Format</a> dl7::toml::TomlWriter::DEFAULT_FORMAT = {}</td>
+          <td class="memname">constexpr <a class="el" href="../../dc/d02/structdl7_1_1toml_1_1Format.html">Format</a> dl7::toml::TomlWriter::DEFAULT_FORMAT = <a class="el" href="../../d2/dfe/classdl7_1_1toml_1_1TomlWriter.html#ad7634b4736f07750c88ae135bc1c62ca">DEFAULT_PRETTY_PRINT_FORMAT</a></td>
         </tr>
       </table>
   </td>
@@ -182,6 +219,37 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<a id="ad7634b4736f07750c88ae135bc1c62ca" name="ad7634b4736f07750c88ae135bc1c62ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7634b4736f07750c88ae135bc1c62ca">&#9670;&#160;</a></span>DEFAULT_PRETTY_PRINT_FORMAT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../dc/d02/structdl7_1_1toml_1_1Format.html">Format</a> dl7::toml::TomlWriter::DEFAULT_PRETTY_PRINT_FORMAT</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">        .line_ending = <a class="code hl_enumvalue" href="../../dc/d02/structdl7_1_1toml_1_1Format.html#a2b0ad9f7e25af95c0011945b8aae389ba618441d41cce47dbcfd9bed6e5ff64e6">Format::LineEnding::LF</a>,</div>
+<div class="line">        .space_around_equals_sign = <a class="code hl_enumvalue" href="../../dc/d02/structdl7_1_1toml_1_1Format.html#a4922f2ca6f970d58e49024f770d5a438a130c5b3473c57faa76e2a1c54e26f88e">Format::SpaceAroundEqualsSign::Both</a>,</div>
+<div class="line">        .empty_line_at_start_of_file = <span class="keyword">true</span>,</div>
+<div class="line">        .empty_line_before_table_header = <span class="keyword">true</span>,</div>
+<div class="line">        .empty_line_after_table_header = <span class="keyword">false</span>,</div>
+<div class="line">        .add_empty_line = <span class="keyword">true</span>,</div>
+<div class="line">        .escape_unicode = <span class="keyword">false</span>,</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>

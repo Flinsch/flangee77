@@ -214,14 +214,18 @@ var annotated_dup =
       ] ],
       [ "toml", "d9/dcb/namespacedl7_1_1toml.html", [
         [ "detail", "d9/d58/namespacedl7_1_1toml_1_1detail.html", [
+          [ "AnyOtherMatcher", "d0/d2d/structdl7_1_1toml_1_1detail_1_1AnyOtherMatcher.html", "d0/d2d/structdl7_1_1toml_1_1detail_1_1AnyOtherMatcher" ],
           [ "Builder", "dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html", "dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder" ],
+          [ "DateTimeMatcher", "db/dfe/structdl7_1_1toml_1_1detail_1_1DateTimeMatcher.html", "db/dfe/structdl7_1_1toml_1_1detail_1_1DateTimeMatcher" ],
           [ "Generator", "db/dd1/classdl7_1_1toml_1_1detail_1_1Generator.html", "db/dd1/classdl7_1_1toml_1_1detail_1_1Generator" ],
-          [ "Lexer", "d8/d9d/classdl7_1_1toml_1_1detail_1_1Lexer.html", "d8/d9d/classdl7_1_1toml_1_1detail_1_1Lexer" ]
+          [ "Lexer", "d8/d9d/classdl7_1_1toml_1_1detail_1_1Lexer.html", "d8/d9d/classdl7_1_1toml_1_1detail_1_1Lexer" ],
+          [ "MultilineStringMatcher", "df/d3f/structdl7_1_1toml_1_1detail_1_1MultilineStringMatcher.html", "df/d3f/structdl7_1_1toml_1_1detail_1_1MultilineStringMatcher" ]
         ] ],
         [ "Format", "dc/d02/structdl7_1_1toml_1_1Format.html", "dc/d02/structdl7_1_1toml_1_1Format" ],
-        [ "Toml", "d0/d49/classdl7_1_1toml_1_1Toml.html", null ],
+        [ "Toml", "d0/d49/classdl7_1_1toml_1_1Toml.html", "d0/d49/classdl7_1_1toml_1_1Toml" ],
         [ "TomlReader", "d3/d18/classdl7_1_1toml_1_1TomlReader.html", "d3/d18/classdl7_1_1toml_1_1TomlReader" ],
-        [ "TomlWriter", "d2/dfe/classdl7_1_1toml_1_1TomlWriter.html", "d2/dfe/classdl7_1_1toml_1_1TomlWriter" ]
+        [ "TomlWriter", "d2/dfe/classdl7_1_1toml_1_1TomlWriter.html", "d2/dfe/classdl7_1_1toml_1_1TomlWriter" ],
+        [ "Value", "d7/dbb/classdl7_1_1toml_1_1Value.html", "d7/dbb/classdl7_1_1toml_1_1Value" ]
       ] ],
       [ "xml", "da/d33/namespacedl7_1_1xml.html", [
         [ "detail", "d4/dc2/namespacedl7_1_1xml_1_1detail.html", [

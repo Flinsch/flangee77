@@ -10,5 +10,6 @@ var searchData=
   ['minimizearea_7',['MinimizeArea',['../de/da8/classal7_1_1packing_1_1GuillotinePacker.html#ab6c59091ed685ae93304fed66250755ca77495002dee41d0abde03d8dd853f300',1,'al7::packing::GuillotinePacker']]],
   ['mirror_8',['Mirror',['../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a98d0b059d0af618a89dda3c2f66f2da5a2403def5083f02105e7802b3b315681e',1,'xl7::graphics::states']]],
   ['mirroronce_9',['MirrorOnce',['../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a98d0b059d0af618a89dda3c2f66f2da5abbfe58735042c726d2d04562ea4e265a',1,'xl7::graphics::states']]],
-  ['multiline_10',['MultiLine',['../df/d52/structdl7_1_1json_1_1Format.html#a6a8a994bee9e67bd29d6ff5bd5eb6b64ad16a748b5543974384bc43d392f1e566',1,'dl7::json::Format']]]
+  ['multiline_10',['MultiLine',['../df/d52/structdl7_1_1json_1_1Format.html#a6a8a994bee9e67bd29d6ff5bd5eb6b64ad16a748b5543974384bc43d392f1e566',1,'dl7::json::Format']]],
+  ['multiline_5fstring_5fliteral_11',['MULTILINE_STRING_LITERAL',['../d9/d58/namespacedl7_1_1toml_1_1detail.html#a48f6ae72c9dac29ef592e9169e1f8678a6616bdc66d08fa0789c4bb72093dc412',1,'dl7::toml::detail']]]
 ];

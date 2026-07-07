@@ -7,6 +7,7 @@ var toml_2types_8h =
     [ "local_date_t", "d9/d45/toml_2types_8h.html#ae90264040766dde7f7898913dd4c3eef", null ],
     [ "local_date_time_t", "d9/d45/toml_2types_8h.html#a51320e8bb5020be6cd4a48e181da51df", null ],
     [ "local_time_t", "d9/d45/toml_2types_8h.html#a192d05a86cd4219dad2c68e6ec3c249b", null ],
+    [ "none_t", "d9/d45/toml_2types_8h.html#a5f1902dc46792127d3ce5cc180c13df9", null ],
     [ "offset_date_time_t", "d9/d45/toml_2types_8h.html#a46a25fdcca58c1b431decf75da74c843", null ],
     [ "string_t", "d9/d45/toml_2types_8h.html#a0dd5addd5e238fbcfec51b35efabcde1", null ],
     [ "table_t", "d9/d45/toml_2types_8h.html#a6d5473f1a9352aeffb27238125ff166c", null ]

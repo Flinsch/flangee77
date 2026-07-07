@@ -34,7 +34,7 @@ var searchData=
   ['constantdeclaration_31',['ConstantDeclaration',['../d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html',1,'xl7::graphics::shaders']]],
   ['constantmapping_32',['ConstantMapping',['../d2/d58/structxl7_1_1graphics_1_1shaders_1_1ConstantMapping.html',1,'xl7::graphics::shaders']]],
   ['constants_33',['constants',['../d6/d9f/structml7_1_1constants.html',1,'ml7']]],
-  ['context_34',['context',['../d1/dbe/structdl7_1_1ini_1_1detail_1_1Builder_1_1Context.html',1,'dl7::ini::detail::Builder::Context'],['../d9/d7e/structtl7_1_1Context.html',1,'tl7::Context']]],
+  ['context_34',['context',['../d1/dbe/structdl7_1_1ini_1_1detail_1_1Builder_1_1Context.html',1,'dl7::ini::detail::Builder::Context'],['../d3/df6/structdl7_1_1toml_1_1detail_1_1Builder_1_1Context.html',1,'dl7::toml::detail::Builder::Context'],['../d9/d7e/structtl7_1_1Context.html',1,'tl7::Context']]],
   ['contiguous_5fiterator_35',['contiguous_iterator',['../d1/d5d/classcl7_1_1contiguous__iterator.html',1,'cl7']]],
   ['contour_36',['Contour',['../dc/d41/structfl7_1_1fonts_1_1Contour.html',1,'fl7::fonts']]],
   ['coutlogger_37',['CoutLogger',['../db/d02/classtl7_1_1reporting_1_1CoutLogger.html',1,'tl7::reporting']]],

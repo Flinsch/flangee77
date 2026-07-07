@@ -16,7 +16,7 @@ var searchData=
   ['analyticalcoveragerasterizer_13',['AnalyticalCoverageRasterizer',['../df/d68/classfl7_1_1fonts_1_1raster_1_1AnalyticalCoverageRasterizer.html',1,'fl7::fonts::raster']]],
   ['analyzer_14',['Analyzer',['../d8/d02/classcl7_1_1text_1_1codec_1_1Analyzer.html',1,'cl7::text::codec']]],
   ['angle_15',['Angle',['../d4/d9d/structml7_1_1Angle.html',1,'ml7']]],
-  ['anyothermatcher_16',['AnyOtherMatcher',['../d4/dc9/structdl7_1_1ini_1_1detail_1_1AnyOtherMatcher.html',1,'dl7::ini::detail']]],
+  ['anyothermatcher_16',['anyothermatcher',['../d4/dc9/structdl7_1_1ini_1_1detail_1_1AnyOtherMatcher.html',1,'dl7::ini::detail::AnyOtherMatcher'],['../d0/d2d/structdl7_1_1toml_1_1detail_1_1AnyOtherMatcher.html',1,'dl7::toml::detail::AnyOtherMatcher']]],
   ['application_17',['Application',['../d8/d91/classpl7_1_1Application.html',1,'pl7']]],
   ['argumentbag_18',['ArgumentBag',['../dd/d75/classpl7_1_1ArgumentBag.html',1,'pl7']]],
   ['asciicodec_19',['AsciiCodec',['../d3/df1/classcl7_1_1text_1_1codec_1_1AsciiCodec.html',1,'cl7::text::codec']]],
