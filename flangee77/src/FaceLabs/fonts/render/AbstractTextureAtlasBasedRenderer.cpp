@@ -92,11 +92,37 @@ namespace fl7::fonts::render {
         };
         assert(vertex_layout.calculate_size() == sizeof(Vertex));
 
+        // Grow (never shrink) a single persistent vertex buffer instead of
+        // creating/destroying one per batch per frame.
+        if (!_vertex_buffer_id || _vertex_buffer_capacity < _vertices.size())
+        {
+            if (_vertex_buffer_id)
+                xl7::graphics::mesh_manager()->release_resource_and_invalidate(_vertex_buffer_id);
+
+            _vertex_buffer_capacity = static_cast<unsigned>(_vertices.size());
+
+            xl7::graphics::meshes::VertexBufferDesc vb_desc{
+                .usage = xl7::graphics::meshes::MeshBufferUsage::Transient,
+                .topology = xl7::graphics::meshes::Topology::TriangleList,
+                .vertex_count = _vertex_buffer_capacity,
+                .vertex_stride = sizeof(Vertex),
+                .vertex_layout = vertex_layout,
+            };
+            _vertex_buffer_id = xl7::graphics::mesh_manager()->create_vertex_buffer(_resource_prefix + u8"VB", vb_desc);
+        }
+
+        auto* vb = xl7::graphics::mesh_manager()->find_resource<xl7::graphics::meshes::VertexBuffer>(_vertex_buffer_id);
+        assert(vb);
+        vb->edit().write(xl7::graphics::meshes::VertexBufferWrite::from_vertices<Vertex>(std::span<const Vertex>(_vertices)));
+
         rendering_context->pipeline.vs.set_vertex_shader_id(_vertex_shader_id);
         rendering_context->pipeline.vs.set_constant_buffer_id(0, _constant_buffer_id);
         rendering_context->pipeline.ps.set_pixel_shader_id(_pixel_shader_id);
         rendering_context->pipeline.ps.set_sampler_state_id(0, _sampler_state_id);
         rendering_context->pipeline.om.set_blend_state_id(_blend_state_id);
+
+        rendering_context->pipeline.ia.set_vertex_buffer_id(_vertex_buffer_id);
+        rendering_context->pipeline.ia.set_index_buffer_id({});
 
         for (const DrawBatch& batch : _batches)
         {
@@ -113,26 +139,7 @@ namespace fl7::fonts::render {
 
             rendering_context->pipeline.ps.set_texture_id(0, layer.texture_id);
 
-            const std::vector<Vertex> batch_vertices(
-                _vertices.begin() + batch.first_vertex,
-                _vertices.begin() + batch.first_vertex + batch.vertex_count);
-
-            xl7::graphics::meshes::VertexBufferDesc vb_desc{
-                .usage = xl7::graphics::meshes::MeshBufferUsage::Transient,
-                .topology = xl7::graphics::meshes::Topology::TriangleList,
-                .vertex_count = batch.vertex_count,
-                .vertex_stride = sizeof(Vertex),
-                .vertex_layout = vertex_layout,
-            };
-            auto vb_write = xl7::graphics::meshes::VertexBufferWrite::from_vertices<Vertex>(batch_vertices);
-            auto vb_id = xl7::graphics::mesh_manager()->create_vertex_buffer(_resource_prefix + u8"VB", vb_desc, &vb_write);
-
-            rendering_context->pipeline.ia.set_vertex_buffer_id(vb_id);
-            rendering_context->pipeline.ia.set_index_buffer_id({});
-
-            rendering_context->draw();
-
-            xl7::graphics::mesh_manager()->release_resource_and_invalidate(vb_id);
+            rendering_context->draw(xl7::graphics::meshes::Topology::TriangleList, batch.vertex_count / 3, batch.first_vertex);
         }
 
         // Batches drawn above must not be resubmitted by a later flush
@@ -328,6 +335,10 @@ namespace fl7::fonts::render {
             if (layer.texture_id)
                 xl7::graphics::texture_manager()->release_resource_and_invalidate(layer.texture_id);
         }
+
+        if (_vertex_buffer_id)
+            xl7::graphics::mesh_manager()->release_resource_and_invalidate(_vertex_buffer_id);
+        _vertex_buffer_capacity = 0;
 
         if (_blend_state_id)
             xl7::graphics::state_manager()->release_resource_and_invalidate(_blend_state_id);

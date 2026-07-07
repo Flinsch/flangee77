@@ -9,6 +9,7 @@
 
 #include <XiaoLabs/graphics/Color.h>
 #include <XiaoLabs/graphics/textures/Texture2D.h>
+#include <XiaoLabs/graphics/meshes/VertexBuffer.h>
 #include <XiaoLabs/graphics/shaders/VertexShader.h>
 #include <XiaoLabs/graphics/shaders/PixelShader.h>
 #include <XiaoLabs/graphics/shaders/ConstantBuffer.h>
@@ -129,6 +130,9 @@ private:
     std::vector<Vertex> _vertices;
     std::vector<DrawBatch> _batches;
     float _current_batch_font_size = 0.0f;
+
+    xl7::graphics::meshes::VertexBuffer::Id _vertex_buffer_id = {};
+    unsigned _vertex_buffer_capacity = 0;
 
     xl7::graphics::shaders::VertexShader::Id  _vertex_shader_id  = {};
     xl7::graphics::shaders::PixelShader::Id   _pixel_shader_id   = {};
