@@ -18,7 +18,6 @@ var classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer =
     [ "_get_or_rasterize_glyph", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a8d114983479e7ab4413b2d8acc2efbf7", null ],
     [ "_get_shader_path", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a3ad4511af30e47bced45be6d4816f872", null ],
     [ "_release_gpu_resources", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a20c00118cafd68df98b1300aa8ba3cae", null ],
-    [ "_upload_atlas_to_gpu", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ae6867c00c9c36d94a1e301d872436751", null ],
     [ "_atlas_layers", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a6d1f350297d141717b542564191861e6", null ],
     [ "_batches", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a95ea1f34cb12f9c710e1b0e4a2681fee", null ],
     [ "_blend_state_id", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ac56d766c29dafb5b17b597f230c5f16d", null ],
