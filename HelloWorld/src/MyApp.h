@@ -4,7 +4,7 @@
 
 #include <FaceLabs/fonts/Font.h>
 
-#include <FaceLabs/fonts/raster/SimpleBitmapRasterizer.h>
+#include <FaceLabs/fonts/raster/AnalyticalCoverageRasterizer.h>
 #include <FaceLabs/fonts/render/BitmapRenderer.h>
 #include <FaceLabs/fonts/render/TestRenderer.h>
 
@@ -98,7 +98,7 @@ private:
 
     std::shared_ptr<fl7::fonts::Font> _font;
 
-    fl7::fonts::raster::SimpleBitmapRasterizer _bitmap_rasterizer;
+    fl7::fonts::raster::AnalyticalCoverageRasterizer _bitmap_rasterizer;
     std::unique_ptr<fl7::fonts::render::BitmapRenderer> _bitmap_renderer;
     std::unique_ptr<fl7::fonts::render::TestRenderer> _test_renderer;
 
