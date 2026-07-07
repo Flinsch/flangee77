@@ -875,7 +875,15 @@ namespace fl7::fonts::detail::ttf {
         const auto next_offset = _glyph_offsets[glyph_index + 1];
 
         if (offset == next_offset)
-            return {RawGlyph{}}; // Empty glyph, but "successful".
+        {
+            // Empty glyph (no outline data), but "successful". Metrics (advance
+            // width, left side bearing) still apply and must not be defaulted to
+            // zero, as they are stored in "hmtx", not in the (empty) "glyf" entry.
+            RawGlyph raw_glyph;
+            raw_glyph.advance_width = _glyph_metrics[glyph_index].advance_width;
+            raw_glyph.left_side_bearing = _glyph_metrics[glyph_index].left_side_bearing;
+            return raw_glyph;
+        }
 
         readable.set_read_position(offset);
 
