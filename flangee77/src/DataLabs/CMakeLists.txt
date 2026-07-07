@@ -52,10 +52,14 @@ target_sources(flangee77
     toml/Toml.cpp
     toml/TomlReader.cpp
     toml/TomlWriter.cpp
+    toml/Value.cpp
 
+    toml/detail/AnyOtherMatcher.cpp
     toml/detail/Builder.cpp
+    toml/detail/DateTimeMatcher.cpp
     toml/detail/Generator.cpp
     toml/detail/Lexer.cpp
+    toml/detail/MultilineStringMatcher.cpp
 
     xml/Attribute.cpp
     xml/Document.cpp

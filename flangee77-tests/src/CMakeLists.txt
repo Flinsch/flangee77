@@ -46,7 +46,7 @@ target_sources(flangee77-tests
     DataLabs/syntax.cpp
     DataLabs/json.cpp
     #DataLabs/yaml.cpp
-    #DataLabs/toml.cpp
+    DataLabs/toml.cpp
     DataLabs/ini.cpp
     DataLabs/xml.cpp
 

@@ -6,6 +6,7 @@
 #include <CoreLabs/string.h>
 
 #include <chrono>
+#include <variant>
 #include <vector>
 
 
@@ -16,6 +17,7 @@ namespace dl7::toml {
 
 class Value;
 
+using none_t = std::monostate;
 using string_t = cl7::u8string;
 using integer_t = int64_t;
 using float_t = double;
