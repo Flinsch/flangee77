@@ -185,11 +185,22 @@ namespace fl7::fonts::raster {
 
         _process_glyph(glyph, size_config.font_size, pixel_offset, coverage_canvas);
 
+        // Floating-point accumulation of many segment contributions per pixel can leave
+        // a small residual instead of an exact 0 or 1 (e.g., for pixels that should be
+        // fully outside/inside a closed contour). Snap values within this margin to
+        // avoid such noise. Genuine partial coverage is well above this magnitude.
+        constexpr float coverage_epsilon = 1.0f / 512.0f;
+
         for (size_t row = 0; row < canvas.height(); ++row)
         {
             for (size_t col = 0; col < canvas.width(); ++col)
             {
-                const float coverage = coverage_canvas.element(row, col);
+                float coverage = coverage_canvas.element(row, col);
+
+                if (coverage < coverage_epsilon)
+                    coverage = 0.0f;
+                else if (coverage > 1.0f - coverage_epsilon)
+                    coverage = 1.0f;
 
                 canvas.map_element<uint8_t>(row, col) = static_cast<uint8_t>(ml7::clamp01(coverage) * 255.0f);
             } // for each pixel column
