@@ -1,5 +1,9 @@
 var NAVTREEINDEX42 =
 {
+"da/df2/classxl7_1_1MainWindow.html#ad443c07148cd802317a17e0b1c02c107":[7,0,8,9,5],
+"da/df2/classxl7_1_1MainWindow.html#ad834243c8f9c9a7444b0b630a96f83af":[7,0,8,9,10],
+"da/df2/classxl7_1_1MainWindow.html#ad834243c8f9c9a7444b0b630a96f83af":[5,0,8,11,10],
+"da/df2/classxl7_1_1MainWindow.html#ade8ca69bf44afce8d5c93146386fe16c":[5,0,8,11,1],
 "da/df2/classxl7_1_1MainWindow.html#ade8ca69bf44afce8d5c93146386fe16c":[7,0,8,9,1],
 "da/df2/classxl7_1_1MainWindow.html#ae597fc24dc69aebcff3190265c4213e7":[7,0,8,9,16],
 "da/df2/classxl7_1_1MainWindow.html#ae597fc24dc69aebcff3190265c4213e7":[5,0,8,11,16],
@@ -245,9 +249,5 @@ var NAVTREEINDEX42 =
 "db/d31/merge__nearby_8cpp.html":[8,0,0,0,5],
 "db/d31/merge__nearby_8cpp.html#a5fb65d03567559756d610f2334d003bb":[8,0,0,0,5,0],
 "db/d31/merge__nearby_8cpp.html#aa381080d5eb53b71206076e7fdc024f8":[8,0,0,0,5,1],
-"db/d34/namespacedl7_1_1syntax.html":[5,0,2,3],
-"db/d34/namespacedl7_1_1syntax.html#a0e6e84cecfd1dabb925e9011c028144d":[5,0,2,3,32],
-"db/d34/namespacedl7_1_1syntax.html#ab1b57a9e4c1d182fe54892446379cb35":[5,0,2,3,33],
-"db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823":[5,0,2,3,31],
-"db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html":[5,0,2,3,0,1]
+"db/d34/namespacedl7_1_1syntax.html":[5,0,2,3]
 };

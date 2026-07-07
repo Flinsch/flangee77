@@ -1,5 +1,9 @@
 var NAVTREEINDEX59 =
 {
+"de/df3/structxl7_1_1graphics_1_1Color.html#abb2fb37f664edc844cf05eba11c7f9fe":[5,0,8,2,8,56],
+"de/df3/structxl7_1_1graphics_1_1Color.html#abb2fb37f664edc844cf05eba11c7f9fe":[7,0,8,1,8,56],
+"de/df3/structxl7_1_1graphics_1_1Color.html#abc7da1f4b54dbd3530cb3aaac0bc8546":[7,0,8,1,8,6],
+"de/df3/structxl7_1_1graphics_1_1Color.html#abc7da1f4b54dbd3530cb3aaac0bc8546":[5,0,8,2,8,6],
 "de/df3/structxl7_1_1graphics_1_1Color.html#abdbe18fb48e5adbcf21f04062be7bfc7":[5,0,8,2,8,20],
 "de/df3/structxl7_1_1graphics_1_1Color.html#abdbe18fb48e5adbcf21f04062be7bfc7":[7,0,8,1,8,20],
 "de/df3/structxl7_1_1graphics_1_1Color.html#ac21fb6947db03d89469687190ed22de8":[5,0,8,2,8,44],
@@ -245,9 +249,5 @@ var NAVTREEINDEX59 =
 "df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc.html":[5,0,8,2,5,1],
 "df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc.html":[7,0,8,1,5,1],
 "df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc.html#a350640a5728bec96585a49545ec828b0":[5,0,8,2,5,1,1],
-"df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc.html#a350640a5728bec96585a49545ec828b0":[7,0,8,1,5,1,1],
-"df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc.html#a5ddf31dfb8f4d69dc0fd45c7ce2d3765":[5,0,8,2,5,1,2],
-"df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc.html#a5ddf31dfb8f4d69dc0fd45c7ce2d3765":[7,0,8,1,5,1,2],
-"df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc.html#a66d1d576e13301a3bee5cfa69c4a0577":[7,0,8,1,5,1,3],
-"df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc.html#a66d1d576e13301a3bee5cfa69c4a0577":[5,0,8,2,5,1,3]
+"df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc.html#a350640a5728bec96585a49545ec828b0":[7,0,8,1,5,1,1]
 };

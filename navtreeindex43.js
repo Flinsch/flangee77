@@ -1,5 +1,9 @@
 var NAVTREEINDEX43 =
 {
+"db/d34/namespacedl7_1_1syntax.html#a0e6e84cecfd1dabb925e9011c028144d":[5,0,2,3,32],
+"db/d34/namespacedl7_1_1syntax.html#ab1b57a9e4c1d182fe54892446379cb35":[5,0,2,3,33],
+"db/d34/namespacedl7_1_1syntax.html#abb9bf971fd627482b2b417ea0fdaa823":[5,0,2,3,31],
+"db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html":[5,0,2,3,0,1],
 "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html":[7,0,2,3,0,1],
 "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html#a73dc08b1ab0e2aa8e14073f02d69b7aa":[5,0,2,3,0,1,0],
 "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html#a73dc08b1ab0e2aa8e14073f02d69b7aa":[7,0,2,3,0,1,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX43 =
 "db/d6e/structml7_1_1Matrix2x2.html":[7,0,4,12],
 "db/d6e/structml7_1_1Matrix2x2.html#a019946db9ad96486e6e4d974fc73e10b":[5,0,4,12,33],
 "db/d6e/structml7_1_1Matrix2x2.html#a019946db9ad96486e6e4d974fc73e10b":[7,0,4,12,33],
-"db/d6e/structml7_1_1Matrix2x2.html#a0394e49bcbe46d7959a11ab80d7f196a":[5,0,4,12,50],
-"db/d6e/structml7_1_1Matrix2x2.html#a0394e49bcbe46d7959a11ab80d7f196a":[7,0,4,12,50],
-"db/d6e/structml7_1_1Matrix2x2.html#a03bb769a3d8ecb6089209843521ce8b2":[5,0,4,12,15],
-"db/d6e/structml7_1_1Matrix2x2.html#a03bb769a3d8ecb6089209843521ce8b2":[7,0,4,12,15],
-"db/d6e/structml7_1_1Matrix2x2.html#a06ea0b3cc128d3875fe44f9aa1f6b27a":[7,0,4,12,17]
+"db/d6e/structml7_1_1Matrix2x2.html#a0394e49bcbe46d7959a11ab80d7f196a":[5,0,4,12,50]
 };

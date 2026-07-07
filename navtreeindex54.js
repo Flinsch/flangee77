@@ -1,5 +1,9 @@
 var NAVTREEINDEX54 =
 {
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a350d7da7b3ff6598b44f4efc9dc7a990":[5,0,3,0,0,0,1,32],
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a350d7da7b3ff6598b44f4efc9dc7a990":[7,0,3,0,0,0,1,32],
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a367e88b8a94aa2b5f891be70cfcf5b64":[7,0,3,0,0,0,1,40],
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a367e88b8a94aa2b5f891be70cfcf5b64":[5,0,3,0,0,0,1,40],
 "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a3eb9db0c9e80651b7745ea290773e1b8":[7,0,3,0,0,0,1,46],
 "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a3eb9db0c9e80651b7745ea290773e1b8":[5,0,3,0,0,0,1,46],
 "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a6054b8d1e3fda9a89fd2c291709be924":[7,0,3,0,0,0,1,20],
@@ -245,9 +249,5 @@ var NAVTREEINDEX54 =
 "de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#a9ae604df89f8e6f1a265d77cf1c71355":[7,0,8,1,7,26,0],
 "de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#a9ae604df89f8e6f1a265d77cf1c71355":[5,0,8,2,7,26,0],
 "de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#aa84749135e0dd087239a40f53a80c62e":[7,0,8,1,7,26,2],
-"de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#aa84749135e0dd087239a40f53a80c62e":[5,0,8,2,7,26,2],
-"de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#add817c0b072208252a77462bf3940fce":[7,0,8,1,7,26,1],
-"de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#add817c0b072208252a77462bf3940fce":[5,0,8,2,7,26,1],
-"de/d05/namespacedl7_1_1ini_1_1detail.html":[5,0,2,1,0],
-"de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2":[5,0,2,1,0,5]
+"de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#aa84749135e0dd087239a40f53a80c62e":[5,0,8,2,7,26,2]
 };
