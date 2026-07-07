@@ -84,14 +84,6 @@ namespace fl7::fonts::render {
         assert(cb);
         cb->edit().write(xl7::graphics::shaders::ConstantBufferWrite::from_data_ptr(&cb_data));
 
-        xl7::graphics::meshes::VertexLayout vertex_layout;
-        vertex_layout.elements = {
-            {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::POSITION, .semantic_index = 0, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT2},
-            {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD, .semantic_index = 0, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT2},
-            {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::COLOR,    .semantic_index = 0, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT4},
-        };
-        assert(vertex_layout.calculate_size() == sizeof(Vertex));
-
         // Grow (never shrink) a single persistent vertex buffer instead of
         // creating/destroying one per batch per frame.
         if (!_vertex_buffer_id || _vertex_buffer_capacity < _vertices.size())
@@ -106,7 +98,7 @@ namespace fl7::fonts::render {
                 .topology = xl7::graphics::meshes::Topology::TriangleList,
                 .vertex_count = _vertex_buffer_capacity,
                 .vertex_stride = sizeof(Vertex),
-                .vertex_layout = vertex_layout,
+                .vertex_layout = _vertex_layout,
             };
             _vertex_buffer_id = xl7::graphics::mesh_manager()->create_vertex_buffer(_resource_prefix + u8"VB", vb_desc);
         }
@@ -283,6 +275,13 @@ namespace fl7::fonts::render {
     {
         if (_vertex_shader_id)
             return;
+
+        _vertex_layout.elements = {
+            {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::POSITION, .semantic_index = 0, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT2},
+            {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD, .semantic_index = 0, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT2},
+            {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::COLOR,    .semantic_index = 0, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT4},
+        };
+        assert(_vertex_layout.calculate_size() == sizeof(Vertex));
 
         cl7::io::File shader_file(cl7::platform::filesystem::get_working_directory() + _get_shader_path());
         cl7::io::Utf8Reader shader_reader(&shader_file);
