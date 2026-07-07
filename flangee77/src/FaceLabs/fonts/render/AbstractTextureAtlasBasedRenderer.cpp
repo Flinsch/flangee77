@@ -156,10 +156,12 @@ namespace fl7::fonts::render {
             _current_batch_font_size = font_size;
         }
 
-        const float left   = state.cursor.x + static_cast<float>(entry->pixel_offset.left);
-        const float top    = state.cursor.y + static_cast<float>(entry->pixel_offset.top);
-        const float right  = left + static_cast<float>(entry->image_width);
-        const float bottom = top  + static_cast<float>(entry->image_height);
+        const ml7::Vector2f& scaling = state.text_style.scaling;
+
+        const float left   = state.cursor.x + static_cast<float>(entry->pixel_offset.left) * scaling.x;
+        const float top    = state.cursor.y + static_cast<float>(entry->pixel_offset.top) * scaling.y;
+        const float right  = left + static_cast<float>(entry->image_width) * scaling.x;
+        const float bottom = top  + static_cast<float>(entry->image_height) * scaling.y;
 
         const AtlasLayer& layer = *entry->layer;
         const float iw = 1.0f / static_cast<float>(layer.width);
