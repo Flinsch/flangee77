@@ -172,6 +172,9 @@ namespace xl7::graphics::impl::direct3d11::shaders {
                 continue;
 
             graphics::shaders::TextureSamplerDeclaration texture_sampler_declaration;
+            texture_sampler_declaration.type = d3d_shader_input_bind_desc.Type == D3D_SIT_TEXTURE
+                ? graphics::shaders::TextureSamplerDeclaration::Type::Texture
+                : graphics::shaders::TextureSamplerDeclaration::Type::Sampler;
             texture_sampler_declaration.name = cl7::astring{d3d_shader_input_bind_desc.Name};
             texture_sampler_declaration.index = d3d_shader_input_bind_desc.BindPoint;
             texture_sampler_declaration.element_count = d3d_shader_input_bind_desc.BindCount;

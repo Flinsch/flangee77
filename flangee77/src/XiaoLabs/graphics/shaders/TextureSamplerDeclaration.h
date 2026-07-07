@@ -12,6 +12,15 @@ namespace xl7::graphics::shaders {
 struct TextureSamplerDeclaration
 {
 
+    enum struct Type
+    {
+        Texture,
+        Sampler,
+    };
+
+    /** Whether this declaration refers to a texture or a sampler. */
+    Type type;
+
     /** The name of the texture/sampler. */
     cl7::astring name;
 

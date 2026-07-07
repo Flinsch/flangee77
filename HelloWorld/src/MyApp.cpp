@@ -236,17 +236,20 @@ namespace helloworld {
                 } // for each constant "variable"
             } // for each cbuffer
 
-            std::vector<const xl7::graphics::shaders::TextureSamplerDeclaration*> texture_sampler_declarations;
+            std::vector<const xl7::graphics::shaders::TextureSamplerDeclaration*> sampler_declarations;
             for (const auto& texture_sampler_declaration : shader->get_reflection_result().texture_sampler_declarations)
-                texture_sampler_declarations.push_back(&texture_sampler_declaration);
-            std::ranges::sort(texture_sampler_declarations, [](const auto& a, const auto& b) {
+            {
+                if (texture_sampler_declaration.type == xl7::graphics::shaders::TextureSamplerDeclaration::Type::Sampler)
+                    sampler_declarations.push_back(&texture_sampler_declaration);
+            }
+            std::ranges::sort(sampler_declarations, [](const auto& a, const auto& b) {
                 return a->index < b->index;
             });
 
-            for (const auto* s : texture_sampler_declarations)
+            for (const auto* s : sampler_declarations)
             {
                 LOG_TYPE(cl7::text::codec::to_utf8(s->name) + u8"\ts" + cl7::to_string(s->index), cl7::logging::LogType::Item);
-            } // for each texture/sampler
+            } // for each sampler
         }
 
 

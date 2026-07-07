@@ -177,6 +177,7 @@ namespace xl7::graphics::impl::direct3d9::shaders {
             {
                 const auto* const ctype = reinterpret_cast<const Type*>(ctab_ptr + cinfo[i].TypeInfo);
 
+                graphics::shaders::TextureSamplerDeclaration::Type texture_sampler_type;
                 switch (ctype->Type)
                 {
                     case 1: // D3DXPT_BOOL
@@ -188,17 +189,22 @@ namespace xl7::graphics::impl::direct3d9::shaders {
                     case 7: // D3DXPT_TEXTURE2D
                     case 8: // D3DXPT_TEXTURE3D
                     case 9: // D3DXPT_TEXTURECUBE
+                        texture_sampler_type = graphics::shaders::TextureSamplerDeclaration::Type::Texture;
+                        break;
                     case 10: // D3DXPT_SAMPLER
                     case 11: // D3DXPT_SAMPLER1D
                     case 12: // D3DXPT_SAMPLER2D
                     case 13: // D3DXPT_SAMPLER3D
                     case 14: // D3DXPT_SAMPLERCUBE
+                        texture_sampler_type = graphics::shaders::TextureSamplerDeclaration::Type::Sampler;
                         break;
                     default:
                         assert(false);
+                        continue;
                 } // switch parameter type
 
                 graphics::shaders::TextureSamplerDeclaration texture_sampler_declaration;
+                texture_sampler_declaration.type = texture_sampler_type;
                 texture_sampler_declaration.name = cl7::astring{ctab_ptr + cinfo[i].Name};
                 texture_sampler_declaration.index = static_cast<unsigned>(cinfo[i].RegisterIndex);
                 texture_sampler_declaration.element_count = static_cast<unsigned>(ctype->Elements);
