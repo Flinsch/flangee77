@@ -5,7 +5,11 @@
 #include <FaceLabs/fonts/Font.h>
 
 #include <FaceLabs/fonts/raster/AnalyticalCoverageRasterizer.h>
+#include <FaceLabs/fonts/raster/SdfRasterizer.h>
+#include <FaceLabs/fonts/raster/MsdfRasterizer.h>
 #include <FaceLabs/fonts/render/BitmapRenderer.h>
+#include <FaceLabs/fonts/render/SdfRenderer.h>
+#include <FaceLabs/fonts/render/MsdfRenderer.h>
 #include <FaceLabs/fonts/render/TestRenderer.h>
 
 #include <XiaoLabs/graphics/meshes/VertexBuffer.h>
@@ -100,6 +104,13 @@ private:
 
     fl7::fonts::raster::AnalyticalCoverageRasterizer _bitmap_rasterizer;
     std::unique_ptr<fl7::fonts::render::BitmapRenderer> _bitmap_renderer;
+
+    fl7::fonts::raster::SdfRasterizer _sdf_rasterizer;
+    std::unique_ptr<fl7::fonts::render::SdfRenderer> _sdf_renderer;
+
+    fl7::fonts::raster::MsdfRasterizer _msdf_rasterizer;
+    std::unique_ptr<fl7::fonts::render::MsdfRenderer> _msdf_renderer;
+
     std::unique_ptr<fl7::fonts::render::TestRenderer> _test_renderer;
 
     xl7::graphics::meshes::VertexBuffer::Id _vertex_buffer_id;

@@ -258,6 +258,8 @@ namespace helloworld {
         _font = std::make_unique<fl7::fonts::Font>(std::move(font_loader));
 
         _bitmap_renderer = std::make_unique<fl7::fonts::render::BitmapRenderer>(&_bitmap_rasterizer);
+        _sdf_renderer = std::make_unique<fl7::fonts::render::SdfRenderer>(&_sdf_rasterizer);
+        _msdf_renderer = std::make_unique<fl7::fonts::render::MsdfRenderer>(&_msdf_rasterizer);
         _test_renderer = std::make_unique<fl7::fonts::render::TestRenderer>();
 
 
@@ -289,6 +291,8 @@ namespace helloworld {
     bool MyApp::_shutdown_impl()
     {
         _bitmap_renderer.reset();
+        _sdf_renderer.reset();
+        _msdf_renderer.reset();
         _test_renderer.reset();
 
         _font.reset();
@@ -363,17 +367,23 @@ namespace helloworld {
         rendering_context->draw_indexed();
 
 
-        fl7::fonts::render::AbstractRenderer& font_renderer = *_bitmap_renderer;
-        //fl7::fonts::render::AbstractRenderer& font_renderer = *_test_renderer;
         fl7::fonts::TextStyle text_style;
         text_style.font_size = 16.0f;
-        text_style.scaling = {2.5f, 2.5f};
-        //font_renderer.draw_text(u8"Hello, World!", _font.get(), &text_style);
+        text_style.scaling = {2.0f, 2.0f};
         cl7::u8string text = u8"Hello, World!";
         text.reserve(text.size() + (0x7e - 0x20) + 1);
         for (cl7::u8char_t c = 0x20; c <= 0x7e; ++c)
             text.append(1, c);
-        font_renderer.draw_text(text, _font.get(), &text_style, {10.0f, text_style.font_size * text_style.scaling.y});
+
+        // Draw the same text with each renderer, stacked vertically, for comparison.
+        const float line_height = text_style.font_size * text_style.scaling.y + 20.0f;
+        float y = text_style.font_size * text_style.scaling.y + 10.0f;
+
+        _bitmap_renderer->draw_text(text, _font.get(), &text_style, {10.0f, y});
+        y += line_height;
+        _sdf_renderer->draw_text(text, _font.get(), &text_style, {10.0f, y});
+        y += line_height;
+        _msdf_renderer->draw_text(text, _font.get(), &text_style, {10.0f, y});
     }
 
     /**

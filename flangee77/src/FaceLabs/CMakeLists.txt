@@ -14,8 +14,12 @@ target_sources(flangee77
     fonts/raster/AbstractBitmapRasterizer.cpp
     fonts/raster/AbstractRasterizer.cpp
     fonts/raster/AnalyticalCoverageRasterizer.cpp
+    fonts/raster/MsdfRasterizer.cpp
     fonts/raster/OversampledBitmapRasterizer.cpp
+    fonts/raster/SdfRasterizer.cpp
     fonts/raster/SimpleBitmapRasterizer.cpp
+
+    fonts/raster/detail/glyph_geometry.cpp
 
     fonts/render/AbstractRenderer.cpp
     fonts/render/AbstractTextureAtlasBasedRenderer.cpp
