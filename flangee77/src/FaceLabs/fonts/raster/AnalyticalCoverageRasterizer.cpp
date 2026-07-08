@@ -41,7 +41,7 @@ namespace fl7::fonts::raster {
         const float dx_dy_norm = is_ascending_x ? dx_dy : -dx_dy;
 
         // Determine the pixel rows that are
-        // intersected by the current
+        // intersected by the current edge.
         const auto row0 = static_cast<int>(std::floor(down_segment.start.y)) - pixel_offset.top;
         const auto row1 = static_cast<int>(std::ceil(down_segment.end.y)) - pixel_offset.top;
         assert(row0 < row1);
@@ -160,7 +160,7 @@ namespace fl7::fonts::raster {
 
     static void _process_glyph(const Glyph& glyph, float font_size, const PixelOffset& pixel_offset, const dl7::Buffer2d<float>& coverage_canvas)
     {
-        const ml7::Vector2f transform{font_size, -font_size};
+        const ml7::Vector2f transform{font_size, -font_size}; // scale and flip vertically
 
         for (const auto& contour : glyph.contours)
         {
