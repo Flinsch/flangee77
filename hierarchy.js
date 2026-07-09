@@ -22,7 +22,9 @@ var hierarchy =
         [ "fl7::fonts::raster::AnalyticalCoverageRasterizer", "df/d68/classfl7_1_1fonts_1_1raster_1_1AnalyticalCoverageRasterizer.html", null ],
         [ "fl7::fonts::raster::OversampledBitmapRasterizer", "dd/d48/classfl7_1_1fonts_1_1raster_1_1OversampledBitmapRasterizer.html", null ],
         [ "fl7::fonts::raster::SimpleBitmapRasterizer", "d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html", null ]
-      ] ]
+      ] ],
+      [ "fl7::fonts::raster::MsdfRasterizer", "d0/d09/classfl7_1_1fonts_1_1raster_1_1MsdfRasterizer.html", null ],
+      [ "fl7::fonts::raster::SdfRasterizer", "d7/d9c/classfl7_1_1fonts_1_1raster_1_1SdfRasterizer.html", null ]
     ] ],
     [ "al7::packing::AbstractRectPacker", "d2/d09/classal7_1_1packing_1_1AbstractRectPacker.html", [
       [ "al7::packing::AbstractFreeRectPacker", "da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html", [
@@ -155,6 +157,7 @@ var hierarchy =
       [ "cl7::text::codec::EncodeResult< Tchar >", "d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult.html", null ]
     ] ],
     [ "xl7::graphics::Color", "de/df3/structxl7_1_1graphics_1_1Color.html", null ],
+    [ "fl7::fonts::raster::MsdfRasterizer::ColoredSegment", "d5/db2/structfl7_1_1fonts_1_1raster_1_1MsdfRasterizer_1_1ColoredSegment.html", null ],
     [ "dl7::xml::Format::CompactOptions", "d5/de1/structdl7_1_1xml_1_1Format_1_1CompactOptions.html", null ],
     [ "xl7::graphics::shaders::CompileOptions", "de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html", null ],
     [ "xl7::graphics::impl::shared::meshes::ComposedVertexLayout", "d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout.html", null ],
@@ -206,6 +209,7 @@ var hierarchy =
     [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::DrawBatch", "df/da0/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1DrawBatch.html", null ],
     [ "xl7::DriverResolver::DriverEntry", "df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html", null ],
     [ "xl7::DriverResolver", "de/d70/structxl7_1_1DriverResolver.html", null ],
+    [ "fl7::fonts::raster::MsdfRasterizer::EdgeQuery", "d8/dcb/structfl7_1_1fonts_1_1raster_1_1MsdfRasterizer_1_1EdgeQuery.html", null ],
     [ "xl7::graphics::meshes::VertexLayout::Element", "d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html", null ],
     [ "cl7::text::codec::EncodeBuffer< Tchar >", "d0/d4a/structcl7_1_1text_1_1codec_1_1EncodeBuffer.html", null ],
     [ "cl7::text::codec::Encoder< Tchar, TDefaultErrorHandler >", "d6/d1d/classcl7_1_1text_1_1codec_1_1Encoder.html", null ],

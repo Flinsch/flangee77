@@ -79,7 +79,6 @@ var namespacecl7 =
     [ "u8string_view", "d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec", null ],
     [ "wisstream", "d1/d2e/namespacecl7.html#a66b3f7e3de4ec23e6f0ea6b9c1b33899", null ],
     [ "wosstream", "d1/d2e/namespacecl7.html#a88069306694d6b5b47cf47582b4d597e", null ],
-    [ "_to_string", "d1/d2e/namespacecl7.html#a538de9442d75303bcd0e9c6ca4c03306", null ],
     [ "coalesce", "d1/d2e/namespacecl7.html#a37dee267464d4f5f4bb0aabe534a9d0f", null ],
     [ "finally", "d1/d2e/namespacecl7.html#a8927ccd85e32974e15e3c21c560e5758", null ],
     [ "flip_if", "d1/d2e/namespacecl7.html#a95dce5131ec23d1f3f2f7559715ce4ab", null ],

@@ -27,11 +27,5 @@ var namespacetl7_1_1reporting =
       [ "Error", "df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740af45bcbdd1d34c6336ada04cda286c010", null ],
       [ "Info", "df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a8f8b7b6f5296a5279cba94c1485337b1", null ],
       [ "Code", "df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740ab18bc032aedfc8dfd749bd82f2025dff", null ]
-    ] ],
-    [ "_cout", "df/d9d/namespacetl7_1_1reporting.html#a6310372464eaa8bff5941152975f2153", null ],
-    [ "_directory_path", "df/d9d/namespacetl7_1_1reporting.html#a0256b4c1e3f37129d5a42601f36ee352", null ],
-    [ "_file_path", "df/d9d/namespacetl7_1_1reporting.html#ab6a018561df56d013b90907fc8a16b47", null ],
-    [ "_filename", "df/d9d/namespacetl7_1_1reporting.html#a1b58b52cc0ad923b9bb13c1b456b7ea8", null ],
-    [ "operator<<", "df/d9d/namespacetl7_1_1reporting.html#a388574a8ab121d21e6d3670ab72194d5", null ],
-    [ "operator<<", "df/d9d/namespacetl7_1_1reporting.html#ad428c153040247d9372cba06ac2d0ad9", null ]
+    ] ]
 ];

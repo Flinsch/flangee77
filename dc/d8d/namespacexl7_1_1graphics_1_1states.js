@@ -85,6 +85,5 @@ var namespacexl7_1_1graphics_1_1states =
     [ "WindingOrder", "dc/d8d/namespacexl7_1_1graphics_1_1states.html#a1ae13c3d64bc36bd9cb54e97a000c121", [
       [ "Clockwise", "dc/d8d/namespacexl7_1_1graphics_1_1states.html#a1ae13c3d64bc36bd9cb54e97a000c121aba360a794737bcc8657a5b6e870d7ba8", null ],
       [ "CounterClockwise", "dc/d8d/namespacexl7_1_1graphics_1_1states.html#a1ae13c3d64bc36bd9cb54e97a000c121a8f23635f9ec49db2161fc5cddf033a79", null ]
-    ] ],
-    [ "_identifier", "dc/d8d/namespacexl7_1_1graphics_1_1states.html#a51011b7b4671867bb7f20c546ab8eb24", null ]
+    ] ]
 ];

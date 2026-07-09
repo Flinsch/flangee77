@@ -1081,14 +1081,14 @@ $(document).ready(function(){initNavTree('dc/df1/Matrix4x4_8h_source.html','../.
 </div>
 <div class="line"><a id="l01186" name="l01186"></a><span class="lineno"> 1186</span> </div>
 <div class="foldopen" id="foldopen01195" data-start="{" data-end="}">
-<div class="line"><a id="l01195" name="l01195"></a><span class="lineno"><a class="line" href="../../d7/dea/structml7_1_1Matrix4x4.html#af305fdec270c68c3706c0404fa0c8a21"> 1195</a></span>    <span class="keyword">static</span> <a class="code hl_struct" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a> <a class="code hl_function" href="../../d7/dea/structml7_1_1Matrix4x4.html#af305fdec270c68c3706c0404fa0c8a21">hue</a>(T r)</div>
+<div class="line"><a id="l01195" name="l01195"></a><span class="lineno"><a class="line" href="../../d7/dea/structml7_1_1Matrix4x4.html#af305fdec270c68c3706c0404fa0c8a21"> 1195</a></span>    <span class="keyword">static</span> <a class="code hl_struct" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a> <a class="code hl_function" href="../../d7/dea/structml7_1_1Matrix4x4.html#af305fdec270c68c3706c0404fa0c8a21">hue</a>(T <a class="code hl_variable" href="../../da/df3/MsdfRasterizer_8cpp.html#a4c5c6ceb8ed33456261fa907136e0c3a">r</a>)</div>
 <div class="line"><a id="l01196" name="l01196"></a><span class="lineno"> 1196</span>    {</div>
-<div class="line"><a id="l01197" name="l01197"></a><span class="lineno"> 1197</span>        <span class="keywordflow">return</span> hue(r, {T{0.3086}, T{0.6094}, T{0.0820}});</div>
+<div class="line"><a id="l01197" name="l01197"></a><span class="lineno"> 1197</span>        <span class="keywordflow">return</span> hue(<a class="code hl_variable" href="../../da/df3/MsdfRasterizer_8cpp.html#a4c5c6ceb8ed33456261fa907136e0c3a">r</a>, {T{0.3086}, T{0.6094}, T{0.0820}});</div>
 <div class="line"><a id="l01198" name="l01198"></a><span class="lineno"> 1198</span>    }</div>
 </div>
 <div class="line"><a id="l01199" name="l01199"></a><span class="lineno"> 1199</span> </div>
 <div class="foldopen" id="foldopen01206" data-start="{" data-end="}">
-<div class="line"><a id="l01206" name="l01206"></a><span class="lineno"><a class="line" href="../../d7/dea/structml7_1_1Matrix4x4.html#ac5c04477f5e0e9b15dd7be9186108a82"> 1206</a></span>    <span class="keyword">static</span> <a class="code hl_struct" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a> <a class="code hl_function" href="../../d7/dea/structml7_1_1Matrix4x4.html#ac5c04477f5e0e9b15dd7be9186108a82">hue</a>(T r, <span class="keyword">const</span> <a class="code hl_struct" href="../../d6/d64/structml7_1_1Vector3.html">Vector3&lt;T&gt;</a>&amp; l)</div>
+<div class="line"><a id="l01206" name="l01206"></a><span class="lineno"><a class="line" href="../../d7/dea/structml7_1_1Matrix4x4.html#ac5c04477f5e0e9b15dd7be9186108a82"> 1206</a></span>    <span class="keyword">static</span> <a class="code hl_struct" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a> <a class="code hl_function" href="../../d7/dea/structml7_1_1Matrix4x4.html#ac5c04477f5e0e9b15dd7be9186108a82">hue</a>(T <a class="code hl_variable" href="../../da/df3/MsdfRasterizer_8cpp.html#a4c5c6ceb8ed33456261fa907136e0c3a">r</a>, <span class="keyword">const</span> <a class="code hl_struct" href="../../d6/d64/structml7_1_1Vector3.html">Vector3&lt;T&gt;</a>&amp; l)</div>
 <div class="line"><a id="l01207" name="l01207"></a><span class="lineno"> 1207</span>    {</div>
 <div class="line"><a id="l01208" name="l01208"></a><span class="lineno"> 1208</span>        <span class="comment">// http://www.graficaobscura.com/matrix/index.html</span></div>
 <div class="line"><a id="l01209" name="l01209"></a><span class="lineno"> 1209</span>        <span class="comment">// http://beesbuzz.biz/code/hsv_color_transforms.php</span></div>
@@ -1102,7 +1102,7 @@ $(document).ready(function(){initNavTree('dc/df1/Matrix4x4_8h_source.html','../.
 <div class="line"><a id="l01217" name="l01217"></a><span class="lineno"> 1217</span> </div>
 <div class="line"><a id="l01218" name="l01218"></a><span class="lineno"> 1218</span>        <span class="keyword">const</span> <a class="code hl_struct" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a> yiq2rgb = rgb2yiq.<a class="code hl_function" href="../../d7/dea/structml7_1_1Matrix4x4.html#abf5bdc368842858812e3ad6ce6196f15">inverted</a>();</div>
 <div class="line"><a id="l01219" name="l01219"></a><span class="lineno"> 1219</span> </div>
-<div class="line"><a id="l01220" name="l01220"></a><span class="lineno"> 1220</span>        <span class="keyword">const</span> <a class="code hl_struct" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a> hue_rot = Matrix4x4::rotx(r);</div>
+<div class="line"><a id="l01220" name="l01220"></a><span class="lineno"> 1220</span>        <span class="keyword">const</span> <a class="code hl_struct" href="../../d7/dea/structml7_1_1Matrix4x4.html">Matrix4x4</a> hue_rot = Matrix4x4::rotx(<a class="code hl_variable" href="../../da/df3/MsdfRasterizer_8cpp.html#a4c5c6ceb8ed33456261fa907136e0c3a">r</a>);</div>
 <div class="line"><a id="l01221" name="l01221"></a><span class="lineno"> 1221</span> </div>
 <div class="line"><a id="l01222" name="l01222"></a><span class="lineno"> 1222</span>        <span class="keywordflow">return</span> yiq2rgb * hue_rot * rgb2yiq;</div>
 <div class="line"><a id="l01223" name="l01223"></a><span class="lineno"> 1223</span>    }</div>
@@ -1134,6 +1134,7 @@ $(document).ready(function(){initNavTree('dc/df1/Matrix4x4_8h_source.html','../.
 <div class="line"><a id="l01247" name="l01247"></a><span class="lineno"> 1247</span><span class="preprocessor">#endif </span><span class="comment">// ML7_MATRIX4X4_H</span></div>
 <div class="ttc" id="aMatrix3x3_8h_html"><div class="ttname"><a href="../../d7/dec/Matrix3x3_8h.html">Matrix3x3.h</a></div></div>
 <div class="ttc" id="aMatrix3x4_8h_html"><div class="ttname"><a href="../../d6/d44/Matrix3x4_8h.html">Matrix3x4.h</a></div></div>
+<div class="ttc" id="aMsdfRasterizer_8cpp_html_a4c5c6ceb8ed33456261fa907136e0c3a"><div class="ttname"><a href="../../da/df3/MsdfRasterizer_8cpp.html#a4c5c6ceb8ed33456261fa907136e0c3a">r</a></div><div class="ttdeci">uint8_t r</div><div class="ttdef"><b>Definition</b> MsdfRasterizer.cpp:29</div></div>
 <div class="ttc" id="aVector3_8h_html"><div class="ttname"><a href="../../dd/d8c/Vector3_8h.html">Vector3.h</a></div></div>
 <div class="ttc" id="aVector4_8h_html"><div class="ttname"><a href="../../d7/d36/Vector4_8h.html">Vector4.h</a></div></div>
 <div class="ttc" id="anamespaceml7_html"><div class="ttname"><a href="../../d3/d53/namespaceml7.html">ml7</a></div><div class="ttdef"><b>Definition</b> Angle.h:8</div></div>

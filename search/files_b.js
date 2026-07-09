@@ -40,8 +40,10 @@ var searchData=
   ['metrics_2eh_37',['metrics.h',['../df/d34/metrics_8h.html',1,'']]],
   ['minmagfiltertype_2eh_38',['MinMagFilterType.h',['../d8/d2f/MinMagFilterType_8h.html',1,'']]],
   ['mipfiltertype_2eh_39',['MipFilterType.h',['../d6/df0/MipFilterType_8h.html',1,'']]],
-  ['msdfrenderer_2ecpp_40',['MsdfRenderer.cpp',['../d4/d17/MsdfRenderer_8cpp.html',1,'']]],
-  ['msdfrenderer_2eh_41',['MsdfRenderer.h',['../da/d65/MsdfRenderer_8h.html',1,'']]],
-  ['multilinestringmatcher_2ecpp_42',['MultilineStringMatcher.cpp',['../d5/da9/MultilineStringMatcher_8cpp.html',1,'']]],
-  ['multilinestringmatcher_2eh_43',['MultilineStringMatcher.h',['../da/d25/MultilineStringMatcher_8h.html',1,'']]]
+  ['msdfrasterizer_2ecpp_40',['MsdfRasterizer.cpp',['../da/df3/MsdfRasterizer_8cpp.html',1,'']]],
+  ['msdfrasterizer_2eh_41',['MsdfRasterizer.h',['../d5/de5/MsdfRasterizer_8h.html',1,'']]],
+  ['msdfrenderer_2ecpp_42',['MsdfRenderer.cpp',['../d4/d17/MsdfRenderer_8cpp.html',1,'']]],
+  ['msdfrenderer_2eh_43',['MsdfRenderer.h',['../da/d65/MsdfRenderer_8h.html',1,'']]],
+  ['multilinestringmatcher_2ecpp_44',['MultilineStringMatcher.cpp',['../d5/da9/MultilineStringMatcher_8cpp.html',1,'']]],
+  ['multilinestringmatcher_2eh_45',['MultilineStringMatcher.h',['../da/d25/MultilineStringMatcher_8h.html',1,'']]]
 ];

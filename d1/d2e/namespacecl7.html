@@ -309,9 +309,6 @@ requires (!std::is_reference_v&lt;Telement&gt; &amp;&amp; std::is_trivially_copy
 requires (!std::is_reference_v&lt;Tobject&gt; &amp;&amp; !std::is_pointer_v&lt;Tobject&gt; &amp;&amp; !std::is_array_v&lt;Tobject&gt; &amp;&amp; !std::ranges::contiguous_range&lt;Tobject&gt; &amp;&amp; std::is_trivially_copyable_v&lt;Tobject&gt;)</td></tr>
 <tr class="memitem:ae640c4766ccb5b50f1ac86863496e7de"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#ae640c4766ccb5b50f1ac86863496e7de">make_byte_view</a> (const Tobject &amp;object)</td></tr>
 <tr class="separator:ae640c4766ccb5b50f1ac86863496e7de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a538de9442d75303bcd0e9c6ca4c03306" id="r_a538de9442d75303bcd0e9c6ca4c03306"><td class="memTemplParams" colspan="2">template&lt;std::integral T&gt; </td></tr>
-<tr class="memitem:a538de9442d75303bcd0e9c6ca4c03306"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a538de9442d75303bcd0e9c6ca4c03306">_to_string</a> (T val)</td></tr>
-<tr class="separator:a538de9442d75303bcd0e9c6ca4c03306"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77903d2176b1a6ef2b24bca912ccf1b5" id="r_a77903d2176b1a6ef2b24bca912ccf1b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a77903d2176b1a6ef2b24bca912ccf1b5">to_string</a> (bool val)</td></tr>
 <tr class="separator:a77903d2176b1a6ef2b24bca912ccf1b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c641b5801ed965c1374fa6e2e0ca9ac" id="r_a3c641b5801ed965c1374fa6e2e0ca9ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a3c641b5801ed965c1374fa6e2e0ca9ac">to_string</a> (signed val)</td></tr>
@@ -369,19 +366,19 @@ requires ( std::is_same_v&lt;Tchar, typename std::remove_cvref_t&lt;Tstring_view
 <tr class="separator:a8d2be612ac2224fb419fccf262bcab25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37dee267464d4f5f4bb0aabe534a9d0f" id="r_a37dee267464d4f5f4bb0aabe534a9d0f"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 &gt; <br />
 requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt; &amp;&amp; std::is_convertible_v&lt;T1, bool&gt;)</td></tr>
-<tr class="memitem:a37dee267464d4f5f4bb0aabe534a9d0f"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a37dee267464d4f5f4bb0aabe534a9d0f">coalesce</a> (T1 &amp;&amp;a, T2 &amp;&amp;b)</td></tr>
+<tr class="memitem:a37dee267464d4f5f4bb0aabe534a9d0f"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a37dee267464d4f5f4bb0aabe534a9d0f">coalesce</a> (T1 &amp;&amp;<a class="el" href="../../da/df3/MsdfRasterizer_8cpp.html#af4007aacd75b22aee32dba9ea96082c0">a</a>, T2 &amp;&amp;<a class="el" href="../../da/df3/MsdfRasterizer_8cpp.html#a4313c9563516f94387762ab05763456b">b</a>)</td></tr>
 <tr class="separator:a37dee267464d4f5f4bb0aabe534a9d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95dce5131ec23d1f3f2f7559715ce4ab" id="r_a95dce5131ec23d1f3f2f7559715ce4ab"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 &gt; <br />
 requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt;)</td></tr>
-<tr class="memitem:a95dce5131ec23d1f3f2f7559715ce4ab"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a95dce5131ec23d1f3f2f7559715ce4ab">flip_if</a> (bool flip_if, T1 &amp;&amp;a, T2 &amp;&amp;b)</td></tr>
+<tr class="memitem:a95dce5131ec23d1f3f2f7559715ce4ab"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a95dce5131ec23d1f3f2f7559715ce4ab">flip_if</a> (bool flip_if, T1 &amp;&amp;<a class="el" href="../../da/df3/MsdfRasterizer_8cpp.html#af4007aacd75b22aee32dba9ea96082c0">a</a>, T2 &amp;&amp;<a class="el" href="../../da/df3/MsdfRasterizer_8cpp.html#a4313c9563516f94387762ab05763456b">b</a>)</td></tr>
 <tr class="separator:a95dce5131ec23d1f3f2f7559715ce4ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade90db04d06440c85d818d7a57d9f6f8" id="r_ade90db04d06440c85d818d7a57d9f6f8"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 &gt; <br />
 requires (std::same_as&lt;std::decay_t&lt;T1&gt;, std::decay_t&lt;T2&gt;&gt;)</td></tr>
-<tr class="memitem:ade90db04d06440c85d818d7a57d9f6f8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#ade90db04d06440c85d818d7a57d9f6f8">flip_unless</a> (bool flip_unless, T1 &amp;&amp;a, T2 &amp;&amp;b)</td></tr>
+<tr class="memitem:ade90db04d06440c85d818d7a57d9f6f8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#ade90db04d06440c85d818d7a57d9f6f8">flip_unless</a> (bool flip_unless, T1 &amp;&amp;<a class="el" href="../../da/df3/MsdfRasterizer_8cpp.html#af4007aacd75b22aee32dba9ea96082c0">a</a>, T2 &amp;&amp;<a class="el" href="../../da/df3/MsdfRasterizer_8cpp.html#a4313c9563516f94387762ab05763456b">b</a>)</td></tr>
 <tr class="separator:ade90db04d06440c85d818d7a57d9f6f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85462c9bac4dc92bd878c0ccea9f587f" id="r_a85462c9bac4dc92bd878c0ccea9f587f"><td class="memTemplParams" colspan="2">template&lt;std::ranges::range R1, std::ranges::range R2, typename Tpred  = std::ranges::equal_to, typename Tproj1  = std::identity, typename Tproj2  = std::identity&gt; <br />
 requires (std::indirectly_comparable&lt;std::ranges::iterator_t&lt;R1&gt;, std::ranges::iterator_t&lt;R2&gt;, Tpred, Tproj1, Tproj2&gt;)</td></tr>
-<tr class="memitem:a85462c9bac4dc92bd878c0ccea9f587f"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a85462c9bac4dc92bd878c0ccea9f587f">unordered_equal</a> (const R1 &amp;a, const R2 &amp;b, Tpred pred={}, Tproj1 proj1={}, Tproj2 proj2={})</td></tr>
+<tr class="memitem:a85462c9bac4dc92bd878c0ccea9f587f"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a85462c9bac4dc92bd878c0ccea9f587f">unordered_equal</a> (const R1 &amp;<a class="el" href="../../da/df3/MsdfRasterizer_8cpp.html#af4007aacd75b22aee32dba9ea96082c0">a</a>, const R2 &amp;<a class="el" href="../../da/df3/MsdfRasterizer_8cpp.html#a4313c9563516f94387762ab05763456b">b</a>, Tpred pred={}, Tproj1 proj1={}, Tproj2 proj2={})</td></tr>
 <tr class="separator:a85462c9bac4dc92bd878c0ccea9f587f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fcbab39a4e69f5e398b9d2191758031" id="r_a4fcbab39a4e69f5e398b9d2191758031"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2e/namespacecl7.html#a4fcbab39a4e69f5e398b9d2191758031">to_string</a> (<a class="el" href="../../d8/d30/namespacexl7_1_1graphics.html#ae277203cd02d27d7cc9fe2f265338be2">xl7::graphics::ChannelOrder</a> channel_order)</td></tr>
 <tr class="separator:a4fcbab39a4e69f5e398b9d2191758031"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -870,34 +867,6 @@ template&lt;any_string_view_like Tstring_view_like&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a538de9442d75303bcd0e9c6ca4c03306" name="a538de9442d75303bcd0e9c6ca4c03306"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a538de9442d75303bcd0e9c6ca4c03306">&#9670;&#160;</a></span>_to_string()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;std::integral T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">u8string</a> cl7::_to_string </td>
-          <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>val</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a37dee267464d4f5f4bb0aabe534a9d0f" name="a37dee267464d4f5f4bb0aabe534a9d0f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a37dee267464d4f5f4bb0aabe534a9d0f">&#9670;&#160;</a></span>coalesce()</h2>
 

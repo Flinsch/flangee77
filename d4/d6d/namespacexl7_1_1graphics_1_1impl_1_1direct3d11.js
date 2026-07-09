@@ -20,10 +20,5 @@ var namespacexl7_1_1graphics_1_1impl_1_1direct3d11 =
     [ "GraphicsSystemImpl", "d8/d86/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl.html", "d8/d86/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl" ],
     [ "RenderingContextImpl", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html", "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl" ],
     [ "RenderingDeviceImpl", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html", "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl" ],
-    [ "ResourceFactoryImpl", "df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html", "df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl" ],
-    [ "_d3d_clear_flags_from", "d4/d6d/namespacexl7_1_1graphics_1_1impl_1_1direct3d11.html#a705a910a69a8b034d9ba7c1c8a9ac112", null ],
-    [ "_d3d_primitive_topology_from", "d4/d6d/namespacexl7_1_1graphics_1_1impl_1_1direct3d11.html#add333d3b045ad2c5e23cd6dd468ff814", null ],
-    [ "_d3d_semantic_name_from", "d4/d6d/namespacexl7_1_1graphics_1_1impl_1_1direct3d11.html#a9521322e7105a6eeba0d0642c56ce482", null ],
-    [ "_d3d_viewport_from", "d4/d6d/namespacexl7_1_1graphics_1_1impl_1_1direct3d11.html#a74d3cfb0e0cc491af737535331b69acb", null ],
-    [ "_dxgi_format_from", "d4/d6d/namespacexl7_1_1graphics_1_1impl_1_1direct3d11.html#a5894a0fbbef04ec8486e516b12ba51c1", null ]
+    [ "ResourceFactoryImpl", "df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html", "df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl" ]
 ];

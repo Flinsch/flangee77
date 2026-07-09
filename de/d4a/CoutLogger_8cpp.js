@@ -24,11 +24,5 @@ var CoutLogger_8cpp =
       [ "Error", "de/d4a/CoutLogger_8cpp.html#a2076a4332e2f7ada874779153be0a740af45bcbdd1d34c6336ada04cda286c010", null ],
       [ "Info", "de/d4a/CoutLogger_8cpp.html#a2076a4332e2f7ada874779153be0a740a8f8b7b6f5296a5279cba94c1485337b1", null ],
       [ "Code", "de/d4a/CoutLogger_8cpp.html#a2076a4332e2f7ada874779153be0a740ab18bc032aedfc8dfd749bd82f2025dff", null ]
-    ] ],
-    [ "_cout", "de/d4a/CoutLogger_8cpp.html#a6310372464eaa8bff5941152975f2153", null ],
-    [ "_directory_path", "de/d4a/CoutLogger_8cpp.html#a0256b4c1e3f37129d5a42601f36ee352", null ],
-    [ "_file_path", "de/d4a/CoutLogger_8cpp.html#ab6a018561df56d013b90907fc8a16b47", null ],
-    [ "_filename", "de/d4a/CoutLogger_8cpp.html#a1b58b52cc0ad923b9bb13c1b456b7ea8", null ],
-    [ "operator<<", "de/d4a/CoutLogger_8cpp.html#a388574a8ab121d21e6d3670ab72194d5", null ],
-    [ "operator<<", "de/d4a/CoutLogger_8cpp.html#ad428c153040247d9372cba06ac2d0ad9", null ]
+    ] ]
 ];

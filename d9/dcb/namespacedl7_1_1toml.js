@@ -16,8 +16,5 @@ var namespacedl7_1_1toml =
     [ "none_t", "d9/dcb/namespacedl7_1_1toml.html#a5f1902dc46792127d3ce5cc180c13df9", null ],
     [ "offset_date_time_t", "d9/dcb/namespacedl7_1_1toml.html#a46a25fdcca58c1b431decf75da74c843", null ],
     [ "string_t", "d9/dcb/namespacedl7_1_1toml.html#a0dd5addd5e238fbcfec51b35efabcde1", null ],
-    [ "table_t", "d9/dcb/namespacedl7_1_1toml.html#a6d5473f1a9352aeffb27238125ff166c", null ],
-    [ "_append_padded", "d9/dcb/namespacedl7_1_1toml.html#a9a622bcce3db5955dacb50714f010e61", null ],
-    [ "_write_date", "d9/dcb/namespacedl7_1_1toml.html#a355d92956fe6e72eb5c2c1e9d8ffeac7", null ],
-    [ "_write_time", "d9/dcb/namespacedl7_1_1toml.html#af7d692b0c4e61de372b1d0cb144914c8", null ]
+    [ "table_t", "d9/dcb/namespacedl7_1_1toml.html#a6d5473f1a9352aeffb27238125ff166c", null ]
 ];

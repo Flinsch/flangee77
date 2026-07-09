@@ -15,9 +15,5 @@ var namespacedl7_1_1xml =
       [ "Replace", "da/d33/namespacedl7_1_1xml.html#ab615a53723d3d2f7fbacc39f1eb35d17a0ebe6df8a3ac338e0512acc741823fdb", null ],
       [ "Collapse", "da/d33/namespacedl7_1_1xml.html#ab615a53723d3d2f7fbacc39f1eb35d17a2b31634e3cfef1bfdd7d0d2cdfdc3f9d", null ],
       [ "Default", "da/d33/namespacedl7_1_1xml.html#ab615a53723d3d2f7fbacc39f1eb35d17a7a1920d61156abc05a60135aefe8bc67", null ]
-    ] ],
-    [ "_find_child_elements", "da/d33/namespacedl7_1_1xml.html#acfb7045709298ec804beb4859badc619", null ],
-    [ "_find_child_nodes", "da/d33/namespacedl7_1_1xml.html#ad36cf15bf3a3efc75fd42b4829ec3585", null ],
-    [ "_find_child_nodes", "da/d33/namespacedl7_1_1xml.html#a6ef24c9a8dce0bcca48a994838e27ea2", null ],
-    [ "_find_text_nodes", "da/d33/namespacedl7_1_1xml.html#a149cce4820d61891f1853cbd7f240666", null ]
+    ] ]
 ];

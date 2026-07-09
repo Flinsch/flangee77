@@ -26,8 +26,6 @@ var namespacecl7_1_1io =
       [ "Current", "d6/dc7/namespacecl7_1_1io.html#a4ff74034025df11666f80f69b9069053a222a267cc5778206b253be35ee3ddab5", null ],
       [ "End", "d6/dc7/namespacecl7_1_1io.html#a4ff74034025df11666f80f69b9069053a87557f11575c0ad78e4e28abedc13b6e", null ]
     ] ],
-    [ "_validate_ascii", "d6/dc7/namespacecl7_1_1io.html#aa127f7f1f7f3e32171cbe0931498f0b4", null ],
-    [ "_validate_utf8", "d6/dc7/namespacecl7_1_1io.html#a8aee6d57ad8594a51525b03453f928d7", null ],
     [ "operator&", "d6/dc7/namespacecl7_1_1io.html#a7a24e4fc86e70a9509de499fb0dfc2f5", null ],
     [ "operator|", "d6/dc7/namespacecl7_1_1io.html#ada86219d2dda97504b23408fd189a30f", null ]
 ];

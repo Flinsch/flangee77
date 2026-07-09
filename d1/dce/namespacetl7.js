@@ -2,7 +2,6 @@ var namespacetl7 =
 [
     [ "exceptions", "da/d05/namespacetl7_1_1exceptions.html", "da/d05/namespacetl7_1_1exceptions" ],
     [ "internals", "d2/d23/namespacetl7_1_1internals.html", [
-      [ "_to_string", "d2/d23/namespacetl7_1_1internals.html#aa66d11508b3a4f2febcc1dfcc7869a51", null ],
       [ "consume", "d2/d23/namespacetl7_1_1internals.html#afb2d5db27cea7e1dc47dfddd55a4dab1", null ],
       [ "to_string", "d2/d23/namespacetl7_1_1internals.html#a80e98a70f63086c8a80c26e5f00c8afa", null ],
       [ "to_string", "d2/d23/namespacetl7_1_1internals.html#ab575b9204d8b7bf7342dc16c6202ba87", null ],

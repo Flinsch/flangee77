@@ -20,10 +20,5 @@ var namespacexl7_1_1graphics_1_1impl_1_1direct3d9 =
     [ "GraphicsSystemImpl", "da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html", "da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl" ],
     [ "RenderingContextImpl", "d9/dfb/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl.html", "d9/dfb/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl" ],
     [ "RenderingDeviceImpl", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl.html", "d3/dd1/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingDeviceImpl" ],
-    [ "ResourceFactoryImpl", "de/d84/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl.html", "de/d84/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl" ],
-    [ "_d3d_clear_flags_from", "d2/dc0/namespacexl7_1_1graphics_1_1impl_1_1direct3d9.html#a57e3d7375fc87d46671a87f1e55395c1", null ],
-    [ "_d3d_primitive_type_from", "d2/dc0/namespacexl7_1_1graphics_1_1impl_1_1direct3d9.html#ad4de2a472f879d5aedb35c1c377f5935", null ],
-    [ "_d3d_vertex_element_type_from", "d2/dc0/namespacexl7_1_1graphics_1_1impl_1_1direct3d9.html#a08a4c6fdc30b885edbfca22198a5423d", null ],
-    [ "_d3d_vertex_element_usage_from", "d2/dc0/namespacexl7_1_1graphics_1_1impl_1_1direct3d9.html#a46bf89efd4545d247854de2b751950ad", null ],
-    [ "_d3d_viewport_from", "d2/dc0/namespacexl7_1_1graphics_1_1impl_1_1direct3d9.html#a7e3ef8cfcfd57d1818794a1c1fdcf7c5", null ]
+    [ "ResourceFactoryImpl", "de/d84/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl.html", "de/d84/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl" ]
 ];
