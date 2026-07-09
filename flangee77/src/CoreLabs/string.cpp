@@ -10,8 +10,10 @@ namespace cl7 {
 
 
 
+namespace {
+
     template <std::integral T>
-    static u8string _to_string(T val)
+    u8string _to_string(T val)
     {
         cl7::u8osstream oss;
         oss << val;
@@ -19,7 +21,7 @@ namespace cl7 {
     }
 
     template <std::floating_point T>
-    static u8string _to_string(T val)
+    u8string _to_string(T val)
     {
         cl7::u8osstream oss;
 
@@ -61,6 +63,8 @@ namespace cl7 {
 
         return u8"0.0";
     }
+
+} // namespace
 
     u8string to_string(bool val) { return {val ? u8"true" : u8"false"}; }
 

@@ -12,7 +12,9 @@ namespace fl7::fonts::raster {
 
 
 
-    static std::pair<ml7::LineSegment2f, float> _normalize_line_segment(const ml7::LineSegment2f& line_segment)
+namespace {
+
+    std::pair<ml7::LineSegment2f, float> _normalize_line_segment(const ml7::LineSegment2f& line_segment)
     {
         if (line_segment.start.y < line_segment.end.y)
             return {line_segment, +1.0f}; // Original.
@@ -20,7 +22,7 @@ namespace fl7::fonts::raster {
         return {{line_segment.end, line_segment.start}, -1.0f}; // Flipped, inverted.
     }
 
-    static void _process_scaled_and_flattened_segment(const ml7::LineSegment2f& line_segment, PixelOffset pixel_offset, dl7::Buffer2d<float> coverage_canvas)
+    void _process_scaled_and_flattened_segment(const ml7::LineSegment2f& line_segment, PixelOffset pixel_offset, dl7::Buffer2d<float> coverage_canvas)
     {
         // Skip horizontal edges.
         if (line_segment.start.y == line_segment.end.y)
@@ -128,7 +130,7 @@ namespace fl7::fonts::raster {
         } // for each covered pixel row
     }
 
-    static void _process_scaled_bezier(ml7::QuadraticBezier2f bezier, const PixelOffset& pixel_offset, const dl7::Buffer2d<float>& coverage_canvas)
+    void _process_scaled_bezier(ml7::QuadraticBezier2f bezier, const PixelOffset& pixel_offset, const dl7::Buffer2d<float>& coverage_canvas)
     {
         // Flattening threshold in pixels (max distance from control
         // point to chord): 0.35 pixels is reasonable. (Or is it?)
@@ -158,7 +160,7 @@ namespace fl7::fonts::raster {
         } // while segment not flat
     }
 
-    static void _process_glyph(const Glyph& glyph, float font_size, const PixelOffset& pixel_offset, const dl7::Buffer2d<float>& coverage_canvas)
+    void _process_glyph(const Glyph& glyph, float font_size, const PixelOffset& pixel_offset, const dl7::Buffer2d<float>& coverage_canvas)
     {
         const ml7::Vector2f transform{font_size, -font_size}; // scale and flip vertically
 
@@ -175,6 +177,8 @@ namespace fl7::fonts::raster {
             } // for each segment
         } // for each contour
     }
+
+} // namespace
 
 
 

@@ -8,7 +8,9 @@ namespace xl7::graphics::impl::direct3d9::states {
 
 
 
-    static D3DTEXTUREADDRESS _d3d_texture_address_from(graphics::states::AddressMode address_mode)
+namespace {
+
+    D3DTEXTUREADDRESS _d3d_texture_address_from(graphics::states::AddressMode address_mode)
     {
         static_assert(static_cast<unsigned>(graphics::states::AddressMode::Wrap) == static_cast<unsigned>(D3DTADDRESS_WRAP));
         static_assert(static_cast<unsigned>(graphics::states::AddressMode::Mirror) == static_cast<unsigned>(D3DTADDRESS_MIRROR));
@@ -19,7 +21,7 @@ namespace xl7::graphics::impl::direct3d9::states {
         return static_cast<D3DTEXTUREADDRESS>(address_mode);
     }
 
-    static D3DTEXTUREFILTERTYPE _d3d_texture_filter_type_from(graphics::states::MinMagFilterType filter_type)
+    D3DTEXTUREFILTERTYPE _d3d_texture_filter_type_from(graphics::states::MinMagFilterType filter_type)
     {
         static_assert(static_cast<unsigned>(graphics::states::MinMagFilterType::Point) == static_cast<unsigned>(D3DTEXF_POINT));
         static_assert(static_cast<unsigned>(graphics::states::MinMagFilterType::Linear) == static_cast<unsigned>(D3DTEXF_LINEAR));
@@ -28,7 +30,7 @@ namespace xl7::graphics::impl::direct3d9::states {
         return static_cast<D3DTEXTUREFILTERTYPE>(filter_type);
     }
 
-    static D3DTEXTUREFILTERTYPE _d3d_texture_filter_type_from(graphics::states::MipFilterType filter_type)
+    D3DTEXTUREFILTERTYPE _d3d_texture_filter_type_from(graphics::states::MipFilterType filter_type)
     {
         static_assert(static_cast<unsigned>(graphics::states::MipFilterType::None) == static_cast<unsigned>(D3DTEXF_NONE));
         static_assert(static_cast<unsigned>(graphics::states::MipFilterType::Point) == static_cast<unsigned>(D3DTEXF_POINT));
@@ -37,6 +39,8 @@ namespace xl7::graphics::impl::direct3d9::states {
 
         return static_cast<D3DTEXTUREFILTERTYPE>(filter_type);
     }
+
+} // namespace
 
 
 

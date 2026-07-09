@@ -12,11 +12,13 @@ namespace dl7::compression {
 
 
 
+namespace {
+
     /**
      * Logs an error message corresponding to the given return code (if not Z_OK)
      * and returns false (if not Z_OK) or true (if Z_OK).
      */
-    static bool _log_and_return(int z_return_code)
+    bool _log_and_return(int z_return_code)
     {
         if (z_return_code == Z_OK)
             return true;
@@ -44,6 +46,8 @@ namespace dl7::compression {
 
         return false;
     }
+
+} // namespace
 
 
 

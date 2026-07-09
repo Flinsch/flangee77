@@ -52,7 +52,9 @@ namespace xl7::graphics::images {
 
 
 
-    static bool _log_error(const cl7::u8string& base_message, const cl7::u8string& description)
+namespace {
+
+    bool _log_error(const cl7::u8string& base_message, const cl7::u8string& description)
     {
         if (description.empty())
             LOG_ERROR(base_message + u8".");
@@ -60,6 +62,8 @@ namespace xl7::graphics::images {
             LOG_ERROR(base_message + u8": " + description);
         return false;
     }
+
+} // namespace
 
     bool ImageWriter::_log_unsupported_format_error(const cl7::u8string& target_name, const cl7::u8string& description)
     {

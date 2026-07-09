@@ -12,7 +12,9 @@ namespace xl7::graphics::impl::direct3d11::states {
 
 
 
-    static D3D11_FILTER _d3d_filter_from(graphics::states::MinMagFilterType min_filter_type, graphics::states::MinMagFilterType mag_filter_type, graphics::states::MipFilterType mip_filter_type)
+namespace {
+
+    D3D11_FILTER _d3d_filter_from(graphics::states::MinMagFilterType min_filter_type, graphics::states::MinMagFilterType mag_filter_type, graphics::states::MipFilterType mip_filter_type)
     {
         bool min_anisotropic = min_filter_type == graphics::states::MinMagFilterType::Anisotropic;
         bool mag_anisotropic = mag_filter_type == graphics::states::MinMagFilterType::Anisotropic;
@@ -52,7 +54,7 @@ namespace xl7::graphics::impl::direct3d11::states {
             default_value);
     }
 
-    static D3D11_TEXTURE_ADDRESS_MODE _d3d_texture_address_mode_from(graphics::states::AddressMode address_mode)
+    D3D11_TEXTURE_ADDRESS_MODE _d3d_texture_address_mode_from(graphics::states::AddressMode address_mode)
     {
         static_assert(static_cast<unsigned>(graphics::states::AddressMode::Wrap) == static_cast<unsigned>(D3D11_TEXTURE_ADDRESS_WRAP));
         static_assert(static_cast<unsigned>(graphics::states::AddressMode::Mirror) == static_cast<unsigned>(D3D11_TEXTURE_ADDRESS_MIRROR));
@@ -62,6 +64,8 @@ namespace xl7::graphics::impl::direct3d11::states {
 
         return static_cast<D3D11_TEXTURE_ADDRESS_MODE>(address_mode);
     }
+
+} // namespace
 
 
 

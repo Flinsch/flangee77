@@ -12,7 +12,9 @@ namespace xl7::graphics::impl::direct3d11::states {
 
 
 
-    static D3D11_FILL_MODE _d3d_fill_mode_from(graphics::states::FillMode fill_mode)
+namespace {
+
+    D3D11_FILL_MODE _d3d_fill_mode_from(graphics::states::FillMode fill_mode)
     {
         if (fill_mode == graphics::states::FillMode::None)
         {
@@ -32,7 +34,7 @@ namespace xl7::graphics::impl::direct3d11::states {
         return static_cast<D3D11_FILL_MODE>(fill_mode);
     }
 
-    static D3D11_CULL_MODE _d3d_cull_mode_from(graphics::states::CullMode cull_mode)
+    D3D11_CULL_MODE _d3d_cull_mode_from(graphics::states::CullMode cull_mode)
     {
         static_assert(static_cast<unsigned>(graphics::states::CullMode::None) + 1 == static_cast<unsigned>(D3D11_CULL_NONE));
         static_assert(static_cast<unsigned>(graphics::states::CullMode::Front) + 1 == static_cast<unsigned>(D3D11_CULL_FRONT));
@@ -41,10 +43,12 @@ namespace xl7::graphics::impl::direct3d11::states {
         return static_cast<D3D11_CULL_MODE>(static_cast<unsigned>(cull_mode) + 1);
     }
 
-    static BOOL _d3d_front_counter_clockwise_from(graphics::states::WindingOrder winding_order)
+    BOOL _d3d_front_counter_clockwise_from(graphics::states::WindingOrder winding_order)
     {
         return winding_order == graphics::states::WindingOrder::CounterClockwise ? TRUE : FALSE;
     }
+
+} // namespace
 
 
 

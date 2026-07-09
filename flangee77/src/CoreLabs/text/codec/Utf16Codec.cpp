@@ -8,13 +8,15 @@ namespace cl7::text::codec {
 
 
 
-    static size_t _determine_encode_length(codepoint codepoint)
+namespace {
+
+    size_t _determine_encode_length(codepoint codepoint)
     {
         assert(codepoint.is_valid_unicode());
         return 1 + static_cast<size_t>(codepoint.value > 0xffff);
     }
 
-    static void _do_encode(codepoint codepoint, Utf16Codec::string_span_type output, size_t length)
+    void _do_encode(codepoint codepoint, Utf16Codec::string_span_type output, size_t length)
     {
         assert(codepoint.is_valid_unicode());
         switch (length)
@@ -35,20 +37,22 @@ namespace cl7::text::codec {
         }
     }
 
-    static size_t _determine_decode_length(Utf16Codec::string_view_type input)
+    size_t _determine_decode_length(Utf16Codec::string_view_type input)
     {
         assert(!input.empty());
         assert(input[0] >= 0xd800 && input[0] <= 0xdbff);
         return 1 + static_cast<size_t>(input.size() >= 2 && (input[1] & 0xdc00) == 0xdc00); // check for trailing/low surrogate between 0xdc00 and 0xdfff
     }
 
-    static codepoint _do_decode_2(Utf16Codec::string_view_type input)
+    codepoint _do_decode_2(Utf16Codec::string_view_type input)
     {
         assert(input.size() >= 2);
         assert(input[0] >= 0xd800 && input[0] <= 0xdbff);
         assert(input[1] >= 0xdc00 && input[1] <= 0xdfff);
         return {((static_cast<codepoint::value_type>(input[0] & 0x3ff) << 10) | static_cast<codepoint::value_type>(input[1] & 0x3ff)) + 0x10000};
     }
+
+} // namespace
 
 
 

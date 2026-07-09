@@ -8,13 +8,17 @@ namespace xl7::graphics::states {
 
 
 
+namespace {
+
     template <class TDesc>
-    static cl7::u8string _identifier(cl7::u8string_view type_string, const TDesc& desc)
+    cl7::u8string _identifier(cl7::u8string_view type_string, const TDesc& desc)
     {
         cl7::byte_view desc_data{reinterpret_cast<const std::byte*>(&desc), sizeof(TDesc)};
 
         return cl7::u8string(type_string) + u8" " + dl7::Base64().encode(desc_data);
     }
+
+} // namespace
 
 
 

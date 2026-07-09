@@ -91,13 +91,17 @@ namespace cl7::io {
         return static_cast<cl7::achar_t>(byte);
     }
 
-    static cl7::astring _validate_ascii(cl7::astring&& ascii_unchecked)
+namespace {
+
+    cl7::astring _validate_ascii(cl7::astring&& ascii_unchecked)
     {
         if (cl7::text::codec::Analyzer<cl7::achar_t, cl7::text::codec::PlainErrorHandler>().validate(ascii_unchecked))
             return std::move(ascii_unchecked);
 
         return cl7::text::codec::Transcoder<cl7::achar_t, cl7::achar_t>().transcode(ascii_unchecked);
     }
+
+} // namespace
 
     /**
      * Reads all available/remaining data with ASCII validation/"correction".

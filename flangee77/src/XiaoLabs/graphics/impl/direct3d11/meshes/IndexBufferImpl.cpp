@@ -16,7 +16,9 @@ namespace xl7::graphics::impl::direct3d11::meshes {
 
 
 
-    static DXGI_FORMAT _dxgi_format_from(graphics::meshes::IndexType index_type)
+namespace {
+
+    DXGI_FORMAT _dxgi_format_from(graphics::meshes::IndexType index_type)
     {
         switch (index_type)
         {
@@ -30,6 +32,8 @@ namespace xl7::graphics::impl::direct3d11::meshes {
 
         return DXGI_FORMAT_UNKNOWN;
     }
+
+} // namespace
 
 
 

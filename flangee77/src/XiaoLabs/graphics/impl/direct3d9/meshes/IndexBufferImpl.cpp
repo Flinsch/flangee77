@@ -15,7 +15,9 @@ namespace xl7::graphics::impl::direct3d9::meshes {
 
 
 
-    static D3DFORMAT _d3d_format_from(graphics::meshes::IndexType index_type)
+namespace {
+
+    D3DFORMAT _d3d_format_from(graphics::meshes::IndexType index_type)
     {
         switch (index_type)
         {
@@ -29,6 +31,8 @@ namespace xl7::graphics::impl::direct3d9::meshes {
 
         return D3DFMT_UNKNOWN;
     }
+
+} // namespace
 
 
 

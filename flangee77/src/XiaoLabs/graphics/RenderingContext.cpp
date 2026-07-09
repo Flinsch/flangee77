@@ -208,7 +208,11 @@ namespace xl7::graphics {
     }
 
     /**
-     *
+     * Note: intentionally NOT in an anonymous namespace. RenderingContext.h
+     * declares this as a friend function inside the ResolvedShaderStates class
+     * template, which refers to this exact name at this scope (xl7::graphics).
+     * Defining it in an anonymous namespace instead would make it a distinct
+     * entity, leading to an ambiguous call between the two.
      */
     template <class TShader>
     static void _resolve_shader_states(RenderingDevice* _rendering_device, RenderingContext::ResolvedShaderStates<TShader>& resolved_shader_states, pipeline::AbstractShaderStage& pipeline_as)

@@ -26,7 +26,9 @@ namespace xl7::graphics::impl::direct3d11 {
 
 
 
-    static UINT _d3d_clear_flags_from(ClearFlags clear_flags)
+namespace {
+
+    UINT _d3d_clear_flags_from(ClearFlags clear_flags)
     {
         static_assert(static_cast<unsigned>(ClearFlags::DepthBuffer) / 2 == static_cast<unsigned>(D3D11_CLEAR_DEPTH));
         static_assert(static_cast<unsigned>(ClearFlags::StencilBuffer) / 2 == static_cast<unsigned>(D3D11_CLEAR_STENCIL));
@@ -34,7 +36,7 @@ namespace xl7::graphics::impl::direct3d11 {
         return static_cast<UINT>(clear_flags) >> 1;
     }
 
-    static D3D11_PRIMITIVE_TOPOLOGY _d3d_primitive_topology_from(graphics::meshes::Topology topology)
+    D3D11_PRIMITIVE_TOPOLOGY _d3d_primitive_topology_from(graphics::meshes::Topology topology)
     {
         static_assert(static_cast<unsigned>(graphics::meshes::Topology::PointList) == static_cast<unsigned>(D3D11_PRIMITIVE_TOPOLOGY_POINTLIST));
         static_assert(static_cast<unsigned>(graphics::meshes::Topology::LineList) == static_cast<unsigned>(D3D11_PRIMITIVE_TOPOLOGY_LINELIST));
@@ -45,7 +47,7 @@ namespace xl7::graphics::impl::direct3d11 {
         return static_cast<D3D11_PRIMITIVE_TOPOLOGY>(topology);
     }
 
-    static D3D11_VIEWPORT _d3d_viewport_from(const Viewport& viewport)
+    D3D11_VIEWPORT _d3d_viewport_from(const Viewport& viewport)
     {
         D3D11_VIEWPORT d3d_viewport;
         d3d_viewport.TopLeftX = static_cast<float>(viewport.x);
@@ -56,6 +58,8 @@ namespace xl7::graphics::impl::direct3d11 {
         d3d_viewport.MaxDepth = viewport.max_z;
         return d3d_viewport;
     }
+
+} // namespace
 
 
 

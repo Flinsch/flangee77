@@ -12,7 +12,9 @@ namespace xl7::graphics::impl::direct3d11::states {
 
 
 
-    static D3D11_BLEND _d3d_blend_from(graphics::states::BlendFactor blend_factor)
+namespace {
+
+    D3D11_BLEND _d3d_blend_from(graphics::states::BlendFactor blend_factor)
     {
         static_assert(static_cast<unsigned>(graphics::states::BlendFactor::Zero) == static_cast<unsigned>(D3D11_BLEND_ZERO));
         static_assert(static_cast<unsigned>(graphics::states::BlendFactor::One) == static_cast<unsigned>(D3D11_BLEND_ONE));
@@ -31,7 +33,7 @@ namespace xl7::graphics::impl::direct3d11::states {
         return static_cast<D3D11_BLEND>(blend_factor);
     }
 
-    static D3D11_BLEND_OP _d3d_blend_op_from(graphics::states::BlendOperation blend_operation)
+    D3D11_BLEND_OP _d3d_blend_op_from(graphics::states::BlendOperation blend_operation)
     {
         static_assert(static_cast<unsigned>(graphics::states::BlendOperation::Add) == static_cast<unsigned>(D3D11_BLEND_OP_ADD));
         static_assert(static_cast<unsigned>(graphics::states::BlendOperation::Subtract) == static_cast<unsigned>(D3D11_BLEND_OP_SUBTRACT));
@@ -42,7 +44,7 @@ namespace xl7::graphics::impl::direct3d11::states {
         return static_cast<D3D11_BLEND_OP>(blend_operation);
     }
 
-    static UINT8 _d3d_render_target_write_mask_from(ChannelFlags channel_write_flags)
+    UINT8 _d3d_render_target_write_mask_from(ChannelFlags channel_write_flags)
     {
         static_assert(static_cast<unsigned>(ChannelFlags::Red) == static_cast<unsigned>(D3D11_COLOR_WRITE_ENABLE_RED));
         static_assert(static_cast<unsigned>(ChannelFlags::Green) == static_cast<unsigned>(D3D11_COLOR_WRITE_ENABLE_GREEN));
@@ -51,6 +53,8 @@ namespace xl7::graphics::impl::direct3d11::states {
 
         return static_cast<UINT8>(channel_write_flags);
     }
+
+} // namespace
 
 
 

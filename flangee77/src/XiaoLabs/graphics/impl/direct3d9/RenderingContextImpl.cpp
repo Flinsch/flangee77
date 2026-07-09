@@ -22,7 +22,9 @@ namespace xl7::graphics::impl::direct3d9 {
 
 
 
-    static DWORD _d3d_clear_flags_from(ClearFlags clear_flags)
+namespace {
+
+    DWORD _d3d_clear_flags_from(ClearFlags clear_flags)
     {
         static_assert(static_cast<unsigned>(ClearFlags::ColorBuffer) == static_cast<unsigned>(D3DCLEAR_TARGET));
         static_assert(static_cast<unsigned>(ClearFlags::DepthBuffer) == static_cast<unsigned>(D3DCLEAR_ZBUFFER));
@@ -31,7 +33,7 @@ namespace xl7::graphics::impl::direct3d9 {
         return static_cast<DWORD>(clear_flags);
     }
 
-    static D3DPRIMITIVETYPE _d3d_primitive_type_from(graphics::meshes::Topology topology)
+    D3DPRIMITIVETYPE _d3d_primitive_type_from(graphics::meshes::Topology topology)
     {
         static_assert(static_cast<unsigned>(graphics::meshes::Topology::PointList) == static_cast<unsigned>(D3DPT_POINTLIST));
         static_assert(static_cast<unsigned>(graphics::meshes::Topology::LineList) == static_cast<unsigned>(D3DPT_LINELIST));
@@ -42,7 +44,7 @@ namespace xl7::graphics::impl::direct3d9 {
         return static_cast<D3DPRIMITIVETYPE>(topology);
     }
 
-    static BYTE _d3d_vertex_element_usage_from(graphics::meshes::VertexLayout::Semantic semantic)
+    BYTE _d3d_vertex_element_usage_from(graphics::meshes::VertexLayout::Semantic semantic)
     {
         switch (semantic)
         {
@@ -63,7 +65,7 @@ namespace xl7::graphics::impl::direct3d9 {
         return 0;
     }
 
-    static BYTE _d3d_vertex_element_type_from(graphics::meshes::VertexLayout::DataType data_type)
+    BYTE _d3d_vertex_element_type_from(graphics::meshes::VertexLayout::DataType data_type)
     {
         static_assert(static_cast<unsigned>(graphics::meshes::VertexLayout::DataType::FLOAT1) == static_cast<unsigned>(D3DDECLTYPE_FLOAT1));
         static_assert(static_cast<unsigned>(graphics::meshes::VertexLayout::DataType::FLOAT2) == static_cast<unsigned>(D3DDECLTYPE_FLOAT2));
@@ -75,7 +77,7 @@ namespace xl7::graphics::impl::direct3d9 {
         return static_cast<BYTE>(data_type);
     }
 
-    static D3DVIEWPORT9 _d3d_viewport_from(const Viewport& viewport)
+    D3DVIEWPORT9 _d3d_viewport_from(const Viewport& viewport)
     {
         D3DVIEWPORT9 d3d_viewport;
         d3d_viewport.X = viewport.x;
@@ -86,6 +88,8 @@ namespace xl7::graphics::impl::direct3d9 {
         d3d_viewport.MaxZ = viewport.max_z;
         return d3d_viewport;
     }
+
+} // namespace
 
 
 

@@ -12,8 +12,10 @@ namespace xl7::graphics::images {
 
 
 
+namespace {
+
     template <size_t stride>
-    static cl7::byte_vector _nearest_neighbor(const Image& source_image, unsigned width, unsigned height, unsigned depth)
+    cl7::byte_vector _nearest_neighbor(const Image& source_image, unsigned width, unsigned height, unsigned depth)
     {
         const size_t source_width = source_image.get_width();
         const size_t source_height = source_image.get_height();
@@ -72,7 +74,7 @@ namespace xl7::graphics::images {
     }
 
     template <size_t stride>
-    static cl7::byte_vector _mipmap1_u8(const Image& source_image)
+    cl7::byte_vector _mipmap1_u8(const Image& source_image)
     {
         assert(source_image.get_width() % 2 == 0);
         assert(source_image.get_height() == 1);
@@ -111,7 +113,7 @@ namespace xl7::graphics::images {
     }
 
     template <size_t stride>
-    static cl7::byte_vector _mipmap2_u8(const Image& source_image)
+    cl7::byte_vector _mipmap2_u8(const Image& source_image)
     {
         assert(source_image.get_width() % 2 == 0);
         assert(source_image.get_height() % 2 == 0);
@@ -158,7 +160,7 @@ namespace xl7::graphics::images {
     }
 
     template <size_t stride>
-    static cl7::byte_vector _mipmap3_u8(const Image& source_image)
+    cl7::byte_vector _mipmap3_u8(const Image& source_image)
     {
         assert(source_image.get_width() % 2 == 0);
         assert(source_image.get_height() % 2 == 0);
@@ -213,7 +215,7 @@ namespace xl7::graphics::images {
         return std::move(target_data);
     }
 
-    static cl7::byte_vector _linear_interpolation(const Image& source_image, unsigned width, unsigned height, unsigned depth)
+    cl7::byte_vector _linear_interpolation(const Image& source_image, unsigned width, unsigned height, unsigned depth)
     {
         const ImageDesc source_desc = source_image.get_desc();
 
@@ -343,6 +345,8 @@ namespace xl7::graphics::images {
 
         return std::move(target_data);
     }
+
+} // namespace
 
 
 

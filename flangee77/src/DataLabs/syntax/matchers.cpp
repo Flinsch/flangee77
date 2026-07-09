@@ -8,7 +8,9 @@ namespace dl7::syntax::matchers {
 
 
 
-    static size_t _quoted_string_matcher(cl7::u8string_view source, cl7::u8char_t quote_char)
+namespace {
+
+    size_t _quoted_string_matcher(cl7::u8string_view source, cl7::u8char_t quote_char)
     {
         if (source.empty() || source[0] != quote_char)
             return 0;
@@ -22,6 +24,8 @@ namespace dl7::syntax::matchers {
 
         return 0;
     }
+
+} // namespace
 
 
 

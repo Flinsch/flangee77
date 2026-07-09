@@ -8,7 +8,9 @@ namespace xl7::graphics::impl::direct3d9::states {
 
 
 
-    static D3DSTENCILOP _d3d_stencil_op_from(graphics::states::StencilOperation stencil_operation)
+namespace {
+
+    D3DSTENCILOP _d3d_stencil_op_from(graphics::states::StencilOperation stencil_operation)
     {
         static_assert(static_cast<unsigned>(graphics::states::StencilOperation::Keep) == static_cast<unsigned>(D3DSTENCILOP_KEEP));
         static_assert(static_cast<unsigned>(graphics::states::StencilOperation::Zero) == static_cast<unsigned>(D3DSTENCILOP_ZERO));
@@ -21,6 +23,8 @@ namespace xl7::graphics::impl::direct3d9::states {
 
         return static_cast<D3DSTENCILOP>(stencil_operation);
     }
+
+} // namespace
 
 
 

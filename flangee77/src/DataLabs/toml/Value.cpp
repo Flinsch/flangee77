@@ -15,7 +15,9 @@ namespace dl7::toml {
 
 
 
-    static void _append_padded(cl7::u8osstream& oss, long long value, size_t width)
+namespace {
+
+    void _append_padded(cl7::u8osstream& oss, long long value, size_t width)
     {
         auto digits = cl7::text::format::to_string<cl7::u8string>(value);
         for (size_t i = digits.size(); i < width; ++i)
@@ -23,7 +25,7 @@ namespace dl7::toml {
         oss << digits;
     }
 
-    static void _write_date(cl7::u8osstream& oss, const std::chrono::year_month_day& ymd)
+    void _write_date(cl7::u8osstream& oss, const std::chrono::year_month_day& ymd)
     {
         _append_padded(oss, static_cast<int>(ymd.year()), 4);
         oss << u8'-';
@@ -32,7 +34,7 @@ namespace dl7::toml {
         _append_padded(oss, static_cast<unsigned>(ymd.day()), 2);
     }
 
-    static void _write_time(cl7::u8osstream& oss, const std::chrono::hh_mm_ss<std::chrono::seconds>& hms)
+    void _write_time(cl7::u8osstream& oss, const std::chrono::hh_mm_ss<std::chrono::seconds>& hms)
     {
         _append_padded(oss, hms.hours().count(), 2);
         oss << u8':';
@@ -40,6 +42,8 @@ namespace dl7::toml {
         oss << u8':';
         _append_padded(oss, hms.seconds().count(), 2);
     }
+
+} // namespace
 
 
 

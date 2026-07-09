@@ -164,8 +164,10 @@ namespace dl7::xml {
 
 
 
+namespace {
+
     template <class Tvector, typename Tnode = std::conditional_t<std::is_const_v<Tvector>, const Node, Node>>
-    static std::vector<Tnode*> _find_child_nodes(Tvector& child_nodes)
+    std::vector<Tnode*> _find_child_nodes(Tvector& child_nodes)
     {
         std::vector<Tnode*> result;
         result.reserve(child_nodes.size());
@@ -179,7 +181,7 @@ namespace dl7::xml {
     }
 
     template <class Tvector, typename Tnode = std::conditional_t<std::is_const_v<Tvector>, const Node, Node>>
-    static std::vector<Tnode*> _find_child_nodes(Tvector& child_nodes, Node::Type type)
+    std::vector<Tnode*> _find_child_nodes(Tvector& child_nodes, Node::Type type)
     {
         std::vector<Tnode*> result;
         result.reserve(child_nodes.size());
@@ -194,7 +196,7 @@ namespace dl7::xml {
     }
 
     template <class Tvector, typename Telement = std::conditional_t<std::is_const_v<Tvector>, const Element, Element>>
-    static std::vector<Telement*> _find_child_elements(Tvector& child_nodes)
+    std::vector<Telement*> _find_child_elements(Tvector& child_nodes)
     {
         std::vector<Telement*> result;
         result.reserve(child_nodes.size());
@@ -209,7 +211,7 @@ namespace dl7::xml {
     }
 
     template <class Tvector, typename Ttext = std::conditional_t<std::is_const_v<Tvector>, const Text, Text>>
-    static std::vector<Ttext*> _find_text_nodes(Tvector& child_nodes)
+    std::vector<Ttext*> _find_text_nodes(Tvector& child_nodes)
     {
         std::vector<Ttext*> result;
         result.reserve(child_nodes.size());
@@ -222,6 +224,8 @@ namespace dl7::xml {
 
         return result;
     }
+
+} // namespace
 
     /** Returns a "list" of all child nodes. */
     std::vector<const Node*> Element::find_child_nodes() const { return _find_child_nodes(_child_nodes); }

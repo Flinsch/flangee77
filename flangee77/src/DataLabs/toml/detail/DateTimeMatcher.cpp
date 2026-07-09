@@ -6,12 +6,14 @@ namespace dl7::toml::detail {
 
 
 
-    static bool _is_digit(cl7::u8char_t ch)
+namespace {
+
+    bool _is_digit(cl7::u8char_t ch)
     {
         return ch >= u8'0' && ch <= u8'9';
     }
 
-    static bool _has_digits(cl7::u8string_view source, size_t pos, size_t count)
+    bool _has_digits(cl7::u8string_view source, size_t pos, size_t count)
     {
         if (pos + count > source.size())
             return false;
@@ -22,7 +24,7 @@ namespace dl7::toml::detail {
     }
 
     /** Matches `YYYY-MM-DD` at pos; returns 10 or 0. */
-    static size_t _match_date(cl7::u8string_view source, size_t pos)
+    size_t _match_date(cl7::u8string_view source, size_t pos)
     {
         if (!_has_digits(source, pos, 4)) return 0;
         if (pos + 10 > source.size()) return 0;
@@ -32,7 +34,7 @@ namespace dl7::toml::detail {
     }
 
     /** Matches `HH:MM:SS` with optional `.fraction` at pos; returns length or 0. */
-    static size_t _match_time(cl7::u8string_view source, size_t pos)
+    size_t _match_time(cl7::u8string_view source, size_t pos)
     {
         if (pos + 8 > source.size()) return 0;
         if (!_has_digits(source, pos, 2)) return 0;
@@ -54,7 +56,7 @@ namespace dl7::toml::detail {
     }
 
     /** Matches a time offset (`Z`/`z` or `(+|-)HH:MM`) at pos; returns length or 0. */
-    static size_t _match_offset(cl7::u8string_view source, size_t pos)
+    size_t _match_offset(cl7::u8string_view source, size_t pos)
     {
         if (pos >= source.size()) return 0;
         if (source[pos] == u8'Z' || source[pos] == u8'z') return 1;
@@ -64,6 +66,8 @@ namespace dl7::toml::detail {
         if (!_has_digits(source, pos + 4, 2)) return 0;
         return 6;
     }
+
+} // namespace
 
 
 

@@ -8,13 +8,15 @@ namespace cl7::text::codec {
 
 
 
-    static size_t _determine_encode_length(codepoint codepoint)
+namespace {
+
+    size_t _determine_encode_length(codepoint codepoint)
     {
         assert(codepoint.is_valid_unicode());
         return 1 + static_cast<size_t>(codepoint.value >= 0x80) + static_cast<size_t>(codepoint.value >= 0x800) + static_cast<size_t>(codepoint.value >= 0x10000);
     }
 
-    static void _do_encode(codepoint codepoint, Utf8Codec::string_span_type output, size_t length)
+    void _do_encode(codepoint codepoint, Utf8Codec::string_span_type output, size_t length)
     {
         assert(codepoint.is_valid_unicode());
         switch (length)
@@ -42,7 +44,7 @@ namespace cl7::text::codec {
         }
     }
 
-    static size_t _determine_decode_length(Utf8Codec::string_view_type input, size_t max)
+    size_t _determine_decode_length(Utf8Codec::string_view_type input, size_t max)
     {
         assert(!input.empty());
         assert(input[0] >= 0xc0 && input[0] <= 0xfd);
@@ -59,7 +61,7 @@ namespace cl7::text::codec {
         return length;
     }
 
-    static codepoint _do_decode_2(Utf8Codec::string_view_type input)
+    codepoint _do_decode_2(Utf8Codec::string_view_type input)
     {
         assert(input.size() >= 2);
         assert(input[0] >= 0xc2 && input[0] <= 0xdf);
@@ -68,7 +70,7 @@ namespace cl7::text::codec {
             | (static_cast<codepoint::value_type>(input[1]) & 0x3f)};
     }
 
-    static codepoint _do_decode_3(Utf8Codec::string_view_type input)
+    codepoint _do_decode_3(Utf8Codec::string_view_type input)
     {
         assert(input.size() >= 3);
         assert(input[0] >= 0xe0 && input[0] <= 0xef);
@@ -80,7 +82,7 @@ namespace cl7::text::codec {
             | (static_cast<codepoint::value_type>(input[2]) & 0x3f)};
     }
 
-    static codepoint _do_decode_4(Utf8Codec::string_view_type input)
+    codepoint _do_decode_4(Utf8Codec::string_view_type input)
     {
         assert(input.size() >= 4);
         assert(input[0] >= 0xf0 && input[0] <= 0xf4);
@@ -94,6 +96,8 @@ namespace cl7::text::codec {
             | ((static_cast<codepoint::value_type>(input[2]) & 0x3f) << 6)
             | (static_cast<codepoint::value_type>(input[3]) & 0x3f)};
     }
+
+} // namespace
 
 
 

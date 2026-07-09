@@ -22,7 +22,9 @@ namespace dl7::toml::detail {
 
 
 
-    static cl7::u8string _strip_underscores(cl7::u8string_view string)
+namespace {
+
+    cl7::u8string _strip_underscores(cl7::u8string_view string)
     {
         cl7::u8string result;
         result.reserve(string.size());
@@ -37,7 +39,7 @@ namespace dl7::toml::detail {
      * with optional underscores between digits). Returns std::nullopt if the given
      * string is not such a prefixed integer.
      */
-    static std::optional<integer_t> _try_parse_based_integer(cl7::u8string_view raw)
+    std::optional<integer_t> _try_parse_based_integer(cl7::u8string_view raw)
     {
         if (raw.size() < 3 || raw[0] != u8'0')
             return std::nullopt;
@@ -64,6 +66,8 @@ namespace dl7::toml::detail {
 
         return static_cast<integer_t>(value);
     }
+
+} // namespace
 
 
 

@@ -6,7 +6,9 @@ namespace xl7::graphics::impl::direct3d9::states {
 
 
 
-    static D3DFILLMODE _d3d_fill_mode_from(graphics::states::FillMode fill_mode)
+namespace {
+
+    D3DFILLMODE _d3d_fill_mode_from(graphics::states::FillMode fill_mode)
     {
         if (fill_mode == graphics::states::FillMode::None)
         {
@@ -21,7 +23,7 @@ namespace xl7::graphics::impl::direct3d9::states {
         return static_cast<D3DFILLMODE>(fill_mode);
     }
 
-    static D3DCULL _d3d_cull_from(graphics::states::CullMode cull_mode, graphics::states::WindingOrder winding_order)
+    D3DCULL _d3d_cull_from(graphics::states::CullMode cull_mode, graphics::states::WindingOrder winding_order)
     {
         if (cull_mode == graphics::states::CullMode::None)
             return D3DCULL_NONE;
@@ -33,6 +35,8 @@ namespace xl7::graphics::impl::direct3d9::states {
 
         return D3DCULL_CCW;
     }
+
+} // namespace
 
 
 

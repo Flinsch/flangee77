@@ -17,7 +17,9 @@ namespace xl7::graphics::impl::direct3d11 {
 
 
 
-    static LPCSTR _d3d_semantic_name_from(meshes::VertexLayout::Semantic semantic)
+namespace {
+
+    LPCSTR _d3d_semantic_name_from(meshes::VertexLayout::Semantic semantic)
     {
         switch (semantic)
         {
@@ -38,7 +40,7 @@ namespace xl7::graphics::impl::direct3d11 {
         return "";
     }
 
-    static DXGI_FORMAT _dxgi_format_from(meshes::VertexLayout::DataType data_type)
+    DXGI_FORMAT _dxgi_format_from(meshes::VertexLayout::DataType data_type)
     {
         switch (data_type)
         {
@@ -54,6 +56,8 @@ namespace xl7::graphics::impl::direct3d11 {
 
         return DXGI_FORMAT_UNKNOWN;
     }
+
+} // namespace
 
 
 

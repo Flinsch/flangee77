@@ -6,7 +6,9 @@ namespace dl7::syntax {
 
 
 
-    static size_t _try_match_next(cl7::u8string_view literal, cl7::u8string_view source)
+namespace {
+
+    size_t _try_match_next(cl7::u8string_view literal, cl7::u8string_view source)
     {
         if (source.length() < literal.length())
             return 0;
@@ -16,6 +18,8 @@ namespace dl7::syntax {
 
         return literal.length();
     }
+
+} // namespace
 
 
 

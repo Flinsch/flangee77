@@ -15,12 +15,16 @@ namespace xl7::graphics::impl::direct3d9::meshes {
 
 
 
-    static DWORD _d3d_fvf_from(const graphics::meshes::VertexLayout& vertex_layout)
+namespace {
+
+    DWORD _d3d_fvf_from(const graphics::meshes::VertexLayout& vertex_layout)
     {
 
 
         return D3DFMT_UNKNOWN;
     }
+
+} // namespace
 
 
 

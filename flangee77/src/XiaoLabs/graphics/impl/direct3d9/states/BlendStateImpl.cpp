@@ -6,7 +6,9 @@ namespace xl7::graphics::impl::direct3d9::states {
 
 
 
-    static D3DBLEND _d3d_blend_from(graphics::states::BlendFactor blend_factor)
+namespace {
+
+    D3DBLEND _d3d_blend_from(graphics::states::BlendFactor blend_factor)
     {
         static_assert(static_cast<unsigned>(graphics::states::BlendFactor::Zero) == static_cast<unsigned>(D3DBLEND_ZERO));
         static_assert(static_cast<unsigned>(graphics::states::BlendFactor::One) == static_cast<unsigned>(D3DBLEND_ONE));
@@ -25,7 +27,7 @@ namespace xl7::graphics::impl::direct3d9::states {
         return static_cast<D3DBLEND>(blend_factor);
     }
 
-    static D3DBLENDOP _d3d_blend_op_from(graphics::states::BlendOperation blend_operation)
+    D3DBLENDOP _d3d_blend_op_from(graphics::states::BlendOperation blend_operation)
     {
         static_assert(static_cast<unsigned>(graphics::states::BlendOperation::Add) == static_cast<unsigned>(D3DBLENDOP_ADD));
         static_assert(static_cast<unsigned>(graphics::states::BlendOperation::Subtract) == static_cast<unsigned>(D3DBLENDOP_SUBTRACT));
@@ -36,7 +38,7 @@ namespace xl7::graphics::impl::direct3d9::states {
         return static_cast<D3DBLENDOP>(blend_operation);
     }
 
-    static DWORD _d3d_color_write_enable_from(ChannelFlags channel_write_flags)
+    DWORD _d3d_color_write_enable_from(ChannelFlags channel_write_flags)
     {
         static_assert(static_cast<unsigned>(ChannelFlags::Red) == static_cast<unsigned>(D3DCOLORWRITEENABLE_RED));
         static_assert(static_cast<unsigned>(ChannelFlags::Green) == static_cast<unsigned>(D3DCOLORWRITEENABLE_GREEN));
@@ -45,6 +47,8 @@ namespace xl7::graphics::impl::direct3d9::states {
 
         return static_cast<DWORD>(channel_write_flags);
     }
+
+} // namespace
 
 
 

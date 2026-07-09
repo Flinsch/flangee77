@@ -42,14 +42,16 @@ namespace tl7::reporting {
 
 
 
-    static auto& _cout()
+namespace {
+
+    auto& _cout()
     {
         //return std::wcout;
         return std::cout;
     }
 
     template <class Tcout>
-    static Tcout& operator<<(Tcout& cout, ColorCode color_code)
+    Tcout& operator<<(Tcout& cout, ColorCode color_code)
     {
         cout << "\033";
         if (color_code == ColorCode::Black)
@@ -65,7 +67,7 @@ namespace tl7::reporting {
     }
 
     template <class Tcout>
-    static Tcout& operator<<(Tcout& cout, cl7::u8string_view u8s)
+    Tcout& operator<<(Tcout& cout, cl7::u8string_view u8s)
     {
         if constexpr (std::is_same_v<typename std::remove_reference_t<decltype(cout)>::char_type, wchar_t>)
             cout << cl7::text::codec::to_utfx(u8s);
@@ -76,7 +78,7 @@ namespace tl7::reporting {
 
 
 
-    static cl7::u8string_view _file_path(const char* file_path)
+    cl7::u8string_view _file_path(const char* file_path)
     {
         const auto* my_path = __FILE__;
 
@@ -94,7 +96,7 @@ namespace tl7::reporting {
         return cl7::text::codec::reinterpret_utf8({file_path + sep + 1});
     }
 
-    static cl7::u8string_view _directory_path(cl7::u8string_view file_path)
+    cl7::u8string_view _directory_path(cl7::u8string_view file_path)
     {
         for (size_t i = file_path.size(); i-- > 0; )
             if (file_path[i] == u8'/' || file_path[i] == u8'\\')
@@ -102,13 +104,15 @@ namespace tl7::reporting {
         return file_path;
     }
 
-    static cl7::u8string_view _filename(cl7::u8string_view file_path)
+    cl7::u8string_view _filename(cl7::u8string_view file_path)
     {
         for (size_t i = file_path.size(); i-- > 0; )
             if (file_path[i] == u8'/' || file_path[i] == u8'\\')
                 return file_path.substr(i + 1);
         return file_path;
     }
+
+} // namespace
 
 
 

@@ -121,13 +121,17 @@ namespace cl7::io {
         return static_cast<cl7::u8char_t>(byte);
     }
 
-    static cl7::u8string _validate_utf8(cl7::u8string&& utf8_unchecked)
+namespace {
+
+    cl7::u8string _validate_utf8(cl7::u8string&& utf8_unchecked)
     {
         if (cl7::text::codec::Analyzer<cl7::u8char_t, cl7::text::codec::PlainErrorHandler>().validate(utf8_unchecked))
             return std::move(utf8_unchecked);
 
         return cl7::text::codec::Transcoder<cl7::u8char_t, cl7::u8char_t>().transcode(utf8_unchecked);
     }
+
+} // namespace
 
     /**
      * Reads all available/remaining data with UTF-8 validation/"correction".
