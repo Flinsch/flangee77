@@ -39,6 +39,7 @@ target_sources(flangee77
     graphics/images/codecs/targa/RleEncoder.cpp
     graphics/images/codecs/targa/Writer.cpp
 
+    graphics/meshes/ClippedQuad.cpp
     graphics/meshes/IndexBuffer.cpp
     graphics/meshes/IndexBufferUpdater.cpp
     graphics/meshes/MeshBuffer.cpp

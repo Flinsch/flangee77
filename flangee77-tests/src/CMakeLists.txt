@@ -98,6 +98,7 @@ target_sources(flangee77-tests
     XiaoLabs/graphics/images/codecs/targa/codec.cpp
     XiaoLabs/graphics/images/codecs/targa/Reader.cpp
     XiaoLabs/graphics/images/codecs/targa/Writer.cpp
+    XiaoLabs/graphics/meshes/ClippedQuad.cpp
     XiaoLabs/graphics/meshes/DirtyRange.cpp
     XiaoLabs/graphics/shaders/DirtyFlag.cpp
     XiaoLabs/graphics/shaders/reflection.cpp
