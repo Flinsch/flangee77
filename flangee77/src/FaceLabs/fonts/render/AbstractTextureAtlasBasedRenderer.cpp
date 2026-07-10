@@ -3,6 +3,7 @@
 #include <AlgoLabs/packing/SkylinePacker.h>
 
 #include <XiaoLabs/graphics.h>
+#include <XiaoLabs/graphics/meshes/ClippedQuad.h>
 #include <XiaoLabs/graphics/textures/Texture2DDesc.h>
 #include <XiaoLabs/graphics/textures/Texture2DWrite.h>
 #include <XiaoLabs/graphics/meshes/VertexBufferDesc.h>
@@ -26,6 +27,7 @@
 
 #include <atomic>
 #include <cassert>
+#include <limits>
 
 
 
@@ -171,12 +173,29 @@ namespace fl7::fonts::render {
         const float u1 = static_cast<float>(entry->rect.position.x + entry->image_width) * iw;
         const float v1 = static_cast<float>(entry->rect.position.y + entry->image_height) * ih;
 
+        // A box_size component of 0 (or less) means "unconstrained" on that
+        // axis (as with point-based draw_text, which always passes a
+        // zero-size box and must therefore never be clipped).
+        constexpr float infinity = std::numeric_limits<float>::infinity();
+        const ml7::Vector2f clip_min = {
+            state.box_size.x > 0.0f ? state.box_position.x : -infinity,
+            state.box_size.y > 0.0f ? state.box_position.y : -infinity,
+        };
+        const ml7::Vector2f clip_max = {
+            state.box_size.x > 0.0f ? state.box_position.x + state.box_size.x : infinity,
+            state.box_size.y > 0.0f ? state.box_position.y + state.box_size.y : infinity,
+        };
+
+        const auto clipped = xl7::graphics::meshes::ClippedQuad::clip({left, top}, {right, bottom}, {u0, v0}, {u1, v1}, clip_min, clip_max);
+        if (!clipped)
+            return;
+
         const xl7::graphics::Color color = state.text_style.text_color;
 
-        const Vertex tl = {.position = {left,  top   }, .texcoord = {u0, v0}, .color = color};
-        const Vertex tr = {.position = {right, top   }, .texcoord = {u1, v0}, .color = color};
-        const Vertex bl = {.position = {left,  bottom}, .texcoord = {u0, v1}, .color = color};
-        const Vertex br = {.position = {right, bottom}, .texcoord = {u1, v1}, .color = color};
+        const Vertex tl = {.position = {clipped->position_min.x, clipped->position_min.y}, .texcoord = {clipped->uv_min.x, clipped->uv_min.y}, .color = color};
+        const Vertex tr = {.position = {clipped->position_max.x, clipped->position_min.y}, .texcoord = {clipped->uv_max.x, clipped->uv_min.y}, .color = color};
+        const Vertex bl = {.position = {clipped->position_min.x, clipped->position_max.y}, .texcoord = {clipped->uv_min.x, clipped->uv_max.y}, .color = color};
+        const Vertex br = {.position = {clipped->position_max.x, clipped->position_max.y}, .texcoord = {clipped->uv_max.x, clipped->uv_max.y}, .color = color};
 
         _vertices.push_back(tl);
         _vertices.push_back(tr);

@@ -113,6 +113,8 @@ namespace fl7::fonts::render {
             .text_style = *text_style,
             .text_metrics = text_metrics,
             .cursor = {},
+            .box_position = box_position,
+            .box_size = box_size,
         };
 
         ScopedBatch auto_batch(_batch_depth > 0 ? nullptr : this);

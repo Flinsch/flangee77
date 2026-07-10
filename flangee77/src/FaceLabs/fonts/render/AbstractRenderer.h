@@ -172,6 +172,8 @@ public:
      * honoring `text_style`'s horizontal/vertical alignment and, for
      * `WrapMode::Word`, wrapping lines to fit `box_size.x`.
      *
+     * A `box_size` component of 0 (or less) means "unconstrained" on that axis.
+     *
      * If no active text rendering batch is open, begin/end are called automatically.
      */
     template <cl7::any_string_view_like Tstring_view_like>
@@ -194,6 +196,9 @@ protected:
         TextMetrics text_metrics;
 
         ml7::Vector2f cursor;
+
+        ml7::Vector2f box_position;
+        ml7::Vector2f box_size;
     };
 
 

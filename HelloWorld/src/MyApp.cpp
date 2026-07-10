@@ -405,6 +405,17 @@ namespace helloworld {
         _bitmap_renderer->draw_text_in_box(
             u8"This is a longer sentence that should wrap across multiple lines within the given box width.",
             _font.get(), &box_text_style, {10.0f, y}, {300.0f, 200.0f});
+        y += 200.0f + line_height;
+
+        // Cropping demo: WrapMode::None (so the long line isn't wrapped) and a
+        // box height smaller than the line itself, so the rendered text is
+        // clipped at the box edges on all four sides instead of spilling out.
+        fl7::fonts::TextStyle crop_text_style = text_style;
+        crop_text_style.wrap_mode = fl7::fonts::TextStyle::WrapMode::None;
+        crop_text_style.vertical_align = fl7::fonts::TextStyle::VerticalAlign::Middle;
+        _bitmap_renderer->draw_text_in_box(
+            u8"This single unwrapped line is intentionally far too long and tall to fit, so it must be cropped at the box edges.",
+            _font.get(), &crop_text_style, {10.0f, y}, {300.0f, 24.0f});
     }
 
     /**
