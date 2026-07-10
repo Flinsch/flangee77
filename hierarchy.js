@@ -150,6 +150,7 @@ var hierarchy =
     [ "xl7::graphics::images::codecs::png::ChunkWriter", "d9/d3f/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkWriter.html", null ],
     [ "ml7::ops::clamp< min, max >", "d4/d01/structml7_1_1ops_1_1clamp.html", null ],
     [ "ml7::ops::clamp01", "d0/d5c/structml7_1_1ops_1_1clamp01.html", null ],
+    [ "xl7::graphics::meshes::ClippedQuad", "d2/d47/structxl7_1_1graphics_1_1meshes_1_1ClippedQuad.html", null ],
     [ "cl7::text::codec::codepoint", "db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html", null ],
     [ "cl7::text::codec::codepoint_iterator< Tchar, TDefaultErrorHandler >", "d7/d8a/classcl7_1_1text_1_1codec_1_1codepoint__iterator.html", null ],
     [ "cl7::text::codec::CodepointResult", "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html", [
@@ -703,6 +704,7 @@ var hierarchy =
     [ "dl7::syntax::TerminalSymbolCollection", "dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html", null ],
     [ "tl7::TestCase", "dd/de5/classtl7_1_1TestCase.html", null ],
     [ "tl7::TestSuite", "db/d53/classtl7_1_1TestSuite.html", null ],
+    [ "fl7::fonts::TextLine", "d5/daa/structfl7_1_1fonts_1_1TextLine.html", null ],
     [ "fl7::fonts::TextMetrics", "d2/dc2/structfl7_1_1fonts_1_1TextMetrics.html", null ],
     [ "fl7::fonts::TextStyle", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html", null ],
     [ "Texture", null, [

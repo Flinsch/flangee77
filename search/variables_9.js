@@ -41,11 +41,12 @@ var searchData=
   ['is_5fdepth_5ftesting_5fenabled_38',['is_depth_testing_enabled',['../df/d10/structxl7_1_1graphics_1_1states_1_1DepthStencilStateDesc.html#af204bc8701ca6b4155b25161c85d62e4',1,'xl7::graphics::states::DepthStencilStateDesc']]],
   ['is_5fdepth_5fwriting_5fenabled_39',['is_depth_writing_enabled',['../df/d10/structxl7_1_1graphics_1_1states_1_1DepthStencilStateDesc.html#a3204e80df85e1d47c4fb81963470c31a',1,'xl7::graphics::states::DepthStencilStateDesc']]],
   ['is_5fopen_40',['is_open',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#ac2da4aa3ded5846b22c0e865601f6e2b',1,'cl7::profiling::Sample']]],
-  ['is_5fprofiled_41',['is_profiled',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a4d4b3b9e1e4d0830a36195a05cc78987',1,'cl7::profiling::Sample']]],
-  ['is_5fset_42',['is_set',['../d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html#a922843bed671cbf575f97c149a869a13',1,'xl7::graphics::pipeline::AbstractPipelineObject::StateArray::Entry']]],
-  ['is_5fstenciling_5fenabled_43',['is_stenciling_enabled',['../df/d10/structxl7_1_1graphics_1_1states_1_1DepthStencilStateDesc.html#aa02953d0938534b173695ee85698c4c4',1,'xl7::graphics::states::DepthStencilStateDesc']]],
-  ['is_5fstring_5fconstructible_5fv_44',['is_string_constructible_v',['../d1/d2e/namespacecl7.html#a2b7716202f0260d0a155173ff6811aac',1,'cl7']]],
-  ['italic_5fintensity_45',['italic_intensity',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a0b571a2d895b3b30a5926210f22f85f7',1,'fl7::fonts::TextStyle']]],
-  ['item_5fheight_46',['item_height',['../d5/d56/structal7_1_1packing_1_1ShelfPacker_1_1Shelf.html#a1573f0ede1e145d90036864cb408c2d8',1,'al7::packing::ShelfPacker::Shelf']]],
-  ['iteration_5fnumber_47',['iteration_number',['../d1/d32/structtl7_1_1Signature.html#a42be262107926c787757bf3131f2848e',1,'tl7::Signature']]]
+  ['is_5fparagraph_5fend_41',['is_paragraph_end',['../d5/daa/structfl7_1_1fonts_1_1TextLine.html#a8772f6a0a32c68afdd3d9d2f679e0d34',1,'fl7::fonts::TextLine']]],
+  ['is_5fprofiled_42',['is_profiled',['../d6/d1f/structcl7_1_1profiling_1_1Sample.html#a4d4b3b9e1e4d0830a36195a05cc78987',1,'cl7::profiling::Sample']]],
+  ['is_5fset_43',['is_set',['../d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html#a922843bed671cbf575f97c149a869a13',1,'xl7::graphics::pipeline::AbstractPipelineObject::StateArray::Entry']]],
+  ['is_5fstenciling_5fenabled_44',['is_stenciling_enabled',['../df/d10/structxl7_1_1graphics_1_1states_1_1DepthStencilStateDesc.html#aa02953d0938534b173695ee85698c4c4',1,'xl7::graphics::states::DepthStencilStateDesc']]],
+  ['is_5fstring_5fconstructible_5fv_45',['is_string_constructible_v',['../d1/d2e/namespacecl7.html#a2b7716202f0260d0a155173ff6811aac',1,'cl7']]],
+  ['italic_5fintensity_46',['italic_intensity',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a0b571a2d895b3b30a5926210f22f85f7',1,'fl7::fonts::TextStyle']]],
+  ['item_5fheight_47',['item_height',['../d5/d56/structal7_1_1packing_1_1ShelfPacker_1_1Shelf.html#a1573f0ede1e145d90036864cb408c2d8',1,'al7::packing::ShelfPacker::Shelf']]],
+  ['iteration_5fnumber_48',['iteration_number',['../d1/d32/structtl7_1_1Signature.html#a42be262107926c787757bf3131f2848e',1,'tl7::Signature']]]
 ];

@@ -5,7 +5,8 @@ var searchData=
   ['whitespace_2',['whitespace',['../de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2a5929d5ade2c537cdc67852eb2a2075b7',1,'dl7::ini::detail::WHITESPACE'],['../d9/d58/namespacedl7_1_1toml_1_1detail.html#a48f6ae72c9dac29ef592e9169e1f8678a78d995141565de0c125d0256d60cdabd',1,'dl7::toml::detail::WHITESPACE'],['../d4/dc2/namespacedl7_1_1xml_1_1detail.html#a763cf7809cd96b73b261448238faf1f7a15380b23bc8724cd8f5fba124f535f8f',1,'dl7::xml::detail::WHITESPACE']]],
   ['windowed_3',['windowed',['../d2/d33/structxl7_1_1Config_1_1Video.html#ae385a3a6e937c6aef106ebdf94bd0e59ab13311ab51c4c34757f67f26580018dd',1,'xl7::Config::Video::Windowed'],['../dc/d6e/namespacexl7.html#a5e0f436814da1bf500ed4637f8ad723dab13311ab51c4c34757f67f26580018dd',1,'xl7::Windowed']]],
   ['wireframe_4',['Wireframe',['../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a7f46c6d01e495097a9265668e17da143a33e42d0f3b166a4c405127e4412fbef2',1,'xl7::graphics::states']]],
-  ['wrap_5',['Wrap',['../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a98d0b059d0af618a89dda3c2f66f2da5aa212b19ef5f2fb30acf92e6cbccc1f2d',1,'xl7::graphics::states']]],
-  ['write_6',['Write',['../d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5a1129c0e4d43f2d121652a7302712cff6',1,'cl7::io']]],
-  ['writeerror_7',['WriteError',['../da/df4/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1RleEncoder.html#a8457c8e3507702c62e9a19200f514fbda4a02ea49d454392fd1e3426e53f14b58',1,'xl7::graphics::images::codecs::targa::RleEncoder']]]
+  ['word_5',['Word',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a42208c3cc71745c28a830d9f2e7a486fa07a094a210794e74a0e5e1a1457a92ee',1,'fl7::fonts::TextStyle']]],
+  ['wrap_6',['Wrap',['../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a98d0b059d0af618a89dda3c2f66f2da5aa212b19ef5f2fb30acf92e6cbccc1f2d',1,'xl7::graphics::states']]],
+  ['write_7',['Write',['../d6/dc7/namespacecl7_1_1io.html#a610db0fcffbaa2d1ff8df37aeb0ebaa5a1129c0e4d43f2d121652a7302712cff6',1,'cl7::io']]],
+  ['writeerror_8',['WriteError',['../da/df4/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1RleEncoder.html#a8457c8e3507702c62e9a19200f514fbda4a02ea49d454392fd1e3426e53f14b58',1,'xl7::graphics::images::codecs::targa::RleEncoder']]]
 ];

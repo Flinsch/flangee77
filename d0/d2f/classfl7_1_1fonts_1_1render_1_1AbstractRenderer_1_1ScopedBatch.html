@@ -133,6 +133,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a08b798579af38ebea79cc464445d2420" id="r_a08b798579af38ebea79cc464445d2420"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__like.html">cl7::any_string_view_like</a> Tstring_view_like&gt; </td></tr>
 <tr class="memitem:a08b798579af38ebea79cc464445d2420"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html#a08b798579af38ebea79cc464445d2420">draw_text</a> (Tstring_view_like &amp;&amp;text, <a class="el" href="../../d3/d00/classfl7_1_1fonts_1_1Font.html">Font</a> *font, const <a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html">TextStyle</a> *text_style=nullptr, <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> position={})</td></tr>
 <tr class="separator:a08b798579af38ebea79cc464445d2420"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51ba4c0afc053a05a1807b5f2f3460a0" id="r_a51ba4c0afc053a05a1807b5f2f3460a0"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__like.html">cl7::any_string_view_like</a> Tstring_view_like&gt; </td></tr>
+<tr class="memitem:a51ba4c0afc053a05a1807b5f2f3460a0"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html#a51ba4c0afc053a05a1807b5f2f3460a0">draw_text_in_box</a> (Tstring_view_like &amp;&amp;text, <a class="el" href="../../d3/d00/classfl7_1_1fonts_1_1Font.html">Font</a> *font, const <a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html">TextStyle</a> *text_style, <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> box_position, <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> box_size)</td></tr>
+<tr class="separator:a51ba4c0afc053a05a1807b5f2f3460a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0424b0bdb799008b4a33972178c4813" id="r_af0424b0bdb799008b4a33972178c4813"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html#af0424b0bdb799008b4a33972178c4813">flush</a> ()</td></tr>
 <tr class="separator:af0424b0bdb799008b4a33972178c4813"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a606cadbc6d7e42209c0b8a614914b0" id="r_a1a606cadbc6d7e42209c0b8a614914b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html#a1a606cadbc6d7e42209c0b8a614914b0">end</a> ()</td></tr>
@@ -300,6 +303,63 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
 </table>
 </div><div class="memdoc">
 <p>Draws text at the specified position. </p>
+
+</div>
+</div>
+<a id="a51ba4c0afc053a05a1807b5f2f3460a0" name="a51ba4c0afc053a05a1807b5f2f3460a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51ba4c0afc053a05a1807b5f2f3460a0">&#9670;&#160;</a></span>draw_text_in_box()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__like.html">cl7::any_string_view_like</a> Tstring_view_like&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fl7::fonts::render::AbstractRenderer::ScopedBatch::draw_text_in_box </td>
+          <td>(</td>
+          <td class="paramtype">Tstring_view_like &amp;&amp;&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d00/classfl7_1_1fonts_1_1Font.html">Font</a> *&#160;</td>
+          <td class="paramname"><em>font</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html">TextStyle</a> *&#160;</td>
+          <td class="paramname"><em>text_style</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td>
+          <td class="paramname"><em>box_position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td>
+          <td class="paramname"><em>box_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Draws text laid out within the specified box. </p>
 
 </div>
 </div>

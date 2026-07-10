@@ -1,5 +1,7 @@
 var dir_5e3ab3d1af9f3ff1abd3ff57b8e30e4c =
 [
+    [ "ClippedQuad.cpp", "d4/d65/ClippedQuad_8cpp.html", null ],
+    [ "ClippedQuad.h", "dc/d2a/ClippedQuad_8h.html", "dc/d2a/ClippedQuad_8h" ],
     [ "DirtyRange.h", "d8/da3/DirtyRange_8h.html", "d8/da3/DirtyRange_8h" ],
     [ "IMeshFactory.h", "d8/d2c/IMeshFactory_8h.html", "d8/d2c/IMeshFactory_8h" ],
     [ "IndexBuffer.cpp", "d3/d3e/IndexBuffer_8cpp.html", null ],

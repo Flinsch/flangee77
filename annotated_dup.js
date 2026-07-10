@@ -287,6 +287,7 @@ var annotated_dup =
         [ "FontMetrics", "df/d82/structfl7_1_1fonts_1_1FontMetrics.html", "df/d82/structfl7_1_1fonts_1_1FontMetrics" ],
         [ "Glyph", "d2/d26/structfl7_1_1fonts_1_1Glyph.html", "d2/d26/structfl7_1_1fonts_1_1Glyph" ],
         [ "GlyphMetrics", "d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html", "d5/d64/structfl7_1_1fonts_1_1GlyphMetrics" ],
+        [ "TextLine", "d5/daa/structfl7_1_1fonts_1_1TextLine.html", "d5/daa/structfl7_1_1fonts_1_1TextLine" ],
         [ "TextMetrics", "d2/dc2/structfl7_1_1fonts_1_1TextMetrics.html", "d2/dc2/structfl7_1_1fonts_1_1TextMetrics" ],
         [ "TextStyle", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html", "d8/d86/structfl7_1_1fonts_1_1TextStyle" ]
       ] ]
@@ -471,6 +472,7 @@ var annotated_dup =
           ] ]
         ] ],
         [ "meshes", "d0/d08/namespacexl7_1_1graphics_1_1meshes.html", [
+          [ "ClippedQuad", "d2/d47/structxl7_1_1graphics_1_1meshes_1_1ClippedQuad.html", "d2/d47/structxl7_1_1graphics_1_1meshes_1_1ClippedQuad" ],
           [ "DirtyRange", "dc/d1a/classxl7_1_1graphics_1_1meshes_1_1DirtyRange.html", "dc/d1a/classxl7_1_1graphics_1_1meshes_1_1DirtyRange" ],
           [ "IMeshFactory", "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory.html", "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory" ],
           [ "IndexBuffer", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer" ],

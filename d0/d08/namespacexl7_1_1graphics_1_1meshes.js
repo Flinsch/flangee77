@@ -1,5 +1,6 @@
 var namespacexl7_1_1graphics_1_1meshes =
 [
+    [ "ClippedQuad", "d2/d47/structxl7_1_1graphics_1_1meshes_1_1ClippedQuad.html", "d2/d47/structxl7_1_1graphics_1_1meshes_1_1ClippedQuad" ],
     [ "DirtyRange", "dc/d1a/classxl7_1_1graphics_1_1meshes_1_1DirtyRange.html", "dc/d1a/classxl7_1_1graphics_1_1meshes_1_1DirtyRange" ],
     [ "IMeshFactory", "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory.html", "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory" ],
     [ "IndexBuffer", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer.html", "d9/d94/classxl7_1_1graphics_1_1meshes_1_1IndexBuffer" ],

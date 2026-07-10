@@ -5,6 +5,7 @@ var classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch =
     [ "ScopedBatch", "d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html#a7b40b00d597a520a2d8d82cfbed06234", null ],
     [ "~ScopedBatch", "d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html#a8881449c4470b651c2f6356b97425b8e", null ],
     [ "draw_text", "d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html#a08b798579af38ebea79cc464445d2420", null ],
+    [ "draw_text_in_box", "d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html#a51ba4c0afc053a05a1807b5f2f3460a0", null ],
     [ "end", "d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html#a1a606cadbc6d7e42209c0b8a614914b0", null ],
     [ "flush", "d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html#af0424b0bdb799008b4a33972178c4813", null ],
     [ "operator=", "d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html#a1288d0d2f6f259ac1906e378d6e994ba", null ],

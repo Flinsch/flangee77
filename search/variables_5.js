@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['e_0',['e',['../da/d4c/structml7_1_1Matrix2x3.html#a9f716683d5324faef8a84e44a1855329',1,'ml7::Matrix2x3::e'],['../d6/d9f/structml7_1_1constants.html#a2d82950290fb21722407fdb4e24ce4ac',1,'ml7::constants::e'],['../d6/d14/structml7_1_1Matrix3x3.html#a58ebb7a8cc9552f02259e2eba320253c',1,'ml7::Matrix3x3::e']]],
+  ['e_0',['e',['../da/d4c/structml7_1_1Matrix2x3.html#a9f716683d5324faef8a84e44a1855329',1,'ml7::Matrix2x3::e'],['../d6/d14/structml7_1_1Matrix3x3.html#a58ebb7a8cc9552f02259e2eba320253c',1,'ml7::Matrix3x3::e'],['../d6/d9f/structml7_1_1constants.html#a2d82950290fb21722407fdb4e24ce4ac',1,'ml7::constants::e']]],
   ['eax_1',['eax',['../de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html#a2dc7443e45be937e4cdcfafb85ce7de5',1,'cl7::platform::CPUID::regs']]],
   ['ebx_2',['ebx',['../de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html#af6b9d56d6826ded4b088eed471a5120e',1,'cl7::platform::CPUID::regs']]],
   ['ecx_3',['ecx',['../de/d82/structcl7_1_1platform_1_1CPUID_1_1regs.html#a0fa3fd610108139bc661f10a6d228ce4',1,'cl7::platform::CPUID::regs']]],
@@ -14,7 +14,7 @@ var searchData=
   ['empty_5fline_5fbefore_5fsection_5fheader_11',['empty_line_before_section_header',['../d9/db3/structdl7_1_1ini_1_1Format.html#a3bfc1cb2c67b0a6990ed46629bfa2cce',1,'dl7::ini::Format']]],
   ['empty_5fline_5fbefore_5ftable_5fheader_12',['empty_line_before_table_header',['../dc/d02/structdl7_1_1toml_1_1Format.html#afb31249173670901f2e2db6d8caf64eb',1,'dl7::toml::Format']]],
   ['encoding_13',['encoding',['../d3/df1/classcl7_1_1text_1_1codec_1_1AsciiCodec.html#a32986f735544751ecde5b5a038d34dce',1,'cl7::text::codec::AsciiCodec::encoding'],['../d8/de0/classcl7_1_1text_1_1codec_1_1Utf16Codec.html#aebc4b41e386686630b696a7ae35234e1',1,'cl7::text::codec::Utf16Codec::encoding'],['../db/dd0/classcl7_1_1text_1_1codec_1_1Utf32Codec.html#a1923a2a896407f35d1c4fa1d1e1bfcfa',1,'cl7::text::codec::Utf32Codec::encoding'],['../d2/db1/classcl7_1_1text_1_1codec_1_1Utf8Codec.html#a474705f49ddc4e7728c5cb2bc61fd74a',1,'cl7::text::codec::Utf8Codec::encoding']]],
-  ['end_14',['end',['../d8/d86/structml7_1_1LineSegment2.html#a53644c5b69798a9d433c62f276bcf7ec',1,'ml7::LineSegment2::end'],['../d5/d85/structml7_1_1LineSegment3.html#a5224981149d4ba465cf103627654a430',1,'ml7::LineSegment3::end']]],
+  ['end_14',['end',['../d8/d86/structml7_1_1LineSegment2.html#a53644c5b69798a9d433c62f276bcf7ec',1,'ml7::LineSegment2::end'],['../da/d9b/TextLayout_8cpp.html#aca05b1afbbe1c83cf087b49df03c441a',1,'end:&#160;TextLayout.cpp'],['../d5/d85/structml7_1_1LineSegment3.html#a5224981149d4ba465cf103627654a430',1,'ml7::LineSegment3::end']]],
   ['end_5fpoint_5findices_15',['end_point_indices',['../d3/d6c/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph.html#abae1e1904e3bf0a58431a00dae34f4c8',1,'fl7::fonts::detail::ttf::RawGlyph']]],
   ['entry_5fpoint_16',['entry_point',['../d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc.html#ab2196a233765d13392725e20c6f4a1ec',1,'xl7::graphics::shaders::ShaderDesc']]],
   ['entry_5fselector_17',['entry_selector',['../d9/db1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OffsetSubtable.html#a6d6fed5cfbbc024f638b370847fcffcf',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader::OffsetSubtable']]],

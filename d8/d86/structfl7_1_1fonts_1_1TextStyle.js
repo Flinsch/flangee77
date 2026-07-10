@@ -12,6 +12,10 @@ var structfl7_1_1fonts_1_1TextStyle =
       [ "Bottom", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458ba2ad9d63b69c4a10a5cc9cad923133bc4", null ],
       [ "Baseline", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4a32c4764653e50488bff6ce2eb815b", null ]
     ] ],
+    [ "WrapMode", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a42208c3cc71745c28a830d9f2e7a486f", [
+      [ "None", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a42208c3cc71745c28a830d9f2e7a486fa6adf97f83acf6453d4a6a4b1070f3754", null ],
+      [ "Word", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a42208c3cc71745c28a830d9f2e7a486fa07a094a210794e74a0e5e1a1457a92ee", null ]
+    ] ],
     [ "background_color", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ab1c104dd0bbf49807b3059a1d4734c4c", null ],
     [ "font_size", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a335b86fcd1d24c073d40d33f0b0d669d", null ],
     [ "horizontal_align", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a330f79bc43c84f2095a53b75c022e6ce", null ],
@@ -24,5 +28,6 @@ var structfl7_1_1fonts_1_1TextStyle =
     [ "text_color", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a5603e32fd3aeefb1f7a5e0fe1b8ca0f7", null ],
     [ "vertical_align", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a38b14535283cfa21368a798acaa4cc50", null ],
     [ "weight", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ad5ee6505f7d2cf65514cd81e4270b19e", null ],
-    [ "word_spacing", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a53ca82dc211d4440c5958242aef9e364", null ]
+    [ "word_spacing", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a53ca82dc211d4440c5958242aef9e364", null ],
+    [ "wrap_mode", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a4d6a8329300f0c898f187561aa211f07", null ]
 ];

@@ -14,6 +14,8 @@ var dir_08a5606168a6639d21308f080d4b1995 =
     [ "Glyph.cpp", "dc/dcb/Glyph_8cpp.html", null ],
     [ "Glyph.h", "d4/daa/Glyph_8h.html", "d4/daa/Glyph_8h" ],
     [ "GlyphMetrics.h", "d2/d03/GlyphMetrics_8h.html", "d2/d03/GlyphMetrics_8h" ],
+    [ "TextLayout.cpp", "da/d9b/TextLayout_8cpp.html", "da/d9b/TextLayout_8cpp" ],
+    [ "TextLayout.h", "d0/d53/TextLayout_8h.html", "d0/d53/TextLayout_8h" ],
     [ "TextMetrics.cpp", "da/dad/TextMetrics_8cpp.html", null ],
     [ "TextMetrics.h", "d8/d48/TextMetrics_8h.html", "d8/d48/TextMetrics_8h" ],
     [ "TextStyle.h", "d7/d22/TextStyle_8h.html", "d7/d22/TextStyle_8h" ]
