@@ -416,6 +416,17 @@ namespace helloworld {
         _bitmap_renderer->draw_text_in_box(
             u8"This single unwrapped line is intentionally far too long and tall to fit, so it must be cropped at the box edges.",
             _font.get(), &crop_text_style, {10.0f, y}, {300.0f, 24.0f});
+        y += 24.0f + line_height;
+
+        // Justify demo: WrapMode::Word wraps this into several lines; every
+        // line except the last should stretch flush to both box edges, while
+        // the last line stays left-aligned.
+        fl7::fonts::TextStyle justify_text_style = text_style;
+        justify_text_style.wrap_mode = fl7::fonts::TextStyle::WrapMode::Word;
+        justify_text_style.horizontal_align = fl7::fonts::TextStyle::HorizontalAlign::Justify;
+        _bitmap_renderer->draw_text_in_box(
+            u8"This text is justified, so every line except the last one should stretch flush to both edges of the box.",
+            _font.get(), &justify_text_style, {10.0f, y}, {300.0f, 200.0f});
     }
 
     /**

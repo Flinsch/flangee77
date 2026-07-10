@@ -4,6 +4,8 @@
 #include <FaceLabs/fonts/TextLayout.h>
 #include <FaceLabs/fonts/detail/ttf/TrueTypeFontLoader.h>
 
+#include "../../shared.h"
+
 #include <CoreLabs/platform/filesystem.h>
 
 #include <span>
@@ -64,6 +66,13 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - explicit line breaks
     TESTLABS_CHECK_EQ( to_string(codepoints, lines.at(0)), "AAA" );
     TESTLABS_CHECK_EQ( to_string(codepoints, lines.at(1)), "BB" );
     TESTLABS_CHECK_EQ( to_string(codepoints, lines.at(2)), "C" );
+
+    // Each line is a single-line paragraph of its own.
+    for (const auto& line : lines)
+    {
+        TESTLABS_CHECK( line.is_paragraph_end );
+        TESTLABS_CHECK_EQ( line.word_count, 1u );
+    }
 }
 
 TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - explicit line breaks are ignored when max_width is unset" )
@@ -77,6 +86,8 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - explicit line breaks
 
     TESTLABS_CHECK_EQ( lines.size(), size_t{1} );
     TESTLABS_CHECK_EQ( to_string(codepoints, lines.at(0)), "aaa bbb ccc" );
+    TESTLABS_CHECK( lines.at(0).is_paragraph_end );
+    TESTLABS_CHECK_EQ( lines.at(0).word_count, 3u );
 }
 
 TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - word-wrap across multiple lines" )
@@ -94,6 +105,11 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - word-wrap across mul
     TESTLABS_CHECK_EQ( to_string(codepoints, lines.at(0)), "aaa bbb" );
     TESTLABS_CHECK_EQ( to_string(codepoints, lines.at(1)), "ccc" );
     TESTLABS_CHECK_LE( lines.at(0).width, max_width );
+
+    TESTLABS_CHECK_EQ( lines.at(0).word_count, 2u );
+    TESTLABS_CHECK( !lines.at(0).is_paragraph_end );
+    TESTLABS_CHECK_EQ( lines.at(1).word_count, 1u );
+    TESTLABS_CHECK( lines.at(1).is_paragraph_end );
 }
 
 TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - mid-word hard break for an overlong word" )
@@ -113,11 +129,16 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - mid-word hard break 
 
     // Every fragment must stay within the box width, and the fragments must
     // cover the whole word contiguously, in order, without gaps or overlaps.
+    // Each fragment is a piece of a single word, so word_count is always 1,
+    // and only the final fragment ends its (one-line) paragraph.
     std::string reassembled;
-    for (const auto& line : lines)
+    for (size_t i = 0; i < lines.size(); ++i)
     {
+        const auto& line = lines[i];
         TESTLABS_CHECK_LE( line.width, max_width );
         TESTLABS_CHECK_GT( line.codepoint_end, line.codepoint_begin );
+        TESTLABS_CHECK_EQ( line.word_count, 1u );
+        TESTLABS_CHECK_EQ( line.is_paragraph_end, i == lines.size() - 1 );
         reassembled += to_string(codepoints, line);
     }
     TESTLABS_CHECK_EQ( reassembled, std::string(word) );
@@ -134,6 +155,8 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - leading/trailing whi
     TESTLABS_CHECK_EQ( lines.size(), size_t{1} );
     TESTLABS_CHECK_EQ( to_string(codepoints, lines.at(0)), "hello" );
     TESTLABS_CHECK_EQ_FLT( lines.at(0).width, measure("hello", font, text_style) );
+    TESTLABS_CHECK_EQ( lines.at(0).word_count, 1u );
+    TESTLABS_CHECK( lines.at(0).is_paragraph_end );
 }
 
 TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - explicit line breaks still split paragraphs under WrapMode::Word" )
@@ -152,4 +175,10 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - explicit line breaks
     TESTLABS_CHECK_EQ( lines.size(), size_t{2} );
     TESTLABS_CHECK_EQ( to_string(codepoints, lines.at(0)), "aaa bbb" );
     TESTLABS_CHECK_EQ( to_string(codepoints, lines.at(1)), "ccc ddd" );
+
+    // Each explicit-break paragraph is its own single-line paragraph.
+    TESTLABS_CHECK_EQ( lines.at(0).word_count, 2u );
+    TESTLABS_CHECK( lines.at(0).is_paragraph_end );
+    TESTLABS_CHECK_EQ( lines.at(1).word_count, 2u );
+    TESTLABS_CHECK( lines.at(1).is_paragraph_end );
 }

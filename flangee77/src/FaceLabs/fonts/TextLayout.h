@@ -27,6 +27,10 @@ struct TextLine
     size_t codepoint_end = 0;
     /** The measured width of this line, in scaled pixels. */
     float width = 0.0f;
+    /** The number of whitespace-delimited words on this line. */
+    unsigned word_count = 0;
+    /** Whether this is the last (or only) line of its paragraph. */
+    bool is_paragraph_end = false;
 };
 
 namespace TextLayout {

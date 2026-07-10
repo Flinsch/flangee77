@@ -2,6 +2,8 @@
 
 #include "../TextLayout.h"
 
+#include <CoreLabs/text/inspect.h>
+
 
 
 namespace fl7::fonts::render {
@@ -121,6 +123,13 @@ namespace fl7::fonts::render {
 
         for (const TextLine& line : lines)
         {
+            // Justify stretches the gaps between words to fill the box width, but
+            // only where that's meaningful: not on a paragraph's last (or only)
+            // line, and not on a line with just one word (no gaps to stretch).
+            // Both fall back to Left, per standard convention.
+            const bool is_justified = text_style->horizontal_align == TextStyle::HorizontalAlign::Justify
+                && box_size.x > 0.0f && !line.is_paragraph_end && line.word_count > 1;
+
             float start_x;
             switch (text_style->horizontal_align)
             {
@@ -131,15 +140,28 @@ namespace fl7::fonts::render {
                 start_x = box_position.x + box_size.x - line.width;
                 break;
             case TextStyle::HorizontalAlign::Left:
-            case TextStyle::HorizontalAlign::Justify: // Justify distribution not implemented yet; falls back to left.
+            case TextStyle::HorizontalAlign::Justify:
             default:
                 start_x = box_position.x;
                 break;
             }
 
+            const float extra_per_gap = is_justified ? (box_size.x - line.width) / static_cast<float>(line.word_count - 1) : 0.0f;
+
             state.cursor = {start_x, line_y};
+            bool previous_was_whitespace = false;
             for (size_t i = line.codepoint_begin; i < line.codepoint_end; ++i)
-                _emit_codepoint(codepoints[i], state);
+            {
+                const cl7::text::codec::codepoint codepoint = codepoints[i];
+                if (is_justified)
+                {
+                    const bool is_whitespace = cl7::text::inspect::is_whitespace(static_cast<char32_t>(codepoint.value));
+                    if (is_whitespace && !previous_was_whitespace)
+                        state.cursor.x += extra_per_gap;
+                    previous_was_whitespace = is_whitespace;
+                }
+                _emit_codepoint(codepoint, state);
+            }
 
             line_y += line_height_px;
         }

@@ -36,21 +36,7 @@ namespace {
         return width;
     }
 
-    TextLine _make_trimmed_line(std::span<const cl7::text::codec::codepoint> codepoints, size_t begin, size_t end, Font::Access& font_access, ml7::Vector2f scaled_font_size)
-    {
-        while (begin < end && _is_whitespace(codepoints[begin]))
-            ++begin;
-        while (end > begin && _is_whitespace(codepoints[end - 1]))
-            --end;
-
-        return TextLine{
-            .codepoint_begin = begin,
-            .codepoint_end = end,
-            .width = _measure(codepoints, begin, end, font_access, scaled_font_size),
-        };
-    }
-
-    /** A whitespace-delimited word within a paragraph, as a codepoint range. */
+    /** A whitespace-delimited word within a paragraph, as a code point range. */
     struct _Word
     {
         size_t begin;
@@ -85,6 +71,23 @@ namespace {
         return words;
     }
 
+    TextLine _make_trimmed_line(std::span<const cl7::text::codec::codepoint> codepoints, size_t begin, size_t end, Font::Access& font_access, ml7::Vector2f scaled_font_size)
+    {
+        while (begin < end && _is_whitespace(codepoints[begin]))
+            ++begin;
+        while (end > begin && _is_whitespace(codepoints[end - 1]))
+            --end;
+
+        // A trimmed line is always its paragraph's only (and thus last) line.
+        return TextLine{
+            .codepoint_begin = begin,
+            .codepoint_end = end,
+            .width = _measure(codepoints, begin, end, font_access, scaled_font_size),
+            .word_count = static_cast<unsigned>(_split_into_words(codepoints, begin, end, font_access, scaled_font_size).size()),
+            .is_paragraph_end = true,
+        };
+    }
+
     /**
      * Hard-breaks a single (too-wide-for-any-line) word into as many lines as
      * needed, each holding as many codepoints as fit within `max_width` (at least
@@ -100,14 +103,16 @@ namespace {
             const float advance = _advance_of(codepoints[i], font_access, scaled_font_size);
             if (piece_width + advance > max_width && i > piece_begin)
             {
-                out_lines.push_back(TextLine{.codepoint_begin = piece_begin, .codepoint_end = i, .width = piece_width});
+                // A fragment of a single word has no internal gaps, so it can
+                // never be justified (word_count == 1).
+                out_lines.push_back(TextLine{.codepoint_begin = piece_begin, .codepoint_end = i, .width = piece_width, .word_count = 1});
                 piece_begin = i;
                 piece_width = 0.0f;
             }
             piece_width += advance;
         }
 
-        out_lines.push_back(TextLine{.codepoint_begin = piece_begin, .codepoint_end = word_end, .width = piece_width});
+        out_lines.push_back(TextLine{.codepoint_begin = piece_begin, .codepoint_end = word_end, .width = piece_width, .word_count = 1});
     }
 
     void _word_wrap_paragraph(std::span<const cl7::text::codec::codepoint> codepoints, size_t begin, size_t end, Font::Access& font_access, ml7::Vector2f scaled_font_size, float max_width, std::vector<TextLine>& out_lines)
@@ -147,8 +152,13 @@ namespace {
                 .codepoint_begin = words[line_start_word].begin,
                 .codepoint_end = line_end_cp,
                 .width = _measure(codepoints, words[line_start_word].begin, line_end_cp, font_access, scaled_font_size),
+                .word_count = static_cast<unsigned>(k - line_start_word),
             });
         }
+
+        // Whichever line was pushed last for this paragraph (whether from the
+        // word-fitting branch above or a hard break) is its last line.
+        out_lines.back().is_paragraph_end = true;
     }
 
 } // namespace
