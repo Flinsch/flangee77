@@ -11,10 +11,6 @@ namespace fl7::fonts::render {
 /**
  * Texture-atlas-based renderer using multi-channel signed distance field (MSDF)
  * rasterization.
- *
- * TODO: Requires an MSDF rasterizer that is not yet implemented.
- *       This class is a stub; the MSDF rasterizer must be provided externally
- *       once available.
  */
 class MsdfRenderer
     : public AbstractTextureAtlasBasedRenderer

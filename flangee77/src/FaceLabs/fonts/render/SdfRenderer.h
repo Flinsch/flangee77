@@ -10,10 +10,6 @@ namespace fl7::fonts::render {
 
 /**
  * Texture-atlas-based renderer using signed distance field (SDF) rasterization.
- *
- * TODO: Requires an SDF rasterizer that is not yet implemented.
- *       This class is a stub; the SDF rasterizer must be provided externally
- *       once available.
  */
 class SdfRenderer
     : public AbstractTextureAtlasBasedRenderer

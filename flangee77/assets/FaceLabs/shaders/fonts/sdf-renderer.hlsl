@@ -1,14 +1,17 @@
 
-// TODO: SDF rasterizer not yet implemented; this is a stub.
-
 #include "atlas-renderer-common.hlsli"
 
 PixelOut mainPixel(PixelIn i)
 {
     PixelOut o;
-    // SDF: signed distance in the red channel; threshold at 0.5
+    // SDF: signed distance in the red channel; 0.5 is the glyph edge.
     float dist = SAMPLE_TEX2D(GlyphAtlas, GlyphSampler, i.uv).r;
-    float alpha = smoothstep(0.4, 0.6, dist);
+    // Derive the antialiasing band from how fast the distance changes across
+    // screen pixels (via fwidth), so edges stay equally crisp regardless of the
+    // glyph's on-screen scale, instead of a fixed-width threshold that would
+    // only be correct at one specific size.
+    float width = max(fwidth(dist), 1e-5);
+    float alpha = smoothstep(0.5 - width, 0.5 + width, dist);
     o.color = float4(i.color.rgb, i.color.a * alpha);
     return o;
 }
