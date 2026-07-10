@@ -90,7 +90,7 @@ namespace {
 
     /**
      * Hard-breaks a single (too-wide-for-any-line) word into as many lines as
-     * needed, each holding as many codepoints as fit within `max_width` (at least
+     * needed, each holding as many code points as fit within `max_width` (at least
      * one, to guarantee progress).
      */
     void _hard_break_word(std::span<const cl7::text::codec::codepoint> codepoints, size_t word_begin, size_t word_end, Font::Access& font_access, ml7::Vector2f scaled_font_size, float max_width, std::vector<TextLine>& out_lines)
@@ -168,7 +168,7 @@ namespace {
 namespace TextLayout {
 
     /**
-     * Splits the given codepoints into lines.
+     * Splits the given code points into lines.
      *
      * Explicit line breaks (CRLF, LF, or CR) always start a new line, regardless of
      * the wrap mode. If `text_style.wrap_mode` is `WrapMode::Word` and `max_width`

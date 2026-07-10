@@ -39,7 +39,7 @@ public:
     cl7::u8string read_token();
 
     /**
-     * Attempts to read a single Unicode codepoint.
+     * Attempts to read a single Unicode code point.
      */
     cl7::u8string_view read_codepoint();
 
@@ -65,7 +65,7 @@ public:
     cl7::u8string read_token_validated();
 
     /**
-     * Attempts to "peek" a single Unicode codepoint without extracting it.
+     * Attempts to "peek" a single Unicode code point without extracting it.
      */
     cl7::u8string_view peek_codepoint();
 

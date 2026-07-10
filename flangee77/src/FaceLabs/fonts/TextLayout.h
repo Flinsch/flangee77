@@ -21,9 +21,9 @@ namespace fl7::fonts {
  */
 struct TextLine
 {
-    /** The index of the first codepoint of this line (inclusive). */
+    /** The index of the first code point of this line (inclusive). */
     size_t codepoint_begin = 0;
-    /** The index of the first codepoint after this line (exclusive). */
+    /** The index of the first code point after this line (exclusive). */
     size_t codepoint_end = 0;
     /** The measured width of this line, in scaled pixels. */
     float width = 0.0f;
@@ -36,7 +36,7 @@ struct TextLine
 namespace TextLayout {
 
     /**
-     * Splits the given codepoints into lines.
+     * Splits the given code points into lines.
      *
      * Explicit line breaks (CRLF, LF, or CR) always start a new line, regardless of
      * the wrap mode. If `text_style.wrap_mode` is `WrapMode::Word` and `max_width`

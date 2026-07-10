@@ -84,7 +84,7 @@ namespace cl7::io {
     }
 
     /**
-     * Attempts to read a single Unicode codepoint.
+     * Attempts to read a single Unicode code point.
      */
     cl7::u8string_view Utf8Reader::read_codepoint()
     {
@@ -159,7 +159,7 @@ namespace {
     }
 
     /**
-     * Attempts to "peek" a single Unicode codepoint without extracting it.
+     * Attempts to "peek" a single Unicode code point without extracting it.
      */
     cl7::u8string_view Utf8Reader::peek_codepoint()
     {
