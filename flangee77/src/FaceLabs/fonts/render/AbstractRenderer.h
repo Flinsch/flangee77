@@ -67,6 +67,16 @@ public:
         }
 
         /**
+         * Draws text laid out within the specified box.
+         */
+        template <cl7::any_string_view_like Tstring_view_like>
+        void draw_text_in_box(Tstring_view_like&& text, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
+        {
+            if (_renderer)
+                _renderer->draw_text_in_box(std::forward<Tstring_view_like>(text), font, text_style, box_position, box_size);
+        }
+
+        /**
          * Forces the submission of all currently batched geometry. This can be called
          * manually if external render state changes, or when mixing with other
          * rendering systems that may modify render state.
@@ -140,21 +150,35 @@ public:
 
 
     /**
-     * Draws text with the baseline at the specified position (screen pixel space,
-     * y-down). If no active text rendering batch is open, begin/end are called
-     * automatically.
+     * Draws text at the specified position (screen pixel space, y-down), honoring
+     * `text_style`'s horizontal/vertical alignment by treating `position` as the
+     * corresponding anchor point (e.g., with `Center` alignment, `position` is the
+     * horizontal center of the text; with `Baseline` alignment, `position` is on
+     * the first line's baseline, etc.). Multi-line text only results from explicit
+     * line breaks in `text`, not from word-wrapping (there is no box width to wrap
+     * against). `Justify` has no effect and behaves like `Left`.
+     *
+     * If no active text rendering batch is open, begin/end are called automatically.
      */
     template <cl7::any_string_view_like Tstring_view_like>
     void draw_text(Tstring_view_like&& text, Font* font, const TextStyle* text_style = nullptr, ml7::Vector2f position = {})
     {
-        auto sv = cl7::make_string_view(std::forward<Tstring_view_like>(text));
-        using codepoint_iterator = cl7::text::codec::codepoint_iterator<cl7::char_type_of_t<Tstring_view_like>>;
+        _extract_codepoints(std::forward<Tstring_view_like>(text));
+        _draw_codepoints_in_box(_codepoints, font, text_style, position, ml7::Vector2f{});
+    }
 
-        _codepoints.clear();
-        for (codepoint_iterator it(sv); it != codepoint_iterator(); ++it)
-            _codepoints.push_back(*it);
-
-        _draw_codepoints(_codepoints, font, text_style, position);
+    /**
+     * Draws text laid out within the specified box (screen pixel space, y-down),
+     * honoring `text_style`'s horizontal/vertical alignment and, for
+     * `WrapMode::Word`, wrapping lines to fit `box_size.x`.
+     *
+     * If no active text rendering batch is open, begin/end are called automatically.
+     */
+    template <cl7::any_string_view_like Tstring_view_like>
+    void draw_text_in_box(Tstring_view_like&& text, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
+    {
+        _extract_codepoints(std::forward<Tstring_view_like>(text));
+        _draw_codepoints_in_box(_codepoints, font, text_style, box_position, box_size);
     }
 
 
@@ -175,7 +199,18 @@ protected:
 
 
 private:
-    void _draw_codepoints(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style, ml7::Vector2f position);
+    template <cl7::any_string_view_like Tstring_view_like>
+    void _extract_codepoints(Tstring_view_like&& text)
+    {
+        auto sv = cl7::make_string_view(std::forward<Tstring_view_like>(text));
+        using codepoint_iterator = cl7::text::codec::codepoint_iterator<cl7::char_type_of_t<Tstring_view_like>>;
+
+        _codepoints.clear();
+        for (codepoint_iterator it(sv); it != codepoint_iterator(); ++it)
+            _codepoints.push_back(*it);
+    }
+
+    void _draw_codepoints_in_box(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size);
 
     void _emit_codepoint(cl7::text::codec::codepoint codepoint, State& state);
 

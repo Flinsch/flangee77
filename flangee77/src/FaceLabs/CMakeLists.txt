@@ -6,6 +6,7 @@ target_sources(flangee77
     fonts/Font.cpp
     fonts/FontLoader.cpp
     fonts/Glyph.cpp
+    fonts/TextLayout.cpp
     fonts/TextMetrics.cpp
 
     fonts/detail/ttf/RawGlyph.cpp

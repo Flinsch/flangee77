@@ -3,8 +3,6 @@ target_sources(flangee77-tests
     PRIVATE
     flangee77-tests.cpp
 
-    FaceLabs/fonts/raster/scratch_inspect.cpp
-
 
     AlgoLabs/math.cpp
     AlgoLabs/packing/Rect.cpp
@@ -49,6 +47,10 @@ target_sources(flangee77-tests
     DataLabs/toml.cpp
     DataLabs/ini.cpp
     DataLabs/xml.cpp
+
+
+    FaceLabs/fonts/TextLayout.cpp
+    FaceLabs/fonts/raster/scratch_inspect.cpp
 
 
     MathLabs/functions.cpp

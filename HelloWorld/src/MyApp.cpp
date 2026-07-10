@@ -384,6 +384,27 @@ namespace helloworld {
         _sdf_renderer->draw_text(text, _font.get(), &text_style, {10.0f, y});
         y += line_height;
         _msdf_renderer->draw_text(text, _font.get(), &text_style, {10.0f, y});
+        y += line_height;
+
+        // Point-based draw_text with alignment: `position` is treated as the
+        // anchor point matching the given alignment (here: horizontally
+        // centered on, and starting right below, the given point).
+        fl7::fonts::TextStyle anchored_text_style = text_style;
+        anchored_text_style.horizontal_align = fl7::fonts::TextStyle::HorizontalAlign::Center;
+        anchored_text_style.vertical_align = fl7::fonts::TextStyle::VerticalAlign::Top;
+        _bitmap_renderer->draw_text(
+            u8"centered on this point",
+            _font.get(), &anchored_text_style, {400.0f, y});
+        y += line_height;
+
+        // Box-based draw_text_in_box with word-wrapping.
+        fl7::fonts::TextStyle box_text_style = text_style;
+        box_text_style.wrap_mode = fl7::fonts::TextStyle::WrapMode::Word;
+        box_text_style.horizontal_align = fl7::fonts::TextStyle::HorizontalAlign::Center;
+        box_text_style.vertical_align = fl7::fonts::TextStyle::VerticalAlign::Top;
+        _bitmap_renderer->draw_text_in_box(
+            u8"This is a longer sentence that should wrap across multiple lines within the given box width.",
+            _font.get(), &box_text_style, {10.0f, y}, {300.0f, 200.0f});
     }
 
     /**

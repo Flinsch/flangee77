@@ -31,10 +31,20 @@ struct TextStyle
         Baseline,
     };
 
+    enum struct WrapMode
+    {
+        /** No wrapping: a line only ends at an explicit line break (if any). */
+        None,
+        /** Greedy word-wrap at whitespace, breaking mid-word only if a single word doesn't fit. */
+        Word,
+    };
+
     /** The horizontal alignment (left, center, right, or justify). */
     HorizontalAlign horizontal_align = HorizontalAlign::Left;
     /** The vertical alignment (top, middle, bottom, or baseline). */
     VerticalAlign vertical_align = VerticalAlign::Baseline;
+    /** The wrapping behavior for multi-line (box-based) text. */
+    WrapMode wrap_mode = WrapMode::None;
 
     /** The base font size, in pixels. */
     float font_size = 16.0f;

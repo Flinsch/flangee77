@@ -1,5 +1,7 @@
 #include "AbstractRenderer.h"
 
+#include "../TextLayout.h"
+
 
 
 namespace fl7::fonts::render {
@@ -65,27 +67,79 @@ namespace fl7::fonts::render {
 
 
 
-    void AbstractRenderer::_draw_codepoints(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style, ml7::Vector2f position)
+    void AbstractRenderer::_draw_codepoints_in_box(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
     {
         if (!font) return;
         if (!text_style) text_style = &_default_text_style;
 
         Font::Access font_access = font->access();
         FontMetrics font_metrics = font_access.get_metrics();
+        TextMetrics text_metrics{codepoints, *font, *text_style};
+
+        // Word-wrapping only makes sense against a real box width: a zero-size
+        // box (used internally for point-based `draw_text`) only ever splits on
+        // explicit line breaks.
+        TextStyle wrap_text_style = *text_style;
+        if (box_size.x <= 0.0f)
+            wrap_text_style.wrap_mode = TextStyle::WrapMode::None;
+
+        const std::vector<TextLine> lines = TextLayout::lay_out(codepoints, *font, wrap_text_style, box_size.x);
+
+        const float line_height_px = font_metrics.line_height * text_metrics.scaled_font_size.y * text_style->line_spacing;
+        const float block_height = static_cast<float>(lines.size()) * line_height_px;
+        const float ascent_px = font_metrics.ascent * text_metrics.scaled_font_size.y;
+
+        float line_y;
+        switch (text_style->vertical_align)
+        {
+        case TextStyle::VerticalAlign::Top:
+            line_y = box_position.y + ascent_px;
+            break;
+        case TextStyle::VerticalAlign::Middle:
+            line_y = box_position.y + (box_size.y - block_height) * 0.5f + ascent_px;
+            break;
+        case TextStyle::VerticalAlign::Bottom:
+            line_y = box_position.y + box_size.y - block_height + ascent_px;
+            break;
+        case TextStyle::VerticalAlign::Baseline:
+        default:
+            line_y = box_position.y;
+            break;
+        }
 
         State state = {
             .font_access = std::move(font_access),
             .font_metrics = font_metrics,
             .text_style = *text_style,
-            .text_metrics = TextMetrics{codepoints, *font, *text_style},
-            .cursor = position,
+            .text_metrics = text_metrics,
+            .cursor = {},
         };
 
         ScopedBatch auto_batch(_batch_depth > 0 ? nullptr : this);
 
-        for (auto codepoint : codepoints)
+        for (const TextLine& line : lines)
         {
-            _emit_codepoint(codepoint, state);
+            float start_x;
+            switch (text_style->horizontal_align)
+            {
+            case TextStyle::HorizontalAlign::Center:
+                start_x = box_position.x + (box_size.x - line.width) * 0.5f;
+                break;
+            case TextStyle::HorizontalAlign::Right:
+                start_x = box_position.x + box_size.x - line.width;
+                break;
+            case TextStyle::HorizontalAlign::Left:
+            case TextStyle::HorizontalAlign::Justify: // Justify distribution not implemented yet; falls back to left.
+            default:
+                start_x = box_position.x;
+                break;
+            }
+
+            state.cursor = {start_x, line_y};
+            for (size_t i = line.codepoint_begin; i < line.codepoint_end; ++i)
+                _emit_codepoint(codepoints[i], state);
+
+            line_y += line_height_px;
         }
     }
 
