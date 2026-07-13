@@ -153,14 +153,16 @@ namespace fl7::fonts::render {
             for (size_t i = line.codepoint_begin; i < line.codepoint_end; ++i)
             {
                 const cl7::text::codec::codepoint codepoint = codepoints[i];
-                if (is_justified)
-                {
-                    const bool is_whitespace = cl7::text::inspect::is_whitespace(static_cast<char32_t>(codepoint.value));
-                    if (is_whitespace && !previous_was_whitespace)
-                        state.cursor.x += extra_per_gap;
-                    previous_was_whitespace = is_whitespace;
-                }
+
+                const bool is_whitespace = cl7::text::inspect::is_whitespace(static_cast<char32_t>(codepoint.value));
+                if (is_whitespace && !previous_was_whitespace)
+                    state.cursor.x += extra_per_gap + text_style->word_spacing;
+                previous_was_whitespace = is_whitespace;
+
                 _emit_codepoint(codepoint, state);
+
+                if (i + 1 < line.codepoint_end)
+                    state.cursor.x += text_style->letter_spacing;
             }
 
             line_y += line_height_px;

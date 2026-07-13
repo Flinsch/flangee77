@@ -182,3 +182,56 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - explicit line breaks
     TESTLABS_CHECK_EQ( lines.at(1).word_count, 2u );
     TESTLABS_CHECK( lines.at(1).is_paragraph_end );
 }
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - letter_spacing adds spacing between every code point" )
+{
+    auto& font = get_test_font();
+    fl7::fonts::TextStyle base_style;
+    fl7::fonts::TextStyle spaced_style;
+    spaced_style.letter_spacing = 5.0f;
+
+    const std::string_view text = "hello";
+    const float base_width = measure(text, font, base_style);
+    const float spaced_width = measure(text, font, spaced_style);
+
+    TESTLABS_CHECK_EQ_ROUND( 3, spaced_width, base_width + spaced_style.letter_spacing * static_cast<float>(text.size() - 1) );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - word_spacing adds spacing once per whitespace run" )
+{
+    auto& font = get_test_font();
+    fl7::fonts::TextStyle base_style;
+    fl7::fonts::TextStyle spaced_style;
+    spaced_style.word_spacing = 7.0f;
+
+    // Two interior whitespace runs (no leading/trailing whitespace, so
+    // trimming in `measure()` doesn't interfere).
+    const std::string_view text = "aaa   bbb ccc";
+    const float base_width = measure(text, font, base_style);
+    const float spaced_width = measure(text, font, spaced_style);
+
+    TESTLABS_CHECK_EQ_ROUND( 3, spaced_width, base_width + spaced_style.word_spacing * 2.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - letter_spacing and word_spacing shift word-wrap boundaries" )
+{
+    auto& font = get_test_font();
+    fl7::fonts::TextStyle text_style;
+    text_style.wrap_mode = fl7::fonts::TextStyle::WrapMode::Word;
+
+    const float max_width = measure("aaa bbb", font, text_style);
+
+    fl7::fonts::TextStyle spaced_style = text_style;
+    spaced_style.letter_spacing = 2.0f;
+    spaced_style.word_spacing = 10.0f;
+
+    const auto codepoints = to_codepoints("aaa bbb ccc");
+    const auto lines = fl7::fonts::TextLayout::lay_out(codepoints, font, spaced_style, max_width);
+
+    // With the extra spacing, "aaa bbb" no longer fits within max_width, so
+    // the wrap boundary must shift earlier than the zero-spacing case (which
+    // fits both words on line 1, per the word-wrap test above).
+    TESTLABS_CHECK_NE( to_string(codepoints, lines.at(0)), "aaa bbb" );
+    for (const auto& line : lines)
+        TESTLABS_CHECK_LE( line.width, max_width );
+}

@@ -43,7 +43,9 @@ namespace TextLayout {
      * is positive, each such paragraph is additionally word-wrapped to fit within
      * `max_width` (greedily, breaking at whitespace; a single word wider than
      * `max_width` is hard-broken mid-word). Leading/trailing whitespace of each
-     * produced line is excluded from its range and width.
+     * produced line is excluded from its range and width. `text_style.letter_spacing`
+     * and `text_style.word_spacing` are incorporated into each line's measured
+     * width and into wrap decisions.
      */
     std::vector<TextLine> lay_out(std::span<const cl7::text::codec::codepoint> codepoints, Font& font, const TextStyle& text_style, float max_width);
 

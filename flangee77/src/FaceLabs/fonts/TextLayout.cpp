@@ -28,11 +28,22 @@ namespace {
         return glyph->metrics.advance_width * scaled_font_size.x;
     }
 
-    float _measure(std::span<const cl7::text::codec::codepoint> codepoints, size_t begin, size_t end, Font::Access& font_access, ml7::Vector2f scaled_font_size)
+    float _measure(std::span<const cl7::text::codec::codepoint> codepoints, size_t begin, size_t end, Font::Access& font_access, ml7::Vector2f scaled_font_size, float letter_spacing, float word_spacing)
     {
         float width = 0.0f;
+        bool previous_was_whitespace = false;
         for (size_t i = begin; i < end; ++i)
+        {
+            if (i > begin)
+                width += letter_spacing;
+
+            const bool is_whitespace = _is_whitespace(codepoints[i]);
+            if (is_whitespace && !previous_was_whitespace)
+                width += word_spacing;
+            previous_was_whitespace = is_whitespace;
+
             width += _advance_of(codepoints[i], font_access, scaled_font_size);
+        }
         return width;
     }
 
@@ -44,7 +55,7 @@ namespace {
         float width;
     };
 
-    std::vector<_Word> _split_into_words(std::span<const cl7::text::codec::codepoint> codepoints, size_t begin, size_t end, Font::Access& font_access, ml7::Vector2f scaled_font_size)
+    std::vector<_Word> _split_into_words(std::span<const cl7::text::codec::codepoint> codepoints, size_t begin, size_t end, Font::Access& font_access, ml7::Vector2f scaled_font_size, float letter_spacing)
     {
         std::vector<_Word> words;
 
@@ -64,14 +75,14 @@ namespace {
             words.push_back(_Word{
                 .begin = word_begin,
                 .end = word_end,
-                .width = _measure(codepoints, word_begin, word_end, font_access, scaled_font_size),
+                .width = _measure(codepoints, word_begin, word_end, font_access, scaled_font_size, letter_spacing, 0.0f),
             });
         }
 
         return words;
     }
 
-    TextLine _make_trimmed_line(std::span<const cl7::text::codec::codepoint> codepoints, size_t begin, size_t end, Font::Access& font_access, ml7::Vector2f scaled_font_size)
+    TextLine _make_trimmed_line(std::span<const cl7::text::codec::codepoint> codepoints, size_t begin, size_t end, Font::Access& font_access, ml7::Vector2f scaled_font_size, float letter_spacing, float word_spacing)
     {
         while (begin < end && _is_whitespace(codepoints[begin]))
             ++begin;
@@ -82,8 +93,8 @@ namespace {
         return TextLine{
             .codepoint_begin = begin,
             .codepoint_end = end,
-            .width = _measure(codepoints, begin, end, font_access, scaled_font_size),
-            .word_count = static_cast<unsigned>(_split_into_words(codepoints, begin, end, font_access, scaled_font_size).size()),
+            .width = _measure(codepoints, begin, end, font_access, scaled_font_size, letter_spacing, word_spacing),
+            .word_count = static_cast<unsigned>(_split_into_words(codepoints, begin, end, font_access, scaled_font_size, letter_spacing).size()),
             .is_paragraph_end = true,
         };
     }
@@ -93,34 +104,40 @@ namespace {
      * needed, each holding as many code points as fit within `max_width` (at least
      * one, to guarantee progress).
      */
-    void _hard_break_word(std::span<const cl7::text::codec::codepoint> codepoints, size_t word_begin, size_t word_end, Font::Access& font_access, ml7::Vector2f scaled_font_size, float max_width, std::vector<TextLine>& out_lines)
+    void _hard_break_word(std::span<const cl7::text::codec::codepoint> codepoints, size_t word_begin, size_t word_end, Font::Access& font_access, ml7::Vector2f scaled_font_size, float letter_spacing, float max_width, std::vector<TextLine>& out_lines)
     {
         size_t piece_begin = word_begin;
         float piece_width = 0.0f;
 
         for (size_t i = word_begin; i < word_end; ++i)
         {
+            const bool is_first_in_piece = (i == piece_begin);
+            const float leading_spacing = is_first_in_piece ? 0.0f : letter_spacing;
             const float advance = _advance_of(codepoints[i], font_access, scaled_font_size);
-            if (piece_width + advance > max_width && i > piece_begin)
+
+            if (piece_width + leading_spacing + advance > max_width && !is_first_in_piece)
             {
                 // A fragment of a single word has no internal gaps, so it can
                 // never be justified (word_count == 1).
                 out_lines.push_back(TextLine{.codepoint_begin = piece_begin, .codepoint_end = i, .width = piece_width, .word_count = 1});
                 piece_begin = i;
-                piece_width = 0.0f;
+                piece_width = advance;
             }
-            piece_width += advance;
+            else
+            {
+                piece_width += leading_spacing + advance;
+            }
         }
 
         out_lines.push_back(TextLine{.codepoint_begin = piece_begin, .codepoint_end = word_end, .width = piece_width, .word_count = 1});
     }
 
-    void _word_wrap_paragraph(std::span<const cl7::text::codec::codepoint> codepoints, size_t begin, size_t end, Font::Access& font_access, ml7::Vector2f scaled_font_size, float max_width, std::vector<TextLine>& out_lines)
+    void _word_wrap_paragraph(std::span<const cl7::text::codec::codepoint> codepoints, size_t begin, size_t end, Font::Access& font_access, ml7::Vector2f scaled_font_size, float letter_spacing, float word_spacing, float max_width, std::vector<TextLine>& out_lines)
     {
-        const std::vector<_Word> words = _split_into_words(codepoints, begin, end, font_access, scaled_font_size);
+        const std::vector<_Word> words = _split_into_words(codepoints, begin, end, font_access, scaled_font_size, letter_spacing);
         if (words.empty())
         {
-            out_lines.push_back(_make_trimmed_line(codepoints, begin, end, font_access, scaled_font_size));
+            out_lines.push_back(_make_trimmed_line(codepoints, begin, end, font_access, scaled_font_size, letter_spacing, word_spacing));
             return;
         }
 
@@ -130,7 +147,7 @@ namespace {
             if (words[k].width > max_width)
             {
                 // A single word that doesn't fit on any line, regardless: break it up.
-                _hard_break_word(codepoints, words[k].begin, words[k].end, font_access, scaled_font_size, max_width, out_lines);
+                _hard_break_word(codepoints, words[k].begin, words[k].end, font_access, scaled_font_size, letter_spacing, max_width, out_lines);
                 ++k;
                 continue;
             }
@@ -141,7 +158,7 @@ namespace {
 
             while (k < words.size())
             {
-                const float tentative_width = _measure(codepoints, words[line_start_word].begin, words[k].end, font_access, scaled_font_size);
+                const float tentative_width = _measure(codepoints, words[line_start_word].begin, words[k].end, font_access, scaled_font_size, letter_spacing, word_spacing);
                 if (tentative_width > max_width)
                     break;
                 line_end_cp = words[k].end;
@@ -151,7 +168,7 @@ namespace {
             out_lines.push_back(TextLine{
                 .codepoint_begin = words[line_start_word].begin,
                 .codepoint_end = line_end_cp,
-                .width = _measure(codepoints, words[line_start_word].begin, line_end_cp, font_access, scaled_font_size),
+                .width = _measure(codepoints, words[line_start_word].begin, line_end_cp, font_access, scaled_font_size, letter_spacing, word_spacing),
                 .word_count = static_cast<unsigned>(k - line_start_word),
             });
         }
@@ -175,12 +192,16 @@ namespace TextLayout {
      * is positive, each such paragraph is additionally word-wrapped to fit within
      * `max_width` (greedily, breaking at whitespace; a single word wider than
      * `max_width` is hard-broken mid-word). Leading/trailing whitespace of each
-     * produced line is excluded from its range and width.
+     * produced line is excluded from its range and width. `text_style.letter_spacing`
+     * and `text_style.word_spacing` are incorporated into each line's measured
+     * width and into wrap decisions.
      */
     std::vector<TextLine> lay_out(std::span<const cl7::text::codec::codepoint> codepoints, Font& font, const TextStyle& text_style, float max_width)
     {
         Font::Access font_access = font.access();
         const ml7::Vector2f scaled_font_size = text_style.scaling * text_style.font_size;
+        const float letter_spacing = text_style.letter_spacing;
+        const float word_spacing = text_style.word_spacing;
 
         // Phase 1: always split on explicit line breaks into paragraphs.
         std::vector<std::pair<size_t, size_t>> paragraphs;
@@ -212,9 +233,9 @@ namespace TextLayout {
         for (const auto& [begin, end] : paragraphs)
         {
             if (!word_wrap || begin == end)
-                lines.push_back(_make_trimmed_line(codepoints, begin, end, font_access, scaled_font_size));
+                lines.push_back(_make_trimmed_line(codepoints, begin, end, font_access, scaled_font_size, letter_spacing, word_spacing));
             else
-                _word_wrap_paragraph(codepoints, begin, end, font_access, scaled_font_size, max_width, lines);
+                _word_wrap_paragraph(codepoints, begin, end, font_access, scaled_font_size, letter_spacing, word_spacing, max_width, lines);
         }
 
         return lines;

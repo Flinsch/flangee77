@@ -427,6 +427,22 @@ namespace helloworld {
         _bitmap_renderer->draw_text_in_box(
             u8"This text is justified, so every line except the last one should stretch flush to both edges of the box.",
             _font.get(), &justify_text_style, {10.0f, y}, {300.0f, 200.0f});
+        y += 200.0f + line_height;
+
+        // Letter/word spacing demo: extra spacing between characters and
+        // between words, exercised both point-based and box-based (wrapped).
+        fl7::fonts::TextStyle spacing_text_style = text_style;
+        spacing_text_style.letter_spacing = 4.0f;
+        spacing_text_style.word_spacing = 20.0f;
+        _bitmap_renderer->draw_text(
+            u8"Letter and word spacing demo",
+            _font.get(), &spacing_text_style, {10.0f, y});
+        y += line_height;
+
+        spacing_text_style.wrap_mode = fl7::fonts::TextStyle::WrapMode::Word;
+        _bitmap_renderer->draw_text_in_box(
+            u8"This text has extra letter and word spacing, which should also shift its word-wrap boundaries.",
+            _font.get(), &spacing_text_style, {10.0f, y}, {300.0f, 200.0f});
     }
 
     /**
