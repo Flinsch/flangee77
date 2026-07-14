@@ -137,7 +137,7 @@ namespace fl7::fonts::render {
         }
 
         // Batches drawn above must not be resubmitted by a later flush
-        // (e.g. a manual flush() call or a nested ScopedBatch closing early).
+        // (e.g., a manual flush() call or a nested ScopedBatch closing early).
         _vertices.clear();
         _batches.clear();
         _current_batch_font_size = 0.0f;

@@ -34,7 +34,7 @@ namespace cl7::detail {
     }
 
     /**
-     * Checks whether elements of a standard contiguous container (e.g, vector,
+     * Checks whether elements of a standard contiguous container (e.g., vector,
      * array, span, etc.) are laid out contiguously in memory (no gaps between
      * consecutive elements).
      *
