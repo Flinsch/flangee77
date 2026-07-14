@@ -1,5 +1,7 @@
 var NAVTREEINDEX53 =
 {
+"dd/d23/classxl7_1_1graphics_1_1shaders_1_1Shader_1_1Attorney.html#a3706fe9c3f5456e315f7d9c53a7ccb2f":[7,0,8,1,4,16,0,0],
+"dd/d23/classxl7_1_1graphics_1_1shaders_1_1Shader_1_1Attorney.html#ab6133bdad6d5735bb88b3263b9e4b513":[5,0,8,2,4,16,0,1],
 "dd/d23/classxl7_1_1graphics_1_1shaders_1_1Shader_1_1Attorney.html#ab6133bdad6d5735bb88b3263b9e4b513":[7,0,8,1,4,16,0,1],
 "dd/d24/Texture2DArrayUpdater_8h.html":[8,0,7,1,7,20],
 "dd/d24/Texture2DArrayUpdater_8h_source.html":[8,0,7,1,7,20],
@@ -247,7 +249,5 @@ var NAVTREEINDEX53 =
 "dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects.html#a05df90ed9e135c9ab1ad2f28da6a84a1":[7,0,8,1,7,6,3],
 "dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects.html#a05df90ed9e135c9ab1ad2f28da6a84a1":[5,0,8,2,7,6,3],
 "dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects.html#a2ea39a8a290c48fabbfa2bc1fd61ccb3":[7,0,8,1,7,6,0],
-"dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects.html#a2ea39a8a290c48fabbfa2bc1fd61ccb3":[5,0,8,2,7,6,0],
-"dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects.html#a6ac38b8840006c686a4c00a78ec4e29d":[5,0,8,2,7,6,4],
-"dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects.html#a6ac38b8840006c686a4c00a78ec4e29d":[7,0,8,1,7,6,4]
+"dd/d4d/classxl7_1_1graphics_1_1textures_1_1DirtyLayerRects.html#a2ea39a8a290c48fabbfa2bc1fd61ccb3":[5,0,8,2,7,6,0]
 };

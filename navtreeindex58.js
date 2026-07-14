@@ -1,5 +1,7 @@
 var NAVTREEINDEX58 =
 {
+"de/d3c/macros_8h_source.html":[8,0,6,6],
+"de/d3d/SubcaseContext_8h.html":[8,0,6,19],
 "de/d3d/SubcaseContext_8h_source.html":[8,0,6,19],
 "de/d3e/structml7_1_1distance2_1_1ResultBase.html":[5,0,4,1,1],
 "de/d3e/structml7_1_1distance2_1_1ResultBase.html":[7,0,4,1,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX58 =
 "de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#afb29852aa68c621f35dc9ee9683b7e4a":[5,0,8,1,0,2],
 "de/da1/classfl7_1_1fonts_1_1raster_1_1AbstractBitmapRasterizer.html":[7,0,3,0,1,0],
 "de/da1/classfl7_1_1fonts_1_1raster_1_1AbstractBitmapRasterizer.html":[5,0,3,0,1,1],
-"de/da1/classfl7_1_1fonts_1_1raster_1_1AbstractBitmapRasterizer.html#a8c7a1e2d495fde7af62c8cae64e0cd0f":[5,0,3,0,1,1,0],
-"de/da1/classfl7_1_1fonts_1_1raster_1_1AbstractBitmapRasterizer.html#a8c7a1e2d495fde7af62c8cae64e0cd0f":[7,0,3,0,1,0,0],
-"de/da1/classfl7_1_1fonts_1_1raster_1_1AbstractBitmapRasterizer.html#acce157345a25dd19225c97e32cd7d57e":[5,0,3,0,1,1,1]
+"de/da1/classfl7_1_1fonts_1_1raster_1_1AbstractBitmapRasterizer.html#a8c7a1e2d495fde7af62c8cae64e0cd0f":[5,0,3,0,1,1,0]
 };

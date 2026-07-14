@@ -24,6 +24,7 @@ var classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer =
     [ "_config", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#aa1ddd2d1f0450ff3edfe2b0386110ea1", null ],
     [ "_constant_buffer_id", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a0cd7af67d01b98ca46252069e5f14aa1", null ],
     [ "_current_batch_font_size", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a0e10c3eee726e7bfa37f8724a0078403", null ],
+    [ "_depth_stencil_state_id", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ab408d318bd89a6b3914a1fcaffe47794", null ],
     [ "_glyph_cache", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ad168d978774dc00d81f7b5fc24a667c1", null ],
     [ "_pixel_shader_id", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ad33a9a68c13d21f333885e92ac8aa7b0", null ],
     [ "_rasterizer", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a6e4f43e61067bf09fa4134404852b3f7", null ],

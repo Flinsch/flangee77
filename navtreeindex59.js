@@ -1,5 +1,7 @@
 var NAVTREEINDEX59 =
 {
+"de/da1/classfl7_1_1fonts_1_1raster_1_1AbstractBitmapRasterizer.html#a8c7a1e2d495fde7af62c8cae64e0cd0f":[7,0,3,0,1,0,0],
+"de/da1/classfl7_1_1fonts_1_1raster_1_1AbstractBitmapRasterizer.html#acce157345a25dd19225c97e32cd7d57e":[5,0,3,0,1,1,1],
 "de/da1/classfl7_1_1fonts_1_1raster_1_1AbstractBitmapRasterizer.html#acce157345a25dd19225c97e32cd7d57e":[7,0,3,0,1,0,1],
 "de/da5/classdl7_1_1json_1_1JsonReader.html":[7,0,2,2,4],
 "de/da5/classdl7_1_1json_1_1JsonReader.html":[5,0,2,2,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX59 =
 "de/dd5/classdl7_1_1xml_1_1Document.html#a55dc6ff2b0037e796676e6c2397f8482":[5,0,2,5,3,11],
 "de/dd5/classdl7_1_1xml_1_1Document.html#a55dc6ff2b0037e796676e6c2397f8482":[7,0,2,5,3,11],
 "de/dd5/classdl7_1_1xml_1_1Document.html#a78f6ebfdfa9aa8cf063e0327a1db9e69":[7,0,2,5,3,3],
-"de/dd5/classdl7_1_1xml_1_1Document.html#a78f6ebfdfa9aa8cf063e0327a1db9e69":[5,0,2,5,3,3],
-"de/dd5/classdl7_1_1xml_1_1Document.html#a79cfbc0ac9b49bba6f5a6ada0931ff32":[5,0,2,5,3,6],
-"de/dd5/classdl7_1_1xml_1_1Document.html#a79cfbc0ac9b49bba6f5a6ada0931ff32":[7,0,2,5,3,6]
+"de/dd5/classdl7_1_1xml_1_1Document.html#a78f6ebfdfa9aa8cf063e0327a1db9e69":[5,0,2,5,3,3]
 };

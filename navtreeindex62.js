@@ -1,5 +1,7 @@
 var NAVTREEINDEX62 =
 {
+"df/d63/namespaceml7_1_1detail.html":[5,0,4,0],
+"df/d64/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures.html":[5,0,8,2,1,0,5],
 "df/d68/classfl7_1_1fonts_1_1raster_1_1AnalyticalCoverageRasterizer.html":[5,0,3,0,1,3],
 "df/d68/classfl7_1_1fonts_1_1raster_1_1AnalyticalCoverageRasterizer.html":[7,0,3,0,1,2],
 "df/d68/classfl7_1_1fonts_1_1raster_1_1AnalyticalCoverageRasterizer.html#a3aa76df59b37070ba7abdbfd6402b53b":[5,0,3,0,1,3,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX62 =
 "df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#ac54639b9e50449b910c7c9f3aa081918":[5,0,8,2,1,0,9,9],
 "df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#ac54639b9e50449b910c7c9f3aa081918":[7,0,8,1,1,0,7,9],
 "df/d9d/namespacetl7_1_1reporting.html":[5,0,7,2],
-"df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740":[5,0,7,2,3],
-"df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a0f62bd7bdea7467a7f1e8ba33c7a4e67":[5,0,7,2,3,5],
-"df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a1f7d1395a521de43b8ee87a12ffb1691":[5,0,7,2,3,0]
+"df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740":[5,0,7,2,3]
 };

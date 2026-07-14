@@ -1,5 +1,7 @@
 var NAVTREEINDEX52 =
 {
+"dc/def/structml7_1_1Ray2.html#a560d708582b6962c012b084b9bca8fe2":[7,0,4,20,14],
+"dc/def/structml7_1_1Ray2.html#a694d0a1ab9a101cbbd1942161571a15d":[7,0,4,20,3],
 "dc/def/structml7_1_1Ray2.html#a694d0a1ab9a101cbbd1942161571a15d":[5,0,4,20,3],
 "dc/def/structml7_1_1Ray2.html#a7d3219884c1afd88caf6467245b2a932":[7,0,4,20,11],
 "dc/def/structml7_1_1Ray2.html#a7d3219884c1afd88caf6467245b2a932":[5,0,4,20,11],
@@ -247,7 +249,5 @@ var NAVTREEINDEX52 =
 "dd/d23/SdfRasterizer_8cpp.html":[8,0,3,0,1,16],
 "dd/d23/classxl7_1_1graphics_1_1shaders_1_1Shader_1_1Attorney.html":[7,0,8,1,4,16,0],
 "dd/d23/classxl7_1_1graphics_1_1shaders_1_1Shader_1_1Attorney.html":[5,0,8,2,4,16,0],
-"dd/d23/classxl7_1_1graphics_1_1shaders_1_1Shader_1_1Attorney.html#a3706fe9c3f5456e315f7d9c53a7ccb2f":[5,0,8,2,4,16,0,0],
-"dd/d23/classxl7_1_1graphics_1_1shaders_1_1Shader_1_1Attorney.html#a3706fe9c3f5456e315f7d9c53a7ccb2f":[7,0,8,1,4,16,0,0],
-"dd/d23/classxl7_1_1graphics_1_1shaders_1_1Shader_1_1Attorney.html#ab6133bdad6d5735bb88b3263b9e4b513":[5,0,8,2,4,16,0,1]
+"dd/d23/classxl7_1_1graphics_1_1shaders_1_1Shader_1_1Attorney.html#a3706fe9c3f5456e315f7d9c53a7ccb2f":[5,0,8,2,4,16,0,0]
 };

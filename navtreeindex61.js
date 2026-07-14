@@ -1,5 +1,7 @@
 var NAVTREEINDEX61 =
 {
+"df/d00/classxl7_1_1graphics_1_1images_1_1ImageArray.html#aee9e7d383bd53fd84ff90e1ac101d450":[5,0,8,2,0,2,11],
+"df/d00/classxl7_1_1graphics_1_1images_1_1ImageArray.html#aee9e7d383bd53fd84ff90e1ac101d450":[7,0,8,1,0,2,11],
 "df/d00/classxl7_1_1graphics_1_1images_1_1ImageArray.html#af0bff62311915b67e11558f49d934e34":[7,0,8,1,0,2,8],
 "df/d00/classxl7_1_1graphics_1_1images_1_1ImageArray.html#af0bff62311915b67e11558f49d934e34":[5,0,8,2,0,2,8],
 "df/d04/DateTimeMatcher_8cpp.html":[8,0,2,4,0,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX61 =
 "df/d5d/HtmlLogHandler_8h.html":[8,0,1,3,7],
 "df/d5d/HtmlLogHandler_8h_source.html":[8,0,1,3,7],
 "df/d5f/sstream_8cpp.html":[8,0,1,30],
-"df/d5f/sstream_8cpp.html#a9a1e9f11987c7329826476c661b0e4c9":[8,0,1,30,0],
-"df/d63/namespaceml7_1_1detail.html":[5,0,4,0],
-"df/d64/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures.html":[5,0,8,2,1,0,5]
+"df/d5f/sstream_8cpp.html#a9a1e9f11987c7329826476c661b0e4c9":[8,0,1,30,0]
 };
