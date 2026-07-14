@@ -15,6 +15,7 @@
 #include <XiaoLabs/graphics/shaders/ConstantBuffer.h>
 #include <XiaoLabs/graphics/states/SamplerState.h>
 #include <XiaoLabs/graphics/states/BlendState.h>
+#include <XiaoLabs/graphics/states/DepthStencilState.h>
 
 #include <MathLabs/Vector2.h>
 
@@ -141,6 +142,7 @@ private:
     xl7::graphics::shaders::ConstantBuffer::Id _constant_buffer_id = {};
     xl7::graphics::states::SamplerState::Id _sampler_state_id = {};
     xl7::graphics::states::BlendState::Id _blend_state_id = {};
+    xl7::graphics::states::DepthStencilState::Id _depth_stencil_state_id = {};
 
 }; // class AbstractTextureAtlasBasedRenderer
 

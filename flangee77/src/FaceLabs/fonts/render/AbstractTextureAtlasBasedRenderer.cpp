@@ -98,6 +98,7 @@ namespace fl7::fonts::render {
         rendering_context->pipeline.ps.set_pixel_shader_id(_pixel_shader_id);
         rendering_context->pipeline.ps.set_sampler_state_id(0, _sampler_state_id);
         rendering_context->pipeline.om.set_blend_state_id(_blend_state_id);
+        rendering_context->pipeline.om.set_depth_stencil_state_id(_depth_stencil_state_id);
 
         rendering_context->pipeline.ia.set_vertex_buffer_id(_vertex_buffer_id);
         rendering_context->pipeline.ia.set_index_buffer_id({});
@@ -337,6 +338,12 @@ namespace fl7::fonts::render {
             .alpha_operation = xl7::graphics::states::BlendOperation::Add,
         };
         _blend_state_id = xl7::graphics::state_manager()->ensure_blend_state(blend_desc);
+
+        xl7::graphics::states::DepthStencilStateDesc depth_stencil_desc{
+            .is_depth_testing_enabled = false,
+            .is_depth_writing_enabled = false,
+        };
+        _depth_stencil_state_id = xl7::graphics::state_manager()->ensure_depth_stencil_state(depth_stencil_desc);
     }
 
     void AbstractTextureAtlasBasedRenderer::_release_gpu_resources()
@@ -351,6 +358,8 @@ namespace fl7::fonts::render {
             xl7::graphics::mesh_manager()->release_resource_and_invalidate(_vertex_buffer_id);
         _vertex_buffer_capacity = 0;
 
+        if (_depth_stencil_state_id)
+            xl7::graphics::state_manager()->release_resource_and_invalidate(_depth_stencil_state_id);
         if (_blend_state_id)
             xl7::graphics::state_manager()->release_resource_and_invalidate(_blend_state_id);
         if (_sampler_state_id)
