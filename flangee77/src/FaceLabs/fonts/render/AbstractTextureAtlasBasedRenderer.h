@@ -10,7 +10,6 @@
 #include <XiaoLabs/graphics/Color.h>
 #include <XiaoLabs/graphics/textures/Texture2D.h>
 #include <XiaoLabs/graphics/meshes/VertexBuffer.h>
-#include <XiaoLabs/graphics/meshes/VertexLayout.h>
 #include <XiaoLabs/graphics/shaders/VertexShader.h>
 #include <XiaoLabs/graphics/shaders/PixelShader.h>
 #include <XiaoLabs/graphics/shaders/ConstantBuffer.h>

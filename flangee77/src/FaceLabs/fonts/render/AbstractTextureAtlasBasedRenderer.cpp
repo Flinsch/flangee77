@@ -4,22 +4,6 @@
 
 #include <XiaoLabs/graphics.h>
 #include <XiaoLabs/graphics/meshes/ClippedQuad.h>
-#include <XiaoLabs/graphics/textures/Texture2DDesc.h>
-#include <XiaoLabs/graphics/textures/Texture2DWrite.h>
-#include <XiaoLabs/graphics/meshes/VertexBufferDesc.h>
-#include <XiaoLabs/graphics/meshes/VertexBufferWrite.h>
-#include <XiaoLabs/graphics/shaders/ConstantBufferDesc.h>
-#include <XiaoLabs/graphics/shaders/ConstantBufferWrite.h>
-#include <XiaoLabs/graphics/shaders/ShaderDesc.h>
-#include <XiaoLabs/graphics/shaders/ShaderWrite.h>
-#include <XiaoLabs/graphics/shaders/ShaderCode.h>
-#include <XiaoLabs/graphics/shaders/CompileOptions.h>
-#include <XiaoLabs/graphics/shaders/ConstantType.h>
-#include <XiaoLabs/graphics/shaders/ConstantClass.h>
-#include <XiaoLabs/graphics/states/BlendFactor.h>
-#include <XiaoLabs/graphics/states/BlendOperation.h>
-#include <XiaoLabs/graphics/states/BlendStateDesc.h>
-#include <XiaoLabs/graphics/states/SamplerStateDesc.h>
 
 #include <CoreLabs/platform/filesystem.h>
 #include <CoreLabs/io/File.h>
