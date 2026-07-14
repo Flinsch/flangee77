@@ -137,11 +137,11 @@ private:
     xl7::graphics::meshes::VertexBuffer::Id _vertex_buffer_id = {};
     unsigned _vertex_buffer_capacity = 0;
 
-    xl7::graphics::shaders::VertexShader::Id  _vertex_shader_id  = {};
-    xl7::graphics::shaders::PixelShader::Id   _pixel_shader_id   = {};
+    xl7::graphics::shaders::VertexShader::Id _vertex_shader_id = {};
+    xl7::graphics::shaders::PixelShader::Id _pixel_shader_id = {};
     xl7::graphics::shaders::ConstantBuffer::Id _constant_buffer_id = {};
-    xl7::graphics::states::SamplerState::Id   _sampler_state_id  = {};
-    xl7::graphics::states::BlendState::Id     _blend_state_id    = {};
+    xl7::graphics::states::SamplerState::Id _sampler_state_id = {};
+    xl7::graphics::states::BlendState::Id _blend_state_id = {};
 
 }; // class AbstractTextureAtlasBasedRenderer
 
