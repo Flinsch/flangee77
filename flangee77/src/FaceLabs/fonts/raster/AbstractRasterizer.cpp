@@ -1,8 +1,26 @@
 #include "AbstractRasterizer.h"
 
+#include <CoreLabs/bits.h>
+
+#include <bit>
+
 
 
 namespace fl7::fonts::raster {
+
+
+
+namespace {
+
+    // Bump this if the fields folded into `_compute_cache_key` below change.
+    constexpr uint32_t CACHE_KEY_VERSION = 1;
+
+    void _hash_combine_float(size_t& hash, float value)
+    {
+        cl7::bits::hash_combine(hash, static_cast<size_t>(std::bit_cast<uint32_t>(value)));
+    }
+
+} // namespace
 
 
 
@@ -20,9 +38,18 @@ namespace fl7::fonts::raster {
 
     /**
      * Rasterizes a glyph into an image and calculates its positioning offset.
+     * Uses the glyph cache set via `set_cache`, if any.
      */
     RasterResult AbstractRasterizer::rasterize_glyph(const Glyph& glyph, const RasterSizeConfig& size_config)
     {
+        size_t cache_key = 0;
+        if (_cache)
+        {
+            cache_key = _compute_cache_key(glyph, size_config);
+            if (std::optional<RasterResult> cached = _cache->try_load(cache_key))
+                return std::move(*cached);
+        }
+
         ml7::Vector2f lower_left = glyph.bounding_box.lower_left * size_config.font_size;
         ml7::Vector2f upper_right = glyph.bounding_box.upper_right * size_config.font_size;
 
@@ -62,19 +89,63 @@ namespace fl7::fonts::raster {
 
         _rasterize_glyph_into(glyph, size_config, pixel_offset, canvas);
 
-        return {
+        RasterResult result{
             .glyph_image = {desc, std::move(data)},
             .pixel_offset = pixel_offset,
         };
+
+        if (_cache)
+            _cache->store(cache_key, result);
+
+        return result;
     }
 
     /**
      * Rasterizes a glyph directly into a pre-allocated canvas (buffer) at a
-     * specified offset.
+     * specified offset. Never uses any glyph cache.
      */
     void AbstractRasterizer::rasterize_glyph_into(const Glyph& glyph, const RasterSizeConfig& size_config, const PixelOffset& pixel_offset, dl7::Buffer2dSpan canvas)
     {
         _rasterize_glyph_into(glyph, size_config, pixel_offset, canvas);
+    }
+
+
+
+    /**
+     * Computes an opaque cache key covering everything that determines this glyph's
+     * rasterized output: the glyph's own outline geometry, the size config, this
+     * rasterizer's pixel format and channel order, and (via `_cache_key_params_hash`)
+     * any rasterizer-specific parameters.
+     */
+    size_t AbstractRasterizer::_compute_cache_key(const Glyph& glyph, const RasterSizeConfig& size_config) const
+    {
+        size_t hash = 0;
+        cl7::bits::hash_combine(hash, static_cast<size_t>(CACHE_KEY_VERSION));
+        cl7::bits::hash_combine(hash, static_cast<size_t>(glyph.codepoint.value));
+
+        for (const Contour& contour : glyph.contours)
+        {
+            for (const ml7::Vector2f& point : contour.points)
+            {
+                _hash_combine_float(hash, point.x);
+                _hash_combine_float(hash, point.y);
+            }
+        }
+
+        _hash_combine_float(hash, glyph.bounding_box.lower_left.x);
+        _hash_combine_float(hash, glyph.bounding_box.lower_left.y);
+        _hash_combine_float(hash, glyph.bounding_box.upper_right.x);
+        _hash_combine_float(hash, glyph.bounding_box.upper_right.y);
+
+        _hash_combine_float(hash, size_config.font_size);
+        cl7::bits::hash_combine(hash, static_cast<size_t>(size_config.padding));
+
+        cl7::bits::hash_combine(hash, static_cast<size_t>(get_pixel_format()));
+        cl7::bits::hash_combine(hash, static_cast<size_t>(get_channel_order()));
+
+        cl7::bits::hash_combine(hash, _cache_key_params_hash());
+
+        return hash;
     }
 
 

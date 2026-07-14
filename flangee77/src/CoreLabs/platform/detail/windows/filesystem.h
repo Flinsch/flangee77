@@ -15,6 +15,7 @@ namespace cl7::platform::detail::windows::filesystem {
     cl7::u8string get_current_directory();
     cl7::u8string get_user_directory();
     cl7::u8string get_temp_directory();
+    cl7::u8string get_cache_directory();
 
 
 

@@ -43,6 +43,13 @@ namespace cl7::platform::filesystem {
      */
     cl7::u8string get_temp_directory();
 
+    /**
+     * Returns the local (non-roaming) cache/data directory, suitable for
+     * regenerable, potentially large application data (e.g., caches) that shouldn't
+     * be synced across machines the way roaming data is.
+     */
+    cl7::u8string get_cache_directory();
+
 
 
 } // namespace cl7::platform::filesystem

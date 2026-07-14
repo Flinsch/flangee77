@@ -32,6 +32,8 @@ public:
 private:
     void _rasterize_glyph_into(const Glyph& glyph, const RasterSizeConfig& size_config, const PixelOffset& pixel_offset, dl7::Buffer2dSpan canvas) override;
 
+    size_t _cache_key_params_hash() const override;
+
     float _pixel_range;
 
 }; // class SdfRasterizer

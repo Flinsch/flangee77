@@ -104,6 +104,35 @@ namespace cl7::platform::detail::windows::filesystem {
         return cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(std::wstring_view{_path, length}));
     }
 
+    cl7::u8string get_cache_directory()
+    {
+        static wchar_t _path[MAX_PATH + 2] = {0};
+        static DWORD length = 0;
+        static bool first_call = true;
+
+        if (first_call)
+        {
+            first_call = false;
+
+            wchar_t* tmp = nullptr;
+            auto auto_free_tmp = cl7::finally([&tmp] { if (tmp) ::CoTaskMemFree(tmp); tmp = nullptr; });
+            HRESULT hresult = ::SHGetKnownFolderPath(FOLDERID_LocalAppData, KF_FLAG_CREATE, nullptr, &tmp);
+
+            if (hresult == S_OK)
+            {
+                assert(tmp);
+                std::wstring_view path{tmp}; // SHGetKnownFolderPath stores a null-terminated Unicode string.
+                for (const wchar_t* p = path.data(); *p; ++p)
+                    _path[length++] = *p;
+            }
+
+            if (length == 0 || _path[length - 1] != L'\\')
+                _path[length++] = L'\\';
+        }
+
+        return cl7::text::codec::to_utf8(cl7::text::codec::reinterpret_utfx(std::wstring_view{_path, length}));
+    }
+
 
 
 } // namespace cl7::platform::detail::windows::filesystem

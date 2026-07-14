@@ -4,6 +4,7 @@
 
 #include <FaceLabs/fonts/Font.h>
 
+#include <FaceLabs/fonts/raster/GlyphRasterCache.h>
 #include <FaceLabs/fonts/raster/AnalyticalCoverageRasterizer.h>
 #include <FaceLabs/fonts/raster/SdfRasterizer.h>
 #include <FaceLabs/fonts/raster/MsdfRasterizer.h>
@@ -101,6 +102,8 @@ private:
     // #############################################################################
 
     std::shared_ptr<fl7::fonts::Font> _font;
+
+    fl7::fonts::raster::GlyphRasterCache _glyph_raster_cache;
 
     fl7::fonts::raster::AnalyticalCoverageRasterizer _bitmap_rasterizer;
     std::unique_ptr<fl7::fonts::render::BitmapRenderer> _bitmap_renderer;

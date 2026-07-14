@@ -4,7 +4,10 @@
 
 #include <XiaoLabs/graphics/PixelFormat.h>
 
+#include <CoreLabs/bits.h>
+
 #include <algorithm>
+#include <bit>
 #include <limits>
 
 
@@ -191,6 +194,21 @@ namespace fl7::fonts::raster {
                 };
             } // for each pixel column
         } // for each pixel row
+    }
+
+
+
+    size_t MsdfRasterizer::_cache_key_params_hash() const
+    {
+        // Bump this if `_rasterize_glyph_into` (or edge-coloring) above
+        // changes algorithmically (i.e., inputs unchanged, but the output
+        // would now differ), to force-invalidate previously cached results.
+        constexpr uint32_t ALGORITHM_VERSION = 1;
+
+        size_t hash = 0;
+        cl7::bits::hash_combine(hash, static_cast<size_t>(ALGORITHM_VERSION));
+        cl7::bits::hash_combine(hash, static_cast<size_t>(std::bit_cast<uint32_t>(_pixel_range)));
+        return hash;
     }
 
 

@@ -17,6 +17,7 @@
 #include <CoreLabs/profiling.h>
 #include <CoreLabs/logging.h>
 #include <CoreLabs/text/codec.h>
+#include <CoreLabs/platform/filesystem.h>
 
 #include <algorithm>
 #include <filesystem>
@@ -34,6 +35,7 @@ namespace helloworld {
 
     MyApp::MyApp(int argc, wchar_t* argv[])
         : pl7::Application({argc, argv})
+        , _glyph_raster_cache(cl7::platform::filesystem::get_cache_directory() + u8"flangee77/glyph_cache/")
     {
     }
 
@@ -256,6 +258,9 @@ namespace helloworld {
         auto font_loader = std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(cl7::platform::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSans-Regular.ttf");
         //auto font_loader = std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(cl7::platform::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSerif-Regular.ttf");
         _font = std::make_unique<fl7::fonts::Font>(std::move(font_loader));
+
+        _sdf_rasterizer.set_cache(&_glyph_raster_cache);
+        _msdf_rasterizer.set_cache(&_glyph_raster_cache);
 
         _bitmap_renderer = std::make_unique<fl7::fonts::render::BitmapRenderer>(&_bitmap_rasterizer);
         _sdf_renderer = std::make_unique<fl7::fonts::render::SdfRenderer>(&_sdf_rasterizer);
