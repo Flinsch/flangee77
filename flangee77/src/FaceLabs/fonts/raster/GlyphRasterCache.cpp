@@ -6,14 +6,11 @@
 #include <CoreLabs/io/ReadableMemory.h>
 #include <CoreLabs/io/WritableMemory.h>
 #include <CoreLabs/text/format.h>
+#include <CoreLabs/checksum.h>
 #include <CoreLabs/logging.h>
 
 #include <filesystem>
 #include <cstdint>
-
-#define ZLIB_CONST
-#define ZLIB_WINAPI
-#include <zlib.h>
 
 
 
@@ -30,13 +27,6 @@ namespace {
     // version + pixel_format + channel_order + width + height + depth + left + top (8 x uint32_t) + data length (uint64_t).
     constexpr size_t FIXED_HEADER_SIZE = 8 * sizeof(uint32_t) + sizeof(uint64_t);
     constexpr size_t CHECKSUM_SIZE = sizeof(uint32_t);
-
-    uint32_t _checksum(cl7::byte_view data)
-    {
-        uLong crc = ::crc32(0L, Z_NULL, 0);
-        crc = ::crc32(crc, reinterpret_cast<const Bytef*>(data.data()), static_cast<uInt>(data.size()));
-        return static_cast<uint32_t>(crc);
-    }
 
 } // namespace
 
@@ -112,7 +102,7 @@ namespace {
         }
 
         const auto stored_checksum = reader.read_scalar<uint32_t>();
-        const auto expected_checksum = _checksum(cl7::byte_view(blob).subspan(0, blob.size() - CHECKSUM_SIZE));
+        const auto expected_checksum = cl7::checksum::crc32(cl7::byte_view(blob).subspan(0, blob.size() - CHECKSUM_SIZE));
         if (stored_checksum != expected_checksum)
         {
             LOG_WARNING(u8"Glyph raster cache entry " + _get_filename(key) + u8" failed its checksum check. Treating it as a miss.");
@@ -160,7 +150,7 @@ namespace {
         writer.write_scalar(static_cast<uint64_t>(result.glyph_image.get_data().size()));
         writer.write_bytes(result.glyph_image.get_data());
 
-        writer.write_scalar(_checksum(memory.get_data()));
+        writer.write_scalar(cl7::checksum::crc32(memory.get_data()));
 
         cl7::io::File file(_get_file_path(key), cl7::io::OpenMode::Truncate);
         if (!file.is_writable())

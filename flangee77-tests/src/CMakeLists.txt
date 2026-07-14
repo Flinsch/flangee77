@@ -16,6 +16,7 @@ target_sources(flangee77-tests
 
     CoreLabs/bits.cpp
     CoreLabs/bytes.cpp
+    CoreLabs/checksum.cpp
     CoreLabs/memory.cpp
     CoreLabs/ordered_map.cpp
     CoreLabs/static_vector.cpp

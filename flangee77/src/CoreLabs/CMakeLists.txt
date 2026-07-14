@@ -2,6 +2,7 @@
 target_sources(flangee77
     PRIVATE
     bits.cpp
+    checksum.cpp
     Guid.cpp
     logging.cpp
     memory.cpp
