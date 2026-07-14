@@ -1,6 +1,9 @@
 var namespacecl7 =
 [
     [ "bits", "d9/df1/namespacecl7_1_1bits.html", "d9/df1/namespacecl7_1_1bits" ],
+    [ "checksum", "d2/dc6/namespacecl7_1_1checksum.html", [
+      [ "crc32", "d2/dc6/namespacecl7_1_1checksum.html#a5f0de7008ac13cf5bf26a25a4bcec732", null ]
+    ] ],
     [ "creational", "da/df3/namespacecl7_1_1creational.html", "da/df3/namespacecl7_1_1creational" ],
     [ "detail", "d2/da9/namespacecl7_1_1detail.html", "d2/da9/namespacecl7_1_1detail" ],
     [ "io", "d6/dc7/namespacecl7_1_1io.html", "d6/dc7/namespacecl7_1_1io" ],

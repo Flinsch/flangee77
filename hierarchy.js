@@ -277,6 +277,7 @@ var hierarchy =
     [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::GlyphCacheKey", "df/dcd/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1GlyphCacheKey.html", null ],
     [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::GlyphMetric", "df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric.html", null ],
     [ "fl7::fonts::GlyphMetrics", "d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html", null ],
+    [ "fl7::fonts::raster::GlyphRasterCache", "d3/de6/classfl7_1_1fonts_1_1raster_1_1GlyphRasterCache.html", null ],
     [ "dl7::syntax::Grammar", "d8/d95/structdl7_1_1syntax_1_1Grammar.html", null ],
     [ "dl7::syntax::GrammarAnalyzer", "dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html", null ],
     [ "tl7::Stats::Group", "da/d74/structtl7_1_1Stats_1_1Group.html", null ],

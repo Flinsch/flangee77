@@ -6,6 +6,7 @@ var namespacecl7_1_1platform =
       [ "with_context", "d4/d9d/namespacecl7_1_1platform_1_1errors.html#a89794d0d9f743a487e979038aa58aa2c", null ]
     ] ],
     [ "filesystem", "d4/dc0/namespacecl7_1_1platform_1_1filesystem.html", [
+      [ "get_cache_directory", "d4/dc0/namespacecl7_1_1platform_1_1filesystem.html#af6e753466b52e34899fa5af81ff31eb4", null ],
       [ "get_current_directory", "d4/dc0/namespacecl7_1_1platform_1_1filesystem.html#ae4d4d847d2885658c91d2ad6ed8c8c21", null ],
       [ "get_initial_directory", "d4/dc0/namespacecl7_1_1platform_1_1filesystem.html#a5b8f757042ba8357bb37d16e25f2003e", null ],
       [ "get_module_directory", "d4/dc0/namespacecl7_1_1platform_1_1filesystem.html#a2ee8772a15e88a73cf092a6d294e7bc2", null ],

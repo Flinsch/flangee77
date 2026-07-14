@@ -264,6 +264,7 @@ var annotated_dup =
           [ "AbstractBitmapRasterizer", "de/da1/classfl7_1_1fonts_1_1raster_1_1AbstractBitmapRasterizer.html", "de/da1/classfl7_1_1fonts_1_1raster_1_1AbstractBitmapRasterizer" ],
           [ "AbstractRasterizer", "d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html", "d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer" ],
           [ "AnalyticalCoverageRasterizer", "df/d68/classfl7_1_1fonts_1_1raster_1_1AnalyticalCoverageRasterizer.html", "df/d68/classfl7_1_1fonts_1_1raster_1_1AnalyticalCoverageRasterizer" ],
+          [ "GlyphRasterCache", "d3/de6/classfl7_1_1fonts_1_1raster_1_1GlyphRasterCache.html", "d3/de6/classfl7_1_1fonts_1_1raster_1_1GlyphRasterCache" ],
           [ "MsdfRasterizer", "d0/d09/classfl7_1_1fonts_1_1raster_1_1MsdfRasterizer.html", "d0/d09/classfl7_1_1fonts_1_1raster_1_1MsdfRasterizer" ],
           [ "OversampledBitmapRasterizer", "dd/d48/classfl7_1_1fonts_1_1raster_1_1OversampledBitmapRasterizer.html", "dd/d48/classfl7_1_1fonts_1_1raster_1_1OversampledBitmapRasterizer" ],
           [ "PixelOffset", "d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html", "d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset" ],

@@ -1,5 +1,6 @@
 var filesystem_8cpp =
 [
+    [ "get_cache_directory", "d9/d8f/filesystem_8cpp.html#af6e753466b52e34899fa5af81ff31eb4", null ],
     [ "get_current_directory", "d9/d8f/filesystem_8cpp.html#ae4d4d847d2885658c91d2ad6ed8c8c21", null ],
     [ "get_initial_directory", "d9/d8f/filesystem_8cpp.html#a5b8f757042ba8357bb37d16e25f2003e", null ],
     [ "get_module_directory", "d9/d8f/filesystem_8cpp.html#a2ee8772a15e88a73cf092a6d294e7bc2", null ],
