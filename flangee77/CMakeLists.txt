@@ -10,7 +10,6 @@ target_include_directories(flangee77
     ./src
 )
 
-add_custom_command(TARGET flangee77
-    POST_BUILD
+copy_assets_post_build(flangee77
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/assets ${CMAKE_CURRENT_BINARY_DIR}/assets
 )

@@ -12,8 +12,7 @@ target_link_libraries(flangee77-tests
 
 equip_console_app(flangee77-tests)
 
-add_custom_command(TARGET flangee77-tests
-    POST_BUILD
+copy_assets_post_build(flangee77-tests
     COMMAND ${CMAKE_COMMAND} -E copy $ENV{ZLIB_DIR}/bin/zlibwapi.dll ${CMAKE_CURRENT_BINARY_DIR}
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_BINARY_DIR}/flangee77/assets/XiaoLabs ${CMAKE_CURRENT_BINARY_DIR}/assets
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_BINARY_DIR}/flangee77/assets/FaceLabs ${CMAKE_CURRENT_BINARY_DIR}/assets

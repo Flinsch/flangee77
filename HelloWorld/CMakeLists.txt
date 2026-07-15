@@ -12,8 +12,7 @@ target_link_libraries(HelloWorld
 
 equip_windows_app(HelloWorld)
 
-add_custom_command(TARGET HelloWorld
-    POST_BUILD
+copy_assets_post_build(HelloWorld
     COMMAND ${CMAKE_COMMAND} -E copy $ENV{ZLIB_DIR}/bin/zlibwapi.dll ${CMAKE_CURRENT_BINARY_DIR}
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_BINARY_DIR}/flangee77/assets/XiaoLabs ${CMAKE_CURRENT_BINARY_DIR}/assets
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_BINARY_DIR}/flangee77/assets/FaceLabs ${CMAKE_CURRENT_BINARY_DIR}/assets

@@ -49,3 +49,11 @@ endfunction()
 function(equip_console_app target)
     add_dependencies(${target} flangee77)
 endfunction()
+
+function(copy_assets_post_build target)
+    add_custom_command(TARGET ${target}
+        POST_BUILD
+        ${ARGN}
+        COMMENT "Copying assets for ${target} ..."
+    )
+endfunction()
