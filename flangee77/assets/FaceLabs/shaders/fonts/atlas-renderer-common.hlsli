@@ -37,11 +37,14 @@ struct PixelOut
 VertexOut mainVertex(VertexIn i)
 {
     VertexOut o;
+
     float2 ndc;
     ndc.x = i.pos.x * InvTargetSize.x * 2.0 - 1.0;
     ndc.y = 1.0 - i.pos.y * InvTargetSize.y * 2.0;
+
     o.pos = float4(ndc, 0.5, 1.0);
     o.uv = i.uv;
     o.color = i.color;
+
     return o;
 }

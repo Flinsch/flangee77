@@ -9,6 +9,7 @@ float median(float r, float g, float b)
 PixelOut mainPixel(PixelIn i)
 {
     PixelOut o;
+
     // MSDF: multi-channel signed distance in RGB channels; the median of the
     // three reconstructs sharp corners that a single channel alone would round off.
     float3 sample = SAMPLE_TEX2D(GlyphAtlas, GlyphSampler, i.uv).rgb;
@@ -19,6 +20,8 @@ PixelOut mainPixel(PixelIn i)
     float alpha = smoothstep(0.5 - width, 0.5 + width, dist);
     // See bitmap-renderer.hlsl for why the coverage is boosted before blending.
     alpha = pow(alpha, 1.0 / 2.2);
+
     o.color = float4(i.color.rgb, i.color.a * alpha);
+
     return o;
 }
