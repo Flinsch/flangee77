@@ -17,7 +17,6 @@
 #include <CoreLabs/profiling.h>
 #include <CoreLabs/logging.h>
 #include <CoreLabs/text/codec.h>
-#include <CoreLabs/platform/filesystem.h>
 
 #include <algorithm>
 #include <filesystem>
@@ -384,6 +383,8 @@ namespace helloworld {
         const float line_height = text_style.font_size * text_style.scaling.y + 20.0f;
         float y = text_style.font_size * text_style.scaling.y + 10.0f;
 
+        _test_renderer->draw_text(text, _font.get(), &text_style, {10.0f, y});
+        y += line_height;
         _bitmap_renderer->draw_text(text, _font.get(), &text_style, {10.0f, y});
         y += line_height;
         _sdf_renderer->draw_text(text, _font.get(), &text_style, {10.0f, y});
