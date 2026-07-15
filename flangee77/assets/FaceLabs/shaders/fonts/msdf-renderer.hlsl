@@ -17,6 +17,8 @@ PixelOut mainPixel(PixelIn i)
     // instead of a fixed threshold.
     float width = max(fwidth(dist), 1e-5);
     float alpha = smoothstep(0.5 - width, 0.5 + width, dist);
+    // See bitmap-renderer.hlsl for why the coverage is boosted before blending.
+    alpha = pow(alpha, 1.0 / 2.2);
     o.color = float4(i.color.rgb, i.color.a * alpha);
     return o;
 }
