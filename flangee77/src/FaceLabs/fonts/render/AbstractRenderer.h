@@ -225,6 +225,8 @@ private:
 
     virtual void _emit_glyph(const Glyph& glyph, const State& state) = 0;
 
+    virtual void _emit_background(ml7::Vector2f position, ml7::Vector2f size, const State& state) {}
+
 
 
     /** The default text style to use when no other text style is specified. */

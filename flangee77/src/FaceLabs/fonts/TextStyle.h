@@ -71,6 +71,17 @@ struct TextStyle
      */
     float italic_intensity = 0.0f;
 
+    /**
+     * Extra horizontal (x) and vertical (y) space added around each line's
+     * background, on top of its natural (bearing-based/line-height) extent. For
+     * box-based text, the horizontal component also reserves space at the box's
+     * left/right edges (reducing the effective wrap width and inset alignment
+     * accordingly), so the padded background never overflows the box. The
+     * vertical component is purely visual: it only grows the background rect,
+     * it never affects line positioning.
+     */
+    ml7::Vector2f background_padding = {0.0f, 0.0f};
+
     /** The actual (foreground) color of the text. */
     xl7::graphics::Color text_color = {1.0f, 1.0f, 1.0f, 1.0f};
     /** The optional background color (e.g., just transparent). */

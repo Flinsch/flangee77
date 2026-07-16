@@ -85,7 +85,21 @@ namespace fl7::fonts::render {
         if (box_size.x <= 0.0f)
             wrap_text_style.wrap_mode = TextStyle::WrapMode::None;
 
-        const std::vector<TextLine> lines = TextLayout::lay_out(codepoints, *font, wrap_text_style, box_size.x);
+        // Independent of whether a background is actually visible right now
+        // (has_background below): geometry must not depend on background_color's
+        // alpha, or toggling it would make the text/wrap layout jump. The
+        // horizontal component is clamped in box mode so it can never invert the
+        // box. In box mode it also reserves space at both edges, so wrap
+        // width/alignment/justify below all agree with the padded background
+        // rect emitted at the end of the line loop. The vertical component only
+        // ever affects that final rect, never any line positioning.
+        const bool has_background = text_style->background_color.a > 0.0f;
+        ml7::Vector2f padding = text_style->background_padding;
+        if (box_size.x > 0.0f)
+            padding.x = std::min(padding.x, box_size.x * 0.5f);
+
+        const float wrap_width = box_size.x > 0.0f ? std::max(0.0f, box_size.x - 2.0f * padding.x) : box_size.x;
+        const std::vector<TextLine> lines = TextLayout::lay_out(codepoints, *font, wrap_text_style, wrap_width);
 
         const float line_height_px = font_metrics.line_height * text_metrics.scaled_font_size.y * text_style->line_spacing;
         const float block_height = static_cast<float>(lines.size()) * line_height_px;
@@ -137,16 +151,16 @@ namespace fl7::fonts::render {
                 start_x = box_position.x + (box_size.x - line.width) * 0.5f;
                 break;
             case TextStyle::HorizontalAlign::Right:
-                start_x = box_position.x + box_size.x - line.width;
+                start_x = box_position.x + box_size.x - padding.x - line.width;
                 break;
             case TextStyle::HorizontalAlign::Left:
             case TextStyle::HorizontalAlign::Justify:
             default:
-                start_x = box_position.x;
+                start_x = box_position.x + padding.x;
                 break;
             }
 
-            const float extra_per_gap = is_justified ? (box_size.x - line.width) / static_cast<float>(line.word_count - 1) : 0.0f;
+            const float extra_per_gap = is_justified ? (box_size.x - 2.0f * padding.x - line.width) / static_cast<float>(line.word_count - 1) : 0.0f;
 
             state.cursor = {start_x, line_y};
             bool previous_was_whitespace = false;
@@ -164,6 +178,9 @@ namespace fl7::fonts::render {
                 if (i + 1 < line.codepoint_end)
                     state.cursor.x += text_style->letter_spacing;
             }
+
+            if (has_background && state.cursor.x > start_x)
+                _emit_background({start_x - padding.x, line_y - ascent_px - padding.y}, {state.cursor.x - start_x + 2.0f * padding.x, line_height_px + 2.0f * padding.y}, state);
 
             line_y += line_height_px;
         }

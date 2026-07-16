@@ -129,7 +129,8 @@ namespace fl7::fonts::render {
 
         // Reuses atlas-renderer-common.hlsli's vertex transform and vertex
         // layout (position/texcoord/color) as-is; texcoord just goes unused.
-        cl7::io::File shader_file(cl7::platform::filesystem::get_working_directory() + u8"assets/shaders/fonts/test-renderer.hlsl");
+        // Also shared with AbstractTextureAtlasBasedRenderer's background quads.
+        cl7::io::File shader_file(cl7::platform::filesystem::get_working_directory() + u8"assets/shaders/fonts/solid-color-renderer.hlsl");
         cl7::io::Utf8Reader shader_reader(&shader_file);
         cl7::u8string shader_code_str = shader_reader.read_all();
 

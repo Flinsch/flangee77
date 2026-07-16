@@ -46,11 +46,12 @@ namespace fl7::fonts::render {
         _vertices.clear();
         _batches.clear();
         _current_batch_font_size = 0.0f;
+        _bg_vertices.clear();
     }
 
     void AbstractTextureAtlasBasedRenderer::_do_flush()
     {
-        if (_vertices.empty())
+        if (_vertices.empty() && _bg_vertices.empty())
             return;
 
         auto* rendering_context = xl7::graphics::primary_context();
@@ -70,62 +71,104 @@ namespace fl7::fonts::render {
         assert(cb);
         cb->edit().write(xl7::graphics::shaders::ConstantBufferWrite::from_data_ptr(&cb_data));
 
-        // Grow (never shrink) a single persistent vertex buffer instead of
-        // creating/destroying one per batch per frame.
-        if (!_vertex_buffer_id || _vertex_buffer_capacity < _vertices.size())
-        {
-            if (_vertex_buffer_id)
-                xl7::graphics::mesh_manager()->release_resource_and_invalidate(_vertex_buffer_id);
-
-            _vertex_buffer_capacity = static_cast<unsigned>(_vertices.size());
-
-            xl7::graphics::meshes::VertexBufferDesc vb_desc{
-                .usage = xl7::graphics::meshes::MeshBufferUsage::Transient,
-                .topology = xl7::graphics::meshes::Topology::TriangleList,
-                .vertex_count = _vertex_buffer_capacity,
-                .vertex_stride = sizeof(Vertex),
-                .vertex_layout = _vertex_layout,
-            };
-            _vertex_buffer_id = xl7::graphics::mesh_manager()->create_vertex_buffer(_resource_prefix + u8"VB", vb_desc);
-        }
-
-        auto* vb = xl7::graphics::mesh_manager()->find_resource<xl7::graphics::meshes::VertexBuffer>(_vertex_buffer_id);
-        assert(vb);
-        vb->edit().write(xl7::graphics::meshes::VertexBufferWrite::from_vertices<Vertex>(std::span<const Vertex>(_vertices)));
-
-        rendering_context->pipeline.vs.set_vertex_shader_id(_vertex_shader_id);
-        rendering_context->pipeline.vs.set_constant_buffer_id(0, _constant_buffer_id);
-        rendering_context->pipeline.ps.set_pixel_shader_id(_pixel_shader_id);
-        rendering_context->pipeline.ps.set_sampler_state_id(0, _sampler_state_id);
         rendering_context->pipeline.om.set_blend_state_id(_blend_state_id);
         rendering_context->pipeline.om.set_depth_stencil_state_id(_depth_stencil_state_id);
 
-        rendering_context->pipeline.ia.set_vertex_buffer_id(_vertex_buffer_id);
-        rendering_context->pipeline.ia.set_index_buffer_id({});
-
-        for (const DrawBatch& batch : _batches)
+        // Background quads are drawn first (and always as one contiguous,
+        // untextured batch), so glyphs end up on top of them.
+        if (!_bg_vertices.empty())
         {
-            if (batch.vertex_count == 0)
-                continue;
+            // Grow (never shrink) a single persistent vertex buffer instead of
+            // creating/destroying one per batch per frame.
+            if (!_bg_vertex_buffer_id || _bg_vertex_buffer_capacity < _bg_vertices.size())
+            {
+                if (_bg_vertex_buffer_id)
+                    xl7::graphics::mesh_manager()->release_resource_and_invalidate(_bg_vertex_buffer_id);
 
-            auto it = _atlas_layers.find(batch.font_size);
-            if (it == _atlas_layers.end())
-                continue;
+                _bg_vertex_buffer_capacity = static_cast<unsigned>(_bg_vertices.size());
 
-            AtlasLayer& layer = it->second;
-            if (!layer.texture_id)
-                continue;
+                xl7::graphics::meshes::VertexBufferDesc bg_vb_desc{
+                    .usage = xl7::graphics::meshes::MeshBufferUsage::Transient,
+                    .topology = xl7::graphics::meshes::Topology::TriangleList,
+                    .vertex_count = _bg_vertex_buffer_capacity,
+                    .vertex_stride = sizeof(Vertex),
+                    .vertex_layout = _vertex_layout,
+                };
+                _bg_vertex_buffer_id = xl7::graphics::mesh_manager()->create_vertex_buffer(_resource_prefix + u8"BG VB", bg_vb_desc);
+            }
 
-            rendering_context->pipeline.ps.set_texture_id(0, layer.texture_id);
+            auto* bg_vb = xl7::graphics::mesh_manager()->find_resource<xl7::graphics::meshes::VertexBuffer>(_bg_vertex_buffer_id);
+            assert(bg_vb);
+            bg_vb->edit().write(xl7::graphics::meshes::VertexBufferWrite::from_vertices<Vertex>(std::span<const Vertex>(_bg_vertices)));
 
-            rendering_context->draw(xl7::graphics::meshes::Topology::TriangleList, batch.vertex_count / 3, batch.first_vertex);
+            rendering_context->pipeline.vs.set_vertex_shader_id(_bg_vertex_shader_id);
+            rendering_context->pipeline.vs.set_constant_buffer_id(0, _constant_buffer_id);
+            rendering_context->pipeline.ps.set_pixel_shader_id(_bg_pixel_shader_id);
+
+            rendering_context->pipeline.ia.set_vertex_buffer_id(_bg_vertex_buffer_id);
+            rendering_context->pipeline.ia.set_index_buffer_id({});
+
+            rendering_context->draw(xl7::graphics::meshes::Topology::TriangleList, static_cast<unsigned>(_bg_vertices.size() / 3), 0);
         }
 
-        // Batches drawn above must not be resubmitted by a later flush
-        // (e.g., a manual flush() call or a nested ScopedBatch closing early).
+        if (!_vertices.empty())
+        {
+            // Grow (never shrink) a single persistent vertex buffer instead of
+            // creating/destroying one per batch per frame.
+            if (!_vertex_buffer_id || _vertex_buffer_capacity < _vertices.size())
+            {
+                if (_vertex_buffer_id)
+                    xl7::graphics::mesh_manager()->release_resource_and_invalidate(_vertex_buffer_id);
+
+                _vertex_buffer_capacity = static_cast<unsigned>(_vertices.size());
+
+                xl7::graphics::meshes::VertexBufferDesc vb_desc{
+                    .usage = xl7::graphics::meshes::MeshBufferUsage::Transient,
+                    .topology = xl7::graphics::meshes::Topology::TriangleList,
+                    .vertex_count = _vertex_buffer_capacity,
+                    .vertex_stride = sizeof(Vertex),
+                    .vertex_layout = _vertex_layout,
+                };
+                _vertex_buffer_id = xl7::graphics::mesh_manager()->create_vertex_buffer(_resource_prefix + u8"VB", vb_desc);
+            }
+
+            auto* vb = xl7::graphics::mesh_manager()->find_resource<xl7::graphics::meshes::VertexBuffer>(_vertex_buffer_id);
+            assert(vb);
+            vb->edit().write(xl7::graphics::meshes::VertexBufferWrite::from_vertices<Vertex>(std::span<const Vertex>(_vertices)));
+
+            rendering_context->pipeline.vs.set_vertex_shader_id(_vertex_shader_id);
+            rendering_context->pipeline.vs.set_constant_buffer_id(0, _constant_buffer_id);
+            rendering_context->pipeline.ps.set_pixel_shader_id(_pixel_shader_id);
+            rendering_context->pipeline.ps.set_sampler_state_id(0, _sampler_state_id);
+
+            rendering_context->pipeline.ia.set_vertex_buffer_id(_vertex_buffer_id);
+            rendering_context->pipeline.ia.set_index_buffer_id({});
+
+            for (const DrawBatch& batch : _batches)
+            {
+                if (batch.vertex_count == 0)
+                    continue;
+
+                auto it = _atlas_layers.find(batch.font_size);
+                if (it == _atlas_layers.end())
+                    continue;
+
+                AtlasLayer& layer = it->second;
+                if (!layer.texture_id)
+                    continue;
+
+                rendering_context->pipeline.ps.set_texture_id(0, layer.texture_id);
+
+                rendering_context->draw(xl7::graphics::meshes::Topology::TriangleList, batch.vertex_count / 3, batch.first_vertex);
+            }
+        }
+
+        // Content drawn above must not be resubmitted by a later flush (e.g., a
+        // manual flush() call or a nested ScopedBatch closing early).
         _vertices.clear();
         _batches.clear();
         _current_batch_font_size = 0.0f;
+        _bg_vertices.clear();
     }
 
     void AbstractTextureAtlasBasedRenderer::_emit_glyph(const Glyph& glyph, const State& state)
@@ -190,6 +233,38 @@ namespace fl7::fonts::render {
         _vertices.push_back(bl);
 
         _batches.back().vertex_count += 6;
+    }
+
+    void AbstractTextureAtlasBasedRenderer::_emit_background(ml7::Vector2f position, ml7::Vector2f size, const State& state)
+    {
+        // Same box-clipping as _emit_glyph, just without any UV to remap.
+        constexpr float infinity = std::numeric_limits<float>::infinity();
+        const ml7::Vector2f clip_min = {
+            state.box_size.x > 0.0f ? state.box_position.x : -infinity,
+            state.box_size.y > 0.0f ? state.box_position.y : -infinity,
+        };
+        const ml7::Vector2f clip_max = {
+            state.box_size.x > 0.0f ? state.box_position.x + state.box_size.x : infinity,
+            state.box_size.y > 0.0f ? state.box_position.y + state.box_size.y : infinity,
+        };
+
+        const auto clipped = xl7::graphics::meshes::ClippedQuad::clip(position, position + size, {}, {}, clip_min, clip_max);
+        if (!clipped)
+            return;
+
+        const xl7::graphics::Color color = state.text_style.background_color;
+
+        const Vertex tl = {.position = {clipped->position_min.x, clipped->position_min.y}, .texcoord = {}, .color = color};
+        const Vertex tr = {.position = {clipped->position_max.x, clipped->position_min.y}, .texcoord = {}, .color = color};
+        const Vertex bl = {.position = {clipped->position_min.x, clipped->position_max.y}, .texcoord = {}, .color = color};
+        const Vertex br = {.position = {clipped->position_max.x, clipped->position_max.y}, .texcoord = {}, .color = color};
+
+        _bg_vertices.push_back(tl);
+        _bg_vertices.push_back(tr);
+        _bg_vertices.push_back(bl);
+        _bg_vertices.push_back(tr);
+        _bg_vertices.push_back(br);
+        _bg_vertices.push_back(bl);
     }
 
 
@@ -309,6 +384,23 @@ namespace fl7::fonts::render {
         _vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader(_resource_prefix + u8"VS", shader_desc, shader_write);
         _pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader(_resource_prefix + u8"PS", shader_desc, shader_write);
 
+        // Background quads need a solid-fill shader: the glyph shader above
+        // always samples the atlas texture, so it can't produce a flat color.
+        cl7::io::File bg_shader_file(cl7::platform::filesystem::get_working_directory() + u8"assets/shaders/fonts/solid-color-renderer.hlsl");
+        cl7::io::Utf8Reader bg_shader_reader(&bg_shader_file);
+        cl7::u8string bg_shader_code_str = bg_shader_reader.read_all();
+
+        xl7::graphics::shaders::ShaderCode bg_shader_code{bg_shader_code_str};
+        xl7::graphics::shaders::CompileOptions bg_compile_options;
+        bg_compile_options.include_directories.push_back(bg_shader_file.get_path());
+        xl7::graphics::shaders::ShaderWrite bg_shader_write{
+            .shader_code = &bg_shader_code,
+            .compile_options = &bg_compile_options,
+        };
+
+        _bg_vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader(_resource_prefix + u8"BG VS", shader_desc, bg_shader_write);
+        _bg_pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader(_resource_prefix + u8"BG PS", shader_desc, bg_shader_write);
+
         xl7::graphics::shaders::ConstantBufferDesc cb_desc;
         cb_desc.layout.constant_declarations = {
             {
@@ -358,6 +450,10 @@ namespace fl7::fonts::render {
             xl7::graphics::mesh_manager()->release_resource_and_invalidate(_vertex_buffer_id);
         _vertex_buffer_capacity = 0;
 
+        if (_bg_vertex_buffer_id)
+            xl7::graphics::mesh_manager()->release_resource_and_invalidate(_bg_vertex_buffer_id);
+        _bg_vertex_buffer_capacity = 0;
+
         if (_depth_stencil_state_id)
             xl7::graphics::state_manager()->release_resource_and_invalidate(_depth_stencil_state_id);
         if (_blend_state_id)
@@ -366,6 +462,10 @@ namespace fl7::fonts::render {
             xl7::graphics::state_manager()->release_resource_and_invalidate(_sampler_state_id);
         if (_constant_buffer_id)
             xl7::graphics::shader_manager()->release_resource_and_invalidate(_constant_buffer_id);
+        if (_bg_pixel_shader_id)
+            xl7::graphics::shader_manager()->release_resource_and_invalidate(_bg_pixel_shader_id);
+        if (_bg_vertex_shader_id)
+            xl7::graphics::shader_manager()->release_resource_and_invalidate(_bg_vertex_shader_id);
         if (_pixel_shader_id)
             xl7::graphics::shader_manager()->release_resource_and_invalidate(_pixel_shader_id);
         if (_vertex_shader_id)

@@ -374,6 +374,8 @@ namespace helloworld {
         fl7::fonts::TextStyle text_style;
         text_style.font_size = 16.0f;
         text_style.scaling = {2.0f, 2.0f};
+        text_style.background_padding = {2.0f, 0.0f};
+        text_style.background_color = {0.1f, 0.2f, 0.4f, 0.7f};
         cl7::u8string text = u8"Hello, World!";
         text.reserve(text.size() + (0x7e - 0x20) + 1);
         for (cl7::u8char_t c = 0x20; c <= 0x7e; ++c)

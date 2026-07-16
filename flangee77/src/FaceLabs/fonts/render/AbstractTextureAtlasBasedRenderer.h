@@ -113,6 +113,7 @@ private:
     void _after_end() override;
     void _do_flush() override;
     void _emit_glyph(const Glyph& glyph, const State& state) override;
+    void _emit_background(ml7::Vector2f position, ml7::Vector2f size, const State& state) override;
 
     AtlasLayer& _get_or_create_atlas_layer(float font_size);
     const GlyphCacheEntry* _get_or_rasterize_glyph(const Glyph& glyph, float font_size);
@@ -133,12 +134,21 @@ private:
     std::vector<DrawBatch> _batches;
     float _current_batch_font_size = 0.0f;
 
+    // Background quads are accumulated separately from glyph quads (see
+    // _emit_background) and always drawn first, so they end up behind them.
+    std::vector<Vertex> _bg_vertices;
+
     xl7::graphics::meshes::VertexLayout _vertex_layout;
     xl7::graphics::meshes::VertexBuffer::Id _vertex_buffer_id = {};
     unsigned _vertex_buffer_capacity = 0;
 
+    xl7::graphics::meshes::VertexBuffer::Id _bg_vertex_buffer_id = {};
+    unsigned _bg_vertex_buffer_capacity = 0;
+
     xl7::graphics::shaders::VertexShader::Id _vertex_shader_id = {};
     xl7::graphics::shaders::PixelShader::Id _pixel_shader_id = {};
+    xl7::graphics::shaders::VertexShader::Id _bg_vertex_shader_id = {};
+    xl7::graphics::shaders::PixelShader::Id _bg_pixel_shader_id = {};
     xl7::graphics::shaders::ConstantBuffer::Id _constant_buffer_id = {};
     xl7::graphics::states::SamplerState::Id _sampler_state_id = {};
     xl7::graphics::states::BlendState::Id _blend_state_id = {};
