@@ -17,6 +17,7 @@ var structfl7_1_1fonts_1_1TextStyle =
       [ "Word", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a42208c3cc71745c28a830d9f2e7a486fa07a094a210794e74a0e5e1a1457a92ee", null ]
     ] ],
     [ "background_color", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ab1c104dd0bbf49807b3059a1d4734c4c", null ],
+    [ "background_padding", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a31422a2539fe240103a37c4850b20a64", null ],
     [ "font_size", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a335b86fcd1d24c073d40d33f0b0d669d", null ],
     [ "horizontal_align", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a330f79bc43c84f2095a53b75c022e6ce", null ],
     [ "italic_intensity", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a0b571a2d895b3b30a5926210f22f85f7", null ],

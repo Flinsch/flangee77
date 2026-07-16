@@ -177,6 +177,8 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a36e566679d987573b78e9f020cd2f349"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a236e534780c72d897b64df41cd84b905" id="r_a236e534780c72d897b64df41cd84b905"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a236e534780c72d897b64df41cd84b905">_emit_glyph</a> (const <a class="el" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html">Glyph</a> &amp;glyph, const <a class="el" href="../../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html">State</a> &amp;state)=0</td></tr>
 <tr class="separator:a236e534780c72d897b64df41cd84b905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1d7567aafa80e8a367040cafbb88db3" id="r_ac1d7567aafa80e8a367040cafbb88db3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#ac1d7567aafa80e8a367040cafbb88db3">_emit_background</a> (<a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> position, <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> size, const <a class="el" href="../../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html">State</a> &amp;state)</td></tr>
+<tr class="separator:ac1d7567aafa80e8a367040cafbb88db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -239,7 +241,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a2b455eb0d9810153da9ded203e7cf587">fl7::fonts::render::AbstractTextureAtlasBasedRenderer</a>.</p>
+<p>Reimplemented in <a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a2b455eb0d9810153da9ded203e7cf587">fl7::fonts::render::AbstractTextureAtlasBasedRenderer</a>, and <a class="el" href="../../d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html#a6184d8b9d104815361c2e24336cebf12">fl7::fonts::render::TestRenderer</a>.</p>
 
 </div>
 </div>
@@ -266,7 +268,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a64f5f9f8ef2717448d7d4adcb31ffc0d">fl7::fonts::render::AbstractTextureAtlasBasedRenderer</a>.</p>
+<p>Reimplemented in <a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a64f5f9f8ef2717448d7d4adcb31ffc0d">fl7::fonts::render::AbstractTextureAtlasBasedRenderer</a>, and <a class="el" href="../../d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html#a2b3d8ad26f66541873397157902daa6e">fl7::fonts::render::TestRenderer</a>.</p>
 
 </div>
 </div>
@@ -293,7 +295,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#aa2da2811c77a00228735c0982ae372c0">fl7::fonts::render::AbstractTextureAtlasBasedRenderer</a>.</p>
+<p>Reimplemented in <a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#aa2da2811c77a00228735c0982ae372c0">fl7::fonts::render::AbstractTextureAtlasBasedRenderer</a>, and <a class="el" href="../../d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html#a1c72ee17eb18652f0cf872b45a4e4883">fl7::fonts::render::TestRenderer</a>.</p>
 
 </div>
 </div>
@@ -348,6 +350,50 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac1d7567aafa80e8a367040cafbb88db3" name="ac1d7567aafa80e8a367040cafbb88db3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1d7567aafa80e8a367040cafbb88db3">&#9670;&#160;</a></span>_emit_background()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void fl7::fonts::render::AbstractRenderer::_emit_background </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html">State</a> &amp;&#160;</td>
+          <td class="paramname"><em>state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a6ec592f5aa0035ba7e08196a32aa37b7">fl7::fonts::render::AbstractTextureAtlasBasedRenderer</a>.</p>
 
 </div>
 </div>

@@ -197,6 +197,8 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:aa2da2811c77a00228735c0982ae372c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15099aadd45447323a8018e4eae0a9ca" id="r_a15099aadd45447323a8018e4eae0a9ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a15099aadd45447323a8018e4eae0a9ca">_emit_glyph</a> (const <a class="el" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html">Glyph</a> &amp;glyph, const <a class="el" href="../../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html">State</a> &amp;state) override</td></tr>
 <tr class="separator:a15099aadd45447323a8018e4eae0a9ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ec592f5aa0035ba7e08196a32aa37b7" id="r_a6ec592f5aa0035ba7e08196a32aa37b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a6ec592f5aa0035ba7e08196a32aa37b7">_emit_background</a> (<a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> position, <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> size, const <a class="el" href="../../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html">State</a> &amp;state) override</td></tr>
+<tr class="separator:a6ec592f5aa0035ba7e08196a32aa37b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04a6191d701ce1cda39efcbead9fa741" id="r_a04a6191d701ce1cda39efcbead9fa741"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d5d/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1AtlasLayer.html">AtlasLayer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a04a6191d701ce1cda39efcbead9fa741">_get_or_create_atlas_layer</a> (float font_size)</td></tr>
 <tr class="separator:a04a6191d701ce1cda39efcbead9fa741"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d114983479e7ab4413b2d8acc2efbf7" id="r_a8d114983479e7ab4413b2d8acc2efbf7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d2/d81/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1GlyphCacheEntry.html">GlyphCacheEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a8d114983479e7ab4413b2d8acc2efbf7">_get_or_rasterize_glyph</a> (const <a class="el" href="../../d2/d26/structfl7_1_1fonts_1_1Glyph.html">Glyph</a> &amp;glyph, float font_size)</td></tr>
@@ -226,16 +228,26 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a95ea1f34cb12f9c710e1b0e4a2681fee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e10c3eee726e7bfa37f8724a0078403" id="r_a0e10c3eee726e7bfa37f8724a0078403"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a0e10c3eee726e7bfa37f8724a0078403">_current_batch_font_size</a> = 0.0f</td></tr>
 <tr class="separator:a0e10c3eee726e7bfa37f8724a0078403"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0d60b88b1c071c5698570958536653e" id="r_aa0d60b88b1c071c5698570958536653e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d9/d99/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1Vertex.html">Vertex</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#aa0d60b88b1c071c5698570958536653e">_bg_vertices</a></td></tr>
+<tr class="separator:aa0d60b88b1c071c5698570958536653e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3570c908b26b5b9d297b11cfe61a4bee" id="r_a3570c908b26b5b9d297b11cfe61a4bee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/df8/structxl7_1_1graphics_1_1meshes_1_1VertexLayout.html">xl7::graphics::meshes::VertexLayout</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a3570c908b26b5b9d297b11cfe61a4bee">_vertex_layout</a></td></tr>
 <tr class="separator:a3570c908b26b5b9d297b11cfe61a4bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a707a73def7c30392584ef25291e4b45e" id="r_a707a73def7c30392584ef25291e4b45e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/df6/classxl7_1_1resources_1_1ResourceBase_1_1Id.html">xl7::graphics::meshes::VertexBuffer::Id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a707a73def7c30392584ef25291e4b45e">_vertex_buffer_id</a> = {}</td></tr>
 <tr class="separator:a707a73def7c30392584ef25291e4b45e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50b1403fb80305f29dbe2774c9e8ec22" id="r_a50b1403fb80305f29dbe2774c9e8ec22"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a50b1403fb80305f29dbe2774c9e8ec22">_vertex_buffer_capacity</a> = 0</td></tr>
 <tr class="separator:a50b1403fb80305f29dbe2774c9e8ec22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59b1216409ccea11f291c13ee92dd020" id="r_a59b1216409ccea11f291c13ee92dd020"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/df6/classxl7_1_1resources_1_1ResourceBase_1_1Id.html">xl7::graphics::meshes::VertexBuffer::Id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a59b1216409ccea11f291c13ee92dd020">_bg_vertex_buffer_id</a> = {}</td></tr>
+<tr class="separator:a59b1216409ccea11f291c13ee92dd020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00f7f2a2f3d40c57d952c6900f9ea21f" id="r_a00f7f2a2f3d40c57d952c6900f9ea21f"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a00f7f2a2f3d40c57d952c6900f9ea21f">_bg_vertex_buffer_capacity</a> = 0</td></tr>
+<tr class="separator:a00f7f2a2f3d40c57d952c6900f9ea21f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abeb1aaf0b7f3ad679dd7f664c6e614ac" id="r_abeb1aaf0b7f3ad679dd7f664c6e614ac"><td class="memItemLeft" align="right" valign="top">xl7::graphics::shaders::VertexShader::Id&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#abeb1aaf0b7f3ad679dd7f664c6e614ac">_vertex_shader_id</a> = {}</td></tr>
 <tr class="separator:abeb1aaf0b7f3ad679dd7f664c6e614ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad33a9a68c13d21f333885e92ac8aa7b0" id="r_ad33a9a68c13d21f333885e92ac8aa7b0"><td class="memItemLeft" align="right" valign="top">xl7::graphics::shaders::PixelShader::Id&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ad33a9a68c13d21f333885e92ac8aa7b0">_pixel_shader_id</a> = {}</td></tr>
 <tr class="separator:ad33a9a68c13d21f333885e92ac8aa7b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7d2009e440c6d0fafb0479a01a6b180" id="r_ae7d2009e440c6d0fafb0479a01a6b180"><td class="memItemLeft" align="right" valign="top">xl7::graphics::shaders::VertexShader::Id&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ae7d2009e440c6d0fafb0479a01a6b180">_bg_vertex_shader_id</a> = {}</td></tr>
+<tr class="separator:ae7d2009e440c6d0fafb0479a01a6b180"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a964357740fc62c7477d72681cc4631d3" id="r_a964357740fc62c7477d72681cc4631d3"><td class="memItemLeft" align="right" valign="top">xl7::graphics::shaders::PixelShader::Id&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a964357740fc62c7477d72681cc4631d3">_bg_pixel_shader_id</a> = {}</td></tr>
+<tr class="separator:a964357740fc62c7477d72681cc4631d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cd7af67d01b98ca46252069e5f14aa1" id="r_a0cd7af67d01b98ca46252069e5f14aa1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/df6/classxl7_1_1resources_1_1ResourceBase_1_1Id.html">xl7::graphics::shaders::ConstantBuffer::Id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a0cd7af67d01b98ca46252069e5f14aa1">_constant_buffer_id</a> = {}</td></tr>
 <tr class="separator:a0cd7af67d01b98ca46252069e5f14aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8721517d053784b22ac58563ad32b143" id="r_a8721517d053784b22ac58563ad32b143"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d7b/classxl7_1_1resources_1_1Resource.html#ab9ca19e7ae0f354cd41192dd52cf024d">xl7::graphics::states::SamplerState::Id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a8721517d053784b22ac58563ad32b143">_sampler_state_id</a> = {}</td></tr>
@@ -423,6 +435,50 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a36e566679d987573b78e9f020cd2f349">fl7::fonts::render::AbstractRenderer</a>.</p>
+
+</div>
+</div>
+<a id="a6ec592f5aa0035ba7e08196a32aa37b7" name="a6ec592f5aa0035ba7e08196a32aa37b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ec592f5aa0035ba7e08196a32aa37b7">&#9670;&#160;</a></span>_emit_background()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fl7::fonts::render::AbstractTextureAtlasBasedRenderer::_emit_background </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html">State</a> &amp;&#160;</td>
+          <td class="paramname"><em>state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#ac1d7567aafa80e8a367040cafbb88db3">fl7::fonts::render::AbstractRenderer</a>.</p>
 
 </div>
 </div>
@@ -638,6 +694,116 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt;<a class="el" href="../../df/da0/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1DrawBatch.html">DrawBatch</a>&gt; fl7::fonts::render::AbstractTextureAtlasBasedRenderer::_batches</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a964357740fc62c7477d72681cc4631d3" name="a964357740fc62c7477d72681cc4631d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a964357740fc62c7477d72681cc4631d3">&#9670;&#160;</a></span>_bg_pixel_shader_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">xl7::graphics::shaders::PixelShader::Id fl7::fonts::render::AbstractTextureAtlasBasedRenderer::_bg_pixel_shader_id = {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a00f7f2a2f3d40c57d952c6900f9ea21f" name="a00f7f2a2f3d40c57d952c6900f9ea21f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00f7f2a2f3d40c57d952c6900f9ea21f">&#9670;&#160;</a></span>_bg_vertex_buffer_capacity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned fl7::fonts::render::AbstractTextureAtlasBasedRenderer::_bg_vertex_buffer_capacity = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a59b1216409ccea11f291c13ee92dd020" name="a59b1216409ccea11f291c13ee92dd020"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59b1216409ccea11f291c13ee92dd020">&#9670;&#160;</a></span>_bg_vertex_buffer_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/df6/classxl7_1_1resources_1_1ResourceBase_1_1Id.html">xl7::graphics::meshes::VertexBuffer::Id</a> fl7::fonts::render::AbstractTextureAtlasBasedRenderer::_bg_vertex_buffer_id = {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae7d2009e440c6d0fafb0479a01a6b180" name="ae7d2009e440c6d0fafb0479a01a6b180"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7d2009e440c6d0fafb0479a01a6b180">&#9670;&#160;</a></span>_bg_vertex_shader_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">xl7::graphics::shaders::VertexShader::Id fl7::fonts::render::AbstractTextureAtlasBasedRenderer::_bg_vertex_shader_id = {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa0d60b88b1c071c5698570958536653e" name="aa0d60b88b1c071c5698570958536653e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0d60b88b1c071c5698570958536653e">&#9670;&#160;</a></span>_bg_vertices</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../d9/d99/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1Vertex.html">Vertex</a>&gt; fl7::fonts::render::AbstractTextureAtlasBasedRenderer::_bg_vertices</td>
         </tr>
       </table>
   </td>

@@ -124,7 +124,7 @@ var searchData=
   ['_7esurfacemanager_121',['~SurfaceManager',['../d9/dc4/classxl7_1_1graphics_1_1surfaces_1_1SurfaceManager.html#a1bdf99cd52601c01ae8ba9b8e74faa00',1,'xl7::graphics::surfaces::SurfaceManager']]],
   ['_7eterminalsymbol_122',['~TerminalSymbol',['../d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html#a1fff8b8a770a32c86f74a89ab99469f0',1,'dl7::syntax::TerminalSymbol']]],
   ['_7etestcase_123',['~TestCase',['../dd/de5/classtl7_1_1TestCase.html#a79cfd2890f0d14ea5b1b6c73a10b86e0',1,'tl7::TestCase']]],
-  ['_7etestrenderer_124',['~TestRenderer',['../d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html#a645268e8706a852504466a5f7f910b9e',1,'fl7::fonts::render::TestRenderer']]],
+  ['_7etestrenderer_124',['~TestRenderer',['../d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html#adb6cefb6119d1d1a4953d3f2a707d7bb',1,'fl7::fonts::render::TestRenderer']]],
   ['_7etestsuite_125',['~TestSuite',['../db/d53/classtl7_1_1TestSuite.html#aeb42f8619194f047a4a91f0322fcbd14',1,'tl7::TestSuite']]],
   ['_7etext_126',['~Text',['../df/dd2/classdl7_1_1xml_1_1Text.html#ab119eb812cb4c13442bb986aee06fcf5',1,'dl7::xml::Text']]],
   ['_7etexture_127',['~Texture',['../d3/d94/classxl7_1_1graphics_1_1textures_1_1Texture.html#a02c61efbb59da4e6816dca49b990be13',1,'xl7::graphics::textures::Texture']]],

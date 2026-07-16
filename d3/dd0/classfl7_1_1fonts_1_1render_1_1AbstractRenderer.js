@@ -7,6 +7,7 @@ var classfl7_1_1fonts_1_1render_1_1AbstractRenderer =
     [ "_before_begin", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a89bd2866ab05cefa428662ac8424e7e1", null ],
     [ "_do_flush", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a36e566679d987573b78e9f020cd2f349", null ],
     [ "_draw_codepoints_in_box", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a8eba6ff10ba4447a27dbbb8f8cf22764", null ],
+    [ "_emit_background", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#ac1d7567aafa80e8a367040cafbb88db3", null ],
     [ "_emit_codepoint", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a779fddbfbf6bc1070ddb7e082083e90c", null ],
     [ "_emit_glyph", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a236e534780c72d897b64df41cd84b905", null ],
     [ "_extract_codepoints", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#ae82dcb9cff0cdf78c5bf365f29a422c8", null ],

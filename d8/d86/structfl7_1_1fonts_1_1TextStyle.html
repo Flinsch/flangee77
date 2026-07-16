@@ -153,6 +153,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ad5ee6505f7d2cf65514cd81e4270b19e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b571a2d895b3b30a5926210f22f85f7" id="r_a0b571a2d895b3b30a5926210f22f85f7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a0b571a2d895b3b30a5926210f22f85f7">italic_intensity</a> = 0.0f</td></tr>
 <tr class="separator:a0b571a2d895b3b30a5926210f22f85f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31422a2539fe240103a37c4850b20a64" id="r_a31422a2539fe240103a37c4850b20a64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a31422a2539fe240103a37c4850b20a64">background_padding</a> = {0.0f, 0.0f}</td></tr>
+<tr class="separator:a31422a2539fe240103a37c4850b20a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5603e32fd3aeefb1f7a5e0fe1b8ca0f7" id="r_a5603e32fd3aeefb1f7a5e0fe1b8ca0f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/df3/structxl7_1_1graphics_1_1Color.html">xl7::graphics::Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a5603e32fd3aeefb1f7a5e0fe1b8ca0f7">text_color</a> = {1.0f, 1.0f, 1.0f, 1.0f}</td></tr>
 <tr class="separator:a5603e32fd3aeefb1f7a5e0fe1b8ca0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1c104dd0bbf49807b3059a1d4734c4c" id="r_ab1c104dd0bbf49807b3059a1d4734c4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/df3/structxl7_1_1graphics_1_1Color.html">xl7::graphics::Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ab1c104dd0bbf49807b3059a1d4734c4c">background_color</a> = {0.0f, 0.0f, 0.0f, 0.0f}</td></tr>
@@ -260,6 +262,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>The optional background color (e.g., just transparent). </p>
+
+</div>
+</div>
+<a id="a31422a2539fe240103a37c4850b20a64" name="a31422a2539fe240103a37c4850b20a64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31422a2539fe240103a37c4850b20a64">&#9670;&#160;</a></span>background_padding</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> fl7::fonts::TextStyle::background_padding = {0.0f, 0.0f}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extra horizontal (x) and vertical (y) space added around each line's background, on top of its natural (bearing-based/line-height) extent. For box-based text, the horizontal component also reserves space at the box's left/right edges (reducing the effective wrap width and inset alignment accordingly), so the padded background never overflows the box. The vertical component is purely visual: it only grows the background rect, it never affects line positioning. </p>
 
 </div>
 </div>

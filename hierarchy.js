@@ -797,6 +797,7 @@ var hierarchy =
       [ "xl7::resources::ResourceId", "db/d1e/classxl7_1_1resources_1_1ResourceId.html", null ]
     ] ],
     [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::Vertex", "d9/d99/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1Vertex.html", null ],
+    [ "fl7::fonts::render::TestRenderer::Vertex", "de/d0b/structfl7_1_1fonts_1_1render_1_1TestRenderer_1_1Vertex.html", null ],
     [ "xl7::graphics::impl::shared::meshes::VertexBufferBinding", "d8/de4/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding.html", null ],
     [ "xl7::graphics::meshes::VertexBufferDesc", "d9/df5/structxl7_1_1graphics_1_1meshes_1_1VertexBufferDesc.html", null ],
     [ "xl7::graphics::meshes::VertexBufferWrite", "d6/d1a/structxl7_1_1graphics_1_1meshes_1_1VertexBufferWrite.html", null ],
