@@ -5,10 +5,13 @@
 #include "../FontMetrics.h"
 #include "../TextMetrics.h"
 #include "../TextStyle.h"
+#include "./StyleRun.h"
 
 #include <CoreLabs/string.h>
 
 #include "CoreLabs/text/codec/codepoint_iterator.h"
+
+#include <span>
 
 
 
@@ -60,20 +63,20 @@ public:
          * Draws text at the specified position.
          */
         template <cl7::any_string_view_like Tstring_view_like>
-        void draw_text(Tstring_view_like&& text, Font* font, const TextStyle* text_style = nullptr, ml7::Vector2f position = {})
+        void draw_text(Tstring_view_like&& text, Font* font, const TextStyle* text_style = nullptr, ml7::Vector2f position = {}, std::span<const StyleRun> style_runs = {})
         {
             if (_renderer)
-                _renderer->draw_text(std::forward<Tstring_view_like>(text), font, text_style, position);
+                _renderer->draw_text(std::forward<Tstring_view_like>(text), font, text_style, position, style_runs);
         }
 
         /**
          * Draws text laid out within the specified box.
          */
         template <cl7::any_string_view_like Tstring_view_like>
-        void draw_text_in_box(Tstring_view_like&& text, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
+        void draw_text_in_box(Tstring_view_like&& text, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size, std::span<const StyleRun> style_runs = {})
         {
             if (_renderer)
-                _renderer->draw_text_in_box(std::forward<Tstring_view_like>(text), font, text_style, box_position, box_size);
+                _renderer->draw_text_in_box(std::forward<Tstring_view_like>(text), font, text_style, box_position, box_size, style_runs);
         }
 
         /**
@@ -159,12 +162,16 @@ public:
      * against). `Justify` has no effect and behaves like `Left`.
      *
      * If no active text rendering batch is open, begin/end are called automatically.
+     *
+     * `style_runs` (if any) override `text_style`'s text color for the code point
+     * ranges they cover; see StyleRun for the indexing convention and ordering
+     * requirements.
      */
     template <cl7::any_string_view_like Tstring_view_like>
-    void draw_text(Tstring_view_like&& text, Font* font, const TextStyle* text_style = nullptr, ml7::Vector2f position = {})
+    void draw_text(Tstring_view_like&& text, Font* font, const TextStyle* text_style = nullptr, ml7::Vector2f position = {}, std::span<const StyleRun> style_runs = {})
     {
         _extract_codepoints(std::forward<Tstring_view_like>(text));
-        _draw_codepoints_in_box(_codepoints, font, text_style, position, ml7::Vector2f{});
+        _draw_codepoints_in_box(_codepoints, font, text_style, position, ml7::Vector2f{}, style_runs);
     }
 
     /**
@@ -175,12 +182,16 @@ public:
      * A `box_size` component of 0 (or less) means "unconstrained" on that axis.
      *
      * If no active text rendering batch is open, begin/end are called automatically.
+     *
+     * `style_runs` (if any) override `text_style`'s text color for the code point
+     * ranges they cover; see StyleRun for the indexing convention and ordering
+     * requirements.
      */
     template <cl7::any_string_view_like Tstring_view_like>
-    void draw_text_in_box(Tstring_view_like&& text, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
+    void draw_text_in_box(Tstring_view_like&& text, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size, std::span<const StyleRun> style_runs = {})
     {
         _extract_codepoints(std::forward<Tstring_view_like>(text));
-        _draw_codepoints_in_box(_codepoints, font, text_style, box_position, box_size);
+        _draw_codepoints_in_box(_codepoints, font, text_style, box_position, box_size, style_runs);
     }
 
 
@@ -194,6 +205,9 @@ protected:
 
         TextStyle text_style;
         TextMetrics text_metrics;
+
+        /** The text color to use for the code point currently being emitted (text_style.text_color, unless overridden by a StyleRun). */
+        xl7::graphics::Color current_color;
 
         ml7::Vector2f cursor;
 
@@ -215,7 +229,7 @@ private:
             _codepoints.push_back(*it);
     }
 
-    void _draw_codepoints_in_box(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size);
+    void _draw_codepoints_in_box(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size, std::span<const StyleRun> style_runs);
 
     void _emit_codepoint(cl7::text::codec::codepoint codepoint, State& state);
 

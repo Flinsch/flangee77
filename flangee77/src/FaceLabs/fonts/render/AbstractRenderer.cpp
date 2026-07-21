@@ -69,7 +69,7 @@ namespace fl7::fonts::render {
 
 
 
-    void AbstractRenderer::_draw_codepoints_in_box(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
+    void AbstractRenderer::_draw_codepoints_in_box(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size, std::span<const StyleRun> style_runs)
     {
         if (!font) return;
         if (!text_style) text_style = &_default_text_style;
@@ -128,12 +128,19 @@ namespace fl7::fonts::render {
             .font_metrics = font_metrics,
             .text_style = *text_style,
             .text_metrics = text_metrics,
+            .current_color = text_style->text_color,
             .cursor = {},
             .box_position = box_position,
             .box_size = box_size,
         };
 
         ScopedBatch auto_batch(_batch_depth > 0 ? nullptr : this);
+
+        // Monotonic cursor into style_runs: codepoint indices only ever
+        // increase across the line loop below (lines partition the same flat
+        // codepoints array in order), so a single cursor for the whole call
+        // is correct. style_runs must be sorted and non-overlapping.
+        size_t run_index = 0;
 
         for (const TextLine& line : lines)
         {
@@ -172,6 +179,12 @@ namespace fl7::fonts::render {
                 if (is_whitespace && !previous_was_whitespace)
                     state.cursor.x += extra_per_gap + text_style->word_spacing;
                 previous_was_whitespace = is_whitespace;
+
+                while (run_index < style_runs.size() && i >= style_runs[run_index].codepoint_end)
+                    ++run_index;
+                state.current_color = (run_index < style_runs.size() && i >= style_runs[run_index].codepoint_begin)
+                    ? style_runs[run_index].text_color
+                    : text_style->text_color;
 
                 _emit_codepoint(codepoint, state);
 

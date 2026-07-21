@@ -451,6 +451,21 @@ namespace helloworld {
         _bitmap_renderer->draw_text_in_box(
             u8"This text has extra letter and word spacing, which should also shift its word-wrap boundaries.",
             _font.get(), &spacing_text_style, {10.0f, y}, {300.0f, 200.0f});
+        y += 200.0f + line_height;
+
+        // Style-run demo: "World" is colored differently than the rest of the
+        // text, via a StyleRun override on top of the base TextStyle. Codepoint
+        // indices are plain string offsets here since the text is pure ASCII.
+        const cl7::u8string style_run_text = u8"Hello, World!";
+        const fl7::fonts::render::StyleRun style_runs[] = {
+            {.codepoint_begin = 7, .codepoint_end = 12, .text_color = xl7::graphics::Color::YELLOW},
+        };
+        _bitmap_renderer->draw_text(style_run_text, _font.get(), &text_style, {10.0f, y}, style_runs);
+        y += line_height;
+        _sdf_renderer->draw_text(style_run_text, _font.get(), &text_style, {10.0f, y}, style_runs);
+        y += line_height;
+        _msdf_renderer->draw_text(style_run_text, _font.get(), &text_style, {10.0f, y}, style_runs);
+        y += line_height;
     }
 
     /**

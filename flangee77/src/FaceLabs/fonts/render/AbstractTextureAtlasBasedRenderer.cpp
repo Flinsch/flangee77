@@ -218,7 +218,7 @@ namespace fl7::fonts::render {
         if (!clipped)
             return;
 
-        const xl7::graphics::Color color = state.text_style.text_color;
+        const xl7::graphics::Color color = state.current_color;
 
         const Vertex tl = {.position = {clipped->position_min.x, clipped->position_min.y}, .texcoord = {clipped->uv_min.x, clipped->uv_min.y}, .color = color};
         const Vertex tr = {.position = {clipped->position_max.x, clipped->position_min.y}, .texcoord = {clipped->uv_max.x, clipped->uv_min.y}, .color = color};
