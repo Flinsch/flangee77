@@ -1,6 +1,8 @@
 #ifndef FL7_FONTS_TEXTSTYLE_H
 #define FL7_FONTS_TEXTSTYLE_H
 
+#include "./GlyphStyle.h"
+
 #include <MathLabs/Vector2.h>
 #include <XiaoLabs/graphics/Color.h>
 
@@ -14,6 +16,7 @@ namespace fl7::fonts {
  *
  */
 struct TextStyle
+    : GlyphStyle
 {
     enum struct HorizontalAlign
     {
@@ -59,19 +62,6 @@ struct TextStyle
     float word_spacing = 0.0f;
 
     /**
-     * The "boldness" of the text in a normalized form, where 0 = normal, +1 = bold,
-     * +2 = extra bold, -1 = thin, etc.
-     */
-    float weight = 0.0f;
-
-    /**
-     * The italic intensity, with 0 = normal, 1 = full italic, etc.
-     * This is more of a pseudo-setting that does not really correspond to true
-     * italics in the typographic sense. It's more of a geometric skew.
-     */
-    float italic_intensity = 0.0f;
-
-    /**
      * Extra horizontal (x) and vertical (y) space added around each line's
      * background, on top of its natural (bearing-based/line-height) extent. For
      * box-based text, the horizontal component also reserves space at the box's
@@ -82,14 +72,8 @@ struct TextStyle
      */
     ml7::Vector2f background_padding = {0.0f, 0.0f};
 
-    /** The actual (foreground) color of the text. */
-    xl7::graphics::Color text_color = {1.0f, 1.0f, 1.0f, 1.0f};
     /** The optional background color (e.g., just transparent). */
     xl7::graphics::Color background_color = {0.0f, 0.0f, 0.0f, 0.0f};
-    /** The color of the possible outline/stroke around text. */
-    xl7::graphics::Color outline_color = {0.0f, 0.0f, 0.0f, 0.0f};
-    /** The width of the outline/stroke around text (in pixels). */
-    float outline_width = 0.0f;
 };
 
 

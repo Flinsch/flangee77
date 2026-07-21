@@ -218,12 +218,22 @@ namespace fl7::fonts::render {
         if (!clipped)
             return;
 
-        const xl7::graphics::Color color = state.current_color;
+        const xl7::graphics::Color color = state.current_glyph_style.text_color;
 
-        const Vertex tl = {.position = {clipped->position_min.x, clipped->position_min.y}, .texcoord = {clipped->uv_min.x, clipped->uv_min.y}, .color = color};
-        const Vertex tr = {.position = {clipped->position_max.x, clipped->position_min.y}, .texcoord = {clipped->uv_max.x, clipped->uv_min.y}, .color = color};
-        const Vertex bl = {.position = {clipped->position_min.x, clipped->position_max.y}, .texcoord = {clipped->uv_min.x, clipped->uv_max.y}, .color = color};
-        const Vertex br = {.position = {clipped->position_max.x, clipped->position_max.y}, .texcoord = {clipped->uv_max.x, clipped->uv_max.y}, .color = color};
+        // Pseudo-italic: shear each row horizontally by an amount proportional
+        // to its (screen-space, y-down) distance from the baseline, so the
+        // glyph leans right above the baseline and left below it (descenders).
+        // Applied after box-clipping, so a sheared glyph can slightly overshoot
+        // the box's left/right edges. Only the top/bottom clip stays exact.
+        constexpr float italic_shear_per_unit = 0.20f; // ~11 degrees of slant per unit of italic_intensity
+        const float italic_intensity = state.current_glyph_style.italic_intensity;
+        const float shear_top    = italic_intensity * italic_shear_per_unit * (state.cursor.y - clipped->position_min.y);
+        const float shear_bottom = italic_intensity * italic_shear_per_unit * (state.cursor.y - clipped->position_max.y);
+
+        const Vertex tl = {.position = {clipped->position_min.x + shear_top,    clipped->position_min.y}, .texcoord = {clipped->uv_min.x, clipped->uv_min.y}, .color = color};
+        const Vertex tr = {.position = {clipped->position_max.x + shear_top,    clipped->position_min.y}, .texcoord = {clipped->uv_max.x, clipped->uv_min.y}, .color = color};
+        const Vertex bl = {.position = {clipped->position_min.x + shear_bottom, clipped->position_max.y}, .texcoord = {clipped->uv_min.x, clipped->uv_max.y}, .color = color};
+        const Vertex br = {.position = {clipped->position_max.x + shear_bottom, clipped->position_max.y}, .texcoord = {clipped->uv_max.x, clipped->uv_max.y}, .color = color};
 
         _vertices.push_back(tl);
         _vertices.push_back(tr);

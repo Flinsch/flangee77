@@ -163,9 +163,9 @@ public:
      *
      * If no active text rendering batch is open, begin/end are called automatically.
      *
-     * `style_runs` (if any) override `text_style`'s text color for the code point
-     * ranges they cover; see StyleRun for the indexing convention and ordering
-     * requirements.
+     * `style_runs` (if any) override `text_style`'s (inherited) GlyphStyle for
+     * the code point ranges they cover. See `StyleRun` for the indexing
+     * convention and ordering requirements.
      */
     template <cl7::any_string_view_like Tstring_view_like>
     void draw_text(Tstring_view_like&& text, Font* font, const TextStyle* text_style = nullptr, ml7::Vector2f position = {}, std::span<const StyleRun> style_runs = {})
@@ -183,9 +183,9 @@ public:
      *
      * If no active text rendering batch is open, begin/end are called automatically.
      *
-     * `style_runs` (if any) override `text_style`'s text color for the code point
-     * ranges they cover; see StyleRun for the indexing convention and ordering
-     * requirements.
+     * `style_runs` (if any) override `text_style`'s (inherited) GlyphStyle for
+     * the code point ranges they cover. See `StyleRun` for the indexing
+     * convention and ordering requirements.
      */
     template <cl7::any_string_view_like Tstring_view_like>
     void draw_text_in_box(Tstring_view_like&& text, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size, std::span<const StyleRun> style_runs = {})
@@ -206,8 +206,8 @@ protected:
         TextStyle text_style;
         TextMetrics text_metrics;
 
-        /** The text color to use for the code point currently being emitted (text_style.text_color, unless overridden by a StyleRun). */
-        xl7::graphics::Color current_color;
+        /** The per-glyph style for the code point currently being emitted (text_style's, unless overridden by a StyleRun). */
+        GlyphStyle current_glyph_style;
 
         ml7::Vector2f cursor;
 

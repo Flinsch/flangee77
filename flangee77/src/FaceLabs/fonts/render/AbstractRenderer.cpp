@@ -128,7 +128,7 @@ namespace fl7::fonts::render {
             .font_metrics = font_metrics,
             .text_style = *text_style,
             .text_metrics = text_metrics,
-            .current_color = text_style->text_color,
+            .current_glyph_style = *text_style, // NOLINT(cppcoreguidelines-slicing)
             .cursor = {},
             .box_position = box_position,
             .box_size = box_size,
@@ -182,9 +182,8 @@ namespace fl7::fonts::render {
 
                 while (run_index < style_runs.size() && i >= style_runs[run_index].codepoint_end)
                     ++run_index;
-                state.current_color = (run_index < style_runs.size() && i >= style_runs[run_index].codepoint_begin)
-                    ? style_runs[run_index].text_color
-                    : text_style->text_color;
+                const bool has_run = run_index < style_runs.size() && i >= style_runs[run_index].codepoint_begin;
+                state.current_glyph_style = has_run ? style_runs[run_index].style : GlyphStyle{*text_style}; // NOLINT(cppcoreguidelines-slicing)
 
                 _emit_codepoint(codepoint, state);
 

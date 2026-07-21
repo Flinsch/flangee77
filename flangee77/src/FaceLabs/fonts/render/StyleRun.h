@@ -1,7 +1,7 @@
 #ifndef FL7_FONTS_RENDER_STYLERUN_H
 #define FL7_FONTS_RENDER_STYLERUN_H
 
-#include <XiaoLabs/graphics/Color.h>
+#include "../GlyphStyle.h"
 
 
 
@@ -11,7 +11,7 @@ namespace fl7::fonts::render {
 
 /**
  * Describes a style override for a sub-range of code points within a single draw
- * call, on top of the base TextStyle.
+ * call, on top of the base TextStyle's (inherited) GlyphStyle.
  *
  * `codepoint_begin`/`codepoint_end` use the same indexing convention as TextLine:
  * they index into the caller's original code point sequence. Runs passed to a
@@ -24,8 +24,8 @@ struct StyleRun
     /** The index of the first code point after this run (exclusive). */
     size_t codepoint_end = 0;
 
-    /** The text color to use for this run, overriding TextStyle::text_color. */
-    xl7::graphics::Color text_color;
+    /** The per-glyph style to use for this run, overriding the base TextStyle's. */
+    GlyphStyle style;
 };
 
 
