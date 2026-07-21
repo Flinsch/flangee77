@@ -12,7 +12,10 @@ PixelOut mainPixel(PixelIn i)
     // glyph's on-screen scale, instead of a fixed-width threshold that would
     // only be correct at one specific size.
     float width = max(fwidth(dist), 1e-5);
-    float alpha = smoothstep(0.5 - width, 0.5 + width, dist);
+    // Pseudo-bold: bias the edge threshold below 0.5 so more of the glyph's
+    // interior counts as covered, thickening the stroke without re-rasterizing.
+    float edge = 0.5 - i.weight * 0.10;
+    float alpha = smoothstep(edge - width, edge + width, dist);
     // See bitmap-renderer.hlsl for why the coverage is boosted before blending.
     alpha = pow(alpha, 1.0 / 2.2);
 

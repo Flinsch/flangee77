@@ -10,23 +10,26 @@ DECLARE_TEXTURE2D(GlyphAtlas, GlyphSampler, 0, 0);
 
 struct VertexIn
 {
-    float2 pos   : POSITION;
-    float2 uv    : TEXCOORD0;
-    float4 color : COLOR0;
+    float2 pos    : POSITION;
+    float2 uv     : TEXCOORD0;
+    float4 color  : COLOR0;
+    float  weight : TEXCOORD1;
 };
 
 struct VertexOut
 {
-    float4 pos   : VS_POSITION;
-    float2 uv    : TEXCOORD0;
-    float4 color : COLOR0;
+    float4 pos    : VS_POSITION;
+    float2 uv     : TEXCOORD0;
+    float4 color  : COLOR0;
+    float  weight : TEXCOORD1;
 };
 
 struct PixelIn
 {
-    float4 pos   : VS_POSITION;
-    float2 uv    : TEXCOORD0;
-    float4 color : COLOR0;
+    float4 pos    : VS_POSITION;
+    float2 uv     : TEXCOORD0;
+    float4 color  : COLOR0;
+    float  weight : TEXCOORD1;
 };
 
 struct PixelOut
@@ -45,6 +48,7 @@ VertexOut mainVertex(VertexIn i)
     o.pos = float4(ndc, 0.5, 1.0);
     o.uv = i.uv;
     o.color = i.color;
+    o.weight = i.weight;
 
     return o;
 }

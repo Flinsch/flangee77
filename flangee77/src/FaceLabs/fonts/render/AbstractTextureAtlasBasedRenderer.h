@@ -98,6 +98,8 @@ private:
         ml7::Vector2f position;
         ml7::Vector2f texcoord;
         xl7::graphics::Color color;
+        /** Bold amount (GlyphStyle::weight); unused by shaders without a distance field (e.g. plain bitmap, solid-color). */
+        float weight;
     };
 
     struct DrawBatch

@@ -15,9 +15,10 @@ PixelOut mainPixel(PixelIn i)
     float3 sample = SAMPLE_TEX2D(GlyphAtlas, GlyphSampler, i.uv).rgb;
     float dist = median(sample.r, sample.g, sample.b);
     // See sdf-renderer.hlsl for why the antialiasing band is derived via fwidth
-    // instead of a fixed threshold.
+    // instead of a fixed threshold, and for the pseudo-bold edge bias below.
     float width = max(fwidth(dist), 1e-5);
-    float alpha = smoothstep(0.5 - width, 0.5 + width, dist);
+    float edge = 0.5 - i.weight * 0.10;
+    float alpha = smoothstep(edge - width, edge + width, dist);
     // See bitmap-renderer.hlsl for why the coverage is boosted before blending.
     alpha = pow(alpha, 1.0 / 2.2);
 

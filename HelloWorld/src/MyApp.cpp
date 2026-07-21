@@ -1,6 +1,7 @@
 #include "MyApp.h"
 
     #include <FaceLabs/fonts/detail/ttf/TrueTypeFontLoader.h>
+    #include <FaceLabs/fonts/TextLayout.h>
 
 #include <XiaoLabs/graphics.h>
     #include <XiaoLabs/graphics/images/codecs/targa/Reader.h>
@@ -453,31 +454,50 @@ namespace helloworld {
             _font.get(), &spacing_text_style, {10.0f, y}, {300.0f, 200.0f});
         y += 200.0f + line_height;
 
-        // Style-run demo: "World" is colored and italicized differently than
-        // the rest of the text, via a StyleRun override on top of the base
-        // TextStyle. Codepoint indices are plain string offsets here since the
-        // text is pure ASCII.
+        // From here on, continue in a second column to the right: the first
+        // column's demos already fill the window's full height on their own.
+        // Positioned past the right edge of the first four (very wide,
+        // full-ASCII) comparison lines, measured (rather than hardcoded) so
+        // it doesn't matter that this column starts back at the very top.
+        const float x2 = 10.0f + fl7::fonts::TextLayout::measure_width(text, *_font, text_style) + 40.0f;
+        float y2 = text_style.font_size * text_style.scaling.y + 10.0f;
+
+        // Style-run demo: "World" is colored, italicized, and bolded
+        // differently than the rest of the text, via a StyleRun override on
+        // top of the base TextStyle. Codepoint indices are plain string
+        // offsets here since the text is pure ASCII. Bold is a pseudo-bold
+        // SDF/MSDF edge bias, so it has no effect on the bitmap renderer.
         const cl7::u8string style_run_text = u8"Hello, World!";
         const fl7::fonts::render::StyleRun style_runs[] = {
-            {.codepoint_begin = 7, .codepoint_end = 12, .style = {.italic_intensity = 1.0f, .text_color = xl7::graphics::Color::YELLOW}},
+            {.codepoint_begin = 7, .codepoint_end = 12, .style = {.weight = 1.0f, .italic_intensity = 1.0f, .text_color = xl7::graphics::Color::YELLOW}},
         };
-        _bitmap_renderer->draw_text(style_run_text, _font.get(), &text_style, {10.0f, y}, style_runs);
-        y += line_height;
-        _sdf_renderer->draw_text(style_run_text, _font.get(), &text_style, {10.0f, y}, style_runs);
-        y += line_height;
-        _msdf_renderer->draw_text(style_run_text, _font.get(), &text_style, {10.0f, y}, style_runs);
-        y += line_height;
+        _bitmap_renderer->draw_text(style_run_text, _font.get(), &text_style, {x2, y2}, style_runs);
+        y2 += line_height;
+        _sdf_renderer->draw_text(style_run_text, _font.get(), &text_style, {x2, y2}, style_runs);
+        y2 += line_height;
+        _msdf_renderer->draw_text(style_run_text, _font.get(), &text_style, {x2, y2}, style_runs);
+        y2 += line_height;
 
         // Whole-line italic demo: TextStyle::italic_intensity applies a
         // pseudo-italic geometric skew (not a true italic typeface).
         fl7::fonts::TextStyle italic_text_style = text_style;
         italic_text_style.italic_intensity = 1.0f;
-        _bitmap_renderer->draw_text(u8"Italic text demo", _font.get(), &italic_text_style, {10.0f, y});
-        y += line_height;
-        _sdf_renderer->draw_text(u8"Italic text demo", _font.get(), &italic_text_style, {10.0f, y});
-        y += line_height;
-        _msdf_renderer->draw_text(u8"Italic text demo", _font.get(), &italic_text_style, {10.0f, y});
-        y += line_height;
+        _bitmap_renderer->draw_text(u8"Italic text demo", _font.get(), &italic_text_style, {x2, y2});
+        y2 += line_height;
+        _sdf_renderer->draw_text(u8"Italic text demo", _font.get(), &italic_text_style, {x2, y2});
+        y2 += line_height;
+        _msdf_renderer->draw_text(u8"Italic text demo", _font.get(), &italic_text_style, {x2, y2});
+        y2 += line_height;
+
+        // Whole-line bold demo: TextStyle::weight biases the SDF/MSDF edge
+        // threshold to thicken strokes. Bitmap has no distance field to bias,
+        // so it's skipped here (weight is simply ignored there).
+        fl7::fonts::TextStyle bold_text_style = text_style;
+        bold_text_style.weight = 1.0f;
+        _sdf_renderer->draw_text(u8"Bold text demo", _font.get(), &bold_text_style, {x2, y2});
+        y2 += line_height;
+        _msdf_renderer->draw_text(u8"Bold text demo", _font.get(), &bold_text_style, {x2, y2});
+        y2 += line_height;
     }
 
     /**

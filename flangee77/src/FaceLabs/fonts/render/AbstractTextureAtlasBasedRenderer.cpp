@@ -230,10 +230,12 @@ namespace fl7::fonts::render {
         const float shear_top    = italic_intensity * italic_shear_per_unit * (state.cursor.y - clipped->position_min.y);
         const float shear_bottom = italic_intensity * italic_shear_per_unit * (state.cursor.y - clipped->position_max.y);
 
-        const Vertex tl = {.position = {clipped->position_min.x + shear_top,    clipped->position_min.y}, .texcoord = {clipped->uv_min.x, clipped->uv_min.y}, .color = color};
-        const Vertex tr = {.position = {clipped->position_max.x + shear_top,    clipped->position_min.y}, .texcoord = {clipped->uv_max.x, clipped->uv_min.y}, .color = color};
-        const Vertex bl = {.position = {clipped->position_min.x + shear_bottom, clipped->position_max.y}, .texcoord = {clipped->uv_min.x, clipped->uv_max.y}, .color = color};
-        const Vertex br = {.position = {clipped->position_max.x + shear_bottom, clipped->position_max.y}, .texcoord = {clipped->uv_max.x, clipped->uv_max.y}, .color = color};
+        const float weight = state.current_glyph_style.weight;
+
+        const Vertex tl = {.position = {clipped->position_min.x + shear_top,    clipped->position_min.y}, .texcoord = {clipped->uv_min.x, clipped->uv_min.y}, .color = color, .weight = weight};
+        const Vertex tr = {.position = {clipped->position_max.x + shear_top,    clipped->position_min.y}, .texcoord = {clipped->uv_max.x, clipped->uv_min.y}, .color = color, .weight = weight};
+        const Vertex bl = {.position = {clipped->position_min.x + shear_bottom, clipped->position_max.y}, .texcoord = {clipped->uv_min.x, clipped->uv_max.y}, .color = color, .weight = weight};
+        const Vertex br = {.position = {clipped->position_max.x + shear_bottom, clipped->position_max.y}, .texcoord = {clipped->uv_max.x, clipped->uv_max.y}, .color = color, .weight = weight};
 
         _vertices.push_back(tl);
         _vertices.push_back(tr);
@@ -264,10 +266,11 @@ namespace fl7::fonts::render {
 
         const xl7::graphics::Color color = state.text_style.background_color;
 
-        const Vertex tl = {.position = {clipped->position_min.x, clipped->position_min.y}, .texcoord = {}, .color = color};
-        const Vertex tr = {.position = {clipped->position_max.x, clipped->position_min.y}, .texcoord = {}, .color = color};
-        const Vertex bl = {.position = {clipped->position_min.x, clipped->position_max.y}, .texcoord = {}, .color = color};
-        const Vertex br = {.position = {clipped->position_max.x, clipped->position_max.y}, .texcoord = {}, .color = color};
+        // weight is left at 0: unused by the solid-color shader (no distance field to bias).
+        const Vertex tl = {.position = {clipped->position_min.x, clipped->position_min.y}, .texcoord = {}, .color = color, .weight = 0.0f};
+        const Vertex tr = {.position = {clipped->position_max.x, clipped->position_min.y}, .texcoord = {}, .color = color, .weight = 0.0f};
+        const Vertex bl = {.position = {clipped->position_min.x, clipped->position_max.y}, .texcoord = {}, .color = color, .weight = 0.0f};
+        const Vertex br = {.position = {clipped->position_max.x, clipped->position_max.y}, .texcoord = {}, .color = color, .weight = 0.0f};
 
         _bg_vertices.push_back(tl);
         _bg_vertices.push_back(tr);
@@ -371,6 +374,7 @@ namespace fl7::fonts::render {
             {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::POSITION, .semantic_index = 0, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT2},
             {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD, .semantic_index = 0, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT2},
             {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::COLOR,    .semantic_index = 0, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT4},
+            {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD, .semantic_index = 1, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT1},
         };
         assert(_vertex_layout.calculate_size() == sizeof(Vertex));
 
