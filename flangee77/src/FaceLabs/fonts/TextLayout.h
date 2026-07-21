@@ -4,8 +4,11 @@
 #include "./Font.h"
 #include "./TextStyle.h"
 
+#include <CoreLabs/string.h>
 #include <CoreLabs/text/codec/codepoint.h>
+#include <CoreLabs/text/codec/codepoint_iterator.h>
 
+#include <algorithm>
 #include <span>
 #include <vector>
 
@@ -48,6 +51,33 @@ namespace TextLayout {
      * width and into wrap decisions.
      */
     std::vector<TextLine> lay_out(std::span<const cl7::text::codec::codepoint> codepoints, Font& font, const TextStyle& text_style, float max_width);
+
+    /**
+     * Measures the width (in scaled pixels) that `text` would occupy on a single,
+     * unwrapped line under `text_style` and `font`, i.e., as if laid out with
+     * `WrapMode::None` (`text_style.wrap_mode` is ignored). Useful for positioning
+     * things relative to text without actually drawing it (e.g., placing a second
+     * block of content to the right of some text). Explicit line breaks still start
+     * new lines, in which case the width of the widest one is returned.
+     */
+    template <cl7::any_string_view_like Tstring_view_like>
+    float measure_width(Tstring_view_like&& text, Font& font, const TextStyle& text_style)
+    {
+        auto sv = cl7::make_string_view(std::forward<Tstring_view_like>(text));
+        using codepoint_iterator = cl7::text::codec::codepoint_iterator<cl7::char_type_of_t<Tstring_view_like>>;
+
+        std::vector<cl7::text::codec::codepoint> codepoints;
+        for (codepoint_iterator it(sv); it != codepoint_iterator(); ++it)
+            codepoints.push_back(*it);
+
+        TextStyle unwrapped_style = text_style;
+        unwrapped_style.wrap_mode = TextStyle::WrapMode::None;
+
+        float max_line_width = 0.0f;
+        for (const TextLine& line : lay_out(codepoints, font, unwrapped_style, 0.0f))
+            max_line_width = std::max(max_line_width, line.width);
+        return max_line_width;
+    }
 
 } // namespace TextLayout
 
