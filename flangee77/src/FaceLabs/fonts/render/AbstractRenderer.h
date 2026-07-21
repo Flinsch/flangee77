@@ -3,6 +3,7 @@
 
 #include "../Font.h"
 #include "../FontMetrics.h"
+#include "../IconRun.h"
 #include "../TextMetrics.h"
 #include "../TextStyle.h"
 #include "./StyleRun.h"
@@ -63,20 +64,20 @@ public:
          * Draws text at the specified position.
          */
         template <cl7::any_string_view_like Tstring_view_like>
-        void draw_text(Tstring_view_like&& text, Font* font, const TextStyle* text_style = nullptr, ml7::Vector2f position = {}, std::span<const StyleRun> style_runs = {})
+        void draw_text(Tstring_view_like&& text, Font* font, const TextStyle* text_style = nullptr, ml7::Vector2f position = {}, std::span<const StyleRun> style_runs = {}, std::span<const IconRun> icon_runs = {})
         {
             if (_renderer)
-                _renderer->draw_text(std::forward<Tstring_view_like>(text), font, text_style, position, style_runs);
+                _renderer->draw_text(std::forward<Tstring_view_like>(text), font, text_style, position, style_runs, icon_runs);
         }
 
         /**
          * Draws text laid out within the specified box.
          */
         template <cl7::any_string_view_like Tstring_view_like>
-        void draw_text_in_box(Tstring_view_like&& text, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size, std::span<const StyleRun> style_runs = {})
+        void draw_text_in_box(Tstring_view_like&& text, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size, std::span<const StyleRun> style_runs = {}, std::span<const IconRun> icon_runs = {})
         {
             if (_renderer)
-                _renderer->draw_text_in_box(std::forward<Tstring_view_like>(text), font, text_style, box_position, box_size, style_runs);
+                _renderer->draw_text_in_box(std::forward<Tstring_view_like>(text), font, text_style, box_position, box_size, style_runs, icon_runs);
         }
 
         /**
@@ -163,15 +164,19 @@ public:
      *
      * If no active text rendering batch is open, begin/end are called automatically.
      *
-     * `style_runs` (if any) override `text_style`'s (inherited) GlyphStyle for
-     * the code point ranges they cover. See `StyleRun` for the indexing
-     * convention and ordering requirements.
+     * `style_runs` (if any) override `text_style`'s (inherited) `GlyphStyle` for
+     * the code point ranges they cover. See `StyleRun` for the indexing convention
+     * and ordering requirements.
+     *
+     * `icon_runs` (if any) each replace a single code point position with an inline
+     * icon, for both layout (advance width) and rendering. See `IconRun` for the
+     * indexing convention and ordering requirements.
      */
     template <cl7::any_string_view_like Tstring_view_like>
-    void draw_text(Tstring_view_like&& text, Font* font, const TextStyle* text_style = nullptr, ml7::Vector2f position = {}, std::span<const StyleRun> style_runs = {})
+    void draw_text(Tstring_view_like&& text, Font* font, const TextStyle* text_style = nullptr, ml7::Vector2f position = {}, std::span<const StyleRun> style_runs = {}, std::span<const IconRun> icon_runs = {})
     {
         _extract_codepoints(std::forward<Tstring_view_like>(text));
-        _draw_codepoints_in_box(_codepoints, font, text_style, position, ml7::Vector2f{}, style_runs);
+        _draw_codepoints_in_box(_codepoints, font, text_style, position, ml7::Vector2f{}, style_runs, icon_runs);
     }
 
     /**
@@ -183,15 +188,19 @@ public:
      *
      * If no active text rendering batch is open, begin/end are called automatically.
      *
-     * `style_runs` (if any) override `text_style`'s (inherited) GlyphStyle for
-     * the code point ranges they cover. See `StyleRun` for the indexing
-     * convention and ordering requirements.
+     * `style_runs` (if any) override `text_style`'s (inherited) `GlyphStyle` for
+     * the code point ranges they cover. See `StyleRun` for the indexing convention
+     * and ordering requirements.
+     *
+     * `icon_runs` (if any) each replace a single code point position with an inline
+     * icon, for both layout (advance width) and rendering. See `IconRun` for the
+     * indexing convention and ordering requirements.
      */
     template <cl7::any_string_view_like Tstring_view_like>
-    void draw_text_in_box(Tstring_view_like&& text, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size, std::span<const StyleRun> style_runs = {})
+    void draw_text_in_box(Tstring_view_like&& text, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size, std::span<const StyleRun> style_runs = {}, std::span<const IconRun> icon_runs = {})
     {
         _extract_codepoints(std::forward<Tstring_view_like>(text));
-        _draw_codepoints_in_box(_codepoints, font, text_style, box_position, box_size, style_runs);
+        _draw_codepoints_in_box(_codepoints, font, text_style, box_position, box_size, style_runs, icon_runs);
     }
 
 
@@ -229,7 +238,7 @@ private:
             _codepoints.push_back(*it);
     }
 
-    void _draw_codepoints_in_box(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size, std::span<const StyleRun> style_runs);
+    void _draw_codepoints_in_box(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size, std::span<const StyleRun> style_runs, std::span<const IconRun> icon_runs);
 
     void _emit_codepoint(cl7::text::codec::codepoint codepoint, State& state);
 
@@ -240,6 +249,8 @@ private:
     virtual void _emit_glyph(const Glyph& glyph, const State& state) = 0;
 
     virtual void _emit_background(ml7::Vector2f position, ml7::Vector2f size, const State& state) {}
+
+    virtual void _emit_icon(const Icon& icon, const State& state) {}
 
 
 

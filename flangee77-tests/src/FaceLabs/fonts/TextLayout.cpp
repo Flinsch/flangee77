@@ -1,6 +1,8 @@
 
 #include <TestLabs/TestSuite.h>
 
+#include <FaceLabs/fonts/Icon.h>
+#include <FaceLabs/fonts/IconRun.h>
 #include <FaceLabs/fonts/TextLayout.h>
 #include <FaceLabs/fonts/detail/ttf/TrueTypeFontLoader.h>
 
@@ -234,4 +236,40 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - letter_spacing and w
     TESTLABS_CHECK_NE( to_string(codepoints, lines.at(0)), "aaa bbb" );
     for (const auto& line : lines)
         TESTLABS_CHECK_LE( line.width, max_width );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - an icon run's width overrides the code point's glyph advance" )
+{
+    auto& font = get_test_font();
+    fl7::fonts::TextStyle text_style;
+
+    const fl7::fonts::Icon icon{.size = {123.0f, 40.0f}};
+    const fl7::fonts::IconRun icon_runs[] = {{.codepoint_index = 1, .icon = &icon}};
+
+    // "a?b": the '?' placeholder at index 1 is entirely overridden by the icon.
+    const auto codepoints = to_codepoints("a?b");
+    const auto lines = fl7::fonts::TextLayout::lay_out(codepoints, font, text_style, 0.0f, icon_runs);
+
+    const float expected_width = measure("a", font, text_style) + icon.size.x + measure("b", font, text_style);
+    TESTLABS_CHECK_EQ( lines.size(), size_t{1} );
+    TESTLABS_CHECK_EQ_FLT( lines.at(0).width, expected_width );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - an icon-covered code point is never treated as whitespace" )
+{
+    auto& font = get_test_font();
+    fl7::fonts::TextStyle text_style;
+
+    const fl7::fonts::Icon icon{.size = {20.0f, 20.0f}};
+    // The placeholder happens to be a literal space, at the very start of the
+    // text: if it were (incorrectly) treated as real whitespace, it would be
+    // (a) trimmed away as leading whitespace and (b) not count towards a word.
+    const fl7::fonts::IconRun icon_runs[] = {{.codepoint_index = 0, .icon = &icon}};
+
+    const auto codepoints = to_codepoints(" ab");
+    const auto lines = fl7::fonts::TextLayout::lay_out(codepoints, font, text_style, 0.0f, icon_runs);
+
+    TESTLABS_CHECK_EQ( lines.size(), size_t{1} );
+    TESTLABS_CHECK_EQ( lines.at(0).codepoint_begin, size_t{0} ); // not trimmed away
+    TESTLABS_CHECK_EQ( lines.at(0).word_count, 1u ); // icon + "ab" is one contiguous word
 }

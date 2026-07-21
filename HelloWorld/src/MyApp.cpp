@@ -498,6 +498,28 @@ namespace helloworld {
         y2 += line_height;
         _msdf_renderer->draw_text(u8"Bold text demo", _font.get(), &bold_text_style, {x2, y2});
         y2 += line_height;
+
+        // Icon demo: an inline icon (reusing the dummy texture already loaded
+        // for the spinning quad above) placed via an IconRun at the '*'
+        // placeholder's code point index. Icons keep their own texture colors
+        // (not tinted like glyphs) and render identically across all three
+        // atlas renderers, since icon rendering doesn't depend on the
+        // rasterization technique used for text.
+        const fl7::fonts::Icon icon{
+            .texture_id = xl7::resources::id_cast<xl7::graphics::textures::Texture2D::Id>(_texture_id),
+            .size = {24.0f, 24.0f},
+            .offset = {2.0f, -20.0f},
+        };
+        const cl7::u8string icon_text = u8"Look: * an icon";
+        const fl7::fonts::IconRun icon_runs[] = {
+            {.codepoint_index = 6, .icon = &icon},
+        };
+        _bitmap_renderer->draw_text(icon_text, _font.get(), &text_style, {x2, y2}, {}, icon_runs);
+        y2 += line_height;
+        _sdf_renderer->draw_text(icon_text, _font.get(), &text_style, {x2, y2}, {}, icon_runs);
+        y2 += line_height;
+        _msdf_renderer->draw_text(icon_text, _font.get(), &text_style, {x2, y2}, {}, icon_runs);
+        y2 += line_height;
     }
 
     /**

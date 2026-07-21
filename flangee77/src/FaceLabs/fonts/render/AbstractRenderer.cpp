@@ -69,7 +69,7 @@ namespace fl7::fonts::render {
 
 
 
-    void AbstractRenderer::_draw_codepoints_in_box(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size, std::span<const StyleRun> style_runs)
+    void AbstractRenderer::_draw_codepoints_in_box(const std::vector<cl7::text::codec::codepoint>& codepoints, Font* font, const TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size, std::span<const StyleRun> style_runs, std::span<const IconRun> icon_runs)
     {
         if (!font) return;
         if (!text_style) text_style = &_default_text_style;
@@ -99,7 +99,7 @@ namespace fl7::fonts::render {
             padding.x = std::min(padding.x, box_size.x * 0.5f);
 
         const float wrap_width = box_size.x > 0.0f ? std::max(0.0f, box_size.x - 2.0f * padding.x) : box_size.x;
-        const std::vector<TextLine> lines = TextLayout::lay_out(codepoints, *font, wrap_text_style, wrap_width);
+        const std::vector<TextLine> lines = TextLayout::lay_out(codepoints, *font, wrap_text_style, wrap_width, icon_runs);
 
         const float line_height_px = font_metrics.line_height * text_metrics.scaled_font_size.y * text_style->line_spacing;
         const float block_height = static_cast<float>(lines.size()) * line_height_px;
@@ -136,11 +136,13 @@ namespace fl7::fonts::render {
 
         ScopedBatch auto_batch(_batch_depth > 0 ? nullptr : this);
 
-        // Monotonic cursor into style_runs: codepoint indices only ever
-        // increase across the line loop below (lines partition the same flat
-        // codepoints array in order), so a single cursor for the whole call
-        // is correct. style_runs must be sorted and non-overlapping.
+        // Monotonic cursors into style_runs/icon_runs: codepoint indices only
+        // ever increase across the line loop below (lines partition the same
+        // flat codepoints array in order), so a single cursor each for the
+        // whole call is correct. Both spans must be sorted (style_runs by
+        // codepoint_begin, icon_runs by codepoint_index).
         size_t run_index = 0;
+        size_t icon_run_index = 0;
 
         for (const TextLine& line : lines)
         {
@@ -175,17 +177,33 @@ namespace fl7::fonts::render {
             {
                 const cl7::text::codec::codepoint codepoint = codepoints[i];
 
-                const bool is_whitespace = cl7::text::inspect::is_whitespace(static_cast<char32_t>(codepoint.value));
+                while (icon_run_index < icon_runs.size() && icon_runs[icon_run_index].codepoint_index < i)
+                    ++icon_run_index;
+                const bool has_icon = icon_run_index < icon_runs.size() && icon_runs[icon_run_index].codepoint_index == i;
+
+                // An icon-covered code point is visible content, never whitespace,
+                // regardless of the (irrelevant) placeholder code point actually
+                // there, Matches TextLayout::lay_out's own icon-aware handling.
+                const bool is_whitespace = !has_icon && cl7::text::inspect::is_whitespace(static_cast<char32_t>(codepoint.value));
                 if (is_whitespace && !previous_was_whitespace)
                     state.cursor.x += extra_per_gap + text_style->word_spacing;
                 previous_was_whitespace = is_whitespace;
 
-                while (run_index < style_runs.size() && i >= style_runs[run_index].codepoint_end)
-                    ++run_index;
-                const bool has_run = run_index < style_runs.size() && i >= style_runs[run_index].codepoint_begin;
-                state.current_glyph_style = has_run ? style_runs[run_index].style : GlyphStyle{*text_style}; // NOLINT(cppcoreguidelines-slicing)
+                if (has_icon)
+                {
+                    const Icon& icon = *icon_runs[icon_run_index].icon;
+                    _emit_icon(icon, state);
+                    state.cursor.x += icon.size.x;
+                }
+                else
+                {
+                    while (run_index < style_runs.size() && i >= style_runs[run_index].codepoint_end)
+                        ++run_index;
+                    const bool has_run = run_index < style_runs.size() && i >= style_runs[run_index].codepoint_begin;
+                    state.current_glyph_style = has_run ? style_runs[run_index].style : GlyphStyle{*text_style}; // NOLINT(cppcoreguidelines-slicing)
 
-                _emit_codepoint(codepoint, state);
+                    _emit_codepoint(codepoint, state);
+                }
 
                 if (i + 1 < line.codepoint_end)
                     state.cursor.x += text_style->letter_spacing;

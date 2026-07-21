@@ -2,6 +2,7 @@
 #define FL7_FONTS_TEXTLAYOUT_H
 
 #include "./Font.h"
+#include "./IconRun.h"
 #include "./TextStyle.h"
 
 #include <CoreLabs/string.h>
@@ -49,8 +50,14 @@ namespace TextLayout {
      * produced line is excluded from its range and width. `text_style.letter_spacing`
      * and `text_style.word_spacing` are incorporated into each line's measured
      * width and into wrap decisions.
+     *
+     * `icon_runs` (if any; must be sorted by `codepoint_index`) override the
+     * advance width at their code point index with `icon->size.x` instead of
+     * looking up a glyph there, and are never treated as whitespace for
+     * word-splitting/justification purposes, regardless of the placeholder
+     * code point actually present at that index.
      */
-    std::vector<TextLine> lay_out(std::span<const cl7::text::codec::codepoint> codepoints, Font& font, const TextStyle& text_style, float max_width);
+    std::vector<TextLine> lay_out(std::span<const cl7::text::codec::codepoint> codepoints, Font& font, const TextStyle& text_style, float max_width, std::span<const IconRun> icon_runs = {});
 
     /**
      * Measures the width (in scaled pixels) that `text` would occupy on a single,

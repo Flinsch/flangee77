@@ -11,9 +11,9 @@ namespace fl7::fonts::render {
 
 /**
  * Describes a style override for a sub-range of code points within a single draw
- * call, on top of the base TextStyle's (inherited) GlyphStyle.
+ * call, on top of the base `TextStyle`'s (inherited) `GlyphStyle`.
  *
- * `codepoint_begin`/`codepoint_end` use the same indexing convention as TextLine:
+ * `codepoint_begin`/`codepoint_end` use the same indexing convention as `TextLine`:
  * they index into the caller's original code point sequence. Runs passed to a
  * single draw call must be sorted by `codepoint_begin` and must not overlap.
  */

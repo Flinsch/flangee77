@@ -46,12 +46,17 @@ namespace fl7::fonts::render {
         _vertices.clear();
         _batches.clear();
         _current_batch_font_size = 0.0f;
+
         _bg_vertices.clear();
+
+        _icon_vertices.clear();
+        _icon_batches.clear();
+        _current_icon_batch_texture_id = {};
     }
 
     void AbstractTextureAtlasBasedRenderer::_do_flush()
     {
-        if (_vertices.empty() && _bg_vertices.empty())
+        if (_vertices.empty() && _bg_vertices.empty() && _icon_vertices.empty())
             return;
 
         auto* rendering_context = xl7::graphics::primary_context();
@@ -163,12 +168,60 @@ namespace fl7::fonts::render {
             }
         }
 
+        // Icons are drawn last, on top of glyphs (they don't typically overlap
+        // anyway), each batch binding its own caller-supplied texture directly
+        // instead of a shared glyph atlas layer.
+        if (!_icon_vertices.empty())
+        {
+            if (!_icon_vertex_buffer_id || _icon_vertex_buffer_capacity < _icon_vertices.size())
+            {
+                if (_icon_vertex_buffer_id)
+                    xl7::graphics::mesh_manager()->release_resource_and_invalidate(_icon_vertex_buffer_id);
+
+                _icon_vertex_buffer_capacity = static_cast<unsigned>(_icon_vertices.size());
+
+                xl7::graphics::meshes::VertexBufferDesc icon_vb_desc{
+                    .usage = xl7::graphics::meshes::MeshBufferUsage::Transient,
+                    .topology = xl7::graphics::meshes::Topology::TriangleList,
+                    .vertex_count = _icon_vertex_buffer_capacity,
+                    .vertex_stride = sizeof(Vertex),
+                    .vertex_layout = _vertex_layout,
+                };
+                _icon_vertex_buffer_id = xl7::graphics::mesh_manager()->create_vertex_buffer(_resource_prefix + u8"Icon VB", icon_vb_desc);
+            }
+
+            auto* icon_vb = xl7::graphics::mesh_manager()->find_resource<xl7::graphics::meshes::VertexBuffer>(_icon_vertex_buffer_id);
+            assert(icon_vb);
+            icon_vb->edit().write(xl7::graphics::meshes::VertexBufferWrite::from_vertices<Vertex>(std::span<const Vertex>(_icon_vertices)));
+
+            rendering_context->pipeline.vs.set_vertex_shader_id(_icon_vertex_shader_id);
+            rendering_context->pipeline.vs.set_constant_buffer_id(0, _constant_buffer_id);
+            rendering_context->pipeline.ps.set_pixel_shader_id(_icon_pixel_shader_id);
+            rendering_context->pipeline.ps.set_sampler_state_id(0, _sampler_state_id);
+
+            rendering_context->pipeline.ia.set_vertex_buffer_id(_icon_vertex_buffer_id);
+            rendering_context->pipeline.ia.set_index_buffer_id({});
+
+            for (const IconDrawBatch& batch : _icon_batches)
+            {
+                if (batch.vertex_count == 0 || !batch.texture_id)
+                    continue;
+
+                rendering_context->pipeline.ps.set_texture_id(0, batch.texture_id);
+
+                rendering_context->draw(xl7::graphics::meshes::Topology::TriangleList, batch.vertex_count / 3, batch.first_vertex);
+            }
+        }
+
         // Content drawn above must not be resubmitted by a later flush (e.g., a
         // manual flush() call or a nested ScopedBatch closing early).
         _vertices.clear();
         _batches.clear();
         _current_batch_font_size = 0.0f;
         _bg_vertices.clear();
+        _icon_vertices.clear();
+        _icon_batches.clear();
+        _current_icon_batch_texture_id = {};
     }
 
     void AbstractTextureAtlasBasedRenderer::_emit_glyph(const Glyph& glyph, const State& state)
@@ -278,6 +331,56 @@ namespace fl7::fonts::render {
         _bg_vertices.push_back(tr);
         _bg_vertices.push_back(br);
         _bg_vertices.push_back(bl);
+    }
+
+    void AbstractTextureAtlasBasedRenderer::_emit_icon(const Icon& icon, const State& state)
+    {
+        if (!icon.texture_id)
+            return;
+
+        // Start a new batch when the bound texture changes.
+        if (_icon_batches.empty() || icon.texture_id != _current_icon_batch_texture_id)
+        {
+            _icon_batches.push_back({.texture_id = icon.texture_id, .first_vertex = static_cast<unsigned>(_icon_vertices.size()), .vertex_count = 0});
+            _current_icon_batch_texture_id = icon.texture_id;
+        }
+
+        const ml7::Vector2f top_left = state.cursor + icon.offset;
+        const ml7::Vector2f bottom_right = top_left + icon.size;
+
+        // Same box-clipping as _emit_glyph.
+        constexpr float infinity = std::numeric_limits<float>::infinity();
+        const ml7::Vector2f clip_min = {
+            state.box_size.x > 0.0f ? state.box_position.x : -infinity,
+            state.box_size.y > 0.0f ? state.box_position.y : -infinity,
+        };
+        const ml7::Vector2f clip_max = {
+            state.box_size.x > 0.0f ? state.box_position.x + state.box_size.x : infinity,
+            state.box_size.y > 0.0f ? state.box_position.y + state.box_size.y : infinity,
+        };
+
+        const auto clipped = xl7::graphics::meshes::ClippedQuad::clip(top_left, bottom_right, icon.uv_min, icon.uv_max, clip_min, clip_max);
+        if (!clipped)
+            return;
+
+        // Icons keep their own texture colors (unlike glyphs' coverage-tinted
+        // text_color): only alpha is taken from the current style, so fading a
+        // text block's alpha fades its icons along with it, without tinting them.
+        const xl7::graphics::Color color = {1.0f, 1.0f, 1.0f, state.current_glyph_style.text_color.a};
+
+        const Vertex tl = {.position = {clipped->position_min.x, clipped->position_min.y}, .texcoord = {clipped->uv_min.x, clipped->uv_min.y}, .color = color, .weight = 0.0f};
+        const Vertex tr = {.position = {clipped->position_max.x, clipped->position_min.y}, .texcoord = {clipped->uv_max.x, clipped->uv_min.y}, .color = color, .weight = 0.0f};
+        const Vertex bl = {.position = {clipped->position_min.x, clipped->position_max.y}, .texcoord = {clipped->uv_min.x, clipped->uv_max.y}, .color = color, .weight = 0.0f};
+        const Vertex br = {.position = {clipped->position_max.x, clipped->position_max.y}, .texcoord = {clipped->uv_max.x, clipped->uv_max.y}, .color = color, .weight = 0.0f};
+
+        _icon_vertices.push_back(tl);
+        _icon_vertices.push_back(tr);
+        _icon_vertices.push_back(bl);
+        _icon_vertices.push_back(tr);
+        _icon_vertices.push_back(br);
+        _icon_vertices.push_back(bl);
+
+        _icon_batches.back().vertex_count += 6;
     }
 
 
@@ -415,6 +518,24 @@ namespace fl7::fonts::render {
         _bg_vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader(_resource_prefix + u8"BG VS", shader_desc, bg_shader_write);
         _bg_pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader(_resource_prefix + u8"BG PS", shader_desc, bg_shader_write);
 
+        // Icons need their own shader too: unlike the glyph shader above (which
+        // treats its texture as coverage/distance data, tinted by vertex color),
+        // icons sample their texture directly and keep its own colors.
+        cl7::io::File icon_shader_file(cl7::platform::filesystem::get_working_directory() + u8"assets/shaders/fonts/icon-renderer.hlsl");
+        cl7::io::Utf8Reader icon_shader_reader(&icon_shader_file);
+        cl7::u8string icon_shader_code_str = icon_shader_reader.read_all();
+
+        xl7::graphics::shaders::ShaderCode icon_shader_code{icon_shader_code_str};
+        xl7::graphics::shaders::CompileOptions icon_compile_options;
+        icon_compile_options.include_directories.push_back(icon_shader_file.get_path());
+        xl7::graphics::shaders::ShaderWrite icon_shader_write{
+            .shader_code = &icon_shader_code,
+            .compile_options = &icon_compile_options,
+        };
+
+        _icon_vertex_shader_id = xl7::graphics::shader_manager()->create_vertex_shader(_resource_prefix + u8"Icon VS", shader_desc, icon_shader_write);
+        _icon_pixel_shader_id = xl7::graphics::shader_manager()->create_pixel_shader(_resource_prefix + u8"Icon PS", shader_desc, icon_shader_write);
+
         xl7::graphics::shaders::ConstantBufferDesc cb_desc;
         cb_desc.layout.constant_declarations = {
             {
@@ -468,6 +589,10 @@ namespace fl7::fonts::render {
             xl7::graphics::mesh_manager()->release_resource_and_invalidate(_bg_vertex_buffer_id);
         _bg_vertex_buffer_capacity = 0;
 
+        if (_icon_vertex_buffer_id)
+            xl7::graphics::mesh_manager()->release_resource_and_invalidate(_icon_vertex_buffer_id);
+        _icon_vertex_buffer_capacity = 0;
+
         if (_depth_stencil_state_id)
             xl7::graphics::state_manager()->release_resource_and_invalidate(_depth_stencil_state_id);
         if (_blend_state_id)
@@ -476,6 +601,10 @@ namespace fl7::fonts::render {
             xl7::graphics::state_manager()->release_resource_and_invalidate(_sampler_state_id);
         if (_constant_buffer_id)
             xl7::graphics::shader_manager()->release_resource_and_invalidate(_constant_buffer_id);
+        if (_icon_pixel_shader_id)
+            xl7::graphics::shader_manager()->release_resource_and_invalidate(_icon_pixel_shader_id);
+        if (_icon_vertex_shader_id)
+            xl7::graphics::shader_manager()->release_resource_and_invalidate(_icon_vertex_shader_id);
         if (_bg_pixel_shader_id)
             xl7::graphics::shader_manager()->release_resource_and_invalidate(_bg_pixel_shader_id);
         if (_bg_vertex_shader_id)
