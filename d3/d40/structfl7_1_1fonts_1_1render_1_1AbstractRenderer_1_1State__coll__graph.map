@@ -1,28 +1,32 @@
 <map id="fl7::fonts::render::AbstractRenderer::State" name="fl7::fonts::render::AbstractRenderer::State">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1201,182,1387,222"/>
-<area shape="rect" id="Node000002" href="$d0/d7e/classfl7_1_1fonts_1_1Font_1_1Access.html" title=" " alt="" coords="899,63,1067,88"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1029,91,1245,179,1243,184,1027,96"/>
-<area shape="rect" id="Node000003" href="$d3/d00/classfl7_1_1fonts_1_1Font.html" title=" " alt="" coords="594,13,709,39"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="723,32,875,53,917,60,916,65,874,58,722,37"/>
-<area shape="rect" id="Node000004" href="$da/d82/classfl7_1_1fonts_1_1FontLoader.html" title=" " alt="" coords="572,63,731,88"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="744,73,898,73,898,78,744,78"/>
-<area shape="rect" id="Node000005" href="$d2/d67/classcl7_1_1io_1_1File.html" title=" " alt="" coords="400,63,492,88"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="506,73,572,73,572,78,506,78"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1279,206,1464,246"/>
+<area shape="rect" id="Node000002" href="$d0/d7e/classfl7_1_1fonts_1_1Font_1_1Access.html" title=" " alt="" coords="976,85,1144,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1109,113,1256,172,1328,204,1326,208,1254,176,1107,118"/>
+<area shape="rect" id="Node000003" href="$d3/d00/classfl7_1_1fonts_1_1Font.html" title=" " alt="" coords="706,36,821,61"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="835,56,952,75,993,83,992,88,952,81,834,62"/>
+<area shape="rect" id="Node000004" href="$da/d82/classfl7_1_1fonts_1_1FontLoader.html" title=" " alt="" coords="684,85,843,111"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="856,95,976,95,976,101,856,101"/>
+<area shape="rect" id="Node000005" href="$d2/d67/classcl7_1_1io_1_1File.html" title=" " alt="" coords="427,57,519,83"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="533,73,684,88,684,93,533,78"/>
 <area shape="rect" id="Node000006" href="$db/d48/classcl7_1_1io_1_1IReadWritable.html" title=" " alt="" coords="189,29,351,55"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="351,55,400,64,399,69,350,60"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="365,52,427,61,427,66,364,58"/>
 <area shape="rect" id="Node000007" href="$d5/ddf/classcl7_1_1io_1_1IReadable.html" title=" " alt="" coords="5,5,140,31"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="154,25,189,30,189,35,154,30"/>
 <area shape="rect" id="Node000008" href="$df/db8/classcl7_1_1io_1_1IWritable.html" title=" " alt="" coords="9,55,137,80"/>
 <area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="150,55,189,50,189,55,151,60"/>
 <area shape="rect" id="Node000009" href="$d0/d1b/classcl7_1_1io_1_1IResizable.html" title=" " alt="" coords="202,79,338,104"/>
-<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="352,81,400,77,400,82,352,87"/>
-<area shape="rect" id="Node000010" href="$df/d82/structfl7_1_1fonts_1_1FontMetrics.html" title=" " alt="" coords="901,165,1064,191"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1078,183,1202,192,1201,198,1078,188"/>
-<area shape="rect" id="Node000011" href="$d8/d86/structfl7_1_1fonts_1_1TextStyle.html" title=" " alt="" coords="909,215,1056,240"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1069,219,1177,211,1201,209,1201,215,1178,217,1070,225"/>
-<area shape="rect" id="Node000012" href="$de/df3/structxl7_1_1graphics_1_1Color.html" title=" " alt="" coords="578,268,725,293"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="738,264,908,236,909,242,739,269"/>
-<area shape="poly" id="edge12_Node000012_Node000012" title=" " alt="" coords="628,253,635,245,651,241,665,244,674,250,676,260,672,269,667,267,671,259,669,253,663,249,651,247,638,249,632,257"/>
-<area shape="rect" id="Node000013" href="$d2/dc2/structfl7_1_1fonts_1_1TextMetrics.html" title=" " alt="" coords="901,264,1064,289"/>
-<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="1077,259,1177,238,1237,220,1239,225,1178,243,1078,265"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="351,80,427,72,427,77,352,85"/>
+<area shape="rect" id="Node000010" href="$df/d82/structfl7_1_1fonts_1_1FontMetrics.html" title=" " alt="" coords="979,164,1141,189"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1155,188,1255,203,1279,207,1278,213,1254,209,1154,193"/>
+<area shape="rect" id="Node000011" href="$d8/d86/structfl7_1_1fonts_1_1TextStyle.html" title=" " alt="" coords="987,213,1133,239"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1147,223,1278,223,1278,229,1147,229"/>
+<area shape="rect" id="Node000012" href="$de/d34/structfl7_1_1fonts_1_1GlyphStyle.html" title=" " alt="" coords="684,263,843,288"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="856,274,992,273,1144,263,1278,243,1279,248,1144,269,992,278,856,280"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="853,258,986,236,987,241,854,263"/>
+<area shape="rect" id="Node000013" href="$de/df3/structxl7_1_1graphics_1_1Color.html" title=" " alt="" coords="400,263,547,288"/>
+<area shape="poly" id="edge14_Node000011_Node000013" title=" " alt="" coords="515,255,570,238,683,223,797,216,901,216,986,218,986,224,901,221,797,221,684,228,571,243,516,260"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="560,273,684,273,684,278,560,278"/>
+<area shape="poly" id="edge13_Node000013_Node000013" title=" " alt="" coords="453,248,460,240,473,236,485,238,492,245,494,254,491,263,486,262,489,254,487,248,483,243,473,241,463,244,458,251"/>
+<area shape="rect" id="Node000014" href="$d2/dc2/structfl7_1_1fonts_1_1TextMetrics.html" title=" " alt="" coords="979,327,1141,352"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="1155,332,1205,324,1254,309,1281,295,1306,278,1348,244,1351,248,1309,283,1283,300,1256,314,1206,329,1156,338"/>
 </map>

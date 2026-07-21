@@ -10,6 +10,7 @@ var dir_e32cf352326e06de150659197e062a8b =
     [ "MsdfRenderer.h", "da/d65/MsdfRenderer_8h.html", "da/d65/MsdfRenderer_8h" ],
     [ "SdfRenderer.cpp", "de/db9/SdfRenderer_8cpp.html", null ],
     [ "SdfRenderer.h", "d4/d48/SdfRenderer_8h.html", "d4/d48/SdfRenderer_8h" ],
+    [ "StyleRun.h", "db/d1b/StyleRun_8h.html", "db/d1b/StyleRun_8h" ],
     [ "TestRenderer.cpp", "d2/d72/TestRenderer_8cpp.html", null ],
     [ "TestRenderer.h", "d6/ded/TestRenderer_8h.html", "d6/ded/TestRenderer_8h" ]
 ];

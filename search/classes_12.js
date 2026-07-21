@@ -56,11 +56,12 @@ var searchData=
   ['stenciloperationdesc_53',['StencilOperationDesc',['../d3/dac/structxl7_1_1graphics_1_1states_1_1StencilOperationDesc.html',1,'xl7::graphics::states']]],
   ['stopwatch_54',['Stopwatch',['../d6/dac/classcl7_1_1profiling_1_1Stopwatch.html',1,'cl7::profiling']]],
   ['string_5fhash_55',['string_hash',['../d0/dbc/structcl7_1_1string__hash.html',1,'cl7']]],
-  ['subcasebranchswitch_56',['SubcaseBranchSwitch',['../d3/d95/classtl7_1_1SubcaseBranchSwitch.html',1,'tl7']]],
-  ['subcasecontext_57',['SubcaseContext',['../d4/dc8/classtl7_1_1SubcaseContext.html',1,'tl7']]],
-  ['surface_58',['Surface',['../d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html',1,'xl7::graphics::surfaces']]],
-  ['surfacedesc_59',['SurfaceDesc',['../dc/dfc/structxl7_1_1graphics_1_1surfaces_1_1SurfaceDesc.html',1,'xl7::graphics::surfaces']]],
-  ['surfacemanager_60',['SurfaceManager',['../d9/dc4/classxl7_1_1graphics_1_1surfaces_1_1SurfaceManager.html',1,'xl7::graphics::surfaces']]],
-  ['swapbytesimpl_61',['SwapBytesImpl',['../d6/d9e/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl.html',1,'cl7::bits::detail']]],
-  ['swapbytesimpl_3c_20t_2c_201_20_3e_62',['SwapBytesImpl&lt; T, 1 &gt;',['../d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4.html',1,'cl7::bits::detail']]]
+  ['stylerun_56',['StyleRun',['../de/ddd/structfl7_1_1fonts_1_1render_1_1StyleRun.html',1,'fl7::fonts::render']]],
+  ['subcasebranchswitch_57',['SubcaseBranchSwitch',['../d3/d95/classtl7_1_1SubcaseBranchSwitch.html',1,'tl7']]],
+  ['subcasecontext_58',['SubcaseContext',['../d4/dc8/classtl7_1_1SubcaseContext.html',1,'tl7']]],
+  ['surface_59',['Surface',['../d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html',1,'xl7::graphics::surfaces']]],
+  ['surfacedesc_60',['SurfaceDesc',['../dc/dfc/structxl7_1_1graphics_1_1surfaces_1_1SurfaceDesc.html',1,'xl7::graphics::surfaces']]],
+  ['surfacemanager_61',['SurfaceManager',['../d9/dc4/classxl7_1_1graphics_1_1surfaces_1_1SurfaceManager.html',1,'xl7::graphics::surfaces']]],
+  ['swapbytesimpl_62',['SwapBytesImpl',['../d6/d9e/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl.html',1,'cl7::bits::detail']]],
+  ['swapbytesimpl_3c_20t_2c_201_20_3e_63',['SwapBytesImpl&lt; T, 1 &gt;',['../d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4.html',1,'cl7::bits::detail']]]
 ];

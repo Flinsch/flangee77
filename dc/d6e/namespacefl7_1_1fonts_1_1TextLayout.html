@@ -99,12 +99,15 @@ $(document).ready(function(){initNavTree('dc/d6e/namespacefl7_1_1fonts_1_1TextLa
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6e888aa0dceed2cde419f1274d44f834" id="r_a6e888aa0dceed2cde419f1274d44f834"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d5/daa/structfl7_1_1fonts_1_1TextLine.html">TextLine</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d6e/namespacefl7_1_1fonts_1_1TextLayout.html#a6e888aa0dceed2cde419f1274d44f834">lay_out</a> (std::span&lt; const <a class="el" href="../../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html">cl7::text::codec::codepoint</a> &gt; codepoints, <a class="el" href="../../d3/d00/classfl7_1_1fonts_1_1Font.html">Font</a> &amp;font, const <a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html">TextStyle</a> &amp;text_style, float max_width)</td></tr>
-<tr class="separator:a6e888aa0dceed2cde419f1274d44f834"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e468a61e71ed82fe5986e8bf7859033" id="r_a6e468a61e71ed82fe5986e8bf7859033"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d5/daa/structfl7_1_1fonts_1_1TextLine.html">TextLine</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d6e/namespacefl7_1_1fonts_1_1TextLayout.html#a6e468a61e71ed82fe5986e8bf7859033">lay_out</a> (std::span&lt; const <a class="el" href="../../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html">cl7::text::codec::codepoint</a> &gt; codepoints, <a class="el" href="../../d3/d00/classfl7_1_1fonts_1_1Font.html">Font</a> &amp;font, const <a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html">TextStyle</a> &amp;text_style, float max_width, std::span&lt; const <a class="el" href="../../d1/d30/structfl7_1_1fonts_1_1IconRun.html">IconRun</a> &gt; icon_runs)</td></tr>
+<tr class="separator:a6e468a61e71ed82fe5986e8bf7859033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ab89e1f0c5d2df777d78e2449db7b76" id="r_a1ab89e1f0c5d2df777d78e2449db7b76"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__like.html">cl7::any_string_view_like</a> Tstring_view_like&gt; </td></tr>
+<tr class="memitem:a1ab89e1f0c5d2df777d78e2449db7b76"><td class="memTemplItemLeft" align="right" valign="top">float&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/d6e/namespacefl7_1_1fonts_1_1TextLayout.html#a1ab89e1f0c5d2df777d78e2449db7b76">measure_width</a> (Tstring_view_like &amp;&amp;text, <a class="el" href="../../d3/d00/classfl7_1_1fonts_1_1Font.html">Font</a> &amp;font, const <a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html">TextStyle</a> &amp;text_style)</td></tr>
+<tr class="separator:a1ab89e1f0c5d2df777d78e2449db7b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a6e888aa0dceed2cde419f1274d44f834" name="a6e888aa0dceed2cde419f1274d44f834"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e888aa0dceed2cde419f1274d44f834">&#9670;&#160;</a></span>lay_out()</h2>
+<a id="a6e468a61e71ed82fe5986e8bf7859033" name="a6e468a61e71ed82fe5986e8bf7859033"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e468a61e71ed82fe5986e8bf7859033">&#9670;&#160;</a></span>lay_out()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -131,7 +134,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>max_width</em>&#160;</td>
+          <td class="paramname"><em>max_width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::span&lt; const <a class="el" href="../../d1/d30/structfl7_1_1fonts_1_1IconRun.html">IconRun</a> &gt;&#160;</td>
+          <td class="paramname"><em>icon_runs</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -141,7 +150,45 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Splits the given code points into lines.</p>
-<p>Explicit line breaks (CRLF, LF, or CR) always start a new line, regardless of the wrap mode. If <code>text_style.wrap_mode</code> is <code>WrapMode::Word</code> and <code>max_width</code> is positive, each such paragraph is additionally word-wrapped to fit within <code>max_width</code> (greedily, breaking at whitespace; a single word wider than <code>max_width</code> is hard-broken mid-word). Leading/trailing whitespace of each produced line is excluded from its range and width. <code>text_style.letter_spacing</code> and <code>text_style.word_spacing</code> are incorporated into each line's measured width and into wrap decisions. </p>
+<p>Explicit line breaks (CRLF, LF, or CR) always start a new line, regardless of the wrap mode. If <code>text_style.wrap_mode</code> is <code>WrapMode::Word</code> and <code>max_width</code> is positive, each such paragraph is additionally word-wrapped to fit within <code>max_width</code> (greedily, breaking at whitespace; a single word wider than <code>max_width</code> is hard-broken mid-word). Leading/trailing whitespace of each produced line is excluded from its range and width. <code>text_style.letter_spacing</code> and <code>text_style.word_spacing</code> are incorporated into each line's measured width and into wrap decisions.</p>
+<p><code>icon_runs</code> (if any; must be sorted by <code>codepoint_index</code>) override the advance width at their code point index with <code>icon-&gt;size.x</code> instead of looking up a glyph there, and are never treated as whitespace for word-splitting/justification purposes, regardless of the placeholder code point actually present at that index. </p>
+
+</div>
+</div>
+<a id="a1ab89e1f0c5d2df777d78e2449db7b76" name="a1ab89e1f0c5d2df777d78e2449db7b76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ab89e1f0c5d2df777d78e2449db7b76">&#9670;&#160;</a></span>measure_width()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__like.html">cl7::any_string_view_like</a> Tstring_view_like&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">float fl7::fonts::TextLayout::measure_width </td>
+          <td>(</td>
+          <td class="paramtype">Tstring_view_like &amp;&amp;&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d00/classfl7_1_1fonts_1_1Font.html">Font</a> &amp;&#160;</td>
+          <td class="paramname"><em>font</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html">TextStyle</a> &amp;&#160;</td>
+          <td class="paramname"><em>text_style</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Measures the width (in scaled pixels) that <code>text</code> would occupy on a single, unwrapped line under <code>text_style</code> and <code>font</code>, i.e., as if laid out with <code>WrapMode::None</code> (<code>text_style.wrap_mode</code> is ignored). Useful for positioning things relative to text without actually drawing it (e.g., placing a second block of content to the right of some text). Explicit line breaks still start new lines, in which case the width of the widest one is returned. </p>
 
 </div>
 </div>

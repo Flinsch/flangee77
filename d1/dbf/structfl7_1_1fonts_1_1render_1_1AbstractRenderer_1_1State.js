@@ -2,6 +2,7 @@ var structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State =
 [
     [ "box_position", "d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#a911e6b93794164f40172f39cacba6076", null ],
     [ "box_size", "d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#a91c99b49dad55af27ccf6a3d34fe4ac1", null ],
+    [ "current_glyph_style", "d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#a2005b56e40fdd6c519f577bac36a99dc", null ],
     [ "cursor", "d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#aee8119603cf3b7fb007e3067cc7e04f8", null ],
     [ "font_access", "d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#a10e6110426cc4cc5eaa25f67dfa0319d", null ],
     [ "font_metrics", "d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#ae02f6970936d62cacd84731144470e21", null ],

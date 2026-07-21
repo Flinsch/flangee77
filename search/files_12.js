@@ -70,5 +70,5 @@ var searchData=
   ['transform_2eh_67',['transform.h',['../d2/d80/transform_8h.html',1,'']]],
   ['truetypefontloader_2ecpp_68',['TrueTypeFontLoader.cpp',['../db/d10/TrueTypeFontLoader_8cpp.html',1,'']]],
   ['truetypefontloader_2eh_69',['TrueTypeFontLoader.h',['../d2/de5/TrueTypeFontLoader_8h.html',1,'']]],
-  ['types_2eh_70',['types.h',['../dc/df4/ini_2types_8h.html',1,'(Global Namespace)'],['../d5/d79/json_2types_8h.html',1,'(Global Namespace)'],['../d9/d45/toml_2types_8h.html',1,'(Global Namespace)']]]
+  ['types_2eh_70',['types.h',['../d9/d45/toml_2types_8h.html',1,'(Global Namespace)'],['../d5/d79/json_2types_8h.html',1,'(Global Namespace)'],['../dc/df4/ini_2types_8h.html',1,'(Global Namespace)']]]
 ];

@@ -278,6 +278,9 @@ var hierarchy =
     [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::GlyphMetric", "df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric.html", null ],
     [ "fl7::fonts::GlyphMetrics", "d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html", null ],
     [ "fl7::fonts::raster::GlyphRasterCache", "d3/de6/classfl7_1_1fonts_1_1raster_1_1GlyphRasterCache.html", null ],
+    [ "fl7::fonts::GlyphStyle", "de/d34/structfl7_1_1fonts_1_1GlyphStyle.html", [
+      [ "fl7::fonts::TextStyle", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html", null ]
+    ] ],
     [ "dl7::syntax::Grammar", "d8/d95/structdl7_1_1syntax_1_1Grammar.html", null ],
     [ "dl7::syntax::GrammarAnalyzer", "dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html", null ],
     [ "tl7::Stats::Group", "da/d74/structtl7_1_1Stats_1_1Group.html", null ],
@@ -291,6 +294,9 @@ var hierarchy =
     [ "xl7::graphics::images::codecs::png::Reader::Header", "df/d50/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Header.html", null ],
     [ "xl7::graphics::images::codecs::targa::Header", "d8/dd4/structxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Header.html", null ],
     [ "dl7::syntax::matchers::HexadecimalLiteralMatcher", "d9/d44/structdl7_1_1syntax_1_1matchers_1_1HexadecimalLiteralMatcher.html", null ],
+    [ "fl7::fonts::Icon", "d8/d05/structfl7_1_1fonts_1_1Icon.html", null ],
+    [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::IconDrawBatch", "d5/dd4/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1IconDrawBatch.html", null ],
+    [ "fl7::fonts::IconRun", "d1/d30/structfl7_1_1fonts_1_1IconRun.html", null ],
     [ "TBase::Id", null, [
       [ "xl7::resources::ResourceBase< TDerived, TBase >::Id", "dc/df6/classxl7_1_1resources_1_1ResourceBase_1_1Id.html", null ]
     ] ],
@@ -679,6 +685,7 @@ var hierarchy =
     [ "xl7::graphics::states::StencilOperationDesc", "d3/dac/structxl7_1_1graphics_1_1states_1_1StencilOperationDesc.html", null ],
     [ "cl7::profiling::Stopwatch", "d6/dac/classcl7_1_1profiling_1_1Stopwatch.html", null ],
     [ "cl7::string_hash< Tchar >", "d0/dbc/structcl7_1_1string__hash.html", null ],
+    [ "fl7::fonts::render::StyleRun", "de/ddd/structfl7_1_1fonts_1_1render_1_1StyleRun.html", null ],
     [ "tl7::SubcaseBranchSwitch", "d3/d95/classtl7_1_1SubcaseBranchSwitch.html", null ],
     [ "tl7::SubcaseContext", "d4/dc8/classtl7_1_1SubcaseContext.html", null ],
     [ "Surface", null, [
@@ -707,7 +714,6 @@ var hierarchy =
     [ "tl7::TestSuite", "db/d53/classtl7_1_1TestSuite.html", null ],
     [ "fl7::fonts::TextLine", "d5/daa/structfl7_1_1fonts_1_1TextLine.html", null ],
     [ "fl7::fonts::TextMetrics", "d2/dc2/structfl7_1_1fonts_1_1TextMetrics.html", null ],
-    [ "fl7::fonts::TextStyle", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html", null ],
     [ "Texture", null, [
       [ "xl7::resources::ResourceBase< Cubemap, Texture >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
         [ "xl7::graphics::textures::Cubemap", "d1/de1/classxl7_1_1graphics_1_1textures_1_1Cubemap.html", null ]

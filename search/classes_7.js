@@ -9,11 +9,12 @@ var searchData=
   ['glyphmetric_6',['GlyphMetric',['../df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric.html',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader']]],
   ['glyphmetrics_7',['GlyphMetrics',['../d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html',1,'fl7::fonts']]],
   ['glyphrastercache_8',['GlyphRasterCache',['../d3/de6/classfl7_1_1fonts_1_1raster_1_1GlyphRasterCache.html',1,'fl7::fonts::raster']]],
-  ['grammar_9',['Grammar',['../d8/d95/structdl7_1_1syntax_1_1Grammar.html',1,'dl7::syntax']]],
-  ['grammaranalyzer_10',['GrammarAnalyzer',['../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html',1,'dl7::syntax']]],
-  ['graphicssystem_11',['GraphicsSystem',['../da/d03/classxl7_1_1graphics_1_1GraphicsSystem.html',1,'xl7::graphics']]],
-  ['graphicssystemimpl_12',['graphicssystemimpl',['../d8/d86/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl.html',1,'xl7::graphics::impl::direct3d11::GraphicsSystemImpl'],['../da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html',1,'xl7::graphics::impl::direct3d9::GraphicsSystemImpl']]],
-  ['group_13',['Group',['../da/d74/structtl7_1_1Stats_1_1Group.html',1,'tl7::Stats']]],
-  ['guid_14',['Guid',['../dc/dbd/structcl7_1_1Guid.html',1,'cl7']]],
-  ['guillotinepacker_15',['GuillotinePacker',['../de/da8/classal7_1_1packing_1_1GuillotinePacker.html',1,'al7::packing']]]
+  ['glyphstyle_9',['GlyphStyle',['../de/d34/structfl7_1_1fonts_1_1GlyphStyle.html',1,'fl7::fonts']]],
+  ['grammar_10',['Grammar',['../d8/d95/structdl7_1_1syntax_1_1Grammar.html',1,'dl7::syntax']]],
+  ['grammaranalyzer_11',['GrammarAnalyzer',['../dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html',1,'dl7::syntax']]],
+  ['graphicssystem_12',['GraphicsSystem',['../da/d03/classxl7_1_1graphics_1_1GraphicsSystem.html',1,'xl7::graphics']]],
+  ['graphicssystemimpl_13',['graphicssystemimpl',['../d8/d86/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl.html',1,'xl7::graphics::impl::direct3d11::GraphicsSystemImpl'],['../da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html',1,'xl7::graphics::impl::direct3d9::GraphicsSystemImpl']]],
+  ['group_14',['Group',['../da/d74/structtl7_1_1Stats_1_1Group.html',1,'tl7::Stats']]],
+  ['guid_15',['Guid',['../dc/dbd/structcl7_1_1Guid.html',1,'cl7']]],
+  ['guillotinepacker_16',['GuillotinePacker',['../de/da8/classal7_1_1packing_1_1GuillotinePacker.html',1,'al7::packing']]]
 ];
