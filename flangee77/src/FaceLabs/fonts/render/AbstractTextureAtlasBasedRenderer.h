@@ -121,8 +121,8 @@ private:
     void _before_begin() override;
     void _after_end() override;
     void _do_flush() override;
-    void _emit_glyph(const Glyph& glyph, const State& state) override;
     void _emit_background(ml7::Vector2f position, ml7::Vector2f size, const State& state) override;
+    void _emit_glyph(const Glyph& glyph, const State& state) override;
     void _emit_icon(const Icon& icon, const State& state) override;
 
     AtlasLayer& _get_or_create_atlas_layer(float font_size);
@@ -140,13 +140,14 @@ private:
     std::map<float, AtlasLayer> _atlas_layers;
     std::map<GlyphCacheKey, GlyphCacheEntry> _glyph_cache;
 
-    std::vector<Vertex> _vertices;
-    std::vector<DrawBatch> _batches;
-    float _current_batch_font_size = 0.0f;
-
     // Background quads are accumulated separately from glyph quads (see
     // _emit_background) and always drawn first, so they end up behind them.
     std::vector<Vertex> _bg_vertices;
+
+    // The actual glyph quads (see _emit_glyph).
+    std::vector<Vertex> _glyph_vertices;
+    std::vector<DrawBatch> _glyph_batches;
+    float _current_glyph_batch_font_size = 0.0f;
 
     // Icon quads are accumulated separately too (see _emit_icon) and drawn last, on
     // top of glyphs, batched by texture identity rather than font_size, since each
@@ -157,19 +158,20 @@ private:
     xl7::graphics::textures::Texture2D::Id _current_icon_batch_texture_id;
 
     xl7::graphics::meshes::VertexLayout _vertex_layout;
-    xl7::graphics::meshes::VertexBuffer::Id _vertex_buffer_id = {};
-    unsigned _vertex_buffer_capacity = 0;
 
     xl7::graphics::meshes::VertexBuffer::Id _bg_vertex_buffer_id = {};
     unsigned _bg_vertex_buffer_capacity = 0;
 
+    xl7::graphics::meshes::VertexBuffer::Id _glyph_vertex_buffer_id = {};
+    unsigned _glyph_vertex_buffer_capacity = 0;
+
     xl7::graphics::meshes::VertexBuffer::Id _icon_vertex_buffer_id = {};
     unsigned _icon_vertex_buffer_capacity = 0;
 
-    xl7::graphics::shaders::VertexShader::Id _vertex_shader_id = {};
-    xl7::graphics::shaders::PixelShader::Id _pixel_shader_id = {};
     xl7::graphics::shaders::VertexShader::Id _bg_vertex_shader_id = {};
     xl7::graphics::shaders::PixelShader::Id _bg_pixel_shader_id = {};
+    xl7::graphics::shaders::VertexShader::Id _glyph_vertex_shader_id = {};
+    xl7::graphics::shaders::PixelShader::Id _glyph_pixel_shader_id = {};
     xl7::graphics::shaders::VertexShader::Id _icon_vertex_shader_id = {};
     xl7::graphics::shaders::PixelShader::Id _icon_pixel_shader_id = {};
     xl7::graphics::shaders::ConstantBuffer::Id _constant_buffer_id = {};

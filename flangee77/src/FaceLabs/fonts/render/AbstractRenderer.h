@@ -246,9 +246,9 @@ private:
     virtual void _after_end() {}
     virtual void _do_flush() {}
 
-    virtual void _emit_glyph(const Glyph& glyph, const State& state) = 0;
-
     virtual void _emit_background(ml7::Vector2f position, ml7::Vector2f size, const State& state) {}
+
+    virtual void _emit_glyph(const Glyph& glyph, const State& state) = 0;
 
     virtual void _emit_icon(const Icon& icon, const State& state) {}
 
