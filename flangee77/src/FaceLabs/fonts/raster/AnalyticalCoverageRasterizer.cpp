@@ -114,7 +114,11 @@ namespace {
                 for (int c = col0; c < col; ++c)
                     coverage_canvas.element(row, c) += col_coverage;
 
-                const auto [col_xlo, col_xhi] = cl7::flip_unless(is_ascending_x, col_p0.x, col_p1.x);
+                // Unlike row_xlo/row_xhi above, no flip is needed here: col_p0.x/col_p1.x
+                // are already guaranteed ascending by construction (they come from the
+                // "fake", direction-agnostic points above), regardless of is_ascending_x.
+                const float col_xlo = col_p0.x;
+                const float col_xhi = col_p1.x;
 
                 // Calculate the intersection area of the trapezoid within the current pixel.
                 const float pix_w0 = col_xlo - std::floor(col_xlo); // Width from pixel's left side to edge's lower x-coordinate

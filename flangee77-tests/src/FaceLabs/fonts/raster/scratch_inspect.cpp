@@ -11,6 +11,7 @@
 #include <CoreLabs/platform/filesystem.h>
 
 #include <algorithm>
+#include <iomanip>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -94,6 +95,25 @@ namespace {
         std::cout << std::endl;
     }
 
+    void dump_numeric(const std::string& title, const xl7::graphics::images::Image& image)
+    {
+        const auto* data = reinterpret_cast<const uint8_t*>(image.get_data().data());
+        const unsigned bytes_per_pixel = image.get_desc().determine_bytes_per_pixel();
+
+        std::cout << title << " (" << image.get_width() << "x" << image.get_height() << "):\n";
+        for (unsigned y = 0; y < image.get_height(); ++y)
+        {
+            std::cout << "row " << y << ": ";
+            for (unsigned x = 0; x < image.get_width(); ++x)
+            {
+                const uint8_t* pixel = data + (static_cast<size_t>(y) * image.get_width() + x) * bytes_per_pixel;
+                std::cout << std::setw(4) << static_cast<int>(pixel[0]) << " ";
+            }
+            std::cout << "\n";
+        }
+        std::cout << std::endl;
+    }
+
     void dump_simple_glyph(fl7::fonts::detail::ttf::TrueTypeFontLoader& loader, char ch, float font_size)
     {
         fl7::fonts::raster::SimpleBitmapRasterizer rasterizer;
@@ -116,6 +136,14 @@ namespace {
         const fl7::fonts::Glyph glyph = loader.load_glyph(to_codepoint(ch));
         const auto result = rasterizer.rasterize_glyph(glyph, {.font_size = font_size, .padding = 1});
         dump_ascii(std::string("Coverage '") + ch + "'", result.glyph_image, 0, 1);
+    }
+
+    void dump_coverage_glyph_numeric(fl7::fonts::detail::ttf::TrueTypeFontLoader& loader, char ch, float font_size)
+    {
+        fl7::fonts::raster::AnalyticalCoverageRasterizer rasterizer;
+        const fl7::fonts::Glyph glyph = loader.load_glyph(to_codepoint(ch));
+        const auto result = rasterizer.rasterize_glyph(glyph, {.font_size = font_size, .padding = 1});
+        dump_numeric(std::string("Coverage-numeric '") + ch + "'", result.glyph_image);
     }
 
     void dump_sdf_glyph(fl7::fonts::detail::ttf::TrueTypeFontLoader& loader, char ch, float font_size)
@@ -149,6 +177,7 @@ TESTLABS_CASE(u8"scratch:  FaceLabs:  raster inspection")
         //dump_simple_glyph(loader, ch, 16.0f);
         //dump_oversampled_glyph(loader, ch, 16.0f);
         //dump_coverage_glyph(loader, ch, 16.0f);
+        //dump_coverage_glyph_numeric(loader, ch, 16.0f);
         //dump_sdf_glyph(loader, ch, 16.0f);
         //dump_msdf_glyph(loader, ch, 16.0f);
     }
