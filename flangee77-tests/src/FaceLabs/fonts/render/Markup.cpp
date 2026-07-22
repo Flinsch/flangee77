@@ -74,6 +74,36 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  render:  Markup:  parse_markup - nested tag
     TESTLABS_CHECK( parsed.style_runs.at(2).style.text_color == base_style.text_color );
 }
 
+TESTLABS_CASE( u8"FaceLabs:  fonts:  render:  Markup:  parse_markup - [outline=#RRGGBB]...[/outline] sets outline_color and a default outline_width" )
+{
+    fl7::fonts::TextStyle base_style;
+
+    const auto parsed = fl7::fonts::render::parse_markup(u8"a[outline=#000000]outlined[/outline]b", base_style);
+
+    TESTLABS_CHECK_EQ( parsed.text, u8"aoutlinedb" );
+    TESTLABS_CHECK_EQ( parsed.style_runs.size(), size_t{1} );
+    const auto& run = parsed.style_runs.at(0);
+    TESTLABS_CHECK( run.style.outline_color == xl7::graphics::Color::BLACK );
+    TESTLABS_CHECK_GT( run.style.outline_width, 0.0f );
+    // Unrelated fields stay at the base style, same as [b]/[color] leave each other alone.
+    TESTLABS_CHECK_EQ_FLT( run.style.weight, base_style.weight );
+    TESTLABS_CHECK( run.style.text_color == base_style.text_color );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  render:  Markup:  parse_markup - [outline] nests with [b]/[color] like any other tag" )
+{
+    fl7::fonts::TextStyle base_style;
+
+    const auto parsed = fl7::fonts::render::parse_markup(u8"[b][outline=#000000]bold outlined[/outline][/b]", base_style);
+
+    TESTLABS_CHECK_EQ( parsed.text, u8"bold outlined" );
+    TESTLABS_CHECK_EQ( parsed.style_runs.size(), size_t{1} );
+    const auto& run = parsed.style_runs.at(0);
+    TESTLABS_CHECK_EQ_FLT( run.style.weight, 1.0f );
+    TESTLABS_CHECK( run.style.outline_color == xl7::graphics::Color::BLACK );
+    TESTLABS_CHECK_GT( run.style.outline_width, 0.0f );
+}
+
 TESTLABS_CASE( u8"FaceLabs:  fonts:  render:  Markup:  parse_markup - unrecognized/stray brackets fall back to literal text" )
 {
     fl7::fonts::TextStyle base_style;

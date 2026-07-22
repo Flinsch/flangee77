@@ -14,13 +14,17 @@ namespace fl7::fonts::render {
 
 namespace {
 
-    enum class TagKind { B, I, Color };
+    enum class TagKind { B, I, Color, Outline };
 
     struct OpenTag
     {
         TagKind kind;
         GlyphStyle style;
     };
+
+    // [outline=#RRGGBB] sets outline_color from the given color and
+    // outline_width to this fixed default (no separate width attribute for now).
+    constexpr float _default_outline_width = 1.0f;
 
     bool _is_tag_char(cl7::text::codec::codepoint cp)
     {
@@ -164,13 +168,15 @@ namespace {
             if (!content.empty() && content.front() == '/')
             {
                 const std::string_view kind_str = std::string_view(content).substr(1);
-                if (kind_str == "b" || kind_str == "i" || kind_str == "color")
+                if (kind_str == "b" || kind_str == "i" || kind_str == "color" || kind_str == "outline")
                 {
                     TagKind kind = TagKind::Color;
                     if (kind_str == "b")
                         kind = TagKind::B;
                     else if (kind_str == "i")
                         kind = TagKind::I;
+                    else if (kind_str == "outline")
+                        kind = TagKind::Outline;
 
                     if (!stack.empty() && stack.back().kind == kind)
                     {
@@ -210,6 +216,19 @@ namespace {
                         GlyphStyle style = stack.empty() ? base_glyph_style : stack.back().style;
                         style.text_color = color;
                         stack.push_back(OpenTag{.kind = TagKind::Color, .style = style});
+                        recognized = true;
+                    }
+                }
+                else if (kind_str == "outline")
+                {
+                    xl7::graphics::Color color;
+                    if (!value_str.empty() && _parse_color(value_str, color))
+                    {
+                        close_interval(output.size());
+                        GlyphStyle style = stack.empty() ? base_glyph_style : stack.back().style;
+                        style.outline_color = color;
+                        style.outline_width = _default_outline_width;
+                        stack.push_back(OpenTag{.kind = TagKind::Outline, .style = style});
                         recognized = true;
                     }
                 }
