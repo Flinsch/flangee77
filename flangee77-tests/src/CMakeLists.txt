@@ -53,6 +53,7 @@ target_sources(flangee77-tests
     FaceLabs/fonts/TextLayout.cpp
     FaceLabs/fonts/raster/GlyphRasterCache.cpp
     FaceLabs/fonts/raster/scratch_inspect.cpp
+    FaceLabs/fonts/render/Markup.cpp
 
 
     MathLabs/functions.cpp

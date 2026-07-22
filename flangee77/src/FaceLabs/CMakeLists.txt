@@ -26,6 +26,7 @@ target_sources(flangee77
     fonts/render/AbstractRenderer.cpp
     fonts/render/AbstractTextureAtlasBasedRenderer.cpp
     fonts/render/BitmapRenderer.cpp
+    fonts/render/Markup.cpp
     fonts/render/MsdfRenderer.cpp
     fonts/render/SdfRenderer.cpp
     fonts/render/TestRenderer.cpp

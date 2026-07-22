@@ -2,6 +2,7 @@
 
     #include <FaceLabs/fonts/detail/ttf/TrueTypeFontLoader.h>
     #include <FaceLabs/fonts/TextLayout.h>
+    #include <FaceLabs/fonts/render/Markup.h>
 
 #include <XiaoLabs/graphics.h>
     #include <XiaoLabs/graphics/images/codecs/targa/Reader.h>
@@ -519,6 +520,23 @@ namespace helloworld {
         _sdf_renderer->draw_text(icon_text, _font.get(), &text_style, {x2, y2}, {}, icon_runs);
         y2 += line_height;
         _msdf_renderer->draw_text(icon_text, _font.get(), &text_style, {x2, y2}, {}, icon_runs);
+        y2 += line_height;
+
+        // Markup demo: the same bold/color/icon capabilities as the manual
+        // StyleRun/IconRun demos above, but authored as a single marked-up
+        // string via fl7::fonts::render::parse_markup instead of hand-computed
+        // code point indices. Reuses the same icon declared above.
+        const fl7::fonts::render::NamedIcon named_icons[] = {
+            {.name = u8"gem", .icon = &icon},
+        };
+        const auto markup = fl7::fonts::render::parse_markup(
+            u8"[b]Bold[/b] and [color=#ff0000]red[/color] and [icon=gem] and [b][color=#00ff00]both[/color][/b]!",
+            text_style, named_icons);
+        _bitmap_renderer->draw_text(markup.text, _font.get(), &text_style, {x2, y2}, markup.style_runs, markup.icon_runs);
+        y2 += line_height;
+        _sdf_renderer->draw_text(markup.text, _font.get(), &text_style, {x2, y2}, markup.style_runs, markup.icon_runs);
+        y2 += line_height;
+        _msdf_renderer->draw_text(markup.text, _font.get(), &text_style, {x2, y2}, markup.style_runs, markup.icon_runs);
         y2 += line_height;
     }
 
