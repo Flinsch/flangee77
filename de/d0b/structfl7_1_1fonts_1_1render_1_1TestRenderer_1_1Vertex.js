@@ -1,6 +1,8 @@
 var structfl7_1_1fonts_1_1render_1_1TestRenderer_1_1Vertex =
 [
     [ "color", "de/d0b/structfl7_1_1fonts_1_1render_1_1TestRenderer_1_1Vertex.html#a4080ae60e6cb0d0b05a47a7a93ef0701", null ],
+    [ "outline_color", "de/d0b/structfl7_1_1fonts_1_1render_1_1TestRenderer_1_1Vertex.html#aa398a65061947cc246623cd45455721a", null ],
+    [ "outline_width", "de/d0b/structfl7_1_1fonts_1_1render_1_1TestRenderer_1_1Vertex.html#a68271b3205c359a4d873458232ef220c", null ],
     [ "position", "de/d0b/structfl7_1_1fonts_1_1render_1_1TestRenderer_1_1Vertex.html#a08c21a6d9e1e66232a2b20a2bf5678eb", null ],
     [ "texcoord", "de/d0b/structfl7_1_1fonts_1_1render_1_1TestRenderer_1_1Vertex.html#a406c6f5590058f88e7b4b7a61fe866b8", null ],
     [ "weight", "de/d0b/structfl7_1_1fonts_1_1render_1_1TestRenderer_1_1Vertex.html#a5402323b28fab236ef6362336cb2ca27", null ]

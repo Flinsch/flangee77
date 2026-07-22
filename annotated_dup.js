@@ -278,6 +278,8 @@ var annotated_dup =
           [ "AbstractTextureAtlasBasedRenderer", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer" ],
           [ "BitmapRenderer", "df/d57/classfl7_1_1fonts_1_1render_1_1BitmapRenderer.html", "df/d57/classfl7_1_1fonts_1_1render_1_1BitmapRenderer" ],
           [ "MsdfRenderer", "d5/d89/classfl7_1_1fonts_1_1render_1_1MsdfRenderer.html", "d5/d89/classfl7_1_1fonts_1_1render_1_1MsdfRenderer" ],
+          [ "NamedIcon", "d2/d64/structfl7_1_1fonts_1_1render_1_1NamedIcon.html", "d2/d64/structfl7_1_1fonts_1_1render_1_1NamedIcon" ],
+          [ "ParsedMarkup", "d9/da9/structfl7_1_1fonts_1_1render_1_1ParsedMarkup.html", "d9/da9/structfl7_1_1fonts_1_1render_1_1ParsedMarkup" ],
           [ "SdfRenderer", "d1/dcc/classfl7_1_1fonts_1_1render_1_1SdfRenderer.html", "d1/dcc/classfl7_1_1fonts_1_1render_1_1SdfRenderer" ],
           [ "StyleRun", "de/ddd/structfl7_1_1fonts_1_1render_1_1StyleRun.html", "de/ddd/structfl7_1_1fonts_1_1render_1_1StyleRun" ],
           [ "TestRenderer", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer" ]

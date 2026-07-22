@@ -6,6 +6,8 @@ var dir_e32cf352326e06de150659197e062a8b =
     [ "AbstractTextureAtlasBasedRenderer.h", "d6/dc7/AbstractTextureAtlasBasedRenderer_8h.html", "d6/dc7/AbstractTextureAtlasBasedRenderer_8h" ],
     [ "BitmapRenderer.cpp", "d2/d39/BitmapRenderer_8cpp.html", null ],
     [ "BitmapRenderer.h", "da/de2/BitmapRenderer_8h.html", "da/de2/BitmapRenderer_8h" ],
+    [ "Markup.cpp", "db/d3e/Markup_8cpp.html", "db/d3e/Markup_8cpp" ],
+    [ "Markup.h", "de/dc2/Markup_8h.html", "de/dc2/Markup_8h" ],
     [ "MsdfRenderer.cpp", "d4/d17/MsdfRenderer_8cpp.html", null ],
     [ "MsdfRenderer.h", "da/d65/MsdfRenderer_8h.html", "da/d65/MsdfRenderer_8h" ],
     [ "SdfRenderer.cpp", "de/db9/SdfRenderer_8cpp.html", null ],

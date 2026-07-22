@@ -405,6 +405,7 @@ var hierarchy =
     [ "xl7::graphics::meshes::MeshUtil", "d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil.html", null ],
     [ "dl7::json::Format::MultiLineOptions", "d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html", null ],
     [ "dl7::toml::detail::MultilineStringMatcher", "df/d3f/structdl7_1_1toml_1_1detail_1_1MultilineStringMatcher.html", null ],
+    [ "fl7::fonts::render::NamedIcon", "d2/d64/structfl7_1_1fonts_1_1render_1_1NamedIcon.html", null ],
     [ "dl7::xml::Node", "d2/d24/classdl7_1_1xml_1_1Node.html", [
       [ "dl7::xml::Element", "de/dc8/classdl7_1_1xml_1_1Element.html", null ],
       [ "dl7::xml::Text", "df/dd2/classdl7_1_1xml_1_1Text.html", null ]
@@ -423,6 +424,7 @@ var hierarchy =
     [ "xl7::graphics::images::codecs::png::PaethPredictor", "de/d9d/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1PaethPredictor.html", null ],
     [ "xl7::graphics::images::codecs::png::Reader::PaletteEntry", "dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html", null ],
     [ "xl7::graphics::impl::shared::shaders::Include::ParentEntry", "dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html", null ],
+    [ "fl7::fonts::render::ParsedMarkup", "d9/da9/structfl7_1_1fonts_1_1render_1_1ParsedMarkup.html", null ],
     [ "dl7::syntax::ParseStage", "d9/d44/classdl7_1_1syntax_1_1ParseStage.html", [
       [ "dl7::syntax::AstProcessor< Ini, cl7::u8string >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", [
         [ "dl7::ini::detail::Generator", "dc/d4b/classdl7_1_1ini_1_1detail_1_1Generator.html", null ]
