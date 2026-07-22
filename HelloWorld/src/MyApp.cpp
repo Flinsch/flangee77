@@ -500,6 +500,17 @@ namespace helloworld {
         _msdf_renderer->draw_text(u8"Bold text demo", _font.get(), &bold_text_style, {x2, y2});
         y2 += line_height;
 
+        // Whole-line outline demo: GlyphStyle::outline_color/outline_width add
+        // a stroke around the glyph shape via an SDF/MSDF dual-threshold blend.
+        // Bitmap has no distance field to blend against, so it's skipped here.
+        fl7::fonts::TextStyle outline_text_style = text_style;
+        outline_text_style.outline_color = xl7::graphics::Color::BLACK;
+        outline_text_style.outline_width = 2.0f;
+        _sdf_renderer->draw_text(u8"Outline text demo", _font.get(), &outline_text_style, {x2, y2});
+        y2 += line_height;
+        _msdf_renderer->draw_text(u8"Outline text demo", _font.get(), &outline_text_style, {x2, y2});
+        y2 += line_height;
+
         // Icon demo: an inline icon (reusing the dummy texture already loaded
         // for the spinning quad above) placed via an IconRun at the '*'
         // placeholder's code point index. Icons keep their own texture colors

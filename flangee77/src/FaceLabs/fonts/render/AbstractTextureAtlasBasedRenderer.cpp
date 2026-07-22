@@ -243,11 +243,11 @@ namespace fl7::fonts::render {
 
         const xl7::graphics::Color color = state.text_style.background_color;
 
-        // weight is left at 0: unused by the solid-color shader (no distance field to bias).
-        const Vertex tl = {.position = {clipped->position_min.x, clipped->position_min.y}, .texcoord = {}, .color = color, .weight = 0.0f};
-        const Vertex tr = {.position = {clipped->position_max.x, clipped->position_min.y}, .texcoord = {}, .color = color, .weight = 0.0f};
-        const Vertex bl = {.position = {clipped->position_min.x, clipped->position_max.y}, .texcoord = {}, .color = color, .weight = 0.0f};
-        const Vertex br = {.position = {clipped->position_max.x, clipped->position_max.y}, .texcoord = {}, .color = color, .weight = 0.0f};
+        // weight/outline_* are left at 0: unused by the solid-color shader (no distance field to bias).
+        const Vertex tl = {.position = {clipped->position_min.x, clipped->position_min.y}, .texcoord = {}, .color = color, .weight = 0.0f, .outline_color = {}, .outline_width = 0.0f};
+        const Vertex tr = {.position = {clipped->position_max.x, clipped->position_min.y}, .texcoord = {}, .color = color, .weight = 0.0f, .outline_color = {}, .outline_width = 0.0f};
+        const Vertex bl = {.position = {clipped->position_min.x, clipped->position_max.y}, .texcoord = {}, .color = color, .weight = 0.0f, .outline_color = {}, .outline_width = 0.0f};
+        const Vertex br = {.position = {clipped->position_max.x, clipped->position_max.y}, .texcoord = {}, .color = color, .weight = 0.0f, .outline_color = {}, .outline_width = 0.0f};
 
         _bg_vertices.push_back(tl);
         _bg_vertices.push_back(tr);
@@ -317,11 +317,13 @@ namespace fl7::fonts::render {
         const float shear_bottom = italic_intensity * italic_shear_per_unit * (state.cursor.y - clipped->position_max.y);
 
         const float weight = state.current_glyph_style.weight;
+        const xl7::graphics::Color outline_color = state.current_glyph_style.outline_color;
+        const float outline_width = state.current_glyph_style.outline_width;
 
-        const Vertex tl = {.position = {clipped->position_min.x + shear_top,    clipped->position_min.y}, .texcoord = {clipped->uv_min.x, clipped->uv_min.y}, .color = color, .weight = weight};
-        const Vertex tr = {.position = {clipped->position_max.x + shear_top,    clipped->position_min.y}, .texcoord = {clipped->uv_max.x, clipped->uv_min.y}, .color = color, .weight = weight};
-        const Vertex bl = {.position = {clipped->position_min.x + shear_bottom, clipped->position_max.y}, .texcoord = {clipped->uv_min.x, clipped->uv_max.y}, .color = color, .weight = weight};
-        const Vertex br = {.position = {clipped->position_max.x + shear_bottom, clipped->position_max.y}, .texcoord = {clipped->uv_max.x, clipped->uv_max.y}, .color = color, .weight = weight};
+        const Vertex tl = {.position = {clipped->position_min.x + shear_top,    clipped->position_min.y}, .texcoord = {clipped->uv_min.x, clipped->uv_min.y}, .color = color, .weight = weight, .outline_color = outline_color, .outline_width = outline_width};
+        const Vertex tr = {.position = {clipped->position_max.x + shear_top,    clipped->position_min.y}, .texcoord = {clipped->uv_max.x, clipped->uv_min.y}, .color = color, .weight = weight, .outline_color = outline_color, .outline_width = outline_width};
+        const Vertex bl = {.position = {clipped->position_min.x + shear_bottom, clipped->position_max.y}, .texcoord = {clipped->uv_min.x, clipped->uv_max.y}, .color = color, .weight = weight, .outline_color = outline_color, .outline_width = outline_width};
+        const Vertex br = {.position = {clipped->position_max.x + shear_bottom, clipped->position_max.y}, .texcoord = {clipped->uv_max.x, clipped->uv_max.y}, .color = color, .weight = weight, .outline_color = outline_color, .outline_width = outline_width};
 
         _glyph_vertices.push_back(tl);
         _glyph_vertices.push_back(tr);
@@ -368,10 +370,10 @@ namespace fl7::fonts::render {
         // text block's alpha fades its icons along with it, without tinting them.
         const xl7::graphics::Color color = {1.0f, 1.0f, 1.0f, state.current_glyph_style.text_color.a};
 
-        const Vertex tl = {.position = {clipped->position_min.x, clipped->position_min.y}, .texcoord = {clipped->uv_min.x, clipped->uv_min.y}, .color = color, .weight = 0.0f};
-        const Vertex tr = {.position = {clipped->position_max.x, clipped->position_min.y}, .texcoord = {clipped->uv_max.x, clipped->uv_min.y}, .color = color, .weight = 0.0f};
-        const Vertex bl = {.position = {clipped->position_min.x, clipped->position_max.y}, .texcoord = {clipped->uv_min.x, clipped->uv_max.y}, .color = color, .weight = 0.0f};
-        const Vertex br = {.position = {clipped->position_max.x, clipped->position_max.y}, .texcoord = {clipped->uv_max.x, clipped->uv_max.y}, .color = color, .weight = 0.0f};
+        const Vertex tl = {.position = {clipped->position_min.x, clipped->position_min.y}, .texcoord = {clipped->uv_min.x, clipped->uv_min.y}, .color = color, .weight = 0.0f, .outline_color = {}, .outline_width = 0.0f};
+        const Vertex tr = {.position = {clipped->position_max.x, clipped->position_min.y}, .texcoord = {clipped->uv_max.x, clipped->uv_min.y}, .color = color, .weight = 0.0f, .outline_color = {}, .outline_width = 0.0f};
+        const Vertex bl = {.position = {clipped->position_min.x, clipped->position_max.y}, .texcoord = {clipped->uv_min.x, clipped->uv_max.y}, .color = color, .weight = 0.0f, .outline_color = {}, .outline_width = 0.0f};
+        const Vertex br = {.position = {clipped->position_max.x, clipped->position_max.y}, .texcoord = {clipped->uv_max.x, clipped->uv_max.y}, .color = color, .weight = 0.0f, .outline_color = {}, .outline_width = 0.0f};
 
         _icon_vertices.push_back(tl);
         _icon_vertices.push_back(tr);
@@ -478,6 +480,8 @@ namespace fl7::fonts::render {
             {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD, .semantic_index = 0, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT2},
             {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::COLOR,    .semantic_index = 0, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT4},
             {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD, .semantic_index = 1, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT1},
+            {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::COLOR,    .semantic_index = 1, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT4},
+            {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD, .semantic_index = 2, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT1},
         };
         assert(_vertex_layout.calculate_size() == sizeof(Vertex));
 

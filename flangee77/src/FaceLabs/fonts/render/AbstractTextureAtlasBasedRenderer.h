@@ -98,8 +98,12 @@ private:
         ml7::Vector2f position;
         ml7::Vector2f texcoord;
         xl7::graphics::Color color;
-        /** Bold amount (GlyphStyle::weight); unused by shaders without a distance field (e.g. plain bitmap, solid-color). */
+        /** Bold amount (GlyphStyle::weight); unused by shaders without a distance field (e.g., plain bitmap, solid-color). */
         float weight;
+        /** Outline color (GlyphStyle::outline_color); unused by shaders without a distance field (e.g., plain bitmap, solid-color). */
+        xl7::graphics::Color outline_color;
+        /** Outline width (GlyphStyle::outline_width); unused by shaders without a distance field (e.g., plain bitmap, solid-color). */
+        float outline_width;
     };
 
     struct DrawBatch

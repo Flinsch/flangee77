@@ -41,6 +41,8 @@ private:
         ml7::Vector2f texcoord; // Unused by the shader; kept only to match the shared vertex layout.
         xl7::graphics::Color color;
         float weight; // Unused by the shader; kept only to match the shared vertex layout.
+        xl7::graphics::Color outline_color; // Unused by the shader; kept only to match the shared vertex layout.
+        float outline_width; // Unused by the shader; kept only to match the shared vertex layout.
     };
 
 

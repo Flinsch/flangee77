@@ -38,7 +38,7 @@ namespace fl7::fonts::render {
         auto to_vertex = [&](ml7::Vector2f p)
         {
             const ml7::Vector2f position = origin + ml7::Vector2f{p.x * scaled_font_size.x, -p.y * scaled_font_size.y};
-            return Vertex{.position = position, .texcoord = {}, .color = color, .weight = 0.0f};
+            return Vertex{.position = position, .texcoord = {}, .color = color, .weight = 0.0f, .outline_color = {}, .outline_width = 0.0f};
         };
 
         for (const Contour& contour : glyph.contours)
@@ -125,6 +125,8 @@ namespace fl7::fonts::render {
             {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD, .semantic_index = 0, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT2},
             {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::COLOR,    .semantic_index = 0, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT4},
             {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD, .semantic_index = 1, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT1},
+            {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::COLOR,    .semantic_index = 1, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT4},
+            {.semantic = xl7::graphics::meshes::VertexLayout::Semantic::TEXCOORD, .semantic_index = 2, .data_type = xl7::graphics::meshes::VertexLayout::DataType::FLOAT1},
         };
         assert(_vertex_layout.calculate_size() == sizeof(Vertex));
 
