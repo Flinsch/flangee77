@@ -24,7 +24,13 @@ namespace al7::math {
     template <std::floating_point T>
     cl7::static_vector<T, 3> find_cubic_roots(T a, T b, T c, T d)
     {
-        if (std::abs(a) < std::numeric_limits<T>::epsilon())
+        // Relative (not absolute) tolerance, for the same reason as in
+        // find_quadratic_roots: `a`/`b`/`c`/`d` can be of any magnitude depending on
+        // the caller's coordinate scale, so a fixed absolute epsilon is meaningless.
+        // This matters even more here, since a near-zero `a` that slips through would
+        // then be divided into b/c/d below, corrupting every coefficient used from
+        // that point on (not just one division, as in the quadratic case).
+        if (std::abs(a) <= std::numeric_limits<T>::epsilon() * std::abs(b))
         {
             // Degenerate to quadratic.
             const auto roots = find_quadratic_roots(b, c, d);
@@ -42,9 +48,12 @@ namespace al7::math {
 
         const T discriminant = Q * Q * Q + R * R;
 
-        if (std::abs(discriminant) < std::numeric_limits<T>::epsilon())
+        // Same relative-tolerance reasoning as above: scale by the magnitude of the
+        // terms making up `discriminant`/`R` themselves, rather than a fixed absolute
+        // epsilon that's meaningless once Q/R are outside the unit range.
+        if (std::abs(discriminant) <= std::numeric_limits<T>::epsilon() * (R * R + std::abs(Q * Q * Q)))
         {
-            if (std::abs(R) < std::numeric_limits<T>::epsilon())
+            if (std::abs(R) <= std::numeric_limits<T>::epsilon() * std::abs(b))
             {
                 // One root.
                 return {-b / T{3}};

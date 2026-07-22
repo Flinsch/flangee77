@@ -19,7 +19,15 @@ namespace al7::math {
     template <std::floating_point T>
     cl7::static_vector<T, 2> find_quadratic_roots(T a, T b, T c)
     {
-        if (std::abs(a) < std::numeric_limits<T>::epsilon())
+        // Relative (not absolute) tolerances: `a`, `b`, `c` can legitimately be of any
+        // magnitude depending on the caller's coordinate scale (e.g., pixel-space glyph
+        // coordinates), so comparing against a fixed absolute epsilon would either never
+        // trigger (coordinates much larger than 1) or always trigger (much smaller than
+        // 1). A nearly-degenerate-to-linear quadratic has `a` negligible *relative to*
+        // `b`; dividing by such a near-zero `a` in the quadratic formula below would
+        // otherwise blow up into a spurious, wildly out-of-range root via catastrophic
+        // cancellation, silently discarding the real one.
+        if (std::abs(a) <= std::numeric_limits<T>::epsilon() * std::abs(b))
         {
             // Degenerate to linear.
             if (std::abs(b) < std::numeric_limits<T>::epsilon())
@@ -32,7 +40,7 @@ namespace al7::math {
         const T _2a = T{2} * a;
         const T discriminant = b * b - T{2} * _2a * c;
 
-        if (std::abs(discriminant) < std::numeric_limits<T>::epsilon())
+        if (std::abs(discriminant) <= std::numeric_limits<T>::epsilon() * b * b)
         {
             // One root.
             return {-b / _2a};
