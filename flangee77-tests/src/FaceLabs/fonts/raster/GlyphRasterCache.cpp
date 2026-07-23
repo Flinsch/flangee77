@@ -49,10 +49,11 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  raster:  GlyphRasterCache:  store/try_load 
         .pixel_offset = {.left = -3, .top = -11},
     };
 
+    const cl7::text::codec::codepoint codepoint = {static_cast<unsigned>('A')};
     const size_t key = 0x0123456789abcdefull;
-    cache.store(key, original);
+    cache.store(codepoint, key, original);
 
-    std::optional<fl7::fonts::raster::RasterResult> loaded = cache.try_load(key);
+    std::optional<fl7::fonts::raster::RasterResult> loaded = cache.try_load(codepoint, key);
     TESTLABS_ASSERT( loaded.has_value() );
 
     TESTLABS_CHECK_EQ( loaded->glyph_image.get_width(), original.glyph_image.get_width() );
@@ -69,7 +70,7 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  raster:  GlyphRasterCache:  try_load - miss
 {
     fl7::fonts::raster::GlyphRasterCache cache{make_scratch_cache_directory(u8"miss")};
 
-    std::optional<fl7::fonts::raster::RasterResult> loaded = cache.try_load(0xdeadbeefull);
+    std::optional<fl7::fonts::raster::RasterResult> loaded = cache.try_load({static_cast<unsigned>('A')}, 0xdeadbeefull);
     TESTLABS_CHECK( !loaded.has_value() );
 }
 
@@ -91,26 +92,64 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  raster:  GlyphRasterCache:  try_load - corr
         .pixel_offset = {.left = 0, .top = 0},
     };
 
+    const cl7::text::codec::codepoint codepoint = {static_cast<unsigned>('A')};
     const size_t key = 0x1111222233334444ull;
-    cache.store(key, original);
+    cache.store(codepoint, key, original);
 
     // Overwrite the entry's file directly with garbage, at the exact path
-    // `GlyphRasterCache` itself would compute for this key.
-    const cl7::u8string file_path = cache_directory + cl7::u8string(cl7::text::format::to_hex_lc(key, 16)) + u8".glyphcache";
+    // `GlyphRasterCache` itself would compute for this code point and key.
+    const cl7::u8string file_path = cache_directory + u8"0041-" + cl7::u8string(cl7::text::format::to_hex_lc(key, 16)) + u8".glyphcache";
     cl7::io::File file(file_path, cl7::io::OpenMode::Truncate);
     TESTLABS_ASSERT( file.is_writable() );
     const cl7::byte_vector garbage = cl7::make_bytes(0x01, 0x02, 0x03);
     file.write(garbage);
     file.close();
 
-    std::optional<fl7::fonts::raster::RasterResult> loaded = cache.try_load(key);
+    std::optional<fl7::fonts::raster::RasterResult> loaded = cache.try_load(codepoint, key);
     TESTLABS_CHECK( !loaded.has_value() );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  raster:  GlyphRasterCache:  filenames carry the codepoint and an optional prefix" )
+{
+    xl7::graphics::images::ImageDesc desc{
+        .pixel_format = xl7::graphics::PixelFormat::R8_UNORM,
+        .channel_order = xl7::graphics::ChannelOrder::RGBA,
+        .width = 1,
+        .height = 2,
+        .depth = 1,
+    };
+    fl7::fonts::raster::RasterResult result{
+        .glyph_image = {desc, cl7::make_bytes(0xaa, 0xbb)},
+        .pixel_offset = {.left = 0, .top = 0},
+    };
+
+    const cl7::text::codec::codepoint codepoint = {static_cast<unsigned>('Q')};
+    const size_t key = 0x2222333344445555ull;
+    const cl7::u8string hash = cl7::u8string(cl7::text::format::to_hex_lc(key, 16));
+
+    // No prefix: just "<codepoint>-<hash>.glyphcache".
+    {
+        const cl7::u8string cache_directory = make_scratch_cache_directory(u8"filename_no_prefix");
+        fl7::fonts::raster::GlyphRasterCache cache{cache_directory};
+        cache.store(codepoint, key, result);
+
+        TESTLABS_CHECK( cl7::io::File(cache_directory + u8"0051-" + hash + u8".glyphcache", cl7::io::OpenMode::Read).is_readable() );
+    }
+
+    // With a prefix: used verbatim, right before the codepoint, no separator inserted.
+    {
+        const cl7::u8string cache_directory = make_scratch_cache_directory(u8"filename_with_prefix");
+        fl7::fonts::raster::GlyphRasterCache cache{cache_directory, u8"MSDF-NotoSans-Regular-"};
+        cache.store(codepoint, key, result);
+
+        TESTLABS_CHECK( cl7::io::File(cache_directory + u8"MSDF-NotoSans-Regular-81-" + hash + u8".glyphcache", cl7::io::OpenMode::Read).is_readable() );
+    }
 }
 
 TESTLABS_CASE( u8"FaceLabs:  fonts:  raster:  GlyphRasterCache:  SdfRasterizer integration - cache hit across separate instances" )
 {
     auto& font = get_test_font();
-    const fl7::fonts::Glyph* glyph = font.access().find_glyph(cl7::text::codec::codepoint{static_cast<unsigned>('A')});
+    const fl7::fonts::Glyph* glyph = font.access().find_glyph({static_cast<unsigned>('A')});
     TESTLABS_ASSERT( glyph != nullptr );
 
     const fl7::fonts::raster::RasterSizeConfig size_config{.font_size = 32.0f, .padding = 1};

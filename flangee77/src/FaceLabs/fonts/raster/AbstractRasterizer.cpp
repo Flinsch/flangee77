@@ -46,7 +46,7 @@ namespace {
         if (_cache)
         {
             cache_key = _compute_cache_key(glyph, size_config);
-            if (std::optional<RasterResult> cached = _cache->try_load(cache_key))
+            if (std::optional<RasterResult> cached = _cache->try_load(glyph.codepoint, cache_key))
                 return std::move(*cached);
         }
 
@@ -95,7 +95,7 @@ namespace {
         };
 
         if (_cache)
-            _cache->store(cache_key, result);
+            _cache->store(glyph.codepoint, cache_key, result);
 
         return result;
     }

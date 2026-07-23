@@ -36,7 +36,7 @@ namespace helloworld {
 
     MyApp::MyApp(int argc, wchar_t* argv[])
         : pl7::Application({argc, argv})
-        , _glyph_raster_cache(cl7::platform::filesystem::get_cache_directory() + u8"flangee77/glyph_cache/")
+        , _glyph_raster_cache(cl7::platform::filesystem::get_cache_directory() + u8"flangee77/glyphcache/", u8"HelloWorld-")
     {
     }
 
