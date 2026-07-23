@@ -131,6 +131,7 @@ private:
 
     AtlasLayer& _get_or_create_atlas_layer(float font_size);
     const GlyphCacheEntry* _get_or_rasterize_glyph(const Glyph& glyph, float font_size);
+    void _clear_atlas_region(AtlasLayer& layer, const al7::packing::Rect& rect);
     void _blit_into_atlas(AtlasLayer& layer, const al7::packing::Rect& rect, const xl7::graphics::images::Image& image);
     void _ensure_gpu_resources();
     void _release_gpu_resources();

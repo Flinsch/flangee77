@@ -3,6 +3,7 @@
 #include <AlgoLabs/packing/SkylinePacker.h>
 
 #include <XiaoLabs/graphics.h>
+#include <XiaoLabs/graphics/PixelLayout.h>
 #include <XiaoLabs/graphics/meshes/ClippedQuad.h>
 
 #include <CoreLabs/platform/filesystem.h>
@@ -12,6 +13,7 @@
 #include <atomic>
 #include <cassert>
 #include <limits>
+#include <vector>
 
 
 
@@ -430,23 +432,65 @@ namespace fl7::fonts::render {
 
         AtlasLayer& layer = _get_or_create_atlas_layer(font_size);
 
-        auto rect_result = layer.packer->insert(al7::packing::Size{image.get_width(), image.get_height()});
+        // A small zero-filled gutter reserved around each glyph's own image, on top
+        // of (and independent from) the rasterizer's own Config::raster_padding: the
+        // packer places cells edge-to-edge with no gap of its own, and bilinear
+        // texture filtering can sample up to about half a texel beyond either edge
+        // of a glyph's UV rect. Without a guaranteed-empty margin there, that read
+        // lands on whatever the immediately adjacent glyph happens to have blitted
+        // right next to it, visible as a stray fragment of a neighboring glyph
+        // bleeding in. Since whether that fractional sample actually lands past the
+        // edge depends on the exact sub-pixel screen position the glyph quad ends up
+        // at, this only shows up for some on-screen occurrences of a glyph, not all
+        // of them, which is what makes it look so erratic.
+        constexpr unsigned atlas_gutter = 1;
+
+        const al7::packing::Size padded_size{image.get_width() + 2 * atlas_gutter, image.get_height() + 2 * atlas_gutter};
+        auto rect_result = layer.packer->insert(padded_size);
         if (!rect_result)
         {
             _glyph_cache.erase(it);
             return nullptr; // atlas full; glyph skipped
         }
 
-        _blit_into_atlas(layer, *rect_result, image);
+        const al7::packing::Rect content_rect{
+            al7::packing::Position{rect_result->position.x + atlas_gutter, rect_result->position.y + atlas_gutter},
+            al7::packing::Size{image.get_width(), image.get_height()},
+        };
+
+        _clear_atlas_region(layer, *rect_result);
+        _blit_into_atlas(layer, content_rect, image);
 
         GlyphCacheEntry& entry = it->second;
-        entry.rect = *rect_result;
+        entry.rect = content_rect;
         entry.pixel_offset = raster_result.pixel_offset;
         entry.image_width = image.get_width();
         entry.image_height = image.get_height();
         entry.layer = &layer;
 
         return &entry;
+    }
+
+    void AbstractTextureAtlasBasedRenderer::_clear_atlas_region(AtlasLayer& layer, const al7::packing::Rect& rect)
+    {
+        auto* texture = xl7::graphics::texture_manager()->find_resource<xl7::graphics::textures::Texture2D>(layer.texture_id);
+        assert(texture);
+        if (!texture)
+            return;
+
+        const unsigned bytes_per_pixel = xl7::graphics::PixelLayout::determine_bytes_per_pixel(texture->get_desc().pixel_format);
+        const std::vector<std::byte> zeros(static_cast<size_t>(rect.size.width) * rect.size.height * bytes_per_pixel, std::byte{0});
+
+        texture->edit().write({
+            .data = zeros,
+            .region = {
+                .x = rect.position.x,
+                .y = rect.position.y,
+                .width = rect.size.width,
+                .height = rect.size.height,
+            },
+            .row_pitch = rect.size.width * bytes_per_pixel,
+        });
     }
 
     void AbstractTextureAtlasBasedRenderer::_blit_into_atlas(AtlasLayer& layer, const al7::packing::Rect& rect, const xl7::graphics::images::Image& image)
