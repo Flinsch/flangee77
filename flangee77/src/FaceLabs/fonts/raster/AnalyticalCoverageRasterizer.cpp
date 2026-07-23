@@ -70,7 +70,7 @@ namespace {
             // by the current edge within the current row.
             const auto col0 = static_cast<int>(std::floor(row_xlo)) - pixel_offset.left;
             const auto col1 = static_cast<int>(std::ceil(row_xhi)) - pixel_offset.left;
-            assert(col0 < col1);
+            assert(col0 <= col1);
 
             // The intersection height and rectangular
             // coverage within the current row.
