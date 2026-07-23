@@ -104,6 +104,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:abc259a369eb4b1c649d3a6d02c8ed06c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a898558a446ad7c9a5992917de81ca978" id="r_a898558a446ad7c9a5992917de81ca978"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/db2/structfl7_1_1fonts_1_1raster_1_1MsdfRasterizer_1_1ColoredSegment.html#a898558a446ad7c9a5992917de81ca978">channels</a></td></tr>
 <tr class="separator:a898558a446ad7c9a5992917de81ca978"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa203706a38b7ea4e6aef578f5c496d6d" id="r_aa203706a38b7ea4e6aef578f5c496d6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/db2/structfl7_1_1fonts_1_1raster_1_1MsdfRasterizer_1_1ColoredSegment.html#aa203706a38b7ea4e6aef578f5c496d6d">tangent_in_at_start</a></td></tr>
+<tr class="separator:aa203706a38b7ea4e6aef578f5c496d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ead82225f8724d66f4ea1c35990eb06" id="r_a4ead82225f8724d66f4ea1c35990eb06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/db2/structfl7_1_1fonts_1_1raster_1_1MsdfRasterizer_1_1ColoredSegment.html#a4ead82225f8724d66f4ea1c35990eb06">tangent_out_at_end</a></td></tr>
+<tr class="separator:a4ead82225f8724d66f4ea1c35990eb06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="abc259a369eb4b1c649d3a6d02c8ed06c" name="abc259a369eb4b1c649d3a6d02c8ed06c"></a>
@@ -133,6 +137,36 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Bitmask of channels this edge contributes to (1 = R, 2 = G, 4 = B). </p>
+
+</div>
+</div>
+<a id="aa203706a38b7ea4e6aef578f5c496d6d" name="aa203706a38b7ea4e6aef578f5c496d6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa203706a38b7ea4e6aef578f5c496d6d">&#9670;&#160;</a></span>tangent_in_at_start</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> fl7::fonts::raster::MsdfRasterizer::ColoredSegment::tangent_in_at_start</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The neighboring edge's tangent at this edge's start/end corner (i.e., the previous/next edge's tangent_at(1.0)/tangent_at(0.0) in the original, uncolored contour, not necessarily a same-colored neighbor). Used to resolve the sign correctly when a query point's nearest point on this edge clamps to that corner (see _query_edge): a single edge's own tangent alone can't tell whether such a point is inside or outside, since that depends on the angle the two edges meeting there actually form. The previous edge's tangent at this edge's start corner. </p>
+
+</div>
+</div>
+<a id="a4ead82225f8724d66f4ea1c35990eb06" name="a4ead82225f8724d66f4ea1c35990eb06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ead82225f8724d66f4ea1c35990eb06">&#9670;&#160;</a></span>tangent_out_at_end</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> fl7::fonts::raster::MsdfRasterizer::ColoredSegment::tangent_out_at_end</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The next edge's tangent at this edge's end corner. </p>
 
 </div>
 </div>

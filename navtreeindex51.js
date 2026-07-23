@@ -1,5 +1,15 @@
 var NAVTREEINDEX51 =
 {
+"dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler.html#a7071f9bda0b83e88e8ec6b2d86c7545a":[7,0,2,2,0,4,2],
+"dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler.html#a7071f9bda0b83e88e8ec6b2d86c7545a":[5,0,2,2,0,4,2],
+"dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler.html#aa95a9f64b493da4df24b6d0cfe64e1d1":[5,0,2,2,0,4,3],
+"dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler.html#aa95a9f64b493da4df24b6d0cfe64e1d1":[7,0,2,2,0,4,3],
+"dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler.html#af8ada34b7288f275ebdc1293cee55e59":[5,0,2,2,0,4,0],
+"dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler.html#af8ada34b7288f275ebdc1293cee55e59":[7,0,2,2,0,4,0],
+"dc/d88/TextureSamplerDeclaration_8h.html":[8,0,7,1,4,35],
+"dc/d88/TextureSamplerDeclaration_8h_source.html":[8,0,7,1,4,35],
+"dc/d89/IResourceFactory_8h.html":[8,0,7,1,17],
+"dc/d89/IResourceFactory_8h_source.html":[8,0,7,1,17],
 "dc/d8b/IndexBufferUpdater_8cpp.html":[8,0,7,1,2,7],
 "dc/d8d/namespacexl7_1_1graphics_1_1states.html":[5,0,8,2,5],
 "dc/d8d/namespacexl7_1_1graphics_1_1states.html#a11bd1b51cb737b5f85dddf45e40114d6":[5,0,8,2,5,19],
@@ -239,15 +249,5 @@ var NAVTREEINDEX51 =
 "dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html#ab8791b5991083f802dc8aa75a33fdf91":[7,0,2,4,0,1,12],
 "dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html#adf1f25e8d3134a16362deea6fe39628a":[5,0,2,4,0,1,8],
 "dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html#adf1f25e8d3134a16362deea6fe39628a":[7,0,2,4,0,1,8],
-"dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html#ae48dce807bf0fd52cd011d4728c9d506":[5,0,2,4,0,1,16],
-"dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html#ae48dce807bf0fd52cd011d4728c9d506":[7,0,2,4,0,1,16],
-"dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html#aefa423c6b82e63e2e57da7981af68f85":[5,0,2,4,0,1,20],
-"dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html#aefa423c6b82e63e2e57da7981af68f85":[7,0,2,4,0,1,20],
-"dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html#afb1d1bc4e08a0e985a31bb0420cd8826":[7,0,2,4,0,1,9],
-"dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html#afb1d1bc4e08a0e985a31bb0420cd8826":[5,0,2,4,0,1,9],
-"dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html#afc20171db9b715edb251e62057be24a4":[7,0,2,4,0,1,4],
-"dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html#afc20171db9b715edb251e62057be24a4":[5,0,2,4,0,1,4],
-"dc/dc6/VertexBufferUpdater_8cpp.html":[8,0,7,1,2,26],
-"dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html":[7,0,2,3,13],
-"dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html":[5,0,2,3,13]
+"dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html#ae48dce807bf0fd52cd011d4728c9d506":[5,0,2,4,0,1,16]
 };

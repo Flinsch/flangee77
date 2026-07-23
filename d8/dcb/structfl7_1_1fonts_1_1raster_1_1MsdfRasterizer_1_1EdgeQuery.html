@@ -104,8 +104,25 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ad6b7b2f87f2b5abed0320017e9f3061c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a968441c459f8c0067e34e7c1d17e5b1f" id="r_a968441c459f8c0067e34e7c1d17e5b1f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcb/structfl7_1_1fonts_1_1raster_1_1MsdfRasterizer_1_1EdgeQuery.html#a968441c459f8c0067e34e7c1d17e5b1f">signed_orthogonality</a></td></tr>
 <tr class="separator:a968441c459f8c0067e34e7c1d17e5b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adac448bd0c363e4cf462e5d9b0f721b8" id="r_adac448bd0c363e4cf462e5d9b0f721b8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dcb/structfl7_1_1fonts_1_1raster_1_1MsdfRasterizer_1_1EdgeQuery.html#adac448bd0c363e4cf462e5d9b0f721b8">is_true_distance</a></td></tr>
+<tr class="separator:adac448bd0c363e4cf462e5d9b0f721b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="adac448bd0c363e4cf462e5d9b0f721b8" name="adac448bd0c363e4cf462e5d9b0f721b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adac448bd0c363e4cf462e5d9b0f721b8">&#9670;&#160;</a></span>is_true_distance</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fl7::fonts::raster::MsdfRasterizer::EdgeQuery::is_true_distance</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>True if the nearest point genuinely lies within the edge's interior (an actual perpendicular foot), false if it had to be clamped to one of the edge's endpoints (a corner "pseudo-distance"). A clamped match's sign comes from that endpoint's tangent, which doesn't represent the true boundary orientation for points off to the side of the corner rather than in front of the edge, so such matches are only trustworthy as a fallback. </p>
+
+</div>
+</div>
 <a id="a968441c459f8c0067e34e7c1d17e5b1f" name="a968441c459f8c0067e34e7c1d17e5b1f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a968441c459f8c0067e34e7c1d17e5b1f">&#9670;&#160;</a></span>signed_orthogonality</h2>
 

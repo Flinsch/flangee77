@@ -12,6 +12,7 @@ var classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer =
     [ "_after_end", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a2b455eb0d9810153da9ded203e7cf587", null ],
     [ "_before_begin", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a64f5f9f8ef2717448d7d4adcb31ffc0d", null ],
     [ "_blit_into_atlas", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a4a2c8dfafbdb14284e662e9001ba5ac0", null ],
+    [ "_clear_atlas_region", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a2747692ba4c7367206ec530202f8dbe2", null ],
     [ "_do_flush", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#aa2da2811c77a00228735c0982ae372c0", null ],
     [ "_emit_background", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a6ec592f5aa0035ba7e08196a32aa37b7", null ],
     [ "_emit_glyph", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a15099aadd45447323a8018e4eae0a9ca", null ],

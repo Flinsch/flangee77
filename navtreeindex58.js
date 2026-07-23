@@ -1,5 +1,15 @@
 var NAVTREEINDEX58 =
 {
+"de/d22/structxl7_1_1graphics_1_1shaders_1_1ShaderWrite.html#a3631129866d6467d0295abf1fa01cc9e":[5,0,8,2,4,21,0],
+"de/d22/structxl7_1_1graphics_1_1shaders_1_1ShaderWrite.html#a3631129866d6467d0295abf1fa01cc9e":[7,0,8,1,4,21,0],
+"de/d22/structxl7_1_1graphics_1_1shaders_1_1ShaderWrite.html#a8198cb212c51eba679efac560c49e29b":[5,0,8,2,4,21,1],
+"de/d22/structxl7_1_1graphics_1_1shaders_1_1ShaderWrite.html#a8198cb212c51eba679efac560c49e29b":[7,0,8,1,4,21,1],
+"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html":[5,0,8,2,7,18],
+"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html":[7,0,8,1,7,18],
+"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a0878f5414f210b0b5b8d90ebfa69efe6":[7,0,8,1,7,18,12],
+"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a0878f5414f210b0b5b8d90ebfa69efe6":[5,0,8,2,7,18,12],
+"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a1e5e139e573a94b83818bc12e3bbd3a1":[5,0,8,2,7,18,4],
+"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a1e5e139e573a94b83818bc12e3bbd3a1":[7,0,8,1,7,18,4],
 "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a5037a7c9f2f94898f73dcf121eb3ff34":[5,0,8,2,7,18,8],
 "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a5037a7c9f2f94898f73dcf121eb3ff34":[7,0,8,1,7,18,8],
 "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a60b212516ce8d6bd293a3fd5ad5c0528":[7,0,8,1,7,18,7],
@@ -239,15 +249,5 @@ var NAVTREEINDEX58 =
 "de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html#a7905b81d6b0dc4fcd5794b7187ee11ca":[7,0,2,3,0,7,0],
 "de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html#a7905b81d6b0dc4fcd5794b7187ee11ca":[5,0,2,3,0,7,0],
 "de/d70/structxl7_1_1DriverResolver.html":[7,0,8,8],
-"de/d70/structxl7_1_1DriverResolver.html":[5,0,8,10],
-"de/d70/structxl7_1_1DriverResolver.html#a426830f9dcc4912e1446aa22909c294e":[7,0,8,8,1],
-"de/d70/structxl7_1_1DriverResolver.html#a426830f9dcc4912e1446aa22909c294e":[5,0,8,10,1],
-"de/d70/structxl7_1_1DriverResolver.html#aea816ce14a4e14ddddc4f804213a35cc":[7,0,8,8,2],
-"de/d70/structxl7_1_1DriverResolver.html#aea816ce14a4e14ddddc4f804213a35cc":[5,0,8,10,2],
-"de/d7b/IWindowImpl_8h.html":[8,0,7,0,1],
-"de/d7b/IWindowImpl_8h_source.html":[8,0,7,0,1],
-"de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html":[5,0,8,2,1,1,4,3],
-"de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html":[7,0,8,1,1,1,2,3],
-"de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html#a078214b0a916d1f57c78dbbdfbeedf9a":[7,0,8,1,1,1,2,3,9],
-"de/d7b/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl.html#a078214b0a916d1f57c78dbbdfbeedf9a":[5,0,8,2,1,1,4,3,9]
+"de/d70/structxl7_1_1DriverResolver.html":[5,0,8,10]
 };

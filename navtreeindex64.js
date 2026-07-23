@@ -1,5 +1,15 @@
 var NAVTREEINDEX64 =
 {
+"df/db9/bits_8h.html#a02c04cb8a39a15316ea1b82656f020c8":[8,0,1,10,3],
+"df/db9/bits_8h.html#a167cb3659d07c546f0bf4de525dc92e2":[8,0,1,10,9],
+"df/db9/bits_8h.html#a204b4f02784445183eefaf4c4118e8b2":[8,0,1,10,10],
+"df/db9/bits_8h.html#a2208da2f8f3722e8a226ed4fa8668247":[8,0,1,10,7],
+"df/db9/bits_8h.html#a62dd590062fd44bb07fb0ce44f5ebf2c":[8,0,1,10,5],
+"df/db9/bits_8h.html#a8a46170b59357a740cb29b9c277475b1":[8,0,1,10,4],
+"df/db9/bits_8h.html#aa6121c085758d9a0392f81093f76f3f6":[8,0,1,10,8],
+"df/db9/bits_8h.html#ac9a1fbefdf35f8dbd72edfec66226995":[8,0,1,10,2],
+"df/db9/bits_8h.html#afffbac010a38d5358be891018db0ffc6":[8,0,1,10,6],
+"df/db9/bits_8h_source.html":[8,0,1,10],
 "df/dbb/ConstantBufferWrite_8h.html":[8,0,7,1,4,11],
 "df/dbb/ConstantBufferWrite_8h_source.html":[8,0,7,1,4,11],
 "df/dbe/internals_8cpp.html":[8,0,6,4],
@@ -239,15 +249,5 @@ var NAVTREEINDEX64 =
 "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#a49fd650547f09c69f2110f254c21af32":[7,0,8,1,7,27,8],
 "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#a6c855e198efb3fb7d4af06105bef1a66":[7,0,8,1,7,27,7],
 "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#a6c855e198efb3fb7d4af06105bef1a66":[5,0,8,2,7,27,7],
-"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#aad0ccc0ecb1cd586e343566788a8b81c":[5,0,8,2,7,27,9],
-"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#aad0ccc0ecb1cd586e343566788a8b81c":[7,0,8,1,7,27,9],
-"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#ab0db15fb23f96590d7eb5b8695af6725":[7,0,8,1,7,27,6],
-"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#ab0db15fb23f96590d7eb5b8695af6725":[5,0,8,2,7,27,6],
-"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#ae56ac230319fde610f95be43a17351a4":[7,0,8,1,7,27,5],
-"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#ae56ac230319fde610f95be43a17351a4":[5,0,8,2,7,27,5],
-"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#ae9309c28366e182d27551fa4cafa5122":[7,0,8,1,7,27,1],
-"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#ae9309c28366e182d27551fa4cafa5122":[5,0,8,2,7,27,1],
-"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#afa4a3446c432ee5dd325f9a9649815ba":[7,0,8,1,7,27,4],
-"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#afa4a3446c432ee5dd325f9a9649815ba":[5,0,8,2,7,27,4],
-"df/def/Document_8h.html":[8,0,2,5,5]
+"df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#aad0ccc0ecb1cd586e343566788a8b81c":[5,0,8,2,7,27,9]
 };

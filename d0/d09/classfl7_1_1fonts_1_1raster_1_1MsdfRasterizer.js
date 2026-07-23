@@ -7,7 +7,7 @@ var classfl7_1_1fonts_1_1raster_1_1MsdfRasterizer =
     [ "_cache_key_params_hash", "d0/d09/classfl7_1_1fonts_1_1raster_1_1MsdfRasterizer.html#a8b4dd83e2e1f71b7e0a1072b32c63778", null ],
     [ "_channel_signed_distance", "d0/d09/classfl7_1_1fonts_1_1raster_1_1MsdfRasterizer.html#a6b2358f6db1c540786b17b0120a0e818", null ],
     [ "_color_contours", "d0/d09/classfl7_1_1fonts_1_1raster_1_1MsdfRasterizer.html#a9458782f4fdb4768d9e63f12d7664af2", null ],
-    [ "_query_edge", "d0/d09/classfl7_1_1fonts_1_1raster_1_1MsdfRasterizer.html#aab36224f36068ada958e5def22baa686", null ],
+    [ "_query_edge", "d0/d09/classfl7_1_1fonts_1_1raster_1_1MsdfRasterizer.html#a3ec59edc92049158b779ec3a95b8b702", null ],
     [ "_rasterize_glyph_into", "d0/d09/classfl7_1_1fonts_1_1raster_1_1MsdfRasterizer.html#a5063a4edf32acd3b3f274dc8256cb07c", null ],
     [ "_pixel_range", "d0/d09/classfl7_1_1fonts_1_1raster_1_1MsdfRasterizer.html#aabd67cdaa48464ca60bd3aa9de47572a", null ]
 ];

@@ -1,5 +1,15 @@
 var NAVTREEINDEX57 =
 {
+"de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html":[5,0,8,2,4,10],
+"de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html#a26ddd4f830f390f535378c0032dc66c7":[7,0,8,1,4,10,3],
+"de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html#a26ddd4f830f390f535378c0032dc66c7":[5,0,8,2,4,10,3],
+"de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html#a56fc54d823ce75212589fd10a0da622d":[5,0,8,2,4,10,0],
+"de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html#a56fc54d823ce75212589fd10a0da622d":[7,0,8,1,4,10,0],
+"de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html#a70defa20f777d2cc74f4be4fbb68cad5":[7,0,8,1,4,10,5],
+"de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html#a70defa20f777d2cc74f4be4fbb68cad5":[5,0,8,2,4,10,5],
+"de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html#a7d5044b0defbd4d35c61331976dc19cc":[7,0,8,1,4,10,2],
+"de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html#a7d5044b0defbd4d35c61331976dc19cc":[5,0,8,2,4,10,2],
+"de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html#aba37db2906210769b7b10c722d7bb06d":[5,0,8,2,4,10,1],
 "de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html#aba37db2906210769b7b10c722d7bb06d":[7,0,8,1,4,10,1],
 "de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html#ad48a3549cb768b63bf42a333648a03b1":[5,0,8,2,4,10,4],
 "de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html#ad48a3549cb768b63bf42a333648a03b1":[7,0,8,1,4,10,4],
@@ -239,15 +249,5 @@ var NAVTREEINDEX57 =
 "de/d22/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl.html#afb2ad0070b284a022ba44e30d8339115":[5,0,8,2,1,0,3,4,4],
 "de/d22/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl.html#afb2ad0070b284a022ba44e30d8339115":[7,0,8,1,1,0,1,4,4],
 "de/d22/structxl7_1_1graphics_1_1shaders_1_1ShaderWrite.html":[7,0,8,1,4,21],
-"de/d22/structxl7_1_1graphics_1_1shaders_1_1ShaderWrite.html":[5,0,8,2,4,21],
-"de/d22/structxl7_1_1graphics_1_1shaders_1_1ShaderWrite.html#a3631129866d6467d0295abf1fa01cc9e":[5,0,8,2,4,21,0],
-"de/d22/structxl7_1_1graphics_1_1shaders_1_1ShaderWrite.html#a3631129866d6467d0295abf1fa01cc9e":[7,0,8,1,4,21,0],
-"de/d22/structxl7_1_1graphics_1_1shaders_1_1ShaderWrite.html#a8198cb212c51eba679efac560c49e29b":[5,0,8,2,4,21,1],
-"de/d22/structxl7_1_1graphics_1_1shaders_1_1ShaderWrite.html#a8198cb212c51eba679efac560c49e29b":[7,0,8,1,4,21,1],
-"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html":[5,0,8,2,7,18],
-"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html":[7,0,8,1,7,18],
-"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a0878f5414f210b0b5b8d90ebfa69efe6":[7,0,8,1,7,18,12],
-"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a0878f5414f210b0b5b8d90ebfa69efe6":[5,0,8,2,7,18,12],
-"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a1e5e139e573a94b83818bc12e3bbd3a1":[5,0,8,2,7,18,4],
-"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#a1e5e139e573a94b83818bc12e3bbd3a1":[7,0,8,1,7,18,4]
+"de/d22/structxl7_1_1graphics_1_1shaders_1_1ShaderWrite.html":[5,0,8,2,4,21]
 };
