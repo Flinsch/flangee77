@@ -142,7 +142,7 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  raster:  GlyphRasterCache:  filenames carry
         fl7::fonts::raster::GlyphRasterCache cache{cache_directory, u8"MSDF-NotoSans-Regular-"};
         cache.store(codepoint, key, result);
 
-        TESTLABS_CHECK( cl7::io::File(cache_directory + u8"MSDF-NotoSans-Regular-81-" + hash + u8".glyphcache", cl7::io::OpenMode::Read).is_readable() );
+        TESTLABS_CHECK( cl7::io::File(cache_directory + u8"MSDF-NotoSans-Regular-0051-" + hash + u8".glyphcache", cl7::io::OpenMode::Read).is_readable() );
     }
 }
 
