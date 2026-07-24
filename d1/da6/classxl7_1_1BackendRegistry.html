@@ -128,6 +128,8 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7e79442726e5a060819cc08ef9be46d3" id="r_a7e79442726e5a060819cc08ef9be46d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/da6/classxl7_1_1BackendRegistry.html#a7e79442726e5a060819cc08ef9be46d3">register_backend</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> driver_name, std::initializer_list&lt; <a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> &gt; aliases, const <a class="el" href="../../d1/da6/classxl7_1_1BackendRegistry.html#a74bd2b11d40e0c8ae93adf044e9c30ec">Factory</a> &amp;factory, int priority)</td></tr>
 <tr class="separator:a7e79442726e5a060819cc08ef9be46d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9a9e00c6ccd6c596265b246418e66f3" id="r_af9a9e00c6ccd6c596265b246418e66f3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/da6/classxl7_1_1BackendRegistry.html#af9a9e00c6ccd6c596265b246418e66f3">has_backends</a> () const</td></tr>
+<tr class="separator:af9a9e00c6ccd6c596265b246418e66f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5def64ce164ed3b06b0a7a5bc82df10d" id="r_a5def64ce164ed3b06b0a7a5bc82df10d"><td class="memItemLeft" align="right" valign="top">TBackendBase *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/da6/classxl7_1_1BackendRegistry.html#a5def64ce164ed3b06b0a7a5bc82df10d">resolve</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> requested_name)</td></tr>
 <tr class="separator:a5def64ce164ed3b06b0a7a5bc82df10d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -163,6 +165,34 @@ template&lt;class TBackendBase &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="af9a9e00c6ccd6c596265b246418e66f3" name="af9a9e00c6ccd6c596265b246418e66f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9a9e00c6ccd6c596265b246418e66f3">&#9670;&#160;</a></span>has_backends()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TBackendBase &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="../../d1/da6/classxl7_1_1BackendRegistry.html">xl7::BackendRegistry</a>&lt; TBackendBase &gt;::has_backends </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns whether any backend has been registered at all. Callers must check this before calling <a class="el" href="../../d1/da6/classxl7_1_1BackendRegistry.html#a5def64ce164ed3b06b0a7a5bc82df10d">resolve()</a> (e.g. before ever touching a driver-based component's instance()), since a build/platform may not compile in any backend for a given component. </p>
+
+</div>
+</div>
 <a id="a7e79442726e5a060819cc08ef9be46d3" name="a7e79442726e5a060819cc08ef9be46d3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7e79442726e5a060819cc08ef9be46d3">&#9670;&#160;</a></span>register_backend()</h2>
 

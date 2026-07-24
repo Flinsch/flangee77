@@ -1,6 +1,7 @@
 var graphics_8h =
 [
     [ "graphics_system", "d7/d04/graphics_8h.html#ab1b1354afeadb72ca50b26f40c14b67d", null ],
+    [ "has_available_backend", "d7/d04/graphics_8h.html#aedfcf2cd74990e59083953667fcfa90c", null ],
     [ "mesh_manager", "d7/d04/graphics_8h.html#a1d8cdd427a98bec26fd2a87677e92502", null ],
     [ "primary_context", "d7/d04/graphics_8h.html#a344cd22b4053ee9891356608de3dc0c0", null ],
     [ "rendering_context", "d7/d04/graphics_8h.html#ad083a629580c1dea6167a807ce683e2f", null ],

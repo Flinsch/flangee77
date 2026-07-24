@@ -105,6 +105,7 @@ var namespacexl7_1_1graphics =
     ] ],
     [ "_resolve_shader_states", "d8/d30/namespacexl7_1_1graphics.html#a188a58e31596dfda96517c508ca241f6", null ],
     [ "graphics_system", "d8/d30/namespacexl7_1_1graphics.html#ab1b1354afeadb72ca50b26f40c14b67d", null ],
+    [ "has_available_backend", "d8/d30/namespacexl7_1_1graphics.html#aedfcf2cd74990e59083953667fcfa90c", null ],
     [ "mesh_manager", "d8/d30/namespacexl7_1_1graphics.html#a1d8cdd427a98bec26fd2a87677e92502", null ],
     [ "operator&", "d8/d30/namespacexl7_1_1graphics.html#a56b136222cefc8b0d59f2315b62e3511", null ],
     [ "operator&", "d8/d30/namespacexl7_1_1graphics.html#aeed79967a2a369071f65e87cebc01db5", null ],
