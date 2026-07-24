@@ -24,6 +24,13 @@ public:
      */
     virtual cl7::u8string_view get_driver_name() const = 0;
 
+    /**
+     * Returns whether any backend has been compiled in for this component at all.
+     * Must be checked before the first call to instance(), since instance() has no
+     * way to report a missing backend (it always returns a valid reference).
+     */
+    static bool has_available_backend() { return backend_registry().has_backends(); }
+
 
 
 protected:

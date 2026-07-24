@@ -40,9 +40,19 @@ public:
         _entries.emplace_back(driver_name, aliases, factory, priority);
     }
 
+    /**
+     * Returns whether any backend has been registered at all. Callers must check
+     * this before calling resolve() (e.g. before ever touching a driver-based
+     * component's instance()), since a build/platform may not compile in any
+     * backend for a given component.
+     */
+    bool has_backends() const { return !_entries.empty(); }
+
     TBackendBase* resolve(cl7::u8string_view requested_name)
     {
         _resolved = true;
+        // Callers must check has_backends() first.
+        // This is not a recoverable condition here.
         assert(!_entries.empty());
 
         std::ranges::sort(_entries, [](const auto& a, const auto& b) {

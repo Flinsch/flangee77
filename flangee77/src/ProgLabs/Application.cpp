@@ -136,6 +136,11 @@ namespace pl7 {
             return false;
 
         // Initialize the graphics system.
+        if (!xl7::graphics::has_available_backend())
+        {
+            LOG_ERROR(u8"No graphics backend is available for this platform/build.");
+            return false;
+        }
         if (!xl7::graphics::graphics_system().init())
             return false;
 

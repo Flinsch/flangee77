@@ -11,6 +11,7 @@ namespace xl7::graphics {
 
 
 
+    inline bool has_available_backend() { return GraphicsSystem::has_available_backend(); }
     inline GraphicsSystem& graphics_system() { return GraphicsSystem::instance(); }
     inline RenderingDevice* rendering_device() { return graphics_system().get_rendering_device(); }
     inline RenderingContext* primary_context() { return rendering_device()->get_primary_context(); }
