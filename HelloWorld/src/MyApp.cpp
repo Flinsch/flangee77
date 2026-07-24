@@ -537,19 +537,21 @@ namespace helloworld {
         // manual StyleRun/IconRun demos above, but authored as a single
         // marked-up string via fl7::fonts::render::parse_markup instead of
         // hand-computed code point indices. Reuses the same icon declared
-        // above. [outline=...] only has a visible effect on Sdf/Msdf, same as
-        // the standalone outline demo.
+        // above. [outline=...]/[outline-width=...] only have a visible effect
+        // on SDF/MSDF, same as the standalone outline demo. [outline-width]
+        // nests independently of [outline], here overriding just the width
+        // of an outline whose color was set by the enclosing tag.
         const fl7::fonts::render::NamedIcon named_icons[] = {
             {.name = u8"gem", .icon = &icon},
         };
         const auto markup = fl7::fonts::render::parse_markup(
-            u8"[b]Bold[/b] and [color=#ff0000]red[/color] and [icon=gem] and [b][color=#00ff00]both[/color][/b] and [outline=#000000]outlined[/outline]!",
+            u8"[b]Bold[/b] and [color=#ff0000]red[/color] and [icon=gem] and [b][color=#00ff00]both[/color][/b] and [outline=#000000]outlined[/outline] and [outline=#000000][outline-width=3]thick[/outline-width][/outline]!",
             text_style, named_icons);
-        _bitmap_renderer->draw_text(markup.text, _font.get(), &text_style, {x2, y2}, markup.style_runs, markup.icon_runs);
+        _bitmap_renderer->draw_text(markup.text, _font.get(), &text_style, {x2 - 178.0f, y2}, markup.style_runs, markup.icon_runs);
         y2 += line_height;
-        _sdf_renderer->draw_text(markup.text, _font.get(), &text_style, {x2, y2}, markup.style_runs, markup.icon_runs);
+        _sdf_renderer->draw_text(markup.text, _font.get(), &text_style, {x2 - 178.0f, y2}, markup.style_runs, markup.icon_runs);
         y2 += line_height;
-        _msdf_renderer->draw_text(markup.text, _font.get(), &text_style, {x2, y2}, markup.style_runs, markup.icon_runs);
+        _msdf_renderer->draw_text(markup.text, _font.get(), &text_style, {x2 - 178.0f, y2}, markup.style_runs, markup.icon_runs);
         y2 += line_height;
     }
 

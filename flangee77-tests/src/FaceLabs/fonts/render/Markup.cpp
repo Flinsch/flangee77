@@ -104,6 +104,57 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  render:  Markup:  parse_markup - [outline] 
     TESTLABS_CHECK_GT( run.style.outline_width, 0.0f );
 }
 
+TESTLABS_CASE( u8"FaceLabs:  fonts:  render:  Markup:  parse_markup - [outline-width=N]...[/outline-width] sets a custom outline_width" )
+{
+    fl7::fonts::TextStyle base_style;
+
+    const auto parsed = fl7::fonts::render::parse_markup(u8"a[outline-width=2.5]wide[/outline-width]b", base_style);
+
+    TESTLABS_CHECK_EQ( parsed.text, u8"awideb" );
+    TESTLABS_CHECK_EQ( parsed.style_runs.size(), size_t{1} );
+    const auto& run = parsed.style_runs.at(0);
+    TESTLABS_CHECK_EQ_FLT( run.style.outline_width, 2.5f );
+    // Unrelated fields stay at the base style, same as [b]/[color] leave each other alone.
+    TESTLABS_CHECK( run.style.outline_color == base_style.outline_color );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  render:  Markup:  parse_markup - [outline-width] without a value defaults to 1, like [b]/[i]" )
+{
+    fl7::fonts::TextStyle base_style;
+
+    const auto parsed = fl7::fonts::render::parse_markup(u8"[outline-width]default width[/outline-width]", base_style);
+
+    TESTLABS_CHECK_EQ( parsed.style_runs.size(), size_t{1} );
+    TESTLABS_CHECK_EQ_FLT( parsed.style_runs.at(0).style.outline_width, 1.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  render:  Markup:  parse_markup - [outline-width] nests independently with [outline=#RRGGBB]" )
+{
+    fl7::fonts::TextStyle base_style;
+
+    const auto parsed = fl7::fonts::render::parse_markup(u8"[outline=#000000][outline-width=3]both[/outline-width][/outline]", base_style);
+
+    TESTLABS_CHECK_EQ( parsed.text, u8"both" );
+    TESTLABS_CHECK_EQ( parsed.style_runs.size(), size_t{1} );
+    const auto& run = parsed.style_runs.at(0);
+    TESTLABS_CHECK( run.style.outline_color == xl7::graphics::Color::BLACK );
+    TESTLABS_CHECK_EQ_FLT( run.style.outline_width, 3.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  render:  Markup:  parse_markup - an enclosing [outline-width] survives a nested [outline=#RRGGBB]" )
+{
+    fl7::fonts::TextStyle base_style;
+
+    // [outline-width] as the *outer* tag this time: [outline]'s own default-width fallback must not clobber it.
+    const auto parsed = fl7::fonts::render::parse_markup(u8"[outline-width=3][outline=#000000]both[/outline][/outline-width]", base_style);
+
+    TESTLABS_CHECK_EQ( parsed.text, u8"both" );
+    TESTLABS_CHECK_EQ( parsed.style_runs.size(), size_t{1} );
+    const auto& run = parsed.style_runs.at(0);
+    TESTLABS_CHECK( run.style.outline_color == xl7::graphics::Color::BLACK );
+    TESTLABS_CHECK_EQ_FLT( run.style.outline_width, 3.0f );
+}
+
 TESTLABS_CASE( u8"FaceLabs:  fonts:  render:  Markup:  parse_markup - unrecognized/stray brackets fall back to literal text" )
 {
     fl7::fonts::TextStyle base_style;

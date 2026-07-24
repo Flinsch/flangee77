@@ -14,7 +14,7 @@ namespace fl7::fonts::render {
 
 namespace {
 
-    enum class TagKind { B, I, Color, Outline };
+    enum class TagKind { B, I, Color, Outline, OutlineWidth };
 
     struct OpenTag
     {
@@ -22,8 +22,8 @@ namespace {
         GlyphStyle style;
     };
 
-    // [outline=#RRGGBB] sets outline_color from the given color and
-    // outline_width to this fixed default (no separate width attribute for now).
+    // Default outline_width: used by [outline=#RRGGBB] (which only sets the color)
+    // and by a value-less [outline-width] (mirroring [b]/[i]'s own no-value default).
     constexpr float _default_outline_width = 1.0f;
 
     bool _is_tag_char(cl7::text::codec::codepoint cp)
@@ -168,7 +168,7 @@ namespace {
             if (!content.empty() && content.front() == '/')
             {
                 const std::string_view kind_str = std::string_view(content).substr(1);
-                if (kind_str == "b" || kind_str == "i" || kind_str == "color" || kind_str == "outline")
+                if (kind_str == "b" || kind_str == "i" || kind_str == "color" || kind_str == "outline" || kind_str == "outline-width")
                 {
                     TagKind kind = TagKind::Color;
                     if (kind_str == "b")
@@ -177,6 +177,8 @@ namespace {
                         kind = TagKind::I;
                     else if (kind_str == "outline")
                         kind = TagKind::Outline;
+                    else if (kind_str == "outline-width")
+                        kind = TagKind::OutlineWidth;
 
                     if (!stack.empty() && stack.back().kind == kind)
                     {
@@ -227,8 +229,25 @@ namespace {
                         close_interval(output.size());
                         GlyphStyle style = stack.empty() ? base_glyph_style : stack.back().style;
                         style.outline_color = color;
-                        style.outline_width = _default_outline_width;
+                        // Only fall back to the default width if nothing already in
+                        // scope set one (an enclosing [outline-width=N], or the base
+                        // style itself), otherwise this would clobber it every time
+                        // [outline] opens, regardless of nesting order.
+                        if (style.outline_width <= 0.0f)
+                            style.outline_width = _default_outline_width;
                         stack.push_back(OpenTag{.kind = TagKind::Outline, .style = style});
+                        recognized = true;
+                    }
+                }
+                else if (kind_str == "outline-width")
+                {
+                    float value = _default_outline_width;
+                    if (value_str.empty() || _parse_float(value_str, value))
+                    {
+                        close_interval(output.size());
+                        GlyphStyle style = stack.empty() ? base_glyph_style : stack.back().style;
+                        style.outline_width = value;
+                        stack.push_back(OpenTag{.kind = TagKind::OutlineWidth, .style = style});
                         recognized = true;
                     }
                 }

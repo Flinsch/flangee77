@@ -46,9 +46,12 @@ struct ParsedMarkup
      * - [b]bold[/b]                    GlyphStyle::weight = 1 (or `[b=1.5]` for a custom value)
      * - [i]italic[/i]                  GlyphStyle::italic_intensity = 1 (or `[i=0.5]`)
      * - [color=#RRGGBB]text[/color]    GlyphStyle::text_color (also accepts #RRGGBBAA)
-     * - [outline=#RRGGBB]text[/outline] GlyphStyle::outline_color, with a fixed default
-     *                                  outline_width (also accepts #RRGGBBAA; no separate
-     *                                  width attribute yet)
+     * - [outline=#RRGGBB]text[/outline] GlyphStyle::outline_color, with a default
+     *                                  outline_width (also accepts #RRGGBBAA)
+     * - [outline-width]text[/outline-width] GlyphStyle::outline_width = 1 (or
+     *                                  `[outline-width=2.5]` for a custom value);
+     *                                  independent of and nestable with [outline],
+     *                                  same as [b]/[i] nest with [color]
      * - [icon=name]                    an inline Icon, looked up by exact name in `icons` (no closing tag)
      *
      * Tags may be nested to arbitrary depth; the effective style at any point is
