@@ -129,6 +129,7 @@ namespace pl7 {
         //LOG_TYPE(u8"Current directory\t" + cl7::platform::filesystem::get_current_directory(), cl7::logging::LogType::Item);
         LOG_TYPE(u8"User directory\t" + cl7::platform::filesystem::get_user_directory(), cl7::logging::LogType::Item);
         LOG_TYPE(u8"Temp directory\t" + cl7::platform::filesystem::get_temp_directory(), cl7::logging::LogType::Item);
+        LOG_TYPE(u8"Cache directory\t" + cl7::platform::filesystem::get_cache_directory(), cl7::logging::LogType::Item);
 
         // Create the main window.
         if (!xl7::main_window().init())
