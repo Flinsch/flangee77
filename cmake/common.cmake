@@ -17,6 +17,7 @@ link_libraries(
     dxgi.lib
     d3dcompiler.lib
     d3d9.lib
+    Xinput9_1_0.lib
 )
 if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     link_libraries(

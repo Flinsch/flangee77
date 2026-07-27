@@ -1,0 +1,167 @@
+#include "KeyboardMouseSystem.h"
+
+#include "./impl/rawinput/KeyboardMouseSystemImpl.h"
+
+#include <CoreLabs/logging.h>
+
+#include <chrono>
+
+
+
+namespace xl7::input {
+
+
+
+    // #############################################################################
+    // Construction / Destruction
+    // #############################################################################
+
+    KeyboardMouseSystem::KeyboardMouseSystem()
+        : _aggregated_keyboard(std::make_unique<Keyboard>())
+        , _aggregated_mouse(std::make_unique<Mouse>())
+    {
+    }
+
+
+
+    // #############################################################################
+    // Factory Function
+    // #############################################################################
+
+    KeyboardMouseSystem* KeyboardMouseSystem::factory_func()
+    {
+        return backend_registry().resolve(config_provider().get_config().input.keyboard_mouse_driver_name);
+    }
+
+
+
+    // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Refreshes the aggregate keyboard/mouse from the current state of all
+     * individual devices.
+     */
+    void KeyboardMouseSystem::update()
+    {
+        const auto now = std::chrono::steady_clock::now();
+
+        std::array<bool, static_cast<size_t>(Key::COUNT)> aggregated_keys{};
+        for (const auto& entry : _keyboards)
+            for (size_t i = 0; i < aggregated_keys.size(); ++i)
+                aggregated_keys[i] = aggregated_keys[i] || entry.device->is_key_down(static_cast<Key>(i));
+
+        _apply_keyboard(*_aggregated_keyboard, aggregated_keys, _pending_text_input, now);
+        _pending_text_input.clear();
+
+        std::array<bool, static_cast<size_t>(MouseButton::COUNT)> aggregated_buttons{};
+        int aggregated_delta_x = 0;
+        int aggregated_delta_y = 0;
+        int aggregated_wheel_delta = 0;
+        for (const auto& entry : _mice)
+        {
+            for (size_t i = 0; i < aggregated_buttons.size(); ++i)
+                aggregated_buttons[i] = aggregated_buttons[i] || entry.device->is_button_down(static_cast<MouseButton>(i));
+            aggregated_delta_x += entry.device->get_delta_x();
+            aggregated_delta_y += entry.device->get_delta_y();
+            aggregated_wheel_delta += entry.device->get_wheel_delta();
+        }
+
+        _apply_mouse(*_aggregated_mouse, aggregated_buttons, aggregated_delta_x, aggregated_delta_y, aggregated_wheel_delta, now);
+    }
+
+
+
+    // #############################################################################
+    // Backend Interface
+    // #############################################################################
+
+    /**
+     * Registers a newly detected keyboard and returns the (initially empty)
+     * instance for the backend to keep feeding.
+     */
+    Keyboard& KeyboardMouseSystem::_add_keyboard(DeviceId id)
+    {
+        _keyboards.push_back({.id = id, .device = std::make_unique<Keyboard>()});
+        return *_keyboards.back().device;
+    }
+
+    /**
+     * Unregisters a keyboard that has been disconnected.
+     */
+    void KeyboardMouseSystem::_remove_keyboard(DeviceId id)
+    {
+        std::erase_if(_keyboards, [id](const KeyboardEntry& entry) { return entry.id == id; });
+    }
+
+    /**
+     * Registers a newly detected mouse and returns the (initially empty)
+     * instance for the backend to keep feeding.
+     */
+    Mouse& KeyboardMouseSystem::_add_mouse(DeviceId id)
+    {
+        _mice.push_back({.id = id, .device = std::make_unique<Mouse>()});
+        return *_mice.back().device;
+    }
+
+    /**
+     * Unregisters a mouse that has been disconnected.
+     */
+    void KeyboardMouseSystem::_remove_mouse(DeviceId id)
+    {
+        std::erase_if(_mice, [id](const MouseEntry& entry) { return entry.id == id; });
+    }
+
+    /**
+     * Feeds newly observed values/deltas into an individual keyboard instance.
+     */
+    void KeyboardMouseSystem::_apply_keyboard(Keyboard& keyboard, const std::array<bool, static_cast<size_t>(Key::COUNT)>& key_values, const cl7::u8string& text_input_delta, std::chrono::steady_clock::time_point now)
+    {
+        Keyboard::Attorney::apply(keyboard, key_values, text_input_delta, now);
+    }
+
+    /**
+     * Feeds newly observed values/deltas into an individual mouse instance.
+     */
+    void KeyboardMouseSystem::_apply_mouse(Mouse& mouse, const std::array<bool, static_cast<size_t>(MouseButton::COUNT)>& button_values, int delta_x, int delta_y, int wheel_delta, std::chrono::steady_clock::time_point now)
+    {
+        Mouse::Attorney::apply(mouse, button_values, delta_x, delta_y, wheel_delta, now);
+    }
+
+    /**
+     * Queues composed text input to be reported by the aggregate keyboard on
+     * the next update().
+     */
+    void KeyboardMouseSystem::_queue_text_input(const cl7::u8string& text)
+    {
+        _pending_text_input += text;
+    }
+
+
+
+    // #############################################################################
+    // Component Implementations
+    // #############################################################################
+
+    /**
+     * Initializes the component.
+     */
+    bool KeyboardMouseSystem::_init()
+    {
+        LOG_SUCCESS(u8"The keyboard/mouse input component based on " + cl7::u8string{get_driver_name()} + u8" has been successfully initialized.");
+        return true;
+    }
+
+    /**
+     * De-initializes the component.
+     */
+    bool KeyboardMouseSystem::_shutdown()
+    {
+        LOG_SUCCESS(u8"The keyboard/mouse input component based on " + cl7::u8string{get_driver_name()} + u8" has been shut down successfully.");
+        return true;
+    }
+
+
+
+} // namespace xl7::input

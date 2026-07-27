@@ -87,6 +87,14 @@ target_sources(flangee77
     graphics/textures/TextureManager.cpp
     graphics/textures/TextureUpdater.cpp
 
+    input/AnalogState.cpp
+    input/DigitalState.cpp
+    input/GameController.cpp
+    input/GameControllerSystem.cpp
+    input/Keyboard.cpp
+    input/KeyboardMouseSystem.cpp
+    input/Mouse.cpp
+
     resources/AbstractResourceUpdater.cpp
     resources/Resource.cpp
     resources/ResourceManager.cpp
@@ -101,6 +109,9 @@ target_sources(flangee77
     graphics/impl/shared/meshes/VertexBufferBinding.cpp
 
     graphics/impl/shared/shaders/D3DShaderCompiler.cpp
+
+    input/impl/rawinput/KeyboardMouseSystemImpl.cpp
+    input/impl/xinput/GameControllerSystemImpl.cpp
 )
 
 target_sources(flangee77

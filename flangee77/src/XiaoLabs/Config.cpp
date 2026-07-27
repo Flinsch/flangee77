@@ -23,6 +23,9 @@ namespace xl7 {
         video.refresh_rate = 0;
         video.vsync_enabled = false;
         video.allow_tearing = true;
+
+        input.keyboard_mouse_driver_name = u8"Raw Input";
+        input.game_controller_driver_name = u8"XInput";
     }
 
 

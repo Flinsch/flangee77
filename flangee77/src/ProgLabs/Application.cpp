@@ -2,6 +2,7 @@
 
 #include <XiaoLabs/MainWindow.h>
 #include <XiaoLabs/graphics.h>
+#include <XiaoLabs/input.h>
 
 #include <CoreLabs/creational/Singleton.h>
 #include <CoreLabs/logging.h>
@@ -144,6 +145,24 @@ namespace pl7 {
         if (!xl7::graphics::graphics_system().init())
             return false;
 
+        // Initialize the keyboard/mouse input system.
+        if (!xl7::input::has_available_keyboard_mouse_backend())
+        {
+            LOG_ERROR(u8"No keyboard/mouse input backend is available for this platform/build.");
+            return false;
+        }
+        if (!xl7::input::keyboard_mouse_system().init())
+            return false;
+
+        // Initialize the game controller input system.
+        if (!xl7::input::has_available_game_controller_backend())
+        {
+            LOG_ERROR(u8"No game controller input backend is available for this platform/build.");
+            return false;
+        }
+        if (!xl7::input::game_controller_system().init())
+            return false;
+
         // Show the main window.
         xl7::main_window().show_window();
 
@@ -180,6 +199,12 @@ namespace pl7 {
     {
         while (true)
         {
+            // Latch last frame's input state and clear per-frame buffers *before*
+            // processing window events, so that events arriving during this frame's
+            // message pump are reflected in the freshly cleared "current" state.
+            xl7::input::keyboard_mouse_system().update();
+            xl7::input::game_controller_system().update();
+
             const auto [quit_flag, exit_code] = xl7::MainWindow::instance().process_window_events();
 
             if (quit_flag)

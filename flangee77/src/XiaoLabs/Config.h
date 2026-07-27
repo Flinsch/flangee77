@@ -67,6 +67,19 @@ struct Config
 
 
 
+    /**
+     * The presets for the input components.
+     */
+    struct Input
+    {
+        /** The name of the driver/implementation of the keyboard/mouse component. */
+        cl7::u8string keyboard_mouse_driver_name;
+        /** The name of the driver/implementation of the game controller component. */
+        cl7::u8string game_controller_driver_name;
+    } input;
+
+
+
     Config();
 
 }; // struct Config
