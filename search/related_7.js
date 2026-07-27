@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['renderingdevice_0',['RenderingDevice',['../da/d08/classxl7_1_1graphics_1_1RenderingContext_1_1Attorney.html#acdcc6bcd40e58d4d72e23dce8d98e989',1,'xl7::graphics::RenderingContext::Attorney']]],
-  ['renderingdeviceimpl_1',['renderingdeviceimpl',['../dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#a71660db6f5fb63a3baa73c6d3fa72e82',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl::RenderingDeviceImpl'],['../d4/dfa/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl_1_1Attorney.html#a71660db6f5fb63a3baa73c6d3fa72e82',1,'xl7::graphics::impl::direct3d11::ResourceFactoryImpl::Attorney::RenderingDeviceImpl'],['../d9/dfb/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl.html#a71660db6f5fb63a3baa73c6d3fa72e82',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl::RenderingDeviceImpl'],['../d9/d59/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl_1_1Attorney.html#a71660db6f5fb63a3baa73c6d3fa72e82',1,'xl7::graphics::impl::direct3d9::ResourceFactoryImpl::Attorney::RenderingDeviceImpl']]],
-  ['resourcemanager_2',['ResourceManager',['../d0/d78/classxl7_1_1resources_1_1Resource_1_1Attorney.html#a54c1252abc87a78a301e6b6984470408',1,'xl7::resources::Resource::Attorney']]]
+  ['profiler_0',['Profiler',['../d6/df3/classcl7_1_1profiling_1_1Registry_1_1Attorney.html#ad73e5645d5b7b84a00d4a5d07b8d8078',1,'cl7::profiling::Registry::Attorney']]]
 ];

@@ -3,7 +3,7 @@ var namespacexl7 =
     [ "audio", "d1/daf/namespacexl7_1_1audio.html", null ],
     [ "detail", "d6/dcf/namespacexl7_1_1detail.html", "d6/dcf/namespacexl7_1_1detail" ],
     [ "graphics", "d8/d30/namespacexl7_1_1graphics.html", "d8/d30/namespacexl7_1_1graphics" ],
-    [ "input", "df/d6d/namespacexl7_1_1input.html", null ],
+    [ "input", "df/d6d/namespacexl7_1_1input.html", "df/d6d/namespacexl7_1_1input" ],
     [ "resources", "da/d60/namespacexl7_1_1resources.html", "da/d60/namespacexl7_1_1resources" ],
     [ "BackendRegistry", "d1/da6/classxl7_1_1BackendRegistry.html", "d1/da6/classxl7_1_1BackendRegistry" ],
     [ "Component", "db/d24/classxl7_1_1Component.html", "db/d24/classxl7_1_1Component" ],

@@ -74,6 +74,7 @@ var hierarchy =
       [ "xl7::resources::ResourceUpdaterBase< TResourceDesc, TDirtyState >", "d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html", null ]
     ] ],
     [ "fl7::fonts::Font::Access", "d0/d7e/classfl7_1_1fonts_1_1Font_1_1Access.html", null ],
+    [ "xl7::input::AnalogState", "d2/d0e/structxl7_1_1input_1_1AnalogState.html", null ],
     [ "cl7::text::codec::Analyzer< Tchar, TDefaultErrorHandler >", "d8/d02/classcl7_1_1text_1_1codec_1_1Analyzer.html", null ],
     [ "ml7::Angle< T >", "d4/d9d/structml7_1_1Angle.html", null ],
     [ "dl7::ini::detail::AnyOtherMatcher", "d4/dc9/structdl7_1_1ini_1_1detail_1_1AnyOtherMatcher.html", null ],
@@ -116,6 +117,9 @@ var hierarchy =
     [ "xl7::graphics::states::StateManager::Attorney", "d8/d6b/classxl7_1_1graphics_1_1states_1_1StateManager_1_1Attorney.html", null ],
     [ "xl7::graphics::surfaces::SurfaceManager::Attorney", "d8/d99/classxl7_1_1graphics_1_1surfaces_1_1SurfaceManager_1_1Attorney.html", null ],
     [ "xl7::graphics::textures::TextureManager::Attorney", "d4/ddc/classxl7_1_1graphics_1_1textures_1_1TextureManager_1_1Attorney.html", null ],
+    [ "xl7::input::GameController::Attorney", "d5/d34/classxl7_1_1input_1_1GameController_1_1Attorney.html", null ],
+    [ "xl7::input::Keyboard::Attorney", "df/d72/classxl7_1_1input_1_1Keyboard_1_1Attorney.html", null ],
+    [ "xl7::input::Mouse::Attorney", "d7/d6a/classxl7_1_1input_1_1Mouse_1_1Attorney.html", null ],
     [ "xl7::resources::Resource::Attorney", "d0/d78/classxl7_1_1resources_1_1Resource_1_1Attorney.html", null ],
     [ "dl7::xml::Attribute", "d5/d23/classdl7_1_1xml_1_1Attribute.html", null ],
     [ "cl7::auto_invoke< Callable >", "de/dbb/classcl7_1_1auto__invoke.html", null ],
@@ -197,6 +201,7 @@ var hierarchy =
     [ "dl7::syntax::Diagnostics", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html", [
       [ "dl7::syntax::SourceAwareDiagnostics", "d2/d51/classdl7_1_1syntax_1_1SourceAwareDiagnostics.html", null ]
     ] ],
+    [ "xl7::input::DigitalState", "df/db7/structxl7_1_1input_1_1DigitalState.html", null ],
     [ "xl7::graphics::textures::DirtyBox", "d9/dfa/classxl7_1_1graphics_1_1textures_1_1DirtyBox.html", null ],
     [ "xl7::graphics::shaders::DirtyFlag", "de/d02/classxl7_1_1graphics_1_1shaders_1_1DirtyFlag.html", null ],
     [ "xl7::graphics::textures::DirtyLayerBoxes", "d3/d50/classxl7_1_1graphics_1_1textures_1_1DirtyLayerBoxes.html", null ],
@@ -271,6 +276,7 @@ var hierarchy =
         [ "xl7::graphics::surfaces::RenderTargetSurface", "da/d06/classxl7_1_1graphics_1_1surfaces_1_1RenderTargetSurface.html", null ]
       ] ]
     ] ],
+    [ "xl7::input::GameController", "d9/d7c/classxl7_1_1input_1_1GameController.html", null ],
     [ "xl7::Config::General", "dd/d38/structxl7_1_1Config_1_1General.html", null ],
     [ "fl7::fonts::Glyph", "d2/d26/structfl7_1_1fonts_1_1Glyph.html", null ],
     [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::GlyphCacheEntry", "d2/d81/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1GlyphCacheEntry.html", null ],
@@ -341,6 +347,7 @@ var hierarchy =
     [ "xl7::graphics::meshes::IndexBufferWrite", "de/d03/structxl7_1_1graphics_1_1meshes_1_1IndexBufferWrite.html", null ],
     [ "dl7::ini::IniReader", "d0/d99/classdl7_1_1ini_1_1IniReader.html", null ],
     [ "dl7::ini::IniWriter", "df/d0b/classdl7_1_1ini_1_1IniWriter.html", null ],
+    [ "xl7::Config::Input", "db/d03/structxl7_1_1Config_1_1Input.html", null ],
     [ "dl7::syntax::matchers::IntegerLiteralMatcher", "d9/d3c/structdl7_1_1syntax_1_1matchers_1_1IntegerLiteralMatcher.html", null ],
     [ "cl7::text::format::IntFormatOptions", "dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html", null ],
     [ "cl7::io::IReadable", "d5/ddf/classcl7_1_1io_1_1IReadable.html", [
@@ -373,6 +380,8 @@ var hierarchy =
     [ "dl7::json::Json", "d7/d95/classdl7_1_1json_1_1Json.html", null ],
     [ "dl7::json::JsonReader", "de/da5/classdl7_1_1json_1_1JsonReader.html", null ],
     [ "dl7::json::JsonWriter", "df/d83/classdl7_1_1json_1_1JsonWriter.html", null ],
+    [ "xl7::input::Keyboard", "d9/dfa/classxl7_1_1input_1_1Keyboard.html", null ],
+    [ "xl7::input::KeyboardMouseSystem::KeyboardEntry", "d4/dc4/structxl7_1_1input_1_1KeyboardMouseSystem_1_1KeyboardEntry.html", null ],
     [ "ml7::Vector2< T >::less", "d6/d6c/structml7_1_1Vector2_1_1less.html", null ],
     [ "ml7::Vector3< T >::less", "d5/d80/structml7_1_1Vector3_1_1less.html", null ],
     [ "ml7::Vector4< T >::less", "d4/df6/structml7_1_1Vector4_1_1less.html", null ],
@@ -403,6 +412,9 @@ var hierarchy =
     [ "xl7::graphics::impl::shared::meshes::MeshBufferDiscardPolicy", "d2/d06/classxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1MeshBufferDiscardPolicy.html", null ],
     [ "xl7::graphics::meshes::MeshBufferWrite", "df/d19/structxl7_1_1graphics_1_1meshes_1_1MeshBufferWrite.html", null ],
     [ "xl7::graphics::meshes::MeshUtil", "d2/d1b/structxl7_1_1graphics_1_1meshes_1_1MeshUtil.html", null ],
+    [ "xl7::input::Mouse", "d3/dee/classxl7_1_1input_1_1Mouse.html", null ],
+    [ "xl7::input::Mouse::MouseButtonState", "d1/d31/structxl7_1_1input_1_1Mouse_1_1MouseButtonState.html", null ],
+    [ "xl7::input::KeyboardMouseSystem::MouseEntry", "de/da2/structxl7_1_1input_1_1KeyboardMouseSystem_1_1MouseEntry.html", null ],
     [ "dl7::json::Format::MultiLineOptions", "d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html", null ],
     [ "dl7::toml::detail::MultilineStringMatcher", "df/d3f/structdl7_1_1toml_1_1detail_1_1MultilineStringMatcher.html", null ],
     [ "fl7::fonts::render::NamedIcon", "d2/d64/structfl7_1_1fonts_1_1render_1_1NamedIcon.html", null ],
@@ -472,6 +484,7 @@ var hierarchy =
     [ "ml7::detail::distance::PointResult_point< TVector >", "d5/d92/structml7_1_1detail_1_1distance_1_1PointResult__point.html", null ],
     [ "ml7::detail::distance::PointResult_t< T >", "db/df0/structml7_1_1detail_1_1distance_1_1PointResult__t.html", null ],
     [ "al7::packing::Position", "d3/dda/structal7_1_1packing_1_1Position.html", null ],
+    [ "xl7::input::Mouse::Position", "d4/d7d/structxl7_1_1input_1_1Mouse_1_1Position.html", null ],
     [ "dl7::xml::Format::PrettyOptions", "de/dfe/structdl7_1_1xml_1_1Format_1_1PrettyOptions.html", null ],
     [ "dl7::syntax::ProductionRule", "d1/d16/structdl7_1_1syntax_1_1ProductionRule.html", null ],
     [ "dl7::syntax::ProductionRuleCollection", "dd/d0c/classdl7_1_1syntax_1_1ProductionRuleCollection.html", null ],
@@ -484,7 +497,9 @@ var hierarchy =
     [ "xl7::graphics::states::RasterizerStateDesc", "d7/d7a/structxl7_1_1graphics_1_1states_1_1RasterizerStateDesc.html", null ],
     [ "fl7::fonts::raster::RasterResult", "d6/dfb/structfl7_1_1fonts_1_1raster_1_1RasterResult.html", null ],
     [ "fl7::fonts::raster::RasterSizeConfig", "d0/dcb/structfl7_1_1fonts_1_1raster_1_1RasterSizeConfig.html", null ],
+    [ "xl7::input::GameControllerSystem::RawControllerState", "dd/de7/structxl7_1_1input_1_1GameControllerSystem_1_1RawControllerState.html", null ],
     [ "fl7::fonts::detail::ttf::RawGlyph", "d3/d6c/structfl7_1_1fonts_1_1detail_1_1ttf_1_1RawGlyph.html", null ],
+    [ "xl7::input::GameController::RawStickValues", "d0/d70/structxl7_1_1input_1_1GameController_1_1RawStickValues.html", null ],
     [ "ml7::Ray2< T >", "dc/def/structml7_1_1Ray2.html", null ],
     [ "ml7::Ray3< T >", "d3/d71/structml7_1_1Ray3.html", null ],
     [ "al7::packing::Rect", "df/dd8/structal7_1_1packing_1_1Rect.html", null ],
@@ -657,17 +672,27 @@ var hierarchy =
       ] ],
       [ "cl7::creational::Singleton< MainWindow >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", null ],
       [ "cl7::creational::Singleton< GraphicsSystem >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", null ],
+      [ "cl7::creational::Singleton< GameControllerSystem >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", null ],
+      [ "cl7::creational::Singleton< KeyboardMouseSystem >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", null ],
       [ "cl7::creational::Singleton< TSingleton >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", [
         [ "xl7::Component< MainWindow >", "db/d24/classxl7_1_1Component.html", [
           [ "xl7::MainWindow", "da/df2/classxl7_1_1MainWindow.html", null ]
         ] ],
         [ "xl7::Component< GraphicsSystem >", "db/d24/classxl7_1_1Component.html", null ],
+        [ "xl7::Component< GameControllerSystem >", "db/d24/classxl7_1_1Component.html", null ],
+        [ "xl7::Component< KeyboardMouseSystem >", "db/d24/classxl7_1_1Component.html", null ],
         [ "xl7::Component< TSingleton >", "db/d24/classxl7_1_1Component.html", [
           [ "xl7::DriverBasedComponent< GraphicsSystem >", "d8/d3d/classxl7_1_1DriverBasedComponent.html", [
             [ "xl7::graphics::GraphicsSystem", "da/d03/classxl7_1_1graphics_1_1GraphicsSystem.html", [
               [ "xl7::graphics::impl::direct3d11::GraphicsSystemImpl", "d8/d86/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1GraphicsSystemImpl.html", null ],
               [ "xl7::graphics::impl::direct3d9::GraphicsSystemImpl", "da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html", null ]
             ] ]
+          ] ],
+          [ "xl7::DriverBasedComponent< GameControllerSystem >", "d8/d3d/classxl7_1_1DriverBasedComponent.html", [
+            [ "xl7::input::GameControllerSystem", "d9/d19/classxl7_1_1input_1_1GameControllerSystem.html", null ]
+          ] ],
+          [ "xl7::DriverBasedComponent< KeyboardMouseSystem >", "d8/d3d/classxl7_1_1DriverBasedComponent.html", [
+            [ "xl7::input::KeyboardMouseSystem", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html", null ]
           ] ],
           [ "xl7::DriverBasedComponent< TSingleton >", "d8/d3d/classxl7_1_1DriverBasedComponent.html", null ]
         ] ]
@@ -685,6 +710,7 @@ var hierarchy =
     [ "cl7::static_vector< xl7::BackendRegistry::RegistryEntry, MAX_BACKEND_ENTRIES >", "da/d4e/classcl7_1_1static__vector.html", null ],
     [ "tl7::Stats", "de/d12/structtl7_1_1Stats.html", null ],
     [ "xl7::graphics::states::StencilOperationDesc", "d3/dac/structxl7_1_1graphics_1_1states_1_1StencilOperationDesc.html", null ],
+    [ "xl7::input::GameController::StickState", "d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html", null ],
     [ "cl7::profiling::Stopwatch", "d6/dac/classcl7_1_1profiling_1_1Stopwatch.html", null ],
     [ "cl7::string_hash< Tchar >", "d0/dbc/structcl7_1_1string__hash.html", null ],
     [ "fl7::fonts::render::StyleRun", "de/ddd/structfl7_1_1fonts_1_1render_1_1StyleRun.html", null ],

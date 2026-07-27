@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['xmlreader_0',['XmlReader',['../de/d7c/classdl7_1_1xml_1_1XmlReader.html',1,'dl7::xml']]],
-  ['xmlwriter_1',['XmlWriter',['../d9/dba/classdl7_1_1xml_1_1XmlWriter.html',1,'dl7::xml']]]
+  ['writablememory_0',['WritableMemory',['../d9/d32/classcl7_1_1io_1_1WritableMemory.html',1,'cl7::io']]],
+  ['writer_1',['writer',['../d0/d4d/classxl7_1_1graphics_1_1images_1_1codecs_1_1netpbm_1_1Writer.html',1,'xl7::graphics::images::codecs::netpbm::Writer'],['../d6/d2f/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Writer.html',1,'xl7::graphics::images::codecs::png::Writer'],['../d3/d2d/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Writer.html',1,'xl7::graphics::images::codecs::targa::Writer']]]
 ];

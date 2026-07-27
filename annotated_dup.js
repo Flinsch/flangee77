@@ -599,6 +599,15 @@ var annotated_dup =
         [ "RenderingDevice", "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html", "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice" ],
         [ "Viewport", "dc/d8f/structxl7_1_1graphics_1_1Viewport.html", "dc/d8f/structxl7_1_1graphics_1_1Viewport" ]
       ] ],
+      [ "input", "df/d6d/namespacexl7_1_1input.html", [
+        [ "AnalogState", "d2/d0e/structxl7_1_1input_1_1AnalogState.html", "d2/d0e/structxl7_1_1input_1_1AnalogState" ],
+        [ "DigitalState", "df/db7/structxl7_1_1input_1_1DigitalState.html", "df/db7/structxl7_1_1input_1_1DigitalState" ],
+        [ "GameController", "d9/d7c/classxl7_1_1input_1_1GameController.html", "d9/d7c/classxl7_1_1input_1_1GameController" ],
+        [ "GameControllerSystem", "d9/d19/classxl7_1_1input_1_1GameControllerSystem.html", "d9/d19/classxl7_1_1input_1_1GameControllerSystem" ],
+        [ "Keyboard", "d9/dfa/classxl7_1_1input_1_1Keyboard.html", "d9/dfa/classxl7_1_1input_1_1Keyboard" ],
+        [ "KeyboardMouseSystem", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem" ],
+        [ "Mouse", "d3/dee/classxl7_1_1input_1_1Mouse.html", "d3/dee/classxl7_1_1input_1_1Mouse" ]
+      ] ],
       [ "resources", "da/d60/namespacexl7_1_1resources.html", [
         [ "AbstractResourceUpdater", "d9/d70/classxl7_1_1resources_1_1AbstractResourceUpdater.html", "d9/d70/classxl7_1_1resources_1_1AbstractResourceUpdater" ],
         [ "Resource", "d5/d7b/classxl7_1_1resources_1_1Resource.html", "d5/d7b/classxl7_1_1resources_1_1Resource" ],

@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['offsetsubtable_0',['OffsetSubtable',['../d9/db1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OffsetSubtable.html',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader']]],
-  ['opentypefontmetric_1',['OpenTypeFontMetric',['../d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader']]],
-  ['options_2',['options',['../de/d56/structdl7_1_1Base64_1_1Options.html',1,'dl7::Base64::Options'],['../d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html',1,'dl7::json::util::Escaper::Options'],['../dd/d72/structdl7_1_1syntax_1_1Lexer_1_1Options.html',1,'dl7::syntax::Lexer::Options'],['../d3/d88/structdl7_1_1xml_1_1util_1_1Escaper_1_1Options.html',1,'dl7::xml::util::Escaper::Options'],['../de/d34/structxl7_1_1graphics_1_1images_1_1codecs_1_1netpbm_1_1Writer_1_1Options.html',1,'xl7::graphics::images::codecs::netpbm::Writer::Options'],['../d4/db1/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Writer_1_1Options.html',1,'xl7::graphics::images::codecs::png::Writer::Options'],['../d1/d74/structxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Writer_1_1Options.html',1,'xl7::graphics::images::codecs::targa::Writer::Options']]],
-  ['ordered_5fmap_3',['ordered_map',['../dd/d42/classcl7_1_1ordered__map.html',1,'cl7']]],
-  ['ordered_5fmap_3c_20cl7_3a_3au8string_2c_20value_2c_20cl7_3a_3au8string_5fview_20_3e_4',['ordered_map&lt; cl7::u8string, Value, cl7::u8string_view &gt;',['../dd/d42/classcl7_1_1ordered__map.html',1,'cl7']]],
-  ['outputmergerstage_5',['OutputMergerStage',['../d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html',1,'xl7::graphics::pipeline']]],
-  ['oversampledbitmaprasterizer_6',['OversampledBitmapRasterizer',['../dd/d48/classfl7_1_1fonts_1_1raster_1_1OversampledBitmapRasterizer.html',1,'fl7::fonts::raster']]]
+  ['naiverowpacker_0',['NaiveRowPacker',['../d7/d31/classal7_1_1packing_1_1NaiveRowPacker.html',1,'al7::packing']]],
+  ['namedicon_1',['NamedIcon',['../d2/d64/structfl7_1_1fonts_1_1render_1_1NamedIcon.html',1,'fl7::fonts::render']]],
+  ['node_2',['Node',['../d2/d24/classdl7_1_1xml_1_1Node.html',1,'dl7::xml']]],
+  ['nonliteralsymbol_3',['NonLiteralSymbol',['../d8/d79/structdl7_1_1syntax_1_1NonLiteralSymbol.html',1,'dl7::syntax']]]
 ];
