@@ -9,13 +9,15 @@ var classxl7_1_1input_1_1KeyboardMouseSystem =
     [ "~KeyboardMouseSystem", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a44ec04807e92ce80aa559dcb55663b77", null ],
     [ "_add_keyboard", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#aff3508433196037d855065bc52758d91", null ],
     [ "_add_mouse", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#afc353378ab06d2d7576ef59c2876f1eb", null ],
-    [ "_apply_keyboard", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#afbb4fba71a4e3d648dba87a5c444cdc1", null ],
+    [ "_apply_keyboard", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a8b1abe42abaa3f98e9922daa87920fff", null ],
     [ "_apply_mouse", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a89cf7278fed62adb6c49ff5668dbdf3e", null ],
     [ "_init", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a2a6e102212cfa29cca2dafbc0d69f5fa", null ],
-    [ "_queue_text_input", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#af33e23106c22bc38131e02b88d6ab01a", null ],
+    [ "_init_impl", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ac031a9a7b79861a2001f6cdbf70e7ce1", null ],
+    [ "_queue_text_input", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a635dcb036f461ee8cf8830499fc5dd2c", null ],
     [ "_remove_keyboard", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a7c718d7f7492f221ff9ad99e8321ea4d", null ],
     [ "_remove_mouse", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ac95517fc7b40c0cd36fb0d675b8deea6", null ],
     [ "_shutdown", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a6240e2fc7898a5b98b413339d9345dc7", null ],
+    [ "_shutdown_impl", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a5284e70a44762a8802edf27bfd2bd51e", null ],
     [ "aggregated_keyboard", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a16f0bf10e918cd72f8071052724cd957", null ],
     [ "aggregated_mouse", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a1d22329d346499dc0885ff1c3733917b", null ],
     [ "factory_func", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ace89c6b0bb58696650f745bb2380fd8b", null ],
@@ -31,5 +33,5 @@ var classxl7_1_1input_1_1KeyboardMouseSystem =
     [ "_aggregated_mouse", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#abee911336ab67222bd3966fbdb59efd8", null ],
     [ "_keyboards", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a8073456b31e61924486daf78ae936f95", null ],
     [ "_mice", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#abbdf8d865468345287196582f13a8eee", null ],
-    [ "_pending_text_input", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a17a357052b56426cf2e09d4e67923a9c", null ]
+    [ "_pending_text_input", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#aaf83fd7d93ab370a9680c597ddd84ad5", null ]
 ];

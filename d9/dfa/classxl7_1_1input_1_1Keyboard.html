@@ -132,20 +132,20 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa60a87008e2ae6ed7c38309c2b70b346"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac788a2ab525436262b2cb9d68f0750b6" id="r_ac788a2ab525436262b2cb9d68f0750b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dfa/classxl7_1_1input_1_1Keyboard.html#ac788a2ab525436262b2cb9d68f0750b6">is_key_tapped</a> (<a class="el" href="../../df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45">Key</a> key, std::chrono::milliseconds time_window=<a class="el" href="../../df/db7/structxl7_1_1input_1_1DigitalState.html#ab29f7d7a09d6dcec88cf1fd9026fc69f">DigitalState::DEFAULT_TAP_TIME_WINDOW</a>) const</td></tr>
 <tr class="separator:ac788a2ab525436262b2cb9d68f0750b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b6c96d6f076e38fc0aeb8f807ac97c8" id="r_a4b6c96d6f076e38fc0aeb8f807ac97c8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dfa/classxl7_1_1input_1_1Keyboard.html#a4b6c96d6f076e38fc0aeb8f807ac97c8">get_text_input</a> () const</td></tr>
-<tr class="separator:a4b6c96d6f076e38fc0aeb8f807ac97c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaebe8fba93e9d77186eee8ed2f9e38a2" id="r_aaebe8fba93e9d77186eee8ed2f9e38a2"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d1/d2e/namespacecl7.html#a34e3c57061a467049da30df1c7fe8fb1">cl7::u32string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dfa/classxl7_1_1input_1_1Keyboard.html#aaebe8fba93e9d77186eee8ed2f9e38a2">get_text_input</a> () const</td></tr>
+<tr class="separator:aaebe8fba93e9d77186eee8ed2f9e38a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:abb96de9adb0079a40c5dca2ca067a90c" id="r_abb96de9adb0079a40c5dca2ca067a90c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dfa/classxl7_1_1input_1_1Keyboard.html#abb96de9adb0079a40c5dca2ca067a90c">_apply</a> (const std::array&lt; bool, static_cast&lt; size_t &gt;(<a class="el" href="../../df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45a4905ac9d6a22bdfc1ae096094ce6248d">Key::COUNT</a>)&gt; &amp;key_values, const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;text_input_delta, std::chrono::steady_clock::time_point now)</td></tr>
-<tr class="separator:abb96de9adb0079a40c5dca2ca067a90c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60c73f39be129c33a45d3d05153193bb" id="r_a60c73f39be129c33a45d3d05153193bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dfa/classxl7_1_1input_1_1Keyboard.html#a60c73f39be129c33a45d3d05153193bb">_apply</a> (const std::array&lt; bool, static_cast&lt; size_t &gt;(<a class="el" href="../../df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45a4905ac9d6a22bdfc1ae096094ce6248d">Key::COUNT</a>)&gt; &amp;key_values, const <a class="el" href="../../d1/d2e/namespacecl7.html#a34e3c57061a467049da30df1c7fe8fb1">cl7::u32string</a> &amp;text_input_delta, std::chrono::steady_clock::time_point now)</td></tr>
+<tr class="separator:a60c73f39be129c33a45d3d05153193bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a33c540cdd71c7bb6ee291d9fb561ba38" id="r_a33c540cdd71c7bb6ee291d9fb561ba38"><td class="memItemLeft" align="right" valign="top">std::array&lt; <a class="el" href="../../df/db7/structxl7_1_1input_1_1DigitalState.html">DigitalState</a>, static_cast&lt; size_t &gt;(<a class="el" href="../../df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45a4905ac9d6a22bdfc1ae096094ce6248d">Key::COUNT</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dfa/classxl7_1_1input_1_1Keyboard.html#a33c540cdd71c7bb6ee291d9fb561ba38">_keys</a> {}</td></tr>
 <tr class="separator:a33c540cdd71c7bb6ee291d9fb561ba38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4dd77139fe283aa98a4c659e628014ab" id="r_a4dd77139fe283aa98a4c659e628014ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dfa/classxl7_1_1input_1_1Keyboard.html#a4dd77139fe283aa98a4c659e628014ab">_text_input</a></td></tr>
-<tr class="separator:a4dd77139fe283aa98a4c659e628014ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2e398b8745922519bf291512cfc7f61" id="r_af2e398b8745922519bf291512cfc7f61"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2e/namespacecl7.html#a34e3c57061a467049da30df1c7fe8fb1">cl7::u32string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dfa/classxl7_1_1input_1_1Keyboard.html#af2e398b8745922519bf291512cfc7f61">_text_input</a></td></tr>
+<tr class="separator:af2e398b8745922519bf291512cfc7f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa29a1feb7721d84647c6a6bb1458a04c" id="r_aa29a1feb7721d84647c6a6bb1458a04c"><td class="memItemLeft" align="right" valign="top">std::chrono::steady_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dfa/classxl7_1_1input_1_1Keyboard.html#aa29a1feb7721d84647c6a6bb1458a04c">_now</a></td></tr>
 <tr class="separator:aa29a1feb7721d84647c6a6bb1458a04c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -255,8 +255,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="abb96de9adb0079a40c5dca2ca067a90c" name="abb96de9adb0079a40c5dca2ca067a90c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb96de9adb0079a40c5dca2ca067a90c">&#9670;&#160;</a></span>_apply()</h2>
+<a id="a60c73f39be129c33a45d3d05153193bb" name="a60c73f39be129c33a45d3d05153193bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60c73f39be129c33a45d3d05153193bb">&#9670;&#160;</a></span>_apply()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -273,7 +273,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d2e/namespacecl7.html#a34e3c57061a467049da30df1c7fe8fb1">cl7::u32string</a> &amp;&#160;</td>
           <td class="paramname"><em>text_input_delta</em>, </td>
         </tr>
         <tr>
@@ -325,8 +325,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a4b6c96d6f076e38fc0aeb8f807ac97c8" name="a4b6c96d6f076e38fc0aeb8f807ac97c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b6c96d6f076e38fc0aeb8f807ac97c8">&#9670;&#160;</a></span>get_text_input()</h2>
+<a id="aaebe8fba93e9d77186eee8ed2f9e38a2" name="aaebe8fba93e9d77186eee8ed2f9e38a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaebe8fba93e9d77186eee8ed2f9e38a2">&#9670;&#160;</a></span>get_text_input()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -335,7 +335,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> &amp; xl7::input::Keyboard::get_text_input </td>
+          <td class="memname">const <a class="el" href="../../d1/d2e/namespacecl7.html#a34e3c57061a467049da30df1c7fe8fb1">cl7::u32string</a> &amp; xl7::input::Keyboard::get_text_input </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -348,6 +348,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Returns the composed text input received during this frame. Unlike the key state above, this already reflects keyboard-layout translation and dead-key/IME composition (fed from WM_CHAR on Windows, for example, not from the raw key codes), so it's what a GUI text field should consume.</p>
+<p>UTF-32, per the framework's "user interaction" convention, so callers get 1-to-1 code-point indexing for free (e.g., for cursor movement, selection, backspace, glyph lookup, etc.).</p>
 <p>Note: WM_CHAR isn't attributable to a specific source keyboard, so in practice only the aggregate keyboard's text input is ever populated, individual keyboards' text input stays empty. </p>
 
 </div>
@@ -567,8 +568,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a4dd77139fe283aa98a4c659e628014ab" name="a4dd77139fe283aa98a4c659e628014ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4dd77139fe283aa98a4c659e628014ab">&#9670;&#160;</a></span>_text_input</h2>
+<a id="af2e398b8745922519bf291512cfc7f61" name="af2e398b8745922519bf291512cfc7f61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2e398b8745922519bf291512cfc7f61">&#9670;&#160;</a></span>_text_input</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -577,7 +578,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a56c82ebac73d775d95e0932d54ff12c3">cl7::u8string</a> xl7::input::Keyboard::_text_input</td>
+          <td class="memname"><a class="el" href="../../d1/d2e/namespacecl7.html#a34e3c57061a467049da30df1c7fe8fb1">cl7::u32string</a> xl7::input::Keyboard::_text_input</td>
         </tr>
       </table>
   </td>
