@@ -166,6 +166,23 @@ protected:
 private:
 
     // #############################################################################
+    // Prototypes
+    // #############################################################################
+
+    /**
+     * Performs backend-specific initialization (e.g., registering for raw input
+     * devices).
+     */
+    virtual bool _init_impl() = 0;
+
+    /**
+     * Performs backend-specific de-initialization.
+     */
+    virtual bool _shutdown_impl() = 0;
+
+
+
+    // #############################################################################
     // Component Implementations
     // #############################################################################
 

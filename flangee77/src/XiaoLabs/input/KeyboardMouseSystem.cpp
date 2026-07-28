@@ -149,8 +149,14 @@ namespace xl7::input {
      */
     bool KeyboardMouseSystem::_init()
     {
-        LOG_SUCCESS(u8"The keyboard/mouse input component based on " + cl7::u8string{get_driver_name()} + u8" has been successfully initialized.");
-        return true;
+        const bool result = _init_impl();
+
+        if (result)
+            LOG_SUCCESS(u8"The keyboard/mouse input component based on " + cl7::u8string{get_driver_name()} + u8" has been successfully initialized.");
+        else
+            LOG_ERROR(u8"The keyboard/mouse input component based on " + cl7::u8string{get_driver_name()} + u8" could not be initialized.");
+
+        return result;
     }
 
     /**
@@ -158,8 +164,14 @@ namespace xl7::input {
      */
     bool KeyboardMouseSystem::_shutdown()
     {
-        LOG_SUCCESS(u8"The keyboard/mouse input component based on " + cl7::u8string{get_driver_name()} + u8" has been shut down successfully.");
-        return true;
+        const bool result = _shutdown_impl();
+
+        if (result)
+            LOG_SUCCESS(u8"The keyboard/mouse input component based on " + cl7::u8string{get_driver_name()} + u8" has been shut down successfully.");
+        else
+            LOG_WARNING(u8"The keyboard/mouse input component based on " + cl7::u8string{get_driver_name()} + u8" could not be shut down correctly.");
+
+        return result;
     }
 
 

@@ -3,6 +3,13 @@
 #include "../../KeyboardMouseSystem.h"
 #if F77_IS_WINDOWS
 
+#include <CoreLabs/string.h>
+
+#include <windows.h>
+
+#include <array>
+#include <vector>
+
 
 
 namespace xl7::input::impl::rawinput {
@@ -38,17 +45,161 @@ public:
 
 
 
+    /**
+     * Handles a window message that may carry raw keyboard/mouse input (WM_INPUT,
+     * WM_INPUT_DEVICE_CHANGE, WM_CHAR). Called by WindowImpl::wnd_proc for the
+     * active keyboard/mouse backend.
+     */
+    void handle_window_message(UINT msg, WPARAM wparam, LPARAM lparam);
+
+
+
 protected:
     KeyboardMouseSystemImpl() = default;
     ~KeyboardMouseSystemImpl() override = default;
 
-    // Raw Input keeps state current as messages arrive rather than being
-    // polled, so there's no per-frame work to override here (unlike
-    // GameControllerSystem's _poll_impl()). This backend doesn't actually
-    // register for/handle Raw Input messages yet, since that needs a
-    // message-forwarding hook in WindowImpl::wnd_proc that doesn't exist yet;
-    // TODO once that hook lands: register devices via _add_keyboard()/
-    // _add_mouse() and feed them via _apply_keyboard()/_apply_mouse().
+
+
+private:
+
+    // #############################################################################
+    // Types
+    // #############################################################################
+
+    struct KeyboardDeviceState
+    {
+        DeviceId id = 0;
+        Keyboard* keyboard = nullptr;
+        std::array<bool, static_cast<size_t>(Key::COUNT)> key_values{};
+    };
+
+    struct MouseDeviceState
+    {
+        DeviceId id = 0;
+        Mouse* mouse = nullptr;
+        std::array<bool, static_cast<size_t>(MouseButton::COUNT)> button_values{};
+    };
+
+
+
+    // #############################################################################
+    // KeyboardMouseSystem Implementations
+    // #############################################################################
+
+    /**
+     * Registers for raw keyboard/mouse input and enumerates already-connected
+     * devices.
+     */
+    bool _init_impl() override;
+
+    /**
+     * Unregisters raw keyboard/mouse input.
+     */
+    bool _shutdown_impl() override;
+
+
+
+    // #############################################################################
+    // Message Handlers
+    // #############################################################################
+
+    /**
+     * Handles WM_INPUT: reads the RAWINPUT payload and dispatches it to the
+     * keyboard/mouse handler.
+     */
+    void _handle_input_message(LPARAM lparam);
+
+    /**
+     * Handles WM_INPUT_DEVICE_CHANGE: registers/unregisters the arriving or
+     * departing device (hotplug).
+     */
+    void _handle_input_device_change_message(WPARAM wparam, LPARAM lparam);
+
+    /**
+     * Handles WM_CHAR: buffers the UTF-16 code unit and, once a complete
+     * (non-dangling) sequence is available, converts and queues it as composed text
+     * input on the aggregate keyboard.
+     */
+    void _handle_char_message(WPARAM wparam);
+
+    /**
+     * Applies a raw keyboard input report to the corresponding device.
+     */
+    void _handle_raw_keyboard(HANDLE device, const RAWKEYBOARD& raw_keyboard);
+
+    /**
+     * Applies a raw mouse input report to the corresponding device.
+     */
+    void _handle_raw_mouse(HANDLE device, const RAWMOUSE& raw_mouse);
+
+
+
+    // #############################################################################
+    // Device Registration
+    // #############################################################################
+
+    /**
+     * Registers for WM_INPUT/WM_INPUT_DEVICE_CHANGE for the generic keyboard
+     * and mouse usages.
+     */
+    static bool _register_devices();
+
+    /**
+     * Unregisters raw input.
+     */
+    static bool _unregister_devices();
+
+    /**
+     * Registers all currently connected raw input devices.
+     */
+    void _enumerate_existing_devices();
+
+    /**
+     * Determines the type of the specified (newly seen) device and registers it as
+     * a keyboard or mouse, if applicable (anything else, e.g. HID game controllers,
+     * is ignored, those are handled via XInput or whatever).
+     */
+    void _register_device(HANDLE device);
+
+    /**
+     * Unregisters the specified device, wherever it's currently tracked.
+     */
+    void _remove_device(HANDLE device);
+
+    /**
+     * Returns the existing device state for the specified handle, or registers and
+     * returns a new one.
+     */
+    KeyboardDeviceState& _find_or_add_keyboard_device(HANDLE device);
+
+    /**
+     * Returns the existing device state for the specified handle, or registers and
+     * returns a new one.
+     */
+    MouseDeviceState& _find_or_add_mouse_device(HANDLE device);
+
+    /**
+     * Derives our opaque DeviceId from a raw input device handle.
+     */
+    static DeviceId _device_id_from_handle(HANDLE device);
+
+    /**
+     * Maps a raw keyboard input report to our backend-agnostic Key, resolving the
+     * left/right ambiguity Raw Input leaves for Ctrl/Alt/Shift.
+     */
+    static Key _key_from_raw_keyboard(const RAWKEYBOARD& raw_keyboard);
+
+
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    std::vector<KeyboardDeviceState> _keyboard_devices;
+    std::vector<MouseDeviceState> _mouse_devices;
+
+    /** Buffers WM_CHAR code units until a complete UTF-16 sequence is available. */
+    cl7::u16string _pending_text_input_utf16;
 
 }; // class KeyboardMouseSystemImpl
 

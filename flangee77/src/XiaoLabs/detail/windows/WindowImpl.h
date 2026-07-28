@@ -41,6 +41,12 @@ private:
     bool _destroy_window();
     static bool _unregister_window_class();
 
+    /**
+     * Forwards a window message that may carry raw keyboard/mouse input to the
+     * active keyboard/mouse backend (if it's the Raw Input one).
+     */
+    static void _forward_to_input_system(UINT msg, WPARAM wparam, LPARAM lparam);
+
     static LRESULT CALLBACK wnd_proc(
         HWND hwnd,
         UINT msg,

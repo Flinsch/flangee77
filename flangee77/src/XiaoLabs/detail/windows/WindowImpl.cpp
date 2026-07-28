@@ -2,6 +2,8 @@
 #if F77_IS_WINDOWS
 
 #include <XiaoLabs/MainWindow.h>
+#include <XiaoLabs/input.h>
+#include <XiaoLabs/input/impl/rawinput/KeyboardMouseSystemImpl.h>
 
 #include <CoreLabs/platform/errors.h>
 #include <CoreLabs/logging.h>
@@ -201,6 +203,24 @@ namespace xl7::detail::windows {
 
 
 
+    /**
+     * Forwards a window message that may carry raw keyboard/mouse input to the
+     * active keyboard/mouse backend (if it's the Raw Input one).
+     */
+    void WindowImpl::_forward_to_input_system(UINT msg, WPARAM wparam, LPARAM lparam)
+    {
+        auto& system = xl7::input::keyboard_mouse_system();
+
+        // Only the Raw Input backend understands these messages.
+        // Assert (rather than silently no-op) if some other backend
+        // is somehow active, since that would mean these messages are
+        // being generated without anything registered to receive them.
+        assert(dynamic_cast<xl7::input::impl::rawinput::KeyboardMouseSystemImpl*>(&system) == static_cast<xl7::input::impl::rawinput::KeyboardMouseSystemImpl*>(&system));
+        static_cast<xl7::input::impl::rawinput::KeyboardMouseSystemImpl&>(system).handle_window_message(msg, wparam, lparam);
+    }
+
+
+
     LRESULT CALLBACK WindowImpl::wnd_proc(
         HWND hwnd,
         UINT msg,
@@ -220,6 +240,8 @@ namespace xl7::detail::windows {
         {
             self = std::bit_cast<WindowImpl*>(::GetWindowLongPtrW(hwnd, GWLP_USERDATA));
         }
+
+        bool call_def_window_proc = false;
 
         switch (msg)
         {
@@ -255,12 +277,27 @@ namespace xl7::detail::windows {
             break;
         }
 
+        case WM_INPUT:
+        case WM_INPUT_DEVICE_CHANGE:
+        case WM_CHAR:
+        {
+            _forward_to_input_system(msg, wparam, lparam);
+            // Microsoft's documented cleanup requirement for WM_INPUT:
+            // still call DefWindowProc after handling it.
+            call_def_window_proc = msg == WM_INPUT;
+            break;
+        }
+
         default:
         {
-            return ::DefWindowProc(hwnd, msg, wparam, lparam);
+            call_def_window_proc = true;
+            break;
         }
 
         } // switch (msg)
+
+        if (call_def_window_proc)
+            return ::DefWindowProc(hwnd, msg, wparam, lparam);
 
         return 0;
     }
