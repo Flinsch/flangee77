@@ -146,7 +146,7 @@ protected:
      * friendship (granted to KeyboardMouseSystem itself) isn't inherited by
      * subclasses.
      */
-    static void _apply_keyboard(Keyboard& keyboard, const std::array<bool, static_cast<size_t>(Key::COUNT)>& levels, const cl7::u8string& text_input_delta, std::chrono::steady_clock::time_point now);
+    static void _apply_keyboard(Keyboard& keyboard, const std::array<bool, static_cast<size_t>(Key::COUNT)>& levels, const cl7::u32string& text_input_delta, std::chrono::steady_clock::time_point now);
 
     /**
      * Feeds newly observed levels/deltas into an individual mouse instance.
@@ -155,11 +155,12 @@ protected:
     static void _apply_mouse(Mouse& mouse, const std::array<bool, static_cast<size_t>(MouseButton::COUNT)>& levels, int delta_x, int delta_y, int wheel_delta, std::chrono::steady_clock::time_point now);
 
     /**
-     * Queues composed text input to be reported by the aggregate keyboard on
-     * the next update() (see aggregated_keyboard()'s docs for why this isn't
-     * attributed to an individual keyboard).
+     * Queues composed text input to be reported by the aggregate keyboard on the
+     * next update() (see aggregated_keyboard()'s docs for why this isn't attributed
+     * to an individual keyboard). UTF-32, per the framework's "user interaction"
+     * convention, see Keyboard::get_text_input().
      */
-    void _queue_text_input(const cl7::u8string& text);
+    void _queue_text_input(const cl7::u32string& text);
 
 
 
@@ -220,7 +221,7 @@ private:
     std::unique_ptr<Keyboard> _aggregated_keyboard;
     std::unique_ptr<Mouse> _aggregated_mouse;
 
-    cl7::u8string _pending_text_input;
+    cl7::u32string _pending_text_input;
 
 }; // class KeyboardMouseSystem
 

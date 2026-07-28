@@ -159,7 +159,7 @@ namespace xl7::input::impl::rawinput {
         if (last_unit >= 0xD800 && last_unit <= 0xDBFF)
             return;
 
-        _queue_text_input(cl7::text::codec::to_utf8(_pending_text_input_utf16));
+        _queue_text_input(cl7::text::codec::to_utf32(_pending_text_input_utf16));
         _pending_text_input_utf16.clear();
     }
 
@@ -179,7 +179,7 @@ namespace xl7::input::impl::rawinput {
         KeyboardDeviceState& state = _find_or_add_keyboard_device(device);
         state.key_values[static_cast<size_t>(key)] = (raw_keyboard.Flags & RI_KEY_BREAK) == 0;
 
-        _apply_keyboard(*state.keyboard, state.key_values, cl7::u8string{}, std::chrono::steady_clock::now());
+        _apply_keyboard(*state.keyboard, state.key_values, cl7::u32string{}, std::chrono::steady_clock::now());
     }
 
     /**

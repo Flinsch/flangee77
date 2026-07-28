@@ -31,7 +31,7 @@ public:
      */
     class Attorney
     {
-        static void apply(Keyboard& keyboard, const std::array<bool, static_cast<size_t>(Key::COUNT)>& key_values, const cl7::u8string& text_input_delta, std::chrono::steady_clock::time_point now) { keyboard._apply(key_values, text_input_delta, now); }
+        static void apply(Keyboard& keyboard, const std::array<bool, static_cast<size_t>(Key::COUNT)>& key_values, const cl7::u32string& text_input_delta, std::chrono::steady_clock::time_point now) { keyboard._apply(key_values, text_input_delta, now); }
         friend class KeyboardMouseSystem;
     };
 
@@ -84,11 +84,15 @@ public:
      * dead-key/IME composition (fed from WM_CHAR on Windows, for example, not from
      * the raw key codes), so it's what a GUI text field should consume.
      *
+     * UTF-32, per the framework's "user interaction" convention, so callers get
+     * 1-to-1 code-point indexing for free (e.g., for cursor movement, selection,
+     * backspace, glyph lookup, etc.).
+     *
      * Note: WM_CHAR isn't attributable to a specific source keyboard, so in
      * practice only the aggregate keyboard's text input is ever populated,
      * individual keyboards' text input stays empty.
      */
-    const cl7::u8string& get_text_input() const { return _text_input; }
+    const cl7::u32string& get_text_input() const { return _text_input; }
 
 
 
@@ -101,7 +105,7 @@ private:
     /**
      * Applies the newly observed values/text for this frame.
      */
-    void _apply(const std::array<bool, static_cast<size_t>(Key::COUNT)>& key_values, const cl7::u8string& text_input_delta, std::chrono::steady_clock::time_point now);
+    void _apply(const std::array<bool, static_cast<size_t>(Key::COUNT)>& key_values, const cl7::u32string& text_input_delta, std::chrono::steady_clock::time_point now);
 
 
 
@@ -111,7 +115,7 @@ private:
 
     std::array<DigitalState, static_cast<size_t>(Key::COUNT)> _keys{};
 
-    cl7::u8string _text_input;
+    cl7::u32string _text_input;
 
     std::chrono::steady_clock::time_point _now;
 
