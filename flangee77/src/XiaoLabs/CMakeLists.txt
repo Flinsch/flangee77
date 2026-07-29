@@ -13,6 +13,7 @@ target_sources(flangee77
     graphics/GraphicsSystem.cpp
     graphics/PixelFormat.cpp
     graphics/PixelLayout.cpp
+    graphics/QuadRenderer.cpp
     graphics/RenderingContext.cpp
     graphics/RenderingDevice.cpp
 
