@@ -30,4 +30,11 @@ target_sources(flangee77
     fonts/render/MsdfRenderer.cpp
     fonts/render/SdfRenderer.cpp
     fonts/render/TestRenderer.cpp
+
+    gui/Collection.cpp
+    gui/Face.cpp
+    gui/Shell.cpp
+
+    gui/render/AbstractRenderer.cpp
+    gui/render/DefaultRenderer.cpp
 )
