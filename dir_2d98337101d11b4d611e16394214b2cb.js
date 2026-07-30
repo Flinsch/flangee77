@@ -22,6 +22,8 @@ var dir_2d98337101d11b4d611e16394214b2cb =
     [ "PixelFormat.h", "d6/d04/PixelFormat_8h.html", "d6/d04/PixelFormat_8h" ],
     [ "PixelLayout.cpp", "d3/de9/PixelLayout_8cpp.html", null ],
     [ "PixelLayout.h", "d6/d40/PixelLayout_8h.html", "d6/d40/PixelLayout_8h" ],
+    [ "QuadRenderer.cpp", "d1/d63/QuadRenderer_8cpp.html", null ],
+    [ "QuadRenderer.h", "d1/d12/QuadRenderer_8h.html", "d1/d12/QuadRenderer_8h" ],
     [ "RenderingContext.cpp", "dc/d3b/RenderingContext_8cpp.html", "dc/d3b/RenderingContext_8cpp" ],
     [ "RenderingContext.h", "d6/d96/RenderingContext_8h.html", "d6/d96/RenderingContext_8h" ],
     [ "RenderingDevice.cpp", "df/de6/RenderingDevice_8cpp.html", null ],

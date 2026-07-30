@@ -43,6 +43,9 @@ var hierarchy =
       ] ],
       [ "fl7::fonts::render::TestRenderer", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html", null ]
     ] ],
+    [ "fl7::gui::render::AbstractRenderer", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html", [
+      [ "fl7::gui::render::DefaultRenderer", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html", null ]
+    ] ],
     [ "xl7::resources::AbstractResourceUpdater", "d9/d70/classxl7_1_1resources_1_1AbstractResourceUpdater.html", [
       [ "xl7::resources::ResourceUpdaterBase< IndexBufferDesc, DirtyRange >", "d8/d12/classxl7_1_1resources_1_1ResourceUpdaterBase.html", [
         [ "xl7::graphics::meshes::IndexBufferUpdater", "d4/d42/classxl7_1_1graphics_1_1meshes_1_1IndexBufferUpdater.html", null ]
@@ -155,6 +158,7 @@ var hierarchy =
     [ "ml7::ops::clamp< min, max >", "d4/d01/structml7_1_1ops_1_1clamp.html", null ],
     [ "ml7::ops::clamp01", "d0/d5c/structml7_1_1ops_1_1clamp01.html", null ],
     [ "xl7::graphics::meshes::ClippedQuad", "d2/d47/structxl7_1_1graphics_1_1meshes_1_1ClippedQuad.html", null ],
+    [ "xl7::graphics::QuadRenderer::ClipRect", "dd/d21/structxl7_1_1graphics_1_1QuadRenderer_1_1ClipRect.html", null ],
     [ "cl7::text::codec::codepoint", "db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html", null ],
     [ "cl7::text::codec::codepoint_iterator< Tchar, TDefaultErrorHandler >", "d7/d8a/classcl7_1_1text_1_1codec_1_1codepoint__iterator.html", null ],
     [ "cl7::text::codec::CodepointResult", "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html", [
@@ -168,6 +172,7 @@ var hierarchy =
     [ "xl7::graphics::impl::shared::meshes::ComposedVertexLayout", "d2/d0c/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout.html", null ],
     [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::Config", "d2/d0b/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1Config.html", null ],
     [ "xl7::Config", "d9/dfb/structxl7_1_1Config.html", null ],
+    [ "cl7::behavioral::Connection", "d4/d4e/classcl7_1_1behavioral_1_1Connection.html", null ],
     [ "cl7::const_ptr_forward_iterator< Titem, Tptr, Tcontainer >", "d2/d93/classcl7_1_1const__ptr__forward__iterator.html", null ],
     [ "xl7::graphics::shaders::ConstantBufferDeclaration", "dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html", null ],
     [ "xl7::graphics::shaders::ConstantBufferDesc", "d2/d57/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDesc.html", null ],
@@ -213,6 +218,7 @@ var hierarchy =
     [ "dl7::xml::Document", "de/dd5/classdl7_1_1xml_1_1Document.html", null ],
     [ "dl7::syntax::matchers::DoubleQuotedStringMatcher", "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html", null ],
     [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::DrawBatch", "df/da0/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1DrawBatch.html", null ],
+    [ "xl7::graphics::QuadRenderer::DrawBatch", "d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html", null ],
     [ "xl7::DriverResolver::DriverEntry", "df/d7d/structxl7_1_1DriverResolver_1_1DriverEntry.html", null ],
     [ "xl7::DriverResolver", "de/d70/structxl7_1_1DriverResolver.html", null ],
     [ "fl7::fonts::raster::MsdfRasterizer::EdgeQuery", "d8/dcb/structfl7_1_1fonts_1_1raster_1_1MsdfRasterizer_1_1EdgeQuery.html", null ],
@@ -221,6 +227,7 @@ var hierarchy =
     [ "cl7::text::codec::Encoder< Tchar, TDefaultErrorHandler >", "d6/d1d/classcl7_1_1text_1_1codec_1_1Encoder.html", null ],
     [ "cl7::io::EndianAwareReader< source_endian >", "d9/d5a/classcl7_1_1io_1_1EndianAwareReader.html", null ],
     [ "cl7::io::EndianAwareWriter< target_endian >", "db/d48/classcl7_1_1io_1_1EndianAwareWriter.html", null ],
+    [ "cl7::behavioral::Signal< Args >::Entry", "d4/dc7/structcl7_1_1behavioral_1_1Signal_1_1Entry.html", null ],
     [ "xl7::graphics::images::ImageAtlas::Entry", "d0/d12/structxl7_1_1graphics_1_1images_1_1ImageAtlas_1_1Entry.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::StateArray< TProxy, N >::Entry", "d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html", null ],
     [ "tl7::Signature::equal_to", "da/dc1/structtl7_1_1Signature_1_1equal__to.html", null ],
@@ -239,6 +246,14 @@ var hierarchy =
     [ "dl7::xml::util::Escaper", "dc/dfe/classdl7_1_1xml_1_1util_1_1Escaper.html", null ],
     [ "std::exception", null, [
       [ "tl7::exceptions::assertion_exception", "d6/db9/structtl7_1_1exceptions_1_1assertion__exception.html", null ]
+    ] ],
+    [ "fl7::gui::Face", "d9/d1a/classfl7_1_1gui_1_1Face.html", [
+      [ "fl7::gui::Collection", "d4/de7/classfl7_1_1gui_1_1Collection.html", [
+        [ "fl7::gui::Compound", "d0/d93/classfl7_1_1gui_1_1Compound.html", null ],
+        [ "fl7::gui::Container", "dd/d69/classfl7_1_1gui_1_1Container.html", null ]
+      ] ],
+      [ "fl7::gui::Control", "df/d2b/classfl7_1_1gui_1_1Control.html", null ],
+      [ "fl7::gui::Static", "dc/dfd/classfl7_1_1gui_1_1Static.html", null ]
     ] ],
     [ "std::false_type", null, [
       [ "cl7::detail::_is_any_string< std::remove_cvref_t< Tstring > >", "d8/d05/structcl7_1_1detail_1_1__is__any__string.html", [
@@ -340,6 +355,7 @@ var hierarchy =
         [ "xl7::graphics::impl::direct3d9::ResourceFactoryImpl", "de/d84/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl.html", null ]
       ] ]
     ] ],
+    [ "cl7::behavioral::Signal< Args >::Impl", "d8/d59/structcl7_1_1behavioral_1_1Signal_1_1Impl.html", null ],
     [ "xl7::graphics::shaders::IncludeHandler", "d8/d16/classxl7_1_1graphics_1_1shaders_1_1IncludeHandler.html", [
       [ "xl7::graphics::shaders::FileIncludeHandler", "dc/da3/classxl7_1_1graphics_1_1shaders_1_1FileIncludeHandler.html", null ]
     ] ],
@@ -491,6 +507,7 @@ var hierarchy =
     [ "cl7::profiling::Profiler", "d8/dd2/classcl7_1_1profiling_1_1Profiler.html", null ],
     [ "ml7::QuadraticBezier2< T >", "dc/d23/structml7_1_1QuadraticBezier2.html", null ],
     [ "ml7::QuadraticBezier3< T >", "db/da4/structml7_1_1QuadraticBezier3.html", null ],
+    [ "xl7::graphics::QuadRenderer", "d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html", null ],
     [ "ml7::Quaternion< T >", "d8/d1f/structml7_1_1Quaternion.html", null ],
     [ "ml7::ops::ramp< start, slope >", "de/dcb/structml7_1_1ops_1_1ramp.html", null ],
     [ "ml7::ops::ramp< 0, 1 >", "da/d35/structml7_1_1ops_1_1ramp_3_010_00_011_01_4.html", null ],
@@ -624,6 +641,9 @@ var hierarchy =
     [ "cl7::profiling::SampleHandler", "d3/dea/structcl7_1_1profiling_1_1SampleHandler.html", null ],
     [ "xl7::graphics::states::SamplerStateDesc", "d4/d56/structxl7_1_1graphics_1_1states_1_1SamplerStateDesc.html", null ],
     [ "fl7::fonts::render::AbstractRenderer::ScopedBatch", "d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html", null ],
+    [ "xl7::graphics::QuadRenderer::ScopedBatch", "d2/d70/classxl7_1_1graphics_1_1QuadRenderer_1_1ScopedBatch.html", null ],
+    [ "xl7::graphics::QuadRenderer::ScopedClipRect", "d4/d7f/classxl7_1_1graphics_1_1QuadRenderer_1_1ScopedClipRect.html", null ],
+    [ "fl7::gui::render::AbstractRenderer::ScopedFrame", "d9/dc1/classfl7_1_1gui_1_1render_1_1AbstractRenderer_1_1ScopedFrame.html", null ],
     [ "al7::packing::AbstractFreeRectPacker::ScoredRect", "df/d29/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScoredRect.html", null ],
     [ "al7::packing::SkylinePacker::ScoredRect", "d5/dc8/structal7_1_1packing_1_1SkylinePacker_1_1ScoredRect.html", null ],
     [ "al7::packing::AbstractFreeRectPacker::ScorePair", "d4/d33/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScorePair.html", null ],
@@ -653,6 +673,8 @@ var hierarchy =
     [ "xl7::graphics::shaders::ShaderDesc", "d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc.html", null ],
     [ "xl7::graphics::shaders::ShaderWrite", "de/d22/structxl7_1_1graphics_1_1shaders_1_1ShaderWrite.html", null ],
     [ "al7::packing::ShelfPacker::Shelf", "d5/d56/structal7_1_1packing_1_1ShelfPacker_1_1Shelf.html", null ],
+    [ "fl7::gui::Shell", "d6/d9c/classfl7_1_1gui_1_1Shell.html", null ],
+    [ "cl7::behavioral::Signal< Args >", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", null ],
     [ "tl7::Signature", "d1/d32/structtl7_1_1Signature.html", [
       [ "tl7::Meta", "dd/d81/structtl7_1_1Meta.html", null ]
     ] ],
@@ -713,6 +735,7 @@ var hierarchy =
     [ "xl7::input::GameController::StickState", "d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html", null ],
     [ "cl7::profiling::Stopwatch", "d6/dac/classcl7_1_1profiling_1_1Stopwatch.html", null ],
     [ "cl7::string_hash< Tchar >", "d0/dbc/structcl7_1_1string__hash.html", null ],
+    [ "fl7::gui::Style", "dd/d02/structfl7_1_1gui_1_1Style.html", null ],
     [ "fl7::fonts::render::StyleRun", "de/ddd/structfl7_1_1fonts_1_1render_1_1StyleRun.html", null ],
     [ "tl7::SubcaseBranchSwitch", "d3/d95/classtl7_1_1SubcaseBranchSwitch.html", null ],
     [ "tl7::SubcaseContext", "d4/dc8/classtl7_1_1SubcaseContext.html", null ],
@@ -832,6 +855,7 @@ var hierarchy =
     ] ],
     [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::Vertex", "d9/d99/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1Vertex.html", null ],
     [ "fl7::fonts::render::TestRenderer::Vertex", "de/d0b/structfl7_1_1fonts_1_1render_1_1TestRenderer_1_1Vertex.html", null ],
+    [ "xl7::graphics::QuadRenderer::Vertex", "d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html", null ],
     [ "xl7::graphics::impl::shared::meshes::VertexBufferBinding", "d8/de4/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding.html", null ],
     [ "xl7::graphics::meshes::VertexBufferDesc", "d9/df5/structxl7_1_1graphics_1_1meshes_1_1VertexBufferDesc.html", null ],
     [ "xl7::graphics::meshes::VertexBufferWrite", "d6/d1a/structxl7_1_1graphics_1_1meshes_1_1VertexBufferWrite.html", null ],

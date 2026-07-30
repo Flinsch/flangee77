@@ -20,5 +20,5 @@ var searchData=
   ['keyboardmousesystemimpl_2ecpp_17',['KeyboardMouseSystemImpl.cpp',['../d0/db8/KeyboardMouseSystemImpl_8cpp.html',1,'']]],
   ['keyboardmousesystemimpl_2eh_18',['KeyboardMouseSystemImpl.h',['../df/d17/KeyboardMouseSystemImpl_8h.html',1,'']]],
   ['keyvaluedelimiter_19',['KeyValueDelimiter',['../d9/db3/structdl7_1_1ini_1_1Format.html#ab9e5b6793db53090c91cfd11eaf9afe7',1,'dl7::ini::Format']]],
-  ['kind_20',['kind',['../db/d3e/Markup_8cpp.html#a47ff2006015749d6d4d5618bf7737844',1,'Markup.cpp']]]
+  ['kind_20',['kind',['../d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#aa7f37940107e0bc86e9d07fa6a7b575b',1,'xl7::graphics::QuadRenderer::DrawBatch::kind'],['../db/d3e/Markup_8cpp.html#a47ff2006015749d6d4d5618bf7737844',1,'kind:&#160;Markup.cpp']]]
 ];

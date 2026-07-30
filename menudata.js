@@ -243,6 +243,7 @@ var menudata={children:[
 {text:"t",url:"functions_type_t.html#index_t"},
 {text:"v",url:"functions_type_v.html#index_v"}]},
 {text:"Enumerations",url:"functions_enum.html",children:[
+{text:"b",url:"functions_enum.html#index_b"},
 {text:"c",url:"functions_enum.html#index_c"},
 {text:"d",url:"functions_enum.html#index_d"},
 {text:"e",url:"functions_enum.html#index_e"},

@@ -16,6 +16,10 @@ var annotated_dup =
       ] ]
     ] ],
     [ "cl7", "d1/d2e/namespacecl7.html", [
+      [ "behavioral", "d8/de6/namespacecl7_1_1behavioral.html", [
+        [ "Connection", "d4/d4e/classcl7_1_1behavioral_1_1Connection.html", "d4/d4e/classcl7_1_1behavioral_1_1Connection" ],
+        [ "Signal", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", "d3/d7e/classcl7_1_1behavioral_1_1Signal" ]
+      ] ],
       [ "bits", "d9/df1/namespacecl7_1_1bits.html", [
         [ "detail", "d5/d0f/namespacecl7_1_1bits_1_1detail.html", [
           [ "SwapBytesImpl", "d6/d9e/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl.html", "d6/d9e/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl" ],
@@ -297,6 +301,20 @@ var annotated_dup =
         [ "TextLine", "d5/daa/structfl7_1_1fonts_1_1TextLine.html", "d5/daa/structfl7_1_1fonts_1_1TextLine" ],
         [ "TextMetrics", "d2/dc2/structfl7_1_1fonts_1_1TextMetrics.html", "d2/dc2/structfl7_1_1fonts_1_1TextMetrics" ],
         [ "TextStyle", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html", "d8/d86/structfl7_1_1fonts_1_1TextStyle" ]
+      ] ],
+      [ "gui", "d5/d56/namespacefl7_1_1gui.html", [
+        [ "render", "df/df8/namespacefl7_1_1gui_1_1render.html", [
+          [ "AbstractRenderer", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer" ],
+          [ "DefaultRenderer", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer" ]
+        ] ],
+        [ "Collection", "d4/de7/classfl7_1_1gui_1_1Collection.html", "d4/de7/classfl7_1_1gui_1_1Collection" ],
+        [ "Compound", "d0/d93/classfl7_1_1gui_1_1Compound.html", "d0/d93/classfl7_1_1gui_1_1Compound" ],
+        [ "Container", "dd/d69/classfl7_1_1gui_1_1Container.html", "dd/d69/classfl7_1_1gui_1_1Container" ],
+        [ "Control", "df/d2b/classfl7_1_1gui_1_1Control.html", "df/d2b/classfl7_1_1gui_1_1Control" ],
+        [ "Face", "d9/d1a/classfl7_1_1gui_1_1Face.html", "d9/d1a/classfl7_1_1gui_1_1Face" ],
+        [ "Shell", "d6/d9c/classfl7_1_1gui_1_1Shell.html", "d6/d9c/classfl7_1_1gui_1_1Shell" ],
+        [ "Static", "dc/dfd/classfl7_1_1gui_1_1Static.html", "dc/dfd/classfl7_1_1gui_1_1Static" ],
+        [ "Style", "dd/d02/structfl7_1_1gui_1_1Style.html", "dd/d02/structfl7_1_1gui_1_1Style" ]
       ] ]
     ] ],
     [ "ml7", "d3/d53/namespaceml7.html", [
@@ -595,6 +613,7 @@ var annotated_dup =
         [ "GraphicsSystem", "da/d03/classxl7_1_1graphics_1_1GraphicsSystem.html", "da/d03/classxl7_1_1graphics_1_1GraphicsSystem" ],
         [ "IResourceFactory", "d3/daa/classxl7_1_1graphics_1_1IResourceFactory.html", "d3/daa/classxl7_1_1graphics_1_1IResourceFactory" ],
         [ "PixelLayout", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout" ],
+        [ "QuadRenderer", "d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html", "d7/d8b/classxl7_1_1graphics_1_1QuadRenderer" ],
         [ "RenderingContext", "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html", "de/d0a/classxl7_1_1graphics_1_1RenderingContext" ],
         [ "RenderingDevice", "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html", "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice" ],
         [ "Viewport", "dc/d8f/structxl7_1_1graphics_1_1Viewport.html", "dc/d8f/structxl7_1_1graphics_1_1Viewport" ]

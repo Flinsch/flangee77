@@ -1,5 +1,6 @@
 var dir_c08fb4251456ac15da27f1739991873e =
 [
+    [ "behavioral", "dir_6325fff68d5a36e8222eec8b5b39f676.html", "dir_6325fff68d5a36e8222eec8b5b39f676" ],
     [ "creational", "dir_64e4e24605a1353a6939978aa2004d8c.html", "dir_64e4e24605a1353a6939978aa2004d8c" ],
     [ "detail", "dir_1379f66c393469df3fcb02ac10ebc5f9.html", "dir_1379f66c393469df3fcb02ac10ebc5f9" ],
     [ "io", "dir_1f313f182193c08b56ad7fac433077e3.html", "dir_1f313f182193c08b56ad7fac433077e3" ],

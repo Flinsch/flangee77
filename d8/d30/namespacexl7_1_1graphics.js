@@ -12,6 +12,7 @@ var namespacexl7_1_1graphics =
     [ "GraphicsSystem", "da/d03/classxl7_1_1graphics_1_1GraphicsSystem.html", "da/d03/classxl7_1_1graphics_1_1GraphicsSystem" ],
     [ "IResourceFactory", "d3/daa/classxl7_1_1graphics_1_1IResourceFactory.html", "d3/daa/classxl7_1_1graphics_1_1IResourceFactory" ],
     [ "PixelLayout", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html", "dc/dd4/structxl7_1_1graphics_1_1PixelLayout" ],
+    [ "QuadRenderer", "d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html", "d7/d8b/classxl7_1_1graphics_1_1QuadRenderer" ],
     [ "RenderingContext", "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html", "de/d0a/classxl7_1_1graphics_1_1RenderingContext" ],
     [ "RenderingDevice", "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html", "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice" ],
     [ "Viewport", "dc/d8f/structxl7_1_1graphics_1_1Viewport.html", "dc/d8f/structxl7_1_1graphics_1_1Viewport" ],
