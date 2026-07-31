@@ -67,7 +67,7 @@ public:
     /**
      * Sets this face's size.
      */
-    void set_size(ml7::Vector2f size) { _size = size; }
+    void set_size(ml7::Vector2f size);
 
     /**
      * Returns whether this face is currently visible (drawn, and eligible for
@@ -139,6 +139,13 @@ protected:
      * non-rectangular hit shape.
      */
     virtual bool _contains_point(ml7::Vector2f local_point) const;
+
+    /**
+     * Called after this face's size has actually changed (see set_size), with both
+     * the old and the new size. Default: no-op. Override to react to a size change
+     * (e.g., Window keeping its internal content area in sync).
+     */
+    virtual void _on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size) {}
 
     /**
      * Called when this face becomes the hovered face (the topmost hit under the

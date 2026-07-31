@@ -1,6 +1,7 @@
 #include "DefaultRenderer.h"
 
 #include "../Collection.h"
+#include "../Window.h"
 
 
 
@@ -89,14 +90,27 @@ namespace fl7::gui::render {
 
         const ml7::Vector2f absolute_position = parent_absolute_position + face.get_position();
 
-        // TODO: dispatch to per-face-type drawing logic here, once concrete
-        // Control/Static/Container widget types exist (Button, Label, Panel, ...).
+        if (dynamic_cast<const Window*>(&face))
+            _draw_background(face, absolute_position);
+
+        // TODO: dispatch to further per-face-type drawing logic here, once more
+        // concrete widget types exist (Button, Label, Panel, ...).
 
         if (const auto* collection = dynamic_cast<const Collection*>(&face))
         {
             for (const auto& child : collection->get_children())
                 _render_face_recursive(*child, absolute_position);
         }
+    }
+
+    /**
+     * Draws a face's flat background (Style::background_color) over its full
+     * bounds. Shared by any face type whose chrome is "just a colored rect"
+     * (Window now, Panel likely later).
+     */
+    void DefaultRenderer::_draw_background(const Face& face, ml7::Vector2f absolute_position)
+    {
+        draw_rect(absolute_position, absolute_position + face.get_size(), face.get_effective_style().background_color);
     }
 
 

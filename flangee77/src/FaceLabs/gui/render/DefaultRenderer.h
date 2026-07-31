@@ -71,6 +71,13 @@ private:
      */
     void _render_face_recursive(const Face& face, ml7::Vector2f parent_absolute_position);
 
+    /**
+     * Draws a face's flat background (Style::background_color) over its full
+     * bounds. Shared by any face type whose chrome is "just a colored rect"
+     * (Window now, Panel likely later).
+     */
+    void _draw_background(const Face& face, ml7::Vector2f absolute_position);
+
 
 
     // #############################################################################

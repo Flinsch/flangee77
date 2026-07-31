@@ -34,6 +34,7 @@ target_sources(flangee77
     gui/Collection.cpp
     gui/Face.cpp
     gui/Shell.cpp
+    gui/Window.cpp
 
     gui/render/AbstractRenderer.cpp
     gui/render/DefaultRenderer.cpp

@@ -13,6 +13,19 @@ namespace fl7::gui {
     // #############################################################################
 
     /**
+     * Sets this face's size.
+     */
+    void Face::set_size(ml7::Vector2f size)
+    {
+        if (size == _size)
+            return;
+
+        const ml7::Vector2f old_size = _size;
+        _size = size;
+        _on_size_changed(old_size, size);
+    }
+
+    /**
      * Returns this face's effective style: its own override if set, else its
      * parent's effective style, else owning shell's default style, else a
      * default-constructed style as a last resort (a face not yet attached to a
