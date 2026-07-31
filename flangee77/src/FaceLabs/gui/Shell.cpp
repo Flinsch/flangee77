@@ -16,11 +16,14 @@ namespace fl7::gui {
      * Pass a specific individual device (e.g., for couch co-op) so multiple shells
      * don't fight over the same aggregate.
      */
-    Shell::Shell(render::AbstractRenderer& renderer, xl7::input::Mouse& mouse, xl7::input::Keyboard& keyboard)
+    Shell::Shell(render::AbstractRenderer* renderer, xl7::input::Mouse* mouse, xl7::input::Keyboard* keyboard)
         : _renderer(renderer)
         , _mouse(mouse)
         , _keyboard(keyboard)
     {
+        assert(_renderer);
+        assert(_mouse);
+        assert(_keyboard);
     }
 
     Shell::~Shell() = default;
@@ -37,7 +40,7 @@ namespace fl7::gui {
      */
     void Shell::update()
     {
-        const ml7::Vector2f mouse_position{static_cast<float>(_mouse.get_x()), static_cast<float>(_mouse.get_y())};
+        const ml7::Vector2f mouse_position{static_cast<float>(_mouse->get_x()), static_cast<float>(_mouse->get_y())};
 
         Face* hit = nullptr;
         for (auto it = _top_level_faces.rbegin(); it != _top_level_faces.rend() && !hit; ++it)
@@ -54,7 +57,7 @@ namespace fl7::gui {
 
         using xl7::input::MouseButton;
 
-        if (_mouse.is_button_pressed(MouseButton::Left) && _hovered_face)
+        if (_mouse->is_button_pressed(MouseButton::Left) && _hovered_face)
         {
             _pressed_face = _hovered_face;
 
@@ -69,7 +72,7 @@ namespace fl7::gui {
             _pressed_face->_on_mouse_down(MouseButton::Left);
         }
 
-        if (_mouse.is_button_released(MouseButton::Left) && _pressed_face)
+        if (_mouse->is_button_released(MouseButton::Left) && _pressed_face)
         {
             _pressed_face->_on_mouse_up(MouseButton::Left);
             if (_pressed_face == _hovered_face)
@@ -85,7 +88,7 @@ namespace fl7::gui {
      */
     void Shell::draw() const
     {
-        _renderer.render_faces(_top_level_faces);
+        _renderer->render_faces(_top_level_faces);
     }
 
 

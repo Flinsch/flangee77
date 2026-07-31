@@ -26,12 +26,13 @@ class Collection
 
 public:
     Collection() = default;
-    ~Collection() override = default;
 
     Collection(const Collection&) = delete;
     Collection& operator=(const Collection&) = delete;
     Collection(Collection&&) = delete;
     Collection& operator=(Collection&&) = delete;
+
+    ~Collection() override = default;
 
 
 

@@ -4,6 +4,8 @@
     #include <FaceLabs/fonts/TextLayout.h>
     #include <FaceLabs/fonts/render/Markup.h>
 
+    #include <FaceLabs/gui/Window.h>
+
 #include <XiaoLabs/graphics.h>
     #include <XiaoLabs/graphics/images/codecs/targa/Reader.h>
     #include <XiaoLabs/graphics/images/codecs/png/Reader.h>
@@ -268,6 +270,13 @@ namespace helloworld {
         _msdf_renderer = std::make_unique<fl7::fonts::render::MsdfRenderer>(&_msdf_rasterizer);
         _test_renderer = std::make_unique<fl7::fonts::render::TestRenderer>();
 
+        _gui_renderer = std::make_unique<fl7::gui::render::DefaultRenderer>(_bitmap_renderer.get());
+        _gui_shell = std::make_unique<fl7::gui::Shell>(_gui_renderer.get());
+
+        auto& window = _gui_shell->add_face<fl7::gui::Window>();
+        window.set_position({600.0f, 10.0f});
+        window.set_size({220.0f, 160.0f});
+
 
 
         LOG_INFO(u8"Please note the following: The quick brown fox jumps over the lazy dog.");
@@ -296,6 +305,9 @@ namespace helloworld {
      */
     bool MyApp::_shutdown_impl()
     {
+        _gui_shell.reset();
+        _gui_renderer.reset();
+
         _bitmap_renderer.reset();
         _sdf_renderer.reset();
         _msdf_renderer.reset();
@@ -371,6 +383,9 @@ namespace helloworld {
         rendering_context->pipeline.om.set_blend_state_id(_blend_state_id);
 
         rendering_context->draw_indexed();
+
+
+        _gui_shell->draw();
 
 
         fl7::fonts::TextStyle text_style;
@@ -561,6 +576,8 @@ namespace helloworld {
     void MyApp::_move_impl()
     {
         cl7::profiling::Profiler profiler(u8"MyApp::_move_impl");
+
+        _gui_shell->update();
     }
 
 

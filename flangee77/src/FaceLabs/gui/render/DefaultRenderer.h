@@ -29,7 +29,7 @@ class DefaultRenderer
 {
 
 public:
-    explicit DefaultRenderer(fonts::render::AbstractRenderer& text_renderer);
+    explicit DefaultRenderer(fonts::render::AbstractRenderer* text_renderer);
 
     DefaultRenderer(const DefaultRenderer&) = delete;
     DefaultRenderer& operator=(const DefaultRenderer&) = delete;
@@ -87,7 +87,7 @@ private:
     xl7::graphics::QuadRenderer _quad_renderer;
 
     /** Non-owning: caller decides the concrete font-rendering backend. */
-    fonts::render::AbstractRenderer& _text_renderer;
+    fonts::render::AbstractRenderer* _text_renderer;
 
 }; // class DefaultRenderer
 

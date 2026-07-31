@@ -26,12 +26,13 @@ class Compound
 
 public:
     Compound() = default;
-    ~Compound() override = default;
 
     Compound(const Compound&) = delete;
     Compound& operator=(const Compound&) = delete;
     Compound(Compound&&) = delete;
     Compound& operator=(Compound&&) = delete;
+
+    ~Compound() override = default;
 
 }; // class Compound
 

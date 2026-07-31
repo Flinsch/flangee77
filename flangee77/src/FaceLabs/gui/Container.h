@@ -21,12 +21,15 @@ class Container
 
 public:
     Container() = default;
-    ~Container() override = default;
 
     Container(const Container&) = delete;
     Container& operator=(const Container&) = delete;
     Container(Container&&) = delete;
     Container& operator=(Container&&) = delete;
+
+    ~Container() override = default;
+
+
 
     using Collection::add_child;
 

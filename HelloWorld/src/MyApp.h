@@ -13,6 +13,9 @@
 #include <FaceLabs/fonts/render/MsdfRenderer.h>
 #include <FaceLabs/fonts/render/TestRenderer.h>
 
+#include <FaceLabs/gui/Shell.h>
+#include <FaceLabs/gui/render/DefaultRenderer.h>
+
 #include <XiaoLabs/graphics/meshes/VertexBuffer.h>
 #include <XiaoLabs/graphics/meshes/IndexBuffer.h>
 
@@ -115,6 +118,10 @@ private:
     std::unique_ptr<fl7::fonts::render::MsdfRenderer> _msdf_renderer;
 
     std::unique_ptr<fl7::fonts::render::TestRenderer> _test_renderer;
+
+    /** Uses _bitmap_renderer for text, so must outlive/out-construct it accordingly. */
+    std::unique_ptr<fl7::gui::render::DefaultRenderer> _gui_renderer;
+    std::unique_ptr<fl7::gui::Shell> _gui_shell;
 
     xl7::graphics::meshes::VertexBuffer::Id _vertex_buffer_id;
     xl7::graphics::meshes::IndexBuffer::Id _index_buffer_id;

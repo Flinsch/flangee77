@@ -13,9 +13,10 @@ namespace fl7::gui::render {
     // Construction / Destruction
     // #############################################################################
 
-    DefaultRenderer::DefaultRenderer(fonts::render::AbstractRenderer& text_renderer)
+    DefaultRenderer::DefaultRenderer(fonts::render::AbstractRenderer* text_renderer)
         : _text_renderer(text_renderer)
     {
+        assert(_text_renderer);
     }
 
 
@@ -27,13 +28,13 @@ namespace fl7::gui::render {
     void DefaultRenderer::_begin_frame_impl()
     {
         _quad_renderer.begin();
-        _text_renderer.begin();
+        _text_renderer->begin();
     }
 
     void DefaultRenderer::_end_frame_impl()
     {
         // End in reverse order, symmetry with begin.
-        _text_renderer.end();
+        _text_renderer->end();
         _quad_renderer.end();
     }
 
@@ -55,12 +56,12 @@ namespace fl7::gui::render {
 
     void DefaultRenderer::_draw_text_impl(cl7::u8string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f position)
     {
-        _text_renderer.draw_text(text, font, text_style, position);
+        _text_renderer->draw_text(text, font, text_style, position);
     }
 
     void DefaultRenderer::_draw_text_in_box_impl(cl7::u8string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
     {
-        _text_renderer.draw_text_in_box(text, font, text_style, box_position, box_size);
+        _text_renderer->draw_text_in_box(text, font, text_style, box_position, box_size);
     }
 
     void DefaultRenderer::_push_clip_rect_impl(ml7::Vector2f clip_min, ml7::Vector2f clip_max)

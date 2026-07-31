@@ -21,12 +21,13 @@ class Static
 
 public:
     Static() = default;
-    ~Static() override = default;
 
     Static(const Static&) = delete;
     Static& operator=(const Static&) = delete;
     Static(Static&&) = delete;
     Static& operator=(Static&&) = delete;
+
+    ~Static() override = default;
 
 }; // class Static
 

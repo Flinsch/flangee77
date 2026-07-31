@@ -35,12 +35,13 @@ class Face
 
 public:
     Face() = default;
-    virtual ~Face() = default;
 
     Face(const Face&) = delete;
     Face& operator=(const Face&) = delete;
     Face(Face&&) = delete;
     Face& operator=(Face&&) = delete;
+
+    virtual ~Face() = default;
 
 
 

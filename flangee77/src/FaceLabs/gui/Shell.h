@@ -37,7 +37,7 @@ public:
      * Pass a specific individual device (e.g., for couch co-op) so multiple shells
      * don't fight over the same aggregate.
      */
-    explicit Shell(render::AbstractRenderer& renderer, xl7::input::Mouse& mouse = xl7::input::mouse(), xl7::input::Keyboard& keyboard = xl7::input::keyboard());
+    explicit Shell(render::AbstractRenderer* renderer, xl7::input::Mouse* mouse = &xl7::input::mouse(), xl7::input::Keyboard* keyboard = &xl7::input::keyboard());
 
     Shell(const Shell&) = delete;
     Shell& operator=(const Shell&) = delete;
@@ -120,9 +120,12 @@ private:
     // Attributes
     // #############################################################################
 
-    render::AbstractRenderer& _renderer;
-    xl7::input::Mouse& _mouse;
-    xl7::input::Keyboard& _keyboard;
+    /** Non-owning. */
+    render::AbstractRenderer* _renderer;
+    /** Non-owning. */
+    xl7::input::Mouse* _mouse;
+    /** Non-owning. */
+    xl7::input::Keyboard* _keyboard;
 
     Style _default_style;
 

@@ -21,12 +21,13 @@ class Control
 
 public:
     Control() = default;
-    ~Control() override = default;
 
     Control(const Control&) = delete;
     Control& operator=(const Control&) = delete;
     Control(Control&&) = delete;
     Control& operator=(Control&&) = delete;
+
+    ~Control() override = default;
 
 }; // class Control
 
