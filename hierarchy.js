@@ -249,7 +249,9 @@ var hierarchy =
     ] ],
     [ "fl7::gui::Face", "d9/d1a/classfl7_1_1gui_1_1Face.html", [
       [ "fl7::gui::Collection", "d4/de7/classfl7_1_1gui_1_1Collection.html", [
-        [ "fl7::gui::Compound", "d0/d93/classfl7_1_1gui_1_1Compound.html", null ],
+        [ "fl7::gui::Compound", "d0/d93/classfl7_1_1gui_1_1Compound.html", [
+          [ "fl7::gui::Window", "d4/d52/classfl7_1_1gui_1_1Window.html", null ]
+        ] ],
         [ "fl7::gui::Container", "dd/d69/classfl7_1_1gui_1_1Container.html", null ]
       ] ],
       [ "fl7::gui::Control", "df/d2b/classfl7_1_1gui_1_1Control.html", null ],

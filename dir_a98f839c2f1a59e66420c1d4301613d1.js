@@ -11,5 +11,7 @@ var dir_a98f839c2f1a59e66420c1d4301613d1 =
     [ "Shell.cpp", "df/d6c/Shell_8cpp.html", null ],
     [ "Shell.h", "d0/def/Shell_8h.html", "d0/def/Shell_8h" ],
     [ "Static.h", "d2/db9/Static_8h.html", "d2/db9/Static_8h" ],
-    [ "Style.h", "d4/d11/Style_8h.html", "d4/d11/Style_8h" ]
+    [ "Style.h", "d4/d11/Style_8h.html", "d4/d11/Style_8h" ],
+    [ "Window.cpp", "d2/d84/Window_8cpp.html", null ],
+    [ "Window.h", "d3/ded/Window_8h.html", "d3/ded/Window_8h" ]
 ];

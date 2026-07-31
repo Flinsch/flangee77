@@ -8,5 +8,6 @@ var namespacefl7_1_1gui =
     [ "Face", "d9/d1a/classfl7_1_1gui_1_1Face.html", "d9/d1a/classfl7_1_1gui_1_1Face" ],
     [ "Shell", "d6/d9c/classfl7_1_1gui_1_1Shell.html", "d6/d9c/classfl7_1_1gui_1_1Shell" ],
     [ "Static", "dc/dfd/classfl7_1_1gui_1_1Static.html", "dc/dfd/classfl7_1_1gui_1_1Static" ],
-    [ "Style", "dd/d02/structfl7_1_1gui_1_1Style.html", "dd/d02/structfl7_1_1gui_1_1Style" ]
+    [ "Style", "dd/d02/structfl7_1_1gui_1_1Style.html", "dd/d02/structfl7_1_1gui_1_1Style" ],
+    [ "Window", "d4/d52/classfl7_1_1gui_1_1Window.html", "d4/d52/classfl7_1_1gui_1_1Window" ]
 ];

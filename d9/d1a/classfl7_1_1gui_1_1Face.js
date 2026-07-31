@@ -1,9 +1,9 @@
 var classfl7_1_1gui_1_1Face =
 [
     [ "Face", "d9/d1a/classfl7_1_1gui_1_1Face.html#a68379e6145f7bf633a848b627a577e89", null ],
-    [ "~Face", "d9/d1a/classfl7_1_1gui_1_1Face.html#a70e0274c39f61fab4fd9efd13342c387", null ],
     [ "Face", "d9/d1a/classfl7_1_1gui_1_1Face.html#aeb510822c7d0e813e773315d57e40996", null ],
     [ "Face", "d9/d1a/classfl7_1_1gui_1_1Face.html#a8871afbfed905760ac195a07959e7950", null ],
+    [ "~Face", "d9/d1a/classfl7_1_1gui_1_1Face.html#a70e0274c39f61fab4fd9efd13342c387", null ],
     [ "_contains_point", "d9/d1a/classfl7_1_1gui_1_1Face.html#a3ae4416502c4e07e281f7ea8997fb85b", null ],
     [ "_find_hit_face", "d9/d1a/classfl7_1_1gui_1_1Face.html#ac515960f666a8ad4c9217e25bc98adb7", null ],
     [ "_on_click", "d9/d1a/classfl7_1_1gui_1_1Face.html#ac35f52e8a37f3ab68e3ff49b8908d65e", null ],
@@ -13,6 +13,7 @@ var classfl7_1_1gui_1_1Face =
     [ "_on_mouse_enter", "d9/d1a/classfl7_1_1gui_1_1Face.html#ada9684b1b9f86341ede8c15ee552c180", null ],
     [ "_on_mouse_leave", "d9/d1a/classfl7_1_1gui_1_1Face.html#a44cf4cb7ed6b0037e7248babbd872714", null ],
     [ "_on_mouse_up", "d9/d1a/classfl7_1_1gui_1_1Face.html#ab899b816225c5d6aa3242cb440384ee4", null ],
+    [ "_on_size_changed", "d9/d1a/classfl7_1_1gui_1_1Face.html#a9866e132198a7de7a47e02e7347abe48", null ],
     [ "clear_style_override", "d9/d1a/classfl7_1_1gui_1_1Face.html#a29116ae76a87ffed6795a265a2070291", null ],
     [ "get_effective_style", "d9/d1a/classfl7_1_1gui_1_1Face.html#a7926293872dd7b3cc10384ae0bdc7274", null ],
     [ "get_parent", "d9/d1a/classfl7_1_1gui_1_1Face.html#aef0942052dae337775ebb7ee97582d73", null ],
