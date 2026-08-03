@@ -13,6 +13,7 @@
 namespace fl7::gui {
 class Face;
 class Label;
+struct NineSliceChrome;
 } // namespace fl7::gui
 
 namespace fl7::gui::render {
@@ -73,11 +74,19 @@ private:
     void _render_face_recursive(const Face& face, ml7::Vector2f parent_absolute_position);
 
     /**
-     * Draws a face's flat background (Style::background_color) over its full
-     * bounds. Shared by any face type whose chrome is "just a colored rect"
-     * (Window now, Panel likely later).
+     * Draws a face's background over its full bounds: a 9-sliced NineSliceChrome
+     * sprite (see _draw_chrome) if Style::chrome is set, else a flat
+     * Style::background_color rect. Shared by any face type with such a background
+     * (Window, Panel, ...).
      */
     void _draw_background(const Face& face, ml7::Vector2f absolute_position);
+
+    /**
+     * Draws the given chrome sprite 9-sliced over a destination rect at
+     * absolute_position/size: corners at native size, edges stretched along their
+     * one free axis, the center stretched along both.
+     */
+    void _draw_chrome(const NineSliceChrome& chrome, ml7::Vector2f absolute_position, ml7::Vector2f size);
 
     /**
      * Draws a label's text (Style::font/text_style) within its bounds.

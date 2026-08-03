@@ -1,6 +1,8 @@
 #ifndef FL7_GUI_STYLE_H
 #define FL7_GUI_STYLE_H
 
+#include "./NineSliceChrome.h"
+
 #include <FaceLabs/fonts/Font.h>
 #include <FaceLabs/fonts/TextStyle.h>
 
@@ -32,6 +34,14 @@ struct Style
     xl7::graphics::Color border_color = {0.0f, 0.0f, 0.0f, 1.0f};
     /** 0 = no border. */
     float border_width = 0.0f;
+
+    /**
+     * Non-owning: whoever builds the Style keeps the NineSliceChrome alive. When
+     * set, drawn instead of the flat background_color/border_color pair (see
+     * render::DefaultRenderer::_draw_background). A temporary stand-in for a
+     * proper theme lookup (font included), to be revisited later.
+     */
+    const NineSliceChrome* chrome = nullptr;
 
 
 

@@ -13,6 +13,7 @@
 #include <FaceLabs/fonts/render/MsdfRenderer.h>
 #include <FaceLabs/fonts/render/TestRenderer.h>
 
+#include <FaceLabs/gui/NineSliceChrome.h>
 #include <FaceLabs/gui/Shell.h>
 #include <FaceLabs/gui/render/DefaultRenderer.h>
 
@@ -122,6 +123,8 @@ private:
     /** Uses _bitmap_renderer for text, so must outlive/out-construct it accordingly. */
     std::unique_ptr<fl7::gui::render::DefaultRenderer> _gui_renderer;
     std::unique_ptr<fl7::gui::Shell> _gui_shell;
+    /** 9-slicing demo chrome, reusing (for now) the dummy texture already loaded for the spinning quad. */
+    fl7::gui::NineSliceChrome _gui_chrome;
 
     xl7::graphics::meshes::VertexBuffer::Id _vertex_buffer_id;
     xl7::graphics::meshes::IndexBuffer::Id _index_buffer_id;

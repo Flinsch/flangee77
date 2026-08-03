@@ -181,6 +181,14 @@ namespace helloworld {
         _texture_id = xl7::graphics::texture_manager()->create_texture_2d(u8"My Texture", texture_desc, &texture_write);
         _sampler_state_id = xl7::graphics::state_manager()->ensure_sampler_state(sampler_desc);
 
+        // 9-slicing demo chrome: no dedicated chrome asset yet, so this just
+        // reuses the dummy texture above (whole image as the sprite, insets a
+        // quarter of its (smaller) extent) to exercise the slicing mechanism.
+        _gui_chrome.texture_id = xl7::resources::id_cast<xl7::graphics::textures::Texture2D::Id>(_texture_id);
+        _gui_chrome.sprite_size = {static_cast<float>(image.get_width()), static_cast<float>(image.get_height())};
+        _gui_chrome.inset_left = _gui_chrome.inset_right = std::min(_gui_chrome.sprite_size.x, _gui_chrome.sprite_size.y) * 0.25f;
+        _gui_chrome.inset_top = _gui_chrome.inset_bottom = _gui_chrome.inset_left;
+
 
         xl7::graphics::states::RasterizerStateDesc rasterizer_desc;
         rasterizer_desc.cull_mode = xl7::graphics::states::CullMode::None;
@@ -282,6 +290,9 @@ namespace helloworld {
         auto& window = _gui_shell->add_face<fl7::gui::Window>();
         window.set_position({600.0f, 210.0f});
         window.set_size({220.0f, 160.0f});
+        fl7::gui::Style window_style = window.get_effective_style();
+        window_style.chrome = &_gui_chrome;
+        window.set_style_override(window_style);
 
         auto& panel = window.get_content_area().add_child<fl7::gui::Panel>();
         panel.set_position({20.0f, 20.0f});
