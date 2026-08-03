@@ -4,6 +4,7 @@
     #include <FaceLabs/fonts/TextLayout.h>
     #include <FaceLabs/fonts/render/Markup.h>
 
+    #include <FaceLabs/gui/Panel.h>
     #include <FaceLabs/gui/Window.h>
 
 #include <XiaoLabs/graphics.h>
@@ -276,6 +277,13 @@ namespace helloworld {
         auto& window = _gui_shell->add_face<fl7::gui::Window>();
         window.set_position({600.0f, 10.0f});
         window.set_size({220.0f, 160.0f});
+
+        auto& panel = window.get_content_area().add_child<fl7::gui::Panel>();
+        panel.set_position({20.0f, 20.0f});
+        panel.set_size({180.0f, 120.0f});
+        fl7::gui::Style panel_style = panel.get_effective_style();
+        panel_style.background_color = {0.4f, 0.4f, 0.5f, 1.0f};
+        panel.set_style_override(panel_style);
 
 
 

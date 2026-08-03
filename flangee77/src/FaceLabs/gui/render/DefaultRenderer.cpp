@@ -1,6 +1,7 @@
 #include "DefaultRenderer.h"
 
 #include "../Collection.h"
+#include "../Panel.h"
 #include "../Window.h"
 
 
@@ -91,7 +92,7 @@ namespace fl7::gui::render {
 
         const ml7::Vector2f absolute_position = parent_absolute_position + face.get_position();
 
-        if (dynamic_cast<const Window*>(&face))
+        if (dynamic_cast<const Window*>(&face) || dynamic_cast<const Panel*>(&face))
             _draw_background(face, absolute_position);
 
         // TODO: dispatch to further per-face-type drawing logic here, once more
