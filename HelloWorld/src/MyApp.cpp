@@ -4,6 +4,7 @@
     #include <FaceLabs/fonts/TextLayout.h>
     #include <FaceLabs/fonts/render/Markup.h>
 
+    #include <FaceLabs/gui/Label.h>
     #include <FaceLabs/gui/Panel.h>
     #include <FaceLabs/gui/Window.h>
 
@@ -274,8 +275,12 @@ namespace helloworld {
         _gui_renderer = std::make_unique<fl7::gui::render::DefaultRenderer>(_bitmap_renderer.get());
         _gui_shell = std::make_unique<fl7::gui::Shell>(_gui_renderer.get());
 
+        fl7::gui::Style gui_default_style;
+        gui_default_style.font = _font.get();
+        _gui_shell->set_default_style(gui_default_style);
+
         auto& window = _gui_shell->add_face<fl7::gui::Window>();
-        window.set_position({600.0f, 10.0f});
+        window.set_position({600.0f, 210.0f});
         window.set_size({220.0f, 160.0f});
 
         auto& panel = window.get_content_area().add_child<fl7::gui::Panel>();
@@ -284,6 +289,10 @@ namespace helloworld {
         fl7::gui::Style panel_style = panel.get_effective_style();
         panel_style.background_color = {0.4f, 0.4f, 0.5f, 1.0f};
         panel.set_style_override(panel_style);
+
+        auto& label = panel.add_child<fl7::gui::Label>(u8"Hello, Panel!");
+        label.set_position({10.0f, 10.0f});
+        label.set_size({160.0f, 24.0f});
 
 
 

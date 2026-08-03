@@ -1,6 +1,7 @@
 #include "DefaultRenderer.h"
 
 #include "../Collection.h"
+#include "../Label.h"
 #include "../Panel.h"
 #include "../Window.h"
 
@@ -34,9 +35,11 @@ namespace fl7::gui::render {
 
     void DefaultRenderer::_end_frame_impl()
     {
-        // End in reverse order, symmetry with begin.
-        _text_renderer->end();
+        // Invoking `end` is what actually submits/flushes a renderer's batched draw calls,
+        // so this order is what determines paint order (regardless of the order of `begin`):
+        // quads first (rects, backgrounds, ...), text on top of them, not the other way around.
         _quad_renderer.end();
+        _text_renderer->end();
     }
 
     void DefaultRenderer::_render_faces_impl(const std::vector<std::unique_ptr<Face>>& top_level_faces)
@@ -95,8 +98,11 @@ namespace fl7::gui::render {
         if (dynamic_cast<const Window*>(&face) || dynamic_cast<const Panel*>(&face))
             _draw_background(face, absolute_position);
 
+        if (const auto* label = dynamic_cast<const Label*>(&face))
+            _draw_label(*label, absolute_position);
+
         // TODO: dispatch to further per-face-type drawing logic here, once more
-        // concrete widget types exist (Button, Label, Panel, ...).
+        // concrete widget types exist (Button, ...).
 
         if (const auto* collection = dynamic_cast<const Collection*>(&face))
         {
@@ -113,6 +119,15 @@ namespace fl7::gui::render {
     void DefaultRenderer::_draw_background(const Face& face, ml7::Vector2f absolute_position)
     {
         draw_rect(absolute_position, absolute_position + face.get_size(), face.get_effective_style().background_color);
+    }
+
+    /**
+     * Draws a label's text (Style::font/text_style) within its bounds.
+     */
+    void DefaultRenderer::_draw_label(const Label& label, ml7::Vector2f absolute_position)
+    {
+        const Style& style = label.get_effective_style();
+        draw_text_in_box(label.get_text(), style.font, &style.text_style, absolute_position, label.get_size());
     }
 
 

@@ -12,6 +12,7 @@
 
 namespace fl7::gui {
 class Face;
+class Label;
 } // namespace fl7::gui
 
 namespace fl7::gui::render {
@@ -77,6 +78,11 @@ private:
      * (Window now, Panel likely later).
      */
     void _draw_background(const Face& face, ml7::Vector2f absolute_position);
+
+    /**
+     * Draws a label's text (Style::font/text_style) within its bounds.
+     */
+    void _draw_label(const Label& label, ml7::Vector2f absolute_position);
 
 
 
