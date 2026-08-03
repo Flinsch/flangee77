@@ -198,6 +198,10 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a860acac1db7c6b511b8a14b52f339d88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1beac06175c3f8ff097876285aacf2a5" id="r_a1beac06175c3f8ff097876285aacf2a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html#a1beac06175c3f8ff097876285aacf2a5">_draw_background</a> (const <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> &amp;face, <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> absolute_position)</td></tr>
 <tr class="separator:a1beac06175c3f8ff097876285aacf2a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04a07e036489a22b1861c1e1baa7a994" id="r_a04a07e036489a22b1861c1e1baa7a994"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html#a04a07e036489a22b1861c1e1baa7a994">_draw_chrome</a> (const <a class="el" href="../../d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html">NineSliceChrome</a> &amp;chrome, <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> absolute_position, <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> size)</td></tr>
+<tr class="separator:a04a07e036489a22b1861c1e1baa7a994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a717ed55338da6e120d1b21f4d07a71ce" id="r_a717ed55338da6e120d1b21f4d07a71ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html#a717ed55338da6e120d1b21f4d07a71ce">_draw_label</a> (const <a class="el" href="../../df/dc0/classfl7_1_1gui_1_1Label.html">Label</a> &amp;label, <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> absolute_position)</td></tr>
+<tr class="separator:a717ed55338da6e120d1b21f4d07a71ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -373,7 +377,87 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Draws a face's flat background (<a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html#a9dbc69df68f16e45bc467f72560056c9">Style::background_color</a>) over its full bounds. Shared by any face type whose chrome is "just a colored rect" (<a class="el" href="../../d4/d52/classfl7_1_1gui_1_1Window.html">Window</a> now, Panel likely later). </p>
+<p>Draws a face's background over its full bounds: a 9-sliced <a class="el" href="../../d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html">NineSliceChrome</a> sprite (see _draw_chrome) if <a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html#af0a8bf2ed20e26a4011584833e337185">Style::chrome</a> is set, else a flat <a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html#a9dbc69df68f16e45bc467f72560056c9">Style::background_color</a> rect. Shared by any face type with such a background (<a class="el" href="../../d4/d52/classfl7_1_1gui_1_1Window.html">Window</a>, <a class="el" href="../../de/d69/classfl7_1_1gui_1_1Panel.html">Panel</a>, ...). </p>
+
+</div>
+</div>
+<a id="a04a07e036489a22b1861c1e1baa7a994" name="a04a07e036489a22b1861c1e1baa7a994"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04a07e036489a22b1861c1e1baa7a994">&#9670;&#160;</a></span>_draw_chrome()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fl7::gui::render::DefaultRenderer::_draw_chrome </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html">NineSliceChrome</a> &amp;&#160;</td>
+          <td class="paramname"><em>chrome</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td>
+          <td class="paramname"><em>absolute_position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Draws the given chrome sprite 9-sliced over a destination rect at absolute_position/size: corners at native size, edges stretched along their one free axis, the center stretched along both. </p>
+
+</div>
+</div>
+<a id="a717ed55338da6e120d1b21f4d07a71ce" name="a717ed55338da6e120d1b21f4d07a71ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a717ed55338da6e120d1b21f4d07a71ce">&#9670;&#160;</a></span>_draw_label()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fl7::gui::render::DefaultRenderer::_draw_label </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../df/dc0/classfl7_1_1gui_1_1Label.html">Label</a> &amp;&#160;</td>
+          <td class="paramname"><em>label</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td>
+          <td class="paramname"><em>absolute_position</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Draws a label's text (<a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html#a8cde85beb8810c0bd6b4f020c30e37d6">Style::font</a>/text_style) within its bounds. </p>
 
 </div>
 </div>

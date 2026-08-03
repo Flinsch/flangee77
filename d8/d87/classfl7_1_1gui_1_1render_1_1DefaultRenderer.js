@@ -6,6 +6,8 @@ var classfl7_1_1gui_1_1render_1_1DefaultRenderer =
     [ "~DefaultRenderer", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html#a7149aa62ac370fc0ce6cc9e48ebaa791", null ],
     [ "_begin_frame_impl", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html#a70814275cc301edf09970e17952e60a3", null ],
     [ "_draw_background", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html#a1beac06175c3f8ff097876285aacf2a5", null ],
+    [ "_draw_chrome", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html#a04a07e036489a22b1861c1e1baa7a994", null ],
+    [ "_draw_label", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html#a717ed55338da6e120d1b21f4d07a71ce", null ],
     [ "_draw_rect_impl", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html#a69c940a262d2cd32dbbf909d8d499ea3", null ],
     [ "_draw_text_impl", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html#a093a73e333f33499aa3129d1a829da17", null ],
     [ "_draw_text_in_box_impl", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html#a4f692f174cc4c73c386d8fb5c0442729", null ],
