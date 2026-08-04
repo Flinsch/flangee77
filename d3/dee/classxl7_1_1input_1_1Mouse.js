@@ -8,6 +8,7 @@ var classxl7_1_1input_1_1Mouse =
     [ "Mouse", "d3/dee/classxl7_1_1input_1_1Mouse.html#a6005980d3e862435b001307f7ea2fe70", null ],
     [ "~Mouse", "d3/dee/classxl7_1_1input_1_1Mouse.html#a5a64ea722a6a4a9dbf6d7c373e09f681", null ],
     [ "_apply", "d3/dee/classxl7_1_1input_1_1Mouse.html#af2f2e9bfa03c225b8c5723e75137994c", null ],
+    [ "_apply_cursor_position", "d3/dee/classxl7_1_1input_1_1Mouse.html#a1e58ec3d7f1f2503a18d6c845ad8088f", null ],
     [ "_distance_squared", "d3/dee/classxl7_1_1input_1_1Mouse.html#aae63031bf79a8932017da8035f803822", null ],
     [ "get_button", "d3/dee/classxl7_1_1input_1_1Mouse.html#ad411066869c58d1bd330c4aaeeda47c3", null ],
     [ "get_delta_x", "d3/dee/classxl7_1_1input_1_1Mouse.html#a825155022a2ecaa79db6f5a224dbfbc3", null ],

@@ -1,5 +1,6 @@
 var classxl7_1_1input_1_1KeyboardMouseSystem =
 [
+    [ "CursorPosition", "db/da3/structxl7_1_1input_1_1KeyboardMouseSystem_1_1CursorPosition.html", "db/da3/structxl7_1_1input_1_1KeyboardMouseSystem_1_1CursorPosition" ],
     [ "KeyboardEntry", "d4/dc4/structxl7_1_1input_1_1KeyboardMouseSystem_1_1KeyboardEntry.html", "d4/dc4/structxl7_1_1input_1_1KeyboardMouseSystem_1_1KeyboardEntry" ],
     [ "MouseEntry", "de/da2/structxl7_1_1input_1_1KeyboardMouseSystem_1_1MouseEntry.html", "de/da2/structxl7_1_1input_1_1KeyboardMouseSystem_1_1MouseEntry" ],
     [ "DeviceId", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a89b914904c6aa715c4d1e4918ef703fd", null ],
@@ -11,8 +12,10 @@ var classxl7_1_1input_1_1KeyboardMouseSystem =
     [ "_add_mouse", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#afc353378ab06d2d7576ef59c2876f1eb", null ],
     [ "_apply_keyboard", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a8b1abe42abaa3f98e9922daa87920fff", null ],
     [ "_apply_mouse", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a89cf7278fed62adb6c49ff5668dbdf3e", null ],
+    [ "_apply_mouse_cursor_position", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#af8f9444512d71b54746948172a643cb3", null ],
     [ "_init", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a2a6e102212cfa29cca2dafbc0d69f5fa", null ],
     [ "_init_impl", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ac031a9a7b79861a2001f6cdbf70e7ce1", null ],
+    [ "_query_cursor_position_impl", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a3963bc6b73612ffadbbe312a46785bfa", null ],
     [ "_queue_text_input", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a635dcb036f461ee8cf8830499fc5dd2c", null ],
     [ "_remove_keyboard", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a7c718d7f7492f221ff9ad99e8321ea4d", null ],
     [ "_remove_mouse", "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ac95517fc7b40c0cd36fb0d675b8deea6", null ],

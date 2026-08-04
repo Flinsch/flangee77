@@ -193,6 +193,7 @@ var hierarchy =
     [ "xl7::graphics::textures::CubemapWrite", "d3/d7a/structxl7_1_1graphics_1_1textures_1_1CubemapWrite.html", null ],
     [ "ml7::CubicBezier2< T >", "db/d5c/structml7_1_1CubicBezier2.html", null ],
     [ "ml7::CubicBezier3< T >", "d1/d7d/structml7_1_1CubicBezier3.html", null ],
+    [ "xl7::input::KeyboardMouseSystem::CursorPosition", "db/da3/structxl7_1_1input_1_1KeyboardMouseSystem_1_1CursorPosition.html", null ],
     [ "xl7::graphics::impl::direct3d11::shaders::D3DConstantBufferWrapper", "d6/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1D3DConstantBufferWrapper.html", null ],
     [ "xl7::graphics::impl::direct3d11::shaders::D3DShaderReflection", "db/d71/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1D3DShaderReflection.html", null ],
     [ "xl7::graphics::impl::direct3d9::shaders::D3DShaderReflection", "d9/db5/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1shaders_1_1D3DShaderReflection.html", null ],
@@ -250,13 +251,17 @@ var hierarchy =
     [ "fl7::gui::Face", "d9/d1a/classfl7_1_1gui_1_1Face.html", [
       [ "fl7::gui::Collection", "d4/de7/classfl7_1_1gui_1_1Collection.html", [
         [ "fl7::gui::Compound", "d0/d93/classfl7_1_1gui_1_1Compound.html", [
-          [ "fl7::gui::Window", "d4/d52/classfl7_1_1gui_1_1Window.html", null ]
+          [ "fl7::gui::Window", "d4/d52/classfl7_1_1gui_1_1Window.html", [
+            [ "fl7::gui::Frame", "de/d87/classfl7_1_1gui_1_1Frame.html", null ]
+          ] ]
         ] ],
         [ "fl7::gui::Container", "dd/d69/classfl7_1_1gui_1_1Container.html", [
           [ "fl7::gui::Panel", "de/d69/classfl7_1_1gui_1_1Panel.html", null ]
         ] ]
       ] ],
-      [ "fl7::gui::Control", "df/d2b/classfl7_1_1gui_1_1Control.html", null ],
+      [ "fl7::gui::Control", "df/d2b/classfl7_1_1gui_1_1Control.html", [
+        [ "fl7::gui::Button", "d4/dba/classfl7_1_1gui_1_1Button.html", null ]
+      ] ],
       [ "fl7::gui::Static", "dc/dfd/classfl7_1_1gui_1_1Static.html", [
         [ "fl7::gui::Label", "df/dc0/classfl7_1_1gui_1_1Label.html", null ]
       ] ]
@@ -650,6 +655,7 @@ var hierarchy =
     [ "fl7::fonts::render::AbstractRenderer::ScopedBatch", "d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html", null ],
     [ "xl7::graphics::QuadRenderer::ScopedBatch", "d2/d70/classxl7_1_1graphics_1_1QuadRenderer_1_1ScopedBatch.html", null ],
     [ "xl7::graphics::QuadRenderer::ScopedClipRect", "d4/d7f/classxl7_1_1graphics_1_1QuadRenderer_1_1ScopedClipRect.html", null ],
+    [ "cl7::behavioral::ScopedConnection", "dc/dc7/classcl7_1_1behavioral_1_1ScopedConnection.html", null ],
     [ "fl7::gui::render::AbstractRenderer::ScopedFrame", "d9/dc1/classfl7_1_1gui_1_1render_1_1AbstractRenderer_1_1ScopedFrame.html", null ],
     [ "al7::packing::AbstractFreeRectPacker::ScoredRect", "df/d29/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScoredRect.html", null ],
     [ "al7::packing::SkylinePacker::ScoredRect", "d5/dc8/structal7_1_1packing_1_1SkylinePacker_1_1ScoredRect.html", null ],

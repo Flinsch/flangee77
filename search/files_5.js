@@ -8,7 +8,7 @@ var searchData=
   ['fileincludehandler_2eh_5',['FileIncludeHandler.h',['../d3/d80/FileIncludeHandler_8h.html',1,'']]],
   ['fileloghandler_2ecpp_6',['FileLogHandler.cpp',['../d5/d84/FileLogHandler_8cpp.html',1,'']]],
   ['fileloghandler_2eh_7',['FileLogHandler.h',['../d7/d8b/FileLogHandler_8h.html',1,'']]],
-  ['filesystem_2ecpp_8',['filesystem.cpp',['../dc/d69/detail_2windows_2filesystem_8cpp.html',1,'(Global Namespace)'],['../d9/d8f/filesystem_8cpp.html',1,'(Global Namespace)']]],
+  ['filesystem_2ecpp_8',['filesystem.cpp',['../d9/d8f/filesystem_8cpp.html',1,'(Global Namespace)'],['../dc/d69/detail_2windows_2filesystem_8cpp.html',1,'(Global Namespace)']]],
   ['filesystem_2eh_9',['filesystem.h',['../d1/d80/detail_2windows_2filesystem_8h.html',1,'(Global Namespace)'],['../dd/dd8/filesystem_8h.html',1,'(Global Namespace)']]],
   ['fillmode_2eh_10',['FillMode.h',['../df/df0/FillMode_8h.html',1,'']]],
   ['filterencoder_2ecpp_11',['FilterEncoder.cpp',['../d5/d08/FilterEncoder_8cpp.html',1,'']]],
@@ -26,10 +26,12 @@ var searchData=
   ['fontloader_2eh_23',['FontLoader.h',['../d9/db3/FontLoader_8h.html',1,'']]],
   ['fontmetrics_2eh_24',['FontMetrics.h',['../d8/df8/FontMetrics_8h.html',1,'']]],
   ['format_2ecpp_25',['format.cpp',['../d0/dd8/format_8cpp.html',1,'']]],
-  ['format_2eh_26',['format.h',['../d2/d93/xml_2Format_8h.html',1,'(Global Namespace)'],['../d9/d33/toml_2Format_8h.html',1,'(Global Namespace)'],['../d1/db7/json_2Format_8h.html',1,'(Global Namespace)'],['../d3/d6a/ini_2Format_8h.html',1,'(Global Namespace)'],['../d0/d0a/format_8h.html',1,'(Global Namespace)']]],
-  ['framebuffersurface_2ecpp_27',['FramebufferSurface.cpp',['../de/de2/FramebufferSurface_8cpp.html',1,'']]],
-  ['framebuffersurface_2eh_28',['FramebufferSurface.h',['../d8/ddb/FramebufferSurface_8h.html',1,'']]],
-  ['functional_2eh_29',['functional.h',['../d8/dea/functional_8h.html',1,'']]],
-  ['functions_2ecpp_30',['functions.cpp',['../d3/d36/functions_8cpp.html',1,'']]],
-  ['functions_2eh_31',['functions.h',['../d8/d5c/functions_8h.html',1,'']]]
+  ['format_2eh_26',['format.h',['../d2/d93/xml_2Format_8h.html',1,'(Global Namespace)'],['../d0/d0a/format_8h.html',1,'(Global Namespace)'],['../d3/d6a/ini_2Format_8h.html',1,'(Global Namespace)'],['../d1/db7/json_2Format_8h.html',1,'(Global Namespace)'],['../d9/d33/toml_2Format_8h.html',1,'(Global Namespace)']]],
+  ['frame_2ecpp_27',['Frame.cpp',['../d5/de0/Frame_8cpp.html',1,'']]],
+  ['frame_2eh_28',['Frame.h',['../d7/db3/Frame_8h.html',1,'']]],
+  ['framebuffersurface_2ecpp_29',['FramebufferSurface.cpp',['../de/de2/FramebufferSurface_8cpp.html',1,'']]],
+  ['framebuffersurface_2eh_30',['FramebufferSurface.h',['../d8/ddb/FramebufferSurface_8h.html',1,'']]],
+  ['functional_2eh_31',['functional.h',['../d8/dea/functional_8h.html',1,'']]],
+  ['functions_2ecpp_32',['functions.cpp',['../d3/d36/functions_8cpp.html',1,'']]],
+  ['functions_2eh_33',['functions.h',['../d8/d5c/functions_8h.html',1,'']]]
 ];

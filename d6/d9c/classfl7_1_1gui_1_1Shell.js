@@ -16,10 +16,12 @@ var classfl7_1_1gui_1_1Shell =
     [ "update", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a810ed9f5fb57eaec9bb0be7664b99803", null ],
     [ "_default_style", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a094f328e72857e42b69fe49ce0ca6d7d", null ],
     [ "_focused_face", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a367303a8b7e6569011d3aee570380802", null ],
+    [ "_has_previous_mouse_position", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a75111267e04beac22d2175754116a79b", null ],
     [ "_hovered_face", "d6/d9c/classfl7_1_1gui_1_1Shell.html#acf56cb03916e54348bb4207faa04b2e7", null ],
     [ "_keyboard", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a50d027fe99979e72247b3f9de87e5805", null ],
     [ "_mouse", "d6/d9c/classfl7_1_1gui_1_1Shell.html#ab9327837fb572764d43b646f6b923234", null ],
     [ "_pressed_face", "d6/d9c/classfl7_1_1gui_1_1Shell.html#af0a441e5698cfe2d2071a6af72620fea", null ],
+    [ "_previous_mouse_position", "d6/d9c/classfl7_1_1gui_1_1Shell.html#ad58a46b9401a52de5964c372ed70b202", null ],
     [ "_renderer", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a5bed66030d3f433d21efe19e405a95c3", null ],
     [ "_top_level_faces", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a3425e48374b7c3d8231ee0264883f816", null ]
 ];

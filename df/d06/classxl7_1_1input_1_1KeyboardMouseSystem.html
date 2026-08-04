@@ -149,6 +149,8 @@ Collaboration diagram for xl7::input::KeyboardMouseSystem:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/da3/structxl7_1_1input_1_1KeyboardMouseSystem_1_1CursorPosition.html">CursorPosition</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dc4/structxl7_1_1input_1_1KeyboardMouseSystem_1_1KeyboardEntry.html">KeyboardEntry</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/da2/structxl7_1_1input_1_1KeyboardMouseSystem_1_1MouseEntry.html">MouseEntry</a></td></tr>
@@ -272,6 +274,8 @@ Static Protected Member Functions</h2></td></tr>
 <tr class="separator:a8b1abe42abaa3f98e9922daa87920fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89cf7278fed62adb6c49ff5668dbdf3e" id="r_a89cf7278fed62adb6c49ff5668dbdf3e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a89cf7278fed62adb6c49ff5668dbdf3e">_apply_mouse</a> (<a class="el" href="../../d3/dee/classxl7_1_1input_1_1Mouse.html">Mouse</a> &amp;<a class="el" href="../../df/d6d/namespacexl7_1_1input.html#a177e1bf18786e0c3d7eea1f3d391504c">mouse</a>, const std::array&lt; bool, static_cast&lt; size_t &gt;(<a class="el" href="../../df/d6d/namespacexl7_1_1input.html#af127a0043707f93517660a1c78ff4150a4905ac9d6a22bdfc1ae096094ce6248d">MouseButton::COUNT</a>)&gt; &amp;levels, int delta_x, int delta_y, int wheel_delta, std::chrono::steady_clock::time_point now)</td></tr>
 <tr class="separator:a89cf7278fed62adb6c49ff5668dbdf3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8f9444512d71b54746948172a643cb3" id="r_af8f9444512d71b54746948172a643cb3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#af8f9444512d71b54746948172a643cb3">_apply_mouse_cursor_position</a> (<a class="el" href="../../d3/dee/classxl7_1_1input_1_1Mouse.html">Mouse</a> &amp;<a class="el" href="../../df/d6d/namespacexl7_1_1input.html#a177e1bf18786e0c3d7eea1f3d391504c">mouse</a>, int x, int y)</td></tr>
+<tr class="separator:af8f9444512d71b54746948172a643cb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_static_methods_classxl7_1_1DriverBasedComponent"><td colspan="2" onclick="javascript:toggleInherit('pro_static_methods_classxl7_1_1DriverBasedComponent')"><img src="../../closed.png" alt="-"/>&#160;Static Protected Member Functions inherited from <a class="el" href="../../d8/d3d/classxl7_1_1DriverBasedComponent.html">xl7::DriverBasedComponent&lt; KeyboardMouseSystem &gt;</a></td></tr>
 <tr class="memitem:a388e25eaf5945f1175506d3c7ffa2f4a inherit pro_static_methods_classxl7_1_1DriverBasedComponent" id="r_a388e25eaf5945f1175506d3c7ffa2f4a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d8/d3d/classxl7_1_1DriverBasedComponent.html#a0e81040146f233dd4eb75d03348816b9">BackendRegistry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d3d/classxl7_1_1DriverBasedComponent.html#a388e25eaf5945f1175506d3c7ffa2f4a">backend_registry</a> ()</td></tr>
 <tr class="separator:a388e25eaf5945f1175506d3c7ffa2f4a inherit pro_static_methods_classxl7_1_1DriverBasedComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -291,6 +295,8 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:ac031a9a7b79861a2001f6cdbf70e7ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5284e70a44762a8802edf27bfd2bd51e" id="r_a5284e70a44762a8802edf27bfd2bd51e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a5284e70a44762a8802edf27bfd2bd51e">_shutdown_impl</a> ()=0</td></tr>
 <tr class="separator:a5284e70a44762a8802edf27bfd2bd51e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3963bc6b73612ffadbbe312a46785bfa" id="r_a3963bc6b73612ffadbbe312a46785bfa"><td class="memItemLeft" align="right" valign="top">virtual std::optional&lt; <a class="el" href="../../db/da3/structxl7_1_1input_1_1KeyboardMouseSystem_1_1CursorPosition.html">CursorPosition</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a3963bc6b73612ffadbbe312a46785bfa">_query_cursor_position_impl</a> ()</td></tr>
+<tr class="separator:a3963bc6b73612ffadbbe312a46785bfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a6e102212cfa29cca2dafbc0d69f5fa" id="r_a2a6e102212cfa29cca2dafbc0d69f5fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a2a6e102212cfa29cca2dafbc0d69f5fa">_init</a> () final</td></tr>
 <tr class="separator:a2a6e102212cfa29cca2dafbc0d69f5fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6240e2fc7898a5b98b413339d9345dc7" id="r_a6240e2fc7898a5b98b413339d9345dc7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a6240e2fc7898a5b98b413339d9345dc7">_shutdown</a> () final</td></tr>
@@ -547,8 +553,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Feeds newly observed levels/deltas into an individual keyboard/mouse instance. A protected bridge rather than direct <a class="el" href="../../df/d72/classxl7_1_1input_1_1Keyboard_1_1Attorney.html">Keyboard::Attorney</a> / <a class="el" href="../../d7/d6a/classxl7_1_1input_1_1Mouse_1_1Attorney.html">Mouse::Attorney</a> access, because backends derive from this class, and friendship (granted to <a class="el" href="../../df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html">KeyboardMouseSystem</a> itself) isn't inherited by subclasses.</p>
-<p>Feeds newly observed values/deltas into an individual keyboard instance. </p>
+<p>Feeds newly observed levels/deltas into an individual keyboard/mouse instance. A protected bridge rather than direct <a class="el" href="../../df/d72/classxl7_1_1input_1_1Keyboard_1_1Attorney.html">Keyboard::Attorney</a> / <a class="el" href="../../d7/d6a/classxl7_1_1input_1_1Mouse_1_1Attorney.html">Mouse::Attorney</a> access, because backends derive from this class, and friendship (granted to <a class="el" href="../../df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html">KeyboardMouseSystem</a> itself) isn't inherited by subclasses. </p>
 
 </div>
 </div>
@@ -609,8 +614,50 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Feeds newly observed levels/deltas into an individual mouse instance. See <a class="el" href="../../df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a8b1abe42abaa3f98e9922daa87920fff">_apply_keyboard()</a> for why this bridge exists.</p>
-<p>Feeds newly observed values/deltas into an individual mouse instance. </p>
+<p>Feeds newly observed levels/deltas into an individual mouse instance. See <a class="el" href="../../df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a8b1abe42abaa3f98e9922daa87920fff">_apply_keyboard()</a> for why this bridge exists. </p>
+
+</div>
+</div>
+<a id="af8f9444512d71b54746948172a643cb3" name="af8f9444512d71b54746948172a643cb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8f9444512d71b54746948172a643cb3">&#9670;&#160;</a></span>_apply_mouse_cursor_position()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void xl7::input::KeyboardMouseSystem::_apply_mouse_cursor_position </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/dee/classxl7_1_1input_1_1Mouse.html">Mouse</a> &amp;&#160;</td>
+          <td class="paramname"><em>mouse</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Feeds a newly observed absolute cursor position into an individual mouse instance. See <a class="el" href="../../df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a8b1abe42abaa3f98e9922daa87920fff">_apply_keyboard()</a> for why this bridge exists. </p>
 
 </div>
 </div>
@@ -665,6 +712,32 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Performs backend-specific initialization (e.g., registering for raw input devices). </p>
+
+</div>
+</div>
+<a id="a3963bc6b73612ffadbbe312a46785bfa" name="a3963bc6b73612ffadbbe312a46785bfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3963bc6b73612ffadbbe312a46785bfa">&#9670;&#160;</a></span>_query_cursor_position_impl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::optional&lt; <a class="el" href="../../db/da3/structxl7_1_1input_1_1KeyboardMouseSystem_1_1CursorPosition.html">CursorPosition</a> &gt; xl7::input::KeyboardMouseSystem::_query_cursor_position_impl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Queries the real (OS/hardware) cursor position, in window-client pixels, once per <a class="el" href="../../df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a3e6b22f86ec1e91281b6b36367559d84">update()</a>. Default: unsupported (std::nullopt), leaving every <a class="el" href="../../d3/dee/classxl7_1_1input_1_1Mouse.html">Mouse</a>'s get_x()/get_y() unset (0, their default). Override where the platform can actually provide this (e.g., GetCursorPos() plus ScreenToClient() on Windows). Deliberately independent of how deltas/buttons are sourced (e.g., Raw Input): there's only one real OS cursor regardless of how many physical mice are plugged in, so this is queried once, then applied identically to every individual <a class="el" href="../../d3/dee/classxl7_1_1input_1_1Mouse.html">Mouse</a> and the aggregate. </p>
 
 </div>
 </div>

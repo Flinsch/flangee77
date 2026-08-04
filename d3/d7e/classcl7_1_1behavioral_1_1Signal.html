@@ -147,8 +147,8 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename... Args&gt;<br />
-class cl7::behavioral::Signal&lt; Args &gt;</div><p>A generic, reusable multicast signal: any number of slots (callables of matching signature) can subscribe via <a class="el" href="../../d3/d7e/classcl7_1_1behavioral_1_1Signal.html#a8747267c185ecbb5e95f9d6b8d065d15">connect()</a>, and <a class="el" href="../../d3/d7e/classcl7_1_1behavioral_1_1Signal.html#a651b4fca1b6e311626224115bded3900">emit()</a> (or operator()) invokes all of them with the given arguments.</p>
-<p>Not thread-safe (matches the rest of the codebase: single-threaded per frame/Shell throughout). </p>
+class cl7::behavioral::Signal&lt; Args &gt;</div><p>A generic, reusable multicast signal: any number of slots (callables of matching signature) can subscribe via <code><a class="el" href="../../d3/d7e/classcl7_1_1behavioral_1_1Signal.html#a8747267c185ecbb5e95f9d6b8d065d15">connect()</a></code>, and <code><a class="el" href="../../d3/d7e/classcl7_1_1behavioral_1_1Signal.html#a651b4fca1b6e311626224115bded3900">emit()</a></code> (or <code>operator()</code>) invokes all of them with the given arguments.</p>
+<p>Not thread-safe (matches the rest of the codebase: single-threaded per frame/shell throughout). </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="ab14da1096b22d883b86a29492728da50" name="ab14da1096b22d883b86a29492728da50"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab14da1096b22d883b86a29492728da50">&#9670;&#160;</a></span>Slot</h2>
@@ -303,7 +303,7 @@ template&lt;typename... Args&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Subscribes the specified slot, returning a <a class="el" href="../../d4/d4e/classcl7_1_1behavioral_1_1Connection.html">Connection</a> that disconnects it when destroyed (unless released beforehand). </p>
+<p>Subscribes the specified slot, staying connected for this <a class="el" href="../../d3/d7e/classcl7_1_1behavioral_1_1Signal.html">Signal</a>'s lifetime (or until disconnected) &ndash; the returned <a class="el" href="../../d4/d4e/classcl7_1_1behavioral_1_1Connection.html">Connection</a> is a plain handle, not RAII (see its docs); wrap it in a <a class="el" href="../../dc/dc7/classcl7_1_1behavioral_1_1ScopedConnection.html">ScopedConnection</a> instead for a lifetime-bound subscription. </p>
 
 </div>
 </div>
@@ -331,7 +331,7 @@ template&lt;typename... Args&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Disconnects all currently connected slots. Outstanding <a class="el" href="../../d4/d4e/classcl7_1_1behavioral_1_1Connection.html">Connection</a> objects remain safe to destroy/disconnect afterward (no-ops). </p>
+<p>Disconnects all currently connected slots. Outstanding connections remain safe to destroy/disconnect afterward (no-ops). </p>
 
 </div>
 </div>
@@ -360,7 +360,7 @@ template&lt;typename... Args&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Invokes all currently connected slots with the given arguments, in the order they were connected. Iterates a copy of the slot list, so a slot connecting/disconnecting other slots during emission is safe (just doesn't affect this <a class="el" href="../../d3/d7e/classcl7_1_1behavioral_1_1Signal.html#a651b4fca1b6e311626224115bded3900">emit()</a> call). </p>
+<p>Invokes all currently connected slots with the given arguments, in the order they were connected. Iterates a copy of the slot list, so a slot connecting/disconnecting other slots during emission is safe (just doesn't affect this <code><a class="el" href="../../d3/d7e/classcl7_1_1behavioral_1_1Signal.html#a651b4fca1b6e311626224115bded3900">emit()</a></code> call). </p>
 
 </div>
 </div>

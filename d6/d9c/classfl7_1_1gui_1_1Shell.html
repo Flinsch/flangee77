@@ -185,6 +185,10 @@ Private Attributes</h2></td></tr>
 <tr class="separator:af0a441e5698cfe2d2071a6af72620fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a367303a8b7e6569011d3aee570380802" id="r_a367303a8b7e6569011d3aee570380802"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#a367303a8b7e6569011d3aee570380802">_focused_face</a> = nullptr</td></tr>
 <tr class="separator:a367303a8b7e6569011d3aee570380802"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad58a46b9401a52de5964c372ed70b202" id="r_ad58a46b9401a52de5964c372ed70b202"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#ad58a46b9401a52de5964c372ed70b202">_previous_mouse_position</a></td></tr>
+<tr class="separator:ad58a46b9401a52de5964c372ed70b202"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75111267e04beac22d2175754116a79b" id="r_a75111267e04beac22d2175754116a79b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#a75111267e04beac22d2175754116a79b">_has_previous_mouse_position</a> = false</td></tr>
+<tr class="separator:a75111267e04beac22d2175754116a79b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The root/driver of a GUI tree: owns top-level faces, routes input, and drives drawing. Deliberately not tied to any OS window: a shell just needs an input source and a renderer, both handed to it by the caller, so it can equally serve as an in-game HUD, a debug overlay, or (each bound to a different player's individual device) a couch-co-op per-player menu. </p>
@@ -605,6 +609,29 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
 
 </div>
 </div>
+<a id="a75111267e04beac22d2175754116a79b" name="a75111267e04beac22d2175754116a79b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75111267e04beac22d2175754116a79b">&#9670;&#160;</a></span>_has_previous_mouse_position</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fl7::gui::Shell::_has_previous_mouse_position = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Whether the previous mouse position has actually been set yet (guards first update's delta against a spurious jump). </p>
+
+</div>
+</div>
 <a id="acf56cb03916e54348bb4207faa04b2e7" name="acf56cb03916e54348bb4207faa04b2e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acf56cb03916e54348bb4207faa04b2e7">&#9670;&#160;</a></span>_hovered_face</h2>
 
@@ -694,6 +721,29 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
 </table>
 </div><div class="memdoc">
 <p>Non-owning: the face that received mouse-down, until mouse-up. </p>
+
+</div>
+</div>
+<a id="ad58a46b9401a52de5964c372ed70b202" name="ad58a46b9401a52de5964c372ed70b202"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad58a46b9401a52de5964c372ed70b202">&#9670;&#160;</a></span>_previous_mouse_position</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> fl7::gui::Shell::_previous_mouse_position</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The mouse position as of the previous update, for computing the delta for mouse drags. </p>
 
 </div>
 </div>

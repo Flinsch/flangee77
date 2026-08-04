@@ -18,6 +18,7 @@ var annotated_dup =
     [ "cl7", "d1/d2e/namespacecl7.html", [
       [ "behavioral", "d8/de6/namespacecl7_1_1behavioral.html", [
         [ "Connection", "d4/d4e/classcl7_1_1behavioral_1_1Connection.html", "d4/d4e/classcl7_1_1behavioral_1_1Connection" ],
+        [ "ScopedConnection", "dc/dc7/classcl7_1_1behavioral_1_1ScopedConnection.html", "dc/dc7/classcl7_1_1behavioral_1_1ScopedConnection" ],
         [ "Signal", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", "d3/d7e/classcl7_1_1behavioral_1_1Signal" ]
       ] ],
       [ "bits", "d9/df1/namespacecl7_1_1bits.html", [
@@ -307,11 +308,13 @@ var annotated_dup =
           [ "AbstractRenderer", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer" ],
           [ "DefaultRenderer", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer" ]
         ] ],
+        [ "Button", "d4/dba/classfl7_1_1gui_1_1Button.html", "d4/dba/classfl7_1_1gui_1_1Button" ],
         [ "Collection", "d4/de7/classfl7_1_1gui_1_1Collection.html", "d4/de7/classfl7_1_1gui_1_1Collection" ],
         [ "Compound", "d0/d93/classfl7_1_1gui_1_1Compound.html", "d0/d93/classfl7_1_1gui_1_1Compound" ],
         [ "Container", "dd/d69/classfl7_1_1gui_1_1Container.html", "dd/d69/classfl7_1_1gui_1_1Container" ],
         [ "Control", "df/d2b/classfl7_1_1gui_1_1Control.html", "df/d2b/classfl7_1_1gui_1_1Control" ],
         [ "Face", "d9/d1a/classfl7_1_1gui_1_1Face.html", "d9/d1a/classfl7_1_1gui_1_1Face" ],
+        [ "Frame", "de/d87/classfl7_1_1gui_1_1Frame.html", "de/d87/classfl7_1_1gui_1_1Frame" ],
         [ "Label", "df/dc0/classfl7_1_1gui_1_1Label.html", "df/dc0/classfl7_1_1gui_1_1Label" ],
         [ "NineSliceChrome", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome" ],
         [ "Panel", "de/d69/classfl7_1_1gui_1_1Panel.html", "de/d69/classfl7_1_1gui_1_1Panel" ],

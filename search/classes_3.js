@@ -60,5 +60,6 @@ var searchData=
   ['cubemapwrite_57',['CubemapWrite',['../d3/d7a/structxl7_1_1graphics_1_1textures_1_1CubemapWrite.html',1,'xl7::graphics::textures']]],
   ['cubicbezier2_58',['CubicBezier2',['../db/d5c/structml7_1_1CubicBezier2.html',1,'ml7']]],
   ['cubicbezier3_59',['CubicBezier3',['../d1/d7d/structml7_1_1CubicBezier3.html',1,'ml7']]],
-  ['customsymbol_60',['CustomSymbol',['../d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html',1,'dl7::syntax']]]
+  ['cursorposition_60',['CursorPosition',['../db/da3/structxl7_1_1input_1_1KeyboardMouseSystem_1_1CursorPosition.html',1,'xl7::input::KeyboardMouseSystem']]],
+  ['customsymbol_61',['CustomSymbol',['../d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html',1,'dl7::syntax']]]
 ];

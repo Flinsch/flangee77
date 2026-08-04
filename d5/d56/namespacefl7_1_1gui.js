@@ -1,11 +1,13 @@
 var namespacefl7_1_1gui =
 [
     [ "render", "df/df8/namespacefl7_1_1gui_1_1render.html", "df/df8/namespacefl7_1_1gui_1_1render" ],
+    [ "Button", "d4/dba/classfl7_1_1gui_1_1Button.html", "d4/dba/classfl7_1_1gui_1_1Button" ],
     [ "Collection", "d4/de7/classfl7_1_1gui_1_1Collection.html", "d4/de7/classfl7_1_1gui_1_1Collection" ],
     [ "Compound", "d0/d93/classfl7_1_1gui_1_1Compound.html", "d0/d93/classfl7_1_1gui_1_1Compound" ],
     [ "Container", "dd/d69/classfl7_1_1gui_1_1Container.html", "dd/d69/classfl7_1_1gui_1_1Container" ],
     [ "Control", "df/d2b/classfl7_1_1gui_1_1Control.html", "df/d2b/classfl7_1_1gui_1_1Control" ],
     [ "Face", "d9/d1a/classfl7_1_1gui_1_1Face.html", "d9/d1a/classfl7_1_1gui_1_1Face" ],
+    [ "Frame", "de/d87/classfl7_1_1gui_1_1Frame.html", "de/d87/classfl7_1_1gui_1_1Frame" ],
     [ "Label", "df/dc0/classfl7_1_1gui_1_1Label.html", "df/dc0/classfl7_1_1gui_1_1Label" ],
     [ "NineSliceChrome", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome" ],
     [ "Panel", "de/d69/classfl7_1_1gui_1_1Panel.html", "de/d69/classfl7_1_1gui_1_1Panel" ],
