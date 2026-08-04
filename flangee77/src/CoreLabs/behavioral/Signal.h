@@ -16,14 +16,14 @@ namespace cl7::behavioral {
 
 
 /**
- * RAII handle for a Signal subscription. Disconnects automatically when destroyed
- * (unless released or already disconnected). Deliberately not nested inside
- * Signal<Args...>, so a caller can hold connections to signals of differing
- * argument signatures uniformly (e.g., in a single std::vector<Connection>) for
- * one-shot mass-disconnect.
+ * A plain, inert handle for a `Signal` subscription: does NOT disconnect on its
+ * own, neither on destruction nor when overwritten (e.g., via move-assignment).
+ * `Signal::connect()` returns one of these, and discarding it needs no ceremony at
+ * all (the common case: "stay connected for the `Signal`'s lifetime"). Use
+ * `disconnect()` to sever the subscription early, or wrap this in a
+ * `ScopedConnection` for the less common case of a lifetime-bound subscription.
  *
- * Safe to outlive the Signal it was connected to: disconnecting then is a no-op
- * (see Signal's Impl/weak_ptr design).
+ * Safe to outlive the `Signal` it was connected to: disconnecting then is a no-op.
  */
 class Connection
 {
@@ -39,27 +39,15 @@ public:
     Connection& operator=(const Connection&) = delete;
 
     Connection(Connection&&) noexcept = default;
+    Connection& operator=(Connection&&) noexcept = default;
 
-    Connection& operator=(Connection&& other) noexcept
-    {
-        if (this != &other)
-        {
-            disconnect();
-            _disconnector = std::move(other._disconnector);
-        }
-        return *this;
-    }
-
-    ~Connection()
-    {
-        disconnect();
-    }
+    ~Connection() = default; // Deliberately no call to `disconnect()`.
 
 
 
     /**
      * Disconnects the subscription. Safe to call multiple times, on an empty
-     * Connection, or after the originating Signal has already been destroyed
+     * `Connection`, or after the originating `Signal` has already been destroyed
      * (all no-ops).
      */
     void disconnect()
@@ -72,16 +60,9 @@ public:
     }
 
     /**
-     * Returns whether this Connection currently holds a live subscription.
+     * Returns whether this `Connection` currently holds a live subscription.
      */
     bool is_connected() const { return static_cast<bool>(_disconnector); }
-
-    /**
-     * Detaches from the subscription without disconnecting it: the slot stays
-     * connected for the Signal's lifetime (or until the Signal itself removes it),
-     * no longer tied to this Connection object.
-     */
-    void release() { _disconnector = nullptr; }
 
 
 
@@ -93,12 +74,73 @@ private:
 
 
 /**
+ * Move-only RAII wrapper around a `Connection`: disconnects automatically when
+ * destroyed (unless moved-from or already disconnected), or when overwritten via
+ * move-assignment. The explicit, intentionally-named opt-in for a lifetime-bound
+ * subscription: construct one directly from `Signal::connect()`'s return value
+ * (implicit conversion) wherever that's actually what's wanted:
+ * `ScopedConnection c = signal.connect(...);`.
+ */
+class ScopedConnection
+{
+
+public:
+    ScopedConnection() noexcept = default;
+    ScopedConnection(Connection connection) noexcept
+        : _connection(std::move(connection))
+    {
+    }
+
+    ScopedConnection(const ScopedConnection&) = delete;
+    ScopedConnection& operator=(const ScopedConnection&) = delete;
+
+    ScopedConnection(ScopedConnection&&) noexcept = default;
+
+    ScopedConnection& operator=(ScopedConnection&& other) noexcept
+    {
+        if (this != &other)
+        {
+            _connection.disconnect();
+            _connection = std::move(other._connection);
+        }
+        return *this;
+    }
+
+    ~ScopedConnection()
+    {
+        _connection.disconnect();
+    }
+
+
+
+    /**
+     * Disconnects the subscription. Safe to call multiple times, on an empty
+     * `ScopedConnection`, or after the originating `Signal` has already been
+     * destroyed (all no-ops).
+     */
+    void disconnect() { _connection.disconnect(); }
+
+    /**
+     * Returns whether this `ScopedConnection` currently holds a live subscription.
+     */
+    bool is_connected() const { return _connection.is_connected(); }
+
+
+
+private:
+    Connection _connection;
+
+}; // class ScopedConnection
+
+
+
+/**
  * A generic, reusable multicast signal: any number of slots (callables of matching
- * signature) can subscribe via connect(), and emit() (or operator()) invokes all of
- * them with the given arguments.
+ * signature) can subscribe via `connect()`, and `emit()` (or `operator()`) invokes
+ * all of them with the given arguments.
  *
  * Not thread-safe (matches the rest of the codebase: single-threaded per
- * frame/Shell throughout).
+ * frame/shell throughout).
  */
 template <typename... Args>
 class Signal
@@ -124,8 +166,10 @@ public:
 
 
     /**
-     * Subscribes the specified slot, returning a Connection that disconnects it
-     * when destroyed (unless released beforehand).
+     * Subscribes the specified slot, staying connected for this Signal's
+     * lifetime (or until disconnected) -- the returned Connection is a plain
+     * handle, not RAII (see its docs); wrap it in a ScopedConnection instead
+     * for a lifetime-bound subscription.
      */
     Connection connect(Slot slot)
     {
@@ -143,7 +187,7 @@ public:
      * Invokes all currently connected slots with the given arguments, in the order
      * they were connected. Iterates a copy of the slot list, so a slot
      * connecting/disconnecting other slots during emission is safe (just doesn't
-     * affect this emit() call).
+     * affect this `emit()` call).
      */
     void emit(Args... args) const
     {
@@ -162,8 +206,8 @@ public:
     size_t slot_count() const { return _impl->slots.size(); }
 
     /**
-     * Disconnects all currently connected slots. Outstanding Connection objects
-     * remain safe to destroy/disconnect afterward (no-ops).
+     * Disconnects all currently connected slots. Outstanding connections remain
+     * safe to destroy/disconnect afterward (no-ops).
      */
     void disconnect_all() { _impl->slots.clear(); }
 
