@@ -83,6 +83,21 @@ protected:
      */
     void _on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size) override;
 
+    /**
+     * Arms dragging if the press landed within the title bar strip.
+     */
+    void _on_mouse_down(xl7::input::MouseButton button, ml7::Vector2f local_position) override;
+
+    /**
+     * Disarms dragging.
+     */
+    void _on_mouse_up(xl7::input::MouseButton button) override;
+
+    /**
+     * Moves this frame by delta, while dragging is armed.
+     */
+    void _on_mouse_drag(ml7::Vector2f delta) override;
+
 
 
 private:
@@ -110,6 +125,9 @@ private:
 
     cl7::behavioral::Signal<> _opened;
     cl7::behavioral::Signal<> _closed;
+
+    /** Whether the title bar is currently being dragged. */
+    bool _dragging = false;
 
 }; // class Frame
 

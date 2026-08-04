@@ -138,6 +138,11 @@ private:
     /** Non-owning: the face that is the focus target. */
     Face* _focused_face = nullptr;
 
+    /** The mouse position as of the previous update, for computing the delta for mouse drags. */
+    ml7::Vector2f _previous_mouse_position;
+    /** Whether the previous mouse position has actually been set yet (guards first update's delta against a spurious jump). */
+    bool _has_previous_mouse_position = false;
+
 }; // class Shell
 
 

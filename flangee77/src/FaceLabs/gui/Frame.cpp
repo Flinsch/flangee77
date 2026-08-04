@@ -16,6 +16,11 @@ namespace fl7::gui {
         : _title_label(add_child<Label>(std::move(title)))
         , _close_button(add_child<Button>(u8"X"))
     {
+        // Purely decorative: disabled so title bar clicks (including on the
+        // text itself) fall through to this frame's own mouse-down/drag
+        // handling instead of being swallowed by the label.
+        _title_label.set_enabled(false);
+
         _close_button.get_clicked().connect([this]() { close(); });
     }
 
@@ -71,6 +76,31 @@ namespace fl7::gui {
 
         get_content_area().set_position({0.0f, TITLE_BAR_HEIGHT});
         get_content_area().set_size({new_size.x, std::max(0.0f, new_size.y - TITLE_BAR_HEIGHT)});
+    }
+
+    /**
+     * Arms dragging if the press landed within the title bar strip.
+     */
+    void Frame::_on_mouse_down(xl7::input::MouseButton button, ml7::Vector2f local_position)
+    {
+        _dragging = local_position.y < TITLE_BAR_HEIGHT;
+    }
+
+    /**
+     * Disarms dragging.
+     */
+    void Frame::_on_mouse_up(xl7::input::MouseButton button)
+    {
+        _dragging = false;
+    }
+
+    /**
+     * Moves this frame by delta, while dragging is armed.
+     */
+    void Frame::_on_mouse_drag(ml7::Vector2f delta)
+    {
+        if (_dragging)
+            set_position(get_position() + delta);
     }
 
 

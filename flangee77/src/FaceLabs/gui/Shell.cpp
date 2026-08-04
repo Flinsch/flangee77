@@ -41,6 +41,9 @@ namespace fl7::gui {
     void Shell::update()
     {
         const ml7::Vector2f mouse_position{static_cast<float>(_mouse->get_x()), static_cast<float>(_mouse->get_y())};
+        const ml7::Vector2f mouse_position_delta = _has_previous_mouse_position ? mouse_position - _previous_mouse_position : ml7::Vector2f{};
+        _previous_mouse_position = mouse_position;
+        _has_previous_mouse_position = true;
 
         Face* hit = nullptr;
         for (auto it = _top_level_faces.rbegin(); it != _top_level_faces.rend() && !hit; ++it)
@@ -69,8 +72,11 @@ namespace fl7::gui {
                 _focused_face->_on_focus_gained();
             }
 
-            _pressed_face->_on_mouse_down(MouseButton::Left);
+            _pressed_face->_on_mouse_down(MouseButton::Left, mouse_position - _pressed_face->get_absolute_position());
         }
+
+        if (_pressed_face && (mouse_position_delta.x != 0.0f || mouse_position_delta.y != 0.0f))
+            _pressed_face->_on_mouse_drag(mouse_position_delta);
 
         if (_mouse->is_button_released(MouseButton::Left) && _pressed_face)
         {

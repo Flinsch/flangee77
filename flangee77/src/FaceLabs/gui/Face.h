@@ -102,6 +102,13 @@ public:
     Face* get_parent() const { return _parent; }
 
     /**
+     * Returns this face's absolute (screen) position, computed by walking up the
+     * parent chain. Not cached (fine at GUI scale, matches the rest of the
+     * traversal/hit-testing code).
+     */
+    ml7::Vector2f get_absolute_position() const;
+
+    /**
      * Returns this face's effective style: its own override if set, else its
      * parent's effective style, else owning shell's default style, else a
      * default-constructed style as a last resort (a face not yet attached to a
@@ -162,9 +169,10 @@ protected:
     /**
      * Called when the specified mouse button was pressed down while this face was
      * the hovered face (this face becomes the "pressed" face, i.e., mouse-captured,
-     * until the button is released).
+     * until the button is released), with the press position in this face's own
+     * local coordinate space (i.e., relative to the absolute screen position).
      */
-    virtual void _on_mouse_down(xl7::input::MouseButton button) {}
+    virtual void _on_mouse_down(xl7::input::MouseButton button, ml7::Vector2f local_position) {}
 
     /**
      * Called when the specified mouse button was released while this face was the
@@ -172,6 +180,17 @@ protected:
      * `on_click` for the "still over it" case).
      */
     virtual void _on_mouse_up(xl7::input::MouseButton button) {}
+
+    /**
+     * Called once per frame, with this frame's real (OS-synced) mouse movement
+     * delta, while this face is the "pressed" face and the mouse actually moved.
+     * Default: no-op. Override for drag-to-move/drag-to-resize-style behavior
+     * (e.g., frame dragging itself via its title bar). Deliberately the OS-synced
+     * delta (see Mouse::get_x()), not the raw device delta (Mouse::get_delta_x()):
+     * a dragged face should track the visible cursor 1:1, unaffected by whatever
+     * the raw device delta vs. OS pointer-acceleration relationship happens to be.
+     */
+    virtual void _on_mouse_drag(ml7::Vector2f delta) {}
 
     /**
      * Called when the specified mouse button was pressed down and released again

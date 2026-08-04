@@ -26,6 +26,19 @@ namespace fl7::gui {
     }
 
     /**
+     * Returns this face's absolute (screen) position, computed by walking up the
+     * parent chain. Not cached (fine at GUI scale, matches the rest of the
+     * traversal/hit-testing code).
+     */
+    ml7::Vector2f Face::get_absolute_position() const
+    {
+        ml7::Vector2f position = _position;
+        for (const Face* parent = _parent; parent; parent = parent->_parent)
+            position += parent->_position;
+        return position;
+    }
+
+    /**
      * Returns this face's effective style: its own override if set, else its
      * parent's effective style, else owning shell's default style, else a
      * default-constructed style as a last resort (a face not yet attached to a
