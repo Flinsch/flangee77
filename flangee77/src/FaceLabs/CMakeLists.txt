@@ -33,6 +33,7 @@ target_sources(flangee77
 
     gui/Collection.cpp
     gui/Face.cpp
+    gui/Frame.cpp
     gui/Shell.cpp
     gui/Window.cpp
 

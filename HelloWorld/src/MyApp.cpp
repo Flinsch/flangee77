@@ -5,9 +5,9 @@
     #include <FaceLabs/fonts/render/Markup.h>
 
     #include <FaceLabs/gui/Button.h>
+    #include <FaceLabs/gui/Frame.h>
     #include <FaceLabs/gui/Label.h>
     #include <FaceLabs/gui/Panel.h>
-    #include <FaceLabs/gui/Window.h>
 
 #include <XiaoLabs/graphics.h>
     #include <XiaoLabs/graphics/images/codecs/targa/Reader.h>
@@ -290,14 +290,14 @@ namespace helloworld {
         gui_default_style.font = _font.get();
         _gui_shell->set_default_style(gui_default_style);
 
-        auto& window = _gui_shell->add_face<fl7::gui::Window>();
-        window.set_position({600.0f, 210.0f});
-        window.set_size({220.0f, 200.0f});
-        fl7::gui::Style window_style = window.get_effective_style();
-        window_style.chrome = &_gui_chrome;
-        window.set_style_override(window_style);
+        auto& frame = _gui_shell->add_face<fl7::gui::Frame>(u8"Demo Frame");
+        frame.set_position({600.0f, 210.0f});
+        frame.set_size({220.0f, 224.0f});
+        fl7::gui::Style frame_style = frame.get_effective_style();
+        frame_style.chrome = &_gui_chrome;
+        frame.set_style_override(frame_style);
 
-        auto& panel = window.get_content_area().add_child<fl7::gui::Panel>();
+        auto& panel = frame.get_content_area().add_child<fl7::gui::Panel>();
         panel.set_position({20.0f, 20.0f});
         panel.set_size({180.0f, 120.0f});
         fl7::gui::Style panel_style = panel.get_effective_style();
@@ -308,7 +308,7 @@ namespace helloworld {
         label.set_position({10.0f, 10.0f});
         label.set_size({160.0f, 24.0f});
 
-        auto& button = window.get_content_area().add_child<fl7::gui::Button>(u8"Click me");
+        auto& button = frame.get_content_area().add_child<fl7::gui::Button>(u8"Click me");
         button.set_position({20.0f, 150.0f});
         button.set_size({100.0f, 30.0f});
         button.get_clicked().connect([&button]() {
