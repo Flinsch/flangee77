@@ -8,7 +8,6 @@
 #include <array>
 #include <chrono>
 #include <cstdint>
-#include <memory>
 #include <vector>
 
 
@@ -29,6 +28,15 @@ public:
      * instance again on a later message/hotplug event.
      */
     using DeviceId = std::uint64_t;
+
+    /**
+     * The real (OS/hardware) cursor position, in window-client pixels.
+     */
+    struct CursorPosition
+    {
+        int x = 0;
+        int y = 0;
+    };
 
 
 
@@ -155,6 +163,12 @@ protected:
     static void _apply_mouse(Mouse& mouse, const std::array<bool, static_cast<size_t>(MouseButton::COUNT)>& levels, int delta_x, int delta_y, int wheel_delta, std::chrono::steady_clock::time_point now);
 
     /**
+     * Feeds a newly observed absolute cursor position into an individual mouse
+     * instance. See _apply_keyboard() for why this bridge exists.
+     */
+    static void _apply_mouse_cursor_position(Mouse& mouse, int x, int y);
+
+    /**
      * Queues composed text input to be reported by the aggregate keyboard on the
      * next update() (see aggregated_keyboard()'s docs for why this isn't attributed
      * to an individual keyboard). UTF-32, per the framework's "user interaction"
@@ -180,6 +194,18 @@ private:
      * Performs backend-specific de-initialization.
      */
     virtual bool _shutdown_impl() = 0;
+
+    /**
+     * Queries the real (OS/hardware) cursor position, in window-client pixels, once
+     * per update(). Default: unsupported (std::nullopt), leaving every Mouse's
+     * get_x()/get_y() unset (0, their default). Override where the platform can
+     * actually provide this (e.g., GetCursorPos() plus ScreenToClient() on Windows).
+     * Deliberately independent of how deltas/buttons are sourced (e.g., Raw Input):
+     * there's only one real OS cursor regardless of how many physical mice are
+     * plugged in, so this is queried once, then applied identically to every
+     * individual Mouse and the aggregate.
+     */
+    virtual std::optional<CursorPosition> _query_cursor_position_impl() { return std::nullopt; }
 
 
 

@@ -60,8 +60,6 @@ namespace xl7::input {
      */
     void Mouse::_apply(const std::array<bool, static_cast<size_t>(MouseButton::COUNT)>& button_values, int delta_x, int delta_y, int wheel_delta, std::chrono::steady_clock::time_point now)
     {
-        _x += delta_x;
-        _y += delta_y;
         _delta_x = delta_x;
         _delta_y = delta_y;
         _wheel_delta = wheel_delta;
@@ -102,6 +100,17 @@ namespace xl7::input {
                 mb.has_pending_click = true;
             }
         }
+    }
+
+    /**
+     * Applies a newly observed absolute cursor position (window-client pixels),
+     * synced from the OS. Deliberately separate from _apply(): the position isn't
+     * derived from that call's (unrelated, raw) deltas.
+     */
+    void Mouse::_apply_cursor_position(int x, int y)
+    {
+        _x = x;
+        _y = y;
     }
 
 

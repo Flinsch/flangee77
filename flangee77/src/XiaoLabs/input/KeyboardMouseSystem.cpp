@@ -55,6 +55,12 @@ namespace xl7::input {
         _apply_keyboard(*_aggregated_keyboard, aggregated_keys, _pending_text_input, now);
         _pending_text_input.clear();
 
+        // There's only one real OS cursor, regardless of how many physical mice
+        // are plugged in feeding it: queried once here, then applied identically
+        // to every individual mouse below and to the aggregate, independent of
+        // each device's own (unrelated, raw) deltas.
+        const std::optional<CursorPosition> cursor_position = _query_cursor_position_impl();
+
         std::array<bool, static_cast<size_t>(MouseButton::COUNT)> aggregated_buttons{};
         int aggregated_delta_x = 0;
         int aggregated_delta_y = 0;
@@ -66,9 +72,14 @@ namespace xl7::input {
             aggregated_delta_x += entry.device->get_delta_x();
             aggregated_delta_y += entry.device->get_delta_y();
             aggregated_wheel_delta += entry.device->get_wheel_delta();
+
+            if (cursor_position)
+                _apply_mouse_cursor_position(*entry.device, cursor_position->x, cursor_position->y);
         }
 
         _apply_mouse(*_aggregated_mouse, aggregated_buttons, aggregated_delta_x, aggregated_delta_y, aggregated_wheel_delta, now);
+        if (cursor_position)
+            _apply_mouse_cursor_position(*_aggregated_mouse, cursor_position->x, cursor_position->y);
     }
 
 
@@ -114,7 +125,11 @@ namespace xl7::input {
     }
 
     /**
-     * Feeds newly observed values/deltas into an individual keyboard instance.
+     * Feeds newly observed levels/deltas into an individual keyboard/mouse
+     * instance. A protected bridge rather than direct Keyboard::Attorney /
+     * Mouse::Attorney access, because backends derive from this class, and
+     * friendship (granted to KeyboardMouseSystem itself) isn't inherited by
+     * subclasses.
      */
     void KeyboardMouseSystem::_apply_keyboard(Keyboard& keyboard, const std::array<bool, static_cast<size_t>(Key::COUNT)>& key_values, const cl7::u32string& text_input_delta, std::chrono::steady_clock::time_point now)
     {
@@ -122,11 +137,21 @@ namespace xl7::input {
     }
 
     /**
-     * Feeds newly observed values/deltas into an individual mouse instance.
+     * Feeds newly observed levels/deltas into an individual mouse instance.
+     * See _apply_keyboard() for why this bridge exists.
      */
     void KeyboardMouseSystem::_apply_mouse(Mouse& mouse, const std::array<bool, static_cast<size_t>(MouseButton::COUNT)>& button_values, int delta_x, int delta_y, int wheel_delta, std::chrono::steady_clock::time_point now)
     {
         Mouse::Attorney::apply(mouse, button_values, delta_x, delta_y, wheel_delta, now);
+    }
+
+    /**
+     * Feeds a newly observed absolute cursor position into an individual mouse
+     * instance. See _apply_keyboard() for why this bridge exists.
+     */
+    void KeyboardMouseSystem::_apply_mouse_cursor_position(Mouse& mouse, int x, int y)
+    {
+        Mouse::Attorney::apply_cursor_position(mouse, x, y);
     }
 
     /**

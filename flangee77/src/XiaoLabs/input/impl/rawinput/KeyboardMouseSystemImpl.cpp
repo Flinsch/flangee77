@@ -85,6 +85,24 @@ namespace xl7::input::impl::rawinput {
         return _unregister_devices();
     }
 
+    /**
+     * Queries the real cursor position via GetCursorPos() plus ScreenToClient(),
+     * independent of Raw Input's own (relative-only) mouse deltas. See
+     * KeyboardMouseSystem::_query_cursor_position_impl().
+     */
+    std::optional<KeyboardMouseSystem::CursorPosition> KeyboardMouseSystemImpl::_query_cursor_position_impl()
+    {
+        POINT point;
+        if (!::GetCursorPos(&point))
+            return std::nullopt;
+
+        const HWND hwnd = static_cast<HWND>(MainWindow::instance().get_handle());
+        if (!::ScreenToClient(hwnd, &point))
+            return std::nullopt;
+
+        return CursorPosition{.x = point.x, .y = point.y};
+    }
+
 
 
     // #############################################################################

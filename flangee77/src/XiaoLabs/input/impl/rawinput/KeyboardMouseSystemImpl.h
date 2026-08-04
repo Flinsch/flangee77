@@ -97,6 +97,13 @@ private:
      */
     bool _shutdown_impl() override;
 
+    /**
+     * Queries the real cursor position via GetCursorPos() plus ScreenToClient(),
+     * independent of Raw Input's own (relative-only) mouse deltas. See
+     * KeyboardMouseSystem::_query_cursor_position_impl().
+     */
+    std::optional<CursorPosition> _query_cursor_position_impl() override;
+
 
 
     // #############################################################################

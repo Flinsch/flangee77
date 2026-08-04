@@ -43,6 +43,7 @@ public:
     class Attorney
     {
         static void apply(Mouse& mouse, const std::array<bool, static_cast<size_t>(MouseButton::COUNT)>& button_values, int delta_x, int delta_y, int wheel_delta, std::chrono::steady_clock::time_point now) { mouse._apply(button_values, delta_x, delta_y, wheel_delta, now); }
+        static void apply_cursor_position(Mouse& mouse, int x, int y) { mouse._apply_cursor_position(x, y); }
         friend class KeyboardMouseSystem;
     };
 
@@ -107,22 +108,40 @@ public:
     bool is_button_double_clicked(MouseButton button, std::chrono::milliseconds double_click_time_window = DEFAULT_DOUBLE_CLICK_WINDOW, std::chrono::milliseconds time_window = DigitalState::DEFAULT_TAP_TIME_WINDOW, int move_threshold_px = DEFAULT_CLICK_MOVE_THRESHOLD_PX) const;
 
     /**
-     * Returns the x coordinate of the mouse cursor, in window-client pixels.
+     * Returns the x coordinate of the (real, OS/hardware) mouse cursor, in
+     * window-client pixels, synced fresh each frame from the OS, NOT derived by
+     * accumulating get_delta_x() over time (those are independent, raw, unprocessed
+     * per-frame deltas straight from the device, this is the actual,
+     * OS-ballistics-applied, screen-edge-clamped cursor position). May lag behind
+     * by a frame's worth of latency, same as any other polled state.
      */
     int get_x() const { return _x; }
 
     /**
-     * Returns the y coordinate of the mouse cursor, in window-client pixels.
+     * Returns the y coordinate of the (real, OS/hardware) mouse cursor, in
+     * window-client pixels, synced fresh each frame from the OS, NOT derived by
+     * accumulating get_delta_y() over time (those are independent, raw, unprocessed
+     * per-frame deltas straight from the device, this is the actual,
+     * OS-ballistics-applied, screen-edge-clamped cursor position). May lag behind
+     * by a frame's worth of latency, same as any other polled state.
      */
     int get_y() const { return _y; }
 
     /**
-     * Returns the horizontal mouse movement during this frame, in pixels.
+     * Returns the horizontal mouse movement during this frame, in raw, unprocessed
+     * device pixels (no OS pointer-acceleration/sensitivity curve applied,
+     * no screen-edge clamping). Suitable for camera-look-style relative control.
+     * See get_x() for the actual (OS-synced) cursor position, which this does NOT
+     * simply accumulate into.
      */
     int get_delta_x() const { return _delta_x; }
 
     /**
-     * Returns the vertical mouse movement during this frame, in pixels.
+     * Returns the horizontal mouse movement during this frame, in raw, unprocessed
+     * device pixels (no OS pointer-acceleration/sensitivity curve applied,
+     * no screen-edge clamping). Suitable for camera-look-style relative control.
+     * See get_y() for the actual (OS-synced) cursor position, which this does NOT
+     * simply accumulate into.
      */
     int get_delta_y() const { return _delta_y; }
 
@@ -177,6 +196,13 @@ private:
      * Applies the newly observed values/deltas for this frame.
      */
     void _apply(const std::array<bool, static_cast<size_t>(MouseButton::COUNT)>& button_values, int delta_x, int delta_y, int wheel_delta, std::chrono::steady_clock::time_point now);
+
+    /**
+     * Applies a newly observed absolute cursor position (window-client pixels),
+     * synced from the OS. Deliberately separate from _apply(): the position isn't
+     * derived from that call's (unrelated, raw) deltas.
+     */
+    void _apply_cursor_position(int x, int y);
 
 
 

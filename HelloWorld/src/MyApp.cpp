@@ -60,6 +60,8 @@ namespace helloworld {
      */
     bool MyApp::_pre_init_impl(xl7::Config& config)
     {
+        config.general.use_hardware_cursor = true;
+
         return true;
     }
 
