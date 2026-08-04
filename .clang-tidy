@@ -57,6 +57,7 @@ Checks: >
   -readability-identifier-length,
   -readability-magic-numbers,
   -readability-math-missing-parentheses,
+  -readability-redundant-lambda-parameter-list,
   -readability-uppercase-literal-suffix,
   -readability-use-std-min-max,
 
