@@ -1,5 +1,6 @@
 #include "DefaultRenderer.h"
 
+#include "../Button.h"
 #include "../Collection.h"
 #include "../Label.h"
 #include "../NineSliceChrome.h"
@@ -98,14 +99,16 @@ namespace fl7::gui::render {
 
         const ml7::Vector2f absolute_position = parent_absolute_position + face.get_position();
 
-        if (dynamic_cast<const Window*>(&face) || dynamic_cast<const Panel*>(&face))
+        if (dynamic_cast<const Window*>(&face) || dynamic_cast<const Panel*>(&face) || dynamic_cast<const Button*>(&face))
             _draw_background(face, absolute_position);
 
         if (const auto* label = dynamic_cast<const Label*>(&face))
-            _draw_label(*label, absolute_position);
+            _draw_text(label->get_text(), face, absolute_position);
+        else if (const auto* button = dynamic_cast<const Button*>(&face))
+            _draw_text(button->get_text(), face, absolute_position);
 
         // TODO: dispatch to further per-face-type drawing logic here, once more
-        // concrete widget types exist (Button, ...).
+        // concrete widget types exist (CheckBox, TextField, ...).
 
         if (const auto* collection = dynamic_cast<const Collection*>(&face))
         {
@@ -170,12 +173,14 @@ namespace fl7::gui::render {
     }
 
     /**
-     * Draws a label's text (Style::font/text_style) within its bounds.
+     * Draws the given text (Style::font/text_style, taken from face) within face's
+     * bounds. Shared by any face type that just displays a string of text over its
+     * own area (Label, Button, ...).
      */
-    void DefaultRenderer::_draw_label(const Label& label, ml7::Vector2f absolute_position)
+    void DefaultRenderer::_draw_text(cl7::u8string_view text, const Face& face, ml7::Vector2f absolute_position)
     {
-        const Style& style = label.get_effective_style();
-        draw_text_in_box(label.get_text(), style.font, &style.text_style, absolute_position, label.get_size());
+        const Style& style = face.get_effective_style();
+        draw_text_in_box(text, style.font, &style.text_style, absolute_position, face.get_size());
     }
 
 

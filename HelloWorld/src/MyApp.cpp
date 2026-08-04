@@ -4,6 +4,7 @@
     #include <FaceLabs/fonts/TextLayout.h>
     #include <FaceLabs/fonts/render/Markup.h>
 
+    #include <FaceLabs/gui/Button.h>
     #include <FaceLabs/gui/Label.h>
     #include <FaceLabs/gui/Panel.h>
     #include <FaceLabs/gui/Window.h>
@@ -289,7 +290,7 @@ namespace helloworld {
 
         auto& window = _gui_shell->add_face<fl7::gui::Window>();
         window.set_position({600.0f, 210.0f});
-        window.set_size({220.0f, 160.0f});
+        window.set_size({220.0f, 200.0f});
         fl7::gui::Style window_style = window.get_effective_style();
         window_style.chrome = &_gui_chrome;
         window.set_style_override(window_style);
@@ -304,6 +305,14 @@ namespace helloworld {
         auto& label = panel.add_child<fl7::gui::Label>(u8"Hello, Panel!");
         label.set_position({10.0f, 10.0f});
         label.set_size({160.0f, 24.0f});
+
+        auto& button = window.get_content_area().add_child<fl7::gui::Button>(u8"Click me");
+        button.set_position({20.0f, 150.0f});
+        button.set_size({100.0f, 30.0f});
+        button.get_clicked().connect([&button]() {
+            LOG_INFO(u8"Button clicked!");
+            button.set_text(button.get_text() == u8"Click me" ? u8"Clicked!" : u8"Click me");
+        });
 
 
 

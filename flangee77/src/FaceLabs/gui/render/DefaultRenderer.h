@@ -12,6 +12,7 @@
 
 namespace fl7::gui {
 class Face;
+class Button;
 class Label;
 struct NineSliceChrome;
 } // namespace fl7::gui
@@ -89,9 +90,11 @@ private:
     void _draw_chrome(const NineSliceChrome& chrome, ml7::Vector2f absolute_position, ml7::Vector2f size);
 
     /**
-     * Draws a label's text (Style::font/text_style) within its bounds.
+     * Draws the given text (Style::font/text_style, taken from face) within face's
+     * bounds. Shared by any face type that just displays a string of text over its
+     * own area (Label, Button, ...).
      */
-    void _draw_label(const Label& label, ml7::Vector2f absolute_position);
+    void _draw_text(cl7::u8string_view text, const Face& face, ml7::Vector2f absolute_position);
 
 
 
