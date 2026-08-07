@@ -1,6 +1,8 @@
 #ifndef FL7_GUI_WINDOW_H
 #define FL7_GUI_WINDOW_H
 #include "./Compound.h"
+#include "./HasBackground.h"
+
 #include "./Container.h"
 
 
@@ -20,6 +22,7 @@ namespace fl7::gui {
  */
 class Window
     : public Compound
+    , public HasBackground
 {
 
 public:

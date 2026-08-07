@@ -12,9 +12,6 @@
 
 namespace fl7::gui {
 class Face;
-class Button;
-class Label;
-struct NineSliceChrome;
 } // namespace fl7::gui
 
 namespace fl7::gui::render {
@@ -70,31 +67,10 @@ private:
 
     /**
      * Recursively walks the given face (and, if it's a collection, its children) at
-     * the given absolute (screen) position.
+     * the given absolute (screen) position, drawing each visited face via the
+     * inherited _draw_face().
      */
     void _render_face_recursive(const Face& face, ml7::Vector2f parent_absolute_position);
-
-    /**
-     * Draws a face's background over its full bounds: a 9-sliced NineSliceChrome
-     * sprite (see _draw_chrome) if Style::chrome is set, else a flat
-     * Style::background_color rect. Shared by any face type with such a background
-     * (Window, Panel, ...).
-     */
-    void _draw_background(const Face& face, ml7::Vector2f absolute_position);
-
-    /**
-     * Draws the given chrome sprite 9-sliced over a destination rect at
-     * absolute_position/size: corners at native size, edges stretched along their
-     * one free axis, the center stretched along both.
-     */
-    void _draw_chrome(const NineSliceChrome& chrome, ml7::Vector2f absolute_position, ml7::Vector2f size);
-
-    /**
-     * Draws the given text (Style::font/text_style, taken from face) within face's
-     * bounds. Shared by any face type that just displays a string of text over its
-     * own area (Label, Button, ...).
-     */
-    void _draw_text(cl7::u8string_view text, const Face& face, ml7::Vector2f absolute_position);
 
 
 

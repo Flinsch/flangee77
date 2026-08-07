@@ -1,6 +1,8 @@
 #include "AbstractRenderer.h"
 
 #include "../Face.h"
+#include "../HasBackground.h"
+#include "../HasText.h"
 
 
 
@@ -47,8 +49,8 @@ namespace fl7::gui::render {
     /**
      * Renders the given top-level faces (and, transitively, their descendants) as a
      * complete frame. This is the single entry point through which a shell gets
-     * its faces drawn. Traversal order/strategy and per-face-type drawing logic are
-     * entirely up to the concrete renderer.
+     * its faces drawn. Traversal order/strategy is entirely up to the concrete
+     * renderer.
      */
     void AbstractRenderer::render_faces(const std::vector<std::unique_ptr<Face>>& top_level_faces)
     {
@@ -115,6 +117,30 @@ namespace fl7::gui::render {
     void AbstractRenderer::pop_clip_rect()
     {
         _pop_clip_rect_impl();
+    }
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Draws the given face itself (not its children, if any, that's up to each
+     * backend's own traversal in `_render_faces_impl`): its background (see
+     * `BackgroundHelper`) if it's a `HasBackground`, its text (see `TextHelper`) if
+     * it's a `HasText`, always in that (back-to-front) order. Backend-agnostic
+     * (talks only to this class's own public drawing methods above), so shared by
+     * every `AbstractRenderer` implementation. Call this from within your own
+     * traversal wherever you decide to actually draw a given face.
+     */
+    void AbstractRenderer::_draw_face(const Face& face, ml7::Vector2f absolute_position)
+    {
+        if (dynamic_cast<const HasBackground*>(&face))
+            _background_helper.draw(this, face, absolute_position);
+
+        if (const auto* has_text = dynamic_cast<const HasText*>(&face))
+            _text_helper.draw(this, has_text->get_display_text(), face, absolute_position);
     }
 
 

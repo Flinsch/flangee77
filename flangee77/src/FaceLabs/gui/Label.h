@@ -1,8 +1,7 @@
 #ifndef FL7_GUI_LABEL_H
 #define FL7_GUI_LABEL_H
 #include "./Static.h"
-
-#include <CoreLabs/string.h>
+#include "./HasText.h"
 
 
 
@@ -17,6 +16,7 @@ namespace fl7::gui {
  */
 class Label
     : public Static
+    , public HasText
 {
 
 public:
@@ -33,6 +33,15 @@ public:
     Label& operator=(Label&&) = delete;
 
     ~Label() override = default;
+
+
+
+    // #############################################################################
+    // HasText Implementations
+    // #############################################################################
+
+    /** Returns this label's text to be displayed. */
+    const cl7::u8string& get_display_text() const override { return _text; }
 
 
 

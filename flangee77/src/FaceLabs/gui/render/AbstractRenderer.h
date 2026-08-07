@@ -1,6 +1,9 @@
 #ifndef FL7_GUI_RENDER_ABSTRACTRENDERER_H
 #define FL7_GUI_RENDER_ABSTRACTRENDERER_H
 
+#include "./BackgroundHelper.h"
+#include "./TextHelper.h"
+
 #include <FaceLabs/fonts/Font.h>
 #include <FaceLabs/fonts/TextStyle.h>
 
@@ -26,10 +29,14 @@ namespace fl7::gui::render {
 
 /**
  * Abstract drawing/rendering interface for a whole `Face` tree. A concrete
- * implementation (see `DefaultRenderer`) owns both the tree traversal (order,
- * strategy, e.g., back-to-front for transparency, front-to-back with depth/stencil
- * early-out for opaque content, render-to-texture-per-face caching, ...) and the
- * per-face-type drawing knowledge (what a button looks like vs. a label, etc.).
+ * implementation (see `DefaultRenderer`) owns the tree traversal (order/strategy,
+ * e.g., back-to-front for transparency, front-to-back with depth/stencil early-out
+ * for opaque content, render-to-texture-per-face caching, ...) and the actual
+ * drawing primitives (`_draw_rect_impl` etc.). How a *single* face is structured
+ * (e.g., background before text, always back-to-front) is fixed and backend-
+ * agnostic, though: see `_draw_face`, which delegates to per-aspect helpers (see
+ * `BackgroundHelper`/`TextHelper`) that only ever talk to this class's own public
+ * drawing methods, so that knowledge is written once here, not per backend.
  * `Face`/`Shell` themselves know nothing about drawing at all, they only expose
  * read-only structure (position, size, visibility, children, etc.) for a renderer
  * to look at.
@@ -106,8 +113,8 @@ public:
     /**
      * Renders the given top-level faces (and, transitively, their descendants) as a
      * complete frame. This is the single entry point through which a shell gets
-     * its faces drawn. Traversal order/strategy and per-face-type drawing logic are
-     * entirely up to the concrete renderer.
+     * its faces drawn. Traversal order/strategy is entirely up to the concrete
+     * renderer.
      */
     void render_faces(const std::vector<std::unique_ptr<Face>>& top_level_faces);
 
@@ -156,6 +163,25 @@ public:
 
 
 
+protected:
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Draws the given face itself (not its children, if any, that's up to each
+     * backend's own traversal in `_render_faces_impl`): its background (see
+     * `BackgroundHelper`) if it's a `HasBackground`, its text (see `TextHelper`) if
+     * it's a `HasText`, always in that (back-to-front) order. Backend-agnostic
+     * (talks only to this class's own public drawing methods above), so shared by
+     * every `AbstractRenderer` implementation. Call this from within your own
+     * traversal wherever you decide to actually draw a given face.
+     */
+    void _draw_face(const Face& face, ml7::Vector2f absolute_position);
+
+
+
 private:
 
     // #############################################################################
@@ -180,6 +206,9 @@ private:
     // #############################################################################
     // Attributes
     // #############################################################################
+
+    BackgroundHelper _background_helper;
+    TextHelper _text_helper;
 
     /** The "flag"/counter specifying whether an active frame is open. */
     unsigned _frame_depth = 0;

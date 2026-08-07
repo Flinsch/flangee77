@@ -38,8 +38,8 @@ struct Style
     /**
      * Non-owning: whoever builds the Style keeps the NineSliceChrome alive. When
      * set, drawn instead of the flat background_color/border_color pair (see
-     * render::DefaultRenderer::_draw_background). A temporary stand-in for a
-     * proper theme lookup (font included), to be revisited later.
+     * render::BackgroundHelper). A temporary stand-in for a proper theme lookup
+     * (font included), to be revisited later.
      */
     const NineSliceChrome* chrome = nullptr;
 

@@ -14,11 +14,11 @@ namespace fl7::gui {
  * A 9-slice-able chrome sprite: a rect within a texture (uv_min/uv_max, its native
  * pixel size given by sprite_size), subdivided into a 3x3 grid via four insets (in
  * the sprite's own pixel space, not normalized UV, for easier authoring). When
- * drawn (e.g., see render::DefaultRenderer::_draw_chrome) onto an arbitrarily sized
- * destination rect, corners are placed at native size, edges stretch along their
- * one free axis, and the center stretches along both: the classic 9-slice/9-patch
- * technique for scaling chrome (window/panel backgrounds, button skins, etc.)
- * without distorting borders or corners.
+ * drawn (see render::BackgroundHelper) onto an arbitrarily sized destination rect,
+ * corners are placed at native size, edges stretch along their one free axis, and
+ * the center stretches along both: the classic 9-slice/9-patch technique for
+ * scaling chrome (window/panel backgrounds, button skins, etc.) without distorting
+ * borders or corners.
  */
 struct NineSliceChrome
 {

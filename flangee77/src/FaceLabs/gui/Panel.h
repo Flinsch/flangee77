@@ -1,6 +1,7 @@
 #ifndef FL7_GUI_PANEL_H
 #define FL7_GUI_PANEL_H
 #include "./Container.h"
+#include "./HasBackground.h"
 
 
 
@@ -17,6 +18,7 @@ namespace fl7::gui {
  */
 class Panel
     : public Container
+    , public HasBackground
 {
 
 public:

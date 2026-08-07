@@ -38,5 +38,7 @@ target_sources(flangee77
     gui/Window.cpp
 
     gui/render/AbstractRenderer.cpp
+    gui/render/BackgroundHelper.cpp
     gui/render/DefaultRenderer.cpp
+    gui/render/TextHelper.cpp
 )

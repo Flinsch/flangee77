@@ -1,6 +1,8 @@
 #ifndef FL7_GUI_BUTTON_H
 #define FL7_GUI_BUTTON_H
 #include "./Control.h"
+#include "./HasBackground.h"
+#include "./HasText.h"
 
 #include <CoreLabs/behavioral/Signal.h>
 #include <CoreLabs/string.h>
@@ -17,6 +19,8 @@ namespace fl7::gui {
  */
 class Button
     : public Control
+    , public HasBackground
+    , public HasText
 {
 
 public:
@@ -33,6 +37,15 @@ public:
     Button& operator=(Button&&) = delete;
 
     ~Button() override = default;
+
+
+
+    // #############################################################################
+    // HasText Implementations
+    // #############################################################################
+
+    /** Returns this button's text to be displayed. */
+    const cl7::u8string& get_display_text() const override { return _text; }
 
 
 
