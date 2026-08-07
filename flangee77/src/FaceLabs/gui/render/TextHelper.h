@@ -32,7 +32,7 @@ public:
      * Draws text at absolute_position, sized/styled per face's effective style, via
      * renderer.
      */
-    void draw(AbstractRenderer* renderer, cl7::u8string_view text, const Face& face, ml7::Vector2f absolute_position);
+    void draw(AbstractRenderer* renderer, cl7::u32string_view text, const Face& face, ml7::Vector2f absolute_position);
 
 }; // class TextHelper
 

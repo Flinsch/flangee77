@@ -55,12 +55,12 @@ namespace fl7::gui::render {
         _quad_renderer.draw_textured_rect(position_min, position_max, texture_id, uv_min, uv_max, tint);
     }
 
-    void DefaultRenderer::_draw_text_impl(cl7::u8string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f position)
+    void DefaultRenderer::_draw_text_impl(cl7::u32string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f position)
     {
         _text_renderer->draw_text(text, font, text_style, position);
     }
 
-    void DefaultRenderer::_draw_text_in_box_impl(cl7::u8string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
+    void DefaultRenderer::_draw_text_in_box_impl(cl7::u32string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
     {
         _text_renderer->draw_text_in_box(text, font, text_style, box_position, box_size);
     }

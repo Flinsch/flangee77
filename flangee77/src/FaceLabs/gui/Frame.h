@@ -24,7 +24,7 @@ class Frame
 {
 
 public:
-    explicit Frame(cl7::u8string title = {});
+    explicit Frame(cl7::u32string title = {});
 
     Frame(const Frame&) = delete;
     Frame& operator=(const Frame&) = delete;
@@ -40,10 +40,10 @@ public:
     // #############################################################################
 
     /** Returns this frame's title text. */
-    const cl7::u8string& get_title() const { return _title_label.get_text(); }
+    const cl7::u32string& get_title() const { return _title_label.get_text(); }
 
     /** Sets this frame's title text. */
-    void set_title(cl7::u8string title) { _title_label.set_text(std::move(title)); }
+    void set_title(cl7::u32string title) { _title_label.set_text(std::move(title)); }
 
     /** Returns the signal emitted whenever this frame is opened (see `open()`). */
     cl7::behavioral::Signal<>& get_opened() { return _opened; }

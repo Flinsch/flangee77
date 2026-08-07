@@ -138,14 +138,14 @@ public:
      * `fl7::fonts::render::AbstractRenderer::draw_text` for the exact
      * positioning/alignment contract.
      */
-    void draw_text(cl7::u8string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f position);
+    void draw_text(cl7::u32string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f position);
 
     /**
      * Draws text laid out within the specified box (screen pixel space, y-down).
      * See `fl7::fonts::render::AbstractRenderer::draw_text_in_box` for the exact
      * positioning/alignment/wrapping contract.
      */
-    void draw_text_in_box(cl7::u8string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size);
+    void draw_text_in_box(cl7::u32string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size);
 
 
 
@@ -195,8 +195,8 @@ private:
 
     virtual void _draw_rect_impl(ml7::Vector2f position_min, ml7::Vector2f position_max, const xl7::graphics::Color& color) = 0;
     virtual void _draw_textured_rect_impl(ml7::Vector2f position_min, ml7::Vector2f position_max, xl7::graphics::textures::Texture2D::Id texture_id, ml7::Vector2f uv_min, ml7::Vector2f uv_max, const xl7::graphics::Color& tint) = 0;
-    virtual void _draw_text_impl(cl7::u8string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f position) = 0;
-    virtual void _draw_text_in_box_impl(cl7::u8string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size) = 0;
+    virtual void _draw_text_impl(cl7::u32string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f position) = 0;
+    virtual void _draw_text_in_box_impl(cl7::u32string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size) = 0;
 
     virtual void _push_clip_rect_impl(ml7::Vector2f clip_min, ml7::Vector2f clip_max) = 0;
     virtual void _pop_clip_rect_impl() = 0;

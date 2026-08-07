@@ -22,7 +22,7 @@ class Label
 public:
     Label() = default;
 
-    explicit Label(cl7::u8string text)
+    explicit Label(cl7::u32string text)
         : _text(std::move(text))
     {
     }
@@ -41,7 +41,7 @@ public:
     // #############################################################################
 
     /** Returns this label's text to be displayed. */
-    const cl7::u8string& get_display_text() const override { return _text; }
+    const cl7::u32string& get_display_text() const override { return _text; }
 
 
 
@@ -50,10 +50,10 @@ public:
     // #############################################################################
 
     /** Returns this label's text. */
-    const cl7::u8string& get_text() const { return _text; }
+    const cl7::u32string& get_text() const { return _text; }
 
     /** Sets this label's text. */
-    void set_text(cl7::u8string text) { _text = std::move(text); }
+    void set_text(cl7::u32string text) { _text = std::move(text); }
 
 
 
@@ -63,7 +63,7 @@ private:
     // Attributes
     // #############################################################################
 
-    cl7::u8string _text;
+    cl7::u32string _text;
 
 }; // class Label
 

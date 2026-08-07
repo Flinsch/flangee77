@@ -21,7 +21,7 @@ public:
     /**
      * Returns the text to display.
      */
-    virtual const cl7::u8string& get_display_text() const = 0;
+    virtual const cl7::u32string& get_display_text() const = 0;
 
 }; // class HasText
 

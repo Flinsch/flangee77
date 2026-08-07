@@ -12,9 +12,9 @@ namespace fl7::gui {
     // Construction / Destruction
     // #############################################################################
 
-    Frame::Frame(cl7::u8string title)
+    Frame::Frame(cl7::u32string title)
         : _title_label(add_child<Label>(std::move(title)))
-        , _close_button(add_child<Button>(u8"X"))
+        , _close_button(add_child<Button>(U"X"))
     {
         // Purely decorative: disabled so title bar clicks (including on the
         // text itself) fall through to this frame's own mouse-down/drag

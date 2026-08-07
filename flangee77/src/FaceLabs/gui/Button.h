@@ -26,7 +26,7 @@ class Button
 public:
     Button() = default;
 
-    explicit Button(cl7::u8string text)
+    explicit Button(cl7::u32string text)
         : _text(std::move(text))
     {
     }
@@ -45,7 +45,7 @@ public:
     // #############################################################################
 
     /** Returns this button's text to be displayed. */
-    const cl7::u8string& get_display_text() const override { return _text; }
+    const cl7::u32string& get_display_text() const override { return _text; }
 
 
 
@@ -54,10 +54,10 @@ public:
     // #############################################################################
 
     /** Returns this button's text. */
-    const cl7::u8string& get_text() const { return _text; }
+    const cl7::u32string& get_text() const { return _text; }
 
     /** Sets this button's text. */
-    void set_text(cl7::u8string text) { _text = std::move(text); }
+    void set_text(cl7::u32string text) { _text = std::move(text); }
 
     /** Returns the signal emitted whenever this button is clicked. */
     cl7::behavioral::Signal<>& get_clicked() { return _clicked; }
@@ -80,7 +80,7 @@ private:
     // Attributes
     // #############################################################################
 
-    cl7::u8string _text;
+    cl7::u32string _text;
 
     cl7::behavioral::Signal<> _clicked;
 

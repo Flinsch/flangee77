@@ -290,7 +290,7 @@ namespace helloworld {
         gui_default_style.font = _font.get();
         _gui_shell->set_default_style(gui_default_style);
 
-        auto& frame = _gui_shell->add_face<fl7::gui::Frame>(u8"Demo Frame");
+        auto& frame = _gui_shell->add_face<fl7::gui::Frame>(U"Demo Frame");
         frame.set_position({600.0f, 210.0f});
         frame.set_size({220.0f, 224.0f});
         fl7::gui::Style frame_style = frame.get_effective_style();
@@ -304,16 +304,16 @@ namespace helloworld {
         panel_style.background_color = {0.4f, 0.4f, 0.5f, 1.0f};
         panel.set_style_override(panel_style);
 
-        auto& label = panel.add_child<fl7::gui::Label>(u8"Hello, Panel!");
+        auto& label = panel.add_child<fl7::gui::Label>(U"Hello, Panel!");
         label.set_position({10.0f, 10.0f});
         label.set_size({160.0f, 24.0f});
 
-        auto& button = frame.get_content_area().add_child<fl7::gui::Button>(u8"Click me");
+        auto& button = frame.get_content_area().add_child<fl7::gui::Button>(U"Click me");
         button.set_position({20.0f, 150.0f});
         button.set_size({100.0f, 30.0f});
         button.get_clicked().connect([&button]() {
             LOG_INFO(u8"Button clicked!");
-            button.set_text(button.get_text() == u8"Click me" ? u8"Clicked!" : u8"Click me");
+            button.set_text(button.get_text() == U"Click me" ? U"Clicked!" : U"Click me");
         });
 
 

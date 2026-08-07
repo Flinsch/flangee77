@@ -84,7 +84,7 @@ namespace fl7::gui::render {
      * `fl7::fonts::render::AbstractRenderer::draw_text` for the exact
      * positioning/alignment contract.
      */
-    void AbstractRenderer::draw_text(cl7::u8string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f position)
+    void AbstractRenderer::draw_text(cl7::u32string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f position)
     {
         ScopedFrame implicit_frame(_frame_depth == 0 ? this : nullptr);
         _draw_text_impl(text, font, text_style, position);
@@ -95,7 +95,7 @@ namespace fl7::gui::render {
      * See `fl7::fonts::render::AbstractRenderer::draw_text_in_box` for the exact
      * positioning/alignment/wrapping contract.
      */
-    void AbstractRenderer::draw_text_in_box(cl7::u8string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
+    void AbstractRenderer::draw_text_in_box(cl7::u32string_view text, fonts::Font* font, const fonts::TextStyle* text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
     {
         ScopedFrame implicit_frame(_frame_depth == 0 ? this : nullptr);
         _draw_text_in_box_impl(text, font, text_style, box_position, box_size);
