@@ -1,6 +1,6 @@
 var classfl7_1_1gui_1_1Frame =
 [
-    [ "Frame", "de/d87/classfl7_1_1gui_1_1Frame.html#a693dd02a299db01b7251d057596f42d5", null ],
+    [ "Frame", "de/d87/classfl7_1_1gui_1_1Frame.html#a890ce576b62c407f2651698169f8f4ff", null ],
     [ "Frame", "de/d87/classfl7_1_1gui_1_1Frame.html#a79418b42d17e226028d690dc96358835", null ],
     [ "Frame", "de/d87/classfl7_1_1gui_1_1Frame.html#a9f69de0cb850056ccf33bb9876352da4", null ],
     [ "~Frame", "de/d87/classfl7_1_1gui_1_1Frame.html#a62e2645c199a367af04ec8a7cba3573d", null ],
@@ -11,11 +11,11 @@ var classfl7_1_1gui_1_1Frame =
     [ "close", "de/d87/classfl7_1_1gui_1_1Frame.html#a8a00236985e2bd34f4877a8942fad5db", null ],
     [ "get_closed", "de/d87/classfl7_1_1gui_1_1Frame.html#ae5c29f86e671548d06891e6efbb17a20", null ],
     [ "get_opened", "de/d87/classfl7_1_1gui_1_1Frame.html#ab4e867fe38dadbe0064dc89f2882adcd", null ],
-    [ "get_title", "de/d87/classfl7_1_1gui_1_1Frame.html#a955e488988310c7182934776d4b49220", null ],
+    [ "get_title", "de/d87/classfl7_1_1gui_1_1Frame.html#aa6346a1b6d7ca1efa21832dddf9177a4", null ],
     [ "open", "de/d87/classfl7_1_1gui_1_1Frame.html#ab18a0adcaa4297ac12a51ae29bcc6970", null ],
     [ "operator=", "de/d87/classfl7_1_1gui_1_1Frame.html#aed3502521bad8b30c44d12946956b050", null ],
     [ "operator=", "de/d87/classfl7_1_1gui_1_1Frame.html#ae05557647070aeb8711440af7bb0a1e4", null ],
-    [ "set_title", "de/d87/classfl7_1_1gui_1_1Frame.html#aa86266b2b54af0463b9630e11fd88a8a", null ],
+    [ "set_title", "de/d87/classfl7_1_1gui_1_1Frame.html#a3d09c799cfbb60ecdf4c6f6019246dfe", null ],
     [ "_close_button", "de/d87/classfl7_1_1gui_1_1Frame.html#a65e8a10e0d1e75064b91f9bf0c9a424f", null ],
     [ "_closed", "de/d87/classfl7_1_1gui_1_1Frame.html#ab375af2bda0fb25236c27e52aa9b0e9f", null ],
     [ "_dragging", "de/d87/classfl7_1_1gui_1_1Frame.html#a5191fad361f2fae27b0fa5dbd8008b9b", null ],

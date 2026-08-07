@@ -127,6 +127,7 @@ var hierarchy =
     [ "dl7::xml::Attribute", "d5/d23/classdl7_1_1xml_1_1Attribute.html", null ],
     [ "cl7::auto_invoke< Callable >", "de/dbb/classcl7_1_1auto__invoke.html", null ],
     [ "xl7::BackendRegistry< TBackendBase >", "d1/da6/classxl7_1_1BackendRegistry.html", null ],
+    [ "fl7::gui::render::BackgroundHelper", "d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html", null ],
     [ "dl7::Base64", "da/d3b/classdl7_1_1Base64.html", null ],
     [ "xl7::graphics::images::codecs::png::Reader::BitInfo", "de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html", null ],
     [ "xl7::graphics::states::BlendStateDesc", "df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc.html", null ],
@@ -319,10 +320,19 @@ var hierarchy =
     [ "cl7::Guid", "dc/dbd/structcl7_1_1Guid.html", null ],
     [ "xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates", "d7/d0a/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates.html", null ],
     [ "xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates", "d7/d8c/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates.html", null ],
+    [ "fl7::gui::HasBackground", "db/d13/classfl7_1_1gui_1_1HasBackground.html", [
+      [ "fl7::gui::Button", "d4/dba/classfl7_1_1gui_1_1Button.html", null ],
+      [ "fl7::gui::Panel", "de/d69/classfl7_1_1gui_1_1Panel.html", null ],
+      [ "fl7::gui::Window", "d4/d52/classfl7_1_1gui_1_1Window.html", null ]
+    ] ],
     [ "tl7::Signature::hash", "dd/dc0/structtl7_1_1Signature_1_1hash.html", null ],
     [ "std::hash< xl7::graphics::impl::shared::meshes::ComposedVertexLayout >", "db/de3/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout_01_4.html", null ],
     [ "std::hash< xl7::graphics::impl::shared::meshes::VertexBufferBinding >", "dc/d08/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding_01_4.html", null ],
     [ "std::hash< xl7::resources::ResourceId >", "dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4.html", null ],
+    [ "fl7::gui::HasText", "d1/d67/classfl7_1_1gui_1_1HasText.html", [
+      [ "fl7::gui::Button", "d4/dba/classfl7_1_1gui_1_1Button.html", null ],
+      [ "fl7::gui::Label", "df/dc0/classfl7_1_1gui_1_1Label.html", null ]
+    ] ],
     [ "xl7::graphics::images::codecs::png::Reader::Header", "df/d50/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Header.html", null ],
     [ "xl7::graphics::images::codecs::targa::Header", "d8/dd4/structxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Header.html", null ],
     [ "dl7::syntax::matchers::HexadecimalLiteralMatcher", "d9/d44/structdl7_1_1syntax_1_1matchers_1_1HexadecimalLiteralMatcher.html", null ],
@@ -776,6 +786,7 @@ var hierarchy =
     [ "dl7::syntax::TerminalSymbolCollection", "dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html", null ],
     [ "tl7::TestCase", "dd/de5/classtl7_1_1TestCase.html", null ],
     [ "tl7::TestSuite", "db/d53/classtl7_1_1TestSuite.html", null ],
+    [ "fl7::gui::render::TextHelper", "d1/d12/classfl7_1_1gui_1_1render_1_1TextHelper.html", null ],
     [ "fl7::fonts::TextLine", "d5/daa/structfl7_1_1fonts_1_1TextLine.html", null ],
     [ "fl7::fonts::TextMetrics", "d2/dc2/structfl7_1_1fonts_1_1TextMetrics.html", null ],
     [ "Texture", null, [

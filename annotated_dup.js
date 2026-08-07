@@ -306,7 +306,9 @@ var annotated_dup =
       [ "gui", "d5/d56/namespacefl7_1_1gui.html", [
         [ "render", "df/df8/namespacefl7_1_1gui_1_1render.html", [
           [ "AbstractRenderer", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer" ],
-          [ "DefaultRenderer", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer" ]
+          [ "BackgroundHelper", "d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html", "d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper" ],
+          [ "DefaultRenderer", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer" ],
+          [ "TextHelper", "d1/d12/classfl7_1_1gui_1_1render_1_1TextHelper.html", "d1/d12/classfl7_1_1gui_1_1render_1_1TextHelper" ]
         ] ],
         [ "Button", "d4/dba/classfl7_1_1gui_1_1Button.html", "d4/dba/classfl7_1_1gui_1_1Button" ],
         [ "Collection", "d4/de7/classfl7_1_1gui_1_1Collection.html", "d4/de7/classfl7_1_1gui_1_1Collection" ],
@@ -315,6 +317,8 @@ var annotated_dup =
         [ "Control", "df/d2b/classfl7_1_1gui_1_1Control.html", "df/d2b/classfl7_1_1gui_1_1Control" ],
         [ "Face", "d9/d1a/classfl7_1_1gui_1_1Face.html", "d9/d1a/classfl7_1_1gui_1_1Face" ],
         [ "Frame", "de/d87/classfl7_1_1gui_1_1Frame.html", "de/d87/classfl7_1_1gui_1_1Frame" ],
+        [ "HasBackground", "db/d13/classfl7_1_1gui_1_1HasBackground.html", "db/d13/classfl7_1_1gui_1_1HasBackground" ],
+        [ "HasText", "d1/d67/classfl7_1_1gui_1_1HasText.html", "d1/d67/classfl7_1_1gui_1_1HasText" ],
         [ "Label", "df/dc0/classfl7_1_1gui_1_1Label.html", "df/dc0/classfl7_1_1gui_1_1Label" ],
         [ "NineSliceChrome", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome" ],
         [ "Panel", "de/d69/classfl7_1_1gui_1_1Panel.html", "de/d69/classfl7_1_1gui_1_1Panel" ],

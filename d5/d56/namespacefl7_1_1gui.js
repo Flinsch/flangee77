@@ -8,6 +8,8 @@ var namespacefl7_1_1gui =
     [ "Control", "df/d2b/classfl7_1_1gui_1_1Control.html", "df/d2b/classfl7_1_1gui_1_1Control" ],
     [ "Face", "d9/d1a/classfl7_1_1gui_1_1Face.html", "d9/d1a/classfl7_1_1gui_1_1Face" ],
     [ "Frame", "de/d87/classfl7_1_1gui_1_1Frame.html", "de/d87/classfl7_1_1gui_1_1Frame" ],
+    [ "HasBackground", "db/d13/classfl7_1_1gui_1_1HasBackground.html", "db/d13/classfl7_1_1gui_1_1HasBackground" ],
+    [ "HasText", "d1/d67/classfl7_1_1gui_1_1HasText.html", "d1/d67/classfl7_1_1gui_1_1HasText" ],
     [ "Label", "df/dc0/classfl7_1_1gui_1_1Label.html", "df/dc0/classfl7_1_1gui_1_1Label" ],
     [ "NineSliceChrome", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome" ],
     [ "Panel", "de/d69/classfl7_1_1gui_1_1Panel.html", "de/d69/classfl7_1_1gui_1_1Panel" ],

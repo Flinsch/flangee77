@@ -11,6 +11,8 @@ var dir_a98f839c2f1a59e66420c1d4301613d1 =
     [ "Face.h", "d4/d5c/Face_8h.html", "d4/d5c/Face_8h" ],
     [ "Frame.cpp", "d5/de0/Frame_8cpp.html", null ],
     [ "Frame.h", "d7/db3/Frame_8h.html", "d7/db3/Frame_8h" ],
+    [ "HasBackground.h", "d7/d44/HasBackground_8h.html", "d7/d44/HasBackground_8h" ],
+    [ "HasText.h", "dc/db6/HasText_8h.html", "dc/db6/HasText_8h" ],
     [ "Label.h", "d3/dc8/Label_8h.html", "d3/dc8/Label_8h" ],
     [ "NineSliceChrome.h", "d6/d55/NineSliceChrome_8h.html", "d6/d55/NineSliceChrome_8h" ],
     [ "Panel.h", "d0/d1d/Panel_8h.html", "d0/d1d/Panel_8h" ],
