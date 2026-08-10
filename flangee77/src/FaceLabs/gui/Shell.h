@@ -2,7 +2,6 @@
 #define FL7_GUI_SHELL_H
 
 #include "./Face.h"
-#include "./Style.h"
 
 #include "./render/AbstractRenderer.h"
 
@@ -17,6 +16,10 @@
 
 
 namespace fl7::gui {
+
+
+
+class Theme;
 
 
 
@@ -53,14 +56,17 @@ public:
     // #############################################################################
 
     /**
-     * Returns the default style faces resolve to unless overridden.
+     * Returns the (optional) theme faces resolve their style against unless
+     * overridden.
      */
-    const Style& get_default_style() const { return _default_style; }
+    const Theme* get_theme() const { return _theme; }
 
     /**
-     * Sets the default style faces resolve to unless overridden.
+     * Sets the (optional) theme faces resolve their style against unless
+     * overridden.
+     * Non-owning: the caller keeps the theme alive.
      */
-    void set_default_style(const Style& style) { _default_style = style; }
+    void set_theme(const Theme* theme) { _theme = theme; }
 
     /**
      * Returns the currently hovered face (the topmost hit under the mouse cursor),
@@ -127,7 +133,8 @@ private:
     /** Non-owning. */
     xl7::input::Keyboard* _keyboard;
 
-    Style _default_style;
+    /** Non-owning. */
+    const Theme* _theme = nullptr;
 
     std::vector<std::unique_ptr<Face>> _top_level_faces;
 

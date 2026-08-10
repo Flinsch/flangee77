@@ -70,6 +70,9 @@ protected:
     // Face Implementations
     // #############################################################################
 
+    /** Returns this button's theme role. */
+    cl7::u8string_view _get_theme_key() const override { return u8"button"; }
+
     void _on_click(xl7::input::MouseButton button) override { _clicked.emit(); }
 
 

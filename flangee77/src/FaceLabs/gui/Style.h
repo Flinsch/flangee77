@@ -20,6 +20,14 @@ namespace fl7::gui {
 struct Style
 {
 
+    /**
+     * Non-owning: whoever builds the style keeps the 9-slice chrome alive. When
+     * set, drawn instead of the flat background_color/border_color pair. Usually
+     * populated by a theme, but can also be overridden per face like every other
+     * field here.
+     */
+    const NineSliceChrome* chrome = nullptr;
+
     /** Non-owning: whoever builds the Style keeps the Font alive. */
     fonts::Font* font = nullptr;
 
@@ -34,14 +42,6 @@ struct Style
     xl7::graphics::Color border_color = {0.0f, 0.0f, 0.0f, 1.0f};
     /** 0 = no border. */
     float border_width = 0.0f;
-
-    /**
-     * Non-owning: whoever builds the Style keeps the NineSliceChrome alive. When
-     * set, drawn instead of the flat background_color/border_color pair (see
-     * render::BackgroundHelper). A temporary stand-in for a proper theme lookup
-     * (font included), to be revisited later.
-     */
-    const NineSliceChrome* chrome = nullptr;
 
 
 

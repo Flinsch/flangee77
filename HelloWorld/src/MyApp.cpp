@@ -286,16 +286,13 @@ namespace helloworld {
         _gui_renderer = std::make_unique<fl7::gui::render::DefaultRenderer>(_bitmap_renderer.get());
         _gui_shell = std::make_unique<fl7::gui::Shell>(_gui_renderer.get());
 
-        fl7::gui::Style gui_default_style;
-        gui_default_style.font = _font.get();
-        _gui_shell->set_default_style(gui_default_style);
+        _gui_theme.get_default_level().font = _font.get();
+        _gui_theme.get_level(u8"window").chrome = &_gui_chrome;
+        _gui_shell->set_theme(&_gui_theme);
 
         auto& frame = _gui_shell->add_face<fl7::gui::Frame>(U"Demo Frame");
         frame.set_position({600.0f, 210.0f});
         frame.set_size({220.0f, 224.0f});
-        fl7::gui::Style frame_style = frame.get_effective_style();
-        frame_style.chrome = &_gui_chrome;
-        frame.set_style_override(frame_style);
 
         auto& panel = frame.get_content_area().add_child<fl7::gui::Panel>();
         panel.set_position({20.0f, 20.0f});

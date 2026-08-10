@@ -54,6 +54,9 @@ protected:
     // Face Implementations
     // #############################################################################
 
+    /** Returns this window's theme role. */
+    cl7::u8string_view _get_theme_key() const override { return u8"window"; }
+
     /**
      * Keeps the content area's size in sync with this window's own size.
      */

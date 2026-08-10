@@ -1,6 +1,7 @@
 #include "Face.h"
 
 #include "./Shell.h"
+#include "./Theme.h"
 
 
 
@@ -11,6 +12,21 @@ namespace fl7::gui {
     // #############################################################################
     // Properties
     // #############################################################################
+
+    /**
+     * Returns the shell this face (transitively) belongs to, or `nullptr` if it
+     * isn't (yet) part of one. Only ever actually set (by Shell::add_face()) on a
+     * top-level face, so this walks up the parent chain to find it. Not cached
+     * (fine at GUI scale.
+     */
+    Shell* Face::get_shell() const
+    {
+        for (const Face* face = this; face; face = face->_parent)
+            if (face->_shell)
+                return face->_shell;
+
+        return nullptr;
+    }
 
     /**
      * Sets this face's size.
@@ -39,24 +55,48 @@ namespace fl7::gui {
     }
 
     /**
-     * Returns this face's effective style: its own override if set, else its
-     * parent's effective style, else owning shell's default style, else a
-     * default-constructed style as a last resort (a face not yet attached to a
-     * shell).
+     * Returns this face's effective style: its own override if set, else the
+     * nearest ancestor's explicit override (not that ancestor's own *effective*
+     * style, which may itself just be a theme resolution, that's specific to the
+     * role of the ancestor, not to the role of this face), else this face's own
+     * role resolved against the owning shell's theme, else a default-constructed
+     * style as a last resort (no override anywhere up the chain, no theme, or a
+     * face type with no themed role).
      */
-    const Style& Face::get_effective_style() const
+    Style Face::get_effective_style() const
     {
         if (_style_override)
             return *_style_override;
 
-        if (_parent)
-            return _parent->get_effective_style();
+        if (const Style* inherited = _find_inherited_style_override())
+            return *inherited;
 
-        if (_shell)
-            return _shell->get_default_style();
+        const cl7::u8string_view theme_key = _get_theme_key();
+        if (!theme_key.empty())
+            if (Shell* shell = get_shell())
+                if (const Theme* theme = shell->get_theme())
+                    return theme->resolve(theme_key);
 
-        static constexpr Style default_style{};
-        return default_style;
+        return {};
+    }
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Returns the nearest ancestor's explicit style override, walking up the parent
+     * chain, or `nullptr` if none of them have one set.
+     */
+    const Style* Face::_find_inherited_style_override() const
+    {
+        for (const Face* parent = _parent; parent; parent = parent->_parent)
+            if (parent->_style_override)
+                return &*parent->_style_override;
+
+        return nullptr;
     }
 
 

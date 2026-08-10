@@ -7,6 +7,8 @@
 
 #include <MathLabs/Vector2.h>
 
+#include <CoreLabs/string.h>
+
 #include <optional>
 
 
@@ -48,6 +50,19 @@ public:
     // #############################################################################
     // Properties
     // #############################################################################
+
+    /**
+     * Returns the shell this face (transitively) belongs to, or `nullptr` if it
+     * isn't (yet) part of one. Only ever actually set (by Shell::add_face()) on a
+     * top-level face, so this walks up the parent chain to find it. Not cached
+     * (fine at GUI scale.
+     */
+    Shell* get_shell() const;
+
+    /**
+     * Returns this face's parent, or `nullptr` for a top-level Face.
+     */
+    Face* get_parent() const { return _parent; }
 
     /**
      * Returns this Face's position, relative to its parent (or, for a top-level
@@ -97,11 +112,6 @@ public:
     void set_enabled(bool enabled) { _enabled = enabled; }
 
     /**
-     * Returns this face's parent, or `nullptr` for a top-level Face.
-     */
-    Face* get_parent() const { return _parent; }
-
-    /**
      * Returns this face's absolute (screen) position, computed by walking up the
      * parent chain. Not cached (fine at GUI scale, matches the rest of the
      * traversal/hit-testing code).
@@ -109,12 +119,15 @@ public:
     ml7::Vector2f get_absolute_position() const;
 
     /**
-     * Returns this face's effective style: its own override if set, else its
-     * parent's effective style, else owning shell's default style, else a
-     * default-constructed style as a last resort (a face not yet attached to a
-     * shell).
+     * Returns this face's effective style: its own override if set, else the
+     * nearest ancestor's explicit override (not that ancestor's own *effective*
+     * style, which may itself just be a theme resolution, that's specific to the
+     * role of the ancestor, not to the role of this face), else this face's own
+     * role resolved against the owning shell's theme, else a default-constructed
+     * style as a last resort (no override anywhere up the chain, no theme, or a
+     * face type with no themed role).
      */
-    const Style& get_effective_style() const;
+    Style get_effective_style() const;
 
     /**
      * Returns this face's optional style override.
@@ -139,6 +152,15 @@ protected:
     // #############################################################################
     // Prototypes
     // #############################################################################
+
+    /**
+     * Returns this face's role/key for theme-based style resolution (see
+     * get_effective_style()), e.g., "window", "button", etc. Default: empty,
+     * meaning this face type doesn't participate in theming (falls straight through
+     * to the ordinary inherited-override/last-resort-default style). Override in
+     * concrete types that do.
+     */
+    virtual cl7::u8string_view _get_theme_key() const { return {}; }
 
     /**
      * Returns whether the specified point, in this face's own local coordinate
@@ -229,20 +251,32 @@ protected:
 private:
 
     // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Returns the nearest ancestor's explicit style override, walking up the parent
+     * chain, or `nullptr` if none of them have one set.
+     */
+    const Style* _find_inherited_style_override() const;
+
+
+
+    // #############################################################################
     // Attributes
     // #############################################################################
+
+    /** Non-owning; only set on a top-level face, by Shell::add_face(). */
+    Shell* _shell = nullptr;
+
+    /** Non-owning. */
+    Face* _parent = nullptr;
 
     ml7::Vector2f _position;
     ml7::Vector2f _size;
 
     bool _visible = true;
     bool _enabled = true;
-
-    /** Non-owning. */
-    Face* _parent = nullptr;
-
-    /** Non-owning; only set on a top-level Face, by Shell::add_face(). */
-    Shell* _shell = nullptr;
 
     std::optional<Style> _style_override;
 

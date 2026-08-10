@@ -35,6 +35,7 @@ target_sources(flangee77
     gui/Face.cpp
     gui/Frame.cpp
     gui/Shell.cpp
+    gui/Theme.cpp
     gui/Window.cpp
 
     gui/render/AbstractRenderer.cpp
