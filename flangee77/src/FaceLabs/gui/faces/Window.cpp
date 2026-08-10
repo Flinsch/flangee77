@@ -2,7 +2,7 @@
 
 
 
-namespace fl7::gui {
+namespace fl7::gui::faces {
 
 
 
@@ -31,4 +31,4 @@ namespace fl7::gui {
 
 
 
-} // namespace fl7::gui
+} // namespace fl7::gui::faces

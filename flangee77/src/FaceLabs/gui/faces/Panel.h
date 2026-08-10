@@ -1,11 +1,11 @@
-#ifndef FL7_GUI_PANEL_H
-#define FL7_GUI_PANEL_H
-#include "./Container.h"
-#include "./HasBackground.h"
+#ifndef FL7_GUI_FACES_PANEL_H
+#define FL7_GUI_FACES_PANEL_H
+#include "../Container.h"
+#include "../HasBackground.h"
 
 
 
-namespace fl7::gui {
+namespace fl7::gui::faces {
 
 
 
@@ -46,6 +46,6 @@ protected:
 
 
 
-} // namespace fl7::gui
+} // namespace fl7::gui::faces
 
-#endif // FL7_GUI_PANEL_H
+#endif // FL7_GUI_FACES_PANEL_H

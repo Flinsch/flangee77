@@ -1,11 +1,11 @@
-#ifndef FL7_GUI_LABEL_H
-#define FL7_GUI_LABEL_H
-#include "./Static.h"
-#include "./HasText.h"
+#ifndef FL7_GUI_FACES_LABEL_H
+#define FL7_GUI_FACES_LABEL_H
+#include "../Static.h"
+#include "../HasText.h"
 
 
 
-namespace fl7::gui {
+namespace fl7::gui::faces {
 
 
 
@@ -80,6 +80,6 @@ private:
 
 
 
-} // namespace fl7::gui
+} // namespace fl7::gui::faces
 
-#endif // FL7_GUI_LABEL_H
+#endif // FL7_GUI_FACES_LABEL_H

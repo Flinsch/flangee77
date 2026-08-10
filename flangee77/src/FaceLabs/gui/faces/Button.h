@@ -1,15 +1,15 @@
-#ifndef FL7_GUI_BUTTON_H
-#define FL7_GUI_BUTTON_H
-#include "./Control.h"
-#include "./HasBackground.h"
-#include "./HasText.h"
+#ifndef FL7_GUI_FACES_BUTTON_H
+#define FL7_GUI_FACES_BUTTON_H
+#include "../Control.h"
+#include "../HasBackground.h"
+#include "../HasText.h"
 
 #include <CoreLabs/behavioral/Signal.h>
 #include <CoreLabs/string.h>
 
 
 
-namespace fl7::gui {
+namespace fl7::gui::faces {
 
 
 
@@ -91,6 +91,6 @@ private:
 
 
 
-} // namespace fl7::gui
+} // namespace fl7::gui::faces
 
-#endif // FL7_GUI_BUTTON_H
+#endif // FL7_GUI_FACES_BUTTON_H

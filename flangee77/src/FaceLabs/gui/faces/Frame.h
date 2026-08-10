@@ -1,5 +1,5 @@
-#ifndef FL7_GUI_FRAME_H
-#define FL7_GUI_FRAME_H
+#ifndef FL7_GUI_FACES_FRAME_H
+#define FL7_GUI_FACES_FRAME_H
 #include "./Window.h"
 
 #include "./Button.h"
@@ -10,7 +10,7 @@
 
 
 
-namespace fl7::gui {
+namespace fl7::gui::faces {
 
 
 
@@ -133,6 +133,6 @@ private:
 
 
 
-} // namespace fl7::gui
+} // namespace fl7::gui::faces
 
-#endif // FL7_GUI_FRAME_H
+#endif // FL7_GUI_FACES_FRAME_H

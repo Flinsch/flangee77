@@ -33,10 +33,11 @@ target_sources(flangee77
 
     gui/Collection.cpp
     gui/Face.cpp
-    gui/Frame.cpp
     gui/Shell.cpp
     gui/Theme.cpp
-    gui/Window.cpp
+
+    gui/faces/Frame.cpp
+    gui/faces/Window.cpp
 
     gui/render/AbstractRenderer.cpp
     gui/render/BackgroundHelper.cpp

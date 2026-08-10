@@ -1,13 +1,13 @@
-#ifndef FL7_GUI_WINDOW_H
-#define FL7_GUI_WINDOW_H
-#include "./Compound.h"
-#include "./HasBackground.h"
+#ifndef FL7_GUI_FACES_WINDOW_H
+#define FL7_GUI_FACES_WINDOW_H
+#include "../Compound.h"
+#include "../HasBackground.h"
 
-#include "./Container.h"
+#include "../Container.h"
 
 
 
-namespace fl7::gui {
+namespace fl7::gui::faces {
 
 
 
@@ -77,6 +77,6 @@ private:
 
 
 
-} // namespace fl7::gui
+} // namespace fl7::gui::faces
 
-#endif // FL7_GUI_WINDOW_H
+#endif // FL7_GUI_FACES_WINDOW_H
