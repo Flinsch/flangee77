@@ -252,19 +252,19 @@ var hierarchy =
     [ "fl7::gui::Face", "d9/d1a/classfl7_1_1gui_1_1Face.html", [
       [ "fl7::gui::Collection", "d4/de7/classfl7_1_1gui_1_1Collection.html", [
         [ "fl7::gui::Compound", "d0/d93/classfl7_1_1gui_1_1Compound.html", [
-          [ "fl7::gui::Window", "d4/d52/classfl7_1_1gui_1_1Window.html", [
-            [ "fl7::gui::Frame", "de/d87/classfl7_1_1gui_1_1Frame.html", null ]
+          [ "fl7::gui::faces::Window", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html", [
+            [ "fl7::gui::faces::Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html", null ]
           ] ]
         ] ],
         [ "fl7::gui::Container", "dd/d69/classfl7_1_1gui_1_1Container.html", [
-          [ "fl7::gui::Panel", "de/d69/classfl7_1_1gui_1_1Panel.html", null ]
+          [ "fl7::gui::faces::Panel", "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html", null ]
         ] ]
       ] ],
       [ "fl7::gui::Control", "df/d2b/classfl7_1_1gui_1_1Control.html", [
-        [ "fl7::gui::Button", "d4/dba/classfl7_1_1gui_1_1Button.html", null ]
+        [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ]
       ] ],
       [ "fl7::gui::Static", "dc/dfd/classfl7_1_1gui_1_1Static.html", [
-        [ "fl7::gui::Label", "df/dc0/classfl7_1_1gui_1_1Label.html", null ]
+        [ "fl7::gui::faces::Label", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html", null ]
       ] ]
     ] ],
     [ "std::false_type", null, [
@@ -321,17 +321,17 @@ var hierarchy =
     [ "xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates", "d7/d0a/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates.html", null ],
     [ "xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates", "d7/d8c/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates.html", null ],
     [ "fl7::gui::HasBackground", "db/d13/classfl7_1_1gui_1_1HasBackground.html", [
-      [ "fl7::gui::Button", "d4/dba/classfl7_1_1gui_1_1Button.html", null ],
-      [ "fl7::gui::Panel", "de/d69/classfl7_1_1gui_1_1Panel.html", null ],
-      [ "fl7::gui::Window", "d4/d52/classfl7_1_1gui_1_1Window.html", null ]
+      [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ],
+      [ "fl7::gui::faces::Panel", "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html", null ],
+      [ "fl7::gui::faces::Window", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html", null ]
     ] ],
     [ "tl7::Signature::hash", "dd/dc0/structtl7_1_1Signature_1_1hash.html", null ],
     [ "std::hash< xl7::graphics::impl::shared::meshes::ComposedVertexLayout >", "db/de3/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout_01_4.html", null ],
     [ "std::hash< xl7::graphics::impl::shared::meshes::VertexBufferBinding >", "dc/d08/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding_01_4.html", null ],
     [ "std::hash< xl7::resources::ResourceId >", "dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4.html", null ],
     [ "fl7::gui::HasText", "d1/d67/classfl7_1_1gui_1_1HasText.html", [
-      [ "fl7::gui::Button", "d4/dba/classfl7_1_1gui_1_1Button.html", null ],
-      [ "fl7::gui::Label", "df/dc0/classfl7_1_1gui_1_1Label.html", null ]
+      [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ],
+      [ "fl7::gui::faces::Label", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html", null ]
     ] ],
     [ "xl7::graphics::images::codecs::png::Reader::Header", "df/d50/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Header.html", null ],
     [ "xl7::graphics::images::codecs::targa::Header", "d8/dd4/structxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Header.html", null ],

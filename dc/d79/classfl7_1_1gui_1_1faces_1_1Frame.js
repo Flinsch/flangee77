@@ -1,0 +1,25 @@
+var classfl7_1_1gui_1_1faces_1_1Frame =
+[
+    [ "Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a6ce73032f1128df3f5e97398c5c3aa98", null ],
+    [ "Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a55c77a6c0d55aef67432d6d283fb5d48", null ],
+    [ "Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a23c9ead49bf8bd5a628619a7b2442350", null ],
+    [ "~Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a4ce056869431574b0f253002cfa8fb85", null ],
+    [ "_on_mouse_down", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#aecde8701b6786d5cdfc11c006dcc01fd", null ],
+    [ "_on_mouse_drag", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#aa4ce057189e09d8568261c0967be4314", null ],
+    [ "_on_mouse_up", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ab6a92230915b2852da9d651f6edea294", null ],
+    [ "_on_size_changed", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#adfba79abdc735fa6f1932a565df90513", null ],
+    [ "close", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a0cf542b89488388f0b227f509601f3fc", null ],
+    [ "get_closed", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ab2ade358d9ad8868f355780165c880c3", null ],
+    [ "get_opened", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#acd688b33e6ede88882aac836ba1c3802", null ],
+    [ "get_title", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a8b41dd0cca486369e346baa52b4e89af", null ],
+    [ "open", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#aff36e1941b0c106c733f6eb630359946", null ],
+    [ "operator=", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a3d5ea10a14e38ebfcf74ae811203bfbf", null ],
+    [ "operator=", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a17e9917846091a06005e2bbafea6e3ed", null ],
+    [ "set_title", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a021ff3d6dc72b9bab389e8c088a9b7c9", null ],
+    [ "_close_button", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ac2e927a234a8faaf23a5aef5c5f45123", null ],
+    [ "_closed", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a9efad8d8163a7988d526d5af49d23324", null ],
+    [ "_dragging", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a59307d3d13f34a9260894b8d666541a1", null ],
+    [ "_opened", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a6f7dd1fa58afba02a77b4432bf3d12e9", null ],
+    [ "_title_label", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ac4d91f7f3076dfb773412eb3c650f311", null ],
+    [ "TITLE_BAR_HEIGHT", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a9ec4897629eb4fb86bcaf1ce99a37c58", null ]
+];

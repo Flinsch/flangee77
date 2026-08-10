@@ -189,7 +189,7 @@ var searchData=
   ['ml7_3a_3adistance2_186',['distance2',['../db/d4f/namespaceml7_1_1distance2.html',1,'ml7']]],
   ['ml7_3a_3adistance3_187',['distance3',['../df/d0a/namespaceml7_1_1distance3.html',1,'ml7']]],
   ['ml7_3a_3aops_188',['ops',['../d9/d38/namespaceml7_1_1ops.html',1,'ml7']]],
-  ['mode_189',['mode',['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a7fe905665e8a42ae50081048a7aca951',1,'dl7::ini::detail::BooleanMatcher::Mode'],['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a67d5d089ba177eff26809dee7a05e8e8',1,'dl7::ini::detail::BooleanMatcher::mode']]],
+  ['mode_189',['mode',['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a67d5d089ba177eff26809dee7a05e8e8',1,'dl7::ini::detail::BooleanMatcher::mode'],['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html#a7fe905665e8a42ae50081048a7aca951',1,'dl7::ini::detail::BooleanMatcher::Mode']]],
   ['mouse_190',['mouse',['../df/d6d/namespacexl7_1_1input.html#a177e1bf18786e0c3d7eea1f3d391504c',1,'xl7::input::mouse()'],['../d3/dee/classxl7_1_1input_1_1Mouse.html',1,'xl7::input::Mouse'],['../d3/dee/classxl7_1_1input_1_1Mouse.html#a6005980d3e862435b001307f7ea2fe70',1,'xl7::input::Mouse::Mouse(Mouse &amp;&amp;)=delete'],['../d3/dee/classxl7_1_1input_1_1Mouse.html#a918bf53c6a9ba1c1bd506de5a4c3a72c',1,'xl7::input::Mouse::Mouse(const Mouse &amp;)=delete'],['../d3/dee/classxl7_1_1input_1_1Mouse.html#ac0d168325462170deb42130c3b1f1fc1',1,'xl7::input::Mouse::Mouse()=default']]],
   ['mouse_2ecpp_191',['Mouse.cpp',['../db/d1a/Mouse_8cpp.html',1,'']]],
   ['mouse_2eh_192',['Mouse.h',['../db/d07/Mouse_8h.html',1,'']]],

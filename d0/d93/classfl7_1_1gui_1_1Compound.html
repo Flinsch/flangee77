@@ -104,15 +104,15 @@ Inheritance diagram for fl7::gui::Compound:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dd/d2d/classfl7_1_1gui_1_1Compound__inherit__graph.png" border="0" usemap="#afl7_1_1gui_1_1Compound_inherit__map" alt="Inheritance graph"/></div>
 <map name="afl7_1_1gui_1_1Compound_inherit__map" id="afl7_1_1gui_1_1Compound_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,152,149,177"/>
-<area shape="rect" href="../../d4/d52/classfl7_1_1gui_1_1Window.html" title=" " alt="" coords="14,225,141,251"/>
-<area shape="poly" title=" " alt="" coords="80,191,80,225,75,225,75,191"/>
-<area shape="rect" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html" title=" " alt="" coords="8,79,147,104"/>
-<area shape="poly" title=" " alt="" coords="80,118,80,152,75,152,75,118"/>
-<area shape="rect" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html" title=" " alt="" coords="26,5,129,31"/>
-<area shape="poly" title=" " alt="" coords="80,44,80,79,75,79,75,44"/>
-<area shape="rect" href="../../de/d87/classfl7_1_1gui_1_1Frame.html" title=" " alt="" coords="20,299,135,324"/>
-<area shape="poly" title=" " alt="" coords="80,264,80,299,75,299,75,264"/>
+<area shape="rect" title=" " alt="" coords="18,152,162,177"/>
+<area shape="rect" href="../../db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html" title=" " alt="" coords="5,225,175,251"/>
+<area shape="poly" title=" " alt="" coords="93,191,93,225,87,225,87,191"/>
+<area shape="rect" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html" title=" " alt="" coords="21,79,159,104"/>
+<area shape="poly" title=" " alt="" coords="93,118,93,152,87,152,87,118"/>
+<area shape="rect" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html" title=" " alt="" coords="39,5,141,31"/>
+<area shape="poly" title=" " alt="" coords="93,44,93,79,87,79,87,44"/>
+<area shape="rect" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html" title=" " alt="" coords="11,299,169,324"/>
+<area shape="poly" title=" " alt="" coords="93,264,93,299,87,299,87,264"/>
 </map>
 <center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -257,7 +257,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
 <tr class="separator:af65d9e165083ec8e9cf4ecdd75c9c62d inherit pro_methods_classfl7_1_1gui_1_1Face"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a> with fixed, widget-specific internal composition (e.g. ComboBox = TextField + <a class="el" href="../../d4/dba/classfl7_1_1gui_1_1Button.html">Button</a> + Popup; ScrollBar = track + thumb; Window/ Frame/Dialog = title bar + content area + buttons). Deliberately does <em>not</em> re-expose add_child publicly like <a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a> does &ndash; a concrete <a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a> subclass builds its own fixed internal parts (via the inherited protected add_child, in its own constructor), and a caller can't add arbitrary children onto it directly. If a <a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a> wants to accept arbitrary caller content too (e.g. <a class="el" href="../../d4/d52/classfl7_1_1gui_1_1Window.html">Window</a>'s content area), it should expose that narrowly and by name (e.g. get_content_area()), not via a generic public add_child. </p>
+<div class="textblock"><p>A <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a> with fixed, widget-specific internal composition (e.g. ComboBox = TextField + Button + Popup; ScrollBar = track + thumb; Window/ Frame/Dialog = title bar + content area + buttons). Deliberately does <em>not</em> re-expose add_child publicly like <a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a> does &ndash; a concrete <a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a> subclass builds its own fixed internal parts (via the inherited protected add_child, in its own constructor), and a caller can't add arbitrary children onto it directly. If a <a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a> wants to accept arbitrary caller content too (e.g. Window's content area), it should expose that narrowly and by name (e.g. get_content_area()), not via a generic public add_child. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0d53291a26eb348ae73ae7b7f6f82cf6" name="a0d53291a26eb348ae73ae7b7f6f82cf6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0d53291a26eb348ae73ae7b7f6f82cf6">&#9670;&#160;</a></span>Compound() <span class="overload">[1/3]</span></h2>

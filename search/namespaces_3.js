@@ -9,5 +9,6 @@ var searchData=
   ['fl7_3a_3afonts_3a_3arender_6',['render',['../dd/d80/namespacefl7_1_1fonts_1_1render.html',1,'fl7::fonts']]],
   ['fl7_3a_3afonts_3a_3atextlayout_7',['TextLayout',['../dc/d6e/namespacefl7_1_1fonts_1_1TextLayout.html',1,'fl7::fonts']]],
   ['fl7_3a_3agui_8',['gui',['../d5/d56/namespacefl7_1_1gui.html',1,'fl7']]],
-  ['fl7_3a_3agui_3a_3arender_9',['render',['../df/df8/namespacefl7_1_1gui_1_1render.html',1,'fl7::gui']]]
+  ['fl7_3a_3agui_3a_3afaces_9',['faces',['../da/d58/namespacefl7_1_1gui_1_1faces.html',1,'fl7::gui']]],
+  ['fl7_3a_3agui_3a_3arender_10',['render',['../df/df8/namespacefl7_1_1gui_1_1render.html',1,'fl7::gui']]]
 ];

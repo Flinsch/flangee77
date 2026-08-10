@@ -173,7 +173,7 @@ var searchData=
   ['themelevel_170',['ThemeLevel',['../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html',1,'fl7::gui']]],
   ['themelevel_2eh_171',['ThemeLevel.h',['../db/dfe/ThemeLevel_8h.html',1,'']]],
   ['title_172',['title',['../dd/d38/structxl7_1_1Config_1_1General.html#af66c27c548682da2c709e3304ba5215a',1,'xl7::Config::General']]],
-  ['title_5fbar_5fheight_173',['TITLE_BAR_HEIGHT',['../de/d87/classfl7_1_1gui_1_1Frame.html#a0d494e36ea16d3bb0c41efdb4d17830e',1,'fl7::gui::Frame']]],
+  ['title_5fbar_5fheight_173',['TITLE_BAR_HEIGHT',['../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a9ec4897629eb4fb86bcaf1ce99a37c58',1,'fl7::gui::faces::Frame']]],
   ['tl7_174',['tl7',['../d1/dce/namespacetl7.html',1,'']]],
   ['tl7_3a_3aexceptions_175',['exceptions',['../da/d05/namespacetl7_1_1exceptions.html',1,'tl7']]],
   ['tl7_3a_3ainternals_176',['internals',['../d2/d23/namespacetl7_1_1internals.html',1,'tl7']]],

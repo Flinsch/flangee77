@@ -2,7 +2,7 @@ var searchData=
 [
   ['paethpredictor_0',['PaethPredictor',['../de/d9d/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1PaethPredictor.html',1,'xl7::graphics::images::codecs::png']]],
   ['paletteentry_1',['PaletteEntry',['../dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html',1,'xl7::graphics::images::codecs::png::Reader']]],
-  ['panel_2',['Panel',['../de/d69/classfl7_1_1gui_1_1Panel.html',1,'fl7::gui']]],
+  ['panel_2',['Panel',['../da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html',1,'fl7::gui::faces']]],
   ['parententry_3',['ParentEntry',['../dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html',1,'xl7::graphics::impl::shared::shaders::Include']]],
   ['parsedmarkup_4',['ParsedMarkup',['../d9/da9/structfl7_1_1fonts_1_1render_1_1ParsedMarkup.html',1,'fl7::fonts::render']]],
   ['parsestage_5',['ParseStage',['../d9/d44/classdl7_1_1syntax_1_1ParseStage.html',1,'dl7::syntax']]],
