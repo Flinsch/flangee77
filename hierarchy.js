@@ -831,6 +831,8 @@ var hierarchy =
       ] ]
     ] ],
     [ "xl7::graphics::textures::TextureWrite", "d5/d33/structxl7_1_1graphics_1_1textures_1_1TextureWrite.html", null ],
+    [ "fl7::gui::Theme", "d8/dc4/classfl7_1_1gui_1_1Theme.html", null ],
+    [ "fl7::gui::ThemeLevel", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html", null ],
     [ "dl7::syntax::Token", "dc/d58/structdl7_1_1syntax_1_1Token.html", null ],
     [ "dl7::syntax::TokenReader", "db/d76/classdl7_1_1syntax_1_1TokenReader.html", [
       [ "dl7::syntax::BufferedTokenReader< Tcontainer >", "d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html", null ],
