@@ -277,8 +277,9 @@ namespace helloworld {
         _test_renderer = std::make_unique<fl7::fonts::render::TestRenderer>();
 
 
-        // 9-slicing demo chrome: a small, dedicated raised-bevel sprite (see
-        // assets/gfx/chrome.ppm), 32x32 with an 8px border on each side.
+        // 9-slicing demo chrome atlas (see assets/gfx/chrome.ppm): two 32x32
+        // raised-bevel sprites side by side, 8px border each -- window chrome on
+        // the left half, button chrome on the right half.
         xl7::graphics::images::Image chrome_image;
         netpbm_image_reader.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/chrome.ppm", chrome_image);
 
@@ -296,16 +297,28 @@ namespace helloworld {
         auto chrome_texture_write = xl7::graphics::textures::Texture2DWrite::from_image(chrome_texture_image);
         _gui_chrome_texture_id = xl7::graphics::texture_manager()->create_texture_2d(u8"My GUI Chrome Texture", chrome_texture_desc, &chrome_texture_write);
 
-        _gui_chrome.texture_id = xl7::resources::id_cast<xl7::graphics::textures::Texture2D::Id>(_gui_chrome_texture_id);
-        _gui_chrome.sprite_size = {static_cast<float>(chrome_image.get_width()), static_cast<float>(chrome_image.get_height())};
-        _gui_chrome.inset_left = _gui_chrome.inset_right = 8.0f;
-        _gui_chrome.inset_top = _gui_chrome.inset_bottom = 8.0f;
+        const auto gui_chrome_texture_id = xl7::resources::id_cast<xl7::graphics::textures::Texture2D::Id>(_gui_chrome_texture_id);
+
+        _gui_window_chrome.texture_id = gui_chrome_texture_id;
+        _gui_window_chrome.uv_min = {0.0f, 0.0f};
+        _gui_window_chrome.uv_max = {0.5f, 1.0f};
+        _gui_window_chrome.sprite_size = {32.0f, 32.0f};
+        _gui_window_chrome.inset_left = _gui_window_chrome.inset_right = 8.0f;
+        _gui_window_chrome.inset_top = _gui_window_chrome.inset_bottom = 8.0f;
+
+        _gui_button_chrome.texture_id = gui_chrome_texture_id;
+        _gui_button_chrome.uv_min = {0.5f, 0.0f};
+        _gui_button_chrome.uv_max = {1.0f, 1.0f};
+        _gui_button_chrome.sprite_size = {32.0f, 32.0f};
+        _gui_button_chrome.inset_left = _gui_button_chrome.inset_right = 8.0f;
+        _gui_button_chrome.inset_top = _gui_button_chrome.inset_bottom = 8.0f;
 
         _gui_renderer = std::make_unique<fl7::gui::render::DefaultRenderer>(_bitmap_renderer.get());
         _gui_shell = std::make_unique<fl7::gui::Shell>(_gui_renderer.get());
 
         _gui_theme.get_default_level().font = _font.get();
-        _gui_theme.get_level(u8"window").chrome = &_gui_chrome;
+        _gui_theme.get_level(u8"window").chrome = &_gui_window_chrome;
+        _gui_theme.get_level(u8"button").chrome = &_gui_button_chrome;
         _gui_shell->set_theme(&_gui_theme);
 
         auto& frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo Frame");
