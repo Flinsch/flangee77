@@ -1,7 +1,12 @@
 #include "TextureUpdater.h"
 
-#include "../PixelLayout.h"
+#include "./Texture.h"
 
+#include "../PixelLayout.h"
+#include "../images/ImageConverter.h"
+#include "../images/ImageDesc.h"
+
+#include <CoreLabs/byte_vector.h>
 #include <CoreLabs/logging.h>
 
 
@@ -72,6 +77,9 @@ namespace xl7::graphics::textures {
             return false;
         }
 
+        const auto* texture = dynamic_cast<const Texture*>(get_resource());
+        const bool needs_channel_reorder = texture && texture->get_channel_order() != desc.preferred_channel_order;
+
         for (size_t z = 0; z < region.depth; ++z)
         {
             for (size_t y = 0; y < region.height; ++y)
@@ -88,8 +96,24 @@ namespace xl7::graphics::textures {
 
                 const cl7::byte_view row_data = write.data.subspan(src_offset, row_size);
 
-                if (!_write(row_data, dst_offset))
+                if (needs_channel_reorder)
+                {
+                    const images::ImageDesc row_desc{
+                        .pixel_format = desc.pixel_format,
+                        .channel_order = desc.preferred_channel_order,
+                        .width = region.width,
+                        .height = 1,
+                    };
+
+                    const cl7::byte_vector reordered_row_data = images::ImageConverter::convert_image_data(row_desc, row_data, desc.pixel_format, texture->get_channel_order());
+
+                    if (!_write(reordered_row_data, dst_offset))
+                        return false;
+                }
+                else if (!_write(row_data, dst_offset))
+                {
                     return false;
+                }
             }
         }
 

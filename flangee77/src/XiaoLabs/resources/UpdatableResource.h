@@ -47,7 +47,7 @@ public:
 
     private:
         explicit Edit(TDerived* resource)
-            : TUpdater(resource->get_desc(), resource->_access_data(), &resource->_dirty_state)
+            : TUpdater(resource, resource->get_desc(), resource->_access_data(), &resource->_dirty_state)
             , _resource(resource)
         {
         }
