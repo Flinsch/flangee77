@@ -184,14 +184,6 @@ namespace helloworld {
         _texture_id = xl7::graphics::texture_manager()->create_texture_2d(u8"My Texture", texture_desc, &texture_write);
         _sampler_state_id = xl7::graphics::state_manager()->ensure_sampler_state(sampler_desc);
 
-        // 9-slicing demo chrome: no dedicated chrome asset yet, so this just
-        // reuses the dummy texture above (whole image as the sprite, insets a
-        // quarter of its (smaller) extent) to exercise the slicing mechanism.
-        _gui_chrome.texture_id = xl7::resources::id_cast<xl7::graphics::textures::Texture2D::Id>(_texture_id);
-        _gui_chrome.sprite_size = {static_cast<float>(image.get_width()), static_cast<float>(image.get_height())};
-        _gui_chrome.inset_left = _gui_chrome.inset_right = std::min(_gui_chrome.sprite_size.x, _gui_chrome.sprite_size.y) * 0.25f;
-        _gui_chrome.inset_top = _gui_chrome.inset_bottom = _gui_chrome.inset_left;
-
 
         xl7::graphics::states::RasterizerStateDesc rasterizer_desc;
         rasterizer_desc.cull_mode = xl7::graphics::states::CullMode::None;
@@ -271,6 +263,7 @@ namespace helloworld {
         }
 
 
+
         auto font_loader = std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(cl7::platform::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSans-Regular.ttf");
         //auto font_loader = std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(cl7::platform::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSerif-Regular.ttf");
         _font = std::make_unique<fl7::fonts::Font>(std::move(font_loader));
@@ -282,6 +275,31 @@ namespace helloworld {
         _sdf_renderer = std::make_unique<fl7::fonts::render::SdfRenderer>(&_sdf_rasterizer);
         _msdf_renderer = std::make_unique<fl7::fonts::render::MsdfRenderer>(&_msdf_rasterizer);
         _test_renderer = std::make_unique<fl7::fonts::render::TestRenderer>();
+
+
+        // 9-slicing demo chrome: a small, dedicated raised-bevel sprite (see
+        // assets/gfx/chrome.ppm), 32x32 with an 8px border on each side.
+        xl7::graphics::images::Image chrome_image;
+        netpbm_image_reader.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/chrome.ppm", chrome_image);
+
+        xl7::graphics::textures::Texture2DDesc chrome_texture_desc{
+            .usage = xl7::graphics::textures::TextureUsage::Immutable,
+            .pixel_format = xl7::graphics::PixelFormat::R8G8B8A8_UNORM,
+            .preferred_channel_order = xl7::graphics::ChannelOrder::RGBA,
+            .mip_levels = 0,
+            .extent = {
+                .width = chrome_image.get_width(),
+                .height = chrome_image.get_height(),
+            },
+        };
+        auto chrome_texture_image = xl7::graphics::images::ImageConverter::convert_image(chrome_image, chrome_texture_desc.pixel_format, chrome_texture_desc.preferred_channel_order);
+        auto chrome_texture_write = xl7::graphics::textures::Texture2DWrite::from_image(chrome_texture_image);
+        _gui_chrome_texture_id = xl7::graphics::texture_manager()->create_texture_2d(u8"My GUI Chrome Texture", chrome_texture_desc, &chrome_texture_write);
+
+        _gui_chrome.texture_id = xl7::resources::id_cast<xl7::graphics::textures::Texture2D::Id>(_gui_chrome_texture_id);
+        _gui_chrome.sprite_size = {static_cast<float>(chrome_image.get_width()), static_cast<float>(chrome_image.get_height())};
+        _gui_chrome.inset_left = _gui_chrome.inset_right = 8.0f;
+        _gui_chrome.inset_top = _gui_chrome.inset_bottom = 8.0f;
 
         _gui_renderer = std::make_unique<fl7::gui::render::DefaultRenderer>(_bitmap_renderer.get());
         _gui_shell = std::make_unique<fl7::gui::Shell>(_gui_renderer.get());
@@ -358,6 +376,7 @@ namespace helloworld {
 
         xl7::graphics::state_manager()->release_resource_and_invalidate(_sampler_state_id);
         xl7::graphics::texture_manager()->release_resource_and_invalidate(_texture_id);
+        xl7::graphics::texture_manager()->release_resource_and_invalidate(_gui_chrome_texture_id);
 
         xl7::graphics::shader_manager()->release_resource_and_invalidate(_constant_buffer_id);
 

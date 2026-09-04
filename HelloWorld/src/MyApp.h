@@ -125,8 +125,11 @@ private:
     std::unique_ptr<fl7::gui::render::DefaultRenderer> _gui_renderer;
     std::unique_ptr<fl7::gui::Shell> _gui_shell;
     fl7::gui::Theme _gui_theme;
-    /** 9-slicing demo chrome, reusing (for now) the dummy texture already loaded for the spinning quad. */
+    /** 9-slicing demo chrome (see assets/gfx/chrome.ppm, backed by _gui_chrome_texture_id). */
     fl7::gui::NineSliceChrome _gui_chrome;
+
+    /** Backs _gui_chrome (see NineSliceChrome). */
+    xl7::graphics::textures::Texture::Id _gui_chrome_texture_id;
 
     xl7::graphics::meshes::VertexBuffer::Id _vertex_buffer_id;
     xl7::graphics::meshes::IndexBuffer::Id _index_buffer_id;
