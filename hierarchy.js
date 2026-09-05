@@ -295,6 +295,7 @@ var hierarchy =
     [ "dl7::json::Format", "df/d52/structdl7_1_1json_1_1Format.html", null ],
     [ "dl7::toml::Format", "dc/d02/structdl7_1_1toml_1_1Format.html", null ],
     [ "dl7::xml::Format", "db/df3/structdl7_1_1xml_1_1Format.html", null ],
+    [ "dl7::yaml::Format", "d1/db1/structdl7_1_1yaml_1_1Format.html", null ],
     [ "FramebufferSurface", null, [
       [ "xl7::resources::ResourceBase< DepthStencilSurface, FramebufferSurface >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [
         [ "xl7::graphics::surfaces::DepthStencilSurface", "d8/d6c/classxl7_1_1graphics_1_1surfaces_1_1DepthStencilSurface.html", null ]
@@ -488,6 +489,9 @@ var hierarchy =
       [ "dl7::syntax::AstProcessor< Document, cl7::u8string >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", [
         [ "dl7::xml::detail::Generator", "d8/d0a/classdl7_1_1xml_1_1detail_1_1Generator.html", null ]
       ] ],
+      [ "dl7::syntax::AstProcessor< Yaml, cl7::u8string >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", [
+        [ "dl7::yaml::detail::Generator", "de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html", null ]
+      ] ],
       [ "dl7::syntax::DirectAstBuilder< Ini >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", [
         [ "dl7::ini::detail::Builder", "d2/d8d/classdl7_1_1ini_1_1detail_1_1Builder.html", null ]
       ] ],
@@ -500,6 +504,9 @@ var hierarchy =
       [ "dl7::syntax::DirectAstBuilder< Document >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", [
         [ "dl7::xml::detail::Builder", "d3/d69/classdl7_1_1xml_1_1detail_1_1Builder.html", null ]
       ] ],
+      [ "dl7::syntax::DirectAstBuilder< Yaml >", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", [
+        [ "dl7::yaml::detail::Builder", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html", null ]
+      ] ],
       [ "dl7::syntax::AstProcessor< TAstNode, Tresult >", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", null ],
       [ "dl7::syntax::CstBuilder", "db/dc4/classdl7_1_1syntax_1_1CstBuilder.html", null ],
       [ "dl7::syntax::CstToAstTransformer< TAstNode >", "d2/d8a/classdl7_1_1syntax_1_1CstToAstTransformer.html", null ],
@@ -509,7 +516,8 @@ var hierarchy =
           [ "dl7::ini::detail::Lexer", "d0/dfd/classdl7_1_1ini_1_1detail_1_1Lexer.html", null ],
           [ "dl7::json::detail::Lexer", "d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer.html", null ],
           [ "dl7::toml::detail::Lexer", "d8/d9d/classdl7_1_1toml_1_1detail_1_1Lexer.html", null ],
-          [ "dl7::xml::detail::Lexer", "d9/d9c/classdl7_1_1xml_1_1detail_1_1Lexer.html", null ]
+          [ "dl7::xml::detail::Lexer", "d9/d9c/classdl7_1_1xml_1_1detail_1_1Lexer.html", null ],
+          [ "dl7::yaml::detail::Lexer", "d8/db9/classdl7_1_1yaml_1_1detail_1_1Lexer.html", null ]
         ] ]
       ] ]
     ] ],
@@ -890,5 +898,8 @@ var hierarchy =
     [ "xl7::graphics::Viewport", "dc/d8f/structxl7_1_1graphics_1_1Viewport.html", null ],
     [ "dl7::syntax::Vocabulary", "dd/d27/classdl7_1_1syntax_1_1Vocabulary.html", null ],
     [ "dl7::xml::XmlReader", "de/d7c/classdl7_1_1xml_1_1XmlReader.html", null ],
-    [ "dl7::xml::XmlWriter", "d9/dba/classdl7_1_1xml_1_1XmlWriter.html", null ]
+    [ "dl7::xml::XmlWriter", "d9/dba/classdl7_1_1xml_1_1XmlWriter.html", null ],
+    [ "dl7::yaml::Yaml", "d9/de4/classdl7_1_1yaml_1_1Yaml.html", null ],
+    [ "dl7::yaml::YamlReader", "db/dae/classdl7_1_1yaml_1_1YamlReader.html", null ],
+    [ "dl7::yaml::YamlWriter", "da/db4/classdl7_1_1yaml_1_1YamlWriter.html", null ]
 ];

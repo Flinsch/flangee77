@@ -252,6 +252,17 @@ var annotated_dup =
         [ "XmlReader", "de/d7c/classdl7_1_1xml_1_1XmlReader.html", "de/d7c/classdl7_1_1xml_1_1XmlReader" ],
         [ "XmlWriter", "d9/dba/classdl7_1_1xml_1_1XmlWriter.html", "d9/dba/classdl7_1_1xml_1_1XmlWriter" ]
       ] ],
+      [ "yaml", "d1/d18/namespacedl7_1_1yaml.html", [
+        [ "detail", "d8/dd3/namespacedl7_1_1yaml_1_1detail.html", [
+          [ "Builder", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder" ],
+          [ "Generator", "de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html", "de/d93/classdl7_1_1yaml_1_1detail_1_1Generator" ],
+          [ "Lexer", "d8/db9/classdl7_1_1yaml_1_1detail_1_1Lexer.html", "d8/db9/classdl7_1_1yaml_1_1detail_1_1Lexer" ]
+        ] ],
+        [ "Format", "d1/db1/structdl7_1_1yaml_1_1Format.html", null ],
+        [ "Yaml", "d9/de4/classdl7_1_1yaml_1_1Yaml.html", null ],
+        [ "YamlReader", "db/dae/classdl7_1_1yaml_1_1YamlReader.html", "db/dae/classdl7_1_1yaml_1_1YamlReader" ],
+        [ "YamlWriter", "da/db4/classdl7_1_1yaml_1_1YamlWriter.html", "da/db4/classdl7_1_1yaml_1_1YamlWriter" ]
+      ] ],
       [ "Base64", "da/d3b/classdl7_1_1Base64.html", "da/d3b/classdl7_1_1Base64" ],
       [ "Buffer1d", "d9/d16/classdl7_1_1Buffer1d.html", "d9/d16/classdl7_1_1Buffer1d" ],
       [ "Buffer2d", "d9/dc3/classdl7_1_1Buffer2d.html", "d9/dc3/classdl7_1_1Buffer2d" ],

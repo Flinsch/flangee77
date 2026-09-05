@@ -13,5 +13,7 @@ var searchData=
   ['dl7_3a_3atoml_3a_3adetail_10',['detail',['../d9/d58/namespacedl7_1_1toml_1_1detail.html',1,'dl7::toml']]],
   ['dl7_3a_3axml_11',['xml',['../da/d33/namespacedl7_1_1xml.html',1,'dl7']]],
   ['dl7_3a_3axml_3a_3adetail_12',['detail',['../d4/dc2/namespacedl7_1_1xml_1_1detail.html',1,'dl7::xml']]],
-  ['dl7_3a_3axml_3a_3autil_13',['util',['../d1/d34/namespacedl7_1_1xml_1_1util.html',1,'dl7::xml']]]
+  ['dl7_3a_3axml_3a_3autil_13',['util',['../d1/d34/namespacedl7_1_1xml_1_1util.html',1,'dl7::xml']]],
+  ['dl7_3a_3ayaml_14',['yaml',['../d1/d18/namespacedl7_1_1yaml.html',1,'dl7']]],
+  ['dl7_3a_3ayaml_3a_3adetail_15',['detail',['../d8/dd3/namespacedl7_1_1yaml_1_1detail.html',1,'dl7::yaml']]]
 ];

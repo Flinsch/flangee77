@@ -75,6 +75,6 @@ var searchData=
   ['surfacedesc_2eh_72',['SurfaceDesc.h',['../d7/d4b/SurfaceDesc_8h.html',1,'']]],
   ['surfacemanager_2ecpp_73',['SurfaceManager.cpp',['../d7/def/SurfaceManager_8cpp.html',1,'']]],
   ['surfacemanager_2eh_74',['SurfaceManager.h',['../dc/d63/SurfaceManager_8h.html',1,'']]],
-  ['symbol_2eh_75',['symbol.h',['../da/d2c/xml_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d2/d9e/ini_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d7/d02/json_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d8/df3/toml_2detail_2Symbol_8h.html',1,'(Global Namespace)']]],
+  ['symbol_2eh_75',['symbol.h',['../d2/d9e/ini_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d7/d02/json_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d8/df3/toml_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../da/d2c/xml_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d6/d1a/yaml_2detail_2Symbol_8h.html',1,'(Global Namespace)']]],
   ['symbolid_2eh_76',['SymbolId.h',['../db/de3/SymbolId_8h.html',1,'']]]
 ];

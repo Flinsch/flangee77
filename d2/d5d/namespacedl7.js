@@ -6,6 +6,7 @@ var namespacedl7 =
     [ "syntax", "db/d34/namespacedl7_1_1syntax.html", "db/d34/namespacedl7_1_1syntax" ],
     [ "toml", "d9/dcb/namespacedl7_1_1toml.html", "d9/dcb/namespacedl7_1_1toml" ],
     [ "xml", "da/d33/namespacedl7_1_1xml.html", "da/d33/namespacedl7_1_1xml" ],
+    [ "yaml", "d1/d18/namespacedl7_1_1yaml.html", "d1/d18/namespacedl7_1_1yaml" ],
     [ "Base64", "da/d3b/classdl7_1_1Base64.html", "da/d3b/classdl7_1_1Base64" ],
     [ "Buffer1d", "d9/d16/classdl7_1_1Buffer1d.html", "d9/d16/classdl7_1_1Buffer1d" ],
     [ "Buffer2d", "d9/dc3/classdl7_1_1Buffer2d.html", "d9/dc3/classdl7_1_1Buffer2d" ],
