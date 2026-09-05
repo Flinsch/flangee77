@@ -80,6 +80,21 @@ namespace xl7::graphics::textures {
         const auto* texture = dynamic_cast<const Texture*>(get_resource());
         const bool needs_channel_reorder = texture && texture->get_channel_order() != desc.preferred_channel_order;
 
+        // Every row is converted with the very same "geometry", so the row
+        // description and the receiving buffer are hoisted out of the loops below
+        // to allocate only once instead of once per row. The pixel format does not
+        // change, hence the target row size equals the source row size.
+        const images::ImageDesc row_desc{
+            .pixel_format = desc.pixel_format,
+            .channel_order = desc.preferred_channel_order,
+            .width = region.width,
+            .height = 1,
+        };
+
+        cl7::byte_vector reordered_row_data;
+        if (needs_channel_reorder)
+            reordered_row_data.resize(row_size);
+
         for (size_t z = 0; z < region.depth; ++z)
         {
             for (size_t y = 0; y < region.height; ++y)
@@ -98,14 +113,11 @@ namespace xl7::graphics::textures {
 
                 if (needs_channel_reorder)
                 {
-                    const images::ImageDesc row_desc{
-                        .pixel_format = desc.pixel_format,
-                        .channel_order = desc.preferred_channel_order,
-                        .width = region.width,
-                        .height = 1,
-                    };
-
-                    const cl7::byte_vector reordered_row_data = images::ImageConverter::convert_image_data(row_desc, row_data, desc.pixel_format, texture->get_channel_order());
+                    if (!images::ImageConverter::convert_image_data(row_desc, row_data, desc.pixel_format, texture->get_channel_order(), reordered_row_data))
+                    {
+                        LOG_ERROR(u8"The texture row data could not be converted to the channel order of the " + get_qualified_identifier() + u8".");
+                        return false;
+                    }
 
                     if (!_write(reordered_row_data, dst_offset))
                         return false;

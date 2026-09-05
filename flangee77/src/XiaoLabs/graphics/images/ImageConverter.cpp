@@ -4,6 +4,9 @@
 
 #include <CoreLabs/logging.h>
 
+#include <cstring>
+#include <functional>
+
 
 
 namespace xl7::graphics::images {
@@ -37,15 +40,90 @@ namespace xl7::graphics::images {
      */
     cl7::byte_vector ImageConverter::convert_image_data(const ImageDesc& source_desc, cl7::byte_view source_data, PixelFormat pixel_format, ChannelOrder channel_order)
     {
+        const auto source_stride = static_cast<size_t>(PixelLayout::determine_bytes_per_pixel(source_desc.pixel_format));
+        const auto target_stride = static_cast<size_t>(PixelLayout::determine_bytes_per_pixel(pixel_format));
+
+        cl7::byte_vector target_data;
+        if (source_stride > 0 && target_stride > 0 && source_data.size() % source_stride == 0)
+            target_data.resize(source_data.size() / source_stride * target_stride);
+
+        // Any remaining plausibility checks are left to the "actual" implementation
+        // below, which also takes care of the logging. This includes the cases in
+        // which the target data size could not be determined above.
+        if (!convert_image_data(source_desc, source_data, pixel_format, channel_order, target_data))
+            return {};
+
+        return target_data;
+    }
+
+    /**
+     * Copies pixel data from one buffer into the specified target buffer, possibly
+     * converting the data to the specified pixel format and/or channel order. The
+     * image size (width and height) does not change. Returns true if the conversion
+     * succeeded, false otherwise.
+     *
+     * The target buffer is required to match the resulting data size exactly, i.e.,
+     * the number of source pixels times the target pixel size (see also
+     * ImageDesc::calculate_data_size). Pass a suitable subspan if the underlying
+     * buffer is larger (which is the point of this overload: it allows a buffer to
+     * be allocated once and reused across repeated conversions).
+     *
+     * The source and target buffers must not overlap, which is checked for and
+     * rejected.
+     */
+    bool ImageConverter::convert_image_data(const ImageDesc& source_desc, cl7::byte_view source_data, PixelFormat pixel_format, ChannelOrder channel_order, cl7::byte_span target_data)
+    {
         if (source_desc.pixel_format == PixelFormat::UNKNOWN || pixel_format == PixelFormat::UNKNOWN)
         {
             LOG_WARNING(u8"Cannot convert from/to an unknown format.");
-            return {};
+            return false;
         }
         if (source_desc.pixel_format == PixelFormat::R11G11B10_FLOAT || pixel_format == PixelFormat::R11G11B10_FLOAT)
         {
             LOG_WARNING(u8"Cannot convert from/to R11G11B10_FLOAT.");
-            return {};
+            return false;
+        }
+
+        const PixelLayout source_layout{source_desc.pixel_format, source_desc.channel_order};
+        const PixelLayout target_layout{pixel_format, channel_order};
+
+        const auto source_stride = static_cast<size_t>(source_layout.bytes_per_pixel);
+        const auto target_stride = static_cast<size_t>(target_layout.bytes_per_pixel);
+
+        assert(source_stride > 0);
+        assert(target_stride > 0);
+
+        if (source_data.size() % source_stride != 0)
+        {
+            LOG_ERROR(u8"The source data size is not a multiple of the source pixel size.");
+            return false;
+        }
+
+        const size_t pixel_count = source_data.size() / source_stride;
+
+        if (target_data.size() != pixel_count * target_stride)
+        {
+            LOG_ERROR(u8"The provided target data buffer does not match the required data size exactly.");
+            return false;
+        }
+
+        // Nothing to do (and nothing to point at, so bail out before
+        // any of the buffer pointers below are dereferenced).
+        if (pixel_count == 0)
+            return true;
+
+        // The source and target buffers must not overlap: the conversion loops read
+        // and write pixel by pixel, channel by channel, so an overlap would clobber
+        // source channels before they have been read. Two ranges overlap if each one
+        // starts before the other one ends. Note that std::less is used rather than
+        // the relational operators, because the latter yield unspecified results on
+        // pointers into distinct objects.
+        constexpr std::less<const std::byte*> less;
+        if (less(source_data.data(), target_data.data() + target_data.size()) &&
+            less(target_data.data(), source_data.data() + source_data.size()))
+        {
+            LOG_ERROR(u8"The source and target data buffers must not overlap.");
+            return false;
         }
 
         // If pixel format and channel order are identical,
@@ -53,11 +131,9 @@ namespace xl7::graphics::images {
         if (source_desc.pixel_format == pixel_format && source_desc.channel_order == channel_order)
         {
             // Just copy the image data.
-            return cl7::to_bytes(source_data);
+            std::memcpy(target_data.data(), source_data.data(), source_data.size());
+            return true;
         }
-
-        const PixelLayout source_layout{source_desc.pixel_format, source_desc.channel_order};
-        const PixelLayout target_layout{pixel_format, channel_order};
 
         // Another special case is when there is only one channel with identical
         // bit depths and "coding" (i.e., either float or any fixed/integer format),
@@ -72,20 +148,9 @@ namespace xl7::graphics::images {
             // or vice versa). We then assume that this is the intended behavior.
             // Why else would you want to do such a conversion anyway?
             assert(source_layout.bytes_per_pixel == target_layout.bytes_per_pixel);
-            return cl7::to_bytes(source_data);
+            std::memcpy(target_data.data(), source_data.data(), source_data.size());
+            return true;
         }
-
-        cl7::byte_vector target_data;
-
-        const auto source_stride = static_cast<size_t>(source_layout.bytes_per_pixel);
-        const auto target_stride = static_cast<size_t>(target_layout.bytes_per_pixel);
-
-        assert(source_stride > 0);
-        assert(target_stride > 0);
-
-        assert(source_data.size() % source_stride == 0);
-        const size_t pixel_count = source_data.size() / source_stride;
-        target_data.resize(pixel_count * target_stride);
 
         // For now, we only offer dedicated conversions for all typical formats with
         // 8 bits per channel and for formats that differ only in channel order (the
@@ -498,7 +563,7 @@ namespace xl7::graphics::images {
             }
         }
 
-        return std::move(target_data);
+        return true;
     }
 
 
