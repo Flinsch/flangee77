@@ -1,5 +1,7 @@
 var NAVTREEINDEX72 =
 {
+"namespacemembers_func_r.html":[5,1,1,14],
+"namespacemembers_func_s.html":[5,1,1,15],
 "namespacemembers_func_t.html":[5,1,1,16],
 "namespacemembers_func_u.html":[5,1,1,17],
 "namespacemembers_func_w.html":[5,1,1,18],
