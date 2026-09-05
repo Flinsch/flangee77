@@ -76,4 +76,12 @@ target_sources(flangee77
 
     xml/util/Escaper.cpp
     xml/util/Unescaper.cpp
+
+    yaml/Yaml.cpp
+    yaml/YamlReader.cpp
+    yaml/YamlWriter.cpp
+
+    yaml/detail/Builder.cpp
+    yaml/detail/Generator.cpp
+    yaml/detail/Lexer.cpp
 )
