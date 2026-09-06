@@ -82,8 +82,11 @@ target_sources(flangee77
     yaml/YamlWriter.cpp
 
     yaml/detail/AnyOtherMatcher.cpp
+    yaml/detail/BlockScalarHeaderMatcher.cpp
     yaml/detail/Builder.cpp
     yaml/detail/Generator.cpp
     yaml/detail/Lexer.cpp
     yaml/detail/SingleQuotedStringMatcher.cpp
+
+    yaml/util/Unescaper.cpp
 )

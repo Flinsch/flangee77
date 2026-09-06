@@ -4,6 +4,7 @@
 #include <DataLabs/yaml/Yaml.h>
 #include <DataLabs/yaml/YamlReader.h>
 #include <DataLabs/yaml/YamlWriter.h>
+#include <DataLabs/yaml/util/Unescaper.h>
 
 #include "../shared.h"
 
@@ -229,6 +230,56 @@ TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  is_true / is_false on non-booleans" )
 }
 
 
+
+TESTLABS_CASE( u8"DataLabs:  yaml:  util::Unescaper::unescape_string" )
+{
+    struct Entry
+    {
+        cl7::u8string yaml_string;
+        cl7::u8string expected_string;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"", u8"" },
+        { u8"Hello World", u8"Hello World" },
+
+        // The escapes YAML shares with JSON.
+        { u8"Hello\\nWorld", u8"Hello\nWorld" },
+        { u8"Quote: \\\"", u8"Quote: \"" },
+        { u8"\\t\\r\\n\\\\", u8"\t\r\n\\" },
+        { u8"\\u00e4", u8"\u00e4" },
+        { u8"\\uD83D\\uDE10", u8"\U0001f610" },
+
+        // The ones it does not.
+        { u8"\\a", u8"\a" },
+        { u8"\\e", u8"\x1b" },
+        { u8"\\N", u8"\u0085" },
+        { u8"\\_", u8"\u00a0" },
+        { u8"\\L", u8"\u2028" },
+        { u8"\\P", u8"\u2029" },
+        { u8"a\\ b", u8"a b" },
+        { u8"\\U0001F610", u8"\U0001f610" },
+        { u8"\\U000000e4", u8"\u00e4" },
+
+        // An escaped backslash stays one, so what follows it is not an escape.
+        { u8"\\\\N", u8"\\N" },
+        { u8"\\\\\\N", u8"\\\u0085" },
+
+        // What is not a valid escape sequence is left as it is.
+        { u8"\\U0001F6", u8"\\U0001F6" },
+        { u8"\\U0011FFFF", u8"\\U0011FFFF" },
+        { u8"\\yz", u8"\\yz" },
+        { u8"\\", u8"\\" },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.yaml_string )
+    {
+        TESTLABS_CHECK_EQ( dl7::yaml::util::Unescaper{}.unescape_string( entry.yaml_string ), entry.expected_string );
+    }
+}
+
+
+
 TESTLABS_CASE( u8"DataLabs:  yaml:  YamlReader:  parse" )
 {
     using dl7::yaml::Yaml;
@@ -349,12 +400,70 @@ TESTLABS_CASE( u8"DataLabs:  yaml:  YamlReader:  parse" )
         { u8"a: 1\n   b: 2", Yaml( mapping_t{ { u8"a", Yaml( 1 ) }, { u8"b", Yaml( 2 ) } } ) },
         { u8"\tkey: 1", Yaml( mapping_t{ { u8"key", Yaml( 1 ) } } ) },
 
-        // What is recognizably not a plain scalar, but is not supported (yet)
-        // either, ends up as a plain scalar rather than being dropped.
-        { u8"key: [1, 2]", Yaml( mapping_t{ { u8"key", Yaml( u8"[1, 2]" ) } } ) },
-        { u8"key: {a: 1}", Yaml( mapping_t{ { u8"key", Yaml( u8"{a: 1}" ) } } ) },
+        // What is recognizably not a plain scalar, but is not supported either,
+        // ends up as a plain scalar rather than being dropped.
         { u8"key: &anchor value", Yaml( mapping_t{ { u8"key", Yaml( u8"&anchor value" ) } } ) },
         { u8"key: !!str 1", Yaml( mapping_t{ { u8"key", Yaml( u8"!!str 1" ) } } ) },
+
+        // Flow collections.
+        { u8"key: []", Yaml( mapping_t{ { u8"key", Yaml( sequence_t{} ) } } ) },
+        { u8"key: {}", Yaml( mapping_t{ { u8"key", Yaml( mapping_t{} ) } } ) },
+        { u8"key: [1, 2, 3]", Yaml( mapping_t{ { u8"key", Yaml( sequence_t{ Yaml( 1 ), Yaml( 2 ), Yaml( 3 ) } ) } } ) },
+        { u8"key: [1,2]", Yaml( mapping_t{ { u8"key", Yaml( sequence_t{ Yaml( 1 ), Yaml( 2 ) } ) } } ) },
+        { u8"key: [ 1 , 2 ]", Yaml( mapping_t{ { u8"key", Yaml( sequence_t{ Yaml( 1 ), Yaml( 2 ) } ) } } ) },
+        { u8"key: [1, ]", Yaml( mapping_t{ { u8"key", Yaml( sequence_t{ Yaml( 1 ) } ) } } ) },
+        { u8"key: [a, \"b\", 'c']", Yaml( mapping_t{ { u8"key", Yaml( sequence_t{ Yaml( u8"a" ), Yaml( u8"b" ), Yaml( u8"c" ) } ) } } ) },
+        { u8"key: [null, ~, true]", Yaml( mapping_t{ { u8"key", Yaml( sequence_t{ Yaml(), Yaml(), Yaml( true ) } ) } } ) },
+        // A plain scalar may contain spaces inside a flow collection, too.
+        { u8"key: [a b, c]", Yaml( mapping_t{ { u8"key", Yaml( sequence_t{ Yaml( u8"a b" ), Yaml( u8"c" ) } ) } } ) },
+        { u8"key: {a: 1, b: two}", Yaml( mapping_t{ { u8"key", Yaml( mapping_t{ { u8"a", Yaml( 1 ) }, { u8"b", Yaml( u8"two" ) } } ) } } ) },
+        // A flow mapping key may have no value at all.
+        { u8"key: {a: 1, b}", Yaml( mapping_t{ { u8"key", Yaml( mapping_t{ { u8"a", Yaml( 1 ) }, { u8"b", Yaml() } } ) } } ) },
+        { u8"key: {\"a b\": 1}", Yaml( mapping_t{ { u8"key", Yaml( mapping_t{ { u8"a b", Yaml( 1 ) } } ) } } ) },
+        { u8"key: [[1, 2], [3]]", Yaml( mapping_t{ { u8"key", Yaml( sequence_t{ Yaml( sequence_t{ Yaml( 1 ), Yaml( 2 ) } ), Yaml( sequence_t{ Yaml( 3 ) } ) } ) } } ) },
+        { u8"key: {a: [1, 2], b: {c: 3}}", Yaml( mapping_t{ { u8"key", Yaml( mapping_t{ { u8"a", Yaml( sequence_t{ Yaml( 1 ), Yaml( 2 ) } ) }, { u8"b", Yaml( mapping_t{ { u8"c", Yaml( 3 ) } } ) } } ) } } ) },
+        { u8"key: [1, 2] # comment", Yaml( mapping_t{ { u8"key", Yaml( sequence_t{ Yaml( 1 ), Yaml( 2 ) } ) } } ) },
+        { u8"[1, 2]", Yaml( sequence_t{ Yaml( 1 ), Yaml( 2 ) } ) },
+        { u8"{a: 1}", Yaml( mapping_t{ { u8"a", Yaml( 1 ) } } ) },
+        { u8"- [1, 2]\n- [3]", Yaml( sequence_t{ Yaml( sequence_t{ Yaml( 1 ), Yaml( 2 ) } ), Yaml( sequence_t{ Yaml( 3 ) } ) } ) },
+        // A flow collection may span as many lines as it likes.
+        { u8"key: [\n  1,\n  2,\n]", Yaml( mapping_t{ { u8"key", Yaml( sequence_t{ Yaml( 1 ), Yaml( 2 ) } ) } } ) },
+        { u8"key: {\n  a: 1,\n  b: 2\n}", Yaml( mapping_t{ { u8"key", Yaml( mapping_t{ { u8"a", Yaml( 1 ) }, { u8"b", Yaml( 2 ) } } ) } } ) },
+        { u8"key: [\n  1,\n  2,\n]\nother: 3", Yaml( mapping_t{ { u8"key", Yaml( sequence_t{ Yaml( 1 ), Yaml( 2 ) } ) }, { u8"other", Yaml( 3 ) } } ) },
+
+        // Block scalars.
+        { u8"key: |\n  line1\n  line2", Yaml( mapping_t{ { u8"key", Yaml( u8"line1\nline2\n" ) } } ) },
+        { u8"key: |-\n  line1\n  line2", Yaml( mapping_t{ { u8"key", Yaml( u8"line1\nline2" ) } } ) },
+        { u8"key: |+\n  line1\n\n", Yaml( mapping_t{ { u8"key", Yaml( u8"line1\n\n" ) } } ) },
+        { u8"key: |\n  a\n\n  b", Yaml( mapping_t{ { u8"key", Yaml( u8"a\n\nb\n" ) } } ) },
+        { u8"key: |\n    indented\n      more", Yaml( mapping_t{ { u8"key", Yaml( u8"indented\n  more\n" ) } } ) },
+        { u8"key: |2\n    text", Yaml( mapping_t{ { u8"key", Yaml( u8"  text\n" ) } } ) },
+        // Inside a block scalar, a `#` is content like any other character.
+        { u8"key: |\n  # not a comment", Yaml( mapping_t{ { u8"key", Yaml( u8"# not a comment\n" ) } } ) },
+        // Folding turns a single line break into a space, n consecutive ones into
+        // n-1 line breaks.
+        { u8"key: >\n  line1\n  line2", Yaml( mapping_t{ { u8"key", Yaml( u8"line1 line2\n" ) } } ) },
+        { u8"key: >-\n  a\n  b\n\n  c", Yaml( mapping_t{ { u8"key", Yaml( u8"a b\nc" ) } } ) },
+        // A block scalar ends where the indentation does.
+        { u8"key: |\n  a\nother: 1", Yaml( mapping_t{ { u8"key", Yaml( u8"a\n" ) }, { u8"other", Yaml( 1 ) } } ) },
+        { u8"key: |\n  a\n\nother: 1", Yaml( mapping_t{ { u8"key", Yaml( u8"a\n" ) }, { u8"other", Yaml( 1 ) } } ) },
+        { u8"key: |\n  a\n# comment\nother: 1", Yaml( mapping_t{ { u8"key", Yaml( u8"a\n" ) }, { u8"other", Yaml( 1 ) } } ) },
+        { u8"- |\n  a\n- b", Yaml( sequence_t{ Yaml( u8"a\n" ), Yaml( u8"b" ) } ) },
+        { u8"a:\n  b: |\n    text\n  c: 1", Yaml( mapping_t{ { u8"a", Yaml( mapping_t{ { u8"b", Yaml( u8"text\n" ) }, { u8"c", Yaml( 1 ) } } ) } } ) },
+
+        // Escape sequences of double-quoted scalars, including the ones YAML has
+        // beyond JSON's.
+        { u8"key: \"a\\tb\"", Yaml( mapping_t{ { u8"key", Yaml( u8"a\tb" ) } } ) },
+        { u8"key: \"a\\\"b\"", Yaml( mapping_t{ { u8"key", Yaml( u8"a\"b" ) } } ) },
+        { u8"key: \"\\u00e4\"", Yaml( mapping_t{ { u8"key", Yaml( u8"\u00e4" ) } } ) },
+        { u8"key: \"\\U0001F600\"", Yaml( mapping_t{ { u8"key", Yaml( u8"\U0001F600" ) } } ) },
+        { u8"key: \"\\N\"", Yaml( mapping_t{ { u8"key", Yaml( u8"\u0085" ) } } ) },
+        { u8"key: \"\\_\"", Yaml( mapping_t{ { u8"key", Yaml( u8"\u00a0" ) } } ) },
+        { u8"key: \"\\L\"", Yaml( mapping_t{ { u8"key", Yaml( u8"\u2028" ) } } ) },
+        { u8"key: \"a\\ b\"", Yaml( mapping_t{ { u8"key", Yaml( u8"a b" ) } } ) },
+        // An escaped backslash stays one, so what follows is not an escape.
+        { u8"key: \"\\\\N\"", Yaml( mapping_t{ { u8"key", Yaml( u8"\\N" ) } } ) },
+        { u8"key: \"\\\\\"", Yaml( mapping_t{ { u8"key", Yaml( u8"\\" ) } } ) },
 
         {
 u8"# a small config\n"

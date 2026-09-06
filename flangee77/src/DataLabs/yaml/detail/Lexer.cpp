@@ -2,6 +2,7 @@
 
 #include "./Symbol.h"
 #include "./AnyOtherMatcher.h"
+#include "./BlockScalarHeaderMatcher.h"
 #include "./SingleQuotedStringMatcher.h"
 
 #include <DataLabs/syntax/matchers.h>
@@ -41,6 +42,8 @@ namespace dl7::yaml::detail {
 
         _terminal_symbols.add_custom(QUOTED_STRING_LITERAL, SingleQuotedStringMatcher{});
         _terminal_symbols.add_custom(QUOTED_STRING_LITERAL, syntax::matchers::DoubleQuotedStringMatcher{});
+
+        _terminal_symbols.add_custom(BLOCK_SCALAR_HEADER, BlockScalarHeaderMatcher{});
 
         _terminal_symbols.add_custom(ANY_OTHER, AnyOtherMatcher{});
     }

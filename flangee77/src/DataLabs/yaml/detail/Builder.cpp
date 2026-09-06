@@ -2,7 +2,8 @@
 
 #include "./Symbol.h"
 
-#include <DataLabs/json/util/Unescaper.h>
+#include "../util/Unescaper.h"
+
 #include <DataLabs/json/detail/UnescaperErrorHandler.h>
 
 #include <CoreLabs/text/codec.h>
@@ -19,6 +20,9 @@ namespace dl7::yaml::detail {
 
 
 namespace {
+
+    /** Stands in for the line break a flow collection spans, which separates tokens like a space does. */
+    constexpr cl7::u8string_view LINE_BREAK_SUBSTITUTE = u8" ";
 
     bool _is_digit(cl7::u8char_t ch) { return ch >= u8'0' && ch <= u8'9'; }
     bool _is_octal_digit(cl7::u8char_t ch) { return ch >= u8'0' && ch <= u8'7'; }
@@ -136,7 +140,6 @@ namespace {
         auto yaml = std::make_unique<Yaml>(_parse_document());
 
         _token_reader = nullptr;
-        _line = {};
 
         return yaml;
     }
@@ -144,56 +147,75 @@ namespace {
 
 
     /**
-     * Reads the next line into `_line`, blank or not.
+     * Reads the next line into `_line` verbatim, i.e., including its comment and
+     * any trailing whitespace. This is what block scalars are made of, everywhere
+     * else `_read_line` is what you want.
      */
-    void Builder::_read_line()
+    void Builder::_read_raw_line()
     {
         auto& token_reader = *_token_reader;
 
         _line.tokens.clear();
         _line.indent = 0;
+        _line.tab_indented = false;
         _line.offset = token_reader.peek_token().source_offset;
         _line.eof = token_reader.is_eof();
 
         if (_line.eof)
             return;
 
-        bool tab_indented = false;
         while (token_reader.check_symbol_id(WHITESPACE))
         {
             const auto token = token_reader.consume_token();
-            tab_indented = tab_indented || token.lexeme == u8"\t";
+            _line.tab_indented = _line.tab_indented || token.lexeme == u8"\t";
             _line.indent += token.lexeme.size();
         }
 
-        if (tab_indented)
-            _error(u8"Tabs must not be used for indentation.", _line.offset);
-
-        // A `#` only starts a comment where it follows whitespace or begins a line.
-        bool after_whitespace = true;
-
         while (!token_reader.is_eof() && !token_reader.check_symbol_id(NEWLINE))
-        {
-            if (after_whitespace && token_reader.check_symbol_id(COMMENT_DELIMITER))
-            {
-                while (!token_reader.is_eof() && !token_reader.check_symbol_id(NEWLINE))
-                    token_reader.next_token();
-                break;
-            }
-
-            const auto token = token_reader.consume_token();
-
-            if (token.symbol_id < 0)
-                _error(u8"Unexpected character.", token.source_offset);
-
-            after_whitespace = token.symbol_id == WHITESPACE;
-            _line.tokens.push_back(token);
-        }
+            _line.tokens.push_back(token_reader.consume_token());
 
         token_reader.skip_symbol_id(NEWLINE);
+    }
+
+    /**
+     * Cuts the comment off the buffered line, trims its trailing whitespace, and
+     * reports whatever is wrong with what remains. Turns a raw line into an
+     * ordinary one.
+     */
+    void Builder::_strip_comment_and_trim()
+    {
+        // A `#` only starts a comment where it follows whitespace or begins a line.
+        for (size_t i = 0; i < _line.tokens.size(); ++i)
+        {
+            if (_line.tokens[i].symbol_id != COMMENT_DELIMITER)
+                continue;
+            if (i > 0 && _line.tokens[i - 1].symbol_id != WHITESPACE)
+                continue;
+
+            _line.tokens.resize(i);
+            break;
+        }
 
         while (!_line.tokens.empty() && _line.tokens.back().symbol_id == WHITESPACE)
             _line.tokens.pop_back();
+
+        if (_line.tab_indented)
+            _error(u8"Tabs must not be used for indentation.", _line.offset);
+
+        // Only complain about what survived: a comment may well contain characters
+        // that make no sense as tokens (an apostrophe, most notably).
+        for (const auto& token : _line.tokens)
+            if (token.symbol_id < 0)
+                _error(u8"Unexpected character.", token.source_offset);
+    }
+
+    /**
+     * Reads the next line into `_line`, blank or not.
+     */
+    void Builder::_read_line()
+    {
+        _read_raw_line();
+        _strip_comment_and_trim();
     }
 
     /**
@@ -211,6 +233,48 @@ namespace {
             if (!_line.is_blank())
                 return true;
         }
+    }
+
+    /**
+     * Appends the next line to the buffered one, which is how a flow collection
+     * gets to span lines. The line break itself becomes a whitespace token, since
+     * that is what it separates tokens like. Returns false at the end of the source
+     * text, leaving the buffered line as it was.
+     */
+    bool Builder::_extend_line()
+    {
+        auto tokens = std::move(_line.tokens);
+        const size_t offset = _line.offset;
+        const size_t indent = _line.indent;
+
+        _read_line();
+
+        const bool extended = !_line.eof;
+
+        if (extended)
+        {
+            tokens.push_back({.symbol_id = WHITESPACE, .lexeme = LINE_BREAK_SUBSTITUTE, .source_offset = _line.offset});
+            tokens.insert(tokens.end(), _line.tokens.begin(), _line.tokens.end());
+        }
+
+        _line.tokens = std::move(tokens);
+        _line.offset = offset;
+        _line.indent = indent;
+
+        return extended;
+    }
+
+    /**
+     * Makes sure the buffered line has a token at the given index, appending
+     * further lines if necessary. Returns false at the end of the source text.
+     */
+    bool Builder::_ensure_token(size_t index)
+    {
+        while (index >= _line.tokens.size())
+            if (!_extend_line())
+                return false;
+
+        return true;
     }
 
 
@@ -254,12 +318,10 @@ namespace {
         if (_is_sequence_entry(index))
             return Yaml{_parse_block_sequence(index)};
 
-        if (_find_key_separator(index) != NO_INDEX)
+        if (!_starts_non_plain_value(index) && _find_key_separator(index) != NO_INDEX)
             return Yaml{_parse_block_mapping(index)};
 
-        auto scalar = _parse_scalar(index);
-        _advance_to_content_line();
-        return scalar;
+        return _parse_value(index);
     }
 
     mapping_t Builder::_parse_block_mapping(size_t index)
@@ -280,14 +342,9 @@ namespace {
 
             Yaml value;
             if (value_index < _line.tokens.size())
-            {
-                value = _parse_scalar(value_index);
-                _advance_to_content_line();
-            }
+                value = _parse_value(value_index);
             else
-            {
                 value = _parse_nested_value(indent, true);
-            }
 
             if (mapping.contains(key))
                 _warning(u8"Duplicate key; the previous value is replaced.", key_offset);
@@ -342,7 +399,29 @@ namespace {
         return sequence;
     }
 
+    Yaml Builder::_parse_value(size_t index)
+    {
+        const auto symbol_id = _line.tokens[index].symbol_id;
 
+        if (symbol_id == BLOCK_SCALAR_HEADER && index + 1 == _line.tokens.size())
+            return Yaml{_parse_block_scalar(_line.tokens[index])};
+
+        Yaml value;
+
+        if (symbol_id == OPENING_BRACKET || symbol_id == LEFT_BRACE)
+        {
+            size_t cursor = index;
+            value = _parse_flow_node(cursor);
+        }
+        else
+        {
+            value = _parse_scalar(index);
+        }
+
+        _advance_to_content_line();
+
+        return value;
+    }
 
     /**
      * Parses the value of a key-value pair or sequence entry whose line ended right
@@ -362,6 +441,333 @@ namespace {
             return Yaml{_parse_block_sequence(0)};
 
         return {};
+    }
+
+    /**
+     * Parses a literal (`|`) or folded (`>`) block scalar, the header of which is
+     * passed by value because reading the content lines rewrites the line buffer
+     * the header token lives in.
+     */
+    string_t Builder::_parse_block_scalar(syntax::Token header)
+    {
+        enum struct Chomping { Clip, Strip, Keep };
+
+        const bool folded = header.lexeme.front() == u8'>';
+
+        size_t explicit_indent = 0;
+        auto chomping = Chomping::Clip;
+
+        for (size_t i = 1; i < header.lexeme.size(); ++i)
+        {
+            const auto ch = header.lexeme[i];
+            if (ch >= u8'1' && ch <= u8'9') explicit_indent = static_cast<size_t>(ch - u8'0');
+            else if (ch == u8'-') chomping = Chomping::Strip;
+            else if (ch == u8'+') chomping = Chomping::Keep;
+        }
+
+        const size_t parent_indent = _line.indent;
+
+        // Zero doubles as "not determined yet"; an explicit indicator is never 0.
+        size_t content_indent = explicit_indent ? parent_indent + explicit_indent : 0;
+
+        std::vector<string_t> lines;
+
+        for (;;)
+        {
+            _read_raw_line();
+
+            if (_line.eof)
+                break;
+
+            if (_line.is_blank())
+            {
+                lines.emplace_back();
+                continue;
+            }
+
+            if (content_indent == 0)
+            {
+                if (_line.indent <= parent_indent)
+                    break;
+                content_indent = _line.indent;
+            }
+            else if (_line.indent < content_indent)
+            {
+                break;
+            }
+
+            lines.push_back(string_t(_line.indent - content_indent, u8' ') + string_t{_join(0, _line.tokens.size())});
+        }
+
+        // The line that ended the block scalar is an ordinary one again, and may
+        // well have been nothing but a comment.
+        _strip_comment_and_trim();
+        if (!_line.eof && _line.is_blank())
+            _advance_to_content_line();
+
+        size_t trailing_line_breaks = 0;
+        while (!lines.empty() && lines.back().empty())
+        {
+            lines.pop_back();
+            ++trailing_line_breaks;
+        }
+
+        string_t content;
+
+        for (size_t i = 0; i < lines.size(); ++i)
+        {
+            if (i > 0)
+            {
+                // Folding turns a single line break into a space, and n
+                // consecutive ones into n-1 line breaks: an empty line does not
+                // separate anything by itself, it *is* the separator that the
+                // line after it then does not add to.
+                if (!folded || lines[i - 1].empty())
+                    content += u8'\n';
+                else if (!lines[i].empty())
+                    content += u8' ';
+            }
+
+            content += lines[i];
+        }
+
+        if (chomping != Chomping::Strip && !lines.empty())
+            content += u8'\n';
+        if (chomping == Chomping::Keep)
+            content.append(trailing_line_breaks, u8'\n');
+
+        return content;
+    }
+
+
+
+    Yaml Builder::_parse_flow_node(size_t& index)
+    {
+        switch (_line.tokens[index].symbol_id)
+        {
+        case OPENING_BRACKET:
+            return Yaml{_parse_flow_sequence(index)};
+        case LEFT_BRACE:
+            return Yaml{_parse_flow_mapping(index)};
+        default:
+            return _parse_flow_scalar(index);
+        }
+    }
+
+    sequence_t Builder::_parse_flow_sequence(size_t& index)
+    {
+        assert(_line.tokens[index].symbol_id == OPENING_BRACKET);
+        ++index;
+
+        sequence_t sequence;
+
+        for (;;)
+        {
+            _skip_flow_whitespace(index);
+
+            if (!_ensure_token(index))
+            {
+                _error(u8"Unterminated flow sequence.", _line.offset);
+                break;
+            }
+
+            if (_line.tokens[index].symbol_id == CLOSING_BRACKET)
+            {
+                ++index;
+                break;
+            }
+
+            sequence.push_back(_parse_flow_node(index));
+
+            _skip_flow_whitespace(index);
+
+            if (!_ensure_token(index))
+            {
+                _error(u8"Unterminated flow sequence.", _line.offset);
+                break;
+            }
+
+            const auto symbol_id = _line.tokens[index].symbol_id;
+
+            if (symbol_id == COMMA)
+            {
+                ++index;
+                continue;
+            }
+            if (symbol_id == CLOSING_BRACKET)
+            {
+                ++index;
+                break;
+            }
+
+            _error(u8"Comma or closing bracket expected.", _line.tokens[index].source_offset);
+            break;
+        }
+
+        return sequence;
+    }
+
+    mapping_t Builder::_parse_flow_mapping(size_t& index)
+    {
+        assert(_line.tokens[index].symbol_id == LEFT_BRACE);
+        ++index;
+
+        mapping_t mapping;
+
+        for (;;)
+        {
+            _skip_flow_whitespace(index);
+
+            if (!_ensure_token(index))
+            {
+                _error(u8"Unterminated flow mapping.", _line.offset);
+                break;
+            }
+
+            if (_line.tokens[index].symbol_id == RIGHT_BRACE)
+            {
+                ++index;
+                break;
+            }
+
+            const size_t key_offset = _line.tokens[index].source_offset;
+            auto key = _parse_flow_key(index);
+
+            _skip_flow_whitespace(index);
+
+            // A key may well have no value at all, as in `{a, b}`.
+            Yaml value;
+            if (_ensure_token(index) && _line.tokens[index].symbol_id == COLON)
+            {
+                ++index;
+                _skip_flow_whitespace(index);
+
+                if (_ensure_token(index))
+                {
+                    const auto symbol_id = _line.tokens[index].symbol_id;
+                    if (symbol_id != COMMA && symbol_id != RIGHT_BRACE)
+                        value = _parse_flow_node(index);
+                }
+            }
+
+            if (mapping.contains(key))
+                _warning(u8"Duplicate key; the previous value is replaced.", key_offset);
+            mapping[std::move(key)] = std::move(value);
+
+            _skip_flow_whitespace(index);
+
+            if (!_ensure_token(index))
+            {
+                _error(u8"Unterminated flow mapping.", _line.offset);
+                break;
+            }
+
+            const auto symbol_id = _line.tokens[index].symbol_id;
+
+            if (symbol_id == COMMA)
+            {
+                ++index;
+                continue;
+            }
+            if (symbol_id == RIGHT_BRACE)
+            {
+                ++index;
+                break;
+            }
+
+            _error(u8"Comma or closing brace expected.", _line.tokens[index].source_offset);
+            break;
+        }
+
+        return mapping;
+    }
+
+    Yaml Builder::_parse_flow_scalar(size_t& index)
+    {
+        if (_line.tokens[index].symbol_id == QUOTED_STRING_LITERAL)
+            return Yaml{_unquote(_line.tokens[index++])};
+
+        const size_t from = index;
+
+        while (_ensure_token(index) && !_ends_flow_scalar(index))
+            ++index;
+
+        size_t to = index;
+        while (to > from && _line.tokens[to - 1].symbol_id == WHITESPACE)
+            --to;
+
+        return _resolve_plain_scalar(_concat(from, to));
+    }
+
+    string_t Builder::_parse_flow_key(size_t& index)
+    {
+        const auto symbol_id = _line.tokens[index].symbol_id;
+
+        if (symbol_id == QUOTED_STRING_LITERAL)
+            return _unquote(_line.tokens[index++]);
+
+        if (symbol_id == OPENING_BRACKET || symbol_id == LEFT_BRACE)
+        {
+            _error(u8"A flow collection is not supported as a key.", _line.tokens[index].source_offset);
+            _parse_flow_node(index);
+            return {};
+        }
+
+        const size_t from = index;
+
+        while (_ensure_token(index) && !_ends_flow_scalar(index))
+            ++index;
+
+        size_t to = index;
+        while (to > from && _line.tokens[to - 1].symbol_id == WHITESPACE)
+            --to;
+
+        return _concat(from, to);
+    }
+
+    /**
+     * Advances the cursor past whitespace, extending the buffered line if
+     * necessary.
+     */
+    void Builder::_skip_flow_whitespace(size_t& index)
+    {
+        while (_ensure_token(index) && _line.tokens[index].symbol_id == WHITESPACE)
+            ++index;
+    }
+
+    /**
+     * Returns true if the token at the given index ends a flow scalar, i.e., it is
+     * a `,`, a `]`, a `}`, or a `:` acting as a key separator.
+     */
+    bool Builder::_ends_flow_scalar(size_t index)
+    {
+        switch (_line.tokens[index].symbol_id)
+        {
+        case COMMA:
+        case CLOSING_BRACKET:
+        case RIGHT_BRACE:
+            return true;
+        case COLON:
+            break;
+        default:
+            return false;
+        }
+
+        // Inside a flow collection, a `:` separates a key from its value if what
+        // follows is whitespace or the collection's own punctuation.
+        if (!_ensure_token(index + 1))
+            return true;
+
+        switch (_line.tokens[index + 1].symbol_id)
+        {
+        case WHITESPACE:
+        case COMMA:
+        case CLOSING_BRACKET:
+        case RIGHT_BRACE:
+            return true;
+        default:
+            return false;
+        }
     }
 
 
@@ -395,26 +801,14 @@ namespace {
         const auto& token = _line.tokens[index];
         const auto text = _join(index, end);
 
-        // Report what is recognizably not a plain scalar but is not supported (yet)
+        // Report what is recognizably not a plain scalar but is not supported
         // either, rather than silently turning it into a string.
-        switch (token.symbol_id)
-        {
-        case OPENING_BRACKET:
-        case LEFT_BRACE:
-            _warning(u8"Flow collections are not supported; treated as a plain scalar.", token.source_offset);
-            break;
-        case QUESTION_MARK:
+        if (token.symbol_id == QUESTION_MARK)
             _warning(u8"Explicit keys are not supported; treated as a plain scalar.", token.source_offset);
-            break;
-        default:
-            if (text.front() == u8'|' || text.front() == u8'>')
-                _warning(u8"Block scalars are not supported; treated as a plain scalar.", token.source_offset);
-            else if (text.front() == u8'&' || text.front() == u8'*')
-                _warning(u8"Anchors and aliases are not supported; treated as a plain scalar.", token.source_offset);
-            else if (text.front() == u8'!')
-                _warning(u8"Tags are not supported; treated as a plain scalar.", token.source_offset);
-            break;
-        }
+        else if (text.front() == u8'&' || text.front() == u8'*')
+            _warning(u8"Anchors and aliases are not supported; treated as a plain scalar.", token.source_offset);
+        else if (text.front() == u8'!')
+            _warning(u8"Tags are not supported; treated as a plain scalar.", token.source_offset);
 
         return _resolve_plain_scalar(text);
     }
@@ -462,20 +856,14 @@ namespace {
             return result;
         }
 
-        // Double-quoted scalars: reuse the JSON unescaper, whose escapes YAML's are
-        // a superset of. (The YAML-only ones are still missing.)
         json::detail::UnescaperErrorHandler unescaper_error_handler{get_diagnostics(), &token};
-        const json::util::Unescaper unescaper{&unescaper_error_handler};
+        const util::Unescaper unescaper{&unescaper_error_handler};
 
         return unescaper.unescape_string(inner);
     }
 
 
 
-    /**
-     * Returns true if the current line begins with a `---` or `...` marker, i.e.,
-     * the current document ends here.
-     */
     bool Builder::_at_document_marker() const
     {
         if (_line.eof || _line.is_blank())
@@ -486,10 +874,6 @@ namespace {
         return symbol_id == DOCUMENT_START || symbol_id == DOCUMENT_END;
     }
 
-    /**
-     * Returns true if the token at the given index starts a block sequence entry,
-     * i.e., it is a `-` followed by whitespace or the end of the line.
-     */
     bool Builder::_is_sequence_entry(size_t index) const
     {
         if (index >= _line.tokens.size())
@@ -498,6 +882,21 @@ namespace {
             return false;
 
         return index + 1 >= _line.tokens.size() || _line.tokens[index + 1].symbol_id == WHITESPACE;
+    }
+
+    /**
+     * Returns true if the token at the given index starts a value that is not a
+     * plain scalar, i.e., a flow collection or a block scalar. Only otherwise can a
+     * `:` further along the line make the line a block mapping.
+     */
+    bool Builder::_starts_non_plain_value(size_t index) const
+    {
+        const auto symbol_id = _line.tokens[index].symbol_id;
+
+        if (symbol_id == OPENING_BRACKET || symbol_id == LEFT_BRACE)
+            return true;
+
+        return symbol_id == BLOCK_SCALAR_HEADER && index + 1 == _line.tokens.size();
     }
 
     /**
@@ -539,8 +938,9 @@ namespace {
 
     /**
      * Returns the piece of source text the given range of tokens is made of. The
-     * tokens of a line are contiguous, so this is a view into the source rather
-     * than a copy.
+     * tokens of a single line are contiguous, so this is a view into the source
+     * rather than a copy — which is also why it must not be used across a line
+     * boundary introduced by `_extend_line`; that is what `_concat` is for.
      */
     cl7::u8string_view Builder::_join(size_t from, size_t to) const
     {
@@ -551,6 +951,19 @@ namespace {
         const auto& last = _line.tokens[to - 1];
 
         return {first.lexeme.data(), last.source_offset + last.lexeme.size() - first.source_offset};
+    }
+
+    /**
+     * Returns the given range of tokens' lexemes, concatenated.
+     */
+    string_t Builder::_concat(size_t from, size_t to) const
+    {
+        string_t result;
+
+        for (size_t i = from; i < to; ++i)
+            result += _line.tokens[i].lexeme;
+
+        return result;
     }
 
 
