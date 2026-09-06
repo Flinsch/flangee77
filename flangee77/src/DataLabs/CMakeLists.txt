@@ -88,5 +88,6 @@ target_sources(flangee77
     yaml/detail/Lexer.cpp
     yaml/detail/SingleQuotedStringMatcher.cpp
 
+    yaml/util/Schema.cpp
     yaml/util/Unescaper.cpp
 )

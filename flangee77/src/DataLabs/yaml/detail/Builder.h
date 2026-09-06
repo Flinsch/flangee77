@@ -154,7 +154,6 @@ private:
 
     string_t _parse_key(size_t index, size_t separator);
     Yaml _parse_scalar(size_t index);
-    Yaml _resolve_plain_scalar(cl7::u8string_view text);
     string_t _unquote(const syntax::Token& token);
 
 

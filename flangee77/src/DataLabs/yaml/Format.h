@@ -15,7 +15,7 @@ struct Format
     {
         /** Use the indentation-based block style for mappings and sequences (scalars are single-line anyway). */
         Block = 0,
-        /** Use the JSON-like flow style for mappings and sequences, resulting in single-line output. */
+        /** Use the JSON-like flow style for mappings and sequences, resulting in single-line output (which leaves no room for document markers or a trailing empty line). */
         Flow = 1,
     };
 
@@ -62,7 +62,7 @@ struct Format
         Null,
         /** Write null values as `~`. */
         Tilde,
-        /** Write null values as empty scalars. */
+        /** Write null values as empty scalars (except inside a flow collection, where an empty scalar is indistinguishable from no entry at all). */
         Empty,
     };
 

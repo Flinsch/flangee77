@@ -512,3 +512,225 @@ TESTLABS_CASE( u8"DataLabs:  yaml:  YamlReader:  parse (not-a-number scalars)" )
     TESTLABS_CHECK( yaml.at( u8"key" ).is_float() );
     TESTLABS_CHECK( std::isnan( yaml.at( u8"key" ).as_float() ) );
 }
+
+
+
+TESTLABS_CASE( u8"DataLabs:  yaml:  YamlWriter:  to_string" )
+{
+    using dl7::yaml::Yaml;
+    using dl7::yaml::mapping_t;
+    using dl7::yaml::sequence_t;
+
+    struct Entry
+    {
+        cl7::u8string label;
+        Yaml yaml;
+        cl7::u8string expected_string;
+    } entry;
+
+    const std::vector<Entry> container {
+        // A document may be a scalar all by itself.
+        { u8"null", Yaml(), u8"null\n" },
+        { u8"string", Yaml( u8"hello" ), u8"hello\n" },
+        { u8"integer", Yaml( 42 ), u8"42\n" },
+
+        // Block mappings and sequences.
+        { u8"mapping", Yaml( mapping_t{ { u8"a", Yaml( 1 ) }, { u8"b", Yaml( u8"two" ) } } ), u8"a: 1\nb: two\n" },
+        { u8"nested mapping", Yaml( mapping_t{ { u8"a", Yaml( mapping_t{ { u8"b", Yaml( 1 ) } } ) } } ), u8"a:\n  b: 1\n" },
+        { u8"sequence", Yaml( sequence_t{ Yaml( 1 ), Yaml( 2 ) } ), u8"- 1\n- 2\n" },
+        // A block sequence sits at its parent key's indentation by default.
+        { u8"sequence value", Yaml( mapping_t{ { u8"a", Yaml( sequence_t{ Yaml( 1 ), Yaml( 2 ) } ) } } ), u8"a:\n- 1\n- 2\n" },
+        // Mappings and sequences inside a sequence use the compact notation.
+        { u8"mapping in sequence", Yaml( sequence_t{ Yaml( mapping_t{ { u8"a", Yaml( 1 ) }, { u8"b", Yaml( 2 ) } } ) } ), u8"- a: 1\n  b: 2\n" },
+        { u8"sequence in sequence", Yaml( sequence_t{ Yaml( sequence_t{ Yaml( 1 ), Yaml( 2 ) } ) } ), u8"- - 1\n  - 2\n" },
+        // An empty collection has no block representation of its own.
+        { u8"empty mapping value", Yaml( mapping_t{ { u8"a", Yaml( mapping_t{} ) } } ), u8"a: {}\n" },
+        { u8"empty sequence value", Yaml( mapping_t{ { u8"a", Yaml( sequence_t{} ) } } ), u8"a: []\n" },
+
+        // Scalars.
+        { u8"null value", Yaml( mapping_t{ { u8"a", Yaml() } } ), u8"a: null\n" },
+        { u8"boolean value", Yaml( mapping_t{ { u8"a", Yaml( true ) } } ), u8"a: true\n" },
+        { u8"float value", Yaml( mapping_t{ { u8"a", Yaml( 7.5 ) } } ), u8"a: 7.5\n" },
+        { u8"whole float value", Yaml( mapping_t{ { u8"a", Yaml( 7.0 ) } } ), u8"a: 7.0\n" },
+        { u8"infinity", Yaml( mapping_t{ { u8"a", Yaml( std::numeric_limits<double>::infinity() ) } } ), u8"a: .inf\n" },
+        { u8"plain string value", Yaml( mapping_t{ { u8"a", Yaml( u8"hello world" ) } } ), u8"a: hello world\n" },
+
+        // A string is quoted exactly where it would otherwise be read back as
+        // something other than that very string.
+        { u8"string that looks like a boolean", Yaml( mapping_t{ { u8"a", Yaml( u8"true" ) } } ), u8"a: \"true\"\n" },
+        { u8"string that looks like a number", Yaml( mapping_t{ { u8"a", Yaml( u8"7" ) } } ), u8"a: \"7\"\n" },
+        { u8"string that looks like null", Yaml( mapping_t{ { u8"a", Yaml( u8"~" ) } } ), u8"a: \"~\"\n" },
+        { u8"empty string", Yaml( mapping_t{ { u8"a", Yaml( u8"" ) } } ), u8"a: \"\"\n" },
+        { u8"string with a key separator", Yaml( mapping_t{ { u8"a", Yaml( u8"x: y" ) } } ), u8"a: \"x: y\"\n" },
+        { u8"string with a comment", Yaml( mapping_t{ { u8"a", Yaml( u8"x # y" ) } } ), u8"a: \"x # y\"\n" },
+        { u8"string with a leading indicator", Yaml( mapping_t{ { u8"a", Yaml( u8"- x" ) } } ), u8"a: \"- x\"\n" },
+        { u8"string with surrounding space", Yaml( mapping_t{ { u8"a", Yaml( u8" x " ) } } ), u8"a: \" x \"\n" },
+        { u8"document marker as a string", Yaml( mapping_t{ { u8"a", Yaml( u8"---" ) } } ), u8"a: \"---\"\n" },
+
+        // Keys follow the very same rules.
+        { u8"plain key with a space", Yaml( mapping_t{ { u8"a b", Yaml( 1 ) } } ), u8"a b: 1\n" },
+        { u8"key that needs quoting", Yaml( mapping_t{ { u8"a: b", Yaml( 1 ) } } ), u8"\"a: b\": 1\n" },
+
+        // A multi-line string becomes a literal block scalar, the chomping
+        // indicator following from its trailing line breaks.
+        { u8"block scalar", Yaml( mapping_t{ { u8"a", Yaml( u8"line1\nline2\n" ) } } ), u8"a: |\n  line1\n  line2\n" },
+        { u8"block scalar without a trailing line break", Yaml( mapping_t{ { u8"a", Yaml( u8"line1\nline2" ) } } ), u8"a: |-\n  line1\n  line2\n" },
+        { u8"block scalar with trailing line breaks", Yaml( mapping_t{ { u8"a", Yaml( u8"line1\n\n" ) } } ), u8"a: |+\n  line1\n\n" },
+        { u8"block scalar with an empty line", Yaml( mapping_t{ { u8"a", Yaml( u8"a\n\nb\n" ) } } ), u8"a: |\n  a\n\n  b\n" },
+        // Indented content needs an explicit indentation indicator, which would
+        // otherwise be read off the first line.
+        { u8"block scalar with indented content", Yaml( mapping_t{ { u8"a", Yaml( u8"  x\ny\n" ) } } ), u8"a: |2\n    x\n  y\n" },
+        // What a block scalar cannot hold stays a quoted one-liner.
+        { u8"multi-line string with a tab", Yaml( mapping_t{ { u8"a", Yaml( u8"x\n\ty\n" ) } } ), u8"a: \"x\\n\\ty\\n\"\n" },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.label )
+    {
+        TESTLABS_CHECK_EQ( dl7::yaml::YamlWriter::to_string( entry.yaml ), entry.expected_string );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  yaml:  YamlWriter:  to_string (flow style)" )
+{
+    using dl7::yaml::Yaml;
+    using dl7::yaml::mapping_t;
+    using dl7::yaml::sequence_t;
+
+    struct Entry
+    {
+        cl7::u8string label;
+        Yaml yaml;
+        cl7::u8string expected_string;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"null", Yaml(), u8"null" },
+        { u8"string", Yaml( u8"hello" ), u8"hello" },
+        { u8"empty sequence", Yaml( sequence_t{} ), u8"[]" },
+        { u8"empty mapping", Yaml( mapping_t{} ), u8"{}" },
+        { u8"sequence", Yaml( sequence_t{ Yaml( 1 ), Yaml( 2 ) } ), u8"[1, 2]" },
+        { u8"mapping", Yaml( mapping_t{ { u8"a", Yaml( 1 ) }, { u8"b", Yaml( u8"two" ) } } ), u8"{a: 1, b: two}" },
+        { u8"nested", Yaml( mapping_t{ { u8"a", Yaml( sequence_t{ Yaml( 1 ), Yaml( mapping_t{ { u8"b", Yaml( 2 ) } } ) } ) } } ), u8"{a: [1, {b: 2}]}" },
+        // Inside a flow collection, its own punctuation forces quotes.
+        { u8"string with a comma", Yaml( mapping_t{ { u8"a", Yaml( u8"x,y" ) } } ), u8"{a: \"x,y\"}" },
+        { u8"string with a bracket", Yaml( mapping_t{ { u8"a", Yaml( u8"x]y" ) } } ), u8"{a: \"x]y\"}" },
+        // ... but a plain scalar may still contain spaces.
+        { u8"string with a space", Yaml( mapping_t{ { u8"a", Yaml( u8"x y" ) } } ), u8"{a: x y}" },
+        // A multi-line string cannot be a block scalar here.
+        { u8"multi-line string", Yaml( mapping_t{ { u8"a", Yaml( u8"x\ny" ) } } ), u8"{a: \"x\\ny\"}" },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.label )
+    {
+        TESTLABS_CHECK_EQ( dl7::yaml::YamlWriter::to_string( entry.yaml, dl7::yaml::YamlWriter::DEFAULT_FLOW_FORMAT ), entry.expected_string );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  yaml:  YamlWriter:  to_string (format options)" )
+{
+    using dl7::yaml::Yaml;
+    using dl7::yaml::Format;
+    using dl7::yaml::mapping_t;
+    using dl7::yaml::sequence_t;
+
+    const Yaml yaml( mapping_t{
+        { u8"a", Yaml( mapping_t{ { u8"b", Yaml( 1 ) } } ) },
+        { u8"c", Yaml( sequence_t{ Yaml( 2 ) } ) },
+        { u8"d", Yaml() },
+        { u8"e", Yaml( u8"x" ) },
+    } );
+
+    struct Entry
+    {
+        cl7::u8string label;
+        Format format;
+        cl7::u8string expected_string;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"defaults", {}, u8"a:\n  b: 1\nc:\n- 2\nd: null\ne: x\n" },
+        { u8"four spaces", { .indentation = Format::Indentation::Spaces4 }, u8"a:\n    b: 1\nc:\n- 2\nd: null\ne: x\n" },
+        { u8"CRLF", { .line_ending = Format::LineEnding::CRLF }, u8"a:\r\n  b: 1\r\nc:\r\n- 2\r\nd: null\r\ne: x\r\n" },
+        { u8"indented sequences", { .sequence_indentation = Format::SequenceIndentation::OneLevel }, u8"a:\n  b: 1\nc:\n  - 2\nd: null\ne: x\n" },
+        { u8"single-quoted scalars", { .scalar_quoting = Format::ScalarQuoting::SingleQuoted }, u8"'a':\n  'b': 1\n'c':\n- 2\n'd': null\n'e': 'x'\n" },
+        { u8"null as a tilde", { .null_representation = Format::NullRepresentation::Tilde }, u8"a:\n  b: 1\nc:\n- 2\nd: ~\ne: x\n" },
+        { u8"null as nothing", { .null_representation = Format::NullRepresentation::Empty }, u8"a:\n  b: 1\nc:\n- 2\nd:\ne: x\n" },
+        { u8"explicit document markers", { .explicit_document_start = true, .explicit_document_end = true }, u8"---\na:\n  b: 1\nc:\n- 2\nd: null\ne: x\n...\n" },
+        { u8"trailing empty line", { .add_empty_line = true }, u8"a:\n  b: 1\nc:\n- 2\nd: null\ne: x\n\n" },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.label )
+    {
+        TESTLABS_CHECK_EQ( dl7::yaml::YamlWriter::to_string( yaml, entry.format ), entry.expected_string );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  yaml:  round trip (parse after write)" )
+{
+    using dl7::yaml::Yaml;
+    using dl7::yaml::mapping_t;
+    using dl7::yaml::sequence_t;
+
+    struct Entry
+    {
+        cl7::u8string label;
+        Yaml yaml;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"null", Yaml() },
+        { u8"scalar", Yaml( u8"hello" ) },
+        { u8"mapping", Yaml( mapping_t{ { u8"a", Yaml( 1 ) }, { u8"b", Yaml( u8"two" ) } } ) },
+        { u8"sequence", Yaml( sequence_t{ Yaml( 1 ), Yaml( 2 ), Yaml( 3 ) } ) },
+        { u8"nested", Yaml( mapping_t{ { u8"a", Yaml( mapping_t{ { u8"b", Yaml( sequence_t{ Yaml( 1 ), Yaml( mapping_t{ { u8"c", Yaml( true ) } } ) } ) } } ) } } ) },
+        { u8"empty collections", Yaml( mapping_t{ { u8"a", Yaml( mapping_t{} ) }, { u8"b", Yaml( sequence_t{} ) } } ) },
+        { u8"nulls", Yaml( mapping_t{ { u8"a", Yaml() }, { u8"b", Yaml( sequence_t{ Yaml(), Yaml() } ) } } ) },
+        { u8"numbers", Yaml( mapping_t{ { u8"a", Yaml( -7 ) }, { u8"b", Yaml( 7.5 ) }, { u8"c", Yaml( 0.0 ) }, { u8"d", Yaml( std::numeric_limits<double>::infinity() ) } } ) },
+
+        // The strings that make plain scalars interesting.
+        { u8"string that looks like a number", Yaml( mapping_t{ { u8"a", Yaml( u8"7" ) } } ) },
+        { u8"string that looks like a boolean", Yaml( mapping_t{ { u8"a", Yaml( u8"yes" ) }, { u8"b", Yaml( u8"true" ) } } ) },
+        { u8"empty string", Yaml( mapping_t{ { u8"a", Yaml( u8"" ) } } ) },
+        { u8"document markers", Yaml( mapping_t{ { u8"a", Yaml( u8"---" ) }, { u8"b", Yaml( u8"..." ) } } ) },
+        { u8"key separator", Yaml( mapping_t{ { u8"a", Yaml( u8"x: y" ) }, { u8"b", Yaml( u8"x:y" ) } } ) },
+        { u8"comment", Yaml( mapping_t{ { u8"a", Yaml( u8"x # y" ) }, { u8"b", Yaml( u8"x#y" ) } } ) },
+        { u8"surrounding space", Yaml( mapping_t{ { u8"a", Yaml( u8" x" ) }, { u8"b", Yaml( u8"x " ) } } ) },
+        { u8"indicators", Yaml( mapping_t{ { u8"a", Yaml( u8"- x" ) }, { u8"b", Yaml( u8"[1]" ) }, { u8"c", Yaml( u8"{a}" ) }, { u8"d", Yaml( u8"*x" ) } } ) },
+        { u8"quotes", Yaml( mapping_t{ { u8"a", Yaml( u8"x \"y\" z" ) }, { u8"b", Yaml( u8"it's" ) } } ) },
+        { u8"backslash", Yaml( mapping_t{ { u8"a", Yaml( u8"C:\\path" ) } } ) },
+        { u8"tab", Yaml( mapping_t{ { u8"a", Yaml( u8"x\ty" ) } } ) },
+        { u8"non-ASCII", Yaml( mapping_t{ { u8"a", Yaml( u8"\u00e4\u00f6\u00fc" ) }, { u8"b", Yaml( u8"\U0001F600" ) } } ) },
+        { u8"keys that need quoting", Yaml( mapping_t{ { u8"a: b", Yaml( 1 ) }, { u8"", Yaml( 2 ) }, { u8"7", Yaml( 3 ) } } ) },
+
+        // Multi-line strings, i.e., block scalars.
+        { u8"multi-line string", Yaml( mapping_t{ { u8"a", Yaml( u8"line1\nline2\n" ) } } ) },
+        { u8"multi-line string without a trailing line break", Yaml( mapping_t{ { u8"a", Yaml( u8"line1\nline2" ) } } ) },
+        { u8"multi-line string with trailing line breaks", Yaml( mapping_t{ { u8"a", Yaml( u8"line1\n\n\n" ) } } ) },
+        { u8"multi-line string with an empty line", Yaml( mapping_t{ { u8"a", Yaml( u8"a\n\nb\n" ) } } ) },
+        { u8"multi-line string with indented content", Yaml( mapping_t{ { u8"a", Yaml( u8"  x\ny\n" ) } } ) },
+        { u8"multi-line string with a tab", Yaml( mapping_t{ { u8"a", Yaml( u8"x\n\ty\n" ) } } ) },
+        { u8"multi-line string in a sequence", Yaml( sequence_t{ Yaml( u8"a\nb\n" ), Yaml( u8"c" ) } ) },
+
+        {
+            u8"mixed",
+            Yaml( mapping_t{
+                { u8"title", Yaml( u8"Example" ) },
+                { u8"owner", Yaml( mapping_t{ { u8"name", Yaml( u8"Tom" ) }, { u8"age", Yaml( 42 ) } } ) },
+                { u8"database", Yaml( mapping_t{
+                    { u8"enabled", Yaml( true ) },
+                    { u8"ports", Yaml( sequence_t{ Yaml( 8000 ), Yaml( 8001 ) } ) },
+                    { u8"hosts", Yaml( sequence_t{ Yaml( mapping_t{ { u8"host", Yaml( u8"a" ) }, { u8"port", Yaml( 1 ) } } ) } ) },
+                } ) },
+            } )
+        },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.label )
+    {
+        const auto string = dl7::yaml::YamlWriter::to_string( entry.yaml );
+        TESTLABS_CHECK_EQ( dl7::yaml::YamlReader::parse( string ), entry.yaml );
+
+        const auto flow_string = dl7::yaml::YamlWriter::to_string( entry.yaml, dl7::yaml::YamlWriter::DEFAULT_FLOW_FORMAT );
+        TESTLABS_CHECK_EQ( dl7::yaml::YamlReader::parse( flow_string ), entry.yaml );
+    }
+}
