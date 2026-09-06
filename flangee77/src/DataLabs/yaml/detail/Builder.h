@@ -4,6 +4,8 @@
 
 #include "../Yaml.h"
 
+#include <vector>
+
 
 
 namespace dl7::yaml::detail {
@@ -24,6 +26,116 @@ public:
 
 
 private:
+    /**
+     * One logical line of the source text: its indentation plus the tokens that
+     * follow, with comments already stripped and trailing whitespace trimmed.
+     *
+     * YAML's block structure is line-oriented, and deciding what a line even is
+     * (a key-value pair? a sequence entry? a plain scalar?) requires looking ahead
+     * to the end of it, which a token reader's single token of lookahead does not
+     * allow. The builder therefore buffers one line at a time and parses from that
+     * buffer rather than straight from the reader.
+     */
+    struct Line
+    {
+        /** The source offset of the line's first character. */
+        size_t offset = 0;
+        /** The width of the line's indentation, in code units. */
+        size_t indent = 0;
+        /** The line's content tokens (without indentation, comment, and trailing whitespace). */
+        std::vector<syntax::Token> tokens;
+        /** Whether the end of the source text has been reached, i.e., there is no line. */
+        bool eof = true;
+
+        bool is_blank() const noexcept { return tokens.empty(); }
+    };
+
+    static constexpr size_t NO_INDEX = static_cast<size_t>(-1);
+
+
+
+    /**
+     * Reads the next line into `_line`, blank or not.
+     */
+    void _read_line();
+
+    /**
+     * Reads lines until one with content is found. Returns false at the end of the
+     * source text.
+     */
+    bool _advance_to_content_line();
+
+
+
+    /**
+     * The parsing functions below share one postcondition: when they return, the
+     * current line is the next one they did *not* consume (with the end of the
+     * source text reached, if there is none).
+     */
+
+    Yaml _parse_document();
+    Yaml _parse_block_node(size_t index);
+    mapping_t _parse_block_mapping(size_t index);
+    sequence_t _parse_block_sequence(size_t index);
+
+    /**
+     * Parses the value of a key-value pair or sequence entry whose line ended right
+     * after the `:` or `-`, i.e., a value that is either more deeply indented or
+     * simply absent (null). A block sequence may share its parent key's
+     * indentation, which is what `allow_sequence_at_same_indent` is about.
+     */
+    Yaml _parse_nested_value(size_t indent, bool allow_sequence_at_same_indent);
+
+    string_t _parse_key(size_t index, size_t separator);
+    Yaml _parse_scalar(size_t index);
+    Yaml _resolve_plain_scalar(cl7::u8string_view text);
+    string_t _unquote(const syntax::Token& token);
+
+
+
+    /**
+     * Returns true if the current line begins with a `---` or `...` marker, i.e.,
+     * the current document ends here.
+     */
+    bool _at_document_marker() const;
+
+    /**
+     * Returns true if the token at the given index starts a block sequence entry,
+     * i.e., it is a `-` followed by whitespace or the end of the line.
+     */
+    bool _is_sequence_entry(size_t index) const;
+
+    /**
+     * Returns the index of the token that separates a key from its value, i.e., the
+     * first `:` followed by whitespace or the end of the line, or `NO_INDEX`.
+     */
+    size_t _find_key_separator(size_t index) const;
+
+    /**
+     * Returns the index of the first non-whitespace token at or after the given
+     * index (which may be the end of the line).
+     */
+    size_t _skip_whitespace(size_t index) const;
+
+    /**
+     * Returns the given token's 0-based column within the current line.
+     */
+    size_t _column_of(size_t index) const;
+
+    /**
+     * Returns the piece of source text the given range of tokens is made of. The
+     * tokens of a line are contiguous, so this is a view into the source rather
+     * than a copy.
+     */
+    cl7::u8string_view _join(size_t from, size_t to) const;
+
+    void _error(cl7::u8string_view message, size_t source_offset);
+    void _warning(cl7::u8string_view message, size_t source_offset);
+
+
+
+    syntax::TokenReader* _token_reader = nullptr;
+    Line _line;
 
 }; // class Builder
 

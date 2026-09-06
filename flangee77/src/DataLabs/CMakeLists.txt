@@ -81,7 +81,9 @@ target_sources(flangee77
     yaml/YamlReader.cpp
     yaml/YamlWriter.cpp
 
+    yaml/detail/AnyOtherMatcher.cpp
     yaml/detail/Builder.cpp
     yaml/detail/Generator.cpp
     yaml/detail/Lexer.cpp
+    yaml/detail/SingleQuotedStringMatcher.cpp
 )
