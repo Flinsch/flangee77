@@ -26,6 +26,8 @@ TESTLABS_CASE( u8"DataLabs:  json:  Json:  null" )
     TESTLABS_CHECK( json.get_type() == dl7::json::Json::Type::Null );
     TESTLABS_CHECK( json.is_null() );
     TESTLABS_CHECK( json.is_primitive() );
+    TESTLABS_CHECK( !json.is_structured() );
+    TESTLABS_CHECK( json.is_empty() );
     TESTLABS_CHECK_EQ( json.to_string(), u8"null" );
 }
 
@@ -35,7 +37,9 @@ TESTLABS_CASE( u8"DataLabs:  json:  Json:  object" )
 
     TESTLABS_CHECK( json.get_type() == dl7::json::Json::Type::Object );
     TESTLABS_CHECK( json.is_object() );
+    TESTLABS_CHECK( !json.is_primitive() );
     TESTLABS_CHECK( json.is_structured() );
+    TESTLABS_CHECK( json.is_empty() );
     TESTLABS_CHECK_EQ( json.to_string(), u8"{}" );
 }
 
@@ -45,8 +49,41 @@ TESTLABS_CASE( u8"DataLabs:  json:  Json:  array" )
 
     TESTLABS_CHECK( json.get_type() == dl7::json::Json::Type::Array );
     TESTLABS_CHECK( json.is_array() );
+    TESTLABS_CHECK( !json.is_primitive() );
     TESTLABS_CHECK( json.is_structured() );
+    TESTLABS_CHECK( json.is_empty() );
     TESTLABS_CHECK_EQ( json.to_string(), u8"[]" );
+}
+
+TESTLABS_CASE( u8"DataLabs:  json:  Json:  object (with entries)" )
+{
+    dl7::json::Json json( dl7::json::object_t{ { u8"a", dl7::json::Json{ 1 } }, { u8"b", dl7::json::Json{ u8"two" } } } );
+
+    TESTLABS_CHECK( json.get_type() == dl7::json::Json::Type::Object );
+    TESTLABS_CHECK( json.is_object() );
+    TESTLABS_CHECK( !json.is_primitive() );
+    TESTLABS_CHECK( json.is_structured() );
+    TESTLABS_CHECK( !json.is_empty() );
+    TESTLABS_CHECK_EQ( json.as_object().size(), 2 );
+    TESTLABS_CHECK_EQ( json.at( u8"a" ).as_integer(), 1 );
+    TESTLABS_CHECK_EQ( json.at( u8"b" ).as_string(), u8"two" );
+    TESTLABS_CHECK_EQ( json.to_string(), u8"{\"a\":1,\"b\":\"two\"}" );
+}
+
+TESTLABS_CASE( u8"DataLabs:  json:  Json:  array (with entries)" )
+{
+    dl7::json::Json json( dl7::json::array_t{ dl7::json::Json{ 1 }, dl7::json::Json{ u8"two" }, dl7::json::Json{} } );
+
+    TESTLABS_CHECK( json.get_type() == dl7::json::Json::Type::Array );
+    TESTLABS_CHECK( json.is_array() );
+    TESTLABS_CHECK( !json.is_primitive() );
+    TESTLABS_CHECK( json.is_structured() );
+    TESTLABS_CHECK( !json.is_empty() );
+    TESTLABS_CHECK_EQ( json.as_array().size(), 3 );
+    TESTLABS_CHECK_EQ( json.at( 0 ).as_integer(), 1 );
+    TESTLABS_CHECK_EQ( json.at( 1 ).as_string(), u8"two" );
+    TESTLABS_CHECK( json.at( 2 ).is_null() );
+    TESTLABS_CHECK_EQ( json.to_string(), u8"[1,\"two\",null]" );
 }
 
 TESTLABS_CASE( u8"DataLabs:  json:  Json:  string" )
@@ -56,6 +93,8 @@ TESTLABS_CASE( u8"DataLabs:  json:  Json:  string" )
     TESTLABS_CHECK( json.get_type() == dl7::json::Json::Type::String );
     TESTLABS_CHECK( json.is_string() );
     TESTLABS_CHECK( json.is_primitive() );
+    TESTLABS_CHECK( !json.is_structured() );
+    TESTLABS_CHECK( !json.is_empty() );
     TESTLABS_CHECK_EQ( json.to_string(), u8"\"Hello World\"" );
 }
 
@@ -67,6 +106,8 @@ TESTLABS_CASE( u8"DataLabs:  json:  Json:  decimal" )
     TESTLABS_CHECK( json.is_float() );
     TESTLABS_CHECK( json.is_number() );
     TESTLABS_CHECK( json.is_primitive() );
+    TESTLABS_CHECK( !json.is_structured() );
+    TESTLABS_CHECK( !json.is_empty() );
     TESTLABS_CHECK_EQ( json.to_string(), u8"7.0" );
 }
 
@@ -78,6 +119,8 @@ TESTLABS_CASE( u8"DataLabs:  json:  Json:  integer" )
     TESTLABS_CHECK( json.is_integer() );
     TESTLABS_CHECK( json.is_number() );
     TESTLABS_CHECK( json.is_primitive() );
+    TESTLABS_CHECK( !json.is_structured() );
+    TESTLABS_CHECK( !json.is_empty() );
     TESTLABS_CHECK_EQ( json.to_string(), u8"-7" );
 }
 
@@ -89,6 +132,8 @@ TESTLABS_CASE( u8"DataLabs:  json:  Json:  true" )
     TESTLABS_CHECK( json.is_boolean() );
     TESTLABS_CHECK( json.is_true() );
     TESTLABS_CHECK( json.is_primitive() );
+    TESTLABS_CHECK( !json.is_structured() );
+    TESTLABS_CHECK( !json.is_empty() );
     TESTLABS_CHECK_EQ( json.to_string(), u8"true" );
 }
 
@@ -100,6 +145,8 @@ TESTLABS_CASE( u8"DataLabs:  json:  Json:  false" )
     TESTLABS_CHECK( json.is_boolean() );
     TESTLABS_CHECK( json.is_false() );
     TESTLABS_CHECK( json.is_primitive() );
+    TESTLABS_CHECK( !json.is_structured() );
+    TESTLABS_CHECK( !json.is_empty() );
     TESTLABS_CHECK_EQ( json.to_string(), u8"false" );
 }
 
@@ -114,6 +161,86 @@ TESTLABS_CASE( u8"DataLabs:  json:  Json:  copy-assigning null" )
     TESTLABS_CHECK( json.get_type() == dl7::json::Json::Type::Null );
     TESTLABS_CHECK( json.is_null() );
     TESTLABS_CHECK_EQ( json.to_string(), u8"null" );
+}
+
+
+
+TESTLABS_CASE( u8"DataLabs:  json:  Json:  reset type" )
+{
+    dl7::json::Json json( u8"Hello World" );
+
+    json.reset_type( dl7::json::Json::Type::Object );
+    TESTLABS_CHECK( json.is_object() );
+    TESTLABS_CHECK( json.is_empty() );
+
+    json.reset_type( dl7::json::Json::Type::Integer );
+    TESTLABS_CHECK( json.is_integer() );
+    TESTLABS_CHECK_EQ( json.as_integer(), 0 );
+
+    json.reset_type( dl7::json::Json::Type::Null );
+    TESTLABS_CHECK( json.is_null() );
+}
+
+TESTLABS_CASE( u8"DataLabs:  json:  Json:  implicit collections via operator[]" )
+{
+    dl7::json::Json json;
+
+    json[ u8"servers" ][ u8"alpha" ] = dl7::json::Json{ u8"10.0.0.1" };
+
+    TESTLABS_CHECK( json.is_object() );
+    TESTLABS_CHECK( json.at( u8"servers" ).is_object() );
+    TESTLABS_CHECK_EQ( json.at( u8"servers" ).at( u8"alpha" ).as_string(), u8"10.0.0.1" );
+}
+
+TESTLABS_CASE( u8"DataLabs:  json:  Json:  copy, move, swap, and comparison" )
+{
+    dl7::json::Json json( dl7::json::object_t{
+        { u8"a", dl7::json::Json{ 1 } },
+        { u8"b", dl7::json::Json{ dl7::json::array_t{ dl7::json::Json{ true }, dl7::json::Json{} } } },
+    } );
+
+    dl7::json::Json copy{ json }; // NOLINT(performance-unnecessary-copy-initialization)
+    TESTLABS_CHECK( copy == json );
+    TESTLABS_CHECK( !(copy != json) );
+
+    // The copy must be deep, i.e., modifying it must leave the original untouched.
+    copy.at( u8"a" ).set_integer( 2 );
+    TESTLABS_CHECK( copy != json );
+    TESTLABS_CHECK_EQ( json.at( u8"a" ).as_integer(), 1 );
+
+    dl7::json::Json moved{ std::move( copy ) };
+    TESTLABS_CHECK( moved.is_object() );
+    TESTLABS_CHECK_EQ( moved.at( u8"a" ).as_integer(), 2 );
+
+    dl7::json::Json scalar( u8"x" );
+    moved.swap( scalar );
+    TESTLABS_CHECK( moved.is_string() );
+    TESTLABS_CHECK( scalar.is_object() );
+}
+
+TESTLABS_CASE( u8"DataLabs:  json:  Json:  as_number" )
+{
+    dl7::json::Json integer( -7 );
+    dl7::json::Json decimal( 3.5 );
+
+    TESTLABS_CHECK_EQ( integer.as_number<double>(), -7.0 );
+    TESTLABS_CHECK_EQ( integer.as_number<int>(), -7 );
+    TESTLABS_CHECK_EQ( decimal.as_number<double>(), 3.5 );
+    TESTLABS_CHECK_EQ( decimal.as_number<int>(), 3 );
+}
+
+TESTLABS_CASE( u8"DataLabs:  json:  Json:  is_true / is_false on non-booleans" )
+{
+    dl7::json::Json null;
+    dl7::json::Json zero( 0 );
+    dl7::json::Json empty_string( u8"" );
+
+    TESTLABS_CHECK( !null.is_true() );
+    TESTLABS_CHECK( !null.is_false() );
+    TESTLABS_CHECK( !zero.is_true() );
+    TESTLABS_CHECK( !zero.is_false() );
+    TESTLABS_CHECK( !empty_string.is_true() );
+    TESTLABS_CHECK( !empty_string.is_false() );
 }
 
 

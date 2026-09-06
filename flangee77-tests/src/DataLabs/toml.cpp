@@ -79,22 +79,55 @@ TESTLABS_CASE( u8"DataLabs:  toml:  Value:  false" )
 
 TESTLABS_CASE( u8"DataLabs:  toml:  Value:  array" )
 {
-    dl7::toml::Value value( dl7::toml::array_t{ dl7::toml::Value( 1 ), dl7::toml::Value( 2 ), dl7::toml::Value( 3 ) } );
+    dl7::toml::Value value( dl7::toml::Value::Type::Array );
 
     TESTLABS_CHECK( value.get_type() == dl7::toml::Value::Type::Array );
     TESTLABS_CHECK( value.is_array() );
+    TESTLABS_CHECK( !value.is_primitive() );
     TESTLABS_CHECK( value.is_structured() );
-    TESTLABS_CHECK_EQ( value.to_string(), u8"[1, 2, 3]" );
+    TESTLABS_CHECK( value.is_empty() );
+    TESTLABS_CHECK_EQ( value.to_string(), u8"[]" );
 }
 
 TESTLABS_CASE( u8"DataLabs:  toml:  Value:  table" )
 {
-    dl7::toml::Value value( dl7::toml::table_t{ { u8"a", dl7::toml::Value( 1 ) } } );
+    dl7::toml::Value value( dl7::toml::Value::Type::Table );
 
     TESTLABS_CHECK( value.get_type() == dl7::toml::Value::Type::Table );
     TESTLABS_CHECK( value.is_table() );
+    TESTLABS_CHECK( !value.is_primitive() );
     TESTLABS_CHECK( value.is_structured() );
-    TESTLABS_CHECK_EQ( value.to_string(), u8"{a = 1}" );
+    TESTLABS_CHECK( value.is_empty() );
+    TESTLABS_CHECK_EQ( value.to_string(), u8"{}" );
+}
+
+TESTLABS_CASE( u8"DataLabs:  toml:  Value:  array (with entries)" )
+{
+    dl7::toml::Value value( dl7::toml::array_t{ dl7::toml::Value( 1 ), dl7::toml::Value( 2 ), dl7::toml::Value( 3 ) } );
+
+    TESTLABS_CHECK( value.get_type() == dl7::toml::Value::Type::Array );
+    TESTLABS_CHECK( value.is_array() );
+    TESTLABS_CHECK( !value.is_primitive() );
+    TESTLABS_CHECK( value.is_structured() );
+    TESTLABS_CHECK( !value.is_empty() );
+    TESTLABS_CHECK_EQ( value.as_array().size(), 3 );
+    TESTLABS_CHECK_EQ( value.at( 0 ).as_integer(), 1 );
+    TESTLABS_CHECK_EQ( value.to_string(), u8"[1, 2, 3]" );
+}
+
+TESTLABS_CASE( u8"DataLabs:  toml:  Value:  table (with entries)" )
+{
+    dl7::toml::Value value( dl7::toml::table_t{ { u8"a", dl7::toml::Value( 1 ) }, { u8"b", dl7::toml::Value( u8"two" ) } } );
+
+    TESTLABS_CHECK( value.get_type() == dl7::toml::Value::Type::Table );
+    TESTLABS_CHECK( value.is_table() );
+    TESTLABS_CHECK( !value.is_primitive() );
+    TESTLABS_CHECK( value.is_structured() );
+    TESTLABS_CHECK( !value.is_empty() );
+    TESTLABS_CHECK_EQ( value.as_table().size(), 2 );
+    TESTLABS_CHECK_EQ( value.at( u8"a" ).as_integer(), 1 );
+    TESTLABS_CHECK_EQ( value.at( u8"b" ).as_string(), u8"two" );
+    TESTLABS_CHECK_EQ( value.to_string(), u8"{a = 1, b = \"two\"}" );
 }
 
 
@@ -108,6 +141,86 @@ TESTLABS_CASE( u8"DataLabs:  toml:  Value:  copy-assigning none" )
     TESTLABS_CHECK( value.get_type() == dl7::toml::Value::Type::None );
     TESTLABS_CHECK( value.is_none() );
     TESTLABS_CHECK_EQ( value.to_string(), u8"" );
+}
+
+
+
+TESTLABS_CASE( u8"DataLabs:  toml:  Value:  reset type" )
+{
+    dl7::toml::Value value( u8"Hello World" );
+
+    value.reset_type( dl7::toml::Value::Type::Table );
+    TESTLABS_CHECK( value.is_table() );
+    TESTLABS_CHECK( value.is_empty() );
+
+    value.reset_type( dl7::toml::Value::Type::Integer );
+    TESTLABS_CHECK( value.is_integer() );
+    TESTLABS_CHECK_EQ( value.as_integer(), 0 );
+
+    value.reset_type( dl7::toml::Value::Type::None );
+    TESTLABS_CHECK( value.is_none() );
+}
+
+TESTLABS_CASE( u8"DataLabs:  toml:  Value:  implicit collections via operator[]" )
+{
+    dl7::toml::Value value;
+
+    value[ u8"servers" ][ u8"alpha" ] = dl7::toml::Value{ u8"10.0.0.1" };
+
+    TESTLABS_CHECK( value.is_table() );
+    TESTLABS_CHECK( value.at( u8"servers" ).is_table() );
+    TESTLABS_CHECK_EQ( value.at( u8"servers" ).at( u8"alpha" ).as_string(), u8"10.0.0.1" );
+}
+
+TESTLABS_CASE( u8"DataLabs:  toml:  Value:  copy, move, swap, and comparison" )
+{
+    dl7::toml::Value value( dl7::toml::table_t{
+        { u8"a", dl7::toml::Value( 1 ) },
+        { u8"b", dl7::toml::Value( dl7::toml::array_t{ dl7::toml::Value( true ), dl7::toml::Value( 2 ) } ) },
+    } );
+
+    dl7::toml::Value copy{ value }; // NOLINT(performance-unnecessary-copy-initialization)
+    TESTLABS_CHECK( copy == value );
+    TESTLABS_CHECK( !(copy != value) );
+
+    // The copy must be deep, i.e., modifying it must leave the original untouched.
+    copy.at( u8"a" ).set_integer( 2 );
+    TESTLABS_CHECK( copy != value );
+    TESTLABS_CHECK_EQ( value.at( u8"a" ).as_integer(), 1 );
+
+    dl7::toml::Value moved{ std::move( copy ) };
+    TESTLABS_CHECK( moved.is_table() );
+    TESTLABS_CHECK_EQ( moved.at( u8"a" ).as_integer(), 2 );
+
+    dl7::toml::Value scalar( u8"x" );
+    moved.swap( scalar );
+    TESTLABS_CHECK( moved.is_string() );
+    TESTLABS_CHECK( scalar.is_table() );
+}
+
+TESTLABS_CASE( u8"DataLabs:  toml:  Value:  as_number" )
+{
+    dl7::toml::Value integer( -7 );
+    dl7::toml::Value decimal( 3.5 );
+
+    TESTLABS_CHECK_EQ( integer.as_number<double>(), -7.0 );
+    TESTLABS_CHECK_EQ( integer.as_number<int>(), -7 );
+    TESTLABS_CHECK_EQ( decimal.as_number<double>(), 3.5 );
+    TESTLABS_CHECK_EQ( decimal.as_number<int>(), 3 );
+}
+
+TESTLABS_CASE( u8"DataLabs:  toml:  Value:  is_true / is_false on non-booleans" )
+{
+    dl7::toml::Value none;
+    dl7::toml::Value zero( 0 );
+    dl7::toml::Value empty_string( u8"" );
+
+    TESTLABS_CHECK( !none.is_true() );
+    TESTLABS_CHECK( !none.is_false() );
+    TESTLABS_CHECK( !zero.is_true() );
+    TESTLABS_CHECK( !zero.is_false() );
+    TESTLABS_CHECK( !empty_string.is_true() );
+    TESTLABS_CHECK( !empty_string.is_false() );
 }
 
 

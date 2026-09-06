@@ -89,6 +89,70 @@ TESTLABS_CASE( u8"DataLabs:  ini:  Value:  copy-assigning undefined" )
 
 
 
+TESTLABS_CASE( u8"DataLabs:  ini:  Value:  reset type" )
+{
+    dl7::ini::Value value( u8"Hello World" );
+
+    value.reset_type( dl7::ini::Value::Type::Boolean );
+    TESTLABS_CHECK( value.is_boolean() );
+    TESTLABS_CHECK( value.is_false() );
+
+    value.reset_type( dl7::ini::Value::Type::Integer );
+    TESTLABS_CHECK( value.is_integer() );
+    TESTLABS_CHECK_EQ( value.as_integer(), 0 );
+
+    value.reset_type( dl7::ini::Value::Type::Undefined );
+    TESTLABS_CHECK( value.is_undefined() );
+}
+
+TESTLABS_CASE( u8"DataLabs:  ini:  Value:  copy, move, swap, and comparison" )
+{
+    dl7::ini::Value value( u8"Hello World" );
+
+    dl7::ini::Value copy{ value }; // NOLINT(performance-unnecessary-copy-initialization)
+    TESTLABS_CHECK( copy == value );
+    TESTLABS_CHECK( !(copy != value) );
+
+    copy.set_integer( 7 );
+    TESTLABS_CHECK( copy != value );
+    TESTLABS_CHECK_EQ( value.as_string(), u8"Hello World" );
+
+    dl7::ini::Value moved{ std::move( copy ) };
+    TESTLABS_CHECK( moved.is_integer() );
+    TESTLABS_CHECK_EQ( moved.as_integer(), 7 );
+
+    moved.swap( value );
+    TESTLABS_CHECK( moved.is_string() );
+    TESTLABS_CHECK( value.is_integer() );
+}
+
+TESTLABS_CASE( u8"DataLabs:  ini:  Value:  as_number" )
+{
+    dl7::ini::Value integer( -7 );
+    dl7::ini::Value decimal( 3.5 );
+
+    TESTLABS_CHECK_EQ( integer.as_number<double>(), -7.0 );
+    TESTLABS_CHECK_EQ( integer.as_number<int>(), -7 );
+    TESTLABS_CHECK_EQ( decimal.as_number<double>(), 3.5 );
+    TESTLABS_CHECK_EQ( decimal.as_number<int>(), 3 );
+}
+
+TESTLABS_CASE( u8"DataLabs:  ini:  Value:  is_true / is_false on non-booleans" )
+{
+    dl7::ini::Value undefined;
+    dl7::ini::Value zero( 0 );
+    dl7::ini::Value empty_string( u8"" );
+
+    TESTLABS_CHECK( !undefined.is_true() );
+    TESTLABS_CHECK( !undefined.is_false() );
+    TESTLABS_CHECK( !zero.is_true() );
+    TESTLABS_CHECK( !zero.is_false() );
+    TESTLABS_CHECK( !empty_string.is_true() );
+    TESTLABS_CHECK( !empty_string.is_false() );
+}
+
+
+
 TESTLABS_CASE( u8"DataLabs:  ini:  IniReader:  parse" )
 {
     struct Entry

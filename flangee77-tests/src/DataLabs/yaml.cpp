@@ -27,6 +27,28 @@ TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  null" )
     TESTLABS_CHECK( yaml.is_empty() );
 }
 
+TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  mapping" )
+{
+    dl7::yaml::Yaml yaml( dl7::yaml::Yaml::Type::Mapping );
+
+    TESTLABS_CHECK( yaml.get_type() == dl7::yaml::Yaml::Type::Mapping );
+    TESTLABS_CHECK( yaml.is_mapping() );
+    TESTLABS_CHECK( !yaml.is_primitive() );
+    TESTLABS_CHECK( yaml.is_structured() );
+    TESTLABS_CHECK( yaml.is_empty() );
+}
+
+TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  sequence" )
+{
+    dl7::yaml::Yaml yaml( dl7::yaml::Yaml::Type::Sequence );
+
+    TESTLABS_CHECK( yaml.get_type() == dl7::yaml::Yaml::Type::Sequence );
+    TESTLABS_CHECK( yaml.is_sequence() );
+    TESTLABS_CHECK( !yaml.is_primitive() );
+    TESTLABS_CHECK( yaml.is_structured() );
+    TESTLABS_CHECK( yaml.is_empty() );
+}
+
 TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  string" )
 {
     dl7::yaml::Yaml yaml( u8"Hello World" );
@@ -92,7 +114,7 @@ TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  false" )
     TESTLABS_CHECK( !yaml.is_empty() );
 }
 
-TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  sequence" )
+TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  sequence (with entries)" )
 {
     dl7::yaml::Yaml yaml( dl7::yaml::sequence_t{ dl7::yaml::Yaml{ 1 }, dl7::yaml::Yaml{ u8"two" }, dl7::yaml::Yaml{} } );
 
@@ -107,7 +129,7 @@ TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  sequence" )
     TESTLABS_CHECK( yaml.at( 2 ).is_null() );
 }
 
-TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  mapping" )
+TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  mapping (with entries)" )
 {
     dl7::yaml::Yaml yaml( dl7::yaml::mapping_t{ { u8"a", dl7::yaml::Yaml{ 1 } }, { u8"b", dl7::yaml::Yaml{ u8"two" } } } );
 
@@ -119,17 +141,6 @@ TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  mapping" )
     TESTLABS_CHECK_EQ( yaml.as_mapping().size(), 2 );
     TESTLABS_CHECK_EQ( yaml.at( u8"a" ).as_integer(), 1 );
     TESTLABS_CHECK_EQ( yaml.at( u8"b" ).as_string(), u8"two" );
-}
-
-TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  empty collections" )
-{
-    dl7::yaml::Yaml sequence{ dl7::yaml::sequence_t{} };
-    dl7::yaml::Yaml mapping{ dl7::yaml::mapping_t{} };
-
-    TESTLABS_CHECK( sequence.is_sequence() );
-    TESTLABS_CHECK( sequence.is_empty() );
-    TESTLABS_CHECK( mapping.is_mapping() );
-    TESTLABS_CHECK( mapping.is_empty() );
 }
 
 TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  reset type" )
@@ -172,6 +183,7 @@ TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  copy, move, swap, and comparison" )
 
     copy.at( u8"a" ).set_integer( 2 );
     TESTLABS_CHECK( copy != yaml );
+    TESTLABS_CHECK_EQ( yaml.at( u8"a" ).as_integer(), 1 );
 
     dl7::yaml::Yaml moved{ std::move( copy ) };
     TESTLABS_CHECK( moved.is_mapping() );
@@ -185,4 +197,29 @@ TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  copy, move, swap, and comparison" )
     // Assigning a null node must actually reset the target.
     scalar = dl7::yaml::Yaml{};
     TESTLABS_CHECK( scalar.is_null() );
+}
+
+TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  as_number" )
+{
+    dl7::yaml::Yaml integer( -7 );
+    dl7::yaml::Yaml decimal( 3.5 );
+
+    TESTLABS_CHECK_EQ( integer.as_number<double>(), -7.0 );
+    TESTLABS_CHECK_EQ( integer.as_number<int>(), -7 );
+    TESTLABS_CHECK_EQ( decimal.as_number<double>(), 3.5 );
+    TESTLABS_CHECK_EQ( decimal.as_number<int>(), 3 );
+}
+
+TESTLABS_CASE( u8"DataLabs:  yaml:  Yaml:  is_true / is_false on non-booleans" )
+{
+    dl7::yaml::Yaml null;
+    dl7::yaml::Yaml zero( 0 );
+    dl7::yaml::Yaml empty_string( u8"" );
+
+    TESTLABS_CHECK( !null.is_true() );
+    TESTLABS_CHECK( !null.is_false() );
+    TESTLABS_CHECK( !zero.is_true() );
+    TESTLABS_CHECK( !zero.is_false() );
+    TESTLABS_CHECK( !empty_string.is_true() );
+    TESTLABS_CHECK( !empty_string.is_false() );
 }
