@@ -254,9 +254,16 @@ var annotated_dup =
       ] ],
       [ "yaml", "d1/d18/namespacedl7_1_1yaml.html", [
         [ "detail", "d8/dd3/namespacedl7_1_1yaml_1_1detail.html", [
+          [ "AnyOtherMatcher", "d8/d3e/structdl7_1_1yaml_1_1detail_1_1AnyOtherMatcher.html", "d8/d3e/structdl7_1_1yaml_1_1detail_1_1AnyOtherMatcher" ],
+          [ "BlockScalarHeaderMatcher", "d0/d53/structdl7_1_1yaml_1_1detail_1_1BlockScalarHeaderMatcher.html", "d0/d53/structdl7_1_1yaml_1_1detail_1_1BlockScalarHeaderMatcher" ],
           [ "Builder", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder" ],
           [ "Generator", "de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html", "de/d93/classdl7_1_1yaml_1_1detail_1_1Generator" ],
-          [ "Lexer", "d8/db9/classdl7_1_1yaml_1_1detail_1_1Lexer.html", "d8/db9/classdl7_1_1yaml_1_1detail_1_1Lexer" ]
+          [ "Lexer", "d8/db9/classdl7_1_1yaml_1_1detail_1_1Lexer.html", "d8/db9/classdl7_1_1yaml_1_1detail_1_1Lexer" ],
+          [ "SingleQuotedStringMatcher", "d0/d09/structdl7_1_1yaml_1_1detail_1_1SingleQuotedStringMatcher.html", "d0/d09/structdl7_1_1yaml_1_1detail_1_1SingleQuotedStringMatcher" ]
+        ] ],
+        [ "util", "d0/d22/namespacedl7_1_1yaml_1_1util.html", [
+          [ "Schema", "dd/d3a/classdl7_1_1yaml_1_1util_1_1Schema.html", "dd/d3a/classdl7_1_1yaml_1_1util_1_1Schema" ],
+          [ "Unescaper", "dc/d2f/classdl7_1_1yaml_1_1util_1_1Unescaper.html", "dc/d2f/classdl7_1_1yaml_1_1util_1_1Unescaper" ]
         ] ],
         [ "Format", "d1/db1/structdl7_1_1yaml_1_1Format.html", "d1/db1/structdl7_1_1yaml_1_1Format" ],
         [ "Yaml", "d9/de4/classdl7_1_1yaml_1_1Yaml.html", "d9/de4/classdl7_1_1yaml_1_1Yaml" ],

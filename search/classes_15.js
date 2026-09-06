@@ -2,7 +2,7 @@ var searchData=
 [
   ['u8isstream_0',['u8isstream',['../d9/d44/classcl7_1_1u8isstream.html',1,'cl7']]],
   ['u8osstream_1',['u8osstream',['../d3/d63/classcl7_1_1u8osstream.html',1,'cl7']]],
-  ['unescaper_2',['unescaper',['../df/df1/classdl7_1_1json_1_1util_1_1Unescaper.html',1,'dl7::json::util::Unescaper'],['../d1/db6/classdl7_1_1xml_1_1util_1_1Unescaper.html',1,'dl7::xml::util::Unescaper']]],
+  ['unescaper_2',['unescaper',['../df/df1/classdl7_1_1json_1_1util_1_1Unescaper.html',1,'dl7::json::util::Unescaper'],['../d1/db6/classdl7_1_1xml_1_1util_1_1Unescaper.html',1,'dl7::xml::util::Unescaper'],['../dc/d2f/classdl7_1_1yaml_1_1util_1_1Unescaper.html',1,'dl7::yaml::util::Unescaper']]],
   ['unescapererrorhandler_3',['unescapererrorhandler',['../dc/d87/structdl7_1_1json_1_1detail_1_1UnescaperErrorHandler.html',1,'dl7::json::detail::UnescaperErrorHandler'],['../dd/d3a/structdl7_1_1xml_1_1detail_1_1UnescaperErrorHandler.html',1,'dl7::xml::detail::UnescaperErrorHandler']]],
   ['updatableresource_4',['UpdatableResource',['../d5/d87/classxl7_1_1resources_1_1UpdatableResource.html',1,'xl7::resources']]],
   ['updatableresource_3c_20constantbuffer_2c_20constantbufferupdater_2c_20resources_3a_3aresourcewithdata_3c_20constantbuffer_20_3e_20_3e_5',['UpdatableResource&lt; ConstantBuffer, ConstantBufferUpdater, resources::ResourceWithData&lt; ConstantBuffer &gt; &gt;',['../d5/d87/classxl7_1_1resources_1_1UpdatableResource.html',1,'xl7::resources']]],

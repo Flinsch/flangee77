@@ -1,8 +1,11 @@
 var namespacedl7_1_1yaml_1_1detail =
 [
+    [ "AnyOtherMatcher", "d8/d3e/structdl7_1_1yaml_1_1detail_1_1AnyOtherMatcher.html", "d8/d3e/structdl7_1_1yaml_1_1detail_1_1AnyOtherMatcher" ],
+    [ "BlockScalarHeaderMatcher", "d0/d53/structdl7_1_1yaml_1_1detail_1_1BlockScalarHeaderMatcher.html", "d0/d53/structdl7_1_1yaml_1_1detail_1_1BlockScalarHeaderMatcher" ],
     [ "Builder", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder" ],
     [ "Generator", "de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html", "de/d93/classdl7_1_1yaml_1_1detail_1_1Generator" ],
     [ "Lexer", "d8/db9/classdl7_1_1yaml_1_1detail_1_1Lexer.html", "d8/db9/classdl7_1_1yaml_1_1detail_1_1Lexer" ],
+    [ "SingleQuotedStringMatcher", "d0/d09/structdl7_1_1yaml_1_1detail_1_1SingleQuotedStringMatcher.html", "d0/d09/structdl7_1_1yaml_1_1detail_1_1SingleQuotedStringMatcher" ],
     [ "Symbol", "d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52f", [
       [ "WHITESPACE", "d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fa7c29dee5c1cc7cb218a80cd275704729", null ],
       [ "NEWLINE", "d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fad9b291b85c4c09c75d43b98e9f4cc77c", null ],

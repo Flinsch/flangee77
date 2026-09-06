@@ -276,7 +276,7 @@ Public Attributes</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a5394e05ec1f72592e180f47fa1d4c913a77a804418d76dc407383a618b60853ab" name="a5394e05ec1f72592e180f47fa1d4c913a77a804418d76dc407383a618b60853ab"></a>Tilde&#160;</td><td class="fielddoc"><p>Write null values as <code>~</code>. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a5394e05ec1f72592e180f47fa1d4c913ace2c8aed9c2fa0cfbed56cbda4d8bf07" name="a5394e05ec1f72592e180f47fa1d4c913ace2c8aed9c2fa0cfbed56cbda4d8bf07"></a>Empty&#160;</td><td class="fielddoc"><p>Write null values as empty scalars. </p>
+<tr><td class="fieldname"><a id="a5394e05ec1f72592e180f47fa1d4c913ace2c8aed9c2fa0cfbed56cbda4d8bf07" name="a5394e05ec1f72592e180f47fa1d4c913ace2c8aed9c2fa0cfbed56cbda4d8bf07"></a>Empty&#160;</td><td class="fielddoc"><p>Write null values as empty scalars (except inside a flow collection, where an empty scalar is indistinguishable from no entry at all). </p>
 </td></tr>
 </table>
 
@@ -362,7 +362,7 @@ Public Attributes</h2></td></tr>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a591dc4ad707d81512727666f6807a01dae1e4c8c9ccd9fc39c391da4bcd093fb2" name="a591dc4ad707d81512727666f6807a01dae1e4c8c9ccd9fc39c391da4bcd093fb2"></a>Block&#160;</td><td class="fielddoc"><p>Use the indentation-based block style for mappings and sequences (scalars are single-line anyway). </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a591dc4ad707d81512727666f6807a01daf1a76f66cca677c6e628d9ca58a6c8fc" name="a591dc4ad707d81512727666f6807a01daf1a76f66cca677c6e628d9ca58a6c8fc"></a>Flow&#160;</td><td class="fielddoc"><p>Use the JSON-like flow style for mappings and sequences, resulting in single-line output. </p>
+<tr><td class="fieldname"><a id="a591dc4ad707d81512727666f6807a01daf1a76f66cca677c6e628d9ca58a6c8fc" name="a591dc4ad707d81512727666f6807a01daf1a76f66cca677c6e628d9ca58a6c8fc"></a>Flow&#160;</td><td class="fielddoc"><p>Use the JSON-like flow style for mappings and sequences, resulting in single-line output (which leaves no room for document markers or a trailing empty line). </p>
 </td></tr>
 </table>
 

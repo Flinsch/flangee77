@@ -93,6 +93,8 @@ $(document).ready(function(){initNavTree('de/d93/classdl7_1_1yaml_1_1detail_1_1G
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../df/db5/classdl7_1_1yaml_1_1detail_1_1Generator-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">dl7::yaml::detail::Generator Class Reference</div></div>
@@ -166,6 +168,48 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acb5e5fecd43437263194408525f77e0a inherit pub_methods_classdl7_1_1syntax_1_1ParseStage" id="r_acb5e5fecd43437263194408525f77e0a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html">Diagnostics</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d44/classdl7_1_1syntax_1_1ParseStage.html#acb5e5fecd43437263194408525f77e0a">get_diagnostics</a> () const</td></tr>
 <tr class="separator:acb5e5fecd43437263194408525f77e0a inherit pub_methods_classdl7_1_1syntax_1_1ParseStage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a16ddaf4dff7066b0d283d87dba811ac0" id="r_a16ddaf4dff7066b0d283d87dba811ac0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#a16ddaf4dff7066b0d283d87dba811ac0">_write_block_mapping</a> (<a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;oss, const <a class="el" href="../../d1/d18/namespacedl7_1_1yaml.html#af62aa7e870ef0f73305f444046a5ef3b">mapping_t</a> &amp;mapping, size_t depth, bool inline_first_line) const</td></tr>
+<tr class="separator:a16ddaf4dff7066b0d283d87dba811ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a025f4dd0ac3817b21ff9cc5f15069267" id="r_a025f4dd0ac3817b21ff9cc5f15069267"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#a025f4dd0ac3817b21ff9cc5f15069267">_write_block_sequence</a> (<a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;oss, const <a class="el" href="../../d1/d18/namespacedl7_1_1yaml.html#a2b896e68524dd14de7cc4e5e5fd55245">sequence_t</a> &amp;sequence, size_t depth, bool inline_first_line) const</td></tr>
+<tr class="separator:a025f4dd0ac3817b21ff9cc5f15069267"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5612fa43feec775972f42576916874ac" id="r_a5612fa43feec775972f42576916874ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#a5612fa43feec775972f42576916874ac">_write_inline_value</a> (<a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;oss, const <a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a> &amp;yaml, size_t content_depth) const</td></tr>
+<tr class="separator:a5612fa43feec775972f42576916874ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acda565e0b738a6437a2a2e8445f9813b" id="r_acda565e0b738a6437a2a2e8445f9813b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#acda565e0b738a6437a2a2e8445f9813b">_write_block_scalar</a> (<a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;oss, <a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> string, size_t content_depth) const</td></tr>
+<tr class="separator:acda565e0b738a6437a2a2e8445f9813b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a133e315b09df5f728a2ec9d05c441ffe" id="r_a133e315b09df5f728a2ec9d05c441ffe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#a133e315b09df5f728a2ec9d05c441ffe">_write_flow_node</a> (<a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;oss, const <a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a> &amp;yaml, bool in_flow) const</td></tr>
+<tr class="separator:a133e315b09df5f728a2ec9d05c441ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad439d8070ac9d8aef6aad035c418e2c0" id="r_ad439d8070ac9d8aef6aad035c418e2c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#ad439d8070ac9d8aef6aad035c418e2c0">_write_scalar</a> (<a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;oss, const <a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a> &amp;yaml, bool in_flow) const</td></tr>
+<tr class="separator:ad439d8070ac9d8aef6aad035c418e2c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc2e4b3143d68fe95c31de1fefdd8642" id="r_acc2e4b3143d68fe95c31de1fefdd8642"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#acc2e4b3143d68fe95c31de1fefdd8642">_write_null</a> (<a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;oss, bool in_flow) const</td></tr>
+<tr class="separator:acc2e4b3143d68fe95c31de1fefdd8642"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4df19c11515546fb3b11ae8b1ba5a0b7" id="r_a4df19c11515546fb3b11ae8b1ba5a0b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#a4df19c11515546fb3b11ae8b1ba5a0b7">_write_float</a> (<a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;oss, <a class="el" href="../../d1/d18/namespacedl7_1_1yaml.html#ac1583dad952473088136466ddb807317">float_t</a> number) const</td></tr>
+<tr class="separator:a4df19c11515546fb3b11ae8b1ba5a0b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8ecd68d9a593b350d7b07cb4c4f604b" id="r_af8ecd68d9a593b350d7b07cb4c4f604b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#af8ecd68d9a593b350d7b07cb4c4f604b">_write_key</a> (<a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;oss, <a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> key, bool in_flow) const</td></tr>
+<tr class="separator:af8ecd68d9a593b350d7b07cb4c4f604b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cb8fd362095838e624bfcdd6744047f" id="r_a7cb8fd362095838e624bfcdd6744047f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#a7cb8fd362095838e624bfcdd6744047f">_write_string</a> (<a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;oss, <a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> string, bool in_flow) const</td></tr>
+<tr class="separator:a7cb8fd362095838e624bfcdd6744047f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98b3bc7124b4949acea23450e31dd88d" id="r_a98b3bc7124b4949acea23450e31dd88d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#a98b3bc7124b4949acea23450e31dd88d">_write_quoted_string</a> (<a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;oss, <a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> string) const</td></tr>
+<tr class="separator:a98b3bc7124b4949acea23450e31dd88d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac77a32e298f42bfd5f0098fbb19c3323" id="r_ac77a32e298f42bfd5f0098fbb19c3323"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#ac77a32e298f42bfd5f0098fbb19c3323">_write_indentation</a> (<a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;oss, size_t depth) const</td></tr>
+<tr class="separator:ac77a32e298f42bfd5f0098fbb19c3323"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f345015c918edba22d7f43c03e2cee6" id="r_a8f345015c918edba22d7f43c03e2cee6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#a8f345015c918edba22d7f43c03e2cee6">_write_newline</a> (<a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;oss) const</td></tr>
+<tr class="separator:a8f345015c918edba22d7f43c03e2cee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35a14e0bffc50caefc5d73e67bb15742" id="r_a35a14e0bffc50caefc5d73e67bb15742"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#a35a14e0bffc50caefc5d73e67bb15742">_needs_quoting</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> string, bool in_flow) const</td></tr>
+<tr class="separator:a35a14e0bffc50caefc5d73e67bb15742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac61ba6322fd5c383278cf44efec562cc" id="r_ac61ba6322fd5c383278cf44efec562cc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#ac61ba6322fd5c383278cf44efec562cc">_fits_block_scalar</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> string) const</td></tr>
+<tr class="separator:ac61ba6322fd5c383278cf44efec562cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52f152a8018a826b3db4349f6a725e56" id="r_a52f152a8018a826b3db4349f6a725e56"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#a52f152a8018a826b3db4349f6a725e56">_writes_nothing</a> (const <a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a> &amp;yaml) const</td></tr>
+<tr class="separator:a52f152a8018a826b3db4349f6a725e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a3a01daaa6cc1622916a1eeac5046484a" id="r_a3a01daaa6cc1622916a1eeac5046484a"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; <a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#a3a01daaa6cc1622916a1eeac5046484a">_split_lines</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> string)</td></tr>
+<tr class="separator:a3a01daaa6cc1622916a1eeac5046484a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5277e0980ba33369cc00728c6bea35e8" id="r_a5277e0980ba33369cc00728c6bea35e8"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#a5277e0980ba33369cc00728c6bea35e8">_is_block_style</a> (const <a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a> &amp;yaml)</td></tr>
+<tr class="separator:a5277e0980ba33369cc00728c6bea35e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a9f48183d4966523dd8beb8a928d5c1d7" id="r_a9f48183d4966523dd8beb8a928d5c1d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html">Format</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html#a9f48183d4966523dd8beb8a928d5c1d7">_format</a></td></tr>
@@ -220,6 +264,673 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac61ba6322fd5c383278cf44efec562cc" name="ac61ba6322fd5c383278cf44efec562cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac61ba6322fd5c383278cf44efec562cc">&#9670;&#160;</a></span>_fits_block_scalar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool dl7::yaml::detail::Generator::_fits_block_scalar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a>&#160;</td>
+          <td class="paramname"><em>string</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns true if the given string is better off as a literal block scalar than as a quoted one-liner, which takes a multi-line string whose lines survive indentation unchanged. </p>
+
+</div>
+</div>
+<a id="a5277e0980ba33369cc00728c6bea35e8" name="a5277e0980ba33369cc00728c6bea35e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5277e0980ba33369cc00728c6bea35e8">&#9670;&#160;</a></span>_is_block_style()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool dl7::yaml::detail::Generator::_is_block_style </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a> &amp;&#160;</td>
+          <td class="paramname"><em>yaml</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35a14e0bffc50caefc5d73e67bb15742" name="a35a14e0bffc50caefc5d73e67bb15742"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35a14e0bffc50caefc5d73e67bb15742">&#9670;&#160;</a></span>_needs_quoting()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool dl7::yaml::detail::Generator::_needs_quoting </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a>&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>in_flow</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns true if the given string cannot be written as a plain scalar without being read back as something else: a different type, a comment, or another node altogether. </p>
+
+</div>
+</div>
+<a id="a3a01daaa6cc1622916a1eeac5046484a" name="a3a01daaa6cc1622916a1eeac5046484a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a01daaa6cc1622916a1eeac5046484a">&#9670;&#160;</a></span>_split_lines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> &gt; dl7::yaml::detail::Generator::_split_lines </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a>&#160;</td>
+          <td class="paramname"><em>string</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Splits the given string at its line breaks. A trailing line break yields a trailing empty piece, which is what the chomping indicator is derived from. </p>
+
+</div>
+</div>
+<a id="a16ddaf4dff7066b0d283d87dba811ac0" name="a16ddaf4dff7066b0d283d87dba811ac0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16ddaf4dff7066b0d283d87dba811ac0">&#9670;&#160;</a></span>_write_block_mapping()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dl7::yaml::detail::Generator::_write_block_mapping </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td>
+          <td class="paramname"><em>oss</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/d18/namespacedl7_1_1yaml.html#af62aa7e870ef0f73305f444046a5ef3b">mapping_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>mapping</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>depth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>inline_first_line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Writes a block mapping, one entry per line, every line indented by <code>depth</code> levels. With <code>inline_first_line</code>, the first entry's indentation is taken to have been written already, which is what turns <code>-</code> and a mapping into the compact <code>- key: value</code>. </p>
+
+</div>
+</div>
+<a id="acda565e0b738a6437a2a2e8445f9813b" name="acda565e0b738a6437a2a2e8445f9813b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acda565e0b738a6437a2a2e8445f9813b">&#9670;&#160;</a></span>_write_block_scalar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dl7::yaml::detail::Generator::_write_block_scalar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td>
+          <td class="paramname"><em>oss</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a>&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>content_depth</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Writes a literal block scalar, i.e., the <code>|</code> header and the content lines that follow it, indented by <code>content_depth</code> levels. </p>
+
+</div>
+</div>
+<a id="a025f4dd0ac3817b21ff9cc5f15069267" name="a025f4dd0ac3817b21ff9cc5f15069267"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a025f4dd0ac3817b21ff9cc5f15069267">&#9670;&#160;</a></span>_write_block_sequence()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dl7::yaml::detail::Generator::_write_block_sequence </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td>
+          <td class="paramname"><em>oss</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/d18/namespacedl7_1_1yaml.html#a2b896e68524dd14de7cc4e5e5fd55245">sequence_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>sequence</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>depth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>inline_first_line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Writes a block sequence, one entry per line. See <code>_write_block_mapping</code> for <code>depth</code> and <code>inline_first_line</code>. </p>
+
+</div>
+</div>
+<a id="a4df19c11515546fb3b11ae8b1ba5a0b7" name="a4df19c11515546fb3b11ae8b1ba5a0b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4df19c11515546fb3b11ae8b1ba5a0b7">&#9670;&#160;</a></span>_write_float()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp; dl7::yaml::detail::Generator::_write_float </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td>
+          <td class="paramname"><em>oss</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d1/d18/namespacedl7_1_1yaml.html#ac1583dad952473088136466ddb807317">float_t</a>&#160;</td>
+          <td class="paramname"><em>number</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a133e315b09df5f728a2ec9d05c441ffe" name="a133e315b09df5f728a2ec9d05c441ffe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a133e315b09df5f728a2ec9d05c441ffe">&#9670;&#160;</a></span>_write_flow_node()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp; dl7::yaml::detail::Generator::_write_flow_node </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td>
+          <td class="paramname"><em>oss</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a> &amp;&#160;</td>
+          <td class="paramname"><em>yaml</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>in_flow</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Writes a node in flow style, i.e., on a single line. <code>in_flow</code> says whether the node sits inside a flow collection, where a scalar has more characters to watch out for. </p>
+
+</div>
+</div>
+<a id="ac77a32e298f42bfd5f0098fbb19c3323" name="ac77a32e298f42bfd5f0098fbb19c3323"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac77a32e298f42bfd5f0098fbb19c3323">&#9670;&#160;</a></span>_write_indentation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp; dl7::yaml::detail::Generator::_write_indentation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td>
+          <td class="paramname"><em>oss</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>depth</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5612fa43feec775972f42576916874ac" name="a5612fa43feec775972f42576916874ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5612fa43feec775972f42576916874ac">&#9670;&#160;</a></span>_write_inline_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dl7::yaml::detail::Generator::_write_inline_value </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td>
+          <td class="paramname"><em>oss</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a> &amp;&#160;</td>
+          <td class="paramname"><em>yaml</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>content_depth</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Writes what is left of a line once its <code>key:</code> or <code>-</code> is out of the way: a scalar or an empty collection, plus the line ending. A multi-line string may become a block scalar instead, the content lines of which are indented by <code>content_depth</code> levels. </p>
+
+</div>
+</div>
+<a id="af8ecd68d9a593b350d7b07cb4c4f604b" name="af8ecd68d9a593b350d7b07cb4c4f604b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8ecd68d9a593b350d7b07cb4c4f604b">&#9670;&#160;</a></span>_write_key()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp; dl7::yaml::detail::Generator::_write_key </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td>
+          <td class="paramname"><em>oss</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a>&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>in_flow</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f345015c918edba22d7f43c03e2cee6" name="a8f345015c918edba22d7f43c03e2cee6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f345015c918edba22d7f43c03e2cee6">&#9670;&#160;</a></span>_write_newline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp; dl7::yaml::detail::Generator::_write_newline </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td>
+          <td class="paramname"><em>oss</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acc2e4b3143d68fe95c31de1fefdd8642" name="acc2e4b3143d68fe95c31de1fefdd8642"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc2e4b3143d68fe95c31de1fefdd8642">&#9670;&#160;</a></span>_write_null()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp; dl7::yaml::detail::Generator::_write_null </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td>
+          <td class="paramname"><em>oss</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>in_flow</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a98b3bc7124b4949acea23450e31dd88d" name="a98b3bc7124b4949acea23450e31dd88d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98b3bc7124b4949acea23450e31dd88d">&#9670;&#160;</a></span>_write_quoted_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp; dl7::yaml::detail::Generator::_write_quoted_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td>
+          <td class="paramname"><em>oss</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a>&#160;</td>
+          <td class="paramname"><em>string</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad439d8070ac9d8aef6aad035c418e2c0" name="ad439d8070ac9d8aef6aad035c418e2c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad439d8070ac9d8aef6aad035c418e2c0">&#9670;&#160;</a></span>_write_scalar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp; dl7::yaml::detail::Generator::_write_scalar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td>
+          <td class="paramname"><em>oss</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a> &amp;&#160;</td>
+          <td class="paramname"><em>yaml</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>in_flow</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7cb8fd362095838e624bfcdd6744047f" name="a7cb8fd362095838e624bfcdd6744047f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cb8fd362095838e624bfcdd6744047f">&#9670;&#160;</a></span>_write_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp; dl7::yaml::detail::Generator::_write_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d63/classcl7_1_1u8osstream.html">cl7::u8osstream</a> &amp;&#160;</td>
+          <td class="paramname"><em>oss</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a>&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>in_flow</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a52f152a8018a826b3db4349f6a725e56" name="a52f152a8018a826b3db4349f6a725e56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52f152a8018a826b3db4349f6a725e56">&#9670;&#160;</a></span>_writes_nothing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool dl7::yaml::detail::Generator::_writes_nothing </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a> &amp;&#160;</td>
+          <td class="paramname"><em>yaml</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns true if the given value is written as nothing at all, which an empty null is, and which the space before it then has to account for. </p>
+
+</div>
+</div>
 <a id="a239132b70ba776e8623db4b0585d56b7" name="a239132b70ba776e8623db4b0585d56b7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a239132b70ba776e8623db4b0585d56b7">&#9670;&#160;</a></span>process()</h2>
 
