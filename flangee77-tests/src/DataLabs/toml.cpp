@@ -99,6 +99,19 @@ TESTLABS_CASE( u8"DataLabs:  toml:  Value:  table" )
 
 
 
+TESTLABS_CASE( u8"DataLabs:  toml:  Value:  copy-assigning none" )
+{
+    dl7::toml::Value value( 42 );
+
+    value = dl7::toml::Value();
+
+    TESTLABS_CHECK( value.get_type() == dl7::toml::Value::Type::None );
+    TESTLABS_CHECK( value.is_none() );
+    TESTLABS_CHECK_EQ( value.to_string(), u8"" );
+}
+
+
+
 TESTLABS_CASE( u8"DataLabs:  toml:  TomlReader:  parse" )
 {
     using dl7::toml::Toml;

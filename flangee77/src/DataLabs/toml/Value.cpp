@@ -164,7 +164,6 @@ namespace {
             set_local_time(other.as_local_time());
             break;
         default:
-            assert(is_none());
             set_none();
         }
 

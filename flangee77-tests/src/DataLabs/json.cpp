@@ -105,6 +105,19 @@ TESTLABS_CASE( u8"DataLabs:  json:  Json:  false" )
 
 
 
+TESTLABS_CASE( u8"DataLabs:  json:  Json:  copy-assigning null" )
+{
+    dl7::json::Json json( 42 );
+
+    json = dl7::json::Json();
+
+    TESTLABS_CHECK( json.get_type() == dl7::json::Json::Type::Null );
+    TESTLABS_CHECK( json.is_null() );
+    TESTLABS_CHECK_EQ( json.to_string(), u8"null" );
+}
+
+
+
 TESTLABS_CASE( u8"DataLabs:  json:  util::Validator::is_valid_unquoted_key" )
 {
     struct Entry

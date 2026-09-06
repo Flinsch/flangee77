@@ -76,7 +76,7 @@ namespace dl7::ini {
             set_boolean(other.as_boolean());
             break;
         default:
-            assert(is_undefined());
+            set_undefined();
         }
 
         return *this;

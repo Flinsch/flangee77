@@ -54,7 +54,7 @@ TESTLABS_CASE( u8"DataLabs:  ini:  Value:  integer" )
     TESTLABS_CHECK_EQ( value.to_string(), u8"-7" );
 }
 
-TESTLABS_CASE( u8"DataLabs:  ini:  Ini:  true" )
+TESTLABS_CASE( u8"DataLabs:  ini:  Value:  true" )
 {
     dl7::ini::Value value( true );
 
@@ -64,7 +64,7 @@ TESTLABS_CASE( u8"DataLabs:  ini:  Ini:  true" )
     TESTLABS_CHECK_EQ( value.to_string(), u8"true" );
 }
 
-TESTLABS_CASE( u8"DataLabs:  ini:  Ini:  false" )
+TESTLABS_CASE( u8"DataLabs:  ini:  Value:  false" )
 {
     dl7::ini::Value value( false );
 
@@ -72,6 +72,19 @@ TESTLABS_CASE( u8"DataLabs:  ini:  Ini:  false" )
     TESTLABS_CHECK( value.is_boolean() );
     TESTLABS_CHECK( value.is_false() );
     TESTLABS_CHECK_EQ( value.to_string(), u8"false" );
+}
+
+
+
+TESTLABS_CASE( u8"DataLabs:  ini:  Value:  copy-assigning undefined" )
+{
+    dl7::ini::Value value( 42 );
+
+    value = dl7::ini::Value();
+
+    TESTLABS_CHECK( value.get_type() == dl7::ini::Value::Type::Undefined );
+    TESTLABS_CHECK( value.is_undefined() );
+    TESTLABS_CHECK_EQ( value.to_string(), u8"" );
 }
 
 

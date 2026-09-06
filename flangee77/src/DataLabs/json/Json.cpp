@@ -95,7 +95,7 @@ namespace dl7::json {
             set_boolean(other.as_boolean());
             break;
         default:
-            assert(is_null());
+            set_null();
         }
 
         return *this;
