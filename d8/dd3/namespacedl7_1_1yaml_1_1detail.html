@@ -109,7 +109,28 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a9975cf8485ac78f249423d6ff1c0d52f" id="r_a9975cf8485ac78f249423d6ff1c0d52f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52f">Symbol</a> : syntax::SymbolId </td></tr>
+<tr class="memitem:a9975cf8485ac78f249423d6ff1c0d52f" id="r_a9975cf8485ac78f249423d6ff1c0d52f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52f">Symbol</a> : syntax::SymbolId { <br />
+&#160;&#160;<a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fa7c29dee5c1cc7cb218a80cd275704729">WHITESPACE</a> = 1
+, <a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fad9b291b85c4c09c75d43b98e9f4cc77c">NEWLINE</a>
+, <a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fac4e563e4131b9a399116041ff5f4077e">COMMENT_DELIMITER</a>
+, <a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fa111a16ee94d9cee7616bb12f82c62a2b">DOCUMENT_START</a>
+, <br />
+&#160;&#160;<a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fad7d1ebb3c21db1203f9bcb8a350a41c4">DOCUMENT_END</a>
+, <a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fa71b19dc733cd46e932a6dc9134c3c810">DASH</a>
+, <a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fa4ab2ca43e05d7df7687a41870d807c48">COLON</a>
+, <a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fad3a76d12837d1fb902bbefa941baaa69">QUESTION_MARK</a>
+, <br />
+&#160;&#160;<a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fa09636bee7892e6a55b56cb1c23d3b965">COMMA</a>
+, <a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fa7c246695ef66d7025f794b253edd7cb9">OPENING_BRACKET</a>
+, <a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fade85e893d895200bb720e5c602f0f246">CLOSING_BRACKET</a>
+, <a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fa64c3d3234ec50fe1d44069d9d1d4872d">LEFT_BRACE</a>
+, <br />
+&#160;&#160;<a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fa08cf3e7caee8ed5ec2d52a76f36bae1a">RIGHT_BRACE</a>
+, <a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fa234d98b745c6074d4f103ccd4f042fd2">QUOTED_STRING_LITERAL</a>
+, <a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52fa8ba2ff8528f1699294714c428775a782">BLOCK_SCALAR_HEADER</a>
+, <a class="el" href="../../d8/dd3/namespacedl7_1_1yaml_1_1detail.html#a9975cf8485ac78f249423d6ff1c0d52faea5a42164e7fd6a78ab4895f24f987ee">ANY_OTHER</a>
+<br />
+ }</td></tr>
 <tr class="separator:a9975cf8485ac78f249423d6ff1c0d52f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
@@ -124,6 +145,26 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The terminal symbols of the YAML lexer.</p>
+<p>YAML is both indentation-sensitive and context-sensitive, whereas the underlying lexer is neither. The symbols below are therefore deliberately "dumb": they are recognized wherever they occur, and it is up to the builder to decide whether a <code>COLON</code> actually separates a key from its value (only if followed by whitespace or a line break), whether a <code>COMMENT_DELIMITER</code> really starts a comment (only if preceded by whitespace or the beginning of a line), etc. Plain scalars are reassembled by the builder from the token run up to the end of the line (or up to the next flow indicator inside flow collections). </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52fa7c29dee5c1cc7cb218a80cd275704729" name="a9975cf8485ac78f249423d6ff1c0d52fa7c29dee5c1cc7cb218a80cd275704729"></a>WHITESPACE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52fad9b291b85c4c09c75d43b98e9f4cc77c" name="a9975cf8485ac78f249423d6ff1c0d52fad9b291b85c4c09c75d43b98e9f4cc77c"></a>NEWLINE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52fac4e563e4131b9a399116041ff5f4077e" name="a9975cf8485ac78f249423d6ff1c0d52fac4e563e4131b9a399116041ff5f4077e"></a>COMMENT_DELIMITER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52fa111a16ee94d9cee7616bb12f82c62a2b" name="a9975cf8485ac78f249423d6ff1c0d52fa111a16ee94d9cee7616bb12f82c62a2b"></a>DOCUMENT_START&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52fad7d1ebb3c21db1203f9bcb8a350a41c4" name="a9975cf8485ac78f249423d6ff1c0d52fad7d1ebb3c21db1203f9bcb8a350a41c4"></a>DOCUMENT_END&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52fa71b19dc733cd46e932a6dc9134c3c810" name="a9975cf8485ac78f249423d6ff1c0d52fa71b19dc733cd46e932a6dc9134c3c810"></a>DASH&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52fa4ab2ca43e05d7df7687a41870d807c48" name="a9975cf8485ac78f249423d6ff1c0d52fa4ab2ca43e05d7df7687a41870d807c48"></a>COLON&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52fad3a76d12837d1fb902bbefa941baaa69" name="a9975cf8485ac78f249423d6ff1c0d52fad3a76d12837d1fb902bbefa941baaa69"></a>QUESTION_MARK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52fa09636bee7892e6a55b56cb1c23d3b965" name="a9975cf8485ac78f249423d6ff1c0d52fa09636bee7892e6a55b56cb1c23d3b965"></a>COMMA&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52fa7c246695ef66d7025f794b253edd7cb9" name="a9975cf8485ac78f249423d6ff1c0d52fa7c246695ef66d7025f794b253edd7cb9"></a>OPENING_BRACKET&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52fade85e893d895200bb720e5c602f0f246" name="a9975cf8485ac78f249423d6ff1c0d52fade85e893d895200bb720e5c602f0f246"></a>CLOSING_BRACKET&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52fa64c3d3234ec50fe1d44069d9d1d4872d" name="a9975cf8485ac78f249423d6ff1c0d52fa64c3d3234ec50fe1d44069d9d1d4872d"></a>LEFT_BRACE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52fa08cf3e7caee8ed5ec2d52a76f36bae1a" name="a9975cf8485ac78f249423d6ff1c0d52fa08cf3e7caee8ed5ec2d52a76f36bae1a"></a>RIGHT_BRACE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52fa234d98b745c6074d4f103ccd4f042fd2" name="a9975cf8485ac78f249423d6ff1c0d52fa234d98b745c6074d4f103ccd4f042fd2"></a>QUOTED_STRING_LITERAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52fa8ba2ff8528f1699294714c428775a782" name="a9975cf8485ac78f249423d6ff1c0d52fa8ba2ff8528f1699294714c428775a782"></a>BLOCK_SCALAR_HEADER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9975cf8485ac78f249423d6ff1c0d52faea5a42164e7fd6a78ab4895f24f987ee" name="a9975cf8485ac78f249423d6ff1c0d52faea5a42164e7fd6a78ab4895f24f987ee"></a>ANY_OTHER&#160;</td><td class="fielddoc"></td></tr>
+</table>
 
 </div>
 </div>

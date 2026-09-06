@@ -258,8 +258,8 @@ var annotated_dup =
           [ "Generator", "de/d93/classdl7_1_1yaml_1_1detail_1_1Generator.html", "de/d93/classdl7_1_1yaml_1_1detail_1_1Generator" ],
           [ "Lexer", "d8/db9/classdl7_1_1yaml_1_1detail_1_1Lexer.html", "d8/db9/classdl7_1_1yaml_1_1detail_1_1Lexer" ]
         ] ],
-        [ "Format", "d1/db1/structdl7_1_1yaml_1_1Format.html", null ],
-        [ "Yaml", "d9/de4/classdl7_1_1yaml_1_1Yaml.html", null ],
+        [ "Format", "d1/db1/structdl7_1_1yaml_1_1Format.html", "d1/db1/structdl7_1_1yaml_1_1Format" ],
+        [ "Yaml", "d9/de4/classdl7_1_1yaml_1_1Yaml.html", "d9/de4/classdl7_1_1yaml_1_1Yaml" ],
         [ "YamlReader", "db/dae/classdl7_1_1yaml_1_1YamlReader.html", "db/dae/classdl7_1_1yaml_1_1YamlReader" ],
         [ "YamlWriter", "da/db4/classdl7_1_1yaml_1_1YamlWriter.html", "da/db4/classdl7_1_1yaml_1_1YamlWriter" ]
       ] ],

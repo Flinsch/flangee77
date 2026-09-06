@@ -91,11 +91,464 @@ $(document).ready(function(){initNavTree('d1/db1/structdl7_1_1yaml_1_1Format.htm
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="../../db/dde/structdl7_1_1yaml_1_1Format-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">dl7::yaml::Format Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="../../d4/d24/yaml_2Format_8h_source.html">Format.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a591dc4ad707d81512727666f6807a01d" id="r_a591dc4ad707d81512727666f6807a01d"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a591dc4ad707d81512727666f6807a01d">Style</a> : unsigned { <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a591dc4ad707d81512727666f6807a01dae1e4c8c9ccd9fc39c391da4bcd093fb2">Block</a> = 0
+, <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a591dc4ad707d81512727666f6807a01daf1a76f66cca677c6e628d9ca58a6c8fc">Flow</a> = 1
+ }</td></tr>
+<tr class="separator:a591dc4ad707d81512727666f6807a01d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2ba4a610e3bc96dd10dc26f0225aaf4" id="r_ae2ba4a610e3bc96dd10dc26f0225aaf4"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#ae2ba4a610e3bc96dd10dc26f0225aaf4">Indentation</a> : unsigned { <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#ae2ba4a610e3bc96dd10dc26f0225aaf4a1b80cbd7d3cc0d459b01742d9e931f0d">Spaces2</a> = 2
+, <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#ae2ba4a610e3bc96dd10dc26f0225aaf4ac89b7269c03829ff4ae12fe74dfcd595">Spaces4</a> = 4
+ }</td></tr>
+<tr class="separator:ae2ba4a610e3bc96dd10dc26f0225aaf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5005214a708dd62ffdefe906b37128a" id="r_aa5005214a708dd62ffdefe906b37128a"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#aa5005214a708dd62ffdefe906b37128a">LineEnding</a> { <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#aa5005214a708dd62ffdefe906b37128aa50d5a4893c775dd805a095efef17ef3d">CRLF</a>
+, <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#aa5005214a708dd62ffdefe906b37128aa618441d41cce47dbcfd9bed6e5ff64e6">LF</a>
+, <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#aa5005214a708dd62ffdefe906b37128aa1d7b33fc26ca22c2011aaa97fecc43d8">CR</a>
+ }</td></tr>
+<tr class="separator:aa5005214a708dd62ffdefe906b37128a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bf1eb6880bc41bd81673cd6359c0b47" id="r_a1bf1eb6880bc41bd81673cd6359c0b47"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a1bf1eb6880bc41bd81673cd6359c0b47">SequenceIndentation</a> { <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a1bf1eb6880bc41bd81673cd6359c0b47a6adf97f83acf6453d4a6a4b1070f3754">None</a>
+, <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a1bf1eb6880bc41bd81673cd6359c0b47acc5660810381b52940bd8b7da42ae07f">OneLevel</a>
+ }</td></tr>
+<tr class="separator:a1bf1eb6880bc41bd81673cd6359c0b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f3abc2f8a4dcdbca5df5ec770fe0fbe" id="r_a5f3abc2f8a4dcdbca5df5ec770fe0fbe"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5f3abc2f8a4dcdbca5df5ec770fe0fbe">ScalarQuoting</a> { <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5f3abc2f8a4dcdbca5df5ec770fe0fbea08b948f8fc21704e6944b587dc5445af">WhereNecessary</a>
+, <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5f3abc2f8a4dcdbca5df5ec770fe0fbea0c41c1601e340f49c415802586c68df6">SingleQuoted</a>
+, <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5f3abc2f8a4dcdbca5df5ec770fe0fbea6488ff09de4f0ee5e0c508604ff75029">DoubleQuoted</a>
+ }</td></tr>
+<tr class="separator:a5f3abc2f8a4dcdbca5df5ec770fe0fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5394e05ec1f72592e180f47fa1d4c913" id="r_a5394e05ec1f72592e180f47fa1d4c913"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5394e05ec1f72592e180f47fa1d4c913">NullRepresentation</a> { <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5394e05ec1f72592e180f47fa1d4c913abbb93ef26e3c101ff11cdd21cab08a94">Null</a>
+, <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5394e05ec1f72592e180f47fa1d4c913a77a804418d76dc407383a618b60853ab">Tilde</a>
+, <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5394e05ec1f72592e180f47fa1d4c913ace2c8aed9c2fa0cfbed56cbda4d8bf07">Empty</a>
+ }</td></tr>
+<tr class="separator:a5394e05ec1f72592e180f47fa1d4c913"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43a8460c7ac5353bd62985e473f04d80" id="r_a43a8460c7ac5353bd62985e473f04d80"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a43a8460c7ac5353bd62985e473f04d80">FloatPolicy</a> { <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a43a8460c7ac5353bd62985e473f04d80a925641e0b76c28cc940e8f3ca178d826">Native</a>
+, <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a43a8460c7ac5353bd62985e473f04d80afd164995f9faf0774522eefdc3a73279">ReplaceWithNull</a>
+, <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a43a8460c7ac5353bd62985e473f04d80a25a9a3016e24ebc66ffa80fc54ad7b43">ReplaceWithZero</a>
+ }</td></tr>
+<tr class="separator:a43a8460c7ac5353bd62985e473f04d80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a159281ba2ecb1b36e2a9f8d0483575d1" id="r_a159281ba2ecb1b36e2a9f8d0483575d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a591dc4ad707d81512727666f6807a01d">Style</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a159281ba2ecb1b36e2a9f8d0483575d1">style</a> = <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a591dc4ad707d81512727666f6807a01dae1e4c8c9ccd9fc39c391da4bcd093fb2">Style::Block</a></td></tr>
+<tr class="separator:a159281ba2ecb1b36e2a9f8d0483575d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a031e3cfee65a3b90d44d4cff4d79b740" id="r_a031e3cfee65a3b90d44d4cff4d79b740"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#ae2ba4a610e3bc96dd10dc26f0225aaf4">Indentation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a031e3cfee65a3b90d44d4cff4d79b740">indentation</a> = <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#ae2ba4a610e3bc96dd10dc26f0225aaf4a1b80cbd7d3cc0d459b01742d9e931f0d">Indentation::Spaces2</a></td></tr>
+<tr class="separator:a031e3cfee65a3b90d44d4cff4d79b740"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6108437bc20727469c67db68b765087f" id="r_a6108437bc20727469c67db68b765087f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#aa5005214a708dd62ffdefe906b37128a">LineEnding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a6108437bc20727469c67db68b765087f">line_ending</a> = <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#aa5005214a708dd62ffdefe906b37128aa618441d41cce47dbcfd9bed6e5ff64e6">LineEnding::LF</a></td></tr>
+<tr class="separator:a6108437bc20727469c67db68b765087f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0b889d2aa4cd8f136218e48ea736eb0" id="r_aa0b889d2aa4cd8f136218e48ea736eb0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a1bf1eb6880bc41bd81673cd6359c0b47">SequenceIndentation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#aa0b889d2aa4cd8f136218e48ea736eb0">sequence_indentation</a> = <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a1bf1eb6880bc41bd81673cd6359c0b47a6adf97f83acf6453d4a6a4b1070f3754">SequenceIndentation::None</a></td></tr>
+<tr class="separator:aa0b889d2aa4cd8f136218e48ea736eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5f641843d288000b441300f48fe3af3" id="r_ae5f641843d288000b441300f48fe3af3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5f3abc2f8a4dcdbca5df5ec770fe0fbe">ScalarQuoting</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#ae5f641843d288000b441300f48fe3af3">scalar_quoting</a> = <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5f3abc2f8a4dcdbca5df5ec770fe0fbea08b948f8fc21704e6944b587dc5445af">ScalarQuoting::WhereNecessary</a></td></tr>
+<tr class="separator:ae5f641843d288000b441300f48fe3af3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ca6cc23e8b691b26d759d038fe17c4a" id="r_a3ca6cc23e8b691b26d759d038fe17c4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5394e05ec1f72592e180f47fa1d4c913">NullRepresentation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a3ca6cc23e8b691b26d759d038fe17c4a">null_representation</a> = <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5394e05ec1f72592e180f47fa1d4c913abbb93ef26e3c101ff11cdd21cab08a94">NullRepresentation::Null</a></td></tr>
+<tr class="separator:a3ca6cc23e8b691b26d759d038fe17c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bdd8599c9d4678fa34f7ca43de29d3c" id="r_a6bdd8599c9d4678fa34f7ca43de29d3c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a43a8460c7ac5353bd62985e473f04d80">FloatPolicy</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a6bdd8599c9d4678fa34f7ca43de29d3c">float_policy</a> = <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a43a8460c7ac5353bd62985e473f04d80a925641e0b76c28cc940e8f3ca178d826">FloatPolicy::Native</a></td></tr>
+<tr class="separator:a6bdd8599c9d4678fa34f7ca43de29d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeeb28e2e6eb3e4e48e4ef9ed9e8d14d6" id="r_aeeb28e2e6eb3e4e48e4ef9ed9e8d14d6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#aeeb28e2e6eb3e4e48e4ef9ed9e8d14d6">use_block_scalars</a> = true</td></tr>
+<tr class="separator:aeeb28e2e6eb3e4e48e4ef9ed9e8d14d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fdff4004e24b848e061193efb9eb9c9" id="r_a6fdff4004e24b848e061193efb9eb9c9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a6fdff4004e24b848e061193efb9eb9c9">explicit_document_start</a> = false</td></tr>
+<tr class="separator:a6fdff4004e24b848e061193efb9eb9c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae29dbe25ca53ec85373422e4d50d33cb" id="r_ae29dbe25ca53ec85373422e4d50d33cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#ae29dbe25ca53ec85373422e4d50d33cb">explicit_document_end</a> = false</td></tr>
+<tr class="separator:ae29dbe25ca53ec85373422e4d50d33cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1473e4fcc5753d31a198d66219a697c" id="r_aa1473e4fcc5753d31a198d66219a697c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#aa1473e4fcc5753d31a198d66219a697c">escape_unicode</a> = false</td></tr>
+<tr class="separator:aa1473e4fcc5753d31a198d66219a697c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63e1400ab68c8ef20ddb9cfc2db11e22" id="r_a63e1400ab68c8ef20ddb9cfc2db11e22"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a63e1400ab68c8ef20ddb9cfc2db11e22">add_empty_line</a> = false</td></tr>
+<tr class="separator:a63e1400ab68c8ef20ddb9cfc2db11e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a43a8460c7ac5353bd62985e473f04d80" name="a43a8460c7ac5353bd62985e473f04d80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43a8460c7ac5353bd62985e473f04d80">&#9670;&#160;</a></span>FloatPolicy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum struct <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a43a8460c7ac5353bd62985e473f04d80">dl7::yaml::Format::FloatPolicy</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a43a8460c7ac5353bd62985e473f04d80a925641e0b76c28cc940e8f3ca178d826" name="a43a8460c7ac5353bd62985e473f04d80a925641e0b76c28cc940e8f3ca178d826"></a>Native&#160;</td><td class="fielddoc"><p>Serialize NaN and infinite values as <code>.nan</code>, <code>.inf</code>, and <code>-.inf</code>. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a43a8460c7ac5353bd62985e473f04d80afd164995f9faf0774522eefdc3a73279" name="a43a8460c7ac5353bd62985e473f04d80afd164995f9faf0774522eefdc3a73279"></a>ReplaceWithNull&#160;</td><td class="fielddoc"><p>Replace NaN and infinite values with the YAML null value. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a43a8460c7ac5353bd62985e473f04d80a25a9a3016e24ebc66ffa80fc54ad7b43" name="a43a8460c7ac5353bd62985e473f04d80a25a9a3016e24ebc66ffa80fc54ad7b43"></a>ReplaceWithZero&#160;</td><td class="fielddoc"><p>Replace NaN and infinite values with the numeric value <code>0.0</code>. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="ae2ba4a610e3bc96dd10dc26f0225aaf4" name="ae2ba4a610e3bc96dd10dc26f0225aaf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2ba4a610e3bc96dd10dc26f0225aaf4">&#9670;&#160;</a></span>Indentation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum struct <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#ae2ba4a610e3bc96dd10dc26f0225aaf4">dl7::yaml::Format::Indentation</a> : unsigned</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae2ba4a610e3bc96dd10dc26f0225aaf4a1b80cbd7d3cc0d459b01742d9e931f0d" name="ae2ba4a610e3bc96dd10dc26f0225aaf4a1b80cbd7d3cc0d459b01742d9e931f0d"></a>Spaces2&#160;</td><td class="fielddoc"><p>Indent using 2 spaces. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae2ba4a610e3bc96dd10dc26f0225aaf4ac89b7269c03829ff4ae12fe74dfcd595" name="ae2ba4a610e3bc96dd10dc26f0225aaf4ac89b7269c03829ff4ae12fe74dfcd595"></a>Spaces4&#160;</td><td class="fielddoc"><p>Indent using 4 spaces. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="aa5005214a708dd62ffdefe906b37128a" name="aa5005214a708dd62ffdefe906b37128a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5005214a708dd62ffdefe906b37128a">&#9670;&#160;</a></span>LineEnding</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum struct <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#aa5005214a708dd62ffdefe906b37128a">dl7::yaml::Format::LineEnding</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa5005214a708dd62ffdefe906b37128aa50d5a4893c775dd805a095efef17ef3d" name="aa5005214a708dd62ffdefe906b37128aa50d5a4893c775dd805a095efef17ef3d"></a>CRLF&#160;</td><td class="fielddoc"><p>CRLF (<code>\r\n</code>): Windows, DOS </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa5005214a708dd62ffdefe906b37128aa618441d41cce47dbcfd9bed6e5ff64e6" name="aa5005214a708dd62ffdefe906b37128aa618441d41cce47dbcfd9bed6e5ff64e6"></a>LF&#160;</td><td class="fielddoc"><p>LF (<code>\n</code>): Unix, Linux, macOS, and "modern" line-ending styles in general </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa5005214a708dd62ffdefe906b37128aa1d7b33fc26ca22c2011aaa97fecc43d8" name="aa5005214a708dd62ffdefe906b37128aa1d7b33fc26ca22c2011aaa97fecc43d8"></a>CR&#160;</td><td class="fielddoc"><p>CR (<code>\r</code>): Legacy Mac (According to the specification, CR is actually not allowed, but it's still supported for the sake of robustness.) </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a5394e05ec1f72592e180f47fa1d4c913" name="a5394e05ec1f72592e180f47fa1d4c913"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5394e05ec1f72592e180f47fa1d4c913">&#9670;&#160;</a></span>NullRepresentation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum struct <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5394e05ec1f72592e180f47fa1d4c913">dl7::yaml::Format::NullRepresentation</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5394e05ec1f72592e180f47fa1d4c913abbb93ef26e3c101ff11cdd21cab08a94" name="a5394e05ec1f72592e180f47fa1d4c913abbb93ef26e3c101ff11cdd21cab08a94"></a>Null&#160;</td><td class="fielddoc"><p>Write null values as <code>null</code>. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5394e05ec1f72592e180f47fa1d4c913a77a804418d76dc407383a618b60853ab" name="a5394e05ec1f72592e180f47fa1d4c913a77a804418d76dc407383a618b60853ab"></a>Tilde&#160;</td><td class="fielddoc"><p>Write null values as <code>~</code>. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5394e05ec1f72592e180f47fa1d4c913ace2c8aed9c2fa0cfbed56cbda4d8bf07" name="a5394e05ec1f72592e180f47fa1d4c913ace2c8aed9c2fa0cfbed56cbda4d8bf07"></a>Empty&#160;</td><td class="fielddoc"><p>Write null values as empty scalars. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a5f3abc2f8a4dcdbca5df5ec770fe0fbe" name="a5f3abc2f8a4dcdbca5df5ec770fe0fbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f3abc2f8a4dcdbca5df5ec770fe0fbe">&#9670;&#160;</a></span>ScalarQuoting</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum struct <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5f3abc2f8a4dcdbca5df5ec770fe0fbe">dl7::yaml::Format::ScalarQuoting</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5f3abc2f8a4dcdbca5df5ec770fe0fbea08b948f8fc21704e6944b587dc5445af" name="a5f3abc2f8a4dcdbca5df5ec770fe0fbea08b948f8fc21704e6944b587dc5445af"></a>WhereNecessary&#160;</td><td class="fielddoc"><p>Only quote string scalars that would otherwise be ambiguous (i.e., use the plain style wherever possible). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5f3abc2f8a4dcdbca5df5ec770fe0fbea0c41c1601e340f49c415802586c68df6" name="a5f3abc2f8a4dcdbca5df5ec770fe0fbea0c41c1601e340f49c415802586c68df6"></a>SingleQuoted&#160;</td><td class="fielddoc"><p>Always single-quote string scalars (unless they need to be double-quoted). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5f3abc2f8a4dcdbca5df5ec770fe0fbea6488ff09de4f0ee5e0c508604ff75029" name="a5f3abc2f8a4dcdbca5df5ec770fe0fbea6488ff09de4f0ee5e0c508604ff75029"></a>DoubleQuoted&#160;</td><td class="fielddoc"><p>Always double-quote string scalars. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a1bf1eb6880bc41bd81673cd6359c0b47" name="a1bf1eb6880bc41bd81673cd6359c0b47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bf1eb6880bc41bd81673cd6359c0b47">&#9670;&#160;</a></span>SequenceIndentation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum struct <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a1bf1eb6880bc41bd81673cd6359c0b47">dl7::yaml::Format::SequenceIndentation</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1bf1eb6880bc41bd81673cd6359c0b47a6adf97f83acf6453d4a6a4b1070f3754" name="a1bf1eb6880bc41bd81673cd6359c0b47a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"><p>Put block sequence entries at the same indentation level as their parent mapping key. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1bf1eb6880bc41bd81673cd6359c0b47acc5660810381b52940bd8b7da42ae07f" name="a1bf1eb6880bc41bd81673cd6359c0b47acc5660810381b52940bd8b7da42ae07f"></a>OneLevel&#160;</td><td class="fielddoc"><p>Indent block sequence entries one level deeper than their parent mapping key. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a591dc4ad707d81512727666f6807a01d" name="a591dc4ad707d81512727666f6807a01d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a591dc4ad707d81512727666f6807a01d">&#9670;&#160;</a></span>Style</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum struct <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a591dc4ad707d81512727666f6807a01d">dl7::yaml::Format::Style</a> : unsigned</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a591dc4ad707d81512727666f6807a01dae1e4c8c9ccd9fc39c391da4bcd093fb2" name="a591dc4ad707d81512727666f6807a01dae1e4c8c9ccd9fc39c391da4bcd093fb2"></a>Block&#160;</td><td class="fielddoc"><p>Use the indentation-based block style for mappings and sequences (scalars are single-line anyway). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a591dc4ad707d81512727666f6807a01daf1a76f66cca677c6e628d9ca58a6c8fc" name="a591dc4ad707d81512727666f6807a01daf1a76f66cca677c6e628d9ca58a6c8fc"></a>Flow&#160;</td><td class="fielddoc"><p>Use the JSON-like flow style for mappings and sequences, resulting in single-line output. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a63e1400ab68c8ef20ddb9cfc2db11e22" name="a63e1400ab68c8ef20ddb9cfc2db11e22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63e1400ab68c8ef20ddb9cfc2db11e22">&#9670;&#160;</a></span>add_empty_line</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool dl7::yaml::Format::add_empty_line = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether to add an empty line at the end (unless it's a single scalar value anyhow). </p>
+
+</div>
+</div>
+<a id="aa1473e4fcc5753d31a198d66219a697c" name="aa1473e4fcc5753d31a198d66219a697c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1473e4fcc5753d31a198d66219a697c">&#9670;&#160;</a></span>escape_unicode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool dl7::yaml::Format::escape_unicode = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether to escape non-ASCII characters as hexadecimal code points (<code>\xXX</code>, <code>\uXXXX</code>, or <code>\UXXXXXXXX</code> format; implies double-quoted scalars). </p>
+
+</div>
+</div>
+<a id="ae29dbe25ca53ec85373422e4d50d33cb" name="ae29dbe25ca53ec85373422e4d50d33cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae29dbe25ca53ec85373422e4d50d33cb">&#9670;&#160;</a></span>explicit_document_end</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool dl7::yaml::Format::explicit_document_end = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether to terminate the document with an explicit <code>...</code> marker. </p>
+
+</div>
+</div>
+<a id="a6fdff4004e24b848e061193efb9eb9c9" name="a6fdff4004e24b848e061193efb9eb9c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fdff4004e24b848e061193efb9eb9c9">&#9670;&#160;</a></span>explicit_document_start</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool dl7::yaml::Format::explicit_document_start = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether to introduce the document with an explicit <code>---</code> marker. </p>
+
+</div>
+</div>
+<a id="a6bdd8599c9d4678fa34f7ca43de29d3c" name="a6bdd8599c9d4678fa34f7ca43de29d3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bdd8599c9d4678fa34f7ca43de29d3c">&#9670;&#160;</a></span>float_policy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a43a8460c7ac5353bd62985e473f04d80">FloatPolicy</a> dl7::yaml::Format::float_policy = <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a43a8460c7ac5353bd62985e473f04d80a925641e0b76c28cc940e8f3ca178d826">FloatPolicy::Native</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Specifies how special floating-point values (NaN, +Infinity, -Infinity) should be handled. </p>
+
+</div>
+</div>
+<a id="a031e3cfee65a3b90d44d4cff4d79b740" name="a031e3cfee65a3b90d44d4cff4d79b740"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a031e3cfee65a3b90d44d4cff4d79b740">&#9670;&#160;</a></span>indentation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#ae2ba4a610e3bc96dd10dc26f0225aaf4">Indentation</a> dl7::yaml::Format::indentation = <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#ae2ba4a610e3bc96dd10dc26f0225aaf4a1b80cbd7d3cc0d459b01742d9e931f0d">Indentation::Spaces2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The indentation width to use (2 or 4 spaces; according to the specification, tabs must not be used for indentation). </p>
+
+</div>
+</div>
+<a id="a6108437bc20727469c67db68b765087f" name="a6108437bc20727469c67db68b765087f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6108437bc20727469c67db68b765087f">&#9670;&#160;</a></span>line_ending</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#aa5005214a708dd62ffdefe906b37128a">LineEnding</a> dl7::yaml::Format::line_ending = <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#aa5005214a708dd62ffdefe906b37128aa618441d41cce47dbcfd9bed6e5ff64e6">LineEnding::LF</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The line-ending format to use (CRLF, LF, or CR; according to the specification, CR is actually not allowed, but it's still supported for the sake of robustness). </p>
+
+</div>
+</div>
+<a id="a3ca6cc23e8b691b26d759d038fe17c4a" name="a3ca6cc23e8b691b26d759d038fe17c4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ca6cc23e8b691b26d759d038fe17c4a">&#9670;&#160;</a></span>null_representation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5394e05ec1f72592e180f47fa1d4c913">NullRepresentation</a> dl7::yaml::Format::null_representation = <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5394e05ec1f72592e180f47fa1d4c913abbb93ef26e3c101ff11cdd21cab08a94">NullRepresentation::Null</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>How to represent null values. </p>
+
+</div>
+</div>
+<a id="ae5f641843d288000b441300f48fe3af3" name="ae5f641843d288000b441300f48fe3af3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5f641843d288000b441300f48fe3af3">&#9670;&#160;</a></span>scalar_quoting</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5f3abc2f8a4dcdbca5df5ec770fe0fbe">ScalarQuoting</a> dl7::yaml::Format::scalar_quoting = <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a5f3abc2f8a4dcdbca5df5ec770fe0fbea08b948f8fc21704e6944b587dc5445af">ScalarQuoting::WhereNecessary</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether/how to quote string scalars. </p>
+
+</div>
+</div>
+<a id="aa0b889d2aa4cd8f136218e48ea736eb0" name="aa0b889d2aa4cd8f136218e48ea736eb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0b889d2aa4cd8f136218e48ea736eb0">&#9670;&#160;</a></span>sequence_indentation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a1bf1eb6880bc41bd81673cd6359c0b47">SequenceIndentation</a> dl7::yaml::Format::sequence_indentation = <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a1bf1eb6880bc41bd81673cd6359c0b47a6adf97f83acf6453d4a6a4b1070f3754">SequenceIndentation::None</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether to indent block sequence entries relative to their parent mapping key. </p>
+
+</div>
+</div>
+<a id="a159281ba2ecb1b36e2a9f8d0483575d1" name="a159281ba2ecb1b36e2a9f8d0483575d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a159281ba2ecb1b36e2a9f8d0483575d1">&#9670;&#160;</a></span>style</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a591dc4ad707d81512727666f6807a01d">Style</a> dl7::yaml::Format::style = <a class="el" href="../../d1/db1/structdl7_1_1yaml_1_1Format.html#a591dc4ad707d81512727666f6807a01dae1e4c8c9ccd9fc39c391da4bcd093fb2">Style::Block</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Block style or flow style? </p>
+
+</div>
+</div>
+<a id="aeeb28e2e6eb3e4e48e4ef9ed9e8d14d6" name="aeeb28e2e6eb3e4e48e4ef9ed9e8d14d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeeb28e2e6eb3e4e48e4ef9ed9e8d14d6">&#9670;&#160;</a></span>use_block_scalars</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool dl7::yaml::Format::use_block_scalars = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether to write multi-line string scalars as literal block scalars (<code>|</code>) instead of double-quoted single-line scalars. </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>DataLabs/yaml/<a class="el" href="../../d4/d24/yaml_2Format_8h_source.html">Format.h</a></li>
 </ul>
