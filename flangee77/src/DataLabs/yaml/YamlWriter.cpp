@@ -9,8 +9,8 @@ namespace dl7::yaml {
 
 
     /**
-     * Generates a string representing the given `Yaml` object based on the specified
-     * format.
+     * Generates a string representing the given YAML node/document based on the
+     * specified format.
      */
     cl7::u8string YamlWriter::to_string(const Yaml& yaml, const Format& format)
     {
