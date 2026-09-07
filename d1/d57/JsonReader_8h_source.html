@@ -104,31 +104,44 @@ $(document).ready(function(){initNavTree('d1/d57/JsonReader_8h_source.html','../
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="../../dc/d57/Json_8h.html">./Json.h</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;<a class="code" href="../../d9/d08/Diagnostics_8h.html">DataLabs/syntax/Diagnostics.h</a>&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../df/d87/namespacedl7_1_1json.html">dl7::json</a> {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../df/d87/namespacedl7_1_1json.html">dl7::json</a> {</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="../../de/da5/classdl7_1_1json_1_1JsonReader.html">   15</a></span><span class="keyword">class </span><a class="code hl_class" href="../../de/da5/classdl7_1_1json_1_1JsonReader.html">JsonReader</a></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">static</span> <a class="code hl_class" href="../../d7/d95/classdl7_1_1json_1_1Json.html">Json</a> <a class="code hl_function" href="../../de/da5/classdl7_1_1json_1_1JsonReader.html#ad2735b9d1a4d8fe7b76127ba1fda7d94">parse</a>(<a class="code hl_typedef" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> source);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}; <span class="comment">// class JsonReader</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="../../de/da5/classdl7_1_1json_1_1JsonReader.html">   18</a></span><span class="keyword">class </span><a class="code hl_class" href="../../de/da5/classdl7_1_1json_1_1JsonReader.html">JsonReader</a></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_class" href="../../d7/d95/classdl7_1_1json_1_1Json.html">Json</a> <a class="code hl_function" href="../../de/da5/classdl7_1_1json_1_1JsonReader.html#ad2735b9d1a4d8fe7b76127ba1fda7d94">parse</a>(<a class="code hl_typedef" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> source);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../de/da5/classdl7_1_1json_1_1JsonReader.html#ab617e90169624f1631dc4c70630dae24">   32</a></span>    <span class="keyword">const</span> <a class="code hl_class" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html">syntax::Diagnostics</a>&amp; <a class="code hl_function" href="../../de/da5/classdl7_1_1json_1_1JsonReader.html#ab617e90169624f1631dc4c70630dae24">get_diagnostics</a>() const noexcept { <span class="keywordflow">return</span> <a class="code hl_variable" href="../../de/da5/classdl7_1_1json_1_1JsonReader.html#a480bb76a0ad8348f6dad1d7bd382f940">_diagnostics</a>; }</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="../../de/da5/classdl7_1_1json_1_1JsonReader.html#a480bb76a0ad8348f6dad1d7bd382f940">   37</a></span>    <a class="code hl_class" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html">syntax::Diagnostics</a> <a class="code hl_variable" href="../../de/da5/classdl7_1_1json_1_1JsonReader.html#a480bb76a0ad8348f6dad1d7bd382f940">_diagnostics</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}; <span class="comment">// class JsonReader</span></div>
 </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>} <span class="comment">// namespace dl7::json</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#endif </span><span class="comment">// DL7_JSON_JSONREADER_H</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>} <span class="comment">// namespace dl7::json</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif </span><span class="comment">// DL7_JSON_JSONREADER_H</span></div>
+<div class="ttc" id="aDiagnostics_8h_html"><div class="ttname"><a href="../../d9/d08/Diagnostics_8h.html">Diagnostics.h</a></div></div>
 <div class="ttc" id="aJson_8h_html"><div class="ttname"><a href="../../dc/d57/Json_8h.html">Json.h</a></div></div>
-<div class="ttc" id="aclassdl7_1_1json_1_1JsonReader_html"><div class="ttname"><a href="../../de/da5/classdl7_1_1json_1_1JsonReader.html">dl7::json::JsonReader</a></div><div class="ttdef"><b>Definition</b> JsonReader.h:16</div></div>
-<div class="ttc" id="aclassdl7_1_1json_1_1JsonReader_html_ad2735b9d1a4d8fe7b76127ba1fda7d94"><div class="ttname"><a href="../../de/da5/classdl7_1_1json_1_1JsonReader.html#ad2735b9d1a4d8fe7b76127ba1fda7d94">dl7::json::JsonReader::parse</a></div><div class="ttdeci">static Json parse(cl7::u8string_view source)</div><div class="ttdef"><b>Definition</b> JsonReader.cpp:18</div></div>
+<div class="ttc" id="aclassdl7_1_1json_1_1JsonReader_html"><div class="ttname"><a href="../../de/da5/classdl7_1_1json_1_1JsonReader.html">dl7::json::JsonReader</a></div><div class="ttdef"><b>Definition</b> JsonReader.h:19</div></div>
+<div class="ttc" id="aclassdl7_1_1json_1_1JsonReader_html_a480bb76a0ad8348f6dad1d7bd382f940"><div class="ttname"><a href="../../de/da5/classdl7_1_1json_1_1JsonReader.html#a480bb76a0ad8348f6dad1d7bd382f940">dl7::json::JsonReader::_diagnostics</a></div><div class="ttdeci">syntax::Diagnostics _diagnostics</div><div class="ttdef"><b>Definition</b> JsonReader.h:37</div></div>
+<div class="ttc" id="aclassdl7_1_1json_1_1JsonReader_html_ab617e90169624f1631dc4c70630dae24"><div class="ttname"><a href="../../de/da5/classdl7_1_1json_1_1JsonReader.html#ab617e90169624f1631dc4c70630dae24">dl7::json::JsonReader::get_diagnostics</a></div><div class="ttdeci">const syntax::Diagnostics &amp; get_diagnostics() const noexcept</div><div class="ttdef"><b>Definition</b> JsonReader.h:32</div></div>
+<div class="ttc" id="aclassdl7_1_1json_1_1JsonReader_html_ad2735b9d1a4d8fe7b76127ba1fda7d94"><div class="ttname"><a href="../../de/da5/classdl7_1_1json_1_1JsonReader.html#ad2735b9d1a4d8fe7b76127ba1fda7d94">dl7::json::JsonReader::parse</a></div><div class="ttdeci">Json parse(cl7::u8string_view source)</div><div class="ttdef"><b>Definition</b> JsonReader.cpp:20</div></div>
 <div class="ttc" id="aclassdl7_1_1json_1_1Json_html"><div class="ttname"><a href="../../d7/d95/classdl7_1_1json_1_1Json.html">dl7::json::Json</a></div><div class="ttdef"><b>Definition</b> Json.h:15</div></div>
+<div class="ttc" id="aclassdl7_1_1syntax_1_1Diagnostics_html"><div class="ttname"><a href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html">dl7::syntax::Diagnostics</a></div><div class="ttdef"><b>Definition</b> Diagnostics.h:22</div></div>
 <div class="ttc" id="anamespacecl7_html_a3f50fdc015f0eb140ce63df6b8a954ec"><div class="ttname"><a href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a></div><div class="ttdeci">std::basic_string_view&lt; u8char_t &gt; u8string_view</div><div class="ttdef"><b>Definition</b> string.h:36</div></div>
 <div class="ttc" id="anamespacedl7_1_1json_html"><div class="ttname"><a href="../../df/d87/namespacedl7_1_1json.html">dl7::json</a></div><div class="ttdef"><b>Definition</b> Builder.cpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->

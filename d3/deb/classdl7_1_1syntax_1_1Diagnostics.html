@@ -145,6 +145,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae121fea195baceab2da6ffd0bb330641"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a020e5e99da02987774a7395eb85a13d9" id="r_a020e5e99da02987774a7395eb85a13d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#a020e5e99da02987774a7395eb85a13d9">add</a> (<a class="el" href="../../d0/d46/structdl7_1_1syntax_1_1Diagnostic.html#afb8b280322219dfc4a99ec89802c4406">Diagnostic::Severity</a> severity, <a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> message, const <a class="el" href="../../d7/d8c/structdl7_1_1syntax_1_1SourceContext.html">SourceContext</a> &amp;source_context)</td></tr>
 <tr class="separator:a020e5e99da02987774a7395eb85a13d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5677ce13361b442c3d4d7b0312414c2" id="r_aa5677ce13361b442c3d4d7b0312414c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#aa5677ce13361b442c3d4d7b0312414c2">add_all</a> (const <a class="el" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html">Diagnostics</a> &amp;diagnostics)</td></tr>
+<tr class="separator:aa5677ce13361b442c3d4d7b0312414c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfb6c5fbfee5ac6423e7c60b2842badf" id="r_acfb6c5fbfee5ac6423e7c60b2842badf"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="../../d0/d46/structdl7_1_1syntax_1_1Diagnostic.html">Diagnostic</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#acfb6c5fbfee5ac6423e7c60b2842badf">get_all</a> () const</td></tr>
 <tr class="separator:acfb6c5fbfee5ac6423e7c60b2842badf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36ddc0f4d775bb0c5a53eef3cc14aa11" id="r_a36ddc0f4d775bb0c5a53eef3cc14aa11"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#a36ddc0f4d775bb0c5a53eef3cc14aa11">get_count</a> () const</td></tr>
@@ -401,6 +403,25 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Adds the specified diagnostic with a message and a byte offset into the source text. Depending on the overridable function <code>make_source_context</code>, a basic source location or a concrete textual source context may be pulled in. </p>
+
+</div>
+</div>
+<a id="aa5677ce13361b442c3d4d7b0312414c2" name="aa5677ce13361b442c3d4d7b0312414c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5677ce13361b442c3d4d7b0312414c2">&#9670;&#160;</a></span>add_all()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dl7::syntax::Diagnostics::add_all </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html">Diagnostics</a> &amp;&#160;</td>
+          <td class="paramname"><em>diagnostics</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds all diagnostic entries of the given collection to this one. The entries keep the source context they were resolved with, which is what lets a parser hand its own source-aware diagnostics over to a caller's plain ones. </p>
 
 </div>
 </div>

@@ -98,56 +98,83 @@ $(document).ready(function(){initNavTree('da/dd8/TomlReader_8h.html','../../'); 
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d0/d2e/Toml_8h_source.html">./Toml.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="../../d9/d08/Diagnostics_8h_source.html">DataLabs/syntax/Diagnostics.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for TomlReader.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d6/dc7/TomlReader_8h__incl.png" border="0" usemap="#aDataLabs_2toml_2TomlReader_8h" alt=""/></div>
 <map name="aDataLabs_2toml_2TomlReader_8h" id="aDataLabs_2toml_2TomlReader_8h">
-<area shape="rect" title=" " alt="" coords="638,5,847,31"/>
-<area shape="rect" href="../../d0/d2e/Toml_8h.html" title=" " alt="" coords="706,79,779,104"/>
-<area shape="poly" title=" " alt="" coords="745,31,745,65,740,65,740,31"/>
-<area shape="rect" href="../../d6/dd7/toml_2Value_8h.html" title=" " alt="" coords="703,152,782,177"/>
-<area shape="poly" title=" " alt="" coords="745,104,745,138,740,138,740,104"/>
-<area shape="rect" href="../../d9/d45/toml_2types_8h.html" title=" " alt="" coords="665,225,743,251"/>
-<area shape="poly" title=" " alt="" coords="739,179,719,215,714,212,734,176"/>
-<area shape="rect" title=" " alt="" coords="781,299,849,324"/>
-<area shape="poly" title=" " alt="" coords="751,177,805,285,800,287,746,179"/>
-<area shape="rect" href="../../d8/dfd/ordered__map_8h.html" title=" " alt="" coords="431,299,615,324"/>
-<area shape="poly" title=" " alt="" coords="676,253,566,296,564,291,674,248"/>
-<area shape="rect" title=" " alt="" coords="661,445,723,471"/>
-<area shape="poly" title=" " alt="" coords="710,250,720,298,721,335,717,372,703,433,697,432,711,371,715,335,715,299,705,252"/>
-<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="215,299,350,324"/>
-<area shape="poly" title=" " alt="" coords="665,249,364,299,363,294,664,243"/>
-<area shape="rect" title=" " alt="" coords="639,299,705,324"/>
-<area shape="poly" title=" " alt="" coords="701,252,685,287,680,285,696,250"/>
-<area shape="poly" title=" " alt="" coords="723,248,786,289,783,293,720,253"/>
-<area shape="rect" href="../../da/d59/iterators_8h.html" title=" " alt="" coords="434,372,587,397"/>
-<area shape="poly" title=" " alt="" coords="523,325,518,359,512,358,518,324"/>
-<area shape="poly" title=" " alt="" coords="582,322,628,340,650,353,669,370,686,400,693,431,688,432,681,402,665,374,646,357,625,344,580,327"/>
-<area shape="rect" title=" " alt="" coords="612,372,655,397"/>
-<area shape="poly" title=" " alt="" coords="542,322,605,362,602,367,539,326"/>
-<area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="250,445,374,471"/>
-<area shape="poly" title=" " alt="" coords="480,400,358,443,357,438,478,395"/>
-<area shape="poly" title=" " alt="" coords="541,395,651,438,649,443,539,400"/>
-<area shape="rect" title=" " alt="" coords="5,519,107,544"/>
-<area shape="poly" title=" " alt="" coords="272,473,111,518,110,512,270,468"/>
-<area shape="rect" title=" " alt="" coords="131,519,200,544"/>
-<area shape="poly" title=" " alt="" coords="290,473,203,515,200,510,287,468"/>
-<area shape="rect" title=" " alt="" coords="224,519,304,544"/>
-<area shape="poly" title=" " alt="" coords="306,473,282,509,277,506,302,470"/>
-<area shape="rect" title=" " alt="" coords="328,519,395,544"/>
-<area shape="poly" title=" " alt="" coords="322,469,348,506,343,509,318,473"/>
-<area shape="rect" title=" " alt="" coords="419,519,496,544"/>
-<area shape="poly" title=" " alt="" coords="337,468,423,510,420,515,334,473"/>
-<area shape="rect" title=" " alt="" coords="520,519,595,544"/>
-<area shape="poly" title=" " alt="" coords="352,468,507,513,506,518,351,473"/>
-<area shape="poly" title=" " alt="" coords="225,327,186,338,154,354,143,363,136,373,135,384,141,396,160,416,184,431,210,441,237,448,235,453,208,446,181,435,157,420,136,399,130,384,131,371,139,359,151,349,184,333,223,321"/>
-<area shape="rect" title=" " alt="" coords="151,372,209,397"/>
-<area shape="poly" title=" " alt="" coords="268,326,210,366,207,362,265,322"/>
-<area shape="rect" title=" " alt="" coords="234,372,331,397"/>
-<area shape="poly" title=" " alt="" coords="285,324,285,358,280,358,280,324"/>
-<area shape="rect" title=" " alt="" coords="356,372,409,397"/>
-<area shape="poly" title=" " alt="" coords="300,322,357,362,354,366,297,326"/>
+<area shape="rect" title=" " alt="" coords="391,5,601,31"/>
+<area shape="rect" href="../../d0/d2e/Toml_8h.html" title=" " alt="" coords="374,79,447,104"/>
+<area shape="poly" title=" " alt="" coords="484,33,437,72,433,68,481,29"/>
+<area shape="rect" href="../../d9/d08/Diagnostics_8h.html" title=" " alt="" coords="485,79,707,104"/>
+<area shape="poly" title=" " alt="" coords="514,29,570,68,567,73,511,33"/>
+<area shape="rect" href="../../d6/dd7/toml_2Value_8h.html" title=" " alt="" coords="345,152,423,177"/>
+<area shape="poly" title=" " alt="" coords="409,105,396,140,391,138,404,103"/>
+<area shape="rect" href="../../d9/d45/toml_2types_8h.html" title=" " alt="" coords="275,225,354,251"/>
+<area shape="poly" title=" " alt="" coords="374,180,337,217,333,214,371,176"/>
+<area shape="rect" title=" " alt="" coords="355,299,423,324"/>
+<area shape="poly" title=" " alt="" coords="387,178,391,285,386,285,382,178"/>
+<area shape="rect" href="../../d8/dfd/ordered__map_8h.html" title=" " alt="" coords="96,299,280,324"/>
+<area shape="poly" title=" " alt="" coords="296,253,222,294,219,289,293,248"/>
+<area shape="rect" title=" " alt="" coords="286,445,349,471"/>
+<area shape="poly" title=" " alt="" coords="317,251,320,431,314,431,312,251"/>
+<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="665,519,799,544"/>
+<area shape="poly" title=" " alt="" coords="354,237,410,240,479,249,552,267,588,280,623,296,647,312,664,327,692,371,708,406,719,442,732,505,726,506,714,443,703,408,687,373,660,331,644,316,620,301,586,285,551,272,478,254,409,245,354,242"/>
+<area shape="rect" title=" " alt="" coords="5,299,72,324"/>
+<area shape="poly" title=" " alt="" coords="276,252,86,301,85,296,274,247"/>
+<area shape="poly" title=" " alt="" coords="328,249,369,287,365,291,325,253"/>
+<area shape="rect" href="../../da/d59/iterators_8h.html" title=" " alt="" coords="9,372,162,397"/>
+<area shape="poly" title=" " alt="" coords="173,326,115,366,112,362,170,322"/>
+<area shape="poly" title=" " alt="" coords="200,322,243,370,300,433,296,437,239,374,196,326"/>
+<area shape="rect" title=" " alt="" coords="187,372,229,397"/>
+<area shape="poly" title=" " alt="" coords="194,324,204,358,199,360,189,325"/>
+<area shape="rect" href="../../de/d99/root_8h.html" title=" " alt="" coords="490,592,614,617"/>
+<area shape="poly" title=" " alt="" coords="111,395,516,584,514,588,109,400"/>
+<area shape="poly" title=" " alt="" coords="123,395,274,441,272,446,122,400"/>
+<area shape="rect" title=" " alt="" coords="245,665,347,691"/>
+<area shape="poly" title=" " alt="" coords="512,620,351,664,350,659,510,615"/>
+<area shape="rect" title=" " alt="" coords="371,665,440,691"/>
+<area shape="poly" title=" " alt="" coords="530,620,443,662,440,657,527,615"/>
+<area shape="rect" title=" " alt="" coords="464,665,544,691"/>
+<area shape="poly" title=" " alt="" coords="546,619,522,656,517,653,542,616"/>
+<area shape="rect" title=" " alt="" coords="568,665,635,691"/>
+<area shape="poly" title=" " alt="" coords="562,616,588,653,583,656,558,619"/>
+<area shape="rect" title=" " alt="" coords="659,665,736,691"/>
+<area shape="poly" title=" " alt="" coords="577,615,663,657,660,662,574,620"/>
+<area shape="rect" title=" " alt="" coords="760,665,835,691"/>
+<area shape="poly" title=" " alt="" coords="592,615,747,660,746,665,591,620"/>
+<area shape="poly" title=" " alt="" coords="704,547,595,589,593,584,702,542"/>
+<area shape="rect" title=" " alt="" coords="716,592,775,617"/>
+<area shape="poly" title=" " alt="" coords="737,544,743,578,738,579,732,545"/>
+<area shape="rect" title=" " alt="" coords="799,592,897,617"/>
+<area shape="poly" title=" " alt="" coords="752,542,819,582,816,587,749,546"/>
+<area shape="rect" title=" " alt="" coords="639,592,692,617"/>
+<area shape="poly" title=" " alt="" coords="723,546,687,584,684,580,719,543"/>
+<area shape="poly" title=" " alt="" coords="587,106,542,157,489,227,473,254,463,276,453,298,437,326,387,388,341,437,337,434,383,385,432,322,448,296,459,274,469,251,484,224,538,153,583,102"/>
+<area shape="rect" href="../../d5/d6d/Diagnostic_8h.html" title=" " alt="" coords="703,152,814,177"/>
+<area shape="poly" title=" " alt="" coords="623,102,721,144,718,149,621,106"/>
+<area shape="rect" href="../../df/d15/LogContext_8h.html" title=" " alt="" coords="499,225,723,251"/>
+<area shape="poly" title=" " alt="" coords="600,104,611,211,605,212,595,105"/>
+<area shape="poly" title=" " alt="" coords="813,175,860,193,882,207,902,223,919,244,928,263,932,284,933,310,933,386,931,433,923,452,907,473,887,490,863,504,814,521,812,516,861,499,884,486,903,469,918,450,926,432,928,386,928,310,927,284,923,264,914,247,898,227,879,211,857,198,811,180"/>
+<area shape="rect" href="../../d6/d94/SourceContext_8h.html" title=" " alt="" coords="750,225,887,251"/>
+<area shape="poly" title=" " alt="" coords="771,176,802,213,798,217,767,179"/>
+<area shape="poly" title=" " alt="" coords="736,180,648,222,646,217,734,175"/>
+<area shape="rect" href="../../d3/d9a/SourceLocation_8h.html" title=" " alt="" coords="752,445,893,471"/>
+<area shape="poly" title=" " alt="" coords="822,251,825,431,820,431,816,251"/>
+<area shape="poly" title=" " alt="" coords="810,473,759,512,756,508,806,469"/>
+<area shape="rect" href="../../dd/da4/Logger_8h.html" title=" " alt="" coords="524,299,609,324"/>
+<area shape="poly" title=" " alt="" coords="606,252,583,288,579,286,601,250"/>
+<area shape="poly" title=" " alt="" coords="548,327,351,441,348,436,545,322"/>
+<area shape="rect" href="../../d7/d96/AbstractLogHandler_8h.html" title=" " alt="" coords="507,372,677,397"/>
+<area shape="poly" title=" " alt="" coords="573,323,586,358,581,360,568,325"/>
+<area shape="rect" href="../../d4/d8d/LogEntry_8h.html" title=" " alt="" coords="535,445,633,471"/>
+<area shape="poly" title=" " alt="" coords="546,326,525,340,506,357,495,376,494,386,497,396,517,420,543,437,540,442,513,424,492,399,489,387,489,375,502,354,522,336,543,322"/>
+<area shape="poly" title=" " alt="" coords="593,398,589,432,584,432,588,397"/>
+<area shape="poly" title=" " alt="" coords="609,468,697,510,694,515,607,473"/>
+<area shape="rect" href="../../d5/de4/LogType_8h.html" title=" " alt="" coords="519,519,614,544"/>
+<area shape="poly" title=" " alt="" coords="584,472,575,506,570,505,579,470"/>
+<area shape="poly" title=" " alt="" coords="567,545,560,579,555,578,562,544"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">

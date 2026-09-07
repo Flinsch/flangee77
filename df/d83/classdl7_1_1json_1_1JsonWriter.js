@@ -1,6 +1,11 @@
 var classdl7_1_1json_1_1JsonWriter =
 [
-    [ "to_string", "df/d83/classdl7_1_1json_1_1JsonWriter.html#afa86238b04a2f4b4e28a0c45e4a7e132", null ],
+    [ "JsonWriter", "df/d83/classdl7_1_1json_1_1JsonWriter.html#ad1d0946516e01ff8426b5343d97d22ee", null ],
+    [ "get_diagnostics", "df/d83/classdl7_1_1json_1_1JsonWriter.html#a899cbf2fae258db0c96bdfde5427dd36", null ],
+    [ "get_format", "df/d83/classdl7_1_1json_1_1JsonWriter.html#af2245aae2afe628e3ab62144f583c3fe", null ],
+    [ "to_string", "df/d83/classdl7_1_1json_1_1JsonWriter.html#acbdaa601c36f8bf6e513df1ad7935081", null ],
+    [ "_diagnostics", "df/d83/classdl7_1_1json_1_1JsonWriter.html#a9476c91118eacd65165b52d6dd2ac479", null ],
+    [ "_format", "df/d83/classdl7_1_1json_1_1JsonWriter.html#a422d65f9abdaa18dab308707ee8a6de0", null ],
     [ "DEFAULT_COMPACT_FORMAT", "df/d83/classdl7_1_1json_1_1JsonWriter.html#aa5db864f0c47526a8896e16edf8252fd", null ],
     [ "DEFAULT_FORMAT", "df/d83/classdl7_1_1json_1_1JsonWriter.html#ab25497c15a3e6fbe49f0f67eb00a4ff5", null ],
     [ "DEFAULT_MULTI_LINE_FORMAT", "df/d83/classdl7_1_1json_1_1JsonWriter.html#ae101ea11af0c0aba0575edb3f8152e48", null ],

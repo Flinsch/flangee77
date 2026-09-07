@@ -92,30 +92,75 @@ $(document).ready(function(){initNavTree('db/dae/classdl7_1_1yaml_1_1YamlReader.
 
 <div class="header">
   <div class="summary">
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../df/d6a/classdl7_1_1yaml_1_1YamlReader-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">dl7::yaml::YamlReader Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="../../d4/d9a/YamlReader_8h_source.html">YamlReader.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for dl7::yaml::YamlReader:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../df/d25/classdl7_1_1yaml_1_1YamlReader__coll__graph.png" border="0" usemap="#adl7_1_1yaml_1_1YamlReader_coll__map" alt="Collaboration graph"/></div>
+<map name="adl7_1_1yaml_1_1YamlReader_coll__map" id="adl7_1_1yaml_1_1YamlReader_coll__map">
+<area shape="rect" title=" " alt="" coords="11,269,179,295"/>
+<area shape="rect" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html" title=" " alt="" coords="5,181,184,207"/>
+<area shape="poly" title=" " alt="" coords="97,221,97,269,92,269,92,221"/>
+<area shape="rect" href="../../d9/d4c/structcl7_1_1logging_1_1LogContext.html" title=" " alt="" coords="5,93,184,119"/>
+<area shape="poly" title=" " alt="" coords="97,133,97,181,92,181,92,133"/>
+<area shape="rect" href="../../df/dc2/classcl7_1_1logging_1_1Logger.html" title=" " alt="" coords="20,5,169,31"/>
+<area shape="poly" title=" " alt="" coords="97,45,97,93,92,93,92,45"/>
+</map>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a08421f3fba5e5eca295a1e639b7647e3" id="r_a08421f3fba5e5eca295a1e639b7647e3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dae/classdl7_1_1yaml_1_1YamlReader.html#a08421f3fba5e5eca295a1e639b7647e3">parse</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> source)</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a08421f3fba5e5eca295a1e639b7647e3" id="r_a08421f3fba5e5eca295a1e639b7647e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dae/classdl7_1_1yaml_1_1YamlReader.html#a08421f3fba5e5eca295a1e639b7647e3">parse</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> source)</td></tr>
 <tr class="separator:a08421f3fba5e5eca295a1e639b7647e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6725d85e1ef55bfd9176e4dd32bed209" id="r_a6725d85e1ef55bfd9176e4dd32bed209"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html">syntax::Diagnostics</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dae/classdl7_1_1yaml_1_1YamlReader.html#a6725d85e1ef55bfd9176e4dd32bed209">get_diagnostics</a> () const noexcept</td></tr>
+<tr class="separator:a6725d85e1ef55bfd9176e4dd32bed209"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ae7f0c6f4d6aeb37d602ba05424b88462" id="r_ae7f0c6f4d6aeb37d602ba05424b88462"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html">syntax::Diagnostics</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dae/classdl7_1_1yaml_1_1YamlReader.html#ae7f0c6f4d6aeb37d602ba05424b88462">_diagnostics</a></td></tr>
+<tr class="separator:ae7f0c6f4d6aeb37d602ba05424b88462"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A utility class for parsing YAML data from UTF-8 encoded string representations. </p>
+<div class="textblock"><p>Parses YAML data from UTF-8 encoded string representations, keeping whatever it had to complain about along the way. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a08421f3fba5e5eca295a1e639b7647e3" name="a08421f3fba5e5eca295a1e639b7647e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08421f3fba5e5eca295a1e639b7647e3">&#9670;&#160;</a></span>parse()</h2>
+<a id="a6725d85e1ef55bfd9176e4dd32bed209" name="a6725d85e1ef55bfd9176e4dd32bed209"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6725d85e1ef55bfd9176e4dd32bed209">&#9670;&#160;</a></span>get_diagnostics()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html">syntax::Diagnostics</a> &amp; dl7::yaml::YamlReader::get_diagnostics </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the diagnostics of the most recent <code>parse</code> call. </p>
+
+</div>
+</div>
+<a id="a08421f3fba5e5eca295a1e639b7647e3" name="a08421f3fba5e5eca295a1e639b7647e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08421f3fba5e5eca295a1e639b7647e3">&#9670;&#160;</a></span>parse()</h2>
+
+<div class="memitem">
+<div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a> dl7::yaml::YamlReader::parse </td>
@@ -125,14 +170,31 @@ Static Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+<p>Parses a UTF-8 encoded YAML string and returns a <code><a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a></code> object. Whatever there is to complain about ends up in the diagnostics, which are cleared beforehand. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae7f0c6f4d6aeb37d602ba05424b88462" name="ae7f0c6f4d6aeb37d602ba05424b88462"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7f0c6f4d6aeb37d602ba05424b88462">&#9670;&#160;</a></span>_diagnostics</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html">syntax::Diagnostics</a> dl7::yaml::YamlReader::_diagnostics</td>
+        </tr>
+      </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Parses a UTF-8 encoded YAML string and returns a <code><a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a></code> object.</p>
-<p>Parses a UTF-8 encoded YAML string and returns an <code><a class="el" href="../../d9/de4/classdl7_1_1yaml_1_1Yaml.html">Yaml</a></code> object. </p>
 
 </div>
 </div>

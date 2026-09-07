@@ -92,30 +92,75 @@ $(document).ready(function(){initNavTree('de/da5/classdl7_1_1json_1_1JsonReader.
 
 <div class="header">
   <div class="summary">
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../d7/d2b/classdl7_1_1json_1_1JsonReader-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">dl7::json::JsonReader Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="../../d1/d57/JsonReader_8h_source.html">JsonReader.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for dl7::json::JsonReader:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../df/d04/classdl7_1_1json_1_1JsonReader__coll__graph.png" border="0" usemap="#adl7_1_1json_1_1JsonReader_coll__map" alt="Collaboration graph"/></div>
+<map name="adl7_1_1json_1_1JsonReader_coll__map" id="adl7_1_1json_1_1JsonReader_coll__map">
+<area shape="rect" title=" " alt="" coords="15,269,174,295"/>
+<area shape="rect" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html" title=" " alt="" coords="5,181,184,207"/>
+<area shape="poly" title=" " alt="" coords="97,221,97,269,92,269,92,221"/>
+<area shape="rect" href="../../d9/d4c/structcl7_1_1logging_1_1LogContext.html" title=" " alt="" coords="5,93,184,119"/>
+<area shape="poly" title=" " alt="" coords="97,133,97,181,92,181,92,133"/>
+<area shape="rect" href="../../df/dc2/classcl7_1_1logging_1_1Logger.html" title=" " alt="" coords="20,5,169,31"/>
+<area shape="poly" title=" " alt="" coords="97,45,97,93,92,93,92,45"/>
+</map>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ad2735b9d1a4d8fe7b76127ba1fda7d94" id="r_ad2735b9d1a4d8fe7b76127ba1fda7d94"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d7/d95/classdl7_1_1json_1_1Json.html">Json</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/da5/classdl7_1_1json_1_1JsonReader.html#ad2735b9d1a4d8fe7b76127ba1fda7d94">parse</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> source)</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ad2735b9d1a4d8fe7b76127ba1fda7d94" id="r_ad2735b9d1a4d8fe7b76127ba1fda7d94"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d95/classdl7_1_1json_1_1Json.html">Json</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/da5/classdl7_1_1json_1_1JsonReader.html#ad2735b9d1a4d8fe7b76127ba1fda7d94">parse</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#a3f50fdc015f0eb140ce63df6b8a954ec">cl7::u8string_view</a> source)</td></tr>
 <tr class="separator:ad2735b9d1a4d8fe7b76127ba1fda7d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab617e90169624f1631dc4c70630dae24" id="r_ab617e90169624f1631dc4c70630dae24"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html">syntax::Diagnostics</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/da5/classdl7_1_1json_1_1JsonReader.html#ab617e90169624f1631dc4c70630dae24">get_diagnostics</a> () const noexcept</td></tr>
+<tr class="separator:ab617e90169624f1631dc4c70630dae24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a480bb76a0ad8348f6dad1d7bd382f940" id="r_a480bb76a0ad8348f6dad1d7bd382f940"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html">syntax::Diagnostics</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/da5/classdl7_1_1json_1_1JsonReader.html#a480bb76a0ad8348f6dad1d7bd382f940">_diagnostics</a></td></tr>
+<tr class="separator:a480bb76a0ad8348f6dad1d7bd382f940"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A utility class for parsing JSON data from UTF-8 encoded string representations. </p>
+<div class="textblock"><p>Parses JSON data from UTF-8 encoded string representations, keeping whatever it had to complain about along the way. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad2735b9d1a4d8fe7b76127ba1fda7d94" name="ad2735b9d1a4d8fe7b76127ba1fda7d94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2735b9d1a4d8fe7b76127ba1fda7d94">&#9670;&#160;</a></span>parse()</h2>
+<a id="ab617e90169624f1631dc4c70630dae24" name="ab617e90169624f1631dc4c70630dae24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab617e90169624f1631dc4c70630dae24">&#9670;&#160;</a></span>get_diagnostics()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html">syntax::Diagnostics</a> &amp; dl7::json::JsonReader::get_diagnostics </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the diagnostics of the most recent <code>parse</code> call. </p>
+
+</div>
+</div>
+<a id="ad2735b9d1a4d8fe7b76127ba1fda7d94" name="ad2735b9d1a4d8fe7b76127ba1fda7d94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2735b9d1a4d8fe7b76127ba1fda7d94">&#9670;&#160;</a></span>parse()</h2>
+
+<div class="memitem">
+<div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d7/d95/classdl7_1_1json_1_1Json.html">Json</a> dl7::json::JsonReader::parse </td>
@@ -125,13 +170,31 @@ Static Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+<p>Parses a UTF-8 encoded JSON string and returns a <code><a class="el" href="../../d7/d95/classdl7_1_1json_1_1Json.html">Json</a></code> object. Whatever there is to complain about ends up in the diagnostics, which are cleared beforehand. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a480bb76a0ad8348f6dad1d7bd382f940" name="a480bb76a0ad8348f6dad1d7bd382f940"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a480bb76a0ad8348f6dad1d7bd382f940">&#9670;&#160;</a></span>_diagnostics</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/deb/classdl7_1_1syntax_1_1Diagnostics.html">syntax::Diagnostics</a> dl7::json::JsonReader::_diagnostics</td>
+        </tr>
+      </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Parses a UTF-8 encoded JSON string and returns a <code><a class="el" href="../../d7/d95/classdl7_1_1json_1_1Json.html">Json</a></code> object. </p>
 
 </div>
 </div>
