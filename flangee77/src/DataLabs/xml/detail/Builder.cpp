@@ -258,7 +258,7 @@ namespace dl7::xml::detail {
     {
         std::vector<std::unique_ptr<Node>> nodes;
 
-        while (true)
+        while (!token_reader.is_eof())
         {
             cl7::u8string char_data = _parse_char_data(token_reader, whitespace_handling);
             if (!char_data.empty() && !cl7::text::transform::trimmed(cl7::u8string_view(char_data), u8" \t\n\r").empty())
@@ -357,7 +357,7 @@ namespace dl7::xml::detail {
                 continue;
             }
 
-            if (token_reader.check_first_char(u8'<'))
+            if (token_reader.is_eof() || token_reader.check_first_char(u8'<'))
                 break;
 
             buffer << token_reader.consume_token().lexeme;

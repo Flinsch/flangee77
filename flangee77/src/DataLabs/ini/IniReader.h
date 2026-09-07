@@ -3,6 +3,8 @@
 
 #include "./Ini.h"
 
+#include <DataLabs/syntax/Diagnostics.h>
+
 
 
 namespace dl7::ini {
@@ -10,16 +12,29 @@ namespace dl7::ini {
 
 
 /**
- * A utility class for parsing INI data from UTF-8 encoded string representations.
+ * Parses INI data from UTF-8 encoded string representations, keeping whatever it
+ * had to complain about along the way.
  */
 class IniReader
 {
 
 public:
     /**
-     * Parses a UTF-8 encoded INI string and returns an `Ini` object.
+     * Parses a UTF-8 encoded INI string and returns an `Ini` object. Whatever
+     * there is to complain about ends up in the diagnostics, which are cleared
+     * beforehand.
      */
-    static Ini parse(cl7::u8string_view source);
+    Ini parse(cl7::u8string_view source);
+
+    /**
+     * Returns the diagnostics of the most recent `parse` call.
+     */
+    const syntax::Diagnostics& get_diagnostics() const noexcept { return _diagnostics; }
+
+
+
+private:
+    syntax::Diagnostics _diagnostics;
 
 }; // class IniReader
 

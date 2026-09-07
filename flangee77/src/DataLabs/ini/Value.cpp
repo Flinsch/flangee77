@@ -192,7 +192,7 @@ namespace dl7::ini {
         if (is_true()) return u8"true";
         if (is_false()) return u8"false";
 
-        //return IniWriter::to_string(*this);
+        //return IniWriter{}.to_string(*this);
         assert(false);
         return {};
     }

@@ -71,6 +71,13 @@ public:
     void add(Diagnostic::Severity severity, cl7::u8string_view message, const SourceContext& source_context);
 
     /**
+     * Adds all diagnostic entries of the given collection to this one. The entries
+     * keep the source context they were resolved with, which is what lets a parser
+     * hand its own source-aware diagnostics over to a caller's plain ones.
+     */
+    void add_all(const Diagnostics& diagnostics);
+
+    /**
      * Returns the "list" of all diagnostics.
      */
     const std::vector<Diagnostic>& get_all() const { return _diagnostics; }

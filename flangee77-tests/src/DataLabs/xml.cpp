@@ -6,6 +6,7 @@
 #include <DataLabs/xml/XmlWriter.h>
 #include <DataLabs/xml/util/Escaper.h>
 #include <DataLabs/xml/util/Unescaper.h>
+#include <DataLabs/syntax/Diagnostics.h>
 
 #include "../shared.h"
 
@@ -13,7 +14,7 @@
 
 namespace tl7::internals {
     inline
-    cl7::u8string to_string(const dl7::xml::Document& document) { return dl7::xml::XmlWriter::to_string( document ); }
+    cl7::u8string to_string(const dl7::xml::Document& document) { return dl7::xml::XmlWriter{}.to_string( document ); }
 }
 
 
@@ -106,7 +107,7 @@ TESTLABS_CASE( u8"DataLabs:  xml:  XmlReader:  parse" )
     document.root_element().set_name(u8"root");
     document.root_element().append_element(u8"empty-element");
 
-    TESTLABS_CHECK_EQ( dl7::xml::XmlReader::parse( string ), document );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlReader{}.parse( string ), document );
 
 
     string = u8"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -123,7 +124,7 @@ TESTLABS_CASE( u8"DataLabs:  xml:  XmlReader:  parse" )
     element->attributes().emplace_back(u8"x", u8"1");
     element->attributes().emplace_back(u8"y", u8"2");
 
-    TESTLABS_CHECK_EQ( dl7::xml::XmlReader::parse( string ), document );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlReader{}.parse( string ), document );
 
 
     string = u8"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -145,16 +146,16 @@ TESTLABS_CASE( u8"DataLabs:  xml:  XmlReader:  parse" )
     element = document.root_element().append_element(u8"element-with-content");
     element->append_text(u8"\n    Hello \t World\n  ");
 
-    TESTLABS_CHECK_EQ( dl7::xml::XmlReader::parse( string ), document );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlReader{}.parse( string ), document );
 
     element->set_text_content(u8"\n    Hello \t World\n  ");
-    TESTLABS_CHECK_EQ( dl7::xml::XmlReader::parse( string, dl7::xml::WhitespaceHandling::Preserve ), document );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlReader{ dl7::xml::WhitespaceHandling::Preserve }.parse( string), document );
 
     element->set_text_content(u8"     Hello   World   ");
-    TESTLABS_CHECK_EQ( dl7::xml::XmlReader::parse( string, dl7::xml::WhitespaceHandling::Replace ), document );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlReader{ dl7::xml::WhitespaceHandling::Replace }.parse( string), document );
 
     element->set_text_content(u8"Hello World");
-    TESTLABS_CHECK_EQ( dl7::xml::XmlReader::parse( string, dl7::xml::WhitespaceHandling::Collapse ), document );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlReader{ dl7::xml::WhitespaceHandling::Collapse }.parse( string), document );
 
 
     string = u8"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -195,16 +196,16 @@ TESTLABS_CASE( u8"DataLabs:  xml:  XmlReader:  parse" )
     element->attributes().emplace_back(u8"xml:space", u8"default");
     element->append_text(u8"\n    Hello \t World\n  ");
 
-    TESTLABS_CHECK_EQ( dl7::xml::XmlReader::parse( string ), document );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlReader{}.parse( string ), document );
 
     element->set_text_content(u8"\n    Hello \t World\n  ");
-    TESTLABS_CHECK_EQ( dl7::xml::XmlReader::parse( string, dl7::xml::WhitespaceHandling::Preserve ), document );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlReader{ dl7::xml::WhitespaceHandling::Preserve }.parse( string), document );
 
     element->set_text_content(u8"     Hello   World   ");
-    TESTLABS_CHECK_EQ( dl7::xml::XmlReader::parse( string, dl7::xml::WhitespaceHandling::Replace ), document );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlReader{ dl7::xml::WhitespaceHandling::Replace }.parse( string), document );
 
     element->set_text_content(u8"Hello World");
-    TESTLABS_CHECK_EQ( dl7::xml::XmlReader::parse( string, dl7::xml::WhitespaceHandling::Collapse ), document );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlReader{ dl7::xml::WhitespaceHandling::Collapse }.parse( string), document );
 
 
     string = u8"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -226,16 +227,16 @@ TESTLABS_CASE( u8"DataLabs:  xml:  XmlReader:  parse" )
     element = document.root_element().append_element(u8"element-with-content");
     element->append_text(u8"\n     <&lt; Hello World &gt;> \n  ");
 
-    TESTLABS_CHECK_EQ( dl7::xml::XmlReader::parse( string ), document );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlReader{}.parse( string ), document );
 
     element->set_text_content(u8"\n     <&lt; Hello World &gt;> \n  ");
-    TESTLABS_CHECK_EQ( dl7::xml::XmlReader::parse( string, dl7::xml::WhitespaceHandling::Preserve ), document );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlReader{ dl7::xml::WhitespaceHandling::Preserve }.parse( string), document );
 
     element->set_text_content(u8"      <&lt; Hello World &gt;>    ");
-    TESTLABS_CHECK_EQ( dl7::xml::XmlReader::parse( string, dl7::xml::WhitespaceHandling::Replace ), document );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlReader{ dl7::xml::WhitespaceHandling::Replace }.parse( string), document );
 
     element->set_text_content(u8" <&lt; Hello World &gt;> ");
-    TESTLABS_CHECK_EQ( dl7::xml::XmlReader::parse( string, dl7::xml::WhitespaceHandling::Collapse ), document );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlReader{ dl7::xml::WhitespaceHandling::Collapse }.parse( string), document );
 
 
     string = u8"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -283,7 +284,7 @@ TESTLABS_CASE( u8"DataLabs:  xml:  XmlReader:  parse" )
 "     <&lt; Hello World &gt;> \n"
 "  ");
 
-    TESTLABS_CHECK_EQ( dl7::xml::XmlReader::parse( string ), document );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlReader{}.parse( string ), document );
 }
 
 
@@ -302,10 +303,10 @@ TESTLABS_CASE( u8"DataLabs:  xml:  XmlWriter:  to_string" )
 "<root/>\n"
 "";
 
-    TESTLABS_CHECK_EQ( dl7::xml::XmlWriter::to_string( document ), string );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlWriter{}.to_string( document ), string );
 
     string = u8"<?xml version=\"1.0\" encoding=\"utf-8\"?><root/>";
-    TESTLABS_CHECK_EQ( dl7::xml::XmlWriter::to_string( document, dl7::xml::XmlWriter::DEFAULT_COMPACT_FORMAT ), string );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlWriter{ dl7::xml::XmlWriter::DEFAULT_COMPACT_FORMAT }.to_string( document), string );
 
 
     document = {};
@@ -318,7 +319,7 @@ TESTLABS_CASE( u8"DataLabs:  xml:  XmlWriter:  to_string" )
 "<root foo=\"foo\" bar='\"foo&apos;s\"' foobar=\"'&quot;foo&quot;'\"/>\n"
 "";
 
-    TESTLABS_CHECK_EQ( dl7::xml::XmlWriter::to_string( document ), string );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlWriter{}.to_string( document ), string );
 
 
     document = {};
@@ -332,14 +333,20 @@ TESTLABS_CASE( u8"DataLabs:  xml:  XmlWriter:  to_string" )
 "</root>\n"
 "";
 
-    TESTLABS_CHECK_EQ( dl7::xml::XmlWriter::to_string( document ), string );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlWriter{}.to_string( document ), string );
 
     string = u8"<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n"
 "<!DOCTYPE root>\r\n"
 "<root>\r\n"
 "\t<element>&lt; Hello \n World &#x00df; &gt;</element>\r\n"
 "</root>";
-    TESTLABS_CHECK_EQ( dl7::xml::XmlWriter::to_string( document, {.pretty_options = {.indentation = 0, .line_ending = dl7::xml::Format::PrettyOptions::LineEnding::CRLF, .add_empty_line = false}, .force_escape = true, .escape_unicode = true, .insert_doctype = true} ), string );
+    const dl7::xml::Format format{
+        .pretty_options = {.indentation = 0, .line_ending = dl7::xml::Format::PrettyOptions::LineEnding::CRLF, .add_empty_line = false},
+        .force_escape = true,
+        .escape_unicode = true,
+        .insert_doctype = true,
+    };
+    TESTLABS_CHECK_EQ( dl7::xml::XmlWriter{ format }.to_string( document ), string );
 
 
     document = {};
@@ -358,7 +365,7 @@ TESTLABS_CASE( u8"DataLabs:  xml:  XmlWriter:  to_string" )
 "</root>\n"
 "";
 
-    TESTLABS_CHECK_EQ( dl7::xml::XmlWriter::to_string( document ), string );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlWriter{}.to_string( document ), string );
 
 
     document = {};
@@ -378,5 +385,51 @@ TESTLABS_CASE( u8"DataLabs:  xml:  XmlWriter:  to_string" )
 "</root>\n"
 "";
 
-    TESTLABS_CHECK_EQ( dl7::xml::XmlWriter::to_string( document ), string );
+    TESTLABS_CHECK_EQ( dl7::xml::XmlWriter{}.to_string( document ), string );
+}
+
+
+
+TESTLABS_CASE( u8"DataLabs:  xml:  XmlReader:  parse (diagnostics)" )
+{
+    dl7::xml::XmlReader reader;
+
+    {
+        const auto document = reader.parse( u8"<a>x</a>" );
+
+        TESTLABS_CHECK_EQ( document.root_element().get_name(), u8"a" );
+        TESTLABS_CHECK_EQ( reader.get_diagnostics().get_count(), 0 );
+    }
+
+    {
+        reader.parse( u8"<a>x" );
+
+        TESTLABS_CHECK( reader.get_diagnostics().get_error_count() > 0 );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  xml:  XmlReader:  parse (unterminated input)" )
+{
+    // None of these used to terminate either: the content loops kept consuming the
+    // very same "EOF" token.
+    struct Entry
+    {
+        cl7::u8string string;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"<a>" },
+        { u8"<a>x" },
+        { u8"<a><b>x" },
+        { u8"<a>x</a" },
+        { u8"<a" },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
+    {
+        dl7::xml::XmlReader{}.parse( entry.string );
+
+        // Getting here at all is the point; what is reported is secondary.
+        TESTLABS_CHECK( true );
+    }
 }

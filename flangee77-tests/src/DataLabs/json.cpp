@@ -7,6 +7,7 @@
 #include <DataLabs/json/util/Validator.h>
 #include <DataLabs/json/util/Escaper.h>
 #include <DataLabs/json/util/Unescaper.h>
+#include <DataLabs/syntax/Diagnostics.h>
 
 #include "../shared.h"
 
@@ -419,7 +420,7 @@ TESTLABS_CASE( u8"DataLabs:  json:  JsonReader:  parse" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
     {
-        const auto json = dl7::json::JsonReader::parse( entry.string );
+        const auto json = dl7::json::JsonReader{}.parse( entry.string );
         TESTLABS_CHECK_EQ( json, entry.json );
     }
 }
@@ -449,7 +450,7 @@ TESTLABS_CASE( u8"DataLabs:  json:  JsonWriter:  to_string" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
     {
-        TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( entry.json, entry.format ), entry.string );
+        TESTLABS_CHECK_EQ( dl7::json::JsonWriter{ entry.format }.to_string( entry.json), entry.string );
     }
 }
 
@@ -643,11 +644,11 @@ u8"{\r\n"
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
     {
-        const auto json = dl7::json::JsonReader::parse( entry.string );
+        const auto json = dl7::json::JsonReader{}.parse( entry.string );
         if (entry.string.empty())
-            TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( json, entry.format ), u8"null" );
+            TESTLABS_CHECK_EQ( dl7::json::JsonWriter{ entry.format }.to_string( json), u8"null" );
         else
-            TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( json, entry.format ), entry.string );
+            TESTLABS_CHECK_EQ( dl7::json::JsonWriter{ entry.format }.to_string( json), entry.string );
     }
 }
 
@@ -664,19 +665,43 @@ TESTLABS_CASE( u8"DataLabs:  json:  JsonWriter (NaN and infinite values)" )
     dl7::json::Format format_encode_as_string = default_format;
     format_encode_as_string.float_policy = dl7::json::Format::FloatPolicy::EncodeAsString;
 
-    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( std::numeric_limits<float>::quiet_NaN() ), default_format ), u8"null" );
-    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( +std::numeric_limits<float>::infinity() ), default_format ), u8"null" );
-    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( -std::numeric_limits<float>::infinity() ), default_format ), u8"null" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter{ default_format }.to_string( dl7::json::Json( std::numeric_limits<float>::quiet_NaN() )), u8"null" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter{ default_format }.to_string( dl7::json::Json( +std::numeric_limits<float>::infinity() )), u8"null" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter{ default_format }.to_string( dl7::json::Json( -std::numeric_limits<float>::infinity() )), u8"null" );
 
-    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( std::numeric_limits<float>::quiet_NaN() ), format_replace_with_null ), u8"null" );
-    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( +std::numeric_limits<float>::infinity() ), format_replace_with_null ), u8"null" );
-    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( -std::numeric_limits<float>::infinity() ), format_replace_with_null ), u8"null" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter{ format_replace_with_null }.to_string( dl7::json::Json( std::numeric_limits<float>::quiet_NaN() )), u8"null" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter{ format_replace_with_null }.to_string( dl7::json::Json( +std::numeric_limits<float>::infinity() )), u8"null" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter{ format_replace_with_null }.to_string( dl7::json::Json( -std::numeric_limits<float>::infinity() )), u8"null" );
 
-    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( std::numeric_limits<float>::quiet_NaN() ), format_replace_with_zero ), u8"0.0" );
-    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( +std::numeric_limits<float>::infinity() ), format_replace_with_zero ), u8"0.0" );
-    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( -std::numeric_limits<float>::infinity() ), format_replace_with_zero ), u8"0.0" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter{ format_replace_with_zero }.to_string( dl7::json::Json( std::numeric_limits<float>::quiet_NaN() )), u8"0.0" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter{ format_replace_with_zero }.to_string( dl7::json::Json( +std::numeric_limits<float>::infinity() )), u8"0.0" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter{ format_replace_with_zero }.to_string( dl7::json::Json( -std::numeric_limits<float>::infinity() )), u8"0.0" );
 
-    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( std::numeric_limits<float>::quiet_NaN() ), format_encode_as_string ), u8"\"NaN\"" );
-    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( +std::numeric_limits<float>::infinity() ), format_encode_as_string ), u8"\"Infinity\"" );
-    TESTLABS_CHECK_EQ( dl7::json::JsonWriter::to_string( dl7::json::Json( -std::numeric_limits<float>::infinity() ), format_encode_as_string ), u8"\"-Infinity\"" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter{ format_encode_as_string }.to_string( dl7::json::Json( std::numeric_limits<float>::quiet_NaN() )), u8"\"NaN\"" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter{ format_encode_as_string }.to_string( dl7::json::Json( +std::numeric_limits<float>::infinity() )), u8"\"Infinity\"" );
+    TESTLABS_CHECK_EQ( dl7::json::JsonWriter{ format_encode_as_string }.to_string( dl7::json::Json( -std::numeric_limits<float>::infinity() )), u8"\"-Infinity\"" );
+}
+
+
+
+TESTLABS_CASE( u8"DataLabs:  json:  JsonReader:  parse (diagnostics)" )
+{
+    dl7::json::JsonReader reader;
+
+    {
+        const auto json = reader.parse( u8"{\"a\": 1}" );
+
+        TESTLABS_CHECK( json.is_object() );
+        TESTLABS_CHECK_EQ( reader.get_diagnostics().get_count(), 0 );
+    }
+
+    {
+        reader.parse( u8"{\"a\": }" );
+
+        const auto& diagnostics = reader.get_diagnostics();
+
+        TESTLABS_CHECK( diagnostics.get_error_count() > 0 );
+        if ( !diagnostics.get_all().empty() )
+            TESTLABS_CHECK_EQ( diagnostics.get_all().front().source_context.location.line, 1 );
+    }
 }

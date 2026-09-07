@@ -244,7 +244,7 @@ namespace dl7::yaml {
      */
     string_t Yaml::to_string() const
     {
-        return YamlWriter::to_string(*this, YamlWriter::DEFAULT_FLOW_FORMAT);
+        return YamlWriter{YamlWriter::DEFAULT_FLOW_FORMAT}.to_string(*this);
     }
 
 

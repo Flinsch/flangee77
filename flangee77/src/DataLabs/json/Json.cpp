@@ -244,7 +244,7 @@ namespace dl7::json {
      */
     string_t Json::to_string() const
     {
-        return JsonWriter::to_string(*this, JsonWriter::DEFAULT_COMPACT_FORMAT);
+        return JsonWriter{JsonWriter::DEFAULT_COMPACT_FORMAT}.to_string(*this);
     }
 
 

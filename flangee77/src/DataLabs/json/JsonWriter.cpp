@@ -8,15 +8,23 @@ namespace dl7::json {
 
 
 
+    JsonWriter::JsonWriter(const Format& format)
+        : _format(format)
+    {
+    }
+
+
+
     /**
      * Generates a string representing the given JSON object/value based on the
-     * specified format.
+     * format this writer was given. Whatever there is to complain about ends
+     * up in the diagnostics, which are cleared beforehand.
      */
-    cl7::u8string JsonWriter::to_string(const Json& json, const Format& format)
+    cl7::u8string JsonWriter::to_string(const Json& json)
     {
-        syntax::Diagnostics diagnostics;
+        _diagnostics.clear();
 
-        detail::Generator generator{&diagnostics, format};
+        detail::Generator generator{&_diagnostics, _format};
 
         return generator.process(json);
     }

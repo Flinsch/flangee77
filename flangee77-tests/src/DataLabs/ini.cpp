@@ -4,6 +4,7 @@
 #include <DataLabs/ini/Ini.h>
 #include <DataLabs/ini/IniReader.h>
 #include <DataLabs/ini/IniWriter.h>
+#include <DataLabs/syntax/Diagnostics.h>
 
 #include "../shared.h"
 
@@ -11,7 +12,7 @@
 
 namespace tl7::internals {
     inline
-    cl7::u8string to_string(const dl7::ini::Ini& ini) { return dl7::ini::IniWriter::to_string( ini ); }
+    cl7::u8string to_string(const dl7::ini::Ini& ini) { return dl7::ini::IniWriter{}.to_string( ini ); }
 }
 
 
@@ -216,7 +217,7 @@ u8"\n"
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
     {
-        const auto ini = dl7::ini::IniReader::parse( entry.string );
+        const auto ini = dl7::ini::IniReader{}.parse( entry.string );
         TESTLABS_CHECK_EQ( ini, entry.ini );
     }
 }
@@ -278,7 +279,7 @@ TESTLABS_CASE( u8"DataLabs:  ini:  IniWriter:  to_string" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
     {
-        const auto string = dl7::ini::IniWriter::to_string( entry.ini, entry.format );
+        const auto string = dl7::ini::IniWriter{ entry.format }.to_string( entry.ini);
         TESTLABS_CHECK_EQ( string, entry.string );
     }
 }
@@ -296,19 +297,80 @@ TESTLABS_CASE( u8"DataLabs:  ini:  IniWriter (NaN and infinite values)" )
     dl7::ini::Format format_encode_as_string = default_format;
     format_encode_as_string.float_policy = dl7::ini::Format::FloatPolicy::EncodeAsString;
 
-    TESTLABS_CHECK_EQ( dl7::ini::IniWriter::to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( std::numeric_limits<float>::quiet_NaN() ) } } ), default_format ), u8"foo=\n" );
-    TESTLABS_CHECK_EQ( dl7::ini::IniWriter::to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( +std::numeric_limits<float>::infinity() ) } } ), default_format ), u8"foo=\n" );
-    TESTLABS_CHECK_EQ( dl7::ini::IniWriter::to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( -std::numeric_limits<float>::infinity() ) } } ), default_format ), u8"foo=\n" );
+    TESTLABS_CHECK_EQ( dl7::ini::IniWriter{ default_format }.to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( std::numeric_limits<float>::quiet_NaN() ) } } )), u8"foo=\n" );
+    TESTLABS_CHECK_EQ( dl7::ini::IniWriter{ default_format }.to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( +std::numeric_limits<float>::infinity() ) } } )), u8"foo=\n" );
+    TESTLABS_CHECK_EQ( dl7::ini::IniWriter{ default_format }.to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( -std::numeric_limits<float>::infinity() ) } } )), u8"foo=\n" );
 
-    TESTLABS_CHECK_EQ( dl7::ini::IniWriter::to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( std::numeric_limits<float>::quiet_NaN() ) } } ), format_replace_with_undefined ), u8"foo=\n" );
-    TESTLABS_CHECK_EQ( dl7::ini::IniWriter::to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( +std::numeric_limits<float>::infinity() ) } } ), format_replace_with_undefined ), u8"foo=\n" );
-    TESTLABS_CHECK_EQ( dl7::ini::IniWriter::to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( -std::numeric_limits<float>::infinity() ) } } ), format_replace_with_undefined ), u8"foo=\n" );
+    TESTLABS_CHECK_EQ( dl7::ini::IniWriter{ format_replace_with_undefined }.to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( std::numeric_limits<float>::quiet_NaN() ) } } )), u8"foo=\n" );
+    TESTLABS_CHECK_EQ( dl7::ini::IniWriter{ format_replace_with_undefined }.to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( +std::numeric_limits<float>::infinity() ) } } )), u8"foo=\n" );
+    TESTLABS_CHECK_EQ( dl7::ini::IniWriter{ format_replace_with_undefined }.to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( -std::numeric_limits<float>::infinity() ) } } )), u8"foo=\n" );
 
-    TESTLABS_CHECK_EQ( dl7::ini::IniWriter::to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( std::numeric_limits<float>::quiet_NaN() ) } } ), format_replace_with_zero ), u8"foo=0.0\n" );
-    TESTLABS_CHECK_EQ( dl7::ini::IniWriter::to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( +std::numeric_limits<float>::infinity() ) } } ), format_replace_with_zero ), u8"foo=0.0\n" );
-    TESTLABS_CHECK_EQ( dl7::ini::IniWriter::to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( -std::numeric_limits<float>::infinity() ) } } ), format_replace_with_zero ), u8"foo=0.0\n" );
+    TESTLABS_CHECK_EQ( dl7::ini::IniWriter{ format_replace_with_zero }.to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( std::numeric_limits<float>::quiet_NaN() ) } } )), u8"foo=0.0\n" );
+    TESTLABS_CHECK_EQ( dl7::ini::IniWriter{ format_replace_with_zero }.to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( +std::numeric_limits<float>::infinity() ) } } )), u8"foo=0.0\n" );
+    TESTLABS_CHECK_EQ( dl7::ini::IniWriter{ format_replace_with_zero }.to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( -std::numeric_limits<float>::infinity() ) } } )), u8"foo=0.0\n" );
 
-    TESTLABS_CHECK_EQ( dl7::ini::IniWriter::to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( std::numeric_limits<float>::quiet_NaN() ) } } ), format_encode_as_string ), u8"foo=\"NaN\"\n" );
-    TESTLABS_CHECK_EQ( dl7::ini::IniWriter::to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( +std::numeric_limits<float>::infinity() ) } } ), format_encode_as_string ), u8"foo=\"Infinity\"\n" );
-    TESTLABS_CHECK_EQ( dl7::ini::IniWriter::to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( -std::numeric_limits<float>::infinity() ) } } ), format_encode_as_string ), u8"foo=\"-Infinity\"\n" );
+    TESTLABS_CHECK_EQ( dl7::ini::IniWriter{ format_encode_as_string }.to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( std::numeric_limits<float>::quiet_NaN() ) } } )), u8"foo=\"NaN\"\n" );
+    TESTLABS_CHECK_EQ( dl7::ini::IniWriter{ format_encode_as_string }.to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( +std::numeric_limits<float>::infinity() ) } } )), u8"foo=\"Infinity\"\n" );
+    TESTLABS_CHECK_EQ( dl7::ini::IniWriter{ format_encode_as_string }.to_string( dl7::ini::Ini( dl7::ini::Ini::properties_t{ { u8"foo", dl7::ini::Value( -std::numeric_limits<float>::infinity() ) } } )), u8"foo=\"-Infinity\"\n" );
+}
+
+
+
+TESTLABS_CASE( u8"DataLabs:  ini:  IniReader:  parse (diagnostics)" )
+{
+    dl7::ini::IniReader reader;
+
+    {
+        const auto ini = reader.parse( u8"a = 1" );
+
+        TESTLABS_CHECK_EQ( ini.properties().at( u8"a" ).as_integer(), 1 );
+        TESTLABS_CHECK_EQ( reader.get_diagnostics().get_count(), 0 );
+    }
+
+    {
+        reader.parse( u8"a = 1\n[section" );
+
+        const auto& diagnostics = reader.get_diagnostics();
+
+        TESTLABS_CHECK( diagnostics.get_error_count() > 0 );
+        if ( !diagnostics.get_all().empty() )
+            TESTLABS_CHECK_EQ( diagnostics.get_all().front().source_context.location.line, 2 );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  ini:  IniReader:  parse (unterminated input)" )
+{
+    // None of these used to terminate: at the end of the source text the current
+    // lexeme is empty, so the loops looking for a terminator never found one.
+    struct Entry
+    {
+        cl7::u8string string;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"a" },
+        { u8"a " },
+        { u8"[" },
+        { u8"[section" },
+        { u8"[section]\nkey" },
+        { u8"key = " },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
+    {
+        dl7::ini::IniReader{}.parse( entry.string );
+
+        // Getting here at all is the point; what is reported is secondary.
+        TESTLABS_CHECK( true );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  ini:  IniReader:  parse (no trailing line break)" )
+{
+    // A last line without a line break of its own is not an error.
+    dl7::ini::IniReader reader;
+    const auto ini = reader.parse( u8"[section]\na = 1" );
+
+    TESTLABS_CHECK_EQ( ini.sections().at( u8"section" ).properties().at( u8"a" ).as_integer(), 1 );
+    TESTLABS_CHECK_EQ( reader.get_diagnostics().get_count(), 0 );
 }

@@ -82,7 +82,7 @@ namespace dl7::ini::detail {
         if (token_reader.check_symbol_id(COMMENT_DELIMITER))
             _parse_comment(token_reader);
 
-        if (!token_reader.skip_symbol_id(NEWLINE))
+        if (!token_reader.is_eof() && !token_reader.skip_symbol_id(NEWLINE))
         {
             _error(u8"Line break expected.", token_reader.peek_token());
             token_reader.skip_past_symbol_id(NEWLINE);
@@ -163,7 +163,7 @@ namespace dl7::ini::detail {
 
         cl7::u8osstream oss;
 
-        while (token_reader.peek_lexeme().find_first_of(u8"[]\n\r./#;") == cl7::u8string_view::npos)
+        while (!token_reader.is_eof() && token_reader.peek_lexeme().find_first_of(u8"[]\n\r./#;") == cl7::u8string_view::npos)
             oss << token_reader.consume_token().lexeme;
 
         return cl7::text::transform::trimmed(oss.str());
@@ -178,7 +178,7 @@ namespace dl7::ini::detail {
 
         cl7::u8osstream oss;
 
-        while (token_reader.peek_lexeme().find_first_of(u8"=:\n\r#;[]") == cl7::u8string_view::npos)
+        while (!token_reader.is_eof() && token_reader.peek_lexeme().find_first_of(u8"=:\n\r#;[]") == cl7::u8string_view::npos)
             oss << token_reader.consume_token().lexeme;
 
         return cl7::text::transform::trimmed(oss.str());

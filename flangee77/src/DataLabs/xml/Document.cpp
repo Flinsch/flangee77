@@ -27,7 +27,7 @@ namespace dl7::xml {
      */
     cl7::u8string Document::to_string() const
     {
-        return XmlWriter::to_string(*this, XmlWriter::DEFAULT_COMPACT_FORMAT);
+        return XmlWriter{XmlWriter::DEFAULT_COMPACT_FORMAT}.to_string(*this);
     }
 
 

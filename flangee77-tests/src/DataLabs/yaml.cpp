@@ -5,6 +5,7 @@
 #include <DataLabs/yaml/YamlReader.h>
 #include <DataLabs/yaml/YamlWriter.h>
 #include <DataLabs/yaml/util/Unescaper.h>
+#include <DataLabs/syntax/Diagnostics.h>
 
 #include "../shared.h"
 
@@ -497,7 +498,7 @@ u8"# a small config\n"
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
     {
-        const auto yaml = dl7::yaml::YamlReader::parse( entry.string );
+        const auto yaml = dl7::yaml::YamlReader{}.parse( entry.string );
         TESTLABS_CHECK_EQ( yaml, entry.yaml );
     }
 }
@@ -506,7 +507,7 @@ TESTLABS_CASE( u8"DataLabs:  yaml:  YamlReader:  parse (not-a-number scalars)" )
 {
     // NaN never compares equal, not even to itself, so it cannot take part in the
     // batch above.
-    const auto yaml = dl7::yaml::YamlReader::parse( u8"key: .nan" );
+    const auto yaml = dl7::yaml::YamlReader{}.parse( u8"key: .nan" );
 
     TESTLABS_CHECK( yaml.is_mapping() );
     TESTLABS_CHECK( yaml.at( u8"key" ).is_float() );
@@ -586,7 +587,7 @@ TESTLABS_CASE( u8"DataLabs:  yaml:  YamlWriter:  to_string" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.label )
     {
-        TESTLABS_CHECK_EQ( dl7::yaml::YamlWriter::to_string( entry.yaml ), entry.expected_string );
+        TESTLABS_CHECK_EQ( dl7::yaml::YamlWriter{}.to_string( entry.yaml ), entry.expected_string );
     }
 }
 
@@ -622,7 +623,7 @@ TESTLABS_CASE( u8"DataLabs:  yaml:  YamlWriter:  to_string (flow style)" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.label )
     {
-        TESTLABS_CHECK_EQ( dl7::yaml::YamlWriter::to_string( entry.yaml, dl7::yaml::YamlWriter::DEFAULT_FLOW_FORMAT ), entry.expected_string );
+        TESTLABS_CHECK_EQ( dl7::yaml::YamlWriter{ dl7::yaml::YamlWriter::DEFAULT_FLOW_FORMAT }.to_string( entry.yaml), entry.expected_string );
     }
 }
 
@@ -661,7 +662,7 @@ TESTLABS_CASE( u8"DataLabs:  yaml:  YamlWriter:  to_string (format options)" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.label )
     {
-        TESTLABS_CHECK_EQ( dl7::yaml::YamlWriter::to_string( yaml, entry.format ), entry.expected_string );
+        TESTLABS_CHECK_EQ( dl7::yaml::YamlWriter{ entry.format }.to_string( yaml), entry.expected_string );
     }
 }
 
@@ -727,10 +728,56 @@ TESTLABS_CASE( u8"DataLabs:  yaml:  round trip (parse after write)" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.label )
     {
-        const auto string = dl7::yaml::YamlWriter::to_string( entry.yaml );
-        TESTLABS_CHECK_EQ( dl7::yaml::YamlReader::parse( string ), entry.yaml );
+        const auto string = dl7::yaml::YamlWriter{}.to_string( entry.yaml );
+        TESTLABS_CHECK_EQ( dl7::yaml::YamlReader{}.parse( string ), entry.yaml );
 
-        const auto flow_string = dl7::yaml::YamlWriter::to_string( entry.yaml, dl7::yaml::YamlWriter::DEFAULT_FLOW_FORMAT );
-        TESTLABS_CHECK_EQ( dl7::yaml::YamlReader::parse( flow_string ), entry.yaml );
+        const auto flow_string = dl7::yaml::YamlWriter{ dl7::yaml::YamlWriter::DEFAULT_FLOW_FORMAT }.to_string( entry.yaml);
+        TESTLABS_CHECK_EQ( dl7::yaml::YamlReader{}.parse( flow_string ), entry.yaml );
+    }
+}
+
+
+
+TESTLABS_CASE( u8"DataLabs:  yaml:  YamlReader:  parse (diagnostics)" )
+{
+    dl7::yaml::YamlReader reader;
+
+    // Whatever the reader has to complain about is kept for the asking.
+    {
+        const auto yaml = reader.parse( u8"a: 1\nb: 2" );
+
+        TESTLABS_CHECK( yaml.is_mapping() );
+        TESTLABS_CHECK_EQ( reader.get_diagnostics().get_count(), 0 );
+    }
+
+    // An error, with the source context to go with it.
+    {
+        reader.parse( u8"a: 1\n\tb: 2" );
+
+        const auto& diagnostics = reader.get_diagnostics();
+
+        TESTLABS_CHECK( diagnostics.get_error_count() > 0 );
+        if ( !diagnostics.get_all().empty() )
+        {
+            TESTLABS_CHECK( diagnostics.get_all().front().severity == dl7::syntax::Diagnostic::Severity::Error );
+            TESTLABS_CHECK_EQ( diagnostics.get_all().front().source_context.location.line, 2 );
+        }
+    }
+
+    // A warning, the result being perfectly usable all the same.
+    {
+        const auto yaml = reader.parse( u8"a: 1\na: 2" );
+
+        TESTLABS_CHECK_EQ( yaml.at( u8"a" ).as_integer(), 2 );
+        TESTLABS_CHECK_EQ( reader.get_diagnostics().get_error_count(), 0 );
+        TESTLABS_CHECK( reader.get_diagnostics().get_warning_count() > 0 );
+    }
+
+    // Every `parse` starts over: what one document had to say does not carry into
+    // the next one.
+    {
+        reader.parse( u8"a: 1" );
+
+        TESTLABS_CHECK_EQ( reader.get_diagnostics().get_count(), 0 );
     }
 }

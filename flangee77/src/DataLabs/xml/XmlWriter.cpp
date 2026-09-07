@@ -8,15 +8,23 @@ namespace dl7::xml {
 
 
 
-    /**
-     * Generates a string representing the given XML document based on the specified
-     * format.
-     */
-    cl7::u8string XmlWriter::to_string(const Document& document, const Format& format)
+    XmlWriter::XmlWriter(const Format& format)
+        : _format(format)
     {
-        syntax::Diagnostics diagnostics;
+    }
 
-        detail::Generator generator{&diagnostics, format};
+
+
+    /**
+     * Generates a string representing the given XML document based on the
+     * format this writer was given. Whatever there is to complain about ends
+     * up in the diagnostics, which are cleared beforehand.
+     */
+    cl7::u8string XmlWriter::to_string(const Document& document)
+    {
+        _diagnostics.clear();
+
+        detail::Generator generator{&_diagnostics, _format};
 
         return generator.process(document);
     }

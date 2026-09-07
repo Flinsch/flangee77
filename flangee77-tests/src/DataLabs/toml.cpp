@@ -5,6 +5,7 @@
 #include <DataLabs/toml/Value.h>
 #include <DataLabs/toml/TomlReader.h>
 #include <DataLabs/toml/TomlWriter.h>
+#include <DataLabs/syntax/Diagnostics.h>
 
 #include "../shared.h"
 
@@ -12,7 +13,7 @@
 
 namespace tl7::internals {
     inline
-    cl7::u8string to_string(const dl7::toml::Toml& toml) { return dl7::toml::TomlWriter::to_string( toml ); }
+    cl7::u8string to_string(const dl7::toml::Toml& toml) { return dl7::toml::TomlWriter{}.to_string( toml ); }
 }
 
 
@@ -315,7 +316,7 @@ u8"# a small config\n"
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
     {
-        const auto toml = dl7::toml::TomlReader::parse( entry.string );
+        const auto toml = dl7::toml::TomlReader{}.parse( entry.string );
         TESTLABS_CHECK_EQ( toml, entry.toml );
     }
 }
@@ -362,7 +363,7 @@ TESTLABS_CASE( u8"DataLabs:  toml:  TomlWriter:  to_string" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
     {
-        const auto string = dl7::toml::TomlWriter::to_string( entry.toml, entry.format );
+        const auto string = dl7::toml::TomlWriter{ entry.format }.to_string( entry.toml);
         TESTLABS_CHECK_EQ( string, entry.string );
     }
 }
@@ -397,14 +398,14 @@ TESTLABS_CASE( u8"DataLabs:  toml:  date-time parsing" )
         cl7::u8string source = u8"d = ";
         source += entry.input;
 
-        const auto toml = dl7::toml::TomlReader::parse( source );
+        const auto toml = dl7::toml::TomlReader{}.parse( source );
         const auto& value = toml.at( u8"d" );
 
         TESTLABS_CHECK( value.get_type() == entry.type );
         TESTLABS_CHECK_EQ( value.to_string(), entry.canonical );
 
         // Round-trip: writing and re-parsing must yield an equal document.
-        const auto reparsed = dl7::toml::TomlReader::parse( dl7::toml::TomlWriter::to_string( toml ) );
+        const auto reparsed = dl7::toml::TomlReader{}.parse( dl7::toml::TomlWriter{}.to_string( toml ) );
         TESTLABS_CHECK_EQ( reparsed, toml );
     }
 }
@@ -449,8 +450,32 @@ TESTLABS_CASE( u8"DataLabs:  toml:  round trip (parse after write)" )
 
     TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.label )
     {
-        const auto string = dl7::toml::TomlWriter::to_string( entry.toml );
-        const auto toml = dl7::toml::TomlReader::parse( string );
+        const auto string = dl7::toml::TomlWriter{}.to_string( entry.toml );
+        const auto toml = dl7::toml::TomlReader{}.parse( string );
         TESTLABS_CHECK_EQ( toml, entry.toml );
+    }
+}
+
+
+
+TESTLABS_CASE( u8"DataLabs:  toml:  TomlReader:  parse (diagnostics)" )
+{
+    dl7::toml::TomlReader reader;
+
+    {
+        const auto toml = reader.parse( u8"a = 1" );
+
+        TESTLABS_CHECK_EQ( toml.at( u8"a" ).as_integer(), 1 );
+        TESTLABS_CHECK_EQ( reader.get_diagnostics().get_count(), 0 );
+    }
+
+    {
+        reader.parse( u8"a = 1\nb" );
+
+        const auto& diagnostics = reader.get_diagnostics();
+
+        TESTLABS_CHECK( diagnostics.get_error_count() > 0 );
+        if ( !diagnostics.get_all().empty() )
+            TESTLABS_CHECK_EQ( diagnostics.get_all().front().source_context.location.line, 2 );
     }
 }

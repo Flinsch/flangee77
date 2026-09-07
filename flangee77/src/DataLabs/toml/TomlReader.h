@@ -3,6 +3,8 @@
 
 #include "./Toml.h"
 
+#include <DataLabs/syntax/Diagnostics.h>
+
 
 
 namespace dl7::toml {
@@ -10,16 +12,29 @@ namespace dl7::toml {
 
 
 /**
- * A utility class for parsing TOML data from UTF-8 encoded string representations.
+ * Parses TOML data from UTF-8 encoded string representations, keeping whatever it
+ * had to complain about along the way.
  */
 class TomlReader
 {
 
 public:
     /**
-     * Parses a UTF-8 encoded TOML string and returns a `Toml` object.
+     * Parses a UTF-8 encoded TOML string and returns a `Toml` object. Whatever
+     * there is to complain about ends up in the diagnostics, which are cleared
+     * beforehand.
      */
-    static Toml parse(cl7::u8string_view source);
+    Toml parse(cl7::u8string_view source);
+
+    /**
+     * Returns the diagnostics of the most recent `parse` call.
+     */
+    const syntax::Diagnostics& get_diagnostics() const noexcept { return _diagnostics; }
+
+
+
+private:
+    syntax::Diagnostics _diagnostics;
 
 }; // class TomlReader
 

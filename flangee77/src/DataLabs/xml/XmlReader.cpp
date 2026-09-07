@@ -12,20 +12,36 @@ namespace dl7::xml {
 
 
 
-    /**
-     * Parses a UTF-8 encoded XML string and returns a `Document` object.
-     */
-    Document XmlReader::parse(cl7::u8string_view source, WhitespaceHandling whitespace_handling)
+    XmlReader::XmlReader(WhitespaceHandling whitespace_handling)
+        : _whitespace_handling(whitespace_handling)
     {
-        syntax::SourceAwareDiagnostics diagnostics{source};
+    }
 
-        detail::Lexer lexer{&diagnostics};
+
+
+    /**
+     * Parses a UTF-8 encoded XML string and returns a `Document` object. Whatever
+     * there is to complain about ends up in the diagnostics, which are cleared
+     * beforehand.
+     */
+    Document XmlReader::parse(cl7::u8string_view source)
+    {
+        _diagnostics.clear();
+
+        // Diagnostics that know the source text resolve every entry's context right
+        // away. Only they hold a view of it, the finished entries do not. Which is
+        // what makes handing those entries over outlive this function safely.
+        syntax::SourceAwareDiagnostics source_aware_diagnostics{source};
+
+        detail::Lexer lexer{&source_aware_diagnostics};
         lexer.init(source);
 
         syntax::LexingTokenReader token_reader{&lexer};
 
-        detail::Builder builder{&diagnostics, whitespace_handling};
+        detail::Builder builder{&source_aware_diagnostics, _whitespace_handling};
         auto document = builder.build(token_reader);
+
+        _diagnostics.add_all(source_aware_diagnostics);
 
         if (!document)
             return {};
