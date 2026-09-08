@@ -17,20 +17,22 @@ namespace fl7::gui {
 /**
  * A named, cascading bundle of visual defaults: one theme-wide default level, plus
  * any number of face-type/role levels, keyed by the faces' own theme keys (e.g.,
- * "window", "button", etc.), each with its own optional hovered/pressed/focused
- * overlays (see ThemeLevel, resolve()).
+ * "window", "button", etc.), each with its own optional checked/hovered/pressed/
+ * focused overlays (see ThemeLevel, resolve()).
  */
 class Theme
 {
 
 public:
     /**
-     * Which of a face's independent, not mutually exclusive interaction states are
-     * currently active, for resolve() to apply the matching overlays (if any). See
+     * Which of a face's independent, not mutually exclusive states are currently
+     * active, for resolve() to apply the matching overlays (if any). See
      * ThemeLevel for how they combine.
      */
     struct State
     {
+        /** See HasCheckedState. */
+        bool checked = false;
         bool hovered = false;
         bool pressed = false;
         bool focused = false;
@@ -76,9 +78,9 @@ public:
      * level, then to style's own hard-coded default, except chrome, which only ever
      * comes from the key's own level. Unknown keys resolve as if their level were
      * empty (falling through to the theme-wide default/style's own defaults for
-     * everything but chrome). The key's own level's hovered/pressed/focused overlays
-     * (if any) whose state is currently active in `state` are then applied on top,
-     * in that fixed priority order (see ThemeLevel).
+     * everything but chrome). The key's own level's checked/hovered/pressed/focused
+     * overlays (if any) whose state is currently active in `state` are then applied
+     * on top, in that fixed priority order (see ThemeLevel).
      */
     Style resolve(cl7::u8string_view key, const State& state) const;
 

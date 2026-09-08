@@ -34,9 +34,9 @@ namespace fl7::gui {
      * level, then to style's own hard-coded default, except chrome, which only ever
      * comes from the key's own level. Unknown keys resolve as if their level were
      * empty (falling through to the theme-wide default/style's own defaults for
-     * everything but chrome). The key's own level's hovered/pressed/focused overlays
-     * (if any) whose state is currently active in `state` are then applied on top,
-     * in that fixed priority order (see ThemeLevel).
+     * everything but chrome). The key's own level's checked/hovered/pressed/focused
+     * overlays (if any) whose state is currently active in `state` are then applied
+     * on top, in that fixed priority order (see ThemeLevel).
      */
     Style Theme::resolve(cl7::u8string_view key, const State& state) const
     {
@@ -55,6 +55,8 @@ namespace fl7::gui {
 
         if (level)
         {
+            if (state.checked && level->checked)
+                _apply_overlay(style, *level->checked);
             if (state.hovered && level->hovered)
                 _apply_overlay(style, *level->hovered);
             if (state.pressed && level->pressed)

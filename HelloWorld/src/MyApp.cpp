@@ -5,6 +5,7 @@
     #include <FaceLabs/fonts/render/Markup.h>
 
     #include <FaceLabs/gui/faces/Button.h>
+    #include <FaceLabs/gui/faces/CheckBox.h>
     #include <FaceLabs/gui/faces/Frame.h>
     #include <FaceLabs/gui/faces/Label.h>
     #include <FaceLabs/gui/faces/Panel.h>
@@ -333,11 +334,17 @@ namespace helloworld {
         gui_button_level.pressed->text_style = fl7::gui::Style{}.text_style;
         gui_button_level.pressed->text_style->text_color = {1.0f, 0.4f, 0.4f, 1.0f};
 
+        // Demo "checked" feedback: no dedicated checkbox chrome art yet either, so
+        // this stays a flat-colored box, just switching fill color when checked.
+        auto& gui_checkbox_level = _gui_theme.get_level(u8"checkbox");
+        gui_checkbox_level.checked = std::make_unique<fl7::gui::ThemeLevel>();
+        gui_checkbox_level.checked->background_color = {0.3f, 0.75f, 0.35f, 1.0f};
+
         _gui_shell->set_theme(&_gui_theme);
 
         auto& frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo Frame");
         frame.set_position({600.0f, 210.0f});
-        frame.set_size({220.0f, 224.0f});
+        frame.set_size({220.0f, 254.0f});
 
         auto& panel = frame.get_content_area().add_child<fl7::gui::faces::Panel>();
         panel.set_position({20.0f, 20.0f});
@@ -356,6 +363,13 @@ namespace helloworld {
         button.get_clicked().connect([&button]() {
             LOG_INFO(u8"Button clicked!");
             button.set_text(button.get_text() == U"Click me" ? U"Clicked!" : U"Click me");
+        });
+
+        auto& checkbox = frame.get_content_area().add_child<fl7::gui::faces::CheckBox>();
+        checkbox.set_position({20.0f, 190.0f});
+        checkbox.set_size({20.0f, 20.0f});
+        checkbox.get_changed().connect([](bool checked) {
+            LOG_INFO(checked ? u8"CheckBox checked." : u8"CheckBox unchecked.");
         });
 
 
