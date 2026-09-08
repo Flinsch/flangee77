@@ -33,10 +33,12 @@ target_sources(flangee77
 
     gui/Collection.cpp
     gui/Face.cpp
+    gui/RadioGroup.cpp
     gui/Shell.cpp
     gui/Theme.cpp
 
     gui/faces/Frame.cpp
+    gui/faces/RadioButton.cpp
     gui/faces/Window.cpp
 
     gui/render/AbstractRenderer.cpp

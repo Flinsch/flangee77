@@ -14,6 +14,7 @@
 #include <FaceLabs/fonts/render/TestRenderer.h>
 
 #include <FaceLabs/gui/NineSliceChrome.h>
+#include <FaceLabs/gui/RadioGroup.h>
 #include <FaceLabs/gui/Shell.h>
 #include <FaceLabs/gui/Theme.h>
 #include <FaceLabs/gui/render/DefaultRenderer.h>
@@ -124,6 +125,7 @@ private:
     /** Uses _bitmap_renderer for text, so must outlive/out-construct it accordingly. */
     std::unique_ptr<fl7::gui::render::DefaultRenderer> _gui_renderer;
     std::unique_ptr<fl7::gui::Shell> _gui_shell;
+    fl7::gui::RadioGroup _gui_radio_group;
     fl7::gui::Theme _gui_theme;
     /** 9-slicing demo chrome atlas (see assets/gfx/chrome.ppm, backed by _gui_chrome_texture_id): window chrome on the left half, button chrome on the right half. */
     fl7::gui::NineSliceChrome _gui_window_chrome;

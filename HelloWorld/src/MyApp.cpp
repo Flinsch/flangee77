@@ -9,6 +9,7 @@
     #include <FaceLabs/gui/faces/Frame.h>
     #include <FaceLabs/gui/faces/Label.h>
     #include <FaceLabs/gui/faces/Panel.h>
+    #include <FaceLabs/gui/faces/RadioButton.h>
 
 #include <XiaoLabs/graphics.h>
     #include <XiaoLabs/graphics/images/codecs/targa/Reader.h>
@@ -334,17 +335,22 @@ namespace helloworld {
         gui_button_level.pressed->text_style = fl7::gui::Style{}.text_style;
         gui_button_level.pressed->text_style->text_color = {1.0f, 0.4f, 0.4f, 1.0f};
 
-        // Demo "checked" feedback: no dedicated checkbox chrome art yet either, so
-        // this stays a flat-colored box, just switching fill color when checked.
+        // Demo "checked" feedback: no dedicated checkbox/radio button chrome art
+        // yet either, so these stay flat-colored boxes, just switching fill color
+        // when checked.
         auto& gui_checkbox_level = _gui_theme.get_level(u8"checkbox");
         gui_checkbox_level.checked = std::make_unique<fl7::gui::ThemeLevel>();
         gui_checkbox_level.checked->background_color = {0.3f, 0.75f, 0.35f, 1.0f};
+
+        auto& gui_radio_button_level = _gui_theme.get_level(u8"radio_button");
+        gui_radio_button_level.checked = std::make_unique<fl7::gui::ThemeLevel>();
+        gui_radio_button_level.checked->background_color = {0.85f, 0.55f, 0.2f, 1.0f};
 
         _gui_shell->set_theme(&_gui_theme);
 
         auto& frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo Frame");
         frame.set_position({600.0f, 210.0f});
-        frame.set_size({220.0f, 254.0f});
+        frame.set_size({220.0f, 274.0f});
 
         auto& panel = frame.get_content_area().add_child<fl7::gui::faces::Panel>();
         panel.set_position({20.0f, 20.0f});
@@ -370,6 +376,20 @@ namespace helloworld {
         checkbox.set_size({20.0f, 20.0f});
         checkbox.get_changed().connect([](bool checked) {
             LOG_INFO(checked ? u8"CheckBox checked." : u8"CheckBox unchecked.");
+        });
+
+        auto& radio_button_1 = frame.get_content_area().add_child<fl7::gui::faces::RadioButton>(&_gui_radio_group, true);
+        radio_button_1.set_position({20.0f, 220.0f});
+        radio_button_1.set_size({20.0f, 20.0f});
+        radio_button_1.get_changed().connect([](bool checked) {
+            LOG_INFO(checked ? u8"RadioButton 1 checked." : u8"RadioButton 1 unchecked.");
+        });
+
+        auto& radio_button_2 = frame.get_content_area().add_child<fl7::gui::faces::RadioButton>(&_gui_radio_group);
+        radio_button_2.set_position({50.0f, 220.0f});
+        radio_button_2.set_size({20.0f, 20.0f});
+        radio_button_2.get_changed().connect([](bool checked) {
+            LOG_INFO(checked ? u8"RadioButton 2 checked." : u8"RadioButton 2 unchecked.");
         });
 
 
