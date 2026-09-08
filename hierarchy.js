@@ -263,7 +263,9 @@ var hierarchy =
         ] ]
       ] ],
       [ "fl7::gui::Control", "df/d2b/classfl7_1_1gui_1_1Control.html", [
-        [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ]
+        [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ],
+        [ "fl7::gui::faces::CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html", null ],
+        [ "fl7::gui::faces::RadioButton", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html", null ]
       ] ],
       [ "fl7::gui::Static", "dc/dfd/classfl7_1_1gui_1_1Static.html", [
         [ "fl7::gui::faces::Label", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html", null ]
@@ -325,8 +327,14 @@ var hierarchy =
     [ "xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates", "d7/d8c/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates.html", null ],
     [ "fl7::gui::HasBackground", "db/d13/classfl7_1_1gui_1_1HasBackground.html", [
       [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ],
+      [ "fl7::gui::faces::CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html", null ],
       [ "fl7::gui::faces::Panel", "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html", null ],
+      [ "fl7::gui::faces::RadioButton", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html", null ],
       [ "fl7::gui::faces::Window", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html", null ]
+    ] ],
+    [ "fl7::gui::HasCheckedState", "d9/db9/classfl7_1_1gui_1_1HasCheckedState.html", [
+      [ "fl7::gui::faces::CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html", null ],
+      [ "fl7::gui::faces::RadioButton", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html", null ]
     ] ],
     [ "tl7::Signature::hash", "dd/dc0/structtl7_1_1Signature_1_1hash.html", null ],
     [ "std::hash< xl7::graphics::impl::shared::meshes::ComposedVertexLayout >", "db/de3/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout_01_4.html", null ],
@@ -542,6 +550,7 @@ var hierarchy =
     [ "ml7::QuadraticBezier3< T >", "db/da4/structml7_1_1QuadraticBezier3.html", null ],
     [ "xl7::graphics::QuadRenderer", "d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html", null ],
     [ "ml7::Quaternion< T >", "d8/d1f/structml7_1_1Quaternion.html", null ],
+    [ "fl7::gui::RadioGroup", "d2/d69/classfl7_1_1gui_1_1RadioGroup.html", null ],
     [ "ml7::ops::ramp< start, slope >", "de/dcb/structml7_1_1ops_1_1ramp.html", null ],
     [ "ml7::ops::ramp< 0, 1 >", "da/d35/structml7_1_1ops_1_1ramp_3_010_00_011_01_4.html", null ],
     [ "xl7::graphics::states::RasterizerStateDesc", "d7/d7a/structxl7_1_1graphics_1_1states_1_1RasterizerStateDesc.html", null ],
@@ -710,6 +719,7 @@ var hierarchy =
     [ "al7::packing::ShelfPacker::Shelf", "d5/d56/structal7_1_1packing_1_1ShelfPacker_1_1Shelf.html", null ],
     [ "fl7::gui::Shell", "d6/d9c/classfl7_1_1gui_1_1Shell.html", null ],
     [ "cl7::behavioral::Signal< Args >", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", null ],
+    [ "cl7::behavioral::Signal< bool >", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", null ],
     [ "tl7::Signature", "d1/d32/structtl7_1_1Signature.html", [
       [ "tl7::Meta", "dd/d81/structtl7_1_1Meta.html", null ]
     ] ],
@@ -762,6 +772,7 @@ var hierarchy =
     [ "dl7::syntax::SourceContext", "d7/d8c/structdl7_1_1syntax_1_1SourceContext.html", null ],
     [ "dl7::syntax::SourceLocation", "d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html", null ],
     [ "fl7::fonts::render::AbstractRenderer::State", "d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html", null ],
+    [ "fl7::gui::Theme::State", "db/d6f/structfl7_1_1gui_1_1Theme_1_1State.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::StateArray< TProxy, N >", "d7/df7/classxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray.html", null ],
     [ "cl7::static_vector< T, N >", "da/d4e/classcl7_1_1static__vector.html", null ],
     [ "cl7::static_vector< cl7::u8string_view, MAX_ALIASES_PER_ENTRY >", "da/d4e/classcl7_1_1static__vector.html", null ],

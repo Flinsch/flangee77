@@ -126,6 +126,14 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a49c5abfef79f57dc2b49018ceb7cc6eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1df8aa74bb34b7bedba948b2ccd7ef8b" id="r_a1df8aa74bb34b7bedba948b2ccd7ef8b"><td class="memItemLeft" align="right" valign="top">std::optional&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a1df8aa74bb34b7bedba948b2ccd7ef8b">border_width</a></td></tr>
 <tr class="separator:a1df8aa74bb34b7bedba948b2ccd7ef8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72767cf90966e8e06cbc1f815b9d0d22" id="r_a72767cf90966e8e06cbc1f815b9d0d22"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html">ThemeLevel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a72767cf90966e8e06cbc1f815b9d0d22">checked</a></td></tr>
+<tr class="separator:a72767cf90966e8e06cbc1f815b9d0d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acee8407be61b2754982afd1196d2265d" id="r_acee8407be61b2754982afd1196d2265d"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html">ThemeLevel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#acee8407be61b2754982afd1196d2265d">hovered</a></td></tr>
+<tr class="separator:acee8407be61b2754982afd1196d2265d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ef388b1ede869857fbe1e9cb6ae778a" id="r_a1ef388b1ede869857fbe1e9cb6ae778a"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html">ThemeLevel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a1ef388b1ede869857fbe1e9cb6ae778a">pressed</a></td></tr>
+<tr class="separator:a1ef388b1ede869857fbe1e9cb6ae778a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43abf9841b7d008965ba83bf1669610e" id="r_a43abf9841b7d008965ba83bf1669610e"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html">ThemeLevel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a43abf9841b7d008965ba83bf1669610e">focused</a></td></tr>
+<tr class="separator:a43abf9841b7d008965ba83bf1669610e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>One cascading level of a theme: either the theme-wide default level, or a single face-type/role level. Unlike style, every value-typed field here is optional, "not set at this level" is a real, distinct state, needed so resolution can fall through to the next level field by field. </p>
@@ -173,6 +181,21 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a72767cf90966e8e06cbc1f815b9d0d22" name="a72767cf90966e8e06cbc1f815b9d0d22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72767cf90966e8e06cbc1f815b9d0d22">&#9670;&#160;</a></span>checked</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html">ThemeLevel</a>&gt; fl7::gui::ThemeLevel::checked</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Independent, not mutually exclusive (a face can be checked and hovered and pressed and focused all at once) per-state overlays, applied on top of the fields above once this level's fields have already been resolved (see <a class="el" href="../../d8/dc4/classfl7_1_1gui_1_1Theme.html#aa29b699708e577dc7c5ebf1aa59a45eb">Theme::resolve()</a>), in this fixed priority order: checked, then hovered, then pressed, then focused (each later one's set fields winning over the earlier ones'). checked comes first (rather than alongside the transient hovered/pressed/focused trio) because it's a persistent, semantic value (see <a class="el" href="../../d9/db9/classfl7_1_1gui_1_1HasCheckedState.html">HasCheckedState</a>), not a passing interaction: momentary feedback should tint whichever (checked or unchecked) look is currently in effect, not replace it. Only the fields directly above are ever consulted from an overlay: an overlay's own nested checked/hovered/pressed/focused pointers, if it had any, are never applied. One level of nesting is all that's meaningful. A unique_ptr (not optional) only because <a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html">ThemeLevel</a> refers to itself here. </p>
+
+</div>
+</div>
 <a id="a73a02a67ecf0580ea881edee10209bd8" name="a73a02a67ecf0580ea881edee10209bd8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a73a02a67ecf0580ea881edee10209bd8">&#9670;&#160;</a></span>chrome</h2>
 
@@ -188,6 +211,20 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a43abf9841b7d008965ba83bf1669610e" name="a43abf9841b7d008965ba83bf1669610e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43abf9841b7d008965ba83bf1669610e">&#9670;&#160;</a></span>focused</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html">ThemeLevel</a>&gt; fl7::gui::ThemeLevel::focused</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a7df043f7508535c07b379c29fd7f88f5" name="a7df043f7508535c07b379c29fd7f88f5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7df043f7508535c07b379c29fd7f88f5">&#9670;&#160;</a></span>font</h2>
 
@@ -200,6 +237,34 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Non-owning: whoever builds the theme keeps the font alive. </p>
+
+</div>
+</div>
+<a id="acee8407be61b2754982afd1196d2265d" name="acee8407be61b2754982afd1196d2265d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acee8407be61b2754982afd1196d2265d">&#9670;&#160;</a></span>hovered</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html">ThemeLevel</a>&gt; fl7::gui::ThemeLevel::hovered</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1ef388b1ede869857fbe1e9cb6ae778a" name="a1ef388b1ede869857fbe1e9cb6ae778a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ef388b1ede869857fbe1e9cb6ae778a">&#9670;&#160;</a></span>pressed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html">ThemeLevel</a>&gt; fl7::gui::ThemeLevel::pressed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

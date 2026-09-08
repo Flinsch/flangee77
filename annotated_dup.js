@@ -324,9 +324,11 @@ var annotated_dup =
       [ "gui", "d5/d56/namespacefl7_1_1gui.html", [
         [ "faces", "da/d58/namespacefl7_1_1gui_1_1faces.html", [
           [ "Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button" ],
+          [ "CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox" ],
           [ "Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame" ],
           [ "Label", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label" ],
           [ "Panel", "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html", "da/d45/classfl7_1_1gui_1_1faces_1_1Panel" ],
+          [ "RadioButton", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton" ],
           [ "Window", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window" ]
         ] ],
         [ "render", "df/df8/namespacefl7_1_1gui_1_1render.html", [
@@ -341,8 +343,10 @@ var annotated_dup =
         [ "Control", "df/d2b/classfl7_1_1gui_1_1Control.html", "df/d2b/classfl7_1_1gui_1_1Control" ],
         [ "Face", "d9/d1a/classfl7_1_1gui_1_1Face.html", "d9/d1a/classfl7_1_1gui_1_1Face" ],
         [ "HasBackground", "db/d13/classfl7_1_1gui_1_1HasBackground.html", "db/d13/classfl7_1_1gui_1_1HasBackground" ],
+        [ "HasCheckedState", "d9/db9/classfl7_1_1gui_1_1HasCheckedState.html", "d9/db9/classfl7_1_1gui_1_1HasCheckedState" ],
         [ "HasText", "d1/d67/classfl7_1_1gui_1_1HasText.html", "d1/d67/classfl7_1_1gui_1_1HasText" ],
         [ "NineSliceChrome", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome" ],
+        [ "RadioGroup", "d2/d69/classfl7_1_1gui_1_1RadioGroup.html", "d2/d69/classfl7_1_1gui_1_1RadioGroup" ],
         [ "Shell", "d6/d9c/classfl7_1_1gui_1_1Shell.html", "d6/d9c/classfl7_1_1gui_1_1Shell" ],
         [ "Static", "dc/dfd/classfl7_1_1gui_1_1Static.html", "dc/dfd/classfl7_1_1gui_1_1Static" ],
         [ "Style", "dd/d02/structfl7_1_1gui_1_1Style.html", "dd/d02/structfl7_1_1gui_1_1Style" ],
