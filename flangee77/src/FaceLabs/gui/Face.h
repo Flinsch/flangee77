@@ -123,9 +123,10 @@ public:
      * nearest ancestor's explicit override (not that ancestor's own *effective*
      * style, which may itself just be a theme resolution, that's specific to the
      * role of the ancestor, not to the role of this face), else this face's own
-     * role resolved against the owning shell's theme, else a default-constructed
-     * style as a last resort (no override anywhere up the chain, no theme, or a
-     * face type with no themed role).
+     * role (with its own hover/pressed/focused state, see Theme::State) resolved
+     * against the owning shell's theme, else a default-constructed style as a last
+     * resort (no override anywhere up the chain, no theme, or a face type with no
+     * themed role).
      */
     Style get_effective_style() const;
 

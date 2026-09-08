@@ -318,7 +318,21 @@ namespace helloworld {
 
         _gui_theme.get_default_level().font = _font.get();
         _gui_theme.get_level(u8"window").chrome = &_gui_window_chrome;
-        _gui_theme.get_level(u8"button").chrome = &_gui_button_chrome;
+
+        auto& gui_button_level = _gui_theme.get_level(u8"button");
+        gui_button_level.chrome = &_gui_button_chrome;
+
+        // Demo hover/pressed feedback: no dedicated chrome art for these states yet,
+        // so just tint the button's text color instead, proving the state cascade
+        // without needing new assets.
+        gui_button_level.hovered = std::make_unique<fl7::gui::ThemeLevel>();
+        gui_button_level.hovered->text_style = fl7::gui::Style{}.text_style;
+        gui_button_level.hovered->text_style->text_color = {1.0f, 0.85f, 0.3f, 1.0f};
+
+        gui_button_level.pressed = std::make_unique<fl7::gui::ThemeLevel>();
+        gui_button_level.pressed->text_style = fl7::gui::Style{}.text_style;
+        gui_button_level.pressed->text_style->text_color = {1.0f, 0.4f, 0.4f, 1.0f};
+
         _gui_shell->set_theme(&_gui_theme);
 
         auto& frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo Frame");

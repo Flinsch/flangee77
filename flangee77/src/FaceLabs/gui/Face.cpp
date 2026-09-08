@@ -59,9 +59,10 @@ namespace fl7::gui {
      * nearest ancestor's explicit override (not that ancestor's own *effective*
      * style, which may itself just be a theme resolution, that's specific to the
      * role of the ancestor, not to the role of this face), else this face's own
-     * role resolved against the owning shell's theme, else a default-constructed
-     * style as a last resort (no override anywhere up the chain, no theme, or a
-     * face type with no themed role).
+     * role (with its own hovered/pressed/focused state, see Theme::State) resolved
+     * against the owning shell's theme, else a default-constructed style as a last
+     * resort (no override anywhere up the chain, no theme, or a face type with no
+     * themed role).
      */
     Style Face::get_effective_style() const
     {
@@ -73,9 +74,30 @@ namespace fl7::gui {
 
         const cl7::u8string_view theme_key = _get_theme_key();
         if (!theme_key.empty())
+        {
             if (Shell* shell = get_shell())
+            {
                 if (const Theme* theme = shell->get_theme())
-                    return theme->resolve(theme_key);
+                {
+                    const bool is_hovered = shell->get_hovered_face() == this;
+                    const bool is_pressed = shell->get_pressed_face() == this;
+                    const bool is_focused = shell->get_focused_face() == this;
+
+                    return theme->resolve(theme_key, {
+                        .hovered = is_hovered,
+                        // Mouse capture (see Shell::_pressed_face) deliberately stays
+                        // "pressed" for the whole gesture even once the cursor leaves
+                        // the face (e.g., Frame's drag relies on that), but the
+                        // visual pressed state should only show while the cursor is
+                        // actually still over the face, like every other GUI's button
+                        // does (drag off while held to "cancel" the visual, drag back
+                        // to "reinstate" it, any number of times).
+                        .pressed = is_hovered && is_pressed,
+                        .focused = is_focused,
+                    });
+                }
+            }
+        }
 
         return {};
     }

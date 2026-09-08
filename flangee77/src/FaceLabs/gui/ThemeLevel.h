@@ -8,6 +8,7 @@
 
 #include <XiaoLabs/graphics/Color.h>
 
+#include <memory>
 #include <optional>
 
 
@@ -41,6 +42,22 @@ struct ThemeLevel
     std::optional<xl7::graphics::Color> border_color;
     /** 0 = no border. */
     std::optional<float> border_width;
+
+    /**
+     * Independent, not mutually exclusive (a face can be hovered and pressed and
+     * focused all at once) per-state overlays, applied on top of the fields above
+     * once this level's fields have already been resolved (see Theme::resolve()),
+     * in this fixed priority order: hovered, then pressed, then focused (each later
+     * one's set fields winning over the earlier ones'). Only the fields directly
+     * above are ever consulted from an overlay: an overlay's own nested
+     * hovered/pressed/focused pointers, if it had any, are never applied. One level
+     * of nesting is all that's meaningful. A unique_ptr (not optional) only because
+     * ThemeLevel refers to itself here.
+     */
+
+    std::unique_ptr<ThemeLevel> hovered;
+    std::unique_ptr<ThemeLevel> pressed;
+    std::unique_ptr<ThemeLevel> focused;
 
 }; // struct ThemeLevel
 

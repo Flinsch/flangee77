@@ -34,9 +34,11 @@ namespace fl7::gui {
      * level, then to style's own hard-coded default, except chrome, which only ever
      * comes from the key's own level. Unknown keys resolve as if their level were
      * empty (falling through to the theme-wide default/style's own defaults for
-     * everything but chrome).
+     * everything but chrome). The key's own level's hovered/pressed/focused overlays
+     * (if any) whose state is currently active in `state` are then applied on top,
+     * in that fixed priority order (see ThemeLevel).
      */
-    Style Theme::resolve(cl7::u8string_view key) const
+    Style Theme::resolve(cl7::u8string_view key, const State& state) const
     {
         Style style;
 
@@ -51,7 +53,43 @@ namespace fl7::gui {
         style.border_color = (level && level->border_color) ? *level->border_color : _default_level.border_color.value_or(style.border_color);
         style.border_width = (level && level->border_width) ? *level->border_width : _default_level.border_width.value_or(style.border_width);
 
+        if (level)
+        {
+            if (state.hovered && level->hovered)
+                _apply_overlay(style, *level->hovered);
+            if (state.pressed && level->pressed)
+                _apply_overlay(style, *level->pressed);
+            if (state.focused && level->focused)
+                _apply_overlay(style, *level->focused);
+        }
+
         return style;
+    }
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Overwrites style's fields with whichever ones overlay actually has set,
+     * leaving the rest of style untouched.
+     */
+    void Theme::_apply_overlay(Style& style, const ThemeLevel& overlay)
+    {
+        if (overlay.font)
+            style.font = overlay.font;
+        if (overlay.chrome)
+            style.chrome = overlay.chrome;
+        if (overlay.text_style)
+            style.text_style = *overlay.text_style;
+        if (overlay.background_color)
+            style.background_color = *overlay.background_color;
+        if (overlay.border_color)
+            style.border_color = *overlay.border_color;
+        if (overlay.border_width)
+            style.border_width = *overlay.border_width;
     }
 
 
