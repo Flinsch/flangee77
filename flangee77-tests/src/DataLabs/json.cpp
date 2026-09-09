@@ -705,3 +705,15 @@ TESTLABS_CASE( u8"DataLabs:  json:  JsonReader:  parse (diagnostics)" )
             TESTLABS_CHECK_EQ( diagnostics.get_all().front().source_context.location.line, 1 );
     }
 }
+
+TESTLABS_CASE( u8"DataLabs:  json:  JsonReader:  parse (byte order mark)" )
+{
+    // Skipping the byte order mark is the lexer's doing, so every format gets it.
+    dl7::json::JsonReader reader;
+    const auto json = reader.parse( u8"\ufeff{\"a\": 1}" );
+
+    TESTLABS_CHECK( json.is_object() );
+    if ( json.is_object() )
+        TESTLABS_CHECK_EQ( json.at( u8"a" ).as_integer(), 1 );
+    TESTLABS_CHECK_EQ( reader.get_diagnostics().get_count(), 0 );
+}

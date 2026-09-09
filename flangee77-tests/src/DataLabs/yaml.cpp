@@ -781,3 +781,124 @@ TESTLABS_CASE( u8"DataLabs:  yaml:  YamlReader:  parse (diagnostics)" )
         TESTLABS_CHECK_EQ( reader.get_diagnostics().get_count(), 0 );
     }
 }
+
+TESTLABS_CASE( u8"DataLabs:  yaml:  YamlReader:  parse (multi-line plain scalars)" )
+{
+    using dl7::yaml::Yaml;
+    using dl7::yaml::mapping_t;
+    using dl7::yaml::sequence_t;
+
+    struct Entry
+    {
+        cl7::u8string string;
+        Yaml yaml;
+    } entry;
+
+    const std::vector<Entry> container {
+        // A line break inside a plain scalar folds into a space.
+        { u8"key: a\n  b", Yaml( mapping_t{ { u8"key", Yaml( u8"a b" ) } } ) },
+        { u8"key: a\n  b\n  c", Yaml( mapping_t{ { u8"key", Yaml( u8"a b c" ) } } ) },
+        { u8"key: a\n      b", Yaml( mapping_t{ { u8"key", Yaml( u8"a b" ) } } ) },
+        { u8"key: a\n  b\nother: 1", Yaml( mapping_t{ { u8"key", Yaml( u8"a b" ) }, { u8"other", Yaml( 1 ) } } ) },
+
+        // A scalar that has a line to itself goes on at its own indentation.
+        { u8"key:\n  a\n  b", Yaml( mapping_t{ { u8"key", Yaml( u8"a b" ) } } ) },
+        { u8"hello\nworld", Yaml( u8"hello world" ) },
+
+        // Sequence entries fold just the same.
+        { u8"- a\n  b\n- c", Yaml( sequence_t{ Yaml( u8"a b" ), Yaml( u8"c" ) } ) },
+
+        // What the folded scalar amounts to is resolved from the whole of it.
+        { u8"key: 1\n  2", Yaml( mapping_t{ { u8"key", Yaml( u8"1 2" ) } } ) },
+        { u8"key: 1\n  2\n  3", Yaml( mapping_t{ { u8"key", Yaml( u8"1 2 3" ) } } ) },
+
+        // Only a plain scalar folds, and only across lines that start nothing of
+        // their own.
+        { u8"key: \"a\"\nother: 1", Yaml( mapping_t{ { u8"key", Yaml( u8"a" ) }, { u8"other", Yaml( 1 ) } } ) },
+        { u8"key: a\n- b", Yaml( mapping_t{ { u8"key", Yaml( u8"a" ) } } ) },
+        { u8"key: a\n---\nkey: b", Yaml( mapping_t{ { u8"key", Yaml( u8"a" ) } } ) },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.string )
+    {
+        TESTLABS_CHECK_EQ( dl7::yaml::YamlReader{}.parse( entry.string ), entry.yaml );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  yaml:  YamlReader:  parse (directives)" )
+{
+    dl7::yaml::YamlReader reader;
+    const auto yaml = reader.parse( u8"%YAML 1.2\n---\nkey: 1" );
+
+    TESTLABS_CHECK( yaml.is_mapping() );
+    if ( yaml.is_mapping() )
+        TESTLABS_CHECK_EQ( yaml.at( u8"key" ).as_integer(), 1 );
+    TESTLABS_CHECK_EQ( reader.get_diagnostics().get_error_count(), 0 );
+    TESTLABS_CHECK( reader.get_diagnostics().get_warning_count() > 0 );
+}
+
+TESTLABS_CASE( u8"DataLabs:  yaml:  YamlReader:  parse (error recovery)" )
+{
+    // A line that makes no sense costs itself, not the rest of the document.
+    dl7::yaml::YamlReader reader;
+    const auto yaml = reader.parse( u8"a: 1\nnonsense\nb: 2" );
+
+    TESTLABS_CHECK( yaml.is_mapping() );
+    if ( yaml.is_mapping() && yaml.as_mapping().contains( u8"a" ) && yaml.as_mapping().contains( u8"b" ) )
+    {
+        TESTLABS_CHECK_EQ( yaml.as_mapping().size(), 2 );
+        TESTLABS_CHECK_EQ( yaml.at( u8"a" ).as_integer(), 1 );
+        TESTLABS_CHECK_EQ( yaml.at( u8"b" ).as_integer(), 2 );
+    }
+    TESTLABS_CHECK( reader.get_diagnostics().get_error_count() > 0 );
+}
+
+TESTLABS_CASE( u8"DataLabs:  yaml:  YamlReader:  parse (nesting depth)" )
+{
+    // Deeply nested input must be given up on, not run into the stack.
+    {
+        cl7::u8string string( 500, u8'[' );
+        string += cl7::u8string( 500, u8']' );
+
+        dl7::yaml::YamlReader reader;
+        reader.parse( string );
+
+        TESTLABS_CHECK( reader.get_diagnostics().get_error_count() > 0 );
+    }
+
+    {
+        cl7::u8string string;
+        for ( size_t i = 0; i < 500; ++i )
+            string += cl7::u8string( i * 2, u8' ' ) + u8"a:\n";
+
+        dl7::yaml::YamlReader reader;
+        reader.parse( string );
+
+        TESTLABS_CHECK( reader.get_diagnostics().get_error_count() > 0 );
+    }
+
+    // The limit is the reader's to set.
+    {
+        dl7::yaml::YamlReader reader{ 3 };
+
+        TESTLABS_CHECK_EQ( reader.get_max_nesting_depth(), 3 );
+
+        reader.parse( u8"[[1]]" );
+        TESTLABS_CHECK_EQ( reader.get_diagnostics().get_error_count(), 0 );
+
+        reader.parse( u8"[[[[1]]]]" );
+        TESTLABS_CHECK( reader.get_diagnostics().get_error_count() > 0 );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  yaml:  YamlReader:  parse (byte order mark)" )
+{
+    // Skipping the byte order mark is the lexer's doing, so every format gets it.
+    dl7::yaml::YamlReader reader;
+    const auto yaml = reader.parse( u8"\ufeffkey: 1" );
+
+    TESTLABS_CHECK( yaml.is_mapping() );
+    if ( yaml.is_mapping() )
+        TESTLABS_CHECK_EQ( yaml.at( u8"key" ).as_integer(), 1 );
+    TESTLABS_CHECK_EQ( reader.get_diagnostics().get_count(), 0 );
+}

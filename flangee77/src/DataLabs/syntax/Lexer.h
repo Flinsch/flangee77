@@ -63,7 +63,8 @@ public:
 
     /**
      * Initializes this lexer with the specified source text and resets all internal
-     * data, especially the current cursor position.
+     * data, especially the current cursor position. A leading byte order mark is
+     * skipped, being an encoding artifact rather than content.
      */
     void init(cl7::u8string_view source);
 

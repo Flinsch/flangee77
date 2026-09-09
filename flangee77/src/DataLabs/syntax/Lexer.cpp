@@ -18,12 +18,18 @@ namespace dl7::syntax {
 
     /**
      * Initializes this lexer with the specified source text and resets all internal
-     * data, especially the current cursor position.
+     * data, especially the current cursor position. A leading byte order mark is
+     * skipped, being an encoding artifact rather than content.
      */
     void Lexer::init(cl7::u8string_view source)
     {
+        constexpr cl7::u8string_view BYTE_ORDER_MARK = u8"\ufeff";
+
         _source = source;
-        _source_offset = 0;
+
+        // Skipping it rather than cutting it off keeps every source offset, and
+        // with it every diagnostic's location, an offset into the source as given.
+        _source_offset = _source.starts_with(BYTE_ORDER_MARK) ? BYTE_ORDER_MARK.length() : 0;
     }
 
     /**

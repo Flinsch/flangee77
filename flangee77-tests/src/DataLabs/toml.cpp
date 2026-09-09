@@ -479,3 +479,15 @@ TESTLABS_CASE( u8"DataLabs:  toml:  TomlReader:  parse (diagnostics)" )
             TESTLABS_CHECK_EQ( diagnostics.get_all().front().source_context.location.line, 2 );
     }
 }
+
+TESTLABS_CASE( u8"DataLabs:  toml:  TomlReader:  parse (byte order mark)" )
+{
+    // Skipping the byte order mark is the lexer's doing, so every format gets it.
+    dl7::toml::TomlReader reader;
+    const auto toml = reader.parse( u8"\ufeffa = 1" );
+
+    TESTLABS_CHECK( toml.root().contains( u8"a" ) );
+    if ( toml.root().contains( u8"a" ) )
+        TESTLABS_CHECK_EQ( toml.at( u8"a" ).as_integer(), 1 );
+    TESTLABS_CHECK_EQ( reader.get_diagnostics().get_count(), 0 );
+}

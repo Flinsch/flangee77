@@ -433,3 +433,13 @@ TESTLABS_CASE( u8"DataLabs:  xml:  XmlReader:  parse (unterminated input)" )
         TESTLABS_CHECK( true );
     }
 }
+
+TESTLABS_CASE( u8"DataLabs:  xml:  XmlReader:  parse (byte order mark)" )
+{
+    // Skipping the byte order mark is the lexer's doing, so every format gets it.
+    dl7::xml::XmlReader reader;
+    const auto document = reader.parse( u8"\ufeff<a>x</a>" );
+
+    TESTLABS_CHECK_EQ( document.root_element().get_name(), u8"a" );
+    TESTLABS_CHECK_EQ( reader.get_diagnostics().get_count(), 0 );
+}

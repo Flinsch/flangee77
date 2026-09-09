@@ -374,3 +374,15 @@ TESTLABS_CASE( u8"DataLabs:  ini:  IniReader:  parse (no trailing line break)" )
     TESTLABS_CHECK_EQ( ini.sections().at( u8"section" ).properties().at( u8"a" ).as_integer(), 1 );
     TESTLABS_CHECK_EQ( reader.get_diagnostics().get_count(), 0 );
 }
+
+TESTLABS_CASE( u8"DataLabs:  ini:  IniReader:  parse (byte order mark)" )
+{
+    // Skipping the byte order mark is the lexer's doing, so every format gets it.
+    dl7::ini::IniReader reader;
+    const auto ini = reader.parse( u8"\ufeffa = 1" );
+
+    TESTLABS_CHECK( ini.properties().contains( u8"a" ) );
+    if ( ini.properties().contains( u8"a" ) )
+        TESTLABS_CHECK_EQ( ini.properties().at( u8"a" ).as_integer(), 1 );
+    TESTLABS_CHECK_EQ( reader.get_diagnostics().get_count(), 0 );
+}

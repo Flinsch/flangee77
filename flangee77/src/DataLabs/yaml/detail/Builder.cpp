@@ -22,8 +22,9 @@ namespace {
 
 
 
-    Builder::Builder(syntax::Diagnostics* diagnostics)
+    Builder::Builder(syntax::Diagnostics* diagnostics, size_t max_nesting_depth)
         : DirectAstBuilder(diagnostics)
+        , _max_nesting_depth(max_nesting_depth)
     {
     }
 
@@ -39,6 +40,30 @@ namespace {
         _token_reader = nullptr;
 
         return yaml;
+    }
+
+
+
+    /**
+     * Returns true if the nesting has grown past what is allowed, in which case the
+     * rest of the source text is consumed and the failure reported. Anything parsed
+     * so far is kept, there is just nothing sensible left to add to it.
+     */
+    bool Builder::_is_nested_too_deeply()
+    {
+        if (_nesting_depth <= _max_nesting_depth)
+            return false;
+
+        if (!_abandoned)
+        {
+            _error(u8"Maximum nesting depth exceeded; the rest of the document is skipped.", _line.offset);
+            _abandoned = true;
+        }
+
+        while (_advance_to_content_line())
+            ;
+
+        return true;
     }
 
 
@@ -181,6 +206,16 @@ namespace {
         if (!_advance_to_content_line())
             return {};
 
+        // Directives are not interpreted, but they must not
+        // be mistaken for the document's content either.
+        while (_line.tokens[0].symbol_id == ANY_OTHER && _line.tokens[0].lexeme.starts_with(u8'%'))
+        {
+            _warning(u8"Directives are not supported; the line is skipped.", _line.offset);
+
+            if (!_advance_to_content_line())
+                return {};
+        }
+
         size_t index = 0;
 
         if (_line.tokens[0].symbol_id == DOCUMENT_END)
@@ -223,6 +258,10 @@ namespace {
 
     mapping_t Builder::_parse_block_mapping(size_t index)
     {
+        const NestingGuard nesting{*this};
+        if (_is_nested_too_deeply())
+            return {};
+
         const size_t indent = _column_of(index);
 
         mapping_t mapping;
@@ -247,15 +286,20 @@ namespace {
                 _warning(u8"Duplicate key; the previous value is replaced.", key_offset);
             mapping[std::move(key)] = std::move(value);
 
-            // A document marker ends the mapping without further ado; anything
-            // else that is not a key-value pair is an error.
-            if (_line.eof || _at_document_marker() || _line.indent < indent || _is_sequence_entry(0))
-                break;
-
-            if (_find_key_separator(0) == NO_INDEX)
+            for (;;)
             {
-                _error(u8"Key-value pair expected.", _line.offset);
-                break;
+                // A document marker ends the mapping without further ado,
+                // and so does anything belonging to whatever encloses it.
+                if (_line.eof || _at_document_marker() || _line.indent < indent || _is_sequence_entry(0))
+                    return mapping;
+
+                if (_find_key_separator(0) != NO_INDEX)
+                    break;
+
+                // Recover locally: a line that is not a key-value pair
+                // costs itself rather than the rest of the document.
+                _error(u8"Key-value pair expected; the line is skipped.", _line.offset);
+                _advance_to_content_line();
             }
 
             if (_line.indent > indent)
@@ -269,6 +313,10 @@ namespace {
 
     sequence_t Builder::_parse_block_sequence(size_t index)
     {
+        const NestingGuard nesting{*this};
+        if (_is_nested_too_deeply())
+            return {};
+
         const size_t indent = _column_of(index);
 
         sequence_t sequence;
@@ -303,21 +351,17 @@ namespace {
         if (symbol_id == BLOCK_SCALAR_HEADER && index + 1 == _line.tokens.size())
             return Yaml{_parse_block_scalar(_line.tokens[index])};
 
-        Yaml value;
-
         if (symbol_id == OPENING_BRACKET || symbol_id == LEFT_BRACE)
         {
             size_t cursor = index;
-            value = _parse_flow_node(cursor);
-        }
-        else
-        {
-            value = _parse_scalar(index);
+            auto value = _parse_flow_node(cursor);
+
+            _advance_to_content_line();
+
+            return value;
         }
 
-        _advance_to_content_line();
-
-        return value;
+        return _parse_scalar(index);
     }
 
     /**
@@ -456,6 +500,10 @@ namespace {
         assert(_line.tokens[index].symbol_id == OPENING_BRACKET);
         ++index;
 
+        const NestingGuard nesting{*this};
+        if (_is_nested_too_deeply())
+            return {};
+
         sequence_t sequence;
 
         for (;;)
@@ -508,6 +556,10 @@ namespace {
     {
         assert(_line.tokens[index].symbol_id == LEFT_BRACE);
         ++index;
+
+        const NestingGuard nesting{*this};
+        if (_is_nested_too_deeply())
+            return {};
 
         mapping_t mapping;
 
@@ -687,16 +739,24 @@ namespace {
         return string_t{_join(index, end)};
     }
 
+    /**
+     * Parses a scalar and, unless it is a quoted one, the plain lines below it that
+     * continue it, each line break folding into a space.
+     */
     Yaml Builder::_parse_scalar(size_t index)
     {
         const size_t end = _line.tokens.size();
         assert(index < end);
 
         if (end - index == 1 && _line.tokens[index].symbol_id == QUOTED_STRING_LITERAL)
-            return Yaml{_unquote(_line.tokens[index])};
+        {
+            auto string = _unquote(_line.tokens[index]);
+            _advance_to_content_line();
+            return Yaml{std::move(string)};
+        }
 
         const auto& token = _line.tokens[index];
-        const auto text = _join(index, end);
+        auto text = string_t{_join(index, end)};
 
         // Report what is recognizably not a plain scalar but is not supported
         // either, rather than silently turning it into a string.
@@ -707,7 +767,38 @@ namespace {
         else if (text.front() == u8'!')
             _warning(u8"Tags are not supported; treated as a plain scalar.", token.source_offset);
 
+        // A scalar that has a line to itself goes on at its own indentation,
+        // one that follows a `key:` or a `-` has to be indented past that line.
+        const size_t min_indent = _line.indent + (index == 0 ? 0 : 1);
+
+        // An empty line ends a plain scalar, which is why the lines are taken one
+        // at a time here rather than skipping to the next one with content.
+        _read_line();
+
+        while (_continues_plain_scalar(min_indent))
+        {
+            text += u8' ';
+            text += _join(0, _line.tokens.size());
+
+            _read_line();
+        }
+
+        while (!_line.eof && _line.is_blank())
+            _read_line();
+
         return util::Schema::resolve(text);
+    }
+
+    /**
+     * Returns true if the current line continues the plain scalar that started at
+     * the given indentation, rather than beginning something of its own.
+     */
+    bool Builder::_continues_plain_scalar(size_t min_indent) const
+    {
+        if (_line.eof || _line.is_blank() || _line.indent < min_indent)
+            return false;
+
+        return !_at_document_marker() && !_is_sequence_entry(0) && _find_key_separator(0) == NO_INDEX;
     }
 
     string_t Builder::_unquote(const syntax::Token& token)
@@ -849,11 +940,17 @@ namespace {
 
     void Builder::_error(cl7::u8string_view message, size_t source_offset)
     {
+        if (_abandoned)
+            return;
+
         get_diagnostics()->add(syntax::Diagnostic::Severity::Error, message, source_offset);
     }
 
     void Builder::_warning(cl7::u8string_view message, size_t source_offset)
     {
+        if (_abandoned)
+            return;
+
         get_diagnostics()->add(syntax::Diagnostic::Severity::Warning, message, source_offset);
     }
 

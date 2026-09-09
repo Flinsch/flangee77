@@ -17,7 +17,7 @@ class Builder
 {
 
 public:
-    explicit Builder(syntax::Diagnostics* diagnostics);
+    Builder(syntax::Diagnostics* diagnostics, size_t max_nesting_depth);
 
 
 
@@ -53,6 +53,36 @@ private:
     };
 
     static constexpr size_t NO_INDEX = static_cast<size_t>(-1);
+
+    /**
+     * Counts one level of nesting for as long as it lives, which the four
+     * collection parsers do. Parsing descends through several stack frames per
+     * level, so a document nested deeply enough would run out of stack before it
+     * ran out of tokens, and every cycle of the recursion passes through a
+     * collection.
+     */
+    class NestingGuard
+    {
+    public:
+        explicit NestingGuard(Builder& builder) : _builder(builder) { ++_builder._nesting_depth; }
+
+        NestingGuard(const NestingGuard&) = delete;
+        NestingGuard& operator=(const NestingGuard&) = delete;
+        NestingGuard(NestingGuard&&) = delete;
+        NestingGuard& operator=(NestingGuard&&) = delete;
+
+        ~NestingGuard() { --_builder._nesting_depth; }
+
+    private:
+        Builder& _builder;
+    };
+
+    /**
+     * Returns true if the nesting has grown past what is allowed, in which case the
+     * rest of the source text is consumed and the failure reported. Anything parsed
+     * so far is kept, there is just nothing sensible left to add to it.
+     */
+    bool _is_nested_too_deeply();
 
 
 
@@ -153,7 +183,19 @@ private:
 
 
     string_t _parse_key(size_t index, size_t separator);
+
+    /**
+     * Parses a scalar and, unless it is a quoted one, the plain lines below it that
+     * continue it, each line break folding into a space.
+     */
     Yaml _parse_scalar(size_t index);
+
+    /**
+     * Returns true if the current line continues the plain scalar that started at
+     * the given indentation, rather than beginning something of its own.
+     */
+    bool _continues_plain_scalar(size_t min_indent) const;
+
     string_t _unquote(const syntax::Token& token);
 
 
@@ -214,6 +256,12 @@ private:
 
     syntax::TokenReader* _token_reader = nullptr;
     Line _line;
+
+    size_t _max_nesting_depth;
+    size_t _nesting_depth = 0;
+
+    /** Set once the nesting got out of hand, silencing the diagnostics that the unwinding would otherwise pile up. */
+    bool _abandoned = false;
 
 }; // class Builder
 

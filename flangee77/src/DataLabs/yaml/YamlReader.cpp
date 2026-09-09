@@ -12,6 +12,13 @@ namespace dl7::yaml {
 
 
 
+    YamlReader::YamlReader(size_t max_nesting_depth)
+        : _max_nesting_depth(max_nesting_depth)
+    {
+    }
+
+
+
     /**
      * Parses a UTF-8 encoded YAML string and returns a `Yaml` object. Whatever
      * there is to complain about ends up in the diagnostics, which are cleared
@@ -31,7 +38,7 @@ namespace dl7::yaml {
 
         syntax::LexingTokenReader token_reader{&lexer};
 
-        detail::Builder builder{&source_aware_diagnostics};
+        detail::Builder builder{&source_aware_diagnostics, _max_nesting_depth};
         auto yaml = builder.build(token_reader);
 
         _diagnostics.add_all(source_aware_diagnostics);
