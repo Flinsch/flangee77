@@ -467,6 +467,7 @@ var hierarchy =
     [ "dl7::json::Format::MultiLineOptions", "d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html", null ],
     [ "dl7::toml::detail::MultilineStringMatcher", "df/d3f/structdl7_1_1toml_1_1detail_1_1MultilineStringMatcher.html", null ],
     [ "fl7::fonts::render::NamedIcon", "d2/d64/structfl7_1_1fonts_1_1render_1_1NamedIcon.html", null ],
+    [ "dl7::yaml::detail::Builder::NestingGuard", "d5/da0/classdl7_1_1yaml_1_1detail_1_1Builder_1_1NestingGuard.html", null ],
     [ "fl7::gui::NineSliceChrome", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html", null ],
     [ "dl7::xml::Node", "d2/d24/classdl7_1_1xml_1_1Node.html", [
       [ "dl7::xml::Element", "de/dc8/classdl7_1_1xml_1_1Element.html", null ],

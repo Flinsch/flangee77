@@ -1,16 +1,19 @@
 var classdl7_1_1yaml_1_1detail_1_1Builder =
 [
     [ "Line", "de/d2b/structdl7_1_1yaml_1_1detail_1_1Builder_1_1Line.html", "de/d2b/structdl7_1_1yaml_1_1detail_1_1Builder_1_1Line" ],
-    [ "Builder", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#aab4ef25ee2e561dcac395c2643511d91", null ],
+    [ "NestingGuard", "d5/da0/classdl7_1_1yaml_1_1detail_1_1Builder_1_1NestingGuard.html", "d5/da0/classdl7_1_1yaml_1_1detail_1_1Builder_1_1NestingGuard" ],
+    [ "Builder", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a26698e388aa321f6da040769c0a9dc6c", null ],
     [ "_advance_to_content_line", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a7486c917ac41d032fc2793595f8e12b9", null ],
     [ "_at_document_marker", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#af642554acbee53e2a8370f970b08118f", null ],
     [ "_column_of", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#aff1245fc596654a9ee1fb03dabd9f65e", null ],
     [ "_concat", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a252178cb143ddb41486057727af419c0", null ],
+    [ "_continues_plain_scalar", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#ad466dc94769f157389419eb3be15ce6a", null ],
     [ "_ends_flow_scalar", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a46572a3462f15f5d3180140aeeb87546", null ],
     [ "_ensure_token", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#af78592268671054ba5cee8005f5cac0c", null ],
     [ "_error", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#adc48d2747048f751d751d8f9a9db72ab", null ],
     [ "_extend_line", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a6a572a80de8b48662996c899c2e1dd31", null ],
     [ "_find_key_separator", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a22e4eb3a1163b50182b08dcace513d18", null ],
+    [ "_is_nested_too_deeply", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a19580af007aa1596a91c1a37af6c65cd", null ],
     [ "_is_sequence_entry", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a17952b2c1df5a13c95453b29fc50fb2b", null ],
     [ "_join", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a2064ce1bbd0b227befd7c7aabb61f834", null ],
     [ "_parse_block_mapping", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a50f09ca9db1f062560275a726028feb8", null ],
@@ -36,7 +39,10 @@ var classdl7_1_1yaml_1_1detail_1_1Builder =
     [ "_unquote", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a223e38bfd4505af5618b4f6895a20535", null ],
     [ "_warning", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a497154a12a880a64b77d3a8398544642", null ],
     [ "build", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a86bd3024e9199b58ed4469762b549d16", null ],
+    [ "_abandoned", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a18ed6e86bfcd81004ebf9c585819722f", null ],
     [ "_line", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#abf8c066791a8530c96acc0c8c8b53eb0", null ],
+    [ "_max_nesting_depth", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#ac0bda94fbb1a276484fc9ee065e8a68b", null ],
+    [ "_nesting_depth", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a99268bd3ab213b2041582c5ded4b3c1e", null ],
     [ "_token_reader", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#a722d9ed90b94b392fda101868332c098", null ],
     [ "NO_INDEX", "d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html#aab5de93b889023bc74431a4efd54c15d", null ]
 ];
