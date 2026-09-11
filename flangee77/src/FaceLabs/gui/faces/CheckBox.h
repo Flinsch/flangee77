@@ -1,8 +1,9 @@
 #ifndef FL7_GUI_FACES_CHECKBOX_H
 #define FL7_GUI_FACES_CHECKBOX_H
-#include "../Control.h"
-#include "../HasBackground.h"
+#include "../Compound.h"
 #include "../HasCheckedState.h"
+
+#include "./Label.h"
 
 #include <CoreLabs/behavioral/Signal.h>
 
@@ -13,23 +14,20 @@ namespace fl7::gui::faces {
 
 
 /**
- * A togglable box with a persistent checked/unchecked value (see HasCheckedState).
- * Bare for now, no built-in caption: pair with a separate Label if one is wanted,
- * the way Panel/Frame's content areas already work with arbitrary child faces.
+ * A togglable box with a persistent checked/unchecked value (see HasCheckedState)
+ * and an optional caption to its right. Internally a small fixed composition (see
+ * Compound): a passive "box" glyph (see Box) sized to this face's own height and a
+ * Label filling the remaining width for the caption. Both are disabled (see
+ * Face::set_enabled), so a click or hover anywhere across box+caption always
+ * resolves to this CheckBox as a whole, never to either part individually.
  */
 class CheckBox
-    : public Control
-    , public HasBackground
+    : public Compound
     , public HasCheckedState
 {
 
 public:
-    CheckBox() = default;
-
-    explicit CheckBox(bool checked)
-        : _checked(checked)
-    {
-    }
+    explicit CheckBox(bool checked = false, cl7::u32string text = {});
 
     CheckBox(const CheckBox&) = delete;
     CheckBox& operator=(const CheckBox&) = delete;
@@ -57,17 +55,16 @@ public:
      * Sets whether this checkbox is checked, unless already in that state. Emits
      * the "changed" signal (with the new value) when actually changed.
      */
-    void set_checked(bool checked)
-    {
-        if (_checked == checked)
-            return;
-
-        _checked = checked;
-        _changed.emit(_checked);
-    }
+    void set_checked(bool checked);
 
     /** Returns the signal emitted (with the new value) whenever this checkbox's checked state actually changes. */
     cl7::behavioral::Signal<bool>& get_changed() { return _changed; }
+
+    /** Returns this checkbox's caption text. */
+    const cl7::u32string& get_text() const { return _label.get_text(); }
+
+    /** Sets this checkbox's caption text. */
+    void set_text(cl7::u32string text) { _label.set_text(std::move(text)); }
 
 
 
@@ -77,18 +74,25 @@ protected:
     // Face Implementations
     // #############################################################################
 
-    /** Returns this checkbox's theme role. */
-    cl7::u8string_view _get_theme_key() const override { return u8"checkbox"; }
+    /** Keeps the box/caption layout in sync with this checkbox's own size. */
+    void _on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size) override;
 
+    /** Toggles the checked state. */
     void _on_click(xl7::input::MouseButton button) override { set_checked(!_checked); }
 
 
 
 private:
+    class Box; // Face + HasBackground only, defined in CheckBox.cpp; passive, see Box's own doc comment.
 
     // #############################################################################
     // Attributes
     // #############################################################################
+
+    /** Non-owning: actually owned (as a child) by the inherited Collection. */
+    Box& _box;
+    /** Non-owning: actually owned (as a child) by the inherited Collection. */
+    Label& _label;
 
     bool _checked = false;
 

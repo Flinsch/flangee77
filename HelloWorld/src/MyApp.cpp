@@ -350,7 +350,7 @@ namespace helloworld {
 
         auto& frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo Frame");
         frame.set_position({600.0f, 210.0f});
-        frame.set_size({220.0f, 274.0f});
+        frame.set_size({220.0f, 290.0f});
 
         auto& panel = frame.get_content_area().add_child<fl7::gui::faces::Panel>();
         panel.set_position({20.0f, 20.0f});
@@ -373,23 +373,23 @@ namespace helloworld {
             button.set_text(button.get_text() == U"Click me" ? U"Clicked!" : U"Click me");
         });
 
-        auto& checkbox = frame.get_content_area().add_child<fl7::gui::faces::CheckBox>();
+        auto& checkbox = frame.get_content_area().add_child<fl7::gui::faces::CheckBox>(false, U"Enable extra sparkle");
         checkbox.set_position({20.0f, 190.0f});
-        checkbox.set_size({20.0f, 20.0f});
+        checkbox.set_size({180.0f, 20.0f});
         checkbox.get_changed().connect([](bool checked) {
             LOG_INFO(checked ? u8"CheckBox checked." : u8"CheckBox unchecked.");
         });
 
-        auto& radio_button_1 = frame.get_content_area().add_child<fl7::gui::faces::RadioButton>(&_gui_radio_group, true);
-        radio_button_1.set_position({20.0f, 220.0f});
-        radio_button_1.set_size({20.0f, 20.0f});
+        auto& radio_button_1 = frame.get_content_area().add_child<fl7::gui::faces::RadioButton>(&_gui_radio_group, true, U"Option A");
+        radio_button_1.set_position({20.0f, 216.0f});
+        radio_button_1.set_size({180.0f, 20.0f});
         radio_button_1.get_changed().connect([](bool checked) {
             LOG_INFO(checked ? u8"RadioButton 1 checked." : u8"RadioButton 1 unchecked.");
         });
 
-        auto& radio_button_2 = frame.get_content_area().add_child<fl7::gui::faces::RadioButton>(&_gui_radio_group);
-        radio_button_2.set_position({50.0f, 220.0f});
-        radio_button_2.set_size({20.0f, 20.0f});
+        auto& radio_button_2 = frame.get_content_area().add_child<fl7::gui::faces::RadioButton>(&_gui_radio_group, false, U"Option B");
+        radio_button_2.set_position({20.0f, 242.0f});
+        radio_button_2.set_size({180.0f, 20.0f});
         radio_button_2.get_changed().connect([](bool checked) {
             LOG_INFO(checked ? u8"RadioButton 2 checked." : u8"RadioButton 2 unchecked.");
         });

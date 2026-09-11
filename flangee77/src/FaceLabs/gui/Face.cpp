@@ -60,10 +60,11 @@ namespace fl7::gui {
      * nearest ancestor's explicit override (not that ancestor's own *effective*
      * style, which may itself just be a theme resolution, that's specific to the
      * role of the ancestor, not to the role of this face), else this face's own
-     * role (with its own checked/hovered/pressed/focused state, see Theme::State)
-     * resolved against the owning shell's theme, else a default-constructed style
-     * as a last resort (no override anywhere up the chain, no theme, or a face type
-     * with no themed role).
+     * role resolved against the owning shell's theme (using its own checked/
+     * hovered/pressed/focused state, see Theme::State, unless
+     * _get_interaction_state_proxy() redirects that part to another face), else a
+     * default-constructed style as a last resort (no override anywhere up the
+     * chain, no theme, or a face type with no themed role).
      */
     Style Face::get_effective_style() const
     {
@@ -80,11 +81,14 @@ namespace fl7::gui {
             {
                 if (const Theme* theme = shell->get_theme())
                 {
-                    const auto* checkable = dynamic_cast<const HasCheckedState*>(this);
+                    const Face* const proxy = _get_interaction_state_proxy();
+                    const Face* const state_face = proxy ? proxy : this;
+
+                    const auto* checkable = dynamic_cast<const HasCheckedState*>(state_face);
                     Face* const pressed_face = shell->get_pressed_face();
-                    const bool is_hovered = shell->get_hovered_face() == this;
-                    const bool is_pressed = pressed_face == this;
-                    const bool is_focused = shell->get_focused_face() == this;
+                    const bool is_hovered = shell->get_hovered_face() == state_face;
+                    const bool is_pressed = pressed_face == state_face;
+                    const bool is_focused = shell->get_focused_face() == state_face;
 
                     return theme->resolve(theme_key, {
                         .checked = checkable && checkable->is_checked(),

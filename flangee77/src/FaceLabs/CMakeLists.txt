@@ -37,6 +37,7 @@ target_sources(flangee77
     gui/Shell.cpp
     gui/Theme.cpp
 
+    gui/faces/CheckBox.cpp
     gui/faces/Frame.cpp
     gui/faces/RadioButton.cpp
     gui/faces/Window.cpp

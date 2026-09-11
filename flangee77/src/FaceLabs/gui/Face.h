@@ -123,10 +123,11 @@ public:
      * nearest ancestor's explicit override (not that ancestor's own *effective*
      * style, which may itself just be a theme resolution, that's specific to the
      * role of the ancestor, not to the role of this face), else this face's own
-     * role (with its own checked/hovered/pressed/focused state, see Theme::State)
-     * resolved against the owning shell's theme, else a default-constructed style
-     * as a last resort (no override anywhere up the chain, no theme, or a face type
-     * with no themed role).
+     * role resolved against the owning shell's theme (using its own checked/
+     * hovered/pressed/focused state, see Theme::State, unless
+     * _get_interaction_state_proxy() redirects that part to another face), else a
+     * default-constructed style as a last resort (no override anywhere up the
+     * chain, no theme, or a face type with no themed role).
      */
     Style get_effective_style() const;
 
@@ -162,6 +163,19 @@ protected:
      * concrete types that do.
      */
     virtual cl7::u8string_view _get_theme_key() const { return {}; }
+
+    /**
+     * Returns the face whose checked/hovered/pressed/focused state (see
+     * get_effective_style()) should be used to resolve THIS face's theme-based
+     * style, or `nullptr` (default) to use this face's own state as usual. For a
+     * passive, non-hit-testable decoration owned by an interactive parent (e.g., a
+     * CheckBox's little box glyph, itself disabled so clicks/hover always resolve
+     * to the CheckBox as a whole; see CheckBox::Box), this lets that decoration
+     * still visually track its owner's state without being interactive (or
+     * checkable) itself. Doesn't affect _get_theme_key(), which still determines
+     * which role's Style is being resolved in the first place.
+     */
+    virtual const Face* _get_interaction_state_proxy() const { return nullptr; }
 
     /**
      * Returns whether the specified point, in this face's own local coordinate
