@@ -161,6 +161,7 @@ var hierarchy =
     [ "ml7::ops::clamp< min, max >", "d4/d01/structml7_1_1ops_1_1clamp.html", null ],
     [ "ml7::ops::clamp01", "d0/d5c/structml7_1_1ops_1_1clamp01.html", null ],
     [ "xl7::graphics::meshes::ClippedQuad", "d2/d47/structxl7_1_1graphics_1_1meshes_1_1ClippedQuad.html", null ],
+    [ "fl7::fonts::render::AbstractRenderer::ClipRect", "db/dbb/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ClipRect.html", null ],
     [ "xl7::graphics::QuadRenderer::ClipRect", "dd/d21/structxl7_1_1graphics_1_1QuadRenderer_1_1ClipRect.html", null ],
     [ "cl7::text::codec::codepoint", "db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html", null ],
     [ "cl7::text::codec::codepoint_iterator< Tchar, TDefaultErrorHandler >", "d7/d8a/classcl7_1_1text_1_1codec_1_1codepoint__iterator.html", null ],
@@ -254,6 +255,8 @@ var hierarchy =
     [ "fl7::gui::Face", "d9/d1a/classfl7_1_1gui_1_1Face.html", [
       [ "fl7::gui::Collection", "d4/de7/classfl7_1_1gui_1_1Collection.html", [
         [ "fl7::gui::Compound", "d0/d93/classfl7_1_1gui_1_1Compound.html", [
+          [ "fl7::gui::faces::CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html", null ],
+          [ "fl7::gui::faces::RadioButton", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html", null ],
           [ "fl7::gui::faces::Window", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html", [
             [ "fl7::gui::faces::Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html", null ]
           ] ]
@@ -263,13 +266,13 @@ var hierarchy =
         ] ]
       ] ],
       [ "fl7::gui::Control", "df/d2b/classfl7_1_1gui_1_1Control.html", [
-        [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ],
-        [ "fl7::gui::faces::CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html", null ],
-        [ "fl7::gui::faces::RadioButton", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html", null ]
+        [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ]
       ] ],
       [ "fl7::gui::Static", "dc/dfd/classfl7_1_1gui_1_1Static.html", [
         [ "fl7::gui::faces::Label", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html", null ]
-      ] ]
+      ] ],
+      [ "fl7::gui::faces::CheckBox::Box", "d7/dfc/classfl7_1_1gui_1_1faces_1_1CheckBox_1_1Box.html", null ],
+      [ "fl7::gui::faces::RadioButton::Box", "d7/d12/classfl7_1_1gui_1_1faces_1_1RadioButton_1_1Box.html", null ]
     ] ],
     [ "std::false_type", null, [
       [ "cl7::detail::_is_any_string< std::remove_cvref_t< Tstring > >", "d8/d05/structcl7_1_1detail_1_1__is__any__string.html", [
@@ -327,9 +330,9 @@ var hierarchy =
     [ "xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates", "d7/d8c/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates.html", null ],
     [ "fl7::gui::HasBackground", "db/d13/classfl7_1_1gui_1_1HasBackground.html", [
       [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ],
-      [ "fl7::gui::faces::CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html", null ],
+      [ "fl7::gui::faces::CheckBox::Box", "d7/dfc/classfl7_1_1gui_1_1faces_1_1CheckBox_1_1Box.html", null ],
       [ "fl7::gui::faces::Panel", "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html", null ],
-      [ "fl7::gui::faces::RadioButton", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html", null ],
+      [ "fl7::gui::faces::RadioButton::Box", "d7/d12/classfl7_1_1gui_1_1faces_1_1RadioButton_1_1Box.html", null ],
       [ "fl7::gui::faces::Window", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html", null ]
     ] ],
     [ "fl7::gui::HasCheckedState", "d9/db9/classfl7_1_1gui_1_1HasCheckedState.html", [

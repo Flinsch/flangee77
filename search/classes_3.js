@@ -12,7 +12,7 @@ var searchData=
   ['clamp_9',['clamp',['../d4/d01/structml7_1_1ops_1_1clamp.html',1,'ml7::ops']]],
   ['clamp01_10',['clamp01',['../d0/d5c/structml7_1_1ops_1_1clamp01.html',1,'ml7::ops']]],
   ['clippedquad_11',['ClippedQuad',['../d2/d47/structxl7_1_1graphics_1_1meshes_1_1ClippedQuad.html',1,'xl7::graphics::meshes']]],
-  ['cliprect_12',['ClipRect',['../dd/d21/structxl7_1_1graphics_1_1QuadRenderer_1_1ClipRect.html',1,'xl7::graphics::QuadRenderer']]],
+  ['cliprect_12',['cliprect',['../db/dbb/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ClipRect.html',1,'fl7::fonts::render::AbstractRenderer::ClipRect'],['../dd/d21/structxl7_1_1graphics_1_1QuadRenderer_1_1ClipRect.html',1,'xl7::graphics::QuadRenderer::ClipRect']]],
   ['codepoint_13',['codepoint',['../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html',1,'cl7::text::codec']]],
   ['codepoint_5fiterator_14',['codepoint_iterator',['../d7/d8a/classcl7_1_1text_1_1codec_1_1codepoint__iterator.html',1,'cl7::text::codec']]],
   ['codepointresult_15',['CodepointResult',['../dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html',1,'cl7::text::codec']]],

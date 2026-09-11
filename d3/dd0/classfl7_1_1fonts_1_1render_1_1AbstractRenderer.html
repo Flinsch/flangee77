@@ -94,6 +94,7 @@ $(document).ready(function(){initNavTree('d3/dd0/classfl7_1_1fonts_1_1render_1_1
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../d8/d26/classfl7_1_1fonts_1_1render_1_1AbstractRenderer-members.html">List of all members</a>  </div>
@@ -139,6 +140,8 @@ Collaboration diagram for fl7::fonts::render::AbstractRenderer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dbb/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ClipRect.html">ClipRect</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html">ScopedBatch</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html">State</a></td></tr>
@@ -162,6 +165,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a781caec0d42dce70ab8d7f1b8146df96" id="r_a781caec0d42dce70ab8d7f1b8146df96"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__like.html">cl7::any_string_view_like</a> Tstring_view_like&gt; </td></tr>
 <tr class="memitem:a781caec0d42dce70ab8d7f1b8146df96"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a781caec0d42dce70ab8d7f1b8146df96">draw_text_in_box</a> (Tstring_view_like &amp;&amp;text, <a class="el" href="../../d3/d00/classfl7_1_1fonts_1_1Font.html">Font</a> *font, const <a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html">TextStyle</a> *text_style, <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> box_position, <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> box_size, std::span&lt; const <a class="el" href="../../de/ddd/structfl7_1_1fonts_1_1render_1_1StyleRun.html">StyleRun</a> &gt; style_runs={}, std::span&lt; const <a class="el" href="../../d1/d30/structfl7_1_1fonts_1_1IconRun.html">IconRun</a> &gt; icon_runs={})</td></tr>
 <tr class="separator:a781caec0d42dce70ab8d7f1b8146df96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1619a32a010bb5827c7a5b65af382844" id="r_a1619a32a010bb5827c7a5b65af382844"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a1619a32a010bb5827c7a5b65af382844">push_clip_rect</a> (<a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> clip_min, <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> clip_max)</td></tr>
+<tr class="separator:a1619a32a010bb5827c7a5b65af382844"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95b59a4d8feb94bb1e5d8205ee9985c8" id="r_a95b59a4d8feb94bb1e5d8205ee9985c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a95b59a4d8feb94bb1e5d8205ee9985c8">pop_clip_rect</a> ()</td></tr>
+<tr class="separator:a95b59a4d8feb94bb1e5d8205ee9985c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:ab8ddd2079614359e952f8a987e99f535" id="r_ab8ddd2079614359e952f8a987e99f535"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>, <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#ab8ddd2079614359e952f8a987e99f535">_get_effective_clip_rect</a> (const <a class="el" href="../../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html">State</a> &amp;state) const</td></tr>
+<tr class="separator:ab8ddd2079614359e952f8a987e99f535"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -193,6 +205,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:adcee0a3deca5f598203f6ac76c506549"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3137aa0fe5b53ca35c84e35a8a89de8" id="r_af3137aa0fe5b53ca35c84e35a8a89de8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html">cl7::text::codec::codepoint</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#af3137aa0fe5b53ca35c84e35a8a89de8">_codepoints</a></td></tr>
 <tr class="separator:af3137aa0fe5b53ca35c84e35a8a89de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56f4c8ec3b538f35fdf7f91d6c187f03" id="r_a56f4c8ec3b538f35fdf7f91d6c187f03"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../db/dbb/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ClipRect.html">ClipRect</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a56f4c8ec3b538f35fdf7f91d6c187f03">_clip_rect_stack</a></td></tr>
+<tr class="separator:a56f4c8ec3b538f35fdf7f91d6c187f03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract class for rendering text. </p>
@@ -554,6 +568,33 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
 
 </div>
 </div>
+<a id="ab8ddd2079614359e952f8a987e99f535" name="ab8ddd2079614359e952f8a987e99f535"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8ddd2079614359e952f8a987e99f535">&#9670;&#160;</a></span>_get_effective_clip_rect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>, <a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> &gt; fl7::fonts::render::AbstractRenderer::_get_effective_clip_rect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html">State</a> &amp;&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the effective clip rect (position_min, position_max) for the given state: its own text box bounds (if constrained on either axis; see draw_text_in_box), intersected with the renderer's current <a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a1619a32a010bb5827c7a5b65af382844">push_clip_rect()</a> rect (if any). A concrete renderer that emits quads (see <a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html">AbstractTextureAtlasBasedRenderer</a>) clips each one against this via <a class="el" href="../../d2/d47/structxl7_1_1graphics_1_1meshes_1_1ClippedQuad.html#a693c3430e27e241172c51d45e081d000">xl7::graphics::meshes::ClippedQuad::clip</a>, instead of computing box bounds itself. </p>
+
+</div>
+</div>
 <a id="abf86dbe5e0a897e16e99d83caa49fc3a" name="abf86dbe5e0a897e16e99d83caa49fc3a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abf86dbe5e0a897e16e99d83caa49fc3a">&#9670;&#160;</a></span>begin()</h2>
 
@@ -768,6 +809,53 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
 
 </div>
 </div>
+<a id="a95b59a4d8feb94bb1e5d8205ee9985c8" name="a95b59a4d8feb94bb1e5d8205ee9985c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95b59a4d8feb94bb1e5d8205ee9985c8">&#9670;&#160;</a></span>pop_clip_rect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fl7::fonts::render::AbstractRenderer::pop_clip_rect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pops the most recently pushed clip rect, restoring the previous one. </p>
+
+</div>
+</div>
+<a id="a1619a32a010bb5827c7a5b65af382844" name="a1619a32a010bb5827c7a5b65af382844"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1619a32a010bb5827c7a5b65af382844">&#9670;&#160;</a></span>push_clip_rect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fl7::fonts::render::AbstractRenderer::push_clip_rect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td>
+          <td class="paramname"><em>clip_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td>
+          <td class="paramname"><em>clip_max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pushes a new clip rect, intersected with the current one (there is no clip rect initially, i.e., unbounded). Glyphs/backgrounds/icons drawn while this clip rect is active are clipped against it, on top of (i.e., intersected with) their own text box's bounds, if any (see draw_text_in_box). Mirrors <a class="el" href="../../d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#ada596dd6a74390b27931351e6fdc5f85">xl7::graphics::QuadRenderer::push_clip_rect</a>'s identical stack semantics, so a caller driving both (e.g., <a class="el" href="../../d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html">fl7::gui::render::DefaultRenderer</a>) can push/pop the same rect on each in lockstep. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="adcee0a3deca5f598203f6ac76c506549" name="adcee0a3deca5f598203f6ac76c506549"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adcee0a3deca5f598203f6ac76c506549">&#9670;&#160;</a></span>_batch_depth</h2>
@@ -789,6 +877,29 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
 </table>
 </div><div class="memdoc">
 <p>The "flag"/counter specifying whether an active text rendering batch is open. </p>
+
+</div>
+</div>
+<a id="a56f4c8ec3b538f35fdf7f91d6c187f03" name="a56f4c8ec3b538f35fdf7f91d6c187f03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56f4c8ec3b538f35fdf7f91d6c187f03">&#9670;&#160;</a></span>_clip_rect_stack</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../db/dbb/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ClipRect.html">ClipRect</a>&gt; fl7::fonts::render::AbstractRenderer::_clip_rect_stack</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The active clip-rect stack; empty means unbounded (no clipping), same convention as <a class="el" href="../../d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html">xl7::graphics::QuadRenderer</a>. </p>
 
 </div>
 </div>

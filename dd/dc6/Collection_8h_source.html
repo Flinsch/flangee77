@@ -136,75 +136,84 @@ $(document).ready(function(){initNavTree('dd/dc6/Collection_8h_source.html','../
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a2bde1cccd159f1e868473c4b03d905a0">   48</a></span>    <span class="keyword">const</span> std::vector&lt;std::unique_ptr&lt;Face&gt;&gt;&amp; <a class="code hl_function" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a2bde1cccd159f1e868473c4b03d905a0">get_children</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a7acd04a97e7d004ec84ca82a8940d535">_children</a>; }</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// #############################################################################</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">// Methods</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// #############################################################################</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">template</span> &lt;<span class="keyword">class </span>TFace, <span class="keyword">class</span>... Args&gt;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">requires</span>(std::derived_from&lt;TFace, Face&gt;)</div>
-<div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a9b6bb179d97f1379ce9dcd028d76db00">   65</a></span>    TFace&amp; <a class="code hl_function" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a9b6bb179d97f1379ce9dcd028d76db00">add_child</a>(Args&amp;&amp;... args)</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    {</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keyword">auto</span> child = std::make_unique&lt;TFace&gt;(std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        TFace&amp; ref = *child;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <a class="code hl_function" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a5c56b0eb97640b860fd8373fff8f1f08">_add_child</a>(std::move(child));</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">return</span> ref;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
-</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a2b6cc62bc581086ef0f5d374edfbb854">   58</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a2b6cc62bc581086ef0f5d374edfbb854">clips_children</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a5752081fa7d85ac75c3be68dd1f8ce47">_clips_children</a>; }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a6ecf0ec2145f14bd9a4b19cdf443ffb7">   64</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a6ecf0ec2145f14bd9a4b19cdf443ffb7">set_clip_children</a>(<span class="keywordtype">bool</span> clip_children) { <a class="code hl_variable" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a5752081fa7d85ac75c3be68dd1f8ce47">_clips_children</a> = clip_children; }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">// #############################################################################</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">// Methods</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// #############################################################################</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// #############################################################################</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// Face Implementations</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// #############################################################################</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_class" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>* <a class="code hl_function" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#adf17cd579a3224a017a4416d98b462d4">_find_hit_face</a>(<a class="code hl_struct" href="../../d7/db1/structml7_1_1Vector2.html">ml7::Vector2f</a> screen_point, <a class="code hl_struct" href="../../d7/db1/structml7_1_1Vector2.html">ml7::Vector2f</a> parent_absolute_position) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="comment">// #############################################################################</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="comment">// Helpers</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="comment">// #############################################################################</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a5c56b0eb97640b860fd8373fff8f1f08">_add_child</a>(std::unique_ptr&lt;Face&gt; child);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="comment">// #############################################################################</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="comment">// Attributes</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="comment">// #############################################################################</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a7acd04a97e7d004ec84ca82a8940d535">  105</a></span>    std::vector&lt;std::unique_ptr&lt;Face&gt;&gt; <a class="code hl_variable" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a7acd04a97e7d004ec84ca82a8940d535">_children</a>;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>}; <span class="comment">// class Collection</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keyword">template</span> &lt;<span class="keyword">class </span>TFace, <span class="keyword">class</span>... Args&gt;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keyword">requires</span>(std::derived_from&lt;TFace, Face&gt;)</div>
+<div class="foldopen" id="foldopen00081" data-start="{" data-end="}">
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a9b6bb179d97f1379ce9dcd028d76db00">   81</a></span>    TFace&amp; <a class="code hl_function" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a9b6bb179d97f1379ce9dcd028d76db00">add_child</a>(Args&amp;&amp;... args)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keyword">auto</span> child = std::make_unique&lt;TFace&gt;(std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        TFace&amp; ref = *child;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <a class="code hl_function" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a5c56b0eb97640b860fd8373fff8f1f08">_add_child</a>(std::move(child));</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">return</span> ref;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    }</div>
 </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="comment">// #############################################################################</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="comment">// Face Implementations</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="comment">// #############################################################################</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <a class="code hl_class" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>* <a class="code hl_function" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#adf17cd579a3224a017a4416d98b462d4">_find_hit_face</a>(<a class="code hl_struct" href="../../d7/db1/structml7_1_1Vector2.html">ml7::Vector2f</a> screen_point, <a class="code hl_struct" href="../../d7/db1/structml7_1_1Vector2.html">ml7::Vector2f</a> parent_absolute_position) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="comment">// #############################################################################</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="comment">// Helpers</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="comment">// #############################################################################</span></div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>} <span class="comment">// namespace fl7::gui</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">#endif </span><span class="comment">// FL7_GUI_COLLECTION_H</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a5c56b0eb97640b860fd8373fff8f1f08">_add_child</a>(std::unique_ptr&lt;Face&gt; child);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="comment">// #############################################################################</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="comment">// Attributes</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="comment">// #############################################################################</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a7acd04a97e7d004ec84ca82a8940d535">  121</a></span>    std::vector&lt;std::unique_ptr&lt;Face&gt;&gt; <a class="code hl_variable" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a7acd04a97e7d004ec84ca82a8940d535">_children</a>;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a5752081fa7d85ac75c3be68dd1f8ce47">  123</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a5752081fa7d85ac75c3be68dd1f8ce47">_clips_children</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>}; <span class="comment">// class Collection</span></div>
+</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>} <span class="comment">// namespace fl7::gui</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="preprocessor">#endif </span><span class="comment">// FL7_GUI_COLLECTION_H</span></div>
 <div class="ttc" id="aFace_8h_html"><div class="ttname"><a href="../../d4/d5c/Face_8h.html">Face.h</a></div></div>
 <div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">fl7::gui::Collection</a></div><div class="ttdef"><b>Definition</b> Collection.h:25</div></div>
+<div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_a2b6cc62bc581086ef0f5d374edfbb854"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a2b6cc62bc581086ef0f5d374edfbb854">fl7::gui::Collection::clips_children</a></div><div class="ttdeci">bool clips_children() const</div><div class="ttdef"><b>Definition</b> Collection.h:58</div></div>
 <div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_a2bde1cccd159f1e868473c4b03d905a0"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a2bde1cccd159f1e868473c4b03d905a0">fl7::gui::Collection::get_children</a></div><div class="ttdeci">const std::vector&lt; std::unique_ptr&lt; Face &gt; &gt; &amp; get_children() const</div><div class="ttdef"><b>Definition</b> Collection.h:48</div></div>
 <div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_a351f857eb2691ab833fcf1f1907e9045"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a351f857eb2691ab833fcf1f1907e9045">fl7::gui::Collection::Collection</a></div><div class="ttdeci">Collection(Collection &amp;&amp;)=delete</div></div>
-<div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_a5c56b0eb97640b860fd8373fff8f1f08"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a5c56b0eb97640b860fd8373fff8f1f08">fl7::gui::Collection::_add_child</a></div><div class="ttdeci">void _add_child(std::unique_ptr&lt; Face &gt; child)</div><div class="ttdef"><b>Definition</b> Collection.cpp:43</div></div>
-<div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_a7acd04a97e7d004ec84ca82a8940d535"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a7acd04a97e7d004ec84ca82a8940d535">fl7::gui::Collection::_children</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; Face &gt; &gt; _children</div><div class="ttdef"><b>Definition</b> Collection.h:105</div></div>
-<div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_a9b6bb179d97f1379ce9dcd028d76db00"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a9b6bb179d97f1379ce9dcd028d76db00">fl7::gui::Collection::add_child</a></div><div class="ttdeci">TFace &amp; add_child(Args &amp;&amp;... args)</div><div class="ttdef"><b>Definition</b> Collection.h:65</div></div>
+<div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_a5752081fa7d85ac75c3be68dd1f8ce47"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a5752081fa7d85ac75c3be68dd1f8ce47">fl7::gui::Collection::_clips_children</a></div><div class="ttdeci">bool _clips_children</div><div class="ttdef"><b>Definition</b> Collection.h:123</div></div>
+<div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_a5c56b0eb97640b860fd8373fff8f1f08"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a5c56b0eb97640b860fd8373fff8f1f08">fl7::gui::Collection::_add_child</a></div><div class="ttdeci">void _add_child(std::unique_ptr&lt; Face &gt; child)</div><div class="ttdef"><b>Definition</b> Collection.cpp:55</div></div>
+<div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_a6ecf0ec2145f14bd9a4b19cdf443ffb7"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a6ecf0ec2145f14bd9a4b19cdf443ffb7">fl7::gui::Collection::set_clip_children</a></div><div class="ttdeci">void set_clip_children(bool clip_children)</div><div class="ttdef"><b>Definition</b> Collection.h:64</div></div>
+<div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_a7acd04a97e7d004ec84ca82a8940d535"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a7acd04a97e7d004ec84ca82a8940d535">fl7::gui::Collection::_children</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; Face &gt; &gt; _children</div><div class="ttdef"><b>Definition</b> Collection.h:121</div></div>
+<div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_a9b6bb179d97f1379ce9dcd028d76db00"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a9b6bb179d97f1379ce9dcd028d76db00">fl7::gui::Collection::add_child</a></div><div class="ttdeci">TFace &amp; add_child(Args &amp;&amp;... args)</div><div class="ttdef"><b>Definition</b> Collection.h:81</div></div>
 <div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_aad67a6fed22250ab67ca45d6301a1b6d"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#aad67a6fed22250ab67ca45d6301a1b6d">fl7::gui::Collection::~Collection</a></div><div class="ttdeci">~Collection() override=default</div></div>
 <div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_ac3245873d7c6290f13973ae61aa99d6c"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#ac3245873d7c6290f13973ae61aa99d6c">fl7::gui::Collection::operator=</a></div><div class="ttdeci">Collection &amp; operator=(const Collection &amp;)=delete</div></div>
 <div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_ad0ca3f6916c7ed00403a52b93fd37429"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#ad0ca3f6916c7ed00403a52b93fd37429">fl7::gui::Collection::operator=</a></div><div class="ttdeci">Collection &amp; operator=(Collection &amp;&amp;)=delete</div></div>
 <div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_ad9de06df114da53b7dcaae08829e6080"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#ad9de06df114da53b7dcaae08829e6080">fl7::gui::Collection::Collection</a></div><div class="ttdeci">Collection()=default</div></div>
-<div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_adf17cd579a3224a017a4416d98b462d4"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#adf17cd579a3224a017a4416d98b462d4">fl7::gui::Collection::_find_hit_face</a></div><div class="ttdeci">Face * _find_hit_face(ml7::Vector2f screen_point, ml7::Vector2f parent_absolute_position) override</div><div class="ttdef"><b>Definition</b> Collection.cpp:16</div></div>
+<div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_adf17cd579a3224a017a4416d98b462d4"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#adf17cd579a3224a017a4416d98b462d4">fl7::gui::Collection::_find_hit_face</a></div><div class="ttdeci">Face * _find_hit_face(ml7::Vector2f screen_point, ml7::Vector2f parent_absolute_position) override</div><div class="ttdef"><b>Definition</b> Collection.cpp:18</div></div>
 <div class="ttc" id="aclassfl7_1_1gui_1_1Collection_html_aed7bc202419f480476b01d8013c64461"><div class="ttname"><a href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#aed7bc202419f480476b01d8013c64461">fl7::gui::Collection::Collection</a></div><div class="ttdeci">Collection(const Collection &amp;)=delete</div></div>
 <div class="ttc" id="aclassfl7_1_1gui_1_1Face_html"><div class="ttname"><a href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">fl7::gui::Face</a></div><div class="ttdef"><b>Definition</b> Face.h:34</div></div>
-<div class="ttc" id="anamespacefl7_1_1gui_html"><div class="ttname"><a href="../../d5/d56/namespacefl7_1_1gui.html">fl7::gui</a></div><div class="ttdef"><b>Definition</b> Collection.cpp:5</div></div>
+<div class="ttc" id="anamespacefl7_1_1gui_html"><div class="ttname"><a href="../../d5/d56/namespacefl7_1_1gui.html">fl7::gui</a></div><div class="ttdef"><b>Definition</b> Collection.cpp:7</div></div>
 <div class="ttc" id="astructml7_1_1Vector2_html"><div class="ttname"><a href="../../d7/db1/structml7_1_1Vector2.html">ml7::Vector2</a></div><div class="ttdef"><b>Definition</b> Vector2.h:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

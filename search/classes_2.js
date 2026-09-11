@@ -13,12 +13,13 @@ var searchData=
   ['blockscalarheadermatcher_10',['BlockScalarHeaderMatcher',['../d0/d53/structdl7_1_1yaml_1_1detail_1_1BlockScalarHeaderMatcher.html',1,'dl7::yaml::detail']]],
   ['booleanmatcher_11',['BooleanMatcher',['../da/d2b/structdl7_1_1ini_1_1detail_1_1BooleanMatcher.html',1,'dl7::ini::detail']]],
   ['boundingbox_12',['BoundingBox',['../dc/d05/structfl7_1_1fonts_1_1BoundingBox.html',1,'fl7::fonts']]],
-  ['buffer1d_13',['Buffer1d',['../d9/d16/classdl7_1_1Buffer1d.html',1,'dl7']]],
-  ['buffer2d_14',['Buffer2d',['../d9/dc3/classdl7_1_1Buffer2d.html',1,'dl7']]],
-  ['buffer3d_15',['Buffer3d',['../d6/dbf/classdl7_1_1Buffer3d.html',1,'dl7']]],
-  ['bufferedtokenreader_16',['BufferedTokenReader',['../d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html',1,'dl7::syntax']]],
-  ['builder_17',['builder',['../d2/d8d/classdl7_1_1ini_1_1detail_1_1Builder.html',1,'dl7::ini::detail::Builder'],['../de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html',1,'dl7::json::detail::Builder'],['../dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html',1,'dl7::toml::detail::Builder'],['../d3/d69/classdl7_1_1xml_1_1detail_1_1Builder.html',1,'dl7::xml::detail::Builder'],['../d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html',1,'dl7::yaml::detail::Builder']]],
-  ['button_18',['Button',['../d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html',1,'fl7::gui::faces']]],
-  ['bytereader_19',['ByteReader',['../d7/df3/classcl7_1_1io_1_1ByteReader.html',1,'cl7::io']]],
-  ['bytewriter_20',['ByteWriter',['../de/d6e/classcl7_1_1io_1_1ByteWriter.html',1,'cl7::io']]]
+  ['box_13',['box',['../d7/dfc/classfl7_1_1gui_1_1faces_1_1CheckBox_1_1Box.html',1,'fl7::gui::faces::CheckBox::Box'],['../d7/d12/classfl7_1_1gui_1_1faces_1_1RadioButton_1_1Box.html',1,'fl7::gui::faces::RadioButton::Box']]],
+  ['buffer1d_14',['Buffer1d',['../d9/d16/classdl7_1_1Buffer1d.html',1,'dl7']]],
+  ['buffer2d_15',['Buffer2d',['../d9/dc3/classdl7_1_1Buffer2d.html',1,'dl7']]],
+  ['buffer3d_16',['Buffer3d',['../d6/dbf/classdl7_1_1Buffer3d.html',1,'dl7']]],
+  ['bufferedtokenreader_17',['BufferedTokenReader',['../d0/dae/classdl7_1_1syntax_1_1BufferedTokenReader.html',1,'dl7::syntax']]],
+  ['builder_18',['builder',['../d2/d8d/classdl7_1_1ini_1_1detail_1_1Builder.html',1,'dl7::ini::detail::Builder'],['../de/dd7/classdl7_1_1json_1_1detail_1_1Builder.html',1,'dl7::json::detail::Builder'],['../dc/dc3/classdl7_1_1toml_1_1detail_1_1Builder.html',1,'dl7::toml::detail::Builder'],['../d3/d69/classdl7_1_1xml_1_1detail_1_1Builder.html',1,'dl7::xml::detail::Builder'],['../d0/dfb/classdl7_1_1yaml_1_1detail_1_1Builder.html',1,'dl7::yaml::detail::Builder']]],
+  ['button_19',['Button',['../d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html',1,'fl7::gui::faces']]],
+  ['bytereader_20',['ByteReader',['../d7/df3/classcl7_1_1io_1_1ByteReader.html',1,'cl7::io']]],
+  ['bytewriter_21',['ByteWriter',['../de/d6e/classcl7_1_1io_1_1ByteWriter.html',1,'cl7::io']]]
 ];

@@ -7,6 +7,7 @@ var classfl7_1_1gui_1_1Face =
     [ "_contains_point", "d9/d1a/classfl7_1_1gui_1_1Face.html#a3ae4416502c4e07e281f7ea8997fb85b", null ],
     [ "_find_hit_face", "d9/d1a/classfl7_1_1gui_1_1Face.html#ac515960f666a8ad4c9217e25bc98adb7", null ],
     [ "_find_inherited_style_override", "d9/d1a/classfl7_1_1gui_1_1Face.html#ab17bdea6f901f75106b7f0f43bf405ea", null ],
+    [ "_get_interaction_state_proxy", "d9/d1a/classfl7_1_1gui_1_1Face.html#a48f75635126ff50deb77077ca3704c3d", null ],
     [ "_get_theme_key", "d9/d1a/classfl7_1_1gui_1_1Face.html#a6ce0fc56db00390b40b9991387751e36", null ],
     [ "_on_click", "d9/d1a/classfl7_1_1gui_1_1Face.html#ac35f52e8a37f3ab68e3ff49b8908d65e", null ],
     [ "_on_focus_gained", "d9/d1a/classfl7_1_1gui_1_1Face.html#aead3ad6c048b4124adc6a5ee7cb607bd", null ],
