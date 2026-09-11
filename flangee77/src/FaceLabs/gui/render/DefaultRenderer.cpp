@@ -68,11 +68,13 @@ namespace fl7::gui::render {
     void DefaultRenderer::_push_clip_rect_impl(ml7::Vector2f clip_min, ml7::Vector2f clip_max)
     {
         _quad_renderer.push_clip_rect(clip_min, clip_max);
+        _text_renderer->push_clip_rect(clip_min, clip_max);
     }
 
     void DefaultRenderer::_pop_clip_rect_impl()
     {
         _quad_renderer.pop_clip_rect();
+        _text_renderer->pop_clip_rect();
     }
 
 
@@ -97,8 +99,15 @@ namespace fl7::gui::render {
 
         if (const auto* collection = dynamic_cast<const Collection*>(&face))
         {
+            const bool clips_children = collection->clips_children();
+            if (clips_children)
+                push_clip_rect(absolute_position, absolute_position + face.get_size());
+
             for (const auto& child : collection->get_children())
                 _render_face_recursive(*child, absolute_position);
+
+            if (clips_children)
+                pop_clip_rect();
         }
     }
 

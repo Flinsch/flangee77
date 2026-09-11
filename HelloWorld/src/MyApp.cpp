@@ -359,9 +359,11 @@ namespace helloworld {
         panel_style.background_color = {0.4f, 0.4f, 0.5f, 1.0f};
         panel.set_style_override(panel_style);
 
-        auto& label = panel.add_child<fl7::gui::faces::Label>(U"Hello, Panel!");
+        // Deliberately oversized (both text and box): demonstrates that the frame's
+        // content area clips overflowing children instead of letting them spill out.
+        auto& label = panel.add_child<fl7::gui::faces::Label>(U"Hello, Panel! This line is intentionally much too long to fit, to test clipping.");
         label.set_position({10.0f, 10.0f});
-        label.set_size({160.0f, 24.0f});
+        label.set_size({500.0f, 24.0f});
 
         auto& button = frame.get_content_area().add_child<fl7::gui::faces::Button>(U"Click me");
         button.set_position({20.0f, 150.0f});

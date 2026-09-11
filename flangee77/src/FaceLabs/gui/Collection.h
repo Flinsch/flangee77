@@ -47,6 +47,22 @@ public:
      */
     const std::vector<std::unique_ptr<Face>>& get_children() const { return _children; }
 
+    /**
+     * Returns whether this collection clips its children to its own bounds when
+     * rendering (see AbstractRenderer::push_clip_rect). Default: true. A child that
+     * straddles the clip edge is cut off, not hidden outright. Content that must
+     * deliberately escape its logical owner's bounds (a tooltip, a dropdown popup,
+     * etc.) should be a separate top-level Shell face instead of a nested child
+     * here, so opting out via set_clip_children(false) should be rare.
+     */
+    bool clips_children() const { return _clips_children; }
+
+    /**
+     * Sets whether this collection clips its children to its own bounds when
+     * rendering.
+     */
+    void set_clip_children(bool clip_children) { _clips_children = clip_children; }
+
 
 
 protected:
@@ -103,6 +119,8 @@ private:
     // #############################################################################
 
     std::vector<std::unique_ptr<Face>> _children;
+
+    bool _clips_children = true;
 
 }; // class Collection
 

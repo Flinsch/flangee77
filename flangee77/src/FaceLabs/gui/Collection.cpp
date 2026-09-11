@@ -1,5 +1,7 @@
 #include "Collection.h"
 
+#include <ranges>
+
 
 
 namespace fl7::gui {
@@ -19,15 +21,25 @@ namespace fl7::gui {
             return nullptr;
 
         const ml7::Vector2f absolute_position = parent_absolute_position + get_position();
+        const ml7::Vector2f local_point = screen_point - absolute_position;
 
-        // Children first, most-recently-added (topmost) first.
-        for (auto it = _children.rbegin(); it != _children.rend(); ++it)
+        // A child clipped out of view (see clips_children()) isn't hit-testable
+        // either: this always tests the same axis-aligned bounds used for the
+        // actual visual clipping, regardless of this collection's own
+        // (possibly non-rectangular) _contains_point() hit shape.
+        const bool children_reachable = !_clips_children
+            || (local_point.x >= 0.0f && local_point.y >= 0.0f && local_point.x < get_size().x && local_point.y < get_size().y);
+
+        if (children_reachable)
         {
-            if (Face* hit = (*it)->_find_hit_face(screen_point, absolute_position))
-                return hit;
+            // Children first, most-recently-added (topmost) first.
+            for (const auto& it : std::views::reverse(_children))
+            {
+                if (Face* hit = it->_find_hit_face(screen_point, absolute_position))
+                    return hit;
+            }
         }
 
-        const ml7::Vector2f local_point = screen_point - absolute_position;
         return _contains_point(local_point) ? this : nullptr;
     }
 

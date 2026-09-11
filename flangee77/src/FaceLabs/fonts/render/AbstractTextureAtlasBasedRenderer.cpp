@@ -12,7 +12,6 @@
 
 #include <atomic>
 #include <cassert>
-#include <limits>
 #include <vector>
 
 
@@ -228,16 +227,8 @@ namespace fl7::fonts::render {
 
     void AbstractTextureAtlasBasedRenderer::_emit_background(ml7::Vector2f position, ml7::Vector2f size, const State& state)
     {
-        // Same box-clipping as _emit_glyph, just without any UV to remap.
-        constexpr float infinity = std::numeric_limits<float>::infinity();
-        const ml7::Vector2f clip_min = {
-            state.box_size.x > 0.0f ? state.box_position.x : -infinity,
-            state.box_size.y > 0.0f ? state.box_position.y : -infinity,
-        };
-        const ml7::Vector2f clip_max = {
-            state.box_size.x > 0.0f ? state.box_position.x + state.box_size.x : infinity,
-            state.box_size.y > 0.0f ? state.box_position.y + state.box_size.y : infinity,
-        };
+        // Same clipping as _emit_glyph, just without any UV to remap.
+        const auto [clip_min, clip_max] = _get_effective_clip_rect(state);
 
         const auto clipped = xl7::graphics::meshes::ClippedQuad::clip(position, position + size, {}, {}, clip_min, clip_max);
         if (!clipped)
@@ -289,18 +280,11 @@ namespace fl7::fonts::render {
         const float u1 = static_cast<float>(entry->rect.position.x + entry->image_width) * iw;
         const float v1 = static_cast<float>(entry->rect.position.y + entry->image_height) * ih;
 
-        // A box_size component of 0 (or less) means "unconstrained" on that
-        // axis (as with point-based draw_text, which always passes a
-        // zero-size box and must therefore never be clipped).
-        constexpr float infinity = std::numeric_limits<float>::infinity();
-        const ml7::Vector2f clip_min = {
-            state.box_size.x > 0.0f ? state.box_position.x : -infinity,
-            state.box_size.y > 0.0f ? state.box_position.y : -infinity,
-        };
-        const ml7::Vector2f clip_max = {
-            state.box_size.x > 0.0f ? state.box_position.x + state.box_size.x : infinity,
-            state.box_size.y > 0.0f ? state.box_position.y + state.box_size.y : infinity,
-        };
+        // A box_size component of 0 (or less) means "unconstrained" on that axis,
+        // as with point-based draw_text, which always passes a zero-size box and
+        // must therefore never be box-clipped. A pushed renderer clip rect, if any,
+        // still applies either way).
+        const auto [clip_min, clip_max] = _get_effective_clip_rect(state);
 
         const auto clipped = xl7::graphics::meshes::ClippedQuad::clip({left, top}, {right, bottom}, {u0, v0}, {u1, v1}, clip_min, clip_max);
         if (!clipped)
@@ -352,16 +336,8 @@ namespace fl7::fonts::render {
         const ml7::Vector2f top_left = state.cursor + icon.offset;
         const ml7::Vector2f bottom_right = top_left + icon.size;
 
-        // Same box-clipping as _emit_glyph.
-        constexpr float infinity = std::numeric_limits<float>::infinity();
-        const ml7::Vector2f clip_min = {
-            state.box_size.x > 0.0f ? state.box_position.x : -infinity,
-            state.box_size.y > 0.0f ? state.box_position.y : -infinity,
-        };
-        const ml7::Vector2f clip_max = {
-            state.box_size.x > 0.0f ? state.box_position.x + state.box_size.x : infinity,
-            state.box_size.y > 0.0f ? state.box_position.y + state.box_size.y : infinity,
-        };
+        // Same clipping as _emit_glyph.
+        const auto [clip_min, clip_max] = _get_effective_clip_rect(state);
 
         const auto clipped = xl7::graphics::meshes::ClippedQuad::clip(top_left, bottom_right, icon.uv_min, icon.uv_max, clip_min, clip_max);
         if (!clipped)

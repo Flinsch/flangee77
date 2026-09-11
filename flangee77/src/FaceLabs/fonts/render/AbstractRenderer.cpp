@@ -4,6 +4,9 @@
 
 #include <CoreLabs/text/inspect.h>
 
+#include <algorithm>
+#include <limits>
+
 
 
 namespace fl7::fonts::render {
@@ -65,6 +68,73 @@ namespace fl7::fonts::render {
     {
         assert(_batch_depth > 0);
         _do_flush();
+    }
+
+
+
+    /**
+     * Pushes a new clip rect, intersected with the current one (there is no clip
+     * rect initially, i.e., unbounded). Glyphs/backgrounds/icons drawn while this
+     * clip rect is active are clipped against it, on top of (i.e., intersected
+     * with) their own text box's bounds, if any (see draw_text_in_box). Mirrors
+     * xl7::graphics::QuadRenderer::push_clip_rect's identical stack semantics, so
+     * a caller driving both (e.g., fl7::gui::render::DefaultRenderer) can push/pop
+     * the same rect on each in lockstep.
+     */
+    void AbstractRenderer::push_clip_rect(ml7::Vector2f clip_min, ml7::Vector2f clip_max)
+    {
+        if (!_clip_rect_stack.empty())
+        {
+            const ClipRect& current = _clip_rect_stack.back();
+            clip_min = {std::max(clip_min.x, current.min.x), std::max(clip_min.y, current.min.y)};
+            clip_max = {std::min(clip_max.x, current.max.x), std::min(clip_max.y, current.max.y)};
+        }
+
+        _clip_rect_stack.push_back({.min = clip_min, .max = clip_max});
+    }
+
+    /**
+     * Pops the most recently pushed clip rect, restoring the previous one.
+     */
+    void AbstractRenderer::pop_clip_rect()
+    {
+        assert(!_clip_rect_stack.empty());
+        if (!_clip_rect_stack.empty())
+            _clip_rect_stack.pop_back();
+    }
+
+
+
+    /**
+     * Returns the effective clip rect (position_min, position_max) for the given
+     * state: its own text box bounds (if constrained on either axis; see
+     * draw_text_in_box), intersected with the renderer's current push_clip_rect()
+     * rect (if any). A concrete renderer that emits quads (see
+     * AbstractTextureAtlasBasedRenderer) clips each one against this via
+     * xl7::graphics::meshes::ClippedQuad::clip, instead of computing box bounds
+     * itself.
+     */
+    std::pair<ml7::Vector2f, ml7::Vector2f> AbstractRenderer::_get_effective_clip_rect(const State& state) const
+    {
+        constexpr float infinity = std::numeric_limits<float>::infinity();
+
+        ml7::Vector2f clip_min = {
+            state.box_size.x > 0.0f ? state.box_position.x : -infinity,
+            state.box_size.y > 0.0f ? state.box_position.y : -infinity,
+        };
+        ml7::Vector2f clip_max = {
+            state.box_size.x > 0.0f ? state.box_position.x + state.box_size.x : infinity,
+            state.box_size.y > 0.0f ? state.box_position.y + state.box_size.y : infinity,
+        };
+
+        if (!_clip_rect_stack.empty())
+        {
+            const ClipRect& current = _clip_rect_stack.back();
+            clip_min = {std::max(clip_min.x, current.min.x), std::max(clip_min.y, current.min.y)};
+            clip_max = {std::min(clip_max.x, current.max.x), std::min(clip_max.y, current.max.y)};
+        }
+
+        return {clip_min, clip_max};
     }
 
 

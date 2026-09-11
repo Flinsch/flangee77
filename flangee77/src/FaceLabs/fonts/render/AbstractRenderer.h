@@ -13,6 +13,8 @@
 #include "CoreLabs/text/codec/codepoint_iterator.h"
 
 #include <span>
+#include <utility>
+#include <vector>
 
 
 
@@ -205,6 +207,24 @@ public:
 
 
 
+    /**
+     * Pushes a new clip rect, intersected with the current one (there is no clip
+     * rect initially, i.e., unbounded). Glyphs/backgrounds/icons drawn while this
+     * clip rect is active are clipped against it, on top of (i.e., intersected
+     * with) their own text box's bounds, if any (see draw_text_in_box). Mirrors
+     * xl7::graphics::QuadRenderer::push_clip_rect's identical stack semantics, so
+     * a caller driving both (e.g., fl7::gui::render::DefaultRenderer) can push/pop
+     * the same rect on each in lockstep.
+     */
+    void push_clip_rect(ml7::Vector2f clip_min, ml7::Vector2f clip_max);
+
+    /**
+     * Pops the most recently pushed clip rect, restoring the previous one.
+     */
+    void pop_clip_rect();
+
+
+
 protected:
     /** The state to use for a single drawing invocation. */
     struct State
@@ -224,9 +244,25 @@ protected:
         ml7::Vector2f box_size;
     };
 
+    /**
+     * Returns the effective clip rect (position_min, position_max) for the given
+     * state: its own text box bounds (if constrained on either axis; see
+     * draw_text_in_box), intersected with the renderer's current push_clip_rect()
+     * rect (if any). A concrete renderer that emits quads (see
+     * AbstractTextureAtlasBasedRenderer) clips each one against this via
+     * xl7::graphics::meshes::ClippedQuad::clip, instead of computing box bounds
+     * itself.
+     */
+    std::pair<ml7::Vector2f, ml7::Vector2f> _get_effective_clip_rect(const State& state) const;
+
 
 
 private:
+    struct ClipRect
+    {
+        ml7::Vector2f min, max;
+    };
+
     template <cl7::any_string_view_like Tstring_view_like>
     void _extract_codepoints(Tstring_view_like&& text)
     {
@@ -266,6 +302,9 @@ private:
      * memory each time.
      */
     std::vector<cl7::text::codec::codepoint> _codepoints;
+
+    /** The active clip-rect stack; empty means unbounded (no clipping), same convention as xl7::graphics::QuadRenderer. */
+    std::vector<ClipRect> _clip_rect_stack;
 
 }; // class AbstractRenderer
 
