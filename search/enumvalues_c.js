@@ -2,7 +2,7 @@ var searchData=
 [
   ['m_0',['M',['../df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45a69691c7bdcc3ce6d5d8a1361f22d04ac',1,'xl7::input']]],
   ['magenta_1',['Magenta',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a0f62bd7bdea7467a7f1e8ba33c7a4e67',1,'tl7::reporting']]],
-  ['mapping_2',['Mapping',['../d9/de4/classdl7_1_1yaml_1_1Yaml.html#a4c3d8bb88f01452e58409ea349ac4a24a0014f8b96d996135614c21355a053994',1,'dl7::yaml::Yaml']]],
+  ['mapping_2',['mapping',['../d7/de1/classdl7_1_1config_1_1Value.html#ab1c27b31a26d331e675dd5c49d38e193a0014f8b96d996135614c21355a053994',1,'dl7::config::Value::Mapping'],['../d9/de4/classdl7_1_1yaml_1_1Yaml.html#a4c3d8bb88f01452e58409ea349ac4a24a0014f8b96d996135614c21355a053994',1,'dl7::yaml::Yaml::Mapping']]],
   ['matrixcolumns_3',['MatrixColumns',['../d7/db8/namespacexl7_1_1graphics_1_1shaders.html#af7157c0f2dc7ba0469861feb648fdb14a89a786f66915a15b42514278dcf6527b',1,'xl7::graphics::shaders']]],
   ['matrixrows_4',['MatrixRows',['../d7/db8/namespacexl7_1_1graphics_1_1shaders.html#af7157c0f2dc7ba0469861feb648fdb14aa93fb626a9de373a643f6fd2cbe89007',1,'xl7::graphics::shaders']]],
   ['max_5',['Max',['../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a2f41cb3715db1336989416c97caad892a6a061313d22e51e0f25b7cd4dc065233',1,'xl7::graphics::states']]],

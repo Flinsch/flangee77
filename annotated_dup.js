@@ -143,6 +143,9 @@ var annotated_dup =
       [ "compression", "db/dee/namespacedl7_1_1compression.html", [
         [ "Deflate", "d2/d26/structdl7_1_1compression_1_1Deflate.html", "d2/d26/structdl7_1_1compression_1_1Deflate" ]
       ] ],
+      [ "config", "df/d08/namespacedl7_1_1config.html", [
+        [ "Value", "d7/de1/classdl7_1_1config_1_1Value.html", "d7/de1/classdl7_1_1config_1_1Value" ]
+      ] ],
       [ "ini", "dd/dc6/namespacedl7_1_1ini.html", [
         [ "detail", "de/d05/namespacedl7_1_1ini_1_1detail.html", [
           [ "AnyOtherMatcher", "d4/dc9/structdl7_1_1ini_1_1detail_1_1AnyOtherMatcher.html", "d4/dc9/structdl7_1_1ini_1_1detail_1_1AnyOtherMatcher" ],

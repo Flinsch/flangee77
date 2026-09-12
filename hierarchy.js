@@ -897,6 +897,7 @@ var hierarchy =
     [ "cl7::io::Utf8Reader", "d4/d97/classcl7_1_1io_1_1Utf8Reader.html", null ],
     [ "cl7::io::Utf8Writer", "d6/dba/classcl7_1_1io_1_1Utf8Writer.html", null ],
     [ "dl7::json::util::Validator", "d6/d9c/classdl7_1_1json_1_1util_1_1Validator.html", null ],
+    [ "dl7::config::Value", "d7/de1/classdl7_1_1config_1_1Value.html", null ],
     [ "dl7::ini::Value", "da/d29/classdl7_1_1ini_1_1Value.html", null ],
     [ "dl7::toml::Value", "d7/dbb/classdl7_1_1toml_1_1Value.html", null ],
     [ "xl7::graphics::Color::Value32", "da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html", null ],
