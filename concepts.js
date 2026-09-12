@@ -13,6 +13,13 @@ var concepts =
       [ "string_constructible", "d2/d5f/conceptcl7_1_1string__constructible.html", null ]
     ] ],
     [ "dl7", "d2/d5d/namespacedl7.html", [
+      [ "config", "df/d08/namespacedl7_1_1config.html", [
+        [ "detail", "d2/def/namespacedl7_1_1config_1_1detail.html", [
+          [ "bound_sequence", "db/db6/conceptdl7_1_1config_1_1detail_1_1bound__sequence.html", null ]
+        ] ],
+        [ "bound_struct", "da/de9/conceptdl7_1_1config_1_1bound__struct.html", null ],
+        [ "named_enum", "da/de7/conceptdl7_1_1config_1_1named__enum.html", null ]
+      ] ],
       [ "syntax", "db/d34/namespacedl7_1_1syntax.html", [
         [ "PrefixMatcher", "d7/d2b/conceptdl7_1_1syntax_1_1PrefixMatcher.html", null ]
       ] ]

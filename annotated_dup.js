@@ -144,6 +144,15 @@ var annotated_dup =
         [ "Deflate", "d2/d26/structdl7_1_1compression_1_1Deflate.html", "d2/d26/structdl7_1_1compression_1_1Deflate" ]
       ] ],
       [ "config", "df/d08/namespacedl7_1_1config.html", [
+        [ "detail", "d2/def/namespacedl7_1_1config_1_1detail.html", [
+          [ "is_bound_sequence", "d8/da7/structdl7_1_1config_1_1detail_1_1is__bound__sequence.html", null ],
+          [ "is_bound_sequence< std::vector< T, Tallocator > >", "dd/dbf/structdl7_1_1config_1_1detail_1_1is__bound__sequence_3_01std_1_1vector_3_01T_00_01Tallocator_01_4_01_4.html", null ]
+        ] ],
+        [ "Binder", "dc/dfa/classdl7_1_1config_1_1Binder.html", "dc/dfa/classdl7_1_1config_1_1Binder" ],
+        [ "Binding", "d1/dd5/structdl7_1_1config_1_1Binding.html", null ],
+        [ "EnumNames", "df/da4/structdl7_1_1config_1_1EnumNames.html", null ],
+        [ "EnumValue", "db/d77/structdl7_1_1config_1_1EnumValue.html", "db/d77/structdl7_1_1config_1_1EnumValue" ],
+        [ "Field", "d1/ddf/structdl7_1_1config_1_1Field.html", "d1/ddf/structdl7_1_1config_1_1Field" ],
         [ "Value", "d7/de1/classdl7_1_1config_1_1Value.html", "d7/de1/classdl7_1_1config_1_1Value" ]
       ] ],
       [ "ini", "dd/dc6/namespacedl7_1_1ini.html", [

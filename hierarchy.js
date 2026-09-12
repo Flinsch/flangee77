@@ -130,6 +130,8 @@ var hierarchy =
     [ "xl7::BackendRegistry< TBackendBase >", "d1/da6/classxl7_1_1BackendRegistry.html", null ],
     [ "fl7::gui::render::BackgroundHelper", "d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html", null ],
     [ "dl7::Base64", "da/d3b/classdl7_1_1Base64.html", null ],
+    [ "dl7::config::Binder", "dc/dfa/classdl7_1_1config_1_1Binder.html", null ],
+    [ "dl7::config::Binding< Tstruct >", "d1/dd5/structdl7_1_1config_1_1Binding.html", null ],
     [ "xl7::graphics::images::codecs::png::Reader::BitInfo", "de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html", null ],
     [ "xl7::graphics::states::BlendStateDesc", "df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc.html", null ],
     [ "cl7::logging::HtmlLogHandler::Block", "dc/d37/structcl7_1_1logging_1_1HtmlLogHandler_1_1Block.html", null ],
@@ -235,6 +237,8 @@ var hierarchy =
     [ "cl7::behavioral::Signal< Args >::Entry", "d4/dc7/structcl7_1_1behavioral_1_1Signal_1_1Entry.html", null ],
     [ "xl7::graphics::images::ImageAtlas::Entry", "d0/d12/structxl7_1_1graphics_1_1images_1_1ImageAtlas_1_1Entry.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::StateArray< TProxy, N >::Entry", "d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html", null ],
+    [ "dl7::config::EnumNames< Tenum >", "df/da4/structdl7_1_1config_1_1EnumNames.html", null ],
+    [ "dl7::config::EnumValue< Tenum >", "db/d77/structdl7_1_1config_1_1EnumValue.html", null ],
     [ "tl7::Signature::equal_to", "da/dc1/structtl7_1_1Signature_1_1equal__to.html", null ],
     [ "cl7::text::codec::ErrorHandler", "d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html", [
       [ "cl7::text::codec::LoggingErrorHandler", "db/d54/classcl7_1_1text_1_1codec_1_1LoggingErrorHandler.html", null ],
@@ -286,8 +290,10 @@ var hierarchy =
       ] ],
       [ "cl7::detail::_is_any_string< T >", "d8/d05/structcl7_1_1detail_1_1__is__any__string.html", null ],
       [ "cl7::detail::_is_any_string_span< T >", "de/d1e/structcl7_1_1detail_1_1__is__any__string__span.html", null ],
-      [ "cl7::detail::_is_any_string_view< T >", "df/d9b/structcl7_1_1detail_1_1__is__any__string__view.html", null ]
+      [ "cl7::detail::_is_any_string_view< T >", "df/d9b/structcl7_1_1detail_1_1__is__any__string__view.html", null ],
+      [ "dl7::config::detail::is_bound_sequence< T >", "d8/da7/structdl7_1_1config_1_1detail_1_1is__bound__sequence.html", null ]
     ] ],
+    [ "dl7::config::Field< Tstruct, Tmember >", "d1/ddf/structdl7_1_1config_1_1Field.html", null ],
     [ "xl7::graphics::images::codecs::png::FilterEncoder", "db/d78/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1FilterEncoder.html", null ],
     [ "xl7::graphics::images::codecs::png::FilterReconstructor", "d3/d17/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1FilterReconstructor.html", null ],
     [ "cl7::text::format::FloatFormatOptions", "d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html", null ],
@@ -878,7 +884,8 @@ var hierarchy =
     [ "std::true_type", null, [
       [ "cl7::detail::_is_any_string< std::basic_string< Tchar, Ttraits, Talloc > >", "d0/d63/structcl7_1_1detail_1_1__is__any__string_3_01std_1_1basic__string_3_01Tchar_00_01Ttraits_00_01Talloc_01_4_01_4.html", null ],
       [ "cl7::detail::_is_any_string_span< std::span< Tchar > >", "d0/d3a/structcl7_1_1detail_1_1__is__any__string__span_3_01std_1_1span_3_01Tchar_01_4_01_4.html", null ],
-      [ "cl7::detail::_is_any_string_view< std::basic_string_view< Tchar, Ttraits > >", "d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html", null ]
+      [ "cl7::detail::_is_any_string_view< std::basic_string_view< Tchar, Ttraits > >", "d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html", null ],
+      [ "dl7::config::detail::is_bound_sequence< std::vector< T, Tallocator > >", "dd/dbf/structdl7_1_1config_1_1detail_1_1is__bound__sequence_3_01std_1_1vector_3_01T_00_01Tallocator_01_4_01_4.html", null ]
     ] ],
     [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::TrueTypeFontMetric", "d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html", null ],
     [ "TUpdater", null, [

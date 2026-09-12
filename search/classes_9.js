@@ -44,12 +44,14 @@ var searchData=
   ['is_5fany_5fstring_5fspan_41',['is_any_string_span',['../df/d3e/structcl7_1_1is__any__string__span.html',1,'cl7']]],
   ['is_5fany_5fstring_5fview_42',['is_any_string_view',['../d9/d41/structcl7_1_1is__any__string__view.html',1,'cl7']]],
   ['is_5fany_5fstring_5fview_5flike_43',['is_any_string_view_like',['../df/d9c/structcl7_1_1is__any__string__view__like.html',1,'cl7']]],
-  ['is_5fstring_5fconstructible_44',['is_string_constructible',['../d9/d09/structcl7_1_1is__string__constructible.html',1,'cl7']]],
-  ['ishaderfactory_45',['IShaderFactory',['../d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory.html',1,'xl7::graphics::shaders']]],
-  ['istatefactory_46',['IStateFactory',['../dc/da2/classxl7_1_1graphics_1_1states_1_1IStateFactory.html',1,'xl7::graphics::states']]],
-  ['isurfacefactory_47',['ISurfaceFactory',['../dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html',1,'xl7::graphics::surfaces']]],
-  ['iterator_48',['iterator',['../dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html',1,'cl7::text::codec::Decoder']]],
-  ['itexturefactory_49',['ITextureFactory',['../d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html',1,'xl7::graphics::textures']]],
-  ['iwindowimpl_50',['IWindowImpl',['../de/d9e/classxl7_1_1detail_1_1IWindowImpl.html',1,'xl7::detail']]],
-  ['iwritable_51',['IWritable',['../df/db8/classcl7_1_1io_1_1IWritable.html',1,'cl7::io']]]
+  ['is_5fbound_5fsequence_44',['is_bound_sequence',['../d8/da7/structdl7_1_1config_1_1detail_1_1is__bound__sequence.html',1,'dl7::config::detail']]],
+  ['is_5fbound_5fsequence_3c_20std_3a_3avector_3c_20t_2c_20tallocator_20_3e_20_3e_45',['is_bound_sequence&lt; std::vector&lt; T, Tallocator &gt; &gt;',['../dd/dbf/structdl7_1_1config_1_1detail_1_1is__bound__sequence_3_01std_1_1vector_3_01T_00_01Tallocator_01_4_01_4.html',1,'dl7::config::detail']]],
+  ['is_5fstring_5fconstructible_46',['is_string_constructible',['../d9/d09/structcl7_1_1is__string__constructible.html',1,'cl7']]],
+  ['ishaderfactory_47',['IShaderFactory',['../d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory.html',1,'xl7::graphics::shaders']]],
+  ['istatefactory_48',['IStateFactory',['../dc/da2/classxl7_1_1graphics_1_1states_1_1IStateFactory.html',1,'xl7::graphics::states']]],
+  ['isurfacefactory_49',['ISurfaceFactory',['../dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html',1,'xl7::graphics::surfaces']]],
+  ['iterator_50',['iterator',['../dd/dd9/classcl7_1_1text_1_1codec_1_1Decoder_1_1iterator.html',1,'cl7::text::codec::Decoder']]],
+  ['itexturefactory_51',['ITextureFactory',['../d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html',1,'xl7::graphics::textures']]],
+  ['iwindowimpl_52',['IWindowImpl',['../de/d9e/classxl7_1_1detail_1_1IWindowImpl.html',1,'xl7::detail']]],
+  ['iwritable_53',['IWritable',['../df/db8/classcl7_1_1io_1_1IWritable.html',1,'cl7::io']]]
 ];
