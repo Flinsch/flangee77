@@ -140,7 +140,15 @@ Private Attributes</h2></td></tr>
 <tr class="separator:ae7f0c6f4d6aeb37d602ba05424b88462"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Parses YAML data from UTF-8 encoded string representations, keeping whatever it had to complain about along the way. </p>
+<div class="textblock"><p>Parses YAML data from UTF-8 encoded string representations, keeping whatever it had to complain about along the way.</p>
+<p>What it reads is a deliberate subset of YAML, cut to fit configuration files rather than the specification: block mappings and sequences at any nesting, the compact notation (<code>- key: value</code>), flow collections (<code>[...]</code>, <code>{...}</code>) spanning as many lines as they like, literal and folded block scalars with their indentation and chomping indicators, plain as well as single- and double-quoted scalars, plain scalars folded across several lines, comments, and the YAML 1.2 core schema for typing scalars (see <code><a class="el" href="../../dd/d3a/classdl7_1_1yaml_1_1util_1_1Schema.html">util::Schema</a></code>).</p>
+<p>The rest is deliberately left out. None of it is quietly mis-read, though: each is recognized and reported, so that a document relying on it says so rather than coming out wrong.</p><ul>
+<li>Anchors, aliases (<code>&amp;</code>, <code>*</code>), and merge keys (<code>&lt;&lt;</code>), which turn up in files written by tools rather than by hand. They end up as plain scalars.</li>
+<li>Tags (<code>!!str</code>) and explicit keys (<code>?</code>), likewise as plain scalars.</li>
+<li>Directives (<code>YAML</code>, <code>TAG</code>), whose lines are skipped.</li>
+<li>Every document of a stream but the first. The <code>---</code> and <code>...</code> markers are understood, what follows the first document is not read.</li>
+</ul>
+<p>Where the specification is stricter than a reader has to be, this one is lenient: a tab in the indentation, an unexpected indentation, and a line that is no key-value pair are all diagnosed, but none of them costs more than itself. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4685fd9eaf65c95839162d94501ce413" name="a4685fd9eaf65c95839162d94501ce413"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4685fd9eaf65c95839162d94501ce413">&#9670;&#160;</a></span>YamlReader()</h2>
