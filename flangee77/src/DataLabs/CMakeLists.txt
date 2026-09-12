@@ -5,6 +5,7 @@ target_sources(flangee77
 
     compression/Deflate.cpp
 
+    config/Binder.cpp
     config/Value.cpp
 
     ini/Ini.cpp

@@ -1,6 +1,7 @@
 #include <TestLabs/TestSuite.h>
 
 #include <DataLabs/config/Value.h>
+#include <DataLabs/config/Binder.h>
 
 #include "../shared.h"
 
@@ -360,4 +361,362 @@ TESTLABS_CASE( u8"DataLabs:  config:  Value:  merge" )
         // Merging must leave the overlay alone.
         TESTLABS_CHECK_EQ( entry.overlay, overlay_before );
     }
+}
+
+
+// #############################################################################
+// The binding layer, on a fixture covering every shape a field can take.
+// #############################################################################
+
+namespace binding_test {
+
+    enum struct Mode
+    {
+        Windowed,
+        Borderless,
+        Exclusive,
+    };
+
+    struct Limits
+    {
+        unsigned memory = 512;
+        cl7::u8string label = u8"default";
+
+        bool operator==(const Limits&) const = default;
+    };
+
+    struct Settings
+    {
+        bool enabled = true;
+        int offset = -7;
+        unsigned width = 640;
+        double factor = 1.5;
+        cl7::u8string title = u8"untitled";
+        Mode mode = Mode::Windowed;
+        Limits limits;
+        std::vector<int> ports{ 1, 2 };
+        std::vector<Limits> tiers;
+
+        bool operator==(const Settings&) const = default;
+    };
+
+} // namespace binding_test
+
+namespace dl7::config {
+
+    template <>
+    struct EnumNames<binding_test::Mode>
+    {
+        static constexpr auto names = std::make_tuple(
+            enum_value( u8"windowed", binding_test::Mode::Windowed ),
+            enum_value( u8"borderless", binding_test::Mode::Borderless ),
+            enum_value( u8"exclusive", binding_test::Mode::Exclusive ) );
+    };
+
+    template <>
+    struct Binding<binding_test::Limits>
+    {
+        static constexpr auto fields = std::make_tuple(
+            field( u8"memory", &binding_test::Limits::memory ),
+            field( u8"label", &binding_test::Limits::label ) );
+    };
+
+    template <>
+    struct Binding<binding_test::Settings>
+    {
+        static constexpr auto fields = std::make_tuple(
+            field( u8"enabled", &binding_test::Settings::enabled ),
+            field( u8"offset", &binding_test::Settings::offset ),
+            field( u8"width", &binding_test::Settings::width ),
+            field( u8"factor", &binding_test::Settings::factor ),
+            field( u8"title", &binding_test::Settings::title ),
+            field( u8"mode", &binding_test::Settings::mode ),
+            field( u8"limits", &binding_test::Settings::limits ),
+            field( u8"ports", &binding_test::Settings::ports ),
+            field( u8"tiers", &binding_test::Settings::tiers ) );
+    };
+
+} // namespace dl7::config
+
+
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  load (what is not stated keeps its default)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+
+    const binding_test::Settings defaults;
+
+    // An empty mapping is a configuration that states nothing at all.
+    {
+        dl7::config::Binder binder;
+        binding_test::Settings settings;
+        binder.load( Value( mapping_t{} ), settings );
+
+        TESTLABS_CHECK( settings == defaults );
+        TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+    }
+
+    // Stating one field leaves the others alone.
+    {
+        dl7::config::Binder binder;
+        binding_test::Settings settings;
+        binder.load( Value( mapping_t{ { u8"width", Value( 1920 ) } } ), settings );
+
+        TESTLABS_CHECK_EQ( settings.width, 1920 );
+        TESTLABS_CHECK_EQ( settings.title, defaults.title );
+        TESTLABS_CHECK_EQ( settings.offset, defaults.offset );
+        TESTLABS_CHECK( settings.ports == defaults.ports );
+        TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  load (every shape of field)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+    using dl7::config::sequence_t;
+
+    dl7::config::Binder binder;
+    binding_test::Settings settings;
+
+    binder.load( Value( mapping_t{
+        { u8"enabled", Value( false ) },
+        { u8"offset", Value( 42 ) },
+        { u8"width", Value( 1920 ) },
+        { u8"factor", Value( 2.5 ) },
+        { u8"title", Value( u8"Example" ) },
+        { u8"mode", Value( u8"exclusive" ) },
+        { u8"limits", Value( mapping_t{ { u8"memory", Value( 1024 ) } } ) },
+        { u8"ports", Value( sequence_t{ Value( 7 ), Value( 8 ), Value( 9 ) } ) },
+        { u8"tiers", Value( sequence_t{ Value( mapping_t{ { u8"label", Value( u8"low" ) } } ) } ) },
+    } ), settings );
+
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+
+    TESTLABS_CHECK( !settings.enabled );
+    TESTLABS_CHECK_EQ( settings.offset, 42 );
+    TESTLABS_CHECK_EQ( settings.width, 1920 );
+    TESTLABS_CHECK_EQ( settings.factor, 2.5 );
+    TESTLABS_CHECK_EQ( settings.title, u8"Example" );
+    TESTLABS_CHECK( settings.mode == binding_test::Mode::Exclusive );
+
+    // A nested structure is laid over its own defaults, too.
+    TESTLABS_CHECK_EQ( settings.limits.memory, 1024 );
+    TESTLABS_CHECK_EQ( settings.limits.label, u8"default" );
+
+    // A sequence is replaced rather than added to.
+    TESTLABS_CHECK_EQ( settings.ports.size(), 3 );
+    TESTLABS_CHECK_EQ( settings.tiers.size(), 1 );
+    if ( settings.tiers.size() == 1 )
+    {
+        TESTLABS_CHECK_EQ( settings.tiers[ 0 ].label, u8"low" );
+        TESTLABS_CHECK_EQ( settings.tiers[ 0 ].memory, 512 );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  load (a string where a format has no types)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+
+    dl7::config::Binder binder;
+    binding_test::Settings settings;
+
+    // INI and XML hand everything over as a string, so a string that reads as a
+    // number or a boolean is accepted for a field of that type.
+    binder.load( Value( mapping_t{
+        { u8"enabled", Value( u8"false" ) },
+        { u8"offset", Value( u8"-21" ) },
+        { u8"factor", Value( u8"0.25" ) },
+    } ), settings );
+
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+    TESTLABS_CHECK( !settings.enabled );
+    TESTLABS_CHECK_EQ( settings.offset, -21 );
+    TESTLABS_CHECK_EQ( settings.factor, 0.25 );
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  load (what gets reported)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+    using dl7::config::sequence_t;
+
+    struct Entry
+    {
+        cl7::u8string label;
+        Value value;
+        cl7::u8string expected_message;
+        bool expected_error = true;
+    } entry;
+
+    const std::vector<Entry> container {
+        {
+            u8"a key no field answers to",
+            Value( mapping_t{ { u8"widht", Value( 1920 ) } } ),
+            u8"widht: Unknown key.",
+            false,
+        },
+        {
+            u8"a key no field answers to, nested",
+            Value( mapping_t{ { u8"limits", Value( mapping_t{ { u8"memroy", Value( 1 ) } } ) } } ),
+            u8"limits.memroy: Unknown key.",
+            false,
+        },
+        {
+            u8"a number where a string belongs",
+            Value( mapping_t{ { u8"title", Value( 1 ) } } ),
+            u8"title: A string is expected here.",
+        },
+        {
+            u8"a string where a number belongs",
+            Value( mapping_t{ { u8"width", Value( u8"wide" ) } } ),
+            u8"width: A whole number is expected here.",
+        },
+        {
+            u8"a number where a boolean belongs",
+            Value( mapping_t{ { u8"enabled", Value( 1 ) } } ),
+            u8"enabled: A boolean is expected here.",
+        },
+        {
+            u8"a name no enumeration value goes by",
+            Value( mapping_t{ { u8"mode", Value( u8"fullscreen" ) } } ),
+            u8"mode: Unknown name.",
+        },
+        {
+            u8"a number where an enumeration belongs",
+            Value( mapping_t{ { u8"mode", Value( 2 ) } } ),
+            u8"mode: A name is expected here.",
+        },
+        {
+            u8"a scalar where a mapping belongs",
+            Value( mapping_t{ { u8"limits", Value( 1 ) } } ),
+            u8"limits: A mapping is expected here.",
+        },
+        {
+            u8"a scalar where a sequence belongs",
+            Value( mapping_t{ { u8"ports", Value( 1 ) } } ),
+            u8"ports: A sequence is expected here.",
+        },
+        {
+            u8"a bad entry, pointed at by its index",
+            Value( mapping_t{ { u8"ports", Value( sequence_t{ Value( 1 ), Value( u8"two" ) } ) } } ),
+            u8"ports[1]: A whole number is expected here.",
+        },
+        {
+            u8"a number the field has no room for",
+            Value( mapping_t{ { u8"width", Value( -1 ) } } ),
+            u8"width: This number is out of the field's range.",
+        },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.label )
+    {
+        dl7::config::Binder binder;
+        binding_test::Settings settings;
+        binder.load( entry.value, settings );
+
+        const auto& diagnostics = binder.get_diagnostics();
+
+        TESTLABS_CHECK_EQ( diagnostics.get_count(), 1 );
+        if ( !diagnostics.get_all().empty() )
+        {
+            TESTLABS_CHECK_EQ( diagnostics.get_all().front().message, entry.expected_message );
+            TESTLABS_CHECK_EQ( diagnostics.get_error_count(), entry.expected_error ? 1 : 0 );
+        }
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  load (a field that fails costs only itself)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+
+    const binding_test::Settings defaults;
+
+    dl7::config::Binder binder;
+    binding_test::Settings settings;
+
+    binder.load( Value( mapping_t{
+        { u8"width", Value( u8"wide" ) },
+        { u8"title", Value( u8"Example" ) },
+        { u8"nonsense", Value( 1 ) },
+    } ), settings );
+
+    // The bad field keeps its default, the good one is read all the same.
+    TESTLABS_CHECK_EQ( settings.width, defaults.width );
+    TESTLABS_CHECK_EQ( settings.title, u8"Example" );
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_error_count(), 1 );
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_warning_count(), 1 );
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  save" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+    using dl7::config::sequence_t;
+
+    binding_test::Settings settings;
+    settings.enabled = false;
+    settings.offset = 3;
+    settings.width = 800;
+    settings.factor = 0.5;
+    settings.title = u8"Example";
+    settings.mode = binding_test::Mode::Borderless;
+    settings.limits = { 256, u8"small" };
+    settings.ports = { 5 };
+    settings.tiers = { { 1, u8"one" } };
+
+    dl7::config::Binder binder;
+    const auto value = binder.save( settings );
+
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+
+    TESTLABS_CHECK_EQ( value, Value( mapping_t{
+        { u8"enabled", Value( false ) },
+        { u8"offset", Value( 3 ) },
+        { u8"width", Value( 800 ) },
+        { u8"factor", Value( 0.5 ) },
+        { u8"title", Value( u8"Example" ) },
+        { u8"mode", Value( u8"borderless" ) },
+        { u8"limits", Value( mapping_t{ { u8"memory", Value( 256 ) }, { u8"label", Value( u8"small" ) } } ) },
+        { u8"ports", Value( sequence_t{ Value( 5 ) } ) },
+        { u8"tiers", Value( sequence_t{ Value( mapping_t{ { u8"memory", Value( 1 ) }, { u8"label", Value( u8"one" ) } } ) } ) },
+    } ) );
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  round trip (load after save)" )
+{
+    binding_test::Settings source;
+    source.enabled = false;
+    source.offset = -1234;
+    source.width = 2560;
+    source.factor = 1.25;
+    source.title = u8"Round Trip";
+    source.mode = binding_test::Mode::Exclusive;
+    source.limits = { 4096, u8"large" };
+    source.ports = { 1, 2, 3 };
+    source.tiers = { { 1, u8"a" }, { 2, u8"b" } };
+
+    dl7::config::Binder binder;
+    const auto value = binder.save( source );
+
+    binding_test::Settings target;
+    binder.load( value, target );
+
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+    TESTLABS_CHECK( target == source );
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  save (an enumeration value with no name)" )
+{
+    binding_test::Settings settings;
+    settings.mode = static_cast<binding_test::Mode>( 99 );
+
+    dl7::config::Binder binder;
+    const auto value = binder.save( settings );
+
+    TESTLABS_CHECK( binder.get_diagnostics().get_error_count() > 0 );
+    TESTLABS_CHECK( value.at( u8"mode" ).is_null() );
 }
