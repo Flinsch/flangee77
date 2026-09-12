@@ -5,6 +5,8 @@ target_sources(flangee77
 
     compression/Deflate.cpp
 
+    config/Value.cpp
+
     ini/Ini.cpp
     ini/IniReader.cpp
     ini/IniWriter.cpp

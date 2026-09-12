@@ -43,6 +43,7 @@ target_sources(flangee77-tests
     DataLabs/Buffer3d.cpp
     DataLabs/compression.cpp
     DataLabs/syntax.cpp
+    DataLabs/config.cpp
     DataLabs/json.cpp
     DataLabs/yaml.cpp
     DataLabs/toml.cpp
