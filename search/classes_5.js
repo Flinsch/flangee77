@@ -8,11 +8,12 @@ var searchData=
   ['encoderesult_5',['EncodeResult',['../d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult.html',1,'cl7::text::codec']]],
   ['endianawarereader_6',['EndianAwareReader',['../d9/d5a/classcl7_1_1io_1_1EndianAwareReader.html',1,'cl7::io']]],
   ['endianawarewriter_7',['EndianAwareWriter',['../db/d48/classcl7_1_1io_1_1EndianAwareWriter.html',1,'cl7::io']]],
-  ['entry_8',['entry',['../d0/d12/structxl7_1_1graphics_1_1images_1_1ImageAtlas_1_1Entry.html',1,'xl7::graphics::images::ImageAtlas::Entry'],['../d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html',1,'xl7::graphics::pipeline::AbstractPipelineObject::StateArray&lt; TProxy, N &gt;::Entry'],['../d4/dc7/structcl7_1_1behavioral_1_1Signal_1_1Entry.html',1,'cl7::behavioral::Signal&lt; Args &gt;::Entry']]],
+  ['entry_8',['entry',['../d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html',1,'xl7::graphics::pipeline::AbstractPipelineObject::StateArray&lt; TProxy, N &gt;::Entry'],['../d0/d12/structxl7_1_1graphics_1_1images_1_1ImageAtlas_1_1Entry.html',1,'xl7::graphics::images::ImageAtlas::Entry'],['../d4/dc7/structcl7_1_1behavioral_1_1Signal_1_1Entry.html',1,'cl7::behavioral::Signal&lt; Args &gt;::Entry']]],
   ['enumnames_9',['EnumNames',['../df/da4/structdl7_1_1config_1_1EnumNames.html',1,'dl7::config']]],
-  ['enumvalue_10',['EnumValue',['../db/d77/structdl7_1_1config_1_1EnumValue.html',1,'dl7::config']]],
-  ['equal_5fto_11',['equal_to',['../da/dc1/structtl7_1_1Signature_1_1equal__to.html',1,'tl7::Signature']]],
-  ['errorhandler_12',['errorhandler',['../d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html',1,'cl7::text::codec::ErrorHandler'],['../d0/d2a/structdl7_1_1json_1_1util_1_1Unescaper_1_1ErrorHandler.html',1,'dl7::json::util::Unescaper::ErrorHandler'],['../d9/dfd/structdl7_1_1xml_1_1util_1_1Unescaper_1_1ErrorHandler.html',1,'dl7::xml::util::Unescaper::ErrorHandler']]],
-  ['errorstatus_13',['ErrorStatus',['../d3/dea/structcl7_1_1text_1_1codec_1_1ErrorStatus.html',1,'cl7::text::codec']]],
-  ['escaper_14',['escaper',['../d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html',1,'dl7::json::util::Escaper'],['../dc/dfe/classdl7_1_1xml_1_1util_1_1Escaper.html',1,'dl7::xml::util::Escaper']]]
+  ['enumnames_3c_20xl7_3a_3aconfig_3a_3avideo_3a_3apresentationmode_20_3e_10',['EnumNames&lt; xl7::Config::Video::PresentationMode &gt;',['../d2/d05/structdl7_1_1config_1_1EnumNames_3_01xl7_1_1Config_1_1Video_1_1PresentationMode_01_4.html',1,'dl7::config']]],
+  ['enumvalue_11',['EnumValue',['../db/d77/structdl7_1_1config_1_1EnumValue.html',1,'dl7::config']]],
+  ['equal_5fto_12',['equal_to',['../da/dc1/structtl7_1_1Signature_1_1equal__to.html',1,'tl7::Signature']]],
+  ['errorhandler_13',['errorhandler',['../d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html',1,'cl7::text::codec::ErrorHandler'],['../d0/d2a/structdl7_1_1json_1_1util_1_1Unescaper_1_1ErrorHandler.html',1,'dl7::json::util::Unescaper::ErrorHandler'],['../d9/dfd/structdl7_1_1xml_1_1util_1_1Unescaper_1_1ErrorHandler.html',1,'dl7::xml::util::Unescaper::ErrorHandler']]],
+  ['errorstatus_14',['ErrorStatus',['../d3/dea/structcl7_1_1text_1_1codec_1_1ErrorStatus.html',1,'cl7::text::codec']]],
+  ['escaper_15',['escaper',['../d9/dd0/classdl7_1_1json_1_1util_1_1Escaper.html',1,'dl7::json::util::Escaper'],['../dc/dfe/classdl7_1_1xml_1_1util_1_1Escaper.html',1,'dl7::xml::util::Escaper']]]
 ];

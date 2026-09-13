@@ -132,6 +132,10 @@ var hierarchy =
     [ "dl7::Base64", "da/d3b/classdl7_1_1Base64.html", null ],
     [ "dl7::config::Binder", "dc/dfa/classdl7_1_1config_1_1Binder.html", null ],
     [ "dl7::config::Binding< Tstruct >", "d1/dd5/structdl7_1_1config_1_1Binding.html", null ],
+    [ "dl7::config::Binding< xl7::Config >", "db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4.html", null ],
+    [ "dl7::config::Binding< xl7::Config::General >", "d2/d8b/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1General_01_4.html", null ],
+    [ "dl7::config::Binding< xl7::Config::Input >", "d7/d63/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Input_01_4.html", null ],
+    [ "dl7::config::Binding< xl7::Config::Video >", "d4/d46/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Video_01_4.html", null ],
     [ "xl7::graphics::images::codecs::png::Reader::BitInfo", "de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html", null ],
     [ "xl7::graphics::states::BlendStateDesc", "df/d43/structxl7_1_1graphics_1_1states_1_1BlendStateDesc.html", null ],
     [ "cl7::logging::HtmlLogHandler::Block", "dc/d37/structcl7_1_1logging_1_1HtmlLogHandler_1_1Block.html", null ],
@@ -238,6 +242,7 @@ var hierarchy =
     [ "xl7::graphics::images::ImageAtlas::Entry", "d0/d12/structxl7_1_1graphics_1_1images_1_1ImageAtlas_1_1Entry.html", null ],
     [ "xl7::graphics::pipeline::AbstractPipelineObject::StateArray< TProxy, N >::Entry", "d5/df5/structxl7_1_1graphics_1_1pipeline_1_1AbstractPipelineObject_1_1StateArray_1_1Entry.html", null ],
     [ "dl7::config::EnumNames< Tenum >", "df/da4/structdl7_1_1config_1_1EnumNames.html", null ],
+    [ "dl7::config::EnumNames< xl7::Config::Video::PresentationMode >", "d2/d05/structdl7_1_1config_1_1EnumNames_3_01xl7_1_1Config_1_1Video_1_1PresentationMode_01_4.html", null ],
     [ "dl7::config::EnumValue< Tenum >", "db/d77/structdl7_1_1config_1_1EnumValue.html", null ],
     [ "tl7::Signature::equal_to", "da/dc1/structtl7_1_1Signature_1_1equal__to.html", null ],
     [ "cl7::text::codec::ErrorHandler", "d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html", [

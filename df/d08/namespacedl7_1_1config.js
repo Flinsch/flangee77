@@ -3,7 +3,12 @@ var namespacedl7_1_1config =
     [ "detail", "d2/def/namespacedl7_1_1config_1_1detail.html", "d2/def/namespacedl7_1_1config_1_1detail" ],
     [ "Binder", "dc/dfa/classdl7_1_1config_1_1Binder.html", "dc/dfa/classdl7_1_1config_1_1Binder" ],
     [ "Binding", "d1/dd5/structdl7_1_1config_1_1Binding.html", null ],
+    [ "Binding< xl7::Config >", "db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4.html", "db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4" ],
+    [ "Binding< xl7::Config::General >", "d2/d8b/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1General_01_4.html", "d2/d8b/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1General_01_4" ],
+    [ "Binding< xl7::Config::Input >", "d7/d63/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Input_01_4.html", "d7/d63/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Input_01_4" ],
+    [ "Binding< xl7::Config::Video >", "d4/d46/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Video_01_4.html", "d4/d46/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Video_01_4" ],
     [ "EnumNames", "df/da4/structdl7_1_1config_1_1EnumNames.html", null ],
+    [ "EnumNames< xl7::Config::Video::PresentationMode >", "d2/d05/structdl7_1_1config_1_1EnumNames_3_01xl7_1_1Config_1_1Video_1_1PresentationMode_01_4.html", "d2/d05/structdl7_1_1config_1_1EnumNames_3_01xl7_1_1Config_1_1Video_1_1PresentationMode_01_4" ],
     [ "EnumValue", "db/d77/structdl7_1_1config_1_1EnumValue.html", "db/d77/structdl7_1_1config_1_1EnumValue" ],
     [ "Field", "d1/ddf/structdl7_1_1config_1_1Field.html", "d1/ddf/structdl7_1_1config_1_1Field" ],
     [ "Value", "d7/de1/classdl7_1_1config_1_1Value.html", "d7/de1/classdl7_1_1config_1_1Value" ],
@@ -17,5 +22,7 @@ var namespacedl7_1_1config =
     [ "sequence_t", "df/d08/namespacedl7_1_1config.html#a39c200d9fc4c0b1820f6120fb222397d", null ],
     [ "string_t", "df/d08/namespacedl7_1_1config.html#aa392ed4e20c595ea38c3f8b832df9adc", null ],
     [ "enum_value", "df/d08/namespacedl7_1_1config.html#acdfda8b1d2ece34266cdfc9137262259", null ],
-    [ "field", "df/d08/namespacedl7_1_1config.html#aae0e145f3023b81070ca84d38fdc0567", null ]
+    [ "field", "df/d08/namespacedl7_1_1config.html#aae0e145f3023b81070ca84d38fdc0567", null ],
+    [ "from_json", "df/d08/namespacedl7_1_1config.html#a8663a9779925d54fbf83f6c920e4878e", null ],
+    [ "to_json", "df/d08/namespacedl7_1_1config.html#aca9b0d8335e3ec1697b3cb071443d869", null ]
 ];

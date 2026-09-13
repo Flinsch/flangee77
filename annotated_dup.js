@@ -150,7 +150,12 @@ var annotated_dup =
         ] ],
         [ "Binder", "dc/dfa/classdl7_1_1config_1_1Binder.html", "dc/dfa/classdl7_1_1config_1_1Binder" ],
         [ "Binding", "d1/dd5/structdl7_1_1config_1_1Binding.html", null ],
+        [ "Binding< xl7::Config >", "db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4.html", "db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4" ],
+        [ "Binding< xl7::Config::General >", "d2/d8b/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1General_01_4.html", "d2/d8b/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1General_01_4" ],
+        [ "Binding< xl7::Config::Input >", "d7/d63/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Input_01_4.html", "d7/d63/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Input_01_4" ],
+        [ "Binding< xl7::Config::Video >", "d4/d46/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Video_01_4.html", "d4/d46/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Video_01_4" ],
         [ "EnumNames", "df/da4/structdl7_1_1config_1_1EnumNames.html", null ],
+        [ "EnumNames< xl7::Config::Video::PresentationMode >", "d2/d05/structdl7_1_1config_1_1EnumNames_3_01xl7_1_1Config_1_1Video_1_1PresentationMode_01_4.html", "d2/d05/structdl7_1_1config_1_1EnumNames_3_01xl7_1_1Config_1_1Video_1_1PresentationMode_01_4" ],
         [ "EnumValue", "db/d77/structdl7_1_1config_1_1EnumValue.html", "db/d77/structdl7_1_1config_1_1EnumValue" ],
         [ "Field", "d1/ddf/structdl7_1_1config_1_1Field.html", "d1/ddf/structdl7_1_1config_1_1Field" ],
         [ "Value", "d7/de1/classdl7_1_1config_1_1Value.html", "d7/de1/classdl7_1_1config_1_1Value" ]
