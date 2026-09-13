@@ -2,70 +2,19 @@
 
 #include <DataLabs/config/Value.h>
 #include <DataLabs/config/Binder.h>
+#include <DataLabs/config/json.h>
+#include <DataLabs/json/JsonReader.h>
+#include <DataLabs/json/JsonWriter.h>
 
 #include "../shared.h"
-
-#include <CoreLabs/text/format.h>
 
 #include <vector>
 
 
 
-namespace {
-
-    /**
-     * Renders a value for a failed check to print. The neutral model deliberately
-     * has no serialization of its own, and until the format converters exist there
-     * is nothing to borrow one from.
-     */
-    cl7::u8string dump(const dl7::config::Value& value)
-    {
-        using dl7::config::Value;
-
-        switch ( value.get_type() )
-        {
-        case Value::Type::Null:
-            return u8"null";
-        case Value::Type::Boolean:
-            return value.is_true() ? u8"true" : u8"false";
-        case Value::Type::Integer:
-            return cl7::text::format::to_string<cl7::u8string>( value.as_integer() );
-        case Value::Type::Float:
-            return cl7::text::format::to_string<cl7::u8string>( value.as_float(), 1 );
-        case Value::Type::String:
-            return u8"\"" + value.as_string() + u8"\"";
-        case Value::Type::Sequence:
-        {
-            cl7::u8string result{ u8"[" };
-            for ( size_t i = 0; i < value.as_sequence().size(); ++i )
-                result += ( i > 0 ? u8", " : u8"" ) + dump( value.at( i ) );
-            return result + u8"]";
-        }
-        case Value::Type::Mapping:
-        {
-            cl7::u8string result{ u8"{" };
-            bool first = true;
-            for ( const auto& p : value.as_mapping() )
-            {
-                if ( !first )
-                    result += u8", ";
-                first = false;
-                result += p.first + u8": " + dump( p.second );
-            }
-            return result + u8"}";
-        }
-        }
-
-        return {};
-    }
-
-} // anonymous namespace
-
-
-
 namespace tl7::internals {
     inline
-    cl7::u8string to_string(const dl7::config::Value& value) { return dump( value ); }
+    cl7::u8string to_string(const dl7::config::Value& value) { return dl7::json::JsonWriter{ dl7::json::JsonWriter::DEFAULT_COMPACT_FORMAT }.to_string( dl7::config::to_json( value ) ); }
 }
 
 
@@ -719,4 +668,68 @@ TESTLABS_CASE( u8"DataLabs:  config:  Binder:  save (an enumeration value with n
 
     TESTLABS_CHECK( binder.get_diagnostics().get_error_count() > 0 );
     TESTLABS_CHECK( value.at( u8"mode" ).is_null() );
+}
+
+
+// #############################################################################
+// Converting between configuration values and JSON.
+// #############################################################################
+
+TESTLABS_CASE( u8"DataLabs:  config:  from_json / to_json" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+    using dl7::config::sequence_t;
+    using dl7::json::Json;
+
+    struct Entry
+    {
+        cl7::u8string label;
+        Value value;
+        Json json;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"null", Value(), Json() },
+        { u8"boolean", Value( true ), Json( true ) },
+        { u8"integer", Value( -7 ), Json( -7 ) },
+        { u8"float", Value( 2.5 ), Json( 2.5 ) },
+        { u8"string", Value( u8"Hello World" ), Json( u8"Hello World" ) },
+        { u8"empty sequence", Value( sequence_t{} ), Json( dl7::json::array_t{} ) },
+        { u8"empty mapping", Value( mapping_t{} ), Json( dl7::json::object_t{} ) },
+        {
+            u8"nested",
+            Value( mapping_t{ { u8"a", Value( sequence_t{ Value( 1 ), Value( mapping_t{ { u8"b", Value( false ) } } ) } ) } } ),
+            Json( dl7::json::object_t{ { u8"a", Json( dl7::json::array_t{ Json( 1 ), Json( dl7::json::object_t{ { u8"b", Json( false ) } } ) } ) } } ),
+        },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.label )
+    {
+        TESTLABS_CHECK_EQ( dl7::config::from_json( entry.json ), entry.value );
+        TESTLABS_CHECK( dl7::config::to_json( entry.value ) == entry.json );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  from_json / to_json (through a JSON string)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+    using dl7::config::sequence_t;
+
+    const Value value( mapping_t{
+        { u8"null", Value() },
+        { u8"boolean", Value( false ) },
+        { u8"integer", Value( 1920 ) },
+        { u8"float", Value( 0.25 ) },
+        { u8"whole float", Value( 7.0 ) },
+        { u8"string", Value( u8"Example" ) },
+        { u8"sequence", Value( sequence_t{ Value( 1 ), Value( u8"two" ) } ) },
+        { u8"mapping", Value( mapping_t{ { u8"nested", Value( true ) } } ) },
+    } );
+
+    const auto string = dl7::json::JsonWriter{}.to_string( dl7::config::to_json( value ) );
+
+    // A whole float must come back as a float, not as an integer.
+    TESTLABS_CHECK_EQ( dl7::config::from_json( dl7::json::JsonReader{}.parse( string ) ), value );
 }

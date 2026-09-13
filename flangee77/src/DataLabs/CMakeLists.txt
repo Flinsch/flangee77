@@ -7,6 +7,7 @@ target_sources(flangee77
 
     config/Binder.cpp
     config/Value.cpp
+    config/json.cpp
 
     ini/Ini.cpp
     ini/IniReader.cpp
