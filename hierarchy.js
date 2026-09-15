@@ -157,6 +157,7 @@ var hierarchy =
     [ "cl7::io::ByteReader", "d7/df3/classcl7_1_1io_1_1ByteReader.html", null ],
     [ "cl7::io::ByteWriter", "de/d6e/classcl7_1_1io_1_1ByteWriter.html", null ],
     [ "xl7::graphics::RenderingDevice::Capabilities", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html", null ],
+    [ "fl7::gui::render::CaretHelper", "dd/d83/classfl7_1_1gui_1_1render_1_1CaretHelper.html", null ],
     [ "xl7::graphics::PixelLayout::Channel", "d7/d9b/structxl7_1_1graphics_1_1PixelLayout_1_1Channel.html", null ],
     [ "cl7::char_type_of< T >", "d8/dd0/structcl7_1_1char__type__of.html", null ],
     [ "cl7::char_type_of< Tstring_char_ptr >", "d7/dec/structcl7_1_1char__type__of_3_01Tstring__char__ptr_01_4.html", null ],
@@ -275,7 +276,8 @@ var hierarchy =
         ] ]
       ] ],
       [ "fl7::gui::Control", "df/d2b/classfl7_1_1gui_1_1Control.html", [
-        [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ]
+        [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ],
+        [ "fl7::gui::faces::TextField", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html", null ]
       ] ],
       [ "fl7::gui::Static", "dc/dfd/classfl7_1_1gui_1_1Static.html", [
         [ "fl7::gui::faces::Label", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html", null ]
@@ -344,7 +346,11 @@ var hierarchy =
       [ "fl7::gui::faces::CheckBox::Box", "d7/dfc/classfl7_1_1gui_1_1faces_1_1CheckBox_1_1Box.html", null ],
       [ "fl7::gui::faces::Panel", "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html", null ],
       [ "fl7::gui::faces::RadioButton::Box", "d7/d12/classfl7_1_1gui_1_1faces_1_1RadioButton_1_1Box.html", null ],
+      [ "fl7::gui::faces::TextField", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html", null ],
       [ "fl7::gui::faces::Window", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html", null ]
+    ] ],
+    [ "fl7::gui::HasCaret", "d5/d25/classfl7_1_1gui_1_1HasCaret.html", [
+      [ "fl7::gui::faces::TextField", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html", null ]
     ] ],
     [ "fl7::gui::HasCheckedState", "d9/db9/classfl7_1_1gui_1_1HasCheckedState.html", [
       [ "fl7::gui::faces::CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html", null ],
@@ -356,7 +362,8 @@ var hierarchy =
     [ "std::hash< xl7::resources::ResourceId >", "dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4.html", null ],
     [ "fl7::gui::HasText", "d1/d67/classfl7_1_1gui_1_1HasText.html", [
       [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ],
-      [ "fl7::gui::faces::Label", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html", null ]
+      [ "fl7::gui::faces::Label", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html", null ],
+      [ "fl7::gui::faces::TextField", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html", null ]
     ] ],
     [ "xl7::graphics::images::codecs::png::Reader::Header", "df/d50/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Header.html", null ],
     [ "xl7::graphics::images::codecs::targa::Header", "d8/dd4/structxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Header.html", null ],
@@ -735,6 +742,7 @@ var hierarchy =
     [ "fl7::gui::Shell", "d6/d9c/classfl7_1_1gui_1_1Shell.html", null ],
     [ "cl7::behavioral::Signal< Args >", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", null ],
     [ "cl7::behavioral::Signal< bool >", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", null ],
+    [ "cl7::behavioral::Signal< const cl7::u32string & >", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", null ],
     [ "tl7::Signature", "d1/d32/structtl7_1_1Signature.html", [
       [ "tl7::Meta", "dd/d81/structtl7_1_1Meta.html", null ]
     ] ],

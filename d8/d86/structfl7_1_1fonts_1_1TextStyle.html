@@ -152,6 +152,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a38b14535283cfa21368a798acaa4cc50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d6a8329300f0c898f187561aa211f07" id="r_a4d6a8329300f0c898f187561aa211f07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a42208c3cc71745c28a830d9f2e7a486f">WrapMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a4d6a8329300f0c898f187561aa211f07">wrap_mode</a> = <a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a42208c3cc71745c28a830d9f2e7a486fa6adf97f83acf6453d4a6a4b1070f3754">WrapMode::None</a></td></tr>
 <tr class="separator:a4d6a8329300f0c898f187561aa211f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a176ccf1fbee88f66fa8abf90a12904" id="r_a6a176ccf1fbee88f66fa8abf90a12904"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a6a176ccf1fbee88f66fa8abf90a12904">preserve_whitespace</a> = false</td></tr>
+<tr class="separator:a6a176ccf1fbee88f66fa8abf90a12904"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a335b86fcd1d24c073d40d33f0b0d669d" id="r_a335b86fcd1d24c073d40d33f0b0d669d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a335b86fcd1d24c073d40d33f0b0d669d">font_size</a> = 16.0f</td></tr>
 <tr class="separator:a335b86fcd1d24c073d40d33f0b0d669d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af47569e19bb1dc5414eb9d3dd6874954" id="r_af47569e19bb1dc5414eb9d3dd6874954"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#af47569e19bb1dc5414eb9d3dd6874954">scaling</a> = {1.0f, 1.0f}</td></tr>
@@ -351,6 +353,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>The relative line spacing (1.0 = normal). </p>
+
+</div>
+</div>
+<a id="a6a176ccf1fbee88f66fa8abf90a12904" name="a6a176ccf1fbee88f66fa8abf90a12904"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a176ccf1fbee88f66fa8abf90a12904">&#9670;&#160;</a></span>preserve_whitespace</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fl7::fonts::TextStyle::preserve_whitespace = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>When true, a whole (non-word-wrapped) line keeps its own leading/trailing whitespace exactly as authored, instead of <a class="el" href="../../dc/d6e/namespacefl7_1_1fonts_1_1TextLayout.html#a6e468a61e71ed82fe5986e8bf7859033">TextLayout::lay_out()</a>'s normal typeset-display trimming. Meant for an editable text field's literal text (see <a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html">gui::faces::TextField</a>), which must always show exactly what was typed. Leave false for ordinary display text (Label, Button, ...). </p>
 
 </div>
 </div>

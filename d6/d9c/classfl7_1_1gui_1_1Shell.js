@@ -17,6 +17,7 @@ var classfl7_1_1gui_1_1Shell =
     [ "_focused_face", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a367303a8b7e6569011d3aee570380802", null ],
     [ "_has_previous_mouse_position", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a75111267e04beac22d2175754116a79b", null ],
     [ "_hovered_face", "d6/d9c/classfl7_1_1gui_1_1Shell.html#acf56cb03916e54348bb4207faa04b2e7", null ],
+    [ "_key_repeat_next_fire_times", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a005010dd2b59a787beb34ab6cf90ddeb", null ],
     [ "_keyboard", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a50d027fe99979e72247b3f9de87e5805", null ],
     [ "_mouse", "d6/d9c/classfl7_1_1gui_1_1Shell.html#ab9327837fb572764d43b646f6b923234", null ],
     [ "_pressed_face", "d6/d9c/classfl7_1_1gui_1_1Shell.html#af0a441e5698cfe2d2071a6af72620fea", null ],

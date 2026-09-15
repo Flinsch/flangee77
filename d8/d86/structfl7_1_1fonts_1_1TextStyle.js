@@ -22,6 +22,7 @@ var structfl7_1_1fonts_1_1TextStyle =
     [ "horizontal_align", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a330f79bc43c84f2095a53b75c022e6ce", null ],
     [ "letter_spacing", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a061bf4cf75d29f44e9cab3039def6df9", null ],
     [ "line_spacing", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ad3ede83741e79efafa054e0c098e45bf", null ],
+    [ "preserve_whitespace", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a6a176ccf1fbee88f66fa8abf90a12904", null ],
     [ "scaling", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#af47569e19bb1dc5414eb9d3dd6874954", null ],
     [ "vertical_align", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a38b14535283cfa21368a798acaa4cc50", null ],
     [ "word_spacing", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a53ca82dc211d4440c5958242aef9e364", null ],
