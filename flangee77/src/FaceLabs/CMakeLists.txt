@@ -40,10 +40,12 @@ target_sources(flangee77
     gui/faces/CheckBox.cpp
     gui/faces/Frame.cpp
     gui/faces/RadioButton.cpp
+    gui/faces/TextField.cpp
     gui/faces/Window.cpp
 
     gui/render/AbstractRenderer.cpp
     gui/render/BackgroundHelper.cpp
+    gui/render/CaretHelper.cpp
     gui/render/DefaultRenderer.cpp
     gui/render/TextHelper.cpp
 )

@@ -9,8 +9,11 @@
 #include <XiaoLabs/input/Keyboard.h>
 #include <XiaoLabs/input/Mouse.h>
 
+#include <array>
+#include <chrono>
 #include <concepts>
 #include <memory>
+#include <optional>
 #include <vector>
 
 
@@ -107,7 +110,11 @@ public:
 
     /**
      * Refreshes hover/press/focus state from the bound input source's current-frame
-     * state. Must be called once per frame, before drawing.
+     * state. Must be called once per frame, before drawing. Also routes this
+     * frame's keyboard text input/key-downs to the focused face, if any: a held key
+     * (any of them, not just the ones a particular face happens to care about)
+     * auto-repeats after an initial delay, same as text input already does thanks
+     * to the OS.
      */
     void update();
 
@@ -149,6 +156,15 @@ private:
     ml7::Vector2f _previous_mouse_position;
     /** Whether the previous mouse position has actually been set yet (guards first update's delta against a spurious jump). */
     bool _has_previous_mouse_position = false;
+
+    /**
+     * Per-key next scheduled auto-repeat fire time for _on_key_down (see update()),
+     * while that key is being held and repeated; unset otherwise. Indexed the same
+     * way as Keyboard's own per-key state. Cleared whenever _focused_face changes,
+     * so a key already held before a face gained focus never fires a spurious
+     * immediate repeat on it.
+     */
+    std::array<std::optional<std::chrono::steady_clock::time_point>, static_cast<size_t>(xl7::input::Key::COUNT)> _key_repeat_next_fire_times;
 
 }; // class Shell
 

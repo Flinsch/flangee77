@@ -97,14 +97,28 @@ namespace {
         return words;
     }
 
-    TextLine _make_trimmed_line(std::span<const cl7::text::codec::codepoint> codepoints, size_t begin, size_t end, Font::Access& font_access, ml7::Vector2f scaled_font_size, float letter_spacing, float word_spacing, std::span<const IconRun> icon_runs)
+    /**
+     * Builds a whole paragraph into a single TextLine, i.e., without any word-
+     * wrapping. `trim_whitespace` strips a leading/trailing whitespace run from
+     * the line first: the normal, typeset-display case (`!text_style.
+     * preserve_whitespace`, see `lay_out()`'s caller below), and also always for
+     * a paragraph that's entirely whitespace under WrapMode::Word (collapsing it
+     * to an empty/blank line, consistent with how word-wrap already normalizes
+     * the gaps between real words, regardless of `preserve_whitespace`). Passing
+     * false is for an editable field's literal text (see TextField), which must
+     * keep its own leading/trailing whitespace exactly as typed.
+     */
+    TextLine _make_line(std::span<const cl7::text::codec::codepoint> codepoints, size_t begin, size_t end, bool trim_whitespace, Font::Access& font_access, ml7::Vector2f scaled_font_size, float letter_spacing, float word_spacing, std::span<const IconRun> icon_runs)
     {
-        while (begin < end && _is_whitespace(codepoints, begin, icon_runs))
-            ++begin;
-        while (end > begin && _is_whitespace(codepoints, end - 1, icon_runs))
-            --end;
+        if (trim_whitespace)
+        {
+            while (begin < end && _is_whitespace(codepoints, begin, icon_runs))
+                ++begin;
+            while (end > begin && _is_whitespace(codepoints, end - 1, icon_runs))
+                --end;
+        }
 
-        // A trimmed line is always its paragraph's only (and thus last) line.
+        // Such a line is always its paragraph's only (and thus last) line.
         return TextLine{
             .codepoint_begin = begin,
             .codepoint_end = end,
@@ -152,7 +166,7 @@ namespace {
         const std::vector<Word> words = _split_into_words(codepoints, begin, end, font_access, scaled_font_size, letter_spacing, icon_runs);
         if (words.empty())
         {
-            out_lines.push_back(_make_trimmed_line(codepoints, begin, end, font_access, scaled_font_size, letter_spacing, word_spacing, icon_runs));
+            out_lines.push_back(_make_line(codepoints, begin, end, /*trim_whitespace=*/true, font_access, scaled_font_size, letter_spacing, word_spacing, icon_runs));
             return;
         }
 
@@ -206,10 +220,21 @@ namespace TextLayout {
      * the wrap mode. If `text_style.wrap_mode` is `WrapMode::Word` and `max_width`
      * is positive, each such paragraph is additionally word-wrapped to fit within
      * `max_width` (greedily, breaking at whitespace; a single word wider than
-     * `max_width` is hard-broken mid-word). Leading/trailing whitespace of each
-     * produced line is excluded from its range and width. `text_style.letter_spacing`
-     * and `text_style.word_spacing` are incorporated into each line's measured
-     * width and into wrap decisions.
+     * `max_width` is hard-broken mid-word).
+     *
+     * A paragraph that ends up as a single, whole (non-word-wrapped) line has its
+     * own leading/trailing whitespace trimmed from its range and width, same as
+     * ordinary typeset display text (e.g., a Label) expects, unless
+     * `text_style.preserve_whitespace` is set, in which case it's kept exactly as
+     * authored instead, which an editable field's literal text (see TextField)
+     * needs instead. A word-wrapped line's own boundaries never include the
+     * whitespace that separated it from the next/previous word either, but that's
+     * simply because those boundaries are word boundaries to begin with, regardless
+     * of `preserve_whitespace`. A paragraph that's entirely whitespace under
+     * `WrapMode::Word` likewise always collapses to an empty/blank line, consistent
+     * with how word-wrap already normalizes the gaps between real words.
+     * `text_style.letter_spacing` and `text_style.word_spacing` are incorporated
+     * into each line's measured width and into wrap decisions.
      *
      * `icon_runs` (if any; must be sorted by `codepoint_index`) override the
      * advance width at their code point index with `icon->size.x` instead of
@@ -254,12 +279,20 @@ namespace TextLayout {
         for (const auto& [begin, end] : paragraphs)
         {
             if (!word_wrap || begin == end)
-                lines.push_back(_make_trimmed_line(codepoints, begin, end, font_access, scaled_font_size, letter_spacing, word_spacing, icon_runs));
+                lines.push_back(_make_line(codepoints, begin, end, !text_style.preserve_whitespace, font_access, scaled_font_size, letter_spacing, word_spacing, icon_runs));
             else
                 _word_wrap_paragraph(codepoints, begin, end, font_access, scaled_font_size, letter_spacing, word_spacing, max_width, icon_runs, lines);
         }
 
         return lines;
+    }
+
+    /** Same as the `text`-based overload, but for already-decoded code points. */
+    float measure_advance(std::span<const cl7::text::codec::codepoint> codepoints, Font& font, const TextStyle& text_style)
+    {
+        Font::Access font_access = font.access();
+        const ml7::Vector2f scaled_font_size = text_style.scaling * text_style.font_size;
+        return _measure(codepoints, 0, codepoints.size(), font_access, scaled_font_size, text_style.letter_spacing, text_style.word_spacing, {});
     }
 
 } // namespace TextLayout

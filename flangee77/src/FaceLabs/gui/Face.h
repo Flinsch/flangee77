@@ -3,6 +3,7 @@
 
 #include "./Style.h"
 
+#include <XiaoLabs/input/Key.h>
 #include <XiaoLabs/input/MouseButton.h>
 
 #include <MathLabs/Vector2.h>
@@ -178,6 +179,19 @@ protected:
     virtual const Face* _get_interaction_state_proxy() const { return nullptr; }
 
     /**
+     * Called with this face's freshly resolved effective text style (part of
+     * get_effective_style()'s result), letting a concrete face type enforce a
+     * fixed, structural requirement of its own type on it, regardless of
+     * whatever a theme (or style override) happens to set, e.g., TextField
+     * forcing text_style.preserve_whitespace on, since an editable field's
+     * displayed text must always be exactly what was typed, never typeset-
+     * trimmed. Default: no-op. NOT a general style-tweaking hook: actual
+     * appearance (colors, font, chrome, alignment, ...) stays entirely theme-
+     * driven. Most face types have nothing to enforce here at all.
+     */
+    virtual void _adjust_effective_text_style(fonts::TextStyle& text_style) const {}
+
+    /**
      * Returns whether the specified point, in this face's own local coordinate
      * space (i.e., relative to this face's own absolute position), lies within it.
      * Default: an axis-aligned rect test against `get_size`. Override for a
@@ -246,6 +260,22 @@ protected:
      */
     virtual void _on_focus_lost() {}
 
+    /**
+     * Called, while this face is the focused face, once per frame for each key that
+     * was pressed down this frame (see Keyboard::is_key_pressed()).
+     */
+    virtual void _on_key_down(xl7::input::Key key) {}
+
+    /**
+     * Called, while this face is the focused face, with this frame's composed text
+     * input (see Keyboard::get_text_input()): already keyboard-layout-translated
+     * and IME-composed, but NOT filtered for control characters: Enter, Backspace,
+     * Escape, Tab etc. are reported as WM_CHAR the same as any other key, so they
+     * show up here too (see _on_key_down for handling those instead, and filter
+     * them back out here if a plain code point is all you want).
+     */
+    virtual void _on_text_input(const cl7::u32string& text) {}
+
 
 
     // #############################################################################
@@ -274,6 +304,12 @@ private:
      * chain, or `nullptr` if none of them have one set.
      */
     const Style* _find_inherited_style_override() const;
+
+    /**
+     * Does the actual work of get_effective_style(), minus the final
+     * _adjust_effective_text_style() pass.
+     */
+    Style _resolve_effective_style() const;
 
 
 

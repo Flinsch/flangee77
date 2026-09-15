@@ -10,6 +10,7 @@
     #include <FaceLabs/gui/faces/Label.h>
     #include <FaceLabs/gui/faces/Panel.h>
     #include <FaceLabs/gui/faces/RadioButton.h>
+    #include <FaceLabs/gui/faces/TextField.h>
 
 #include <XiaoLabs/graphics.h>
     #include <XiaoLabs/graphics/images/codecs/targa/Reader.h>
@@ -346,11 +347,18 @@ namespace helloworld {
         gui_radio_button_level.checked = std::make_unique<fl7::gui::ThemeLevel>();
         gui_radio_button_level.checked->background_color = {0.85f, 0.55f, 0.2f, 1.0f};
 
+        // Demo focus feedback: no dedicated text field chrome art either, so a
+        // slightly lighter fill is all that marks the focused one out.
+        auto& gui_text_field_level = _gui_theme.get_level(u8"text_field");
+        gui_text_field_level.background_color = {0.15f, 0.15f, 0.15f, 1.0f};
+        gui_text_field_level.focused = std::make_unique<fl7::gui::ThemeLevel>();
+        gui_text_field_level.focused->background_color = {0.25f, 0.25f, 0.3f, 1.0f};
+
         _gui_shell->set_theme(&_gui_theme);
 
         auto& frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo Frame");
         frame.set_position({600.0f, 210.0f});
-        frame.set_size({220.0f, 290.0f});
+        frame.set_size({220.0f, 324.0f});
 
         auto& panel = frame.get_content_area().add_child<fl7::gui::faces::Panel>();
         panel.set_position({20.0f, 20.0f});
@@ -392,6 +400,13 @@ namespace helloworld {
         radio_button_2.set_size({180.0f, 20.0f});
         radio_button_2.get_changed().connect([](bool checked) {
             LOG_INFO(checked ? u8"RadioButton 2 checked." : u8"RadioButton 2 unchecked.");
+        });
+
+        auto& text_field = frame.get_content_area().add_child<fl7::gui::faces::TextField>(U"Edit me");
+        text_field.set_position({20.0f, 270.0f});
+        text_field.set_size({180.0f, 24.0f});
+        text_field.get_changed().connect([](const cl7::u32string& text) {
+            LOG_INFO(u8"TextField changed.");
         });
 
 

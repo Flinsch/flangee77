@@ -46,10 +46,21 @@ namespace TextLayout {
      * the wrap mode. If `text_style.wrap_mode` is `WrapMode::Word` and `max_width`
      * is positive, each such paragraph is additionally word-wrapped to fit within
      * `max_width` (greedily, breaking at whitespace; a single word wider than
-     * `max_width` is hard-broken mid-word). Leading/trailing whitespace of each
-     * produced line is excluded from its range and width. `text_style.letter_spacing`
-     * and `text_style.word_spacing` are incorporated into each line's measured
-     * width and into wrap decisions.
+     * `max_width` is hard-broken mid-word).
+     *
+     * A paragraph that ends up as a single, whole (non-word-wrapped) line has its
+     * own leading/trailing whitespace trimmed from its range and width, same as
+     * ordinary typeset display text (e.g., a Label) expects, unless
+     * `text_style.preserve_whitespace` is set, in which case it's kept exactly as
+     * authored instead, which an editable field's literal text (see TextField)
+     * needs instead. A word-wrapped line's own boundaries never include the
+     * whitespace that separated it from the next/previous word either, but that's
+     * simply because those boundaries are word boundaries to begin with, regardless
+     * of `preserve_whitespace`. A paragraph that's entirely whitespace under
+     * `WrapMode::Word` likewise always collapses to an empty/blank line, consistent
+     * with how word-wrap already normalizes the gaps between real words.
+     * `text_style.letter_spacing` and `text_style.word_spacing` are incorporated
+     * into each line's measured width and into wrap decisions.
      *
      * `icon_runs` (if any; must be sorted by `codepoint_index`) override the
      * advance width at their code point index with `icon->size.x` instead of
@@ -58,6 +69,32 @@ namespace TextLayout {
      * code point actually present at that index.
      */
     std::vector<TextLine> lay_out(std::span<const cl7::text::codec::codepoint> codepoints, Font& font, const TextStyle& text_style, float max_width, std::span<const IconRun> icon_runs = {});
+
+    /** Same as the `text`-based overload, but for already-decoded code points. */
+    float measure_advance(std::span<const cl7::text::codec::codepoint> codepoints, Font& font, const TextStyle& text_style);
+
+    /**
+     * Measures the raw pen-advance width (in scaled pixels) that `text` would
+     * occupy on a single, unwrapped line under `text_style` and `font`, exactly
+     * as `lay_out()` would actually draw it (`WrapMode::None`): the plain left-
+     * to-right sum of each code point's advance plus `text_style.letter_spacing`/
+     * `word_spacing`, with whitespace (leading, trailing, or in between) included
+     * verbatim -- unlike `measure_width()` above, this is never trimmed. Meant
+     * for a caret/cursor's pixel position (see `gui::render::CaretHelper`): call
+     * this with the prefix of the same text up to the caret's code point index.
+     */
+    template <cl7::any_string_view_like Tstring_view_like>
+    float measure_advance(Tstring_view_like&& text, Font& font, const TextStyle& text_style)
+    {
+        auto sv = cl7::make_string_view(std::forward<Tstring_view_like>(text));
+        using codepoint_iterator = cl7::text::codec::codepoint_iterator<cl7::char_type_of_t<Tstring_view_like>>;
+
+        std::vector<cl7::text::codec::codepoint> codepoints;
+        for (codepoint_iterator it(sv); it != codepoint_iterator(); ++it)
+            codepoints.push_back(*it);
+
+        return measure_advance(codepoints, font, text_style);
+    }
 
     /**
      * Measures the width (in scaled pixels) that `text` would occupy on a single,

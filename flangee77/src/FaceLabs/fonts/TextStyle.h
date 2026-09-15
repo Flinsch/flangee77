@@ -49,6 +49,15 @@ struct TextStyle
     /** The wrapping behavior for multi-line (box-based) text. */
     WrapMode wrap_mode = WrapMode::None;
 
+    /**
+     * When true, a whole (non-word-wrapped) line keeps its own leading/trailing
+     * whitespace exactly as authored, instead of TextLayout::lay_out()'s normal
+     * typeset-display trimming. Meant for an editable text field's literal text
+     * (see gui::faces::TextField), which must always show exactly what was typed.
+     * Leave false for ordinary display text (Label, Button, ...).
+     */
+    bool preserve_whitespace = false;
+
     /** The base font size, in pixels. */
     float font_size = 16.0f;
     /** The relative horizontal and vertical scaling factors. */

@@ -68,6 +68,36 @@ namespace fl7::gui {
      */
     Style Face::get_effective_style() const
     {
+        Style style = _resolve_effective_style();
+        _adjust_effective_text_style(style.text_style);
+        return style;
+    }
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Returns the nearest ancestor's explicit style override, walking up the parent
+     * chain, or `nullptr` if none of them have one set.
+     */
+    const Style* Face::_find_inherited_style_override() const
+    {
+        for (const Face* parent = _parent; parent; parent = parent->_parent)
+            if (parent->_style_override)
+                return &*parent->_style_override;
+
+        return nullptr;
+    }
+
+    /**
+     * Does the actual work of get_effective_style(), minus the final
+     * _adjust_effective_text_style() pass.
+     */
+    Style Face::_resolve_effective_style() const
+    {
         if (_style_override)
             return *_style_override;
 
@@ -113,25 +143,6 @@ namespace fl7::gui {
         }
 
         return {};
-    }
-
-
-
-    // #############################################################################
-    // Helpers
-    // #############################################################################
-
-    /**
-     * Returns the nearest ancestor's explicit style override, walking up the parent
-     * chain, or `nullptr` if none of them have one set.
-     */
-    const Style* Face::_find_inherited_style_override() const
-    {
-        for (const Face* parent = _parent; parent; parent = parent->_parent)
-            if (parent->_style_override)
-                return &*parent->_style_override;
-
-        return nullptr;
     }
 
 
