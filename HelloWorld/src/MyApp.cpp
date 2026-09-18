@@ -10,6 +10,7 @@
     #include <FaceLabs/gui/faces/Label.h>
     #include <FaceLabs/gui/faces/Panel.h>
     #include <FaceLabs/gui/faces/RadioButton.h>
+    #include <FaceLabs/gui/faces/Slider.h>
     #include <FaceLabs/gui/faces/TextField.h>
 
 #include <XiaoLabs/graphics.h>
@@ -354,11 +355,21 @@ namespace helloworld {
         gui_text_field_level.focused = std::make_unique<fl7::gui::ThemeLevel>();
         gui_text_field_level.focused->background_color = {0.25f, 0.25f, 0.3f, 1.0f};
 
+        // Demo hover feedback for the slider's handle: same "no dedicated chrome
+        // art yet" story, so a brighter fill is all that marks a hovered handle.
+        auto& gui_slider_level = _gui_theme.get_level(u8"slider");
+        gui_slider_level.background_color = {0.15f, 0.15f, 0.15f, 1.0f};
+
+        auto& gui_slider_handle_level = _gui_theme.get_level(u8"slider_handle");
+        gui_slider_handle_level.background_color = {0.3f, 0.6f, 0.9f, 1.0f};
+        gui_slider_handle_level.hovered = std::make_unique<fl7::gui::ThemeLevel>();
+        gui_slider_handle_level.hovered->background_color = {0.45f, 0.7f, 1.0f, 1.0f};
+
         _gui_shell->set_theme(&_gui_theme);
 
         auto& frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo Frame");
         frame.set_position({600.0f, 210.0f});
-        frame.set_size({220.0f, 324.0f});
+        frame.set_size({220.0f, 360.0f});
 
         auto& panel = frame.get_content_area().add_child<fl7::gui::faces::Panel>();
         panel.set_position({20.0f, 20.0f});
@@ -407,6 +418,13 @@ namespace helloworld {
         text_field.set_size({180.0f, 24.0f});
         text_field.get_changed().connect([](const cl7::u32string& text) {
             LOG_INFO(u8"TextField changed.");
+        });
+
+        auto& slider = frame.get_content_area().add_child<fl7::gui::faces::Slider>(0.5f);
+        slider.set_position({20.0f, 304.0f});
+        slider.set_size({180.0f, 24.0f});
+        slider.get_changed().connect([](float value) {
+            LOG_INFO(u8"Slider changed: " + cl7::to_string(value));
         });
 
 
