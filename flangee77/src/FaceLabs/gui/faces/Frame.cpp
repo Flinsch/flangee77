@@ -97,7 +97,7 @@ namespace fl7::gui::faces {
     /**
      * Moves this frame by delta, while dragging is armed.
      */
-    void Frame::_on_mouse_drag(ml7::Vector2f delta)
+    void Frame::_on_mouse_drag(ml7::Vector2f delta, ml7::Vector2f local_position)
     {
         if (_dragging)
             set_position(get_position() + delta);

@@ -59,6 +59,15 @@ public:
     // #############################################################################
 
     /**
+     * Returns the keyboard this shell routes input from, e.g. so a focused face can
+     * query modifier key state (Shift, Ctrl, ...) from within its own
+     * _on_key_down()/_on_mouse_drag() (see TextField's Shift-extended selection and
+     * drag-select) instead of every such interaction needing its own dedicated
+     * parameter.
+     */
+    const xl7::input::Keyboard* get_keyboard() const { return _keyboard; }
+
+    /**
      * Returns the (optional) theme faces resolve their style against unless
      * overridden.
      */

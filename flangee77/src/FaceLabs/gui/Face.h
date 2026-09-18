@@ -234,14 +234,19 @@ protected:
 
     /**
      * Called once per frame, with this frame's real (OS-synced) mouse movement
-     * delta, while this face is the "pressed" face and the mouse actually moved.
-     * Default: no-op. Override for drag-to-move/drag-to-resize-style behavior
-     * (e.g., frame dragging itself via its title bar). Deliberately the OS-synced
+     * delta and the mouse's current position (both in this face's own local
+     * coordinate space, i.e., relative to the absolute screen position, same as
+     * `local_position` in _on_mouse_down()), while this face is the "pressed"
+     * face and the mouse actually moved. Default: no-op. Override for drag-to-
+     * move/drag-to-resize-style behavior (e.g., Frame dragging itself via its
+     * title bar, which only needs `delta`) or drag-to-select-style behavior
+     * (e.g., TextField extending its selection to wherever the cursor now is,
+     * which only needs `local_position`). `delta` is deliberately the OS-synced
      * delta (see Mouse::get_x()), not the raw device delta (Mouse::get_delta_x()):
      * a dragged face should track the visible cursor 1:1, unaffected by whatever
      * the raw device delta vs. OS pointer-acceleration relationship happens to be.
      */
-    virtual void _on_mouse_drag(ml7::Vector2f delta) {}
+    virtual void _on_mouse_drag(ml7::Vector2f delta, ml7::Vector2f local_position) {}
 
     /**
      * Called when the specified mouse button was pressed down and released again

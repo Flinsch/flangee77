@@ -43,6 +43,9 @@ struct Style
     /** 0 = no border. */
     float border_width = 0.0f;
 
+    /** The fill color of a HasSelection face's selection highlight (see render::SelectionHelper). */
+    xl7::graphics::Color selection_color = {0.25f, 0.45f, 0.9f, 0.5f};
+
 
 
 private:

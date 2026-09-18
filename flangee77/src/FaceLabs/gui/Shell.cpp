@@ -90,7 +90,7 @@ namespace fl7::gui {
         }
 
         if (_pressed_face && (mouse_position_delta.x != 0.0f || mouse_position_delta.y != 0.0f))
-            _pressed_face->_on_mouse_drag(mouse_position_delta);
+            _pressed_face->_on_mouse_drag(mouse_position_delta, mouse_position - _pressed_face->get_absolute_position());
 
         if (_mouse->is_button_released(MouseButton::Left) && _pressed_face)
         {

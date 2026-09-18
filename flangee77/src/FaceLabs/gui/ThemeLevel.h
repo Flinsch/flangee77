@@ -42,6 +42,7 @@ struct ThemeLevel
     std::optional<xl7::graphics::Color> border_color;
     /** 0 = no border. */
     std::optional<float> border_width;
+    std::optional<xl7::graphics::Color> selection_color;
 
     /**
      * Independent, not mutually exclusive (a face can be checked and hovered and

@@ -96,7 +96,7 @@ protected:
     /**
      * Moves this frame by delta, while dragging is armed.
      */
-    void _on_mouse_drag(ml7::Vector2f delta) override;
+    void _on_mouse_drag(ml7::Vector2f delta, ml7::Vector2f local_position) override;
 
 
 
