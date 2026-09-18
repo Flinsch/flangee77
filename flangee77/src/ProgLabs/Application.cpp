@@ -1,6 +1,7 @@
 #include "Application.h"
 
 #include <XiaoLabs/MainWindow.h>
+#include <XiaoLabs/Clipboard.h>
 #include <XiaoLabs/graphics.h>
 #include <XiaoLabs/input.h>
 
@@ -134,6 +135,10 @@ namespace pl7 {
 
         // Create the main window.
         if (!xl7::main_window().init())
+            return false;
+
+        // Initialize the clipboard.
+        if (!xl7::clipboard().init())
             return false;
 
         // Initialize the graphics system.

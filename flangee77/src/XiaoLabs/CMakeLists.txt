@@ -1,11 +1,13 @@
 
 target_sources(flangee77
     PRIVATE
+    Clipboard.cpp
     Config.cpp
     ConfigProvider.cpp
     DriverResolver.cpp
     MainWindow.cpp
 
+    detail/windows/ClipboardImpl.cpp
     detail/windows/WindowImpl.cpp
 
     graphics/ChannelOrder.cpp
