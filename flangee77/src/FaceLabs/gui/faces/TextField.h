@@ -22,10 +22,10 @@ namespace fl7::gui::faces {
  * insert at it, move it (Left/Right/Home/End), or delete around it (Backspace/
  * Delete). Also supports selecting a range, either by dragging the mouse or by
  * holding Shift while moving the caret, which then gets replaced/deleted as a whole
- * by typing/Backspace/Delete, same as it would in any other text editor. No
- * clipboard support yet (Ctrl+C/V/X), and no wrapping/scrolling: text that
- * overflows the field's width is simply clipped, same as any other face's (see
- * Collection's clipping).
+ * by typing/Backspace/Delete, same as it would in any other text editor, or
+ * copied/cut/pasted via the system clipboard with Ctrl+C/X/V. No wrapping/
+ * scrolling, though: text that overflows the field's width is simply clipped,
+ * same as any other face's (see Collection's clipping).
  */
 class TextField
     : public Control
@@ -126,7 +126,9 @@ protected:
     /**
      * Moves the caret, or deletes the code point before/after it (or, with an
      * active selection, deletes the whole selection instead). Shift+Left/Right/
-     * Home/End extends the selection instead of moving/collapsing it.
+     * Home/End extends the selection instead of moving/collapsing it. Ctrl+C/X/V
+     * copies/cuts/pastes the selection via the system clipboard (see
+     * xl7::Clipboard).
      */
     void _on_key_down(xl7::input::Key key) override;
 
@@ -146,6 +148,9 @@ private:
 
     /** Returns whether either Shift key is currently held. */
     bool _is_shift_down() const;
+
+    /** Returns whether either Control key is currently held. */
+    bool _is_ctrl_down() const;
 
     /** Erases the current selection from _text, and collapses the caret (and selection) to where it began. */
     void _delete_selection();

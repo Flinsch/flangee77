@@ -5,6 +5,8 @@
 
 #include <FaceLabs/fonts/TextLayout.h>
 
+#include <XiaoLabs/Clipboard.h>
+
 #include <algorithm>
 
 
@@ -72,16 +74,38 @@ namespace fl7::gui::faces {
     /**
      * Moves the caret, or deletes the code point before/after it (or, with an
      * active selection, deletes the whole selection instead). Shift+Left/Right/
-     * Home/End extends the selection instead of moving/collapsing it.
+     * Home/End extends the selection instead of moving/collapsing it. Ctrl+C/X/V
+     * copies/cuts/pastes the selection via the system clipboard (see
+     * xl7::Clipboard).
      */
     void TextField::_on_key_down(xl7::input::Key key)
     {
         using xl7::input::Key;
 
         const bool shift = _is_shift_down();
+        const bool ctrl = _is_ctrl_down();
 
         switch (key)
         {
+        case Key::C:
+            if (ctrl && has_selection())
+                xl7::clipboard().set_text(_text.substr(get_selection_begin_codepoint_index(), get_selection_end_codepoint_index() - get_selection_begin_codepoint_index()));
+            break;
+
+        case Key::X:
+            if (ctrl && has_selection())
+            {
+                xl7::clipboard().set_text(_text.substr(get_selection_begin_codepoint_index(), get_selection_end_codepoint_index() - get_selection_begin_codepoint_index()));
+                _delete_selection();
+                _changed.emit(_text);
+            }
+            break;
+
+        case Key::V:
+            if (ctrl)
+                _on_text_input(xl7::clipboard().get_text());
+            break;
+
         case Key::Left:
             if (!shift && has_selection())
                 _caret_index = get_selection_begin_codepoint_index();
@@ -212,6 +236,19 @@ namespace fl7::gui::faces {
             return false;
 
         return keyboard->is_key_down(xl7::input::Key::LeftShift) || keyboard->is_key_down(xl7::input::Key::RightShift);
+    }
+
+    /**
+     * Returns whether either Control key is currently held.
+     */
+    bool TextField::_is_ctrl_down() const
+    {
+        const Shell* shell = get_shell();
+        const xl7::input::Keyboard* keyboard = shell ? shell->get_keyboard() : nullptr;
+        if (!keyboard)
+            return false;
+
+        return keyboard->is_key_down(xl7::input::Key::LeftControl) || keyboard->is_key_down(xl7::input::Key::RightControl);
     }
 
     /**
