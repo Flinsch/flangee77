@@ -6,6 +6,7 @@ var namespacexl7 =
     [ "input", "df/d6d/namespacexl7_1_1input.html", "df/d6d/namespacexl7_1_1input" ],
     [ "resources", "da/d60/namespacexl7_1_1resources.html", "da/d60/namespacexl7_1_1resources" ],
     [ "BackendRegistry", "d1/da6/classxl7_1_1BackendRegistry.html", "d1/da6/classxl7_1_1BackendRegistry" ],
+    [ "Clipboard", "d4/d8e/classxl7_1_1Clipboard.html", "d4/d8e/classxl7_1_1Clipboard" ],
     [ "Component", "db/d24/classxl7_1_1Component.html", "db/d24/classxl7_1_1Component" ],
     [ "Config", "d9/dfb/structxl7_1_1Config.html", "d9/dfb/structxl7_1_1Config" ],
     [ "ConfigProvider", "d9/d8f/classxl7_1_1ConfigProvider.html", "d9/d8f/classxl7_1_1ConfigProvider" ],
@@ -18,6 +19,7 @@ var namespacexl7 =
       [ "Borderless", "dc/d6e/namespacexl7.html#a5e0f436814da1bf500ed4637f8ad723da78f0192ac55eba33ee88d026452952e5", null ],
       [ "Windowed", "dc/d6e/namespacexl7.html#a5e0f436814da1bf500ed4637f8ad723dab13311ab51c4c34757f67f26580018dd", null ]
     ] ],
+    [ "clipboard", "dc/d6e/namespacexl7.html#a08577738952aa0b08929966e443e0e3e", null ],
     [ "config_provider", "dc/d6e/namespacexl7.html#a58605100da8a99eeb6cb70292761c4be", null ],
     [ "main_window", "dc/d6e/namespacexl7.html#a018bc5fef57fb363489373f35b5fe4ff", null ]
 ];

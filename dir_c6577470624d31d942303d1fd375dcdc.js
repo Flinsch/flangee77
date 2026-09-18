@@ -6,6 +6,8 @@ var dir_c6577470624d31d942303d1fd375dcdc =
     [ "resources", "dir_01f95d537d9719603dbf8c75a5eec662.html", "dir_01f95d537d9719603dbf8c75a5eec662" ],
     [ "audio.h", "da/d09/audio_8h.html", null ],
     [ "BackendRegistry.h", "d8/d17/BackendRegistry_8h.html", "d8/d17/BackendRegistry_8h" ],
+    [ "Clipboard.cpp", "df/d0a/Clipboard_8cpp.html", null ],
+    [ "Clipboard.h", "d1/dd4/Clipboard_8h.html", "d1/dd4/Clipboard_8h" ],
     [ "Component.h", "d0/da1/Component_8h.html", "d0/da1/Component_8h" ],
     [ "Config.cpp", "de/da7/Config_8cpp.html", null ],
     [ "Config.h", "d5/de3/Config_8h.html", "d5/de3/Config_8h" ],

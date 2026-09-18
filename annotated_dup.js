@@ -452,6 +452,7 @@ var annotated_dup =
     ] ],
     [ "xl7", "dc/d6e/namespacexl7.html", [
       [ "detail", "d6/dcf/namespacexl7_1_1detail.html", [
+        [ "IClipboardImpl", "df/d16/classxl7_1_1detail_1_1IClipboardImpl.html", "df/d16/classxl7_1_1detail_1_1IClipboardImpl" ],
         [ "IWindowImpl", "de/d9e/classxl7_1_1detail_1_1IWindowImpl.html", "de/d9e/classxl7_1_1detail_1_1IWindowImpl" ]
       ] ],
       [ "graphics", "d8/d30/namespacexl7_1_1graphics.html", [
@@ -697,6 +698,7 @@ var annotated_dup =
         [ "UpdatableResource", "d5/d87/classxl7_1_1resources_1_1UpdatableResource.html", "d5/d87/classxl7_1_1resources_1_1UpdatableResource" ]
       ] ],
       [ "BackendRegistry", "d1/da6/classxl7_1_1BackendRegistry.html", "d1/da6/classxl7_1_1BackendRegistry" ],
+      [ "Clipboard", "d4/d8e/classxl7_1_1Clipboard.html", "d4/d8e/classxl7_1_1Clipboard" ],
       [ "Component", "db/d24/classxl7_1_1Component.html", "db/d24/classxl7_1_1Component" ],
       [ "Config", "d9/dfb/structxl7_1_1Config.html", "d9/dfb/structxl7_1_1Config" ],
       [ "ConfigProvider", "d9/d8f/classxl7_1_1ConfigProvider.html", "d9/d8f/classxl7_1_1ConfigProvider" ],

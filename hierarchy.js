@@ -371,6 +371,7 @@ var hierarchy =
     [ "xl7::graphics::images::codecs::png::Reader::Header", "df/d50/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Header.html", null ],
     [ "xl7::graphics::images::codecs::targa::Header", "d8/dd4/structxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Header.html", null ],
     [ "dl7::syntax::matchers::HexadecimalLiteralMatcher", "d9/d44/structdl7_1_1syntax_1_1matchers_1_1HexadecimalLiteralMatcher.html", null ],
+    [ "xl7::detail::IClipboardImpl", "df/d16/classxl7_1_1detail_1_1IClipboardImpl.html", null ],
     [ "fl7::fonts::Icon", "d8/d05/structfl7_1_1fonts_1_1Icon.html", null ],
     [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::IconDrawBatch", "d5/dd4/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1IconDrawBatch.html", null ],
     [ "fl7::fonts::IconRun", "d1/d30/structfl7_1_1fonts_1_1IconRun.html", null ],
@@ -762,6 +763,7 @@ var hierarchy =
       [ "cl7::creational::Singleton< StandardRegistry >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", [
         [ "cl7::profiling::StandardRegistry", "d2/da1/classcl7_1_1profiling_1_1StandardRegistry.html", null ]
       ] ],
+      [ "cl7::creational::Singleton< Clipboard >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", null ],
       [ "cl7::creational::Singleton< ConfigProvider >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", [
         [ "xl7::ConfigProvider", "d9/d8f/classxl7_1_1ConfigProvider.html", null ]
       ] ],
@@ -770,6 +772,9 @@ var hierarchy =
       [ "cl7::creational::Singleton< GameControllerSystem >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", null ],
       [ "cl7::creational::Singleton< KeyboardMouseSystem >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", null ],
       [ "cl7::creational::Singleton< TSingleton >", "d7/de2/classcl7_1_1creational_1_1Singleton.html", [
+        [ "xl7::Component< Clipboard >", "db/d24/classxl7_1_1Component.html", [
+          [ "xl7::Clipboard", "d4/d8e/classxl7_1_1Clipboard.html", null ]
+        ] ],
         [ "xl7::Component< MainWindow >", "db/d24/classxl7_1_1Component.html", [
           [ "xl7::MainWindow", "da/df2/classxl7_1_1MainWindow.html", null ]
         ] ],
