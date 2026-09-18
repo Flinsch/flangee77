@@ -10,6 +10,7 @@ var namespacefl7_1_1gui =
     [ "HasBackground", "db/d13/classfl7_1_1gui_1_1HasBackground.html", "db/d13/classfl7_1_1gui_1_1HasBackground" ],
     [ "HasCaret", "d5/d25/classfl7_1_1gui_1_1HasCaret.html", "d5/d25/classfl7_1_1gui_1_1HasCaret" ],
     [ "HasCheckedState", "d9/db9/classfl7_1_1gui_1_1HasCheckedState.html", "d9/db9/classfl7_1_1gui_1_1HasCheckedState" ],
+    [ "HasSelection", "db/d6e/classfl7_1_1gui_1_1HasSelection.html", "db/d6e/classfl7_1_1gui_1_1HasSelection" ],
     [ "HasText", "d1/d67/classfl7_1_1gui_1_1HasText.html", "d1/d67/classfl7_1_1gui_1_1HasText" ],
     [ "NineSliceChrome", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome" ],
     [ "RadioGroup", "d2/d69/classfl7_1_1gui_1_1RadioGroup.html", "d2/d69/classfl7_1_1gui_1_1RadioGroup" ],

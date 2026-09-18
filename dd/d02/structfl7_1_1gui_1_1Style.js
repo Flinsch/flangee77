@@ -6,5 +6,6 @@ var structfl7_1_1gui_1_1Style =
     [ "border_width", "dd/d02/structfl7_1_1gui_1_1Style.html#a0d8d38ebe7f407323a516ef345d0d812", null ],
     [ "chrome", "dd/d02/structfl7_1_1gui_1_1Style.html#af0a8bf2ed20e26a4011584833e337185", null ],
     [ "font", "dd/d02/structfl7_1_1gui_1_1Style.html#a8cde85beb8810c0bd6b4f020c30e37d6", null ],
+    [ "selection_color", "dd/d02/structfl7_1_1gui_1_1Style.html#abef17f1be0d3abe85f50e9472aff0b9e", null ],
     [ "text_style", "dd/d02/structfl7_1_1gui_1_1Style.html#ade7e6945e2546e9a86d02f9030329f68", null ]
 ];

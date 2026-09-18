@@ -25,5 +25,6 @@ var classfl7_1_1gui_1_1render_1_1AbstractRenderer =
     [ "_background_helper", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html#a69261950b9bb0adb56d5cc4783067d19", null ],
     [ "_caret_helper", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html#af2e4259ffc60392bcb34a25b6273d9ee", null ],
     [ "_frame_depth", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html#a15f5569bdc27ee2b1b0fd255fe00a20a", null ],
+    [ "_selection_helper", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html#a031b9d09bd60d46b4df19d7e5d57f429", null ],
     [ "_text_helper", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html#a4b865468173c78f2f49b3bc9d42bdbad", null ]
 ];

@@ -8,6 +8,7 @@ var classfl7_1_1gui_1_1Shell =
     [ "draw", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a33f7fc4b42f3cc79b53bd7f69de58246", null ],
     [ "get_focused_face", "d6/d9c/classfl7_1_1gui_1_1Shell.html#aad33ec4cf6767bd7c8447290c1cb6176", null ],
     [ "get_hovered_face", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a1cf2194c44121f7f9d15baa0a50570c0", null ],
+    [ "get_keyboard", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a8815bf4990518f85884925e556bab9c1", null ],
     [ "get_pressed_face", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a62b722769c15173b6e4c3ea2e05043cb", null ],
     [ "get_theme", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a345df8648ff3fba4eac81cfc5c50eebd", null ],
     [ "operator=", "d6/d9c/classfl7_1_1gui_1_1Shell.html#ab5018f1c52688192f6e43d9bf79570f8", null ],

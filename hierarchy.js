@@ -360,6 +360,9 @@ var hierarchy =
     [ "std::hash< xl7::graphics::impl::shared::meshes::ComposedVertexLayout >", "db/de3/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout_01_4.html", null ],
     [ "std::hash< xl7::graphics::impl::shared::meshes::VertexBufferBinding >", "dc/d08/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding_01_4.html", null ],
     [ "std::hash< xl7::resources::ResourceId >", "dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4.html", null ],
+    [ "fl7::gui::HasSelection", "db/d6e/classfl7_1_1gui_1_1HasSelection.html", [
+      [ "fl7::gui::faces::TextField", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html", null ]
+    ] ],
     [ "fl7::gui::HasText", "d1/d67/classfl7_1_1gui_1_1HasText.html", [
       [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ],
       [ "fl7::gui::faces::Label", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html", null ],
@@ -717,6 +720,7 @@ var hierarchy =
     [ "dl7::ini::Section", "dc/d3a/classdl7_1_1ini_1_1Section.html", [
       [ "dl7::ini::Ini", "da/d48/classdl7_1_1ini_1_1Ini.html", null ]
     ] ],
+    [ "fl7::gui::render::SelectionHelper", "db/d3f/classfl7_1_1gui_1_1render_1_1SelectionHelper.html", null ],
     [ "tl7::TestSuite::Settings", "db/dbc/structtl7_1_1TestSuite_1_1Settings.html", null ],
     [ "Shader", null, [
       [ "xl7::resources::ResourceBase< PixelShader, Shader >", "d5/d18/classxl7_1_1resources_1_1ResourceBase.html", [

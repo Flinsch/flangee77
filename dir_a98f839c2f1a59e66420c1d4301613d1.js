@@ -12,6 +12,7 @@ var dir_a98f839c2f1a59e66420c1d4301613d1 =
     [ "HasBackground.h", "d7/d44/HasBackground_8h.html", "d7/d44/HasBackground_8h" ],
     [ "HasCaret.h", "dc/d5e/HasCaret_8h.html", "dc/d5e/HasCaret_8h" ],
     [ "HasCheckedState.h", "d5/d42/HasCheckedState_8h.html", "d5/d42/HasCheckedState_8h" ],
+    [ "HasSelection.h", "df/def/HasSelection_8h.html", "df/def/HasSelection_8h" ],
     [ "HasText.h", "dc/db6/HasText_8h.html", "dc/db6/HasText_8h" ],
     [ "NineSliceChrome.h", "d6/d55/NineSliceChrome_8h.html", "d6/d55/NineSliceChrome_8h" ],
     [ "RadioGroup.cpp", "d4/d02/RadioGroup_8cpp.html", null ],

@@ -354,6 +354,7 @@ var annotated_dup =
           [ "BackgroundHelper", "d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html", "d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper" ],
           [ "CaretHelper", "dd/d83/classfl7_1_1gui_1_1render_1_1CaretHelper.html", "dd/d83/classfl7_1_1gui_1_1render_1_1CaretHelper" ],
           [ "DefaultRenderer", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html", "d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer" ],
+          [ "SelectionHelper", "db/d3f/classfl7_1_1gui_1_1render_1_1SelectionHelper.html", "db/d3f/classfl7_1_1gui_1_1render_1_1SelectionHelper" ],
           [ "TextHelper", "d1/d12/classfl7_1_1gui_1_1render_1_1TextHelper.html", "d1/d12/classfl7_1_1gui_1_1render_1_1TextHelper" ]
         ] ],
         [ "Collection", "d4/de7/classfl7_1_1gui_1_1Collection.html", "d4/de7/classfl7_1_1gui_1_1Collection" ],
@@ -364,6 +365,7 @@ var annotated_dup =
         [ "HasBackground", "db/d13/classfl7_1_1gui_1_1HasBackground.html", "db/d13/classfl7_1_1gui_1_1HasBackground" ],
         [ "HasCaret", "d5/d25/classfl7_1_1gui_1_1HasCaret.html", "d5/d25/classfl7_1_1gui_1_1HasCaret" ],
         [ "HasCheckedState", "d9/db9/classfl7_1_1gui_1_1HasCheckedState.html", "d9/db9/classfl7_1_1gui_1_1HasCheckedState" ],
+        [ "HasSelection", "db/d6e/classfl7_1_1gui_1_1HasSelection.html", "db/d6e/classfl7_1_1gui_1_1HasSelection" ],
         [ "HasText", "d1/d67/classfl7_1_1gui_1_1HasText.html", "d1/d67/classfl7_1_1gui_1_1HasText" ],
         [ "NineSliceChrome", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome" ],
         [ "RadioGroup", "d2/d69/classfl7_1_1gui_1_1RadioGroup.html", "d2/d69/classfl7_1_1gui_1_1RadioGroup" ],

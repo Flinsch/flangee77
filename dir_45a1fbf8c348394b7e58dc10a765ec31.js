@@ -8,6 +8,8 @@ var dir_45a1fbf8c348394b7e58dc10a765ec31 =
     [ "CaretHelper.h", "d0/da0/CaretHelper_8h.html", "d0/da0/CaretHelper_8h" ],
     [ "DefaultRenderer.cpp", "dc/dae/DefaultRenderer_8cpp.html", null ],
     [ "DefaultRenderer.h", "db/db9/DefaultRenderer_8h.html", "db/db9/DefaultRenderer_8h" ],
+    [ "SelectionHelper.cpp", "d4/d64/SelectionHelper_8cpp.html", null ],
+    [ "SelectionHelper.h", "d0/d8d/SelectionHelper_8h.html", "d0/d8d/SelectionHelper_8h" ],
     [ "TextHelper.cpp", "d9/dd4/TextHelper_8cpp.html", null ],
     [ "TextHelper.h", "d2/d3e/TextHelper_8h.html", "d2/d3e/TextHelper_8h" ]
 ];
