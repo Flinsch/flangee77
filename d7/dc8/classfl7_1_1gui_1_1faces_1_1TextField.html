@@ -316,6 +316,12 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a513906f40d436fe49786aaef5f41d009"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abae479d9c613eeaa5fbc150bf0e74dbb" id="r_abae479d9c613eeaa5fbc150bf0e74dbb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#abae479d9c613eeaa5fbc150bf0e74dbb">_is_shift_down</a> () const</td></tr>
 <tr class="separator:abae479d9c613eeaa5fbc150bf0e74dbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34474f0eb9774ca9e21c510e14136777" id="r_a34474f0eb9774ca9e21c510e14136777"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a34474f0eb9774ca9e21c510e14136777">_is_ctrl_down</a> () const</td></tr>
+<tr class="separator:a34474f0eb9774ca9e21c510e14136777"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4439aefc5d23644e76b19a3bcca90ee9" id="r_a4439aefc5d23644e76b19a3bcca90ee9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a4439aefc5d23644e76b19a3bcca90ee9">_previous_word_boundary</a> (size_t index) const</td></tr>
+<tr class="separator:a4439aefc5d23644e76b19a3bcca90ee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf69e9f18b583beaba917aa50ece8a49" id="r_adf69e9f18b583beaba917aa50ece8a49"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#adf69e9f18b583beaba917aa50ece8a49">_next_word_boundary</a> (size_t index) const</td></tr>
+<tr class="separator:adf69e9f18b583beaba917aa50ece8a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2ba2884ced5f0d48e47c2cec1dcbcf0" id="r_af2ba2884ced5f0d48e47c2cec1dcbcf0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#af2ba2884ced5f0d48e47c2cec1dcbcf0">_delete_selection</a> ()</td></tr>
 <tr class="separator:af2ba2884ced5f0d48e47c2cec1dcbcf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -331,7 +337,7 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a655d6112269a5cdb47e7341a7b518659"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A single-line, editable piece of text: click to position the caret, type to insert at it, move it (Left/Right/Home/End), or delete around it (Backspace/ Delete). Also supports selecting a range, either by dragging the mouse or by holding Shift while moving the caret, which then gets replaced/deleted as a whole by typing/Backspace/Delete, same as it would in any other text editor. No clipboard support yet (Ctrl+C/V/X), and no wrapping/scrolling: text that overflows the field's width is simply clipped, same as any other face's (see <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a>'s clipping). </p>
+<div class="textblock"><p>A single-line, editable piece of text: click to position the caret, type to insert at it, move it (Left/Right/Home/End, or word-at-a-time with Ctrl+Left/ Right), or delete around it (Backspace/Delete). Also supports selecting a range, either by dragging the mouse, by holding Shift while moving the caret (word-at-a-time too, combined with Ctrl), or all at once with Ctrl+A. A selection then gets replaced/deleted as a whole by typing/Backspace/Delete, same as it would in any other text editor, or copied/cut/pasted via the system clipboard with Ctrl+C/X/V. No wrapping/scrolling, though: text that overflows the field's width is simply clipped, same as any other face's (see <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a>'s clipping). </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a21b3778e1a8973bcbc5e723063d93f2d" name="a21b3778e1a8973bcbc5e723063d93f2d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a21b3778e1a8973bcbc5e723063d93f2d">&#9670;&#160;</a></span>TextField() <span class="overload">[1/4]</span></h2>
@@ -572,6 +578,32 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a34474f0eb9774ca9e21c510e14136777" name="a34474f0eb9774ca9e21c510e14136777"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34474f0eb9774ca9e21c510e14136777">&#9670;&#160;</a></span>_is_ctrl_down()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fl7::gui::faces::TextField::_is_ctrl_down </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns whether either <a class="el" href="../../df/d2b/classfl7_1_1gui_1_1Control.html">Control</a> key is currently held. </p>
+
+</div>
+</div>
 <a id="abae479d9c613eeaa5fbc150bf0e74dbb" name="abae479d9c613eeaa5fbc150bf0e74dbb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abae479d9c613eeaa5fbc150bf0e74dbb">&#9670;&#160;</a></span>_is_shift_down()</h2>
 
@@ -598,6 +630,33 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="adf69e9f18b583beaba917aa50ece8a49" name="adf69e9f18b583beaba917aa50ece8a49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf69e9f18b583beaba917aa50ece8a49">&#9670;&#160;</a></span>_next_word_boundary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t fl7::gui::faces::TextField::_next_word_boundary </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the start of the next word after index (skipping any whitespace right after it first, then the rest of the current word, if any, then whatever whitespace separates it from that next word), or _text.size(). </p>
+
+</div>
+</div>
 <a id="a47f53949649e8a1567d4ac975df17176" name="a47f53949649e8a1567d4ac975df17176"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a47f53949649e8a1567d4ac975df17176">&#9670;&#160;</a></span>_on_key_down()</h2>
 
@@ -621,7 +680,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Moves the caret, or deletes the code point before/after it (or, with an active selection, deletes the whole selection instead). Shift+Left/Right/ Home/End extends the selection instead of moving/collapsing it. </p>
+<p>Moves the caret, or deletes the code point before/after it (or, with an active selection, deletes the whole selection instead). Ctrl+Left/Right moves a whole word at a time instead of one code point. Shift+Left/Right/ Home/End/Ctrl+Left/Ctrl+Right extends the selection instead of moving/ collapsing it; Ctrl+A selects everything outright. Ctrl+C/X/V copies/cuts/ pastes the selection via the system clipboard (see <a class="el" href="../../d4/d8e/classxl7_1_1Clipboard.html">xl7::Clipboard</a>). </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a4749ea1564f3b26c7d72e3914e050531">fl7::gui::Face</a>.</p>
 
@@ -731,6 +790,33 @@ Private Attributes</h2></td></tr>
 <p>Inserts the input (filtered down to plain code points) at the caret, replacing any active selection. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a82e5252051e560e082f90c5bf235da4b">fl7::gui::Face</a>.</p>
+
+</div>
+</div>
+<a id="a4439aefc5d23644e76b19a3bcca90ee9" name="a4439aefc5d23644e76b19a3bcca90ee9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4439aefc5d23644e76b19a3bcca90ee9">&#9670;&#160;</a></span>_previous_word_boundary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t fl7::gui::faces::TextField::_previous_word_boundary </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the start of the word at/before index (skipping any whitespace right before it first). </p>
 
 </div>
 </div>

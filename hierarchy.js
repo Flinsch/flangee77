@@ -267,6 +267,7 @@ var hierarchy =
         [ "fl7::gui::Compound", "d0/d93/classfl7_1_1gui_1_1Compound.html", [
           [ "fl7::gui::faces::CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html", null ],
           [ "fl7::gui::faces::RadioButton", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html", null ],
+          [ "fl7::gui::faces::Slider", "d5/d35/classfl7_1_1gui_1_1faces_1_1Slider.html", null ],
           [ "fl7::gui::faces::Window", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html", [
             [ "fl7::gui::faces::Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html", null ]
           ] ]
@@ -283,7 +284,8 @@ var hierarchy =
         [ "fl7::gui::faces::Label", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html", null ]
       ] ],
       [ "fl7::gui::faces::CheckBox::Box", "d7/dfc/classfl7_1_1gui_1_1faces_1_1CheckBox_1_1Box.html", null ],
-      [ "fl7::gui::faces::RadioButton::Box", "d7/d12/classfl7_1_1gui_1_1faces_1_1RadioButton_1_1Box.html", null ]
+      [ "fl7::gui::faces::RadioButton::Box", "d7/d12/classfl7_1_1gui_1_1faces_1_1RadioButton_1_1Box.html", null ],
+      [ "fl7::gui::faces::Slider::Handle", "dd/dd6/classfl7_1_1gui_1_1faces_1_1Slider_1_1Handle.html", null ]
     ] ],
     [ "std::false_type", null, [
       [ "cl7::detail::_is_any_string< std::remove_cvref_t< Tstring > >", "d8/d05/structcl7_1_1detail_1_1__is__any__string.html", [
@@ -346,6 +348,8 @@ var hierarchy =
       [ "fl7::gui::faces::CheckBox::Box", "d7/dfc/classfl7_1_1gui_1_1faces_1_1CheckBox_1_1Box.html", null ],
       [ "fl7::gui::faces::Panel", "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html", null ],
       [ "fl7::gui::faces::RadioButton::Box", "d7/d12/classfl7_1_1gui_1_1faces_1_1RadioButton_1_1Box.html", null ],
+      [ "fl7::gui::faces::Slider", "d5/d35/classfl7_1_1gui_1_1faces_1_1Slider.html", null ],
+      [ "fl7::gui::faces::Slider::Handle", "dd/dd6/classfl7_1_1gui_1_1faces_1_1Slider_1_1Handle.html", null ],
       [ "fl7::gui::faces::TextField", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html", null ],
       [ "fl7::gui::faces::Window", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html", null ]
     ] ],
@@ -748,6 +752,7 @@ var hierarchy =
     [ "cl7::behavioral::Signal< Args >", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", null ],
     [ "cl7::behavioral::Signal< bool >", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", null ],
     [ "cl7::behavioral::Signal< const cl7::u32string & >", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", null ],
+    [ "cl7::behavioral::Signal< float >", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", null ],
     [ "tl7::Signature", "d1/d32/structtl7_1_1Signature.html", [
       [ "tl7::Meta", "dd/d81/structtl7_1_1Meta.html", null ]
     ] ],
