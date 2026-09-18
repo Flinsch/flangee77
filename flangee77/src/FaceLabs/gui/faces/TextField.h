@@ -19,13 +19,15 @@ namespace fl7::gui::faces {
 
 /**
  * A single-line, editable piece of text: click to position the caret, type to
- * insert at it, move it (Left/Right/Home/End), or delete around it (Backspace/
- * Delete). Also supports selecting a range, either by dragging the mouse or by
- * holding Shift while moving the caret, which then gets replaced/deleted as a whole
- * by typing/Backspace/Delete, same as it would in any other text editor, or
- * copied/cut/pasted via the system clipboard with Ctrl+C/X/V. No wrapping/
- * scrolling, though: text that overflows the field's width is simply clipped,
- * same as any other face's (see Collection's clipping).
+ * insert at it, move it (Left/Right/Home/End, or word-at-a-time with Ctrl+Left/
+ * Right), or delete around it (Backspace/Delete). Also supports selecting a
+ * range, either by dragging the mouse, by holding Shift while moving the caret
+ * (word-at-a-time too, combined with Ctrl), or all at once with Ctrl+A. A
+ * selection then gets replaced/deleted as a whole by typing/Backspace/Delete,
+ * same as it would in any other text editor, or copied/cut/pasted via the
+ * system clipboard with Ctrl+C/X/V. No wrapping/scrolling, though: text that
+ * overflows the field's width is simply clipped, same as any other face's (see
+ * Collection's clipping).
  */
 class TextField
     : public Control
@@ -125,10 +127,11 @@ protected:
 
     /**
      * Moves the caret, or deletes the code point before/after it (or, with an
-     * active selection, deletes the whole selection instead). Shift+Left/Right/
-     * Home/End extends the selection instead of moving/collapsing it. Ctrl+C/X/V
-     * copies/cuts/pastes the selection via the system clipboard (see
-     * xl7::Clipboard).
+     * active selection, deletes the whole selection instead). Ctrl+Left/Right
+     * moves a whole word at a time instead of one code point. Shift+Left/Right/
+     * Home/End/Ctrl+Left/Ctrl+Right extends the selection instead of moving/
+     * collapsing it; Ctrl+A selects everything outright. Ctrl+C/X/V copies/cuts/
+     * pastes the selection via the system clipboard (see xl7::Clipboard).
      */
     void _on_key_down(xl7::input::Key key) override;
 
@@ -151,6 +154,18 @@ private:
 
     /** Returns whether either Control key is currently held. */
     bool _is_ctrl_down() const;
+
+    /**
+     * Returns the start of the word at/before index (skipping any whitespace right before it first).
+     */
+    size_t _previous_word_boundary(size_t index) const;
+
+    /**
+     * Returns the start of the next word after index (skipping any whitespace right
+     * after it first, then the rest of the current word, if any, then whatever
+     * whitespace separates it from that next word), or _text.size().
+     */
+    size_t _next_word_boundary(size_t index) const;
 
     /** Erases the current selection from _text, and collapses the caret (and selection) to where it began. */
     void _delete_selection();

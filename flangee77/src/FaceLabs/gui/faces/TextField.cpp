@@ -7,6 +7,8 @@
 
 #include <XiaoLabs/Clipboard.h>
 
+#include <CoreLabs/text/inspect.h>
+
 #include <algorithm>
 
 
@@ -73,10 +75,11 @@ namespace fl7::gui::faces {
 
     /**
      * Moves the caret, or deletes the code point before/after it (or, with an
-     * active selection, deletes the whole selection instead). Shift+Left/Right/
-     * Home/End extends the selection instead of moving/collapsing it. Ctrl+C/X/V
-     * copies/cuts/pastes the selection via the system clipboard (see
-     * xl7::Clipboard).
+     * active selection, deletes the whole selection instead). Ctrl+Left/Right
+     * moves a whole word at a time instead of one code point. Shift+Left/Right/
+     * Home/End/Ctrl+Left/Ctrl+Right extends the selection instead of moving/
+     * collapsing it; Ctrl+A selects everything outright. Ctrl+C/X/V copies/cuts/
+     * pastes the selection via the system clipboard (see xl7::Clipboard).
      */
     void TextField::_on_key_down(xl7::input::Key key)
     {
@@ -87,6 +90,14 @@ namespace fl7::gui::faces {
 
         switch (key)
         {
+        case Key::A:
+            if (ctrl)
+            {
+                _selection_anchor = 0;
+                _caret_index = _text.size();
+            }
+            break;
+
         case Key::C:
             if (ctrl && has_selection())
                 xl7::clipboard().set_text(_text.substr(get_selection_begin_codepoint_index(), get_selection_end_codepoint_index() - get_selection_begin_codepoint_index()));
@@ -109,6 +120,8 @@ namespace fl7::gui::faces {
         case Key::Left:
             if (!shift && has_selection())
                 _caret_index = get_selection_begin_codepoint_index();
+            else if (ctrl)
+                _caret_index = _previous_word_boundary(_caret_index);
             else if (_caret_index > 0)
                 --_caret_index;
             if (!shift)
@@ -118,6 +131,8 @@ namespace fl7::gui::faces {
         case Key::Right:
             if (!shift && has_selection())
                 _caret_index = get_selection_end_codepoint_index();
+            else if (ctrl)
+                _caret_index = _next_word_boundary(_caret_index);
             else if (_caret_index < _text.size())
                 ++_caret_index;
             if (!shift)
@@ -249,6 +264,34 @@ namespace fl7::gui::faces {
             return false;
 
         return keyboard->is_key_down(xl7::input::Key::LeftControl) || keyboard->is_key_down(xl7::input::Key::RightControl);
+    }
+
+    /**
+     * Returns the start of the word at/before index (skipping any whitespace right before it first).
+     */
+    size_t TextField::_previous_word_boundary(size_t index) const
+    {
+        while (index > 0 && cl7::text::inspect::is_whitespace(_text[index - 1]))
+            --index;
+        while (index > 0 && !cl7::text::inspect::is_whitespace(_text[index - 1]))
+            --index;
+        return index;
+    }
+
+    /**
+     * Returns the start of the next word after index (skipping any whitespace right
+     * after it first, then the rest of the current word, if any, then whatever
+     * whitespace separates it from that next word), or _text.size().
+     */
+    size_t TextField::_next_word_boundary(size_t index) const
+    {
+        while (index < _text.size() && cl7::text::inspect::is_whitespace(_text[index]))
+            ++index;
+        while (index < _text.size() && !cl7::text::inspect::is_whitespace(_text[index]))
+            ++index;
+        while (index < _text.size() && cl7::text::inspect::is_whitespace(_text[index]))
+            ++index;
+        return index;
     }
 
     /**
