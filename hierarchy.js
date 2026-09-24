@@ -265,9 +265,12 @@ var hierarchy =
     [ "fl7::gui::Face", "d9/d1a/classfl7_1_1gui_1_1Face.html", [
       [ "fl7::gui::Collection", "d4/de7/classfl7_1_1gui_1_1Collection.html", [
         [ "fl7::gui::Compound", "d0/d93/classfl7_1_1gui_1_1Compound.html", [
+          [ "fl7::gui::TrackControl", "d8/dac/classfl7_1_1gui_1_1TrackControl.html", [
+            [ "fl7::gui::faces::Slider", "d5/d35/classfl7_1_1gui_1_1faces_1_1Slider.html", null ]
+          ] ],
           [ "fl7::gui::faces::CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html", null ],
           [ "fl7::gui::faces::RadioButton", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html", null ],
-          [ "fl7::gui::faces::Slider", "d5/d35/classfl7_1_1gui_1_1faces_1_1Slider.html", null ],
+          [ "fl7::gui::faces::ScrollBar", "d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html", null ],
           [ "fl7::gui::faces::Window", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html", [
             [ "fl7::gui::faces::Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html", null ]
           ] ]
@@ -344,11 +347,11 @@ var hierarchy =
     [ "xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates", "d7/d0a/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates.html", null ],
     [ "xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates", "d7/d8c/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates.html", null ],
     [ "fl7::gui::HasBackground", "db/d13/classfl7_1_1gui_1_1HasBackground.html", [
+      [ "fl7::gui::TrackControl", "d8/dac/classfl7_1_1gui_1_1TrackControl.html", null ],
       [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ],
       [ "fl7::gui::faces::CheckBox::Box", "d7/dfc/classfl7_1_1gui_1_1faces_1_1CheckBox_1_1Box.html", null ],
       [ "fl7::gui::faces::Panel", "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html", null ],
       [ "fl7::gui::faces::RadioButton::Box", "d7/d12/classfl7_1_1gui_1_1faces_1_1RadioButton_1_1Box.html", null ],
-      [ "fl7::gui::faces::Slider", "d5/d35/classfl7_1_1gui_1_1faces_1_1Slider.html", null ],
       [ "fl7::gui::faces::Slider::Handle", "dd/dd6/classfl7_1_1gui_1_1faces_1_1Slider_1_1Handle.html", null ],
       [ "fl7::gui::faces::TextField", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html", null ],
       [ "fl7::gui::faces::Window", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html", null ]

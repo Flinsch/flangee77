@@ -161,6 +161,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a62b722769c15173b6e4c3ea2e05043cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad33ec4cf6767bd7c8447290c1cb6176" id="r_aad33ec4cf6767bd7c8447290c1cb6176"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#aad33ec4cf6767bd7c8447290c1cb6176">get_focused_face</a> () const</td></tr>
 <tr class="separator:aad33ec4cf6767bd7c8447290c1cb6176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cbf18ec2e0eed0b30b55b50a7e1956a" id="r_a3cbf18ec2e0eed0b30b55b50a7e1956a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#a3cbf18ec2e0eed0b30b55b50a7e1956a">get_mouse_position</a> () const</td></tr>
+<tr class="separator:a3cbf18ec2e0eed0b30b55b50a7e1956a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a935140229a6ca98f48ac3b70e2845fe6" id="r_a935140229a6ca98f48ac3b70e2845fe6"><td class="memTemplParams" colspan="2">template&lt;class TFace , class... Args&gt; <br />
 requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>&gt;)</td></tr>
 <tr class="memitem:a935140229a6ca98f48ac3b70e2845fe6"><td class="memTemplItemLeft" align="right" valign="top">TFace &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#a935140229a6ca98f48ac3b70e2845fe6">add_face</a> (Args &amp;&amp;... args)</td></tr>
@@ -188,6 +190,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:af0a441e5698cfe2d2071a6af72620fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a367303a8b7e6569011d3aee570380802" id="r_a367303a8b7e6569011d3aee570380802"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#a367303a8b7e6569011d3aee570380802">_focused_face</a> = nullptr</td></tr>
 <tr class="separator:a367303a8b7e6569011d3aee570380802"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3393ce09e33e820ac258a589518cb09e" id="r_a3393ce09e33e820ac258a589518cb09e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#a3393ce09e33e820ac258a589518cb09e">_mouse_position</a></td></tr>
+<tr class="separator:a3393ce09e33e820ac258a589518cb09e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad58a46b9401a52de5964c372ed70b202" id="r_ad58a46b9401a52de5964c372ed70b202"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#ad58a46b9401a52de5964c372ed70b202">_previous_mouse_position</a></td></tr>
 <tr class="separator:ad58a46b9401a52de5964c372ed70b202"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75111267e04beac22d2175754116a79b" id="r_a75111267e04beac22d2175754116a79b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#a75111267e04beac22d2175754116a79b">_has_previous_mouse_position</a> = false</td></tr>
@@ -442,6 +446,32 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
 </table>
 </div><div class="memdoc">
 <p>Returns the keyboard this shell routes input from, e.g. so a focused face can query modifier key state (Shift, Ctrl, ...) from within its own _on_key_down()/_on_mouse_drag() (see TextField's Shift-extended selection and drag-select) instead of every such interaction needing its own dedicated parameter. </p>
+
+</div>
+</div>
+<a id="a3cbf18ec2e0eed0b30b55b50a7e1956a" name="a3cbf18ec2e0eed0b30b55b50a7e1956a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cbf18ec2e0eed0b30b55b50a7e1956a">&#9670;&#160;</a></span>get_mouse_position()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> fl7::gui::Shell::get_mouse_position </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the mouse's current absolute (screen) position, as of the most recent <a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>. Meant for a face whose _requires_own_bounds_for_hover() is true, to check whether the pointer is really within its own bounds, not just somewhere over whatever it's proxying its hovered state from (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a7af95b6aafdbd6d0137aef6410ff4827">Face::get_effective_style()</a>); most faces need <a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#a1cf2194c44121f7f9d15baa0a50570c0">get_hovered_face()</a> instead, not this. </p>
 
 </div>
 </div>
@@ -730,6 +760,29 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
 </table>
 </div><div class="memdoc">
 <p>Non-owning. </p>
+
+</div>
+</div>
+<a id="a3393ce09e33e820ac258a589518cb09e" name="a3393ce09e33e820ac258a589518cb09e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3393ce09e33e820ac258a589518cb09e">&#9670;&#160;</a></span>_mouse_position</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d53/namespaceml7.html#a7949ef806399520bff0f1c9c9565b7f1">ml7::Vector2f</a> fl7::gui::Shell::_mouse_position</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The mouse's current absolute (screen) position, as of the most recent <a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>. </p>
 
 </div>
 </div>

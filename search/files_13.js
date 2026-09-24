@@ -71,11 +71,13 @@ var searchData=
   ['tomlwriter_2ecpp_68',['TomlWriter.cpp',['../d1/da4/TomlWriter_8cpp.html',1,'']]],
   ['tomlwriter_2eh_69',['TomlWriter.h',['../d2/d40/TomlWriter_8h.html',1,'']]],
   ['topology_2eh_70',['Topology.h',['../d9/d93/Topology_8h.html',1,'']]],
-  ['traits_2eh_71',['traits.h',['../dd/dff/traits_8h.html',1,'']]],
-  ['transcoder_2eh_72',['Transcoder.h',['../d6/db9/Transcoder_8h.html',1,'']]],
-  ['transform_2ecpp_73',['transform.cpp',['../d8/d8c/transform_8cpp.html',1,'']]],
-  ['transform_2eh_74',['transform.h',['../d2/d80/transform_8h.html',1,'']]],
-  ['truetypefontloader_2ecpp_75',['TrueTypeFontLoader.cpp',['../db/d10/TrueTypeFontLoader_8cpp.html',1,'']]],
-  ['truetypefontloader_2eh_76',['TrueTypeFontLoader.h',['../d2/de5/TrueTypeFontLoader_8h.html',1,'']]],
-  ['types_2eh_77',['types.h',['../d6/d1b/yaml_2types_8h.html',1,'(Global Namespace)'],['../d9/d45/toml_2types_8h.html',1,'(Global Namespace)'],['../d5/d79/json_2types_8h.html',1,'(Global Namespace)'],['../dc/df4/ini_2types_8h.html',1,'(Global Namespace)'],['../d1/d96/config_2types_8h.html',1,'(Global Namespace)']]]
+  ['trackcontrol_2ecpp_71',['TrackControl.cpp',['../de/d18/TrackControl_8cpp.html',1,'']]],
+  ['trackcontrol_2eh_72',['TrackControl.h',['../d6/df2/TrackControl_8h.html',1,'']]],
+  ['traits_2eh_73',['traits.h',['../dd/dff/traits_8h.html',1,'']]],
+  ['transcoder_2eh_74',['Transcoder.h',['../d6/db9/Transcoder_8h.html',1,'']]],
+  ['transform_2ecpp_75',['transform.cpp',['../d8/d8c/transform_8cpp.html',1,'']]],
+  ['transform_2eh_76',['transform.h',['../d2/d80/transform_8h.html',1,'']]],
+  ['truetypefontloader_2ecpp_77',['TrueTypeFontLoader.cpp',['../db/d10/TrueTypeFontLoader_8cpp.html',1,'']]],
+  ['truetypefontloader_2eh_78',['TrueTypeFontLoader.h',['../d2/de5/TrueTypeFontLoader_8h.html',1,'']]],
+  ['types_2eh_79',['types.h',['../d6/d1b/yaml_2types_8h.html',1,'(Global Namespace)'],['../d9/d45/toml_2types_8h.html',1,'(Global Namespace)'],['../d5/d79/json_2types_8h.html',1,'(Global Namespace)'],['../dc/df4/ini_2types_8h.html',1,'(Global Namespace)'],['../d1/d96/config_2types_8h.html',1,'(Global Namespace)']]]
 ];

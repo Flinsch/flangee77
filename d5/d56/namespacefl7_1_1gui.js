@@ -18,5 +18,6 @@ var namespacefl7_1_1gui =
     [ "Static", "dc/dfd/classfl7_1_1gui_1_1Static.html", "dc/dfd/classfl7_1_1gui_1_1Static" ],
     [ "Style", "dd/d02/structfl7_1_1gui_1_1Style.html", "dd/d02/structfl7_1_1gui_1_1Style" ],
     [ "Theme", "d8/dc4/classfl7_1_1gui_1_1Theme.html", "d8/dc4/classfl7_1_1gui_1_1Theme" ],
-    [ "ThemeLevel", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html", "d0/d60/structfl7_1_1gui_1_1ThemeLevel" ]
+    [ "ThemeLevel", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html", "d0/d60/structfl7_1_1gui_1_1ThemeLevel" ],
+    [ "TrackControl", "d8/dac/classfl7_1_1gui_1_1TrackControl.html", "d8/dac/classfl7_1_1gui_1_1TrackControl" ]
 ];

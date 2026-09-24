@@ -46,12 +46,13 @@ var searchData=
   ['toml_43',['Toml',['../d0/d49/classdl7_1_1toml_1_1Toml.html',1,'dl7::toml']]],
   ['tomlreader_44',['TomlReader',['../d3/d18/classdl7_1_1toml_1_1TomlReader.html',1,'dl7::toml']]],
   ['tomlwriter_45',['TomlWriter',['../d2/dfe/classdl7_1_1toml_1_1TomlWriter.html',1,'dl7::toml']]],
-  ['traits_46',['traits',['../d7/d07/structcl7_1_1text_1_1codec_1_1traits.html',1,'cl7::text::codec']]],
-  ['traits_3c_20cl7_3a_3aachar_5ft_20_3e_47',['traits&lt; cl7::achar_t &gt;',['../d7/db1/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1achar__t_01_4.html',1,'cl7::text::codec']]],
-  ['traits_3c_20cl7_3a_3au16char_5ft_20_3e_48',['traits&lt; cl7::u16char_t &gt;',['../d2/d25/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u16char__t_01_4.html',1,'cl7::text::codec']]],
-  ['traits_3c_20cl7_3a_3au32char_5ft_20_3e_49',['traits&lt; cl7::u32char_t &gt;',['../d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html',1,'cl7::text::codec']]],
-  ['traits_3c_20cl7_3a_3au8char_5ft_20_3e_50',['traits&lt; cl7::u8char_t &gt;',['../de/db6/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4.html',1,'cl7::text::codec']]],
-  ['transcoder_51',['Transcoder',['../da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html',1,'cl7::text::codec']]],
-  ['truetypefontloader_52',['TrueTypeFontLoader',['../dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html',1,'fl7::fonts::detail::ttf']]],
-  ['truetypefontmetric_53',['TrueTypeFontMetric',['../d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader']]]
+  ['trackcontrol_46',['TrackControl',['../d8/dac/classfl7_1_1gui_1_1TrackControl.html',1,'fl7::gui']]],
+  ['traits_47',['traits',['../d7/d07/structcl7_1_1text_1_1codec_1_1traits.html',1,'cl7::text::codec']]],
+  ['traits_3c_20cl7_3a_3aachar_5ft_20_3e_48',['traits&lt; cl7::achar_t &gt;',['../d7/db1/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1achar__t_01_4.html',1,'cl7::text::codec']]],
+  ['traits_3c_20cl7_3a_3au16char_5ft_20_3e_49',['traits&lt; cl7::u16char_t &gt;',['../d2/d25/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u16char__t_01_4.html',1,'cl7::text::codec']]],
+  ['traits_3c_20cl7_3a_3au32char_5ft_20_3e_50',['traits&lt; cl7::u32char_t &gt;',['../d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html',1,'cl7::text::codec']]],
+  ['traits_3c_20cl7_3a_3au8char_5ft_20_3e_51',['traits&lt; cl7::u8char_t &gt;',['../de/db6/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4.html',1,'cl7::text::codec']]],
+  ['transcoder_52',['Transcoder',['../da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html',1,'cl7::text::codec']]],
+  ['truetypefontloader_53',['TrueTypeFontLoader',['../dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html',1,'fl7::fonts::detail::ttf']]],
+  ['truetypefontmetric_54',['TrueTypeFontMetric',['../d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader']]]
 ];
