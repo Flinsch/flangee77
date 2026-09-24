@@ -10,6 +10,7 @@
     #include <FaceLabs/gui/faces/Label.h>
     #include <FaceLabs/gui/faces/Panel.h>
     #include <FaceLabs/gui/faces/RadioButton.h>
+    #include <FaceLabs/gui/faces/ScrollBar.h>
     #include <FaceLabs/gui/faces/Slider.h>
     #include <FaceLabs/gui/faces/TextField.h>
 
@@ -365,6 +366,11 @@ namespace helloworld {
         gui_slider_handle_level.hovered = std::make_unique<fl7::gui::ThemeLevel>();
         gui_slider_handle_level.hovered->background_color = {0.45f, 0.7f, 1.0f, 1.0f};
 
+        // ScrollBar itself has no visual role of its own: it's a plain Compound
+        // of a Slider (picking up the "slider"/"slider_handle" roles above) and
+        // two ordinary Buttons (picking up the "button" role set up further up),
+        // nothing extra to theme here.
+
         _gui_shell->set_theme(&_gui_theme);
 
         auto& frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo Frame");
@@ -383,6 +389,15 @@ namespace helloworld {
         auto& label = panel.add_child<fl7::gui::faces::Label>(U"Hello, Panel! This line is intentionally much too long to fit, to test clipping.");
         label.set_position({10.0f, 10.0f});
         label.set_size({500.0f, 24.0f});
+
+        // A vertical scroll bar alongside the panel, standing in for some
+        // taller content of which only a third is currently "visible".
+        auto& scroll_bar = frame.get_content_area().add_child<fl7::gui::faces::ScrollBar>(fl7::gui::TrackControl::Orientation::Vertical, 1.0f / 3.0f);
+        scroll_bar.set_position({205.0f, 20.0f});
+        scroll_bar.set_size({10.0f, 120.0f});
+        scroll_bar.get_changed().connect([](float value) {
+            LOG_INFO(u8"ScrollBar changed: " + cl7::to_string(value));
+        });
 
         auto& button = frame.get_content_area().add_child<fl7::gui::faces::Button>(U"Click me");
         button.set_position({20.0f, 150.0f});
@@ -420,7 +435,7 @@ namespace helloworld {
             LOG_INFO(u8"TextField changed.");
         });
 
-        auto& slider = frame.get_content_area().add_child<fl7::gui::faces::Slider>(0.5f);
+        auto& slider = frame.get_content_area().add_child<fl7::gui::faces::Slider>(fl7::gui::TrackControl::Orientation::Horizontal, 0.5f);
         slider.set_position({20.0f, 304.0f});
         slider.set_size({180.0f, 24.0f});
         slider.get_changed().connect([](float value) {

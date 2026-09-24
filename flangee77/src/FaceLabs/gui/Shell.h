@@ -96,6 +96,16 @@ public:
      */
     Face* get_focused_face() const { return _focused_face; }
 
+    /**
+     * Returns the mouse's current absolute (screen) position, as of the most
+     * recent update(). Meant for a face whose _requires_own_bounds_for_hover()
+     * is true, to check whether the pointer is really within its own bounds,
+     * not just somewhere over whatever it's proxying its hovered state from
+     * (see Face::get_effective_style()); most faces need get_hovered_face()
+     * instead, not this.
+     */
+    ml7::Vector2f get_mouse_position() const { return _mouse_position; }
+
 
 
     // #############################################################################
@@ -160,6 +170,9 @@ private:
     Face* _pressed_face = nullptr;
     /** Non-owning: the face that is the focus target. */
     Face* _focused_face = nullptr;
+
+    /** The mouse's current absolute (screen) position, as of the most recent update(). */
+    ml7::Vector2f _mouse_position;
 
     /** The mouse position as of the previous update, for computing the delta for mouse drags. */
     ml7::Vector2f _previous_mouse_position;

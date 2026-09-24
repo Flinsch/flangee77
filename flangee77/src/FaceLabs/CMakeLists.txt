@@ -36,10 +36,12 @@ target_sources(flangee77
     gui/RadioGroup.cpp
     gui/Shell.cpp
     gui/Theme.cpp
+    gui/TrackControl.cpp
 
     gui/faces/CheckBox.cpp
     gui/faces/Frame.cpp
     gui/faces/RadioButton.cpp
+    gui/faces/ScrollBar.cpp
     gui/faces/Slider.cpp
     gui/faces/TextField.cpp
     gui/faces/Window.cpp

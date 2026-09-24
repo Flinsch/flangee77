@@ -126,9 +126,11 @@ public:
      * role of the ancestor, not to the role of this face), else this face's own
      * role resolved against the owning shell's theme (using its own checked/
      * hovered/pressed/focused state, see Theme::State, unless
-     * _get_interaction_state_proxy() redirects that part to another face), else a
-     * default-constructed style as a last resort (no override anywhere up the
-     * chain, no theme, or a face type with no themed role).
+     * _get_interaction_state_proxy() redirects that part to another face, and
+     * unless _requires_own_bounds_for_hover() further narrows a proxied hovered
+     * state down to this face's own bounds specifically), else a default-
+     * constructed style as a last resort (no override anywhere up the chain, no
+     * theme, or a face type with no themed role).
      */
     Style get_effective_style() const;
 
@@ -177,6 +179,20 @@ protected:
      * which role's Style is being resolved in the first place.
      */
     virtual const Face* _get_interaction_state_proxy() const { return nullptr; }
+
+    /**
+     * Returns whether this face's own hovered state (see get_effective_style())
+     * additionally requires the pointer to actually be within its own bounds
+     * (see _contains_point()), on top of whatever _get_interaction_state_proxy()
+     * says. Default: false, meaning a proxied face fully inherits the proxy's
+     * hovered state as-is, same as it does for pressed/focused. A passive
+     * decoration that redirects to its owner for pressed/focused (so it still
+     * looks "held"/"active" for the whole gesture) but should only actually
+     * highlight when the pointer is really over it, not merely somewhere over the
+     * owner (e.g., TrackControl's handle vs. the rest of the track), overrides this
+     * to true instead.
+     */
+    virtual bool _requires_own_bounds_for_hover() const { return false; }
 
     /**
      * Called with this face's freshly resolved effective text style (part of
@@ -247,6 +263,16 @@ protected:
      * the raw device delta vs. OS pointer-acceleration relationship happens to be.
      */
     virtual void _on_mouse_drag(ml7::Vector2f delta, ml7::Vector2f local_position) {}
+
+    /**
+     * Called once per frame, with this frame's mouse wheel delta (see
+     * Mouse::get_wheel_delta(); one notch/detent is 1), while this face is the
+     * hovered face and the wheel actually moved. Default: no-op. Deliberately
+     * routed by hover, not focus: wheel scrolling always targets whatever's under
+     * the cursor (e.g., ScrollBar), same as it does in a browser or any other GUI,
+     * regardless of which face (if any) currently holds the focus.
+     */
+    virtual void _on_mouse_wheel(int delta) {}
 
     /**
      * Called when the specified mouse button was pressed down and released again

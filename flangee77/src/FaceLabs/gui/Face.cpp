@@ -62,9 +62,11 @@ namespace fl7::gui {
      * role of the ancestor, not to the role of this face), else this face's own
      * role resolved against the owning shell's theme (using its own checked/
      * hovered/pressed/focused state, see Theme::State, unless
-     * _get_interaction_state_proxy() redirects that part to another face), else a
-     * default-constructed style as a last resort (no override anywhere up the
-     * chain, no theme, or a face type with no themed role).
+     * _get_interaction_state_proxy() redirects that part to another face, and
+     * unless _requires_own_bounds_for_hover() further narrows a proxied hovered
+     * state down to this face's own bounds specifically), else a default-
+     * constructed style as a last resort (no override anywhere up the chain, no
+     * theme, or a face type with no themed role).
      */
     Style Face::get_effective_style() const
     {
@@ -116,7 +118,9 @@ namespace fl7::gui {
 
                     const auto* checkable = dynamic_cast<const HasCheckedState*>(state_face);
                     Face* const pressed_face = shell->get_pressed_face();
-                    const bool is_hovered = shell->get_hovered_face() == state_face;
+                    bool is_hovered = shell->get_hovered_face() == state_face;
+                    if (is_hovered && _requires_own_bounds_for_hover())
+                        is_hovered = _contains_point(shell->get_mouse_position() - get_absolute_position());
                     const bool is_pressed = pressed_face == state_face;
                     const bool is_focused = shell->get_focused_face() == state_face;
 

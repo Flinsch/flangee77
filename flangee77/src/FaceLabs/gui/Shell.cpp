@@ -46,6 +46,7 @@ namespace fl7::gui {
     {
         const ml7::Vector2f mouse_position{static_cast<float>(_mouse->get_x()), static_cast<float>(_mouse->get_y())};
         const ml7::Vector2f mouse_position_delta = _has_previous_mouse_position ? mouse_position - _previous_mouse_position : ml7::Vector2f{};
+        _mouse_position = mouse_position;
         _previous_mouse_position = mouse_position;
         _has_previous_mouse_position = true;
 
@@ -61,6 +62,9 @@ namespace fl7::gui {
             if (_hovered_face)
                 _hovered_face->_on_mouse_enter();
         }
+
+        if (const int wheel_delta = _mouse->get_wheel_delta(); wheel_delta != 0 && _hovered_face)
+            _hovered_face->_on_mouse_wheel(wheel_delta);
 
         using xl7::input::MouseButton;
 
