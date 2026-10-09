@@ -86,7 +86,9 @@ namespace fl7::gui::render {
     /**
      * Recursively walks the given face (and, if it's a collection, its children) at
      * the given absolute (screen) position, drawing each visited face via the
-     * inherited _draw_face().
+     * inherited _draw_face(). A collection's children are walked get_scroll_offset()
+     * away from where they would otherwise be (e.g., faces::ScrollPanel's), same as
+     * they are hit-tested (see Collection::_find_hit_face()).
      */
     void DefaultRenderer::_render_face_recursive(const Face& face, ml7::Vector2f parent_absolute_position)
     {
@@ -103,8 +105,9 @@ namespace fl7::gui::render {
             if (clips_children)
                 push_clip_rect(absolute_position, absolute_position + face.get_size());
 
+            const ml7::Vector2f children_absolute_position = absolute_position - collection->get_scroll_offset();
             for (const auto& child : collection->get_children())
-                _render_face_recursive(*child, absolute_position);
+                _render_face_recursive(*child, children_absolute_position);
 
             if (clips_children)
                 pop_clip_rect();

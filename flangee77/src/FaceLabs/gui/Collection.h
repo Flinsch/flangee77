@@ -41,6 +41,18 @@ public:
     // #############################################################################
 
     /**
+     * Returns this collection's children offset: an additional translation
+     * applied to every child's effective (both hit-tested and rendered)
+     * position, on top of its own, ordinary parent-relative get_position().
+     * Default: {0, 0} (no offset). A scrollable collection (see
+     * faces::ScrollPanel) overrides this to implement scrolling, without
+     * either rendering or hit-testing needing to know anything about
+     * scrolling specifically -- they just always honor whatever offset a
+     * collection reports.
+     */
+    virtual ml7::Vector2f get_scroll_offset() const { return {}; }
+
+    /**
      * Returns this collection's children, in insertion order. Exposed publicly
      * (read-only) so external code (e.g., a renderer traversing the face tree) can
      * walk into a collection without needing any special access.
@@ -93,9 +105,12 @@ protected:
     // #############################################################################
 
     /**
-     * Finds the topmost face containing the given absolute (screen) point:
-     * children first (most-recently-added/topmost first), falling back to
-     * this Collection itself if none of them are hit.
+     * Finds the topmost face containing the given absolute (screen) point: children
+     * first (most-recently-added/topmost first), falling back to this collection
+     * itself if none of them are hit. Children are tested at the scroll offset,
+     * away from where they would otherwise be, same as they they are drawn:
+     * scrolling moves where a child effectively is, for every purpose, not just
+     * visually.
      */
     Face* _find_hit_face(ml7::Vector2f screen_point, ml7::Vector2f parent_absolute_position) override;
 

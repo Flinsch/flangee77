@@ -42,6 +42,7 @@ target_sources(flangee77
     gui/faces/Frame.cpp
     gui/faces/RadioButton.cpp
     gui/faces/ScrollBar.cpp
+    gui/faces/ScrollPanel.cpp
     gui/faces/Slider.cpp
     gui/faces/TextField.cpp
     gui/faces/Window.cpp

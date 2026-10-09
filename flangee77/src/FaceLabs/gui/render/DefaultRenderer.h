@@ -68,7 +68,9 @@ private:
     /**
      * Recursively walks the given face (and, if it's a collection, its children) at
      * the given absolute (screen) position, drawing each visited face via the
-     * inherited _draw_face().
+     * inherited _draw_face(). A collection's children are walked get_scroll_offset()
+     * away from where they would otherwise be (e.g., faces::ScrollPanel's), same as
+     * they are hit-tested (see Collection::_find_hit_face()).
      */
     void _render_face_recursive(const Face& face, ml7::Vector2f parent_absolute_position);
 

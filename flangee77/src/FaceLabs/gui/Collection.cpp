@@ -13,7 +13,12 @@ namespace fl7::gui {
     // #############################################################################
 
     /**
-     * Finds the topmost face containing the given absolute (screen) point.
+     * Finds the topmost face containing the given absolute (screen) point: children
+     * first (most-recently-added/topmost first), falling back to this collection
+     * itself if none of them are hit. Children are tested at the scroll offset,
+     * away from where they would otherwise be, same as they they are drawn:
+     * scrolling moves where a child effectively is, for every purpose, not just
+     * visually.
      */
     Face* Collection::_find_hit_face(ml7::Vector2f screen_point, ml7::Vector2f parent_absolute_position)
     {
@@ -32,10 +37,12 @@ namespace fl7::gui {
 
         if (children_reachable)
         {
+            const ml7::Vector2f children_absolute_position = absolute_position - get_scroll_offset();
+
             // Children first, most-recently-added (topmost) first.
             for (const auto& it : std::views::reverse(_children))
             {
-                if (Face* hit = it->_find_hit_face(screen_point, absolute_position))
+                if (Face* hit = it->_find_hit_face(screen_point, children_absolute_position))
                     return hit;
             }
         }
