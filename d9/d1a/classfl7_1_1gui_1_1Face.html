@@ -1066,7 +1066,7 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns this face's effective style: its own override if set, else the nearest ancestor's explicit override (not that ancestor's own <em>effective</em> style, which may itself just be a theme resolution, that's specific to the role of the ancestor, not to the role of this face), else this face's own role resolved against the owning shell's theme (using its own checked/ hovered/pressed/focused state, see <a class="el" href="../../db/d6f/structfl7_1_1gui_1_1Theme_1_1State.html">Theme::State</a>, unless <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a48f75635126ff50deb77077ca3704c3d">_get_interaction_state_proxy()</a> redirects that part to another face, and unless <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a5c24b29df19f1a88127c4999e2c81c92">_requires_own_bounds_for_hover()</a> further narrows a proxied hovered state down to this face's own bounds specifically), else a default- constructed style as a last resort (no override anywhere up the chain, no theme, or a face type with no themed role). </p>
+<p>Returns this face's effective style: its own override if set, else this face's own role resolved against the owning shell's theme (using its own checked/hovered/pressed/focused state, see <a class="el" href="../../db/d6f/structfl7_1_1gui_1_1Theme_1_1State.html">Theme::State</a>, unless <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a48f75635126ff50deb77077ca3704c3d">_get_interaction_state_proxy()</a> redirects that part to another face, and unless <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a5c24b29df19f1a88127c4999e2c81c92">_requires_own_bounds_for_hover()</a> further narrows a proxied hovered state down to this face's own bounds specifically), else, only for a face with no themed role of its own (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a6ce0fc56db00390b40b9991387751e36">_get_theme_key()</a>), the nearest ancestor's explicit override instead (not that ancestor's own <em>effective</em> style, which may itself just be a theme resolution, that's specific to the role of the ancestor, not to the role of this face), so a themed ancestor's override deliberately does NOT reach past a descendant that has its own distinct role (e.g., a Button inside an overridden Panel still looks like a Button), only past anonymous content that has no role to resolve in the first place. Else a default-constructed style as a last resort (no override anywhere up the chain, no theme, or a face type with no themed role). </p>
 
 </div>
 </div>
@@ -1392,7 +1392,7 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Overrides this face's style (and, transitively, that of any descendant that doesn't have its own override). </p>
+<p>Overrides this face's style (and, transitively, that of any descendant that has neither its own override nor a themed role of its own; see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a7af95b6aafdbd6d0137aef6410ff4827">get_effective_style()</a>). </p>
 
 </div>
 </div>
