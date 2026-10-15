@@ -120,17 +120,21 @@ public:
     ml7::Vector2f get_absolute_position() const;
 
     /**
-     * Returns this face's effective style: its own override if set, else the
-     * nearest ancestor's explicit override (not that ancestor's own *effective*
-     * style, which may itself just be a theme resolution, that's specific to the
-     * role of the ancestor, not to the role of this face), else this face's own
-     * role resolved against the owning shell's theme (using its own checked/
-     * hovered/pressed/focused state, see Theme::State, unless
+     * Returns this face's effective style: its own override if set, else this
+     * face's own role resolved against the owning shell's theme (using its own
+     * checked/hovered/pressed/focused state, see Theme::State, unless
      * _get_interaction_state_proxy() redirects that part to another face, and
      * unless _requires_own_bounds_for_hover() further narrows a proxied hovered
-     * state down to this face's own bounds specifically), else a default-
-     * constructed style as a last resort (no override anywhere up the chain, no
-     * theme, or a face type with no themed role).
+     * state down to this face's own bounds specifically), else, only for a face
+     * with no themed role of its own (see _get_theme_key()), the nearest ancestor's
+     * explicit override instead (not that ancestor's own *effective* style, which
+     * may itself just be a theme resolution, that's specific to the role of the
+     * ancestor, not to the role of this face), so a themed ancestor's override
+     * deliberately does NOT reach past a descendant that has its own distinct role
+     * (e.g., a Button inside an overridden Panel still looks like a Button), only
+     * past anonymous content that has no role to resolve in the first place. Else a
+     * default-constructed style as a last resort (no override anywhere up the chain,
+     * no theme, or a face type with no themed role).
      */
     Style get_effective_style() const;
 
@@ -141,7 +145,8 @@ public:
 
     /**
      * Overrides this face's style (and, transitively, that of any descendant that
-     * doesn't have its own override).
+     * has neither its own override nor a themed role of its own; see
+     * get_effective_style()).
      */
     void set_style_override(const Style& style) { _style_override = style; }
 
