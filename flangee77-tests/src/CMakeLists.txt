@@ -87,6 +87,7 @@ target_sources(flangee77-tests
 
 
     XiaoLabs/general.cpp
+    XiaoLabs/Clipboard.cpp
 
     XiaoLabs/graphics/Color.cpp
     XiaoLabs/graphics/PixelLayout.cpp

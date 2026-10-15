@@ -11,6 +11,38 @@
 
 
 
+namespace {
+
+    /**
+     * Opens the clipboard, retrying for a short while on ERROR_ACCESS_DENIED:
+     * some other process (e.g., Windows' own clipboard history/cloud sync, or an
+     * antivirus clipboard scanner) often grabs it for a few milliseconds right
+     * after its content changes, which would otherwise make back-to-back clipboard
+     * operations (ours or anyone else's) spuriously fail.
+     */
+    bool open_clipboard_with_retry()
+    {
+        constexpr int max_attempts = 10;
+        constexpr DWORD retry_delay_ms = 10;
+
+        for (int attempt = 0; attempt < max_attempts; ++attempt)
+        {
+            if (::OpenClipboard(nullptr))
+                return true;
+
+            if (::GetLastError() != ERROR_ACCESS_DENIED)
+                return false;
+
+            ::Sleep(retry_delay_ms);
+        }
+
+        return false;
+    }
+
+} // namespace
+
+
+
 namespace xl7::detail::windows {
 
 
@@ -20,7 +52,7 @@ namespace xl7::detail::windows {
         if (!::IsClipboardFormatAvailable(CF_UNICODETEXT))
             return {};
 
-        if (!::OpenClipboard(nullptr))
+        if (!open_clipboard_with_retry())
         {
             LOG_WARNING(cl7::platform::errors::system_result(::GetLastError(), u8"::OpenClipboard"));
             return {};
@@ -54,7 +86,7 @@ namespace xl7::detail::windows {
         const cl7::u16string utf16 = cl7::text::codec::to_utf16(text);
         const std::wstring_view wide = cl7::text::codec::reinterpret_utf16(cl7::u16string_view(utf16));
 
-        if (!::OpenClipboard(nullptr))
+        if (!open_clipboard_with_retry())
         {
             LOG_WARNING(cl7::platform::errors::system_result(::GetLastError(), u8"::OpenClipboard"));
             return false;
