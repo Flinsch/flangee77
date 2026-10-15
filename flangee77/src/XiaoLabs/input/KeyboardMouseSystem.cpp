@@ -73,6 +73,13 @@ namespace xl7::input {
             aggregated_delta_y += entry.device->get_delta_y();
             aggregated_wheel_delta += entry.device->get_wheel_delta();
 
+            // Consumed for this frame: without this, a device that received no
+            // further raw input event (e.g., the wheel wasn't touched again,
+            // or the mouse came to rest) would keep reporting the same stale,
+            // nonzero delta every subsequent frame, since _apply() is only ever
+            // called in response to an actual raw input event, not once per frame.
+            Mouse::Attorney::reset_deltas(*entry.device);
+
             if (cursor_position)
                 _apply_mouse_cursor_position(*entry.device, cursor_position->x, cursor_position->y);
         }

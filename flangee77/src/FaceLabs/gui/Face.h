@@ -266,13 +266,23 @@ protected:
 
     /**
      * Called once per frame, with this frame's mouse wheel delta (see
-     * Mouse::get_wheel_delta(); one notch/detent is 1), while this face is the
-     * hovered face and the wheel actually moved. Default: no-op. Deliberately
-     * routed by hover, not focus: wheel scrolling always targets whatever's under
-     * the cursor (e.g., ScrollBar), same as it does in a browser or any other GUI,
-     * regardless of which face (if any) currently holds the focus.
+     * Mouse::get_wheel_delta(); one notch/detent is 1), while the wheel actually
+     * moved and this face is either the hovered face itself or one of its ancestors
+     * that the delta has bubbled up to (see Shell::update()): routed by hover, not
+     * focus (wheel scrolling always targets whatever's under the cursor, same as it
+     * does in a browser or any other GUI, regardless of which face, if any,
+     * currently holds the focus), starting at the hovered face and walking up
+     * get_parent() from there, stopping at the first one that actually consumes it.
+     *
+     * Returns whether this face actually consumed the delta: true stops the
+     * bubble-up right here; false lets the next ancestor up try it instead.
+     * Default: false (no-op, let it bubble further). A face that's always the
+     * meaningful wheel target for its area once reached (e.g., TrackControl, even
+     * already clamped at an end) should still return true, so an outer scrollable
+     * ancestor (e.g., a ScrollPanel it happens to sit in) doesn't also react to the
+     * same notch.
      */
-    virtual void _on_mouse_wheel(int delta) {}
+    virtual bool _on_mouse_wheel(int delta) { return false; }
 
     /**
      * Called when the specified mouse button was pressed down and released again

@@ -63,8 +63,14 @@ namespace fl7::gui {
                 _hovered_face->_on_mouse_enter();
         }
 
-        if (const int wheel_delta = _mouse->get_wheel_delta(); wheel_delta != 0 && _hovered_face)
-            _hovered_face->_on_mouse_wheel(wheel_delta);
+        if (const int wheel_delta = _mouse->get_wheel_delta(); wheel_delta != 0)
+        {
+            // Bubbles up from the hovered face through its ancestors, stopping at
+            // the first one that actually consumes it (see Face::_on_mouse_wheel()).
+            for (Face* face = _hovered_face; face; face = face->get_parent())
+                if (face->_on_mouse_wheel(wheel_delta))
+                    break;
+        }
 
         using xl7::input::MouseButton;
 

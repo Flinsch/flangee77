@@ -67,6 +67,12 @@ public:
     /** Returns this track's maximum value. */
     float get_max() const { return _max; }
 
+    /**
+     * Sets this track's min/max, re-clamping (and, if that actually changes it,
+     * emitting the "changed" signal with the new value) the current value to it.
+     */
+    void set_range(float min, float max);
+
     /** Returns the amount Left/Right/Up/Down nudge the value by. */
     float get_step() const { return _step; }
 
@@ -165,8 +171,8 @@ protected:
     /** Left/Down/Right/Up nudge the value by get_step(); Home/End jump to the min/max. */
     void _on_key_down(xl7::input::Key key) override;
 
-    /** Nudges the value by get_step() per wheel notch, while hovered. */
-    void _on_mouse_wheel(int delta) override;
+    /** Nudges the value by get_step() per wheel notch, while hovered or bubbled up to. Always consumes. */
+    bool _on_mouse_wheel(int delta) override;
 
 
 

@@ -44,6 +44,7 @@ public:
     {
         static void apply(Mouse& mouse, const std::array<bool, static_cast<size_t>(MouseButton::COUNT)>& button_values, int delta_x, int delta_y, int wheel_delta, std::chrono::steady_clock::time_point now) { mouse._apply(button_values, delta_x, delta_y, wheel_delta, now); }
         static void apply_cursor_position(Mouse& mouse, int x, int y) { mouse._apply_cursor_position(x, y); }
+        static void reset_deltas(Mouse& mouse) { mouse._reset_deltas(); }
         friend class KeyboardMouseSystem;
     };
 
@@ -203,6 +204,16 @@ private:
      * derived from that call's (unrelated, raw) deltas.
      */
     void _apply_cursor_position(int x, int y);
+
+    /**
+     * Zeroes out the per-frame deltas (get_delta_x()/get_delta_y()/get_wheel_delta()),
+     * once KeyboardMouseSystem::update() has folded them into this frame's aggregate.
+     * _apply() is driven by raw input events, which fire only while something
+     * actually happens; without this, the last nonzero delta would otherwise just
+     * sit there and get re-read as "this frame's movement" by every subsequent
+     * frame too, for as long as nothing moves the wheel/mouse again to overwrite it.
+     */
+    void _reset_deltas() { _delta_x = 0; _delta_y = 0; _wheel_delta = 0; }
 
 
 

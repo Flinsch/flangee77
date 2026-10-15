@@ -62,6 +62,9 @@ public:
     /** Returns this scroll bar's maximum value. */
     float get_max() const { return _slider.get_max(); }
 
+    /** Sets this scroll bar's min/max, re-clamping the current value to it. */
+    void set_range(float min, float max) { _slider.set_range(min, max); }
+
     /** Returns the amount a step button (or a key press, or a wheel notch) nudges the value by. */
     float get_step() const { return _slider.get_step(); }
 

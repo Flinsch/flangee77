@@ -28,6 +28,26 @@ namespace fl7::gui {
         _changed.emit(_value);
     }
 
+    /**
+     * Sets this track's min/max, re-clamping (and, if that actually changes it,
+     * emitting the "changed" signal with the new value) the current value to it.
+     */
+    void TrackControl::set_range(float min, float max)
+    {
+        if (min == _min && max == _max)
+            return;
+
+        _min = min;
+        _max = max;
+
+        const float old_value = _value;
+        _value = std::clamp(_value, _min, _max);
+        _update_handle();
+
+        if (_value != old_value)
+            _changed.emit(_value);
+    }
+
 
 
     // #############################################################################
@@ -175,13 +195,14 @@ namespace fl7::gui {
     }
 
     /**
-     * Nudges the value by get_step() per wheel notch, while hovered.
+     * Nudges the value by get_step() per wheel notch, while hovered or bubbled up to. Always consumes.
      */
-    void TrackControl::_on_mouse_wheel(int delta)
+    bool TrackControl::_on_mouse_wheel(int delta)
     {
         // Wheel rotated away from the user (a positive delta/notch, scrolling
         // "up") moves the content up, i.e., decreases the value.
         set_value(_value - static_cast<float>(delta) * _step);
+        return true;
     }
 
 

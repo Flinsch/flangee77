@@ -9,7 +9,6 @@
     #include <FaceLabs/gui/faces/Frame.h>
     #include <FaceLabs/gui/faces/Label.h>
     #include <FaceLabs/gui/faces/RadioButton.h>
-    #include <FaceLabs/gui/faces/ScrollBar.h>
     #include <FaceLabs/gui/faces/ScrollPanel.h>
     #include <FaceLabs/gui/faces/Slider.h>
     #include <FaceLabs/gui/faces/TextField.h>
@@ -371,6 +370,9 @@ namespace helloworld {
         // two ordinary Buttons (picking up the "button" role set up further up),
         // nothing extra to theme here.
 
+        auto& gui_scroll_panel_level = _gui_theme.get_level(u8"scroll_panel");
+        gui_scroll_panel_level.background_color = {0.4f, 0.4f, 0.5f, 1.0f};
+
         _gui_shell->set_theme(&_gui_theme);
 
         auto& frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo Frame");
@@ -380,34 +382,21 @@ namespace helloworld {
         auto& panel = frame.get_content_area().add_child<fl7::gui::faces::ScrollPanel>();
         panel.set_position({20.0f, 20.0f});
         panel.set_size({180.0f, 120.0f});
-        fl7::gui::Style panel_style = panel.get_effective_style();
-        panel_style.background_color = {0.4f, 0.4f, 0.5f, 1.0f};
-        panel.set_style_override(panel_style);
         // Three times taller than the panel's own (viewport) size, to demo
-        // actually scrolling via the scroll bar below, not just clipping.
+        // actually scrolling via its built-in scroll bars, not just clipping.
         panel.set_content_size({180.0f, 360.0f});
 
         // Deliberately oversized (both text and box): demonstrates that the panel
         // clips overflowing content instead of letting it spill out horizontally.
-        auto& label = panel.add_child<fl7::gui::faces::Label>(U"Hello, Panel! This line is intentionally much too long to fit, to test clipping.");
+        auto& label = panel.get_content_area().add_child<fl7::gui::faces::Label>(U"Hello, Panel! This line is intentionally much too long to fit, to test clipping.");
         label.set_position({10.0f, 10.0f});
         label.set_size({500.0f, 24.0f});
 
         // Further down the panel's (scrollable) content, only reachable by
-        // actually scrolling down via the scroll bar below.
-        auto& scrolled_label = panel.add_child<fl7::gui::faces::Label>(U"You scrolled all the way down!");
+        // actually scrolling down via its built-in vertical scroll bar.
+        auto& scrolled_label = panel.get_content_area().add_child<fl7::gui::faces::Label>(U"You scrolled all the way down!");
         scrolled_label.set_position({10.0f, 330.0f});
         scrolled_label.set_size({160.0f, 24.0f});
-
-        // A vertical scroll bar driving the panel above: its value is directly
-        // the panel's vertical scroll offset in pixels (max = content height
-        // minus viewport height), its visible_fraction the matching ratio.
-        auto& scroll_bar = frame.get_content_area().add_child<fl7::gui::faces::ScrollBar>(fl7::gui::TrackControl::Orientation::Vertical, 120.0f / 360.0f, 0.0f, 0.0f, 360.0f - 120.0f);
-        scroll_bar.set_position({205.0f, 20.0f});
-        scroll_bar.set_size({10.0f, 120.0f});
-        scroll_bar.get_changed().connect([&panel](float value) {
-            panel.set_scroll_offset({0.0f, value});
-        });
 
         auto& button = frame.get_content_area().add_child<fl7::gui::faces::Button>(U"Click me");
         button.set_position({20.0f, 150.0f});
