@@ -158,6 +158,8 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:af2f2e9bfa03c225b8c5723e75137994c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e58ec3d7f1f2503a18d6c845ad8088f" id="r_a1e58ec3d7f1f2503a18d6c845ad8088f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dee/classxl7_1_1input_1_1Mouse.html#a1e58ec3d7f1f2503a18d6c845ad8088f">_apply_cursor_position</a> (int x, int y)</td></tr>
 <tr class="separator:a1e58ec3d7f1f2503a18d6c845ad8088f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fa2ec4be9509c955ed45d807dd00d18" id="r_a6fa2ec4be9509c955ed45d807dd00d18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dee/classxl7_1_1input_1_1Mouse.html#a6fa2ec4be9509c955ed45d807dd00d18">_reset_deltas</a> ()</td></tr>
+<tr class="separator:a6fa2ec4be9509c955ed45d807dd00d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
@@ -413,6 +415,32 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6fa2ec4be9509c955ed45d807dd00d18" name="a6fa2ec4be9509c955ed45d807dd00d18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fa2ec4be9509c955ed45d807dd00d18">&#9670;&#160;</a></span>_reset_deltas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void xl7::input::Mouse::_reset_deltas </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Zeroes out the per-frame deltas (<a class="el" href="../../d3/dee/classxl7_1_1input_1_1Mouse.html#a825155022a2ecaa79db6f5a224dbfbc3">get_delta_x()</a>/get_delta_y()/get_wheel_delta()), once <a class="el" href="../../df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#a3e6b22f86ec1e91281b6b36367559d84">KeyboardMouseSystem::update()</a> has folded them into this frame's aggregate. <a class="el" href="../../d3/dee/classxl7_1_1input_1_1Mouse.html#af2f2e9bfa03c225b8c5723e75137994c">_apply()</a> is driven by raw input events, which fire only while something actually happens; without this, the last nonzero delta would otherwise just sit there and get re-read as "this frame's movement" by every subsequent frame too, for as long as nothing moves the wheel/mouse again to overwrite it. </p>
 
 </div>
 </div>

@@ -271,13 +271,14 @@ var hierarchy =
           [ "fl7::gui::faces::CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html", null ],
           [ "fl7::gui::faces::RadioButton", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html", null ],
           [ "fl7::gui::faces::ScrollBar", "d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html", null ],
+          [ "fl7::gui::faces::ScrollPanel", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html", null ],
           [ "fl7::gui::faces::Window", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html", [
             [ "fl7::gui::faces::Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html", null ]
           ] ]
         ] ],
         [ "fl7::gui::Container", "dd/d69/classfl7_1_1gui_1_1Container.html", [
           [ "fl7::gui::faces::Panel", "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html", null ],
-          [ "fl7::gui::faces::ScrollPanel", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html", null ]
+          [ "fl7::gui::faces::ScrollPanel::ContentArea", "d9/de1/classfl7_1_1gui_1_1faces_1_1ScrollPanel_1_1ContentArea.html", null ]
         ] ]
       ] ],
       [ "fl7::gui::Control", "df/d2b/classfl7_1_1gui_1_1Control.html", [
@@ -758,6 +759,7 @@ var hierarchy =
     [ "cl7::behavioral::Signal< bool >", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", null ],
     [ "cl7::behavioral::Signal< const cl7::u32string & >", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", null ],
     [ "cl7::behavioral::Signal< float >", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", null ],
+    [ "cl7::behavioral::Signal< ml7::Vector2 >", "d3/d7e/classcl7_1_1behavioral_1_1Signal.html", null ],
     [ "tl7::Signature", "d1/d32/structtl7_1_1Signature.html", [
       [ "tl7::Meta", "dd/d81/structtl7_1_1Meta.html", null ]
     ] ],

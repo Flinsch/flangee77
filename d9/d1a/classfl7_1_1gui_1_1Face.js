@@ -19,7 +19,7 @@ var classfl7_1_1gui_1_1Face =
     [ "_on_mouse_enter", "d9/d1a/classfl7_1_1gui_1_1Face.html#ada9684b1b9f86341ede8c15ee552c180", null ],
     [ "_on_mouse_leave", "d9/d1a/classfl7_1_1gui_1_1Face.html#a44cf4cb7ed6b0037e7248babbd872714", null ],
     [ "_on_mouse_up", "d9/d1a/classfl7_1_1gui_1_1Face.html#ab899b816225c5d6aa3242cb440384ee4", null ],
-    [ "_on_mouse_wheel", "d9/d1a/classfl7_1_1gui_1_1Face.html#a9977d5756bc24cb22f9f7189c2e1eb89", null ],
+    [ "_on_mouse_wheel", "d9/d1a/classfl7_1_1gui_1_1Face.html#a78cdef3a564cae1081463d345cce96f6", null ],
     [ "_on_size_changed", "d9/d1a/classfl7_1_1gui_1_1Face.html#a9866e132198a7de7a47e02e7347abe48", null ],
     [ "_on_text_input", "d9/d1a/classfl7_1_1gui_1_1Face.html#a82e5252051e560e082f90c5bf235da4b", null ],
     [ "_requires_own_bounds_for_hover", "d9/d1a/classfl7_1_1gui_1_1Face.html#a5c24b29df19f1a88127c4999e2c81c92", null ],

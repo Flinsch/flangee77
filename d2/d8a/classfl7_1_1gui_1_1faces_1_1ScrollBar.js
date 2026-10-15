@@ -17,6 +17,7 @@ var classfl7_1_1gui_1_1faces_1_1ScrollBar =
     [ "get_visible_fraction", "d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html#a5c94656be4d6121fa469459a592c5149", null ],
     [ "operator=", "d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html#a8bb5a9a77deb486b29805d406fd50959", null ],
     [ "operator=", "d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html#a78e58bfad222f91ee4730bc3790f3ba3", null ],
+    [ "set_range", "d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html#a3300dbee4cf008378482eeacf95ed942", null ],
     [ "set_show_buttons", "d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html#a00a343192696c9385eb4077ed36f1356", null ],
     [ "set_step", "d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html#a42a9f2fe74bdd752d3723c368c3291c5", null ],
     [ "set_value", "d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html#a70c7f6ec5bb17076ea81ebc69de4fd5e", null ],
