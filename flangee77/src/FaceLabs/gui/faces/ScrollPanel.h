@@ -28,9 +28,9 @@ namespace fl7::gui::faces {
  * that doesn't itself want the wheel (e.g., a Label), but not one that does (e.g.,
  * a Slider); see Face::_on_mouse_wheel()).
  *
- * Both scroll bars are always instantiated and always shown for now; making each
- * individually enable-able/hide-able (or shown only when actually needed) is
- * planned as a follow-up, not implemented yet.
+ * Both scroll bars are always instantiated, but each can be independently
+ * disabled (see set_vertical_scroll_enabled()/set_horizontal_scroll_enabled())
+ * and each has its own, independent visibility mode (see ScrollBarVisibility).
  */
 class ScrollPanel
     : public Compound
@@ -38,6 +38,22 @@ class ScrollPanel
 {
 
 public:
+    /**
+     * A scroll bar's visibility, independent of whether its own axis is actually
+     * scrollable at all.
+     */
+    enum struct ScrollBarVisibility
+    {
+        /** Shows the scroll bar unconditionally (even while its own axis is disabled, in which case it just sits there inert, full-range, nothing to drag). */
+        Always,
+        /** Hides the scroll bar unconditionally. */
+        Never,
+        /** Shows the scroll bar only while the content actually overflows that axis's (viewport) bounds. */
+        Auto,
+    };
+
+
+
     ScrollPanel();
 
     ScrollPanel(const ScrollPanel&) = delete;
@@ -78,6 +94,54 @@ public:
 
     /** Returns the signal emitted (with the new position) whenever this panel's scroll position actually changes, regardless of what changed it (set_scroll_position(), set_content_size() re-clamping it, a resize, the mouse wheel, or either scroll bar). */
     cl7::behavioral::Signal<ml7::Vector2f>& get_scroll_changed() { return _scroll_changed; }
+
+    /** Returns whether this panel's content can currently be scrolled vertically at all; see set_vertical_scroll_enabled(). */
+    bool get_vertical_scroll_enabled() const { return _vertical_scroll_enabled; }
+
+    /**
+     * Sets whether this panel's content can be scrolled vertically at all.
+     * While disabled, the vertical scroll position stays clamped to 0 regardless of
+     * content size, and the vertical scroll bar is disabled (however its own
+     * visibility is configured; see set_vertical_scroll_bar_visibility()), since
+     * there would be nothing for it to do.
+     */
+    void set_vertical_scroll_enabled(bool enabled);
+
+    /** Returns whether this panel's content can currently be scrolled horizontally at all; see set_horizontal_scroll_enabled(). */
+    bool get_horizontal_scroll_enabled() const { return _horizontal_scroll_enabled; }
+
+    /**
+     * Sets whether this panel's content can be scrolled horizontally at all.
+     * While disabled, the horizontal scroll position stays clamped to 0 regardless of
+     * content size, and the horizontal scroll bar is disabled (however its own
+     * visibility is configured; see set_horizontal_scroll_bar_visibility()), since
+     * there would be nothing for it to do.
+     */
+    void set_horizontal_scroll_enabled(bool enabled);
+
+    /** Returns this panel's vertical scroll bar's visibility mode; see set_vertical_scroll_bar_visibility(). */
+    ScrollBarVisibility get_vertical_scroll_bar_visibility() const { return _vertical_scroll_bar_visibility; }
+
+    /**
+     * Sets this panel's vertical scroll bar's visibility mode. Auto shows it only
+     * while the content actually overflows vertically, accounting for whichever
+     * other scroll bar ends up shown too, since showing one reduces the viewport
+     * (and therefore how much room the other axis's content actually has) available
+     * to the other axis.
+     */
+    void set_vertical_scroll_bar_visibility(ScrollBarVisibility visibility);
+
+    /** Returns this panel's horizontal scroll bar's visibility mode; see set_horizontal_scroll_bar_visibility(). */
+    ScrollBarVisibility get_horizontal_scroll_bar_visibility() const { return _horizontal_scroll_bar_visibility; }
+
+    /**
+     * Sets this panel's horizontal scroll bar's visibility mode. Auto shows it only
+     * while the content actually overflows horizontally, accounting for whichever
+     * other scroll bar ends up shown too, since showing one reduces the viewport
+     * (and therefore how much room the other axis's content actually has) available
+     * to the other axis.
+     */
+    void set_horizontal_scroll_bar_visibility(ScrollBarVisibility visibility);
 
 
 
@@ -148,17 +212,44 @@ private:
     // Helpers
     // #############################################################################
 
-    /** Positions/sizes the content area and both scroll bars for this panel's own current size. */
+    /**
+     * Positions/sizes the content area and both scroll bars for this panel's own
+     * current size, and resolves each scroll bar's actual shown/hidden state (see
+     * ScrollBarVisibility) and enabled state (shown and its own axis is enabled)
+     * for this pass. Auto visibility is resolved against each axis's own full-size
+     * overflow first, then re-checked once more for whichever axis wasn't needed on
+     * its own, against the viewport as actually reduced by the other axis's scroll
+     * bar (if that one did end up shown): sufficient to converge for exactly two
+     * axes.
+     */
     void _layout();
 
-    /** Refreshes both scroll bars' range/visible_fraction/step from the current content size vs. the content area's (viewport) size. */
+    /**
+     * Refreshes both scroll bars' range/visible_fraction/step from the current
+     * content size vs. the content area's (viewport) size, clamping a disabled
+     * axis's range to [0, 0].
+     */
     void _update_scroll_bars();
 
-    /** Clamps a scroll position to [0, get_content_size() - (viewport size)] per axis (never negative). */
+    /**
+     * Clamps a scroll position to [0, get_content_size() - (viewport size)] per
+     * axis (never negative), or to [0, 0] on an axis that's currently disabled.
+     */
     ml7::Vector2f _clamp_scroll_offset(ml7::Vector2f scroll_offset) const;
 
-    /** Clamps and applies a new scroll position: syncs the content area and both scroll bars, emitting get_scroll_changed() only if it actually changed. */
+    /**
+     * Clamps and applies a new scroll position: syncs the content area and both
+     * scroll bars, emitting get_scroll_changed() only if it actually changed.
+     */
     void _apply_scroll_offset(ml7::Vector2f scroll_offset);
+
+    /**
+     * Re-runs _layout(), _update_scroll_bars(), and re-clamps/re-applies the
+     * current scroll position to them, in that order. Needed whenever anything any
+     * of them depend on changes: this panel's own size, its content size, either
+     * axis's enabled state, or either scroll bar's visibility mode.
+     */
+    void _relayout();
 
 
 
@@ -178,6 +269,12 @@ private:
 
     /** The amount the mouse wheel scrolls (vertically) per notch; also both scroll bars' own step. */
     float _wheel_step = 40.0f;
+
+    bool _vertical_scroll_enabled = true;
+    bool _horizontal_scroll_enabled = true;
+
+    ScrollBarVisibility _vertical_scroll_bar_visibility = ScrollBarVisibility::Always;
+    ScrollBarVisibility _horizontal_scroll_bar_visibility = ScrollBarVisibility::Auto;
 
     cl7::behavioral::Signal<ml7::Vector2f> _scroll_changed;
 
