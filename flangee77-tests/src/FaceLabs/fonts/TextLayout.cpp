@@ -161,6 +161,80 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - leading/trailing whi
     TESTLABS_CHECK( lines.at(0).is_paragraph_end );
 }
 
+TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - preserve_whitespace keeps leading/trailing whitespace (WrapMode::None)" )
+{
+    auto& font = get_test_font();
+    fl7::fonts::TextStyle text_style;
+    text_style.preserve_whitespace = true;
+
+    const auto codepoints = to_codepoints("   hello   ");
+    const auto lines = fl7::fonts::TextLayout::lay_out(codepoints, font, text_style, 0.0f);
+
+    TESTLABS_CHECK_EQ( lines.size(), size_t{1} );
+    TESTLABS_CHECK_EQ( to_string(codepoints, lines.at(0)), "   hello   " );
+    TESTLABS_CHECK_EQ_FLT( lines.at(0).width, measure("   hello   ", font, text_style) );
+    // The surrounding whitespace must actually contribute to the measured
+    // width, not merely leave the range untrimmed while still measuring
+    // only "hello".
+    TESTLABS_CHECK_GT( lines.at(0).width, measure("hello", font, text_style) );
+    TESTLABS_CHECK( lines.at(0).is_paragraph_end );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - preserve_whitespace keeps an all-whitespace paragraph (WrapMode::None)" )
+{
+    auto& font = get_test_font();
+    fl7::fonts::TextStyle text_style;
+    text_style.preserve_whitespace = true;
+
+    const auto codepoints = to_codepoints("   ");
+    const auto lines = fl7::fonts::TextLayout::lay_out(codepoints, font, text_style, 0.0f);
+
+    TESTLABS_CHECK_EQ( lines.size(), size_t{1} );
+    TESTLABS_CHECK_EQ( lines.at(0).codepoint_begin, size_t{0} );
+    TESTLABS_CHECK_EQ( lines.at(0).codepoint_end, codepoints.size() );
+    TESTLABS_CHECK_GT( lines.at(0).width, 0.0f );
+    TESTLABS_CHECK( lines.at(0).is_paragraph_end );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - preserve_whitespace still trims word-wrap boundaries (WrapMode::Word)" )
+{
+    auto& font = get_test_font();
+    fl7::fonts::TextStyle text_style;
+    text_style.preserve_whitespace = true;
+    text_style.wrap_mode = fl7::fonts::TextStyle::WrapMode::Word;
+
+    // Generous max_width: the whole paragraph still fits on a single
+    // (word-wrapped) line, so this exercises _word_wrap_paragraph() (whose
+    // line boundaries are always word boundaries), not _make_line()'s own
+    // trim_whitespace branch.
+    const float max_width = measure("  aaa bbb  ", font, text_style) * 10.0f;
+
+    const auto codepoints = to_codepoints("  aaa bbb  ");
+    const auto lines = fl7::fonts::TextLayout::lay_out(codepoints, font, text_style, max_width);
+
+    TESTLABS_CHECK_EQ( lines.size(), size_t{1} );
+    TESTLABS_CHECK_EQ( to_string(codepoints, lines.at(0)), "aaa bbb" );
+    TESTLABS_CHECK_EQ( lines.at(0).word_count, 2u );
+    TESTLABS_CHECK( lines.at(0).is_paragraph_end );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - preserve_whitespace still collapses an all-whitespace paragraph (WrapMode::Word)" )
+{
+    auto& font = get_test_font();
+    fl7::fonts::TextStyle text_style;
+    text_style.preserve_whitespace = true;
+    text_style.wrap_mode = fl7::fonts::TextStyle::WrapMode::Word;
+
+    const auto codepoints = to_codepoints("   ");
+    const auto lines = fl7::fonts::TextLayout::lay_out(codepoints, font, text_style, 100.0f);
+
+    TESTLABS_CHECK_EQ( lines.size(), size_t{1} );
+    TESTLABS_CHECK_EQ( lines.at(0).codepoint_begin, lines.at(0).codepoint_end ); // collapsed to empty
+    TESTLABS_CHECK_EQ_FLT( lines.at(0).width, 0.0f );
+    TESTLABS_CHECK_EQ( lines.at(0).word_count, 0u );
+    TESTLABS_CHECK( lines.at(0).is_paragraph_end );
+}
+
 TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - explicit line breaks still split paragraphs under WrapMode::Word" )
 {
     auto& font = get_test_font();
