@@ -40,6 +40,7 @@ target_sources(flangee77
 
     gui/faces/CheckBox.cpp
     gui/faces/Frame.cpp
+    gui/faces/ListBox.cpp
     gui/faces/RadioButton.cpp
     gui/faces/ScrollBar.cpp
     gui/faces/ScrollPanel.cpp

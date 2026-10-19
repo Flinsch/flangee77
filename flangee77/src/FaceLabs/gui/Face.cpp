@@ -1,5 +1,6 @@
 #include "Face.h"
 
+#include "./Collection.h"
 #include "./HasCheckedState.h"
 #include "./Shell.h"
 #include "./Theme.h"
@@ -44,14 +45,23 @@ namespace fl7::gui {
 
     /**
      * Returns this face's absolute (screen) position, computed by walking up the
-     * parent chain. Not cached (fine at GUI scale, matches the rest of the
-     * traversal/hit-testing code).
+     * parent chain, netting out each ancestor collection's own get_scroll_offset()
+     * along the way, same as Collection::_find_hit_face() and render::DefaultRenderer
+     * independently already do while actually hit-testing/drawing this face's
+     * descendants: without that, this would return this face's unscrolled, logical
+     * position instead of wherever it's actually hit-tested/drawn/visible right now.
+     * Not cached (fine at GUI scale, matches the rest of the traversal/hit-testing
+     * code).
      */
     ml7::Vector2f Face::get_absolute_position() const
     {
         ml7::Vector2f position = _position;
         for (const Face* parent = _parent; parent; parent = parent->_parent)
+        {
             position += parent->_position;
+            if (const auto* collection = dynamic_cast<const Collection*>(parent))
+                position -= collection->get_scroll_offset();
+        }
         return position;
     }
 

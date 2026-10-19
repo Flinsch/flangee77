@@ -8,6 +8,7 @@
     #include <FaceLabs/gui/faces/CheckBox.h>
     #include <FaceLabs/gui/faces/Frame.h>
     #include <FaceLabs/gui/faces/Label.h>
+    #include <FaceLabs/gui/faces/ListBox.h>
     #include <FaceLabs/gui/faces/RadioButton.h>
     #include <FaceLabs/gui/faces/ScrollPanel.h>
     #include <FaceLabs/gui/faces/Slider.h>
@@ -373,6 +374,17 @@ namespace helloworld {
         auto& gui_scroll_panel_level = _gui_theme.get_level(u8"scroll_panel");
         gui_scroll_panel_level.background_color = {0.4f, 0.4f, 0.5f, 1.0f};
 
+        // ListBox demo: same "flat background, solid color on checked" story as
+        // CheckBox/RadioButton above, just themed separately from a plain
+        // ScrollPanel's chrome (list_box) and with the selected row highlighted
+        // (list_box_row, checked).
+        auto& gui_list_box_level = _gui_theme.get_level(u8"list_box");
+        gui_list_box_level.background_color = {0.3f, 0.35f, 0.4f, 1.0f};
+
+        auto& gui_list_box_row_level = _gui_theme.get_level(u8"list_box_row");
+        gui_list_box_row_level.checked = std::make_unique<fl7::gui::ThemeLevel>();
+        gui_list_box_row_level.checked->background_color = {0.3f, 0.5f, 0.75f, 1.0f};
+
         _gui_shell->set_theme(&_gui_theme);
 
         auto& frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo Frame");
@@ -439,6 +451,25 @@ namespace helloworld {
         slider.set_size({180.0f, 24.0f});
         slider.get_changed().connect([](float value) {
             LOG_INFO(u8"Slider changed: " + cl7::to_string(value));
+        });
+
+
+        auto& list_frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo ListBox");
+        list_frame.set_position({840.0f, 210.0f});
+        list_frame.set_size({220.0f, 220.0f});
+
+        auto& list_box = list_frame.get_content_area().add_child<fl7::gui::faces::ListBox>();
+        list_box.set_position({20.0f, 20.0f});
+        // Shorter than its 8 items' total height (8 * 24px row height), to demo
+        // the built-in vertical scroll bar alongside the selection itself.
+        list_box.set_size({180.0f, 140.0f});
+
+        for (int i = 1; i <= 8; ++i)
+            list_box.add_item<fl7::gui::faces::Label>(U"Item " + cl7::text::codec::to_utf32(cl7::to_string(i)));
+
+        list_box.set_selected_index(0);
+        list_box.get_selection_changed().connect([](int index) {
+            LOG_INFO(u8"ListBox selection changed: " + cl7::to_string(index));
         });
 
 
