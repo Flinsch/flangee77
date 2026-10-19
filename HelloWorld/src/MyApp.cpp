@@ -389,7 +389,7 @@ namespace helloworld {
 
         auto& frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo Frame");
         frame.set_position({600.0f, 210.0f});
-        frame.set_size({220.0f, 360.0f});
+        frame.set_size({220.0f, 400.0f});
 
         auto& panel = frame.get_content_area().add_child<fl7::gui::faces::ScrollPanel>();
         panel.set_position({20.0f, 20.0f});
@@ -451,6 +451,20 @@ namespace helloworld {
         slider.set_size({180.0f, 24.0f});
         slider.get_changed().connect([](float value) {
             LOG_INFO(u8"Slider changed: " + cl7::to_string(value));
+        });
+
+        // Collection::remove_child() demo: removes a sibling face (the checkbox
+        // above), not itself or an ancestor, so it's safe to call from within this
+        // button's own _on_click() (see remove_child()'s doc comment). Disables
+        // itself afterwards so a second click can't try to remove it again.
+        auto& remove_checkbox_button = frame.get_content_area().add_child<fl7::gui::faces::Button>(U"Remove checkbox");
+        remove_checkbox_button.set_position({20.0f, 338.0f});
+        remove_checkbox_button.set_size({180.0f, 24.0f});
+        remove_checkbox_button.get_clicked().connect([&frame, &checkbox, &remove_checkbox_button]() {
+            LOG_INFO(u8"Removing CheckBox face...");
+            frame.get_content_area().remove_child(checkbox);
+            remove_checkbox_button.set_text(U"(checkbox removed)");
+            remove_checkbox_button.set_enabled(false);
         });
 
 

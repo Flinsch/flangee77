@@ -1,10 +1,43 @@
 #include "Collection.h"
 
+#include "./Shell.h"
+
+#include <algorithm>
 #include <ranges>
 
 
 
 namespace fl7::gui {
+
+
+
+    // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Removes (and destroys, along with its own descendants, if any) the specified
+     * child of this collection, which must actually currently be one. Removal is
+     * immediate/synchronous, not deferred to some later, safe point: the caller is
+     * responsible for never removing a face from within its own (or one of its
+     * descendants') callback (_on_click() etc.), which would destroy it mid-call,
+     * while one of its own member functions is still running. Clears whichever of
+     * the owning Shell's hovered/pressed/focused face (if any) falls within the
+     * removed subtree first, so it's never left dangling (see
+     * Shell::_handle_face_removed()).
+     */
+    void Collection::remove_child(Face& child)
+    {
+        const auto it = std::ranges::find_if(_children, [&child](const std::unique_ptr<Face>& c) {
+            return c.get() == &child;
+        });
+        assert(it != _children.end());
+
+        if (Shell* shell = child.get_shell())
+            Shell::Attorney::handle_face_removed(*shell, &child);
+
+        _children.erase(it);
+    }
 
 
 

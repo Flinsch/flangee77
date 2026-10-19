@@ -32,6 +32,7 @@ public:
 
 
     using Collection::add_child;
+    using Collection::remove_child;
 
 }; // class Container
 

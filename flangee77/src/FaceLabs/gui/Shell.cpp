@@ -163,4 +163,33 @@ namespace fl7::gui {
 
 
 
+    // #############################################################################
+    // Backend Interface (Collection)
+    // #############################################################################
+
+    /**
+     * Called by Collection::remove_child() just before it actually erases/destroys
+     * the specified face (and, transitively, its own descendants, if any): clears
+     * whichever of _hovered_face/_pressed_face/_focused_face (if any) falls within
+     * that subtree, so none of them is ever left dangling once it's actually gone.
+     */
+    void Shell::_handle_face_removed(Face* removed)
+    {
+        const auto is_within_removed_subtree = [removed](Face* face) {
+            for (; face; face = face->get_parent())
+                if (face == removed)
+                    return true;
+            return false;
+        };
+
+        if (is_within_removed_subtree(_hovered_face))
+            _hovered_face = nullptr;
+        if (is_within_removed_subtree(_pressed_face))
+            _pressed_face = nullptr;
+        if (is_within_removed_subtree(_focused_face))
+            _focused_face = nullptr;
+    }
+
+
+
 } // namespace fl7::gui

@@ -38,6 +38,19 @@ class Shell
 
 public:
     /**
+     * Grants Collection access to notify this shell when one of its children is
+     * about to be removed (see Collection::remove_child()), keeping that
+     * (backend-facing) capability out of the public query API.
+     */
+    class Attorney
+    {
+        static void handle_face_removed(Shell& shell, Face* removed) { shell._handle_face_removed(removed); }
+        friend class Collection;
+    };
+
+
+
+    /**
      * Constructs a shell bound to the specified renderer and input source.
      * Defaults to the aggregate keyboard/mouse for the common single-player case.
      * Pass a specific individual device (e.g., for couch co-op) so multiple shells
@@ -147,6 +160,20 @@ public:
 
 
 private:
+
+    // #############################################################################
+    // Backend Interface (Collection)
+    // #############################################################################
+
+    /**
+     * Called by Collection::remove_child() just before it actually erases/destroys
+     * the specified face (and, transitively, its own descendants, if any): clears
+     * whichever of _hovered_face/_pressed_face/_focused_face (if any) falls within
+     * that subtree, so none of them is ever left dangling once it's actually gone.
+     */
+    void _handle_face_removed(Face* removed);
+
+
 
     // #############################################################################
     // Attributes
