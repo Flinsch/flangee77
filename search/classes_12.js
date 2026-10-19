@@ -85,5 +85,7 @@ var searchData=
   ['resultbase_82',['resultbase',['../de/d3e/structml7_1_1distance2_1_1ResultBase.html',1,'ml7::distance2::ResultBase&lt; T &gt;'],['../da/db7/structml7_1_1distance3_1_1ResultBase.html',1,'ml7::distance3::ResultBase&lt; T &gt;']]],
   ['resultbuilder_83',['ResultBuilder',['../db/d89/classtl7_1_1ResultBuilder.html',1,'tl7']]],
   ['rledecoder_84',['RleDecoder',['../d4/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1RleDecoder.html',1,'xl7::graphics::images::codecs::targa']]],
-  ['rleencoder_85',['RleEncoder',['../da/df4/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1RleEncoder.html',1,'xl7::graphics::images::codecs::targa']]]
+  ['rleencoder_85',['RleEncoder',['../da/df4/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1RleEncoder.html',1,'xl7::graphics::images::codecs::targa']]],
+  ['row_86',['Row',['../d2/dcf/classfl7_1_1gui_1_1faces_1_1ListBox_1_1Row.html',1,'fl7::gui::faces::ListBox']]],
+  ['rowarea_87',['RowArea',['../d4/d24/classfl7_1_1gui_1_1faces_1_1ListBox_1_1RowArea.html',1,'fl7::gui::faces::ListBox']]]
 ];

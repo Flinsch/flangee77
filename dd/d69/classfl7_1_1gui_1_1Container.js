@@ -6,5 +6,6 @@ var classfl7_1_1gui_1_1Container =
     [ "~Container", "dd/d69/classfl7_1_1gui_1_1Container.html#ab33a57c017540776923469626998865f", null ],
     [ "add_child", "dd/d69/classfl7_1_1gui_1_1Container.html#a9b6bb179d97f1379ce9dcd028d76db00", null ],
     [ "operator=", "dd/d69/classfl7_1_1gui_1_1Container.html#af8aa4484045ad03b81e45d0e3f49ee6f", null ],
-    [ "operator=", "dd/d69/classfl7_1_1gui_1_1Container.html#a79d3aa6deb902aec182158ebee201aa5", null ]
+    [ "operator=", "dd/d69/classfl7_1_1gui_1_1Container.html#a79d3aa6deb902aec182158ebee201aa5", null ],
+    [ "remove_child", "dd/d69/classfl7_1_1gui_1_1Container.html#a03d9dd7945a9461765107b57a21cd0ce", null ]
 ];

@@ -12,6 +12,7 @@ var classfl7_1_1gui_1_1Collection =
     [ "get_scroll_offset", "d4/de7/classfl7_1_1gui_1_1Collection.html#a7aa34214082c3bfce3fd0b4a2ccfd827", null ],
     [ "operator=", "d4/de7/classfl7_1_1gui_1_1Collection.html#ad0ca3f6916c7ed00403a52b93fd37429", null ],
     [ "operator=", "d4/de7/classfl7_1_1gui_1_1Collection.html#ac3245873d7c6290f13973ae61aa99d6c", null ],
+    [ "remove_child", "d4/de7/classfl7_1_1gui_1_1Collection.html#a03d9dd7945a9461765107b57a21cd0ce", null ],
     [ "set_clip_children", "d4/de7/classfl7_1_1gui_1_1Collection.html#a6ecf0ec2145f14bd9a4b19cdf443ffb7", null ],
     [ "_children", "d4/de7/classfl7_1_1gui_1_1Collection.html#a7acd04a97e7d004ec84ca82a8940d535", null ],
     [ "_clips_children", "d4/de7/classfl7_1_1gui_1_1Collection.html#a5752081fa7d85ac75c3be68dd1f8ce47", null ]
