@@ -470,7 +470,7 @@ namespace helloworld {
 
         auto& list_frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo ListBox");
         list_frame.set_position({840.0f, 210.0f});
-        list_frame.set_size({220.0f, 220.0f});
+        list_frame.set_size({220.0f, 260.0f});
 
         auto& list_box = list_frame.get_content_area().add_child<fl7::gui::faces::ListBox>();
         list_box.set_position({20.0f, 20.0f});
@@ -484,6 +484,23 @@ namespace helloworld {
         list_box.set_selected_index(0);
         list_box.get_selection_changed().connect([](int index) {
             LOG_INFO(u8"ListBox selection changed: " + cl7::to_string(index));
+        });
+
+        // ListBox::remove_item() demo: removes whichever item is currently
+        // selected (if any), so clicking this repeatedly eats through the whole
+        // list, re-numbering/re-stacking the remaining items each time.
+        auto& remove_item_button = list_frame.get_content_area().add_child<fl7::gui::faces::Button>(U"Remove selected item");
+        remove_item_button.set_position({20.0f, 170.0f});
+        remove_item_button.set_size({180.0f, 24.0f});
+        remove_item_button.get_clicked().connect([&list_box]() {
+            const int index = list_box.get_selected_index();
+            if (index < 0)
+            {
+                LOG_INFO(u8"No ListBox item selected to remove.");
+                return;
+            }
+            LOG_INFO(u8"Removing ListBox item " + cl7::to_string(index) + u8"...");
+            list_box.remove_item(index);
         });
 
 

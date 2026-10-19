@@ -68,6 +68,18 @@ public:
         requires(std::derived_from<TFace, Face>)
     TFace& add_item(Args&&... args);
 
+    /**
+     * Removes (and destroys, along with its content Face) the item at the
+     * specified index; an out-of-range index is ignored. Every later item's own
+     * index shifts down by one to match. If the removed item was the currently
+     * selected one, the selection is cleared (-1) rather than jumping to whatever
+     * item now happens to occupy its old position; a selected item at a later
+     * index just keeps tracking the same (still selected) item, re-numbered down
+     * by one. Either way, get_selection_changed() only fires if the index this
+     * list reports actually changes as a result.
+     */
+    void remove_item(int index);
+
     /** Returns the number of items currently in this list. */
     int get_item_count() const { return static_cast<int>(_rows.size()); }
 
@@ -167,6 +179,7 @@ class ListBox::Row
     , public HasBackground
     , public HasCheckedState
 {
+    friend class ListBox;
 
 public:
     Row(const ListBox& owner, int index)
@@ -232,6 +245,19 @@ protected:
 
 
 private:
+
+    // #############################################################################
+    // Backend Interface (ListBox)
+    // #############################################################################
+
+    /**
+     * Re-numbers this row after some earlier row was removed (see
+     * ListBox::remove_item()): only the owning list ever has a reason to shift a
+     * row's index like this, after the fact, behind its own back.
+     */
+    void _set_index(int index) { _index = index; }
+
+
 
     // #############################################################################
     // Attributes

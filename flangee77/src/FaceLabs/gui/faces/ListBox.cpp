@@ -45,6 +45,42 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     /**
+     * Removes (and destroys, along with its content Face) the item at the
+     * specified index; an out-of-range index is ignored. Every later item's own
+     * index shifts down by one to match. If the removed item was the currently
+     * selected one, the selection is cleared (-1) rather than jumping to whatever
+     * item now happens to occupy its old position; a selected item at a later
+     * index just keeps tracking the same (still selected) item, re-numbered down
+     * by one. Either way, get_selection_changed() only fires if the index this
+     * list reports actually changes as a result.
+     */
+    void ListBox::remove_item(int index)
+    {
+        if (index < 0 || index >= get_item_count())
+            return;
+
+        _row_area.remove_child(*_rows[index]);
+        _rows.erase(_rows.begin() + index);
+
+        for (std::size_t i = index; i < _rows.size(); ++i)
+            _rows[i]->_set_index(static_cast<int>(i));
+
+        int new_selected_index = _selected_index;
+        if (_selected_index == index)
+            new_selected_index = -1;
+        else if (_selected_index > index)
+            new_selected_index -= 1;
+
+        _relayout_rows();
+
+        if (new_selected_index != _selected_index)
+        {
+            _selected_index = new_selected_index;
+            _selection_changed.emit(_selected_index);
+        }
+    }
+
+    /**
      * Sets the currently selected item by index, or -1 to select none, unless
      * already at that index. An out-of-range index (besides -1) is ignored. Emits
      * get_selection_changed() (with the new index) when actually changed.
