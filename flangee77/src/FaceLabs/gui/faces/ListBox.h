@@ -22,16 +22,17 @@ namespace fl7::gui::faces {
 /**
  * A scrollable, vertically stacked list of arbitrary rows (see add_item()), each
  * wrapping one caller-supplied Face, with single-select-by-click/arrow-keys built
- * in (see get_selected_index()/set_selected_index()). Internally just a themed
- * ("list_box") ScrollPanel (see Panel) with its vertical scrolling reused wholesale
- * and its horizontal scrolling permanently disabled/hidden (rows always span the
- * full available width). Each row (see Row, themed "list_box_row") is purely a
- * disabled decoration around its own content Face; hit-testing/selection/keyboard
- * navigation is instead handled by a single RowArea spanning all rows at once (see
- * RowArea), both on the content Face's behalf (clicking anywhere in a row, its
- * disabled content included, selects that row) and so the whole list has one
- * coherent focused face for arrow-key navigation, rather than each (otherwise
- * disabled) row needing to be its own focusable Control.
+ * in (see get_selected_index()/set_selected_index()), Ctrl-clicking the selected
+ * row to clear the selection included. Internally just a themed ("list_box")
+ * ScrollPanel (see Panel) with its vertical scrolling reused wholesale and its
+ * horizontal scrolling permanently disabled/hidden (rows always span the full
+ * available width). Each row (see Row, themed "list_box_row") is purely a disabled
+ * decoration around its own content Face; hit-testing/selection/keyboard navigation
+ * is instead handled by a single RowArea spanning all rows at once (see RowArea),
+ * both on the content Face's behalf (clicking anywhere in a row, its disabled
+ * content included, selects that row) and so the whole list has one coherent
+ * focused face for arrow-key navigation, rather than each (otherwise disabled) row
+ * needing to be its own focusable Control.
  *
  * No removal is supported yet (the underlying Collection itself doesn't support
  * removing a child either, see Collection).
@@ -305,50 +306,30 @@ protected:
     /**
      * Selects whichever row the click's (local) vertical position falls into, if
      * any (an out-of-range index, e.g. a click below the last row, is silently
-     * ignored, see set_selected_index()).
+     * ignored, see set_selected_index()). Ctrl-clicking the already-selected row
+     * clears the selection instead (see _is_ctrl_down()).
      */
-    void _on_mouse_down(xl7::input::MouseButton button, ml7::Vector2f local_position) override
-    {
-        _owner.set_selected_index(static_cast<int>(local_position.y / _owner.get_row_height()));
-    }
+    void _on_mouse_down(xl7::input::MouseButton button, ml7::Vector2f local_position) override;
 
     /**
      * Up/Down move the selection by one row; Home/End jump to the first/last row.
      */
-    void _on_key_down(xl7::input::Key key) override
-    {
-        using xl7::input::Key;
-
-        const int count = _owner.get_item_count();
-        if (count == 0)
-            return;
-
-        switch (key)
-        {
-        case Key::Up:
-            _owner.set_selected_index(std::max(0, _owner.get_selected_index() - 1));
-            break;
-
-        case Key::Down:
-            _owner.set_selected_index(std::min(count - 1, _owner.get_selected_index() + 1));
-            break;
-
-        case Key::Home:
-            _owner.set_selected_index(0);
-            break;
-
-        case Key::End:
-            _owner.set_selected_index(count - 1);
-            break;
-
-        default:
-            break;
-        }
-    }
+    void _on_key_down(xl7::input::Key key) override;
 
 
 
 private:
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Returns whether either Control key is currently held.
+     */
+    bool _is_ctrl_down() const;
+
+
 
     // #############################################################################
     // Attributes

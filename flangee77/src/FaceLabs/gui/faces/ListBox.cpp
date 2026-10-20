@@ -1,6 +1,9 @@
 #include "ListBox.h"
 
-#include <cassert>
+#include "../Shell.h"
+
+#include <XiaoLabs/input/Keyboard.h>
+
 #include <cstddef>
 
 
@@ -161,6 +164,78 @@ namespace fl7::gui::faces {
             _rows[i]->set_position({0.0f, static_cast<float>(i) * _row_height});
             _rows[i]->set_size({width, _row_height});
         }
+    }
+
+
+
+    // #############################################################################
+    // ListBox::RowArea
+    // #############################################################################
+
+    /**
+     * Selects whichever row the click's (local) vertical position falls into, if
+     * any (an out-of-range index, e.g. a click below the last row, is silently
+     * ignored, see set_selected_index()). Ctrl-clicking the already-selected row
+     * clears the selection instead (see _is_ctrl_down()).
+     */
+    void ListBox::RowArea::_on_mouse_down(xl7::input::MouseButton button, ml7::Vector2f local_position)
+    {
+        const int index = static_cast<int>(local_position.y / _owner.get_row_height());
+
+        if (_is_ctrl_down() && index == _owner.get_selected_index())
+        {
+            _owner.set_selected_index(-1);
+            return;
+        }
+
+        _owner.set_selected_index(index);
+    }
+
+    /**
+     * Up/Down move the selection by one row; Home/End jump to the first/last row.
+     */
+    void ListBox::RowArea::_on_key_down(xl7::input::Key key)
+    {
+        using xl7::input::Key;
+
+        const int count = _owner.get_item_count();
+        if (count == 0)
+            return;
+
+        switch (key)
+        {
+        case Key::Up:
+            _owner.set_selected_index(std::max(0, _owner.get_selected_index() - 1));
+            break;
+
+        case Key::Down:
+            _owner.set_selected_index(std::min(count - 1, _owner.get_selected_index() + 1));
+            break;
+
+        case Key::Home:
+            _owner.set_selected_index(0);
+            break;
+
+        case Key::End:
+            _owner.set_selected_index(count - 1);
+            break;
+
+        default:
+            break;
+        }
+    }
+
+    /**
+     * Returns whether either Control key is currently held.
+     */
+    bool ListBox::RowArea::_is_ctrl_down() const
+    {
+        const Shell* shell = get_shell();
+        const xl7::input::Keyboard* keyboard = shell ? shell->get_keyboard() : nullptr;
+        if (!keyboard)
+            return false;
+
+        return keyboard->is_key_down(xl7::input::Key::LeftControl) || keyboard->is_key_down(xl7::input::Key::RightControl);
     }
 
 
