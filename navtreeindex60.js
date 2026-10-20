@@ -1,5 +1,7 @@
 var NAVTREEINDEX60 =
 {
+"dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a6f7dd1fa58afba02a77b4432bf3d12e9":[5,0,3,1,0,2,19],
+"dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a6f7dd1fa58afba02a77b4432bf3d12e9":[7,0,3,1,0,2,19],
 "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a8b41dd0cca486369e346baa52b4e89af":[7,0,3,1,0,2,11],
 "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a8b41dd0cca486369e346baa52b4e89af":[5,0,3,1,0,2,11],
 "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a9ec4897629eb4fb86bcaf1ce99a37c58":[7,0,3,1,0,2,21],
@@ -247,7 +249,5 @@ var NAVTREEINDEX60 =
 "dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#a9f2b3fcdc20ce8a0eee73c51d79807ca":[7,0,2,4,26,6],
 "dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#aa90e32d42e170fcad12c4981a2dbadd2":[7,0,2,4,26,0],
 "dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#aa90e32d42e170fcad12c4981a2dbadd2":[5,0,2,4,26,0],
-"dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#acc65410c0ad592f808a8b14577ecf552":[5,0,2,4,26,8],
-"dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#acc65410c0ad592f808a8b14577ecf552":[7,0,2,4,26,8],
-"dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#ad0a1408ac4bbcc021311403d3274d7d2":[5,0,2,4,26,4]
+"dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html#acc65410c0ad592f808a8b14577ecf552":[5,0,2,4,26,8]
 };

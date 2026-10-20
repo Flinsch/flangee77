@@ -1,5 +1,7 @@
 var NAVTREEINDEX54 =
 {
+"db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a8f4c74578dc3bcf592fae07f6508a6eb":[5,0,8,2,1,0,8,27],
+"db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#a8f4c74578dc3bcf592fae07f6508a6eb":[7,0,8,1,1,0,6,27],
 "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#aa432f289ce5d2900697f188531175a6f":[7,0,8,1,1,0,6,21],
 "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#aa432f289ce5d2900697f188531175a6f":[5,0,8,2,1,0,8,21],
 "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html#aadcf9ebe106dd24a92dfc95c3eee8756":[5,0,8,2,1,0,8,7],
@@ -247,7 +249,5 @@ var NAVTREEINDEX54 =
 "db/d5c/structml7_1_1CubicBezier2.html#a360820d1df4de82dc03622b627e67c1c":[5,0,4,6,8],
 "db/d5c/structml7_1_1CubicBezier2.html#a43742907440df27b90e240ef946840ba":[5,0,4,6,9],
 "db/d5c/structml7_1_1CubicBezier2.html#a43742907440df27b90e240ef946840ba":[7,0,4,6,9],
-"db/d5c/structml7_1_1CubicBezier2.html#a56f324e045123dbf4a539154e4b3095b":[7,0,4,6,12],
-"db/d5c/structml7_1_1CubicBezier2.html#a56f324e045123dbf4a539154e4b3095b":[5,0,4,6,12],
-"db/d5c/structml7_1_1CubicBezier2.html#a663fabca12edbc475d775f8963889dd1":[5,0,4,6,17]
+"db/d5c/structml7_1_1CubicBezier2.html#a56f324e045123dbf4a539154e4b3095b":[7,0,4,6,12]
 };

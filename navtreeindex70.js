@@ -1,5 +1,7 @@
 var NAVTREEINDEX70 =
 {
+"de/d48/direct3d9_2ResourceFactoryImpl_8h.html":[8,0,7,1,1,1,16],
+"de/d48/direct3d9_2ResourceFactoryImpl_8h_source.html":[8,0,7,1,1,1,16],
 "de/d49/BlockScalarHeaderMatcher_8cpp.html":[8,0,2,7,0,2],
 "de/d49/platform_2detail_2windows_2memory_8h.html":[8,0,1,5,0,1,5],
 "de/d49/platform_2detail_2windows_2memory_8h_source.html":[8,0,1,5,0,1,5],
@@ -247,7 +249,5 @@ var NAVTREEINDEX70 =
 "de/d99/root_8h.html#a2164f8df654a9999a4049460f990963e":[8,0,1,30,10],
 "de/d99/root_8h.html#a26ca26f8711cd4acf6c2c135bf82903c":[8,0,1,30,8],
 "de/d99/root_8h.html#a317fe8db7965afd4fc1ffa0e18c69343":[8,0,1,30,6],
-"de/d99/root_8h.html#a458aa886688ee82825409e855d418840":[8,0,1,30,12],
-"de/d99/root_8h.html#a8287c9da589774d883bffb983070fc1d":[8,0,1,30,13],
-"de/d99/root_8h.html#a9301916f6c8ae438b0cf7c6769b34128":[8,0,1,30,14]
+"de/d99/root_8h.html#a458aa886688ee82825409e855d418840":[8,0,1,30,12]
 };

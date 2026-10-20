@@ -1,5 +1,7 @@
 var NAVTREEINDEX77 =
 {
+"df/dcd/GameControllerButton_8h.html#a777a3fd099c5613d4762ba50984327b3a27a5390f2d1b44a43f74d57703f8d354":[8,0,7,2,7,0,9],
+"df/dcd/GameControllerButton_8h.html#a777a3fd099c5613d4762ba50984327b3a2cd349073c4937c593353ffe98956c58":[8,0,7,2,7,0,6],
 "df/dcd/GameControllerButton_8h.html#a777a3fd099c5613d4762ba50984327b3a36131cbdc50218d923d0bcb0d9870e1c":[8,0,7,2,7,0,8],
 "df/dcd/GameControllerButton_8h.html#a777a3fd099c5613d4762ba50984327b3a4905ac9d6a22bdfc1ae096094ce6248d":[8,0,7,2,7,0,14],
 "df/dcd/GameControllerButton_8h.html#a777a3fd099c5613d4762ba50984327b3a57cec4137b614c87cb4e24a3d003a3e0":[8,0,7,2,7,0,13],
@@ -247,7 +249,5 @@ var NAVTREEINDEX77 =
 "dir_0fb2430b4ff2cc1cb99f7194282e1f85.html":[8,0,7,1,3],
 "dir_1379f66c393469df3fcb02ac10ebc5f9.html":[8,0,1,2],
 "dir_1bcd4cbc1faa6136b9d1a84552b275f8.html":[8,0,2,5,0],
-"dir_1cf188171c45f0e0752409671218a2e8.html":[8,0,2,3,1],
-"dir_1f313f182193c08b56ad7fac433077e3.html":[8,0,1,3],
-"dir_213924d5919fc1df6353038a0fc88323.html":[8,0,2,7,0]
+"dir_1cf188171c45f0e0752409671218a2e8.html":[8,0,2,3,1]
 };

@@ -94,6 +94,7 @@ $(document).ready(function(){initNavTree('d4/d24/classfl7_1_1gui_1_1faces_1_1Lis
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../d2/de7/classfl7_1_1gui_1_1faces_1_1ListBox_1_1RowArea-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">fl7::gui::faces::ListBox::RowArea Class Reference</div></div>
@@ -336,6 +337,11 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
 <tr class="memitem:a82e5252051e560e082f90c5bf235da4b inherit pro_methods_classfl7_1_1gui_1_1Face" id="r_a82e5252051e560e082f90c5bf235da4b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a82e5252051e560e082f90c5bf235da4b">_on_text_input</a> (const <a class="el" href="../../d1/d2e/namespacecl7.html#a34e3c57061a467049da30df1c7fe8fb1">cl7::u32string</a> &amp;text)</td></tr>
 <tr class="separator:a82e5252051e560e082f90c5bf235da4b inherit pro_methods_classfl7_1_1gui_1_1Face"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a6f06dc9be8cca3e2f9a149739f71500a" id="r_a6f06dc9be8cca3e2f9a149739f71500a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d24/classfl7_1_1gui_1_1faces_1_1ListBox_1_1RowArea.html#a6f06dc9be8cca3e2f9a149739f71500a">_is_ctrl_down</a> () const</td></tr>
+<tr class="separator:a6f06dc9be8cca3e2f9a149739f71500a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:af76da403c91e539544dcde8d9bb10d21" id="r_af76da403c91e539544dcde8d9bb10d21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d18/classfl7_1_1gui_1_1faces_1_1ListBox.html">ListBox</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d24/classfl7_1_1gui_1_1faces_1_1ListBox_1_1RowArea.html#af76da403c91e539544dcde8d9bb10d21">_owner</a></td></tr>
@@ -371,6 +377,32 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6f06dc9be8cca3e2f9a149739f71500a" name="a6f06dc9be8cca3e2f9a149739f71500a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f06dc9be8cca3e2f9a149739f71500a">&#9670;&#160;</a></span>_is_ctrl_down()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fl7::gui::faces::ListBox::RowArea::_is_ctrl_down </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns whether either <a class="el" href="../../df/d2b/classfl7_1_1gui_1_1Control.html">Control</a> key is currently held. </p>
+
+</div>
+</div>
 <a id="ab8c19362109f78b3a840253e6d5cd082" name="ab8c19362109f78b3a840253e6d5cd082"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab8c19362109f78b3a840253e6d5cd082">&#9670;&#160;</a></span>_on_key_down()</h2>
 
@@ -390,7 +422,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -429,11 +461,11 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Selects whichever row the click's (local) vertical position falls into, if any (an out-of-range index, e.g. a click below the last row, is silently ignored, see <a class="el" href="../../d6/d18/classfl7_1_1gui_1_1faces_1_1ListBox.html#a755334e68712a7637dddc4bd8f9450ef">set_selected_index()</a>). </p>
+<p>Selects whichever row the click's (local) vertical position falls into, if any (an out-of-range index, e.g. a click below the last row, is silently ignored, see <a class="el" href="../../d6/d18/classfl7_1_1gui_1_1faces_1_1ListBox.html#a755334e68712a7637dddc4bd8f9450ef">set_selected_index()</a>). Ctrl-clicking the already-selected row clears the selection instead (see <a class="el" href="../../d4/d24/classfl7_1_1gui_1_1faces_1_1ListBox_1_1RowArea.html#a6f06dc9be8cca3e2f9a149739f71500a">_is_ctrl_down()</a>). </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#af169922cd19e4a90bed5190cd8d69943">fl7::gui::Face</a>.</p>
 
@@ -462,8 +494,9 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>FaceLabs/gui/faces/<a class="el" href="../../d3/d7a/ListBox_8h_source.html">ListBox.h</a></li>
+<li>FaceLabs/gui/faces/<a class="el" href="../../dd/dc1/ListBox_8cpp.html">ListBox.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
