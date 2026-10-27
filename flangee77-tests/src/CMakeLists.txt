@@ -56,6 +56,8 @@ target_sources(flangee77-tests
     FaceLabs/fonts/raster/scratch_inspect.cpp
     FaceLabs/fonts/render/Markup.cpp
 
+    FaceLabs/gui/faces/Button.cpp
+
 
     MathLabs/functions.cpp
     MathLabs/ops.cpp
