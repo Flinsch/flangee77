@@ -102,6 +102,12 @@ namespace f77_tests::gui {
             InputFeeder::_apply_keyboard(keyboard, _key_levels, U"", std::chrono::steady_clock::now());
         }
 
+        /** Feeds this frame's mouse wheel movement (one notch/detent is 1), leaving every button and the cursor position as they were. */
+        void scroll_wheel(int delta)
+        {
+            InputFeeder::_apply_mouse(mouse, _button_levels, 0, 0, delta, std::chrono::steady_clock::now());
+        }
+
     private:
         std::array<bool, static_cast<size_t>(xl7::input::MouseButton::COUNT)> _button_levels{};
         std::array<bool, static_cast<size_t>(xl7::input::Key::COUNT)> _key_levels{};
