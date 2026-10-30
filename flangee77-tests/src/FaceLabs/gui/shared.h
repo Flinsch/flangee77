@@ -86,6 +86,13 @@ namespace f77_tests::gui {
         void move_mouse_to(ml7::Vector2f position)
         {
             InputFeeder::_apply_mouse_cursor_position(mouse, static_cast<int>(position.x), static_cast<int>(position.y));
+
+            // Re-feed the (unchanged) button levels too, same as a real backend
+            // would every frame: without this, a button's one-frame "pressed"
+            // edge never ages to "held" across a move-only update, so a later
+            // Shell::update() call still sees is_button_pressed() == true and
+            // spuriously re-dispatches _on_mouse_down() at the new position.
+            InputFeeder::_apply_mouse(mouse, _button_levels, 0, 0, 0, std::chrono::steady_clock::now());
         }
 
         /** Sets whether the specified mouse button is currently held, leaving the cursor position as it was. */
