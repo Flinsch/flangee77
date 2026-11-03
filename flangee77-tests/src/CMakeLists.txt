@@ -57,6 +57,7 @@ target_sources(flangee77-tests
     FaceLabs/fonts/render/Markup.cpp
 
     FaceLabs/gui/Face.cpp
+    FaceLabs/gui/RadioGroup.cpp
     FaceLabs/gui/Shell.cpp
     FaceLabs/gui/Theme.cpp
     FaceLabs/gui/faces/Button.cpp
