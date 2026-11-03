@@ -56,7 +56,9 @@ target_sources(flangee77-tests
     FaceLabs/fonts/raster/scratch_inspect.cpp
     FaceLabs/fonts/render/Markup.cpp
 
+    FaceLabs/gui/Face.cpp
     FaceLabs/gui/Shell.cpp
+    FaceLabs/gui/Theme.cpp
     FaceLabs/gui/faces/Button.cpp
     FaceLabs/gui/faces/CheckBox.cpp
     FaceLabs/gui/faces/Frame.cpp
