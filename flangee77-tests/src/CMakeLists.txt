@@ -56,6 +56,7 @@ target_sources(flangee77-tests
     FaceLabs/fonts/raster/scratch_inspect.cpp
     FaceLabs/fonts/render/Markup.cpp
 
+    FaceLabs/gui/Container.cpp
     FaceLabs/gui/Face.cpp
     FaceLabs/gui/RadioGroup.cpp
     FaceLabs/gui/Shell.cpp
