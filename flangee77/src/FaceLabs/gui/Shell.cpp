@@ -1,6 +1,7 @@
 #include "Shell.h"
 
 #include <algorithm>
+#include <iterator>
 
 
 
@@ -78,6 +79,19 @@ namespace fl7::gui {
 
         if (_mouse->is_button_pressed(MouseButton::Left))
         {
+            // Raises whichever top-level face was actually hit (if any) to the
+            // front of _top_level_faces, same as any other GUI bringing a
+            // clicked-into window to the front of a stack of overlapping ones.
+            // Affects only the NEXT hit-test (see above, already done for this
+            // very frame), never this frame's own hover/press/focus.
+            if (_hovered_face)
+            {
+                Face* top_level = _hovered_face;
+                while (top_level->get_parent())
+                    top_level = top_level->get_parent();
+                _bring_to_front(top_level);
+            }
+
             // Also runs when _hovered_face is null (click on empty space): that's
             // precisely what has to clear a stale focus (e.g., a focused TextField
             // losing its caret again once you click away from it).
@@ -299,6 +313,27 @@ namespace fl7::gui {
     // #############################################################################
     // Helpers
     // #############################################################################
+
+    /**
+     * Moves the specified top-level face (which must actually currently be one) to
+     * the back of _top_level_faces, i.e., the front of the Z-order (see update(),
+     * hit-tested/drawn last, same as a newly added one would be): the usual "bring
+     * the clicked-into window to the front" behavior. A no-op if it's already there.
+     */
+    void Shell::_bring_to_front(Face* top_level)
+    {
+        const auto it = std::ranges::find_if(_top_level_faces, [top_level](const std::unique_ptr<Face>& face) {
+            return face.get() == top_level;
+        });
+        assert(it != _top_level_faces.end());
+
+        if (it == std::prev(_top_level_faces.end()))
+            return; // Already at the front.
+
+        std::unique_ptr<Face> moved = std::move(*it);
+        _top_level_faces.erase(it);
+        _top_level_faces.push_back(std::move(moved));
+    }
 
     /**
      * Moves focus to the next (or, if `backward`, previous) Tab stop (see

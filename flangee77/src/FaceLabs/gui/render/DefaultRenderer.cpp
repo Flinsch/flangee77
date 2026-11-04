@@ -42,7 +42,20 @@ namespace fl7::gui::render {
     void DefaultRenderer::_render_faces_impl(const std::vector<std::unique_ptr<Face>>& top_level_faces)
     {
         for (const auto& face : top_level_faces)
+        {
             _render_face_recursive(*face, {});
+
+            // Flushes this top-level face's own quads and text together (see
+            // _end_frame_impl(): quads, then text on top of them) before
+            // starting the next one, so a top-level face later in Z-order
+            // paints over an earlier one's text too, not just its rects.
+            // Without this, _end_frame_impl()'s single end-of-frame flush
+            // would paint every top-level face's rects first, globally,
+            // then every one's text on top of ALL of them, regardless of
+            // which face is actually meant to be in front.
+            _end_frame_impl();
+            _begin_frame_impl();
+        }
     }
 
     void DefaultRenderer::_draw_rect_impl(ml7::Vector2f position_min, ml7::Vector2f position_max, const xl7::graphics::Color& color)

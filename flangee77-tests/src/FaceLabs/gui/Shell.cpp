@@ -81,6 +81,62 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  of two overlapping top-level faces, t
     TESTLABS_CHECK( shell.get_hovered_face() == static_cast<fl7::gui::Face*>(&front) );
 }
 
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  clicking a background top-level face brings it to the front, so it now wins the overlap too" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& back = shell.add_face<fl7::gui::faces::Panel>();
+    back.set_position({0.0f, 0.0f});
+    back.set_size({100.0f, 100.0f});
+
+    auto& front = shell.add_face<fl7::gui::faces::Panel>(); // added after back: topmost for now
+    front.set_position({50.0f, 50.0f});
+    front.set_size({100.0f, 100.0f}); // overlaps back's bottom-right quadrant, [50, 100) x [50, 100)
+
+    input.move_mouse_to({75.0f, 75.0f}); // the overlap, before any click
+    shell.update();
+    TESTLABS_CHECK( shell.get_hovered_face() == static_cast<fl7::gui::Face*>(&front) );
+
+    input.move_mouse_to({25.0f, 25.0f}); // back's own exclusive area: not currently topmost, but still hit
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+
+    input.move_mouse_to({75.0f, 75.0f}); // the overlap again: back is now in front instead
+    shell.update();
+    TESTLABS_CHECK( shell.get_hovered_face() == static_cast<fl7::gui::Face*>(&back) );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  clicking empty space (no top-level face hit) leaves the Z-order untouched" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& back = shell.add_face<fl7::gui::faces::Panel>();
+    back.set_position({0.0f, 0.0f});
+    back.set_size({100.0f, 100.0f});
+
+    auto& front = shell.add_face<fl7::gui::faces::Panel>();
+    front.set_position({50.0f, 50.0f});
+    front.set_size({100.0f, 100.0f});
+
+    input.move_mouse_to({500.0f, 500.0f}); // hits neither
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+
+    input.move_mouse_to({75.0f, 75.0f}); // the overlap: still front, unchanged
+    shell.update();
+    TESTLABS_CHECK( shell.get_hovered_face() == static_cast<fl7::gui::Face*>(&front) );
+}
+
 TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  removing a child face that's currently hovered/pressed/focused clears that state instead of leaving it dangling" )
 {
     f77_tests::gui::NullRenderer renderer;

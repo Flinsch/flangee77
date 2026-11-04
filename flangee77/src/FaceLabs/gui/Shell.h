@@ -223,6 +223,14 @@ private:
     void _focus_adjacent_tab_stop(bool backward);
 
     /**
+     * Moves the specified top-level face (which must actually currently be one) to
+     * the back of _top_level_faces, i.e., the front of the Z-order (see update(),
+     * hit-tested/drawn last, same as a newly added one would be): the usual "bring
+     * the clicked-into window to the front" behavior. A no-op if it's already there.
+     */
+    void _bring_to_front(Face* top_level);
+
+    /**
      * Returns the current top-level face: the focused face's own top-level
      * ancestor if something is currently focused, else the topmost
      * (last-added) top-level face, or `nullptr` if there are none at all.
