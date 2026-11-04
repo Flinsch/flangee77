@@ -1,5 +1,7 @@
 var NAVTREEINDEX10 =
 {
+"d2/dea/structcl7_1_1platform_1_1memory_1_1MemoryStatus.html#ad510b2dba72354a0213b8ddc654c335f":[5,0,1,8,2,0,0],
+"d2/dea/structcl7_1_1platform_1_1memory_1_1MemoryStatus.html#ad510b2dba72354a0213b8ddc654c335f":[7,0,1,6,0,0,0],
 "d2/def/namespacedl7_1_1config_1_1detail.html":[5,0,2,1,0],
 "d2/def/namespacedl7_1_1config_1_1detail.html#ab679c362248a51a6ab30f4024336e323":[5,0,2,1,0,3],
 "d2/df3/classcl7_1_1logging_1_1StandardLogger.html":[5,0,1,6,7],
@@ -247,7 +249,5 @@ var NAVTREEINDEX10 =
 "d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html#a5960023eaea07b77eb7a6fce5e46ff5b":[7,0,3,0,1,1,9],
 "d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html#a5ec1a7e8a68f01f43f7266e69a3d2e4a":[5,0,3,0,1,2,8],
 "d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html#a5ec1a7e8a68f01f43f7266e69a3d2e4a":[7,0,3,0,1,1,8],
-"d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html#a6c2abdd5a2682298ce528a89c3977999":[5,0,3,0,1,2,2],
-"d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html#a6c2abdd5a2682298ce528a89c3977999":[7,0,3,0,1,1,2],
-"d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html#a6e3114d6c362ad3ad4e319978b2decd7":[5,0,3,0,1,2,7]
+"d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html#a6c2abdd5a2682298ce528a89c3977999":[5,0,3,0,1,2,2]
 };

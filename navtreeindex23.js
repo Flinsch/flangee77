@@ -1,5 +1,7 @@
 var NAVTREEINDEX23 =
 {
+"d6/d1d/classcl7_1_1text_1_1codec_1_1Encoder.html#af93b10e428ad7479c659dad2ad6f23e4":[5,0,1,11,0,8,1],
+"d6/d1d/classcl7_1_1text_1_1codec_1_1Encoder.html#af93b10e428ad7479c659dad2ad6f23e4":[7,0,1,9,0,8,1],
 "d6/d1f/ImageResizer_8h.html":[8,0,7,1,0,16],
 "d6/d1f/ImageResizer_8h_source.html":[8,0,7,1,0,16],
 "d6/d1f/SimpleBitmapRasterizer_8h.html":[8,0,3,0,1,19],
@@ -247,7 +249,5 @@ var NAVTREEINDEX23 =
 "d6/d64/structml7_1_1Vector3.html#a0b2fb8b30628218b8ef32d9cb0282e32":[5,0,4,23,10],
 "d6/d64/structml7_1_1Vector3.html#a0b2fb8b30628218b8ef32d9cb0282e32":[7,0,4,23,10],
 "d6/d64/structml7_1_1Vector3.html#a0df8f7dbf484d4542a4ed8c20a36f87d":[5,0,4,23,16],
-"d6/d64/structml7_1_1Vector3.html#a0df8f7dbf484d4542a4ed8c20a36f87d":[7,0,4,23,16],
-"d6/d64/structml7_1_1Vector3.html#a0ec2667b756935bdc3aede1e9c06afba":[5,0,4,23,3],
-"d6/d64/structml7_1_1Vector3.html#a0ec2667b756935bdc3aede1e9c06afba":[7,0,4,23,3]
+"d6/d64/structml7_1_1Vector3.html#a0df8f7dbf484d4542a4ed8c20a36f87d":[7,0,4,23,16]
 };

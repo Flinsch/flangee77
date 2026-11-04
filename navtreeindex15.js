@@ -1,5 +1,7 @@
 var NAVTREEINDEX15 =
 {
+"d3/dee/classxl7_1_1input_1_1Mouse.html#a6005980d3e862435b001307f7ea2fe70":[5,0,8,3,6,5],
+"d3/dee/classxl7_1_1input_1_1Mouse.html#a6005980d3e862435b001307f7ea2fe70":[7,0,8,2,6,5],
 "d3/dee/classxl7_1_1input_1_1Mouse.html#a6fa2ec4be9509c955ed45d807dd00d18":[5,0,8,3,6,10],
 "d3/dee/classxl7_1_1input_1_1Mouse.html#a6fa2ec4be9509c955ed45d807dd00d18":[7,0,8,2,6,10],
 "d3/dee/classxl7_1_1input_1_1Mouse.html#a825155022a2ecaa79db6f5a224dbfbc3":[5,0,8,3,6,12],
@@ -247,7 +249,5 @@ var NAVTREEINDEX15 =
 "d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html#a0796fa9694df412ee905710d57f0fead":[5,0,3,0,1,11,3],
 "d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html#a0796fa9694df412ee905710d57f0fead":[7,0,3,0,1,10,3],
 "d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html#a67e5010b9a0bfadc37c061d390e65594":[5,0,3,0,1,11,2],
-"d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html#a67e5010b9a0bfadc37c061d390e65594":[7,0,3,0,1,10,2],
-"d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html#a76ffafce5e0772650090bc34de2a1795":[5,0,3,0,1,11,4],
-"d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html#a76ffafce5e0772650090bc34de2a1795":[7,0,3,0,1,10,4]
+"d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html#a67e5010b9a0bfadc37c061d390e65594":[7,0,3,0,1,10,2]
 };

@@ -1,5 +1,17 @@
 var NAVTREEINDEX48 =
 {
+"da/d58/namespacefl7_1_1gui_1_1faces.html":[5,0,3,1,0],
+"da/d59/iterators_8h.html":[8,0,1,22],
+"da/d59/iterators_8h_source.html":[8,0,1,22],
+"da/d5f/WhitespaceHandling_8h.html":[8,0,2,6,13],
+"da/d5f/WhitespaceHandling_8h_source.html":[8,0,2,6,13],
+"da/d60/namespacexl7_1_1resources.html":[5,0,8,4],
+"da/d60/namespacexl7_1_1resources.html#a2a82b69f0c85cc06fac456015704059f":[5,0,8,4,8],
+"da/d60/namespacexl7_1_1resources.html#a89e3c351433cf920159891a761e0ece0":[5,0,8,4,9],
+"da/d60/namespacexl7_1_1resources.html#ad6a5b0064fd8b4430d4a4b2135f3f432":[5,0,8,4,10],
+"da/d61/TextureExtent_8h.html":[8,0,7,1,7,34],
+"da/d61/TextureExtent_8h_source.html":[8,0,7,1,7,34],
+"da/d65/MsdfRenderer_8h.html":[8,0,3,0,2,9],
 "da/d65/MsdfRenderer_8h_source.html":[8,0,3,0,2,9],
 "da/d66/Registry_8h.html":[8,0,1,6,3],
 "da/d66/Registry_8h_source.html":[8,0,1,6,3],
@@ -237,17 +249,5 @@ var NAVTREEINDEX48 =
 "da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#a7d7a0fd1f31f6fb394dcd1ecc3e18eba":[7,0,8,1,1,1,4,6],
 "da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#a9104fc0d1ba75d298155dbf5e0800c8d":[5,0,8,2,1,1,6,3],
 "da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#a9104fc0d1ba75d298155dbf5e0800c8d":[7,0,8,1,1,1,4,3],
-"da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#ab29d8e726e3f6ac520bf832b9294ceb1":[5,0,8,2,1,1,6,2],
-"da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#ab29d8e726e3f6ac520bf832b9294ceb1":[7,0,8,1,1,1,4,2],
-"da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#ab996c70c4c935775c71644d97457507e":[5,0,8,2,1,1,6,16],
-"da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#ab996c70c4c935775c71644d97457507e":[7,0,8,1,1,1,4,16],
-"da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#abe1724439c5a6305be0340152af329c0":[5,0,8,2,1,1,6,5],
-"da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#abe1724439c5a6305be0340152af329c0":[7,0,8,1,1,1,4,5],
-"da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#add1be7d065e8bde0510108ed4348f56c":[5,0,8,2,1,1,6,1],
-"da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#add1be7d065e8bde0510108ed4348f56c":[7,0,8,1,1,1,4,1],
-"da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#ae60f07bcebf62f932591d91a055a280b":[5,0,8,2,1,1,6,17],
-"da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#ae60f07bcebf62f932591d91a055a280b":[7,0,8,1,1,1,4,17],
-"da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#aeaa4c4fc43f3dc9dd0a00521572bdaf8":[5,0,8,2,1,1,6,8],
-"da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#aeaa4c4fc43f3dc9dd0a00521572bdaf8":[7,0,8,1,1,1,4,8],
-"da/d9f/Rect_8cpp.html":[8,0,0,1,10]
+"da/d9e/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1GraphicsSystemImpl.html#ab29d8e726e3f6ac520bf832b9294ceb1":[5,0,8,2,1,1,6,2]
 };

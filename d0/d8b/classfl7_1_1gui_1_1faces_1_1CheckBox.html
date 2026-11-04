@@ -238,6 +238,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a99ec6bba07847d16f7f875f5ed4bc764" id="r_a99ec6bba07847d16f7f875f5ed4bc764"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99ec6bba07847d16f7f875f5ed4bc764">_on_size_changed</a> (<a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> old_size, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> new_size) override</td></tr>
 <tr class="memitem:a411f8ebdd148252b5562821f4e72068a" id="r_a411f8ebdd148252b5562821f4e72068a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a411f8ebdd148252b5562821f4e72068a">_on_click</a> (<a class="el" href="../../df/d6d/namespacexl7_1_1input.html#af127a0043707f93517660a1c78ff4150">xl7::input::MouseButton</a> button) override</td></tr>
 <tr class="memitem:a7c1278c1a11c23b6ed2811198b5f0ec9" id="r_a7c1278c1a11c23b6ed2811198b5f0ec9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c1278c1a11c23b6ed2811198b5f0ec9">_is_focusable</a> () const override</td></tr>
+<tr class="memitem:a5f39af22720b163f18fff322b4ba6b64" id="r_a5f39af22720b163f18fff322b4ba6b64"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f39af22720b163f18fff322b4ba6b64">_is_clickable</a> () const override</td></tr>
 <tr class="inherit_header pro_methods_classfl7_1_1gui_1_1Collection"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classfl7_1_1gui_1_1Collection')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Member Functions inherited from <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">fl7::gui::Collection</a></td></tr>
 <tr class="memitem:a9b6bb179d97f1379ce9dcd028d76db00 inherit pro_methods_classfl7_1_1gui_1_1Collection" id="r_a9b6bb179d97f1379ce9dcd028d76db00"><td class="memTemplParams" colspan="2">template&lt;class TFace, class... Args&gt; <br />
 requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a68379e6145f7bf633a848b627a577e89">Face</a>&gt;)</td></tr>
@@ -378,6 +379,34 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a5f39af22720b163f18fff322b4ba6b64" name="a5f39af22720b163f18fff322b4ba6b64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f39af22720b163f18fff322b4ba6b64">&#9670;&#160;</a></span>_is_clickable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fl7::gui::faces::CheckBox::_is_clickable </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>A <a class="el" href="../../d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html">CheckBox</a>'s <a class="el" href="#a411f8ebdd148252b5562821f4e72068a">_on_click()</a> meaningfully does something, so Enter/Space (or a gamepad's "confirm" button) can activate it while focused. </p>
+
+<p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a580e43c600b09842f7eea72489327692">fl7::gui::Face</a>.</p>
+
+</div>
+</div>
 <a id="a7c1278c1a11c23b6ed2811198b5f0ec9" name="a7c1278c1a11c23b6ed2811198b5f0ec9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c1278c1a11c23b6ed2811198b5f0ec9">&#9670;&#160;</a></span>_is_focusable()</h2>
 

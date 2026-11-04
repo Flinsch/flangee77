@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"d1/da7/UpdatableResource_8h.html":[8,0,7,3,10],
+"d1/da7/UpdatableResource_8h_source.html":[8,0,7,3,10],
 "d1/daf/compression_8h.html":[8,0,2,13],
 "d1/daf/compression_8h_source.html":[8,0,2,13],
 "d1/daf/namespacexl7_1_1audio.html":[5,0,8,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX5 =
 "d1/df9/AbstractPipelineObject_8h.html#ad666dc7b6dad412550fe3172dcc2da73":[8,0,7,1,3,0,7],
 "d1/df9/AbstractPipelineObject_8h_source.html":[8,0,7,1,3,0],
 "d1/df9/direct3d11_2shaders_2ConstantBufferImpl_8h.html":[8,0,7,1,1,0,1,1],
-"d1/df9/direct3d11_2shaders_2ConstantBufferImpl_8h_source.html":[8,0,7,1,1,0,1,1],
-"d1/dfc/ChunkWriter_8h.html":[8,0,7,1,0,0,1,3],
-"d1/dfc/ChunkWriter_8h_source.html":[8,0,7,1,0,0,1,3]
+"d1/df9/direct3d11_2shaders_2ConstantBufferImpl_8h_source.html":[8,0,7,1,1,0,1,1]
 };

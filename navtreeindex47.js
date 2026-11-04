@@ -1,5 +1,17 @@
 var NAVTREEINDEX47 =
 {
+"da/d48/classdl7_1_1ini_1_1Ini.html#ad2b9a9a07e404c08d320002ba2fd4c1d":[5,0,2,2,2,11],
+"da/d48/classdl7_1_1ini_1_1Ini.html#ad2b9a9a07e404c08d320002ba2fd4c1d":[7,0,2,2,2,11],
+"da/d48/classdl7_1_1ini_1_1Ini.html#ae0af529144b9908a692adb36f32bef40":[5,0,2,2,2,1],
+"da/d48/classdl7_1_1ini_1_1Ini.html#ae0af529144b9908a692adb36f32bef40":[7,0,2,2,2,1],
+"da/d48/classdl7_1_1ini_1_1Ini.html#af57de3b4e2b4b86ad6c306155fffd008":[5,0,2,2,2,7],
+"da/d48/classdl7_1_1ini_1_1Ini.html#af57de3b4e2b4b86ad6c306155fffd008":[7,0,2,2,2,7],
+"da/d48/classdl7_1_1ini_1_1Ini.html#afbe95cd27a7a27a623a5dc46d51455de":[5,0,2,2,2,0],
+"da/d48/classdl7_1_1ini_1_1Ini.html#afbe95cd27a7a27a623a5dc46d51455de":[7,0,2,2,2,0],
+"da/d4c/structml7_1_1Matrix2x3.html":[5,0,4,13],
+"da/d4c/structml7_1_1Matrix2x3.html":[7,0,4,13],
+"da/d4c/structml7_1_1Matrix2x3.html#a010e97fb326eefa1fd08af34db275b18":[5,0,4,13,7],
+"da/d4c/structml7_1_1Matrix2x3.html#a010e97fb326eefa1fd08af34db275b18":[7,0,4,13,7],
 "da/d4c/structml7_1_1Matrix2x3.html#a04e53761bfdff8f591bf4f26654b2d22":[5,0,4,13,33],
 "da/d4c/structml7_1_1Matrix2x3.html#a04e53761bfdff8f591bf4f26654b2d22":[7,0,4,13,33],
 "da/d4c/structml7_1_1Matrix2x3.html#a05b56de96568b8fdd488d9bbfabb3a41":[5,0,4,13,9],
@@ -237,17 +249,5 @@ var NAVTREEINDEX47 =
 "da/d4e/classcl7_1_1static__vector.html#aff43ff722bbd908cc6ff11f0a911795a":[5,0,1,19,38],
 "da/d4e/classcl7_1_1static__vector.html#aff43ff722bbd908cc6ff11f0a911795a":[7,0,1,17,38],
 "da/d51/Surface_8h.html":[8,0,7,1,6,8],
-"da/d51/Surface_8h_source.html":[8,0,7,1,6,8],
-"da/d58/namespacefl7_1_1gui_1_1faces.html":[5,0,3,1,0],
-"da/d59/iterators_8h.html":[8,0,1,22],
-"da/d59/iterators_8h_source.html":[8,0,1,22],
-"da/d5f/WhitespaceHandling_8h.html":[8,0,2,6,13],
-"da/d5f/WhitespaceHandling_8h_source.html":[8,0,2,6,13],
-"da/d60/namespacexl7_1_1resources.html":[5,0,8,4],
-"da/d60/namespacexl7_1_1resources.html#a2a82b69f0c85cc06fac456015704059f":[5,0,8,4,8],
-"da/d60/namespacexl7_1_1resources.html#a89e3c351433cf920159891a761e0ece0":[5,0,8,4,9],
-"da/d60/namespacexl7_1_1resources.html#ad6a5b0064fd8b4430d4a4b2135f3f432":[5,0,8,4,10],
-"da/d61/TextureExtent_8h.html":[8,0,7,1,7,34],
-"da/d61/TextureExtent_8h_source.html":[8,0,7,1,7,34],
-"da/d65/MsdfRenderer_8h.html":[8,0,3,0,2,9]
+"da/d51/Surface_8h_source.html":[8,0,7,1,6,8]
 };

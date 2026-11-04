@@ -241,6 +241,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a32525763fcf730d8b67a6974d2f06d4e" id="r_a32525763fcf730d8b67a6974d2f06d4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32525763fcf730d8b67a6974d2f06d4e">_on_size_changed</a> (<a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> old_size, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> new_size) override</td></tr>
 <tr class="memitem:afdf402503e06be53f26f0dd51c149e63" id="r_afdf402503e06be53f26f0dd51c149e63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdf402503e06be53f26f0dd51c149e63">_on_click</a> (<a class="el" href="../../df/d6d/namespacexl7_1_1input.html#af127a0043707f93517660a1c78ff4150">xl7::input::MouseButton</a> button) override</td></tr>
 <tr class="memitem:a713f17ead85f78a0870c83e08f3c8c0c" id="r_a713f17ead85f78a0870c83e08f3c8c0c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a713f17ead85f78a0870c83e08f3c8c0c">_is_focusable</a> () const override</td></tr>
+<tr class="memitem:ac1dfb05523e51f925eb34e9357855b87" id="r_ac1dfb05523e51f925eb34e9357855b87"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1dfb05523e51f925eb34e9357855b87">_is_clickable</a> () const override</td></tr>
 <tr class="inherit_header pro_methods_classfl7_1_1gui_1_1Collection"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classfl7_1_1gui_1_1Collection')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Member Functions inherited from <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">fl7::gui::Collection</a></td></tr>
 <tr class="memitem:a9b6bb179d97f1379ce9dcd028d76db00 inherit pro_methods_classfl7_1_1gui_1_1Collection" id="r_a9b6bb179d97f1379ce9dcd028d76db00"><td class="memTemplParams" colspan="2">template&lt;class TFace, class... Args&gt; <br />
 requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a68379e6145f7bf633a848b627a577e89">Face</a>&gt;)</td></tr>
@@ -418,6 +419,34 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Unchecks this radio button directly, without notifying _group (called by <a class="el" href="../../d2/d69/classfl7_1_1gui_1_1RadioGroup.html">RadioGroup</a> itself, once it already knows about the newly checked member, to avoid recursing back into it). </p>
+
+</div>
+</div>
+<a id="ac1dfb05523e51f925eb34e9357855b87" name="ac1dfb05523e51f925eb34e9357855b87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1dfb05523e51f925eb34e9357855b87">&#9670;&#160;</a></span>_is_clickable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fl7::gui::faces::RadioButton::_is_clickable </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>A <a class="el" href="../../dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html">RadioButton</a>'s <a class="el" href="#afdf402503e06be53f26f0dd51c149e63">_on_click()</a> meaningfully does something, so Enter/Space (or a gamepad's "confirm" button) can activate it while focused. </p>
+
+<p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a580e43c600b09842f7eea72489327692">fl7::gui::Face</a>.</p>
 
 </div>
 </div>

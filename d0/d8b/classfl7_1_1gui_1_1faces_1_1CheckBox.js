@@ -5,6 +5,7 @@ var classfl7_1_1gui_1_1faces_1_1CheckBox =
     [ "CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a0984a1e3c3392e866e677acd04e4f21b", null ],
     [ "CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a54fe1e3eb34da97ba2cb3d3192849d54", null ],
     [ "~CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#ab2858027357a4a6f1d3c1f2b9f268290", null ],
+    [ "_is_clickable", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a5f39af22720b163f18fff322b4ba6b64", null ],
     [ "_is_focusable", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a7c1278c1a11c23b6ed2811198b5f0ec9", null ],
     [ "_on_click", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a411f8ebdd148252b5562821f4e72068a", null ],
     [ "_on_size_changed", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a99ec6bba07847d16f7f875f5ed4bc764", null ],
