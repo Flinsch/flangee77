@@ -3,6 +3,7 @@
 
 #include <FaceLabs/gui/Shell.h>
 #include <FaceLabs/gui/faces/Button.h>
+#include <FaceLabs/gui/faces/CheckBox.h>
 #include <FaceLabs/gui/faces/Label.h>
 #include <FaceLabs/gui/faces/ListBox.h>
 #include <FaceLabs/gui/faces/Panel.h>
@@ -538,4 +539,139 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  a top-level face with arrow navigatio
 
     shell.focus_toward(fl7::gui::ArrowDirection::Right);
     TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&button_a) ); // unchanged: navigation is disabled for this top-level face
+}
+
+
+
+// #############################################################################
+// Enter/Space/gamepad "confirm" activation (Shell::click_focus())
+// #############################################################################
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  Enter activates a focused Button exactly like a click" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& button = shell.add_face<fl7::gui::faces::Button>(U"Caption");
+    button.set_position({0.0f, 0.0f});
+    button.set_size({50.0f, 20.0f});
+
+    int click_count = 0;
+    button.get_clicked().connect([&]() { ++click_count; });
+
+    input.move_mouse_to({25.0f, 10.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+    TESTLABS_CHECK_EQ( click_count, 1 ); // the actual click itself, nothing to do with Enter yet
+
+    input.set_key_down(xl7::input::Key::Enter, true);
+    shell.update();
+    TESTLABS_CHECK_EQ( click_count, 2 );
+    input.set_key_down(xl7::input::Key::Enter, false);
+    shell.update();
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  Space activates a focused CheckBox exactly like a click, toggling it" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& check_box = shell.add_face<fl7::gui::faces::CheckBox>();
+    check_box.set_position({0.0f, 0.0f});
+    check_box.set_size({50.0f, 20.0f});
+
+    input.move_mouse_to({25.0f, 10.0f}); // click to focus it, without toggling via Space yet
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+    TESTLABS_CHECK( check_box.is_checked() ); // the click itself already toggled it on
+
+    input.set_key_down(xl7::input::Key::Space, true);
+    shell.update();
+    TESTLABS_CHECK( !check_box.is_checked() );
+    input.set_key_down(xl7::input::Key::Space, false);
+    shell.update();
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  a focused face that isn't clickable (e.g. a Panel) ignores Enter/Space; can_click_focus() reports false" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& panel = shell.add_face<fl7::gui::faces::Panel>();
+    panel.set_position({0.0f, 0.0f});
+    panel.set_size({300.0f, 100.0f});
+
+    input.move_mouse_to({25.0f, 10.0f}); // click empty space inside the panel: focuses the panel itself
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&panel) );
+    TESTLABS_CHECK( !shell.can_click_focus() );
+
+    input.set_key_down(xl7::input::Key::Enter, true); // a no-op: nothing to activate
+    shell.update();
+    input.set_key_down(xl7::input::Key::Enter, false);
+    shell.update();
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  click_focus() can be driven directly (e.g. by a gamepad's \"confirm\" button), without a literal Enter/Space keypress" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& button = shell.add_face<fl7::gui::faces::Button>(U"Caption");
+    button.set_position({0.0f, 0.0f});
+    button.set_size({50.0f, 20.0f});
+
+    int click_count = 0;
+    button.get_clicked().connect([&]() { ++click_count; });
+
+    input.move_mouse_to({25.0f, 10.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+    TESTLABS_CHECK_EQ( click_count, 1 );
+
+    TESTLABS_CHECK( shell.can_click_focus() );
+    TESTLABS_CHECK( shell.click_focus() );
+    TESTLABS_CHECK_EQ( click_count, 2 );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  a focused but since-disabled Button can no longer be activated via click_focus(), even though it's still focused" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& button = shell.add_face<fl7::gui::faces::Button>(U"Caption");
+    button.set_position({0.0f, 0.0f});
+    button.set_size({50.0f, 20.0f});
+
+    input.move_mouse_to({25.0f, 10.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&button) );
+
+    button.set_enabled(false); // disabling it doesn't itself clear the focus
+
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&button) );
+    TESTLABS_CHECK( !shell.can_click_focus() );
+    TESTLABS_CHECK( !shell.click_focus() );
 }

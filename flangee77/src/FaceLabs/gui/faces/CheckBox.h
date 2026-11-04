@@ -83,6 +83,9 @@ protected:
     /** A checkbox is an interactive leaf control, so it's a Tab stop. */
     bool _is_focusable() const override { return true; }
 
+    /** A CheckBox's _on_click() meaningfully does something, so Enter/Space (or a gamepad's "confirm" button) can activate it while focused. */
+    bool _is_clickable() const override { return true; }
+
 
 
 private:

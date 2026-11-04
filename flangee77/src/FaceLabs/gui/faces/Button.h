@@ -75,6 +75,9 @@ protected:
 
     void _on_click(xl7::input::MouseButton button) override { _clicked.emit(); }
 
+    /** A Button's _on_click() meaningfully does something, so Enter/Space (or a gamepad's "confirm" button) can activate it while focused. */
+    bool _is_clickable() const override { return true; }
+
 
 
 private:

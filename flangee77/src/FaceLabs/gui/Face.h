@@ -280,6 +280,16 @@ protected:
     virtual bool _is_focusable() const { return false; }
 
     /**
+     * Returns whether _on_click() meaningfully does something for this face (see
+     * Shell::click_focus()). Default: false. Override true in a concrete face type
+     * that overrides _on_click() to actually do something (Button, CheckBox,
+     * RadioButton, ...): a face that doesn't (TrackControl, TextField, a plain
+     * Panel, ...) has nothing for Enter/Space (or a gamepad's "confirm" button) to
+     * trigger.
+     */
+    virtual bool _is_clickable() const { return false; }
+
+    /**
      * Returns whether this face (while it's the currently focused one) wants
      * the specified arrow for itself, i.e., whether spatial focus navigation
      * (see Shell::focus_toward()) should yield to it instead of moving focus.

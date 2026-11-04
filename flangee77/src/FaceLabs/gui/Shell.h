@@ -167,6 +167,23 @@ public:
     void focus_toward(ArrowDirection dir, bool force = false);
 
     /**
+     * Returns whether click_focus() would currently trigger anything: a face is
+     * focused, it's clickable, and still enabled/visible (either might have changed
+     * since it gained focus, without it losing focus over that alone). Exposed so a
+     * caller (a gamepad's "confirm" button, say) can tell in advance whether
+     * pressing it would do something.
+     */
+    bool can_click_focus() const;
+
+    /**
+     * Triggers the currently focused face as if it had just been clicked, if
+     * can_click_focus(); returns whether it actually did. Called automatically for
+     * Enter/Space (see update()). Exposed publicly so other input (a gamepad's
+     * "confirm" button, say) can trigger the same activation manually.
+     */
+    bool click_focus();
+
+    /**
      * Renders all top-level faces (and their children) via the bound renderer.
      * Purely a delegation: this shell knows nothing about how drawing actually
      * happens (or in what order, or whatever), that's entirely up to the renderer.

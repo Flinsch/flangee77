@@ -131,20 +131,27 @@ namespace fl7::gui {
 
             using xl7::input::Key;
 
-            // Tab/Shift+Tab is consumed by this shell itself (focus
-            // navigation), never forwarded to the focused face's own
-            // _on_key_down(). A plain arrow key triggers focus_toward()
-            // first, querying _consumes_arrow() against whatever state the
-            // focused face is still in from BEFORE this keypress (e.g. a
-            // ListBox's current selection): only once that's decided does
-            // the key still go through to _on_key_down() as usual (e.g.
-            // TextField's caret, or that same ListBox selection actually
-            // moving), dispatched to whichever face was focused at the
-            // start, regardless of whether focus_toward() just moved on.
+            // Tab/Shift+Tab and Enter/Space are consumed by this shell itself
+            // (focus navigation/activation), never forwarded to the focused
+            // face's own _on_key_down() (text input, e.g., a literal space typed
+            // into a TextField, still goes through separately, see the text_input
+            // handling above). A plain arrow key triggers focus_toward() first,
+            // querying _consumes_arrow() against whatever state the focused face is
+            // still in from BEFORE this keypress (e.g., a ListBox's current
+            // selection): only once that's decided does the key still go through to
+            // _on_key_down() as usual (e.g., TextField's caret, or that same ListBox
+            // selection actually moving), dispatched to whichever face was focused
+            // at the start, regardless of whether focus_toward() just moved on.
             const auto fire_key = [this](Key key) {
                 if (key == Key::Tab)
                 {
                     _focus_adjacent_tab_stop(_keyboard->is_key_down(Key::LeftShift) || _keyboard->is_key_down(Key::RightShift));
+                    return;
+                }
+
+                if (key == Key::Enter || key == Key::Space)
+                {
+                    click_focus();
                     return;
                 }
 
@@ -219,6 +226,33 @@ namespace fl7::gui {
         // A key already held before this face gained focus must not
         // immediately fire a spurious repeat on it (see update()).
         _key_repeat_next_fire_times = {};
+    }
+
+    /**
+     * Returns whether click_focus() would currently trigger anything: a face is
+     * focused, it's clickable, and still enabled/visible (either might have changed
+     * since it gained focus, without it losing focus over that alone). Exposed so a
+     * caller (a gamepad's "confirm" button, say) can tell in advance whether
+     * pressing it would do something.
+     */
+    bool Shell::can_click_focus() const
+    {
+        return _focused_face && _focused_face->_is_clickable() && _focused_face->is_enabled() && _focused_face->is_visible();
+    }
+
+    /**
+     * Triggers the currently focused face as if it had just been clicked, if
+     * can_click_focus(); returns whether it actually did. Called automatically for
+     * Enter/Space (see update()). Exposed publicly so other input (a gamepad's
+     * "confirm" button, say) can trigger the same activation manually.
+     */
+    bool Shell::click_focus()
+    {
+        if (!can_click_focus())
+            return false;
+
+        _focused_face->_on_click(xl7::input::MouseButton::Left);
+        return true;
     }
 
     /**
