@@ -174,6 +174,9 @@ protected:
     /** Nudges the value by get_step() per wheel notch, while hovered or bubbled up to. Always consumes. */
     bool _on_mouse_wheel(int delta) override;
 
+    /** A TrackControl is an interactive leaf control, so it's a Tab stop. */
+    bool _is_focusable() const override { return true; }
+
 
 
 private:

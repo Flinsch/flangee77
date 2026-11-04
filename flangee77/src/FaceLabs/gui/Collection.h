@@ -127,6 +127,12 @@ protected:
      */
     Face* _find_hit_face(ml7::Vector2f screen_point, ml7::Vector2f parent_absolute_position) override;
 
+    /**
+     * Appends this collection (if it's itself a reachable Tab stop), then
+     * recurses into its children afterwards, in insertion order.
+     */
+    void _collect_tab_stops(std::vector<Face*>& out) override;
+
 
 
 private:

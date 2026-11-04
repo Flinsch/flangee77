@@ -11,6 +11,7 @@
 #include <CoreLabs/string.h>
 
 #include <optional>
+#include <vector>
 
 
 
@@ -160,6 +161,28 @@ public:
      */
     void clear_style_override() { _style_override.reset(); }
 
+    /**
+     * Returns this face's explicit Tab-order index (see Shell::update()'s
+     * Tab/Shift+Tab handling), or empty if unset.
+     */
+    std::optional<int> get_tab_order() const { return _tab_order; }
+
+    /**
+     * Sets this face's explicit Tab-order index: among the Tab stops (see
+     * _is_focusable()) being ordered within a top-level face's subtree, one
+     * with an explicit index always comes before one without; two explicit
+     * indices compare by their value. Either kind of tie (equal explicit
+     * indices, or no explicit index at all) falls back to tree/insertion
+     * order. Unset by default: most faces just take their natural position
+     * in the tree.
+     */
+    void set_tab_order(int tab_order) { _tab_order = tab_order; }
+
+    /**
+     * Clears a previously set explicit Tab-order index.
+     */
+    void clear_tab_order() { _tab_order.reset(); }
+
 
 
 protected:
@@ -203,6 +226,16 @@ protected:
      * to true instead.
      */
     virtual bool _requires_own_bounds_for_hover() const { return false; }
+
+    /**
+     * Returns whether this face is a valid Tab/Shift+Tab stop (see
+     * Shell::update()). Default: false. Override true in a concrete
+     * interactive leaf control (Button, CheckBox, RadioButton, TextField,
+     * TrackControl, ...): a passive decoration or a plain layout container
+     * (Panel, Label, a disabled glyph owned by one of the above, ...) has
+     * nothing to type into or activate, so it stays out of the Tab order.
+     */
+    virtual bool _is_focusable() const { return false; }
 
     /**
      * Called with this face's freshly resolved effective text style (part of
@@ -342,6 +375,17 @@ protected:
      */
     virtual Face* _find_hit_face(ml7::Vector2f screen_point, ml7::Vector2f parent_absolute_position);
 
+    /**
+     * Appends this face to `out` if it's currently a reachable Tab stop (see
+     * _is_focusable()), in tree order. Base case (a plain Face has no
+     * children): tests only itself. `Collection` overrides this to recurse
+     * into its children afterwards (in insertion order), same as
+     * _find_hit_face() does for hit-testing, just not reversed, and without
+     * clips_children() gating: an off-screen (e.g. scrolled-out) but
+     * otherwise reachable face is still a valid Tab stop.
+     */
+    virtual void _collect_tab_stops(std::vector<Face*>& out);
+
 
 
 private:
@@ -381,6 +425,8 @@ private:
     bool _enabled = true;
 
     std::optional<Style> _style_override;
+
+    std::optional<int> _tab_order;
 
 }; // class Face
 

@@ -80,6 +80,9 @@ protected:
     /** Toggles the checked state. */
     void _on_click(xl7::input::MouseButton button) override { set_checked(!_checked); }
 
+    /** A checkbox is an interactive leaf control, so it's a Tab stop. */
+    bool _is_focusable() const override { return true; }
+
 
 
 private:

@@ -1,5 +1,7 @@
 #include "Shell.h"
 
+#include <algorithm>
+
 
 
 namespace fl7::gui {
@@ -128,6 +130,17 @@ namespace fl7::gui {
             const auto now = std::chrono::steady_clock::now();
 
             using xl7::input::Key;
+
+            // Tab/Shift+Tab is consumed by this shell itself (focus
+            // navigation), never forwarded to the focused face's own
+            // _on_key_down(); every other key goes through as usual.
+            const auto fire_key = [this](Key key) {
+                if (key == Key::Tab)
+                    _focus_adjacent_tab_stop(_keyboard->is_key_down(Key::LeftShift) || _keyboard->is_key_down(Key::RightShift));
+                else
+                    _focused_face->_on_key_down(key);
+            };
+
             for (size_t i = 1; i < static_cast<size_t>(Key::COUNT); ++i)
             {
                 const Key key = static_cast<Key>(i);
@@ -135,7 +148,7 @@ namespace fl7::gui {
 
                 if (_keyboard->is_key_pressed(key))
                 {
-                    _focused_face->_on_key_down(key);
+                    fire_key(key);
                     next_fire_time = now + initial_delay;
                 }
                 else if (!_keyboard->is_key_down(key))
@@ -144,7 +157,7 @@ namespace fl7::gui {
                 }
                 else if (next_fire_time && now >= *next_fire_time)
                 {
-                    _focused_face->_on_key_down(key);
+                    fire_key(key);
                     next_fire_time = now + repeat_interval;
                 }
             }
@@ -188,6 +201,72 @@ namespace fl7::gui {
             _pressed_face = nullptr;
         if (is_within_removed_subtree(_focused_face))
             _focused_face = nullptr;
+    }
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Moves focus to the next (or, if `backward`, previous) Tab stop (see
+     * Face::_is_focusable()/get_tab_order()), scoped to the currently focused
+     * face's own top-level face's subtree, wrapping around at either end.
+     * No-op if nothing is currently focused (there's no "current" top-level
+     * face to scope to otherwise, see update()'s Tab handling) or if that
+     * subtree has no Tab stop at all.
+     */
+    void Shell::_focus_adjacent_tab_stop(bool backward)
+    {
+        if (!_focused_face)
+            return;
+
+        Face* top_level = _focused_face;
+        while (top_level->get_parent())
+            top_level = top_level->get_parent();
+
+        std::vector<Face*> tab_stops;
+        top_level->_collect_tab_stops(tab_stops);
+        if (tab_stops.empty())
+            return;
+
+        // An explicit tab_order always comes before an unset one; two
+        // explicit ones compare by value. Either kind of tie (equal explicit
+        // values, or several unset ones) keeps the tree order _collect_tab_
+        // stops() gathered them in, thanks to stable_sort.
+        std::ranges::stable_sort(tab_stops, [](const Face* a, const Face* b) {
+            const std::optional<int> order_a = a->get_tab_order();
+            const std::optional<int> order_b = b->get_tab_order();
+            if (order_a.has_value() != order_b.has_value())
+                return order_a.has_value();
+            return order_a && order_b && *order_a < *order_b;
+        });
+
+        const auto it = std::ranges::find(tab_stops, _focused_face);
+
+        size_t next_index;
+        if (it == tab_stops.end()) // The focused face (e.g. set via a click) isn't itself a Tab stop.
+            next_index = backward ? tab_stops.size() - 1 : 0;
+        else
+        {
+            const size_t current_index = static_cast<size_t>(it - tab_stops.begin());
+            next_index = backward
+                ? (current_index == 0 ? tab_stops.size() - 1 : current_index - 1)
+                : (current_index + 1) % tab_stops.size();
+        }
+
+        Face* const next_face = tab_stops[next_index];
+        if (next_face == _focused_face)
+            return; // Only one Tab stop, and it's already focused.
+
+        _focused_face->_on_focus_lost();
+        _focused_face = next_face;
+        _focused_face->_on_focus_gained();
+
+        // A key already held before this face gained focus must not
+        // immediately fire a spurious repeat on it (see update()).
+        _key_repeat_next_fire_times = {};
     }
 
 

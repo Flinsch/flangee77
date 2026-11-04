@@ -202,6 +202,21 @@ namespace fl7::gui {
         return _contains_point(local_point) ? this : nullptr;
     }
 
+    /**
+     * Appends this face to `out` if it's currently a reachable Tab stop (see
+     * _is_focusable()), in tree order. Base case (a plain Face has no
+     * children): tests only itself. `Collection` overrides this to recurse
+     * into its children afterwards (in insertion order), same as
+     * _find_hit_face() does for hit-testing, just not reversed, and without
+     * clips_children() gating: an off-screen (e.g. scrolled-out) but
+     * otherwise reachable face is still a valid Tab stop.
+     */
+    void Face::_collect_tab_stops(std::vector<Face*>& out)
+    {
+        if (_visible && _enabled && _is_focusable())
+            out.push_back(this);
+    }
+
 
 
 } // namespace fl7::gui

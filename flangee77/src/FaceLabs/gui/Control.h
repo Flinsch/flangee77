@@ -29,6 +29,17 @@ public:
 
     ~Control() override = default;
 
+
+
+protected:
+
+    // #############################################################################
+    // Face Implementations
+    // #############################################################################
+
+    /** Every Control is a Tab stop by definition: that's what distinguishes it from a Static. */
+    bool _is_focusable() const override { return true; }
+
 }; // class Control
 
 

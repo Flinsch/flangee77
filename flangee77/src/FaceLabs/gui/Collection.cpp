@@ -83,6 +83,21 @@ namespace fl7::gui {
         return _contains_point(local_point) ? this : nullptr;
     }
 
+    /**
+     * Appends this collection (if it's itself a reachable Tab stop), then
+     * recurses into its children afterwards, in insertion order.
+     */
+    void Collection::_collect_tab_stops(std::vector<Face*>& out)
+    {
+        Face::_collect_tab_stops(out);
+
+        if (!is_visible() || !is_enabled())
+            return; // An invisible/disabled collection's children are unreachable too.
+
+        for (const auto& child : _children)
+            child->_collect_tab_stops(out);
+    }
+
 
 
     // #############################################################################

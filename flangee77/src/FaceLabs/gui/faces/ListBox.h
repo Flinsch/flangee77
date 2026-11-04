@@ -316,6 +316,9 @@ protected:
      */
     void _on_key_down(xl7::input::Key key) override;
 
+    /** The one face that holds focus for the whole list (see the class doc comment above), so it's the Tab stop, not each (disabled) row. */
+    bool _is_focusable() const override { return true; }
+
 
 
 private:

@@ -176,6 +176,22 @@ private:
 
 
     // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Moves focus to the next (or, if `backward`, previous) Tab stop (see
+     * Face::_is_focusable()/get_tab_order()), scoped to the currently focused
+     * face's own top-level face's subtree, wrapping around at either end.
+     * No-op if nothing is currently focused (there's no "current" top-level
+     * face to scope to otherwise, see update()'s Tab handling) or if that
+     * subtree has no Tab stop at all.
+     */
+    void _focus_adjacent_tab_stop(bool backward);
+
+
+
+    // #############################################################################
     // Attributes
     // #############################################################################
 

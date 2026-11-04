@@ -89,6 +89,9 @@ protected:
     /** Always checks (never toggles off): clicking an already-checked radio button does nothing. */
     void _on_click(xl7::input::MouseButton button) override { set_checked(true); }
 
+    /** A radio button is an interactive leaf control, so it's a Tab stop (each member of a group individually, not just the checked one). */
+    bool _is_focusable() const override { return true; }
+
 
 
 private:
