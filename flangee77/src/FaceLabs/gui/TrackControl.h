@@ -177,6 +177,15 @@ protected:
     /** A TrackControl is an interactive leaf control, so it's a Tab stop. */
     bool _is_focusable() const override { return true; }
 
+    /**
+     * Consumes every arrow direction (hard): _on_key_down() above already
+     * nudges the value on Left/Down/Right/Up uniformly, regardless of this
+     * track's own orientation, so a focused slider/scrollbar never also
+     * loses focus to the very same keypress. Tab/Shift+Tab is the way off
+     * it.
+     */
+    ArrowResponse _consumes_arrow(ArrowDirection dir) const override { return ArrowResponse::Hard; }
+
 
 
 private:

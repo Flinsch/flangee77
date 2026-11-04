@@ -226,6 +226,29 @@ namespace fl7::gui::faces {
     }
 
     /**
+     * Consumes Up/Down (hard) while the selection still has somewhere to go
+     * in that direction (from no selection, either arrow enters the list),
+     * so plain arrow-key focus navigation yields to _on_key_down() moving
+     * the selection instead; yields back once at either end. The horizontal
+     * arrows always stay free.
+     */
+    ArrowResponse ListBox::RowArea::_consumes_arrow(ArrowDirection dir) const
+    {
+        if (dir == ArrowDirection::Left || dir == ArrowDirection::Right)
+            return ArrowResponse::Ignore;
+
+        const int count = _owner.get_item_count();
+        if (count == 0)
+            return ArrowResponse::Ignore;
+
+        const int current = _owner.get_selected_index();
+        if (dir == ArrowDirection::Up)
+            return current != 0 ? ArrowResponse::Hard : ArrowResponse::Ignore;
+
+        return current != count - 1 ? ArrowResponse::Hard : ArrowResponse::Ignore; // dir == ArrowDirection::Down
+    }
+
+    /**
      * Returns whether either Control key is currently held.
      */
     bool ListBox::RowArea::_is_ctrl_down() const

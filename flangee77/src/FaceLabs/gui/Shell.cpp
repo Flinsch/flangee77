@@ -133,12 +133,35 @@ namespace fl7::gui {
 
             // Tab/Shift+Tab is consumed by this shell itself (focus
             // navigation), never forwarded to the focused face's own
-            // _on_key_down(); every other key goes through as usual.
+            // _on_key_down(). A plain arrow key triggers focus_toward()
+            // first, querying _consumes_arrow() against whatever state the
+            // focused face is still in from BEFORE this keypress (e.g. a
+            // ListBox's current selection): only once that's decided does
+            // the key still go through to _on_key_down() as usual (e.g.
+            // TextField's caret, or that same ListBox selection actually
+            // moving), dispatched to whichever face was focused at the
+            // start, regardless of whether focus_toward() just moved on.
             const auto fire_key = [this](Key key) {
                 if (key == Key::Tab)
+                {
                     _focus_adjacent_tab_stop(_keyboard->is_key_down(Key::LeftShift) || _keyboard->is_key_down(Key::RightShift));
-                else
-                    _focused_face->_on_key_down(key);
+                    return;
+                }
+
+                Face* const original_focus = _focused_face;
+
+                const bool force = _keyboard->is_key_down(Key::LeftAlt) || _keyboard->is_key_down(Key::RightAlt);
+                switch (key)
+                {
+                case Key::Up:    focus_toward(ArrowDirection::Up, force);    break;
+                case Key::Down:  focus_toward(ArrowDirection::Down, force);  break;
+                case Key::Left:  focus_toward(ArrowDirection::Left, force);  break;
+                case Key::Right: focus_toward(ArrowDirection::Right, force); break;
+                default: break;
+                }
+
+                if (original_focus)
+                    original_focus->_on_key_down(key);
             };
 
             for (size_t i = 1; i < static_cast<size_t>(Key::COUNT); ++i)
@@ -162,6 +185,40 @@ namespace fl7::gui {
                 }
             }
         }
+    }
+
+    /**
+     * Moves focus to the nearest focusable face in the given direction
+     * within the current top-level face (the focused face's own top-level
+     * ancestor, or, with nothing currently focused, the topmost one), by
+     * on-screen geometry, unlike the linear Tab/Shift+Tab (see update()).
+     * With `force` false, a focused face that consumes the arrow for itself
+     * (see Face::_consumes_arrow(), e.g. a text caret) keeps it; with
+     * `force` true, only a "hard" consumer (e.g. a list with somewhere left
+     * to go) still keeps it. Does nothing if the current top-level face has
+     * arrow navigation disabled (see Face::get_arrow_navigation_enabled()),
+     * or has no focusable face at all. Called automatically for a plain
+     * arrow key press (see update()); exposed publicly so other input (a
+     * gamepad's d-pad, say) can drive the same navigation manually.
+     */
+    void Shell::focus_toward(ArrowDirection dir, bool force)
+    {
+        Face* const top_level = _current_top_level_face();
+        if (!top_level || !top_level->get_arrow_navigation_enabled())
+            return;
+
+        Face* const face = _find_face_toward(top_level, dir, force);
+        if (!face || face == _focused_face)
+            return;
+
+        if (_focused_face)
+            _focused_face->_on_focus_lost();
+        _focused_face = face;
+        _focused_face->_on_focus_gained();
+
+        // A key already held before this face gained focus must not
+        // immediately fire a spurious repeat on it (see update()).
+        _key_repeat_next_fire_times = {};
     }
 
     /**
@@ -267,6 +324,158 @@ namespace fl7::gui {
         // A key already held before this face gained focus must not
         // immediately fire a spurious repeat on it (see update()).
         _key_repeat_next_fire_times = {};
+    }
+
+    /**
+     * Returns the current top-level face: the focused face's own top-level
+     * ancestor if something is currently focused, else the topmost
+     * (last-added) top-level face, or `nullptr` if there are none at all.
+     */
+    Face* Shell::_current_top_level_face() const
+    {
+        if (_focused_face)
+        {
+            Face* top_level = _focused_face;
+            while (top_level->get_parent())
+                top_level = top_level->get_parent();
+            return top_level;
+        }
+
+        return _top_level_faces.empty() ? nullptr : _top_level_faces.back().get();
+    }
+
+    /**
+     * Returns the nearest focusable face in the given direction from the
+     * currently focused face, among `top_level`'s own Tab stops (see
+     * Face::_collect_tab_stops()), by on-screen geometry, or `nullptr` if
+     * there's no usable candidate. Without a usable starting point (no
+     * current focus, or an invisible one), picks the outermost candidate in
+     * that direction instead (topmost for Up, bottommost for Down, and so
+     * on), so entering a top-level face for the first time lands on an
+     * intuitive face.
+     */
+    Face* Shell::_find_face_toward(Face* top_level, ArrowDirection dir, bool force) const
+    {
+        std::vector<Face*> candidates;
+        top_level->_collect_tab_stops(candidates);
+        if (candidates.empty())
+            return nullptr;
+
+        const bool focus_is_anchor = _focused_face && _focused_face->is_visible();
+        const bool focus_is_navigable = focus_is_anchor && std::ranges::find(candidates, _focused_face) != candidates.end();
+
+        // Yield to a navigable focused face that wants this arrow for
+        // itself: a hard consumer always, a soft one unless forced (e.g., a
+        // text caret).
+        if (focus_is_navigable)
+        {
+            const ArrowResponse response = _focused_face->_consumes_arrow(dir);
+            if (response == ArrowResponse::Hard)
+                return nullptr;
+            if (response == ArrowResponse::Soft && !force)
+                return nullptr;
+        }
+
+        // Without a usable starting point, spatial navigation enters the
+        // top-level face at the outermost candidate in the pressed
+        // direction: a direct scan rather than repeatedly stepping, so it
+        // reliably reaches the far end regardless of the layout in between.
+        if (!focus_is_anchor)
+        {
+            Face* best = nullptr;
+            float best_edge = 0.0f;
+            for (Face* face : candidates)
+            {
+                const ml7::Vector2f center = face->get_absolute_position() + face->get_size() * 0.5f;
+                float edge = 0.0f;
+                switch (dir)
+                {
+                case ArrowDirection::Up:    edge = -center.y; break;
+                case ArrowDirection::Down:  edge =  center.y; break;
+                case ArrowDirection::Left:  edge = -center.x; break;
+                case ArrowDirection::Right: edge =  center.x; break;
+                }
+                if (!best || edge > best_edge)
+                {
+                    best = face;
+                    best_edge = edge;
+                }
+            }
+            return best;
+        }
+
+        // The orthogonal offset is weighted (quadratically, since both terms
+        // are squared) so that among candidates at a similar range the
+        // better-aligned one wins: this is the angular preference. The beam
+        // test below matters more, though.
+        constexpr float ortho_weight = 2.0f;
+        constexpr float ortho_weight_squared = ortho_weight * ortho_weight;
+
+        const ml7::Vector2f from_pos = _focused_face->get_absolute_position();
+        const ml7::Vector2f from_size = _focused_face->get_size();
+        const ml7::Vector2f from_center = from_pos + from_size * 0.5f;
+
+        Face* best = nullptr;
+        bool best_in_beam = false;
+        float best_score = 0.0f;
+
+        for (Face* face : candidates)
+        {
+            if (face == _focused_face)
+                continue;
+
+            const ml7::Vector2f to_pos = face->get_absolute_position();
+            const ml7::Vector2f to_size = face->get_size();
+            const ml7::Vector2f to_center = to_pos + to_size * 0.5f;
+            const float dx = to_center.x - from_center.x;
+            const float dy = to_center.y - from_center.y;
+
+            float major = 0.0f;   // Distance along the pressed direction (must be > 0).
+            float minor = 0.0f;   // Offset on the orthogonal axis.
+            bool in_beam = false; // Does the candidate overlap the source's cross-section?
+            switch (dir)
+            {
+            case ArrowDirection::Up:
+                if (dy >= 0.0f) continue;
+                major = -dy; minor = dx < 0.0f ? -dx : dx;
+                in_beam = to_pos.x < from_pos.x + from_size.x && to_pos.x + to_size.x > from_pos.x;
+                break;
+            case ArrowDirection::Down:
+                if (dy <= 0.0f) continue;
+                major = dy; minor = dx < 0.0f ? -dx : dx;
+                in_beam = to_pos.x < from_pos.x + from_size.x && to_pos.x + to_size.x > from_pos.x;
+                break;
+            case ArrowDirection::Left:
+                if (dx >= 0.0f) continue;
+                major = -dx; minor = dy < 0.0f ? -dy : dy;
+                in_beam = to_pos.y < from_pos.y + from_size.y && to_pos.y + to_size.y > from_pos.y;
+                break;
+            case ArrowDirection::Right:
+                if (dx <= 0.0f) continue;
+                major = dx; minor = dy < 0.0f ? -dy : dy;
+                in_beam = to_pos.y < from_pos.y + from_size.y && to_pos.y + to_size.y > from_pos.y;
+                break;
+            }
+
+            const float score = major * major + minor * minor * ortho_weight_squared;
+
+            // A candidate that overlaps the source's cross-section ("in
+            // beam", a true neighbour in that direction) always wins over
+            // any that does not, so a directly adjacent element beats a
+            // closer but diagonal one. The weighted distance orders
+            // candidates within the same group.
+            const bool better = !best
+                || (in_beam && !best_in_beam)
+                || (in_beam == best_in_beam && score < best_score);
+            if (better)
+            {
+                best = face;
+                best_in_beam = in_beam;
+                best_score = score;
+            }
+        }
+
+        return best;
     }
 
 

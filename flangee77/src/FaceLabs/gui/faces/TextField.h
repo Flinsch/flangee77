@@ -138,6 +138,9 @@ protected:
     /** Inserts the input (filtered down to plain code points) at the caret, replacing any active selection. */
     void _on_text_input(const cl7::u32string& text) override;
 
+    /** Consumes the horizontal arrows for the text caret (soft), so plain arrow-key focus navigation yields while forced navigation (gamepad, Alt+arrow) can still leave. */
+    ArrowResponse _consumes_arrow(ArrowDirection dir) const override { return (dir == ArrowDirection::Left || dir == ArrowDirection::Right) ? ArrowResponse::Soft : ArrowResponse::Ignore; }
+
 
 
 private:

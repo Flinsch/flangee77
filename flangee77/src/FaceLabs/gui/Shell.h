@@ -151,6 +151,22 @@ public:
     void update();
 
     /**
+     * Moves focus to the nearest focusable face in the given direction
+     * within the current top-level face (the focused face's own top-level
+     * ancestor, or, with nothing currently focused, the topmost one), by
+     * on-screen geometry, unlike the linear Tab/Shift+Tab (see update()).
+     * With `force` false, a focused face that consumes the arrow for itself
+     * (see Face::_consumes_arrow(), e.g. a text caret) keeps it; with
+     * `force` true, only a "hard" consumer (e.g. a list with somewhere left
+     * to go) still keeps it. Does nothing if the current top-level face has
+     * arrow navigation disabled (see Face::get_arrow_navigation_enabled()),
+     * or has no focusable face at all. Called automatically for a plain
+     * arrow key press (see update()); exposed publicly so other input (a
+     * gamepad's d-pad, say) can drive the same navigation manually.
+     */
+    void focus_toward(ArrowDirection dir, bool force = false);
+
+    /**
      * Renders all top-level faces (and their children) via the bound renderer.
      * Purely a delegation: this shell knows nothing about how drawing actually
      * happens (or in what order, or whatever), that's entirely up to the renderer.
@@ -188,6 +204,25 @@ private:
      * subtree has no Tab stop at all.
      */
     void _focus_adjacent_tab_stop(bool backward);
+
+    /**
+     * Returns the current top-level face: the focused face's own top-level
+     * ancestor if something is currently focused, else the topmost
+     * (last-added) top-level face, or `nullptr` if there are none at all.
+     */
+    Face* _current_top_level_face() const;
+
+    /**
+     * Returns the nearest focusable face in the given direction from the
+     * currently focused face, among `top_level`'s own Tab stops (see
+     * Face::_collect_tab_stops()), by on-screen geometry, or `nullptr` if
+     * there's no usable candidate. Without a usable starting point (no
+     * current focus, or an invisible one), picks the outermost candidate in
+     * that direction instead (topmost for Up, bottommost for Down, and so
+     * on), so entering a top-level face for the first time lands on an
+     * intuitive face.
+     */
+    Face* _find_face_toward(Face* top_level, ArrowDirection dir, bool force) const;
 
 
 

@@ -4,7 +4,10 @@
 #include <FaceLabs/gui/Shell.h>
 #include <FaceLabs/gui/faces/Button.h>
 #include <FaceLabs/gui/faces/Label.h>
+#include <FaceLabs/gui/faces/ListBox.h>
 #include <FaceLabs/gui/faces/Panel.h>
+#include <FaceLabs/gui/faces/Slider.h>
+#include <FaceLabs/gui/faces/TextField.h>
 
 #include "./shared.h"
 
@@ -326,4 +329,213 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  Tab does nothing while nothing is cur
     TESTLABS_CHECK( shell.get_focused_face() == nullptr );
     input.set_key_down(xl7::input::Key::Tab, false);
     shell.update();
+}
+
+
+
+// #############################################################################
+// Arrow-key/gamepad spatial focus navigation (Shell::focus_toward())
+// #############################################################################
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  arrow keys move focus spatially around a 2x2 grid of controls" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& panel = shell.add_face<fl7::gui::faces::Panel>();
+    panel.set_position({0.0f, 0.0f});
+    panel.set_size({300.0f, 300.0f});
+
+    auto& top_left = panel.add_child<fl7::gui::faces::Button>(U"TL");
+    top_left.set_position({0.0f, 0.0f});
+    top_left.set_size({50.0f, 20.0f});
+    auto& top_right = panel.add_child<fl7::gui::faces::Button>(U"TR");
+    top_right.set_position({200.0f, 0.0f});
+    top_right.set_size({50.0f, 20.0f});
+    auto& bottom_left = panel.add_child<fl7::gui::faces::Button>(U"BL");
+    bottom_left.set_position({0.0f, 200.0f});
+    bottom_left.set_size({50.0f, 20.0f});
+    auto& bottom_right = panel.add_child<fl7::gui::faces::Button>(U"BR");
+    bottom_right.set_position({200.0f, 200.0f});
+    bottom_right.set_size({50.0f, 20.0f});
+
+    input.move_mouse_to({25.0f, 10.0f}); // click top_left
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&top_left) );
+
+    shell.focus_toward(fl7::gui::ArrowDirection::Right);
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&top_right) );
+
+    shell.focus_toward(fl7::gui::ArrowDirection::Down);
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&bottom_right) );
+
+    shell.focus_toward(fl7::gui::ArrowDirection::Left);
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&bottom_left) );
+
+    shell.focus_toward(fl7::gui::ArrowDirection::Up);
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&top_left) );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  with nothing focused yet, an arrow key enters the top-level face at the outermost control in that direction" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& panel = shell.add_face<fl7::gui::faces::Panel>();
+    panel.set_position({0.0f, 0.0f});
+    panel.set_size({300.0f, 100.0f});
+
+    auto& left = panel.add_child<fl7::gui::faces::Button>(U"Left");
+    left.set_position({0.0f, 0.0f});
+    left.set_size({50.0f, 20.0f});
+    auto& right = panel.add_child<fl7::gui::faces::Button>(U"Right");
+    right.set_position({200.0f, 0.0f});
+    right.set_size({50.0f, 20.0f});
+
+    TESTLABS_CHECK( shell.get_focused_face() == nullptr );
+
+    shell.focus_toward(fl7::gui::ArrowDirection::Right); // enters at the outermost control towards the right
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&right) );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  a focused TextField keeps the horizontal arrows for its caret (soft); Alt+arrow still moves focus away" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& panel = shell.add_face<fl7::gui::faces::Panel>();
+    panel.set_position({0.0f, 0.0f});
+    panel.set_size({300.0f, 100.0f});
+
+    auto& text_field = panel.add_child<fl7::gui::faces::TextField>();
+    text_field.set_position({0.0f, 0.0f});
+    text_field.set_size({50.0f, 20.0f});
+    auto& button = panel.add_child<fl7::gui::faces::Button>(U"B");
+    button.set_position({200.0f, 0.0f});
+    button.set_size({50.0f, 20.0f});
+
+    input.move_mouse_to({25.0f, 10.0f}); // click the TextField
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&text_field) );
+
+    shell.focus_toward(fl7::gui::ArrowDirection::Right, false); // plain: the caret consumes it, focus stays
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&text_field) );
+
+    shell.focus_toward(fl7::gui::ArrowDirection::Right, true); // forced: a soft consumer yields
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&button) );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  a focused TrackControl keeps every arrow for itself (hard), even when forced" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& panel = shell.add_face<fl7::gui::faces::Panel>();
+    panel.set_position({0.0f, 0.0f});
+    panel.set_size({300.0f, 100.0f});
+
+    auto& slider = panel.add_child<fl7::gui::faces::Slider>();
+    slider.set_position({0.0f, 0.0f});
+    slider.set_size({50.0f, 20.0f});
+    auto& button = panel.add_child<fl7::gui::faces::Button>(U"B");
+    button.set_position({200.0f, 0.0f});
+    button.set_size({50.0f, 20.0f});
+
+    input.move_mouse_to({25.0f, 10.0f}); // click the slider
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&slider) );
+
+    shell.focus_toward(fl7::gui::ArrowDirection::Right, false);
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&slider) );
+
+    shell.focus_toward(fl7::gui::ArrowDirection::Right, true); // even forced, a hard consumer never yields
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&slider) );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  a focused ListBox keeps Down while its selection still has somewhere to go, yielding to focus navigation once at the last item" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& panel = shell.add_face<fl7::gui::faces::Panel>();
+    panel.set_position({0.0f, 0.0f});
+    panel.set_size({300.0f, 300.0f});
+
+    auto& list_box = panel.add_child<fl7::gui::faces::ListBox>();
+    list_box.set_position({0.0f, 0.0f});
+    list_box.set_size({200.0f, 60.0f}); // 2 rows' worth of visible height, default row height 24px
+    for (int i = 0; i < 2; ++i)
+        list_box.add_item<fl7::gui::faces::Label>(U"Item");
+
+    auto& button = panel.add_child<fl7::gui::faces::Button>(U"B");
+    button.set_position({0.0f, 200.0f});
+    button.set_size({50.0f, 20.0f});
+
+    input.move_mouse_to({50.0f, 5.0f}); // click row 0, focusing the list
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+    TESTLABS_CHECK_EQ( list_box.get_selected_index(), 0 );
+
+    input.set_key_down(xl7::input::Key::Down, true); // moves the selection, not the focus: still room to go (row 1)
+    shell.update();
+    TESTLABS_CHECK_EQ( list_box.get_selected_index(), 1 );
+    TESTLABS_CHECK( shell.get_focused_face() != nullptr && shell.get_focused_face() != static_cast<fl7::gui::Face*>(&button) ); // focus stayed within the list
+    input.set_key_down(xl7::input::Key::Down, false);
+    shell.update();
+
+    input.set_key_down(xl7::input::Key::Down, true); // already at the last item: yields to spatial navigation instead
+    shell.update();
+    TESTLABS_CHECK_EQ( list_box.get_selected_index(), 1 ); // unchanged: _on_key_down() clamps it to the last item anyway
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&button) );
+    input.set_key_down(xl7::input::Key::Down, false);
+    shell.update();
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  a top-level face with arrow navigation disabled ignores focus_toward() entirely" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& panel = shell.add_face<fl7::gui::faces::Panel>();
+    panel.set_position({0.0f, 0.0f});
+    panel.set_size({300.0f, 100.0f});
+    panel.set_arrow_navigation_enabled(false);
+
+    auto& button_a = panel.add_child<fl7::gui::faces::Button>(U"A");
+    button_a.set_position({0.0f, 0.0f});
+    button_a.set_size({50.0f, 20.0f});
+    auto& button_b = panel.add_child<fl7::gui::faces::Button>(U"B");
+    button_b.set_position({200.0f, 0.0f});
+    button_b.set_size({50.0f, 20.0f});
+
+    input.move_mouse_to({25.0f, 10.0f}); // click button_a
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+
+    shell.focus_toward(fl7::gui::ArrowDirection::Right);
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&button_a) ); // unchanged: navigation is disabled for this top-level face
 }

@@ -25,6 +25,32 @@ class Collection;
 
 
 /**
+ * A cardinal direction for spatial (arrow key / gamepad d-pad) focus
+ * navigation (see Shell::focus_toward()).
+ */
+enum struct ArrowDirection
+{
+    Up,
+    Down,
+    Left,
+    Right,
+}; // enum struct ArrowDirection
+
+/**
+ * How a focused face responds to an arrow in a given direction, i.e.,
+ * whether spatial focus navigation (see Shell::focus_toward()) should yield
+ * to the face handling that arrow itself instead of moving focus.
+ */
+enum struct ArrowResponse
+{
+    Ignore, // The arrow is free for focus navigation.
+    Soft,   // The face uses it (e.g., a text caret), but forced navigation (gamepad, Alt+arrow) may override.
+    Hard,   // The face needs it (e.g., an open list with somewhere left to go) even under forced navigation.
+}; // enum struct ArrowResponse
+
+
+
+/**
  * Base class for all GUI elements ("faces"): position/size (relative to its parent),
  * visibility/enabled state, style resolution, and the input-event hooks. Doesn't
  * own children itself (see `Collection` for that), so a plain face is a leaf.
@@ -183,6 +209,22 @@ public:
      */
     void clear_tab_order() { _tab_order.reset(); }
 
+    /**
+     * Returns whether spatial arrow-key/gamepad focus navigation (see
+     * Shell::focus_toward()) is currently enabled while this face is the
+     * current top-level face. Default: true. Only meaningful on a top-level
+     * face: set it false for one that reads the arrows itself for something
+     * else entirely (e.g., a HUD overlay steering gameplay), so the shell
+     * leaves them to it instead of also moving focus.
+     */
+    bool get_arrow_navigation_enabled() const { return _arrow_navigation_enabled; }
+
+    /**
+     * Sets whether spatial arrow-key/gamepad focus navigation is currently
+     * enabled while this face is the current top-level face.
+     */
+    void set_arrow_navigation_enabled(bool enabled) { _arrow_navigation_enabled = enabled; }
+
 
 
 protected:
@@ -236,6 +278,16 @@ protected:
      * nothing to type into or activate, so it stays out of the Tab order.
      */
     virtual bool _is_focusable() const { return false; }
+
+    /**
+     * Returns whether this face (while it's the currently focused one) wants
+     * the specified arrow for itself, i.e., whether spatial focus navigation
+     * (see Shell::focus_toward()) should yield to it instead of moving focus.
+     * Default: Ignore (the arrow is always free for navigation). Override in
+     * a concrete face type that uses arrows for something of its own (a text
+     * caret, a track's handle, a list's selection).
+     */
+    virtual ArrowResponse _consumes_arrow(ArrowDirection dir) const { return ArrowResponse::Ignore; }
 
     /**
      * Called with this face's freshly resolved effective text style (part of
@@ -427,6 +479,8 @@ private:
     std::optional<Style> _style_override;
 
     std::optional<int> _tab_order;
+
+    bool _arrow_navigation_enabled = true;
 
 }; // class Face
 

@@ -319,6 +319,15 @@ protected:
     /** The one face that holds focus for the whole list (see the class doc comment above), so it's the Tab stop, not each (disabled) row. */
     bool _is_focusable() const override { return true; }
 
+    /**
+     * Consumes Up/Down (hard) while the selection still has somewhere to go
+     * in that direction (from no selection, either arrow enters the list),
+     * so plain arrow-key focus navigation yields to _on_key_down() moving
+     * the selection instead; yields back once at either end. The horizontal
+     * arrows always stay free.
+     */
+    ArrowResponse _consumes_arrow(ArrowDirection dir) const override;
+
 
 
 private:
