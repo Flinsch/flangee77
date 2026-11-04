@@ -153,12 +153,15 @@ Public Member Functions</h2></td></tr>
 requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>&gt;)</td></tr>
 <tr class="memitem:a935140229a6ca98f48ac3b70e2845fe6 template"><td class="memItemLeft" align="right" valign="top">TFace &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a935140229a6ca98f48ac3b70e2845fe6">add_face</a> (Args &amp;&amp;... args)</td></tr>
 <tr class="memitem:a810ed9f5fb57eaec9bb0be7664b99803" id="r_a810ed9f5fb57eaec9bb0be7664b99803"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update</a> ()</td></tr>
+<tr class="memitem:a6547b2a1c9badb7869e1e110d4c79568" id="r_a6547b2a1c9badb7869e1e110d4c79568"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6547b2a1c9badb7869e1e110d4c79568">focus_toward</a> (<a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a07bfb52c2d3768ba310be421d1287498">ArrowDirection</a> dir, bool force=false)</td></tr>
 <tr class="memitem:a33f7fc4b42f3cc79b53bd7f69de58246" id="r_a33f7fc4b42f3cc79b53bd7f69de58246"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33f7fc4b42f3cc79b53bd7f69de58246">draw</a> () const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a97c8bf38ba36c4f4e92001d377032692" id="r_a97c8bf38ba36c4f4e92001d377032692"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97c8bf38ba36c4f4e92001d377032692">_handle_face_removed</a> (<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *removed)</td></tr>
 <tr class="memitem:a3064f775b360765281ef6e23f1fd17b2" id="r_a3064f775b360765281ef6e23f1fd17b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3064f775b360765281ef6e23f1fd17b2">_focus_adjacent_tab_stop</a> (bool backward)</td></tr>
+<tr class="memitem:ab804c6ea82c14160e77c9f058eadf49d" id="r_ab804c6ea82c14160e77c9f058eadf49d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab804c6ea82c14160e77c9f058eadf49d">_current_top_level_face</a> () const</td></tr>
+<tr class="memitem:a94e8dd95d42eb1c623968f496c56df4a" id="r_a94e8dd95d42eb1c623968f496c56df4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94e8dd95d42eb1c623968f496c56df4a">_find_face_toward</a> (<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *top_level, <a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a07bfb52c2d3768ba310be421d1287498">ArrowDirection</a> dir, bool force) const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -289,6 +292,67 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ab804c6ea82c14160e77c9f058eadf49d" name="ab804c6ea82c14160e77c9f058eadf49d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab804c6ea82c14160e77c9f058eadf49d">&#9670;&#160;</a></span>_current_top_level_face()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> * fl7::gui::Shell::_current_top_level_face </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the current top-level face: the focused face's own top-level ancestor if something is currently focused, else the topmost (last-added) top-level face, or <span class="tt">nullptr</span> if there are none at all. </p>
+
+</div>
+</div>
+<a id="a94e8dd95d42eb1c623968f496c56df4a" name="a94e8dd95d42eb1c623968f496c56df4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94e8dd95d42eb1c623968f496c56df4a">&#9670;&#160;</a></span>_find_face_toward()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> * fl7::gui::Shell::_find_face_toward </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *</td>          <td class="paramname"><span class="paramname"><em>top_level</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a07bfb52c2d3768ba310be421d1287498">ArrowDirection</a></td>          <td class="paramname"><span class="paramname"><em>dir</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>force</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the nearest focusable face in the given direction from the currently focused face, among <span class="tt">top_level</span>'s own Tab stops (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#af3b0dac1cc2fda5241f4b97e7bcf3c27">Face::_collect_tab_stops()</a>), by on-screen geometry, or <span class="tt">nullptr</span> if there's no usable candidate. Without a usable starting point (no current focus, or an invisible one), picks the outermost candidate in that direction instead (topmost for Up, bottommost for Down, and so on), so entering a top-level face for the first time lands on an intuitive face. </p>
+
+</div>
+</div>
 <a id="a3064f775b360765281ef6e23f1fd17b2" name="a3064f775b360765281ef6e23f1fd17b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3064f775b360765281ef6e23f1fd17b2">&#9670;&#160;</a></span>_focus_adjacent_tab_stop()</h2>
 
@@ -385,6 +449,28 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
       </table>
 </div><div class="memdoc">
 <p>Renders all top-level faces (and their children) via the bound renderer. Purely a delegation: this shell knows nothing about how drawing actually happens (or in what order, or whatever), that's entirely up to the renderer. </p>
+
+</div>
+</div>
+<a id="a6547b2a1c9badb7869e1e110d4c79568" name="a6547b2a1c9badb7869e1e110d4c79568"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6547b2a1c9badb7869e1e110d4c79568">&#9670;&#160;</a></span>focus_toward()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fl7::gui::Shell::focus_toward </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a07bfb52c2d3768ba310be421d1287498">ArrowDirection</a></td>          <td class="paramname"><span class="paramname"><em>dir</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>force</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Moves focus to the nearest focusable face in the given direction within the current top-level face (the focused face's own top-level ancestor, or, with nothing currently focused, the topmost one), by on-screen geometry, unlike the linear Tab/Shift+Tab (see <a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>). With <span class="tt">force</span> false, a focused face that consumes the arrow for itself (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a317b2937735edb98a4695428766a87da">Face::_consumes_arrow()</a>, e.g. a text caret) keeps it; with <span class="tt">force</span> true, only a "hard" consumer (e.g. a list with somewhere left to go) still keeps it. Does nothing if the current top-level face has arrow navigation disabled (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#abc233c6ac91cab3ba32300b04446cda9">Face::get_arrow_navigation_enabled()</a>), or has no focusable face at all. Called automatically for a plain arrow key press (see <a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>); exposed publicly so other input (a gamepad's d-pad, say) can drive the same navigation manually. </p>
 
 </div>
 </div>

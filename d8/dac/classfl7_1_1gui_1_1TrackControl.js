@@ -8,6 +8,7 @@ var classfl7_1_1gui_1_1TrackControl =
     [ "TrackControl", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#a5ee4753d56ed1d5239562c5b086e5e19", null ],
     [ "~TrackControl", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#a1e614697b3164558acfa8e0ae0ce9f1f", null ],
     [ "TrackControl", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#a9b5d66e7d2205d738c56a6cc89f6be9b", null ],
+    [ "_consumes_arrow", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#addb16ca32d1d7755f5908a000cca9366", null ],
     [ "_cross", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#ad181233b0fdb1b9e983d3d6d99c2b1ca", null ],
     [ "_get_handle", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#a84f16487c5a8caa2c0998de22da1fa85", null ],
     [ "_get_handle_main_size", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#abf4e84c6b4ba8614029aaf38728e8d4b", null ],

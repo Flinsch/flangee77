@@ -19,5 +19,16 @@ var namespacefl7_1_1gui =
     [ "Style", "dd/d02/structfl7_1_1gui_1_1Style.html", "dd/d02/structfl7_1_1gui_1_1Style" ],
     [ "Theme", "d8/dc4/classfl7_1_1gui_1_1Theme.html", "d8/dc4/classfl7_1_1gui_1_1Theme" ],
     [ "ThemeLevel", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html", "d0/d60/structfl7_1_1gui_1_1ThemeLevel" ],
-    [ "TrackControl", "d8/dac/classfl7_1_1gui_1_1TrackControl.html", "d8/dac/classfl7_1_1gui_1_1TrackControl" ]
+    [ "TrackControl", "d8/dac/classfl7_1_1gui_1_1TrackControl.html", "d8/dac/classfl7_1_1gui_1_1TrackControl" ],
+    [ "ArrowDirection", "d5/d56/namespacefl7_1_1gui.html#a07bfb52c2d3768ba310be421d1287498", [
+      [ "Up", "d5/d56/namespacefl7_1_1gui.html#a07bfb52c2d3768ba310be421d1287498a258f49887ef8d14ac268c92b02503aaa", null ],
+      [ "Down", "d5/d56/namespacefl7_1_1gui.html#a07bfb52c2d3768ba310be421d1287498a08a38277b0309070706f6652eeae9a53", null ],
+      [ "Left", "d5/d56/namespacefl7_1_1gui.html#a07bfb52c2d3768ba310be421d1287498a945d5e233cf7d6240f6b783b36a374ff", null ],
+      [ "Right", "d5/d56/namespacefl7_1_1gui.html#a07bfb52c2d3768ba310be421d1287498a92b09c7c48c520c3c55e497875da437c", null ]
+    ] ],
+    [ "ArrowResponse", "d5/d56/namespacefl7_1_1gui.html#a543482ae1a58df69d758a67b945d3e83", [
+      [ "Ignore", "d5/d56/namespacefl7_1_1gui.html#a543482ae1a58df69d758a67b945d3e83afd038fc7f319e48f3115d92bf5bdbef9", null ],
+      [ "Soft", "d5/d56/namespacefl7_1_1gui.html#a543482ae1a58df69d758a67b945d3e83a682160fc6ad12f783f70608a9b46b9b9", null ],
+      [ "Hard", "d5/d56/namespacefl7_1_1gui.html#a543482ae1a58df69d758a67b945d3e83a3656183169810334a96b91129dc9d881", null ]
+    ] ]
 ];

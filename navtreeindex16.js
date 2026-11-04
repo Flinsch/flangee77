@@ -1,5 +1,7 @@
 var NAVTREEINDEX16 =
 {
+"d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html#ac60dfc48bf47ade1d308718bfffb04ac":[5,0,3,0,1,11,0],
+"d4/d40/classfl7_1_1fonts_1_1raster_1_1SimpleBitmapRasterizer.html#ac60dfc48bf47ade1d308718bfffb04ac":[7,0,3,0,1,10,0],
 "d4/d41/BoundingBox_8h.html":[8,0,3,0,3],
 "d4/d41/BoundingBox_8h_source.html":[8,0,3,0,3],
 "d4/d42/classxl7_1_1graphics_1_1meshes_1_1IndexBufferUpdater.html":[5,0,8,2,2,5],
@@ -247,7 +249,5 @@ var NAVTREEINDEX16 =
 "d4/d8c/classal7_1_1packing_1_1ShelfPacker.html#a32352f7f2c4488c8567ba39f24fc6cd5":[7,0,0,0,9,5],
 "d4/d8c/classal7_1_1packing_1_1ShelfPacker.html#a3a6279d01764873cbe567b1d6ff8c73b":[5,0,0,1,9,6],
 "d4/d8c/classal7_1_1packing_1_1ShelfPacker.html#a3a6279d01764873cbe567b1d6ff8c73b":[7,0,0,0,9,6],
-"d4/d8c/classal7_1_1packing_1_1ShelfPacker.html#a3eceeaf4300cb119d3bf4c1b4f46df21":[5,0,0,1,9,3],
-"d4/d8c/classal7_1_1packing_1_1ShelfPacker.html#a3eceeaf4300cb119d3bf4c1b4f46df21":[7,0,0,0,9,3],
-"d4/d8c/classal7_1_1packing_1_1ShelfPacker.html#a49e5c9f7a673a691a90f5d9d784f5dfd":[5,0,0,1,9,8]
+"d4/d8c/classal7_1_1packing_1_1ShelfPacker.html#a3eceeaf4300cb119d3bf4c1b4f46df21":[5,0,0,1,9,3]
 };
