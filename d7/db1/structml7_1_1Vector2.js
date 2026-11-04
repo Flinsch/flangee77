@@ -67,9 +67,9 @@ var structml7_1_1Vector2 =
     [ "t", "d7/db1/structml7_1_1Vector2.html#a39c3b438f697bd9c5d9e58f4eb197afb", null ],
     [ "u", "d7/db1/structml7_1_1Vector2.html#a0edb9f220f0a2f9e41d1bba3f0ebdd00", null ],
     [ "v", "d7/db1/structml7_1_1Vector2.html#a34c71e0743eed12f91ceb17ed9655b83", null ],
-    [ "X", "d7/db1/structml7_1_1Vector2.html#a9d94b8ae72bc2581b9ca3b67a5f61ff8", null ],
+    [ "X", "d7/db1/structml7_1_1Vector2.html#ac1a4fe61b6d18878f7714fa2e771a23b", null ],
     [ "x", "d7/db1/structml7_1_1Vector2.html#aaee757fd5495e0d838e6708b6e186f5b", null ],
-    [ "Y", "d7/db1/structml7_1_1Vector2.html#a3aa88d88f16b080795b8e3dceb8cfed8", null ],
+    [ "Y", "d7/db1/structml7_1_1Vector2.html#a4d4d3653a6b8ee81a2927f6df8c1cead", null ],
     [ "y", "d7/db1/structml7_1_1Vector2.html#a2aeef7680bfd8a9ab11c8539564faad3", null ],
-    [ "ZERO", "d7/db1/structml7_1_1Vector2.html#ab5f8ca104eb20f1e918813fb5ea78142", null ]
+    [ "ZERO", "d7/db1/structml7_1_1Vector2.html#aa1c5f1cec64aee2bf349a1c834cc289e", null ]
 ];

@@ -1,12 +1,12 @@
 var classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader =
 [
-    [ "FontHeader", "d8/dc0/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1FontHeader.html", "d8/dc0/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1FontHeader" ],
-    [ "GlyphMetric", "df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric.html", "df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric" ],
-    [ "MaximumProfile", "db/dae/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1MaximumProfile.html", "db/dae/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1MaximumProfile" ],
     [ "OffsetSubtable", "d9/db1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OffsetSubtable.html", "d9/db1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OffsetSubtable" ],
-    [ "OpenTypeFontMetric", "d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html", "d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric" ],
     [ "TableDirectoryEntry", "d7/da1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TableDirectoryEntry.html", "d7/da1/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TableDirectoryEntry" ],
+    [ "FontHeader", "d8/dc0/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1FontHeader.html", "d8/dc0/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1FontHeader" ],
+    [ "MaximumProfile", "db/dae/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1MaximumProfile.html", "db/dae/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1MaximumProfile" ],
     [ "TrueTypeFontMetric", "d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html", "d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric" ],
+    [ "OpenTypeFontMetric", "d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html", "d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric" ],
+    [ "GlyphMetric", "df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric.html", "df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric" ],
     [ "TrueTypeFontLoader", "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a9f7c951e25257f033a5548b190f341ad", null ],
     [ "~TrueTypeFontLoader", "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#ad3e69f17e6b56e73ed35445f2e968f1c", null ],
     [ "_calculate_checksum", "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#ac3df8e2b7a066199b6850234cb5ea4c9", null ],

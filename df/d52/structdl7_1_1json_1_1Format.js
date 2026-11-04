@@ -1,7 +1,7 @@
 var structdl7_1_1json_1_1Format =
 [
-    [ "MultiLineOptions", "d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html", "d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions" ],
     [ "SingleLineOptions", "df/dd2/structdl7_1_1json_1_1Format_1_1SingleLineOptions.html", "df/dd2/structdl7_1_1json_1_1Format_1_1SingleLineOptions" ],
+    [ "MultiLineOptions", "d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions.html", "d5/dde/structdl7_1_1json_1_1Format_1_1MultiLineOptions" ],
     [ "FloatPolicy", "df/d52/structdl7_1_1json_1_1Format.html#a7b4346aabdbd131ec8e0deee8e7ec2a7", [
       [ "ReplaceWithNull", "df/d52/structdl7_1_1json_1_1Format.html#a7b4346aabdbd131ec8e0deee8e7ec2a7afd164995f9faf0774522eefdc3a73279", null ],
       [ "ReplaceWithZero", "df/d52/structdl7_1_1json_1_1Format.html#a7b4346aabdbd131ec8e0deee8e7ec2a7a25a9a3016e24ebc66ffa80fc54ad7b43", null ],

@@ -1,19 +1,20 @@
 <map id="xl7::input::GameControllerSystem" name="xl7::input::GameControllerSystem">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1131,49,1325,89"/>
-<area shape="rect" id="Node000002" href="$d8/d3d/classxl7_1_1DriverBasedComponent.html" title=" " alt="" coords="876,49,1081,89"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1095,66,1130,66,1130,71,1095,71"/>
-<area shape="rect" id="Node000003" href="$db/d24/classxl7_1_1Component.html" title=" " alt="" coords="603,56,827,81"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="840,66,876,66,876,71,840,71"/>
-<area shape="rect" id="Node000004" href="$d7/de2/classcl7_1_1creational_1_1Singleton.html" title=" " alt="" coords="321,9,504,49"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="518,40,618,53,618,59,517,45"/>
-<area shape="rect" id="Node000005" href="$d9/d10/classcl7_1_1creational_1_1SingletonBase.html" title=" " alt="" coords="5,5,220,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="234,20,321,23,321,28,234,25"/>
-<area shape="rect" id="Node000006" href="$d9/dfb/structxl7_1_1Config.html" title=" " alt="" coords="367,84,458,109"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="471,89,602,76,603,82,472,94"/>
-<area shape="rect" id="Node000007" href="$dd/d38/structxl7_1_1Config_1_1General.html" title=" " alt="" coords="37,55,188,80"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="202,73,367,90,367,95,202,79"/>
-<area shape="rect" id="Node000008" href="$d2/d33/structxl7_1_1Config_1_1Video.html" title=" " alt="" coords="45,104,181,129"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="194,113,297,109,367,101,367,106,298,114,194,119"/>
-<area shape="rect" id="Node000009" href="$db/d03/structxl7_1_1Config_1_1Input.html" title=" " alt="" coords="47,153,179,179"/>
-<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="192,153,297,133,378,107,379,112,298,138,193,158"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="16,5,209,50"/>
+<area shape="rect" id="Node000004" href="$d7/de2/classcl7_1_1creational_1_1Singleton.html" title=" " alt="" coords="338,67,541,111"/>
+<area shape="poly" id="edge5_Node000004_Node000001" title=" " alt="" coords="224,50,244,54,340,72,335,74,243,59,225,55"/>
+<area shape="rect" id="Node000002" href="$d8/d3d/classxl7_1_1DriverBasedComponent.html" title=" " alt="" coords="935,36,1139,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="918,56,314,34,210,32,209,27,314,29,920,51"/>
+<area shape="rect" id="Node000003" href="$db/d24/classxl7_1_1Component.html" title=" " alt="" coords="643,67,885,111"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="901,71,937,69,932,70,902,76"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="556,86,645,88,640,90,557,92"/>
+<area shape="rect" id="Node000005" href="$d9/d10/classcl7_1_1creational_1_1SingletonBase.html" title=" " alt="" coords="5,88,220,116"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="235,95,339,92,335,94,236,100"/>
+<area shape="rect" id="Node000006" href="$d9/dfb/structxl7_1_1Config.html" title=" " alt="" coords="394,159,484,187"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="499,155,673,113,678,111,500,160"/>
+<area shape="rect" id="Node000007" href="$dd/d38/structxl7_1_1Config_1_1General.html" title=" " alt="" coords="38,140,187,168"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="203,157,396,169,392,172,203,162"/>
+<area shape="rect" id="Node000008" href="$d2/d33/structxl7_1_1Config_1_1Video.html" title=" " alt="" coords="45,196,180,224"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="195,203,313,193,396,181,391,183,314,198,196,209"/>
+<area shape="rect" id="Node000009" href="$db/d03/structxl7_1_1Config_1_1Input.html" title=" " alt="" coords="47,252,178,280"/>
+<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="193,255,253,245,313,230,367,208,411,188,416,186,369,213,314,235,254,251,194,261"/>
 </map>

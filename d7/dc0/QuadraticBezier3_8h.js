@@ -1,7 +1,7 @@
 var QuadraticBezier3_8h =
 [
-    [ "ml7::QuadraticBezier3< T >", "db/da4/structml7_1_1QuadraticBezier3.html", "db/da4/structml7_1_1QuadraticBezier3" ],
-    [ "QuadraticBezier3d", "d7/dc0/QuadraticBezier3_8h.html#a3b893701560fd8d9f736e77ea579b2f6", null ],
-    [ "QuadraticBezier3f", "d7/dc0/QuadraticBezier3_8h.html#a20bace1d305cc2cdfd4741119ebcbd69", null ],
-    [ "QuadraticBezier3ld", "d7/dc0/QuadraticBezier3_8h.html#a33102167671aa922e672d62d5384d5a6", null ]
+    [ "ml7::QuadraticBezier3&lt; T &gt;", "db/da4/structml7_1_1QuadraticBezier3.html", "db/da4/structml7_1_1QuadraticBezier3" ],
+    [ "ml7::QuadraticBezier3d", "d3/d53/namespaceml7.html#ae776afb1a1298ebee2de2b247fbc917c", null ],
+    [ "ml7::QuadraticBezier3f", "d3/d53/namespaceml7.html#a9dc05e7e20624f23ea70d386737a7b87", null ],
+    [ "ml7::QuadraticBezier3ld", "d3/d53/namespaceml7.html#a92963709c8ae0579ee796d8067e78eb0", null ]
 ];

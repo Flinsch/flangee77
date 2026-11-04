@@ -1,10 +1,10 @@
 var json_2types_8h =
 [
-    [ "array_t", "d5/d79/json_2types_8h.html#af6bfd4b0dff1cce08ef5bf6558dfdf03", null ],
-    [ "boolean_t", "d5/d79/json_2types_8h.html#a722636711d3c78e2d09b68d2fe7fd639", null ],
-    [ "float_t", "d5/d79/json_2types_8h.html#a870ecedaa27f85ab41b041965b56120f", null ],
-    [ "integer_t", "d5/d79/json_2types_8h.html#a522cfa0841bdb6b7c463b3545d635db0", null ],
-    [ "null_t", "d5/d79/json_2types_8h.html#ab488b16563e7b3bc84675eda7f88bee1", null ],
-    [ "object_t", "d5/d79/json_2types_8h.html#a13edbd4921308f8a5792410c048fad74", null ],
-    [ "string_t", "d5/d79/json_2types_8h.html#aaf86201e42f7a8df9722d1f885ddc38c", null ]
+    [ "dl7::json::array_t", "df/d87/namespacedl7_1_1json.html#adfbecd5e70d9296f9fd09409d9416a8d", null ],
+    [ "dl7::json::boolean_t", "df/d87/namespacedl7_1_1json.html#a39b049bfff0bb0c5c7927841707c3392", null ],
+    [ "dl7::json::float_t", "df/d87/namespacedl7_1_1json.html#a3f57a1a290dfe8601fccef03689bf7d2", null ],
+    [ "dl7::json::integer_t", "df/d87/namespacedl7_1_1json.html#a3ba9b7d446982d107703754e8a3071e1", null ],
+    [ "dl7::json::null_t", "df/d87/namespacedl7_1_1json.html#a11d4459cada12dde202b14b8bcce8eba", null ],
+    [ "dl7::json::object_t", "df/d87/namespacedl7_1_1json.html#a13f15efcfd603484ba128ab68f975997", null ],
+    [ "dl7::json::string_t", "df/d87/namespacedl7_1_1json.html#a6e11595f4d311112453a273d2bb47186", null ]
 ];

@@ -13,5 +13,5 @@ var classcl7_1_1creational_1_1Singleton =
     [ "instance", "d7/de2/classcl7_1_1creational_1_1Singleton.html#a1945b8c3fe5b93289111ffd5b21be516", null ],
     [ "operator=", "d7/de2/classcl7_1_1creational_1_1Singleton.html#ae36c2fbc89128d20cc65d21c8d9567d7", null ],
     [ "operator=", "d7/de2/classcl7_1_1creational_1_1Singleton.html#a5d7eff467904abb84cd57fc3dbe44426", null ],
-    [ "_instance", "d7/de2/classcl7_1_1creational_1_1Singleton.html#a6d1a5b8551248ae1b11184bbd977e3d9", null ]
+    [ "_instance", "d7/de2/classcl7_1_1creational_1_1Singleton.html#a8dbd39c45f2858ba539767a1841d96a8", null ]
 ];

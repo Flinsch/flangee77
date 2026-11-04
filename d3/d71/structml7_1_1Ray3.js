@@ -17,7 +17,7 @@ var structml7_1_1Ray3 =
     [ "swap", "d3/d71/structml7_1_1Ray3.html#a3ab439791bc6dca7d57b2b5eb1395f22", null ],
     [ "direction", "d3/d71/structml7_1_1Ray3.html#a9094ce9ea42be218957dcf1bdc38313e", null ],
     [ "origin", "d3/d71/structml7_1_1Ray3.html#a0a023fedc84faed436a435a39c5a826e", null ],
-    [ "X", "d3/d71/structml7_1_1Ray3.html#af7c77c70893da703486b14732962d574", null ],
-    [ "Y", "d3/d71/structml7_1_1Ray3.html#ac93c0978a77b850ee2d05afa79dd8103", null ],
-    [ "Z", "d3/d71/structml7_1_1Ray3.html#aa7ba686ca188ae2efd7ebe03381f1fac", null ]
+    [ "X", "d3/d71/structml7_1_1Ray3.html#a656334069999870ac6a98f416895cdfc", null ],
+    [ "Y", "d3/d71/structml7_1_1Ray3.html#a513c554075419062d89c5c45c3ebce57", null ],
+    [ "Z", "d3/d71/structml7_1_1Ray3.html#acc3b254355de214855c28c9523f00ed9", null ]
 ];

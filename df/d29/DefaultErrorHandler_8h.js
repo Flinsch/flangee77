@@ -1,4 +1,4 @@
 var DefaultErrorHandler_8h =
 [
-    [ "DefaultErrorHandler", "df/d29/DefaultErrorHandler_8h.html#abcd914f9724c8e05e247f02abfb86077", null ]
+    [ "cl7::text::codec::DefaultErrorHandler", "da/d47/namespacecl7_1_1text_1_1codec.html#a986efbd830017a4ec30f6f7879c62aeb", null ]
 ];

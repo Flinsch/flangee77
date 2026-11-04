@@ -1,10 +1,10 @@
 var classxl7_1_1graphics_1_1QuadRenderer =
 [
-    [ "ClipRect", "dd/d21/structxl7_1_1graphics_1_1QuadRenderer_1_1ClipRect.html", "dd/d21/structxl7_1_1graphics_1_1QuadRenderer_1_1ClipRect" ],
-    [ "DrawBatch", "d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html", "d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch" ],
     [ "ScopedBatch", "d2/d70/classxl7_1_1graphics_1_1QuadRenderer_1_1ScopedBatch.html", "d2/d70/classxl7_1_1graphics_1_1QuadRenderer_1_1ScopedBatch" ],
     [ "ScopedClipRect", "d4/d7f/classxl7_1_1graphics_1_1QuadRenderer_1_1ScopedClipRect.html", "d4/d7f/classxl7_1_1graphics_1_1QuadRenderer_1_1ScopedClipRect" ],
     [ "Vertex", "d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html", "d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex" ],
+    [ "DrawBatch", "d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html", "d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch" ],
+    [ "ClipRect", "dd/d21/structxl7_1_1graphics_1_1QuadRenderer_1_1ClipRect.html", "dd/d21/structxl7_1_1graphics_1_1QuadRenderer_1_1ClipRect" ],
     [ "BatchKind", "d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#ab9ca288a2fe3196562b9f51c01b3bd90", [
       [ "Solid", "d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#ab9ca288a2fe3196562b9f51c01b3bd90ae41480b6bbfbf7407974a88d3d34f4fa", null ],
       [ "Textured", "d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#ab9ca288a2fe3196562b9f51c01b3bd90a727faf49bd334ad8c6692934ff652843", null ]

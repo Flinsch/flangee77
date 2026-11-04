@@ -1,7 +1,7 @@
 var CubicBezier2_8h =
 [
-    [ "ml7::CubicBezier2< T >", "db/d5c/structml7_1_1CubicBezier2.html", "db/d5c/structml7_1_1CubicBezier2" ],
-    [ "CubicBezier2d", "d5/d3a/CubicBezier2_8h.html#a7290dd4c843df56d0f3d5293e88f9d09", null ],
-    [ "CubicBezier2f", "d5/d3a/CubicBezier2_8h.html#aad05d6e838b0780b41e8be08cae5002a", null ],
-    [ "CubicBezier2ld", "d5/d3a/CubicBezier2_8h.html#aa833e17ee4e7ff126c32800187f7fed9", null ]
+    [ "ml7::CubicBezier2&lt; T &gt;", "db/d5c/structml7_1_1CubicBezier2.html", "db/d5c/structml7_1_1CubicBezier2" ],
+    [ "ml7::CubicBezier2d", "d3/d53/namespaceml7.html#a2c7ef8d37f4dfe5febe85ebf0ae5f2fe", null ],
+    [ "ml7::CubicBezier2f", "d3/d53/namespaceml7.html#a4e127029450da2946406df808a5b4841", null ],
+    [ "ml7::CubicBezier2ld", "d3/d53/namespaceml7.html#ad1571e7d42c08d67a7408ec463901a13", null ]
 ];

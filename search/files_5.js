@@ -26,12 +26,13 @@ var searchData=
   ['fontloader_2eh_23',['FontLoader.h',['../d9/db3/FontLoader_8h.html',1,'']]],
   ['fontmetrics_2eh_24',['FontMetrics.h',['../d8/df8/FontMetrics_8h.html',1,'']]],
   ['format_2ecpp_25',['format.cpp',['../d0/dd8/format_8cpp.html',1,'']]],
-  ['format_2eh_26',['format.h',['../d4/d24/yaml_2Format_8h.html',1,'(Global Namespace)'],['../d2/d93/xml_2Format_8h.html',1,'(Global Namespace)'],['../d9/d33/toml_2Format_8h.html',1,'(Global Namespace)'],['../d1/db7/json_2Format_8h.html',1,'(Global Namespace)'],['../d3/d6a/ini_2Format_8h.html',1,'(Global Namespace)'],['../d0/d0a/format_8h.html',1,'(Global Namespace)']]],
-  ['frame_2ecpp_27',['Frame.cpp',['../d5/de0/Frame_8cpp.html',1,'']]],
-  ['frame_2eh_28',['Frame.h',['../d7/db3/Frame_8h.html',1,'']]],
-  ['framebuffersurface_2ecpp_29',['FramebufferSurface.cpp',['../de/de2/FramebufferSurface_8cpp.html',1,'']]],
-  ['framebuffersurface_2eh_30',['FramebufferSurface.h',['../d8/ddb/FramebufferSurface_8h.html',1,'']]],
-  ['functional_2eh_31',['functional.h',['../d8/dea/functional_8h.html',1,'']]],
-  ['functions_2ecpp_32',['functions.cpp',['../d3/d36/functions_8cpp.html',1,'']]],
-  ['functions_2eh_33',['functions.h',['../d8/d5c/functions_8h.html',1,'']]]
+  ['format_2eh_26',['Format.h',['../d3/d6a/ini_2Format_8h.html',1,'(Global Namespace)'],['../d1/db7/json_2Format_8h.html',1,'(Global Namespace)'],['../d9/d33/toml_2Format_8h.html',1,'(Global Namespace)'],['../d2/d93/xml_2Format_8h.html',1,'(Global Namespace)'],['../d4/d24/yaml_2Format_8h.html',1,'(Global Namespace)']]],
+  ['format_2eh_27',['format.h',['../d0/d0a/format_8h.html',1,'']]],
+  ['frame_2ecpp_28',['Frame.cpp',['../d5/de0/Frame_8cpp.html',1,'']]],
+  ['frame_2eh_29',['Frame.h',['../d7/db3/Frame_8h.html',1,'']]],
+  ['framebuffersurface_2ecpp_30',['FramebufferSurface.cpp',['../de/de2/FramebufferSurface_8cpp.html',1,'']]],
+  ['framebuffersurface_2eh_31',['FramebufferSurface.h',['../d8/ddb/FramebufferSurface_8h.html',1,'']]],
+  ['functional_2eh_32',['functional.h',['../d8/dea/functional_8h.html',1,'']]],
+  ['functions_2ecpp_33',['functions.cpp',['../d3/d36/functions_8cpp.html',1,'']]],
+  ['functions_2eh_34',['functions.h',['../d8/d5c/functions_8h.html',1,'']]]
 ];

@@ -17,6 +17,6 @@ var structml7_1_1Ray2 =
     [ "swap", "dc/def/structml7_1_1Ray2.html#a560d708582b6962c012b084b9bca8fe2", null ],
     [ "direction", "dc/def/structml7_1_1Ray2.html#ab639a71b5230b5f20ffb1b515c3d1b66", null ],
     [ "origin", "dc/def/structml7_1_1Ray2.html#aaefe7f392f17d7eb4841a7af7364d73b", null ],
-    [ "X", "dc/def/structml7_1_1Ray2.html#a8871a34d314b142650b76f132ae85c4e", null ],
-    [ "Y", "dc/def/structml7_1_1Ray2.html#a05afbcc2fda560f2b1061c4c4d18797b", null ]
+    [ "X", "dc/def/structml7_1_1Ray2.html#af972f8cff65539a44bfe6c89c1f33c19", null ],
+    [ "Y", "dc/def/structml7_1_1Ray2.html#a61c34a01f4d6fd5d725d754ca376d271", null ]
 ];

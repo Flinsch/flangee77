@@ -1,12 +1,12 @@
 var classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer =
 [
-    [ "AtlasLayer", "dd/d5d/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1AtlasLayer.html", "dd/d5d/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1AtlasLayer" ],
     [ "Config", "d2/d0b/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1Config.html", "d2/d0b/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1Config" ],
-    [ "DrawBatch", "df/da0/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1DrawBatch.html", "df/da0/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1DrawBatch" ],
-    [ "GlyphCacheEntry", "d2/d81/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1GlyphCacheEntry.html", "d2/d81/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1GlyphCacheEntry" ],
+    [ "AtlasLayer", "dd/d5d/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1AtlasLayer.html", "dd/d5d/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1AtlasLayer" ],
     [ "GlyphCacheKey", "df/dcd/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1GlyphCacheKey.html", "df/dcd/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1GlyphCacheKey" ],
-    [ "IconDrawBatch", "d5/dd4/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1IconDrawBatch.html", "d5/dd4/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1IconDrawBatch" ],
+    [ "GlyphCacheEntry", "d2/d81/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1GlyphCacheEntry.html", "d2/d81/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1GlyphCacheEntry" ],
     [ "Vertex", "d9/d99/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1Vertex.html", "d9/d99/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1Vertex" ],
+    [ "DrawBatch", "df/da0/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1DrawBatch.html", "df/da0/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1DrawBatch" ],
+    [ "IconDrawBatch", "d5/dd4/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1IconDrawBatch.html", "d5/dd4/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1IconDrawBatch" ],
     [ "AbstractTextureAtlasBasedRenderer", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a9bc6ec67f7f7d77d13bd592eae8d8ecd", null ],
     [ "~AbstractTextureAtlasBasedRenderer", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a9a51b0274cc47599a52ba23478738aad", null ],
     [ "_after_end", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#a2b455eb0d9810153da9ded203e7cf587", null ],

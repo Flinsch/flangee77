@@ -1,8 +1,8 @@
 var classfl7_1_1fonts_1_1render_1_1AbstractRenderer =
 [
-    [ "ClipRect", "db/dbb/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ClipRect.html", "db/dbb/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ClipRect" ],
     [ "ScopedBatch", "d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html", "d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch" ],
     [ "State", "d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html", "d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State" ],
+    [ "ClipRect", "db/dbb/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ClipRect.html", "db/dbb/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ClipRect" ],
     [ "~AbstractRenderer", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a899e032254ce236ead248d65607d6e7e", null ],
     [ "_after_end", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#aa36f19cacfbf6e17bc76d2b89fd461c8", null ],
     [ "_before_begin", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a89bd2866ab05cefa428662ac8424e7e1", null ],

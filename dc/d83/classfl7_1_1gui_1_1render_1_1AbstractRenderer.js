@@ -18,7 +18,6 @@ var classfl7_1_1gui_1_1render_1_1AbstractRenderer =
     [ "draw_text", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html#aa69fbbd907cda1af3b8e98525ebde436", null ],
     [ "draw_text_in_box", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html#a70a06926d043a3b5d5ceae820b43dc7b", null ],
     [ "draw_textured_rect", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html#ac5f7db75672419e4e5fd70e4e3521e2f", null ],
-    [ "end_frame", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html#a336de51a3617f558a8d5ff04e140e159", null ],
     [ "pop_clip_rect", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html#a4e6ef7ad8d4c1cdb850fa265b7cb7269", null ],
     [ "push_clip_rect", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html#abe52e0c862c71c5787fd721dc27063e8", null ],
     [ "render_faces", "dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html#a08909d0c382e3be97e31ee3f4516af8d", null ],

@@ -1,8 +1,8 @@
 var classxl7_1_1input_1_1Mouse =
 [
     [ "Attorney", "d7/d6a/classxl7_1_1input_1_1Mouse_1_1Attorney.html", "d7/d6a/classxl7_1_1input_1_1Mouse_1_1Attorney" ],
-    [ "MouseButtonState", "d1/d31/structxl7_1_1input_1_1Mouse_1_1MouseButtonState.html", "d1/d31/structxl7_1_1input_1_1Mouse_1_1MouseButtonState" ],
     [ "Position", "d4/d7d/structxl7_1_1input_1_1Mouse_1_1Position.html", "d4/d7d/structxl7_1_1input_1_1Mouse_1_1Position" ],
+    [ "MouseButtonState", "d1/d31/structxl7_1_1input_1_1Mouse_1_1MouseButtonState.html", "d1/d31/structxl7_1_1input_1_1Mouse_1_1MouseButtonState" ],
     [ "Mouse", "d3/dee/classxl7_1_1input_1_1Mouse.html#ac0d168325462170deb42130c3b1f1fc1", null ],
     [ "Mouse", "d3/dee/classxl7_1_1input_1_1Mouse.html#a918bf53c6a9ba1c1bd506de5a4c3a72c", null ],
     [ "Mouse", "d3/dee/classxl7_1_1input_1_1Mouse.html#a6005980d3e862435b001307f7ea2fe70", null ],

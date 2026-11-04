@@ -1,7 +1,7 @@
 var structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities =
 [
     [ "Memory", "da/dd9/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities_1_1Memory.html", "da/dd9/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities_1_1Memory" ],
-    [ "buffers", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#ac1bd4a904f83d255053d1cfb34b06f7a", null ],
+    [ "buffers", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a44058f3218f105afc0ec40ece1c249ea", null ],
     [ "cubemap_pow2_only", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a8f6a111fc0420c50a723cde76d0a9686", null ],
     [ "max_anisotropy", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#abc9b2740b2bc7f65fb9aa415792f6291", null ],
     [ "max_aspect_ratio", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a749aa78f6e29422044911831696ab766", null ],
@@ -20,9 +20,9 @@ var structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities =
     [ "max_vertex_buffer_size", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#afaad9e9ec6be36ebb1035bb153066154", null ],
     [ "max_vertex_shader_profile", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a44ed1865cc0aebb6775fd374be7f3099", null ],
     [ "memory", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#afa91d27656ea53c522528f7317ddc6af", null ],
-    [ "shaders", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a034dbcacc9037b04c7f3e1c4e7472dcc", null ],
+    [ "shaders", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a2e4fbd8db1f5c582635433ab01dda837", null ],
     [ "square_only", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a7e8cc6bb982830502e998a28ae21d603", null ],
     [ "texture_2d_pow2_only", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#ab8aabe096e85a6eb7f7bc41fcc6ea240", null ],
     [ "texture_3d_pow2_only", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a7d1654f4d063443ec5c6e166d2e62d6a", null ],
-    [ "textures", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a16b2767af8c03462e80a11570432f9f7", null ]
+    [ "textures", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a25b71b948355060341f47cccc3555511", null ]
 ];

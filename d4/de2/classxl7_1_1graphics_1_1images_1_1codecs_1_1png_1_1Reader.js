@@ -1,9 +1,9 @@
 var classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader =
 [
-    [ "BitInfo", "de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html", "de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo" ],
+    [ "Signature", "d5/d4f/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Signature.html", "d5/d4f/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Signature" ],
     [ "Header", "df/d50/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Header.html", "df/d50/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Header" ],
     [ "PaletteEntry", "dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html", "dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry" ],
-    [ "Signature", "d5/d4f/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Signature.html", "d5/d4f/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1Signature" ],
+    [ "BitInfo", "de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html", "de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo" ],
     [ "~Reader", "d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html#ad7c91810c3f7e8c396c339d4666ceee0", null ],
     [ "_decode", "d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html#ab91f8cfda2f17a57b3df5a9859e34041", null ],
     [ "_decompress", "d4/de2/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader.html#ad6466b6a5d22ff516a71166d33f30ef3", null ],

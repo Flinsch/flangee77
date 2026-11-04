@@ -1,7 +1,7 @@
 var classal7_1_1packing_1_1AbstractFreeRectPacker =
 [
-    [ "ScoredRect", "df/d29/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScoredRect.html", "df/d29/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScoredRect" ],
     [ "ScorePair", "d4/d33/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScorePair.html", "d4/d33/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScorePair" ],
+    [ "ScoredRect", "df/d29/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScoredRect.html", "df/d29/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScoredRect" ],
     [ "AbstractFreeRectPacker", "da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html#a70531ddeaa5e368e7ae270bbe141a804", null ],
     [ "~AbstractFreeRectPacker", "da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html#a466bd57f324a3ba34ef85496e123a98b", null ],
     [ "_can_insert", "da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html#af9d3605762d0a0f58bbae7a9e156f919", null ],

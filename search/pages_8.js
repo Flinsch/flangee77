@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mit_20license_0',['MIT License',['../dd/d7f/md__2home_2runner_2work_2flangee77_2flangee77_2LICENSE.html',1,'']]]
+  ['journey_20of_20re_20building_20my_20framework_0',['The Journey of (Re)building My Framework',['../d1/d55/md_personal-intention.html#autotoc_md22',1,'']]]
 ];

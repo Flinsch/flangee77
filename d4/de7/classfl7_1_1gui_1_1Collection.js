@@ -5,6 +5,7 @@ var classfl7_1_1gui_1_1Collection =
     [ "Collection", "d4/de7/classfl7_1_1gui_1_1Collection.html#a351f857eb2691ab833fcf1f1907e9045", null ],
     [ "~Collection", "d4/de7/classfl7_1_1gui_1_1Collection.html#aad67a6fed22250ab67ca45d6301a1b6d", null ],
     [ "_add_child", "d4/de7/classfl7_1_1gui_1_1Collection.html#a5c56b0eb97640b860fd8373fff8f1f08", null ],
+    [ "_collect_tab_stops", "d4/de7/classfl7_1_1gui_1_1Collection.html#a75821b5d5c7b83eed1b0731dc418b73c", null ],
     [ "_find_hit_face", "d4/de7/classfl7_1_1gui_1_1Collection.html#adf17cd579a3224a017a4416d98b462d4", null ],
     [ "add_child", "d4/de7/classfl7_1_1gui_1_1Collection.html#a9b6bb179d97f1379ce9dcd028d76db00", null ],
     [ "clips_children", "d4/de7/classfl7_1_1gui_1_1Collection.html#a2b6cc62bc581086ef0f5d374edfbb854", null ],

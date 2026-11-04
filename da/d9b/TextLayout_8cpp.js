@@ -1,8 +1,5 @@
 var TextLayout_8cpp =
 [
-    [ "lay_out", "da/d9b/TextLayout_8cpp.html#a6e468a61e71ed82fe5986e8bf7859033", null ],
-    [ "measure_advance", "da/d9b/TextLayout_8cpp.html#a74298d154fd4a869cfe5474dd334db85", null ],
-    [ "begin", "da/d9b/TextLayout_8cpp.html#aac83a4c2da46afd4932602be91f84961", null ],
-    [ "end", "da/d9b/TextLayout_8cpp.html#aca05b1afbbe1c83cf087b49df03c441a", null ],
-    [ "width", "da/d9b/TextLayout_8cpp.html#ae426f00e82704fa09578f5446e22d915", null ]
+    [ "fl7::fonts::TextLayout::lay_out", "dc/d6e/namespacefl7_1_1fonts_1_1TextLayout.html#a6e468a61e71ed82fe5986e8bf7859033", null ],
+    [ "fl7::fonts::TextLayout::measure_advance", "dc/d6e/namespacefl7_1_1fonts_1_1TextLayout.html#a74298d154fd4a869cfe5474dd334db85", null ]
 ];

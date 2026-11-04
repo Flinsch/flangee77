@@ -50,10 +50,10 @@ var structml7_1_1Quaternion =
     [ "transform_inverted", "d8/d1f/structml7_1_1Quaternion.html#a1f7224748ce7fce77ef74f269c8bc72d", null ],
     [ "operator*", "d8/d1f/structml7_1_1Quaternion.html#a26e57e24b739e367bac895d1f5a19e95", null ],
     [ "data", "d8/d1f/structml7_1_1Quaternion.html#a7aa9849605a0cff771432042360a7759", null ],
-    [ "IDENTITY", "d8/d1f/structml7_1_1Quaternion.html#a0fd452ad9b002e8cc7f6238b1f57655f", null ],
+    [ "IDENTITY", "d8/d1f/structml7_1_1Quaternion.html#a552d153d30c3dbde8825f0a0664f89e0", null ],
     [ "w", "d8/d1f/structml7_1_1Quaternion.html#a0be1f2ec0b9d31a595fcbd787c69ec9d", null ],
     [ "x", "d8/d1f/structml7_1_1Quaternion.html#a22e2edf6a03edc00dcb673837d61ebf3", null ],
     [ "y", "d8/d1f/structml7_1_1Quaternion.html#ae540a0cb26e05c701b35d0f68f52307a", null ],
     [ "z", "d8/d1f/structml7_1_1Quaternion.html#a55746eb028f9bc3b30b029e7622c79b8", null ],
-    [ "ZERO", "d8/d1f/structml7_1_1Quaternion.html#ad0afafb17374818db0ada3fc30ba2a56", null ]
+    [ "ZERO", "d8/d1f/structml7_1_1Quaternion.html#a7d41f33c62450e7da8913b9c43d01638", null ]
 ];

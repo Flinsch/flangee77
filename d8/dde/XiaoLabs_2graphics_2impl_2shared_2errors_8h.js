@@ -1,7 +1,7 @@
 var XiaoLabs_2graphics_2impl_2shared_2errors_8h =
 [
-    [ "d3d_result", "d8/dde/XiaoLabs_2graphics_2impl_2shared_2errors_8h.html#a1c453f025db5e4112560d913a69fd2fd", null ],
-    [ "d3d_result", "d8/dde/XiaoLabs_2graphics_2impl_2shared_2errors_8h.html#aafe895be076a5099122f36a3357a4802", null ],
-    [ "dxgi_result", "d8/dde/XiaoLabs_2graphics_2impl_2shared_2errors_8h.html#ad1ca9144b018bd18e500e14ccd838811", null ],
-    [ "dxgi_result", "d8/dde/XiaoLabs_2graphics_2impl_2shared_2errors_8h.html#aac7d03c1e330c4cbd9865360f02bd38a", null ]
+    [ "xl7::graphics::impl::shared::errors::d3d_result", "dc/d38/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1errors.html#a1c453f025db5e4112560d913a69fd2fd", null ],
+    [ "xl7::graphics::impl::shared::errors::d3d_result", "dc/d38/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1errors.html#aafe895be076a5099122f36a3357a4802", null ],
+    [ "xl7::graphics::impl::shared::errors::dxgi_result", "dc/d38/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1errors.html#ad1ca9144b018bd18e500e14ccd838811", null ],
+    [ "xl7::graphics::impl::shared::errors::dxgi_result", "dc/d38/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1errors.html#aac7d03c1e330c4cbd9865360f02bd38a", null ]
 ];

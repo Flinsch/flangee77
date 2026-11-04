@@ -12,6 +12,6 @@ var logging_8h =
     [ "TRY_LOG_SUCCESS", "d5/d77/logging_8h.html#ad6b7e6d981e207f0104c902c7e0c45a0", null ],
     [ "TRY_LOG_TYPE", "d5/d77/logging_8h.html#a29e4868802fcabb19e55fbafd9dbb5b9", null ],
     [ "TRY_LOG_WARNING", "d5/d77/logging_8h.html#ad07681aa1df4afcab947dde13562f133", null ],
-    [ "std_log", "d5/d77/logging_8h.html#ada44c64ca361943177c03420c2724251", null ],
-    [ "std_log", "d5/d77/logging_8h.html#a07fe42d16f8e085a8df72fa14ae7ba59", null ]
+    [ "cl7::logging::std_log", "df/de5/namespacecl7_1_1logging.html#ada44c64ca361943177c03420c2724251", null ],
+    [ "cl7::logging::std_log", "df/de5/namespacecl7_1_1logging.html#a07fe42d16f8e085a8df72fa14ae7ba59", null ]
 ];

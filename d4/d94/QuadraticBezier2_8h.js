@@ -1,7 +1,7 @@
 var QuadraticBezier2_8h =
 [
-    [ "ml7::QuadraticBezier2< T >", "dc/d23/structml7_1_1QuadraticBezier2.html", "dc/d23/structml7_1_1QuadraticBezier2" ],
-    [ "QuadraticBezier2d", "d4/d94/QuadraticBezier2_8h.html#a0a2c6d113e68e06d3edae4c51c16ea91", null ],
-    [ "QuadraticBezier2f", "d4/d94/QuadraticBezier2_8h.html#a567afb3910c95c1e9525482f478fa043", null ],
-    [ "QuadraticBezier2ld", "d4/d94/QuadraticBezier2_8h.html#ad0525c61e338e9f0fe302baa4ac35cbd", null ]
+    [ "ml7::QuadraticBezier2&lt; T &gt;", "dc/d23/structml7_1_1QuadraticBezier2.html", "dc/d23/structml7_1_1QuadraticBezier2" ],
+    [ "ml7::QuadraticBezier2d", "d3/d53/namespaceml7.html#af2f0b0efae8879c1bfa76c1309c26de4", null ],
+    [ "ml7::QuadraticBezier2f", "d3/d53/namespaceml7.html#a153a364e8552fff46130db4c98d06fe1", null ],
+    [ "ml7::QuadraticBezier2ld", "d3/d53/namespaceml7.html#a1c060e38c69387a90df0585f20401c9d", null ]
 ];

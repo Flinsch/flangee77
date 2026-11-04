@@ -3,7 +3,7 @@ var classxl7_1_1graphics_1_1RenderingDevice =
     [ "Attorney", "de/dca/classxl7_1_1graphics_1_1RenderingDevice_1_1Attorney.html", "de/dca/classxl7_1_1graphics_1_1RenderingDevice_1_1Attorney" ],
     [ "Capabilities", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html", "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities" ],
     [ "MeshManagerPtr", "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#abfcdd291a7e259f3a76e472c87c65a86", null ],
-    [ "ResourceManagerPtr", "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#afa984ffd4400e8377079614b55837413", null ],
+    [ "ResourceManagerPtr", "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#af577f48f34820f2b6b335f4edfc8cd08", null ],
     [ "ShaderManagerPtr", "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#aba0131a5b84132354afbe373976cbc0b", null ],
     [ "StateManagerPtr", "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#a5cbf395a76e8eaab300086416382f698", null ],
     [ "SurfaceManagerPtr", "dc/d7a/classxl7_1_1graphics_1_1RenderingDevice.html#ad7473ecfb121c1be447244a1f33e4039", null ],

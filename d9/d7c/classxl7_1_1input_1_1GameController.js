@@ -1,8 +1,8 @@
 var classxl7_1_1input_1_1GameController =
 [
-    [ "Attorney", "d5/d34/classxl7_1_1input_1_1GameController_1_1Attorney.html", "d5/d34/classxl7_1_1input_1_1GameController_1_1Attorney" ],
     [ "RawStickValues", "d0/d70/structxl7_1_1input_1_1GameController_1_1RawStickValues.html", "d0/d70/structxl7_1_1input_1_1GameController_1_1RawStickValues" ],
     [ "StickState", "d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html", "d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState" ],
+    [ "Attorney", "d5/d34/classxl7_1_1input_1_1GameController_1_1Attorney.html", "d5/d34/classxl7_1_1input_1_1GameController_1_1Attorney" ],
     [ "GameController", "d9/d7c/classxl7_1_1input_1_1GameController.html#aafa7da034f92c98d531769aee59cb697", null ],
     [ "GameController", "d9/d7c/classxl7_1_1input_1_1GameController.html#ac3c88fc8cf47f825421990e606e3350b", null ],
     [ "GameController", "d9/d7c/classxl7_1_1input_1_1GameController.html#a9cb3eede4ee1f275aecc2c9d41f38978", null ],

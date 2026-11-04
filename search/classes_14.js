@@ -19,7 +19,7 @@ var searchData=
   ['texture2darrayupdater_16',['Texture2DArrayUpdater',['../d6/d91/classxl7_1_1graphics_1_1textures_1_1Texture2DArrayUpdater.html',1,'xl7::graphics::textures']]],
   ['texture2darraywrite_17',['Texture2DArrayWrite',['../d7/d29/structxl7_1_1graphics_1_1textures_1_1Texture2DArrayWrite.html',1,'xl7::graphics::textures']]],
   ['texture2ddesc_18',['Texture2DDesc',['../db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html',1,'xl7::graphics::textures']]],
-  ['texture2dimpl_19',['texture2dimpl',['../d8/d11/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures_1_1Texture2DImpl.html',1,'xl7::graphics::impl::direct3d11::textures::Texture2DImpl'],['../dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html',1,'xl7::graphics::impl::direct3d9::textures::Texture2DImpl']]],
+  ['texture2dimpl_19',['Texture2DImpl',['../d8/d11/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1textures_1_1Texture2DImpl.html',1,'xl7::graphics::impl::direct3d11::textures::Texture2DImpl'],['../dd/d64/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures_1_1Texture2DImpl.html',1,'xl7::graphics::impl::direct3d9::textures::Texture2DImpl']]],
   ['texture2dupdater_20',['Texture2DUpdater',['../d4/dc3/classxl7_1_1graphics_1_1textures_1_1Texture2DUpdater.html',1,'xl7::graphics::textures']]],
   ['texture2dwrite_21',['Texture2DWrite',['../da/d17/structxl7_1_1graphics_1_1textures_1_1Texture2DWrite.html',1,'xl7::graphics::textures']]],
   ['texture3d_22',['Texture3D',['../de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html',1,'xl7::graphics::textures']]],
@@ -36,7 +36,7 @@ var searchData=
   ['texturerect_33',['TextureRect',['../db/dc4/structxl7_1_1graphics_1_1textures_1_1TextureRect.html',1,'xl7::graphics::textures']]],
   ['textureregion_34',['TextureRegion',['../d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html',1,'xl7::graphics::textures']]],
   ['texturesamplerdeclaration_35',['TextureSamplerDeclaration',['../d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html',1,'xl7::graphics::shaders']]],
-  ['texturesamplerstates_36',['texturesamplerstates',['../dc/db4/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates::TextureSamplerStates'],['../dc/d09/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates::TextureSamplerStates']]],
+  ['texturesamplerstates_36',['TextureSamplerStates',['../dc/db4/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html',1,'xl7::graphics::impl::direct3d11::RenderingContextImpl::HardwareStates::TextureSamplerStates'],['../dc/d09/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html',1,'xl7::graphics::impl::direct3d9::RenderingContextImpl::HardwareStates::TextureSamplerStates']]],
   ['textureupdater_37',['TextureUpdater',['../d5/db6/classxl7_1_1graphics_1_1textures_1_1TextureUpdater.html',1,'xl7::graphics::textures']]],
   ['texturewrite_38',['TextureWrite',['../d5/d33/structxl7_1_1graphics_1_1textures_1_1TextureWrite.html',1,'xl7::graphics::textures']]],
   ['theme_39',['Theme',['../d8/dc4/classfl7_1_1gui_1_1Theme.html',1,'fl7::gui']]],
@@ -54,5 +54,6 @@ var searchData=
   ['traits_3c_20cl7_3a_3au8char_5ft_20_3e_51',['traits&lt; cl7::u8char_t &gt;',['../de/db6/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4.html',1,'cl7::text::codec']]],
   ['transcoder_52',['Transcoder',['../da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html',1,'cl7::text::codec']]],
   ['truetypefontloader_53',['TrueTypeFontLoader',['../dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html',1,'fl7::fonts::detail::ttf']]],
-  ['truetypefontmetric_54',['TrueTypeFontMetric',['../d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader']]]
+  ['truetypefontmetric_54',['TrueTypeFontMetric',['../d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html',1,'fl7::fonts::detail::ttf::TrueTypeFontLoader']]],
+  ['type_55',['type',['../d8/dd0/structcl7_1_1char__type__of.html',1,'cl7']]]
 ];

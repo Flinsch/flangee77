@@ -1,9 +1,9 @@
 var classal7_1_1packing_1_1SkylinePacker =
 [
-    [ "PlacementRange", "d3/dae/structal7_1_1packing_1_1SkylinePacker_1_1PlacementRange.html", "d3/dae/structal7_1_1packing_1_1SkylinePacker_1_1PlacementRange" ],
-    [ "ScoredRect", "d5/dc8/structal7_1_1packing_1_1SkylinePacker_1_1ScoredRect.html", "d5/dc8/structal7_1_1packing_1_1SkylinePacker_1_1ScoredRect" ],
-    [ "ScorePair", "de/da9/structal7_1_1packing_1_1SkylinePacker_1_1ScorePair.html", "de/da9/structal7_1_1packing_1_1SkylinePacker_1_1ScorePair" ],
     [ "SkylineLevel", "d1/da1/structal7_1_1packing_1_1SkylinePacker_1_1SkylineLevel.html", "d1/da1/structal7_1_1packing_1_1SkylinePacker_1_1SkylineLevel" ],
+    [ "PlacementRange", "d3/dae/structal7_1_1packing_1_1SkylinePacker_1_1PlacementRange.html", "d3/dae/structal7_1_1packing_1_1SkylinePacker_1_1PlacementRange" ],
+    [ "ScorePair", "de/da9/structal7_1_1packing_1_1SkylinePacker_1_1ScorePair.html", "de/da9/structal7_1_1packing_1_1SkylinePacker_1_1ScorePair" ],
+    [ "ScoredRect", "d5/dc8/structal7_1_1packing_1_1SkylinePacker_1_1ScoredRect.html", "d5/dc8/structal7_1_1packing_1_1SkylinePacker_1_1ScoredRect" ],
     [ "Heuristic", "d5/db1/classal7_1_1packing_1_1SkylinePacker.html#ac69490f888fa72c4a4abcb750e195182", [
       [ "BottomLeft", "d5/db1/classal7_1_1packing_1_1SkylinePacker.html#ac69490f888fa72c4a4abcb750e195182a98e5a1c44509157ebcaf46c515c78875", null ],
       [ "BestFit", "d5/db1/classal7_1_1packing_1_1SkylinePacker.html#ac69490f888fa72c4a4abcb750e195182a3be09308e76c7409a4e21584527d7f6e", null ]

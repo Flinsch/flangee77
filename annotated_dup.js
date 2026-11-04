@@ -8,10 +8,10 @@ var annotated_dup =
         [ "MaxRectsPacker", "de/d15/classal7_1_1packing_1_1MaxRectsPacker.html", "de/d15/classal7_1_1packing_1_1MaxRectsPacker" ],
         [ "NaiveRowPacker", "d7/d31/classal7_1_1packing_1_1NaiveRowPacker.html", "d7/d31/classal7_1_1packing_1_1NaiveRowPacker" ],
         [ "Position", "d3/dda/structal7_1_1packing_1_1Position.html", "d3/dda/structal7_1_1packing_1_1Position" ],
+        [ "Size", "d8/d08/structal7_1_1packing_1_1Size.html", "d8/d08/structal7_1_1packing_1_1Size" ],
         [ "Rect", "df/dd8/structal7_1_1packing_1_1Rect.html", "df/dd8/structal7_1_1packing_1_1Rect" ],
         [ "RectOptions", "d3/d71/structal7_1_1packing_1_1RectOptions.html", "d3/d71/structal7_1_1packing_1_1RectOptions" ],
         [ "ShelfPacker", "d4/d8c/classal7_1_1packing_1_1ShelfPacker.html", "d4/d8c/classal7_1_1packing_1_1ShelfPacker" ],
-        [ "Size", "d8/d08/structal7_1_1packing_1_1Size.html", "d8/d08/structal7_1_1packing_1_1Size" ],
         [ "SkylinePacker", "d5/db1/classal7_1_1packing_1_1SkylinePacker.html", "d5/db1/classal7_1_1packing_1_1SkylinePacker" ]
       ] ]
     ] ],
@@ -24,21 +24,21 @@ var annotated_dup =
       [ "bits", "d9/df1/namespacecl7_1_1bits.html", [
         [ "detail", "d5/d0f/namespacecl7_1_1bits_1_1detail.html", [
           [ "SwapBytesImpl", "d6/d9e/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl.html", "d6/d9e/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl" ],
-          [ "SwapBytesImpl< T, 1 >", "d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4.html", "d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4" ]
+          [ "SwapBytesImpl&lt; T, 1 &gt;", "d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4.html", "d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4" ]
         ] ]
       ] ],
       [ "creational", "da/df3/namespacecl7_1_1creational.html", [
-        [ "Singleton", "d7/de2/classcl7_1_1creational_1_1Singleton.html", "d7/de2/classcl7_1_1creational_1_1Singleton" ],
         [ "SingletonBase", "d9/d10/classcl7_1_1creational_1_1SingletonBase.html", "d9/d10/classcl7_1_1creational_1_1SingletonBase" ],
-        [ "SingletonManager", "d7/dba/classcl7_1_1creational_1_1SingletonManager.html", "d7/dba/classcl7_1_1creational_1_1SingletonManager" ]
+        [ "SingletonManager", "d7/dba/classcl7_1_1creational_1_1SingletonManager.html", "d7/dba/classcl7_1_1creational_1_1SingletonManager" ],
+        [ "Singleton", "d7/de2/classcl7_1_1creational_1_1Singleton.html", "d7/de2/classcl7_1_1creational_1_1Singleton" ]
       ] ],
       [ "detail", "d2/da9/namespacecl7_1_1detail.html", [
         [ "_is_any_string", "d8/d05/structcl7_1_1detail_1_1__is__any__string.html", null ],
-        [ "_is_any_string< std::basic_string< Tchar, Ttraits, Talloc > >", "d0/d63/structcl7_1_1detail_1_1__is__any__string_3_01std_1_1basic__string_3_01Tchar_00_01Ttraits_00_01Talloc_01_4_01_4.html", null ],
-        [ "_is_any_string_span", "de/d1e/structcl7_1_1detail_1_1__is__any__string__span.html", null ],
-        [ "_is_any_string_span< std::span< Tchar > >", "d0/d3a/structcl7_1_1detail_1_1__is__any__string__span_3_01std_1_1span_3_01Tchar_01_4_01_4.html", null ],
+        [ "_is_any_string&lt; std::basic_string&lt; Tchar, Ttraits, Talloc &gt; &gt;", "d0/d63/structcl7_1_1detail_1_1__is__any__string_3_01std_1_1basic__string_3_01Tchar_00_01Ttraits_00_01Talloc_01_4_01_4.html", null ],
         [ "_is_any_string_view", "df/d9b/structcl7_1_1detail_1_1__is__any__string__view.html", null ],
-        [ "_is_any_string_view< std::basic_string_view< Tchar, Ttraits > >", "d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html", null ]
+        [ "_is_any_string_view&lt; std::basic_string_view&lt; Tchar, Ttraits &gt; &gt;", "d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html", null ],
+        [ "_is_any_string_span", "de/d1e/structcl7_1_1detail_1_1__is__any__string__span.html", null ],
+        [ "_is_any_string_span&lt; std::span&lt; Tchar &gt; &gt;", "d0/d3a/structcl7_1_1detail_1_1__is__any__string__span_3_01std_1_1span_3_01Tchar_01_4_01_4.html", null ]
       ] ],
       [ "io", "d6/dc7/namespacecl7_1_1io.html", [
         [ "AsciiReader", "df/d84/classcl7_1_1io_1_1AsciiReader.html", "df/d84/classcl7_1_1io_1_1AsciiReader" ],
@@ -101,41 +101,41 @@ var annotated_dup =
           [ "LoggingErrorHandler", "db/d54/classcl7_1_1text_1_1codec_1_1LoggingErrorHandler.html", "db/d54/classcl7_1_1text_1_1codec_1_1LoggingErrorHandler" ],
           [ "PlainErrorHandler", "d1/d75/classcl7_1_1text_1_1codec_1_1PlainErrorHandler.html", "d1/d75/classcl7_1_1text_1_1codec_1_1PlainErrorHandler" ],
           [ "traits", "d7/d07/structcl7_1_1text_1_1codec_1_1traits.html", "d7/d07/structcl7_1_1text_1_1codec_1_1traits" ],
-          [ "traits< cl7::achar_t >", "d7/db1/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1achar__t_01_4.html", "d7/db1/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1achar__t_01_4" ],
-          [ "traits< cl7::u16char_t >", "d2/d25/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u16char__t_01_4.html", "d2/d25/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u16char__t_01_4" ],
-          [ "traits< cl7::u32char_t >", "d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html", "d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4" ],
-          [ "traits< cl7::u8char_t >", "de/db6/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4.html", "de/db6/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4" ],
+          [ "traits&lt; cl7::achar_t &gt;", "d7/db1/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1achar__t_01_4.html", "d7/db1/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1achar__t_01_4" ],
+          [ "traits&lt; cl7::u8char_t &gt;", "de/db6/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4.html", "de/db6/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u8char__t_01_4" ],
+          [ "traits&lt; cl7::u16char_t &gt;", "d2/d25/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u16char__t_01_4.html", "d2/d25/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u16char__t_01_4" ],
+          [ "traits&lt; cl7::u32char_t &gt;", "d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html", "d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4" ],
           [ "Transcoder", "da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html", "da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder" ],
           [ "Utf16Codec", "d8/de0/classcl7_1_1text_1_1codec_1_1Utf16Codec.html", "d8/de0/classcl7_1_1text_1_1codec_1_1Utf16Codec" ],
           [ "Utf32Codec", "db/dd0/classcl7_1_1text_1_1codec_1_1Utf32Codec.html", "db/dd0/classcl7_1_1text_1_1codec_1_1Utf32Codec" ],
           [ "Utf8Codec", "d2/db1/classcl7_1_1text_1_1codec_1_1Utf8Codec.html", "d2/db1/classcl7_1_1text_1_1codec_1_1Utf8Codec" ]
         ] ],
         [ "format", "df/d89/namespacecl7_1_1text_1_1format.html", [
-          [ "FloatFormatOptions", "d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html", "d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions" ],
-          [ "IntFormatOptions", "dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html", "dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions" ]
+          [ "IntFormatOptions", "dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html", "dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions" ],
+          [ "FloatFormatOptions", "d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions.html", "d9/df0/structcl7_1_1text_1_1format_1_1FloatFormatOptions" ]
         ] ]
       ] ],
       [ "auto_invoke", "de/dbb/classcl7_1_1auto__invoke.html", "de/dbb/classcl7_1_1auto__invoke" ],
-      [ "char_type_of", "d8/dd0/structcl7_1_1char__type__of.html", null ],
-      [ "char_type_of< Tstring_char_ptr >", "d7/dec/structcl7_1_1char__type__of_3_01Tstring__char__ptr_01_4.html", "d7/dec/structcl7_1_1char__type__of_3_01Tstring__char__ptr_01_4" ],
-      [ "char_type_of< Tstring_view_like >", "d1/d85/structcl7_1_1char__type__of_3_01Tstring__view__like_01_4.html", "d1/d85/structcl7_1_1char__type__of_3_01Tstring__view__like_01_4" ],
-      [ "const_ptr_forward_iterator", "d2/d93/classcl7_1_1const__ptr__forward__iterator.html", "d2/d93/classcl7_1_1const__ptr__forward__iterator" ],
-      [ "contiguous_iterator", "d1/d5d/classcl7_1_1contiguous__iterator.html", "d1/d5d/classcl7_1_1contiguous__iterator" ],
       [ "Guid", "dc/dbd/structcl7_1_1Guid.html", "dc/dbd/structcl7_1_1Guid" ],
+      [ "contiguous_iterator", "d1/d5d/classcl7_1_1contiguous__iterator.html", "d1/d5d/classcl7_1_1contiguous__iterator" ],
+      [ "const_ptr_forward_iterator", "d2/d93/classcl7_1_1const__ptr__forward__iterator.html", "d2/d93/classcl7_1_1const__ptr__forward__iterator" ],
+      [ "ordered_map", "dd/d42/classcl7_1_1ordered__map.html", "dd/d42/classcl7_1_1ordered__map" ],
+      [ "u8isstream", "d9/d44/classcl7_1_1u8isstream.html", "d9/d44/classcl7_1_1u8isstream" ],
+      [ "u8osstream", "d3/d63/classcl7_1_1u8osstream.html", "d3/d63/classcl7_1_1u8osstream" ],
+      [ "static_vector", "da/d4e/classcl7_1_1static__vector.html", "da/d4e/classcl7_1_1static__vector" ],
       [ "is_any_char", "d2/d08/structcl7_1_1is__any__char.html", null ],
       [ "is_any_char_ptr", "df/d1c/structcl7_1_1is__any__char__ptr.html", null ],
       [ "is_any_string", "db/daf/structcl7_1_1is__any__string.html", null ],
-      [ "is_any_string_or_span", "d8/db2/structcl7_1_1is__any__string__or__span.html", null ],
-      [ "is_any_string_or_view", "da/d88/structcl7_1_1is__any__string__or__view.html", null ],
-      [ "is_any_string_span", "df/d3e/structcl7_1_1is__any__string__span.html", null ],
       [ "is_any_string_view", "d9/d41/structcl7_1_1is__any__string__view.html", null ],
+      [ "is_any_string_span", "df/d3e/structcl7_1_1is__any__string__span.html", null ],
+      [ "is_any_string_or_view", "da/d88/structcl7_1_1is__any__string__or__view.html", null ],
+      [ "is_any_string_or_span", "d8/db2/structcl7_1_1is__any__string__or__span.html", null ],
       [ "is_any_string_view_like", "df/d9c/structcl7_1_1is__any__string__view__like.html", null ],
       [ "is_string_constructible", "d9/d09/structcl7_1_1is__string__constructible.html", null ],
-      [ "ordered_map", "dd/d42/classcl7_1_1ordered__map.html", "dd/d42/classcl7_1_1ordered__map" ],
-      [ "static_vector", "da/d4e/classcl7_1_1static__vector.html", "da/d4e/classcl7_1_1static__vector" ],
+      [ "char_type_of", "d8/dd0/structcl7_1_1char__type__of.html", null ],
+      [ "char_type_of&lt; Tstring_view_like &gt;", "d1/d85/structcl7_1_1char__type__of_3_01Tstring__view__like_01_4.html", "d1/d85/structcl7_1_1char__type__of_3_01Tstring__view__like_01_4" ],
+      [ "char_type_of&lt; Tstring_char_ptr &gt;", "d7/dec/structcl7_1_1char__type__of_3_01Tstring__char__ptr_01_4.html", "d7/dec/structcl7_1_1char__type__of_3_01Tstring__char__ptr_01_4" ],
       [ "string_hash", "d0/dbc/structcl7_1_1string__hash.html", "d0/dbc/structcl7_1_1string__hash" ],
-      [ "u8isstream", "d9/d44/classcl7_1_1u8isstream.html", "d9/d44/classcl7_1_1u8isstream" ],
-      [ "u8osstream", "d3/d63/classcl7_1_1u8osstream.html", "d3/d63/classcl7_1_1u8osstream" ],
       [ "Version", "db/ddf/structcl7_1_1Version.html", "db/ddf/structcl7_1_1Version" ],
       [ "VersionedId", "dc/d7b/classcl7_1_1VersionedId.html", "dc/d7b/classcl7_1_1VersionedId" ]
     ] ],
@@ -146,19 +146,19 @@ var annotated_dup =
       [ "config", "df/d08/namespacedl7_1_1config.html", [
         [ "detail", "d2/def/namespacedl7_1_1config_1_1detail.html", [
           [ "is_bound_sequence", "d8/da7/structdl7_1_1config_1_1detail_1_1is__bound__sequence.html", null ],
-          [ "is_bound_sequence< std::vector< T, Tallocator > >", "dd/dbf/structdl7_1_1config_1_1detail_1_1is__bound__sequence_3_01std_1_1vector_3_01T_00_01Tallocator_01_4_01_4.html", null ]
+          [ "is_bound_sequence&lt; std::vector&lt; T, Tallocator &gt; &gt;", "dd/dbf/structdl7_1_1config_1_1detail_1_1is__bound__sequence_3_01std_1_1vector_3_01T_00_01Tallocator_01_4_01_4.html", null ]
         ] ],
         [ "Binder", "dc/dfa/classdl7_1_1config_1_1Binder.html", "dc/dfa/classdl7_1_1config_1_1Binder" ],
-        [ "Binding", "d1/dd5/structdl7_1_1config_1_1Binding.html", null ],
-        [ "Binding< xl7::Config >", "db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4.html", "db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4" ],
-        [ "Binding< xl7::Config::General >", "d2/d8b/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1General_01_4.html", "d2/d8b/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1General_01_4" ],
-        [ "Binding< xl7::Config::Input >", "d7/d63/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Input_01_4.html", "d7/d63/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Input_01_4" ],
-        [ "Binding< xl7::Config::Video >", "d4/d46/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Video_01_4.html", "d4/d46/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Video_01_4" ],
-        [ "EnumNames", "df/da4/structdl7_1_1config_1_1EnumNames.html", null ],
-        [ "EnumNames< xl7::Config::Video::PresentationMode >", "d2/d05/structdl7_1_1config_1_1EnumNames_3_01xl7_1_1Config_1_1Video_1_1PresentationMode_01_4.html", "d2/d05/structdl7_1_1config_1_1EnumNames_3_01xl7_1_1Config_1_1Video_1_1PresentationMode_01_4" ],
-        [ "EnumValue", "db/d77/structdl7_1_1config_1_1EnumValue.html", "db/d77/structdl7_1_1config_1_1EnumValue" ],
         [ "Field", "d1/ddf/structdl7_1_1config_1_1Field.html", "d1/ddf/structdl7_1_1config_1_1Field" ],
-        [ "Value", "d7/de1/classdl7_1_1config_1_1Value.html", "d7/de1/classdl7_1_1config_1_1Value" ]
+        [ "Binding", "d1/dd5/structdl7_1_1config_1_1Binding.html", null ],
+        [ "EnumValue", "db/d77/structdl7_1_1config_1_1EnumValue.html", "db/d77/structdl7_1_1config_1_1EnumValue" ],
+        [ "EnumNames", "df/da4/structdl7_1_1config_1_1EnumNames.html", null ],
+        [ "Value", "d7/de1/classdl7_1_1config_1_1Value.html", "d7/de1/classdl7_1_1config_1_1Value" ],
+        [ "EnumNames&lt; xl7::Config::Video::PresentationMode &gt;", "d2/d05/structdl7_1_1config_1_1EnumNames_3_01xl7_1_1Config_1_1Video_1_1PresentationMode_01_4.html", "d2/d05/structdl7_1_1config_1_1EnumNames_3_01xl7_1_1Config_1_1Video_1_1PresentationMode_01_4" ],
+        [ "Binding&lt; xl7::Config::General &gt;", "d2/d8b/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1General_01_4.html", "d2/d8b/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1General_01_4" ],
+        [ "Binding&lt; xl7::Config::Video &gt;", "d4/d46/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Video_01_4.html", "d4/d46/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Video_01_4" ],
+        [ "Binding&lt; xl7::Config::Input &gt;", "d7/d63/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Input_01_4.html", "d7/d63/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1Input_01_4" ],
+        [ "Binding&lt; xl7::Config &gt;", "db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4.html", "db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4" ]
       ] ],
       [ "ini", "dd/dc6/namespacedl7_1_1ini.html", [
         [ "detail", "de/d05/namespacedl7_1_1ini_1_1detail.html", [
@@ -195,14 +195,14 @@ var annotated_dup =
       ] ],
       [ "syntax", "db/d34/namespacedl7_1_1syntax.html", [
         [ "matchers", "d3/d6a/namespacedl7_1_1syntax_1_1matchers.html", [
-          [ "BlockCommentMatcher", "d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html", "d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher" ],
+          [ "SingleQuotedStringMatcher", "de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html", "de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher" ],
           [ "DoubleQuotedStringMatcher", "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html", "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher" ],
+          [ "IntegerLiteralMatcher", "d9/d3c/structdl7_1_1syntax_1_1matchers_1_1IntegerLiteralMatcher.html", "d9/d3c/structdl7_1_1syntax_1_1matchers_1_1IntegerLiteralMatcher" ],
           [ "FloatingPointLiteralMatcher", "df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher.html", "df/ddd/structdl7_1_1syntax_1_1matchers_1_1FloatingPointLiteralMatcher" ],
           [ "HexadecimalLiteralMatcher", "d9/d44/structdl7_1_1syntax_1_1matchers_1_1HexadecimalLiteralMatcher.html", "d9/d44/structdl7_1_1syntax_1_1matchers_1_1HexadecimalLiteralMatcher" ],
           [ "IdentifierMatcher", "da/d47/structdl7_1_1syntax_1_1matchers_1_1IdentifierMatcher.html", "da/d47/structdl7_1_1syntax_1_1matchers_1_1IdentifierMatcher" ],
-          [ "IntegerLiteralMatcher", "d9/d3c/structdl7_1_1syntax_1_1matchers_1_1IntegerLiteralMatcher.html", "d9/d3c/structdl7_1_1syntax_1_1matchers_1_1IntegerLiteralMatcher" ],
           [ "LineCommentMatcher", "de/de7/structdl7_1_1syntax_1_1matchers_1_1LineCommentMatcher.html", "de/de7/structdl7_1_1syntax_1_1matchers_1_1LineCommentMatcher" ],
-          [ "SingleQuotedStringMatcher", "de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher.html", "de/d6e/structdl7_1_1syntax_1_1matchers_1_1SingleQuotedStringMatcher" ]
+          [ "BlockCommentMatcher", "d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher.html", "d5/d42/structdl7_1_1syntax_1_1matchers_1_1BlockCommentMatcher" ]
         ] ],
         [ "AstNode", "db/dcc/classdl7_1_1syntax_1_1AstNode.html", "db/dcc/classdl7_1_1syntax_1_1AstNode" ],
         [ "AstProcessor", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor.html", "dc/dfa/classdl7_1_1syntax_1_1AstProcessor" ],
@@ -210,7 +210,6 @@ var annotated_dup =
         [ "CstBuilder", "db/dc4/classdl7_1_1syntax_1_1CstBuilder.html", "db/dc4/classdl7_1_1syntax_1_1CstBuilder" ],
         [ "CstNode", "d0/df6/classdl7_1_1syntax_1_1CstNode.html", "d0/df6/classdl7_1_1syntax_1_1CstNode" ],
         [ "CstToAstTransformer", "d2/d8a/classdl7_1_1syntax_1_1CstToAstTransformer.html", "d2/d8a/classdl7_1_1syntax_1_1CstToAstTransformer" ],
-        [ "CustomSymbol", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol" ],
         [ "Diagnostic", "d0/d46/structdl7_1_1syntax_1_1Diagnostic.html", "d0/d46/structdl7_1_1syntax_1_1Diagnostic" ],
         [ "Diagnostics", "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html", "d3/deb/classdl7_1_1syntax_1_1Diagnostics" ],
         [ "DirectAstBuilder", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html", "df/d95/classdl7_1_1syntax_1_1DirectAstBuilder" ],
@@ -219,16 +218,17 @@ var annotated_dup =
         [ "GrammarAnalyzer", "dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer.html", "dc/dc9/classdl7_1_1syntax_1_1GrammarAnalyzer" ],
         [ "Lexer", "d6/d8c/classdl7_1_1syntax_1_1Lexer.html", "d6/d8c/classdl7_1_1syntax_1_1Lexer" ],
         [ "LexingTokenReader", "dd/ddd/classdl7_1_1syntax_1_1LexingTokenReader.html", "dd/ddd/classdl7_1_1syntax_1_1LexingTokenReader" ],
-        [ "LiteralSymbol", "d7/d6d/structdl7_1_1syntax_1_1LiteralSymbol.html", "d7/d6d/structdl7_1_1syntax_1_1LiteralSymbol" ],
-        [ "NonLiteralSymbol", "d8/d79/structdl7_1_1syntax_1_1NonLiteralSymbol.html", "d8/d79/structdl7_1_1syntax_1_1NonLiteralSymbol" ],
         [ "ParseStage", "d9/d44/classdl7_1_1syntax_1_1ParseStage.html", "d9/d44/classdl7_1_1syntax_1_1ParseStage" ],
-        [ "PatternSymbol", "d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html", "d3/d62/structdl7_1_1syntax_1_1PatternSymbol" ],
         [ "ProductionRule", "d1/d16/structdl7_1_1syntax_1_1ProductionRule.html", "d1/d16/structdl7_1_1syntax_1_1ProductionRule" ],
         [ "ProductionRuleCollection", "dd/d0c/classdl7_1_1syntax_1_1ProductionRuleCollection.html", "dd/d0c/classdl7_1_1syntax_1_1ProductionRuleCollection" ],
         [ "SourceAwareDiagnostics", "d2/d51/classdl7_1_1syntax_1_1SourceAwareDiagnostics.html", "d2/d51/classdl7_1_1syntax_1_1SourceAwareDiagnostics" ],
         [ "SourceContext", "d7/d8c/structdl7_1_1syntax_1_1SourceContext.html", "d7/d8c/structdl7_1_1syntax_1_1SourceContext" ],
         [ "SourceLocation", "d0/d4d/structdl7_1_1syntax_1_1SourceLocation.html", "d0/d4d/structdl7_1_1syntax_1_1SourceLocation" ],
         [ "TerminalSymbol", "d1/d21/structdl7_1_1syntax_1_1TerminalSymbol.html", "d1/d21/structdl7_1_1syntax_1_1TerminalSymbol" ],
+        [ "LiteralSymbol", "d7/d6d/structdl7_1_1syntax_1_1LiteralSymbol.html", "d7/d6d/structdl7_1_1syntax_1_1LiteralSymbol" ],
+        [ "NonLiteralSymbol", "d8/d79/structdl7_1_1syntax_1_1NonLiteralSymbol.html", "d8/d79/structdl7_1_1syntax_1_1NonLiteralSymbol" ],
+        [ "PatternSymbol", "d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html", "d3/d62/structdl7_1_1syntax_1_1PatternSymbol" ],
+        [ "CustomSymbol", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html", "d1/da4/structdl7_1_1syntax_1_1CustomSymbol" ],
         [ "TerminalSymbolCollection", "dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html", "dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection" ],
         [ "Token", "dc/d58/structdl7_1_1syntax_1_1Token.html", "dc/d58/structdl7_1_1syntax_1_1Token" ],
         [ "TokenReader", "db/d76/classdl7_1_1syntax_1_1TokenReader.html", "db/d76/classdl7_1_1syntax_1_1TokenReader" ],
@@ -317,9 +317,9 @@ var annotated_dup =
           [ "AbstractRenderer", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html", "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer" ],
           [ "AbstractTextureAtlasBasedRenderer", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html", "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer" ],
           [ "BitmapRenderer", "df/d57/classfl7_1_1fonts_1_1render_1_1BitmapRenderer.html", "df/d57/classfl7_1_1fonts_1_1render_1_1BitmapRenderer" ],
-          [ "MsdfRenderer", "d5/d89/classfl7_1_1fonts_1_1render_1_1MsdfRenderer.html", "d5/d89/classfl7_1_1fonts_1_1render_1_1MsdfRenderer" ],
           [ "NamedIcon", "d2/d64/structfl7_1_1fonts_1_1render_1_1NamedIcon.html", "d2/d64/structfl7_1_1fonts_1_1render_1_1NamedIcon" ],
           [ "ParsedMarkup", "d9/da9/structfl7_1_1fonts_1_1render_1_1ParsedMarkup.html", "d9/da9/structfl7_1_1fonts_1_1render_1_1ParsedMarkup" ],
+          [ "MsdfRenderer", "d5/d89/classfl7_1_1fonts_1_1render_1_1MsdfRenderer.html", "d5/d89/classfl7_1_1fonts_1_1render_1_1MsdfRenderer" ],
           [ "SdfRenderer", "d1/dcc/classfl7_1_1fonts_1_1render_1_1SdfRenderer.html", "d1/dcc/classfl7_1_1fonts_1_1render_1_1SdfRenderer" ],
           [ "StyleRun", "de/ddd/structfl7_1_1fonts_1_1render_1_1StyleRun.html", "de/ddd/structfl7_1_1fonts_1_1render_1_1StyleRun" ],
           [ "TestRenderer", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer.html", "d3/d5c/classfl7_1_1fonts_1_1render_1_1TestRenderer" ]
@@ -391,18 +391,18 @@ var annotated_dup =
         ] ]
       ] ],
       [ "distance2", "db/d4f/namespaceml7_1_1distance2.html", [
-        [ "PointResult", "d6/df6/structml7_1_1distance2_1_1PointResult.html", "d6/df6/structml7_1_1distance2_1_1PointResult" ],
-        [ "ResultBase", "de/d3e/structml7_1_1distance2_1_1ResultBase.html", "de/d3e/structml7_1_1distance2_1_1ResultBase" ]
+        [ "ResultBase", "de/d3e/structml7_1_1distance2_1_1ResultBase.html", "de/d3e/structml7_1_1distance2_1_1ResultBase" ],
+        [ "PointResult", "d6/df6/structml7_1_1distance2_1_1PointResult.html", "d6/df6/structml7_1_1distance2_1_1PointResult" ]
       ] ],
       [ "distance3", "df/d0a/namespaceml7_1_1distance3.html", [
-        [ "PointResult", "d2/d68/structml7_1_1distance3_1_1PointResult.html", "d2/d68/structml7_1_1distance3_1_1PointResult" ],
-        [ "ResultBase", "da/db7/structml7_1_1distance3_1_1ResultBase.html", "da/db7/structml7_1_1distance3_1_1ResultBase" ]
+        [ "ResultBase", "da/db7/structml7_1_1distance3_1_1ResultBase.html", "da/db7/structml7_1_1distance3_1_1ResultBase" ],
+        [ "PointResult", "d2/d68/structml7_1_1distance3_1_1PointResult.html", "d2/d68/structml7_1_1distance3_1_1PointResult" ]
       ] ],
       [ "ops", "d9/d38/namespaceml7_1_1ops.html", [
         [ "clamp", "d4/d01/structml7_1_1ops_1_1clamp.html", "d4/d01/structml7_1_1ops_1_1clamp" ],
         [ "clamp01", "d0/d5c/structml7_1_1ops_1_1clamp01.html", "d0/d5c/structml7_1_1ops_1_1clamp01" ],
         [ "ramp", "de/dcb/structml7_1_1ops_1_1ramp.html", "de/dcb/structml7_1_1ops_1_1ramp" ],
-        [ "ramp< 0, 1 >", "da/d35/structml7_1_1ops_1_1ramp_3_010_00_011_01_4.html", "da/d35/structml7_1_1ops_1_1ramp_3_010_00_011_01_4" ]
+        [ "ramp&lt; 0, 1 &gt;", "da/d35/structml7_1_1ops_1_1ramp_3_010_00_011_01_4.html", "da/d35/structml7_1_1ops_1_1ramp_3_010_00_011_01_4" ]
       ] ],
       [ "Angle", "d4/d9d/structml7_1_1Angle.html", "d4/d9d/structml7_1_1Angle" ],
       [ "constants", "d6/d9f/structml7_1_1constants.html", "d6/d9f/structml7_1_1constants" ],
@@ -431,9 +431,9 @@ var annotated_dup =
       [ "ArgumentBag", "dd/d75/classpl7_1_1ArgumentBag.html", "dd/d75/classpl7_1_1ArgumentBag" ]
     ] ],
     [ "std", "d8/dcc/namespacestd.html", [
-      [ "hash< xl7::graphics::impl::shared::meshes::ComposedVertexLayout >", "db/de3/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout_01_4.html", "db/de3/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout_01_4" ],
-      [ "hash< xl7::graphics::impl::shared::meshes::VertexBufferBinding >", "dc/d08/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding_01_4.html", "dc/d08/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding_01_4" ],
-      [ "hash< xl7::resources::ResourceId >", "dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4.html", "dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4" ]
+      [ "hash&lt; xl7::graphics::impl::shared::meshes::ComposedVertexLayout &gt;", "db/de3/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout_01_4.html", "db/de3/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout_01_4" ],
+      [ "hash&lt; xl7::graphics::impl::shared::meshes::VertexBufferBinding &gt;", "dc/d08/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding_01_4.html", "dc/d08/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding_01_4" ],
+      [ "hash&lt; xl7::resources::ResourceId &gt;", "dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4.html", "dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4" ]
     ] ],
     [ "tl7", "d1/dce/namespacetl7.html", [
       [ "exceptions", "da/d05/namespacetl7_1_1exceptions.html", [
@@ -553,8 +553,8 @@ var annotated_dup =
               [ "VertexBufferBinding", "d8/de4/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding.html", "d8/de4/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding" ]
             ] ],
             [ "shaders", "df/daa/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1shaders.html", [
-              [ "D3DShaderCompiler", "d3/db5/classxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1D3DShaderCompiler.html", "d3/db5/classxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1D3DShaderCompiler" ],
-              [ "Include", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include" ]
+              [ "Include", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include.html", "df/db7/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include" ],
+              [ "D3DShaderCompiler", "d3/db5/classxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1D3DShaderCompiler.html", "d3/db5/classxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1D3DShaderCompiler" ]
             ] ],
             [ "textures", "de/d0a/namespacexl7_1_1graphics_1_1impl_1_1shared_1_1textures.html", [
               [ "TextureDiscardPolicy", "d1/d4d/classxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy.html", "d1/d4d/classxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy" ]

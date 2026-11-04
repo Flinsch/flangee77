@@ -1,14 +1,14 @@
 var toml_2types_8h =
 [
-    [ "array_t", "d9/d45/toml_2types_8h.html#aaa0d352f6d69ba223c0d7a53f11b8281", null ],
-    [ "boolean_t", "d9/d45/toml_2types_8h.html#a9dd5611907eb91ac27cab9f863482e61", null ],
-    [ "float_t", "d9/d45/toml_2types_8h.html#a15da5b025cb906f5826bef5ed14450ab", null ],
-    [ "integer_t", "d9/d45/toml_2types_8h.html#add02a0d087b3b62c187843bed0c339a1", null ],
-    [ "local_date_t", "d9/d45/toml_2types_8h.html#ae90264040766dde7f7898913dd4c3eef", null ],
-    [ "local_date_time_t", "d9/d45/toml_2types_8h.html#a51320e8bb5020be6cd4a48e181da51df", null ],
-    [ "local_time_t", "d9/d45/toml_2types_8h.html#a192d05a86cd4219dad2c68e6ec3c249b", null ],
-    [ "none_t", "d9/d45/toml_2types_8h.html#a5f1902dc46792127d3ce5cc180c13df9", null ],
-    [ "offset_date_time_t", "d9/d45/toml_2types_8h.html#a46a25fdcca58c1b431decf75da74c843", null ],
-    [ "string_t", "d9/d45/toml_2types_8h.html#a0dd5addd5e238fbcfec51b35efabcde1", null ],
-    [ "table_t", "d9/d45/toml_2types_8h.html#a6d5473f1a9352aeffb27238125ff166c", null ]
+    [ "dl7::toml::array_t", "d9/dcb/namespacedl7_1_1toml.html#ad0bb653b6f56400886e4e5398dafd883", null ],
+    [ "dl7::toml::boolean_t", "d9/dcb/namespacedl7_1_1toml.html#a488f393cd383665891ee621f96b4c82e", null ],
+    [ "dl7::toml::float_t", "d9/dcb/namespacedl7_1_1toml.html#aa3e340b96312842a5799d5c7ecc631a6", null ],
+    [ "dl7::toml::integer_t", "d9/dcb/namespacedl7_1_1toml.html#aed77836f70fe2e32215a5d547b8f0b77", null ],
+    [ "dl7::toml::local_date_t", "d9/dcb/namespacedl7_1_1toml.html#a33da63156f227bf5d833ccb00bdb4656", null ],
+    [ "dl7::toml::local_date_time_t", "d9/dcb/namespacedl7_1_1toml.html#aa956114c253e1c59dd1a4cb4fe451b78", null ],
+    [ "dl7::toml::local_time_t", "d9/dcb/namespacedl7_1_1toml.html#a3aba2e77982a658ad25118c3da1f59c3", null ],
+    [ "dl7::toml::none_t", "d9/dcb/namespacedl7_1_1toml.html#a563d7baf31ff0427db884fb79c9dc83c", null ],
+    [ "dl7::toml::offset_date_time_t", "d9/dcb/namespacedl7_1_1toml.html#a798f207e1c61255792282676cbd267cb", null ],
+    [ "dl7::toml::string_t", "d9/dcb/namespacedl7_1_1toml.html#a41ce8a97f455b08b60ff838a4675728a", null ],
+    [ "dl7::toml::table_t", "d9/dcb/namespacedl7_1_1toml.html#a44d57f14a77fd637813b7fba24f709d4", null ]
 ];

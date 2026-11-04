@@ -5,6 +5,7 @@ var classfl7_1_1gui_1_1Shell =
     [ "Shell", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a2af2de54ea76e94b9ff2cfa4d4bce009", null ],
     [ "Shell", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a4b3c47b8af5c11a3a49edc77613fcd54", null ],
     [ "~Shell", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a5be3589a215e3a1da98c3d1b8486c0bb", null ],
+    [ "_focus_adjacent_tab_stop", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a3064f775b360765281ef6e23f1fd17b2", null ],
     [ "_handle_face_removed", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a97c8bf38ba36c4f4e92001d377032692", null ],
     [ "add_face", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a935140229a6ca98f48ac3b70e2845fe6", null ],
     [ "draw", "d6/d9c/classfl7_1_1gui_1_1Shell.html#a33f7fc4b42f3cc79b53bd7f69de58246", null ],

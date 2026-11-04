@@ -51,11 +51,11 @@ var structml7_1_1Vector4 =
     [ "operator*", "db/dad/structml7_1_1Vector4.html#aaccce114343eda1dbbedbd000bbe8799", null ],
     [ "data", "db/dad/structml7_1_1Vector4.html#a7bf637dcfeb217241baaafb2a19ada91", null ],
     [ "w", "db/dad/structml7_1_1Vector4.html#a3de05dabe130a359d3e641c7f2a20fad", null ],
-    [ "X", "db/dad/structml7_1_1Vector4.html#ae6ce161ba4ae8aa9dccaef03aa1f2cfd", null ],
+    [ "X", "db/dad/structml7_1_1Vector4.html#a019a8cf7165c54f12a69c6dbffe8eff2", null ],
     [ "x", "db/dad/structml7_1_1Vector4.html#a9f18600db01a32f1027c8ea0b2bfef1d", null ],
-    [ "Y", "db/dad/structml7_1_1Vector4.html#a9d8f616d895e956af2892dc38f0fdcf7", null ],
+    [ "Y", "db/dad/structml7_1_1Vector4.html#ae3f7130e9d231b72bff7c0e28e407a0e", null ],
     [ "y", "db/dad/structml7_1_1Vector4.html#aef35e03062abef5efeb2eacff139c7f6", null ],
-    [ "Z", "db/dad/structml7_1_1Vector4.html#a929ee405402279ee3d0396de30f84e11", null ],
+    [ "Z", "db/dad/structml7_1_1Vector4.html#a31a5ff58f86dcf6576eb0e26ac502d75", null ],
     [ "z", "db/dad/structml7_1_1Vector4.html#ad5c8d1fef7df8b2bee09051447acc0d4", null ],
-    [ "ZERO", "db/dad/structml7_1_1Vector4.html#ac34f362d4eb04056ecc382f763abbdd1", null ]
+    [ "ZERO", "db/dad/structml7_1_1Vector4.html#a87bab0d7c269427131cf2e5a62a531ac", null ]
 ];

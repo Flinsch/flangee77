@@ -1,7 +1,7 @@
 var LineSegment2_8h =
 [
-    [ "ml7::LineSegment2< T >", "d8/d86/structml7_1_1LineSegment2.html", "d8/d86/structml7_1_1LineSegment2" ],
-    [ "LineSegment2d", "de/d31/LineSegment2_8h.html#a8510c78dd69e5274314041882f7b1df0", null ],
-    [ "LineSegment2f", "de/d31/LineSegment2_8h.html#a8a2c953f53671757c16f86c62ae10d65", null ],
-    [ "LineSegment2ld", "de/d31/LineSegment2_8h.html#a6c16cfb71f6dd1b9d5c9ca245e0bd0ec", null ]
+    [ "ml7::LineSegment2&lt; T &gt;", "d8/d86/structml7_1_1LineSegment2.html", "d8/d86/structml7_1_1LineSegment2" ],
+    [ "ml7::LineSegment2d", "d3/d53/namespaceml7.html#aca494ce2a0260c1f2a49a60f208610d9", null ],
+    [ "ml7::LineSegment2f", "d3/d53/namespaceml7.html#a7e5b01a22a2fdd8aeb387031e23b83d4", null ],
+    [ "ml7::LineSegment2ld", "d3/d53/namespaceml7.html#a078712208734ebe065acff49f9b32bb6", null ]
 ];

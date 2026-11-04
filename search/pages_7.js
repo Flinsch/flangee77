@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['license_0',['MIT License',['../dd/d7f/md__2home_2runner_2work_2flangee77_2flangee77_2LICENSE.html',1,'']]]
+  ['indentation_0',['Spacing and Indentation',['../de/d95/md_code-style-guide.html#autotoc_md12',1,'']]],
+  ['intention_1',['Personal Background and Intention',['../d1/d55/md_personal-intention.html',1,'']]]
 ];

@@ -12,10 +12,10 @@ var namespacedl7 =
     [ "Buffer1d", "d9/d16/classdl7_1_1Buffer1d.html", "d9/d16/classdl7_1_1Buffer1d" ],
     [ "Buffer2d", "d9/dc3/classdl7_1_1Buffer2d.html", "d9/dc3/classdl7_1_1Buffer2d" ],
     [ "Buffer3d", "d6/dbf/classdl7_1_1Buffer3d.html", "d6/dbf/classdl7_1_1Buffer3d" ],
-    [ "Buffer1dSpan", "d2/d5d/namespacedl7.html#a95b52e0a7ab2f5515c7b1580a6e7be69", null ],
-    [ "Buffer1dView", "d2/d5d/namespacedl7.html#a4c50691682396554283ee7b239eba59b", null ],
-    [ "Buffer2dSpan", "d2/d5d/namespacedl7.html#a6a5b2cdd6f991f6a3f162701d534387d", null ],
-    [ "Buffer2dView", "d2/d5d/namespacedl7.html#a4a60d931759a2e2c2cc0d36c65cdef86", null ],
-    [ "Buffer3dSpan", "d2/d5d/namespacedl7.html#a4ff9aa4574d01cee28f07e922fa2e419", null ],
-    [ "Buffer3dView", "d2/d5d/namespacedl7.html#a6b908eb70e55616350a280d585aa1c5f", null ]
+    [ "Buffer1dSpan", "d2/d5d/namespacedl7.html#a9fe3263cda19e529d9cf4dd0739b5c89", null ],
+    [ "Buffer1dView", "d2/d5d/namespacedl7.html#a8d5ec999af22aef3476585aeeb4b3cc4", null ],
+    [ "Buffer2dSpan", "d2/d5d/namespacedl7.html#ae49d1f45dde41dc5d49f021783bca9e3", null ],
+    [ "Buffer2dView", "d2/d5d/namespacedl7.html#a46b19fce3a7b5796537da668c565f10a", null ],
+    [ "Buffer3dSpan", "d2/d5d/namespacedl7.html#a382d9b08c803068a80b0175eef0336f2", null ],
+    [ "Buffer3dView", "d2/d5d/namespacedl7.html#a54cdbc4150a9f90625a22280cac45410", null ]
 ];

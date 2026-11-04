@@ -6,8 +6,8 @@ var searchData=
   ['samplerstate_2ecpp_3',['SamplerState.cpp',['../dc/d74/SamplerState_8cpp.html',1,'']]],
   ['samplerstate_2eh_4',['SamplerState.h',['../da/d48/SamplerState_8h.html',1,'']]],
   ['samplerstatedesc_2eh_5',['SamplerStateDesc.h',['../d5/d72/SamplerStateDesc_8h.html',1,'']]],
-  ['samplerstateimpl_2ecpp_6',['samplerstateimpl.cpp',['../d6/d1c/direct3d9_2states_2SamplerStateImpl_8cpp.html',1,'(Global Namespace)'],['../dd/dc5/direct3d11_2states_2SamplerStateImpl_8cpp.html',1,'(Global Namespace)']]],
-  ['samplerstateimpl_2eh_7',['samplerstateimpl.h',['../df/dcb/direct3d9_2states_2SamplerStateImpl_8h.html',1,'(Global Namespace)'],['../d1/d7c/direct3d11_2states_2SamplerStateImpl_8h.html',1,'(Global Namespace)']]],
+  ['samplerstateimpl_2ecpp_6',['SamplerStateImpl.cpp',['../dd/dc5/direct3d11_2states_2SamplerStateImpl_8cpp.html',1,'(Global Namespace)'],['../d6/d1c/direct3d9_2states_2SamplerStateImpl_8cpp.html',1,'(Global Namespace)']]],
+  ['samplerstateimpl_2eh_7',['SamplerStateImpl.h',['../d1/d7c/direct3d11_2states_2SamplerStateImpl_8h.html',1,'(Global Namespace)'],['../df/dcb/direct3d9_2states_2SamplerStateImpl_8h.html',1,'(Global Namespace)']]],
   ['schema_2ecpp_8',['Schema.cpp',['../dd/dbe/Schema_8cpp.html',1,'']]],
   ['schema_2eh_9',['Schema.h',['../d9/db2/Schema_8h.html',1,'']]],
   ['scrollbar_2ecpp_10',['ScrollBar.cpp',['../d3/de5/ScrollBar_8cpp.html',1,'']]],
@@ -87,6 +87,6 @@ var searchData=
   ['surfacedesc_2eh_84',['SurfaceDesc.h',['../d7/d4b/SurfaceDesc_8h.html',1,'']]],
   ['surfacemanager_2ecpp_85',['SurfaceManager.cpp',['../d7/def/SurfaceManager_8cpp.html',1,'']]],
   ['surfacemanager_2eh_86',['SurfaceManager.h',['../dc/d63/SurfaceManager_8h.html',1,'']]],
-  ['symbol_2eh_87',['symbol.h',['../d6/d1a/yaml_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../da/d2c/xml_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d8/df3/toml_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d7/d02/json_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d2/d9e/ini_2detail_2Symbol_8h.html',1,'(Global Namespace)']]],
+  ['symbol_2eh_87',['Symbol.h',['../d2/d9e/ini_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d7/d02/json_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d8/df3/toml_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../da/d2c/xml_2detail_2Symbol_8h.html',1,'(Global Namespace)'],['../d6/d1a/yaml_2detail_2Symbol_8h.html',1,'(Global Namespace)']]],
   ['symbolid_2eh_88',['SymbolId.h',['../db/de3/SymbolId_8h.html',1,'']]]
 ];

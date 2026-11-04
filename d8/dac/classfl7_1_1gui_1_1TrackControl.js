@@ -12,6 +12,7 @@ var classfl7_1_1gui_1_1TrackControl =
     [ "_get_handle", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#a84f16487c5a8caa2c0998de22da1fa85", null ],
     [ "_get_handle_main_size", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#abf4e84c6b4ba8614029aaf38728e8d4b", null ],
     [ "_get_track_range", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#a1f794f9f475caca5b93723700a553e72", null ],
+    [ "_is_focusable", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#aa61fc4f057ad9ac28a5211abe1ddf965", null ],
     [ "_main", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#aff42b742ecba0d23b95f679e2f60d70e", null ],
     [ "_make_vector", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#a778c755f36804b28458ffe9a52c19bbc", null ],
     [ "_on_key_down", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#a7f8b90670fd8409e41c68653115a6b89", null ],

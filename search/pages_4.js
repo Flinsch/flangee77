@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['flangee77_0',['flangee77',['../index.html',1,'']]]
+  ['encodings_0',['Strings and Encodings',['../dd/dc3/md_strings-and-encodings.html',1,'']]],
+  ['etc_1',['Constructors, Destructors, etc.',['../de/d95/md_code-style-guide.html#autotoc_md9',1,'']]]
 ];
