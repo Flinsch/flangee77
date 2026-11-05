@@ -17,6 +17,7 @@ var dir_a98f839c2f1a59e66420c1d4301613d1 =
     [ "NineSliceChrome.h", "d6/d55/NineSliceChrome_8h.html", "d6/d55/NineSliceChrome_8h" ],
     [ "RadioGroup.cpp", "d4/d02/RadioGroup_8cpp.html", null ],
     [ "RadioGroup.h", "d6/d32/RadioGroup_8h.html", "d6/d32/RadioGroup_8h" ],
+    [ "ScrollBarVisibility.h", "d5/da9/ScrollBarVisibility_8h.html", "d5/da9/ScrollBarVisibility_8h" ],
     [ "Shell.cpp", "df/d6c/Shell_8cpp.html", null ],
     [ "Shell.h", "d0/def/Shell_8h.html", "d0/def/Shell_8h" ],
     [ "Static.h", "d2/db9/Static_8h.html", "d2/db9/Static_8h" ],

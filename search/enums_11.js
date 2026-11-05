@@ -1,7 +1,7 @@
 var searchData=
 [
   ['scalarquoting_0',['ScalarQuoting',['../d1/db1/structdl7_1_1yaml_1_1Format.html#a5f3abc2f8a4dcdbca5df5ec770fe0fbe',1,'dl7::yaml::Format']]],
-  ['scrollbarvisibility_1',['ScrollBarVisibility',['../d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html#a5cbcffae7fedce2cfa9292d16eaa1ab4',1,'fl7::gui::faces::ScrollPanel']]],
+  ['scrollbarvisibility_1',['ScrollBarVisibility',['../d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cc',1,'fl7::gui']]],
   ['sectionnamedelimiter_2',['SectionNameDelimiter',['../d9/db3/structdl7_1_1ini_1_1Format.html#af0738a2b310ac38e69274f4e5c5d23e8',1,'dl7::ini::Format']]],
   ['seekmode_3',['SeekMode',['../d6/dc7/namespacecl7_1_1io.html#a4ff74034025df11666f80f69b9069053',1,'cl7::io']]],
   ['selectionheuristic_4',['SelectionHeuristic',['../de/da8/classal7_1_1packing_1_1GuillotinePacker.html#a8ac44a514a0663d74d50fa70634bdd2b',1,'al7::packing::GuillotinePacker']]],

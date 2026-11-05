@@ -98,13 +98,13 @@ $(function(){initNavTree('d1/d12/classfl7_1_1gui_1_1render_1_1TextHelper.html','
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abb44eb8d1c019df970fd12b3f6a5ac23" id="r_abb44eb8d1c019df970fd12b3f6a5ac23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb44eb8d1c019df970fd12b3f6a5ac23">draw</a> (<a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a> *renderer, <a class="el" href="../../d1/d2e/namespacecl7.html#ac688b6d38223da1664af7bcf689537eb">cl7::u32string_view</a> text, const <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> &amp;face, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> absolute_position)</td></tr>
+<tr class="memitem:ad8aabe06233d32f7ee55d4c64bd3dee2" id="r_ad8aabe06233d32f7ee55d4c64bd3dee2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad8aabe06233d32f7ee55d4c64bd3dee2">draw</a> (<a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a> *renderer, <a class="el" href="../../d1/d2e/namespacecl7.html#ac688b6d38223da1664af7bcf689537eb">cl7::u32string_view</a> text, const <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> &amp;face, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> absolute_position, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> text_scroll_offset, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> text_box_size)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Knows how to draw a <a class="el" href="../../d1/d67/classfl7_1_1gui_1_1HasText.html">HasText</a> face's text over its full bounds. Talks only to <a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a>'s public (backend-agnostic) drawing primitives, so this is shared by every <a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a> implementation, not reimplemented per backend. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="abb44eb8d1c019df970fd12b3f6a5ac23" name="abb44eb8d1c019df970fd12b3f6a5ac23"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb44eb8d1c019df970fd12b3f6a5ac23">&#9670;&#160;</a></span>draw()</h2>
+<a id="ad8aabe06233d32f7ee55d4c64bd3dee2" name="ad8aabe06233d32f7ee55d4c64bd3dee2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8aabe06233d32f7ee55d4c64bd3dee2">&#9670;&#160;</a></span>draw()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -127,11 +127,21 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a></td>          <td class="paramname"><span class="paramname"><em>absolute_position</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a></td>          <td class="paramname"><span class="paramname"><em>absolute_position</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a></td>          <td class="paramname"><span class="paramname"><em>text_scroll_offset</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a></td>          <td class="paramname"><span class="paramname"><em>text_box_size</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Draws text at absolute_position, sized/styled per face's effective style, via renderer. </p>
+<p>Draws text at absolute_position - text_scroll_offset, laid out against text_box_size, styled per face's effective style, via renderer (see <a class="el" href="../../d1/d67/classfl7_1_1gui_1_1HasText.html#a245fa5625abca0cd99312e0960894fca">HasText::get_text_scroll_offset()</a>/get_text_box_size()). </p>
 
 </div>
 </div>

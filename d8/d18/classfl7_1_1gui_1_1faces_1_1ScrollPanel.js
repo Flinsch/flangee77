@@ -1,11 +1,6 @@
 var classfl7_1_1gui_1_1faces_1_1ScrollPanel =
 [
     [ "ContentArea", "d9/de1/classfl7_1_1gui_1_1faces_1_1ScrollPanel_1_1ContentArea.html", "d9/de1/classfl7_1_1gui_1_1faces_1_1ScrollPanel_1_1ContentArea" ],
-    [ "ScrollBarVisibility", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html#a5cbcffae7fedce2cfa9292d16eaa1ab4", [
-      [ "Always", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html#a5cbcffae7fedce2cfa9292d16eaa1ab4a68eec46437c384d8dad18d5464ebc35c", null ],
-      [ "Never", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html#a5cbcffae7fedce2cfa9292d16eaa1ab4a6e7b34fa59e1bd229b207892956dc41c", null ],
-      [ "Auto", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html#a5cbcffae7fedce2cfa9292d16eaa1ab4a06b9281e396db002010bde1de57262eb", null ]
-    ] ],
     [ "ScrollPanel", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html#ab5a81f07ed9574b9949d7a844cb5e44e", null ],
     [ "ScrollPanel", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html#a75e1003d16ff3595c1ce4aeb2459c65b", null ],
     [ "ScrollPanel", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html#a5c2a38bb3ad2ebc5c32d63d9648e5707", null ],

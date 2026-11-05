@@ -131,6 +131,10 @@ Enumerations</h2></td></tr>
 , <a class="el" href="#a543482ae1a58df69d758a67b945d3e83a682160fc6ad12f783f70608a9b46b9b9">Soft</a>
 , <a class="el" href="#a543482ae1a58df69d758a67b945d3e83a3656183169810334a96b91129dc9d881">Hard</a>
  }</td></tr>
+<tr class="memitem:a30fe03b96f3682e72e7438fd4bcce1cc" id="r_a30fe03b96f3682e72e7438fd4bcce1cc"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30fe03b96f3682e72e7438fd4bcce1cc">ScrollBarVisibility</a> { <a class="el" href="#a30fe03b96f3682e72e7438fd4bcce1cca68eec46437c384d8dad18d5464ebc35c">Always</a>
+, <a class="el" href="#a30fe03b96f3682e72e7438fd4bcce1cca6e7b34fa59e1bd229b207892956dc41c">Never</a>
+, <a class="el" href="#a30fe03b96f3682e72e7438fd4bcce1cca06b9281e396db002010bde1de57262eb">Auto</a>
+ }</td></tr>
 </table>
 <a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Enumeration Type Documentation</h2>
 <a id="a07bfb52c2d3768ba310be421d1287498" name="a07bfb52c2d3768ba310be421d1287498"></a>
@@ -186,6 +190,37 @@ Enumerations</h2></td></tr>
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a543482ae1a58df69d758a67b945d3e83afd038fc7f319e48f3115d92bf5bdbef9" name="a543482ae1a58df69d758a67b945d3e83afd038fc7f319e48f3115d92bf5bdbef9"></a>Ignore&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a543482ae1a58df69d758a67b945d3e83a682160fc6ad12f783f70608a9b46b9b9" name="a543482ae1a58df69d758a67b945d3e83a682160fc6ad12f783f70608a9b46b9b9"></a>Soft&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a543482ae1a58df69d758a67b945d3e83a3656183169810334a96b91129dc9d881" name="a543482ae1a58df69d758a67b945d3e83a3656183169810334a96b91129dc9d881"></a>Hard&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a30fe03b96f3682e72e7438fd4bcce1cc" name="a30fe03b96f3682e72e7438fd4bcce1cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30fe03b96f3682e72e7438fd4bcce1cc">&#9670;&#160;</a></span>ScrollBarVisibility</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum struct <a class="el" href="#a30fe03b96f3682e72e7438fd4bcce1cc">fl7::gui::ScrollBarVisibility</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>A scroll bar's visibility, independent of whether its own axis (or, for a single-axis scroller like <a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html">faces::TextField</a>, the only axis there is) is actually scrollable/overflowing at all. Shared by every face that offers this choice (see <a class="el" href="../../d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html">faces::ScrollPanel</a>, <a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html">faces::TextField</a>), rather than each redeclaring its own, identical enum. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a30fe03b96f3682e72e7438fd4bcce1cca68eec46437c384d8dad18d5464ebc35c" name="a30fe03b96f3682e72e7438fd4bcce1cca68eec46437c384d8dad18d5464ebc35c"></a>Always&#160;</td><td class="fielddoc"><p>Shows the scroll bar unconditionally (even while its own axis doesn't actually overflow, in which case it just sits there inert, full-range, nothing to drag). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a30fe03b96f3682e72e7438fd4bcce1cca6e7b34fa59e1bd229b207892956dc41c" name="a30fe03b96f3682e72e7438fd4bcce1cca6e7b34fa59e1bd229b207892956dc41c"></a>Never&#160;</td><td class="fielddoc"><p>Hides the scroll bar unconditionally. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a30fe03b96f3682e72e7438fd4bcce1cca06b9281e396db002010bde1de57262eb" name="a30fe03b96f3682e72e7438fd4bcce1cca06b9281e396db002010bde1de57262eb"></a>Auto&#160;</td><td class="fielddoc"><p>Shows the scroll bar only while the content actually overflows that axis's (viewport) bounds. </p>
+</td></tr>
 </table>
 
 </div>

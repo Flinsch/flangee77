@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "fl7::gui::faces::TextField::_Layout", "dd/dab/structfl7_1_1gui_1_1faces_1_1TextField_1_1__Layout.html", null ],
     [ "cl7::logging::AbstractLogHandler", "d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html", [
       [ "cl7::logging::CoutLogHandler", "d9/d31/classcl7_1_1logging_1_1CoutLogHandler.html", null ],
       [ "cl7::logging::FileLogHandler", "d3/d69/classcl7_1_1logging_1_1FileLogHandler.html", null ],
@@ -173,6 +174,7 @@ var hierarchy =
     [ "xl7::graphics::QuadRenderer::ClipRect", "dd/d21/structxl7_1_1graphics_1_1QuadRenderer_1_1ClipRect.html", null ],
     [ "cl7::text::codec::codepoint", "db/d9a/structcl7_1_1text_1_1codec_1_1codepoint.html", null ],
     [ "cl7::text::codec::codepoint_iterator&lt; Tchar, TDefaultErrorHandler &gt;", "d7/d8a/classcl7_1_1text_1_1codec_1_1codepoint__iterator.html", null ],
+    [ "fl7::fonts::CodepointPosition", "d5/d87/structfl7_1_1fonts_1_1CodepointPosition.html", null ],
     [ "cl7::text::codec::CodepointResult", "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html", [
       [ "cl7::text::codec::DecodeResult< Tchar >", "da/d9c/structcl7_1_1text_1_1codec_1_1DecodeResult.html", null ],
       [ "cl7::text::codec::EncodeResult< Tchar >", "d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult.html", null ]
@@ -277,6 +279,7 @@ var hierarchy =
           [ "fl7::gui::faces::ScrollPanel", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html", [
             [ "fl7::gui::faces::ListBox::Panel", "da/db8/classfl7_1_1gui_1_1faces_1_1ListBox_1_1Panel.html", null ]
           ] ],
+          [ "fl7::gui::faces::TextField", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html", null ],
           [ "fl7::gui::faces::Window", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html", [
             [ "fl7::gui::faces::Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html", null ]
           ] ]
@@ -288,8 +291,7 @@ var hierarchy =
         ] ]
       ] ],
       [ "fl7::gui::Control", "df/d2b/classfl7_1_1gui_1_1Control.html", [
-        [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ],
-        [ "fl7::gui::faces::TextField", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html", null ]
+        [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ]
       ] ],
       [ "fl7::gui::Static", "dc/dfd/classfl7_1_1gui_1_1Static.html", [
         [ "fl7::gui::faces::Label", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html", null ]
@@ -870,6 +872,7 @@ var hierarchy =
     [ "dl7::syntax::TerminalSymbolCollection", "dc/d84/classdl7_1_1syntax_1_1TerminalSymbolCollection.html", null ],
     [ "tl7::TestCase", "dd/de5/classtl7_1_1TestCase.html", null ],
     [ "tl7::TestSuite", "db/d53/classtl7_1_1TestSuite.html", null ],
+    [ "fl7::fonts::TextBlockLayout", "d1/d16/structfl7_1_1fonts_1_1TextBlockLayout.html", null ],
     [ "fl7::gui::render::TextHelper", "d1/d12/classfl7_1_1gui_1_1render_1_1TextHelper.html", null ],
     [ "fl7::fonts::TextLine", "d5/daa/structfl7_1_1fonts_1_1TextLine.html", null ],
     [ "fl7::fonts::TextMetrics", "d2/dc2/structfl7_1_1fonts_1_1TextMetrics.html", null ],

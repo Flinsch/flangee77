@@ -30,5 +30,10 @@ var namespacefl7_1_1gui =
       [ "Ignore", "d5/d56/namespacefl7_1_1gui.html#a543482ae1a58df69d758a67b945d3e83afd038fc7f319e48f3115d92bf5bdbef9", null ],
       [ "Soft", "d5/d56/namespacefl7_1_1gui.html#a543482ae1a58df69d758a67b945d3e83a682160fc6ad12f783f70608a9b46b9b9", null ],
       [ "Hard", "d5/d56/namespacefl7_1_1gui.html#a543482ae1a58df69d758a67b945d3e83a3656183169810334a96b91129dc9d881", null ]
+    ] ],
+    [ "ScrollBarVisibility", "d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cc", [
+      [ "Always", "d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cca68eec46437c384d8dad18d5464ebc35c", null ],
+      [ "Never", "d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cca6e7b34fa59e1bd229b207892956dc41c", null ],
+      [ "Auto", "d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cca06b9281e396db002010bde1de57262eb", null ]
     ] ]
 ];

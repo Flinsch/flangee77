@@ -335,6 +335,8 @@ var annotated_dup =
         [ "Icon", "d8/d05/structfl7_1_1fonts_1_1Icon.html", "d8/d05/structfl7_1_1fonts_1_1Icon" ],
         [ "IconRun", "d1/d30/structfl7_1_1fonts_1_1IconRun.html", "d1/d30/structfl7_1_1fonts_1_1IconRun" ],
         [ "TextLine", "d5/daa/structfl7_1_1fonts_1_1TextLine.html", "d5/daa/structfl7_1_1fonts_1_1TextLine" ],
+        [ "CodepointPosition", "d5/d87/structfl7_1_1fonts_1_1CodepointPosition.html", "d5/d87/structfl7_1_1fonts_1_1CodepointPosition" ],
+        [ "TextBlockLayout", "d1/d16/structfl7_1_1fonts_1_1TextBlockLayout.html", "d1/d16/structfl7_1_1fonts_1_1TextBlockLayout" ],
         [ "TextMetrics", "d2/dc2/structfl7_1_1fonts_1_1TextMetrics.html", "d2/dc2/structfl7_1_1fonts_1_1TextMetrics" ],
         [ "TextStyle", "d8/d86/structfl7_1_1fonts_1_1TextStyle.html", "d8/d86/structfl7_1_1fonts_1_1TextStyle" ]
       ] ],

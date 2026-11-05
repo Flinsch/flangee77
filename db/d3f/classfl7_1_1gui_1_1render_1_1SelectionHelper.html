@@ -98,13 +98,13 @@ $(function(){initNavTree('db/d3f/classfl7_1_1gui_1_1render_1_1SelectionHelper.ht
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4aa5f650f3476dc9e0ee9df83d9986db" id="r_a4aa5f650f3476dc9e0ee9df83d9986db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4aa5f650f3476dc9e0ee9df83d9986db">draw</a> (<a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a> *renderer, <a class="el" href="../../d1/d2e/namespacecl7.html#ac688b6d38223da1664af7bcf689537eb">cl7::u32string_view</a> text, const <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> &amp;face, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> absolute_position)</td></tr>
+<tr class="memitem:a128da61072ea8662772a1e0407c56334" id="r_a128da61072ea8662772a1e0407c56334"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a128da61072ea8662772a1e0407c56334">draw</a> (<a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a> *renderer, <a class="el" href="../../d1/d2e/namespacecl7.html#ac688b6d38223da1664af7bcf689537eb">cl7::u32string_view</a> text, const <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> &amp;face, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> absolute_position, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> text_scroll_offset, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> text_box_size)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Knows how to draw a <a class="el" href="../../db/d6e/classfl7_1_1gui_1_1HasSelection.html">HasSelection</a> face's selection highlight: a flat-colored rect, spanning the face's full height, from the pixel x-offset of its selection's begin code point index to its end index within <span class="tt">text</span>. No-op if the face isn't a <a class="el" href="../../db/d6e/classfl7_1_1gui_1_1HasSelection.html">HasSelection</a>, or it currently has no selection. Talks only to <a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a>'s public (backend-agnostic) drawing primitives, so this is shared by every <a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a> implementation, not reimplemented per backend. </p>
+<div class="textblock"><p>Knows how to draw a <a class="el" href="../../db/d6e/classfl7_1_1gui_1_1HasSelection.html">HasSelection</a> face's selection highlight: one flat-colored rect per line the selection actually spans (see <a class="el" href="../../dc/d6e/namespacefl7_1_1fonts_1_1TextLayout.html">fonts::TextLayout</a>:: lay_out_box(): text may have grown to more than one line, see <a class="el" href="../../da/d58/namespacefl7_1_1gui_1_1faces.html">gui::faces</a>:: TextField's multiline support), each from the pixel x-offset of its selection's begin code point index to its end index within <span class="tt">text</span>, clipped to that line's own range. No-op if the face isn't a <a class="el" href="../../db/d6e/classfl7_1_1gui_1_1HasSelection.html">HasSelection</a>, or it currently has no selection. Talks only to <a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a>'s public (backend-agnostic) drawing primitives, so this is shared by every <a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a> implementation, not reimplemented per backend. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a4aa5f650f3476dc9e0ee9df83d9986db" name="a4aa5f650f3476dc9e0ee9df83d9986db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4aa5f650f3476dc9e0ee9df83d9986db">&#9670;&#160;</a></span>draw()</h2>
+<a id="a128da61072ea8662772a1e0407c56334" name="a128da61072ea8662772a1e0407c56334"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a128da61072ea8662772a1e0407c56334">&#9670;&#160;</a></span>draw()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -127,11 +127,21 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a></td>          <td class="paramname"><span class="paramname"><em>absolute_position</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a></td>          <td class="paramname"><span class="paramname"><em>absolute_position</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a></td>          <td class="paramname"><span class="paramname"><em>text_scroll_offset</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a></td>          <td class="paramname"><span class="paramname"><em>text_box_size</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Draws face's selection highlight (if any) against <span class="tt">text</span>, at absolute_position, sized/styled per face's effective style, via renderer. </p>
+<p>Draws face's selection highlight (if any) against <span class="tt">text</span>, at absolute_position - text_scroll_offset, laid out against text_box_size, styled per face's effective style, via renderer (see <a class="el" href="../../d1/d67/classfl7_1_1gui_1_1HasText.html#a245fa5625abca0cd99312e0960894fca">HasText::get_text_scroll_offset()</a>/get_text_box_size()). One rect per line the selection actually spans (see <a class="el" href="../../dc/d6e/namespacefl7_1_1fonts_1_1TextLayout.html#ab7df201ab9a75eb63d45cded352e2319">fonts::TextLayout::lay_out_box()</a>), rather than assuming there's only ever the one, now that text may have grown to more than one line (see <a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html">gui::faces::TextField</a>'s multiline support). </p>
 
 </div>
 </div>
