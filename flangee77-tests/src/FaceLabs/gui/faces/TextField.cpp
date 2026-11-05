@@ -2,10 +2,14 @@
 #include <TestLabs/TestSuite.h>
 
 #include <FaceLabs/gui/Shell.h>
+#include <FaceLabs/gui/Style.h>
 #include <FaceLabs/gui/faces/Panel.h>
 #include <FaceLabs/gui/faces/TextField.h>
+#include <FaceLabs/fonts/detail/ttf/TrueTypeFontLoader.h>
 
 #include <XiaoLabs/Clipboard.h>
+
+#include <CoreLabs/platform/filesystem.h>
 
 #include "../shared.h"
 
@@ -23,6 +27,20 @@ namespace {
         cl7::u32string original_text;
         ~ClipboardRestoreGuard() { xl7::clipboard().set_text(original_text); }
     };
+
+    /**
+     * A real, loaded font, for the scroll-bar tests below: unlike every test
+     * above, those actually need get_effective_style().font to be non-null
+     * (see the "Scrolling" section's own comment), which set_style_override()
+     * (bypassing the theme/Shell entirely) makes possible even in this
+     * NullRenderer-based harness.
+     */
+    fl7::fonts::Font& get_test_font()
+    {
+        static fl7::fonts::Font font(std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(
+            cl7::platform::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSans-Regular.ttf"));
+        return font;
+    }
 
 } // namespace
 
@@ -543,4 +561,185 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  with multiline enabled, U
     TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&field) );
     input.set_key_down(xl7::input::Key::Down, false);
     shell.update();
+}
+
+
+
+// #############################################################################
+// Scrolling (vertical, while get_multiline_enabled() and the content overflows)
+// #############################################################################
+//
+// This is the one corner of this field's behavior that genuinely needs a real
+// font to exercise meaningfully (see the "Multiline" section's own comment
+// above): whether the scroll bar actually shows/narrows the text box, and
+// whether the field ever scrolls at all, both come down to real line-height/
+// line-count math against a real font. set_style_override() (bypassing the
+// theme/Shell entirely) makes that possible even in this NullRenderer-based
+// harness, without needing a whole Theme.
+// #############################################################################
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with a real font: the scroll bar only narrows the text box once its content actually overflows this field's own height" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    fl7::gui::Style style;
+    style.font = &get_test_font();
+    style.text_style.vertical_align = fl7::fonts::TextStyle::VerticalAlign::Top;
+
+    auto& field = shell.add_face<fl7::gui::faces::TextField>(U"Hi");
+    field.set_style_override(style);
+    field.set_position({0.0f, 0.0f});
+    field.set_size({200.0f, 60.0f});
+    field.set_multiline_enabled(true);
+
+    TESTLABS_ASSERT( field.get_text_box_size().has_value() );
+    TESTLABS_CHECK_EQ_FLT( field.get_text_box_size()->x, field.get_size().x ); // fits: no scroll bar, full width
+
+    cl7::u32string many_lines;
+    for (int i = 0; i < 10; ++i)
+        many_lines += U"Line\n";
+    field.set_text(many_lines);
+
+    TESTLABS_ASSERT( field.get_text_box_size().has_value() );
+    TESTLABS_CHECK_LT( field.get_text_box_size()->x, field.get_size().x ); // overflows: scroll bar narrows it
+
+    field.set_text(U"Hi"); // back to fitting: widens again
+    TESTLABS_CHECK_EQ_FLT( field.get_text_box_size()->x, field.get_size().x );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with a real font: the mouse wheel scrolls this field's own content while it's actually overflowing, but does nothing while it isn't" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    fl7::gui::Style style;
+    style.font = &get_test_font();
+    style.text_style.vertical_align = fl7::fonts::TextStyle::VerticalAlign::Top;
+
+    auto& field = shell.add_face<fl7::gui::faces::TextField>(U"Hi");
+    field.set_style_override(style);
+    field.set_position({0.0f, 0.0f});
+    field.set_size({200.0f, 60.0f});
+    field.set_multiline_enabled(true);
+
+    input.move_mouse_to({100.0f, 30.0f});
+    shell.update();
+
+    // Not overflowing yet: the wheel has nothing to do.
+    input.scroll_wheel(-1);
+    shell.update();
+    TESTLABS_CHECK_EQ_FLT( field.get_text_scroll_offset().y, 0.0f );
+
+    cl7::u32string many_lines;
+    for (int i = 0; i < 10; ++i)
+        many_lines += U"Line\n";
+    field.set_text(many_lines);
+
+    // set_text() itself moves the caret to the very end, which, now that the
+    // field overflows, already auto-scrolls it all the way down (see
+    // _ensure_caret_visible()). Jump the caret (and scroll position) back to
+    // the very start first, so the wheel notches below start from 0. Needs
+    // an actual click first: Ctrl+Home only reaches this field while it's
+    // focused, which hovering it alone (above) never did.
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+    input.set_key_down(xl7::input::Key::LeftControl, true);
+    shell.update();
+    input.set_key_down(xl7::input::Key::Home, true);
+    shell.update();
+    input.set_key_down(xl7::input::Key::Home, false);
+    shell.update();
+    input.set_key_down(xl7::input::Key::LeftControl, false);
+    shell.update();
+    TESTLABS_CHECK_EQ_FLT( field.get_text_scroll_offset().y, 0.0f );
+
+    // Now overflowing: a notch "away from the user" scrolls the content down,
+    // and further notches keep scrolling it further down still.
+    input.scroll_wheel(-1);
+    shell.update();
+    TESTLABS_CHECK_GT( field.get_text_scroll_offset().y, 0.0f );
+
+    const float after_one_notch = field.get_text_scroll_offset().y;
+    input.scroll_wheel(-1);
+    shell.update();
+    TESTLABS_CHECK_GT( field.get_text_scroll_offset().y, after_one_notch );
+
+    // Scrolling back up the other way clamps back to exactly 0, never past it.
+    for (int i = 0; i < 20; ++i)
+    {
+        input.scroll_wheel(1);
+        shell.update();
+    }
+    TESTLABS_CHECK_EQ_FLT( field.get_text_scroll_offset().y, 0.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with a real font: enabling multiline with the caret already out of view, or moving it there with Down, scrolls it back into view automatically" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    fl7::gui::Style style;
+    style.font = &get_test_font();
+    style.text_style.vertical_align = fl7::fonts::TextStyle::VerticalAlign::Top;
+
+    cl7::u32string many_lines;
+    for (int i = 0; i < 20; ++i)
+        many_lines += U"Line\n";
+
+    // The constructor leaves the caret at the very end (see TextField(text)'s
+    // own doc comment), i.e., on the very last of these 20 (or 21, counting
+    // the empty line after the final '\n') lines.
+    auto& field = shell.add_face<fl7::gui::faces::TextField>(many_lines);
+    field.set_style_override(style);
+    field.set_position({0.0f, 0.0f});
+    field.set_size({200.0f, 40.0f}); // nowhere near tall enough for all those lines
+
+    // Enabling multiline with the caret already past the (now relevant)
+    // visible area scrolls it into view right away, without needing a
+    // further nudge first.
+    field.set_multiline_enabled(true);
+    TESTLABS_CHECK_GT( field.get_text_scroll_offset().y, 0.0f );
+
+    // Jump back to the very start: scrolls all the way back up.
+    input.move_mouse_to({100.0f, 20.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+    input.set_key_down(xl7::input::Key::LeftControl, true);
+    shell.update();
+    input.set_key_down(xl7::input::Key::Home, true);
+    shell.update();
+    input.set_key_down(xl7::input::Key::Home, false);
+    shell.update();
+    input.set_key_down(xl7::input::Key::LeftControl, false);
+    shell.update();
+    TESTLABS_CHECK_EQ( field.get_caret_codepoint_index(), size_t(0) );
+    TESTLABS_CHECK_EQ_FLT( field.get_text_scroll_offset().y, 0.0f );
+
+    // Down, repeatedly, past the visible lines: never scrolls back up on its
+    // own, and does end up scrolling further down at least once.
+    float previous_offset = field.get_text_scroll_offset().y;
+    bool ever_scrolled_further = false;
+    for (int i = 0; i < 19; ++i)
+    {
+        input.set_key_down(xl7::input::Key::Down, true);
+        shell.update();
+        input.set_key_down(xl7::input::Key::Down, false);
+        shell.update();
+
+        const float offset = field.get_text_scroll_offset().y;
+        TESTLABS_CHECK( offset >= previous_offset );
+        ever_scrolled_further = ever_scrolled_further || offset > previous_offset;
+        previous_offset = offset;
+    }
+    TESTLABS_CHECK( ever_scrolled_further );
+    TESTLABS_CHECK_GT( field.get_caret_codepoint_index(), size_t(0) );
 }

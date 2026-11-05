@@ -21,11 +21,14 @@ class AbstractRenderer;
 
 /**
  * Knows how to draw a HasCaret face's caret: a thin vertical line, spanning the
- * face's full height, at the pixel x-offset corresponding to its current code point
- * index within `text`. No-op if the face isn't a HasCaret, or its caret isn't
- * currently visible. Talks only to AbstractRenderer's public (backend-agnostic)
- * drawing primitives, so this is shared by every AbstractRenderer implementation,
- * not reimplemented per backend.
+ * height of whichever line of `text` it currently falls on (see
+ * fonts::TextLayout::locate(): text may have grown to more than one line, see
+ * gui::faces::TextField's multiline support), at the pixel x-offset
+ * corresponding to its current code point index. No-op if the face isn't a
+ * HasCaret, or its caret isn't currently visible. Talks only to
+ * AbstractRenderer's public (backend-agnostic) drawing primitives, so this is
+ * shared by every AbstractRenderer implementation, not reimplemented per
+ * backend.
  */
 class CaretHelper
 {
@@ -33,9 +36,11 @@ class CaretHelper
 public:
     /**
      * Draws face's caret (if any, and currently visible) against `text`, at
-     * absolute_position, sized/styled per face's effective style, via renderer.
+     * absolute_position - text_scroll_offset, laid out against text_box_size,
+     * styled per face's effective style, via renderer (see
+     * HasText::get_text_scroll_offset()/get_text_box_size()).
      */
-    void draw(AbstractRenderer* renderer, cl7::u32string_view text, const Face& face, ml7::Vector2f absolute_position);
+    void draw(AbstractRenderer* renderer, cl7::u32string_view text, const Face& face, ml7::Vector2f absolute_position, ml7::Vector2f text_scroll_offset, ml7::Vector2f text_box_size);
 
 }; // class CaretHelper
 

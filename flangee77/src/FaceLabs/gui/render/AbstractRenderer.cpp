@@ -127,25 +127,36 @@ namespace fl7::gui::render {
 
     /**
      * Draws the given face itself (not its children, if any, that's up to each
-     * backend's own traversal in `_render_faces_impl`): its background (see
-     * `BackgroundHelper`) if it's a `HasBackground`, then, if it's a `HasText`, its
-     * selection highlight (see `SelectionHelper`), its text (see `TextHelper`), and
-     * its caret (see `CaretHelper`), always in that (back-to-front) order. Backend-
-     * agnostic (talks only to this class's own public drawing methods above), so
-     * shared by every `AbstractRenderer` implementation. Call this from within
-     * your own traversal wherever you decide to actually draw a given face.
+     * backend's own traversal in `_render_faces_impl`), clipped to its own declared
+     * bounds (`face.get_size()`) regardless of what it actually draws: its
+     * background (see `BackgroundHelper`) if it's a `HasBackground`, then, if it's
+     * a `HasText`, its selection highlight (see `SelectionHelper`), its text (see
+     * `TextHelper`), and its caret (see `CaretHelper`), always in that
+     * (back-to-front) order, each shifted by `get_text_scroll_offset()` and laid
+     * out against `get_text_box_size()` (narrower than `get_size()` while a scroll
+     * bar is shown; see `faces::TextField`'s multiline mode) rather than
+     * `get_size()` directly. Backend-agnostic (talks only to this class's own
+     * public drawing methods above), so shared by every `AbstractRenderer`
+     * implementation. Call this from within your own traversal wherever you
+     * decide to actually draw a given face.
      */
     void AbstractRenderer::_draw_face(const Face& face, ml7::Vector2f absolute_position)
     {
+        push_clip_rect(absolute_position, absolute_position + face.get_size());
+
         if (dynamic_cast<const HasBackground*>(&face))
             _background_helper.draw(this, face, absolute_position);
 
         if (const auto* has_text = dynamic_cast<const HasText*>(&face))
         {
-            _selection_helper.draw(this, has_text->get_display_text(), face, absolute_position);
-            _text_helper.draw(this, has_text->get_display_text(), face, absolute_position);
-            _caret_helper.draw(this, has_text->get_display_text(), face, absolute_position);
+            const ml7::Vector2f text_scroll_offset = has_text->get_text_scroll_offset();
+            const ml7::Vector2f text_box_size = has_text->get_text_box_size().value_or(face.get_size());
+            _selection_helper.draw(this, has_text->get_display_text(), face, absolute_position, text_scroll_offset, text_box_size);
+            _text_helper.draw(this, has_text->get_display_text(), face, absolute_position, text_scroll_offset, text_box_size);
+            _caret_helper.draw(this, has_text->get_display_text(), face, absolute_position, text_scroll_offset, text_box_size);
         }
+
+        pop_clip_rect();
     }
 
 

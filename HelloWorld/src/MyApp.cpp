@@ -522,6 +522,25 @@ namespace helloworld {
         });
 
 
+        auto& multiline_text_field_frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo Multi-Line TextField");
+        multiline_text_field_frame.set_position({1080.0f, 210.0f});
+        multiline_text_field_frame.set_size({220.0f, 260.0f});
+
+        auto& multiline_text_field = multiline_text_field_frame.get_content_area().add_child<fl7::gui::faces::TextField>(
+            U"This is a multi-line, word-wrapping text field.\n\n"
+            U"Type more, press Enter for a new line, and once the "
+            U"content overflows, scroll with the bar or the mouse "
+            U"wheel.\n\nLine 5\nLine 6\nLine 7\nLine 8");
+        multiline_text_field.set_position({20.0f, 20.0f});
+        // Deliberately not tall enough to fit all of the above, to demo the
+        // scroll bar (see set_multiline_enabled()'s own doc comment).
+        multiline_text_field.set_size({180.0f, 200.0f});
+        multiline_text_field.set_multiline_enabled(true);
+        multiline_text_field.get_changed().connect([](const cl7::u32string&) {
+            LOG_INFO(u8"Multi-line TextField changed.");
+        });
+
+
 
         LOG_INFO(u8"Please note the following: The quick brown fox jumps over the lazy dog.");
         LOG_SUCCESS(u8"Great things have been done!");

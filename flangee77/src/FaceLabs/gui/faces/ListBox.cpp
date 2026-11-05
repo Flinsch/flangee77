@@ -38,7 +38,7 @@ namespace fl7::gui::faces {
         , _row_area(_panel.get_content_area().add_child<RowArea>(*this))
     {
         _panel.set_horizontal_scroll_enabled(false);
-        _panel.set_horizontal_scroll_bar_visibility(ScrollPanel::ScrollBarVisibility::Never);
+        _panel.set_horizontal_scroll_bar_visibility(ScrollBarVisibility::Never);
     }
 
 

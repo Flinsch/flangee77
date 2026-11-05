@@ -76,7 +76,7 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  ScrollPanel:  Auto visibility shows t
 TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  ScrollPanel:  Auto visibility's second layout pass also shows an axis that only overflows once the OTHER axis's scroll bar narrows its viewport" )
 {
     fl7::gui::faces::ScrollPanel panel;
-    panel.set_vertical_scroll_bar_visibility(fl7::gui::faces::ScrollPanel::ScrollBarVisibility::Auto);
+    panel.set_vertical_scroll_bar_visibility(fl7::gui::ScrollBarVisibility::Auto);
     panel.set_size({200.0f, 100.0f});
 
     // Vertical overflows outright (150 > 100), so its bar is shown on the

@@ -18,9 +18,11 @@ namespace fl7::gui::render {
 
     /**
      * Draws face's caret (if any, and currently visible) against `text`, at
-     * absolute_position, sized/styled per face's effective style, via renderer.
+     * absolute_position - text_scroll_offset, laid out against text_box_size,
+     * styled per face's effective style, via renderer (see
+     * HasText::get_text_scroll_offset()/get_text_box_size()).
      */
-    void CaretHelper::draw(AbstractRenderer* renderer, cl7::u32string_view text, const Face& face, ml7::Vector2f absolute_position)
+    void CaretHelper::draw(AbstractRenderer* renderer, cl7::u32string_view text, const Face& face, ml7::Vector2f absolute_position, ml7::Vector2f text_scroll_offset, ml7::Vector2f text_box_size)
     {
         const auto* has_caret = dynamic_cast<const HasCaret*>(&face);
         if (!has_caret || !has_caret->is_caret_visible())
@@ -33,7 +35,7 @@ namespace fl7::gui::render {
         // Locates the caret's own line (same as text that may have grown to more
         // than one, see gui::faces::TextField's multiline support, would actually
         // be drawn), rather than assuming there's only ever the one.
-        const fonts::CodepointPosition caret_position = fonts::TextLayout::locate(text, has_caret->get_caret_codepoint_index(), *style.font, style.text_style, absolute_position, face.get_size());
+        const fonts::CodepointPosition caret_position = fonts::TextLayout::locate(text, has_caret->get_caret_codepoint_index(), *style.font, style.text_style, absolute_position - text_scroll_offset, text_box_size);
 
         constexpr float caret_width = 1.5f;
         constexpr float vertical_margin = 2.0f;

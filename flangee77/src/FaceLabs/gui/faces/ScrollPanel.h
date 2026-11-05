@@ -3,6 +3,7 @@
 #include "../Compound.h"
 #include "../Container.h"
 #include "../HasBackground.h"
+#include "../ScrollBarVisibility.h"
 
 #include "./ScrollBar.h"
 
@@ -38,22 +39,6 @@ class ScrollPanel
 {
 
 public:
-    /**
-     * A scroll bar's visibility, independent of whether its own axis is actually
-     * scrollable at all.
-     */
-    enum struct ScrollBarVisibility
-    {
-        /** Shows the scroll bar unconditionally (even while its own axis is disabled, in which case it just sits there inert, full-range, nothing to drag). */
-        Always,
-        /** Hides the scroll bar unconditionally. */
-        Never,
-        /** Shows the scroll bar only while the content actually overflows that axis's (viewport) bounds. */
-        Auto,
-    };
-
-
-
     ScrollPanel();
 
     ScrollPanel(const ScrollPanel&) = delete;

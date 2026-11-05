@@ -19,13 +19,15 @@ namespace fl7::gui::render {
 
     /**
      * Draws face's selection highlight (if any) against `text`, at
-     * absolute_position, sized/styled per face's effective style, via renderer.
-     * One rect per line the selection actually spans (see
-     * fonts::TextLayout::lay_out_box()), rather than assuming there's only ever
-     * the one, now that text may have grown to more than one line (see
-     * gui::faces::TextField's multiline support).
+     * absolute_position - text_scroll_offset, laid out against text_box_size,
+     * styled per face's effective style, via renderer (see
+     * HasText::get_text_scroll_offset()/get_text_box_size()). One rect per line
+     * the selection actually spans (see fonts::TextLayout::lay_out_box()),
+     * rather than assuming there's only ever the one, now that text may have
+     * grown to more than one line (see gui::faces::TextField's multiline
+     * support).
      */
-    void SelectionHelper::draw(AbstractRenderer* renderer, cl7::u32string_view text, const Face& face, ml7::Vector2f absolute_position)
+    void SelectionHelper::draw(AbstractRenderer* renderer, cl7::u32string_view text, const Face& face, ml7::Vector2f absolute_position, ml7::Vector2f text_scroll_offset, ml7::Vector2f text_box_size)
     {
         const auto* has_selection = dynamic_cast<const HasSelection*>(&face);
         if (!has_selection || !has_selection->has_selection())
@@ -41,7 +43,7 @@ namespace fl7::gui::render {
             return;
 
         const std::vector<cl7::text::codec::codepoint> codepoints = fonts::TextLayout::decode(text);
-        const fonts::TextBlockLayout block = fonts::TextLayout::lay_out_box(codepoints, *style.font, style.text_style, absolute_position, face.get_size());
+        const fonts::TextBlockLayout block = fonts::TextLayout::lay_out_box(codepoints, *style.font, style.text_style, absolute_position - text_scroll_offset, text_box_size);
 
         for (size_t i = 0; i < block.lines.size(); ++i)
         {
