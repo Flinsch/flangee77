@@ -347,3 +347,94 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - an icon-covered code
     TESTLABS_CHECK_EQ( lines.at(0).codepoint_begin, size_t{0} ); // not trimmed away
     TESTLABS_CHECK_EQ( lines.at(0).word_count, 1u ); // icon + "ab" is one contiguous word
 }
+
+
+
+// #############################################################################
+// locate() / lay_out_box() (gui::render::CaretHelper/SelectionHelper, and
+// gui::faces::TextField's multiline support, all build on these)
+// #############################################################################
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  locate - a code point right before an explicit line break stays on that line; right after it starts the next one" )
+{
+    auto& font = get_test_font();
+    fl7::fonts::TextStyle text_style; // preserve_whitespace = false by default, irrelevant here: no leading/trailing whitespace
+
+    const auto codepoints = to_codepoints("AAA\nBBB"); // 'A'=0..2, '\n'=3, 'B'=4..6
+    const ml7::Vector2f box_position{10.0f, 20.0f};
+    const ml7::Vector2f box_size{200.0f, 200.0f};
+
+    const auto at_very_start = fl7::fonts::TextLayout::locate(codepoints, 0, font, text_style, box_position, box_size);
+    const auto at_end_of_first_line = fl7::fonts::TextLayout::locate(codepoints, 3, font, text_style, box_position, box_size); // right before '\n'
+    const auto at_start_of_second_line = fl7::fonts::TextLayout::locate(codepoints, 4, font, text_style, box_position, box_size); // right after '\n'
+
+    TESTLABS_CHECK_EQ_FLT( at_end_of_first_line.position.y, at_very_start.position.y ); // still line 0
+    // Compared as a+b == a+b rather than (a+b)-a == b: the latter is only
+    // accurate to within a magnitude-relative epsilon, not the fixed absolute
+    // one TESTLABS_CHECK_EQ_FLT actually uses.
+    TESTLABS_CHECK_EQ_FLT( at_start_of_second_line.position.y, at_end_of_first_line.position.y + at_end_of_first_line.line_height ); // one line down
+    TESTLABS_CHECK_EQ_FLT( at_start_of_second_line.position.x, at_very_start.position.x ); // line 1 starts flush left, same as line 0
+
+    const float aaa_width = fl7::fonts::TextLayout::measure_advance(std::span<const cl7::text::codec::codepoint>(codepoints).subspan(0, 3), font, text_style);
+    TESTLABS_CHECK_EQ_FLT( at_end_of_first_line.position.x, at_very_start.position.x + aaa_width );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  locate - a code point right at a word-wrap boundary starts the wrapped continuation line, same as an explicit break" )
+{
+    auto& font = get_test_font();
+    fl7::fonts::TextStyle text_style;
+    text_style.wrap_mode = fl7::fonts::TextStyle::WrapMode::Word;
+
+    const float max_width = measure("aaa bbb", font, text_style); // just enough for one line
+
+    const auto codepoints = to_codepoints("aaa bbb"); // 'a'=0..2, ' '=3, 'b'=4..6
+    const auto lines = fl7::fonts::TextLayout::lay_out(codepoints, font, text_style, max_width * 0.5f); // forces a wrap between the two words
+    TESTLABS_ASSERT( lines.size() == 2 );
+
+    const ml7::Vector2f box_position{0.0f, 0.0f};
+    const ml7::Vector2f box_size{max_width * 0.5f, 200.0f};
+
+    const auto at_very_start = fl7::fonts::TextLayout::locate(codepoints, 0, font, text_style, box_position, box_size);
+    const auto at_end_of_first_word = fl7::fonts::TextLayout::locate(codepoints, 3, font, text_style, box_position, box_size); // right after "aaa", at the wrap space
+    const auto at_start_of_second_word = fl7::fonts::TextLayout::locate(codepoints, 4, font, text_style, box_position, box_size); // right at "bbb"
+
+    TESTLABS_CHECK_EQ_FLT( at_end_of_first_word.position.y, at_very_start.position.y ); // still line 0
+    TESTLABS_CHECK_EQ_FLT( at_start_of_second_word.position.y, at_end_of_first_word.position.y + at_end_of_first_word.line_height ); // one line down
+}
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out_box - vertical_align positions the whole block within a taller box, Top above Bottom" )
+{
+    auto& font = get_test_font();
+
+    fl7::fonts::TextStyle top_style;
+    top_style.vertical_align = fl7::fonts::TextStyle::VerticalAlign::Top;
+    fl7::fonts::TextStyle bottom_style = top_style;
+    bottom_style.vertical_align = fl7::fonts::TextStyle::VerticalAlign::Bottom;
+
+    const auto codepoints = to_codepoints("AAA\nBBB"); // two lines, nowhere near filling the box below
+    const ml7::Vector2f box_position{0.0f, 0.0f};
+    const ml7::Vector2f box_size{200.0f, 500.0f};
+
+    const auto top_block = fl7::fonts::TextLayout::lay_out_box(codepoints, font, top_style, box_position, box_size);
+    const auto bottom_block = fl7::fonts::TextLayout::lay_out_box(codepoints, font, bottom_style, box_position, box_size);
+
+    TESTLABS_CHECK_EQ( top_block.lines.size(), bottom_block.lines.size() );
+    TESTLABS_CHECK_LT( top_block.top, bottom_block.top ); // Top starts higher up (smaller y) than Bottom
+    TESTLABS_CHECK_EQ_FLT( top_block.line_height, bottom_block.line_height ); // same font/style: same line height regardless
+}
+
+TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  locate - a code point index past the end of the text clamps to the very end" )
+{
+    auto& font = get_test_font();
+    fl7::fonts::TextStyle text_style;
+
+    const auto codepoints = to_codepoints("AAA\nBBB");
+    const ml7::Vector2f box_position{0.0f, 0.0f};
+    const ml7::Vector2f box_size{200.0f, 200.0f};
+
+    const auto at_actual_end = fl7::fonts::TextLayout::locate(codepoints, codepoints.size(), font, text_style, box_position, box_size);
+    const auto at_way_past_end = fl7::fonts::TextLayout::locate(codepoints, codepoints.size() + 1000, font, text_style, box_position, box_size);
+
+    TESTLABS_CHECK_EQ_FLT( at_actual_end.position.x, at_way_past_end.position.x );
+    TESTLABS_CHECK_EQ_FLT( at_actual_end.position.y, at_way_past_end.position.y );
+}

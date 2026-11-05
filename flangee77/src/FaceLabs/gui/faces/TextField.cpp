@@ -10,6 +10,7 @@
 #include <CoreLabs/text/inspect.h>
 
 #include <algorithm>
+#include <span>
 
 
 
@@ -22,7 +23,8 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     /**
-     * Returns whether this text field is currently focused (the only time its caret is drawn).
+     * Returns whether this text field is currently focused (the only time its caret
+     * is drawn).
      */
     bool TextField::is_caret_visible() const
     {
@@ -37,7 +39,8 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     /**
-     * Sets this text field's text, unless already that text; moves the caret to its end, and clears any selection.
+     * Sets this text field's text, unless already that text; moves the caret to its
+     * end, and clears any selection.
      */
     void TextField::set_text(cl7::u32string text)
     {
@@ -57,20 +60,22 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     /**
-     * Positions the caret at the clicked code point, and starts a fresh (empty) selection there.
+     * Positions the caret at the clicked code point, and starts a fresh (empty)
+     * selection there.
      */
     void TextField::_on_mouse_down(xl7::input::MouseButton button, ml7::Vector2f local_position)
     {
-        _caret_index = _codepoint_index_at(local_position.x);
+        _caret_index = _codepoint_index_at(local_position);
         _selection_anchor = _caret_index;
     }
 
     /**
-     * Extends the selection from wherever the drag started to the code point now under the cursor.
+     * Extends the selection from wherever the drag started to the code point now
+     * under the cursor.
      */
     void TextField::_on_mouse_drag(ml7::Vector2f delta, ml7::Vector2f local_position)
     {
-        _caret_index = _codepoint_index_at(local_position.x);
+        _caret_index = _codepoint_index_at(local_position);
     }
 
     /**
@@ -79,7 +84,10 @@ namespace fl7::gui::faces {
      * moves a whole word at a time instead of one code point. Shift+Left/Right/
      * Home/End/Ctrl+Left/Ctrl+Right extends the selection instead of moving/
      * collapsing it; Ctrl+A selects everything outright. Ctrl+C/X/V copies/cuts/
-     * pastes the selection via the system clipboard (see xl7::Clipboard).
+     * pastes the selection via the system clipboard (see xl7::Clipboard). While
+     * get_multiline_enabled(): Up/Down move the caret a line at a time (keeping
+     * roughly the same column); Home/End jump to the current LINE's start/end
+     * rather than the whole text's (Ctrl+Home/Ctrl+End still do, regardless).
      */
     void TextField::_on_key_down(xl7::input::Key key)
     {
@@ -139,14 +147,32 @@ namespace fl7::gui::faces {
                 _selection_anchor = _caret_index;
             break;
 
+        case Key::Up:
+            if (_multiline_enabled)
+            {
+                _move_caret_vertically(-1);
+                if (!shift)
+                    _selection_anchor = _caret_index;
+            }
+            break;
+
+        case Key::Down:
+            if (_multiline_enabled)
+            {
+                _move_caret_vertically(1);
+                if (!shift)
+                    _selection_anchor = _caret_index;
+            }
+            break;
+
         case Key::Home:
-            _caret_index = 0;
+            _caret_index = (_multiline_enabled && !ctrl) ? _line_start(_caret_index) : 0;
             if (!shift)
                 _selection_anchor = _caret_index;
             break;
 
         case Key::End:
-            _caret_index = _text.size();
+            _caret_index = (_multiline_enabled && !ctrl) ? _line_end(_caret_index) : _text.size();
             if (!shift)
                 _selection_anchor = _caret_index;
             break;
@@ -186,15 +212,30 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Inserts the input (filtered down to plain code points) at the caret, replacing any active selection.
+     * Inserts the input (filtered down to plain code points, plus line breaks while
+     * get_multiline_enabled()) at the caret, replacing any active selection.
      */
     void TextField::_on_text_input(const cl7::u32string& text)
     {
         cl7::u32string filtered;
         filtered.reserve(text.size());
         for (char32_t c : text)
+        {
+            // CR and LF (Enter is reported as one or the other, see Face.h's own
+            // doc comment on _on_text_input()) are both normalized to a single LF,
+            // so the rest of this field (line splitting, caret-by-line movement)
+            // only ever has to deal with one kind of line break. Dropped outright
+            // (same as any other control character) unless multiline is enabled.
+            if (c == U'\r' || c == U'\n')
+            {
+                if (_multiline_enabled)
+                    filtered += U'\n';
+                continue;
+            }
+
             if (c >= 0x20 && c != 0x7f)
                 filtered += c;
+        }
 
         if (filtered.empty())
             return;
@@ -208,6 +249,22 @@ namespace fl7::gui::faces {
         _changed.emit(_text);
     }
 
+    /**
+     * Consumes the horizontal arrows for the text caret (soft), so plain
+     * arrow-key focus navigation yields while forced navigation (gamepad,
+     * Alt+arrow) can still leave; same for the vertical arrows, but only
+     * while get_multiline_enabled() (there's no vertical caret movement
+     * otherwise, so they stay free for navigation, as before).
+     */
+    ArrowResponse TextField::_consumes_arrow(ArrowDirection dir) const
+    {
+        if (dir == ArrowDirection::Left || dir == ArrowDirection::Right)
+            return ArrowResponse::Soft;
+        if (_multiline_enabled && (dir == ArrowDirection::Up || dir == ArrowDirection::Down))
+            return ArrowResponse::Soft;
+        return ArrowResponse::Ignore;
+    }
+
 
 
     // #############################################################################
@@ -215,29 +272,126 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     /**
-     * Returns the code point index within _text whose caret position is closest to local_x.
+     * Returns _Layout for _text, or empty if get_effective_style() has no font to
+     * lay out against (yet).
      */
-    size_t TextField::_codepoint_index_at(float local_x) const
+    std::optional<TextField::_Layout> TextField::_lay_out() const
     {
-        const Style style = get_effective_style();
+        Style style = get_effective_style();
         if (!style.font)
-            return _text.size();
+            return std::nullopt;
 
-        const float target_x = local_x - style.text_style.background_padding.x;
+        std::vector<cl7::text::codec::codepoint> codepoints = fonts::TextLayout::decode(_text);
+        fonts::TextBlockLayout block = fonts::TextLayout::lay_out_box(codepoints, *style.font, style.text_style, {0.0f, 0.0f}, get_size());
+
+        return _Layout{std::move(style), std::move(codepoints), std::move(block)};
+    }
+
+    /**
+     * Returns the index, within `line`, of the code point whose caret position
+     * is closest to target_x (relative to the line's own start).
+     */
+    size_t TextField::_nearest_codepoint_in_line(const _Layout& layout, const fonts::TextLine& line, float target_x)
+    {
         if (target_x <= 0.0f)
-            return 0;
+            return line.codepoint_begin;
 
         float previous_width = 0.0f;
-        for (size_t i = 1; i <= _text.size(); ++i)
+        for (size_t i = line.codepoint_begin + 1; i <= line.codepoint_end; ++i)
         {
-            const float width = fonts::TextLayout::measure_advance(cl7::u32string_view(_text).substr(0, i), *style.font, style.text_style);
+            const float width = fonts::TextLayout::measure_advance(std::span(layout.codepoints).subspan(line.codepoint_begin, i - line.codepoint_begin), *layout.style.font, layout.style.text_style);
             const float midpoint = (previous_width + width) * 0.5f;
             if (target_x < midpoint)
                 return i - 1;
             previous_width = width;
         }
 
-        return _text.size();
+        return line.codepoint_end;
+    }
+
+    /**
+     * Returns the index into `lines` of the line that `codepoint_index` falls
+     * on: the last one whose own start still reaches it, same convention as
+     * fonts::TextLayout::locate() (an index sitting exactly on a line break
+     * lands on the following line, not the end of the one before it).
+     */
+    size_t TextField::_line_index_at(const std::vector<fonts::TextLine>& lines, size_t codepoint_index)
+    {
+        size_t line_index = 0;
+        for (size_t i = 0; i < lines.size(); ++i)
+            if (lines[i].codepoint_begin <= codepoint_index)
+                line_index = i;
+        return line_index;
+    }
+
+    /**
+     * Returns the code point index within _text whose caret position is closest to
+     * local_position (see _nearest_codepoint_in_line(), scoped to whichever line
+     * local_position.y falls on).
+     */
+    size_t TextField::_codepoint_index_at(ml7::Vector2f local_position) const
+    {
+        const std::optional<_Layout> layout = _lay_out();
+        if (!layout)
+            return _text.size();
+
+        // Clamps to the nearest actual line (above the first/below the last),
+        // so a click above/below a multi-line field's text still lands
+        // somewhere sensible, rather than nowhere at all.
+        size_t line_index = 0;
+        for (size_t i = 0; i < layout->block.lines.size(); ++i)
+            if (layout->block.top + static_cast<float>(i) * layout->block.line_height <= local_position.y)
+                line_index = i;
+
+        return _nearest_codepoint_in_line(*layout, layout->block.lines[line_index], local_position.x - layout->block.left);
+    }
+
+    /**
+     * Moves _caret_index to the nearest code point, roughly the same column
+     * over, on the line `line_delta` lines away; a no-op if there's no such
+     * line (already the first/last one).
+     */
+    void TextField::_move_caret_vertically(int line_delta)
+    {
+        const std::optional<_Layout> layout = _lay_out();
+        if (!layout)
+            return;
+
+        const size_t current_line = _line_index_at(layout->block.lines, _caret_index);
+        const ptrdiff_t target_line = static_cast<ptrdiff_t>(current_line) + line_delta;
+        if (target_line < 0 || target_line >= static_cast<ptrdiff_t>(layout->block.lines.size()))
+            return;
+
+        const fonts::TextLine& from = layout->block.lines[current_line];
+        const float current_x = fonts::TextLayout::measure_advance(std::span(layout->codepoints).subspan(from.codepoint_begin, _caret_index - from.codepoint_begin), *layout->style.font, layout->style.text_style);
+
+        _caret_index = _nearest_codepoint_in_line(*layout, layout->block.lines[static_cast<size_t>(target_line)], current_x);
+    }
+
+    /**
+     * Returns the start of the line `codepoint_index` falls on, or 0 if there's no
+     * font to lay out against (yet).
+     */
+    size_t TextField::_line_start(size_t codepoint_index) const
+    {
+        const std::optional<_Layout> layout = _lay_out();
+        if (!layout)
+            return 0;
+
+        return layout->block.lines[_line_index_at(layout->block.lines, codepoint_index)].codepoint_begin;
+    }
+
+    /**
+     * Returns the end of the line `codepoint_index` falls on, or _text.size() if
+     * there's no font to lay out against (yet).
+     */
+    size_t TextField::_line_end(size_t codepoint_index) const
+    {
+        const std::optional<_Layout> layout = _lay_out();
+        if (!layout)
+            return _text.size();
+
+        return layout->block.lines[_line_index_at(layout->block.lines, codepoint_index)].codepoint_end;
     }
 
     /**
@@ -295,7 +449,8 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Erases the current selection from _text, and collapses the caret (and selection) to where it began.
+     * Erases the current selection from _text, and collapses the caret (and
+     * selection) to where it began.
      */
     void TextField::_delete_selection()
     {

@@ -9,6 +9,7 @@
 #include <FaceLabs/fonts/TextLayout.h>
 
 #include <algorithm>
+#include <span>
 
 
 
@@ -19,6 +20,10 @@ namespace fl7::gui::render {
     /**
      * Draws face's selection highlight (if any) against `text`, at
      * absolute_position, sized/styled per face's effective style, via renderer.
+     * One rect per line the selection actually spans (see
+     * fonts::TextLayout::lay_out_box()), rather than assuming there's only ever
+     * the one, now that text may have grown to more than one line (see
+     * gui::faces::TextField's multiline support).
      */
     void SelectionHelper::draw(AbstractRenderer* renderer, cl7::u32string_view text, const Face& face, ml7::Vector2f absolute_position)
     {
@@ -35,14 +40,25 @@ namespace fl7::gui::render {
         if (end <= begin)
             return;
 
-        const float begin_x = fonts::TextLayout::measure_advance(text.substr(0, begin), *style.font, style.text_style);
-        const float end_x = fonts::TextLayout::measure_advance(text.substr(0, end), *style.font, style.text_style);
+        const std::vector<cl7::text::codec::codepoint> codepoints = fonts::TextLayout::decode(text);
+        const fonts::TextBlockLayout block = fonts::TextLayout::lay_out_box(codepoints, *style.font, style.text_style, absolute_position, face.get_size());
 
-        const ml7::Vector2f offset{style.text_style.background_padding.x, 0.0f};
-        const ml7::Vector2f highlight_min = absolute_position + offset + ml7::Vector2f{begin_x, 0.0f};
-        const ml7::Vector2f highlight_max = absolute_position + offset + ml7::Vector2f{end_x, face.get_size().y};
+        for (size_t i = 0; i < block.lines.size(); ++i)
+        {
+            const fonts::TextLine& line = block.lines[i];
 
-        renderer->draw_rect(highlight_min, highlight_max, style.selection_color);
+            // The portion of [begin, end) that actually falls on this line.
+            const size_t line_begin = std::max(begin, line.codepoint_begin);
+            const size_t line_end = std::min(end, line.codepoint_end);
+            if (line_end <= line_begin)
+                continue;
+
+            const float begin_x = block.left + fonts::TextLayout::measure_advance(std::span(codepoints).subspan(line.codepoint_begin, line_begin - line.codepoint_begin), *style.font, style.text_style);
+            const float end_x = block.left + fonts::TextLayout::measure_advance(std::span(codepoints).subspan(line.codepoint_begin, line_end - line.codepoint_begin), *style.font, style.text_style);
+
+            const float y = block.top + static_cast<float>(i) * block.line_height;
+            renderer->draw_rect({begin_x, y}, {end_x, y + block.line_height}, style.selection_color);
+        }
     }
 
 

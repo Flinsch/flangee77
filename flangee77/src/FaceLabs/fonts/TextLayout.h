@@ -37,7 +37,47 @@ struct TextLine
     bool is_paragraph_end = false;
 };
 
+/**
+ * Where a specific code point index ends up within a box-laid-out text (see
+ * TextLayout::locate()): the absolute (top-left) position of a one-line-tall
+ * caret/selection rect around it, plus that line's own height.
+ */
+struct CodepointPosition
+{
+    ml7::Vector2f position;
+    float line_height = 0.0f;
+};
+
+/**
+ * The result of laying `codepoints` out against a box (see
+ * TextLayout::lay_out_box()): its lines, their shared height, and where the
+ * first one actually starts: `top` at its own top edge (not its baseline),
+ * `left` already includes the box's own horizontal padding, so a line's rect
+ * is simply {left + measure_advance(line prefix), top + i * line_height} sized
+ * {..., line_height}.
+ */
+struct TextBlockLayout
+{
+    std::vector<TextLine> lines;
+    float line_height = 0.0f;
+    float top = 0.0f;
+    float left = 0.0f;
+};
+
 namespace TextLayout {
+
+    /** Decodes `text` into a flat list of code points, for the span-based overloads below. */
+    template <cl7::any_string_view_like Tstring_view_like>
+    std::vector<cl7::text::codec::codepoint> decode(Tstring_view_like&& text)
+    {
+        auto sv = cl7::make_string_view(std::forward<Tstring_view_like>(text));
+        using codepoint_iterator = cl7::text::codec::codepoint_iterator<cl7::char_type_of_t<Tstring_view_like>>;
+
+        std::vector<cl7::text::codec::codepoint> codepoints;
+        for (codepoint_iterator it(sv); it != codepoint_iterator(); ++it)
+            codepoints.push_back(*it);
+        return codepoints;
+    }
 
     /**
      * Splits the given code points into lines.
@@ -70,30 +110,68 @@ namespace TextLayout {
      */
     std::vector<TextLine> lay_out(std::span<const cl7::text::codec::codepoint> codepoints, Font& font, const TextStyle& text_style, float max_width, std::span<const IconRun> icon_runs = {});
 
-    /** Same as the `text`-based overload, but for already-decoded code points. */
-    float measure_advance(std::span<const cl7::text::codec::codepoint> codepoints, Font& font, const TextStyle& text_style);
+    /**
+     * Lays `codepoints` out exactly as AbstractRenderer::draw_text_in_box() would
+     * against the same font/text_style/box_position/box_size, returning its lines
+     * (see lay_out()) plus where (and how tall) each one actually starts, so a
+     * caller can turn any of them into on-screen rects without reimplementing the
+     * box/wrap/vertical-alignment math itself (see locate(), and
+     * gui::render::SelectionHelper for a multi-line selection highlight, one rect
+     * per spanned line). Horizontal alignment always assumes
+     * TextStyle::HorizontalAlign::Left (Center/Right/Justify are not accounted
+     * for); vertical alignment (Top/Middle/Bottom/Baseline) is honored exactly.
+     */
+    TextBlockLayout lay_out_box(std::span<const cl7::text::codec::codepoint> codepoints, Font& font, const TextStyle& text_style, ml7::Vector2f box_position, ml7::Vector2f box_size);
+
+    /** Same as the `codepoints`-based overload, but decodes `text` first. */
+    template <cl7::any_string_view_like Tstring_view_like>
+    TextBlockLayout lay_out_box(Tstring_view_like&& text, Font& font, const TextStyle& text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
+    {
+        return lay_out_box(decode(std::forward<Tstring_view_like>(text)), font, text_style, box_position, box_size);
+    }
 
     /**
-     * Measures the raw pen-advance width (in scaled pixels) that `text` would
-     * occupy on a single, unwrapped line under `text_style` and `font`, exactly
-     * as `lay_out()` would actually draw it (`WrapMode::None`): the plain left-
-     * to-right sum of each code point's advance plus `text_style.letter_spacing`/
-     * `word_spacing`, with whitespace (leading, trailing, or in between) included
-     * verbatim -- unlike `measure_width()` above, this is never trimmed. Meant
-     * for a caret/cursor's pixel position (see `gui::render::CaretHelper`): call
-     * this with the prefix of the same text up to the caret's code point index.
+     * Locates where the code point at `codepoint_index` (clamped to
+     * `codepoints.size()`) would end up if `codepoints` were drawn via
+     * AbstractRenderer::draw_text_in_box() against the same font/text_style/
+     * box_position/box_size (see lay_out_box()): the line it falls on and the
+     * horizontal advance into that line, combined into a single absolute
+     * position (the top-left corner of a one-line-tall rect around it), plus
+     * that line's own height. For an index sitting exactly on a line break
+     * (word-wrap or explicit), this is the START of the following line, not
+     * the end of the one before it, same as a caret naturally continues there.
+     *
+     * Meant for gui::render::CaretHelper to position a caret rect against text
+     * that may since have grown to more than one line (see
+     * gui::faces::TextField's own multiline support).
      */
+    CodepointPosition locate(std::span<const cl7::text::codec::codepoint> codepoints, size_t codepoint_index, Font& font, const TextStyle& text_style, ml7::Vector2f box_position, ml7::Vector2f box_size);
+
+    /** Same as the `codepoints`-based overload, but decodes `text` first. */
+    template <cl7::any_string_view_like Tstring_view_like>
+    CodepointPosition locate(Tstring_view_like&& text, size_t codepoint_index, Font& font, const TextStyle& text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
+    {
+        return locate(decode(std::forward<Tstring_view_like>(text)), codepoint_index, font, text_style, box_position, box_size);
+    }
+
+    /**
+     * Measures the raw pen-advance width (in scaled pixels) that `codepoints`
+     * would occupy on a single, unwrapped line under `text_style` and `font`,
+     * exactly as `lay_out()` would actually draw it (`WrapMode::None`): the
+     * plain left-to-right sum of each code point's advance plus
+     * `text_style.letter_spacing`/`word_spacing`, with whitespace (leading,
+     * trailing, or in between) included verbatim. Unlike `measure_width()`
+     * above, this is never trimmed. Meant for a caret/cursor's pixel position
+     * (see `gui::render::CaretHelper`): call this with the prefix of the same
+     * code points up to the caret's code point index.
+     */
+    float measure_advance(std::span<const cl7::text::codec::codepoint> codepoints, Font& font, const TextStyle& text_style);
+
+    /** Same as the `codepoints`-based overload, but decodes `text` first. */
     template <cl7::any_string_view_like Tstring_view_like>
     float measure_advance(Tstring_view_like&& text, Font& font, const TextStyle& text_style)
     {
-        auto sv = cl7::make_string_view(std::forward<Tstring_view_like>(text));
-        using codepoint_iterator = cl7::text::codec::codepoint_iterator<cl7::char_type_of_t<Tstring_view_like>>;
-
-        std::vector<cl7::text::codec::codepoint> codepoints;
-        for (codepoint_iterator it(sv); it != codepoint_iterator(); ++it)
-            codepoints.push_back(*it);
-
-        return measure_advance(codepoints, font, text_style);
+        return measure_advance(decode(std::forward<Tstring_view_like>(text)), font, text_style);
     }
 
     /**
@@ -107,12 +185,7 @@ namespace TextLayout {
     template <cl7::any_string_view_like Tstring_view_like>
     float measure_width(Tstring_view_like&& text, Font& font, const TextStyle& text_style)
     {
-        auto sv = cl7::make_string_view(std::forward<Tstring_view_like>(text));
-        using codepoint_iterator = cl7::text::codec::codepoint_iterator<cl7::char_type_of_t<Tstring_view_like>>;
-
-        std::vector<cl7::text::codec::codepoint> codepoints;
-        for (codepoint_iterator it(sv); it != codepoint_iterator(); ++it)
-            codepoints.push_back(*it);
+        const std::vector<cl7::text::codec::codepoint> codepoints = decode(std::forward<Tstring_view_like>(text));
 
         TextStyle unwrapped_style = text_style;
         unwrapped_style.wrap_mode = TextStyle::WrapMode::None;

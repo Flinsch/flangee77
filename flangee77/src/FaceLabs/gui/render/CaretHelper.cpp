@@ -30,14 +30,16 @@ namespace fl7::gui::render {
         if (!style.font)
             return;
 
-        const size_t caret_index = std::min(has_caret->get_caret_codepoint_index(), text.size());
-        const float caret_x = fonts::TextLayout::measure_advance(text.substr(0, caret_index), *style.font, style.text_style);
+        // Locates the caret's own line (same as text that may have grown to more
+        // than one, see gui::faces::TextField's multiline support, would actually
+        // be drawn), rather than assuming there's only ever the one.
+        const fonts::CodepointPosition caret_position = fonts::TextLayout::locate(text, has_caret->get_caret_codepoint_index(), *style.font, style.text_style, absolute_position, face.get_size());
 
         constexpr float caret_width = 1.5f;
         constexpr float vertical_margin = 2.0f;
 
-        const ml7::Vector2f caret_min = absolute_position + ml7::Vector2f{style.text_style.background_padding.x + caret_x, vertical_margin};
-        const ml7::Vector2f caret_max = caret_min + ml7::Vector2f{caret_width, std::max(0.0f, face.get_size().y - 2.0f * vertical_margin)};
+        const ml7::Vector2f caret_min = caret_position.position + ml7::Vector2f{0.0f, vertical_margin};
+        const ml7::Vector2f caret_max = caret_min + ml7::Vector2f{caret_width, std::max(0.0f, caret_position.line_height - 2.0f * vertical_margin)};
 
         renderer->draw_rect(caret_min, caret_max, style.text_style.text_color);
     }

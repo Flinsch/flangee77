@@ -287,7 +287,111 @@ namespace TextLayout {
         return lines;
     }
 
-    /** Same as the `text`-based overload, but for already-decoded code points. */
+    /**
+     * Lays `codepoints` out exactly as AbstractRenderer::draw_text_in_box() would
+     * against the same font/text_style/box_position/box_size, returning its lines
+     * (see lay_out()) plus where (and how tall) each one actually starts, so a
+     * caller can turn any of them into on-screen rects without reimplementing the
+     * box/wrap/vertical-alignment math itself (see locate(), and
+     * gui::render::SelectionHelper for a multi-line selection highlight, one rect
+     * per spanned line). Horizontal alignment always assumes
+     * TextStyle::HorizontalAlign::Left (Center/Right/Justify are not accounted
+     * for); vertical alignment (Top/Middle/Bottom/Baseline) is honored exactly.
+     */
+    TextBlockLayout lay_out_box(std::span<const cl7::text::codec::codepoint> codepoints, Font& font, const TextStyle& text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
+    {
+        Font::Access font_access = font.access();
+        const FontMetrics& font_metrics = font_access.get_metrics();
+        const ml7::Vector2f scaled_font_size = text_style.scaling * text_style.font_size;
+
+        ml7::Vector2f padding = text_style.background_padding;
+        if (box_size.x > 0.0f)
+            padding.x = std::min(padding.x, box_size.x * 0.5f);
+        const float wrap_width = box_size.x > 0.0f ? std::max(0.0f, box_size.x - 2.0f * padding.x) : box_size.x;
+
+        std::vector<TextLine> lines = lay_out(codepoints, font, text_style, wrap_width);
+
+        const float line_height_px = font_metrics.line_height * scaled_font_size.y * text_style.line_spacing;
+        const float block_height = static_cast<float>(lines.size()) * line_height_px;
+        const float ascent_px = font_metrics.ascent * scaled_font_size.y;
+
+        float line_y;
+        switch (text_style.vertical_align)
+        {
+        case TextStyle::VerticalAlign::Top:
+            line_y = box_position.y + ascent_px;
+            break;
+        case TextStyle::VerticalAlign::Middle:
+            line_y = box_position.y + (box_size.y - block_height) * 0.5f + ascent_px;
+            break;
+        case TextStyle::VerticalAlign::Bottom:
+            line_y = box_position.y + box_size.y - block_height + ascent_px;
+            break;
+        case TextStyle::VerticalAlign::Baseline:
+        default:
+            line_y = box_position.y;
+            break;
+        }
+
+        return TextBlockLayout{
+            .lines = std::move(lines),
+            .line_height = line_height_px,
+            .top = line_y - ascent_px,
+            .left = box_position.x + padding.x,
+        };
+    }
+
+    /**
+     * Locates where the code point at `codepoint_index` (clamped to
+     * `codepoints.size()`) would end up if `codepoints` were drawn via
+     * AbstractRenderer::draw_text_in_box() against the same font/text_style/
+     * box_position/box_size (see lay_out_box()): the line it falls on and the
+     * horizontal advance into that line, combined into a single absolute
+     * position (the top-left corner of a one-line-tall rect around it), plus
+     * that line's own height. For an index sitting exactly on a line break
+     * (word-wrap or explicit), this is the START of the following line, not
+     * the end of the one before it, same as a caret naturally continues there.
+     *
+     * Meant for gui::render::CaretHelper to position a caret rect against text
+     * that may since have grown to more than one line (see
+     * gui::faces::TextField's own multiline support).
+     */
+    CodepointPosition locate(std::span<const cl7::text::codec::codepoint> codepoints, size_t codepoint_index, Font& font, const TextStyle& text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
+    {
+        codepoint_index = std::min(codepoint_index, codepoints.size());
+
+        const TextBlockLayout block = lay_out_box(codepoints, font, text_style, box_position, box_size);
+
+        // The last line whose own start still reaches codepoint_index: for an
+        // index sitting exactly on a break, this is what makes it land on the
+        // following line instead of the one before it (see the doc comment).
+        size_t line_index = 0;
+        for (size_t i = 0; i < block.lines.size(); ++i)
+            if (block.lines[i].codepoint_begin <= codepoint_index)
+                line_index = i;
+
+        const TextLine& line = block.lines[line_index];
+        const size_t line_relative_index = std::clamp(codepoint_index, line.codepoint_begin, line.codepoint_end) - line.codepoint_begin;
+        const float x = block.left + measure_advance(codepoints.subspan(line.codepoint_begin, line_relative_index), font, text_style);
+        const float y = block.top + static_cast<float>(line_index) * block.line_height;
+
+        return CodepointPosition{
+            .position = {x, y},
+            .line_height = block.line_height,
+        };
+    }
+
+    /**
+     * Measures the raw pen-advance width (in scaled pixels) that `codepoints`
+     * would occupy on a single, unwrapped line under `text_style` and `font`,
+     * exactly as `lay_out()` would actually draw it (`WrapMode::None`): the
+     * plain left-to-right sum of each code point's advance plus
+     * `text_style.letter_spacing`/`word_spacing`, with whitespace (leading,
+     * trailing, or in between) included verbatim. Unlike `measure_width()`
+     * above, this is never trimmed. Meant for a caret/cursor's pixel position
+     * (see `gui::render::CaretHelper`): call this with the prefix of the same
+     * code points up to the caret's code point index.
+     */
     float measure_advance(std::span<const cl7::text::codec::codepoint> codepoints, Font& font, const TextStyle& text_style)
     {
         Font::Access font_access = font.access();

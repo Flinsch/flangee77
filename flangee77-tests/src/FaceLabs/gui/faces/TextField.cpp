@@ -2,6 +2,7 @@
 #include <TestLabs/TestSuite.h>
 
 #include <FaceLabs/gui/Shell.h>
+#include <FaceLabs/gui/faces/Panel.h>
 #include <FaceLabs/gui/faces/TextField.h>
 
 #include <XiaoLabs/Clipboard.h>
@@ -339,4 +340,207 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  Ctrl+C/X/V copy/cut/paste
     TESTLABS_CHECK_EQ( field.get_text(), cl7::u32string(U"Hello World") );
     TESTLABS_CHECK_EQ( field.get_caret_codepoint_index(), size_t(11) );
     TESTLABS_CHECK_EQ( emit_count, 2 );
+}
+
+
+
+// #############################################################################
+// Multiline (set_multiline_enabled())
+// #############################################################################
+//
+// Note: NullRenderer-based tests have no theme/font set up anywhere (see
+// shared.h), so get_effective_style().font is always nullptr here, and every
+// font-dependent helper (_lay_out() and everything built on it: 2D mouse hit-
+// testing, Up/Down caret movement, line-based Home/End) falls back to its
+// defensive no-font behavior instead of actually doing anything: same,
+// pre-existing limitation single-line mouse-click hit-testing already had.
+// That math is instead covered directly (with a real font) by
+// FaceLabs/fonts/TextLayout.cpp's own locate()/lay_out_box() tests. What's
+// covered here is what IS font-independent: the property itself, literal
+// line-break insertion (pure text manipulation), Ctrl+Home/Ctrl+End (which
+// bypass line lookup entirely), Backspace/Delete across a line break, and
+// get_multiline_enabled() gating whether Up/Down are consumed at all.
+// #############################################################################
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  get_multiline_enabled() defaults to false; set_multiline_enabled() toggles it" )
+{
+    fl7::gui::faces::TextField field;
+    TESTLABS_CHECK( !field.get_multiline_enabled() );
+
+    field.set_multiline_enabled(true);
+    TESTLABS_CHECK( field.get_multiline_enabled() );
+
+    field.set_multiline_enabled(false);
+    TESTLABS_CHECK( !field.get_multiline_enabled() );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  with multiline enabled, a line break (CR or LF, same as Enter is reported, see Face::_on_text_input()) is inserted as a single LF; with it disabled (the default), it's dropped like any other control character" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& field = shell.add_face<fl7::gui::faces::TextField>(U"Hello");
+    field.set_position({0.0f, 0.0f});
+    field.set_size({100.0f, 20.0f});
+
+    input.move_mouse_to({50.0f, 10.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+
+    // Disabled (the default): dropped, same as any other control character.
+    input.type_text(U"\r");
+    shell.update();
+    TESTLABS_CHECK_EQ( field.get_text(), cl7::u32string(U"Hello") );
+
+    // Enabled: both CR and LF turn into a single LF each.
+    field.set_multiline_enabled(true);
+
+    int emit_count = 0;
+    field.get_changed().connect([&](const cl7::u32string&) { ++emit_count; });
+
+    input.type_text(U"\r");
+    shell.update();
+    TESTLABS_CHECK_EQ( field.get_text(), cl7::u32string(U"Hello\n") );
+    TESTLABS_CHECK_EQ( emit_count, 1 );
+
+    input.type_text(U"\n");
+    shell.update();
+    TESTLABS_CHECK_EQ( field.get_text(), cl7::u32string(U"Hello\n\n") );
+    TESTLABS_CHECK_EQ( emit_count, 2 );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  Ctrl+Home/Ctrl+End always jump to the whole text's start/end, even with multiline enabled" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& field = shell.add_face<fl7::gui::faces::TextField>(U"Hello\nWorld"); // set directly, bypassing _on_text_input()'s own filter
+    field.set_multiline_enabled(true);
+    field.set_position({0.0f, 0.0f});
+    field.set_size({100.0f, 40.0f});
+
+    input.move_mouse_to({50.0f, 10.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+
+    input.set_key_down(xl7::input::Key::LeftControl, true);
+    shell.update();
+
+    input.set_key_down(xl7::input::Key::Home, true);
+    shell.update();
+    TESTLABS_CHECK_EQ( field.get_caret_codepoint_index(), size_t(0) );
+    input.set_key_down(xl7::input::Key::Home, false);
+    shell.update();
+
+    input.set_key_down(xl7::input::Key::End, true);
+    shell.update();
+    TESTLABS_CHECK_EQ( field.get_caret_codepoint_index(), field.get_text().size() );
+    input.set_key_down(xl7::input::Key::End, false);
+    shell.update();
+
+    input.set_key_down(xl7::input::Key::LeftControl, false);
+    shell.update();
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  Backspace/Delete remove a line break like any other single code point, joining the two lines" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& field = shell.add_face<fl7::gui::faces::TextField>(U"Hello\nWorld");
+    field.set_multiline_enabled(true);
+    field.set_position({0.0f, 0.0f});
+    field.set_size({100.0f, 40.0f});
+
+    input.move_mouse_to({50.0f, 10.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+
+    input.set_key_down(xl7::input::Key::LeftControl, true);
+    shell.update();
+    input.set_key_down(xl7::input::Key::Home, true); // jump to the very start first
+    shell.update();
+    input.set_key_down(xl7::input::Key::Home, false);
+    shell.update();
+    input.set_key_down(xl7::input::Key::LeftControl, false);
+    shell.update();
+
+    for (int i = 0; i < 5; ++i) // past "Hello", right up against the line break
+    {
+        input.set_key_down(xl7::input::Key::Right, true);
+        shell.update();
+        input.set_key_down(xl7::input::Key::Right, false);
+        shell.update();
+    }
+    TESTLABS_CHECK_EQ( field.get_caret_codepoint_index(), size_t(5) );
+
+    input.set_key_down(xl7::input::Key::Delete, true);
+    shell.update();
+    input.set_key_down(xl7::input::Key::Delete, false);
+    shell.update();
+
+    TESTLABS_CHECK_EQ( field.get_text(), cl7::u32string(U"HelloWorld") ); // the line break itself is gone, joining the two lines
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  with multiline enabled, Up/Down stay with the field instead of moving focus elsewhere; without it (the default), they're free for navigation as before" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    // Both fields share one top-level ancestor: spatial arrow navigation (see
+    // Shell::focus_toward()) never crosses between separate top-level faces.
+    auto& window = shell.add_face<fl7::gui::faces::Panel>();
+    window.set_position({0.0f, 0.0f});
+    window.set_size({200.0f, 200.0f});
+
+    auto& field = window.add_child<fl7::gui::faces::TextField>(U"Hello");
+    field.set_position({0.0f, 0.0f});
+    field.set_size({100.0f, 20.0f});
+
+    auto& below = window.add_child<fl7::gui::faces::TextField>(U"World");
+    below.set_position({0.0f, 40.0f});
+    below.set_size({100.0f, 20.0f});
+
+    input.move_mouse_to({50.0f, 10.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&field) );
+
+    // Without multiline (the default): Down is free, focus moves to `below`.
+    input.set_key_down(xl7::input::Key::Down, true);
+    shell.update();
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&below) );
+    input.set_key_down(xl7::input::Key::Down, false);
+    shell.update();
+
+    // Back on `field`, now with multiline enabled: Down stays here instead.
+    input.move_mouse_to({50.0f, 10.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+    field.set_multiline_enabled(true);
+
+    input.set_key_down(xl7::input::Key::Down, true);
+    shell.update();
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&field) );
+    input.set_key_down(xl7::input::Key::Down, false);
+    shell.update();
 }
