@@ -137,6 +137,160 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  clicking empty space (no top-level fa
     TESTLABS_CHECK( shell.get_hovered_face() == static_cast<fl7::gui::Face*>(&front) );
 }
 
+
+
+// #############################################################################
+// Popups (open_popup()/close_popup())
+// #############################################################################
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  open_popup() raises the given popup to the front of the Z-order, and keeps it there on every repeated call" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& owner = shell.add_face<fl7::gui::faces::Panel>();
+    owner.set_position({0.0f, 0.0f});
+    owner.set_size({100.0f, 100.0f});
+
+    auto& popup = shell.add_face<fl7::gui::faces::Panel>();
+    popup.set_position({0.0f, 0.0f});
+    popup.set_size({100.0f, 100.0f}); // fully overlapping owner
+
+    shell.open_popup(&popup, &owner);
+
+    input.move_mouse_to({50.0f, 50.0f});
+    shell.update();
+    TESTLABS_CHECK( shell.get_hovered_face() == static_cast<fl7::gui::Face*>(&popup) );
+
+    // A third, unrelated top-level face, added afterwards (frontmost by
+    // construction, same as any newly added one), ends up ahead of the popup...
+    auto& other = shell.add_face<fl7::gui::faces::Panel>();
+    other.set_position({0.0f, 0.0f});
+    other.set_size({100.0f, 100.0f});
+
+    input.move_mouse_to({50.1f, 50.0f}); // re-trigger hit-testing
+    shell.update();
+    TESTLABS_CHECK( shell.get_hovered_face() == static_cast<fl7::gui::Face*>(&other) );
+
+    // ...but re-opening the popup raises it again, ahead of that too.
+    shell.open_popup(&popup, &owner);
+    input.move_mouse_to({50.2f, 50.0f});
+    shell.update();
+    TESTLABS_CHECK( shell.get_hovered_face() == static_cast<fl7::gui::Face*>(&popup) );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  open_popup() auto-closes the popup once focus moves to a face outside both it and its owner" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& owner = shell.add_face<fl7::gui::faces::Button>(U"Owner");
+    owner.set_position({0.0f, 0.0f});
+    owner.set_size({50.0f, 20.0f});
+
+    auto& popup = shell.add_face<fl7::gui::faces::Panel>();
+    popup.set_position({0.0f, 30.0f});
+    popup.set_size({50.0f, 50.0f});
+
+    auto& other = shell.add_face<fl7::gui::faces::Button>(U"Other");
+    other.set_position({200.0f, 0.0f});
+    other.set_size({50.0f, 20.0f});
+
+    shell.open_popup(&popup, &owner);
+    TESTLABS_CHECK( popup.is_visible() );
+
+    input.move_mouse_to({210.0f, 10.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    TESTLABS_CHECK( !popup.is_visible() ); // closed the moment focus actually moved to `other`
+
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  open_popup() does not auto-close the popup when focus lands back on its owner, or within its own content" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& owner = shell.add_face<fl7::gui::faces::Button>(U"Owner");
+    owner.set_position({0.0f, 0.0f});
+    owner.set_size({50.0f, 20.0f});
+
+    auto& popup = shell.add_face<fl7::gui::faces::Button>(U"Popup content"); // focusable, so clicking it really moves focus
+    popup.set_position({0.0f, 30.0f});
+    popup.set_size({50.0f, 20.0f});
+
+    shell.open_popup(&popup, &owner);
+
+    // Clicking into the popup's own content keeps it open.
+    input.move_mouse_to({25.0f, 40.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    TESTLABS_CHECK( popup.is_visible() );
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+
+    // Clicking back onto the owner keeps it open too (its own click handling,
+    // e.g. toggling it closed again, is a separate concern entirely).
+    input.move_mouse_to({25.0f, 10.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    TESTLABS_CHECK( popup.is_visible() );
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  bringing a popup's owner to the front also raises the popup, so it never visually slips behind it" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& window = shell.add_face<fl7::gui::faces::Panel>();
+    window.set_position({0.0f, 0.0f});
+    window.set_size({100.0f, 100.0f});
+
+    auto& owner = window.add_child<fl7::gui::faces::Button>(U"Owner");
+    owner.set_position({10.0f, 10.0f});
+    owner.set_size({30.0f, 20.0f}); // top area, (10, 10)-(40, 30), not covered by popup below
+
+    auto& popup = shell.add_face<fl7::gui::faces::Panel>(); // added after window: topmost for now
+    popup.set_position({0.0f, 50.0f});
+    popup.set_size({100.0f, 50.0f}); // window's bottom half, (0, 50)-(100, 100)
+
+    shell.open_popup(&popup, &owner);
+
+    input.move_mouse_to({50.0f, 75.0f}); // within popup's area (and window's, underneath it)
+    shell.update();
+    TESTLABS_CHECK( shell.get_hovered_face() == static_cast<fl7::gui::Face*>(&popup) );
+
+    // Clicking `owner` (within `window`) raises `window` to the front. Without
+    // the fix in _bring_to_front(), this would leave `popup` stranded behind
+    // `window` until something eventually closes it; with the fix, `popup`
+    // gets raised right along with it, staying on top throughout.
+    input.move_mouse_to({25.0f, 20.0f}); // owner's own rect, not covered by popup
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+
+    input.move_mouse_to({50.0f, 75.0f}); // back to popup's area
+    shell.update();
+    TESTLABS_CHECK( shell.get_hovered_face() == static_cast<fl7::gui::Face*>(&popup) ); // still on top, not `window`
+    TESTLABS_CHECK( popup.is_visible() ); // never closed by this -- it's a click on its own owner
+
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+}
+
+
+
 TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  removing a child face that's currently hovered/pressed/focused clears that state instead of leaving it dangling" )
 {
     f77_tests::gui::NullRenderer renderer;

@@ -63,6 +63,7 @@ target_sources(flangee77-tests
     FaceLabs/gui/Theme.cpp
     FaceLabs/gui/faces/Button.cpp
     FaceLabs/gui/faces/CheckBox.cpp
+    FaceLabs/gui/faces/DropDown.cpp
     FaceLabs/gui/faces/Frame.cpp
     FaceLabs/gui/faces/Label.cpp
     FaceLabs/gui/faces/ListBox.cpp

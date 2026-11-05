@@ -39,6 +39,7 @@ target_sources(flangee77
     gui/TrackControl.cpp
 
     gui/faces/CheckBox.cpp
+    gui/faces/DropDown.cpp
     gui/faces/Frame.cpp
     gui/faces/ListBox.cpp
     gui/faces/RadioButton.cpp

@@ -184,6 +184,46 @@ public:
     bool click_focus();
 
     /**
+     * Moves focus directly to the specified face (or, with `nullptr`, clears it),
+     * the same way a click or Tab/arrow navigation would: fires
+     * _on_focus_lost()/_on_focus_gained() as needed, a no-op if `face` is already
+     * the focused face. Exposed for a face that needs to hand focus back to itself
+     * (or elsewhere) of its own accord, outside of any direct click on it (e.g.,
+     * faces::DropDown, once its popup list closes: actually clicking into the
+     * popup unavoidably focuses it first instead, see update()'s mouse handling).
+     */
+    void set_focus(Face* face);
+
+    /**
+     * Registers `popup` (which must already be one of this shell's own top-level
+     * faces, see add_face()) as a popup owned by `owner`, bringing it to the front
+     * of the Z-order (see update()) and keeping it there every time this is called
+     * again, e.g. on every re-open: without this, a popup that was only ever
+     * created once and hidden/shown again afterwards (Shell has no way to remove a
+     * top-level face at all, see close_popup()) would stay wherever it first ended
+     * up in the Z-order, even once some unrelated face has since been brought to
+     * front ahead of it.
+     *
+     * Also makes this shell close the popup again on its own (see close_popup()),
+     * the moment focus moves to a face that is neither the popup nor `owner`, nor
+     * a descendant of either (a plain click elsewhere, Tab/arrow navigation moving
+     * on, ...): the common "clicking/tabbing away closes the open dropdown/menu/
+     * ..." behavior, implemented once here instead of by every individual popup-
+     * opening face. A click into the popup's own content, or back onto `owner`
+     * itself (e.g., to toggle it closed again), is deliberately NOT treated as
+     * "elsewhere", so it doesn't get auto-closed out from under that interaction.
+     */
+    void open_popup(Face* popup, Face* owner);
+
+    /**
+     * Unregisters and hides (set_visible(false)) the given popup, if currently
+     * registered (see open_popup()); a no-op otherwise. Called automatically once
+     * focus moves away (see open_popup()), but just as well callable directly for
+     * an explicit close (e.g., Escape, or the opening face toggling it closed again).
+     */
+    void close_popup(Face* popup);
+
+    /**
      * Renders all top-level faces (and their children) via the bound renderer.
      * Purely a delegation: this shell knows nothing about how drawing actually
      * happens (or in what order, or whatever), that's entirely up to the renderer.
@@ -223,10 +263,30 @@ private:
     void _focus_adjacent_tab_stop(bool backward);
 
     /**
+     * Changes _focused_face to the specified face (or `nullptr`), firing
+     * _on_focus_lost()/_on_focus_gained() as needed, and resetting the key-repeat
+     * timers so a key already held before the new face gained focus doesn't
+     * immediately fire a spurious repeat on it. A no-op if `face` is already the
+     * focused face. The shared implementation behind update()'s mouse-press
+     * handling, focus_toward(), _focus_adjacent_tab_stop(), and set_focus().
+     */
+    void _change_focus(Face* face);
+
+    /**
      * Moves the specified top-level face (which must actually currently be one) to
      * the back of _top_level_faces, i.e., the front of the Z-order (see update(),
      * hit-tested/drawn last, same as a newly added one would be): the usual "bring
      * the clicked-into window to the front" behavior. A no-op if it's already there.
+     *
+     * Also raises, the same way, any registered popup (see open_popup()) whose
+     * owner lies within `top_level`'s own subtree: without this, raising a face
+     * whose own popup happens to currently sit further back (e.g., some other face
+     * having been raised in between) would leave that popup stranded visually
+     * behind it, for however long it still takes to actually get closed (its
+     * owner's own click handling, e.g., toggling it closed again, only takes
+     * effect once that press is released, see update()'s mouse handling): purely a
+     * Z-order correction, never closing or otherwise touching the popup itself.
+     * Raising the popup itself needs no such chase the other way around.
      */
     void _bring_to_front(Face* top_level);
 
@@ -252,6 +312,21 @@ private:
 
 
     // #############################################################################
+    // Helper Types
+    // #############################################################################
+
+    /** One registered popup/owner pair, see open_popup(). */
+    struct PopupEntry
+    {
+        /** Non-owning: one of _top_level_faces. */
+        Face* popup;
+        /** Non-owning: whatever face opened it. */
+        Face* owner;
+    };
+
+
+
+    // #############################################################################
     // Attributes
     // #############################################################################
 
@@ -266,6 +341,9 @@ private:
     const Theme* _theme = nullptr;
 
     std::vector<std::unique_ptr<Face>> _top_level_faces;
+
+    /** Currently registered popups, see open_popup()/close_popup(). */
+    std::vector<PopupEntry> _popups;
 
     /** Non-owning: the topmost face currently under the mouse cursor. */
     Face* _hovered_face = nullptr;

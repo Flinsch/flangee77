@@ -95,18 +95,7 @@ namespace fl7::gui {
             // Also runs when _hovered_face is null (click on empty space): that's
             // precisely what has to clear a stale focus (e.g., a focused TextField
             // losing its caret again once you click away from it).
-            if (_focused_face != _hovered_face)
-            {
-                if (_focused_face)
-                    _focused_face->_on_focus_lost();
-                _focused_face = _hovered_face;
-                if (_focused_face)
-                    _focused_face->_on_focus_gained();
-
-                // A key already held before this face gained focus must not
-                // immediately fire a spurious repeat on it.
-                _key_repeat_next_fire_times = {};
-            }
+            _change_focus(_hovered_face);
 
             if (_hovered_face)
             {
@@ -229,17 +218,10 @@ namespace fl7::gui {
             return;
 
         Face* const face = _find_face_toward(top_level, dir, force);
-        if (!face || face == _focused_face)
+        if (!face)
             return;
 
-        if (_focused_face)
-            _focused_face->_on_focus_lost();
-        _focused_face = face;
-        _focused_face->_on_focus_gained();
-
-        // A key already held before this face gained focus must not
-        // immediately fire a spurious repeat on it (see update()).
-        _key_repeat_next_fire_times = {};
+        _change_focus(face);
     }
 
     /**
@@ -267,6 +249,67 @@ namespace fl7::gui {
 
         _focused_face->_on_click(xl7::input::MouseButton::Left);
         return true;
+    }
+
+    /**
+     * Moves focus directly to the specified face (or, with `nullptr`, clears it),
+     * the same way a click or Tab/arrow navigation would: fires
+     * _on_focus_lost()/_on_focus_gained() as needed, a no-op if `face` is already
+     * the focused face. Exposed for a face that needs to hand focus back to itself
+     * (or elsewhere) of its own accord, outside of any direct click on it (e.g.,
+     * faces::DropDown, once its popup list closes: actually clicking into the
+     * popup unavoidably focuses it first instead, see update()'s mouse handling).
+     */
+    void Shell::set_focus(Face* face)
+    {
+        _change_focus(face);
+    }
+
+    /**
+     * Registers `popup` (which must already be one of this shell's own top-level
+     * faces, see add_face()) as a popup owned by `owner`, bringing it to the front
+     * of the Z-order (see update()) and keeping it there every time this is called
+     * again, e.g. on every re-open: without this, a popup that was only ever
+     * created once and hidden/shown again afterwards (Shell has no way to remove a
+     * top-level face at all, see close_popup()) would stay wherever it first ended
+     * up in the Z-order, even once some unrelated face has since been brought to
+     * front ahead of it.
+     *
+     * Also makes this shell close the popup again on its own (see close_popup()),
+     * the moment focus moves to a face that is neither the popup nor `owner`, nor
+     * a descendant of either (a plain click elsewhere, Tab/arrow navigation moving
+     * on, ...): the common "clicking/tabbing away closes the open dropdown/menu/
+     * ..." behavior, implemented once here instead of by every individual popup-
+     * opening face. A click into the popup's own content, or back onto `owner`
+     * itself (e.g., to toggle it closed again), is deliberately NOT treated as
+     * "elsewhere", so it doesn't get auto-closed out from under that interaction.
+     */
+    void Shell::open_popup(Face* popup, Face* owner)
+    {
+        assert(popup);
+        _bring_to_front(popup);
+
+        const auto it = std::ranges::find_if(_popups, [popup](const PopupEntry& entry) { return entry.popup == popup; });
+        if (it != _popups.end())
+            it->owner = owner;
+        else
+            _popups.push_back({popup, owner});
+    }
+
+    /**
+     * Unregisters and hides (set_visible(false)) the given popup, if currently
+     * registered (see open_popup()); a no-op otherwise. Called automatically once
+     * focus moves away (see open_popup()), but just as well callable directly for
+     * an explicit close (e.g., Escape, or the opening face toggling it closed again).
+     */
+    void Shell::close_popup(Face* popup)
+    {
+        const auto it = std::ranges::find_if(_popups, [popup](const PopupEntry& entry) { return entry.popup == popup; });
+        if (it == _popups.end())
+            return;
+
+        popup->set_visible(false);
+        _popups.erase(it);
     }
 
     /**
@@ -306,6 +349,18 @@ namespace fl7::gui {
             _pressed_face = nullptr;
         if (is_within_removed_subtree(_focused_face))
             _focused_face = nullptr;
+
+        // A popup's owner can be removed (destroyed) while its popup is still
+        // open (e.g., a DropDown's own enclosing Panel being torn down): closes
+        // any such now-ownerless popup right away, rather than leaving it open
+        // indefinitely (a popup itself, always a top-level face, can never be
+        // "removed" this way to begin with, see open_popup()).
+        std::erase_if(_popups, [&](const PopupEntry& entry) {
+            if (!is_within_removed_subtree(entry.owner))
+                return false;
+            entry.popup->set_visible(false);
+            return true;
+        });
     }
 
 
@@ -315,24 +370,95 @@ namespace fl7::gui {
     // #############################################################################
 
     /**
+     * Changes _focused_face to the specified face (or `nullptr`), firing
+     * _on_focus_lost()/_on_focus_gained() as needed, and resetting the key-repeat
+     * timers so a key already held before the new face gained focus doesn't
+     * immediately fire a spurious repeat on it. A no-op if `face` is already the
+     * focused face. The shared implementation behind update()'s mouse-press
+     * handling, focus_toward(), _focus_adjacent_tab_stop(), and set_focus().
+     */
+    void Shell::_change_focus(Face* face)
+    {
+        if (face == _focused_face)
+            return;
+
+        if (_focused_face)
+            _focused_face->_on_focus_lost();
+        _focused_face = face;
+        if (_focused_face)
+            _focused_face->_on_focus_gained();
+
+        // A key already held before this face gained focus must not
+        // immediately fire a spurious repeat on it.
+        _key_repeat_next_fire_times = {};
+
+        // Closes every registered popup (see open_popup()) that the newly
+        // focused face falls within neither the subtree of, nor the subtree of
+        // its own owner: a plain click/Tab/arrow move away from both closes it,
+        // same as landing back within the popup's own content, or back on its
+        // owner (e.g. to toggle it closed again), does not.
+        const auto is_within = [](Face* ancestor, Face* f) {
+            for (; f; f = f->get_parent())
+                if (f == ancestor)
+                    return true;
+            return false;
+        };
+        std::erase_if(_popups, [&](const PopupEntry& entry) {
+            if (is_within(entry.popup, face) || is_within(entry.owner, face))
+                return false;
+            entry.popup->set_visible(false);
+            return true;
+        });
+    }
+
+    /**
      * Moves the specified top-level face (which must actually currently be one) to
      * the back of _top_level_faces, i.e., the front of the Z-order (see update(),
      * hit-tested/drawn last, same as a newly added one would be): the usual "bring
      * the clicked-into window to the front" behavior. A no-op if it's already there.
+     *
+     * Also raises, the same way, any registered popup (see open_popup()) whose
+     * owner lies within `top_level`'s own subtree: without this, raising a face
+     * whose own popup happens to currently sit further back (e.g., some other face
+     * having been raised in between) would leave that popup stranded visually
+     * behind it, for however long it still takes to actually get closed (its
+     * owner's own click handling, e.g., toggling it closed again, only takes
+     * effect once that press is released, see update()'s mouse handling): purely a
+     * Z-order correction, never closing or otherwise touching the popup itself.
+     * Raising the popup itself needs no such chase the other way around.
      */
     void Shell::_bring_to_front(Face* top_level)
     {
-        const auto it = std::ranges::find_if(_top_level_faces, [top_level](const std::unique_ptr<Face>& face) {
-            return face.get() == top_level;
-        });
-        assert(it != _top_level_faces.end());
+        const auto raise = [this](Face* face) {
+            const auto it = std::ranges::find_if(_top_level_faces, [face](const std::unique_ptr<Face>& f) {
+                return f.get() == face;
+            });
+            assert(it != _top_level_faces.end());
 
-        if (it == std::prev(_top_level_faces.end()))
-            return; // Already at the front.
+            if (it == std::prev(_top_level_faces.end()))
+                return; // Already at the front.
 
-        std::unique_ptr<Face> moved = std::move(*it);
-        _top_level_faces.erase(it);
-        _top_level_faces.push_back(std::move(moved));
+            std::unique_ptr<Face> moved = std::move(*it);
+            _top_level_faces.erase(it);
+            _top_level_faces.push_back(std::move(moved));
+        };
+
+        raise(top_level);
+
+        for (const PopupEntry& entry : _popups)
+        {
+            if (entry.popup == top_level)
+                continue;
+
+            for (Face* f = entry.owner; f; f = f->get_parent())
+            {
+                if (f == top_level)
+                {
+                    raise(entry.popup);
+                    break;
+                }
+            }
+        }
     }
 
     /**
@@ -382,17 +508,7 @@ namespace fl7::gui {
                 : (current_index + 1) % tab_stops.size();
         }
 
-        Face* const next_face = tab_stops[next_index];
-        if (next_face == _focused_face)
-            return; // Only one Tab stop, and it's already focused.
-
-        _focused_face->_on_focus_lost();
-        _focused_face = next_face;
-        _focused_face->_on_focus_gained();
-
-        // A key already held before this face gained focus must not
-        // immediately fire a spurious repeat on it (see update()).
-        _key_repeat_next_fire_times = {};
+        _change_focus(tab_stops[next_index]); // A no-op if it's the only Tab stop, and it's already focused.
     }
 
     /**

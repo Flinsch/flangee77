@@ -6,6 +6,7 @@
 
     #include <FaceLabs/gui/faces/Button.h>
     #include <FaceLabs/gui/faces/CheckBox.h>
+    #include <FaceLabs/gui/faces/DropDown.h>
     #include <FaceLabs/gui/faces/Frame.h>
     #include <FaceLabs/gui/faces/Label.h>
     #include <FaceLabs/gui/faces/ListBox.h>
@@ -501,6 +502,23 @@ namespace helloworld {
             }
             LOG_INFO(u8"Removing ListBox item " + cl7::to_string(index) + u8"...");
             list_box.remove_item(index);
+        });
+
+
+        auto& drop_down_frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo DropDown");
+        drop_down_frame.set_position({840.0f, 480.0f});
+        drop_down_frame.set_size({220.0f, 110.0f});
+
+        auto& drop_down = drop_down_frame.get_content_area().add_child<fl7::gui::faces::DropDown>();
+        drop_down.set_position({20.0f, 20.0f});
+        drop_down.set_size({180.0f, 24.0f});
+
+        for (int i = 1; i <= 8; ++i)
+            drop_down.add_item(U"Item " + cl7::text::codec::to_utf32(cl7::to_string(i)));
+
+        drop_down.set_selected_index(0);
+        drop_down.get_selection_changed().connect([](int index) {
+            LOG_INFO(u8"DropDown selection changed: " + cl7::to_string(index));
         });
 
 
