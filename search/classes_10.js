@@ -20,9 +20,10 @@ var searchData=
   ['pointresult_5fdistance_5fsquared_17',['PointResult_distance_squared',['../de/dd3/structml7_1_1detail_1_1distance_1_1PointResult__distance__squared.html',1,'ml7::detail::distance']]],
   ['pointresult_5fpoint_18',['PointResult_point',['../d5/d92/structml7_1_1detail_1_1distance_1_1PointResult__point.html',1,'ml7::detail::distance']]],
   ['pointresult_5ft_19',['PointResult_t',['../db/df0/structml7_1_1detail_1_1distance_1_1PointResult__t.html',1,'ml7::detail::distance']]],
-  ['position_20',['Position',['../d3/dda/structal7_1_1packing_1_1Position.html',1,'al7::packing::Position'],['../d4/d7d/structxl7_1_1input_1_1Mouse_1_1Position.html',1,'xl7::input::Mouse::Position']]],
-  ['prettyoptions_21',['PrettyOptions',['../de/dfe/structdl7_1_1xml_1_1Format_1_1PrettyOptions.html',1,'dl7::xml::Format']]],
-  ['productionrule_22',['ProductionRule',['../d1/d16/structdl7_1_1syntax_1_1ProductionRule.html',1,'dl7::syntax']]],
-  ['productionrulecollection_23',['ProductionRuleCollection',['../dd/d0c/classdl7_1_1syntax_1_1ProductionRuleCollection.html',1,'dl7::syntax']]],
-  ['profiler_24',['Profiler',['../d8/dd2/classcl7_1_1profiling_1_1Profiler.html',1,'cl7::profiling']]]
+  ['popupentry_20',['PopupEntry',['../d5/db0/structfl7_1_1gui_1_1Shell_1_1PopupEntry.html',1,'fl7::gui::Shell']]],
+  ['position_21',['Position',['../d3/dda/structal7_1_1packing_1_1Position.html',1,'al7::packing::Position'],['../d4/d7d/structxl7_1_1input_1_1Mouse_1_1Position.html',1,'xl7::input::Mouse::Position']]],
+  ['prettyoptions_22',['PrettyOptions',['../de/dfe/structdl7_1_1xml_1_1Format_1_1PrettyOptions.html',1,'dl7::xml::Format']]],
+  ['productionrule_23',['ProductionRule',['../d1/d16/structdl7_1_1syntax_1_1ProductionRule.html',1,'dl7::syntax']]],
+  ['productionrulecollection_24',['ProductionRuleCollection',['../dd/d0c/classdl7_1_1syntax_1_1ProductionRuleCollection.html',1,'dl7::syntax']]],
+  ['profiler_25',['Profiler',['../d8/dd2/classcl7_1_1profiling_1_1Profiler.html',1,'cl7::profiling']]]
 ];

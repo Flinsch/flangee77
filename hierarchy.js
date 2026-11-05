@@ -269,6 +269,7 @@ var hierarchy =
             [ "fl7::gui::faces::Slider", "d5/d35/classfl7_1_1gui_1_1faces_1_1Slider.html", null ]
           ] ],
           [ "fl7::gui::faces::CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html", null ],
+          [ "fl7::gui::faces::DropDown", "d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html", null ],
           [ "fl7::gui::faces::ListBox", "d6/d18/classfl7_1_1gui_1_1faces_1_1ListBox.html", null ],
           [ "fl7::gui::faces::ListBox::Row", "d2/dcf/classfl7_1_1gui_1_1faces_1_1ListBox_1_1Row.html", null ],
           [ "fl7::gui::faces::RadioButton", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html", null ],
@@ -361,6 +362,7 @@ var hierarchy =
       [ "fl7::gui::TrackControl", "d8/dac/classfl7_1_1gui_1_1TrackControl.html", null ],
       [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ],
       [ "fl7::gui::faces::CheckBox::Box", "d7/dfc/classfl7_1_1gui_1_1faces_1_1CheckBox_1_1Box.html", null ],
+      [ "fl7::gui::faces::DropDown", "d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html", null ],
       [ "fl7::gui::faces::ListBox::Row", "d2/dcf/classfl7_1_1gui_1_1faces_1_1ListBox_1_1Row.html", null ],
       [ "fl7::gui::faces::Panel", "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html", null ],
       [ "fl7::gui::faces::RadioButton::Box", "d7/d12/classfl7_1_1gui_1_1faces_1_1RadioButton_1_1Box.html", null ],
@@ -600,6 +602,7 @@ var hierarchy =
     [ "ml7::detail::distance::PointResult_distance_squared&lt; T &gt;", "de/dd3/structml7_1_1detail_1_1distance_1_1PointResult__distance__squared.html", null ],
     [ "ml7::detail::distance::PointResult_point&lt; TVector &gt;", "d5/d92/structml7_1_1detail_1_1distance_1_1PointResult__point.html", null ],
     [ "ml7::detail::distance::PointResult_t&lt; T &gt;", "db/df0/structml7_1_1detail_1_1distance_1_1PointResult__t.html", null ],
+    [ "fl7::gui::Shell::PopupEntry", "d5/db0/structfl7_1_1gui_1_1Shell_1_1PopupEntry.html", null ],
     [ "al7::packing::Position", "d3/dda/structal7_1_1packing_1_1Position.html", null ],
     [ "xl7::input::Mouse::Position", "d4/d7d/structxl7_1_1input_1_1Mouse_1_1Position.html", null ],
     [ "dl7::xml::Format::PrettyOptions", "de/dfe/structdl7_1_1xml_1_1Format_1_1PrettyOptions.html", null ],
