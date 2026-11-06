@@ -15,8 +15,29 @@ namespace fl7::gui::layout {
 
 
 /**
+ * A fixed space kept on each of a container's four edges; see
+ * `BoxLayout::get_padding()`/`set_padding()`.
+ */
+struct Padding
+{
+    Padding() = default;
+
+    /** The same padding on every side. */
+    Padding(float uniform) : left(uniform), top(uniform), right(uniform), bottom(uniform) {} // Deliberately not explicit: the whole point is to allow a bare float as padding.
+    Padding(float left, float top, float right, float bottom) : left(left), top(top), right(right), bottom(bottom) {}
+
+    float left = 0.0f;
+    float top = 0.0f;
+    float right = 0.0f;
+    float bottom = 0.0f;
+}; // struct Padding
+
+
+
+/**
  * Arranges a container's children one after another along a single axis (see
- * `Orientation`), separated by a fixed `get_gap()`. Along that main axis, each
+ * `Orientation`), separated by a fixed `get_gap()`, within a fixed
+ * `get_padding()` kept around the whole sequence. Along that main axis, each
  * child either takes exactly its own `get_preferred_size()` (the default: see
  * `get_stretch()`) or a share of whatever space is left over once every such
  * fixed-size child has been accounted for, proportional to its own stretch factor
@@ -48,9 +69,10 @@ public:
 
 
 
-    explicit BoxLayout(Orientation orientation, float gap = 0.0f)
+    explicit BoxLayout(Orientation orientation, float gap = 0.0f, Padding padding = {})
         : _orientation(orientation)
         , _gap(gap)
+        , _padding(padding)
     {
     }
 
@@ -75,6 +97,15 @@ public:
 
     /** Sets the fixed gap kept between consecutive children. */
     void set_gap(float gap) { _gap = gap; }
+
+    /** Returns the fixed space kept around the whole sequence of children, on every side. Default: none. */
+    Padding get_padding() const { return _padding; }
+
+    /** Sets the fixed space kept around the whole sequence of children, independently on each side. */
+    void set_padding(Padding padding) { _padding = padding; }
+
+    /** Sets the fixed space kept around the whole sequence of children, the same on every side; see `set_padding(Padding)`. */
+    void set_padding(float padding) { set_padding(Padding(padding)); }
 
     /**
      * Returns the given child's stretch factor; see `set_stretch()`. Default: 0
@@ -115,6 +146,7 @@ private:
 
     const Orientation _orientation;
     float _gap;
+    Padding _padding;
 
     std::unordered_map<const Face*, float> _stretches;
 

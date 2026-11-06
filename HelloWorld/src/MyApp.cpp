@@ -15,6 +15,7 @@
     #include <FaceLabs/gui/faces/ScrollPanel.h>
     #include <FaceLabs/gui/faces/Slider.h>
     #include <FaceLabs/gui/faces/TextField.h>
+    #include <FaceLabs/gui/layout/BoxLayout.h>
 
 #include <XiaoLabs/graphics.h>
     #include <XiaoLabs/graphics/images/codecs/targa/Reader.h>
@@ -394,10 +395,17 @@ namespace helloworld {
 
         auto& frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo Frame");
         frame.set_position({600.0f, 210.0f});
-        frame.set_size({220.0f, 400.0f});
+        // Tall enough for the BoxLayout-sequenced content below (8 items,
+        // 20px padding, 10px gaps): content area needs 392, i.e. 416 overall
+        // once Frame's own 24px title bar is added back on top.
+        frame.set_size({220.0f, 420.0f});
 
+        // Dogfooding gui::layout::BoxLayout: every direct child of the content area
+        // below keeps only its own explicit size (feeding get_preferred_size(),
+        // since nothing overrides it yet); position is fully layout-controlled on
+        // both axes (see the content area's set_layout() call further down), not
+        // set explicitly at all anymore.
         auto& panel = frame.get_content_area().add_child<fl7::gui::faces::ScrollPanel>();
-        panel.set_position({20.0f, 20.0f});
         panel.set_size({180.0f, 120.0f});
         // Three times taller than the panel's own (viewport) size, to demo
         // actually scrolling via its built-in scroll bars, not just clipping.
@@ -416,7 +424,6 @@ namespace helloworld {
         scrolled_label.set_size({160.0f, 24.0f});
 
         auto& button = frame.get_content_area().add_child<fl7::gui::faces::Button>(U"Click me");
-        button.set_position({20.0f, 150.0f});
         button.set_size({100.0f, 30.0f});
         button.get_clicked().connect([&button]() {
             LOG_INFO(u8"Button clicked!");
@@ -424,35 +431,30 @@ namespace helloworld {
         });
 
         auto& checkbox = frame.get_content_area().add_child<fl7::gui::faces::CheckBox>(false, U"Enable extra sparkle");
-        checkbox.set_position({20.0f, 190.0f});
         checkbox.set_size({180.0f, 20.0f});
         checkbox.get_changed().connect([](bool checked) {
             LOG_INFO(checked ? u8"CheckBox checked." : u8"CheckBox unchecked.");
         });
 
         auto& radio_button_1 = frame.get_content_area().add_child<fl7::gui::faces::RadioButton>(&_gui_radio_group, true, U"Option A");
-        radio_button_1.set_position({20.0f, 216.0f});
         radio_button_1.set_size({180.0f, 20.0f});
         radio_button_1.get_changed().connect([](bool checked) {
             LOG_INFO(checked ? u8"RadioButton 1 checked." : u8"RadioButton 1 unchecked.");
         });
 
         auto& radio_button_2 = frame.get_content_area().add_child<fl7::gui::faces::RadioButton>(&_gui_radio_group, false, U"Option B");
-        radio_button_2.set_position({20.0f, 242.0f});
         radio_button_2.set_size({180.0f, 20.0f});
         radio_button_2.get_changed().connect([](bool checked) {
             LOG_INFO(checked ? u8"RadioButton 2 checked." : u8"RadioButton 2 unchecked.");
         });
 
         auto& text_field = frame.get_content_area().add_child<fl7::gui::faces::TextField>(U"Edit me");
-        text_field.set_position({20.0f, 270.0f});
         text_field.set_size({180.0f, 24.0f});
         text_field.get_changed().connect([](const cl7::u32string& text) {
             LOG_INFO(u8"TextField changed.");
         });
 
         auto& slider = frame.get_content_area().add_child<fl7::gui::faces::Slider>(fl7::gui::TrackControl::Orientation::Horizontal, 0.5f);
-        slider.set_position({20.0f, 304.0f});
         slider.set_size({180.0f, 24.0f});
         slider.get_changed().connect([](float value) {
             LOG_INFO(u8"Slider changed: " + cl7::to_string(value));
@@ -463,14 +465,22 @@ namespace helloworld {
         // button's own _on_click() (see remove_child()'s doc comment). Disables
         // itself afterwards so a second click can't try to remove it again.
         auto& remove_checkbox_button = frame.get_content_area().add_child<fl7::gui::faces::Button>(U"Remove checkbox");
-        remove_checkbox_button.set_position({20.0f, 338.0f});
         remove_checkbox_button.set_size({180.0f, 24.0f});
         remove_checkbox_button.get_clicked().connect([&frame, &checkbox, &remove_checkbox_button]() {
             LOG_INFO(u8"Removing CheckBox face...");
+            // Also dogfoods BoxLayout reacting to remove_child(): every face
+            // below the checkbox shifts up to close the gap automatically.
             frame.get_content_area().remove_child(checkbox);
             remove_checkbox_button.set_text(U"(checkbox removed)");
             remove_checkbox_button.set_enabled(false);
         });
+
+        // Sequences the children added above, each at its own explicit size (see
+        // get_preferred_size()'s default), top to bottom with a fixed gap, within a
+        // fixed padding: same visual margins as the individual set_position()
+        // calls this replaced, but now also keeping up automatically as faces are
+        // added/removed (see remove_checkbox_button above).
+        frame.get_content_area().set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Vertical, 10.0f, 20.0f);
 
 
         auto& list_frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo ListBox");

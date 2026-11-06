@@ -59,6 +59,11 @@ namespace fl7::gui::layout {
         const unsigned axis = _orientation == Orientation::Horizontal ? 0 : 1;
         const unsigned cross_axis = 1 - axis;
 
+        const float padding_main_near = axis == 0 ? _padding.left : _padding.top;
+        const float padding_main_far = axis == 0 ? _padding.right : _padding.bottom;
+        const float padding_cross_near = cross_axis == 0 ? _padding.left : _padding.top;
+        const float padding_cross_far = cross_axis == 0 ? _padding.right : _padding.bottom;
+
         const ml7::Vector2f container_size = container.get_size();
         const float total_gap = _gap * static_cast<float>(n - 1);
 
@@ -73,9 +78,10 @@ namespace fl7::gui::layout {
                 fixed_total += child_ptr->get_preferred_size()[axis];
         }
 
-        const float available = std::max(0.0f, container_size[axis] - total_gap - fixed_total);
+        const float available = std::max(0.0f, container_size[axis] - padding_main_near - padding_main_far - total_gap - fixed_total);
+        const float cross_available = std::max(0.0f, container_size[cross_axis] - padding_cross_near - padding_cross_far);
 
-        float offset = 0.0f;
+        float offset = padding_main_near;
         for (const auto& child_ptr : children)
         {
             Face& child = *child_ptr;
@@ -96,8 +102,8 @@ namespace fl7::gui::layout {
 
             // Cross axis: sized/aligned per the child's own anchor (see
             // BoxLayout's own doc comment); falls back to filling if its
-            // preferred size doesn't actually fit regardless.
-            const float cross_available = container_size[cross_axis];
+            // preferred size doesn't actually fit regardless. Either way,
+            // kept within [padding_cross_near, padding_cross_near + cross_available].
             const float cross_preferred = preferred_size[cross_axis];
             if (cross_preferred < cross_available)
             {
@@ -110,26 +116,26 @@ namespace fl7::gui::layout {
                 size[cross_axis] = cross_preferred;
                 if (near && far)
                 {
-                    position[cross_axis] = 0.0f;
+                    position[cross_axis] = padding_cross_near;
                     size[cross_axis] = cross_available; // still fills.
                 }
                 else if (far)
                 {
-                    position[cross_axis] = cross_available - cross_preferred;
+                    position[cross_axis] = padding_cross_near + (cross_available - cross_preferred);
                 }
                 else if (near)
                 {
-                    position[cross_axis] = 0.0f;
+                    position[cross_axis] = padding_cross_near;
                 }
                 else
                 {
-                    position[cross_axis] = (cross_available - cross_preferred) * 0.5f;
+                    position[cross_axis] = padding_cross_near + (cross_available - cross_preferred) * 0.5f;
                 }
             }
             else
             {
                 size[cross_axis] = cross_available;
-                position[cross_axis] = 0.0f;
+                position[cross_axis] = padding_cross_near;
             }
 
             if (position != child.get_position())
