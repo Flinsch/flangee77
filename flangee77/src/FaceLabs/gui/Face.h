@@ -26,7 +26,7 @@ class Collection;
 
 /**
  * A cardinal direction for spatial (arrow key / gamepad d-pad) focus
- * navigation (see Shell::focus_toward()).
+ * navigation (see `Shell::focus_toward()`).
  */
 enum struct ArrowDirection
 {
@@ -37,16 +37,52 @@ enum struct ArrowDirection
 }; // enum struct ArrowDirection
 
 /**
- * How a focused face responds to an arrow in a given direction, i.e.,
- * whether spatial focus navigation (see Shell::focus_toward()) should yield
- * to the face handling that arrow itself instead of moving focus.
+ * How a focused face responds to an arrow in a given direction, i.e., whether
+ * spatial focus navigation (see `Shell::focus_toward()`) should yield to the face
+ * handling that arrow itself instead of moving focus.
  */
 enum struct ArrowResponse
 {
-    Ignore, // The arrow is free for focus navigation.
-    Soft,   // The face uses it (e.g., a text caret), but forced navigation (gamepad, Alt+arrow) may override.
-    Hard,   // The face needs it (e.g., an open list with somewhere left to go) even under forced navigation.
+    /** The arrow is free for focus navigation. */
+    Ignore,
+    /** The face uses it (e.g., a text caret), but forced navigation (gamepad, Alt+arrow) may override. */
+    Soft,
+    /** The face needs it (e.g., an open list with somewhere left to go) even under forced navigation. */
+    Hard,
 }; // enum struct ArrowResponse
+
+
+
+/**
+ * Which of this face's own parent-relative edges stay anchored as its parent is
+ * resized (see `layout::DefaultLayout`), or, reusing the same flags for the
+ * perpendicular axis, how it's aligned within the space it's given along that axis
+ * (see `layout::BoxLayout`). Combinable (see `operator|`). Meaningless on its own:
+ * only consulted by a layout actually attached to this face's parent (see
+ * `Container::set_layout()`); with none attached, this face keeps whatever
+ * position/size it's explicitly given, regardless of its own anchor.
+ */
+enum struct Anchor
+{
+    None        = 0x0,
+    Left        = 0x1,
+    Right       = 0x2,
+    Horizontal  = 0x3,
+    Top         = 0x4,
+    Bottom      = 0x8,
+    Vertical    = 0xc,
+    All         = 0xf,
+}; // enum struct Anchor
+
+inline Anchor operator|(Anchor a, Anchor b)
+{
+    return static_cast<Anchor>(static_cast<unsigned>(a) | static_cast<unsigned>(b));
+}
+
+inline Anchor operator&(Anchor a, Anchor b)
+{
+    return static_cast<Anchor>(static_cast<unsigned>(a) & static_cast<unsigned>(b));
+}
 
 
 
@@ -112,6 +148,38 @@ public:
      * Sets this face's size.
      */
     void set_size(ml7::Vector2f size);
+
+    /**
+     * Returns this face's preferred size: how large a layout (see `layout::Layout`)
+     * should try to make it, absent any overriding constraint (available space, a
+     * sibling's own minimum size, ...). Default: this face's own current `get_size()`,
+     * i.e., whatever it's explicitly been given: the same thing every face already
+     * defaults to without any layout involved. Override in a concrete face type
+     * whose natural size follows from its own content (e.g., a label from its text),
+     * so a layout can size it accordingly without an explicit `set_size()` call for
+     * every single child.
+     */
+    virtual ml7::Vector2f get_preferred_size() const { return get_size(); }
+
+    /**
+     * Returns this face's minimum size: how small a layout (see `layout::Layout`)
+     * is allowed to shrink it while distributing space among several children.
+     * Default: {0, 0} (no constraint). Override in a concrete face type that would
+     * otherwise become unusable or visually broken below some size.
+     */
+    virtual ml7::Vector2f get_minimum_size() const { return {}; }
+
+    /**
+     * Returns this face's anchor flags; see `Anchor`. Default: Left|Top, same as
+     * having no layout at all: this face keeps whatever position/size it's given,
+     * unaffected by its parent being resized.
+     */
+    Anchor get_anchor() const { return _anchor; }
+
+    /**
+     * Sets this face's anchor flags; see `Anchor`.
+     */
+    void set_anchor(Anchor anchor) { _anchor = anchor; }
 
     /**
      * Returns whether this face is currently visible (drawn, and eligible for
@@ -482,6 +550,8 @@ private:
 
     ml7::Vector2f _position;
     ml7::Vector2f _size;
+
+    Anchor _anchor = Anchor::Left | Anchor::Top;
 
     bool _visible = true;
     bool _enabled = true;

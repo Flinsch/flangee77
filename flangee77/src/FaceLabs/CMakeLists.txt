@@ -49,6 +49,9 @@ target_sources(flangee77
     gui/faces/TextField.cpp
     gui/faces/Window.cpp
 
+    gui/layout/BoxLayout.cpp
+    gui/layout/DefaultLayout.cpp
+
     gui/render/AbstractRenderer.cpp
     gui/render/BackgroundHelper.cpp
     gui/render/CaretHelper.cpp
