@@ -1,5 +1,6 @@
 var NAVTREEINDEX10 =
 {
+"d2/de0/find__quadratic__roots_8h.html":[8,0,0,0,3],
 "d2/de0/find__quadratic__roots_8h_source.html":[8,0,0,0,3],
 "d2/de5/TrueTypeFontLoader_8h.html":[8,0,3,0,0,0,3],
 "d2/de5/TrueTypeFontLoader_8h_source.html":[8,0,3,0,0,0,3],
@@ -173,12 +174,12 @@ var NAVTREEINDEX10 =
 "d3/d08/CoreLabs_2platform_2detail_2windows_2errors_8cpp.html":[8,0,1,5,0,1,0],
 "d3/d0c/AbstractRasterizer_8h.html":[8,0,3,0,1,4],
 "d3/d0c/AbstractRasterizer_8h_source.html":[8,0,3,0,1,4],
-"d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html":[5,0,3,1,1,1],
-"d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html":[7,0,3,1,1,1],
-"d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html#aa713a4fd3c645ae4e19d3b86a16ef6e5":[5,0,3,1,1,1,1],
-"d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html#aa713a4fd3c645ae4e19d3b86a16ef6e5":[7,0,3,1,1,1,1],
-"d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html#aab4df24fa18b1a9e032d8c924cf60a00":[5,0,3,1,1,1,0],
-"d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html#aab4df24fa18b1a9e032d8c924cf60a00":[7,0,3,1,1,1,0],
+"d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html":[5,0,3,1,2,1],
+"d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html":[7,0,3,1,2,1],
+"d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html#aa713a4fd3c645ae4e19d3b86a16ef6e5":[5,0,3,1,2,1,1],
+"d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html#aa713a4fd3c645ae4e19d3b86a16ef6e5":[7,0,3,1,2,1,1],
+"d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html#aab4df24fa18b1a9e032d8c924cf60a00":[5,0,3,1,2,1,0],
+"d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html#aab4df24fa18b1a9e032d8c924cf60a00":[7,0,3,1,2,1,0],
 "d3/d13/Texture3D_8cpp.html":[8,0,7,1,7,26],
 "d3/d16/Ray2_8h.html":[8,0,4,27],
 "d3/d16/Ray2_8h_source.html":[8,0,4,27],
@@ -248,6 +249,5 @@ var NAVTREEINDEX10 =
 "d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#a7f673eeb8b524151ee3d8cbe31e78054":[7,0,1,5,0,1],
 "d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#a9063f683a216aa401a17c6d080436abf":[5,0,1,6,0,7],
 "d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#a9063f683a216aa401a17c6d080436abf":[7,0,1,5,0,7],
-"d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#aae929d16246f344b0395e45eb329a953":[5,0,1,6,0,3],
-"d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#aae929d16246f344b0395e45eb329a953":[7,0,1,5,0,3]
+"d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#aae929d16246f344b0395e45eb329a953":[5,0,1,6,0,3]
 };

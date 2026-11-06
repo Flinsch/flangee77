@@ -1,5 +1,6 @@
 var NAVTREEINDEX17 =
 {
+"d4/d7d/structxl7_1_1input_1_1Mouse_1_1Position.html#a8a5394815aa6e5128fe708c9df0faa1d":[7,0,8,2,6,1,0],
 "d4/d7d/structxl7_1_1input_1_1Mouse_1_1Position.html#aa79444e058e88956360903f9022e7d40":[5,0,8,3,6,1,1],
 "d4/d7d/structxl7_1_1input_1_1Mouse_1_1Position.html#aa79444e058e88956360903f9022e7d40":[7,0,8,2,6,1,1],
 "d4/d7f/classxl7_1_1graphics_1_1QuadRenderer_1_1ScopedClipRect.html":[5,0,8,2,12,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX17 =
 "d4/dc2/namespacedl7_1_1xml_1_1detail.html#a763cf7809cd96b73b261448238faf1f7a8d5d7fb2eb237b5a46072e5b1b27f921":[5,0,2,6,0,4,12],
 "d4/dc2/namespacedl7_1_1xml_1_1detail.html#a763cf7809cd96b73b261448238faf1f7a953a7989ce1100b9267f504c109f97b7":[5,0,2,6,0,4,10],
 "d4/dc2/namespacedl7_1_1xml_1_1detail.html#a763cf7809cd96b73b261448238faf1f7aa975a6ec4e24eba2721a1f495813bbfe":[5,0,2,6,0,4,13],
-"d4/dc2/namespacedl7_1_1xml_1_1detail.html#a763cf7809cd96b73b261448238faf1f7aeecc47197a13d5eedaa8353a8d115bfb":[5,0,2,6,0,4,5],
-"d4/dc2/namespacedl7_1_1xml_1_1detail.html#a763cf7809cd96b73b261448238faf1f7af854e7a47c2b0e0393dff2d84b2ee492":[5,0,2,6,0,4,4]
+"d4/dc2/namespacedl7_1_1xml_1_1detail.html#a763cf7809cd96b73b261448238faf1f7aeecc47197a13d5eedaa8353a8d115bfb":[5,0,2,6,0,4,5]
 };

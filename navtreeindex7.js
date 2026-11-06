@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#adbbf72875e7d1c563f9492f78d23972b":[7,0,8,1,3,4,8],
 "d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#ae25ca80e9d376f561dfea25b88eec902":[5,0,8,2,3,4,12],
 "d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#ae25ca80e9d376f561dfea25b88eec902":[7,0,8,1,3,4,12],
 "d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#afe4d4d45a8ce9a00c133370cce725b7a":[5,0,8,2,3,4,2],
@@ -161,8 +162,8 @@ var NAVTREEINDEX7 =
 "d2/d37/direct3d11_2shaders_2PixelShaderImpl_8h.html":[8,0,7,1,1,0,1,7],
 "d2/d37/direct3d11_2shaders_2PixelShaderImpl_8h_source.html":[8,0,7,1,1,0,1,7],
 "d2/d39/BitmapRenderer_8cpp.html":[8,0,3,0,2,4],
-"d2/d3e/TextHelper_8h.html":[8,0,3,1,1,13],
-"d2/d3e/TextHelper_8h_source.html":[8,0,3,1,1,13],
+"d2/d3e/TextHelper_8h.html":[8,0,3,1,2,13],
+"d2/d3e/TextHelper_8h_source.html":[8,0,3,1,2,13],
 "d2/d40/TomlWriter_8h.html":[8,0,2,5,7],
 "d2/d40/TomlWriter_8h_source.html":[8,0,2,5,7],
 "d2/d45/yaml_2detail_2AnyOtherMatcher_8cpp.html":[8,0,2,7,0,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "d2/d67/classcl7_1_1io_1_1File.html#a18cccde139301eb5127805c83b5a2628":[7,0,1,4,6,26],
 "d2/d67/classcl7_1_1io_1_1File.html#a1f0957be06e170810ea84e7662b5c982":[5,0,1,5,6,1],
 "d2/d67/classcl7_1_1io_1_1File.html#a1f0957be06e170810ea84e7662b5c982":[7,0,1,4,6,1],
-"d2/d67/classcl7_1_1io_1_1File.html#a235c72c6b242679f45fa9ab0b75983a1":[5,0,1,5,6,11],
-"d2/d67/classcl7_1_1io_1_1File.html#a235c72c6b242679f45fa9ab0b75983a1":[7,0,1,4,6,11]
+"d2/d67/classcl7_1_1io_1_1File.html#a235c72c6b242679f45fa9ab0b75983a1":[5,0,1,5,6,11]
 };

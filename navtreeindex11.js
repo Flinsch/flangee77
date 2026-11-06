@@ -1,5 +1,6 @@
 var NAVTREEINDEX11 =
 {
+"d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#aae929d16246f344b0395e45eb329a953":[7,0,1,5,0,3],
 "d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#abddb25bee29c082bcbd733f9b5f7d4bd":[5,0,1,6,0,5],
 "d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#abddb25bee29c082bcbd733f9b5f7d4bd":[7,0,1,5,0,5],
 "d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#ac4e8eae977350f673b5b5a1b9272d44c":[5,0,1,6,0,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX11 =
 "d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a3e0887b5aefb8f5a83e32d8d2a6158a9":[7,0,2,4,24,2],
 "d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a7616e6c515c9e50bde7821146f8d2a0e":[5,0,2,4,24,8],
 "d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a7616e6c515c9e50bde7821146f8d2a0e":[7,0,2,4,24,8],
-"d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a8187a5c0e6414a9cdc5aa42a94283f78":[5,0,2,4,24,5],
-"d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a8187a5c0e6414a9cdc5aa42a94283f78":[7,0,2,4,24,5]
+"d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a8187a5c0e6414a9cdc5aa42a94283f78":[5,0,2,4,24,5]
 };

@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ad33afd815a2ba99a8e4d2029f1c300f9":[5,0,8,2,12,3,3],
 "d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ad33afd815a2ba99a8e4d2029f1c300f9":[7,0,8,1,12,3,3],
 "d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ae5a4347604fea4a76281a3b1578320b3":[5,0,8,2,12,3,0],
 "d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ae5a4347604fea4a76281a3b1578320b3":[7,0,8,1,12,3,0],
@@ -70,8 +71,8 @@ var NAVTREEINDEX6 =
 "d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory.html#ab00da334952385b2295d3cbfe1603802":[7,0,8,1,4,13,3],
 "d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory.html#aefd498ccae8836b94208501cb65f832f":[5,0,8,2,4,13,2],
 "d2/d00/classxl7_1_1graphics_1_1shaders_1_1IShaderFactory.html#aefd498ccae8836b94208501cb65f832f":[7,0,8,1,4,13,2],
-"d2/d01/Compound_8h.html":[8,0,3,1,4],
-"d2/d01/Compound_8h_source.html":[8,0,3,1,4],
+"d2/d01/Compound_8h.html":[8,0,3,1,5],
+"d2/d01/Compound_8h_source.html":[8,0,3,1,5],
 "d2/d03/GlyphMetrics_8h.html":[8,0,3,0,13],
 "d2/d03/GlyphMetrics_8h_source.html":[8,0,3,0,13],
 "d2/d03/classxl7_1_1graphics_1_1shaders_1_1ShaderCode.html":[5,0,8,2,4,17],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#ad1698b4820bdb147ea9dc057f5843e63":[7,0,8,1,3,4,6],
 "d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#ad58bc034f71e2084c508edaf725b39fa":[5,0,8,2,3,4,10],
 "d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#ad58bc034f71e2084c508edaf725b39fa":[7,0,8,1,3,4,10],
-"d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#adbbf72875e7d1c563f9492f78d23972b":[5,0,8,2,3,4,8],
-"d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#adbbf72875e7d1c563f9492f78d23972b":[7,0,8,1,3,4,8]
+"d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#adbbf72875e7d1c563f9492f78d23972b":[5,0,8,2,3,4,8]
 };

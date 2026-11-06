@@ -453,6 +453,7 @@ var hierarchy =
     [ "dl7::ini::IniReader", "d0/d99/classdl7_1_1ini_1_1IniReader.html", null ],
     [ "dl7::ini::IniWriter", "df/d0b/classdl7_1_1ini_1_1IniWriter.html", null ],
     [ "xl7::Config::Input", "db/d03/structxl7_1_1Config_1_1Input.html", null ],
+    [ "fl7::gui::layout::DefaultLayout::Insets", "db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html", null ],
     [ "dl7::syntax::matchers::IntegerLiteralMatcher", "d9/d3c/structdl7_1_1syntax_1_1matchers_1_1IntegerLiteralMatcher.html", null ],
     [ "cl7::text::format::IntFormatOptions", "dd/d3c/structcl7_1_1text_1_1format_1_1IntFormatOptions.html", null ],
     [ "cl7::io::IReadable", "d5/ddf/classcl7_1_1io_1_1IReadable.html", [
@@ -487,6 +488,10 @@ var hierarchy =
     [ "dl7::json::JsonWriter", "df/d83/classdl7_1_1json_1_1JsonWriter.html", null ],
     [ "xl7::input::Keyboard", "d9/dfa/classxl7_1_1input_1_1Keyboard.html", null ],
     [ "xl7::input::KeyboardMouseSystem::KeyboardEntry", "d4/dc4/structxl7_1_1input_1_1KeyboardMouseSystem_1_1KeyboardEntry.html", null ],
+    [ "fl7::gui::layout::Layout", "d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html", [
+      [ "fl7::gui::layout::BoxLayout", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html", null ],
+      [ "fl7::gui::layout::DefaultLayout", "df/dbb/classfl7_1_1gui_1_1layout_1_1DefaultLayout.html", null ]
+    ] ],
     [ "ml7::Vector2&lt; T &gt;::less", "d6/d6c/structml7_1_1Vector2_1_1less.html", null ],
     [ "ml7::Vector3&lt; T &gt;::less", "d5/d80/structml7_1_1Vector3_1_1less.html", null ],
     [ "ml7::Vector4&lt; T &gt;::less", "d4/df6/structml7_1_1Vector4_1_1less.html", null ],
@@ -554,6 +559,7 @@ var hierarchy =
     [ "xl7::graphics::images::codecs::png::Writer::Options", "d4/db1/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Writer_1_1Options.html", null ],
     [ "xl7::graphics::images::codecs::targa::Writer::Options", "d1/d74/structxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Writer_1_1Options.html", null ],
     [ "cl7::ordered_map&lt; Key, T, KeyView, Compare, Allocator &gt;", "dd/d42/classcl7_1_1ordered__map.html", null ],
+    [ "fl7::gui::layout::Padding", "d6/d16/structfl7_1_1gui_1_1layout_1_1Padding.html", null ],
     [ "xl7::graphics::images::codecs::png::PaethPredictor", "de/d9d/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1PaethPredictor.html", null ],
     [ "xl7::graphics::images::codecs::png::Reader::PaletteEntry", "dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html", null ],
     [ "xl7::graphics::impl::shared::shaders::Include::ParentEntry", "dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html", null ],

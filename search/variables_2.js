@@ -21,13 +21,14 @@ var searchData=
   ['blue_18',['BLUE',['../de/df3/structxl7_1_1graphics_1_1Color.html#a6bfc213f61c4fcbc53188f989a08b6bb',1,'xl7::graphics::Color']]],
   ['border_5fcolor_19',['border_color',['../dd/d02/structfl7_1_1gui_1_1Style.html#a31b07c7075b07064f2cca690fc7481aa',1,'fl7::gui::Style::border_color'],['../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a49c5abfef79f57dc2b49018ceb7cc6eb',1,'fl7::gui::ThemeLevel::border_color'],['../d4/d56/structxl7_1_1graphics_1_1states_1_1SamplerStateDesc.html#a1a0c53da47b9b8b51c34e2aac8d10f61',1,'xl7::graphics::states::SamplerStateDesc::border_color']]],
   ['border_5fwidth_20',['border_width',['../dd/d02/structfl7_1_1gui_1_1Style.html#a0d8d38ebe7f407323a516ef345d0d812',1,'fl7::gui::Style::border_width'],['../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a1df8aa74bb34b7bedba948b2ccd7ef8b',1,'fl7::gui::ThemeLevel::border_width']]],
-  ['bounding_5fbox_21',['bounding_box',['../d2/d26/structfl7_1_1fonts_1_1Glyph.html#aec86644167babae0019e996e819d6bfc',1,'fl7::fonts::Glyph']]],
-  ['box_5fposition_22',['box_position',['../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#a911e6b93794164f40172f39cacba6076',1,'fl7::fonts::render::AbstractRenderer::State']]],
-  ['box_5fsize_23',['box_size',['../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#a91c99b49dad55af27ccf6a3d34fe4ac1',1,'fl7::fonts::render::AbstractRenderer::State']]],
-  ['buffers_24',['buffers',['../dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a44058f3218f105afc0ec40ece1c249ea',1,'xl7::graphics::RenderingDevice::Capabilities']]],
-  ['build_25',['build',['../db/ddf/structcl7_1_1Version.html#ac738d896b72cff8fb01206ddd8d7db9f',1,'cl7::Version']]],
-  ['button_5fvalues_26',['button_values',['../dd/de7/structxl7_1_1input_1_1GameControllerSystem_1_1RawControllerState.html#ae68a535d927b12e5a3072336ebdb7ed9',1,'xl7::input::GameControllerSystem::RawControllerState']]],
-  ['bytes_27',['bytes',['../dc/dbd/structcl7_1_1Guid.html#a1f27f226157d2905af8342816eff5478',1,'cl7::Guid']]],
-  ['bytes_5fper_5fpixel_28',['bytes_per_pixel',['../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#a559ac42410ac3b61e0a9c69d892b5257',1,'xl7::graphics::PixelLayout']]],
-  ['bytes_5fper_5fscanline_29',['bytes_per_scanline',['../de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html#ad3a16b510c1a03528bb9bbf0f24b5270',1,'xl7::graphics::images::codecs::png::Reader::BitInfo']]]
+  ['bottom_21',['bottom',['../d6/d16/structfl7_1_1gui_1_1layout_1_1Padding.html#a323164befcc157cbc564578274a3118b',1,'fl7::gui::layout::Padding::bottom'],['../db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#a2e55a9210a5881954f4cc76aeab079b6',1,'fl7::gui::layout::DefaultLayout::Insets::bottom']]],
+  ['bounding_5fbox_22',['bounding_box',['../d2/d26/structfl7_1_1fonts_1_1Glyph.html#aec86644167babae0019e996e819d6bfc',1,'fl7::fonts::Glyph']]],
+  ['box_5fposition_23',['box_position',['../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#a911e6b93794164f40172f39cacba6076',1,'fl7::fonts::render::AbstractRenderer::State']]],
+  ['box_5fsize_24',['box_size',['../d1/dbf/structfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1State.html#a91c99b49dad55af27ccf6a3d34fe4ac1',1,'fl7::fonts::render::AbstractRenderer::State']]],
+  ['buffers_25',['buffers',['../dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a44058f3218f105afc0ec40ece1c249ea',1,'xl7::graphics::RenderingDevice::Capabilities']]],
+  ['build_26',['build',['../db/ddf/structcl7_1_1Version.html#ac738d896b72cff8fb01206ddd8d7db9f',1,'cl7::Version']]],
+  ['button_5fvalues_27',['button_values',['../dd/de7/structxl7_1_1input_1_1GameControllerSystem_1_1RawControllerState.html#ae68a535d927b12e5a3072336ebdb7ed9',1,'xl7::input::GameControllerSystem::RawControllerState']]],
+  ['bytes_28',['bytes',['../dc/dbd/structcl7_1_1Guid.html#a1f27f226157d2905af8342816eff5478',1,'cl7::Guid']]],
+  ['bytes_5fper_5fpixel_29',['bytes_per_pixel',['../dc/dd4/structxl7_1_1graphics_1_1PixelLayout.html#a559ac42410ac3b61e0a9c69d892b5257',1,'xl7::graphics::PixelLayout']]],
+  ['bytes_5fper_5fscanline_30',['bytes_per_scanline',['../de/d82/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1BitInfo.html#ad3a16b510c1a03528bb9bbf0f24b5270',1,'xl7::graphics::images::codecs::png::Reader::BitInfo']]]
 ];

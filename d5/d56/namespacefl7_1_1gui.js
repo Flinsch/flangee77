@@ -1,6 +1,7 @@
 var namespacefl7_1_1gui =
 [
     [ "faces", "da/d58/namespacefl7_1_1gui_1_1faces.html", "da/d58/namespacefl7_1_1gui_1_1faces" ],
+    [ "layout", "df/dcc/namespacefl7_1_1gui_1_1layout.html", "df/dcc/namespacefl7_1_1gui_1_1layout" ],
     [ "render", "df/df8/namespacefl7_1_1gui_1_1render.html", "df/df8/namespacefl7_1_1gui_1_1render" ],
     [ "Collection", "d4/de7/classfl7_1_1gui_1_1Collection.html", "d4/de7/classfl7_1_1gui_1_1Collection" ],
     [ "Compound", "d0/d93/classfl7_1_1gui_1_1Compound.html", "d0/d93/classfl7_1_1gui_1_1Compound" ],
@@ -22,6 +23,16 @@ var namespacefl7_1_1gui =
     [ "Theme", "d8/dc4/classfl7_1_1gui_1_1Theme.html", "d8/dc4/classfl7_1_1gui_1_1Theme" ],
     [ "ThemeLevel", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html", "d0/d60/structfl7_1_1gui_1_1ThemeLevel" ],
     [ "TrackControl", "d8/dac/classfl7_1_1gui_1_1TrackControl.html", "d8/dac/classfl7_1_1gui_1_1TrackControl" ],
+    [ "Anchor", "d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199", [
+      [ "None", "d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199a6adf97f83acf6453d4a6a4b1070f3754", null ],
+      [ "Left", "d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199a945d5e233cf7d6240f6b783b36a374ff", null ],
+      [ "Right", "d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199a92b09c7c48c520c3c55e497875da437c", null ],
+      [ "Horizontal", "d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199ac1b5fa03ecdb95d4a45dd1c40b02527f", null ],
+      [ "Top", "d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199aa4ffdcf0dc1f31b9acaf295d75b51d00", null ],
+      [ "Bottom", "d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199a2ad9d63b69c4a10a5cc9cad923133bc4", null ],
+      [ "Vertical", "d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199a06ce2a25e5d12c166a36f654dbea6012", null ],
+      [ "All", "d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199ab1c94ca2fbc3e78fc30069c8d0f01680", null ]
+    ] ],
     [ "ArrowDirection", "d5/d56/namespacefl7_1_1gui.html#a07bfb52c2d3768ba310be421d1287498", [
       [ "Up", "d5/d56/namespacefl7_1_1gui.html#a07bfb52c2d3768ba310be421d1287498a258f49887ef8d14ac268c92b02503aaa", null ],
       [ "Down", "d5/d56/namespacefl7_1_1gui.html#a07bfb52c2d3768ba310be421d1287498a08a38277b0309070706f6652eeae9a53", null ],
@@ -42,5 +53,7 @@ var namespacefl7_1_1gui =
       [ "Always", "d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cca68eec46437c384d8dad18d5464ebc35c", null ],
       [ "Never", "d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cca6e7b34fa59e1bd229b207892956dc41c", null ],
       [ "Auto", "d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cca06b9281e396db002010bde1de57262eb", null ]
-    ] ]
+    ] ],
+    [ "operator&", "d5/d56/namespacefl7_1_1gui.html#a0d7cdc70924ddc602ebd434283e9342e", null ],
+    [ "operator|", "d5/d56/namespacefl7_1_1gui.html#a75b3e459879f7780fe81820bae0d8152", null ]
 ];

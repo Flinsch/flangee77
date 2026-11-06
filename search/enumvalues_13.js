@@ -16,7 +16,7 @@ var searchData=
   ['textured_13',['Textured',['../d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#ab9ca288a2fe3196562b9f51c01b3bd90a727faf49bd334ad8c6692934ff652843',1,'xl7::graphics::QuadRenderer']]],
   ['texturesurface_14',['TextureSurface',['../d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a974399867e64b1d02e70f144cd5d9d53a1412f4ac0af027752228f6c03e01e6e0',1,'xl7::graphics::surfaces::Surface']]],
   ['tilde_15',['Tilde',['../d1/db1/structdl7_1_1yaml_1_1Format.html#a5394e05ec1f72592e180f47fa1d4c913a77a804418d76dc407383a618b60853ab',1,'dl7::yaml::Format']]],
-  ['top_16',['Top',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4ffdcf0dc1f31b9acaf295d75b51d00',1,'fl7::fonts::TextStyle']]],
+  ['top_16',['Top',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4ffdcf0dc1f31b9acaf295d75b51d00',1,'fl7::fonts::TextStyle::Top'],['../d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199aa4ffdcf0dc1f31b9acaf295d75b51d00',1,'fl7::gui::Top']]],
   ['topleft_17',['TopLeft',['../d3/d2d/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Writer.html#aab1c50f4ba1d6ee99fc10ddeb8316febab32beb056fbfe36afbabc6c88c81ab36',1,'xl7::graphics::images::codecs::targa::Writer']]],
   ['transient_18',['Transient',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#a3a1892de938ee9b2619ad78bdf99951dab1f023eff9a6b5308d6024e4c6b3d475',1,'xl7::graphics::meshes']]],
   ['trianglelist_19',['TriangleList',['../d0/d08/namespacexl7_1_1graphics_1_1meshes.html#af1a69b180302a9431b436bd32c35287faf5beeab7a1f452e5b0e9b03b44f0de92',1,'xl7::graphics::meshes']]],

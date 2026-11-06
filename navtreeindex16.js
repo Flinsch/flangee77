@@ -1,8 +1,9 @@
 var NAVTREEINDEX16 =
 {
+"d4/d2e/Stopwatch_8h_source.html":[8,0,1,6,10],
 "d4/d30/VertexBufferBinding_8cpp.html":[8,0,7,1,1,2,0,4],
-"d4/d31/FaceLabs_2gui_2Image_8h.html":[8,0,3,1,15],
-"d4/d31/FaceLabs_2gui_2Image_8h_source.html":[8,0,3,1,15],
+"d4/d31/FaceLabs_2gui_2Image_8h.html":[8,0,3,1,16],
+"d4/d31/FaceLabs_2gui_2Image_8h_source.html":[8,0,3,1,16],
 "d4/d33/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScorePair.html":[5,0,0,1,0,0],
 "d4/d33/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScorePair.html":[7,0,0,0,0,0],
 "d4/d33/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScorePair.html#a75b1709a5f3532a0e248aeef59fd979b":[5,0,0,1,0,0,2],
@@ -131,8 +132,8 @@ var NAVTREEINDEX16 =
 "d4/d56/structxl7_1_1graphics_1_1states_1_1SamplerStateDesc.html#ace31dad82ce3546b0d23517e43819e10":[7,0,8,1,5,8,10],
 "d4/d58/find__cubic__roots_8h.html":[8,0,0,0,1],
 "d4/d58/find__cubic__roots_8h_source.html":[8,0,0,0,1],
-"d4/d5c/Face_8h.html":[8,0,3,1,8],
-"d4/d5c/Face_8h_source.html":[8,0,3,1,8],
+"d4/d5c/Face_8h.html":[8,0,3,1,9],
+"d4/d5c/Face_8h_source.html":[8,0,3,1,9],
 "d4/d5d/direct3d11_2textures_2Texture2DImpl_8h.html":[8,0,7,1,1,0,3,1],
 "d4/d5d/direct3d11_2textures_2Texture2DImpl_8h_source.html":[8,0,7,1,1,0,3,1],
 "d4/d5d/structxl7_1_1graphics_1_1shaders_1_1ConstantDeclaration.html":[5,0,8,2,4,8],
@@ -183,7 +184,7 @@ var NAVTREEINDEX16 =
 "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html#adbdf1267dacc76ae902ac6462c1850fa":[7,0,8,1,7,10,0],
 "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html#aff4ebfa6859ce3cb81ee467daa21d599":[5,0,8,2,7,10,4],
 "d4/d63/classxl7_1_1graphics_1_1textures_1_1Texture2D.html#aff4ebfa6859ce3cb81ee467daa21d599":[7,0,8,1,7,10,4],
-"d4/d64/SelectionHelper_8cpp.html":[8,0,3,1,1,10],
+"d4/d64/SelectionHelper_8cpp.html":[8,0,3,1,2,10],
 "d4/d65/ClippedQuad_8cpp.html":[8,0,7,1,2,0],
 "d4/d65/ProductionRule_8h.html":[8,0,2,4,25],
 "d4/d65/ProductionRule_8h_source.html":[8,0,2,4,25],
@@ -191,8 +192,8 @@ var NAVTREEINDEX16 =
 "d4/d67/subdivide_8h.html":[8,0,4,0,1],
 "d4/d67/subdivide_8h_source.html":[8,0,4,0,1],
 "d4/d68/Vocabulary_8cpp.html":[8,0,2,4,42],
-"d4/d6a/Control_8h.html":[8,0,3,1,6],
-"d4/d6a/Control_8h_source.html":[8,0,3,1,6],
+"d4/d6a/Control_8h.html":[8,0,3,1,7],
+"d4/d6a/Control_8h_source.html":[8,0,3,1,7],
 "d4/d6b/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl_1_1Attorney.html":[5,0,8,2,1,0,3,4,0],
 "d4/d6b/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl_1_1Attorney.html":[7,0,8,1,1,0,1,4,0],
 "d4/d6b/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl_1_1Attorney.html#ab60472f32dcc305bbde451df80094987":[5,0,8,2,1,0,3,4,0,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX16 =
 "d4/d7a/targa_2Writer_8cpp.html":[8,0,7,1,0,0,2,7],
 "d4/d7d/structxl7_1_1input_1_1Mouse_1_1Position.html":[5,0,8,3,6,1],
 "d4/d7d/structxl7_1_1input_1_1Mouse_1_1Position.html":[7,0,8,2,6,1],
-"d4/d7d/structxl7_1_1input_1_1Mouse_1_1Position.html#a8a5394815aa6e5128fe708c9df0faa1d":[5,0,8,3,6,1,0],
-"d4/d7d/structxl7_1_1input_1_1Mouse_1_1Position.html#a8a5394815aa6e5128fe708c9df0faa1d":[7,0,8,2,6,1,0]
+"d4/d7d/structxl7_1_1input_1_1Mouse_1_1Position.html#a8a5394815aa6e5128fe708c9df0faa1d":[5,0,8,3,6,1,0]
 };
