@@ -1,5 +1,11 @@
 var NAVTREEINDEX10 =
 {
+"d2/de0/find__quadratic__roots_8h_source.html":[8,0,0,0,3],
+"d2/de5/TrueTypeFontLoader_8h.html":[8,0,3,0,0,0,3],
+"d2/de5/TrueTypeFontLoader_8h_source.html":[8,0,3,0,0,0,3],
+"d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc.html":[5,0,8,2,4,19],
+"d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc.html":[7,0,8,1,4,19],
+"d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc.html#ab2196a233765d13392725e20c6f4a1ec":[5,0,8,2,4,19,0],
 "d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc.html#ab2196a233765d13392725e20c6f4a1ec":[7,0,8,1,4,19,0],
 "d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc.html#ae40ef38f1d0b3c8e4f7c0a7a92a5951b":[5,0,8,2,4,19,1],
 "d2/de8/structxl7_1_1graphics_1_1shaders_1_1ShaderDesc.html#ae40ef38f1d0b3c8e4f7c0a7a92a5951b":[7,0,8,1,4,19,1],
@@ -243,11 +249,5 @@ var NAVTREEINDEX10 =
 "d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#a9063f683a216aa401a17c6d080436abf":[5,0,1,6,0,7],
 "d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#a9063f683a216aa401a17c6d080436abf":[7,0,1,5,0,7],
 "d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#aae929d16246f344b0395e45eb329a953":[5,0,1,6,0,3],
-"d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#aae929d16246f344b0395e45eb329a953":[7,0,1,5,0,3],
-"d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#abddb25bee29c082bcbd733f9b5f7d4bd":[5,0,1,6,0,5],
-"d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#abddb25bee29c082bcbd733f9b5f7d4bd":[7,0,1,5,0,5],
-"d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#ac4e8eae977350f673b5b5a1b9272d44c":[5,0,1,6,0,0],
-"d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#ac4e8eae977350f673b5b5a1b9272d44c":[7,0,1,5,0,0],
-"d3/d36/functions_8cpp.html":[8,0,4,7],
-"d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html":[5,0,3,0,1,2]
+"d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#aae929d16246f344b0395e45eb329a953":[7,0,1,5,0,3]
 };

@@ -294,7 +294,8 @@ var hierarchy =
         [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ]
       ] ],
       [ "fl7::gui::Static", "dc/dfd/classfl7_1_1gui_1_1Static.html", [
-        [ "fl7::gui::faces::Label", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html", null ]
+        [ "fl7::gui::faces::Label", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html", null ],
+        [ "fl7::gui::faces::PictureBox", "d9/d66/classfl7_1_1gui_1_1faces_1_1PictureBox.html", null ]
       ] ],
       [ "fl7::gui::faces::CheckBox::Box", "d7/dfc/classfl7_1_1gui_1_1faces_1_1CheckBox_1_1Box.html", null ],
       [ "fl7::gui::faces::RadioButton::Box", "d7/d12/classfl7_1_1gui_1_1faces_1_1RadioButton_1_1Box.html", null ],
@@ -367,6 +368,7 @@ var hierarchy =
       [ "fl7::gui::faces::DropDown", "d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html", null ],
       [ "fl7::gui::faces::ListBox::Row", "d2/dcf/classfl7_1_1gui_1_1faces_1_1ListBox_1_1Row.html", null ],
       [ "fl7::gui::faces::Panel", "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html", null ],
+      [ "fl7::gui::faces::PictureBox", "d9/d66/classfl7_1_1gui_1_1faces_1_1PictureBox.html", null ],
       [ "fl7::gui::faces::RadioButton::Box", "d7/d12/classfl7_1_1gui_1_1faces_1_1RadioButton_1_1Box.html", null ],
       [ "fl7::gui::faces::ScrollPanel", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html", null ],
       [ "fl7::gui::faces::Slider::Handle", "dd/dd6/classfl7_1_1gui_1_1faces_1_1Slider_1_1Handle.html", null ],
@@ -385,6 +387,9 @@ var hierarchy =
     [ "std::hash&lt; xl7::graphics::impl::shared::meshes::ComposedVertexLayout &gt;", "db/de3/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1ComposedVertexLayout_01_4.html", null ],
     [ "std::hash&lt; xl7::graphics::impl::shared::meshes::VertexBufferBinding &gt;", "dc/d08/structstd_1_1hash_3_01xl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1VertexBufferBinding_01_4.html", null ],
     [ "std::hash&lt; xl7::resources::ResourceId &gt;", "dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4.html", null ],
+    [ "fl7::gui::HasImage", "d3/dd8/classfl7_1_1gui_1_1HasImage.html", [
+      [ "fl7::gui::faces::PictureBox", "d9/d66/classfl7_1_1gui_1_1faces_1_1PictureBox.html", null ]
+    ] ],
     [ "fl7::gui::HasSelection", "db/d6e/classfl7_1_1gui_1_1HasSelection.html", [
       [ "fl7::gui::faces::TextField", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html", null ]
     ] ],
@@ -413,10 +418,12 @@ var hierarchy =
       [ "tl7::Context", "d9/d7e/structtl7_1_1Context.html", null ],
       [ "tl7::reporting::CoutLogger", "db/d02/classtl7_1_1reporting_1_1CoutLogger.html", null ]
     ] ],
+    [ "fl7::gui::Image", "d6/d0b/structfl7_1_1gui_1_1Image.html", null ],
     [ "xl7::graphics::images::Image", "d3/dfb/classxl7_1_1graphics_1_1images_1_1Image.html", null ],
     [ "xl7::graphics::images::ImageArray", "df/d00/classxl7_1_1graphics_1_1images_1_1ImageArray.html", null ],
     [ "xl7::graphics::images::ImageAtlas", "d7/d70/classxl7_1_1graphics_1_1images_1_1ImageAtlas.html", null ],
     [ "xl7::graphics::images::ImageDesc", "d7/de0/structxl7_1_1graphics_1_1images_1_1ImageDesc.html", null ],
+    [ "fl7::gui::render::ImageHelper", "d0/da8/classfl7_1_1gui_1_1render_1_1ImageHelper.html", null ],
     [ "xl7::graphics::images::ImageProcessor", "d1/d92/structxl7_1_1graphics_1_1images_1_1ImageProcessor.html", [
       [ "xl7::graphics::images::ImageConverter", "d9/d3b/structxl7_1_1graphics_1_1images_1_1ImageConverter.html", null ],
       [ "xl7::graphics::images::ImageResizer", "d8/d23/structxl7_1_1graphics_1_1images_1_1ImageResizer.html", null ]

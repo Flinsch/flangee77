@@ -1,5 +1,11 @@
 var NAVTREEINDEX6 =
 {
+"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ad33afd815a2ba99a8e4d2029f1c300f9":[7,0,8,1,12,3,3],
+"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ae5a4347604fea4a76281a3b1578320b3":[5,0,8,2,12,3,0],
+"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ae5a4347604fea4a76281a3b1578320b3":[7,0,8,1,12,3,0],
+"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ae6da9e50555f71f806f2cab118ba30a4":[5,0,8,2,12,3,2],
+"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ae6da9e50555f71f806f2cab118ba30a4":[7,0,8,1,12,3,2],
+"d1/de7/FontLoader_8cpp.html":[8,0,3,0,8],
 "d1/deb/GameController_8cpp.html":[8,0,7,2,5],
 "d1/dee/Reporter_8h.html":[8,0,6,1,4],
 "d1/dee/Reporter_8h_source.html":[8,0,6,1,4],
@@ -243,11 +249,5 @@ var NAVTREEINDEX6 =
 "d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#ad58bc034f71e2084c508edaf725b39fa":[5,0,8,2,3,4,10],
 "d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#ad58bc034f71e2084c508edaf725b39fa":[7,0,8,1,3,4,10],
 "d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#adbbf72875e7d1c563f9492f78d23972b":[5,0,8,2,3,4,8],
-"d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#adbbf72875e7d1c563f9492f78d23972b":[7,0,8,1,3,4,8],
-"d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#ae25ca80e9d376f561dfea25b88eec902":[5,0,8,2,3,4,12],
-"d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#ae25ca80e9d376f561dfea25b88eec902":[7,0,8,1,3,4,12],
-"d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#afe4d4d45a8ce9a00c133370cce725b7a":[5,0,8,2,3,4,2],
-"d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#afe4d4d45a8ce9a00c133370cce725b7a":[7,0,8,1,3,4,2],
-"d2/d14/yaml_2detail_2Generator_8h.html":[8,0,2,7,0,7],
-"d2/d14/yaml_2detail_2Generator_8h_source.html":[8,0,2,7,0,7]
+"d2/d13/classxl7_1_1graphics_1_1pipeline_1_1OutputMergerStage.html#adbbf72875e7d1c563f9492f78d23972b":[7,0,8,1,3,4,8]
 };

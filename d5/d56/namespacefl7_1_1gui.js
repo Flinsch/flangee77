@@ -10,8 +10,10 @@ var namespacefl7_1_1gui =
     [ "HasBackground", "db/d13/classfl7_1_1gui_1_1HasBackground.html", "db/d13/classfl7_1_1gui_1_1HasBackground" ],
     [ "HasCaret", "d5/d25/classfl7_1_1gui_1_1HasCaret.html", "d5/d25/classfl7_1_1gui_1_1HasCaret" ],
     [ "HasCheckedState", "d9/db9/classfl7_1_1gui_1_1HasCheckedState.html", "d9/db9/classfl7_1_1gui_1_1HasCheckedState" ],
+    [ "HasImage", "d3/dd8/classfl7_1_1gui_1_1HasImage.html", "d3/dd8/classfl7_1_1gui_1_1HasImage" ],
     [ "HasSelection", "db/d6e/classfl7_1_1gui_1_1HasSelection.html", "db/d6e/classfl7_1_1gui_1_1HasSelection" ],
     [ "HasText", "d1/d67/classfl7_1_1gui_1_1HasText.html", "d1/d67/classfl7_1_1gui_1_1HasText" ],
+    [ "Image", "d6/d0b/structfl7_1_1gui_1_1Image.html", "d6/d0b/structfl7_1_1gui_1_1Image" ],
     [ "NineSliceChrome", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome" ],
     [ "RadioGroup", "d2/d69/classfl7_1_1gui_1_1RadioGroup.html", "d2/d69/classfl7_1_1gui_1_1RadioGroup" ],
     [ "Shell", "d6/d9c/classfl7_1_1gui_1_1Shell.html", "d6/d9c/classfl7_1_1gui_1_1Shell" ],
@@ -30,6 +32,11 @@ var namespacefl7_1_1gui =
       [ "Ignore", "d5/d56/namespacefl7_1_1gui.html#a543482ae1a58df69d758a67b945d3e83afd038fc7f319e48f3115d92bf5bdbef9", null ],
       [ "Soft", "d5/d56/namespacefl7_1_1gui.html#a543482ae1a58df69d758a67b945d3e83a682160fc6ad12f783f70608a9b46b9b9", null ],
       [ "Hard", "d5/d56/namespacefl7_1_1gui.html#a543482ae1a58df69d758a67b945d3e83a3656183169810334a96b91129dc9d881", null ]
+    ] ],
+    [ "ImageScaleMode", "d5/d56/namespacefl7_1_1gui.html#a4bd2852d89f09eda429237a441371a04", [
+      [ "Stretch", "d5/d56/namespacefl7_1_1gui.html#a4bd2852d89f09eda429237a441371a04afbb09a82eafab60150d0996e8fe46560", null ],
+      [ "Zoom", "d5/d56/namespacefl7_1_1gui.html#a4bd2852d89f09eda429237a441371a04a4252b72e6ebcd4d4b4c2e46a786f03d2", null ],
+      [ "Center", "d5/d56/namespacefl7_1_1gui.html#a4bd2852d89f09eda429237a441371a04a4f1f6016fc9f3f2353c0cc7c67b292bd", null ]
     ] ],
     [ "ScrollBarVisibility", "d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cc", [
       [ "Always", "d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cca68eec46437c384d8dad18d5464ebc35c", null ],

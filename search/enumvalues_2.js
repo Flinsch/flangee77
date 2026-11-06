@@ -3,7 +3,7 @@ var searchData=
   ['c_0',['C',['../df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45a0d61f8370cad1d412f80b84d143e1257',1,'xl7::input']]],
   ['caption_1',['Caption',['../df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a272ba7d164aa836995be6319a698be84',1,'cl7::logging']]],
   ['cdata_2',['CDATA',['../d4/dc2/namespacedl7_1_1xml_1_1detail.html#a763cf7809cd96b73b261448238faf1f7a256f4ed1521f771b351ac4f6accde316',1,'dl7::xml::detail']]],
-  ['center_3',['Center',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a9b2204dc71a9a9abc3f43b0be847bcf5a4f1f6016fc9f3f2353c0cc7c67b292bd',1,'fl7::fonts::TextStyle']]],
+  ['center_3',['Center',['../d8/d86/structfl7_1_1fonts_1_1TextStyle.html#a9b2204dc71a9a9abc3f43b0be847bcf5a4f1f6016fc9f3f2353c0cc7c67b292bd',1,'fl7::fonts::TextStyle::Center'],['../d5/d56/namespacefl7_1_1gui.html#a4bd2852d89f09eda429237a441371a04a4f1f6016fc9f3f2353c0cc7c67b292bd',1,'fl7::gui::Center']]],
   ['char_5fdata_4',['CHAR_DATA',['../d4/dc2/namespacedl7_1_1xml_1_1detail.html#a763cf7809cd96b73b261448238faf1f7aa975a6ec4e24eba2721a1f495813bbfe',1,'dl7::xml::detail']]],
   ['check_5',['Check',['../da/d3a/structtl7_1_1Result.html#abc74a2ae21cd48cdb73884084ad1d692a060bf2d587991d8f090a1309b285291c',1,'tl7::Result']]],
   ['clamp_6',['Clamp',['../dc/d8d/namespacexl7_1_1graphics_1_1states.html#a98d0b059d0af618a89dda3c2f66f2da5a08825280e3f8137556325061ba67ff8c',1,'xl7::graphics::states']]],

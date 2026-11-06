@@ -1,5 +1,11 @@
 var NAVTREEINDEX5 =
 {
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#afa48a91f23e5fc8732dad25f114853da":[5,0,8,2,7,29,4],
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#afa48a91f23e5fc8732dad25f114853da":[7,0,8,1,7,29,4],
+"d1/da6/classxl7_1_1BackendRegistry.html":[5,0,8,5],
+"d1/da6/classxl7_1_1BackendRegistry.html":[7,0,8,4],
+"d1/da6/classxl7_1_1BackendRegistry.html#a17d7e05a8eb2f736eee6e54172d32814":[5,0,8,5,5],
+"d1/da6/classxl7_1_1BackendRegistry.html#a17d7e05a8eb2f736eee6e54172d32814":[7,0,8,4,5],
 "d1/da6/classxl7_1_1BackendRegistry.html#a5def64ce164ed3b06b0a7a5bc82df10d":[5,0,8,5,4],
 "d1/da6/classxl7_1_1BackendRegistry.html#a5def64ce164ed3b06b0a7a5bc82df10d":[7,0,8,4,4],
 "d1/da6/classxl7_1_1BackendRegistry.html#a6126a02766976294d61ac0527c0b6752":[5,0,8,5,6],
@@ -243,11 +249,5 @@ var NAVTREEINDEX5 =
 "d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html":[7,0,8,1,12,3],
 "d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#aa7f37940107e0bc86e9d07fa6a7b575b":[5,0,8,2,12,3,1],
 "d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#aa7f37940107e0bc86e9d07fa6a7b575b":[7,0,8,1,12,3,1],
-"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ad33afd815a2ba99a8e4d2029f1c300f9":[5,0,8,2,12,3,3],
-"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ad33afd815a2ba99a8e4d2029f1c300f9":[7,0,8,1,12,3,3],
-"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ae5a4347604fea4a76281a3b1578320b3":[5,0,8,2,12,3,0],
-"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ae5a4347604fea4a76281a3b1578320b3":[7,0,8,1,12,3,0],
-"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ae6da9e50555f71f806f2cab118ba30a4":[5,0,8,2,12,3,2],
-"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ae6da9e50555f71f806f2cab118ba30a4":[7,0,8,1,12,3,2],
-"d1/de7/FontLoader_8cpp.html":[8,0,3,0,8]
+"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#ad33afd815a2ba99a8e4d2029f1c300f9":[5,0,8,2,12,3,3]
 };

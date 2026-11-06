@@ -1,5 +1,11 @@
 var NAVTREEINDEX11 =
 {
+"d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#abddb25bee29c082bcbd733f9b5f7d4bd":[5,0,1,6,0,5],
+"d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#abddb25bee29c082bcbd733f9b5f7d4bd":[7,0,1,5,0,5],
+"d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#ac4e8eae977350f673b5b5a1b9272d44c":[5,0,1,6,0,0],
+"d3/d2e/classcl7_1_1logging_1_1AbstractLogHandler.html#ac4e8eae977350f673b5b5a1b9272d44c":[7,0,1,5,0,0],
+"d3/d36/functions_8cpp.html":[8,0,4,7],
+"d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html":[5,0,3,0,1,2],
 "d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html":[7,0,3,0,1,1],
 "d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html#a15aa73fc0ccaeff9388b92be785550b4":[5,0,3,0,1,2,10],
 "d3/d3d/classfl7_1_1fonts_1_1raster_1_1AbstractRasterizer.html#a15aa73fc0ccaeff9388b92be785550b4":[7,0,3,0,1,1,10],
@@ -243,11 +249,5 @@ var NAVTREEINDEX11 =
 "d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a7616e6c515c9e50bde7821146f8d2a0e":[5,0,2,4,24,8],
 "d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a7616e6c515c9e50bde7821146f8d2a0e":[7,0,2,4,24,8],
 "d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a8187a5c0e6414a9cdc5aa42a94283f78":[5,0,2,4,24,5],
-"d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a8187a5c0e6414a9cdc5aa42a94283f78":[7,0,2,4,24,5],
-"d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a8f111048bcc3b366a8e6f6aa2970ac78":[5,0,2,4,24,6],
-"d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a8f111048bcc3b366a8e6f6aa2970ac78":[7,0,2,4,24,6],
-"d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#aa0421a7659f166b61d6e23b6684a93a8":[5,0,2,4,24,7],
-"d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#aa0421a7659f166b61d6e23b6684a93a8":[7,0,2,4,24,7],
-"d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#ab65f0050f2ad84d5b6ccfd4338b0aef8":[5,0,2,4,24,4],
-"d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#ab65f0050f2ad84d5b6ccfd4338b0aef8":[7,0,2,4,24,4]
+"d3/d62/structdl7_1_1syntax_1_1PatternSymbol.html#a8187a5c0e6414a9cdc5aa42a94283f78":[7,0,2,4,24,5]
 };

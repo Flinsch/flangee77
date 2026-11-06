@@ -2,7 +2,7 @@ var dir_578ff3acc76606b5df510d8bab7519f9 =
 [
     [ "codecs", "dir_7ff4730c687d156a3e29da50ec1c5187.html", "dir_7ff4730c687d156a3e29da50ec1c5187" ],
     [ "Image.cpp", "d0/d4e/Image_8cpp.html", null ],
-    [ "Image.h", "d8/d0f/Image_8h.html", "d8/d0f/Image_8h" ],
+    [ "Image.h", "d4/d6c/XiaoLabs_2graphics_2images_2Image_8h.html", "d4/d6c/XiaoLabs_2graphics_2images_2Image_8h" ],
     [ "ImageArray.cpp", "da/d25/ImageArray_8cpp.html", null ],
     [ "ImageArray.h", "d3/dd7/ImageArray_8h.html", "d3/dd7/ImageArray_8h" ],
     [ "ImageAtlas.cpp", "d8/d40/ImageAtlas_8cpp.html", null ],

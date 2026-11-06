@@ -7,6 +7,7 @@ var namespacefl7_1_1gui_1_1faces =
     [ "Label", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html", "d3/dd8/classfl7_1_1gui_1_1faces_1_1Label" ],
     [ "ListBox", "d6/d18/classfl7_1_1gui_1_1faces_1_1ListBox.html", "d6/d18/classfl7_1_1gui_1_1faces_1_1ListBox" ],
     [ "Panel", "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html", "da/d45/classfl7_1_1gui_1_1faces_1_1Panel" ],
+    [ "PictureBox", "d9/d66/classfl7_1_1gui_1_1faces_1_1PictureBox.html", "d9/d66/classfl7_1_1gui_1_1faces_1_1PictureBox" ],
     [ "RadioButton", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton" ],
     [ "ScrollBar", "d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html", "d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar" ],
     [ "ScrollPanel", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel" ],
