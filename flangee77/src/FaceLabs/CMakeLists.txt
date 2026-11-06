@@ -53,6 +53,7 @@ target_sources(flangee77
     gui/render/BackgroundHelper.cpp
     gui/render/CaretHelper.cpp
     gui/render/DefaultRenderer.cpp
+    gui/render/ImageHelper.cpp
     gui/render/SelectionHelper.cpp
     gui/render/TextHelper.cpp
 )

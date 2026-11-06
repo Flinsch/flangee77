@@ -3,6 +3,7 @@
 
 #include "./BackgroundHelper.h"
 #include "./CaretHelper.h"
+#include "./ImageHelper.h"
 #include "./SelectionHelper.h"
 #include "./TextHelper.h"
 
@@ -177,15 +178,16 @@ protected:
      * backend's own traversal in `_render_faces_impl`), clipped to its own declared
      * bounds (`face.get_size()`) regardless of what it actually draws: its
      * background (see `BackgroundHelper`) if it's a `HasBackground`, then, if it's
-     * a `HasText`, its selection highlight (see `SelectionHelper`), its text (see
-     * `TextHelper`), and its caret (see `CaretHelper`), always in that
-     * (back-to-front) order, each shifted by `get_text_scroll_offset()` and laid
-     * out against `get_text_box_size()` (narrower than `get_size()` while a scroll
-     * bar is shown; see `faces::TextField`'s multiline mode) rather than
-     * `get_size()` directly. Backend-agnostic (talks only to this class's own
-     * public drawing methods above), so shared by every `AbstractRenderer`
-     * implementation. Call this from within your own traversal wherever you
-     * decide to actually draw a given face.
+     * a `HasImage`, its image (see `ImageHelper`), then, if it's a `HasText`, its
+     * selection highlight (see `SelectionHelper`), its text (see `TextHelper`), and
+     * its caret (see `CaretHelper`), always in that (back-to-front) order, the
+     * latter three each shifted by `get_text_scroll_offset()` and laid out against
+     * `get_text_box_size()` (narrower than `get_size()` while a scroll bar is
+     * shown; see `faces::TextField`'s multiline mode) rather than `get_size()`
+     * directly. Backend-agnostic (talks only to this class's own public drawing
+     * methods above), so shared by every `AbstractRenderer` implementation. Call
+     * this from within your own traversal wherever you decide to actually draw a
+     * given face.
      */
     void _draw_face(const Face& face, ml7::Vector2f absolute_position);
 
@@ -217,6 +219,7 @@ private:
     // #############################################################################
 
     BackgroundHelper _background_helper;
+    ImageHelper _image_helper;
     SelectionHelper _selection_helper;
     TextHelper _text_helper;
     CaretHelper _caret_helper;

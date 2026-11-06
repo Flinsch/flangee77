@@ -10,6 +10,7 @@
     #include <FaceLabs/gui/faces/Frame.h>
     #include <FaceLabs/gui/faces/Label.h>
     #include <FaceLabs/gui/faces/ListBox.h>
+    #include <FaceLabs/gui/faces/PictureBox.h>
     #include <FaceLabs/gui/faces/RadioButton.h>
     #include <FaceLabs/gui/faces/ScrollPanel.h>
     #include <FaceLabs/gui/faces/Slider.h>
@@ -189,6 +190,9 @@ namespace helloworld {
 
         _texture_id = xl7::graphics::texture_manager()->create_texture_2d(u8"My Texture", texture_desc, &texture_write);
         _sampler_state_id = xl7::graphics::state_manager()->ensure_sampler_state(sampler_desc);
+
+        _gui_picture_box_image.texture_id = xl7::resources::id_cast<xl7::graphics::textures::Texture2D::Id>(_texture_id);
+        _gui_picture_box_image.native_size = {static_cast<float>(image.get_width()), static_cast<float>(image.get_height())};
 
 
         xl7::graphics::states::RasterizerStateDesc rasterizer_desc;
@@ -539,6 +543,31 @@ namespace helloworld {
         multiline_text_field.get_changed().connect([](const cl7::u32string&) {
             LOG_INFO(u8"Multi-line TextField changed.");
         });
+
+
+        // Demo PictureBox: the same dummy texture (see _gui_picture_box_image),
+        // shown three times side by side, one per ImageScaleMode, to make the
+        // difference visible: Stretch distorts it to exactly fill its box,
+        // Zoom scales it uniformly to fit (letterboxed), Center draws it at its
+        // own native size (cropped/letterboxed by its box, whichever applies).
+        auto& picture_box_frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo PictureBox");
+        picture_box_frame.set_position({1080.0f, 480.0f});
+        picture_box_frame.set_size({220.0f, 240.0f});
+
+        auto& stretch_picture_box = picture_box_frame.get_content_area().add_child<fl7::gui::faces::PictureBox>(_gui_picture_box_image);
+        stretch_picture_box.set_position({20.0f, 20.0f});
+        stretch_picture_box.set_size({180.0f, 60.0f});
+        stretch_picture_box.set_image_scale_mode(fl7::gui::ImageScaleMode::Stretch);
+
+        auto& zoom_picture_box = picture_box_frame.get_content_area().add_child<fl7::gui::faces::PictureBox>(_gui_picture_box_image);
+        zoom_picture_box.set_position({20.0f, 90.0f});
+        zoom_picture_box.set_size({180.0f, 60.0f});
+        zoom_picture_box.set_image_scale_mode(fl7::gui::ImageScaleMode::Zoom);
+
+        auto& center_picture_box = picture_box_frame.get_content_area().add_child<fl7::gui::faces::PictureBox>(_gui_picture_box_image);
+        center_picture_box.set_position({20.0f, 160.0f});
+        center_picture_box.set_size({180.0f, 60.0f});
+        center_picture_box.set_image_scale_mode(fl7::gui::ImageScaleMode::Center);
 
 
 

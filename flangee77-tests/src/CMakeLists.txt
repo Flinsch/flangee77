@@ -68,6 +68,7 @@ target_sources(flangee77-tests
     FaceLabs/gui/faces/Label.cpp
     FaceLabs/gui/faces/ListBox.cpp
     FaceLabs/gui/faces/Panel.cpp
+    FaceLabs/gui/faces/PictureBox.cpp
     FaceLabs/gui/faces/RadioButton.cpp
     FaceLabs/gui/faces/ScrollBar.cpp
     FaceLabs/gui/faces/ScrollPanel.cpp

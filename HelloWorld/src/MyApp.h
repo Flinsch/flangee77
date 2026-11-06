@@ -13,6 +13,7 @@
 #include <FaceLabs/fonts/render/MsdfRenderer.h>
 #include <FaceLabs/fonts/render/TestRenderer.h>
 
+#include <FaceLabs/gui/Image.h>
 #include <FaceLabs/gui/NineSliceChrome.h>
 #include <FaceLabs/gui/RadioGroup.h>
 #include <FaceLabs/gui/Shell.h>
@@ -133,6 +134,9 @@ private:
 
     /** Backs _gui_window_chrome/_gui_button_chrome (see NineSliceChrome). */
     xl7::graphics::textures::Texture::Id _gui_chrome_texture_id;
+
+    /** Demo PictureBox image (reuses the dummy texture already loaded for the spinning quad above, backed by _texture_id). */
+    fl7::gui::Image _gui_picture_box_image;
 
     xl7::graphics::meshes::VertexBuffer::Id _vertex_buffer_id;
     xl7::graphics::meshes::IndexBuffer::Id _index_buffer_id;
