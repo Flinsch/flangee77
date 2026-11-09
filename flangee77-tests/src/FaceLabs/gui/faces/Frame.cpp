@@ -104,6 +104,57 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  dragging the title bar moves 
     shell.update();
 }
 
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  dragging the resize handle resizes the frame by the drag delta" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& frame = shell.add_face<fl7::gui::faces::Frame>(U"Title");
+    frame.set_position({10.0f, 10.0f});
+    frame.set_size({200.0f, 150.0f});
+
+    // The resize handle is a fixed 16x16 square in the frame's own
+    // bottom-right corner, i.e. absolute (194,144) to (210,160) here.
+    input.move_mouse_to({200.0f, 150.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+
+    input.move_mouse_to({230.0f, 180.0f}); // delta (30, 30)
+    shell.update();
+    TESTLABS_CHECK_EQ_ROUND( 3, frame.get_size().x, 230.0f );
+    TESTLABS_CHECK_EQ_ROUND( 3, frame.get_size().y, 180.0f );
+
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  dragging the resize handle never shrinks the frame below its minimum size" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& frame = shell.add_face<fl7::gui::faces::Frame>(U"Title");
+    frame.set_position({10.0f, 10.0f});
+    frame.set_size({200.0f, 150.0f});
+
+    input.move_mouse_to({200.0f, 150.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+
+    // Drags far enough up/left to try to shrink well past the minimum.
+    input.move_mouse_to({0.0f, 0.0f});
+    shell.update();
+    TESTLABS_CHECK( frame.get_size().x >= 80.0f );
+    TESTLABS_CHECK( frame.get_size().y >= 40.0f );
+
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+}
+
 TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  pressing and dragging inside the content area does not move the frame" )
 {
     f77_tests::gui::NullRenderer renderer;

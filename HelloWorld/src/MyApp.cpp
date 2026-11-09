@@ -16,6 +16,7 @@
     #include <FaceLabs/gui/faces/Slider.h>
     #include <FaceLabs/gui/faces/TextField.h>
     #include <FaceLabs/gui/layout/BoxLayout.h>
+    #include <FaceLabs/gui/layout/DefaultLayout.h>
 
 #include <XiaoLabs/graphics.h>
     #include <XiaoLabs/graphics/images/codecs/targa/Reader.h>
@@ -407,6 +408,12 @@ namespace helloworld {
         // set explicitly at all anymore.
         auto& panel = frame.get_content_area().add_child<fl7::gui::faces::ScrollPanel>();
         panel.set_size({180.0f, 120.0f});
+        // Left at the default stretch (1, see BoxLayout) and given Top+Bottom
+        // anchor (fills its own main-axis cell): the one element in this stack
+        // that actually grows/shrinks with the frame, demoing both stretch
+        // (gets 100% of whatever's left over, since every sibling below is
+        // explicitly pinned to 0) and anchor (Top+Bottom = fill) together.
+        panel.set_anchor(fl7::gui::Anchor::Left | fl7::gui::Anchor::Top | fl7::gui::Anchor::Bottom);
         // Three times taller than the panel's own (viewport) size, to demo
         // actually scrolling via its built-in scroll bars, not just clipping.
         panel.set_content_size({180.0f, 360.0f});
@@ -480,7 +487,19 @@ namespace helloworld {
         // fixed padding: same visual margins as the individual set_position()
         // calls this replaced, but now also keeping up automatically as faces are
         // added/removed (see remove_checkbox_button above).
-        frame.get_content_area().set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Vertical, 10.0f, 20.0f);
+        auto& content_layout = frame.get_content_area().set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Vertical, 10.0f, 20.0f);
+
+        // Stretch defaults to 1 (every cell splits the main axis evenly); every
+        // one of these except panel (see its own Top+Bottom anchor above) is
+        // pinned to its own explicit size instead, same as before this existed.
+        content_layout.set_stretch(button, 0.0f);
+        content_layout.set_stretch(checkbox, 0.0f);
+        content_layout.set_stretch(radio_button_1, 0.0f);
+        content_layout.set_stretch(radio_button_2, 0.0f);
+        content_layout.set_stretch(text_field, 0.0f);
+        content_layout.set_stretch(slider, 0.0f);
+        content_layout.set_stretch(remove_checkbox_button, 0.0f);
+        content_layout.perform(frame.get_content_area());
 
 
         auto& list_frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo ListBox");
@@ -553,6 +572,14 @@ namespace helloworld {
         multiline_text_field.get_changed().connect([](const cl7::u32string&) {
             LOG_INFO(u8"Multi-line TextField changed.");
         });
+
+        // Dogfooding gui::layout::DefaultLayout, now that Frame actually has a
+        // resize handle to drag: fills the content area on every edge (all
+        // four anchor flags), so dragging the new corner grip (see
+        // faces::Frame) stretches the field along with it, instead of it
+        // just sitting at its own originally captured size/margins.
+        multiline_text_field.set_anchor(fl7::gui::Anchor::Left | fl7::gui::Anchor::Top | fl7::gui::Anchor::Right | fl7::gui::Anchor::Bottom);
+        multiline_text_field_frame.get_content_area().set_layout<fl7::gui::layout::DefaultLayout>();
 
 
         // Demo PictureBox: the same dummy texture (see _gui_picture_box_image),

@@ -2,13 +2,13 @@
 #define FL7_GUI_LAYOUT_BOXLAYOUT_H
 #include "./Layout.h"
 
+#include "../Face.h"
+
+#include <MathLabs/Vector2.h>
+
 #include <unordered_map>
 
 
-
-namespace fl7::gui {
-class Face;
-} // namespace fl7::gui
 
 namespace fl7::gui::layout {
 
@@ -37,24 +37,44 @@ struct Padding
 /**
  * Arranges a container's children one after another along a single axis (see
  * `Orientation`), separated by a fixed `get_gap()`, within a fixed
- * `get_padding()` kept around the whole sequence. Along that main axis, each
- * child either takes exactly its own `get_preferred_size()` (the default: see
- * `get_stretch()`) or a share of whatever space is left over once every such
- * fixed-size child has been accounted for, proportional to its own stretch factor
- * relative to the other stretched children's.
+ * `get_padding()` kept around the whole sequence. This divides the container
+ * into a sequence of cells, one per child: along the main axis, a cell is
+ * either exactly as big as its own child's `get_preferred_size()` (a stretch
+ * factor of 0 or less; see `get_stretch()`) or a share of whatever space is
+ * left over once every such fixed-size child's cell has been accounted for,
+ * proportional to its own stretch factor relative to the other stretched
+ * children's (every child's default: see `get_stretch()`, every cell then
+ * just splits the main axis evenly, unless some are explicitly pinned to
+ * their own preferred size via 0 instead); along the perpendicular (cross)
+ * axis, every cell is simply the container's own full extent there (minus
+ * padding).
  *
- * Along the perpendicular (cross) axis, a child is sized/aligned per its own
- * `Face::get_anchor()` (the same flags `DefaultLayout` reads for the other purpose
- * of reacting to a resize): `Left`/`Top` alone (whichever applies to that axis; the
- * default anchor) aligns it near, at its own `get_preferred_size()`; `Right`/`Bottom`
- * alone aligns it far instead, same size; neither aligns it centered; both together
- * fills the container's full extent along that axis, overriding its own preferred
- * size.
+ * How a child actually sits within its own (possibly larger than its own
+ * preferred size) cell -- filled, shrunk-and-aligned near/far, or
+ * shrunk-and-centered -- is then up to its own `Face::get_anchor()` (the
+ * same flags `DefaultLayout` reads for the other purpose of reacting to a
+ * resize), independently per axis: `Left`/`Top` alone (whichever applies to
+ * that axis; the default anchor) aligns it near, at its own
+ * `get_preferred_size()`; `Right`/`Bottom` alone aligns it far instead, same
+ * size; neither aligns it centered; both together fills the cell,
+ * overriding its own preferred size. A stretched child (the default; see
+ * `get_stretch()`) whose anchor doesn't fill the main axis this way just sits
+ * somewhere within its own, larger cell instead of actually growing --
+ * stretch and anchor are independent, exactly as they already are for the
+ * cross axis. A plain stack of fixed-size children, each kept at its own
+ * preferred size regardless of this layout's own size, therefore needs 0
+ * explicitly set on every one of them (see `set_stretch()`), not just left
+ * at the default.
  *
- * Unlike `DefaultLayout`, this one does not react to the container being resized by
- * shifting/stretching children from some originally captured state: `perform()`
- * always recomputes every child's position/size from scratch, so there's nothing to
- * go stale.
+ * Each child's own `get_preferred_size()` is captured once, the first time
+ * `perform()` ever sees it, and reused from then on, rather than re-queried live on
+ * every call: `get_preferred_size()`'s own default is simply `get_size()` (see
+ * `Face`), so re-querying it live would just be asking this layout what size it
+ * itself last set that child to, e.g., a child shrunk once (cross axis smaller than
+ * its preferred size; see below) could then never grow back, since its "preferred"
+ * size would already have become whatever it was just shrunk to. This holds only as
+ * long as nothing overrides `get_preferred_size()` to be genuinely dynamic; revisit
+ * (e.g., an explicit cache-invalidation hook) once something does.
  */
 class BoxLayout
     : public Layout
@@ -108,19 +128,24 @@ public:
     void set_padding(float padding) { set_padding(Padding(padding)); }
 
     /**
-     * Returns the given child's stretch factor; see `set_stretch()`. Default: 0
-     * (not stretched: takes exactly its own `get_preferred_size()`).
+     * Returns the given child's stretch factor; see `set_stretch()`. Default: 1
+     * (every child, until told otherwise, participates evenly in distributing the
+     * main-axis space).
      */
     float get_stretch(const Face& child) const;
 
     /**
-     * Sets the given child's stretch factor: 0 (the default) or less means it's not
-     * stretched at all, taking exactly its own `get_preferred_size()` along this
-     * layout's own axis; a positive value means it instead takes that share of
-     * whatever space is left over once every non-stretched child has taken its own
-     * preferred size, relative to the other stretched children's own factors (e.g.,
-     * two children both set to 1 split the leftover space evenly; one set to 2 and
-     * another to 1 split it two-to-one).
+     * Sets the given child's stretch factor: 0 or less means its cell is exactly
+     * its own `get_preferred_size()` along this layout's own axis, not
+     * participating in the distribution at all; a positive value (1, the default
+     * for every child until told otherwise) means its cell instead takes that
+     * share of whatever space is left over once every non-stretched (stretch <= 0)
+     * child's cell has taken its own preferred size, relative to the other
+     * stretched children's own factors (e.g., two children both left at the
+     * default 1 split the leftover space evenly; one set to 2 and another left at
+     * 1 split it two-to-one). Either way, purely about the cell's own size,
+     * independent of whether the child actually fills it (see this class's own
+     * doc comment: that's its anchor's call, not this one's).
      */
     void set_stretch(const Face& child, float stretch);
 
@@ -141,6 +166,25 @@ public:
 private:
 
     // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Returns the given child's get_preferred_size(), captured the first time this
+     * is called for it, and cached from then on; see this class's own doc comment.
+     */
+    ml7::Vector2f _get_cached_preferred_size(const Face& child);
+
+    /**
+     * Fits a child's own preferred size within its cell, along a single axis,
+     * per anchor's near_flag/far_flag; see this class's own doc comment and
+     * this method's own declaration (BoxLayout.h) for the exact rules.
+     */
+    static void _fit_in_cell(Anchor anchor, Anchor near_flag, Anchor far_flag, float cell_position, float cell_size, float preferred, float& out_position, float& out_size);
+
+
+
+    // #############################################################################
     // Attributes
     // #############################################################################
 
@@ -149,6 +193,9 @@ private:
     Padding _padding;
 
     std::unordered_map<const Face*, float> _stretches;
+
+    /** Each currently known child's own get_preferred_size(), captured once; see this class's own doc comment. Pruned of any child no longer actually present on every perform() call. */
+    std::unordered_map<const Face*, ml7::Vector2f> _preferred_sizes;
 
 }; // class BoxLayout
 
