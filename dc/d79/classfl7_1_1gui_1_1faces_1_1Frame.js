@@ -1,5 +1,6 @@
 var classfl7_1_1gui_1_1faces_1_1Frame =
 [
+    [ "ResizeHandle", "d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html", "d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle" ],
     [ "Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a6ce73032f1128df3f5e97398c5c3aa98", null ],
     [ "Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a55c77a6c0d55aef67432d6d283fb5d48", null ],
     [ "Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a23c9ead49bf8bd5a628619a7b2442350", null ],
@@ -20,6 +21,10 @@ var classfl7_1_1gui_1_1faces_1_1Frame =
     [ "_closed", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a9efad8d8163a7988d526d5af49d23324", null ],
     [ "_dragging", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a59307d3d13f34a9260894b8d666541a1", null ],
     [ "_opened", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a6f7dd1fa58afba02a77b4432bf3d12e9", null ],
+    [ "_resize_handle", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a5ef7ecad5b04a35829950aeb06bd0e4c", null ],
     [ "_title_label", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ac4d91f7f3076dfb773412eb3c650f311", null ],
+    [ "MIN_HEIGHT", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#abf805006a92809379e5249e9dd26f744", null ],
+    [ "MIN_WIDTH", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ad5205e5dffba076cb41f41209d1da431", null ],
+    [ "RESIZE_HANDLE_SIZE", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a345732a3f7faa945d6fad2ce9b0fc89e", null ],
     [ "TITLE_BAR_HEIGHT", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a9ec4897629eb4fb86bcaf1ce99a37c58", null ]
 ];

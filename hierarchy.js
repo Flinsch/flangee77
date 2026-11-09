@@ -298,6 +298,7 @@ var hierarchy =
         [ "fl7::gui::faces::PictureBox", "d9/d66/classfl7_1_1gui_1_1faces_1_1PictureBox.html", null ]
       ] ],
       [ "fl7::gui::faces::CheckBox::Box", "d7/dfc/classfl7_1_1gui_1_1faces_1_1CheckBox_1_1Box.html", null ],
+      [ "fl7::gui::faces::Frame::ResizeHandle", "d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html", null ],
       [ "fl7::gui::faces::RadioButton::Box", "d7/d12/classfl7_1_1gui_1_1faces_1_1RadioButton_1_1Box.html", null ],
       [ "fl7::gui::faces::Slider::Handle", "dd/dd6/classfl7_1_1gui_1_1faces_1_1Slider_1_1Handle.html", null ]
     ] ],
@@ -366,6 +367,7 @@ var hierarchy =
       [ "fl7::gui::faces::Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html", null ],
       [ "fl7::gui::faces::CheckBox::Box", "d7/dfc/classfl7_1_1gui_1_1faces_1_1CheckBox_1_1Box.html", null ],
       [ "fl7::gui::faces::DropDown", "d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html", null ],
+      [ "fl7::gui::faces::Frame::ResizeHandle", "d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html", null ],
       [ "fl7::gui::faces::ListBox::Row", "d2/dcf/classfl7_1_1gui_1_1faces_1_1ListBox_1_1Row.html", null ],
       [ "fl7::gui::faces::Panel", "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html", null ],
       [ "fl7::gui::faces::PictureBox", "d9/d66/classfl7_1_1gui_1_1faces_1_1PictureBox.html", null ],
