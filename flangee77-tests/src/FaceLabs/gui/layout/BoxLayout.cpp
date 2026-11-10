@@ -15,11 +15,18 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  a vertical box sequences
     fl7::gui::Container container;
     container.set_size({100.0f, 1000.0f});
 
+    // set_preferred_size() mirrors set_size() throughout this file: a plain
+    // Container has no calculated preferred size of its own (see Face), so
+    // whoever wants its explicit size to also be what a layout treats as its
+    // preferred size (the common case for a Container used this way) has to
+    // say so explicitly; see Face::get_effective_preferred_size().
     auto& child1 = container.add_child<fl7::gui::Container>();
     child1.set_size({80.0f, 30.0f});
+    child1.set_preferred_size({80.0f, 30.0f});
 
     auto& child2 = container.add_child<fl7::gui::Container>();
     child2.set_size({80.0f, 40.0f});
+    child2.set_preferred_size({80.0f, 40.0f});
 
     // Pinned to their own preferred (explicit) size: stretch defaults to 1
     // (every cell splits the main axis evenly), so a plain fixed-size stack
@@ -48,9 +55,11 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  two children left at the
 
     auto& child1 = container.add_child<fl7::gui::Container>();
     child1.set_size({50.0f, 5.0f}); // Own (small) height kept: default anchor (Top only) doesn't fill its cell.
+    child1.set_preferred_size({50.0f, 5.0f});
 
     auto& child2 = container.add_child<fl7::gui::Container>();
     child2.set_size({50.0f, 5.0f});
+    child2.set_preferred_size({50.0f, 5.0f});
 
     container.set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Vertical);
 
@@ -67,6 +76,7 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  Left+Right anchor fills 
 
     auto& child = container.add_child<fl7::gui::Container>();
     child.set_size({80.0f, 30.0f});
+    child.set_preferred_size({80.0f, 30.0f});
     child.set_anchor(fl7::gui::Anchor::Left | fl7::gui::Anchor::Right);
 
     container.set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Vertical);
@@ -82,10 +92,12 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  equal stretch factors sp
 
     auto& child1 = container.add_child<fl7::gui::Container>();
     child1.set_size({50.0f, 20.0f}); // Own height irrelevant once its cell is stretched and it fills that cell (see anchor below).
+    child1.set_preferred_size({50.0f, 20.0f});
     child1.set_anchor(fl7::gui::Anchor::Top | fl7::gui::Anchor::Bottom);
 
     auto& child2 = container.add_child<fl7::gui::Container>();
     child2.set_size({50.0f, 20.0f});
+    child2.set_preferred_size({50.0f, 20.0f});
     child2.set_anchor(fl7::gui::Anchor::Top | fl7::gui::Anchor::Bottom);
 
     auto& layout = container.set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Vertical);
@@ -106,9 +118,11 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  a stretched child's cell
 
     auto& fixed_child = container.add_child<fl7::gui::Container>();
     fixed_child.set_size({50.0f, 20.0f}); // Its cell is exactly this.
+    fixed_child.set_preferred_size({50.0f, 20.0f});
 
     auto& stretched_child = container.add_child<fl7::gui::Container>();
     stretched_child.set_size({50.0f, 10.0f}); // Own height overridden by filling its stretched cell.
+    stretched_child.set_preferred_size({50.0f, 10.0f});
     stretched_child.set_anchor(fl7::gui::Anchor::Top | fl7::gui::Anchor::Bottom);
 
     auto& layout = container.set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Vertical);
@@ -129,12 +143,14 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  stretch and anchor are i
 
     auto& fixed_child = container.add_child<fl7::gui::Container>();
     fixed_child.set_size({50.0f, 20.0f});
+    fixed_child.set_preferred_size({50.0f, 20.0f});
 
     // Stretched (gets a 80-tall cell, same as the previous test), but with
     // the default anchor (Top only, no Bottom): doesn't fill that cell, just
     // keeps its own 10-tall preferred size, aligned to the cell's own top.
     auto& stretched_child = container.add_child<fl7::gui::Container>();
     stretched_child.set_size({50.0f, 10.0f});
+    stretched_child.set_preferred_size({50.0f, 10.0f});
 
     auto& layout = container.set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Vertical);
     layout.set_stretch(fixed_child, 0.0f); // Pinned; stretch defaults to 1, see BoxLayout's own doc comment.
@@ -151,7 +167,8 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  a child's cross-axis siz
     container.set_size({200.0f, 1000.0f});
 
     auto& child = container.add_child<fl7::gui::Container>();
-    child.set_size({150.0f, 30.0f}); // Cross-axis (x) preferred size: 150.
+    child.set_size({150.0f, 30.0f});
+    child.set_preferred_size({150.0f, 30.0f}); // Cross-axis (x) preferred size: 150.
 
     container.set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Vertical);
     TESTLABS_CHECK_EQ_FLT( child.get_size().x, 150.0f ); // Unchanged: already smaller than the 200-wide container.
@@ -164,9 +181,7 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  a child's cross-axis siz
 
     // Grows the container back past the child's own ORIGINAL preferred
     // width (150): without caching that original value (see BoxLayout's
-    // own doc comment), this would incorrectly stay stuck at 100 (its own
-    // get_preferred_size() having defaulted to get_size(), which this very
-    // layout had just forced down to 100 above).
+    // own doc comment), this would incorrectly stay stuck at 100.
     container.set_size({200.0f, 1000.0f});
     TESTLABS_CHECK_EQ_FLT( child.get_size().x, 150.0f );
 }
@@ -178,9 +193,11 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  padding keeps a fixed sp
 
     auto& child1 = container.add_child<fl7::gui::Container>();
     child1.set_size({50.0f, 20.0f});
+    child1.set_preferred_size({50.0f, 20.0f});
 
     auto& child2 = container.add_child<fl7::gui::Container>();
     child2.set_size({50.0f, 20.0f});
+    child2.set_preferred_size({50.0f, 20.0f});
 
     // Pinned to their own preferred (explicit) size; stretch defaults to 1,
     // see BoxLayout's own doc comment.

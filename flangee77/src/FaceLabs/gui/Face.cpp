@@ -44,6 +44,44 @@ namespace fl7::gui {
     }
 
     /**
+     * Returns this face's effective preferred size: how large a layout (see
+     * `layout::Layout`) should try to make it, absent any overriding constraint
+     * (available space, a sibling's own minimum size, stretch factors, ...).
+     * Combines, independently per component: `get_preferred_size()`, if actually
+     * set (a component `<= 0` counts as not set), else this face's own calculated,
+     * content-based size (see `_calculate_preferred_size()`; default `{0, 0}`,
+     * i.e., no particular opinion; most face types don't have one yet). A plain,
+     * content-less face (e.g., `faces::Panel`) therefore reports `{0, 0}` unless
+     * explicitly told otherwise.
+     */
+    ml7::Vector2f Face::get_effective_preferred_size() const
+    {
+        const ml7::Vector2f calculated = _calculate_preferred_size();
+        ml7::Vector2f result = _preferred_size;
+        if (result.x <= 0.0f) result.x = calculated.x;
+        if (result.y <= 0.0f) result.y = calculated.y;
+        return result;
+    }
+
+    /**
+     * Returns this face's effective minimum size: how small a layout (see
+     * `layout::Layout`) is allowed to shrink it while distributing space among
+     * several children. Combines, independently per component: `get_minimum_size()`,
+     * if actually set (a component `<= 0` counts as not set), else this face's own
+     * calculated, content-based size (see `_calculate_minimum_size()`. A plain,
+     * content-less face (e.g., `faces::Panel`) might report `{0, 0}` unless
+     * explicitly told otherwise.
+     */
+    ml7::Vector2f Face::get_effective_minimum_size() const
+    {
+        const ml7::Vector2f calculated = _calculate_minimum_size();
+        ml7::Vector2f result = _minimum_size;
+        if (result.x <= 0.0f) result.x = calculated.x;
+        if (result.y <= 0.0f) result.y = calculated.y;
+        return result;
+    }
+
+    /**
      * Returns this face's absolute (screen) position, computed by walking up the
      * parent chain, netting out each ancestor collection's own get_scroll_offset()
      * along the way, same as Collection::_find_hit_face() and render::DefaultRenderer

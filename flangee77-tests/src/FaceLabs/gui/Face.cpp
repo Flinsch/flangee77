@@ -175,3 +175,42 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Face:  while a press is captured on one face,
     input.set_button_down(xl7::input::MouseButton::Left, false);
     shell.update();
 }
+
+
+
+// #############################################################################
+// Preferred/minimum size (get_preferred_size()/get_minimum_size(),
+// get_effective_preferred_size()/get_effective_minimum_size())
+// #############################################################################
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Face:  without an explicit override, get_preferred_size()/get_minimum_size() default to {0, 0}; so does get_effective_preferred_size()/get_effective_minimum_size(), absent a calculated size too (e.g. a plain Container has none)" )
+{
+    fl7::gui::Container container;
+    TESTLABS_CHECK_EQ_FLT( container.get_preferred_size().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_preferred_size().y, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_minimum_size().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_minimum_size().y, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().x, 0.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Face:  set_preferred_size()/set_minimum_size() set exactly what get_preferred_size()/get_minimum_size() then return, verbatim, no merging; get_effective_preferred_size()/get_effective_minimum_size() merge them with the calculated size (here: {0, 0}, a plain Container has none) instead, independently per component (<= 0 defers to the calculated size there)" )
+{
+    fl7::gui::Container container;
+
+    container.set_preferred_size({100.0f, 50.0f});
+    TESTLABS_CHECK_EQ_FLT( container.get_preferred_size().x, 100.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_preferred_size().y, 50.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().x, 100.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().y, 50.0f );
+
+    container.set_preferred_size({100.0f, 0.0f}); // y <= 0.
+    TESTLABS_CHECK_EQ_FLT( container.get_preferred_size().y, 0.0f ); // Exactly what was set...
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().y, 0.0f ); // ...deferred to the calculated size here too, which is also 0.
+
+    container.set_minimum_size({10.0f, -5.0f});
+    TESTLABS_CHECK_EQ_FLT( container.get_minimum_size().x, 10.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_minimum_size().y, -5.0f ); // Exactly what was set, negative and all.
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().x, 10.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().y, 0.0f ); // Negative also counts as deferred.
+}

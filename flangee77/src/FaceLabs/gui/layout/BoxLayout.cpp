@@ -4,7 +4,6 @@
 #include "../Face.h"
 
 #include <algorithm>
-#include <unordered_set>
 
 
 
@@ -29,7 +28,7 @@ namespace fl7::gui::layout {
 
     /**
      * Sets the given child's stretch factor: 0 or less means its cell is exactly
-     * its own `get_preferred_size()` along this layout's own axis, not
+     * its own `get_effective_preferred_size()` along this layout's own axis, not
      * participating in the distribution at all; a positive value (1, the default
      * for every child until told otherwise) means its cell instead takes that
      * share of whatever space is left over once every non-stretched (stretch <= 0)
@@ -50,18 +49,6 @@ namespace fl7::gui::layout {
     // #############################################################################
     // Helpers
     // #############################################################################
-
-    /**
-     * Returns the given child's get_preferred_size(), captured the first time this
-     * is called for it, and cached from then on; see this class's own doc comment.
-     */
-    ml7::Vector2f BoxLayout::_get_cached_preferred_size(const Face& child)
-    {
-        const auto [it, inserted] = _preferred_sizes.try_emplace(&child);
-        if (inserted)
-            it->second = child.get_preferred_size();
-        return it->second;
-    }
 
     /**
      * Fits a child's own preferred size within its cell, along a single axis,
@@ -118,13 +105,6 @@ namespace fl7::gui::layout {
         const auto& children = container.get_children();
         const size_t n = children.size();
 
-        // Prune cached preferred sizes for any child no longer actually present.
-        std::unordered_set<const Face*> current;
-        for (const auto& child : children)
-            current.insert(child.get());
-        for (auto it = _preferred_sizes.begin(); it != _preferred_sizes.end(); )
-            it = current.contains(it->first) ? std::next(it) : _preferred_sizes.erase(it);
-
         if (n == 0)
             return;
 
@@ -147,7 +127,7 @@ namespace fl7::gui::layout {
             if (stretch > 0.0f)
                 stretch_sum += stretch;
             else
-                fixed_total += _get_cached_preferred_size(*child_ptr)[axis];
+                fixed_total += child_ptr->get_effective_preferred_size()[axis];
         }
 
         const float available = std::max(0.0f, container_size[axis] - padding_main_near - padding_main_far - total_gap - fixed_total);
@@ -158,8 +138,8 @@ namespace fl7::gui::layout {
         {
             Face& child = *child_ptr;
 
-            const ml7::Vector2f preferred_size = _get_cached_preferred_size(child);
-            const ml7::Vector2f minimum_size = child.get_minimum_size();
+            const ml7::Vector2f preferred_size = child.get_effective_preferred_size();
+            const ml7::Vector2f minimum_size = child.get_effective_minimum_size();
 
             const float stretch = get_stretch(child);
             float cell_main_size = stretch > 0.0f && stretch_sum > 0.0f

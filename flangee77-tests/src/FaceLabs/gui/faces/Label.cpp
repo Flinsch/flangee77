@@ -1,7 +1,27 @@
 
 #include <TestLabs/TestSuite.h>
 
+#include <FaceLabs/gui/Style.h>
 #include <FaceLabs/gui/faces/Label.h>
+#include <FaceLabs/fonts/detail/ttf/TrueTypeFontLoader.h>
+
+#include <CoreLabs/platform/filesystem.h>
+
+
+
+namespace {
+
+    /** A real, loaded font, for the preferred/minimum-size tests below: those
+     * need get_effective_style().font to be non-null, which set_style_override()
+     * (bypassing the theme/Shell entirely) makes possible without a Shell at all. */
+    fl7::fonts::Font& get_test_font()
+    {
+        static fl7::fonts::Font font(std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(
+            cl7::platform::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSans-Regular.ttf"));
+        return font;
+    }
+
+} // namespace
 
 
 
@@ -31,4 +51,67 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Label:  set_text()/get_text()" )
     label.set_text(U"Renamed");
     TESTLABS_CHECK_EQ( label.get_text(), cl7::u32string(U"Renamed") );
     TESTLABS_CHECK_EQ( label.get_display_text(), cl7::u32string(U"Renamed") );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Label:  without an explicit override, get_preferred_size()/get_minimum_size() stay {0, 0} regardless of font; get_effective_preferred_size()/get_effective_minimum_size() need an effective font to calculate anything, else also {0, 0}" )
+{
+    fl7::gui::faces::Label label(U"Hello");
+    TESTLABS_CHECK_EQ_FLT( label.get_preferred_size().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( label.get_preferred_size().y, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( label.get_minimum_size().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( label.get_minimum_size().y, 0.0f );
+
+    TESTLABS_CHECK_EQ_FLT( label.get_effective_preferred_size().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( label.get_effective_preferred_size().y, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( label.get_effective_minimum_size().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( label.get_effective_minimum_size().y, 0.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Label:  set_style_override() with a real font: get_effective_preferred_size()/get_effective_minimum_size() both reflect the text's own natural (unwrapped) size, growing with more text/lines; get_preferred_size()/get_minimum_size() stay {0, 0} regardless (no explicit override set)" )
+{
+    fl7::gui::Style style;
+    style.font = &get_test_font();
+
+    fl7::gui::faces::Label label(U"Hi");
+    label.set_style_override(style);
+
+    const ml7::Vector2f short_size = label.get_effective_preferred_size();
+    TESTLABS_CHECK( short_size.x > 0.0f );
+    TESTLABS_CHECK( short_size.y > 0.0f );
+    // Label's text can't usefully be laid out any smaller than its own natural size.
+    TESTLABS_CHECK_EQ_FLT( label.get_effective_minimum_size().x, short_size.x );
+    TESTLABS_CHECK_EQ_FLT( label.get_effective_minimum_size().y, short_size.y );
+    // No explicit override anywhere above: the plain getters stay untouched.
+    TESTLABS_CHECK_EQ_FLT( label.get_preferred_size().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( label.get_minimum_size().x, 0.0f );
+
+    label.set_text(U"Hello, much longer text than before");
+    TESTLABS_CHECK( label.get_effective_preferred_size().x > short_size.x );
+    TESTLABS_CHECK_EQ_FLT( label.get_effective_preferred_size().y, short_size.y ); // Still a single line.
+
+    label.set_text(U"Line one\nLine two");
+    TESTLABS_CHECK( label.get_effective_preferred_size().y > short_size.y ); // Two lines now.
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Label:  set_preferred_size()/set_minimum_size() set exactly what get_preferred_size()/get_minimum_size() then return (no merging); get_effective_preferred_size()/get_effective_minimum_size() merge them with the calculated size instead, independently per component (<= 0 defers to the calculated size)" )
+{
+    fl7::gui::Style style;
+    style.font = &get_test_font();
+
+    fl7::gui::faces::Label label(U"Hi");
+    label.set_style_override(style);
+
+    const ml7::Vector2f calculated = label.get_effective_preferred_size();
+
+    label.set_preferred_size({100.0f, 0.0f}); // x overridden, y deferred (<= 0).
+    TESTLABS_CHECK_EQ_FLT( label.get_preferred_size().x, 100.0f ); // Exactly what was set...
+    TESTLABS_CHECK_EQ_FLT( label.get_preferred_size().y, 0.0f ); // ...not merged with anything.
+    TESTLABS_CHECK_EQ_FLT( label.get_effective_preferred_size().x, 100.0f );
+    TESTLABS_CHECK_EQ_FLT( label.get_effective_preferred_size().y, calculated.y ); // Deferred component: falls back here.
+
+    label.set_minimum_size({0.0f, 50.0f}); // x deferred (<= 0), y overridden.
+    TESTLABS_CHECK_EQ_FLT( label.get_minimum_size().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( label.get_minimum_size().y, 50.0f );
+    TESTLABS_CHECK_EQ_FLT( label.get_effective_minimum_size().x, calculated.x );
+    TESTLABS_CHECK_EQ_FLT( label.get_effective_minimum_size().y, 50.0f );
 }

@@ -150,24 +150,54 @@ public:
     void set_size(ml7::Vector2f size);
 
     /**
-     * Returns this face's preferred size: how large a layout (see `layout::Layout`)
-     * should try to make it, absent any overriding constraint (available space, a
-     * sibling's own minimum size, ...). Default: this face's own current `get_size()`,
-     * i.e., whatever it's explicitly been given: the same thing every face already
-     * defaults to without any layout involved. Override in a concrete face type
-     * whose natural size follows from its own content (e.g., a label from its text),
-     * so a layout can size it accordingly without an explicit `set_size()` call for
-     * every single child.
+     * Returns this face's own explicit preferred-size override, independently per
+     * component (a component `<= 0` means "not set"; see `get_effective_preferred_size()`
+     * for the resolved value a layout would actually use). Default: `{0, 0}` (fully
+     * unset).
      */
-    virtual ml7::Vector2f get_preferred_size() const { return get_size(); }
+    ml7::Vector2f get_preferred_size() const { return _preferred_size; }
 
     /**
-     * Returns this face's minimum size: how small a layout (see `layout::Layout`)
-     * is allowed to shrink it while distributing space among several children.
-     * Default: {0, 0} (no constraint). Override in a concrete face type that would
-     * otherwise become unusable or visually broken below some size.
+     * Sets this face's explicit preferred-size override; see `get_preferred_size()`.
      */
-    virtual ml7::Vector2f get_minimum_size() const { return {}; }
+    void set_preferred_size(ml7::Vector2f preferred_size) { _preferred_size = preferred_size; }
+
+    /**
+     * Returns this face's effective preferred size: how large a layout (see
+     * `layout::Layout`) should try to make it, absent any overriding constraint
+     * (available space, a sibling's own minimum size, stretch factors, ...).
+     * Combines, independently per component: `get_preferred_size()`, if actually
+     * set (a component `<= 0` counts as not set), else this face's own calculated,
+     * content-based size (see `_calculate_preferred_size()`; default `{0, 0}`,
+     * i.e., no particular opinion; most face types don't have one yet). A plain,
+     * content-less face (e.g., `faces::Panel`) therefore reports `{0, 0}` unless
+     * explicitly told otherwise.
+     */
+    ml7::Vector2f get_effective_preferred_size() const;
+
+    /**
+     * Returns this face's own explicit minimum-size override, independently per
+     * component (a component `<= 0` means "not set"; see `get_effective_minimum_size()`
+     * for the resolved value a layout would actually use). Default: `{0, 0}` (fully
+     * unset).
+     */
+    ml7::Vector2f get_minimum_size() const { return _minimum_size; }
+
+    /**
+     * Sets this face's explicit minimum-size override; see `get_minimum_size()`.
+     */
+    void set_minimum_size(ml7::Vector2f minimum_size) { _minimum_size = minimum_size; }
+
+    /**
+     * Returns this face's effective minimum size: how small a layout (see
+     * `layout::Layout`) is allowed to shrink it while distributing space among
+     * several children. Combines, independently per component: `get_minimum_size()`,
+     * if actually set (a component `<= 0` counts as not set), else this face's own
+     * calculated, content-based size (see `_calculate_minimum_size()`. A plain,
+     * content-less face (e.g., `faces::Panel`) might report `{0, 0}` unless
+     * explicitly told otherwise.
+     */
+    ml7::Vector2f get_effective_minimum_size() const;
 
     /**
      * Returns this face's anchor flags; see `Anchor`. Default: Left|Top, same as
@@ -381,6 +411,24 @@ protected:
     virtual void _adjust_effective_text_style(fonts::TextStyle& text_style) const {}
 
     /**
+     * Returns this face's own calculated preferred size, based on its own content,
+     * for whichever component(s) of `get_effective_preferred_size()` don't have an
+     * explicit override (see `set_preferred_size()`). Default: `{0, 0}` (no
+     * particular opinion). Override in a concrete face type whose natural size
+     * follows from its own content (e.g., `faces::Label` from its text).
+     */
+    virtual ml7::Vector2f _calculate_preferred_size() const { return {}; }
+
+    /**
+     * Returns this face's own calculated minimum size, based on its own content,
+     * for whichever component(s) of `get_effective_minimum_size()` don't have an
+     * explicit override (see `set_minimum_size()`). Default: `{0, 0}` (no
+     * particular opinion). Override in a concrete face type whose natural size
+     * follows from its own content (e.g., `faces::Label` from its text).
+     */
+    virtual ml7::Vector2f _calculate_minimum_size() const { return {}; }
+
+    /**
      * Returns whether the specified point, in this face's own local coordinate
      * space (i.e., relative to this face's own absolute position), lies within it.
      * Default: an axis-aligned rect test against `get_size`. Override for a
@@ -550,6 +598,11 @@ private:
 
     ml7::Vector2f _position;
     ml7::Vector2f _size;
+
+    /** Explicit override; see get_preferred_size()/set_preferred_size(). */
+    ml7::Vector2f _preferred_size;
+    /** Explicit override; see get_minimum_size()/set_minimum_size(). */
+    ml7::Vector2f _minimum_size;
 
     Anchor _anchor = Anchor::Left | Anchor::Top;
 
