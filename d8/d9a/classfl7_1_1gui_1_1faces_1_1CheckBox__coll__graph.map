@@ -1,53 +1,54 @@
 <map id="fl7::gui::faces::CheckBox" name="fl7::gui::faces::CheckBox">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1587,637,1769,665"/>
-<area shape="rect" id="Node000002" href="$d0/d93/classfl7_1_1gui_1_1Compound.html" title=" " alt="" coords="1304,509,1447,537"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1446,539,1505,558,1564,582,1615,608,1658,637,1653,636,1612,613,1562,587,1503,563,1445,544"/>
-<area shape="rect" id="Node000003" href="$d4/de7/classfl7_1_1gui_1_1Collection.html" title=" " alt="" coords="1056,482,1195,510"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1210,503,1306,515,1301,516,1210,508"/>
-<area shape="rect" id="Node000004" href="$d9/d1a/classfl7_1_1gui_1_1Face.html" title=" " alt="" coords="728,501,830,529"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="845,509,1058,499,1053,501,846,514"/>
-<area shape="poly" id="edge18_Node000004_Node000004" title=" " alt="" coords="749,483,759,477,779,474,797,477,808,483,812,492,807,503,803,499,807,492,804,486,795,482,779,480,761,482,751,488"/>
-<area shape="rect" id="Node000005" href="$d6/d9c/classfl7_1_1gui_1_1Shell.html" title=" " alt="" coords="1073,273,1178,301"/>
-<area shape="poly" id="edge17_Node000005_Node000004" title=" " alt="" coords="813,490,890,442,942,414,993,385,1056,339,1105,302,1110,300,1059,343,996,390,945,419,893,447,816,495"/>
-<area shape="rect" id="Node000019" href="$d7/dfc/classfl7_1_1gui_1_1faces_1_1CheckBox_1_1Box.html" title=" " alt="" coords="1018,638,1233,666"/>
-<area shape="poly" id="edge21_Node000019_Node000004" title=" " alt="" coords="821,534,911,578,1019,623,1061,638,1056,638,1017,628,909,583,820,539"/>
-<area shape="rect" id="Node000022" href="$dc/dfd/classfl7_1_1gui_1_1Static.html" title=" " alt="" coords="1070,534,1181,562"/>
-<area shape="poly" id="edge25_Node000022_Node000004" title=" " alt="" coords="845,519,1073,543,1068,544,846,524"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1114,313,1097,352,1071,394,1037,436,996,472,966,484,923,495,831,511,829,506,922,490,964,479,993,467,1033,433,1066,391,1092,349,1110,317"/>
-<area shape="rect" id="Node000006" href="$dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html" title=" " alt="" coords="690,121,867,165"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="882,153,940,166,995,186,1031,205,1063,228,1113,273,1107,272,1060,233,1028,210,993,191,938,171,883,158"/>
-<area shape="rect" id="Node000007" href="$d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html" title=" " alt="" coords="299,61,500,105"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="514,89,666,110,703,119,698,121,666,115,516,94"/>
-<area shape="rect" id="Node000008" href="$d0/da8/classfl7_1_1gui_1_1render_1_1ImageHelper.html" title=" " alt="" coords="296,129,503,157"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="518,140,692,142,688,144,520,145"/>
-<area shape="rect" id="Node000009" href="$db/d3f/classfl7_1_1gui_1_1render_1_1SelectionHelper.html" title=" " alt="" coords="308,181,491,225"/>
-<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="505,193,585,183,666,171,702,165,697,167,666,176,585,189,507,197"/>
-<area shape="rect" id="Node000010" href="$d1/d12/classfl7_1_1gui_1_1render_1_1TextHelper.html" title=" " alt="" coords="303,249,496,277"/>
-<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="510,266,550,262,590,254,629,240,664,221,673,211,676,200,679,188,688,176,709,164,704,167,692,180,684,190,681,202,678,213,668,225,631,245,592,259,551,267,512,270"/>
-<area shape="rect" id="Node000011" href="$dd/d83/classfl7_1_1gui_1_1render_1_1CaretHelper.html" title=" " alt="" coords="299,9,500,37"/>
-<area shape="poly" id="edge10_Node000006_Node000011" title=" " alt="" coords="515,26,592,38,667,61,715,87,756,120,750,120,712,92,665,65,591,43,517,31"/>
-<area shape="rect" id="Node000012" href="$d3/dee/classxl7_1_1input_1_1Mouse.html" title=" " alt="" coords="712,189,845,217"/>
-<area shape="poly" id="edge11_Node000005_Node000012" title=" " alt="" coords="860,210,927,221,995,236,1093,272,1088,273,994,242,926,226,861,216"/>
-<area shape="rect" id="Node000013" href="$d9/dfa/classxl7_1_1input_1_1Keyboard.html" title=" " alt="" coords="703,245,854,273"/>
-<area shape="poly" id="edge12_Node000005_Node000013" title=" " alt="" coords="869,264,1075,282,1070,284,870,269"/>
-<area shape="rect" id="Node000014" href="$d8/dc4/classfl7_1_1gui_1_1Theme.html" title=" " alt="" coords="720,301,838,329"/>
-<area shape="poly" id="edge13_Node000005_Node000014" title=" " alt="" coords="853,312,994,304,1075,295,1070,297,995,309,854,317"/>
-<area shape="rect" id="Node000015" href="$d0/d60/structfl7_1_1gui_1_1ThemeLevel.html" title=" " alt="" coords="323,302,476,330"/>
-<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="491,313,721,314,717,317,492,319"/>
-<area shape="rect" id="Node000016" href="$d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html" title=" " alt="" coords="5,274,191,302"/>
-<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="205,296,324,308,320,311,207,301"/>
-<area shape="rect" id="Node000017" href="$d3/d00/classfl7_1_1fonts_1_1Font.html" title=" " alt="" coords="41,330,155,358"/>
-<area shape="poly" id="edge16_Node000015_Node000017" title=" " alt="" coords="170,339,271,332,324,327,320,330,272,337,172,344"/>
-<area shape="rect" id="Node000018" href="$d9/db9/classfl7_1_1gui_1_1HasCheckedState.html" title=" " alt="" coords="1282,698,1469,726"/>
-<area shape="poly" id="edge19_Node000001_Node000018" title=" " alt="" coords="1462,692,1603,666,1609,665,1463,697"/>
-<area shape="poly" id="edge20_Node000001_Node000019" title=" " alt="" coords="1248,649,1590,651,1584,651,1248,655"/>
-<area shape="rect" id="Node000020" href="$db/d13/classfl7_1_1gui_1_1HasBackground.html" title=" " alt="" coords="691,638,866,666"/>
-<area shape="poly" id="edge22_Node000019_Node000020" title=" " alt="" coords="882,650,1021,652,1016,653,882,655"/>
-<area shape="rect" id="Node000021" href="$d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html" title=" " alt="" coords="1300,574,1451,602"/>
-<area shape="poly" id="edge23_Node000001_Node000021" title=" " alt="" coords="1461,603,1610,637,1605,636,1461,608"/>
-<area shape="poly" id="edge24_Node000021_Node000022" title=" " alt="" coords="1196,557,1302,576,1297,576,1196,562"/>
-<area shape="rect" id="Node000023" href="$d1/d67/classfl7_1_1gui_1_1HasText.html" title=" " alt="" coords="1063,586,1188,614"/>
-<area shape="poly" id="edge26_Node000021_Node000023" title=" " alt="" coords="1203,594,1302,592,1297,592,1204,599"/>
-<area shape="rect" id="Node000024" href="$d3/d7e/classcl7_1_1behavioral_1_1Signal.html" title=" " alt="" coords="1293,750,1458,795"/>
-<area shape="poly" id="edge27_Node000001_Node000024" title=" " alt="" coords="1473,746,1562,715,1613,689,1653,666,1658,665,1615,694,1564,720,1474,751"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1587,121,1769,149"/>
+<area shape="rect" id="Node000002" href="$d0/d93/classfl7_1_1gui_1_1Compound.html" title=" " alt="" coords="1304,121,1447,149"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1462,133,1590,135,1585,136,1463,138"/>
+<area shape="rect" id="Node000003" href="$d4/de7/classfl7_1_1gui_1_1Collection.html" title=" " alt="" coords="1056,73,1195,101"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1210,101,1306,121,1301,122,1210,106"/>
+<area shape="rect" id="Node000004" href="$d9/d1a/classfl7_1_1gui_1_1Face.html" title=" " alt="" coords="728,107,830,134"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="844,109,891,103,1058,91,1053,93,892,108,846,114"/>
+<area shape="poly" id="edge18_Node000004_Node000004" title=" " alt="" coords="748,89,759,83,779,80,797,82,808,88,812,98,807,108,803,104,807,97,804,92,795,87,779,85,761,88,751,94"/>
+<area shape="rect" id="Node000005" href="$d6/d9c/classfl7_1_1gui_1_1Shell.html" title=" " alt="" coords="1073,336,1178,364"/>
+<area shape="poly" id="edge17_Node000005_Node000004" title=" " alt="" coords="794,146,833,209,861,241,893,268,919,280,941,284,965,286,995,293,1096,335,1091,335,994,298,965,291,940,290,917,286,890,272,857,245,829,212,792,151"/>
+<area shape="rect" id="Node000019" href="$d7/dfc/classfl7_1_1gui_1_1faces_1_1CheckBox_1_1Box.html" title=" " alt="" coords="1018,8,1233,36"/>
+<area shape="poly" id="edge21_Node000019_Node000004" title=" " alt="" coords="832,99,891,79,1065,35,1060,37,892,84,834,104"/>
+<area shape="rect" id="Node000022" href="$dc/dfd/classfl7_1_1gui_1_1Static.html" title=" " alt="" coords="1070,177,1181,205"/>
+<area shape="poly" id="edge25_Node000022_Node000004" title=" " alt="" coords="845,112,919,115,958,123,996,137,1008,150,1020,162,1044,173,1072,183,1067,184,1042,178,1017,167,1005,153,993,141,957,128,919,121,846,117"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1101,323,1040,249,993,197,967,185,944,181,920,179,891,172,809,137,809,132,892,167,921,174,945,176,968,180,996,193,1044,245,1106,325"/>
+<area shape="rect" id="Node000006" href="$dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html" title=" " alt="" coords="690,284,867,328"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="882,316,892,318,1075,343,1070,344,891,323,883,322"/>
+<area shape="rect" id="Node000007" href="$d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html" title=" " alt="" coords="299,273,500,318"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="515,296,692,303,687,304,516,301"/>
+<area shape="rect" id="Node000008" href="$d0/da8/classfl7_1_1gui_1_1render_1_1ImageHelper.html" title=" " alt="" coords="296,341,503,369"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="517,346,666,330,692,327,687,329,666,335,518,351"/>
+<area shape="rect" id="Node000009" href="$db/d3f/classfl7_1_1gui_1_1render_1_1SelectionHelper.html" title=" " alt="" coords="308,393,491,438"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="505,414,586,403,627,392,665,377,677,365,688,352,727,330,732,328,692,356,680,369,667,381,628,397,587,409,506,419"/>
+<area shape="rect" id="Node000010" href="$d1/d12/classfl7_1_1gui_1_1render_1_1TextHelper.html" title=" " alt="" coords="303,168,496,196"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="511,179,589,190,629,199,667,213,694,227,719,245,759,283,754,283,716,249,691,232,665,218,628,204,588,195,512,185"/>
+<area shape="rect" id="Node000011" href="$dd/d83/classfl7_1_1gui_1_1render_1_1CaretHelper.html" title=" " alt="" coords="299,221,500,249"/>
+<area shape="poly" id="edge10_Node000006_Node000011" title=" " alt="" coords="515,242,590,252,667,266,719,283,713,283,665,271,590,257,516,247"/>
+<area shape="rect" id="Node000012" href="$d3/dee/classxl7_1_1input_1_1Mouse.html" title=" " alt="" coords="712,420,845,448"/>
+<area shape="poly" id="edge11_Node000005_Node000012" title=" " alt="" coords="861,430,926,423,994,410,1052,387,1098,365,1103,363,1054,392,995,415,927,428,861,435"/>
+<area shape="rect" id="Node000013" href="$d9/dfa/classxl7_1_1input_1_1Keyboard.html" title=" " alt="" coords="703,476,854,504"/>
+<area shape="poly" id="edge12_Node000005_Node000013" title=" " alt="" coords="869,486,932,477,993,458,1030,437,1063,411,1110,365,1115,363,1066,415,1033,441,995,463,933,482,870,491"/>
+<area shape="rect" id="Node000014" href="$d8/dc4/classfl7_1_1gui_1_1Theme.html" title=" " alt="" coords="720,365,838,393"/>
+<area shape="poly" id="edge13_Node000005_Node000014" title=" " alt="" coords="853,379,922,378,994,374,1075,362,1070,363,995,379,922,384,854,384"/>
+<area shape="rect" id="Node000015" href="$d0/d60/structfl7_1_1gui_1_1ThemeLevel.html" title=" " alt="" coords="323,461,476,489"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="467,490,515,497,566,498,618,489,642,480,664,467,674,455,676,440,678,423,688,407,716,392,721,390,692,410,683,425,682,441,679,457,668,472,644,485,619,494,567,503,514,502,467,495"/>
+<area shape="rect" id="Node000016" href="$d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html" title=" " alt="" coords="5,439,191,466"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="206,458,325,468,320,470,206,463"/>
+<area shape="rect" id="Node000017" href="$d3/d00/classfl7_1_1fonts_1_1Font.html" title=" " alt="" coords="41,516,155,544"/>
+<area shape="poly" id="edge16_Node000015_Node000017" title=" " alt="" coords="170,514,325,488,320,490,171,519"/>
+<area shape="rect" id="Node000021" href="$d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html" title=" " alt="" coords="1300,173,1451,201"/>
+<area shape="poly" id="edge27_Node000021_Node000017" title=" " alt="" coords="171,536,278,545,398,550,1127,550,1155,546,1175,535,1189,517,1198,495,1211,438,1219,406,1230,374,1239,350,1243,328,1246,287,1253,250,1263,230,1280,211,1297,201,1302,199,1284,214,1268,233,1258,251,1251,288,1248,328,1244,351,1235,376,1224,408,1216,439,1203,496,1193,520,1179,539,1157,551,1127,555,398,555,277,550,170,541"/>
+<area shape="rect" id="Node000018" href="$d9/db9/classfl7_1_1gui_1_1HasCheckedState.html" title=" " alt="" coords="1282,69,1469,97"/>
+<area shape="poly" id="edge19_Node000001_Node000018" title=" " alt="" coords="1475,98,1596,120,1590,121,1475,103"/>
+<area shape="poly" id="edge20_Node000001_Node000019" title=" " alt="" coords="1248,25,1357,36,1470,55,1518,70,1564,89,1643,121,1638,121,1562,94,1516,75,1469,60,1356,41,1249,30"/>
+<area shape="rect" id="Node000020" href="$db/d13/classfl7_1_1gui_1_1HasBackground.html" title=" " alt="" coords="691,5,866,33"/>
+<area shape="poly" id="edge22_Node000019_Node000020" title=" " alt="" coords="881,17,1021,20,1016,22,882,23"/>
+<area shape="poly" id="edge23_Node000001_Node000021" title=" " alt="" coords="1466,177,1563,163,1632,149,1626,150,1564,168,1467,182"/>
+<area shape="poly" id="edge24_Node000021_Node000022" title=" " alt="" coords="1196,187,1302,188,1297,189,1197,193"/>
+<area shape="rect" id="Node000023" href="$d1/d67/classfl7_1_1gui_1_1HasText.html" title=" " alt="" coords="1063,125,1188,153"/>
+<area shape="poly" id="edge26_Node000021_Node000023" title=" " alt="" coords="1204,151,1302,172,1297,173,1204,157"/>
+<area shape="rect" id="Node000024" href="$d3/d7e/classcl7_1_1behavioral_1_1Signal.html" title=" " alt="" coords="1293,225,1458,270"/>
+<area shape="poly" id="edge28_Node000001_Node000024" title=" " alt="" coords="1473,229,1518,218,1562,203,1615,176,1656,151,1661,148,1617,180,1564,208,1520,223,1474,235"/>
 </map>

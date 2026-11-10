@@ -9,7 +9,6 @@ var classfl7_1_1gui_1_1layout_1_1BoxLayout =
     [ "BoxLayout", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#ab346d1dc3443a1026376d5f9932a74be", null ],
     [ "~BoxLayout", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a06a4819b8f97227cde67209eb87f8b26", null ],
     [ "_fit_in_cell", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#aad1533145ab9c8c10f0aca101cb1c7fa", null ],
-    [ "_get_cached_preferred_size", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#aca51c96ba4cece80569083a630dfa624", null ],
     [ "get_gap", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a1352689bee7e47895949eb3af5098d6c", null ],
     [ "get_orientation", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#ad96809eff8c17e4fd0dd77072a4aac03", null ],
     [ "get_padding", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a746fd7f1dbac86611200427c8816fa74", null ],
@@ -24,6 +23,5 @@ var classfl7_1_1gui_1_1layout_1_1BoxLayout =
     [ "_gap", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#abb018dce56dd37c7bf5bff2c80338a65", null ],
     [ "_orientation", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#aab04b339756e451dbfa03dea9b3fa476", null ],
     [ "_padding", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a93118d18fea1311d833394520a01d8f0", null ],
-    [ "_preferred_sizes", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a9f9b5987169ba4bc92792735448a72b2", null ],
     [ "_stretches", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a8a30bef157c913f02506dbd9b0e95389", null ]
 ];
