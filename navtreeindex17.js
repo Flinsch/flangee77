@@ -1,5 +1,7 @@
 var NAVTREEINDEX17 =
 {
+"d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html#a67a8f0a91ad1903d1e5cae1af582a226":[5,0,8,2,7,8,1],
+"d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html#a67a8f0a91ad1903d1e5cae1af582a226":[7,0,8,1,7,8,1],
 "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html#a9df889de40e184d2748f93d7b556cabb":[5,0,8,2,7,8,0],
 "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html#a9df889de40e184d2748f93d7b556cabb":[7,0,8,1,7,8,0],
 "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html#ad8e595bbf1989142af16746312148884":[5,0,8,2,7,8,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX17 =
 "d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html#ab3ff32bb644386ffd0f87218f5a6bcab":[7,0,3,0,1,6,0],
 "d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html#abdcc00a0f70b7d36c818dcde90bec912":[5,0,3,0,1,7,1],
 "d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html#abdcc00a0f70b7d36c818dcde90bec912":[7,0,3,0,1,6,1],
-"d4/db0/BooleanMatcher_8h.html":[8,0,2,2,0,3],
-"d4/db0/BooleanMatcher_8h_source.html":[8,0,2,2,0,3],
-"d4/db1/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Writer_1_1Options.html":[5,0,8,2,0,0,1,6,0]
+"d4/db0/BooleanMatcher_8h.html":[8,0,2,2,0,3]
 };

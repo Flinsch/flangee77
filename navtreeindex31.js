@@ -1,5 +1,7 @@
 var NAVTREEINDEX31 =
 {
+"d7/dba/classcl7_1_1creational_1_1SingletonManager.html#a6ab70fa1207c7f792ac5610be9bed0d6":[5,0,1,3,1,1],
+"d7/dba/classcl7_1_1creational_1_1SingletonManager.html#a6ab70fa1207c7f792ac5610be9bed0d6":[7,0,1,2,1,1],
 "d7/dbb/classdl7_1_1toml_1_1Value.html":[5,0,2,5,5],
 "d7/dbb/classdl7_1_1toml_1_1Value.html":[7,0,2,5,5],
 "d7/dbb/classdl7_1_1toml_1_1Value.html#a059dbee0ceccd3f2291170cced872f90":[5,0,2,5,5,69],
@@ -247,7 +249,5 @@ var NAVTREEINDEX31 =
 "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a4439aefc5d23644e76b19a3bcca90ee9":[7,0,3,1,0,12,30],
 "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a47f53949649e8a1567d4ac975df17176":[5,0,3,1,0,12,23],
 "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a47f53949649e8a1567d4ac975df17176":[7,0,3,1,0,12,23],
-"d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a49364854ec764bb3a2183165c6a472d5":[5,0,3,1,0,12,10],
-"d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a49364854ec764bb3a2183165c6a472d5":[7,0,3,1,0,12,10],
-"d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a4f5daf2fa5d31eec1e79327d9b56b817":[5,0,3,1,0,12,21]
+"d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a49364854ec764bb3a2183165c6a472d5":[5,0,3,1,0,12,10]
 };

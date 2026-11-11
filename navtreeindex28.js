@@ -1,5 +1,7 @@
 var NAVTREEINDEX28 =
 {
+"d7/d55/Stopwatch_8cpp.html":[8,0,1,6,9],
+"d7/d56/byte__span_8h.html":[8,0,1,12],
 "d7/d56/byte__span_8h_source.html":[8,0,1,12],
 "d7/d58/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1shaders_1_1PixelShaderImpl.html":[5,0,8,2,1,1,3,2],
 "d7/d58/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1shaders_1_1PixelShaderImpl.html":[7,0,8,1,1,1,1,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX28 =
 "d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#a10768e4e3daadbe09dbc8384f6f33281":[7,0,8,1,12,35],
 "d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#a10e7294590d490d25f76d0fc24228b8d":[5,0,8,2,12,36],
 "d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#a10e7294590d490d25f76d0fc24228b8d":[7,0,8,1,12,36],
-"d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#a16b78f2890da0bdc7a8ab86762a335a7":[5,0,8,2,12,19],
-"d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#a16b78f2890da0bdc7a8ab86762a335a7":[7,0,8,1,12,19],
-"d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#a2096d1943b0b618476b53d6ec359c01c":[5,0,8,2,12,27]
+"d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#a16b78f2890da0bdc7a8ab86762a335a7":[5,0,8,2,12,19]
 };

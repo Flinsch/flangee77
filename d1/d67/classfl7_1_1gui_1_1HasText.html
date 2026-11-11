@@ -196,7 +196,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the box size to actually lay the text out against, if different from the face's own get_size() (e.g., narrower, to leave room for a scroll bar; see <a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html">faces::TextField</a>'s multiline mode). Default: nullopt, meaning get_size() applies as-is. </p>
+<p>Returns the box size to actually lay the text out against, if different from the face's own get_size() narrowed by its own effective padding (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a2d731b61049d1791f8afe409d89844a0">Face::get_effective_padding()</a>); e.g., narrower still, to leave room for a scroll bar (see <a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html">faces::TextField</a>'s multiline mode). Overriding this means taking over accounting for that padding yourself (see <a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html">faces::TextField</a>'s own _effective_text_box_size()); <a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html#a6795105e41862e37998d609b3ca3235f">render::AbstractRenderer::_draw_face()</a> only applies it on your behalf while this stays nullopt, the default. </p>
 
 <p>Reimplemented in <a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a6225d672c5c28fb2d287bc8bf477886a">fl7::gui::faces::TextField</a>.</p>
 

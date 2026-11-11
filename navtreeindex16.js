@@ -1,5 +1,7 @@
 var NAVTREEINDEX16 =
 {
+"d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html#aedfccf4547c26a1b026daf6ebf4f24be":[5,0,1,11,0,18,2],
+"d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html#aedfccf4547c26a1b026daf6ebf4f24be":[7,0,1,9,0,18,2],
 "d4/d04/Matrix3x4_8cpp.html":[8,0,4,18],
 "d4/d05/json_8h.html":[8,0,2,1,4],
 "d4/d05/json_8h_source.html":[8,0,2,1,4],
@@ -8,8 +10,8 @@ var NAVTREEINDEX16 =
 "d4/d0c/StencilOperation_8h.html":[8,0,7,1,5,23],
 "d4/d0c/StencilOperation_8h_source.html":[8,0,7,1,5,23],
 "d4/d11/Quaternion_8cpp.html":[8,0,4,25],
-"d4/d11/Style_8h.html":[8,0,3,1,24],
-"d4/d11/Style_8h_source.html":[8,0,3,1,24],
+"d4/d11/Style_8h.html":[8,0,3,1,25],
+"d4/d11/Style_8h_source.html":[8,0,3,1,25],
 "d4/d16/DepthStencilSurface_8cpp.html":[8,0,7,1,6,0],
 "d4/d17/MsdfRenderer_8cpp.html":[8,0,3,0,2,8],
 "d4/d1c/Application_8h.html":[8,0,5,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX16 =
 "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html":[5,0,8,2,7,8],
 "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html":[7,0,8,1,7,8],
 "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html#a46bc582c756de78db245b8a9a4824bb2":[5,0,8,2,7,8,2],
-"d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html#a46bc582c756de78db245b8a9a4824bb2":[7,0,8,1,7,8,2],
-"d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html#a67a8f0a91ad1903d1e5cae1af582a226":[5,0,8,2,7,8,1],
-"d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html#a67a8f0a91ad1903d1e5cae1af582a226":[7,0,8,1,7,8,1]
+"d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html#a46bc582c756de78db245b8a9a4824bb2":[7,0,8,1,7,8,2]
 };

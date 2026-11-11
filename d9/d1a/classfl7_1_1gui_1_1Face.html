@@ -216,6 +216,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2121a450927cab24058313bd86661aeb" id="r_a2121a450927cab24058313bd86661aeb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2121a450927cab24058313bd86661aeb">get_minimum_size</a> () const</td></tr>
 <tr class="memitem:a640affe6d66ae35ea1c8684c5aa3e920" id="r_a640affe6d66ae35ea1c8684c5aa3e920"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a640affe6d66ae35ea1c8684c5aa3e920">set_minimum_size</a> (<a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> minimum_size)</td></tr>
 <tr class="memitem:ac39e3f99564bd639ee89f9de42f5db46" id="r_ac39e3f99564bd639ee89f9de42f5db46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac39e3f99564bd639ee89f9de42f5db46">get_effective_minimum_size</a> () const</td></tr>
+<tr class="memitem:a2d731b61049d1791f8afe409d89844a0" id="r_a2d731b61049d1791f8afe409d89844a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d8c/structfl7_1_1gui_1_1Padding.html">Padding</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d731b61049d1791f8afe409d89844a0">get_effective_padding</a> () const</td></tr>
 <tr class="memitem:a13aeef116bad401c02aaf8d6ba42e574" id="r_a13aeef116bad401c02aaf8d6ba42e574"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199">Anchor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13aeef116bad401c02aaf8d6ba42e574">get_anchor</a> () const</td></tr>
 <tr class="memitem:a1c0a47e06dbe1dbdb3194452c21a772b" id="r_a1c0a47e06dbe1dbdb3194452c21a772b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c0a47e06dbe1dbdb3194452c21a772b">set_anchor</a> (<a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199">Anchor</a> anchor)</td></tr>
 <tr class="memitem:ae06c3bbd47621ee899dc664b3e122804" id="r_ae06c3bbd47621ee899dc664b3e122804"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae06c3bbd47621ee899dc664b3e122804">is_visible</a> () const</td></tr>
@@ -439,7 +440,7 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns this face's own calculated minimum size, based on its own content, for whichever component(s) of <span class="tt"><a class="el" href="#ac39e3f99564bd639ee89f9de42f5db46">get_effective_minimum_size()</a></span> don't have an explicit override (see <span class="tt"><a class="el" href="#a640affe6d66ae35ea1c8684c5aa3e920">set_minimum_size()</a></span>). Default: <span class="tt">{0, 0}</span> (no particular opinion). Override in a concrete face type whose natural size follows from its own content (e.g., <span class="tt"><a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html">faces::Label</a></span> from its text). </p>
+<p>Returns this face's own calculated minimum size, based on its own content, for whichever component(s) of <span class="tt"><a class="el" href="#ac39e3f99564bd639ee89f9de42f5db46">get_effective_minimum_size()</a></span> don't have an explicit override (see <span class="tt"><a class="el" href="#a640affe6d66ae35ea1c8684c5aa3e920">set_minimum_size()</a></span>). Content-only: <span class="tt"><a class="el" href="#a2d731b61049d1791f8afe409d89844a0">get_effective_padding()</a></span> is added on top automatically, (see <span class="tt"><a class="el" href="#ac39e3f99564bd639ee89f9de42f5db46">get_effective_minimum_size()</a></span>), not this method's own concern. Default: <span class="tt">{0, 0}</span> (no particular opinion). Override in a concrete face type whose natural size follows from its own content (e.g., <span class="tt"><a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html">faces::Label</a></span> from its text). </p>
 
 <p>Reimplemented in <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html#aba947e0a4115bb675d68200d75b99001">fl7::gui::faces::Label</a>.</p>
 
@@ -467,7 +468,7 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns this face's own calculated preferred size, based on its own content, for whichever component(s) of <span class="tt"><a class="el" href="#a1ca02aca7b85bbf5d0e90b4883d09b5f">get_effective_preferred_size()</a></span> don't have an explicit override (see <span class="tt"><a class="el" href="#a49b7d22aaa2da515125d044bf348a158">set_preferred_size()</a></span>). Default: <span class="tt">{0, 0}</span> (no particular opinion). Override in a concrete face type whose natural size follows from its own content (e.g., <span class="tt"><a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html">faces::Label</a></span> from its text). </p>
+<p>Returns this face's own calculated preferred size, based on its own content, for whichever component(s) of <span class="tt"><a class="el" href="#a1ca02aca7b85bbf5d0e90b4883d09b5f">get_effective_preferred_size()</a></span> don't have an explicit override (see <span class="tt"><a class="el" href="#a49b7d22aaa2da515125d044bf348a158">set_preferred_size()</a></span>). Content-only: <span class="tt"><a class="el" href="#a2d731b61049d1791f8afe409d89844a0">get_effective_padding()</a></span> is added on top automatically (see <span class="tt"><a class="el" href="#a1ca02aca7b85bbf5d0e90b4883d09b5f">get_effective_preferred_size()</a></span>), not this method's own concern. Default: <span class="tt">{0, 0}</span> (no particular opinion). Override in a concrete face type whose natural size follows from its own content (e.g., <span class="tt"><a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html">faces::Label</a></span> from its text). </p>
 
 <p>Reimplemented in <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html#a34c1b2f73466eb1901987d034e5a2d46">fl7::gui::faces::Label</a>.</p>
 
@@ -1257,7 +1258,33 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns this face's effective minimum size: how small a layout (see <span class="tt"><a class="el" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html">layout::Layout</a></span>) is allowed to shrink it while distributing space among several children. Combines, independently per component: <span class="tt"><a class="el" href="#a2121a450927cab24058313bd86661aeb">get_minimum_size()</a></span>, if actually set (a component <span class="tt">&lt;= 0</span> counts as not set), else this face's own calculated, content-based size (see <span class="tt"><a class="el" href="#af740f74d08c785ef76ef46a77d0ec530">_calculate_minimum_size()</a></span>. A plain, content-less face (e.g., <span class="tt"><a class="el" href="../../da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html">faces::Panel</a></span>) might report <span class="tt">{0, 0}</span> unless explicitly told otherwise. </p>
+<p>Returns this face's effective minimum size: how small a layout (see <span class="tt"><a class="el" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html">layout::Layout</a></span>) is allowed to shrink it while distributing space among several children. Combines, independently per component: <span class="tt"><a class="el" href="#a2121a450927cab24058313bd86661aeb">get_minimum_size()</a></span>, if actually set (a component <span class="tt">&lt;= 0</span> counts as not set), else this face's own calculated, content-based size (see <span class="tt"><a class="el" href="#af740f74d08c785ef76ef46a77d0ec530">_calculate_minimum_size()</a></span>) plus <span class="tt"><a class="el" href="#a2d731b61049d1791f8afe409d89844a0">get_effective_padding()</a></span> (the calculated size is content-only; an explicit override is assumed to already have been picked with padding in mind). A plain, content-less face (e.g., <span class="tt"><a class="el" href="../../da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html">faces::Panel</a></span>) might report <span class="tt">{0, 0}</span> unless explicitly told otherwise. </p>
+
+</div>
+</div>
+<a id="a2d731b61049d1791f8afe409d89844a0" name="a2d731b61049d1791f8afe409d89844a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d731b61049d1791f8afe409d89844a0">&#9670;&#160;</a></span>get_effective_padding()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d8c/structfl7_1_1gui_1_1Padding.html">Padding</a> fl7::gui::Face::get_effective_padding </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns this face's effective padding: its own style's <span class="tt"><a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html#a9befece0b0d852fcd3f1762fd9e084c5">Style::padding</a></span> (see <span class="tt"><a class="el" href="#a7af95b6aafdbd6d0137aef6410ff4827">get_effective_style()</a></span>), i.e., the space kept between its own bounds and its actual content, independently on each side. </p>
 
 </div>
 </div>
@@ -1275,7 +1302,7 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns this face's effective preferred size: how large a layout (see <span class="tt"><a class="el" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html">layout::Layout</a></span>) should try to make it, absent any overriding constraint (available space, a sibling's own minimum size, stretch factors, ...). Combines, independently per component: <span class="tt"><a class="el" href="#a1c542ba6acebc00183e8f518dea1c1bc">get_preferred_size()</a></span>, if actually set (a component <span class="tt">&lt;= 0</span> counts as not set), else this face's own calculated, content-based size (see <span class="tt"><a class="el" href="#a0bf7f9b89fb34633392b25502d8efc8f">_calculate_preferred_size()</a></span>; default <span class="tt">{0, 0}</span>, i.e., no particular opinion; most face types don't have one yet). A plain, content-less face (e.g., <span class="tt"><a class="el" href="../../da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html">faces::Panel</a></span>) therefore reports <span class="tt">{0, 0}</span> unless explicitly told otherwise. </p>
+<p>Returns this face's effective preferred size: how large a layout (see <span class="tt"><a class="el" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html">layout::Layout</a></span>) should try to make it, absent any overriding constraint (available space, a sibling's own minimum size, stretch factors, ...). Combines, independently per component: <span class="tt"><a class="el" href="#a1c542ba6acebc00183e8f518dea1c1bc">get_preferred_size()</a></span>, if actually set (a component <span class="tt">&lt;= 0</span> counts as not set), else this face's own calculated, content-based size (see <span class="tt"><a class="el" href="#a0bf7f9b89fb34633392b25502d8efc8f">_calculate_preferred_size()</a></span>; default <span class="tt">{0, 0}</span>, i.e., no particular opinion; most face types don't have one yet) plus <span class="tt"><a class="el" href="#a2d731b61049d1791f8afe409d89844a0">get_effective_padding()</a></span> (the calculated size is content-only; an explicit override is assumed to already have been picked with padding in mind). A plain, content-less face (e.g., <span class="tt"><a class="el" href="../../da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html">faces::Panel</a></span>) therefore reports whatever its own padding alone amounts to (<span class="tt">{0, 0}</span> by default) unless explicitly told otherwise. </p>
 
 </div>
 </div>

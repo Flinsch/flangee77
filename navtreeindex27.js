@@ -1,5 +1,7 @@
 var NAVTREEINDEX27 =
 {
+"d6/dc7/AbstractTextureAtlasBasedRenderer_8h.html":[8,0,3,0,2,3],
+"d6/dc7/AbstractTextureAtlasBasedRenderer_8h_source.html":[8,0,3,0,2,3],
 "d6/dc7/namespacecl7_1_1io.html":[5,0,1,5],
 "d6/dc7/namespacecl7_1_1io.html#a4ff74034025df11666f80f69b9069053":[5,0,1,5,16],
 "d6/dc7/namespacecl7_1_1io.html#a4ff74034025df11666f80f69b9069053a1a06729125544cab7cee73195fc044f0":[5,0,1,5,16,0],
@@ -70,8 +72,8 @@ var NAVTREEINDEX27 =
 "d6/df0/MipFilterType_8h_source.html":[8,0,7,1,5,14],
 "d6/df1/IndexBufferUpdater_8h.html":[8,0,7,1,2,8],
 "d6/df1/IndexBufferUpdater_8h_source.html":[8,0,7,1,2,8],
-"d6/df2/TrackControl_8h.html":[8,0,3,1,29],
-"d6/df2/TrackControl_8h_source.html":[8,0,3,1,29],
+"d6/df2/TrackControl_8h.html":[8,0,3,1,30],
+"d6/df2/TrackControl_8h_source.html":[8,0,3,1,30],
 "d6/df3/classcl7_1_1profiling_1_1Registry_1_1Attorney.html":[5,0,1,9,1,0],
 "d6/df3/classcl7_1_1profiling_1_1Registry_1_1Attorney.html":[7,0,1,7,1,0],
 "d6/df3/classcl7_1_1profiling_1_1Registry_1_1Attorney.html#a183db5a91d01580113f39dd9f7e769a3":[5,0,1,9,1,0,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX27 =
 "d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html#ae2198bf8f3de47544c823f1a3bc45efc":[7,0,8,1,12,2,1],
 "d7/d50/DisplayMode_8h.html":[8,0,7,14],
 "d7/d50/DisplayMode_8h_source.html":[8,0,7,14],
-"d7/d55/ImageHelper_8cpp.html":[8,0,3,1,2,8],
-"d7/d55/Stopwatch_8cpp.html":[8,0,1,6,9],
-"d7/d56/byte__span_8h.html":[8,0,1,12]
+"d7/d55/ImageHelper_8cpp.html":[8,0,3,1,2,8]
 };

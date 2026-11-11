@@ -1,5 +1,7 @@
 var NAVTREEINDEX20 =
 {
+"d5/d6f/Texture2D_8h_source.html":[8,0,7,1,7,15],
+"d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html":[5,0,1,11,0,10],
 "d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html":[7,0,1,9,0,10],
 "d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html#a0178ea4a85efc3948d4f284c72aa574e":[5,0,1,11,0,10,53],
 "d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html#a0178ea4a85efc3948d4f284c72aa574e":[7,0,1,9,0,10,53],
@@ -247,7 +249,5 @@ var NAVTREEINDEX20 =
 "d5/d87/classxl7_1_1resources_1_1UpdatableResource.html":[5,0,8,4,7],
 "d5/d87/classxl7_1_1resources_1_1UpdatableResource.html":[7,0,8,3,7],
 "d5/d87/classxl7_1_1resources_1_1UpdatableResource.html#a34096017b4d479d6a94febf9fba50276":[5,0,8,4,7,16],
-"d5/d87/classxl7_1_1resources_1_1UpdatableResource.html#a34096017b4d479d6a94febf9fba50276":[7,0,8,3,7,16],
-"d5/d87/classxl7_1_1resources_1_1UpdatableResource.html#a364e3f74990150bc974fa463af2e0b8c":[5,0,8,4,7,10],
-"d5/d87/classxl7_1_1resources_1_1UpdatableResource.html#a364e3f74990150bc974fa463af2e0b8c":[7,0,8,3,7,10]
+"d5/d87/classxl7_1_1resources_1_1UpdatableResource.html#a34096017b4d479d6a94febf9fba50276":[7,0,8,3,7,16]
 };

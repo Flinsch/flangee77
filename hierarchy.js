@@ -561,7 +561,7 @@ var hierarchy =
     [ "xl7::graphics::images::codecs::png::Writer::Options", "d4/db1/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Writer_1_1Options.html", null ],
     [ "xl7::graphics::images::codecs::targa::Writer::Options", "d1/d74/structxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Writer_1_1Options.html", null ],
     [ "cl7::ordered_map&lt; Key, T, KeyView, Compare, Allocator &gt;", "dd/d42/classcl7_1_1ordered__map.html", null ],
-    [ "fl7::gui::layout::Padding", "d6/d16/structfl7_1_1gui_1_1layout_1_1Padding.html", null ],
+    [ "fl7::gui::Padding", "d5/d8c/structfl7_1_1gui_1_1Padding.html", null ],
     [ "xl7::graphics::images::codecs::png::PaethPredictor", "de/d9d/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1PaethPredictor.html", null ],
     [ "xl7::graphics::images::codecs::png::Reader::PaletteEntry", "dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html", null ],
     [ "xl7::graphics::impl::shared::shaders::Include::ParentEntry", "dc/d1f/structxl7_1_1graphics_1_1impl_1_1shared_1_1shaders_1_1Include_1_1ParentEntry.html", null ],

@@ -1,5 +1,7 @@
 var NAVTREEINDEX35 =
 {
+"d8/d0a/classdl7_1_1xml_1_1detail_1_1Generator.html#ac056d2ea673d3d428fb3ba7229f20acd":[7,0,2,6,0,1,9],
+"d8/d0a/classdl7_1_1xml_1_1detail_1_1Generator.html#ad337ed245bf168aef63be3f34e8aaaee":[5,0,2,6,0,1,4],
 "d8/d0a/classdl7_1_1xml_1_1detail_1_1Generator.html#ad337ed245bf168aef63be3f34e8aaaee":[7,0,2,6,0,1,4],
 "d8/d0c/Font_8cpp.html":[8,0,3,0,6],
 "d8/d0d/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates_1_1ShaderStates.html":[5,0,8,2,1,0,7,0,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX35 =
 "d8/d1f/structml7_1_1Quaternion.html#a55746eb028f9bc3b30b029e7622c79b8":[5,0,4,19,54],
 "d8/d1f/structml7_1_1Quaternion.html#a55746eb028f9bc3b30b029e7622c79b8":[7,0,4,19,54],
 "d8/d1f/structml7_1_1Quaternion.html#a59f65b6a0645435f22855cf521daf0ce":[5,0,4,19,31],
-"d8/d1f/structml7_1_1Quaternion.html#a59f65b6a0645435f22855cf521daf0ce":[7,0,4,19,31],
-"d8/d1f/structml7_1_1Quaternion.html#a60ba78a4bbb7443d619bef7597c5b906":[5,0,4,19,39],
-"d8/d1f/structml7_1_1Quaternion.html#a60ba78a4bbb7443d619bef7597c5b906":[7,0,4,19,39]
+"d8/d1f/structml7_1_1Quaternion.html#a59f65b6a0645435f22855cf521daf0ce":[7,0,4,19,31]
 };

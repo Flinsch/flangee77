@@ -358,7 +358,6 @@ var annotated_dup =
           [ "Window", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window" ]
         ] ],
         [ "layout", "df/dcc/namespacefl7_1_1gui_1_1layout.html", [
-          [ "Padding", "d6/d16/structfl7_1_1gui_1_1layout_1_1Padding.html", "d6/d16/structfl7_1_1gui_1_1layout_1_1Padding" ],
           [ "BoxLayout", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout" ],
           [ "DefaultLayout", "df/dbb/classfl7_1_1gui_1_1layout_1_1DefaultLayout.html", "df/dbb/classfl7_1_1gui_1_1layout_1_1DefaultLayout" ],
           [ "Layout", "d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html", "d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout" ]
@@ -385,6 +384,7 @@ var annotated_dup =
         [ "HasText", "d1/d67/classfl7_1_1gui_1_1HasText.html", "d1/d67/classfl7_1_1gui_1_1HasText" ],
         [ "Image", "d6/d0b/structfl7_1_1gui_1_1Image.html", "d6/d0b/structfl7_1_1gui_1_1Image" ],
         [ "NineSliceChrome", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome" ],
+        [ "Padding", "d5/d8c/structfl7_1_1gui_1_1Padding.html", "d5/d8c/structfl7_1_1gui_1_1Padding" ],
         [ "RadioGroup", "d2/d69/classfl7_1_1gui_1_1RadioGroup.html", "d2/d69/classfl7_1_1gui_1_1RadioGroup" ],
         [ "Shell", "d6/d9c/classfl7_1_1gui_1_1Shell.html", "d6/d9c/classfl7_1_1gui_1_1Shell" ],
         [ "Static", "dc/dfd/classfl7_1_1gui_1_1Static.html", "dc/dfd/classfl7_1_1gui_1_1Static" ],

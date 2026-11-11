@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"d2/d89/TextureExtent3D_8h.html":[8,0,7,1,7,36],
+"d2/d89/TextureExtent3D_8h_source.html":[8,0,7,1,7,36],
 "d2/d8a/classdl7_1_1syntax_1_1CstToAstTransformer.html":[5,0,2,4,6],
 "d2/d8a/classdl7_1_1syntax_1_1CstToAstTransformer.html":[7,0,2,4,6],
 "d2/d8a/classdl7_1_1syntax_1_1CstToAstTransformer.html#a0104f3bf3dabec427fb4a152e25f2387":[5,0,2,4,6,5],
@@ -203,8 +205,8 @@ var NAVTREEINDEX9 =
 "d2/db1/classcl7_1_1text_1_1codec_1_1Utf8Codec.html#af0365df64a81f417db6227c77afc929c":[5,0,1,11,0,22,0],
 "d2/db1/classcl7_1_1text_1_1codec_1_1Utf8Codec.html#af0365df64a81f417db6227c77afc929c":[7,0,1,9,0,22,0],
 "d2/db6/Application_8cpp.html":[8,0,5,0],
-"d2/db9/Static_8h.html":[8,0,3,1,23],
-"d2/db9/Static_8h_source.html":[8,0,3,1,23],
+"d2/db9/Static_8h.html":[8,0,3,1,24],
+"d2/db9/Static_8h_source.html":[8,0,3,1,24],
 "d2/dba/namespacecl7_1_1platform_1_1memory.html":[5,0,1,8,2],
 "d2/dba/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1textures.html":[5,0,8,2,1,1,5],
 "d2/dbc/json_2detail_2Generator_8cpp.html":[8,0,2,3,0,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "d2/dcf/classfl7_1_1gui_1_1faces_1_1ListBox_1_1Row.html#af4c1e395e791a1b8c4dff1503db05f58":[5,0,3,1,0,5,0,5],
 "d2/dcf/classfl7_1_1gui_1_1faces_1_1ListBox_1_1Row.html#af4c1e395e791a1b8c4dff1503db05f58":[7,0,3,1,0,5,0,5],
 "d2/dd4/TokenReader_8h.html":[8,0,2,4,41],
-"d2/dd4/TokenReader_8h_source.html":[8,0,2,4,41],
-"d2/ddd/FilterReconstructor_8h.html":[8,0,7,1,0,0,1,7],
-"d2/ddd/FilterReconstructor_8h_source.html":[8,0,7,1,0,0,1,7]
+"d2/dd4/TokenReader_8h_source.html":[8,0,2,4,41]
 };

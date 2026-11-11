@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#ae203280ab70c06920f1dc0d961b27731":[7,0,8,1,7,29,7],
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#aef82aacce7c02f54cabda3fbf7dc1dba":[5,0,8,2,7,29,2],
 "d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#aef82aacce7c02f54cabda3fbf7dc1dba":[7,0,8,1,7,29,2],
 "d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#afa48a91f23e5fc8732dad25f114853da":[5,0,8,2,7,29,4],
 "d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#afa48a91f23e5fc8732dad25f114853da":[7,0,8,1,7,29,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX5 =
 "d1/de6/ConstantBuffer_8h.html":[8,0,7,1,4,2],
 "d1/de6/ConstantBuffer_8h_source.html":[8,0,7,1,4,2],
 "d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html":[5,0,8,2,12,3],
-"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html":[7,0,8,1,12,3],
-"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#aa7f37940107e0bc86e9d07fa6a7b575b":[5,0,8,2,12,3,1],
-"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html#aa7f37940107e0bc86e9d07fa6a7b575b":[7,0,8,1,12,3,1]
+"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html":[7,0,8,1,12,3]
 };

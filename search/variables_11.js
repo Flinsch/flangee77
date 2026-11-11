@@ -26,7 +26,7 @@ var searchData=
   ['reporter_23',['reporter',['../d9/d7e/structtl7_1_1Context.html#a415a5b4ddfcd31d9f4f042813101d1ab',1,'tl7::Context']]],
   ['resize_5fhandle_5fsize_24',['RESIZE_HANDLE_SIZE',['../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a345732a3f7faa945d6fad2ce9b0fc89e',1,'fl7::gui::faces::Frame']]],
   ['result_5fmeta_25',['result_meta',['../da/d3a/structtl7_1_1Result.html#af0bf36ebe997c76bdb8ca90ce1cde2cd',1,'tl7::Result']]],
-  ['right_26',['right',['../d6/d16/structfl7_1_1gui_1_1layout_1_1Padding.html#a6ae701abc9aadb68b3e3a101dd427d54',1,'fl7::gui::layout::Padding::right'],['../db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#a1ea1736b250c6abef99eef035bcb58ec',1,'fl7::gui::layout::DefaultLayout::Insets::right']]],
+  ['right_26',['right',['../db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#a1ea1736b250c6abef99eef035bcb58ec',1,'fl7::gui::layout::DefaultLayout::Insets::right'],['../d5/d8c/structfl7_1_1gui_1_1Padding.html#affa74f5e83d8b534d45f78a25d9e0056',1,'fl7::gui::Padding::right']]],
   ['right_5fside_5fbearing_27',['right_side_bearing',['../d5/d64/structfl7_1_1fonts_1_1GlyphMetrics.html#a078d132ca9e0072b9820b325768725ca',1,'fl7::fonts::GlyphMetrics']]],
   ['right_5fstick_5fvalues_28',['right_stick_values',['../dd/de7/structxl7_1_1input_1_1GameControllerSystem_1_1RawControllerState.html#a367049b918df0a7944065fd502a5bfe7',1,'xl7::input::GameControllerSystem::RawControllerState']]],
   ['right_5ftrigger_5fvalue_29',['right_trigger_value',['../dd/de7/structxl7_1_1input_1_1GameControllerSystem_1_1RawControllerState.html#a1867e93b6e3999fabc3f7e10640d1ce7',1,'xl7::input::GameControllerSystem::RawControllerState']]],

@@ -16,6 +16,7 @@ var namespacefl7_1_1gui =
     [ "HasText", "d1/d67/classfl7_1_1gui_1_1HasText.html", "d1/d67/classfl7_1_1gui_1_1HasText" ],
     [ "Image", "d6/d0b/structfl7_1_1gui_1_1Image.html", "d6/d0b/structfl7_1_1gui_1_1Image" ],
     [ "NineSliceChrome", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html", "d0/d13/structfl7_1_1gui_1_1NineSliceChrome" ],
+    [ "Padding", "d5/d8c/structfl7_1_1gui_1_1Padding.html", "d5/d8c/structfl7_1_1gui_1_1Padding" ],
     [ "RadioGroup", "d2/d69/classfl7_1_1gui_1_1RadioGroup.html", "d2/d69/classfl7_1_1gui_1_1RadioGroup" ],
     [ "Shell", "d6/d9c/classfl7_1_1gui_1_1Shell.html", "d6/d9c/classfl7_1_1gui_1_1Shell" ],
     [ "Static", "dc/dfd/classfl7_1_1gui_1_1Static.html", "dc/dfd/classfl7_1_1gui_1_1Static" ],

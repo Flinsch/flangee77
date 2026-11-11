@@ -36,6 +36,7 @@ var classfl7_1_1gui_1_1Face =
     [ "get_anchor", "d9/d1a/classfl7_1_1gui_1_1Face.html#a13aeef116bad401c02aaf8d6ba42e574", null ],
     [ "get_arrow_navigation_enabled", "d9/d1a/classfl7_1_1gui_1_1Face.html#abc233c6ac91cab3ba32300b04446cda9", null ],
     [ "get_effective_minimum_size", "d9/d1a/classfl7_1_1gui_1_1Face.html#ac39e3f99564bd639ee89f9de42f5db46", null ],
+    [ "get_effective_padding", "d9/d1a/classfl7_1_1gui_1_1Face.html#a2d731b61049d1791f8afe409d89844a0", null ],
     [ "get_effective_preferred_size", "d9/d1a/classfl7_1_1gui_1_1Face.html#a1ca02aca7b85bbf5d0e90b4883d09b5f", null ],
     [ "get_effective_style", "d9/d1a/classfl7_1_1gui_1_1Face.html#a7af95b6aafdbd6d0137aef6410ff4827", null ],
     [ "get_minimum_size", "d9/d1a/classfl7_1_1gui_1_1Face.html#a2121a450927cab24058313bd86661aeb", null ],

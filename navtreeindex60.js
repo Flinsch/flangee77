@@ -1,5 +1,9 @@
 var NAVTREEINDEX60 =
 {
+"dc/dba/classxl7_1_1graphics_1_1pipeline_1_1PixelShaderStage.html#a93995db885d6e8dc91915f7c71d47099":[5,0,8,2,3,6,0],
+"dc/dba/classxl7_1_1graphics_1_1pipeline_1_1PixelShaderStage.html#a93995db885d6e8dc91915f7c71d47099":[7,0,8,1,3,6,0],
+"dc/dbd/structcl7_1_1Guid.html":[5,0,1,13],
+"dc/dbd/structcl7_1_1Guid.html":[7,0,1,11],
 "dc/dbd/structcl7_1_1Guid.html#a1f27f226157d2905af8342816eff5478":[5,0,1,13,9],
 "dc/dbd/structcl7_1_1Guid.html#a1f27f226157d2905af8342816eff5478":[7,0,1,11,9],
 "dc/dbd/structcl7_1_1Guid.html#a3040f328b15399ee4685271cebd3f64c":[5,0,1,13,2],
@@ -245,9 +249,5 @@ var NAVTREEINDEX60 =
 "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a25b71b948355060341f47cccc3555511":[7,0,8,1,14,1,24],
 "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a2e4fbd8db1f5c582635433ab01dda837":[5,0,8,2,14,1,20],
 "dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a2e4fbd8db1f5c582635433ab01dda837":[7,0,8,1,14,1,20],
-"dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a44058f3218f105afc0ec40ece1c249ea":[5,0,8,2,14,1,1],
-"dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a44058f3218f105afc0ec40ece1c249ea":[7,0,8,1,14,1,1],
-"dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a44ed1865cc0aebb6775fd374be7f3099":[5,0,8,2,14,1,18],
-"dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a44ed1865cc0aebb6775fd374be7f3099":[7,0,8,1,14,1,18],
-"dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a46195c717b20ef3136112873a7d63745":[5,0,8,2,14,1,5]
+"dc/def/structxl7_1_1graphics_1_1RenderingDevice_1_1Capabilities.html#a44058f3218f105afc0ec40ece1c249ea":[5,0,8,2,14,1,1]
 };
