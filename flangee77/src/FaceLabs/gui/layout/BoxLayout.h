@@ -3,6 +3,7 @@
 #include "./Layout.h"
 
 #include "../Face.h"
+#include "../Padding.h"
 
 #include <MathLabs/Vector2.h>
 
@@ -11,26 +12,6 @@
 
 
 namespace fl7::gui::layout {
-
-
-
-/**
- * A fixed space kept on each of a container's four edges; see
- * `BoxLayout::get_padding()`/`set_padding()`.
- */
-struct Padding
-{
-    Padding() = default;
-
-    /** The same padding on every side. */
-    Padding(float uniform) : left(uniform), top(uniform), right(uniform), bottom(uniform) {} // Deliberately not explicit: the whole point is to allow a bare float as padding.
-    Padding(float left, float top, float right, float bottom) : left(left), top(top), right(right), bottom(bottom) {}
-
-    float left = 0.0f;
-    float top = 0.0f;
-    float right = 0.0f;
-    float bottom = 0.0f;
-}; // struct Padding
 
 
 

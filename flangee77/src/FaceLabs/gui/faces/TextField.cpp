@@ -388,8 +388,10 @@ namespace fl7::gui::faces {
         if (!style.font)
             return std::nullopt;
 
+        const Padding padding = get_effective_padding();
+
         std::vector<cl7::text::codec::codepoint> codepoints = fonts::TextLayout::decode(_text);
-        fonts::TextBlockLayout block = fonts::TextLayout::lay_out_box(codepoints, *style.font, style.text_style, {0.0f, -_scroll_offset_y}, _effective_text_box_size());
+        fonts::TextBlockLayout block = fonts::TextLayout::lay_out_box(codepoints, *style.font, style.text_style, {padding.left, padding.top - _scroll_offset_y}, _effective_text_box_size());
 
         return _Layout{std::move(style), std::move(codepoints), std::move(block)};
     }
@@ -502,13 +504,20 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Returns this field's own size, narrowed by SCROLLBAR_THICKNESS while
-     * get_multiline_enabled() and the scroll bar is actually shown (see
-     * _relayout(), the only place that decides that); unchanged otherwise.
+     * Returns this field's own size, narrowed by its own effective padding on
+     * every side (see get_effective_padding()), and further by SCROLLBAR_THICKNESS
+     * while get_multiline_enabled() and the scroll bar is actually shown (see
+     * _relayout(), the only place that decides that); unchanged otherwise. This is
+     * also what's reported via get_text_box_size(), so it's on this field itself
+     * (rather than render::AbstractRenderer's own generic, padding-aware default)
+     * to account for its own padding here.
      */
     ml7::Vector2f TextField::_effective_text_box_size() const
     {
+        const Padding padding = get_effective_padding();
         ml7::Vector2f size = get_size();
+        size.x = std::max(0.0f, size.x - padding.left - padding.right);
+        size.y = std::max(0.0f, size.y - padding.top - padding.bottom);
         if (_multiline_enabled && _scroll_bar.is_visible())
             size.x = std::max(0.0f, size.x - SCROLLBAR_THICKNESS);
         return size;

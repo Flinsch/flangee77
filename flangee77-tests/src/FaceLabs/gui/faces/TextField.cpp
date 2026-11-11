@@ -743,3 +743,66 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with
     TESTLABS_CHECK( ever_scrolled_further );
     TESTLABS_CHECK_GT( field.get_caret_codepoint_index(), size_t(0) );
 }
+
+
+
+// #############################################################################
+// Padding (Style::padding)
+// #############################################################################
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  get_text_box_size() narrows this field's own size by its own effective padding on every side, independently of (and in addition to) the scroll bar's own width" )
+{
+    fl7::gui::faces::TextField field;
+    field.set_size({100.0f, 50.0f});
+
+    TESTLABS_ASSERT( field.get_text_box_size().has_value() );
+    TESTLABS_CHECK_EQ_FLT( field.get_text_box_size()->x, 100.0f );
+    TESTLABS_CHECK_EQ_FLT( field.get_text_box_size()->y, 50.0f );
+
+    fl7::gui::Style style;
+    style.padding = fl7::gui::Padding(10.0f, 5.0f, 10.0f, 5.0f);
+    field.set_style_override(style);
+
+    TESTLABS_ASSERT( field.get_text_box_size().has_value() );
+    TESTLABS_CHECK_EQ_FLT( field.get_text_box_size()->x, 80.0f ); // 100 - left(10) - right(10)
+    TESTLABS_CHECK_EQ_FLT( field.get_text_box_size()->y, 40.0f ); // 50 - top(5) - bottom(5)
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with a real font: a click maps to the same codepoint whether or not there's left padding, as long as its position relative to the (shifted) text itself is the same, i.e., the click-to-caret mapping shifts in lockstep with however the text is actually laid out/drawn" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    fl7::gui::Style style;
+    style.font = &get_test_font();
+
+    auto& field = shell.add_face<fl7::gui::faces::TextField>(U"Hello World");
+    field.set_position({0.0f, 0.0f});
+    field.set_size({200.0f, 20.0f});
+    field.set_style_override(style);
+
+    input.move_mouse_to({20.0f, 10.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+    const size_t index_without_padding = field.get_caret_codepoint_index();
+
+    // 15px of left padding now: the text itself shifts right by exactly that
+    // much (see _effective_text_box_size()/_lay_out()), so the very same
+    // relative position within it is now 15px further right on screen.
+    style.padding = fl7::gui::Padding(15.0f, 0.0f, 0.0f, 0.0f);
+    field.set_style_override(style);
+
+    input.move_mouse_to({20.0f + 15.0f, 10.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+    const size_t index_with_padding = field.get_caret_codepoint_index();
+
+    TESTLABS_CHECK_EQ( index_with_padding, index_without_padding );
+}

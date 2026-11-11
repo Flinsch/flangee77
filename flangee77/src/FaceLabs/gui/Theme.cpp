@@ -53,6 +53,7 @@ namespace fl7::gui {
         style.border_color = (level && level->border_color) ? *level->border_color : _default_level.border_color.value_or(style.border_color);
         style.border_width = (level && level->border_width) ? *level->border_width : _default_level.border_width.value_or(style.border_width);
         style.selection_color = (level && level->selection_color) ? *level->selection_color : _default_level.selection_color.value_or(style.selection_color);
+        style.padding = (level && level->padding) ? *level->padding : _default_level.padding.value_or(style.padding);
 
         if (level)
         {
@@ -95,6 +96,8 @@ namespace fl7::gui {
             style.border_width = *overlay.border_width;
         if (overlay.selection_color)
             style.selection_color = *overlay.selection_color;
+        if (overlay.padding)
+            style.padding = *overlay.padding;
     }
 
 

@@ -2,6 +2,7 @@
 #define FL7_GUI_STYLE_H
 
 #include "./NineSliceChrome.h"
+#include "./Padding.h"
 
 #include <FaceLabs/fonts/Font.h>
 #include <FaceLabs/fonts/TextStyle.h>
@@ -45,6 +46,16 @@ struct Style
 
     /** The fill color of a HasSelection face's selection highlight (see render::SelectionHelper). */
     xl7::graphics::Color selection_color = {0.25f, 0.45f, 0.9f, 0.5f};
+
+    /**
+     * The space kept between this face's own bounds and its actual (currently:
+     * text only, see HasText; a HasImage's own image is unaffected so far)
+     * content, drawn inset by this (see render::AbstractRenderer::_draw_face()),
+     * and independently added on top of its own calculated preferred/minimum
+     * size (see Face::get_effective_preferred_size()/get_effective_minimum_size()).
+     * Default: none.
+     */
+    Padding padding;
 
 
 

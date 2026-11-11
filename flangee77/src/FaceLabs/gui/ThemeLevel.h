@@ -2,6 +2,7 @@
 #define FL7_GUI_THEMELEVEL_H
 
 #include "./NineSliceChrome.h"
+#include "./Padding.h"
 
 #include <FaceLabs/fonts/Font.h>
 #include <FaceLabs/fonts/TextStyle.h>
@@ -43,6 +44,7 @@ struct ThemeLevel
     /** 0 = no border. */
     std::optional<float> border_width;
     std::optional<xl7::graphics::Color> selection_color;
+    std::optional<Padding> padding;
 
     /**
      * Independent, not mutually exclusive (a face can be checked and hovered and

@@ -83,7 +83,7 @@ public:
     /** Returns {0, current vertical scroll position}; see get_multiline_enabled(). */
     ml7::Vector2f get_text_scroll_offset() const override { return {0.0f, _scroll_offset_y}; }
 
-    /** Returns this field's own size, narrowed by the scroll bar's width while it's shown; see get_multiline_enabled(). */
+    /** Returns this field's own size, narrowed by its own padding and, while shown, the scroll bar's width; see _effective_text_box_size(). */
     std::optional<ml7::Vector2f> get_text_box_size() const override { return _effective_text_box_size(); }
 
 
@@ -316,9 +316,13 @@ private:
     size_t _line_end(size_t codepoint_index) const;
 
     /**
-     * Returns this field's own size, narrowed by SCROLLBAR_THICKNESS while
-     * get_multiline_enabled() and the scroll bar is actually shown (see
-     * _relayout(), the only place that decides that); unchanged otherwise.
+     * Returns this field's own size, narrowed by its own effective padding on
+     * every side (see get_effective_padding()), and further by SCROLLBAR_THICKNESS
+     * while get_multiline_enabled() and the scroll bar is actually shown (see
+     * _relayout(), the only place that decides that); unchanged otherwise. This is
+     * also what's reported via get_text_box_size(), so it's on this field itself
+     * (rather than render::AbstractRenderer's own generic, padding-aware default)
+     * to account for its own padding here.
      */
     ml7::Vector2f _effective_text_box_size() const;
 

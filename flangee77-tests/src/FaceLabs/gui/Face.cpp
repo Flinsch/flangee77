@@ -214,3 +214,52 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Face:  set_preferred_size()/set_minimum_size(
     TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().x, 10.0f );
     TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().y, 0.0f ); // Negative also counts as deferred.
 }
+
+
+
+// #############################################################################
+// Padding (Style::padding, get_effective_padding())
+// #############################################################################
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Face:  without a style override (or theme), get_effective_padding() defaults to {0, 0, 0, 0}; a style override's own padding is returned verbatim" )
+{
+    fl7::gui::Container container;
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_padding().left, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_padding().top, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_padding().right, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_padding().bottom, 0.0f );
+
+    fl7::gui::Style style_override;
+    style_override.padding = fl7::gui::Padding(2.0f, 4.0f, 6.0f, 8.0f);
+    container.set_style_override(style_override);
+
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_padding().left, 2.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_padding().top, 4.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_padding().right, 6.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_padding().bottom, 8.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Face:  get_effective_preferred_size()/get_effective_minimum_size() add get_effective_padding() on top of the calculated component (here: {0, 0}, a plain Container has none), but NOT on top of an explicit override (assumed to already have been picked with padding in mind)" )
+{
+    fl7::gui::Container container;
+
+    fl7::gui::Style style_override;
+    style_override.padding = fl7::gui::Padding(10.0f, 5.0f, 10.0f, 5.0f); // left/right 10, top/bottom 5.
+    container.set_style_override(style_override);
+
+    // No explicit preferred/minimum size override set: the calculated component
+    // (here: {0, 0}) plus padding alone.
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().x, 20.0f ); // 10 + 10
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().y, 10.0f ); // 5 + 5
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().x, 20.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().y, 10.0f );
+
+    // An explicit override, once set, is left untouched: NOT inflated by padding.
+    container.set_preferred_size({100.0f, 50.0f});
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().x, 100.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().y, 50.0f );
+
+    container.set_minimum_size({30.0f, 15.0f});
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().x, 30.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().y, 15.0f );
+}

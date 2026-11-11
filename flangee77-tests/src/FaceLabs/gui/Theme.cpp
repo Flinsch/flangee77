@@ -126,3 +126,34 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Theme:  checked/hovered/pressed/focused overl
     resolved = theme.resolve(u8"checkbox", { .checked = true, .hovered = true, .pressed = true, .focused = true });
     TESTLABS_CHECK_EQ( resolved.background_color, focused_background );
 }
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Theme:  padding cascades field-by-field (own level overrides the theme-wide default, which overrides Style's own hard-coded default of none) and is affected by state overlays, exactly like every other field" )
+{
+    fl7::gui::Theme theme;
+
+    const fl7::gui::Padding default_level_padding(4.0f, 4.0f, 4.0f, 4.0f);
+    const fl7::gui::Padding button_padding(8.0f, 2.0f, 8.0f, 2.0f);
+    const fl7::gui::Padding pressed_padding(6.0f, 6.0f, 6.0f, 6.0f);
+
+    theme.get_default_level().padding = default_level_padding;
+
+    fl7::gui::ThemeLevel& button_level = theme.get_level(u8"button");
+    // padding left unset: must fall through to the default level's.
+    fl7::gui::Style resolved = theme.resolve(u8"button", {});
+    TESTLABS_CHECK_EQ_FLT( resolved.padding.left, default_level_padding.left );
+    TESTLABS_CHECK_EQ_FLT( resolved.padding.top, default_level_padding.top );
+
+    button_level.padding = button_padding; // overrides the default level's padding
+    resolved = theme.resolve(u8"button", {});
+    TESTLABS_CHECK_EQ_FLT( resolved.padding.left, button_padding.left );
+    TESTLABS_CHECK_EQ_FLT( resolved.padding.top, button_padding.top );
+
+    button_level.pressed = std::make_unique<fl7::gui::ThemeLevel>();
+    button_level.pressed->padding = pressed_padding;
+
+    resolved = theme.resolve(u8"button", { .pressed = true });
+    TESTLABS_CHECK_EQ_FLT( resolved.padding.left, pressed_padding.left );
+
+    resolved = theme.resolve(u8"button", {}); // not pressed: back to the button level's own.
+    TESTLABS_CHECK_EQ_FLT( resolved.padding.left, button_padding.left );
+}

@@ -115,3 +115,29 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Label:  set_preferred_size()/set_mini
     TESTLABS_CHECK_EQ_FLT( label.get_effective_minimum_size().x, calculated.x );
     TESTLABS_CHECK_EQ_FLT( label.get_effective_minimum_size().y, 50.0f );
 }
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Label:  get_effective_preferred_size()/get_effective_minimum_size() add the effective style's own padding on top of the text's own natural size (minimum == preferred for Label either way)" )
+{
+    fl7::gui::Style unpadded_style;
+    unpadded_style.font = &get_test_font();
+
+    fl7::gui::Style padded_style = unpadded_style;
+    padded_style.padding = fl7::gui::Padding(4.0f, 2.0f, 4.0f, 2.0f); // left/right 4, top/bottom 2.
+
+    fl7::gui::faces::Label unpadded_label(U"Hi");
+    unpadded_label.set_style_override(unpadded_style);
+    fl7::gui::faces::Label padded_label(U"Hi");
+    padded_label.set_style_override(padded_style);
+
+    const ml7::Vector2f unpadded = unpadded_label.get_effective_preferred_size();
+    const ml7::Vector2f padded = padded_label.get_effective_preferred_size();
+
+    TESTLABS_CHECK_EQ_FLT( padded.x, unpadded.x + 8.0f ); // + left(4) + right(4)
+    TESTLABS_CHECK_EQ_FLT( padded.y, unpadded.y + 4.0f ); // + top(2) + bottom(2)
+    TESTLABS_CHECK_EQ_FLT( padded_label.get_effective_minimum_size().x, padded.x );
+    TESTLABS_CHECK_EQ_FLT( padded_label.get_effective_minimum_size().y, padded.y );
+
+    // The plain getters, as ever, stay untouched regardless: no override set on either.
+    TESTLABS_CHECK_EQ_FLT( padded_label.get_preferred_size().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( padded_label.get_minimum_size().x, 0.0f );
+}

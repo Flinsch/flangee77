@@ -37,9 +37,12 @@ public:
 
     /**
      * Returns the box size to actually lay the text out against, if different
-     * from the face's own get_size() (e.g., narrower, to leave room for a
-     * scroll bar; see faces::TextField's multiline mode). Default: nullopt,
-     * meaning get_size() applies as-is.
+     * from the face's own get_size() narrowed by its own effective padding (see
+     * Face::get_effective_padding()); e.g., narrower still, to leave room for a
+     * scroll bar (see faces::TextField's multiline mode). Overriding this means
+     * taking over accounting for that padding yourself (see faces::TextField's
+     * own _effective_text_box_size()); render::AbstractRenderer::_draw_face()
+     * only applies it on your behalf while this stays nullopt, the default.
      */
     virtual std::optional<ml7::Vector2f> get_text_box_size() const { return std::nullopt; }
 

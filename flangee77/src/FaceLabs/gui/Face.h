@@ -169,9 +169,12 @@ public:
      * Combines, independently per component: `get_preferred_size()`, if actually
      * set (a component `<= 0` counts as not set), else this face's own calculated,
      * content-based size (see `_calculate_preferred_size()`; default `{0, 0}`,
-     * i.e., no particular opinion; most face types don't have one yet). A plain,
-     * content-less face (e.g., `faces::Panel`) therefore reports `{0, 0}` unless
-     * explicitly told otherwise.
+     * i.e., no particular opinion; most face types don't have one yet) plus
+     * `get_effective_padding()` (the calculated size is content-only; an explicit
+     * override is assumed to already have been picked with padding in mind). A
+     * plain, content-less face (e.g., `faces::Panel`) therefore reports whatever
+     * its own padding alone amounts to (`{0, 0}` by default) unless explicitly
+     * told otherwise.
      */
     ml7::Vector2f get_effective_preferred_size() const;
 
@@ -193,11 +196,20 @@ public:
      * `layout::Layout`) is allowed to shrink it while distributing space among
      * several children. Combines, independently per component: `get_minimum_size()`,
      * if actually set (a component `<= 0` counts as not set), else this face's own
-     * calculated, content-based size (see `_calculate_minimum_size()`. A plain,
-     * content-less face (e.g., `faces::Panel`) might report `{0, 0}` unless
+     * calculated, content-based size (see `_calculate_minimum_size()`) plus
+     * `get_effective_padding()` (the calculated size is content-only; an explicit
+     * override is assumed to already have been picked with padding in mind). A
+     * plain, content-less face (e.g., `faces::Panel`) might report `{0, 0}` unless
      * explicitly told otherwise.
      */
     ml7::Vector2f get_effective_minimum_size() const;
+
+    /**
+     * Returns this face's effective padding: its own style's `Style::padding`
+     * (see `get_effective_style()`), i.e., the space kept between its own bounds
+     * and its actual content, independently on each side.
+     */
+    Padding get_effective_padding() const { return get_effective_style().padding; }
 
     /**
      * Returns this face's anchor flags; see `Anchor`. Default: Left|Top, same as
@@ -413,18 +425,22 @@ protected:
     /**
      * Returns this face's own calculated preferred size, based on its own content,
      * for whichever component(s) of `get_effective_preferred_size()` don't have an
-     * explicit override (see `set_preferred_size()`). Default: `{0, 0}` (no
-     * particular opinion). Override in a concrete face type whose natural size
-     * follows from its own content (e.g., `faces::Label` from its text).
+     * explicit override (see `set_preferred_size()`). Content-only: `get_effective_padding()`
+     * is added on top automatically (see `get_effective_preferred_size()`), not this
+     * method's own concern. Default: `{0, 0}` (no particular opinion). Override in a
+     * concrete face type whose natural size follows from its own content (e.g.,
+     * `faces::Label` from its text).
      */
     virtual ml7::Vector2f _calculate_preferred_size() const { return {}; }
 
     /**
      * Returns this face's own calculated minimum size, based on its own content,
      * for whichever component(s) of `get_effective_minimum_size()` don't have an
-     * explicit override (see `set_minimum_size()`). Default: `{0, 0}` (no
-     * particular opinion). Override in a concrete face type whose natural size
-     * follows from its own content (e.g., `faces::Label` from its text).
+     * explicit override (see `set_minimum_size()`). Content-only: `get_effective_padding()`
+     * is added on top automatically, (see `get_effective_minimum_size()`), not this
+     * method's own concern. Default: `{0, 0}` (no particular opinion). Override in
+     * a concrete face type whose natural size follows from its own content (e.g.,
+     * `faces::Label` from its text).
      */
     virtual ml7::Vector2f _calculate_minimum_size() const { return {}; }
 
