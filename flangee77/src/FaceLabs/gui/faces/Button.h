@@ -4,6 +4,8 @@
 #include "../HasBackground.h"
 #include "../HasText.h"
 
+#include <FaceLabs/fonts/Font.h>
+
 #include <CoreLabs/behavioral/Signal.h>
 #include <CoreLabs/string.h>
 
@@ -78,9 +80,36 @@ protected:
     /** A Button's _on_click() meaningfully does something, so Enter/Space (or a gamepad's "confirm" button) can activate it while focused. */
     bool _is_clickable() const override { return true; }
 
+    /**
+     * Returns this button's text's own natural (unwrapped) size, under its
+     * effective font/text style; see _calculate_text_size().
+     */
+    ml7::Vector2f _calculate_preferred_size() const override;
+
+    /**
+     * Returns this button's text's own natural (unwrapped) size, under its
+     * effective font/text style; see _calculate_text_size().
+     */
+    ml7::Vector2f _calculate_minimum_size() const override;
+
 
 
 private:
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Returns this button's text's own natural (unwrapped) size: however wide its
+     * single widest (explicit-break-delimited) line is, times however many such
+     * lines there are, under its effective font/text style. {0, 0} if it currently
+     * has no effective font (e.g., not yet part of a themed Shell). Cached, as
+     * long as neither the text nor the effective font have changed since.
+     */
+    ml7::Vector2f _calculate_text_size() const;
+
+
 
     // #############################################################################
     // Attributes
@@ -89,6 +118,11 @@ private:
     cl7::u32string _text;
 
     cl7::behavioral::Signal<> _clicked;
+
+    /** The inputs/result of the last _calculate_text_size() call; see there. */
+    mutable fonts::Font* _cached_font = nullptr;
+    mutable cl7::u32string _cached_text;
+    mutable ml7::Vector2f _cached_text_size;
 
 }; // class Button
 

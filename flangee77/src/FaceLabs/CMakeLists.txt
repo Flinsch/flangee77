@@ -38,6 +38,7 @@ target_sources(flangee77
     gui/Theme.cpp
     gui/TrackControl.cpp
 
+    gui/faces/Button.cpp
     gui/faces/CheckBox.cpp
     gui/faces/DropDown.cpp
     gui/faces/Frame.cpp

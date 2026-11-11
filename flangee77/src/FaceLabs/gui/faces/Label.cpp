@@ -43,8 +43,7 @@ namespace fl7::gui::faces {
      * single widest (explicit-break-delimited) line is, times however many such
      * lines there are, under its effective font/text style. {0, 0} if it currently
      * has no effective font (e.g., not yet part of a themed Shell). Cached, as
-     * long as neither the text nor the effective font have changed since (see
-     * this method's own definition, Label.cpp).
+     * long as neither the text nor the effective font have changed since.
      */
     ml7::Vector2f Label::_calculate_text_size() const
     {
