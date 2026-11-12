@@ -1,5 +1,12 @@
 var NAVTREEINDEX64 =
 {
+"dd/d75/classpl7_1_1ArgumentBag.html#a56aaf034c791d615d8514e3daa18ee6f":[7,0,5,1,23],
+"dd/d75/classpl7_1_1ArgumentBag.html#a57ef0996594b53ea7f9df78e3de4ea6c":[5,0,5,1,13],
+"dd/d75/classpl7_1_1ArgumentBag.html#a57ef0996594b53ea7f9df78e3de4ea6c":[7,0,5,1,13],
+"dd/d75/classpl7_1_1ArgumentBag.html#a62b68c9e5646f77c64bc088965365130":[5,0,5,1,6],
+"dd/d75/classpl7_1_1ArgumentBag.html#a62b68c9e5646f77c64bc088965365130":[7,0,5,1,6],
+"dd/d75/classpl7_1_1ArgumentBag.html#a66c364a28379fb2783dfca3ff309631f":[5,0,5,1,10],
+"dd/d75/classpl7_1_1ArgumentBag.html#a66c364a28379fb2783dfca3ff309631f":[7,0,5,1,10],
 "dd/d75/classpl7_1_1ArgumentBag.html#a777f9057f127a8258ec37183811a3da1":[5,0,5,1,16],
 "dd/d75/classpl7_1_1ArgumentBag.html#a777f9057f127a8258ec37183811a3da1":[7,0,5,1,16],
 "dd/d75/classpl7_1_1ArgumentBag.html#a789e5d3584bc5b106a95d8c4e3b10d59":[5,0,5,1,15],
@@ -242,12 +249,5 @@ var NAVTREEINDEX64 =
 "dd/db8/DirtyLayerBoxes_8h.html":[8,0,7,1,7,8],
 "dd/db8/DirtyLayerBoxes_8h_source.html":[8,0,7,1,7,8],
 "dd/db9/ClipboardImpl_8h.html":[8,0,7,0,0,1],
-"dd/db9/ClipboardImpl_8h_source.html":[8,0,7,0,0,1],
-"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html":[5,0,3,0,0,0,1],
-"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html":[7,0,3,0,0,0,1],
-"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a042f1ac5056bae11e9f4abe4413e529a":[5,0,3,0,0,0,1,30],
-"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a042f1ac5056bae11e9f4abe4413e529a":[7,0,3,0,0,0,1,30],
-"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a0a20efe1364226ab156f6e6ca7e93b42":[5,0,3,0,0,0,1,22],
-"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a0a20efe1364226ab156f6e6ca7e93b42":[7,0,3,0,0,0,1,22],
-"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a0d263bc33d0af6eb78bbba3af35424c9":[5,0,3,0,0,0,1,43]
+"dd/db9/ClipboardImpl_8h_source.html":[8,0,7,0,0,1]
 };

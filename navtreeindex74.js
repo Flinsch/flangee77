@@ -1,5 +1,12 @@
 var NAVTREEINDEX74 =
 {
+"df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#ac41895c65ed1c24f1bcab28bffbb3172":[7,0,8,1,1,0,7,10],
+"df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#ac47d9ac3d64a64da342307220697d013":[5,0,8,2,1,0,9,13],
+"df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#ac47d9ac3d64a64da342307220697d013":[7,0,8,1,1,0,7,13],
+"df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#ac54639b9e50449b910c7c9f3aa081918":[5,0,8,2,1,0,9,9],
+"df/d9d/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl.html#ac54639b9e50449b910c7c9f3aa081918":[7,0,8,1,1,0,7,9],
+"df/d9d/namespacetl7_1_1reporting.html":[5,0,7,2],
+"df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740":[5,0,7,2,3],
 "df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a0f62bd7bdea7467a7f1e8ba33c7a4e67":[5,0,7,2,3,5],
 "df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a1f7d1395a521de43b8ee87a12ffb1691":[5,0,7,2,3,0],
 "df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740a22e8f7ac8846e5ba44a95cb0059ae68d":[5,0,7,2,3,3],
@@ -242,12 +249,5 @@ var NAVTREEINDEX74 =
 "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#abfe0e3eb2fd0e13e7f9ffa8415729a6b":[5,0,8,2,1,0,2,0,12],
 "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#abfe0e3eb2fd0e13e7f9ffa8415729a6b":[7,0,8,1,1,0,0,0,12],
 "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#ac4bf494701b54bb7fc1f9e9e93d92df8":[5,0,8,2,1,0,2,0,11],
-"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#ac4bf494701b54bb7fc1f9e9e93d92df8":[7,0,8,1,1,0,0,0,11],
-"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#aca77a612202cb905207a2c36f8863fb7":[5,0,8,2,1,0,2,0,1],
-"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#aca77a612202cb905207a2c36f8863fb7":[7,0,8,1,1,0,0,0,1],
-"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#acad9d193dd598670de342adf1d9ba886":[5,0,8,2,1,0,2,0,14],
-"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#acad9d193dd598670de342adf1d9ba886":[7,0,8,1,1,0,0,0,14],
-"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#ad5319160b7b8282e305bfe9a5806ce52":[5,0,8,2,1,0,2,0,6],
-"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#ad5319160b7b8282e305bfe9a5806ce52":[7,0,8,1,1,0,0,0,6],
-"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#ae83929841e45775fc1b17502ac9aa082":[5,0,8,2,1,0,2,0,13]
+"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#ac4bf494701b54bb7fc1f9e9e93d92df8":[7,0,8,1,1,0,0,0,11]
 };

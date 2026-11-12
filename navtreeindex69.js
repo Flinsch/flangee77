@@ -1,5 +1,12 @@
 var NAVTREEINDEX69 =
 {
+"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#a62269ec2fa487abd6acdb35d83c241e2":[7,0,8,0,1,4],
+"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#a70e0f9c450e2494a51a2db32f926fce3":[5,0,8,1,1,3],
+"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#a70e0f9c450e2494a51a2db32f926fce3":[7,0,8,0,1,3],
+"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#a9672a42efc8cd7802107d0d4ec075f21":[5,0,8,1,1,6],
+"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#a9672a42efc8cd7802107d0d4ec075f21":[7,0,8,0,1,6],
+"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#ab6d30b53f5582feaba448530970e5393":[5,0,8,1,1,1],
+"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#ab6d30b53f5582feaba448530970e5393":[7,0,8,0,1,1],
 "de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#afb29852aa68c621f35dc9ee9683b7e4a":[5,0,8,1,1,2],
 "de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#afb29852aa68c621f35dc9ee9683b7e4a":[7,0,8,0,1,2],
 "de/da1/classfl7_1_1fonts_1_1raster_1_1AbstractBitmapRasterizer.html":[5,0,3,0,1,1],
@@ -242,12 +249,5 @@ var NAVTREEINDEX69 =
 "de/dca/classxl7_1_1graphics_1_1RenderingDevice_1_1Attorney.html#a9778d1ee5d16b1ce8afda909275daae0":[7,0,8,1,14,0,3],
 "de/dca/classxl7_1_1graphics_1_1RenderingDevice_1_1Attorney.html#aa47b7cb40158e996c7dbf99d8afe0277":[5,0,8,2,14,0,2],
 "de/dca/classxl7_1_1graphics_1_1RenderingDevice_1_1Attorney.html#aa47b7cb40158e996c7dbf99d8afe0277":[7,0,8,1,14,0,2],
-"de/dca/classxl7_1_1graphics_1_1RenderingDevice_1_1Attorney.html#ae446c6fab25a3b56ef700c6ac4162640":[5,0,8,2,14,0,0],
-"de/dca/classxl7_1_1graphics_1_1RenderingDevice_1_1Attorney.html#ae446c6fab25a3b56ef700c6ac4162640":[7,0,8,1,14,0,0],
-"de/dcb/structml7_1_1ops_1_1ramp.html":[5,0,4,3,2],
-"de/dcb/structml7_1_1ops_1_1ramp.html":[7,0,4,3,2],
-"de/dcb/structml7_1_1ops_1_1ramp.html#a88181489e6bb12b4c72dbf2eb0ed432c":[5,0,4,3,2,0],
-"de/dcb/structml7_1_1ops_1_1ramp.html#a88181489e6bb12b4c72dbf2eb0ed432c":[7,0,4,3,2,0],
-"de/dd1/Button_8cpp.html":[8,0,3,1,0,0],
-"de/dd1/toml_2detail_2Lexer_8cpp.html":[8,0,2,5,0,8]
+"de/dca/classxl7_1_1graphics_1_1RenderingDevice_1_1Attorney.html#ae446c6fab25a3b56ef700c6ac4162640":[5,0,8,2,14,0,0]
 };

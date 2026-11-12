@@ -1,5 +1,6 @@
 var NAVTREEINDEX60 =
 {
+"dc/db3/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1shaders_1_1VertexShaderImpl_1_1Attorney.html":[5,0,8,2,1,1,3,3,0],
 "dc/db3/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1shaders_1_1VertexShaderImpl_1_1Attorney.html":[7,0,8,1,1,1,1,3,0],
 "dc/db3/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1shaders_1_1VertexShaderImpl_1_1Attorney.html#aa6d860d65cc0083a5bd02c9493097cd7":[5,0,8,2,1,1,3,3,0,1],
 "dc/db3/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1shaders_1_1VertexShaderImpl_1_1Attorney.html#aa6d860d65cc0083a5bd02c9493097cd7":[7,0,8,1,1,1,1,3,0,1],
@@ -12,8 +13,8 @@ var NAVTREEINDEX60 =
 "dc/db4/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html#a558c2075425a3a40cbdff03c11d93821":[7,0,8,1,1,0,5,0,0,0],
 "dc/db4/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html#ad129eac9168495c5a941c97438a07356":[5,0,8,2,1,0,7,0,0,1],
 "dc/db4/structxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html#ad129eac9168495c5a941c97438a07356":[7,0,8,1,1,0,5,0,0,1],
-"dc/db6/HasText_8h.html":[8,0,3,1,15],
-"dc/db6/HasText_8h_source.html":[8,0,3,1,15],
+"dc/db6/HasText_8h.html":[8,0,3,1,16],
+"dc/db6/HasText_8h_source.html":[8,0,3,1,16],
 "dc/db8/EncodeResult_8h.html":[8,0,1,8,0,12],
 "dc/db8/EncodeResult_8h_source.html":[8,0,1,8,0,12],
 "dc/dba/classxl7_1_1graphics_1_1pipeline_1_1PixelShaderStage.html":[5,0,8,2,3,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX60 =
 "dc/def/structml7_1_1Ray2.html#ab639a71b5230b5f20ffb1b515c3d1b66":[5,0,4,20,15],
 "dc/def/structml7_1_1Ray2.html#ab639a71b5230b5f20ffb1b515c3d1b66":[7,0,4,20,15],
 "dc/def/structml7_1_1Ray2.html#abe88e2daaa0ab242a1dd8fa43c3b458e":[5,0,4,20,12],
-"dc/def/structml7_1_1Ray2.html#abe88e2daaa0ab242a1dd8fa43c3b458e":[7,0,4,20,12],
-"dc/def/structml7_1_1Ray2.html#ad73a147a88862bd482515125ac27a302":[5,0,4,20,1]
+"dc/def/structml7_1_1Ray2.html#abe88e2daaa0ab242a1dd8fa43c3b458e":[7,0,4,20,12]
 };

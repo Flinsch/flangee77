@@ -1,5 +1,12 @@
 var NAVTREEINDEX66 =
 {
+"dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html#a89066d58ef99fb6bc83181bd50dd74ed":[5,0,8,2,4,2,2],
+"dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html#a89066d58ef99fb6bc83181bd50dd74ed":[7,0,8,1,4,2,2],
+"dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html#af3ddf62deb3fd0f5d099cb11d6aec724":[5,0,8,2,4,2,1],
+"dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html#af3ddf62deb3fd0f5d099cb11d6aec724":[7,0,8,1,4,2,1],
+"dd/df9/ChannelOrder_8cpp.html":[8,0,7,1,9],
+"dd/df9/ChannelOrder_8cpp.html#a37231beeacea2d13cdb6f43bb7bcadfa":[8,0,7,1,9,0],
+"dd/dfd/platform_2detail_2windows_2memory_8cpp.html":[8,0,1,5,0,1,4],
 "dd/dff/traits_8h.html":[8,0,1,8,0,21],
 "dd/dff/traits_8h_source.html":[8,0,1,8,0,21],
 "de/d00/classxl7_1_1graphics_1_1textures_1_1CubemapUpdater.html":[5,0,8,2,7,2],
@@ -219,7 +226,7 @@ var NAVTREEINDEX66 =
 "de/d15/conceptcl7_1_1any__char__ptr.html":[5,0,1,37],
 "de/d15/conceptcl7_1_1any__char__ptr.html":[6,0,2],
 "de/d17/DigitalState_8cpp.html":[8,0,7,2,3],
-"de/d18/TrackControl_8cpp.html":[8,0,3,1,29],
+"de/d18/TrackControl_8cpp.html":[8,0,3,1,30],
 "de/d1b/Binder_8cpp.html":[8,0,2,1,0],
 "de/d1b/datetime_8h.html":[8,0,1,7,1],
 "de/d1b/datetime_8h_source.html":[8,0,1,7,1],
@@ -242,12 +249,5 @@ var NAVTREEINDEX66 =
 "de/d22/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl.html#a8659d938e8bee2f305022aef350f545c":[5,0,8,2,1,0,3,4,7],
 "de/d22/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl.html#a8659d938e8bee2f305022aef350f545c":[7,0,8,1,1,0,1,4,7],
 "de/d22/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl.html#a881b31f741fafb9102b1575294c54411":[5,0,8,2,1,0,3,4,1],
-"de/d22/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl.html#a881b31f741fafb9102b1575294c54411":[7,0,8,1,1,0,1,4,1],
-"de/d22/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl.html#a8e1bca13b80dd5ef164dde1841f034a9":[5,0,8,2,1,0,3,4,10],
-"de/d22/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl.html#a8e1bca13b80dd5ef164dde1841f034a9":[7,0,8,1,1,0,1,4,10],
-"de/d22/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl.html#a9c8c84034f62d03998d54a379659ed9b":[5,0,8,2,1,0,3,4,14],
-"de/d22/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl.html#a9c8c84034f62d03998d54a379659ed9b":[7,0,8,1,1,0,1,4,14],
-"de/d22/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl.html#aafb07c79cdc48d2ecab0c1e2f5d58fd0":[5,0,8,2,1,0,3,4,11],
-"de/d22/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl.html#aafb07c79cdc48d2ecab0c1e2f5d58fd0":[7,0,8,1,1,0,1,4,11],
-"de/d22/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl.html#ac8ebaf76ac87f6097f25b25654f30c11":[5,0,8,2,1,0,3,4,12]
+"de/d22/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl.html#a881b31f741fafb9102b1575294c54411":[7,0,8,1,1,0,1,4,1]
 };

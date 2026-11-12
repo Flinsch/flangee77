@@ -1,5 +1,12 @@
 var NAVTREEINDEX75 =
 {
+"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#aca77a612202cb905207a2c36f8863fb7":[5,0,8,2,1,0,2,0,1],
+"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#aca77a612202cb905207a2c36f8863fb7":[7,0,8,1,1,0,0,0,1],
+"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#acad9d193dd598670de342adf1d9ba886":[5,0,8,2,1,0,2,0,14],
+"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#acad9d193dd598670de342adf1d9ba886":[7,0,8,1,1,0,0,0,14],
+"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#ad5319160b7b8282e305bfe9a5806ce52":[5,0,8,2,1,0,2,0,6],
+"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#ad5319160b7b8282e305bfe9a5806ce52":[7,0,8,1,1,0,0,0,6],
+"df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#ae83929841e45775fc1b17502ac9aa082":[5,0,8,2,1,0,2,0,13],
 "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#ae83929841e45775fc1b17502ac9aa082":[7,0,8,1,1,0,0,0,13],
 "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#aeb01af1ca6d235c28a5ea4c73d4ecc16":[5,0,8,2,1,0,2,0,3],
 "df/dd3/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl.html#aeb01af1ca6d235c28a5ea4c73d4ecc16":[7,0,8,1,1,0,0,0,3],
@@ -115,8 +122,8 @@ var NAVTREEINDEX75 =
 "df/dec/classxl7_1_1graphics_1_1textures_1_1TextureManager.html#afa4a3446c432ee5dd325f9a9649815ba":[7,0,8,1,7,27,4],
 "df/def/Document_8h.html":[8,0,2,6,5],
 "df/def/Document_8h_source.html":[8,0,2,6,5],
-"df/def/HasSelection_8h.html":[8,0,3,1,14],
-"df/def/HasSelection_8h_source.html":[8,0,3,1,14],
+"df/def/HasSelection_8h.html":[8,0,3,1,15],
+"df/def/HasSelection_8h_source.html":[8,0,3,1,15],
 "df/df0/FillMode_8h.html":[8,0,7,1,5,11],
 "df/df0/FillMode_8h_source.html":[8,0,7,1,5,11],
 "df/df1/classdl7_1_1json_1_1util_1_1Unescaper.html":[5,0,2,3,1,1],
@@ -242,12 +249,5 @@ var NAVTREEINDEX75 =
 "functions_f.html":[7,3,0,6],
 "functions_func.html":[7,3,1],
 "functions_func.html":[7,3,1,0],
-"functions_func_a.html":[7,3,1,1],
-"functions_func_b.html":[7,3,1,2],
-"functions_func_c.html":[7,3,1,3],
-"functions_func_d.html":[7,3,1,4],
-"functions_func_e.html":[7,3,1,5],
-"functions_func_f.html":[7,3,1,6],
-"functions_func_g.html":[7,3,1,7],
-"functions_func_h.html":[7,3,1,8]
+"functions_func_a.html":[7,3,1,1]
 };

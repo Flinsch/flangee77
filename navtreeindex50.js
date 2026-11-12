@@ -1,5 +1,6 @@
 var NAVTREEINDEX50 =
 {
+"da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html#aa3b6338247d5f3f77bb6fc9fea12285f":[7,0,8,1,0,0,2,1,6],
 "da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html#aa9e03ef5a05f544052f137c6d87396a4":[5,0,8,2,0,0,2,1,1],
 "da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html#aa9e03ef5a05f544052f137c6d87396a4":[7,0,8,1,0,0,2,1,1],
 "da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html#ada7473d523dfa3c4f3d311301918fbb3":[5,0,8,2,0,0,2,1,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX50 =
 "da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html#a156ad8ea7317f7b9231c34243a136d1a":[5,0,0,1,0,13],
 "da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html#a156ad8ea7317f7b9231c34243a136d1a":[7,0,0,0,0,13],
 "da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html#a466bd57f324a3ba34ef85496e123a98b":[5,0,0,1,0,3],
-"da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html#a466bd57f324a3ba34ef85496e123a98b":[7,0,0,0,0,3],
-"da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html#a562b8579b8cde8664ece426beeec11de":[5,0,0,1,0,15]
+"da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html#a466bd57f324a3ba34ef85496e123a98b":[7,0,0,0,0,3]
 };

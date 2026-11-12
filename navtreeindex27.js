@@ -1,5 +1,6 @@
 var NAVTREEINDEX27 =
 {
+"d6/dbf/classdl7_1_1Buffer3d.html#aebcebfaaea8d90165d8e8beec439ff0c":[7,0,2,11,11],
 "d6/dbf/classdl7_1_1Buffer3d.html#af8feed5d857c0a6f3b489c88b951d34e":[5,0,2,11,4],
 "d6/dbf/classdl7_1_1Buffer3d.html#af8feed5d857c0a6f3b489c88b951d34e":[7,0,2,11,4],
 "d6/dbf/classdl7_1_1Buffer3d.html#afd151c84da35c5b92ca0e174b237c16f":[5,0,2,11,12],
@@ -78,8 +79,8 @@ var NAVTREEINDEX27 =
 "d6/df0/MipFilterType_8h_source.html":[8,0,7,1,5,14],
 "d6/df1/IndexBufferUpdater_8h.html":[8,0,7,1,2,8],
 "d6/df1/IndexBufferUpdater_8h_source.html":[8,0,7,1,2,8],
-"d6/df2/TrackControl_8h.html":[8,0,3,1,30],
-"d6/df2/TrackControl_8h_source.html":[8,0,3,1,30],
+"d6/df2/TrackControl_8h.html":[8,0,3,1,31],
+"d6/df2/TrackControl_8h_source.html":[8,0,3,1,31],
 "d6/df3/classcl7_1_1profiling_1_1Registry_1_1Attorney.html":[5,0,1,9,1,0],
 "d6/df3/classcl7_1_1profiling_1_1Registry_1_1Attorney.html":[7,0,1,7,1,0],
 "d6/df3/classcl7_1_1profiling_1_1Registry_1_1Attorney.html#a183db5a91d01580113f39dd9f7e769a3":[5,0,1,9,1,0,0],
@@ -213,8 +214,8 @@ var NAVTREEINDEX27 =
 "d7/d35/XiaoLabs_2graphics_2impl_2direct3d11_2errors_8h_source.html":[8,0,7,1,1,0,5],
 "d7/d36/Vector4_8h.html":[8,0,4,31],
 "d7/d36/Vector4_8h_source.html":[8,0,4,31],
-"d7/d44/HasBackground_8h.html":[8,0,3,1,10],
-"d7/d44/HasBackground_8h_source.html":[8,0,3,1,10],
+"d7/d44/HasBackground_8h.html":[8,0,3,1,11],
+"d7/d44/HasBackground_8h_source.html":[8,0,3,1,11],
 "d7/d46/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1RasterizerStateImpl.html":[5,0,8,2,1,0,4,2],
 "d7/d46/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1RasterizerStateImpl.html":[7,0,8,1,1,0,2,2],
 "d7/d46/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1RasterizerStateImpl.html#a028879301ddf738764ab72390103bc9f":[5,0,8,2,1,0,4,2,9],
@@ -248,6 +249,5 @@ var NAVTREEINDEX27 =
 "d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html":[5,0,8,2,12,2],
 "d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html":[7,0,8,1,12,2],
 "d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html#a0dd5b7081573c8089d2217199f075686":[5,0,8,2,12,2,0],
-"d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html#a0dd5b7081573c8089d2217199f075686":[7,0,8,1,12,2,0],
-"d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html#adb8c2e0d8c34d18c875770cde82583ad":[5,0,8,2,12,2,2]
+"d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html#a0dd5b7081573c8089d2217199f075686":[7,0,8,1,12,2,0]
 };

@@ -1,5 +1,6 @@
 var NAVTREEINDEX24 =
 {
+"d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html#a73286939a896f617919e70cf685d260b":[5,0,3,1,0,2,28],
 "d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html#a73286939a896f617919e70cf685d260b":[7,0,3,1,0,2,28],
 "d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html#a7636be26766830b66bcf41977d2e0015":[5,0,3,1,0,2,17],
 "d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html#a7636be26766830b66bcf41977d2e0015":[7,0,3,1,0,2,17],
@@ -53,8 +54,8 @@ var NAVTREEINDEX24 =
 "d6/d2f/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Writer.html#abb1a4189e9a38dbba0777625f23c9ee5":[7,0,8,1,0,0,1,6,3],
 "d6/d2f/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Writer.html#abee21dc5cef80476c22eee7dd833ee46":[5,0,8,2,0,0,1,6,7],
 "d6/d2f/classxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Writer.html#abee21dc5cef80476c22eee7dd833ee46":[7,0,8,1,0,0,1,6,7],
-"d6/d32/RadioGroup_8h.html":[8,0,3,1,20],
-"d6/d32/RadioGroup_8h_source.html":[8,0,3,1,20],
+"d6/d32/RadioGroup_8h.html":[8,0,3,1,21],
+"d6/d32/RadioGroup_8h_source.html":[8,0,3,1,21],
 "d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html":[5,0,3,0,0,0,1,5],
 "d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html":[7,0,3,0,0,0,1,5],
 "d6/d33/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1OpenTypeFontMetric.html#a170d99c57f609337c2e3d1ad1d4f3132":[5,0,3,0,0,0,1,5,2],
@@ -77,7 +78,7 @@ var NAVTREEINDEX24 =
 "d6/d3b/RleEncoder_8cpp.html":[8,0,7,1,0,0,2,5],
 "d6/d3b/toml_2detail_2Generator_8h.html":[8,0,2,5,0,7],
 "d6/d3b/toml_2detail_2Generator_8h_source.html":[8,0,2,5,0,7],
-"d6/d3e/Face_8cpp.html":[8,0,3,1,8],
+"d6/d3e/Face_8cpp.html":[8,0,3,1,9],
 "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html":[5,0,8,2,6,4],
 "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html":[7,0,8,1,6,4],
 "d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html#a01f4361f1e425b228ccbd2ea149bd994":[5,0,8,2,6,4,11],
@@ -172,8 +173,8 @@ var NAVTREEINDEX24 =
 "d6/d51/structxl7_1_1graphics_1_1meshes_1_1VertexLayout_1_1Element.html#afdeb411c2add838c434ad4825397f6e5":[7,0,8,1,2,17,0,3],
 "d6/d53/direct3d11_2GraphicsSystemImpl_8h.html":[8,0,7,1,1,0,7],
 "d6/d53/direct3d11_2GraphicsSystemImpl_8h_source.html":[8,0,7,1,1,0,7],
-"d6/d55/NineSliceChrome_8h.html":[8,0,3,1,17],
-"d6/d55/NineSliceChrome_8h_source.html":[8,0,3,1,17],
+"d6/d55/NineSliceChrome_8h.html":[8,0,3,1,18],
+"d6/d55/NineSliceChrome_8h_source.html":[8,0,3,1,18],
 "d6/d58/structcl7_1_1logging_1_1LogEntry.html":[5,0,1,6,5],
 "d6/d58/structcl7_1_1logging_1_1LogEntry.html":[7,0,1,5,5],
 "d6/d58/structcl7_1_1logging_1_1LogEntry.html#a1927025ae20ee3145488e44c4545c3dd":[5,0,1,6,5,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX24 =
 "d6/d64/structml7_1_1Vector3.html#a3698d0259dd434281b483444294f6764":[7,0,4,23,50],
 "d6/d64/structml7_1_1Vector3.html#a3929c7bce54c5170eb231503fdb24ea7":[5,0,4,23,51],
 "d6/d64/structml7_1_1Vector3.html#a3929c7bce54c5170eb231503fdb24ea7":[7,0,4,23,51],
-"d6/d64/structml7_1_1Vector3.html#a3963d9699cda8f362fac95a6a9a258f7":[5,0,4,23,63],
-"d6/d64/structml7_1_1Vector3.html#a3963d9699cda8f362fac95a6a9a258f7":[7,0,4,23,63]
+"d6/d64/structml7_1_1Vector3.html#a3963d9699cda8f362fac95a6a9a258f7":[5,0,4,23,63]
 };

@@ -1,5 +1,6 @@
 var NAVTREEINDEX57 =
 {
+"dc/d18/memory_8h.html":[8,0,1,26],
 "dc/d18/memory_8h_source.html":[8,0,1,26],
 "dc/d19/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1states.html":[5,0,8,2,1,0,4],
 "dc/d1a/classxl7_1_1graphics_1_1meshes_1_1DirtyRange.html":[5,0,8,2,2,1],
@@ -235,8 +236,8 @@ var NAVTREEINDEX57 =
 "dc/d58/structdl7_1_1syntax_1_1Token.html#aea98731c04dc0b4c55b6d14caf04ff8f":[5,0,2,4,27,1],
 "dc/d58/structdl7_1_1syntax_1_1Token.html#aea98731c04dc0b4c55b6d14caf04ff8f":[7,0,2,4,27,1],
 "dc/d5c/MeshManager_8cpp.html":[8,0,7,1,2,18],
-"dc/d5e/HasCaret_8h.html":[8,0,3,1,11],
-"dc/d5e/HasCaret_8h_source.html":[8,0,3,1,11],
+"dc/d5e/HasCaret_8h.html":[8,0,3,1,12],
+"dc/d5e/HasCaret_8h_source.html":[8,0,3,1,12],
 "dc/d61/FilterReconstructor_8cpp.html":[8,0,7,1,0,0,1,6],
 "dc/d62/ImageAtlas_8h.html":[8,0,7,1,0,6],
 "dc/d62/ImageAtlas_8h_source.html":[8,0,7,1,0,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX57 =
 "dc/d64/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1errors.html#a2e4cf9f4019c9768e3aa689d6f676922":[5,0,8,2,1,1,0,0],
 "dc/d64/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1errors.html#a86bfdc5f93664887028a9f3614b5611a":[5,0,8,2,1,1,0,1],
 "dc/d69/detail_2windows_2filesystem_8cpp.html":[8,0,1,5,0,1,2],
-"dc/d6e/direct3d11_2RenderingDeviceImpl_8cpp.html":[8,0,7,1,1,0,13],
-"dc/d6e/namespacefl7_1_1fonts_1_1TextLayout.html":[5,0,3,0,3]
+"dc/d6e/direct3d11_2RenderingDeviceImpl_8cpp.html":[8,0,7,1,1,0,13]
 };
