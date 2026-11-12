@@ -13,18 +13,15 @@ namespace fl7::gui {
     // #############################################################################
 
     /**
-     * While no layout is attached (see `get_layout()`), shifts every child inward
-     * by this container's own effective padding's left/top (see
-     * `get_effective_padding()`): a child's own `get_position()` at `{0, 0}` then
-     * actually renders/is hit-tested at `{padding.left, padding.top}`, same as any
-     * other `Collection::get_scroll_offset()` shift. `{0, 0}` (no shift) instead
-     * once a layout is attached: see this class's own doc comment.
+     * Shifts every child inward by this container's own effective padding's left/top
+     * (see `get_effective_padding()`): a child's own `get_position()` at `{0, 0}`
+     * then actually renders/is hit-tested at `{padding.left, padding.top}`, same as
+     * any other `Collection::get_scroll_offset()` shift. `{0, 0}` (no shift) while
+     * a layout is attached instead, since `get_effective_padding()` itself already
+     * reports none then (see `_applies_own_padding()`).
      */
     ml7::Vector2f Container::get_scroll_offset() const
     {
-        if (get_layout())
-            return Collection::get_scroll_offset();
-
         const Padding padding = get_effective_padding();
         return {-padding.left, -padding.top}; // Negated: see Collection::get_scroll_offset()'s own sign convention.
     }

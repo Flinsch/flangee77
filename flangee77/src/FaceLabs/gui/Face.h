@@ -207,9 +207,10 @@ public:
     /**
      * Returns this face's effective padding: its own style's `Style::padding`
      * (see `get_effective_style()`), i.e., the space kept between its own bounds
-     * and its actual content, independently on each side.
+     * and its actual content, independently on each side; `{0, 0, 0, 0}` while
+     * `_applies_own_padding()` says no instead (see there).
      */
-    Padding get_effective_padding() const { return get_effective_style().padding; }
+    Padding get_effective_padding() const { return _applies_own_padding() ? get_effective_style().padding : Padding{}; }
 
     /**
      * Returns this face's anchor flags; see `Anchor`. Default: Left|Top, same as
@@ -443,6 +444,19 @@ protected:
      * `faces::Label` from its text).
      */
     virtual ml7::Vector2f _calculate_minimum_size() const { return {}; }
+
+    /**
+     * Returns whether this face's own effective padding (see
+     * `get_effective_padding()`) should actually apply right now. `false` forces it
+     * to `{0, 0, 0, 0}` regardless of style/theme. Default: `true`. `Container`
+     * overrides this to say `false` while a layout is attached (see its own doc
+     * comment): that layout's own, separate padding concept (if it has one, e.g.,
+     * `layout::BoxLayout::get_padding()`) already covers the same space, so adding
+     * `Style::padding` on top of it as well, both for the reported preferred/minimum
+     * size and for shifting children (see `Container::get_scroll_offset()`), would
+     * double it up.
+     */
+    virtual bool _applies_own_padding() const { return true; }
 
     /**
      * Returns whether the specified point, in this face's own local coordinate

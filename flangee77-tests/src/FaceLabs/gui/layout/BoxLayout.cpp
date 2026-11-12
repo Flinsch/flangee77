@@ -2,6 +2,7 @@
 #include <TestLabs/TestSuite.h>
 
 #include <FaceLabs/gui/Container.h>
+#include <FaceLabs/gui/Style.h>
 #include <FaceLabs/gui/layout/BoxLayout.h>
 
 
@@ -293,4 +294,27 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  Container::get_effective
     TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().y, 34.0f ); // 30 + top(2) + bottom(2).
     TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().x, 9.0f ); // 5 + left(2) + right(2).
     TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().y, 12.0f ); // 8 + top(2) + bottom(2).
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  a Container's own Style::padding stops applying once this layout is attached (see Face::_applies_own_padding()), so it doesn't double up on top of this layout's own, separate get_padding()" )
+{
+    fl7::gui::Container container;
+
+    auto& child = container.add_child<fl7::gui::Container>();
+    child.set_preferred_size({20.0f, 30.0f});
+
+    fl7::gui::Style style;
+    style.padding = fl7::gui::Padding(50.0f); // Deliberately huge: would obviously show up below if it applied at all.
+    container.set_style_override(style);
+
+    container.set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Horizontal, 0.0f, fl7::gui::Padding(2.0f));
+
+    // Only this layout's own 2px padding shows up, not the container's own 50px on top of it.
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().x, 24.0f ); // 20 + left(2) + right(2).
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().y, 34.0f ); // 30 + top(2) + bottom(2).
+
+    // Nor does the container's own 50px padding shift the child (see
+    // Container::get_scroll_offset()): also suppressed while this layout is attached.
+    TESTLABS_CHECK_EQ_FLT( container.get_scroll_offset().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_scroll_offset().y, 0.0f );
 }

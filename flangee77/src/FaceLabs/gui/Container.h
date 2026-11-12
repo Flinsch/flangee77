@@ -16,12 +16,14 @@ namespace fl7::gui {
 /**
  * A Collection with arbitrary, publicly addable children (e.g., `Panel`,
  * `GroupBox`), optionally arranged by a pluggable layout (see
- * `layout::Layout/set_layout()`). With none attached (the default), children just
+ * `layout::Layout`/`set_layout()`). With none attached (the default), children just
  * keep whatever position/size they're explicitly given, shifted inward by this
  * container's own effective padding (see `get_scroll_offset()`). Once a layout is
- * attached, that padding shift no longer applies here (the layout itself would have
- * to account for it; none currently do, `layout::BoxLayout` has its own, separate
- * padding concept instead).
+ * attached, this container's own `Style::padding` stops applying altogether instead
+ * (see `_applies_own_padding()`): neither that child shift nor its own reported
+ * preferred/minimum size (see `Face::get_effective_preferred_size()`/`get_effective_minimum_size()`),
+ * the layout itself owns that space instead, if it has its own, separate concept of
+ * it (e.g., `layout::BoxLayout::get_padding()`).
  */
 class Container
     : public Collection
@@ -76,12 +78,12 @@ public:
     // #############################################################################
 
     /**
-     * While no layout is attached (see `get_layout()`), shifts every child inward
-     * by this container's own effective padding's left/top (see
-     * `get_effective_padding()`): a child's own `get_position()` at `{0, 0}` then
-     * actually renders/is hit-tested at `{padding.left, padding.top}`, same as any
-     * other `Collection::get_scroll_offset()` shift. `{0, 0}` (no shift) instead
-     * once a layout is attached: see this class's own doc comment.
+     * Shifts every child inward by this container's own effective padding's left/top
+     * (see `get_effective_padding()`): a child's own `get_position()` at `{0, 0}`
+     * then actually renders/is hit-tested at `{padding.left, padding.top}`, same as
+     * any other `Collection::get_scroll_offset()` shift. `{0, 0}` (no shift) while
+     * a layout is attached instead, since `get_effective_padding()` itself already
+     * reports none then (see `_applies_own_padding()`).
      */
     ml7::Vector2f get_scroll_offset() const override;
 
@@ -131,6 +133,12 @@ protected:
         if (_layout)
             _layout->perform(*this);
     }
+
+    /**
+     * `false` while a layout is attached (see `get_layout()`); `true` otherwise:
+     * see this class's own doc comment.
+     */
+    bool _applies_own_padding() const override { return !get_layout(); }
 
     /**
      * With no layout set (children just keep whatever position/size they're
