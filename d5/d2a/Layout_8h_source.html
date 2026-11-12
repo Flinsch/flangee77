@@ -96,7 +96,7 @@ $(function(){initNavTree('d5/d2a/Layout_8h_source.html','../../',''); });
 <a href="../../d5/d2a/Layout_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef FL7_GUI_LAYOUT_LAYOUT_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define FL7_GUI_LAYOUT_LAYOUT_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="../../de/d99/root_8h.html">CoreLabs/root.h</a>&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="../../d0/df7/Vector2_8h.html">MathLabs/Vector2.h</a>&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
@@ -122,22 +122,29 @@ $(function(){initNavTree('d5/d2a/Layout_8h_source.html','../../',''); });
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment">// #############################################################################</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a3af6722d70c7000c74af3101b7ab360c">   41</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a3af6722d70c7000c74af3101b7ab360c">perform</a>(<a class="code hl_class" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a>&amp; container) = 0;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}; <span class="comment">// class Layout</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a3a4f407032920ae178c42bfb88f87096">   52</a></span>    <span class="keyword">virtual</span> <a class="code hl_typedef" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> <a class="code hl_function" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a3a4f407032920ae178c42bfb88f87096">calculate_preferred_size</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a>&amp; container)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> {}; }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a987254ce293a955583764b7fe7619c3f">   63</a></span>    <span class="keyword">virtual</span> <a class="code hl_typedef" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> <a class="code hl_function" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a987254ce293a955583764b7fe7619c3f">calculate_minimum_size</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a>&amp; container)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> {}; }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}; <span class="comment">// class Layout</span></div>
 </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>} <span class="comment">// namespace fl7::gui::layout</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#endif </span><span class="comment">// FL7_GUI_LAYOUT_LAYOUT_H</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>} <span class="comment">// namespace fl7::gui::layout</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif </span><span class="comment">// FL7_GUI_LAYOUT_LAYOUT_H</span></div>
+<div class="ttc" id="aVector2_8h_html"><div class="ttname"><a href="../../d0/df7/Vector2_8h.html">Vector2.h</a></div></div>
 <div class="ttc" id="aclassfl7_1_1gui_1_1Container_html"><div class="ttname"><a href="../../dd/d69/classfl7_1_1gui_1_1Container.html">fl7::gui::Container</a></div><div class="ttdef"><b>Definition</b> Container.h:28</div></div>
 <div class="ttc" id="aclassfl7_1_1gui_1_1layout_1_1Layout_html"><div class="ttname"><a href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html">fl7::gui::layout::Layout</a></div><div class="ttdef"><b>Definition</b> Layout.h:25</div></div>
+<div class="ttc" id="aclassfl7_1_1gui_1_1layout_1_1Layout_html_a3a4f407032920ae178c42bfb88f87096"><div class="ttname"><a href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a3a4f407032920ae178c42bfb88f87096">fl7::gui::layout::Layout::calculate_preferred_size</a></div><div class="ttdeci">virtual ml7::Vector2f calculate_preferred_size(const Container &amp;container) const</div><div class="ttdef"><b>Definition</b> Layout.h:52</div></div>
 <div class="ttc" id="aclassfl7_1_1gui_1_1layout_1_1Layout_html_a3af6722d70c7000c74af3101b7ab360c"><div class="ttname"><a href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a3af6722d70c7000c74af3101b7ab360c">fl7::gui::layout::Layout::perform</a></div><div class="ttdeci">virtual void perform(Container &amp;container)=0</div></div>
 <div class="ttc" id="aclassfl7_1_1gui_1_1layout_1_1Layout_html_a3e2613aadfcfaf9635207d3c46e6c33c"><div class="ttname"><a href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a3e2613aadfcfaf9635207d3c46e6c33c">fl7::gui::layout::Layout::~Layout</a></div><div class="ttdeci">virtual ~Layout()=default</div></div>
+<div class="ttc" id="aclassfl7_1_1gui_1_1layout_1_1Layout_html_a987254ce293a955583764b7fe7619c3f"><div class="ttname"><a href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a987254ce293a955583764b7fe7619c3f">fl7::gui::layout::Layout::calculate_minimum_size</a></div><div class="ttdeci">virtual ml7::Vector2f calculate_minimum_size(const Container &amp;container) const</div><div class="ttdef"><b>Definition</b> Layout.h:63</div></div>
 <div class="ttc" id="anamespacefl7_1_1gui_1_1layout_html"><div class="ttname"><a href="../../df/dcc/namespacefl7_1_1gui_1_1layout.html">fl7::gui::layout</a></div><div class="ttdef"><b>Definition</b> BoxLayout.cpp:10</div></div>
 <div class="ttc" id="anamespacefl7_1_1gui_html"><div class="ttname"><a href="../../d5/d56/namespacefl7_1_1gui.html">fl7::gui</a></div><div class="ttdef"><b>Definition</b> Collection.cpp:10</div></div>
-<div class="ttc" id="aroot_8h_html"><div class="ttname"><a href="../../de/d99/root_8h.html">root.h</a></div></div>
+<div class="ttc" id="anamespaceml7_html_add70e3ce89c6f3e39fa3a52d54713255"><div class="ttname"><a href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a></div><div class="ttdeci">Vector2&lt; float &gt; Vector2f</div><div class="ttdef"><b>Definition</b> Vector2.h:543</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

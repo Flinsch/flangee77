@@ -112,6 +112,8 @@ Inheritance diagram for fl7::gui::layout::Layout:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3e2613aadfcfaf9635207d3c46e6c33c" id="r_a3e2613aadfcfaf9635207d3c46e6c33c"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e2613aadfcfaf9635207d3c46e6c33c">~Layout</a> ()=default</td></tr>
 <tr class="memitem:a3af6722d70c7000c74af3101b7ab360c" id="r_a3af6722d70c7000c74af3101b7ab360c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3af6722d70c7000c74af3101b7ab360c">perform</a> (<a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a> &amp;container)=0</td></tr>
+<tr class="memitem:a3a4f407032920ae178c42bfb88f87096" id="r_a3a4f407032920ae178c42bfb88f87096"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a4f407032920ae178c42bfb88f87096">calculate_preferred_size</a> (const <a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a> &amp;container) const</td></tr>
+<tr class="memitem:a987254ce293a955583764b7fe7619c3f" id="r_a987254ce293a955583764b7fe7619c3f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a987254ce293a955583764b7fe7619c3f">calculate_minimum_size</a> (const <a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a> &amp;container) const</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for a pluggable strategy that arranges a <a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a>'s current children within it (see <span class="tt"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html#a3c8e995da93504b13f72c8acceeaaa82">Container::set_layout()</a></span>). A <a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a> with no layout attached (the default) leaves its children exactly wherever they've been explicitly positioned/sized, entirely unmanaged; attaching one of these takes over that job instead, kept in sync automatically as the container's children or own size change (see <span class="tt"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html#a07a865e38cfd6bf3654f7bab50fc45a1">Container::add_child()</a></span>/<span class="tt">remove_child()</span>/<span class="tt">set_size()</span>). </p>
@@ -142,6 +144,62 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a987254ce293a955583764b7fe7619c3f" name="a987254ce293a955583764b7fe7619c3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a987254ce293a955583764b7fe7619c3f">&#9670;&#160;</a></span>calculate_minimum_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> fl7::gui::layout::Layout::calculate_minimum_size </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>container</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns how large this layout's own strategy would ideally like container to be, given its current children's own effective minimum sizes, queried by <span class="tt"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html#a30e9d85431da9a23ef1be1acff444637">Container::_calculate_minimum_size()</a></span> while this layout is attached, instead of the plain (no-layout) bounding-box calculation it otherwise falls back to. Default: <span class="tt">{0, 0}</span> (no particular opinion; a layout that doesn't actually resize/reposition children, e.g., <span class="tt"><a class="el" href="../../df/dbb/classfl7_1_1gui_1_1layout_1_1DefaultLayout.html">DefaultLayout</a></span>, has none to report either). </p>
+
+<p>Reimplemented in <a class="el" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#aea0d8a8b8192e20936a9f24db0004f0d">fl7::gui::layout::BoxLayout</a>.</p>
+
+</div>
+</div>
+<a id="a3a4f407032920ae178c42bfb88f87096" name="a3a4f407032920ae178c42bfb88f87096"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a4f407032920ae178c42bfb88f87096">&#9670;&#160;</a></span>calculate_preferred_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> fl7::gui::layout::Layout::calculate_preferred_size </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>container</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns how large this layout's own strategy would ideally like container to be, given its current children's own effective preferred sizes, queried by <span class="tt"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html#a80335fadc6a88b0658b52885d0753dfc">Container::_calculate_preferred_size()</a></span> while this layout is attached, instead of the plain (no-layout) bounding-box calculation it otherwise falls back to. Default: <span class="tt">{0, 0}</span> (no particular opinion; a layout that doesn't actually resize/reposition children, e.g., <span class="tt"><a class="el" href="../../df/dbb/classfl7_1_1gui_1_1layout_1_1DefaultLayout.html">DefaultLayout</a></span>, has none to report either). </p>
+
+<p>Reimplemented in <a class="el" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a735260044a6b3ba8e633815617c08ff4">fl7::gui::layout::BoxLayout</a>.</p>
+
+</div>
+</div>
 <a id="a3af6722d70c7000c74af3101b7ab360c" name="a3af6722d70c7000c74af3101b7ab360c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3af6722d70c7000c74af3101b7ab360c">&#9670;&#160;</a></span>perform()</h2>
 

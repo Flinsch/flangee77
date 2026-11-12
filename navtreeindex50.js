@@ -1,5 +1,9 @@
 var NAVTREEINDEX50 =
 {
+"da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html#a30ca37bd2177505f51cbc50c93928664":[7,0,8,1,0,0,2,1,4],
+"da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html#a9c45e04956bc9509b6446c6ae9f0c9e5":[5,0,8,2,0,0,2,1,5],
+"da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html#a9c45e04956bc9509b6446c6ae9f0c9e5":[7,0,8,1,0,0,2,1,5],
+"da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html#aa3b6338247d5f3f77bb6fc9fea12285f":[5,0,8,2,0,0,2,1,6],
 "da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html#aa3b6338247d5f3f77bb6fc9fea12285f":[7,0,8,1,0,0,2,1,6],
 "da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html#aa9e03ef5a05f544052f137c6d87396a4":[5,0,8,2,0,0,2,1,1],
 "da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html#aa9e03ef5a05f544052f137c6d87396a4":[7,0,8,1,0,0,2,1,1],
@@ -245,9 +249,5 @@ var NAVTREEINDEX50 =
 "da/de9/conceptdl7_1_1config_1_1bound__struct.html":[6,1,0,1],
 "da/dea/ConfigProvider_8cpp.html":[8,0,7,12],
 "da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html":[5,0,0,1,0],
-"da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html":[7,0,0,0,0],
-"da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html#a156ad8ea7317f7b9231c34243a136d1a":[5,0,0,1,0,13],
-"da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html#a156ad8ea7317f7b9231c34243a136d1a":[7,0,0,0,0,13],
-"da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html#a466bd57f324a3ba34ef85496e123a98b":[5,0,0,1,0,3],
-"da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html#a466bd57f324a3ba34ef85496e123a98b":[7,0,0,0,0,3]
+"da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html":[7,0,0,0,0]
 };

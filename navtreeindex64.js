@@ -1,5 +1,9 @@
 var NAVTREEINDEX64 =
 {
+"dd/d75/classpl7_1_1ArgumentBag.html#a47d57b53025b7511017ca02041f3e425":[7,0,5,1,14],
+"dd/d75/classpl7_1_1ArgumentBag.html#a565a24d056f5b92ab67447afb64ee1eb":[5,0,5,1,33],
+"dd/d75/classpl7_1_1ArgumentBag.html#a565a24d056f5b92ab67447afb64ee1eb":[7,0,5,1,33],
+"dd/d75/classpl7_1_1ArgumentBag.html#a56aaf034c791d615d8514e3daa18ee6f":[5,0,5,1,23],
 "dd/d75/classpl7_1_1ArgumentBag.html#a56aaf034c791d615d8514e3daa18ee6f":[7,0,5,1,23],
 "dd/d75/classpl7_1_1ArgumentBag.html#a57ef0996594b53ea7f9df78e3de4ea6c":[5,0,5,1,13],
 "dd/d75/classpl7_1_1ArgumentBag.html#a57ef0996594b53ea7f9df78e3de4ea6c":[7,0,5,1,13],
@@ -245,9 +249,5 @@ var NAVTREEINDEX64 =
 "dd/daf/Texture3DWrite_8h.html":[8,0,7,1,7,31],
 "dd/daf/Texture3DWrite_8h_source.html":[8,0,7,1,7,31],
 "dd/daf/logging_8cpp.html":[8,0,1,23],
-"dd/db6/ResultBuilder_8cpp.html":[8,0,6,10],
-"dd/db8/DirtyLayerBoxes_8h.html":[8,0,7,1,7,8],
-"dd/db8/DirtyLayerBoxes_8h_source.html":[8,0,7,1,7,8],
-"dd/db9/ClipboardImpl_8h.html":[8,0,7,0,0,1],
-"dd/db9/ClipboardImpl_8h_source.html":[8,0,7,0,0,1]
+"dd/db6/ResultBuilder_8cpp.html":[8,0,6,10]
 };

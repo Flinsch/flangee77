@@ -1,5 +1,9 @@
 var NAVTREEINDEX57 =
 {
+"dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html":[5,0,8,2,6,2],
+"dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html":[7,0,8,1,6,2],
+"dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html#a1bc65f28048aa58bedf3758156fcac77":[5,0,8,2,6,2,0],
+"dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html#a1bc65f28048aa58bedf3758156fcac77":[7,0,8,1,6,2,0],
 "dc/d18/memory_8h.html":[8,0,1,26],
 "dc/d18/memory_8h_source.html":[8,0,1,26],
 "dc/d19/namespacexl7_1_1graphics_1_1impl_1_1direct3d11_1_1states.html":[5,0,8,2,1,0,4],
@@ -245,9 +249,5 @@ var NAVTREEINDEX57 =
 "dc/d63/SurfaceManager_8h_source.html":[8,0,7,1,6,11],
 "dc/d64/VersionedId_8h.html":[8,0,1,39],
 "dc/d64/VersionedId_8h_source.html":[8,0,1,39],
-"dc/d64/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1errors.html":[5,0,8,2,1,1,0],
-"dc/d64/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1errors.html#a2e4cf9f4019c9768e3aa689d6f676922":[5,0,8,2,1,1,0,0],
-"dc/d64/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1errors.html#a86bfdc5f93664887028a9f3614b5611a":[5,0,8,2,1,1,0,1],
-"dc/d69/detail_2windows_2filesystem_8cpp.html":[8,0,1,5,0,1,2],
-"dc/d6e/direct3d11_2RenderingDeviceImpl_8cpp.html":[8,0,7,1,1,0,13]
+"dc/d64/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1errors.html":[5,0,8,2,1,1,0]
 };

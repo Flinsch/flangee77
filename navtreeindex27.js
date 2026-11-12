@@ -1,5 +1,9 @@
 var NAVTREEINDEX27 =
 {
+"d6/dbf/classdl7_1_1Buffer3d.html#ae37b662bf07733bbefd59831db631bdb":[7,0,2,11,19],
+"d6/dbf/classdl7_1_1Buffer3d.html#ae585c8eed9772815714a642e64189ef9":[5,0,2,11,15],
+"d6/dbf/classdl7_1_1Buffer3d.html#ae585c8eed9772815714a642e64189ef9":[7,0,2,11,15],
+"d6/dbf/classdl7_1_1Buffer3d.html#aebcebfaaea8d90165d8e8beec439ff0c":[5,0,2,11,11],
 "d6/dbf/classdl7_1_1Buffer3d.html#aebcebfaaea8d90165d8e8beec439ff0c":[7,0,2,11,11],
 "d6/dbf/classdl7_1_1Buffer3d.html#af8feed5d857c0a6f3b489c88b951d34e":[5,0,2,11,4],
 "d6/dbf/classdl7_1_1Buffer3d.html#af8feed5d857c0a6f3b489c88b951d34e":[7,0,2,11,4],
@@ -245,9 +249,5 @@ var NAVTREEINDEX27 =
 "d7/d46/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1RasterizerStateImpl.html#afd9f74fbd38f624e3c85f6cf7d9b9612":[5,0,8,2,1,0,4,2,2],
 "d7/d46/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1RasterizerStateImpl.html#afd9f74fbd38f624e3c85f6cf7d9b9612":[7,0,8,1,1,0,2,2,2],
 "d7/d4b/SurfaceDesc_8h.html":[8,0,7,1,6,9],
-"d7/d4b/SurfaceDesc_8h_source.html":[8,0,7,1,6,9],
-"d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html":[5,0,8,2,12,2],
-"d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html":[7,0,8,1,12,2],
-"d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html#a0dd5b7081573c8089d2217199f075686":[5,0,8,2,12,2,0],
-"d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html#a0dd5b7081573c8089d2217199f075686":[7,0,8,1,12,2,0]
+"d7/d4b/SurfaceDesc_8h_source.html":[8,0,7,1,6,9]
 };

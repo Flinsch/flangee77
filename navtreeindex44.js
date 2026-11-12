@@ -1,5 +1,9 @@
 var NAVTREEINDEX44 =
 {
+"d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html":[5,0,8,2,4,22],
+"d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html":[7,0,8,1,4,22],
+"d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html#a11b3afac3d31d85fe37babf1cac979fc":[5,0,8,2,4,22,0],
+"d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html#a11b3afac3d31d85fe37babf1cac979fc":[7,0,8,1,4,22,0],
 "d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html#a11b3afac3d31d85fe37babf1cac979fca5bca2f066df1fe641b2b779db2a63c0a":[5,0,8,2,4,22,0,1],
 "d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html#a11b3afac3d31d85fe37babf1cac979fca5bca2f066df1fe641b2b779db2a63c0a":[7,0,8,1,4,22,0,1],
 "d9/db3/structxl7_1_1graphics_1_1shaders_1_1TextureSamplerDeclaration.html#a11b3afac3d31d85fe37babf1cac979fcaa3e8ae43188ae76d38f414b2bdb0077b":[5,0,8,2,4,22,0,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX44 =
 "d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html#a87b152287f00ff2f50f40f247d03fe09":[7,0,2,3,1,0,0,1],
 "d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html#aa1f098b03aed19802999d961c14dd4d0":[5,0,2,3,1,0,0,0],
 "d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html#aa1f098b03aed19802999d961c14dd4d0":[7,0,2,3,1,0,0,0],
-"d9/ddb/TokenReader_8cpp.html":[8,0,2,4,40],
-"d9/ddf/TextureDiscardPolicy_8h.html":[8,0,7,1,1,2,2,0],
-"d9/ddf/TextureDiscardPolicy_8h_source.html":[8,0,7,1,1,2,2,0],
-"d9/de1/classfl7_1_1gui_1_1faces_1_1ScrollPanel_1_1ContentArea.html":[5,0,3,1,0,10,0],
-"d9/de1/classfl7_1_1gui_1_1faces_1_1ScrollPanel_1_1ContentArea.html":[7,0,3,1,0,10,0]
+"d9/ddb/TokenReader_8cpp.html":[8,0,2,4,40]
 };

@@ -1,5 +1,9 @@
 var NAVTREEINDEX65 =
 {
+"dd/db8/DirtyLayerBoxes_8h.html":[8,0,7,1,7,8],
+"dd/db8/DirtyLayerBoxes_8h_source.html":[8,0,7,1,7,8],
+"dd/db9/ClipboardImpl_8h.html":[8,0,7,0,0,1],
+"dd/db9/ClipboardImpl_8h_source.html":[8,0,7,0,0,1],
 "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html":[5,0,3,0,0,0,1],
 "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html":[7,0,3,0,0,0,1],
 "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a042f1ac5056bae11e9f4abe4413e529a":[5,0,3,0,0,0,1,30],
@@ -245,9 +249,5 @@ var NAVTREEINDEX65 =
 "dd/de8/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl_1_1Attorney.html#aa6d860d65cc0083a5bd02c9493097cd7":[7,0,8,1,1,1,0,0,0,1],
 "dd/de8/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl_1_1Attorney.html#ac8f4ba80fbe3568d1129aed7f13840bd":[5,0,8,2,1,1,2,0,0,0],
 "dd/de8/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1IndexBufferImpl_1_1Attorney.html#ac8f4ba80fbe3568d1129aed7f13840bd":[7,0,8,1,1,1,0,0,0,0],
-"dd/dea/ClipboardImpl_8cpp.html":[8,0,7,0,0,0],
-"dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html":[5,0,8,2,4,2],
-"dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html":[7,0,8,1,4,2],
-"dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html#a84ebef2784373ea38700d58d8c56240b":[5,0,8,2,4,2,0],
-"dd/df5/structxl7_1_1graphics_1_1shaders_1_1ConstantBufferDeclaration.html#a84ebef2784373ea38700d58d8c56240b":[7,0,8,1,4,2,0]
+"dd/dea/ClipboardImpl_8cpp.html":[8,0,7,0,0,0]
 };

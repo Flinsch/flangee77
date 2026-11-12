@@ -1,5 +1,15 @@
 var NAVTREEINDEX71 =
 {
+"de/dfe/structdl7_1_1xml_1_1Format_1_1PrettyOptions.html#ae9dd6fca25333a5b75155c6ac832ef7ca50d5a4893c775dd805a095efef17ef3d":[5,0,2,6,5,1,0,0],
+"de/dfe/structdl7_1_1xml_1_1Format_1_1PrettyOptions.html#ae9dd6fca25333a5b75155c6ac832ef7ca50d5a4893c775dd805a095efef17ef3d":[7,0,2,6,5,1,0,0],
+"de/dfe/structdl7_1_1xml_1_1Format_1_1PrettyOptions.html#ae9dd6fca25333a5b75155c6ac832ef7ca618441d41cce47dbcfd9bed6e5ff64e6":[5,0,2,6,5,1,0,1],
+"de/dfe/structdl7_1_1xml_1_1Format_1_1PrettyOptions.html#ae9dd6fca25333a5b75155c6ac832ef7ca618441d41cce47dbcfd9bed6e5ff64e6":[7,0,2,6,5,1,0,1],
+"de/dfe/structdl7_1_1xml_1_1Format_1_1PrettyOptions.html#af873ee1078da7e3fe37450d53177ebcd":[5,0,2,6,5,1,2],
+"de/dfe/structdl7_1_1xml_1_1Format_1_1PrettyOptions.html#af873ee1078da7e3fe37450d53177ebcd":[7,0,2,6,5,1,2],
+"df/d00/classxl7_1_1graphics_1_1images_1_1ImageArray.html":[5,0,8,2,0,2],
+"df/d00/classxl7_1_1graphics_1_1images_1_1ImageArray.html":[7,0,8,1,0,2],
+"df/d00/classxl7_1_1graphics_1_1images_1_1ImageArray.html#a0149fbad5e4d49928affd9f0b844ef56":[5,0,8,2,0,2,0],
+"df/d00/classxl7_1_1graphics_1_1images_1_1ImageArray.html#a0149fbad5e4d49928affd9f0b844ef56":[7,0,8,1,0,2,0],
 "df/d00/classxl7_1_1graphics_1_1images_1_1ImageArray.html#a05b25ff475f093c101093f06430b5488":[5,0,8,2,0,2,4],
 "df/d00/classxl7_1_1graphics_1_1images_1_1ImageArray.html#a05b25ff475f093c101093f06430b5488":[7,0,8,1,0,2,4],
 "df/d00/classxl7_1_1graphics_1_1images_1_1ImageArray.html#a0746bd6021eb8dbbba09739168430c83":[5,0,8,2,0,2,9],
@@ -239,15 +249,5 @@ var NAVTREEINDEX71 =
 "df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric.html#aa250c72c60625222cd6f11037ddb8252":[5,0,3,0,0,0,1,6,0],
 "df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric.html#aa250c72c60625222cd6f11037ddb8252":[7,0,3,0,0,0,1,6,0],
 "df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric.html#ab880d33c2fa72294ae41e49dcd152be4":[5,0,3,0,0,0,1,6,1],
-"df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric.html#ab880d33c2fa72294ae41e49dcd152be4":[7,0,3,0,0,0,1,6,1],
-"df/d2b/classfl7_1_1gui_1_1Control.html":[5,0,3,1,6],
-"df/d2b/classfl7_1_1gui_1_1Control.html":[7,0,3,1,6],
-"df/d2b/classfl7_1_1gui_1_1Control.html#a02f78b78a270a83a4b677d0867f02e72":[5,0,3,1,6,2],
-"df/d2b/classfl7_1_1gui_1_1Control.html#a02f78b78a270a83a4b677d0867f02e72":[7,0,3,1,6,2],
-"df/d2b/classfl7_1_1gui_1_1Control.html#a32bbaa57b90df13a2ab52a0b18ae9d42":[5,0,3,1,6,6],
-"df/d2b/classfl7_1_1gui_1_1Control.html#a32bbaa57b90df13a2ab52a0b18ae9d42":[7,0,3,1,6,6],
-"df/d2b/classfl7_1_1gui_1_1Control.html#a8057f6ac83becfc19fb02715957d5944":[5,0,3,1,6,1],
-"df/d2b/classfl7_1_1gui_1_1Control.html#a8057f6ac83becfc19fb02715957d5944":[7,0,3,1,6,1],
-"df/d2b/classfl7_1_1gui_1_1Control.html#aa0883cb2340acf8988b654256c2fd826":[5,0,3,1,6,3],
-"df/d2b/classfl7_1_1gui_1_1Control.html#aa0883cb2340acf8988b654256c2fd826":[7,0,3,1,6,3]
+"df/d29/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1GlyphMetric.html#ab880d33c2fa72294ae41e49dcd152be4":[7,0,3,0,0,0,1,6,1]
 };

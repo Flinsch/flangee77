@@ -1,5 +1,15 @@
 var NAVTREEINDEX68 =
 {
+"de/d3e/structml7_1_1distance2_1_1ResultBase.html#a354ec1b3945302293e4d1d1d6686d820":[7,0,4,1,0,1],
+"de/d3e/structml7_1_1distance2_1_1ResultBase.html#a36ec9cd18e4d0a06723097a474801c9b":[5,0,4,1,0,3],
+"de/d3e/structml7_1_1distance2_1_1ResultBase.html#a36ec9cd18e4d0a06723097a474801c9b":[7,0,4,1,0,3],
+"de/d44/TerminalSymbol_8h.html":[8,0,2,4,36],
+"de/d44/TerminalSymbol_8h_source.html":[8,0,2,4,36],
+"de/d47/toml_2Value_8cpp.html":[8,0,2,5,9],
+"de/d48/direct3d9_2ResourceFactoryImpl_8h.html":[8,0,7,1,1,1,16],
+"de/d48/direct3d9_2ResourceFactoryImpl_8h_source.html":[8,0,7,1,1,1,16],
+"de/d49/BlockScalarHeaderMatcher_8cpp.html":[8,0,2,7,0,2],
+"de/d49/platform_2detail_2windows_2memory_8h.html":[8,0,1,5,0,1,5],
 "de/d49/platform_2detail_2windows_2memory_8h_source.html":[8,0,1,5,0,1,5],
 "de/d4a/CoutLogger_8cpp.html":[8,0,6,1,0],
 "de/d4e/Buffer1d_8h.html":[8,0,2,10],
@@ -239,15 +249,5 @@ var NAVTREEINDEX68 =
 "de/d9d/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1PaethPredictor.html":[7,0,8,1,0,0,1,4],
 "de/d9d/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1PaethPredictor.html#acf9610b91a9af660a0467b7f4db1a076":[5,0,8,2,0,0,1,4,0],
 "de/d9d/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1PaethPredictor.html#acf9610b91a9af660a0467b7f4db1a076":[7,0,8,1,0,0,1,4,0],
-"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html":[5,0,8,1,1],
-"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html":[7,0,8,0,1],
-"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#a0d57b2c0630de15fe3b82cba14d32b52":[5,0,8,1,1,0],
-"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#a0d57b2c0630de15fe3b82cba14d32b52":[7,0,8,0,1,0],
-"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#a23aca9fd8e6c4bc7d5266b1153be0b5b":[5,0,8,1,1,7],
-"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#a23aca9fd8e6c4bc7d5266b1153be0b5b":[7,0,8,0,1,7],
-"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#a43d70757c5c49f6460e2e1dfc006aa9b":[5,0,8,1,1,5],
-"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#a43d70757c5c49f6460e2e1dfc006aa9b":[7,0,8,0,1,5],
-"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#a57bbd6a3392c88b77220fb504f790e1e":[5,0,8,1,1,8],
-"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#a57bbd6a3392c88b77220fb504f790e1e":[7,0,8,0,1,8],
-"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html#a62269ec2fa487abd6acdb35d83c241e2":[5,0,8,1,1,4]
+"de/d9e/classxl7_1_1detail_1_1IWindowImpl.html":[5,0,8,1,1]
 };

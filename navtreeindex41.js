@@ -1,5 +1,9 @@
 var NAVTREEINDEX41 =
 {
+"d9/d16/classdl7_1_1Buffer1d.html#ad450b2ccbb8cb5ba462b66410ab859b9":[5,0,2,9,11],
+"d9/d16/classdl7_1_1Buffer1d.html#ad450b2ccbb8cb5ba462b66410ab859b9":[7,0,2,9,11],
+"d9/d16/classdl7_1_1Buffer1d.html#ae67a08306c96c340db477f50cb2f4203":[5,0,2,9,1],
+"d9/d16/classdl7_1_1Buffer1d.html#ae67a08306c96c340db477f50cb2f4203":[7,0,2,9,1],
 "d9/d19/classxl7_1_1input_1_1GameControllerSystem.html":[5,0,8,3,3],
 "d9/d19/classxl7_1_1input_1_1GameControllerSystem.html":[7,0,8,2,3],
 "d9/d19/classxl7_1_1input_1_1GameControllerSystem.html#a08d2599045474833691af3492889bf49":[5,0,8,3,3,4],
@@ -245,9 +249,5 @@ var NAVTREEINDEX41 =
 "d9/d32/classcl7_1_1io_1_1WritableMemory.html":[7,0,1,4,14],
 "d9/d32/classcl7_1_1io_1_1WritableMemory.html#a09616291b1a5d94c31b277f503f70230":[5,0,1,5,14,4],
 "d9/d32/classcl7_1_1io_1_1WritableMemory.html#a09616291b1a5d94c31b277f503f70230":[7,0,1,4,14,4],
-"d9/d32/classcl7_1_1io_1_1WritableMemory.html#a0f1f61d5f6a1927c2a90468cf69b7971":[5,0,1,5,14,16],
-"d9/d32/classcl7_1_1io_1_1WritableMemory.html#a0f1f61d5f6a1927c2a90468cf69b7971":[7,0,1,4,14,16],
-"d9/d32/classcl7_1_1io_1_1WritableMemory.html#a16a989e767160ac53f582546ef794a00":[5,0,1,5,14,13],
-"d9/d32/classcl7_1_1io_1_1WritableMemory.html#a16a989e767160ac53f582546ef794a00":[7,0,1,4,14,13],
-"d9/d32/classcl7_1_1io_1_1WritableMemory.html#a1d4a3dd5cc955b0bfff4cead27e4bcd6":[5,0,1,5,14,2]
+"d9/d32/classcl7_1_1io_1_1WritableMemory.html#a0f1f61d5f6a1927c2a90468cf69b7971":[5,0,1,5,14,16]
 };
