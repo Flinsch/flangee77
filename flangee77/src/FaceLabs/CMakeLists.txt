@@ -32,6 +32,7 @@ target_sources(flangee77
     fonts/render/TestRenderer.cpp
 
     gui/Collection.cpp
+    gui/Container.cpp
     gui/Face.cpp
     gui/RadioGroup.cpp
     gui/Shell.cpp

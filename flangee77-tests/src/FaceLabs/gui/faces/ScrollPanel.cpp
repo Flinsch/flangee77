@@ -1,7 +1,9 @@
 
 #include <TestLabs/TestSuite.h>
 
+#include <FaceLabs/gui/Container.h>
 #include <FaceLabs/gui/Shell.h>
+#include <FaceLabs/gui/Style.h>
 #include <FaceLabs/gui/faces/ScrollPanel.h>
 
 #include "../shared.h"
@@ -42,6 +44,29 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  ScrollPanel:  set_scroll_position() c
     panel.set_scroll_position({0.0f, 50.0f});
     TESTLABS_CHECK_EQ_ROUND( 3, panel.get_scroll_position().y, 50.0f );
     TESTLABS_CHECK_EQ( emit_count, 2 );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  ScrollPanel:  the content area's own effective padding still shifts its children inward (see Container::get_scroll_offset()), composed on top of (not overridden by) the panel's own scroll position" )
+{
+    fl7::gui::faces::ScrollPanel panel;
+    panel.set_position({0.0f, 0.0f});
+    panel.set_size({200.0f, 100.0f});
+    panel.set_content_size({300.0f, 300.0f});
+    panel.set_scroll_position({20.0f, 20.0f});
+
+    auto& child = panel.get_content_area().add_child<fl7::gui::Container>();
+    child.set_position({0.0f, 0.0f});
+
+    const ml7::Vector2f without_padding = child.get_absolute_position();
+
+    fl7::gui::Style style;
+    style.padding = fl7::gui::Padding(5.0f, 3.0f, 5.0f, 3.0f); // left/right 5, top/bottom 3.
+    panel.get_content_area().set_style_override(style);
+
+    const ml7::Vector2f with_padding = child.get_absolute_position();
+
+    TESTLABS_CHECK_EQ_FLT( with_padding.x, without_padding.x + 5.0f );
+    TESTLABS_CHECK_EQ_FLT( with_padding.y, without_padding.y + 3.0f );
 }
 
 TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  ScrollPanel:  set_vertical_scroll_enabled(false)/set_horizontal_scroll_enabled(false) clamp that axis's scroll position to 0 regardless of content size" )

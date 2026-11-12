@@ -166,8 +166,12 @@ private:
         : public Container
     {
     public:
-        /** Returns this content area's current scroll offset, as set by the owning ScrollPanel (see Collection::get_scroll_offset()). */
-        ml7::Vector2f get_scroll_offset() const override { return _scroll_offset; }
+        /**
+         * Returns this content area's current scroll offset, as set by the owning
+         * `ScrollPanel`, plus whatever `Container::get_scroll_offset()` itself
+         * already contributes (its own padding shift; see `Container`).
+         */
+        ml7::Vector2f get_scroll_offset() const override { return _scroll_offset + Container::get_scroll_offset(); }
 
     private:
         friend class ScrollPanel;
