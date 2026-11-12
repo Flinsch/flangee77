@@ -79,14 +79,38 @@ namespace fl7::gui::faces {
      */
     void CheckBox::_on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size)
     {
-        constexpr float caption_gap = 6.0f;
-
         const float box_side = new_size.y;
         _box.set_position({0.0f, 0.0f});
         _box.set_size({box_side, box_side});
 
-        _label.set_position({box_side + caption_gap, 0.0f});
-        _label.set_size({std::max(0.0f, new_size.x - box_side - caption_gap), new_size.y});
+        _label.set_position({box_side + CAPTION_GAP, 0.0f});
+        _label.set_size({std::max(0.0f, new_size.x - box_side - CAPTION_GAP), new_size.y});
+    }
+
+    /**
+     * Returns the box glyph (square, side = caption height) plus, only if there
+     * actually is a caption to separate it from (label_size.x > 0), the gap plus
+     * the caption's own natural (unwrapped) preferred size, side by side; see
+     * _on_size_changed() for the matching actual layout.
+     */
+    ml7::Vector2f CheckBox::_calculate_preferred_size() const
+    {
+        const ml7::Vector2f label_size = _label.get_effective_preferred_size();
+        const float gap = label_size.x > 0.0f ? CAPTION_GAP : 0.0f;
+        return {label_size.y + gap + label_size.x, label_size.y};
+    }
+
+    /**
+     * Returns the box glyph (square, side = caption height) plus, only if there
+     * actually is a caption to separate it from (label_size.x > 0), the gap plus
+     * the caption's own natural (unwrapped) minimum size, side by side; see
+     * _on_size_changed() for the matching actual layout.
+     */
+    ml7::Vector2f CheckBox::_calculate_minimum_size() const
+    {
+        const ml7::Vector2f label_size = _label.get_effective_minimum_size();
+        const float gap = label_size.x > 0.0f ? CAPTION_GAP : 0.0f;
+        return {label_size.y + gap + label_size.x, label_size.y};
     }
 
 

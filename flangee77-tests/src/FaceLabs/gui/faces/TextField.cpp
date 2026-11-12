@@ -5,12 +5,10 @@
 #include <FaceLabs/gui/Style.h>
 #include <FaceLabs/gui/faces/Panel.h>
 #include <FaceLabs/gui/faces/TextField.h>
-#include <FaceLabs/fonts/detail/ttf/TrueTypeFontLoader.h>
 
 #include <XiaoLabs/Clipboard.h>
 
-#include <CoreLabs/platform/filesystem.h>
-
+#include "../../shared.h"
 #include "../shared.h"
 
 
@@ -28,19 +26,7 @@ namespace {
         ~ClipboardRestoreGuard() { xl7::clipboard().set_text(original_text); }
     };
 
-    /**
-     * A real, loaded font, for the scroll-bar tests below: unlike every test
-     * above, those actually need get_effective_style().font to be non-null
-     * (see the "Scrolling" section's own comment), which set_style_override()
-     * (bypassing the theme/Shell entirely) makes possible even in this
-     * NullRenderer-based harness.
-     */
-    fl7::fonts::Font& get_test_font()
-    {
-        static fl7::fonts::Font font(std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(
-            cl7::platform::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSans-Regular.ttf"));
-        return font;
-    }
+    using f77_tests::fonts::get_test_font;
 
 } // namespace
 

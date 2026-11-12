@@ -3,7 +3,6 @@
 
 #include <FaceLabs/fonts/raster/GlyphRasterCache.h>
 #include <FaceLabs/fonts/raster/SdfRasterizer.h>
-#include <FaceLabs/fonts/detail/ttf/TrueTypeFontLoader.h>
 #include <FaceLabs/fonts/Font.h>
 
 #include <CoreLabs/platform/filesystem.h>
@@ -11,17 +10,13 @@
 #include <CoreLabs/io/File.h>
 
 #include "../../../shared.h"
+#include "../../shared.h"
 
 
 
 namespace {
 
-    fl7::fonts::Font& get_test_font()
-    {
-        static fl7::fonts::Font font(std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(
-            cl7::platform::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSans-Regular.ttf"));
-        return font;
-    }
+    using f77_tests::fonts::get_test_font;
 
     cl7::u8string make_scratch_cache_directory(cl7::u8string_view name)
     {

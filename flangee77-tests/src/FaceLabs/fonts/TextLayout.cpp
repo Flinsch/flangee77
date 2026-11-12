@@ -4,11 +4,9 @@
 #include <FaceLabs/fonts/Icon.h>
 #include <FaceLabs/fonts/IconRun.h>
 #include <FaceLabs/fonts/TextLayout.h>
-#include <FaceLabs/fonts/detail/ttf/TrueTypeFontLoader.h>
 
 #include "../../shared.h"
-
-#include <CoreLabs/platform/filesystem.h>
+#include "../shared.h"
 
 #include <span>
 #include <string>
@@ -36,12 +34,7 @@ namespace {
         return s;
     }
 
-    fl7::fonts::Font& get_test_font()
-    {
-        static fl7::fonts::Font font(std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(
-            cl7::platform::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSans-Regular.ttf"));
-        return font;
-    }
+    using f77_tests::fonts::get_test_font;
 
     float measure(std::string_view s, fl7::fonts::Font& font, const fl7::fonts::TextStyle& text_style)
     {

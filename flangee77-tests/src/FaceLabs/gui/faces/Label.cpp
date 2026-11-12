@@ -3,23 +3,14 @@
 
 #include <FaceLabs/gui/Style.h>
 #include <FaceLabs/gui/faces/Label.h>
-#include <FaceLabs/fonts/detail/ttf/TrueTypeFontLoader.h>
 
-#include <CoreLabs/platform/filesystem.h>
+#include "../../shared.h"
 
 
 
 namespace {
 
-    /** A real, loaded font, for the preferred/minimum-size tests below: those
-     * need get_effective_style().font to be non-null, which set_style_override()
-     * (bypassing the theme/Shell entirely) makes possible without a Shell at all. */
-    fl7::fonts::Font& get_test_font()
-    {
-        static fl7::fonts::Font font(std::make_unique<fl7::fonts::detail::ttf::TrueTypeFontLoader>(
-            cl7::platform::filesystem::get_working_directory() + u8"assets/fonts/Noto/NotoSans-Regular.ttf"));
-        return font;
-    }
+    using f77_tests::fonts::get_test_font;
 
 } // namespace
 
