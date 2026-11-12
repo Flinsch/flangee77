@@ -195,22 +195,30 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Container:  the container's own effective pad
     TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().y, 34.0f );
 }
 
-TESTLABS_CASE( u8"FaceLabs:  gui:  Container:  once a layout is set, get_effective_preferred_size()/get_effective_minimum_size() defer to the inherited default ({0, 0}) instead of the children's bounding box" )
+TESTLABS_CASE( u8"FaceLabs:  gui:  Container:  once a layout is set, get_effective_preferred_size()/get_effective_minimum_size() defer to its own layout::Layout::calculate_preferred_size()/calculate_minimum_size() instead of the children's bounding box" )
 {
     fl7::gui::Container container;
 
     auto& child = container.add_child<fl7::gui::Container>();
     child.set_position({10.0f, 10.0f});
     child.set_preferred_size({20.0f, 20.0f});
+    child.set_minimum_size({5.0f, 5.0f});
 
-    TESTLABS_CHECK( container.get_effective_preferred_size().x > 0.0f ); // no layout yet: the bounding box applies
+    const ml7::Vector2f bounding_box = container.get_effective_preferred_size();
+    TESTLABS_CHECK_EQ_FLT( bounding_box.x, 30.0f ); // no layout yet: child's position (10) + its own preferred size (20).
+    TESTLABS_CHECK_EQ_FLT( bounding_box.y, 30.0f );
 
     container.set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Horizontal);
 
-    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().x, 0.0f );
-    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().y, 0.0f );
-    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().x, 0.0f );
-    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().y, 0.0f );
+    // BoxLayout::calculate_preferred_size()/calculate_minimum_size() ignore the
+    // child's own get_position() entirely (BoxLayout doesn't care where a child
+    // used to sit, only its own preferred/minimum size): with a single child and
+    // no gap/padding, both axes just reduce to that child's own preferred/
+    // minimum size, a different (and smaller) number than the bounding box above.
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().x, 20.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().y, 20.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().x, 5.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().y, 5.0f );
 }
 
 

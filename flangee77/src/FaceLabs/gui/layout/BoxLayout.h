@@ -50,6 +50,14 @@ namespace fl7::gui::layout {
  * actually expensive to repeat is expected to cache that internally instead (see
  * `faces::Label::_calculate_text_size()`), where the relevant inputs (and when
  * they've changed) are actually known.
+ *
+ * Also reports its own `calculate_preferred_size()`/`calculate_minimum_size()` (see
+ * `Layout`): the sum of every child's own preferred/minimum size along the main
+ * axis (plus gaps/padding), and their max along the cross axis (plus padding),
+ * ignoring stretch/anchor entirely: that's the size this sequence would occupy if
+ * every child actually got exactly its own preferred/minimum size, which is what
+ * `Container::_calculate_preferred_size()`/`_calculate_minimum_size()` defer to
+ * while this layout is attached.
  */
 class BoxLayout
     : public Layout
@@ -136,6 +144,28 @@ public:
      */
     void perform(Container& container) override;
 
+    /**
+     * Returns the sum of every child's own effective preferred size along this
+     * layout's own main axis (plus the fixed gaps between them, plus this layout's
+     * own padding on that axis), and the largest of their own effective preferred
+     * sizes along the cross axis (plus padding there): the size this sequence of
+     * children would occupy if every one of them actually got exactly its own
+     * preferred size, regardless of stretch (which only ever redistributes space
+     * beyond or below that, see `perform()`).
+     */
+    ml7::Vector2f calculate_preferred_size(const Container& container) const override;
+
+    /**
+     * Returns the sum of every child's own effective minimum size along this
+     * layout's own main axis (plus the fixed gaps between them, plus this layout's
+     * own padding on that axis), and the largest of their own effective minimum
+     * sizes along the cross axis (plus padding there): the size this sequence of
+     * children would occupy if every one of them actually got exactly its own
+     * minimum size, regardless of stretch (which only ever redistributes space
+     * beyond or below that, see `perform()`).
+     */
+    ml7::Vector2f calculate_minimum_size(const Container& container) const override;
+
 
 
 private:
@@ -143,6 +173,14 @@ private:
     // #############################################################################
     // Helpers
     // #############################################################################
+
+    /**
+     * Shared by `calculate_preferred_size()`/`calculate_minimum_size()`: sums
+     * `size_of(child)[axis]` across every child (plus gaps/padding on the main
+     * axis), and takes the max of `size_of(child)[cross_axis]` (plus padding on
+     * the cross axis), for whichever per-child size getter the caller passes in.
+     */
+    ml7::Vector2f _calculate_size(const Container& container, ml7::Vector2f (Face::*size_of)() const) const;
 
     /**
      * Fits a child's own preferred size within its cell, along a single axis,

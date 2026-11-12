@@ -173,6 +173,67 @@ namespace fl7::gui::layout {
         }
     }
 
+    /**
+     * Returns the sum of every child's own effective preferred size along this
+     * layout's own main axis (plus the fixed gaps between them, plus this layout's
+     * own padding on that axis), and the largest of their own effective preferred
+     * sizes along the cross axis (plus padding there): the size this sequence of
+     * children would occupy if every one of them actually got exactly its own
+     * preferred size, regardless of stretch (which only ever redistributes space
+     * beyond or below that, see `perform()`).
+     */
+    ml7::Vector2f BoxLayout::calculate_preferred_size(const Container& container) const
+    {
+        return _calculate_size(container, &Face::get_effective_preferred_size);
+    }
+
+    /**
+     * Returns the sum of every child's own effective minimum size along this
+     * layout's own main axis (plus the fixed gaps between them, plus this layout's
+     * own padding on that axis), and the largest of their own effective minimum
+     * sizes along the cross axis (plus padding there): the size this sequence of
+     * children would occupy if every one of them actually got exactly its own
+     * minimum size, regardless of stretch (which only ever redistributes space
+     * beyond or below that, see `perform()`).
+     */
+    ml7::Vector2f BoxLayout::calculate_minimum_size(const Container& container) const
+    {
+        return _calculate_size(container, &Face::get_effective_minimum_size);
+    }
+
+    /**
+     * Shared by `calculate_preferred_size()`/`calculate_minimum_size()`: sums
+     * `size_of(child)[axis]` across every child (plus gaps/padding on the main
+     * axis), and takes the max of `size_of(child)[cross_axis]` (plus padding on
+     * the cross axis), for whichever per-child size getter the caller passes in.
+     */
+    ml7::Vector2f BoxLayout::_calculate_size(const Container& container, ml7::Vector2f (Face::*size_of)() const) const
+    {
+        const auto& children = container.get_children();
+        const size_t n = children.size();
+
+        const unsigned axis = _orientation == Orientation::Horizontal ? 0 : 1;
+        const unsigned cross_axis = 1 - axis;
+
+        const float padding_main = axis == 0 ? _padding.left + _padding.right : _padding.top + _padding.bottom;
+        const float padding_cross = cross_axis == 0 ? _padding.left + _padding.right : _padding.top + _padding.bottom;
+
+        float main = padding_main + (n > 0 ? _gap * static_cast<float>(n - 1) : 0.0f);
+        float cross = 0.0f;
+        for (const auto& child_ptr : children)
+        {
+            const ml7::Vector2f size = (child_ptr.get()->*size_of)();
+            main += size[axis];
+            cross = std::max(cross, size[cross_axis]);
+        }
+        cross += padding_cross;
+
+        ml7::Vector2f result;
+        result[axis] = main;
+        result[cross_axis] = cross;
+        return result;
+    }
+
 
 
 } // namespace fl7::gui::layout

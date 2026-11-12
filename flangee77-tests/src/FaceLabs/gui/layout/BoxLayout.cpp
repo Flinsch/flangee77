@@ -215,3 +215,82 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  padding keeps a fixed sp
     TESTLABS_CHECK_EQ_FLT( child1.get_position().x, 5.0f );
     TESTLABS_CHECK_EQ_FLT( child1.get_size().x, 50.0f );
 }
+
+
+
+// #############################################################################
+// calculate_preferred_size()/calculate_minimum_size()
+// #############################################################################
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  calculate_preferred_size()/calculate_minimum_size() with no children are just this layout's own padding, on both axes" )
+{
+    fl7::gui::Container container;
+
+    fl7::gui::layout::BoxLayout layout(fl7::gui::layout::BoxLayout::Orientation::Horizontal, 10.0f, fl7::gui::Padding(4.0f, 2.0f, 4.0f, 2.0f));
+
+    TESTLABS_CHECK_EQ_FLT( layout.calculate_preferred_size(container).x, 8.0f ); // left(4) + right(4); no gap without a second child.
+    TESTLABS_CHECK_EQ_FLT( layout.calculate_preferred_size(container).y, 4.0f ); // top(2) + bottom(2).
+    TESTLABS_CHECK_EQ_FLT( layout.calculate_minimum_size(container).x, 8.0f );
+    TESTLABS_CHECK_EQ_FLT( layout.calculate_minimum_size(container).y, 4.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  calculate_preferred_size() sums every child's own preferred size along the main axis (plus gaps/padding), and takes their max along the cross axis (plus padding), regardless of stretch or anchor" )
+{
+    fl7::gui::Container container;
+
+    auto& child1 = container.add_child<fl7::gui::Container>();
+    child1.set_preferred_size({50.0f, 20.0f});
+
+    auto& child2 = container.add_child<fl7::gui::Container>();
+    child2.set_preferred_size({30.0f, 35.0f}); // taller than child1: wins the cross-axis max.
+    child2.set_anchor(fl7::gui::Anchor::Top | fl7::gui::Anchor::Bottom); // stretch/anchor: irrelevant to this calculation either way.
+
+    auto& layout = container.set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Vertical, 10.0f, fl7::gui::Padding(5.0f));
+    layout.set_stretch(child2, 2.0f);
+
+    // Main axis (y): padding top+bottom (10) + gap (10) + both children's own
+    // preferred heights (20 + 35) = 75.
+    TESTLABS_CHECK_EQ_FLT( layout.calculate_preferred_size(container).y, 75.0f );
+    // Cross axis (x): padding left+right (10) + the wider child's own preferred
+    // width (50, not 30): child2's own 35 is its HEIGHT, not relevant here.
+    TESTLABS_CHECK_EQ_FLT( layout.calculate_preferred_size(container).x, 60.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  calculate_minimum_size() is calculate_preferred_size()'s exact counterpart, against every child's own effective minimum size instead" )
+{
+    fl7::gui::Container container;
+
+    auto& child1 = container.add_child<fl7::gui::Container>();
+    child1.set_preferred_size({50.0f, 20.0f});
+    child1.set_minimum_size({10.0f, 5.0f});
+
+    auto& child2 = container.add_child<fl7::gui::Container>();
+    child2.set_preferred_size({30.0f, 35.0f});
+    child2.set_minimum_size({15.0f, 8.0f});
+
+    auto& layout = container.set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Horizontal, 10.0f);
+
+    // Main axis (x): no padding, one gap (10), both children's own minimum
+    // widths (10 + 15) = 35. (Their much larger preferred widths, 50/30, don't
+    // factor in at all here.)
+    TESTLABS_CHECK_EQ_FLT( layout.calculate_minimum_size(container).x, 35.0f );
+    // Cross axis (y): the larger of their own minimum heights (8, not 5).
+    TESTLABS_CHECK_EQ_FLT( layout.calculate_minimum_size(container).y, 8.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  Container::get_effective_preferred_size()/get_effective_minimum_size() defer to this layout's own calculation while it's attached, end to end" )
+{
+    fl7::gui::Container container;
+
+    auto& child = container.add_child<fl7::gui::Container>();
+    child.set_position({100.0f, 100.0f}); // Deliberately irrelevant: BoxLayout ignores a child's own position here.
+    child.set_preferred_size({20.0f, 30.0f});
+    child.set_minimum_size({5.0f, 8.0f});
+
+    container.set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Horizontal, 0.0f, fl7::gui::Padding(2.0f));
+
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().x, 24.0f ); // 20 + left(2) + right(2).
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().y, 34.0f ); // 30 + top(2) + bottom(2).
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().x, 9.0f ); // 5 + left(2) + right(2).
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().y, 12.0f ); // 8 + top(2) + bottom(2).
+}

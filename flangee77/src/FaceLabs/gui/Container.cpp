@@ -41,14 +41,13 @@ namespace fl7::gui {
      * bounding box enclosing every child's own `get_position()` plus its own
      * `get_effective_preferred_size()`, recursively (a child's own effective
      * preferred size may itself come from this same calculation, if it's a
-     * `Container` too). With a layout set, defers to the inherited default
-     * (`{0, 0}`): a layout has no way yet to report what size it would actually
-     * want, so there's nothing meaningful to calculate here instead.
+     * `Container` too). With a layout set, defers to its own
+     * `layout::Layout::calculate_preferred_size()` instead.
      */
     ml7::Vector2f Container::_calculate_preferred_size() const
     {
-        if (get_layout())
-            return {};
+        if (const layout::Layout* layout = get_layout())
+            return layout->calculate_preferred_size(*this);
 
         ml7::Vector2f size;
         for (const auto& child : get_children())
@@ -66,14 +65,13 @@ namespace fl7::gui {
      * bounding box enclosing every child's own `get_position()` plus its own
      * `get_effective_minimum_size()`, recursively (a child's own effective
      * minimum size may itself come from this same calculation, if it's a
-     * `Container` too). With a layout set, defers to the inherited default
-     * (`{0, 0}`): a layout has no way yet to report what size it would actually
-     * want, so there's nothing meaningful to calculate here instead.
+     * `Container` too). With a layout set, defers to its own
+     * `layout::Layout::calculate_minimum_size()` instead.
      */
     ml7::Vector2f Container::_calculate_minimum_size() const
     {
-        if (get_layout())
-            return {};
+        if (const layout::Layout* layout = get_layout())
+            return layout->calculate_minimum_size(*this);
 
         ml7::Vector2f size;
         for (const auto& child : get_children())

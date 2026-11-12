@@ -1,7 +1,7 @@
 #ifndef FL7_GUI_LAYOUT_LAYOUT_H
 #define FL7_GUI_LAYOUT_LAYOUT_H
 
-#include <CoreLabs/root.h>
+#include <MathLabs/Vector2.h>
 
 
 
@@ -39,6 +39,28 @@ public:
      * to be called directly.
      */
     virtual void perform(Container& container) = 0;
+
+    /**
+     * Returns how large this layout's own strategy would ideally like container to
+     * be, given its current children's own effective preferred sizes, queried by
+     * `Container::_calculate_preferred_size()` while this layout is attached,
+     * instead of the plain (no-layout) bounding-box calculation it otherwise falls
+     * back to. Default: `{0, 0}` (no particular opinion; a layout that doesn't
+     * actually resize/reposition children, e.g., `DefaultLayout`, has none to
+     * report either).
+     */
+    virtual ml7::Vector2f calculate_preferred_size(const Container& container) const { return {}; }
+
+    /**
+     * Returns how large this layout's own strategy would ideally like container to
+     * be, given its current children's own effective minimum sizes, queried by
+     * `Container::_calculate_minimum_size()` while this layout is attached,
+     * instead of the plain (no-layout) bounding-box calculation it otherwise falls
+     * back to. Default: `{0, 0}` (no particular opinion; a layout that doesn't
+     * actually resize/reposition children, e.g., `DefaultLayout`, has none to
+     * report either).
+     */
+    virtual ml7::Vector2f calculate_minimum_size(const Container& container) const { return {}; }
 
 }; // class Layout
 
