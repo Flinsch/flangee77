@@ -290,7 +290,7 @@ namespace helloworld {
 
 
         // 9-slicing demo chrome atlas (see assets/gfx/chrome.ppm): two 32x32
-        // raised-bevel sprites side by side, 8px border each -- window chrome on
+        // raised-bevel sprites side by side, 8px border each, window chrome on
         // the left half, button chrome on the right half.
         xl7::graphics::images::Image chrome_image;
         netpbm_image_reader.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/chrome.ppm", chrome_image);
@@ -329,6 +329,10 @@ namespace helloworld {
         _gui_shell = std::make_unique<fl7::gui::Shell>(_gui_renderer.get());
 
         _gui_theme.get_default_level().font = _font.get();
+        // Demo default: a small, uniform inset for every themed element's own
+        // text content (see Style::padding), just to have something actually
+        // using it visually, rather than every face still reporting {0, 0, 0, 0}.
+        _gui_theme.get_default_level().padding = fl7::gui::Padding(3.0f);
         _gui_theme.get_level(u8"window").chrome = &_gui_window_chrome;
 
         auto& gui_button_level = _gui_theme.get_level(u8"button");
@@ -396,10 +400,14 @@ namespace helloworld {
 
         auto& frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo Frame");
         frame.set_position({600.0f, 210.0f});
-        // Tall enough for the BoxLayout-sequenced content below (8 items,
-        // 20px padding, 10px gaps): content area needs 392, i.e. 416 overall
-        // once Frame's own 24px title bar is added back on top.
-        frame.set_size({220.0f, 420.0f});
+        // Tall enough for the BoxLayout-sequenced content below (8 items, 20px
+        // padding, 10px gaps, plus +6px height on each of the 6 text-bearing
+        // rows below (button, checkbox, radio_button_1, radio_button_2,
+        // text_field, remove_checkbox_button) to offset their own now-inset
+        // text (see Style::padding, 3px uniform: top+bottom = 6px): content
+        // area needs 392 + 6*6 = 428, i.e., 452 overall once Frame's own 24px
+        // title bar is added back on top (plus a few px of slack, as before).
+        frame.set_size({220.0f, 456.0f});
 
         // Dogfooding gui::layout::BoxLayout: every direct child of the content area
         // below also gets an explicit set_preferred_size(), mirroring its own
@@ -434,37 +442,37 @@ namespace helloworld {
         scrolled_label.set_size({160.0f, 24.0f});
 
         auto& button = frame.get_content_area().add_child<fl7::gui::faces::Button>(U"Click me");
-        button.set_size({100.0f, 30.0f});
-        button.set_preferred_size({100.0f, 30.0f});
+        button.set_size({100.0f, 36.0f}); // +6: offsets its own now-inset text (see frame.set_size() above).
+        button.set_preferred_size({100.0f, 36.0f});
         button.get_clicked().connect([&button]() {
             LOG_INFO(u8"Button clicked!");
             button.set_text(button.get_text() == U"Click me" ? U"Clicked!" : U"Click me");
         });
 
         auto& checkbox = frame.get_content_area().add_child<fl7::gui::faces::CheckBox>(false, U"Enable extra sparkle");
-        checkbox.set_size({180.0f, 20.0f});
-        checkbox.set_preferred_size({180.0f, 20.0f});
+        checkbox.set_size({180.0f, 26.0f}); // +6: offsets its own now-inset caption text (see frame.set_size() above).
+        checkbox.set_preferred_size({180.0f, 26.0f});
         checkbox.get_changed().connect([](bool checked) {
             LOG_INFO(checked ? u8"CheckBox checked." : u8"CheckBox unchecked.");
         });
 
         auto& radio_button_1 = frame.get_content_area().add_child<fl7::gui::faces::RadioButton>(&_gui_radio_group, true, U"Option A");
-        radio_button_1.set_size({180.0f, 20.0f});
-        radio_button_1.set_preferred_size({180.0f, 20.0f});
+        radio_button_1.set_size({180.0f, 26.0f}); // +6: offsets its own now-inset caption text (see frame.set_size() above).
+        radio_button_1.set_preferred_size({180.0f, 26.0f});
         radio_button_1.get_changed().connect([](bool checked) {
             LOG_INFO(checked ? u8"RadioButton 1 checked." : u8"RadioButton 1 unchecked.");
         });
 
         auto& radio_button_2 = frame.get_content_area().add_child<fl7::gui::faces::RadioButton>(&_gui_radio_group, false, U"Option B");
-        radio_button_2.set_size({180.0f, 20.0f});
-        radio_button_2.set_preferred_size({180.0f, 20.0f});
+        radio_button_2.set_size({180.0f, 26.0f}); // +6: offsets its own now-inset caption text (see frame.set_size() above).
+        radio_button_2.set_preferred_size({180.0f, 26.0f});
         radio_button_2.get_changed().connect([](bool checked) {
             LOG_INFO(checked ? u8"RadioButton 2 checked." : u8"RadioButton 2 unchecked.");
         });
 
         auto& text_field = frame.get_content_area().add_child<fl7::gui::faces::TextField>(U"Edit me");
-        text_field.set_size({180.0f, 24.0f});
-        text_field.set_preferred_size({180.0f, 24.0f});
+        text_field.set_size({180.0f, 30.0f}); // +6: offsets its own now-narrowed text box (see frame.set_size() above).
+        text_field.set_preferred_size({180.0f, 30.0f});
         text_field.get_changed().connect([](const cl7::u32string& text) {
             LOG_INFO(u8"TextField changed.");
         });
@@ -481,8 +489,8 @@ namespace helloworld {
         // button's own _on_click() (see remove_child()'s doc comment). Disables
         // itself afterwards so a second click can't try to remove it again.
         auto& remove_checkbox_button = frame.get_content_area().add_child<fl7::gui::faces::Button>(U"Remove checkbox");
-        remove_checkbox_button.set_size({180.0f, 24.0f});
-        remove_checkbox_button.set_preferred_size({180.0f, 24.0f});
+        remove_checkbox_button.set_size({180.0f, 30.0f}); // +6: offsets its own now-inset text (see frame.set_size() above).
+        remove_checkbox_button.set_preferred_size({180.0f, 30.0f});
         remove_checkbox_button.get_clicked().connect([&frame, &checkbox, &remove_checkbox_button]() {
             LOG_INFO(u8"Removing CheckBox face...");
             // Also dogfoods BoxLayout reacting to remove_child(): every face
@@ -600,7 +608,12 @@ namespace helloworld {
         // own native size (cropped/letterboxed by its box, whichever applies).
         auto& picture_box_frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo PictureBox");
         picture_box_frame.set_position({1080.0f, 480.0f});
-        picture_box_frame.set_size({220.0f, 240.0f});
+        // Pre-existing (unrelated to Style::padding) off-by-a-bit: the three picture
+        // boxes below need 20 (top margin) + 60*3 + 10*2 (gaps) + 20 (bottom margin,
+        // matching the top one) = 240 content height, i.e., 264 overall once Frame's
+        // own 24px title bar is added back on top; 240 (216 content) used to clip
+        // the third box's own bottom 4px off.
+        picture_box_frame.set_size({220.0f, 264.0f});
 
         auto& stretch_picture_box = picture_box_frame.get_content_area().add_child<fl7::gui::faces::PictureBox>(_gui_picture_box_image);
         stretch_picture_box.set_position({20.0f, 20.0f});
