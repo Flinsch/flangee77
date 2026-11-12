@@ -1,5 +1,11 @@
 var NAVTREEINDEX5 =
 {
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a60f155558294e820239b490857063cc4":[7,0,8,1,7,29,0],
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a61afb255f29cb65659181e835a02782d":[5,0,8,2,7,29,8],
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a61afb255f29cb65659181e835a02782d":[7,0,8,1,7,29,8],
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#aacbb374da18392dd6bcd75983b636498":[5,0,8,2,7,29,5],
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#aacbb374da18392dd6bcd75983b636498":[7,0,8,1,7,29,5],
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#ae203280ab70c06920f1dc0d961b27731":[5,0,8,2,7,29,7],
 "d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#ae203280ab70c06920f1dc0d961b27731":[7,0,8,1,7,29,7],
 "d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#aef82aacce7c02f54cabda3fbf7dc1dba":[5,0,8,2,7,29,2],
 "d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#aef82aacce7c02f54cabda3fbf7dc1dba":[7,0,8,1,7,29,2],
@@ -243,11 +249,5 @@ var NAVTREEINDEX5 =
 "d1/de4/classtl7_1_1reporting_1_1Reporter.html#ab08a7883d9963b9d5dd7df29c32dedf6":[5,0,7,2,2,1],
 "d1/de4/classtl7_1_1reporting_1_1Reporter.html#ab08a7883d9963b9d5dd7df29c32dedf6":[7,0,7,1,2,1],
 "d1/de4/classtl7_1_1reporting_1_1Reporter.html#ac4b02b233287ddf12b5c342ec4aa5828":[5,0,7,2,2,6],
-"d1/de4/classtl7_1_1reporting_1_1Reporter.html#ac4b02b233287ddf12b5c342ec4aa5828":[7,0,7,1,2,6],
-"d1/de4/classtl7_1_1reporting_1_1Reporter.html#ac7fbc66375b1727bd7afe39591d0156a":[5,0,7,2,2,7],
-"d1/de4/classtl7_1_1reporting_1_1Reporter.html#ac7fbc66375b1727bd7afe39591d0156a":[7,0,7,1,2,7],
-"d1/de6/ConstantBuffer_8h.html":[8,0,7,1,4,2],
-"d1/de6/ConstantBuffer_8h_source.html":[8,0,7,1,4,2],
-"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html":[5,0,8,2,12,3],
-"d1/de6/structxl7_1_1graphics_1_1QuadRenderer_1_1DrawBatch.html":[7,0,8,1,12,3]
+"d1/de4/classtl7_1_1reporting_1_1Reporter.html#ac4b02b233287ddf12b5c342ec4aa5828":[7,0,7,1,2,6]
 };

@@ -1,5 +1,11 @@
 var NAVTREEINDEX30 =
 {
+"d7/d95/classdl7_1_1json_1_1Json.html#ac68cf39c15e0911075e85b528379fabb":[5,0,2,3,3,30],
+"d7/d95/classdl7_1_1json_1_1Json.html#ac68cf39c15e0911075e85b528379fabb":[7,0,2,3,3,30],
+"d7/d95/classdl7_1_1json_1_1Json.html#ac7805829b3c1374720d6d0d9edc2d02e":[5,0,2,3,3,50],
+"d7/d95/classdl7_1_1json_1_1Json.html#ac7805829b3c1374720d6d0d9edc2d02e":[7,0,2,3,3,50],
+"d7/d95/classdl7_1_1json_1_1Json.html#acc19d96692cf7cd7dfe887be3fa69e4b":[5,0,2,3,3,5],
+"d7/d95/classdl7_1_1json_1_1Json.html#acc19d96692cf7cd7dfe887be3fa69e4b":[7,0,2,3,3,5],
 "d7/d95/classdl7_1_1json_1_1Json.html#acc62362635b4ba5901fa8eb887bfd49f":[5,0,2,3,3,53],
 "d7/d95/classdl7_1_1json_1_1Json.html#acc62362635b4ba5901fa8eb887bfd49f":[7,0,2,3,3,53],
 "d7/d95/classdl7_1_1json_1_1Json.html#ad0b4e5974867f2b40efd8c1258a82f53":[5,0,2,3,3,77],
@@ -232,8 +238,8 @@ var NAVTREEINDEX30 =
 "d7/db1/structml7_1_1Vector2.html#afd3cdcede9fd42b505ae6880909e8671":[7,0,4,22,5],
 "d7/db1/structml7_1_1Vector2.html#afdaaea8a1e33a4609c92a1dad5a666d2":[5,0,4,22,43],
 "d7/db1/structml7_1_1Vector2.html#afdaaea8a1e33a4609c92a1dad5a666d2":[7,0,4,22,43],
-"d7/db3/Frame_8h.html":[8,0,3,1,0,6],
-"d7/db3/Frame_8h_source.html":[8,0,3,1,0,6],
+"d7/db3/Frame_8h.html":[8,0,3,1,0,7],
+"d7/db3/Frame_8h_source.html":[8,0,3,1,0,7],
 "d7/db3/fonts_2render_2AbstractRenderer_8h.html":[8,0,3,0,2,1],
 "d7/db3/fonts_2render_2AbstractRenderer_8h_source.html":[8,0,3,0,2,1],
 "d7/db8/namespacexl7_1_1graphics_1_1shaders.html":[5,0,8,2,4],
@@ -243,11 +249,5 @@ var NAVTREEINDEX30 =
 "d7/db8/namespacexl7_1_1graphics_1_1shaders.html#a085c34184496b18274daf7e0044b82e8ac26f15e86e3de4c398a8273272aba034":[5,0,8,2,4,25,0],
 "d7/db8/namespacexl7_1_1graphics_1_1shaders.html#af7157c0f2dc7ba0469861feb648fdb14":[5,0,8,2,4,24],
 "d7/db8/namespacexl7_1_1graphics_1_1shaders.html#af7157c0f2dc7ba0469861feb648fdb14a57dea6f5039281b7fee517fc43bf3110":[5,0,8,2,4,24,1],
-"d7/db8/namespacexl7_1_1graphics_1_1shaders.html#af7157c0f2dc7ba0469861feb648fdb14a89a786f66915a15b42514278dcf6527b":[5,0,8,2,4,24,3],
-"d7/db8/namespacexl7_1_1graphics_1_1shaders.html#af7157c0f2dc7ba0469861feb648fdb14aa93fb626a9de373a643f6fd2cbe89007":[5,0,8,2,4,24,2],
-"d7/db8/namespacexl7_1_1graphics_1_1shaders.html#af7157c0f2dc7ba0469861feb648fdb14af60357a8d17e45793298323f1b372a74":[5,0,8,2,4,24,0],
-"d7/dba/classcl7_1_1creational_1_1SingletonManager.html":[5,0,1,3,1],
-"d7/dba/classcl7_1_1creational_1_1SingletonManager.html":[7,0,1,2,1],
-"d7/dba/classcl7_1_1creational_1_1SingletonManager.html#a031fdaa4749590124ab88cb6607070de":[5,0,1,3,1,0],
-"d7/dba/classcl7_1_1creational_1_1SingletonManager.html#a031fdaa4749590124ab88cb6607070de":[7,0,1,2,1,0]
+"d7/db8/namespacexl7_1_1graphics_1_1shaders.html#af7157c0f2dc7ba0469861feb648fdb14a89a786f66915a15b42514278dcf6527b":[5,0,8,2,4,24,3]
 };

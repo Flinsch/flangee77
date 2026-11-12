@@ -1,5 +1,11 @@
 var NAVTREEINDEX36 =
 {
+"d8/d1f/structml7_1_1Quaternion.html#a552d153d30c3dbde8825f0a0664f89e0":[5,0,4,19,50],
+"d8/d1f/structml7_1_1Quaternion.html#a552d153d30c3dbde8825f0a0664f89e0":[7,0,4,19,50],
+"d8/d1f/structml7_1_1Quaternion.html#a55746eb028f9bc3b30b029e7622c79b8":[5,0,4,19,54],
+"d8/d1f/structml7_1_1Quaternion.html#a55746eb028f9bc3b30b029e7622c79b8":[7,0,4,19,54],
+"d8/d1f/structml7_1_1Quaternion.html#a59f65b6a0645435f22855cf521daf0ce":[5,0,4,19,31],
+"d8/d1f/structml7_1_1Quaternion.html#a59f65b6a0645435f22855cf521daf0ce":[7,0,4,19,31],
 "d8/d1f/structml7_1_1Quaternion.html#a60ba78a4bbb7443d619bef7597c5b906":[5,0,4,19,39],
 "d8/d1f/structml7_1_1Quaternion.html#a60ba78a4bbb7443d619bef7597c5b906":[7,0,4,19,39],
 "d8/d1f/structml7_1_1Quaternion.html#a610a3cbda9fc109aceaacc265440918a":[5,0,4,19,42],
@@ -241,13 +247,7 @@ var NAVTREEINDEX36 =
 "d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html#a9b5b7688535772372f546d50bd5f5ebb":[7,0,8,1,3,7,3],
 "d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html#acd953b1e6f57bd96697e461b33464926":[5,0,8,2,3,7,2],
 "d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html#acd953b1e6f57bd96697e461b33464926":[7,0,8,1,3,7,2],
-"d8/d54/DropDown_8cpp.html":[8,0,3,1,0,3],
+"d8/d54/DropDown_8cpp.html":[8,0,3,1,0,4],
 "d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect.html":[5,0,8,2,7,7],
-"d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect.html":[7,0,8,1,7,7],
-"d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect.html#a3f2284683311e57a7c4e908061024dab":[5,0,8,2,7,7,0],
-"d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect.html#a3f2284683311e57a7c4e908061024dab":[7,0,8,1,7,7,0],
-"d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect.html#a4a9ca26057ce776e4f90905f32af4c39":[5,0,8,2,7,7,4],
-"d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect.html#a4a9ca26057ce776e4f90905f32af4c39":[7,0,8,1,7,7,4],
-"d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect.html#a52e873375b1c9d3a91276ab550ffc680":[5,0,8,2,7,7,6],
-"d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect.html#a52e873375b1c9d3a91276ab550ffc680":[7,0,8,1,7,7,6]
+"d8/d55/classxl7_1_1graphics_1_1textures_1_1DirtyRect.html":[7,0,8,1,7,7]
 };

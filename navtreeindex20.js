@@ -1,5 +1,11 @@
 var NAVTREEINDEX20 =
 {
+"d5/d6d/Diagnostic_8h_source.html":[8,0,2,4,8],
+"d5/d6e/ConfigProvider_8h.html":[8,0,7,13],
+"d5/d6e/ConfigProvider_8h_source.html":[8,0,7,13],
+"d5/d6e/RenderTargetSurface_8h.html":[8,0,7,1,6,6],
+"d5/d6e/RenderTargetSurface_8h_source.html":[8,0,7,1,6,6],
+"d5/d6f/Texture2D_8h.html":[8,0,7,1,7,15],
 "d5/d6f/Texture2D_8h_source.html":[8,0,7,1,7,15],
 "d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html":[5,0,1,11,0,10],
 "d5/d6f/classcl7_1_1text_1_1codec_1_1ErrorHandler.html":[7,0,1,9,0,10],
@@ -243,11 +249,5 @@ var NAVTREEINDEX20 =
 "d5/d85/structml7_1_1LineSegment3.html#aa57789e519245c0c2cb5161c79b37752":[7,0,4,11,0],
 "d5/d85/structml7_1_1LineSegment3.html#abe2cbeb3d8aed0be41bce40f20d8253d":[5,0,4,11,9],
 "d5/d85/structml7_1_1LineSegment3.html#abe2cbeb3d8aed0be41bce40f20d8253d":[7,0,4,11,9],
-"d5/d85/structml7_1_1LineSegment3.html#af8d7d0640e799f672f5746c22e4c1984":[5,0,4,11,6],
-"d5/d85/structml7_1_1LineSegment3.html#af8d7d0640e799f672f5746c22e4c1984":[7,0,4,11,6],
-"d5/d87/Texture_8cpp.html":[8,0,7,1,7,12],
-"d5/d87/classxl7_1_1resources_1_1UpdatableResource.html":[5,0,8,4,7],
-"d5/d87/classxl7_1_1resources_1_1UpdatableResource.html":[7,0,8,3,7],
-"d5/d87/classxl7_1_1resources_1_1UpdatableResource.html#a34096017b4d479d6a94febf9fba50276":[5,0,8,4,7,16],
-"d5/d87/classxl7_1_1resources_1_1UpdatableResource.html#a34096017b4d479d6a94febf9fba50276":[7,0,8,3,7,16]
+"d5/d85/structml7_1_1LineSegment3.html#af8d7d0640e799f672f5746c22e4c1984":[5,0,4,11,6]
 };

@@ -5,6 +5,8 @@ var classfl7_1_1gui_1_1faces_1_1RadioButton =
     [ "RadioButton", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#af3457300cbe1a5453420248b86454187", null ],
     [ "RadioButton", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#a913a2cb06ea3f80bb66b10414b7dab15", null ],
     [ "~RadioButton", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#a5023fbcdf13a1a0c9dcaa0c571cb7e04", null ],
+    [ "_calculate_minimum_size", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#ace17216b317c6ea726823ca37d2f63b5", null ],
+    [ "_calculate_preferred_size", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#aab590f91d81a03433412aae0df563ebc", null ],
     [ "_force_unchecked", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#aea08fa2cfc188c84acbef4f1d27b368a", null ],
     [ "_is_clickable", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#ac1dfb05523e51f925eb34e9357855b87", null ],
     [ "_is_focusable", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#a713f17ead85f78a0870c83e08f3c8c0c", null ],
@@ -22,5 +24,6 @@ var classfl7_1_1gui_1_1faces_1_1RadioButton =
     [ "_changed", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#a47b6628ab2929d828816b91ba009fef7", null ],
     [ "_checked", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#a8d152d4c9f54abcb2c722ea558ce0947", null ],
     [ "_group", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#abeb565ed980c45ea18156de27b4c3d4f", null ],
-    [ "_label", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#adc6adf341a9346caa52f5c1e830d02bd", null ]
+    [ "_label", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#adc6adf341a9346caa52f5c1e830d02bd", null ],
+    [ "CAPTION_GAP", "dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#a46cc59102b78a3c4b0d3abe653b3004b", null ]
 ];

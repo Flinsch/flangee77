@@ -5,6 +5,9 @@ var classfl7_1_1gui_1_1faces_1_1Button =
     [ "Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#ad3c432cbd2f1c49f567409231a195c42", null ],
     [ "Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#afde770e8bee43b1fbe142398e148a125", null ],
     [ "~Button", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#a842325cc0d48032842793b4f35e67bcf", null ],
+    [ "_calculate_minimum_size", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#a69530a2087827d83ecd5e9b7e2579c2c", null ],
+    [ "_calculate_preferred_size", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#ad6607d813bd7195ccbe1491a7801c91d", null ],
+    [ "_calculate_text_size", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#aed817fbd148e54acd63ea4e831548a72", null ],
     [ "_get_theme_key", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#ae71850a590d1def695268028636c24a9", null ],
     [ "_is_clickable", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#a2a14d2e73618d9616047eaf783896a5d", null ],
     [ "_on_click", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#a9a569b05e7e46b6348168518f7038a5d", null ],
@@ -14,6 +17,9 @@ var classfl7_1_1gui_1_1faces_1_1Button =
     [ "operator=", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#a2eeb3f8fbf62b92cb76bcb1562f2d214", null ],
     [ "operator=", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#a2908853df60d37b3efa85a300d2bdaed", null ],
     [ "set_text", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#a57ea4c02915293e415516e0ff2f8cd92", null ],
+    [ "_cached_font", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#adf0ebcddd5c20fea3b8c87ea77cd0a4b", null ],
+    [ "_cached_text", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#a11e4fe0e4931e3e3bd2890baddeca7dd", null ],
+    [ "_cached_text_size", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#a7987a8b4c6cfb129e5900c054c0c0896", null ],
     [ "_clicked", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#a428e1d2e29cdccf2a24b2897eeb7c42c", null ],
     [ "_text", "d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#a838db3f452f69c29ede7e1c6e494ed4b", null ]
 ];

@@ -5,6 +5,8 @@ var classfl7_1_1gui_1_1faces_1_1CheckBox =
     [ "CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a0984a1e3c3392e866e677acd04e4f21b", null ],
     [ "CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a54fe1e3eb34da97ba2cb3d3192849d54", null ],
     [ "~CheckBox", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#ab2858027357a4a6f1d3c1f2b9f268290", null ],
+    [ "_calculate_minimum_size", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#af0e0f6c6a5cf2b2ea8f6710946a8857e", null ],
+    [ "_calculate_preferred_size", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a800d65aa0969c77fccee6208d9bcff61", null ],
     [ "_is_clickable", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a5f39af22720b163f18fff322b4ba6b64", null ],
     [ "_is_focusable", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a7c1278c1a11c23b6ed2811198b5f0ec9", null ],
     [ "_on_click", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a411f8ebdd148252b5562821f4e72068a", null ],
@@ -19,5 +21,6 @@ var classfl7_1_1gui_1_1faces_1_1CheckBox =
     [ "_box", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a564d7e381be381d90a4b6860c620d49b", null ],
     [ "_changed", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#abac2c457cf9873acc28c07e7655e9422", null ],
     [ "_checked", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a26f71b3e7656b82795b29ec7c524d1d3", null ],
-    [ "_label", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a2f2ecc64073c64b00feffeacc03363e9", null ]
+    [ "_label", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a2f2ecc64073c64b00feffeacc03363e9", null ],
+    [ "CAPTION_GAP", "d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a52cd866e86a0b6d2a74f278e13a89953", null ]
 ];
