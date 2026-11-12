@@ -95,10 +95,29 @@ protected:
     /** A RadioButton's _on_click() meaningfully does something, so Enter/Space (or a gamepad's "confirm" button) can activate it while focused. */
     bool _is_clickable() const override { return true; }
 
+    /**
+     * Returns the box glyph (square, side = caption height) plus, only if there
+     * actually is a caption to separate it from, the gap plus the caption's own
+     * natural (unwrapped) preferred size, side by side; see _on_size_changed()
+     * for the matching actual layout.
+     */
+    ml7::Vector2f _calculate_preferred_size() const override;
+
+    /**
+     * Returns the box glyph (square, side = caption height) plus, only if there
+     * actually is a caption to separate it from, the gap plus the caption's own
+     * natural (unwrapped) minimum size, side by side; see _on_size_changed()
+     * for the matching actual layout.
+     */
+    ml7::Vector2f _calculate_minimum_size() const override;
+
 
 
 private:
     class Box; // Face + HasBackground only, defined in RadioButton.cpp; passive, see Box's own doc comment.
+
+    /** Horizontal gap between the box glyph and the caption; see _on_size_changed(). */
+    static constexpr float CAPTION_GAP = 6.0f;
 
     // #############################################################################
     // Backend Interface (RadioGroup)

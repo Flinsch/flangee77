@@ -89,27 +89,27 @@ namespace fl7::gui::faces {
 
     /**
      * Returns the box glyph (square, side = caption height) plus, only if there
-     * actually is a caption to separate it from (label_size.x > 0), the gap plus
-     * the caption's own natural (unwrapped) preferred size, side by side; see
-     * _on_size_changed() for the matching actual layout.
+     * actually is a caption to separate it from, the gap plus the caption's own
+     * natural (unwrapped) preferred size, side by side; see _on_size_changed()
+     * for the matching actual layout.
      */
     ml7::Vector2f CheckBox::_calculate_preferred_size() const
     {
         const ml7::Vector2f label_size = _label.get_effective_preferred_size();
-        const float gap = label_size.x > 0.0f ? CAPTION_GAP : 0.0f;
+        const float gap = label_size.x > 0.0f ? CAPTION_GAP : 0.0f; // No caption: no gap either.
         return {label_size.y + gap + label_size.x, label_size.y};
     }
 
     /**
      * Returns the box glyph (square, side = caption height) plus, only if there
-     * actually is a caption to separate it from (label_size.x > 0), the gap plus
-     * the caption's own natural (unwrapped) minimum size, side by side; see
-     * _on_size_changed() for the matching actual layout.
+     * actually is a caption to separate it from, the gap plus the caption's own
+     * natural (unwrapped) minimum size, side by side; see _on_size_changed()
+     * for the matching actual layout.
      */
     ml7::Vector2f CheckBox::_calculate_minimum_size() const
     {
         const ml7::Vector2f label_size = _label.get_effective_minimum_size();
-        const float gap = label_size.x > 0.0f ? CAPTION_GAP : 0.0f;
+        const float gap = label_size.x > 0.0f ? CAPTION_GAP : 0.0f; // No caption: no gap either.
         return {label_size.y + gap + label_size.x, label_size.y};
     }
 

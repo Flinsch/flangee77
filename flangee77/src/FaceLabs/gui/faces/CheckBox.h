@@ -87,16 +87,18 @@ protected:
     bool _is_clickable() const override { return true; }
 
     /**
-     * Returns the box glyph (square, side = caption height) plus the gap plus
-     * the caption's own natural (unwrapped) preferred size, side by side; see
-     * _on_size_changed() for the matching actual layout.
+     * Returns the box glyph (square, side = caption height) plus, only if there
+     * actually is a caption to separate it from, the gap plus the caption's own
+     * natural (unwrapped) preferred size, side by side; see _on_size_changed()
+     * for the matching actual layout.
      */
     ml7::Vector2f _calculate_preferred_size() const override;
 
     /**
-     * Returns the box glyph (square, side = caption height) plus the gap plus
-     * the caption's own natural (unwrapped) minimum size, side by side; see
-     * _on_size_changed() for the matching actual layout.
+     * Returns the box glyph (square, side = caption height) plus, only if there
+     * actually is a caption to separate it from, the gap plus the caption's own
+     * natural (unwrapped) minimum size, side by side; see _on_size_changed()
+     * for the matching actual layout.
      */
     ml7::Vector2f _calculate_minimum_size() const override;
 
