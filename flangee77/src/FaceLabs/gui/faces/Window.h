@@ -62,6 +62,27 @@ protected:
      */
     void _on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size) override;
 
+    /**
+     * Returns this window's content area's own effective preferred size: a window
+     * has no content of its own beyond that (the content area fills it entirely).
+     */
+    ml7::Vector2f _calculate_preferred_size() const override;
+
+    /**
+     * Returns this window's content area's own effective minimum size: a window
+     * has no content of its own beyond that (the content area fills it entirely).
+     */
+    ml7::Vector2f _calculate_minimum_size() const override;
+
+    /**
+     * false: a window's own Style::padding would currently have no actual effect
+     * (no text of its own, and its content area isn't inset by it the way
+     * Container's own children are, since Window is a Compound, not a Container;
+     * see Container's own doc comment), so reporting a size padded for it would be
+     * misleading.
+     */
+    bool _applies_own_padding() const override { return false; }
+
 
 
 private:

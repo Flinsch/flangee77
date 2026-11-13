@@ -1,7 +1,9 @@
 
 #include <TestLabs/TestSuite.h>
 
+#include <FaceLabs/gui/Container.h>
 #include <FaceLabs/gui/Shell.h>
+#include <FaceLabs/gui/Style.h>
 #include <FaceLabs/gui/faces/Button.h>
 #include <FaceLabs/gui/faces/Window.h>
 
@@ -12,6 +14,40 @@
 // #############################################################################
 // Plain API (no Shell/input involved)
 // #############################################################################
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Window:  get_effective_preferred_size()/get_effective_minimum_size() are exactly the content area's own (a window has no content of its own beyond it)" )
+{
+    fl7::gui::faces::Window window;
+
+    auto& child = window.get_content_area().add_child<fl7::gui::Container>();
+    child.set_preferred_size({100.0f, 50.0f});
+    child.set_minimum_size({20.0f, 10.0f});
+
+    TESTLABS_CHECK_EQ_FLT( window.get_effective_preferred_size().x, 100.0f );
+    TESTLABS_CHECK_EQ_FLT( window.get_effective_preferred_size().y, 50.0f );
+    TESTLABS_CHECK_EQ_FLT( window.get_effective_minimum_size().x, 20.0f );
+    TESTLABS_CHECK_EQ_FLT( window.get_effective_minimum_size().y, 10.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Window:  a window's own Style::padding never applies to the window itself (see Face::_applies_own_padding()), though an explicit override still cascades down to its (otherwise themeless/padding-less) content area, same as to any other descendant" )
+{
+    fl7::gui::faces::Window window;
+
+    fl7::gui::Style style;
+    style.padding = fl7::gui::Padding(50.0f); // Deliberately huge: would obviously show up below if it applied at all.
+    window.set_style_override(style);
+
+    TESTLABS_CHECK_EQ_FLT( window.get_effective_padding().left, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( window.get_effective_padding().top, 0.0f );
+
+    // The content area itself has no theme role of its own, so it falls
+    // through to Window's own explicit override instead (see
+    // Face::_find_inherited_style_override()) -- and, being a plain,
+    // unlayouted Container, actually applies that inherited padding to
+    // itself; this is the pre-existing, generic override-cascading
+    // behavior, not something Window's own suppression touches at all.
+    TESTLABS_CHECK_EQ_FLT( window.get_content_area().get_effective_padding().left, 50.0f );
+}
 
 TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Window:  the content area fills the window's own size, staying at local position (0, 0), and is kept in sync as the window is resized" )
 {

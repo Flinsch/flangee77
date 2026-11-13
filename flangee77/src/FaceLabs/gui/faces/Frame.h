@@ -86,6 +86,22 @@ protected:
     void _on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size) override;
 
     /**
+     * Returns the content area's own effective preferred size (see `Window`), plus
+     * this frame's own fixed title bar height on top; width is otherwise
+     * unaffected, the title bar never needs more of it than the content area itself
+     * already does.
+     */
+    ml7::Vector2f _calculate_preferred_size() const override;
+
+    /**
+     * Returns the content area's own effective minimum size (see `Window`), plus
+     * this frame's own fixed title bar height on top; width is otherwise
+     * unaffected, the title bar never needs more of it than the content area itself
+     * already does.
+     */
+    ml7::Vector2f _calculate_minimum_size() const override;
+
+    /**
      * Arms dragging if the press landed within the title bar strip.
      */
     void _on_mouse_down(xl7::input::MouseButton button, ml7::Vector2f local_position) override;

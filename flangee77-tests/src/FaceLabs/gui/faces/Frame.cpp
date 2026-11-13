@@ -1,6 +1,7 @@
 
 #include <TestLabs/TestSuite.h>
 
+#include <FaceLabs/gui/Container.h>
 #include <FaceLabs/gui/Shell.h>
 #include <FaceLabs/gui/faces/Frame.h>
 
@@ -11,6 +12,34 @@
 // #############################################################################
 // Plain API (no Shell/input involved)
 // #############################################################################
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  get_effective_preferred_size() is the content area's own preferred size plus the fixed title bar height on top; get_effective_minimum_size() is the same against the content area's own minimum size instead, but never smaller than MIN_WIDTH/MIN_HEIGHT" )
+{
+    fl7::gui::faces::Frame frame;
+
+    auto& child = frame.get_content_area().add_child<fl7::gui::Container>();
+    child.set_preferred_size({100.0f, 50.0f});
+    child.set_minimum_size({20.0f, 10.0f});
+
+    TESTLABS_CHECK_EQ_FLT( frame.get_effective_preferred_size().x, 100.0f );
+    TESTLABS_CHECK_EQ_FLT( frame.get_effective_preferred_size().y, 74.0f ); // 50 + the title bar's own 24.
+
+    // Content area's own minimum (20, 10) plus the title bar (24) would be
+    // (20, 34), both below MIN_WIDTH(80)/MIN_HEIGHT(40): clamped up to those instead.
+    TESTLABS_CHECK_EQ_FLT( frame.get_effective_minimum_size().x, 80.0f );
+    TESTLABS_CHECK_EQ_FLT( frame.get_effective_minimum_size().y, 40.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  get_effective_minimum_size() uses the content area's own minimum (plus the title bar) once that actually exceeds MIN_WIDTH/MIN_HEIGHT" )
+{
+    fl7::gui::faces::Frame frame;
+
+    auto& child = frame.get_content_area().add_child<fl7::gui::Container>();
+    child.set_minimum_size({100.0f, 60.0f}); // + the title bar (24) = (100, 84): both above the floor.
+
+    TESTLABS_CHECK_EQ_FLT( frame.get_effective_minimum_size().x, 100.0f );
+    TESTLABS_CHECK_EQ_FLT( frame.get_effective_minimum_size().y, 84.0f );
+}
 
 TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  get_title()/set_title()" )
 {

@@ -160,6 +160,29 @@ namespace fl7::gui::faces {
     }
 
     /**
+     * Returns the content area's own effective preferred size (see `Window`), plus
+     * this frame's own fixed title bar height on top; width is otherwise
+     * unaffected, the title bar never needs more of it than the content area itself
+     * already does.
+     */
+    ml7::Vector2f Frame::_calculate_preferred_size() const
+    {
+        return Window::_calculate_preferred_size() + ml7::Vector2f{0.0f, TITLE_BAR_HEIGHT};
+    }
+
+    /**
+     * Returns the content area's own effective minimum size (see `Window`), plus
+     * this frame's own fixed title bar height on top; width is otherwise
+     * unaffected, the title bar never needs more of it than the content area itself
+     * already does.
+     */
+    ml7::Vector2f Frame::_calculate_minimum_size() const
+    {
+        const ml7::Vector2f content_minimum = Window::_calculate_minimum_size() + ml7::Vector2f{0.0f, TITLE_BAR_HEIGHT};
+        return {std::max(MIN_WIDTH, content_minimum.x), std::max(MIN_HEIGHT, content_minimum.y)};
+    }
+
+    /**
      * Arms dragging if the press landed within the title bar strip.
      */
     void Frame::_on_mouse_down(xl7::input::MouseButton button, ml7::Vector2f local_position)
