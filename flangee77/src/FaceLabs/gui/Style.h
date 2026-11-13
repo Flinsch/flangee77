@@ -48,12 +48,9 @@ struct Style
     xl7::graphics::Color selection_color = {0.25f, 0.45f, 0.9f, 0.5f};
 
     /**
-     * The space kept between this face's own bounds and its actual (currently:
-     * text only, see HasText; a HasImage's own image is unaffected so far)
-     * content, drawn inset by this (see render::AbstractRenderer::_draw_face()),
-     * and independently added on top of its own calculated preferred/minimum
-     * size (see Face::get_effective_preferred_size()/get_effective_minimum_size()).
-     * Default: none.
+     * The space kept between this face's own bounds and its actual content
+     * (text/image), drawn inset by this, and added on top of its own calculated
+     * preferred/minimum size. Default: none.
      */
     Padding padding;
 

@@ -129,23 +129,11 @@ namespace fl7::gui::render {
     // #############################################################################
 
     /**
-     * Draws the given face itself (not its children, if any, that's up to each
-     * backend's own traversal in `_render_faces_impl`), clipped to its own declared
-     * bounds (`face.get_size()`) regardless of what it actually draws: its
-     * background (see `BackgroundHelper`) if it's a `HasBackground` (always over its
-     * own full bounds, NOT inset by padding below), then, if it's a `HasImage`, its
-     * image (see `ImageHelper`), then, if it's a `HasText`, its selection highlight
-     * (see `SelectionHelper`), its text (see `TextHelper`), and its caret (see
-     * `CaretHelper`), always in that (back-to-front) order, the latter three shifted
-     * by `get_effective_padding()`'s own left/top on top of `get_text_scroll_offset()`,
-     * and laid out against `get_text_box_size()` (narrower than `get_size()` while a
-     * scroll bar is shown; see `faces::TextField`'s multiline mode), itself narrowed
-     * further by that same padding when `get_text_box_size()` returns nothing (a face
-     * overriding it, like `faces::TextField`, is assumed to already have accounted
-     * for its own padding there). Backend-agnostic (talks only to this class's own
-     * public drawing methods above), so shared by every `AbstractRenderer`
-     * implementation. Call this from within your own traversal wherever you decide
-     * to actually draw a given face.
+     * Draws face itself (not its children; that's up to the backend's own
+     * traversal), clipped to its own bounds. Draw order: background (full bounds,
+     * unpadded), then image, then selection/text/caret: the latter two groups both
+     * inset by `get_effective_padding()`. Backend-agnostic: call this wherever your
+     * own traversal decides to draw a face.
      */
     void AbstractRenderer::_draw_face(const Face& face, ml7::Vector2f absolute_position)
     {
@@ -154,23 +142,23 @@ namespace fl7::gui::render {
         if (dynamic_cast<const HasBackground*>(&face))
             _background_helper.draw(this, face, absolute_position);
 
+        const Padding padding = face.get_effective_padding();
+        const ml7::Vector2f content_position = absolute_position + ml7::Vector2f{padding.left, padding.top};
+        const ml7::Vector2f content_size = {
+            std::max(0.0f, face.get_size().x - padding.left - padding.right),
+            std::max(0.0f, face.get_size().y - padding.top - padding.bottom),
+        };
+
         if (const auto* has_image = dynamic_cast<const HasImage*>(&face))
         {
             if (const Image* image = has_image->get_image())
-                _image_helper.draw(this, *image, face, absolute_position, has_image->get_image_scale_mode());
+                _image_helper.draw(this, *image, content_position, content_size, has_image->get_image_scale_mode());
         }
 
         if (const auto* has_text = dynamic_cast<const HasText*>(&face))
         {
-            const Padding padding = face.get_effective_padding();
-            const ml7::Vector2f content_position = absolute_position + ml7::Vector2f{padding.left, padding.top};
-            const ml7::Vector2f default_text_box_size = {
-                std::max(0.0f, face.get_size().x - padding.left - padding.right),
-                std::max(0.0f, face.get_size().y - padding.top - padding.bottom),
-            };
-
             const ml7::Vector2f text_scroll_offset = has_text->get_text_scroll_offset();
-            const ml7::Vector2f text_box_size = has_text->get_text_box_size().value_or(default_text_box_size);
+            const ml7::Vector2f text_box_size = has_text->get_text_box_size().value_or(content_size);
             _selection_helper.draw(this, has_text->get_display_text(), face, content_position, text_scroll_offset, text_box_size);
             _text_helper.draw(this, has_text->get_display_text(), face, content_position, text_scroll_offset, text_box_size);
             _caret_helper.draw(this, has_text->get_display_text(), face, content_position, text_scroll_offset, text_box_size);

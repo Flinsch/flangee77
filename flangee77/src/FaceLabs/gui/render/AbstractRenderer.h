@@ -38,9 +38,10 @@ namespace fl7::gui::render {
  * drawing primitives (`_draw_rect_impl` etc.). How a *single* face is structured
  * (e.g., background before selection highlight before text before caret, always
  * back-to-front) is fixed and backend-agnostic, though: see `_draw_face`, which
- * delegates to per-aspect helpers (see `BackgroundHelper`/`SelectionHelper`/
- * `TextHelper`/`CaretHelper`) that only ever talk to this class's own public
- * drawing methods, so that knowledge is written once here, not per backend.
+ * delegates to per-aspect helpers (see `BackgroundHelper`/`ImageHelper`/
+ * `SelectionHelper`/`TextHelper`/`CaretHelper`) that only ever talk to this
+ * class's own public drawing methods, so that knowledge is written once here,
+ * not per backend.
  * `Face`/`Shell` themselves know nothing about drawing at all, they only expose
  * read-only structure (position, size, visibility, children, etc.) for a renderer
  * to look at.
@@ -174,23 +175,11 @@ protected:
     // #############################################################################
 
     /**
-     * Draws the given face itself (not its children, if any, that's up to each
-     * backend's own traversal in `_render_faces_impl`), clipped to its own declared
-     * bounds (`face.get_size()`) regardless of what it actually draws: its
-     * background (see `BackgroundHelper`) if it's a `HasBackground` (always over its
-     * own full bounds, NOT inset by padding below), then, if it's a `HasImage`, its
-     * image (see `ImageHelper`), then, if it's a `HasText`, its selection highlight
-     * (see `SelectionHelper`), its text (see `TextHelper`), and its caret (see
-     * `CaretHelper`), always in that (back-to-front) order, the latter three shifted
-     * by `get_effective_padding()`'s own left/top on top of `get_text_scroll_offset()`,
-     * and laid out against `get_text_box_size()` (narrower than `get_size()` while a
-     * scroll bar is shown; see `faces::TextField`'s multiline mode), itself narrowed
-     * further by that same padding when `get_text_box_size()` returns nothing (a face
-     * overriding it, like `faces::TextField`, is assumed to already have accounted
-     * for its own padding there). Backend-agnostic (talks only to this class's own
-     * public drawing methods above), so shared by every `AbstractRenderer`
-     * implementation. Call this from within your own traversal wherever you decide
-     * to actually draw a given face.
+     * Draws face itself (not its children; that's up to the backend's own
+     * traversal), clipped to its own bounds. Draw order: background (full bounds,
+     * unpadded), then image, then selection/text/caret: the latter two groups both
+     * inset by `get_effective_padding()`. Backend-agnostic: call this wherever your
+     * own traversal decides to draw a face.
      */
     void _draw_face(const Face& face, ml7::Vector2f absolute_position);
 
