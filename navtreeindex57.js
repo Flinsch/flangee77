@@ -1,5 +1,13 @@
 var NAVTREEINDEX57 =
 {
+"dc/d09/structxl7_1_1graphics_1_1impl_1_1direct3d9_1_1RenderingContextImpl_1_1HardwareStates_1_1TextureSamplerStates.html#a4138cb2c86ab4fe924762ccf5eda6abd":[7,0,8,1,1,1,5,0,0,0],
+"dc/d0c/direct3d11_2states_2BlendStateImpl_8cpp.html":[8,0,7,1,1,0,2,0],
+"dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4.html":[5,0,6,2],
+"dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4.html":[7,0,6,2],
+"dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4.html#a0b6fcc8815e3124c1d741b8f1acefa8d":[5,0,6,2,0],
+"dc/d11/structstd_1_1hash_3_01xl7_1_1resources_1_1ResourceId_01_4.html#a0b6fcc8815e3124c1d741b8f1acefa8d":[7,0,6,2,0],
+"dc/d14/direct3d11_2states_2DepthStencilStateImpl_8h.html":[8,0,7,1,1,0,2,3],
+"dc/d14/direct3d11_2states_2DepthStencilStateImpl_8h_source.html":[8,0,7,1,1,0,2,3],
 "dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html":[5,0,8,2,6,2],
 "dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html":[7,0,8,1,6,2],
 "dc/d17/classxl7_1_1graphics_1_1surfaces_1_1ISurfaceFactory.html#a1bc65f28048aa58bedf3758156fcac77":[5,0,8,2,6,2,0],
@@ -241,13 +249,5 @@ var NAVTREEINDEX57 =
 "dc/d58/structdl7_1_1syntax_1_1Token.html#aea98731c04dc0b4c55b6d14caf04ff8f":[7,0,2,4,27,1],
 "dc/d5c/MeshManager_8cpp.html":[8,0,7,1,2,18],
 "dc/d5e/HasCaret_8h.html":[8,0,3,1,12],
-"dc/d5e/HasCaret_8h_source.html":[8,0,3,1,12],
-"dc/d61/FilterReconstructor_8cpp.html":[8,0,7,1,0,0,1,6],
-"dc/d62/ImageAtlas_8h.html":[8,0,7,1,0,6],
-"dc/d62/ImageAtlas_8h_source.html":[8,0,7,1,0,6],
-"dc/d63/SurfaceManager_8h.html":[8,0,7,1,6,11],
-"dc/d63/SurfaceManager_8h_source.html":[8,0,7,1,6,11],
-"dc/d64/VersionedId_8h.html":[8,0,1,39],
-"dc/d64/VersionedId_8h_source.html":[8,0,1,39],
-"dc/d64/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1errors.html":[5,0,8,2,1,1,0]
+"dc/d5e/HasCaret_8h_source.html":[8,0,3,1,12]
 };

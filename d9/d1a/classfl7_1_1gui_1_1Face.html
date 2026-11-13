@@ -245,6 +245,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a0c2a862066815468c01a787bf42161d3" id="r_a0c2a862066815468c01a787bf42161d3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c2a862066815468c01a787bf42161d3">_adjust_effective_text_style</a> (<a class="el" href="../../d8/d86/structfl7_1_1fonts_1_1TextStyle.html">fonts::TextStyle</a> &amp;text_style) const</td></tr>
 <tr class="memitem:a0bf7f9b89fb34633392b25502d8efc8f" id="r_a0bf7f9b89fb34633392b25502d8efc8f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bf7f9b89fb34633392b25502d8efc8f">_calculate_preferred_size</a> () const</td></tr>
 <tr class="memitem:af740f74d08c785ef76ef46a77d0ec530" id="r_af740f74d08c785ef76ef46a77d0ec530"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af740f74d08c785ef76ef46a77d0ec530">_calculate_minimum_size</a> () const</td></tr>
+<tr class="memitem:a7756c3ef962ac91bda72eea2f6b74618" id="r_a7756c3ef962ac91bda72eea2f6b74618"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7756c3ef962ac91bda72eea2f6b74618">_applies_own_padding</a> () const</td></tr>
 <tr class="memitem:a3ae4416502c4e07e281f7ea8997fb85b" id="r_a3ae4416502c4e07e281f7ea8997fb85b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ae4416502c4e07e281f7ea8997fb85b">_contains_point</a> (<a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> local_point) const</td></tr>
 <tr class="memitem:a9866e132198a7de7a47e02e7347abe48" id="r_a9866e132198a7de7a47e02e7347abe48"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9866e132198a7de7a47e02e7347abe48">_on_size_changed</a> (<a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> old_size, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> new_size)</td></tr>
 <tr class="memitem:ada9684b1b9f86341ede8c15ee552c180" id="r_ada9684b1b9f86341ede8c15ee552c180"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada9684b1b9f86341ede8c15ee552c180">_on_mouse_enter</a> ()</td></tr>
@@ -418,6 +419,34 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="a7756c3ef962ac91bda72eea2f6b74618" name="a7756c3ef962ac91bda72eea2f6b74618"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7756c3ef962ac91bda72eea2f6b74618">&#9670;&#160;</a></span>_applies_own_padding()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool fl7::gui::Face::_applies_own_padding </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns whether this face's own effective padding (see <span class="tt"><a class="el" href="#a2d731b61049d1791f8afe409d89844a0">get_effective_padding()</a></span>) should actually apply right now. <span class="tt">false</span> forces it to <span class="tt">{0, 0, 0, 0}</span> regardless of style/theme. Default: <span class="tt">true</span>. <span class="tt"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a></span> overrides this to say <span class="tt">false</span> while a layout is attached (see its own doc comment): that layout's own, separate padding concept (if it has one, e.g., <span class="tt"><a class="el" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a746fd7f1dbac86611200427c8816fa74">layout::BoxLayout::get_padding()</a></span>) already covers the same space, so adding <span class="tt"><a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html#a9befece0b0d852fcd3f1762fd9e084c5">Style::padding</a></span> on top of it as well, both for the reported preferred/minimum size and for shifting children (see <span class="tt"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html#a5d4b5ef865dd16e3801caeee9b9f242f">Container::get_scroll_offset()</a></span>), would double it up. </p>
+
+<p>Reimplemented in <a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html#adb653a5bb3be5f89881ed3a6096b59bb">fl7::gui::Container</a>, and <a class="el" href="../../db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html#ad7e22dea8f1e5eaa499552f86931d42e">fl7::gui::faces::Window</a>.</p>
+
+</div>
+</div>
 <a id="af740f74d08c785ef76ef46a77d0ec530" name="af740f74d08c785ef76ef46a77d0ec530"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af740f74d08c785ef76ef46a77d0ec530">&#9670;&#160;</a></span>_calculate_minimum_size()</h2>
 
@@ -442,7 +471,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns this face's own calculated minimum size, based on its own content, for whichever component(s) of <span class="tt"><a class="el" href="#ac39e3f99564bd639ee89f9de42f5db46">get_effective_minimum_size()</a></span> don't have an explicit override (see <span class="tt"><a class="el" href="#a640affe6d66ae35ea1c8684c5aa3e920">set_minimum_size()</a></span>). Content-only: <span class="tt"><a class="el" href="#a2d731b61049d1791f8afe409d89844a0">get_effective_padding()</a></span> is added on top automatically, (see <span class="tt"><a class="el" href="#ac39e3f99564bd639ee89f9de42f5db46">get_effective_minimum_size()</a></span>), not this method's own concern. Default: <span class="tt">{0, 0}</span> (no particular opinion). Override in a concrete face type whose natural size follows from its own content (e.g., <span class="tt"><a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html">faces::Label</a></span> from its text). </p>
 
-<p>Reimplemented in <a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html#a30e9d85431da9a23ef1be1acff444637">fl7::gui::Container</a>, <a class="el" href="../../d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#a69530a2087827d83ecd5e9b7e2579c2c">fl7::gui::faces::Button</a>, <a class="el" href="../../d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#af0e0f6c6a5cf2b2ea8f6710946a8857e">fl7::gui::faces::CheckBox</a>, <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html#aba947e0a4115bb675d68200d75b99001">fl7::gui::faces::Label</a>, and <a class="el" href="../../dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#ace17216b317c6ea726823ca37d2f63b5">fl7::gui::faces::RadioButton</a>.</p>
+<p>Reimplemented in <a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html#a30e9d85431da9a23ef1be1acff444637">fl7::gui::Container</a>, <a class="el" href="../../d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#a69530a2087827d83ecd5e9b7e2579c2c">fl7::gui::faces::Button</a>, <a class="el" href="../../d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#af0e0f6c6a5cf2b2ea8f6710946a8857e">fl7::gui::faces::CheckBox</a>, <a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#abf36c19461d2c95b1a234865185ecca9">fl7::gui::faces::Frame</a>, <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html#aba947e0a4115bb675d68200d75b99001">fl7::gui::faces::Label</a>, <a class="el" href="../../dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#ace17216b317c6ea726823ca37d2f63b5">fl7::gui::faces::RadioButton</a>, and <a class="el" href="../../db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html#ac3411195d5b749e4df16cd5a16e3b102">fl7::gui::faces::Window</a>.</p>
 
 </div>
 </div>
@@ -470,7 +499,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns this face's own calculated preferred size, based on its own content, for whichever component(s) of <span class="tt"><a class="el" href="#a1ca02aca7b85bbf5d0e90b4883d09b5f">get_effective_preferred_size()</a></span> don't have an explicit override (see <span class="tt"><a class="el" href="#a49b7d22aaa2da515125d044bf348a158">set_preferred_size()</a></span>). Content-only: <span class="tt"><a class="el" href="#a2d731b61049d1791f8afe409d89844a0">get_effective_padding()</a></span> is added on top automatically (see <span class="tt"><a class="el" href="#a1ca02aca7b85bbf5d0e90b4883d09b5f">get_effective_preferred_size()</a></span>), not this method's own concern. Default: <span class="tt">{0, 0}</span> (no particular opinion). Override in a concrete face type whose natural size follows from its own content (e.g., <span class="tt"><a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html">faces::Label</a></span> from its text). </p>
 
-<p>Reimplemented in <a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html#a80335fadc6a88b0658b52885d0753dfc">fl7::gui::Container</a>, <a class="el" href="../../d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#ad6607d813bd7195ccbe1491a7801c91d">fl7::gui::faces::Button</a>, <a class="el" href="../../d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a800d65aa0969c77fccee6208d9bcff61">fl7::gui::faces::CheckBox</a>, <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html#a34c1b2f73466eb1901987d034e5a2d46">fl7::gui::faces::Label</a>, and <a class="el" href="../../dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#aab590f91d81a03433412aae0df563ebc">fl7::gui::faces::RadioButton</a>.</p>
+<p>Reimplemented in <a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html#a80335fadc6a88b0658b52885d0753dfc">fl7::gui::Container</a>, <a class="el" href="../../d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html#ad6607d813bd7195ccbe1491a7801c91d">fl7::gui::faces::Button</a>, <a class="el" href="../../d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html#a800d65aa0969c77fccee6208d9bcff61">fl7::gui::faces::CheckBox</a>, <a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#aefc67e955f74768bd66c82aff92d73e4">fl7::gui::faces::Frame</a>, <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html#a34c1b2f73466eb1901987d034e5a2d46">fl7::gui::faces::Label</a>, <a class="el" href="../../dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html#aab590f91d81a03433412aae0df563ebc">fl7::gui::faces::RadioButton</a>, and <a class="el" href="../../db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html#a3765bb907d29b9ae4149015940cec7e9">fl7::gui::faces::Window</a>.</p>
 
 </div>
 </div>
@@ -1284,7 +1313,7 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns this face's effective padding: its own style's <span class="tt"><a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html#a9befece0b0d852fcd3f1762fd9e084c5">Style::padding</a></span> (see <span class="tt"><a class="el" href="#a7af95b6aafdbd6d0137aef6410ff4827">get_effective_style()</a></span>), i.e., the space kept between its own bounds and its actual content, independently on each side. </p>
+<p>Returns this face's effective padding: its own style's <span class="tt"><a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html#a9befece0b0d852fcd3f1762fd9e084c5">Style::padding</a></span> (see <span class="tt"><a class="el" href="#a7af95b6aafdbd6d0137aef6410ff4827">get_effective_style()</a></span>), i.e., the space kept between its own bounds and its actual content, independently on each side; <span class="tt">{0, 0, 0, 0}</span> while <span class="tt"><a class="el" href="#a7756c3ef962ac91bda72eea2f6b74618">_applies_own_padding()</a></span> says no instead (see there). </p>
 
 </div>
 </div>

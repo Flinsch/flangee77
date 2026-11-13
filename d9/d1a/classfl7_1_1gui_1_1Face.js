@@ -5,6 +5,7 @@ var classfl7_1_1gui_1_1Face =
     [ "Face", "d9/d1a/classfl7_1_1gui_1_1Face.html#a8871afbfed905760ac195a07959e7950", null ],
     [ "~Face", "d9/d1a/classfl7_1_1gui_1_1Face.html#a70e0274c39f61fab4fd9efd13342c387", null ],
     [ "_adjust_effective_text_style", "d9/d1a/classfl7_1_1gui_1_1Face.html#a0c2a862066815468c01a787bf42161d3", null ],
+    [ "_applies_own_padding", "d9/d1a/classfl7_1_1gui_1_1Face.html#a7756c3ef962ac91bda72eea2f6b74618", null ],
     [ "_calculate_minimum_size", "d9/d1a/classfl7_1_1gui_1_1Face.html#af740f74d08c785ef76ef46a77d0ec530", null ],
     [ "_calculate_preferred_size", "d9/d1a/classfl7_1_1gui_1_1Face.html#a0bf7f9b89fb34633392b25502d8efc8f", null ],
     [ "_collect_tab_stops", "d9/d1a/classfl7_1_1gui_1_1Face.html#af3b0dac1cc2fda5241f4b97e7bcf3c27", null ],

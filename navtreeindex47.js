@@ -1,5 +1,7 @@
 var NAVTREEINDEX47 =
 {
+"da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18aec0fc0100c4fc1ce4eea230c3dc10360":[5,0,2,2,6,0,0],
+"da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18aec0fc0100c4fc1ce4eea230c3dc10360":[7,0,2,2,6,0,0],
 "da/d29/classdl7_1_1ini_1_1Value.html#a07f2ad3ff455592b3867ece187c23ba3":[5,0,2,2,6,33],
 "da/d29/classdl7_1_1ini_1_1Value.html#a07f2ad3ff455592b3867ece187c23ba3":[7,0,2,2,6,33],
 "da/d29/classdl7_1_1ini_1_1Value.html#a0b2db7e4665abad8d24471867308ca32":[5,0,2,2,6,50],
@@ -247,7 +249,5 @@ var NAVTREEINDEX47 =
 "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html#a97fd2f467a640bcbe2e2ba444b96128a":[7,0,3,1,0,6,5],
 "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html#aa86ac673636e80abdc86575d9e889515":[5,0,3,1,0,6,1],
 "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html#aa86ac673636e80abdc86575d9e889515":[7,0,3,1,0,6,1],
-"da/d47/namespacecl7_1_1text_1_1codec.html":[5,0,1,11,0],
-"da/d47/namespacecl7_1_1text_1_1codec.html#a0441144dd6bcbe786e98b378bb252f42":[5,0,1,11,0,37],
-"da/d47/namespacecl7_1_1text_1_1codec.html#a063e4b569e26f251fd34d2f219b396d0":[5,0,1,11,0,69]
+"da/d47/namespacecl7_1_1text_1_1codec.html":[5,0,1,11,0]
 };

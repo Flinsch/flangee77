@@ -5,6 +5,8 @@ var classfl7_1_1gui_1_1faces_1_1Frame =
     [ "Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a55c77a6c0d55aef67432d6d283fb5d48", null ],
     [ "Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a23c9ead49bf8bd5a628619a7b2442350", null ],
     [ "~Frame", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a4ce056869431574b0f253002cfa8fb85", null ],
+    [ "_calculate_minimum_size", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#abf36c19461d2c95b1a234865185ecca9", null ],
+    [ "_calculate_preferred_size", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#aefc67e955f74768bd66c82aff92d73e4", null ],
     [ "_on_mouse_down", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#aecde8701b6786d5cdfc11c006dcc01fd", null ],
     [ "_on_mouse_drag", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a4ff9291896eb579735808576f5336c6f", null ],
     [ "_on_mouse_up", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ab6a92230915b2852da9d651f6edea294", null ],
