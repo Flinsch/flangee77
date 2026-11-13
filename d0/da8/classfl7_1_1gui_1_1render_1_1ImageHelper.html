@@ -98,13 +98,13 @@ $(function(){initNavTree('d0/da8/classfl7_1_1gui_1_1render_1_1ImageHelper.html',
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af04b67ee41200f097baa63c21a594956" id="r_af04b67ee41200f097baa63c21a594956"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af04b67ee41200f097baa63c21a594956">draw</a> (<a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a> *renderer, const <a class="el" href="../../d6/d0b/structfl7_1_1gui_1_1Image.html">Image</a> &amp;image, const <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> &amp;face, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> absolute_position, <a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a4bd2852d89f09eda429237a441371a04">ImageScaleMode</a> scale_mode)</td></tr>
+<tr class="memitem:ad83a7461518ffa046ecf63ac19929a50" id="r_ad83a7461518ffa046ecf63ac19929a50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad83a7461518ffa046ecf63ac19929a50">draw</a> (<a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a> *renderer, const <a class="el" href="../../d6/d0b/structfl7_1_1gui_1_1Image.html">Image</a> &amp;image, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> box_position, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> box_size, <a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a4bd2852d89f09eda429237a441371a04">ImageScaleMode</a> scale_mode)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Knows how to draw a <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1HasImage.html">HasImage</a> face's image within its own bounds, per <a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a4bd2852d89f09eda429237a441371a04">ImageScaleMode</a> (see <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1HasImage.html#a32d849107860735b78ed447f9884612a">HasImage::get_image_scale_mode()</a>): stretched to fill them exactly, uniformly scaled (preserving its own aspect ratio) to fit within them, or drawn at its own native size, centered. Talks only to <a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a>'s public (backend-agnostic) drawing primitives, so this is shared by every <a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a> implementation, not reimplemented per backend. </p>
+<div class="textblock"><p>Knows how to draw a <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1HasImage.html">HasImage</a> face's image within a given box, per <span class="tt"><a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a4bd2852d89f09eda429237a441371a04">ImageScaleMode</a></span>: stretched to fill it exactly, uniformly scaled (preserving its own aspect ratio) to fit within it, or drawn at its own native size, centered. Talks only to <span class="tt"><a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a></span>'s public (backend-agnostic) drawing primitives, so this is shared by every <span class="tt"><a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a></span> implementation, not reimplemented per backend. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="af04b67ee41200f097baa63c21a594956" name="af04b67ee41200f097baa63c21a594956"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af04b67ee41200f097baa63c21a594956">&#9670;&#160;</a></span>draw()</h2>
+<a id="ad83a7461518ffa046ecf63ac19929a50" name="ad83a7461518ffa046ecf63ac19929a50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad83a7461518ffa046ecf63ac19929a50">&#9670;&#160;</a></span>draw()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -122,12 +122,12 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>face</em></span>, </td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a></td>          <td class="paramname"><span class="paramname"><em>box_position</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a></td>          <td class="paramname"><span class="paramname"><em>absolute_position</em></span>, </td>
+          <td class="paramtype"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a></td>          <td class="paramname"><span class="paramname"><em>box_size</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -136,7 +136,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Draws image within face's own bounds at absolute_position, per scale_mode (see <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1HasImage.html#a32d849107860735b78ed447f9884612a">HasImage::get_image_scale_mode()</a>). </p>
+<p>Draws image within the box at box_position/box_size, per scale_mode (see <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1HasImage.html#a32d849107860735b78ed447f9884612a">HasImage::get_image_scale_mode()</a>). </p>
 
 </div>
 </div>
