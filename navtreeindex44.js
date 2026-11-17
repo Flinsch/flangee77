@@ -1,5 +1,7 @@
 var NAVTREEINDEX44 =
 {
+"d9/db3/structdl7_1_1ini_1_1Format.html#af0738a2b310ac38e69274f4e5c5d23e8":[5,0,2,2,1,3],
+"d9/db3/structdl7_1_1ini_1_1Format.html#af0738a2b310ac38e69274f4e5c5d23e8":[7,0,2,2,1,3],
 "d9/db3/structdl7_1_1ini_1_1Format.html#af0738a2b310ac38e69274f4e5c5d23e8a358cfe58715d680d9ab09f82e4010cbc":[5,0,2,2,1,3,1],
 "d9/db3/structdl7_1_1ini_1_1Format.html#af0738a2b310ac38e69274f4e5c5d23e8a358cfe58715d680d9ab09f82e4010cbc":[7,0,2,2,1,3,1],
 "d9/db3/structdl7_1_1ini_1_1Format.html#af0738a2b310ac38e69274f4e5c5d23e8aaf6c6cf7a454b4ef4a850ac4d960a2cc":[5,0,2,2,1,3,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX44 =
 "d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer.html#ac33ae410cd5104f8a2039c0f92c216a7":[7,0,2,3,0,3,0],
 "d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer.html#afa9b6fa821db410c96ff7107ca7a9535":[5,0,2,3,0,3,1],
 "d9/dd8/classdl7_1_1json_1_1detail_1_1Lexer.html#afa9b6fa821db410c96ff7107ca7a9535":[7,0,2,3,0,3,1],
-"d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html":[5,0,2,3,1,0,0],
-"d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html":[7,0,2,3,1,0,0],
-"d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html#a87b152287f00ff2f50f40f247d03fe09":[5,0,2,3,1,0,0,1]
+"d9/dda/structdl7_1_1json_1_1util_1_1Escaper_1_1Options.html":[5,0,2,3,1,0,0]
 };

@@ -1,5 +1,7 @@
 var NAVTREEINDEX66 =
 {
+"dd/de7/structxl7_1_1input_1_1GameControllerSystem_1_1RawControllerState.html#a2ec1ad21d4b3073e76cd5a4d6c6d331c":[7,0,8,2,3,0,1],
+"dd/de7/structxl7_1_1input_1_1GameControllerSystem_1_1RawControllerState.html#a367049b918df0a7944065fd502a5bfe7":[5,0,8,3,3,0,4],
 "dd/de7/structxl7_1_1input_1_1GameControllerSystem_1_1RawControllerState.html#a367049b918df0a7944065fd502a5bfe7":[7,0,8,2,3,0,4],
 "dd/de7/structxl7_1_1input_1_1GameControllerSystem_1_1RawControllerState.html#ad5551f4500a9d85236bf9440bbbf2c85":[5,0,8,3,3,0,2],
 "dd/de7/structxl7_1_1input_1_1GameControllerSystem_1_1RawControllerState.html#ad5551f4500a9d85236bf9440bbbf2c85":[7,0,8,2,3,0,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX66 =
 "de/d15/conceptcl7_1_1any__char__ptr.html":[6,0,2],
 "de/d17/DigitalState_8cpp.html":[8,0,7,2,3],
 "de/d18/TrackControl_8cpp.html":[8,0,3,1,30],
-"de/d1b/Binder_8cpp.html":[8,0,2,1,0],
-"de/d1b/datetime_8h.html":[8,0,1,7,1],
-"de/d1b/datetime_8h_source.html":[8,0,1,7,1]
+"de/d1b/Binder_8cpp.html":[8,0,2,1,0]
 };

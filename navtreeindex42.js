@@ -1,5 +1,7 @@
 var NAVTREEINDEX42 =
 {
+"d9/d31/classcl7_1_1logging_1_1CoutLogHandler.html#adbcb554851f2b0fec3e25f0ca4b51bd1":[7,0,1,5,1,2],
+"d9/d32/classcl7_1_1io_1_1WritableMemory.html":[5,0,1,5,14],
 "d9/d32/classcl7_1_1io_1_1WritableMemory.html":[7,0,1,4,14],
 "d9/d32/classcl7_1_1io_1_1WritableMemory.html#a09616291b1a5d94c31b277f503f70230":[5,0,1,5,14,4],
 "d9/d32/classcl7_1_1io_1_1WritableMemory.html#a09616291b1a5d94c31b277f503f70230":[7,0,1,4,14,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX42 =
 "d9/d70/classxl7_1_1resources_1_1AbstractResourceUpdater.html#a6d591acb3c6bd13ee620b062e815c019":[5,0,8,4,0,13],
 "d9/d70/classxl7_1_1resources_1_1AbstractResourceUpdater.html#a6d591acb3c6bd13ee620b062e815c019":[7,0,8,3,0,13],
 "d9/d70/classxl7_1_1resources_1_1AbstractResourceUpdater.html#a8693c3dfe90a49b67d6568a5b3025ed1":[5,0,8,4,0,10],
-"d9/d70/classxl7_1_1resources_1_1AbstractResourceUpdater.html#a8693c3dfe90a49b67d6568a5b3025ed1":[7,0,8,3,0,10],
-"d9/d70/classxl7_1_1resources_1_1AbstractResourceUpdater.html#aa2ff1fe3f21cf37fc3102965a9a6bbbd":[5,0,8,4,0,16],
-"d9/d70/classxl7_1_1resources_1_1AbstractResourceUpdater.html#aa2ff1fe3f21cf37fc3102965a9a6bbbd":[7,0,8,3,0,16]
+"d9/d70/classxl7_1_1resources_1_1AbstractResourceUpdater.html#a8693c3dfe90a49b67d6568a5b3025ed1":[7,0,8,3,0,10]
 };

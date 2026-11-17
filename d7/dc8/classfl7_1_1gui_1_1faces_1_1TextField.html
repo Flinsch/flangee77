@@ -327,6 +327,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:aee4f11986bf5f3f55694f08010942f37" id="r_aee4f11986bf5f3f55694f08010942f37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee4f11986bf5f3f55694f08010942f37">_move_caret_vertically</a> (int line_delta)</td></tr>
 <tr class="memitem:a3a9777ef139fe5242e9663828ac99629" id="r_a3a9777ef139fe5242e9663828ac99629"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a9777ef139fe5242e9663828ac99629">_line_start</a> (size_t codepoint_index) const</td></tr>
 <tr class="memitem:a210f4acca2675e71629d758509927ee1" id="r_a210f4acca2675e71629d758509927ee1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a210f4acca2675e71629d758509927ee1">_line_end</a> (size_t codepoint_index) const</td></tr>
+<tr class="memitem:a1600b21d7c7b608609fc7deead5d9a0b" id="r_a1600b21d7c7b608609fc7deead5d9a0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1600b21d7c7b608609fc7deead5d9a0b">_padded_size</a> () const</td></tr>
 <tr class="memitem:a49364854ec764bb3a2183165c6a472d5" id="r_a49364854ec764bb3a2183165c6a472d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49364854ec764bb3a2183165c6a472d5">_effective_text_box_size</a> () const</td></tr>
 <tr class="memitem:a789b321718e79e87eee8e80ef10182c9" id="r_a789b321718e79e87eee8e80ef10182c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a789b321718e79e87eee8e80ef10182c9">_relayout</a> ()</td></tr>
 <tr class="memitem:a9d6e17e939059a229697c815e9f375c8" id="r_a9d6e17e939059a229697c815e9f375c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d6e17e939059a229697c815e9f375c8">_set_scroll_offset</a> (float scroll_offset_y)</td></tr>
@@ -611,7 +612,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns this field's own size, narrowed by its own effective padding on every side (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a2d731b61049d1791f8afe409d89844a0">get_effective_padding()</a>), and further by SCROLLBAR_THICKNESS while <a class="el" href="#a7af3f92aab06d22a69eabd33183ba19b">get_multiline_enabled()</a> and the scroll bar is actually shown (see <a class="el" href="#a789b321718e79e87eee8e80ef10182c9">_relayout()</a>, the only place that decides that); unchanged otherwise. This is also what's reported via <a class="el" href="#a6225d672c5c28fb2d287bc8bf477886a">get_text_box_size()</a>, so it's on this field itself (rather than <a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">render::AbstractRenderer</a>'s own generic, padding-aware default) to account for its own padding here. While actually scrolling, the height is widened to at least _content_height: draw_text_in_box() also self-clips to this same box (see <a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html">fonts::render::AbstractRenderer</a>), and that box has already been shifted up by the current scroll offset, so a height no taller than the viewport would clip away whatever's scrolled into view. </p>
+<p>Returns <a class="el" href="#a1600b21d7c7b608609fc7deead5d9a0b">_padded_size()</a>, further narrowed by SCROLLBAR_THICKNESS while <a class="el" href="#a7af3f92aab06d22a69eabd33183ba19b">get_multiline_enabled()</a> and the scroll bar is actually shown (see <a class="el" href="#a789b321718e79e87eee8e80ef10182c9">_relayout()</a>, the only place that decides that); unchanged otherwise. This is also what's reported via <a class="el" href="#a6225d672c5c28fb2d287bc8bf477886a">get_text_box_size()</a>, so it's on this field itself (rather than <a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">render::AbstractRenderer</a>'s own generic, padding-aware default) to account for its own padding here. While actually scrolling, the height is widened to at least _content_height: draw_text_in_box() also self-clips to this same box (see <a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html">fonts::render::AbstractRenderer</a>), and that box has already been shifted up by the current scroll offset, so a height no taller than the viewport would clip away whatever's scrolled into view. </p>
 
 </div>
 </div>
@@ -1150,6 +1151,32 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a1600b21d7c7b608609fc7deead5d9a0b" name="a1600b21d7c7b608609fc7deead5d9a0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1600b21d7c7b608609fc7deead5d9a0b">&#9670;&#160;</a></span>_padded_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> fl7::gui::faces::TextField::_padded_size </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns this field's own size, narrowed by its own effective padding on every side (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a2d731b61049d1791f8afe409d89844a0">get_effective_padding()</a>). Shared by <a class="el" href="#a789b321718e79e87eee8e80ef10182c9">_relayout()</a> (deciding word-wrap/overflow against this same, padding-narrowed size, not this field's raw <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#ae372cd5606fd0e02a009d853a60ecb37">get_size()</a>) and <a class="el" href="#a49364854ec764bb3a2183165c6a472d5">_effective_text_box_size()</a> (which narrows it further still; see below). </p>
+
+</div>
+</div>
 <a id="a4439aefc5d23644e76b19a3bcca90ee9" name="a4439aefc5d23644e76b19a3bcca90ee9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4439aefc5d23644e76b19a3bcca90ee9">&#9670;&#160;</a></span>_previous_word_boundary()</h2>
 
@@ -1198,7 +1225,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Re-decides (while <a class="el" href="#a7af3f92aab06d22a69eabd33183ba19b">get_multiline_enabled()</a> and there's a font to lay out against) whether the scroll bar is actually shown, per <a class="el" href="#ae1f1f9302450b433891122fcf76aad76">get_scroll_bar_visibility()</a>: Always unconditionally; Auto only once this field's content actually overflows its own height at its full width, or, if not yet, once more at the width actually left over once the scroll bar takes SCROLLBAR_THICKNESS off of it (a narrower width only ever wraps to more, never fewer, lines, so this can't flip back off and one re-check is enough to converge, same reasoning as <a class="el" href="../../d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html">faces::ScrollPanel</a>'s own single-axis visibility resolution); Never, well, never. Either way, sizes/ positions the scroll bar accordingly (always, even hidden, so it's ready to reappear at the right place/size), and updates its range/ visible_fraction/step (one line) from the result, re-clamping the current scroll position to it (see <a class="el" href="#a9d6e17e939059a229697c815e9f375c8">_set_scroll_offset()</a>). Also caches the result's content height into _content_height (see <a class="el" href="#a49364854ec764bb3a2183165c6a472d5">_effective_text_box_size()</a>), reset to 0 in the no-scroll-bar-at-all case. While !get_multiline_enabled() or there's no font yet, simply hides/disables the scroll bar and resets the scroll position to 0 instead, regardless of <a class="el" href="#ae1f1f9302450b433891122fcf76aad76">get_scroll_bar_visibility()</a>. </p>
+<p>Re-decides (while <a class="el" href="#a7af3f92aab06d22a69eabd33183ba19b">get_multiline_enabled()</a> and there's a font to lay out against) whether the scroll bar is actually shown, per <a class="el" href="#ae1f1f9302450b433891122fcf76aad76">get_scroll_bar_visibility()</a>: Always unconditionally; Auto only once this field's content actually overflows its own height at its padded width (see <a class="el" href="#a1600b21d7c7b608609fc7deead5d9a0b">_padded_size()</a>), or, if not yet, once more at the width actually left over once the scroll bar takes SCROLLBAR_THICKNESS off of it (a narrower width only ever wraps to more, never fewer, lines, so this can't flip back off and one re-check is enough to converge, same reasoning as <a class="el" href="../../d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html">faces::ScrollPanel</a>'s own single-axis visibility resolution); Never, well, never. Either way, sizes/positions the scroll bar accordingly (always, even hidden, so it's ready to reappear at the right place/size), and updates its range/visible_fraction/step (one line) from the result, re-clamping the current scroll position to it (see <a class="el" href="#a9d6e17e939059a229697c815e9f375c8">_set_scroll_offset()</a>). Also caches the result's content height into _content_height (see <a class="el" href="#a49364854ec764bb3a2183165c6a472d5">_effective_text_box_size()</a>), reset to 0 in the no-scroll-bar-at-all case. While !get_multiline_enabled() or there's no font yet, simply hides/ disables the scroll bar and resets the scroll position to 0 instead, regardless of <a class="el" href="#ae1f1f9302450b433891122fcf76aad76">get_scroll_bar_visibility()</a>. </p>
 
 </div>
 </div>
