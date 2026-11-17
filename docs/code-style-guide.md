@@ -110,6 +110,8 @@ This can make the class interface easier to read and understand.
 - Comments should not exceed 84 characters.
   Why 84? It has something to do with my favorite number, 7.
   Now please don't ask any more questions!
+- For multi-line comments, 84 characters is both the limit and the target, but still only a soft one:
+  don't wrap a line just to dodge a trailing comma past it (especially after an already-long word), and don't split an inseparable term like &ldquo;horizontal/vertical&rdquo; just to stay under it.
 
 ---
 
@@ -131,6 +133,40 @@ This can make the class interface easier to read and understand.
 - In rare cases, the names of `class` or `struct` types may also follow the lowercase_underscore convention (e.g., `byte_view`).
 - Use **lowercase letters (without underscores)** for namespaces.
 - Prefix **protected** and **private** functions and variables with a single underscore (`_`).
+
+---
+
+## Comments
+
+- Write comments in **American English**, regardless of the language used in commit messages or discussions.
+- Keep comments short and to the point; avoid verbose, exhaustive explanations.
+- Avoid non-ASCII characters (typographic dashes, arrows, decorative punctuation, etc.) in comments.
+  Exceptions may occur (in the case of German umlauts, for example), but such instances should be rare.
+- Avoid dashes, including the ASCII `--`, as a substitute for parentheses, commas, colons, or semicolons.
+  Use whichever of those actually fits instead. Semicolons themselves should also be used only rarely.
+- Avoid code syntax in comment prose; describe things in plain words instead (e.g., &ldquo;the size of the face&rdquo; rather than &ldquo;the `get_size()` of the `Face`&rdquo;), so comments don't need to change whenever an unrelated implementation detail does.
+  If a code reference is unavoidable, use backticks around it.
+
+### Doc Comments (`/** ... */`)
+
+- A function's doc comment is its **public contract**: describe *what* it does/returns and, briefly, *why*, at the level a caller needs, not *how* it's implemented.
+  One or two sentences is usually enough. Reserve more for something genuinely non-obvious.
+- If describing the &ldquo;how&rdquo; would take several clauses (exact formulas, intermediate values, every related method &ldquo;for completeness&rdquo;), that detail doesn't belong in the doc comment at all (see inline comments below).
+- When a function has both a header declaration and an out-of-line `.cpp` definition, its doc comment is **one piece of text duplicated in two places**, not two independently maintained comments:
+  - The wording must match **verbatim** between declaration and definition.
+  - The formatting (single-line vs. multi-line block) must match as well (preferably multi-line).
+  - If you change one side, change the other, even for a pure reformatting.
+- Single-line `/** ... */` is mainly for members/attributes and other declarations without a separate out-of-line definition.
+  For a function declared in a header and defined in a `.cpp`, decide on single-line or multi-line once and use it consistently in both places. When in doubt, prefer multi-line.
+
+### Inline Comments (`//`)
+
+- Use inline comments sparingly, and only where the *why* isn't obvious from the code itself (a hidden constraint, a workaround, a non-obvious invariant).
+- Don't restate *what* the code does: well-named identifiers should already make that clear.
+- Implementation-specific detail that doesn't belong in a doc comment (see above) belongs here instead, right next to the line it explains.
+- Avoid narrating the current task/fix/caller (e.g., &ldquo;added for the X flow&rdquo;, &ldquo;fixes issue #123&rdquo;): that belongs in the commit message, not in code that outlives the context of the change.
+- Being more implementation-focused than doc comments, and not formatted for tooling like Doxygen, inline comments may get more technical, and don't strictly need backticks around a code reference the way doc comments do.
+  Plain prose is still preferable regardless, which usually makes backticks unnecessary anyway.
 
 ---
 
