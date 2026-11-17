@@ -625,6 +625,61 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with
     TESTLABS_CHECK_GT( field.get_text_box_size()->y, field.get_size().y );
 }
 
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with a real font and padding: overflow is decided against the padded (not this field's raw) width/height, so a word that only wraps once narrowed by padding is still accounted for" )
+{
+    // _relayout() used to lay text out against get_size() directly, while
+    // actual rendering (_effective_text_box_size()) narrows by padding first;
+    // with a non-zero padding, the two could then disagree on how many lines
+    // the text wraps to, undercounting _content_height/the scroll bar's own
+    // range and leaving the field unable to ever scroll far enough to reveal
+    // whatever's on the last of those extra, miscounted lines.
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    // Long enough that narrowing the wrap width by a scroll bar's own
+    // SCROLLBAR_THICKNESS (see below) still leaves each individual word
+    // plenty of room, so that narrowing alone can't itself add a 3rd line.
+    const cl7::u32string text = U"AAAAAAAAAA BBBBBBBBBB";
+
+    fl7::gui::Style style;
+    style.font = &get_test_font();
+    style.text_style.vertical_align = fl7::fonts::TextStyle::VerticalAlign::Top;
+    style.text_style.wrap_mode = fl7::fonts::TextStyle::WrapMode::Word;
+    style.text_style.preserve_whitespace = true; // Matches _adjust_effective_text_style()'s own, unconditional override.
+    style.padding = fl7::gui::Padding(3.0f); // 6px combined, left+right and top+bottom alike; same as HelloWorld's own default.
+
+    // Picked so text wraps to 2 lines against the padded width (narrower by
+    // 6px than the field's own), but still fits a single line against the
+    // field's raw, unpadded width.
+    const float combined_width = fl7::fonts::TextLayout::measure_advance(text, *style.font, style.text_style);
+    const float padded_width = combined_width - 3.0f;
+    const fl7::fonts::TextBlockLayout wrapped = fl7::fonts::TextLayout::lay_out_box(text, *style.font, style.text_style, {}, {padded_width, 1000.0f});
+    TESTLABS_ASSERT_EQ( wrapped.lines.size(), size_t{2} ); // sanity: actually wraps at the padded width.
+
+    // Tall enough (padded) to fit 1 wrapped line, but not 2: overflowing (and
+    // therefore the wheel actually doing something below) only if the field
+    // really did wrap to 2 lines, i.e., only once the padded width is what
+    // actually got used for that decision.
+    const float height = wrapped.line_height + 6.0f + 5.0f;
+
+    auto& field = shell.add_face<fl7::gui::faces::TextField>(text);
+    field.set_style_override(style);
+    field.set_position({0.0f, 0.0f});
+    field.set_size({padded_width + 6.0f, height});
+    field.set_multiline_enabled(true);
+
+    input.move_mouse_to({10.0f, 10.0f});
+    shell.update();
+
+    // Without the padded width/height used consistently, this field wouldn't
+    // have detected any overflow at all (its raw, unpadded width still fits
+    // `text` on a single line), so the wheel would have nothing to do.
+    input.scroll_wheel(-1);
+    shell.update();
+    TESTLABS_CHECK_GT( field.get_text_scroll_offset().y, 0.0f );
+}
+
 TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with a real font: the mouse wheel scrolls this field's own content while it's actually overflowing, but does nothing while it isn't" )
 {
     f77_tests::gui::NullRenderer renderer;

@@ -317,8 +317,16 @@ private:
 
     /**
      * Returns this field's own size, narrowed by its own effective padding on
-     * every side (see get_effective_padding()), and further by SCROLLBAR_THICKNESS
-     * while get_multiline_enabled() and the scroll bar is actually shown (see
+     * every side (see get_effective_padding()). Shared by _relayout() (deciding
+     * word-wrap/overflow against this same, padding-narrowed size, not this
+     * field's raw get_size()) and _effective_text_box_size() (which narrows it
+     * further still; see below).
+     */
+    ml7::Vector2f _padded_size() const;
+
+    /**
+     * Returns _padded_size(), further narrowed by SCROLLBAR_THICKNESS while
+     * get_multiline_enabled() and the scroll bar is actually shown (see
      * _relayout(), the only place that decides that); unchanged otherwise. This is
      * also what's reported via get_text_box_size(), so it's on this field itself
      * (rather than render::AbstractRenderer's own generic, padding-aware default)
@@ -334,20 +342,21 @@ private:
      * Re-decides (while get_multiline_enabled() and there's a font to lay out
      * against) whether the scroll bar is actually shown, per
      * get_scroll_bar_visibility(): Always unconditionally; Auto only once this
-     * field's content actually overflows its own height at its full width, or,
-     * if not yet, once more at the width actually left over once the scroll bar
-     * takes SCROLLBAR_THICKNESS off of it (a narrower width only ever wraps to
-     * more, never fewer, lines, so this can't flip back off and one re-check is
-     * enough to converge, same reasoning as faces::ScrollPanel's own
-     * single-axis visibility resolution); Never, well, never. Either way, sizes/
-     * positions the scroll bar accordingly (always, even hidden, so it's ready
-     * to reappear at the right place/size), and updates its range/
-     * visible_fraction/step (one line) from the result, re-clamping the current
-     * scroll position to it (see _set_scroll_offset()). Also caches the result's
-     * content height into _content_height (see _effective_text_box_size()),
-     * reset to 0 in the no-scroll-bar-at-all case. While !get_multiline_enabled()
-     * or there's no font yet, simply hides/disables the scroll bar and resets
-     * the scroll position to 0 instead, regardless of get_scroll_bar_visibility().
+     * field's content actually overflows its own height at its padded width
+     * (see _padded_size()), or, if not yet, once more at the width actually
+     * left over once the scroll bar takes SCROLLBAR_THICKNESS off of it (a
+     * narrower width only ever wraps to more, never fewer, lines, so this can't
+     * flip back off and one re-check is enough to converge, same reasoning as
+     * faces::ScrollPanel's own single-axis visibility resolution); Never, well,
+     * never. Either way, sizes/positions the scroll bar accordingly (always,
+     * even hidden, so it's ready to reappear at the right place/size), and
+     * updates its range/visible_fraction/step (one line) from the result,
+     * re-clamping the current scroll position to it (see _set_scroll_offset()).
+     * Also caches the result's content height into _content_height (see
+     * _effective_text_box_size()), reset to 0 in the no-scroll-bar-at-all case.
+     * While !get_multiline_enabled() or there's no font yet, simply hides/
+     * disables the scroll bar and resets the scroll position to 0 instead,
+     * regardless of get_scroll_bar_visibility().
      */
     void _relayout();
 

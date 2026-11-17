@@ -505,8 +505,23 @@ namespace fl7::gui::faces {
 
     /**
      * Returns this field's own size, narrowed by its own effective padding on
-     * every side (see get_effective_padding()), and further by SCROLLBAR_THICKNESS
-     * while get_multiline_enabled() and the scroll bar is actually shown (see
+     * every side (see get_effective_padding()). Shared by _relayout() (deciding
+     * word-wrap/overflow against this same, padding-narrowed size, not this
+     * field's raw get_size()) and _effective_text_box_size() (which narrows it
+     * further still; see below).
+     */
+    ml7::Vector2f TextField::_padded_size() const
+    {
+        const Padding padding = get_effective_padding();
+        ml7::Vector2f size = get_size();
+        size.x = std::max(0.0f, size.x - padding.left - padding.right);
+        size.y = std::max(0.0f, size.y - padding.top - padding.bottom);
+        return size;
+    }
+
+    /**
+     * Returns _padded_size(), further narrowed by SCROLLBAR_THICKNESS while
+     * get_multiline_enabled() and the scroll bar is actually shown (see
      * _relayout(), the only place that decides that); unchanged otherwise. This is
      * also what's reported via get_text_box_size(), so it's on this field itself
      * (rather than render::AbstractRenderer's own generic, padding-aware default)
@@ -518,10 +533,7 @@ namespace fl7::gui::faces {
      */
     ml7::Vector2f TextField::_effective_text_box_size() const
     {
-        const Padding padding = get_effective_padding();
-        ml7::Vector2f size = get_size();
-        size.x = std::max(0.0f, size.x - padding.left - padding.right);
-        size.y = std::max(0.0f, size.y - padding.top - padding.bottom);
+        ml7::Vector2f size = _padded_size();
         if (_multiline_enabled && _scroll_bar.is_visible())
         {
             size.x = std::max(0.0f, size.x - SCROLLBAR_THICKNESS);
@@ -534,20 +546,21 @@ namespace fl7::gui::faces {
      * Re-decides (while get_multiline_enabled() and there's a font to lay out
      * against) whether the scroll bar is actually shown, per
      * get_scroll_bar_visibility(): Always unconditionally; Auto only once this
-     * field's content actually overflows its own height at its full width, or,
-     * if not yet, once more at the width actually left over once the scroll bar
-     * takes SCROLLBAR_THICKNESS off of it (a narrower width only ever wraps to
-     * more, never fewer, lines, so this can't flip back off and one re-check is
-     * enough to converge, same reasoning as faces::ScrollPanel's own
-     * single-axis visibility resolution); Never, well, never. Either way, sizes/
-     * positions the scroll bar accordingly (always, even hidden, so it's ready
-     * to reappear at the right place/size), and updates its range/
-     * visible_fraction/step (one line) from the result, re-clamping the current
-     * scroll position to it (see _set_scroll_offset()). Also caches the result's
-     * content height into _content_height (see _effective_text_box_size()),
-     * reset to 0 in the no-scroll-bar-at-all case. While !get_multiline_enabled()
-     * or there's no font yet, simply hides/disables the scroll bar and resets
-     * the scroll position to 0 instead, regardless of get_scroll_bar_visibility().
+     * field's content actually overflows its own height at its padded width
+     * (see _padded_size()), or, if not yet, once more at the width actually
+     * left over once the scroll bar takes SCROLLBAR_THICKNESS off of it (a
+     * narrower width only ever wraps to more, never fewer, lines, so this can't
+     * flip back off and one re-check is enough to converge, same reasoning as
+     * faces::ScrollPanel's own single-axis visibility resolution); Never, well,
+     * never. Either way, sizes/positions the scroll bar accordingly (always,
+     * even hidden, so it's ready to reappear at the right place/size), and
+     * updates its range/visible_fraction/step (one line) from the result,
+     * re-clamping the current scroll position to it (see _set_scroll_offset()).
+     * Also caches the result's content height into _content_height (see
+     * _effective_text_box_size()), reset to 0 in the no-scroll-bar-at-all case.
+     * While !get_multiline_enabled() or there's no font yet, simply hides/
+     * disables the scroll bar and resets the scroll position to 0 instead,
+     * regardless of get_scroll_bar_visibility().
      */
     void TextField::_relayout()
     {
@@ -565,19 +578,20 @@ namespace fl7::gui::faces {
             return;
         }
 
+        const ml7::Vector2f padded_size = _padded_size();
         const std::vector<cl7::text::codec::codepoint> codepoints = fonts::TextLayout::decode(_text);
 
         bool scroll_bar_shown = _scroll_bar_visibility == ScrollBarVisibility::Always;
         fonts::TextBlockLayout block;
         if (!scroll_bar_shown)
         {
-            block = fonts::TextLayout::lay_out_box(codepoints, *style.font, style.text_style, {0.0f, 0.0f}, size);
-            scroll_bar_shown = static_cast<float>(block.lines.size()) * block.line_height > size.y;
+            block = fonts::TextLayout::lay_out_box(codepoints, *style.font, style.text_style, {0.0f, 0.0f}, padded_size);
+            scroll_bar_shown = static_cast<float>(block.lines.size()) * block.line_height > padded_size.y;
         }
         if (scroll_bar_shown)
         {
-            const float width = std::max(0.0f, size.x - SCROLLBAR_THICKNESS);
-            block = fonts::TextLayout::lay_out_box(codepoints, *style.font, style.text_style, {0.0f, 0.0f}, {width, size.y});
+            const float width = std::max(0.0f, padded_size.x - SCROLLBAR_THICKNESS);
+            block = fonts::TextLayout::lay_out_box(codepoints, *style.font, style.text_style, {0.0f, 0.0f}, {width, padded_size.y});
         }
         const float content_height = static_cast<float>(block.lines.size()) * block.line_height;
         _content_height = content_height;
@@ -585,9 +599,9 @@ namespace fl7::gui::faces {
         _scroll_bar.set_visible(scroll_bar_shown);
         _scroll_bar.set_enabled(scroll_bar_shown);
 
-        const float max_scroll = std::max(0.0f, content_height - size.y);
+        const float max_scroll = std::max(0.0f, content_height - padded_size.y);
         _scroll_bar.set_range(0.0f, max_scroll);
-        _scroll_bar.set_visible_fraction(content_height > 0.0f ? size.y / content_height : 1.0f);
+        _scroll_bar.set_visible_fraction(content_height > 0.0f ? padded_size.y / content_height : 1.0f);
         _scroll_bar.set_step(block.line_height > 0.0f ? block.line_height : 1.0f);
 
         _set_scroll_offset(_scroll_offset_y);
