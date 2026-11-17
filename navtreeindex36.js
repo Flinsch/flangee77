@@ -1,5 +1,7 @@
 var NAVTREEINDEX36 =
 {
+"d8/d1f/structml7_1_1Quaternion.html#a46a5f8f46dfa4392e8e167d63a8a0d31":[7,0,4,19,35],
+"d8/d1f/structml7_1_1Quaternion.html#a4efe283fe6bf1a32d240f3005d7e526b":[5,0,4,19,18],
 "d8/d1f/structml7_1_1Quaternion.html#a4efe283fe6bf1a32d240f3005d7e526b":[7,0,4,19,18],
 "d8/d1f/structml7_1_1Quaternion.html#a4f768de5774020f78c2458c8736d36df":[5,0,4,19,10],
 "d8/d1f/structml7_1_1Quaternion.html#a4f768de5774020f78c2458c8736d36df":[7,0,4,19,10],
@@ -247,7 +249,5 @@ var NAVTREEINDEX36 =
 "d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html#a104f446ae5d7abd074970f29c65efc1b":[5,0,8,2,3,7,0],
 "d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html#a104f446ae5d7abd074970f29c65efc1b":[7,0,8,1,3,7,0],
 "d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html#a5f10ed2dd939ca74c050f786bd9ef78a":[5,0,8,2,3,7,1],
-"d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html#a5f10ed2dd939ca74c050f786bd9ef78a":[7,0,8,1,3,7,1],
-"d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html#a9b5b7688535772372f546d50bd5f5ebb":[5,0,8,2,3,7,3],
-"d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html#a9b5b7688535772372f546d50bd5f5ebb":[7,0,8,1,3,7,3]
+"d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html#a5f10ed2dd939ca74c050f786bd9ef78a":[7,0,8,1,3,7,1]
 };

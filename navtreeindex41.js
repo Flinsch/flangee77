@@ -1,5 +1,7 @@
 var NAVTREEINDEX41 =
 {
+"d9/d16/classdl7_1_1Buffer1d.html#ad3921ef90f32ac159728fa8dac23ab81":[5,0,2,9,0],
+"d9/d16/classdl7_1_1Buffer1d.html#ad3921ef90f32ac159728fa8dac23ab81":[7,0,2,9,0],
 "d9/d16/classdl7_1_1Buffer1d.html#ad450b2ccbb8cb5ba462b66410ab859b9":[5,0,2,9,11],
 "d9/d16/classdl7_1_1Buffer1d.html#ad450b2ccbb8cb5ba462b66410ab859b9":[7,0,2,9,11],
 "d9/d16/classdl7_1_1Buffer1d.html#ae67a08306c96c340db477f50cb2f4203":[5,0,2,9,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX41 =
 "d9/d31/classcl7_1_1logging_1_1CoutLogHandler.html#adae03f5f43bd076a991fd2792733b9b0":[7,0,1,5,1,3],
 "d9/d31/classcl7_1_1logging_1_1CoutLogHandler.html#adbcb554851f2b0fec3e25f0ca4b51bd1":[5,0,1,6,1,2],
 "d9/d31/classcl7_1_1logging_1_1CoutLogHandler.html#adbcb554851f2b0fec3e25f0ca4b51bd1":[7,0,1,5,1,2],
-"d9/d32/classcl7_1_1io_1_1WritableMemory.html":[5,0,1,5,14],
-"d9/d32/classcl7_1_1io_1_1WritableMemory.html":[7,0,1,4,14],
-"d9/d32/classcl7_1_1io_1_1WritableMemory.html#a09616291b1a5d94c31b277f503f70230":[5,0,1,5,14,4]
+"d9/d32/classcl7_1_1io_1_1WritableMemory.html":[5,0,1,5,14]
 };

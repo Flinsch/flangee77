@@ -1,5 +1,7 @@
 var NAVTREEINDEX52 =
 {
+"db/d1e/classxl7_1_1resources_1_1ResourceId.html":[5,0,8,4,3],
+"db/d1e/classxl7_1_1resources_1_1ResourceId.html":[7,0,8,3,3],
 "db/d22/Texture3DUpdater_8h.html":[8,0,7,1,7,30],
 "db/d22/Texture3DUpdater_8h_source.html":[8,0,7,1,7,30],
 "db/d24/classxl7_1_1Component.html":[5,0,8,7],
@@ -247,7 +249,5 @@ var NAVTREEINDEX52 =
 "db/d53/classtl7_1_1TestSuite.html#a54bc38e7074125b7ad25ed1611f71e0a":[7,0,7,11,3],
 "db/d53/classtl7_1_1TestSuite.html#a59368e47c138bf8c83712c40cf3302b2":[5,0,7,12,21],
 "db/d53/classtl7_1_1TestSuite.html#a59368e47c138bf8c83712c40cf3302b2":[7,0,7,11,21],
-"db/d53/classtl7_1_1TestSuite.html#a6323b40edd730d349308fde0b67d9aaf":[5,0,7,12,20],
-"db/d53/classtl7_1_1TestSuite.html#a6323b40edd730d349308fde0b67d9aaf":[7,0,7,11,20],
-"db/d53/classtl7_1_1TestSuite.html#a67e8ef02d3a9f3fdedbd4201d5f61cf4":[5,0,7,12,13]
+"db/d53/classtl7_1_1TestSuite.html#a6323b40edd730d349308fde0b67d9aaf":[5,0,7,12,20]
 };

@@ -352,6 +352,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a1f9bf62d5a1ab1b2d23970b1351b305e" id="r_a1f9bf62d5a1ab1b2d23970b1351b305e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f9bf62d5a1ab1b2d23970b1351b305e">_multiline_enabled</a> = false</td></tr>
 <tr class="memitem:a87e8095f0108ee84c74cabf56f7a814d" id="r_a87e8095f0108ee84c74cabf56f7a814d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cc">ScrollBarVisibility</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87e8095f0108ee84c74cabf56f7a814d">_scroll_bar_visibility</a> = <a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cca06b9281e396db002010bde1de57262eb">ScrollBarVisibility::Auto</a></td></tr>
 <tr class="memitem:af06b9ac45f3a042ed27500ec65b61f64" id="r_af06b9ac45f3a042ed27500ec65b61f64"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af06b9ac45f3a042ed27500ec65b61f64">_scroll_offset_y</a> = 0.0f</td></tr>
+<tr class="memitem:ab8c29cd662ede75d993afaa638f24b09" id="r_ab8c29cd662ede75d993afaa638f24b09"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8c29cd662ede75d993afaa638f24b09">_content_height</a> = 0.0f</td></tr>
 <tr class="memitem:a655d6112269a5cdb47e7341a7b518659" id="r_a655d6112269a5cdb47e7341a7b518659"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d7e/classcl7_1_1behavioral_1_1Signal.html">cl7::behavioral::Signal</a>&lt; const <a class="el" href="../../d1/d2e/namespacecl7.html#acdaa45946567058735bc614c9ed1333c">cl7::u32string</a> &amp; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a655d6112269a5cdb47e7341a7b518659">_changed</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
@@ -610,7 +611,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns this field's own size, narrowed by its own effective padding on every side (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a2d731b61049d1791f8afe409d89844a0">get_effective_padding()</a>), and further by SCROLLBAR_THICKNESS while <a class="el" href="#a7af3f92aab06d22a69eabd33183ba19b">get_multiline_enabled()</a> and the scroll bar is actually shown (see <a class="el" href="#a789b321718e79e87eee8e80ef10182c9">_relayout()</a>, the only place that decides that); unchanged otherwise. This is also what's reported via <a class="el" href="#a6225d672c5c28fb2d287bc8bf477886a">get_text_box_size()</a>, so it's on this field itself (rather than <a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">render::AbstractRenderer</a>'s own generic, padding-aware default) to account for its own padding here. </p>
+<p>Returns this field's own size, narrowed by its own effective padding on every side (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a2d731b61049d1791f8afe409d89844a0">get_effective_padding()</a>), and further by SCROLLBAR_THICKNESS while <a class="el" href="#a7af3f92aab06d22a69eabd33183ba19b">get_multiline_enabled()</a> and the scroll bar is actually shown (see <a class="el" href="#a789b321718e79e87eee8e80ef10182c9">_relayout()</a>, the only place that decides that); unchanged otherwise. This is also what's reported via <a class="el" href="#a6225d672c5c28fb2d287bc8bf477886a">get_text_box_size()</a>, so it's on this field itself (rather than <a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">render::AbstractRenderer</a>'s own generic, padding-aware default) to account for its own padding here. While actually scrolling, the height is widened to at least _content_height: draw_text_in_box() also self-clips to this same box (see <a class="el" href="../../d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html">fonts::render::AbstractRenderer</a>), and that box has already been shifted up by the current scroll offset, so a height no taller than the viewport would clip away whatever's scrolled into view. </p>
 
 </div>
 </div>
@@ -1197,7 +1198,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Re-decides (while <a class="el" href="#a7af3f92aab06d22a69eabd33183ba19b">get_multiline_enabled()</a> and there's a font to lay out against) whether the scroll bar is actually shown, per <a class="el" href="#ae1f1f9302450b433891122fcf76aad76">get_scroll_bar_visibility()</a>: Always unconditionally; Auto only once this field's content actually overflows its own height at its full width, or, if not yet, once more at the width actually left over once the scroll bar takes SCROLLBAR_THICKNESS off of it (a narrower width only ever wraps to more, never fewer, lines, so this can't flip back off and one re-check is enough to converge, same reasoning as <a class="el" href="../../d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html">faces::ScrollPanel</a>'s own single-axis visibility resolution); Never, well, never. Either way, sizes/ positions the scroll bar accordingly (always, even hidden, so it's ready to reappear at the right place/size), and updates its range/ visible_fraction/step (one line) from the result, re-clamping the current scroll position to it (see <a class="el" href="#a9d6e17e939059a229697c815e9f375c8">_set_scroll_offset()</a>). While !get_multiline_enabled() or there's no font yet, simply hides/disables the scroll bar and resets the scroll position to 0 instead, regardless of <a class="el" href="#ae1f1f9302450b433891122fcf76aad76">get_scroll_bar_visibility()</a>. </p>
+<p>Re-decides (while <a class="el" href="#a7af3f92aab06d22a69eabd33183ba19b">get_multiline_enabled()</a> and there's a font to lay out against) whether the scroll bar is actually shown, per <a class="el" href="#ae1f1f9302450b433891122fcf76aad76">get_scroll_bar_visibility()</a>: Always unconditionally; Auto only once this field's content actually overflows its own height at its full width, or, if not yet, once more at the width actually left over once the scroll bar takes SCROLLBAR_THICKNESS off of it (a narrower width only ever wraps to more, never fewer, lines, so this can't flip back off and one re-check is enough to converge, same reasoning as <a class="el" href="../../d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html">faces::ScrollPanel</a>'s own single-axis visibility resolution); Never, well, never. Either way, sizes/ positions the scroll bar accordingly (always, even hidden, so it's ready to reappear at the right place/size), and updates its range/ visible_fraction/step (one line) from the result, re-clamping the current scroll position to it (see <a class="el" href="#a9d6e17e939059a229697c815e9f375c8">_set_scroll_offset()</a>). Also caches the result's content height into _content_height (see <a class="el" href="#a49364854ec764bb3a2183165c6a472d5">_effective_text_box_size()</a>), reset to 0 in the no-scroll-bar-at-all case. While !get_multiline_enabled() or there's no font yet, simply hides/disables the scroll bar and resets the scroll position to 0 instead, regardless of <a class="el" href="#ae1f1f9302450b433891122fcf76aad76">get_scroll_bar_visibility()</a>. </p>
 
 </div>
 </div>
@@ -1702,6 +1703,29 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8c29cd662ede75d993afaa638f24b09" name="ab8c29cd662ede75d993afaa638f24b09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8c29cd662ede75d993afaa638f24b09">&#9670;&#160;</a></span>_content_height</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float fl7::gui::faces::TextField::_content_height = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The full (unscrolled) height of the laid-out text, as of the last <a class="el" href="#a789b321718e79e87eee8e80ef10182c9">_relayout()</a>; see <a class="el" href="#a49364854ec764bb3a2183165c6a472d5">_effective_text_box_size()</a>. </p>
 
 </div>
 </div>

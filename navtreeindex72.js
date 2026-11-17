@@ -1,5 +1,7 @@
 var NAVTREEINDEX72 =
 {
+"df/d29/DefaultErrorHandler_8h.html":[8,0,1,8,0,9],
+"df/d29/DefaultErrorHandler_8h_source.html":[8,0,1,8,0,9],
 "df/d29/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScoredRect.html":[5,0,0,1,0,1],
 "df/d29/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScoredRect.html":[7,0,0,0,0,1],
 "df/d29/structal7_1_1packing_1_1AbstractFreeRectPacker_1_1ScoredRect.html#a9474636b9133fbdff16f7855fb2cf3e6":[5,0,0,1,0,1,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX72 =
 "df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45a87557f11575c0ad78e4e28abedc13b6e":[5,0,8,3,9,61],
 "df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45a88183b946cc5f0e8c96b2e66e1c74a7e":[5,0,8,3,9,0],
 "df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45a892a245e287c163080b23db737d3c4c9":[5,0,8,3,9,45],
-"df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45a8cf04a9734132302f96da8e113e80ce5":[5,0,8,3,9,60],
-"df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45a8d9c307cb7f3c4a32822a51922d1ceaa":[5,0,8,3,9,14],
-"df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45a92b09c7c48c520c3c55e497875da437c":[5,0,8,3,9,57]
+"df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45a8cf04a9734132302f96da8e113e80ce5":[5,0,8,3,9,60]
 };

@@ -52,6 +52,7 @@ var classfl7_1_1gui_1_1faces_1_1TextField =
     [ "set_text", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a019a03f41c0870d98be9997f3ba5d893", null ],
     [ "_caret_index", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a97457def82453fd81a3f4a05c12a0cfb", null ],
     [ "_changed", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a655d6112269a5cdb47e7341a7b518659", null ],
+    [ "_content_height", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#ab8c29cd662ede75d993afaa638f24b09", null ],
     [ "_multiline_enabled", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a1f9bf62d5a1ab1b2d23970b1351b305e", null ],
     [ "_scroll_bar", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a648e653535a558315c097b1fb3d21841", null ],
     [ "_scroll_bar_visibility", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a87e8095f0108ee84c74cabf56f7a814d", null ],
