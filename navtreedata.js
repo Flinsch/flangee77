@@ -93,8 +93,24 @@ var NAVTREE = [
             null
           ],
           [
-            "Other Stuff",
+            "Comments",
             "de/d95/md_code-style-guide.html#autotoc_md20",
+            [
+              [
+                "Doc Comments (<span class=\"tt\">/** ... */</span>)",
+                "de/d95/md_code-style-guide.html#autotoc_md21",
+                null
+              ],
+              [
+                "Inline Comments (<span class=\"tt\">//</span>)",
+                "de/d95/md_code-style-guide.html#autotoc_md22",
+                null
+              ]
+            ]
+          ],
+          [
+            "Other Stuff",
+            "de/d95/md_code-style-guide.html#autotoc_md24",
             null
           ]
         ]
@@ -105,7 +121,7 @@ var NAVTREE = [
         [
           [
             "The Journey of (Re)building My Framework",
-            "d1/d55/md_personal-intention.html#autotoc_md22",
+            "d1/d55/md_personal-intention.html#autotoc_md26",
             null
           ]
         ]
@@ -336,14 +352,14 @@ var NAVTREEINDEX =
 "dd/de7/structxl7_1_1input_1_1GameControllerSystem_1_1RawControllerState.html#a2ec1ad21d4b3073e76cd5a4d6c6d331c",
 "de/d1b/datetime_8h.html",
 "de/d3c/macros_8h.html#ab6b0a8eddfdd3128dccc2f1eb6858dc1",
-"de/d99/root_8h.html#a9fd222c3a7d65c663b18ec42b1065127",
-"de/dc8/classdl7_1_1xml_1_1Element.html#ad5dd676ae5dc20bf2da5a5ccb696868f",
-"de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html#a4b0e4ce742b3efb095aa9c758ba24618",
-"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#ae8d41c9d497309c51aa54c3fb1b8c8d2",
-"df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45a892a245e287c163080b23db737d3c4c9",
-"df/d9b/structcl7_1_1detail_1_1__is__any__string__view.html",
-"df/dd2/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1PixelShaderImpl_1_1Attorney.html#aee0ae5c2cbf8491ecbb8de9c55213580",
-"dir_d039014435354f34809e23388cfeaad4.html"
+"de/d99/root_8h.html#a458aa886688ee82825409e855d418840",
+"de/dc8/classdl7_1_1xml_1_1Element.html#ad25ac966ed214eb6b022e51cf6f76722",
+"de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html",
+"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#acb0ccdae7352c2b4ae5a51e26daa521d",
+"df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45a857bb13bb233ca520283eb9886509b65",
+"df/d98/AbstractStage_8h.html",
+"df/dd2/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1PixelShaderImpl_1_1Attorney.html",
+"dir_c8a90132b48e0d9f6334df716d517bd0.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

@@ -203,6 +203,7 @@ Maximum Line Length</h1>
 <li>Limit lines to <b>80-120</b> characters.</li>
 <li>However, this is a soft limit that should not be adhered to if there are good reasons.</li>
 <li>Comments should not exceed 84 characters. Why 84? It has something to do with my favorite number, 7. Now please don't ask any more questions!</li>
+<li>For multi-line comments, 84 characters is both the limit and the target, but still only a soft one: don't wrap a line just to dodge a trailing comma past it (especially after an already-long word), and don't split an inseparable term like &ldquo;horizontal/vertical&rdquo; just to stay under it.</li>
 </ul>
 <hr  />
 <h1 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
@@ -227,6 +228,38 @@ Naming Conventions</h1>
 </ul>
 <hr  />
 <h1 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+Comments</h1>
+<ul>
+<li>Write comments in <b>American English</b>, regardless of the language used in commit messages or discussions.</li>
+<li>Keep comments short and to the point; avoid verbose, exhaustive explanations.</li>
+<li>Avoid non-ASCII characters (typographic dashes, arrows, decorative punctuation, etc.) in comments. Exceptions may occur (in the case of German umlauts, for example), but such instances should be rare.</li>
+<li>Avoid dashes, including the ASCII <span class="tt">--</span>, as a substitute for parentheses, commas, colons, or semicolons. Use whichever of those actually fits instead. Semicolons themselves should also be used only rarely.</li>
+<li>Avoid code syntax in comment prose; describe things in plain words instead (e.g., &ldquo;the size of the face&rdquo; rather than &ldquo;the <span class="tt">get_size()</span> of the <span class="tt">Face</span>&rdquo;), so comments don't need to change whenever an unrelated implementation detail does. If a code reference is unavoidable, use backticks around it.</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+Doc Comments (<span class="tt">/** ... */</span>)</h2>
+<ul>
+<li>A function's doc comment is its <b>public contract</b>: describe <em>what</em> it does/returns and, briefly, <em>why</em>, at the level a caller needs, not <em>how</em> it's implemented. One or two sentences is usually enough. Reserve more for something genuinely non-obvious.</li>
+<li>If describing the &ldquo;how&rdquo; would take several clauses (exact formulas, intermediate values, every related method &ldquo;for completeness&rdquo;), that detail doesn't belong in the doc comment at all (see inline comments below).</li>
+<li>When a function has both a header declaration and an out-of-line <span class="tt">.cpp</span> definition, its doc comment is <b>one piece of text duplicated in two places</b>, not two independently maintained comments:<ul>
+<li>The wording must match <b>verbatim</b> between declaration and definition.</li>
+<li>The formatting (single-line vs. multi-line block) must match as well (preferably multi-line).</li>
+<li>If you change one side, change the other, even for a pure reformatting.</li>
+</ul>
+</li>
+<li>Single-line <span class="tt">/** ... */</span> is mainly for members/attributes and other declarations without a separate out-of-line definition. For a function declared in a header and defined in a <span class="tt">.cpp</span>, decide on single-line or multi-line once and use it consistently in both places. When in doubt, prefer multi-line.</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+Inline Comments (<span class="tt">//</span>)</h2>
+<ul>
+<li>Use inline comments sparingly, and only where the <em>why</em> isn't obvious from the code itself (a hidden constraint, a workaround, a non-obvious invariant).</li>
+<li>Don't restate <em>what</em> the code does: well-named identifiers should already make that clear.</li>
+<li>Implementation-specific detail that doesn't belong in a doc comment (see above) belongs here instead, right next to the line it explains.</li>
+<li>Avoid narrating the current task/fix/caller (e.g., &ldquo;added for the X flow&rdquo;, &ldquo;fixes issue #123&rdquo;): that belongs in the commit message, not in code that outlives the context of the change.</li>
+<li>Being more implementation-focused than doc comments, and not formatted for tooling like Doxygen, inline comments may get more technical, and don't strictly need backticks around a code reference the way doc comments do. Plain prose is still preferable regardless, which usually makes backticks unnecessary anyway.</li>
+</ul>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
 Other Stuff</h1>
 <ul>
 <li>Prefer <span class="tt">enum struct</span> over <span class="tt">enum class</span> for defining scoped enumerations. While both are functionally identical, <span class="tt">struct</span> has <span class="tt">public</span> as the default access specifier, whereas <span class="tt">class</span> defaults to <span class="tt">private</span>. Using <span class="tt">enum struct</span> ensures consistency with this expected behavior. It also aligns with the convention that <span class="tt">struct</span> is the default choice for POD-like types.</li>

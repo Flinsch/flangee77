@@ -238,6 +238,9 @@ var NAVTREEINDEX68 =
 "de/d95/md_code-style-guide.html#autotoc_md16":[1,7],
 "de/d95/md_code-style-guide.html#autotoc_md18":[1,8],
 "de/d95/md_code-style-guide.html#autotoc_md20":[1,9],
+"de/d95/md_code-style-guide.html#autotoc_md21":[1,9,0],
+"de/d95/md_code-style-guide.html#autotoc_md22":[1,9,1],
+"de/d95/md_code-style-guide.html#autotoc_md24":[1,10],
 "de/d95/md_code-style-guide.html#autotoc_md7":[1,0],
 "de/d95/md_code-style-guide.html#autotoc_md8":[1,1],
 "de/d95/md_code-style-guide.html#autotoc_md9":[1,2],
@@ -246,8 +249,5 @@ var NAVTREEINDEX68 =
 "de/d99/root_8h.html#a19cefe88272ca55fd73cc21b108e1ef5":[8,0,1,30,9],
 "de/d99/root_8h.html#a2164f8df654a9999a4049460f990963e":[8,0,1,30,10],
 "de/d99/root_8h.html#a26ca26f8711cd4acf6c2c135bf82903c":[8,0,1,30,8],
-"de/d99/root_8h.html#a317fe8db7965afd4fc1ffa0e18c69343":[8,0,1,30,6],
-"de/d99/root_8h.html#a458aa886688ee82825409e855d418840":[8,0,1,30,12],
-"de/d99/root_8h.html#a8287c9da589774d883bffb983070fc1d":[8,0,1,30,13],
-"de/d99/root_8h.html#a9301916f6c8ae438b0cf7c6769b34128":[8,0,1,30,14]
+"de/d99/root_8h.html#a317fe8db7965afd4fc1ffa0e18c69343":[8,0,1,30,6]
 };

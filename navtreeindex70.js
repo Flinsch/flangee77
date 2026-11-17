@@ -1,5 +1,8 @@
 var NAVTREEINDEX70 =
 {
+"de/dc8/classdl7_1_1xml_1_1Element.html#ad25ac966ed214eb6b022e51cf6f76722":[5,0,2,6,4,14],
+"de/dc8/classdl7_1_1xml_1_1Element.html#ad25ac966ed214eb6b022e51cf6f76722":[7,0,2,6,4,14],
+"de/dc8/classdl7_1_1xml_1_1Element.html#ad5dd676ae5dc20bf2da5a5ccb696868f":[5,0,2,6,4,13],
 "de/dc8/classdl7_1_1xml_1_1Element.html#ad5dd676ae5dc20bf2da5a5ccb696868f":[7,0,2,6,4,13],
 "de/dc8/classdl7_1_1xml_1_1Element.html#ad80093e64c4266d7d797ec6305d90a8c":[5,0,2,6,4,29],
 "de/dc8/classdl7_1_1xml_1_1Element.html#ad80093e64c4266d7d797ec6305d90a8c":[7,0,2,6,4,29],
@@ -246,8 +249,5 @@ var NAVTREEINDEX70 =
 "de/df3/structxl7_1_1graphics_1_1Color.html#af97d861c1f5b9563334db73855bd8bb0":[7,0,8,1,8,43],
 "de/df6/PictureBox_8h.html":[8,0,3,1,0,13],
 "de/df6/PictureBox_8h_source.html":[8,0,3,1,0,13],
-"de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html":[5,0,8,2,4,0],
-"de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html":[7,0,8,1,4,0],
-"de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html#a25d4987b93fa73f531c8c72d0afd649a":[5,0,8,2,4,0,0],
-"de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html#a25d4987b93fa73f531c8c72d0afd649a":[7,0,8,1,4,0,0]
+"de/dfd/structxl7_1_1graphics_1_1shaders_1_1CompileOptions.html":[5,0,8,2,4,0]
 };
