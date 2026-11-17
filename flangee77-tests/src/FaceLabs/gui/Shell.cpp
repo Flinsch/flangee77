@@ -283,7 +283,7 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  bringing a popup's owner to the front
     input.move_mouse_to({50.0f, 75.0f}); // back to popup's area
     shell.update();
     TESTLABS_CHECK( shell.get_hovered_face() == static_cast<fl7::gui::Face*>(&popup) ); // still on top, not `window`
-    TESTLABS_CHECK( popup.is_visible() ); // never closed by this -- it's a click on its own owner
+    TESTLABS_CHECK( popup.is_visible() ); // never closed by this: it's a click on its own owner
 
     input.set_button_down(xl7::input::MouseButton::Left, false);
     shell.update();

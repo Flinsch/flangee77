@@ -42,7 +42,7 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Window:  a window's own Style::paddin
 
     // The content area itself has no theme role of its own, so it falls
     // through to Window's own explicit override instead (see
-    // Face::_find_inherited_style_override()) -- and, being a plain,
+    // Face::_find_inherited_style_override()), and, being a plain,
     // unlayouted Container, actually applies that inherited padding to
     // itself; this is the pre-existing, generic override-cascading
     // behavior, not something Window's own suppression touches at all.
