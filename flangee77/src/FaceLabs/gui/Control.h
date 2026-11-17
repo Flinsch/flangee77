@@ -10,7 +10,7 @@ namespace fl7::gui {
 
 /**
  * Taxonomic base for interactive leaf faces that respond to input (Button,
- * CheckBox, TextField, RadioButton, Slider). Purely a marker for now -- no
+ * CheckBox, TextField, RadioButton, Slider). Purely a marker for now, no
  * new members; concrete subclasses meaningfully override Face's input-event
  * hooks (_on_click() etc.), which is what actually distinguishes a Control
  * from a Static in practice.

@@ -18,8 +18,8 @@ namespace fl7::gui::faces {
  * A Compound of a Slider (see its own get_handle_fraction()) between two
  * optional step buttons (get_show_buttons()), like any other GUI's scroll bar:
  * the slider's handle represents get_visible_fraction() of some larger
- * content -- outside this face's own knowledge, e.g. a Panel's content vs. its
- * visible area -- that's currently visible, and the buttons nudge the value
+ * content (outside this face's own knowledge, e.g. a Panel's content vs. its
+ * visible area) that's currently visible, and the buttons nudge the value
  * by get_step() per click, same as a Left/Right/Up/Down key press (or the
  * mouse wheel) already would against the slider itself. This face has no
  * visual role of its own (no background, no theme key): it's purely a layout

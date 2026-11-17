@@ -909,7 +909,7 @@ namespace {
     /**
      * Returns the piece of source text the given range of tokens is made of. The
      * tokens of a single line are contiguous, so this is a view into the source
-     * rather than a copy — which is also why it must not be used across a line
+     * rather than a copy, which is also why it must not be used across a line
      * boundary introduced by `_extend_line`; that is what `_concat` is for.
      */
     cl7::u8string_view Builder::_join(size_t from, size_t to) const

@@ -167,7 +167,7 @@ public:
 
     /**
      * Subscribes the specified slot, staying connected for this Signal's
-     * lifetime (or until disconnected) -- the returned Connection is a plain
+     * lifetime (or until disconnected): the returned Connection is a plain
      * handle, not RAII (see its docs); wrap it in a ScopedConnection instead
      * for a lifetime-bound subscription.
      */

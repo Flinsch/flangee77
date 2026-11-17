@@ -47,7 +47,7 @@ public:
      * Default: {0, 0} (no offset). A scrollable collection (see
      * faces::ScrollPanel) overrides this to implement scrolling, without
      * either rendering or hit-testing needing to know anything about
-     * scrolling specifically -- they just always honor whatever offset a
+     * scrolling specifically: they just always honor whatever offset a
      * collection reports.
      */
     virtual ml7::Vector2f get_scroll_offset() const { return {}; }

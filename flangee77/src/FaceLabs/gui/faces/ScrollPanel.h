@@ -159,7 +159,7 @@ private:
      * current scroll position (see Collection::get_scroll_offset()). The
      * mutator is deliberately not public: scrolling an owning ScrollPanel must
      * always go through its own set_scroll_position() instead, which clamps
-     * the position and keeps both scroll bars in sync with it -- setting it
+     * the position and keeps both scroll bars in sync with it: setting it
      * here directly would desync them.
      */
     class ContentArea
