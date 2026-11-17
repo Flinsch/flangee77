@@ -77,6 +77,7 @@ target_sources(flangee77-tests
     FaceLabs/gui/faces/Window.cpp
     FaceLabs/gui/layout/BoxLayout.cpp
     FaceLabs/gui/layout/DefaultLayout.cpp
+    FaceLabs/gui/render/BackgroundHelper.cpp
     FaceLabs/gui/render/CaretHelper.cpp
     FaceLabs/gui/render/ImageHelper.cpp
     FaceLabs/gui/render/SelectionHelper.cpp
