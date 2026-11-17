@@ -322,7 +322,11 @@ private:
      * _relayout(), the only place that decides that); unchanged otherwise. This is
      * also what's reported via get_text_box_size(), so it's on this field itself
      * (rather than render::AbstractRenderer's own generic, padding-aware default)
-     * to account for its own padding here.
+     * to account for its own padding here. While actually scrolling, the height
+     * is widened to at least _content_height: draw_text_in_box() also self-clips
+     * to this same box (see fonts::render::AbstractRenderer), and that box has
+     * already been shifted up by the current scroll offset, so a height no
+     * taller than the viewport would clip away whatever's scrolled into view.
      */
     ml7::Vector2f _effective_text_box_size() const;
 
@@ -339,10 +343,11 @@ private:
      * positions the scroll bar accordingly (always, even hidden, so it's ready
      * to reappear at the right place/size), and updates its range/
      * visible_fraction/step (one line) from the result, re-clamping the current
-     * scroll position to it (see _set_scroll_offset()). While
-     * !get_multiline_enabled() or there's no font yet, simply hides/disables
-     * the scroll bar and resets the scroll position to 0 instead, regardless of
-     * get_scroll_bar_visibility().
+     * scroll position to it (see _set_scroll_offset()). Also caches the result's
+     * content height into _content_height (see _effective_text_box_size()),
+     * reset to 0 in the no-scroll-bar-at-all case. While !get_multiline_enabled()
+     * or there's no font yet, simply hides/disables the scroll bar and resets
+     * the scroll position to 0 instead, regardless of get_scroll_bar_visibility().
      */
     void _relayout();
 
@@ -418,6 +423,9 @@ private:
 
     /** How far this field's content is currently scrolled down, in pixels; always 0 while !_multiline_enabled. See _relayout()/_set_scroll_offset(). */
     float _scroll_offset_y = 0.0f;
+
+    /** The full (unscrolled) height of the laid-out text, as of the last _relayout(); see _effective_text_box_size(). */
+    float _content_height = 0.0f;
 
     cl7::behavioral::Signal<const cl7::u32string&> _changed;
 

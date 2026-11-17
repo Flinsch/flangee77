@@ -510,7 +510,11 @@ namespace fl7::gui::faces {
      * _relayout(), the only place that decides that); unchanged otherwise. This is
      * also what's reported via get_text_box_size(), so it's on this field itself
      * (rather than render::AbstractRenderer's own generic, padding-aware default)
-     * to account for its own padding here.
+     * to account for its own padding here. While actually scrolling, the height
+     * is widened to at least _content_height: draw_text_in_box() also self-clips
+     * to this same box (see fonts::render::AbstractRenderer), and that box has
+     * already been shifted up by the current scroll offset, so a height no
+     * taller than the viewport would clip away whatever's scrolled into view.
      */
     ml7::Vector2f TextField::_effective_text_box_size() const
     {
@@ -519,7 +523,10 @@ namespace fl7::gui::faces {
         size.x = std::max(0.0f, size.x - padding.left - padding.right);
         size.y = std::max(0.0f, size.y - padding.top - padding.bottom);
         if (_multiline_enabled && _scroll_bar.is_visible())
+        {
             size.x = std::max(0.0f, size.x - SCROLLBAR_THICKNESS);
+            size.y = std::max(size.y, _content_height);
+        }
         return size;
     }
 
@@ -536,10 +543,11 @@ namespace fl7::gui::faces {
      * positions the scroll bar accordingly (always, even hidden, so it's ready
      * to reappear at the right place/size), and updates its range/
      * visible_fraction/step (one line) from the result, re-clamping the current
-     * scroll position to it (see _set_scroll_offset()). While
-     * !get_multiline_enabled() or there's no font yet, simply hides/disables
-     * the scroll bar and resets the scroll position to 0 instead, regardless of
-     * get_scroll_bar_visibility().
+     * scroll position to it (see _set_scroll_offset()). Also caches the result's
+     * content height into _content_height (see _effective_text_box_size()),
+     * reset to 0 in the no-scroll-bar-at-all case. While !get_multiline_enabled()
+     * or there's no font yet, simply hides/disables the scroll bar and resets
+     * the scroll position to 0 instead, regardless of get_scroll_bar_visibility().
      */
     void TextField::_relayout()
     {
@@ -552,6 +560,7 @@ namespace fl7::gui::faces {
         {
             _scroll_bar.set_visible(false);
             _scroll_bar.set_enabled(false);
+            _content_height = 0.0f;
             _set_scroll_offset(0.0f);
             return;
         }
@@ -571,6 +580,7 @@ namespace fl7::gui::faces {
             block = fonts::TextLayout::lay_out_box(codepoints, *style.font, style.text_style, {0.0f, 0.0f}, {width, size.y});
         }
         const float content_height = static_cast<float>(block.lines.size()) * block.line_height;
+        _content_height = content_height;
 
         _scroll_bar.set_visible(scroll_bar_shown);
         _scroll_bar.set_enabled(scroll_bar_shown);

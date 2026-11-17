@@ -595,6 +595,36 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with
     TESTLABS_CHECK_EQ_FLT( field.get_text_box_size()->x, field.get_size().x );
 }
 
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with a real font: once actually overflowing, get_text_box_size()'s height covers the full (unscrolled) content, not just the viewport" )
+{
+    // draw_text_in_box() (see render::TextHelper) also self-clips to this same
+    // box (see fonts::render::AbstractRenderer), which is shifted up by the
+    // current scroll offset; a height no taller than the viewport would clip
+    // away whatever's scrolled into view, always showing only this field's
+    // own first screenful regardless of scroll position.
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    fl7::gui::Style style;
+    style.font = &get_test_font();
+    style.text_style.vertical_align = fl7::fonts::TextStyle::VerticalAlign::Top;
+
+    auto& field = shell.add_face<fl7::gui::faces::TextField>(U"Hi");
+    field.set_style_override(style);
+    field.set_position({0.0f, 0.0f});
+    field.set_size({200.0f, 60.0f});
+    field.set_multiline_enabled(true);
+
+    cl7::u32string many_lines;
+    for (int i = 0; i < 10; ++i)
+        many_lines += U"Line\n";
+    field.set_text(many_lines);
+
+    TESTLABS_ASSERT( field.get_text_box_size().has_value() );
+    TESTLABS_CHECK_GT( field.get_text_box_size()->y, field.get_size().y );
+}
+
 TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with a real font: the mouse wheel scrolls this field's own content while it's actually overflowing, but does nothing while it isn't" )
 {
     f77_tests::gui::NullRenderer renderer;
