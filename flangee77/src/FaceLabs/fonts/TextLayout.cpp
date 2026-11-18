@@ -98,14 +98,14 @@ namespace {
     }
 
     /**
-     * Builds a whole paragraph into a single TextLine, i.e., without any word-
+     * Builds a whole paragraph into a single `TextLine`, i.e., without any word-
      * wrapping. `trim_whitespace` strips a leading/trailing whitespace run from
      * the line first: the normal, typeset-display case (`!text_style.
      * preserve_whitespace`, see `lay_out()`'s caller below), and also always for
-     * a paragraph that's entirely whitespace under WrapMode::Word (collapsing it
+     * a paragraph that's entirely whitespace under `WrapMode::Word` (collapsing it
      * to an empty/blank line, consistent with how word-wrap already normalizes
      * the gaps between real words, regardless of `preserve_whitespace`). Passing
-     * false is for an editable field's literal text (see TextField), which must
+     * false is for an editable field's literal text (see `TextField`), which must
      * keep its own leading/trailing whitespace exactly as typed.
      */
     TextLine _make_line(std::span<const cl7::text::codec::codepoint> codepoints, size_t begin, size_t end, bool trim_whitespace, Font::Access& font_access, ml7::Vector2f scaled_font_size, float letter_spacing, float word_spacing, std::span<const IconRun> icon_runs)
@@ -224,12 +224,11 @@ namespace TextLayout {
      *
      * A paragraph that ends up as a single, whole (non-word-wrapped) line has its
      * own leading/trailing whitespace trimmed from its range and width, same as
-     * ordinary typeset display text (e.g., a Label) expects, unless
+     * ordinary typeset display text (e.g., a `Label`) expects, unless
      * `text_style.preserve_whitespace` is set, in which case it's kept exactly as
-     * authored instead, which an editable field's literal text (see TextField)
+     * authored instead, which an editable field's literal text (see `TextField`)
      * needs instead. A word-wrapped line's own boundaries never include the
-     * whitespace that separated it from the next/previous word either, but that's
-     * simply because those boundaries are word boundaries to begin with, regardless
+     * whitespace that separated it from the next/previous word either, regardless
      * of `preserve_whitespace`. A paragraph that's entirely whitespace under
      * `WrapMode::Word` likewise always collapses to an empty/blank line, consistent
      * with how word-wrap already normalizes the gaps between real words.
@@ -288,15 +287,16 @@ namespace TextLayout {
     }
 
     /**
-     * Lays `codepoints` out exactly as AbstractRenderer::draw_text_in_box() would
-     * against the same font/text_style/box_position/box_size, returning its lines
-     * (see lay_out()) plus where (and how tall) each one actually starts, so a
-     * caller can turn any of them into on-screen rects without reimplementing the
-     * box/wrap/vertical-alignment math itself (see locate(), and
-     * gui::render::SelectionHelper for a multi-line selection highlight, one rect
-     * per spanned line). Horizontal alignment always assumes
-     * TextStyle::HorizontalAlign::Left (Center/Right/Justify are not accounted
-     * for); vertical alignment (Top/Middle/Bottom/Baseline) is honored exactly.
+     * Lays `codepoints` out exactly as `AbstractRenderer::draw_text_in_box()` would
+     * against the same font, text style, box position, and box size, returning
+     * its lines (see `lay_out()`) plus where (and how tall) each one actually
+     * starts, so a caller can turn any of them into on-screen rects without
+     * reimplementing the box/wrap/vertical-alignment math itself (see `locate()`,
+     * and `gui::render::SelectionHelper` for a multi-line selection highlight, one
+     * rect per spanned line). Horizontal alignment always assumes
+     * `TextStyle::HorizontalAlign::Left` (`Center`/`Right`/`Justify` are not
+     * accounted for); vertical alignment (`Top`/`Middle`/`Bottom`/`Baseline`) is
+     * honored exactly.
      */
     TextBlockLayout lay_out_box(std::span<const cl7::text::codec::codepoint> codepoints, Font& font, const TextStyle& text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
     {
@@ -344,17 +344,17 @@ namespace TextLayout {
     /**
      * Locates where the code point at `codepoint_index` (clamped to
      * `codepoints.size()`) would end up if `codepoints` were drawn via
-     * AbstractRenderer::draw_text_in_box() against the same font/text_style/
-     * box_position/box_size (see lay_out_box()): the line it falls on and the
-     * horizontal advance into that line, combined into a single absolute
+     * `AbstractRenderer::draw_text_in_box()` against the same font, text style,
+     * box position, and box size (see `lay_out_box()`): the line it falls on and
+     * the horizontal advance into that line, combined into a single absolute
      * position (the top-left corner of a one-line-tall rect around it), plus
      * that line's own height. For an index sitting exactly on a line break
      * (word-wrap or explicit), this is the START of the following line, not
      * the end of the one before it, same as a caret naturally continues there.
      *
-     * Meant for gui::render::CaretHelper to position a caret rect against text
+     * Meant for `gui::render::CaretHelper` to position a caret rect against text
      * that may since have grown to more than one line (see
-     * gui::faces::TextField's own multiline support).
+     * `gui::faces::TextField`'s own multiline support).
      */
     CodepointPosition locate(std::span<const cl7::text::codec::codepoint> codepoints, size_t codepoint_index, Font& font, const TextStyle& text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
     {
