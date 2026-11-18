@@ -16,26 +16,26 @@ namespace fl7::gui {
 
 
 /**
- * The visual properties a Face draws itself with.
+ * The visual properties a face draws itself with.
  */
 struct Style
 {
 
     /**
      * Non-owning: whoever builds the style keeps the 9-slice chrome alive. When
-     * set, drawn instead of the flat background_color/border_color pair. Usually
+     * set, drawn instead of the flat background/border color pair. Usually
      * populated by a theme, but can also be overridden per face like every other
      * field here.
      */
     const NineSliceChrome* chrome = nullptr;
 
-    /** Non-owning: whoever builds the Style keeps the Font alive. */
+    /** Non-owning: whoever builds the style keeps the font alive. */
     fonts::Font* font = nullptr;
 
     /**
-     * A Face's text is always drawn in box mode (a Face always has a fixed
-     * position/size), so, unlike fonts::TextStyle's own generic default (Baseline,
-     * meant for the point-anchored draw_text API), it defaults to Middle here.
+     * A face's text is always drawn in box mode (a face always has a fixed
+     * position/size), so, unlike `fonts::TextStyle`'s own generic default (`Baseline`,
+     * meant for the point-anchored `draw_text` API), it defaults to `Middle` here.
      */
     fonts::TextStyle text_style = _default_text_style();
 
@@ -44,7 +44,7 @@ struct Style
     /** 0 = no border. */
     float border_width = 0.0f;
 
-    /** The fill color of a HasSelection face's selection highlight (see render::SelectionHelper). */
+    /** The fill color of a `HasSelection` face's selection highlight (see `render::SelectionHelper`). */
     xl7::graphics::Color selection_color = {0.25f, 0.45f, 0.9f, 0.5f};
 
     /**
