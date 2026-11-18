@@ -30,12 +30,8 @@ class AbstractRenderer
 
 public:
     /**
-     * A RAII helper for managing text rendering batches in a scoped and nestable way.
-     *
-     * This class automates the process of beginning and ending a text rendering
-     * batch. It is designed to be used in a scoped manner (e.g., within a block or
-     * function), ensuring that `end` is called automatically when the `ScopedBatch`
-     * object goes out of scope.
+     * A RAII helper that calls `begin`/`end` automatically as this object's scope
+     * starts/ends (e.g., within a block or function).
      *
      * Supports nesting: multiple `ScopedBatch` objects can be active simultaneously
      * on the same renderer, but only the outermost `begin`/`end` calls affect the
@@ -115,18 +111,16 @@ public:
 
 
     /**
-     * Creates a new `ScopedBatch` object to manage a text rendering batch.
-     *
-     * Use this function to start a new batch. The returned `ScopedBatch` object
-     * will automatically call `end` when it goes out of scope, unless `end` is
-     * called explicitly beforehand.
+     * Creates a new `ScopedBatch` to start a new batch: it will automatically call
+     * `end` when it goes out of scope, unless `end` is called explicitly
+     * beforehand.
      */
     ScopedBatch begin_batch();
 
 
 
     /**
-     * Begins a new text rendering batch. Must be balled before issuing any draw
+     * Begins a new text rendering batch. Must be called before issuing any draw
      * commands if batching manually. Typically followed by multiple calls to
      * `draw_text`, and then a final call to `end`. If you only call `draw_text`
      * occasionally, it is not necessary to call `begin` or `end` manually; the
@@ -164,7 +158,8 @@ public:
      * line breaks in `text`, not from word-wrapping (there is no box width to wrap
      * against). `Justify` has no effect and behaves like `Left`.
      *
-     * If no active text rendering batch is open, begin/end are called automatically.
+     * If no active text rendering batch is open, `begin`/`end` are called
+     * automatically.
      *
      * `style_runs` (if any) override `text_style`'s (inherited) `GlyphStyle` for
      * the code point ranges they cover. See `StyleRun` for the indexing convention
@@ -188,7 +183,8 @@ public:
      *
      * A `box_size` component of 0 (or less) means "unconstrained" on that axis.
      *
-     * If no active text rendering batch is open, begin/end are called automatically.
+     * If no active text rendering batch is open, `begin`/`end` are called
+     * automatically.
      *
      * `style_runs` (if any) override `text_style`'s (inherited) `GlyphStyle` for
      * the code point ranges they cover. See `StyleRun` for the indexing convention
@@ -211,9 +207,9 @@ public:
      * Pushes a new clip rect, intersected with the current one (there is no clip
      * rect initially, i.e., unbounded). Glyphs/backgrounds/icons drawn while this
      * clip rect is active are clipped against it, on top of (i.e., intersected
-     * with) their own text box's bounds, if any (see draw_text_in_box). Mirrors
-     * xl7::graphics::QuadRenderer::push_clip_rect's identical stack semantics, so
-     * a caller driving both (e.g., fl7::gui::render::DefaultRenderer) can push/pop
+     * with) their own text box's bounds, if any (see `draw_text_in_box`). Mirrors
+     * `xl7::graphics::QuadRenderer::push_clip_rect`'s identical stack semantics, so
+     * a caller driving both (e.g., `fl7::gui::render::DefaultRenderer`) can push/pop
      * the same rect on each in lockstep.
      */
     void push_clip_rect(ml7::Vector2f clip_min, ml7::Vector2f clip_max);
@@ -235,7 +231,7 @@ protected:
         TextStyle text_style;
         TextMetrics text_metrics;
 
-        /** The per-glyph style for the code point currently being emitted (text_style's, unless overridden by a StyleRun). */
+        /** The per-glyph style for the code point currently being emitted (`text_style`'s, unless overridden by a `StyleRun`). */
         GlyphStyle current_glyph_style;
 
         ml7::Vector2f cursor;
@@ -247,10 +243,10 @@ protected:
     /**
      * Returns the effective clip rect (position_min, position_max) for the given
      * state: its own text box bounds (if constrained on either axis; see
-     * draw_text_in_box), intersected with the renderer's current push_clip_rect()
-     * rect (if any). A concrete renderer that emits quads (see
-     * AbstractTextureAtlasBasedRenderer) clips each one against this via
-     * xl7::graphics::meshes::ClippedQuad::clip, instead of computing box bounds
+     * `draw_text_in_box`), intersected with the renderer's current
+     * `push_clip_rect()` rect (if any). A concrete renderer that emits quads (see
+     * `AbstractTextureAtlasBasedRenderer`) clips each one against this via
+     * `xl7::graphics::meshes::ClippedQuad::clip`, instead of computing box bounds
      * itself.
      */
     std::pair<ml7::Vector2f, ml7::Vector2f> _get_effective_clip_rect(const State& state) const;
@@ -303,7 +299,7 @@ private:
      */
     std::vector<cl7::text::codec::codepoint> _codepoints;
 
-    /** The active clip-rect stack; empty means unbounded (no clipping), same convention as xl7::graphics::QuadRenderer. */
+    /** The active clip-rect stack; empty means unbounded (no clipping), same convention as `xl7::graphics::QuadRenderer`. */
     std::vector<ClipRect> _clip_rect_stack;
 
 }; // class AbstractRenderer

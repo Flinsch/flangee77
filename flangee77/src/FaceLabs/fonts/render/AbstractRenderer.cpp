@@ -14,11 +14,9 @@ namespace fl7::fonts::render {
 
 
     /**
-     * Creates a new `ScopedBatch` object to manage a text rendering batch.
-     *
-     * Use this function to start a new batch. The returned `ScopedBatch` object
-     * will automatically call `end` when it goes out of scope, unless `end` is
-     * called explicitly beforehand.
+     * Creates a new `ScopedBatch` to start a new batch: it will automatically call
+     * `end` when it goes out of scope, unless `end` is called explicitly
+     * beforehand.
      */
     AbstractRenderer::ScopedBatch AbstractRenderer::begin_batch()
     {
@@ -28,7 +26,7 @@ namespace fl7::fonts::render {
 
 
     /**
-     * Begins a new text rendering batch. Must be balled before issuing any draw
+     * Begins a new text rendering batch. Must be called before issuing any draw
      * commands if batching manually. Typically followed by multiple calls to
      * `draw_text`, and then a final call to `end`. If you only call `draw_text`
      * occasionally, it is not necessary to call `begin` or `end` manually; the
@@ -76,9 +74,9 @@ namespace fl7::fonts::render {
      * Pushes a new clip rect, intersected with the current one (there is no clip
      * rect initially, i.e., unbounded). Glyphs/backgrounds/icons drawn while this
      * clip rect is active are clipped against it, on top of (i.e., intersected
-     * with) their own text box's bounds, if any (see draw_text_in_box). Mirrors
-     * xl7::graphics::QuadRenderer::push_clip_rect's identical stack semantics, so
-     * a caller driving both (e.g., fl7::gui::render::DefaultRenderer) can push/pop
+     * with) their own text box's bounds, if any (see `draw_text_in_box`). Mirrors
+     * `xl7::graphics::QuadRenderer::push_clip_rect`'s identical stack semantics, so
+     * a caller driving both (e.g., `fl7::gui::render::DefaultRenderer`) can push/pop
      * the same rect on each in lockstep.
      */
     void AbstractRenderer::push_clip_rect(ml7::Vector2f clip_min, ml7::Vector2f clip_max)
@@ -108,10 +106,10 @@ namespace fl7::fonts::render {
     /**
      * Returns the effective clip rect (position_min, position_max) for the given
      * state: its own text box bounds (if constrained on either axis; see
-     * draw_text_in_box), intersected with the renderer's current push_clip_rect()
-     * rect (if any). A concrete renderer that emits quads (see
-     * AbstractTextureAtlasBasedRenderer) clips each one against this via
-     * xl7::graphics::meshes::ClippedQuad::clip, instead of computing box bounds
+     * `draw_text_in_box`), intersected with the renderer's current
+     * `push_clip_rect()` rect (if any). A concrete renderer that emits quads (see
+     * `AbstractTextureAtlasBasedRenderer`) clips each one against this via
+     * `xl7::graphics::meshes::ClippedQuad::clip`, instead of computing box bounds
      * itself.
      */
     std::pair<ml7::Vector2f, ml7::Vector2f> AbstractRenderer::_get_effective_clip_rect(const State& state) const
@@ -253,7 +251,7 @@ namespace fl7::fonts::render {
 
                 // An icon-covered code point is visible content, never whitespace,
                 // regardless of the (irrelevant) placeholder code point actually
-                // there, Matches TextLayout::lay_out's own icon-aware handling.
+                // there. Matches TextLayout::lay_out's own icon-aware handling.
                 const bool is_whitespace = !has_icon && cl7::text::inspect::is_whitespace(static_cast<char32_t>(codepoint.value));
                 if (is_whitespace && !previous_was_whitespace)
                     state.cursor.x += extra_per_gap + text_style->word_spacing;
