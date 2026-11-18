@@ -17,9 +17,9 @@ namespace fl7::gui {
 
     /**
      * Returns the shell this face (transitively) belongs to, or `nullptr` if it
-     * isn't (yet) part of one. Only ever actually set (by Shell::add_face()) on a
+     * isn't (yet) part of one. Only ever actually set (by `Shell::add_face()`) on a
      * top-level face, so this walks up the parent chain to find it. Not cached
-     * (fine at GUI scale.
+     * (fine at GUI scale).
      */
     Shell* Face::get_shell() const
     {
@@ -45,17 +45,10 @@ namespace fl7::gui {
 
     /**
      * Returns this face's effective preferred size: how large a layout (see
-     * `layout::Layout`) should try to make it, absent any overriding constraint
-     * (available space, a sibling's own minimum size, stretch factors, ...).
-     * Combines, independently per component: `get_preferred_size()`, if actually
-     * set (a component `<= 0` counts as not set), else this face's own calculated,
-     * content-based size (see `_calculate_preferred_size()`; default `{0, 0}`,
-     * i.e., no particular opinion; most face types don't have one yet) plus
-     * `get_effective_padding()` (the calculated size is content-only; an explicit
-     * override is assumed to already have been picked with padding in mind). A
-     * plain, content-less face (e.g., `faces::Panel`) therefore reports whatever
-     * its own padding alone amounts to (`{0, 0}` by default) unless explicitly
-     * told otherwise.
+     * `layout::Layout`) should try to make it, absent any overriding constraint.
+     * Falls back, per component, from `get_preferred_size()` to this face's own
+     * content-based size (see `_calculate_preferred_size()`) plus
+     * `get_effective_padding()` when unset.
      */
     ml7::Vector2f Face::get_effective_preferred_size() const
     {
@@ -70,13 +63,9 @@ namespace fl7::gui {
     /**
      * Returns this face's effective minimum size: how small a layout (see
      * `layout::Layout`) is allowed to shrink it while distributing space among
-     * several children. Combines, independently per component: `get_minimum_size()`,
-     * if actually set (a component `<= 0` counts as not set), else this face's own
-     * calculated, content-based size (see `_calculate_minimum_size()`) plus
-     * `get_effective_padding()` (the calculated size is content-only; an explicit
-     * override is assumed to already have been picked with padding in mind). A
-     * plain, content-less face (e.g., `faces::Panel`) might report `{0, 0}` unless
-     * explicitly told otherwise.
+     * several children. Falls back, per component, from `get_minimum_size()` to
+     * this face's own content-based size (see `_calculate_minimum_size()`) plus
+     * `get_effective_padding()` when unset.
      */
     ml7::Vector2f Face::get_effective_minimum_size() const
     {
@@ -90,13 +79,10 @@ namespace fl7::gui {
 
     /**
      * Returns this face's absolute (screen) position, computed by walking up the
-     * parent chain, netting out each ancestor collection's own get_scroll_offset()
-     * along the way, same as Collection::_find_hit_face() and render::DefaultRenderer
-     * independently already do while actually hit-testing/drawing this face's
-     * descendants: without that, this would return this face's unscrolled, logical
-     * position instead of wherever it's actually hit-tested/drawn/visible right now.
-     * Not cached (fine at GUI scale, matches the rest of the traversal/hit-testing
-     * code).
+     * parent chain and netting out each ancestor collection's own scroll offset
+     * along the way: without that, this would return this face's unscrolled,
+     * logical position instead of wherever it's actually drawn/hit-tested right
+     * now. Not cached (fine at GUI scale).
      */
     ml7::Vector2f Face::get_absolute_position() const
     {
@@ -111,21 +97,16 @@ namespace fl7::gui {
     }
 
     /**
-     * Returns this face's effective style: its own override if set, else this
-     * face's own role resolved against the owning shell's theme (using its own
-     * checked/hovered/pressed/focused state, see Theme::State, unless
-     * _get_interaction_state_proxy() redirects that part to another face, and
-     * unless _requires_own_bounds_for_hover() further narrows a proxied hovered
-     * state down to this face's own bounds specifically), else, only for a face
-     * with no themed role of its own (see _get_theme_key()), the nearest ancestor's
-     * explicit override instead (not that ancestor's own *effective* style, which
-     * may itself just be a theme resolution, that's specific to the role of the
-     * ancestor, not to the role of this face), so a themed ancestor's override
-     * deliberately does NOT reach past a descendant that has its own distinct role
-     * (e.g., a Button inside an overridden Panel still looks like a Button), only
-     * past anonymous content that has no role to resolve in the first place. Else a
-     * default-constructed style as a last resort (no override anywhere up the chain,
-     * no theme, or a face type with no themed role).
+     * Returns this face's effective style, resolved in order: this face's own
+     * override, if set; else its own role resolved against the owning shell's
+     * theme (using checked/hovered/pressed/focused state, see `Theme::State`,
+     * possibly redirected via `_get_interaction_state_proxy()`/
+     * `_requires_own_bounds_for_hover()`); else, only for a face with no themed
+     * role of its own (see `_get_theme_key()`), the nearest ancestor's own
+     * explicit override; else a default-constructed style as a last resort. A
+     * themed ancestor's override deliberately does not reach past a descendant
+     * with its own distinct role (e.g., a button inside an overridden panel
+     * still looks like a button), only past anonymous, role-less content.
      */
     Style Face::get_effective_style() const
     {
@@ -154,8 +135,8 @@ namespace fl7::gui {
     }
 
     /**
-     * Does the actual work of get_effective_style(), minus the final
-     * _adjust_effective_text_style() pass.
+     * Does the actual work of `get_effective_style()`, minus the final
+     * `_adjust_effective_text_style()` pass.
      */
     Style Face::_resolve_effective_style() const
     {
@@ -217,7 +198,7 @@ namespace fl7::gui {
     /**
      * Returns whether the specified point, in this face's own local coordinate
      * space (i.e., relative to this face's own absolute position), lies within it.
-     * Default: an axis-aligned rect test against `get_size`. Override for a
+     * Default: an axis-aligned rect test against the size. Override for a
      * non-rectangular hit shape.
      */
     bool Face::_contains_point(ml7::Vector2f local_point) const
@@ -233,8 +214,11 @@ namespace fl7::gui {
     // #############################################################################
 
     /**
-     * Finds the topmost face containing the given absolute (screen) point.
-     * Base case: a plain Face has no children, so this just tests itself.
+     * Finds the topmost face containing the given absolute (screen) point, or
+     * none. Base case (a plain face has no children): tests only itself. A
+     * collection overrides this to check its children first
+     * (topmost/most-recently-added first), falling back to this self-test only
+     * if none of them are hit.
      */
     Face* Face::_find_hit_face(ml7::Vector2f screen_point, ml7::Vector2f parent_absolute_position)
     {
@@ -249,12 +233,13 @@ namespace fl7::gui {
 
     /**
      * Appends this face to `out` if it's currently a reachable Tab stop (see
-     * _is_focusable()), in tree order. Base case (a plain Face has no
-     * children): tests only itself. `Collection` overrides this to recurse
+     * `_is_focusable()`), in tree order. Base case (a plain face has no
+     * children): tests only itself. A collection overrides this to recurse
      * into its children afterwards (in insertion order), same as
-     * _find_hit_face() does for hit-testing, just not reversed, and without
-     * clips_children() gating: an off-screen (e.g. scrolled-out) but
-     * otherwise reachable face is still a valid Tab stop.
+     * `_find_hit_face()` does for hit-testing, just not reversed, and without
+     * gating on whether a face is actually visible on screen: an off-screen
+     * (e.g., scrolled-out) but otherwise reachable face is still a valid Tab
+     * stop.
      */
     void Face::_collect_tab_stops(std::vector<Face*>& out)
     {

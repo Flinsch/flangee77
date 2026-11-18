@@ -117,19 +117,19 @@ public:
 
     /**
      * Returns the shell this face (transitively) belongs to, or `nullptr` if it
-     * isn't (yet) part of one. Only ever actually set (by Shell::add_face()) on a
+     * isn't (yet) part of one. Only ever actually set (by `Shell::add_face()`) on a
      * top-level face, so this walks up the parent chain to find it. Not cached
-     * (fine at GUI scale.
+     * (fine at GUI scale).
      */
     Shell* get_shell() const;
 
     /**
-     * Returns this face's parent, or `nullptr` for a top-level Face.
+     * Returns this face's parent, or `nullptr` for a top-level face.
      */
     Face* get_parent() const { return _parent; }
 
     /**
-     * Returns this Face's position, relative to its parent (or, for a top-level
+     * Returns this face's position, relative to its parent (or, for a top-level
      * face, relative to the shell's origin).
      */
     ml7::Vector2f get_position() const { return _position; }
@@ -164,17 +164,10 @@ public:
 
     /**
      * Returns this face's effective preferred size: how large a layout (see
-     * `layout::Layout`) should try to make it, absent any overriding constraint
-     * (available space, a sibling's own minimum size, stretch factors, ...).
-     * Combines, independently per component: `get_preferred_size()`, if actually
-     * set (a component `<= 0` counts as not set), else this face's own calculated,
-     * content-based size (see `_calculate_preferred_size()`; default `{0, 0}`,
-     * i.e., no particular opinion; most face types don't have one yet) plus
-     * `get_effective_padding()` (the calculated size is content-only; an explicit
-     * override is assumed to already have been picked with padding in mind). A
-     * plain, content-less face (e.g., `faces::Panel`) therefore reports whatever
-     * its own padding alone amounts to (`{0, 0}` by default) unless explicitly
-     * told otherwise.
+     * `layout::Layout`) should try to make it, absent any overriding constraint.
+     * Falls back, per component, from `get_preferred_size()` to this face's own
+     * content-based size (see `_calculate_preferred_size()`) plus
+     * `get_effective_padding()` when unset.
      */
     ml7::Vector2f get_effective_preferred_size() const;
 
@@ -194,13 +187,9 @@ public:
     /**
      * Returns this face's effective minimum size: how small a layout (see
      * `layout::Layout`) is allowed to shrink it while distributing space among
-     * several children. Combines, independently per component: `get_minimum_size()`,
-     * if actually set (a component `<= 0` counts as not set), else this face's own
-     * calculated, content-based size (see `_calculate_minimum_size()`) plus
-     * `get_effective_padding()` (the calculated size is content-only; an explicit
-     * override is assumed to already have been picked with padding in mind). A
-     * plain, content-less face (e.g., `faces::Panel`) might report `{0, 0}` unless
-     * explicitly told otherwise.
+     * several children. Falls back, per component, from `get_minimum_size()` to
+     * this face's own content-based size (see `_calculate_minimum_size()`) plus
+     * `get_effective_padding()` when unset.
      */
     ml7::Vector2f get_effective_minimum_size() const;
 
@@ -252,32 +241,24 @@ public:
 
     /**
      * Returns this face's absolute (screen) position, computed by walking up the
-     * parent chain, netting out each ancestor collection's own get_scroll_offset()
-     * along the way, same as Collection::_find_hit_face() and render::DefaultRenderer
-     * independently already do while actually hit-testing/drawing this face's
-     * descendants: without that, this would return this face's unscrolled, logical
-     * position instead of wherever it's actually hit-tested/drawn/visible right now.
-     * Not cached (fine at GUI scale, matches the rest of the traversal/hit-testing
-     * code).
+     * parent chain and netting out each ancestor collection's own scroll offset
+     * along the way: without that, this would return this face's unscrolled,
+     * logical position instead of wherever it's actually drawn/hit-tested right
+     * now. Not cached (fine at GUI scale).
      */
     ml7::Vector2f get_absolute_position() const;
 
     /**
-     * Returns this face's effective style: its own override if set, else this
-     * face's own role resolved against the owning shell's theme (using its own
-     * checked/hovered/pressed/focused state, see Theme::State, unless
-     * _get_interaction_state_proxy() redirects that part to another face, and
-     * unless _requires_own_bounds_for_hover() further narrows a proxied hovered
-     * state down to this face's own bounds specifically), else, only for a face
-     * with no themed role of its own (see _get_theme_key()), the nearest ancestor's
-     * explicit override instead (not that ancestor's own *effective* style, which
-     * may itself just be a theme resolution, that's specific to the role of the
-     * ancestor, not to the role of this face), so a themed ancestor's override
-     * deliberately does NOT reach past a descendant that has its own distinct role
-     * (e.g., a Button inside an overridden Panel still looks like a Button), only
-     * past anonymous content that has no role to resolve in the first place. Else a
-     * default-constructed style as a last resort (no override anywhere up the chain,
-     * no theme, or a face type with no themed role).
+     * Returns this face's effective style, resolved in order: this face's own
+     * override, if set; else its own role resolved against the owning shell's
+     * theme (using checked/hovered/pressed/focused state, see `Theme::State`,
+     * possibly redirected via `_get_interaction_state_proxy()`/
+     * `_requires_own_bounds_for_hover()`); else, only for a face with no themed
+     * role of its own (see `_get_theme_key()`), the nearest ancestor's own
+     * explicit override; else a default-constructed style as a last resort. A
+     * themed ancestor's override deliberately does not reach past a descendant
+     * with its own distinct role (e.g., a button inside an overridden panel
+     * still looks like a button), only past anonymous, role-less content.
      */
     Style get_effective_style() const;
 
@@ -289,7 +270,7 @@ public:
     /**
      * Overrides this face's style (and, transitively, that of any descendant that
      * has neither its own override nor a themed role of its own; see
-     * get_effective_style()).
+     * `get_effective_style()`).
      */
     void set_style_override(const Style& style) { _style_override = style; }
 
@@ -299,14 +280,14 @@ public:
     void clear_style_override() { _style_override.reset(); }
 
     /**
-     * Returns this face's explicit Tab-order index (see Shell::update()'s
+     * Returns this face's explicit Tab-order index (see `Shell::update()`'s
      * Tab/Shift+Tab handling), or empty if unset.
      */
     std::optional<int> get_tab_order() const { return _tab_order; }
 
     /**
      * Sets this face's explicit Tab-order index: among the Tab stops (see
-     * _is_focusable()) being ordered within a top-level face's subtree, one
+     * `_is_focusable()`) being ordered within a top-level face's subtree, one
      * with an explicit index always comes before one without; two explicit
      * indices compare by their value. Either kind of tie (equal explicit
      * indices, or no explicit index at all) falls back to tree/insertion
@@ -322,7 +303,7 @@ public:
 
     /**
      * Returns whether spatial arrow-key/gamepad focus navigation (see
-     * Shell::focus_toward()) is currently enabled while this face is the
+     * `Shell::focus_toward()`) is currently enabled while this face is the
      * current top-level face. Default: true. Only meaningful on a top-level
      * face: set it false for one that reads the arrows itself for something
      * else entirely (e.g., a HUD overlay steering gameplay), so the shell
@@ -346,7 +327,7 @@ protected:
 
     /**
      * Returns this face's role/key for theme-based style resolution (see
-     * get_effective_style()), e.g., "window", "button", etc. Default: empty,
+     * `get_effective_style()`), e.g., "window", "button", etc. Default: empty,
      * meaning this face type doesn't participate in theming (falls straight through
      * to the ordinary inherited-override/last-resort-default style). Override in
      * concrete types that do.
@@ -355,47 +336,47 @@ protected:
 
     /**
      * Returns the face whose checked/hovered/pressed/focused state (see
-     * get_effective_style()) should be used to resolve THIS face's theme-based
+     * `get_effective_style()`) should be used to resolve THIS face's theme-based
      * style, or `nullptr` (default) to use this face's own state as usual. For a
      * passive, non-hit-testable decoration owned by an interactive parent (e.g., a
-     * CheckBox's little box glyph, itself disabled so clicks/hover always resolve
-     * to the CheckBox as a whole; see CheckBox::Box), this lets that decoration
+     * `CheckBox`'s little box glyph, itself disabled so clicks/hover always resolve
+     * to the `CheckBox` as a whole; see `CheckBox::Box`), this lets that decoration
      * still visually track its owner's state without being interactive (or
-     * checkable) itself. Doesn't affect _get_theme_key(), which still determines
-     * which role's Style is being resolved in the first place.
+     * checkable) itself. Doesn't affect `_get_theme_key()`, which still determines
+     * which role's `Style` is being resolved in the first place.
      */
     virtual const Face* _get_interaction_state_proxy() const { return nullptr; }
 
     /**
-     * Returns whether this face's own hovered state (see get_effective_style())
+     * Returns whether this face's own hovered state (see `get_effective_style()`)
      * additionally requires the pointer to actually be within its own bounds
-     * (see _contains_point()), on top of whatever _get_interaction_state_proxy()
+     * (see `_contains_point()`), on top of whatever `_get_interaction_state_proxy()`
      * says. Default: false, meaning a proxied face fully inherits the proxy's
      * hovered state as-is, same as it does for pressed/focused. A passive
      * decoration that redirects to its owner for pressed/focused (so it still
      * looks "held"/"active" for the whole gesture) but should only actually
      * highlight when the pointer is really over it, not merely somewhere over the
-     * owner (e.g., TrackControl's handle vs. the rest of the track), overrides this
+     * owner (e.g., `TrackControl`'s handle vs. the rest of the track), overrides this
      * to true instead.
      */
     virtual bool _requires_own_bounds_for_hover() const { return false; }
 
     /**
      * Returns whether this face is a valid Tab/Shift+Tab stop (see
-     * Shell::update()). Default: false. Override true in a concrete
-     * interactive leaf control (Button, CheckBox, RadioButton, TextField,
-     * TrackControl, ...): a passive decoration or a plain layout container
-     * (Panel, Label, a disabled glyph owned by one of the above, ...) has
+     * `Shell::update()`). Default: false. Override true in a concrete
+     * interactive leaf control (`Button`, `CheckBox`, `RadioButton`, `TextField`,
+     * `TrackControl`, ...): a passive decoration or a plain layout container
+     * (`Panel`, `Label`, a disabled glyph owned by one of the above, ...) has
      * nothing to type into or activate, so it stays out of the Tab order.
      */
     virtual bool _is_focusable() const { return false; }
 
     /**
-     * Returns whether _on_click() meaningfully does something for this face (see
-     * Shell::click_focus()). Default: false. Override true in a concrete face type
-     * that overrides _on_click() to actually do something (Button, CheckBox,
-     * RadioButton, ...): a face that doesn't (TrackControl, TextField, a plain
-     * Panel, ...) has nothing for Enter/Space (or a gamepad's "confirm" button) to
+     * Returns whether `_on_click()` meaningfully does something for this face (see
+     * `Shell::click_focus()`). Default: false. Override true in a concrete face type
+     * that overrides `_on_click()` to actually do something (`Button`, `CheckBox`,
+     * `RadioButton`, ...): a face that doesn't (`TrackControl`, `TextField`, a plain
+     * `Panel`, ...) has nothing for Enter/Space (or a gamepad's "confirm" button) to
      * trigger.
      */
     virtual bool _is_clickable() const { return false; }
@@ -403,7 +384,7 @@ protected:
     /**
      * Returns whether this face (while it's the currently focused one) wants
      * the specified arrow for itself, i.e., whether spatial focus navigation
-     * (see Shell::focus_toward()) should yield to it instead of moving focus.
+     * (see `Shell::focus_toward()`) should yield to it instead of moving focus.
      * Default: Ignore (the arrow is always free for navigation). Override in
      * a concrete face type that uses arrows for something of its own (a text
      * caret, a track's handle, a list's selection).
@@ -412,14 +393,13 @@ protected:
 
     /**
      * Called with this face's freshly resolved effective text style (part of
-     * get_effective_style()'s result), letting a concrete face type enforce a
+     * `get_effective_style()`'s result), letting a concrete face type enforce a
      * fixed, structural requirement of its own type on it, regardless of
-     * whatever a theme (or style override) happens to set, e.g., TextField
-     * forcing text_style.preserve_whitespace on, since an editable field's
-     * displayed text must always be exactly what was typed, never typeset-
-     * trimmed. Default: no-op. NOT a general style-tweaking hook: actual
-     * appearance (colors, font, chrome, alignment, ...) stays entirely theme-
-     * driven. Most face types have nothing to enforce here at all.
+     * whatever a theme (or style override) sets, e.g., `TextField` forcing
+     * `text_style.preserve_whitespace` on since typed text must always show
+     * exactly as typed. Default: no-op. NOT a general style-tweaking hook:
+     * actual appearance (colors, font, chrome, alignment, ...) stays entirely
+     * theme-driven.
      */
     virtual void _adjust_effective_text_style(fonts::TextStyle& text_style) const {}
 
@@ -461,15 +441,15 @@ protected:
     /**
      * Returns whether the specified point, in this face's own local coordinate
      * space (i.e., relative to this face's own absolute position), lies within it.
-     * Default: an axis-aligned rect test against `get_size`. Override for a
+     * Default: an axis-aligned rect test against the size. Override for a
      * non-rectangular hit shape.
      */
     virtual bool _contains_point(ml7::Vector2f local_point) const;
 
     /**
-     * Called after this face's size has actually changed (see set_size), with both
-     * the old and the new size. Default: no-op. Override to react to a size change
-     * (e.g., Window keeping its internal content area in sync).
+     * Called after this face's size has actually changed (see `set_size()`), with
+     * both the old and the new size. Default: no-op. Override to react to a size
+     * change (e.g., `Window` keeping its internal content area in sync).
      */
     virtual void _on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size) {}
 
@@ -480,7 +460,7 @@ protected:
     virtual void _on_mouse_enter() {}
 
     /**
-     * Called when this face stops being the hovered Face.
+     * Called when this face stops being the hovered face.
      */
     virtual void _on_mouse_leave() {}
 
@@ -495,7 +475,7 @@ protected:
     /**
      * Called when the specified mouse button was released while this face was the
      * "pressed" face (regardless of whether the cursor is still over it; see
-     * `on_click` for the "still over it" case).
+     * `_on_click()` for the "still over it" case).
      */
     virtual void _on_mouse_up(xl7::input::MouseButton button) {}
 
@@ -503,13 +483,13 @@ protected:
      * Called once per frame, with this frame's real (OS-synced) mouse movement
      * delta and the mouse's current position (both in this face's own local
      * coordinate space, i.e., relative to the absolute screen position, same as
-     * `local_position` in _on_mouse_down()), while this face is the "pressed"
+     * `local_position` in `_on_mouse_down()`), while this face is the "pressed"
      * face and the mouse actually moved. Default: no-op. Override for drag-to-
-     * move/drag-to-resize-style behavior (e.g., Frame dragging itself via its
+     * move/drag-to-resize-style behavior (e.g., `Frame` dragging itself via its
      * title bar, which only needs `delta`) or drag-to-select-style behavior
-     * (e.g., TextField extending its selection to wherever the cursor now is,
+     * (e.g., `TextField` extending its selection to wherever the cursor now is,
      * which only needs `local_position`). `delta` is deliberately the OS-synced
-     * delta (see Mouse::get_x()), not the raw device delta (Mouse::get_delta_x()):
+     * delta (see `Mouse::get_x()`), not the raw device delta (`Mouse::get_delta_x()`):
      * a dragged face should track the visible cursor 1:1, unaffected by whatever
      * the raw device delta vs. OS pointer-acceleration relationship happens to be.
      */
@@ -517,21 +497,15 @@ protected:
 
     /**
      * Called once per frame, with this frame's mouse wheel delta (see
-     * Mouse::get_wheel_delta(); one notch/detent is 1), while the wheel actually
-     * moved and this face is either the hovered face itself or one of its ancestors
-     * that the delta has bubbled up to (see Shell::update()): routed by hover, not
-     * focus (wheel scrolling always targets whatever's under the cursor, same as it
-     * does in a browser or any other GUI, regardless of which face, if any,
-     * currently holds the focus), starting at the hovered face and walking up
-     * get_parent() from there, stopping at the first one that actually consumes it.
+     * `Mouse::get_wheel_delta()`), for the hovered face and, if unconsumed, each
+     * ancestor it bubbles up to (see `Shell::update()`): wheel scrolling always
+     * targets whatever's under the cursor, not whichever face is focused.
      *
-     * Returns whether this face actually consumed the delta: true stops the
-     * bubble-up right here; false lets the next ancestor up try it instead.
-     * Default: false (no-op, let it bubble further). A face that's always the
-     * meaningful wheel target for its area once reached (e.g., TrackControl, even
-     * already clamped at an end) should still return true, so an outer scrollable
-     * ancestor (e.g., a ScrollPanel it happens to sit in) doesn't also react to the
-     * same notch.
+     * Returns whether this face consumed the delta, stopping the bubble-up;
+     * default: false. A face that's always the meaningful wheel target for its
+     * area (e.g., `TrackControl`, even already clamped at an end) should still
+     * return true, so an outer scrollable ancestor doesn't also react to the same
+     * notch.
      */
     virtual bool _on_mouse_wheel(int delta) { return false; }
 
@@ -554,16 +528,16 @@ protected:
 
     /**
      * Called, while this face is the focused face, once per frame for each key that
-     * was pressed down this frame (see Keyboard::is_key_pressed()).
+     * was pressed down this frame (see `Keyboard::is_key_pressed()`).
      */
     virtual void _on_key_down(xl7::input::Key key) {}
 
     /**
      * Called, while this face is the focused face, with this frame's composed text
-     * input (see Keyboard::get_text_input()): already keyboard-layout-translated
+     * input (see `Keyboard::get_text_input()`): already keyboard-layout-translated
      * and IME-composed, but NOT filtered for control characters: Enter, Backspace,
      * Escape, Tab etc. are reported as WM_CHAR the same as any other key, so they
-     * show up here too (see _on_key_down for handling those instead, and filter
+     * show up here too (see `_on_key_down()` for handling those instead, and filter
      * them back out here if a plain code point is all you want).
      */
     virtual void _on_text_input(const cl7::u32string& text) {}
@@ -575,22 +549,23 @@ protected:
     // #############################################################################
 
     /**
-     * Finds the topmost face containing the given absolute (screen) point.
-     * Base case (a plain Face has no children): tests only itself, returning
-     * `nullptr` if invisible/disabled or not hit. `Collection` overrides this
-     * to check its children first (topmost/most-recently-added first), only
-     * falling back to this same self-test if none of them are hit.
+     * Finds the topmost face containing the given absolute (screen) point, or
+     * none. Base case (a plain face has no children): tests only itself. A
+     * collection overrides this to check its children first
+     * (topmost/most-recently-added first), falling back to this self-test only
+     * if none of them are hit.
      */
     virtual Face* _find_hit_face(ml7::Vector2f screen_point, ml7::Vector2f parent_absolute_position);
 
     /**
      * Appends this face to `out` if it's currently a reachable Tab stop (see
-     * _is_focusable()), in tree order. Base case (a plain Face has no
-     * children): tests only itself. `Collection` overrides this to recurse
+     * `_is_focusable()`), in tree order. Base case (a plain face has no
+     * children): tests only itself. A collection overrides this to recurse
      * into its children afterwards (in insertion order), same as
-     * _find_hit_face() does for hit-testing, just not reversed, and without
-     * clips_children() gating: an off-screen (e.g. scrolled-out) but
-     * otherwise reachable face is still a valid Tab stop.
+     * `_find_hit_face()` does for hit-testing, just not reversed, and without
+     * gating on whether a face is actually visible on screen: an off-screen
+     * (e.g., scrolled-out) but otherwise reachable face is still a valid Tab
+     * stop.
      */
     virtual void _collect_tab_stops(std::vector<Face*>& out);
 
@@ -609,8 +584,8 @@ private:
     const Style* _find_inherited_style_override() const;
 
     /**
-     * Does the actual work of get_effective_style(), minus the final
-     * _adjust_effective_text_style() pass.
+     * Does the actual work of `get_effective_style()`, minus the final
+     * `_adjust_effective_text_style()` pass.
      */
     Style _resolve_effective_style() const;
 
@@ -620,7 +595,7 @@ private:
     // Attributes
     // #############################################################################
 
-    /** Non-owning; only set on a top-level face, by Shell::add_face(). */
+    /** Non-owning; only set on a top-level face, by `Shell::add_face()`. */
     Shell* _shell = nullptr;
 
     /** Non-owning. */
@@ -629,9 +604,9 @@ private:
     ml7::Vector2f _position;
     ml7::Vector2f _size;
 
-    /** Explicit override; see get_preferred_size()/set_preferred_size(). */
+    /** Explicit override; see `get_preferred_size()`/`set_preferred_size()`. */
     ml7::Vector2f _preferred_size;
-    /** Explicit override; see get_minimum_size()/set_minimum_size(). */
+    /** Explicit override; see `get_minimum_size()`/`set_minimum_size()`. */
     ml7::Vector2f _minimum_size;
 
     Anchor _anchor = Anchor::Left | Anchor::Top;
