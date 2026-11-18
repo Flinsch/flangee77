@@ -18,7 +18,7 @@ namespace fl7::gui {
  * A named, cascading bundle of visual defaults: one theme-wide default level, plus
  * any number of face-type/role levels, keyed by the faces' own theme keys (e.g.,
  * "window", "button", etc.), each with its own optional checked/hovered/pressed/
- * focused overlays (see ThemeLevel, resolve()).
+ * focused overlays (see `ThemeLevel`, `resolve()`).
  */
 class Theme
 {
@@ -26,12 +26,12 @@ class Theme
 public:
     /**
      * Which of a face's independent, not mutually exclusive states are currently
-     * active, for resolve() to apply the matching overlays (if any). See
-     * ThemeLevel for how they combine.
+     * active, for `resolve()` to apply the matching overlays (if any). See
+     * `ThemeLevel` for how they combine.
      */
     struct State
     {
-        /** See HasCheckedState. */
+        /** See `HasCheckedState`. */
         bool checked = false;
         bool hovered = false;
         bool pressed = false;
@@ -75,12 +75,12 @@ public:
     /**
      * Resolves the specified face-type/role key into a complete style: each field
      * individually falls back from that key's own level to the theme-wide default
-     * level, then to style's own hard-coded default, except chrome, which only ever
-     * comes from the key's own level. Unknown keys resolve as if their level were
-     * empty (falling through to the theme-wide default/style's own defaults for
-     * everything but chrome). The key's own level's checked/hovered/pressed/focused
-     * overlays (if any) whose state is currently active in `state` are then applied
-     * on top, in that fixed priority order (see ThemeLevel).
+     * level, then to style's own hard-coded default, except chrome, which only
+     * ever comes from the key's own level. Unknown keys resolve as if their level
+     * were empty (falling through to the theme-wide default/style's own defaults
+     * for everything but chrome). The key's own level's checked/hovered/pressed/
+     * focused overlays (if any) whose state is currently active in `state` are then
+     * applied on top, in that fixed priority order (see `ThemeLevel`).
      */
     Style resolve(cl7::u8string_view key, const State& state) const;
 
@@ -93,8 +93,8 @@ private:
     // #############################################################################
 
     /**
-     * Overwrites style's fields with whichever ones overlay actually has set,
-     * leaving the rest of style untouched.
+     * Overwrites the given style's fields with whichever ones the specified
+     * overlay actually has set, leaving the rest of the style untouched.
      */
     static void _apply_overlay(Style& style, const ThemeLevel& overlay);
 

@@ -31,12 +31,12 @@ namespace fl7::gui {
     /**
      * Resolves the specified face-type/role key into a complete style: each field
      * individually falls back from that key's own level to the theme-wide default
-     * level, then to style's own hard-coded default, except chrome, which only ever
-     * comes from the key's own level. Unknown keys resolve as if their level were
-     * empty (falling through to the theme-wide default/style's own defaults for
-     * everything but chrome). The key's own level's checked/hovered/pressed/focused
-     * overlays (if any) whose state is currently active in `state` are then applied
-     * on top, in that fixed priority order (see ThemeLevel).
+     * level, then to style's own hard-coded default, except chrome, which only
+     * ever comes from the key's own level. Unknown keys resolve as if their level
+     * were empty (falling through to the theme-wide default/style's own defaults
+     * for everything but chrome). The key's own level's checked/hovered/pressed/
+     * focused overlays (if any) whose state is currently active in `state` are then
+     * applied on top, in that fixed priority order (see `ThemeLevel`).
      */
     Style Theme::resolve(cl7::u8string_view key, const State& state) const
     {
@@ -77,8 +77,8 @@ namespace fl7::gui {
     // #############################################################################
 
     /**
-     * Overwrites style's fields with whichever ones overlay actually has set,
-     * leaving the rest of style untouched.
+     * Overwrites the given style's fields with whichever ones the specified
+     * overlay actually has set, leaving the rest of the style untouched.
      */
     void Theme::_apply_overlay(Style& style, const ThemeLevel& overlay)
     {
