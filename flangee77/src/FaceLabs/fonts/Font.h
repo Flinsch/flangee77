@@ -78,7 +78,7 @@ private:
 
     /** Maps ASCII code points to their corresponding glyphs, along with a flag indicating whether the glyph has already been loaded. */
     std::array<std::pair<Glyph, bool>, 0x7e - 0x20 + 1> _ascii_glyphs;
-    /** Maps non-ASCII Unicode code points to their respective glyphs (if they have already beed loaded). */
+    /** Maps non-ASCII Unicode code points to their respective glyphs (if they have already been loaded). */
     std::unordered_map<cl7::text::codec::codepoint::value_type, Glyph> _non_ascii_glyph_map;
 
     /** The font loader for providing our font data. */

@@ -10,9 +10,9 @@ namespace fl7::fonts {
 
 
 /**
- * The subset of TextStyle that applies per glyph rather than per line/box,
- * and is therefore the part a StyleRun can override for a sub-range of a
- * single draw call. TextStyle inherits this for its own (default) values.
+ * The subset of `TextStyle` that applies per glyph rather than per line/box,
+ * and is therefore the part a `StyleRun` can override for a sub-range of a
+ * single draw call. `TextStyle` inherits this for its own (default) values.
  */
 struct GlyphStyle
 {

@@ -37,22 +37,25 @@ public:
 
 
 private:
+    /**
+     * A single (pixel-space) contour edge tagged with the channel(s) it
+     * contributes to in the resulting MSDF (see `_color_contours`).
+     *
+     * Also carries the neighboring edge's tangent at each of its own
+     * start/end corners (i.e., the previous/next edge's `tangent_at(1.0)`/
+     * `tangent_at(0.0)` in the original, uncolored contour, not necessarily a
+     * same-colored neighbor), needed to resolve the sign correctly when a
+     * query point's nearest point on this edge clamps to that corner (see
+     * `_query_edge`): a single edge's own tangent alone can't tell whether
+     * such a point is inside or outside, since that depends on the angle the
+     * two edges meeting there actually form.
+     */
     struct ColoredSegment
     {
         /** The (pixel-space) edge itself. */
         ml7::QuadraticBezier2f bezier;
         /** Bitmask of channels this edge contributes to (1 = R, 2 = G, 4 = B). */
         uint8_t channels;
-
-        /**
-         * The neighboring edge's tangent at this edge's start/end corner (i.e., the
-         * previous/next edge's tangent_at(1.0)/tangent_at(0.0) in the original,
-         * uncolored contour, not necessarily a same-colored neighbor). Used to
-         * resolve the sign correctly when a query point's nearest point on this
-         * edge clamps to that corner (see _query_edge): a single edge's own tangent
-         * alone can't tell whether such a point is inside or outside, since that
-         * depends on the angle the two edges meeting there actually form.
-         */
 
         /** The previous edge's tangent at this edge's start corner. */
         ml7::Vector2f tangent_in_at_start;

@@ -13,8 +13,8 @@ namespace fl7::fonts {
 
 /**
  * Describes an inline icon: an arbitrary (caller-supplied, not owned) texture drawn
- * as if it were a glyph, via an IconRun. Unlike glyphs, icons keep their own
- * texture colors (they are not tinted/coverage-masked by GlyphStyle::text_color)
+ * as if it were a glyph, via an `IconRun`. Unlike glyphs, icons keep their own
+ * texture colors (they are not tinted/coverage-masked by `GlyphStyle::text_color`)
  * and are ignored by italic/weight.
  */
 struct Icon
@@ -31,7 +31,7 @@ struct Icon
 
     /**
      * The top-left corner, relative to the cursor/baseline origin at the
-     * icon's code point position. Same convention as raster::PixelOffset for
+     * icon's code point position. Same convention as `raster::PixelOffset` for
      * glyphs: offset.y is typically negative, to sit above the baseline
      * (e.g., offset = {0, -size.y} bottom-aligns the icon to the baseline).
      */

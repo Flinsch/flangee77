@@ -13,7 +13,10 @@ namespace fl7::fonts {
 
 
 /**
- *
+ * Configures how a block of text is laid out (alignment, wrapping, spacing) and
+ * drawn, serving as a draw call's base style; its own (inherited) `GlyphStyle`
+ * fields are the default a `StyleRun` can override for a sub-range of code
+ * points.
  */
 struct TextStyle
     : GlyphStyle
@@ -51,10 +54,10 @@ struct TextStyle
 
     /**
      * When true, a whole (non-word-wrapped) line keeps its own leading/trailing
-     * whitespace exactly as authored, instead of TextLayout::lay_out()'s normal
+     * whitespace exactly as authored, instead of `TextLayout::lay_out()`'s normal
      * typeset-display trimming. Meant for an editable text field's literal text
-     * (see gui::faces::TextField), which must always show exactly what was typed.
-     * Leave false for ordinary display text (Label, Button, ...).
+     * (see `gui::faces::TextField`), which must always show exactly what was typed.
+     * Leave false for ordinary display text (a label, a button, ...).
      */
     bool preserve_whitespace = false;
 

@@ -29,7 +29,7 @@ struct NamedIcon
 
 /**
  * The result of parsing markup text: ready to hand straight to
- * AbstractRenderer::draw_text/draw_text_in_box.
+ * `AbstractRenderer::draw_text` or `draw_text_in_box`.
  */
 struct ParsedMarkup
 {
@@ -43,20 +43,20 @@ struct ParsedMarkup
     /**
      * Parses a small, closed set of inline markup tags out of `text`:
      *
-     * - [b]bold[/b]                    GlyphStyle::weight = 1 (or `[b=1.5]` for a custom value)
-     * - [i]italic[/i]                  GlyphStyle::italic_intensity = 1 (or `[i=0.5]`)
-     * - [color=#RRGGBB]text[/color]    GlyphStyle::text_color (also accepts #RRGGBBAA)
-     * - [outline=#RRGGBB]text[/outline] GlyphStyle::outline_color, with a default
+     * - [b]bold[/b]                    `GlyphStyle::weight` = 1 (or `[b=1.5]` for a custom value)
+     * - [i]italic[/i]                  `GlyphStyle::italic_intensity` = 1 (or `[i=0.5]`)
+     * - [color=#RRGGBB]text[/color]    `GlyphStyle::text_color` (also accepts #RRGGBBAA)
+     * - [outline=#RRGGBB]text[/outline] `GlyphStyle::outline_color`, with a default
      *                                  outline_width (also accepts #RRGGBBAA)
-     * - [outline-width]text[/outline-width] GlyphStyle::outline_width = 1 (or
+     * - [outline-width]text[/outline-width] `GlyphStyle::outline_width` = 1 (or
      *                                  `[outline-width=2.5]` for a custom value);
      *                                  independent of and nestable with [outline],
      *                                  same as [b]/[i] nest with [color]
-     * - [icon=name]                    an inline Icon, looked up by exact name in `icons` (no closing tag)
+     * - [icon=name]                    an inline `Icon`, looked up by exact name in `icons` (no closing tag)
      *
      * Tags may be nested to arbitrary depth; the effective style at any point is
      * the merge of all currently-open tags on top of `base_style`'s (inherited)
-     * GlyphStyle, e.g., `[b][color=#ff0000]bold red[/color] just bold[/b]` works as
+     * `GlyphStyle`, e.g., `[b][color=#ff0000]bold red[/color] just bold[/b]` works as
      * expected. `base_style` is only used for this seeding, it is not otherwise
      * modified or consulted.
      *
@@ -73,7 +73,7 @@ struct ParsedMarkup
     template <cl7::any_string_view_like Tstring_view_like>
     ParsedMarkup parse_markup(Tstring_view_like&& text, const TextStyle& base_style, std::span<const NamedIcon> icons = {});
 
-    /** The actual (non-template) parsing implementation, see parse_markup above. */
+    /** The actual (non-template) parsing implementation, see `parse_markup` above. */
     ParsedMarkup _parse_markup(std::span<const cl7::text::codec::codepoint> codepoints, const TextStyle& base_style, std::span<const NamedIcon> icons);
 
     template <cl7::any_string_view_like Tstring_view_like>

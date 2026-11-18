@@ -24,7 +24,7 @@ struct StyleRun
     /** The index of the first code point after this run (exclusive). */
     size_t codepoint_end = 0;
 
-    /** The per-glyph style to use for this run, overriding the base TextStyle's. */
+    /** The per-glyph style to use for this run, overriding the base `TextStyle`'s. */
     GlyphStyle style;
 };
 

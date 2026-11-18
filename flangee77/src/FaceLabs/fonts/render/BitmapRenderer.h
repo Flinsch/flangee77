@@ -12,7 +12,7 @@ namespace fl7::fonts::render {
 
 /**
  * Texture-atlas-based renderer using "classic" (grayscale) bitmap rasterization.
- * Accepts any AbstractBitmapRasterizer (Simple, Oversampled, Analytical, etc.).
+ * Accepts any `AbstractBitmapRasterizer` (Simple, Oversampled, Analytical, etc.).
  */
 class BitmapRenderer
     : public AbstractTextureAtlasBasedRenderer

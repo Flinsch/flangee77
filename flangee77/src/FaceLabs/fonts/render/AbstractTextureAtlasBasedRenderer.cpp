@@ -283,7 +283,7 @@ namespace fl7::fonts::render {
         // A box_size component of 0 (or less) means "unconstrained" on that axis,
         // as with point-based draw_text, which always passes a zero-size box and
         // must therefore never be box-clipped. A pushed renderer clip rect, if any,
-        // still applies either way).
+        // still applies either way.
         const auto [clip_min, clip_max] = _get_effective_clip_rect(state);
 
         const auto clipped = xl7::graphics::meshes::ClippedQuad::clip({left, top}, {right, bottom}, {u0, v0}, {u1, v1}, clip_min, clip_max);

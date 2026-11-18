@@ -19,7 +19,7 @@ struct GlyphMetrics
     float advance_width = 0.0f;
     /** The horizontal offset from the glyph origin to its left edge. */
     float left_side_bearing = 0.0f;
-    /** The horizontal space between the rightmost edge of the glyph's shape and the advance width line: RSB = AW - LSB - width (because AW = LSB + width + RSB). */
+    /** The horizontal space between the rightmost edge of the glyph's shape and the advance width line: `RSB = AW - LSB - width` (because `AW = LSB + width + RSB`). */
     float right_side_bearing = 0.0f;
 };
 
