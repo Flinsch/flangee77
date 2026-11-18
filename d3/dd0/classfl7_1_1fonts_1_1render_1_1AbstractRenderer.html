@@ -514,7 +514,7 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the effective clip rect (position_min, position_max) for the given state: its own text box bounds (if constrained on either axis; see draw_text_in_box), intersected with the renderer's current <a class="el" href="#a1619a32a010bb5827c7a5b65af382844">push_clip_rect()</a> rect (if any). A concrete renderer that emits quads (see <a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html">AbstractTextureAtlasBasedRenderer</a>) clips each one against this via <a class="el" href="../../d2/d47/structxl7_1_1graphics_1_1meshes_1_1ClippedQuad.html#a693c3430e27e241172c51d45e081d000">xl7::graphics::meshes::ClippedQuad::clip</a>, instead of computing box bounds itself. </p>
+<p>Returns the effective clip rect (position_min, position_max) for the given state: its own text box bounds (if constrained on either axis; see <span class="tt"><a class="el" href="#a781caec0d42dce70ab8d7f1b8146df96">draw_text_in_box</a></span>), intersected with the renderer's current <span class="tt"><a class="el" href="#a1619a32a010bb5827c7a5b65af382844">push_clip_rect()</a></span> rect (if any). A concrete renderer that emits quads (see <span class="tt"><a class="el" href="../../da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html">AbstractTextureAtlasBasedRenderer</a></span>) clips each one against this via <span class="tt"><a class="el" href="../../d2/d47/structxl7_1_1graphics_1_1meshes_1_1ClippedQuad.html#a693c3430e27e241172c51d45e081d000">xl7::graphics::meshes::ClippedQuad::clip</a></span>, instead of computing box bounds itself. </p>
 
 </div>
 </div>
@@ -532,7 +532,7 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Begins a new text rendering batch. Must be balled before issuing any draw commands if batching manually. Typically followed by multiple calls to <span class="tt"><a class="el" href="#acf6dabf505af3584a9bbc7e3a64250b3">draw_text</a></span>, and then a final call to <span class="tt"><a class="el" href="#a92b6b4f92a86517877edcc2848d9e7dd">end</a></span>. If you only call <span class="tt"><a class="el" href="#acf6dabf505af3584a9bbc7e3a64250b3">draw_text</a></span> occasionally, it is not necessary to call <span class="tt"><a class="el" href="#abf86dbe5e0a897e16e99d83caa49fc3a">begin</a></span> or <span class="tt"><a class="el" href="#a92b6b4f92a86517877edcc2848d9e7dd">end</a></span> manually; the renderer will manage batching internally.</p>
+<p>Begins a new text rendering batch. Must be called before issuing any draw commands if batching manually. Typically followed by multiple calls to <span class="tt"><a class="el" href="#acf6dabf505af3584a9bbc7e3a64250b3">draw_text</a></span>, and then a final call to <span class="tt"><a class="el" href="#a92b6b4f92a86517877edcc2848d9e7dd">end</a></span>. If you only call <span class="tt"><a class="el" href="#acf6dabf505af3584a9bbc7e3a64250b3">draw_text</a></span> occasionally, it is not necessary to call <span class="tt"><a class="el" href="#abf86dbe5e0a897e16e99d83caa49fc3a">begin</a></span> or <span class="tt"><a class="el" href="#a92b6b4f92a86517877edcc2848d9e7dd">end</a></span> manually; the renderer will manage batching internally.</p>
 <p>For greater convenience, the RAII helper <span class="tt"><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html">ScopedBatch</a></span> should be used via <span class="tt"><a class="el" href="#a6e289271cdb4338e8e4ad31873bf84fa">begin_batch</a></span>. </p>
 
 </div>
@@ -551,8 +551,7 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a new <span class="tt"><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html">ScopedBatch</a></span> object to manage a text rendering batch.</p>
-<p>Use this function to start a new batch. The returned <span class="tt"><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html">ScopedBatch</a></span> object will automatically call <span class="tt"><a class="el" href="#a92b6b4f92a86517877edcc2848d9e7dd">end</a></span> when it goes out of scope, unless <span class="tt"><a class="el" href="#a92b6b4f92a86517877edcc2848d9e7dd">end</a></span> is called explicitly beforehand. </p>
+<p>Creates a new <span class="tt"><a class="el" href="../../d0/d2f/classfl7_1_1fonts_1_1render_1_1AbstractRenderer_1_1ScopedBatch.html">ScopedBatch</a></span> to start a new batch: it will automatically call <span class="tt"><a class="el" href="#a92b6b4f92a86517877edcc2848d9e7dd">end</a></span> when it goes out of scope, unless <span class="tt"><a class="el" href="#a92b6b4f92a86517877edcc2848d9e7dd">end</a></span> is called explicitly beforehand. </p>
 
 </div>
 </div>
@@ -605,7 +604,7 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
 </table>
 </div><div class="memdoc">
 <p>Draws text at the specified position (screen pixel space, y-down), honoring <span class="tt">text_style</span>'s horizontal/vertical alignment by treating <span class="tt">position</span> as the corresponding anchor point (e.g., with <span class="tt">Center</span> alignment, <span class="tt">position</span> is the horizontal center of the text; with <span class="tt">Baseline</span> alignment, <span class="tt">position</span> is on the first line's baseline, etc.). Multi-line text only results from explicit line breaks in <span class="tt">text</span>, not from word-wrapping (there is no box width to wrap against). <span class="tt">Justify</span> has no effect and behaves like <span class="tt">Left</span>.</p>
-<p>If no active text rendering batch is open, begin/end are called automatically.</p>
+<p>If no active text rendering batch is open, <span class="tt"><a class="el" href="#abf86dbe5e0a897e16e99d83caa49fc3a">begin</a></span>/<span class="tt"><a class="el" href="#a92b6b4f92a86517877edcc2848d9e7dd">end</a></span> are called automatically.</p>
 <p><span class="tt">style_runs</span> (if any) override <span class="tt">text_style</span>'s (inherited) <span class="tt"><a class="el" href="../../de/d34/structfl7_1_1fonts_1_1GlyphStyle.html">GlyphStyle</a></span> for the code point ranges they cover. See <span class="tt"><a class="el" href="../../de/ddd/structfl7_1_1fonts_1_1render_1_1StyleRun.html">StyleRun</a></span> for the indexing convention and ordering requirements.</p>
 <p><span class="tt">icon_runs</span> (if any) each replace a single code point position with an inline icon, for both layout (advance width) and rendering. See <span class="tt"><a class="el" href="../../d1/d30/structfl7_1_1fonts_1_1IconRun.html">IconRun</a></span> for the indexing convention and ordering requirements. </p>
 
@@ -666,7 +665,7 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
 </div><div class="memdoc">
 <p>Draws text laid out within the specified box (screen pixel space, y-down), honoring <span class="tt">text_style</span>'s horizontal/vertical alignment and, for <span class="tt">WrapMode::Word</span>, wrapping lines to fit <span class="tt">box_size.x</span>.</p>
 <p>A <span class="tt">box_size</span> component of 0 (or less) means "unconstrained" on that axis.</p>
-<p>If no active text rendering batch is open, begin/end are called automatically.</p>
+<p>If no active text rendering batch is open, <span class="tt"><a class="el" href="#abf86dbe5e0a897e16e99d83caa49fc3a">begin</a></span>/<span class="tt"><a class="el" href="#a92b6b4f92a86517877edcc2848d9e7dd">end</a></span> are called automatically.</p>
 <p><span class="tt">style_runs</span> (if any) override <span class="tt">text_style</span>'s (inherited) <span class="tt"><a class="el" href="../../de/d34/structfl7_1_1fonts_1_1GlyphStyle.html">GlyphStyle</a></span> for the code point ranges they cover. See <span class="tt"><a class="el" href="../../de/ddd/structfl7_1_1fonts_1_1render_1_1StyleRun.html">StyleRun</a></span> for the indexing convention and ordering requirements.</p>
 <p><span class="tt">icon_runs</span> (if any) each replace a single code point position with an inline icon, for both layout (advance width) and rendering. See <span class="tt"><a class="el" href="../../d1/d30/structfl7_1_1fonts_1_1IconRun.html">IconRun</a></span> for the indexing convention and ordering requirements. </p>
 
@@ -745,7 +744,7 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Pushes a new clip rect, intersected with the current one (there is no clip rect initially, i.e., unbounded). Glyphs/backgrounds/icons drawn while this clip rect is active are clipped against it, on top of (i.e., intersected with) their own text box's bounds, if any (see draw_text_in_box). Mirrors <a class="el" href="../../d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#ada596dd6a74390b27931351e6fdc5f85">xl7::graphics::QuadRenderer::push_clip_rect</a>'s identical stack semantics, so a caller driving both (e.g., <a class="el" href="../../d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html">fl7::gui::render::DefaultRenderer</a>) can push/pop the same rect on each in lockstep. </p>
+<p>Pushes a new clip rect, intersected with the current one (there is no clip rect initially, i.e., unbounded). Glyphs/backgrounds/icons drawn while this clip rect is active are clipped against it, on top of (i.e., intersected with) their own text box's bounds, if any (see <span class="tt"><a class="el" href="#a781caec0d42dce70ab8d7f1b8146df96">draw_text_in_box</a></span>). Mirrors <span class="tt"><a class="el" href="../../d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#ada596dd6a74390b27931351e6fdc5f85">xl7::graphics::QuadRenderer::push_clip_rect</a></span>'s identical stack semantics, so a caller driving both (e.g., <span class="tt"><a class="el" href="../../d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html">fl7::gui::render::DefaultRenderer</a></span>) can push/pop the same rect on each in lockstep. </p>
 
 </div>
 </div>
@@ -792,7 +791,7 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The active clip-rect stack; empty means unbounded (no clipping), same convention as <a class="el" href="../../d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html">xl7::graphics::QuadRenderer</a>. </p>
+<p>The active clip-rect stack; empty means unbounded (no clipping), same convention as <span class="tt"><a class="el" href="../../d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html">xl7::graphics::QuadRenderer</a></span>. </p>
 
 </div>
 </div>

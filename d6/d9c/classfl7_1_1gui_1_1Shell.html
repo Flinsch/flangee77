@@ -325,9 +325,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Moves the specified top-level face (which must actually currently be one) to the back of _top_level_faces, i.e., the front of the Z-order (see <a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>, hit-tested/drawn last, same as a newly added one would be): the usual "bring
-the clicked-into window to the front" behavior. A no-op if it's already there.</p>
-<p>Also raises, the same way, any registered popup (see <a class="el" href="#a29cc7e6e5e1902ccfedf2e271e3b47f1">open_popup()</a>) whose owner lies within <span class="tt">top_level</span>'s own subtree: without this, raising a face whose own popup happens to currently sit further back (e.g., some other face having been raised in between) would leave that popup stranded visually behind it, for however long it still takes to actually get closed (its owner's own click handling, e.g., toggling it closed again, only takes effect once that press is released, see <a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>'s mouse handling): purely a Z-order correction, never closing or otherwise touching the popup itself. Raising the popup itself needs no such chase the other way around. </p>
+<p>Moves the specified top-level face (which must actually currently be one) to the back of <span class="tt"><a class="el" href="#a3425e48374b7c3d8231ee0264883f816">_top_level_faces</a></span>, i.e., the front of the Z-order (see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>, hit-tested/drawn last, same as a newly added one would be): the usual "bring the clicked-into window to the front" behavior. A no-op if it's already there.</p>
+<p>Also raises, the same way, any registered popup (see <span class="tt"><a class="el" href="#a29cc7e6e5e1902ccfedf2e271e3b47f1">open_popup()</a></span>) whose owner lies within <span class="tt">top_level</span>'s own subtree: without this, raising a face whose own popup happens to currently sit further back (e.g., some other face having been raised in between) would leave that popup stranded visually behind it, for however long it still takes to actually get closed (its owner's own click handling, e.g., toggling it closed again, only takes effect once that press is released, see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>'s mouse handling): purely a Z-order correction, never closing or otherwise touching the popup itself. Raising the popup itself needs no such chase the other way around. </p>
 
 </div>
 </div>
@@ -353,7 +352,7 @@ the clicked-into window to the front" behavior. A no-op if it's already there.</
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Changes _focused_face to the specified face (or <span class="tt">nullptr</span>), firing _on_focus_lost()/_on_focus_gained() as needed, and resetting the key-repeat timers so a key already held before the new face gained focus doesn't immediately fire a spurious repeat on it. A no-op if <span class="tt">face</span> is already the focused face. The shared implementation behind <a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>'s mouse-press handling, <a class="el" href="#a6547b2a1c9badb7869e1e110d4c79568">focus_toward()</a>, <a class="el" href="#a3064f775b360765281ef6e23f1fd17b2">_focus_adjacent_tab_stop()</a>, and <a class="el" href="#adb72e80027b60579f18e35adaabf6764">set_focus()</a>. </p>
+<p>Changes <span class="tt"><a class="el" href="#a367303a8b7e6569011d3aee570380802">_focused_face</a></span> to the specified face (or <span class="tt">nullptr</span>), firing <span class="tt">_on_focus_lost()</span>/<span class="tt">_on_focus_gained()</span> as needed, and resetting the key-repeat timers so a key already held before the new face gained focus doesn't immediately fire a spurious repeat on it. A no-op if <span class="tt">face</span> is already the focused face. The shared implementation behind <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>'s mouse-press handling, <span class="tt"><a class="el" href="#a6547b2a1c9badb7869e1e110d4c79568">focus_toward()</a></span>, <span class="tt"><a class="el" href="#a3064f775b360765281ef6e23f1fd17b2">_focus_adjacent_tab_stop()</a></span>, and <span class="tt"><a class="el" href="#adb72e80027b60579f18e35adaabf6764">set_focus()</a></span>. </p>
 
 </div>
 </div>
@@ -414,7 +413,7 @@ the clicked-into window to the front" behavior. A no-op if it's already there.</
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the nearest focusable face in the given direction from the currently focused face, among <span class="tt">top_level</span>'s own Tab stops (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#af3b0dac1cc2fda5241f4b97e7bcf3c27">Face::_collect_tab_stops()</a>), by on-screen geometry, or <span class="tt">nullptr</span> if there's no usable candidate. Without a usable starting point (no current focus, or an invisible one), picks the outermost candidate in that direction instead (topmost for Up, bottommost for Down, and so on), so entering a top-level face for the first time lands on an intuitive face. </p>
+<p>Returns the nearest focusable face in the given direction from the currently focused face, among <span class="tt">top_level</span>'s own Tab stops (see <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#af3b0dac1cc2fda5241f4b97e7bcf3c27">Face::_collect_tab_stops()</a></span>), by on-screen geometry, or <span class="tt">nullptr</span> if there's no usable candidate. Without a usable starting point (no current focus, or an invisible one), picks the outermost candidate in that direction instead (topmost for Up, bottommost for Down, and so on), so entering a top-level face for the first time lands on an intuitive face. </p>
 
 </div>
 </div>
@@ -440,7 +439,7 @@ the clicked-into window to the front" behavior. A no-op if it's already there.</
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Moves focus to the next (or, if <span class="tt">backward</span>, previous) Tab stop (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a49a890596f79ab1d3b1b5c38d4052c42">Face::_is_focusable()</a>/get_tab_order()), scoped to the currently focused face's own top-level face's subtree, wrapping around at either end. No-op if nothing is currently focused (there's no "current" top-level face to scope to otherwise, see <a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>'s Tab handling) or if that subtree has no Tab stop at all. </p>
+<p>Moves focus to the next (or, if <span class="tt">backward</span>, previous) Tab stop (see <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a49a890596f79ab1d3b1b5c38d4052c42">Face::_is_focusable()</a></span>/<span class="tt">get_tab_order()</span>), scoped to the currently focused face's own top-level face's subtree, wrapping around at either end. No-op if nothing is currently focused (there's no "current" top-level face to scope to otherwise, see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>'s Tab handling) or if that subtree has no Tab stop at all. </p>
 
 </div>
 </div>
@@ -466,7 +465,7 @@ the clicked-into window to the front" behavior. A no-op if it's already there.</
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Called by <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a03d9dd7945a9461765107b57a21cd0ce">Collection::remove_child()</a> just before it actually erases/destroys the specified face (and, transitively, its own descendants, if any): clears whichever of _hovered_face/_pressed_face/_focused_face (if any) falls within that subtree, so none of them is ever left dangling once it's actually gone. </p>
+<p>Called by <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a03d9dd7945a9461765107b57a21cd0ce">Collection::remove_child()</a></span> just before it actually erases/destroys the specified face (and, transitively, its own descendants, if any): clears whichever of <span class="tt"><a class="el" href="#acf56cb03916e54348bb4207faa04b2e7">_hovered_face</a></span>/<span class="tt"><a class="el" href="#af0a441e5698cfe2d2071a6af72620fea">_pressed_face</a></span>/<span class="tt"><a class="el" href="#a367303a8b7e6569011d3aee570380802">_focused_face</a></span> (if any) falls within that subtree, so none of them is ever left dangling once it's actually gone. </p>
 
 </div>
 </div>
@@ -513,7 +512,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns whether <a class="el" href="#a27d034435c854376f9fc68f0959193a2">click_focus()</a> would currently trigger anything: a face is focused, it's clickable, and still enabled/visible (either might have changed since it gained focus, without it losing focus over that alone). Exposed so a caller (a gamepad's "confirm" button, say) can tell in advance whether pressing it would do something. </p>
+<p>Returns whether <span class="tt"><a class="el" href="#a27d034435c854376f9fc68f0959193a2">click_focus()</a></span> would currently trigger anything: a face is focused, it's clickable, and still enabled/visible (either might have changed since it gained focus, without it losing focus over that alone). Exposed so a caller (a gamepad's "confirm" button, say) can tell in advance whether pressing it would do something. </p>
 
 </div>
 </div>
@@ -531,7 +530,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Triggers the currently focused face as if it had just been clicked, if <a class="el" href="#a5ebbec7bbee4e3bf38008001164c1711">can_click_focus()</a>; returns whether it actually did. Called automatically for Enter/Space (see <a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>). Exposed publicly so other input (a gamepad's "confirm" button, say) can trigger the same activation manually. </p>
+<p>Triggers the currently focused face as if it had just been clicked, if <span class="tt"><a class="el" href="#a5ebbec7bbee4e3bf38008001164c1711">can_click_focus()</a></span>; returns whether it actually did. Called automatically for Enter/Space (see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>). Exposed publicly so other input (a gamepad's "confirm" button, say) can trigger the same activation manually. </p>
 
 </div>
 </div>
@@ -549,7 +548,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Unregisters and hides (set_visible(false)) the given popup, if currently registered (see <a class="el" href="#a29cc7e6e5e1902ccfedf2e271e3b47f1">open_popup()</a>); a no-op otherwise. Called automatically once focus moves away (see <a class="el" href="#a29cc7e6e5e1902ccfedf2e271e3b47f1">open_popup()</a>), but just as well callable directly for an explicit close (e.g., Escape, or the opening face toggling it closed again). </p>
+<p>Unregisters and hides (<span class="tt">set_visible(false)</span>) the given popup, if currently registered (see <span class="tt"><a class="el" href="#a29cc7e6e5e1902ccfedf2e271e3b47f1">open_popup()</a></span>); a no-op otherwise. Called automatically once focus moves away (see <span class="tt"><a class="el" href="#a29cc7e6e5e1902ccfedf2e271e3b47f1">open_popup()</a></span>), but just as well callable directly for an explicit close (e.g., Escape, or the opening face toggling it closed again). </p>
 
 </div>
 </div>
@@ -589,7 +588,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Moves focus to the nearest focusable face in the given direction within the current top-level face (the focused face's own top-level ancestor, or, with nothing currently focused, the topmost one), by on-screen geometry, unlike the linear Tab/Shift+Tab (see <a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>). With <span class="tt">force</span> false, a focused face that consumes the arrow for itself (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a317b2937735edb98a4695428766a87da">Face::_consumes_arrow()</a>, e.g. a text caret) keeps it; with <span class="tt">force</span> true, only a "hard" consumer (e.g. a list with somewhere left to go) still keeps it. Does nothing if the current top-level face has arrow navigation disabled (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#abc233c6ac91cab3ba32300b04446cda9">Face::get_arrow_navigation_enabled()</a>), or has no focusable face at all. Called automatically for a plain arrow key press (see <a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>); exposed publicly so other input (a gamepad's d-pad, say) can drive the same navigation manually. </p>
+<p>Moves focus to the nearest focusable face in the given direction within the current top-level face (the focused face's own top-level ancestor, or, with nothing currently focused, the topmost one), by on-screen geometry, unlike the linear Tab/Shift+Tab (see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>). With <span class="tt">force</span> false, a focused face that consumes the arrow for itself (see <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a317b2937735edb98a4695428766a87da">Face::_consumes_arrow()</a></span>, e.g. a text caret) keeps it; with <span class="tt">force</span> true, only a "hard" consumer (e.g. a list with somewhere left to go) still keeps it. Does nothing if the current top-level face has arrow navigation disabled (see <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#abc233c6ac91cab3ba32300b04446cda9">Face::get_arrow_navigation_enabled()</a></span>), or has no focusable face at all. Called automatically for a plain arrow key press (see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>); exposed publicly so other input (a gamepad's d-pad, say) can drive the same navigation manually. </p>
 
 </div>
 </div>
@@ -667,7 +666,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the keyboard this shell routes input from, e.g. so a focused face can query modifier key state (Shift, Ctrl, ...) from within its own _on_key_down()/_on_mouse_drag() (see TextField's Shift-extended selection and drag-select) instead of every such interaction needing its own dedicated parameter. </p>
+<p>Returns the keyboard this shell routes input from, e.g. so a focused face can query modifier key state (Shift, Ctrl, ...) from within its own <span class="tt">_on_key_down()</span>/<span class="tt">_on_mouse_drag()</span> (see <span class="tt">TextField</span>'s Shift-extended selection and drag-select) instead of every such interaction needing its own dedicated parameter. </p>
 
 </div>
 </div>
@@ -693,7 +692,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the mouse's current absolute (screen) position, as of the most recent <a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>. Meant for a face whose _requires_own_bounds_for_hover() is true, to check whether the pointer is really within its own bounds, not just somewhere over whatever it's proxying its hovered state from (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a7af95b6aafdbd6d0137aef6410ff4827">Face::get_effective_style()</a>); most faces need <a class="el" href="#a1cf2194c44121f7f9d15baa0a50570c0">get_hovered_face()</a> instead, not this. </p>
+<p>Returns the mouse's current absolute (screen) position, as of the most recent <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>. Meant for a face whose <span class="tt">_requires_own_bounds_for_hover()</span> is true, to check whether the pointer is really within its own bounds, not just somewhere over whatever it's proxying its hovered state from (see <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a7af95b6aafdbd6d0137aef6410ff4827">Face::get_effective_style()</a></span>); most faces need <span class="tt"><a class="el" href="#a1cf2194c44121f7f9d15baa0a50570c0">get_hovered_face()</a></span> instead, not this. </p>
 
 </div>
 </div>
@@ -767,8 +766,8 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Registers <span class="tt">popup</span> (which must already be one of this shell's own top-level faces, see <a class="el" href="#a935140229a6ca98f48ac3b70e2845fe6">add_face()</a>) as a popup owned by <span class="tt">owner</span>, bringing it to the front of the Z-order (see <a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>) and keeping it there every time this is called again, e.g. on every re-open: without this, a popup that was only ever created once and hidden/shown again afterwards (<a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html">Shell</a> has no way to remove a top-level face at all, see <a class="el" href="#a0fc392db730042c49722a71811730c4f">close_popup()</a>) would stay wherever it first ended up in the Z-order, even once some unrelated face has since been brought to front ahead of it.</p>
-<p>Also makes this shell close the popup again on its own (see <a class="el" href="#a0fc392db730042c49722a71811730c4f">close_popup()</a>), the moment focus moves to a face that is neither the popup nor <span class="tt">owner</span>, nor a descendant of either (a plain click elsewhere, Tab/arrow navigation moving on, ...): the common "clicking/tabbing away closes the open dropdown/menu/
+<p>Registers <span class="tt">popup</span> (which must already be one of this shell's own top-level faces, see <span class="tt"><a class="el" href="#a935140229a6ca98f48ac3b70e2845fe6">add_face()</a></span>) as a popup owned by <span class="tt">owner</span>, bringing it to the front of the Z-order (see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>) and keeping it there every time this is called again, e.g. on every re-open: without this, a popup that was only ever created once and hidden/shown again afterwards (this shell has no way to remove a top-level face at all, see <span class="tt"><a class="el" href="#a0fc392db730042c49722a71811730c4f">close_popup()</a></span>) would stay wherever it first ended up in the Z-order, even once some unrelated face has since been brought to front ahead of it.</p>
+<p>Also makes this shell close the popup again on its own (see <span class="tt"><a class="el" href="#a0fc392db730042c49722a71811730c4f">close_popup()</a></span>), the moment focus moves to a face that is neither the popup nor <span class="tt">owner</span>, nor a descendant of either (a plain click elsewhere, Tab/arrow navigation moving on, ...): the common "clicking/tabbing away closes the open dropdown/menu/
 ..." behavior, implemented once here instead of by every individual popup- opening face. A click into the popup's own content, or back onto <span class="tt">owner</span> itself (e.g., to toggle it closed again), is deliberately NOT treated as "elsewhere", so it doesn't get auto-closed out from under that interaction. </p>
 
 </div>
@@ -837,7 +836,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Moves focus directly to the specified face (or, with <span class="tt">nullptr</span>, clears it), the same way a click or Tab/arrow navigation would: fires _on_focus_lost()/_on_focus_gained() as needed, a no-op if <span class="tt">face</span> is already the focused face. Exposed for a face that needs to hand focus back to itself (or elsewhere) of its own accord, outside of any direct click on it (e.g., <a class="el" href="../../d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html">faces::DropDown</a>, once its popup list closes: actually clicking into the popup unavoidably focuses it first instead, see <a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>'s mouse handling). </p>
+<p>Moves focus directly to the specified face (or, with <span class="tt">nullptr</span>, clears it), the same way a click or Tab/arrow navigation would: fires <span class="tt">_on_focus_lost()</span>/<span class="tt">_on_focus_gained()</span> as needed, a no-op if <span class="tt">face</span> is already the focused face. Exposed for a face that needs to hand focus back to itself (or elsewhere) of its own accord, outside of any direct click on it (e.g., <span class="tt"><a class="el" href="../../d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html">faces::DropDown</a></span>, once its popup list closes: actually clicking into the popup unavoidably focuses it first instead, see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>'s mouse handling). </p>
 
 </div>
 </div>
@@ -928,7 +927,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Whether the previous mouse position has actually been set yet (guards first update's delta against a spurious jump). </p>
+<p>Whether the previous mouse position has actually been set yet (guards first <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>'s delta against a spurious jump). </p>
 
 </div>
 </div>
@@ -974,7 +973,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Per-key next scheduled auto-repeat fire time for _on_key_down (see <a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>), while that key is being held and repeated; unset otherwise. Indexed the same way as Keyboard's own per-key state. Cleared whenever _focused_face changes, so a key already held before a face gained focus never fires a spurious immediate repeat on it. </p>
+<p>Per-key next scheduled auto-repeat fire time for <span class="tt">_on_key_down()</span> (see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>), while that key is being held and repeated; unset otherwise. Indexed the same way as <span class="tt">Keyboard</span>'s own per-key state. Cleared whenever <span class="tt"><a class="el" href="#a367303a8b7e6569011d3aee570380802">_focused_face</a></span> changes, so a key already held before a face gained focus never fires a spurious immediate repeat on it. </p>
 
 </div>
 </div>
@@ -1043,7 +1042,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The mouse's current absolute (screen) position, as of the most recent <a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a>. </p>
+<p>The mouse's current absolute (screen) position, as of the most recent <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>. </p>
 
 </div>
 </div>
@@ -1066,7 +1065,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Currently registered popups, see <a class="el" href="#a29cc7e6e5e1902ccfedf2e271e3b47f1">open_popup()</a>/close_popup(). </p>
+<p>Currently registered popups, see <span class="tt"><a class="el" href="#a29cc7e6e5e1902ccfedf2e271e3b47f1">open_popup()</a></span>/<span class="tt"><a class="el" href="#a0fc392db730042c49722a71811730c4f">close_popup()</a></span>. </p>
 
 </div>
 </div>
@@ -1112,7 +1111,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The mouse position as of the previous update, for computing the delta for mouse drags. </p>
+<p>The mouse position as of the previous <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>, for computing the delta for mouse drags. </p>
 
 </div>
 </div>
